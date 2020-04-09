@@ -1,8 +1,8 @@
 user_attr=Fitxer d'atributs d'usuari,0
-prof_attr=Fitxer de descripciÃ³ de perfils,0
+prof_attr=Fitxer de descripció de perfils,0
 auth_attr=Fitxer d'autoritzacions,0
-exec_attr=Fitxer de perfils d'execuciÃ³,0
-policy_conf=Fitxer de configuraciÃ³ de polÃ­tiques,0
+exec_attr=Fitxer de perfils d'execució,0
+policy_conf=Fitxer de configuració de polítiques,0
 project=Fitxer de projectes,0
 base_id=ID de base dels projectes,0,6
 crypt_conf=Fitxer d'algoritmes de xifratge,0

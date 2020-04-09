@@ -1,0 +1,5 @@
+line2=Konfigurace systému,11
+pam_dir=Adresáø PAM konfigurace,0
+ignore=Ignorované soubory v PAM adresáøi,0
+lib_dirs=Adresáøe obsahující PAM knihovny,0
+mod_equiv=Ekvivalentní PAM moduly,0

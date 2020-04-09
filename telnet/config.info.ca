@@ -1,9 +1,9 @@
-host=Nom del host a connectar,3,Autom√†tic
-port=Port de connexi√≥,3,Defecte
-proxy=Utilitza una proxy per connectar amb altres hosts?,1,1-S√≠,0-No
-mode=Tipus de connexi√≥,1,0-Telnet,1-Secure Shell (recomanada)
-sizemode=Mida de l'applet,1,0-80x24 car√†cters (tipus de lletra per defecte),1-M√†xima,2-Personalitzada
-size=Amplada x al√ßada personalitzada,0
+host=Nom del host a connectar,3,Autom‡tic
+port=Port de connexiÛ,3,Defecte
+proxy=Utilitza una proxy per connectar amb altres hosts?,1,1-SÌ,0-No
+mode=Tipus de connexiÛ,1,0-Telnet,1-Secure Shell (recomanada)
+sizemode=Mida de l'applet,1,0-80x24 car‡cters (tipus de lletra per defecte),1-M‡xima,2-Personalitzada
+size=Amplada x alÁada personalitzada,0
 fontsize=Mida de la lletra en punts,3,Defecte
-detach=Mode de finestra separada,1,1-S√≠,0-No
-no_test=Prova el servidor telnet o SSH,1,0-S√≠,1-No
+detach=Mode de finestra separada,1,1-SÌ,0-No
+no_test=Prova el servidor telnet o SSH,1,0-SÌ,1-No

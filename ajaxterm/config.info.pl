@@ -1,2 +1,2 @@
-autologin=Tryb logowania,1,0-PoproÅ› o login i hasÅ‚o,1-OtwÃ³rz root shell
-timeout=Czas oczekiwania w trybie idle przed zamkniÄ™ciem poÅ‚Ä…czenia,0,5,,sekund
+autologin=Tryb logowania,1,0-Popro¶ o login i has³o,1-Otwórz root shell
+timeout=Czas oczekiwania w trybie idle przed zamkniêciem po³±czenia,0,5,,sekund

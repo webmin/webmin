@@ -1,0 +1,5 @@
+standard_url=標準モジュールリストのURL,3,www.webmin.com を使用
+third_url=サードパーティモジュールのリストのURL,3,www.webmin.com
+cron_mode=アップデート時刻の表示方法,1,0-簡単なインターフェイス,1-Cronの時刻選択式
+osdn=Webmin OSDN ミラーサイトの一覧を取得しますか?,1,1-はい,0-いいえ
+warn_days=パスワードの期限切れを何日前からユーザに警告するか,0,5

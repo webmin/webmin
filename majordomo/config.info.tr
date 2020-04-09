@@ -1,6 +1,6 @@
-majordomo_cf=Majordomo yapÄ±landÄ±rma dosyasÄ±nÄ±n tam yolu,0
-program_dir=Majordomo programlarÄ±nÄ± iÃ§eren dizin,0
-dynamic=Takma isimleri listemek iÃ§in rastgele sayÄ±lar kullan,1,1-Evet,0-HayÄ±r
-sort_mode=Posta listelerini sÄ±ralam,1,1-Ä°sim,0-OluÅŸturulma sÄ±rasÄ±yla
-smrsh_program_dir=Sendmail gÃ¼venli programlarÄ±nÄ± iÃ§eren dizin,3,Herhangi bir yer
-aliases_file=Sendmail stili takma adlar dosyasÄ±,10,postfix-Get from Postfix,-Get from Sendmail,Other file
+majordomo_cf=Majordomo yapılandırma dosyasının tam yolu,0
+program_dir=Majordomo programlarını içeren dizin,0
+dynamic=Takma isimleri listemek için rastgele sayılar kullan,1,1-Evet,0-Hayır
+sort_mode=Posta listelerini sıralam,1,1-İsim,0-Oluşturulma sırasıyla
+smrsh_program_dir=Sendmail güvenli programlarını içeren dizin,3,Herhangi bir yer
+aliases_file=Sendmail stili takma adlar dosyası,10,postfix-Get from Postfix,-Get from Sendmail,Other file

@@ -1,7 +1,7 @@
 line2=Konfiguracja systemu,11
 xinetd_conf=Plik konfiguracyjny Xinetd,0
-protocols_file=Plik protoko≈Ç√≥w sieciowych,0
-pid_file=≈öcie≈ºka do pliku z numerem PID Xinetd,3,Brak (wyszukaj w procesach)
-start_cmd=Polecenie uruchamiajƒÖce xinetd,0
-add_dir=Dodaj nowe us≈Çugi do,15,add_dir
-lookup_servs=Wyszukiwaƒá numery port√≥w na stronie g≈Ç√≥wnej?,1,1-Tak,0-Nie
+protocols_file=Plik protoko≥Ûw sieciowych,0
+pid_file=¶cieøka do pliku z numerem PID Xinetd,3,Brak (wyszukaj w procesach)
+start_cmd=Polecenie uruchamiaj±ce xinetd,0
+add_dir=Dodaj nowe us≥ugi do,15,add_dir
+lookup_servs=WyszukiwaÊ numery portÛw na stronie g≥Ûwnej?,1,1-Tak,0-Nie

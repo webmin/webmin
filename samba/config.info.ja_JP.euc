@@ -1,0 +1,16 @@
+line1=設定可能なオプション,11
+dont_convert=samba パスワードリストに追加しないunixユーザのリスト,0
+sort_mode=ユーザとグループを名前順に並べる,1,1-はい,0-いいえ
+line2=システム設定,11
+smb_conf=samba 設定ファイルの場所,0
+smb_passwd=samba パスワードファイルの場所,3,無し
+samba_status_program=smbstatus へのフルパス,0
+samba_password_program=smbpasswd へのフルパス,0
+samba_server=smbd へのフルパス,0
+name_server=nmbd へのフルパス,0
+swat_path=swatへのフルパス,3,無し
+smbgroupedit=smbgroupeditへのフルパス,3,無し
+pdbedit=pdbedit へのフルパス,無し
+net=net コマンドへのフルパス,3,無し
+start_cmd=sambaサーバの起動コマンド,3,自動
+stop_cmd=sambaサーバの停止コマンド,3,killコマンド

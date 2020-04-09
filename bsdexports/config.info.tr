@@ -1,2 +1,2 @@
-exports_file=Export dosyasÄ±,0
-restart_command=mountd ve nfsd'yi tekrar baÅŸlatacak komut,0
+exports_file=Export dosyası,0
+restart_command=mountd ve nfsd'yi tekrar başlatacak komut,0

@@ -1,0 +1,42 @@
+line1=設定可能なオプション,11
+perpage=1ページあたりのメールメッセージ表示数,0,6
+wrap_width=メールメッセージの行送りする文字数,0
+sort_mode=テーブルの並べ順,1,0-ファイル順,1-名前順
+columns=エイリアスと他のテーブルの桁数,1,2-2,1-1
+show_cmts=テーブルに説明を表示しますか?,1,1-はい,0-いいえ
+prefix_cmts=すべての説明の前に <tt>Webmin</tt> を追加しますか?,1,1-はい,0-いいえ
+mailq_sort=メイルキューの並び順,1,0-キューID,1-差出人アドレス,2-宛先アドレス,4-ステータス,5-サイズ
+mailq_count=メイルキューのサイズをメインページに表示しますか,1,0-はい,1-いいえ
+check_config=設定ファイル変更後にテストしますか?,1,1-はい,0-いいえ
+index_check=メインページでPostfixの設定をチェックしますか?,1,1-はい,0-いいえ
+
+line2=システム設定,11
+postfix_control_command=Postfix制御コマンドのフルパス,0
+postfix_config_command=Postfix設定コマンドのフルパス,0
+postfix_config_file=Postfix設定ファイルのフルパス,0
+postfix_master=Postfix master.cf ファイルのフルパス,0
+postfix_aliases_table_command=Postfixエイリアス生成コマンドへのフルパス,0
+postfix_newaliases_command=&quot;newaliases&quot;(Sendmail compatibility)コマンドへのフルパス,0
+postfix_lookup_table_command=Postfix ルックアップテーブルコマンド ('postmap')へのフルパス,0
+postfix_queue_command=Postfix キュー管理コマンド('postqueue')へのフルパス,0
+postfix_super_command=Postfix スーパバイザコマンド('postsuper')へのフルパス,0
+mailq_dir=ディレクトリベースのメイルキュー,0
+mailq_cmd=メイルキューの表示コマンド,0
+postcat_cmd=メイルキューのデコードコマンド,0
+start_cmd=Postfix 開始コマンド,3,制御コマンドを使う
+stop_cmd=Postfix 停止コマンド,3,制御コマンドを使う
+reload_cmd=Postfix 設定の適用コマンド,3,制御コマンドを使う
+
+line3=MySQL オプション,11
+mysql_host=マップを編集する MySQL サーバ,3,Postfix 設定と同じ
+mysql_user=マップを編集する MySQL ユーザ,3,Postfix 設定と同じ
+mysql_pass=マップを編集する MySQL パスワード,3,Postfix 設定と同じ
+
+line4=LDAP オプション,11
+ldap_host=マップを編集する LDAP サーバ,3,Postfix 設定と同じ
+ldap_user=マップを編集する LDAP ユーザ,3,Postfix 設定と同じ
+ldap_pass=マップを編集する LDAP パスワード,3,Postfix 設定と同じ
+ldap_class=マップのオブジェクトクラス,3,デフォルト (<tt>inetLocalMailRecipient</tt>)
+ldap_attrs=マップの他の LDAP 属性<br>(<i>fieldname</i>: <i>value</i> というフォーマット),9,40,3,\t
+ldap_id=マップのオブジェクトのキー属性,3,デフォルト (<tt>cn</tt>)
+ldap_doms=各ドメインに別々のDNを作成しますか?,1,1-はい,0-いいえ

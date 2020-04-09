@@ -1,0 +1,12 @@
+login=管理員登入,0
+pass=管理員密碼,0
+psql=psql命令路徑,0
+plib=PostgreSQL 共用函式庫路徑,3,不需要
+basedb=初始化 PostgreSQL 資料庫,0
+start_cmd=啟動 PostgreSQL 的命令,0
+stop_cmd=停止 PostgreSQL 的命令,3,關閉程序
+pid_file=postmaster PID檔案路徑,0
+perpage=每頁顯示的行數,0
+host=PostgreSQL主機連線到,3,本地端
+unix=執行PostgreSQL指令的Unix使用者,3,root
+nodbi=如果可以的話，使用DBI連線?,1,0-是,1-否

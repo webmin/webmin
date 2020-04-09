@@ -1,0 +1,19 @@
+gs_lib=Каталоги з бібліотеками ghostscript,3,За замовчуванням
+hpnp_path=Шлях до програми hpnp,3,Немає
+gs_path=Шлях до ghostscript,3,Немає
+driver_style=Тип драйвера принтера,4,webmin-Webmin,caldera-Caldera,redhat-Redhat,hpux-HPUX,suse-SuSE,cups-CUPS,irix-IRIX,printconf-Redhat Printconf
+print_style=Тип системи печатки,4,solaris-Solaris,linux-Linux,freebsd-FreeBSD,hpux-HPUX,lprng-LPRng,unixware-UnixWare,cups-CUPS,irix-IRIX
+model_path=Каталог із програмами інтерфейсу,3,Немає
+smbclient_path=Шлях до smbclient,3,Немає
+gs_fontpath=Каталоги зі шрифтами ghostscript,3,За замовчуванням
+printcap_file=Файл принтерів,3,Немає
+sort_mode=Упорядковувати принтери по,1,1-імені,0-порядку в системі
+start_cmd=Команда для запуску системи печатки,3,Визначається типом системи печатки
+stop_cmd=Команда для зупинки системи печатки,3,Визначається типом системи печатки
+display_mode=На головній сторінці показувати,1,1-тільки імена принтерів,0-повну інформацію
+queue_refresh=Період відновлення інформації про чергу принтера,3,Не обновляти
+show_status=Показувати стан принтера замість імені драйвера,1,1-да,0-немає
+line1= параметри, ЩоНалаштовуються,11
+line2=Системні параметри,11
+apply_cmd=Команда виконувана після зміни настроювання,3,Немає
+

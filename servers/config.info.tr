@@ -1,8 +1,8 @@
-line1=YapÄ±landÄ±rÄ±labilir seÃ§enekler,11
-resolve=Bulunan sunucu adreslerini Ã§Ã¶zÃ¼mle,1,1-Evet,0-HayÄ±r
-scan_time=YanÄ±tlarÄ± taramak iÃ§in bekleme sÃ¼resi,0,5
-display_mode=SunucularÄ± ÅŸu ÅŸekilde gÃ¶ster,1,1-Tablo,0-Simgeler
-sort_mode=SunucularÄ± sÄ±ralama biÃ§imi,1,4-IP Adresi,1-Makine adÄ±,2-AÃ§Ä±klama,3-OS,5-Grup,0-OluÅŸturulduÄŸu sÄ±ra ile
-show_status=Sunucular iÃ§in durum gÃ¶sterilsin,1,1-Evet,0-HayÄ±r
-line2=Sistem yapÄ±landÄ±rmasÄ±,11
+line1=Yapılandırılabilir seçenekler,11
+resolve=Bulunan sunucu adreslerini çözümle,1,1-Evet,0-Hayır
+scan_time=Yanıtları taramak için bekleme süresi,0,5
+display_mode=Sunucuları şu şekilde göster,1,1-Tablo,0-Simgeler
+sort_mode=Sunucuları sıralama biçimi,1,4-IP Adresi,1-Makine adı,2-Açıklama,3-OS,5-Grup,0-Oluşturulduğu sıra ile
+show_status=Sunucular için durum gösterilsin,1,1-Evet,0-Hayır
+line2=Sistem yapılandırması,11
 groups_dir=MSC cluster grup dizini,0

@@ -1,0 +1,6 @@
+line1=組態選項,11
+refresh_days=更新CPAN模組清單週期,0,5
+save_partial=如果安裝失敗繼續下載模組?,1,1-是,0-否
+line2=系統組態,11
+packages=CPAN perl模組清單,0
+cpan=CPAN模組基本建構網址,0

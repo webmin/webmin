@@ -1,4 +1,4 @@
-at_style=At СЃРёСЃС‚РµРјРµРЅ РІРёРґ,1,linux-Linux,solaris-Solaris,freebsd-FreeBSD,irix-Irix,macos-MacOS X,openserver-OpenServer
-at_dir=At РґРёСЂРµРєС‚РѕСЂРёСЏ СЃСЉСЃ Р·Р°РґР°С‡Рё,0
-allow_file=Р¤Р°Р№Р» Р·Р° РїРѕР·РІРѕР»РµРЅРё РїРѕС‚СЂРµР±РёС‚РµР»Рё РЅР° At,3,РќСЏРјР°
-deny_file=Р¤Р°Р№Р» Р·Р° Р·Р°Р±СЂР°РЅРµРЅРё At РїРѕС‚СЂРµР±РёС‚РµР»Рё,3,РќСЏРјР°
+at_style=At системен вид,1,linux-Linux,solaris-Solaris,freebsd-FreeBSD,irix-Irix,macos-MacOS X,openserver-OpenServer
+at_dir=At директория със задачи,0
+allow_file=Файл за позволени потребители на At,3,Няма
+deny_file=Файл за забранени At потребители,3,Няма

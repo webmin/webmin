@@ -1,0 +1,3 @@
+pap_file=PAP 口令文件,0
+encrypt_pass=在安全文件中使用加密口令,1,1-是,0-否
+

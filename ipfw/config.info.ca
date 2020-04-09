@@ -1,8 +1,8 @@
 line0=Opcions configurables,11
-view_condition=Mostra les condicions,1,1-S√≠,0-No
-view_comment=Mostra els comentaris,1,1-S√≠,0-No
-view_counters=Mostra els comptadors,1,1-S√≠,0-No
-cluster_mode=Actualitza els servidors del cluster,1,0-Quan es faci un canvi,1-En aplicar la configuraci√≥
-line1=Configuraci√≥ del sistema,11
-save_file=Fitxer de desat IPFW a editar,3,Per defecte de Webmin o autom√†tic
-ipfw=Cam√≠ complet de l'ordre ipfw,0
+view_condition=Mostra les condicions,1,1-SÌ,0-No
+view_comment=Mostra els comentaris,1,1-SÌ,0-No
+view_counters=Mostra els comptadors,1,1-SÌ,0-No
+cluster_mode=Actualitza els servidors del cluster,1,0-Quan es faci un canvi,1-En aplicar la configuraciÛ
+line1=ConfiguraciÛ del sistema,11
+save_file=Fitxer de desat IPFW a editar,3,Per defecte de Webmin o autom‡tic
+ipfw=CamÌ complet de l'ordre ipfw,0

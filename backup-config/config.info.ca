@@ -1,3 +1,3 @@
-date_subs=Fes la substituciÃ³ <tt>strftime</tt> de les destinacions de cÃ²pia,1,1-SÃ­,0-No
-webmin_subs=Fes la substituciÃ³ de les variables Webmin a les destinacions de cÃ²pia,1,1-SÃ­,0-No
-from_addr=AdreÃ§a From: dels missatges de correu,3,webmin@hostname
+date_subs=Fes la substitució <tt>strftime</tt> de les destinacions de còpia,1,1-Sí,0-No
+webmin_subs=Fes la substitució de les variables Webmin a les destinacions de còpia,1,1-Sí,0-No
+from_addr=Adreça From: dels missatges de correu,3,webmin@hostname

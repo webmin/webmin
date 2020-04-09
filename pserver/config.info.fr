@@ -1,6 +1,6 @@
 line1=Options configurables,11
-cvsroot=Répertoire CVS racine,7
-view_header=Fichie d'en-têtre du navigateur du référentiel,0
-cvsenc=Jeu de caractères du fichier référentiel,3,Provenant de la langue de Webmin 
-line2=Configuration du système,11
-cvs=Chemin d'accès à l'exécutable cvs,0
+cvsroot=R&#233;pertoire CVS racine,7
+view_header=Fichie d'en-t&#234;tre du navigateur du r&#233;f&#233;rentiel,0
+cvsenc=Jeu de caract&#232;res du fichier r&#233;f&#233;rentiel,3,Provenant de la langue de Webmin 
+line2=Configuration du syst&#232;me,11
+cvs=Chemin d'acc&#232;s &#224; l'ex&#233;cutable cvs,0

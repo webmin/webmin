@@ -1,0 +1,9 @@
+login=管理员登陆,0
+pass=管理员口令,0
+psql=命令的路径,0
+plib=PostgreSQL 共享库路径,3,不需要
+basedb=初始化 PostgreSQL 数据库,0
+start_cmd=启动 PostgreSQL 的命令,0
+stop_cmd=停止 PostgreSQL 的命令,3,关闭进程
+pid_file=postmaster 进程标识文件的路径,0
+perpage=每页显示的行数,0

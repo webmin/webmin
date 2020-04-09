@@ -1,0 +1,8 @@
+line2=システム設定, 11
+pppoe_conf=PPPoE設定ファイル,0
+conf_style=設定ファイルフォーマット,1,0-RP-PPPoEスタイル,1-Redhat ネットワーキングスタイル
+pap_file=PPPアカウントファイル,0
+pppoe_cmd=pppoeコマンドへのフルパス,0
+start_cmd=PPPoE接続開始コマンド,0
+stop_cmd=PPPoE切断コマンド,0
+status_cmd=PPPoEステータス取得コマンド,0

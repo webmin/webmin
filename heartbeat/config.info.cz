@@ -1,0 +1,13 @@
+line2=Konfigurace systému,11
+ha_dir=Konfiguraèní adresáø Heartbeatu,0
+ha_cf=Cesta k konfiguraènímu souboru Heartbeatu,3,Automaticky
+haresources=Cesta ke souboru se zdroji,3,Automaticky
+authkeys=Cesta k souboru s autentikaèním klíèem,3,Automaticky
+resource_d=Adresáø s Heartbeat obslu¾nımi skripty,3,Automaticky
+pid_file=Cesta k Heartbeat PID souboru,0
+start_cmd=Pøíkaz ke spu¹tìní Heartbeatu,0
+apply_cmd=Pøíkaz pro uplatnìní zmìn,3,Automaticky
+serials=Maska pro soubory seriovıch portù,0
+alt_ha_cf=Vzor konfiguraèního souboru Heartbeatu,3,Nic
+alt_haresources=Vzor souboru se zdroji,3,Nic
+alt_authkeys=Vzor souboru s autentikaèním klíèem,3,Nic

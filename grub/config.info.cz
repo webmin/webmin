@@ -1,0 +1,6 @@
+line1=Nastavení konfigurace,11
+install=Instalace GRUB na disk/oddíl,0
+line2=Konfigurace systému,11
+menu_file=Konfiguraèní soubor GRUB menu,0
+grub_path=Cesta ke spu¹tìèi GRUBu,0
+device_map=Soubor pro mapování názvù zaøízení,3,Získat z GRUB

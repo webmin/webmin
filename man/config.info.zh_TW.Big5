@@ -1,0 +1,14 @@
+man_cmd=顯示手冊頁的指令,0
+man_cmd_sect=顯示手冊頁的指令從某一部分,0
+search_cmd=搜尋頁面的指令,0
+man_dir=手冊頁目錄 (MANPATH),0
+list_cmd=顯示手冊頁指令檔案路徑,0
+list_cmd_sect=顯示手冊頁指令檔案路徑從某一部分,0
+man2html_path=man2html路徑,3,不使用man2html
+doc_dir=套件文件目錄,3,無
+howto_dir=HOWTO文件目錄,3,無
+kernel_dir=核心文件目錄,3,無
+kde_dir=KDE文件目錄,3,無
+custom_dir=自定文件目錄,3,無
+custom_desc=自定文件名稱,3,預設
+

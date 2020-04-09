@@ -1,0 +1,22 @@
+passwd_file=口令文件,3,已经产生
+group_file=用户组文件,0
+shadow_file=影子口令文件,3
+master_file=BSD 主口令文件,3
+gshadow_file=影子组文件,3
+pre_command=作改动之前运行的命令,0
+post_command=作改动之后运行的命令,0
+homedir_perms=新用户根目录的许可,0
+base_uid=新用户的最低 UID  值,0
+base_gid=新用户组的最低 GID 值,0
+default_group=新用户缺省组,6,缺省
+display_max=最大可显示的用户数目,0
+sort_mode=以名称排序用户和组,1,1-是,0-否
+last_count=最大可显示以前登录用户的数目,3,无限
+new_user_group=为新用户建立新组,1,1-是,0-否
+skip_md5=如果没有perl MD5模块就不使用 MD5 口令,1,1-是,0-否
+user_files=拷贝文件到新用户根目录的源目录,0
+display_mode=显示用户和组的排序形式,1,2-主用户组分类,1-详细,0-只有名称
+passwd_stars=隐藏明文密码?,1,1-是,0-否
+delete_only=仅删除用户所有的文件?,1,1-是,0-否
+from_files=得到主用户组的来源,1,1-文件,0-系统调用
+

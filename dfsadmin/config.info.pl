@@ -1,4 +1,4 @@
 dfstab_file=Lokalizacja pliku 'exports' NFS-u,0
-fstypes_file=Rodzaj wsp贸艂dzielonego systemu plik贸w,3,Brak
-share_all_command=Polecenie w艂膮czaj膮ce wsp贸艂dzielenie,0
-unshare_all_command=Polecenie wy艂膮czaj膮ce wsp贸艂dzielenie,0
+fstypes_file=Rodzaj wsp蟪dzielonego systemu plik體,3,Brak
+share_all_command=Polecenie w潮czaj眂e wsp蟪dzielenie,0
+unshare_all_command=Polecenie wy潮czaj眂e wsp蟪dzielenie,0

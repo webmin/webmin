@@ -1,0 +1,8 @@
+line1=Mo¾nosti konfigurace,11
+max_size=Maximální poèet zobrazených záznamù,0
+manual_build=Pøestavìt NIS mapy automaticky?,1,0-ano,1-ne
+line2=Konfigurace systému,11
+client_conf=Konfiguraèní soubor NIS klienta,0
+nsswitch_conf=Pøepínací soubor NIS klienta,0
+sources=Zdroje platného nsswitch.conf,0
+securenets=Dùvìrné sí»ové soubory,3,®ádné

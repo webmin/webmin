@@ -1,0 +1,7 @@
+proftpd_path=Шлях до файлу, що виконується, ProFTPD,0
+proftpd_conf=Шлях до файлу настроювання ProFTPD,0
+ftpusers=Шлях до файлу ftpusers,0
+start_cmd=Команда запуску ProFTPD,3,Автоматично
+pid_file=Шлях до файлу PID ProFTPD,0
+line2=Системні параметри,11
+

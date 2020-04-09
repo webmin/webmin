@@ -1,0 +1,14 @@
+inetd_conf_file=Inetd配置文件,0
+extended_inetd=扩展inetd支持,1,0-无,1-基本,2-增强
+show_empty=显示没有程序的服务,1,1-是,0-否
+rpc_inetd=Inetd支持RPC程序,1,1-是,0-否
+ipv6=支持 IPv6 服务,1,1-是,0-否
+sort_mode=排序服务和程序按照,1,0-按照文件,1-名称,2-指定
+services_file=网络服务文件,0
+rpc_file=RPC服务文件,0
+protocols_file=网络协议文件,0
+rpc_protocols=RPC子协议,0
+restart_command=重新启动inetd的命令,0
+tcpd_path=tcpd的完整路径,3
+allow_file=tcpd allow 文件的完整路径,3
+deny_file=tcpd deny 文件的完整路径,3

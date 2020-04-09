@@ -1,6 +1,6 @@
-line1=Konfigur√°lhat√≥ be√°ll√≠t√°sok,11
-default_mode=Alap√©rtelmezett processz list√°z√°si st√≠lus,4,last-Legut√≥bbi,tree-Processz-fa,user-Felhaszn√°l√≥ szerint,size-M√©ret szerint,cpu-CPU-kihaszn√°lts√°g szerint,search-Keres√©s,run-Futtat√°s
-cut_length=A parancs lev√°g√°s√°nak hossza,3,V√©gtelen
-trace_java=Rendszer h√≠v√°si nyomoz√°s megmutat√°sa,1,1-Java applettel,0-Sz√∂vegesen
-line2=Rendszer be√°ll√≠t√°sok,11
-ps_style=PS parancs kimenet√©nek st√≠lusa,1,sysv-SYSV,linux-Linux,hpux-HPUX,freebsd-FreeBSD,macos-MacOS
+line1=Konfigur·lhatÛ be·llÌt·sok,11
+default_mode=AlapÈrtelmezett processz list·z·si stÌlus,4,last-LegutÛbbi,tree-Processz-fa,user-Felhaszn·lÛ szerint,size-MÈret szerint,cpu-CPU-kihaszn·lts·g szerint,search-KeresÈs,run-Futtat·s
+cut_length=A parancs lev·g·s·nak hossza,3,VÈgtelen
+trace_java=Rendszer hÌv·si nyomoz·s megmutat·sa,1,1-Java applettel,0-Szˆvegesen
+line2=Rendszer be·llÌt·sok,11
+ps_style=PS parancs kimenetÈnek stÌlusa,1,sysv-SYSV,linux-Linux,hpux-HPUX,freebsd-FreeBSD,macos-MacOS

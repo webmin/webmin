@@ -1,13 +1,13 @@
 line1=Konfigurerbare indstillinger,11
 lease_sort=Sorter lease efter,1,0-Orden i fil,1-IP adresse,2-Hostnavn
 hostnet_list=Vis subnet og hosts som,1,0-Ikoner,1-Liste
-dhcpd_nocols=Ikoner i række,0
+dhcpd_nocols=Ikoner i r&#230;kke,0
 lease_tz=Vis lease tider i,1,0-GMT,1-Lokal tid
 show_ip=Vis IP adresser for hosts?,1,1-Ja,0-Nej
 show_mac=Vis MAC adresser for hosts?,1,1-Ja,0-Nej
-group_name=Vis gruppenavne som,1,1-<tt>domæne-navne</tt> indstilling,0-Navn eller medlemsantal,2-Beskrivelse
+group_name=Vis gruppenavne som,1,1-<tt>dom&#230;ne&#45;navne</tt> indstilling,0-Navn eller medlemsantal,2-Beskrivelse
 desc_name=Vis andre objektbeskrivelse istedet for navne?,1,1-Ja,0-Nej
-display_max=Maksimalt antal hosts og subnet der skal vises,3,Ubegrænset
+display_max=Maksimalt antal hosts og subnet der skal vises,3,Ubegr&#230;nset
 line2=Systemkonfiguration
 dhcpd_conf=DHCP server config fil,0
 dhcpd_path=DHCP server eksekverbar,0

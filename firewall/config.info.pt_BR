@@ -1,12 +1,14 @@
-line0=Opções configuráveis,11
-view_condition=Mostrar condições na lista de regras?,1,1-Sim,0-Não
-view_comment=Mostrar comentário na lista de regras?,1,1-Sim,0-Não
-comment_mod=Armazenar comentários como,1,0-# comentários em arquivo salvo,1--- opção de comentário
-cluster_mode=Atualizar cluster de servidores,1,0-Sempre que uma alteração é feita,1-Quando uma configuração for aplicada
+line0=Op&#231;&#245;es configur&#225;veis,11
+view_condition=Mostrar condi&#231;&#245;es na lista de regras?,1,1-Sim,0-N&#227;o
+view_comment=Mostrar coment&#225;rio na lista de regras?,1,1-Sim,0-N&#227;o
+comment_mod=Armazenar coment&#225;rios como,1,0-# coment&#225;rios em arquivo salvo,1-&#45;&#45; op&#231;&#227;o de coment&#225;rio
+cluster_mode=Atualizar cluster de servidores,1,0-Sempre que uma altera&#231;&#227;o &#233; feita,1-Quando uma configura&#231;&#227;o for aplicada
 before_cmd=Comando a ser executado antes de alterar as regras,3,Nenhum
-after_cmd=Comando a ser executado após alterar as regras,3,Nenhum
-before_apply_cmd=Comando a ser executado antes de aplicar as configurações,3,Nenhum
-after_apply_cmd=Comando a ser executado após aplicar as configurações,3,Nenhum
-direct=Alterar regras de firewall diretamente ao invés de arquivo salvo?,1,1-Sim,0-Não
+after_cmd=Comando a ser executado ap&#243;s alterar as regras,3,Nenhum
+before_apply_cmd=Comando a ser executado antes de aplicar as configura&#231;&#245;es,3,Nenhum
+after_apply_cmd=Comando a ser executado ap&#243;s aplicar as configura&#231;&#245;es,3,Nenhum
+line1=Configura&#231;&#245;es do Sistema,11
+direct=Alterar regras de firewall diretamente ao inv&#233;s de arquivo salvo?,1,1-Sim,0-N&#227;o
 save_file=File to save/edit <tt>IPv4</tt> rules,3,Use operating system or Webmin default
 save_file6=File to save/edit <tt>IPv6</tt> rules,3,Use operating system or Webmin default
+

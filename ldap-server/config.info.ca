@@ -1,19 +1,21 @@
 line1=Opcions del servidor LDAP,11
 server=Nom de host del servidor LDAP,3,Aquest sistema,Sistema remot
-port=Port del servidor LDAP,3,Detecta'l autom√†ticament
-user=Usuari del servidor LDAP,3,Detecta'l autom√†ticament
-pass=Contrasenya del servidor LDAP,3,Detecta-la autom√†ticament
-ssl=Utilitza xifratge TLS amb el servidor LDAP,1,-Detecta-ho autom√†ticament,1-S√≠,2-S√≠ TLS,0-No
-slapd=Cam√≠ complet del programa servidor OpenLDAP,8
-config_file=Fitxer o directori de configuraci√≥ OpenLDAP,8
+port=Port del servidor LDAP,3,Detecta'l autom‡ticament
+user=Usuari del servidor LDAP,3,Detecta'l autom‡ticament
+pass=Contrasenya del servidor LDAP,3,Detecta-la autom‡ticament
+ssl=Utilitza xifratge TLS amb el servidor LDAP,1,-Detecta-ho autom‡ticament,1-SÌ,2-SÌ TLS,0-No
+slapd=CamÌ complet del programa servidor OpenLDAP,8
+config_file=Fitxer o directori de configuraciÛ OpenLDAP,8
 schema_dir=Directori d'esquemes OpenLDAP,7
 ldap_user=Usuari sota el qual s'executa OpenLDAP,5
-init_name=Nom del script d'inici d'OpenLDAP,3,Igual que el nom del m√≤dul
+init_name=Nom del script d'inici d'OpenLDAP,3,Igual que el nom del mÚdul
 data_dir=Directori de la base de dades OpenLDAP,3,Desconegut
-line2=Configuraci√≥ de la interf√≠cie d'usuari,11
-browse_max=Nombre m√†xim de subobjectes a mostrar,3,Il¬∑limitat
+
+line2=ConfiguraciÛ de la interfÌcie d'usuari,11
+browse_max=Nombre m‡xim de subobjectes a mostrar,3,Il∑limitat
 attr_count=Nombre de camps d'atribut dels nous objectes,0
+
 line3=Ordres del servidor LDAP,11
 start_cmd=Ordre per iniciar el servidor LDAP,3,Executa <tt>slapd</tt>
-stop_cmd=Ordre per aturar el servidor LDAP,3,Mata el proc√©s
-apply_cmd=Ordre per aplicar la configuraci√≥,3,Atura i reinicia
+stop_cmd=Ordre per aturar el servidor LDAP,3,Mata el procÈs
+apply_cmd=Ordre per aplicar la configuraciÛ,3,Atura i reinicia

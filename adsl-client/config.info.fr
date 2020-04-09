@@ -1,8 +1,8 @@
-line2=Configuration du système,11
+line2=Configuration du syst&#232;me,11
 pppoe_conf=Fichier de configuration PPPOE ADSL,0
-conf_style=Format du fichier de configuration,1,0-config RP-PPPoE standard,1-fichier réseau Redhat
+conf_style=Format du fichier de configuration,1,0-config RP-PPPoE standard,1-fichier r&#233;seau Redhat
 pap_file=Fichier des comptes PPP,0
-pppoe_cmd=Chemin d'accès complet à la commande pppoe,0
+pppoe_cmd=Chemin d'acc&#232;s complet &#224; la commande pppoe,0
 start_cmd=Commande pour invoquer la connexion ADSL,0
-stop_cmd=Commande pour arrêter la connexion ADSL,0
-status_cmd=Commande pour obtenir l'état de la connexion ADSL,0
+stop_cmd=Commande pour arr&#234;ter la connexion ADSL,0
+status_cmd=Commande pour obtenir l'&#233;tat de la connexion ADSL,0

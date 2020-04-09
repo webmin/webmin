@@ -1,2 +1,2 @@
-metastat_path=PeÅ‚na Å›cieÅ¼ka do <tt>metastat</tt>,0
-metadb_path=PeÅ‚na Å›cieÅ¼ka do <tt>metadb</tt>,0
+metastat_path=Pe³na ¶cie¿ka do <tt>metastat</tt>,0
+metadb_path=Pe³na ¶cie¿ka do <tt>metadb</tt>,0

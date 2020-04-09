@@ -1,0 +1,8 @@
+squid_conf=到 Squid 組態檔的完整路徑,0
+squid_start=啟動 Squid 的命令,3,自動
+squid_stop=停止 Squid 的命令,3,自動
+squid_path=Squid 執行檔,0
+pid_file=到 PID 檔案的的完整路徑,0
+cache_dir=到 Squid 快取目錄的完整路徑,0
+cachemgr_path=Squid 的 cachemgr.cgi 執行檔,0
+log_dir=到 Squid 紀錄目錄的完整路徑,0

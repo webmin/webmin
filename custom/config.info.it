@@ -1,6 +1,7 @@
+line1=Opzioni configurabili,11
 display_mode=La pagina principale visualizza,1,0-Tutti i comandi e i parametri,1-Collegamenti ai comandi
 width=Larghezza della finestra del file editor,3,Predefinita (80 caratteri)
 height=Altezza della finestra del file editor,3,Predefinita (20 caratteri)
-wrap=Modalità di ritorno a capo del file editor,1,-Predefinita (Soft),hard-Hard,off-Disabilitata
+wrap=Modalit&#224; di ritorno a capo del file editor,1,-Predefinita (Soft),hard-Hard,off-Disabilitata
 columns=Numero di colonne in cui visualizzare i comandi,1,2-2,1-1
 sort=Elenca comandi in ordine di,1,desc-Nome comando,html-Descrizione,-Comando di ordinamento

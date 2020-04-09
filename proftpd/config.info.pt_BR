@@ -1,12 +1,24 @@
-line1=Opções configuráveis,11
-test_config=Testar configurações do arquivo antes de aplicar alterações?,1,1-Sim,0-Não
-test_manual=Testar configurações do arquivo após de aplicar alterações?,1,1-Sim,0-Não
-test_always=Testar configurações do arquivo após outras alterações?,1,1-Sim,0-Não
-line2=Configuração do sistema,11
-proftpd_conf=Caminho para o arquivo de configuração do ProFTPD,0
-add_file=Arquivo para adicionar novos hosts virtuais,3,Último arquivo na configuração
-proftpd_path=Caminho para o executável do ProFTPD,0
+line1=Op&#231;&#245;es configur&#225;veis,11
+
+test_config=Testar configura&#231;&#245;es do arquivo antes de aplicar altera&#231;&#245;es?,1,1-Sim,0-N&#227;o
+
+test_manual=Testar configura&#231;&#245;es do arquivo ap&#243;s de aplicar altera&#231;&#245;es?,1,1-Sim,0-N&#227;o
+
+test_always=Testar configura&#231;&#245;es do arquivo ap&#243;s outras altera&#231;&#245;es?,1,1-Sim,0-N&#227;o
+
+line2=Configura&#231;&#227;o do sistema,11
+
+proftpd_conf=Caminho para o arquivo de configura&#231;&#227;o do ProFTPD,0
+
+add_file=Arquivo para adicionar novos hosts virtuais,3,&#218;ltimo arquivo na configura&#231;&#227;o
+
+proftpd_path=Caminho para o execut&#225;vel do ProFTPD,0
+
 pid_file=Caminho para o arquivo PID do ProFTPD,0
+
 ftpusers=Caminho para o arquivo ftpusers,0
-start_cmd=Comando para iniciar o ProFTPD,3,Automático
-stop_cmd=Comando para parar o ProFTPD,3,Só matar o processo
+
+start_cmd=Comando para iniciar o ProFTPD,3,Autom&#225;tico
+
+stop_cmd=Comando para parar o ProFTPD,3,S&#243; matar o processo
+

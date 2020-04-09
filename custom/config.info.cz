@@ -1,0 +1,7 @@
+line1=Konfigurovatelné volby,11
+display_mode=Hlavní stránka zobrazuje,1,0-V¹echny pøíkazy a parametry,1-Linky k pøíkazùm
+width=¹íøka pro okno editoru souboru,3,Výchozí (80 znakù)
+height=Vý¹ka pro okno editoru souboru,3,Výchozí (20 znakù)
+wrap=Mód pro zalamování øádku v editoru souboru,1,-Výchozí (Lehké),hard-Tì¾ké,off-Vypnuto
+columns=Poèet sloupcù pro zobrazování pøíkazù,1,2-2,1-1
+line2=Sysémová konfigurace,11

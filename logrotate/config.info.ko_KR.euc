@@ -1,0 +1,6 @@
+line1=설정 옵션,11
+sort_mode=로그 파일 정렬,1,1-로그 파일 이름,0-설정 파일 순
+add_file=새 로그 전환 섹션 추가,3,주 설정 파일
+line2=시스템 설정,11
+logrotate_conf=logrotate 설정 파일 경로,0
+logrotate=logrotate 프로그램 경로,0

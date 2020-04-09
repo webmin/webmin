@@ -1,0 +1,5 @@
+dhcpd_conf=DHCP服务器配置文件,0
+dhcpd_path=DHCP服务器执行文件,0
+interfaces=运行DHCP界面,3,自动
+pid_file=DHCP服务器pid文件的路径,0
+lease_file=DHCP服务器租赁文件,0

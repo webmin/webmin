@@ -1,9 +1,9 @@
 line1=Opcions configurables,11
 show_list=Mostra els dominis com a,1,0-Icones,1-Llista
-soa_style=Estil del nÃºmero de sÃ¨rie,1,0-NÃºmero incremental,1-Basat en data (AAAAMMDDnn)
-records_order=Mostra els registres per,1,1-Ordre alfabÃ¨tic,0-Ordre d'introducciÃ³
-updserial_on=Gestiona els nÃºmeros de sÃ¨rie globalment,1,0-No,1-SÃ­
-line2=ConfiguraciÃ³ del sistema,11
-named_boot_file=Fitxer de configuraciÃ³ primÃ ria,0
-named_pid_file=Fitxer d'ID de procÃ©s,3,Cap
-named_pathname=CamÃ­ complet de named,0
+soa_style=Estil del número de sèrie,1,0-Número incremental,1-Basat en data (AAAAMMDDnn)
+records_order=Mostra els registres per,1,1-Ordre alfabètic,0-Ordre d'introducció
+updserial_on=Gestiona els números de sèrie globalment,1,0-No,1-Sí
+line2=Configuració del sistema,11
+named_boot_file=Fitxer de configuració primària,0
+named_pid_file=Fitxer d'ID de procés,3,Cap
+named_pathname=Camí complet de named,0

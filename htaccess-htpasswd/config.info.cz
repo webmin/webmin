@@ -1,0 +1,8 @@
+htaccess=Název souboru voleb Apache,0
+htpasswd=Název souboru pro u¾ivatele,0
+htgroups=Název souboru pro skupiny,0
+sort=Tøídit u¾ivatele podle,1,1-U¾ivatelského jména,0-Poøadí v souboru
+md5=Nabídnout volbu pro MD5 ¹ifrování?,1,1-Ano,0-Ne
+sha1=Nabídnout volbu pro SHA1 ¹ifrování?,1,1-Ano,0-Ne
+digest=Nabídnout volbu pro digest ¹ifrování?,1,1-Ano,0-Ne
+extra_directives=Extra directivy do include v .htaccess,9,0,0,\t

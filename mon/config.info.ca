@@ -1,8 +1,8 @@
-line2=ConfiguraciÃ³ del sistema,11
-pid_file=CamÃ­ complet del fitxer de PID de MON,0
-cfbasedir=CamÃ­ complet on estan allotjats tots els fitxers de configuraciÃ³,0
-mon_cgi=CamÃ­ complet del programa cgi de MON,0
-monshow=CamÃ­ complet del programa monshow,0
+line2=Configuració del sistema,11
+pid_file=Camí complet del fitxer de PID de MON,0
+cfbasedir=Camí complet on estan allotjats tots els fitxers de configuració,0
+mon_cgi=Camí complet del programa cgi de MON,0
+monshow=Camí complet del programa monshow,0
 start_cmd=Ordre per iniciar MON,0
-stop_cmd=Ordre per aturar MON,3,Mata el procÃ©s
+stop_cmd=Ordre per aturar MON,3,Mata el procés
 restart_cmd=Ordre per reiniciar MON,3,Envia el senyal HUP

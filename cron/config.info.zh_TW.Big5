@@ -1,0 +1,13 @@
+cron_dir=定時執行表格檔 (crontab) 路徑,0
+cron_get_command=讀取使用者定時執行工作的指令,0
+cron_edit_command=編輯使用者定時執行工作的指令,0
+cron_copy_command=接受使用者由標準輸入輸入定時執行工作的指令,0
+cron_delete_command=刪除使用者定時執行工作的指令,0
+cron_input=定時執行是否支援輸入到定時執行工作?,1,1-是,0-否
+cron_allow_file=允許的使用者名稱列表檔案,0
+cron_deny_file=拒絕的使用者名稱列表檔案,0
+cron_deny_all=不在任何列表中的使用者的權限,1,0-拒絕全部,1-拒絕 (除了root 以外),2-允許全部
+vixie_cron=是否支援 Vixie 的定時執行擴充?,1,1-是,0-否
+system_crontab=到 Vixie 定時執行系統的表格檔路徑,0
+cronfiles_dir=到額外定時執行檔案的路徑,3,None
+run_parts=執行部分的指令,0

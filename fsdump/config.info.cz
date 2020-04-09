@@ -1,0 +1,6 @@
+date_subs=Vytvoøit <tt>strftime</tt> substituce cílù pro zálohování?,1,1-ano,0-ne
+smtp_server=Odesílat mail pøes SMTP server,3,Lokální spou¹tìè Sendmailu
+run_mode=Spou¹tìt zálohování v,1,0-Popøedí,1-Pozadí
+always_tar=Pøi zálohování v¾dy pou¾ívat formát TAR?,1,1-Ano,0-Ne
+error_email=Poslat zálohovací mail,1,0-V¾dy,1-Jen v pøípadì chyby
+simple_sched=Formát pro plánovaè,1,1-Jednoduchý,0-Komplexní

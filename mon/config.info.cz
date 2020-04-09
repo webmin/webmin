@@ -1,0 +1,7 @@
+line2=Konfigurace systému,11
+pid_file=Úplná cesta MON pid souboru,0
+cfbasedir=Úplná cesta ke v¹em ulo¾eným kongiguraèním souborùm (jako mon.cf,auth.cf apod...),0
+mon_cgi=Úplná cesta k MON cgi programu,0
+start_cmd=Pøíkaz pro spu¹tìní MON,0
+stop_cmd=Pøíkaz pro ukonèení MON,3,Zabít proces
+restart_cmd=Pøíkaz pro restartování MON,3,Poslat HUP signál

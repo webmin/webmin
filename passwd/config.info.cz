@@ -1,0 +1,4 @@
+max_users=Nejvy¹¹í poèet zobrazených u¾ivatelù,0
+input_type=Typ výbìru u¾ivatele,1,1-Seznam polo¾ek,0-Textové pole
+sort_mode=Setøídit u¾ivatele podle,1,0-Poøadí v souboru,1-U¾ivatelského jména
+passwd_cmd=Pøíkaz pro zmìnu hesla,3,Zmìnit pøímo systémové soubory

@@ -1,10 +1,10 @@
-print_style=A¬†nyomtat√≥alrendszer fajt√°ja,1,solaris-Solaris,linux-Linux,freebsd-FreeBSD,hpux-HPUX,lprng-LPRng,unixware-UnixWare
-driver_style=A nyomtat√≥meghajt√≥ fajt√°ja,1,webmin-Webmin,caldera-Caldera,redhat-Redhat,hpux-HPUX,suse-SuSE
-printcap_file=A nyomtat√≥k list√°j√°t tartalmaz√≥ file,3,Nincs
-model_path=Az illeszt≈ëprogramok katal√≥gusa,3,Nincs
+print_style=A&nbsp;nyomtatÛalrendszer fajt·ja,1,solaris-Solaris,linux-Linux,freebsd-FreeBSD,hpux-HPUX,lprng-LPRng,unixware-UnixWare
+driver_style=A nyomtatÛmeghajtÛ fajt·ja,1,webmin-Webmin,caldera-Caldera,redhat-Redhat,hpux-HPUX,suse-SuSE
+printcap_file=A nyomtatÛk list·j·t tartalmazÛ file,3,Nincs
+model_path=Az illesztıprogramok katalÛgusa,3,Nincs
 smbclient_path=Az <tt>smbclient</tt> program,3,Nincs
 gs_path=A <tt>ghostscript</tt> program,3,Nincs
-gs_fontpath=A Ghostscript fontok katal√≥gusa,3,Szok√°sos
-gs_lib=A Ghostscript k√∂nyvt√°rak katal√≥gusa,3,Szok√°sos
+gs_fontpath=A Ghostscript fontok katalÛgusa,3,Szok·sos
+gs_lib=A Ghostscript kˆnyvt·rak katalÛgusa,3,Szok·sos
 hpnp_path=A <tt>hpnp</tt> program,3,Nincs
-show_status=A nyomtat√≥ √°llapota megjelenjen a f≈ët√°bl√°zatban?,1,1-Igen,0-Nem
+show_status=A nyomtatÛ ·llapota megjelenjen a fıt·bl·zatban?,1,1-Igen,0-Nem

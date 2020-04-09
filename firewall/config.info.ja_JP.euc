@@ -1,0 +1,6 @@
+direct=保存ファイルの替わりに直接ファイヤウォールルールを編集する,1,1-はい,0-いいえ
+view_comment=コメントを表示する,1,1-はい,0-いいえ
+view_condition=状態を表示する,1,1-はい,0-いいえ
+save_file=File to save/edit <tt>IPv4</tt> rules,3,Use operating system or Webmin default
+save_file6=File to save/edit <tt>IPv6</tt> rules,3,Use operating system or Webmin default
+

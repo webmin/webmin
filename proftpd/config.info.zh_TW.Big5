@@ -1,0 +1,10 @@
+line1=組態選項,11
+test_config=套用變更前測試組態檔?,1,1-是,0-否
+test_manual=手動變更後測試組態檔?,1,1-是,0-否
+test_always=其它變更後測試組態檔?,1,1-是,0-否
+line2=系統組態,11
+proftpd_conf=ProFTPD組態檔案路徑,0
+proftpd_path=ProFTPD 執行檔案路徑
+pid_file=ProFTPD PID 檔案路徑,0
+ftpusers=ftp使用者檔案路徑,0
+start_cmd=啟動ProFTPD指令,3,自動

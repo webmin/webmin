@@ -1,6 +1,6 @@
-line1=VoliteÄ¾nÃ© moÅ¾nosti,11
-sort_mode=TriediÅ¥ sÃºbory zÃ¡znamov podÄ¾a,1,1-Mena sÃºboru zÃ¡znamov,0-Poradia v konfiguraÄnom sÃºbore
-add_file=PridaÅ¥ novÃº sekciu pre logrotate,3,PrimÃ¡rny konfiguraÄnÃ½ sÃºbor
-line2=SystÃ©movÃ© nastavenia,11
-logrotate_conf=Cesta ku konfiguraÄnÃ©mu sÃºboru programu logrotate,0
+line1=Voliteµné mo¾nosti,11
+sort_mode=Triedi» súbory záznamov podµa,1,1-Mena súboru záznamov,0-Poradia v konfiguraènom súbore
+add_file=Prida» novú sekciu pre logrotate,3,Primárny konfiguraènı súbor
+line2=Systémové nastavenia,11
+logrotate_conf=Cesta ku konfiguraènému súboru programu logrotate,0
 logrotate=Cesta k programu logrotate,0

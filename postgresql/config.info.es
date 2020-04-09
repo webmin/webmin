@@ -1,11 +1,12 @@
-login=Login de administraciÃ³n,0
-pass=Clave de acceso de administraciÃ³n,0
+login=Login de administración,0
+pass=Clave de acceso de administración,0
 psql=Trayectoria a comando psql,0
 plib=Trayectoria a bibliotecas compartidas de PostgreSQL,3,No son necesarias
 basedb=Base de datos inicial de PostgreSQL,0
 start_cmd=Comando para arrancar PostgreSQL,0
 stop_cmd=Comando para parar PostgreSQL,3,Matar proceso
 pid_file=Trayectoria a archivo PID del jefe de estafeta de correos,0
-perpage=NÃºmero de filas a mostrar por pÃ¡gina,0
-host=MÃ¡quina PostgreSQL a conectarse,3,Local
-nodbi=Â¿Uso DBI para conectar si estÃ¡ disponible?,1,0-SÃ­,1-No
+perpage=Número de filas a mostrar por página,0
+host=Máquina PostgreSQL a conectarse,3,Local
+unix=Usuario de Unix como el que ejecutar los comandos de PostgreSQL,3,root
+nodbi=¿Uso DBI para conectar si está disponible?,1,0-Sí,1-No

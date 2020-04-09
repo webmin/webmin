@@ -1,4 +1,4 @@
-max_users=GÃ¶sterilecek maksimum kullanÄ±cÄ± sayÄ±sÄ±,0
-input_type=KullanÄ±cÄ± seÃ§im tipi,1,1-Liste kutusu,0-Metin alanÄ±
-sort_mode=KullanÄ±cÄ±larÄ± sÄ±ralama biÃ§imi,1,0-Dosyadaki sÄ±raya gÃ¶re,1-KullanÄ±cÄ±ya gÃ¶re
-passwd_cmd=Parola deÄŸiÅŸtirme komutu,1,Sistem dosyalarÄ±nÄ± doÄŸrudan gÃ¼ncelle
+max_users=Gösterilecek maksimum kullanıcı sayısı,0
+input_type=Kullanıcı seçim tipi,1,1-Liste kutusu,0-Metin alanı
+sort_mode=Kullanıcıları sıralama biçimi,1,0-Dosyadaki sıraya göre,1-Kullanıcıya göre
+passwd_cmd=Parola değiştirme komutu,1,Sistem dosyalarını doğrudan güncelle

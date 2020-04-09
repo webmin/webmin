@@ -1,0 +1,4 @@
+standard_url=URL seznamu standardních modulù,3,Na www.webmin.com
+third_url=URL seznamu modulù tøetích stran,3,Na www.webmin.com
+cron_mode=Zobrazit aktualizaèní èasy jako,1,0-Jednoduché rozhraní,1-Výbìr ¹asu jako u Cronu
+osdn=Vlo¾it seznam Webmin OSDN zrcadel webù?,1,1-Ano,0-Ne

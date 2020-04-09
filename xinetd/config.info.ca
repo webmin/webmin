@@ -1,7 +1,7 @@
-line2=ConfiguraciÃ³ del sistema,11
-xinetd_conf=Fitxer de configuraciÃ³ de Xinetd,0
+line2=Configuració del sistema,11
+xinetd_conf=Fitxer de configuració de Xinetd,0
 protocols_file=Fitxer de protocols de xarxa,0
-pid_file=CamÃ­ del fitxer de PID de Xinetd,3,Cap (busca el procÃ©s en lloc seu)
+pid_file=Camí del fitxer de PID de Xinetd,3,Cap (busca el procés en lloc seu)
 start_cmd=Ordre per iniciar xinetd,0
 add_dir=Afegeix els nous serveis a,15,add_dir
-lookup_servs=Consulta els nÃºmeros de port a la pÃ gina principal,1,1-SÃ­,0-No
+lookup_servs=Consulta els números de port a la pàgina principal,1,1-Sí,0-No

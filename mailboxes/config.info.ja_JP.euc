@@ -1,0 +1,77 @@
+line0=設定可能なオプション,11
+wrap_width=メール本文の折り返し桁,0,6
+perpage=ページに表示するメッセージ,0,6
+track_read=既読/未読を保持します,1,1-はい,0-いいえ
+show_to=メールボックスにTo:アドレスを表示しますか?,1,1-はい,0-いいえ
+max_records=表示する最大ユーザ数,0,6
+top_buttons=上に表示するボタン,1,2-メールボックスとメール,1-メールボックスのみ,0-なし
+arrows=下に表示するページャの矢印,1,2-メールボックスとメール,1-メールボックスのみ,0-なし
+show_delall=メールボックス全体を削除するボタンを表示しますか?,1,1-はい,0-いいえ
+show_size=ユーザ表示モード,1,0-ユーザ名のみ,1-ユーザ名とサイズ,2-すべて詳細に
+show_size_below=&nbsp; &nbsp; &nbsp; &nbsp;ユーザ名とサイズ - どこにサイズを表示しますか,1,0-ユーザ名の右側,1-ユーザ名の下
+column_count=ユーザ名を表示する桁数,1,3-3,4-4,5-5,6-6,7-7,8-8,9-9
+ignore_users=無視するユーザ名(表示しません),15,userIgnoreList
+ignore_users_enabled=&nbsp; &nbsp; &nbsp; &nbsp; 無視リスト状態,1,1-有効,0-無効
+show_count=inboxにメッセージ数を表示しますか?,1,1-はい,0-いいえ
+show_sent=送信済みフォルダにメッセージ数を表示しますか?,1,1-はい,0-いいえ
+sort_mode=メールボックスの整列,1,2-サイズ,1-ユーザ名,0-パスワードファイルの記述順
+show_mail=Only show users who have mail?,1,1-はい,0-いいえ
+size_mode=サイズにすべてのフォルダを含みますか?,1,1-はい,0-いいえ (最初のフォルダのみ)
+fwd_mode=メッセージを転送する際に引用形式にしますか?,1,0-はい,1-いいえ
+delete_warn=削除する前に確認しますか?,10,y-はい,n-いいえ,mboxファイルが以下より大きい場合
+view_html=メッセージ本文を以下の形式で表示,4,0-常にテキスト,1-できればテキスト、そうでなければHTML,2-できればHTML、そうでなければテキスト,3-HTMLをテキストに変換
+html_edit=作成時にHTMLエディタを使用しますか?,1,2-常に,1-HTMLメールに返答をする際に,0-使用しない
+html_quote=HTML引用モード,1,1-&lt;hr&gt;以下にメッセージ,0-&lt;blockquote&gt;内にメッセージ
+check_mod=削除するときにメールボックスに変更がないかどうかチェックしますか?,1,1-はい,0-いいえ
+log_read=メールを読んだことをWebminアクションログに記録しますか?,1,1-はい,0-いいえ
+bcc_to=Bcc:で送る宛先,0
+sig_file=署名ファイル,10,*-なし,.signature-~/.signature,別のファイル
+show_body=メッセージ本文を一覧でプレビューしますか?,1,1-はい,0-いいえ
+open_mode=メッセージを以下で開く,1,1-新しいウィンドウ,0-リストウィンドウ
+link_mode=リンクを以下で開く,1,1-新しいウィンドウ,0-同じウィンドウ
+download=常にダウンロードをする添付ファイルのMIMEタイプ,9,20,4,\t
+date_fmt=メール一覧の日付フォーマット,1,dmy-DD/MM/YYYY,mdy-MM/DD/YYYY,ymd-YYYY/MM/DD
+date_tz=タイムゾーンを日付に表示する,3,システムのデフォルト
+show_unread=未読メッセージ数を表示しますか?,1,2-はい,0-いいえ
+
+line3=Spam 設定,11
+spam_buttons=Spam報告ボタンを表示する場所,2,list-メールボックス,mail-メッセージ
+spam_del=Spam報告をしたら削除しますか?,1,1-はい,0-いいえ
+spam_report=Spam報告に以下を使う,1,sa_learn-sa&#45;learn --spam,spamassassin-spamassasin -r,-自動的に決定
+
+line3.5=From アドレス設定,11
+from_addr=手動でメールを送信する際に使うFrom:アドレス,3,メールボックスのユーザ名から
+webmin_from=Webminがメールを送信する際に使うFrom:アドレス,3,デフォルト (webmin@<i>yourhost</i>)
+from_virtualmin=VirtualminからFrom:アドレスを使いますか?,1,1-はい,0-いいえ
+from_dom=From: アドレスに使うドメイン,3,システムのホスト名
+
+line1=システム設定,11
+mail_system=インストールされているメールサーバ,4,1-Sendmail,0-Postfix,2-Qmail,4-Qmail+LDAP,5-Qmail+VPopMail,3-自動判別
+send_mode=メールの送信に以下を使う,10,-メールサーバプログラム,SMTPサーバ
+no_crlf=復帰コード( \r )を各行に追加しますか?,1,0-はい,1-いいえ
+smtp_user=メールサーバのSMTPユーザ名,3,なし
+smtp_pass=メールサーバのSMTPパスワード,3,なし
+smtp_auth=SMTP認証方式,4,-デフォルト,Cram-MD5-Cram&#45;MD5,Digest-MD5-Digest&#45;MD5,Plain-Plain,Login-Login
+auto=自動的にメールファイルの位置を検出しますか?,1,1-はい&#44; メールサーバに基づいて,0-いいえ&#44; 以下の設定を使います ..
+mail_dir=メールファイルのディレクトリ,3,なし
+mail_style=メールファイルディレクトリのスタイル,4,0-mail/username,1-mail/u/username,2-mail/u/us/username,3-mail/u/s/username
+mail_file=ホームディレクトリのメールファイル,3,なし
+mail_sub=ホームディレクトリのメールディレクトリ,3,なし
+mail_usermin=ホームディレクトリのUserminスタイルのサブディレクトリ,3,なし
+mailbox_user=ホームディレクトリのUsermin Read Mail設定ディレクトリ,3,なし
+
+line2=ユーザの同期,11
+sync_create=ユーザを作成したときにメールボックスを作りますか?,1,1-はい,0-いいえ
+sync_modify=ユーザ名を変更したときにメールボックスを変更しますか?,1,1-はい,0-いいえ
+sync_delete=ユーザを削除したときにメールボックスを削除しますか?,1,1-はい,0-いいえ
+sync_perms=新規メールボックスのパーミッション,0,4
+
+line4=VPOPMail 設定,11
+vpopmail_dir=VPOPMailの既定ディレクトリ,0
+
+line5=Qmail+LDAP 設定,11
+ldap_host=LDAP サーバ,0
+ldap_port=LDAP ポート,3,デフォルト
+ldap_login=LDAP サーバのアカウント,0
+ldap_pass=LDAP サーバのパスワード,0
+ldap_base=メールユーザのBASE,0

@@ -1,2 +1,2 @@
 date_subs=Effectuer une substitution <tt>strftime</tt> des destinations des sauvegardes?,1,1-Oui,0-Non
-from_addr=Champ From: des messages électroniques,3,webmin@nom_hote
+from_addr=Champ From: des messages &#233;lectroniques,3,webmin@nom_hote

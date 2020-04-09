@@ -1,6 +1,6 @@
-line1=YapÄ±landÄ±rÄ±labilir seÃ§enekler,11
-default_mode=Ã–ntanÄ±mlÄ± iÅŸlem listeleme stili,4,son-Son seÃ§ilen,aÄŸaÃ§-Ä°ÅŸlem aÄŸacÄ±,kullanÄ±cÄ±-KullanÄ±cÄ±ya gÃ¶re ,boyut-Boyuta gÃ¶re,iÅŸlemci-Ä°ÅŸlemci kullanÄ±mÄ±na gÃ¶re,arama-Arama formu,Ã§alÄ±ÅŸtÄ±r-Ã‡alÄ±ÅŸtÄ±rma formu
-cut_length=Komutlarda gÃ¶sterilecek maksimum karakter sayÄ±sÄ±,3,Limitsiz
-trace_java=Sistem Ã§aÄŸrÄ±sÄ± takibini ÅŸu ÅŸekilde gÃ¶ster,1,1-Java applet,0-Metin
-line2=Sistem yapÄ±landÄ±rmasÄ±,11
-ps_style=PS komutu Ã§Ä±ktÄ±sÄ± biÃ§imi,1,sysv-SYSV,linux-Linux,hpux-HPUX,freebsd-FreeBSD,macos-MacOS
+line1=Yapılandırılabilir seçenekler,11
+default_mode=Öntanımlı işlem listeleme stili,4,son-Son seçilen,ağaç-İşlem ağacı,kullanıcı-Kullanıcıya göre ,boyut-Boyuta göre,işlemci-İşlemci kullanımına göre,arama-Arama formu,çalıştır-Çalıştırma formu
+cut_length=Komutlarda gösterilecek maksimum karakter sayısı,3,Limitsiz
+trace_java=Sistem çağrısı takibini şu şekilde göster,1,1-Java applet,0-Metin
+line2=Sistem yapılandırması,11
+ps_style=PS komutu çıktısı biçimi,1,sysv-SYSV,linux-Linux,hpux-HPUX,freebsd-FreeBSD,macos-MacOS

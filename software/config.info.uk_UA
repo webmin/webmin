@@ -1,0 +1,3 @@
+package_system=Система керування пакетами,1,rpm-RPM,pkgadd-Solaris,hpux-HPUX,freebsd-FreeBSD,slackware-Slackware,debian-Debian,aix-AIX,emerge-Gentoo
+line2=Системні параметри,11
+

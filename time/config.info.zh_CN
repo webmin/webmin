@@ -1,0 +1,5 @@
+lease=允许系统时间和硬件时间延迟秒数,0
+timeserver=默认的时间服务器,3,无
+zonelink=时区文件,0
+zonetab=列出可能时区的文件,0
+zonedir=时区文件目录,0

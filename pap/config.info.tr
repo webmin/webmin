@@ -1,2 +1,3 @@
-pap_file=PAP parola dosyasÄ±,0
-encrypt_pass=Parola dosyasÄ±nda parolalar ÅŸifrelensin mi?,1,1-Evet,0-HayÄ±r
+pap_file=PAP parola dosyası,0
+encrypt_pass=Parola dosyasında parolalar şifrelensin mi?,1,1-Evet,0-Hayır
+

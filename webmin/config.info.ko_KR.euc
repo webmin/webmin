@@ -1,0 +1,4 @@
+standard_url=표준 모듈 리스트 URL,3,www.webmin.com
+third_url=third party 모듈 리스트 URL,3,www.webmin.com
+cron_mode=업데이트 시간 보기,1,0-간단한 인터페이스,1-Cron 시간 선택
+osdn=Webmin OSDN 미러 사이트의 리스트 받기?,1,1-Yes,0-No

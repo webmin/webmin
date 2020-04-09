@@ -1,0 +1,13 @@
+line1=설정 옵션,11
+index_status=리스트 출력 상태,1,1-현재 상태,0-최종 검사
+pager_cmd=문서로 메시지 전송을 위한 명령,3,없음
+refresh=페이지 갱신 주기,3,갱신 안함
+sort_mode=모티터 정렬,1,0-생성된 순,1-설명,2-호스트,3-최종 상태
+columns=서비스 테이블 컬럼,1,2-2,1-1
+output=다운시에 프로그램 실행 출력을 캡쳐,1,1-예,0-아니오
+subject_mode=이메일 제목 방식,1,0-새 스타일,1-이전 스타일
+pinger=핑 전송 명령,10,-내장 코드 사용,리눅스 또는 FreeBSD를 위한 리눅스 스타일 명령,다른 명령
+snmp_server=서버로 SNMP 트랩 전송,3,없음
+snmp_version=SNMP 프로토콜 버전,1,3-v3,2-v2,1-v1
+snmp_community=SNMP 커뮤니티,0
+snmp_trap=트랩을 위한 SNMP OID,0

@@ -1,0 +1,5 @@
+line2=시스템 설정,11
+pam_dir=PAM 설정 디렉토리
+ignore=PAM 디렉토리에서 무시할 파일,0
+lib_dirs=PAM 라이브러리 위치
+mod_equiv=동등한 PAM 모듈,0

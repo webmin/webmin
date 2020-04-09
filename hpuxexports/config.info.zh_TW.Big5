@@ -1,0 +1,3 @@
+exports_file=NFS 匯出檔案位置,0
+export_all_command=匯出所有目錄的指令,0
+unexport_all_command=取消匯出所有目錄的指令,0

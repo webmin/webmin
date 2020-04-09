@@ -1,0 +1,4 @@
+at_style=Тип системи,1,linux-Linux,solaris-Solaris,freebsd-FreeBSD,irix-Irix,macos-MacOS X,openserver-OpenServer
+at_dir=Каталог завдань,0
+line2=Системні параметри,11
+

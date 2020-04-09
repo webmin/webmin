@@ -1,2 +1,2 @@
-packages=Lista Ã¶ver CPAN-Perl-moduler,0
-cpan=Grund-URL fÃ¶r CPAN-moduler,0
+packages=Lista över CPAN-Perl-moduler,0
+cpan=Grund-URL för CPAN-moduler,0

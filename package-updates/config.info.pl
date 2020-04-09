@@ -1,1 +1,1 @@
-cache_time=IloÅ›Ä‡ godzin pamiÄ™ci podrÄ™cznej aktualizacji i dostÄ™pnych pakietÃ³w,3,Bez pamiÄ™ci podrÄ™cznej
+cache_time=Ilo¶æ godzin pamiêci podrêcznej aktualizacji i dostêpnych pakietów,3,Bez pamiêci podrêcznej

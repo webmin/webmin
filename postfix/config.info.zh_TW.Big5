@@ -1,0 +1,6 @@
+postfix_control_command=到 Postfix 控制指令的完整路徑,0
+postfix_config_command=到 Postfix 組態指令的完整路徑,0
+postfix_config_file=到 Postfix 組態檔的完整路徑,0
+postfix_aliases_table_command=到 Postfix 別名產生程式的完整路徑,0
+postfix_newaliases_command=到 &quot;newaliases&quot; (Sendmail 相容性) 命令的完整路徑,0
+postfix_lookup_table_command=到 Postfix 查詢表格管理指令 (`postmap') 的完整路徑,0

@@ -1,6 +1,7 @@
 dhcpd_conf=Fichier de configuration du serveur DHCP,0
-dhcpd_path=ExÃ©cutable du serveur DHCP,0
-pid_file=Chemin du fichier de numÃ©ro de processus du serveur DHCP,0
+dhcpd_path=Exécutable du serveur DHCP,0
+interfaces=Interfaces sur lequel s'exécute DHCP,3,Automatique
+pid_file=Chemin du fichier de numéro de processus du serveur DHCP,0
 lease_file=Fichier d'attribution DHCP,0
 line1=Options configurables,11
 lease_sort=Trier les baux par,1,0-Ordre dans le fichier,1-Adresse IP,2-Nom de poste

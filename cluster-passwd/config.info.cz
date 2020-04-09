@@ -1,0 +1,3 @@
+max_users=Maximální poèet zobrazených u¾ivatelù,0
+input_type=Typ pro výbìr u¾ivatelù,1,1-Seznam,0-Textové pole
+sort_mode=Tøídit u¾ivatele podle,1,0-Poøadí v souboru,1-U¾ivatelského jména

@@ -1,8 +1,8 @@
-hide_dot_files=Mostra els fitxers que comencen amb un punt,1,0-S√≠,1-No
+hide_dot_files=Mostra els fitxers que comencen amb un punt,1,0-SÌ,1-No
 iconsize=Mida dels botons a la barra d'eines,1,1-Petita,0-Gran amb etiquetes
-nocharset=Intenta utilitzar el joc de car√†cters apropiat,1,0-S√≠,1-No
-extract=Extreu els fitxers .class del JAR?,1,1-S√≠,0-No
-width=Amplada de les imatges escalades,3,Per defecte (300 p√≠xels)
+nocharset=Intenta utilitzar el joc de car‡cters apropiat,1,0-SÌ,1-No
+extract=Extreu els fitxers .class del JAR?,1,1-SÌ,0-No
+width=Amplada de les imatges escalades,3,Per defecte (300 pÌxels)
 fixed=Mida de la tipografia del text,3,Per defecte (12 punts)
 small_fixed=Mida de la tipografia dels botons,3,Per defecte (10 punts)
 force_text=Editor de fitxers HTML,1,1-Editor de text,0-Editor HTML

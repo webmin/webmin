@@ -1,0 +1,5 @@
+line1=설정 옵션,11
+includes=include 파일의 컨텐츠를 보겠습니까?<br>(파일 이름에 사용하는 변수가 없을 경우),1,1-예,0-아니오
+line2=시스템 설정,11
+procmailrc=시스템 rocmailrc 파일 경로,0
+procmail=procmail 프로그램 경로,0

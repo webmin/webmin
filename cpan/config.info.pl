@@ -1,9 +1,9 @@
 line1=Opcje konfiguracji,11
-refresh_days=Dni przed odÅ›wieÅ¼eniem listy moduÅ‚Ã³w CPAN,0,5
-save_partial=PominÄ…Ä‡ Å›ciÄ…ganie moduÅ‚u jeÅ¼eli instalacja nie powiedzie siÄ™?,1,1-Tak,0-Nie
-def_args=DomyÅ›lne argumenty dla Makefile.PL,0
-incpackages=DoÅ‚Ä…czyÄ‡ moduÅ‚y Perla z pakietÃ³w oprogramowania?,1,1-Tak,0-Nie
-incyum=ZainstalowaÄ‡ moduÅ‚y Perla z YUM lub APT jeÅ¼eli sÄ… dostÄ™pne?,1,1-Tak,0-Nie
+refresh_days=Dni przed od¶wie¿eniem listy modu³ów CPAN,0,5
+save_partial=Pomin±æ ¶ci±ganie modu³u je¿eli instalacja nie powiedzie siê?,1,1-Tak,0-Nie
+def_args=Domy¶lne argumenty dla Makefile.PL,0
+incpackages=Do³±czyæ modu³y Perla z pakietów oprogramowania?,1,1-Tak,0-Nie
+incyum=Zainstalowaæ modu³y Perla z YUM lub APT je¿eli s± dostêpne?,1,1-Tak,0-Nie
 line2=Konfiguracja systemu,11
-packages=Lista moduÅ‚Ã³w CPAN Perla,0
-cpan=Podstawowy URL moduÅ‚Ã³w CPAN,0
+packages=Lista modu³ów CPAN Perla,0
+cpan=Podstawowy URL modu³ów CPAN,0

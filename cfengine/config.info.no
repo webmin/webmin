@@ -6,5 +6,5 @@ cfrun=Sti til cfrun program,0
 cfrun_hosts=Sti til fil med tjenerinnstillinger,3,Automatisk
 cfd=Sti til cdf program,0
 cfd_conf=Sti til cfd.conf fil,3,Automatisk
-start_cmd=Kommando for å starte cfd,3,Bare kjør programmet
-stop_cmd=Kommando for å stoppe cfd,3,Bare stopp prosessen
+start_cmd=Kommando for &#229; starte cfd,3,Bare kj&#248;r programmet
+stop_cmd=Kommando for &#229; stoppe cfd,3,Bare stopp prosessen

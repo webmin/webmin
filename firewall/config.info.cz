@@ -1,0 +1,14 @@
+line0=Nastavitelné volby,11
+view_condition=Zobrazit podmínku v seznamu pravidel?,1,1-Ano,0-Ne
+view_comment=Zobrazit komentáø v seznamu pravidel?,1,1-Ano,0-Ne
+comment_mod=Uchovávat komentáøe jako,1,0-# komentáøe v ulo¾eném souboru,1-&#45;&#45;vylby komnetáøe
+cluster_mode=Aktualizovat sborník serverù,1.0-Kdykoliv pøi zmìnì,1-Pouze pøi uplatnìní konfigurace
+before_cmd=Pøíkaz&#44; který má být spu¹tìn pøed zmìnou pravidel,3,Nic
+after_cmd=Pøíkaz&#44; který má být spu¹tìn po zmìnì pravidel,3,Nic
+before_apply_cmd=Pøíkaz&#44; který má být spu¹tìn pøed uplatnìním konfigurace,3,Nic
+after_apply_cmd=Pøíkaz&#44; který má být spu¹tìn po uplatnìní konfigurace,3,Nic
+line1=Konfigurace systému,11
+direct=Pøímo editovat pravidla firewallu namísto ukládání souboru?,1,1-Ano,0-Ne
+save_file=File to save/edit <tt>IPv4</tt> rules,3,Use operating system or Webmin default
+save_file6=File to save/edit <tt>IPv6</tt> rules,3,Use operating system or Webmin default
+

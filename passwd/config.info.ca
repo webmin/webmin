@@ -1,4 +1,4 @@
-max_users=Nombre m√†xim d'usuaris a mostrar,0
-input_type=Tipus de selecci√≥ d'usuaris,1,1-Caixa de llista,0-Camp de text
+max_users=Nombre m‡xim d'usuaris a mostrar,0
+input_type=Tipus de selecciÛ d'usuaris,1,1-Caixa de llista,0-Camp de text
 sort_mode=Ordena els usuaris per,1,0-L'ordre del fitxer,1-Nom d'usuari
 passwd_cmd=Ordre per canviar la contrasenya,3,Actualitza directament els fitxers del sistema

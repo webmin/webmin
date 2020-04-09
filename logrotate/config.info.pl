@@ -1,6 +1,6 @@
 line1=Opcje konfiguracyjne,11
-sort_mode=Sortuj pliki log√≥w wed≈Çug,1,1-Nazwy,0-Kolejno≈õci w pliku konfiguracyjnym
-add_file=Dodaj nowe sekcje rotacji log√≥w do,3,G≈Ç√≥wnego pliku konfiguracyjnego
+sort_mode=Sortuj pliki logÛw wed≥ug,1,1-Nazwy,0-Kolejno∂ci w pliku konfiguracyjnym
+add_file=Dodaj nowe sekcje rotacji logÛw do,3,G≥Ûwnego pliku konfiguracyjnego
 line2=Konfiguracja systemu,11
-logrotate_conf=≈öcie≈ºka do pliku konfiguracyjnego logrotate,0
-logrotate=≈öcie≈ºka do programu logrotate,0
+logrotate_conf=¶cieøka do pliku konfiguracyjnego logrotate,0
+logrotate=¶cieøka do programu logrotate,0

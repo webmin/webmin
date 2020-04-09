@@ -1,5 +1,5 @@
-hosts_file=Plik z nazwami i adresami host√≥w <tt>hosts</tt>,0
-ipnodes_file=Plik z nazwami i adresami host√≥w <tt>hosts</tt> IPv6,0
-def_netmask=Domy≈õlna maska podsieci,0
-def_broadcast=Domy≈õlny adres rozg≈Çaszania,0
-def_mtu=Domy≈õlne MTU,0
+hosts_file=Plik z nazwami i adresami hostÛw <tt>hosts</tt>,0
+ipnodes_file=Plik z nazwami i adresami hostÛw <tt>hosts</tt> IPv6,0
+def_netmask=Domy∂lna maska podsieci,0
+def_broadcast=Domy∂lny adres rozg≥aszania,0
+def_mtu=Domy∂lne MTU,0

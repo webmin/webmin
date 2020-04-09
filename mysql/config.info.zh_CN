@@ -1,0 +1,9 @@
+mysqlshow=mysqlshow 命令的路径,0
+mysqladmin=mysqladmin 命令的路径,0
+mysql=mysql 命令的路径,0
+start_cmd=启动 mysql 服务的命令,0
+stop_cmd=停止 mysql 服务的命令,3,自动
+mysql_libs=共享库的目录路径,3,无
+login=管理员登录名,0
+pass=管理员口令,0
+perpage=每页显示的行数,0

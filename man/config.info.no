@@ -1,10 +1,10 @@
 line2=System konfigurasjon,11
-man_cmd=Kommando for å vise manualside,0
-man_cmd_sect=Kommando for å vise manualside fra en seksjon,0
-search_cmd=Kommando for å søke gjennom sider,0
+man_cmd=Kommando for &#229; vise manualside,0
+man_cmd_sect=Kommando for &#229; vise manualside fra en seksjon,0
+search_cmd=Kommando for &#229; s&#248;ke gjennom sider,0
 man_dir=Kataloger for manualsider (MANPATH),9,50,3,:
-list_cmd=Kommando for å vise manualsidens filsti,0
-list_cmd_sect=Kommando for å vise manualsidens filsti fra en seksjon,0
+list_cmd=Kommando for &#229; vise manualsidens filsti,0
+list_cmd_sect=Kommando for &#229; vise manualsidens filsti fra en seksjon,0
 man2html_path=Sti til man2html,3,Ikke bruk man2html
 doc_dir=Katalog for pakkedokumentasjon,3,Ingen
 howto_dir=Kataloger for HOWTO dokumenter,3,Ingen

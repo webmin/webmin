@@ -1,3 +1,3 @@
-hosts_allow=Plik dozwolonych hostÃ³w,0
-hosts_deny=Plik zabronionych hostÃ³w,0
-inetd_services=PobraÄ‡ moÅ¼liwe usÅ‚ugi z inetd?,1,1-Tak,0-Nie
+hosts_allow=Plik dozwolonych hostów,0
+hosts_deny=Plik zabronionych hostów,0
+inetd_services=Pobraæ mo¿liwe us³ugi z inetd?,1,1-Tak,0-Nie

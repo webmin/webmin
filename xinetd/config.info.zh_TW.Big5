@@ -1,0 +1,4 @@
+xinetd_conf=Xinetd組態檔案,0
+protocols_file=網路協定檔案,0
+pid_file=Xinetd PID 檔案路徑,0
+start_cmd=起動xinetd指令,0

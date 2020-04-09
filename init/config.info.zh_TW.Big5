@@ -1,0 +1,17 @@
+expert=是否允許選擇個別的執行層級,1,1-是,0-否
+desc=顯示動作時是否同時顯示說明,1,1-是,0-否
+init_base=執行層級的目錄放置的路徑,0
+init_dir=包含主要起始化命令稿的路徑,0
+soft_links=連結到主要命令稿的類型,1,0-硬連結,1-軟連結 (符號連結)
+order_digits=命令順序的位置,0
+local_script=本地端啟動指令稿,3
+reboot_command=重新開機的命令,0
+shutdown_command=關閉系統的命令,0
+start_stop_msg=系統是否支援 開機/關機 訊息,1,0-否,1-是
+inittab_id=開機執行階層在 inittab 中的編號,0
+daemons_dir=Caldera 守護器目錄,3,無
+startup_dirs=達爾文(Darwin)開機項目目錄,0
+darwin_setup=自定開機項目目錄,0
+hostconfig=達爾文(Darwin)主機位置設定檔,0
+plist=啟動項目名稱列表目錄,0
+status_check=顯示目前動作狀態,1,2-在目錄和動作列表頁面,1-只在動作列表頁面,0-不顯示

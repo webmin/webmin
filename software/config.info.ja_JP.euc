@@ -1,0 +1,3 @@
+package_system=パッケージ管理システム,4,rpm-RPM,pkgadd-Solaris,hpux-HPUX,freebsd-FreeBSD,slackware-Slackware,debian-Debian,aix-AIX,emerge-Gentoo,cygwin-Cygwin,msi-Microsoft Installer
+update_system=パッケージアップデートシステム,1,-自動判別,apt-APT,yum-YUM,rhn-Redhat Network,csw-Blastwave,urpmi-URPMI,emerge-Emerge
+apt_mode=APT のインストールに使うコマンド,1,0-apt&#45;get,1-aptitute

@@ -1,4 +1,4 @@
 at_style=Rodzaj systemu At,1,linux-Linux,solaris-Solaris,freebsd-FreeBSD
-at_dir=Katalog zada≈Ñ At,0
-allow_file=Plik dozwolonych u≈ºytkownik√≥w At,3,Brak
-deny_file=Plik zabronionych u≈ºytkownik√≥w At,3,Brak
+at_dir=Katalog zadaÒ At,0
+allow_file=Plik dozwolonych uøytkownikÛw At,3,Brak
+deny_file=Plik zabronionych uøytkownikÛw At,3,Brak

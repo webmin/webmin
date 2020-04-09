@@ -1,0 +1,6 @@
+line1=設定可能なオプション,11
+default_mode=デフォルトのプロセス表示スタイル,4,last-最後に選んだ表示スタイル,tree-プロセスツリー,user-ユーザ順,size-メモリサイズ順,cpu-CPU消費順,search-検索,run-実行
+cut_length=切り詰める文字数,3,無制限
+trace_java=システムコールの出力にJava appletを使うか,1,1-Java applet,0-テキスト
+line2=システム設定,11
+ps_style=PS コマンドの出力形式,1,sysv-SYSV,linux-Linux,hpux-HPUX,freebsd-FreeBSD,macos-MacOS,openbsd-OpenBSD

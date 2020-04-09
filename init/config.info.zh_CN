@@ -1,0 +1,12 @@
+expert=允许选择单独的运行级别,1,1-是,0-否
+desc=显示 descriptions 的动作,1,1-是,0-否
+init_base=运行级别目录被定位的目录,0
+init_dir=包含主初始化脚本的目录,0
+soft_links=运行级别文件的连接类型,1,0-硬,1-软
+order_digits=执行顺序的数字个数,0
+local_script=本地启动命令脚本,3
+reboot_command=重启系统命令,0
+shutdown_command=关机命令,0
+start_stop_msg=系统支持启动/关机信息,1,0-不,1-是
+inittab_id=引导级别的inittab ID,0
+daemons_dir=Caldera 守护进程目录,3,None

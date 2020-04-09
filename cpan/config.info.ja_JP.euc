@@ -1,0 +1,9 @@
+line1=設定オプション,11
+refresh_days=何日過ぎたら CPAN モジュール一覧を更新するか,0,5
+save_partial=インストールに失敗したときにダウンロードしたモジュールを保存するか,1,1-はい,0-いいえ
+def_args=Makefile.PLのデフォルト引数,0
+incpackages=パッケージから Perl modules を含む,1,1-はい,0-いいえ
+incyum=YUM もしくは APT から Perl モジュールがインストールが可能なら行う,1,1-はい,0-いいえ
+line2=システム設定,11
+packages=CPAN perl モジュールリスト,0
+cpan=CPAN モジュールベース URL,0

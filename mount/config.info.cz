@@ -1,0 +1,13 @@
+line1=Nastavení konfigurace,11
+browse_server=Po¾adovat seznam sdílení od serveru,3,localhost
+long_fstypes=Zobrazit dlouhá jména u souborových systémù?,1,1-Ano,0-Ne
+sort_mode=Tøídit souborové systémy podle,1,2-Bodu pøipojení,1-Typu,0-Poøadí v souborech
+show_used=Zobrazit pou¾ité místo na disku v seznamu souborových systémù,1,1-Ano,0-Ne
+delete_under=Pøi odpojování smazat adresáø&#44; pokud je podardesáøem,3,Nemazat nikdy
+
+line2=Konfigurace systému,11
+fstab_file=Soubor se souborovými systémy pøipojovanými pøi startu,0
+auto_file=Soubor automatického pøipojování NFS,3
+autofs_file=Jádro automaticky pøipojuje soubor,3
+smbclient_path=Úplná cesta k smbclient,3
+nmblookup_path=Úplná cesta k nmblookup,3

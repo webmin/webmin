@@ -1,0 +1,8 @@
+line2=Konfigurace systému,11
+slpd_conf=Cesta ke konfiguraènímu souboru OpenSLP,0
+slpd_reg=Cesta k registraènímu souboru OpenSLP,0
+slpd_log=Cesta k log souboru OpenSLP,0
+slpd_pid=Cesta k OpenSLP PID souboru,0
+slpd=Cesta ke spou¹tìèi OpenSLP démona,0
+start_cmd=Pøíkaz pro spu¹tìní OpenSLP,3,Démon právì bì¾í
+stop_cmd=Pøíkaz pro ukonèení OpenSLP,3,Zabít proces

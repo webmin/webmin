@@ -1,0 +1,17 @@
+named_conf=named.conf 文件路径,0
+named_path=named 文件路径,0
+show_list=域显示方式,1,0-图标,1-列表
+soa_style=序列号类型,1,0-运行编号,1-日期 (YYYYMMDDnn)
+records_order=排序,1,1-名称,2-值,3-By IP,0-增加的顺序
+chroot=改变到根目录运行 BIND 的方式,3,Default
+start_cmd=开始 BIND 命令,3,Default
+max_zones=要显示的最大域数,0
+rev_def=反向更新,1,0-利用缺省,1-不用缺省
+named_user=启动 BIND 用户的方式,3,默认
+named_group=启动 BIND 的组作为,3,默认
+master_dir=主区文件目录,3,默认
+slave_dir=slave/stub 区文件目录,3,默认
+support_aaaa=DNS 至此 IPv6 地址,1,0-否,1-是
+allow_comments=允许注释记录,1,0-否,1-是
+allow_wild=允许通配符 (,1,0-否,1-是
+allow_long=允许长主机名,1,0-否,1-是

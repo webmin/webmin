@@ -1,0 +1,6 @@
+line1=配置选项,11
+refresh_days=每天在刷新 CPAN 模块列表之前,0,5
+save_partial=如果安装失败，保留已下载的模块吗？?,1,1-是,0-否
+line2=系统配置,11
+packages=CPAN perl 模块列表,0
+cpan=CPAN 模块基本 URL,0

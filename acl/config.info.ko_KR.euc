@@ -1,0 +1,5 @@
+line1=가능한 옵션,11
+display=유저와 그룹 출력 모드,1,1-이름만,0-이름과 모듈
+order=유저와 그룹 정렬,1,0-파일 순,1-이름
+line2=시스템 설정,11
+ssleay=openssl 또는 ssleay 파일 경로,3,Automatic

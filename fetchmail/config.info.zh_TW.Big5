@@ -1,0 +1,5 @@
+config_file=所編輯的Fetchmail設定檔,3,所有使用者的 .fetchmailrc files
+fetchmail_path=fetchmail程式路徑,0
+daemon_user=執行fetchmail背景程式的使用者身分,0
+pid_file=fetchmail的PID檔案路徑,0
+mda_command=郵件傳送指令,3,使用SMTP

@@ -1,0 +1,9 @@
+line1=Pilihan boleh dikonfigurasi,11
+refresh_days=Hari sebelum segar semula senarai modul CPAN,0,5
+save_partial=Teruskan memuat turun modul jika pemasangan gagal?,1,1-Ya,0-Tidak
+def_args=arguments lalai untuk Makefile.PL,0
+incpackages=Sertakan modul Perl dari pakej perisian?,1,1-Ya,0-Tidak
+incyum=Pasang modul Perl daripada pakej perisian di mana boleh didapati?,1,1-Ya,0-Tidak
+line2=Konfigurasi sistem,11
+packages=Senarai modul perl CPAN,0
+cpan=URL asa bagi modul CPAN,0

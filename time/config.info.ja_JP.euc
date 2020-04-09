@@ -1,0 +1,8 @@
+line1=設定可能なオプション,11
+lease=システム時計とハードウェア時計との許容誤差,0
+timeserver=デフォルトのタイムサーバー,3,なし
+line2=システム設定,11
+seconds=システムタイムの設定形式,1,1-MMDDHHMMYYYY.SS,0-MMDDHHMMYY
+zonelink=タイムゾーンファイル,0
+zonetab=設定可能なタイムゾーンのリスト,0
+zonedir=タイムゾーンファイルがあるディレクトリ,0

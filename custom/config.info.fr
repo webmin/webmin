@@ -1,3 +1,4 @@
+line1=Options Configurables,11
 display_mode=La page principale montre,1,0-Toutes les commandes et parametres,1-Liens vers les commandes
 width=Largeur de la fenetre d'edition du fichier,3,Defaut (80 caracteres)
 height=Hauteur de la fenetre d'edition du fichier,3,Defaut (20 caracteres)

@@ -1,0 +1,7 @@
+ftpd_path=wuftpd 的全路径,0
+ftpaccess=ftp存取控制文件的全路径,0
+ftpconversions=ftp 转换文件的全路径,0
+ftpgroups=ftp 组文件的全路径,0
+ftphosts=ftp主机文件的全路径,0
+ftpusers=ftp用户文件的全路径,0
+pid_file=FTP 服务 PID 文件,0

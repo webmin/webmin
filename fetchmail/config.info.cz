@@ -1,0 +1,7 @@
+line1=Nastavení konfigurace,11
+config_file=Fetchmail konfiguraèní soubor k editování,3,V¹echny u¾ivatelské .fetchmailrc soubory
+daemon_user=U¾ivatel pod kterým je spu¹tìn fetchmail démon,0
+mda_command=Pøíkaz pro odesílání mailu,3,Pou¾ít SMTP
+line2=Konfigurace systému,11
+fetchmail_path=Cesta k programu fetchmail,0
+pid_file=Cestta k PID souboru fetchmail démona,0

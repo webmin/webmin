@@ -1,0 +1,8 @@
+line1=설정가능한 옵션,11
+lease=시스템 시간과 하드웨어 시간 사이의 허용할 시간차(초),0
+timeserver=기본 타임 서버,3,없음
+ntp_only=시간 동기화에 NTP 만 사용하겠습니까?,1,1-예,0-아니오
+line2=시스템 설정,11
+seconds=시스템 시간 설정 형식,1,1-MMDDHHMMYYYY.SS,0-MMDDHHMMYY,2-YYYYMMDDHHMM.SS
+zone_style=시간대 설정 방법4,linux-Linux,freebsd-FreeBSD,solaris-Solaris,-&lt;이 OS 에서 지원하지 않음&gt;
+hwclock_flags=hwclock 에 사용할 명령행 옵션,10,-없음,syscnofig-/etc/sysconfig/clock 에서

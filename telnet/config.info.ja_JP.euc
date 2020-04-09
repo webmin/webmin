@@ -1,0 +1,10 @@
+host=接続するホスト名,3,自動
+port=接続するポート,3,デフォルト
+proxy=他のホストへの接続に proxy を使いますか?,1,1-はい,0-いいえ
+mode=接続タイプ,1,0-Telnet,1-Secure Shell (推奨)
+sizemode=アプレットサイズ,1,0-80x24 (デフォルトフォント),1-最大,2-カスタム
+size=カスタムサイズ 幅 x 高さ,0
+fontsize=フォントサイズのポイント,3,デフォルト
+detach=独立したウィンドウモード,1,1-はい,0-いいえ
+no_test=telnet または SSH サーバかテストしますか?,1,0-はい,1-いいえ
+applet=アプレットが使うSSHプロトコル,1,1-New version (SSH 1 and 2),0-Old version (SSH 1 only)

@@ -1,0 +1,9 @@
+slpd=Шлях до файлу демона, що виконується, OpenSLP,0
+stop_cmd=Команда зупинки OpenSLP,3,Убити процес
+start_cmd=Команда запуску OpenSLP,3,Просто запуск демона
+slpd_pid=Шлях до файлу PID OpenSLP,0
+line2=Системні параметри,11
+slpd_reg=Шлях до файлу реєстрації OpenSLP,0
+slpd_conf=Шлях до файлу настроювань OpenSLP,0
+slpd_log=Шлях до файлу журналу OpenSLP,0
+

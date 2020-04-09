@@ -1,7 +1,7 @@
-config_file=Fitxer de configuraci√≥ d'objectius iSCSI,0
-ietadm=Cam√≠ complet de l'ordre <tt>ietadm</tt>,0
-pid_file=Cam√≠ complet del(s) fitxer(s) de PID,0
+config_file=Fitxer de configuraciÛ d'objectius iSCSI,0
+ietadm=CamÌ complet de l'ordre <tt>ietadm</tt>,0
+pid_file=CamÌ complet del(s) fitxer(s) de PID,0
 init_name=Nom del script d'engegada,0
-opts_file=Fitxer que cont√© els par√†metres de la l√≠nia d'ordres,0
+opts_file=Fitxer que contÈ els par‡metres de la lÌnia d'ordres,0
 initiators_file=Fitxer que llista les adreces iniciadores permeses,0
 targets_file=Fitxer que llista les adreces objectiu permeses,0

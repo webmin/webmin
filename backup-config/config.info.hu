@@ -1,2 +1,2 @@
-date_subs=CsinÃ¡ljak <tt>strftime</tt> cserÃ©t a mÃ¡solat cÃ©lkÃ¶nyvtÃ¡rÃ¡ban?,1,1-Igen,0-Nem
-from_addr=IndÃ­tÃ³: az email Ã¼zenetek indÃ­tÃ³ cÃ­me,3,webmin@hostname
+date_subs=Csináljak <tt>strftime</tt> cserét a másolat célkönyvtárában?,1,1-Igen,0-Nem
+from_addr=Indító: az email üzenetek indító címe,3,webmin@hostname

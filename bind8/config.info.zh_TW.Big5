@@ -1,0 +1,6 @@
+named_conf=到 named.conf 檔案的完整路徑,0
+named_path=到 named 執行檔的完整路徑,0
+show_list=網域顯示方式,1,0-圖示,1-列表
+soa_style=序號樣式,1,0-遞增的順序,1-以日期為基礎 (YYYYMMDDnn)
+records_order=顯示紀錄的排列順序,1,1-依據名稱,2-依據數值,0-依據增加時間
+chroot=Chroot 路徑以執行 BIND,3,Default

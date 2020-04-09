@@ -1,0 +1,15 @@
+line1=Pilihan dikonfigurasikan,11
+resolve=Penemuan alamat pelayan berjaya,1,1-Ya,0-Tidak
+scan_time=Masa menunggu jawapan imbasan,0,5
+listen=Imbas pelayan pada port UDP,3,Sama seperti sistem ini
+display_mode=Tunjuk pelayan sebagai,1,1-Jadual,0-Ikon
+sort_mode=Susun pelayan dengan,1,4-Alamat IP,1-Nama hos,2-Penerangan,3-OS,5-Grup,0-Urutan dicipta
+show_status=Paparkan status untuk pelayan,1,1-Ya,0-Tidak
+show_ip=Sentiasa menunjukkan alamat dan port pada halaman utama?,1,1-Ya,0-No
+deflink=Mod lalai log masuk,4,0-Pautan ke pelayan,1-Log masuk melalui Webmin,2-Log masuk apabila ikon diklik,3-Log masuk dengan nama pengguna dan kata laluan yang sama
+deffast=Mod lalai RPC,1,1-Pantas,2-Automatik,0-Perlahan
+auto_type=Jenis sistem lalai,14,show_deftype
+skipips=IP atau nama hos sistem tidak dapat dikesan,9,50,5,\t
+skipifaces=Antara muka rangkaian tidak dapat dikesan,0
+line2=Konfigurasi sistem,11
+groups_dir=Kluster direktori grup MSC,0

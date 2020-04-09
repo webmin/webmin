@@ -1,1 +1,1 @@
-inittab_file=ÅšcieÅ¼ka do pliku inittab,0
+inittab_file=¦cie¿ka do pliku inittab,0

@@ -1,6 +1,6 @@
-date_subs=Fazer substitui√ß√£o <tt>strftime</tt> dos destinos de backup?,1,1-Sim,0-N√£o
-smtp_server=Enviar e-mail via servidor SMTP,3,Ler m√≥dulo de Correio do Usu√°rio
+date_subs=Fazer substituiÁ„o <tt>strftime</tt> dos destinos de backup?,1,1-Sim,0-N„o
+smtp_server=Enviar e-mail via servidor SMTP,3,Ler mÛdulo de Correio do Usu·rio
 run_mode=Executar backups em,1,0-Primeiro plano,1-Plano de fundo
-always_tar=Sempre usar formato TAR para backups?,1,1-Sim,0-N√£o
-error_email=Enviar e-mail de backup,1,0-Sempre,1-S√≥ se ocorrerem erros
+always_tar=Sempre usar formato TAR para backups?,1,1-Sim,0-N„o
+error_email=Enviar e-mail de backup,1,0-Sempre,1-SÛ se ocorrerem erros
 simple_sched=Formato do seletor de agendamento,1,1-Simples,0-Complexo

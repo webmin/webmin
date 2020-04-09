@@ -1,4 +1,4 @@
 pam_dir=Katalog konfiguracji PAM,0
 ignore=Pliki ignorowane w katalogu PAM,0
-lib_dirs=Katalogi zawierajƒÖce biblioteki PAM,0
-mod_equiv=R√≥wnowa≈ºne modu≈Çy PAM,0
+lib_dirs=Katalogi zawieraj±ce biblioteki PAM,0
+mod_equiv=RÛwnowaøne modu≥y PAM,0

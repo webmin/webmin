@@ -1,8 +1,8 @@
 line2=Konfiguracja systemu,11
 jabber_config=Plik konfiguracji XML Jabber,0
 jabber_dir=Bazowy katalog Jabber,0
-jabber_daemon=≈öcie≈ºka do programu serwera jabber,3,W bazowym katalogu
-jabber_spool=Katalog host√≥w Jabber,3,W bazowym katalogu
-jabber_lib=Katalog wsp√≥lnych bibliotek Jabber,3,Brak
+jabber_daemon=¶cieøka do programu serwera jabber,3,W bazowym katalogu
+jabber_spool=Katalog hostÛw Jabber,3,W bazowym katalogu
+jabber_lib=Katalog wspÛlnych bibliotek Jabber,3,Brak
 start_cmd=Polecenie do uruchomienia jabber,0
 stop_cmd=Polecenie do zatrzymania jabber,3,Zabij proces

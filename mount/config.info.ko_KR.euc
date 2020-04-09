@@ -1,0 +1,11 @@
+line1=설정가능한 옵션
+browse_server=브라우저 리스트를 요청할 서버
+long_fstypes=긴 파일시스템 형식 이름 보기,1,1-예,0-아니오
+sort_mode=파일 시스템 정렬,1,2-마운트 포지션,1-형식,0-파일 순서
+delete_under=마운트 해제시에 지정한 디렉토리 삭제,3,삭제 안함
+line2=시스템 설정
+fstab_file=부팅시 마운트할 파일 시스템 파일 리스트,0
+auto_file=NFS automount 파일,3
+autofs_file=커널 automount 파일,3
+smbclient_path=smbclient 풀 경로,3
+nmblookup_path=nmblookup 풀 경로,3
