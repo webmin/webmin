@@ -25,9 +25,10 @@ postfix_super_command=Full path to Postfix supervisor command,0
 mailq_dir=Mail queue base directory,0
 mailq_cmd=Mail queue display command,0
 postcat_cmd=Mail queue decoding command,0
-start_cmd=Command to start Postfix,3,Use control command
-stop_cmd=Command to stop Postfix,3,Use control command
+start_cmd=Command to start Postfix,3,Use bootup action or control command
+stop_cmd=Command to stop Postfix,3,Use bootup action or control command
 reload_cmd=Command to apply Postfix configuration,3,Use control command
+init_name=Bootup action name,3,Default (postfix)
 
 line3=MySQL options,11
 mysql_host=MySQL server for editing maps,3,Same as Postfix configuration
