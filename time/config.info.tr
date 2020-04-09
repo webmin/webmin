@@ -1,6 +1,6 @@
-line1=Yapılandırılabilir seçenekler,11
-lease=Sistem ve donanım saatleri arasındaki kabul edilebilir fark(saniye),0
-timeserver=Öntanımlı zaman sunucusu,3,Hiçbiri
-line2=Sistem yapılandırması,11
-seconds=Sistem zaman ayarı biçimi,1,1-AAGGSSDDYYYY.SS,0-AAGGSSDDYY,2-YYYYAAGGSSDD.SS
-zone_style=Zaman dilimi yapılandırma metodu,4,linux-Linux,freebsd-FreeBSD,solaris-Solaris,-&lt;Bu işletim sistemi desteklenmiyor&gt;
+line1=YapÄ±landÄ±rÄ±labilir seÃ§enekler,11
+lease=Sistem ve donanÄ±m saatleri arasÄ±ndaki kabul edilebilir fark(saniye),0
+timeserver=Ã–ntanÄ±mlÄ± zaman sunucusu,3,HiÃ§biri
+line2=Sistem yapÄ±landÄ±rmasÄ±,11
+seconds=Sistem zaman ayarÄ± biÃ§imi,1,1-AAGGSSDDYYYY.SS,0-AAGGSSDDYY,2-YYYYAAGGSSDD.SS
+zone_style=Zaman dilimi yapÄ±landÄ±rma metodu,4,linux-Linux,freebsd-FreeBSD,solaris-Solaris,-&lt;Bu iÅŸletim sistemi desteklenmiyor&gt;

@@ -1,7 +1,7 @@
-line1=Konfigurálható beállítások,11
-auto=Automatikusan beillesztendõ naplófile az alkalmazásból,2,apache-Apache,squid-Squid
-naked=Webmin fejléc és lábléc ohzzáadása a Webalizer riporthoz?,1,0-Igen,1-Nem
-line2=Rendszer beállítások,11
-webalizer=A webalizer parancs útvonala,0
-webalizer_conf=A webalizer konfigurációs file útvonala,0
-alt_conf=Minta webalizer konfigurációs file,3,Nincs
+line1=KonfigurÃ¡lhatÃ³ beÃ¡llÃ­tÃ¡sok,11
+auto=Automatikusan beillesztendÅ‘ naplÃ³file az alkalmazÃ¡sbÃ³l,2,apache-Apache,squid-Squid
+naked=Webmin fejlÃ©c Ã©s lÃ¡blÃ©c ohzzÃ¡adÃ¡sa a Webalizer riporthoz?,1,0-Igen,1-Nem
+line2=Rendszer beÃ¡llÃ­tÃ¡sok,11
+webalizer=A webalizer parancs Ãºtvonala,0
+webalizer_conf=A webalizer konfigurÃ¡ciÃ³s file Ãºtvonala,0
+alt_conf=Minta webalizer konfigurÃ¡ciÃ³s file,3,Nincs

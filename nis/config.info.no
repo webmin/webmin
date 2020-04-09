@@ -1,5 +1,5 @@
 line1=Konfigurerbare innstillinger,11
-max_size=Maks. antall oppf&#248;ringer som skal vises,0
+max_size=Maks. antall oppføringer som skal vises,0
 manual_build=Gjenoppbygg NIS kart automatisk?,1,0-Ja,1-Nei
 line2=System konfigurasjon,11
 client_conf=NIS klient konfig.fil,0

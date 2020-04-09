@@ -1,5 +1,5 @@
-line1=Nastaviteµné mo¾nosti,11
-display=Spôsob zobrazenia u¾ívateµov a skupín,1,1-Iba mená,0-Mená a moduly
-order=Zoraï u¾ívateµov a skupiny podµa,1,0-Poradia v súbore,1-Mena
-line2=Nastavenie Systému,11
-ssleay=Cesta k programu openssl alebo ssleay,3,Automatická
+line1=NastaviteÄ¾nÃ© moÅ¾nosti,11
+display=SpÃ´sob zobrazenia uÅ¾Ã­vateÄ¾ov a skupÃ­n,1,1-Iba menÃ¡,0-MenÃ¡ a moduly
+order=ZoraÄ uÅ¾Ã­vateÄ¾ov a skupiny podÄ¾a,1,0-Poradia v sÃºbore,1-Mena
+line2=Nastavenie SystÃ©mu,11
+ssleay=Cesta k programu openssl alebo ssleay,3,AutomatickÃ¡

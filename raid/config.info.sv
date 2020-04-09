@@ -1,2 +1,2 @@
-raidtab=Inställningsfil för RAID,0
-mdstat=Statusfil för RAID i kärnan,0
+raidtab=InstÃ¤llningsfil fÃ¶r RAID,0
+mdstat=Statusfil fÃ¶r RAID i kÃ¤rnan,0

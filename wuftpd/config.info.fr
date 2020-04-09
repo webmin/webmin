@@ -4,4 +4,4 @@ ftpconversions=Chemin du fichier ftpconversions,0
 ftpgroups=Chemin du fichier ftpgroups,0
 ftphosts=Chemin du fichier ftphosts,0
 ftpusers=Chemin du fichier ftpusers,0
-pid_file=Fichier de numéro de processus du serveur ftp,0
+pid_file=Fichier de numÃ©ro de processus du serveur ftp,0

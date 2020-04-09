@@ -1,6 +1,6 @@
 line1=Opcje konfiguracyjne,11
-default_mode=Domy秎ny spos骲 wy秝ietlania proces體,4,last-Ostatnio wybrany,tree-Drzewo proces體,user-Porz眃ek wg u縴tkownika,size-Porz眃ek wg rozmiaru,cpu-Porz眃ek wg CPU,search-Formularz szukania,run-Formularz uruchomienia
-cut_length=Ilo舵 znak體 polecenia,3,Nielimitowane
-trace_java=Wy秝ietlaj 秎edzenie proces體 u縴waj眂,1,1-Aplet Java,0-Tekst
+default_mode=Domy艣lny spos贸b wy艣wietlania proces贸w,4,last-Ostatnio wybrany,tree-Drzewo proces贸w,user-Porz膮dek wg u偶ytkownika,size-Porz膮dek wg rozmiaru,cpu-Porz膮dek wg CPU,search-Formularz szukania,run-Formularz uruchomienia
+cut_length=Ilo艣膰 znak贸w polecenia,3,Nielimitowane
+trace_java=Wy艣wietlaj 艣ledzenie proces贸w u偶ywaj膮c,1,1-Aplet Java,0-Tekst
 line2=Opcje systemowe,11
-ps_style=Styl wyj禼ia polecenia PS,1,sysv-SYSV,linux-Linux,hpux-HPUX,freebsd-FreeBSD,macos-MacOS
+ps_style=Styl wyj艣cia polecenia PS,1,sysv-SYSV,linux-Linux,hpux-HPUX,freebsd-FreeBSD,macos-MacOS

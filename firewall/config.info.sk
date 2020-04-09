@@ -1,14 +1,12 @@
-line0=Nastaviteµné mo¾nosti,11
-view_condition=Zobrazi» podmienky v zozname pravidiel?,1,1-Áno,0-Nie
-view_comment=Zobrazi» komentáre v zozname pravidiel?,1,1-Áno,0-Nie
-comment_mod=Komentáre ulo¾i» pomocou,1,0-# komentáre v ulo¾enıch súboroch,1-&#45;&#45;voµby komentára
-cluster_mode=Aktualizova» cluster serverov,1,0-Pri ka¾dej zmene,1-Pri aplikovaní konfigurácie
-before_cmd=Príkaz&#44; ktorı sa má spusti» pred zmenou pravidiel,3,®iadny
-after_cmd=Príkaz&#44; ktorı sa má spusti» po zmene pravidiel,3,®iadny
-before_apply_cmd=Príkaz&#44; ktorı sa má spusti» pred aplikovaním konfigurácie,3,®iadny
-after_apply_cmd=Príkaz&#44; ktorı sa má spusti» po zmene konfigurácie,3,®iadny
-line1=Konfigurácia systému,11
-direct=Meni» pravidlá firewallu priamo&#44; namiesto ukladania do súboru?,1,1-Áno,0-Nie
+line0=NastaviteÄ¾nÃ© moÅ¾nosti,11
+view_condition=ZobraziÅ¥ podmienky v zozname pravidiel?,1,1-Ãno,0-Nie
+view_comment=ZobraziÅ¥ komentÃ¡re v zozname pravidiel?,1,1-Ãno,0-Nie
+comment_mod=KomentÃ¡re uloÅ¾iÅ¥ pomocou,1,0-# komentÃ¡re v uloÅ¾enÃ½ch sÃºboroch,1-&#45;&#45;voÄ¾by komentÃ¡ra
+cluster_mode=AktualizovaÅ¥ cluster serverov,1,0-Pri kaÅ¾dej zmene,1-Pri aplikovanÃ­ konfigurÃ¡cie
+before_cmd=PrÃ­kaz&#44; ktorÃ½ sa mÃ¡ spustiÅ¥ pred zmenou pravidiel,3,Å½iadny
+after_cmd=PrÃ­kaz&#44; ktorÃ½ sa mÃ¡ spustiÅ¥ po zmene pravidiel,3,Å½iadny
+before_apply_cmd=PrÃ­kaz&#44; ktorÃ½ sa mÃ¡ spustiÅ¥ pred aplikovanÃ­m konfigurÃ¡cie,3,Å½iadny
+after_apply_cmd=PrÃ­kaz&#44; ktorÃ½ sa mÃ¡ spustiÅ¥ po zmene konfigurÃ¡cie,3,Å½iadny
 save_file=File to save/edit <tt>IPv4</tt> rules,3,Use operating system or Webmin default
+direct=MeniÅ¥ pravidlÃ¡ firewallu priamo&#44; namiesto ukladania do sÃºboru?,1,1-Ãno,0-Nie
 save_file6=File to save/edit <tt>IPv6</tt> rules,3,Use operating system or Webmin default
-

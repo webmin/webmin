@@ -1,1 +1,1 @@
-mailcap=Plik typów programów MIME,0
+mailcap=Plik typÃ³w programÃ³w MIME,0

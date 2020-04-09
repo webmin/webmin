@@ -1,6 +1,6 @@
+show_list=Afficher les domaines comme,1,0-IcÃ´nes,1-Liste
+soa_style=Style des numÃ©ros de sÃ©rie,1,0-NumÃ©ro,1-BasÃ© sur la date (AAAAMMJJnn)
+records_order=Ordre d'affichage des enregistrements,1,1-Alphabetique,0-Comme ajoutÃ©
 named_boot_file=Fichier de configuration primaire,0
-show_list=Afficher les domaines comme,1,0-Icônes,1-Liste
-soa_style=Style des numéros de série,1,0-Numéro,1-Basé sur la date (AAAAMMJJnn)
-records_order=Ordre d'affichage des enregistrements,1,1-Alphabetique,0-Comme ajouté
-named_pid_file=Fichier de numéro de processus,0
+named_pid_file=Fichier de numÃ©ro de processus,0
 named_pathname=Chemin complet de <i>named</i>,0

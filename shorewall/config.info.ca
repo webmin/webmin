@@ -1,9 +1,9 @@
-config_dir=Directori de configuraciÛ de Shorewall,0
-shorewall=CamÌ de l'ordre shorewall,0
-actions=Fitxers d'accions est‡ndard,9,40,5,\t
+config_dir=Directori de configuraci√≥ de Shorewall,0
+shorewall=Cam√≠ de l'ordre shorewall,0
+actions=Fitxers d'accions est√†ndard,9,40,5,\t
 macros=Directori de fitxers de macros,0
-before_apply_cmd=Ordre a executar abans d'aplicar la configuraciÛ,3,Cap
-after_apply_cmd=Ordre a executar deprÈs d'aplicar la configuraciÛ,3,Cap
+before_apply_cmd=Ordre a executar abans d'aplicar la configuraci√≥,3,Cap
+after_apply_cmd=Ordre a executar depr√©s d'aplicar la configuraci√≥,3,Cap
 before_refresh_cmd=Ordre a executar abans de refrescar la llista negra,3,Cap
-after_refresh_cmd=Ordre a executar desprÈs de refrescar la llista negra,3,Cap
-display_zone_descriptions=Mostra les descripcions de zona al fitxer de regles,1,0-No,1-SÌ
+after_refresh_cmd=Ordre a executar despr√©s de refrescar la llista negra,3,Cap
+display_zone_descriptions=Mostra les descripcions de zona al fitxer de regles,1,0-No,1-S√≠

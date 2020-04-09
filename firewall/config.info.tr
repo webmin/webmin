@@ -7,8 +7,6 @@ before_cmd=Command to run before changing rules,3,None
 after_cmd=Command to run after changing rules,3,None
 before_apply_cmd=Command to run before applying configuration,3,None
 after_apply_cmd=Command to run after applying configuration,3,None
-line1=System configuration,11
-direct=Directly edit firewall rules instead of save file?,1,1-Yes,0-No
 save_file=File to save/edit <tt>IPv4</tt> rules,3,Use operating system or Webmin default
+direct=Directly edit firewall rules instead of save file?,1,1-Yes,0-No
 save_file6=File to save/edit <tt>IPv6</tt> rules,3,Use operating system or Webmin default
-

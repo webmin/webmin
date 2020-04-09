@@ -1,5 +1,5 @@
-line1=Yapılandırılabilir seçenekler,11
-display=Kullanıcı ve grup görüntüleme biçimi,1,1-Sadece isim,0-İsim ve modüller
-order=Kullanıcı ve grupları bu şekilde sırala,1,0-Dosyadaki sırası ile,1-İsim ile
-line2=Sistem yapılandırması,11
-ssleay=Openssl ya da ssleay programı yolu,3,Otomatik
+line1=YapÄ±landÄ±rÄ±labilir seÃ§enekler,11
+display=KullanÄ±cÄ± ve grup gÃ¶rÃ¼ntÃ¼leme biÃ§imi,1,1-Sadece isim,0-Ä°sim ve modÃ¼ller
+order=KullanÄ±cÄ± ve gruplarÄ± bu ÅŸekilde sÄ±rala,1,0-Dosyadaki sÄ±rasÄ± ile,1-Ä°sim ile
+line2=Sistem yapÄ±landÄ±rmasÄ±,11
+ssleay=Openssl ya da ssleay programÄ± yolu,3,Otomatik

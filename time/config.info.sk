@@ -1,8 +1,8 @@
-line1=Nastaviteµné voµby,11
-lease=Akceptovateµnı poèet sekúnd rozdielu medzi systémovım èasom a hardvérovım èasom,0
-timeserver=©tandardnı èasovı server,3,®iadny
-ntp_only=Pou¾íva» len NTP pre synchronizáciu èasu?,1,1-Áno,0-Nie
-line2=Systémová konfigurácia,11
-seconds=Formát systémového èasu ,1,1-MMDDHHMMRRRR.SS,0-MMDDHHMMRR,2-RRRRMMDDHHMM.SS
-zone_style=Metóda konfigurácie èasovej zóny,4,linux-Linux,freebsd-FreeBSD,solaris-Solaris,-&lt;Nepodporované na tomto OS&gt;
-hwclock_flags=Parametre pre hwclock,10,®iadne,sysconfig-z /etc/sysconfig/clock
+line1=NastaviteÄ¾nÃ© voÄ¾by,11
+lease=AkceptovateÄ¾nÃ½ poÄet sekÃºnd rozdielu medzi systÃ©movÃ½m Äasom a hardvÃ©rovÃ½m Äasom,0
+timeserver=Å tandardnÃ½ ÄasovÃ½ server,3,Å½iadny
+ntp_only=PouÅ¾Ã­vaÅ¥ len NTP pre synchronizÃ¡ciu Äasu?,1,1-Ãno,0-Nie
+line2=SystÃ©movÃ¡ konfigurÃ¡cia,11
+seconds=FormÃ¡t systÃ©movÃ©ho Äasu ,1,1-MMDDHHMMRRRR.SS,0-MMDDHHMMRR,2-RRRRMMDDHHMM.SS
+zone_style=MetÃ³da konfigurÃ¡cie Äasovej zÃ³ny,4,linux-Linux,freebsd-FreeBSD,solaris-Solaris,-&lt;NepodporovanÃ© na tomto OS&gt;
+hwclock_flags=Parametre pre hwclock,10,Å½iadne,sysconfig-z /etc/sysconfig/clock

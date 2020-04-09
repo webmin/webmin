@@ -1,5 +1,5 @@
-line1=Op&#231;&#245;es configur&#225;veis,11
-order=Ordenar usu&#225;rios e grupos por,1,0-Ordem no arquivo,1-Nome
-line2=Configura&#231;&#227;o do sistema,11
+line1=Opções configuráveis,11
+display=Modo de exibição de usuário e grupo, 1, 1-Somente nomes, 0-Nomes e módulos
+order=Ordenar usuários e grupos por,1,0-Ordem no arquivo,1-Nome
+line2=Configuração do sistema,11
 ssleay=Caminho para o programa openssl ou ssleay,0
-display=Modo de exibi��o de usu�rio e grupo, 1, 1-Somente nomes, 0-Nomes e m�dulos

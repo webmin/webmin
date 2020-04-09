@@ -1,8 +1,8 @@
-start_cmd=Команда для запуску Jabber,0
-jabber_lib=Каталог поділюваних бібліотек Jabber,3,немає
-jabber_config=Файл настроювань XML Jabber,0
 line2=Системні параметри,11
-stop_cmd=Команда для зупинки Jabber,3,Убити процес
-jabber_spool=Каталог вузлів Jabber,3,Під основним каталогам
+jabber_config=Файл настроювань XML Jabber,0
 jabber_dir=Основний каталог Jabber,0
 jabber_daemon=Шлях до програми сервера Jabber,3,Під основним каталогам
+jabber_spool=Каталог вузлів Jabber,3,Під основним каталогам
+jabber_lib=Каталог поділюваних бібліотек Jabber,3,немає
+start_cmd=Команда для запуску Jabber,0
+stop_cmd=Команда для зупинки Jabber,3,Убити процес

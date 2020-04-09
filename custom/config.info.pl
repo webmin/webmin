@@ -1,8 +1,8 @@
-display_mode=Na g³ównej stronie ukazuj± siê,1,0-Wszystkie polecenia i parametry,1-Dowi±zania do poleceñ
-width=Szeroko¶æ okna edytora pliku,3,Domy¶lnie (80 znaków)
-height=Wysoko¶æ okna edytora pliku,3,Domy¶lnie (20 znaków)
-wrap=Tryb wrap edytora plików,1,-Domy¶lnie (miêkki),hard-Twardy,off-Wy³±czone
-columns=Kolumny do wy¶wietlenia poleceñ,1,2-2,1-1
-sort=Sortuj polecenia wed³ug,1,desc-Nazwy,html-Opisu,-kolejno¶ci polecenia
-params_file=Traktuj domy¶lne warto¶ci zaczynaj±ce siê znakiem / jako plik do odczytania,1,1-Tak,0-Nie
-params_cmd=Traktuj domy¶lne warto¶ci koñcz±ce siê znakiem | jako polecenie do uruchomienia,1,1-Tak,0-Nie
+display_mode=Na gÅ‚Ã³wnej stronie ukazujÄ… siÄ™,1,0-Wszystkie polecenia i parametry,1-DowiÄ…zania do poleceÅ„
+width=SzerokoÅ›Ä‡ okna edytora pliku,3,DomyÅ›lnie (80 znakÃ³w)
+height=WysokoÅ›Ä‡ okna edytora pliku,3,DomyÅ›lnie (20 znakÃ³w)
+wrap=Tryb wrap edytora plikÃ³w,1,-DomyÅ›lnie (miÄ™kki),hard-Twardy,off-WyÅ‚Ä…czone
+columns=Kolumny do wyÅ›wietlenia poleceÅ„,1,2-2,1-1
+sort=Sortuj polecenia wedÅ‚ug,1,desc-Nazwy,html-Opisu,-kolejnoÅ›ci polecenia
+params_file=Traktuj domyÅ›lne wartoÅ›ci zaczynajÄ…ce siÄ™ znakiem / jako plik do odczytania,1,1-Tak,0-Nie
+params_cmd=Traktuj domyÅ›lne wartoÅ›ci koÅ„czÄ…ce siÄ™ znakiem | jako polecenie do uruchomienia,1,1-Tak,0-Nie
