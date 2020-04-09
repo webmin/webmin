@@ -1,7 +1,7 @@
 line1=Display Optionen,11
 sort_mode=Sortiere Hosts nach,1,1-Hostname,0-wie hinzugefügt,2-Beschreibung
 table_mode=Zeige Hosts als,1,1-Tabelle,0-Symbol
-conf_host_links=Geben einen Link an, um Host zu ändern,1,1-Ja, 0-Nein
+conf_host_links=Geben einen Link an&#44; um Host zu ändern,1,1-Ja, 0-Nein
 line2=Benutzer- und Gruppenoptionen,11
 conf_add_user=Erlaube Benutzer hinzufügen,1,1-Ja, 0-Nein
 conf_add_group=Erlaube Gruppen hinzufügen,1,1-Ja, 0-Nein

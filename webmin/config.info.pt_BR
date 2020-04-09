@@ -1,4 +1,4 @@
-standard_url=URL da lista de módulos padrões&#44;3&#44;No www.webmin.com
-third_url=URL da lista de módulos de terceiros&#44;3&#44;No www.webmin.com
-cron_mode=Exibir horas das atualizações como&#44;1&#44;0&#45;Interface Simples&#44;1&#45;Seletor de hora do Cron
-warn_days=Dias antes de avisar usuários da expiração da senha&#44;0&#44;5
+standard_url=URL da lista de módulos padrões,3,No www.webmin.com
+third_url=URL da lista de módulos de terceiros,3,No www.webmin.com
+cron_mode=Exibir horas das atualizações como,1,0-Interface Simples,1-Seletor de hora do Cron
+warn_days=Dias antes de avisar usuários da expiração da senha,0,5

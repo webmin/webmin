@@ -1,4 +1,4 @@
-browse_server=Serwer, z&nbsp;którego pobierana jest <tt>browse list</tt>,3,localhost
+browse_server=Serwer&#44; z&nbsp;którego pobierana jest <tt>browse list</tt>,3,localhost
 long_fstypes=Używaj długich nazw typów systemów plików,1,1-Tak,0-Nie
 fstab_file=Plik zawirający listę systemów plików montowanych przy starcie,0
 auto_file=Plik automatycznych montowań po NFS,3

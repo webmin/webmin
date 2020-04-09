@@ -1,5 +1,5 @@
 homedir_perms=新使用者家目錄的權限,0
-user_files=拷貝檔案到新的目錄中, 從,0
+user_files=拷貝檔案到新的目錄中&#44; 從,0
 base_uid=新使用者的最小 UID 值,0
 base_gid=新群組的最小 GID 值,0
 new_user_group=使否位新使用者建立新群組?,1,1-是,0-否

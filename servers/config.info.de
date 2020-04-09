@@ -1,6 +1,6 @@
 line1=Konfigurierbare Optionen,11
 resolve=Löse Adressen gefundener Server auf,1,1-Ja,0-Nein
-scan_time=Zeit, die beim Scan auf Antwort gewartet wird (Sekunden),0,5
+scan_time=Zeit&#44; die beim Scan auf Antwort gewartet wird (Sekunden),0,5
 listen=Scannen nach Servern auf UDP-Port,3,Gleiche wie dieses System
 display_mode=Zeige Server als,1,1-Tabelle,0-Icons
 sort_mode=Sortiere Server nach,4,4-IP-Adresse,1-Hostname,2-Beschreibung,3-Betriebssystem,5-Gruppe,0-Erstellter Reihenfolge

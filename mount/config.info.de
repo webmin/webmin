@@ -1,5 +1,5 @@
 line1=Konfigurierbare Optionen,11
-browse_server=Server&#44; von dem Browser&#45;Liste geholt werden soll,10,-localhost,*-Arbeitsgruppe unten, Anderer Server
+browse_server=Server&#44; von dem Browser&#45;Liste geholt werden soll,10,-localhost,*-Arbeitsgruppe unten,Anderer Server
 browse_group=CIFS-Arbeitsgruppe für Suchliste,0
 long_fstypes=Benutze lange Dateisystem&#45;Typen,1,1-Ja,0-Nein
 sort_mode=Sortiere Dateisysteme nach,1,2-Einhängepunkt,1-Art,0-Reihenfolge in Datei
@@ -12,4 +12,4 @@ auto_file=NFS&#45;Automounts&#45;Datei,3
 autofs_file=Kernel&#45;Automounts&#45;Datei,3
 smbclient_path=Vollständiger Pfad zu smbclient,3
 nmblookup_path=Vollständiger Pfad zu nmblookup,3
-nfs_check=Überprüfe NFS-Server, bevor diese eingehängt werden,1,1-Ja,0-Nein
+nfs_check=Überprüfe NFS-Server&#44; bevor diese eingehängt werden,1,1-Ja,0-Nein

@@ -37,4 +37,4 @@ mail_style=Maildatei Verzeichnisart,4,0-mail/benutzername,1-mail/u/benutzername,
 mail_sync=Benutzermaildateisynchronisation,2,create-Erzeuge mit Benutzer,delete-Lösche mit Benutzer,modify-Benenne mit Benutzer um
 smrsh_dir=SMRSH Verzeichnis,3,Keines
 queue_dirs=Extra Mailqueue Verzeichnis,3,Keines
-rebuild_cmd=Befehl, um alle Karten neu zu erstellen,3,Verwende makemap Befehl
+rebuild_cmd=Befehl&#44; um alle Karten neu zu erstellen,3,Verwende makemap Befehl

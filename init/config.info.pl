@@ -1,6 +1,6 @@
 line1=Opcje konfiguracyjne,11
 expert=Pozwalać na wybór poszczególnych poziomów pracy systemu,1,1-Tak,0-Nie
-desc=Wyświetlać działania wraz z&nbsp;opisami,1,2,Tak, i&nbsp;pokazuj wszystkie poziomy,1-Tak,0-Nie
+desc=Wyświetlać działania wraz z&nbsp;opisami,1,2,Tak&#44; i&nbsp;pokazuj wszystkie poziomy,1-Tak,0-Nie
 order=Wyświetlać kolejność bootowania akcji?,1,1-Tak,0-Nie
 status_check=Pokazywać bieżący stan akcji,1,2-Na stronach indeksowej i&nbsp;akcji,1-Tylko na stronie akcji,0-Nie
 sort_mode=Sortuj akcje według,1,1-Kolejności bootowania,0-Nazwy

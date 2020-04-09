@@ -1,5 +1,5 @@
 line1=LDAP server opties,11
-server=LDAP server hostnaam,3,Dit systeem, Remote systeem
+server=LDAP server hostnaam,3,Dit systeem,Remote systeem
 port=LDAP server poort,3,Automatisch detecteren
 user=Inlog voor LDAP server,3,Detecteer automatisch
 pass=Wachtwoord voor LDAP server,3,Automatisch detecteren

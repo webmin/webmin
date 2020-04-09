@@ -6,5 +6,5 @@ cfrun=Cesta k programu cfrun,0
 cfrun_hosts=Cesta k souboru s volbami serveru,3,Automaticky
 cfd=Cesta k programu cfd,0
 cfd_conf=Cesta k souboru cfd.conf,3,Automaticky
-start_cmd=Příkaz pro spuštění cfd,3, Spustit démona
-stop_cmd=Příkaz pro ukončení cfd,3, Zabít proces
+start_cmd=Příkaz pro spuštění cfd,3,Spustit démona
+stop_cmd=Příkaz pro ukončení cfd,3,Zabít proces

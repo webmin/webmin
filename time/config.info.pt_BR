@@ -1,5 +1,5 @@
 line1=OPções configuráveis,11
-lease=Tempo aceitável de atraso entre hora de sistema e hora do hardware, em segundos,3,Nenhum
+lease=Tempo aceitável de atraso entre hora de sistema e hora do hardware&#44; em segundos,3,Nenhum
 timeserver=Servidor de horário padrão,3,Nenhum
 ntp_only=Usar só NTP para sincronização da hora?,1,1-Sim,0-Não
 line2=Configuração do sistema,11

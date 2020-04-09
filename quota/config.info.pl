@@ -1,6 +1,6 @@
 line1=Opcje konfigurowalne,11
 display_max=Maksymalna liczba wyświetlanych użytkowników lub grup,0
-threshold_pc=Próg procentowy wykorzystanego limitu quota, od którego podświetlać,3,Nie pokazuj
+threshold_pc=Próg procentowy wykorzystanego limitu quota&#44; od którego podświetlać,3,Nie pokazuj
 pc_show=Pokazuj procent wykorzystania limitu,1,2-Twardego i miękkiego,1-Tylko twardego,0-Tylko miękkiego
 sort_mode=Sortuj użytkowników i grupy według,1,0-Bloków użytych,2-Nazwy,1-Kolejności z repquota,3-Twardego limitu bloków,4-Miękkiego limitu bloków,5-Procentu użycia z twardego limitu,6-Procentu użycia z miękkiego limitu
 block_mode=Pokazuj quoty w ,1,1-Kilobajtach (jeśli możliwe),0-Blokach
