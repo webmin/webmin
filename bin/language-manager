@@ -438,6 +438,7 @@ sub language_transcode
     }
     
     # Preserve actual tags
+    $string =~ s/&nbsp;/~!!?S!!~/g;
     $string =~ s/&lt;/~!~!!~/g;
     $string =~ s/&gt;/~!!~!~/g;
 
@@ -460,6 +461,7 @@ sub language_transcode
     # Restore escaped tags
     $string =~ s/~!!~!~/&gt;/g;
     $string =~ s/~!~!!~/&lt;/g;
+    $string =~ s/~!!?S!!~/&nbsp;/g;
     return $string;
 }
 
