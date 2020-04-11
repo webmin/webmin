@@ -6,5 +6,5 @@ line2=Configuración del sistema,11
 majordomo_cf=Trayectoria completa a archivo de configuración de majordomo,0
 program_dir=Directorio que contiene los programas de majordomo,0
 wrapper_path=Trayectoria a wrapper de majordomo,3,En directorio de programas
-smrsh_program_dir=Directorio que contiene los programas seguros de sendmail,3,Cualquier sitio
 aliases_file=Archivo de alias con estilo-Sendmail,10,postfix-Get from Postfix,-Get from Sendmail,Other file
+smrsh_program_dir=Directorio que contiene los programas seguros de sendmail,3,Cualquier sitio

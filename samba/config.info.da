@@ -1,5 +1,5 @@
 line1=Konfigurerbare indstillinger,11
-dont_convert=Liste over Unix-brugere, der ikke skal tilføjes til samba-adgangskoden,0
+dont_convert=Liste over Unix-brugere&#44; der ikke skal tilføjes til samba-adgangskoden,0
 sort_mode=Sorter brugere og grupper efter navn?,1,1-Ja,0-Nej
 line2=System konfiguration,11
 smb_conf=Placering af Samba konfigurationsfilen,0

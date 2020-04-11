@@ -1,7 +1,7 @@
+sort_mode=Servisleri ve programları sıralama ,1,0-Dosyadaki şekliyle,1-Ada göre,2-Assignment
 inetd_conf_file=Inetd yapılandırma dosyası,0
 extended_inetd=Uzatılmış inetd desteği,1,0-Hayır,1-Temel,2-Enhanced
-rpc_inetd=Inetd, RPC programlarını desteklesin,1,1-Evet,0-Hayır
-sort_mode=Servisleri ve programları sıralama ,1,0-Dosyadaki şekliyle,1-Ada göre,2-Assignment
+rpc_inetd=Inetd&#44; RPC programlarını desteklesin,1,1-Evet,0-Hayır
 services_file=Ağ servisleri dosyası,0
 rpc_file=RPC servisleri dosyası,0
 protocols_file=Ağ protokolleri dosyası,0

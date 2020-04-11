@@ -1,6 +1,0 @@
-defines_name=Environment variable name in above file,0
-add_file=File to add new virtual hosts to,3,Last file in configuration
-line3=ProFTPD variables,11
-defines_file=Environment file defining ProFTPD variables,3,None
-defines_mods=Directories containing modules for HAVE_ variables,9,40,3,\t
-stop_cmd=Command to stop ProFTPD,3,Just kill process

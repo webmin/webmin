@@ -4,5 +4,5 @@ timeserver=alapértelmezett időszerver,3,Nincs
 ntp_only=Csak NTP protokoll használata időszinkronizáláshoz?,1,1-Igen,0-Nem
 line2=Rendszer konfiguráció
 seconds=Rendszeridő formátuma,1,1-MMDDHHMMYYYY.SS,0-MMDDHHMMYY,2-YYYYMMDDHHMM.SS
-zone_style=Időzóna beállítási eljárás:,4,linux-Linux,freebsd-FreeBSD,solaris-Solaris,-<Nem támogatja ez az OS>
+zone_style=Időzóna beállítási eljárás:,4,linux-Linux,freebsd-FreeBSD,solaris-Solaris,-&lt;Nem támogatja ez az OS&gt;
 hwclock_flags=Parancs-sori zászló a hwclock -hoz,10,-nincs,sysconfig-A /etc/sysconfig/clock -ról

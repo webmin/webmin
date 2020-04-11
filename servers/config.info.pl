@@ -11,6 +11,6 @@ deffast=Domyślny tryb RPC,1,1-Szybki,2-Automatyczny,0-Wolny
 auto_type=Domyślny typ systemu,14,show_deftype
 skipips=Adresy IP lub nazwy hostów systemu nie zostały wykryte,9,50,5,\t
 skipifaces=Interfejs sieci nie został wykryty,0
-max_servers=Pokaż formularz wyszukiwania, jeśli liczba serwerów przekracza,0
+max_servers=Pokaż formularz wyszukiwania&#44; jeśli liczba serwerów przekracza,0
 line2=Ustawienia systemowe,11
 groups_dir=Grupy katalogu klastra MSC,0

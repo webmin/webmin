@@ -5,5 +5,5 @@ ftpconversions=Pełna ścieżka do pliku <tt>ftpconversions</tt>,0
 ftpgroups=Pełna ścieżka do pliku <tt>ftpgroups</tt>,0
 ftphosts=Pełna ścieżka do pliku <tt>ftphosts</tt>,0
 ftpusers=Pełna ścieżka do pliku <tt>ftpusers</tt>,0
-pid_file=Plik z numerem PID serwera FTP,0
+pid_file=Plik z&nbsp;numerem PID serwera FTP,0
 log_file=Plik dziennika serwera FTP,0

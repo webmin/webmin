@@ -1,4 +1,0 @@
-pid_file=Dovecot server PID file,0
-dovecot_config=Full path to Dovecot configuration file,0
-dovecot=Dovecot server program,0
-init_script=Dovecot init script name,3,None exists

@@ -20,11 +20,6 @@ print &ui_table_row($text{'lang_lang'},
 		 &list_languages() ])." ". 
 	&ui_checkbox("langauto", 1, $text{'langauto_include'}, $clangauto));
 
-# Character set
-print &ui_table_row($text{'lang_charset'},
-	&ui_opt_textbox("charset", $gconfig{'charset'}, 15,
-			$text{'lang_chardef'}));
-
 # Use language from browser?
 print &ui_table_row($text{'lang_accept'},
 	&ui_yesno_radio("acceptlang", int($gconfig{'acceptlang'})));

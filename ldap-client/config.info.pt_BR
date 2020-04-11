@@ -1,7 +1,7 @@
+line0=Navegador LDAP e validação de configurações,11
 auth_ldap=Arquivo de configuração do cliente LDAP,8
 pam_ldap=Arquivo de configuração PAM LDAP,3,Mesmo que o arquivo de configuração de cliente LDAP
 secret=Arquivo do cliente LDAP com a senha root,8
-line0=Navegador LDAP e validação de configurações,11
 ldap_hosts=Servidores LDAP,3,Do arquivo de configuração,50
 ldap_port=Porta do servidor LDAP,3,Do arquivo de configuração,5
 ldap_tls=Usar conexão SSL,1,-Do arquivo de configuração,1-Sim,2-Sim com TLS,0-Não

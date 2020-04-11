@@ -1,7 +1,7 @@
 line0=Konfigurierbare Optionen,11
 view_condition=Zeige Bedingungen?,1,1-Ja,0-Nein
 view_comment=Zeige Kommentar?,1,1-Ja,0-Nein
-cluster_mode=Aktualisiert Cluster-Server,1,0-Immer, wenn eine Änderung vorgenommen wird,1-Bei der Anwendung der Konfiguration
+cluster_mode=Aktualisiert Cluster-Server,1,0-Immer&#44; wenn eine Änderung vorgenommen wird,1-Bei der Anwendung der Konfiguration
 cluster_nat=Sende NAT-Konfiguration auch um Cluster?,1,1-Ja,0-Nein
 line1=Systemkonfiguration,11
 ipf_conf=IPfilter Firewall-Konfigurationsdatei zum bearbeiten,0

@@ -1,9 +1,9 @@
+sort_mode=Porządek usług i&nbsp;programów,1,0-Porządek w&nbsp;plku,1-Wg nazwy,2-Assignment
 inetd_conf_file=Plik konfiguracyjny inetd,0
 inetd_dir=Katalog konfiguracyjny inetd,3,Brak
 extended_inetd=Rozszerzona obsługa inetd,1,0-Pierwotna,1-Podstawowa,2-Wzbogacona
 rpc_inetd=Inetd obsługuje programy RPC,1,1-Tak,0-Nie
 ipv6=Wspomaganie dla usług IPv6,1,1-Tak,0-Nie
-sort_mode=Porządek usług i programów,1,0-Porządek w plku,1-Wg nazwy,2-Assignment
 services_file=Plik usług sieciowych,0
 rpc_file=Plik usług RPC,0
 protocols_file=Plik protokołów sieciowych,0

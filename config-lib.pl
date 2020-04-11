@@ -35,12 +35,26 @@ sub generate_config
 my ($configref, $file, $module, $canconfig, $cbox, $section) = @_;
 my %config = %$configref;
 
+my $auto = $gconfig{"langauto_$remote_user"};
+if (!defined($auto)) {
+my $glangauto = $gconfig{'langauto'};
+if (defined($glangauto)) {
+	$auto = $glangauto;
+	} 
+else {
+	my ($clanginfo) = grep { $_->{'lang'} eq $current_lang } &list_languages();
+	$auto = $clanginfo->{'auto'};
+	}
+}
+
 # Read the .info file in the right language
 my (%info, @info_order, %einfo, $o);
 &read_file($file, \%info, \@info_order);
 %einfo = %info;
 foreach $o (@lang_order_list) {
 	&read_file("$file.$o", \%info, \@info_order);
+	&read_file("$file.$o.auto", \%info, \@info_order)
+		if ($auto && -r "$file.$o.auto");
 	}
 @info_order = &unique(@info_order);
 

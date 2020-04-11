@@ -1,6 +1,0 @@
-line2=System configuration,11
-cvsenc=Character set for repository file,3,From Webmin language
-line1=Configurable options,11
-view_header=Repository browser header file,0
-cvsroot=CVS root directory,7
-cvs=Path to cvs executable,0

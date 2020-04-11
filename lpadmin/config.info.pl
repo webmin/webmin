@@ -1,5 +1,5 @@
 line1=Opcje konfiguracyjne,11
-show_status=Pokazywać stan włączenia i przyjmowania połączeń zamiast sterownika?,1,1-Tak,0-Nie
+show_status=Pokazywać stan włączenia i&nbsp;przyjmowania połączeń zamiast sterownika?,1,1-Tak,0-Nie
 queue_refresh=Liczba sekund oczekiwania na odświeżenie kolejki drukowania,3,Nie odświeżaj
 sort_mode=Sortuj drukarki według,1,1-Nazwy,0-Kolejności w systemie
 display_mode=Na głównej stronie wyświetl,1,1-Tylko nazwy drukarek,0-Wszystkie szczegóły

@@ -4,4 +4,4 @@ warn_procmail=Wyświetlać ostrzeżenie jeżeli Procmail nie jest zainstalowany?
 forward_procmail=Utworzyć plik .forward przy uruchomieniu procmail?,1,1-Tak,0-Nie
 alias_files=Pełna ścieżka do plików globalnych aliasów,9,40,3,\t
 reply_min=Minimalny odstęp między wysyłaniem auto odpowiedzi,3,Bez odstępu,5,,minut
-reply_force=Wymusić użycie minimalnego interwału auto-odpowiedzi?,1,1-Tak,0-Nie
+reply_force=Wymusić użycie minimalnego interwału auto&#45;odpowiedzi?,1,1-Tak,0-Nie

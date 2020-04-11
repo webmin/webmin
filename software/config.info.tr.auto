@@ -1,2 +1,0 @@
-apt_mode=Command to use for APT installs,1,0-apt&#45;get,1-aptitude
-update_system=Package update system,1,-Detect automatically,apt-APT,yum-YUM,rhn-Redhat Network,csw-Blastwave CSW,urpmi-URPMI,emerge-Emerge,ports-FreeBSD Ports,pkg-FreeBSD pkgng,pkgsrc-PKGsrc,ipkg-Synology IPKG update,*-None

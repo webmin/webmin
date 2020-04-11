@@ -1,9 +1,9 @@
-named_conf=named.conf dosyasının tam yolu,0
-named_path=named çalıştırılabilir dosyasının tam yolu,0
-show_list=Alanları görüntüleme şekli,1,0-İkonlarla,1-Listeyle
-soa_style=Seri nuamarası tipi,1,0-Çalışma numarası ile,1-Tarih tabanlı (YYYYAAGGss)
-records_order=Kayıtları görüntüleme şekli,1,1-İsime göre,2-Değerine göre,3-By IP,0-Eklenmiş olarak
 chroot=BIND altında çalıştırılacak Chroot dizini,3,Öntanımlı
-start_cmd=BIND'i başlatma komutu,3,Öntanımlı
+show_list=Alanları görüntüleme şekli,1,0-İkonlarla,1-Listeyle
+records_order=Kayıtları görüntüleme şekli,1,1-İsime göre,2-Değerine göre,3-By IP,0-Eklenmiş olarak
 max_zones=Görüntülenecek en çok bölge sayısı,0
 rev_def=Ters kayıtları güncelle,1,0-Öntanımlı olarak açık,1-Öntanımlı olarak kapalı
+soa_style=Seri nuamarası tipi,1,0-Çalışma numarası ile,1-Tarih tabanlı (YYYYAAGGss)
+named_conf=named.conf dosyasının tam yolu,0
+named_path=named çalıştırılabilir dosyasının tam yolu,0
+start_cmd=BIND'i başlatma komutu,3,Öntanımlı

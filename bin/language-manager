@@ -427,7 +427,20 @@ sub language_source_file
 
 sub language_transcode
 {
-    my ($string, $encoding) = @_;
+    my ($string, $encoding, $opt) = @_;
+
+    # In case it's a `config` or `uconfig` file, preserve 
+    # &#44; and &#45;, as a literal characters
+    my $type_config = $opt->{'type'} =~ /config|uconfig/;
+    if ($type_config) {
+        $string =~ s/&#44;/~,~,~/g;
+        $string =~ s/&#45;/~-~-~/g;
+    }
+    
+    # Preserve actual tags
+    $string =~ s/&nbsp;/~!!SS!!~/g;
+    $string =~ s/&lt;/~!~!!~/g;
+    $string =~ s/&gt;/~!!~!~/g;
 
     eval {$string = decode($encoding, $string)};
     if ($@) {
@@ -438,6 +451,17 @@ sub language_transcode
     }
     decode_entities($string);
     $string = encode('utf-8', $string);
+    
+    # Restore special commas and dashes
+    if ($type_config) {
+        $string =~ s/~-~-~/&#45;/g;
+        $string =~ s/~,~,~/&#44;/g;
+    }
+
+    # Restore escaped tags
+    $string =~ s/~!!~!~/&gt;/g;
+    $string =~ s/~!~!!~/&lt;/g;
+    $string =~ s/~!!SS!!~/&nbsp;/g;
     return $string;
 }
 
@@ -501,7 +525,7 @@ sub translate_substitute
     my ($value, $opt) = @_;
     my $format = $opt->{'translate-format'};
 
-    $value = language_transcode($value, 'utf-8');
+    $value = language_transcode($value, 'utf-8', $opt);
 
     # Preserve un-quoted $1, $2, $3 in strings, which are broken in so different ways, in different languages differently
     if ($format eq 'text') {
@@ -591,7 +615,7 @@ sub translated_substitute
         $translated =~ s/&#39;/'/gi;
     }
 
-    # Restore destroyd tags
+    # Restore destroyed tags
     $translated =~ s/<[ ]*(?:(\?\w+|((?![br|hr|p|tt|pre|ul|li|ol])\w+).*?))[ ]*>(.*?)<.*?>/<$1>$3<\/$2>/gi;
 
     $translated =~ s/([ ]*)\$[ ]*(\d+)/$1\$$2/g;
@@ -894,7 +918,7 @@ sub go
                     # used (iso or UTF-8). We still need to convert all back and forth to get rid of ugly &#... escapes
                     if (!$mode_sync) {
                         $language_source_file->{$key_} =
-                          language_transcode($language_source_file->{$key_}, $language_source_file_encoding);
+                          language_transcode($language_source_file->{$key_}, $language_source_file_encoding, $opt);
                         talk_log("      — " . WHITE . " $language_source_file->{$key_}" . RESET . "",
                                  $data, $opt->{'verbose'});
                     }

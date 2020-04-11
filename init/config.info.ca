@@ -1,6 +1,6 @@
 line1=Opcions configurables,11
 expert=Permet la selecció de nivells d'execució individuals,1,1-Sí,0-No
-desc=Mostra les accions amb descripcions,1,2-Sí, i mostra tots els nivells d'execució,1-Sí,0-No
+desc=Mostra les accions amb descripcions,1,2-Sí&#44; i mostra tots els nivells d'execució,1-Sí,0-No
 order=Mostra l'ordre d'engegada de les accions,1,1-Sí,0-No
 status_check=Mostra l'estat actual de les accions,1,2-A les pàgines d'índex i de l'acció,1-Només a la pàgina de l'acció,0-No
 sort_mode=Ordena les accions per,1,1-Ordre d'engegada,0-Nom

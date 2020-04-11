@@ -1,3 +1,5 @@
+dont_convert=Samba parol dosyasına eklenmeyen Unix kullanıcıları dosyası,0
+sort_mode=Kullanıcı ve grupları isimlerine göre sırala,1,1-Evet,0-Hayır
 smb_conf=Samba yapılandırma dosyasının yeri,0
 smb_passwd=Samba parola dosyası yeri,3
 samba_status_program=smbstatus'un tam yeri,0
@@ -5,5 +7,3 @@ samba_password_program=smbpasswd'ın tam yeri,0
 samba_server=smbd'in tam yeri,0
 name_server=nmbd'in tam yeri,0
 swat_path=swat'in tam yeri,3,Hiçbiri
-dont_convert=Samba parol dosyasına eklenmeyen Unix kullanıcıları dosyası,0
-sort_mode=Kullanıcı ve grupları isimlerine göre sırala,1,1-Evet,0-Hayır

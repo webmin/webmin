@@ -13,4 +13,4 @@ smbgroupedit=Caminho completo para o smbgroupedit,3,Nenhum
 pdbedit=Caminho completo para o pdbedit,3,Nenhum
 net=Caminho completo para o comando net,3,Nenhum
 start_cmd=Comando para iniciar os servidores Samba,3,Automático
-stop_cmd=Comando para parar os servidores Samba,,3,Só matar o processo
+stop_cmd=Comando para parar os servidores Samba,3,Só matar o processo

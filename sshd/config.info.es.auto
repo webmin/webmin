@@ -1,4 +1,0 @@
-sshd_version=SSH server version,3,Detect automatically
-restart_cmd=Command to apply sshd configuration,3,Just send HUP signal
-line2=System configuration,11
-stop_cmd=Command to stop sshd,3,Just kill process

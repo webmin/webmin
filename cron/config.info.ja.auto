@@ -1,2 +1,0 @@
-add_file=Add new jobs to file,3,User's regular crontab file
-show_next=Show next time each job will run?,1,1-Yes,0-No

@@ -1,3 +1,4 @@
+lines=A megjelenített sorok száma,0
 syslog_conf=A syslog konfigurációs file-jának teljes elérési útja,0
 m4_conf=A syslog konfigurációját előfeldolgozza az <tt>m4</tt>?,1,1-Igen,0-Nem
 m4_path=Az <tt>m4</tt> teljes elérési útja,0
@@ -9,4 +10,3 @@ tags=Lehet a naplóbejegyzéseket a küldő program szerint szétválogatni?,1,1
 pid_file=A démonhoz tartozó PID file,3,Nincs
 syslogd=A syslog démon teljes elérési útja,0
 facilities=A naplóbejegyzések lehetséges kategóriái,0
-lines=A megjelenített sorok száma,0

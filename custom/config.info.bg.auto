@@ -1,8 +1,0 @@
-sort=Sort commands by,1,desc-Command name,html-Description,-Command ordering
-columns=Columns to display commands in,1,2-2,1-1
-params_file=Treat default values starting with / as file to read?,1,1-Yes,0-No
-width=Width of file editor window,3,Default (80 chars)
-wrap=File editor wrap mode,1,-Default (Soft),hard-Hard,off-Off
-display_mode=Main page shows,1,0-All commands and parameters,1-Links to commands
-height=Height of file editor window,3,Default (20 chars)
-params_cmd=Treat default values ending with | as command to run?,1,1-Yes,0-No

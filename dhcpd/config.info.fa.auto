@@ -1,3 +1,0 @@
-lease_refresh=Seconds between refreshing lease list,3,Never
-add_file=Add new subnets&#44; hosts and groups to file,3,Main configuration file
-stop_cmd=Command to stop DHCP server,3,Kill process

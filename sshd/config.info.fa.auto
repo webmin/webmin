@@ -1,2 +1,0 @@
-sshd_version=SSH server version,3,Detect automatically
-stop_cmd=Command to stop sshd,3,Just kill process

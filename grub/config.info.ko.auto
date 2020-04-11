@@ -1,6 +1,0 @@
-install=Install GRUB on disk/partition,0
-grub_path=Path to grub executable,0
-menu_file=GRUB menu configuration file,0
-device_map=File for device name mappings,3,Get from GRUB
-line2=System configuration,11
-line1=Configurable options,11

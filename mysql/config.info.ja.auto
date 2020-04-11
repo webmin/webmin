@@ -1,2 +1,0 @@
-nopwd=Use MYSQL_PWD variable to pass password?,1,0-Yes,1-No
-webmin_subs=Do Webmin variable substitution on backup destinations?,1,1-Yes,0-No

@@ -1,2 +1,0 @@
-format=Default partition table format,1,msdos-MSDOS,gpt-GPT
-mode=Partition management command,1,fdisk-Fdisk,parted-Parted,-Choose automatically

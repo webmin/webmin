@@ -1,2 +1,0 @@
-ata=Force ATA query mode?,1,1-Yes,0-No
-extra=Extra command-line parameters to smartctl,3,None

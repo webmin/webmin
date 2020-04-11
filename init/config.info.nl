@@ -1,6 +1,6 @@
 line1=Configureerbare opties,11
 expert=Sta individuele selectie toe van runlevels?,1,1-Ja,0-Nee
-desc=Laat acties zien met omschrijvingen,1,2-Ja, en laat alle runlevels zien,1-Ja,0-Nee
+desc=Laat acties zien met omschrijvingen,1,2-Ja&#44; en laat alle runlevels zien,1-Ja,0-Nee
 order=Laat de boot volgorde zien van de acties?,1,1-Ja,0-Nee
 status_check=Laat huidige status van acties zien,1,2-op index en actie pagina,1-Alleen op actie pagina,0-Nee
 sort_mode=Sorteer acties met,1,1-Boot volgorde,0-Naam

@@ -1,9 +1,9 @@
-index_status=Stan pokazywany na liście,1,1-Stan bieżący,0-Z ostatniego regularnrgo sprawdzenia
+index_status=Stan pokazywany na liście,1,1-Stan bieżący,0-Z&nbsp;ostatniego regularnrgo sprawdzenia
 pager_cmd=Polecenie do wysłania wiadomości na pager,3,Brak
 refresh=Sekundy pomiędzy odświeżeniami strony,3,Nie odświeżaj
 sort_mode=Sortuj monitory według,1,0-Kolejności tworzenia,1-Opisu,2-Hosta,3-Ostatniego stanu
 columns=Kolumny dla tabeli usług,1,2-2,1-1
-output=Przejąć komunikaty wyjściowe z uruchomionych programów, gdy przestaną dziać?,1,1-Tak,0-Nie
+output=Przejąć komunikaty wyjściowe z uruchomionych programów&#44; gdy przestaną dziać?,1,1-Tak,0-Nie
 subject_mode=Tryb tematu e-mail,1,0-Nowy styl,1-Stary styl
 def_tmpl=Domyślny szablon,10,-Brak,Szablon o nazwie
 pinger=Wyślij pingi przez polecenie,10,-Użyj wbudowany kod,linux-Użyj polecenia Linux lub FreeBSD,Inne polecenie

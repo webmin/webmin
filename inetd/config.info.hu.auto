@@ -1,5 +1,0 @@
-inetd_dir=Inetd configuration directory,3,None
-display_max=Maximum number of services to display,0
-qm_mode=Supports non-existant server programs?,1,1-Yes,0-No
-line2=System configuration,11
-line1=Configurable options,11

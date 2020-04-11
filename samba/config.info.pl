@@ -1,6 +1,6 @@
 line1=Opcje konfiguracyjne,11
 dont_convert=Lista użytkowników Uniksa nie dodawanych do listy haseł Samby,0
-sort_mode=Porządkować użytkowników i grupy wg nazw,1,1-Tak,0-Nie
+sort_mode=Porządkować użytkowników i&nbsp;grupy wg nazw,1,1-Tak,0-Nie
 line2=Konfiguracja systemu,11
 smb_conf=Lokalizacja pliku konfiguracyjnego Samby,0
 smb_passwd=Lokalizacja pliku haseł Samby,3

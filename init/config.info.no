@@ -1,6 +1,6 @@
 line1=Konfigurerbare innstillinger,11
 expert=Tillat valg av individuelle kjørenivåer?,1,1-Ja,0-Nei
-desc=Vis handlinger med beskrivelser,1,2-Ja, og vis alle kjørenivåer,1-Ja,0-Nei
+desc=Vis handlinger med beskrivelser,1,2-Ja&#44; og vis alle kjørenivåer,1-Ja,0-Nei
 order=Vis handlingenes oppstartsrekkefølge?1,1-Ja,0-Nei
 status_check=Vis handlingenes gjeldende status,1,2-På indeks- og handlingssider,1-Bare på handlingssider,0-Nei
 sort_mode=Sorter handlinger etter,1,1-Oppstartrekkefølge,0-Navn

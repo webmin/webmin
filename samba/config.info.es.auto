@@ -1,4 +1,0 @@
-restart_cmd=Command to restart Samba servers,3,Just stop and start
-winbind_server=Full path to winbindd,0
-stop_cmd_wb=Command to stop Winbind servers,0
-start_cmd_wb=Command to start Winbind servers,0

@@ -1,5 +1,5 @@
 line1=Konfigurerbare innstillinger,11
-lines=Standard ant, linjer som skal vises,0,4
+lines=Standard ant&#44; linjer som skal vises,0,4
 refresh=Sekunder mellom oppfrisking av loggvisning,3,Aldri
 compressed=Ta med komprimerte logger i søk?,1,1-Ja,0-Nei
 others=Vis logger fra andre moduler?,1,1-Ja,0-Nei

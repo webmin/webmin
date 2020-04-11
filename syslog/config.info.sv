@@ -1,3 +1,4 @@
+lines=Standardantal rader som ska visas,0
 syslog_conf=Sökväg till syslog-inställningsfil,0
 m4_conf=Syslog-inställningar tolkas med m4?,1,1-Ja,0-Nej
 m4_path=Sökväg till m4,0
@@ -9,4 +10,3 @@ tags=Stöd för taggade sektioner?,1,1-Ja,0-Nej
 pid_file=Syslog-PID-fil,3,Ingen
 syslogd=Sökväg till syslogserver,0
 facilities=Resurser som stöds,0
-lines=Standardantal rader som ska visas,0

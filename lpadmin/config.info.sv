@@ -1,3 +1,4 @@
+show_status=Visa aktiverad och mottagningsstatus istället för skrivardrivrutin?,1,1-Ja,0-Nej
 print_style=Skrivarinställningar,1,solaris-Solaris,linux-Linux,freebsd-FreeBSD,hpux-HPUX,lprng-LPRng,unixware-UnixWare,cups-CUPS
 driver_style=Skrivardrivrutin,1,webmin-Webmin,caldera-Caldera,redhat-RedHat,hpux-HPUX,suse-SuSE,cups-CUPS
 printcap_file=Skrivarfil,3,Ingen
@@ -7,4 +8,3 @@ gs_path=Sökväg till ghostscript,3,Ingen
 gs_fontpath=Typsnittskatalog för ghostscript,3,Standard
 gs_lib=Lib-katalog för ghostscript,3,Standard
 hpnp_path=Sökväg till hpnp-program,3,Ingen
-show_status=Visa aktiverad och mottagningsstatus istället för skrivardrivrutin?,1,1-Ja,0-Nej

@@ -1,7 +1,0 @@
-restart_pos=Show stop/start/apply buttons,1,2-On main page,1-In headings,0-Both
-cal_fmt=Calamaris output format,1,w-HTML,m-Text
-cal_extra=Extra Calamaris command-line parameters,0
-squid_restart=Command to apply changes,3,Automatic
-sync_modify=Update proxy users when updating system users,1,1-Yes,0-No
-cal_all=Generate all calamaris reports?,1,1-Yes,0-No
-squidclient=Path to squidclient program,3,Not installed

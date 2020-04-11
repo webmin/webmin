@@ -4,5 +4,5 @@ timeserver=Servidor horari per defecte,3,Cap
 ntp_only=Utilitza NTP només per a la sincronització horària,1,1-Sí,0-No
 line2=Configuració del sistema,11
 seconds=Format de l'hora del sistema,1,1-MMDDHHMMAAAA.SS,0-MMDDHHMMAA,2-AAAAMMDDHHMM.SS
-zone_style=Mètode de configuració de zones horàries,linux-Linux,freebsd-FreeBSD,solaris-Solaris,-<No suportat en aquest SO>
+zone_style=Mètode de configuració de zones horàries,linux-Linux,freebsd-FreeBSD,solaris-Solaris,-&lt;No suportat en aquest SO&gt;
 hwclock_flags=Arguments de la línia d'ordres de <tt>hwclock</tt>,10,-Cap,sysconfig-De /etc/sysconfig/clock

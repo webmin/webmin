@@ -1,2 +1,0 @@
-hwclock_flags=Command-line flags for hwclock,10,-None,sysconfig-From /etc/sysconfig/clock
-ntp_only=Only use NTP for time synchronization?,1,1-Yes,0-No

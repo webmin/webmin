@@ -1,12 +1,12 @@
-sendmail_cf=Pełna ścieżka do sendmail.cf,8
-sendmail_pid=Pełna ścieżka do pliku z PID sendmaila,8
-sendmail_command=Polecenie uruchamiające sendmaila jako server,0
-sendmail_stop_command=Polecenie zatrzymujące sendmaila,3,Zabij proces
 mailq_refresh=Przed odświeżeniem kolejki czekaj sekund,3,Nie odświeżaj
 perpage=Liczba wiadomości na stronie,0
 wrap_width=Łam linie wiadomości w kolumnie,0
 sort_mode=Wyświetlaj tabele wg,1,0-Porządku w zbiorze,1-Nazwy
 send_mode=Wysyłaj pocztę łącząc się z,3,Programem sendmail
+sendmail_cf=Pełna ścieżka do sendmail.cf,8
+sendmail_pid=Pełna ścieżka do pliku z PID sendmaila,8
+sendmail_command=Polecenie uruchamiające sendmaila jako server,0
+sendmail_stop_command=Polecenie zatrzymujące sendmaila,3,Zabij proces
 makemap_path=Polecenie <tt>makemap</tt>,0
 sendmail_path=Polecenie <tt>sendmail</tt>,0
 alias_file=Pełna ścieżka do pliku aliasów sendmaila,3,Automatycznie

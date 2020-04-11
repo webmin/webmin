@@ -4,5 +4,5 @@ timeserver=Štandardný časový server,3,Žiadny
 ntp_only=Používať len NTP pre synchronizáciu času?,1,1-Áno,0-Nie
 line2=Systémová konfigurácia,11
 seconds=Formát systémového času ,1,1-MMDDHHMMRRRR.SS,0-MMDDHHMMRR,2-RRRRMMDDHHMM.SS
-zone_style=Metóda konfigurácie časovej zóny,4,linux-Linux,freebsd-FreeBSD,solaris-Solaris,-<Nepodporované na tomto OS>
+zone_style=Metóda konfigurácie časovej zóny,4,linux-Linux,freebsd-FreeBSD,solaris-Solaris,-&lt;Nepodporované na tomto OS&gt;
 hwclock_flags=Parametre pre hwclock,10,Žiadne,sysconfig-z /etc/sysconfig/clock

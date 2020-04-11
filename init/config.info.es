@@ -1,6 +1,6 @@
 line1=Opciones configurables,11
 expert=Permitir selección de niveles individuales de ejecución,1,1-Sí,0-No
-desc=Mostrar acciones con descripciones,1,2-Sí, y mostrar todos los niveles de ejecución,1-Sí,0-No
+desc=Mostrar acciones con descripciones,1,2-Sí&#44; y mostrar todos los niveles de ejecución,1-Sí,0-No
 order=¿Mostrar el orden de arranque de las acciones?,1,1-Sí,0-No
 status_check=Mostrar estado actual de acciones,1,2-En índice y páginas de acción,1-Sólo en página de acción,0-No
 sort_mode=Ordenar acciones por,1,1-Orden de Arranque,0-Nombre

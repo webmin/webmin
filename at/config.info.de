@@ -1,4 +1,4 @@
 at_style=AT-Systemtyp,1,linux-Linux,solaris-Solaris,freebsd-FreeBSD,irix-Irix,macos-MacOS X,openserver-OpenServer
 at_dir=AT-Auftragsverzeichnis,0
-allow_file=Datei für die Benutzer, die AT nutzen dürfen,3, Keine
-deny_file=Datei für die Benutzer, die AT nicht nutzen dürfen,3, Keine
+allow_file=Datei für die Benutzer&#44; die AT nutzen dürfen,3, Keine
+deny_file=Datei für die Benutzer&#44; die AT nicht nutzen dürfen,3, Keine

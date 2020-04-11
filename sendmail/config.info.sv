@@ -1,12 +1,12 @@
-sendmail_cf=Fullständig sökväg till sendmail.cf,0
-sendmail_pid=Fullständig sökväg till PID-fil för sendmail,0
-sendmail_command=Kommando för att starta sendmail i servermod,0
-sendmail_stop_command=Kommando för att stanna sendmail,3,Kill process
 mailq_refresh=Väntetid (sekunder) för att uppdatera e-postkön,3,Uppdatera inte
 perpage=Antal e-postbrev per sida,0
 wrap_width=Maximal bredd för e-postbrev (ombrytning sker),0
 sort_mode=Sortera tabeller efter,1,0-ordningen i filen,1-Namn
 send_mode=Skicka e-post via förbindelse till,3,Sendmail executable
+sendmail_cf=Fullständig sökväg till sendmail.cf,0
+sendmail_pid=Fullständig sökväg till PID-fil för sendmail,0
+sendmail_command=Kommando för att starta sendmail i servermod,0
+sendmail_stop_command=Kommando för att stanna sendmail,3,Kill process
 makemap_path=Makemap-kommando,0
 sendmail_path=Sendmail-kommando,0
 alias_file=Fullständig sökväg till aliasfil för sendmail,3,Automatisk

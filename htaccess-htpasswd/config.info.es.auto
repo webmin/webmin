@@ -1,2 +1,0 @@
-perms=Permissions for created files,3,Default (644)
-extra_directives=Extra directives to include in .htaccess,9,0,0,\t

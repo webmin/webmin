@@ -1,4 +1,0 @@
-user=Fixed username,0
-url=URL to connect to,3,Ask user
-pass=Fixed password,12
-loginmode=Login to remote server,1,0-No,1-Yes&#44; with fixed username,2-Yes&#44; with login supplied by user

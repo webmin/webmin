@@ -7,4 +7,4 @@ ppp_options=Standard PPP Optionsdatei,0
 pptp_ppp_options=PPTP PPP Optionsdatei,3,Standard (/etc/ppp/options.pptp)
 start_cmd=Befehl zum Starten des PPTP-Daemons,3,Führt nur Programm aus
 stop_cmd=Befehl zum Stoppen des PPTP Daemons,3,Tötet nur Programm
-log_file=Datei, in die PPP-Meldungen protokolliert werden, 0
+log_file=Datei&#44; in die PPP-Meldungen protokolliert werden,0

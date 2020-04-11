@@ -1,3 +1,6 @@
+show_status=¿Mostrar estado de activada y de aceptando en vez del controlador?,1,1-Sí,0-No
+queue_refresh=Segundos a esperar antes de refrescar la cola de impresión,3,No refrescar
+sort_mode=Clasificar impresoras por,1,1-Nombre,0-Orden en sistema
 print_style=Estilo de configuración de impresoras,1,solaris-Solaris,linux-Linux,freebsd-FreeBSD,hpux-HPUX,lprng-LPRng,unixware-UnixWare,cups-CUPS,irix-IRIX
 driver_style=Estilo de controlador de Impresoras,1,webmin-Webmin,caldera-Caldera,redhat-Redhat,hpux-HPUX,suse-SuSE,cups-CUPS,irix-IRIX,printconf-Printconf de RedHat
 printcap_file=Archivo de impresoras,3,Ninguno
@@ -7,9 +10,6 @@ gs_path=Trayectoria de ghostscript,3,Ninguna
 gs_fontpath=Directorios de tipos de letra de Ghostscript,3,Por defecto
 gs_lib=Directorios de biblioteca de Ghostscript,3,Por defecto
 hpnp_path=Trayectoria de programa hpnp,3,Ninguna
-show_status=¿Mostrar estado de activada y de aceptando en vez del controlador?,1,1-Sí,0-No
-queue_refresh=Segundos a esperar antes de refrescar la cola de impresión,3,No refrescar
 start_cmd=Comando para arrancar planificador,3,Determinado por estilo de impresora
 stop_cmd=Comando para parar planificador,3,Determinado por estilo de impresora
 apply_cmd=Comando para ejecutar tras realizar cualquier cambio,3,None
-sort_mode=Clasificar impresoras por,1,1-Nombre,0-Orden en sistema

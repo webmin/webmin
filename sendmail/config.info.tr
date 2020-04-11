@@ -1,12 +1,12 @@
-sendmail_cf=sendmail.cf dosyasının tam yeri,8
-sendmail_pid=Sendmail pid dosyasının tam yeri,8
-sendmail_command=Sendmail'i sunucu modunda çalıştırma komutu,0
-sendmail_stop_command=Sendmail'i durdurma komutu,3,İşlemi öldür
 mailq_refresh=Posta kuyruğunun tazelenme süresi(saniye),3,Don't refresh
 perpage=Sayfa başına gösterilecek mesaj sayısı,0
 wrap_width=Birleştirilem mesaj sayısı,0
 sort_mode=Tabloları sıralama şekli,1,0-Dosyadaki sırayla,1-İsimle
 send_mode=Bağlantı ile postayı gönder,3,Sendmail çalıştırılabiliri
+sendmail_cf=sendmail.cf dosyasının tam yeri,8
+sendmail_pid=Sendmail pid dosyasının tam yeri,8
+sendmail_command=Sendmail'i sunucu modunda çalıştırma komutu,0
+sendmail_stop_command=Sendmail'i durdurma komutu,3,İşlemi öldür
 makemap_path=Makemap komutu,0
 sendmail_path=Sendmail komutu,0
 alias_file=Sendmail takma adları dosyasının tam yolu,3,Automatic

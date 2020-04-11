@@ -1,8 +1,8 @@
 line1=Opcje konfigurowalne,11
 show_list=Wyświetlanie serwerów wirtualnych jako,1,0-Ikony,1-Listę
-show_order=Kolejność serwerów wirtualnych wg,1,0-Porządku w plikach konfiguracyjnych,1-Nazwy servera,2-Adresu IP
+show_order=Kolejność serwerów wirtualnych wg,1,0-Porządku w&nbsp;plikach konfiguracyjnych,1-Nazwy servera,2-Adresu IP
 max_servers=Maksymalna liczba wyświetlanych serwerów,0,5
-virt_file=Serwery wirtualne dodawane w pliku,3,httpd.conf
+virt_file=Serwery wirtualne dodawane w&nbsp;pliku,3,httpd.conf
 virt_name=Wzór nazwy pliku dla serwerów wirtualnych,3,Domyślny ($DOM.conf)
 link_dir=Katalog do tworzenia łączy dla nowych serwerów wirtualnych,3,Brak
 test_config=Sprawdzać plik konfiguracyjny przed zastosowaniem zmian?,1,1-Tak,0-Nie

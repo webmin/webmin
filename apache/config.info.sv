@@ -1,12 +1,12 @@
+show_list=Visa virtuella servrar som,1,0-Ikoner,1-Lista
+show_order=Sortera virtuella servrar,1,0-konfigurationsfilordning,1-servernamn,2-IP-adress
+virt_file=Lägg till virtuella servrar i filen,3,httpd.conf
 httpd_dir=Apacheserver-rotkatalog,0
 httpd_path=Sökväg till exekverbar httpd-fil,0
 apachectl_path=Sökväg till kommando apachectl,3,Inget
 start_cmd=Kommando för att starta apache,3,Automatisk
 stop_cmd=Kommando för att stoppa apache,3,Automatisk
-show_list=Visa virtuella servrar som,1,0-Ikoner,1-Lista
-show_order=Sortera virtuella servrar,1,0-konfigurationsfilordning,1-servernamn,2-IP-adress
 httpd_conf=Sökväg till httpd.conf,3,Automatisk
 srm_conf=Sökväg till srm.conf,3,Automatisk
 access_conf=Sökväg till access.conf,3,Automatisk
 mime_types=Sökväg till mime.types,3,Automatisk
-virt_file=Lägg till virtuella servrar i filen,3,httpd.conf

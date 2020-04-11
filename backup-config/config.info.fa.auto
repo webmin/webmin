@@ -1,3 +1,0 @@
-from_addr=From: address for email messages,3,webmin@hostname
-webmin_subs=Do Webmin variable substitution on backup destinations?,1,1-Yes,0-No
-date_subs=Do <tt>strftime</tt> substitution of backup destinations?,1,1-Yes,0-No
