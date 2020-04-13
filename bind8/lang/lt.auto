@@ -565,7 +565,7 @@ acl_vall=Visos nuomonės
 acl_vsel=Pasirinkti vaizdai ..
 acl_vnsel=Visi, išskyrus pasirinktus ..
 acl_vnone=Nėra peržiūros
-acl_inview=Peržiūrimos zonos <$1>
+acl_inview=Peržiūrimos zonos &lt;$1&gt;
 acl_types=Leidžiami įrašų tipai
 acl_types1=Visi
 acl_types0=Tik išvardytos
@@ -926,7 +926,7 @@ slaves_os=Operacinė sistema
 slaves_add=Pridėti serverį
 slaves_ok=Pridėti dabar
 slaves_gadd=Įtraukite serverius į grupę
-slaves_group=Grupėje <$1>
+slaves_group=Grupėje &lt;$1&gt;
 slaves_need=<a href='$1'>„Webmin“ serverių rodyklėje</a> modulyje turite pridėti serverius su prisijungimo vardu ir slaptažodžiu, kad juos būtų galima valdyti čia.
 slaves_return=klasterių serveriai
 slaves_delete=Pašalinti pasirinktą

@@ -3,7 +3,6 @@ index_title_v6=Firewall IPv6
 index_editing=File delle regole $1 
 index_evalid=AVVERTIMENTO! La configurazione corrente di IPtables non è valida : $1 
 index_comm=Commento
-index_no_comment=
 index_jump_reject=<font color=#ff4400>Rifiuta</font>
 index_jump_log=Pacchetto di log
 index_crename=Rinomina catena

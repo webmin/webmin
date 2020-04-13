@@ -16,7 +16,6 @@ index_chain=Chuỗi $1
 index_action=Hoạt động
 index_desc=Điều kiện
 index_comm=Bình luận
-index_no_comment=
 index_move=Di chuyển
 index_none=Không có quy tắc được xác định cho chuỗi này.
 index_policy=Đặt hành động mặc định thành:

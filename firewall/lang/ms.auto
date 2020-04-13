@@ -16,7 +16,6 @@ index_chain=Rantaian $1
 index_action=Tindakan
 index_desc=Keadaan
 index_comm=Komen
-index_no_comment=
 index_move=Pindah
 index_none=Tiada peraturan yang ditetapkan untuk rangkaian ini.
 index_policy=Tetapkan Tindakan Lalai Ke:

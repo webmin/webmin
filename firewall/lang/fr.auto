@@ -2,7 +2,6 @@ index_title_v=Pare-feu IPv4
 index_title_v6=Pare-feu IPv6
 index_editing=Fichier de règles $1 
 index_evalid=AVERTISSEMENT! Votre configuration IPtables actuelle n'est pas valide : $1 
-index_no_comment=
 index_jump_log=Paquet de journal
 index_crename=Renommer la chaîne
 index_cdeletesel=Supprimer sélectionnée

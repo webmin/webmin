@@ -565,7 +565,7 @@ acl_vall=Vsi pogledi
 acl_vsel=Izbrani pogledi ..
 acl_vnsel=Vsi razen izbranih ..
 acl_vnone=Brez pogledov
-acl_inview=Območja pogleda <$1>
+acl_inview=Območja pogleda &lt;$1&gt;
 acl_types=Dovoljene vrste zapisov
 acl_types1=Vse
 acl_types0=Samo na seznamu
@@ -926,7 +926,7 @@ slaves_os=Operacijski sistem
 slaves_add=Dodaj strežnik
 slaves_ok=Dodaj zdaj
 slaves_gadd=Dodajte strežnike v skupino
-slaves_group=V skupini <$1>
+slaves_group=V skupini &lt;$1&gt;
 slaves_need=Preden lahko tukaj upravljate, morate v modul <a href='$1'>Indeks strežnikov Webmin</a> dodati strežnike z uporabniškim imenom in geslom.
 slaves_return=grozdni strežniki
 slaves_delete=Odstrani izbrano

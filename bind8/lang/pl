@@ -513,7 +513,7 @@ acl_vall=Wszystkie widoki
 acl_vsel=Wybrane widoki..
 acl_vnsel=Wszystkie oprócz wybranych..
 acl_vnone=Brak widoków
-acl_inview=Strefy w widoku <$1>
+acl_inview=Strefy w widoku &lt;$1&gt;
 acl_types=Dozwolone rodzaje rekordów
 acl_types1=Wszystkie
 acl_types0=Tylko te z listy
@@ -870,7 +870,7 @@ slaves_os=System operacyjny
 slaves_add=Dodaj serwer
 slaves_ok=Dodaj teraz
 slaves_gadd=Dodaj serwery do grupy
-slaves_group=W grupie <$1>
+slaves_group=W grupie &lt;$1&gt;
 slaves_need=Zanim będziesz mógł zarządzać serwerami musisz dodać je z loginem i hasłem w module <a href='$1'>Serwery Webmina</a>
 slaves_return=klaster serwerów
 slaves_delete=Usuń zaznaczone

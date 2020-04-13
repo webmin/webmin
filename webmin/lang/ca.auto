@@ -1,8 +1,8 @@
-ipkey_eip2="$1" no és una adreça IP o un nom d'amfitrió vàlids
-delete_rusure=Esteu segur que voleu suprimir el mòdul (s) $2? $1 kB de fitxers s'esborraran per sempre.
-letsencrypt_certbot=Certbot
-advanced_sortconfigs=Voleu desar els fitxers de configuració ordenats per les seves claus?
-ssl_letsdoms=Noms d'amfitrió del certificat
 ui_nice_size_type=Utilitzeu unitats de mesura binàries (KiB, MiB, GiB en lloc de KB, MB, GB)
+delete_rusure=Esteu segur que voleu suprimir el mòdul (s) $2? $1 kB de fitxers s'esborraran per sempre.
+ssl_letsdoms=Noms d'amfitrió del certificat
 update_webmin=Actualització de www.webmin.com
 session_pmodedesc3=Política de caducitat de contrasenya
+ipkey_eip2="$1" no és una adreça IP o un nom d'amfitrió vàlids
+advanced_sortconfigs=Voleu desar els fitxers de configuració ordenats per les seves claus?
+letsencrypt_certbot=Certbot

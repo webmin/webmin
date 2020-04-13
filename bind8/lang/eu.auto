@@ -565,7 +565,7 @@ acl_vall=Ikuspegi guztiak
 acl_vsel=Hautatutako ikuspegiak ..
 acl_vnsel=Hautatutako guztiak izan ezik ..
 acl_vnone=Ez dago bista
-acl_inview=Zonaldiak <$1>
+acl_inview=Zonaldiak &lt;$1&gt;
 acl_types=Baimendutako erregistro motak
 acl_types1=guztiak
 acl_types0=Zerrenda bakarra
@@ -926,7 +926,7 @@ slaves_os=Sistema eragilea
 slaves_add=Gehitu zerbitzaria
 slaves_ok=Gehitu orain
 slaves_gadd=Gehitu zerbitzariak taldean
-slaves_group=Taldean <$1>
+slaves_group=Taldean &lt;$1&gt;
 slaves_need=Saioa hasi eta pasahitza duten zerbitzariak gehitu behar dituzu <a href='$1'>Webmin Servers Index</a> moduluan hemen kudeatu aurretik.
 slaves_return=kluster zerbitzariak
 slaves_delete=Kendu Hautatuta

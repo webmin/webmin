@@ -1,11 +1,11 @@
 index_title=Webmin szerverek
-index_none=Nincs egy regisztrált szerver sem
 index_add=Új szerver regisztrálása
 index_broad=Keresés itt
 index_findmsg=Ezt a gombot nyomd meg, ha fel akarod kutatni a helyi hálózaton működő (legalább 0.75 verziójú) Webmin szervereket
 index_scan=Keresés máshol
 index_scanmsg=Ezt a gombot nyomd meg, ha a $1 hálózaton lévő (legalább 0.75 verziójú) szervereket keresed
 index_return=a szerverekhez
+index_none=Nincs egy regisztrált szerver sem
 edit_title=Szerver adatainak változtatása
 create_title=Új szerver regisztrálása
 edit_details=A szerver adatai

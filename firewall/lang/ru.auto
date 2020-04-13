@@ -1,7 +1,6 @@
 index_title_v=IPv4 Firewall
 index_title_v6=IPv6 Firewall
 index_evalid=ПРЕДУПРЕЖДЕНИЕ! Ваша текущая конфигурация IPtables недопустима : $1 
-index_no_comment=
 index_unapply2=Сохранить конфигурацию
 index_unapply2desc=Нажмите эту кнопку, чтобы сохранить указанную выше конфигурацию в файле конфигурации постоянного брандмауэра.
 index_firewalld=Похоже, что FirewallD используется для создания брандмауэра вашей системы. Возможно, вам следует использовать вместо этого <a href='$1'>модуль FirewallD</a>.

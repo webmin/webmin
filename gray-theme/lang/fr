@@ -1,7 +1,7 @@
-left_feedback=Envoyer un rapport
-left_home=Information Système
 left_login=Connexion : $1
-left_logs=Voir les journaux du module
+left_home=Information Système
 left_oc=Sponsorisé par "OpenCountry"
-left_others=Autres
+left_feedback=Envoyer un rapport
 left_search=Rechercher :
+left_logs=Voir les journaux du module
+left_others=Autres

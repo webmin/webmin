@@ -565,7 +565,7 @@ acl_vall=Alle synspunkter
 acl_vsel=Valgte visninger ..
 acl_vnsel=Alle undtagen valgt ..
 acl_vnone=Ingen visninger
-acl_inview=Zoner i visningen <$1>
+acl_inview=Zoner i visningen &lt;$1&gt;
 acl_types=Tilladte registreringstyper
 acl_types1=Alle
 acl_types0=Kun opført
@@ -926,7 +926,7 @@ slaves_os=Operativ system
 slaves_add=Tilføj server
 slaves_ok=Tilføj nu
 slaves_gadd=Tilføj servere i gruppe
-slaves_group=I gruppe <$1>
+slaves_group=I gruppe &lt;$1&gt;
 slaves_need=Du skal tilføje servere med et login og kodeord i <a href='$1'>Webmin Servers Index</a> modulet, før de kan styres her.
 slaves_return=klyngeservere
 slaves_delete=Fjern valgte

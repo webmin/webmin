@@ -565,7 +565,7 @@ acl_vall=Tất cả các lượt xem
 acl_vsel=Lượt xem được chọn ..
 acl_vnsel=Tất cả ngoại trừ được chọn ..
 acl_vnone=Không có lượt xem
-acl_inview=Các khu vực trong chế độ xem <$1>
+acl_inview=Các khu vực trong chế độ xem &lt;$1&gt;
 acl_types=Các loại hồ sơ được phép
 acl_types1=Tất cả
 acl_types0=Chỉ được liệt kê
@@ -926,7 +926,7 @@ slaves_os=Hệ điều hành
 slaves_add=Thêm máy chủ
 slaves_ok=Thêm vào ngay
 slaves_gadd=Thêm máy chủ trong nhóm
-slaves_group=Trong nhóm <$1>
+slaves_group=Trong nhóm &lt;$1&gt;
 slaves_need=Bạn phải thêm máy chủ có thông tin đăng nhập và mật khẩu trong mô-đun <a href='$1'>Chỉ số máy chủ Webmin</a> trước khi chúng có thể được quản lý tại đây.
 slaves_return=máy chủ cụm
 slaves_delete=Bỏ đã chọn

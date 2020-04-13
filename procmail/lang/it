@@ -1,4 +1,5 @@
 index_title=Filtro Mail Procmail
+index_procmail=Procmail
 index_conds=condizioni
 index_move=sposta
 index_ba=aggiungi 
@@ -24,7 +25,6 @@ index_none=nessuna azione  Procmail risulta configurata
 index_return=lista azioni
 index_env=imposta variabile $1 a $2
 index_include=processa  file incluso $1
-index_procmail=Procmail
 index_ecmd=il programma Procmail $1 non trovato sul sistema. Potrebbe non essere installato o il  <a href='$2'>modulo di configurazione</a> è errato
 edit_title2=modifica azione
 edit_title1=Create azione

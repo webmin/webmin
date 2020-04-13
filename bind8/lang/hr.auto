@@ -565,7 +565,7 @@ acl_vall=Svi pogledi
 acl_vsel=Odabrani pogledi ..
 acl_vnsel=Sve osim odabranog ..
 acl_vnone=Nema pogleda
-acl_inview=Zone u prikazu <$1>
+acl_inview=Zone u prikazu &lt;$1&gt;
 acl_types=Dopuštene vrste zapisa
 acl_types1=svi
 acl_types0=Samo na popisu
@@ -926,7 +926,7 @@ slaves_os=Operacijski sustav
 slaves_add=Dodavanje poslužitelja
 slaves_ok=Dodaj odmah
 slaves_gadd=Dodajte poslužitelje u grupi
-slaves_group=U grupi <$1>
+slaves_group=U grupi &lt;$1&gt;
 slaves_need=Morate dodati poslužitelje s prijavom i zaporkom u modulu <a href='$1'>Indeks webminskih poslužitelja</a> prije nego što ovdje možete upravljati.
 slaves_return=poslužitelji klastera
 slaves_delete=Ukloni odabrano

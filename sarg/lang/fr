@@ -1,5 +1,5 @@
-gen_done=.. effectué
-gen_title=Générer un Rapport
-report_by_site=Par site
 report_by_user=Par nom d'utilisateur
+report_by_site=Par site
 report_date_time=Par date et heure
+gen_title=Générer un Rapport
+gen_done=.. effectué

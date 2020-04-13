@@ -565,7 +565,7 @@ acl_vall=L-opinjonijiet kollha
 acl_vsel=Opinjonijiet magħżula ..
 acl_vnsel=Kollha għajr magħżula ..
 acl_vnone=L-ebda fehmiet
-acl_inview=Żoni fid-dawl <$1>
+acl_inview=Żoni fid-dawl &lt;$1&gt;
 acl_types=Tipi ta 'rekord permessi
 acl_types1=Kollha
 acl_types0=Elenkat biss
@@ -926,7 +926,7 @@ slaves_os=Sistema operattiva
 slaves_add=Żid server
 slaves_ok=Żid issa
 slaves_gadd=Żid is-servers fi grupp
-slaves_group=Fil-grupp <$1>
+slaves_group=Fil-grupp &lt;$1&gt;
 slaves_need=Qabel ma jkunu jistgħu jiġu ġestiti hawnhekk trid iżżid is-servers ma 'login u password fil-modulu <a href='$1'>Indiċi Servers Webmin</a>.
 slaves_return=Servers ta 'raggruppament
 slaves_delete=Neħħi Magħżul

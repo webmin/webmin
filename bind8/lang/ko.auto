@@ -295,7 +295,7 @@ acl_vall=모든 전망
 acl_vsel=선택된 뷰 ..
 acl_vnsel=선택된 것을 제외한 모두 ..
 acl_vnone=조회수 없음
-acl_inview=<$1>의 영역
+acl_inview=&lt;$1&gt;의 영역
 acl_types=허용되는 레코드 유형
 acl_types1=모두
 acl_types0=목록 만
@@ -506,7 +506,7 @@ slaves_os=운영 체제
 slaves_add=서버 추가
 slaves_ok=지금 추가
 slaves_gadd=그룹에 서버 추가
-slaves_group=<$1> 그룹에서
+slaves_group=&lt;$1&gt; 그룹에서
 slaves_need=<a href='$1'>Webmin Servers 색인</a> 모듈에서 로그인 및 비밀번호가있는 서버를 추가해야 여기에서 관리 할 수 있습니다.
 slaves_return=클러스터 서버
 slaves_delete=선택된 것을 지워 라

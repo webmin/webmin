@@ -110,9 +110,9 @@ switch_title=Serveis que Utilitzen LDAP
 switch_service=Servei
 switch_srcs=Origen de les dades
 switch_return=als serveis que utilitzen LDAP
+ldap_emodule=El mòdul Perl $1 necessari per parlar amb el servidor LDAP no està instal·lat. Fes clic <a href='$2'>aquí</a> per fer que Webmin el descarregui i l'instal·li ara.
 ldap_emodule2=El mòdul Perl $1 necessari per parlar amb el servidor LDAP no està instal·lat.
 ldap_econf=No s'ha trobat al sistema el fitxer $1 de configuració del client LDAP
-ldap_emodule=El mòdul Perl $1 necessari per parlar amb el servidor LDAP no està instal·lat. Fes clic <a href='$2'>aquí</a> per fer que Webmin el descarregui i l'instal·li ara.
 ldap_econn=No s'ha pogut connectar amb el servidor LDAP $1 al port $2
 ldap_econn2=No s'ha pogut connectar amb el servidor LDAP $1 al port $2: $3
 ldap_elogin=No s'ha pogut vincular el servidor LDAP $1 com a $2: $3
@@ -139,9 +139,9 @@ order_compat=NIS & Fitxers
 order_hesiod=Hesíode
 order_ldap=LDAP
 order_user=impressores d'usuaris
+order_xfn=XFN
 order_mdns4=DNS multiretransmissió
 order_mdns4_minimal=DNS multiretransmissió (mínim)
-order_xfn=XFN
 desc_aliases=Àlies de sendmail
 desc_mail=Àlies de sendmail
 desc_hosts=Adreces de hosts

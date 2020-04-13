@@ -16,7 +16,6 @@ index_chain=Veriga $1
 index_action=Ukrep
 index_desc=Pogoj
 index_comm=Komentar
-index_no_comment=
 index_move=Premakni se
 index_none=Za to verigo ni nobenih pravil.
 index_policy=Nastavi privzeto dejanje na:

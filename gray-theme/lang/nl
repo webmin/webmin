@@ -1,9 +1,9 @@
-left_feedback=Verstuur Opmerkingen
-left_home=Systeem Informatie
 left_login=Login: $1
-left_logs=Bekijk Module's Logs
+left_home=Systeem Informatie
 left_oc=Gesponserd door OpenCountry
-left_others=Andere
-left_search=Zoek:
-left_search_usermin=Zoek Usermin:
+left_feedback=Verstuur Opmerkingen
 left_search_webmin=Zoek Webmin:
+left_search_usermin=Zoek Usermin:
+left_search=Zoek:
+left_logs=Bekijk Module's Logs
+left_others=Andere

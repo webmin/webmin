@@ -472,7 +472,7 @@ acl_vall=Alle overzichten
 acl_vsel=Geselecteerde overzichten ..
 acl_vnsel=Alles behalve de geselecteerde..
 acl_vnone=Geen overzichten
-acl_inview=Zones in overzicht <$1>
+acl_inview=Zones in overzicht &lt;$1&gt;
 acl_types=Toegestane record soorten
 acl_types1=Alles
 acl_types0=Alleen in de lijst
@@ -826,7 +826,7 @@ slaves_os=Besturing systeem
 slaves_add=Server toevoegen
 slaves_ok=Nu Toevoegen
 slaves_gadd=Servers toevoegen in groep
-slaves_group=In groep <$1>
+slaves_group=In groep &lt;$1&gt;
 slaves_need=U moet servers met een gebruikersnaam en wachtwoord toevoegen in de <a href='$1'>Webmin Servers Index</a> module voordat die hier beheerd kunnen worden.
 slaves_return=cluster servers
 slaves_delete=Verwijder Geselecteerde

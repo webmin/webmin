@@ -329,7 +329,7 @@ slaves_os=Sistema operativo
 slaves_add=Aggiungi server
 slaves_ok=Aggiungi ora
 slaves_gadd=Aggiungi server nel gruppo
-slaves_group=Nel gruppo <$1>
+slaves_group=Nel gruppo &lt;$1&gt;
 slaves_need=È necessario aggiungere server con login e password nel modulo <a href='$1'>Webmin Servers Index</a> prima che possano essere gestiti qui.
 slaves_return=server cluster
 slaves_delete=Rimuovi i selezionati

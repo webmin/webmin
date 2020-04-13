@@ -1,5 +1,5 @@
-enewline=Ongeldig teken in waarde
-core_protoany=<Any>
 cvirt_eroot4=Geen gebruiker gedefinieerd in de Apache-configuratie
+enewline=Ongeldig teken in waarde
 core_portname=Protocol
+core_protoany=&lt;Any&gt;
 core_eduplisten=Luisteradres $1 wordt twee keer vermeld

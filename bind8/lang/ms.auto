@@ -563,7 +563,7 @@ acl_vall=Semua pandangan
 acl_vsel=Pandangan terpilih ..
 acl_vnsel=Semua kecuali yang dipilih ..
 acl_vnone=Tiada pandangan
-acl_inview=Zon yang dilihat <$1>
+acl_inview=Zon yang dilihat &lt;$1&gt;
 acl_types=Jenis rekod yang dibenarkan
 acl_types1=Semua
 acl_types0=Hanya disenaraikan
@@ -924,7 +924,7 @@ slaves_os=Sistem operasi
 slaves_add=Tambah pelayan
 slaves_ok=Tambah sekarang
 slaves_gadd=Tambah pelayan dalam kumpulan
-slaves_group=Dalam kumpulan <$1>
+slaves_group=Dalam kumpulan &lt;$1&gt;
 slaves_need=Anda mesti menambah pelayan dengan log masuk dan kata laluan dalam modul <a href='$1'>Indeks Webmin Servers</a> sebelum mereka boleh diuruskan di sini.
 slaves_return=pelayan kluster
 slaves_delete=Buang yang ditanda

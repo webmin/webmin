@@ -1,7 +1,7 @@
 index_title=Configuration Réseau
 index_return=configuration réseau
-index_applydesc=Cliquez sur ce bouton pour activer les configurations actuelles comme si vous aviez redemarre la machine.<br><b>ATTENTION:</b> Cela peut rendre votre systeme inaccessible par le reseau et couper l'acces a Webmin.
 index_apply=Appliquer la Configuration
+index_applydesc=Cliquez sur ce bouton pour activer les configurations actuelles comme si vous aviez redemarre la machine.<br><b>ATTENTION:</b> Cela peut rendre votre systeme inaccessible par le reseau et couper l'acces a Webmin.
 ifcs_title=Interfaces Réseau
 ifcs_now=Interfaces Actives
 ifcs_name=Nom

@@ -16,7 +16,6 @@ index_chain=Ketju $1
 index_action=Toiminta
 index_desc=Kunto
 index_comm=Kommentti
-index_no_comment=
 index_move=Liikkua
 index_none=Tätä ketjua ei ole määritelty.
 index_policy=Aseta oletustoimintoksi:

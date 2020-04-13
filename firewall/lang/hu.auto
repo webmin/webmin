@@ -1,7 +1,6 @@
 index_title_v=IPv4 tűzfal
 index_title_v6=IPv6 tűzfal
 index_evalid=FIGYELEM! A jelenlegi IPtable-konfiguráció érvénytelen : $1 
-index_no_comment=
 index_unapply2=Konfiguráció mentése
 index_unapply2desc=Kattintson erre a gombra a fenti konfiguráció mentéséhez az állandó tűzfal konfigurációs fájlba.
 index_firewalld=Úgy tűnik, hogy a FirewallD-t használják a rendszer tűzfalának előállítására. Lehet, hogy inkább a <a href='$1'>FirewallD modult</a> használja.

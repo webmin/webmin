@@ -1,7 +1,7 @@
 index_ouser=Od jiných uživatelů než Webmin
 index_sdesc=Popis akce obsahuje
 index_long=Zobrazit úplné popisy akcí?
-index_global=<Ne v žádném modulu>
+index_global=&lt;Ne v žádném modulu&gt;
 search_critd=kde popis obsahuje <tt>$1</tt>
 search_global=Žádný
 search_global_login=Přihlášen do Webmin

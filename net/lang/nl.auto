@@ -1,4 +1,4 @@
-bifc_nobridge=<Geen>
+bifc_nobridge=&lt;Geen&gt;
 bifc_ebridge=Bridge-interface moet een nummer zijn
 bifc_bridgestp=Spanning Tree Protocol
 bifc_bridgefd=Vertraging vooruit

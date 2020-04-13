@@ -277,7 +277,7 @@ slaves_os=Système opérateur
 slaves_add=Ajouter un serveur
 slaves_ok=Ajouter maintenant
 slaves_gadd=Ajouter des serveurs dans le groupe
-slaves_group=Dans le groupe <$1>
+slaves_group=Dans le groupe &lt;$1&gt;
 slaves_need=Vous devez ajouter des serveurs avec un identifiant et un mot de passe dans le module <a href='$1'>Index des serveurs Webmin</a> avant de pouvoir les gérer ici.
 slaves_return=serveurs de cluster
 slaves_delete=Enlever la sélection

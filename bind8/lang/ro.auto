@@ -565,7 +565,7 @@ acl_vall=Toate vizualizările
 acl_vsel=Vizualizări selectate ..
 acl_vnsel=Toate, cu excepția celor selectate ..
 acl_vnone=Fără vizualizări
-acl_inview=Zonele afișate <$1>
+acl_inview=Zonele afișate &lt;$1&gt;
 acl_types=Tipuri de înregistrări permise
 acl_types1=Toate
 acl_types0=Numai listat
@@ -926,7 +926,7 @@ slaves_os=Sistem de operare
 slaves_add=Adauga server
 slaves_ok=Adaugă acum
 slaves_gadd=Adăugați servere în grup
-slaves_group=În grupul <$1>
+slaves_group=În grupul &lt;$1&gt;
 slaves_need=Înainte de a putea fi gestionate aici, trebuie să adăugați servere cu o autentificare și o parolă în modulul <a href='$1'>Index Web Servers</a>.
 slaves_return=serverele de cluster
 slaves_delete=Sterge selectia
