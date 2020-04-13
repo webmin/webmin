@@ -3,4 +3,4 @@ category=cluster
 os_support=solaris *-linux hpux freebsd osf1 irix unixware openserver macos openbsd aix netbsd 
 depends=cron
 longdesc=Create scheduled Cron jobs that run on multiple servers simultaneously.
-desc_de=Cluster Cron-Jobs
+
