@@ -52,6 +52,8 @@ sub main
                'only-transcode|ot!'               => \$opt{'only-transcode'},
                'keys-exclude|ke:s'                => \$opt{'keys-exclude'},
                'keys-test|kt:s'                   => \$opt{'keys-test'},
+               'values-fix|vf:s'                  => \$opt{'values-fix'},
+               'values-fix-delimiter|vfd:s'       => \$opt{'values-fix-delimiter'},
                'git-commit|gc!'                   => \$opt{'git-commit'},
                'log|l:s'                          => \$opt{'log'},
                'verbose|v:i'                      => \$opt{'verbose'});
@@ -197,6 +199,12 @@ sub main
     # Exclude listed keys from bulk translation
     $opt{'keys-exclude'} = [$opt{'keys-exclude'} ? split(',', $opt{'keys-exclude'}) : ()];
 
+    # Value fix delimiter. Default is `:`
+    $opt{'values-fix-delimiter'} ||= ':';
+
+    # Build a list of value to check based on source file, and replace with, in all other languages
+    $opt{'values-fix'} = [$opt{'values-fix'} ? split(',', $opt{'values-fix'}) : ()];
+
     # Just run tests, and exit, without writing anything
     if (@{ $opt{'keys-test'} }) {
         say CYAN, "Translation testing for selected keys is about to start ..", RESET;
@@ -227,8 +235,16 @@ sub main
         # be removed from targets, in both, human translated and ".auto" files
         else {
 
+            # Execute language fixer
+            if (@{ $opt{'values-fix'} }) {
+                talk('fix-pre', \%opt, \%data);
+            }
+
             # Execute language sync
-            talk('sync-pre', \%opt, \%data);
+            else {
+                talk('sync-pre', \%opt, \%data);
+            }
+
             if (prompt('next')) {
                 go(\%opt, \%data);
             }
@@ -429,18 +445,20 @@ sub language_transcode
 {
     my ($string, $encoding, $opt) = @_;
 
-    # In case it's a `config` or `uconfig` file, preserve 
+    # In case it's a `config` or `uconfig` file, preserve
     # &#44; and &#45;, as a literal characters
-    my $type_config = $opt->{'type'} =~ /config|uconfig/;
+    # Warning - it will be removed in the near future, after config parser for translator is created
+    my $type        = $opt->{'type'};
+    my $type_config = $type =~ /config|uconfig/ if ($type);
     if ($type_config) {
         $string =~ s/&#44;/~,~,~/g;
         $string =~ s/&#45;/~-~-~/g;
+
+        # Preserve actual tags
+        $string =~ s/&nbsp;/~!!SS!!~/g;
+        $string =~ s/&lt;/~!~!!~/g;
+        $string =~ s/&gt;/~!!~!~/g;
     }
-    
-    # Preserve actual tags
-    $string =~ s/&nbsp;/~!!SS!!~/g;
-    $string =~ s/&lt;/~!~!!~/g;
-    $string =~ s/&gt;/~!!~!~/g;
 
     eval {$string = decode($encoding, $string)};
     if ($@) {
@@ -451,17 +469,18 @@ sub language_transcode
     }
     decode_entities($string);
     $string = encode('utf-8', $string);
-    
+
     # Restore special commas and dashes
     if ($type_config) {
         $string =~ s/~-~-~/&#45;/g;
         $string =~ s/~,~,~/&#44;/g;
+
+        # Restore escaped tags
+        $string =~ s/~!!~!~/&gt;/g;
+        $string =~ s/~!~!!~/&lt;/g;
+        $string =~ s/~!!SS!!~/&nbsp;/g;
     }
 
-    # Restore escaped tags
-    $string =~ s/~!!~!~/&gt;/g;
-    $string =~ s/~!~!!~/&lt;/g;
-    $string =~ s/~!!SS!!~/&nbsp;/g;
     return $string;
 }
 
@@ -689,6 +708,12 @@ sub translated_substitute
         $translated =~ s/[ ]*٪[ ]*/ ٪ /g;
     }
 
+    # If original value on template file contained escaped HTML entities, do the same on translated string
+    if ($original =~ /&lt;|&gt;/ && $original !~ /<|>/ && $translated =~ /<|>/) {
+        $translated =~ s/</&lt;/g;
+        $translated =~ s/>/&gt;/g;
+    }
+
     return $translated;
 }
 
@@ -761,6 +786,7 @@ sub go
     my $language_target_exclude     = $opt->{'language-target-exclude'};
     my $keys_exclude                = $opt->{'keys-exclude'};
     my $keys_test                   = $opt->{'keys-test'};
+    my $values_fix                  = $opt->{'values-fix'};
     my $git_commit                  = $opt->{'git-commit'};
     my $verbose                     = $opt->{'verbose'} || @{$keys_test};
     my $mode_sync                   = $opt->{'mode'} ne 'full';
@@ -776,7 +802,11 @@ sub go
         # Get source, base language file
         read_file($mfile, \%template);
 
-        talk_log(("Transcoding/translating " . BLUE BOLD, $module, RESET . " module .."), $data, 1);
+        # Set message type
+        my $message_type_s1 = 'Transcoding/translating';
+        $message_type_s1 = 'Searching/replacing in' if (@{$values_fix});
+
+        talk_log(("$message_type_s1 " . BLUE BOLD, $module, RESET . " module .."), $data, 1);
         foreach $language (@{ $data->{'languages_source_list'} }) {
 
             # Check if there has been something to process, if not print a message
@@ -808,10 +838,11 @@ sub go
             my %language;
             my %language_auto;
 
-            my $message_type = "Processing";
-            $message_type = "Testing translations for selected keys with" if (@{$keys_test});
+            my $message_type_s2 = "Processing";
+            $message_type_s2 = "Testing translations for selected keys with" if (@{$keys_test});
 
-            talk_log(("" . YELLOW . " .. $message_type $name ($code) language .." . RESET . ""), $data, $opt->{'verbose'});
+            talk_log(("" . YELLOW . " .. $message_type_s2 $name ($code) language .." . RESET . ""), $data,
+                     $opt->{'verbose'});
             my ($language_source_file,
                 $language_source_file_auto,
                 $language_source_file_encoding,
@@ -846,7 +877,8 @@ sub go
 
             # Check if the module's language has already been transcoded/translated, to avoid potential waste
             if (!@{$keys_test} &&
-                !$language_source_ignore_auto &&
+                !@{$values_fix}                    &&
+                !$language_source_ignore_auto      &&
                 $language_source_encoding eq 'map' &&
                 -r $mpath . "/$code.auto")
             {
@@ -883,14 +915,81 @@ sub go
                     $key__ = "${key}_${code}";
                 }
 
-                # Previously translated strings from `$code.auto` file, e.g. `de.auto`,
-                # should be considered, unless forced to be dropped
-                if ($language_source_file_auto &&
-                    $language_source_file_auto->{$key_} &&
-                    !@{$keys_test} &&
-                    !$language_source_ignore_auto)
-                {
-                    !$verbose_silent_mode && talk_log(
+                # This feature just checks and fixes values on target files (translations)
+                # based on template language (def. en). This option expects a param set to `S1:R1,S2:R2`.
+                # Later, all key's values will be checked for `S1` and `S2` in template file and replaced
+                # with `R1` and `R2` accordingly on correspondent target files (translations). It can
+                # be used to check for `&lt;` or `&gt;` on source file and replace existing `<` and `>` on the targets,
+                # with `&lt;` and `&gt;`. If the string contains both search and replace, a warnign will be printed.
+                if (@{$values_fix}) {
+                    my @search_and_replace           = @{$values_fix};
+                    my $search_and_replace_delimiter = $opt->{'values-fix-delimiter'};
+                    my $value_auto                   = $language_source_file_auto->{$key_}
+                      if ($language_source_file_auto && $language_source_file_auto->{$key_});
+                    my $value_human = $language_source_file->{$key_}
+                      if ($language_source_file && $language_source_file->{$key_});
+                    my $value_auto_  = $value_auto  if ($value_auto);
+                    my $value_human_ = $value_human if ($value_human);
+
+                    foreach my $tackle (@search_and_replace) {
+                        my @search_and_replace = split($search_and_replace_delimiter, $tackle);
+                        my $search             = $search_and_replace[0];
+                        my $replace            = $search_and_replace[1];
+                        my $conflict_log       = sub {
+                            talk_log(
+                                ("" . MAGENTA .
+"   .. Replacing string \`$replace\` was also found in original string for \`$key\` key. Skipping.."
+                                   . RESET . ""
+                                ),
+                                $data,
+                                $opt->{'verbose'});
+                        };
+                        if (!$search || !$replace) {
+                            say RED, "Error: Cannot parse search replace pair", RESET;
+                            exit;
+                        }
+
+                        # Check for conflicts
+                        if ($value =~ /$search/ && $value =~ /$replace/) {
+                            &$conflict_log();
+                        } else {
+                            if ($value_auto && $value =~ /$search/ && $value_auto =~ /$replace/) {
+                                $value_auto =~ s/$replace/$search/g;
+                            } elsif ($value_human && $value =~ /$search/ && $value_human =~ /$replace/) {
+                                $value_human =~ s/$replace/$search/g;
+                            }
+                        }
+                    }
+
+                    # Store either fixed or original value
+                    if ($value_human) {
+                        $language{$key__} = $value_human;
+                    } elsif ($value_auto) {
+                        $language_auto{$key__} = $value_auto;
+                    }
+
+                    my $_value_human = $value_human && $value_human ne $value_human_;
+                    my $_value_auto  = $value_auto  && $value_auto ne $value_auto_;
+
+                    # Print log
+                    talk_log(("" . BRIGHT_YELLOW . "  .. Replaced found matches:" . RESET . ""), $data, 1)
+                      if ($_value_human || $_value_auto);
+                    talk_log("      — $key --> $value_human_", $data, 1),
+                      talk_log("      — $key <-- $value_human", $data, 1), $output++
+                      if ($_value_human);
+                    talk_log("      — $key --> $value_auto_", $data, 1),
+                      talk_log("      — $key <-- $value_auto", $data, 1), $output++
+                      if ($_value_auto);
+                } else {
+
+                    # Previously translated strings from `$code.auto` file, e.g. `de.auto`,
+                    # should be considered, unless forced to be dropped
+                    if ($language_source_file_auto &&
+                        $language_source_file_auto->{$key_} &&
+                        !@{$keys_test} &&
+                        !$language_source_ignore_auto)
+                    {
+                        !$verbose_silent_mode && talk_log(
                                       ("" . MAGENTA .
                                          "   .. ($code.auto) found and stored machine translated value for \`$key\` key to" .
                                          RESET . ""
@@ -898,15 +997,15 @@ sub go
                                       $data,
                                       $opt->{'verbose'});
 
-                    # Add a string to main language file
-                    $language_auto{$key__} = $language_source_file_auto->{$key_};
+                        # Add a string to main language file
+                        $language_auto{$key__} = $language_source_file_auto->{$key_};
 
-                    $output++;
-                }
+                        $output++;
+                    }
 
-                # Human translated strings must be added to original `$code` file, e.g. `de` after transcoding
-                elsif ($language_source_file && $language_source_file->{$key_} && !@{$keys_test}) {
-                    !$verbose_silent_mode && talk_log(
+                    # Human translated strings must be added to original `$code` file, e.g. `de` after transcoding
+                    elsif ($language_source_file && $language_source_file->{$key_} && !@{$keys_test}) {
+                        !$verbose_silent_mode && talk_log(
                                          ("" . DARK .
                                             "   .. ($code) found and transcoded human translated value for \`$key\` key to" .
                                             RESET . ""
@@ -914,79 +1013,82 @@ sub go
                                          $data,
                                          $opt->{'verbose'});
 
-                    # We need to re-encode the string first, depending on which human translated file is being
-                    # used (iso or UTF-8). We still need to convert all back and forth to get rid of ugly &#... escapes
-                    if (!$mode_sync) {
-                        $language_source_file->{$key_} =
-                          language_transcode($language_source_file->{$key_}, $language_source_file_encoding, $opt);
-                        talk_log("      — " . WHITE . " $language_source_file->{$key_}" . RESET . "",
-                                 $data, $opt->{'verbose'});
-                    }
-
-                    # Add a string to main language file
-                    $language{$key__} = $language_source_file->{$key_};
-
-                    $output++;
-                }
-
-                # Machine translated strings must be added to `$code.auto` file, e.g. `de.auto`
-                else {
-
-                    # Skip steps below, and only transcode existing values
-                    if ($opt->{'only-transcode'}) {
-                        next;
-                    }
-
-                    # Add original value, from source language, to `$code.auto` file without
-                    # performing actual translation. It's useful when you want to translate it manually
-                    # and simply need to find missing language strings on targeted file. Besides, `config.info`
-                    # options are never translated (so far), just as languages that use right-to-left writing
-                    if (!@{$keys_test} &&
-                        ($opt->{'only-diff'} ||
-                            $type eq 'config'                ||
-                            $type eq 'uconfig'               ||
-                            ($code eq 'ur' && $value =~ /</) ||
-                            (any {$_ =~ /^$key$/} @{$keys_exclude})))
-                    {
-                        if (!$verbose_silent_mode) {
-                            talk_log(("" . DARK . "   .. ($code) stored original value for \`$key\` which is" . RESET . ""),
+                        # We need to re-encode the string first, depending on which human translated file is being
+                        # used (iso or UTF-8). We still need to convert all back and forth to get rid of ugly &#... escapes
+                        if (!$mode_sync) {
+                            $language_source_file->{$key_} =
+                              language_transcode($language_source_file->{$key_}, $language_source_file_encoding, $opt);
+                            talk_log("      — " . WHITE . " $language_source_file->{$key_}" . RESET . "",
                                      $data, $opt->{'verbose'});
-                            talk_log("      — " . CYAN . " $value" . RESET . "", $data, $opt->{'verbose'});
                         }
-                        $language_auto{$key__} = $value;
-                        next;
+
+                        # Add a string to main language file
+                        $language{$key__} = $language_source_file->{$key_};
+
+                        $output++;
                     }
 
-                    # Add translated string
-                    talk_log(("" . BRIGHT_MAGENTA . "   .. ($code) translated value for \`$key\` to" . RESET . ""),
-                             $data, $verbose);
+                    # Machine translated strings must be added to `$code.auto` file, e.g. `de.auto`
+                    else {
 
-                    # Prepare sent text
-                    my $_value = $value;
-                    $value = translate_substitute($value, $opt);
+                        # Skip steps below, and only transcode existing values
+                        if ($opt->{'only-transcode'}) {
+                            next;
+                        }
 
-                    # Run actual translation
-                    my $translated = translate($data, $opt, $code, $value);
-                    $translated = $translated->{'data'}->{'translations'}[0]->{'translatedText'};
+                        # Add original value, from source language, to `$code.auto` file without
+                        # performing actual translation. It's useful when you want to translate it manually
+                        # and simply need to find missing language strings on targeted file. Besides, `config.info`
+                        # options are never translated (so far), just as languages that use right-to-left writing
+                        if (!@{$keys_test} &&
+                            ($opt->{'only-diff'} ||
+                                $type eq 'config'                ||
+                                $type eq 'uconfig'               ||
+                                ($code eq 'ur' && $value =~ /</) ||
+                                (any {$_ =~ /^$key$/} @{$keys_exclude})))
+                        {
+                            if (!$verbose_silent_mode) {
+                                talk_log(
+                                      ("" . DARK . "   .. ($code) stored original value for \`$key\` which is" . RESET . ""),
+                                      $data, $opt->{'verbose'});
+                                talk_log("      — " . CYAN . " $value" . RESET . "", $data, $opt->{'verbose'});
+                            }
+                            $language_auto{$key__} = $value;
+                            next;
+                        }
 
-                    talk_log("      — $key --> $_value", $data, $verbose);
+                        # Add translated string
+                        talk_log(("" . BRIGHT_MAGENTA . "   .. ($code) translated value for \`$key\` to" . RESET . ""),
+                                 $data, $verbose);
 
-                    my $translated_ = $translated;
+                        # Prepare sent text
+                        my $_value = $value;
+                        $value = translate_substitute($value, $opt);
 
-                    $translated = translated_substitute($translated, $_value, $code, $rtl, $opt);
+                        # Run actual translation
+                        my $translated = translate($data, $opt, $code, $value);
+                        $translated = $translated->{'data'}->{'translations'}[0]->{'translatedText'};
 
-                    # Store translated string
-                    $language_auto{$key__} = $translated;
-                    talk_log("      — $key <-- $translated", $data, $verbose);
+                        talk_log("      — $key --> $_value", $data, $verbose);
 
-                    # Print debug log
-                    if ($verbose == 2) {
-                        say BLACK, "      --< $value",       RESET;
-                        say BLACK, "      >-- $translated_", RESET;
+                        my $translated_ = $translated;
+
+                        $translated = translated_substitute($translated, $_value, $code, $rtl, $opt);
+
+                        # Store translated string
+                        $language_auto{$key__} = $translated;
+                        talk_log("      — $key <-- $translated", $data, $verbose);
+
+                        # Print debug log
+                        if ($verbose == 2) {
+                            say BLACK, "      --< $value",       RESET;
+                            say BLACK, "      >-- $translated_", RESET;
+                        }
+
+                        $output++;
+                        $output_++;
                     }
 
-                    $output++;
-                    $output_++;
                 }
             }
 
@@ -1054,9 +1156,10 @@ sub go
             }
 
             if (!$output_ &&
-                $mode_sync &&
+                $mode_sync                           &&
                 $language_source_encoding eq 'utf-8' &&
-                !@{$keys_test})
+                !@{$keys_test}                       &&
+                !@{$values_fix})
             {
                 talk_log(("" . BRIGHT_CYAN . "  .. All strings are in sync already for $name ($code) language" . RESET . ""),
                          $data, 1);
@@ -1209,6 +1312,14 @@ sub talk
 " as a template language.\nThe keys found in target languages but missing on source, will be deleted,\nwhile newly added keys on source, will be translated for targets. The ope-\nration log will be written in "
           . YELLOW BOLD, $opt->{'log'}, RESET, " file.", RESET;
     }
+
+    if ($what eq 'fix-pre') {
+        say BRIGHT_BLUE, "Attention! ", RESET, WHITE,
+          "The following operation will search for matching string in template\nfile ",
+          YELLOW BOLD . "(" . $opt->{'language-source'} . ")" . RESET,
+          " and replaces matches on translation files accordingly. The operation\nlog will be written in " . YELLOW BOLD,
+          $opt->{'log'}, RESET, " file.", RESET;
+    }
 }
 
 sub trim
@@ -1242,9 +1353,13 @@ Give this help list.
 
 Examples of usage:
 
-Synchronize all language keys for Apache module, using English as a source language - newly added entries to Apache source language file (def. en), will be translated and inserted into all other language files (.auto), while deleted entries will also be removed on targets, including human translated ones.
+Synchronize all language keys for Apache module, based on template language. Newly added entries to Apache template language file (def. en), will be translated and inserted into all other machine translated language files, while deleted entries will also be removed on all targets (translations), including human translated files.
 
  — language-manager -m=apache
+
+Check for Software Packages module, all matching escaped HTML "&lt;" and "&gt;" entities in template file (def. en), and if found, make sure that translations (including machine translations) for the same key, contain exact escaped HTML entities, as on template string, rather than "<" or ">". Technically, it's possible to check and replace anything on language files using this command.
+
+ — language-manager -vf="&lt;:<,&gt;:>" -m=software
 
 Translate all available languages, using old-time encoding map, for BIND module, using as type "lang" directory, discarding human translations for Hebrew, keeping original value (not translating) for key "mass_desc", and printing verbose output.
 
@@ -1260,7 +1375,7 @@ Test translations for "index_stopmsg,trusted_warning" keys, in Russian and Germa
 
 =item --mode, -x <sync|full>
 
-Mode can be either <sync> or <full>. Default is set to "sync" and will only keep the keys found on source language, while missing keys in target languages, will be deleted, and newly added keys to source language, will be translated. Mode "full" is meant to perform full translation, keeping human translated strings and overwriting all machine translations done in the past (not recommended to run).
+Mode can be either <sync> or <full>. Default is set to "sync" and will only keep the keys found on template language file, while missing keys in target languages (translations), will be deleted, and newly added keys to template language file, will be translated. Mode "full" is meant to perform full translation, keeping human translated strings and overwriting all machine translations done in the past (not recommended to run).
 
 =item --type, -w <lang|ulang|help|config|uconfig|module>
 
@@ -1300,7 +1415,7 @@ Encoding of human translated language files. Default is set to "utf-8". Availabl
 
 =item --only-diff, -o
 
-Use this option to extract a difference and find missing keys on target language (against source) and save currently untranslated strings to a separate file, with ".diff" extension.
+Use this option to extract a difference and find missing keys on target language (against template) and save currently untranslated strings to a separate file, with ".diff" extension.
 
 =item --only-transcode, -ot
 
@@ -1313,6 +1428,14 @@ Comma separated list of keys that shouldn't be translated and stored with origin
 =item --keys-test, -kt
 
 Comma separated list of keys to test translation engine on; in this mode, translated strings are not saved
+
+=item --values-fix, -vf
+
+Colon separated pair of values to search and replace on translations files but only if template file (def. en) contains it.
+
+=item --values-fix-delimiter, -vfd
+
+If not set, by default, colon is used as separator for search/replace values in fix command.
 
 =item --git-commit, -gc
 
