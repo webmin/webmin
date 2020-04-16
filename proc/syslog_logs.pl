@@ -1,6 +1,6 @@
 # Contains a function to supply the syslog module with extra logs
 
-do 'proc-lib.pl';
+require 'proc-lib.pl';
 
 # syslog_getlogs()
 # Returns the kernel log, on Linux systems

@@ -1,6 +1,6 @@
 # Contains a function to supply the syslog module with extra logs
 
-do 'mysql-lib.pl';
+require 'mysql-lib.pl';
 
 # syslog_getlogs()
 # Returns a list of structures containing extra log files known to this module

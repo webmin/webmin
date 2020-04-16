@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 our (%text, %in, %access, $squid_version, %config);
-do 'squid-lib.pl';
+require 'squid-lib.pl';
 
 # syslog_getlogs()
 # Returns the Squid cache and store logs
