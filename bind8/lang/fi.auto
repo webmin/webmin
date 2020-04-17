@@ -565,7 +565,7 @@ acl_vall=Kaikki näkymät
 acl_vsel=Valitut näkymät ..
 acl_vnsel=Kaikki paitsi valitut ..
 acl_vnone=Ei näkymiä
-acl_inview=Näkyvissä olevat alueet <$1>
+acl_inview=Näkyvissä olevat alueet &lt;$1&gt;
 acl_types=Sallitut tietuetyypit
 acl_types1=Kaikki
 acl_types0=Vain luettelossa
@@ -926,7 +926,7 @@ slaves_os=Käyttöjärjestelmä
 slaves_add=Lisää palvelin
 slaves_ok=Lisää nyt
 slaves_gadd=Lisää palvelimia ryhmään
-slaves_group=Ryhmässä <$1>
+slaves_group=Ryhmässä &lt;$1&gt;
 slaves_need=Sinun on lisättävä <a href='$1'>Webmin-palvelimien hakemistoon</a> -moduuliin käyttäjätunnuksella ja salasanalla varustetut palvelimet, ennen kuin niitä voidaan hallita täällä.
 slaves_return=klusteripalvelimet
 slaves_delete=Poista valitut

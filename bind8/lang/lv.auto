@@ -565,7 +565,7 @@ acl_vall=Visi skati
 acl_vsel=Atlasītie skati ..
 acl_vnsel=Visi, izņemot atlasītos ..
 acl_vnone=Nav skatu
-acl_inview=Skatāmās zonas <$1>
+acl_inview=Skatāmās zonas &lt;$1&gt;
 acl_types=Atļautie ierakstu veidi
 acl_types1=Visi
 acl_types0=Tikai uzskaitīti
@@ -926,7 +926,7 @@ slaves_os=Operētājsistēma
 slaves_add=Pievienot serveri
 slaves_ok=Pievienot tagad
 slaves_gadd=Pievienojiet serverus grupai
-slaves_group=Grupā <$1>
+slaves_group=Grupā &lt;$1&gt;
 slaves_need=<a href='$1'>Webmin serveru indeksā</a> modulī jāpievieno serveri ar pieteikumvārdu un paroli, pirms tos šeit var pārvaldīt.
 slaves_return=klasteru serveri
 slaves_delete=Noņemt atlasīto

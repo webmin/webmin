@@ -550,7 +550,7 @@ acl_vall=Totes les vistes
 acl_vsel=Les vistes seleccionades...
 acl_vnsel=Totes excepte les seleccionades
 acl_vnone=Sense vistes
-acl_inview=Zones de la vista <$1>
+acl_inview=Zones de la vista &lt;$1&gt;
 acl_types=Tipus de registres permesos
 acl_types1=Tots
 acl_types0=Només els llistats
@@ -911,7 +911,7 @@ slaves_os=Sistema operatiu
 slaves_add=Afegeix servidor
 slaves_ok=Afegeix Ara
 slaves_gadd=Afegeix servidors en el grup
-slaves_group=Al grup <$1>
+slaves_group=Al grup &lt;$1&gt;
 slaves_need=Has d'afegir servidors amb un usuari i una contrasenya al mòdul d'<a href='$1'>Índex de Servidors Webmin</a> abans de poder-los gestionar aquí.
 slaves_return=als servidors del clúster
 slaves_delete=Elimina els seleccionats

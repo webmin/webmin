@@ -16,7 +16,6 @@ index_chain=السلسلة$1
 index_action=عمل
 index_desc=شرط
 index_comm=تعليق
-index_no_comment=
 index_move=نقل
 index_none=لا توجد قواعد محددة لهذه السلسلة.
 index_policy=تعيين الإجراء الافتراضي على:

@@ -1,7 +1,7 @@
 index_ouser=Webmin이 아닌 사용자가
 index_sdesc=활동 설명
 index_long=전체 작업 설명을 표시 하시겠습니까?
-index_global=<어떤 모듈에도 없음>
+index_global=&lt;어떤 모듈에도 없음&gt;
 search_critd=여기서 설명은 <tt>$1</tt>을 포함합니다.
 search_global=없음
 search_global_login=Webmin에 로그인

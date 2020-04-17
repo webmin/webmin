@@ -16,7 +16,6 @@ index_chain=$1 katea
 index_action=Ekintza
 index_desc=baldintza
 index_comm=Iruzkina
-index_no_comment=
 index_move=Mugitu
 index_none=Ez dago kate honetarako zehaztutako araurik.
 index_policy=Ezarri ekintza lehenetsi gisa:

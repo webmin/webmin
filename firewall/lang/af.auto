@@ -16,7 +16,6 @@ index_chain=Ketting $1
 index_action=aksie
 index_desc=toestand
 index_comm=kommentaar
-index_no_comment=
 index_move=skuif
 index_none=Daar is geen reëls vir hierdie ketting gedefinieer nie.
 index_policy=Stel verstekaksie op:

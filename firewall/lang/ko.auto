@@ -16,7 +16,6 @@ index_chain=체인 $1
 index_action=동작
 index_desc=조건
 index_comm=논평
-index_no_comment=
 index_move=움직임
 index_none=이 체인에 대해 정의 된 규칙이 없습니다.
 index_policy=기본 조치를 다음으로 설정하십시오.

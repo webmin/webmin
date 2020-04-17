@@ -361,7 +361,6 @@ eacl_pconn=se förbindelser för denna resurs
 eacl_pgkill=slå ihjäl förbindelser
 eacl_pkill=slå ihjäl denna förbindelse
 eacl_pus=uppdatera resurs
-eacl_pcs=lägga till resurs
 eacl_pds=ta bort resurs
 eacl_pusec=uppdatera inställningar för säkerhet och åtkomstkontroll för denna resurs
 eacl_pufperm=uppdatera inställningar för filrättigheter för denna resurs

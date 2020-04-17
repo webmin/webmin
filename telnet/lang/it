@@ -1,8 +1,8 @@
-index_credits=Applet GPL sviluppata da <a href='$1'>Matthias L. Jugel & Marcus Meißner</a>.
-index_elookup=L'indirizzo IP per $1 per testare il server telnet o SSH non è stato trovato
-index_esocket=Non esiste un server telnet in esecuzione su $1 porta $2.
-index_esocket2=Non esiste un server SSH in esecuzione su $1 porta $2.
-index_nojava=Questo modulo richiede java per funzionare, ma il tuo browser non supporta java
-index_sshcredits=Include software sviluppato dal Cryptix Development Team (<a href=$1 target=_top>$1</a>).
 index_title=SSH/Telnet Login
 index_warn=Attenzione! Questa sessione telnet <b>non e'</b> criptata.
+index_nojava=Questo modulo richiede java per funzionare, ma il tuo browser non supporta java
+index_credits=Applet GPL sviluppata da <a href='$1'>Matthias L. Jugel & Marcus Meißner</a>.
+index_sshcredits=Include software sviluppato dal Cryptix Development Team (<a href=$1 target=_top>$1</a>).
+index_esocket=Non esiste un server telnet in esecuzione su $1 porta $2.
+index_esocket2=Non esiste un server SSH in esecuzione su $1 porta $2.
+index_elookup=L'indirizzo IP per $1 per testare il server telnet o SSH non è stato trovato

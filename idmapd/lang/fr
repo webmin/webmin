@@ -1,11 +1,11 @@
-domain=Nom de domaine
-error_dir=Le répertoire $1 n'existe pas
-general=Configuration générale
-index_eidmapd=Le démon idmapd ne peut pas être trouvé. Il n'est peut-être pas installé, ou alors la <a href='$2'>configuration du module</a> est incorrecte.
 index_title=Configuration de idmapd
+index_eidmapd=Le démon idmapd ne peut pas être trouvé. Il n'est peut-être pas installé, ou alors la <a href='$2'>configuration du module</a> est incorrecte.
+general=Configuration générale
 mapping=Configuration du mapping
-nobody_group=Groupe nobody
-nobody_user=Utilisateur Nobody
 pipefs_dir=Répertoire pipefs
+domain=Nom de domaine
+nobody_user=Utilisateur Nobody
+nobody_group=Groupe nobody
 save=Sauver la config et redémarrer le démon
 save_err=Impossible de sauver le fichier de configuration $1
+error_dir=Le répertoire $1 n'existe pas

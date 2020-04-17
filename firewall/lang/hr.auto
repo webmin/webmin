@@ -16,7 +16,6 @@ index_chain=Lanac $1
 index_action=Radnja
 index_desc=Stanje
 index_comm=Komentar
-index_no_comment=
 index_move=Pomicati
 index_none=Za ovaj lanac nisu definirana pravila.
 index_policy=Postavi zadanu radnju na:

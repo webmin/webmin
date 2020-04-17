@@ -16,7 +16,6 @@ index_chain=Cadeia $1
 index_action=Açao
 index_desc=Condição
 index_comm=Comente
-index_no_comment=
 index_move=Mover
 index_none=Não há regras definidas para esta cadeia.
 index_policy=Defina a ação padrão como:

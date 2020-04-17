@@ -352,7 +352,7 @@ acl_vall=全部檢視
 acl_vsel=選定的視圖
 acl_vnsel=除了選定的所有。
 acl_vnone=沒有意見
-acl_inview=視圖中的區域<$1>
+acl_inview=視圖中的區域&lt;$1&gt;
 acl_types=允許的記錄類型
 acl_types1=所有
 acl_types0=僅列出
@@ -602,7 +602,7 @@ slaves_os=操作系統
 slaves_add=添加服務器
 slaves_ok=立即新增
 slaves_gadd=在組中添加服務器
-slaves_group=在組<$1>中
+slaves_group=在組&lt;$1&gt;中
 slaves_need=您必須在<a href='$1'>Webmin服務器索引</a>模塊中添加具有登錄名和密碼的服務器，然後才能在此處對其進行管理。
 slaves_return=集群服務器
 slaves_delete=刪除選定

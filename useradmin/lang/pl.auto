@@ -1,16 +1,16 @@
-udel_eroot=Nie możesz usuwać użytkowników systemu (tych z UID mniejszym lub równym 10).
-umass_eroot=Nie możesz usuwać użytkowników systemu (tych z UID mniejszym lub równym 10).
-udel_ugroupother=Usuwanie grupy tego użytkownika w innych modułach ..
-gbatch_descafter2=W wierszach <b>modyfikuj</b> puste pole będzie oznaczało, że odpowiedniego atrybutu grupy nie należy modyfikować.
-usave_edigestblowfish=Your system has Blowfish passwords enabled, but the Perl <tt>$3</tt> module is not installed.<p>To force the use of normal encrypted passwords, adjust your <a href='$1'>module configuration</a>.<p>Or have Webmin <a href='$2'>download and install</a> the <tt>$3</tt> module for you.
-gexport_desc=Ten formularz umożliwia utworzenie pliku wsadowego zawierającego niektóre lub wszystkie dostępne grupy w systemie. Pliku można użyć na stronie Wykonaj plik wsadowy grupy w innym systemie, aby ponownie utworzyć wyeksportowane grupy.
-usave_edigestsha512=Twój system ma włączone hasła Blowfish, ale funkcja <tt>crypt</tt> nie obsługuje tego formatu.
-usave_edigestmd5=Twój system ma włączone hasła MD5, ale moduł Perl <tt>$3</tt> nie jest zainstalowany. <p>Aby wymusić użycie normalnych zaszyfrowanych haseł, dostosuj <a href='$1'>konfiguracja modułu </a>.<p> Lub poproś Webmin <a href='$2'>pobierz i zainstaluj</a> <tt>$3</tt> moduł dla ciebie.
-gedit_clone=Grupa klonów
-usave_ealluid=Wszystkie dozwolone identyfikatory UID zostały przydzielone
 uedit_clone=Klonuj użytkownika
-gdel_eroot=Nie możesz usuwać grup systemowych (tych, których GID jest mniejszy lub równy 10).
-gbatch_eprimary=Grupy w wierszu $1 nie można usunąć, ponieważ jest to podstawowa grupa użytkownika $2.
-gbatch_descafter=Jeśli w polu <b>utwórz</b> pole <tt>gid</tt> pozostanie puste, Webmin automatycznie przypisze GID.
-gmass_eroot=Nie możesz usuwać grup systemowych (tych, których GID jest mniejszy lub równy 10).
+usave_ealluid=Wszystkie dozwolone identyfikatory UID zostały przydzielone
+usave_edigestmd5=Twój system ma włączone hasła MD5, ale moduł Perl <tt>$3</tt> nie jest zainstalowany. <p>Aby wymusić użycie normalnych zaszyfrowanych haseł, dostosuj <a href='$1'>konfiguracja modułu </a>.<p> Lub poproś Webmin <a href='$2'>pobierz i zainstaluj</a> <tt>$3</tt> moduł dla ciebie.
+usave_edigestblowfish=Your system has Blowfish passwords enabled, but the Perl <tt>$3</tt> module is not installed.<p>To force the use of normal encrypted passwords, adjust your <a href='$1'>module configuration</a>.<p>Or have Webmin <a href='$2'>download and install</a> the <tt>$3</tt> module for you.
+usave_edigestsha512=Twój system ma włączone hasła Blowfish, ale funkcja <tt>crypt</tt> nie obsługuje tego formatu.
+gedit_clone=Grupa klonów
 gsave_eallgid=Wszystkie dozwolone identyfikatory GID zostały przydzielone
+udel_eroot=Nie możesz usuwać użytkowników systemu (tych z UID mniejszym lub równym 10).
+udel_ugroupother=Usuwanie grupy tego użytkownika w innych modułach ..
+gdel_eroot=Nie możesz usuwać grup systemowych (tych, których GID jest mniejszy lub równy 10).
+gexport_desc=Ten formularz umożliwia utworzenie pliku wsadowego zawierającego niektóre lub wszystkie dostępne grupy w systemie. Pliku można użyć na stronie Wykonaj plik wsadowy grupy w innym systemie, aby ponownie utworzyć wyeksportowane grupy.
+umass_eroot=Nie możesz usuwać użytkowników systemu (tych z UID mniejszym lub równym 10).
+gmass_eroot=Nie możesz usuwać grup systemowych (tych, których GID jest mniejszy lub równy 10).
+gbatch_descafter=Jeśli w polu <b>utwórz</b> pole <tt>gid</tt> pozostanie puste, Webmin automatycznie przypisze GID.
+gbatch_descafter2=W wierszach <b>modyfikuj</b> puste pole będzie oznaczało, że odpowiedniego atrybutu grupy nie należy modyfikować.
+gbatch_eprimary=Grupy w wierszu $1 nie można usunąć, ponieważ jest to podstawowa grupa użytkownika $2.

@@ -565,7 +565,7 @@ acl_vall=Všetky zobrazenia
 acl_vsel=Vybrané zobrazenia ..
 acl_vnsel=Všetky okrem vybraných ..
 acl_vnone=Žiadne názory
-acl_inview=Zobrazené zóny <$1>
+acl_inview=Zobrazené zóny &lt;$1&gt;
 acl_types=Povolené typy záznamov
 acl_types1=všetko
 acl_types0=Iba uvedené
@@ -926,7 +926,7 @@ slaves_os=Operačný systém
 slaves_add=Pridať server
 slaves_ok=Pridať teraz
 slaves_gadd=Pridajte servery do skupiny
-slaves_group=V skupine <$1>
+slaves_group=V skupine &lt;$1&gt;
 slaves_need=Predtým, ako ich budete môcť spravovať, musíte do modulu <a href='$1'>Index webových serverov</a> pridať servery s prihlasovacím menom a heslom.
 slaves_return=klastrové servery
 slaves_delete=Vymazať označené

@@ -34,7 +34,6 @@ allow_title=Controlo de Acesso de Tarefas Agendadas
 allow_desc=Este formulário permite-lhe controlar que utilizadores podem criar e executar tarefas agendadas.
 allow_ecannot=Você não pode controlar o acesso de utilizadores às tarefas agendadas
 allow_all1=Recusar todos os utilizadores excepto o root
-allow_all1=Recusar todos os utilizadores excepto o root
 allow_all3=Permitir todos os utilizadores
 allow_allow=Permitir apenas os utilizadores listados
 allow_deny=Recusar apenas os utilizadores listados

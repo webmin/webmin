@@ -16,7 +16,6 @@ index_chain=Ķēde $1
 index_action=Darbība
 index_desc=Stāvoklis
 index_comm=Komentārs
-index_no_comment=
 index_move=Kustēties
 index_none=Šai ķēdei nav definēti noteikumi.
 index_policy=Iestatīt noklusējuma darbību uz:

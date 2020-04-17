@@ -1,14 +1,14 @@
 apply_err=Échec de l'application de la configuration
 apply_failed=Une erreur de configuration a été détectée
 apply_problem=Échec de l'application de la configuration : $1
-backup_done=... sauvegarde effectuée avec succès.
+backup_wait=Attendre les résultats ?
 backup_ok=Sauvegarder maintenant
 backup_return=Page de sauvegarde
-backup_wait=Attendre les résultats ?
+backup_done=... sauvegarde effectuée avec succès.
 cancel_enone=aucune n'est sélectionnée
-tls_none=Aucune
 tls_require=N'accepter que les connections TLS ?
 tls_verify=Vérifier les clients TLS ?
+tls_none=Aucune
 weekdaynum_1=Première
 weekdaynum_2=Deuxième
 weekdaynum_3=Troisième

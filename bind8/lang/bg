@@ -553,7 +553,7 @@ acl_vall=Всички изгледи
 acl_vsel=Избрани изгледи..
 acl_vnsel=Всички освен избраните ..
 acl_vnone=Няма изгледи
-acl_inview=Зони в изглед <$1>
+acl_inview=Зони в изглед &lt;$1&gt;
 acl_types=Позволени типове записи
 acl_types1=Всички
 acl_types0=Само изброени
@@ -914,7 +914,7 @@ slaves_os=Операционна система
 slaves_add=Добави сървър
 slaves_ok=Добави Сега
 slaves_gadd=Добави сървъри към група
-slaves_group=В група <$1>
+slaves_group=В група &lt;$1&gt;
 slaves_need=Трябва да добавите сървъри с логин и парола в модула <a href='$1'>Webmin Servers Index</a>, преди те да могат да бъдат управлявани оттук.
 slaves_return=клъстерни сървъри
 slaves_delete=Изтрий Избраните

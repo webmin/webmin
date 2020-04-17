@@ -16,7 +16,6 @@ index_chain=连锁 $1
 index_action=行动
 index_desc=条件
 index_comm=评论
-index_no_comment=
 index_move=移动
 index_none=没有为此链定义任何规则。
 index_policy=将默认操作设置为：

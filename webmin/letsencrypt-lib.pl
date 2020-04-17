@@ -296,7 +296,7 @@ else {
 				: "--dns-hook $dns_hook ".
 				  "--cleanup-hook $cleanup_hook ").
 		($staging ? "--ca https://acme-staging.api.letsencrypt.org "
-			  : "").
+			  : "--disable-check ").
 		"--quiet ".
 		"2>&1 >".quotemeta($cert));
 	&reset_environment();

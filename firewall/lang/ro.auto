@@ -16,7 +16,6 @@ index_chain=Lanț $1
 index_action=Acțiune
 index_desc=Condiție
 index_comm=cometariu
-index_no_comment=
 index_move=Mișcare
 index_none=Nu există reguli definite pentru acest lanț.
 index_policy=Setați acțiunea implicită la:

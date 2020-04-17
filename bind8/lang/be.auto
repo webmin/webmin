@@ -565,7 +565,7 @@ acl_vall=Усе погляды
 acl_vsel=Выбраныя прагляды ..
 acl_vnsel=Усе, акрамя выбраных ..
 acl_vnone=Праглядаў няма
-acl_inview=Зоны ў поле <$1>
+acl_inview=Зоны ў поле &lt;$1&gt;
 acl_types=Дазволеныя тыпы запісаў
 acl_types1=Усе
 acl_types0=Толькі ў спісе
@@ -926,7 +926,7 @@ slaves_os=Аперацыйная сістэма
 slaves_add=Дадаць сервер
 slaves_ok=Дадаць зараз
 slaves_gadd=Даданне сервераў у групу
-slaves_group=У групе <$1>
+slaves_group=У групе &lt;$1&gt;
 slaves_need=Вы павінны дадаць серверы з лагінам і паролем у модулі <a href='$1'>Індэкс сервераў Webmin</a>, каб ім удалося кіраваць тут.
 slaves_return=серверы кластараў
 slaves_delete=Выдаліць выбранае

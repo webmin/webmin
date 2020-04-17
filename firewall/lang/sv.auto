@@ -16,7 +16,6 @@ index_chain=Kedja $1
 index_action=Verkan
 index_desc=Tillstånd
 index_comm=Kommentar
-index_no_comment=
 index_move=Flytta
 index_none=Det finns inga regler definierade för denna kedja.
 index_policy=Ställ in standardåtgärd till:

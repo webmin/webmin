@@ -16,7 +16,6 @@ index_chain=Kæde $1
 index_action=Handling
 index_desc=Tilstand
 index_comm=Kommentar
-index_no_comment=
 index_move=Bevæge sig
 index_none=Der er ingen regler defineret for denne kæde.
 index_policy=Sæt standardhandling til:

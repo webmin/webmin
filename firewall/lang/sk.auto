@@ -1,7 +1,6 @@
 index_title_v=Firewall IPv4
 index_title_v6=Firewall IPv6
 index_evalid=VÝSTRAHA! Vaša aktuálna konfigurácia IPtables je neplatná : $1 
-index_no_comment=
 index_crename=Premenovať reťazec
 index_cmovesel=Presunúť vybraté
 index_unapply2=Uložiť konfiguráciu

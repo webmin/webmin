@@ -1,6 +1,6 @@
 # Contains a function to supply the syslog module with extra logs
 
-do 'apache-lib.pl';
+require 'apache-lib.pl';
 
 # syslog_getlogs()
 # Returns the main error log, if it exists

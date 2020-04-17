@@ -2,7 +2,6 @@ index_title_v=IPv4 Güvenlik Duvarı
 index_title_v6=IPv6 Güvenlik Duvarı
 index_editing=Kural dosyası $1 
 index_evalid=UYARI! Mevcut IPtables yapılandırmanız geçersiz : $1 
-index_no_comment=
 index_crename=Zinciri Yeniden Adlandır
 index_cmovesel=Seçileni Taşı
 index_unapply2=Yapılandırmayı Kaydet

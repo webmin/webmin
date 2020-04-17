@@ -533,7 +533,7 @@ acl_vall=Alle visninger
 acl_vsel=Valgte visninger..
 acl_vnsel=Alle unntatt valgte..
 acl_vnone=Ingen visninger
-acl_inview=Soner i visning <$1>
+acl_inview=Soner i visning &lt;$1&gt;
 acl_types=Tillatte oppføringstyper
 acl_types1=Alle
 acl_types0=Bare listede
@@ -890,7 +890,7 @@ slaves_os=Operativsystem
 slaves_add=Legg til tjener
 slaves_ok=Legg til nå
 slaves_gadd=Legg til tjenere i gruppe
-slaves_group=I gruppe <$1>
+slaves_group=I gruppe &lt;$1&gt;
 slaves_need=Du må legge til tjenere med brukerenavn og passord i modulen <a href='$1'>Webmin Tjenere</a> før de kan administreres her.
 slaves_return=klynge tjenere
 slaves_delete=Fjern valgte

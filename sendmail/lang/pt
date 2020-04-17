@@ -237,7 +237,6 @@ relay_eversion=Apenas as versões 8.9 ou superior do sendmail suportam a caracte
 relay_domains=Domínios autorizados a fazer relaying
 relay_desc1=A não ser que seja permitido pelas regras do <a href='$1'>controlo de spam</a>, o sendmail permitirá apenas o relaying aos domínios listados na caixa de texto da esquerda. As mensagens de correio que chegam que não sejam para um utilizador local ou qualquer dos domínios listados, serão rejeitados.s
 relay_desc2=If your system is serving as a gateway for several domains that are not directly accessible from outside your network (using the <a href='$1'>domain routing</a> feature), then all those domains should be listed here.
-relay_domains=Domínios autorizados a fazer relaying
 relay_err=Erro ao guardar domínios de relay
 relay_edomain='$1' não é um nome de domínio válido
 mailq_title=Lista de espera de correio

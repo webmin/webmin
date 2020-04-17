@@ -1,6 +1,6 @@
-index_hosts=Svaka promjena lozinke uzrokovana uporabom ovog modula biti će primijenjena na sve $1 hostove i vođena Skupinom Korisnika i grupom modula.
-index_noservers=Ni jedan poslužitelj ne nadgleda u definiranju <a href=$1>Skupine Korisnika i Grupa</a> modula
 index_title=Skupina Izmjenjenih Lozinki 
+index_noservers=Ni jedan poslužitelj ne nadgleda u definiranju <a href=$1>Skupine Korisnika i Grupa</a> modula
+index_hosts=Svaka promjena lozinke uzrokovana uporabom ovog modula biti će primijenjena na sve $1 hostove i vođena Skupinom Korisnika i grupom modula.
 passwd_err=Neuspjela izmjena lozinke
-passwd_on=Mijenjam lozinku na $1 ..
 passwd_title=Minjem Lozinku
+passwd_on=Mijenjam lozinku na $1 ..

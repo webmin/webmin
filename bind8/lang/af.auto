@@ -565,7 +565,7 @@ acl_vall=Alle uitsigte
 acl_vsel=Geselekteerde aansigte. ..
 acl_vnsel=Almal behalwe gekies ..
 acl_vnone=Geen uitsigte nie
-acl_inview=Sones in die vertoning <$1>
+acl_inview=Sones in die vertoning &lt;$1&gt;
 acl_types=Toelaatbare rekordtipes
 acl_types1=Almal
 acl_types0=Slegs gelys
@@ -926,7 +926,7 @@ slaves_os=Bedryfstelsel
 slaves_add=Voeg bediener by
 slaves_ok=Voeg nou by
 slaves_gadd=Voeg bedieners in groep by
-slaves_group=In groep <$1>
+slaves_group=In groep &lt;$1&gt;
 slaves_need=U moet bedieners met 'n aanmelding en wagwoord byvoeg in die <a href='$1'>Webmin Servers Index</a> module voordat dit hier bestuur kan word.
 slaves_return=groep bedieners
 slaves_delete=Verwyder geselekteerde

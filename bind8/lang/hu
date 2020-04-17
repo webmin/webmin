@@ -470,7 +470,7 @@ acl_vall=All views
 acl_vsel=Selected views..
 acl_vnsel=All except selected..
 acl_vnone=No views
-acl_inview=Zones in view <$1>
+acl_inview=Zones in view &lt;$1&gt;
 acl_types=Allowed record types
 acl_types1=All
 acl_types0=Only listed
@@ -818,7 +818,7 @@ slaves_os=Operating system
 slaves_add=Add server
 slaves_ok=Add Now
 slaves_gadd=Add servers in group
-slaves_group=In group <$1>
+slaves_group=In group &lt;$1&gt;
 slaves_need=You must add servers with a login and password in the <a href='$1'>Webmin Servers Index</a> module before they can be managed here.
 slaves_return=cluster servers
 slaves_delete=Remove Selected

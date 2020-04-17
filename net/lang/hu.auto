@@ -1,4 +1,4 @@
-bifc_nobridge=<Nincs>
+bifc_nobridge=&lt;Nincs&gt;
 bifc_ebridge=A híd interfésznek számnak kell lennie
 bifc_bridgestp=Átfogó fa protokoll
 bifc_bridgefd=Előre késleltetés

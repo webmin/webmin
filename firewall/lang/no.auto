@@ -1,7 +1,6 @@
 index_title_v=IPv4-brannmur
 index_title_v6=IPv6 brannmur
 index_evalid=ADVARSEL! Din nåværende IPtables-konfigurasjon er ugyldig : $1 
-index_no_comment=
 index_fail2ban=Det ser ut til at Fail2Ban blir brukt til å administrere noen brannmurregler. Du bør endre dem med <a href='$1'>Fail2Ban-modul</a> og filtrere <a href=$2>f2b -. *</a> eller <a href=$2>fail2ban -. *</a>.
 index_filter_chain=administreres ikke av brannmuren.
 index_filter_nodirect=Eksterne administrerte regler oppdaget. Aktiver "<a href=$1>Rediger brannmurregler"</a>, ellers kan brannmurreglene bryte.

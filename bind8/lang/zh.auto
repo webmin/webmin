@@ -331,7 +331,7 @@ slaves_os=操作系统
 slaves_add=添加服务器
 slaves_ok=立即新增
 slaves_gadd=在组中添加服务器
-slaves_group=在组<$1>中
+slaves_group=在组&lt;$1&gt;中
 slaves_need=您必须在<a href='$1'>Webmin服务器索引</a>模块中添加具有登录名和密码的服务器，然后才能在此处对其进行管理。
 slaves_return=集群服务器
 slaves_delete=删除选定

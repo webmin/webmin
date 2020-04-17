@@ -3,7 +3,6 @@ index_title_v6=Cortafuegos IPv6
 index_editing=Archivo de reglas $1 
 index_evalid=¡ADVERTENCIA! Su configuración actual de IPtables no es válida : $1 
 index_comm=Comentario
-index_no_comment=
 index_jump_reject=<font color=#ff4400>Rechazar</font>
 index_jump_log=Paquete de registro
 index_crename=Cambiar nombre de cadena

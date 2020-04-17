@@ -1,9 +1,9 @@
-left_feedback=Send tilbakemelding
-left_home=Systeminformasjon
 left_login=Brukernavn: $1
-left_logs=Vis modulens logger
+left_home=Systeminformasjon
 left_oc=Sponset av OpenCountry
-left_others=Andre
-left_search=Søk:
-left_search_usermin=Søk i Usermin:
+left_feedback=Send tilbakemelding
 left_search_webmin=Søk i Webmin:
+left_search_usermin=Søk i Usermin:
+left_search=Søk:
+left_logs=Vis modulens logger
+left_others=Andre

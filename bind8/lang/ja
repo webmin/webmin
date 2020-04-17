@@ -452,7 +452,7 @@ acl_vall=全てのビュー
 acl_vsel=選択したビュー..
 acl_vnsel=選択したものを除く全て..
 acl_vnone=ビューなし
-acl_inview=表示中のゾーン <$1>
+acl_inview=表示中のゾーン &lt;$1&gt;
 acl_types=許可されたレコードタイプ
 acl_types1=全て
 acl_types0=リスト上のみ
@@ -786,7 +786,7 @@ slaves_os=オペレーティング・システム
 slaves_add=サーバーを追加
 slaves_ok=今すぐ追加
 slaves_gadd=グループにサーバーを追加する
-slaves_group=グループで <$1>
+slaves_group=グループで &lt;$1&gt;
 slaves_need=<a href='$1'>Webmin サーバ一覧</a> モジュールでログイン名とパスワードを管理されたサーバを追加する必要があります。
 slaves_return=クラスタサーバー
 slaves_delete=削除選択

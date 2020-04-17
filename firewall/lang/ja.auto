@@ -2,7 +2,6 @@ index_title_v=IPv4ファイアウォール
 index_title_v6=IPv6ファイアウォール
 index_editing=ルールファイル $1
 index_evalid=警告！現在のIPtables構成は無効です： $1
-index_no_comment=
 index_jump_log=ログパケット
 index_crename=チェーンの名前を変更
 index_cdeletesel=選択を削除します

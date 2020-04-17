@@ -16,7 +16,6 @@ index_chain=שרשרת $1
 index_action=פעולה
 index_desc=מצב
 index_comm=תגובה
-index_no_comment=
 index_move=מהלך \ לזוז \ לעבור
 index_none=אין כללים המוגדרים לשרשרת זו.
 index_policy=הגדר את פעולת ברירת המחדל ל:

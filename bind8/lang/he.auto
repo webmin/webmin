@@ -565,7 +565,7 @@ acl_vall=כל הנופים
 acl_vsel=תצוגות נבחרות ..
 acl_vnsel=כולם למעט נבחרים ..
 acl_vnone=אין צפיות
-acl_inview=אזורים בתצוגה < $1 >
+acl_inview=אזורים בתצוגה &lt; $1 &gt;
 acl_types=סוגי רשומות מותרים
 acl_types1=את כל
 acl_types0=רשום רק
@@ -926,7 +926,7 @@ slaves_os=מערכת הפעלה
 slaves_add=הוסף שרת
 slaves_ok=הוסף כעת
 slaves_gadd=הוסף שרתים בקבוצה
-slaves_group=בקבוצה < $1 >
+slaves_group=בקבוצה &lt; $1 &gt;
 slaves_need=עליך להוסיף שרתים עם כניסה וסיסמה במודול <a href='$1'>אינדקס שרתי Webmin</a> לפני שניתן יהיה לנהל אותם כאן.
 slaves_return=שרתי אשכול
 slaves_delete=הסר פריטים שנבחרו

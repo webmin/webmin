@@ -463,7 +463,7 @@ acl_vall=Todas as visões
 acl_vsel=Visões selecionadas..
 acl_vnsel=Todas as exceções selecionadas..
 acl_vnone=Nenhuma visão
-acl_inview=Zonas na visão <$1>
+acl_inview=Zonas na visão &lt;$1&gt;
 acl_types=Todos os tipos de registro permitidos
 acl_types1=Todos
 acl_types0=Somente listados
@@ -809,7 +809,7 @@ slaves_os=Sistema operacional
 slaves_add=Adicionar servidor
 slaves_ok=Adicionar agora
 slaves_gadd=Adicionar servidores no grupo
-slaves_group=No grupo <$1>
+slaves_group=No grupo &lt;$1&gt;
 slaves_need=Você deve adicionar servidores com um login e senha no módulo de <a href='$1'>Índice de Servidores Webmin</a> antes deles poderem ser gerenciados aqui.
 slaves_return=cluster de servidores
 slaves_delete=Remover Selecionados
