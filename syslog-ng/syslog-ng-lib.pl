@@ -46,7 +46,7 @@ for(my $lnum=0; $lnum<@$lref; $lnum++) {
 	$line =~ s/#.*$//g;		# Remove hash comment
 	$line =~ s/\/\/.*$//g if ($line !~ /".*\/\/.*"/);
 	$line =~ s/\/\*.*\*\///g;	# Remove multi-line comment
-	if ($line =~ /^\@include\s+"(.*)"/) {
+	if ($line =~ /^\@include\s+"([^"]+)"/) {
 		# Found an include .. replace with contents of the file(s)
 		local $incs = $1;
 		if ($incs !~ /^\//) {
