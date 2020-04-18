@@ -484,29 +484,12 @@ while(<MTAB>) {
 		# The source for proc mounts is always proc
 		$p[0] = "proc";
 		}
-	if (!$_[0] && ($p[2] =~ /^ext\d+$/ && $has_e2label ||
-	    	       $p[2] eq "xfs" && $has_xfs_db ||
-		       $p[2] eq "reiserfs" && $has_reiserfstune)) {
+	if (!$_[0]) {
 		# Check for a label on this partition, and there is one
 		# and this filesystem is in fstab with the label, change
 		# the device.
-		local $label;
-		if ($p[2] eq "xfs") {
-			local $out = &backquote_command("xfs_db -x -p xfs_admin -c label -r $p[0] 2>&1", 1);
-			$label = $1 if ($out =~ /label\s*=\s*"(.*)"/ &&
-					$1 ne '(null)');
-			}
-		elsif ($p[2] eq "reiserfs") {
-			local $out = &backquote_command("reiserfstune $p[0] 2>&1");
-			if ($out =~ /LABEL:\s*(\S+)/) {
-				$label = $1;
-				}
-			}
-		else {
-			$label = &backquote_command("e2label $p[0] 2>&1", 1);
-			chop($label);
-			}
-		if (!$?) {
+		local $label = &get_filesystem_label(@p);
+		if (defined($label)) {
 			foreach $m (@mounts) {
 				if ($m->[0] eq $p[1] &&
 				    $m->[1] eq "LABEL=$label") {
@@ -2522,6 +2505,44 @@ if ($path =~ /^\\\\([^\\]+)\\([^\\]+)(\\.*)?/) {
 	$path = "\\\\".lc($1)."\\".lc($2).$3;
 	}
 return $path;
+}
+
+# get_filesystem_label(device, mount, type)
+# Returns the label if there is one for this filesystem, or undef
+sub get_filesystem_label
+{
+local @p = @_;
+if (defined($get_filesystem_label_cache{$p[0]})) {
+	return $get_filesystem_label_cache{$p[0]};
+	}
+local $rv = "";
+if ($p[2] =~ /^ext\d+$/ && $has_e2label ||
+    $p[2] eq "xfs" && $has_xfs_db ||
+    $p[2] eq "reiserfs" && $has_reiserfstune) {
+	local $label;
+	if ($p[2] eq "xfs") {
+		local $out = &backquote_command(
+			"xfs_db -x -p xfs_admin -c label -r ".
+			quotemeta($p[0])." 2>&1", 1);
+		$label = $1 if ($out =~ /label\s*=\s*"(.*)"/ &&
+				$1 ne '(null)');
+		}
+	elsif ($p[2] eq "reiserfs") {
+		local $out = &backquote_command(
+			"reiserfstune ".quotemeta($p[0])." 2>&1");
+		if ($out =~ /LABEL:\s*(\S+)/) {
+			$label = $1;
+			}
+		}
+	else {
+		$label = &backquote_command(
+			"e2label ".quotemeta($p[0])." 2>&1", 1);
+		chop($label);
+		}
+	$rv = $label if (!$?);
+	}
+$get_filesystem_label_cache{$p[0]} = $rv;
+return $rv;
 }
 
 1;
