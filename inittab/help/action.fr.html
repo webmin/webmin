@@ -1,52 +1,52 @@
 <header>Action</header>
 
-Decrit quel action doit être faite.<p>
+Decrit quel action doit Ãªtre faite.<p>
 
 Les actions valides pour ce champ sont :<p>
 
-<b>Redémarrer après être terminé</b><br>
-Le processus est redémarré une fois qu'il est terminé.  (exemple getty).<p>
+<b>RedÃ©marrer aprÃ¨s Ãªtre terminÃ©</b><br>
+Le processus est redÃ©marrÃ© une fois qu'il est terminÃ©.  (exemple getty).<p>
 
-<b>Attend son exécution dans le niveau</b><br>
-Le processus est démarré quand le niveau d'exécution est atteint.  <i>Init</i> attend qu'il se termine.<p>
+<b>Attend son exÃ©cution dans le niveau</b><br>
+Le processus est dÃ©marrÃ© quand le niveau d'exÃ©cution est atteint.  <i>Init</i> attend qu'il se termine.<p>
 
 <b>Une seule fois dans le niveau</b><br>
-Le processus sera exécuté une seule et unique fois, quand le niveau d'exécution est entré.<p>
+Le processus sera exÃ©cutÃ© une seule et unique fois, quand le niveau d'exÃ©cution est entrÃ©.<p>
 
-<b>Au démarrage</b><br>
-Le processus est exécuté durant le démarrage, les niveaux d'exécution sont ignorés.<p>
+<b>Au dÃ©marrage</b><br>
+Le processus est exÃ©cutÃ© durant le dÃ©marrage, les niveaux d'exÃ©cution sont ignorÃ©s.<p>
 
-<b>Au démarrage pendant et init l'attend</b><br>
-Le processus est exécuté durant le démarrage, et <i>init</i> attend qu'il ai terminé de s'exécuter avant de continuer (exemple./etc/rc).  Le niveau d'exécution est ignoré.<p>
+<b>Au dÃ©marrage pendant et init l'attend</b><br>
+Le processus est exÃ©cutÃ© durant le dÃ©marrage, et <i>init</i> attend qu'il ai terminÃ© de s'exÃ©cuter avant de continuer (exemple./etc/rc).  Le niveau d'exÃ©cution est ignorÃ©.<p>
 
 <b>Rien faire</b><br>
 Fait rien.<p>
 
 <b>Au niveau A, B ou C</b><br>
-Au processus marqué de cet action, <i>init</i> l'exécute quand un des niveaux d'exécution A, B ou C sont appelé.  Par contre, aucun réel changement de niveau sont fait quand un de ses niveaux (a, b ou c) sont appelé.<p>
+Au processus marquÃ© de cet action, <i>init</i> l'exÃ©cute quand un des niveaux d'exÃ©cution A, B ou C sont appelÃ©.  Par contre, aucun rÃ©el changement de niveau sont fait quand un de ses niveaux (a, b ou c) sont appelÃ©.<p>
 
-<b>Au niveau par défaut</b><br>
-Une entrée contient le niveau d'exécution par défaut après que le système ai démarré.  C'est à ce niveau par défaut que s'exécute ce processus, ainsi les niveaux d'exécution sont ignorés.<p>
+<b>Au niveau par dÃ©faut</b><br>
+Une entrÃ©e contient le niveau d'exÃ©cution par dÃ©faut aprÃ¨s que le systÃ¨me ai dÃ©marrÃ©.  C'est Ã  ce niveau par dÃ©faut que s'exÃ©cute ce processus, ainsi les niveaux d'exÃ©cution sont ignorÃ©s.<p>
 
-<b>Durant le démarrage</b><br>
-Le processus sera executé durant le démarrage du système   Il s'exécutera après toutes entrée <tt><b>Au démarrage</b></tt> et <tt><b>Au démarrage sans qu'init l'attende</b></tt> entries. Les niveaux d'exécution sont ignoré.<p>
+<b>Durant le dÃ©marrage</b><br>
+Le processus sera executÃ© durant le dÃ©marrage du systÃ¨me   Il s'exÃ©cutera aprÃ¨s toutes entrÃ©e <tt><b>Au dÃ©marrage</b></tt> et <tt><b>Au dÃ©marrage sans qu'init l'attende</b></tt> entries. Les niveaux d'exÃ©cution sont ignorÃ©.<p>
 
-<b>Quand l'alimentation défaille</b><br>
-Le processus est exécuter quand l'UPS connecté à l'ordinateur informe que l'alimentation va manquer.  <i>Init</i> va attendre que le processus soit terminé avant de continuer.<p>
+<b>Quand l'alimentation dÃ©faille</b><br>
+Le processus est exÃ©cuter quand l'UPS connectÃ© Ã  l'ordinateur informe que l'alimentation va manquer.  <i>Init</i> va attendre que le processus soit terminÃ© avant de continuer.<p>
 
-<b>Quand l'alimentation défaille, sans attendre</b><br>
-As for <tt><b>Quand l'alimentation défaille</b></tt>, except that <i>init</i> does not wait for the process's completion.<p>
+<b>Quand l'alimentation dÃ©faille, sans attendre</b><br>
+As for <tt><b>Quand l'alimentation dÃ©faille</b></tt>, except that <i>init</i> does not wait for the process's completion.<p>
 
 <b>Quand l'alimentation reviens</b><br>
-Ce processus sera exécuter aussitot qu'<i>init</i> est informé que l'alimentation est revenue.<p>
+Ce processus sera exÃ©cuter aussitot qu'<i>init</i> est informÃ© que l'alimentation est revenue.<p>
 
-<b>Quand l'alimentation s'arrête</b><br>
-Le processus s'exécute quand <i>init</i> constate que la batterie externe de l'UPS est presque vide et que l'alimentation va manquer.<p>
+<b>Quand l'alimentation s'arrÃªte</b><br>
+Le processus s'exÃ©cute quand <i>init</i> constate que la batterie externe de l'UPS est presque vide et que l'alimentation va manquer.<p>
 
 <b>Ctrl-Alt-Del</b><br>
-Le processus sera exécuté quand <i>init</i> recoit le signal <i>SIGINT</i> pour qu'il se termine.  Ceci signifie que quelqu'un sur la console a appuyé sur les touches CTRL-ALT-DEL.  En général, celà signifie qu'il souhaite redémarrer le système.<p>
+Le processus sera exÃ©cutÃ© quand <i>init</i> recoit le signal <i>SIGINT</i> pour qu'il se termine.  Ceci signifie que quelqu'un sur la console a appuyÃ© sur les touches CTRL-ALT-DEL.  En gÃ©nÃ©ral, celÃ  signifie qu'il souhaite redÃ©marrer le systÃ¨me.<p>
 
-<b>Combinaisons spéciales de touches</b><br>
-Le processus est exécuté quand <i>init</i> recoit un signal du gestionnaire de clavier qui dit qu'une combinaison spéciale de touches à été pressé du clavier de la console.<p>
+<b>Combinaisons spÃ©ciales de touches</b><br>
+Le processus est exÃ©cutÃ© quand <i>init</i> recoit un signal du gestionnaire de clavier qui dit qu'une combinaison spÃ©ciale de touches Ã  Ã©tÃ© pressÃ© du clavier de la console.<p>
 
 <hr>

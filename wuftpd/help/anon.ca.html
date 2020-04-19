@@ -1,42 +1,42 @@
-<header>FTP AnÚnim</header>
+<header>FTP An√≤nim</header>
 
-La primera taula d'aquesta p‡gina permet especificar el directori a quË
-canviar‡ el servidor amb <tt>chroot</tt> quan entri un usuari FTP anÚnim.
+La primera taula d'aquesta p√†gina permet especificar el directori a qu√®
+canviar√† el servidor amb <tt>chroot</tt> quan entri un usuari FTP an√≤nim.
 Es pot triar un directori diferent per classes d'usuaris diferents,
-o bÈ es pot utilitzar un ˙nic directori per totes les classes.
-Si no s'especifica cap directori, El servidor far‡ un <tt>chroot</tt>
+o b√© es pot utilitzar un √∫nic directori per totes les classes.
+Si no s'especifica cap directori, El servidor far√† un <tt>chroot</tt>
 al directori arrel de l'usuari <tt>ftp</tt>.
 <p>
 
 Com que el servidor fa crides externes a programes com <tt>ls</tt> i
-<tt>tar</tt>, el directori arrel anÚnim ha de contenir un directori
+<tt>tar</tt>, el directori arrel an√≤nim ha de contenir un directori
 <tt>bin</tt> amb aquests programes, un directori <tt>lib</tt> amb totes
-les llibreries compartides necess‡ries, i un directori <tt>etc</tt> que
+les llibreries compartides necess√†ries, i un directori <tt>etc</tt> que
 contingui els fitxers <tt>passwd</tt> i <tt>group</tt>. Quan el servidor
-utilitza <tt>chroot</tt> per limitar l'accÈs al directori arrel anÚnim,
+utilitza <tt>chroot</tt> per limitar l'acc√©s al directori arrel an√≤nim,
 no pot accedir a cap programa fora d'aquest directori.
 <p>
 
-La segona taula controla a quin directori far‡ <tt>chroot</tt> el servidor
+La segona taula controla a quin directori far√† <tt>chroot</tt> el servidor
 per als usuaris convidats. Per cada directori, pots especificar a quins
-usuaris s'aplicar‡ aquest directori introduint-ne els noms, UIDs 
+usuaris s'aplicar√† aquest directori introduint-ne els noms, UIDs 
 (com <tt>%3000</tt>) o rangs de UIDs (com <tt>%3000-3006</tt>). Si
-no s'introdueix cap usuari, el directori s'aplicar‡ a tots els usuaris
+no s'introdueix cap usuari, el directori s'aplicar√† a tots els usuaris
 convidats.
 <p>
 
 La tercera taula permet controlar a quin grup Unix es convertiran els
-usuaris FTP anÚnims, en lloc del grup primari de l'usuari <tt>ftp</tt>.
-Per a cada grup introduÔt, pots triar una o mÈs classes d'usuaris,
-per exemple, per concedir accÈs als usuaris anÚnims a certs fitxers 
+usuaris FTP an√≤nims, en lloc del grup primari de l'usuari <tt>ftp</tt>.
+Per a cada grup introdu√Øt, pots triar una o m√©s classes d'usuaris,
+per exemple, per concedir acc√©s als usuaris an√≤nims a certs fitxers 
 des de certes adreces IP.
 <p>
 
 
-Finalment, la secciÛ inferior de la p‡gina tÈ entrades per controlar
-quines contrasenyes sÛn acceptables per a les entrades FTP anÚnimes.
-Tradicionalment, els usuaris FTP han de donar una adreÁa de correu v‡lida
-com la seva contrasenya d'entrada anÚnima.
+Finalment, la secci√≥ inferior de la p√†gina t√© entrades per controlar
+quines contrasenyes s√≥n acceptables per a les entrades FTP an√≤nimes.
+Tradicionalment, els usuaris FTP han de donar una adre√ßa de correu v√†lida
+com la seva contrasenya d'entrada an√≤nima.
 <p>
 
 <hr>

@@ -1,55 +1,55 @@
 <header>Embolcalls TCP</header>
 
 <h3>Patrons</h3>
-El llenguatge de control d'accÈs implementa els patrons seg¸ents:
+El llenguatge de control d'acc√©s implementa els patrons seg√ºents:
 <ul>
-<li>Una cadena que comenÁa amb el car‡cter '.'. Un nom de host hi coincideix si els darrers components del nom coincideixen amb el patrÛ especificat. Per exemple, el patrÛ '.tue.nl' coincideix amb el nom de host 'wzv.win.tue.nl'.</li>
-<li>Una cadena que acaba amb el car‡cter '.'. Una adreÁa de host hi coincideix si els seus primers camps numËrics coincideixen amb el patrÛ donat. Per exemple, el patrÛ '131.155.' coincideix amb l'adreÁa de (gairebÈ) tots els hosts de la xarxa de la Universitat d'Eindhoven (131.155.x.x).</li>
-<li>Una cadena que comenÁa amb el car‡cter '@' es tracta com un nom de grup de xarxa NIS (anteriorment YP). Un nom de cost hi coincideix si Ès un membre host del grup de xarxa especificat. Les coincidËncies de grups de xarxa per nom de procÈs dimoni i nom d'usuaris client no estan suportades.</li>
-<li>Una expressiÛ de la forma 'n.n.n.n/m.m.m.m' s'interpreta com una parella 'xarxa/m‡scara'. Una adreÁa de host IPv4 hi coincideix si 'xarxa' Ès igual a l'AND de l'adreÁa i la 'm‡scara'. Per exemple, el patrÛ xarxa/m‡scara '131.155.72.0/255.255.254.0' coincideix amb totes les adreces del rang '131.155.72.0' a '131.155.73.255'.</li>
-<li>Una expressiÛ de la forma '[n:n:n:n:n:n:n:n]/m' s'interpreta com una parella '[xarxa]/longprefix'. Una adreÁa de host IPv6 hi coincideix si el bits 'longprefix' de xarxa  sÛn iguals als bits 'longprefix' de l'adreÁa. Per exemple, el patrÛ [xarxa]/longprefix '[3ffe:505:2:1::]/64' coincideix amb totes les adreces del rang '3ffe:505:2:1:'? fins a '3ffe:505:2:1:ffff:ffff:ffff:ffff'.</li>
-<li>Una cadena que comenÁa amb un car‡cter '/' es tracta com un nom de fitxer. Un nom de host o adreÁa hi coincideix si coincideix amb qualsevol patrÛ de host o adreÁa llistat al fitxer especificat. El fitxer consisteix en zero o mÈs lÌnies amb zero o mÈs patrons de noms de host o adreces separades per un espai. Es pot utilitzar un patrÛ de nom de fitxer en qualsevol lloc on es pugui utilitzar un patrÛ de nom de host o adreÁa.</li>
-<li>Es poden utilitzar els escarrassos '*' i '?' per fer coincidËncies amb els noms de host o adreces IP. No es pot utilitzar aquest mËtode de coincidËncia en conjunciÛ amb els patrons 'xarxa/m‡scara', els patrons de nom de host que comencen amb '.', o els patrons d'adreces IP que acaben amb '.'.</li>
+<li>Una cadena que comen√ßa amb el car√†cter '.'. Un nom de host hi coincideix si els darrers components del nom coincideixen amb el patr√≥ especificat. Per exemple, el patr√≥ '.tue.nl' coincideix amb el nom de host 'wzv.win.tue.nl'.</li>
+<li>Una cadena que acaba amb el car√†cter '.'. Una adre√ßa de host hi coincideix si els seus primers camps num√®rics coincideixen amb el patr√≥ donat. Per exemple, el patr√≥ '131.155.' coincideix amb l'adre√ßa de (gaireb√©) tots els hosts de la xarxa de la Universitat d'Eindhoven (131.155.x.x).</li>
+<li>Una cadena que comen√ßa amb el car√†cter '@' es tracta com un nom de grup de xarxa NIS (anteriorment YP). Un nom de cost hi coincideix si √©s un membre host del grup de xarxa especificat. Les coincid√®ncies de grups de xarxa per nom de proc√©s dimoni i nom d'usuaris client no estan suportades.</li>
+<li>Una expressi√≥ de la forma 'n.n.n.n/m.m.m.m' s'interpreta com una parella 'xarxa/m√†scara'. Una adre√ßa de host IPv4 hi coincideix si 'xarxa' √©s igual a l'AND de l'adre√ßa i la 'm√†scara'. Per exemple, el patr√≥ xarxa/m√†scara '131.155.72.0/255.255.254.0' coincideix amb totes les adreces del rang '131.155.72.0' a '131.155.73.255'.</li>
+<li>Una expressi√≥ de la forma '[n:n:n:n:n:n:n:n]/m' s'interpreta com una parella '[xarxa]/longprefix'. Una adre√ßa de host IPv6 hi coincideix si el bits 'longprefix' de xarxa  s√≥n iguals als bits 'longprefix' de l'adre√ßa. Per exemple, el patr√≥ [xarxa]/longprefix '[3ffe:505:2:1::]/64' coincideix amb totes les adreces del rang '3ffe:505:2:1:'? fins a '3ffe:505:2:1:ffff:ffff:ffff:ffff'.</li>
+<li>Una cadena que comen√ßa amb un car√†cter '/' es tracta com un nom de fitxer. Un nom de host o adre√ßa hi coincideix si coincideix amb qualsevol patr√≥ de host o adre√ßa llistat al fitxer especificat. El fitxer consisteix en zero o m√©s l√≠nies amb zero o m√©s patrons de noms de host o adreces separades per un espai. Es pot utilitzar un patr√≥ de nom de fitxer en qualsevol lloc on es pugui utilitzar un patr√≥ de nom de host o adre√ßa.</li>
+<li>Es poden utilitzar els escarrassos '*' i '?' per fer coincid√®ncies amb els noms de host o adreces IP. No es pot utilitzar aquest m√®tode de coincid√®ncia en conjunci√≥ amb els patrons 'xarxa/m√†scara', els patrons de nom de host que comencen amb '.', o els patrons d'adreces IP que acaben amb '.'.</li>
 </ul>
 
 <h3>Escarrassos</h3>
-EL llenguatge de control d'accÈs suporta explÌcitament els escarrassos:
+EL llenguatge de control d'acc√©s suporta expl√≠citament els escarrassos:
 <table border>
-<tr><td><b>ALL</b></td><td>L'escarr‡s universal, sempre coincideix.</td></tr>
-<tr><td><b>LOCAL</b></td><td>Coincideix amb qualsevol host el nom del qual no contingui el car‡cter punt.</td></tr>
+<tr><td><b>ALL</b></td><td>L'escarr√†s universal, sempre coincideix.</td></tr>
+<tr><td><b>LOCAL</b></td><td>Coincideix amb qualsevol host el nom del qual no contingui el car√†cter punt.</td></tr>
 <tr><td><b>UNKNOWN</b></td><td>
-Coincideix amb qualsevol usuari de nom desconegut o amb qualsevol nom de host o adreÁa desconeguts. Aquest patrÛ s'ha d'utilitzar amb compte: els noms de host poden estar no disponibles degut a problemes temporals dels servidors de noms. Una adreÁa estar‡ no disponible quan el programari no pugui determinar amb quin tipus de xarxa est‡ parlant.
+Coincideix amb qualsevol usuari de nom desconegut o amb qualsevol nom de host o adre√ßa desconeguts. Aquest patr√≥ s'ha d'utilitzar amb compte: els noms de host poden estar no disponibles degut a problemes temporals dels servidors de noms. Una adre√ßa estar√† no disponible quan el programari no pugui determinar amb quin tipus de xarxa est√† parlant.
 </td></tr>
 <tr><td><b>KNOWN</b></td><td>i
-Coincideix amb qualsevol usuari de nom conegut, i coincideix amb qualsevol host de nom i adreÁa coneguts. Aquest patrÛ s'ha d'utilitzar amb compte: els noms de host poden no estar disponibles degut a problemes temporals dels servidors de noms. Una adreÁa estar‡ no disponible quan el programari no pugui determinar amb quin tipus de xarxa est‡ parlant.
+Coincideix amb qualsevol usuari de nom conegut, i coincideix amb qualsevol host de nom i adre√ßa coneguts. Aquest patr√≥ s'ha d'utilitzar amb compte: els noms de host poden no estar disponibles degut a problemes temporals dels servidors de noms. Una adre√ßa estar√† no disponible quan el programari no pugui determinar amb quin tipus de xarxa est√† parlant.
 </td></tr>
 <tr><td><b>PARANOID</b></td><td>
-Coincideix amb qualsevol host el nom del qual no coincideixi amb la seva adreÁa. Quan tcpd est‡ compilat amb -DPARANOID (mode per defecte), ignora les peticions d'aquests clients fins i tot abans de mirar les taules de control d'accÈs. Compileu-ho sense -DPARANOID si voleu mÈs control sobre aquestes peticions.
+Coincideix amb qualsevol host el nom del qual no coincideixi amb la seva adre√ßa. Quan tcpd est√† compilat amb -DPARANOID (mode per defecte), ignora les peticions d'aquests clients fins i tot abans de mirar les taules de control d'acc√©s. Compileu-ho sense -DPARANOID si voleu m√©s control sobre aquestes peticions.
 </td></tr>
 </table>
 
 <h3>Operadors</h3>
 <b>EXCEPT</b>
-L'˙s previst Ès de la forma: 'llista_1 EXCEPT llista_2'; aquesta construcciÛ coincideix amb qualsevol cosa que coincideixi amb llista_1 a menys que coincideixi amb llista_2. L'operador EXCEPT es pot utilitzar a daemon_lists i client_lists. L'operador EXCEPT es pot niuar: si el llenguatge de control permet l'˙s de parËntesis, 'a EXCEPT b EXCEPT c' s'entendr‡ com '(a EXCEPT (b EXCEPT c))'.
+L'√∫s previst √©s de la forma: 'llista_1 EXCEPT llista_2'; aquesta construcci√≥ coincideix amb qualsevol cosa que coincideixi amb llista_1 a menys que coincideixi amb llista_2. L'operador EXCEPT es pot utilitzar a daemon_lists i client_lists. L'operador EXCEPT es pot niuar: si el llenguatge de control permet l'√∫s de par√®ntesis, 'a EXCEPT b EXCEPT c' s'entendr√† com '(a EXCEPT (b EXCEPT c))'.
 
 <h3>Ordres Shell</h3>
-Si la primera regla de control d'accÈs que coincideix contÈ una ordre shell, aquesta ordre est‡ subjecta a les substitucions %<lletra> (vegeu la secciÛ seg¸ent). El resultat s'executa a travÈs d'un procÈs fill /bin/sh amb entrada est‡ndard , sortida est‡ndard i error est‡ndard connectats a /dev/null. Especifiqueu un '&' al final de l'ordre si no voleu esperar que s'hagi executat l'acciÛ.
+Si la primera regla de control d'acc√©s que coincideix cont√© una ordre shell, aquesta ordre est√† subjecta a les substitucions %<lletra> (vegeu la secci√≥ seg√ºent). El resultat s'executa a trav√©s d'un proc√©s fill /bin/sh amb entrada est√†ndard , sortida est√†ndard i error est√†ndard connectats a /dev/null. Especifiqueu un '&' al final de l'ordre si no voleu esperar que s'hagi executat l'acci√≥.
 </p>
-Les ordres shell no s'han de refiar del valor de PATH d'inetd. En lloc d'aixÚ, cal que utilitzin camins absoluts, o que comencin amb una instrucciÛ PATH=elquesigui explÌcita.
+Les ordres shell no s'han de refiar del valor de PATH d'inetd. En lloc d'aix√≤, cal que utilitzin camins absoluts, o que comencin amb una instrucci√≥ PATH=elquesigui expl√≠cita.
 
 <h3>Expansions %</h3>
-Les seg¸ents expansions estan disponibles per a les ordres shell:
+Les seg√ºents expansions estan disponibles per a les ordres shell:
 <table>
-<tr><td>%a (%A)</td><td>L'adreÁa del host (servidor) client.</td></tr>
-<tr><td>%c</td><td>InformaciÛ del client: usuari@host, usuari@adreÁa, un nom de host, o nomÈs una adreÁa, depenent de quanta informaciÛ hi hagi disponible.</td></tr>
-<tr><td>%d</td><td>El nom del procÈs dimoni (valor de argv[0]).</td></tr>
-<tr><td>%h (%H)</td><td>El nom de host (servidor) client, o bÈ l'adreÁa si el nom de host no est‡ disponible.</td></tr>
-<tr><td>%n (%N)</td><td>El nom de host (servidor) client (o bÈ "unknown", o bÈ "paranoid").</td></tr>
-<tr><td>%p</td><td>L'identificador del procÈs dimoni.</td></tr>
-<tr><td>%s</td><td>InformaciÛ del servidor: dimoni@host, dimoni@adreÁa, o nomÈs el nom del dimoni, depenent de quanta informaciÛ hi hagi disponible.</td></tr>
-<tr><td>%u</td><td>El nom de l'usuari client (o bÈ "unknown").</td></tr>
-<tr><td>%%</td><td>S'expandeix a un sol car‡cter '%'.</td></tr>
+<tr><td>%a (%A)</td><td>L'adre√ßa del host (servidor) client.</td></tr>
+<tr><td>%c</td><td>Informaci√≥ del client: usuari@host, usuari@adre√ßa, un nom de host, o nom√©s una adre√ßa, depenent de quanta informaci√≥ hi hagi disponible.</td></tr>
+<tr><td>%d</td><td>El nom del proc√©s dimoni (valor de argv[0]).</td></tr>
+<tr><td>%h (%H)</td><td>El nom de host (servidor) client, o b√© l'adre√ßa si el nom de host no est√† disponible.</td></tr>
+<tr><td>%n (%N)</td><td>El nom de host (servidor) client (o b√© "unknown", o b√© "paranoid").</td></tr>
+<tr><td>%p</td><td>L'identificador del proc√©s dimoni.</td></tr>
+<tr><td>%s</td><td>Informaci√≥ del servidor: dimoni@host, dimoni@adre√ßa, o nom√©s el nom del dimoni, depenent de quanta informaci√≥ hi hagi disponible.</td></tr>
+<tr><td>%u</td><td>El nom de l'usuari client (o b√© "unknown").</td></tr>
+<tr><td>%%</td><td>S'expandeix a un sol car√†cter '%'.</td></tr>
 </table>
-Els car‡cters de les expansions que puguin confondre la shell se substitueixen amb subguions.
+Els car√†cters de les expansions que puguin confondre la shell se substitueixen amb subguions.
 
 <hr />

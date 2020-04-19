@@ -1,59 +1,59 @@
-<header>Quota dla dysków</header>
+<header>Quota dla dyskÃ³w</header>
 
 <h3>Wprowadzenie</h3>
-Quota jest metod± ograniczania rozmiaru przestrzeni dyskowej, która mo¿e byæ
-wykorzystana przez poszczególnych u¿ytkowników i&nbsp;grupy. Dla ka¿dego
-systemu plików mo¿esz ustawiæ limity rozmiaru przestrzeni dyskowej oraz
-ilo¶ci plików, które dany u¿ytkownik mo¿e wykorzystaæ. Niektóre systemy
-uniksowe mog± równie¿ pozwalaæ na ograniczenie przestrzeni dyskowej
-i&nbsp;plików u¿ywanych przez wszystkich cz³onków pewnych grup. <p>
+Quota jest metodÄ… ograniczania rozmiaru przestrzeni dyskowej, ktÃ³ra moÅ¼e byÄ‡
+wykorzystana przez poszczegÃ³lnych uÅ¼ytkownikÃ³w i&nbsp;grupy. Dla kaÅ¼dego
+systemu plikÃ³w moÅ¼esz ustawiÄ‡ limity rozmiaru przestrzeni dyskowej oraz
+iloÅ›ci plikÃ³w, ktÃ³re dany uÅ¼ytkownik moÅ¼e wykorzystaÄ‡. NiektÃ³re systemy
+uniksowe mogÄ… rÃ³wnieÅ¼ pozwalaÄ‡ na ograniczenie przestrzeni dyskowej
+i&nbsp;plikÃ³w uÅ¼ywanych przez wszystkich czÅ‚onkÃ³w pewnych grup. <p>
 
-Quota moga byæ ustawione wy³±cznie na lokalnych uniksowych systemach plików.
-Systemy plików montowane przez NFS z&nbsp;innych systemów u¿ywaj± quota
-z&nbsp;serwera, je¶li takie ustawiono. Nieuiniksowe systemy plików, takie
-jak MS-DOS czy ISO9660 nie wspomagaj± quota w&nbsp;ogóle. <p>
+Quota moga byÄ‡ ustawione wyÅ‚Ä…cznie na lokalnych uniksowych systemach plikÃ³w.
+Systemy plikÃ³w montowane przez NFS z&nbsp;innych systemÃ³w uÅ¼ywajÄ… quota
+z&nbsp;serwera, jeÅ›li takie ustawiono. Nieuiniksowe systemy plikÃ³w, takie
+jak MS-DOS czy ISO9660 nie wspomagajÄ… quota w&nbsp;ogÃ³le. <p>
 
-Dla ka¿dego u¿ytkownika narzucone s± cztery limity&nbsp;:
+Dla kaÅ¼dego uÅ¼ytkownika narzucone sÄ… cztery limity&nbsp;:
 <dl>
-<dt><b>Miêkki limit bloków</b>
-<dd>Liczba bloków na dysku, po zajêciu której wy¶wietlane jest ostrze¿enie.
-<dt><b>Twardy limit bloków</b>
-<dd>Maksymalna liczba bloków na dysku, które mog± byæ zajête przez pliki
-    u¿ytkownika.
-<dt><b>Miêkki limit plików</b>
-<dd>Liczba plików, po utworzeniu której wy¶wietlane jest ostrze¿enie.
-<dt><b>Twardy limit plików</b>
-<dd>Maksymalna liczba plików, które u¿ytkownik mo¿e posiadaæ.
+<dt><b>MiÄ™kki limit blokÃ³w</b>
+<dd>Liczba blokÃ³w na dysku, po zajÄ™ciu ktÃ³rej wyÅ›wietlane jest ostrzeÅ¼enie.
+<dt><b>Twardy limit blokÃ³w</b>
+<dd>Maksymalna liczba blokÃ³w na dysku, ktÃ³re mogÄ… byÄ‡ zajÄ™te przez pliki
+    uÅ¼ytkownika.
+<dt><b>MiÄ™kki limit plikÃ³w</b>
+<dd>Liczba plikÃ³w, po utworzeniu ktÃ³rej wyÅ›wietlane jest ostrzeÅ¼enie.
+<dt><b>Twardy limit plikÃ³w</b>
+<dd>Maksymalna liczba plikÃ³w, ktÃ³re uÅ¼ytkownik moÅ¼e posiadaÄ‡.
 </dl>
-Bloki na dysku s± zazwyczaj 512 lub 1024 bajtowe, zale¿nie od systemu
-operacyjnego. W&nbsp;czasie naliczania quota wszystkie rozmiary plików s±
-zaokr±glane w&nbsp;górê do najbli¿szego bloku. Wobec czego nawet pusty plik
-zu¿ywa co najmniej jeden blok. <p>
+Bloki na dysku sÄ… zazwyczaj 512 lub 1024 bajtowe, zaleÅ¼nie od systemu
+operacyjnego. W&nbsp;czasie naliczania quota wszystkie rozmiary plikÃ³w sÄ…
+zaokrÄ…glane w&nbsp;gÃ³rÄ™ do najbliÅ¼szego bloku. Wobec czego nawet pusty plik
+zuÅ¼ywa co najmniej jeden blok. <p>
 
-W&nbsp;przypadku qouta dla plików zliczany jest ka¿dy katalog, urz±dzenie,
-dowi±zanie symboliczne oraz zwyk³y plik. Ich ³±czna ilo¶æ nie mo¿e
-przekroczyæ maksymalnej liczby plików, które u¿ytkownik mo¿e posiadaæ.
-Technicznie, qouta dla plików jest w&nbsp;rzeczywisto¶ci quota dla
-<i>i-nodów</i>. <p>
+W&nbsp;przypadku qouta dla plikÃ³w zliczany jest kaÅ¼dy katalog, urzÄ…dzenie,
+dowiÄ…zanie symboliczne oraz zwykÅ‚y plik. Ich Å‚Ä…czna iloÅ›Ä‡ nie moÅ¼e
+przekroczyÄ‡ maksymalnej liczby plikÃ³w, ktÃ³re uÅ¼ytkownik moÅ¼e posiadaÄ‡.
+Technicznie, qouta dla plikÃ³w jest w&nbsp;rzeczywistoÅ›ci quota dla
+<i>i-nodÃ³w</i>. <p>
 
-<h3>Modu³ Quota dla dysków</h3>
-Strona g³ówna tego modu³u zawiera listê lokalnych systemów plików, które
-mog± wspomagaæ quota. Je¶li quota jest aktualnie w³±czone dla danego systemu
-plików, mo¿esz nacisn±æ na jego ¶cie¿ce, aby wy¶wietliæ quota dla
-poszczególnych u¿ytkowników. Je¶li nie, nacisniêcie <tt>W³±czone quota</tt>
-uaktywni quota dla tego systemu plików. <p>
+<h3>ModuÅ‚ Quota dla dyskÃ³w</h3>
+Strona gÅ‚Ã³wna tego moduÅ‚u zawiera listÄ™ lokalnych systemÃ³w plikÃ³w, ktÃ³re
+mogÄ… wspomagaÄ‡ quota. JeÅ›li quota jest aktualnie wÅ‚Ä…czone dla danego systemu
+plikÃ³w, moÅ¼esz nacisnÄ…Ä‡ na jego Å›cieÅ¼ce, aby wyÅ›wietliÄ‡ quota dla
+poszczegÃ³lnych uÅ¼ytkownikÃ³w. JeÅ›li nie, nacisniÄ™cie <tt>WÅ‚Ä…czone quota</tt>
+uaktywni quota dla tego systemu plikÃ³w. <p>
 
 <if $gconfig{'os_type'} =~ /linux/>
-System operacyjny Linux nie pozwala na w³±czenie quota, je¶li dla systemu
-plików nie ustawiono opcji <tt>U¿ywaj quota</tt> w&nbsp;module Dyski
-i&nbsp;systemy plików. Je¶li ¿aden z&nbsp;twoich systemów plików nie ma
-ustawionej tej opcji nic nie zostanie wy¶wietlone na g³ównej stronie. <p>
+System operacyjny Linux nie pozwala na wÅ‚Ä…czenie quota, jeÅ›li dla systemu
+plikÃ³w nie ustawiono opcji <tt>UÅ¼ywaj quota</tt> w&nbsp;module Dyski
+i&nbsp;systemy plikÃ³w. JeÅ›li Å¼aden z&nbsp;twoich systemÃ³w plikÃ³w nie ma
+ustawionej tej opcji nic nie zostanie wyÅ›wietlone na gÅ‚Ã³wnej stronie. <p>
 </if>
 
-Pod list± systemów plikowych znajduje sie przycisk do wy¶wietlania
-wszystkich quota dla wybranego u¿ytkownika. Bêdzie on widoczny tylko, je¶li
-co najmniej jeden system plików ma w³±czone quota dla u¿ytkowników.
-Podobnie, je¶li co najmniej jeden system plików ma w³±czone quota dla grup,
-pojawi siê przycisk do wy¶wietlania wszystkich quota dla wybranej grupy. <p>
+Pod listÄ… systemÃ³w plikowych znajduje sie przycisk do wyÅ›wietlania
+wszystkich quota dla wybranego uÅ¼ytkownika. BÄ™dzie on widoczny tylko, jeÅ›li
+co najmniej jeden system plikÃ³w ma wÅ‚Ä…czone quota dla uÅ¼ytkownikÃ³w.
+Podobnie, jeÅ›li co najmniej jeden system plikÃ³w ma wÅ‚Ä…czone quota dla grup,
+pojawi siÄ™ przycisk do wyÅ›wietlania wszystkich quota dla wybranej grupy. <p>
 
 <hr>

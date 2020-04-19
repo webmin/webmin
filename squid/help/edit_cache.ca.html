@@ -1,100 +1,100 @@
 <header>Opcions del Cau</header>
 
-<b>Directoris del cau</b>: Pots especificar múltiples línies de directori cau
+<b>Directoris del cau</b>: Pots especificar mÃºltiples lÃ­nies de directori cau
 per escampar el cau per diferents particions del disc.<p>
 
-<em>Directori</em> és un directori principal on s'emmagatzemaran
+<em>Directori</em> Ã©s un directori principal on s'emmagatzemaran
 els fitxers d'intercanvi del cau. Si vols utilitzar un disc complet pel cau,
-llavors això pot ser el directori de muntatge. El directori ha d'existir i
-el procés Squid ha de poder-hi escriure. Squid NO crearà aquest directori
+llavors aixÃ² pot ser el directori de muntatge. El directori ha d'existir i
+el procÃ©s Squid ha de poder-hi escriure. Squid NO crearÃ  aquest directori
 per tu.
 <p>
-<em>Mida</em> és la quantitat d'espai al disc (Mb) per utilitzar sota aquest
-directori. Per defecte, és 100 Mb. Canvia-ho d'acord amb la teva configuració.
+<em>Mida</em> Ã©s la quantitat d'espai al disc (Mb) per utilitzar sota aquest
+directori. Per defecte, Ã©s 100 Mb. Canvia-ho d'acord amb la teva configuraciÃ³.
 <p>
-<em>Dirs de 1º nivell</em> és el nombre de subdirectoris de primer nivell
-que es crearan sota <em>Directori</em>. Per defecte, és 16.
+<em>Dirs de 1Âº nivell</em> Ã©s el nombre de subdirectoris de primer nivell
+que es crearan sota <em>Directori</em>. Per defecte, Ã©s 16.
 <p>
-<em>Dirs de 2º nivell</em> és el nombre de subdirectoris de segon nivell
+<em>Dirs de 2Âº nivell</em> Ã©s el nombre de subdirectoris de segon nivell
 que es crearan sota cadascun dels directoris de primer nivell.
-Per defecte, és 256.
+Per defecte, Ã©s 256.
 <P>
 <b>Mida mitjana d'objecte</em>: Per defecte, 13 Kb. S'utilitza per 
 estimar el nombre d'objectes que el cau pot gestionar.
 <p>
-<b>Objectes per cubell</b>: Per defecte, 50. Número objectiu d'objectes per
+<b>Objectes per cubell</b>: Per defecte, 50. NÃºmero objectiu d'objectes per
 cubell a la taula hash. Abaixant aquest valor s'incrementa el nombre total
-de cubells i també el ritme de manteniment de l'emmagatzematge.
+de cubells i tambÃ© el ritme de manteniment de l'emmagatzematge.
 <p>
 <b>No posis al cau les URLs de les ACLs</b>: Per defecte, cap. Selecciona 
 aquelles ACLs per a les quals no vols que Squid emmagatzemi dades al cau.
-Útil per definir un servidor web intern que no ha d'estar al cau.
+Ãštil per definir un servidor web intern que no ha d'estar al cau.
 <p>
-<b>Temps màxim al cau</b>: Per defecte, 1 any. Aquest paràmetre defineix
-l'edat màxima d'un URL. Per exemple, posant-ho a '1 setmana', farà que
-els objectes s'esborrin si no han estat accedits en una setmana o més.
+<b>Temps mÃ xim al cau</b>: Per defecte, 1 any. Aquest parÃ metre defineix
+l'edat mÃ xima d'un URL. Per exemple, posant-ho a '1 setmana', farÃ  que
+els objectes s'esborrin si no han estat accedits en una setmana o mÃ©s.
 <p>
-<b>Temps cau de petició errònia</b> Per defecte, 5 minuts. Alguns tipus
-d'errors (com ara "connexió rebutjada" i "404 No Trobat") es posen al cau
-en negatiu per un cert període de temps. Tingues en compte que això és
+<b>Temps cau de peticiÃ³ errÃ²nia</b> Per defecte, 5 minuts. Alguns tipus
+d'errors (com ara "connexiÃ³ rebutjada" i "404 No Trobat") es posen al cau
+en negatiu per un cert perÃ­ode de temps. Tingues en compte que aixÃ² Ã©s
 diferent del cau negatiu de les consultes DNS.
 <p>
 <b>Temps cau de consulta de DNS</b>: Per defecte, 6 hores (360 minuts).
 Temps de vida (Time-to-live, TTL) del cau positiu de les consultes DNS
-reeixides. Si vols minimitzar l'ús de ipcache de Squid, posa-ho a 1, no a 0.
+reeixides. Si vols minimitzar l'Ãºs de ipcache de Squid, posa-ho a 1, no a 0.
 <p>
 <b>Temps cau de DNS erroni</b>: Per defecte, 5 minuts. Temps de vida (TTL)
 del cau negatiu de les consultes DNS fallides.
 <p>
-<b>Temps límit de connexió</b>: Per defecte, 120 segons.
-No es pot confiar que alguns sistemes (sobretot Linux) cancel·lin degudament
-les peticions connect(2). Així doncs, el procés Squid força el seu propi
-temps límit en les connexions del servidor. Aquest paràmetre especifica 
-quan ha d'esperar per completar la connexió.
+<b>Temps lÃ­mit de connexiÃ³</b>: Per defecte, 120 segons.
+No es pot confiar que alguns sistemes (sobretot Linux) cancelÂ·lin degudament
+les peticions connect(2). AixÃ­ doncs, el procÃ©s Squid forÃ§a el seu propi
+temps lÃ­mit en les connexions del servidor. Aquest parÃ metre especifica 
+quan ha d'esperar per completar la connexiÃ³.
 <p>
-<b>Temps límit de lectura</b>: Per defecte, 15 minuts. El temps límit de
-lectura s'aplica en connexions de la part del servidor. Després de cada 
-read() reeixit, el temps límit s'ampliarà amb aquesta quantitat. Si no es
-llegeix cap dada altre cop després d'aquest interval de temps, la petició
+<b>Temps lÃ­mit de lectura</b>: Per defecte, 15 minuts. El temps lÃ­mit de
+lectura s'aplica en connexions de la part del servidor. DesprÃ©s de cada 
+read() reeixit, el temps lÃ­mit s'ampliarÃ  amb aquesta quantitat. Si no es
+llegeix cap dada altre cop desprÃ©s d'aquest interval de temps, la peticiÃ³
 s'avorta i s'enregistra amb ERR_READ_TIMEOUT.
 <p>
-<b>Temps màxim de selecció del lloc</b>: Per defecte, 4 segons. Per a
-selecció d'URN a URL d'URLs múltiples.
+<b>Temps mÃ xim de selecciÃ³ del lloc</b>: Per defecte, 4 segons. Per a
+selecciÃ³ d'URN a URL d'URLs mÃºltiples.
 <p>
-<b>Temps límit de petició d'usuari</b>: Per defecte, 15 minuts.
-El temps límit de lectura s'aplica en connexions de la part del servidor.
-Després de cada read() reeixit, el temps límit s'ampliarà amb aquesta
-quantitat. Si no es llegeix cap dada altre cop després d'aquest interval
-de temps, la petició s'avorta i s'enregistra amb ERR_READ_TIMEOUT.
+<b>Temps lÃ­mit de peticiÃ³ d'usuari</b>: Per defecte, 15 minuts.
+El temps lÃ­mit de lectura s'aplica en connexions de la part del servidor.
+DesprÃ©s de cada read() reeixit, el temps lÃ­mit s'ampliarÃ  amb aquesta
+quantitat. Si no es llegeix cap dada altre cop desprÃ©s d'aquest interval
+de temps, la peticiÃ³ s'avorta i s'enregistra amb ERR_READ_TIMEOUT.
 <p>
-<b>Temps màxim de connexió del client</b>: Per defecte, 1 dia.
-El temps màxim que un client (fullejador) té permès de romandre connectat
-al procés cau. Això protegeix el cau de tenir molts sòcols (i per tant
+<b>Temps mÃ xim de connexiÃ³ del client</b>: Per defecte, 1 dia.
+El temps mÃ xim que un client (fullejador) tÃ© permÃ¨s de romandre connectat
+al procÃ©s cau. AixÃ² protegeix el cau de tenir molts sÃ²cols (i per tant
 descriptors de fitxers) clavats en un estat CLOSE_WAIT des de clients remots
-que marxen sense tancar de forma adient (bé a causa d'un error de xarxa,
-bé a causa d'una mala implementació del client).
+que marxen sense tancar de forma adient (bÃ© a causa d'un error de xarxa,
+bÃ© a causa d'una mala implementaciÃ³ del client).
 <p>
-<b>Temps màxim de tancament</b>: Per defecte, 30 segons.
+<b>Temps mÃ xim de tancament</b>: Per defecte, 30 segons.
 Quan es rep SIGTERM o SIGHUP, el cau es posa en mode "pendent de tancament"
-fins que es tanquen tots els sòcols actius. Aquest valor és el temps de
+fins que es tanquen tots els sÃ²cols actius. Aquest valor Ã©s el temps de
 vida del tots els descriptors oberts en el moment del tancament. Tots els
-clients actius passat aquest temps rebran un missatge de temps límit.
+clients actius passat aquest temps rebran un missatge de temps lÃ­mit.
 <p>
 <b>Clients mig tancats</b>:  Per defecte, 'Activat'. Pot ser que alguns
 clients tanquin la part emissora de les seves connexions TCP, alhora que
 deixen les seves parts receptores obertes. De vegades, Squid no pot distingir
-entre una connexió TCP mig tancada i una de completament tancada. Per defecte,
+entre una connexiÃ³ TCP mig tancada i una de completament tancada. Per defecte,
 les connexions mig tancades es mantenen obertes fins que un read(2) o un
-write(2) sobre el sòcol retornen un error. Si canvies aquesta opció a
-'Desactivat', Squid tancarà immediatament totes les connexions de clients
-quan read(2) retorni "no hi ha més dades per llegir".
+write(2) sobre el sÃ²col retornen un error. Si canvies aquesta opciÃ³ a
+'Desactivat', Squid tancarÃ  immediatament totes les connexions de clients
+quan read(2) retorni "no hi ha mÃ©s dades per llegir".
 <p>
-<b>Temps límit de persistència</b>: Per defecte, 120 segons.
-Temps límit d'inactivitat pe connexions persistents de clients, servidors
+<b>Temps lÃ­mit de persistÃ¨ncia</b>: Per defecte, 120 segons.
+Temps lÃ­mit d'inactivitat pe connexions persistents de clients, servidors
 i altres proxys. Les connexions persistents es desactivaran si aquest
-valor és menor de 10 segons.
+valor Ã©s menor de 10 segons.
 <p>
-<b>Repetidor WAIS</b>: Per defecte, cap. Nom del host o adreça per
+<b>Repetidor WAIS</b>: Per defecte, cap. Nom del host o adreÃ§a per
 reenviar-hi les peticions WAIS.
 <p>
 <b>Port repetidor WAIS</b>: Per defecte, cap.  Port  per reenviar-hi les

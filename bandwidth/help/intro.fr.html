@@ -1,29 +1,29 @@
 <header>Surveillance de bande passante</header>
 
-Ce module permet de créer des rapports sur l'utilisation de la bande passante réseau par port, hôte, protocole en fonction du temps, pour tout le trafic émis depuis votre système ou routé à travers celui-ci. Ceci est utile pour les machines autonomes comme pour celles qui servent de passerelle ou de routeur sur un réseau. <p>
+Ce module permet de crÃ©er des rapports sur l'utilisation de la bande passante rÃ©seau par port, hÃ´te, protocole en fonction du temps, pour tout le trafic Ã©mis depuis votre systÃ¨me ou routÃ© Ã  travers celui-ci. Ceci est utile pour les machines autonomes comme pour celles qui servent de passerelle ou de routeur sur un rÃ©seau. <p>
 
-Pour pouvoir être utilisé, ce module doit mettre en place plusieurs règles de 
-pare-feu et une entrée dans le journal système (démon syslog) pour capturer le 
-trafic transitant par le système. Lors de la configuration vous devez sélectionner 
-l'interface réseau externe sur laquelle le trafic sera surveillé. Celle-ci 
-peut être l'interface PPP utilisé par votre connexion modem ou ADSL, ou bien
+Pour pouvoir Ãªtre utilisÃ©, ce module doit mettre en place plusieurs rÃ¨gles de 
+pare-feu et une entrÃ©e dans le journal systÃ¨me (dÃ©mon syslog) pour capturer le 
+trafic transitant par le systÃ¨me. Lors de la configuration vous devez sÃ©lectionner 
+l'interface rÃ©seau externe sur laquelle le trafic sera surveillÃ©. Celle-ci 
+peut Ãªtre l'interface PPP utilisÃ© par votre connexion modem ou ADSL, ou bien
 une interface ethernet. <p>
 
-Après qu'au moins une heure d'activité ait été enregistrée, le module peut générer des
-rapports récapitulant le trafic selon l'une des catégories suivantes :
+AprÃ¨s qu'au moins une heure d'activitÃ© ait Ã©tÃ© enregistrÃ©e, le module peut gÃ©nÃ©rer des
+rapports rÃ©capitulant le trafic selon l'une des catÃ©gories suivantes :
 <ul>
 <li><b>Heure</b><br>
-    La date et l'heure de réception des données.
+    La date et l'heure de rÃ©ception des donnÃ©es.
 <li><b>Jour</b><br>
-     La date de réception des données.
-<li><b>Hôte</b><br>
-    L'hôte de votre réseau, ou l'hôte pare-feu qui a émis ou reçu les données.
+     La date de rÃ©ception des donnÃ©es.
+<li><b>HÃ´te</b><br>
+    L'hÃ´te de votre rÃ©seau, ou l'hÃ´te pare-feu qui a Ã©mis ou reÃ§u les donnÃ©es.
 <li><b>Port interne</b><br>
-    Le port de votre hôte interne ou pare-feu qui a reçu les données. 
-	Ce mode est utile pour déterminer quel trafic est généré par les connexions 
+    Le port de votre hÃ´te interne ou pare-feu qui a reÃ§u les donnÃ©es. 
+	Ce mode est utile pour dÃ©terminer quel trafic est gÃ©nÃ©rÃ© par les connexions 
 	vers lesquels de vos serveurs.
 <li><b>Port Externe</b><br>
-    Le port sur un serveur hors de votre réseau
+    Le port sur un serveur hors de votre rÃ©seau
 	The port on some server outside your network to which data was sent. This
     can be used to determine which services users of your network are accessing.
 <li><b>Port</b><br>

@@ -1,74 +1,74 @@
-<header>AcciÛ</header>
+<header>Acci√≥</header>
 
-Descriu quina acciÛ cal emprendre.<p>
+Descriu quina acci√≥ cal emprendre.<p>
 
-Les accions v‡lides per aquest camp sÛn:<p>
+Les accions v√†lides per aquest camp s√≥n:<p>
 
 <b>Activa</b><br>
-El procÈs es tornar‡ a iniciar sempre que s'aturi (p. ex., getty).<p>
+El proc√©s es tornar√† a iniciar sempre que s'aturi (p. ex., getty).<p>
 
 <b>Espera</b><br>
-El procÈs s'iniciar‡ un cop quan s'entri al nivell d'execuciÛ especificat
-i <i>init</i> esperar‡ que acabi.<p>
+El proc√©s s'iniciar√† un cop quan s'entri al nivell d'execuci√≥ especificat
+i <i>init</i> esperar√† que acabi.<p>
 
 <b>Un cop pel nivell</b><br>
-El procÈs s'executar‡ un cop quan s'entri al nivell d'execuciÛ especificat.<p>
+El proc√©s s'executar√† un cop quan s'entri al nivell d'execuci√≥ especificat.<p>
 
 <b>En engegar</b><br>
-El procÈs s'executar‡ en engegar el sistema. El camp dels nivells
-d'execuciÛ s'ignora.<p>
+El proc√©s s'executar√† en engegar el sistema. El camp dels nivells
+d'execuci√≥ s'ignora.<p>
 
 <b>En engegar, espera que acabi</b><br>
-El procÈs s'executar‡ en engegar el sistema, mentre que <i>init</i>
-s'esperar‡ que acabi. El camp dels nivells d'execuciÛ s'ignora.<p>
+El proc√©s s'executar√† en engegar el sistema, mentre que <i>init</i>
+s'esperar√† que acabi. El camp dels nivells d'execuci√≥ s'ignora.<p>
 
 <b>No facis res</b><br>
-AixÚ no fa res.<p>
+Aix√≤ no fa res.<p>
 
 <b>Quan sigui a A, B, C</b><br>
-Un procÈs marcat amb un nivell d'execuciÛ <tt>sota demanda</tt> s'executar‡
-sempre que es cridi el nivell d'execuciÛ demanat. No obstant, no hi haur‡
-cap canvi de nivell d'execuciÛ (els nivells d'execuciÛ sota demanda sÛn
+Un proc√©s marcat amb un nivell d'execuci√≥ <tt>sota demanda</tt> s'executar√†
+sempre que es cridi el nivell d'execuci√≥ demanat. No obstant, no hi haur√†
+cap canvi de nivell d'execuci√≥ (els nivells d'execuci√≥ sota demanda s√≥n
 `a', `b', i `c').<p>
 
-<b>Nivell d'execuciÛ per defecte</b><br>
-Una entrada <tt>initdefault</tt> especifica el nivell d'execuciÛ que cal
-entrar en engegar el sistema. Si no n'hi ha cap, <i>init</i> en demanar‡
-un per la consola. El camp del procÈs s'ignora.<p>
+<b>Nivell d'execuci√≥ per defecte</b><br>
+Una entrada <tt>initdefault</tt> especifica el nivell d'execuci√≥ que cal
+entrar en engegar el sistema. Si no n'hi ha cap, <i>init</i> en demanar√†
+un per la consola. El camp del proc√©s s'ignora.<p>
 
 <b>Durant l'engegada del sistema</b><br>
-El procÈs s'executar‡ durant l'engegada del sistema. S'executar‡ abans
+El proc√©s s'executar√† durant l'engegada del sistema. S'executar√† abans
 que qualsevol entrada <tt><b>En engegar</b></tt> o <tt><b>En engegar,
-espera que acabi</b></tt>. El camp dels nivells d'execuciÛ s'ignora.<p>
+espera que acabi</b></tt>. El camp dels nivells d'execuci√≥ s'ignora.<p>
 
-<b>La m‡quina s'apaga</b><br>
-El procÈs s'executar‡ quan s'apagui la m‡quina. Normalment, s'informa 
-<i>init</i> d'aixÚ per un procÈs en contacte amb un SAI connectat a 
-l'ordinador. <i>init</i> esperar‡ que el procÈs acabi abans de continuar.<p>
+<b>La m√†quina s'apaga</b><br>
+El proc√©s s'executar√† quan s'apagui la m√†quina. Normalment, s'informa 
+<i>init</i> d'aix√≤ per un proc√©s en contacte amb un SAI connectat a 
+l'ordinador. <i>init</i> esperar√† que el proc√©s acabi abans de continuar.<p>
 
-<b>La m‡quina s'apaga sense esperar</b><br>
-Igual que per a <tt><b>La m‡quina s'apaga</b></tt>, amb l'excepciÛ que
-<i>init</i> no espera que el procÈs es completi.<p>
+<b>La m√†quina s'apaga sense esperar</b><br>
+Igual que per a <tt><b>La m√†quina s'apaga</b></tt>, amb l'excepci√≥ que
+<i>init</i> no espera que el proc√©s es completi.<p>
 
-<b>La m‡quina es torna a encendre</b><br>
-Aquest procÈs s'executar‡ tan aviat com s'informi <i>init</i> que 
-s'ha encËs la m‡quina.<p>
+<b>La m√†quina es torna a encendre</b><br>
+Aquest proc√©s s'executar√† tan aviat com s'informi <i>init</i> que 
+s'ha enc√®s la m√†quina.<p>
 
 <b>Se'n va la llum</b><br>
-Aquest procÈs s'executar‡ quan s'informi <i>init</i> que la bateria del
-SAI extern est‡ gairebÈ buida i que el corrent est‡ fallant (suposant
-que el SAI extern i el procÈs de monitoritzaciÛ siguin capaÁos de
-detectar aquesta condiciÛ).<p>
+Aquest proc√©s s'executar√† quan s'informi <i>init</i> que la bateria del
+SAI extern est√† gaireb√© buida i que el corrent est√† fallant (suposant
+que el SAI extern i el proc√©s de monitoritzaci√≥ siguin capa√ßos de
+detectar aquesta condici√≥).<p>
 
 <b>Ctrl-Alt-Del</b><br>
-EL procÈs s'executar‡ quan <i>init</i> rebi el senyal <i>SIGINT</i>.
-AixÚ vol dir que alg˙ a premut la combinaciÛ CTRL-ALT-SUPR a la consola.
+EL proc√©s s'executar√† quan <i>init</i> rebi el senyal <i>SIGINT</i>.
+Aix√≤ vol dir que alg√∫ a premut la combinaci√≥ CTRL-ALT-SUPR a la consola.
 Normalment, es vol executar un tancament per entrar en mode monousuari
-o reengegar la m‡quina.<p>
+o reengegar la m√†quina.<p>
 
-<b>CombinaciÛ especial de tecles</b><br>
-El procÈs s'executar‡ quan <i>init</i> rebi un senyal del gestor de teclat
-que s'ha premut una combinaciÛ de tecles especial al teclat de la consola.<p>
+<b>Combinaci√≥ especial de tecles</b><br>
+El proc√©s s'executar√† quan <i>init</i> rebi un senyal del gestor de teclat
+que s'ha premut una combinaci√≥ de tecles especial al teclat de la consola.<p>
 
 <hr>
 

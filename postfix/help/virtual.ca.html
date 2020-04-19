@@ -1,63 +1,63 @@
 <header>Dominis Virtuals</header>
 
 La taula virtual opcional especifica redireccions per a destinataris o
-dominis locals i no locals. Les redireccions són utilitzades pel dimoni
-cleanup(8). Les redireccions són recursives.
+dominis locals i no locals. Les redireccions sÃ³n utilitzades pel dimoni
+cleanup(8). Les redireccions sÃ³n recursives.
 
 <p>
 
-La redirecció virtual s'aplica només a l'adreça embolcall del destinatari,
-i no afecta a les capçaleres del missatge. És com ara el conjunt de regles
-<tt>S0</tt> de Sendmail. Utilitza el <a href=canonical>mapejat canònic</a>
-per reescriure la capçalera i les adreces embolcall en general.
+La redirecciÃ³ virtual s'aplica nomÃ©s a l'adreÃ§a embolcall del destinatari,
+i no afecta a les capÃ§aleres del missatge. Ã‰s com ara el conjunt de regles
+<tt>S0</tt> de Sendmail. Utilitza el <a href=canonical>mapejat canÃ²nic</a>
+per reescriure la capÃ§alera i les adreces embolcall en general.
 
 <p>
 
-El suport típic d'un domini virtual té el següent aspecte:
+El suport tÃ­pic d'un domini virtual tÃ© el segÃ¼ent aspecte:
 
 <ul>
 <li> <b><tt>virtual.domini</tt></b> mapejat a... <b><tt>qualsevolcosa</tt></b> (el contingut de la dreta no importa)
-<li> <b><tt>usuari1@virtual.domini</tt></b> mapejat a... <b><tt>adreça1</tt></b>
-<li> <b><tt>usuari2@virtual.domini</tt></b> mapejat a... <b><tt>adreça2,
-adreça3</tt></b>
+<li> <b><tt>usuari1@virtual.domini</tt></b> mapejat a... <b><tt>adreÃ§a1</tt></b>
+<li> <b><tt>usuari2@virtual.domini</tt></b> mapejat a... <b><tt>adreÃ§a2,
+adreÃ§a3</tt></b>
 </ul>
 
-Amb això, el servidor SMTP accepta correu per a <tt>virtual.domini</tt>
+Amb aixÃ², el servidor SMTP accepta correu per a <tt>virtual.domini</tt>
 i rebutja el correu per a <tt>desconegut@virtual.domini</tt> com a no
 lliurable.
 
 <p>
 
-EL format de la taula virtual és el següent; els mapejats es proven en
+EL format de la taula virtual Ã©s el segÃ¼ent; els mapejats es proven en
 l'ordre llistat:
 
 <ul>
-<li> <b><tt>usuari@domini</tt></b> mapejat a... <b><tt>adreça, adreça, ...</tt></b>:
-El correu per a <tt>usuari@domini</tt> és redirecciona a <tt>adreça</tt>.
-Aquesta forma és la que té la precedència més alta.
+<li> <b><tt>usuari@domini</tt></b> mapejat a... <b><tt>adreÃ§a, adreÃ§a, ...</tt></b>:
+El correu per a <tt>usuari@domini</tt> Ã©s redirecciona a <tt>adreÃ§a</tt>.
+Aquesta forma Ã©s la que tÃ© la precedÃ¨ncia mÃ©s alta.
 
-<li> <b><tt>usuari</tt></b> mapejat a... <b><tt>adreça, adreça, ...</tt></b>:
-El correu per a <tt>usuari@lloc</tt> es redirecciona a <tt>adreça</tt> quan
-lloc és igual a <tt>$myorigin</tt> quan el lloc està llistat a 
+<li> <b><tt>usuari</tt></b> mapejat a... <b><tt>adreÃ§a, adreÃ§a, ...</tt></b>:
+El correu per a <tt>usuari@lloc</tt> es redirecciona a <tt>adreÃ§a</tt> quan
+lloc Ã©s igual a <tt>$myorigin</tt> quan el lloc estÃ  llistat a 
 <tt>$inet_interfaces</tt>. Aquesta funcionalitat es trepitja amb la de la
-base de dades d'<a href=aliases>àlies locals</a>. La diferència és que
+base de dades d'<a href=aliases>Ã lies locals</a>. La diferÃ¨ncia Ã©s que
 el mapejat virtual es pot aplicar a adreces no locals.
 
-<li> <b><tt>@domini</tt></b> mapejat a... <b><tt>adreça, adreça, ...</tt></b>:
+<li> <b><tt>@domini</tt></b> mapejat a... <b><tt>adreÃ§a, adreÃ§a, ...</tt></b>:
 El correu de qualsevol usuari a <tt>domini</tt> es redirecciona a 
-<tt>adreça</tt>. Aquesta forma és la que té la precedència més baixa.
+<tt>adreÃ§a</tt>. Aquesta forma Ã©s la que tÃ© la precedÃ¨ncia mÃ©s baixa.
 </ul>
 
-En totes les altres formes, quan l'adreça té la forma <tt>@unaltredomini</tt>,
-el resultat és el mateix usuari a unaltredomini. Això funciona només per
-a la primera adreça de l'¡expansió.
+En totes les altres formes, quan l'adreÃ§a tÃ© la forma <tt>@unaltredomini</tt>,
+el resultat Ã©s el mateix usuari a unaltredomini. AixÃ² funciona nomÃ©s per
+a la primera adreÃ§a de l'Â¡expansiÃ³.
 
 <p>
-EXTENSIÓ D'ADREÇA: Quan la recerca falla i la part local de l'adreça conté
+EXTENSIÃ“ D'ADREÃ‡A: Quan la recerca falla i la part local de l'adreÃ§a contÃ©
 el delimitador opcional de destinatari (p. ex., <tt>usuari+foo@domini</tt>),
-la recerca es repeteix per a l'adreça no estesa (p. ex., <tt>usuari@domini</tt>),
- l'adreça estesa no coincident es propaga al resultat de l'expansió. L'ordre
-de coincidències és <tt>usuari+foo@domini</tt>, <tt>usuari@domini</tt>,
+la recerca es repeteix per a l'adreÃ§a no estesa (p. ex., <tt>usuari@domini</tt>),
+ l'adreÃ§a estesa no coincident es propaga al resultat de l'expansiÃ³. L'ordre
+de coincidÃ¨ncies Ã©s <tt>usuari+foo@domini</tt>, <tt>usuari@domini</tt>,
 <tt>usuari+foo</tt>, <tt>usuari</tt>, i <tt>@domini</tt>.
 
 <hr>

@@ -1,21 +1,21 @@
-<header>Resposta del servidor SMTP server en cas de rebuig per nom de host inv‡lid</header>
+<header>Resposta del servidor SMTP server en cas de rebuig per nom de host inv√†lid</header>
 
 <center><tt>invalid_hostname_reject_code</tt></center>
 <hr>
 
-Aquest par‡metre especifica el codi de resposta del servidor SMTP quan un
-client viola la restricciÛ anti-UCE reject_invalid_hostname que Ès:<br>
+Aquest par√†metre especifica el codi de resposta del servidor SMTP quan un
+client viola la restricci√≥ anti-UCE reject_invalid_hostname que √©s:<br>
 Sintaxi incorrecta del nom de host HELO client (no compleix amb RFC)</i><br>
 <br>
 Tingues en compte que el valor per defecte de postfix utilitzat per 
-<tt>invalid_hostname_reject_code</tt> Ès el codi 501, i aquest codi a
-l'est‡ndard RFC 822 voldria dir 'Error de sintaxi als par‡metres o arguments'.
-AixÌ, amb Postfix, un codi d'estat de 501 no reflecteix exactament l'explicaciÛ
+<tt>invalid_hostname_reject_code</tt> √©s el codi 501, i aquest codi a
+l'est√†ndard RFC 822 voldria dir 'Error de sintaxi als par√†metres o arguments'.
+Aix√≠, amb Postfix, un codi d'estat de 501 no reflecteix exactament l'explicaci√≥
 RFC822.<br>
 <p>
-Per evitar la confusiÛ, pots canviar-ho, per exemple, pel 574 (una altra raÛ
-Ès que el codi 501 Ès tambÈ el valor per defecte de postfix per altres menes
-d'errors), altrament no ho canviÔs si no tens un complet coneixement de
+Per evitar la confusi√≥, pots canviar-ho, per exemple, pel 574 (una altra ra√≥
+√©s que el codi 501 √©s tamb√© el valor per defecte de postfix per altres menes
+d'errors), altrament no ho canvi√Øs si no tens un complet coneixement de
 RFC 822.
 </p>
 

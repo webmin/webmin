@@ -1,0 +1,56 @@
+각 명령은 (메인 페이지의 버튼에 출력될) 설명과 실행될 실제 명령을 가지게 됩니다.
+이 명령 문자열에는 여려 명령을 실행하거나 파이프를 사용하기 위하여 |, &gt;, ; 와 같은
+쉘 파라미터를 사용할 수 있습니다. 또한, 명령 실행시에 사용자가 입력한 값으로 치환을
+할 수 있도록 <tt>$foo</tt>와 같은 파라미터를 포함할 수도 있습니다.<p>
+
+이 파라미터는 이 문서의 가장 아래에 있는 테이블에 입력할 수 있습니다.
+다음은 입력할 수 있는 파라미터에 대한 설명입니다 :
+<dl>
+<dt><b>이름</b>
+<dd>이 파라미터에 대한 유일한 코드. 이름이 <tt>foo</tt>라면
+    명령이 실행될 때, <tt>$foo</tt>는 파라미터 값으로 치환이 되게 됩니다.<p> 
+<dt><b>설명</b>
+<dd>이 파라미터에 대한 설명을 메인 페이지에 출력.<p>
+<dt><b>유형</b>
+<dd>이 옵션은 파라미터 입력시에 어떻게 작동하는지를 조정합니다. 가능한 옵션 :
+	<ul>
+	<li><b>텍스트</b><br>
+             완전하게 자유로운 텍스트를 입력
+	<li><b>사용자</b><br>
+             시스템에 존재하는 사용자 이름
+	<li><b>UID</b><br>
+             시스템에 존재하는 사용자의 UID
+	<li><b>그룹</b><br>
+             시스템에 존재하는 그룹 이름
+	<li><b>GID</b><br>
+             시스템에 존재하는 그룹의 GID
+	<li><b>파일</b><br>
+             파일의 절대 경로
+	<li><b>디렉토리</b><br>
+             디렉토리 절대 경로
+	<li><b>옵션</b><br>
+	    A Yes/No input that will set the parameter to whatever is in
+	    the field next to the type input only if Yes is chosen.
+	<li><b>암호</b><br>
+             자유롭게 텍스트를 입력. 대신 * 문자로 보여집니다.
+	<li><b>메뉴</b><br>
+	    A drop-down menu of options, taken from the filename entered into
+	    the text field to it. Or, instead of a filename you can enter a
+	    command with an | at the end, whose output will be used to determine
+	    the available options.
+	<li><b>업로드</b><br>
+	    An input box for selecting a file on the client side, which will be
+	    uploaded to the server when the command is run. This will be be
+	    placed in a temporary file, and the path to that file will be the
+	    value of this parameter when the command is run.
+	<li><b>텍스트 박스</b><br>
+	    A multi-line free text field. When the command is run, any newline
+	    characters in the entered text will be converted into spaces.
+	</ul><p>
+<dt><b>매개 변수에 따옴표를 붙입니까?</b>
+<dd>예를 선택하면, 파라미터는 치환 전에 따옴표로 감싸집니다. 이 옵션을 이용하면 입력 값에
+    공백 문자를 포함하는 것이 가능해 집니다.<p>
+</dl>
+
+<hr>
+

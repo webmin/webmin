@@ -1,38 +1,38 @@
-<header>Memóriahasználat; fordította: Szakács Gergely</header><p>
+<header>MemÃ³riahasznÃ¡lat; fordÃ­totta: SzakÃ¡cs Gergely</header><p>
 
-<b>Memóriahasználati korlát</b>: Alapértelmezés szerint 8MB.<p>
-MEGJEGYZÉS: Ez a paraméter nem szabályozza a maximális folyamatméretet, csak a Squid memóriahasználatának egy aspektusát korlátozza. A Squid más célra is használ memóriát. A rendszeren futó folyamat így akár az itt meghatározott két-háromszorosa is lehet.<p>
+<b>MemÃ³riahasznÃ¡lati korlÃ¡t</b>: AlapÃ©rtelmezÃ©s szerint 8MB.<p>
+MEGJEGYZÃ‰S: Ez a paramÃ©ter nem szabÃ¡lyozza a maximÃ¡lis folyamatmÃ©retet, csak a Squid memÃ³riahasznÃ¡latÃ¡nak egy aspektusÃ¡t korlÃ¡tozza. A Squid mÃ¡s cÃ©lra is hasznÃ¡l memÃ³riÃ¡t. A rendszeren futÃ³ folyamat Ã­gy akÃ¡r az itt meghatÃ¡rozott kÃ©t-hÃ¡romszorosa is lehet.<p>
 
-Meghatározza az ideális mennyiségû memóriát a következõknek:
+MeghatÃ¡rozza az ideÃ¡lis mennyisÃ©gÅ± memÃ³riÃ¡t a kÃ¶vetkezÅ‘knek:
 <ul>
-<li>Átmenõ objektumok
-<li>Forró objektumok
-<li>Negatívan gyorstárazott objektumok
+<li>ÃtmenÅ‘ objektumok
+<li>ForrÃ³ objektumok
+<li>NegatÃ­van gyorstÃ¡razott objektumok
 </ul>
 <p>
-Az ilyen objektumokhoz 4 kB-os tömbökben tárolódnak az adatok. Ez a paraméter meghatározza a hozzárendelt 4 kB-os tömbök ideális együttes méretének maximumát. A legmagasabb prioritása az átmenõ objektumoknak van.<p>
+Az ilyen objektumokhoz 4 kB-os tÃ¶mbÃ¶kben tÃ¡rolÃ³dnak az adatok. Ez a paramÃ©ter meghatÃ¡rozza a hozzÃ¡rendelt 4 kB-os tÃ¶mbÃ¶k ideÃ¡lis egyÃ¼ttes mÃ©retÃ©nek maximumÃ¡t. A legmagasabb prioritÃ¡sa az Ã¡tmenÅ‘ objektumoknak van.<p>
 
-Az átmenõ objektumoknak prioritása van a többiekkel szemben. Amikor több hely szükségeltetik a bejövõ adatoknak, a memóriából kiürülnek a negatívan-gyorstárazott és a forró objektumok. Másképp megfogalmazva, a negatívan gyorstárazott és forró objektumok feltöltenek minden, az átmenõ objektumok által nem igényelt területet.<p>
+Az Ã¡tmenÅ‘ objektumoknak prioritÃ¡sa van a tÃ¶bbiekkel szemben. Amikor tÃ¶bb hely szÃ¼ksÃ©geltetik a bejÃ¶vÅ‘ adatoknak, a memÃ³riÃ¡bÃ³l kiÃ¼rÃ¼lnek a negatÃ­van-gyorstÃ¡razott Ã©s a forrÃ³ objektumok. MÃ¡skÃ©pp megfogalmazva, a negatÃ­van gyorstÃ¡razott Ã©s forrÃ³ objektumok feltÃ¶ltenek minden, az Ã¡tmenÅ‘ objektumok Ã¡ltal nem igÃ©nyelt terÃ¼letet.<p>
 
-Ha a körülmények úgy hozzák, meg lehet haladni ezt a szintet. Ha például a bejövõ kérések az itt meghatározottnál több memóriát igényelnek az átmenõ objektumoknak, úgy a Squid átlépheti ezt a korlátozást, hogy kiszolgálja az új kéréseket. Amikor a terhelés csökken, egyre több tömb szabadul fel egészen addig, míg a túlcsordulási szint meg nem jelenik. Ettõl kezdve a tömbök forró objektumokat fognak tárolni.<p>
+Ha a kÃ¶rÃ¼lmÃ©nyek Ãºgy hozzÃ¡k, meg lehet haladni ezt a szintet. Ha pÃ©ldÃ¡ul a bejÃ¶vÅ‘ kÃ©rÃ©sek az itt meghatÃ¡rozottnÃ¡l tÃ¶bb memÃ³riÃ¡t igÃ©nyelnek az Ã¡tmenÅ‘ objektumoknak, Ãºgy a Squid Ã¡tlÃ©pheti ezt a korlÃ¡tozÃ¡st, hogy kiszolgÃ¡lja az Ãºj kÃ©rÃ©seket. Amikor a terhelÃ©s csÃ¶kken, egyre tÃ¶bb tÃ¶mb szabadul fel egÃ©szen addig, mÃ­g a tÃºlcsordulÃ¡si szint meg nem jelenik. EttÅ‘l kezdve a tÃ¶mbÃ¶k forrÃ³ objektumokat fognak tÃ¡rolni.<p>
 
-<b>FQDN gyorstárméret</b>: Alapértelmezés szerint 1024.  A Fully Qualified Domain Name gyorstár-bejegyzések maximuma.<p>
+<b>FQDN gyorstÃ¡rmÃ©ret</b>: AlapÃ©rtelmezÃ©s szerint 1024.  A Fully Qualified Domain Name gyorstÃ¡r-bejegyzÃ©sek maximuma.<p>
 
-<b>Memória túlcsordulási szint</b>: Alapértelmezés szerint 95%. Amikor ezt a szintet eléri a rendszer, a memóriából kiürülnek a forró és az átmenõ objektumok, a hely felszabadítása érdekében.<p>
+<b>MemÃ³ria tÃºlcsordulÃ¡si szint</b>: AlapÃ©rtelmezÃ©s szerint 95%. Amikor ezt a szintet elÃ©ri a rendszer, a memÃ³riÃ¡bÃ³l kiÃ¼rÃ¼lnek a forrÃ³ Ã©s az Ã¡tmenÅ‘ objektumok, a hely felszabadÃ­tÃ¡sa Ã©rdekÃ©ben.<p>
 
-<b>Memória biztonsági szint</b>: Alapértelmezés szerint 90%. Miután a túlcsordulási szintet elérte, a Squid eddig a szintig fogja üríteni a memóriát.<p>
+<b>MemÃ³ria biztonsÃ¡gi szint</b>: AlapÃ©rtelmezÃ©s szerint 90%. MiutÃ¡n a tÃºlcsordulÃ¡si szintet elÃ©rte, a Squid eddig a szintig fogja Ã¼rÃ­teni a memÃ³riÃ¡t.<p>
 
-<b>Lemezterület túlcsordulási szint</b>: Alapértelmezés szerint 95%. Amikor ezt a szintet eléri, a Squid a lemez agresszív ürítésébe kezd.<p>
+<b>LemezterÃ¼let tÃºlcsordulÃ¡si szint</b>: AlapÃ©rtelmezÃ©s szerint 95%. Amikor ezt a szintet elÃ©ri, a Squid a lemez agresszÃ­v Ã¼rÃ­tÃ©sÃ©be kezd.<p>
 
-<b>Lemezterület biztonsági szint</b>: Alapértelmezés szerint 90%. Miután a túlcsordulási szintet elérte, a Squid tovább üríti a lemezterületet, mag az eléri ezt a szintet.<p>
+<b>LemezterÃ¼let biztonsÃ¡gi szint</b>: AlapÃ©rtelmezÃ©s szerint 90%. MiutÃ¡n a tÃºlcsordulÃ¡si szintet elÃ©rte, a Squid tovÃ¡bb Ã¼rÃ­ti a lemezterÃ¼letet, mag az elÃ©ri ezt a szintet.<p>
 
-<b>Gyorstárazott objektum maximális mérete</b>: Alapértelmezés szerint 4096 kB. Ez a beállítás meghatározza a gyorstárban tárolható objektumok maximális méretét. Bármely ennél nagyobb méretû objektum nem lesz eltárolva a gyorstárban, és minden alkalommal a forrásszerverrõl kell betölteni azokat.<p>
+<b>GyorstÃ¡razott objektum maximÃ¡lis mÃ©rete</b>: AlapÃ©rtelmezÃ©s szerint 4096 kB. Ez a beÃ¡llÃ­tÃ¡s meghatÃ¡rozza a gyorstÃ¡rban tÃ¡rolhatÃ³ objektumok maximÃ¡lis mÃ©retÃ©t. BÃ¡rmely ennÃ©l nagyobb mÃ©retÅ± objektum nem lesz eltÃ¡rolva a gyorstÃ¡rban, Ã©s minden alkalommal a forrÃ¡sszerverrÅ‘l kell betÃ¶lteni azokat.<p>
 
-<b>IP-cím gyorstár mérete</b>: Alapértelmezés szerint 1024. Az IP-gyorstárban tárolandó bejegyzések száma.<p>
+<b>IP-cÃ­m gyorstÃ¡r mÃ©rete</b>: AlapÃ©rtelmezÃ©s szerint 1024. Az IP-gyorstÃ¡rban tÃ¡rolandÃ³ bejegyzÃ©sek szÃ¡ma.<p>
 
-<b>IP-gyorstár túlcsordulási szint</b>: Alapértelmezés szerint 95%. Ezen a ponton a Squid elkezdi kiüríteni az IP-bejegyzéseket a gyorstárból.<p>
+<b>IP-gyorstÃ¡r tÃºlcsordulÃ¡si szint</b>: AlapÃ©rtelmezÃ©s szerint 95%. Ezen a ponton a Squid elkezdi kiÃ¼rÃ­teni az IP-bejegyzÃ©seket a gyorstÃ¡rbÃ³l.<p>
 
-<b>IP-gyorstár biztonsági szint</b>: Alapértelmezés szerint 90%. Miután megkezdõdött az IP-gyorstár ürítése, a folyamat addig tart, amíg az IP-gyorstárban lévõ bejegyzések száma el nem éri ezt a szintet.<p>
+<b>IP-gyorstÃ¡r biztonsÃ¡gi szint</b>: AlapÃ©rtelmezÃ©s szerint 90%. MiutÃ¡n megkezdÅ‘dÃ¶tt az IP-gyorstÃ¡r Ã¼rÃ­tÃ©se, a folyamat addig tart, amÃ­g az IP-gyorstÃ¡rban lÃ©vÅ‘ bejegyzÃ©sek szÃ¡ma el nem Ã©ri ezt a szintet.<p>
 
 <hr>
 
