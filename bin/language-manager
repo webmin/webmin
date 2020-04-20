@@ -819,6 +819,9 @@ sub go
 
             my ($exists, $help_path) = source_data($module, $data, $opt);
 
+            # Check if there has been something to process, if not print a message
+            my $output;
+
             # Build targets first
             talk_log(("Transcoding/translating " . CYAN BOLD, $module, RESET . " module's help .."), $data, 1);
             talk_log(("" . CYAN . "  .. Building list of help files to process" . RESET . ""), $data, 1);
@@ -910,31 +913,39 @@ sub go
                         my $help_file_write_short = $help_file_write =~ s/.*\/(.+)$/$1/r;
                         my $help_file_short       = $help_file       =~ s/.*\/(.+)$/$1/r;
 
-                        # Rename, if old style format
-                        if ($code ne $e_lang || $e_attr) {
-                            talk_log(
-                                     ("" . YELLOW . "    .. Renaming help file to new format - " . RED . "$help_file_short" .
-                                        RESET . " --> " . GREEN . "$help_file_write_short" . RESET . "" . RESET . ""
-                                     ),
-                                     $data,
-                                     1);
-                            rename_file($help_file, $help_file_write);
+                        # Search for all format files and encodings and convert first
+                        if ($old_map) {
 
-                        }
+                            # Rename, if old style format
+                            if ($code ne $e_lang || $e_attr) {
+                                talk_log(
+                                         ("" . YELLOW .
+                                            "    .. Renaming help file to new format - " . RED . "$help_file_short" .
+                                            RESET . " --> " . GREEN . "$help_file_write_short" . RESET . "" . RESET . ""
+                                         ),
+                                         $data,
+                                         1);
+                                rename_file($help_file, $help_file_write);
 
-                        # Transcode if needed
-                        if ($old_map && $e_attr ne "UTF-8") {
-                            talk_log(
-                                  ("" . BRIGHT_MAGENTA . "    .. Transcoding help file $help_file_write_short" . RESET . ""),
-                                  $data, 1);
-
-                            my $data_original   = read_file_contents($help_file_write);
-                            my ($data_encoding) = language_file_encoding($code, $help_file_write_short);
-                            my $data_converted  = Encode::encode('utf-8', Encode::decode($data_encoding, $data_original));
-                            if ($data_encoding eq 'utf-8') {
-                                $data_converted = $data_original;
                             }
-                            write_file_contents("$help_file_write", $data_converted);
+
+                            # Transcode if needed
+                            if ($e_attr ne "UTF-8") {
+                                talk_log(
+                                         ("" . BRIGHT_MAGENTA .
+                                            "    .. Transcoding help file $help_file_write_short" . RESET . ""
+                                         ),
+                                         $data,
+                                         1);
+                                my $data_original = read_file_contents($help_file_write);
+                                my ($data_encoding) = language_file_encoding($code, $help_file_write_short);
+                                my $data_converted = Encode::encode('utf-8', Encode::decode($data_encoding, $data_original));
+                                if ($data_encoding eq 'utf-8') {
+                                    $data_converted = $data_original;
+                                }
+                                write_file_contents("$help_file_write", $data_converted);
+                                $output++;
+                            }
                         }
                         push(@help_translated, $code);
                     } elsif ($help_file =~ /\/\w+\.html$/) {
@@ -949,13 +960,25 @@ sub go
             # Translate help files that don't have human translations
             if (!$opt->{'only-transcode'}) {
                 my @help_untranslated = grep {"@help_translated" !~ /\b$_\b/} @{ $data->{'languages_source_list_codes'} };
-                talk_log(
-                         ("" . GREEN .
-                            "   .. Found help files to translate to @{[scalar(@help_untranslated)]} more languages" .
-                            RESET . " \n      - @{[join(\"\n      - \", @templates)]}"
-                         ),
-                         $data,
-                         1);
+                my $help_untranslated = scalar(@help_untranslated);
+                my $help_translated = scalar(@help_translated);
+                if ($help_untranslated) {
+
+                    # body...
+                    talk_log(
+                             ("" . GREEN . "   .. Found help files to translate to $help_untranslated more languages, aside from $help_translated languages which are already translated" .
+                                RESET . " \n      - @{[join(\"\n      - \", @templates)]}"
+                             ),
+                             $data,
+                             1);
+
+                    $output++;
+                }
+
+            }
+
+            if (!$output) {
+                talk_log(("Nothing to do for " . CYAN . "$module" . RESET . " module .."), $data, 1);
             }
         }
 
@@ -1542,6 +1565,10 @@ Check for Software Packages module, all matching escaped HTML "&lt;" and "&gt;" 
 Translate all available languages, using old-time encoding map, for BIND module, using as type "lang" directory, discarding human translations for Hebrew, keeping original value (not translating) for key "mass_desc", and printing verbose output.
 
  — language-manager -x=full -e=map -m=bind8 -w=lang -se=he -ke=mass_desc
+
+Transcode only and rename all modules' "help/*.html" old-time format files. Old files, such as "ja_JP.euc.html", "ko_KR.euc.html", "zh_TW.Big5.html" and "ru_RU.html" will be automatically renamed and/or deleted.
+
+ — language-manager -w=help -e=map -ot
 
 Only transcode language files, using old-time encoding map, from files being in different encodings, to new style, where all language files are in "utf-8" encoding, for Apache module. No translations will be made, and no ".auto" files will be created.
 
