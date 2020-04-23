@@ -110,7 +110,7 @@ makedn_failed=.. 작성 실패 : $1
 makedn_done=.. 완료
 makedn_still=DN 생성 후에도 몇 가지 문제가 발견되었습니다. $1 
 schema_title=LDAP 스키마 다운로드
-schema_desc=Webmin이 LDAP 서버를 사용하여 사용자 및 그룹을 저장하려면 아래 스키마를 사용하도록 구성해야합니다. 이것은 일반적으로 <tt>/ etc / ldap / schema</tt> 또는 <tt>/ etc / openldap / schema</tt>의 스키마 정의를 <tt>webmin.schema</tt>로 저장하여 수행 할 수 있습니다. 그런 다음 해당 스키마 파일을로드하도록 서버를 구성하십시오.
+schema_desc=Webmin이 LDAP 서버를 사용하여 사용자 및 그룹을 저장하려면 아래 스키마를 사용하도록 구성해야합니다. 이것은 일반적으로 <tt>/etc/ldap/schema</tt> 또는 <tt>/etc/openldap/schema</tt>의 스키마 정의를 <tt>webmin.schema</tt>로 저장하여 수행 할 수 있습니다. 그런 다음 해당 스키마 파일을로드하도록 서버를 구성하십시오.
 schema_download=스키마 파일 다운로드 : <a href=$1>$1</a>
 twofactor_err=이중 인증을 설정하지 못했습니다
 twofactor_euser=Webmin 사용자를 찾을 수 없습니다!

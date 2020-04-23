@@ -454,7 +454,7 @@ makedn_failed=.. sukurti nepavyko: $1
 makedn_done=.. padaryta
 makedn_still=Kai kurios problemos buvo rastos net sukūrus DN: $1
 schema_title=Atsisiųskite LDAP schemą
-schema_desc=Kad „Webmin“ galėtų naudoti LDAP serverį vartotojams ir grupėms laikyti, jis turi būti sukonfigūruotas naudoti žemiau pateiktą schemą. Paprastai tai galima padaryti išsaugojant schemos apibrėžimą aplanke <tt>/ etc / ldap / schema</tt> arba <tt>/ etc / openldap / schema</tt> kaip <tt>webmin.schema</tt>, tada sukonfigūravus serverį įkelti tą schemos failą.
+schema_desc=Kad „Webmin“ galėtų naudoti LDAP serverį vartotojams ir grupėms laikyti, jis turi būti sukonfigūruotas naudoti žemiau pateiktą schemą. Paprastai tai galima padaryti išsaugojant schemos apibrėžimą aplanke <tt>/etc/ldap/schema</tt> arba <tt>/etc/openldap/schema</tt> kaip <tt>webmin.schema</tt>, tada sukonfigūravus serverį įkelti tą schemos failą.
 schema_download=Atsisiųsti schemos failą: <a href=$1>$1</a>
 twofactor_err=Nepavyko nustatyti dviejų veiksnių autentifikacijos
 twofactor_euser=Jūsų „Webmin“ vartotojas nerastas!

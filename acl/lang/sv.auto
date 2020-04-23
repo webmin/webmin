@@ -113,7 +113,7 @@ makedn_failed=.. skapelsen misslyckades: $1
 makedn_done=.. Gjort
 makedn_still=Vissa problem hittades även efter skapandet av DN: $1 
 schema_title=Ladda ner LDAP-schema
-schema_desc=Innan Webmin kan använda en LDAP-server för att lagra användare och grupper måste den konfigureras för att använda schemat nedan. Detta kan vanligtvis göras genom att spara schemadefinitionen i <tt>/ etc / ldap / schema</tt> eller <tt>/ etc / openldap / schema</tt> som <tt>webmin.schema</tt>, konfigurera sedan servern för att ladda schemafilen.
+schema_desc=Innan Webmin kan använda en LDAP-server för att lagra användare och grupper måste den konfigureras för att använda schemat nedan. Detta kan vanligtvis göras genom att spara schemadefinitionen i <tt>/etc/ldap/schema</tt> eller <tt>/etc/openldap/schema</tt> som <tt>webmin.schema</tt>, konfigurera sedan servern för att ladda schemafilen.
 schema_download=Ladda ner schemafil: <a href=$1>$1</a>
 twofactor_err=Det gick inte att konfigurera tvåfaktorautentisering
 twofactor_euser=Din Webmin-användare hittades inte!

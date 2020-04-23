@@ -454,7 +454,7 @@ makedn_failed=.. izveidošana neizdevās: $1
 makedn_done=.. darīts
 makedn_still=Dažas problēmas tika atrastas pat pēc DN izveidošanas: $1
 schema_title=Lejupielādējiet LDAP shēmu
-schema_desc=Lai Webmin varētu izmantot LDAP serveri, lai saglabātu lietotājus un grupas, tas jākonfigurē, lai izmantotu zemāk esošo shēmu. Parasti to var izdarīt, saglabājot shēmas definīciju mapē <tt>/ etc / ldap / schema</tt> vai <tt>/ etc / openldap / schema</tt> kā <tt>webmin.schema</tt>, pēc tam servera konfigurēšana, lai ielādētu šo shēmas failu.
+schema_desc=Lai Webmin varētu izmantot LDAP serveri, lai saglabātu lietotājus un grupas, tas jākonfigurē, lai izmantotu zemāk esošo shēmu. Parasti to var izdarīt, saglabājot shēmas definīciju mapē <tt>/etc/ldap/schema</tt> vai <tt>/etc/openldap/schema</tt> kā <tt>webmin.schema</tt>, pēc tam servera konfigurēšana, lai ielādētu šo shēmas failu.
 schema_download=Lejupielādēt shēmas failu: <a href=$1>$1</a>
 twofactor_err=Neizdevās iestatīt divu faktoru autentifikāciju
 twofactor_euser=Jūsu Webmin lietotājs netika atrasts.

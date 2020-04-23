@@ -454,7 +454,7 @@ makedn_failed=.. crearea nu a reușit: $1
 makedn_done=.. Terminat
 makedn_still=Unele probleme au fost găsite chiar și după crearea DN: $1 
 schema_title=Descărcați schema LDAP
-schema_desc=Înainte ca Webmin să poată utiliza un server LDAP pentru a stoca utilizatori și grupuri, acesta trebuie configurat pentru a utiliza schema de mai jos. Acest lucru se poate realiza de obicei salvând definiția schemei în <tt>/ etc / ldap / schema</tt> sau <tt>/ etc / openldap / schema</tt> ca <tt>webmin.schema</tt>, apoi configurarea serverului pentru a încărca acel fișier de schemă.
+schema_desc=Înainte ca Webmin să poată utiliza un server LDAP pentru a stoca utilizatori și grupuri, acesta trebuie configurat pentru a utiliza schema de mai jos. Acest lucru se poate realiza de obicei salvând definiția schemei în <tt>/etc/ldap/schema</tt> sau <tt>/etc/openldap/schema</tt> ca <tt>webmin.schema</tt>, apoi configurarea serverului pentru a încărca acel fișier de schemă.
 schema_download=Descărcați fișierul de schemă: <a href=$1>$1</a>
 twofactor_err=Eroare la configurarea autentificării în doi factori
 twofactor_euser=Utilizatorul dvs. Webmin nu a fost găsit!

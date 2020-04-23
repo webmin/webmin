@@ -114,7 +114,7 @@ makedn_failed=.. stvaranje nije uspjelo: $1
 makedn_done=.. gotovo
 makedn_still=Neki problemi pronađeni su i nakon stvaranja DN-a: $1 
 schema_title=Preuzmite LDAP shemu
-schema_desc=Prije nego što Webmin može koristiti LDAP poslužitelj za pohranu korisnika i grupa, mora biti konfiguriran za upotrebu dolje navedene sheme. To se obično može učiniti spremanjem definicije sheme u <tt>/ etc / ldap / schema</tt> ili <tt>/ etc / openldap / schema</tt> kao <tt>webmin.schema</tt>, zatim konfiguriranje poslužitelja za učitavanje datoteke sheme.
+schema_desc=Prije nego što Webmin može koristiti LDAP poslužitelj za pohranu korisnika i grupa, mora biti konfiguriran za upotrebu dolje navedene sheme. To se obično može učiniti spremanjem definicije sheme u <tt>/etc/ldap/schema</tt> ili <tt>/etc/openldap/schema</tt> kao <tt>webmin.schema</tt>, zatim konfiguriranje poslužitelja za učitavanje datoteke sheme.
 schema_download=Preuzmite datoteku sheme: <a href=$1>$1</a>
 twofactor_err=Nije uspjelo postavljanje dvofaktorske provjere identiteta
 twofactor_euser=Vaš Webmin korisnik nije pronađen!

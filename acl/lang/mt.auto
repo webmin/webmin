@@ -454,7 +454,7 @@ makedn_failed=.. Il-ħolqien falla: $1
 makedn_done=.. ghamel
 makedn_still=Xi problemi nstabu anke wara l-ħolqien tad-DN: $1 
 schema_title=Niżżel l-Iskema LDAP
-schema_desc=Qabel ma Webmin ikun jista ’juża server LDAP biex jaħżen l-utenti u l-gruppi għandu jkun ikkonfigurat biex juża l-iskema hawn taħt. Dan tipikament jista 'jsir billi tiġi salvata d-definizzjoni tal-iskema f' <tt>/ etc / ldap / schema</tt> jew <tt>/ etc / openldap / schema</tt> bħala <tt>webmin.schema</tt>, imbagħad konfigurazzjoni s-server biex jgħabbi dak l-iskema tal-fajl.
+schema_desc=Qabel ma Webmin ikun jista ’juża server LDAP biex jaħżen l-utenti u l-gruppi għandu jkun ikkonfigurat biex juża l-iskema hawn taħt. Dan tipikament jista 'jsir billi tiġi salvata d-definizzjoni tal-iskema f' <tt>/etc/ldap/schema</tt> jew <tt>/etc/openldap/schema</tt> bħala <tt>webmin.schema</tt>, imbagħad konfigurazzjoni s-server biex jgħabbi dak l-iskema tal-fajl.
 schema_download=Niżżel il-fajl tal-iskema: <a href=$1>$1</a>
 twofactor_err=Naqset milli tissettja awtentikazzjoni b'żewġ fatturi
 twofactor_euser=L-utent tal-Webmin tiegħek ma nstabx!

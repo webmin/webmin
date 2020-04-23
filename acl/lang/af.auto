@@ -454,7 +454,7 @@ makedn_failed=.. skepping misluk: $1
 makedn_done=.. klaar
 makedn_still=Sommige probleme is gevind selfs na die skepping van DN: $1
 schema_title=Laai LDAP-skema af
-schema_desc=Voordat Webmin 'n LDAP-bediener kan gebruik om gebruikers en groepe te stoor, moet dit opgestel word om die onderstaande skema te gebruik. Dit kan gewoonlik gedoen word deur die skema-definisie in <tt>/ etc / ldap / skema</tt> of <tt>/ etc / openldap / schema</tt> op te slaan as <tt>webmin.schema</tt>, stel dan die bediener in om die skemalêer te laai.
+schema_desc=Voordat Webmin 'n LDAP-bediener kan gebruik om gebruikers en groepe te stoor, moet dit opgestel word om die onderstaande skema te gebruik. Dit kan gewoonlik gedoen word deur die skema-definisie in <tt>/etc/ldap/schema</tt> of <tt>/etc/openldap/schema</tt> op te slaan as <tt>webmin.schema</tt>, stel dan die bediener in om die skemalêer te laai.
 schema_download=Laai skemabestand af: <a href=$1>$1</a>
 twofactor_err=Kon nie tweefaktor-verifikasie instel nie
 twofactor_euser=U Webmin-gebruiker is nie gevind nie!

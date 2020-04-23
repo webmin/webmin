@@ -195,7 +195,7 @@ makedn_failed=.. vytvorenie zlyhalo: $1
 makedn_done=.. hotový
 makedn_still=Niektoré problémy sa našli aj po vytvorení DN: $1 
 schema_title=Stiahnite si schému LDAP
-schema_desc=Aby mohol Webmin použiť server LDAP na ukladanie používateľov a skupín, musí byť nakonfigurovaný na používanie nižšie uvedenej schémy. Spravidla sa to dá dosiahnuť uložením definície schémy do <tt>/ etc / ldap / schema</tt> alebo <tt>/ etc / openldap / schema</tt> ako <tt>webmin.schema</tt>, potom nakonfigurujte server tak, aby načítal tento súbor schémy.
+schema_desc=Aby mohol Webmin použiť server LDAP na ukladanie používateľov a skupín, musí byť nakonfigurovaný na používanie nižšie uvedenej schémy. Spravidla sa to dá dosiahnuť uložením definície schémy do <tt>/etc/ldap/schema</tt> alebo <tt>/etc/openldap/schema</tt> ako <tt>webmin.schema</tt>, potom nakonfigurujte server tak, aby načítal tento súbor schémy.
 schema_download=Stiahnite si súbor schémy: <a href=$1>$1</a>
 twofactor_err=Nepodarilo sa nastaviť dvojfaktorové overenie
 twofactor_euser=Váš užívateľ Webmin nebol nájdený!

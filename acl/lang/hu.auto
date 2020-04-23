@@ -163,7 +163,7 @@ makedn_exec=Szülő DN létrehozása $1..
 makedn_failed=.. a létrehozás sikertelen: $1 
 makedn_still=Néhány problémát találtak még a DN létrehozása után: $1 
 schema_title=Töltse le az LDAP sémát
-schema_desc=Mielőtt a Webmin LDAP szervert használhat a felhasználók és csoportok tárolására, be kell állítania az alábbi sémát. Ezt általában úgy lehet megtenni, ha a sémadefiníciót <tt>/ etc / ldap / schema</tt> vagy <tt>/ etc / openldap / schema</tt> fájlba menti <tt>webmin.schema</tt> majd a kiszolgáló konfigurálása a sémafájl betöltésére.
+schema_desc=Mielőtt a Webmin LDAP szervert használhat a felhasználók és csoportok tárolására, be kell állítania az alábbi sémát. Ezt általában úgy lehet megtenni, ha a sémadefiníciót <tt>/etc/ldap/schema</tt> vagy <tt>/etc/openldap/schema</tt> fájlba menti <tt>webmin.schema</tt> majd a kiszolgáló konfigurálása a sémafájl betöltésére.
 schema_download=Töltse le a sémafájlt: <a href=$1>$1</a>
 twofactor_err=A kétfaktoros hitelesítés beállítása nem sikerült
 twofactor_euser=Nem található a Webmin felhasználója!

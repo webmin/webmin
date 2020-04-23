@@ -110,7 +110,7 @@ makedn_failed=..作成に失敗しました： $1
 makedn_done=..完了
 makedn_still=DNの作成後でもいくつかの問題が見つかりました： $1 
 schema_title=LDAPスキーマをダウンロードする
-schema_desc=WebminがLDAPサーバーを使用してユーザーとグループを保存する前に、以下のスキーマを使用するように構成する必要があります。これは通常、スキーマ定義を<tt>/ etc / ldap / schema</tt>または<tt>/ etc / openldap / schema</tt>に<tt>webmin.schema</tt>として保存することで実行できます。次に、そのスキーマファイルを読み込むようにサーバーを構成します。
+schema_desc=WebminがLDAPサーバーを使用してユーザーとグループを保存する前に、以下のスキーマを使用するように構成する必要があります。これは通常、スキーマ定義を<tt>/etc/ldap/schema</tt>または<tt>/etc/openldap/schema</tt>に<tt>webmin.schema</tt>として保存することで実行できます。次に、そのスキーマファイルを読み込むようにサーバーを構成します。
 schema_download=スキーマファイルのダウンロード：<a href=$1>$1</a>
 twofactor_err=二要素認証のセットアップに失敗しました
 twofactor_euser=Webminユーザーが見つかりませんでした！

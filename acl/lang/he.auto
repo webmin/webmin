@@ -454,7 +454,7 @@ makedn_failed=.. creation failed : $1
 makedn_done=.. בוצע
 makedn_still=Some problems were found even after DN creation : $1
 schema_title=הורד סכמת LDAP
-schema_desc=לפני ש- Webmin יכולה להשתמש בשרת LDAP לאחסון משתמשים וקבוצות, עליו להיות מוגדר לשימוש בסכימה שלהלן. בדרך כלל ניתן לעשות זאת על ידי שמירת הגדרת הסכימה ב- <tt>/ etc / ldap / schema</tt> או <tt>/ etc / openldap / schema</tt> כ- <tt>webmin.schema</tt>, ואז קבע את התצורה של השרת לטעון קובץ הסכימה.
+schema_desc=לפני ש- Webmin יכולה להשתמש בשרת LDAP לאחסון משתמשים וקבוצות, עליו להיות מוגדר לשימוש בסכימה שלהלן. בדרך כלל ניתן לעשות זאת על ידי שמירת הגדרת הסכימה ב- <tt>/etc/ldap/schema</tt> או <tt>/etc/openldap/schema</tt> כ- <tt>webmin.schema</tt>, ואז קבע את התצורה של השרת לטעון קובץ הסכימה.
 schema_download=Download schema file : <a href=$1>$1</a>
 twofactor_err=הגדרת אימות דו-גורמי נכשלה
 twofactor_euser=המשתמש שלך ב- Webmin לא נמצא!
