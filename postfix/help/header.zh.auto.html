@@ -1,0 +1,1 @@
+<header>标头检查</header>可选的标题检查表允许基于其标题重定向电子邮件。该表中的每个条目在左侧都有一个POSIX正则表达式，在右侧有一个动作。 <p>正则表达式可以是： <br> <tt>/name=[^&gt;]*\.(bat|cmd|exe|com|pif|reg|scr|vb|vbe|vbs)/</tt> <br>匹配文件名以扩展名结尾的附件，这些扩展名表示潜在的危险Windows可执行文件。 <p>动作可以像： <br> <tt>REJECT</tt> <br>只拒绝匹配表达式的邮件，或者： <br> <tt>REDIRECT spam@yourdomain.com</tt> <br>将邮件转发到另一个地址。 <p><footer>

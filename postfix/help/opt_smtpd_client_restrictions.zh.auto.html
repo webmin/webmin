@@ -1,0 +1,1 @@
+<header>客户端主机名/地址的限制</header><center> <tt>smtpd_client_restrictions</tt> </center> <hr>此参数指定对SMTP客户端主机名和地址的可选限制。 <p>默认设置是允许来自任何主机的连接。可以使用以下限制： <include smtpd_restrictions>限制按照指定的顺序应用；符合条件的第一个限制条件。 <p>指定限制列表，以逗号和/或空格分隔。通过在下一行以空格开头继续长行。 <p>明智的例子： <ul><li> <tt>permit_mynetworks, reject_unknown_client</tt> <li> <tt>reject_maps_rbl, reject_unknown_client</tt> </ul> <hr>

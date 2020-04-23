@@ -1,0 +1,1 @@
+<header>並行發送到同一本地收件人的最大數量</header><center> <tt>local_destination_concurrency_limit</tt> </center> <hr>此參數限制並行發送到同一本地收件人的數量。 <p>默認限制來自<a href=opt_default_destination_concurrency_limit><tt>default_destination_concurrency_limit</tt></a>參數。 Postfix文檔建議將下限限制為2，以防萬一有人在<tt>.forward</tt>文件或別名中使用了昂貴的shell命令（例如，郵件列表管理器）。您不想運行其中的很多。 <hr>

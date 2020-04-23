@@ -1,0 +1,1 @@
+<header>客戶端主機名/地址的限制</header><center> <tt>smtpd_client_restrictions</tt> </center> <hr>此參數指定對SMTP客戶端主機名和地址的可選限制。 <p>默認設置是允許來自任何主機的連接。可以使用以下限制： <include smtpd_restrictions>限制按照指定的順序應用；符合條件的第一個限制條件。 <p>指定限制列表，以逗號和/或空格分隔。通過在下一行以空格開頭繼續長行。 <p>明智的例子： <ul><li> <tt>permit_mynetworks, reject_unknown_client</tt> <li> <tt>reject_maps_rbl, reject_unknown_client</tt> </ul> <hr>
