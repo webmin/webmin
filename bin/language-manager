@@ -54,6 +54,7 @@ sub main
                'keys-test|kt:s'                   => \$opt{'keys-test'},
                'values-fix|vf:s'                  => \$opt{'values-fix'},
                'values-fix-delimiter|vfd:s'       => \$opt{'values-fix-delimiter'},
+               'translate-format|tf:s'            => \$opt{'translate-format'},
                'git-commit|gc!'                   => \$opt{'git-commit'},
                'log|l:s'                          => \$opt{'log'},
                'verbose|v:i'                      => \$opt{'verbose'});
@@ -84,7 +85,7 @@ sub main
     $data{'type'} = $type;
 
     # Set default format to text
-    $opt{'translate-format'} = 'text';
+    $opt{'translate-format'} ||= 'text';
 
     # Force HTML format for "module" type translates
     if (defined($opt{'type'}) && $opt{'type'} =~ /module|help/) {
@@ -525,6 +526,8 @@ sub source_data
 
     $language_source = $opt->{'language-source'};
     $type            = $data->{'type'};
+    $target_help     = '';
+
     if ($type eq 'config' || $type eq 'uconfig' || $type eq 'module') {
         $language_source = $language_source ne 'en' ? "$type.info.$language_source" : "$type.info";
     }
@@ -593,7 +596,9 @@ sub translate_substitute
 
     # Preserve path in strings
     elsif ($format eq 'html') {
-        $value =~ s/(?:(^(\/[\w+].*?),|^(\/[\w+].*?)\.|(\/[\w+].*?) |(\/[\w+].*?)$))/<span translate="no">"$1"<\/span>/g;
+        $value =~ s/<tt>/<tt translate="no">/gm;
+        $value =~
+s/(?:(^(?<!<)(\/[\w+].*?),|^(?<!<)(\/[\w+].*?)\.|(?<!<)(\/[\w+].*?) |(?<!<)(\/[\w+].*?)$))/<span translate="no">"$1"<\/span>/g;
     }
 
     return $value;
@@ -672,6 +677,8 @@ sub translated_substitute
         # Remove any escapes as returned by translator, when run in HTML mode
         $translated =~ s/&quot;//gi;
         $translated =~ s/&#39;/'/gi;
+
+        $translated =~ s/<tt translate="no">/<tt>/gm;
     }
 
     # Restore destroyed tags
@@ -746,6 +753,13 @@ sub translated_substitute
     if ($original =~ / % /) {
         $translated =~ s/[ ]*%[ ]*/ % /g;
         $translated =~ s/[ ]*٪[ ]*/ ٪ /g;
+    }
+    
+    # If original string contains `${VAR}`, fix the output
+    if ($original =~ /\$\{/ || $original =~ /\{\$/) {
+        $translated =~ s/\$ \{/\${/g;
+        $translated =~ s/\{\$ /{\$/g;
+        $translated =~ s/\.\.\. /.../g;
     }
 
     # If original value on template file contained escaped HTML entities, do the same on translated string
