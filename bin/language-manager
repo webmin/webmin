@@ -782,14 +782,15 @@ sub translate
     select(undef, undef, undef, 0.25);
 
     my $tr;
-    my $rsp = "https://translation.googleapis.com/language/translate/v2?q=@{[urlize($value)]}";
+    my $rsp = "https://translation.googleapis.com/language/translate/v2";
     my $rsh = { 'Authorization' => "Bearer \"@{[trim($token)]}\"",
                 'User-Agent'    => 'curl/7.29.1',
                 'Content-Type'  => 'application/json; charset=utf-8', };
-    my $rsc = "{  'source': '" . $source . "',  'target': '" . $target . "',  'format': '" . $format . "'}";
-    my $rs  = HTTP::Tiny->new()->request('POST' => $rsp, { 'headers' => $rsh, 'content' => $rsc });
-    my $ts  = $rs->{'success'};
-    my $tc  = $rs->{'content'};
+    my $rsc = "{  'source': '" . $source . "',  'target': '" . $target . "',  'format': '" . $format . "',  'q': '" .
+      quotemeta($value) . "'}";
+    my $rs = HTTP::Tiny->new()->request('POST' => $rsp, { 'headers' => $rsh, 'content' => $rsc });
+    my $ts = $rs->{'success'};
+    my $tc = $rs->{'content'};
 
     # Exctract translation on success
     if ($ts) {
@@ -976,15 +977,15 @@ sub go
             # Translate help files that don't have human translations
             if (!$only_transcode) {
                 my @help_untranslated_language_codes =
-                  grep {"@help_translated_language_codes" !~ /\b$_\b/ && !language_disallowed($_, $opt)}
-                  @{ $data->{'languages_source_list_codes'} };
+                  grep {!language_disallowed($_, $opt)} @{ $data->{'languages_source_list_codes'} };
                 my $help_untranslated_language_codes = scalar(@help_untranslated_language_codes);
                 my $help_translated_language_codes   = scalar(@help_translated_language_codes);
                 if ($help_untranslated_language_codes) {
                     talk_log(
                         ("" . GREEN .
 "   .. Found help file(s) for potential translation to $help_untranslated_language_codes more language(s), aside from $help_translated_language_codes already translated language(s)"
-                           . RESET . " \n      - @{[join(\"\n      - \", @templates)]}"
+                           . RESET .
+" \n      - @{[join(\"\n      - \", map {my $v = $_ =~ s/$path\/$module\/$type\///r; $v} @templates)]}"
                         ),
                         $data,
                         1);
@@ -993,10 +994,27 @@ sub go
                         foreach my $untranslated_language_code (@help_untranslated_language_codes) {
                             my $help_file_translated_auto =
                               $help_file_to_translate =~ s/(.*?)(.html)/$1.$untranslated_language_code.auto$2/r;
-                            my $help_file_translated_auto_short = $help_file_translated_auto =~ s/$path\///r;
+                            my $help_file_translated_human =
+                              $help_file_to_translate =~ s/(.*?)(.html)/$1.$untranslated_language_code$2/r;
+                            my $help_file_translated_auto_short  = $help_file_translated_auto  =~ s/$path\///r;
+                            my $help_file_translated_human_short = $help_file_translated_human =~ s/$path\///r;
 
                             # Process only user defined languages or do all; do not process excluded languages
                             next if language_disallowed($untranslated_language_code, $opt);
+
+                            # If a file has human translation variant already
+                            if (-r $help_file_translated_human) {
+                                if (-r $help_file_translated_auto) {
+                                    talk_log(
+                                             ("" . BRIGHT_MAGENTA . "     .. human translation variant of file " . YELLOW .
+                                                "$help_file_translated_human_short" . RESET . " already exists" . RESET . ""
+                                             ),
+                                             $data,
+                                             1);
+                                    unlink($help_file_translated_auto);
+                                }
+                                next;
+                            }
 
                             # If file is already translated, skip
                             if (-r $help_file_translated_auto && !$language_source_ignore_auto) {
@@ -1009,11 +1027,22 @@ sub go
                                 next;
                             }
 
-                            # Perform actual translation
+                            # Open template file that is going to be translated
                             my $help_file_to_translate_content = read_file_contents($help_file_to_translate);
+
+                            # Tags that should not be translated
+                            $help_file_to_translate_content =~ s/<tt>/<tt translate="no">/gm
+                              if ($help_file_to_translate_content =~ /<tt>.*?(\(\)|[_%$@=.:\/\\]+).*?<\/tt>/gm);
+                            $help_file_to_translate_content =~ s/<code>/<code translate="no">/gm;
+                            $help_file_to_translate_content =~ s/<kbd>/<kbd translate="no">/gm;
+
+                            # Perform actual translation
                             my $translated =
                               translate($data, $opt, $untranslated_language_code, $help_file_to_translate_content);
                             if ($translated) {
+                                $translated =~ s/<kbd translate="no">/<kbd>/gm;
+                                $translated =~ s/<code translate="no">/<code>/gm;
+                                $translated =~ s/<tt translate="no">/<tt>/gm;
                                 write_file_contents($help_file_translated_auto, $translated);
                                 talk_log(
                                          ("" . WHITE . "     .. translated to " .
@@ -1022,10 +1051,10 @@ sub go
                                          ),
                                          $data,
                                          1);
+                                $output++;
                             }
                         }
                     }
-                    $output++;
                 }
             }
 
