@@ -14,7 +14,6 @@ if ($in{'delete'}) {
 	}
 else {
 	# saving or updating a host
-	$whatfailed = "Failed to save host";
 	&check_ipaddress_any($in{'address'}) ||
 		&error("'".&html_escape($in{'address'})."' is not a valid IP address");
 	@h = split(/\s+/, $in{'hosts'});
