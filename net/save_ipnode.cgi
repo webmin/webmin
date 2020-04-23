@@ -17,11 +17,11 @@ else {
 	$whatfailed = "Failed to save ipnode";
 	&check_ipaddress($in{'address'}) ||
 	   &check_ip6address($in{'address'}) ||
-		&error("'$in{'address'}' is not a valid IPv4 or v6 address");
+		&error("'".&html_escape($in{'address'})."' is not a valid IPv4 or v6 address");
 	@h = split(/\s+/, $in{'ipnodes'});
 	foreach $h (@h) {
 		$h =~ /^[A-z0-9\-\.]+$/ ||
-			&error("'$h' is not a valid ipnodename");
+			&error("'".&html_escape($h)."' is not a valid ipnodename");
 		}
 	@h>0 || &error("You must enter at least one ipnodename");
 	if ($in{'new'}) {

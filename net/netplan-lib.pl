@@ -444,7 +444,7 @@ sub parse_routing
 my ($dev, $gw);
 if (!$in{'gateway_def'}) {
 	&check_ipaddress($in{'gateway'}) ||
-		&error(&text('routes_egateway', $in{'gateway'}));
+		&error(&text('routes_egateway', &html_escape($in{'gateway'})));
 	$gw = $in{'gateway'};
 	$dev = $in{'gatewaydev'};
 	}
@@ -454,7 +454,7 @@ if (!$in{'gateway_def'}) {
 my ($dev6, $gw6);
 if (!$in{'gateway6_def'}) {
 	&check_ip6address($in{'gateway6'}) ||
-		&error(&text('routes_egateway6', $in{'gateway6'}));
+		&error(&text('routes_egateway6', &html_escape($in{'gateway6'})));
 	$gw6 = $in{'gateway6'};
 	$dev6 = $in{'gatewaydev6'};
 	}

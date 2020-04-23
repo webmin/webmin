@@ -303,7 +303,7 @@ if ($in{'route_def'}) {
 	}
 else {
 	&check_ipaddress($in{'gw'}) ||
-		&error(&text('routes_edefault', $in{'gw'}));
+		&error(&text('routes_edefault', &html_escape($in{'gw'})));
 	&set_default_gateway($in{'gw'}, $in{'dev'});
 	}
 }

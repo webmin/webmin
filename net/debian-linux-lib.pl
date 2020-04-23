@@ -689,7 +689,7 @@ sub parse_routing
 local ($dev, $gw);
 if (!$in{'gateway_def'}) {
 	&check_ipaddress($in{'gateway'}) ||
-		&error(&text('routes_egateway', $in{'gateway'}));
+		&error(&text('routes_egateway', &html_escape($in{'gateway'})));
 	$gw = $in{'gateway'};
 	$dev = $in{'gatewaydev'};
 	}
@@ -702,7 +702,7 @@ if (@ifaces6) {
 	local ($dev6, $gw6);
 	if (!$in{'gateway6_def'}) {
 		&check_ip6address($in{'gateway6'}) ||
-			&error(&text('routes_egateway6', $in{'gateway6'}));
+			&error(&text('routes_egateway6', &html_escape($in{'gateway6'})));
 		$gw6 = $in{'gateway6'};
 		$dev6 = $in{'gatewaydev6'};
 		}
@@ -718,11 +718,11 @@ for($i=0; defined($dev = $in{"dev_$i"}); $i++) {
 	local $net = $in{"net_$i"};
 	local $netmask = $in{"netmask_$i"};
 	local $gw = $in{"gw_$i"};
-	$dev =~ /^\S+$/ || &error(&text('routes_edevice', $dev));
-	&to_ipaddress($net) || &error(&text('routes_enet', $net));
+	$dev =~ /^\S+$/ || &error(&text('routes_edevice', &html_escape($dev)));
+	&to_ipaddress($net) || &error(&text('routes_enet', &html_escape($net)));
 	&check_ipaddress_any($netmask) ||
-		&error(&text('routes_emask', $netmask));
-	&to_ipaddress($gw) || &error(&text('routes_egateway', $gw));
+		&error(&text('routes_emask', &html_escape($netmask)));
+	&to_ipaddress($gw) || &error(&text('routes_egateway', &html_escape($gw)));
 	local $prefix = &mask_to_prefix($netmask);
 	push(@{$st{$dev}}, [ "up", "ip route add $net/$prefix via $gw" ]);
 	}
@@ -731,12 +731,12 @@ for($i=0; defined($dev = $in{"ldev_$i"}); $i++) {
 	local $net = $in{"lnet_$i"};
 	local $netmask = $in{"lnetmask_$i"};
 	next if (!$dev && !$net);
-	$dev =~ /^\S+$/ || &error(&text('routes_edevice', $dev));
+	$dev =~ /^\S+$/ || &error(&text('routes_edevice', &html_escape($dev)));
 	&to_ipaddress($net) ||
 	    $net =~ /^(\S+)\/(\d+)$/ && &to_ipaddress("$1") ||
-		&error(&text('routes_enet', $net));
+		&error(&text('routes_enet', &html_escape($net)));
 	&check_ipaddress_any($netmask) ||
-		&error(&text('routes_emask', $netmask));
+		&error(&text('routes_emask', &html_escape($netmask)));
 	local $prefix = &mask_to_prefix($netmask);
 	push(@{$hr{$dev}}, [ "up", "ip route add $net/$prefix dev $dev" ]);
 	}
@@ -841,7 +841,7 @@ while (defined $line) {
 		push(@ret, [$name, $addrfam, $method, \@iface_options]);
 		}
 	else {
-		error("Error reading file $pathname: unexpected line '$line'");
+		error("Error reading file $network_interfaces_config: unexpected line '$line'");
 		}
 	}
 close(CFGFILE);
