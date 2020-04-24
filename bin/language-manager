@@ -1007,9 +1007,9 @@ sub go
                     foreach my $help_file_to_translate (@templates) {
                         foreach my $untranslated_language_code (@help_untranslated_language_codes) {
                             my $help_file_translated_auto =
-                              $help_file_to_translate =~ s/(.*?)(.html)/$1.$untranslated_language_code.auto$2/r;
+                              $help_file_to_translate =~ s/(.*?)(\.html)$/$1.$untranslated_language_code.auto$2/r;
                             my $help_file_translated_human =
-                              $help_file_to_translate =~ s/(.*?)(.html)/$1.$untranslated_language_code$2/r;
+                              $help_file_to_translate =~ s/(.*?)(\.html)$/$1.$untranslated_language_code$2/r;
                             my $help_file_translated_auto_short  = $help_file_translated_auto  =~ s/$path\///r;
                             my $help_file_translated_human_short = $help_file_translated_human =~ s/$path\///r;
 
@@ -1053,6 +1053,9 @@ sub go
                             # Perform actual translation
                             my $translated =
                               translate($data, $opt, $untranslated_language_code, $help_file_to_translate_content);
+                              say $help_file_to_translate;
+                              say $help_file_translated_auto;
+                              say $help_file_translated_auto_short;
                             if ($translated) {
                                 $translated =~ s/<kbd translate="no">/<kbd>/gm;
                                 $translated =~ s/<code translate="no">/<code>/gm;
