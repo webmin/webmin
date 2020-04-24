@@ -54,7 +54,7 @@ if ($in{'action'} eq $text{'action_sync'}) {
   $access{'ntp'} || &error($text{'acl_nontp'});
   $in{'timeserver'} =~ /\S/ || &error($text{'error_etimeserver'});
   $err = &sync_time($in{'timeserver'}, $in{'hardware'});
-  &error(&html_escape($err)) if ($err);
+  &error("<pre>".&html_escape($err)."</pre>") if ($err);
 
   # Save settings in module config
   &lock_file($module_config_file);
