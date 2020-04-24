@@ -9,7 +9,7 @@ require './webmin-lib.pl';
 $gconfig{'lang'} = $in{'lang'};
 $gconfig{'langauto'} = int($in{'langauto'});
 $gconfig{'acceptlang'} = $in{'acceptlang'};
-$gconfig{'charset'}) = 'UTF-8';
+$gconfig{'charset'} = 'UTF-8';
 &write_file("$config_directory/config", \%gconfig);
 &unlock_file("$config_directory/config");
 &webmin_log("lang", undef, undef, \%in);
