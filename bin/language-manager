@@ -1053,9 +1053,6 @@ sub go
                             # Perform actual translation
                             my $translated =
                               translate($data, $opt, $untranslated_language_code, $help_file_to_translate_content);
-                              say $help_file_to_translate;
-                              say $help_file_translated_auto;
-                              say $help_file_translated_auto_short;
                             if ($translated) {
                                 $translated =~ s/<kbd translate="no">/<kbd>/gm;
                                 $translated =~ s/<code translate="no">/<code>/gm;
