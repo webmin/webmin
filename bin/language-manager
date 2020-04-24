@@ -1185,11 +1185,13 @@ sub go
                             next;
                         }
                         my $code_ = $code;
+                        $key__ = "${key}_${code}";
                         if ($language_source_encoding eq 'map') {
                             $code_ = language_map($code);
                             $key_  = "${key}_${code_}";
+                        } else {
+                            $key_ = $key__;
                         }
-                        $key__ = "${key}_${code}";
                     }
 
                     # This feature just checks and fixes values on target files (translations)
