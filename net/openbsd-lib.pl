@@ -477,7 +477,7 @@ print &ui_table_row($text{'routes_routed'},
 sub parse_routing
   {
       $in{'defr_def'} || &check_ipaddress($in{'defr'}) ||
-	&error(&text('routes_edefault', $in{'defr'}));
+	&error(&text('routes_edefault', &html_escape($in{'defr'})));
 
       &read_routing;
 

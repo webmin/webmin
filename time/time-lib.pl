@@ -52,7 +52,7 @@ else {
 	}
 if ($? && $config{'ntp_only'}) {
 	# error using ntp, but nothing else is allowed
-	return &text('error_entp', "<tt>$out</tt>");
+	return &text('error_entp', "$out");
 	}
 elsif ($?) {
 	# error using ntp. use timeservice

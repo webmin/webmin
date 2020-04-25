@@ -260,7 +260,7 @@ sub parse_routing
 local $gw = "";
 if (!$in{'gw_def'}) {
 	&check_ipaddress($in{'gw'}) ||
-		&error(&text('routes_edefault', $in{'gw'}));
+		&error(&text('routes_edefault', &html_escape($in{'gw'})));
 	$gw = $in{'gw'};
 	}
 &lock_file($rc_init);

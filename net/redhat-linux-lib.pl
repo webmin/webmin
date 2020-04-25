@@ -703,13 +703,13 @@ if (!$supports_dev_gateway) {
 	# Just update a single file
 	if ($in{'gateway_def'}) { delete($conf{'GATEWAY'}); }
 	elsif (!&to_ipaddress($in{'gateway'})) {
-		&error(&text('routes_edefault', $in{'gateway'}));
+		&error(&text('routes_edefault', &html_escape($in{'gateway'})));
 		}
 	else { $conf{'GATEWAY'} = $in{'gateway'}; }
 
 	if ($in{'gatewaydev_def'}) { delete($conf{'GATEWAYDEV'}); }
 	elsif ($in{'gatewaydev'} !~ /^\S+$/) {
-		&error(&text('routes_edevice', $in{'gatewaydev'}));
+		&error(&text('routes_edevice', &html_escape($in{'gatewaydev'})));
 		}
 	else { $conf{'GATEWAYDEV'} = $in{'gatewaydev'}; }
 	}
@@ -742,7 +742,7 @@ else {
 			local ($b) = grep { $_->{'fullname'} eq
 					    $in{"gatewaydev$r"} } @boot;
 			$b->{'gateway'} && &error(&text('routes_eclash2',
-							$in{"gatewaydev$r"}));
+							&html_escape($in{"gatewaydev$r"})));
 			$b->{'gateway'} = $in{"gateway$r"};
 			$b->{'gateway6'} = $in{"gateway6$r"};
 			}
@@ -763,10 +763,10 @@ else {
 for($i=0; defined($dev = $in{"dev_$i"}); $i++) {
 	next if (!$dev);
 	$net = $in{"net_$i"}; $netmask = $in{"netmask_$i"}; $gw = $in{"gw_$i"};
-	$dev =~ /^\S+$/ || &error(&text('routes_edevice', $dev));
-	&to_ipaddress($net) || &error(&text('routes_enet', $net));
-	&check_ipaddress($netmask) || &error(&text('routes_emask', $netmask));
-	&to_ipaddress($gw) || &error(&text('routes_egateway', $gw));
+	$dev =~ /^\S+$/ || &error(&text('routes_edevice', &html_escape($dev)));
+	&to_ipaddress($net) || &error(&text('routes_enet', &html_escape($net)));
+	&check_ipaddress($netmask) || &error(&text('routes_emask', &html_escape($netmask)));
+	&to_ipaddress($gw) || &error(&text('routes_egateway', &html_escape($gw)));
 	if ($netmask eq "255.255.255.255") {
 		push(@st, "$dev host $net gw $gw\n");
 		}
@@ -778,11 +778,11 @@ for($i=0; defined($dev = $in{"dev_$i"}); $i++) {
 for($i=0; defined($dev = $in{"ldev_$i"}); $i++) {
 	$net = $in{"lnet_$i"}; $netmask = $in{"lnetmask_$i"};
 	next if (!$dev && !$net);
-	$dev =~ /^\S+$/ || &error(&text('routes_edevice', $dev));
+	$dev =~ /^\S+$/ || &error(&text('routes_edevice', &html_escape($dev)));
 	&to_ipaddress($net) ||
 	    $net =~ /^(\S+)\/(\d+)$/ && &to_ipaddress("$1") ||
-		&error(&text('routes_enet', $net));
-	&check_ipaddress($netmask) || &error(&text('routes_emask', $netmask));
+		&error(&text('routes_enet', &html_escape($net)));
+	&check_ipaddress($netmask) || &error(&text('routes_emask', &html_escape($netmask)));
 	if ($netmask eq "255.255.255.255") {
 		push(@st, "$dev host $net\n");
 		}

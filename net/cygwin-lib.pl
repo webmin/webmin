@@ -422,7 +422,7 @@ sub parse_routing
 		    if ($gateway != $_->{'gateway'} ||
 			$gwmetric != $_->{'gwmetric'}) {
 			&check_ipaddress($gateway) ||
-			    &error(&text('routes_egateway', $gateway));
+			    &error(&text('routes_egateway', &html_escape($gateway)));
 			my $cmd = "netsh interface ip set address name = \"" .
 			    $_->{'name'} . "\" gateway = $gateway " .
 				"gwmetric = $gwmetric";

@@ -195,9 +195,9 @@ local %ifcs = map { $_->{'fullname'}, 1 } &all_interfaces();
 
 if (!$in{'gateway_def'}) {
 	&to_ipaddress($in{'gateway'}) ||
-		&error(&text('routes_edefault', $in{'gateway'}));
+		&error(&text('routes_edefault', &html_escape($in{'gateway'})));
 	$ifcs{$in{'gatewaydev'}} ||
-		&error(&text('routes_edevice', $in{'gatewaydev'}));
+		&error(&text('routes_edevice', &html_escape($in{'gatewaydev'})));
 	}
 
 &set_default_gateway($in{'gateway_def'} ? ( ) :

@@ -42,7 +42,7 @@ sub activate_interface
 local $a = $_[0];
 if ($a->{'virtual'} eq "") {
 	local $out = &backquote_logged("ifconfig $a->{'name'} plumb 2>&1");
-	if ($out) { &error("Interface '$a->{'name'}' does not exist"); }
+	if ($out) { &error("Interface '".&html_escape($a->{'name'})."' does not exist"); }
 	}
 local $cmd = "ifconfig $a->{'name'}";
 if ($a->{'virtual'} ne "") { $cmd .= ":$a->{'virtual'}"; }
@@ -370,7 +370,7 @@ sub parse_routing
 {
 local @defrt = split(/\s+/, $in{'defrt'});
 foreach my $d (@defrt) {
-	&to_ipaddress($d) || &error(&text('routes_edefault', $d));
+	&to_ipaddress($d) || &error(&text('routes_edefault', &html_escape($d)));
 	}
 &lock_file("/etc/defaultrouter");
 if (@defrt) {

@@ -614,11 +614,11 @@ sub parse_routing
 {
 &lock_file("/etc/rc.conf");
 $in{'defr_def'} || &check_ipaddress($in{'defr'}) ||
-	&error(&text('routes_edefault', $in{'defr'}));
+	&error(&text('routes_edefault', &html_escape($in{'defr'})));
 &save_rc_conf('defaultrouter', $in{'defr_def'} ? 'NO' : $in{'defr'});
 if (&supports_address6()) {
 	$in{'defr6_def'} || &check_ip6address($in{'defr6'}) ||
-		&error(&text('routes_edefault6', $in{'defr6'}));
+		&error(&text('routes_edefault6', &html_escape($in{'defr6'})));
 	&save_rc_conf('ipv6_defaultrouter',
 		      $in{'defr6_def'} ? 'NO' : $in{'defr6'});
 	}
