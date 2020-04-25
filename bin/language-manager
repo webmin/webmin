@@ -361,7 +361,8 @@ sub language_source_file
         # Force encoding based on map
         if ($opt->{'mode'} eq 'full' && $opt->{'language-source-encoding'} eq 'map') {
             my $code = $data{'language-code'};
-            my ($language_source_file_encoding, $map_auto) = language_file_encoding($code, $language_source_file_target);
+            my $map_auto;
+            ($language_source_file_encoding, $map_auto) = language_file_encoding($code, $language_source_file_target);
             talk_log(
                      ("" . CYAN . "  .. Force file encoding to \`$language_source_file_encoding\`" .
                         ($map_auto // '') . " as derived from language map" . RESET . ""
@@ -754,7 +755,7 @@ sub translated_substitute
         $translated =~ s/[ ]*%[ ]*/ % /g;
         $translated =~ s/[ ]*٪[ ]*/ ٪ /g;
     }
-    
+
     # If original string contains `${VAR}`, fix the output
     if ($original =~ /\$\{/ || $original =~ /\{\$/) {
         $translated =~ s/\$ \{/\${/g;
@@ -1385,7 +1386,10 @@ sub go
                                $found = $File::Find::name;
                                my $code_ = language_map($code);
                                if ($code ne $code_ &&
-                                   (   $found eq "$mpath/$code_" ||
+                                   (   $found eq "$mpath/$code_"       ||
+                                       $found eq "$mpath/$code.UTF-8"  ||
+                                       $found eq "$mpath/$code_.UTF-8" ||
+                                       $found eq "$mpath/ru_SU"        ||
                                        (defined($opt->{'type'}) &&
                                            $opt->{'type'} &&
                                            $opt->{'type'} =~ /config|uconfig|module/ &&
@@ -1421,9 +1425,9 @@ sub go
                     }
                     my $file      = $mpath . "/$code";
                     my $file_auto = $mpath . "/$code.$language_suffix";
-                    write_file($file, \%language, undef, undef, $mfile)
+                    write_file($file, \%language, undef, undef, $mfile), chmod(0664, $file)
                       if (%language);
-                    write_file($file_auto, \%language_auto, undef, undef, $mfile)
+                    write_file($file_auto, \%language_auto, undef, undef, $mfile), chmod(0664, $file_auto)
                       if (%language_auto && !$opt->{'only-transcode'});
 
                     # Git auto-commit after language was transcoded/translated
