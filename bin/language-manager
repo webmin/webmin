@@ -1430,6 +1430,10 @@ sub go
                     write_file($file_auto, \%language_auto, undef, undef, $mfile), chmod(0664, $file_auto)
                       if (%language_auto && !$opt->{'only-transcode'});
 
+                    # Remove empty files
+                    unlink($file) if (-z $file);
+                    unlink($file_auto) if (-z $file_auto);
+
                     # Git auto-commit after language was transcoded/translated
                     if ($git_commit) {
 
