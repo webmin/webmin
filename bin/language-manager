@@ -975,7 +975,8 @@ sub go
                                 if ($data_encoding eq 'utf-8') {
                                     $data_converted = $data_original;
                                 }
-                                write_file_contents("$help_file_write", $data_converted);
+                                write_file_contents($help_file_write, $data_converted);
+                                chmod(0664, $help_file_write);
                                 $output++;
                             }
                         }
