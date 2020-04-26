@@ -376,13 +376,15 @@ $has_lsof_command = &has_command("lsof");
 sub find_socket_processes
 {
 local @rv;
-open(LSOF, "lsof -i '$_[0]:$_[1]' |");
-while(<LSOF>) {
-	if (/^(\S+)\s+(\d+)/) {
-		push(@rv, $2);
+if ($has_lsof_command) {
+	open(LSOF, "$has_lsof_command -i ".quotemeta("$_[0]:$_[1]")." |");
+	while(<LSOF>) {
+		if (/^(\S+)\s+(\d+)/) {
+			push(@rv, $2);
+			}
 		}
+	close(LSOF);
 	}
-close(LSOF);
 return @rv;
 }
 
@@ -391,13 +393,15 @@ return @rv;
 sub find_ip_processes
 {
 local @rv;
-open(LSOF, "lsof -i '\@$_[0]' |");
-while(<LSOF>) {
-	if (/^(\S+)\s+(\d+)/) {
-		push(@rv, $2);
+if ($has_lsof_command) {
+	open(LSOF, "$has_lsof_command -i ".quotemeta("\@$_[0]")." |");
+	while(<LSOF>) {
+		if (/^(\S+)\s+(\d+)/) {
+			push(@rv, $2);
+			}
 		}
+	close(LSOF);
 	}
-close(LSOF);
 return @rv;
 }
 
@@ -406,34 +410,36 @@ return @rv;
 sub find_process_sockets
 {
 local @rv;
-open(LSOF, "lsof -i tcp -i udp -n |");
-while(<LSOF>) {
-	if (/^(\S+)\s+(\d+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+).*(TCP|UDP)\s+(.*)/
-	    && $2 eq $_[0]) {
-		local $n = { 'fd' => $4,
-			     'type' => $5,
-			     'proto' => $7 };
-		local $m = $8;
-		if ($m =~ /^([^:\s]+):([^:\s]+)\s+\(listen\)/i) {
-			$n->{'lhost'} = $1;
-			$n->{'lport'} = $2;
-			$n->{'listen'} = 1;
+if ($has_lsof_command) {
+	open(LSOF, "$has_lsof_command -i tcp -i udp -n |");
+	while(<LSOF>) {
+		if (/^(\S+)\s+(\d+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+).*(TCP|UDP)\s+(.*)/
+		    && $2 eq $_[0]) {
+			local $n = { 'fd' => $4,
+				     'type' => $5,
+				     'proto' => $7 };
+			local $m = $8;
+			if ($m =~ /^([^:\s]+):([^:\s]+)\s+\(listen\)/i) {
+				$n->{'lhost'} = $1;
+				$n->{'lport'} = $2;
+				$n->{'listen'} = 1;
+				}
+			elsif ($m =~ /^([^:\s]+):([^:\s]+)->([^:\s]+):([^:\s]+)\s+\((\S+)\)/) {
+				$n->{'lhost'} = $1;
+				$n->{'lport'} = $2;
+				$n->{'rhost'} = $3;
+				$n->{'rport'} = $4;
+				$n->{'state'} = $5;
+				}
+			elsif ($m =~ /^([^:\s]+):([^:\s]+)/) {
+				$n->{'lhost'} = $1;
+				$n->{'lport'} = $2;
+				}
+			push(@rv, $n);
 			}
-		elsif ($m =~ /^([^:\s]+):([^:\s]+)->([^:\s]+):([^:\s]+)\s+\((\S+)\)/) {
-			$n->{'lhost'} = $1;
-			$n->{'lport'} = $2;
-			$n->{'rhost'} = $3;
-			$n->{'rport'} = $4;
-			$n->{'state'} = $5;
-			}
-		elsif ($m =~ /^([^:\s]+):([^:\s]+)/) {
-			$n->{'lhost'} = $1;
-			$n->{'lport'} = $2;
-			}
-		push(@rv, $n);
 		}
+	close(LSOF);
 	}
-close(LSOF);
 return @rv;
 }
 
@@ -442,25 +448,27 @@ return @rv;
 sub find_process_files
 {
 local @rv;
-open(LSOF, "lsof -p '$_[0]' |");
-while(<LSOF>) {
-	if (/^(\S+)\s+(\d+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\d+),(\d+)\s+(\d+)\s+(\d+)\s+(.*)/) {
-		push(@rv, { 'fd' => lc($4),
-			    'type' => lc($5),
-			    'device' => [ $6, $7 ],
-			    'size' => $8,
-			    'inode' => $9,
-			    'file' => $10 });
+if ($has_lsof_command) {
+	open(LSOF, "$has_lsof_command -p ".quotemeta($_[0])." |");
+	while(<LSOF>) {
+		if (/^(\S+)\s+(\d+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\d+),(\d+)\s+(\d+)\s+(\d+)\s+(.*)/) {
+			push(@rv, { 'fd' => lc($4),
+				    'type' => lc($5),
+				    'device' => [ $6, $7 ],
+				    'size' => $8,
+				    'inode' => $9,
+				    'file' => $10 });
+			}
+		elsif (/^(\S+)\s+(\d+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\d+),(\d+)\s+(\d+)\s+(.*)/) {
+			push(@rv, { 'fd' => lc($4),
+				    'type' => lc($5),
+				    'device' => [ $6, $7 ],
+				    'inode' => $8,
+				    'file' => $9 });
+			}
 		}
-	elsif (/^(\S+)\s+(\d+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\d+),(\d+)\s+(\d+)\s+(.*)/) {
-		push(@rv, { 'fd' => lc($4),
-			    'type' => lc($5),
-			    'device' => [ $6, $7 ],
-			    'inode' => $8,
-			    'file' => $9 });
-		}
+	close(LSOF);
 	}
-close(LSOF);
 return @rv;
 }
 
