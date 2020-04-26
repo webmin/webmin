@@ -405,17 +405,17 @@ if ($has_lsof_command) {
 return @rv;
 }
 
-# find_process_sockets(pid)
-# Returns all network connections made by some process
-sub find_process_sockets
+# find_all_process_sockets()
+# Returns all network connections made by any process
+sub find_all_process_sockets
 {
 local @rv;
 if ($has_lsof_command) {
 	open(LSOF, "$has_lsof_command -i tcp -i udp -n |");
 	while(<LSOF>) {
-		if (/^(\S+)\s+(\d+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+).*(TCP|UDP)\s+(.*)/
-		    && $2 eq $_[0]) {
-			local $n = { 'fd' => $4,
+		if (/^(\S+)\s+(\d+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+).*(TCP|UDP)\s+(.*)/) {
+			local $n = { 'pid' => $2,
+				     'fd' => $4,
 				     'type' => $5,
 				     'proto' => $7 };
 			local $m = $8;
@@ -441,6 +441,15 @@ if ($has_lsof_command) {
 	close(LSOF);
 	}
 return @rv;
+
+}
+
+# find_process_sockets(pid)
+# Returns all network connections made by some process
+sub find_process_sockets
+{
+my ($pid) = @_;
+return grep { $_->{'pid'} == $pid } &find_all_process_sockets();
 }
 
 # find_process_files(pid)
