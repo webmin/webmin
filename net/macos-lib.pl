@@ -422,7 +422,7 @@ elsif ($in{'router_mode'} == 1) {
 	}
 else {
 	$r = $in{'router'};
-	&check_ipaddress($r) || &error(&text('routes_edefault', $r));
+	&check_ipaddress($r) || &error(&text('routes_edefault', &html_escape($r)));
 	}
 &lock_file($hostconfig_file);
 &set_hostconfig("ROUTER", $r);

@@ -31,12 +31,12 @@ else {
 		$in{'virtual'} =~ /^\d+$/ ||
 			&error($text{'aifc_evirt'});
 		$in{'virtual'} >= $min_virtual_number ||
-			&error(&text('aifc_evirtmin', $min_virtual_number));
+			&error(&text('aifc_evirtmin', &html_escape($min_virtual_number)));
 		foreach $ea (@acts) {
 			if ($ea->{'name'} eq $in{'name'} &&
 			    $ea->{'virtual'} eq $in{'virtual'}) {
 				&error(&text('aifc_evirtdup',
-				       "$in{'name'}:$in{'virtual'}"));
+				       &html_escape("$in{'name'}:$in{'virtual'}")));
 				}
 			}
 		$a->{'name'} = $in{'name'};
@@ -50,11 +50,11 @@ else {
 		foreach $ea (@acts) {
 			if ($ea->{'name'} eq $1 &&
 			    $ea->{'virtual'} eq $3) {
-				&error(&text('aifc_evirtdup', $in{'name'}));
+				&error(&text('aifc_evirtdup', &html_escape($in{'name'})));
 				}
 			}
 		$3 >= $min_virtual_number ||
-			&error(&text('aifc_evirtmin', $min_virtual_number));
+			&error(&text('aifc_evirtmin', &html_escape($min_virtual_number)));
 		$a->{'name'} = $1;
 		$a->{'virtual'} = $3;
 		$a->{'fullname'} = $a->{'name'}.":".$a->{'virtual'};
@@ -65,7 +65,7 @@ else {
 		# creating a real interface
 		foreach $ea (@acts) {
 			if ($ea->{'name'} eq $in{'name'}) {
-				&error(&text('aifc_edup', $in{'name'}));
+				&error(&text('aifc_edup', &html_escape($in{'name'})));
 				}
 			}
 		$a->{'name'} = $in{'name'};
@@ -79,7 +79,7 @@ else {
 
 	# Validate and store inputs
 	&check_ipaddress_any($in{'address'}) ||
-		&error(&text('aifc_eip', $in{'address'}));
+		&error(&text('aifc_eip', &html_escape($in{'address'})));
 	$a->{'address'} = $in{'address'};
 
 	# Check for address clash
@@ -88,7 +88,7 @@ else {
 	if (!$allow_clash &&
 	    ($in{'new'} || $olda->{'address'} ne $a->{'address'})) {
 		($clash) = grep { $_->{'address'} eq $a->{'address'} } @acts;
-		$clash && &error(&text('aifc_eclash', $clash->{'fullname'}));
+		$clash && &error(&text('aifc_eclash', &html_escape($clash->{'fullname'})));
 		}
 
 	if ($virtual_netmask && $a->{'virtual'} ne "") {
@@ -103,7 +103,7 @@ else {
 		}
 	elsif (!$in{'netmask_def'}) {
 		&check_netmask($in{'netmask'},$a->{'address'}) ||
-			&error(&text('aifc_emask', $in{'netmask'}));
+			&error(&text('aifc_emask', &html_escape($in{'netmask'})));
 		$a->{'netmask'} = $in{'netmask'};
 		}
 
@@ -115,7 +115,7 @@ else {
 		}
 	elsif (!$in{'broadcast_def'}) {
 		&check_ipaddress_any($in{'broadcast'}) ||
-			&error(&text('aifc_ebroad', $in{'broadcast'}));
+			&error(&text('aifc_ebroad', &html_escape($in{'broadcast'})));
 		$a->{'broadcast'} = $in{'broadcast'};
 		}
 
@@ -126,7 +126,7 @@ else {
 		}
 	elsif (!$in{'mtu_def'}) {
 		$in{'mtu'} =~ /^\d+$/ ||
-			&error(&text('aifc_emtu', $in{'mtu'}));
+			&error(&text('aifc_emtu', &html_escape($in{'mtu'})));
 		$a->{'mtu'} = $in{'mtu'} if ($olda->{'mtu'} ne $in{'mtu'});
 		}
 
@@ -156,7 +156,7 @@ else {
 			&check_ip6address($in{'address6_'.$i}) ||
 				&error(&text('aifc_eaddress6', $i+1));
 			$c = $clash6{$in{'address6_'.$i}};
-			$c && &error(&text('aifc_eclash6', $i+1, $c->{'name'}));
+			$c && &error(&text('aifc_eclash6', $i+1, &html_escape($c->{'name'})));
 			push(@address6, $in{'address6_'.$i});
 			$in{'netmask6_'.$i} =~ /^\d+$/ &&
 			    $in{'netmask6_'.$i} > 0 &&
@@ -178,7 +178,7 @@ else {
 	if (!$in{'ether_def'} && $a->{'virtual'} eq "" &&
 	    &iface_hardware($a->{'name'})) {
 		$in{'ether'} =~ /^[A-Fa-f0-9:]+$/ ||
-			&error(&text('aifc_ehard', $in{'ether'}));
+			&error(&text('aifc_ehard', &html_escape($in{'ether'})));
 		$a->{'ether'} = $in{'ether'}
 			if ($olda->{'ether'} ne $in{'ether'});
 		}
