@@ -452,16 +452,30 @@ my ($pid) = @_;
 return grep { $_->{'pid'} == $pid } &find_all_process_sockets();
 }
 
-# find_process_files(pid)
+# find_all_process_files()
+# Returns all files currently held open by all processes
+sub find_all_process_files
+{
+return &find_process_files();
+}
+
+# find_process_files([pid])
 # Returns all files currently held open by some process
 sub find_process_files
 {
+local ($pid) = @_;
 local @rv;
 if ($has_lsof_command) {
-	open(LSOF, "$has_lsof_command -p ".quotemeta($_[0])." |");
+	if (defined($pid)) {
+		open(LSOF, "$has_lsof_command -p ".quotemeta($pid)." |");
+		}
+	else {
+		open(LSOF, "$has_lsof_command |");
+		}
 	while(<LSOF>) {
 		if (/^(\S+)\s+(\d+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\d+),(\d+)\s+(\d+)\s+(\d+)\s+(.*)/) {
-			push(@rv, { 'fd' => lc($4),
+			push(@rv, { 'pid' => $2,
+				    'fd' => lc($4),
 				    'type' => lc($5),
 				    'device' => [ $6, $7 ],
 				    'size' => $8,
@@ -469,7 +483,8 @@ if ($has_lsof_command) {
 				    'file' => $10 });
 			}
 		elsif (/^(\S+)\s+(\d+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\d+),(\d+)\s+(\d+)\s+(.*)/) {
-			push(@rv, { 'fd' => lc($4),
+			push(@rv, { 'pid' => $2,
+				    'fd' => lc($4),
 				    'type' => lc($5),
 				    'device' => [ $6, $7 ],
 				    'inode' => $8,
