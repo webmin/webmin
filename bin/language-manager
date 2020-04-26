@@ -793,9 +793,6 @@ sub translate
     # Replace language code to match what translator expects
     $target =~ s/_/-/;
 
-    # Prevent service unavailable error, reducing the call rate
-    select(undef, undef, undef, 0.25);
-
     my $tr;
     my $rsp = "https://translation.googleapis.com/language/translate/v2";
     my $rsh = { 'Authorization' => "Bearer \"@{[trim($token)]}\"",
