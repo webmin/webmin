@@ -1,35 +1,35 @@
-<header>Ordre externa a utilitzar en lloc del lliurament a la b˙stia</header>
+<header>Ordre externa a utilitzar en lloc del lliurament a la b√∫stia</header>
 
 <center><tt>mailbox_command</tt></center>
 <hr>
 
-Aquest par‡metre especifica l'ordre externa opcional a utilitzar en lloc 
-del lliurament a la b˙stia. L'ordre s'executa com l'usuari destinatari,
+Aquest par√†metre especifica l'ordre externa opcional a utilitzar en lloc 
+del lliurament a la b√∫stia. L'ordre s'executa com l'usuari destinatari,
 amb els valors d'entorn apropiats de <tt>HOME</tt>, <tt>SHELL</tt> 
-<tt>LOGNAME</tt>. ExcepciÛ: el lliurament per a <tt>root</tt> es fa com a
+<tt>LOGNAME</tt>. Excepci√≥: el lliurament per a <tt>root</tt> es fa com a
 <tt>$default_user</tt>.
 
 <p>
 
-Altres variables d'entorn d'interËs: <tt>USER</tt> (nom de l'usuari 
-destinatari), <tt>EXTENSION</tt> (extensiÛ de l'adreÁa), <tt>DOMAIN</tt>
-(part del domini de l'adreÁa) i <tt>LOCAL</tt> (la part local de l'adreÁa).
+Altres variables d'entorn d'inter√®s: <tt>USER</tt> (nom de l'usuari 
+destinatari), <tt>EXTENSION</tt> (extensi√≥ de l'adre√ßa), <tt>DOMAIN</tt>
+(part del domini de l'adre√ßa) i <tt>LOCAL</tt> (la part local de l'adre√ßa).
 
 <p>
 
-Contr‡riament a altres par‡metres de configuraciÛ de Postfix, aquest 
-par‡metre no est‡ subjecte a substitucions de par‡metres.  AixÚ Ès per a
-fer mÈs f‡cil especificar sintaxi shell (vegeu l'exemple de sota).
+Contr√†riament a altres par√†metres de configuraci√≥ de Postfix, aquest 
+par√†metre no est√† subjecte a substitucions de par√†metres.  Aix√≤ √©s per a
+fer m√©s f√†cil especificar sintaxi shell (vegeu l'exemple de sota).
 
 <p>
 
-Eviteu metacar‡cters shell, perquË forÁaran Postfix a executar un procÈs
-shell de fort consum. <tt>Procmail</tt> ell sol ja ho Ès prou.
+Eviteu metacar√†cters shell, perqu√® for√ßaran Postfix a executar un proc√©s
+shell de fort consum. <tt>Procmail</tt> ell sol ja ho √©s prou.
 
 <p>
 
-SI FAS SERVIR AIX“ PER LLIURAR CORREU A TOT EL SISTEMA, HAS D'ESTABLIR 
-UN ¿LIES QUE REENVIœ EL CORREU DE ROOT A UN USUARI REAL.
+SI FAS SERVIR AIX√í PER LLIURAR CORREU A TOT EL SISTEMA, HAS D'ESTABLIR 
+UN √ÄLIES QUE REENVI√è EL CORREU DE ROOT A UN USUARI REAL.
 
 <p>
 

@@ -204,7 +204,7 @@ makedn_failed=.. creation failed : $1
 makedn_done=.. انجام شده
 makedn_still=Some problems were found even after DN creation : $1
 schema_title=دانلود طرحواره LDAP
-schema_desc=قبل از اینکه وبمین بتواند از یک سرور LDAP برای ذخیره کاربران و گروه ها استفاده کند ، برای استفاده از طرح زیر باید پیکربندی شود. این به طور معمول می تواند با ذخیره کردن تعریف طرحواره در <tt>/ etc / ldap / schema</tt> یا <tt>/ etc / openldap / schema</tt> به عنوان <tt>webmin.schema</tt> انجام شود ، سپس پیکربندی سرور برای بارگیری آن پرونده طرحواره.
+schema_desc=قبل از اینکه وبمین بتواند از یک سرور LDAP برای ذخیره کاربران و گروه ها استفاده کند ، برای استفاده از طرح زیر باید پیکربندی شود. این به طور معمول می تواند با ذخیره کردن تعریف طرحواره در <tt>/etc/ldap/schema</tt> یا <tt>/etc/openldap/schema</tt> به عنوان <tt>webmin.schema</tt> انجام شود ، سپس پیکربندی سرور برای بارگیری آن پرونده طرحواره.
 schema_download=Download schema file : <a href=$1>$1</a>
 twofactor_err=تنظیم احراز هویت دو عاملی انجام نشد
 twofactor_euser=کاربر وبمین شما یافت نشد!

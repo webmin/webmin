@@ -1,19 +1,19 @@
-<header>Hitelesítõprogramok; fordította: Szakács Gergely</header>
+<header>HitelesÃ­tÅ‘programok; fordÃ­totta: SzakÃ¡cs Gergely</header>
 
 <p>
-<b>Egyéni hitelesítõprogram</b>: Alapértelmezés szerint nincs. Határozza meg a külsõ hitelesítõ parancsát. Egy ilyen program beolvas egy "felhasználónév jelszó" tartalmú sort, majd "OK" vagy "ERR" visszajelzést ad, végtelen hurokban. Ha hitelesítõprogramot használ, gondoskodjon arról, hogy van egy proxy_auth típusú ACL-je is.<p>
+<b>EgyÃ©ni hitelesÃ­tÅ‘program</b>: AlapÃ©rtelmezÃ©s szerint nincs. HatÃ¡rozza meg a kÃ¼lsÅ‘ hitelesÃ­tÅ‘ parancsÃ¡t. Egy ilyen program beolvas egy "felhasznÃ¡lÃ³nÃ©v jelszÃ³" tartalmÃº sort, majd "OK" vagy "ERR" visszajelzÃ©st ad, vÃ©gtelen hurokban. Ha hitelesÃ­tÅ‘programot hasznÃ¡l, gondoskodjon arrÃ³l, hogy van egy proxy_auth tÃ­pusÃº ACL-je is.<p>
 
-Amennyiben a hagyományos proxy-hitelesítést kívánja használni, úgy írja át ezt a sort a következõképp: /usr/bin/ncsa_auth /usr/etc/passwd. Feltéve, hogy az ncsa_auth telepítve lett a rendszerre.<p>
+Amennyiben a hagyomÃ¡nyos proxy-hitelesÃ­tÃ©st kÃ­vÃ¡nja hasznÃ¡lni, Ãºgy Ã­rja Ã¡t ezt a sort a kÃ¶vetkezÅ‘kÃ©pp: /usr/bin/ncsa_auth /usr/etc/passwd. FeltÃ©ve, hogy az ncsa_auth telepÃ­tve lett a rendszerre.<p>
 
-<b>A hitelesítõprogramok száma</b>: Alapértelmezés szerint 5, feltéve, hogy engedélyezve lett a hitelesítés.<p>
+<b>A hitelesÃ­tÅ‘programok szÃ¡ma</b>: AlapÃ©rtelmezÃ©s szerint 5, feltÃ©ve, hogy engedÃ©lyezve lett a hitelesÃ­tÃ©s.<p>
 
-<b>Jelszótárolás ideje</b>: Meghatározza, hogy a Squid mennyi ideig rögzít egy sikeres bejelentkezést a gyorstárban, mielõtt újra meghívná a hitelesítõprogramot.<p>
+<b>JelszÃ³tÃ¡rolÃ¡s ideje</b>: MeghatÃ¡rozza, hogy a Squid mennyi ideig rÃ¶gzÃ­t egy sikeres bejelentkezÃ©st a gyorstÃ¡rban, mielÅ‘tt Ãºjra meghÃ­vnÃ¡ a hitelesÃ­tÅ‘programot.<p>
 
-<b>Felhasználók IP-kötésének ideje</b>: Ha egy adott felhasználó két különbözõ IP-címrõl próbál bejelentkezni ez idõtartam alatt, úgy a kérés elutasításra kerül. Ezzel megelõzhetõ, hogy a felhasználók megosszák egymás között a proxy-jelszavakat.<p>
+<b>FelhasznÃ¡lÃ³k IP-kÃ¶tÃ©sÃ©nek ideje</b>: Ha egy adott felhasznÃ¡lÃ³ kÃ©t kÃ¼lÃ¶nbÃ¶zÅ‘ IP-cÃ­mrÅ‘l prÃ³bÃ¡l bejelentkezni ez idÅ‘tartam alatt, Ãºgy a kÃ©rÃ©s elutasÃ­tÃ¡sra kerÃ¼l. Ezzel megelÅ‘zhetÅ‘, hogy a felhasznÃ¡lÃ³k megosszÃ¡k egymÃ¡s kÃ¶zÃ¶tt a proxy-jelszavakat.<p>
 
 <hr>
 
-Ha a Squid 2.5-ös, vagy a fölötti verzióját használja, a fenti beállítási lehetõségeket egymástól függetlenül módosíthatja, különbözõ hitelesítési típusok (pl. Digest, NTLM) használatakor. Ha azonban a Webmin-t kívánja használni a proxy-felhasználók listájának szerkesztéséhez, úgy a Basic hitelesítést kell választania.<p>
+Ha a Squid 2.5-Ã¶s, vagy a fÃ¶lÃ¶tti verziÃ³jÃ¡t hasznÃ¡lja, a fenti beÃ¡llÃ­tÃ¡si lehetÅ‘sÃ©geket egymÃ¡stÃ³l fÃ¼ggetlenÃ¼l mÃ³dosÃ­thatja, kÃ¼lÃ¶nbÃ¶zÅ‘ hitelesÃ­tÃ©si tÃ­pusok (pl. Digest, NTLM) hasznÃ¡latakor. Ha azonban a Webmin-t kÃ­vÃ¡nja hasznÃ¡lni a proxy-felhasznÃ¡lÃ³k listÃ¡jÃ¡nak szerkesztÃ©sÃ©hez, Ãºgy a Basic hitelesÃ­tÃ©st kell vÃ¡lasztania.<p>
 
 <hr>
 

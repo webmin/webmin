@@ -3,7 +3,7 @@
 
 use strict;
 use warnings;
-use 5.010;
+use 5.014;
 
 use File::Spec;
 use File::Basename;
@@ -54,6 +54,7 @@ sub main
                'keys-test|kt:s'                   => \$opt{'keys-test'},
                'values-fix|vf:s'                  => \$opt{'values-fix'},
                'values-fix-delimiter|vfd:s'       => \$opt{'values-fix-delimiter'},
+               'translate-format|tf:s'            => \$opt{'translate-format'},
                'git-commit|gc!'                   => \$opt{'git-commit'},
                'log|l:s'                          => \$opt{'log'},
                'verbose|v:i'                      => \$opt{'verbose'});
@@ -84,10 +85,10 @@ sub main
     $data{'type'} = $type;
 
     # Set default format to text
-    $opt{'translate-format'} = 'text';
+    $opt{'translate-format'} ||= 'text';
 
     # Force HTML format for "module" type translates
-    if (defined($opt{'type'}) && $opt{'type'} eq 'module') {
+    if (defined($opt{'type'}) && $opt{'type'} =~ /module|help/) {
         $opt{'translate-format'} = 'html';
     }
 
@@ -181,8 +182,7 @@ sub main
                },
             },
             $path);
-        @modules = uniq(@modules);
-        @modules = sort @modules;
+        @modules = sort(uniq(@modules));
     }
     $data{'modules'} = \@modules;
 
@@ -360,58 +360,15 @@ sub language_source_file
 
         # Force encoding based on map
         if ($opt->{'mode'} eq 'full' && $opt->{'language-source-encoding'} eq 'map') {
-            my $map_auto;
             my $code = $data{'language-code'};
-
-            if ($code eq 'ja') {
-                $language_source_file_encoding = "euc-jp";
-            } elsif ($code eq 'ko') {
-                $language_source_file_encoding = "euc-kr";
-            } elsif ($code eq 'ru' || $code eq 'bg' || $code eq 'uk') {
-                $language_source_file_encoding = "cp1251";
-            } elsif ($code eq 'ca' ||
-                     $code eq 'fr' ||
-                     $code eq 'hr' ||
-                     $code eq 'lt' ||
-                     $code eq 'no')
-            {
-                $language_source_file_encoding = "cp1252";
-            } elsif ($code eq 'cs' ||
-                     $code eq 'sk' ||
-                     $code eq 'pl' ||
-                     $code eq 'sl' ||
-                     $code eq 'hu')
-            {
-                $language_source_file_encoding = "iso-8859-2";
-            } elsif ($code eq 'tr') {
-                $language_source_file_encoding = "iso-8859-9";
-            } elsif ($code eq 'he') {
-                $language_source_file_encoding = "cp1255";
-            } elsif ($code eq 'th') {
-                $language_source_file_encoding = "tis-620";
-            } elsif ($code eq 'zh') {
-                $language_source_file_encoding = "gb2312";
-            } elsif ($code eq 'zh_TW') {
-                $language_source_file_encoding = "big5";
-            } else {
-                my $language_source_file_data = read_file_contents($language_source_file_target);
-                my $detected_encoding         = Encode::Detect::Detector::detect($language_source_file_data);
-                if ($detected_encoding) {
-                    $language_source_file_encoding = $detected_encoding;
-                    $map_auto                      = " (auto)";
-                } else {
-                    $language_source_file_encoding = 'utf-8';
-                    $map_auto                      = " (auto enforced)";
-                }
-            }
-
+            my $map_auto;
+            ($language_source_file_encoding, $map_auto) = language_file_encoding($code, $language_source_file_target);
             talk_log(
                      ("" . CYAN . "  .. Force file encoding to \`$language_source_file_encoding\`" .
                         ($map_auto // '') . " as derived from language map" . RESET . ""
                      ),
                      $data,
                      1);
-
         }
 
         # Figure out encoding automatically
@@ -445,6 +402,79 @@ sub language_source_file
 
     return (\%language_source_file, \%language_source_file_auto, $language_source_file_encoding,
             $language_source_file_target);
+}
+
+sub language_file_encoding
+{
+    my ($code, $file) = @_;
+    my $encoding = 'utf-8';
+    my $auto;
+    if ($code eq 'ja') {
+        $encoding = "euc-jp";
+    } elsif ($code eq 'ko') {
+        $encoding = "euc-kr";
+    } elsif ($code eq 'ru' || $code eq 'bg' || $code eq 'uk') {
+        $encoding = "cp1251";
+    } elsif ($code eq 'ca' ||
+             $code eq 'fr' ||
+             $code eq 'hr' ||
+             $code eq 'lt' ||
+             $code eq 'no')
+    {
+        $encoding = "cp1252";
+    } elsif ($code eq 'cs' ||
+             $code eq 'sk' ||
+             $code eq 'pl' ||
+             $code eq 'sl' ||
+             $code eq 'hu')
+    {
+        $encoding = "iso-8859-2";
+    } elsif ($code eq 'tr') {
+        $encoding = "iso-8859-9";
+    } elsif ($code eq 'he') {
+        $encoding = "cp1255";
+    } elsif ($code eq 'th') {
+        $encoding = "tis-620";
+    } elsif ($code eq 'zh') {
+        $encoding = "gb2312";
+    } elsif ($code eq 'zh_TW') {
+        $encoding = "big5";
+    } else {
+        my $file_data = read_file_contents($file);
+        my $detected  = Encode::Detect::Detector::detect($file);
+        if ($detected) {
+            $encoding = $detected;
+            $auto     = " (auto)";
+        } else {
+            $encoding = 'utf-8';
+            $auto     = " (auto enforced)";
+        }
+    }
+
+    return ($encoding, $auto);
+}
+
+sub language_disallowed
+{
+    my ($code, $opt) = @_;
+
+    my $language_target         = $opt->{'language-target'};
+    my $language_target_exclude = $opt->{'language-target-exclude'};
+
+    # Process only user defined languages or do all
+    if (@{$language_target}) {
+        if (!any {$_ =~ /^$code$/} @{$language_target}) {
+            return 1;
+        }
+    }
+
+    # Do not process excluded languages
+    if ($language_target_exclude) {
+        my @languages_excluded = split(',', $language_target_exclude);
+        if (any {$_ =~ /^$code$/} @languages_excluded) {
+            return 1;
+        }
+    }
 }
 
 sub language_transcode
@@ -497,6 +527,8 @@ sub source_data
 
     $language_source = $opt->{'language-source'};
     $type            = $data->{'type'};
+    $target_help     = '';
+
     if ($type eq 'config' || $type eq 'uconfig' || $type eq 'module') {
         $language_source = $language_source ne 'en' ? "$type.info.$language_source" : "$type.info";
     }
@@ -565,7 +597,9 @@ sub translate_substitute
 
     # Preserve path in strings
     elsif ($format eq 'html') {
-        $value =~ s/(?:(^(\/[\w+].*?),|^(\/[\w+].*?)\.|(\/[\w+].*?) |(\/[\w+].*?)$))/<span translate="no">"$1"<\/span>/g;
+        $value =~ s/<tt>/<tt translate="no">/gm;
+        $value =~
+s/(?:(^(?<!<)(\/[\w+].*?),|^(?<!<)(\/[\w+].*?)\.|(?<!<)(\/[\w+].*?) |(?<!<)(\/[\w+].*?)$))/<span translate="no">"$1"<\/span>/g;
     }
 
     return $value;
@@ -644,6 +678,8 @@ sub translated_substitute
         # Remove any escapes as returned by translator, when run in HTML mode
         $translated =~ s/&quot;//gi;
         $translated =~ s/&#39;/'/gi;
+
+        $translated =~ s/<tt translate="no">/<tt>/gm;
     }
 
     # Restore destroyed tags
@@ -720,6 +756,13 @@ sub translated_substitute
         $translated =~ s/[ ]*٪[ ]*/ ٪ /g;
     }
 
+    # If original string contains `${VAR}`, fix the output
+    if ($original =~ /\$\{/ || $original =~ /\{\$/) {
+        $translated =~ s/\$ \{/\${/g;
+        $translated =~ s/\{\$ /{\$/g;
+        $translated =~ s/\.\.\. /.../g;
+    }
+
     # If original value on template file contained escaped HTML entities, do the same on translated string
     if ($original =~ /&lt;|&gt;/ && $original !~ /<|>/ && $translated =~ /<|>/) {
         $translated =~ s/</&lt;/g;
@@ -750,22 +793,22 @@ sub translate
     # Replace language code to match what translator expects
     $target =~ s/_/-/;
 
-    # Prevent service unavailable error, reducing the call rate
-    select(undef, undef, undef, 0.25);
-
     my $tr;
-    my $rsp = "https://translation.googleapis.com/language/translate/v2?q=@{[urlize($value)]}";
+    my $rsp = "https://translation.googleapis.com/language/translate/v2";
     my $rsh = { 'Authorization' => "Bearer \"@{[trim($token)]}\"",
                 'User-Agent'    => 'curl/7.29.1',
                 'Content-Type'  => 'application/json; charset=utf-8', };
-    my $rsc = "{  'source': '" . $source . "',  'target': '" . $target . "',  'format': '" . $format . "'}";
-    my $rs  = HTTP::Tiny->new()->request('POST' => $rsp, { 'headers' => $rsh, 'content' => $rsc });
-    my $ts  = $rs->{'success'};
-    my $tc  = $rs->{'content'};
+    my $rsc = "{  'source': '" . $source . "',  'target': '" . $target . "',  'format': '" . $format . "',  'q': '" .
+      quotemeta($value) . "'}";
+    my $rs = HTTP::Tiny->new()->request('POST' => $rsp, { 'headers' => $rsh, 'content' => $rsc });
+    my $ts = $rs->{'success'};
+    my $tc = $rs->{'content'};
 
     # Exctract translation on success
     if ($ts) {
         $tr = JSON::PP->new->decode($rs->{'content'});
+        $tr = $tr->{'data'}->{'translations'}[0]->{'translatedText'};
+        return $tr;
     }
 
     # On error just try again in 5 seconds
@@ -777,8 +820,6 @@ sub translate
         my $translated = translate($data, $opt, $target, $value);
         return $translated;
     }
-
-    return $tr;
 }
 
 # Run transcoding or translation of module(s) for the very first time
@@ -804,7 +845,238 @@ sub go
     my $mode_sync                   = $opt->{'mode'} ne 'full';
     my $verbose_silent_mode         = $mode_sync && $verbose != 2;
 
-    if ($type ne 'help') {
+    if ($type eq 'help') {
+        foreach $module (@{$modules}) {
+            my @module_help;
+            my @module_help_info;
+            my $ext            = '.html';
+            my $utf8           = '.UTF-8';
+            my $old_map        = $language_source_encoding eq 'map';
+            my $only_transcode = $opt->{'only-transcode'};
+
+            my ($exists, $help_path) = source_data($module, $data, $opt);
+
+            # Check if there has been something to process, if not print a message
+            my $output;
+
+            # Build targets first
+            talk_log(("Transcoding/translating " . CYAN BOLD, $module, RESET . " module's help .."), $data, 1);
+            talk_log(("" . CYAN . "  .. Building list of help files to process" . RESET . ""), $data, 1);
+            find(
+                {
+                   wanted => sub {
+                       my $found               = $File::Find::name;
+                       my $found_nonutf8       = $found =~ s/$utf8//r;
+                       my $found_nonutf8_big5  = $found_nonutf8 =~ s/$ext/.Big5$ext/r;
+                       my $found_nonutf8_euc   = $found_nonutf8 =~ s/$ext/.euc$ext/r;
+                       my $found_relative_name = $found =~ s/$data->{'path'}\/$module\/$type\///r;
+
+                       # Check if file exists in both UTF-8 and original encoding, if so, keep original only
+                       my @found_nonutf8 = ($found_nonutf8, $found_nonutf8_big5, $found_nonutf8_euc);
+                       foreach my $found_nonutf8 (@found_nonutf8) {
+                           if (-r $found_nonutf8 && $found ne $found_nonutf8) {
+                               talk_log(
+                                       ("" . RED .
+                                          "   .. Deleting duplicate file in UTF-8 encoding..\n      - $found_relative_name" .
+                                          RESET . ""
+                                       ),
+                                       $data,
+                                       1);
+                               unlink($found);
+                           } elsif (-f $found) {
+                               push(@module_help,      $found);
+                               push(@module_help_info, $found_relative_name);
+                           }
+                       }
+                   },
+                },
+                $help_path);
+            @module_help      = sort(uniq(@module_help));
+            @module_help_info = sort(uniq(@module_help_info));
+
+            if (scalar(@module_help)) {
+                talk_log(
+                         ("" . GREEN . "   .. Found help files to process" .
+                            RESET . " \n      - @{[join(\"\n      - \", @module_help_info)]}"
+                         ),
+                         $data,
+                         1);
+            }
+
+            # Store template files
+            my @templates = ();
+
+            # Store language codes, for which human translations have been done
+            my @help_translated_language_codes = ();
+
+            foreach $language (@{ $data->{'languages_source_list'} }) {
+
+                # Get target language code and other attributes
+                my $code   = $language->{'lang'};
+                my $code_  = language_map($code);
+                my $code__ = $code_ =~ s/\.(euc|Big5)//r;
+                my $rtl    = $language->{'rtl'};
+
+                # Skip translating source, base language
+                next if ($code eq $language_source);
+
+                # Process only user defined languages or do all; do not process excluded languages
+                if ($only_transcode) {
+                    next if language_disallowed($code, $opt);
+                }
+
+                # Transcode each help file first
+                foreach my $help_file (@module_help) {
+                    my $source;
+
+                    if ($help_file =~
+/(?|\.($code__|$code).(UTF-8)\.html|\.($code__|$code).(euc)\.html|\.($code__|$code).(Big5)\.html|\.($code__|$code)\.html)/)
+                    {
+                        my $e_lang = $1;
+                        my $e_attr = $2 || '';
+
+                        $e_lang = "$e_lang.$e_attr" if ($e_attr);
+
+                        # Final file name to be writtten
+                        my $help_file_write       = $help_file       =~ s/$e_lang/$code/r;
+                        my $help_file_write_short = $help_file_write =~ s/.*\/(.+)$/$1/r;
+                        my $help_file_short       = $help_file       =~ s/.*\/(.+)$/$1/r;
+
+                        # Search for old format files and encodings, and convert at first
+                        if ($old_map) {
+
+                            # Rename, if old style format
+                            if ($code ne $e_lang || $e_attr) {
+                                talk_log(
+                                         ("" . YELLOW .
+                                            "    .. Renaming help file to new format - " . RED . "$help_file_short" .
+                                            RESET . " --> " . GREEN . "$help_file_write_short" . RESET . "" . RESET . ""
+                                         ),
+                                         $data,
+                                         1);
+                                rename_file($help_file, $help_file_write);
+
+                            }
+
+                            # Transcode, if needed
+                            if ($e_attr ne "UTF-8") {
+                                talk_log(
+                                         ("" . BRIGHT_MAGENTA .
+                                            "    .. Transcoding help file $help_file_write_short" . RESET . ""
+                                         ),
+                                         $data,
+                                         1);
+                                my $data_original = read_file_contents($help_file_write);
+                                my ($data_encoding) = language_file_encoding($code, $help_file_write_short);
+                                my $data_converted = Encode::encode('utf-8', Encode::decode($data_encoding, $data_original));
+                                if ($data_encoding eq 'utf-8') {
+                                    $data_converted = $data_original;
+                                }
+                                write_file_contents($help_file_write, $data_converted);
+                                chmod(0664, $help_file_write);
+                                $output++;
+                            }
+                        }
+                        push(@help_translated_language_codes, $code);
+                    } elsif ($help_file =~ /\/\w+\.html$/) {
+                        push(@templates, $help_file);
+                    }
+                }
+            }
+
+            @templates                      = sort(uniq(@templates));
+            @help_translated_language_codes = sort(uniq(@help_translated_language_codes));
+
+            # Translate help files that don't have human translations
+            if (!$only_transcode) {
+                my @help_untranslated_language_codes =
+                  grep {!language_disallowed($_, $opt)} @{ $data->{'languages_source_list_codes'} };
+                my $help_untranslated_language_codes = scalar(@help_untranslated_language_codes);
+                my $help_translated_language_codes   = scalar(@help_translated_language_codes);
+                if ($help_untranslated_language_codes) {
+                    talk_log(
+                        ("" . GREEN .
+"   .. Found help file(s) for potential translation to $help_untranslated_language_codes more language(s), aside from $help_translated_language_codes already translated language(s)"
+                           . RESET .
+" \n      - @{[join(\"\n      - \", map {my $v = $_ =~ s/$path\/$module\/$type\///r; $v} @templates)]}"
+                        ),
+                        $data,
+                        1);
+
+                    foreach my $help_file_to_translate (@templates) {
+                        foreach my $untranslated_language_code (@help_untranslated_language_codes) {
+                            my $help_file_translated_auto =
+                              $help_file_to_translate =~ s/(.*?)(\.html)$/$1.$untranslated_language_code.auto$2/r;
+                            my $help_file_translated_human =
+                              $help_file_to_translate =~ s/(.*?)(\.html)$/$1.$untranslated_language_code$2/r;
+                            my $help_file_translated_auto_short  = $help_file_translated_auto  =~ s/$path\///r;
+                            my $help_file_translated_human_short = $help_file_translated_human =~ s/$path\///r;
+
+                            # Process only user defined languages or do all; do not process excluded languages
+                            next if language_disallowed($untranslated_language_code, $opt);
+
+                            # If a file has human translation variant already
+                            if (-r $help_file_translated_human) {
+                                if (-r $help_file_translated_auto) {
+                                    talk_log(
+                                             ("" . BRIGHT_MAGENTA . "     .. human translation variant of file " . YELLOW .
+                                                "$help_file_translated_human_short" . RESET . " already exists" . RESET . ""
+                                             ),
+                                             $data,
+                                             1);
+                                    unlink($help_file_translated_auto);
+                                }
+                                next;
+                            }
+
+                            # If file is already translated, skip
+                            if (-r $help_file_translated_auto && !$language_source_ignore_auto) {
+                                talk_log(
+                                         ("" . WHITE . "     .. kept existing language file " .
+                                            RED . "$help_file_translated_auto_short" . RESET . " intact" . RESET . ""
+                                         ),
+                                         $data,
+                                         1);
+                                next;
+                            }
+
+                            # Open template file that is going to be translated
+                            my $help_file_to_translate_content = read_file_contents($help_file_to_translate);
+
+                            # Tags that should not be translated
+                            $help_file_to_translate_content =~ s/<tt>/<tt translate="no">/gm
+                              if ($help_file_to_translate_content =~ /<tt>.*?(\(\)|[_%$@=.:\/\\]+).*?<\/tt>/gm);
+                            $help_file_to_translate_content =~ s/<code>/<code translate="no">/gm;
+                            $help_file_to_translate_content =~ s/<kbd>/<kbd translate="no">/gm;
+
+                            # Perform actual translation
+                            my $translated =
+                              translate($data, $opt, $untranslated_language_code, $help_file_to_translate_content);
+                            if ($translated) {
+                                $translated =~ s/<kbd translate="no">/<kbd>/gm;
+                                $translated =~ s/<code translate="no">/<code>/gm;
+                                $translated =~ s/<tt translate="no">/<tt>/gm;
+                                write_file_contents($help_file_translated_auto, $translated);
+                                talk_log(
+                                         ("" . WHITE . "     .. translated to " .
+                                            GREEN . "$untranslated_language_code" . RESET . " language and stored to " .
+                                            GREEN . "$help_file_translated_auto_short" . RESET . " file" . RESET . ""
+                                         ),
+                                         $data,
+                                         1);
+                                $output++;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (!$output) {
+                talk_log(("Nothing to do for " . CYAN . "$module" . RESET . " module .."), $data, 1);
+            }
+        }
+
+    } else {
         foreach $module (@{$modules}) {
             my (%template);
             my ($exists, $mpath, $mfile) = source_data($module, $data, $opt);
@@ -831,18 +1103,8 @@ sub go
                 # Skip translating source, base language
                 next if ($code eq $language_source);
 
-                # Process only user defined languages or do all
-                if (@{$language_target}) {
-                    next if (!any {$_ =~ /^$code$/} @{$language_target});
-                }
-
-                # Do not process excluded languages
-                if ($language_target_exclude) {
-                    my @languages_excluded = split(',', $language_target_exclude);
-                    if (any {$_ =~ /^$code$/} @languages_excluded) {
-                        next;
-                    }
-                }
+                # Process only user defined languages or do all; do not process excluded languages
+                next if language_disallowed($code, $opt);
 
                 # Get other target language attributes
                 my $name = $language->{'desc'};
@@ -922,11 +1184,13 @@ sub go
                             next;
                         }
                         my $code_ = $code;
+                        $key__ = "${key}_${code}";
                         if ($language_source_encoding eq 'map') {
                             $code_ = language_map($code);
                             $key_  = "${key}_${code_}";
+                        } else {
+                            $key_ = $key__;
                         }
-                        $key__ = "${key}_${code}";
                     }
 
                     # This feature just checks and fixes values on target files (translations)
@@ -1084,7 +1348,6 @@ sub go
 
                             # Run actual translation
                             my $translated = translate($data, $opt, $code, $value);
-                            $translated = $translated->{'data'}->{'translations'}[0]->{'translatedText'};
 
                             talk_log("      — $key --> $_value", $data, $verbose);
 
@@ -1121,7 +1384,10 @@ sub go
                                $found = $File::Find::name;
                                my $code_ = language_map($code);
                                if ($code ne $code_ &&
-                                   (   $found eq "$mpath/$code_" ||
+                                   (   $found eq "$mpath/$code_"       ||
+                                       $found eq "$mpath/$code.UTF-8"  ||
+                                       $found eq "$mpath/$code_.UTF-8" ||
+                                       $found eq "$mpath/ru_SU"        ||
                                        (defined($opt->{'type'}) &&
                                            $opt->{'type'} &&
                                            $opt->{'type'} =~ /config|uconfig|module/ &&
@@ -1157,10 +1423,14 @@ sub go
                     }
                     my $file      = $mpath . "/$code";
                     my $file_auto = $mpath . "/$code.$language_suffix";
-                    write_file($file, \%language, undef, undef, $mfile)
+                    write_file($file, \%language, undef, undef, $mfile), chmod(0664, $file)
                       if (%language);
-                    write_file($file_auto, \%language_auto, undef, undef, $mfile)
+                    write_file($file_auto, \%language_auto, undef, undef, $mfile), chmod(0664, $file_auto)
                       if (%language_auto && !$opt->{'only-transcode'});
+
+                    # Remove empty files
+                    unlink($file) if (-z $file);
+                    unlink($file_auto) if (-z $file_auto);
 
                     # Git auto-commit after language was transcoded/translated
                     if ($git_commit) {
@@ -1192,14 +1462,6 @@ sub go
             }
 
             say GREEN, ".. done ", RESET;
-        }
-    } else {
-        foreach $module (@{$modules}) {
-            my ($exists, $help_path) = source_data($module, $data, $opt);
-
-            talk_log(("Transcoding/translating " . CYAN BOLD, $module, RESET . " module's help .."), $data, 1);
-            foreach $language (@{ $data->{'languages_source_list'} }) {
-            }
         }
     }
 }
@@ -1388,6 +1650,10 @@ Synchronize all language keys for Apache module, based on template language. New
 
  — language-manager -m=apache
 
+Synchronize all modules' "help/" language files. Newly added files will be translated and already translated, both human and machine translations, will be kept intact
+
+ — language-manager -w=help
+
 Check for Software Packages module, all matching escaped HTML "&lt;" and "&gt;" entities in template file (def. en), and if found, make sure that translations (including machine translations) for the same key, contain exact escaped HTML entities, as on template string, rather than "<" or ">". Technically, it's possible to check and replace anything on language files using this command.
 
  — language-manager -vf="&lt;:<,&gt;:>" -m=software
@@ -1395,6 +1661,10 @@ Check for Software Packages module, all matching escaped HTML "&lt;" and "&gt;" 
 Translate all available languages, using old-time encoding map, for BIND module, using as type "lang" directory, discarding human translations for Hebrew, keeping original value (not translating) for key "mass_desc", and printing verbose output.
 
  — language-manager -x=full -e=map -m=bind8 -w=lang -se=he -ke=mass_desc
+
+Transcode only and rename all modules' "help/" old-time format files. Old files, such as "ja_JP.euc.html", "ko_KR.euc.html", "zh_TW.Big5.html" and "ru_RU.html" will be automatically renamed and/or deleted.
+
+ — language-manager -w=help -e=map -ot
 
 Only transcode language files, using old-time encoding map, from files being in different encodings, to new style, where all language files are in "utf-8" encoding, for Apache module. No translations will be made, and no ".auto" files will be created.
 

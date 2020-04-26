@@ -1,0 +1,1 @@
+<header>標頭檢查</header>可選的標題檢查表允許基於其標題重定向電子郵件。表中的每個條目在左側都有一個POSIX正則表達式，在右側有一個動作。 <p>正則表達式可以是： <br> <tt>/name=[^&gt;]*\.(bat|cmd|exe|com|pif|reg|scr|vb|vbe|vbs)/</tt> <br>匹配文件名以擴展名結尾的附件，這些擴展名表示潛在的危險Windows可執行文件。 <p>動作可以像： <br> <tt>REJECT</tt> <br>只拒絕匹配表達式的郵件，或者： <br> <tt>REDIRECT spam@yourdomain.com</tt> <br>將郵件轉發到另一個地址。 <p><footer>

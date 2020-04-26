@@ -9,14 +9,14 @@ $access{'dns'} == 2 || &error($text{'dns_ecannot'});
 $old_hostname = &get_system_hostname();
 
 $in{'hostname'} =~ /^[A-z0-9\.\-]+$/ ||
-	&error(&text('dns_ehost', $in{'hostname'}));
+	&error(&text('dns_ehost', &html_escape($in{'hostname'})));
 $dns = { };
 for($i=0; defined($ns = $in{"nameserver_$i"}); $i++) {
 	$ns = $in{"nameserver_$i"};
 	$ns =~ s/^\s+//; $ns =~ s/\s+$//;
 	if ($ns) {
 		&check_ipaddress_any($ns) ||
-			&error(&text('dns_ens', $ns));
+			&error(&text('dns_ens', &html_escape($ns)));
 		push(@{$dns->{'nameserver'}}, $ns);
 		}
 	}
@@ -32,7 +32,7 @@ if ($in{'name0'}) {
 	    $ns =~ s/^\s+//; $ns =~ s/\s+$//;
 	    if ($ns) {
 		&check_ipaddress_any($ns) ||
-		    &error(&text('dns_ens', $ns));
+		    &error(&text('dns_ens', &html_escape($ns)));
 		push(@{$dns->{$nskey}}, $ns);
 	    }
 	}
@@ -44,7 +44,7 @@ if (!$in{'domain_def'}) {
 	@dlist = split(/\s+/, $in{'domain'});
 	foreach $d (@dlist) {
 		$d =~ /^[A-z0-9\.\-]+$/ ||
-			&error(&text('dns_edomain', $d));
+			&error(&text('dns_edomain', &html_escape($d)));
 		push(@{$dns->{'domain'}}, $d);
 		}
 	@dlist || &error($text{'dns_esearch'});

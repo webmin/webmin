@@ -1,0 +1,126 @@
+<header> Est-ce que la substitution strftime des destinations de sauvegarde? </header> Si cette option est définie sur <b>Oui</b> , des codes comme%d,%m,%Y et%u peuvent être utilisés dans le nom de fichier de destination de sauvegarde. Ceux-ci seront remplacés respectivement par le jour, le mois, l&#39;année et le jour de la semaine lorsque la sauvegarde est effectuée. Ceci est utile si vous souhaitez enregistrer une sauvegarde différente chaque jour, afin de pouvoir restaurer un système à une date précédente. <p> Certains des autres codes qui peuvent être utilisés sont: <br><pre> <font size=-1>
+ %a Le nom de semaine abrégé selon le cur
+        location locale.
+
+ %A Le nom complet du jour de la semaine selon le courant
+        lieu.
+
+ %b Le nom de mois abrégé en fonction du courant
+        lieu.
+
+ %B Le nom complet du mois selon le courant
+        lieu.
+
+ %c La représentation de date et d&#39;heure préférée pour le
+        paramètres régionaux actuels.
+
+ %C Le numéro de siècle (année / 100) sous la forme d&#39;un entier à 2 chiffres.
+
+ %d Le jour du mois sous forme de nombre décimal (plage 01
+        au 31).
+
+ %e Comme%d, le jour du mois sous forme de nombre décimal,
+        mais un zéro de tête est remplacé par un espace.
+
+ Modificateur%E: utilisez un autre format, voir ci-dessous.
+
+ %G L&#39;année ISO 8601 avec le siècle comme nombre décimal.
+        L&#39;année à 4 chiffres correspondant au numéro de semaine ISO
+        (voir%V). Cela a le même format et la même valeur
+        comme%y, sauf que si le numéro de semaine ISO appartient
+        à l&#39;année précédente ou suivante, cette année est utilisée
+        au lieu.
+
+ %g Comme%G, mais sans siècle, c&#39;est-à-dire avec un chiffre à 2 chiffres
+        année (00-99).
+
+ %h Équivalent à%b.
+
+ %H L&#39;heure sous forme de nombre décimal sur une horloge de 24 heures
+        (plage 00 à 23).
+
+ %I L&#39;heure sous forme de nombre décimal sur une horloge de 12 heures
+        (plage 01 à 12).
+
+ %j Le jour de l&#39;année sous forme de nombre décimal (plage 001
+        à 366).
+
+ %k L&#39;heure (horloge de 24 heures) sous forme de nombre décimal (plage
+        0 à 23); les chiffres simples sont précédés d&#39;un blanc.
+        (Voir aussi%H.)
+
+ %l L&#39;heure (horloge 12 heures) sous forme de nombre décimal (plage
+        1 à 12); les chiffres simples sont précédés d&#39;un blanc.
+        (Voir aussi%I.)
+
+ %m Le mois sous forme de nombre décimal (compris entre 01 et 12).
+
+ %M La minute sous forme de nombre décimal (de 00 à 59).
+
+ %n Un caractère de nouvelle ligne.
+
+ Modificateur%O: utilisez un autre format, voir ci-dessous.
+
+ %p Soit `AM &#39;soit` PM&#39; selon l&#39;heure donnée
+        ou les chaînes correspondantes pour le courant
+        lieu. Midi est traité comme «pm» et minuit comme
+        `suis &#39;.
+
+ %P Comme%p mais en minuscules: &quot;am&quot; ou &quot;pm&quot; ou un corre
+        chaîne correspondante pour les paramètres régionaux actuels.
+
+ %r L&#39;heure en notation am ou pm. Dans le POSIX
+        locale, cela équivaut à `%I:%M:%S%p &#39;.
+
+ %R L&#39;heure au format 24 heures (%H:%M). Pour un
+        version incluant les secondes, voir%T ci-dessous.
+
+ %s Le nombre de secondes écoulées depuis l&#39;époque, c&#39;est-à-dire depuis
+        1970-01-01 00:00:00 UTC.
+
+ %S Le second sous forme de nombre décimal (de 00 à 61).
+
+ %t Un caractère de tabulation.
+
+ %T L&#39;heure au format 24 heures (%H:%M:%S).
+
+ %u Le jour de la semaine sous forme décimale, compris entre 1 et 7,
+        Lundi étant 1. Voir aussi%w.
+
+ %U Le numéro de semaine de l&#39;année en cours sous forme décimale
+        nombre, de 00 à 53, en commençant par le premier
+        Dimanche comme premier jour de la semaine 01. Voir aussi%V et
+        %W.
+
+ %V Le numéro de semaine ISO 8601: 1988 de l&#39;année en cours
+        sous forme de nombre décimal, compris entre 01 et 53, où la semaine 1
+        est la première semaine qui compte au moins 4 jours
+        l’année en cours et avec le lundi comme premier jour de
+        la semaine. Voir aussi%U et%W.
+
+ %w Le jour de la semaine sous forme décimale, compris entre 0 et 6,
+        Dimanche étant 0. Voir aussi%u.
+
+ %W Le numéro de semaine de l&#39;année en cours sous forme décimale
+        nombre, de 00 à 53, en commençant par le premier
+        Lundi comme premier jour de la semaine 01.
+
+ %x La représentation de date préférée pour le courant
+        locale sans l&#39;heure.
+
+ %X La représentation horaire préférée pour le courant
+        locale sans la date.
+
+ %y L&#39;année sous forme de nombre décimal sans siècle
+        (plage de 00 à 99).
+
+ %Y L&#39;année sous forme de nombre décimal, y compris le siècle.
+
+ %z Le fuseau horaire en décalage horaire par rapport à GMT. Nécessaire pour
+        émettre des dates conformes à la RFC822 (en utilisant &quot;%a,%d%b%Y
+        %H:%M:%S%z &quot;).
+
+ %Z Le fuseau horaire ou le nom ou l&#39;abréviation.
+
+ %%Un caractère «%» littéral.
+</font> </pre><footer>

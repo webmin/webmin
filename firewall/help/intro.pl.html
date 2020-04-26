@@ -1,72 +1,72 @@
 <header>Firewall Linuksa</header>
 
-<h3>Wprowadzenie do modu³u</h3>
+<h3>Wprowadzenie do moduÅ‚u</h3>
 
-Ten modu³ pozwala na konfiguracjê funkcji firewalla IPtables znajduj±cych
-siê w kernelach Linuksa 2.4. W odró¿nieniu od innych programów konfiguracji
-firewalla ten modu³ nie tworzy skryptów shell, a zamiast tego odczytuje
-i edytuje pliki w formacie umo¿liwiaj±cym ich odczyt w <tt>ipi(6)tables-restore</tt>
+Ten moduÅ‚ pozwala na konfiguracjÄ™ funkcji firewalla IPtables znajdujÄ…cych
+siÄ™ w kernelach Linuksa 2.4. W odrÃ³Å¼nieniu od innych programÃ³w konfiguracji
+firewalla ten moduÅ‚ nie tworzy skryptÃ³w shell, a zamiast tego odczytuje
+i edytuje pliki w formacie umoÅ¼liwiajÄ…cym ich odczyt w <tt>ipi(6)tables-restore</tt>
 i <tt>ipi(6)tables-save</tt>. <p>
 
-Je¿eli masz ju¿ w systemie firewall skonfigurowany rêcznie lub przez plik
-skryptu, to ten modu³ przekonwertuje go do odpowiedniego formatu IPtables
-i utworzy skrypt do uruchamiania regu³ przy starcie. Po tej operacji nie
-powinno siê d³u¿ej u¿ywaæ starych skryptów do edycji regu³, nale¿y je
-tak¿e wy³±czyæ z autostartu. <p>
+JeÅ¼eli masz juÅ¼ w systemie firewall skonfigurowany rÄ™cznie lub przez plik
+skryptu, to ten moduÅ‚ przekonwertuje go do odpowiedniego formatu IPtables
+i utworzy skrypt do uruchamiania reguÅ‚ przy starcie. Po tej operacji nie
+powinno siÄ™ dÅ‚uÅ¼ej uÅ¼ywaÄ‡ starych skryptÃ³w do edycji reguÅ‚, naleÅ¼y je
+takÅ¼e wyÅ‚Ä…czyÄ‡ z autostartu. <p>
 
 <h3>Opis IPtables</h3>
 
-Ka¿dy pakiet sieciowy przesy³any do lub z twojego systemu jest sprawdzany z
-przynajmniej jednym ³añcuchem, który okre¶la co powinno siê z nim staæ.
-Ka¿dy ³añcuch zawiera zero lub wiêcej regu³, ka¿dy z nich posiada warunek
-(okre¶la, które pakiety do niego pasuj±) i akcjê (do kontroli co siê stanie
-z pasuj±cym pakietem). Ka¿dy ³añcuch dodatkowo posiada akcjê domy¶ln±, która
-okre¶la co siê stanie z pakietami, które nie pasuj± do ¿adnej regu³y. <p>
+KaÅ¼dy pakiet sieciowy przesyÅ‚any do lub z twojego systemu jest sprawdzany z
+przynajmniej jednym Å‚aÅ„cuchem, ktÃ³ry okreÅ›la co powinno siÄ™ z nim staÄ‡.
+KaÅ¼dy Å‚aÅ„cuch zawiera zero lub wiÄ™cej reguÅ‚, kaÅ¼dy z nich posiada warunek
+(okreÅ›la, ktÃ³re pakiety do niego pasujÄ…) i akcjÄ™ (do kontroli co siÄ™ stanie
+z pasujÄ…cym pakietem). KaÅ¼dy Å‚aÅ„cuch dodatkowo posiada akcjÄ™ domyÅ›lnÄ…, ktÃ³ra
+okreÅ›la co siÄ™ stanie z pakietami, ktÃ³re nie pasujÄ… do Å¼adnej reguÅ‚y. <p>
 
-Ka¿dy ³añcuch jest czê¶ci± tabeli, aktualnie dostêpne s± trzy :
+KaÅ¼dy Å‚aÅ„cuch jest czÄ™Å›ciÄ… tabeli, aktualnie dostÄ™pne sÄ… trzy :
 <ul>
 <li><b>Filtracja pakietu (<tt>filter</tt>)</b><br>
-    £añcuchy w tej tabeli mog± byæ wykorzystane do kontroli danych pochodz±cych
-	do twojego systemu z innych hostów w sieci, danych wysy³anych ze twojego
-	systemu przez u¿ytkowników i procesy oraz dane przekazane przez twój system,
-	je¶li dzia³a jako router. <p>
-<li><b>Translacja adresów sieciowych (<tt>nat</tt>)</b><br>
-    Tabela ta mo¿e byæ u¿ywana do konfigurowania NAT lub maskowania, co jest
-	przydatne, je¶li chcesz daæ ca³ej sieci komputerów dostêp do Internetu za
-	po¶rednictwem tylko jednego prawdziwego adresu IP. <p>
-<li><b>Przeróbka pakietów (<tt>mangle</tt>)</b><br>
-    Ta tabela dotyczy modyfikowania pakietów przekazywanych przez lub wysy³anych
+    ÅaÅ„cuchy w tej tabeli mogÄ… byÄ‡ wykorzystane do kontroli danych pochodzÄ…cych
+	do twojego systemu z innych hostÃ³w w sieci, danych wysyÅ‚anych ze twojego
+	systemu przez uÅ¼ytkownikÃ³w i procesy oraz dane przekazane przez twÃ³j system,
+	jeÅ›li dziaÅ‚a jako router. <p>
+<li><b>Translacja adresÃ³w sieciowych (<tt>nat</tt>)</b><br>
+    Tabela ta moÅ¼e byÄ‡ uÅ¼ywana do konfigurowania NAT lub maskowania, co jest
+	przydatne, jeÅ›li chcesz daÄ‡ caÅ‚ej sieci komputerÃ³w dostÄ™p do Internetu za
+	poÅ›rednictwem tylko jednego prawdziwego adresu IP. <p>
+<li><b>PrzerÃ³bka pakietÃ³w (<tt>mangle</tt>)</b><br>
+    Ta tabela dotyczy modyfikowania pakietÃ³w przekazywanych przez lub wysyÅ‚anych
 	z systemu.<p>
 </ul>
 
-Oprócz standardowych ³añcuchów, które s± czê¶ci± ka¿dej tabeli, mo¿na równie¿
-tworzyæ w³asne ³añcuchy, które mog± byæ uruchamiane przez regu³y w ³añcuchach
-wbudowanych. Mo¿e to byæ przydatne do grupowania i udostêpniania zasad, które
-mog± byæ wykorzystane w wielu miejscach. <p>
+OprÃ³cz standardowych Å‚aÅ„cuchÃ³w, ktÃ³re sÄ… czÄ™Å›ciÄ… kaÅ¼dej tabeli, moÅ¼na rÃ³wnieÅ¼
+tworzyÄ‡ wÅ‚asne Å‚aÅ„cuchy, ktÃ³re mogÄ… byÄ‡ uruchamiane przez reguÅ‚y w Å‚aÅ„cuchach
+wbudowanych. MoÅ¼e to byÄ‡ przydatne do grupowania i udostÄ™pniania zasad, ktÃ³re
+mogÄ… byÄ‡ wykorzystane w wielu miejscach. <p>
 
-<h3>G³ówna strona modu³u</h3>
+<h3>GÅ‚Ã³wna strona moduÅ‚u</h3>
 
-Strona g³ówna tego modu³u zawiera wszystkie ³añcuchy i regu³y z jednej z dostêpnych
-tabel, wybranej z listy w lewym górnym rogu. Poni¿ej znajduje siê sekcja ka¿dego
-³añcucha w bie¿±cej tabeli, ze wszystkimi regu³ami w ka¿dym wybranym ³añcuchu i
-ich opisane warunki. Dla ka¿dego ³añcucha, mo¿na zmieniæ domy¶ln± akcjê,
-korzystaj±c z listy rozwijanej, je¶li ³añcuch jest jednym z tych, wbudowanych do
-tabeli, lub usun±æ go za pomoc± przycisku Usuñ, je¿eli ³añcuch jest zdefiniowany
-przez u¿ytkownika. <p>
+Strona gÅ‚Ã³wna tego moduÅ‚u zawiera wszystkie Å‚aÅ„cuchy i reguÅ‚y z jednej z dostÄ™pnych
+tabel, wybranej z listy w lewym gÃ³rnym rogu. PoniÅ¼ej znajduje siÄ™ sekcja kaÅ¼dego
+Å‚aÅ„cucha w bieÅ¼Ä…cej tabeli, ze wszystkimi reguÅ‚ami w kaÅ¼dym wybranym Å‚aÅ„cuchu i
+ich opisane warunki. Dla kaÅ¼dego Å‚aÅ„cucha, moÅ¼na zmieniÄ‡ domyÅ›lnÄ… akcjÄ™,
+korzystajÄ…c z listy rozwijanej, jeÅ›li Å‚aÅ„cuch jest jednym z tych, wbudowanych do
+tabeli, lub usunÄ…Ä‡ go za pomocÄ… przycisku UsuÅ„, jeÅ¼eli Å‚aÅ„cuch jest zdefiniowany
+przez uÅ¼ytkownika. <p>
 
-W celu edycji dowolnej regu³y w ³añcuchu, kliknij na ni±. Kliknij na strza³ki
-po prawej stronie, aby przenie¶æ w górê lub w dó³ lub kliknij na przycisk
-Dodaj regu³ê, aby dodaæ now±. Dodawanie lub edytowanie regu³ przekieruje ciê
-do strony, na której mo¿esz wybraæ akcjê do ka¿dej regu³y i warunki, w celu
-okre¶lenia kiedy ta akcja ma byæ wykonana. <p>
+W celu edycji dowolnej reguÅ‚y w Å‚aÅ„cuchu, kliknij na niÄ…. Kliknij na strzaÅ‚ki
+po prawej stronie, aby przenieÅ›Ä‡ w gÃ³rÄ™ lub w dÃ³Å‚ lub kliknij na przycisk
+Dodaj reguÅ‚Ä™, aby dodaÄ‡ nowÄ…. Dodawanie lub edytowanie reguÅ‚ przekieruje ciÄ™
+do strony, na ktÃ³rej moÅ¼esz wybraÄ‡ akcjÄ™ do kaÅ¼dej reguÅ‚y i warunki, w celu
+okreÅ›lenia kiedy ta akcja ma byÄ‡ wykonana. <p>
 
-Na dole strony znajduj± siê przyciski umo¿liwiaj±ce aktywacjê aktualnej
-konfiguracji firewalla przez za³adowanie do kernela polecenia
-<tt>ipi(6)tables-restore</tt>. Poni¿ej jest przycisk, który dzia³a odwrotnie
-tzn. pobiera aktywn± konfiguracjê firewalla z kernela i umo¿liwia jej
-edycjê w tym module. Na koñcu, je¿eli twoja dystrybucja obs³uguje tê
-funkcjê znajduje siê przycisk umo¿liwiaj±cy wybranie, czy firewall
-ma byæ aktywowany w momencie uruchamiania systemu czy nie. <p>
+Na dole strony znajdujÄ… siÄ™ przyciski umoÅ¼liwiajÄ…ce aktywacjÄ™ aktualnej
+konfiguracji firewalla przez zaÅ‚adowanie do kernela polecenia
+<tt>ipi(6)tables-restore</tt>. PoniÅ¼ej jest przycisk, ktÃ³ry dziaÅ‚a odwrotnie
+tzn. pobiera aktywnÄ… konfiguracjÄ™ firewalla z kernela i umoÅ¼liwia jej
+edycjÄ™ w tym module. Na koÅ„cu, jeÅ¼eli twoja dystrybucja obsÅ‚uguje tÄ™
+funkcjÄ™ znajduje siÄ™ przycisk umoÅ¼liwiajÄ…cy wybranie, czy firewall
+ma byÄ‡ aktywowany w momencie uruchamiania systemu czy nie. <p>
 
 
 <h3>Filtering chains</h3>

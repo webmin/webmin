@@ -1,0 +1,1 @@
+<header>本地交付代理使用的別名數據庫</header><center> <tt>alias_maps</tt> </center> <hr>此參數指定本地傳遞代理使用的別名數據庫的列表。默認列表取決於系統。在具有NIS的系統上，默認設置是先搜索本地別名數據庫，然後搜索NIS別名數據庫。有關語法的詳細信息，請參見<a href=aliases>別名</a> 。 <p>典型配置為： <ul><li> <tt>dbm:/etc/aliases</tt> <li> <tt>hash:/etc/postfix/aliases</tt> <li> <tt>hash:/etc/aliases, nis:mail.aliases</tt> </ul> <hr>

@@ -3,38 +3,38 @@
 <center><tt>smtpd_helo_restrictions</tt></center>
 <hr>
 
-Aquest par‡metre especifica restriccions opcionals sobre el que els clients
+Aquest par√†metre especifica restriccions opcionals sobre el que els clients
 SMTP poden enviar amb les ordres HELO i EHLO de SMTP.
 
 <p>
 
-El valor per defecte Ès permetre-ho tot. Hi ha les seg¸ents restriccions
+El valor per defecte √©s permetre-ho tot. Hi ha les seg√ºents restriccions
 disponibles:
 
 <ul>
-<li>  <tt>permit_mynetworks:</tt> permet si l'adreÁa client coincideix am
+<li>  <tt>permit_mynetworks:</tt> permet si l'adre√ßa client coincideix am
         <a href=opt_mynetworks><tt>$mynetworks</tt></a>.
-<li>  <tt>reject_unknown_client:</tt> rebutja la peticiÛ si el nom de host client Ès desconegut.
-<li>  <tt>reject_maps_rbl:</tt>rebutja si el client est‡ llistat a
+<li>  <tt>reject_unknown_client:</tt> rebutja la petici√≥ si el nom de host client √©s desconegut.
+<li>  <tt>reject_maps_rbl:</tt>rebutja si el client est√† llistat a
         <a href=opt_maps_rbl_domains><tt>$maps_rbl_domains</tt></a>.
 <li>  <tt>reject_invalid_hostname:</tt> rebutja el nom de host HELO hostname amb sintaxi incorrecta.
 <li>  <tt>reject_unknown_hostname:</tt> rebutja el nom de host HELO sense un registre DNS A o MX.
-<li>  <tt>reject_non_fqdn_hostname:</tt> rebutja el nom de host HELO que no est‡ en format FQD
+<li>  <tt>reject_non_fqdn_hostname:</tt> rebutja el nom de host HELO que no est√† en format FQD
 <li>  <tt>check_helo_access maptype:mapname:</tt> consulta el nom de host HELO o els dominis pares.
-        Rebutja si el resultat Ès REJECT o &quot;[45]xx text&quot;.
+        Rebutja si el resultat √©s REJECT o &quot;[45]xx text&quot;.
         Permet altrament.
 <li>  <tt>check_client_access maptype:mapname:</tt> vegeu
         <a href=opt_smtpd_client_restrictions>smtpd_client_restrictions</a>.
-<li>  <tt>reject:</tt> rebutja la peticiÛ. Poseu-ho al final d'una restricciÛ.
-<li>  <tt>permit:</tt> permet la peticiÛ. Poseu-ho al final d'una restricciÛ.
+<li>  <tt>reject:</tt> rebutja la petici√≥. Poseu-ho al final d'una restricci√≥.
+<li>  <tt>permit:</tt> permet la petici√≥. Poseu-ho al final d'una restricci√≥.
 </ul>
 
-Les restriccions s'apliquen en l'ordre especificat; la primera restricciÛ
+Les restriccions s'apliquen en l'ordre especificat; la primera restricci√≥
 que coincideixi guanya.
 
 <p>
 
 Especifiqueu una llista de restriccions, separades per comes o espais.
-Continueu les lÌnies llargues comenÁant la lÌnia seg¸ent amb un espai.
+Continueu les l√≠nies llargues comen√ßant la l√≠nia seg√ºent amb un espai.
 
 <hr>

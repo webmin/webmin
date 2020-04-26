@@ -1,0 +1,1 @@
+<header>拒絕未知的本地用戶</header><center> <tt>local_recipient_maps</tt> </center> <hr>此參數指定可選的查找表，其中包含相對於<tt>$mydestination</tt> （“接收郵件的域”）和<tt>$inet_interfaces</tt> （“接收郵件的網絡接口”）本地的所有用戶。如果定義了此參數，則SMTP服務器將拒絕未知本地用戶的郵件。 <p>放置帶有裸用戶名（例如<tt>unix:passwd.byname</tt>和別名映射）的表。示例： <tt>$alias_maps unix:passwd.byname</tt> 。 <p>注意：如果Postfix SMTP服務器運行chroot，則可能必須將passwd數據庫複製到監獄中。這取決於系統。 <hr>

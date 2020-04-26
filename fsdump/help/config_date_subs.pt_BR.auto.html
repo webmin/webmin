@@ -1,0 +1,126 @@
+<header> Substituir strftime de destinos de backup? </header> Se essa opção estiver configurada como <b>Sim</b> , códigos como%d,%m,%Y e%u podem ser usados no nome do arquivo de destino do backup. Eles serão substituídos pelo dia, mês ano e dia da semana, respectivamente, quando o backup for realizado. Isso é útil se você deseja salvar um backup diferente todos os dias, para poder reverter um sistema para uma data anterior. <p> Alguns dos outros códigos que podem ser usados são: <br><pre> <font size=-1>
+ %a O nome abreviado do dia da semana de acordo com o
+        alugar localidade.
+
+ %A O nome completo do dia da semana de acordo com o atual
+        localidade.
+
+ %b O nome abreviado do mês de acordo com o atual
+        localidade.
+
+ %B O nome completo do mês de acordo com o atual
+        localidade.
+
+ %c A representação preferida de data e hora para o
+        local atual.
+
+ %C O número do século (ano / 100) como um número inteiro de 2 dígitos.
+
+ %d O dia do mês como um número decimal (intervalo 01
+        31).
+
+ %e Como%d, o dia do mês como um número decimal,
+        mas um zero à esquerda é substituído por um espaço.
+
+ Modificador%E: use formato alternativo, veja abaixo.
+
+ %G O ano da ISO 8601 com o século como um número decimal.
+        O ano de 4 dígitos correspondente ao número da semana ISO
+        (veja%V). Isso tem o mesmo formato e valor
+        como%y, exceto se o número da semana ISO pertencer
+        para o ano anterior ou seguinte, esse ano é usado
+        em vez de.
+
+ %g Como%G, mas sem século, ou seja, com dois dígitos
+        ano (00-99).
+
+ %h Equivalente a%b.
+
+ %H A hora como um número decimal usando um relógio de 24 horas
+        (intervalo de 00 a 23).
+
+ %I A hora como um número decimal usando um relógio de 12 horas
+        (intervalo de 01 a 12).
+
+ %j O dia do ano como um número decimal (intervalo 001
+        366).
+
+ %k A hora (relógio de 24 horas) como um número decimal (intervalo
+        0 a 23); dígitos únicos são precedidos por um espaço em branco.
+        (Veja também%H.)
+
+ %l A hora (relógio de 12 horas) como um número decimal (intervalo
+        1 a 12); dígitos únicos são precedidos por um espaço em branco.
+        (Veja também%I.)
+
+ %m O mês como um número decimal (intervalo de 01 a 12).
+
+ %M O minuto como um número decimal (intervalo de 00 a 59).
+
+ %n Um caractere de nova linha.
+
+ %O Modificador: use formato alternativo, veja abaixo.
+
+ %p &#39;AM&#39; ou &#39;PM&#39; de acordo com o tempo determinado
+        valor ou as seqüências correspondentes para a corrente
+        localidade. O meio-dia é tratado como `pm &#39;e a meia-noite como
+        `sou &#39;.
+
+ %P Como%p, mas em minúsculas: `am &#39;ou` pm&#39; ou um
+        sequência correspondente para a localidade atual.
+
+ %r A hora em notação am ou pm. No POSIX
+        locale isso é equivalente a &#39;%I:%M:%S%p&#39;.
+
+ %R O tempo na notação de 24 horas (%H:%M). Para
+        versão incluindo os segundos, veja%T abaixo.
+
+ %s O número de segundos desde a época, ou seja, desde
+        1970-01-01 00:00:00 UTC.
+
+ %S O segundo como um número decimal (intervalo de 00 a 61).
+
+ %t Um caractere de tabulação.
+
+ %T O tempo na notação de 24 horas (%H:%M:%S).
+
+ %u O dia da semana como decimal, de 1 a 7,
+        Segunda-feira sendo 1. Veja também%w.
+
+ %U O número da semana do ano atual como decimal
+        número, intervalo de 00 a 53, começando com o primeiro
+        Domingo como o primeiro dia da semana 01. Veja também%V e
+        %W.
+
+ %V O número da semana ISO 8601: 1988 do ano atual
+        como um número decimal, de 01 a 53, em que a semana 1
+        é a primeira semana que tem pelo menos 4 dias no
+        ano em curso e com segunda-feira como o primeiro dia de
+        a semana. Veja também%U e%W.
+
+ %w O dia da semana como decimal, intervalo de 0 a 6,
+        Domingo sendo 0. Veja também%u.
+
+ %W O número da semana do ano atual como decimal
+        número, intervalo de 00 a 53, começando com o primeiro
+        Segunda como o primeiro dia da semana 01.
+
+ %x A representação preferida da data para o atual
+        local sem o tempo.
+
+ %X A representação de hora preferida para o atual
+        local sem a data.
+
+ %y O ano como um número decimal sem um século
+        (intervalo de 00 a 99).
+
+ %Y O ano como um número decimal, incluindo o século.
+
+ %z O fuso horário como deslocamento da hora em relação ao GMT. Necessário para
+        emitem datas compatíveis com RFC822 (usando &quot;%a,%d%b%Y
+        %H:%M:%S%z &quot;).
+
+ %Z O fuso horário ou nome ou abreviação.
+
+ %%Um caractere literal &#39;%&#39;.
+</font> </pre><footer>

@@ -1,0 +1,1 @@
+<header>本地交付代理使用的别名数据库</header><center> <tt>alias_maps</tt> </center> <hr>此参数指定本地传递代理使用的别名数据库的列表。默认列表取决于系统。在具有NIS的系统上，默认设置是先搜索本地别名数据库，然后搜索NIS别名数据库。有关语法的详细信息，请参见<a href=aliases>别名</a> 。 <p>典型配置为： <ul><li> <tt>dbm:/etc/aliases</tt> <li> <tt>hash:/etc/postfix/aliases</tt> <li> <tt>hash:/etc/aliases, nis:mail.aliases</tt> </ul> <hr>

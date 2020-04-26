@@ -1,102 +1,102 @@
 <body bgcolor=#ffffff>
 <center><img src=images/dnsadmin.gif></center>
-<h2><i>Aquesta p‡gina d'ajuda Ès incompleta</i></h2>
+<h2><i>Aquesta p√†gina d'ajuda √©s incompleta</i></h2>
 
 <hr>
-<h3>IntroducciÛ</h3>
-Aquest mÚdul permet configurar el servidor DNS BIND (Berkeley Internet Name
-Daemon) instal∑lat en aquesta m‡quina. El servidor DNS Ès el responsable
+<h3>Introducci√≥</h3>
+Aquest m√≤dul permet configurar el servidor DNS BIND (Berkeley Internet Name
+Daemon) instal¬∑lat en aquesta m√†quina. El servidor DNS √©s el responsable
 de convertir noms de host com <i>www.foo.com</i> a adreces IP com
 <i>10.1.2.3</i>, i adreces IP a noms de host.
 
 <hr>
-<h3>DNS B‡sic</h3>
+<h3>DNS B√†sic</h3>
 Cada servidor DNS gestiona un cert nombre de dominis inversos i de
-retransmissiÛ. Un domini de retransmissiÛ es alguna cosa com ara
+retransmissi√≥. Un domini de retransmissi√≥ es alguna cosa com ara
 <i>foo.com</i>, i un domini invers <i>204.165.66</i>. Per a cada
-domini, el servidor DNS pot ser o bÈ el servidor primari (la font
-original de dades per al domini), o bÈ un servidor secundari
+domini, el servidor DNS pot ser o b√© el servidor primari (la font
+original de dades per al domini), o b√© un servidor secundari
 (una font de reserva per al domini). <p>
 
 <dl>
-<dt><b>Dominis de RetransmissiÛ</b>
-<dd>Si el servidor DNS gestiona un domini de retransmissiÛ com ara
-   <i>foo.com</i>, llavors podr‡ respondre peticions de noms de host
+<dt><b>Dominis de Retransmissi√≥</b>
+<dd>Si el servidor DNS gestiona un domini de retransmissi√≥ com ara
+   <i>foo.com</i>, llavors podr√† respondre peticions de noms de host
    dins d'aquest domini. Per als dominis per als quals aquest servidor
-   Ès el primari, pots utilitzar aquest mÚdul per afegir hosts (i altres
+   √©s el primari, pots utilitzar aquest m√≤dul per afegir hosts (i altres
    registres) al domini. Per als dominis secundaris, pots especificar 
    els(s) servidor(s) primaris des d'on s'ha de descarregar la
-   informaciÛ dels hosts. <p>
+   informaci√≥ dels hosts. <p>
 <dt><b>Dominis Inversos</b>
 <dd>Els dominis inversos mapegen adreces IP (com <i>203.165.66.77</i>) a
    noms de host (com <i>www.foo.com</i>). Un domini invers subministra
    noms de host per a totes les adreces IP d'una xarxa (com <i>203.165.66</i>).
-   Per dominis per als qual aquest Ès el servidor primari, aquest mÚdul permet
+   Per dominis per als qual aquest √©s el servidor primari, aquest m√≤dul permet
    afegir registres IP-a-nomdehost al domini. Per als servidors secundaris, 
    pots especificar els(s) servidor(s) primaris des d'on s'ha de descarregar
-   la informaciÛ dels hosts. <p>
+   la informaci√≥ dels hosts. <p>
 </dl>
 
 <hr>
-<h3>ConfiguraciÛ del Servidor DNS</h3>
-SI el sistema ja tÈ un servidor DNS BIND en execuciÛ, llavors pots 
-ignorar aquesta secciÛ. No obstant, si Webmin detecta que el fitxer
-de configuraciÛ del DNS primari (normalment, <tt>/etc/named.boot</tt>)
-no Ès present al sistema, assumeix que el servidor encara no ha estat
+<h3>Configuraci√≥ del Servidor DNS</h3>
+SI el sistema ja t√© un servidor DNS BIND en execuci√≥, llavors pots 
+ignorar aquesta secci√≥. No obstant, si Webmin detecta que el fitxer
+de configuraci√≥ del DNS primari (normalment, <tt>/etc/named.boot</tt>)
+no √©s present al sistema, assumeix que el servidor encara no ha estat
 configurat. <p>
 
-Per l'˙s normal d'Internet, cal que el servidor DNS tingui una llista 
+Per l'√∫s normal d'Internet, cal que el servidor DNS tingui una llista 
 dels servidors de nom arrel, de manera que pugui respondre les consultes 
-DNS que queden fora dels seus dominis. Si el servidor no est‡ configurat,
+DNS que queden fora dels seus dominis. Si el servidor no est√† configurat,
 Webmin pot:
 <ol>
 <li>Descarregar aquesta llista des del servidor FTP d'InterNIC a
-   <tt>rs.internic.net</tt>. Assumint que el host on s'est‡ executant
-   Webmin est‡ connectat a Internet i no est‡ bloquejat per cap tallafocs,
-   aquesta Ès la millor opciÛ. <p>
-<li>Utilitza una cÚpia de la llista que ve distribuÔda amb Webmin.
+   <tt>rs.internic.net</tt>. Assumint que el host on s'est√† executant
+   Webmin est√† connectat a Internet i no est√† bloquejat per cap tallafocs,
+   aquesta √©s la millor opci√≥. <p>
+<li>Utilitza una c√≤pia de la llista que ve distribu√Øda amb Webmin.
    Donat que els servidors de noms arrel no canvien gaire sovint,
-   hauria de funcionar bÈ. <p>
-<li>Configurar el servidor de noms nomÈs per ˙s 'intern'. Si est‡s en
-   una xarxa que no est‡ connectada a Internet, llavors aquesta Ès 
-   l'opciÛ que necessites. <p>
+   hauria de funcionar b√©. <p>
+<li>Configurar el servidor de noms nom√©s per √∫s 'intern'. Si est√†s en
+   una xarxa que no est√† connectada a Internet, llavors aquesta √©s 
+   l'opci√≥ que necessites. <p>
 </ol>
 
 <hr>
-<h3>CreaciÛ d'un Domini Primari</h3>
+<h3>Creaci√≥ d'un Domini Primari</h3>
 Per crear un domini primari nou, emplena el formulari d'<b>Afegeix un nou
-domini primari</b> a la p‡gina del <a href=/dnsadmin/>Servidor DNS</a>.
-El significat dels camps Ès:
+domini primari</b> a la p√†gina del <a href=/dnsadmin/>Servidor DNS</a>.
+El significat dels camps √©s:
 <ul>
 <li><b>Mapejat</b><br>
-   Determina si aquest Ès un domini invers o de retransmissiÛ<p>
+   Determina si aquest √©s un domini invers o de retransmissi√≥<p>
 <li><b>Domini/Xarxa</b><br>
-   Per als dominis de retransmissiÛ, el domini a afegir (com ara
+   Per als dominis de retransmissi√≥, el domini a afegir (com ara
    <tt>foo.com</tt>). Per als dominis inversos, la xarxa IP a afegir
    (com ara <tt>203.123.221</tt>). <p>
 <li><b>Nom de fitxer</b><br>
-   El nom del fitxer en el qual s'emmagatzema la informaciÛ dels dominis.
-   Si deixes aquest nom en blanc, es genera autom‡ticament un nom apropiat.<p>
+   El nom del fitxer en el qual s'emmagatzema la informaci√≥ dels dominis.
+   Si deixes aquest nom en blanc, es genera autom√†ticament un nom apropiat.<p>
 <li><b>E-mail de contacte</b><br>
-   Cada domini DNS ha de tenir una adreÁa de correu electrÚnic associada,
+   Cada domini DNS ha de tenir una adre√ßa de correu electr√≤nic associada,
    que hauria de ser la de la persona responsable del domini. <p>
 <li><b>Servidor de noms</b><br>
    Ha de contenir el nom completament qualificat del servidor de noms
-   responsable d'aquest domini. Aquest ser‡ gairebÈ sempre el nom del
-   host en quË s'est‡ executant Webmin. <p>
+   responsable d'aquest domini. Aquest ser√† gaireb√© sempre el nom del
+   host en qu√® s'est√† executant Webmin. <p>
 </ul>
 
 <hr>
-<h3>CreaciÛ d'un Domini Secundari</h3>
+<h3>Creaci√≥ d'un Domini Secundari</h3>
 
 <hr>
-<h3>EdiciÛ d'un Domini Primari</h3>
+<h3>Edici√≥ d'un Domini Primari</h3>
 
 <hr>
-<h3>EdiciÛ dels Registres de Domini</h3>
+<h3>Edici√≥ dels Registres de Domini</h3>
 
 <hr>
 <a href="/"><img alt="<-" align=middle border=0 src=/images/left.gif></a>
-&nbsp;&nbsp;<a href="">Torna al mÚdul</a><p>
+&nbsp;&nbsp;<a href="">Torna al m√≤dul</a><p>
  
 

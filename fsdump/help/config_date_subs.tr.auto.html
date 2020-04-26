@@ -1,0 +1,126 @@
+<header> Yedekleme hedeflerinin zorla değiştirilmesi? </header> Bu seçenek <b>Evet</b> olarak ayarlanırsa, yedekleme hedefi dosya adında%d,%m,%Y ve%u gibi kodlar kullanılabilir. Bunlar, yedeklemenin gerçekleştirildiği sırasıyla, gün, ay yıl ve haftanın günü ile değiştirilecektir. Her gün farklı bir yedek kaydetmek istiyorsanız, bir sistemi önceki bir tarihe geri alabilmeniz için bu yararlıdır. <p> Kullanılabilecek diğer kodlardan bazıları şunlardır: <br><pre> <font size=-1>
+ %a Günceye göre kısaltılmış hafta içi adı
+        kira yerel.
+
+ %A Geçerli güne göre tam hafta içi adı
+        yerel ayar.
+
+ %b Geçerli aylara göre kısaltılmış ay adı
+        yerel ayar.
+
+ %B Geçerli ayın tam ay adı
+        yerel ayar.
+
+ %c Tercih edilen tarih ve saat temsili
+        geçerli yerel ayar.
+
+ %C 2 basamaklı bir tamsayı olarak yüzyıl sayısı (yıl / 100).
+
+ %d Ondalık sayı olarak ayın günü (aralık 01
+        31).
+
+ %e%d gibi, ayın ondalık sayı olarak gününü,
+        ancak baştaki sıfırın yerini boşluk alır.
+
+ %E Değiştirici: alternatif biçim kullanın, aşağıya bakın.
+
+ %G Yüzde ondalık sayı olarak ISO 8601 yılı.
+        ISO haftası num.una karşılık gelen 4 haneli yıl
+        ber (bkz.%V). Bu aynı biçime ve değere sahiptir
+        ISO hafta numarasının ait olması dışında%y olarak
+        bir önceki veya bir sonraki yıla göre, o yıl kullanılır
+        yerine.
+
+ %g%G gibi, ancak yüzyıl olmadan, yani 2 basamaklı
+        yıl (00-99).
+
+ %h%b&#39;ye eşdeğerdir.
+
+ %H 24 saatlik biçimi kullanan ondalık sayı olarak saat
+        (aralık 00-23).
+
+ %I 12 saatlik biçimi kullanan ondalık sayı olarak saat
+        (aralık 01 ila 12).
+
+ %j Ondalık sayı olarak yılın günü (aralık 001
+        366).
+
+ %k Ondalık sayı (saat) olarak saat (24 saat)
+        0 ila 23); tek hanelerin önünde bir boşluk bulunur.
+        (Ayrıca bkz.%H.)
+
+ %l Ondalık sayı (saat) olarak saat (12 saatlik zaman biçimi)
+        1 ila 12); tek hanelerin önünde bir boşluk bulunur.
+        (Ayrıca bkz.%I.)
+
+ %m Ondalık sayı olarak ay (aralık 01 ila 12).
+
+ %M Ondalık sayı olarak dakika (aralık 00 ila 59).
+
+ %n Yeni satır karakteri.
+
+ %O Değiştirici: alternatif format kullanın, aşağıya bakın.
+
+ %p Verilen zamana göre `` AM &#39;&#39; veya `` PM &#39;&#39;
+        değeri veya geçerli için karşılık gelen dizeler
+        yerel ayar. Öğlen öğleden sonra `` pm &#39;&#39; ve gece yarısı
+        ` &#39;değilim.
+
+ %P%p gibi ama küçük harfle: `am &#39;veya` pm&#39; veya bir korelasyon
+        geçerli yerel ayar için sponding dizesi.
+
+ %r Öğleden önce veya öğleden sonra gösterimdeki saat. POSIX&#39;te
+        yerel ayar, bu &#39;%I:%M:%S%p&#39; ye eşdeğerdir.
+
+ %R 24 saatlik gösterimdeki süre (%H:%M). İçin
+        saniye dahil olmak üzere, aşağıdaki%T&#39;ye bakın.
+
+ %s Dönemden bu yana geçen saniye sayısı, yani
+        1970-01-01 00:00:00 UTC.
+
+ %S Ondalık sayı olarak ikincisi (aralık 00-61).
+
+ %t Bir sekme karakteri.
+
+ %T 24 saatlik gösterimdeki süre (%H:%M:%S).
+
+ %u Ondalık olarak haftanın günü, aralık 1 ila 7,
+        Pazartesi 1. Bkz.%W.
+
+ %U Geçerli yılın ondalık olarak hafta sayısı
+        sayı, aralık 00 ila 53, ilkinden başlayarak
+        Pazar 01 haftanın ilk günü olarak. Ayrıca%V ve
+        %W.
+
+ %V ISO 8601: İçinde bulunulan yılın 1988 hafta sayısı
+        ondalık sayı olarak, 01 ile 53 arasında, burada hafta 1
+        en az 4 günü olan ilk haftadır.
+        cari yıl ve Pazartesi gününün ilk günü olarak
+        hafta. Ayrıca bkz.%U ve%W.
+
+ %w Ondalık olarak haftanın günü, aralık 0-6,
+        Pazar 0&#39;dır. Ayrıca bkz.%U.
+
+ %W Geçerli yılın ondalık olarak hafta sayısı
+        sayı, aralık 00 ila 53, ilkinden başlayarak
+        01. haftanın ilk günü olarak Pazartesi.
+
+ %x Akım için tercih edilen tarih gösterimi
+        zaman olmadan yerel.
+
+ %X Akım için tercih edilen zaman gösterimi
+        tarih olmadan yerel ayar.
+
+ %y Yüzyılsız ondalık sayı olarak yıl
+        (aralık 00 ila 99).
+
+ %Y Yüzyıl dahil ondalık sayı olarak yıl.
+
+ %z GMT&#39;den saat farkı olarak saat dilimi. İçin gerekli
+        RFC822 uyumlu tarihler yayınlama (&quot;%a,%d%b%Y kullanılarak
+        %H:%M:%S%z &quot;).
+
+ %Z Saat dilimi veya adı veya kısaltması.
+
+ %%Bir değişmez `% &#39;karakteri.
+</font> </pre><footer>

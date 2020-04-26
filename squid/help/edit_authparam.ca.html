@@ -1,32 +1,32 @@
-<header>Programes d'Autenticació</header>
+<header>Programes d'AutenticaciÃ³</header>
 
 <p>
-<b>Programa d'Autenticació</b>: Per defecte, cap. Especifica l'ordre de
-l'autenticador extern. Un programa així llegeix una línia que conté 
+<b>Programa d'AutenticaciÃ³</b>: Per defecte, cap. Especifica l'ordre de
+l'autenticador extern. Un programa aixÃ­ llegeix una lÃ­nia que contÃ© 
 "nomusuari contrasenya" i respon "OK" o "ERR" en un cicle infinit.
 Si utilitzes un autenticador, assegura't de tenir una ACL del tipus
 proxy_auth. <p>
-Si vols utilitzar l'autenticació de proxy tradicional, posa en aquesta
-línia quelcom com ara /usr/bin/ncsa_auth /usr/etc/passwd (assumint que
-ncsa_auth ha estat compilat i instal·lat al sistema).
+Si vols utilitzar l'autenticaciÃ³ de proxy tradicional, posa en aquesta
+lÃ­nia quelcom com ara /usr/bin/ncsa_auth /usr/etc/passwd (assumint que
+ncsa_auth ha estat compilat i instalÂ·lat al sistema).
 <p>
-<b>Nombre de programes d'autenticació</b>: Per defecte 5, si s'ha activat
+<b>Nombre de programes d'autenticaciÃ³</b>: Per defecte 5, si s'ha activat
 algun autenticador.
 <p>
-<b>Temps cau de les contrasenyes</b>: Temps que Squid desarà una entrada
-amb èxit abans de tornar a consultar altre cop el programa autenticador.
+<b>Temps cau de les contrasenyes</b>: Temps que Squid desarÃ  una entrada
+amb Ã¨xit abans de tornar a consultar altre cop el programa autenticador.
 <p>
-<b>Temps de lligam d'un usuari a una adreça IP</b>: Si el mateix usuari
-prova d'entrar dos cops des de dues IPs diferents durant aquest període,
-se li impedirà. Això pot ser útil per impedir la compartició de contrasenyes
+<b>Temps de lligam d'un usuari a una adreÃ§a IP</b>: Si el mateix usuari
+prova d'entrar dos cops des de dues IPs diferents durant aquest perÃ­ode,
+se li impedirÃ . AixÃ² pot ser Ãºtil per impedir la comparticiÃ³ de contrasenyes
 de proxy entre diferents usuaris.
 <p>
 <hr>
 
-Si estàs executant la versió 2.5 de Squid o superior, les opcions de sobre
-i d'altres es poden establir separadament per a diferents tipus d'autenticació,
+Si estÃ s executant la versiÃ³ 2.5 de Squid o superior, les opcions de sobre
+i d'altres es poden establir separadament per a diferents tipus d'autenticaciÃ³,
 tals com Digest i NTLM. No obstant, si vols utilitzar Webmin per editar la
-llista d'usuaris de proxy, has de configurar l'Autenticació bàsica. <p>
+llista d'usuaris de proxy, has de configurar l'AutenticaciÃ³ bÃ sica. <p>
 
 <hr>
 

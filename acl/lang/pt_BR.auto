@@ -106,7 +106,7 @@ makedn_failed=.. criação falhou: $1
 makedn_done=.. feito
 makedn_still=Alguns problemas foram encontrados mesmo após a criação do DN: $1 
 schema_title=Faça o download do esquema LDAP
-schema_desc=Antes que o Webmin possa usar um servidor LDAP para armazenar usuários e grupos, ele deve ser configurado para usar o esquema abaixo. Isso geralmente pode ser feito salvando a definição do esquema em <tt>/ etc / ldap / schema</tt> ou <tt>/ etc / openldap / schema</tt> como <tt>webmin.schema</tt>, depois, configurando o servidor para carregar esse arquivo de esquema.
+schema_desc=Antes que o Webmin possa usar um servidor LDAP para armazenar usuários e grupos, ele deve ser configurado para usar o esquema abaixo. Isso geralmente pode ser feito salvando a definição do esquema em <tt>/etc/ldap/schema</tt> ou <tt>/etc/openldap/schema</tt> como <tt>webmin.schema</tt>, depois, configurando o servidor para carregar esse arquivo de esquema.
 schema_download=Faça o download do arquivo de esquema: <a href=$1>$1</a>
 twofactor_err=Falha ao configurar a autenticação de dois fatores
 twofactor_euser=Seu usuário Webmin não foi encontrado!

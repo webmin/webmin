@@ -1,24 +1,24 @@
 <header>Embolcalls TCP</header>
 
-<h3>IntroducciÛ</h3>
-Aquest mÚdul utilitza un llenguatge simple de control d'accÈs basat en patrons
-del client (nom de host/adreÁa, nom d'usuari) i el servidor (nom del procÈs,
-nom/adreÁa del servidor).</p>
-Al document hosts_options(5), s'hi descriu una versiÛ ampliada del llenguatge
-de control d'accÈs. Les extensions s'activen a l'hora de compilar el programa
+<h3>Introducci√≥</h3>
+Aquest m√≤dul utilitza un llenguatge simple de control d'acc√©s basat en patrons
+del client (nom de host/adre√ßa, nom d'usuari) i el servidor (nom del proc√©s,
+nom/adre√ßa del servidor).</p>
+Al document hosts_options(5), s'hi descriu una versi√≥ ampliada del llenguatge
+de control d'acc√©s. Les extensions s'activen a l'hora de compilar el programa
 amb -DPROCESS_OPTIONS.
                             
-<h3>Fitxers de Control d'AccÈs</h3>
-El programari de control d'accÈs consulta dos fitxers. La cerca s'atura a la
-primera coincidËncia:
+<h3>Fitxers de Control d'Acc√©s</h3>
+El programari de control d'acc√©s consulta dos fitxers. La cerca s'atura a la
+primera coincid√®ncia:
 <ul>                                                 
-<li>Es concedir‡ l'accÈs quan una parella (dimoni,client) coincideixi amb una
+<li>Es concedir√† l'acc√©s quan una parella (dimoni,client) coincideixi amb una
 de les entrades del fitxer /etc/hosts.allow.</li>
-<li>Altrament, es denegar‡ l'accÈs quan un aparella (dimoni,client) coincideixi
+<li>Altrament, es denegar√† l'acc√©s quan un aparella (dimoni,client) coincideixi
 amb una entrada del fitxer /etc/hosts.deny.</li>
-<li>Altrament, es concedir‡ l'accÈs.</li>
+<li>Altrament, es concedir√† l'acc√©s.</li>
 </ul>
-Un fitxer de control d'accÈs inexistent es tractar‡ com si fos un fitxer buit.
-AixÌ doncs, es pot desactivar el control d'accÈs eliminant els fitxers.
+Un fitxer de control d'acc√©s inexistent es tractar√† com si fos un fitxer buit.
+Aix√≠ doncs, es pot desactivar el control d'acc√©s eliminant els fitxers.
 
 <hr />

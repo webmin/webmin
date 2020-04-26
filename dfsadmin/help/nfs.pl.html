@@ -1,25 +1,25 @@
 <h3>Wprowadzenie do NFS-u</h3>
 
-NFS jest standardowym protoko³em wspó³dzielenia plików wykorzystywanym przez
-systemy uniksowe. Dowolny system mo¿e za po¶rednictwem NFS-u udostêpniæ poprzez
-sieæ pewien katalog dla jednego lub wiêcej hostów, pozwalaj±c u¿ytkownikom
-oraz programom dzia³aj±cym na tych hostach na dostêp do udostêpnionych plików
-tak, jakby by³y to pliki lokalne. <p>
+NFS jest standardowym protokoÅ‚em wspÃ³Å‚dzielenia plikÃ³w wykorzystywanym przez
+systemy uniksowe. Dowolny system moÅ¼e za poÅ›rednictwem NFS-u udostÄ™pniÄ‡ poprzez
+sieÄ‡ pewien katalog dla jednego lub wiÄ™cej hostÃ³w, pozwalajÄ…c uÅ¼ytkownikom
+oraz programom dziaÅ‚ajÄ…cym na tych hostach na dostÄ™p do udostÄ™pnionych plikÃ³w
+tak, jakby byÅ‚y to pliki lokalne. <p>
 
-Serwerem NFS-u jest system udostêpniaj±cy jeden lub wiêcej katalogów, za¶
-klientem NFS-u jest system, który montuje jeden lub wiêcej katalogów
-z&nbsp;serwera. Ka¿dy host mo¿e byæ jednocze¶nie serwerem NFS-u i&nbsp;klientem
-innych serwerów.
+Serwerem NFS-u jest system udostÄ™pniajÄ…cy jeden lub wiÄ™cej katalogÃ³w, zaÅ›
+klientem NFS-u jest system, ktÃ³ry montuje jeden lub wiÄ™cej katalogÃ³w
+z&nbsp;serwera. KaÅ¼dy host moÅ¼e byÄ‡ jednoczeÅ›nie serwerem NFS-u i&nbsp;klientem
+innych serwerÃ³w.
 <p>
 
-Serwer okre¶la, które stacje klienckie mog± zamontowaæ udostêpniony katalog
-poprzez porównanie ich adresów IP z&nbsp;listê hostów dopuszczonych do ¿±danego
-katalogu. Serwer mo¿e równie¿ okre¶liæ zasób jako tylko do odczytu lub tylko do
+Serwer okreÅ›la, ktÃ³re stacje klienckie mogÄ… zamontowaÄ‡ udostÄ™pniony katalog
+poprzez porÃ³wnanie ich adresÃ³w IP z&nbsp;listÄ™ hostÃ³w dopuszczonych do Å¼Ä…danego
+katalogu. Serwer moÅ¼e rÃ³wnieÅ¼ okreÅ›liÄ‡ zasÃ³b jako tylko do odczytu lub tylko do
 odczytu dla pewnych stacji klienckich. <p>
 
-W odró¿nieniu od innych sieciowych systemów plików, klienci NFS-u nie musz±
-logowaæ siê do serwera podczas montowania udostêpnionego katalogu. Serwer ufa,
-¿e stacje klienckie same autoryzuj± u¿ytkowników dostarczaj±c numer ID
-bie¿±cego u¿ytkownika podczas dostêpu do plików. Wobec tego powiniene¶
-pozwalaæ na montowanie udostêpnianych zasobów jedynie zaufanym stacjom
+W odrÃ³Å¼nieniu od innych sieciowych systemÃ³w plikÃ³w, klienci NFS-u nie muszÄ…
+logowaÄ‡ siÄ™ do serwera podczas montowania udostÄ™pnionego katalogu. Serwer ufa,
+Å¼e stacje klienckie same autoryzujÄ… uÅ¼ytkownikÃ³w dostarczajÄ…c numer ID
+bieÅ¼Ä…cego uÅ¼ytkownika podczas dostÄ™pu do plikÃ³w. Wobec tego powinieneÅ›
+pozwalaÄ‡ na montowanie udostÄ™pnianych zasobÃ³w jedynie zaufanym stacjom
 klienckim. <p>

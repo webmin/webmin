@@ -1,55 +1,55 @@
-<header>ConfiguraciÛ de Portsentry</header>
+<header>Configuraci√≥ de Portsentry</header>
 
-Portsentry Ès un programa dissenyat per detectar i respondre a l'escaneig 
+Portsentry √©s un programa dissenyat per detectar i respondre a l'escaneig 
 de ports contra un host objectiu en temps real. Pot fer-ho de dues maneres 
-- escoltant un conjunt de ports seleccionats (mode b‡sic), o bÈ monitoritzant
-tots els ports per sota d'un n˙mero triat. Quan es detecta una connexiÛ en
+- escoltant un conjunt de ports seleccionats (mode b√†sic), o b√© monitoritzant
+tots els ports per sota d'un n√∫mero triat. Quan es detecta una connexi√≥ en
 un dels ports monitoritzats, Portsentry enregistra l'esdeveniment als
-fitxers de registre i, opcionalment, pren una acciÛ per bloquejar tot
-tr‡fic futur des del host remot. <p>
+fitxers de registre i, opcionalment, pren una acci√≥ per bloquejar tot
+tr√†fic futur des del host remot. <p>
 
-Les opcions d'aquesta p‡gina sÛn:
+Les opcions d'aquesta p√†gina s√≥n:
 <ul>
 <li><b>Ports TCP a monitoritzar</b><br>
-   En mode b‡sic, Portsentry escoltar‡ tots els ports TCP llistats a la
-   primera lÌnia d'aquesta opciÛ. En mode avanÁat, escoltar‡ tots els
-   ports per sota del n˙mero introduÔt a la segona lÌnia, excloent-ne
+   En mode b√†sic, Portsentry escoltar√† tots els ports TCP llistats a la
+   primera l√≠nia d'aquesta opci√≥. En mode avan√ßat, escoltar√† tots els
+   ports per sota del n√∫mero introdu√Øt a la segona l√≠nia, excloent-ne
    els llistats al camp 'execepte'. <p>
   
 <li><b>Ports UDP a monitoritzar</b><br>
-   Com l'opciÛ de ports TCP, perÚ controla quins ports UDP es monitoritzen. <p>
+   Com l'opci√≥ de ports TCP, per√≤ controla quins ports UDP es monitoritzen. <p>
 
 <li><b>Bloqueja sondes TCP</b><br>
-   Aquesta opciÛ controla quina acciÛ ha de prendre Portsentry quan detecta
-   una connexiÛ TCP a un dels ports monitoritzats. Les tries sÛn SÌ
-   (bloqueja les connexions futures des del host), No (no fa res) o bÈ
+   Aquesta opci√≥ controla quina acci√≥ ha de prendre Portsentry quan detecta
+   una connexi√≥ TCP a un dels ports monitoritzats. Les tries s√≥n S√≠
+   (bloqueja les connexions futures des del host), No (no fa res) o b√©
    executa l'ordre 'kill' (executa una ordre especificada al fitxer de
-   configuraciÛ). En tots els casos, la connexiÛ s'enregistra als registres
+   configuraci√≥). En tots els casos, la connexi√≥ s'enregistra als registres
    del sistema. <p>
 
 <li><b>Bloqueja sondes UDP</b><br>
-   Igual que l'opciÛ de sondes TCP, perÚ controla el que passa quan es
-   detecta una connexiÛ UDP. <p>
+   Igual que l'opci√≥ de sondes TCP, per√≤ controla el que passa quan es
+   detecta una connexi√≥ UDP. <p>
 
 <li><b>Missatge per a les connexions bloquejades</b><br>
-   Quan Portsentry est‡ escoltant un port, totes les connexions rebudes
-   rebran aquest missatge de tornada abans de tancar la connexiÛ. <p>
+   Quan Portsentry est√† escoltant un port, totes les connexions rebudes
+   rebran aquest missatge de tornada abans de tancar la connexi√≥. <p>
 
 <li><b>Nombre de connexions abans d'activar el bloqueig</b><br>
-   El nombre de connexions 'de gr‡cia' que un host tÈ permËs de fer a un
+   El nombre de connexions 'de gr√†cia' que un host t√© perm√®s de fer a un
    port monitoritzat abans que sigui bloquejat. Si es posa a zero, la
-   primera connexiÛ activar‡ el bloqueig. <p>
+   primera connexi√≥ activar√† el bloqueig. <p>
 
-<li><b>Hosts el tr‡nsit dels quals cal ignorar</b><br>
-   Les adreces IP, noms de host o adreces IP/m‡scares dels hosts i xarxes
-   el tr‡nsit dels quals s'ignora. <p>
+<li><b>Hosts el tr√†nsit dels quals cal ignorar</b><br>
+   Les adreces IP, noms de host o adreces IP/m√†scares dels hosts i xarxes
+   el tr√†nsit dels quals s'ignora. <p>
 
 </ul>
 
-Al peu de la p‡gina, hi ha un botÛ per iniciar Portsentry (si no s'est‡
-executant) o bÈ aturar-lo (si s'est‡ executant). Com que Portsentry
-s'executa com un parell de processos en segon pla (o dimonis), si no est‡
-en execuciÛ no es far‡ cap monitoritzaciÛ d'escaneig de ports. <p>
+Al peu de la p√†gina, hi ha un bot√≥ per iniciar Portsentry (si no s'est√†
+executant) o b√© aturar-lo (si s'est√† executant). Com que Portsentry
+s'executa com un parell de processos en segon pla (o dimonis), si no est√†
+en execuci√≥ no es far√† cap monitoritzaci√≥ d'escaneig de ports. <p>
 
 <hr>
 

@@ -454,7 +454,7 @@ makedn_failed=.. việc tạo không thành công: $1
 makedn_done=.. làm xong
 makedn_still=Một số vấn đề đã được tìm thấy ngay cả sau khi tạo DN: $1 
 schema_title=Tải xuống lược đồ LDAP
-schema_desc=Trước khi Webmin có thể sử dụng máy chủ LDAP để lưu trữ người dùng và nhóm, nó phải được cấu hình để sử dụng lược đồ bên dưới. Điều này thường có thể được thực hiện bằng cách lưu định nghĩa lược đồ trong <tt>/ etc / ldap / lược đồ</tt> hoặc <tt>/ etc / openldap / lược đồ</tt> dưới dạng <tt>webmin.schema</tt>, sau đó cấu hình máy chủ để tải tệp lược đồ đó.
+schema_desc=Trước khi Webmin có thể sử dụng máy chủ LDAP để lưu trữ người dùng và nhóm, nó phải được cấu hình để sử dụng lược đồ bên dưới. Điều này thường có thể được thực hiện bằng cách lưu định nghĩa lược đồ trong <tt>/etc/ldap/schema</tt> hoặc <tt>/etc/openldap/schema</tt> dưới dạng <tt>webmin.schema</tt>, sau đó cấu hình máy chủ để tải tệp lược đồ đó.
 schema_download=Tải xuống tệp lược đồ: <a href=$1>$1</a>
 twofactor_err=Không thể thiết lập xác thực hai yếu tố
 twofactor_euser=Không tìm thấy người dùng Webmin của bạn!

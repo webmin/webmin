@@ -14,13 +14,12 @@ if ($in{'delete'}) {
 	}
 else {
 	# saving or updating a host
-	$whatfailed = "Failed to save host";
 	&check_ipaddress_any($in{'address'}) ||
-		&error("'$in{'address'}' is not a valid IP address");
+		&error("'".&html_escape($in{'address'})."' is not a valid IP address");
 	@h = split(/\s+/, $in{'hosts'});
 	foreach $h (@h) {
 		$h =~ /^[A-z0-9\-\.]+$/ ||
-			&error("'$h' is not a valid hostname");
+			&error("'".&html_escape($h)."' is not a valid hostname");
 		}
 	@h>0 || &error("You must enter at least one hostname");
 	if ($in{'new'}) {

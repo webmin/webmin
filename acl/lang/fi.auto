@@ -454,7 +454,7 @@ makedn_failed=.. luominen epäonnistui: $1
 makedn_done=.. valmis
 makedn_still=Joitakin ongelmia löytyi jo DN: n luomisen jälkeen: $1
 schema_title=Lataa LDAP-kaavio
-schema_desc=Ennen kuin Webmin voi käyttää LDAP-palvelinta käyttäjien ja ryhmien tallentamiseen, se on määritettävä käyttämään alla olevaa mallia. Tämä voidaan tyypillisesti tehdä tallentamalla kaavion määritelmä hakemistoon <tt>/ etc / ldap / schema</tt> tai <tt>/ etc / openldap / schema</tt> nimellä <tt>webmin.schema</tt>, sitten palvelimen määrittäminen lataamaan mallitiedosto.
+schema_desc=Ennen kuin Webmin voi käyttää LDAP-palvelinta käyttäjien ja ryhmien tallentamiseen, se on määritettävä käyttämään alla olevaa mallia. Tämä voidaan tyypillisesti tehdä tallentamalla kaavion määritelmä hakemistoon <tt>/etc/ldap/schema</tt> tai <tt>/etc/openldap/schema</tt> nimellä <tt>webmin.schema</tt>, sitten palvelimen määrittäminen lataamaan mallitiedosto.
 schema_download=Lataa kaavatiedosto: <a href=$1>$1</a>
 twofactor_err=Kaksikerroista todennusta ei pystytty määrittämään
 twofactor_euser=Webmin-käyttäjääsi ei löytynyt!

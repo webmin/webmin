@@ -1,0 +1,126 @@
+<header> ¿La sustitución en el tiempo de espera de los destinos de respaldo? </header> Si esta opción se establece en <b>Sí</b> , se pueden usar códigos como% d,% m,% Y y% u en el nombre del archivo de destino de la copia de seguridad. Estos serán reemplazados por el día, mes año y día de la semana, respectivamente, cuando se realice la copia de seguridad. Esto es útil si desea guardar una copia de seguridad diferente todos los días, para poder revertir un sistema a una fecha anterior. <p> Algunos de los otros códigos que se pueden usar son: <br><pre> <font size=-1>
+ % a El nombre abreviado del día de la semana según el cur
+        alquiler local.
+
+ % A El nombre completo del día de la semana de acuerdo con el actual
+        lugar.
+
+ % b El nombre abreviado del mes de acuerdo con el actual
+        lugar.
+
+ % B El nombre completo del mes de acuerdo con el actual
+        lugar.
+
+ % c La representación de fecha y hora preferida para
+        localización actual
+
+ % C El número de siglo (año / 100) como un entero de 2 dígitos.
+
+ % d El día del mes como un número decimal (rango 01
+        a 31).
+
+ % e Como% d, el día del mes como un número decimal,
+        pero un cero a la izquierda se reemplaza por un espacio.
+
+ Modificador% E: utilice un formato alternativo, consulte a continuación.
+
+ % G El año ISO 8601 con siglo como número decimal.
+        El año de 4 dígitos correspondiente al número de semana ISO
+        ber (ver% V). Tiene el mismo formato y valor.
+        como% y, excepto que si el número de semana ISO pertenece
+        al año anterior o siguiente, ese año se usa
+        en lugar.
+
+ % g Como% G, pero sin siglo, es decir, con 2 dígitos
+        año (00-99).
+
+ % h Equivalente a% b.
+
+ % H La hora como un número decimal usando un reloj de 24 horas
+        (rango de 00 a 23).
+
+ % I La hora como un número decimal usando un reloj de 12 horas
+        (rango 01 a 12).
+
+ % j El día del año como un número decimal (rango 001
+        a 366).
+
+ % k La hora (reloj de 24 horas) como un número decimal (rango
+        0 a 23); los dígitos individuales están precedidos por un espacio en blanco.
+        (Ver también% H.)
+
+ % l La hora (reloj de 12 horas) como un número decimal (rango
+        1 a 12); los dígitos individuales están precedidos por un espacio en blanco.
+        (Ver también% I.)
+
+ % m El mes como un número decimal (rango 01 a 12).
+
+ % M El minuto como un número decimal (rango de 00 a 59).
+
+ % n Un personaje de nueva línea.
+
+ Modificador% O: utilice un formato alternativo, consulte a continuación.
+
+ % p Ya sea &#39;AM&#39; o &#39;PM&#39; según el tiempo dado
+        valor, o las cadenas correspondientes para el actual
+        lugar. El mediodía se trata como `pm &#39;y la medianoche como
+        &#39;am&#39;.
+
+ % P Como% p pero en minúsculas: `am &#39;o` pm&#39; o un corre
+        cadena de búsqueda para el entorno local actual.
+
+ % r La hora en notación am o pm. En el POSIX
+        configuración regional esto es equivalente a `% I:% M:% S% p &#39;.
+
+ % R El tiempo en notación de 24 horas (% H:% M). Para
+        versión que incluye los segundos, consulte% T a continuación.
+
+ % s El número de segundos desde la época, es decir, desde
+        1970-01-01 00:00:00 UTC.
+
+ % S El segundo como un número decimal (rango 00 a 61).
+
+ % t Un carácter de tabulación.
+
+ % T El tiempo en notación de 24 horas (% H:% M:% S).
+
+ % u El día de la semana como decimal, rango 1 a 7,
+        Lunes siendo 1. Ver también% w.
+
+ % U El número de semana del año actual como decimal
+        número, rango 00 a 53, comenzando con el primero
+        Domingo como primer día de la semana 01. Ver también% V y
+        % W.
+
+ % V La ISO 8601: número de semana 1988 del año actual
+        como un número decimal, rango 01 a 53, donde la semana 1
+        es la primera semana que tiene al menos 4 días en el
+        año actual, y con el lunes como el primer día de
+        la semana. Ver también% U y% W.
+
+ % w El día de la semana como decimal, rango de 0 a 6,
+        Domingo siendo 0. Ver también% u.
+
+ % W El número de semana del año actual como decimal
+        número, rango 00 a 53, comenzando con el primero
+        Lunes como primer día de la semana 01.
+
+ % x La representación de fecha preferida para el actual
+        local sin el tiempo.
+
+ % X La representación de tiempo preferida para el actual
+        locale sin la fecha.
+
+ % y El año como un número decimal sin un siglo
+        (rango de 00 a 99).
+
+ % Y El año como un número decimal que incluye el siglo.
+
+ % z La zona horaria como compensación horaria de GMT. Requerida para
+        emitir fechas compatibles con RFC822 (usando &quot;% a,% d% b% Y
+        % H:% M:% S% z &quot;).
+
+ % Z La zona horaria o nombre o abreviatura.
+
+ %% Un carácter literal `% &#39;.
+</font> </pre><footer>

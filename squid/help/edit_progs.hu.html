@@ -1,24 +1,24 @@
-<header>Segédprogramok; fordította: Szakács Gergely</header><p>
+<header>SegÃ©dprogramok; fordÃ­totta: SzakÃ¡cs Gergely</header><p>
 
-<b>FTP-oszlopszélesség</b>: Alapértelmezés szerint 32. Meghatározza az ftp-listák szélességét. Ennek el kell férnie egy szokványos böngészõablakban. Ha az oszlop túl keskeny, úgy elõfordulhat, hogy a hosszabb fájlnevek nem jelennek meg ftp-oldalak böngészése közben.<p>
+<b>FTP-oszlopszÃ©lessÃ©g</b>: AlapÃ©rtelmezÃ©s szerint 32. MeghatÃ¡rozza az ftp-listÃ¡k szÃ©lessÃ©gÃ©t. Ennek el kell fÃ©rnie egy szokvÃ¡nyos bÃ¶ngÃ©szÅ‘ablakban. Ha az oszlop tÃºl keskeny, Ãºgy elÅ‘fordulhat, hogy a hosszabb fÃ¡jlnevek nem jelennek meg ftp-oldalak bÃ¶ngÃ©szÃ©se kÃ¶zben.<p>
 
-<b>Névtelen FTP-bejelentkezés</b>: Alapértelmezés szerint 'Squid@'.  Ha azt akarja, hogy a névtelen bejelentkezési jelszó informatívabb legyen (és lehetõvé tegye más ftp-kiszolgálók használatát), állítsa ezt olyasmire, ami összefüggésbe hozható a domainjével, pl. wwwfelhasznalo@valahol.hu.<p>
+<b>NÃ©vtelen FTP-bejelentkezÃ©s</b>: AlapÃ©rtelmezÃ©s szerint 'Squid@'.  Ha azt akarja, hogy a nÃ©vtelen bejelentkezÃ©si jelszÃ³ informatÃ­vabb legyen (Ã©s lehetÅ‘vÃ© tegye mÃ¡s ftp-kiszolgÃ¡lÃ³k hasznÃ¡latÃ¡t), Ã¡llÃ­tsa ezt olyasmire, ami Ã¶sszefÃ¼ggÃ©sbe hozhatÃ³ a domainjÃ©vel, pl. wwwfelhasznalo@valahol.hu.<p>
 
-Annak oka, hogy az alapértelmezett beállításban hiányzik a domain az, hogy a felhasználó kérése bármely domainbõl érkezhet, a gyorstár használatától függõen. Egyes ftp-kiszolgálók azt is ellenõrzik, hogy a felhasználó létezõ email címet adott-e meg (pl. perl.com).<p>
+Annak oka, hogy az alapÃ©rtelmezett beÃ¡llÃ­tÃ¡sban hiÃ¡nyzik a domain az, hogy a felhasznÃ¡lÃ³ kÃ©rÃ©se bÃ¡rmely domainbÅ‘l Ã©rkezhet, a gyorstÃ¡r hasznÃ¡latÃ¡tÃ³l fÃ¼ggÅ‘en. Egyes ftp-kiszolgÃ¡lÃ³k azt is ellenÅ‘rzik, hogy a felhasznÃ¡lÃ³ lÃ©tezÅ‘ email cÃ­met adott-e meg (pl. perl.com).<p>
 
-<b>Squid DNS-program</b>: Alapértelmezés szerint a dnsserver. A dnslookup folyamathoz határozza meg a futtatható állomány helyét. Az alapértelmezett beállítás egy nem-blokkoló gyorstárazó névkiszolgáló, mely a Squid részeként automatikusan telepítésre kerül.<p>
+<b>Squid DNS-program</b>: AlapÃ©rtelmezÃ©s szerint a dnsserver. A dnslookup folyamathoz hatÃ¡rozza meg a futtathatÃ³ Ã¡llomÃ¡ny helyÃ©t. Az alapÃ©rtelmezett beÃ¡llÃ­tÃ¡s egy nem-blokkolÃ³ gyorstÃ¡razÃ³ nÃ©vkiszolgÃ¡lÃ³, mely a Squid rÃ©szekÃ©nt automatikusan telepÃ­tÃ©sre kerÃ¼l.<p>
 
-<b>DNS-programok száma</b>: Alapértelmezés szerint 5. A DNS névkeresések kiszolgálására indított folyamatok száma. Nagy kiszolgálókon tárolt, igen leterhelt gyorstárak esetén érdemes az értéket legalább 10-re állítani. Az opció maximuma 32.<p>
+<b>DNS-programok szÃ¡ma</b>: AlapÃ©rtelmezÃ©s szerint 5. A DNS nÃ©vkeresÃ©sek kiszolgÃ¡lÃ¡sÃ¡ra indÃ­tott folyamatok szÃ¡ma. Nagy kiszolgÃ¡lÃ³kon tÃ¡rolt, igen leterhelt gyorstÃ¡rak esetÃ©n Ã©rdemes az Ã©rtÃ©ket legalÃ¡bb 10-re Ã¡llÃ­tani. Az opciÃ³ maximuma 32.<p>
 
-<b>Domain hozzáfûzése kérésekhez</b>: Alapértelmezés szerint kikapcsolva. Normális esetben a 'dnsserver' kikapcsolja a RES_DEFNAMES feloldó opciót (vö. res_init(3)). Ez megakadályozza a hierarchikusan elrendezett gyorstárakat abban, hogy egytagú gazdaneveket lokálisnak azonosítsanak. Ahhoz, hogy engedélyezze a dnsserver számára az egytagú nevek kezelését, kapcsolja be ezt az opciót.<p>
+<b>Domain hozzÃ¡fÅ±zÃ©se kÃ©rÃ©sekhez</b>: AlapÃ©rtelmezÃ©s szerint kikapcsolva. NormÃ¡lis esetben a 'dnsserver' kikapcsolja a RES_DEFNAMES feloldÃ³ opciÃ³t (vÃ¶. res_init(3)). Ez megakadÃ¡lyozza a hierarchikusan elrendezett gyorstÃ¡rakat abban, hogy egytagÃº gazdaneveket lokÃ¡lisnak azonosÃ­tsanak. Ahhoz, hogy engedÃ©lyezze a dnsserver szÃ¡mÃ¡ra az egytagÃº nevek kezelÃ©sÃ©t, kapcsolja be ezt az opciÃ³t.<p>
 
-<b>DNS-kiszolgálók címei</b>: Alapértelmezés szerint a resolv.conf fáljt használjuk. Ezt akkor használja, ha inkább egy DNS-névkiszolgáló (IP-cím) listát akar használni az /etc/resolv.conf fájlban meghatározottak helyett.<p>
+<b>DNS-kiszolgÃ¡lÃ³k cÃ­mei</b>: AlapÃ©rtelmezÃ©s szerint a resolv.conf fÃ¡ljt hasznÃ¡ljuk. Ezt akkor hasznÃ¡lja, ha inkÃ¡bb egy DNS-nÃ©vkiszolgÃ¡lÃ³ (IP-cÃ­m) listÃ¡t akar hasznÃ¡lni az /etc/resolv.conf fÃ¡jlban meghatÃ¡rozottak helyett.<p>
 
-<b>Gyorstár-ürítõ program</b>: Alapértelmezés szerint 'unlinkd'. Határozza meg a fájlok törléséhez szükséges futtatható állomány elérési útvonalát. Amennyiben aszinkron-io-t használ, úgy erre nem lehet szükség, mivel egyes verziókban ezt külön szál kezeli.<p>
+<b>GyorstÃ¡r-Ã¼rÃ­tÅ‘ program</b>: AlapÃ©rtelmezÃ©s szerint 'unlinkd'. HatÃ¡rozza meg a fÃ¡jlok tÃ¶rlÃ©sÃ©hez szÃ¼ksÃ©ges futtathatÃ³ Ã¡llomÃ¡ny elÃ©rÃ©si ÃºtvonalÃ¡t. Amennyiben aszinkron-io-t hasznÃ¡l, Ãºgy erre nem lehet szÃ¼ksÃ©g, mivel egyes verziÃ³kban ezt kÃ¼lÃ¶n szÃ¡l kezeli.<p>
 
-<b>Squid pingelõ program</b>: Alapértelmezés szerint 'pinger'. Határozza meg a pingelési folyamathoz szükséges futtatható állomány elérési útvonalát. Ez csak akkor hasznos opció, ha telepítéskor a Squid-et az '--enable-icmp' opcióval konfigurálta.<p>
+<b>Squid pingelÅ‘ program</b>: AlapÃ©rtelmezÃ©s szerint 'pinger'. HatÃ¡rozza meg a pingelÃ©si folyamathoz szÃ¼ksÃ©ges futtathatÃ³ Ã¡llomÃ¡ny elÃ©rÃ©si ÃºtvonalÃ¡t. Ez csak akkor hasznos opciÃ³, ha telepÃ­tÃ©skor a Squid-et az '--enable-icmp' opciÃ³val konfigurÃ¡lta.<p>
 
-<b>Egyedi átirányítóprogram</b>: Alapértelmezés szerint nincs. Határozza meg az URL-átirányító futtatható állomány elérési útvonalát. Mivel ezek szinte bármilyen funkciót képesek végrehajtani, egy sem képezi a rendszer részét. Az útmutatóban további információt talál a programok megírásával kapcsolatban.<p>
+<b>Egyedi Ã¡tirÃ¡nyÃ­tÃ³program</b>: AlapÃ©rtelmezÃ©s szerint nincs. HatÃ¡rozza meg az URL-Ã¡tirÃ¡nyÃ­tÃ³ futtathatÃ³ Ã¡llomÃ¡ny elÃ©rÃ©si ÃºtvonalÃ¡t. Mivel ezek szinte bÃ¡rmilyen funkciÃ³t kÃ©pesek vÃ©grehajtani, egy sem kÃ©pezi a rendszer rÃ©szÃ©t. Az ÃºtmutatÃ³ban tovÃ¡bbi informÃ¡ciÃ³t talÃ¡l a programok megÃ­rÃ¡sÃ¡val kapcsolatban.<p>
 
-<b>Átirányítóprogramok száma</b>: Ha az átirányítás be van kapcsolva, úgy az alapértelmezett érték 5. Ha túl kevés ilyen programot indít el, akkor a Squid-nek mindig várakoznia kell, hogy feldolgozzák a folyamatosan felgyülemlõ URL-eket. Ha viszont túl sokat indít el, úgy túlzottan igénybe veszi a memóriát és a rendszer egyéb erõforrásait.
+<b>ÃtirÃ¡nyÃ­tÃ³programok szÃ¡ma</b>: Ha az Ã¡tirÃ¡nyÃ­tÃ¡s be van kapcsolva, Ãºgy az alapÃ©rtelmezett Ã©rtÃ©k 5. Ha tÃºl kevÃ©s ilyen programot indÃ­t el, akkor a Squid-nek mindig vÃ¡rakoznia kell, hogy feldolgozzÃ¡k a folyamatosan felgyÃ¼lemlÅ‘ URL-eket. Ha viszont tÃºl sokat indÃ­t el, Ãºgy tÃºlzottan igÃ©nybe veszi a memÃ³riÃ¡t Ã©s a rendszer egyÃ©b erÅ‘forrÃ¡sait.
 <hr>

@@ -1,45 +1,45 @@
-<header>EdiciÛ de Pool de Retard</header>
+<header>Edici√≥ de Pool de Retard</header>
 
 <p>
-<b>N˙mero de pool</b>
+<b>N√∫mero de pool</b>
 <br>
-…s un n˙mero que comenÁa a partir d'1, que Webmin tria per tu.
-Etiqueta el pool de manera que es pugui configurar mÈs d'un pool i Squid
+√âs un n√∫mero que comen√ßa a partir d'1, que Webmin tria per tu.
+Etiqueta el pool de manera que es pugui configurar m√©s d'un pool i Squid
 el pugui tractar de forma diferent.
 <p>
 <b>Classe de pool</b>
 <br>
 Defineix la classe de pool. Cada pool de retard pot tenir una classe
 seleccionada entre les classes 1, 2 o 3. Les classes tenen els significats
-seg¸ents: "1-Agregada", "2-Agregada i Individual", "3-Agregada, Individual
-i Xarxa". La mÈs senzilla, la classe 1, especifica una amplada de banda que
+seg√ºents: "1-Agregada", "2-Agregada i Individual", "3-Agregada, Individual
+i Xarxa". La m√©s senzilla, la classe 1, especifica una amplada de banda que
 cap client a qui pertany aquest pool pot ultrapassar. La classe 2 especifica
 al mateix temps una amplada de banda agregada i una amplada de banda que
-tot individu pot utilitzar, creant aixÌ una jerarquia de lÌmits on tots els
-individus han d'encaixar dins de l'agregada, mentre que cada individu est‡
-limitat pel lÌmit individual. Finalment, la classe 3 especifica una amplada
-de banda agregada i una d'individual a mÈs a mÈs d'una amplada de banda per
-la xarxa, que s'aplica a tota una subxarxa. Normalment, la classe 3 nomÈs
-Ès ˙til en xarxes molt grans que tenen mÈs d'una subxarxa.
+tot individu pot utilitzar, creant aix√≠ una jerarquia de l√≠mits on tots els
+individus han d'encaixar dins de l'agregada, mentre que cada individu est√†
+limitat pel l√≠mit individual. Finalment, la classe 3 especifica una amplada
+de banda agregada i una d'individual a m√©s a m√©s d'una amplada de banda per
+la xarxa, que s'aplica a tota una subxarxa. Normalment, la classe 3 nom√©s
+√©s √∫til en xarxes molt grans que tenen m√©s d'una subxarxa.
 <p>
-Els lÌmits es poden especificar en qualsevol mena d'unitats, tot i que es
-desaran al fitxer de configuraciÛ de Squid en bytes. El primer camp Ès
-el tr‡nsit mitj‡ que s'assignar‡ al pool. mentre que el segon Ès la mida
+Els l√≠mits es poden especificar en qualsevol mena d'unitats, tot i que es
+desaran al fitxer de configuraci√≥ de Squid en bytes. El primer camp √©s
+el tr√†nsit mitj√† que s'assignar√† al pool. mentre que el segon √©s la mida
 de la galleda utilitzada, que a grans trets correspon a una amplada de 
-banda m‡xima en un moment donat.
+banda m√†xima en un moment donat.
 <p>
-DesprÈs de crear un pool per primer cop, apareixer‡ una nova secciÛ al peu
-de la p‡gina, permetent aixÌ seleccionar a quines ACLs s'aplicar‡ el pool.
-Les ACLs es creen a la p‡gina de <b>Control d'AccÈs</b>, i es pot utilitzar
-qualsevol ACL per seleccionar a quines connexions s'aplicar‡ un pool de retard.
-<b>Permet</b> una ACL aplicar‡ el pool de retard a les connexions que hi
-coincideixin, mentre que <b>Denega</b> una ACL provocar‡ que les connexions
-coincidents facin cas omÌs del pool de retard. AixÌ, a menys que totes les
-connexions tinguin aplicat el mateix pool de retard, convÈ que afegeixis
-dues ACLs, la primera ser‡ l'ACL a la qual vols aplicar el pool de retard,
-i la segona ser‡ l'ACL <tt>tot</tt>, de manera que nomÈs els clients
+Despr√©s de crear un pool per primer cop, apareixer√† una nova secci√≥ al peu
+de la p√†gina, permetent aix√≠ seleccionar a quines ACLs s'aplicar√† el pool.
+Les ACLs es creen a la p√†gina de <b>Control d'Acc√©s</b>, i es pot utilitzar
+qualsevol ACL per seleccionar a quines connexions s'aplicar√† un pool de retard.
+<b>Permet</b> una ACL aplicar√† el pool de retard a les connexions que hi
+coincideixin, mentre que <b>Denega</b> una ACL provocar√† que les connexions
+coincidents facin cas om√≠s del pool de retard. Aix√≠, a menys que totes les
+connexions tinguin aplicat el mateix pool de retard, conv√© que afegeixis
+dues ACLs, la primera ser√† l'ACL a la qual vols aplicar el pool de retard,
+i la segona ser√† l'ACL <tt>tot</tt>, de manera que nom√©s els clients
 seleccionats estaran restringits.
 <p>
-No t'oblidis d'aplicar els canvis desprÈs de crear el nou pool i d'afegir
+No t'oblidis d'aplicar els canvis despr√©s de crear el nou pool i d'afegir
 les ACLs corresponents.
 

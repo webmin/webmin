@@ -108,7 +108,7 @@ makedn_failed=.. sorrerak huts egin du: $1
 makedn_done=.. egin
 makedn_still=DN sortu eta gero arazo batzuk aurkitu dira: $1 
 schema_title=Deskargatu LDAP eskema
-schema_desc=Webmin-ek LDAP zerbitzaria erabil dezake erabiltzaileak eta taldeak gordetzeko, beheko eskema erabiltzeko konfiguratuta egon behar du. Normalean eskemaren definizioa <tt>/ etc / ldap / schema</tt> edo <tt>/ etc / openldap / schema</tt> gisa <tt>webmin.schema</tt> gisa gordeta egin daiteke; gero zerbitzaria konfiguratu eskema fitxategi hori kargatzeko.
+schema_desc=Webmin-ek LDAP zerbitzaria erabil dezake erabiltzaileak eta taldeak gordetzeko, beheko eskema erabiltzeko konfiguratuta egon behar du. Normalean eskemaren definizioa <tt>/etc/ldap/schema</tt> edo <tt>/etc/openldap/schema</tt> gisa <tt>webmin.schema</tt> gisa gordeta egin daiteke; gero zerbitzaria konfiguratu eskema fitxategi hori kargatzeko.
 schema_download=Deskargatu eskemaren fitxategia: <a href=$1>$1</a>
 twofactor_err=Ezin izan da bi faktoreen autentikazioa konfiguratu
 twofactor_euser=Ez da zure Webmin erabiltzailea aurkitu!

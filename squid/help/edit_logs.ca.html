@@ -1,36 +1,36 @@
 <header>Registres</header>
 
-<b>Fitxer de registre d'accessos</b>: El valor per defecte depËn del sistema,
-normalment Ès algun lloc de <tt>/var</tt>. Registra l'activitat de la 
-peticiÛ del client. ContÈ una entrada per cada peticiÛ HTTP I ICP rebuda.
+<b>Fitxer de registre d'accessos</b>: El valor per defecte dep√®n del sistema,
+normalment √©s algun lloc de <tt>/var</tt>. Registra l'activitat de la 
+petici√≥ del client. Cont√© una entrada per cada petici√≥ HTTP I ICP rebuda.
 <p>
 
-<b>Fitxer de registre de depuraciÛ</b>: El valor per defecte depËn del sistema.
-Fitxer de registre del cau. Aquest Ès on va a parar la informaciÛ general
+<b>Fitxer de registre de depuraci√≥</b>: El valor per defecte dep√®n del sistema.
+Fitxer de registre del cau. Aquest √©s on va a parar la informaci√≥ general
 sobre el comportament del cau. Pots incrementar la quantitat de dades
-registrades amb les opcions <b>Opcions de depuraciÛ</b>.
+registrades amb les opcions <b>Opcions de depuraci√≥</b>.
 <p>
 
-<b>Fitxer de registre d'emmagatzematge</b>: El valor per defecte depËn del
+<b>Fitxer de registre d'emmagatzematge</b>: El valor per defecte dep√®n del
 sistema. Mostra quins objectes s'expulsen del cau i quins objectes s'hi desen
 (i per quant temps). Per desactivar-lo, introdueix "cap". De fet, no hi ha
-cap utilitat per analitzar les dades, aixÌ que si el desactives no passa res.
+cap utilitat per analitzar les dades, aix√≠ que si el desactives no passa res.
 <p>
 
 <b>Fitxer de metadades del cau</b>: Per defecte, <tt>swap.log</tt> a cada
 directori del cau. Aquest fitxer de registre guarda les metadades dels
-objectes desats al disc. …s ˙til per reconstruir el cau en engegar.
-Normalment, aquest fitxer resideix a cada directori del cau, perÚ pots
-especificar-hi un camÌ alternatiu. Tingues en compte que has de donar un
-nom complet, no nomÈs un directori. Donat que aquest Ès l'Ìndex de tota 
-la llista d'objectes, NO el pots rotar periÚdicament!
+objectes desats al disc. √âs √∫til per reconstruir el cau en engegar.
+Normalment, aquest fitxer resideix a cada directori del cau, per√≤ pots
+especificar-hi un cam√≠ alternatiu. Tingues en compte que has de donar un
+nom complet, no nom√©s un directori. Donat que aquest √©s l'√≠ndex de tota 
+la llista d'objectes, NO el pots rotar peri√≤dicament!
 <p>
-Si es pot utilitzar %s en el nom del fitxer, llavors, se substituir‡ amb una
-representaciÛ del nom del directori cau, on cada '/' se substitueix amb
-'.'. AixÚ Ès necessari per permetre l'addiciÛ/supressiÛ de lÌnies de 
+Si es pot utilitzar %s en el nom del fitxer, llavors, se substituir√† amb una
+representaci√≥ del nom del directori cau, on cada '/' se substitueix amb
+'.'. Aix√≤ √©s necessari per permetre l'addici√≥/supressi√≥ de l√≠nies de 
 directori cau quan s'utilitza un intercanvi de cau alternatiu.
 <p>
-Si hi ha mÈs d'un directori cau i no s'utilitza %s en el nom, llavors 
+Si hi ha m√©s d'un directori cau i no s'utilitza %s en el nom, llavors 
 aquests registres d'intercanvi tindran noms com ara:
 <p>
 <ul>
@@ -39,64 +39,64 @@ aquests registres d'intercanvi tindran noms com ara:
 <li>cache_swap_log.02
 </ul>
 <p>
-L'extensiÛ numerada (que s'afegeix autom‡ticament) correspon a l'ordre de
-les lÌnies del directori cau a la configuraciÛ. Si canvies l'ordre del
-les lÌnies del directori cau d'aquest fitxer, llavors aquests fitxers de
-registre NO correspondran a l'entrada correcta del directori cau (si no Ès
+L'extensi√≥ numerada (que s'afegeix autom√†ticament) correspon a l'ordre de
+les l√≠nies del directori cau a la configuraci√≥. Si canvies l'ordre del
+les l√≠nies del directori cau d'aquest fitxer, llavors aquests fitxers de
+registre NO correspondran a l'entrada correcta del directori cau (si no √©s
 que en canvies el nom manualment). Recomanem que NO utilitzis aquesta
-opciÛ. …s millor mantenir aquests fitxers de registre a cada directori cau.
+opci√≥. √âs millor mantenir aquests fitxers de registre a cada directori cau.
 <p>
 
 <b>Utilitza el format de registre HTTPD</b>: Per defecte, no. El cau pot
 emular el format de fitxer de registres que molts programes 'http' utilitzen.
-Per des/activar aquesta emulaciÛ, posa aquest valor a 'sÌ' o 'no'.
+Per des/activar aquesta emulaci√≥, posa aquest valor a 's√≠' o 'no'.
 Per defecte, s'utilitza el format natiu de registre,ja que inclou 
-informaciÛ ˙til utilitzada pels analitzadors de registres especÌfics de Squid.
+informaci√≥ √∫til utilitzada pels analitzadors de registres espec√≠fics de Squid.
 <p>
 
-<b>Registra les capÁaleres MIME</b>: Per defecte, no. El cau pot registrar
-tant les capÁaleres MIME de peticiÛ com de resposta per a cada transacciÛ
-HTTP. Les capÁaleres es codifiquen de forma segura i apareixeran com dos
-camps tancats entre claus al final del registre d'accÈs (tant com pel format
+<b>Registra les cap√ßaleres MIME</b>: Per defecte, no. El cau pot registrar
+tant les cap√ßaleres MIME de petici√≥ com de resposta per a cada transacci√≥
+HTTP. Les cap√ßaleres es codifiquen de forma segura i apareixeran com dos
+camps tancats entre claus al final del registre d'acc√©s (tant com pel format
 natiu com pel format HTTP emulat). Per activar aquest registre, posa-ho a 
 activat.
 <p>
 
 <b>Fitxer de registre d'agents d'usuari</b>: Per defecte, cap. Si es
-configura amb l'opciÛ "--enable-useragent-log", Squid escriur‡ el camp
+configura amb l'opci√≥ "--enable-useragent-log", Squid escriur√† el camp
 User-Agent de les peticions HTTP al nom de fitxer especificat.
 <p>
 
-<b>Fitxer de PID</b>: El valor per defecte depËn del sistema. Un nom de fitxer
-per escriure-hi l'id del procÈs. Per desactivar-lo, posa-hi "cap".
+<b>Fitxer de PID</b>: El valor per defecte dep√®n del sistema. Un nom de fitxer
+per escriure-hi l'id del proc√©s. Per desactivar-lo, posa-hi "cap".
 <p>
-<b>Executa consultes d'identificaciÛ RFC931 per les ACLs</b>: Per defecte, cap.
-Executa consultes d'identificaciÛ per trobar el nom d'usuari dels clients
+<b>Executa consultes d'identificaci√≥ RFC931 per les ACLs</b>: Per defecte, cap.
+Executa consultes d'identificaci√≥ per trobar el nom d'usuari dels clients
 qualsevol cosa d'aquestes ACLs.
 <p>
-<b>Temps lÌmit d'identificaciÛ RFC931</b>: Per defecte, 30 segons. Temps m‡xim
-d'espera de les peticions IDENT. Si Ès massa alt i has activat consultes
-d'identificaciÛ, pots patir una denegaciÛ de servei per culpa de tenir 
-moltes consultes d'identificaciÛ entrant a la vegada.
+<b>Temps l√≠mit d'identificaci√≥ RFC931</b>: Per defecte, 30 segons. Temps m√†xim
+d'espera de les peticions IDENT. Si √©s massa alt i has activat consultes
+d'identificaci√≥, pots patir una denegaci√≥ de servei per culpa de tenir 
+moltes consultes d'identificaci√≥ entrant a la vegada.
 <p>
 <b>Registra noms de host complets</b>: Per defecte, no. Registra el nom de
 host complet dels clients. 
 <p>
-<b>M‡scara de subxarxa de registre</b>: Per defecte, 255.255.255.255. Una
-m‡scara de subxarxa per les adreces client dels fitxers de registre i la
+<b>M√†scara de subxarxa de registre</b>: Per defecte, 255.255.255.255. Una
+m√†scara de subxarxa per les adreces client dels fitxers de registre i la
 sortida del gestor del cau. Canvia-ho per protegir la privacitat dels
-clients del cau. Una m‡scara 255.255.255.0 registrar‡ totes les IPs 
-d'aquest rang amb el darrer dÌgit posat a '0'.
+clients del cau. Una m√†scara 255.255.255.0 registrar√† totes les IPs 
+d'aquest rang amb el darrer d√≠git posat a '0'.
 <p>
-<b>Opcions de depuraciÛ</b>: Per defecte "ALL,1".
-Les opcions de registre s'estableixen com secciÛ,nivell on s'assigna una
-secciÛ ˙nica a cada fitxer font. El resultat de la depuraciÛ Completa (nivell 9)en els nivells inferiors pot produir un fitxer de registre molt gran, aixÌ
-que ves amb compte. la paraula m‡gica "ALL" estableix els nivells de 
-depuraciÛ per a tots els nivells. Normalment, recomanem posar-hi "ALL,1".
+<b>Opcions de depuraci√≥</b>: Per defecte "ALL,1".
+Les opcions de registre s'estableixen com secci√≥,nivell on s'assigna una
+secci√≥ √∫nica a cada fitxer font. El resultat de la depuraci√≥ Completa (nivell 9)en els nivells inferiors pot produir un fitxer de registre molt gran, aix√≠
+que ves amb compte. la paraula m√†gica "ALL" estableix els nivells de 
+depuraci√≥ per a tots els nivells. Normalment, recomanem posar-hi "ALL,1".
 <p>
-<b>Taula de capÁaleres MIME</b>: CamÌ de la taula MIME de Squid. Normalment,
-no hi ha necessitat de canviar-ho, perÚ si ho fas, el fitxer per defecte contÈ
-exemples i informaciÛ de formatat.
+<b>Taula de cap√ßaleres MIME</b>: Cam√≠ de la taula MIME de Squid. Normalment,
+no hi ha necessitat de canviar-ho, per√≤ si ho fas, el fitxer per defecte cont√©
+exemples i informaci√≥ de formatat.
 
 <hr>
 

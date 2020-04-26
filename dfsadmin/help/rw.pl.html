@@ -1,41 +1,41 @@
-<header>Dostêp do odczytu i&nbsp;zapisu</header>
+<header>DostÄ™p do odczytu i&nbsp;zapisu</header>
 
-Okre¶la, które hosty maj± uzyskiwaæ dostêp do tego zasobu w&nbsp;trybie
-do odczytu i&nbsp;zapisu. Mo¿liwe s± trzy ustawienia dla tej opcji&nbsp;:
+OkreÅ›la, ktÃ³re hosty majÄ… uzyskiwaÄ‡ dostÄ™p do tego zasobu w&nbsp;trybie
+do odczytu i&nbsp;zapisu. MoÅ¼liwe sÄ… trzy ustawienia dla tej opcji&nbsp;:
 <ul>
-<li><b>¯aden</b><br>
-    ¯aden host nie ma dostêpu w&nbsp;trybie do odczytu i&nbsp;zapisu.
+<li><b>Å»aden</b><br>
+    Å»aden host nie ma dostÄ™pu w&nbsp;trybie do odczytu i&nbsp;zapisu.
 <li><b>Wszystkie hosty</b><br>
-    Dowolny host mo¿e zamontowaæ ten zasób w&nbsp;trybie do odczytu 
-    i&nbsp;zapisu. Je¶li jeste¶ pod³±czony do Internetu, oznacza to, ¿e
-    ktokolwiek z&nbsp;dowolnego miejsca na ¶wiecie mo¿e czytaæ, zapisywaæ
-    i&nbsp;kasowaæ pliki w&nbsp;udostêpnionym katalogu. Korzystaj z tej opcji
-    z&nbsp;ostro¿no¶ci±.
+    Dowolny host moÅ¼e zamontowaÄ‡ ten zasÃ³b w&nbsp;trybie do odczytu 
+    i&nbsp;zapisu. JeÅ›li jesteÅ› podÅ‚Ä…czony do Internetu, oznacza to, Å¼e
+    ktokolwiek z&nbsp;dowolnego miejsca na Å›wiecie moÅ¼e czytaÄ‡, zapisywaÄ‡
+    i&nbsp;kasowaÄ‡ pliki w&nbsp;udostÄ™pnionym katalogu. Korzystaj z tej opcji
+    z&nbsp;ostroÅ¼noÅ›ciÄ….
 <li><b>Wymienione hosty</b><br>
 <if $gconfig{'os_version'} < 7>
-    Z&nbsp;wymienionych poni¿ej hostów i&nbsp;adresów IP mo¿na zamontowaæ
-    ten zasób w&nbsp;trybie do odczytu i&nbsp;zapisu.
+    Z&nbsp;wymienionych poniÅ¼ej hostÃ³w i&nbsp;adresÃ³w IP moÅ¼na zamontowaÄ‡
+    ten zasÃ³b w&nbsp;trybie do odczytu i&nbsp;zapisu.
 <else>
-    Hosty spe³niaj±ce poni¿sze warunki mog± montowaæ ten zasób
-    w&nbsp;trybie do odczytu i&nbsp;zapisu. Mo¿na je podaæ
+    Hosty speÅ‚niajÄ…ce poniÅ¼sze warunki mogÄ… montowaÄ‡ ten zasÃ³b
+    w&nbsp;trybie do odczytu i&nbsp;zapisu. MoÅ¼na je podaÄ‡
     w&nbsp;postaci&nbsp;: <p>
 	<dl>
 	<dt><b>Nazwy hosta lub adresu IP</b> (np. <i>ftp.foo.com</i> lub 
             <i>1.2.3.4</i>)
-	<dd>Spe³nia go host o&nbsp;podanej nazwie lub adresie IP
+	<dd>SpeÅ‚nia go host o&nbsp;podanej nazwie lub adresie IP
 	<dt><b>Grupy sieciowej</b> (np. <i>inzynieria</i>)
-	<dd>Spe³nia go dowolny host bêd±cy cz³onkiem grupy sieciowej
+	<dd>SpeÅ‚nia go dowolny host bÄ™dÄ…cy czÅ‚onkiem grupy sieciowej
 	<dt><b>Domeny DNS-u</b> (np. <i>.foo.com</i>)
-	<dd>Spe³nia go dowolny host w&nbsp;domenie
+	<dd>SpeÅ‚nia go dowolny host w&nbsp;domenie
 	<dt><b>Sieci</b> (np. <i>@10.254.1</i>)
-	<dd>Spe³nia go dowolny host w&nbsp;sieci
-	<dt><b>Sieci z&nbsp;mask±</b> (np. <i>@10.254.1/24</i>)
-	<dd>Spe³nia go dowolny host w&nbsp;sieci
+	<dd>SpeÅ‚nia go dowolny host w&nbsp;sieci
+	<dt><b>Sieci z&nbsp;maskÄ…</b> (np. <i>@10.254.1/24</i>)
+	<dd>SpeÅ‚nia go dowolny host w&nbsp;sieci
 	</dl><p>
-    Dodatkowo, dowoln± z&nbsp;powy¿szych notacji mo¿na poprzedziæ <i>-</i>,
-    co oznacza ¿e host, grupa sieciowa, domena lub sieæ <b>nie</b> mo¿e
-    montowaæ tego zasobu. Mo¿e to byæ przydatne do umo¿liwienia dostêpu dla
-    zbioru hostów z&nbsp;wy³±czeniem jednego jego cz³onka.
+    Dodatkowo, dowolnÄ… z&nbsp;powyÅ¼szych notacji moÅ¼na poprzedziÄ‡ <i>-</i>,
+    co oznacza Å¼e host, grupa sieciowa, domena lub sieÄ‡ <b>nie</b> moÅ¼e
+    montowaÄ‡ tego zasobu. MoÅ¼e to byÄ‡ przydatne do umoÅ¼liwienia dostÄ™pu dla
+    zbioru hostÃ³w z&nbsp;wyÅ‚Ä…czeniem jednego jego czÅ‚onka.
 </if>
 </ul>
 <hr>

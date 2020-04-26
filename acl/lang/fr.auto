@@ -102,7 +102,7 @@ makedn_eoc=Aucune classe d'objets structurelle trouvée!
 makedn_exec=Création du DN parent $1..
 makedn_failed=.. la création a échoué: $1 
 makedn_still=Certains problèmes ont été détectés même après la création du DN: $1 
-schema_desc=Avant que Webmin puisse utiliser un serveur LDAP pour stocker des utilisateurs et des groupes, il doit être configuré pour utiliser le schéma ci-dessous. Cela peut généralement être fait en enregistrant la définition de schéma dans <tt>/ etc / ldap / schema</tt> ou <tt>/ etc / openldap / schema</tt> sous <tt>webmin.schema</tt>, puis en configurant le serveur pour charger ce fichier de schéma.
+schema_desc=Avant que Webmin puisse utiliser un serveur LDAP pour stocker des utilisateurs et des groupes, il doit être configuré pour utiliser le schéma ci-dessous. Cela peut généralement être fait en enregistrant la définition de schéma dans <tt>/etc/ldap/schema</tt> ou <tt>/etc/openldap/schema</tt> sous <tt>webmin.schema</tt>, puis en configurant le serveur pour charger ce fichier de schéma.
 schema_download=Téléchargez le fichier de schéma: <a href=$1>$1</a>
 twofactor_err=Impossible de configurer l'authentification à deux facteurs
 twofactor_euser=Votre utilisateur Webmin est introuvable!

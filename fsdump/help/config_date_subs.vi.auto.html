@@ -1,0 +1,126 @@
+<header> Do strftime thay thế các điểm đến dự phòng? </header> Nếu tùy chọn này được đặt thành <b>Có</b> , các mã như%d,%m,%Y và%u có thể được sử dụng trong tên tệp đích sao lưu. Chúng sẽ được thay thế bằng ngày, tháng năm và ngày trong tuần khi sao lưu được thực hiện. Điều này rất hữu ích nếu bạn muốn lưu một bản sao lưu khác nhau mỗi ngày, để bạn có thể đưa một hệ thống trở lại ngày trước đó. <p> Một số mã khác có thể được sử dụng là: <br><pre> <font size=-1>
+ %a Tên ngày trong tuần viết tắt theo cur
+        thuê địa phương.
+
+ %A Tên ngày trong tuần theo hiện tại
+        miền địa phương.
+
+ %b Tên tháng viết tắt theo hiện tại
+        miền địa phương.
+
+ %B Tên đầy đủ theo hiện tại
+        miền địa phương.
+
+ %c Đại diện ngày và thời gian ưa thích cho
+        miền địa phương hiện tại.
+
+ %C Số thế kỷ (năm / 100) dưới dạng số nguyên 2 chữ số.
+
+ %d Ngày trong tháng dưới dạng số thập phân (phạm vi 01
+        đến 31).
+
+ %e Thích%d, ngày trong tháng dưới dạng số thập phân,
+        nhưng một số 0 đứng đầu được thay thế bằng một khoảng trắng.
+
+ %E Modifier: sử dụng định dạng thay thế, xem bên dưới.
+
+ %G Năm ISO 8601 với thế kỷ là số thập phân.
+        Năm có 4 chữ số tương ứng với số tuần ISO
+        ber (xem%V). Điều này có cùng định dạng và giá trị
+        là%y, ngoại trừ nếu số tuần ISO
+        đến năm trước hoặc năm sau, năm đó được sử dụng
+        thay thế.
+
+ %g Thích%G, nhưng không có thế kỷ, nghĩa là có 2 chữ số
+        năm (00-99).
+
+ %h Tương đương với%b.
+
+ %H Giờ dưới dạng số thập phân sử dụng đồng hồ 24 giờ
+        (phạm vi 00 đến 23).
+
+ %I Giờ dưới dạng số thập phân sử dụng đồng hồ 12 giờ
+        (phạm vi từ 01 đến 12).
+
+ %j Ngày trong năm dưới dạng số thập phân (phạm vi 001
+        đến 366).
+
+ %k Giờ (đồng hồ 24 giờ) dưới dạng số thập phân (phạm vi
+        0 đến 23); các chữ số duy nhất được đi trước bởi một khoảng trống.
+        (Xem thêm%H.)
+
+ %l Giờ (đồng hồ 12 giờ) dưới dạng số thập phân (phạm vi
+        1 đến 12); các chữ số duy nhất được đi trước bởi một khoảng trống.
+        (Xem thêm%I.)
+
+ %m Tháng dưới dạng số thập phân (phạm vi từ 01 đến 12).
+
+ %M Số phút dưới dạng số thập phân (phạm vi 00 đến 59).
+
+ %n Một ký tự dòng mới.
+
+ %O Modifier: sử dụng định dạng thay thế, xem bên dưới.
+
+ %p Hoặc là &#39;AM&#39; hoặc` PM &#39;theo thời gian đã cho
+        hoặc các chuỗi tương ứng cho hiện tại
+        miền địa phương. Buổi trưa được coi là &#39;chiều&#39; và nửa đêm là
+        &#39;am&#39;.
+
+ %P Thích%p nhưng viết thường: `am &#39;hoặc` pm&#39; hoặc corre
+        chuỗi sponding cho miền địa phương hiện tại.
+
+ %r Thời gian trong ký hiệu sáng hoặc chiều. Trong POSIX
+        miền địa phương này tương đương với `%I:%M:%S%p &#39;.
+
+ %R Thời gian trong ký hiệu 24 giờ (%H:%M). Cho một
+        phiên bản bao gồm cả giây, xem%T bên dưới.
+
+ %s Số giây kể từ Kỷ nguyên, tức là kể từ
+        1970-01-01 00:00:00 UTC.
+
+ %S Số thứ hai dưới dạng số thập phân (phạm vi 00 đến 61).
+
+ %t Một ký tự tab.
+
+ %T Thời gian trong ký hiệu 24 giờ (%H:%M:%S).
+
+ %u Ngày trong tuần dưới dạng thập phân, từ 1 đến 7,
+        Thứ hai là 1. Xem thêm%w.
+
+ %U Số tuần của năm hiện tại dưới dạng thập phân
+        số, phạm vi từ 00 đến 53, bắt đầu bằng số đầu tiên
+        Chủ nhật là ngày đầu tiên của tuần 01. Xem thêm%V và
+        %W.
+
+ %V Số tuần ISO 8601: 1988 của năm hiện tại
+        dưới dạng số thập phân, phạm vi từ 01 đến 53, trong đó tuần 1
+        là tuần đầu tiên có ít nhất 4 ngày trong
+        năm hiện tại và với thứ hai là ngày đầu tiên của
+        tuần. Xem thêm%U và%W.
+
+ %w Ngày trong tuần dưới dạng thập phân, từ 0 đến 6,
+        Chủ nhật là 0. Xem thêm%u.
+
+ %W Số tuần của năm hiện tại dưới dạng thập phân
+        số, phạm vi từ 00 đến 53, bắt đầu bằng số đầu tiên
+        Thứ hai là ngày đầu tuần 01.
+
+ %x Đại diện ngày ưa thích cho hiện tại
+        miền địa phương không có thời gian
+
+ %X Biểu diễn thời gian ưa thích cho hiện tại
+        miền địa phương không có ngày
+
+ %y Năm là số thập phân không có thế kỷ
+        (phạm vi 00 đến 99).
+
+ %Y Năm là số thập phân bao gồm cả thế kỷ.
+
+ %z Múi giờ tính theo giờ từ GMT. Bắt buộc
+        phát ra ngày tuân thủ RFC822 (sử dụng &quot;%a,%d%b%Y
+        %H:%M:%S%z &quot;).
+
+ %Z Múi giờ hoặc tên hoặc viết tắt.
+
+ %%Một ký tự `% &#39;theo nghĩa đen.
+</font> </pre><footer>

@@ -3,19 +3,19 @@
 <center><tt>unknown_hostname_reject_code</tt></center>
 <hr>
 
-Aquest par‡metre especifica el codi de resposta del servidor SMTP quan un
-viola la restricciÛ <tt>reject_unknown_hostname</tt>, aixÚ Ès:
+Aquest par√†metre especifica el codi de resposta del servidor SMTP quan un
+viola la restricci√≥ <tt>reject_unknown_hostname</tt>, aix√≤ √©s:
 
-<i>AccÈs denegat: Nom de host HELO del client desconegut (sense registre DNS A o MX).</i><br>
+<i>Acc√©s denegat: Nom de host HELO del client desconegut (sense registre DNS A o MX).</i><br>
 <br>
 Tingues en compte que el valor per defecte utilitzat per postfix per a
-<tt>unknown_hostname_reject_code</tt> Ès el codi 501, i aquest codi en
-l'est‡ndard RFC 822 voldria dir 'Error de sintaxi en els par‡metres o arguments'.
-AixÌ, en Postfix, un codi d'estat 501 no reflecteix exactament l'explicaciÛ de RFC822.<br>
+<tt>unknown_hostname_reject_code</tt> √©s el codi 501, i aquest codi en
+l'est√†ndard RFC 822 voldria dir 'Error de sintaxi en els par√†metres o arguments'.
+Aix√≠, en Postfix, un codi d'estat 501 no reflecteix exactament l'explicaci√≥ de RFC822.<br>
 <p>
 Per evitar confusions pots canviar-ho, per exemple, pel 577 (un altre motiu 
-Ès que el codi 501 tambÈ Ès el valor per defecte de postfix d'altres menes
-d'errors), altrament no ho canviÔs si no tens un complet coneixement de 
+√©s que el codi 501 tamb√© √©s el valor per defecte de postfix d'altres menes
+d'errors), altrament no ho canvi√Øs si no tens un complet coneixement de 
 RFC 822.
 </p>
 

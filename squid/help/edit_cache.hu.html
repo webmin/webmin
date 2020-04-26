@@ -1,48 +1,48 @@
-<header>Gyorstár beállítások; fordította: Szakács Gergely</header><p>
+<header>GyorstÃ¡r beÃ¡llÃ­tÃ¡sok; fordÃ­totta: SzakÃ¡cs Gergely</header><p>
 
-<b>A gyorstár könyvtárai</b>: Több elérési útvonalat is megadhat, hogy a gyorstárat különbözõ partíciókon ossza fel.<p>
+<b>A gyorstÃ¡r kÃ¶nyvtÃ¡rai</b>: TÃ¶bb elÃ©rÃ©si Ãºtvonalat is megadhat, hogy a gyorstÃ¡rat kÃ¼lÃ¶nbÃ¶zÅ‘ partÃ­ciÃ³kon ossza fel.<p>
 
-A <em>könyvtár</em> egy felsõ szintû könyvtár, ahol a gyorstár lapozófájljai vannak tárolva. Ha a gyorstárnak egy teljes merevlemezt szán, úgy ez lehet a mountolási pont könyvtára. A könyvtárnak léteznie kell, és hozzáférhetõvé kell tenni a Squid számára. A Squid NEM fogja automatikusan létrehozni ezt a könyvtárat.<p>
+A <em>kÃ¶nyvtÃ¡r</em> egy felsÅ‘ szintÅ± kÃ¶nyvtÃ¡r, ahol a gyorstÃ¡r lapozÃ³fÃ¡jljai vannak tÃ¡rolva. Ha a gyorstÃ¡rnak egy teljes merevlemezt szÃ¡n, Ãºgy ez lehet a mountolÃ¡si pont kÃ¶nyvtÃ¡ra. A kÃ¶nyvtÃ¡rnak lÃ©teznie kell, Ã©s hozzÃ¡fÃ©rhetÅ‘vÃ© kell tenni a Squid szÃ¡mÃ¡ra. A Squid NEM fogja automatikusan lÃ©trehozni ezt a kÃ¶nyvtÃ¡rat.<p>
 
-A <em>méret</em> az e könyvtáron belül felhasználható lemezterületet (MB) határozza meg. Alapértelmezés szerint ez az érték 100 MB. Tetszés szerint változtassa meg a konfigurációjának megfelelõ értékre.<p>
+A <em>mÃ©ret</em> az e kÃ¶nyvtÃ¡ron belÃ¼l felhasznÃ¡lhatÃ³ lemezterÃ¼letet (MB) hatÃ¡rozza meg. AlapÃ©rtelmezÃ©s szerint ez az Ã©rtÃ©k 100 MB. TetszÃ©s szerint vÃ¡ltoztassa meg a konfigurÃ¡ciÃ³jÃ¡nak megfelelÅ‘ Ã©rtÃ©kre.<p>
 
-Az <em>elsõ szintû könyvtárak</em> a <em>felsõ szintû könyvtár</em> alatt létrehozandó elsõ szintû könyvtárak számát határozzák meg.  Az alapértelmezett érték 16.<p>
+Az <em>elsÅ‘ szintÅ± kÃ¶nyvtÃ¡rak</em> a <em>felsÅ‘ szintÅ± kÃ¶nyvtÃ¡r</em> alatt lÃ©trehozandÃ³ elsÅ‘ szintÅ± kÃ¶nyvtÃ¡rak szÃ¡mÃ¡t hatÃ¡rozzÃ¡k meg.  Az alapÃ©rtelmezett Ã©rtÃ©k 16.<p>
 
-A <em>másodszintû könyvtárak</em> az elsõ szintû könyvtárak mindegyike alatt létrehozandó másodszintû könyvtárak számát határozzák meg. Az alapértelmezett érték 256.<p>
+A <em>mÃ¡sodszintÅ± kÃ¶nyvtÃ¡rak</em> az elsÅ‘ szintÅ± kÃ¶nyvtÃ¡rak mindegyike alatt lÃ©trehozandÃ³ mÃ¡sodszintÅ± kÃ¶nyvtÃ¡rak szÃ¡mÃ¡t hatÃ¡rozzÃ¡k meg. Az alapÃ©rtelmezett Ã©rtÃ©k 256.<p>
 
-<b>Átlagos objektumméret</em>: Alapértelmezés szerint 13 kB. Az átlagos objektumméret a gyorstár által tárolt objektumok maximumának becslésére szolgál.<p>
+<b>Ãtlagos objektummÃ©ret</em>: AlapÃ©rtelmezÃ©s szerint 13 kB. Az Ã¡tlagos objektummÃ©ret a gyorstÃ¡r Ã¡ltal tÃ¡rolt objektumok maximumÃ¡nak becslÃ©sÃ©re szolgÃ¡l.<p>
 
-<b>Egy tárolóban foglalt objektumok</b>: Alapértelmezés szerint 50. A hash táblában foglalt tárolónkénti objektumok célszáma. Az érték csökkentése növeli a tárolók teljes számát, csakúgy, mint a tárhely karbantartási rátáját.<p>
+<b>Egy tÃ¡rolÃ³ban foglalt objektumok</b>: AlapÃ©rtelmezÃ©s szerint 50. A hash tÃ¡blÃ¡ban foglalt tÃ¡rolÃ³nkÃ©nti objektumok cÃ©lszÃ¡ma. Az Ã©rtÃ©k csÃ¶kkentÃ©se nÃ¶veli a tÃ¡rolÃ³k teljes szÃ¡mÃ¡t, csakÃºgy, mint a tÃ¡rhely karbantartÃ¡si rÃ¡tÃ¡jÃ¡t.<p>
 
-<b>Az ACL-ekhez ne tároljon URL-eket</b>: Alapértelmezés szerint nem. Válassza ki azon ACL-eleket, amelyekhez nem akarja az adatok gyorstárazását. Ez leginkább akkor hasznos, ha egy belsõ webkiszolgáló gyorstárazását akarja megelõzni.<p>
+<b>Az ACL-ekhez ne tÃ¡roljon URL-eket</b>: AlapÃ©rtelmezÃ©s szerint nem. VÃ¡lassza ki azon ACL-eleket, amelyekhez nem akarja az adatok gyorstÃ¡razÃ¡sÃ¡t. Ez leginkÃ¡bb akkor hasznos, ha egy belsÅ‘ webkiszolgÃ¡lÃ³ gyorstÃ¡razÃ¡sÃ¡t akarja megelÅ‘zni.<p>
 
-<b>Maximális idõ a gyorstárban</b>: Alapértelmezés szerint 1 év. Ha ezt az értéket pl. 'egy hétre' állítja, úgy a gyorstárban tárolt objektumok törlõdnek, ha legalább egy hétig nem fért hozzájuk senki.<p>
+<b>MaximÃ¡lis idÅ‘ a gyorstÃ¡rban</b>: AlapÃ©rtelmezÃ©s szerint 1 Ã©v. Ha ezt az Ã©rtÃ©ket pl. 'egy hÃ©tre' Ã¡llÃ­tja, Ãºgy a gyorstÃ¡rban tÃ¡rolt objektumok tÃ¶rlÅ‘dnek, ha legalÃ¡bb egy hÃ©tig nem fÃ©rt hozzÃ¡juk senki.<p>
 
-<b>Sikertelen kérés ideje a gyorstárban</b>: Alapértelmezés szerint 5 perc lejárati idõ (TTL). Bizonyos hibatípusok (pl. "a kapcsolat elutasítva" és "404 nincs megjeleníthetõ oldal") negatívan kerülnek a gyorstárba egy meghatározott ideig. Fontos, hogy ez különbözik a DNS-keresések negatív gyorstárazásától.<p>
+<b>Sikertelen kÃ©rÃ©s ideje a gyorstÃ¡rban</b>: AlapÃ©rtelmezÃ©s szerint 5 perc lejÃ¡rati idÅ‘ (TTL). Bizonyos hibatÃ­pusok (pl. "a kapcsolat elutasÃ­tva" Ã©s "404 nincs megjelenÃ­thetÅ‘ oldal") negatÃ­van kerÃ¼lnek a gyorstÃ¡rba egy meghatÃ¡rozott ideig. Fontos, hogy ez kÃ¼lÃ¶nbÃ¶zik a DNS-keresÃ©sek negatÃ­v gyorstÃ¡razÃ¡sÃ¡tÃ³l.<p>
 
-<b>DNS-keresések ideje a gyorstárban</b>: Alapértelmezés szerint 6 óra (360 perc). A sikeres DNS-keresések  pozitív gyorstárazásának lejárati ideje (TTL). Ha minimalizálni akarja a Squid ipcache használatát, 0 helyett állítsa ezt az értéket 1-re.<p>
+<b>DNS-keresÃ©sek ideje a gyorstÃ¡rban</b>: AlapÃ©rtelmezÃ©s szerint 6 Ã³ra (360 perc). A sikeres DNS-keresÃ©sek  pozitÃ­v gyorstÃ¡razÃ¡sÃ¡nak lejÃ¡rati ideje (TTL). Ha minimalizÃ¡lni akarja a Squid ipcache hasznÃ¡latÃ¡t, 0 helyett Ã¡llÃ­tsa ezt az Ã©rtÃ©ket 1-re.<p>
 
-<b>Sikertelen DNS ideje a gyorstárban</b>: Alapértelmezés szerint 5 perc. A sikertelen DNS-keresések negatív gyorstárazásának lejárati ideje (TTL).<p>
+<b>Sikertelen DNS ideje a gyorstÃ¡rban</b>: AlapÃ©rtelmezÃ©s szerint 5 perc. A sikertelen DNS-keresÃ©sek negatÃ­v gyorstÃ¡razÃ¡sÃ¡nak lejÃ¡rati ideje (TTL).<p>
 
-<b>Kapcsolódási holtidõ</b>: Alapértelmezés szerint 120 másodperc. Bizonyos rendszerek (nevezetesen a Linux) nem kezelik megbízhatóan a connect(2) kérések holtidejét. Ezért a Squid folyamat saját holtidejét alkalmazza a kiszolgálóhoz való kapcsolódáskor. Ez a paraméter meghatározza a kapcsolat létrejöttéig várandó idõtartamot.<p>
+<b>KapcsolÃ³dÃ¡si holtidÅ‘</b>: AlapÃ©rtelmezÃ©s szerint 120 mÃ¡sodperc. Bizonyos rendszerek (nevezetesen a Linux) nem kezelik megbÃ­zhatÃ³an a connect(2) kÃ©rÃ©sek holtidejÃ©t. EzÃ©rt a Squid folyamat sajÃ¡t holtidejÃ©t alkalmazza a kiszolgÃ¡lÃ³hoz valÃ³ kapcsolÃ³dÃ¡skor. Ez a paramÃ©ter meghatÃ¡rozza a kapcsolat lÃ©trejÃ¶ttÃ©ig vÃ¡randÃ³ idÅ‘tartamot.<p>
 
-<b>Beolvasási holtidõ</b>: Alapértelmezés szerint 15 perc. A read_timeout kiszolgáló-oldali kapcsolatoknál kerül alkalmazásra. Minden sikeres beolvasást követõen a holtidõhöz hozzáadódik ez az intervallum. Ha az intervallum letelte után semmilyen adat nem kerül beolvasásra, úgy a kiszolgáló elutasítja a kérést, és bejegyzést tesz az ERR_READ_TIMEOUT-ba.<p>
+<b>BeolvasÃ¡si holtidÅ‘</b>: AlapÃ©rtelmezÃ©s szerint 15 perc. A read_timeout kiszolgÃ¡lÃ³-oldali kapcsolatoknÃ¡l kerÃ¼l alkalmazÃ¡sra. Minden sikeres beolvasÃ¡st kÃ¶vetÅ‘en a holtidÅ‘hÃ¶z hozzÃ¡adÃ³dik ez az intervallum. Ha az intervallum letelte utÃ¡n semmilyen adat nem kerÃ¼l beolvasÃ¡sra, Ãºgy a kiszolgÃ¡lÃ³ elutasÃ­tja a kÃ©rÃ©st, Ã©s bejegyzÃ©st tesz az ERR_READ_TIMEOUT-ba.<p>
 
-<b>Site kiválasztási holtidõ</b>: Alapértelmezés szerint 4 másodperc.<p>
+<b>Site kivÃ¡lasztÃ¡si holtidÅ‘</b>: AlapÃ©rtelmezÃ©s szerint 4 mÃ¡sodperc.<p>
 
-<b>Kliens-kérési holtidõ</b>: Alapértelmezés szerint 15 perc. A read_timeout kiszolgáló-oldali kapcsolatoknák kerül alkalmazásra. Minden sikeres beolvasást követõen a holtidõhöz hozzáadódik ez az intervallum. Ha az intervallum letelte után semmilyen adat nem kerül beolvasásra, úgy a kiszolgáló elutasítja a kérést, és bejegyzést tesz az ERR_READ_TIMEOUT-ba.<p>
+<b>Kliens-kÃ©rÃ©si holtidÅ‘</b>: AlapÃ©rtelmezÃ©s szerint 15 perc. A read_timeout kiszolgÃ¡lÃ³-oldali kapcsolatoknÃ¡k kerÃ¼l alkalmazÃ¡sra. Minden sikeres beolvasÃ¡st kÃ¶vetÅ‘en a holtidÅ‘hÃ¶z hozzÃ¡adÃ³dik ez az intervallum. Ha az intervallum letelte utÃ¡n semmilyen adat nem kerÃ¼l beolvasÃ¡sra, Ãºgy a kiszolgÃ¡lÃ³ elutasÃ­tja a kÃ©rÃ©st, Ã©s bejegyzÃ©st tesz az ERR_READ_TIMEOUT-ba.<p>
 
-<b>Kliensek maximális csatlakozási ideje</b>: Alapértelmezés szerint 1 nap. A maximális idõtartam, ameddig egy kliens (böngészõ) szünetmentesen kapcsolódhat a gyorstárhoz. Ez megelõzi, hogy a gyorstárban több csatoló (így több fájlleíró) várakozzon CLOSE_WAIT állapotban, olyan távoli kliensektõl, amelyek helytelenül válnak le a kiszolgálóról (hálózati hiba, vagy helytelen kliens-oldali beállítások miatt).<p>
+<b>Kliensek maximÃ¡lis csatlakozÃ¡si ideje</b>: AlapÃ©rtelmezÃ©s szerint 1 nap. A maximÃ¡lis idÅ‘tartam, ameddig egy kliens (bÃ¶ngÃ©szÅ‘) szÃ¼netmentesen kapcsolÃ³dhat a gyorstÃ¡rhoz. Ez megelÅ‘zi, hogy a gyorstÃ¡rban tÃ¶bb csatolÃ³ (Ã­gy tÃ¶bb fÃ¡jlleÃ­rÃ³) vÃ¡rakozzon CLOSE_WAIT Ã¡llapotban, olyan tÃ¡voli kliensektÅ‘l, amelyek helytelenÃ¼l vÃ¡lnak le a kiszolgÃ¡lÃ³rÃ³l (hÃ¡lÃ³zati hiba, vagy helytelen kliens-oldali beÃ¡llÃ­tÃ¡sok miatt).<p>
 
-<b>Maximális leállási idõ</b>: Alapértelmezés szerint 30 másodperc. Amikor SIGTERM vagy SIGHUP érkezik, a gyorstár "leállás folyamatban" üzemmódba kerül, míg az összes aktív csatoló le nem zárul. Ez az érték az összes megnyitott leíróra érvényes a leállási üzemmód alatt. Ezen intervallum letelte után minden aktív kliens 'holtidõ' üzenetet fog kapni.<p>
+<b>MaximÃ¡lis leÃ¡llÃ¡si idÅ‘</b>: AlapÃ©rtelmezÃ©s szerint 30 mÃ¡sodperc. Amikor SIGTERM vagy SIGHUP Ã©rkezik, a gyorstÃ¡r "leÃ¡llÃ¡s folyamatban" Ã¼zemmÃ³dba kerÃ¼l, mÃ­g az Ã¶sszes aktÃ­v csatolÃ³ le nem zÃ¡rul. Ez az Ã©rtÃ©k az Ã¶sszes megnyitott leÃ­rÃ³ra Ã©rvÃ©nyes a leÃ¡llÃ¡si Ã¼zemmÃ³d alatt. Ezen intervallum letelte utÃ¡n minden aktÃ­v kliens 'holtidÅ‘' Ã¼zenetet fog kapni.<p>
 
-<b>Félig lezárt kliensek</b>:  Alapértelmezés szerint bekapcsolva. Egyes kliensek lezárhatják a TCP-kapcsolat küldõ oldalát, míg a fogadó oldal nyitva marad. Némelykor a Squid képtelen különbséget tenni egy félig lezárt és egy teljesen lezárt TCP-kapcsolat között. Alapértelmezés szerint a félig lezárt kapcsolatok nyitva maradnak, míg a csatoló egy read(2), vagy write(2) kérése hibaüzenetet nem küld vissza. Ha ezt az opciót kikapcsolja, úgy a Squid azonnal lezárja a kliens kapcsolatát, amint egy read(2) kérésre "nincs beolvasandó adat" válasz érkezik.<p>
+<b>FÃ©lig lezÃ¡rt kliensek</b>:  AlapÃ©rtelmezÃ©s szerint bekapcsolva. Egyes kliensek lezÃ¡rhatjÃ¡k a TCP-kapcsolat kÃ¼ldÅ‘ oldalÃ¡t, mÃ­g a fogadÃ³ oldal nyitva marad. NÃ©melykor a Squid kÃ©ptelen kÃ¼lÃ¶nbsÃ©get tenni egy fÃ©lig lezÃ¡rt Ã©s egy teljesen lezÃ¡rt TCP-kapcsolat kÃ¶zÃ¶tt. AlapÃ©rtelmezÃ©s szerint a fÃ©lig lezÃ¡rt kapcsolatok nyitva maradnak, mÃ­g a csatolÃ³ egy read(2), vagy write(2) kÃ©rÃ©se hibaÃ¼zenetet nem kÃ¼ld vissza. Ha ezt az opciÃ³t kikapcsolja, Ãºgy a Squid azonnal lezÃ¡rja a kliens kapcsolatÃ¡t, amint egy read(2) kÃ©rÃ©sre "nincs beolvasandÃ³ adat" vÃ¡lasz Ã©rkezik.<p>
 
-<b>Tartós holtidõ</b>: Alapértelmezés szerint 120 másodperc. Kliensek, kiszolgálók és egyéb proxy-k tartós tétlen kapcsolatának holtideje. A tartós kapcsolatok letilthatók az opció 10 másodpercnél alacsonyabb értékre állításával.<p>
+<b>TartÃ³s holtidÅ‘</b>: AlapÃ©rtelmezÃ©s szerint 120 mÃ¡sodperc. Kliensek, kiszolgÃ¡lÃ³k Ã©s egyÃ©b proxy-k tartÃ³s tÃ©tlen kapcsolatÃ¡nak holtideje. A tartÃ³s kapcsolatok letilthatÃ³k az opciÃ³ 10 mÃ¡sodpercnÃ©l alacsonyabb Ã©rtÃ©kre Ã¡llÃ­tÃ¡sÃ¡val.<p>
 
-<b>WAIS továbbítógazda</b>: Alapértelmezés szerint nincs. A gazdanév, illetve a cím, amelyre a WAIS kérések továbbítandók.<p>
+<b>WAIS tovÃ¡bbÃ­tÃ³gazda</b>: AlapÃ©rtelmezÃ©s szerint nincs. A gazdanÃ©v, illetve a cÃ­m, amelyre a WAIS kÃ©rÃ©sek tovÃ¡bbÃ­tandÃ³k.<p>
 
-<b>WAIS továbbítóport</b>: Alapértelmezés szerint nincs. A port, amelyre a WAIS kérések továbbítandók.
+<b>WAIS tovÃ¡bbÃ­tÃ³port</b>: AlapÃ©rtelmezÃ©s szerint nincs. A port, amelyre a WAIS kÃ©rÃ©sek tovÃ¡bbÃ­tandÃ³k.
 
 <hr>
  

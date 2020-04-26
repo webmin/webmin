@@ -1,23 +1,23 @@
-<header>Resposta del servidor SMTP a la violaciÛ de fqdn</header>
+<header>Resposta del servidor SMTP a la violaci√≥ de fqdn</header>
 
 <center><tt>non_fqdn_reject_code</tt></center>
 <hr>
 
-Aquest par‡metre especifica el codi de resposta del servidor SMTP quan un correu
+Aquest par√†metre especifica el codi de resposta del servidor SMTP quan un correu
 viola la regla <tt>reject_non_fqdn_hostname</tt>, o la
 <tt>reject_non_fqdn_sender</tt>, o la <tt>reject_non_fqdn_recipient</tt>,
 que pot ser:<br>
-<i>AccÈs denegat: Domini inv‡lid per al nom de host, adreÁa e-mail del 
+<i>Acc√©s denegat: Domini inv√†lid per al nom de host, adre√ßa e-mail del 
 remitent o destinatari HELO client (no FQDN)</i><br>
 <br>
 Tingues en compte que el valor per defecte de postfix utilitzat per a
-<tt>non_fqdn_reject_code</tt> Ès el codi 504, i aquest codi en l'est‡ndard
-RFC 822 voldria dir 'Par‡metre de l'ordre no implementat'.
-AixÌ, amb Postfix, una violaciÛ de la regla <tt>non_fqdn_reject_code</tt>
-no reflecteix exactament l'explicaciÛ RFC822 del codi informat.<br>
+<tt>non_fqdn_reject_code</tt> √©s el codi 504, i aquest codi en l'est√†ndard
+RFC 822 voldria dir 'Par√†metre de l'ordre no implementat'.
+Aix√≠, amb Postfix, una violaci√≥ de la regla <tt>non_fqdn_reject_code</tt>
+no reflecteix exactament l'explicaci√≥ RFC822 del codi informat.<br>
 <p>
-Per evitar la confusiÛ, pots canviar-ho, per exemple, pel codi 578, 
-altrament no ho canviÔs si no tens un complet coneixement de RFC 822.
+Per evitar la confusi√≥, pots canviar-ho, per exemple, pel codi 578, 
+altrament no ho canvi√Øs si no tens un complet coneixement de RFC 822.
 </p>
 
 <hr>

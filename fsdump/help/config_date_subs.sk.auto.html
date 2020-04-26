@@ -1,0 +1,126 @@
+<header> Dohodne záloha náhrady za zálohy? </header> Ak je táto možnosť nastavená na <b>Áno</b> , v cieľovom súbore zálohy sa dajú použiť kódy ako%d,%m,%Y a%u. Po vykonaní zálohy sa tieto nahradia dňom, mesiacom a dňom v týždni. Je to užitočné, ak chcete každý deň uložiť inú zálohu, aby ste mohli systém vrátiť späť k predchádzajúcemu dátumu. <p> Niektoré z ďalších kódov, ktoré možno použiť, sú: <br><pre> <font size=-1>
+ %a Skrátený názov dňa v týždni podľa kurzora
+        nájomné miesto.
+
+ %A Celý názov dňa v týždni podľa aktuálneho dňa
+        locale.
+
+ %b Skrátený názov mesiaca podľa aktuálneho stavu
+        locale.
+
+ %B Celý mesiac podľa aktuálneho názvu
+        locale.
+
+ %c Uprednostňovaná reprezentácia dátumu a času pre
+        aktuálne miestne nastavenie.
+
+ %C Číslo storočia (rok / 100) ako dvojciferné celé číslo.
+
+ %d Deň v mesiaci ako desatinné číslo (rozsah 01
+        až 31).
+
+ %e Rovnako ako%d, deň v mesiaci ako desatinné číslo,
+        ale počiatočná nula je nahradená medzerou.
+
+ %E modifikátor: použite alternatívny formát, pozri nižšie.
+
+ %G ISO 8601 rok so storočím ako desatinné číslo.
+        Štvormiestny rok zodpovedajúci číslu ISO týždňa
+        ber (pozri%V). Má rovnaký formát a hodnotu
+        ako%y, okrem prípadu, ak číslo týždňa ISO patrí
+        do predchádzajúceho alebo nasledujúceho roku sa používa tento rok
+        miesto.
+
+ %g Rovnako ako%G, ale bez storočia, tj s dvojciferným číslom
+        rok (00 - 99).
+
+ %h Zodpovedá%b.
+
+ %H Hodina ako desatinné číslo pomocou 24 hodín
+        (rozsah 00 až 23).
+
+ %I Hodina ako desatinné číslo pomocou 12-hodinových hodín
+        (rozsah 01 až 12).
+
+ %j Deň v roku ako desatinné číslo (rozsah 001
+        až 366).
+
+ %k Hodina (24-hodinové hodiny) ako desatinné číslo (rozsah
+        0 až 23); pred jednotlivými číslicami sa uvádza medzera.
+        (Pozri tiež%H.)
+
+ %l Hodina (12-hodinové hodiny) ako desatinné číslo (rozsah
+        1 až 12); pred jednotlivými číslicami sa uvádza medzera.
+        (Pozri tiež%I.)
+
+ %m Mesiac ako desatinné číslo (rozsah 01 až 12).
+
+ %M Minúta ako desatinné číslo (rozsah 00 až 59).
+
+ %n Znak nového riadku.
+
+ %O Modifier: použite alternatívny formát, viď nižšie.
+
+ %p Buď „AM“ alebo „PM“ podľa daného času
+        hodnota alebo zodpovedajúce reťazce aktuálnej hodnoty
+        locale. Poludnie sa považuje za „pm“ a polnoci ako
+        `Som &#39;.
+
+ %P Rovnako ako%p, ale malými písmenami: „am“ alebo „pm“ alebo korekcia
+        spondingový reťazec pre aktuálne miestne nastavenie.
+
+ %r Čas v zápise o am alebo pm. V POSIX
+        locale to zodpovedá `%I:%M:%S%p &#39;.
+
+ %R Čas v 24-hodinovom zázname (%H:%M). Pre
+        verzia vrátane sekúnd, pozri%T nižšie.
+
+ %s Počet sekúnd od epochy, tj od roku
+        1970-01-01 00:00:00 UTC.
+
+ %S Druhé ako desatinné číslo (rozsah 00 až 61).
+
+ %t Znak na karte.
+
+ %T Čas v 24-hodinovom zázname (%H:%M:%S).
+
+ %u Deň v týždni ako desatinné miesto, rozsah 1 až 7,
+        Pondelok je 1. Pozri tiež%w.
+
+ %U Číslo týždňa v aktuálnom roku ako desatinné miesto
+        číslo, rozsah 00 až 53, počnúc prvým
+        Nedeľa ako prvý deň v týždni 01. Pozri tiež%V a
+        %W.
+
+ %V Číslo ISO 8601: 1988 týždňa bežného roka
+        ako desatinné číslo v rozsahu od 01 do 53, pričom týždeň 1
+        je prvý týždeň, ktorý má najmenej 4 dni v roku 2006
+        bežný rok a pondelok ako prvý deň roku 2007
+        týždeň. Pozri tiež%U a%W.
+
+ %w deň v týždni ako desatinné miesto, rozsah 0 až 6,
+        Nedeľa je 0. Pozri tiež%u.
+
+ %W Číslo týždňa bežného roka ako desatinné miesto
+        číslo, rozsah 00 až 53, počnúc prvým
+        Pondelok ako prvý deň v týždni 01.
+
+ %x Preferovaná reprezentácia dátumu pre aktuálny
+        lokalizovať bez času.
+
+ %X Preferované časové znázornenie aktuálneho stavu
+        miestne nastavenie bez dátumu.
+
+ %y Rok ako desatinné číslo bez storočia
+        (rozsah 00 až 99).
+
+ %Y Rok ako desatinné číslo vrátane storočia.
+
+ %z Časové pásmo ako časový posun od GMT. Vyžaduje sa
+        vyžarujú dátumy vyhovujúce RFC822 (pomocou &quot;%a,%d%b%Y&quot;)
+        %H:%M:%S%z &quot;).
+
+ %Z Časové pásmo alebo názov alebo skratka.
+
+ %%Doslovný znak%.
+</font> </pre><footer>

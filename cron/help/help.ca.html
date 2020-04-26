@@ -1,71 +1,71 @@
 <body bgcolor=#ffffff>
-<title>PlanificaciÛ d'Ordres  Treballs</title>
+<title>Planificaci√≥ d'Ordres  Treballs</title>
 <center><img src="images/cron.gif"></center><br>
-<h2><i>Aquesta p‡gina d'ajuda Ès incompleta</i></h2>
+<h2><i>Aquesta p√†gina d'ajuda √©s incompleta</i></h2>
 <hr>
-<h3>IntroducciÛ</h3>
-Aquest mÚdul es pot utilitzar per configurar ordres que s'executen
-autom‡ticament en hores especificades. Utilitza el dimoni est‡ndard
+<h3>Introducci√≥</h3>
+Aquest m√≤dul es pot utilitzar per configurar ordres que s'executen
+autom√†ticament en hores especificades. Utilitza el dimoni est√†ndard
 de Unix <tt>cron</tt>, que pot executar ordres com a usuaris diferents
 en minuts, hores, dies del mes, dies de la setmana i mesos de l'any
-seleccionats. Cada treball Ès propietat d'un usuari, i quan s'executa
+seleccionats. Cada treball √©s propietat d'un usuari, i quan s'executa
 ho fa amb els permisos d'aquest usuari. <p>
 
-La p‡gina principal del mÚdul llista tots els treballs planificats
-coneguts, agrupats per l'usuari d'execuciÛ. Alguns sistemes tindran
+La p√†gina principal del m√≤dul llista tots els treballs planificats
+coneguts, agrupats per l'usuari d'execuci√≥. Alguns sistemes tindran
 treballs que formen part del sistema operatiu, propietat d'usuaris
-com ara <tt>root</tt> o <tt>sys</tt>. TambÈ hi poden haver usuaris
-del sistema que utilitzen l'ordre <tt>crontab</tt>, que sÛn propietat
+com ara <tt>root</tt> o <tt>sys</tt>. Tamb√© hi poden haver usuaris
+del sistema que utilitzen l'ordre <tt>crontab</tt>, que s√≥n propietat
 dels usuaris que els han creat. <p>
 
 <hr>
 <h3>Creant un Treball Planificat Nou</h3>
 Per crear un treball nou, fes clic a <tt>Crea una nou treball planificat
-amb cron</tt> al peu de la llista dels treballs. AixÚ mostrar‡ un
-formulari per introduir els par‡metres seg¸ents:
+amb cron</tt> al peu de la llista dels treballs. Aix√≤ mostrar√† un
+formulari per introduir els par√†metres seg√ºents:
 	<ul>
-	<li><b>Usuari d'execuciÛ</b><br>
-            El nom de login de l'usuari Unix sota el qual s'executar‡.<p>
+	<li><b>Usuari d'execuci√≥</b><br>
+            El nom de login de l'usuari Unix sota el qual s'executar√†.<p>
 	<li><b>Actiu</b><br>
-            Si un treball no est‡ actiu, es mostrar‡ igualment a la llista
-            de treballs, perÚ no s'executar‡ segons est‡ planificat. <p>
+            Si un treball no est√† actiu, es mostrar√† igualment a la llista
+            de treballs, per√≤ no s'executar√† segons est√† planificat. <p>
 	<li><b>Ordre</b><br>
-            L'ordre a executar a l'hora planificada. AixÚ pot ser qualsevol
-            ordre que executaries des de la lÌnia d'ordres. <p>
+            L'ordre a executar a l'hora planificada. Aix√≤ pot ser qualsevol
+            ordre que executaries des de la l√≠nia d'ordres. <p>
 	<li><b>Entrada de l'ordre</b><br>
-            Si aquest camp no Ès buit, tot el que hi introdueixis se
-            se subministrar‡ com a entrada a l'ordre quan aquesta s'executi.
-            Per exemple, si l'ordre Ès <tt>mail foo@bar.com</tt> i l'entrada
-            <tt>hola mÛn</tt>,  llavors el text d'entrada s'enviar‡ per
+            Si aquest camp no √©s buit, tot el que hi introdueixis se
+            se subministrar√† com a entrada a l'ordre quan aquesta s'executi.
+            Per exemple, si l'ordre √©s <tt>mail foo@bar.com</tt> i l'entrada
+            <tt>hola m√≥n</tt>,  llavors el text d'entrada s'enviar√† per
             correu a <tt>foo@bar.com</tt>. <p>
-	<li><b>Dia/Hora d'execuciÛ</b><br>
-            Els moments en quË s'executa l'ordre es trien especificant
+	<li><b>Dia/Hora d'execuci√≥</b><br>
+            Els moments en qu√® s'executa l'ordre es trien especificant
             els minuts, hores, dies del mes, mesos de l'any i dies de
             la setmana. Per cadascun d'aquests, pots triar <tt>Tots</tt>
-            o bÈ seleccionar quan s'ha d'executar l'ordre. <p>
+            o b√© seleccionar quan s'ha d'executar l'ordre. <p>
 
             Per exemple, si tries 5 per l'hora i dimarts pel dia de la
-            setmana, llavors l'ordre s'executar‡ cada minut des de les
+            setmana, llavors l'ordre s'executar√† cada minut des de les
             5:00am a les 5:59am tots els dimarts. <br>
             Alternativament, si tries 30 pels minuts i 14 per l'hora,
-            llavors l'ordre s'executar‡ cada dia a les 2:30pm. <p>
+            llavors l'ordre s'executar√† cada dia a les 2:30pm. <p>
 	</ul><p>
-Un cop emplenat el formulari, fes clic sobre el botÛ <tt>Crea</tt>
-del peu de la p‡gina. El nou treball tindr‡ efecte immediatament. <p>
+Un cop emplenat el formulari, fes clic sobre el bot√≥ <tt>Crea</tt>
+del peu de la p√†gina. El nou treball tindr√† efecte immediatament. <p>
 
 <hr>
 <h3>Editant un Treball Planificat Existent</h3>
 Per editar un treball existent, fes clic sobre l'ordre de la llista 
-de treballs de la p‡gina principal. El formulari per editar un treball
-Ès el mateix que per crear-ne un de nou, que ja hem descrit abans.
-Un cop fets els canvis necessaris, fes clic sobre el botÛ <tt>Desa</tt>
-del peu de la p‡gina. <p>
+de treballs de la p√†gina principal. El formulari per editar un treball
+√©s el mateix que per crear-ne un de nou, que ja hem descrit abans.
+Un cop fets els canvis necessaris, fes clic sobre el bot√≥ <tt>Desa</tt>
+del peu de la p√†gina. <p>
 
-Per suprimir un treball, fes clic sobre el botÛ <tt>Suprimeix</tt>
-del peu del formulari d'ediciÛ. AixÚ esborrar‡ immediatament el treball
-sense demanar confirmaciÛ. <p>
+Per suprimir un treball, fes clic sobre el bot√≥ <tt>Suprimeix</tt>
+del peu del formulari d'edici√≥. Aix√≤ esborrar√† immediatament el treball
+sense demanar confirmaci√≥. <p>
 
 <hr>
 <a href="/"><img alt="<-" align=middle border=0 src=/images/left.gif></a>
-&nbsp;&nbsp;<a href="">Torna al mÚdul</a><p>
+&nbsp;&nbsp;<a href="">Torna al m√≤dul</a><p>
 

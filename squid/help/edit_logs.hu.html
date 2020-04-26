@@ -1,42 +1,42 @@
-<header>Naplózás; fordította: Szakács Gergely</header><p>
+<header>NaplÃ³zÃ¡s; fordÃ­totta: SzakÃ¡cs Gergely</header><p>
 
-<b>Hozzáférési naplófájl</b>: Alapértelmezés szerint rendszerfüggõ, általában a <tt>/var</tt> könyvtárban található. A kliensek kéréseit naplózza, és minden egyes HTTP-, illetve ICP-kérés után tesz a fájlba egy bejegyzést.<p>
+<b>HozzÃ¡fÃ©rÃ©si naplÃ³fÃ¡jl</b>: AlapÃ©rtelmezÃ©s szerint rendszerfÃ¼ggÅ‘, Ã¡ltalÃ¡ban a <tt>/var</tt> kÃ¶nyvtÃ¡rban talÃ¡lhatÃ³. A kliensek kÃ©rÃ©seit naplÃ³zza, Ã©s minden egyes HTTP-, illetve ICP-kÃ©rÃ©s utÃ¡n tesz a fÃ¡jlba egy bejegyzÃ©st.<p>
 
-<b>Hibakeresési naplófájl</b>: Alapértelmezés szerint rendszerfüggõ. A gyorstárban történteket naplózza. Rendszerint ez a fájl tartalmazza a gyorstár viselkedésével kapcsolatos általános információkat. A <b>Hibaelhárítási opcióknál</b> tetszõlegesen megnövelheti a naplófájl méretét.<p>
+<b>HibakeresÃ©si naplÃ³fÃ¡jl</b>: AlapÃ©rtelmezÃ©s szerint rendszerfÃ¼ggÅ‘. A gyorstÃ¡rban tÃ¶rtÃ©nteket naplÃ³zza. Rendszerint ez a fÃ¡jl tartalmazza a gyorstÃ¡r viselkedÃ©sÃ©vel kapcsolatos Ã¡ltalÃ¡nos informÃ¡ciÃ³kat. A <b>HibaelhÃ¡rÃ­tÃ¡si opciÃ³knÃ¡l</b> tetszÅ‘legesen megnÃ¶velheti a naplÃ³fÃ¡jl mÃ©retÃ©t.<p>
 
-<b>Tárhely naplófájl</b>: Alapértelmezés szerint rendszerfüggõ. A tárhelykezelõ tevékenységét naplózza. Megmutatja, hogy mely objektumok lettek eltávolítva a gyorstárból, illetve mely objektumok lettek eltárolva és mennyi ideig. A naplózás kikapcsolásához írja át az opciót "nem"-re. Ezen adatok elemzésére nincsenek speciális eszközök, így nyugodtan kikapcsolhatja ezt a funkciót.<p>
+<b>TÃ¡rhely naplÃ³fÃ¡jl</b>: AlapÃ©rtelmezÃ©s szerint rendszerfÃ¼ggÅ‘. A tÃ¡rhelykezelÅ‘ tevÃ©kenysÃ©gÃ©t naplÃ³zza. Megmutatja, hogy mely objektumok lettek eltÃ¡volÃ­tva a gyorstÃ¡rbÃ³l, illetve mely objektumok lettek eltÃ¡rolva Ã©s mennyi ideig. A naplÃ³zÃ¡s kikapcsolÃ¡sÃ¡hoz Ã­rja Ã¡t az opciÃ³t "nem"-re. Ezen adatok elemzÃ©sÃ©re nincsenek speciÃ¡lis eszkÃ¶zÃ¶k, Ã­gy nyugodtan kikapcsolhatja ezt a funkciÃ³t.<p>
 
-<b>Gyorstár adatleíró-fájl</b>: Alapértelmezés szerint swap.log minden egyes gyorstár-könyvtár alatt. Ez a naplófájl tartalmazza a lemezre mentett objektumok leíró-információit. A gyorstár ennek alapján épül fel minden rendszerindítás alkalmával. Normális esetben egy ilyen fájl megtalálható minden egyes gyorstár-könyvtár alatt, ám lehetõség van ettõl eltérõ elérési útvonal megadására is. Fontos azonban, hogy egy teljes fájlnevet meg kell adnia, nem csak a naplófájlt tartalmazó könyvtár nevét. Mivel ez a teljes objektumlista indexe, NINCS lehetõség a periodikus rotációra!<p>
+<b>GyorstÃ¡r adatleÃ­rÃ³-fÃ¡jl</b>: AlapÃ©rtelmezÃ©s szerint swap.log minden egyes gyorstÃ¡r-kÃ¶nyvtÃ¡r alatt. Ez a naplÃ³fÃ¡jl tartalmazza a lemezre mentett objektumok leÃ­rÃ³-informÃ¡ciÃ³it. A gyorstÃ¡r ennek alapjÃ¡n Ã©pÃ¼l fel minden rendszerindÃ­tÃ¡s alkalmÃ¡val. NormÃ¡lis esetben egy ilyen fÃ¡jl megtalÃ¡lhatÃ³ minden egyes gyorstÃ¡r-kÃ¶nyvtÃ¡r alatt, Ã¡m lehetÅ‘sÃ©g van ettÅ‘l eltÃ©rÅ‘ elÃ©rÃ©si Ãºtvonal megadÃ¡sÃ¡ra is. Fontos azonban, hogy egy teljes fÃ¡jlnevet meg kell adnia, nem csak a naplÃ³fÃ¡jlt tartalmazÃ³ kÃ¶nyvtÃ¡r nevÃ©t. Mivel ez a teljes objektumlista indexe, NINCS lehetÅ‘sÃ©g a periodikus rotÃ¡ciÃ³ra!<p>
 
-Ha a fájlnévben lehet %s-t használni, úgy azt felcseréli a gyorstár-könyvtár nevének valamilyen reprezentációja, ahol minden / helyett '.' fog állni. Erre azért van szükség, hogy egy esetleges új lapozófájl-napló hozzáadásakor tetszõlegesen hozzáadhassunk/eltávolíthassunk egyes könyvtársorokat.<p>
+Ha a fÃ¡jlnÃ©vben lehet %s-t hasznÃ¡lni, Ãºgy azt felcserÃ©li a gyorstÃ¡r-kÃ¶nyvtÃ¡r nevÃ©nek valamilyen reprezentÃ¡ciÃ³ja, ahol minden / helyett '.' fog Ã¡llni. Erre azÃ©rt van szÃ¼ksÃ©g, hogy egy esetleges Ãºj lapozÃ³fÃ¡jl-naplÃ³ hozzÃ¡adÃ¡sakor tetszÅ‘legesen hozzÃ¡adhassunk/eltÃ¡volÃ­thassunk egyes kÃ¶nyvtÃ¡rsorokat.<p>
 
-Ha egynél több gyorstár-könyvtár van a rendszeren, és a fájlnevekben nem szerepel %s, úgy a lapozófájl-naplók a következõképp lesznek elnevezve:<p>
+Ha egynÃ©l tÃ¶bb gyorstÃ¡r-kÃ¶nyvtÃ¡r van a rendszeren, Ã©s a fÃ¡jlnevekben nem szerepel %s, Ãºgy a lapozÃ³fÃ¡jl-naplÃ³k a kÃ¶vetkezÅ‘kÃ©pp lesznek elnevezve:<p>
 <ul>
 <li>cache_swap_log.00
 <li>cache_swap_log.01
 <li>cache_swap_log.02
 </ul>
 <p>
-Az (automatikusan hozzáadott) számozott kiterjesztések megegyeznek a konfigurációban megadott könyvtársorok sorrendjével. Ha ebben a fájlban megváltoztatja a könyvtársorok sorrendjét, úgy a naplófájlok NEM a megfelelõ könyvtárbejegyzéshez fognak tartozni (hacsak manuálisan nem nevezi át mindegyiket). Azt javasoljuk, hogy ezt az opciót NE használja. Jobb, ha minden egyes naplófájl külön könyvtárban van.<p>
+Az (automatikusan hozzÃ¡adott) szÃ¡mozott kiterjesztÃ©sek megegyeznek a konfigurÃ¡ciÃ³ban megadott kÃ¶nyvtÃ¡rsorok sorrendjÃ©vel. Ha ebben a fÃ¡jlban megvÃ¡ltoztatja a kÃ¶nyvtÃ¡rsorok sorrendjÃ©t, Ãºgy a naplÃ³fÃ¡jlok NEM a megfelelÅ‘ kÃ¶nyvtÃ¡rbejegyzÃ©shez fognak tartozni (hacsak manuÃ¡lisan nem nevezi Ã¡t mindegyiket). Azt javasoljuk, hogy ezt az opciÃ³t NE hasznÃ¡lja. Jobb, ha minden egyes naplÃ³fÃ¡jl kÃ¼lÃ¶n kÃ¶nyvtÃ¡rban van.<p>
 
-<b>HTTPD naplóformátum használata</b>: Alapértelmezés szerint kikapcsolva. A gyorstár képes emulálni a több 'httpd' program által használt naplóformátumot. Az emuláció ki/bekapcsolásához állítsa át az opciót a megfelelõ értékre (ki/be). Alapértelmezés szerint a rendszer a natív naplóformátumot használja, mivel az olyan hasznos információkat tartalmaz, amelyek nagy segítségére lehetnek a Squid-specifikus naplóelemzõknek.<p>
+<b>HTTPD naplÃ³formÃ¡tum hasznÃ¡lata</b>: AlapÃ©rtelmezÃ©s szerint kikapcsolva. A gyorstÃ¡r kÃ©pes emulÃ¡lni a tÃ¶bb 'httpd' program Ã¡ltal hasznÃ¡lt naplÃ³formÃ¡tumot. Az emulÃ¡ciÃ³ ki/bekapcsolÃ¡sÃ¡hoz Ã¡llÃ­tsa Ã¡t az opciÃ³t a megfelelÅ‘ Ã©rtÃ©kre (ki/be). AlapÃ©rtelmezÃ©s szerint a rendszer a natÃ­v naplÃ³formÃ¡tumot hasznÃ¡lja, mivel az olyan hasznos informÃ¡ciÃ³kat tartalmaz, amelyek nagy segÃ­tsÃ©gÃ©re lehetnek a Squid-specifikus naplÃ³elemzÅ‘knek.<p>
 
-<b>MIME fejlécek naplózása</b>: Alapértelmezés szerint kikapcsolva. A gyorstár képes úgy a kérés, mint a válasz MIME-fejlécek rögzítésére az egyes HTTP-mûveletek során. A fejlécek biztonságosan kódolva vannak, és a hozzáférési napló végén, két zárójeles mezõben jelennek meg (a natív és a httpd-emulációs naplóformátumban egyaránt). E funkció bekapcsolásához állítsa az opciót a megfelelõ értékre (be).<p>
+<b>MIME fejlÃ©cek naplÃ³zÃ¡sa</b>: AlapÃ©rtelmezÃ©s szerint kikapcsolva. A gyorstÃ¡r kÃ©pes Ãºgy a kÃ©rÃ©s, mint a vÃ¡lasz MIME-fejlÃ©cek rÃ¶gzÃ­tÃ©sÃ©re az egyes HTTP-mÅ±veletek sorÃ¡n. A fejlÃ©cek biztonsÃ¡gosan kÃ³dolva vannak, Ã©s a hozzÃ¡fÃ©rÃ©si naplÃ³ vÃ©gÃ©n, kÃ©t zÃ¡rÃ³jeles mezÅ‘ben jelennek meg (a natÃ­v Ã©s a httpd-emulÃ¡ciÃ³s naplÃ³formÃ¡tumban egyarÃ¡nt). E funkciÃ³ bekapcsolÃ¡sÃ¡hoz Ã¡llÃ­tsa az opciÃ³t a megfelelÅ‘ Ã©rtÃ©kre (be).<p>
 
-<b>Felhasználói ágens naplófájl</b>: Alapértelmezés szerint nincs. Ha engedélyezzük az "--enable-useragent-log" konfigurációs beállítással, úgy a Squid a HTTP-kérésekbõl beolvasott felhasználói ágens adatokat az itt megadott fájlba fogja rögzíteni.<p>
+<b>FelhasznÃ¡lÃ³i Ã¡gens naplÃ³fÃ¡jl</b>: AlapÃ©rtelmezÃ©s szerint nincs. Ha engedÃ©lyezzÃ¼k az "--enable-useragent-log" konfigurÃ¡ciÃ³s beÃ¡llÃ­tÃ¡ssal, Ãºgy a Squid a HTTP-kÃ©rÃ©sekbÅ‘l beolvasott felhasznÃ¡lÃ³i Ã¡gens adatokat az itt megadott fÃ¡jlba fogja rÃ¶gzÃ­teni.<p>
 
-<b>PID-fájl</b>: Alapértelmezés szerint rendszerfüggõ. Ebbe a fájlba kerülnek a folyamatazonosítók. Kikapcsolásához álltsa "nem"-re az opciót.<p>
+<b>PID-fÃ¡jl</b>: AlapÃ©rtelmezÃ©s szerint rendszerfÃ¼ggÅ‘. Ebbe a fÃ¡jlba kerÃ¼lnek a folyamatazonosÃ­tÃ³k. KikapcsolÃ¡sÃ¡hoz Ã¡lltsa "nem"-re az opciÃ³t.<p>
 
-<b>RFC931 azonosítókeresés futtatása az ACL-eken</b>: Alapértelmezés szerint kikapcsolva. Kereséseket futtat az ACL-ekben bármihez hozzáférõ kliensek felhasználóneveinek azonosítására.<p>
+<b>RFC931 azonosÃ­tÃ³keresÃ©s futtatÃ¡sa az ACL-eken</b>: AlapÃ©rtelmezÃ©s szerint kikapcsolva. KeresÃ©seket futtat az ACL-ekben bÃ¡rmihez hozzÃ¡fÃ©rÅ‘ kliensek felhasznÃ¡lÃ³neveinek azonosÃ­tÃ¡sÃ¡ra.<p>
 
-<b>RFC931 azonosító holtidõ</b>: Alapértelmezés szerint 30 másodperc. Az IDENT kérések maximális várakozási ideje. Ha ez az érték túl magas, és az azonosítókeresések engedélyezve vannak, úgy a rendszer több ilyen egyidejû kérés miatt sérülékennyé válhat denial-of-service támadásokkal szemben.<p>
+<b>RFC931 azonosÃ­tÃ³ holtidÅ‘</b>: AlapÃ©rtelmezÃ©s szerint 30 mÃ¡sodperc. Az IDENT kÃ©rÃ©sek maximÃ¡lis vÃ¡rakozÃ¡si ideje. Ha ez az Ã©rtÃ©k tÃºl magas, Ã©s az azonosÃ­tÃ³keresÃ©sek engedÃ©lyezve vannak, Ãºgy a rendszer tÃ¶bb ilyen egyidejÅ± kÃ©rÃ©s miatt sÃ©rÃ¼lÃ©kennyÃ© vÃ¡lhat denial-of-service tÃ¡madÃ¡sokkal szemben.<p>
 
-<b>Teljes gazdanév naplózása</b>: Alapértelmezés szerint nem. A kliensek teljes gazdanevét naplózza.<p>
+<b>Teljes gazdanÃ©v naplÃ³zÃ¡sa</b>: AlapÃ©rtelmezÃ©s szerint nem. A kliensek teljes gazdanevÃ©t naplÃ³zza.<p>
 
-<b>Netmaszk naplózása</b>: Alapértelmezés szerint 255.255.255.255.  A naplófájlokban és a gyorstárkezelõben szereplõ klienscímek. Ha óvni akarja a kliensek magánjogait, változtassa meg ezt az értéket. Egy 255.255.255.0 netmaszk minden abban a tartományban szereplõ IP-t naplózni fog.<p>
+<b>Netmaszk naplÃ³zÃ¡sa</b>: AlapÃ©rtelmezÃ©s szerint 255.255.255.255.  A naplÃ³fÃ¡jlokban Ã©s a gyorstÃ¡rkezelÅ‘ben szereplÅ‘ klienscÃ­mek. Ha Ã³vni akarja a kliensek magÃ¡njogait, vÃ¡ltoztassa meg ezt az Ã©rtÃ©ket. Egy 255.255.255.0 netmaszk minden abban a tartomÃ¡nyban szereplÅ‘ IP-t naplÃ³zni fog.<p>
 
-<b>Hibakeresési opciók</b>: Alapértelmezés szerint "MIND,1". A naplózási beállítások részleg,szint formában vannak definiálva, ahol minden egyes forrásfájlhoz egyedi részleg van hozzárendelve. A teljes hibakeresés (9-es szint) igen nagy naplófájlt eredményezhet, így e téren körültekintés javasolt. A "MIND" varázsszó az össze részlegre érvényesíti a hibakeresési szinteket. Általában nem érdemes változtatni az alapértelmezett opción.<p>
+<b>HibakeresÃ©si opciÃ³k</b>: AlapÃ©rtelmezÃ©s szerint "MIND,1". A naplÃ³zÃ¡si beÃ¡llÃ­tÃ¡sok rÃ©szleg,szint formÃ¡ban vannak definiÃ¡lva, ahol minden egyes forrÃ¡sfÃ¡jlhoz egyedi rÃ©szleg van hozzÃ¡rendelve. A teljes hibakeresÃ©s (9-es szint) igen nagy naplÃ³fÃ¡jlt eredmÃ©nyezhet, Ã­gy e tÃ©ren kÃ¶rÃ¼ltekintÃ©s javasolt. A "MIND" varÃ¡zsszÃ³ az Ã¶ssze rÃ©szlegre Ã©rvÃ©nyesÃ­ti a hibakeresÃ©si szinteket. ÃltalÃ¡ban nem Ã©rdemes vÃ¡ltoztatni az alapÃ©rtelmezett opciÃ³n.<p>
 
-<b>MIME fejléctábla</b>: A Squid fejléctáblájának elérési útvonala. Alapesetben ezen sem szükséges változtatni, ám az alapértelmezett fájlban további információt és példákat találhat ezzel kapcsolatban.
+<b>MIME fejlÃ©ctÃ¡bla</b>: A Squid fejlÃ©ctÃ¡blÃ¡jÃ¡nak elÃ©rÃ©si Ãºtvonala. Alapesetben ezen sem szÃ¼ksÃ©ges vÃ¡ltoztatni, Ã¡m az alapÃ©rtelmezett fÃ¡jlban tovÃ¡bbi informÃ¡ciÃ³t Ã©s pÃ©ldÃ¡kat talÃ¡lhat ezzel kapcsolatban.
 
 <hr>

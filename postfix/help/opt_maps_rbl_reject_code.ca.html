@@ -1,21 +1,21 @@
-<header>Resposta del servidor SMTP en cas de violaciÛ de dominis RBL</header>
+<header>Resposta del servidor SMTP en cas de violaci√≥ de dominis RBL</header>
 
 <center><tt>maps_rbl_reject_code</tt></center>
 <hr>
 
-Aquest par‡metres especifica el codi de resposta del servidor SMTP quan un
-client viola la restricciÛ
-<a href=opt_maps_rbl_domains><tt>maps_rbl_domains</tt></a> que Ès:<br>
-<i>AccÈs denegat: client SMTP llistat a RBL</i><br>
+Aquest par√†metres especifica el codi de resposta del servidor SMTP quan un
+client viola la restricci√≥
+<a href=opt_maps_rbl_domains><tt>maps_rbl_domains</tt></a> que √©s:<br>
+<i>Acc√©s denegat: client SMTP llistat a RBL</i><br>
 <br>
 Tingues en compte que el valor per defecte de postfix utilitzat per a
-<tt>maps_rbl_reject_code</tt> Ès el codi 554, i aquest codi en l'est‡ndard 
-RFC 822 voldria dir 'AcciÛ de correu rebutjada: accÈs denegat'.
-AixÌ, amb postfix, una violaciÛ de la regla <tt>maps_rbl_domains</tt>
-no reflecteix exactament l'explicaciÛ RFC822 del codi informat.<br>
+<tt>maps_rbl_reject_code</tt> √©s el codi 554, i aquest codi en l'est√†ndard 
+RFC 822 voldria dir 'Acci√≥ de correu rebutjada: acc√©s denegat'.
+Aix√≠, amb postfix, una violaci√≥ de la regla <tt>maps_rbl_domains</tt>
+no reflecteix exactament l'explicaci√≥ RFC822 del codi informat.<br>
 <p>
-Per evitar la confusiÛ, pots canviar-ho, per exemple, per 571 (una altra raÛ
-Ès que Ès tambÈ el valor per defecte de postfix per altres menes d'errors),
-altrament, no ho canviÔs si no tens un coneixement complet de RFC 822.
+Per evitar la confusi√≥, pots canviar-ho, per exemple, per 571 (una altra ra√≥
+√©s que √©s tamb√© el valor per defecte de postfix per altres menes d'errors),
+altrament, no ho canvi√Øs si no tens un coneixement complet de RFC 822.
 </p>
 

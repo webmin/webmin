@@ -1,88 +1,88 @@
 <header>Tallafoc Linux</header>
 
-<h3>Introducció al mòdul</h3>
+<h3>IntroducciÃ³ al mÃ²dul</h3>
 
-Aquest mòdul permet configurar les característiques del tallafoc IPtables 
-que es troba a la sèrie de nuclis Linux 2.4. Contràriament a altres
-programes de configuració de tallafoc, en lloc de crear un script shell
+Aquest mÃ²dul permet configurar les caracterÃ­stiques del tallafoc IPtables 
+que es troba a la sÃ¨rie de nuclis Linux 2.4. ContrÃ riament a altres
+programes de configuraciÃ³ de tallafoc, en lloc de crear un script shell
 que configura el tallafoc, llegeix i edita un fitxer en el format llegit
 i escrit per <tt>ipi(6)tables-restore</tt> i <tt>ipi(6)tables-save</tt>, respectivament. <p>
 
 Si ja tens al sistema un tallafoc que s'ha configurat manualment o des d'un
-fitxer de script, el mòdul t'oferirà de convertir-lo per tu a un fitxer
-IPtables, i crearà un script per executar-se en engegar el sistema que
-activarà les regles del fitxer. No obstant, si fas això no has des seguir
+fitxer de script, el mÃ²dul t'oferirÃ  de convertir-lo per tu a un fitxer
+IPtables, i crearÃ  un script per executar-se en engegar el sistema que
+activarÃ  les regles del fitxer. No obstant, si fas aixÃ² no has des seguir
 editant el teu script de regles del tallafoc i l'hauries de desactivar
-i també evitar que s'executi en engegar. <p>
+i tambÃ© evitar que s'executi en engegar. <p>
 
 <h3>Resum d'IPtables</h3>
 
-Cada paquet de xarxa que entra, surt o és reenviat pel sistema, es comprova
-contra una o més cadenes per determinar què li passarà.
-Cada cadena conté zero o més regles, cadascuna de les quals té una condició
-(per determinar quins paquets la compleixen) i una acció (per controlar
-què passa amb els paquets coincidents). Cada cadena té una acció per defecte
-que controla què passa amb el paquet que no compleix cap regla. <p>
+Cada paquet de xarxa que entra, surt o Ã©s reenviat pel sistema, es comprova
+contra una o mÃ©s cadenes per determinar quÃ¨ li passarÃ .
+Cada cadena contÃ© zero o mÃ©s regles, cadascuna de les quals tÃ© una condiciÃ³
+(per determinar quins paquets la compleixen) i una acciÃ³ (per controlar
+quÃ¨ passa amb els paquets coincidents). Cada cadena tÃ© una acciÃ³ per defecte
+que controla quÃ¨ passa amb el paquet que no compleix cap regla. <p>
 
-Cada cadena és part d'una taula, de les quals n'hi ha actualment tres:
+Cada cadena Ã©s part d'una taula, de les quals n'hi ha actualment tres:
 <ul>
 <li><b>Filtratge de Paquets (<tt>filter</tt>)</b><br>
    Les cadenes d'aquesta taula es poden utilitzar per controlar les dades que
    entren al sistema des d'altres hosts de la xarxa, les dades que surten del
    sistema per part dels usuaris i processos, i les dades reenviades per 
-   sistema si està actuant com a router. <p>
-<li><b>Traducció d'Adreces de Xarxa (<tt>nat</tt>)</b><br>
+   sistema si estÃ  actuant com a router. <p>
+<li><b>TraducciÃ³ d'Adreces de Xarxa (<tt>nat</tt>)</b><br>
    Aquesta taula es pot utilitzar per establir una NAT o una mascarada, cosa
-   útil si vols donar accés a Internet a tota una xarxa de màquines a través
-   d'una sola adreça IP real. <p>
-<li><b>Alteració de Paquets (<tt>mangle</tt>)</b><br>
-   Aquesta taula és per a modificar paquets enviats o reenviats des del teu
+   Ãºtil si vols donar accÃ©s a Internet a tota una xarxa de mÃ quines a travÃ©s
+   d'una sola adreÃ§a IP real. <p>
+<li><b>AlteraciÃ³ de Paquets (<tt>mangle</tt>)</b><br>
+   Aquesta taula Ã©s per a modificar paquets enviats o reenviats des del teu
    sistema. <p>
 </ul>
 
-A més a més de les cadenes estàndard que són part de cada taula, també pots
-crear les teves pròpies cadenes que poden ser executades per regles de les
-cadenes ja integrades. Això pot ser útil per agrupar i compartir regles que
+A mÃ©s a mÃ©s de les cadenes estÃ ndard que sÃ³n part de cada taula, tambÃ© pots
+crear les teves prÃ²pies cadenes que poden ser executades per regles de les
+cadenes ja integrades. AixÃ² pot ser Ãºtil per agrupar i compartir regles que
 es poden utilitzar a llocs diferents. <p>
 
-<h3>La pàgina principal</h3>
+<h3>La pÃ gina principal</h3>
 
-La pàgina principal d'aquest mòdul llista totes les cadenes i regles d'una de
+La pÃ gina principal d'aquest mÃ²dul llista totes les cadenes i regles d'una de
 les taules disponibles, seleccionades de la llista de la part superior esquerra.
-A sota hi ha una selecció per a cada cadena de la taula actual, amb totes les
-regles de cada cadena llistades i les seves condicions descrites tant bé com el
-mòdul n'és capaç. Per a cada cadena, pots canviar l'acció per defecte utilitzant
-la llista desplegable si la cadena és una de les ja integrades a la taula, o bé
-suprimir-la amb el botó Suprimeix la cadena si està definida per l'usuari. <p>
+A sota hi ha una selecciÃ³ per a cada cadena de la taula actual, amb totes les
+regles de cada cadena llistades i les seves condicions descrites tant bÃ© com el
+mÃ²dul n'Ã©s capaÃ§. Per a cada cadena, pots canviar l'acciÃ³ per defecte utilitzant
+la llista desplegable si la cadena Ã©s una de les ja integrades a la taula, o bÃ©
+suprimir-la amb el botÃ³ Suprimeix la cadena si estÃ  definida per l'usuari. <p>
 
 Pots fer clic sobre qualsevol regla d'una cadena per editar-la, fer clic
-sobre les fletxes de l'esquerra per desplaçar-les amunt i avall, o fer 
-clic sobre el botó Afegeix Regla per afegir-ne una de nova. Afegir o
-editar una regla et durà a una pàgina on pots seleccionar l'acció per a
-cada regla, i les condicions per les quals s'executa l'acció. <p>
+sobre les fletxes de l'esquerra per desplaÃ§ar-les amunt i avall, o fer 
+clic sobre el botÃ³ Afegeix Regla per afegir-ne una de nova. Afegir o
+editar una regla et durÃ  a una pÃ gina on pots seleccionar l'acciÃ³ per a
+cada regla, i les condicions per les quals s'executa l'acciÃ³. <p>
 
-Al peu de la pàgina, hi ha un botó per fer activa la configuració
+Al peu de la pÃ gina, hi ha un botÃ³ per fer activa la configuraciÃ³
 actual del tallafoc, recarregant-la en el nucli amb l'ordre
-<tt>ipi(6)tables-restore</tt>. A sota, hi ha un botó per fer just el contrari -
-prendre la configuració que hi ha actualment al nucli i posar-la a
-disposició de l'editor. Finalment, si la distribució ho suporta, hi ha
-un botó per canviar si el tallafoc s'activa en engegar el sistema o no. <p>
+<tt>ipi(6)tables-restore</tt>. A sota, hi ha un botÃ³ per fer just el contrari -
+prendre la configuraciÃ³ que hi ha actualment al nucli i posar-la a
+disposiciÃ³ de l'editor. Finalment, si la distribuciÃ³ ho suporta, hi ha
+un botÃ³ per canviar si el tallafoc s'activa en engegar el sistema o no. <p>
 
 <h3>Cadenes de filtratge</h3>
 
-Per a una millor col·laboració amb scripts d'iptables externs, pots excloure cadenes
+Per a una millor colÂ·laboraciÃ³ amb scripts d'iptables externs, pots excloure cadenes
 individuals del processament del tallafoc. Per fer-ho, has de seleccionar el
-processament directe de les regles als paràmetres i introduir una llista de 
+processament directe de les regles als parÃ metres i introduir una llista de 
 filtres que exclouen les cadenes apropiades del processament.
-Les cadenes que no s'han exclòs de l'edició es marquen amb el missatge "no gestionada pel tallafoc".
+Les cadenes que no s'han exclÃ²s de l'ediciÃ³ es marquen amb el missatge "no gestionada pel tallafoc".
 <p>
 
 <h3>Conjunts d'IPs</h3>
 
-Les noves versions d'ip(6)table suporten l'extensió ipset.
-Els conjunts d'IPs són llistes d'adreces IP en memòria principal, que es poden buscar eficientment
-i s'usen com a condició en les regles, A la pàgina principal es mostren els conjunts d'IPs existents
-que es poden fer servir com a condició a les regles. Actualment, però, no és possible gestionar-los al tallafoc.
+Les noves versions d'ip(6)table suporten l'extensiÃ³ ipset.
+Els conjunts d'IPs sÃ³n llistes d'adreces IP en memÃ²ria principal, que es poden buscar eficientment
+i s'usen com a condiciÃ³ en les regles, A la pÃ gina principal es mostren els conjunts d'IPs existents
+que es poden fer servir com a condiciÃ³ a les regles. Actualment, perÃ², no Ã©s possible gestionar-los al tallafoc.
 <p>
 
 <hr>

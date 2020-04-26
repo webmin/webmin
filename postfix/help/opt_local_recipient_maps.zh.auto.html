@@ -1,0 +1,1 @@
+<header>拒绝未知的本地用户</header><center> <tt>local_recipient_maps</tt> </center> <hr>此参数指定可选的查找表，其中包含相对于<tt>$mydestination</tt> （“接收邮件的域”）和<tt>$inet_interfaces</tt> （“接收邮件的网络接口”）本地的所有用户。如果定义了此参数，则SMTP服务器将拒绝未知本地用户的邮件。 <p>放置带有裸用户名（例如<tt>unix:passwd.byname</tt>和别名映射）的表。示例： <tt>$alias_maps unix:passwd.byname</tt> 。 <p>注意：如果Postfix SMTP服务器运行chroot，则可能必须将passwd数据库复制到监狱中。这取决于系统。 <hr>

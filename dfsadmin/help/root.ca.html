@@ -1,27 +1,27 @@
-<header>Accés Root</header>
+<header>AccÃ©s Root</header>
 
-Controla a quins hosts el servidor els respectarà l'usuari root.
-Si un client no és a la llista, tot i poder muntar el recurs només
-lectura o lectura/escriptura, el servidor NFS tractarà l'usuari root
-com a <a href=anon>Usuari Anònim</a>.
+Controla a quins hosts el servidor els respectarÃ  l'usuari root.
+Si un client no Ã©s a la llista, tot i poder muntar el recurs nomÃ©s
+lectura o lectura/escriptura, el servidor NFS tractarÃ  l'usuari root
+com a <a href=anon>Usuari AnÃ²nim</a>.
 <if $gconfig{'os_version'} == 7>
-   <br>Els hosts es poden especificar de les següents maneres:<p>
+   <br>Els hosts es poden especificar de les segÃ¼ents maneres:<p>
    <dl>
-      <dt><b>Nom de host o adreça IP</b> (com ara <i>ftp.foo.com</i> o <i>1.2.3.4</i>)
-      <dd>Coincideix amb el host del mateix nom o adreça
+      <dt><b>Nom de host o adreÃ§a IP</b> (com ara <i>ftp.foo.com</i> o <i>1.2.3.4</i>)
+      <dd>Coincideix amb el host del mateix nom o adreÃ§a
       <dt><b>Grup de xarxa</b> (com ara <i>enginyers</i>)
       <dd>Coincideix amb qualsevol host membre del grup de xarxa
       <dt><b>Domini DNS</b> (com ara <i>.foo.com</i>)
       <dd>Coincideix amb qualsevol host del domini
       <dt><b>Xarxa</b> (com ara <i>@10.254.1</i>)
       <dd>Coincideix amb qualsevol host de la xarxa
-      <dt><b>Xarxa/màscara</b> (com ara <i>@10.254.1/24</i>)
+      <dt><b>Xarxa/mÃ scara</b> (com ara <i>@10.254.1/24</i>)
       <dd>Coincideix amb qualsevol host de la xarxa
    </dl><p>
-   A més a més, totes les notacions anteriors poden prefixar-se amb <i>-</i>,
-   que vol dir que el host, grup de xarxa, domini o xarxa <b>no</b> té
-   permès de muntar el recurs. Això pot ser útil per permetre l'accés a
-   tot un grup de hosts, però denegant-lo a un dels membres.
+   A mÃ©s a mÃ©s, totes les notacions anteriors poden prefixar-se amb <i>-</i>,
+   que vol dir que el host, grup de xarxa, domini o xarxa <b>no</b> tÃ©
+   permÃ¨s de muntar el recurs. AixÃ² pot ser Ãºtil per permetre l'accÃ©s a
+   tot un grup de hosts, perÃ² denegant-lo a un dels membres.
 </if>
 <hr>
 

@@ -242,7 +242,7 @@ makedn_failed=..創建失敗： $1
 makedn_done=..完成
 makedn_still=即使在創建DN之後也發現了一些問題： $1 
 schema_title=下載LDAP模式
-schema_desc=在Webmin可以使用LDAP服務器存儲用戶和組之前，必須將其配置為使用以下架構。通常可以通過將架構定義保存在<tt>/ etc / ldap / schema</tt>或<tt>/ etc / openldap / schema</tt>中作為<tt>webmin.schema</tt>來完成，然後配置服務器以加載該架構文件。
+schema_desc=在Webmin可以使用LDAP服務器存儲用戶和組之前，必須將其配置為使用以下架構。通常可以通過將架構定義保存在<tt>/etc/ldap/schema</tt>或<tt>/etc/openldap/schema</tt>中作為<tt>webmin.schema</tt>來完成，然後配置服務器以加載該架構文件。
 schema_download=下載架構文件：<a href=$1>$1</a>
 twofactor_err=未能設置兩因素身份驗證
 twofactor_euser=找不到您的Webmin用戶！

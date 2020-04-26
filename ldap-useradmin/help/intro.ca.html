@@ -1,33 +1,33 @@
 <header>Usuaris i Grups LDAP</header>
 
-Si el sistema està configurat per a utilitzar un servidor LDAP per a 
-emmagatzemar usuaris i grups Unix,es pot utilitzar aquest mòdul per gestionar
+Si el sistema estÃ  configurat per a utilitzar un servidor LDAP per a 
+emmagatzemar usuaris i grups Unix,es pot utilitzar aquest mÃ²dul per gestionar
 els usuaris d'una base de dades LDAP. LDAP s'utilitza sovint com una 
-alternativa a NIS per a sincronitzar la informació dels usuaris a través de
-múltiples sistemes d'una xarxa, com una base de dades que pot emmagatzemar
-atributs addicionals per a cada usuari, a més a més dels estàndards Unix
+alternativa a NIS per a sincronitzar la informaciÃ³ dels usuaris a travÃ©s de
+mÃºltiples sistemes d'una xarxa, com una base de dades que pot emmagatzemar
+atributs addicionals per a cada usuari, a mÃ©s a mÃ©s dels estÃ ndards Unix
 nom d'usuari, shell, i altres. <p>
 
 Naturalment, hi ha d'haver un servidor LDAP executant-se al sistema o en 
-algun host de la xarxa per poder utilitzar aquest mòdul. A més a més, 
-cal configurar un o més hosts per a utilitzar LDAP per autenticar usuaris
-i/o grups. No es pot fer cap d'aquestes tasques des d'aquest mòdul -s'han
-de fer manualment, o amb altres mòduls Webmin per aquest propòsit. <p>
+algun host de la xarxa per poder utilitzar aquest mÃ²dul. A mÃ©s a mÃ©s, 
+cal configurar un o mÃ©s hosts per a utilitzar LDAP per autenticar usuaris
+i/o grups. No es pot fer cap d'aquestes tasques des d'aquest mÃ²dul -s'han
+de fer manualment, o amb altres mÃ²duls Webmin per aquest propÃ²sit. <p>
 
-Si també tens Samba configurat per utilitzar un servidor LDAP, aquest mòdul
-pot també crear i gestionar els atributs de contrasenyes necessaris per tal
-que cada usuari LDAP pugui entrar també al servidor Samba. Per tal que aquesta
-característica funcioni, s'ha de configurar el servidor LDAP per suportar els
+Si tambÃ© tens Samba configurat per utilitzar un servidor LDAP, aquest mÃ²dul
+pot tambÃ© crear i gestionar els atributs de contrasenyes necessaris per tal
+que cada usuari LDAP pugui entrar tambÃ© al servidor Samba. Per tal que aquesta
+caracterÃ­stica funcioni, s'ha de configurar el servidor LDAP per suportar els
 atributs addicionals Samba i la classe d'objecte per a cada usuari en el seu
-esquema. Només es crearan les atributs Samba quan l'opció <b>Usuaris Samba</b>
-estigui a <b>Sí</b>.  <p>
+esquema. NomÃ©s es crearan les atributs Samba quan l'opciÃ³ <b>Usuaris Samba</b>
+estigui a <b>SÃ­</b>.  <p>
 
-El mòdul també pot crear usuaris en un servidor IMAP Cyrus, si està
-configurat per a l'autenticació contra la mateixa base de dades LDAP.
-Crearà bústies per a cada nou usuari, subscriurà l'usuari a les seves bústies
-i li donarà permisos d'administrador sobre les mateixes. Si se suprimeix un
-usuari LDAP, la seva bústia IMAP també ho serà. Actualment, aquesta
-característica només funciona amb el servidor IMAP Cyrus - no s'ha provat
+El mÃ²dul tambÃ© pot crear usuaris en un servidor IMAP Cyrus, si estÃ 
+configurat per a l'autenticaciÃ³ contra la mateixa base de dades LDAP.
+CrearÃ  bÃºsties per a cada nou usuari, subscriurÃ  l'usuari a les seves bÃºsties
+i li donarÃ  permisos d'administrador sobre les mateixes. Si se suprimeix un
+usuari LDAP, la seva bÃºstia IMAP tambÃ© ho serÃ . Actualment, aquesta
+caracterÃ­stica nomÃ©s funciona amb el servidor IMAP Cyrus - no s'ha provat
 i probablement no sigui necessari per altres servidors, que utilitzen
 el directori arrel de l'usuari per a emmagatzemar el correu. <p>
 

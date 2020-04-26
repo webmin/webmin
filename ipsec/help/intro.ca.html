@@ -1,53 +1,53 @@
-<header>ConfiguraciÛ de VPN IPsec</header>
+<header>Configuraci√≥ de VPN IPsec</header>
 
-Aquest mÚdul permet configurar FreeSWAN, una implementaciÛ lliure dels protocols
+Aquest m√≤dul permet configurar FreeSWAN, una implementaci√≥ lliure dels protocols
 VPN IPsec per a Linux. IPsec xifra de forma transparent totes les dades que
-viatgen entre dues xarxes i, contr‡riament a altres protocols VPN, fa ˙s de
+viatgen entre dues xarxes i, contr√†riament a altres protocols VPN, fa √∫s de
 les adreces IP existents per a la VPN, en lloc de crear-ne de noves. S'utilitza
-tÌpicament per permetre que clients remots accedeixin a una xarxa privada
-interna a travÈs d'Internet. <p>
+t√≠picament per permetre que clients remots accedeixin a una xarxa privada
+interna a trav√©s d'Internet. <p>
 
 Per tal que dos sistemes es comuniquin utilitzant IPsec, cadascun ha de tenir
-una connexiÛ definida que contÈ l'adreÁa IP, nom de host identificador, clau
-RSA i xarxa privada (si n'hi ha) de tots dos sistemes. Cada connexiÛ 
-configurada es mostra com una icona a la p‡gina principal del mÚdul. Sovint,
-els detalls de la configuraciÛ que introdueixes en crear una configuraciÛ,
-seran idËntics a tots dos sistemes, nomÈs amb les seccions <b>local</b> i
+una connexi√≥ definida que cont√© l'adre√ßa IP, nom de host identificador, clau
+RSA i xarxa privada (si n'hi ha) de tots dos sistemes. Cada connexi√≥ 
+configurada es mostra com una icona a la p√†gina principal del m√≤dul. Sovint,
+els detalls de la configuraci√≥ que introdueixes en crear una configuraci√≥,
+seran id√®ntics a tots dos sistemes, nom√©s amb les seccions <b>local</b> i
 <b>remota</b> intercanviades.
 
 Tot host que vulgui comunicar-se utilitzant IPsec ha de tenir una parella
-de claus p˙blica/privada, utilitzades tant pel xifratge com per a
-l'autenticaciÛ, Cada cap de la connexiÛ ha de conËixer la clau p˙blica de
-l'altre extrem, que es pot emmagatzemar a la configuraciÛ de la connexiÛ 
-o consultar en un servidor DNS. Es pot utilitzar la caracterÌstica <b>Mostra
-la Clau P˙blica</b> d'aquest mÚdul per veure la clau d'aquest host. <p>
+de claus p√∫blica/privada, utilitzades tant pel xifratge com per a
+l'autenticaci√≥, Cada cap de la connexi√≥ ha de con√®ixer la clau p√∫blica de
+l'altre extrem, que es pot emmagatzemar a la configuraci√≥ de la connexi√≥ 
+o consultar en un servidor DNS. Es pot utilitzar la caracter√≠stica <b>Mostra
+la Clau P√∫blica</b> d'aquest m√≤dul per veure la clau d'aquest host. <p>
 
-IPsec Ès mÈs complex de configurar que altres protocols VPN, perÚ Ès mÈs
-segur i potent, i es considera l'est‡ndard industrial. Desgraciadament,
-pots cometre molts error de configuraciÛ que poden causar que la connexiÛ 
-no s'iniciÔ, o que sigui incapaÁ en silenci d'encarrilar el
-tr‡nsit. Tot i que aquest mÚdul et protegeix d'error simples, no et pot
-estalviar altres problemes conceptuals mÈs seriosos. <p>
+IPsec √©s m√©s complex de configurar que altres protocols VPN, per√≤ √©s m√©s
+segur i potent, i es considera l'est√†ndard industrial. Desgraciadament,
+pots cometre molts error de configuraci√≥ que poden causar que la connexi√≥ 
+no s'inici√Ø, o que sigui incapa√ß en silenci d'encarrilar el
+tr√†nsit. Tot i que aquest m√≤dul et protegeix d'error simples, no et pot
+estalviar altres problemes conceptuals m√©s seriosos. <p>
 
 <hr>
 
-A la p‡gina principal d'aquest mÚdul hi ha icones per a qualsevol connexiÛ
-IPsec existent, i un enllaÁ per a crear-ne una de nova, els quals et duran
+A la p√†gina principal d'aquest m√≤dul hi ha icones per a qualsevol connexi√≥
+IPsec existent, i un enlla√ß per a crear-ne una de nova, els quals et duran
 tots dos a un formulari de detalls similar quan hi facis clic. A sota
-d'aquestes, hi ha icones per editar els valors globals (com ara les interfÌcies
-de xarxa a utilitzar), i mostrar la clau p˙blica del sistema. <p>
+d'aquestes, hi ha icones per editar els valors globals (com ara les interf√≠cies
+de xarxa a utilitzar), i mostrar la clau p√∫blica del sistema. <p>
 
-Si est‡s utilitzant la versiÛ 2 de FreeSWAN, tambÈ hi veur‡s icones
-per editar els diversos fitxers de polÌtiques que determinen quina mena de 
-comunicaciÛ (xifrada o transparent) s'utilitzar‡ per a diverses xarxes.
-TÌpicament, aquests es poden deixar sense canvis, ja que el valor per defecte
-Ès xifrar sempre que sigui possible. <p>
+Si est√†s utilitzant la versi√≥ 2 de FreeSWAN, tamb√© hi veur√†s icones
+per editar els diversos fitxers de pol√≠tiques que determinen quina mena de 
+comunicaci√≥ (xifrada o transparent) s'utilitzar√† per a diverses xarxes.
+T√≠picament, aquests es poden deixar sense canvis, ja que el valor per defecte
+√©s xifrar sempre que sigui possible. <p>
 
-Prop del peu de la p‡gina, hi ha uns botons per iniciar i aturar el procÈs
-servidor FreeSWAN i aplicar-li la configuraciÛ actual bo i executant-se.
-El sistema no podr‡ establir ni rebre connexions IPsec si el servidor no 
-est‡ actiu. Es pot utilitzar el botÛ <b>Inicia connexiÛ</b> d'aquesta
-secciÛ per forÁar l'establiment d'un t˙nel IPsec que no s'activi autom‡ticament
+Prop del peu de la p√†gina, hi ha uns botons per iniciar i aturar el proc√©s
+servidor FreeSWAN i aplicar-li la configuraci√≥ actual bo i executant-se.
+El sistema no podr√† establir ni rebre connexions IPsec si el servidor no 
+est√† actiu. Es pot utilitzar el bot√≥ <b>Inicia connexi√≥</b> d'aquesta
+secci√≥ per for√ßar l'establiment d'un t√∫nel IPsec que no s'activi autom√†ticament
 quan s'inicia el sistema. <p>
 
 <hr>

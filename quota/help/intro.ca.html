@@ -1,64 +1,64 @@
 <header>Quotes de Disc</header>
 
-<h3>IntroducciÛ</h3>
+<h3>Introducci√≥</h3>
 
-Les quotes sÛn un sistema per controlar quant disc poden utilitzar els
-usuaris i els grups. Per cada sistema de fitxers, pots establir lÌmits
+Les quotes s√≥n un sistema per controlar quant disc poden utilitzar els
+usuaris i els grups. Per cada sistema de fitxers, pots establir l√≠mits
 sobre quant espai de disc i quants fitxers pot tenir un usuari. Alguns
-sistemes Unix tambÈ et deixen limitar l'espai i els fitxers utilitzats
+sistemes Unix tamb√© et deixen limitar l'espai i els fitxers utilitzats
 pels membres d'un grup.
 <p>
-NomÈs es poden establir quotes per als sistemes de fitxers Unix locals.
+Nom√©s es poden establir quotes per als sistemes de fitxers Unix locals.
 Els sistemes de fitxers NFS muntats des d'altres sistemes utilitzen
 les quotes establertes al servidor (si n'hi ha). Els sistemes de fitxers
 no Unix (com per exemple, MS-DOS o ISO9660) no suporten quotes.
 <p>
 
-Per cada usuari es poden imposar quatre lÌmits:
+Per cada usuari es poden imposar quatre l√≠mits:
 <dl>
-   <dt><b>LÌmit lax de blocs</b>
-   <dd>El nombre de blocs de disc permesos abans de mostrar un missatge d'avÌs.
-   <dt><b>LÌmit estricte de blocs</b>
-   <dd>El nombre m‡xim de blocs que un usuari pot ocupar.
-   <dt><b>LÌmit lax de fitxers</b>
-   <dd>El nombre de fitxers permesos abans de mostrar un missatge d'avÌs.
-   <dt><b>LÌmit estricte de fitxers</b>
-   <dd>El nombre m‡xim de fitxers que un usuari pot tenir.
+   <dt><b>L√≠mit lax de blocs</b>
+   <dd>El nombre de blocs de disc permesos abans de mostrar un missatge d'av√≠s.
+   <dt><b>L√≠mit estricte de blocs</b>
+   <dd>El nombre m√†xim de blocs que un usuari pot ocupar.
+   <dt><b>L√≠mit lax de fitxers</b>
+   <dd>El nombre de fitxers permesos abans de mostrar un missatge d'av√≠s.
+   <dt><b>L√≠mit estricte de fitxers</b>
+   <dd>El nombre m√†xim de fitxers que un usuari pot tenir.
 </dl>
-Els blocs de disc tenen una mida tÌpica de 512 o 1024 bytes, depenen del
+Els blocs de disc tenen una mida t√≠pica de 512 o 1024 bytes, depenen del
 sistema operatiu. En calcular les quotes, totes les mides de fitxers
-s'arrodoneixen al bloc mÈs proper. AixÌ doncs, un fitxer buit ocupa
+s'arrodoneixen al bloc m√©s proper. Aix√≠ doncs, un fitxer buit ocupa
 al menys 1 bloc.
 <p>
 Pel que fa a les quotes de fitxers, cada directori, dispositiu,
-enllaÁ simbÚlic o fitxer normal, compta en el lÌmit m‡xim de fitxers
-que un usuari pot tenir. TËcnicament, la quota de fitxers Ès una quota
+enlla√ß simb√≤lic o fitxer normal, compta en el l√≠mit m√†xim de fitxers
+que un usuari pot tenir. T√®cnicament, la quota de fitxers √©s una quota
 sobre els <i>inodes</i>.
 <p>
 
-<h3>El MÚdul de Quotes de Disc</h3>
+<h3>El M√≤dul de Quotes de Disc</h3>
 
-La p‡gina principal d'aquest mÚdul mostra una llista de sistemes de fitxers
+La p√†gina principal d'aquest m√≤dul mostra una llista de sistemes de fitxers
 locals que poden suportar quotes. SI hi ha quotes activades per a un 
-sistema de fitxers, llavors pots fer clic sobre el seu camÌ per veure les
+sistema de fitxers, llavors pots fer clic sobre el seu cam√≠ per veure les
 quotes de cada usuari. Si no, fent clic sobre <tt>Activa les Quotes</tt>
-activar‡ les quotes d'aquest sistema de fitxers.
+activar√† les quotes d'aquest sistema de fitxers.
 <p>
 
 <if $gconfig{'os_type'} =~ /linux/>
-El sistema Operatiu Linux no permet activar les quotes si no Ès que el
-sistema de fitxers tÈ l'opciÛ <tt>Utilitza Quotes</tt> activada al
-mÚdul de Discs i Sistemes de Fitxers. Si cap dels teus sistemes de 
-fitxers tÈ aquesta opciÛ activada, no en sortir‡ cap de llistat a la
-p‡gina principal.
+El sistema Operatiu Linux no permet activar les quotes si no √©s que el
+sistema de fitxers t√© l'opci√≥ <tt>Utilitza Quotes</tt> activada al
+m√≤dul de Discs i Sistemes de Fitxers. Si cap dels teus sistemes de 
+fitxers t√© aquesta opci√≥ activada, no en sortir√† cap de llistat a la
+p√†gina principal.
 <p>
 </if>
 
-Sota la llista de sistemes de fitxers hi ha un botÛ per veure totes les
-quotes d'un usuari seleccionat. Aquest nomÈs es mostrar‡ si hi ha almenys
+Sota la llista de sistemes de fitxers hi ha un bot√≥ per veure totes les
+quotes d'un usuari seleccionat. Aquest nom√©s es mostrar√† si hi ha almenys
 un sistema de fitxers amb quotes d'usuari activades. Igualment, si hi ha
-almenys un sistema de fitxers amb quotes de grup activades, hi haur‡ un
-botÛ per veure totes les quotes d'un grup seleccionat.
+almenys un sistema de fitxers amb quotes de grup activades, hi haur√† un
+bot√≥ per veure totes les quotes d'un grup seleccionat.
 <p>
 
 <hr>

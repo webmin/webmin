@@ -1,0 +1,1 @@
+<header>允许不受信任的路由</header><center> <tt>allow_untrusted_routing</tt> </center> <hr>此参数控制Postfix是否将具有发件人指定的路由（用户[@％！]远程[@％！]站点）的邮件从不受信任的客户端转发到<a href=opt_relay_domains><tt>relay_domains</tt></a>参数允许的目标。 <p>默认情况下，不允许不受信任的客户端指定路由。这消除了一个令人讨厌的开放中继漏洞，在该漏洞中，可以欺骗备用MX主机将垃圾邮件转发到主MX主机，然后再将其发送到全世界。 <hr>

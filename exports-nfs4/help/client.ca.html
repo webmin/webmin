@@ -1,38 +1,38 @@
 <header>Exporta a...</header>
 
-Els hosts que tindran accÈs al directori exportat. <br>
-<b>AtenciÛ:</b> en exportar amb krb5, la tria dels clients es fa a la
-configuraciÛ de Kerberos5.<br><br>
-Hi ha sis formes disponibles  d'especificar quins hosts tenen permËs de
+Els hosts que tindran acc√©s al directori exportat. <br>
+<b>Atenci√≥:</b> en exportar amb krb5, la tria dels clients es fa a la
+configuraci√≥ de Kerberos5.<br><br>
+Hi ha sis formes disponibles  d'especificar quins hosts tenen perm√®s de
 muntar el directori:
 <dl>
    <dt><b>Tothom</b>
    <dd>
-   Qualsevol host capaÁ de connectar amb el teu sistema tÈ permËs l'accÈs.
-   Aquest opciÛ s'ha de fer servir amb precauciÛ, sobretot si el sistema
-   est‡ connectat a Internet.
+   Qualsevol host capa√ß de connectar amb el teu sistema t√© perm√®s l'acc√©s.
+   Aquest opci√≥ s'ha de fer servir amb precauci√≥, sobretot si el sistema
+   est√† connectat a Internet.
    <dt><b>Host(s)</b>
    <dd>
-   AixÚ pot ser una sola adreÁa IP, un sol nom de host, o una expressiÛ
+   Aix√≤ pot ser una sola adre√ßa IP, un sol nom de host, o una expressi√≥
    regular com ara <tt>*.foo.com</tt>. En aquest darrer cas, tots els hosts
-   tals que la seva consulta DNS inversa coincideixin amb l'expressiÛ,
-   tindran permËs l'accÈs.
+   tals que la seva consulta DNS inversa coincideixin amb l'expressi√≥,
+   tindran perm√®s l'acc√©s.
    <dt><b>Clients WebNFS</b>
    <dd>
    Permet que els clients que fan servir el protocol WebNFS de Sun
    accedeixin aquest directori.
    <dt><b>Grup de xarxa NIS</b>
    <dd>
-   Permet que tots els membres del grup NIS especificats tinguin accÈs
-   a aquesta exportaciÛ.
-   <dt><b>Xarxa</b> IPV4 i <b>M‡scara</b>
+   Permet que tots els membres del grup NIS especificats tinguin acc√©s
+   a aquesta exportaci√≥.
+   <dt><b>Xarxa</b> IPV4 i <b>M√†scara</b>
    <dd>
-   Tots els host de la subxarxa especificada tenen permËs l'accÈs.
-   Per exemple, si la xarxa Ès <tt>10.1.2.0</tt> i la m‡scara 
+   Tots els host de la subxarxa especificada tenen perm√®s l'acc√©s.
+   Per exemple, si la xarxa √©s <tt>10.1.2.0</tt> i la m√†scara 
    <tt>255.255.255.0</tt>, estaran permesos tots els hosts amb adreces IP
    entre <tt>10.1.2.0</tt> i <tt>10.1.2.255</tt>.
-   <dt><b>AdreÁa</b> IPv6 i <b>Prefix</b>
-   <dd>Qualsevol host de la subxarxa especificada hi tÈ accÈs.
+   <dt><b>Adre√ßa</b> IPv6 i <b>Prefix</b>
+   <dd>Qualsevol host de la subxarxa especificada hi t√© acc√©s.
 </dl>
 
 <hr>

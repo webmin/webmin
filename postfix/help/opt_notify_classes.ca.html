@@ -3,15 +3,15 @@
 <center><tt>notify_classes</tt></center>
 <hr>
 
-Has d'establir un àlies de <b>postmaster</b> que apunti a una persona humana.
-Cal que aquest àlies existeixi, ja que la gent ha de poder informar de 
+Has d'establir un Ã lies de <b>postmaster</b> que apunti a una persona humana.
+Cal que aquest Ã lies existeixi, ja que la gent ha de poder informar de 
 problemes en el correu.
 
 <p>
 
-El propi sistema Postfix també informa de problemes a l'àlies de postmaster.
+El propi sistema Postfix tambÃ© informa de problemes a l'Ã lies de postmaster.
 Pot ser que no estiguis interessat en tots els informes de problemes,
-així que el mecanisme d'informació és configurable. Per defecte, només
+aixÃ­ que el mecanisme d'informaciÃ³ Ã©s configurable. Per defecte, nomÃ©s
 s'informa a postmaster de problemes seriosos (recursos, programari):
 
 <p>
@@ -20,19 +20,19 @@ s'informa a postmaster de problemes seriosos (recursos, programari):
 
 <p>
 
-El significat de les classes és el següent:
+El significat de les classes Ã©s el segÃ¼ent:
 
 <ul>
-<li><tt>bounce:</tt> Envia còpies del correu no lliurable a postmaster.
+<li><tt>bounce:</tt> Envia cÃ²pies del correu no lliurable a postmaster.
 <li><tt>2bounce:</tt> Envia correus doblement rebotats a postmaster. 
 <li><tt>delay:</tt> Informa a postmaster del correu diferit. En aquest cas,
-el postmaster rep només les capçaleres.
+el postmaster rep nomÃ©s les capÃ§aleres.
 <li><tt>policy:</tt> Informa a postmaster de les peticions de clients que han
-estat rebutjades a causa de les restriccions de política (UCE). Postmaster
-rep una transcripció de tota la sessió SMTP.
+estat rebutjades a causa de les restriccions de polÃ­tica (UCE). Postmaster
+rep una transcripciÃ³ de tota la sessiÃ³ SMTP.
 <li><tt>protocol:</tt> Informa a postmaster del protocol d'errors (del
-cantó client o servidor) o els intents d'un client d'executar ordres no
-implementades. Postmaster rep un transcripció de tota la sessió SMTP.
+cantÃ³ client o servidor) o els intents d'un client d'executar ordres no
+implementades. Postmaster rep un transcripciÃ³ de tota la sessiÃ³ SMTP.
 <li><tt>resource:</tt> Informa a postmaster del correu no lliurat degut a
 problemes de recursos (per exemple, errors d'escriptura a la cua).
 <li><tt>software:</tt> Informa a postmaster del correu no lliurat degut a
