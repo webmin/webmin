@@ -51,6 +51,8 @@ sub main
                'only-diff|od!'                    => \$opt{'only-diff'},
                'only-transcode|ot!'               => \$opt{'only-transcode'},
                'keys-exclude|ke:s'                => \$opt{'keys-exclude'},
+               'keys-force-translate|kft:s'       => \$opt{'keys-force-translate'},
+               'keys-force-html|kfh:s'            => \$opt{'keys-force-html'},
                'keys-test|kt:s'                   => \$opt{'keys-test'},
                'values-fix|vf:s'                  => \$opt{'values-fix'},
                'values-fix-delimiter|vfd:s'       => \$opt{'values-fix-delimiter'},
@@ -204,6 +206,12 @@ sub main
 
     # Exclude listed keys from bulk translation
     $opt{'keys-exclude'} = [$opt{'keys-exclude'} ? split(',', $opt{'keys-exclude'}) : ()];
+
+    # Forced list of keys that will be re-translated
+    $opt{'keys-force-translate'} = [$opt{'keys-force-translate'} ? split(',', $opt{'keys-force-translate'}) : ()];
+
+    # Forced list of keys to run translations in HTML format
+    $opt{'keys-force-html'} = [$opt{'keys-force-html'} ? split(',', $opt{'keys-force-html'}) : ()];
 
     # Value fix delimiter. Default is `:`
     $opt{'values-fix-delimiter'} ||= ':';
@@ -587,6 +595,7 @@ sub translate_substitute
 {
     my ($value, $opt) = @_;
     my $format = $opt->{'translate-format'};
+    $format = 'html' if ($opt->{'translate-format-html'});
 
     $value = language_transcode($value, 'utf-8', $opt);
 
@@ -611,7 +620,9 @@ sub translated_substitute
 {
     my ($translated, $original, $code, $rtl, $opt) = @_;
 
-    my $format        = $opt->{'translate-format'};
+    my $format = $opt->{'translate-format'};
+    $format = 'html' if ($opt->{'translate-format-html'});
+
     my $remove_spaces = sub {
         my ($str) = @_;
         $str =~ s/[ ]+//g;
@@ -779,6 +790,7 @@ sub translate
 
     my $source = $opt->{'language-source'};
     my $format = $opt->{'translate-format'};
+    $format = 'html' if ($opt->{'translate-format-html'});
 
     # Updating Google Translate API token to avoid expiration
     my $time = time();
@@ -838,6 +850,8 @@ sub go
     my $language_target             = $opt->{'language-target'};
     my $language_target_exclude     = $opt->{'language-target-exclude'};
     my $keys_exclude                = $opt->{'keys-exclude'};
+    my $keys_force_translate        = $opt->{'keys-force-translate'};
+    my $keys_force_html             = $opt->{'keys-force-html'};
     my $keys_test                   = $opt->{'keys-test'};
     my $values_fix                  = $opt->{'values-fix'};
     my $git_commit                  = $opt->{'git-commit'};
@@ -1173,6 +1187,9 @@ sub go
                         next;
                     }
 
+                    # Reset to default to translations in text format
+                    $opt->{'translate-format-html'} = 0;
+
                     # Modify `$key` when type is set to "module", otherwise keep default
                     my $key_  = $key;
                     my $key__ = $key;
@@ -1263,8 +1280,9 @@ sub go
                         # Previously translated strings from `$code.auto` file, e.g. `de.auto`,
                         # should be considered, unless forced to be dropped
                         if ($language_source_file_auto &&
-                            $language_source_file_auto->{$key_} &&
-                            !@{$keys_test} &&
+                            $language_source_file_auto->{$key_}              &&
+                            (any {$_ !~ /^$key_$/} @{$keys_force_translate}) &&
+                            !@{$keys_test}                                   &&
                             !$language_source_ignore_auto)
                         {
                             !$verbose_silent_mode && talk_log(
@@ -1336,6 +1354,13 @@ sub go
                                 }
                                 $language_auto{$key__} = $value;
                                 next;
+                            }
+
+                            # Force to use HTML on certain keys only
+                            # It's useful to preserve certain lines intact, like
+                            # "HIGH:!aNULL:!MD5" when in text mode by defaul
+                            if (any {$_ =~ /^$key$/} @{$keys_force_html}) {
+                                $opt->{'translate-format-html'} = 1;
                             }
 
                             # Add translated string
@@ -1429,7 +1454,7 @@ sub go
                       if (%language_auto && !$opt->{'only-transcode'});
 
                     # Remove empty files
-                    unlink($file) if (-z $file);
+                    unlink($file)      if (-z $file);
                     unlink($file_auto) if (-z $file_auto);
 
                     # Git auto-commit after language was transcoded/translated
@@ -1646,11 +1671,11 @@ Give this help list.
 
 Examples of usage:
 
-Synchronize all language keys for Apache module, based on template language. Newly added entries to Apache template language file (def. en), will be translated and inserted into all other machine translated language files, while deleted entries will also be removed on all targets (translations), including human translated files.
+Synchronize all language keys for Apache module, based on template language. Newly added entries to Apache template language file (def. en), will be translated and inserted into all other machine translated language files, while deleted entries will also be removed on all targets (translations), including human translated files. The value for "defines_desc" will be force re-translated and translation will be done in HTML format. 
 
- — language-manager -m=apache
+ — language-manager -m=apache -kft=defines_desc -kfh=defines_desc
 
-Synchronize all modules' "help/" language files. Newly added files will be translated and already translated, both human and machine translations, will be kept intact
+Synchronize all modules' "help/" language files. Newly added files will be translated and already translated, both human and machine translations, will be kept intact.
 
  — language-manager -w=help
 
@@ -1688,7 +1713,7 @@ Comma separated list of modules to operate on. Default is to operate on all avai
 
 =item --modules-exclude, -me
 
-Comma separated list of modules to exclude
+Comma separated list of modules to exclude.
 
 =item --language-target, -t
 
@@ -1724,11 +1749,19 @@ Use this option to simply convert old-time style module language files (where ea
 
 =item --keys-exclude, -ke
 
-Comma separated list of keys that shouldn't be translated and stored with original values
+Comma separated list of keys that shouldn't be translated and stored with original values.
+
+=item --keys-force-translate, -kft
+
+Comma separated list of keys that will be force re-translated, even if they were already machine translated. Using this option will not affect human translated keys.
+
+=item --keys-force-html, -kfh
+
+Comma separated list of keys that will be translated in HTML format. It's useful to strictly preserve content inside <tt></tt> tags when translations are done in text mode by default.
 
 =item --keys-test, -kt
 
-Comma separated list of keys to test translation engine on; in this mode, translated strings are not saved
+Comma separated list of keys to test translation engine on; in this mode, translated strings are not saved.
 
 =item --values-fix, -vf
 
@@ -1740,7 +1773,7 @@ If not set, by default, colon is used as separator for search/replace values in 
 
 =item --git-commit, -gc
 
-Create a separate commit to the current repo, after each language was transcoded/translated
+Create a separate commit to the current repo, after each language was transcoded/translated.
 
 =item --log, -l
 
