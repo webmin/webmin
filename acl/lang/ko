@@ -106,7 +106,7 @@ save_ecolon=패스워드에 : 문자를 사용할 수 없습니다
 save_epass=암호가 올바르지 않음 : $1
 save_eself=현재 IP 주소($1)는 거부됩니다
 save_epam=<tt>Authen::PAM</tt> Perl 모듈이 설치 되어 있지 않거나 올바르게 작동하지 않아 PAM 인증을 사용할 수 없습니다.
-save_epam2=Authen::PAM 모듈을 <<a href='$1'>이 곳</a> 에서 받아서 설치 할 수 있습니다.
+save_epam2=Authen::PAM 모듈을 <a href='$1'>이 곳</a> 에서 받아서 설치 할 수 있습니다.
 save_egroup=해당 그룹에 할당할 수 없습니다
 save_enone=주소가 입력되지 않음
 save_enet='$1' 는 유효한 네트워크 주소가 아님

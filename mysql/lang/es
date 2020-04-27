@@ -19,7 +19,7 @@ index_ever=El programa cliente de MySQL $1 no parece ser de la versión correcta
 index_nouser=Su cuenta de Webmin está configurada para conectarse al servidor MySQL como el usuario $1, pero este usuario tiene denegado el acceso.
 index_db=Nombre de Base de datos
 index_tables=Tablas
-index_elibrary=El programa cliente $1 de MySQL no pudo ser ejecutado ya que no pudo hallar las bibliotecas compartidas de MySQL. Revise la << href='$2'>configuración del módulo</a> y asegúrese de que el <i>camino a las bibliotecas compartidas de MySQL</i> está bién definida.
+index_elibrary=El programa cliente $1 de MySQL no pudo ser ejecutado ya que no pudo hallar las bibliotecas compartidas de MySQL. Revise la <a href='$2'>configuración del módulo</a> y asegúrese de que el <i>camino a las bibliotecas compartidas de MySQL</i> está bién definida.
 index_version=Versión $1 de MySQL
 index_nomod=Advertencia:  el módulo $1 de Perl no está instalado en su sistema, por lo que Webmin no podrá acceder acceder a su base de datos MySQL en forma confiable. <a href='$2'>Presione aquí</a> para instalarlo ahora.
 index_nomods=Warning: Los módulos de Perl $1 y $2 no están instalados en su sistema, por lo que Webmin no podrá acceder a su base de datos MySQL en forma confiable. <a href='$3'>Presione aquí</a> para instalarlo ahora.
