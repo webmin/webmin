@@ -813,6 +813,7 @@ s/(?|(\\\s*n\s*\\\s*n\s*\\\s*n\s*\\\s*n\s*\\\s*n)|(\\\s*n\s*\\\s*n\s*\\\s*n\s*\\
     if ($code eq 'ru') {
         $translated =~ s/<Я>(.*?)<\/.>/<i>$1<\/i>/gi;
         $translated =~ s/<Я>(.*?)<\/\?/<i>$1<\/i>/gi;
+        $translated =~ s/« <b>/«<b>/gi;
     }
 
     return $translated;
