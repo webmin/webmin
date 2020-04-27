@@ -254,6 +254,11 @@ sub main
                 talk('fix-pre', \%opt, \%data);
             }
 
+            # Execute language fix for double encoded strings
+            elsif ($opt{'mode'} eq 'transcode') {
+                talk('transcode-pre', \%opt, \%data);
+            }
+
             # Execute language sync
             else {
                 talk('sync-pre', \%opt, \%data);
@@ -494,36 +499,44 @@ sub language_transcode
     # Warning - it will be removed in the near future, after config parser for translator is created
     my $type        = $opt->{'type'};
     my $type_config = $type =~ /config|uconfig/ if ($type);
+    my $utf8        = 'utf-8';
     if ($type_config) {
         $string =~ s/&#44;/~,~,~/g;
         $string =~ s/&#45;/~-~-~/g;
-
-        # Preserve actual tags
-        $string =~ s/&nbsp;/~!!SS!!~/g;
-        $string =~ s/&lt;/~!~!!~/g;
-        $string =~ s/&gt;/~!!~!~/g;
     }
 
-    eval {$string = decode($encoding, $string)};
-    if ($@) {
-        say "Error found: $@";
-        if (!prompt('next')) {
-            exit;
+    # Preserve actual tags
+    $string =~ s/&nbsp;/~!!SS!!~/g;
+    $string =~ s/&lt;/~!~!!~/g;
+    $string =~ s/&gt;/~!!~!~/g;
+
+    if ($encoding eq $utf8) {
+        utf8::decode($string);
+        $string = decode_entities($string);
+        utf8::encode($string);
+    } else {
+        eval {$string = decode($encoding, $string)};
+        if ($@) {
+            say "Error found: $@";
+            if (!prompt('next')) {
+                exit;
+            }
         }
+        $string = decode_entities($string);
+        $string = encode($utf8, $string);
     }
-    decode_entities($string);
-    $string = encode('utf-8', $string);
 
     # Restore special commas and dashes
     if ($type_config) {
         $string =~ s/~-~-~/&#45;/g;
         $string =~ s/~,~,~/&#44;/g;
 
-        # Restore escaped tags
-        $string =~ s/~!!~!~/&gt;/g;
-        $string =~ s/~!~!!~/&lt;/g;
-        $string =~ s/~!!SS!!~/&nbsp;/g;
     }
+
+    # Restore escaped tags
+    $string =~ s/~!!~!~/&gt;/g;
+    $string =~ s/~!~!!~/&lt;/g;
+    $string =~ s/~!!SS!!~/&nbsp;/g;
 
     return $string;
 }
@@ -857,6 +870,7 @@ sub go
     my $git_commit                  = $opt->{'git-commit'};
     my $verbose                     = $opt->{'verbose'} || @{$keys_test};
     my $mode_sync                   = $opt->{'mode'} ne 'full';
+    my $mode_transcode              = $opt->{'mode'} eq 'transcode';
     my $verbose_silent_mode         = $mode_sync && $verbose != 2;
 
     if ($type eq 'help') {
@@ -1190,6 +1204,11 @@ sub go
                     # Reset to default to translations in text format
                     $opt->{'translate-format-html'} = 0;
 
+                    # Automatically detect if we can upgrade to HTML mode
+                    if ($value =~ //) {
+                        #...
+                    }
+
                     # Modify `$key` when type is set to "module", otherwise keep default
                     my $key_  = $key;
                     my $key__ = $key;
@@ -1280,9 +1299,9 @@ sub go
                         # Previously translated strings from `$code.auto` file, e.g. `de.auto`,
                         # should be considered, unless forced to be dropped
                         if ($language_source_file_auto &&
-                            $language_source_file_auto->{$key_}              &&
-                            (any {$_ !~ /^$key_$/} @{$keys_force_translate}) &&
-                            !@{$keys_test}                                   &&
+                            $language_source_file_auto->{$key_}                                           &&
+                            (!@{$keys_force_translate} || any {$_ !~ /^$key_$/} @{$keys_force_translate}) &&
+                            !@{$keys_test}                                                                &&
                             !$language_source_ignore_auto)
                         {
                             !$verbose_silent_mode && talk_log(
@@ -1318,6 +1337,13 @@ sub go
                                          $data, $opt->{'verbose'});
                             }
 
+                            # If we need to transcode double encoded string, containing both &#... and utf-8 chars
+                            if ($mode_transcode) {
+                                $language_source_file->{$key_} =
+                                  language_transcode($language_source_file->{$key_}, 'utf-8', $opt);
+                                $output_++;
+                            }
+
                             # Add a string to main language file
                             $language{$key__} = $language_source_file->{$key_};
 
@@ -1328,7 +1354,7 @@ sub go
                         else {
 
                             # Skip steps below, and only transcode existing values
-                            if ($opt->{'only-transcode'}) {
+                            if ($opt->{'only-transcode'} || $mode_transcode) {
                                 next;
                             }
 
@@ -1478,6 +1504,15 @@ sub go
                     talk_log(
                              ("" . BRIGHT_CYAN .
                               "  .. All strings are in sync already for $name ($code) language" . RESET . ""),
+                             $data,
+                             1);
+                }
+
+                if ($output_ && $mode_transcode) {
+                    talk_log(
+                             ("" . BRIGHT_GREEN .
+                                "  .. All double-encoded strings were recovered for $name ($code) language" . RESET . ""
+                             ),
                              $data,
                              1);
                 }
@@ -1636,6 +1671,13 @@ sub talk
           "The following operation will search for matching string in template\nfile ",
           YELLOW BOLD . "(" . $opt->{'language-source'} . ")" . RESET,
           " and replaces matches on translation files accordingly. The operation\nlog will be written in " . YELLOW BOLD,
+          $opt->{'log'}, RESET, " file.", RESET;
+    }
+
+    if ($what eq 'transcode-pre') {
+        say BRIGHT_BLUE, "Attention! ", RESET, WHITE,
+"The following operation will recover double-encoded strings in targeted lan-\nguages. The operation log will be written in "
+          . YELLOW BOLD,
           $opt->{'log'}, RESET, " file.", RESET;
     }
 }
