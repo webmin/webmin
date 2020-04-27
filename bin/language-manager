@@ -802,6 +802,12 @@ sub translated_substitute
         $translated =~ s/>/&gt;/g;
     }
 
+    # If original string contains "\n" character, fix it, as it's broken in text mode translations
+    if ($original =~ /\\n/) {
+        $translated =~
+s/(?|(\\\s*n\s*\\\s*n\s*\\\s*n\s*\\\s*n\s*\\\s*n)|(\\\s*n\s*\\\s*n\s*\\\s*n\s*\\\s*n)|(\\\s*n\s*\\\s*n\s*\\\s*n)|(\\\s*n\s*\\\s*n)|(\\\s*n))/@{[lc(&$remove_spaces($1))]}/gi;
+    }
+
     return $translated;
 }
 
