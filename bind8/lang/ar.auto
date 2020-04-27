@@ -66,6 +66,7 @@ index_eexpired=Warning : The following zones have expired DNSSEC signatures : $1
 index_eexpired_conf=Automatic signing should be re-enabled on the $1 page.
 index_eexpired_mod=Use the $1 module to either disable DNSSEC for these domains, or check why signing is failing.
 master_title=تحرير ماجستير المنطقة
+master_inview=$1 في العرض$2
 master_ecannot=غير مسموح لك بتحرير هذه المنطقة
 master_egone=Zone $1 does not exist in any view
 master_egone2=Zone $1 does not exist!
@@ -958,7 +959,7 @@ add_ename=اسم سجل NS مفقود أو غير صالح
 add_egname=لا يمكن تحديد اسم سجل NS عند إضافة مجموعة
 add_emyip=Could not work out this system's IP address. You should set the <b>Default master server IP for remote slave zones</b> on the Module Config page.
 mass_title=إنشاء مناطق من ملف دفعي
-mass_desc=This page allows you to create multiple zones at once from an uploaded or server-side text file. Each line in the file must have the following format:<p></p><tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt><p></p>The <i>type</i> must be one of <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> or <tt>forward</tt>. The <i>filename</i> is optional, and will be computed automatically if missing. The <i>master IPs</i> only need to be given for slave zones.
+mass_desc=تتيح لك هذه الصفحة إنشاء مناطق متعددة في وقت واحد من ملف نصي محمّل أو من جانب الخادم. يجب أن يكون لكل سطر في الملف التنسيق التالي: <p style=";text-align:right;direction:rtl"></p> <tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt> <p style=";text-align:right;direction:rtl"></p> يجب أن يكون <i>النوع من النوع</i> <tt>master</tt> ، أو <tt>slave</tt> ، أو <tt>stub</tt> أو <tt>forward</tt>. <i>اسم الملف</i> اختياري ، وسيتم حسابه تلقائيًا في حالة فقده. يجب إعطاء <i>عناوين IP الرئيسية</i> فقط للمناطق التابعة.
 mass_local=ملف دفعي محلي
 mass_upload=تم تحميل الملف الدفعي
 mass_text=نص ملف دفعي

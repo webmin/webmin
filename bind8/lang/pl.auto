@@ -1,6 +1,7 @@
 index_eexpired=Ostrzeżenie: następujące strefy wygasły sygnatury DNSSEC : $1
 index_eexpired_conf=Automatyczne podpisywanie powinno zostać ponownie włączone na stronie $1.
 index_eexpired_mod=Użyj modułu $1, aby wyłączyć DNSSEC dla tych domen lub sprawdzić, dlaczego podpisywanie kończy się niepowodzeniem.
+master_inview=$1 w widoku $2 
 delete_vwarn=Ta strefa jest powiązana z domeną Virtualmin $1, dlatego nie należy jej tutaj usuwać!
 delete_vwarn2=Ta strefa jest powiązana z domeną Virtualmin $1 i $2 innymi, dlatego nie należy jej tutaj usuwać!
 edit_eusage=„$1” nie jest prawidłowym numerem użytkowania TLSA

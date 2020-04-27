@@ -4,6 +4,7 @@ index_checkconfig=Zorg ervoor dat de chroot-directory correct is ingesteld op de
 index_eexpired=Waarschuwing: de volgende zones zijn verlopen DNSSEC-handtekeningen : $1
 index_eexpired_conf=Automatisch ondertekenen moet opnieuw worden ingeschakeld op de pagina $1.
 index_eexpired_mod=Gebruik de module $1 om DNSSEC voor deze domeinen uit te schakelen, of controleer waarom ondertekenen mislukt.
+master_inview=$1 in zicht $2 
 master_egone=Zone $1 bestaat in geen enkele weergave
 master_egone2=Zone $1 bestaat niet!
 master_egone3=Zone $1 in zicht $2 bestaat niet!

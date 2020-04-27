@@ -1,3 +1,4 @@
+master_inview=$1 a la vista $2 
 delete_onslave=També voleu suprimir-lo dels servidors esclaus?
 delete_errslave=La zona mestra ha suprimit bé, però s'han produït els errors següents en esclaus : $1
 delete_vwarn=Aquesta zona està associada amb el domini Virtualmin $1, per tant, no s'ha d'esborrar aquí.

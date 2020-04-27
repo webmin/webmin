@@ -17,6 +17,7 @@ index_checkconfig=Make sure that the chroot directory is set correctly on the <a
 index_eexpired=Warning : The following zones have expired DNSSEC signatures : $1
 index_eexpired_conf=Automatic signing should be re-enabled on the $1 page.
 index_eexpired_mod=Use the $1 module to either disable DNSSEC for these domains, or check why signing is failing.
+master_inview=از نظر$1 از$2
 master_egone=Zone $1 does not exist in any view
 master_egone2=Zone $1 does not exist!
 master_egone3=Zone $1 in view $2 does not exist!

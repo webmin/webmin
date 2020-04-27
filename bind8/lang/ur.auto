@@ -66,6 +66,7 @@ index_eexpired=Warning : The following zones have expired DNSSEC signatures : $1
 index_eexpired_conf=Automatic signing should be re-enabled on the $1 page.
 index_eexpired_mod=Use the $1 module to either disable DNSSEC for these domains, or check why signing is failing.
 master_title=ماسٹر زون میں ترمیم کریں
+master_inview=$1 ملاحظہ میں$2
 master_ecannot=آپ کو اس زون میں ترمیم کرنے کی اجازت نہیں ہے
 master_egone=Zone $1 does not exist in any view
 master_egone2=Zone $1 does not exist!

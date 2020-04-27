@@ -1,6 +1,7 @@
 index_eexpired=Advarsel: Følgende soner har utløpt DNSSEC-signaturer : $1
 index_eexpired_conf=Automatisk signering bør aktiveres på nytt på $1 -siden.
 index_eexpired_mod=Bruk modulen $1 for å deaktivere DNSSEC for disse domenene, eller sjekk hvorfor signering mislykkes.
+master_inview=$1 i visning $2 
 delete_vwarn=Denne sonen er tilknyttet Virtualmin-domenet $1, og bør derfor ikke slettes her!
 delete_vwarn2=Denne sonen er tilknyttet Virtualmin-domenet $1 og $2 andre, og bør derfor ikke slettes her!
 edit_ealg2='$1' er ikke et gyldig sertifikatalgoritmnummer

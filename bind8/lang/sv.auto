@@ -15,6 +15,7 @@ index_checkconfig=Se till att chrotkatalogen är korrekt inställd på sidan <a 
 index_eexpired=Varning: Följande zoner har gått ut DNSSEC-signaturer : $1
 index_eexpired_conf=Automatisk signering bör aktiveras på sidan $1.
 index_eexpired_mod=Använd modulen $1 för att antingen inaktivera DNSSEC för dessa domäner, eller kontrollera varför signering misslyckas.
+master_inview=$1 i vy $2 
 master_egone=Zon $1 finns inte i någon vy
 master_egone2=Zon $1 finns inte!
 master_egone3=Zon $1 i vyn $2 finns inte!

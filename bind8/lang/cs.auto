@@ -12,6 +12,7 @@ index_checkconfig=Ujistěte se, že je adresář chroot správně nastaven na st
 index_eexpired=Upozornění: Následující zóny vypršely podpisy DNSSEC : $1
 index_eexpired_conf=Automatické podepisování by mělo být znovu povoleno na stránce $1.
 index_eexpired_mod=Pomocí modulu $1 zakažte pro tyto domény DNSSEC nebo zkontrolujte, proč se nepodepisuje podpis.
+master_inview=$1 v zobrazení $2 
 master_egone=Zóna $1 v žádném pohledu neexistuje
 master_egone2=Zóna $1 neexistuje!
 master_egone3=Zóna $1 v pohledu $2 neexistuje!
