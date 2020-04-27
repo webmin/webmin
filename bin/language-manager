@@ -511,6 +511,15 @@ sub language_transcode
     $string =~ s/&gt;/~!!~!~/g;
 
     if ($encoding eq $utf8) {
+
+        # Handle consecutive entities first
+        my @entities = ($string =~ /&#\d+;[&#\d+;]{2,}/g);
+        foreach my $entity (@entities) {
+            my $decoded_intity = decode_entities($entity);
+            $string =~ s/$entity/$decoded_intity/g;
+        }
+
+        # Fix the string finally
         utf8::decode($string);
         $string = decode_entities($string);
         utf8::encode($string);
@@ -1206,6 +1215,7 @@ sub go
 
                     # Automatically detect if we can upgrade to HTML mode
                     if ($value =~ //) {
+
                         #...
                     }
 
@@ -1737,13 +1747,17 @@ Only transcode language files, using old-time encoding map, from files being in 
 
  — language-manager -x=full -e=map -m=apache -ot
 
+Reprare human translated language files, which stored in "utf-8" encoding already but still have HTML entities.
+
+ — language-manager -m=virtual-server -t=no,es -x=transcode
+
 Test translations for "index_stopmsg,trusted_warning" keys, in Russian and German languages, in BIND module, print on-screen results and exit.
 
  — language-manager -m=bind8 -t=ru,de -kt=index_stopmsg,trusted_warning
 
-=item --mode, -x <sync|full>
+=item --mode, -x <sync|full|transcode>
 
-Mode can be either <sync> or <full>. Default is set to "sync" and will only keep the keys found on template language file, while missing keys in target languages (translations), will be deleted, and newly added keys to template language file, will be translated. Mode "full" is meant to perform full translation, keeping human translated strings and overwriting all machine translations done in the past (not recommended to run).
+Mode can be either <sync> or <full> or <transcode>. Default is set to "sync" and will only keep the keys found on template language file, while missing keys in target languages (translations), will be deleted, and newly added keys to template language file, will be translated. Mode "full" is meant to perform full translation, keeping human translated strings and overwriting all machine translations done in the past (not recommended to run). Mode "transcode" is useful to fix human translated language files, which stored in "utf-8" encoding already, while still having "&#195;&#173;" or "&#195;&#169;" HTML entities.
 
 =item --type, -w <lang|ulang|help|config|uconfig|module>
 
