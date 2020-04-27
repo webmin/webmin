@@ -808,6 +808,13 @@ sub translated_substitute
 s/(?|(\\\s*n\s*\\\s*n\s*\\\s*n\s*\\\s*n\s*\\\s*n)|(\\\s*n\s*\\\s*n\s*\\\s*n\s*\\\s*n)|(\\\s*n\s*\\\s*n\s*\\\s*n)|(\\\s*n\s*\\\s*n)|(\\\s*n))/@{[lc(&$remove_spaces($1))]}/gi;
     }
 
+    # Fix translator bug for Russian language, when the translation string
+    # starting with <i></i>, and being replaced to <Я></? or <Я></�>
+    if ($code eq 'ru') {
+        $translated =~ s/<Я>(.*?)<\/.>/<i>$1<\/i>/gi;
+        $translated =~ s/<Я>(.*?)<\/\?/<i>$1<\/i>/gi;
+    }
+
     return $translated;
 }
 
