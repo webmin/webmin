@@ -1214,9 +1214,8 @@ sub go
                     $opt->{'translate-format-html'} = 0;
 
                     # Automatically detect if we can upgrade to HTML mode
-                    if ($value =~ //) {
-
-                        #...
+                    if ($value =~ /<tt>.*?(\(\)|[_%$@=.:\/\\]+).*?<\/tt>/) {
+                        $opt->{'translate-format-html'} = 1;
                     }
 
                     # Modify `$key` when type is set to "module", otherwise keep default
@@ -1747,7 +1746,7 @@ Only transcode language files, using old-time encoding map, from files being in 
 
  — language-manager -x=full -e=map -m=apache -ot
 
-Reprare human translated language files, which stored in "utf-8" encoding already but still have HTML entities.
+Repare human translated language files, which stored in "utf-8" encoding already but still have HTML entities.
 
  — language-manager -m=virtual-server -t=no,es -x=transcode
 
