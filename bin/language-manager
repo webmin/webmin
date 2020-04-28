@@ -57,6 +57,7 @@ sub main
                'values-fix|vf:s'                  => \$opt{'values-fix'},
                'values-fix-delimiter|vfd:s'       => \$opt{'values-fix-delimiter'},
                'translate-format|tf:s'            => \$opt{'translate-format'},
+               'allow-symlinks|as!'               => \$opt{'allow-symlinks'},
                'git-commit|gc!'                   => \$opt{'git-commit'},
                'log|l:s'                          => \$opt{'log'},
                'verbose|v:i'                      => \$opt{'verbose'});
@@ -145,6 +146,9 @@ sub main
     # Define the mode
     $opt{'mode'} ||= 'sync';
 
+    # Allow symlinks
+    my $allow_symlinks = $opt{'allow-symlinks'};
+
     # Find out which modules to update, if exist
     my $modules = $opt{'modules'};
     my @modules;
@@ -170,7 +174,7 @@ sub main
                    my $l = $f =~ /$type\/$language_source$/;
                    my $i = $f =~ /$type\.info$/;
                    my $h = $d && ($f =~ s/$path//r =~ tr/\///) == 2 && $f =~ /$path\/.*\/$type$/;
-                   if (!-l $f && ($l || $i || $h)) {
+                   if ((!-l $f || $allow_symlinks) && ($l || $i || $h)) {
                        $f =~ s/^$path\///g;
                        $f =~ s/\/$type\/$language_source//g;
                        $f =~ s/\/$type\.info//g;
@@ -182,6 +186,7 @@ sub main
                        }
                    }
                },
+               follow => $allow_symlinks,
             },
             $path);
         @modules = sort(uniq(@modules));
@@ -553,8 +558,9 @@ sub language_transcode
 sub source_data
 {
     my ($module, $data, $opt) = @_;
-    my ($language_source, $type, $target, $target_help, $source_file, $source_file_, $exists);
+    my ($allow_symlinks, $language_source, $type, $target, $target_help, $source_file, $source_file_, $exists);
 
+    $allow_symlinks  = $opt->{'allow-symlinks'};
     $language_source = $opt->{'language-source'};
     $type            = $data->{'type'};
     $target_help     = '';
@@ -569,15 +575,16 @@ sub source_data
     $target       = "$data->{'path'}/$module$target_help";
     $source_file  = "$target/$type/$language_source";
     $source_file_ = "$target/$language_source";
-    $exists =
-      (-d $target &&
-        !-l $target &&
-        ((-r $source_file && !-l $source_file) || (-r $source_file_ && !-l $source_file_) || $target_help)) ||
+    $exists = (
+             -d $target && (!-l $target || $allow_symlinks) && ((-r $source_file && (!-l $source_file || $allow_symlinks)) ||
+                                                              (-r $source_file_ && (!-l $source_file_ || $allow_symlinks)) ||
+                                                              $target_help)
+      ) ||
       0;
 
-    if (-r $source_file && !-l $source_file) {
+    if (-r $source_file && (!-l $source_file || $allow_symlinks)) {
         $target .= "/$type";
-    } elsif (-r $source_file_ && !-l $source_file_) {
+    } elsif (-r $source_file_ && (!-l $source_file_ || $allow_symlinks)) {
         $source_file = $source_file_;
     }
 
@@ -815,7 +822,7 @@ s/(?|(\\\s*n\s*\\\s*n\s*\\\s*n\s*\\\s*n\s*\\\s*n)|(\\\s*n\s*\\\s*n\s*\\\s*n\s*\\
         $translated =~ s/<Я>(.*?)<\/\?/<i>$1<\/i>/gi;
         $translated =~ s/« <b>/«<b>/gi;
     }
-    
+
     $translated = translated_substitute_reserved($translated);
 
     return $translated;
@@ -904,6 +911,7 @@ sub go
     my $verbose                     = $opt->{'verbose'} || @{$keys_test};
     my $mode_sync                   = $opt->{'mode'} ne 'full';
     my $mode_transcode              = $opt->{'mode'} eq 'transcode';
+    my $allow_symlinks              = $opt->{'allow-symlinks'};
     my $verbose_silent_mode         = $mode_sync && $verbose != 2;
 
     if ($type eq 'help') {
@@ -950,6 +958,7 @@ sub go
                            }
                        }
                    },
+                   follow => $allow_symlinks,
                 },
                 $help_path);
             @module_help      = sort(uniq(@module_help));
@@ -1200,7 +1209,7 @@ sub go
                                               'translation-target' => $type
                                              ));
 
-                    if (-l $language_source_file_target) {
+                    if (-l $language_source_file_target && !$allow_symlinks) {
                         talk_log(
                                  ("  " . CYAN BOLD .
                                     ".. symlink detected - transcoding/translating skipped for this file $name ($code)" .
@@ -1489,6 +1498,7 @@ sub go
                                             1);
                                }
                            },
+                           follow => $allow_symlinks,
                         },
                         $mpath);
                 }
