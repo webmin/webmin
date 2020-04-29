@@ -5111,12 +5111,14 @@ my ($dir) = ($_[1] || "lang");
 foreach my $o (@lang_order_list) {
 	my $ok = &read_file_cached_with_stat("$root/$dir/$o", \%text);
 	&read_file_cached_with_stat("$root/$dir/$o.auto", \%text) 
-		if($auto && $ok && -r "$root/$dir/$o.auto");
+		if ($auto && $ok && -r "$root/$dir/$o.auto");
 	return () if (!$ok && $o eq $default_lang);
 	}
 if ($ol) {
 	foreach my $o (@lang_order_list) {
 		&read_file_cached("$root/$ol/$o", \%text);
+		&read_file_cached("$root/$ol/$o.auto", \%text) 
+			if ($auto && -r "$root/$ol/$o.auto");
 		}
 	}
 &read_file_cached("$config_directory/custom-lang", \%text);
@@ -5138,6 +5140,8 @@ if ($_[0]) {
 	if ($ol) {
 		foreach my $o (@lang_order_list) {
 			&read_file_cached("$mdir/$ol/$o", \%text);
+			&read_file_cached("$mdir/$ol/$o.auto", \%text)
+				if ($auto && -r "$mdir/$ol/$o.auto");
 			}
 		}
 	&read_file_cached("$config_directory/$_[0]/custom-lang", \%text);
