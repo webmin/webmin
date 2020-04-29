@@ -822,7 +822,13 @@ s/(?|(\\\s*n\s*\\\s*n\s*\\\s*n\s*\\\s*n\s*\\\s*n)|(\\\s*n\s*\\\s*n\s*\\\s*n\s*\\
         $translated =~ s/<Я>(.*?)<\/\?/<i>$1<\/i>/gi;
         $translated =~ s/« <b>/«<b>/gi;
     }
+    
+    # Fix altered escaped HTML. Happens, for example, in Japanese language translations
+    $translated =~ s/＆lt;/&lt;/g;
+    $translated =~ s/＆gt;/&gt;/g;
+    $translated =~ s/＆nbsp;/&nbsp;/g;
 
+    # Fix reserved words
     $translated = translated_substitute_reserved($translated);
 
     return $translated;
