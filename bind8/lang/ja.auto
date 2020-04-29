@@ -8,6 +8,7 @@ index_checkconfig=<a href='$1'>モジュール構成</a>ページでchrootディ
 index_eexpired=警告：次のゾーンはDNSSEC署名の有効期限が切れています：$1
 index_eexpired_conf=$1ページで自動署名を再度有効にする必要があります。
 index_eexpired_mod=$1モジュールを使用して、これらのドメインのDNSSECを無効にするか、署名が失敗する理由を確認します。
+master_inview=ビュー $2の $1
 master_egone=ゾーン$1はどのビューにも存在しません
 master_egone2=ゾーン$1は存在しません！
 master_egone3=ビュー$2のゾーン$1は存在しません！

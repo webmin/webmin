@@ -1,3 +1,4 @@
+master_inview=$1 im Blick $2 
 delete_vwarn=Diese Zone ist der Virtualmin-Domäne $1 zugeordnet und sollte daher hier nicht gelöscht werden!
 delete_vwarn2=Diese Zone ist mit den Virtualmin-Domänen $1 und $2 anderer verknüpft und sollte daher hier nicht gelöscht werden!
 log_forward=Vorwärtszone $1 erstellt

@@ -6,6 +6,7 @@ index_checkconfig=Verifique se o diretório chroot está definido corretamente n
 index_eexpired=Aviso: As seguintes zonas expiraram assinaturas DNSSEC : $1
 index_eexpired_conf=A assinatura automática deve ser reativada na página $1.
 index_eexpired_mod=Use o módulo $1 para desativar o DNSSEC para esses domínios ou verifique por que a assinatura está falhando.
+master_inview=$1 na visualização $2 
 master_egone=A zona $1 não existe em nenhuma visualização
 master_egone2=A zona $1 não existe!
 master_egone3=A zona $1 na exibição $2 não existe!

@@ -27,6 +27,7 @@ index_checkconfig=确保在<a href='$1'>模块配置</a>页面上正确设置了
 index_eexpired=警告：以下区域的DNSSEC签名已过期：$1
 index_eexpired_conf=自动签名应在$1页面上重新启用。
 index_eexpired_mod=使用$1模块为这些域禁用DNSSEC，或者检查为什么签名失败。
+master_inview=视图 $2中的 $1
 master_egone=在任何视图中都不存在区域$1
 master_egone2=区域$1不存在！
 master_egone3=视图$2中的区域$1不存在！
@@ -363,7 +364,7 @@ add_ename=NS记录名称缺失或无效
 add_egname=添加组时无法指定NS记录名称
 add_emyip=无法计算出该系统的IP地址。您应该在“模块配置”页面上设置<b>远程从属区域的默认主服务器IP</b>。
 mass_title=从批处理文件创建区域
-mass_desc=This page allows you to create multiple zones at once from an uploaded or server-side text file. Each line in the file must have the following format:<p></p><tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt><p></p>The <i>type</i> must be one of <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> or <tt>forward</tt>. The <i>filename</i> is optional, and will be computed automatically if missing. The <i>master IPs</i> only need to be given for slave zones.
+mass_desc=该页面允许您从上载的或服务器端的文本文件中一次创建多个区域。文件中的每一行都必须具有以下格式： <p></p> <tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt> <p></p>该<i>类型</i>必须是<tt>master</tt> ， <tt>slave</tt> ， <tt>stub</tt>或<tt>forward</tt> 。 <i>文件名</i>是可选的，如果丢失，将自动计算。只需为从属区域提供<i>主IP</i> 。
 mass_local=本地批处理文件
 mass_upload=上传的批处理文件
 mass_text=批处理文件文字

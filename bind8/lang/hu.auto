@@ -5,6 +5,7 @@ index_checkconfig=Ellenőrizze, hogy a chroot könyvtár helyesen van-e beállí
 index_eexpired=Figyelem: A következő zónák már nem rendelkeznek DNSSEC aláírásokkal : $1
 index_eexpired_conf=Az automatikus aláírást újra engedélyezni kell a $1 oldalon.
 index_eexpired_mod=Használja a $1 modult vagy a DNSSEC letiltásához ezekben a tartományokban, vagy ellenőrizze, miért nem sikerül az aláírás.
+master_inview=$1 a $2 nézetben
 master_egone=A $1 zóna egyetlen nézetben sem létezik
 master_egone2=A $1 zóna nem létezik!
 master_egone3=A $1 zóna a $2 nézetben nem létezik!

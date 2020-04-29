@@ -37,6 +37,7 @@ index_checkconfig=<a href='$1'>모듈 구성</a> 페이지에서 chroot 디렉�
 index_eexpired=경고  : 다음 영역은 DNSSEC 서명이 만료되었습니다. $1
 index_eexpired_conf=$1 페이지에서 자동 서명을 다시 활성화해야합니다.
 index_eexpired_mod=$1 모듈을 사용하여 이러한 도메인에 대해 DNSSEC를 비활성화하거나 서명이 실패한 이유를 확인하십시오.
+master_inview=뷰 $2 의 $1 
 master_egone=$1 영역이 뷰에 존재하지 않습니다
 master_egone2=영역 $1이 없습니다!
 master_egone3=$2보기의 $1 영역이 존재하지 않습니다!
@@ -538,7 +539,7 @@ add_ename=NS 레코드 이름이 없거나 유효하지 않습니다
 add_egname=그룹을 추가 할 때 NS 레코드 이름을 지정할 수 없습니다
 add_emyip=이 시스템의 IP 주소를 해결할 수 없습니다. 모듈 구성 페이지에서 <b>원격 슬레이브 영역의 기본 마스터 서버 IP</b>를 설정해야합니다.
 mass_title=배치 파일에서 영역 생성
-mass_desc=This page allows you to create multiple zones at once from an uploaded or server-side text file. Each line in the file must have the following format:<p></p><tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt><p></p>The <i>type</i> must be one of <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> or <tt>forward</tt>. The <i>filename</i> is optional, and will be computed automatically if missing. The <i>master IPs</i> only need to be given for slave zones.
+mass_desc=이 페이지에서는 업로드 된 또는 서버 측 텍스트 파일에서 여러 영역을 한 번에 만들 수 있습니다. 파일의 각 줄은 다음 형식이어야합니다. <p></p> <tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt> <p></p> <i>유형</i> 은 <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> 또는 <tt>forward</tt> 중 하나 여야합니다. <i>파일 이름</i> 은 선택 사항이며 누락 된 경우 자동으로 계산됩니다. <i>마스터 IP</i> 는 슬레이브 영역에만 제공하면됩니다.
 mass_local=로컬 배치 파일
 mass_upload=업로드 된 배치 파일
 mass_text=배치 파일 텍스트

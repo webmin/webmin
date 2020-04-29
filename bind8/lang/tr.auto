@@ -16,6 +16,7 @@ index_checkconfig=Chroot dizininin <a href='$1'>modül yapılandırması</a> say
 index_eexpired=Uyarı: Aşağıdaki bölgelerin süresi doldu DNSSEC imzaları : $1
 index_eexpired_conf=Otomatik imzalama, $1 sayfasında yeniden etkinleştirilmelidir.
 index_eexpired_mod=Bu etki alanları için DNSSEC'yi devre dışı bırakmak için $1 modülünü kullanın veya imzalamanın neden başarısız olduğunu kontrol edin.
+master_inview=$1 görünümünde $2 
 master_egone=$1 bölgesi hiçbir görünümde yok
 master_egone2=$1 bölgesi mevcut değil!
 master_egone3=Görünümünde $1 bölgesi $2 mevcut değil!
