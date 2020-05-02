@@ -1,8 +1,9 @@
 #!/usr/local/bin/perl
 # run-postinstalls.pl
 # Run all the postinstall.pl scripts in module and theme directories
-use lib '.';
 
+use lib '.';
+BEGIN { push(@INC, "."); };
 $no_acl_check++;
 use WebminCore;
 &init_config();
