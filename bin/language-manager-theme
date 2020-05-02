@@ -635,9 +635,17 @@ sub translate_substitute
 
     # Preserve path in strings
     elsif ($format eq 'html') {
-        $value =~ s/<tt>/<tt translate="no">/gm;
-        $value =~
-s/(?:(^(?<!<)(\/[\w+].*?),|^(?<!<)(\/[\w+].*?)\.|(?<!<)(\/[\w+].*?) |(?<!<)(\/[\w+].*?)$))/<span translate="no">"$1"<\/span>/g;
+        #$value =~ s/<tt>/<tt translate="no">/gm;
+
+        $value =~ s/(<.*?>)`(%\w+)`(<\/.*?>)/<cite translate="no">$1$2$3<\/cite>/gm;
+        $value =~ s/<(\w+.*?)>/<$1 translate="no">/gm;
+        #$value =~ s/\s(\$\d+-\$\d+)\s/ <span translate="no">$1<\/span> /gm;
+        $value =~ s/\s\$(\d+)([\s|\w+\.\:])/ <abbr translate="no">\$$1$2<\/abbr>/gm;
+        $value =~ s/`/<ins translate="no">`<\/ins>/gm;
+        $value =~ s/(%\w+)/<acronym translate="no">$1<\/acronym>/gm;
+
+#         $value =~
+# s/(?:(^(?<!<)(\/[\w+].*?),|^(?<!<)(\/[\w+].*?)\.|(?<!<)(\/[\w+].*?) |(?<!<)(\/[\w+].*?)$))/<span translate="no">"$1"<\/span>/g;
     }
 
     return $value;
@@ -709,25 +717,35 @@ sub translated_substitute
         if ($code eq 'ro') {
             $translated =~ s/ (([1-9])%) / \$$2 /g;
         }
+        
+        # Restore destroyed single tags
+        $translated =~ s/<[ ]*(?:(\?\w+|((?![br|hr|p|tt|pre|ul|li|ol])\w+).*?))[ ]*>(.*?)<.*?>/<$1>$3<\/$2>/gi;
 
     } elsif ($format eq 'html') {
 
         # Unescape path in strings
-        $translated =~ s/<span.*?translate.*?>(.*?)<\/.*?>/$1/gi;
+        $translated =~ s/<span.*?translate.*?>(.*?)<.*?>/$1/gi;
 
         # Remove any escapes as returned by translator, when run in HTML mode
         $translated =~ s/&quot;//gi;
         $translated =~ s/&#39;/'/gi;
 
-        $translated =~ s/<tt translate="no">/<tt>/gm;
-    }
+        #$translated =~ s/<tt translate="no">/<tt>/gm;
+        $translated =~ s/<cite\s+translate="no".*?>(.*?)<\/cite>/`$1`/gm;
+        $translated =~ s/<acronym\s+translate="no".*?>(.*?)<\/acronym>/$1/gm;
+        $translated =~ s/<ins\s+translate="no".*?>\s*`\s*<\/ins>/`/gm;
+        $translated =~ s/<abbr\s+translate="no".*?>(.*?)<\/abbr>/$1/gm;
+        $translated =~ s/<(.*?)\s+translate="no".*?>/<$1>/gm;
+        $translated =~ s/`\s*(<.*?>.*?<\/.*?>)\s+\d`/`$1`/gm;
+        $translated =~ s/`\s*(<.*?>.*?<\/.*?>)\s+`/`$1`/gm;
+        $translated =~ s/(\p{L}) \/ (\p{L})/$1\/$2/gm;
+        $translated =~ s/` 1; `/`1;`/gm;
 
-    # Restore destroyed tags
-    $translated =~ s/<[ ]*(?:(\?\w+|((?![br|hr|p|tt|pre|ul|li|ol])\w+).*?))[ ]*>(.*?)<\/.*?>/<$1>$3<\/$2>/gi;
+    }
 
     $translated =~ s/([ ]*)\$[ ]*(\d+)/$1\$$2/g;
     $translated =~ s/(['|"|`|“|«])[ ]*\$(\d+)[ ]*(['|"|`|“|»])/$1\$$2$3/g;
-    $translated =~ s/(<.*?>)[ ]*(.*?)[ ]*(<\/.*?>)/$1$2$3/g;
+    $translated =~ s/(<.*?>)[ ]*(.*?)[ ]*(<.*?>)/$1$2$3/g;
     $translated =~ s/\$(\d+)[ ]*([:|：])[ ]*\$(\d+)[ ]*/ \$$1:\$$3 /g;
     $translated =~ s/\$(\d+)[ ]*：[ ]*\$(\d+)/\$$1:\$$2/g;
     $translated =~ s/(\p{L})\$(\d+)[ ]+/$1 \$$2 /g;
@@ -830,6 +848,14 @@ s/(?|(\\\s*n\s*\\\s*n\s*\\\s*n\s*\\\s*n\s*\\\s*n)|(\\\s*n\s*\\\s*n\s*\\\s*n\s*\\
     # Fix reserved words
     $translated = translated_substitute_reserved($translated);
 
+    $translated =~ s/<abbr>\$(\d+)<\/abbr>/\$$1/g;
+    $translated =~ s/\$1- \$2/\$1-\$2/g;
+    $translated =~ s/\( %/(%/g;
+    $translated =~ s/\（ %/（%/g;
+    $translated =~ s/\(\%v \)/(%v)/g;
+
+
+
     return $translated;
 }
 
@@ -850,6 +876,21 @@ sub translate
     my $source = $opt->{'language-source'};
     my $format = $opt->{'translate-format'};
     $format = 'html' if ($opt->{'translate-format-html'});
+
+    if ($format eq 'html') {
+        if ($value !~ /%|`|<cite|<acronym|<ins|<code|<kbd|\-\-/) {
+            $format = 'text';
+            $value =~ s/translate="no"//gm;
+        }
+
+        if ($value =~ /\-\-/) {
+            $value =~ s/<div(.*?)\stranslate="no">/<div$1>/gm;
+        }
+
+        $value =~ s/<ul(.*?)\stranslate="no">/<ul$1>/gm;
+        $value =~ s/<li(.*?)\stranslate="no">/<li$1>/gm;
+        $value =~ s/<i class="badge badge-danger" translate="no">/<i class="badge badge-danger">/gm;
+    }
 
     # Updating Google Translate API token to avoid expiration
     my $time = time();
@@ -1462,8 +1503,8 @@ sub go
 
                             # Print debug log
                             if ($verbose == 2) {
-                                say CYAN, "      --< $value",       RESET;
-                                say CYAN, "      >-- $translated_", RESET;
+                                say BRIGHT_CYAN, "      --< $value",       RESET;
+                                say BRIGHT_CYAN, "      >-- $translated_", RESET;
                             }
 
                             $output++;
