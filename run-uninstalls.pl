@@ -2,6 +2,8 @@
 # run-uninstalls.pl
 # Run all the uninstall.pl scripts in module directories
 
+use lib '.';
+BEGIN { push(@INC, "."); };
 $no_acl_check++;
 use WebminCore;
 &init_config();
