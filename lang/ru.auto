@@ -52,5 +52,5 @@ nice_size_MB=МБ
 nice_size_MiB=МиБ
 nice_size_kB=кБ
 nice_size_kiB=киБ
-nice_size_b=байтов
+nice_size_b=байт
 langauto_include=Включить машинные переводы
