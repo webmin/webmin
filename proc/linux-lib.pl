@@ -61,7 +61,7 @@ if ($ver && $ver < 2) {
 else {
 	# New version of ps, as found in redhat 6
 	local $width;
-	if ($ver >= 3.2) {
+	if (!$ver || $ver >= 3.2) {
 		# Use width format character if allowed
 		$width = ":80";
 		}
