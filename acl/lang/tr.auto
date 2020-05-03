@@ -11,7 +11,7 @@ edit_cloneof=Webmin kullanıcısını kopyalama
 edit_real=Gerçek ad
 edit_passlocked=$1 gün boyunca şifre değiştirilmedi - hesap kilitlendi!
 edit_passmax=$1 gün boyunca şifre değiştirilmedi - bir sonraki girişte değiştirilmelidir
-edit_passold=Şifre en son değiştirildi 1 $ gün önce
+edit_passold=Şifre en son değiştirildi $1 gün önce
 edit_passtoday=Şifre bir günden daha kısa bir süre önce değiştirildi
 edit_twofactor=İki faktörlü kimlik doğrulama türü
 edit_twofactorprov=$2 kimliğiyle $1 sağlayıcısını kullanma
@@ -217,7 +217,7 @@ makedn_done=.. bitti
 makedn_still=DN oluşturulduktan sonra bile bazı sorunlar bulundu: $1 
 schema_title=LDAP Şemasını İndirin
 schema_desc=Webmin'in kullanıcıları ve grupları depolamak için bir LDAP sunucusunu kullanabilmesi için önce aşağıdaki şemayı kullanacak şekilde yapılandırılması gerekir. Bu genellikle <tt>/etc/ldap/schema</tt> veya <tt>/etc/openldap/schema</tt> içindeki şema tanımının <tt>webmin.schema</tt> olarak kaydedilmesiyle yapılabilir, daha sonra sunucuyu bu şema dosyasını yükleyecek şekilde yapılandırın.
-schema_download=Şema dosyasını indir: <a href=$1>1 $</a>
+schema_download=Şema dosyasını indir: <a href=$1>$1</a>
 twofactor_err=İki faktörlü kimlik doğrulaması ayarlanamadı
 twofactor_euser=Webmin kullanıcınız bulunamadı!
 twofactor_title=İki Faktörlü Kimlik Doğrulama

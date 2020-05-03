@@ -377,7 +377,7 @@ sub print_interface {
         );
         push @row_data, $type if($userconfig{'columns'} =~ /type/);
         push @row_data, $actions;
-        push @row_data, $size if($userconfig{'columns'} =~ /size/);
+        push @row_data, decode('UTF-8', $size, Encode::FB_DEFAULT) if($userconfig{'columns'} =~ /size/);
         push @row_data, $user.':'.$group if($userconfig{'columns'} =~ /owner_user/);
         push @row_data, $permissions if($userconfig{'columns'} =~ /permissions/);
         push @row_data, $attributes if(get_attr_status() && $userconfig{'columns'} =~ /attributes/);

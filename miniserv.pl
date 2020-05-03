@@ -1780,6 +1780,10 @@ if ($config{'userfile'}) {
 				}
 			}
 		else {
+			# Trim username to remove leading and trailing spaces to 
+			# be able to login, if username copy/paste from somewhere
+			$in{'user'} =~ s/^\s+|\s+$//g;
+
 			# Validate the user
 			if ($in{'user'} =~ /\r|\n|\s/) {
 				&run_failed_script($in{'user'}, 'baduser',
