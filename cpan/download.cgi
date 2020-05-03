@@ -204,7 +204,7 @@ else {
 
 # Check if the file looks like a perl module
 foreach $pfile (@pfile) {
-	open(TAR, "( gunzip -c $pfile | tar tf - ) 2>&1 |");
+	open(TAR, "( gunzip -c ".quotemeta($pfile)." | tar tf - ) 2>&1 |");
 	while($line = <TAR>) {
 		if ($line =~ /^\.\/([^\/]+)\/(.*)$/ ||
 		    $line =~ /^([^\/]+)\/(.*)$/) {
