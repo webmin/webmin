@@ -30,12 +30,13 @@ if ($access{'pass'} && &can_change_pass($user) && !$in{'pass_def'}) {
 
 # Parse custom language
 if ($access{'lang'}) {
-	$user->{'langauto'} = int($in{'langauto'});
 	if ($in{'lang_def'}) {
 		$user->{'lang'} = undef;
+		$user->{'langauto'} = undef;
 		}
 	else {
 		$user->{'lang'} = $in{'lang'};
+		$user->{'langauto'} = int($in{'langauto'});
 		}
 	}
 
