@@ -3846,7 +3846,7 @@ if (!$main::get_system_hostname[$m]) {
 					last;
 					}
 				}
-			$fromfile .= ".".$dname;
+			$fromfile .= ".".$dname if ($dname);
 			}
 
 		# If we found a hostname in a file, use it
