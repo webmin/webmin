@@ -626,7 +626,7 @@ else {
 	elsif (defined($user->{'theme'})) {
 		$miniserv{"preroot_".$user->{'name'}} = "";
 		}
-	my @logout = split(/\s+/, $miniserv{'logouttimes'});
+	my @logout = split(/\s+/, $miniserv{'logouttimes'} || "");
 	@logout = grep { !/^$username=/ } @logout;
 	if (defined($user->{'logouttime'})) {
 		push(@logout, "$user->{'name'}=$user->{'logouttime'}");
