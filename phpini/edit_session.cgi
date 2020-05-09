@@ -18,7 +18,8 @@ print &ui_table_row($text{'session_handler'},
 		   &find_value("session.save_handler", $conf),
 		   [ [ "files", $text{'session_files'} ],
 		     [ "mm", $text{'session_mm'} ],
-		     [ "users", $text{'session_users'} ] ]));
+		     [ "users", $text{'session_users'} ],
+		     [ "redis", $text{'session_redis'} ] ]));
 
 # Where to save session files
 print &ui_table_row($text{'session_path'},

@@ -70,6 +70,7 @@ session_handler=Session storage mechanism
 session_files=Files
 session_mm=In memory
 session_users=User defined
+session_files=Redis
 session_path=Directory for session files
 session_cookies=Allow use of cookies for session tracking?
 session_only_cookies=Always use cookies for session tracking?
@@ -79,6 +80,7 @@ session_maxlife=Maximum session lifetime
 session_epath=Missing or invalid directory for session files
 session_elife=Missing or invalid cookie lifetime
 session_emaxlife=Missing or invalid maximum session lifetime
+session_eredis=Missing or disabled redis extension
 
 safe_title=Safe Mode Options
 safe_header=Safe file access mode options
