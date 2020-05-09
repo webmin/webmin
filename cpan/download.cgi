@@ -219,7 +219,8 @@ foreach $pfile (@pfile) {
 	close(TAR);
 	if ($?) {
 		unlink(@pfile) if ($need_unlink);
-		&install_error(&text('download_etar', "<tt>$tar</tt>"));
+		&install_error(&text('download_etar',
+			"<tt>".&html_escape($tar)."</tt>"));
 		}
 	}
 if (@dirs == 0 || $file{'Makefile.PL'}+$file{'Build.PL'} < @dirs) {
