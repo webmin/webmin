@@ -52,7 +52,7 @@ if (defined(&list_routes)) {
 				  $text{'routes_dest'},
 				  $text{'routes_gw'},
 				  $text{'routes_mask'},
-				  $text{'routes_iface'} ], undef, 0, \@tds);
+				  $text{'routes_iface'} ], undef, 0, \@tds, 0, 1);
 	$i = 0;
 	foreach $route (&list_routes()) {
 		local @cols = (
