@@ -77,7 +77,7 @@ else {
 		# Auto-detect type
                 if ($in{'save'}) {
                         # Force download
-                        print "Content-Disposition: Attachment filename=\"$attach->{'filename'}\"\n";
+                        print "Content-Disposition: Attachment; filename=\"$attach->{'filename'}\"\n";
                         }
                 if ($attach->{'type'} eq 'message/delivery-status') {
                         print "Content-type: text/plain\n\n";
