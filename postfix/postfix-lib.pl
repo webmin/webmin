@@ -125,7 +125,7 @@ foreach my $l (@$lref) {
 		last;
 		}
 	}
-if (!defined($out)) {
+if (!defined($out) && !$_[1]) {
 	# Fall back to asking Postfix
 	# -h tells postconf not to output the name of the parameter
 	$out = &backquote_command("$config{'postfix_config_command'} -c $config_dir -h ".
