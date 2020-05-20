@@ -52,6 +52,7 @@ hosts_active=Povoleno?
 ipnodes_none=Zatím nebyly definovány žádné adresy hostitelů IPv6.
 ipnodes_delete=Odstranění vybraných adres hostitele IPv6
 log_delete_ipnodes=Byly odstraněny adresy hostitele IPv6 $1 
+acl_sysinfo=Zobrazit dostupná síťová rozhraní na hlavním panelu
 hdelete_err=Odstranění adres hostitele se nezdařilo
 hdelete_enone=Nebyl vybrán žádný
 idelete_err=Odstranění adres hostitele IPv6 se nezdařilo

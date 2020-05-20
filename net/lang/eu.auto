@@ -272,6 +272,7 @@ acl_up=Editatu al dezake egoera aktiboa?
 acl_virt=Interfaze birtualak gehi ditzakezu?
 acl_delete=Interfazeak ezaba al ditzake?
 acl_hide=Editatu gabeko interfazeak ezkutatu?
+acl_sysinfo=Erakutsi sareko interfaze erabilgarriak Arbelean
 interfaces_title1=Aukeratu interfazeak. ..
 interfaces_all=Interfaze guztiak. ..
 interfaces_sel=Aukeratutako interfazeak

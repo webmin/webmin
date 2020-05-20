@@ -272,6 +272,7 @@ acl_up=Tista 'teditja stat attiv?
 acl_virt=Tista 'żżid interfaces virtwali?
 acl_delete=Tista 'tħassar l-interfaces?
 acl_hide=Aħbi interfejs li ma jistgħux jeditjaw?
+acl_sysinfo=Uri l-interfejs tan-netwerk disponibbli fid-Dashboard
 interfaces_title1=Agħżel Interfaces. ..
 interfaces_all=L-Interfaces kollha. ..
 interfaces_sel=Interfaces magħżula

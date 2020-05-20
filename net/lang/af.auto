@@ -272,6 +272,7 @@ acl_up=Kan die aktiewe toestand verander?
 acl_virt=Kan virtuele koppelvlakke bygevoeg word?
 acl_delete=Kan koppelvlakke verwyder word?
 acl_hide=Versteek nie-bewerkbare koppelvlakke?
+acl_sysinfo=Wys beskikbare netwerk-koppelvlakke op Dashboard
 interfaces_title1=Kies koppelvlakke. ..
 interfaces_all=Alle koppelvlakke. ..
 interfaces_sel=Geselekteerde koppelvlakke

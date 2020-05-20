@@ -163,6 +163,7 @@ acl_up=활성 상태를 편집 할 수 있습니까?
 acl_virt=가상 인터페이스를 추가 할 수 있습니까?
 acl_delete=인터페이스를 삭제할 수 있습니까?
 acl_hide=편집 불가능한 인터페이스를 숨기시겠습니까?
+acl_sysinfo=대시 보드에 사용 가능한 네트워크 인터페이스 표시
 interfaces_title1=인터페이스 선택. ..
 interfaces_all=모든 인터페이스. ..
 interfaces_sel=선택된 인터페이스

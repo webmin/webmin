@@ -142,6 +142,7 @@ acl_up=È possibile modificare lo stato attivo?
 acl_virt=È possibile aggiungere interfacce virtuali?
 acl_delete=È possibile eliminare le interfacce?
 acl_hide=Nascondere interfacce non modificabili?
+acl_sysinfo=Mostra le interfacce di rete disponibili su Dashboard
 apply_ecannot=Non è consentito applicare la configurazione
 mod_egone=L'interfaccia non è più attiva!
 mod_title=Interfaccia attiva

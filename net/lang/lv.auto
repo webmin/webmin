@@ -272,6 +272,7 @@ acl_up=Vai var rediģēt aktīvo stāvokli?
 acl_virt=Vai var pievienot virtuālās saskarnes?
 acl_delete=Vai var izdzēst saskarnes?
 acl_hide=Vai paslēpt rediģējamās saskarnes?
+acl_sysinfo=Rādīt pieejamās tīkla saskarnes informācijas panelī
 interfaces_title1=Izvēlieties saskarnes. ..
 interfaces_all=Visas saskarnes. ..
 interfaces_sel=Atlasītās saskarnes

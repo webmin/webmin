@@ -272,6 +272,7 @@ acl_up=Poate edita starea activă?
 acl_virt=Poate adăuga interfețe virtuale?
 acl_delete=Poate șterge interfețe?
 acl_hide=Ascundeți interfețele care nu pot fi modificate?
+acl_sysinfo=Afișează interfețele de rețea disponibile pe Panoul de bord
 interfaces_title1=Alegeți Interfețe. ..
 interfaces_all=Toate interfețele. ..
 interfaces_sel=Interfețe selectate

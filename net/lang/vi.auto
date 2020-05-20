@@ -272,6 +272,7 @@ acl_up=Có thể chỉnh sửa trạng thái hoạt động?
 acl_virt=Có thể thêm giao diện ảo?
 acl_delete=Có thể xóa giao diện?
 acl_hide=Ẩn giao diện không thể chỉnh sửa?
+acl_sysinfo=Hiển thị giao diện mạng khả dụng trên Bảng điều khiển
 interfaces_title1=Chọn Giao diện. ..
 interfaces_all=Tất cả các giao diện. ..
 interfaces_sel=Giao diện được chọn

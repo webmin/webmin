@@ -105,6 +105,7 @@ log_apply_bfics=Interfaces $1 de tiempo de arranque activadas
 log_create_route=Ruta activa creada para $1 
 log_create_defroute=Ruta activa activa predeterminada
 log_delete_routes=Rutas activas $1 eliminadas
+acl_sysinfo=Mostrar las interfaces de red disponibles en el Tablero
 mod_virtualmin=el servidor Virtualmin <tt>$1</tt>
 mod_reseller=el revendedor de Virtualmin <tt>$1</tt>
 dafics_err=Error al desactivar las interfaces

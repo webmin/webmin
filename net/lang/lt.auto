@@ -272,6 +272,7 @@ acl_up=Ar galima redaguoti aktyvią būseną?
 acl_virt=Ar galite pridėti virtualių sąsajų?
 acl_delete=Ar galima ištrinti sąsajas?
 acl_hide=Slėpti neredaguojamas sąsajas?
+acl_sysinfo=Rodyti galimas tinklo sąsajas informacijos suvestinėje
 interfaces_title1=Pasirinkite sąsajas. ..
 interfaces_all=Visos sąsajos. ..
 interfaces_sel=Pasirinktos sąsajos

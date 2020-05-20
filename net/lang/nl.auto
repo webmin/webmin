@@ -9,3 +9,4 @@ bonding_primary=Primaire interface
 bonding_primarydesc=Alleen van toepassing met actieve back-up-, balans-tlb- of balans-alb teaming-modi
 bonding_miimondesc=(Leeg laten om linkbewaking uit te schakelen)
 hosts_active=Ingeschakeld?
+acl_sysinfo=Toon beschikbare netwerkinterfaces op Dashboard

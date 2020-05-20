@@ -245,10 +245,3 @@ print &ui_tabs_end(1);
 
 &ui_print_footer("", $text{'index_return'});
 
-sub iface_sort
-{
-return $a->{'name'} cmp $b->{'name'} if ($a->{'name'} cmp $b->{'name'});
-return $a->{'virtual'} eq '' ? -1 :
-       $b->{'virtual'} eq '' ? 1 : $a->{'virtual'} <=> $b->{'virtual'};
-}
-

@@ -163,6 +163,7 @@ acl_up=Kan redigera aktivt tillstånd?
 acl_virt=Kan läggas till virtuella gränssnitt?
 acl_delete=Kan ta bort gränssnitt?
 acl_hide=Dölja gränssnitt som inte kan redigeras?
+acl_sysinfo=Visa tillgängliga nätverksgränssnitt på instrumentpanelen
 interfaces_title1=Välj gränssnitt. ..
 interfaces_all=Alla gränssnitt. ..
 interfaces_sel=Valda gränssnitt

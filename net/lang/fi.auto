@@ -272,6 +272,7 @@ acl_up=Voiko aktiivista tilaa muokata?
 acl_virt=Voiko lisätä virtuaalisia rajapintoja?
 acl_delete=Voiko rajapintoja poistaa?
 acl_hide=Piilota muokkaamattomat rajapinnat?
+acl_sysinfo=Näytä käytettävissä olevat verkkoliitännät hallintapaneelissa
 interfaces_title1=Valitse käyttöliittymät. ..
 interfaces_all=Kaikki rajapinnat. ..
 interfaces_sel=Valitut rajapinnat

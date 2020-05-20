@@ -284,6 +284,7 @@ acl_up=Can edit active state?
 acl_virt=Can add virtual interfaces?
 acl_delete=Can delete interfaces?
 acl_hide=Hide non-editable interfaces?
+acl_sysinfo=Show available network interfaces on Dashboard
 
 interfaces_title1=Choose Interfaces...
 interfaces_all=All Interfaces...

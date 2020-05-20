@@ -108,6 +108,7 @@ log_create_route=$1 için etkin rota oluşturuldu
 log_create_defroute=Aktif varsayılan rota oluşturuldu
 log_delete_routes=$1 etkin rota silindi
 acl_hide=Düzenlenemeyen arayüzler gizlensin mi?
+acl_sysinfo=Gösterge Tablosunda kullanılabilir ağ arayüzlerini göster
 mod_zones=<tt>$1</tt> bölgesi için sanal arabirim
 mod_virtualmin=Virtualmin sunucusu <tt>$1</tt>
 mod_reseller=Virtualmin satıcısı <tt>$1</tt>

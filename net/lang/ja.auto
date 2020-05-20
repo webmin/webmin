@@ -122,6 +122,7 @@ acl_up=アクティブ状態を編集できますか？
 acl_virt=仮想インターフェイスを追加できますか？
 acl_delete=インターフェイスを削除できますか？
 acl_hide=編集不可能なインターフェースを非表示にしますか？
+acl_sysinfo=ダッシュボードに利用可能なネットワークインターフェイスを表示する
 mod_zones=ゾーン<tt>$1</tt>の仮想インターフェイス
 mod_virtualmin=Virtualminサーバー<tt>$1</tt>
 mod_reseller=Virtualminリセラー<tt>$1</tt>

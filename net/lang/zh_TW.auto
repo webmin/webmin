@@ -122,6 +122,7 @@ acl_up=可以編輯活動狀態嗎？
 acl_virt=可以添加虛擬接口嗎？
 acl_delete=可以刪除接口嗎？
 acl_hide=隱藏不可編輯的界面？
+acl_sysinfo=在儀表板上顯示可用的網絡接口
 mod_zones=<tt>$1</tt>的虛擬接口
 mod_virtualmin=Virtualmin服務器<tt>$1</tt>
 mod_reseller=Virtualmin經銷商<tt>$1</tt>

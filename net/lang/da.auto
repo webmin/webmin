@@ -272,6 +272,7 @@ acl_up=Kan redigere aktiv tilstand?
 acl_virt=Kan tilføje virtuelle grænseflader?
 acl_delete=Kan slette grænseflader?
 acl_hide=Skjul ikke-redigerbare grænseflader?
+acl_sysinfo=Vis tilgængelige netværksgrænseflader på Dashboard
 interfaces_title1=Vælg grænseflader. ..
 interfaces_all=Alle grænseflader. ..
 interfaces_sel=Valgte grænseflader

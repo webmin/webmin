@@ -178,6 +178,7 @@ acl_up=Pode editar o estado ativo?
 acl_virt=Pode adicionar interfaces virtuais?
 acl_delete=Pode excluir interfaces?
 acl_hide=Ocultar interfaces não editáveis?
+acl_sysinfo=Mostrar interfaces de rede disponíveis no painel
 interfaces_title1=Escolha Interfaces. ..
 interfaces_all=Todas as interfaces. ..
 interfaces_sel=Interfaces Selecionadas

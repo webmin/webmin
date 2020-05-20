@@ -165,6 +165,7 @@ acl_up=可以编辑活动状态吗？
 acl_virt=可以添加虚拟接口吗？
 acl_delete=可以删除接口吗？
 acl_hide=隐藏不可编辑的界面？
+acl_sysinfo=在仪表板上显示可用的网络接口
 interfaces_title1=选择接口. ..
 interfaces_all=所有接口. ..
 interfaces_sel=选定的接口

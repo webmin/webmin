@@ -41,3 +41,4 @@ routes_defaults6=Roteadores IPv6 padrão
 routes_eclash6=Somente uma rota padrão para qualquer interface IPv6 pode ser definida
 routes_def6=Rota IPv6 padrão
 hosts_active=Ativado?
+acl_sysinfo=Mostrar interfaces de rede disponíveis no painel

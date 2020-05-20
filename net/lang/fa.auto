@@ -107,6 +107,7 @@ log_apply_bfics=رابط$1 بوت زمان فعال شده است
 log_create_route=مسیر فعال برای$1 ایجاد شد
 log_create_defroute=مسیر پیش فرض فعال ایجاد شده است
 log_delete_routes=مسیرهای فعال$1 حذف شد
+acl_sysinfo=رابط های شبکه موجود را در داشبورد نشان دهید
 mod_virtualmin=سرور Virtualmin <tt>$1</tt>
 mod_reseller=فروشنده مجازی Virtualmin <tt>$1</tt>
 dafics_err=غیرفعال کردن رابط ها انجام نشد

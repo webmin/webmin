@@ -9,3 +9,4 @@ bonding_primary=Elsődleges interfész
 bonding_primarydesc=Csak aktív biztonsági mentés, balance-tlb vagy balance-alb csoportosítási módok esetén alkalmazható
 bonding_miimondesc=(Hagyja üresen a link figyelésének letiltását)
 hosts_active=Engedélyezve van?
+acl_sysinfo=Mutassa a rendelkezésre álló hálózati interfészeket az irányítópulton

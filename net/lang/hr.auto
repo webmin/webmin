@@ -272,6 +272,7 @@ acl_up=Može li se uređivati aktivno stanje?
 acl_virt=Mogu li dodati virtualna sučelja?
 acl_delete=Mogu li izbrisati sučelja?
 acl_hide=Sakriti sučelja koja ne mogu uređivati?
+acl_sysinfo=Prikažite raspoloživa mrežna sučelja na nadzornoj ploči
 interfaces_title1=Odaberite sučelja. ..
 interfaces_all=Sva sučelja. ..
 interfaces_sel=Odabrana sučelja

@@ -9,3 +9,4 @@ bonding_updelay=Aktualizacja
 bonding_downdelay=Downdelay
 routes_gwmetric=Interfejs metryczny
 hosts_active=Włączony?
+acl_sysinfo=Pokaż dostępne interfejsy sieciowe na pulpicie nawigacyjnym

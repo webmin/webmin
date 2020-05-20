@@ -272,6 +272,7 @@ acl_up=Boleh mengedit keadaan aktif?
 acl_virt=Bolehkah menambah antara muka maya?
 acl_delete=Boleh memadamkan antara muka?
 acl_hide=Sembunyikan antara muka yang tidak boleh diedit?
+acl_sysinfo=Tunjukkan antara muka rangkaian yang tersedia di Dashboard
 interfaces_title1=Pilih antara muka. ..
 interfaces_all=Semua Interface. ..
 interfaces_sel=Antara muka yang dipilih

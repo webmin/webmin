@@ -41,3 +41,4 @@ routes_defaults6=Predvolené smerovače IPv6
 routes_eclash6=Pre každé rozhranie IPv6 je možné definovať iba jednu predvolenú trasu
 routes_def6=Predvolená trasa IPv6
 hosts_active=Povolené?
+acl_sysinfo=Zobraziť dostupné sieťové rozhrania na informačnom paneli

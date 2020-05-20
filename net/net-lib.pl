@@ -458,5 +458,12 @@ foreach my $w (@w) {
 return lc(join(":", @w));
 }
 
+sub iface_sort
+{
+return $a->{'name'} cmp $b->{'name'} if ($a->{'name'} cmp $b->{'name'});
+return $a->{'virtual'} eq '' ? -1 :
+       $b->{'virtual'} eq '' ? 1 : $a->{'virtual'} <=> $b->{'virtual'};
+}
+
 1;
 
