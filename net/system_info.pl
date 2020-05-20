@@ -4,7 +4,7 @@ sub list_system_info
 {
     my $can = &foreign_available($module_name) && $access{'sysinfo'};
 
-    if ((length($config{'sysinfo'}) && !$config{'sysinfo'}) || !$can) {
+    if (!$can) {
         return ();
     }
     my %net_text = &load_language($module_name);
