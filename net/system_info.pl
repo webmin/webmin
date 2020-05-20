@@ -7,9 +7,9 @@ sub list_system_info
     if (!$can) {
         return ();
     }
-    my %net_text = &load_language($module_name);
-    my @net      = defined(&net::active_interfaces) ? net::active_interfaces() : ();
-    my $desc     = ucwords($text{'ifcs_title'});
+
+    my @net  = defined(&net::active_interfaces) ? net::active_interfaces() : ();
+    my $desc = ucwords($text{'ifcs_title'});
     my ($html, $html_start, $html_rows, $html_end);
     my ($is_speed, $is_ipv6);
     my $ipv6t = $text{'ifcs_ip6'};
@@ -28,8 +28,8 @@ sub list_system_info
             my $type  = &net::iface_type($a->{'name'});
             my $speed = $a->{'speed'};
             $is_speed = 1 if ($speed);
-            my $ip   = &html_escape($a->{'address'}) || $net_text{'ifcs_noaddress'};
-            
+            my $ip = &html_escape($a->{'address'}) || $text{'ifcs_noaddress'};
+
             my $ipv6 = '';
             if (&net::supports_address6()) {
                 $ipv6    = join("<br>\n", map {&html_escape($_)} @{ $a->{'address6'} });
@@ -37,14 +37,12 @@ sub list_system_info
                 $ipv6t   = $text{'ifcs_mode6'} if ($ipv6 =~ /<br>/);
             }
 
-            my $mask  = &html_escape($a->{'netmask'})   || $net_text{'ifcs_nonetmask'};
+            my $mask  = &html_escape($a->{'netmask'})   || $text{'ifcs_nonetmask'};
             my $broad = &html_escape($a->{'broadcast'}) || "";
-            my $status = $a->{'up'} ? ui_text_color($net_text{'ifcs_act'}, 'success', 1) :
-              ui_text_color($net_text{'ifcs_down'}, 'danger', 1);
+            my $status =
+              $a->{'up'} ? ui_text_color($text{'ifcs_act'}, 'success', 1) : ui_text_color($text{'ifcs_down'}, 'danger', 1);
+            $open = 1 if (!$a->{'up'});
 
-            if (!$a->{'up'}) {
-                $open = 1;
-            }
             $html_rows .= ui_columns_row([$name, $type, $speed, $ip, $ipv6, $mask, $broad, $status]);
         }
 
@@ -57,14 +55,7 @@ sub list_system_info
              ucwords($text{'ifcs_mask'}),
              ucwords($text{'ifcs_broad'}),
              ucwords($text{'ifcs_act'}),
-            ],
-            undef,
-            undef,
-            undef,
-            undef,
-
-            # Make the table sortable
-            1);
+            ]);
         $html_end .= ui_columns_end();
         $html = ($html_start . $html_rows . $html_end) if ($html_rows);
     }
