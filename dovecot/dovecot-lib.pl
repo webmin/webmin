@@ -367,12 +367,17 @@ local $out = &read_file_contents($temp);
 return &is_dovecot_running() ? undef : "<pre>$out</pre>";
 }
 
-# apply_configration()
-# Stop and re-start the Dovecot server
+# apply_configration([full-restart])
+# Reload the Dovecot configuration, optionally with a full restart
 sub apply_configuration
 {
+local ($restart) = @_;
 local $pid = &is_dovecot_running();
-if ($pid) {
+if (!$pid) {
+	return $text{'stop_erunning'};
+	}
+elsif ($restart) {
+	# Fully shut down and re-start
 	&stop_dovecot();
 	local $err;
 	for(my $i=0; $i<5; $i++) {
@@ -383,7 +388,8 @@ if ($pid) {
 	return $err;
 	}
 else {
-	return $text{'stop_erunning'};
+	# Send the HUP signal
+	return &kill_logged('HUP', $pid) ? undef : $!;
 	}
 }
 
