@@ -1013,8 +1013,8 @@ if (!defined($width)) {
 	$width = "200";
 	}
 my $wstyle = $width ? "style='width:$width'" : "";
-
-if (!$main::ui_multi_select_donejs++) {
+my ($caller_package, $caller_file) = caller;
+if ($caller_file eq $0 && !$main::ui_multi_select_donejs++) {
 	$rv .= &ui_multi_select_javascript();
 	}
 $rv .= "<table cellpadding=0 cellspacing=0 class='ui_multi_select'>";
