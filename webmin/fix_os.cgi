@@ -8,4 +8,4 @@ require './webmin-lib.pl';
 &apply_new_os_version(\%osinfo);
 
 &webmin_log("os");
-&redirect($ENV{'HTTP_REFERER'});
+&redirect(get_referer_relative());

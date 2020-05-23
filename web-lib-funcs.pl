@@ -11034,6 +11034,22 @@ print "Content-type: application/json;\n\n";
 print convert_to_json(@_);
 }
 
+=head2 get_referer_relative()
+
+Returns relative URL based on referer omitting origin part. 
+Should be used instead for redirects with submitted forms
+
+=cut
+sub get_referer_relative
+{
+my $referer = $ENV{'HTTP_REFERER'};
+my $prefix = $gconfig{'webprefix'};
+$prefix = '/' if(!$prefix);
+$referer =~ s/http.*:\/\/.*?$prefix/\//;
+$referer =~ s/\/\//\//g;
+return $referer;
+}
+
 $done_web_lib_funcs = 1;
 
 1;
