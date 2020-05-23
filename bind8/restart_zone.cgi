@@ -16,12 +16,12 @@ my $err = &restart_zone($zone->{'name'}, $zone->{'view'});
 &webmin_log("apply", $zone->{'name'});
 
 my $tv = $zone->{'type'};
+my $redir_targ = ($tv eq "master" ? "edit_master.cgi" :
+		  $tv eq "forward" ? "edit_forward.cgi" : "edit_slave.cgi");
 if ($in{'return'}) {
-	&redirect($ENV{'HTTP_REFERER'});
+	&redirect($redir_targ . "?zone=$in{'zone'}");
 	}
 else {
-	&redirect(($tv eq "master" ? "edit_master.cgi" :
-		  $tv eq "forward" ? "edit_forward.cgi" : "edit_slave.cgi").
-		  "?zone=$in{'zone'}&view=$in{'view'}");
+	&redirect($redir_targ . "?zone=$in{'zone'}&view=$in{'view'}");
 	}
 

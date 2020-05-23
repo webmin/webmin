@@ -26,5 +26,11 @@ if ($access{'remote'}) {
 	}
 
 &webmin_log("apply");
-&redirect($in{'return'} ? $ENV{'HTTP_REFERER'} : "");
+my $redir_targ = ($in{'type'} eq "master" ? "edit_master.cgi" :
+		  $in{'type'} eq "forward" ? "edit_forward.cgi" : "edit_slave.cgi");
+my $zone;
+if ($in{'zone'}) {
+	$zone = "?zone=$in{'zone'}";
+}
+&redirect($zone && $in{'return'} ? "$redir_targ$zone" : "");
 
