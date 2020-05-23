@@ -388,9 +388,6 @@ if (!$config{'inetd'}) {
 		if ($@) {
 			print STDERR "Failed to pre-load $lib in $pkg : $@\n";
 			}
-		else {
-			print STDERR "Pre-loaded $lib in $pkg\n";
-			}
 		}
 	foreach $pl (split(/\s+/, $config{'premodules'})) {
 		if ($pl =~ /\//) {
