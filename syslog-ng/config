@@ -1,4 +1,4 @@
-lines=20
+lines=100
 compressed=1
 syslogng_conf=/usr/local/etc/syslog-ng/syslog-ng.conf
 alt_syslogng_conf=/usr/local/doc/syslog-ng/syslog-ng.conf
