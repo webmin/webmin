@@ -2009,31 +2009,46 @@ foreach $f (keys %imap_login_handle) {
 sub imap_login
 {
 local ($folder) = @_;
-local $key = join("/", $folder->{'server'}, $folder->{'port'},
-		       $folder->{'user'});
+local $defport = $folder->{'ssl'} ? 993 : 143;
+local $port = $folder->{'port'} || $defport;
+local $key = join("/", $folder->{'server'}, $port, $folder->{'user'});
 local $h = $imap_login_handle{$key};
 local @rv;
 if (!$h) {
 	# Need to open socket
-	$h = "IMAP".time().++$imap_login_count;
+	$h = ($folder->{'ssl'} ? "SSL" : "")."IMAP".time().++$imap_login_count;
 	local $error;
-	print DEBUG "Connecting to IMAP server $folder->{'server'}:$folder->{'port'}\n";
-	&open_socket($folder->{'server'}, $folder->{'port'} || $imap_port,
-		     $h, \$error);
+	print DEBUG "Connecting to IMAP server $folder->{'server'}:$port\n";
+	&open_socket($folder->{'server'}, $port, $h, \$error);
 	print DEBUG "IMAP error=$error\n" if ($error);
 	return (0, $error) if ($error);
 	local $os = select($h); $| = 1; select($os);
+	if ($folder->{'ssl'}) {
+		# Switch to SSL mode
+                eval "use Net::SSLeay";
+                $@ && return (0, "Net::SSLeay module is not installed");
+                eval "Net::SSLeay::SSLeay_add_ssl_algorithms()";
+                eval "Net::SSLeay::load_error_strings()";
+                my $ssl_ctx = Net::SSLeay::CTX_new() ||
+                        return (0, "Failed to create SSL context");
+                my $ssl_con = Net::SSLeay::new($ssl_ctx) ||
+                        return (0, "Failed to create SSL connection");
+                Net::SSLeay::set_fd($ssl_con, fileno($h));
+                Net::SSLeay::connect($ssl_con) ||
+                        return (0, "SSL connect() failed");
+		$imap_login_ssl{$h} = $ssl_con;
+		}
 
 	# Login normally
 	@rv = &imap_command($h);
-	return (0, $rv[3]) if (!$rv[0]);
+	return (0, $rv[3] || "No response") if (!$rv[0]);
 	local $user = $folder->{'user'} eq '*' ? $remote_user
 					       : $folder->{'user'};
 	local $pass = $folder->{'pass'};
 	$pass =~ s/\\/\\\\/g;
 	$pass =~ s/"/\\"/g;
 	@rv = &imap_command($h,"login \"$user\" \"$pass\"");
-	return (2, $rv[3]) if (!$rv[0]);
+	return (2, $rv[3] || "No response") if (!$rv[0]);
 
 	$imap_login_handle{$key} = $h;
 	}
@@ -2052,36 +2067,61 @@ return (1, $h, $count, $uidnext);
 # all of the results joined together, and the stuff after OK/BAD
 sub imap_command
 {
-local ($h, $c) = @_;
+my ($h, $c) = @_;
 if (!$h) {
-	local $err = "Invalid IMAP handle";
+	my $err = "Invalid IMAP handle";
 	return (0, [ $err ], $err, $err);
 	}
-local @rv;
+my $ssl_con = $imap_login_ssl{$h};
+my @rv;
 
 # Send the command, and read lines until a non-* one is found
-local $id = $$."-".$imap_command_count++;
-local ($first, $rest) = split(/\r?\n/, $c, 2);
+my $id = $$."-".$imap_command_count++;
+my ($first, $rest) = split(/\r?\n/, $c, 2);
 if ($rest) {
 	# Multi-line - send first line, then wait for continuation, then rest
-	print $h "$id $first\r\n";
 	print DEBUG "imap command $id $first\n";
-	local $l = <$h>;
-	print DEBUG "imap line $l";
-	if ($l =~ /^\+/) {
-		print $h $rest."\r\n";
+	my $l;
+	if ($ssl_con) {
+		Net::SSLeay::write($ssl_con, "$id $first\r\n");
+		$l = Net::SSLeay::ssl_read_until($ssl_con);
 		}
 	else {
-		local $err = "Server did not ask for continuation : $l";
+		print $h "$id $first\r\n";
+		$l = <$h>;
+		}
+	print DEBUG "imap line $l";
+	if ($l =~ /^\+/) {
+		if ($ssl_con) {
+			Net::SSLeay::write($ssl_con, $rest."\r\n");
+			}
+		else {
+			print $h $rest."\r\n";
+			}
+		}
+	else {
+		my $err = "Server did not ask for continuation : $l";
 		return (0, [ $err ], $err, $err);
 		}
 	}
 elsif ($c) {
-	print $h "$id $c\r\n";
+	# Single line command
+	if ($ssl_con) {
+		Net::SSLeay::write($ssl_con, "$id $c\r\n");
+		}
+	else {
+		print $h "$id $c\r\n";
+		}
 	print DEBUG "imap command $id $c\n";
 	}
 while(1) {
-	local $l = <$h>;
+	my $l;
+	if ($ssl_con) {
+		$l = Net::SSLeay::ssl_read_until($ssl_con);
+		}
+	else {
+		$l = <$h>;
+		}
 	print DEBUG "imap line $l";
 	last if (!$l);
 	if ($l =~ /^(\*|\+)/) {
@@ -2091,12 +2131,19 @@ while(1) {
 		last if (!$c);
 		if ($l =~ /\{(\d+)\}\s*$/) {
 			# Start of multi-line text .. read the specified size
-			local $size = $1;
-			local $got;
-			local $err = "Error reading email";
+			my $size = $1;
+			my $got;
+			my $err = "Error reading email";
 			while($got < $size) {
-				local $buf;
-				local $r = read($h, $buf, $size-$got);
+				my $buf;
+				my $r;
+				if ($ssl_con) {
+					$buf = Net::SSLeay::read($ssl_con, $size-$got);
+					$r = length($buf);
+					}
+				else {
+					$r = read($h, $buf, $size-$got);
+					}
 				return (0, [ $err ], $err, $err) if ($r <= 0);
 				$rv[$#rv] .= $buf;
 				$got += $r;
@@ -2111,15 +2158,15 @@ while(1) {
 	else {
 		# Part of last response
 		if (!@rv) {
-			local $err = "Got unknown line $l";
+			my $err = "Got unknown line $l";
 			return (0, [ $err ], $err, $err);
 			}
 		$rv[$#rv] .= $l;
 		}
 	}
-local $j = join("", @rv);
+my $j = join("", @rv);
 print DEBUG "imap response $j\n";
-local $lline = $rv[$#rv];
+my $lline = $rv[$#rv];
 if ($lline =~ /^(\S+)\s+OK\s*(.*)/) {
 	# Looks like the command worked
 	return (1, \@rv, $j, $2);
