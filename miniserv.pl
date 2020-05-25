@@ -4041,7 +4041,7 @@ if (!$bad_urandom) {
 		my $tmpsid;
 		if (read(RANDOM, $tmpsid, 16) == 16) {
 			$sid = lc(unpack('h*',$tmpsid));
-			if ($sid !~ /^[0-9a-fA-F]{32}+$/) {
+			if ($sid !~ /^[0-9a-fA-F]{32}$/) {
 				$sid = 'bad';
 				}
 			}
