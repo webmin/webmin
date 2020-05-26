@@ -96,6 +96,7 @@ mime_ext=uitbreidings
 mime_err=Kon nie MIME-tipe stoor nie
 mime_etype='$1' is nie 'n geldige MIME-tipe nie
 virt_ecannot=U kan nie hierdie virtuele bediener wysig nie
+virt_eprotocol=U moet ten minste een bruikbare SSL/TLS-protokolweergawe kies
 virt_title=Virtuele bedieneropsies
 virt_header=Vir $1
 virt_opts=Virtuele bedienerdetails

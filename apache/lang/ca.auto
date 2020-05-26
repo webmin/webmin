@@ -1,2 +1,3 @@
 enewline=El valor no és vàlid
+virt_eprotocol=Heu de seleccionar almenys una versió de protocol SSL/TLS utilitzable
 core_eduplisten=L’adreça d’escolta $1 apareix dues vegades

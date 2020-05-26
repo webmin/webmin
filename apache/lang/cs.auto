@@ -2,6 +2,7 @@ index_root=Kořen dokumentu
 index_return2=globální konfigurace
 cvirt_eroot4=V konfiguraci Apache není definován žádný uživatel
 enewline=Neplatný znak v hodnotě
+virt_eprotocol=Musíte vybrat alespoň jednu použitelnou verzi protokolu SSL/TLS
 vserv_virtualmin=Tento virtuální počítač Apache patří k serveru Virtualmin <tt>$1</tt>, takže zde nelze změnit adresu, port, základní adresář a název hostitele.
 vserv_root=Kořen dokumentu
 dir_proxyall=Všechny žádosti o proxy

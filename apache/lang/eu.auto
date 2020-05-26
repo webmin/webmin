@@ -96,6 +96,7 @@ mime_ext=Extensions
 mime_err=Huts egin du MIME mota gordetzean
 mime_etype='$1' ez da baliozko MIME mota
 virt_ecannot=Ezin duzu zerbitzari birtual hau editatu
+virt_eprotocol=Gutxienez SSL/TLS protokolo erabilgarri bat aukeratu behar duzu
 virt_title=Zerbitzari birtualaren aukerak
 virt_header=$1
 virt_opts=Zerbitzari birtualaren xehetasunak

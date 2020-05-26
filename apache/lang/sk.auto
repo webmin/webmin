@@ -96,6 +96,7 @@ mime_ext=rozšírenie
 mime_err=Nepodarilo sa uložiť typ MIME
 mime_etype=$1 nie je platný typ MIME
 virt_ecannot=Tento virtuálny server nemôžete upravovať
+virt_eprotocol=Musíte vybrať aspoň jednu použiteľnú verziu protokolu SSL/TLS
 virt_title=Možnosti virtuálneho servera
 virt_header=Pre $1
 virt_opts=Podrobnosti o virtuálnom serveri

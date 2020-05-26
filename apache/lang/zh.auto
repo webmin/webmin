@@ -15,6 +15,7 @@ index_delete=删除选定的服务器
 cvirt_eroot4=在Apache配置中没有定义用户
 cvirt_emissing=新的虚拟服务器已添加到$1，但是Apache并未使用此文件。检查<a href='$2'>模块配置</a>，并确保“添加虚拟服务器的文件或目录”正确。
 enewline=值中的无效字符
+virt_eprotocol=您必须至少选择一个可用的SSL/TLS协议版本
 virt_opts2=虚拟服务器选项
 virt_DirectoryMatch=目录正则表达式
 virt_FilesMatch=文件正则表达式

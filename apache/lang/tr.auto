@@ -48,6 +48,7 @@ bytes=bayt
 eafter=Yapılandırma doğrulaması başarısız oldu: $1 Değişiklikler kaydedilmedi.
 enewline=Değerde geçersiz karakter
 global_mimedesc=Düzenlemek için aşağıdaki listeden bir MIME türünü tıklayın veya listeye yeni bir tür eklemek için sayfanın altındaki bağlantıyı kullanın.
+virt_eprotocol=En az bir kullanılabilir SSL/TLS protokol sürümü seçmelisiniz
 virt_opts2=Sanal Sunucu Seçenekleri
 virt_show=Yönergeleri Göster
 virt_edit=Direktifleri Düzenle

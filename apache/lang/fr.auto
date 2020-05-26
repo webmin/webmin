@@ -1,6 +1,7 @@
 index_return2=configuration globale
 cvirt_eroot4=Aucun utilisateur défini dans la configuration Apache
 enewline=Caractère non valide dans la valeur
+virt_eprotocol=Vous devez sélectionner au moins une version de protocole SSL/TLS utilisable
 vserv_virtualmin=Cet hôte virtuel Apache appartient au serveur Virtualmin <tt>$1</tt>, donc l'adresse, le port, le répertoire de base et le nom d'hôte ne peuvent pas être modifiés ici.
 htaccess_eempty=Aucun répertoire de fichiers d'options entré
 htaccess_eabsolute=Le répertoire du fichier d'options doit être un chemin absolu

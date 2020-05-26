@@ -96,6 +96,7 @@ mime_ext=laajennukset
 mime_err=MIME-tyypin tallentaminen epäonnistui
 mime_etype='$1' ei ole kelvollinen MIME-tyyppi
 virt_ecannot=Et voi muokata tätä virtuaalipalvelinta
+virt_eprotocol=Sinun on valittava vähintään yksi käyttökelpoinen SSL/TLS-protokollaversio
 virt_title=Virtuaalipalvelimen asetukset
 virt_header=$1
 virt_opts=Virtuaalipalvelimen yksityiskohdat

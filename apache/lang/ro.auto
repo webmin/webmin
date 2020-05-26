@@ -96,6 +96,7 @@ mime_ext=Extensii
 mime_err=Nu a reușit să salveze tipul MIME
 mime_etype=„$1” nu este un tip MIME valid
 virt_ecannot=Nu puteți edita acest server virtual
+virt_eprotocol=Trebuie să selectați cel puțin o versiune de protocol SSL/TLS utilizabilă
 virt_title=Opțiuni server virtual
 virt_header=Pentru $1
 virt_opts=Detalii despre serverul virtual

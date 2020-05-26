@@ -9,6 +9,7 @@ index_return2=پیکربندی جهانی
 index_delete=سرورهای منتخب را حذف کنید
 cvirt_eroot4=هیچ کاربری در پیکربندی Apache مشخص نشده است
 enewline=شخصیت نامعتبر از نظر مقدار
+virt_eprotocol=شما باید حداقل یک نسخه پروتکل SSL/TLS قابل استفاده را انتخاب کنید
 virt_opts2=گزینه های سرور مجازی
 virt_DirectoryMatch=regexp دایرکتوری
 virt_FilesMatch=regexp فایلها

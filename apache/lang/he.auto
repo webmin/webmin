@@ -96,6 +96,7 @@ mime_ext=הרחבות
 mime_err=שמירת סוג MIME נכשלה
 mime_etype='$1' is not a valid MIME type
 virt_ecannot=אינך יכול לערוך שרת וירטואלי זה
+virt_eprotocol=עליך לבחור לפחות גרסת פרוטוקול SSL/TLS שמישה
 virt_title=אפשרויות שרת וירטואלי
 virt_header=For $1
 virt_opts=פרטי שרת וירטואלי

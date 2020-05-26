@@ -96,6 +96,7 @@ mime_ext=Paplašinājumi
 mime_err=Neizdevās saglabāt MIME veidu
 mime_etype='$1' nav derīgs MIME tips
 virt_ecannot=Šo virtuālo serveri nevar rediģēt
+virt_eprotocol=Jums jāizvēlas vismaz viena izmantojamā SSL/TLS protokola versija
 virt_title=Virtuālā servera opcijas
 virt_header=$1
 virt_opts=Sīkāka informācija par virtuālo serveri

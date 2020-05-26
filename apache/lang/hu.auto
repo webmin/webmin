@@ -7,6 +7,7 @@ index_desccreate=Ez az űrlap felhasználható új Apache virtuális gazdagép h
 index_return2=globális konfiguráció
 cvirt_eroot4=Az Apache konfigurációban nincs megadva felhasználó
 enewline=Érvénytelen karakter az értékben
+virt_eprotocol=Legalább egy használható SSL/TLS protokoll verziót ki kell választania
 virt_opts2=Virtuális szerver beállításai
 virt_DirectoryMatch=Directory regexp
 virt_FilesMatch=Fájlok újratelepítése

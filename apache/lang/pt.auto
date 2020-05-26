@@ -42,6 +42,7 @@ default_serv=servidor padrão
 bytes=bytes
 eafter=Falha na verificação da configuração: $1 As alterações não foram salvas.
 enewline=Caractere inválido no valor
+virt_eprotocol=Você deve selecionar pelo menos uma versão utilizável do protocolo SSL/TLS
 virt_opts2=Opções do servidor virtual
 virt_edit=Editar diretivas
 virt_Directory=Diretório

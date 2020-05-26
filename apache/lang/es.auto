@@ -8,6 +8,7 @@ index_return2=configuración global
 index_delete=Eliminar servidores seleccionados
 cvirt_eroot4=Ningún usuario definido en la configuración de Apache
 enewline=Carácter inválido en valor
+virt_eprotocol=Debe seleccionar al menos una versión de protocolo SSL/TLS utilizable
 virt_opts2=Opciones de servidor virtual
 virt_DirectoryMatch=Regexp de directorio
 virt_FilesMatch=Regexp de archivos

@@ -1,6 +1,7 @@
 index_return2=globalna konfiguracija
 cvirt_eroot4=Nijedan Korisnik nije definiran u konfiguraciji Apache
 enewline=Nevaljana vrijednost znaka
+virt_eprotocol=Morate odabrati barem jednu upotrebljivu verziju SSL/TLS protokola
 vserv_virtualmin=Ovaj virtualni domaćin Apache pripada poslužitelju Virtualmin <tt>$1</tt>, pa se adresa, ulaz, osnovni direktorij i ime hosta ovdje ne mogu mijenjati.
 dir_proxyall=Svi proxy zahtjevi
 htaccess_eempty=Nije upisan direktorij datoteka opcija

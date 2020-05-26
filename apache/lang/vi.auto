@@ -96,6 +96,7 @@ mime_ext=Tiện ích mở rộng
 mime_err=Không thể lưu loại MIME
 mime_etype='$1' không phải là loại MIME hợp lệ
 virt_ecannot=Bạn không thể chỉnh sửa máy chủ ảo này
+virt_eprotocol=Bạn phải chọn ít nhất một phiên bản giao thức SSL/TLS có thể sử dụng
 virt_title=Tùy chọn máy chủ ảo
 virt_header=Đối với $1
 virt_opts=Chi tiết máy chủ ảo

@@ -96,6 +96,7 @@ mime_ext=Estensjonijiet
 mime_err=Ma rnexxielux isalva t-tip MIME
 mime_etype="$1" mhux tip MIME validu
 virt_ecannot=Ma tistax teditja dan is-server virtwali
+virt_eprotocol=Trid tagħżel mill-inqas verżjoni waħda tal-protokoll SSL/TLS li tista 'tintuża
 virt_title=Għażliet ta 'Server Virtwali
 virt_header=Għal $1
 virt_opts=Dettalji tas-Server Virtwali
