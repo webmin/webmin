@@ -14,6 +14,7 @@ index_delete=Elimina i server selezionati
 cvirt_eroot4=Nessun utente definito nella configurazione di Apache
 cvirt_emissing=Il nuovo server virtuale è stato aggiunto a $1, ma questo file non è utilizzato da Apache. Controlla la <a href='$2'>configurazione del modulo</a> e assicurati che il 'File o la directory in cui aggiungere i server virtuali' sia corretto.
 enewline=Carattere non valido nel valore
+virt_eprotocol=È necessario selezionare almeno una versione del protocollo SSL/TLS utilizzabile
 virt_opts2=Opzioni del server virtuale
 virt_DirectoryMatch=Directory regexp
 virt_FilesMatch=File regexp

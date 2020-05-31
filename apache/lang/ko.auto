@@ -34,6 +34,7 @@ cvirt_efile=$1에 쓰지 못했습니다  : $2
 cvirt_emissing=새 가상 서버가 $1에 추가되었지만이 파일은 Apache에서 사용되지 않습니다. <a href='$2'>모듈 구성</a>을 확인하고 '가상 서버를 추가 할 파일 또는 디렉토리'가 올바른지 확인하십시오.
 eafter=구성 확인 실패 : $1 변경 사항이 저장되지 않았습니다.
 enewline=값이 잘못된 문자
+virt_eprotocol=사용 가능한 SSL/TLS 프로토콜 버전을 하나 이상 선택해야합니다.
 virt_opts2=가상 서버 옵션
 virt_Proxy=대리
 virt_DirectoryMatch=디렉토리 정규식

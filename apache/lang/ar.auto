@@ -95,6 +95,7 @@ mime_ext=ملحقات
 mime_err=فشل في حفظ نوع MIME
 mime_etype='$1' is not a valid MIME type
 virt_ecannot=لا يمكنك تحرير هذا الخادم الظاهري
+virt_eprotocol=يجب عليك تحديد إصدار بروتوكول SSL/TLS واحد صالح على الأقل
 virt_title=خيارات الخادم الافتراضية
 virt_header=For $1
 virt_opts=تفاصيل الخادم الظاهري

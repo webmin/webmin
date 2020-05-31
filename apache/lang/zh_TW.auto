@@ -11,6 +11,7 @@ index_delete=刪除選定的服務器
 cvirt_eroot4=在Apache配置中沒有定義用戶
 cvirt_emissing=新的虛擬服務器已添加到$1，但是Apache並未使用此文件。檢查<a href='$2'>模塊配置</a>，並確保“添加虛擬服務器的文件或目錄”正確。
 enewline=值中的無效字符
+virt_eprotocol=您必須至少選擇一個可用的SSL/TLS協議版本
 virt_opts2=虛擬服務器選項
 virt_DirectoryMatch=目錄正則表達式
 virt_FilesMatch=文件正則表達式

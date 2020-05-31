@@ -96,6 +96,7 @@ mime_ext=Podaljški
 mime_err=Ni bilo mogoče shraniti vrste MIME
 mime_etype='$1' ni veljavna vrsta MIME
 virt_ecannot=Tega virtualnega strežnika ne morete urediti
+virt_eprotocol=Izbrati morate vsaj eno uporabno različico protokola SSL/TLS
 virt_title=Možnosti virtualnega strežnika
 virt_header=Za $1
 virt_opts=Podrobnosti o virtualnem strežniku

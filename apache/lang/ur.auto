@@ -96,6 +96,7 @@ mime_ext=ایکسٹینشنز
 mime_err=MIME قسم بچانے میں ناکام
 mime_etype='$1' is not a valid MIME type
 virt_ecannot=آپ اس ورچوئل سرور میں ترمیم نہیں کرسکتے ہیں
+virt_eprotocol=آپ کو کم از کم ایک قابل استعمال SSL/TLS پروٹوکول ورژن کا انتخاب کرنا چاہئے
 virt_title=ورچوئل سرور کے اختیارات
 virt_header=For $1
 virt_opts=ورچوئل سرور کی تفصیلات

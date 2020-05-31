@@ -78,6 +78,7 @@ mime_ext=Udvidelser
 mime_err=Kunne ikke gemme MIME-typen
 mime_etype='$1' er ikke en gyldig MIME-type
 virt_ecannot=Du kan ikke redigere denne virtuelle server
+virt_eprotocol=Du skal vælge mindst en brugbar SSL/TLS-protokolversion
 virt_title=Valg af virtuel server
 virt_header=For $1
 virt_opts=Virtuel serveroplysninger

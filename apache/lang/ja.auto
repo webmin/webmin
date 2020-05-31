@@ -1,6 +1,7 @@
 index_return2=グローバル構成
 cvirt_eroot4=Apache構成でユーザーが定義されていません
 enewline=値に無効な文字があります
+virt_eprotocol=使用可能なSSL/TLSプロトコルバージョンを少なくとも1つ選択する必要があります
 vserv_virtualmin=このApache仮想ホストはVirtualminサーバー<tt>$1</tt>に属しているため、アドレス、ポート、ベースディレクトリ、およびホスト名はここで変更できません。
 dir_proxyall=すべてのプロキシ要求
 htaccess_eempty=オプションファイルディレクトリが入力されていません

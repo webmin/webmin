@@ -96,6 +96,7 @@ mime_ext=Pratęsimai
 mime_err=Nepavyko išsaugoti MIME tipo
 mime_etype=„$1“ nėra teisingas MIME tipas
 virt_ecannot=Negalite redaguoti šio virtualiojo serverio
+virt_eprotocol=Turite pasirinkti bent vieną tinkamą SSL/TLS protokolo versiją
 virt_title=Virtualiojo serverio parinktys
 virt_header=$1
 virt_opts=Informacija apie virtualųjį serverį

@@ -1,6 +1,7 @@
 index_return2=global konfiguration
 cvirt_eroot4=Ingen användare har definierats i Apache-konfigurationen
 enewline=Ogiltigt tecken i värde
+virt_eprotocol=Du måste välja minst en användbar SSL/TLS-protokollversion
 vserv_virtualmin=Denna virtuella Apache-värd tillhör Virtualmin-servern <tt>$1</tt>, så adressen, porten, baskatalogen och värdnamnet kan inte ändras här.
 htaccess_eempty=Inga kataloger med alternativfil har angetts
 htaccess_eabsolute=Katalog med alternativfil måste vara en absolut sökväg

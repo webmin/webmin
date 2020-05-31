@@ -1,5 +1,6 @@
 cvirt_eroot4=Tiada Pengguna ditakrifkan dalam konfigurasi Apache
 enewline=Nilai watak tidak sah
+virt_eprotocol=Anda mesti memilih sekurang-kurangnya satu versi protokol SSL/TLS yang boleh digunakan
 virt_euser=Anda tidak dibenarkan menukar pengguna atau kumpulan untuk pelayan maya ini.
 vserv_virtualmin=Hos maya Apache milik pelayan Virtualmin <tt>$1</tt>, jadi alamat, port, direktori asas dan nama hos tidak boleh diubah di sini.
 show_title=Arahan
