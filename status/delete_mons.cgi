@@ -28,7 +28,9 @@ else {
 	&foreign_require("cron", "cron-lib.pl");
 	&cron::create_wrapper($cron_cmd, $module_name, "monitor.pl");
 	$ids = join(" ", map { quotemeta($_) } @d);
+	&clean_environment();
 	&system_logged("$cron_cmd --force $ids >/dev/null 2>&1 </dev/null");
+	&reset_environment();
 	&webmin_log("refresh");
 	print $text{'refresh_done'},"<p>\n";
 	print &js_redirect("index.cgi");
