@@ -1153,6 +1153,7 @@ letsencrypt_echain2=Chained certificate downloaded from $1 is empty
 letsencrypt_ecsr=Failed to generate CSR : $1
 letsencrypt_ekeygen=Failed to generate private key : $1
 letsencrypt_enative=The native Let's Encrypt client (certbot) was used previously on this system, and must be used for all future certificate requests
+letsencrypt_eacmedns=Only the offical Let's Encrypt client supports DNS-based validation
 
 announce_hide=Hide This Announcement
 

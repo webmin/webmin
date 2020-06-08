@@ -249,6 +249,10 @@ if ($letsencrypt_cmd) {
 
 	return (1, $cert, $key, $chain);
 	}
+elsif ($mode eq "dns") {
+	# Python client doesn't support DNS
+	return (0, $text{'letsencrypt_eacmedns'});
+	}
 else {
 	# Fall back to local Python client
 	$size ||= 4096;
