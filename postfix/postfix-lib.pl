@@ -128,12 +128,14 @@ foreach my $l (@$lref) {
 if (!defined($out) && !$_[1]) {
 	# Fall back to asking Postfix
 	# -h tells postconf not to output the name of the parameter
-	$out = &backquote_command("$config{'postfix_config_command'} -c $config_dir -h ".
-				  quotemeta($name)." 2>/dev/null", 1);
+	my $err;
+	&execute_command("$config{'postfix_config_command'} -c $config_dir -h ".
+			 quotemeta($name), undef, \$out, \$err, 0, 1);
 	if ($?) {
 		&error(&text('query_get_efailed', $name, $out));
 		}
-	elsif ($out =~ /warning:.*unknown\s+parameter/) {
+	elsif ($out =~ /warning:.*unknown\s+parameter/ ||
+	       $err =~ /warning:.*unknown\s+parameter/) {
 		return undef;
 		}
 	chop($out);
