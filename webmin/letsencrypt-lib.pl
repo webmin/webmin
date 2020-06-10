@@ -18,7 +18,8 @@ $letsencrypt_chain_urls = [
 
 sub get_letsencrypt_python_cmd
 {
-return &has_command("python2.7") || &has_command("python27") ||
+return &has_command("python3") ||
+       &has_command("python2.7") || &has_command("python27") ||
        &has_command("python2.6") || &has_command("python26") ||
        &has_command("python");
 }
