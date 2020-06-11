@@ -50,9 +50,10 @@ if ($config{'ssl'}) {
 	}
 
 # Check if IPv6 is enabled and available
+eval "use Socket6";
+$socket6err = $@;
 if ($config{'ipv6'}) {
-	eval "use Socket6";
-	if (!$@) {
+	if (!$socket6err) {
 		push(@startup_msg, "IPv6 support enabled");
 		$use_ipv6 = 1;
 		}
