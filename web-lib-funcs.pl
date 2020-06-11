@@ -9364,13 +9364,21 @@ sub END
 {
 $main::end_exit_status ||= $?;
 if ($$ == $main::initial_process_id) {
-	# Exiting from initial process
+	# Exiting from initial process ... cleanup all transient files
 	&cleanup_tempnames();
+
 	if ($gconfig{'debug_what_start'} && $main::debug_log_start_time) {
+		# Log the completion of this script to the debug log
 		my $len = time() - $main::debug_log_start_time;
 		&webmin_debug_log("STOP", "runtime=$len");
 		$main::debug_log_start_time = 0;
 		}
+
+	# Drop any LDAP or MySQL connections
+	while(my ($str, $conn) = each %main::connect_userdb_cache) {
+		&disconnect_userdb($str, $conn->[0], 1);
+		}
+
 	if (!$ENV{'SCRIPT_NAME'}) {
 		# In a command-line script - call the real exit, so that the
 		# exit status gets properly propogated. In some cases this
@@ -10514,6 +10522,12 @@ protocol type too.
 sub connect_userdb
 {
 my ($str) = @_;
+my @rv;
+if ($main::connect_userdb_cache{$str}) {
+	@rv = @{$main::connect_userdb_cache{$str}};
+	$main::connect_userdb_cache_time{$str} = time();
+	return wantarray ? @rv : $rv[0];
+	}
 my ($proto, $user, $pass, $host, $prefix, $args) = &split_userdb_string($str);
 if ($proto eq "mysql") {
 	# Connect to MySQL with DBI
@@ -10524,7 +10538,7 @@ if ($proto eq "mysql") {
 	$cstr .= ";port=$port" if ($port);
 	my $dbh = $drh->connect($cstr, $user, $pass, { });
 	$dbh || return &text('sql_emysqlconnect', $drh->errstr);
-	return wantarray ? ($dbh, $proto, $prefix, $args) : $dbh;
+	@rv = ($dbh, $proto, $prefix, $args);
 	}
 elsif ($proto eq "postgresql") {
 	# Connect to PostgreSQL with DBI
@@ -10535,7 +10549,7 @@ elsif ($proto eq "postgresql") {
 	$cstr .= ";port=$port" if ($port);
 	my $dbh = $drh->connect($cstr, $user, $pass);
 	$dbh || return &text('sql_epostgresqlconnect', $drh->errstr);
-	return wantarray ? ($dbh, $proto, $prefix, $args) : $dbh;
+	@rv = ($dbh, $proto, $prefix, $args);
 	}
 elsif ($proto eq "ldap") {
 	# Connect with perl LDAP module
@@ -10576,32 +10590,41 @@ elsif ($proto eq "ldap") {
 		return &text('sql_eldaplogin', $user,
 			     $mesg ? $mesg->error : "Unknown error");
 		}
-	return wantarray ? ($ldap, $proto, $prefix, $args) : $ldap;
+	@rv = ($ldap, $proto, $prefix, $args);
 	}
 else {
 	return "Unknown protocol $proto";
 	}
+$main::connect_userdb_cache{$str} = \@rv;
+$main::connect_userdb_cache_time{$str} = time();
+return wantarray ? @rv : $rv[0];
 }
 
-=head2 disconnect_userdb(string, &handle)
+=head2 disconnect_userdb(string, &handle, [force-disconnect])
 
 Closes a handle opened by connect_userdb
 
 =cut
 sub disconnect_userdb
 {
-my ($str, $h) = @_;
-if ($str =~ /^(mysql|postgresql):/) {
-	# DBI disconnnect
-	if (!$h->{'AutoCommit'}) {
-		$h->commit();
+my ($str, $h, $force) = @_;
+if ($force ||
+    !$main::connect_userdb_cache{$str} ||
+    time() - $main::connect_userdb_cache_time{$str} > 60) {
+	if ($str =~ /^(mysql|postgresql):/) {
+		# DBI disconnnect
+		if (!$h->{'AutoCommit'}) {
+			$h->commit();
+			}
+		$h->disconnect();
 		}
-	$h->disconnect();
-	}
-elsif ($str =~ /^ldap:/) {
-	# LDAP disconnect
-	$h->unbind();
-	$h->disconnect();
+	elsif ($str =~ /^ldap:/) {
+		# LDAP disconnect
+		$h->unbind();
+		$h->disconnect();
+		}
+	delete($main::connect_userdb_cache{$str});
+	delete($main::connect_userdb_cache_time{$str});
 	}
 }
 
