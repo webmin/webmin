@@ -10919,8 +10919,8 @@ Compares to version "number" strings, and returns -1 if ver1 is older than ver2,
 sub compare_version_numbers
 {
 my ($ver1, $ver2) = @_;
-my @sp1 = split(/[\.\-\+\~]/, $ver1);
-my @sp2 = split(/[\.\-\+\~]/, $ver2);
+my @sp1 = split(/[\.\-\+\~\_]/, $ver1);
+my @sp2 = split(/[\.\-\+\~\_]/, $ver2);
 my $tmp;
 for(my $i=0; $i<@sp1 || $i<@sp2; $i++) {
 	my $v1 = $sp1[$i];

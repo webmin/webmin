@@ -19,10 +19,10 @@ $letsencrypt_chain_urls = [
 sub get_letsencrypt_python_cmd
 {
 return &has_command("python3") || &has_command("python30") ||
-       &has_command("python3.6") || &has_command("python36") ||
-       &has_command("python3.7") || &has_command("python37") ||
-       &has_command("python3.8") || &has_command("python38") ||
        &has_command("python3.9") || &has_command("python39") ||
+       &has_command("python3.8") || &has_command("python38") ||
+       &has_command("python3.7") || &has_command("python37") ||
+       &has_command("python3.6") || &has_command("python36") ||
        &has_command("python2.7") || &has_command("python27") ||
        &has_command("python2.6") || &has_command("python26") ||
        &has_command("python");
