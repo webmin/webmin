@@ -10,5 +10,7 @@ index_trunced=$2 kopējais izlaide tika saīsināta $1.
 index_timedout=Komandas darbība tika pārtraukta pēc skrējiena $1 sekundes.
 acl_user=Izpildiet komandas kā lietotājs
 acl_user_def=Pašreizējais Webmin lietotājs
+acl_shellenv=Vai izmantot izvēlētā lietotāja vidi?
+acl_chroot=Chroot direktorijā
 log_run=Izpildīja komandu $1 
 log_clear=Notīrīta komandu vēsture

@@ -72,6 +72,7 @@ session_maxlife=Maksimālais sesijas ilgums
 session_epath=Trūkst vai nav derīgs sesiju failu direktorijs
 session_elife=Trūkst vai nav derīgs sīkfailu darbības laiks
 session_emaxlife=Trūkst vai nav derīgs sesijas ilgums
+session_eredis=Trūkst vai ir atspējots atkārtotās paplašināšanas paplašinājums
 safe_title=Drošā režīma opcijas
 safe_header=Drošas piekļuves failiem režīmi
 safe_on=Vai iespējot drošo režīmu?

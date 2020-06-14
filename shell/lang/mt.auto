@@ -10,5 +10,7 @@ index_trunced=Il-produzzjoni totali ta ' $2 tnaqqset f' $1.
 index_timedout=Il-kmand twaqqaf wara li kien għaddej għal $1 sekonda.
 acl_user=Eżegwixxi kmandi bħala utent
 acl_user_def=Utent Webmin attwali
+acl_shellenv=Uża l-ambjent tal-utent magħżul?
+acl_chroot=Chroot għad-direttorju
 log_run=Ibda kmand $1 
 log_clear=Maħlub l-istorja tal-kmand

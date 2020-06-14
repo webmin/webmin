@@ -605,4 +605,5 @@ letsencrypt_echain2=O certificado encadeado baixado de $1 está vazio
 letsencrypt_ecsr=Falha ao gerar o CSR : $1
 letsencrypt_ekeygen=Falha ao gerar a chave privada : $1
 letsencrypt_enative=O cliente Let's Encrypt criptografado (certbot) foi usado anteriormente neste sistema e deve ser usado para todas as solicitações futuras de certificado
+letsencrypt_eacmedns=Somente o cliente oficial Let's Encrypt suporta validação baseada em DNS
 announce_hide=Ocultar este anúncio

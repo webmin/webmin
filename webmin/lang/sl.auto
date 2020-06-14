@@ -1099,4 +1099,5 @@ letsencrypt_echain2=Verižno potrdilo, preneseno iz $1, je prazno
 letsencrypt_ecsr=Generacije CSR ni uspelo : $1
 letsencrypt_ekeygen=Ni bilo mogoče ustvariti zasebnega ključa : $1
 letsencrypt_enative=Domači odjemalec Let's Encrypt (certbot) je bil prej uporabljen v tem sistemu in ga je treba uporabiti za vse prihodnje zahteve za potrdila
+letsencrypt_eacmedns=Samo uradni odjemalec Let's Encrypt podpira preverjanje na podlagi DNS
 announce_hide=Skrij to obvestilo

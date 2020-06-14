@@ -72,6 +72,7 @@ session_maxlife=Durata de viață maximă a sesiunii
 session_epath=Director lipsă sau nevalid pentru fișierele de sesiune
 session_elife=Durata de viață a cookie-ului lipsă sau nevalidă
 session_emaxlife=Durata de viață maximă lipsă sau nevalidă
+session_eredis=Extensia de redisecție lipsă sau dezactivată
 safe_title=Opțiuni mod sigur
 safe_header=Opțiuni în modul de acces sigur la fișiere
 safe_on=Activați modul sigur?

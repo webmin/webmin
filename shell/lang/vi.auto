@@ -10,5 +10,7 @@ index_trunced=Tổng sản lượng của $2 đã bị cắt ở $1.
 index_timedout=Lệnh đã bị chấm dứt sau khi chạy $1 giây.
 acl_user=Thực thi các lệnh như người dùng
 acl_user_def=Người dùng Webmin hiện tại
+acl_shellenv=Sử dụng môi trường người dùng đã chọn?
+acl_chroot=Chroot vào thư mục
 log_run=Lệnh Ran $1 
 log_clear=Xóa lịch sử lệnh

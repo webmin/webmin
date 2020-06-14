@@ -10,5 +10,7 @@ index_trunced=Den samlede produktion på $2 blev trunkeret til $1.
 index_timedout=Kommandoen blev afsluttet efter at have kørt i $1 sekunder.
 acl_user=Udfør kommandoer som bruger
 acl_user_def=Nuværende Webmin-bruger
+acl_shellenv=Brug den valgte brugers miljø?
+acl_chroot=Chroot til katalog
 log_run=Kørte kommando $1 
 log_clear=Ryddet kommandohistorie

@@ -364,4 +364,5 @@ letsencrypt_echain2=Zřetězený certifikát stažený z $1 je prázdný
 letsencrypt_ecsr=Nepodařilo se vygenerovat CSR : $1
 letsencrypt_ekeygen=Generování soukromého klíče se nezdařilo : $1
 letsencrypt_enative=V tomto systému byl dříve použit nativní klient Encrypt (certbot) a musí být použit pro všechny budoucí žádosti o certifikát
+letsencrypt_eacmedns=Pouze oficiální klient Let's Encrypt podporuje ověření založené na DNS
 announce_hide=Skrýt toto oznámení

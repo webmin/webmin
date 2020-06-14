@@ -1099,4 +1099,5 @@ letsencrypt_echain2=Chứng chỉ xích được tải xuống từ $1 trống
 letsencrypt_ecsr=Không thể tạo CSR : $1
 letsencrypt_ekeygen=Không thể tạo khóa riêng : $1
 letsencrypt_enative=Ứng dụng khách Encrypt gốc (certbot) đã được sử dụng trước đây trên hệ thống này và phải được sử dụng cho tất cả các yêu cầu chứng chỉ trong tương lai
+letsencrypt_eacmedns=Chỉ ứng dụng khách Encrypt chính thức mới hỗ trợ xác thực dựa trên DNS
 announce_hide=Ẩn thông báo này

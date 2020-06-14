@@ -72,6 +72,7 @@ session_maxlife=Maximal sessionens livslängd
 session_epath=Saknad eller ogiltig katalog för sessionfiler
 session_elife=Saknad eller ogiltig cookie livstid
 session_emaxlife=Saknad eller ogiltig maximal sessionstid
+session_eredis=Saknas eller inaktiverad återförlängning
 safe_title=Säkerhetsalternativ
 safe_header=Alternativ för säker filåtkomstläge
 safe_on=Aktivera säkert läge?

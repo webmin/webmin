@@ -51,6 +51,7 @@ session_maxlife=A munkamenet maximális élettartama
 session_epath=Hiányzó vagy érvénytelen könyvtár a munkamenet fájlokhoz
 session_elife=Hiányzó vagy érvénytelen süti élettartama
 session_emaxlife=Hiányzik vagy érvénytelen a munkamenet maximális élettartama
+session_eredis=Hiányzó vagy letiltott újbóli kiterjesztés
 safe_header=Biztonságos fájlhozzáférési mód opciók
 safe_on=Engedélyezi a biztonságos módot?
 safe_gid=Csak a csoport azonosítókat kell egyeznie?

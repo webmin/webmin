@@ -10,5 +10,7 @@ index_trunced=Visas $2 išėjimas buvo sutrumpintas $1.
 index_timedout=Komanda buvo nutraukta paleidus $1 sekundes.
 acl_user=Vykdykite komandas kaip vartotojas
 acl_user_def=Dabartinis „Webmin“ vartotojas
+acl_shellenv=Naudoti pasirinktą vartotojo aplinką?
+acl_chroot=„Chroot“ į katalogą
 log_run=Paleido komandą $1 
 log_clear=Išvalyta komandų istorija

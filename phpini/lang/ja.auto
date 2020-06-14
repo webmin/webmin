@@ -72,6 +72,7 @@ session_maxlife=最大セッション寿命
 session_epath=セッションファイルのディレクトリが見つからないか無効です
 session_elife=Cookieの有効期間がないか、無効です
 session_emaxlife=最大セッション存続期間がないか、無効です
+session_eredis=redis拡張機能がないか、無効になっています
 safe_title=セーフモードオプション
 safe_header=安全なファイルアクセスモードオプション
 safe_on=セーフモードを有効にしますか？

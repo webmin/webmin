@@ -72,6 +72,7 @@ session_maxlife=最大会话寿命
 session_epath=会话文件目录丢失或无效
 session_elife=Cookie生命周期丢失或无效
 session_emaxlife=最大会话生存期丢失或无效
+session_eredis=缺少或禁用Redis扩展
 safe_title=安全模式选项
 safe_header=安全文件访问模式选项
 safe_on=启用安全模式？

@@ -72,6 +72,7 @@ session_maxlife=Najdaljša življenjska doba seje
 session_epath=Manjkajoči ali neveljaven imenik za datoteke seje
 session_elife=Manjkajoča ali neveljavna življenjska doba piškotka
 session_emaxlife=Najmanjša ali neveljavna največja življenjska doba seje
+session_eredis=Manjkajoča ali onemogočena razširitev Redis
 safe_title=Možnosti varnega načina
 safe_header=Možnosti varnega dostopa do datotek
 safe_on=Želite omogočiti varen način?

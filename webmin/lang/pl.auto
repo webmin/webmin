@@ -76,4 +76,5 @@ letsencrypt_echain2=Łańcuch certyfikatu pobrany z $1 jest pusty
 letsencrypt_ecsr=Nie udało się wygenerować CSR : $1
 letsencrypt_ekeygen=Nie udało się wygenerować klucza prywatnego : $1
 letsencrypt_enative=Natywny klient Let's Encrypt (certbot) był wcześniej używany w tym systemie i musi być używany do wszystkich przyszłych żądań certyfikatów
+letsencrypt_eacmedns=Tylko oficjalny klient Let's Encrypt obsługuje sprawdzanie poprawności na podstawie DNS
 announce_hide=Ukryj to ogłoszenie

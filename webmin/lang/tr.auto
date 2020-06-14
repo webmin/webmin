@@ -615,4 +615,5 @@ letsencrypt_echain2=$1 adresinden indirilen zincirleme sertifika boş
 letsencrypt_ecsr=CSR oluşturulamadı : $1
 letsencrypt_ekeygen=Özel anahtar oluşturulamadı : $1
 letsencrypt_enative=Yerel Let's Encrypt istemcisi (certbot) daha önce bu sistemde kullanıldı ve gelecekteki tüm sertifika istekleri için kullanılmalıdır
+letsencrypt_eacmedns=Yalnızca resmi Let's Encrypt istemcisi DNS tabanlı doğrulamayı destekler
 announce_hide=Bu Duyuruyu Gizle

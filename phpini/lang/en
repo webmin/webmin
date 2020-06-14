@@ -70,7 +70,6 @@ session_handler=Session storage mechanism
 session_files=Files
 session_mm=In memory
 session_users=User defined
-session_files=Redis
 session_path=Directory for session files
 session_cookies=Allow use of cookies for session tracking?
 session_only_cookies=Always use cookies for session tracking?

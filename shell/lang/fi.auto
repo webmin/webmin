@@ -10,5 +10,7 @@ index_trunced=$2 : n kokonaistuotanto katkaistiin pisteeseen $1.
 index_timedout=Komento lopetettiin suoritettuaan $1 sekunnin.
 acl_user=Suorita komennot käyttäjänä
 acl_user_def=Nykyinen Webmin-käyttäjä
+acl_shellenv=Käytätkö valittua käyttäjän ympäristöä?
+acl_chroot=Chroot hakemistoon
 log_run=Ran komento $1 
 log_clear=Puhdistettu komentohistoria

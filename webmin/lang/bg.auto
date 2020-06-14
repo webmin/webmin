@@ -1099,4 +1099,5 @@ letsencrypt_echain2=Верижният сертификат, изтеглен о
 letsencrypt_ecsr=Неуспешно генериране на CSR : $1
 letsencrypt_ekeygen=Неуспешно генериране на частен ключ : $1
 letsencrypt_enative=Нативният клиент Let's Encrypt (certbot) беше използван преди това в тази система и трябва да се използва за всички бъдещи заявки за сертификати
+letsencrypt_eacmedns=Само официалният клиент Let's Encrypt поддържа валидиране на DNS
 announce_hide=Скриване на това съобщение

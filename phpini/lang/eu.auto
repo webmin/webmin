@@ -72,6 +72,7 @@ session_maxlife=Gehienezko saioaren bizitza
 session_epath=Saio fitxategien direktorio falta edo baliogabea
 session_elife=Cookieen bizitza osoa falta da edo baliogabea
 session_emaxlife=Gehienezko saioaren iraupena galdu edo baliogabea
+session_eredis=Falta edo desgaituta birbideratzeko luzapena
 safe_title=Modu seguruaren aukerak
 safe_header=Fitxategiak sartzeko modu seguruak
 safe_on=Gaitu modu segurua?

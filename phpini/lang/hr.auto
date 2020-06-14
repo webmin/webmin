@@ -72,6 +72,7 @@ session_maxlife=Maksimalni životni vijek sesije
 session_epath=Nedostaje ili nije važeći direktorij za datoteke sa sesijama
 session_elife=Nedostaje ili nije valjan vijek kolačića
 session_emaxlife=Manjkajući ili nevažeći maksimalni vijek trajanja sesije
+session_eredis=Nedostaje ili onemogućuje se nastavak Redis
 safe_title=Opcije sigurnog načina rada
 safe_header=Opcije načina sigurnog pristupa datoteci
 safe_on=Želite li omogućiti siguran način rada?

@@ -72,6 +72,7 @@ session_maxlife=אורך חיים מקסימלי להפעלה
 session_epath=מדריך חסר או לא חוקי עבור קבצי הפעלה
 session_elife=חיי קובץ cookie חסרים או לא תקפים
 session_emaxlife=אורך החיים המקסימלי חסר או לא תקף
+session_eredis=הרחבה חוזרת חסרה או מושבתת
 safe_title=אפשרויות מצב בטוח
 safe_header=אפשרויות מצב גישה בטוחה לקובץ
 safe_on=אפשר מצב בטוח?

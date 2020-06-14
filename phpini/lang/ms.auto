@@ -72,6 +72,7 @@ session_maxlife=Hayat sesi maksimum
 session_epath=Direktori yang hilang atau tidak sah untuk fail sesi
 session_elife=Kehidupan kuki yang hilang atau tidak sah
 session_emaxlife=Tempoh hayat sesi maksimum atau tidak sah
+session_eredis=Sambungan redis tidak ada atau dilumpuhkan
 safe_title=Pilihan Mod Selamat
 safe_header=Pilihan mod akses fail selamat
 safe_on=Dayakan mod selamat?

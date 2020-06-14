@@ -1099,4 +1099,5 @@ letsencrypt_echain2=Прыкаваны сертыфікат, загружаны 
 letsencrypt_ecsr=Не атрымалася згенераваць CSR : $1
 letsencrypt_ekeygen=Не атрымалася згенераваць прыватны ключ : $1
 letsencrypt_enative=Родны кліент Let's Encrypt (certbot) раней выкарыстоўваўся ў гэтай сістэме і павінен выкарыстоўвацца для ўсіх будучых запытаў сертыфікатаў
+letsencrypt_eacmedns=Толькі афіцыйны кліент Let's Encrypt падтрымлівае праверку на аснове DNS
 announce_hide=Схавайце гэтую аб'яву

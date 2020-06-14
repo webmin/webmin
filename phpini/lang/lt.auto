@@ -72,6 +72,7 @@ session_maxlife=Maksimalus sesijos laikas
 session_epath=Trūksta arba netinkamas seansų failų katalogas
 session_elife=Trūksta arba netinkamas slapuko galiojimo laikas
 session_emaxlife=Trūksta arba netinkama maksimali sesijos trukmė
+session_eredis=Trūksta arba neleidžiama pakartotinio atnaujinimo plėtinio
 safe_title=Saugaus režimo parinktys
 safe_header=Saugaus failų prieigos režimo parinktys
 safe_on=Įgalinti saugųjį režimą?

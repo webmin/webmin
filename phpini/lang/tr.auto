@@ -72,6 +72,7 @@ session_maxlife=Maksimum oturum ömrü
 session_epath=Oturum dosyaları için eksik veya geçersiz dizin
 session_elife=Eksik veya geçersiz çerez ömrü
 session_emaxlife=Eksik veya geçersiz maksimum oturum ömrü
+session_eredis=Eksik veya devre dışı bırakılmış yeniden dağıtım uzantısı
 safe_title=Güvenli Mod Seçenekleri
 safe_header=Güvenli dosya erişim modu seçenekleri
 safe_on=Güvenli mod etkinleştirilsin mi?

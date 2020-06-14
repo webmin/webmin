@@ -72,6 +72,7 @@ session_maxlife=Istunnon enimmäiskesto
 session_epath=Puuttuva tai virheellinen istunto tiedostojen hakemisto
 session_elife=Puuttuva tai virheellinen evästeen käyttöikä
 session_emaxlife=Puuttuva tai virheellinen istunnon koko elinaika
+session_eredis=Puuttuva tai poistettu käytöstä uudelleenlaajennus
 safe_title=Vikasietotilan asetukset
 safe_header=Turvalliset tiedostojen käyttötilan asetukset
 safe_on=Ota suojattu tila käyttöön?

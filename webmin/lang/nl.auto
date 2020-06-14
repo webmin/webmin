@@ -194,4 +194,5 @@ letsencrypt_echain2=Geketend certificaat gedownload van $1 is leeg
 letsencrypt_ecsr=Kan CSR niet genereren : $1
 letsencrypt_ekeygen=Kan privésleutel niet genereren : $1
 letsencrypt_enative=De native Let's Encrypt-client (certbot) werd eerder op dit systeem gebruikt en moet worden gebruikt voor alle toekomstige certificaataanvragen
+letsencrypt_eacmedns=Alleen de officiële Let's Encrypt-client ondersteunt DNS-validatie
 announce_hide=Deze aankondiging verbergen

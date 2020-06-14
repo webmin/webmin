@@ -99,4 +99,5 @@ letsencrypt_echain2=Sijil rantai yang dimuat turun daripada $1 kosong
 letsencrypt_ecsr=Gagal untuk menjana CSR : $1
 letsencrypt_ekeygen=Gagal menjana kunci peribadi : $1
 letsencrypt_enative=Native Encrypt native (certbot) asli digunakan sebelum ini pada sistem ini, dan mesti digunakan untuk semua permintaan sijil masa depan
+letsencrypt_eacmedns=Hanya klien Let's Encrypt yang sah yang menyokong pengesahan berasaskan DNS
 announce_hide=Sembunyikan Pengumuman Ini
