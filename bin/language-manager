@@ -70,17 +70,21 @@ sub main
         $opt{'verbose'} = 1;
     }
 
-    # Get current path and make workaround to run from sub dir
+    # Get current path
     my $path = cwd;
-    if ($path =~ /\/bin$/) {
-        $path = Cwd::realpath('..');
-    }
-    my $type = -d "$path/ulang" ? 'ulang' : 'lang';
 
     # Load Webmin lib
-    require("$path/web-lib-funcs.pl");
+    my $lib = "web-lib-funcs.pl";
+    if (!-r "$path/$lib") {
+        $path = dirname(dirname($0));
+        if (!-r "$path/$lib") {
+            $path = $path = Cwd::realpath('..');
+        }
+    }
+    require("$path/$lib");
 
     # Enforce user specific target: language directory, config.info or module.info file {lang|ulang|config|uconfig|module}
+    my $type = -d "$path/ulang" ? 'ulang' : 'lang';
     $opt{'type'} && ($type = $opt{'type'});
 
     # Store path and type
@@ -821,7 +825,7 @@ s/(?|(\\\s*n\s*\\\s*n\s*\\\s*n\s*\\\s*n\s*\\\s*n)|(\\\s*n\s*\\\s*n\s*\\\s*n\s*\\
         $translated =~ s/<Я>(.*?)<\/.>/<i>$1<\/i>/gi;
         $translated =~ s/<Я>(.*?)<\/\?/<i>$1<\/i>/gi;
     }
-    
+
     # Fix altered escaped HTML. Happens, for example, in Japanese language translations
     $translated =~ s/＆lt;/&lt;/g;
     $translated =~ s/＆gt;/&gt;/g;
@@ -936,7 +940,7 @@ sub go
 
             # Build targets first
             talk_log(("Transcoding/translating " . CYAN BOLD, $module, RESET . " module's help .."), $data, 1);
-            talk_log(("" . CYAN . "  .. Building list of help files to process" . RESET . ""), $data, 1);
+            talk_log(("" . CYAN . "  .. Building list of help files to process" . RESET . ""),       $data, 1);
             find(
                 {
                    wanted => sub {
