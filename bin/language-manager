@@ -1766,35 +1766,35 @@ Examples of usage:
 
 Synchronize all language keys for Apache module, based on template language. Newly added entries to Apache template language file (def. en), will be translated and inserted into all other machine translated language files, while deleted entries will also be removed on all targets (translations), including human translated files. The value for "defines_desc" will be force re-translated and translation will be done in HTML format. 
 
- — language-manager -m=apache -kft=defines_desc -kfh=defines_desc
+ - language-manager -m=apache -kft=defines_desc -kfh=defines_desc
 
 Synchronize all modules' "help/" language files. Newly added files will be translated and already translated, both human and machine translations, will be kept intact.
 
- — language-manager -w=help
+ - language-manager -w=help
 
 Check for Software Packages module, all matching escaped HTML "&lt;" and "&gt;" entities in template file (def. en), and if found, make sure that translations (including machine translations) for the same key, contain exact escaped HTML entities, as on template string, rather than "<" or ">". Technically, it's possible to check and replace anything on language files using this command.
 
- — language-manager -vf="&lt;:<,&gt;:>" -m=software
+ - language-manager -vf="&lt;:<,&gt;:>" -m=software
 
 Translate all available languages, using old-time encoding map, for BIND module, using as type "lang" directory, discarding human translations for Hebrew, keeping original value (not translating) for key "mass_desc", and printing verbose output.
 
- — language-manager -x=full -e=map -m=bind8 -w=lang -se=he -ke=mass_desc
+ - language-manager -x=full -e=map -m=bind8 -w=lang -se=he -ke=mass_desc
 
 Transcode only and rename all modules' "help/" old-time format files. Old files, such as "ja_JP.euc.html", "ko_KR.euc.html", "zh_TW.Big5.html" and "ru_RU.html" will be automatically renamed and/or deleted.
 
- — language-manager -w=help -e=map -ot
+ - language-manager -w=help -e=map -ot
 
 Only transcode language files, using old-time encoding map, from files being in different encodings, to new style, where all language files are in "utf-8" encoding, for Apache module. No translations will be made, and no ".auto" files will be created.
 
- — language-manager -x=full -e=map -m=apache -ot
+ - language-manager -x=full -e=map -m=apache -ot
 
 Repare human translated language files, which stored in "utf-8" encoding already but still have HTML entities.
 
- — language-manager -m=virtual-server -t=no,es -x=transcode
+ - language-manager -m=virtual-server -t=no,es -x=transcode
 
 Test translations for "index_stopmsg,trusted_warning" keys, in Russian and German languages, in BIND module, print on-screen results and exit.
 
- — language-manager -m=bind8 -t=ru,de -kt=index_stopmsg,trusted_warning
+ - language-manager -m=bind8 -t=ru,de -kt=index_stopmsg,trusted_warning
 
 =item --mode, -x <sync|full|transcode>
 
