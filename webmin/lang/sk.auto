@@ -433,4 +433,5 @@ letsencrypt_echain2=Reťazový certifikát stiahnutý z $1 je prázdny
 letsencrypt_ecsr=Nepodarilo sa vygenerovať CSR : $1
 letsencrypt_ekeygen=Nepodarilo sa vygenerovať súkromný kľúč : $1
 letsencrypt_enative=Natívny klient šifrovania Let (Encyptuj) (certbot) bol predtým použitý v tomto systéme a musí byť použitý pre všetky budúce žiadosti o certifikáty
+letsencrypt_eacmedns=Iba oficiálny klient Poďme šifrovať podporuje overovanie založené na DNS
 announce_hide=Skryť toto oznámenie

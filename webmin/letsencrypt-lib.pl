@@ -352,7 +352,7 @@ else {
 	# Copy the per-domain files
 	my $certfinal = "$module_config_directory/$doms[0].cert";
 	my $keyfinal = "$module_config_directory/$doms[0].key";
-	my $chainfinal = "$module_config_directory/$doms[0].chain";
+	my $chainfinal = "$module_config_directory/$doms[0].ca";
 	&copy_source_dest($cert, $certfinal, 1);
 	&copy_source_dest($key, $keyfinal, 1);
 	&copy_source_dest($chain, $chainfinal, 1);

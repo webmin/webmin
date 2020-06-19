@@ -163,4 +163,5 @@ letsencrypt_echain2=$1からダウンロードしたチェーン証明書は空�
 letsencrypt_ecsr=CSRの生成に失敗しました：$1
 letsencrypt_ekeygen=秘密鍵の生成に失敗しました：$1
 letsencrypt_enative=ネイティブのLet's Encryptクライアント（certbot）はこのシステムで以前に使用されたものであり、将来のすべての証明書要求に使用する必要があります
+letsencrypt_eacmedns=公式のLet's EncryptクライアントのみがDNSベースの検証をサポートします
 announce_hide=このお知らせを非表示

@@ -72,6 +72,7 @@ session_maxlife=Maksimal session levetid
 session_epath=Manglende eller ugyldig mappe til sessionfiler
 session_elife=Manglende eller ugyldig cookie-levetid
 session_emaxlife=Manglende eller ugyldig maksimal sessionens levetid
+session_eredis=Manglende eller deaktiveret genudvidelse igen
 safe_title=Valg af sikker tilstand
 safe_header=Indstillinger for sikker filtilgangstilstand
 safe_on=Aktivér sikker tilstand?

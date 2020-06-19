@@ -779,4 +779,5 @@ letsencrypt_echain2=从$1下载的链接证书为空
 letsencrypt_ecsr=无法生成CSR：$1
 letsencrypt_ekeygen=无法生成私钥：$1
 letsencrypt_enative=本地的Let's Encrypt客户端（certbot）先前在此系统上使用，并且必须用于以后的所有证书请求
+letsencrypt_eacmedns=仅官方的Let's Encrypt客户端支持基于DNS的验证
 announce_hide=隐藏此公告

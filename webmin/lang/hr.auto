@@ -1099,4 +1099,5 @@ letsencrypt_echain2=Lančani certifikat preuzet s $1 je prazan
 letsencrypt_ecsr=Generiranje CSR-a nije uspjelo : $1
 letsencrypt_ekeygen=Generiranje privatnog ključa nije uspjelo : $1
 letsencrypt_enative=Izvorni klijent Let's Encrypt klijent (certbot) prethodno se koristio u ovom sustavu i mora se koristiti za sve buduće zahtjeve certifikata.
+letsencrypt_eacmedns=Samo službeni klijent Let's Encrypt klijent podržava provjeru utemeljenu na DNS-u
 announce_hide=Sakrij ovu najavu

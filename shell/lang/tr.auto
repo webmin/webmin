@@ -10,5 +10,7 @@ index_trunced=$2 toplam çıktısı $1 'de kesildi.
 index_timedout=$1 saniye çalıştırıldıktan sonra komut sonlandırıldı.
 acl_user=Komutları kullanıcı olarak yürütme
 acl_user_def=Geçerli Webmin kullanıcısı
+acl_shellenv=Seçilen kullanıcının ortamı kullanılsın mı?
+acl_chroot=Dizine chroot
 log_run=$1 koştu komutu
 log_clear=Komut geçmişi temizlendi

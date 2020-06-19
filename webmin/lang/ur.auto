@@ -1099,4 +1099,5 @@ letsencrypt_echain2=Chained certificate downloaded from $1 is empty
 letsencrypt_ecsr=Failed to generate CSR : $1
 letsencrypt_ekeygen=Failed to generate private key : $1
 letsencrypt_enative=مقامی لیٹ انکرپٹ کلائنٹ (سیرٹبوٹ) پہلے اس سسٹم میں استعمال ہوتا تھا ، اور آئندہ سرٹیفکیٹ کی تمام درخواستوں کے ل used اسے استعمال کیا جانا چاہئے
+letsencrypt_eacmedns=صرف آفیسیکل چلو انکرپٹ کلائنٹ DNS پر مبنی توثیق کی حمایت کرتا ہے
 announce_hide=اس اعلان کو چھپائیں

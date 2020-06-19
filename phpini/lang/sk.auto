@@ -72,6 +72,7 @@ session_maxlife=Maximálna životnosť relácie
 session_epath=Chýbajúci alebo neplatný adresár pre súbory relácie
 session_elife=Chýbajúca alebo neplatná životnosť súborov cookie
 session_emaxlife=Chýbajúca alebo neplatná maximálna životnosť relácie
+session_eredis=Chýbajúce alebo deaktivované rozšírenie Redis
 safe_title=Možnosti núdzového režimu
 safe_header=Možnosti režimu bezpečného prístupu k súboru
 safe_on=Povoliť bezpečný režim?

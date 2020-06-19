@@ -51,7 +51,7 @@ else {
 	&unlock_file($miniserv{'certfile'});
 	}
 if (!$in{'chain_def'}) {
-	$miniserv{'extracas'} = "$config_directory/miniserv.chain"
+	$miniserv{'extracas'} = "$config_directory/miniserv.ca"
 		if (!$miniserv{'extracas'} || $miniserv{'extracas'} =~ /\s/);
 	&lock_file($miniserv{'extracas'});
 	&open_tempfile(CERT, ">$miniserv{'extracas'}");

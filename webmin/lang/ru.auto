@@ -300,4 +300,5 @@ letsencrypt_echain2=Цепной сертификат, загруженный и
 letsencrypt_ecsr=Не удалось сгенерировать CSR : $1
 letsencrypt_ekeygen=Не удалось сгенерировать закрытый ключ : $1
 letsencrypt_enative=Собственный клиент Let's Encrypt (certbot) ранее использовался в этой системе и должен использоваться для всех будущих запросов на сертификат
+letsencrypt_eacmedns=Только официальный клиент Let's Encrypt поддерживает проверку на основе DNS
 announce_hide=Скрыть это объявление

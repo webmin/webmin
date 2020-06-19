@@ -1099,4 +1099,5 @@ letsencrypt_echain2=Gekettingde sertifikaat wat afgelaai is vanaf $1 is leeg
 letsencrypt_ecsr=CSR was gegenereer : $1
 letsencrypt_ekeygen=Kon nie die privaat sleutel genereer nie : $1
 letsencrypt_enative=Die inheemse Let's Encrypt-kliënt (certbot) is voorheen op hierdie stelsel gebruik en moet gebruik word vir alle toekomstige sertifikaatversoeke
+letsencrypt_eacmedns=Slegs die amptelike Let's Encrypt-kliënt ondersteun DNS-gebaseerde validering
 announce_hide=Verberg hierdie aankondiging

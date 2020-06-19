@@ -72,6 +72,7 @@ session_maxlife=Maksimum sessie leeftyd
 session_epath=Ontbrekende of ongeldige gids vir sessielêers
 session_elife=Kookleeftyd ontbreek of ongeldig
 session_emaxlife=Maksimum leeftyd van die sessie ontbreek of ongeldig
+session_eredis=Heruitbreiding ontbreek of gedeaktiveer
 safe_title=Veilige modus-opsies
 safe_header=Opsies vir veilige lêertoegangsmodus
 safe_on=Aktiveer die veilige modus?

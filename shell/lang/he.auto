@@ -10,5 +10,7 @@ index_trunced=התפוקה הכוללת של $2 נקטעה ב- $1.
 index_timedout=הפקודה הופסקה לאחר ריצה של $1 שניות.
 acl_user=בצע פקודות כמשתמש
 acl_user_def=משתמש נוכחי Webmin
+acl_shellenv=משתמשים בסביבת המשתמש הנבחרת?
+acl_chroot=גרוט לספריה
 log_run=רץ פקודה $1 
 log_clear=ניקוי היסטוריית הפקודה

@@ -1099,4 +1099,5 @@ letsencrypt_echain2=Chained certificate downloaded from $1 is empty
 letsencrypt_ecsr=Failed to generate CSR : $1
 letsencrypt_ekeygen=Failed to generate private key : $1
 letsencrypt_enative=לקוח Let's Encrypt המקורי (certbot) שימש בעבר במערכת זו, ויש להשתמש בו לכל בקשות האישור העתידיות
+letsencrypt_eacmedns=רק לקוח Let's Encrypt הרשמי תומך באימות מבוסס DNS
 announce_hide=הסתר את ההודעה הזו

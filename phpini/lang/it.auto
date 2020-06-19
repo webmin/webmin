@@ -9,6 +9,7 @@ vars_args=Trasformare i parametri della riga di comando in variabili globali?
 vars_long=Creare matrici vecchio stile come <tt>HTTP_GET_VARS</tt>?
 dirs_eincs=Nessuna directory di ricerca inclusa inserita
 session_handler=Meccanismo di archiviazione della sessione
+session_eredis=Estensione redis mancante o disabilitata
 safe_header=Opzioni della modalità di accesso sicuro ai file
 safe_on=Abilitare la modalità provvisoria?
 safe_gid=Richiede solo che gli ID di gruppo corrispondano?

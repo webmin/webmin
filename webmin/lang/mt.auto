@@ -1099,4 +1099,5 @@ letsencrypt_echain2=Ċertifikat b'katina mniżżel minn $1 huwa vojt
 letsencrypt_ecsr=Ma rnexxielux jiġġenera CSR : $1
 letsencrypt_ekeygen=Ma rnexxielux jiġġenera ċavetta privata : $1
 letsencrypt_enative=Il-klijent indiġenu Let's Encrypt (certbot) kien użat qabel fuq din is-sistema, u għandu jintuża għat-talbiet taċ-ċertifikati futuri kollha
+letsencrypt_eacmedns=Il-klijent uffiċjal Ejja Encrypt jappoġġja validazzjoni bbażata fuq id-DNS
 announce_hide=Aħbi din it-Tħabbira

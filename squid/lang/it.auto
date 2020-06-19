@@ -287,6 +287,7 @@ refresh_options=Aggiorna le opzioni delle regole
 refresh_override-expire=Applica l'età minima sopra l'età impostata dal server
 refresh_override-lastmod=Applica l'età minima anche su oggetti modificati di recente
 refresh_reload-into-ims=Converti le intestazioni client senza cache in If-Modified-Since
+refresh_ignore-reload=Ignora i client senza cache o ricarica le intestazioni
 refresh_ere=Espressione regolare mancante o non valida
 refresh_emin=Tempo minimo mancante o non valido
 refresh_emax=Tempo massimo mancante o non valido

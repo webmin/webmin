@@ -1099,4 +1099,5 @@ letsencrypt_echain2=$1 tik kargatutako ziurtagiri kateatua hutsik dago
 letsencrypt_ecsr=Huts egin du CSR sortzen denean : $1
 letsencrypt_ekeygen=Ezin izan da gako pribatua sortzen : $1
 letsencrypt_enative=Let's Encrypt bezero jatorria (certbot) lehenago erabili zen sistema honetan eta etorkizunean ziurtagiri-eskaera guztietarako erabili behar da
+letsencrypt_eacmedns=Letrak Encrypt bezero ofizialak soilik onartzen ditu DNSetan oinarritutako balioztapena
 announce_hide=Ezkutatu iragarki hau

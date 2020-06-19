@@ -72,6 +72,7 @@ session_maxlife=Sena massima tul il-ħajja
 session_epath=Direttur nieqes jew invalidu għall-fajls tas-sessjoni
 session_elife=Cookie nieqes jew ħajja invalida
 session_emaxlife=Nieqes jew invalidu tul il-ħajja massima tas-sessjoni
+session_eredis=Estensjoni ta 'redis mill-ġdid nieqsa jew b'diżabilità
 safe_title=Għażliet tal-Modalità Salv
 safe_header=Għażliet ta 'modalità ta' aċċess għal fajl sikur
 safe_on=Tippermetti modalità sikura?

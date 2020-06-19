@@ -10,5 +10,7 @@ index_trunced=Skupna proizvodnja $2 je bila okrnjena na $1.
 index_timedout=Ukaz je bil končan po zagonu $1 sekunde.
 acl_user=Izvršite ukaze kot uporabnik
 acl_user_def=Trenutni uporabnik Webmin-a
+acl_shellenv=Uporabljate izbrano uporabniško okolje?
+acl_chroot=Chroot v imenik
 log_run=Ukaz Ran $1 
 log_clear=Izbrisana zgodovina ukazov

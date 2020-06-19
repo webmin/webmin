@@ -364,4 +364,5 @@ letsencrypt_echain2=Il certificato concatenato scaricato da $1 è vuoto
 letsencrypt_ecsr=Generazione CSR non riuscita : $1
 letsencrypt_ekeygen=Generazione della chiave privata non riuscita : $1
 letsencrypt_enative=Il client Let's Encrypt nativo (certbot) è stato utilizzato in precedenza su questo sistema e deve essere utilizzato per tutte le richieste di certificati future
+letsencrypt_eacmedns=Solo il client Let's Encrypt ufficiale supporta la convalida basata su DNS
 announce_hide=Nascondi questo annuncio

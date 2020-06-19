@@ -1003,4 +1003,5 @@ letsencrypt_echain2=A $1 oldalról letöltött láncolt tanúsítvány üres
 letsencrypt_ecsr=A CSR létrehozása nem sikerült : $1
 letsencrypt_ekeygen=Nem sikerült létrehozni a privát kulcsot : $1
 letsencrypt_enative=A natív Let's Encrypt klienst (certbot) korábban használták a rendszerben, és azt minden jövőbeli tanúsítványkéréshez használni kell
+letsencrypt_eacmedns=Csak a hivatalos Let's Encrypt kliens támogatja a DNS-alapú érvényesítést
 announce_hide=Elrejteni ezt a bejelentést

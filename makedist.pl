@@ -43,7 +43,7 @@ $zipdir = "zips";
 	  "uptracker.cgi", "create-module.pl", "webmin_search.cgi",
 	  "webmin-search-lib.pl", "WebminCore.pm",
 	  "record-login.pl", "record-logout.pl", "robots.txt",
-	  "unauthenticated",
+	  "unauthenticated", "bin",
 	 );
 if ($min) {
 	# Only those required by others

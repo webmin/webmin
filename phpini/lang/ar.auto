@@ -72,6 +72,7 @@ session_maxlife=أقصى عمر للجلسة
 session_epath=دليل مفقود أو غير صالح لملفات الجلسة
 session_elife=عمر ملف تعريف الارتباط مفقود أو غير صالح
 session_emaxlife=عمر الجلسة الأقصى مفقود أو غير صالح
+session_eredis=امتداد redis مفقود أو معطّل
 safe_title=خيارات الوضع الآمن
 safe_header=خيارات وضع الوصول الآمن إلى الملف
 safe_on=هل تريد تفعيل الوضع الآمن؟

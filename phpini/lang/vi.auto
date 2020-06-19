@@ -72,6 +72,7 @@ session_maxlife=Tuổi thọ phiên tối đa
 session_epath=Thư mục bị thiếu hoặc không hợp lệ cho các tệp phiên
 session_elife=Tuổi thọ cookie bị thiếu hoặc không hợp lệ
 session_emaxlife=Thiếu phiên tối đa hoặc không hợp lệ trọn đời
+session_eredis=Thiếu hoặc mở rộng redis mở rộng
 safe_title=Tùy chọn chế độ an toàn
 safe_header=Tùy chọn chế độ truy cập tệp an toàn
 safe_on=Cho phép chế độ an toàn?

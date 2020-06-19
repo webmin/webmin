@@ -1099,4 +1099,5 @@ letsencrypt_echain2=Certificatul în lanț descărcat de la $1 este gol
 letsencrypt_ecsr=Generația CSR nu a reușit : $1
 letsencrypt_ekeygen=Eroare la generarea cheii private : $1
 letsencrypt_enative=Clientul Let's Encrypt (certificbot) nativ a fost folosit anterior pe acest sistem și trebuie utilizat pentru toate viitoarele solicitări de certificare
+letsencrypt_eacmedns=Doar clientul Offical Let's Encrypt acceptă validarea bazată pe DNS
 announce_hide=Ascundeți acest anunț

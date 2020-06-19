@@ -72,6 +72,7 @@ session_maxlife=Duración máxima de la sesión
 session_epath=Directorio faltante o no válido para archivos de sesión
 session_elife=Duración de la cookie faltante o inválida
 session_emaxlife=Duración máxima de sesión faltante o inválida
+session_eredis=Extensión redis faltante o deshabilitada
 safe_title=Opciones de modo seguro
 safe_header=Opciones de modo de acceso seguro a archivos
 safe_on=¿Habilitar el modo seguro?

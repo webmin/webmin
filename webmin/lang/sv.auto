@@ -834,4 +834,5 @@ letsencrypt_echain2=Kedjat certifikat nedladdat från $1 är tomt
 letsencrypt_ecsr=Det gick inte att generera CSR : $1
 letsencrypt_ekeygen=Det gick inte att generera privat nyckel : $1
 letsencrypt_enative=Den ursprungliga Let's Encrypt-klienten (certbot) användes tidigare i detta system och måste användas för alla framtida certifikatbegäranden
+letsencrypt_eacmedns=Endast den officiella Let's Encrypt-klienten stöder DNS-baserad validering
 announce_hide=Dölj detta tillkännagivande

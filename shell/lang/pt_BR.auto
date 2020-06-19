@@ -10,5 +10,7 @@ index_trunced=A produção total de $2 foi truncada em $1.
 index_timedout=O comando foi encerrado após a execução por $1 segundos.
 acl_user=Executar comandos como usuário
 acl_user_def=Usuário atual do Webmin
+acl_shellenv=Usar o ambiente do usuário selecionado?
+acl_chroot=Chroot para o diretório
 log_run=Comando Ran $1 
 log_clear=Histórico de comando limpo

@@ -1,2 +1,3 @@
 list_format_ini=INI-format
 list_format_fpm=FPM-format
+session_eredis=Manglende eller deaktivert gjenutvidelse
