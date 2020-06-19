@@ -84,6 +84,8 @@ if ($config{'index_check'} && ($err = &check_postfix())) {
 	     "virtual", "transport", "relocated", "header", "body", "bcc",
 	     &compare_version_numbers($postfix_version, 2.7) > 0 ?
 	     	( "dependent" ) : ( ),
+	     &compare_version_numbers($postfix_version, 3.4) > 0 ?
+	     	( "sni" ) : ( ),
 	     "local_delivery", "resource",
 	     "smtpd", "smtp", "sasl", "client",
 	     "rate", "debug", $postfix_version > 2 ? ( ) : ( "ldap" ),
