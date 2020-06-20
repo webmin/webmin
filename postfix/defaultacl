@@ -31,3 +31,4 @@ dir=/
 sasl=1
 bcc=1
 client=1
+sni=1

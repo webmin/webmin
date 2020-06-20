@@ -163,7 +163,10 @@ return $out;
 # returns if the value is the default value
 sub if_default_value
 {
-    my $out = &backquote_command("$config{'postfix_config_command'} -c $config_dir -n $_[0] 2>&1", 1);
+    my ($name) = @_;
+    my $out = &backquote_command(
+	"$config{'postfix_config_command'} -c $config_dir -n ".
+	quotemeta($name)." 2>&1", 1);
     if ($?) { &error(&text('query_get_efailed', $_[0], $out)); }
     return ($out eq "");
 }
@@ -712,6 +715,13 @@ sub regenerate_transport_table
     &regenerate_any_table("transport_maps");
 }
 
+# regenerate_sni_table
+#
+sub regenerate_sni_table
+{
+    &regenerate_any_table("tls_server_sni_maps", undef, undef, 1);
+}
+
 # regenerate_dependent_table
 #
 sub regenerate_dependent_table
@@ -721,11 +731,11 @@ sub regenerate_dependent_table
 
 
 # regenerate_any_table($parameter_where_to_find_the_table_names,
-#		       [ &force-files ], [ after-tag ])
+#		       [ &force-files ], [ after-tag ], [ base-64 ])
 #
 sub regenerate_any_table
 {
-    my ($name, $force, $after) = @_;
+    my ($name, $force, $after, $base64) = @_;
     my @files;
     if ($force) {
 	@files = map { [ "hash", $_ ] } @$force;
@@ -741,7 +751,11 @@ sub regenerate_any_table
         next unless $map;
 	if (&file_map_type($map->[0]) &&
 	    $map->[0] ne 'regexp' && $map->[0] ne 'pcre') {
-		local $out = &backquote_logged("$config{'postfix_lookup_table_command'} -c $config_dir $map->[0]:$map->[1] 2>&1");
+		local $out = &backquote_logged(
+			$config{'postfix_lookup_table_command'}.
+			" -c $config_dir".
+			($base64 ? " -F" : "").
+			" $map->[0]:$map->[1] 2>&1");
 		if ($?) { &error(&text('regenerate_table_efailed', $map->[1], $out)); }
 	}
     }
@@ -1754,6 +1768,7 @@ elsif ($map_name =~ /sender_bcc/) { &redirect("bcc.cgi?mode=sender"); }
 elsif ($map_name =~ /recipient_bcc/) { &redirect("bcc.cgi?mode=recipient"); }
 elsif ($map_name =~ /^smtpd_client_restrictions:/) { &redirect("client.cgi"); }
 elsif ($map_name =~ /relay_recipient_maps|smtpd_sender_restrictions/) { &redirect("smtpd.cgi"); }
+elsif ($map_name =~ /tls_server_sni_maps/) { &redirect("sni.cgi"); }
 else { &redirect(""); }
 }
 
@@ -1767,6 +1782,7 @@ if ($map_name =~ /transport/) { &regenerate_transport_table(); }
 if ($map_name =~ /sender_access/) { &regenerate_any_table($map_name); }
 if ($map_name =~ /sender_bcc/) { &regenerate_bcc_table(); }
 if ($map_name =~ /recipient_bcc/) { &regenerate_recipient_bcc_table(); }
+if ($map_name =~ /tls_server_sni_maps/) { &regenerate_sni_table(); }
 if ($map_name =~ /smtpd_client_restrictions:(\S+)/) {
 	&regenerate_any_table("smtpd_client_restrictions",
 			      undef, $1);
