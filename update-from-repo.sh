@@ -3,7 +3,7 @@
 # Update webmin/usermin to the latest develop version  from GitHub repo
 # inspired by authentic-theme/theme-update.sh script, thanks @rostovtsev
 #
-VERS="1.6.8, 2018-10-30"
+VERS="1.6.9, 2020-06-18"
 #
 COPY=" Kay Marquardt <kay@rrr.de>         https://github.com/gnadelwartz"
 #############################################################################
@@ -33,9 +33,6 @@ if [[ -t 1 && "${NCOLOR}" != "YES" ]] ;  then
     CYAN='\e[36m'
     NC='\e[0m'
 fi
-
-# Clear screen for better readability
-[[ "${ASK}" == "YES" ]] && clear
 
 # Get webmin/usermin dir based on script's location
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
