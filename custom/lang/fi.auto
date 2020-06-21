@@ -62,6 +62,7 @@ edit_format0=Näytä Webmin-käyttöliittymässä
 edit_format1=Lähtö MIME-tyypillä
 edit_format2=Ohjaa hakemistoon
 edit_format3=Ohjaa muotoon
+edit_format4=Lataa, kun mahdollista
 edit_servers=Suorita Webmin-palvelimilla
 edit_this=tämä palvelin
 edit_clone=Klooni

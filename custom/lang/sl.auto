@@ -62,6 +62,7 @@ edit_format0=Prikaži v uporabniškem vmesniku Webmin
 edit_format1=Izhod s tipom MIME
 edit_format2=Preusmeritev na indeks
 edit_format3=Preusmeritev na obrazec
+edit_format4=Prenesite, kadar je to mogoče
 edit_servers=Zaženi na strežnikih Webmin
 edit_this=ta strežnik
 edit_clone=Klon

@@ -61,6 +61,7 @@ edit_format0=Tunjukkan dalam Webmin UI
 edit_format1=Output dengan jenis MIME
 edit_format2=Redirect ke indeks
 edit_format3=Redirect to form
+edit_format4=Muat turun bila boleh
 edit_servers=Jalankan pada pelayan Webmin
 edit_this=pelayan ini
 edit_clone=Clone

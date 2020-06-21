@@ -35,6 +35,7 @@ edit_format0=在Webmin UI中显示
 edit_format1=输出为MIME类型
 edit_format2=重定向到索引
 edit_format3=重定向至表格
+edit_format4=尽可能下载
 edit_servers=在Webmin服务器上运行
 edit_this=这个服务器
 edit_clone=克隆

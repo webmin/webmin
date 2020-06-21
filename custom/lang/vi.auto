@@ -62,6 +62,7 @@ edit_format0=Hiển thị trong giao diện người dùng Webmin
 edit_format1=Đầu ra với loại MIME
 edit_format2=Chuyển hướng đến chỉ mục
 edit_format3=Chuyển hướng để hình thành
+edit_format4=Tải xuống khi có thể
 edit_servers=Chạy trên máy chủ Webmin
 edit_this=máy chủ này
 edit_clone=Bản sao

@@ -10,6 +10,7 @@ edit_format0=Webmin UIで表示
 edit_format1=MIMEタイプを使用した出力
 edit_format2=インデックスにリダイレクト
 edit_format3=フォームにリダイレクト
+edit_format4=可能であればダウンロード
 edit_clone=クローン
 save_eformat=無効な出力MIMEタイプ
 save_eopts=パラメーター $1のオプションファイルがありません

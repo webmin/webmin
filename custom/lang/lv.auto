@@ -62,6 +62,7 @@ edit_format0=Rādīt Webmin UI
 edit_format1=Izeja ar MIME tipu
 edit_format2=Novirzīt uz indeksu
 edit_format3=Novirzīt uz formu
+edit_format4=Ja iespējams, lejupielādējiet
 edit_servers=Palaist Webmin serveros
 edit_this=šis serveris
 edit_clone=Klons

@@ -24,6 +24,7 @@ edit_format0=Показати в інтерфейсі Webmin
 edit_format1=Вихід з типом MIME
 edit_format2=Перенаправлення на індекс
 edit_format3=Перенаправлення на форму
+edit_format4=Завантажте, коли можливо
 edit_servers=Запуск на серверах Webmin
 edit_this=цей сервер
 edit_clone=Клон

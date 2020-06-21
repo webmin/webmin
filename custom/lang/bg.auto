@@ -62,6 +62,7 @@ edit_format0=Показване в потребителския интерфей
 edit_format1=Изход с MIME тип
 edit_format2=Пренасочване към индексиране
 edit_format3=Пренасочване към формата
+edit_format4=Изтеглете, когато е възможно
 edit_servers=Стартирайте на сървъри Webmin
 edit_this=този сървър
 edit_clone=Clone
