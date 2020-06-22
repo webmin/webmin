@@ -90,7 +90,7 @@ print &ui_table_row(&hlink($text{'edit_format'}, "format"),
 		  [ [ 0, $text{'edit_format0'} ],
 		    [ 2, $text{'edit_format2'} ],
 		    [ 3, $text{'edit_format3'} ],
-		    [ 1, $text{'edit_format4'} ] ]));
+		    [ 1, $text{'edit_format4'} ] ]), 3);
 
 # Show Webmin servers to run on
 @servers = &list_servers();
