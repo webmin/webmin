@@ -62,6 +62,7 @@ edit_format0=Rodyti „Webmin“ vartotojo sąsajoje
 edit_format1=Išvestis su MIME tipu
 edit_format2=Peradresuoti į rodyklę
 edit_format3=Peradresuoti į formą
+edit_format4=Atsisiųskite, kai įmanoma
 edit_servers=Paleiskite „Webmin“ serveriuose
 edit_this=šį serverį
 edit_clone=Klonas

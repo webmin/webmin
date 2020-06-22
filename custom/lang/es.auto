@@ -15,6 +15,7 @@ edit_format0=Mostrar en la interfaz de usuario de Webmin
 edit_format1=Salida con tipo MIME
 edit_format2=Redirigir al índice
 edit_format3=Redirigir para formar
+edit_format4=Descargar cuando sea posible
 edit_clone=Clon
 save_eformat=Tipo de MIME de salida no válido
 save_eopts=Falta el archivo de opciones para el parámetro $1 

@@ -62,6 +62,7 @@ edit_format0=הצג בממשק המשתמש של Webmin
 edit_format1=פלט עם סוג MIME
 edit_format2=הפנה מחדש לאינדקס
 edit_format3=הפנה מחדש לטופס
+edit_format4=הורד במידת האפשר
 edit_servers=הפעל על שרתי Webmin
 edit_this=שרת זה
 edit_clone=שיבוט

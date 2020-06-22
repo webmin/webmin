@@ -15,6 +15,7 @@ edit_format0=Prikaži u korisničkom sučelju Webmin
 edit_format1=Izlaz s MIME tipom
 edit_format2=Preusmjeravanje na indeks
 edit_format3=Preusmjeravanje na oblik
+edit_format4=Preuzmite kad je to moguće
 edit_clone=Klon
 save_eformat=Nevažeća vrsta MIME izlaza
 save_eopts=Datoteka opcija nedostaje za parametar $1 

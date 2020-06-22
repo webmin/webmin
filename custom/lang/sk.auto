@@ -46,6 +46,7 @@ edit_format0=Zobraziť v používateľskom rozhraní Webmin
 edit_format1=Výstup s typom MIME
 edit_format2=Presmerovanie na indexovanie
 edit_format3=Presmerovať do formulára
+edit_format4=Ak je to možné, stiahnite si ho
 edit_servers=Beží na serveroch Webmin
 edit_clone=Clone
 save_err=Príkaz sa nepodarilo uložiť

@@ -62,6 +62,7 @@ edit_format0=Vis i Webmin UI
 edit_format1=Output med MIME-type
 edit_format2=Omdiriger til indeks
 edit_format3=Omdiriger til form
+edit_format4=Download når det er muligt
 edit_servers=Kør på Webmin-servere
 edit_this=denne server
 edit_clone=Klon

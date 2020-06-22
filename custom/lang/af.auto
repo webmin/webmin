@@ -62,6 +62,7 @@ edit_format0=Wys in die Webmin UI
 edit_format1=Afvoer met MIME-tipe
 edit_format2=Herlei na indeks
 edit_format3=Herlei na vorm
+edit_format4=Laai af indien moontlik
 edit_servers=Begin op Webmin-bedieners
 edit_this=hierdie bediener
 edit_clone=kloon

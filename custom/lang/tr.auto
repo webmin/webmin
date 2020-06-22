@@ -17,6 +17,7 @@ edit_format0=Webmin kullanıcı arayüzünde göster
 edit_format1=MIME türü ile çıktı
 edit_format2=Dizine yönlendir
 edit_format3=Forma yönlendir
+edit_format4=Mümkün olduğunda indirin
 edit_servers=Webmin sunucularında çalıştır
 edit_this=bu sunucu
 edit_clone=Klon

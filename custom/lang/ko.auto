@@ -10,6 +10,7 @@ edit_format0=Webmin UI에 표시
 edit_format1=MIME 유형의 출력
 edit_format2=색인으로 리디렉션
 edit_format3=양식으로 리디렉션
+edit_format4=가능하면 다운로드
 edit_clone=클론
 save_eformat=잘못된 출력 MIME 유형
 save_eopts=매개 변수 $1 에 대한 옵션 파일이 없습니다.

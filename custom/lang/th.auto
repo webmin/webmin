@@ -62,6 +62,7 @@ edit_format0=แสดงใน Webmin UI
 edit_format1=เอาต์พุตด้วยชนิด MIME
 edit_format2=เปลี่ยนเส้นทางไปยังดัชนี
 edit_format3=เปลี่ยนเส้นทางไปยังแบบฟอร์ม
+edit_format4=ดาวน์โหลดเมื่อเป็นไปได้
 edit_servers=ทำงานบนเซิร์ฟเวอร์ Webmin
 edit_this=เซิร์ฟเวอร์นี้
 edit_clone=โคลน

@@ -62,6 +62,7 @@ edit_format0=تظهر في Webmin UI
 edit_format1=الإخراج بنوع MIME
 edit_format2=إعادة التوجيه إلى الفهرس
 edit_format3=إعادة التوجيه إلى النموذج
+edit_format4=قم بالتنزيل عند الإمكان
 edit_servers=تعمل على خوادم Webmin
 edit_this=هذا الخادم
 edit_clone=استنساخ

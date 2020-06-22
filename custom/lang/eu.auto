@@ -62,6 +62,7 @@ edit_format0=Erakutsi Webmin UI-n
 edit_format1=Irteera MIME motarekin
 edit_format2=Birbidali indexara
 edit_format3=Birbideratu inprimakira
+edit_format4=Deskargatu ahal denean
 edit_servers=Exekutatu Webmin zerbitzarietan
 edit_this=zerbitzari hau
 edit_clone=Clone

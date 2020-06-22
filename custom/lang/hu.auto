@@ -36,6 +36,7 @@ edit_format0=Megjelenítés a Webmin felhasználói felületén
 edit_format1=Kimenet MIME típusú
 edit_format2=Átirányítás az indexre
 edit_format3=Átirányítás az űrlapra
+edit_format4=Töltse le, ha lehetséges
 edit_servers=Futtatás Webmin szerverekön
 edit_this=ezt a szervert
 edit_clone=Clone

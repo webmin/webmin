@@ -62,6 +62,7 @@ edit_format0=نمایش در UI Webmin
 edit_format1=خروجی با نوع MIME
 edit_format2=تغییر به فهرست
 edit_format3=تغییر شکل به فرم
+edit_format4=در صورت امکان بارگیری کنید
 edit_servers=روی سرورهای وبمین اجرا کنید
 edit_this=این سرور
 edit_clone=شبیه
