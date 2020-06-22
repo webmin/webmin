@@ -1018,7 +1018,7 @@ sub save_ipkeys
 {
 my $k;
 foreach $k (keys %{$_[0]}) {
-	if ($k =~ /^(ipkey_|ipcert_)/) {
+	if ($k =~ /^(ipkey_|ipcert_|ipextracas_)/) {
 		delete($_[0]->{$k});
 		}
 	}
