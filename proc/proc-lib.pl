@@ -193,7 +193,7 @@ else {
 		local $sel = select($rmask, undef, undef, 1);
 		if ($sel > 0 && vec($rmask, $fn, 1)) {
 			# got something to read.. print it
-			sysread(OUTr, $buf, 1024) || last;
+			sysread(OUTr, $buf, 65536) || last;
 			$got += length($buf);
 			if ($_[5]) {
 				$buf = &html_escape($buf);
