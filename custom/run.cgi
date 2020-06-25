@@ -39,8 +39,12 @@ if ($cmd->{'format'} ne 'redirect' && $cmd->{'format'} ne 'form') {
 		my ($f, $e) = $cmd->{'cmd'} =~ /([\p{L}\_\-\.0-9]+)\.(tar\..*?|[^.]*)$/;
 		my $filename = $f || 'download';
 		my $extension = $e || 'unknown';
-		print "Content-Disposition: attachment; filename=\"$filename.$extension\"\n";
-		print "Content-type: application/x-download\n";
+		my $ctype = 'inline';
+		if ($cmd->{'format'} =~ /^application/) {
+			$ctype = 'attachment';
+			}
+		print "Content-Disposition: $ctype; filename=\"$filename.$extension\"\n";
+		print "Content-type: ",$cmd->{'format'},"\n";
 		print "\n";
 		}
 	else {
