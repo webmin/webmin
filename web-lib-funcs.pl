@@ -158,14 +158,15 @@ if ($_[3] || $gconfig{'sortconfigs'}) {
 	    }
 	}
 else {
+	my %done;
 	foreach $k (@order) {
-		if (exists($_[1]->{$k})) {
+		if (exists($_[1]->{$k}) && !$done{$k}++) {
 			(print ARFILE $k,$join,$_[1]->{$k},"\n") ||
 				&error(&text("efilewrite", $realfile, $!));
 			}
 		}
 	foreach $k (keys %{$_[1]}) {
-		if (!exists($old{$k})) {
+		if (!exists($old{$k}) && !$done{$k}++) {
 			(print ARFILE $k,$join,$_[1]->{$k},"\n") ||
 				&error(&text("efilewrite", $realfile, $!));
 			}
