@@ -502,6 +502,10 @@ if (&has_command("sensors")) {
                         push(@rv, { 'core' => $1,
                                     'temp' => $2 });
                         }
+                elsif (/temp(\d+):\s+([\+\-][0-9\.]+)/) {
+                        push(@rv, { 'core' => $1,
+                                    'temp' => $2 });
+                        }
                 elsif (/CPU:\s+([\+\-][0-9\.]+)/) {
                         push(@rv, { 'core' => 0,
                                     'temp' => $1 });
