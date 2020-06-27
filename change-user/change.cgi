@@ -36,7 +36,7 @@ if ($access{'lang'}) {
 		}
 	else {
 		$user->{'lang'} = $in{'lang'};
-		$user->{'langauto'} = int($in{'langauto'});
+		$user->{'langauto'} = $in{'langauto'} ? 1 : 0;
 		}
 	}
 
