@@ -27,7 +27,10 @@ if ($access{'lang'}) {
 	my $ulang = safe_language($user->{'lang'});
 	my @langs = &list_languages();
 	my ($linfo) = grep { $_->{'lang'} eq $glang } @langs;
-	my ($ulinfo) = grep { $_->{'lang'} eq $ulang } @langs;
+	my ($ulinfo);
+	if ($ulang) {
+		($ulinfo) = grep { $_->{'lang'} eq $ulang } @langs;
+		}
 	my $ulangused = ($ulang && $ulang ne $glang);
 	my $ulangauto = $user->{'langauto'};
 	if (!defined($user->{'langauto'})) {
