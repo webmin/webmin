@@ -5605,6 +5605,7 @@ $code =~ s/\.\S+//g;
 my %language_map = (
 
     # Use new type of language codes
+    'en_GB' => 'en',
     'ja_JP' => 'ja',
     'ko_KR' => 'ko',
     'en_gb' => 'en',
