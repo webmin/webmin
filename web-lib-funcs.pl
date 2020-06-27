@@ -5067,22 +5067,25 @@ return 1;
 }
 
 =head2 load_language_auto()
-Returns 1 or 0, if *.auto files should be used based on options (user or lang_list.txt)
+
+Returns 1 or 0, if *.auto files should be used based on options (user
+or lang_list.txt)
 
 =cut
 sub load_language_auto
 {
-	my $auto = $gconfig{"langauto_$remote_user"};
-	if (!defined($auto)) {
-		my $glangauto = $gconfig{'langauto'};
-		if (defined($glangauto)) {
-			$auto = $glangauto;
-			} 
-		else {
-			my ($clanginfo) = grep { $_->{'lang'} eq $current_lang } &list_languages();
-			$auto = $clanginfo->{'auto'};
-			}
+my $auto = $gconfig{"langauto_$remote_user"};
+if (!defined($auto)) {
+	my $glangauto = $gconfig{'langauto'};
+	if (defined($glangauto)) {
+		$auto = $glangauto;
+		} 
+	else {
+		my ($clanginfo) = grep { $_->{'lang'} eq $current_lang }
+			&list_languages();
+		$auto = $clanginfo->{'auto'} if ($clanginfo);
 		}
+	}
 return $auto;
 }
 
