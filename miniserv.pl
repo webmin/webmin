@@ -33,12 +33,10 @@ if ($config{'perllib'}) {
 @startup_msg = ( );
 
 # Check if SSL is enabled and available
-$binmode = ':utf8';
 if ($config{'ssl'}) {
 	eval "use Net::SSLeay";
 	if (!$@) {
 		$use_ssl = 1;
-		$binmode = undef;
 		# These functions only exist for SSLeay 1.0
 		eval "Net::SSLeay::SSLeay_add_ssl_algorithms()";
 		eval "Net::SSLeay::load_error_strings()";
@@ -863,8 +861,13 @@ while(1) {
 			# got new connection
 			$acptaddr = accept(SOCK, $s);
 			if (!$acptaddr) { next; }
-			binmode(SOCK, $binmode);
-			
+			if ($use_ssl) {
+				binmode(SOCK);
+				}
+			else {
+				binmode(SOCK, ':utf8');
+				}
+
 			# create pipes
 			local ($PASSINr, $PASSINw, $PASSOUTr, $PASSOUTw);
 			if ($need_pipes) {
@@ -1403,7 +1406,6 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 			Net::SSLeay::set_rfd($ssl_con, fileno(SSLr));
 			Net::SSLeay::accept($ssl_con) || die "accept() failed";
 			$use_ssl = 1;
-			$binmode = undef;
 			local $url = $config{'musthost'} ?
 					"https://$config{'musthost'}:$port/" :
 					"https://$host:$port/";
@@ -2566,7 +2568,7 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 			else {
 				open(CGIOUTr, "\"$full\" $qqueryargs <$infile |");
 				}
-			binmode(CGIOUTr, $binmode);
+			binmode(CGIOUTr);
 			}
 
 		if (!$nph_script) {
@@ -2645,7 +2647,7 @@ else {
 		@stopen = @stfull;
 		open(FILE, $full) || &http_error(404, "Failed to open file");
 		}
-	binmode(FILE, $binmode);
+	binmode(FILE);
 
 	# Build common headers
 	local $etime = &get_expires_time($simple);
@@ -2655,7 +2657,8 @@ else {
 		      "Content-type: ".&get_type($full)."\r\n".
 		      "Last-Modified: ".&http_date($stopen[9])."\r\n".
 		      "Expires: ".&http_date(time()+$etime)."\r\n".
-		      "Cache-Control: public; max-age=".$etime."\r\n";	
+		      "Cache-Control: public; max-age=".$etime."\r\n";
+	binmode(SOCK);	# Compressed data is NOT UTF-8
 
 	if (!$gzipped && $use_gzip && $acceptenc{'gzip'} &&
 	    &should_gzip_file($full)) {
@@ -3131,19 +3134,6 @@ if (!$got) {
 	}
 }
 
-# write_data_prepare(binmode, data)
-# Decode a string in :utf8 
-# binmode, to avoid desruption
-sub write_data_prepare
-{
-    my ($binmode, $data) = @_;
-	if ($binmode && $data !~ /[^\x00-\xFF]/) {
-		eval "use Encode qw/decode/;";
-		$data = decode('utf-8', $data) if (!$@);
-		}
-	return $data;
-}
-
 # write_data(data, ...)
 # Writes a string to SOCK or the SSL connection
 sub write_data
@@ -3401,7 +3391,6 @@ sub write_to_sock
 local $d;
 foreach $d (@_) {
 	if ($doneheaders || $miniserv::nph_script) {
-		$d = write_data_prepare($binmode, $d);
 		&write_data($d);
 		}
 	else {
