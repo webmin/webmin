@@ -861,12 +861,7 @@ while(1) {
 			# got new connection
 			$acptaddr = accept(SOCK, $s);
 			if (!$acptaddr) { next; }
-			if ($use_ssl) {
-				binmode(SOCK);
-				}
-			else {
-				binmode(SOCK, ':utf8');
-				}
+			binmode(SOCK);
 
 			# create pipes
 			local ($PASSINr, $PASSINw, $PASSOUTr, $PASSOUTw);
@@ -2658,7 +2653,6 @@ else {
 		      "Last-Modified: ".&http_date($stopen[9])."\r\n".
 		      "Expires: ".&http_date(time()+$etime)."\r\n".
 		      "Cache-Control: public; max-age=".$etime."\r\n";
-	binmode(SOCK);	# Compressed data is NOT UTF-8
 
 	if (!$gzipped && $use_gzip && $acceptenc{'gzip'} &&
 	    &should_gzip_file($full)) {
@@ -3143,7 +3137,13 @@ if ($use_ssl) {
 	Net::SSLeay::write($ssl_con, $str);
 	}
 else {
-	syswrite(SOCK, $str, length($str));
+	eval { syswrite(SOCK, $str, length($str)); };
+	if ($@) {
+		print STDERR $@,"\n";
+		for(my $i=0; my @stack = caller($i); $i++) {
+			print STDERR join(" ", @stack),"\n";
+			}
+		}
 	}
 # Intentionally introduce a small delay to avoid problems where IE reports
 # the page as empty / DNS failed when it get a large response too quickly!
