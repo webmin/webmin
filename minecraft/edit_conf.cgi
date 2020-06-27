@@ -54,10 +54,10 @@ my $diff = &find_value("difficulty", $conf);
 $diff = 1 if (!defined($diff));
 print &ui_table_row($text{'conf_difficulty'},
 	&ui_select("diff", $diff,
-		   [ [ 0, $text{'cmds_peaceful'} ],
-		     [ 1, $text{'cmds_easy'} ],
-		     [ 2, $text{'cmds_normal'} ],
-		     [ 3, $text{'cmds_hard'} ] ]));
+		   [ [ 'peaceful', $text{'cmds_peaceful'} ],
+		     [ 'easy', $text{'cmds_easy'} ],
+		     [ 'normal', $text{'cmds_normal'} ],
+		     [ 'hard', $text{'cmds_hard'} ] ]));
 
 # Default game mode
 my $gamemode = &find_value("gamemode", $conf);
