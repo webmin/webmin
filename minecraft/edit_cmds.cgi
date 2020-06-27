@@ -28,10 +28,10 @@ print &ui_table_row($text{'cmds_gamemode'},
 # Change difficulty level
 print &ui_table_row($text{'cmds_difficulty'},
 	&ui_select("diff", 2,
-		   [ [ 0, $text{'cmds_peaceful'} ],
-		     [ 1, $text{'cmds_easy'} ],
-		     [ 2, $text{'cmds_normal'} ],
-		     [ 3, $text{'cmds_hard'} ] ])." ".
+		   [ [ 'peaceful', $text{'cmds_peaceful'} ],
+		     [ 'easy', $text{'cmds_easy'} ],
+		     [ 'normal', $text{'cmds_normal'} ],
+		     [ 'hard', $text{'cmds_hard'} ] ])." ".
 	&ui_submit($text{'cmds_difficultyb'}, 'difficulty'));
 
 # Change time
