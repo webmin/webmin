@@ -24,9 +24,9 @@ if (&has_command("ip")) {
 	&reset_environment();
 	foreach my $l (@lines) {
 		my %ifc;
-		if ($l =~ /^\d:\s+([^ \t\r\n\@]+\d+\.(\d+))@([^ \t\r\n\@]+\d+):/) {
+		if ($l =~ /^\d+:\s+([^ \t\r\n\@]+\d+\.(\d+))@([^ \t\r\n\@]+\d+):/) {
 			# Line like :
-			#3: eth0.99@eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+			# 3: eth0.99@eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
 			$ifc{'fullname'} = $1;
 			$ifc{'name'} = $ifc{'fullname'};
 			$ifc{'vlanid'} = $2;
@@ -34,13 +34,13 @@ if (&has_command("ip")) {
 			}
 		elsif ($l =~ /^\d+:\s+([^ \t\r\n\@]+):/) {
 			# Line like :
-			#2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+			# 2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
 			$ifc{'fullname'} = $1;
 			$ifc{'name'} = $ifc{'fullname'}
 			}
 		elsif ($l =~ /^\d:\s+([^ \t\r\n\@]+\d+)@([^ \t\r\n\@]+\d+):/) {
 			# Line like :
-			#3: eth0@if0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+			# 3: eth0@if0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
 			$ifc{'fullname'} = $1;
 			$ifc{'name'} = $ifc{'fullname'};
 			$ifc{'ifname'} = $2;
