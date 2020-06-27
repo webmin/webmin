@@ -304,10 +304,8 @@ sub print_interface {
         $link =~ s/^\///g;
         $vlink = html_escape($link);
         $vlink = quote_escape($vlink);
-        $vlink = decode('UTF-8', $vlink, Encode::FB_DEFAULT);
         my $hlink = html_escape($vlink);
         $vpath = quote_escape($vpath);
-        $vpath = decode('UTF-8', $vpath, Encode::FB_DEFAULT);
 
         my $type = $list[$count - 1][14];
         $type =~ s/\//\-/g;
@@ -377,7 +375,7 @@ sub print_interface {
         );
         push @row_data, $type if($userconfig{'columns'} =~ /type/);
         push @row_data, $actions;
-        push @row_data, decode('UTF-8', $size, Encode::FB_DEFAULT) if($userconfig{'columns'} =~ /size/);
+        push @row_data, $size if($userconfig{'columns'} =~ /size/);
         push @row_data, $user.':'.$group if($userconfig{'columns'} =~ /owner_user/);
         push @row_data, $permissions if($userconfig{'columns'} =~ /permissions/);
         push @row_data, $attributes if(get_attr_status() && $userconfig{'columns'} =~ /attributes/);
