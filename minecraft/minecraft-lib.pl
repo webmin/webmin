@@ -345,7 +345,8 @@ foreach my $l (@out) {
 	if ($l !~ /players\s+online:/ && $l =~ /INFO\]:?\s+(\S.*)$/) {
 		push(@rv, split(/,\s+/, $1));
 		}
-	elsif ($l =~ /max\s+\d+\s+players\s+online:\s+(\S.*)/) {
+	elsif ($l =~ /max\s+\d+\s+players\s+online:\s+(\S.*)/ ||
+	       $l =~ /max\s+of\s+\d+\s+players\s+online:\s+(\S.*)/) {
 		push(@rv, split(/,\s+/, $1));
 		}
 	}
