@@ -503,7 +503,7 @@ if (&has_command("sensors")) {
                                     'temp' => $2 });
                         }
                 elsif (/temp(\d+):\s+([\+\-][0-9\.]+)/) {
-                		# Adjust to start from `0` as all other outputs
+                        # Adjust to start from `0` as all other outputs
                         push(@rv, { 'core' => (int($1) - 1),
                                     'temp' => $2 });
                         }
