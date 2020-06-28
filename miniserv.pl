@@ -3138,7 +3138,12 @@ if ($use_ssl) {
 	}
 else {
 	eval { syswrite(SOCK, $str, length($str)); };
+	if ($@ =~ /wide\s+character/i) {
+		eval { utf8::encode($str);
+		       syswrite(SOCK, $str, length($str)); };
+		}
 	if ($@) {
+		# Somehow a string come through that contains invalid chars
 		print STDERR $@,"\n";
 		for(my $i=0; my @stack = caller($i); $i++) {
 			print STDERR join(" ", @stack),"\n";
