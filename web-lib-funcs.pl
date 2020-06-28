@@ -9651,13 +9651,10 @@ exactly the same as Perl's open function.
 =cut
 sub open_readfile
 {
-my ($fh, $file, $mode) = @_;
+my ($fh, $file) = @_;
 $fh = &callers_package($fh);
 my $realfile = &translate_filename($file);
 &webmin_debug_log('READ', $file) if ($gconfig{'debug_what_read'});
-if ($mode) {
-	return open($fh, "<:$mode", $realfile);
-	}
 return open($fh, "<".$realfile);
 }
 
@@ -10212,27 +10209,6 @@ local $/ = undef;
 my $rv = <FILE>;
 close(FILE);
 return $rv;
-}
-
-=head2 read_file_contents_with_layer(file, mode)
-
-Effectively the same as `read_file_contents`
-but allows passing layer directives
-=cut
-sub read_file_contents_with_layer
-{
-	my ($file, $mode) = @_;
-
-	# XXX
-	if (lc($ENV{'HTTPS'}) ne 'on' && $mode =~ /utf8/) {
-		$mode = undef;
-	}
-
-	&open_readfile(FILE, $file, $mode) || return undef;
-	local $/ = undef;
-	my $rv = <FILE>;
-	close(FILE);
-	return $rv;
 }
 
 =head2 write_file_contents(file, data)
