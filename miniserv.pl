@@ -3145,9 +3145,6 @@ else {
 			}
 		}
 	}
-# Intentionally introduce a small delay to avoid problems where IE reports
-# the page as empty / DNS failed when it get a large response too quickly!
-select(undef, undef, undef, .01) if ($write_data_count%10 == 0);
 $write_data_count += length($str);
 }
 
