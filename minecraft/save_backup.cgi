@@ -19,6 +19,7 @@ if (!$in{'enabled'}) {
 	}
 else {
 	# Validate inputs
+	&has_command("zip") || &error($text{'backup_ezip'});
 	$job ||= { 'module' => $module_name,
 		   'func' => 'backup_worlds' };
 	&webmincron::parse_times_input($job, \%in);

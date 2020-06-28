@@ -297,6 +297,7 @@ backup_email=Email backup report to
 backup_noemail=Nobody
 backup_email_err=Only send email on failure
 backup_emailto=Address
+backup_ezip=The ZIP command is not installed!
 
 log_conf=Changed server configuration
 log_stop=Stopped Minecraft server
