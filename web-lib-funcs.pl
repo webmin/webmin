@@ -11034,7 +11034,7 @@ sub convert_from_json
 eval "use JSON::PP";
 if (!$@) {
 	my ($json_text) = @_;
-	return JSON::PP->new->latin1->decode($json_text);
+	return JSON::PP->new->utf8->decode($json_text);
 	}
 else {
 	error("The JSON::PP Perl module is not available on your system : $@");
