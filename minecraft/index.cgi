@@ -4,7 +4,8 @@
 use strict;
 use warnings;
 require './minecraft-lib.pl';
-our (%in, %text, %config, $module_name, $module_root_directory);
+our (%in, %text, %config, $module_name, $module_root_directory,
+     $module_config_directory);
 
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 		 &help_search_link("minecraft", "google"));
@@ -108,6 +109,18 @@ print &ui_buttons_row("atboot.cgi",
 				[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 
 print &ui_buttons_end();
+
+# Check if enabled at boot, but with wrong command
+if ($starting == 2) {
+	my $startscript = "$module_config_directory/start.sh";
+	my $startcode = &read_file_contents($startscript);
+	my $startcmd = &get_start_command();
+	my $qstartcmd = quotemeta($startcmd);
+	if ($startcode !~ /\Q$startcmd\E/ &&
+	    $startcode !~ /\Q$qstartcmd\E/) {
+		print "<font color=red><b>$text{'index_startwarn'}</b></font><p>\n";
+		}
+	}
 
 &ui_print_footer("/", $text{'index'});
 
