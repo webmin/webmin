@@ -122,5 +122,12 @@ if ($starting == 2) {
 		}
 	}
 
+# Check if something else is running
+my $opid;
+if (!$pid && ($opid = &is_minecraft_port_in_use())) {
+	print "<font color=red><b>",&text('index_portwarn', $opid),
+	      "</b></font><p>\n";
+	}
+
 &ui_print_footer("/", $text{'index'});
 

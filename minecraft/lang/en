@@ -21,6 +21,7 @@ index_downloaddesc=Click this button to download and install the latest version 
 index_upgradedesc=A new Minecraft server version is now available for download.
 index_upgrade=Upgrade Now
 index_startwarn=WARNING! A different version of Minecraft may be configured to start at boot time.
+index_portwarn=WARNING! Other process with PID $1 is using using the Minecraft server port. This may be another version of the Minecraft server.
 
 check_edir=The base directory $1 does not exist
 check_ejar=The server JAR file $1 does not exist
