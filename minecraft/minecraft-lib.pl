@@ -1,4 +1,6 @@
 # Functions for editing the minecraft config
+# XXX bootup should check if version is valid
+# XXX running check should match other versions
 
 BEGIN { push(@INC, ".."); };
 use strict;
@@ -815,6 +817,14 @@ return $job;
 # This function is called by webmincron to perform a backup
 sub backup_worlds
 {
+my ($out, $failed) = &execute_backup_worlds();
+&send_backup_email(join("\n", @$out)."\n", $failed);
+}
+
+# execute_backup_worlds()
+# Run the configured backup, and return output and the failed flag
+sub execute_backup_worlds
+{
 # Get worlds to include
 my @allworlds = &list_worlds();
 my @worlds;
@@ -826,8 +836,7 @@ else {
 	@worlds = @allworlds;
 	}
 if (!@worlds) {
-	&send_backup_email("No worlds were found to backup!", 1);
-	return;
+	return (["No worlds were found to backup!"], 1);
 	}
 
 # Get destination dir, with strftime
@@ -839,9 +848,7 @@ my $dir = strftime($config{'backup_dir'}, @tm);
 # Create destination dir
 if (!-d $dir) {
 	if (!&make_dir($dir, 0755)) {
-		&send_backup_email(
-			"Failed to create destination directory $dir : $!");
-		return;
+		return (["Failed to create destination directory $dir : $!"],1);
 		}
 	if ($config{'unix_user'} ne 'root') {
 		&set_ownership_permissions($config{'unix_user'}, undef, undef,
@@ -893,7 +900,7 @@ foreach my $w (@worlds) {
 		}
 	push(@out, "");
 	}
-&send_backup_email(join("\n", @out)."\n", $failed);
+return (\@out, $failed);
 }
 
 # send_backup_email(msg, error)

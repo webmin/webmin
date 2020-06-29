@@ -300,6 +300,10 @@ backup_noemail=Nobody
 backup_email_err=Only send email on failure
 backup_emailto=Address
 backup_ezip=The ZIP command is not installed!
+backup_now=Save and Backup Now
+backup_doing=Backing up selected worlds ..
+backup_failed=.. backup failed!
+backup_done=.. backup complete
 
 log_conf=Changed server configuration
 log_stop=Stopped Minecraft server
