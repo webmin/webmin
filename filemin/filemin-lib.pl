@@ -3,6 +3,7 @@
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
+use Encode qw(decode encode);
 use File::Basename;
 use POSIX;
 
