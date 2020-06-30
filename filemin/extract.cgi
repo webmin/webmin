@@ -8,7 +8,7 @@ use File::MimeInfo;
 
 get_paths();
 
-$archive_type = mimetype($cwd.'/'.$in{'file'});
+$archive_type = clean_mimetype($cwd.'/'.$in{'file'});
 
 if ($archive_type =~ /x-bzip/) {
 	$cmd = "tar xvjfp ".quotemeta("$cwd/$in{'file'}").

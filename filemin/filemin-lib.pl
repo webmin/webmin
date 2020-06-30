@@ -433,4 +433,12 @@ $error && &error(&text('notallowed', '`' . &html_escape($file) . '`',
 		   '`' . &html_escape(join(" , ", @allowed_paths)) . '`.'));
 }
 
+sub clean_mimetype
+{
+my ($f) = @_;
+my $t = mimetype($f);
+eval { utf8::encode($t) if (utf8::is_utf8($t)) };
+return $t;
+}
+
 1;
