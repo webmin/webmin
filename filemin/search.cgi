@@ -2,7 +2,6 @@
 
 require './filemin-lib.pl';
 use lib './lib';
-use File::MimeInfo;
 
 &ReadParse();
 

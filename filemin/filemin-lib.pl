@@ -6,6 +6,7 @@ use WebminCore;
 use Encode qw(decode encode);
 use File::Basename;
 use POSIX;
+use File::MimeInfo;
 
 sub get_attr_status {
   return has_command('lsattr');
