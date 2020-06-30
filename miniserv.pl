@@ -2478,7 +2478,7 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 		if ($@) {
 			# Error in perl!
 			&http_error(500, "Perl execution failed",
-				    $config{'noshowstderr'} ? undef : $@);
+				    $config{'noshowstderr'} ? undef : "$@");
 			}
 		elsif (!$doneheaders && !$nph_script) {
 			&http_error(500, "Missing Headers");
