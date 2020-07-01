@@ -5,10 +5,9 @@ use WebminCore;
 &init_config();
 
 use lib './lib';
-
+use POSIX;
 use Encode qw(decode encode);
 use File::Basename;
-use POSIX;
 use File::MimeInfo;
 
 sub get_attr_status {
