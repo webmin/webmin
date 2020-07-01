@@ -1,7 +1,6 @@
 #!/usr/local/bin/perl
 
 require './filemin-lib.pl';
-use lib './lib';
 
 &ReadParse();
 
