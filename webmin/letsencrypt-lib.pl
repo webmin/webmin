@@ -107,6 +107,9 @@ if ($mode eq "web") {
 		if ($?) {
 			return (0, "mkdir failed : $out");
 			}
+			else {
+				chmod(0755, $wellknown);
+				}
 		}
 
 	# Create a .htaccess file to ensure the directory is accessible 
