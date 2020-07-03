@@ -11,8 +11,6 @@ our ($timezones_file, $currentzone_link, $currentzone_file, $timezones_dir,
      $sysclock_file);
 our ($get_hardware_time_error);
 our $cron_cmd = "$module_config_directory/sync.pl";
-our $time_is_chrony = &has_command("chronyc");
-our $time_out_no_cmd = 0;
 if ($config{'zone_style'}) {
 	do "$config{'zone_style'}-lib.pl";
 	}
@@ -42,18 +40,14 @@ my ($server, $hwtoo) = @_;
 my @servs = split(/\s+/, $server);
 my $servs = join(" ", map { quotemeta($_) } @servs);
 my $out;
-if ($time_is_chrony) {
-	$out = &backquote_logged("chronyc -a makestep 2>&1");
-	}
-elsif (&has_command("ntpdate")) {
+if (&has_command("ntpdate")) {
 	$out = &backquote_logged("ntpdate -u $servs 2>&1");
 	}
 elsif (&has_command("sntp")) {
 	$out = &backquote_logged("sntp -s $servs 2>&1");
 	}
 else {
-	$out = "Missing <tt>chronyc</tt> or <tt>ntpdate</tt> and <tt>sntp</tt> commands";
-	$time_out_no_cmd = 1;
+	$out = "Missing ntpdate and sntp commands";
 	$? = 1;
 	}
 if ($? && $config{'ntp_only'}) {

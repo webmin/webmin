@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 require './time-lib.pl';
-our (%in, %text, %config, %access, $base_remote_user, $get_hardware_time_error, $time_is_chrony);
+our (%in, %text, %config, %access, $base_remote_user, $get_hardware_time_error);
 
 my ($rawdate, $rawhwdate, %system_date, $rawtime, %hw_date, $txt);
 $txt = "";
@@ -159,23 +159,16 @@ if ( ( !$access{ 'sysdate' } && &has_command( "date" ) || !$access{ 'hwdate' } &
 	print &ui_hidden("mode", "ntp");
 	print &ui_table_start(&hlink($text{'index_timeserver'}, "timeserver"),
 			      "width=100%", 2, [ "width=30%" ]);
-	if (!$time_is_chrony) {
-		print &ui_table_row($text{'index_addresses'},
-			&ui_textbox("timeserver", $config{'timeserver'}, 60));
-		
-		# Show hardware time checkbox
-		if (&support_hwtime()) {
-			print &ui_table_row(" ",
-				&ui_checkbox("hardware", 1, $text{'index_hardware2'},
-					     $config{'timeserver_hardware'}));
-			}
+
+	print &ui_table_row($text{'index_addresses'},
+		&ui_textbox("timeserver", $config{'timeserver'}, 60));
+
+	# Show hardware time checkbox
+	if (&support_hwtime()) {
+		print &ui_table_row(" ",
+			&ui_checkbox("hardware", 1, $text{'index_hardware2'},
+				     $config{'timeserver_hardware'}));
 		}
-		else {
-			if (&support_hwtime()) {
-				print &ui_table_row($text{'action_sync_s'},
-					&ui_yesno_radio("hardware", $config{'timeserver_hardware'}));
-				}
-			}
 
 	# Show boot-time checkbox
 	my $job = &find_webmin_cron_job();

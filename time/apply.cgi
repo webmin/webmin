@@ -52,17 +52,9 @@ if ($in{'action'} eq $text{'action_sync'}) {
 } elsif ($in{'action'} eq $text{'index_sync'} || $in{'mode'} eq 'ntp') {
   # Sync with a time server
   $access{'ntp'} || &error($text{'acl_nontp'});
-  if (!$time_is_chrony) {
-    $in{'timeserver'} =~ /\S/ || &error($text{'error_etimeserver'});
-    }
+  $in{'timeserver'} =~ /\S/ || &error($text{'error_etimeserver'});
   $err = &sync_time($in{'timeserver'}, $in{'hardware'});
-  if ($err) {
-    my $err_ = "<pre>".&html_escape($err)."</pre>";
-    if ($time_out_no_cmd) {
-      $err_ = $err;
-      }
-      &error($err_);
-    }
+  &error("<pre>".&html_escape($err)."</pre>") if ($err);
 
   # Save settings in module config
   &lock_file($module_config_file);
