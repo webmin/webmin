@@ -99,7 +99,8 @@ if ($mode eq "web") {
 	my @st = stat($webroot);
 	my $user = getpwuid($st[4]);
 	if (!-d $challenge) {
-		my $cmd = "mkdir -p -m 755 ".quotemeta($challenge);
+		my $cmd = "mkdir -p -m 755 ".quotemeta($challenge).
+			  " && chmod 755 ".quotemeta($wellknown);
 		if ($user && $user ne "root") {
 			$cmd = &command_as_user($user, 0, $cmd);
 			}
@@ -107,9 +108,6 @@ if ($mode eq "web") {
 		if ($?) {
 			return (0, "mkdir failed : $out");
 			}
-			else {
-				chmod(0755, $wellknown);
-				}
 		}
 
 	# Create a .htaccess file to ensure the directory is accessible 
