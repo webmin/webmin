@@ -6,7 +6,7 @@ require './init-lib.pl';
 &ReadParse();
 $access{'reboot'} || &error($text{'reboot_ecannot'});
 if ($in{'removenotify'}) {
-	write_file_contents($in{'removenotify_value'});
+	write_file_contents("$var_directory/modules/webmin/postpone-reboot-required");
 	&redirect(get_referer_relative());
 	exit;
 }

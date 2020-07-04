@@ -1334,7 +1334,6 @@ if (&foreign_check("package-updates") && &foreign_available("init")) {
 	if (&package_updates::check_reboot_required() && $allow_reboot_required) {
 		push(@notifs,
 			&ui_form_start("$gconfig{'webprefix'}/init/reboot.cgi").
-			&ui_hidden("removenotify_value", $postpone_reboot_required) .
 			$text{'notif_reboot'}."<p>\n".
 			&ui_form_end([ [ undef, $text{'notif_rebootok'} ],
 					[ 'removenotify', $text{'alert_hide'} ] ]));
