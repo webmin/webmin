@@ -1156,5 +1156,6 @@ letsencrypt_enative=The native Let's Encrypt client (certbot) was used previousl
 letsencrypt_eacmedns=Only the offical Let's Encrypt client supports DNS-based validation
 
 announce_hide=Hide This Announcement
+alert_hide=Hide Alert
 
 __norefs=1

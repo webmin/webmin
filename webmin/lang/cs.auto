@@ -366,3 +366,4 @@ letsencrypt_ekeygen=Generování soukromého klíče se nezdařilo : $1
 letsencrypt_enative=V tomto systému byl dříve použit nativní klient Encrypt (certbot) a musí být použit pro všechny budoucí žádosti o certifikát
 letsencrypt_eacmedns=Pouze oficiální klient Let's Encrypt podporuje ověření založené na DNS
 announce_hide=Skrýt toto oznámení
+alert_hide=Skrýt upozornění

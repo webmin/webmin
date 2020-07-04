@@ -360,3 +360,4 @@ letsencrypt_ekeygen=개인 키를 생성하지 못했습니다  : $1
 letsencrypt_enative=기본 Let 's Encrypt 클라이언트 (certbot)는이 시스템에서 이전에 사용되었으며 향후 모든 인증서 요청에 사용해야합니다.
 letsencrypt_eacmedns=공식적인 Let 's Encrypt 클라이언트 만이 DNS 기반 유효성 검사를 지원합니다
 announce_hide=이 공지 숨기기
+alert_hide=경고 숨기기

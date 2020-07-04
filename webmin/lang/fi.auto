@@ -1101,3 +1101,4 @@ letsencrypt_ekeygen=Yksityisen avaimen luonti epäonnistui : $1
 letsencrypt_enative=Alkuperäistä Let's Encrypt -asiakasta (certbot) käytettiin aiemmin tässä järjestelmässä, ja sitä on käytettävä kaikkiin tuleviin varmennepyyntöihin
 letsencrypt_eacmedns=Vain virallinen Let's Encrypt -asiakas tukee DNS-pohjaista validointia
 announce_hide=Piilota tämä ilmoitus
+alert_hide=Piilota hälytys

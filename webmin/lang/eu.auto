@@ -1101,3 +1101,4 @@ letsencrypt_ekeygen=Ezin izan da gako pribatua sortzen : $1
 letsencrypt_enative=Let's Encrypt bezero jatorria (certbot) lehenago erabili zen sistema honetan eta etorkizunean ziurtagiri-eskaera guztietarako erabili behar da
 letsencrypt_eacmedns=Letrak Encrypt bezero ofizialak soilik onartzen ditu DNSetan oinarritutako balioztapena
 announce_hide=Ezkutatu iragarki hau
+alert_hide=Alerta ezkutatu

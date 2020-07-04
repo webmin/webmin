@@ -1101,3 +1101,4 @@ letsencrypt_ekeygen=Ni bilo mogoče ustvariti zasebnega ključa : $1
 letsencrypt_enative=Domači odjemalec Let's Encrypt (certbot) je bil prej uporabljen v tem sistemu in ga je treba uporabiti za vse prihodnje zahteve za potrdila
 letsencrypt_eacmedns=Samo uradni odjemalec Let's Encrypt podpira preverjanje na podlagi DNS
 announce_hide=Skrij to obvestilo
+alert_hide=Skrij opozorilo

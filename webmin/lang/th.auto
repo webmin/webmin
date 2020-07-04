@@ -1101,3 +1101,4 @@ letsencrypt_ekeygen=ไม่สามารถสร้างคีย์ส่
 letsencrypt_enative=ไคลเอ็นต์ Let's Encrypt ดั้งเดิม (certbot) ถูกใช้ก่อนหน้านี้ในระบบนี้และต้องใช้สำหรับการร้องขอใบรับรองในอนาคตทั้งหมด
 letsencrypt_eacmedns=ไคลเอนต์ Let's Encrypt อย่างเป็นทางการเท่านั้นที่รองรับการตรวจสอบความถูกต้องของ DNS
 announce_hide=ซ่อนประกาศนี้
+alert_hide=ซ่อนการแจ้งเตือน

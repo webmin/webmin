@@ -25,3 +25,4 @@ letsencrypt_doingdns=Be om et nytt sertifikat for $1 ved å bruke DNS-validering
 letsencrypt_echain2=Kjedet sertifikat lastet ned fra $1 er tomt
 letsencrypt_eacmedns=Bare den offisielle Let's Encrypt-klienten støtter DNS-basert validering
 announce_hide=Skjul kunngjøringen
+alert_hide=Skjul varsel

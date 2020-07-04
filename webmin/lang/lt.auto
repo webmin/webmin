@@ -1101,3 +1101,4 @@ letsencrypt_ekeygen=Nepavyko sugeneruoti privataus rakto : $1
 letsencrypt_enative=Gimtasis „Encrypt“ klientas (certbot) anksčiau buvo naudojamas šioje sistemoje ir turi būti naudojamas visoms būsimoms sertifikatų užklausoms
 letsencrypt_eacmedns=Tik oficialus „Encrypt“ klientas palaiko DNS pagrįstą patvirtinimą
 announce_hide=Slėpti šį skelbimą
+alert_hide=Slėpti perspėjimą

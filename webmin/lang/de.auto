@@ -1,1 +1,2 @@
 letsencrypt_eacmedns=Nur der offizielle Let's Encrypt-Client unterstützt die DNS-basierte Validierung
+alert_hide=Warnung ausblenden

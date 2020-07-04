@@ -650,3 +650,4 @@ letsencrypt_ekeygen=無法生成私鑰：$1
 letsencrypt_enative=本地的Let's Encrypt客戶端（certbot）先前在此系統上使用，並且必須用於以後的所有證書請求
 letsencrypt_eacmedns=僅官方的Let's Encrypt客戶端支持基於DNS的驗證
 announce_hide=隱藏此公告
+alert_hide=隱藏警報

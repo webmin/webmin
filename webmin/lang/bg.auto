@@ -1101,3 +1101,4 @@ letsencrypt_ekeygen=Неуспешно генериране на частен к
 letsencrypt_enative=Нативният клиент Let's Encrypt (certbot) беше използван преди това в тази система и трябва да се използва за всички бъдещи заявки за сертификати
 letsencrypt_eacmedns=Само официалният клиент Let's Encrypt поддържа валидиране на DNS
 announce_hide=Скриване на това съобщение
+alert_hide=Скриване на предупреждение

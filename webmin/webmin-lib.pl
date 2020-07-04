@@ -85,6 +85,8 @@ our $first_install_file = "$config_directory/first-install";
 
 our $hidden_announce_file = "$module_config_directory/announce-hidden";
 
+my $postpone_reboot_required = "$module_var_directory/postpone-reboot-required";
+
 =head2 setup_ca
 
 Internal function to create all the configuration files needed for the Webmin
@@ -1318,12 +1320,24 @@ if (&foreign_available($module_name) && !$noupdates &&
 # Reboot needed
 if (&foreign_check("package-updates") && &foreign_available("init")) {
 	&foreign_require("package-updates");
-	if (&package_updates::check_reboot_required()) {
+	my $allow_reboot_required = 1;
+	if (-r $postpone_reboot_required) {
+		my $uptime = &get_system_uptime();
+		my $lastreboot = $uptime ? time()-$uptime : undef;
+		if ($lastreboot) {
+			my @prr = stat($postpone_reboot_required);
+			if ($lastreboot < $prr[9]) {
+				$allow_reboot_required = 0;
+				}
+			}
+		}
+	if (&package_updates::check_reboot_required() && $allow_reboot_required) {
 		push(@notifs,
-		     &ui_form_start("$gconfig{'webprefix'}/init/reboot.cgi",
-				    "form-data").
-		     $text{'notif_reboot'}."<p>\n".
-		     &ui_form_end([ [ undef, $text{'notif_rebootok'} ] ]));
+			&ui_form_start("$gconfig{'webprefix'}/init/reboot.cgi").
+			&ui_hidden("removenotify_value", $postpone_reboot_required) .
+			$text{'notif_reboot'}."<p>\n".
+			&ui_form_end([ [ undef, $text{'notif_rebootok'} ],
+					[ 'removenotify', $text{'alert_hide'} ] ]));
 		}
 	}
 

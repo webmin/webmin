@@ -562,3 +562,4 @@ letsencrypt_ekeygen=Impossible de générer la clé privée : $1
 letsencrypt_enative=Le client natif Let's Encrypt (certbot) a été utilisé précédemment sur ce système et doit être utilisé pour toutes les futures demandes de certificat
 letsencrypt_eacmedns=Seul le client officiel Let's Encrypt prend en charge la validation basée sur DNS
 announce_hide=Masquer cette annonce
+alert_hide=Masquer l'alerte

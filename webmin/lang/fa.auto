@@ -588,3 +588,4 @@ letsencrypt_ekeygen=Failed to generate private key : $1
 letsencrypt_enative=مشتری بومی Let Encrypt (certbot) قبلاً در این سیستم استفاده شده بود ، و باید برای کلیه درخواست های گواهی آینده مورد استفاده قرار گیرد
 letsencrypt_eacmedns=فقط مشتری رسمی Letry Encrypt از اعتبار سنجی مبتنی بر DNS پشتیبانی می کند
 announce_hide=پنهان کردن این اعلامیه
+alert_hide=هشدار را مخفی کنید

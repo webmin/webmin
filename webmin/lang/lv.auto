@@ -1101,3 +1101,4 @@ letsencrypt_ekeygen=Neizdevās ģenerēt privātu atslēgu : $1
 letsencrypt_enative=Vietējais klientu šifrēšanas klients (certbot) iepriekš tika izmantots šajā sistēmā, un tas ir jāizmanto visiem turpmākajiem sertifikātu pieprasījumiem
 letsencrypt_eacmedns=Tikai uz oficiālu klientu šifrēšanas klientu tiek atbalstīta uz DNS balstīta validācija
 announce_hide=Slēpt šo sludinājumu
+alert_hide=Slēpt brīdinājumu

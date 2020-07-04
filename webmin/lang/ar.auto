@@ -982,3 +982,4 @@ letsencrypt_ekeygen=Failed to generate private key : $1
 letsencrypt_enative=تم استخدام عميل Let's Encrypt الأصلي (certbot) مسبقًا على هذا النظام ، ويجب استخدامه لجميع طلبات الشهادات المستقبلية
 letsencrypt_eacmedns=يدعم العميل Let's Encrypt فقط التحقق القائم على DNS
 announce_hide=إخفاء هذا الإعلان
+alert_hide=إخفاء التنبيه
