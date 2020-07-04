@@ -85,7 +85,7 @@ our $first_install_file = "$config_directory/first-install";
 
 our $hidden_announce_file = "$module_config_directory/announce-hidden";
 
-my $postpone_reboot_required = "$module_var_directory/postpone-reboot-required";
+our $postpone_reboot_required = "$module_var_directory/postpone-reboot-required";
 
 =head2 setup_ca
 
