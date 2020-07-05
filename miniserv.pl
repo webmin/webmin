@@ -874,6 +874,7 @@ while(1) {
 		if (vec($rmask, fileno($s), 1)) {
 			# got new connection
 			$acptaddr = accept(SOCK, $s);
+			print DEBUG "accept returned ",length($acptaddr),"\n";
 			if (!$acptaddr) { next; }
 			binmode(SOCK);
 
@@ -887,9 +888,11 @@ while(1) {
 			# Work out IP and port of client
 			local ($peerb, $peera, $peerp) =
 				&get_address_ip($acptaddr, $ipv6fhs{$s});
+			print DEBUG "peera=$peera peerp=$peerp\n";
 
 			# Work out the local IP
 			(undef, $locala) = &get_socket_ip(SOCK, $ipv6fhs{$s});
+			print DEBUG "locala=$locala\n";
 
 			# Check username of connecting user
 			$localauth_user = undef;
@@ -938,6 +941,7 @@ while(1) {
 			local $handpid;
 			if (!($handpid = fork())) {
 				# setup signal handlers
+				print DEBUG "in subprocess\n";
 				$SIG{'TERM'} = 'DEFAULT';
 				$SIG{'PIPE'} = 'DEFAULT';
 				#$SIG{'CHLD'} = 'IGNORE';
@@ -959,6 +963,7 @@ while(1) {
 				if ($use_ssl) {
 					$ssl_con = &ssl_connection_for_ip(
 							SOCK, $ipv6fhs{$s});
+					print DEBUG "ssl_con returned $ssl_con\n";
 					$ssl_con || exit;
 					}
 
@@ -1375,7 +1380,7 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 			&http_error(200, "Document follows",
 				"This web server is running in SSL mode. ".
 				"Try the URL <a href='$url'>$url</a> ".
-				"instead.<br>");
+				"instead.", 0, 1);
 		} else {
 			# Throw an error
 			&http_error(404, "Page not found",
@@ -1431,7 +1436,7 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 				return 0;
 			} elsif ($config{'hide_admin_url'} != 1) {
 				# Tell user the correct URL
-				&http_error(200, "Bad Request", "This web server is not running in SSL mode. Try the URL <a href='$url'>$url</a> instead.<br>");
+				&http_error(200, "Bad Request", "This web server is not running in SSL mode. Try the URL <a href='$url'>$url</a> instead.", 0, 1);
 			} else {
 				&http_error(404, "Page not found",
 					"The requested URL was not found on this server ".
@@ -2711,42 +2716,44 @@ else {
 return $rv;
 }
 
-# http_error(code, message, body, [dontexit])
+# http_error(code, message, body, [dontexit], [dontstderr])
+# Output an error message to the browser, and log it to the error log
 sub http_error
 {
+my ($code, $msg, $body, $noexit, $noerr) = @_;
 local $eh = $error_handler_recurse ? undef :
-	    $config{"error_handler_$_[0]"} ? $config{"error_handler_$_[0]"} :
+	    $config{"error_handler_".$code} ? $config{"error_handler_".$code} :
 	    $config{'error_handler'} ? $config{'error_handler'} : undef;
-print DEBUG "http_error code=$_[0] message=$_[1] body=$_[2]\n";
+print DEBUG "http_error code=$code message=$msg body=$body\n";
 if ($eh) {
 	# Call a CGI program for the error
 	$page = "/$eh";
-	$querystring = "code=$_[0]&message=".&urlize($_[1]).
-		       "&body=".&urlize($_[2]);
+	$querystring = "code=$_[0]&message=".&urlize($msg).
+		       "&body=".&urlize($body);
 	$error_handler_recurse++;
-	$ok_code = $_[0];
-	$ok_message = $_[1];
+	$ok_code = $code;
+	$ok_message = $msg;
 	goto rerun;
 	}
 else {
 	# Use the standard error message display
-	&write_data("HTTP/1.0 $_[0] $_[1]\r\n");
+	&write_data("HTTP/1.0 $code $msg\r\n");
 	&write_data("Server: $config{server}\r\n");
 	&write_data("Date: $datestr\r\n");
 	&write_data("Content-type: text/html; Charset=utf-8\r\n");
 	&write_keep_alive(0);
 	&write_data("\r\n");
 	&reset_byte_count();
-	&write_data("<h1>Error - $_[1]</h1>\n");
-	if ($_[2]) {
-		&write_data("<p>$_[2]</p>\n");
+	&write_data("<h1>Error - $msg</h1>\n");
+	if ($body) {
+		&write_data("<p>$body</p>\n");
 		}
 	}
-&log_request($loghost, $authuser, $reqline, $_[0], &byte_count())
+&log_request($loghost, $authuser, $reqline, $code, &byte_count())
 	if ($reqline);
-&log_error($_[1], $_[2] ? " : $_[2]" : "");
+&log_error($msg, $body ? " : $body" : "") if (!$noerr);
 shutdown(SOCK, 1);
-exit if (!$_[3]);
+exit if (!$noexit);
 }
 
 sub get_type
@@ -4522,7 +4529,6 @@ if ($config{'ssl_cipher_list'}) {
 	}
 Net::SSLeay::set_fd($ssl_con, fileno($sock));
 if (!Net::SSLeay::accept($ssl_con)) {
-	print STDERR "Failed to initialize SSL connection\n";
 	return undef;
 	}
 return $ssl_con;
