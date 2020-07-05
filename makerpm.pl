@@ -186,6 +186,25 @@ fi
 %post
 inetd=`grep "^inetd=" /etc/webmin/miniserv.conf 2>/dev/null | sed -e 's/inetd=//g'`
 startafter=0
+
+# Fix old versions of Webmin that might kill the UI process on upgrade
+cat >/etc/webmin/stop 2>/dev/null <<'EOD'
+#!/bin/sh
+echo Stopping Webmin server in /usr/libexec/webmin
+pidfile=`grep "^pidfile=" /etc/webmin/miniserv.conf | sed -e 's/pidfile=//g'`
+pid=`cat \$pidfile`
+if [ "\$pid" != "" ]; then
+  kill \$pid || exit 1
+  if [ "\$1" = "--kill" ]; then
+    sleep 1
+    (kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null
+  fi
+  exit 0
+else
+  exit 1
+fi
+EOD
+
 if [ "\$1" != 1 ]; then
 	# Upgrading the RPM, so stop the old webmin properly
 	if [ "\$inetd" != "1" ]; then

@@ -256,6 +256,25 @@ system("chmod 755 $preinstall_file");
 open(SCRIPT, ">$postinstall_file");
 print SCRIPT <<EOF;
 #!/bin/sh
+
+# Fix old versions of Webmin that might kill the UI process on upgrade
+cat >/etc/webmin/stop 2>/dev/null <<'EOD'
+#!/bin/sh
+echo Stopping Webmin server in /usr/libexec/webmin
+pidfile=`grep "^pidfile=" /etc/webmin/miniserv.conf | sed -e 's/pidfile=//g'`
+pid=`cat \$pidfile`
+if [ "\$pid" != "" ]; then
+  kill \$pid || exit 1
+  if [ "\$1" = "--kill" ]; then
+    sleep 1
+    (kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null
+  fi
+  exit 0
+else
+  exit 1
+fi
+EOD
+
 inetd=`grep "^inetd=" /etc/$baseproduct/miniserv.conf 2>/dev/null | sed -e 's/inetd=//g'`
 if [ "\$1" = "upgrade" -a "\$1" != "abort-upgrade" ]; then
 	# Upgrading the package, so stop the old webmin properly
