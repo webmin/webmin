@@ -159,11 +159,6 @@ if [ "$upgrading" = 1 ]; then
 	atboot=`grep "^atboot=" $config_dir/miniserv.conf | sed -e 's/atboot=//g'`
 	inetd=`grep "^inetd=" $config_dir/miniserv.conf | sed -e 's/inetd=//g'`
 
-	if [ "$inetd" != "1" ]; then
-		# Stop old version
-		$config_dir/stop >/dev/null 2>&1
-	fi
-
 	# Copy files to target directory
 	if [ "$wadir" != "$srcdir" ]; then
 		echo "Copying files to $wadir .."
@@ -625,15 +620,17 @@ echo "pidfile=\`grep \"^pidfile=\" $config_dir/miniserv.conf | sed -e 's/pidfile
 echo "pid=\`cat \$pidfile\`" >>$config_dir/stop
 echo "if [ \"\$pid\" != \"\" ]; then" >>$config_dir/stop
 echo "  kill \$pid || exit 1" >>$config_dir/stop
-echo "  sleep 1" >>$config_dir/stop
-echo "  (kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null" >>$config_dir/stop
+echo "  if [ \"\$1\" = \"--kill\" ]; then" >>$config_dir/stop
+echo "    sleep 1" >>$config_dir/stop
+echo "    (kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null" >>$config_dir/stop
+echo "  fi" >>$config_dir/stop
 echo "  exit 0" >>$config_dir/stop
 echo "else" >>$config_dir/stop
 echo "  exit 1" >>$config_dir/stop
 echo "fi" >>$config_dir/stop
 
 echo "#!/bin/sh" >>$config_dir/restart
-echo "$config_dir/stop && $config_dir/start" >>$config_dir/restart
+echo "$config_dir/stop --kill && $config_dir/start" >>$config_dir/restart
 
 echo "#!/bin/sh" >>$config_dir/reload
 echo "echo Reloading Webmin server in $wadir" >>$config_dir/reload
@@ -643,6 +640,11 @@ echo "kill -USR1 \`cat \$pidfile\`" >>$config_dir/reload
 chmod 755 $config_dir/start $config_dir/stop $config_dir/restart $config_dir/reload
 echo "..done"
 echo ""
+
+if [ "$upgrading" = 1 -a "$inetd" != "1" ]; then
+	# Stop old version, with updated stop script
+	$config_dir/stop >/dev/null 2>&1
+fi
 
 if [ "$upgrading" = 1 ]; then
 	echo "Updating config files.."
