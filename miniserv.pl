@@ -744,7 +744,7 @@ while(1) {
 	vec($rmask, fileno(LISTEN), 1) = 1 if ($config{'listen'});
 
 	# Wait for a connection
-	local $sel = select($rmask, undef, undef, 10);
+	local $sel = select($rmask, undef, undef, 2);
 
 	# Check the flag files
 	if ($config{'restartflag'} && -r $config{'restartflag'}) {
@@ -784,7 +784,6 @@ while(1) {
 		@childpids = grep { $_ != $pid } @childpids;
 		} while($pid != 0 && $pid != -1);
 	@childpids = grep { !kill(0, $_) } @childpids;
-
 
 	# run the unblocking procedure to check if enough time has passed to
 	# unblock hosts that heve been blocked because of password failures
