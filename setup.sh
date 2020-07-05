@@ -622,7 +622,7 @@ echo "if [ \"\$pid\" != \"\" ]; then" >>$config_dir/stop
 echo "  kill \$pid || exit 1" >>$config_dir/stop
 echo "  if [ \"\$1\" = \"--kill\" ]; then" >>$config_dir/stop
 echo "    sleep 1" >>$config_dir/stop
-echo "    (kill -9 \$pid || kill -9 -- -\$pid) 2>/dev/null" >>$config_dir/stop
+echo "    (kill -9 -- -\$pid || kill -9 \$pid) 2>/dev/null" >>$config_dir/stop
 echo "  fi" >>$config_dir/stop
 echo "  exit 0" >>$config_dir/stop
 echo "else" >>$config_dir/stop
