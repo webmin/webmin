@@ -39,11 +39,6 @@ stop)
 	if [ "$RETVAL" = "0" ]; then
 		rm -f $LOCKFILE
 	fi
-	pidfile=`grep "^pidfile=" $CONFFILE | sed -e 's/pidfile=//g'`
-	if [ "$pidfile" = "" ]; then
-		pidfile=$PIDFILE
-	fi
-	rm -f $pidfile
 	;;
 status)
 	pidfile=`grep "^pidfile=" $CONFFILE | sed -e 's/pidfile=//g'`
