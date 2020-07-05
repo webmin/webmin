@@ -1384,8 +1384,7 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 		} else {
 			# Throw an error
 			&http_error(404, "Page not found",
-				"The requested URL was not found on this server ".
-				"try <a href='/'>visiting the home page</a> of this site to see what you can find <br>");
+			    "The requested URL was not found on this server.")
 		}
 	} elsif (ord(substr($reqline, 0, 1)) == 128 && !$use_ssl) {
 		# This could be an https request when it should be http ..
@@ -1439,9 +1438,7 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 				&http_error(200, "Bad Request", "This web server is not running in SSL mode. Try the URL <a href='$url'>$url</a> instead.", 0, 1);
 			} else {
 				&http_error(404, "Page not found",
-					"The requested URL was not found on this server ".
-					"try <a href='/'>visiting the home page</a> of this site to see what you can find <br>"
-					);
+				    "The requested URL was not found on this server.");
 			}
 EOF
 		if ($@) {
