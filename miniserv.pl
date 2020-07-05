@@ -424,6 +424,11 @@ if ($config{'debuglog'}) {
 # Pre-cache lang files
 &precache_files();
 
+# Clear any flag files to prevent restart loops
+unlink($config{'restartflag'}) if ($config{'restartflag'});
+unlink($config{'reloadflag'}) if ($config{'reloadflag'});
+unlink($config{'stopflag'}) if ($config{'stopflag'});
+
 if ($config{'inetd'}) {
 	# We are being run from inetd - go direct to handling the request
 	&redirect_stderr_to_log();
@@ -748,8 +753,14 @@ while(1) {
 		$need_restart = 1;
 		}
 	if ($config{'reloadflag'} && -r $config{'reloadflag'}) {
+		print STDERR "reload flag file detected\n";
 		unlink($config{'reloadflag'});
 		$need_reload = 1;
+		}
+	if ($config{'stopflag'} && -r $config{'stopflag'}) {
+		print STDERR "stop flag file detected\n";
+		unlink($config{'stopflag'});
+		$need_stop = 1;
 		}
 
 	if ($need_restart) {
@@ -760,6 +771,10 @@ while(1) {
 		# Got a USR1 signal while in select() .. re-read config
 		$need_reload = 0;
 		&reload_config_file();
+		}
+	if ($need_stop) {
+		# Stop flag file created
+		&term_handler();
 		}
 	local $time_now = time();
 
@@ -4601,25 +4616,25 @@ foreach my $v (keys %vital) {
 		$config{$v} = $vital{$v};
 		}
 	}
+$config_file =~ /^(.*)\/[^\/]+$/;
+my $config_dir = $1;
+$config{'pidfile'} =~ /^(.*)\/[^\/]+$/;
+my $var_dir = $1;
 if (!$config{'sessiondb'}) {
-	$config{'pidfile'} =~ /^(.*)\/[^\/]+$/;
-	$config{'sessiondb'} = "$1/sessiondb";
+	$config{'sessiondb'} = "$var_dir/sessiondb";
 	}
 if (!$config{'errorlog'}) {
 	$config{'logfile'} =~ /^(.*)\/[^\/]+$/;
 	$config{'errorlog'} = "$1/miniserv.error";
 	}
 if (!$config{'tempbase'}) {
-	$config{'pidfile'} =~ /^(.*)\/[^\/]+$/;
-	$config{'tempbase'} = "$1/cgitemp";
+	$config{'tempbase'} = "$var_dir/cgitemp";
 	}
 if (!$config{'blockedfile'}) {
-	$config{'pidfile'} =~ /^(.*)\/[^\/]+$/;
-	$config{'blockedfile'} = "$1/blocked";
+	$config{'blockedfile'} = "$var_dir/blocked";
 	}
 if (!$config{'webmincron_dir'}) {
-	$config_file =~ /^(.*)\/[^\/]+$/;
-	$config{'webmincron_dir'} = "$1/webmincron/crons";
+	$config{'webmincron_dir'} = "$config_dir/webmincron/crons";
 	}
 if (!$config{'webmincron_last'}) {
 	$config{'logfile'} =~ /^(.*)\/[^\/]+$/;
@@ -4632,6 +4647,9 @@ if (!$config{'webmincron_wrapper'}) {
 if (!$config{'twofactor_wrapper'}) {
 	$config{'twofactor_wrapper'} = $config{'root'}."/acl/twofactor.pl";
 	}
+$config{'restartflag'} ||= $var_dir."/restart-flag";
+$config{'reloadflag'} ||= $var_dir."/reload-flag";
+$config{'stopflag'} ||= $var_dir."/stop-flag";
 }
 
 # read_users_file()
