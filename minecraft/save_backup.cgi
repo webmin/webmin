@@ -16,6 +16,7 @@ if (!$in{'enabled'}) {
 		&webmincron::delete_webmin_cron($job);
 		}
 	&webmin_log("disable", "backup");
+	&redirect("");
 	}
 else {
 	# Validate inputs
@@ -45,6 +46,7 @@ else {
 	&save_module_config();
 	&unlock_file($module_config_file);
 	&webmincron::save_webmin_cron($job);
+	&webmin_log("enable", "backup", $in{'backup_dir'});
 
 	# Backup now if selected
 	if ($in{'now'}) {
@@ -64,7 +66,7 @@ else {
 
 		&ui_print_footer("", $text{'index_return'});
 		}
-
-	&webmin_log("enable", "backup", $in{'backup_dir'});
+	else {
+		&redirect("");
+		}
 	}
-&redirect("");
