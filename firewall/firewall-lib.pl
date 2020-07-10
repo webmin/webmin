@@ -60,13 +60,13 @@ local $lnum = 0;
 local $direct = "ip${ipvx}tables-save 2>/dev/null |";
 if (!$file) {
 	# Use default file
-	$file = $config{"direct${ipvx}"} ? $direct : $ipvx_save;
+	$file = $config{"direct${ipvx}"} ? $direct : "<".$ipvx_save;
 	}
 elsif ($file eq "direct") {
 	# Read active rules
 	$file = $direct;
 	}
-open(FILE, "<".$file);
+open(FILE, $file);
 local $cmt;
 LINE:
 while(<FILE>) {
