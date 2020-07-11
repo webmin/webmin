@@ -1057,7 +1057,7 @@ foreach $f (@{$_[0]}) {
 	push(@fl, $f) if (&indexof($f, @fl) < 0);
 	}
 foreach $f (&unique(@fl)) {
-    $rv .= &ui_checkbox($_[1], $f, $f, (&indexof($f, @{$_[0]}) < 0 ? 0 : 1 ) ); 
+	$rv .= &ui_checkbox($_[1], $f, $f, (&indexof($f, @{$_[0]}) < 0 ? 0 : 1 ) ); 
 	}
 return $rv;
 }

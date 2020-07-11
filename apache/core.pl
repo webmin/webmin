@@ -837,8 +837,11 @@ return &parse_opt("ForceType", '^\S+\/\S+$', $text{'mod_mime_etype'});
 sub edit_SetOutputFilter
 {
 local @vals = split(/[\s;]+/, $_[0]->{'value'});
-return (2, $text{'core_outfilter'},
-	&filters_input(\@vals, "SetOutputFilter"));
+my $fi = &filters_input(\@vals, "SetOutputFilter");
+if ($fi) {
+	return (2, $text{'core_outfilter'}, $fi);
+	}
+return ();
 }
 sub save_SetOutputFilter
 {
@@ -848,8 +851,11 @@ return &parse_filters("SetOutputFilter");
 sub edit_SetInputFilter
 {
 local @vals = split(/[\s;]+/, $_[0]->{'value'});
-return (2, $text{'core_infilter'},
-	&filters_input(\@vals, "SetInputFilter"));
+my $fi = &filters_input(\@vals, "SetInputFilter");
+if ($fi) {
+	return (2, $text{'core_infilter'}, $fi);
+	}
+return ();
 }
 sub save_SetInputFilter
 {
