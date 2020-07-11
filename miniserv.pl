@@ -783,7 +783,7 @@ while(1) {
 	do {	$pid = waitpid(-1, WNOHANG);
 		@childpids = grep { $_ != $pid } @childpids;
 		} while($pid != 0 && $pid != -1);
-	@childpids = grep { !kill(0, $_) } @childpids;
+	@childpids = grep { kill(0, $_) } @childpids;
 
 	# run the unblocking procedure to check if enough time has passed to
 	# unblock hosts that heve been blocked because of password failures
