@@ -1879,8 +1879,10 @@ while(<OUT>) {
 		}
 	}
 close(OUT);
-$rv{'type'} = $rv{'o'} eq $rv{'issuer_o'} ? $text{'ssl_typeself'}
-					  : $text{'ssl_typereal'};
+if ($rv{'o'} && $rv{'issuer_o'}) {
+	$rv{'type'} = $rv{'o'} eq $rv{'issuer_o'} ? $text{'ssl_typeself'}
+						  : $text{'ssl_typereal'};
+	}
 return \%rv;
 }
 
