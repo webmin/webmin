@@ -838,10 +838,7 @@ sub edit_SetOutputFilter
 {
 local @vals = split(/[\s;]+/, $_[0]->{'value'});
 my $fi = &filters_input(\@vals, "SetOutputFilter");
-if ($fi) {
-	return (2, $text{'core_outfilter'}, $fi);
-	}
-return ();
+return (2, $text{'core_outfilter'}, $fi);
 }
 sub save_SetOutputFilter
 {
@@ -852,10 +849,7 @@ sub edit_SetInputFilter
 {
 local @vals = split(/[\s;]+/, $_[0]->{'value'});
 my $fi = &filters_input(\@vals, "SetInputFilter");
-if ($fi) {
-	return (2, $text{'core_infilter'}, $fi);
-	}
-return ();
+return (2, $text{'core_infilter'}, $fi);
 }
 sub save_SetInputFilter
 {
