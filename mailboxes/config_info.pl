@@ -4,13 +4,10 @@ sub show_userIgnoreList
 {
   my($ig_usr) = shift(@_) || '';
   $ig_usr =~ s/\t/\n/g;
-  my($preta)  = '<TEXTAREA NAME="ignore_users" COLS="35" ROWS="4">';
-  my($postta) = '</TEXTAREA>';
+  my($preta)  = "<input name=\"ignore_users\" value=\"$ig_usr\" size=\"50\">";
 
   return
       $preta .
-      $ig_usr .
-      $postta .
       '&nbsp;' .
       &user_chooser_button("ignore_users", 1);
 }
