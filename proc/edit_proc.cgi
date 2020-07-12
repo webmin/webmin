@@ -76,7 +76,7 @@ print &ui_form_end();
 
 # Extra OS-specific info
 foreach $k (keys %pinfo) {
-	if ($k =~ /^_/) {
+	if ($k =~ /^_/ && $info_arg_map{$k}) {
 		print &ui_table_row($info_arg_map{$k}, $pinfo{$k});
 		}
 	}
