@@ -295,6 +295,8 @@ my $i = 1;
 foreach my $m (@{$section->{'members'}}) {
 	$m->{'line'} = $m->{'eline'} = $section->{'line'} + $i++;
 	$m->{'file'} = $section->{'file'};
+	$m->{'sectionname'} = $section->{'name'};
+	$m->{'sectionvalue'} = $section->{'value'};
 	}
 }
 
