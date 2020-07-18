@@ -16,11 +16,13 @@ $config{'perpage'} ||= 20;      # a value of 0 can cause problems
 
 # Get the saved version number
 $version_file = "$module_config_directory/version";
+$postfix_config_command = $config{'postfix_config_command'};
+$has_postfix_config_command = &has_command($postfix_config_command);
 if (&open_readfile(VERSION, $version_file)) {
 	chop($postfix_version = <VERSION>);
 	close(VERSION);
 	my @vst = stat($version_file);
-	my @cst = stat(&has_command($config{'postfix_config_command'}));
+	my @cst = stat($postfix_config_command);
 	if (@cst && $cst[9] > $vst[9]) {
 		# Postfix was probably upgraded
 		$postfix_version = undef;
@@ -29,8 +31,8 @@ if (&open_readfile(VERSION, $version_file)) {
 
 if (!$postfix_version) {
 	# Not there .. work it out
-	if (&has_command($config{'postfix_config_command'}) &&
-	    &backquote_command("$config{'postfix_config_command'} -d mail_version 2>&1", 1) =~ /mail_version\s*=\s*(.*)/) {
+	if ($has_postfix_config_command &&
+	    &backquote_command("$postfix_config_command -d mail_version 2>&1", 1) =~ /mail_version\s*=\s*(.*)/) {
 		# Got the version
 		$postfix_version = $1;
 		}
