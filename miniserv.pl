@@ -170,16 +170,11 @@ elsif (!$config{'no_pam'}) {
 			     "PAM initialization of Authen::PAM failed");
 			}
 		}
-	else {
-		push(@startup_msg,
-		     "Perl module Authen::PAM needed for PAM is ".
-		     "not installed : $@");
-		}
 	}
 if ($config{'pam_only'} && !$use_pam) {
 	foreach $msg (@startup_msg) {
-	     print STDERR $msg,"\n";
-	}
+		print STDERR $msg,"\n";
+		}
 	print STDERR "PAM use is mandatory, but could not be enabled!\n";
 	print STDERR "no_pam and pam_only both are set!\n" if ($config{no_pam});
 	exit(1);
