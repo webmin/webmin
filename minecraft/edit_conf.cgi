@@ -24,7 +24,7 @@ print &ui_table_row($text{'conf_seed'},
 # Type for new worlds
 my $type = &find_value("level-type", $conf) || "DEFAULT";
 print &ui_table_row($text{'conf_type'},
-	&ui_select("type", $type,
+	&ui_select("type", uc($type),
 		[ [ "DEFAULT", $text{'conf_type_default'} ],
 		  [ "FLAT", $text{'conf_type_flat'} ],
 		  [ "AMPLIFIED", $text{'conf_type_amplified'} ],
