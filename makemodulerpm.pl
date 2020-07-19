@@ -247,7 +247,7 @@ if ($rpmdepends && defined($minfo{'depends'})) {
 		# If the module is part of Webmin, we don't need to depend on it
 		if ($dmod) {
 			my %dinfo;
-			&read_file("$dmod/module.info", \%dinfo);
+			&read_file("$dmod/module.info", \%dinfo) || die "Failed to read $dmod/module.info for depenendency check";
 			next if ($dinfo{'longdesc'});
 			}
 		push(@rdeps, $dwebmin ? ("webmin", ">=", $dwebmin) :
