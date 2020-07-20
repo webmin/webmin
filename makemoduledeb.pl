@@ -235,6 +235,7 @@ if ($debdepends && exists($minfo{'depends'})) {
 			my @mod_def_list;
 			my $curr_dir = $0;
 			($curr_dir) = $curr_dir =~ /^(.+)\/[^\/]+$/;
+			$curr_dir = "." if ($curr_dir !~ /^\//);
 			open(my $fh, '<', "$curr_dir/mod_def_list.txt") || die "Error opening \"mod_def_list.txt\" : $!\n";
 			$mod_def_list = do { local $/; <$fh> };
 			close($fh);
