@@ -1533,6 +1533,11 @@ $portstr = $redirport == 80 && !$ssl ? "" :
 $redirhost = $config{'redirect_host'} || $host;
 $hostport = &check_ip6address($redirhost) ? "[".$redirhost."]".$portstr
 				          : $redirhost.$portstr;
+
+# If the redirect_prefix exists change redirect base to include the prefix #1271
+if ($config{'redirect_prefix'}) {
+	$hostport .= $config{'redirect_prefix'}
+	}
 $prot = $ssl ? "https" : "http";
 
 undef(%in);
