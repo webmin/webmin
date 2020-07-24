@@ -308,7 +308,9 @@ if ($file !~ /^\// && $file !~ /\|\s*$/) {
 		$file = "$uinfo[7]/$file";
 		}
 	}
-open(FILE, "<".$file);
+my $h;
+$h = "<" if ($file =~ /^\// && $file !~ /\|\s*$/);
+open(FILE, "$h".$file);
 while(<FILE>) {
 	s/\r|\n//g;
 	next if (/^#/);

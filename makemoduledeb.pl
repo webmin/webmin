@@ -231,9 +231,18 @@ if ($debdepends && exists($minfo{'depends'})) {
 
 		# If the module is part of Webmin, we don't need to depend on it
 		if ($dmod) {
-			my %dinfo;
-			read_file("$dmod/module.info", \%dinfo);
-			next if ($dinfo{'longdesc'});
+			my $mod_def_list;
+			my @mod_def_list;
+			my $curr_dir = $0;
+			($curr_dir) = $curr_dir =~ /^(.+)\/[^\/]+$/;
+			$curr_dir = "." if ($curr_dir !~ /^\//);
+			open(my $fh, '<', "$curr_dir/mod_def_list.txt") || die "Error opening \"mod_def_list.txt\" : $!\n";
+			$mod_def_list = do { local $/; <$fh> };
+			close($fh);
+			@mod_def_list = split(/\s+/, $mod_def_list);
+			if ( grep( /^$dmod$/, @mod_def_list ) ) {
+			  next;
+				}
 			}
 		push(@rdeps, $dwebmin ? ("$product (>= $dwebmin)") :
 			     $dver ? ("$prefix$dmod (>= $dver)") :
