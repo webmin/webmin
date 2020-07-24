@@ -325,9 +325,20 @@ else {
 		}
 	else {
 		$b->{'fullname'} = $b->{'name'}.
-				( $b->{'virtual'} eq '' ? '' : ':'.$b->{'virtual'});
+			( $b->{'virtual'} eq '' ? '' : ':'.$b->{'virtual'});
 		}
 	&save_interface($b, \@boot);
+
+	# If switching from DHCP to static and there is no default gateway
+	# set, copy the active one
+	if ($oldb{'dhcp'} && !$b{'dhcp'} && $b{'virtual'} eq '' &&
+	    defined(&get_default_gateway) && defined(&list_routes)) {
+		my $oldgw = &get_default_gateway();
+		my ($dr) = grep { $_->{'dest'} eq '0.0.0.0' } &list_routes();
+		if (!$oldgw && $dr) {
+			&set_default_gateway($dr->{'gateway'}, $b{'name'});
+			}
+		}
 
 	if ($in{'activate'}) {
 		# Make this interface active (if possible)
