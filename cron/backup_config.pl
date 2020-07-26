@@ -1,5 +1,5 @@
 
-do 'cron-lib.pl';
+require 'cron-lib.pl';
 
 # backup_config_files()
 # Returns files and directories that can be backed up

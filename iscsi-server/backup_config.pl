@@ -1,5 +1,5 @@
 
-do 'iscsi-server-lib.pl';
+require 'iscsi-server-lib.pl';
 
 # backup_config_files()
 # Returns files and directories that can be backed up
