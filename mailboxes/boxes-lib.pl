@@ -2835,12 +2835,12 @@ sub send_text_mail
 {
 local ($from, $to, $cc, $subject, $body, $smtp) = @_;
 local $cs = &get_charset();
-local $attach = $body =~ /[\177-\377]/ ?
+local $attach = $body =~ /^[\000-\177]*$/ ?
+	{ 'headers' => [ [ 'Content-type', 'text/plain' ] ],
+	  'data' => &entities_to_ascii($body) } :
 	{ 'headers' => [ [ 'Content-Type', 'text/plain; charset='.$cs ],
 		         [ 'Content-Transfer-Encoding', 'quoted-printable' ] ],
-          'data' => &quoted_encode($body) } :
-	{ 'headers' => [ [ 'Content-type', 'text/plain' ] ],
-	  'data' => &entities_to_ascii($body) };
+          'data' => &quoted_encode($body) };
 local $mail = { 'headers' =>
 		[ [ 'From', $from ],
 		  [ 'To', $to ],
