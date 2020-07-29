@@ -62,9 +62,11 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 					push(@addrs, $v);
 					}
 				}
-			my $a = shift(@addrs);
-			($cfg->{'address'}, $cfg->{'netmask'}) =
-				&split_addr_netmask($a);
+			if (!$cfg->{'dhcp'}) {
+				my $a = shift(@addrs);
+				($cfg->{'address'}, $cfg->{'netmask'}) =
+					&split_addr_netmask($a);
+				}
 			}
 		foreach my $a6 (@addrs6) {
 			if ($a6 =~ /^(\S+)\/(\d+)$/) {
