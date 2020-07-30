@@ -1,7 +1,7 @@
 <!doctype html public "-//w3c//dtd html 4.0 transitional//en">
 <html>
 <head>
-   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
    <meta name="GENERATOR" content="Mozilla/4.72 [en] (X11; U; Linux 2.2.14-6.1.1 i686) [Netscape]">
 </head>
 <body>
@@ -12,22 +12,22 @@ Subsistema ACL do DHCPD</h1></center>
 
 <h3>
 OBJETIVOS:</h3>
-&nbsp;&nbsp;&nbsp; A finalidade principal do subsistema ACL é prover um
-poderoso, flexível e expansível mecanismo para controle de acesso aos
-diferentes objetos na configuração do DHCP. Estes objetos são redes,
+&nbsp;&nbsp;&nbsp; A finalidade principal do subsistema ACL Ã© prover um
+poderoso, flexÃ­vel e expansÃ­vel mecanismo para controle de acesso aos
+diferentes objetos na configuraÃ§Ã£o do DHCP. Estes objetos sÃ£o redes,
 subredes, grupos de computadores e computadores.
 
-<br>&nbsp;&nbsp;&nbsp; Além disso, o subsistema acl permite a você
-controlar algumas outras características, tais como: nomes únicos de
-objetos, aplicar mudanças na configuração, visualizar e apagar leases do
+<br>&nbsp;&nbsp;&nbsp; AlÃ©m disso, o subsistema acl permite a vocÃª
+controlar algumas outras caracterÃ­sticas, tais como: nomes Ãºnicos de
+objetos, aplicar mudanÃ§as na configuraÃ§Ã£o, visualizar e apagar leases do
 dhcp.
 <h3>
 CONCEITOS:</h3>
-&nbsp;&nbsp;&nbsp; O arquivo de configuração do dhcpd nós podemos mostrar
-como uma estrutura em árvore. Cada nó da árvore representa a configuração
+&nbsp;&nbsp;&nbsp; O arquivo de configuraÃ§Ã£o do dhcpd nÃ³s podemos mostrar
+como uma estrutura em Ã¡rvore. Cada nÃ³ da Ã¡rvore representa a configuraÃ§Ã£o
 de um diferente tipo de objeto do dhcp (fig. 0).
 
-<p>&nbsp;&nbsp;&nbsp; Subsistema ACL tem 2 níveis de permissões:
+<p>&nbsp;&nbsp;&nbsp; Subsistema ACL tem 2 nÃ­veis de permissÃµes:
 <ul>
 <li>
 global: ler, escrever, criar;</li>
@@ -35,30 +35,30 @@ global: ler, escrever, criar;</li>
 <li>
 por-objeto: leitura, escrita.</li>
 </ul>
-&nbsp;&nbsp;&nbsp; Permissões globais existem para cada tipo de objeto
-(computador, grupos, subredes, redes) e operações de controle com um
+&nbsp;&nbsp;&nbsp; PermissÃµes globais existem para cada tipo de objeto
+(computador, grupos, subredes, redes) e operaÃ§Ãµes de controle com um
 conjunto de objetos de um determinado tipo.
 <br>Global criar
 <br>Global ler
 <br>Global escrever
-<br>&nbsp;&nbsp;&nbsp; Permissões Por-objeto permitem a você um controle
-de acesso mais flexível. Elas existem para cada objeto individual. Hoje
-apenas são implementados acls por-objetos para computadores e subredes. 
+<br>&nbsp;&nbsp;&nbsp; PermissÃµes Por-objeto permitem a vocÃª um controle
+de acesso mais flexÃ­vel. Elas existem para cada objeto individual. Hoje
+apenas sÃ£o implementados acls por-objetos para computadores e subredes. 
 <br>Por-objeto ler
 <br>Por-objeto escrever
-<br>&nbsp;&nbsp;&nbsp; Subsistema ACL pode operar em 4 diferentes níveis
-de segurança (ou modos).
-<br><img SRC="ctree0.gif" ALT="árvore de configuração do dhcpd, nível de
-segurança 0, verifique permissões da subrede X" height=229 width=314>
+<br>&nbsp;&nbsp;&nbsp; Subsistema ACL pode operar em 4 diferentes nÃ­veis
+de seguranÃ§a (ou modos).
+<br><img SRC="ctree0.gif" ALT="Ã¡rvore de configuraÃ§Ã£o do dhcpd, nÃ­vel de
+seguranÃ§a 0, verifique permissÃµes da subrede X" height=229 width=314>
 <br>&nbsp;
-<p><img SRC="ctree1.gif" ALT="árvore de configuração do dhcpd, nível de
-segurança 1, verifique permissões da subrede X" height=229 width=314>
-<p><img SRC="ctree2.gif" ALT="árvore de configuração do dhcpd, nível de
-segurança 2, verifique permissões da subrede X" height=229 width=314>
-<p><img SRC="ctree3.gif" ALT="árvore de configuração do dhcpd, nível de
-segurança 3, verifique permissões da subrede X" height=229 width=314>
+<p><img SRC="ctree1.gif" ALT="Ã¡rvore de configuraÃ§Ã£o do dhcpd, nÃ­vel de
+seguranÃ§a 1, verifique permissÃµes da subrede X" height=229 width=314>
+<p><img SRC="ctree2.gif" ALT="Ã¡rvore de configuraÃ§Ã£o do dhcpd, nÃ­vel de
+seguranÃ§a 2, verifique permissÃµes da subrede X" height=229 width=314>
+<p><img SRC="ctree3.gif" ALT="Ã¡rvore de configuraÃ§Ã£o do dhcpd, nÃ­vel de
+seguranÃ§a 3, verifique permissÃµes da subrede X" height=229 width=314>
 <h3>
-NOTAS DOS USUÁRIOS:</h3>
+NOTAS DOS USUÃRIOS:</h3>
 &nbsp;
 <h3>
 NOTAS DOS DESENVOLVEDORES:</h3>
