@@ -1621,8 +1621,8 @@ sub _decode_B {
 sub encode_mimewords
 {
 my ($rawstr, %params) = @_;
-my $charset  = $params{Charset} || 'ISO-8859-1';
-my $defenc = uc($charset) eq 'ISO-2022-JP' ? 'b' : 'q';
+my $charset  = 'UTF-8';
+my $defenc = 'q';
 my $encoding = lc($params{Encoding} || $defenc);
 my $NONPRINT = "\\x00-\\x1F\\x7F-\\xFF";
 
@@ -1678,8 +1678,8 @@ return $str;
 sub encode_mimewords_address
 {
 my ($rawstr, %params) = @_;
-my $charset  = $params{Charset} || 'ISO-8859-1';
-my $defenc = uc($charset) eq 'ISO-2022-JP' ? 'b' : 'q';
+my $charset  = 'UTF-8';
+my $defenc = 'q';
 my $encoding = lc($params{Encoding} || $defenc);
 if ($rawstr =~ /^[\x20-\x7E]*$/) {
 	# No encoding needed
@@ -1707,7 +1707,7 @@ sub encode_mimeword
 {
 my $word = shift;
 my $encoding = uc(shift || 'Q');
-my $charset  = uc(shift || 'ISO-8859-1');
+my $charset  = 'UTF-8';
 my $encfunc  = (($encoding eq 'Q') ? \&_encode_Q : \&_encode_B);
 return "=?$charset?$encoding?" . &$encfunc($word) . "?=";
 }
