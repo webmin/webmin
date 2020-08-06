@@ -309,6 +309,9 @@ foreach my $c (@$conf) {
 		$c->{'line'} += $offset if ($c->{'line'} >= $line);
 		$c->{'eline'} += $offset if ($c->{'eline'} >= $line);
 		}
+	if ($c->{'section'}) {
+		&renumber($c->{'members'}, $line, $file, $offset);
+		}
 	}
 }
 
