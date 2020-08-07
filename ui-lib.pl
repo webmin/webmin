@@ -1326,7 +1326,7 @@ return &ui_textbox($name, $value, 60, $dis, undef, $tags)." ".
        &group_chooser_button($name, 1, $form);
 }
 
-=head2 ui_opt_textbox(name, value, size, option1, [option2], [disabled?], [&extra-fields], [max])
+=head2 ui_opt_textbox(name, value, size, option1, [option2], [disabled?], [&extra-fields], [max], [tags], [option_select?])
 
 Returns HTML for a text field that is optional, implemented by default as
 a field with radio buttons next to it. The parameters are :
@@ -1349,16 +1349,18 @@ a field with radio buttons next to it. The parameters are :
 
 =item tags - Additional HTML attributes for the text box
 
+=item option_select - If defined, the option that is preselected regardless of the value. Use 1 for option1 and 0 for option2.
+
 =cut
 sub ui_opt_textbox
 {
 return &theme_ui_opt_textbox(@_) if (defined(&theme_ui_opt_textbox));
-my ($name, $value, $size, $opt1, $opt2, $dis, $extra, $max, $tags) = @_;
+my ($name, $value, $size, $opt1, $opt2, $dis, $extra, $max, $tags, $option_select) = @_;
 my $dis1 = &js_disable_inputs([ $name, @$extra ], [ ]);
 my $dis2 = &js_disable_inputs([ ], [ $name, @$extra ]);
 my $rv;
 $size = &ui_max_text_width($size);
-$rv .= &ui_radio($name."_def", $value eq '' ? 1 : 0,
+$rv .= &ui_radio($name."_def", !defined($option_select) && $value eq '' || $option_select ? 1 : 0,
 		 [ [ 1, $opt1, "onClick='$dis1'" ],
 		   [ 0, $opt2 || " ", "onClick='$dis2'" ] ], $dis)."\n";
 $rv .= "<input class='ui_opt_textbox' type='text' ".

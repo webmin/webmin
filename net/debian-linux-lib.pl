@@ -98,11 +98,6 @@ foreach $iface (@ifaces) {
 		$cfg->{'edit'} = ($cfg->{'name'} !~ /^ppp|lo/);
 		$cfg->{'index'} = scalar(@rv);	
 		$cfg->{'file'} = $network_interfaces_config;
-		if (!$cfg->{'broadcast'} &&
-		    $cfg->{'address'} && $cfg->{'netmask'}) {
-			$cfg->{'broadcast'} = &compute_broadcast(
-				$cfg->{'address'}, $cfg->{'netmask'});
-			}
 		push(@rv, $cfg);
 		}
 	elsif ($addrfam eq "inet6") {

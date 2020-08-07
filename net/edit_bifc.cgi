@@ -51,11 +51,6 @@ else {
 	$b = $boot[$in{'idx'}];
 	&can_iface($b) || &error($text{'ifcs_ecannot_this'});
 	&ui_print_header(undef, $text{'bifc_edit'}, "");
-	if (!$b->{'dhcp'} && !$b->{'bootp'} && !$b->{'broadcast'}) {
-		# Fill in broadcast if missing
-		$b->{'broadcast'} = &compute_broadcast(
-			$b->{'address'}, $b->{'netmask'});
-		}
 	}
 
 # Start of the form
@@ -154,11 +149,20 @@ elsif ($b && $b->{'netmask'}) {
 	push(@grid, $text{'ifcs_mask'}, "<tt>$b->{'netmask'}</tt>");
 	}
 if (&can_edit("broadcast", $b) && $access{'broadcast'}) {
+	$radio_def = undef;
+	# Fill automatically broadcast if missing
+	if ($b && !$b->{'dhcp'} && !$b->{'bootp'} && !$b->{'broadcast'} &&
+		$b->{'address'} && $b->{'netmask'}) {
+		$radio_def = 1;
+		$b->{'broadcast'} = &compute_broadcast(
+			$b->{'address'}, $b->{'netmask'});
+		}
+
 	# Can edit broadcast address
 	push(@grid, $text{'ifcs_broad'},
-	    &ui_opt_textbox("broadcast",
+		&ui_opt_textbox("broadcast",
 		$b ? $b->{'broadcast'} : $config{'def_broadcast'},
-		15, $text{'ifcs_auto'}));
+		15, $text{'ifcs_auto'}, undef, undef, undef, undef, undef, $radio_def));
 	}
 elsif ($b && $b->{'broadcast'}) {
 	# Broadcast is fixed

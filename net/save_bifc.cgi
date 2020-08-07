@@ -178,11 +178,8 @@ else {
 		delete($b->{'broadcast'});
 		}
 	elsif (!$access{'broadcast'} || $in{'broadcast_def'}) {
-		# Work out broadcast
-		if ($in{'new'}) {
-			$b->{'broadcast'} = &compute_broadcast(
-				$b->{'address'}, $b->{'netmask'});
-			}
+		# remove broadcast if automatically
+		undef $b->{'broadcast'};
 		}
 	elsif (&can_edit("broadcast", $b)) {
 		# Manually entered broadcast
