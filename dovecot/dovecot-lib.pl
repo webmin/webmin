@@ -45,21 +45,23 @@ local @rv;
 local $section;
 foreach (@lines) {
 	s/\r|\n//g;
-	if (/^\s*(#?)\s*([a-z0-9\_]+)\s*(\S*)\s*\{\s*$/) {
+	if (/^(\s*(#?)\s*)([a-z0-9\_]+)\s*(\S*)\s*\{\s*$/) {
 		# Start of a section .. add this as a value too
 		local $oldsection = $section;
 		if ($section) {
 			push(@sections, $section);	# save old
 			}
-		$section = { 'name' => $2,
-			     'value' => $3,
-			     'enabled' => !$1,
+		$section = { 'name' => $3,
+			     'value' => $4,
+			     'enabled' => !$2,
+			     'space' => $1,
 			     'section' => 1,
 			     'members' => [ ],
 			     'indent' => scalar(@sections),
 			     'line' => $lnum,
 			     'eline' => $lnum,
 			     'file' => $file, };
+		$section->{'space'} =~ s/#//;
 		if ($oldsection) {
 			$section->{'sectionname'} =
 				$oldsection->{'name'};
@@ -79,11 +81,12 @@ foreach (@lines) {
 			$section = undef;
 			}
 		}
-	elsif (/^\s*(#?)([a-z0-9\_]+)\s+=\s*(.*)/) {
+	elsif (/^(\s*)(#?)([a-z0-9\_]+)\s+=\s*(.*)/) {
 		# A directive inside a section
-		local $dir = { 'name' => $2,
-			       'value' => $3,
-			       'enabled' => !$1,
+		local $dir = { 'name' => $3,
+			       'value' => $4,
+			       'enabled' => !$2,
+			       'space' => $1,
 			       'line' => $lnum,
 			       'file' => $file, };
 		if ($section) {
@@ -215,7 +218,10 @@ else {
 		}
 	}
 local $newline = ref($name) ? "$name->{'name'} = $value" : "$name = $value";
-if ($sname) {
+if ($dir) {
+	$newline = $dir->{'space'}.$newline;
+	}
+elsif ($sname) {
 	$newline = "  ".$newline;
 	}
 if ($dir && defined($value)) {
