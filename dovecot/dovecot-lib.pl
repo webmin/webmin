@@ -201,8 +201,6 @@ return wantarray ? @rv : $rv[0];
 sub save_directive
 {
 local ($conf, $name, $value, $sname, $svalue) = @_;
-use Data::Dumper;
-print Dumper($conf);
 local $dir;
 if (ref($name)) {
 	# Old directive given
