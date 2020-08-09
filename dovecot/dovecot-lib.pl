@@ -201,6 +201,8 @@ return wantarray ? @rv : $rv[0];
 sub save_directive
 {
 local ($conf, $name, $value, $sname, $svalue) = @_;
+use Data::Dumper;
+print Dumper($conf);
 local $dir;
 if (ref($name)) {
 	# Old directive given
@@ -228,7 +230,7 @@ elsif ($dir && !defined($value)) {
 	# Deleting some directive
 	local $lref = &read_file_lines($dir->{'file'});
 	splice(@$lref, $dir->{'line'}, 1);
-	&renumber($conf, $dir->{'line'}, $dir->{'file'}, -1);
+	&renumber(\@get_config_cache, $dir->{'line'}, $dir->{'file'}, -1);
 	@$conf = grep { $_ ne $dir } @$conf;
 	}
 elsif (!$dir && defined($value)) {
