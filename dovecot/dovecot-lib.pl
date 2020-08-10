@@ -234,7 +234,7 @@ elsif ($dir && !defined($value)) {
 	# Deleting some directive
 	local $lref = &read_file_lines($dir->{'file'});
 	splice(@$lref, $dir->{'line'}, 1);
-	&renumber(\@get_config_cache, $dir->{'line'}, $dir->{'file'}, -1);
+	&renumber($conf, $dir->{'line'}, $dir->{'file'}, -1);
 	@$conf = grep { $_ ne $dir } @$conf;
 	}
 elsif (!$dir && defined($value)) {
@@ -319,6 +319,21 @@ foreach my $c (@$conf) {
 		&renumber($c->{'members'}, $line, $file, $offset);
 		}
 	}
+}
+
+# renumber_section_and_members(&conffull, file, line, offset, member_sname, member_svalue)
+sub renumber_section_and_members
+{
+my ($conffull, $file, $line, $offset, $member_sname, $member_svalue) = @_;
+my @section = &find_section($sname, $conffull);
+if ($member_sname || $member_svalue) {
+    @section = grep {
+        ($_->{'members'}->[0]->{'sectionname'} eq $member_sname     || !defined($member_sname))  &&
+          ($_->{'members'}->[0]->{'sectionvalue'} eq $member_svalue || !defined($member_svalue)) &&
+          $_->{'members'}->[0]->{'file'} eq $file
+        } @section;
+    }
+&renumber(\@section, $line, $file, $offset);
 }
 
 # is_dovecot_running()
