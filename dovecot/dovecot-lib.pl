@@ -22,7 +22,7 @@ return undef;
 # Returns a list of dovecot config entries
 sub get_config
 {
-if (!scalar(@get_config_cache)) {
+if (!@get_config_cache) {
 	@get_config_cache = &read_config_file(&get_config_file());
 	}
 return \@get_config_cache;
@@ -73,7 +73,6 @@ foreach (@lines) {
 	elsif (/^\s*(#?)\s*}\s*$/ && $section) {
 		# End of a section
 		$section->{'eline'} = $lnum;
-		$section->{'eline'} = $lnum;
 		if (@sections) {
 			$section = pop(@sections);
 			}
@@ -88,6 +87,7 @@ foreach (@lines) {
 			       'enabled' => !$2,
 			       'space' => $1,
 			       'line' => $lnum,
+			       'eline' => $lnum,
 			       'file' => $file, };
 		if ($section) {
 			$dir->{'sectionname'} = $section->{'name'};
@@ -235,7 +235,10 @@ elsif ($dir && !defined($value)) {
 	local $lref = &read_file_lines($dir->{'file'});
 	splice(@$lref, $dir->{'line'}, 1);
 	&renumber(\@get_config_cache, $dir->{'line'}, $dir->{'file'}, -1);
-	@$conf = grep { $_ ne $dir } @$conf;
+	my $idx = &indexof($dir, @$conf);
+	if ($idx >= 0) {
+		splice(@$conf, $idx, 1);
+		}
 	}
 elsif (!$dir && defined($value)) {
 	# Adding some directive .. put it after the commented version, if any
@@ -309,14 +312,11 @@ foreach my $m (@{$section->{'members'}}) {
 # renumber(&conf, line, file, offset)
 sub renumber
 {
-local ($conf, $line, $file, $offset) = @_;
+my ($conf, $line, $file, $offset) = @_;
 foreach my $c (@$conf) {
 	if ($c->{'file'} eq $file) {
 		$c->{'line'} += $offset if ($c->{'line'} >= $line);
 		$c->{'eline'} += $offset if ($c->{'eline'} >= $line);
-		}
-	if ($c->{'section'}) {
-		&renumber($c->{'members'}, $line, $file, $offset);
 		}
 	}
 }
