@@ -512,9 +512,10 @@ if (&has_command("sensors")) {
                     $a = 0 if (/^\s*$/);
                     # Device has either fan or voltage data (sign of CPU)
                     $a = 1 if (/fan[\d+]:\s+[0-9]+\s+RPM/i ||
-                                /in[\d+]:\s+[\+\-0-9\.]+\s+V/i);
-                    # Get odd output like in #1253
-                    if ($a && /temp(\d+):\s+([\+\-][0-9\.]+)\s+.*?[=+].*?\)/) {
+                                /in[\d+]:\s+[\+\-0-9\.]+\s+V/i ||
+                                /cpu_thermal-virtual-[\d]+/i);
+                    # Get odd output like in #1253 #1280
+                    if ($a && /temp(\d+):\s+([\+\-][0-9\.]+)/) {
                             # Adjust to start from `0` as all other outputs
                             push(@rv, { 'core' => (int($1) - 1),
                                         'temp' => $2 });
