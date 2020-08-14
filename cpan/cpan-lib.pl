@@ -44,7 +44,7 @@ foreach $d (&expand_usr64($Config{'privlib'}),
 	    &expand_usr64($Config{'vendorlib_stem'} ? $Config{'vendorlib_stem'} :
 				        	      $Config{'vendorlib'}),
 	    &expand_usr64($Config{'installprivlib'})) {
-	next if (!$d);
+	next if (!$d || !-d $d);
 	next if ($donedir{$d});
 	local $f;
 	open(FIND, "find ".quotemeta($d)." -name .packlist -print |");
