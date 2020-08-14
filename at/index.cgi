@@ -21,6 +21,11 @@ if (!&has_command("at")) {
 			        "../config.cgi?$module_name"));
 	}
 
+# Check if OS is supported
+if (!defined(&list_atjobs)) {
+	&ui_print_endpage(&text('index_nostyle', "../config.cgi?$module_name"));
+	}
+
 # Show list of existing jobs
 my @jobs = &list_atjobs();
 @jobs = grep { &can_edit_user(\%access, $_->{'user'}) } @jobs;

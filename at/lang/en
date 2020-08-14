@@ -19,6 +19,7 @@ index_amode1=Only listed users ..
 index_amode2=All except listed users ..
 index_delete=Cancel Selected Commands
 index_noat=The $1 command was not found on your system - maybe it is not installed, or not available for your operating system.
+index_nostyle=Webmin does not know how to manage schedule commands on this operating system.
 
 edit_title=Scheduled Command
 edit_cmd=Full script to execute
