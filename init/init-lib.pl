@@ -2324,9 +2324,13 @@ Returns the base directory for systemd unit config files
 sub get_systemd_root
 {
 my ($name) = @_;
-if ($name && (-r "/etc/systemd/system/$name.service" ||
-	      -r "/etc/systemd/system/$name")) {
-	return "/etc/systemd/system";
+if ($name) {
+	foreach my $p ("/etc/systemd/system", "/usr/lib/systemd/system",
+		       "/lib/systemd/system") {
+		if (-r "$p/$name.service" || -r "$p/$name") {
+			return $p;
+			}
+		}
 	}
 if (-d "/usr/lib/systemd/system") {
 	return "/usr/lib/systemd/system";
