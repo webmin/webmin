@@ -4,6 +4,7 @@ ldap_port=LDAP server port,3,From NSS config file or default
 ldap_tls=LDAP server uses encryption?,1,1-Yes SSL,2-Yes TLS,0-No
 login=Bind to LDAP server as,3,Bind name from NSS config file
 pass=Credentials for bind name above,12
+ldap_pass_file=Path to LDAP bind credentials file,3
 user_base=Base for users,3,From NSS config file
 group_base=Base for groups,3,From NSS config file
 other_class=Other objectClasses to add to new users,0

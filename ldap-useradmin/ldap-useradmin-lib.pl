@@ -65,9 +65,24 @@ if (!$cfile || !-r $cfile) {
 		}
 	}
 
+# If a bind credentials file is defined, read the password from the file
+# Otherwise, read the password from the "pass" config option
+my $ldapPassword;
+if ( $config{'ldap_pass_file'} ){
+	if (open my $fh, "<", $config{'ldap_pass_file'} ){
+		local $/;
+		$ldapPassword =  <$fh>;
+		close($fh);
+	} else {
+		&error($text{'conn_efile_open'} . " " . $config{'ldap_pass_file'});
+	}
+} else {
+	$ldapPassword = $config{'pass'};
+}
+
 local $ldap = &ldap_client::generic_ldap_connect(
 		$config{'ldap_host'}, $config{'ldap_port'},
-		$config{'ldap_tls'}, $config{'login'}, $config{'pass'});
+		$config{'ldap_tls'}, $config{'login'}, $ldapPassword);
 if (ref($ldap)) { return $ldap; }
 elsif ($_[0]) { return $ldap; }
 else { &error($ldap); }
