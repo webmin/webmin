@@ -284,8 +284,10 @@ if ($use_ssl) {
 	foreach $ipkey (@ipkeys) {
 		$ctx = &create_ssl_context($ipkey->{'key'}, $ipkey->{'cert'},
 				   $ipkey->{'extracas'} || $config{'extracas'});
-		foreach $ip (@{$ipkey->{'ips'}}) {
-			$ssl_contexts{$ip} = $ctx;
+		if ($ctx) {
+			foreach $ip (@{$ipkey->{'ips'}}) {
+				$ssl_contexts{$ip} = $ctx;
+				}
 			}
 		}
 
@@ -4426,6 +4428,23 @@ local $ssl_ctx;
 eval { $ssl_ctx = Net::SSLeay::new_x_ctx() };
 $ssl_ctx ||= Net::SSLeay::CTX_new();
 $ssl_ctx || die "Failed to create SSL context : $!";
+my @extracas = $extracas && $extracas ne "none" ? split(/\s+/, $extracas) : ();
+
+# Validate cert files
+if (!-r $keyfile) {
+	print STDERR "SSL key file $keyfile does not exist\n";
+	return undef;
+	}
+if ($certfile && !-r $certfile) {
+	print STDERR "SSL cert file $certfile does not exist\n";
+	return undef;
+	}
+foreach my $p (@extracas) {
+	if (!-r $p) {
+		print STDERR "SSL CA file $p does not exist\n";
+		return undef;
+		}
+	}
 
 # Setup PFS, if ciphers are in use
 if (-r $config{'dhparams_file'}) {
@@ -4456,11 +4475,8 @@ if ($client_certs) {
 			$ssl_ctx, &Net::SSLeay::VERIFY_PEER, \&verify_client);
 		}
 	}
-if ($extracas && $extracas ne "none") {
-	foreach my $p (split(/\s+/, $extracas)) {
-		Net::SSLeay::CTX_load_verify_locations(
-			$ssl_ctx, $p, "");
-		}
+foreach my $p (@extracas) {
+	Net::SSLeay::CTX_load_verify_locations($ssl_ctx, $p, "");
 	}
 
 Net::SSLeay::CTX_use_PrivateKey_file(
