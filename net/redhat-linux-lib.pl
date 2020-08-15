@@ -923,14 +923,15 @@ return $conf{'GATEWAY'} ? ( $conf{'GATEWAY'}, $conf{'GATEWAYDEV'} ) : ( );
 # in the boot time settings.
 sub set_default_gateway
 {
+my ($gw, $gwdev) = @_;
+my %conf;
 &lock_file($network_config);
 &read_env_file($network_config, \%conf);
 if (!$supports_dev_gateway) {
 	# Just update the network config file
-	local %conf;
-	if ($_[0]) {
-		$conf{'GATEWAY'} = $_[0];
-		$conf{'GATEWAYDEV'} = $_[1];
+	if ($gw) {
+		$conf{'GATEWAY'} = $gw;
+		$conf{'GATEWAYDEV'} = $gwdev;
 		}
 	else {
 		delete($conf{'GATEWAY'});
@@ -942,8 +943,8 @@ else {
 	local @boot = grep { $->{'virtual'} eq '' } &boot_interfaces();
 	foreach $b (@boot) {
 		delete($b->{'gateway'});
-		if ($_[0] && $b->{'fullname'} eq $_[1]) {
-			$b->{'gateway'} = $_[0];
+		if ($gw && $b->{'fullname'} eq $gwdev) {
+			$b->{'gateway'} = $gw;
 			&save_interface($b);
 			}
 		}
