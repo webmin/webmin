@@ -13,6 +13,6 @@ $conf = &get_config();
 &error_setup(&text('efailed', $text{"type_$in{'type'}"}));
 &parse_inputs(\@edit, $conf, $conf);
 &webmin_log("global", $in{'type'}, undef, \%in);
-
+&restart_apache();
 &redirect("index.cgi?mode=global");
 
