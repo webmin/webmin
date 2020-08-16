@@ -233,7 +233,7 @@ sub create_user
 local $ldap = &ldap_connect();
 local $base = &get_user_base();
 $_[0]->{'dn'} = "uid=$_[0]->{'user'},$base";
-local @classes = ( "posixAccount", "shadowAccount",
+local @classes = ( &def_user_obj_class(), "shadowAccount",
 		   split(/\s+/, $config{'other_class'}),
 		   @{$_[0]->{'ldap_class'}} );
 local $schema = $ldap->schema();
@@ -356,7 +356,7 @@ sub create_group
 local $ldap = &ldap_connect();
 local $base = &get_group_base();
 $_[0]->{'dn'} = "cn=$_[0]->{'group'},$base";
-local @classes = ( "posixGroup" );
+local @classes = ( &def_group_obj_class() );
 push(@classes, split(/\s+/, $config{'gother_class'}));
 @classes = &uniquelc(@classes);
 local @attrs = &group_to_dn($_[0]);
@@ -1244,7 +1244,7 @@ return undef;
 # Returns an LDAP filter expression to find users
 sub user_filter
 {
-my $rv = "(objectClass=posixAccount)";
+my $rv = "(objectClass=".&def_user_obj_class().")";
 if ($config{'user_filter'}) {
 	$rv = "(&".$rv."(".$config{'user_filter'}."))";
 	}
@@ -1255,11 +1255,35 @@ return $rv;
 # Returns an LDAP filter expression to find groups
 sub group_filter
 {
-my $rv = "(objectClass=posixGroup)";
+my $rv = "(objectClass=".&def_group_obj_class().")";
 if ($config{'group_filter'}) {
 	$rv = "(&".$rv."(".$config{'group_filter'}."))";
 	}
 return $rv;
+}
+
+# def_user_obj_class()
+# Returns the objectClass to use for LDAP users
+# Default is "posixAccount" if not overridden
+sub def_user_obj_class
+{
+my $userObjClass = "posixAccount";
+if ($config{'custom_user_obj_class'}){
+	$userObjClass = $config{'custom_user_obj_class'};
+}
+return $userObjClass;
+}
+
+# def_group_obj_class()
+# Returns the objectClass to use for LDAP groups
+# Default is "posixGroup" if not overridden
+sub def_group_obj_class
+{
+my $groupObjClass = "posixGroup";
+if ($config{'custom_group_obj_class'}){
+	$groupObjClass = $config{'custom_group_obj_class'};
+}
+return $groupObjClass;
 }
 
 1;
