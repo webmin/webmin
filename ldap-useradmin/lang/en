@@ -24,6 +24,7 @@ imap_econn=Failed to connect to IMAP server $1
 imap_elogin=Failed to login to IMAP server $1 as $2 : $3
 conn_eldap_host=No LDAP client configuration file was found on your system, so the LDAP server must be set on the Module Config page
 conn_elogin=No LDAP client configuration file was found on your system, so the LDAP login must be set on the Module Config page
+conn_efile_open=Could not open the LDAP bind credentials file: 
 
 uedit_cap=User capabilities
 uedit_samba=Samba login?
