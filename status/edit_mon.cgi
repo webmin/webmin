@@ -36,6 +36,16 @@ if ($in{'type'} && !$in{'clone'}) {
 	}
 &ui_print_header($han->[1], $title, "");
 
+if ($serv->{'virtualmin'} && &foreign_check("virtual-server")) {
+	# Owned by a Virtualmin domain - don't recommend editing
+	&foreign_require("virtual-server");
+	$d = &virtual_server::get_domain($serv->{'virtualmin'});
+	if ($d) {
+		print "<b>",&text('mon_virtualmin',
+			&virtual_server::show_domain_name($d)),"</b> <p>\n";
+		}
+	}
+
 print &ui_form_start("save_mon.cgi", "post");
 print &ui_hidden("type", $in{'type'}),"\n";
 print &ui_hidden("id", $in{'id'}),"\n";
