@@ -25,6 +25,8 @@ multi_fields=Allow multiple values for extra properties?,1,1-Yes,0-No
 noclash=Attributes for which duplicates are disallowed,0
 person=Give all Unix users the <tt>person</tt> object class?,1,1-Yes,0-No
 gecos=Set <tt>gecos</tt> attribute to match real name?,1,1-Yes,0-No
+custom_user_obj_class=Custom primary user objectClass (default posixAccount),3
+custom_group_obj_class=Custom primary group objectClass (default posixGroup),3
 user_filter=Additional LDAP filter for users,3,None,,,,Attribute=value
 group_filter=Additional LDAP filter for groups,3,None,,,,Attribute=value
 
