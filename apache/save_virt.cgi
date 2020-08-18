@@ -28,5 +28,5 @@ elsif ($in{'type'} == 1 && &is_virtualmin_domain($v)) {
 &error_setup(&text('efailed', $text{"type_$in{'type'}"}));
 &parse_inputs(\@edit, $conf, &get_config());
 &webmin_log("virt", $in{'type'}, &virtual_name($v, 1), \%in);
-&restart_apache();
+
 &redirect("virt_index.cgi?virt=$in{'virt'}");
