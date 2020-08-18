@@ -244,8 +244,9 @@ elsif (!$dir && defined($value)) {
 	# Adding some directive .. put it after the commented version, if any
 	local $cmt = &find($name, $conf, 1, $sname, $svalue);
 	if ($cmt) {
-		# After comment
+		# After commented version of same directive
 		local $lref = &read_file_lines($cmt->{'file'});
+		$newline = $cmd->{'space'}.$newline;
 		splice(@$lref, $cmt->{'line'}+1, 0, $newline);
 		&renumber($conf, $cmt->{'line'}+1, $cmt->{'file'}, 1);
 		push(@$conf, { 'name' => $name,
@@ -261,6 +262,7 @@ elsif (!$dir && defined($value)) {
 		@insect || &error("Failed to find section $sname $svalue !");
 		local $lref = &read_file_lines($insect[$#insect]->{'file'});
 		local $line = $insect[$#insect]->{'line'}+1;
+		$newline = $insect[$#insect]->{'space'}.$newline;
 		splice(@$lref, $line, 0, $newline);
 		&renumber($conf, $line, $insect[$#insect]->{'file'}, 1);
 		push(@$conf, { 'name' => $name,
