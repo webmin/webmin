@@ -79,4 +79,5 @@ Added Module Config options for additional LDAP filters to find users and groups
 The userPassword attribute is now removed for users or groups that don't have a password set.
 ---- Changes since 1.954 ----
 Added the option to point the ldap-useradmin to a system file for the LDAP bind credentials
+---- Changes since 1.955 ----
 Allow the default posixAccount/posixGroup object classes to be overridden
