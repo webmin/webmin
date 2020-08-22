@@ -246,7 +246,7 @@ elsif (!$dir && defined($value)) {
 	if ($cmt) {
 		# After commented version of same directive
 		local $lref = &read_file_lines($cmt->{'file'});
-		$newline = $cmd->{'space'}.$newline;
+		$newline = $cmt->{'space'}.$newline;
 		splice(@$lref, $cmt->{'line'}+1, 0, $newline);
 		&renumber($conf, $cmt->{'line'}+1, $cmt->{'file'}, 1);
 		push(@$conf, { 'name' => $name,
