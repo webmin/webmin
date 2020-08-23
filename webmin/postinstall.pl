@@ -48,6 +48,13 @@ if (!-r $first_install_file || $miniserv{'login_script'} eq $record_login_cmd) {
 &put_miniserv_config(\%miniserv);
 &unlock_file("$config_directory/miniserv.conf");
 
+# Create a link from /usr/sbin/webmin to bin/webmin under the root dir
+my $bindir = "/usr/sbin";
+my $lnk = $bindir."/webmin";
+if (-d $bindir && !-e $lnk) {
+	&symlink_file($lnk, $root_directory."/bin/webmin");
+	}
+
 # Record the version of Webmin at first install
 if (!-r $first_install_file) {
 	my %first;
