@@ -627,7 +627,21 @@ foreach my $origl (@$lref) {
 		}
 	$lnum++;
 	}
+&cleanup_yaml_parents($rv);
 return $rv;
+}
+
+# cleanup_yaml_parents(&config)
+# Remove all 'parent' fields once parsing is done, as they can't be serialized
+sub cleanup_yaml_parents
+{
+my ($conf) = @_;
+foreach my $c (@$conf) {
+	delete($c->{'parent'});
+	if ($c->{'members'}) {
+		&cleanup_yaml_parents($c->{'members'});
+		}
+	}
 }
 
 # yaml_lines(&directive, indent-string)
