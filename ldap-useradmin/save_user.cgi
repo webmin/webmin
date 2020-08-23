@@ -341,7 +341,7 @@ else {
 		$shadow = &shadow_fields();
 
 		# Add to the ldap database
-		@classes = ( "posixAccount", "shadowAccount" );
+		@classes = ( &def_user_obj_class(), "shadowAccount" );
 		if ($schema && $schema->objectclass("person") && $config{'person'}) {
 			push(@classes, "person");
 			}
