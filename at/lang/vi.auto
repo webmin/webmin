@@ -19,6 +19,7 @@ index_amode1=Chỉ người dùng được liệt kê ..
 index_amode2=Tất cả ngoại trừ người dùng được liệt kê ..
 index_delete=Hủy bỏ các lệnh đã chọn
 index_noat=Lệnh $1 không được tìm thấy trên hệ thống của bạn - có thể nó chưa được cài đặt hoặc không có sẵn cho hệ điều hành của bạn.
+index_nostyle=Webmin không biết cách quản lý các lệnh lịch trình trên hệ điều hành này.
 edit_title=Lệnh theo lịch trình
 edit_cmd=Kịch bản đầy đủ để thực thi
 edit_shortcmd=Lệnh thực thi

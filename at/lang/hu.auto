@@ -1,6 +1,7 @@
 index_mail=E-mailt küld a befejezéskor?
 index_delete=A kiválasztott parancsok törlése
 index_noat=A (z) $1 parancs nem található a rendszeren - talán nincs telepítve, vagy nem érhető el az operációs rendszer számára.
+index_nostyle=A Webmin nem ismeri az ütemezési parancsok kezelését ezen az operációs rendszeren.
 edit_shortcmd=Végrehajtási parancs
 edit_showfull=A teljes szkript megjelenítése.
 deletes_err=A parancsok megszakítása nem sikerült

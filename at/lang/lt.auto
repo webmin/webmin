@@ -19,6 +19,7 @@ index_amode1=Tik išvardyti vartotojai ..
 index_amode2=Visi, išskyrus išvardytus vartotojus ..
 index_delete=Atšaukti pasirinktas komandas
 index_noat=Komanda $1 nerasta jūsų sistemoje - galbūt ji neįdiegta arba jos negalima jūsų operacinei sistemai.
+index_nostyle=„Webmin“ nežino, kaip valdyti tvarkaraščio komandas šioje operacinėje sistemoje.
 edit_title=Suplanuota komanda
 edit_cmd=Visas scenarijus vykdyti
 edit_shortcmd=Įsakymas vykdyti

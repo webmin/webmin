@@ -1,6 +1,7 @@
 index_mail=Poslať e-mail po dokončení?
 index_delete=Zrušiť vybrané príkazy
 index_noat=Príkaz $1 nebol vo vašom systéme nájdený - možno nie je nainštalovaný alebo nie je k dispozícii pre váš operačný systém.
+index_nostyle=Webmin nevie, ako spravovať príkazy plánovania v tomto operačnom systéme.
 edit_shortcmd=Príkaz na vykonanie
 edit_showfull=Zobraziť celý skript.
 deletes_err=Nepodarilo sa zrušiť príkazy

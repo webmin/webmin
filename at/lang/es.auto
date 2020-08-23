@@ -1,6 +1,7 @@
 index_mail=¿Enviar correo electrónico al finalizar?
 index_delete=Cancelar comandos seleccionados
 index_noat=El comando $1 no se encontró en su sistema; tal vez no esté instalado o no esté disponible para su sistema operativo.
+index_nostyle=Webmin no sabe cómo administrar los comandos de programación en este sistema operativo.
 edit_shortcmd=Comando para ejecutar
 edit_showfull=Mostrar guión completo.
 deletes_err=Error al cancelar comandos

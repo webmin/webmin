@@ -19,6 +19,7 @@ index_amode1=Samo našteti uporabniki ..
 index_amode2=Vsi razen naštetih uporabnikov ..
 index_delete=Prekliči izbrane ukaze
 index_noat=Ukaza $1 v vašem sistemu ni bilo mogoče - morda ni nameščen ali pa ni na voljo za vaš operacijski sistem.
+index_nostyle=Webmin ne ve, kako upravljati ukaze razporeda v tem operacijskem sistemu.
 edit_title=Načrtovani ukaz
 edit_cmd=Celoten scenarij za izvedbo
 edit_shortcmd=Ukaz za izvedbo

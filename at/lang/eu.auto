@@ -19,6 +19,7 @@ index_amode1=Zerrendatutako erabiltzaileak bakarrik ..
 index_amode2=Zerrendatutako erabiltzaileak izan ezik ..
 index_delete=Utzi hautatutako aginduak
 index_noat=$1 komandoa ez da zure sisteman aurkitu - agian ez dago instalatuta edo ez dago zure sistema eragilea eskuragarri.
+index_nostyle=Webmin-ek ez daki sistema eragile honetako ordutegi komandoak nola kudeatu.
 edit_title=Programatutako Agindua
 edit_cmd=Gidoi osoa exekutatu
 edit_shortcmd=Exekutatzeko agindua

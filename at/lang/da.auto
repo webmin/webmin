@@ -19,6 +19,7 @@ index_amode1=Kun listede brugere ..
 index_amode2=Alle undtagen listede brugere ..
 index_delete=Annuller valgte kommandoer
 index_noat=Kommandoen $1 blev ikke fundet på dit system - måske er den ikke installeret eller ikke tilgængelig for dit operativsystem.
+index_nostyle=Webmin ved ikke, hvordan man administrerer planlægningskommandoer på dette operativsystem.
 edit_title=Planlagt kommando
 edit_cmd=Komplet script til at udføre
 edit_shortcmd=Kommando til at udføre

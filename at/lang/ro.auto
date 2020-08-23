@@ -19,6 +19,7 @@ index_amode1=Numai utilizatorii enumerați ..
 index_amode2=Toți, cu excepția utilizatorilor enumerați ..
 index_delete=Anulați comenzile selectate
 index_noat=Comanda $1 nu a fost găsită pe sistemul dvs. - poate că nu este instalată sau nu este disponibilă pentru sistemul dvs. de operare.
+index_nostyle=Webmin nu știe cum să gestioneze comenzile de programare pe acest sistem de operare.
 edit_title=Comandare programată
 edit_cmd=Script complet pentru a executa
 edit_shortcmd=Comanda de executare

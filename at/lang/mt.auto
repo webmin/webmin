@@ -19,6 +19,7 @@ index_amode1=Utenti elenkati biss ..
 index_amode2=Kollha minbarra l-utenti elenkati ..
 index_delete=Ikkanċella l-Kmandi magħżula
 index_noat=Il-kmand $1 ma nstabx fis-sistema tiegħek - forsi mhux installat, jew mhux disponibbli għas-sistema operattiva tiegħek.
+index_nostyle=Webmin ma jafx kif jimmaniġġja l-iskedi ta 'kmandi fuq din is-sistema operattiva.
 edit_title=Skedat Kmand
 edit_cmd=Skrittura sħiħa biex tesegwixxi
 edit_shortcmd=Kmand biex tesegwixxi

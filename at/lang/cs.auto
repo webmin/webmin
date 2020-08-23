@@ -1,5 +1,6 @@
 index_mail=Odeslat e-mail po dokončení?
 index_noat=Příkaz $1 nebyl ve vašem systému nalezen - možná není nainstalován nebo není pro váš operační systém k dispozici.
+index_nostyle=Webmin neví, jak spravovat příkazy plánu v tomto operačním systému.
 log_allow=Změnili povolení uživatelé
 log_create_job=Byl vytvořen naplánovaný příkaz pro $1 
 log_delete_job=Zrušený naplánovaný příkaz pro $1 
