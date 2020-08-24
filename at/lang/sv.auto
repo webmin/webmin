@@ -1,4 +1,5 @@
 index_mail=Skicka e-post när du är klar?
+index_nostyle=Webmin vet inte hur man hanterar schemaläggskommandon för detta operativsystem.
 log_allow=Ändrade tillåtna användare
 log_create_job=Skapat schemalagd kommando för $1 
 log_delete_job=Avbruten schemalagd kommando för $1 

@@ -305,6 +305,7 @@ $section->{'eline'} = $section->{'line'} + scalar(@newlines) - 1;
 my $i = 1;
 foreach my $m (@{$section->{'members'}}) {
 	$m->{'line'} = $m->{'eline'} = $section->{'line'} + $i++;
+	$m->{'space'} = "  ";
 	$m->{'file'} = $section->{'file'};
 	$m->{'sectionname'} = $section->{'name'};
 	$m->{'sectionvalue'} = $section->{'value'};

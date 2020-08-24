@@ -6,6 +6,7 @@ index_amode1=僅列出的用戶 ..
 index_amode2=除列出的用戶外的所有 ..
 index_delete=取消選擇的命令
 index_noat=在您的系統上找不到 $1命令-可能尚未安裝，或者對您的操作系統不可用。
+index_nostyle=Webmin不知道如何在此操作系統上管理調度命令。
 edit_shortcmd=執行命令
 edit_run=現在跑步
 edit_showfull=顯示完整腳本。

@@ -19,6 +19,7 @@ index_amode1=Somente usuários listados ..
 index_amode2=Todos, exceto os usuários listados.
 index_delete=Cancelar comandos selecionados
 index_noat=O comando $1 não foi encontrado no seu sistema - talvez não esteja instalado ou não esteja disponível para o seu sistema operacional.
+index_nostyle=O Webmin não sabe como gerenciar comandos de agendamento neste sistema operacional.
 edit_title=Comando agendado
 edit_cmd=Script completo para executar
 edit_shortcmd=Comando para executar

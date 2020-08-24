@@ -19,6 +19,7 @@ index_amode1=Vain luettelossa olevat käyttäjät ..
 index_amode2=Kaikki paitsi luetellut käyttäjät ..
 index_delete=Peruuta valitut komennot
 index_noat=Komentoa $1 ei löydy järjestelmästäsi. Ehkä sitä ei ole asennettu tai se ei ole käytettävissä käyttöjärjestelmässäsi.
+index_nostyle=Webmin ei osaa hallita aikataulukomentoja tässä käyttöjärjestelmässä.
 edit_title=Ajoitettu komento
 edit_cmd=Täysi suoritettava komentosarja
 edit_shortcmd=Komento suorittaa

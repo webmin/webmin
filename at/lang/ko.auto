@@ -19,6 +19,7 @@ index_amode1=나열된 사용자 만 ..
 index_amode2=나열된 사용자를 제외한 모든 ..
 index_delete=선택된 명령 취소
 index_noat=시스템에서 $1 명령을 찾을 수 없습니다. 운영 체제에서 설치되지 않았거나 사용할 수 없습니다.
+index_nostyle=Webmin은이 운영 체제에서 일정 명령을 관리하는 방법을 모릅니다.
 edit_title=예약 된 명령
 edit_cmd=실행할 전체 스크립트
 edit_shortcmd=실행할 명령

@@ -19,6 +19,7 @@ index_amode1=Tikai uzskaitītie lietotāji ..
 index_amode2=Visi, izņemot uzskaitītos lietotājus ..
 index_delete=Atcelt atlasītās komandas
 index_noat=Komanda $1 jūsu sistēmā netika atrasta - varbūt tā nav instalēta vai nav pieejama jūsu operētājsistēmai.
+index_nostyle=Webmin nezina, kā pārvaldīt grafika komandas šajā operētājsistēmā.
 edit_title=Plānotā komanda
 edit_cmd=Pilns izpildāmais skripts
 edit_shortcmd=Komanda izpildīt

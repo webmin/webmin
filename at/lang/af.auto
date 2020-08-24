@@ -19,6 +19,7 @@ index_amode1=Slegs gelys gebruikers ..
 index_amode2=Almal behalwe gelys gebruikers ..
 index_delete=Kanselleer geselekteerde opdragte
 index_noat=Die opdrag $1 is nie op u stelsel gevind nie - dit is miskien nie geïnstalleer nie, of nie beskikbaar vir u bestuurstelsel nie.
+index_nostyle=Webmin weet nie hoe om skeduleopdragte vir hierdie bedryfstelsel te bestuur nie.
 edit_title=Geplande opdrag
 edit_cmd=Volledige skrif om uit te voer
 edit_shortcmd=Opdrag om uit te voer

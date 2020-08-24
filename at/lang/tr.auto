@@ -6,6 +6,7 @@ index_amode1=Sadece listelenen kullanıcılar ..
 index_amode2=Listelenen kullanıcılar hariç tümü.
 index_delete=Seçilen Komutları İptal Et
 index_noat=$1 komutu sisteminizde bulunamadı - belki yüklü değil veya işletim sisteminizde kullanılamıyor.
+index_nostyle=Webmin, bu işletim sisteminde zamanlama komutlarını nasıl yöneteceğini bilmiyor.
 edit_shortcmd=Yürütme komutu
 edit_showfull=Komut dosyasının tamamını göster.
 create_eallow=Belirtilen kullanıcının zamanlanmış komutları çalıştırmasına izin verilmiyor
