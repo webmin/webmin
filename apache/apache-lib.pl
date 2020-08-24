@@ -1171,12 +1171,18 @@ print "<p>\n";
 # Returns HTML for a link to put in the top-right corner of every page
 sub restart_button
 {
-local $rv;
-$args = "redir=".&urlize(&this_url());
+local $args = "redir=".&urlize(&this_url());
 local @rv;
 if (&is_apache_running()) {
 	if ($access{'apply'}) {
-		push(@rv, &ui_link("restart.cgi?$args", $text{'apache_apply'}) );
+		my $n = &needs_config_restart();
+		if ($n) {
+			push(@rv, &ui_link("restart.cgi?$args&newconfig=1",
+					"<b>$text{'apache_apply'}</b>") );
+			}
+		else {
+			push(@rv, &ui_link("restart.cgi?$args", $text{'apache_apply'}) );
+			}
 		}
 	if ($access{'stop'}) {
 		push(@rv, &ui_link("stop.cgi?$args", $text{'apache_stop'}) );
@@ -2059,6 +2065,18 @@ sub restart_last_restart_time
 {
 &open_tempfile(FLAG, ">$last_restart_time_flag", 0, 1);
 &close_tempfile(FLAG);
+}
+
+# needs_config_restart()
+# Returns 1 if a restart is needed for sure after a config change
+sub needs_config_restart
+{
+my @cst = stat($last_config_change_flag);
+my @rst = stat($last_restart_time_flag);
+if (@cst && @rst && $cst[9] > $rst[9]) {
+	return 1;
+	}
+return 0;
 }
 
 1;
