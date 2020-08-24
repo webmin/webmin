@@ -40,7 +40,8 @@ if (@keyrecs) {
 				 ($key->{'ksk'} ? 257 : 256) } @keyrecs;
 		my $keyline = join(" ", $keyrec->{'name'}, $keyrec->{'class'},
 				     $keyrec->{'type'},
-				     join("", @{$keyrec->{'values'}}));
+				     join(" ", @{$keyrec->{'values'}}[0..2]),
+				     join("", splice( @{$keyrec->{'values'}}, 3 )));
 		print &ui_hidden_start($text{'zonekey_expand'.$kt},
 				       $kt, 0, "edit_zonekey.cgi?$in");
 		print $text{'zonekey_public'},"<br>\n";
