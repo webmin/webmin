@@ -240,6 +240,7 @@ if ($in{'adddir'} && $in{'root'}) {
 &save_directive_struct(undef, $virt, $conf, $conf);
 &flush_file_lines();
 &unlock_file($f);
+&update_last_config_change();
 &unlock_apache_files();
 
 # Create a symlink from another dir, if requested (as in Debian)

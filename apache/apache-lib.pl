@@ -17,6 +17,8 @@ else {
 map { $access_types{$_}++ } @access_types;
 $site_file = ($config{'webmin_apache'} || $module_config_directory)."/site";
 $httpd_info_cache = $module_config_directory."/httpd-info";
+$last_config_change_flag = $module_var_directory."/config-flag";
+$last_restart_time_flag = $module_var_directory."/restart-flag";
 
 # Check if a list of supported modules needs to be built. This is done
 # if the Apache binary changes, when Webmin is upgraded, or once every five
@@ -606,6 +608,7 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 		$change = $old[$i];
 		}
 	}
+&update_last_config_change();
 return &unique(@files);
 }
 
@@ -686,6 +689,7 @@ elsif (!$olddir && $newdir) {
 					   $newdir->{'file'});
 		}
 	}
+&update_last_config_change();
 }
 
 # recursive_set_lines_files(&directives, first-line, file)
@@ -1586,6 +1590,7 @@ else {
 	&kill_logged('HUP', $1) || return &text('restart_esig', $1);
 	&wait_for_graceful();
 	}
+&restart_last_restart_time();
 return undef;
 }
 
@@ -2038,6 +2043,22 @@ return $d if ($d);
 $n =~ s/^www\.//i;
 local $d = &virtual_server::get_domain_by("dom", $n);
 return $d;
+}
+
+# update_last_config_change()
+# Updates the flag file indicating when the config was changed
+sub update_last_config_change
+{
+&open_tempfile(FLAG, ">$last_config_change_flag", 0, 1);
+&close_tempfile(FLAG);
+}
+
+# restart_last_restart_time()
+# Updates the flag file indicating when the config was changed
+sub restart_last_restart_time
+{
+&open_tempfile(FLAG, ">$last_restart_time_flag", 0, 1);
+&close_tempfile(FLAG);
 }
 
 1;

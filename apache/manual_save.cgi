@@ -75,6 +75,7 @@ if ($config{'test_manual'}) {
 	}
 unlink($temp);
 &unlock_file($file);
+&update_last_config_change();
 &webmin_log($logtype, "manual", $logname, \%in);
 
 foreach $h ('virt', 'idx', 'file') {

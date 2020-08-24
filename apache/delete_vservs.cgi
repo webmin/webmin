@@ -26,6 +26,7 @@ foreach $vconf (@virts) {
 	}
 &flush_file_lines();
 &unlock_all_files();
+&update_last_config_change();
 &after_changing();
 &webmin_log("virts", "delete", scalar(@virts));
 &redirect("");
