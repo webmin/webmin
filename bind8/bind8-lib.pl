@@ -3600,7 +3600,8 @@ foreach my $f (readdir(ZONEDIR)) {
 		$rv->{'public'} = $pub->{'values'}->[3];
 		$rv->{'values'} = $pub->{'values'};
 		$rv->{'publictext'} = &read_file_contents("$dir/$f");
-		while($rv->{'publictext'} =~ s/^;.*\r?\n//) { }
+		while($rv->{'publictext'} =~ s/^;.*\r?\n//) { };
+		$rv->{'publictext'} = format_dnssec_public_key($rv->{'publictext'});
 		}
 	elsif ($f =~ /^K\Q$dom\E\.\+(\d+)\+(\d+)\.private$/) {
 		# Found the private key file
@@ -4277,6 +4278,17 @@ my ($zone) = @_;
 my $desc = &ip6int_to_net(&arpa_to_ip($zone->{'name'}));
 my $view = $zone->{'view'};
 return $view ? &text('master_inview', $desc, $view) : $desc;
+}
+
+# format_dnssec_public_key(pubkey)
+# Format public dnssec public key, each on new line
+sub format_dnssec_public_key
+{
+my ($pubkey) = @_;
+my @krvalues = split(/\s+/, $pubkey);
+my @kvalues = @krvalues[0..5];
+my $kvspace = " " x length("@kvalues");
+return join(" ", @kvalues) . " " . join("\n$kvspace ", splice(@krvalues, 6));
 }
 
 1;

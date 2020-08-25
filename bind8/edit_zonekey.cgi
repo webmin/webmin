@@ -38,8 +38,9 @@ if (@keyrecs) {
 		my $kt = $key->{'ksk'} ? 'ksk' : 'zone';
 		my ($keyrec) = grep { $_->{'values'}->[0] ==
 				 ($key->{'ksk'} ? 257 : 256) } @keyrecs;
-		my $keyline = join(" ", $keyrec->{'name'}, $keyrec->{'class'},
-				     $keyrec->{'type'}, @{$keyrec->{'values'}});
+		my $keyline = format_dnssec_public_key(
+                       join(" ", $keyrec->{'name'}, $keyrec->{'class'},
+                                 $keyrec->{'type'}, @{$keyrec->{'values'}}));
 		print &ui_hidden_start($text{'zonekey_expand'.$kt},
 				       $kt, 0, "edit_zonekey.cgi?$in");
 		print $text{'zonekey_public'},"<br>\n";
