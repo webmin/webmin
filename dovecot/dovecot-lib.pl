@@ -462,7 +462,7 @@ sub version_atleast
 local ($wantver) = @_;
 local $ver = &get_dovecot_version();
 return 0 if (!$ver);
-return &compare_version_numbers($wantver, $ver) >= 0;
+return &compare_version_numbers($ver, $wantver) >= 0;
 }
 
 sub list_lock_methods

@@ -38,20 +38,20 @@ if (@keyrecs) {
 		my $kt = $key->{'ksk'} ? 'ksk' : 'zone';
 		my ($keyrec) = grep { $_->{'values'}->[0] ==
 				 ($key->{'ksk'} ? 257 : 256) } @keyrecs;
-		my $keyline = join(" ", $keyrec->{'name'}, $keyrec->{'class'},
-				     $keyrec->{'type'},
-				     join("", @{$keyrec->{'values'}}));
+		my $keyline = format_dnssec_public_key(
+                       join(" ", $keyrec->{'name'}, $keyrec->{'class'},
+                                 $keyrec->{'type'}, @{$keyrec->{'values'}}));
 		print &ui_hidden_start($text{'zonekey_expand'.$kt},
 				       $kt, 0, "edit_zonekey.cgi?$in");
 		print $text{'zonekey_public'},"<br>\n";
-		print &ui_textarea("keyline", $keyline, 2, 80, "off", 0,
+		print &ui_textarea("keyline", $keyline, 4, 80, "off", 0,
 				   "readonly style='width:90%'"),"<br>\n";
 		print &text('zonekey_publicfile',
 			    "<tt>$key->{'publicfile'}</tt>"),"<p>\n";
 
 		print $text{'zonekey_private'},"<br>\n";
 		print &ui_textarea(
-			"private", $key->{'privatetext'}, 8, 80,
+			"private", $key->{'privatetext'}, 14, 80,
 			"off", 0, "readonly style='width:90%'"),"<br>\n";
 		print &text('zonekey_privatefile',
 			    "<tt>$key->{'privatefile'}</tt>"),"<br>\n";

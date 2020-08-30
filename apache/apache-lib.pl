@@ -1729,6 +1729,7 @@ if (!&is_apache_running()) {
 		return "$text{'start_eafter'} : <pre>$out</pre>";
 		}
 	}
+&restart_last_restart_time();
 return undef;
 }
 

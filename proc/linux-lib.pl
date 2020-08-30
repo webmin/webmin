@@ -496,7 +496,8 @@ sub get_current_cpu_temps
 my @rv;
 if (&has_command("sensors")) {
         my $fh = "SENSORS";
-        my $a;
+        my $aa;
+        my $ab;
         &open_execute_command($fh, "sensors </dev/null 2>/dev/null", 1);
         while(<$fh>) {
                 if (/Core\s+(\d+):\s+([\+\-][0-9\.]+)/) {
@@ -509,15 +510,24 @@ if (&has_command("sensors")) {
                         }
                 else {
                     # New line - new device (disallow, if no either fan or voltage data)
-                    $a = 0 if (/^\s*$/);
+                    $aa = 0 if (/^\s*$/);
                     # Device has either fan or voltage data (sign of CPU)
-                    $a = 1 if (/fan[\d+]:\s+[0-9]+\s+RPM/i ||
-                                /in[\d+]:\s+[\+\-0-9\.]+\s+V/i ||
-                                /cpu_thermal-virtual-[\d]+/i);
-                    # Get odd output like in #1253 #1280
-                    if ($a && /temp(\d+):\s+([\+\-][0-9\.]+)/) {
+                    $aa = 1 if (/fan[\d+]:\s+[0-9]+\s+RPM/i ||
+                                /in[\d+]:\s+[\+\-0-9\.]+\s+V/i);
+                    # Get odd output like in #1253
+                    if ($aa && /temp(\d+):\s+([\+\-][0-9\.]+)\s+.*?[=+].*?\)/) {
                             # Adjust to start from `0` as all other outputs
                             push(@rv, { 'core' => (int($1) - 1),
+                                        'temp' => $2 });
+                            }
+                    
+                    # New line - new device
+                    $ab = 0 if (/^\s*$/);
+                    # Check for CPU
+                    $ab = 1 if (/cpu_thermal-virtual-[\d]+/i);
+                    # Get odd output like in #1280
+                    if ($ab && /temp(\d+):\s+([\+\-][0-9\.]+)/) {
+                            push(@rv, { 'core' => $1,
                                         'temp' => $2 });
                             }
                         }
