@@ -139,10 +139,6 @@ while($f = readdir(CONF)) {
 			$b->{'netmask'} = &prefix_to_mask($conf{'PREFIX0'});
 			}
 		$b->{'broadcast'} = $conf{'BROADCAST'};
-		if (!$b->{'broadcast'} && $b->{'address'} && $b->{'netmask'}) {
-			$b->{'broadcast'} = &compute_broadcast($b->{'address'},
-							       $b->{'netmask'});
-			}
 		$b->{'gateway'} = $conf{'GATEWAY'};
 		$b->{'gateway6'} = $conf{'IPV6_DEFAULTGW'};
 		$b->{'mtu'} = $conf{'MTU'};
@@ -448,6 +444,11 @@ if ($supports_mtu) {
 else {
 	return $_[0] ne "mtu";
 	}
+}
+
+sub can_broadcast_def
+{
+return 1;
 }
 
 # valid_boot_address(address)

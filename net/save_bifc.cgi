@@ -177,9 +177,14 @@ else {
 		# No broadcast needed
 		delete($b->{'broadcast'});
 		}
-	elsif (!$access{'broadcast'} || $in{'broadcast_def'}) {
-		# Work out broadcast
-		if ($in{'new'}) {
+	elsif (!$access{'broadcast'} && $in{'new'}) {
+		# Work out broadcast if user isn't allowed to set it
+		$b->{'broadcast'} = &compute_broadcast(
+			$b->{'address'}, $b->{'netmask'});
+		}
+	elsif ($in{'broadcast_def'}) {
+		# If system needs broadcast to be computed, do it here
+		if (!&can_broadcast_def()) {
 			$b->{'broadcast'} = &compute_broadcast(
 				$b->{'address'}, $b->{'netmask'});
 			}

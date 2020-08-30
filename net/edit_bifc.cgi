@@ -51,8 +51,10 @@ else {
 	$b = $boot[$in{'idx'}];
 	&can_iface($b) || &error($text{'ifcs_ecannot_this'});
 	&ui_print_header(undef, $text{'bifc_edit'}, "");
-	if (!$b->{'dhcp'} && !$b->{'bootp'} && !$b->{'broadcast'}) {
-		# Fill in broadcast if missing
+	if (!$b->{'dhcp'} && !$b->{'bootp'} && !$b->{'broadcast'} &&
+	    !&can_broadcast_def()) {
+		# Fill in broadcast if missing, unless system can compute
+		# it automatically
 		$b->{'broadcast'} = &compute_broadcast(
 			$b->{'address'}, $b->{'netmask'});
 		}

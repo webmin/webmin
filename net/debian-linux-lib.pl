@@ -98,11 +98,6 @@ foreach $iface (@ifaces) {
 		$cfg->{'edit'} = ($cfg->{'name'} !~ /^ppp|lo/);
 		$cfg->{'index'} = scalar(@rv);	
 		$cfg->{'file'} = $network_interfaces_config;
-		if (!$cfg->{'broadcast'} &&
-		    $cfg->{'address'} && $cfg->{'netmask'}) {
-			$cfg->{'broadcast'} = &compute_broadcast(
-				$cfg->{'address'}, $cfg->{'netmask'});
-			}
 		push(@rv, $cfg);
 		}
 	elsif ($addrfam eq "inet6") {
@@ -539,6 +534,11 @@ if ($gconfig{'os_version'} >= 3 || scalar(@autos)) {
 sub can_edit
 {
 return $_[0];
+}
+
+sub can_broadcast_def
+{
+return 1;
 }
 
 # valid_boot_address(address)

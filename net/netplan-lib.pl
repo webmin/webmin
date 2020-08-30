@@ -350,6 +350,11 @@ my ($f) = @_;
 return $f ne "mtu";
 }
 
+sub can_broadcast_def
+{
+return 0;
+}
+
 # valid_boot_address(address)
 # Is some address valid for a bootup interface
 sub valid_boot_address

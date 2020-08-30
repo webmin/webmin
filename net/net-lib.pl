@@ -292,6 +292,11 @@ else {
 	}
 }
 
+sub can_broadcast_def
+{
+return 0;
+}
+
 sub can_create_iface
 {
 return $access{'ifcs'} == 2;

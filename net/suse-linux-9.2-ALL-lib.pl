@@ -227,6 +227,11 @@ elsif ($_[1] && $_[0] eq "up" && $_[1]->{'virtual'} ne '' && $_[1]->{'file'}) {
 return 1;
 }
 
+sub can_broadcast_def
+{
+return 0;
+}
+
 # valid_boot_address(address)
 # Is some address valid for a bootup interface
 sub valid_boot_address

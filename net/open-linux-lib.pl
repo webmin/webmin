@@ -89,6 +89,11 @@ sub can_edit
 return $_[0] ne "bootp" && $_[0] ne "mtu";
 }
 
+sub can_broadcast_def
+{
+return 0;
+}
+
 # can_iface_desc([&iface])
 # Returns 1 if boot-interfaces can have comments
 sub can_iface_desc

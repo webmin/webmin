@@ -190,6 +190,11 @@ sub can_edit
 return $_[0] eq "dhcp";
 }
 
+sub can_broadcast_def
+{
+return 0;
+}
+
 # valid_boot_address(address)
 # Is some address valid for a bootup interface
 sub valid_boot_address
