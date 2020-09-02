@@ -2710,5 +2710,18 @@ if ($page) {
 return $rv;
 }
 
+=head2 ui_line_break_double()
+
+Create double line break, with accessible second break
+
+=cut
+sub ui_line_break_double
+{
+if (defined(&theme_ui_line_break_double)) {
+	return &theme_ui_line_break_double(@_);
+	}
+return "<br><br data-x-br>\n";
+}
+
 1;
 
