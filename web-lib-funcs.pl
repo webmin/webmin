@@ -2126,6 +2126,7 @@ if ($main::webmin_script_type eq 'web' && !$ENV{"MINISERV_CONFIG"} &&
 	}
 
 my $i;
+my $flag = $miniserv{'restartflag'} || $var_directory."/restart-flag";
 if ($gconfig{'os_type'} ne 'windows') {
 	# On Unix systems, we can restart with a signal
 	my ($pid, $addr, $i);
@@ -2152,10 +2153,13 @@ if ($gconfig{'os_type'} ne 'windows') {
 			}
 		}
 
-	# Just signal miniserv to restart
+	# Just signal miniserv to restart, and also create the flag file in
+	# case signals aren't being processed
 	if (!&kill_logged('HUP', $pid)) {
 		&error("Incorrect Webmin PID $pid") if (!$ignore);
 		}
+	open(TOUCH, ">$flag");
+	close(TOUCH);
 
 	# Wait till new PID is written, indicating a restart
 	for($i=0; $i<60; $i++) {
@@ -2172,7 +2176,7 @@ if ($gconfig{'os_type'} ne 'windows') {
 	}
 else {
 	# On Windows, we need to use the flag file
-	open(TOUCH, ">$miniserv{'restartflag'}");
+	open(TOUCH, ">$flag");
 	close(TOUCH);
 	}
 
