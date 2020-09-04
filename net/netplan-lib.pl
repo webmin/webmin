@@ -586,44 +586,71 @@ foreach my $origl (@$lref) {
 	if ($l =~ /^(\s*)(\S+):\s*(.*)/) {
 		# Name and possibly value
 		my $i = length($1);
-		my $dir = { 'indent' => length($1),
-			    'name' => $2,
-			    'value' => $3,
-			    'line' => $lnum,
-			    'eline' => $lnum,
-			    'parent' => $parent,
-			    'members' => [],
-			  };
-		if ($dir->{'value'} =~ /^\[(.*)\]$/) {
-			$dir->{'value'} = [ &split_addr_list("$1") ];
+		if ($i > $lastdir->{'indent'} + 2 &&
+		    ref($lastdir->{'value'}) eq 'ARRAY' &&
+		    @{$lastdir->{'value'}} &&
+		    ref($lastdir->{'value'}->[0]) eq 'HASH') {
+			# Another key in the current value hash
+			my $v = $lastdir->{'value'};
+			$v->[@$v-1]->{$2} = $3;
+			&set_parent_elines($lastdir, $lnum);
 			}
-		if (!$lastdir || $i == $lastdir->{'indent'}) {
-			# At same level as previous directive, which puts it
-			# underneath current parent
-			push(@{$parent->{'members'}}, $dir);
-			}
-		elsif ($i > $lastdir->{'indent'}) {
-			# A further ident by one level, meaning that it is under
-			# the previous directive
-			$parent = $lastdir;
-			$dir->{'parent'} = $parent;
-			push(@{$parent->{'members'}}, $dir);
-			}
-		elsif ($i < $lastdir->{'indent'}) {
-			# Indent has decreased, so this must be under a previous
-			# parent directive
-			$parent = $parent->{'parent'};
-			while($i <= $parent->{'indent'}) {
-				$parent = $parent->{'parent'};
+		else {
+			# A regular directive
+			my $dir = { 'indent' => length($1),
+				    'name' => $2,
+				    'value' => $3,
+				    'line' => $lnum,
+				    'eline' => $lnum,
+				    'parent' => $parent,
+				    'members' => [],
+				  };
+			if ($dir->{'value'} =~ /^\[(.*)\]$/) {
+				$dir->{'value'} = [ &split_addr_list("$1") ];
 				}
-			push(@{$parent->{'members'}}, $dir);
-			$dir->{'parent'} = $parent;
+			if (!$lastdir || $i == $lastdir->{'indent'}) {
+				# At same level as previous directive, which
+				# puts it underneath current parent
+				push(@{$parent->{'members'}}, $dir);
+				}
+			elsif ($i > $lastdir->{'indent'}) {
+				# A further ident by one level, meaning that it
+				# is under the previous directive
+				$parent = $lastdir;
+				$dir->{'parent'} = $parent;
+				push(@{$parent->{'members'}}, $dir);
+				}
+			elsif ($i < $lastdir->{'indent'}) {
+				# Indent has decreased, so this must be under a
+				# previous parent directive
+				$parent = $parent->{'parent'};
+				while($i <= $parent->{'indent'}) {
+					$parent = $parent->{'parent'};
+					}
+				push(@{$parent->{'members'}}, $dir);
+				$dir->{'parent'} = $parent;
+				}
+			$lastdir = $dir;
+			&set_parent_elines($parent, $lnum);
 			}
-		$lastdir = $dir;
+		}
+	elsif ($l =~ /^(\s*)\-\s*(\S+):\s*(\S.*)$/) {
+		# Value that is itself a key-value pair
+		# routes:
+		#   - to: 1.2.3.4/24
+		#     via: 1.2.3.1
+		#     metric: 100
+		$lastdir->{'value'} ||= [ ];
+		my $v = { $2 => $3 };
+		push(@{$lastdir->{'value'}}, $v);
+		$lastdir->{'eline'} = $lnum;
 		&set_parent_elines($parent, $lnum);
 		}
 	elsif ($l =~ /^(\s*)\-\s*(\S+)\s*$/) {
 		# Value-only line that is an extra value for the previous dir
+		# addresses:
+		#   - 1.2.3.4/24
+		#   - 5.6.7.8/24
 		$lastdir->{'value'} ||= [ ];
 		$lastdir->{'value'} = [ $lastdir->{'value'} ] if (!ref($lastdir->{'value'}));
 		push(@{$lastdir->{'value'}}, $2);
@@ -650,14 +677,37 @@ foreach my $c (@$conf) {
 }
 
 # yaml_lines(&directive, indent-string)
+# Converts a YAML directive into text lines
 sub yaml_lines
 {
 my ($yaml, $id) = @_;
 my @rv;
-push(@rv, $id.$yaml->{'name'}.":".
-	  (ref($yaml->{'value'}) eq 'ARRAY' ?
-		" [".&join_addr_list(@{$yaml->{'value'}})."]" :
-	   defined($yaml->{'value'}) ? " ".$yaml->{'value'} : ""));
+my $v = $id.$yaml->{'name'}.":";
+if (ref($yaml->{'value'}) eq 'ARRAY') {
+	my @a = @{$yaml->{'value'}};
+	if (@a && ref($a[0]) eq 'HASH') {
+		# Array of hashes, like for routes
+		push(@rv, $v);
+		foreach my $a (@a) {
+			my @k = sort(keys %$a);
+			my $f = shift(@k);
+			push(@rv, $id."  - ".$f.": ".$a->{$f});
+			foreach my $f (@k) {
+				push(@rv, $id."    ".$f.": ".$a->{$f});
+				}
+			}
+		}
+	else {
+		# Array of strings
+		push(@rv, $v." [".&join_addr_list(@a)."]");
+		}
+	}
+elsif (defined($yaml->{'value'})) {
+	push(@rv, $v." ".$yaml->{'value'});
+	}
+else {
+	push(@rv, $v);
+	}
 if ($yaml->{'members'}) {
 	foreach my $m (@{$yaml->{'members'}}) {
 		push(@rv, &yaml_lines($m, $id."    "));
