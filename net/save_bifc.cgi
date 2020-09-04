@@ -188,6 +188,9 @@ else {
 			$b->{'broadcast'} = &compute_broadcast(
 				$b->{'address'}, $b->{'netmask'});
 			}
+		else {
+			$b->{'broadcast'} = undef;
+			}
 		}
 	elsif (&can_edit("broadcast", $b)) {
 		# Manually entered broadcast
