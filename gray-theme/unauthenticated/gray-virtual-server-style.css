@@ -179,3 +179,9 @@ div.wrapper {
   left: 4px;
   padding-top: 2px;
 }
+br[data-x-br] {
+  content: "";
+  margin: 2em;
+  display: block;
+  font-size: 42%;
+}

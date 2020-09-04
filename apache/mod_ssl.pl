@@ -37,10 +37,12 @@ return &parse_choice("SSLEngine");
 sub get_sslprotos
 {
 my @sslprotos = ("SSLv2", "SSLv3", "TLSv1" );
-if ($httpd_modules{'core'} >= 2.215) {
+my $ver = $httpd_modules{'core'};
+$ver =~ s/^(\d+)\.(\d)(\d+)$/$1.$2.$3/;
+if (&compare_version_numbers($ver, '2.2.15') >= 0) {
 	push(@sslprotos, "TLSv1.1", "TLSv1.2");
 	}
-if ($httpd_modules{'core'} >= 2.437) {
+if (&compare_version_numbers($ver, '2.4.37') >= 0) {
 	push(@sslprotos, "TLSv1.3");
 	}
 return @sslprotos;
