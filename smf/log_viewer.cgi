@@ -18,6 +18,9 @@ if (defined($in{'logfile'})) {
 $numlines = 40;
 if (defined($in{'numlines'})) {
 	$numlines = $in{'numlines'};
+	if ($numlines ne "all") {
+		$numlines = int($numlines);
+		}
 }
 
 if ($numlines eq "all") {

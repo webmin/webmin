@@ -75,7 +75,7 @@ elsif ($in{'view'}) {
 	&ui_print_header("<tt>".&html_escape($file || $cmd)."</tt>",
 			 $text{'view_title'}, "");
 
-	$lines = $in{'lines'} ? int($in{'lines'}) : $config{'lines'};
+	$lines = $in{'lines'} ? int($in{'lines'}) : int($config{'lines'});
 	$filter = $in{'filter'} ? quotemeta($in{'filter'}) : "";
 
 	&filter_form();
