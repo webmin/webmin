@@ -16,7 +16,7 @@ if ($in{'removenotify'}) {
 
 $ttcmd = "<tt>".&html_escape($config{'reboot_command'})."</tt>";
 if ($in{'confirm'}) {
-	print &ui_subheading(&text('reboot_exec', $ttcmd));
+	print &text('reboot_exec', $ttcmd);
 	&reboot_system();
 	&webmin_log("reboot");
 	}

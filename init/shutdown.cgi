@@ -9,7 +9,7 @@ $access{'shutdown'} || &error($text{'shutdown_ecannot'});
 
 $ttcmd = "<tt>".&html_escape($config{'shutdown_command'})."</tt>";
 if ($in{'confirm'}) {
-	print &ui_subheading(&text('shutdown_exec', $ttcmd));
+	print &text('shutdown_exec', $ttcmd);
 	&shutdown_system();
 	&webmin_log("shutdown");
 	}
