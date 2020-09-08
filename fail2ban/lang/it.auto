@@ -113,7 +113,6 @@ jail_destemail=Email di notifica predefinita
 jail_none=Nessuno impostato
 jail_banaction=Azione predefinita da applicare
 jail_defprotocol=Protocollo predefinito per le azioni
-jail_allprotocol=Tutti i protocolli
 jail_edestemail=Indirizzo email di notifica predefinito mancante o non valido
 jail_eignoreip=Indirizzo IP non valido da ignorare
 jaildef_title=Opzioni di prigione predefinite

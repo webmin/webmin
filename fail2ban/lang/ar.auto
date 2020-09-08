@@ -113,7 +113,6 @@ jail_destemail=البريد الإلكتروني الإخطار الافتراض
 jail_none=لا شيء مجموعة
 jail_banaction=الإجراء الافتراضي للتطبيق
 jail_defprotocol=البروتوكول الافتراضي للإجراءات
-jail_allprotocol=جميع البروتوكولات
 jail_edestemail=عنوان البريد الإلكتروني للإشعار الافتراضي مفقود أو غير صالح
 jail_eignoreip=عنوان IP غير صالح للتجاهل
 jaildef_title=خيارات السجن الافتراضية

@@ -113,7 +113,6 @@ jail_destemail=Standaard kennisgewing e-pos
 jail_none=Geen stel nie
 jail_banaction=Verstek aksie om toe te pas
 jail_defprotocol=Standaardprotokol vir aksies
-jail_allprotocol=Alle protokolle
 jail_edestemail=Ontbrekende of ongeldige verstek-e-posadres
 jail_eignoreip=Ongeldige IP-adres om te ignoreer
 jaildef_title=Standaard tronkopsies

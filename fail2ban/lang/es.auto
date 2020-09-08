@@ -113,7 +113,6 @@ jail_destemail=Correo electrónico de notificación predeterminado
 jail_none=Ninguno establecido
 jail_banaction=Acción predeterminada para aplicar
 jail_defprotocol=Protocolo predeterminado para acciones
-jail_allprotocol=Todos los protocolos
 jail_edestemail=Dirección de correo electrónico de notificación predeterminada faltante o no válida
 jail_eignoreip=Dirección IP no válida para ignorar
 jaildef_title=Opciones de cárcel predeterminadas

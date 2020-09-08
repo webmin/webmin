@@ -113,7 +113,6 @@ jail_destemail=Oletusilmoitussähköposti
 jail_none=Ei asetettu
 jail_banaction=Käytettävä oletustoiminto
 jail_defprotocol=Toimintojen oletusprotokolla
-jail_allprotocol=Kaikki protokollat
 jail_edestemail=Puuttuva tai virheellinen oletusilmoitus-sähköpostiosoite
 jail_eignoreip=Virheellinen IP-osoite sivuuttaa
 jaildef_title=Vankilan oletusasetukset

@@ -113,7 +113,6 @@ jail_destemail=Email thông báo mặc định
 jail_none=Không có bộ nào
 jail_banaction=Hành động mặc định để áp dụng
 jail_defprotocol=Giao thức mặc định cho các hành động
-jail_allprotocol=Tất cả các giao thức
 jail_edestemail=Địa chỉ email thông báo mặc định bị thiếu hoặc không hợp lệ
 jail_eignoreip=Địa chỉ IP không hợp lệ để bỏ qua
 jaildef_title=Tùy chọn tù mặc định

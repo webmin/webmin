@@ -113,7 +113,6 @@ jail_destemail=Predvolený e-mail s upozornením
 jail_none=Žiadne
 jail_banaction=Použiť predvolenú akciu
 jail_defprotocol=Predvolený protokol pre akcie
-jail_allprotocol=Všetky protokoly
 jail_edestemail=Chýbajúca alebo neplatná predvolená e-mailová adresa pre oznámenie
 jail_eignoreip=Neplatná adresa IP, ktorú chcete ignorovať
 jaildef_title=Predvolené možnosti väzenia

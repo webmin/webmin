@@ -113,7 +113,6 @@ jail_destemail=E-mail de notificare implicit
 jail_none=Nu este setat
 jail_banaction=Acțiune implicită de aplicat
 jail_defprotocol=Protocol implicit pentru acțiuni
-jail_allprotocol=Toate protocoalele
 jail_edestemail=Adresa de e-mail de notificare implicită lipsă sau nevalidă
 jail_eignoreip=Adresa IP nevalidă de ignorat
 jaildef_title=Opțiuni implicite pentru închisoare

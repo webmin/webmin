@@ -112,7 +112,6 @@ jail_destemail=Domyślne powiadomienie e-mail
 jail_none=nie ustawiono
 jail_banaction=Domyślna akcja do zastosowania
 jail_defprotocol=Domyślny protokół dla akcji
-jail_allprotocol=Wszystkie protokoły
 jail_edestemail=Brakujący lub nieprawidłowy domyślny adres e-mail dla powiadomień
 jail_eignoreip=Błędny adres IP do ignorowania
 jaildef_title=Domyślne opcje jail

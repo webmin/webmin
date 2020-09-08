@@ -113,7 +113,6 @@ jail_destemail=デフォルトの通知メール
 jail_none=設定なし
 jail_banaction=適用するデフォルトのアクション
 jail_defprotocol=アクションのデフォルトプロトコル
-jail_allprotocol=すべてのプロトコル
 jail_edestemail=デフォルトの通知メールアドレスが見つからないか無効です
 jail_eignoreip=無視する無効なIPアドレス
 jaildef_title=デフォルトの刑務所オプション

@@ -113,7 +113,6 @@ jail_destemail=默認通知電子郵件
 jail_none=沒有設置
 jail_banaction=適用的默認操作
 jail_defprotocol=操作的默認協議
-jail_allprotocol=所有協議
 jail_edestemail=默認通知電子郵件地址缺失或無效
 jail_eignoreip=無效的IP地址可忽略
 jaildef_title=默認監獄選項

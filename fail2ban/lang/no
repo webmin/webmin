@@ -112,7 +112,6 @@ jail_destemail=Standard varslings-e-post
 jail_none=Ingen satt
 jail_banaction=Standard handling å bruke
 jail_defprotocol=Standard protokoll for handlinger
-jail_allprotocol=Alle protokoller
 jail_edestemail=Manglende eller ugyldig standard e-post adresse for varslinger
 jail_eignoreip=Ugyldig IP-adresse å ignorere
 jaildef_title=Standard fengsel-innstillinger

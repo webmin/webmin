@@ -113,7 +113,6 @@ jail_destemail=Numatytasis pranešimo el. Paštas
 jail_none=Nėra nustatyta
 jail_banaction=Taikomas numatytasis veiksmas
 jail_defprotocol=Numatytasis veiksmų protokolas
-jail_allprotocol=Visi protokolai
 jail_edestemail=Trūksta arba netinkamas numatytasis pranešimo el. Pašto adresas
 jail_eignoreip=Netinkamas IP adresas, kurį reikia ignoruoti
 jaildef_title=Numatytosios kalėjimo parinktys

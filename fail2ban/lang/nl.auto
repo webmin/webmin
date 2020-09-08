@@ -113,7 +113,6 @@ jail_destemail=Standaard e-mailmelding
 jail_none=Geen ingesteld
 jail_banaction=Standaard actie die moet worden toegepast
 jail_defprotocol=Standaardprotocol voor acties
-jail_allprotocol=Alle protocollen
 jail_edestemail=Ontbrekend of ongeldig standaard e-mailadres voor kennisgeving
 jail_eignoreip=Ongeldig IP-adres om te negeren
 jaildef_title=Standaard gevangenisopties

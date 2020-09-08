@@ -113,7 +113,6 @@ jail_destemail=Noklusējuma paziņojuma e-pasts
 jail_none=Nav iestatīts
 jail_banaction=Tiek piemērota noklusējuma darbība
 jail_defprotocol=Noklusējuma protokols darbībām
-jail_allprotocol=Visi protokoli
 jail_edestemail=Trūkst vai nav derīga noklusējuma paziņojuma e-pasta adrese
 jail_eignoreip=Nederīga IP adrese, kuru ignorēt
 jaildef_title=Noklusētās cietuma iespējas

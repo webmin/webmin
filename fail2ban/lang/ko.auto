@@ -113,7 +113,6 @@ jail_destemail=기본 알림 이메일
 jail_none=설정 안함
 jail_banaction=적용 할 기본 조치
 jail_defprotocol=동작을위한 기본 프로토콜
-jail_allprotocol=모든 프로토콜
 jail_edestemail=기본 알림 이메일 주소가 없거나 잘못되었습니다
 jail_eignoreip=무시할 잘못된 IP 주소
 jaildef_title=기본 감옥 옵션

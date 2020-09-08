@@ -113,7 +113,6 @@ jail_destemail=Email ta 'notifika awtomatiku
 jail_none=L-ebda sett
 jail_banaction=Azzjoni default li tapplika
 jail_defprotocol=Protokoll default għal azzjonijiet
-jail_allprotocol=Il-protokolli kollha
 jail_edestemail=Indirizz tal-email ta 'notifika awtomatiku nieqes jew invalidu
 jail_eignoreip=Indirizz IP invalidu li jinjora
 jaildef_title=Għażliet ta 'Ħabs Default

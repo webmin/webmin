@@ -113,7 +113,6 @@ jail_destemail=Standardmeddelande e-post
 jail_none=Ingen uppsättning
 jail_banaction=Standardåtgärd att tillämpa
 jail_defprotocol=Standardprotokoll för åtgärder
-jail_allprotocol=Alla protokoll
 jail_edestemail=Saknad eller ogiltig standardadress för e-postmeddelanden
 jail_eignoreip=Ogiltig IP-adress att ignorera
 jaildef_title=Standardfängelsealternativ

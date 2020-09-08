@@ -113,7 +113,6 @@ jail_destemail=Privzeti e-poštni naslov z obvestilom
 jail_none=Ni nastavljeno
 jail_banaction=Uporablja se privzeto dejanje
 jail_defprotocol=Privzeti protokol za dejanja
-jail_allprotocol=Vsi protokoli
 jail_edestemail=Manjkajoči ali neveljavni privzeti e-poštni naslov za obvestila
 jail_eignoreip=IP naslov je neveljaven
 jaildef_title=Privzete možnosti zapora

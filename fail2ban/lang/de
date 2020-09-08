@@ -113,7 +113,6 @@ jail_destemail=Standard Benachrichtigungs-E-Mail
 jail_none=Keins gesetzt
 jail_banaction=Standard Aktion zum anwenden
 jail_defprotocol=Standard Protokoll für AKtionen
-jail_allprotocol=Alle Protokolle
 jail_edestemail=Fehlende oder ungültige Standard Benachrichtigungs-E-Mail-Adresse
 jail_eignoreip=Ungültige IP-Adresse zum ignorieren
 jaildef_title=Standard Gefängnis Optionen

@@ -113,7 +113,6 @@ jail_destemail=Výchozí oznamovací e-mail
 jail_none=Žádná sada
 jail_banaction=Výchozí akce použít
 jail_defprotocol=Výchozí protokol pro akce
-jail_allprotocol=Všechny protokoly
 jail_edestemail=Chybí nebo neplatná výchozí e-mailová adresa pro oznámení
 jail_eignoreip=Neplatná adresa IP, kterou chcete ignorovat
 jaildef_title=Výchozí možnosti vězení

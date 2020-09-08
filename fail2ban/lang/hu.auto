@@ -113,7 +113,6 @@ jail_destemail=Alapértelmezett értesítési e-mail
 jail_none=Nincs beállítva
 jail_banaction=Alapértelmezés szerint alkalmazandó művelet
 jail_defprotocol=Alapértelmezett műveleti protokoll
-jail_allprotocol=Minden protokoll
 jail_edestemail=Hiányzik vagy érvénytelen az alapértelmezett értesítési e-mail cím
 jail_eignoreip=Érvénytelen IP-cím a figyelmen kívül hagyáshoz
 jaildef_title=Alapértelmezett börtönbeállítások

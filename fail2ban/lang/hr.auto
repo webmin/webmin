@@ -113,7 +113,6 @@ jail_destemail=Zadana e-adresa s obavijestima
 jail_none=Nijedan nije postavljen
 jail_banaction=Zadana radnja koja se primjenjuje
 jail_defprotocol=Zadani protokol za radnje
-jail_allprotocol=Svi protokoli
 jail_edestemail=Nedostaje ili nije važeća zadana e-adresa obavijesti
 jail_eignoreip=Zanemariva je IP adresa nevaljana
 jaildef_title=Zadane mogućnosti zatvora

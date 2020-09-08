@@ -113,7 +113,6 @@ jail_destemail=Varsayılan bildirim e-postası
 jail_none=Hiçbiri ayarlanmadı
 jail_banaction=Uygulanacak varsayılan eylem
 jail_defprotocol=Eylemler için varsayılan protokol
-jail_allprotocol=Tüm protokoller
 jail_edestemail=Eksik veya geçersiz varsayılan bildirim e-posta adresi
 jail_eignoreip=Yoksaymak için geçersiz IP adresi
 jaildef_title=Varsayılan Hapishane Seçenekleri

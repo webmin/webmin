@@ -113,7 +113,6 @@ jail_destemail=ایمیل اعلان پیش فرض
 jail_none=هیچ مجموعه ای نیست
 jail_banaction=اقدام پیش فرض برای اعمال
 jail_defprotocol=پروتکل پیش فرض برای اقدامات
-jail_allprotocol=همه پروتکل ها
 jail_edestemail=آدرس ایمیل اعلان پیش فرض موجود یا نامعتبر است
 jail_eignoreip=آدرس IP معتبر برای نادیده گرفتن
 jaildef_title=گزینه های پیش فرض زندان

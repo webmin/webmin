@@ -113,7 +113,6 @@ jail_destemail=Standard e-mail med anmeldelse
 jail_none=Intet sæt
 jail_banaction=Standardhandling, der skal anvendes
 jail_defprotocol=Standardprotokol til handlinger
-jail_allprotocol=Alle protokoller
 jail_edestemail=Manglende eller ugyldig standard-e-mail-adresse
 jail_eignoreip=Ugyldig IP-adresse at ignorere
 jaildef_title=Standard fængselsindstillinger

@@ -113,7 +113,6 @@ jail_destemail=ڈیفالٹ نوٹیفکیشن ای میل
 jail_none=کوئی سیٹ نہیں
 jail_banaction=لاگو کرنے کے لئے پہلے سے طے شدہ کارروائی
 jail_defprotocol=افعال کیلئے ڈیفالٹ پروٹوکول
-jail_allprotocol=تمام پروٹوکول
 jail_edestemail=لاپتہ یا غلط پہلے سے طے شدہ اطلاع کا ای میل پتہ
 jail_eignoreip=نظرانداز کرنے کے لئے غلط IP ایڈریس
 jaildef_title=طے شدہ جیل کے اختیارات

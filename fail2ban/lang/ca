@@ -113,7 +113,6 @@ jail_destemail=Correu de notificació per defecte
 jail_none=No n'hi ha cap d'establert
 jail_banaction=Acció a aplicar per defecte
 jail_defprotocol=Protocol per defecte de les accions
-jail_allprotocol=Tots els protocols
 jail_edestemail=Hi falta el correu de notificació per defecte o bé és invàlid
 jail_eignoreip=L'adreça IP a ignorar és invàlida
 jaildef_title=Opcions per Defecte de les Presons

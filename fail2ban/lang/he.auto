@@ -113,7 +113,6 @@ jail_destemail=ברירת מחדל להודעת דוא"ל
 jail_none=אין סטים
 jail_banaction=ברירת מחדל לפעולה
 jail_defprotocol=פרוטוקול ברירת מחדל לפעולות
-jail_allprotocol=כל הפרוטוקולים
 jail_edestemail=כתובת אימייל להודעות ברירת מחדל חסרה או לא חוקית
 jail_eignoreip=כתובת IP לא חוקית להתעלמות ממנה
 jaildef_title=אפשרויות ברירת מחדל לכלא

@@ -113,7 +113,6 @@ jail_destemail=Aurretik jakinarazpen mezu elektronikoa
 jail_none=Ez da batere ezarri
 jail_banaction=Aplikatu beharreko ekintza lehenetsia
 jail_defprotocol=Ekintzen protokolo lehenetsia
-jail_allprotocol=Protokolo guztiak
 jail_edestemail=Falta edo jakinarazpen helbide elektroniko lehenetsia falta da
 jail_eignoreip=IP helbidea baliogabea da jaramonik egin gabe
 jaildef_title=Lehenetsitako kartzelen aukerak

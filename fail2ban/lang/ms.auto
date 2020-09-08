@@ -54,7 +54,6 @@ jail_destemail=E-mel pemberitahuan lalai
 jail_none=Tiada set
 jail_banaction=Tindakan lalai untuk memohon
 jail_defprotocol=Protokol lalai untuk tindakan
-jail_allprotocol=Semua protokol
 jail_edestemail=Alamat e-mel pemberitahuan lalai atau tidak sah
 jail_eignoreip=Alamat IP tidak sah untuk diabaikan
 jaildef_title=Pilihan Penjara Lalai
