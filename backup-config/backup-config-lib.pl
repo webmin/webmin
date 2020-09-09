@@ -13,6 +13,7 @@ Functions for creating configuration file backups. Some example code :
 BEGIN { push(@INC, ".."); };
 use strict;
 use warnings;
+use POSIX;
 use WebminCore;
 our (%text, $module_config_directory, %config);
 &init_config();
@@ -299,7 +300,9 @@ if ($mode == 0) {
 	$file = &date_subs($path);
 	}
 else {
-	$file = &transname();
+	my $fdate = strftime('%Y-%m-%d_%H-%M-%S', localtime());
+	my $ext = &has_command("gzip") ? '.tar.gz' : '.tar';
+	$file = &transname("backup_$fdate$ext");
 	}
 
 # Get module descriptions
