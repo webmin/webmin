@@ -13,7 +13,6 @@ Functions for creating configuration file backups. Some example code :
 BEGIN { push(@INC, ".."); };
 use strict;
 use warnings;
-use POSIX;
 use WebminCore;
 our (%text, $module_config_directory, %config);
 &init_config();
