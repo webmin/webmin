@@ -300,9 +300,8 @@ if ($mode == 0) {
 	$file = &date_subs($path);
 	}
 else {
-	my $fdate = strftime('%Y-%m-%d_%H-%M-%S', localtime());
 	my $ext = &has_command("gzip") ? '.tar.gz' : '.tar';
-	$file = &transname("backup_$fdate$ext");
+	$file = &transname_timestamped("backup", $ext);
 	}
 
 # Get module descriptions
