@@ -299,7 +299,8 @@ if ($mode == 0) {
 	$file = &date_subs($path);
 	}
 else {
-	$file = &transname();
+	my $ext = &has_command("gzip") ? '.tar.gz' : '.tar';
+	$file = &transname_timestamped("backup", $ext);
 	}
 
 # Get module descriptions

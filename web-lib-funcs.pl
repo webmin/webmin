@@ -343,6 +343,23 @@ push(@main::temporary_files, $rv);
 return $rv;
 }
 
+=head2 transname_timestamped([filename], [extension])
+
+Behaves exactly like transname, but returns a filename with current timestamp
+
+=item filename - Optional filename prefix to preppend
+
+=item extension - Optional extension for a filename to append
+
+=cut
+sub transname_timestamped
+{
+my ($fname, $fextension) = @_;
+my $fdate = strftime('%Y%m%d_%H%M%S', localtime());
+$fname = "${fname}-" if ($fname);
+return &transname("$fname$fdate$fextension");
+}
+
 =head2 trunc(string, maxlen)
 
 Truncates a string to the shortest whole word less than or equal to the

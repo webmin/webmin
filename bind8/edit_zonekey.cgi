@@ -101,7 +101,7 @@ else {
 
 	# Key algorithm
 	print &ui_table_row($text{'zonekey_alg'},
-		&ui_select("alg", "RSASHA1",
+		&ui_select("alg", "RSASHA256",
 			   [ &list_dnssec_algorithms() ]));
 
 	# Key size
