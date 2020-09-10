@@ -1360,7 +1360,8 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 		$use_ssl = 0;
 		local $urlhost = $config{'musthost'} || $host;
 		$urlhost = "[".$urlhost."]" if (&check_ip6address($urlhost));
-		local $url = "https://$urlhost:$port/";
+		local $url = $port == 443 ? "https://$urlhost/"
+					  : "https://$urlhost:$port/";
 		if ($config{'ssl_redirect'}) {
 			# Just re-direct to the correct URL
 			sleep(1);	# Give browser a change to finish
