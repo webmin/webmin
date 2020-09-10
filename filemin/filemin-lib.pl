@@ -49,10 +49,21 @@ sub get_paths {
         @remote_user_info = getpwnam($access{'work_as_user'});
         @remote_user_info ||
             &error("Unix user $access{'work_as_user'} does not exist!");
+        if(!-e $remote_user_info[7]) {
+            mkdir($remote_user_info[7]) or &error("$text{'error_creating_conf'}: $!");
+            chmod(0700, $remote_user_info[7]);
+            chown($remote_user_info[2], $remote_user_info[3], $remote_user_info[7]);
+        }
         &switch_to_unix_user(\@remote_user_info);
     }
     else {
         # The Webmin user we are connected as
+        @remote_user_info = getpwnam($remote_user);
+        if(!-e $remote_user_info[7]) {
+            mkdir($remote_user_info[7]) or &error("$text{'error_creating_conf'}: $!");
+            chmod(0700, $remote_user_info[7]);
+            chown($remote_user_info[2], $remote_user_info[3], $remote_user_info[7]);
+        }
         &switch_to_remote_user();
     }
 
