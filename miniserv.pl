@@ -492,6 +492,7 @@ if ($config{'inetd'}) {
 	}
 
 # Build list of sockets to listen on
+@listening_on_ports = ();
 $config{'bind'} = '' if ($config{'bind'} eq '*');
 if ($config{'bind'}) {
 	# Listening on a specific IP
@@ -606,6 +607,7 @@ for($i=0; $i<@sockets; $i++) {
 	else {
 		listen($fh, &get_somaxconn());
 		push(@socketfhs, $fh);
+		push(@listening_on_ports, $sockets[$i]->[1]);
 		$ipv6fhs{$fh} = $sockets[$i]->[2] eq PF_INET() ? 0 : 1;
 		}
 	}
@@ -1360,8 +1362,15 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 		$use_ssl = 0;
 		local $urlhost = $config{'musthost'} || $host;
 		$urlhost = "[".$urlhost."]" if (&check_ip6address($urlhost));
-		local $url = $port == 443 ? "https://$urlhost/"
-					  : "https://$urlhost:$port/";
+		local $wantport = $port;
+		if ($wantport == 80 &&
+		    &indexof(443, @listening_on_ports) >= 0) {
+			# Connection was to port 80, but since we are also
+			# accepting on port 443, redirect to that
+			$wantport = 443;
+			}
+		local $url = $wantport == 443 ? "https://$urlhost/"
+					      : "https://$urlhost:$wantport/";
 		if ($config{'ssl_redirect'}) {
 			# Just re-direct to the correct URL
 			sleep(1);	# Give browser a change to finish
