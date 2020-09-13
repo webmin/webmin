@@ -25,13 +25,20 @@ print &ui_table_row($text{'sendmail_smtp'},
 	&ui_radio("mode", $mode, [ [ 0, $text{'sendmail_smtp0'}."<br>" ],
 				   [ 1, $text{'sendmail_smtp1'}."<br>" ],
 				   [ 2, $text{'sendmail_smtp2'} ] ]).
-	" ".&ui_textbox("smtp", $mode == 2 ? $smtp : "", 40).
-	"<br>\n"."&nbsp;&nbsp;".
-	&ui_checkbox("ssl", 1, $text{'sendmail_ssl'}, $mconfig{'smtp_ssl'}).
-	"<br>\n"."&nbsp;&nbsp;".
+	" ".&ui_textbox("smtp", $mode == 2 ? $smtp : "", 40));
+
+
+# SMTP port
+print &ui_table_row($text{'sendmail_port'},
 	&ui_opt_textbox("port", $port, 6, $text{'sendmail_portdef'},
-					  $text{'sendmail_portsel'}),
-	undef, [ "valign=top","valign=middle" ]);
+					  $text{'sendmail_portsel'}));
+
+# SMTP encryption
+print &ui_table_row($text{'sendmail_ssl'},
+	&ui_select("ssl", int($mconfig{'smtp_ssl'}),
+		   [ [ 0, $text{'sendmail_ssl0'} ],
+		     [ 1, $text{'sendmail_ssl1'} ],
+		     [ 2, $text{'sendmail_ssl2'} ] ]));
 
 # SMTP login and password
 $user = $mconfig{'smtp_user'};
