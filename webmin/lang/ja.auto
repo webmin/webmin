@@ -102,6 +102,10 @@ notif_upgrade=Webminバージョン$1が利用可能になりましたが、バ�
 notif_updatemsg=Webminモジュールの更新に続く$1が利用可能になりました ..
 notif_reboot=最近のパッケージの更新（新しいカーネルバージョンなど）を完全に適用するには再起動が必要です。
 sendmail_desc=このページは、スケジュールされたバックアップやバックグラウンド監視などから、Webminが電子メールを送信する方法を制御します。また、Read User Mailモジュールを使用して送信される電子メールにも影響します。
+sendmail_port=SMTPポート
+sendmail_ssl0=暗号化しない
+sendmail_ssl1=常にTLSを使用する
+sendmail_ssl2=STARTTLSで切り替える
 sendmail_from=Webminからの電子メールの送信元アドレス
 sendmail_esmtp=SMTPサーバーのホスト名がないか、解決できない
 sendmail_esasl=<a href=$1>$2</a> Perlモジュールがインストールされていない場合、SMTP認証を有効にできません。
