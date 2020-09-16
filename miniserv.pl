@@ -2079,7 +2079,7 @@ if ($config{'userfile'}) {
 				&reset_byte_count();
 				&write_data("<html>\n");
 				&write_data("<head><title>Unauthorized</title></head>\n");
-				&write_data("<body><h1>Unauthorized</h1>\n");
+				&write_data("<body><h2 style='color: crimson; margin-bottom: -8px;'>Unauthorized</h2>\n");
 				&write_data("A password is required to access this\n");
 				&write_data("web server. Please try again. <p>\n");
 				&write_data("</body></html>\n");
@@ -2337,7 +2337,7 @@ if (-d _) {
 	&write_keep_alive(0);
 	&write_data("\r\n");
 	&reset_byte_count();
-	&write_data("<h1>Index of $simple</h1>\n");
+	&write_data("<h2 style='color: crimson; margin-bottom: -8px;'>Index of $simple</h2>\n");
 	&write_data("<pre>\n");
 	&write_data(sprintf "%-35.35s %-20.20s %-10.10s\n",
 			"Name", "Last Modified", "Size");
@@ -2753,7 +2753,7 @@ else {
 	&write_keep_alive(0);
 	&write_data("\r\n");
 	&reset_byte_count();
-	&write_data("<h1>Error - $msg</h1>\n");
+	&write_data("<h2 style='color: crimson; margin-bottom: -8px;'>Error - $msg</h2>\n");
 	if ($body) {
 		&write_data("<p>$body</p>\n");
 		}
