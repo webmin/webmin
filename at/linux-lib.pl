@@ -30,25 +30,27 @@ closedir($DIR);
 return @rv;
 }
 
-# create_atjob(user, time, commands, directory, send-email)
+# create_atjob(user, time, command, directory, send-email)
+# Create a new at job that runs the given command at the given time
 sub create_atjob
 {
-my @tm = localtime($_[1]);
+my ($user, $attime, $cmd, $dir, $email) = @_;
+my @tm = localtime($attime);
 my $date = sprintf "%2.2d:%2.2d %d.%d.%d",
 		$tm[2], $tm[1], $tm[3], $tm[4]+1, $tm[5]+1900;
-my $mailflag = $_[4] ? "-m" : "";
-my $cmd = "cd ".quotemeta($_[3])." ; at $mailflag $date";
-my @uinfo = getpwnam($_[0]);
+my $mailflag = $email ? "-m" : "";
+my $atcmd = "cd ".quotemeta($dir)." ; at $mailflag $date";
+my @uinfo = getpwnam($user);
 if ($uinfo[2] != $<) {
 	# Only SU if we are not already the user
-	$cmd = &command_as_user($_[0], 0, $cmd);
+	$atcmd = &command_as_user($user, 0, $atcmd);
 	}
 no strict "subs";
 &open_execute_command(AT, "$cmd >/dev/null 2>&1", 0);
-print AT $_[2];
+print AT $cmd,"\n";
 close(AT);
 use strict "subs";
-&additional_log('exec', undef, $cmd);
+&additional_log('exec', undef, $atcmd);
 }
 
 # delete_atjob(id)
