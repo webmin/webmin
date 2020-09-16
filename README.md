@@ -1,3 +1,7 @@
+[![Dependency](https://img.shields.io/librariesio/github/webmin/webmin)](https://libraries.io/github/webmin/webmin)
+[![Packages versions](https://repology.org/badge/latest-versions/webmin.svg)](https://repology.org/metapackage/webmin/versions)
+[![Packages](https://repology.org/badge/tiny-repos/webmin.svg)](https://repology.org/metapackage/webmin/versions)
+
 ## Contents
 * [Changelog](https://github.com/webmin/webmin/blob/master/CHANGELOG.md)
 * [About](#about)
