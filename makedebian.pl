@@ -92,8 +92,10 @@ if ($< == 0) {
 $size = int(`du -sk $tmp_dir`);
 
 # Create the control file
-@deps = ( "perl", "libnet-ssleay-perl", "openssl", "libauthen-pam-perl", "libpam-runtime", "libio-pty-perl", "apt-show-versions", "unzip", "shared-mime-info" );
+@deps = ( "perl", "libnet-ssleay-perl", "openssl", "libauthen-pam-perl", "libpam-runtime", "libio-pty-perl", "unzip", "shared-mime-info" );
 $deps = join(", ", @deps);
+@recs = ( "apt-show-versions" );
+$recs = join(", ", @recs);
 open(CONTROL, ">$control_file");
 print CONTROL <<EOF;
 Package: $product
@@ -102,6 +104,7 @@ Section: admin
 Priority: optional
 Architecture: all
 Depends: $deps
+Recommends: $recs
 Pre-Depends: perl
 Installed-Size: $size
 Maintainer: Jamie Cameron <jcameron\@webmin.com>
