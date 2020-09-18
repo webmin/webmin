@@ -103,6 +103,16 @@ elsif ($access{'uid'}) {
 	}
 }
 
+sub print_array
+{
+    print "Content-type: text/html\n\n";
+    my ($____v) = @_;
+
+    print '<pre style="color: red">';
+    use Data::Dumper;
+    print Dumper $____v;
+    print '</pre>';
+}
 # safe_process_exec(command, uid, gid, handle, [input], [fixtags], [bsmode],
 #		    [timeout], [safe])
 # Executes the given command as the given user/group and writes all output
@@ -170,7 +180,7 @@ else {
 		# run the command
 		delete($ENV{'FOREIGN_MODULE_NAME'});
 		delete($ENV{'SCRIPT_NAME'});
-		chdir(tempname_dir());
+		chdir(&tempname_dir()) if (&get_current_dir() =~ /$root_directory/);
 		exec("/bin/sh", "-c", $_[0]);
 		print "Exec failed : $!\n";
 		exit 1;
