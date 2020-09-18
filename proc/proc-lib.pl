@@ -103,16 +103,6 @@ elsif ($access{'uid'}) {
 	}
 }
 
-sub print_array
-{
-    print "Content-type: text/html\n\n";
-    my ($____v) = @_;
-
-    print '<pre style="color: red">';
-    use Data::Dumper;
-    print Dumper $____v;
-    print '</pre>';
-}
 # safe_process_exec(command, uid, gid, handle, [input], [fixtags], [bsmode],
 #		    [timeout], [safe])
 # Executes the given command as the given user/group and writes all output
