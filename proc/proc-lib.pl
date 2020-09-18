@@ -170,6 +170,7 @@ else {
 		# run the command
 		delete($ENV{'FOREIGN_MODULE_NAME'});
 		delete($ENV{'SCRIPT_NAME'});
+		chdir(tempname_dir());
 		exec("/bin/sh", "-c", $_[0]);
 		print "Exec failed : $!\n";
 		exit 1;
