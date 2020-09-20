@@ -235,6 +235,12 @@ if ($in{'adddir'} && $in{'root'}) {
 		}
 	push(@mems, $dirsect);
 	}
+foreach my $m (@mems) {
+	$m->{'indent'} = 4;
+	}
+foreach my $m (@{$dirsect->{'members'}}) {
+	$m->{'indent'} = 8;
+	}
 
 # Save to the file
 &save_directive_struct(undef, $virt, $conf, $conf);

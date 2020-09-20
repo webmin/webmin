@@ -543,6 +543,7 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 			%v = (	"line", $change->{'line'}+1,
 				"eline", $change->{'line'}+1,
 				"file", $change->{'file'},
+				"indent", $change->{'indent'},
 				"type", 0,
 				"name", $_[0],
 				"value", $v,
@@ -552,7 +553,8 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 			splice(@{$_[2]}, $j, 0, \%v);
 			$lref = &read_file_lines($v{'file'});
 			push(@files, $v{'file'});
-			splice(@$lref, $v{'line'}, 0, "$_[0] $v");
+			splice(@$lref, $v{'line'}, 0,
+				(" " x $v{'indent'})."$_[0] $v");
 			$change = \%v;
 			}
 		else {
@@ -573,6 +575,7 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 			%v = (	"line", $l,
 				"eline", $l,
 				"file", $f,
+				"indent", $_[2]->[$j-1]->{'indent'},
 				"type", 0,
 				"name", $_[0],
 				"value", $v,
@@ -580,7 +583,8 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 			&renumber($_[3], $l, $f, 1);
 			splice(@{$_[2]}, $j, 0, \%v);
 			push(@files, $f);
-			splice(@$lref, $l, 0, "$_[0] $v");
+			splice(@$lref, $l, 0, 
+				(" " x $v{'indent'})."$_[0] $v");
 			}
 		}
 	elsif ($i >= @{$_[1]}) {
@@ -1409,13 +1413,14 @@ sub directive_lines
 local @rv;
 foreach $d (@_) {
 	next if ($d->{'name'} eq 'dummy');
+	my $indent = (" " x $d->{'indent'});
 	if ($d->{'type'}) {
-		push(@rv, "<$d->{'name'} $d->{'value'}>");
+		push(@rv, $indent."<$d->{'name'} $d->{'value'}>");
 		push(@rv, &directive_lines(@{$d->{'members'}}));
-		push(@rv, "</$d->{'name'}>");
+		push(@rv, $indent."</$d->{'name'}>");
 		}
 	else {
-		push(@rv, "$d->{'name'} $d->{'value'}");
+		push(@rv, $indent."$d->{'name'} $d->{'value'}");
 		}
 	}
 return @rv;
