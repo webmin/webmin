@@ -46,7 +46,7 @@ if ($uinfo[2] != $<) {
 	$atcmd = &command_as_user($user, 0, $atcmd);
 	}
 no strict "subs";
-&open_execute_command(AT, "$cmd >/dev/null 2>&1", 0);
+&open_execute_command(AT, "$atcmd >/dev/null 2>&1", 0);
 print AT $cmd,"\n";
 close(AT);
 use strict "subs";
