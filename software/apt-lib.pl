@@ -282,6 +282,32 @@ if (&has_command("apt-show-versions")) {
 		}
 	return @rv;
 	}
+elsif (&has_command("apt")) {
+	# Use the apt list command
+	local @rv;
+	&clean_language();
+	&open_execute_command(PKGS, "apt list --upgradable 2>/dev/null", 1, 1);
+	while(<PKGS>) {
+		if (/^(\S+)\/(\S+)\s+(\S+)\s+(\S+)\s+\[upgradable\s+from:\s+(\S+)\]/ && !$holds{$1}) {
+			local $pkg = { 'name' => $1,
+				       'source' => $2,
+				       'version' => $3,
+				       'arch' => $4 };
+			if ($pkg->{'version'} =~ s/^(\S+)://) {
+				$pkg->{'epoch'} = $1;
+				}
+			$pkg->{'source'} =~ s/,.*$//;
+			push(@rv, $pkg);
+			}
+		}
+	close(PKGS);
+	&reset_environment();
+	@rv = &filter_held_packages(@rv);
+	foreach my $pkg (@rv) {
+		$pkg->{'security'} = 1 if ($pkg->{'source'} =~ /security/i);
+		}
+	return @rv;
+	}
 else {
 	# Need to manually compose by calling dpkg and apt-cache showpkg
 	local %packages;
