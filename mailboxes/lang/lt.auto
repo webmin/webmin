@@ -2,7 +2,6 @@ index_title=Perskaitykite vartotojo paštą
 index_none=Negalite skaityti el. Laiškų jokiems šios sistemos vartotojams.
 index_header=Vartotojo pašto dėžutės
 index_empty=Nėra pašto
-index_return=vartotojų sąrašas
 index_esystem=Jūsų sistemoje neaptikta nė vieno palaikomo pašto serverio („Exim“, „Qmail“, „Postfix“ ir „Sendmail“). Norėdami nustatyti pašto serverį ir galbūt pašto kelius rankiniu būdu, turėsite pakoreguoti <a href='$1'>modulio konfigūraciją</a>.
 index_esystem2=Pašto sistemoje, nustatytoje <a href='$1'>modulio konfigūracijoje</a>, jūsų sistemoje nerasta. Norėdami naudoti teisingą serverį, turėsite pakoreguoti konfigūraciją.
 index_esystem3=Įvyko klaida susisiekiant su pašto sistema, nustatyta <a href='$1'>modulio konfigūracijoje</a>: $2.

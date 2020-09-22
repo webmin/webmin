@@ -2,7 +2,6 @@ index_title=Sendmail 組態
 index_none=您不被允許任何此系統上使用者讀取郵件
 index_header=使用者信箱
 index_empty=無郵件
-index_return=Sendmail 組態
 index_esystem=在您的系統上找不到支援的郵件伺服器(Exim, Qmail, Postfix 和 Sendmail)，您可以手動調整<a href='$1'>模組組態</a>來設定郵件伺服器和郵件路徑
 index_esystem2=在您的系統上找不到<a href='$1'>模組組態</a>中設定的郵件伺服器，您需要調整正確的伺服器組態。
 index_system2=郵件伺服器:Qmail

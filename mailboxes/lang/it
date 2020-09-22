@@ -2,7 +2,6 @@ index_title=Leggi la posta degli utenti
 index_none=Non hai i permessi per leggere la posta degli utenti su questo sistema.
 index_header=Caselle di posta dell'utente
 index_empty=Nessun messaggio
-index_return=lista degli utenti
 index_esystem=Nessun server di posta supportato (Exim, Qmail, Postfix and Sendmail) è stato individuato nel tuo sistema. E' necessario verificare la <a href='$1'>configurazione del modulo</a> per impostare manualmente il server di posta eventualmente installato e i possibili percorsi in cui è salvata la posta.
 index_esystem2=Il server di posta impsotato nella <a href='$1'>configurazione del modulo</a> non è stato trovato nel sistema. E' necessario verificare la configurazione impostando il aserver corretto da usare.
 index_esystem3=Si è verificato un errore durante la comunicazione con il sistema di posta impostato nella <a href='$1'>configurazione del modulo</a>: $2

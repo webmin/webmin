@@ -1,7 +1,6 @@
 index_title=Levelek olvasása
 index_header=Postafiókok (felhasználói)
 index_empty=Nincs levél
-index_return=Felhasználók listája
 index_system6=Levelező szerver: Exim
 index_system5=Levelező szerver: Qmail+VPopMail
 index_system4=Levelező szerver: Qmail+LDAP

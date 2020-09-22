@@ -2,7 +2,6 @@ index_title=Ler correio do usuário
 index_none=Você não tem permissão para ler e-mails para nenhum usuário neste sistema.
 index_header=Caixas de correio do usuário
 index_empty=Sem correio
-index_return=Lista de usuários
 index_esystem=Nenhum dos servidores de correio suportados (Exim, Qmail, Postfix e Sendmail) foi detectado no seu sistema. Você precisará ajustar a <a href='$1'>configuração do módulo</a> para definir o servidor de correio e possivelmente os caminhos de correio manualmente.
 index_esystem2=O servidor de correio definido na <a href='$1'>configuração do módulo</a> não foi encontrado no seu sistema. Você precisará ajustar a configuração para usar o servidor correto.
 index_esystem3=Ocorreu um erro ao entrar em contato com o sistema de correio definido na <a href='$1'>configuração do módulo</a>: $2.

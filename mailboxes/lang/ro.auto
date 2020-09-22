@@ -2,7 +2,6 @@ index_title=Citiți e-mailul utilizatorului
 index_none=Nu aveți voie să citiți e-mailuri pentru niciun utilizator din acest sistem.
 index_header=Cutiile poștale ale utilizatorului
 index_empty=Fără mail
-index_return=lista de utilizatori
 index_esystem=Niciunul dintre serverele de e-mail acceptate (Exim, Qmail, Postfix și Sendmail) nu a fost detectat pe sistemul dvs. Va trebui să ajustați configurația modulului <a href='$1'></a> pentru a seta serverul de poștă și, eventual, căile de e-mail.
 index_esystem2=Serverul de e-mail setat în configurația modulului <a href='$1'></a> nu a fost găsit în sistemul tău. Va trebui să ajustați configurația pentru a utiliza serverul corect.
 index_esystem3=A apărut o eroare la contactarea sistemului de e-mail setat în configurația modulului <a href='$1'></a>: $2.

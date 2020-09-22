@@ -2,7 +2,6 @@ index_title=Đọc thư người dùng
 index_none=Bạn không được phép đọc email cho bất kỳ người dùng nào trên hệ thống này.
 index_header=Hộp thư người dùng
 index_empty=Không có thư
-index_return=Danh sách người dùng
 index_esystem=Không có máy chủ thư được hỗ trợ (Exim, Qmail, Postfix và Sendmail) được phát hiện trên hệ thống của bạn. Bạn sẽ cần điều chỉnh <a href='$1'>cấu hình mô-đun</a> để đặt máy chủ thư và có thể đường dẫn thư theo cách thủ công.
 index_esystem2=Không tìm thấy máy chủ thư được đặt trong cấu hình mô-đun <a href='$1'> trên hệ thống của bạn. Bạn sẽ cần điều chỉnh cấu hình để sử dụng đúng máy chủ.
 index_esystem3=Đã xảy ra lỗi khi liên hệ với hệ thống thư được đặt trong cấu hình mô-đun <a href='$1'></a>: $2.

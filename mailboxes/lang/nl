@@ -2,7 +2,6 @@ index_title=Lees Gebruikers Email
 index_none=U bent niet bevoegd om op dit systeem email van gebruikers te lezen.
 index_header=Gebruikers mailboxen
 index_empty=Geen email
-index_return=gebruikerslijst
 index_esystem=Geen van de ondersteunende email servers (Exim, Qmail, Postfix and Sendmail) zijn gedetecteerd op uw systeem. U moet de <a href='$1'>module configuratie</a> handmatig veranderen om het pad naar de email server te corrigeren.
 index_esystem2=De email server waarnaar verwezen word in de <a href='$1'>module configuratie</a> is niet gevonden op uw systeem. U moet uw configuratie veranderen om de juiste server te gebruiken.
 index_esystem3=Er onstond een fout tijdens het contact maken met het email systeem waarnaar verwezen word in de <a href='$1'>module configuratie</a> : $2.

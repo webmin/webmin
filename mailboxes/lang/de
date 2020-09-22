@@ -2,7 +2,6 @@ index_title=Lese Benutzer-Mail
 index_none=Sie dürfen die Mails der Benutzer auf diesem System nicht lesen.
 index_header=Benutzer-Mailboxen
 index_empty=Keine Mail
-index_return=Benutzerliste
 index_esystem=Keinen der unterstuetzten Mailserver (Exim, Qmail, Postfix and Sendmail) auf dem System gefunden. Bitte in der <a href='$1'>Module Konfiguration</a> den Mailserver und die Mail Pfade anpassen.
 index_esystem2=Der in der <a href='$1'>Module Konfiguration</a> angegeben Mailserver wurde nicht gefunden. Bitte die Konfiguration anpasen.
 index_esystem3=Bei Ansprechen des in der <a href='$1'>Module Konfiguration</a> angegebenen Mailservers gab es folgenden Fehler: $2.

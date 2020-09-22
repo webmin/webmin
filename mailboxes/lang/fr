@@ -2,7 +2,6 @@ index_title=Lire les mails des usagers
 index_none=Vous n'êtes pas autorisé à lire des emails pour tous les utilisateurs de ce système.
 index_header=Boîtes aux lettres des usagers
 index_empty=Pas de courier
-index_return=liste des utilisateurs
 index_esystem=Aucun des serveurs de messagerie pris en charge (Exim, Qmail, Postfix et Sendmail) ont été détectés sur votre système. Vous aurez besoin d'ajuster la <a href='$1'>configuration du module</a> pour définir le serveur de messagerie et éventuellement chemins de messagerie manuellement.
 index_esystem2=Le serveur de messagerie dans le <a href='$1'>configuration du module</a> n'a pas été trouvé sur votre système. Vous aurez besoin d'ajuster la configuration pour utiliser le serveur correct.
 index_esystem3=Une erreur est survenue en contact avec le système de messagerie dans le <a href='$1'>configuration du module</a> : $2.

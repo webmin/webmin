@@ -2,7 +2,6 @@ index_title=Leer correo de usuario
 index_none=No está permitido leer correos electrónicos de ningún usuario en este sistema.
 index_header=Buzones de usuario
 index_empty=Sin correo
-index_return=Lista de usuarios
 index_esystem=Ninguno de los servidores de correo compatibles (Exim, Qmail, Postfix y Sendmail) se detectaron en su sistema. Deberá ajustar la <a href='$1'>configuración del módulo</a> para configurar el servidor de correo y posiblemente las rutas de correo manualmente.
 index_esystem2=El servidor de correo configurado en la <a href='$1'>configuración del módulo</a> no se encontró en su sistema. Deberá ajustar la configuración para utilizar el servidor correcto.
 index_esystem3=Se produjo un error al contactar con el sistema de correo configurado en la <a href='$1'>configuración del módulo</a>: $2.

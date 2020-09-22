@@ -2,7 +2,6 @@ index_title=Preberite uporabniško pošto
 index_none=V tem sistemu ne smete brati e-pošte nobenim uporabnikom.
 index_header=Uporabniški nabiralniki
 index_empty=Brez pošte
-index_return=seznam uporabnikov
 index_esystem=V vašem sistemu ni bilo zaznanega nobenega od podprtih poštnih strežnikov (Exim, Qmail, Postfix in Sendmail). Za nastavitev poštnega strežnika in morda poštnih poti ročno nastavite konfiguracijo <a href='$1'>modula</a>.
 index_esystem2=Poštnega strežnika, nastavljenega v konfiguraciji modula <a href='$1'></a>, ni bilo mogoče najti v vašem sistemu. Za uporabo pravilnega strežnika boste morali prilagoditi konfiguracijo.
 index_esystem3=Pri stiku s poštnim sistemom, nastavljenim v konfiguraciji modula <a href='$1'>, je prišlo do napake</a>: $2.

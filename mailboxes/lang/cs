@@ -2,7 +2,6 @@ index_title=Čtení uživatelské pošty
 index_none=Nemáte oprávnění číst poštu žádného uživatele tohoto systému.
 index_header=Uživatelské schránky
 index_empty=Žádný mail
-index_return=seznam uživatele
 index_esystem=Nebyl detekován žádný z podporovaných serverů (Exim, Qmail, Postfix a Sendmail). Musíte upravit <a href='$1'>konfiguraci modulu</a> a nastavit mail server ručně.
 index_esystem2=Mail server nastavený v <a href='$1'>konfiguraci modulu</a> nebyl ve vašem systému nalezen. Musíte upravit konfiguraci a nastavit server správně.
 index_esystem3=Vyskytla se chyba dotykající se poštovního systému nastaveného v <a href='$1'>konfigiraci modulu</a> : $2.

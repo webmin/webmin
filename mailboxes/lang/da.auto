@@ -2,7 +2,6 @@ index_title=Læs brugerpost
 index_none=Du har ikke tilladelse til at læse e-mail for nogen brugere på dette system.
 index_header=Brugerpostkasser
 index_empty=Ingen mail
-index_return=brugerliste
 index_esystem=Ingen af de understøttede postserver (Exim, Qmail, Postfix og Sendmail) blev fundet på dit system. Du skal justere <a href='$1'>modulkonfiguration</a> for at indstille mailserveren og muligvis mailstier manuelt.
 index_esystem2=Mailserveren, der er indstillet i <a href='$1'>modulkonfiguration</a>, blev ikke fundet på dit system. Du skal justere konfigurationen for at bruge den rigtige server.
 index_esystem3=Der opstod en fejl ved henvendelse til postsystemet, der er konfigureret i <a href='$1'>modulkonfiguration</a>: $2.

@@ -2,7 +2,6 @@ index_title=صارف میل پڑھیں
 index_none=آپ کو اس سسٹم میں کسی بھی صارف کے لئے ای میل پڑھنے کی اجازت نہیں ہے۔
 index_header=صارف کے میل باکس
 index_empty=کوئی میل نہیں ہے
-index_return=صارف کی فہرست
 index_esystem=None of the supported mail servers (Exim, Qmail, Postfix and Sendmail) were detected on your system. You will need to adjust the <a href='$1'>module configuration</a> to set the mail server and possibly mail paths manually.
 index_esystem2=The mail server set in the <a href='$1'>module configuration</a> was not found on your system. You will need to adjust the configuration to use the correct server.
 index_esystem3=An error occurred contacting the mail system set in the <a href='$1'>module configuration</a> : $2.

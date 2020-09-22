@@ -2,7 +2,6 @@ index_title=Lectura del Correu d'Usuaris
 index_none=No tens permís per llegir el correu de cap usuari d'aquest sistema.
 index_header=Bústies d'usuaris
 index_empty=No hi ha correu
-index_return=a la llista d'usuaris
 index_esystem=No s'ha detectat al sistema cap dels servidors de correu suportats (Exim, Qmail, Postfix i Sendmail). Hauràs d'ajustar la <a href='$1'>configuració del mòdul</a> per configurar manualment el servidor de correu i possiblement els camins del correu.
 index_esystem2=No s'ha trobat al sistema el servidor de correu establert a la <a href='$1'>configuració del mòdul</a>. Hauràs de modificar la configuració per que utilitzi el servidor correcte.
 index_esystem3=S'ha produït un error en contactar el sistema de correu establert a la <a href='$1'>configuració del mòdul</a>: $2.

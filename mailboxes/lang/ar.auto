@@ -2,7 +2,6 @@ index_title=قراءة بريد المستخدم
 index_none=غير مسموح لك بقراءة البريد الإلكتروني لأي مستخدم على هذا النظام.
 index_header=علب بريد المستخدم
 index_empty=لا يوجد بريد
-index_return=قائمة المستخدم
 index_esystem=None of the supported mail servers (Exim, Qmail, Postfix and Sendmail) were detected on your system. You will need to adjust the <a href='$1'>module configuration</a> to set the mail server and possibly mail paths manually.
 index_esystem2=The mail server set in the <a href='$1'>module configuration</a> was not found on your system. You will need to adjust the configuration to use the correct server.
 index_esystem3=An error occurred contacting the mail system set in the <a href='$1'>module configuration</a> : $2.

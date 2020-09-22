@@ -2,7 +2,6 @@ index_title=Kullanıcı Postasını Oku
 index_none=Bu sistemde herhangi bir kullanıcının e-posta'sını okuma hakkınız yoktur.
 index_header=Kullanıcı posta kutuları
 index_empty=Posta yok
-index_return=kullanıcı listesi
 index_esystem=Sisteminizde desteklenen posta sunucuları (Exim, Qmail, Postfix ve Sendmail) yoktur. Posta sunucusunu ve mail yolunu açmak için <a href='$1'>modül yapılandırması</a>'nı elle ayarlamaya gereksinim duyacaksınız.
 index_esystem2=<a href='$1'>modül yapılandırma</a>'daki mail sunucu ayarı sisteminizde bulunamadı. Doğru sunucuyu kullanmak için bu yapılandırmayı ayarlamanız gerekmektedir.
 index_esystem3=<a href='$1'>bu adresteki</a> posta sistem ayarına baglanırken hata oluştu : $2

@@ -2,7 +2,6 @@ index_title=Baca Mel Pengguna
 index_none=Anda tidak dibenarkan membaca e-mel untuk mana-mana pengguna di sistem ini.
 index_header=Peti mel pengguna
 index_empty=Tiada mel
-index_return=senarai pengguna
 index_esystem=Tiada pelayan mel yang disokong (Exim, Qmail, Postfix dan Sendmail) dikesan pada sistem anda. Anda perlu melaraskan konfigurasi modul <a href='$1'></a> untuk menetapkan pelayan mel dan kemungkinan laluan mel secara manual.
 index_esystem2=Pelayan mel yang ditetapkan dalam konfigurasi modul <a href='$1'></a> tidak dijumpai pada sistem anda. Anda perlu melaraskan konfigurasi untuk menggunakan pelayan yang betul.
 index_esystem3=Ralat berlaku menghubungi sistem mel yang ditetapkan dalam konfigurasi modul <a href='$1'></a>: $2.

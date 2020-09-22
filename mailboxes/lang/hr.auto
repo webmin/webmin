@@ -2,7 +2,6 @@ index_title=Pročitajte korisničku poštu
 index_none=Nije vam dopušteno čitati e-poštu bilo kojim korisnicima u ovom sustavu.
 index_header=Korisničke poštanske sandučiće
 index_empty=Nema pošte
-index_return=popis korisnika
 index_esystem=Nijedan od podržanih poslužitelja e-pošte (Exim, Qmail, Postfix i Sendmail) nije otkriven u vašem sustavu. Trebat ćete prilagoditi konfiguraciju <a href='$1'>modula</a> da biste ručno postavili poslužitelj e-pošte i eventualno staze pošte.
 index_esystem2=Poslužitelj e-pošte postavljen u konfiguraciji modula <a href='$1'></a> nije pronađen u vašem sustavu. Morat ćete prilagoditi konfiguraciju za upotrebu ispravnog poslužitelja.
 index_esystem3=Došlo je do pogreške u kontaktu s poštanskim sustavom postavljenim u konfiguraciji modula <a href='$1'></a>: $2.
