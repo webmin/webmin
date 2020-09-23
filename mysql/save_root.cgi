@@ -12,14 +12,12 @@ $in{'newpass1'} eq $in{'newpass2'} || &error($text{'root_epass2'});
 $in{'newpass1'} =~ /\\/ && &error($text{'user_eslash'});
 
 # Update MySQL
-$esc = &escapestr($in{'newpass1'});
 $user = $mysql_login || "root";
 $d = &execute_sql_safe($master_db,
 	"select host from user where user = ?", $user);
 @hosts = map { $_->[0] } @{$d->{'data'}};
 foreach my $host (@hosts) {
-	$sql = "set password for '".$user."'\@'".$host."' = ".
-	       "$password_func('$esc')";
+	$sql = get_change_pass_sql($in{'newpass1'}, $user, $host);
 	eval {
 		local $main::error_must_die = 1;
 		&execute_sql_logged($master_db, $sql);
