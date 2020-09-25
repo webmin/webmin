@@ -3233,8 +3233,7 @@ local @rv = map { undef } @$mails;
 local @needbody;
 for(my $i=0; $i<scalar(@rv); $i++) {
 	local $mail = $mails->[$i];
-	local $mid = $mail->{'header'}->{'message-id'} ||
-		     $mail->{'id'};
+	local $mid = &get_mail_message_id($mail);
 	if ($mid && defined($hasattach{$mid})) {
 		# Already cached .. use it
 		$rv[$i] = $hasattach{$mid};
@@ -3297,14 +3296,25 @@ for(my $i=0; $i<scalar(@rv); $i++) {
 # Update the cache
 for(my $i=0; $i<scalar(@rv); $i++) {
 	local $mail = $mails->[$i];
-	local $mid = $mail->{'header'}->{'message-id'} ||
-		     $mail->{'id'};
+	local $mid = &get_mail_message_id($mail);
 	if ($mid && !defined($hasattach{$mid})) {
 		$hasattach{$mid} = $rv[$i]
 		}
 	}
 
 return wantarray ? @rv : $rv[0];
+}
+
+# get_mail_message_id(&mail)
+# Returns a message ID suitable for use in a DBM
+sub get_mail_message_id
+{
+my ($mail) = @_;
+my $mid = $mail->{'header'}->{'message-id'} || $mail->{'id'};
+if (length($mid) > 1024) {
+	$mid = substr($mid, 0, 1024);
+	}
+return $mid;
 }
 
 # show_delivery_status(&dstatus)
@@ -3471,7 +3481,7 @@ if ($read&4) {
 if ($showto && defined(&open_dsn_hash)) {
 	# Show icons if DSNs received
 	&open_dsn_hash();
-	local $mid = $mail->{'header'}->{'message-id'};
+	local $mid = &get_mail_message_id($mail);
 	if ($dsnreplies{$mid}) {
 		push(@rv, "<img src=images/dsn.gif alt='R'>");
 		}
