@@ -388,7 +388,7 @@ my ($d) = @_;
 my $bd = $d;
 while ($bd =~ /\./) {
 	my $z = &bind8::get_zone_name($bd, "any");
-	if ($z) {
+	if ($z && $z->{'file'} && $z->{'type'} eq 'master') {
 		return ($z, $bd);
 		}
 	$bd =~ s/^[^\.]+\.//;
