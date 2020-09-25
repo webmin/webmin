@@ -1,6 +1,5 @@
 index_none=Nie możesz czytać wiadomości e-mail dla użytkowników w tym systemie.
 index_empty=Brak poczty
-index_return=Lista użytkowników
 index_esystem=Żaden z obsługiwanych serwerów pocztowych (Exim, Qmail, Postfix i Sendmail) nie został wykryty w twoim systemie. Konieczne będzie dostosowanie <a href='$1'>konfiguracji modułu</a>, aby ręcznie ustawić serwer poczty i ewentualnie ścieżki poczty.
 index_esystem2=Serwer poczty ustawiony w <a href='$1'>konfiguracji modułu</a> nie został znaleziony w twoim systemie. Będziesz musiał dostosować konfigurację, aby używać poprawnego serwera.
 index_esystem3=Wystąpił błąd podczas łączenia się z systemem poczty ustawionym w konfiguracji modułu <a href='$1'></a>: $2.

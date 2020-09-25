@@ -2,7 +2,6 @@ index_title=Les brukers e-post
 index_none=Du har ikke tilgang til å lese e-post for noen bruker på dette systemet.
 index_header=Bruker-postbokser
 index_empty=Ingen e-post
-index_return=brukerliste
 index_esystem=Ingen av de støttede e-post tjenerne (Exim, Qmail, Postfix og Sendmail) ble oppdaget på systemet ditt. Du må endre <a href='$1'>modulkonfigurasjonen</a> til å angi e-post tjener og muligens e-post stier manuelt
 index_esystem2=Malt tjener satt i <a href='$1'>modulkonfigurasjonen</a> ble ikke funnet på systemet ditt. Du må endre konfigurasjonen slik at du bruker riktig tjener.
 index_esystem3=En feil oppstod under forsøket på å kontakte e-post systemet satt i <a href='$1'>modulkonfigurasjonen</a> : $2

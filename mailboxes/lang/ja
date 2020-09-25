@@ -2,7 +2,6 @@ index_title=ユーザ E メールを読む
 index_none=You are not allowed to read email for any users on this system.
 index_header=ユーザメールボックス
 index_empty=No mail
-index_return=ユーザ一覧
 index_esystem=None of the supported mail servers (Qmail, Postfix and Sendmail) were detected on your system. You will need to adjust the <a href='$1'>module configuration</a> to set the mail server and possibly mail paths manually.
 index_esystem2=The mail server set in the <a href='$1'>module configuration</a> was not found on your system. You will need to adjust the configuration to use the correct server.
 index_esystem3=An error occurred contacting the mail system set in the <a href='$1'>module configuration</a> : $2.

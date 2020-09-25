@@ -2,7 +2,6 @@ index_title=Lue sähköposteja
 index_none=Ei oikeuksia lukea kenenkään käyttäjän sähköposteja tässä järjestelmässä.
 index_header=Sähköpostilaatikot
 index_empty=Ei sähköposteja
-index_return=käyttäjälistaan
 index_system2=Sähköpostipalvelin: Qmail
 index_system1=Sähköpostipalvelin: Sendmail
 index_system0=Sähköpostipalvelin: Postfix

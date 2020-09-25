@@ -1505,5 +1505,41 @@ my $conf = &get_mysql_config();
 return &unique(map { $_->{'file'} } @$conf);
 }
 
+# get_change_pass_sql(unescaped_plaintext_password, user, host)
+# Get the right query for changing user password
+sub get_change_pass_sql
+{
+my ($unescaped_plainpass, $user, $host) = @_;
+my $plugin = &get_mysql_plugin(1);
+my $escaped_pass = &escapestr($unescaped_plainpass);
+my $sql;
+my ($ver, $variant) = &get_remote_mysql_variant();
+my $mysql_mariadb_with_auth_string = 
+   $variant eq "mariadb" && &compare_version_numbers($ver, "10.2") >= 0 ||
+   $variant eq "mysql" && &compare_version_numbers($ver, "5.7.6") >= 0;
+if ($mysql_mariadb_with_auth_string) {
+	$sql = "alter user '$user'\@'$host' identified $plugin by '$escaped_pass'";
+	}
+else {
+	$sql = "set password for '".$user."'\@'".$host."' = ".
+	       "$password_func('$escaped_pass')";
+	}
+return $sql;
+}
+
+# get_mysql_plugin(query_ready)
+# Returns the name of the default plugin used by MySQL/MariaDB
+sub get_mysql_plugin
+{
+my ($query) = @_;
+my @plugin = &execute_sql($master_db, 
+    "show variables LIKE '%default_authentication_plugin%'");
+my $plugin = $plugin[0]->{'data'}[0][1];
+if ($plugin && $query) {
+	$plugin = " with $plugin ";
+	}
+return $plugin;
+}
+
 1;
 

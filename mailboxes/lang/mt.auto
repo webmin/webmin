@@ -2,7 +2,6 @@ index_title=Aqra Mail Utent
 index_none=M'għandekx permess taqra email għal xi utenti fuq din is-sistema.
 index_header=Kaxxi tal-posta tal-utenti
 index_empty=Ebda posta
-index_return=lista tal-utenti
 index_esystem=L-ebda wieħed mis-servers ta 'posta appoġġjata (Exim, Qmail, Postfix u Sendmail) ma ġie osservat fis-sistema tiegħek. Ikollok bżonn taġġusta l- <a href='$1'>konfigurazzjoni tal-modulu</a> biex tissettja s-server tal-posta u possibilment il-mogħdijiet tal-posta bl-idejn.
 index_esystem2=Is-server tal-posta ssettjat fil-konfigurazzjoni tal-modulu <a href='$1'></a> ma nstabx fis-sistema tiegħek. Ikollok bżonn taġġusta l-konfigurazzjoni biex tuża s-server korrett.
 index_esystem3=Sar żball meta kkuntattjat lis-sistema tal-posta stabbilita fil-konfigurazzjoni tal-modulu <a href='$1'></a>: $2.

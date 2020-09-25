@@ -32,8 +32,8 @@ if (!$in{'new'} && &foreign_check("virtual-server")) {
 	$d ||= &virtual_server::get_domain_by("user", $u->[1],
                                               "parent", "");
 	if ($d) {
-		print "<b>",&text('user_vwarning',
-			&virtual_server::show_domain_name($d)),"</b><p>\n";
+		print &ui_alert_box(&text('user_vwarning', "<tt>" .
+			&virtual_server::show_domain_name($d) . "</tt>"), "warn");
 		}
 	}
 

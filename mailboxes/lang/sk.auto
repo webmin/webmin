@@ -2,7 +2,6 @@ index_title=Prečítajte si poštu používateľa
 index_none=V tomto systéme nemôžete čítať e-maily pre žiadnych používateľov.
 index_header=Poštové schránky používateľa
 index_empty=Žiadna pošta
-index_return=zoznam používateľov
 index_esystem=Vo vašom systéme nebol zistený žiadny z podporovaných poštových serverov (Exim, Qmail, Postfix a Sendmail). Ak chcete nastaviť poštový server a prípadne poštové cesty manuálne, budete musieť upraviť <a href='$1'>konfiguráciu modulu</a>.
 index_esystem2=Poštový server nastavený v <a href='$1'>konfigurácii modulu</a> nebol vo vašom systéme nájdený. Aby ste mohli používať správny server, budete musieť upraviť konfiguráciu.
 index_esystem3=Pri kontaktovaní poštového systému nastaveného v konfigurácii modulu <a href='$1'>došlo k chybe</a>: $2.

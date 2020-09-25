@@ -4,3 +4,4 @@ timeserver_hardware=1
 zone_style=linux
 hwclock_flags=sysconfig
 ntp_only=1
+timeserver=0.pool.ntp.org

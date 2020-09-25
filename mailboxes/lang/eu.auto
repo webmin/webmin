@@ -2,7 +2,6 @@ index_title=Irakurri Erabiltzailearen posta
 index_none=Ez duzu baimenik sistema honetako erabiltzaileentzako posta elektronikoa irakurtzeko.
 index_header=Erabiltzaileen postontziak
 index_empty=Ez dago posta
-index_return=erabiltzaileen zerrenda
 index_esystem=Ez da onartzen zure sisteman posta elektronikoko zerbitzaririk (Exim, Qmail, Postfix eta Sendmail). <a href='$1'>moduluaren konfigurazioa</a> doitu beharko duzu posta zerbitzaria eta seguru asko posta bideak eskuz konfiguratzeko.
 index_esystem2=<a href='$1'>moduluaren konfigurazioan ezarritako posta-zerbitzaria</a> ez da zure sisteman aurkitu. Konfigurazioa doitu beharko duzu zerbitzari egokia erabiltzeko.
 index_esystem3=Errore bat gertatu da <a href='$1'> moduluaren konfigurazioan ezarritako posta-sistemarekin harremanetan: $2.

@@ -2,7 +2,6 @@ index_title=사용자 메일 읽기
 index_none=이 시스템의 다른 사용자의 메일을 읽을 수 없습니다.
 index_header=사용자 메일박스
 index_empty=메일이 없습니다.
-index_return=사용자 리스트
 index_esystem=메일 서버(Exim, Qmail, Postfix, Sendmail)를 시스템에서 찾을 수 없습니다. <a href='$1'>모듈 구성</a>에 메일 서버를 설정하고, 메일 경로를 수동으로 지정해 줘야 할 수도 있습니다.
 index_esystem2=시스템에서 <a href='$1'>모듈 구성</a>에 설정되어 있는 메일 서버를 찾을 수 없습니다. 설정에서 정확한 서버를 재설정 하십시오.
 index_esystem3=<a href='$1'>모듈 구성</a>에 설정되어 있는 메일 시스템에 연결하는 동안 에러가 발생했습니다 :$2.

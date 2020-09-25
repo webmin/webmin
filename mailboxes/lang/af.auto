@@ -2,7 +2,6 @@ index_title=Lees gebruikerspos
 index_none=U mag nie e-pos vir enige gebruikers op hierdie stelsel lees nie.
 index_header=Gebruiker se posbusse
 index_empty=Geen pos nie
-index_return=gebruikerslys
 index_esystem=Nie een van die ondersteunde e-posbedieners (Exim, Qmail, Postfix en Sendmail) is op u stelsel opgespoor nie. U moet die <a href='$1'>modulekonfigurasie</a> aanpas om die e-posbediener en moontlik die pospaaie met die hand in te stel.
 index_esystem2=Die e-posbediener wat in die <a href='$1'>module-opstelling</a> gestel is, is nie op u stelsel gevind nie. U moet die konfigurasie aanpas om die regte bediener te gebruik.
 index_esystem3=Kon nie die e-posstelsel in die <a href='$1'>module-opstelling</a> kontak nie: $2.

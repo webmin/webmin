@@ -2,7 +2,6 @@ index_title=阅读用户邮件
 index_none=您不允许在此系统上为任何用户阅读电子邮件。
 index_header=用户邮箱
 index_empty=没有邮件
-index_return=用户清单
 index_esystem=在系统上未检测到任何受支持的邮件服务器（Exim，Qmail，Postfix和Sendmail）。您将需要调整<a href='$1'>模块配置</a>，以手动设置邮件服务器以及可能的邮件路径。
 index_esystem2=在系统上找不到<a href='$1'>模块配置</a>中设置的邮件服务器。您将需要调整配置以使用正确的服务器。
 index_esystem3=联系在<a href='$1'>模块配置</a>中设置的邮件系统时发生错误：$2。

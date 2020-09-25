@@ -2,3 +2,4 @@ lease=5
 seconds=2
 timeserver_hardware=1
 ntp_only=1
+timeserver=0.pool.ntp.org

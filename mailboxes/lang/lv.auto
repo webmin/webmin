@@ -2,7 +2,6 @@ index_title=Izlasiet lietotāja pastu
 index_none=Jums nav atļauts lasīt e-pastu nevienam šīs sistēmas lietotājam.
 index_header=Lietotāju pastkastes
 index_empty=Nav pasta
-index_return=lietotāju saraksts
 index_esystem=Jūsu sistēmā netika atklāts neviens no atbalstītajiem pasta serveriem (Exim, Qmail, Postfix un Sendmail). Jums būs jāpielāgo <a href='$1'>moduļa konfigurācija</a>, lai manuāli iestatītu pasta serveri un, iespējams, pasta ceļus.
 index_esystem2=Pasta sistēma, kas iestatīta <a href='$1'>moduļa konfigurācijā</a>, jūsu sistēmā netika atrasta. Jums būs jāpielāgo konfigurācija, lai izmantotu pareizo serveri.
 index_esystem3=Sazinoties ar pasta sistēmu, kas iestatīta <a href='$1'>moduļa konfigurācijā</a>, radās kļūda: $2.

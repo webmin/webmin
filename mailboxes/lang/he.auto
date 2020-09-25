@@ -2,7 +2,6 @@ index_title=קרא את דואר המשתמש
 index_none=אינך מורשה לקרוא דוא"ל עבור אף אחד מהמשתמשים במערכת זו.
 index_header=תיבות דואר של משתמשים
 index_empty=אין דואר
-index_return=רשימת משתמש
 index_esystem=None of the supported mail servers (Exim, Qmail, Postfix and Sendmail) were detected on your system. You will need to adjust the <a href='$1'>module configuration</a> to set the mail server and possibly mail paths manually.
 index_esystem2=The mail server set in the <a href='$1'>module configuration</a> was not found on your system. You will need to adjust the configuration to use the correct server.
 index_esystem3=An error occurred contacting the mail system set in the <a href='$1'>module configuration</a> : $2.

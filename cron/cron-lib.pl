@@ -943,7 +943,7 @@ return &theme_show_times_input(@_) if (defined(&theme_show_times_input));
 local $job = $_[0];
 if ($config{'vixie_cron'} && (!$_[1] || $_[0]->{'special'})) {
 	# Allow selection of special @ times
-	print "<tr $cb> <td colspan=6>\n";
+	print "<tr data-schedule-tr $cb> <td colspan=6>\n";
 	printf "<input type=radio name=special_def value=1 %s> %s\n",
 		$job->{'special'} ? "checked" : "", $text{'edit_special1'};
 	print "<select name=special onChange='change_special_mode(form, 1)'>\n";
