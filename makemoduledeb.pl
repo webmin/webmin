@@ -310,6 +310,7 @@ if (%$changes) {
 	my $forv;
 	my $clver = $ver;
 	$clver =~ s/\.[^0-9\.]*$//;
+	$clver =~ s/\-\d+$//;
 	foreach my $v (sort { $a <=> $b } (keys %$changes)) {
 		if ($clver > $v && sprintf("%.2f0", $clver) == $v) {
 			$forv = $clver;
