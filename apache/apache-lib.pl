@@ -627,7 +627,15 @@ local $file = $olddir ? $olddir->{'file'} :
 	      $newdir->{'file'} ? $newdir->{'file'} : $pconf->[0]->{'file'};
 local $lref = &read_file_lines($file);
 local $oldlen = $olddir ? $olddir->{'eline'}-$olddir->{'line'}+1 : undef;
-local @newlines = $newdir ? &directive_lines($newdir) : ( );
+local @newlines;
+if ($newdir) {
+	my $isrc = $olddir ? $olddir :
+		   @$pconf ? $pconf->[0] : undef;
+	if ($isrc) {
+		&recursive_set_indent($newdir, $isrc->{'indent'});
+		}
+	@newlines = &directive_lines($newdir);
+	}
 if ($olddir && $newdir) {
 	# Update in place
 	if ($first) {
@@ -694,6 +702,19 @@ elsif (!$olddir && $newdir) {
 		}
 	}
 &update_last_config_change();
+}
+
+# recursive_set_indent(&directive, indent)
+# Set the indent to match another at the same level
+sub recursive_set_indent
+{
+my ($dir, $indent) = @_;
+$dir->{'indent'} = $indent if (!defined($dir->{'indent'}));
+if ($dir->{'type'}) {
+	foreach my $m (@{$dir->{'members'}}) {
+		&recursive_set_indent($m, $indent+4);
+		}
+	}
 }
 
 # recursive_set_lines_files(&directives, first-line, file)
