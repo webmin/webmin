@@ -59,3 +59,14 @@ sub delete_atjob
 &system_logged("atrm ".quotemeta($_[0])." >/dev/null 2>&1");
 }
 
+# get_init_name()
+# Returns the name of the bootup action for atd, if there is one
+sub get_init_name
+{
+&foreign_require("init");
+if (&init::action_status("atd") != 0) {
+	return "atd";
+	}
+return undef;
+}
+

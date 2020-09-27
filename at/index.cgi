@@ -137,5 +137,29 @@ if ($access{'allow'} && $config{'allow_file'}) {
 	print &ui_form_end([ [ "save", $text{'save'} ] ]);
 	}
 
+# If there is an init script that runs an atd server, show status
+&foreign_require("init");
+my $init = defined(&get_init_name) ? &get_init_name() : undef;
+if ($init) {
+	print &ui_hr();
+	print &ui_buttons_start();
+
+	# Running now?
+	my $r = &init::status_action($init);
+	if ($r == 1) {
+		print &ui_buttons_row("stop.cgi", $text{'index_stop'},
+				      $text{'index_stopdesc'});
+		}
+	elsif ($r == 0) {
+		print &ui_buttons_row("start.cgi", $text{'index_start'},
+				      $text{'index_startdesc'});
+		}
+
+	# Start at boot?
+	# XXX
+
+	print &ui_buttons_end();
+	}
+
 &ui_print_footer("/", $text{'index'});
 

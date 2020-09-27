@@ -20,6 +20,10 @@ index_amode2=All except listed users ..
 index_delete=Cancel Selected Commands
 index_noat=The $1 command was not found on your system - maybe it is not installed, or not available for your operating system.
 index_nostyle=Webmin does not know how to manage schedule commands on this operating system.
+index_stop=Stop Scheduled Commands Server
+index_stopdesc=Shut down the <tt>atd</tt> background server process that runs scheduled commands. This will prevent commands from executing at their specified times.
+index_start=Start Scheduled Commands Server
+index_startdesc=Start up the <tt>atd</tt> background server process that runs scheduled commands. This is required for commands to execute at their specified times.
 
 edit_title=Scheduled Command
 edit_cmd=Full script to execute
