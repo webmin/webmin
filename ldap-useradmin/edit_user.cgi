@@ -326,7 +326,8 @@ if ($config{'secmode'} == 0) {
 	# Show secondary groups with select menu
 	foreach $g (sort { lc($a->dn()) cmp lc($b->dn()) } $rv->all_entries) {
 		$group = $g->get_value("cn");
-		push(@canglist, [ $group, $group ]);
+		next if (!useradmin::can_use_group(\%access, $group) && !$ingroups{$group});
+			push(@canglist, [ $group, $group ]);
 		}
 	@ingroups = map { [ $_, $_.$descgroups{$_} ] } sort { $a cmp $b }
                         grep { $ingroups{$_} } (keys %ingroups);
@@ -354,32 +355,36 @@ print &ui_table_end();
 &extra_fields_input($config{'fields'}, $uinfo, \@tds);
 
 # Show capabilties section
-print &ui_table_start($text{'uedit_cap'}, "width=100%", 4, \@tds);
+if ($config{'samba_class'} || $config{'imap_host'}) {
+	print &ui_table_start($text{'uedit_cap'}, "width=100%", 4, \@tds);
 
-# Samba login?
-print &ui_table_row($text{'uedit_samba'},
-	&ui_yesno_radio("samba", $oclass{$samba_class} ? 1 : 0));
-
-if ($config{'imap_host'}) {
-	# Cyrus IMAP login
-	@cyrus_class_3 = split(' ',$cyrus_class);
-	print &ui_table_row($text{'uedit_cyrus'},
-		&ui_yesno_radio("cyrus", $oclass{$cyrus_class_3[0]} ? 1 : 0));
-
-	# IMAP domain
-	if ($config{'domain'}) {
-		print &ui_table_row($text{'uedit_alias'},
-			&ui_textbox("alias", join(" ", @alias), 40), 3);
+	# Samba login?
+	if ($config{'samba_class'}) {
+		print &ui_table_row($text{'uedit_samba'},
+			&ui_yesno_radio("samba", $oclass{$samba_class} ? 1 : 0));
 		}
 
-	# Show field for changing the quota on existing users, or setting
-	# it for new users
-	if ($config{'quota_support'}) {
-		print &ui_table_row($text{'uedit_quota'},
-			$in{'new'} || !$oclass{$cyrus_class_3[0]} ?
-			  &ui_textbox("quota", $config{'quota'}, 10)." kB" :
-			  &ui_opt_textbox("quota", undef, 10,
-                                              $text{'uedit_unquota'})." Kb");
+	if ($config{'imap_host'}) {
+		# Cyrus IMAP login
+		@cyrus_class_3 = split(' ',$cyrus_class);
+		print &ui_table_row($text{'uedit_cyrus'},
+			&ui_yesno_radio("cyrus", $oclass{$cyrus_class_3[0]} ? 1 : 0));
+
+		# IMAP domain
+		if ($config{'domain'}) {
+			print &ui_table_row($text{'uedit_alias'},
+				&ui_textbox("alias", join(" ", @alias), 40), 3);
+			}
+
+		# Show field for changing the quota on existing users, or setting
+		# it for new users
+		if ($config{'quota_support'}) {
+			print &ui_table_row($text{'uedit_quota'},
+				$in{'new'} || !$oclass{$cyrus_class_3[0]} ?
+				  &ui_textbox("quota", $config{'quota'}, 10)." kB" :
+				  &ui_opt_textbox("quota", undef, 10,
+						  $text{'uedit_unquota'})." Kb");
+			}
 		}
 	}
 else {
@@ -389,45 +394,77 @@ print &ui_table_end();
 
 if ($in{'new'}) {
 	# On-create options
-	print &ui_table_start($text{'uedit_oncreate'}, "width=100%",
-			      2, \@tds);
+	if ($access{'makehome'} == 1 || $access{'cothers'} == 1 ) {
+		print &ui_table_start($text{'uedit_oncreate'}, "width=100%", 2, \@tds);
 
-	# Create home dir?
-	print &ui_table_row($text{'uedit_makehome'},
-		&ui_yesno_radio("makehome", 1));
+		# Create home dir?
+		if ($access{'makehome'} == 1) {
+			print &ui_table_row($text{'uedit_makehome'},
+			&ui_yesno_radio("makehome", 0));
+			}
 
-	# Create in other modules?
-	print &ui_table_row($text{'uedit_cothers'},
-		&ui_yesno_radio("others", $mconfig{'default_other'}));
+		# Create in other modules?
+		if ($access{'cothers'} == 1) {
+			print &ui_table_row($text{'uedit_cothers'},
+			&ui_yesno_radio("others", $mconfig{'default_other'}));
+			}
 
-	print &ui_table_end();
+		print &ui_table_end();
+		}
+
+	if ($access{'makehome'} == 0) {
+		print &ui_hidden("makehome", 1);
+		}
+	if ($access{'cothers'} == 0) {
+		print &ui_hidden("others", 1);
+		}
 	}
 else {
 	# On save options
 	print &ui_table_start($text{'onsave'}, "width=100%", 2, \@tds);
 
 	# Move home directory
-	print &ui_table_row($text{'uedit_movehome'},
-		&ui_yesno_radio("movehome", 1));
+	if ($access{'movehome'} == 1) {
+		print &ui_table_row($text{'uedit_movehome'},
+		&ui_yesno_radio("movehome", 0));
+		}
+	if ($access{'movehome'} == 0) {
+		print &ui_hidden("movehome", 1);
+		}
 
 	# Change UID on files
-	print &ui_table_row($text{'uedit_chuid'},
-		&ui_radio("chuid", 1,
+	if ($access{'chuid'} == 1) {
+		print &ui_table_row($text{'uedit_chuid'},
+		&ui_radio("chuid", 0,
 			  [ [ 0, $text{'no'} ],
 			    [ 1, $text{'home'} ],
 			    [ 2, $text{'uedit_allfiles'} ] ]));
+		}
+	if ($access{'chuid'} == 0) {
+		print &ui_hidden("chuid", 1);
+		}
 
 	# Change GID on files
-	print &ui_table_row($text{'uedit_chgid'},
-		&ui_radio("chgid", 1,
+	if ($access{'chgid'} == 1) {
+		print &ui_table_row($text{'uedit_chgid'},
+		&ui_radio("chgid", 0,
 			  [ [ 0, $text{'no'} ],
 			    [ 1, $text{'home'} ],
 			    [ 2, $text{'uedit_allfiles'} ] ]));
+		}
+	if ($access{'chgid'} == 0) {
+		print &ui_hidden("chgid", 1);
+		}
 
 	# Modify in other modules
-	print &ui_table_row($text{'uedit_mothers'},
+	if ($access{'mothers'} == 1) {
+		print &ui_table_row($text{'uedit_mothers'},
 		&ui_yesno_radio("others",
 			$mconfig{'default_other'} ? 1 : 0));
+		}
+	if ($access{'mothers'} == 0) {
+		print &ui_hidden("others", 1);
+		}
 
 	print &ui_table_end();
 	}
@@ -462,7 +499,9 @@ else {
 			}
 		}
 
-	push(@buts, [ 'delete', $text{'delete'} ]);
+	if ($access{'udelete'}) {
+		push(@buts, [ 'delete', $text{'delete'} ]);
+		}
 	}
 print &ui_form_end(\@buts);
 
