@@ -14,7 +14,7 @@ foreach $v ("magic_quotes_gpc", "magic_quotes_runtime",
 	    "register_argc_argv") {
 	&save_directive($conf, $v, $in{$v} || undef);
 	}
-&flush_file_lines_as_user($in{'file'});
+&flush_file_lines_as_user($in{'file'}, undef, 1);
 &unlock_file($in{'file'});
 &graceful_apache_restart($in{'file'});
 &webmin_log("vars", undef, $in{'file'});

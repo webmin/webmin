@@ -54,7 +54,7 @@ else {
 			$in{"session.gc_maxlifetime"});
 	}
 
-&flush_file_lines_as_user($in{'file'});
+&flush_file_lines_as_user($in{'file'}, undef, 1);
 &unlock_file($in{'file'});
 &graceful_apache_restart($in{'file'});
 &webmin_log("session", undef, $in{'file'});

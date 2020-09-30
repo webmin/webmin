@@ -27,7 +27,7 @@ foreach $d ([ "safe_mode_include_dir", "safe_einclude" ],
 		}
 	}
 
-&flush_file_lines_as_user($in{'file'});
+&flush_file_lines_as_user($in{'file'}, undef, 1);
 &unlock_file($in{'file'});
 &graceful_apache_restart($in{'file'});
 &webmin_log("safe", undef, $in{'file'});

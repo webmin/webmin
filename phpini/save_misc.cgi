@@ -61,7 +61,7 @@ else {
 &save_directive($conf, "default_charset",
 	$in{'default_charset_def'} ? undef : $in{'default_charset'});
 
-&flush_file_lines_as_user($in{'file'});
+&flush_file_lines_as_user($in{'file'}, undef, 1);
 &unlock_file($in{'file'});
 &graceful_apache_restart($in{'file'});
 &webmin_log("misc", undef, $in{'file'});

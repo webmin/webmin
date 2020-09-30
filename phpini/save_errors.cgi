@@ -51,7 +51,7 @@ elsif ($in{"error_log_def"} == 2) {
 	&save_directive($conf, "error_log", $in{"error_log"});
 	}
 
-&flush_file_lines_as_user($in{'file'});
+&flush_file_lines_as_user($in{'file'}, undef, 1);
 &unlock_file($in{'file'});
 &graceful_apache_restart($in{'file'});
 &webmin_log("errors", undef, $in{'file'});
