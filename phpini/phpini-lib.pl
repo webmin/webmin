@@ -351,13 +351,13 @@ else {
 # Writes out a file as the Unix user configured in this module's ACL
 sub flush_file_lines_as_user
 {
-local ($file) = @_;
+local ($file, $eof, $ignore) = @_;
 if ($access{'user'} && $access{'user'} ne 'root' && $< == 0) {
 	&eval_as_unix_user($access{'user'}, 
-		sub { &flush_file_lines($file) });
+		sub { &flush_file_lines($file, $eof, $ignore) });
 	}
 else {
-	&flush_file_lines($file);
+	&flush_file_lines($file, $eof, $ignore);
 	}
 }
 
