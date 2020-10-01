@@ -357,7 +357,7 @@ return &check_pid_file("$base/master.pid");
 sub get_initscript
 {
 if ($config{'init_script'}) {
-	&foreign_require("init", "init-lib.pl");
+	&foreign_require("init");
 	if ($init::init_mode eq "init") {
 		return &init::action_filename($config{'init_script'});
 		}

@@ -3,7 +3,7 @@
 
 require './dovecot-lib.pl';
 &ReadParse();
-&foreign_require("init", "init-lib.pl");
+&foreign_require("init");
 if ($in{'boot'}) {
 	&init::enable_at_boot($config{'init_script'}, "Dovecot IMAP server",
 			      $config{'dovecot'},
