@@ -156,7 +156,12 @@ if ($init) {
 		}
 
 	# Start at boot?
-	# XXX
+	my $atboot = &init::action_status($init);
+	print &ui_buttons_row("bootup.cgi", $text{'index_boot'},
+			      $text{'index_bootdesc'}, undef,
+			      &ui_radio("boot", $atboot == 2 ? 1 : 0,
+					[ [ 1, $text{'yes'} ],
+					  [ 0, $text{'no'} ] ]));
 
 	print &ui_buttons_end();
 	}

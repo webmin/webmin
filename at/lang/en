@@ -24,6 +24,8 @@ index_stop=Stop Scheduled Commands Server
 index_stopdesc=Shut down the <tt>atd</tt> background server process that runs scheduled commands. This will prevent commands from executing at their specified times.
 index_start=Start Scheduled Commands Server
 index_startdesc=Start up the <tt>atd</tt> background server process that runs scheduled commands. This is required for commands to execute at their specified times.
+index_boot=Start Server At Boot?
+index_bootdesc=Change this setting to enable or disable starting the scheduled commands server at system boot time.
 
 edit_title=Scheduled Command
 edit_cmd=Full script to execute
@@ -70,4 +72,12 @@ log_create_job=Created scheduled command for $1
 log_delete_job=Cancelled scheduled command for $1
 log_exec_job=Executed scheduled command for $1
 log_delete_jobs=Cancelled $1 scheduled commands
+log_stop=Stopped scheduled commands server
+log_start=Started scheduled commands server
+log_bootup=Enabled scheduled commands server at boot
+log_bootdown=Disabled scheduled commands server at boot
+
+stop_err=Failed to stop server
+start_err=Failed to start server
+
 __norefs=1

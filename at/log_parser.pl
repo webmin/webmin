@@ -18,11 +18,8 @@ if ($type eq "job") {
 elsif ($type eq "jobs") {
 	return &text('log_'.$action.'_jobs', $object);
 	}
-elsif ($action eq 'allow') {
-	return $text{'log_allow'};
-	}
 else {
-	return undef;
+	return $text{'log_'.$action};
 	}
 }
 
