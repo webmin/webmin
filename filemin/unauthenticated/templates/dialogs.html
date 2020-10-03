@@ -223,7 +223,7 @@
             <div class="modal-body">
                 <form name="chmod" id="chmodForm">
                     <div class="form-group">
-                        <label for="t_total">$text{'permissions'} : </label>
+                        <label for="t_total">$text{'permissions'}:&nbsp; </label>
                         <input id="perms" type="text" name="t_total" value="0644" size="4" onKeyUp="octalchange()" class="form-group-item">
                         <input type="text" name="sym_total" value="" size="12" readonly="true" class="form-group-item">
                     </div>
@@ -271,7 +271,7 @@
                             <td></td>
                         </tr>
                     </table>
-                    <label>$text{'chmod_apply_to'}</label>
+                    <label>$text{'chmod_apply_to'}:&nbsp; </label>
                     <select name="applyto">
                         <option value="1">$text{'chmod_dir_only'}</option>
                         <option value="2">$text{'chmod_dir_and_its_files'}</option>
