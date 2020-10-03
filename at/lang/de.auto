@@ -1,1 +1,13 @@
 index_nostyle=Webmin weiß nicht, wie Zeitplanbefehle auf diesem Betriebssystem verwaltet werden.
+index_stop=Stoppen Sie den Server für geplante Befehle
+index_stopdesc=Fahren Sie den Hintergrundserverprozess <tt>atd</tt> herunter, der geplante Befehle ausführt. Dadurch wird verhindert, dass Befehle zu den angegebenen Zeiten ausgeführt werden.
+index_start=Starten Sie den Scheduled Commands Server
+index_startdesc=Starten Sie den Hintergrundserverprozess <tt>atd</tt>, der geplante Befehle ausführt. Dies ist erforderlich, damit Befehle zu den angegebenen Zeiten ausgeführt werden können.
+index_boot=Server beim Booten starten?
+index_bootdesc=Ändern Sie diese Einstellung, um das Starten des Servers für geplante Befehle beim Systemstart zu aktivieren oder zu deaktivieren.
+log_stop=Geplante Befehlsserver gestoppt
+log_start=Geplanter Befehlsserver gestartet
+log_bootup=Server für geplante Befehle beim Booten aktiviert
+log_bootdown=Server für geplante Befehle beim Booten deaktiviert
+stop_err=Server konnte nicht gestoppt werden
+start_err=Server konnte nicht gestartet werden

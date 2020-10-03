@@ -1,1 +1,13 @@
 index_nostyle=Webmin non sa come gestire i comandi di pianificazione su questo sistema operativo.
+index_stop=Arresta il server dei comandi pianificati
+index_stopdesc=Arresta il processo del server in background <tt>atd</tt> che esegue i comandi pianificati. Ciò impedirà l'esecuzione dei comandi agli orari specificati.
+index_start=Avvia il server dei comandi pianificati
+index_startdesc=Avvia il processo del server in background <tt>atd</tt> che esegue i comandi pianificati. Ciò è necessario affinché i comandi vengano eseguiti agli orari specificati.
+index_boot=Avviare il server all'avvio?
+index_bootdesc=Modificare questa impostazione per abilitare o disabilitare l'avvio del server dei comandi pianificati all'avvio del sistema.
+log_stop=Server dei comandi pianificati arrestato
+log_start=Avviato il server dei comandi pianificati
+log_bootup=Abilitato il server dei comandi pianificati all'avvio
+log_bootdown=Server dei comandi pianificati disabilitato all'avvio
+stop_err=Impossibile arrestare il server
+start_err=Impossibile avviare il server

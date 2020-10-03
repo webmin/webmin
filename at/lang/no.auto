@@ -1,1 +1,13 @@
 index_nostyle=Webmin vet ikke hvordan de skal administrere tidsplankommandoer på dette operativsystemet.
+index_stop=Stopp planlagte kommandoserver
+index_stopdesc=Slå av <tt>atd</tt> bakgrunnsserverprosessen som kjører planlagte kommandoer. Dette forhindrer at kommandoer kjøres til de angitte tidene.
+index_start=Start planlagte kommandoserver
+index_startdesc=Start opp <tt>atd</tt> bakgrunnsserverprosessen som kjører planlagte kommandoer. Dette er nødvendig for at kommandoer skal kjøres til de angitte tidene.
+index_boot=Start server ved oppstart?
+index_bootdesc=Endre denne innstillingen for å aktivere eller deaktivere start av den planlagte kommandoserveren ved systemstart.
+log_stop=Stoppet server for planlagte kommandoer
+log_start=Startet planlagt kommandoserver
+log_bootup=Aktivert planlagte kommandoserver ved oppstart
+log_bootdown=Deaktivert planlagt kommandoserver ved oppstart
+stop_err=Kunne ikke stoppe serveren
+start_err=Kunne ikke starte serveren

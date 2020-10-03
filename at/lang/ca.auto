@@ -1,1 +1,13 @@
 index_nostyle=Webmin no sap com gestionar ordres de programació d’aquest sistema operatiu.
+index_stop=Atura el servidor d'ordres programats
+index_stopdesc=Apagueu el procés del servidor de fons <tt>atd</tt> que executa ordres programades. Això evitarà que les ordres s'executin a les hores especificades.
+index_start=Inicieu el servidor d'ordres programats
+index_startdesc=Inicieu el procés del servidor de fons <tt>atd</tt> que executa ordres programades. Això és necessari perquè les ordres s'executin a les hores especificades.
+index_boot=Voleu iniciar el servidor a l'arrencada?
+index_bootdesc=Canvieu aquest paràmetre per habilitar o desactivar l'inici del servidor d'ordres programades en arrencar el sistema.
+log_stop=S'ha aturat el servidor d'ordres programades
+log_start=S'ha iniciat el servidor d'ordres programades
+log_bootup=S'ha activat el servidor d'ordres programades a l'arrencada
+log_bootdown=S'ha desactivat el servidor d'ordres programades a l'arrencada
+stop_err=No s'ha pogut aturar el servidor
+start_err=No s'ha pogut iniciar el servidor

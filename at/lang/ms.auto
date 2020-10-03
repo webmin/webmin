@@ -1,1 +1,13 @@
 index_nostyle=Webmin tidak tahu bagaimana menguruskan arahan jadual pada sistem operasi ini.
+index_stop=Hentikan Pelayan Perintah Berjadual
+index_stopdesc=Matikan proses pelayan latar belakang <tt>atd</tt> yang menjalankan perintah berjadual. Ini akan menghalang perintah daripada dilaksanakan pada waktu yang ditentukan.
+index_start=Mulakan Pelayan Perintah Berjadual
+index_startdesc=Mulakan proses pelayan latar belakang <tt>atd</tt> yang menjalankan perintah berjadual. Ini diperlukan agar perintah dapat dilaksanakan pada waktu yang ditentukan.
+index_boot=Mulakan Pelayan Semasa Boot?
+index_bootdesc=Ubah tetapan ini untuk mengaktifkan atau melumpuhkan memulakan pelayan perintah yang dijadualkan pada waktu boot sistem.
+log_stop=Pelayan arahan berjadual dihentikan
+log_start=Memulakan pelayan arahan berjadual
+log_bootup=Diaktifkan pelayan arahan berjadual semasa boot
+log_bootdown=Pelayan perintah berjadual dilumpuhkan semasa boot
+stop_err=Gagal menghentikan pelayan
+start_err=Gagal memulakan pelayan

@@ -1,1 +1,13 @@
 index_nostyle=Webmin nie wie, jak zarządzać poleceniami harmonogramu w tym systemie operacyjnym.
+index_stop=Zatrzymaj serwer zaplanowanych poleceń
+index_stopdesc=Zamknij proces serwera w tle <tt>atd</tt>, który wykonuje zaplanowane polecenia. Zapobiegnie to wykonywaniu poleceń w określonym czasie.
+index_start=Uruchom serwer poleceń zaplanowanych
+index_startdesc=Uruchom proces serwera w tle <tt>atd</tt>, który wykonuje zaplanowane polecenia. Jest to wymagane, aby polecenia były wykonywane w określonym czasie.
+index_boot=Uruchomić serwer podczas rozruchu?
+index_bootdesc=Zmień to ustawienie, aby włączyć lub wyłączyć uruchamianie zaplanowanego serwera poleceń podczas rozruchu systemu.
+log_stop=Zatrzymano serwer poleceń zaplanowanych
+log_start=Uruchomiono serwer poleceń zaplanowanych
+log_bootup=Włączono serwer poleceń zaplanowanych podczas rozruchu
+log_bootdown=Wyłączono serwer poleceń zaplanowanych podczas rozruchu
+stop_err=Nie udało się zatrzymać serwera
+start_err=Nie udało się uruchomić serwera
