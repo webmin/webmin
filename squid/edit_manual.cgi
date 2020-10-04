@@ -12,7 +12,7 @@ $file = $in{'file'} || $files[0];
 if (@files > 1) {
 	# Show form to select
 	print &ui_form_start("edit_manual.cgi");
-	print $text{'manual_file'},"\n";
+	print "<b>$text{'manual_file'}</b>","\n";
 	print &ui_select("file", $file, [ map { [ $_ ] } @files ]),"\n";
 	print &ui_submit($text{'manual_change'});
 	print &ui_form_end(),"<p>\n";
