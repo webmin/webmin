@@ -1509,8 +1509,12 @@ $main::no_miniserv_userdb = 1;
 my $msg = join("", @_);
 $msg =~ s/<[^>]*>//g;
 my $error_details = (($ENV{'WEBMIN_DEBUG'} || $gconfig{'debug_enabled'}) ? "" : "\n");
+my $error_output_right = sub {
+	my ($err_msg) = @_;
+	return $main::webmin_script_type eq 'cmd' ? entities_to_ascii($err_msg) : $err_msg;
+	};
 if (!$main::error_must_die) {
-	print STDERR "Error: ",$msg,"\n";
+	print STDERR "Error: ", &$error_output_right($msg), "\n";
 	}
 &load_theme_library();
 if ($main::error_must_die) {
@@ -1522,7 +1526,7 @@ if (!$ENV{'REQUEST_METHOD'}) {
 	print STDERR "$text{'error'}\n";
 	print STDERR "-----\n";
 	print STDERR ($main::whatfailed ? "$main::whatfailed : " : ""),
-		     $msg,"\n";
+			&$error_output_right($msg),"\n";
 	print STDERR "-----\n";
 	if ($gconfig{'error_stack'}) {
 		# Show call stack
