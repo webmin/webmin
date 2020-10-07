@@ -622,7 +622,12 @@ else {
 sub escapestr
 {
 local $rv = $_[0];
+
+# Prevent escaping query
 $rv =~ s/'/''/g;
+
+# Prevent escaping command
+$rv =~ s/"/\\"/g;
 return $rv;
 }
 
