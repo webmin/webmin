@@ -57,8 +57,12 @@ print &ui_table_row($text{'user_user'},
 			$text{'user_all'}));
 
 # Password field
+my $epassfield1 = $fieldmap{'Password'} || 1e10;
+my $epassfield2 = $fieldmap{'authentication_string'} || 1e10;
 print &ui_table_row($text{'user_pass'},
-	&ui_radio("mysqlpass_mode", $in{'new'} ? 0 : $u->[2] ? 1 : 2,
+	&ui_radio("mysqlpass_mode", $in{'new'} ? 0 :
+              (($epassfield1 && !$u->[$epassfield1]) &&
+               ($epassfield2 && !$u->[$epassfield2])) ? 2 : 1,
 		  [ [ 2, $text{'user_none'} ],
 		    $in{'new'} ? ( ) : ( [ 1, $text{'user_leave'} ] ),
 		    [ 0, $text{'user_set'} ] ])." ".

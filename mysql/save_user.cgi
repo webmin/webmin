@@ -75,10 +75,18 @@ else {
 			}
 		}
 	elsif ($in{'mysqlpass_mode'} == 2) {
-		&execute_sql_logged($master_db,
-			"update user set password = NULL ".
-			"where user = ? and host = ?",
-			$user, $host);
+		if ($fieldmap{'Password'}) {
+			&execute_sql_logged($master_db,
+				"update user set password = '' ".
+				"where user = ? and host = ?",
+				$user, $host);
+			}
+		if ($fieldmap{'authentication_string'}) {
+			&execute_sql_logged($master_db,
+				"update user set authentication_string = '' ".
+				"where user = ? and host = ?",
+				$user, $host);
+			}
 		}
 
 	# Save various limits
