@@ -25,7 +25,7 @@ else {
 
 	%perms = map { $_, 1 } split(/\0/, $in{'perms'});
 	@desc = &table_structure($master_db, 'user');
-	%fieldmap = map { $_->{'field'}, $_->{'index'} } @desc;
+	%fieldmap = map { lc($_->{'field'}), $_->{'index'} } @desc;
 	$host = $in{'host_def'} ? '%' : $in{'host'};
 	$user = $in{'mysqluser_def'} ? '' : $in{'mysqluser'};
 	@pfields = map { $_->[0] } &priv_fields('user');
@@ -75,7 +75,7 @@ else {
 			}
 		}
 	elsif ($in{'mysqlpass_mode'} == 2) {
-		if ($fieldmap{'Password'}) {
+		if ($fieldmap{'password'}) {
 			&execute_sql_logged($master_db,
 				"update user set password = '' ".
 				"where user = ? and host = ?",
