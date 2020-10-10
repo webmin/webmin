@@ -5,7 +5,7 @@
 require './mysql-lib.pl';
 &ReadParse();
 $access{'perms'} == 1 || &error($text{'perms_ecannot'});
-
+my ($ver, $variant) = &get_remote_mysql_variant();
 if ($in{'new'}) {
 	&ui_print_header(undef, $text{'user_title1'}, "", "create_user");
 	}
@@ -95,15 +95,20 @@ foreach $f ('max_user_connections', 'max_connections',
 	}
 
 # SSL needed?
-if ($remote_mysql_version >= 5 && $fieldmap{'ssl_type'}) {
-	print &ui_table_row($text{'user_ssl'},
-		&ui_select("ssl_type", uc($u->[$fieldmap{'ssl_type'}]),
-			[ [ '', $text{'user_ssl_'} ],
-			  [ 'ANY', $text{'user_ssl_any'} ],
-			  [ 'X509', $text{'user_ssl_x509'} ] ],
-			1, 0, 1));
-	print &ui_table_row($text{'user_cipher'},
-		&ui_textbox("ssl_cipher", $u->[$fieldmap{'ssl_cipher'}], 80));
+if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
+	# XXX???
+	} 
+else {
+	if ($remote_mysql_version >= 5 && $fieldmap{'ssl_type'}) {
+		print &ui_table_row($text{'user_ssl'},
+			&ui_select("ssl_type", uc($u->[$fieldmap{'ssl_type'}]),
+				[ [ '', $text{'user_ssl_'} ],
+				  [ 'ANY', $text{'user_ssl_any'} ],
+				  [ 'X509', $text{'user_ssl_x509'} ] ],
+				1, 0, 1));
+		print &ui_table_row($text{'user_cipher'},
+			&ui_textbox("ssl_cipher", $u->[$fieldmap{'ssl_cipher'}], 80));
+		}
 	}
 
 print &ui_table_end();

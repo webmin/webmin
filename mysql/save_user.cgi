@@ -33,33 +33,53 @@ else {
 	my @ssl_field_values = map { '' } @ssl_field_names;
 	my @other_field_names = &other_user_fields();
 	my @other_field_values = map { '' } @other_field_names;
+	my $plugin = &get_mysql_plugin(1);
+	my ($ver, $variant) = &get_remote_mysql_variant();
 	if ($in{'new'}) {
 		# Create a new user
-		$sql = "insert into user (host, user, ".
-		       join(", ", @pfields, @ssl_field_names,
-				  @other_field_names).
-		       ") values (?, ?, ".
-		       join(", ", map { "?" } (@pfields, @ssl_field_names,
-					       @other_field_names)).")";
-		&execute_sql_logged($master_db, $sql,
-			$host, $user,
-			(map { $perms{$_} ? 'Y' : 'N' } @pfields),
-			@ssl_field_values, @other_field_values);
+		if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
+			$sql = "create user '$user'\@'$host' identified $plugin by ".
+				"'".&escapestr($in{'mysqlpass'})."'";
+			&execute_sql_logged($master_db, $sql);
+			}
+		else {
+			$sql = "insert into user (host, user, ".
+			       join(", ", @pfields, @ssl_field_names,
+					  @other_field_names).
+			       ") values (?, ?, ".
+			       join(", ", map { "?" } (@pfields, @ssl_field_names,
+						       @other_field_names)).")";
+			&execute_sql_logged($master_db, $sql,
+				$host, $user,
+				(map { $perms{$_} ? 'Y' : 'N' } @pfields),
+				@ssl_field_values, @other_field_values);
+			}
 		}
 	else {
 		# Update existing user
-		$sql = "update user set host = ?, user = ?, ".
-		       join(", ",map { "$_ = ?" } @pfields).
-		       " where host = ? and user = ?";
-		&execute_sql_logged($master_db, $sql,
-			$host, $user,
-			(map { $perms{$_} ? 'Y' : 'N' } @pfields),
-			$in{'oldhost'}, $in{'olduser'});
+		if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
+			# Assign permissions  XXX 
+			# &execute_sql_logged($mysql::master_db, "GRANT ALL PRIVILEGES ON *.* TO '$user'\@'$host'");
+			
+			# Rename user
+			if ($user && $user ne $in{'olduser'}) {
+				&execute_sql_logged($mysql::master_db,
+				"rename user '$in{'olduser'}'\@'$host' to '$user'\@'$host'");
+				}
+			}
+		else {
+			$sql = "update user set host = ?, user = ?, ".
+			       join(", ",map { "$_ = ?" } @pfields).
+			       " where host = ? and user = ?";
+			&execute_sql_logged($master_db, $sql,
+				$host, $user,
+				(map { $perms{$_} ? 'Y' : 'N' } @pfields),
+				$in{'oldhost'}, $in{'olduser'});
+			}
 		}
 	&execute_sql_logged($master_db, 'flush privileges');
 
 	# Update the password using the correct syntax for the mysql version
-	($ver, $variant) = &get_remote_mysql_variant();
 	if ($in{'mysqlpass_mode'} == 0) {
 		$esc = &escapestr($in{'mysqlpass'});
 		if ($variant eq "mysql" &&
@@ -75,45 +95,68 @@ else {
 			}
 		}
 	elsif ($in{'mysqlpass_mode'} == 2) {
-		if ($fieldmap{'password'}) {
-			&execute_sql_logged($master_db,
-				"update user set password = '' ".
-				"where user = ? and host = ?",
-				$user, $host);
+		if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
+			$sql = "alter user '$user'\@'$host' identified $plugin by ''";
+			&execute_sql_logged($master_db, $sql);
 			}
-		if ($fieldmap{'authentication_string'}) {
-			&execute_sql_logged($master_db,
-				"update user set authentication_string = '' ".
-				"where user = ? and host = ?",
-				$user, $host);
+		else {
+			if ($fieldmap{'password'}) {
+				&execute_sql_logged($master_db,
+					"update user set password = '' ".
+					"where user = ? and host = ?",
+					$user, $host);
+				}
+			if ($fieldmap{'authentication_string'}) {
+				&execute_sql_logged($master_db,
+					"update user set authentication_string = '' ".
+					"where user = ? and host = ?",
+					$user, $host);
+				}
 			}
 		}
 
 	# Save various limits
+	my %mdb104_diff = ('max_connections', 'max_connections_per_hour',
+                       'max_questions', 'max_queries_per_hour',
+                       'max_updates', 'max_updates_per_hour');
 	foreach $f ('max_user_connections', 'max_connections',
 		    'max_questions', 'max_updates') {
 		next if (&compare_version_numbers($ver, 5) < 0 ||
 			 !defined($in{$f.'_def'}));
 		$in{$f.'_def'} || $in{$f} =~ /^\d+$/ ||
 		       &error($text{'user_e'.$f});
-		&execute_sql_logged($master_db,
-			"update user set $f = ? ".
-			"where user = ? and host = ?",
-			$in{$f.'_def'} ? 0 : $in{$f}, $user, $host);
+		if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
+			my $f_tbl_diff = $mdb104_diff{$f} || $f;
+			&execute_sql_logged($mysql::master_db,
+					"alter user '$user'\@'$host' with $f_tbl_diff "
+					.($in{$f.'_def'} ? 0 : $in{$f})."");
+			}
+		else {
+			&execute_sql_logged($master_db,
+				"update user set $f = ? ".
+				"where user = ? and host = ?",
+				$in{$f.'_def'} ? 0 : $in{$f}, $user, $host);
+			}
+
 		}
 
 	# Set SSL fields
-	if (&compare_version_numbers($ver, 5) >= 0 &&
-	    defined($in{'ssl_type'}) &&
-	    (!$in{'new'} || $in{'ssl_type'} || $in{'ssl_cipher'})) {
-		&execute_sql_logged($master_db,
-			"update user set ssl_type = ? ".
-			"where user = ? and host = ?",
-			$in{'ssl_type'}, $user, $host);
-		&execute_sql_logged($master_db,
-			"update user set ssl_cipher = ? ".
-			"where user = ? and host = ?",
-			$in{'ssl_cipher'}, $user, $host);
+	if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
+		# XXX???
+		} 
+	else {
+		if (&compare_version_numbers($ver, 5) >= 0 &&
+		    defined($in{'ssl_type'}) &&
+		    (!$in{'new'} || $in{'ssl_type'} || $in{'ssl_cipher'})) {
+			&execute_sql_logged($master_db,
+				"update user set ssl_type = ? ".
+				"where user = ? and host = ?",
+				$in{'ssl_type'}, $user, $host);
+			&execute_sql_logged($master_db,
+				"update user set ssl_cipher = ? ".
+				"where user = ? and host = ?",
+				$in{'ssl_cipher'}, $user, $host);
+			}
 		}
 	}
 &execute_sql_logged($master_db, 'flush privileges');
