@@ -38,17 +38,17 @@ else {
 
 	# Rename user if needed
 	if ($user && $in{'olduser'} && $user ne $in{'olduser'}) {
-		&rename_user({(
+		&rename_user({
 			'user', $user,
 			'olduser', $in{'olduser'},
 			'host', $host,
 			'oldhost', $host,
-			)});
+			});
 		}
 
 	# Create a new user
 	if ($in{'new'}) {
-		&create_user({(
+		&create_user({
 			'user', $user,
 			'pass', $in{'mysqlpass'},
 			'host', $host,
@@ -58,16 +58,16 @@ else {
 			'ssl_field_values', \@ssl_field_values,
 			'other_field_names', \@other_field_names,
 			'other_field_values', \@other_field_values,
-			)});
+			});
 		}
 	# Update existing user's privileges
 	else {
-		&update_privileges({(
+		&update_privileges({
 			'user', $user,
 			'host', $host,
 			'perms', \%perms,
 			'pfields', \@pfields
-			)});
+			});
 		}
 
 	# Update user password

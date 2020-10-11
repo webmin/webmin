@@ -15,7 +15,7 @@ if ($config{'sync_create'}) {
 	my @other_field_names = &other_user_fields();
 	my @other_field_values = map { '' } @other_field_names;
 
-	&create_user({(
+	&create_user({
 		'new', 1,
 		'user', $user->{'user'},
 		'olduser', $user->{'olduser'},
@@ -27,7 +27,7 @@ if ($config{'sync_create'}) {
 		'ssl_field_values', \@ssl_field_values,
 		'other_field_names', \@other_field_names,
 		'other_field_values', \@other_field_values,
-		)});
+		});
 
 	# Update user password
 	if ($in{'passmode'} == 3 || $in{'passmode'} eq '0') {
@@ -68,12 +68,12 @@ if ($config{'sync_modify'}) {
 
 	# Rename user if needed
 	if ($user->{'user'} && $user->{'olduser'} && $user->{'user'} ne $user->{'olduser'}) {
-		&rename_user({(
+		&rename_user({
 			'user', $user->{'user'},
 			'olduser', $user->{'olduser'},
 			'host', $config{'sync_host'} || '%',
 			'oldhost', $config{'sync_host'} || '%'
-			)});
+			});
 		$actual_user = $user->{'user'};
 		}
 
