@@ -53,18 +53,23 @@ print &ui_table_start($text{'user_header'}, undef, 2);
 
 # Username field
 print &ui_table_row($text{'user_user'},
-	&ui_opt_textbox("mysqluser", $u->[1], $sizes{'user'},
+	&ui_opt_textbox("mysqluser", $u->[1], $in{'new'} ? 30 : $sizes{'user'},
 			$text{'user_all'}));
 
 # Password field
 my $epassfield1 = $fieldmap{'Password'} || 1e10;
 my $epassfield2 = $fieldmap{'authentication_string'} || 1e10;
+my $nopass = (($epassfield1 && !$u->[$epassfield1]) &&
+		       ($epassfield2 && !$u->[$epassfield2]));
+my $lock_supported = $u->[$fieldmap{'account_locked'}] eq 'Y' || $u->[$fieldmap{'account_locked'}] eq 'N';
+my $locked = $u->[$fieldmap{'account_locked'}] eq 'Y';
 print &ui_table_row($text{'user_pass'},
 	&ui_radio("mysqlpass_mode", $in{'new'} ? 0 :
-              (($epassfield1 && !$u->[$epassfield1]) &&
-               ($epassfield2 && !$u->[$epassfield2])) ? 2 : 1,
-		  [ [ 2, $text{'user_none'} ],
-		    $in{'new'} ? ( ) : ( [ 1, $text{'user_leave'} ] ),
+		       $lock_supported && $locked ? 4 : 
+		       $nopass ? 2 : 1,
+		  [ $lock_supported && $locked ? () : [ 2, $text{'user_none'} ],
+		    $in{'new'} ? ( ) : ($lock_supported && $locked) || $nopass ? () : ( [ 1, $text{'user_leave'} ] ),
+		  	($in{'new'} || !$lock_supported) ? ( ) : ( [ 4, $text{'user_locked'} ] ),
 		    [ 0, $text{'user_set'} ] ])." ".
 	&ui_password("mysqlpass", undef, 20));
 

@@ -19,7 +19,7 @@ else {
 		&error($text{'user_euser'});
 	$in{'host_def'} || $in{'host'} =~ /^\S+$/ ||
 		&error($text{'user_ehost'});
-	if ($in{'mysqlpass_mode'} == 0 && $in{'mysqlpas'} =~ /\\/) {
+	if ($in{'mysqlpass_mode'} eq '0' && $in{'mysqlpas'} =~ /\\/) {
 		&error($text{'user_eslash'});
 		}
 
@@ -33,88 +33,51 @@ else {
 	my @ssl_field_values = map { '' } @ssl_field_names;
 	my @other_field_names = &other_user_fields();
 	my @other_field_values = map { '' } @other_field_names;
-	my $plugin = &get_mysql_plugin(1);
 	my ($ver, $variant) = &get_remote_mysql_variant();
+	my $plugin = &get_mysql_plugin(1);
+
+	# Rename user if needed
+	if ($user && $in{'olduser'} && $user ne $in{'olduser'}) {
+		&rename_user({(
+			'user', $user,
+			'olduser', $in{'olduser'},
+			'host', $host,
+			'oldhost', $host,
+			)});
+		}
+
+	# Create a new user
 	if ($in{'new'}) {
-		# Create a new user
-		if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
-			$sql = "create user '$user'\@'$host' identified $plugin by ".
-				"'".&escapestr($in{'mysqlpass'})."'";
-			&execute_sql_logged($master_db, $sql);
-			}
-		else {
-			$sql = "insert into user (host, user, ".
-			       join(", ", @pfields, @ssl_field_names,
-					  @other_field_names).
-			       ") values (?, ?, ".
-			       join(", ", map { "?" } (@pfields, @ssl_field_names,
-						       @other_field_names)).")";
-			&execute_sql_logged($master_db, $sql,
-				$host, $user,
-				(map { $perms{$_} ? 'Y' : 'N' } @pfields),
-				@ssl_field_values, @other_field_values);
-			}
+		&create_user({(
+			'user', $user,
+			'pass', $in{'mysqlpass'},
+			'host', $host,
+			'perms', \%perms,
+			'pfields', \@pfields,
+			'ssl_field_names', \@ssl_field_names,
+			'ssl_field_values', \@ssl_field_values,
+			'other_field_names', \@other_field_names,
+			'other_field_values', \@other_field_values,
+			)});
 		}
+	# Update existing user's privileges
 	else {
-		# Update existing user
-		if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
-			# Assign permissions  XXX 
-			# &execute_sql_logged($mysql::master_db, "GRANT ALL PRIVILEGES ON *.* TO '$user'\@'$host'");
-			
-			# Rename user
-			if ($user && $user ne $in{'olduser'}) {
-				&execute_sql_logged($mysql::master_db,
-				"rename user '$in{'olduser'}'\@'$host' to '$user'\@'$host'");
-				}
-			}
-		else {
-			$sql = "update user set host = ?, user = ?, ".
-			       join(", ",map { "$_ = ?" } @pfields).
-			       " where host = ? and user = ?";
-			&execute_sql_logged($master_db, $sql,
-				$host, $user,
-				(map { $perms{$_} ? 'Y' : 'N' } @pfields),
-				$in{'oldhost'}, $in{'olduser'});
-			}
-		}
-	&execute_sql_logged($master_db, 'flush privileges');
-
-	# Update the password using the correct syntax for the mysql version
-	if ($in{'mysqlpass_mode'} == 0) {
-		$esc = &escapestr($in{'mysqlpass'});
-		if ($variant eq "mysql" &&
-		    &compare_version_numbers($ver, "8") >= 0) {
-			&execute_sql_logged($master_db,
-				"set password for '".$user."'\@'".$host."' = ".
-				"'$esc'");
-			}
-		else {
-			&execute_sql_logged($master_db,
-				"set password for '".$user."'\@'".$host."' = ".
-				"$password_func('$esc')");
-			}
-		}
-	elsif ($in{'mysqlpass_mode'} == 2) {
-		if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
-			$sql = "alter user '$user'\@'$host' identified $plugin by ''";
-			&execute_sql_logged($master_db, $sql);
-			}
-		else {
-			if ($fieldmap{'password'}) {
-				&execute_sql_logged($master_db,
-					"update user set password = '' ".
-					"where user = ? and host = ?",
-					$user, $host);
-				}
-			if ($fieldmap{'authentication_string'}) {
-				&execute_sql_logged($master_db,
-					"update user set authentication_string = '' ".
-					"where user = ? and host = ?",
-					$user, $host);
-				}
-			}
+		&update_privileges({(
+			'user', $user,
+			'host', $host,
+			'perms', \%perms,
+			'pfields', \@pfields
+			)});
 		}
 
+	# Update user password
+	if ($in{'mysqlpass_mode'} == 4) {
+		&change_user_password(undef, $user, $host)
+		}
+	elsif ($in{'mysqlpass_mode'} != 1) {
+		&change_user_password(($in{'mysqlpass_mode'} eq '0' ? $in{'mysqlpass'} : ''), $user, $host)
+		}
+	
 	# Save various limits
 	my %mdb104_diff = ('max_connections', 'max_connections_per_hour',
                        'max_questions', 'max_queries_per_hour',
@@ -165,7 +128,7 @@ if (!$in{'delete'} && !$in{'new'} &&
 	# Renamed or changed the password for the Webmin login .. update
 	# it too!
 	$config{'login'} = $in{'mysqluser'};
-	if ($in{'mysqlpass_mode'} == 0) {
+	if ($in{'mysqlpass_mode'} eq '0') {
 		$config{'pass'} = $in{'mysqlpass'};
 		}
 	elsif ($in{'mysqlpass_mode'} == 2) {

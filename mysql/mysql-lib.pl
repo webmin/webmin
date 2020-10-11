@@ -1541,5 +1541,194 @@ if ($plugin && $query) {
 return $plugin;
 }
 
+# perms_column_to_privilege_map(col)
+# Returns a privilege name based on given column for MySQL 8+ and MariaDB 10.4
+sub perms_column_to_privilege_map
+{
+my ($column) = @_;
+my %priv = (
+	'Alter_priv', 'alter',
+	'Alter_routine_priv', 'alter routine',
+	'Create_priv', 'create',
+	'Create_routine_priv', 'create routine',
+	'Create_tablespace_priv', 'create tablespace',
+	'Create_tmp_table_priv', 'create temporary tables',
+	'Create_user_priv', 'create user',
+	'Create_view_priv', 'create view',
+	'Delete_priv', 'delete',
+	'Drop_priv', 'drop',
+	'Event_priv', 'event',
+	'Execute_priv', 'execute',
+	'File_priv', 'file',
+	'Grant_priv', 'grant option',
+	'Index_priv', 'index',
+	'Insert_priv', 'insert',
+	'Lock_tables_priv', 'lock tables',
+	'Process_priv', 'process',
+	'References_priv', 'references',
+	'Reload_priv', 'reload',
+	'Repl_client_priv', 'replication client',
+	'Repl_slave_priv', 'replication slave',
+	'Select_priv', 'select',
+	'Show_db_priv', 'show databases',
+	'Show_view_priv', 'show view',
+	'Shutdown_priv', 'shutdown',
+	'Super_priv', 'super',
+	'Trigger_priv', 'trigger',
+	'Update_priv', 'update',
+
+	'Delete_history_priv', 'delete history',
+
+	# 'Create_role_priv', 'create role',
+	# 'Drop_role_priv', 'drop role',
+	# 'proxies_priv', 'proxy',
+
+	);
+return defined($column) ? $priv{$column} : \%priv;
+}
+
+# update_privileges(\%sconfig)
+# Update user privileges
+sub update_privileges
+{
+my ($sc) = @_;
+
+my $user = $sc->{'user'};
+my $host = $sc->{'host'};
+my $perms = $sc->{'perms'};
+my $pfields = $sc->{'pfields'};
+
+my ($ver, $variant) = &get_remote_mysql_variant();
+
+if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
+	# Assign permissions
+	my $col_to_priv_map = &perms_column_to_privilege_map();
+	foreach my $grant (keys %{ $perms }) {
+		my $grant_priv = &perms_column_to_privilege_map($grant);
+		&execute_sql_logged($mysql::master_db, "grant $grant_priv on *.* to '$user'\@'$host'");
+		delete $col_to_priv_map->{$grant};
+		}
+	foreach my $revoke_priv (values %{ $col_to_priv_map }) {
+		&execute_sql_logged($mysql::master_db, "revoke $revoke_priv on *.* from '$user'\@'$host'");
+		}
+	}
+else {
+	$sql = "update user set ".
+	       join(", ",map { "$_ = ?" } @{ $pfields }).
+	       " where host = ? and user = ?";
+	&execute_sql_logged($master_db, $sql,
+		(map { $perms{$_} ? 'Y' : 'N' } @{ $pfields }),
+		$host, $user);
+	}
+&execute_sql_logged($master_db, 'flush privileges');
+}
+
+
+# rename_user(\%sconfig)
+# Rename SQL user
+sub rename_user
+{
+my ($sc) = @_;
+my $user = $sc->{'user'};
+my $olduser = $sc->{'olduser'};
+my $host = $sc->{'host'};
+my $oldhost = $sc->{'oldhost'};
+
+my ($ver, $variant) = &get_remote_mysql_variant();
+my $sql;
+if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
+	&execute_sql_logged($master_db, "rename user '$olduser'\@'$oldhost' to '$user'\@'$host'");
+	}
+else {
+	&execute_sql_logged($master_db,
+		"update user set host = ?, user = ? where host = ? and user = ?",
+		$host, $user,
+		$oldhost, $olduser);
+	}
+
+&execute_sql_logged($master_db, 'flush privileges');
+}
+# create_user(\%sconfig)
+# Create new SQL user
+sub create_user
+{
+my ($sc) = @_;
+my $user = $sc->{'user'};
+my $pass = $sc->{'pass'};
+my $host = $sc->{'host'};
+my $perms = $sc->{'perms'};
+my $pfields = $sc->{'pfields'};
+my $ssl_field_names = $sc->{'ssl_field_names'};
+my $ssl_field_values = $sc->{'ssl_field_values'};
+my $other_field_names = $sc->{'other_field_names'};
+my $other_field_values = $sc->{'other_field_values'};
+
+my ($ver, $variant) = &get_remote_mysql_variant();
+my $plugin = &get_mysql_plugin(1);
+
+if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
+	my $sql = "create user '$user'\@'$host' identified $plugin by ".
+		"'".&escapestr($pass)."'";
+	&execute_sql_logged($master_db, $sql);
+	&execute_sql_logged($master_db, 'flush privileges');
+
+	# Update existing user privileges
+	&update_privileges({(
+		'user', $user,
+		'host', $host,
+		'perms', $perms,
+		'pfields', $pfields
+		)});
+	}
+else {
+	my $sql = "insert into user (host, user, ".
+	       join(", ", @{ $pfields }, @{ $ssl_field_names },
+			  @{ $other_field_names }).
+	       ") values (?, ?, ".
+	       join(", ", map { "?" } (@{ $pfields }, @{ $ssl_field_names },
+				       @{ $other_field_names })).")";
+	&execute_sql_logged($master_db, $sql,
+		$host, $user,
+		(map { $perms{$_} ? 'Y' : 'N' } @{ $pfields }),
+		@{ $ssl_field_values }, @{ $other_field_values });
+	&execute_sql_logged($master_db, 'flush privileges');
+	}
+}
+
+# change_user_password(plainpass, user, host)
+# Change user password
+sub change_user_password
+{
+my ($plainpass, $user, $host) = @_;
+
+my ($ver, $variant) = &get_remote_mysql_variant();
+my $plugin = &get_mysql_plugin(1);
+my $lock_supported = $variant eq "mysql" && &compare_version_numbers($ver, "8.0.19");
+my $mysql_mariadb_with_auth_string = 
+	$variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0 ||
+	$variant eq "mysql" && &compare_version_numbers($ver, "5.7.6") >= 0;
+
+my $sql;
+my $pass = &escapestr($plainpass);
+$host ||= '%';
+my $lock = !defined($plainpass);
+if ($lock) {
+	$pass = sprintf("%x", rand 16) for 1..30;
+	}
+if ($mysql_mariadb_with_auth_string) {	
+	my $sp = "identified $plugin by '".$pass."'";
+	if ($lock_supported) {
+		$sp = $lock ? "account lock" : "$sp account unlock";
+		}
+	$sql = "alter user '$user'\@'$host' $sp";
+
+	}
+else {
+	$sql = "set password for '$user'\@'$host' = $password_func('$pass')";
+	}
+&execute_sql_logged($master_db, $sql);
+&execute_sql_logged($master_db, 'flush privileges');
+}
+
 1;
 

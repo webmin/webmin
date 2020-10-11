@@ -265,6 +265,7 @@ user_user=Username
 user_all=Anonymous user
 user_pass=Password
 user_leave=Don't change
+user_locked=Locked
 user_none=None
 user_any=Any
 user_set=Set to..
