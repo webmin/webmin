@@ -267,7 +267,8 @@ return &execute_sql_safe(@_);
 }
 
 # execute_sql_safe(database, command, [param, ...])
-# Executes some SQL and returns the results
+# Executes some SQL and returns the results as a hash ref with titles and
+# data keys.
 sub execute_sql_safe
 {
 local $sql = $_[1];
@@ -1648,6 +1649,7 @@ else {
 
 &execute_sql_logged($master_db, 'flush privileges');
 }
+
 # create_user(\%sconfig)
 # Create new SQL user
 sub create_user
@@ -1689,7 +1691,7 @@ else {
 				       @{ $other_field_names })).")";
 	&execute_sql_logged($master_db, $sql,
 		$host, $user,
-		(map { $perms{$_} ? 'Y' : 'N' } @{ $pfields }),
+		(map { $perms->{$_} ? 'Y' : 'N' } @{ $pfields }),
 		@{ $ssl_field_values }, @{ $other_field_values });
 	&execute_sql_logged($master_db, 'flush privileges');
 	}
