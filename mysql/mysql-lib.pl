@@ -1535,7 +1535,7 @@ sub get_mysql_plugin
 my ($query) = @_;
 my @plugin = &execute_sql($master_db, 
     "show variables LIKE '%default_authentication_plugin%'");
-my $plugin = $plugin[0]->{'data'}[0][1];
+my $plugin = $plugin[0]->{'data'}->[0]->[1];
 if ($plugin && $query) {
 	$plugin = " with $plugin ";
 	}
