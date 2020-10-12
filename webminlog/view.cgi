@@ -120,7 +120,7 @@ foreach my $d (&list_diffs($act)) {
 		($rb) = grep { $_->{'file'} eq $d->{'object'} } @files;
 		}
 	my $cbox = @files ?
-		&ui_checkbox("r", $d->{'object'}, "", $rb, undef, !$rb) : undef;
+		&ui_checkbox("r", $d->{'object'}, "", $rb, undef, !$rb) : "";
 	$rbcount++ if ($rb);
 	my $open = !$in{'file'} || $d->{'object'} eq $in{'file'};
 	if ($t =~ /\$2/ || !$d->{'diff'}) {
