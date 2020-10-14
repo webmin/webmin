@@ -2057,8 +2057,12 @@ if ($config{'userfile'}) {
 				$method = "GET";
 				$querystring .= "&failed=$failed_user"
 					if ($failed_user);
-				$querystring .= "&twofactor_msg=".&urlize($twofactor_msg)
-					if ($twofactor_msg);
+				if ($twofactor_msg) {
+					$querystring .= "&failed_save=$failed_save";
+					$querystring .= "&failed_pass=$failed_pass";
+					$querystring .= "&failed_twofactor_attempt=$failed_twofactor_attempt";
+					$querystring .= "&twofactor_msg=".&urlize($twofactor_msg);
+					}
 				$querystring .= "&timed_out=$timed_out"
 					if ($timed_out);
 				$queryargs = "";
@@ -4206,6 +4210,10 @@ else {
 				$expired ? 'expiredpass' : 'wrongpass',
 			   $loghost, $localip);
 	$failed_user = $vu;
+	$failed_pass = $pass;
+	$failed_save = $in{'save'};
+	$failed_twofactor_attempt = $in{'failed_twofactor_attempt'} || 0;
+	$failed_twofactor_attempt++;
 	$request_uri = $in{'page'};
 	$already_session_id = undef;
 	$method = "GET";
