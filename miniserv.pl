@@ -1838,6 +1838,7 @@ if ($config{'userfile'}) {
 							$vu, 'twofactor',
 							$loghost, $localip);
 						$twofactor_msg = $err;
+						$nologf = 1 if (!$in{'twofactor'});
 						$vu = undef;
 						}
 					}
@@ -1845,7 +1846,7 @@ if ($config{'userfile'}) {
 			local $hrv = &handle_login(
 					$vu || $in{'user'}, $vu ? 1 : 0,
 				      	$expired, $nonexist, $in{'pass'},
-					$in{'notestingcookie'});
+					$in{'notestingcookie'}, $nologf);
 			return $hrv if (defined($hrv));
 			}
 		}
@@ -4101,11 +4102,11 @@ if (!$sid && !$force_urandom) {
 return $sid;
 }
 
-# handle_login(username, ok, expired, not-exists, password, [no-test-cookie])
+# handle_login(username, ok, expired, not-exists, password, [no-test-cookie], [no-log])
 # Called from handle_session to either mark a user as logged in, or not
 sub handle_login
 {
-local ($vu, $ok, $expired, $nonexist, $pass, $notest) = @_;
+local ($vu, $ok, $expired, $nonexist, $pass, $notest, $nologf) = @_;
 $authuser = $vu if ($ok);
 
 # check if the test cookie is set
@@ -4222,7 +4223,7 @@ else {
 		($nonexist ? "Non-existent" :
 		 $expired ? "Expired" : "Invalid").
 		" login as $vu from $loghost")
-		if ($use_syslog);
+		if ($use_syslog && !$nologf);
 	}
 return undef;
 }
