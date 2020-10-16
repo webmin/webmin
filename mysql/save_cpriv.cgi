@@ -38,7 +38,7 @@ else {
 			$in{'host_def'} ? '%' : $in{'host'},
 			$d,
 			$in{'user_def'} ? '' : $in{'user'},
-			$t, $in{'field'}, $in{'perms'});
+			$t, $in{'field'}, $in{'perms'} || '');
 		}
 	else {
 		# Update existing column permissions
@@ -51,7 +51,7 @@ else {
 		&execute_sql_logged($master_db, $sql,
 			$in{'host_def'} ? '%' : $in{'host'},
 			$in{'user_def'} ? '' : $in{'user'},
-			$in{'field'}, $in{'perms'},
+			$in{'field'}, $in{'perms'} || '',
 			$in{'oldhost'}, $in{'olddb'},
 			$in{'olduser'}, $in{'oldtable'},
 			$in{'oldfield'});
