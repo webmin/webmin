@@ -782,7 +782,7 @@ while(1) {
 	@childpids = grep { kill(0, $_) } @childpids;
 
 	# run the unblocking procedure to check if enough time has passed to
-	# unblock hosts that heve been blocked because of password failures
+	# unblock hosts that never been blocked because of password failures
 	$unblocked = 0;
 	if ($config{'blockhost_failures'}) {
 		$i = 0;
