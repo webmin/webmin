@@ -747,17 +747,14 @@ while(1) {
 
 	# Check the flag files
 	if ($config{'restartflag'} && -r $config{'restartflag'}) {
-		print STDERR "restart flag file detected\n";
 		unlink($config{'restartflag'});
 		$need_restart = 1;
 		}
 	if ($config{'reloadflag'} && -r $config{'reloadflag'}) {
-		print STDERR "reload flag file detected\n";
 		unlink($config{'reloadflag'});
 		$need_reload = 1;
 		}
 	if ($config{'stopflag'} && -r $config{'stopflag'}) {
-		print STDERR "stop flag file detected\n";
 		unlink($config{'stopflag'});
 		$need_stop = 1;
 		}
@@ -2969,7 +2966,6 @@ return 0;
 # by exec()ing perl with the same command line as was originally used
 sub restart_miniserv
 {
-print STDERR "restarting miniserv\n";
 &log_error("Restarting");
 close(SOCK);
 &close_all_sockets();
