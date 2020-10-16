@@ -1020,6 +1020,12 @@ while(1) {
 			else {
 				print DEBUG "main: inline EOF\n";
 				}
+
+			# Search for two-factor authentication flag
+			# being passed, to mark the process as safe
+			$inline =~ /^delay\s+(\S+)\s+(\S+)\s+(\d+)\s+(tfsafe)/;
+			local $tfsafe = $4;
+
 			if ($inline =~ /^delay\s+(\S+)\s+(\S+)\s+(\d+)/) {
 				# Got a delay request from a subprocess.. for
 				# valid logins, there is no delay (to prevent
@@ -1038,12 +1044,12 @@ while(1) {
 						}
 					}
 				else {
-					# login failed..
-					$hostfail{$2}++;
-					$userfail{$1}++;
+					# Login failed..
+					$hostfail{$2}++ if(!$tfsafe);
+					$userfail{$1}++ if(!$tfsafe);
 					$blocked = 0;
 
-					# add the host to the block list,
+					# Add the host to the block list,
 					# if configured
  					if ($config{'blockhost_failures'} &&
 					    $hostfail{$2} >=
@@ -1058,7 +1064,7 @@ while(1) {
 							}
 						}
 
-					# add the user to the user block list,
+					# Add the user to the user block list,
 					# if configured
  					if ($config{'blockuser_failures'} &&
 					    $userfail{$1} >=
@@ -4116,8 +4122,10 @@ if ($header{'cookie'} !~ /testing=1/ && $vu &&
 
 # check with main process for delay
 if ($config{'passdelay'} && $vu) {
+	my $tfsafe = 'no';
+	$tfsafe = 'tfsafe' if ($nologf);
 	print DEBUG "handle_login: requesting delay vu=$vu acptip=$acptip ok=$ok\n";
-	print $PASSINw "delay $vu $acptip $ok\n";
+	print $PASSINw "delay $vu $acptip $ok $tfsafe\n";
 	<$PASSOUTr> =~ /(\d+) (\d+)/;
 	$blocked = $2;
 	sleep($1);
