@@ -1835,6 +1835,7 @@ if ($config{'userfile'}) {
 							$vu, 'twofactor',
 							$loghost, $localip);
 						$twofactor_msg = $err;
+						$nologf = 1 if (!$in{'twofactor'});
 						$vu = undef;
 						}
 					}
@@ -1842,7 +1843,7 @@ if ($config{'userfile'}) {
 			local $hrv = &handle_login(
 					$vu || $in{'user'}, $vu ? 1 : 0,
 				      	$expired, $nonexist, $in{'pass'},
-					$in{'notestingcookie'});
+					$in{'notestingcookie'}, $nologf);
 			return $hrv if (defined($hrv));
 			}
 		}
@@ -2054,8 +2055,12 @@ if ($config{'userfile'}) {
 				$method = "GET";
 				$querystring .= "&failed=$failed_user"
 					if ($failed_user);
-				$querystring .= "&twofactor_msg=".&urlize($twofactor_msg)
-					if ($twofactor_msg);
+				if ($twofactor_msg) {
+					$querystring .= "&failed_save=$failed_save";
+					$querystring .= "&failed_pass=$failed_pass";
+					$querystring .= "&failed_twofactor_attempt=$failed_twofactor_attempt";
+					$querystring .= "&twofactor_msg=".&urlize($twofactor_msg);
+					}
 				$querystring .= "&timed_out=$timed_out"
 					if ($timed_out);
 				$queryargs = "";
@@ -4093,11 +4098,11 @@ if (!$sid && !$force_urandom) {
 return $sid;
 }
 
-# handle_login(username, ok, expired, not-exists, password, [no-test-cookie])
+# handle_login(username, ok, expired, not-exists, password, [no-test-cookie], [no-log])
 # Called from handle_session to either mark a user as logged in, or not
 sub handle_login
 {
-local ($vu, $ok, $expired, $nonexist, $pass, $notest) = @_;
+local ($vu, $ok, $expired, $nonexist, $pass, $notest, $nologf) = @_;
 $authuser = $vu if ($ok);
 
 # check if the test cookie is set
@@ -4202,6 +4207,10 @@ else {
 				$expired ? 'expiredpass' : 'wrongpass',
 			   $loghost, $localip);
 	$failed_user = $vu;
+	$failed_pass = $pass;
+	$failed_save = $in{'save'};
+	$failed_twofactor_attempt = $in{'failed_twofactor_attempt'} || 0;
+	$failed_twofactor_attempt++;
 	$request_uri = $in{'page'};
 	$already_session_id = undef;
 	$method = "GET";
@@ -4210,7 +4219,7 @@ else {
 		($nonexist ? "Non-existent" :
 		 $expired ? "Expired" : "Invalid").
 		" login as $vu from $loghost")
-		if ($use_syslog);
+		if ($use_syslog && !$nologf);
 	}
 return undef;
 }
