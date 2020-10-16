@@ -4221,6 +4221,13 @@ else {
 	$already_session_id = undef;
 	$method = "GET";
 	$authuser = $baseauthuser = undef;
+	
+	# If login page is simply reloaded, with `session_login.cgi` in URL,
+	# without having any parameters sent (user set to empty), don't log 
+	# false positive attempt with `Invalid login as  from IP` to syslog
+	$nolog = 1 if (!$vu);
+
+	# Send to log if allowed
 	syslog("crit", "%s",
 		($nonexist ? "Non-existent" :
 		 $expired ? "Expired" : "Invalid").
