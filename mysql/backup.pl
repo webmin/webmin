@@ -18,6 +18,9 @@ if ($ARGV[1] eq "--prefix") {
 	$extra_prefix = $ARGV[2];
 	}
 
+$email = $config{'backup_email_'.($all ? '' : $ARGV[0])};
+$notify = $config{'backup_notify_'.($all ? '' : $ARGV[0])};
+
 # Check if MySQL is running
 $ex = 0;
 ($r, $out) = &is_mysql_running();
@@ -35,9 +38,6 @@ if ($all) {
 else {
 	@dbs = ( $ARGV[0] );
 	}
-
-$email = $config{'backup_email_'.($all ? '' : $dbs[0])};
-$notify = $config{'backup_notify_'.($all ? '' : $dbs[0])};
 
 if ($cmode) {
 	# Run and check before-backup command (for all DBs)
