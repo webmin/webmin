@@ -1022,9 +1022,9 @@ while(1) {
 				}
 
 			# Search for two-factor authentication flag
-			# being passed, to mark the process as safe
-			$inline =~ /^delay\s+(\S+)\s+(\S+)\s+(\d+)\s+(tfsafe)/;
-			local $tfsafe = $4;
+			# being passed, to mark the call as safe
+			$inline =~ /^delay\s+(\S+)\s+(\S+)\s+(\d+)\s+(nolog)/;
+			local $nolog = $4;
 
 			if ($inline =~ /^delay\s+(\S+)\s+(\S+)\s+(\d+)/) {
 				# Got a delay request from a subprocess.. for
@@ -1045,8 +1045,8 @@ while(1) {
 					}
 				else {
 					# Login failed..
-					$hostfail{$2}++ if(!$tfsafe);
-					$userfail{$1}++ if(!$tfsafe);
+					$hostfail{$2}++ if(!$nolog);
+					$userfail{$1}++ if(!$nolog);
 					$blocked = 0;
 
 					# Add the host to the block list,
@@ -1841,7 +1841,7 @@ if ($config{'userfile'}) {
 							$vu, 'twofactor',
 							$loghost, $localip);
 						$twofactor_msg = $err;
-						$nologf = 1 if (!$in{'twofactor'});
+						$twofactor_nolog = 'nolog' if (!$in{'twofactor'});
 						$vu = undef;
 						}
 					}
@@ -1849,7 +1849,7 @@ if ($config{'userfile'}) {
 			local $hrv = &handle_login(
 					$vu || $in{'user'}, $vu ? 1 : 0,
 				      	$expired, $nonexist, $in{'pass'},
-					$in{'notestingcookie'}, $nologf);
+					$in{'notestingcookie'}, $twofactor_nolog);
 			return $hrv if (defined($hrv));
 			}
 		}
@@ -4108,7 +4108,7 @@ return $sid;
 # Called from handle_session to either mark a user as logged in, or not
 sub handle_login
 {
-local ($vu, $ok, $expired, $nonexist, $pass, $notest, $nologf) = @_;
+local ($vu, $ok, $expired, $nonexist, $pass, $notest, $nolog) = @_;
 $authuser = $vu if ($ok);
 
 # check if the test cookie is set
@@ -4122,10 +4122,8 @@ if ($header{'cookie'} !~ /testing=1/ && $vu &&
 
 # check with main process for delay
 if ($config{'passdelay'} && $vu) {
-	my $tfsafe = 'no';
-	$tfsafe = 'tfsafe' if ($nologf);
 	print DEBUG "handle_login: requesting delay vu=$vu acptip=$acptip ok=$ok\n";
-	print $PASSINw "delay $vu $acptip $ok $tfsafe\n";
+	print $PASSINw "delay $vu $acptip $ok $nolog\n";
 	<$PASSOUTr> =~ /(\d+) (\d+)/;
 	$blocked = $2;
 	sleep($1);
@@ -4227,7 +4225,7 @@ else {
 		($nonexist ? "Non-existent" :
 		 $expired ? "Expired" : "Invalid").
 		" login as $vu from $loghost")
-		if ($use_syslog && !$nologf);
+		if ($use_syslog && !$nolog);
 	}
 return undef;
 }
