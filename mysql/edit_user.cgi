@@ -101,7 +101,15 @@ foreach $f ('max_user_connections', 'max_connections',
 
 # SSL needed?
 if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
-	# XXX???
+	my $ssl_type = !uc($u->[$fieldmap{'ssl_type'}]) ? 'NONE' :
+	                uc($u->[$fieldmap{'ssl_type'}]) eq 'ANY' ? 'SSL' :
+	                uc($u->[$fieldmap{'ssl_type'}]);
+	print &ui_table_row($text{'user_ssl'},
+		&ui_select("ssl_type", $ssl_type,
+			[ [ 'NONE', $text{'user_ssl_'} ],
+			  [ 'SSL', $text{'user_ssl_any'} ],
+			  [ 'X509', $text{'user_ssl_x509'} ] ],
+			1, 0, 1));
 	} 
 else {
 	if ($remote_mysql_version >= 5 && $fieldmap{'ssl_type'}) {

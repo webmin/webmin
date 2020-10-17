@@ -105,8 +105,11 @@ else {
 
 	# Set SSL fields
 	if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
-		# XXX???
-		} 
+		if ($in{'ssl_type'} =~ /^(NONE|SSL|X509)$/) {
+			&execute_sql_logged($mysql::master_db,
+				"alter user '$user'\@'$host' require $in{'ssl_type'}");
+			}
+		}
 	else {
 		if (&compare_version_numbers($ver, 5) >= 0 &&
 		    defined($in{'ssl_type'}) &&
