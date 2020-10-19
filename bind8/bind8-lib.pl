@@ -103,7 +103,7 @@ sub get_bind_version
 {
 if (&has_command($config{'named_path'})) {
 	my $out = &backquote_command("$config{'named_path'} -v 2>&1");
-	if ($out =~ /(bind|named)\s+([0-9\.]+)/i) {
+	if ($out && $out =~ /(bind|named)\s+([0-9\.]+)/i) {
 		return $2;
 		}
 	}
