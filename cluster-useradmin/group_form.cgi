@@ -50,7 +50,8 @@ print "<td><input type=radio name=others value=1 checked> $text{'yes'}</td>\n";
 print "<td><input type=radio name=others value=0> $text{'no'}</td> </tr>\n";
 
 # Show server selection input
-&create_on_input($text{'uedit_servers'});
+print "<tr> <td>$text{'uedit_servers'}</td> ",
+      "<td>",&create_on_input(),"</td> </tr>\n";
 
 print "</table></td> </tr></table><p></p><p></p>\n";
 

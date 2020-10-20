@@ -98,8 +98,8 @@ if ($config{'conf_add_user'} == 0 &&
 	$config{'conf_allow_sync'} == 0 &&
 	$config{'conf_find_user'} == 0 &&
 	$config{'conf_find_group'} == 0) {
-	# If we have configured EVERY possible 'host' action off, then don't show
-	# the header/horizontal-rule/etc...
+	# If we have configured EVERY possible 'host' action off, then don't
+	# show the header/horizontal-rule/etc...
 	@hosts = ();
 	}
 
@@ -205,7 +205,7 @@ if (@hosts) {
 		print "<td>\n";
 		print "<form action=refresh.cgi>\n";
 		print "<input type=submit value='$text{'index_refresh'}'>\n";
-		&create_on_input(undef, 1);
+		print &create_on_input(1);
 		print "</form>\n";
 		print "</td>\n";
 	}

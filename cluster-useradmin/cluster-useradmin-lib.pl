@@ -13,23 +13,23 @@ use WebminCore;
 # Returns a list of all hosts whose users are being managed by this module
 sub list_useradmin_hosts
 {
-local %smap = map { $_->{'id'}, $_ } &list_servers();
-local $hdir = "$module_config_directory/hosts";
-opendir(DIR, $hdir);
-local ($h, @rv);
-foreach $h (readdir(DIR)) {
+my %smap = map { $_->{'id'}, $_ } &list_servers();
+my $hdir = "$module_config_directory/hosts";
+my @rv;
+opendir(DIR, $hdir) || return ();
+foreach my $h (readdir(DIR)) {
 	next if ($h eq "." || $h eq ".." || !-d "$hdir/$h");
-	local %host = ( 'id', $h );
+	my %host = ( 'id', $h );
 	next if (!$smap{$h});   # underlying server was deleted
 	opendir(UDIR, "$hdir/$h");
 	foreach $f (readdir(UDIR)) {
 		if ($f =~ /^(\S+)\.user$/) {
-			local %user;
+			my %user;
 			&read_file("$hdir/$h/$f", \%user);
 			push(@{$host{'users'}}, \%user);
 			}
 		elsif ($f =~ /^(\S+)\.group$/) {
-			local %group;
+			my %group;
 			&read_file("$hdir/$h/$f", \%group);
 			push(@{$host{'groups'}}, \%group);
 			}
@@ -44,32 +44,34 @@ return @rv;
 # save_useradmin_host(&host)
 sub save_useradmin_host
 {
-local $hdir = "$module_config_directory/hosts";
-local %oldfile;
+my ($host) = @_;
+my $hdir = "$module_config_directory/hosts";
+my %oldfile;
 mkdir($hdir, 0700);
-if (-d "$hdir/$_[0]->{'id'}") {
-	opendir(DIR, "$hdir/$_[0]->{'id'}");
-	map { $oldfile{$_}++ } readdir(DIR);
+if (-d "$hdir/$host->{'id'}") {
+	opendir(DIR, "$hdir/$host->{'id'}");
+	%oldfile = map { $_, 1 } readdir(DIR);
 	closedir(DIR);
 	}
 else {
-	mkdir("$hdir/$_[0]->{'id'}", 0700);
+	mkdir("$hdir/$hist->{'id'}", 0700);
 	}
-foreach $u (@{$_[0]->{'users'}}) {
-	&write_file("$hdir/$_[0]->{'id'}/$u->{'user'}.user", $u);
+foreach my $u (@{$host->{'users'}}) {
+	&write_file("$hdir/$host->{'id'}/$u->{'user'}.user", $u);
 	delete($oldfile{"$u->{'user'}.user"});
 	}
-foreach $g (@{$_[0]->{'groups'}}) {
-	&write_file("$hdir/$_[0]->{'id'}/$g->{'group'}.group", $g);
+foreach my $g (@{$host->{'groups'}}) {
+	&write_file("$hdir/$host->{'id'}/$g->{'group'}.group", $g);
 	delete($oldfile{"$g->{'group'}.group"});
 	}
-unlink(map { "$hdir/$_[0]->{'id'}/$_" } keys %oldfile);
+unlink(map { "$hdir/$host->{'id'}/$_" } keys %oldfile);
 }
 
 # delete_useradmin_host(&host)
 sub delete_useradmin_host
 {
-system("rm -rf '$module_config_directory/hosts/$_[0]->{'id'}'");
+my ($host) = @_;
+&unlink_file("$module_config_directory/hosts/$host->{'id'}");
 }
 
 # list_servers()
@@ -77,7 +79,7 @@ system("rm -rf '$module_config_directory/hosts/$_[0]->{'id'}'");
 # managed, plus this server
 sub list_servers
 {
-local @servers = &servers::list_servers_sorted();
+my @servers = &servers::list_servers_sorted();
 return ( &servers::this_server(), grep { $_->{'user'} } @servers );
 }
 
@@ -86,6 +88,7 @@ return ( &servers::this_server(), grep { $_->{'user'} } @servers );
 # parent dirs
 sub auto_home_dir
 {
+my ($base, $user) = @_;
 if ($uconfig{'home_style'} == 0) {
 	return $_[0]."/".$_[1];
 	}
@@ -105,99 +108,90 @@ elsif ($uconfig{'home_style'} == 3) {
 # server_name(&server)
 sub server_name
 {
-return $_[0]->{'desc'} ? $_[0]->{'desc'} : $_[0]->{'host'};
+my ($server) = @_;
+return $server->{'desc'} || $server->{'host'};
 }
 
 # supports_gothers(&server)
 # Returns 1 if some server supports group syncing, 0 if not
 sub supports_gothers
 {
-local $vers = $remote_server_version{$_[0]->{'host'}} ||
-	      &remote_foreign_call($_[0]->{'host'}, "useradmin",
-				  "get_webmin_version");
+my ($server) = @_;
+my $vers = $remote_server_version{$server->{'host'}} ||
+	   &remote_foreign_call($server->{'host'}, "useradmin",
+				"get_webmin_version");
 return $vers >= 1.090;
 }
 
-# create_on_input(desc, [no-donthave], [multiple])
+# create_on_input([no-donthave], [multiple])
+# Returns a selector for a server or group to create users on
 sub create_on_input
 {
-local @hosts = &list_useradmin_hosts();
-local @servers = &list_servers();
-if ($_[0]) {
-	print "<tr> <td><b>$_[0]</b></td>\n";
-	print "<td colspan=2>\n";
-	}
-if ($_[2]) {
-	print "<select name=server size=5 multiple>\n";
-	}
-else {
-	print "<select name=server>\n";
-	}
-print "<option value=-1>$text{'uedit_all'}</option>\n";
-print "<option value=-2>$text{'uedit_donthave'}</option>\n" if (!$_[1]);
-local @groups = &servers::list_all_groups(\@servers);
-local $h;
+my ($nodont, $mul) = @_;
+my @hosts = &list_useradmin_hosts();
+my @servers = &list_servers();
+my @opts = ( [ -1, $text{'uedit_all'} ] );
+push(@opts, [ -2, $text{'uedit_donthave'} ] ) if (!$nodont);
+my @groups = &servers::list_all_groups(\@servers);
+my $h;
 foreach $h (@hosts) {
-        local ($s) = grep { $_->{'id'} == $h->{'id'} } @servers;
+        my ($s) = grep { $_->{'id'} == $h->{'id'} } @servers;
 	if ($s) {
-		print "<option value='$s->{'id'}'>",
-			$s->{'desc'} ? $s->{'desc'} : $s->{'host'},"</option>\n";
+		push(@opts, [ $s->{'id'}, &server_name($s) ]);
 		$gothost{$s->{'host'}}++;
 		}
         }
-local $g;
-foreach $g (@groups) {
-        local ($found, $m);
+foreach my $g (@groups) {
+        my ($found, $m);
         foreach $m (@{$g->{'members'}}) {
-                ($found++, last) if ($gothost{$m});
+                $found++ if ($gothost{$m});
                 }
-        print "<option value='group_$g->{'name'}'>",
-                &text('uedit_group', $g->{'name'}),"</option>\n" if ($found);
+	push(@opts, [ "group_$g->{'name'}",
+		      &text('uedit_group', $g->{'name'}) ]) if ($found);
         }
-print "</select>\n";
-if ($_[0]) {
-	print "</td> </tr>\n";
-	}
+return &ui_select("server", undef, \@opts, $mul ? 5 : 1, $mul);
 }
 
 # create_on_parse(prefix, &already, name, [no-print])
+# Returns a list of selected hosts from an input created by create_on_input
 sub create_on_parse
 {
-local @allhosts = &list_useradmin_hosts();
-local @servers = &list_servers();
-local @hosts;
-local $server;
+my ($pfx, $already, $name, $noprint) = @_;
+my @allhosts = &list_useradmin_hosts();
+my @servers = &list_servers();
+my @hosts;
+my $server;
 foreach $server (split(/\0/, $in{'server'})) {
 	if ($server == -2) {
 		# Check who has it already
-		local %already = map { $_->{'id'}, 1 } @{$_[1]};
+		my %already = map { $_->{'id'}, 1 } @$already;
 		push(@hosts, grep { !$already{$_->{'id'}} } @allhosts);
-		print "<b>",&text($_[0].'3', $_[2]),"</b><p>\n" if (!$_[3]);
+		print "<b>",&text($pfx.'3', $name),"</b><p>\n" if (!$noprint);
 		}
 	elsif ($server =~ /^group_(.*)/) {
 		# Install on members of some group
-		local ($group) = grep { $_->{'name'} eq $1 }
+		my ($group) = grep { $_->{'name'} eq $1 }
 				      &servers::list_all_groups(\@servers);
-		push(@hosts, grep { local $hid = $_->{'id'};
-				local ($s) = grep { $_->{'id'} == $hid } @servers;
+		push(@hosts, grep { my $hid = $_->{'id'};
+				my ($s) = grep { $_->{'id'} == $hid } @servers;
 				&indexof($s->{'host'}, @{$group->{'members'}}) >= 0 }
 			      @allhosts);
-		print "<b>",&text($_[0].'4', $_[2], $group->{'name'}),
-		      "</b><p>\n" if (!$_[3]);
+		print "<b>",&text($pfx.'4', $name, $group->{'name'}),
+		      "</b><p>\n" if (!$noprint);
 		}
 	elsif ($server != -1) {
 		# Just install on one host
-		local ($onehost) = grep { $_->{'id'} == $server } @allhosts;
+		my ($onehost) = grep { $_->{'id'} == $server } @allhosts;
 		push(@hosts, $onehost);
-		local ($s) = grep { $_->{'id'} == $onehost->{'id'} } @servers;
-		print "<b>",&text($_[0].'5', $_[2],
-				  &server_name($s)),"</b><p>\n" if (!$_[3]);
+		my ($s) = grep { $_->{'id'} == $onehost->{'id'} } @servers;
+		print "<b>",&text($pfx.'5', $name,
+				  &server_name($s)),"</b><p>\n" if (!$noprint);
 		}
 	else {
 		# Installing on every host
 		push(@hosts, @allhosts);
-		print "<b>",&text($_[0], join(" ", @names)),
-		      "</b><p>\n" if (!$_[3]);
+		print "<b>",&text($pfx, join(" ", @names)),
+		      "</b><p>\n" if (!$noprint);
 		}
 	}
 return &unique(@hosts);

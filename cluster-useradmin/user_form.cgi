@@ -246,7 +246,8 @@ print "<td><input type=radio name=others value=1 checked> $text{'yes'}</td>\n";
 print "<td><input type=radio name=others value=0> $text{'no'}</td> </tr>\n";
 
 # Show selector for hosts to create on
-&create_on_input($text{'uedit_servers'});
+print "<tr> <td><b>$text{'uedit_servers'}</b></td> ",
+      "<td>",&create_on_input(),"</td> </tr>\n";
 
 print "</table></td> </tr></table><p></p><p></p>\n";
 
