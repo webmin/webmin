@@ -171,7 +171,7 @@ SuSE OpenExchange Linux		$1	suse-linux	8.2	`cat /etc/SLOX-release 2>/dev/null` =
 SuSE SLES Linux			$1	suse-linux	sprintf("%.1f", $1)	$etc_issue =~ /SuSE\s+SLES-(\S+)/i
 
 # SuSE Linux
-SuSE Linux			$1	suse-linux	$1	`cat /etc/SuSE-release 2>/dev/null` =~ /([0-9\.]+)/ || `cat /etc/os-release 2>/dev/null` =~ /openSUSE\s+Leap\s+(\S+)/ || $etc_issue =~ /SuSE\s+Linux\s+(\S+)\s/i || `cat /etc/SUSE-brand 2>/dev/null` =~ /VERSION\s*=\s(\S+)/
+SuSE Linux			$1	suse-linux	$1	`cat /etc/SuSE-release 2>/dev/null` =~ /([0-9\.]+)/ || `cat /etc/os-release 2>/dev/null` =~ /openSUSE\s+Leap\s+([\d\.]+)/ || $etc_issue =~ /SuSE\s+Linux\s+(\S+)\s/i || `cat /etc/SUSE-brand 2>/dev/null` =~ /VERSION\s*=\s(\S+)/
 
 # United Linux only ever had version 1.0 I think
 United Linux			$1	united-linux	$1	`cat /etc/UnitedLinux-release 2>/dev/null` =~ /([0-9\.]+)/
