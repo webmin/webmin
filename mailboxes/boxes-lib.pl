@@ -1719,7 +1719,6 @@ foreach my $c (@a) {
             my $d = $1;
             $d =~ s/,/\//g;
             my $p = length($d) % 4;
-            $b = $c, next if (!$p);
             $d .= "=" x (4 - $p) if ($p);
             $b .= $u->decode(decode_base64($d));
             }
