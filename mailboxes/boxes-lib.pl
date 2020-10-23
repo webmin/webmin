@@ -1692,6 +1692,49 @@ eval {
 return $str;
 }
 
+# decode_utf7(string)
+# If possible, convert a string like `Gel&APY-schte` to `Gelöschte`
+# It will also convert complex strings like `Gel&APY-schte & Spam`
+sub decode_utf7
+{
+my ($a) = @_;
+eval "use Encode";
+return $a if ($@);
+my $u = find_encoding("UTF-16BE");
+return $a if (!$u);
+my $s = ' ';
+my @a = split($s, $a);
+my @b;
+foreach my $c (@a) {
+    my $b;
+    # Based on Encode::Unicode::UTF7 by Dan Kogai
+    while (pos($c) < length($c)) {
+        if ($c =~ /\G([^&]+)/ogc) {
+            $b .= "$1";
+            } 
+        elsif ($c =~ /\G\&-/ogc) {
+            $b .= "&";
+            } 
+        elsif ($c =~ /\G\&([A-Za-z0-9+,]+)-?/ogsc) {
+            my $d = $1;
+            $d =~ s/,/\//g;
+            my $p = length($d) % 4;
+            $b = $c, next if (!$p);
+            $d .= "=" x (4 - $p) if ($p);
+            $b .= $u->decode(decode_base64($d));
+            }
+        elsif ($c =~ /\G\&/ogc) {
+            $b = $c;
+            }
+        else {
+            return $a;
+            }
+        }
+    push(@b, $b);
+    }
+return join($s, @b);
+}
+
 # encode_mimewords_address(string, %params)
 # Given a string containing addresses into one with real names mime-words
 # escaped
