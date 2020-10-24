@@ -52,6 +52,7 @@ Oracle Enterprise Linux			$2	redhat-linux	$2+8.0	`cat /etc/enterprise-release 2>
 Oracle Linux			$2	redhat-linux	$2+8.0	`cat /etc/oracle-release 2>/dev/null` =~ /Oracle\s+Linux\s+Server\s+release\s+([0-9\.]+)/i
 Oracle VM			$2	redhat-linux	$2+8.0	`cat /etc/ovs-release 2>/dev/null` =~ /Oracle.*VM\s+server\s+release\s+(\d+)/i
 XenServer Linux			$1	redhat-linux	13.0	`cat /etc/redhat-release 2>/dev/null` =~ /XenServer\s+release\s+5\./
+XCP-ng Linux				$1	redhat-linux	$2+8.0	`cat /etc/redhat-release 2>/dev/null` =~ /XCP-ng\s+release\s+([\d\.]+)/
 CloudLinux			$1	redhat-linux	$2+8.0	`cat /etc/redhat-release 2>/dev/null` =~ /CloudLinux.*release\s+(\S+)/
 MostlyLinux			$1	redhat-linux	$2+8.0	`cat /etc/redhat-release 2>/dev/null` =~ /MostlyLinux\s+Linux\s+release\s+(\d+)/
 Cloudrouter Linux		$1	redhat-linux	15	`cat /etc/cloudrouter-release 2>/dev/null` =~ /CloudRouter\s+release\s+(\d+)\s+/
@@ -213,7 +214,7 @@ Mandriva Linux			$2	mandrake-linux	10.5	$etc_issue =~ /(Mandrakelinux|Mandriva).
 Mandriva Linux			$2	mandrake-linux	$2	$etc_issue =~ /(Mandriva).*(20\d\d\.\d+)/i || `cat /etc/mandriva-release 2>/dev/null` =~ /(Mandriva).*(20\d\d\.\d+)/i
 
 # Mandriva Corporate
-Mandrake Linux Corporate Server	$i	mandrake-linux	$i	$etc_issue =~ /Mandrake\s+Linux\s+Corporate\s+Server\s+release\s+([0-9\.]+)/i
+Mandrake Linux Corporate Server		$i	mandrake-linux	$i	$etc_issue =~ /Mandrake\s+Linux\s+Corporate\s+Server\s+release\s+([0-9\.]+)/i
 Mandriva Linux Enterprise Server	5.0	mandrake-linux	2009	$etc_issue =~ /Mandriva\s+Linux\s+Enterprise\s+Server\s+release\s+5\.0\s+\(Official\)\s+for\s+(i586|x86_64)/i
 
 # Conectiva Linux (now subsumed into Mandrake?)
