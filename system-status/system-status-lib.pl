@@ -284,7 +284,9 @@ foreach my $stat (@stats) {
 my %maxpossible;
 &read_file("$historic_info_dir/maxes", \%maxpossible);
 foreach my $stat (@stats) {
-	if ($stat->[2] && $stat->[2] > $maxpossible{$stat->[0]}) {
+	if ($stat->[2] &&
+	    (!$maxpossible{$stat->[0]} ||
+	     $stat->[2] > $maxpossible{$stat->[0]})) {
 		$maxpossible{$stat->[0]} = $stat->[2];
 		}
 	}
