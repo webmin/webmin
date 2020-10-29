@@ -2063,7 +2063,7 @@ if ($config{'userfile'}) {
 					if ($failed_user);
 				if ($twofactor_msg) {
 					$querystring .= "&failed_save=$failed_save";
-					$querystring .= "&failed_pass=$failed_pass";
+					$querystring .= "&failed_pass=".&urlize($failed_pass);
 					$querystring .= "&failed_twofactor_attempt=$failed_twofactor_attempt";
 					$querystring .= "&twofactor_msg=".&urlize($twofactor_msg);
 					}
