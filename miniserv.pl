@@ -2059,12 +2059,12 @@ if ($config{'userfile'}) {
 					$querystring = "page=".&urlize($rpage);
 					}
 				$method = "GET";
-				$querystring .= "&failed=$failed_user"
+				$querystring .= "&failed=".&urlize($failed_user)
 					if ($failed_user);
 				if ($twofactor_msg) {
-					$querystring .= "&failed_save=$failed_save";
+					$querystring .= "&failed_save=".&urlize($failed_save);
 					$querystring .= "&failed_pass=".&urlize($failed_pass);
-					$querystring .= "&failed_twofactor_attempt=$failed_twofactor_attempt";
+					$querystring .= "&failed_twofactor_attempt=".&urlize($failed_twofactor_attempt);
 					$querystring .= "&twofactor_msg=".&urlize($twofactor_msg);
 					}
 				$querystring .= "&timed_out=$timed_out"
