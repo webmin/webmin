@@ -1079,7 +1079,6 @@ if ($cache) {
 	# Check the cache file, and only re-check the OS if older than
 	# 1 day, or if we have rebooted recently
 	my %cache;
-	my $uptime = &get_system_uptime();
 	if (&read_file($detect_operating_system_cache, \%cache) &&
 	    $cache{'os_type'} && $cache{'os_version'} &&
 	    $cache{'real_os_type'} && $cache{'real_os_version'}) {
