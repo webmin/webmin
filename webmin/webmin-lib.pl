@@ -1084,8 +1084,7 @@ if ($cache) {
 	if (&read_file($detect_operating_system_cache, \%cache) &&
 	    $cache{'os_type'} && $cache{'os_version'} &&
 	    $cache{'real_os_type'} && $cache{'real_os_version'}) {
-		if ($cache{'time'} > time()-24*60*60 &&
-		    $cache{'time'} > $lastreboot) {
+		if ($cache{'time'} > time()-24*60*60) {
 			return %cache;
 			}
 		}
