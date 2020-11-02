@@ -29,15 +29,13 @@ add_egft=Server $1 does not use the same group file format as this host
 add_ok=Added $1 with $2 users and $3 groups.
 
 host_title=Managed Server
-host_header=Software managed server details
+host_header=Users and groups managed server details
 host_name=Host name
 host_type=Server type
 host_delete=Remove From Managed List
 host_refresh=Refresh Users and Groups
 host_users=Number of users
 host_groups=Number of groups
-host_ulist=Users on Server
-host_glist=Groups on Server
 host_return=server details
 
 refresh_title=Refresh Users and Groups

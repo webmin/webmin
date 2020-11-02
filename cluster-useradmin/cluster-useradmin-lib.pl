@@ -54,7 +54,7 @@ if (-d "$hdir/$host->{'id'}") {
 	closedir(DIR);
 	}
 else {
-	mkdir("$hdir/$hist->{'id'}", 0700);
+	mkdir("$hdir/$host->{'id'}", 0700);
 	}
 foreach my $u (@{$host->{'users'}}) {
 	&write_file("$hdir/$host->{'id'}/$u->{'user'}.user", $u);

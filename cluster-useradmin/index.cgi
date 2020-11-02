@@ -27,9 +27,8 @@ foreach $h (@hosts) {
 	push(@titles, $s->{'desc'} ? $s->{'desc'}
 				   : "$s->{'host'}:$s->{'port'}");
 	push(@links, $link);
-	push(@icons, $gconfig{'webprefix'} ?
-		($gconfig{'webprefix'}."/servers/images/".$s->{'type'}.".gif") :
-		("../servers/images/".$s->{'type'}.".gif"));
+	push(@icons, $gconfig{'webprefix'}."/servers/images/".
+		     $s->{'type'}.".gif");
 	push(@installed, @{$h->{'packages'}});
 	$gothost{$h->{'id'}}++;
 	}
@@ -47,7 +46,8 @@ if (@links) {
 			local ($type) = grep { $_->[0] eq $s->{'type'} }
 					     @servers::server_types;
 			local ($link) = $config{'conf_host_links'} ?
-				&ui_link("edit_host.cgi?id=$h->{'id'}",($s->{'host'} || &get_system_hostname())) :
+				&ui_link("edit_host.cgi?id=$h->{'id'}",
+				  ($s->{'host'} || &get_system_hostname())) :
 				($s->{'host'} || &get_system_hostname());
 			print &ui_columns_row([
 				$link,
