@@ -6,8 +6,8 @@ no warnings 'redefine';
 BEGIN { push(@INC, ".."); };
 eval "use WebminCore;";
 &init_config();
-our ($module_config_directory, %config, %gconfig, $module_name,
-     $no_log_file_changes, $module_var_directory);
+our ($module_config_directory, $module_var_directory, $var_directory, 
+     %config, %gconfig, $module_name, $no_log_file_changes);
 our $systeminfo_cron_cmd = "$module_config_directory/systeminfo.pl";
 our $collected_info_file = "$module_config_directory/info";
 if (!-e $collected_info_file) {
@@ -85,6 +85,14 @@ if (defined(&proc::get_cpu_io_usage)) {
 	if (defined($user)) {
 		$info->{'cpu'} = [ $user, $kernel, $idle, $io, $vm ];
 		}
+	}
+
+# Remove and regenerate OS cache
+if (&foreign_available('webmin')) {
+	&unlink_file("$var_directory/modules/webmin/oscache");
+	&foreign_require("webmin");
+	my %osinfo = &webmin::detect_operating_system();
+	&webmin::apply_new_os_version(\%osinfo);
 	}
 
 return $info;
