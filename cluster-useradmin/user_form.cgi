@@ -97,90 +97,76 @@ print &ui_table_end();
 $pft = &foreign_call("useradmin", "passfiles_type");
 if ($pft == 1 || $pft == 6) {
 	# This is a BSD system.. a few extra password options are supported
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'uedit_passopts'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table width=100%>\n";
-	print "<tr> <td><b>$text{'change2'}</b></td>\n";
-	print "<td>";
-	&useradmin::date_input("", "", "", 'change');
-	print " &nbsp; <input name=changeh size=3>";
-	print ":<input name=changemi size=3></td>\n";
+	print &ui_table_start($text{'uedit_passopts'}, undef, 2);
 
-	print "<td colspan=1><b>$text{'expire2'}</b></td>\n";
-	print "<td colspan=3>";
-	&useradmin::date_input("", "", "", 'expire');
-	print " &nbsp; <input name=expireh size=3>";
-	print ":<input name=expiremi size=3></td> </tr>\n";
+	print &ui_table_row($text{'change2'},
+		&useradmin::date_input("", "", "", 'change')." ".
+		&ui_textbox("changeh", "", 3).":".
+		&ui_textbox("changemi", "", 3));
 
-	print "<tr> <td><b>$text{'class'}</b></td>\n";
-	print "<td><input name=class size=10></td>\n";
-	print "</tr>\n";
-	print "</table></td></tr></table><p>\n";
+	print &ui_table_row($text{'expire2'},
+		&useradmin::date_input("", "", "", 'expire')." ".
+		&ui_textbox("expireh", "", 3).":".
+		&ui_textbox("expiremi", "", 3));
+
+	print &ui_table_row($text{'class'},
+		&ui_textbox("class", "", 10));
+
+	print &ui_table_end();
 	}
 elsif ($pft == 2) {
 	# System has a shadow password file as well.. which means it supports
 	# password expiry and so on
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'uedit_passopts'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table width=100%>\n";
+	print &ui_table_start($text{'uedit_passopts'}, undef, 2);
 
-	print "<td colspan=1><b>$text{'expire'}</b></td>\n";
-	print "<td colspan=3>";
-	&useradmin::date_input($eday, $emon, $eyear, 'expire');
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'expire'},
+		&useradmin::date_input($eday, $emon, $eyear, 'expire'));
 
-	print "<tr> <td><b>$text{'min'}</b></td>\n";
-	print "<td><input size=5 name=min></td>\n";
+	print &ui_table_row($text{'min'},
+		&ui_textbox("min", undef, 5));
 
-	print "<td><b>$text{'max'}</b></td>\n";
-	print "<td><input size=5 name=max></td></tr>\n";
+	print &ui_table_row($text{'max'},
+		&ui_textbox("max", undef, 5));
 
-	print "<tr> <td><b>$text{'warn'}</b></td>\n";
-	print "<td><input size=5 name=warn></td>\n";
+	print &ui_table_row($text{'warn'},
+		&ui_textbox("warn", undef, 5));
 
-	print "<td><b>$text{'inactive'}</b></td>\n";
-	print "<td><input size=5 name=inactive></td></tr>\n";
+	print &ui_table_row($text{'inactive'},
+		&ui_textbox("inactive", undef, 5));
 
-	print "</table></td></tr></table><p>\n";
+	print &ui_table_end();
 	}
 elsif ($pft == 4) {
 	# This is an AIX system
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'uedit_passopts'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table width=100%>\n";
+	print &ui_table_start($text{'uedit_passopts'}, undef, 2);
 
-	print "<tr> <td><b>$text{'expire'}</b></td>\n";
-	print "<td>";
-	&useradmin::date_input("", "", "", 'expire');
-	print " &nbsp; <input name=expireh size=3>";
-	print "<b>:</b><input name=expiremi size=3></td> </tr>\n";
+	print &ui_table_row($text{'expire'},
+		&useradmin::date_input("", "", "", 'expire')." ".
+		&ui_textbox("expireh", undef, 3).":".
+		&ui_textbox("expiremi", undef, 3));
 
-	print "<tr> <td><b>$text{'min_weeks'}</b></td>\n";
-	print "<td><input size=5 name=min></td>\n";
+	print &ui_table_row($text{'min_weeks'},
+		&ui_textbox("min", undef, 5));
 
-	print "<td><b>$text{'max_weeks'}</b></td>\n";
-	print "<td><input size=5 name=max></td></tr>\n";
+	print &ui_table_row($text{'max_weeks'},
+		&ui_textbox("max", undef, 5));
 
-	print "<tr> <td valign=top><b>$text{'warn'}</b></td>\n";
-	print "<td valign=top><input size=5 name=warn></td>\n";
+	print &ui_table_row($text{'warn'},
+		&ui_textbox("warn", undef, 5));
 
-	print "<td valign=top><b>$text{'flags'}</b></td> <td>\n";
-	printf "<input type=checkbox name=flags value=admin> %s<br>\n",
-		$text{'uedit_admin'};
-	printf "<input type=checkbox name=flags value=admchg> %s<br>\n",
-		$text{'uedit_admchg'};
-	printf "<input type=checkbox name=flags value=nocheck> %s\n",
-		$text{'uedit_nocheck'};
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'flags'},
+		&ui_checkbox("flags", "admin", $text{'uedit_admin'})." ".
+		&ui_checkbox("flags", "admchg", $text{'uedit_admchg'})." ".
+		&ui_checkbox("flags", "nocheck", $text{'uedit_nocheck'}));
 
-	print "</table></td></tr></table><p>\n";
+	print &ui_table_end();
 	}
 
 print &ui_table_start($text{'uedit_gmem'}, "width=100%", 2);
 
 # Primary group
 print &ui_table_row($text{'group'},
-	&ui_groupbox("gid", $uconfig{'default_group'}));
+	&ui_group_textbox("gid", $uconfig{'default_group'}));
 
 # Secondary groups
 @glist = sort { $a->{'group'} cmp $b->{'group'} } @glist
