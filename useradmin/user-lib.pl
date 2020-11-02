@@ -2465,8 +2465,8 @@ Returns HTML for selecting a date
 =cut
 sub date_input
 {
-local ($d, $m, $y, $prefix) = @_;
-local $rv;
+my ($d, $m, $y, $prefix) = @_;
+my $rv;
 $rv .= &ui_textbox($prefix."d", $d, 3)."/";
 $rv .= &ui_select($prefix."m", $m,
 		[ map { [ $_, $text{"smonth_".$_} ] } (1..12) ])."/";
