@@ -37,6 +37,8 @@ host_refresh=Refresh Users and Groups
 host_users=Number of users
 host_groups=Number of groups
 host_return=server details
+host_users=Users on Server
+host_groups=Groups on Server
 
 refresh_title=Refresh Users and Groups
 refresh_header=Re-requesting user and group lists from all servers ..
