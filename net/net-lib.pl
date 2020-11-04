@@ -21,7 +21,8 @@ elsif ($gconfig{'os_type'} eq 'slackware-linux' &&
 	# Special case for Slackware 9.1+
 	do "$gconfig{'os_type'}-9.1-ALL-lib.pl";
 	}
-elsif ($gconfig{'os_type'} eq 'debian-linux' && -d "/etc/netplan") {
+elsif ($gconfig{'os_type'} eq 'debian-linux' && -d "/etc/netplan" &&
+       glob("/etc/netplan/*")) {
 	# Special case for newer Ubuntu versions
 	do "netplan-lib.pl";
 	}
