@@ -19,10 +19,11 @@ if (!-e $historic_info_dir) {
 	}
 our $get_collected_info_cache;
 
-# collect_system_info()
+# collect_system_info([manual])
 # Returns a hash reference containing system information
 sub collect_system_info
 {
+my ($manual) = @_;
 my $info = { };
 
 if (&foreign_check("proc")) {
@@ -88,11 +89,13 @@ if (defined(&proc::get_cpu_io_usage)) {
 	}
 
 # Remove and regenerate OS cache
-if (&foreign_available('webmin')) {
-	&unlink_file("$var_directory/modules/webmin/oscache");
-	&foreign_require("webmin");
-	my %osinfo = &webmin::detect_operating_system();
-	&webmin::apply_new_os_version(\%osinfo);
+if ($manual) {
+	if (&foreign_available('webmin')) {
+		&unlink_file("$var_directory/modules/webmin/oscache");
+		&foreign_require("webmin");
+		my %osinfo = &webmin::detect_operating_system();
+		&webmin::apply_new_os_version(\%osinfo);
+		}
 	}
 
 return $info;
@@ -453,10 +456,11 @@ if (!$config{'collect_notemp'} &&
 return @rv;
 }
 
-# scheduled_collect_system_info()
+# scheduled_collect_system_info([manual])
 # Called by Webmin Cron to collect system info
 sub scheduled_collect_system_info
 {
+my ($manual) = @_;
 my $start = time();
 
 # Make sure we are not already running
@@ -473,7 +477,7 @@ $WebminCore::gconfig{'logfullfiles'} = 0;
 $no_log_file_changes = 1;
 &lock_file($collected_info_file);
 
-my $info = &collect_system_info();
+my $info = &collect_system_info($manual);
 if ($info) {
 	&save_collected_info($info);
 	&add_historic_collected_info($info, $start);
