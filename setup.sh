@@ -442,9 +442,11 @@ else
 	# Ask whether to run at boot time
 	if [ "$atboot" = "" ]; then
 		if echo "$os_type" | grep  -q "\-linux$"; then
-		    os_type="linux"
+		    grep_os_type="linux"
+		else
+		    grep_os_type="$os_type"
 		fi
-		initsupp=`grep "^os_support=" "$srcdir/init/module.info" | sed -e 's/os_support=//g' | grep $os_type`
+		initsupp=`grep "^os_support=" "$srcdir/init/module.info" | sed -e 's/os_support=//g' | grep $grep_os_type`
 		atboot=0
 		if [ "$initsupp" != "" ]; then
 			printf "Start Webmin at boot time (y/n): "
