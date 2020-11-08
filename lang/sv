@@ -10,7 +10,6 @@ category_hardware=Hårdvara
 category_system=System
 category_webmin=Webmin
 category_net=Nätverk
-category_=Övrigt
 header_webmin=Webmin Index
 header_module=Modulindex
 header_help=Hjälp ...

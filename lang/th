@@ -13,7 +13,6 @@ category_system=ระบบ
 category_webmin=Webmin
 category_net=เครือข่าย
 category_syslet=Syslets
-category_=อื่นๆ
 header_webmin=Webmin Index
 header_module=Module Index
 header_help=คำแนะนำ..

@@ -1,6 +1,8 @@
 main_title3=Webmin $1 ($2)
 main_unused=Modules inutilisés
 main_refreshmods=Rafraîchir les modules
+category_=Outils
+longcategory_=Modules qui effectuent d'autres tâches diverses
 error_stack=Trace de pile d'appel
 error_file=Fichier
 error_line=Ligne

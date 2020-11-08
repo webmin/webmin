@@ -1,4 +1,6 @@
 main_title3=Webmin $1 ($2)
+category_=도구
+longcategory_=기타 기타 작업을 수행하는 모듈
 fail=실패한
 euserdbacl=사용자 ACL을 가져 오지 못했습니다  : $1
 euserdbacl2=사용자 ACL을 업데이트하지 못했습니다  : $1

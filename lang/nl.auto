@@ -1,3 +1,5 @@
+category_=Gereedschap
+longcategory_=Modules die andere diverse taken uitvoeren
 fail=mislukt
 config_emodule=Module bestaat niet
 referer_fix3u=Zorg ervoor dat uw browser is geconfigureerd om verwijzende informatie te verzenden, zodat deze door Webmin kan worden geverifieerd.

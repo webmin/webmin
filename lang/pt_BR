@@ -15,7 +15,6 @@ category_net=Rede
 category_syslet=Syslets
 category_cluster=Cluster
 category_info=Informação
-category_=Outros
 header_webmin=Índice do Webmin
 header_module=Índice do Módulo
 header_help=Ajuda ..

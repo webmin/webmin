@@ -1,3 +1,5 @@
+category_=Przybory
+longcategory_=Moduły, które wykonują inne różnorodne zadania
 fail=Nie powiodło się
 config_emodule=Moduł nie istnieje
 log_email_subject=Działanie Webmina w $1

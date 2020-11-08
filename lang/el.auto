@@ -1,6 +1,8 @@
 main_title3=Webmin $1 ($2)
 main_unused=Μονάδες που δεν χρησιμοποιούνται
 main_refreshmods=Ανανέωση μονάδων
+category_=Εργαλεία
+longcategory_=Ενότητες που εκτελούν άλλες διάφορες εργασίες
 fail=Απέτυχε
 euserdbacl=Δεν ήταν δυνατή η εξαγωγή του χρήστη ACL : $1
 euserdbacl2=Αποτυχία ενημέρωσης του χρήστη ACL : $1
