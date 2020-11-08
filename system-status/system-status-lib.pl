@@ -88,13 +88,11 @@ if (defined(&proc::get_cpu_io_usage)) {
 		}
 	}
 
-# Remove and regenerate OS cache
+# Regenerate OS cache
 if ($manual) {
 	if (&foreign_available('webmin')) {
-		&unlink_file("$var_directory/modules/webmin/oscache");
 		&foreign_require("webmin");
-		my %osinfo = &webmin::detect_operating_system();
-		&webmin::apply_new_os_version(\%osinfo);
+		&webmin::detect_operating_system();
 		}
 	}
 

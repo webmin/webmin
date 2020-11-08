@@ -1,6 +1,8 @@
 main_title3=Webmin $1 ($2)
 main_unused=Käyttämättömät moduulit
 main_refreshmods=Päivitä moduulit
+category_=Työkalut
+longcategory_=Moduulit, jotka suorittavat muita sekalaisia tehtäviä
 fail=epäonnistui
 euserdbacl=Käyttäjän ACL: n nouto epäonnistui : $1
 euserdbacl2=Käyttäjän ACL: n päivitys epäonnistui : $1

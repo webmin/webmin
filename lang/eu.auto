@@ -1,5 +1,7 @@
 main_title3=Webmin $1 ($2)
 main_refreshmods=Eguneratu moduluak
+category_=Tresnak
+longcategory_=Askotariko zereginak betetzen dituzten moduluak
 fail=Huts
 euserdbacl=Huts egin du ACL erabiltzailea eskuratzean : $1
 euserdbacl2=Huts egin du ACL erabiltzailea eguneratzean : $1

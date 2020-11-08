@@ -11,7 +11,6 @@ category_hardware=Donanım
 category_system=Sistem
 category_webmin=Webmin
 category_net=Ağ
-category_=Diğer
 header_webmin=Webmin Indeksi
 header_module=Modül Indeksi
 header_help=Yardım..

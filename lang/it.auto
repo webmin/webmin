@@ -1,6 +1,8 @@
 main_title3=Webmin $1 ($2)
 main_unused=Moduli non utilizzati
 main_refreshmods=Aggiorna i moduli
+category_=Utensili
+longcategory_=Moduli che svolgono altre attività varie
 fail=mancato
 euserdbacl=Impossibile recuperare ACL utente : $1
 euserdbacl2=Aggiornamento ACL utente non riuscito : $1

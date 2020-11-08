@@ -23,7 +23,7 @@ category_net=Networking
 category_syslet=Syslets
 category_cluster=Cluster
 category_info=Information
-category_=Others
+category_=Tools
 
 longcategory_servers=Modules for configuration web, email, FTP and other servers
 longcategory_hardware=Modules for printer, disk and other hardware configuration
@@ -32,7 +32,7 @@ longcategory_webmin=Modules for configuring Webmin itself
 longcategory_net=Modules for configuring networking and network services
 longcategory_cluster=Modules that can manage multiple servers from a single interface
 longcategory_info=Modules that display information about your system
-longcategory_=Modules that do not fall into any other category
+longcategory_=Modules that perform other miscellaneous tasks
 
 header_webmin=Webmin Index
 header_module=Module Index

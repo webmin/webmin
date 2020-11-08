@@ -1,3 +1,5 @@
+category_=Eszközök
+longcategory_=Egyéb különféle feladatokat ellátó modulok
 error_stack=Hívja a Stack Trace-t
 error_line=Vonal
 error_stackline=A $1 fájlban a $2 sorban hívja a $3

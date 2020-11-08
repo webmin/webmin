@@ -1,6 +1,8 @@
 main_title3=Webmin $1 ($2)
 main_unused=Module neutilizate
 main_refreshmods=Module de actualizare
+category_=Instrumente
+longcategory_=Module care efectuează alte sarcini diverse
 fail=A eșuat
 euserdbacl=Nu a reușit să preia ACL-ul utilizatorului : $1
 euserdbacl2=Actualizarea ACL a utilizatorului nu a reușit : $1

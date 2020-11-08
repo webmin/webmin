@@ -1,3 +1,5 @@
+category_=Ferramentas
+longcategory_=Módulos que realizam outras tarefas diversas
 fail=Falhou
 euserdbacl=Falha ao buscar a ACL do usuário : $1
 euserdbacl2=Falha ao atualizar a ACL do usuário : $1

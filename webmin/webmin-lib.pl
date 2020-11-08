@@ -1079,10 +1079,13 @@ if ($cache) {
 	# Check the cache file, and only re-check the OS if older than
 	# 1 day, or if we have rebooted recently
 	my %cache;
+	my $uptime = &get_system_uptime();
+	my $lastreboot = $uptime ? time()-$uptime : undef;
 	if (&read_file($detect_operating_system_cache, \%cache) &&
 	    $cache{'os_type'} && $cache{'os_version'} &&
 	    $cache{'real_os_type'} && $cache{'real_os_version'}) {
-		if ($cache{'time'} > time()-24*60*60) {
+		if ($cache{'time'} > time()-24*60*60 &&
+		    $cache{'time'} > $lastreboot) {
 			return %cache;
 			}
 		}
@@ -1134,22 +1137,14 @@ if (($realos{'os_version'} ne $gconfig{'os_version'} ||
      $realos{'os_type'} ne $gconfig{'os_type'}) &&
     $realos{'os_version'} && $realos{'os_type'} &&
     &foreign_available("webmin")) {
-	my ($realminor) = split(/\./, $realos{'os_version'});
-	my ($minor) = split(/\./, $gconfig{'os_version'});
-	if ($realos{'os_type'} eq $gconfig{'os_type'} &&
-	    $realminor == $minor) {
-		# Only the minor version number changed - just apply silently
-		&apply_new_os_version(\%realos);
-		}
-	else {
-		# Large enough change to tell the user
-		push(@notifs,
-		    &ui_form_start("$gconfig{'webprefix'}/webmin/fix_os.cgi").
-		    &text('os_incorrect', $realos{'real_os_type'},
-		    		          $realos{'real_os_version'})."<p>\n".
-		    &ui_form_end([ [ undef, $text{'os_fix'} ] ])
-		    );
-		}
+
+	# Tell the user that OS version was updated
+	push(@notifs,
+	    &ui_form_start("$gconfig{'webprefix'}/webmin/fix_os.cgi").
+	    &text('os_incorrect', $realos{'real_os_type'},
+                              $realos{'real_os_version'})."<p>\n".
+	    &ui_form_end([ [ undef, $text{'os_fix'} ] ])
+	    );
 	}
 
 # Password close to expiry
