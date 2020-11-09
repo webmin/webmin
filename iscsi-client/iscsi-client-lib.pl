@@ -195,7 +195,7 @@ if ($? || $out =~ /Could not perform SendTargets discovery/i) {
 	}
 my @rv;
 foreach my $l (@lines) {
-	if ($l =~ /^(\S+):(\d+),(\d+)\s+(\S+):(\S+)/) {
+	if ($l =~ /^(\S+):(\d+),([0-9\-]+)\s+(\S+):(\S+)/) {
 		push(@rv, { 'ip' => $1,
 			    'port' => $2,
 			    'name' => $4,
