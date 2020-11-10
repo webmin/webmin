@@ -22,7 +22,7 @@ elsif ($gconfig{'os_type'} eq 'slackware-linux' &&
 	do "$gconfig{'os_type'}-9.1-ALL-lib.pl";
 	}
 elsif ($gconfig{'os_type'} eq 'debian-linux' && -d "/etc/netplan" &&
-       glob("/etc/netplan/*")) {
+       &has_command("netplan")) {
 	# Special case for newer Ubuntu versions
 	do "netplan-lib.pl";
 	}
