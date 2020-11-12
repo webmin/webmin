@@ -201,19 +201,13 @@ if (&get_product_name() eq 'usermin' &&
 
 # Show ok page
 &header(undef, undef, undef, undef, 1, 1);
-
-print "<center><h3>",&text('password_done', "/"),"</h3></center>\n";
-
+print &ui_alert_box(&text('password_done', "/"), "success");
 &footer();
 
 sub pass_error
 {
-&header(undef, undef, undef, undef, 1, 1);
-print &ui_hr();
-
-print "<center><h3>",$text{'password_err'}," : ",@_,"</h3></center>\n";
-
-print &ui_hr();
+&header(undef, undef, undef, undef, 1, 1, undef, undef);
+print &ui_alert_box("$text{'password_err'}: @_.", "danger");
 &footer();
 exit;
 }
