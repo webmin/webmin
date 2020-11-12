@@ -1671,7 +1671,7 @@ else {
 	# Use Unix DES
 	&seed_random();
 	$salt ||= chr(int(rand(26))+65).chr(int(rand(26))+65);
-	return &unix_crypt($pass, $salt);
+	return &miniserv::unix_crypt($pass, $salt);
 	}
 }
 
