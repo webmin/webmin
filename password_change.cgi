@@ -38,8 +38,8 @@ if (!$in{'pam'} && !$wuser) {
 
 if ($wuser) {
 	# Update Webmin user's password
-	$enc = &acl::encrypt_password($in{'old'}, $wuser->{'pass'});
-	$enc eq $wuser->{'pass'} || &pass_error($text{'password_eold'});
+	$ok = &acl::validate_password($in{'old'}, $wuser->{'pass'});
+	$ok || &pass_error($text{'password_eold'});
 	$perr = &acl::check_password_restrictions($in{'user'}, $in{'new1'});
 	$perr && &pass_error(&text('password_enewpass', $perr));
 	$wuser->{'pass'} = &acl::encrypt_password($in{'new1'});
