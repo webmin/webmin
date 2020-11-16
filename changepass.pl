@@ -3,6 +3,7 @@
 # Script for the user to change their webmin password
 
 # Check command line arguments
+require "./acl/md5-lib.pl";
 usage() if (@ARGV != 3);
 ($config, $user, $pass) = @ARGV;
 if (!-d $config) {
@@ -16,6 +17,15 @@ if (!open(CONF, "<$config/miniserv.conf")) {
 	}
 while(<CONF>) {
 	if (/^([^=]+)=(\S+)/) { $config{$1} = $2; }
+	}
+close(CONF);
+if (!open(CONF, "<$config/config")) {
+	print STDERR "Failed to open $config/config : $!\n";
+	print STDERR "Maybe $config is not the Webmin config directory.\n";
+	exit 3;
+	}
+while(<CONF>) {
+	if (/^([^=]+)=(\S+)/) { $gconfig{$1} = $2; }
 	}
 close(CONF);
 
@@ -39,9 +49,7 @@ if (!defined($uinfo)) {
 	print STDERR "The users on your system are: ",join(" ", @users),"\n";
 	exit 5;
 	}
-srand(time() ^ $$);
-$salt = chr(int(rand(26))+65).chr(int(rand(26))+65);
-$uinfo->[1] = crypt($pass, $salt);
+$uinfo->[1] = encrypt_password($pass);
 $uinfo->[6] = time();
 if (!open(USERS, ">$config{'userfile'}")) {
 	print STDERR "Failed to open Webmin users file $config{'userfile'} : $!\n";
@@ -68,6 +76,36 @@ if (open(PID, "<".$config{'pidfile'})) {
 else {
 	print STDERR "Webmin is not running - cannot refresh configuration\n";
 	}
+
+sub encrypt_password
+{
+my ($pass) = @_;
+if ($gconfig{'md5pass'} == 1) {
+	# Use MD5 encryption
+	return &encrypt_md5($pass);
+	}
+elsif ($gconfig{'md5pass'} == 2) {
+	# Use SHA512 encryption
+	return &encrypt_sha512($pass);
+	}
+else {
+	# Use Unix DES
+	srand(time() ^ $$);
+	$salt ||= chr(int(rand(26))+65).chr(int(rand(26))+65);
+	return &unix_crypt($pass, $salt);
+	}
+}
+
+sub unix_crypt
+{
+local ($pass, $salt) = @_;
+if ($use_perl_crypt) {
+	return Crypt::UnixCrypt::crypt($pass, $salt);
+	}
+else {
+	return crypt($pass, $salt);
+	}
+}
 
 sub usage
 {
