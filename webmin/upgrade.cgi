@@ -451,7 +451,7 @@ else {
 		}
 	else {
 		# Next to the current directory
-		$extract = "../..";
+		$extract = "$root_directory/..";
 		}
 
 	# Do the extraction of the tar file, and run setup.sh
@@ -460,7 +460,7 @@ else {
 		# Extact top-level files like setup.sh and os_list.txt
 		$topfiles = join(" ", map { quotemeta($_) }
 					  grep { !$tardir{$_} } @topfiles);
-		$out = `cd $extract ; tar xf $file $topfiles 2>&1 >/dev/null`;
+		$out = `cd $extract && tar xf $file $topfiles 2>&1 >/dev/null`;
 		if ($?) {
 			&inst_error(&text('upgrade_euntar', "<tt>$out</tt>"));
 			}
@@ -482,14 +482,14 @@ else {
 		# Extract current modules and other directories
 		$mods = join(" ", map { quotemeta("webmin-$version/$_") }
 				      @mods);
-		$out = `cd $extract ; tar xf $file $mods 2>&1 >/dev/null`;
+		$out = `cd $extract && tar xf $file $mods 2>&1 >/dev/null`;
 		if ($?) {
 			&inst_error(&text('upgrade_euntar', "<tt>$out</tt>"));
 			}
 		}
 	else {
 		# Extract the whole file
-		$out = `cd $extract ; tar xf $file 2>&1 >/dev/null`;
+		$out = `cd $extract && tar xf $file 2>&1 >/dev/null`;
 		if ($?) {
 			&inst_error(&text('upgrade_euntar', "<tt>$out</tt>"));
 			}
