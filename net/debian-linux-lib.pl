@@ -779,8 +779,7 @@ sub get_interface_defs
 {
 local *CFGFILE;
 my @ret;
-&open_readfile(CFGFILE, $network_interfaces_config) ||
-	error("Unable to open $network_interfaces_config");
+&open_readfile(CFGFILE, $network_interfaces_config) || return ();
 # read the file line by line
 $line = <CFGFILE>;
 while (defined $line) {
