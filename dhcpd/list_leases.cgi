@@ -195,6 +195,7 @@ else {
 			"",
 			&sort_link("ipaddr"),
 			&sort_link("ether"),
+			$config{'lease_vendor'} ? ( &sort_link("vendor") ) : (),
 			&sort_link("host"),
 			&sort_link("start"),
 			&sort_link("end"),
@@ -212,6 +213,11 @@ else {
 			push(@cols,$hard->{'values'}->[1] ?
 				"<tt>$hard->{'values'}->[1]</tt>" :
 				 "<i>$text{'listl_unknown'}</i>");
+			if ($config{'lease_vendor'}) {
+				my $v = &lookup_mac_vendor(
+					$hard->{'values'}->[1]);
+				push(@cols, &html_escape($v));
+				}
 			local $client = &find('client-hostname', $mems);
 			push(@cols, $client ? "<tt>".&html_escape(
 					      $client->{'values'}->[0])."</tt>"

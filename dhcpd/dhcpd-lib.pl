@@ -1017,4 +1017,22 @@ foreach my $f (reverse(&get_all_config_files())) {
 	}
 }
 
+sub lookup_mac_vendor
+{
+my ($mac) = @_;
+if (!%mac_vendor_cache) {
+	%mac_vendor_cache = ();
+	my $lref = &read_file_lines(
+		$module_root_directory."/mac-vendor.txt", 1);
+	foreach my $l (@$lref) {
+		$l =~ s/#.*$//;
+		my ($pfx, $vendor, $desc) = split(/\t+/, $l);
+		$mac_vendor_cache{$pfx} = $vendor;
+		}
+	}
+$mac =~ s/://g;
+$mac = uc($mac);
+return $mac_vendor_cache{substr($mac, 0, 6)};
+}
+
 1;
