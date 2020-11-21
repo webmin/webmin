@@ -5,8 +5,6 @@
 # Rene Mayrhofer, July 2000
 # Some code has been taken from redhat-linux-lib.pl
 
-use File::Copy;
-
 $network_interfaces_config = '/etc/network/interfaces';
 $modules_config = '/etc/modprobe.d/arch/i386';
 if (!-d $modules_config) {
@@ -387,7 +385,7 @@ sub modify_module_def
 	my $modify_block = 0;
 	
 	# make a backup copy
-	copy("$modules_config", "$modules_config~");
+	&copy_source_dest($modules_config, "$modules_config~");
 	local *OLDCFGFILE, *NEWCFGFILE;
 	&open_readfile(OLDCFGFILE, "$modules_config~") ||
 		error("Unable to open $modules_config");
@@ -489,7 +487,7 @@ sub new_module_def
 {
 	local ($name, $mode, $miimon, $downdelay, $updelay) = @_;
         return if (!$modules_config);
-	copy("$modules_config", "$modules_config~");
+	&copy_source_dest($modules_config, "$modules_config~");
 	local *CFGFILE;
 	&open_lock_tempfile(CFGFILE, ">> $modules_config") ||
 		error("Unable to open $modules_config");
@@ -901,7 +899,7 @@ sub modify_interface_def
 {
 my ($name, $addrfam, $method, $options, $mode) = @_;
 # make a backup copy
-copy("$network_interfaces_config", "$network_interfaces_config~");
+&copy_source_dest($network_interfaces_config, "$network_interfaces_config~");
 local *OLDCFGFILE, *NEWCFGFILE;
 &open_readfile(OLDCFGFILE, "$network_interfaces_config~") ||
 	error("Unable to open $network_interfaces_config");
@@ -968,7 +966,7 @@ close(OLDCFGFILE);
 sub new_interface_def
 {
 # make a backup copy
-copy("$network_interfaces_config", "$network_interfaces_config~");
+&copy_source_dest($network_interfaces_config, "$network_interfaces_config~");
 local *CFGFILE;
 &open_lock_tempfile(CFGFILE, ">> $network_interfaces_config") ||
 	error("Unable to open $network_interfaces_config");
