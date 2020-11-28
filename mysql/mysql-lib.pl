@@ -1518,7 +1518,7 @@ my ($ver, $variant) = &get_remote_mysql_variant();
 my $mysql_mariadb_with_auth_string = 
    $variant eq "mariadb" && &compare_version_numbers($ver, "10.2") >= 0 ||
    $variant eq "mysql" && &compare_version_numbers($ver, "5.7.6") >= 0;
-if ($mysql_mariadb_with_auth_string) {
+if ($mysql_mariadb_with_auth_string && $unescaped_plainpass) {
 	$sql = "alter user '$user'\@'$host' identified $plugin by '$escaped_pass'";
 	}
 else {
@@ -1717,19 +1717,46 @@ my $lock = !defined($plainpass);
 if ($lock) {
 	$pass = sprintf("%x", rand 16) for 1..30;
 	}
-if ($mysql_mariadb_with_auth_string) {	
+if ($mysql_mariadb_with_auth_string) {
 	my $sp = "identified $plugin by '".$pass."'";
 	if ($lock_supported) {
 		$sp = $lock ? "account lock" : "$sp account unlock";
 		}
 	$sql = "alter user '$user'\@'$host' $sp";
-
+	&execute_sql_logged($master_db, $sql);
 	}
 else {
-	$sql = "set password for '$user'\@'$host' = $password_func('$pass')";
+	$sql = &get_change_pass_sql($plainpass, $user, $host);
+	&execute_sql_logged($master_db, $sql);
 	}
-&execute_sql_logged($master_db, $sql);
+
+# Update module password when needed
+&update_config_credentials({
+		'user', $user,
+		'olduser', $user,
+		'pass', $plainpass,
+		});
 &execute_sql_logged($master_db, 'flush privileges');
+}
+
+# Update Webmin module login and pass
+sub update_config_credentials
+{
+return if($access{'user'});
+my ($c) = @_;
+my $conf_user = $config{'login'} || "root";
+return if($c->{'olduser'} ne $conf_user);
+return if(!$c->{'user'});
+
+$config{'login'} = $c->{'user'};
+$mysql_login = $c->{'user'};
+if (defined($c->{'pass'})) {
+	$config{'pass'} = $c->{'pass'};
+	$mysql_pass = $c->{'pass'};
+	}
+&lock_file($module_config_file);
+&save_module_config();
+&unlock_file($module_config_file);
 }
 
 1;
