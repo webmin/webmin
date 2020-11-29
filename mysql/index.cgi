@@ -111,7 +111,8 @@ elsif ($r == -1) {
 	print &ui_table_end();
 	print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
-	print &text('index_emsg', "<tt>$rout</tt>"),"<p>\n";
+	print &ui_details($text{'syslog_desc'}, &text('index_emsg', "<tt>$rout</tt>"));
+
 	}
 else {
 	# Check if we can re-direct to a single DB's page
