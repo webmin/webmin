@@ -1646,7 +1646,10 @@ else {
 		$host, $user,
 		$oldhost, $olduser);
 	}
-
+&update_config_credentials({
+		'user', $user,
+		'olduser', $user_current,
+		});
 &execute_sql_logged($master_db, 'flush privileges');
 }
 

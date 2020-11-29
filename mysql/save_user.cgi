@@ -120,10 +120,6 @@ if (!$in{'delete'} && !$in{'new'} &&
 		'host', $host,
 		'oldhost', $host,
 		});
-	&update_config_credentials({
-		'user', $user,
-		'olduser', $user_current,
-		});
 	$user_current = $user;
 	}
 
