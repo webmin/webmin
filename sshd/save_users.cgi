@@ -47,7 +47,8 @@ if ($version{'type'} ne 'ssh' || $version{'number'} < 3) {
 
 &save_directive("PermitRootLogin", $conf, $in{'root'});
 
-if ($version{'type'} ne 'ssh' || $version{'number'} < 3) {
+if (($version{'type'} eq 'ssh' && $version{'number'} < 3) ||
+    ($version{'type'} eq 'openssh' && $version{'number'} < 7.4)) {
 	&save_directive("RSAAuthentication", $conf, $in{'rsa'} ? 'yes' : 'no');
 	}
 if ($version{'type'} eq 'openssh' && $version{'number'} >= 3) {
