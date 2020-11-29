@@ -1760,6 +1760,8 @@ if (defined($c->{'pass'})) {
 &lock_file($module_config_file);
 &save_module_config();
 &unlock_file($module_config_file);
+&stop_mysql();
+&start_mysql();
 }
 
 1;
