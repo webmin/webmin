@@ -27,9 +27,9 @@ else {
 	@desc = &table_structure($master_db, 'user');
 	%fieldmap = map { lc($_->{'field'}), $_->{'index'} } @desc;
 	$host = $in{'host_def'} ? '%' : $in{'host'};
-	$oldhost = $in{'oldhost'} || $host;
+	$oldhost = $in{'oldhost'};
 	$user = $in{'mysqluser_def'} ? '' : $in{'mysqluser'};
-	$user_current = $in{'olduser'} || $user;
+	$olduser = $in{'olduser'} // $user;
 	@pfields = map { $_->[0] } &priv_fields('user');
 	my @ssl_field_names = &ssl_fields();
 	my @ssl_field_values = map { '' } @ssl_field_names;
@@ -41,7 +41,7 @@ else {
 	# Create a new user
 	if ($in{'new'}) {
 		&create_user({
-			'user', $user_current,
+			'user', $olduser,
 			'pass', $in{'mysqlpass'},
 			'host', $host,
 			'perms', \%perms,
@@ -56,34 +56,34 @@ else {
 	else {
 
 		# Rename user and/or host, if requested
-		my $changing_user = ($user && $user_current && $user ne $user_current);
-		my $changing_host = ($host && $oldhost && $host ne $oldhost);
+		my $changing_user = ($user ne $olduser);
+		my $changing_host = ($host ne $oldhost);
 		if ($changing_user ||
 			$changing_host) {
 			&rename_user({
 				'user', $user,
-				'olduser', $user_current,
+				'olduser', $olduser,
 				'host', $host,
 				'oldhost', $oldhost,
 				});
-			$user_current = $user if ($changing_user);
+			$olduser = $user if ($changing_user);
 			$oldhost = $host if ($changing_host);
 			}
 		
 		# Update user password, if requested
 		if ($in{'mysqlpass_mode'} == 4) {
 			# Never used for admin accounts
-			&change_user_password(undef, $user_current, $host);
+			&change_user_password(undef, $olduser, $oldhost);
 			}
 		elsif ($in{'mysqlpass_mode'} != 1) {
 			($in{'mysqlpass_mode'} eq '0' && !$in{'mysqlpass'}) && &error($text{'root_epass1'});
 			my $pass = $in{'mysqlpass'} || '';
-			&change_user_password($pass, $user_current, $host);
+			&change_user_password($pass, $olduser, $oldhost);
 			}
 
 		&update_privileges({
-			'user', $user_current,
-			'host', $host,
+			'user', $olduser,
+			'host', $oldhost,
 			'perms', \%perms,
 			'pfields', \@pfields
 			});
@@ -102,14 +102,14 @@ else {
 		if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
 			my $f_tbl_diff = $mdb104_diff{$f} || $f;
 			&execute_sql_logged($mysql::master_db,
-					"alter user '$user_current'\@'$host' with $f_tbl_diff "
+					"alter user '$olduser'\@'$oldhost' with $f_tbl_diff "
 					.($in{$f.'_def'} ? 0 : $in{$f})."");
 			}
 		else {
 			&execute_sql_logged($master_db,
 				"update user set $f = ? ".
 				"where user = ? and host = ?",
-				$in{$f.'_def'} ? 0 : $in{$f}, $user_current, $host);
+				$in{$f.'_def'} ? 0 : $in{$f}, $olduser, $oldhost);
 			}
 
 		}
@@ -118,7 +118,7 @@ else {
 	if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
 		if ($in{'ssl_type'} =~ /^(NONE|SSL|X509)$/) {
 			&execute_sql_logged($mysql::master_db,
-				"alter user '$user_current'\@'$host' require $in{'ssl_type'}");
+				"alter user '$olduser'\@'$oldhost' require $in{'ssl_type'}");
 			}
 		}
 	else {
@@ -128,11 +128,11 @@ else {
 			&execute_sql_logged($master_db,
 				"update user set ssl_type = ? ".
 				"where user = ? and host = ?",
-				$in{'ssl_type'}, $user_current, $host);
+				$in{'ssl_type'}, $olduser, $oldhost);
 			&execute_sql_logged($master_db,
 				"update user set ssl_cipher = ? ".
 				"where user = ? and host = ?",
-				$in{'ssl_cipher'}, $user_current, $host);
+				$in{'ssl_cipher'}, $olduser, $oldhost);
 			}
 		}
 	}
