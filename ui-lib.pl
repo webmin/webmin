@@ -2731,15 +2731,16 @@ the widget is toggled into an "open" state.
 =cut
 sub ui_details
 {
-my ($title, $content, $class) = @_;
+my ($c) = @_;
 if (defined(&theme_ui_details)) {
 	return &theme_ui_details(@_);
 	}
+
 my $rv;
-$class = " class=\"$class\"" if($class);
-$rv = "<details$class>";
-$rv .= "<summary>$title</summary>";
-$rv .= "$content";
+$c->{'class'} = "class=\"$c->{'class'}\"" if($c->{'class'});
+$rv = "<details $c->{'class'} $c->{'open'}>";
+$rv .= "<summary>$c->{'title'}</summary>";
+$rv .= "$c->{'content'}";
 $rv .= "</details>";
 return $rv;
 }

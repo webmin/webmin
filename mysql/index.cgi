@@ -82,7 +82,10 @@ if ($r == 0) {
 	print &ui_alert_box($text{'index_notrun'}, 'danger');
 
 	if ($rout) {
-		print &ui_details($text{'syslog_desc2'}, &text('index_emsg', "<tt>$rout</tt>"), 'error');
+		print &ui_details({
+			'title' => $text{'syslog_desc2'},
+			'content' => &text('index_emsg',"<tt>$rout</tt>"),
+			'class' =>'error'});
 	}
 
 	if ($access{'stop'} && &is_mysql_local()) {
@@ -102,8 +105,12 @@ elsif ($r == -1) {
 	print &ui_alert_box($text{'index_nopass'}, 'warn');
 	
 	if ($rout) {
-		print &ui_details($text{'syslog_desc2'}, &text('index_emsg', "<tt>$rout</tt>"), 'error') . "<br>";
-	}
+		print &ui_details({
+			'title' => $text{'syslog_desc2'},
+			'content' => &text('index_emsg',"<tt>$rout</tt>"),
+			'class' => 'error',
+			'open' => 'open'}) . "<br>";
+		}
 
 	print &ui_form_start("login.cgi", "post");
 	print &ui_table_start($text{'index_ltitle'}, undef, 2);
