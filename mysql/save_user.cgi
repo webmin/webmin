@@ -29,7 +29,7 @@ else {
 	$host = $in{'host_def'} ? '%' : $in{'host'};
 	$oldhost = $in{'oldhost'};
 	$user = $in{'mysqluser_def'} ? '' : $in{'mysqluser'};
-	$olduser = $in{'olduser'} // $user;
+	$olduser = defined($in{'olduser'}) ? $in{'olduser'} : $user;
 	@pfields = map { $_->[0] } &priv_fields('user');
 	my @ssl_field_names = &ssl_fields();
 	my @ssl_field_values = map { '' } @ssl_field_names;
