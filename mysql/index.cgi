@@ -111,7 +111,7 @@ elsif ($r == -1) {
 	print &ui_table_end();
 	print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
-	print &ui_details($text{'syslog_desc'}, &text('index_emsg', "<tt>$rout</tt>"));
+	print &ui_details($text{'syslog_desc'}, &text('index_emsg', "<tt>$rout</tt>"), 'error');
 
 	}
 else {
