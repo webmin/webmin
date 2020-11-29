@@ -96,7 +96,7 @@ if ($r == 0) {
 elsif ($r == -1) {
 	# Running, but webmin doesn't know the root (or user's) password!
 	&main_header();
-	print "<b>$text{'index_nopass'}</b> <p>\n";
+	print "$text{'index_nopass'} <p>\n";
 
 	print &ui_form_start("login.cgi", "post");
 	print &ui_table_start($text{'index_ltitle'}, undef, 2);
@@ -105,7 +105,8 @@ elsif ($r == -1) {
 		&ui_textbox("login", $access{'user'} || $config{'login'}, 40));
 
 	print &ui_table_row($text{'index_pass'},
-		&ui_password("pass", undef, 40));
+		&ui_password("pass", undef, 40) . "<br>" .
+		&ui_checkbox("force", 1, $text{'mysqlpass_echange_forcepass'}));
 
 	print &ui_table_end();
 	print &ui_form_end([ [ undef, $text{'save'} ] ]);
