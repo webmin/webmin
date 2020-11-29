@@ -1,3 +1,11 @@
 view_refresh=Aktualisierung
 view_go=Gehen
+user_locked=Gesperrt
 cnf_table_open_cache=Tabellen zum Zwischenspeichern
+mysqlpass_err=MySQL-abgesicherter Modus
+mysqlpass_esafecmd=Der Befehl $1, der zum Starten von MySQL mit deaktivierter Authentifizierung erforderlich ist, wurde nicht gefunden
+mysqlpass_eshutdown=Herunterfahren fehlgeschlagen : $1 
+mysqlpass_esafe=Start im abgesicherten Modus fehlgeschlagen : $1 
+mysqlpass_estartup=Start fehlgeschlagen : $1 
+mysqlpass_echange=Passwortänderung fehlgeschlagen : $1 
+mysqlpass_echange_forcepass=Erzwingen Sie das Überschreiben des angegebenen Passworts, wenn es verloren geht oder vergessen wird
