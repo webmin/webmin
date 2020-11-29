@@ -27,6 +27,7 @@ else {
 	@desc = &table_structure($master_db, 'user');
 	%fieldmap = map { lc($_->{'field'}), $_->{'index'} } @desc;
 	$host = $in{'host_def'} ? '%' : $in{'host'};
+	$oldhost = $in{'oldhost'} || $host;
 	$user = $in{'mysqluser_def'} ? '' : $in{'mysqluser'};
 	$user_current = $in{'olduser'} || $user;
 	@pfields = map { $_->[0] } &priv_fields('user');
@@ -51,8 +52,35 @@ else {
 			'other_field_values', \@other_field_values,
 			});
 		}
-	# Update existing user's privileges
+	# Update an existing user
 	else {
+
+		# Rename user and/or host, if requested
+		my $changing_user = ($user && $user_current && $user ne $user_current);
+		my $changing_host = ($host && $oldhost && $host ne $oldhost);
+		if ($changing_user ||
+			$changing_host) {
+			&rename_user({
+				'user', $user,
+				'olduser', $user_current,
+				'host', $host,
+				'oldhost', $oldhost,
+				});
+			$user_current = $user if ($changing_user);
+			$oldhost = $host if ($changing_host);
+			}
+		
+		# Update user password, if requested
+		if ($in{'mysqlpass_mode'} == 4) {
+			# Never used for admin accounts
+			&change_user_password(undef, $user_current, $host);
+			}
+		elsif ($in{'mysqlpass_mode'} != 1) {
+			($in{'mysqlpass_mode'} eq '0' && !$in{'mysqlpass'}) && &error($text{'root_epass1'});
+			my $pass = $in{'mysqlpass'} || '';
+			&change_user_password($pass, $user_current, $host);
+			}
+
 		&update_privileges({
 			'user', $user_current,
 			'host', $host,
@@ -109,30 +137,6 @@ else {
 		}
 	}
 &execute_sql_logged($master_db, 'flush privileges');
-
-# Rename user, if requested
-if (!$in{'delete'} && !$in{'new'} && 
-	$user && $user_current && 
-	$user ne $user_current) {
-	&rename_user({
-		'user', $user,
-		'olduser', $user_current,
-		'host', $host,
-		'oldhost', $host,
-		});
-	$user_current = $user;
-	}
-
-# Update user password, if requested
-if ($in{'mysqlpass_mode'} == 4) {
-	# Never used for admin accounts
-	&change_user_password(undef, $user_current, $host);
-	}
-elsif ($in{'mysqlpass_mode'} != 1) {
-	($in{'mysqlpass_mode'} eq '0' && !$in{'mysqlpass'}) && &error($text{'root_epass1'});
-	my $pass = $in{'mysqlpass'} || '';
-	&change_user_password($pass, $user_current, $host);
-	}
 
 # Log actions
 if ($in{'delete'}) {
