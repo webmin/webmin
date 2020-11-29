@@ -773,6 +773,7 @@ index_header=Index $1 in database $2
 index_ecannot=You are not allowed to manage indexes
 
 syslog_desc=MySQL error messages
+syslog_desc2=MySQL error message
 syslog_logdesc=MySQL queries
 
 fdrop_err=Failed to delete fields

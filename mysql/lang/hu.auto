@@ -255,6 +255,7 @@ index_title2=Index szerkesztése
 index_header=$1 index a $2 adatbázisban
 index_ecannot=Nem engedélyezi az indexek kezelését
 syslog_desc=MySQL hibaüzenetek
+syslog_desc2=MySQL hibaüzenet
 syslog_logdesc=MySQL lekérdezések
 fdrop_err=A mezők törlése nem sikerült
 fdrop_enone=Egy sincs kiválasztva

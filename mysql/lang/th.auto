@@ -740,6 +740,7 @@ index_title2=แก้ไขดัชนี
 index_header=ดัชนี $1 ในฐานข้อมูล $2 
 index_ecannot=คุณไม่ได้รับอนุญาตให้จัดการดัชนี
 syslog_desc=ข้อความแสดงข้อผิดพลาด MySQL
+syslog_desc2=ข้อความแสดงข้อผิดพลาด MySQL
 syslog_logdesc=แบบสอบถาม MySQL
 fdrop_err=การลบฟิลด์ล้มเหลว
 fdrop_enone=ไม่ได้เลือก

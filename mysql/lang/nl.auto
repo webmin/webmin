@@ -70,6 +70,7 @@ manual_file=Configuratiebestand bewerken:
 manual_ok=OK
 manual_efile=Ongeldig configuratiebestand!
 manual_err=Kan configuratiebestand niet opslaan
+syslog_desc2=MySQL-foutmelding
 mysqlpass_err=MySQL veilige modus
 mysqlpass_esafecmd=De opdracht $1 die nodig is om MySQL te starten met uitgeschakelde authenticatie, is niet gevonden
 mysqlpass_eshutdown=Afsluiten mislukt : $1 

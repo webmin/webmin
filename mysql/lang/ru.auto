@@ -363,6 +363,7 @@ index_title2=Изменить индекс
 index_header=Индекс $1 в базе данных $2 
 index_ecannot=Вы не можете управлять индексами
 syslog_desc=Сообщения об ошибках MySQL
+syslog_desc2=Сообщение об ошибке MySQL
 syslog_logdesc=MySQL запросы
 fdrop_err=Не удалось удалить поля
 fdrop_enone=Не выбрано, ничего не выбрано

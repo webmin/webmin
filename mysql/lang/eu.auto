@@ -740,6 +740,7 @@ index_title2=Editatu aurkibidea
 index_header=$1 aurkibidea $2 datu-basean
 index_ecannot=Ezin duzu indizeak kudeatu
 syslog_desc=MySQL errore mezuak
+syslog_desc2=MySQL errore mezua
 syslog_logdesc=MySQL kontsultak
 fdrop_err=Ezin izan dira eremuak ezabatu
 fdrop_enone=Ez da hautatu

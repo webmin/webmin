@@ -740,6 +740,7 @@ index_title2=Editează indexul
 index_header=Index $1 în baza de date $2 
 index_ecannot=Nu aveți voie să gestionați indexuri
 syslog_desc=Mesaje de eroare MySQL
+syslog_desc2=Mesaj de eroare MySQL
 syslog_logdesc=Interogări MySQL
 fdrop_err=Nu a reușit ștergerea câmpurilor
 fdrop_enone=Nimic selectat

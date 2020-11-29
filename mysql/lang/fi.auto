@@ -714,6 +714,7 @@ index_title2=Muokkaa hakemistoa
 index_header=Hakemisto $1 tietokannassa $2 
 index_ecannot=Et voi hallita hakemistoja
 syslog_desc=MySQL -virheilmoitukset
+syslog_desc2=MySQL-virheilmoitus
 syslog_logdesc=MySQL-kyselyt
 fdrop_err=Kenttien poistaminen epäonnistui
 fdrop_enone=Mitään ei ole valittu

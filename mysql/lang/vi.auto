@@ -740,6 +740,7 @@ index_title2=Chỉnh sửa chỉ mục
 index_header=Chỉ mục $1 trong cơ sở dữ liệu $2 
 index_ecannot=Bạn không được phép quản lý chỉ mục
 syslog_desc=Thông báo lỗi MySQL
+syslog_desc2=Thông báo lỗi MySQL
 syslog_logdesc=Truy vấn MySQL
 fdrop_err=Không thể xóa các trường
 fdrop_enone=Không được chọn

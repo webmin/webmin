@@ -144,6 +144,7 @@ manual_file=Upravit konfigurační soubor:
 manual_ok=OK
 manual_efile=Neplatný konfigurační soubor!
 manual_err=Uložení konfiguračního souboru se nezdařilo
+syslog_desc2=Chybová zpráva MySQL
 vars_desc=Varování - Proměnné nastavené na této stránce budou po restartování MySQL obnoveny na výchozí hodnoty. Na stránce <a href='$1'>MySQL Server Configuration</a> je třeba provést trvalé nastavení.
 root_title=Změňte heslo pro správu
 root_header=Nové heslo pro správu

@@ -740,6 +740,7 @@ index_title2=Uredi indeks
 index_header=Indeks $1 u bazi podataka $2 
 index_ecannot=Nije vam dopušteno upravljati indeksima
 syslog_desc=MySQL poruke o pogrešci
+syslog_desc2=Poruka pogreške MySQL
 syslog_logdesc=MySQL upiti
 fdrop_err=Brisanje polja nije uspjelo
 fdrop_enone=Nijedna nije odabrana

@@ -411,6 +411,7 @@ index_title2=Redigera index
 index_header=Index $1 i databasen $2 
 index_ecannot=Du får inte hantera index
 syslog_desc=MySQL-felmeddelanden
+syslog_desc2=MySQL felmeddelande
 syslog_logdesc=MySQL-frågor
 fdrop_err=Det gick inte att ta bort fält
 fdrop_enone=Ingen vald

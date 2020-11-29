@@ -740,6 +740,7 @@ index_title2=Edit Indiċi
 index_header=Indiċi $1 fid-database $2 
 index_ecannot=M'għandekx permess timmaniġġja indiċi
 syslog_desc=Messaġġi ta ’żball MySQL
+syslog_desc2=Messaġġ ta 'żball MySQL
 syslog_logdesc=Mistoqsijiet tal-MySQL
 fdrop_err=Naqset milli tħassar l-oqsma
 fdrop_enone=L-ebda magħżul

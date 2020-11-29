@@ -740,6 +740,7 @@ index_title2=Upraviť index
 index_header=Index $1 v databáze $2 
 index_ecannot=Nemáte oprávnenie spravovať indexy
 syslog_desc=Chybové správy MySQL
+syslog_desc2=Chybová správa MySQL
 syslog_logdesc=MySQL dotazy
 fdrop_err=Polia sa nepodarilo odstrániť
 fdrop_enone=Žiadne vybraté

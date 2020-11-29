@@ -740,6 +740,7 @@ index_title2=ערוך אינדקס
 index_header=אינדקס $1 במאגר נתונים 2
 index_ecannot=אינך מורשה לנהל אינדקסים
 syslog_desc=הודעות שגיאה ב- MySQL
+syslog_desc2=הודעת שגיאה ב- MySQL
 syslog_logdesc=שאילתות MySQL
 fdrop_err=מחיקת שדות נכשלה
 fdrop_enone=לא נבחר

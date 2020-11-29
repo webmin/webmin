@@ -740,6 +740,7 @@ index_title2=Επεξεργασία ευρετηρίου
 index_header=Δείκτης $1 στη βάση δεδομένων $2 
 index_ecannot=Δεν επιτρέπεται η διαχείριση ευρετηρίων
 syslog_desc=MySQL μηνύματα σφάλματος
+syslog_desc2=Μήνυμα σφάλματος MySQL
 syslog_logdesc=Ερωτήματα MySQL
 fdrop_err=Αποτυχία κατάργησης πεδίων
 fdrop_enone=Δεν έχει επιλεγεί

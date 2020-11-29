@@ -317,6 +317,7 @@ index_title2=Dizini Düzenle
 index_header=$2 veritabanında $1 dizini
 index_ecannot=Dizinleri yönetme izniniz yok
 syslog_desc=MySQL hata mesajları
+syslog_desc2=MySQL hata mesajı
 syslog_logdesc=MySQL sorguları
 fdrop_err=Alanlar silinemedi
 fdrop_enone=Hiçbiri seçilmedi

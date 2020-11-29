@@ -740,6 +740,7 @@ index_title2=ویرایش فهرست
 index_header=فهرست $1 در بانک اطلاعات$2
 index_ecannot=شما مجاز به مدیریت فهرستها نیستید
 syslog_desc=پیام های خطای MySQL
+syslog_desc2=پیام خطای MySQL
 syslog_logdesc=نمایش داده شد MySQL
 fdrop_err=حذف فیلدها انجام نشد
 fdrop_enone=هیچ یک انتخاب نشده است

@@ -73,6 +73,7 @@ manual_ok=D'accord
 manual_efile=Fichier de configuration non valide!
 manual_err=Impossible d'enregistrer le fichier de configuration
 index_header1=Options d'index
+syslog_desc2=Message d'erreur MySQL
 syslog_logdesc=Requêtes MySQL
 mysqlpass_err=Mode sans échec MySQL
 mysqlpass_esafecmd=La commande $1 nécessaire pour démarrer MySQL avec l'authentification désactivée est introuvable

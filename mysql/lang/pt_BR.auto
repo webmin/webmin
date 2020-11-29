@@ -101,6 +101,7 @@ manual_file=Edite o arquivo de configuração:
 manual_ok=Está bem
 manual_efile=Arquivo de configuração inválido!
 manual_err=Falha ao salvar o arquivo de configuração
+syslog_desc2=Mensagem de erro do MySQL
 mysqlpass_err=Modo de segurança MySQL
 mysqlpass_esafecmd=O comando $1 necessário para iniciar o MySQL com autenticação desactivada não foi encontrado
 mysqlpass_eshutdown=O encerramento falhou : $1 

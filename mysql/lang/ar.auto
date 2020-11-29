@@ -740,6 +740,7 @@ index_title2=تحرير الفهرس
 index_header=الفهرس$1 في قاعدة البيانات$2
 index_ecannot=غير مسموح لك بإدارة الفهارس
 syslog_desc=رسائل خطأ MySQL
+syslog_desc2=رسالة خطأ MySQL
 syslog_logdesc=استعلامات MySQL
 fdrop_err=فشل حذف الحقول
 fdrop_enone=لم يتم تحديد شيء

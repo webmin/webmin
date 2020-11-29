@@ -155,6 +155,7 @@ index_eclash=Indeks o tej samej nazwie już istnieje
 index_ecols=Nie wybrano żadnych pól
 index_ecannot=Nie możesz zarządzać indeksami
 syslog_desc=Komunikaty o błędach MySQL
+syslog_desc2=Komunikat o błędzie MySQL
 syslog_logdesc=Zapytania MySQL
 view_header1=Pokaż szczegóły
 view_query=Kwerenda wyboru SQL

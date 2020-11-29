@@ -79,9 +79,11 @@ if (&is_mysql_local() && $config{'my_cnf'} && !-r $config{'my_cnf'}) {
 if ($r == 0) {
 	# Not running .. need to start it
 	&main_header();
-	print "<p> <b>$text{'index_notrun'}</b> <p>\n";
+	print &ui_alert_box($text{'index_notrun'}, 'danger');
 
-	print &ui_details($text{'syslog_desc'}, &text('index_emsg', "<tt>$rout</tt>"), 'error');
+	if ($rout) {
+		print &ui_details($text{'syslog_desc2'}, &text('index_emsg', "<tt>$rout</tt>"), 'error');
+	}
 
 	if ($access{'stop'} && &is_mysql_local()) {
 		print &ui_hr();
@@ -96,7 +98,12 @@ if ($r == 0) {
 elsif ($r == -1) {
 	# Running, but webmin doesn't know the root (or user's) password!
 	&main_header();
-	print "$text{'index_nopass'} <p>\n";
+	
+	print &ui_alert_box($text{'index_nopass'}, 'warn');
+	
+	if ($rout) {
+		print &ui_details($text{'syslog_desc2'}, &text('index_emsg', "<tt>$rout</tt>"), 'error') . "<br>";
+	}
 
 	print &ui_form_start("login.cgi", "post");
 	print &ui_table_start($text{'index_ltitle'}, undef, 2);
@@ -111,7 +118,6 @@ elsif ($r == -1) {
 	print &ui_table_end();
 	print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
-	print &ui_details($text{'syslog_desc'}, &text('index_emsg', "<tt>$rout</tt>"), 'error');
 
 	}
 else {

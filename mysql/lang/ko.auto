@@ -408,6 +408,7 @@ index_title2=색인 편집
 index_header=데이터베이스 $2 의 인덱스 $1 
 index_ecannot=색인을 관리 할 수 없습니다
 syslog_desc=MySQL 오류 메시지
+syslog_desc2=MySQL 오류 메시지
 syslog_logdesc=MySQL 쿼리
 fdrop_err=필드를 삭제하지 못했습니다
 fdrop_enone=선택된 사항 없음

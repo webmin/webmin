@@ -740,6 +740,7 @@ index_title2=Рэдагаваць індэкс
 index_header=Індэкс $1 у базе дадзеных $2 
 index_ecannot=Вам не дазволена кіраваць індэксамі
 syslog_desc=Паведамленні пра памылкі MySQL
+syslog_desc2=Паведамленне пра памылку MySQL
 syslog_logdesc=Запыты MySQL
 fdrop_err=Не ўдалося выдаліць палі
 fdrop_enone=Ні адзін не абраны

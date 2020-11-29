@@ -342,6 +342,7 @@ index_title2=编辑索引
 index_header=数据库 $2中的索引 $1
 index_ecannot=您无权管理索引
 syslog_desc=MySQL错误消息
+syslog_desc2=MySQL错误消息
 syslog_logdesc=MySQL查询
 fdrop_err=无法删除字段
 fdrop_enone=未选择

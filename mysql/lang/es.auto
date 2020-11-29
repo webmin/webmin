@@ -342,6 +342,7 @@ index_title2=Editar índice
 index_header=Índice $1 en la base de datos $2 
 index_ecannot=No tiene permiso para administrar índices
 syslog_desc=Mensajes de error de MySQL
+syslog_desc2=Mensaje de error de MySQL
 syslog_logdesc=Consultas MySQL
 fdrop_err=Error al eliminar campos
 fdrop_enone=Ninguna seleccionada

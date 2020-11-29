@@ -23,6 +23,7 @@ manual_file=Rediger konfigurasjonsfil:
 manual_ok=OK
 manual_efile=Ugyldig konfigurasjonsfil!
 manual_err=Kunne ikke lagre konfigurasjonsfilen
+syslog_desc2=MySQL feilmelding
 mysqlpass_err=MySQL sikker modus
 mysqlpass_esafecmd=Kommandoen $1 som trengs for å starte MySQL med autentisering deaktivert, ble ikke funnet
 mysqlpass_eshutdown=Nedleggelse mislyktes : $1 
