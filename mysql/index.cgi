@@ -85,7 +85,8 @@ if ($r == 0) {
 		print &ui_details({
 			'title' => $text{'syslog_desc2'},
 			'content' => &text('index_emsg',"<tt>$rout</tt>"),
-			'class' =>'error'});
+			'class' =>'error',
+			'html' => 1}, 1);
 	}
 
 	if ($access{'stop'} && &is_mysql_local()) {
@@ -109,7 +110,7 @@ elsif ($r == -1) {
 			'title' => $text{'syslog_desc2'},
 			'content' => &text('index_emsg',"<tt>$rout</tt>"),
 			'class' => 'error',
-			'open' => 'open'}) . "<br>";
+			'html' => 1}, 1) . "<br>";
 		}
 
 	print &ui_form_start("login.cgi", "post");

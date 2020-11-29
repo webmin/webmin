@@ -2723,7 +2723,7 @@ if (defined(&theme_ui_line_break_double)) {
 return "<br><br data-x-br>\n";
 }
 
-=head2 ui_details(title, content, class)
+=head2 ui_details(Config, Opened)
 
 Creates a disclosure widget in which information is visible only when
 the widget is toggled into an "open" state.
@@ -2731,16 +2731,21 @@ the widget is toggled into an "open" state.
 =cut
 sub ui_details
 {
-my ($c) = @_;
+my ($c, $o) = @_;
 if (defined(&theme_ui_details)) {
 	return &theme_ui_details(@_);
 	}
 
 my $rv;
-$c->{'class'} = "class=\"$c->{'class'}\"" if($c->{'class'});
-$rv = "<details $c->{'class'} $c->{'open'}>";
+if (!$c->{'html'}) {
+	$c->{'title'} = &html_escape($c->{'title'});
+	$c->{'content'} = &html_escape($c->{'content'});
+	}
+$c->{'class'} = " class=\"@{[&quote_escape($c->{'class'})]}\"" if($c->{'class'});
+$o = ' open' if ($o);
+$rv = "<details$c->{'class'}$o>";
 $rv .= "<summary>$c->{'title'}</summary>";
-$rv .= "$c->{'content'}";
+$rv .= "<span>$c->{'content'}</span>";
 $rv .= "</details>";
 return $rv;
 }
