@@ -1518,7 +1518,7 @@ my ($ver, $variant) = &get_remote_mysql_variant();
 my $mysql_mariadb_with_auth_string = 
    $variant eq "mariadb" && &compare_version_numbers($ver, "10.2") >= 0 ||
    $variant eq "mysql" && &compare_version_numbers($ver, "5.7.6") >= 0;
-if ($mysql_mariadb_with_auth_string) {
+if ($mysql_mariadb_with_auth_string && $unescaped_plainpass) {
 	$sql = "alter user '$user'\@'$host' identified $plugin by '$escaped_pass'";
 	}
 else {
@@ -1646,7 +1646,10 @@ else {
 		$host, $user,
 		$oldhost, $olduser);
 	}
-
+&update_config_credentials({
+		'user', $user,
+		'olduser', $olduser,
+		});
 &execute_sql_logged($master_db, 'flush privileges');
 }
 
@@ -1717,19 +1720,152 @@ my $lock = !defined($plainpass);
 if ($lock) {
 	$pass = sprintf("%x", rand 16) for 1..30;
 	}
-if ($mysql_mariadb_with_auth_string) {	
+if ($mysql_mariadb_with_auth_string) {
 	my $sp = "identified $plugin by '".$pass."'";
 	if ($lock_supported) {
 		$sp = $lock ? "account lock" : "$sp account unlock";
 		}
 	$sql = "alter user '$user'\@'$host' $sp";
-
+	&execute_sql_logged($master_db, $sql);
 	}
 else {
-	$sql = "set password for '$user'\@'$host' = $password_func('$pass')";
+	$sql = &get_change_pass_sql($plainpass, $user, $host);
+	&execute_sql_logged($master_db, $sql);
 	}
-&execute_sql_logged($master_db, $sql);
+
+# Update module password when needed
+&update_config_credentials({
+		'user', $user,
+		'olduser', $user,
+		'pass', $plainpass,
+		});
 &execute_sql_logged($master_db, 'flush privileges');
+}
+
+# Update Webmin module login and pass
+sub update_config_credentials
+{
+return if($access{'user'});
+my ($c) = @_;
+my $conf_user = $config{'login'} || "root";
+return if($c->{'olduser'} ne $conf_user);
+return if(!$c->{'user'});
+
+$config{'login'} = $c->{'user'};
+$mysql_login = $c->{'user'};
+if (defined($c->{'pass'})) {
+	$config{'pass'} = $c->{'pass'};
+	$mysql_pass = $c->{'pass'};
+	}
+&lock_file($module_config_file);
+&save_module_config();
+&unlock_file($module_config_file);
+&stop_mysql();
+&start_mysql();
+}
+
+# force_set_mysql_admin_pass(user, pass)
+# Forcibly change MySQL admin password, if lost or forgotten
+sub force_set_mysql_admin_pass
+{
+my ($user, $pass) = @_;
+&error_setup($text{'mysqlpass_err'});
+&foreign_require("proc");
+
+# Find the mysqld_safe command
+my $safe = &has_command("mysqld_safe");
+if (!$safe) {
+	&error(&text('mysqlpass_esafecmd', "<tt>mysqld_safe</tt>"));
+	}
+
+# Shut down server if running
+if (&is_mysql_running()) {
+	my $err = &stop_mysql();
+	if ($err) {
+		&error(&text('mysqlpass_esafecmdeshutdown', $err));
+		}
+	}
+
+# Start up with skip-grants flag
+my $cmd = $safe." --skip-grant-tables";
+
+# Running with `mysqld_safe` - when called, command doesn't create "mysqld" directory under
+# "/var/run" eventually resulting in DBI connect failed error on all MySQL versions
+my $ver = &get_mysql_version();
+if ($ver !~ /mariadb/i) {
+	my $mysockdir = '/var/run/mysqld';
+	my $myusergrp = 'mysql';
+	my $myconf = &get_mysql_config();
+	if ($myconf) {
+		my ($mysqld) = grep { $_->{'name'} eq 'mysqld' } @$myconf;
+		if ($mysqld) {
+			my $members = $mysqld->{'members'};
+
+			# Look for user
+			my $myusergrp_ = &find_value("user", $members);
+			if ($myusergrp_) {
+				$myusergrp = $myusergrp_;
+				}
+
+			# Look for socket
+			my $mysockdir_ = &find_value("socket", $members);
+			if ($mysockdir_) {
+				$mysockdir = $mysockdir_;
+				$mysockdir =~ s/^(.+)\/([^\/]+)$/$1/;
+				}
+			}
+		}
+	$cmd = "mkdir -p $mysockdir && chown $myusergrp:$myusergrp $mysockdir && $cmd";
+	}
+my ($pty, $pid) = &proc::pty_process_exec($cmd, 0, 0);
+sleep(5);
+if (!$pid || !kill(0, $pid)) {
+	my $err = <$pty>;
+	&error(&text('mysqlpass_esafe', $err));
+	}
+
+# Update password by running command directly
+my $cmd = $config{'mysql'} || 'mysql';
+my $sql = &get_change_pass_sql($pass, $user, 'localhost');
+my $out = &backquote_command("$cmd -D $master_db -e ".
+		quotemeta("flush privileges; $sql")." 2>&1 </dev/null");
+if ($?) {
+		$out =~ s/\n/ /gm;
+		&error(&text('mysqlpass_echange', "$out"));
+		}
+else {
+
+	# Update root password now for other
+	# hosts, using regular database connection
+	my $d = &execute_sql_safe($master_db,
+		"select host from user where user = ?", $user);
+	@hosts = map { $_->[0] ne 'localhost' } @{$d->{'data'}};
+	foreach my $host (@hosts) {
+		$sql = get_change_pass_sql($pass, $user, $host);
+		eval {
+			local $main::error_must_die = 1;
+			&execute_sql_logged($master_db, 'flush privileges');
+			&execute_sql_logged($master_db, $sql);
+			&execute_sql_logged($master_db, 'flush privileges');
+			sleep 1;
+			};
+		}
+	}
+
+# Shut down again, with the mysqladmin command
+my $mysql_shutdown = $config{'mysqladmin'} || 'mysqladmin';
+my $out = &backquote_logged("$mysql_shutdown shutdown 2>&1 </dev/null");
+if ($?) {
+	$out =~ s/\n/ /gm;
+	&error(&text('mysqlpass_eshutdown', $out));
+	}
+
+# Finally, re-start in normal mode
+my $err = &start_mysql();
+if ($err) {
+	&error(&text('mysqlpass_estartup', $err));
+	}
+&error_setup($text{'login_err'});
 }
 
 1;

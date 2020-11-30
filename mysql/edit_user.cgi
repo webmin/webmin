@@ -57,18 +57,22 @@ print &ui_table_row($text{'user_user'},
 			$text{'user_all'}));
 
 # Password field
+my $master_login = ($u->[1] eq ($config{'login'} || "root"));
 my $epassfield1 = $fieldmap{'Password'} || 1e10;
 my $epassfield2 = $fieldmap{'authentication_string'} || 1e10;
+my $plugin = $fieldmap{'plugin'};
+my $unixsocket = $plugin && $u->[$plugin] eq 'unix_socket';
 my $nopass = (($epassfield1 && !$u->[$epassfield1]) &&
 		       ($epassfield2 && !$u->[$epassfield2]));
 my $lock_supported = $u->[$fieldmap{'account_locked'}] eq 'Y' || $u->[$fieldmap{'account_locked'}] eq 'N';
+$lock_supported = 0 if ($master_login);
 my $locked = $u->[$fieldmap{'account_locked'}] eq 'Y';
 print &ui_table_row($text{'user_pass'},
 	&ui_radio("mysqlpass_mode", $in{'new'} ? 0 :
 		       $lock_supported && $locked ? 4 : 
-		       $nopass ? 2 : 1,
-		  [ $lock_supported && $locked ? () : [ 2, $text{'user_none'} ],
-		    $in{'new'} ? ( ) : ($lock_supported && $locked) || $nopass ? () : ( [ 1, $text{'user_leave'} ] ),
+		       $nopass && !$unixsocket ? 2 : 1,
+		  [ (($lock_supported && $locked) || $master_login) ? () : [ 2, $text{'user_none'} ],
+		    $in{'new'} ? ( ) : ($lock_supported && $locked) || $nopass && !$unixsocket ? () : ( [ 1, $text{'user_leave'} ] ),
 		  	($in{'new'} || !$lock_supported) ? ( ) : ( [ 4, $text{'user_locked'} ] ),
 		    [ 0, $text{'user_set'} ] ])." ".
 	&ui_password("mysqlpass", undef, 20));
