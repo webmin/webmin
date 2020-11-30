@@ -64,13 +64,20 @@ Returns the version number of Usermin on this system.
 =cut
 sub get_usermin_version
 {
+my ($ui_format_dev) = @_;
 local %miniserv;
 &get_usermin_miniserv_config(\%miniserv);
 open(VERSION, "<$miniserv{'root'}/version");
 local $version = <VERSION>;
 close(VERSION);
 $version =~ s/\r|\n//g;
-return $version;
+# Format dev version nicely
+if ($ui_format_dev && length($version) == 13) {
+	return substr($version, 0, 5) . "." . substr($version, 5, 5 - 1) . "." . substr($version, 5 * 2 - 1);
+	}
+else {
+	return $version;
+	}
 }
 
 =head2 restart_usermin_miniserv

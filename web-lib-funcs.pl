@@ -3944,16 +3944,15 @@ Returns the version of Webmin currently being run, such as 1.450.
 =cut
 sub get_webmin_version
 {
+my ($ui_format_dev) = @_;
 if (!$get_webmin_version) {
 	open(VERSION, "<$root_directory/version") || return 0;
 	($get_webmin_version = <VERSION>) =~ tr/\r|\n//d;
 	close(VERSION);
-	if (length($get_webmin_version) > 6) {
-		$get_webmin_version_ui = substr($get_webmin_version, 0, 5) . "." . substr($get_webmin_version, 5, 5 - 1) . "." . substr($get_webmin_version, 5 * 2 - 1);
-		}
 	}
-if ($main::webmin_script_type eq 'web' && $get_webmin_version_ui) {
-	return $get_webmin_version_ui;
+# Format dev version nicely
+if ($ui_format_dev && length($get_webmin_version) == 13) {
+	return substr($get_webmin_version, 0, 5) . "." . substr($get_webmin_version, 5, 5 - 1) . "." . substr($get_webmin_version, 5 * 2 - 1);
 	}
 else {
 	return $get_webmin_version;
