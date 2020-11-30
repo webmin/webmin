@@ -2907,7 +2907,7 @@ local $mail = { 'headers' =>
 		[ [ 'From', $from ],
 		  [ 'To', $to ],
 		  [ 'Cc', $cc ],
-		  [ 'Subject', $subject ] ],
+		  [ 'Subject', &encode_mimewords($subject) ] ],
 		'attach' => [ $attach ] };
 return &send_mail($mail, undef, 1, 0, $smtp);
 }
