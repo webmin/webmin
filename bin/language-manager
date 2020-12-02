@@ -175,8 +175,8 @@ sub main
                wanted => sub {
                    $f = $File::Find::name;
                    my $d = -d $f;
-                   my $l = $f =~ /$type\/$language_source$/;
-                   my $i = $f =~ /$type\.info$/;
+                   my $l = $f                                             =~ /$type\/$language_source$/;
+                   my $i = $f                                             =~ /$type\.info$/;
                    my $h = $d && ($f =~ s/$path//r =~ tr/\///) == 2 && $f =~ /$path\/.*\/$type$/;
                    if ((!-l $f || $allow_symlinks) && ($l || $i || $h)) {
                        $f =~ s/^$path\///g;
@@ -945,10 +945,10 @@ sub go
                 {
                    wanted => sub {
                        my $found               = $File::Find::name;
-                       my $found_nonutf8       = $found =~ s/$utf8//r;
+                       my $found_nonutf8       = $found         =~ s/$utf8//r;
                        my $found_nonutf8_big5  = $found_nonutf8 =~ s/$ext/.Big5$ext/r;
                        my $found_nonutf8_euc   = $found_nonutf8 =~ s/$ext/.euc$ext/r;
-                       my $found_relative_name = $found =~ s/$data->{'path'}\/$module\/$type\///r;
+                       my $found_relative_name = $found         =~ s/$data->{'path'}\/$module\/$type\///r;
 
                        # Check if file exists in both UTF-8 and original encoding, if so, keep original only
                        my @found_nonutf8 = ($found_nonutf8, $found_nonutf8_big5, $found_nonutf8_euc);
@@ -1354,6 +1354,7 @@ sub go
                         # should be considered, unless forced to be dropped
                         if ($language_source_file_auto &&
                             $language_source_file_auto->{$key_}                                           &&
+                            !$language_source_file->{$key_}                                               &&
                             (!@{$keys_force_translate} || any {$_ !~ /^$key_$/} @{$keys_force_translate}) &&
                             !@{$keys_test}                                                                &&
                             !$language_source_ignore_auto)
@@ -1532,7 +1533,7 @@ sub go
                     write_file($file, \%language, undef, undef, $mfile), chmod(0664, $file)
                       if (%language);
                     write_file($file_auto, \%language_auto, undef, undef, $mfile), chmod(0664, $file_auto)
-                      if (%language_auto && !$opt->{'only-transcode'});
+                      if ((%language_auto || !%language_auto) && !$opt->{'only-transcode'});
 
                     # Remove empty files
                     unlink($file)      if (-z $file);
