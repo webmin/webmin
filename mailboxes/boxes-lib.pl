@@ -2897,9 +2897,7 @@ sub send_text_mail
 {
 local ($from, $to, $cc, $subject, $body, $smtp) = @_;
 local $cs = &get_charset();
-local $attach = $body =~ /^[\000-\177]*$/ ?
-	{ 'headers' => [ [ 'Content-type', 'text/plain' ] ],
-	  'data' => &entities_to_ascii($body) } :
+local $attach = 
 	{ 'headers' => [ [ 'Content-Type', 'text/plain; charset='.$cs ],
 		         [ 'Content-Transfer-Encoding', 'quoted-printable' ] ],
           'data' => &quoted_encode($body) };
@@ -3135,6 +3133,20 @@ if ($main::mail_open_user =~ /^\d+$/) {
 	return @rv if (@rv > 0);
 	}
 return getpwnam($main::mail_open_user);
+}
+
+# is_ascii()
+# Checks if string is ASCII
+sub is_ascii {
+my ($str) = @_;
+my $str_ = $str;
+utf8::encode($str_);
+if ($str eq $str_) {
+	return 1;
+	} 
+else {
+	return 0;
+	}
 }
 
 1;
