@@ -2415,6 +2415,9 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 	$ENV{"SSL_USER"} = $peername if ($validated == 2);
 	$ENV{"ANONYMOUS_USER"} = "1" if ($validated == 3 || $validated == 4);
 	$ENV{"DOCUMENT_ROOT"} = $roots[0];
+	$ENV{"THEME_ROOT"} = "$roots[0]/" .
+	                     ($config{"preroot_$authuser"} ||
+	                      $config{"preroot"});
 	$ENV{"DOCUMENT_REALROOT"} = $realroot;
 	$ENV{"GATEWAY_INTERFACE"} = "CGI/1.1";
 	$ENV{"SERVER_PROTOCOL"} = "HTTP/1.0";
