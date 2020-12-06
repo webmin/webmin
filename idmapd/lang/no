@@ -1,11 +1,12 @@
-index_title=idmapd konfigurasjon
-index_eidmapd=Kunne ikke finne idmapd daemon $1. Kanskje den ikke er installert, eller så er <a href='$2'>modulkonfigurasjonen</a> feil.
-general=Generell konfigurasjon
-mapping=Mapping konfigurasjon
-pipefs_dir=Pipefs katalog
+__norefs=1
 domain=Domenenavn
-nobody_user=Nobody bruker
+error_dir=Katalogen $1 finnes ikke
+general=Generell konfigurasjon
+index_eidmapd=Kunne ikke finne idmapd daemon $1. Kanskje den ikke er installert, eller så er <a href='$2'>modulkonfigurasjonen</a> feil.
+index_title=idmapd konfigurasjon
+mapping=Mapping konfigurasjon
 nobody_group=Nobody gruppe
+nobody_user=Nobody bruker
+pipefs_dir=Pipefs katalog
 save=Lagre konfig og omstart daemon
 save_err=Kunne ikke lagre konfigfilen $1
-error_dir=Katalogen $1 finnes ikke

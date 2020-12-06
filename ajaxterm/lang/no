@@ -1,5 +1,6 @@
-index_title=Tekst-terminal
+__norefs=1
+index_credits=Bruker kode fra <a href='$1' target=_new>Ajaxterm</a> av Antony Lesuisse.
 index_epython=Ajaxterm krever Python for å kjøre, men jeg fant ikke kommandoen $1 på systemet ditt.
 index_estart=Ajaxterm startet ikke med å godta tilkoblinger på port $2 etter $1 sekunder.
 index_popup=Åpne i nytt vindu ..
-index_credits=Bruker kode fra <a href='$1' target=_new>Ajaxterm</a> av Antony Lesuisse.
+index_title=Tekst-terminal

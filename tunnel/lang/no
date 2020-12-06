@@ -1,17 +1,19 @@
+__norefs=1
 index_elink=Ingen URL til tunnel er satt enda.
-index_url=Skriv inn URL som skal åpnes:
 index_open=Åpne
-link_eurl=Ugyldig tunnel URL : $1
-link_elogin=Kunne ikke logge inn på $1 som $2
+index_url=Skriv inn URL som skal åpnes:
 link_eautologin=Ugyldig brukernavn eller passord for $1. <a href='$2'>Klikk her</a> for å logge inn.
-link_enouser=Det kreves brukernavn og passord for å logge inn på $1, men det er ikke konfigurert noen.
 link_ebadurl=Du har ikke tilgang til URLen $1
-login_title=Logg inn på nettsted
+link_elogin=Kunne ikke logge inn på $1 som $2
+link_enouser=Det kreves brukernavn og passord for å logge inn på $1, men det er ikke konfigurert noen.
+link_eurl=Ugyldig tunnel URL : $1
+link_mconfig=Bruk siden <a href='$1'>modulkonfigurasjon</a> for å endre påloggingen.
+login_clear=Nullstill
 login_desc=Du må angi brukernavn og passord for å logge inn på $1.
 login_header=Nettstedt autentisering
-login_user=Brukernavn
-login_pass=Passord
 login_login=Logg inn
-login_clear=Nullstill
+login_pass=Passord
+login_title=Logg inn på nettsted
+login_user=Brukernavn
 seturl_err=Kunne ikke åpne URL
 seturl_eurl=Ugyldig URL angitt
