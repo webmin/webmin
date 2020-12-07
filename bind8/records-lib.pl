@@ -268,7 +268,7 @@ while($i < @tok) {
 					push(@values, $tok[$i]);
 					if ($i >= @tok) {
 						&error("No ending ) found for ".
-						       "( starting at $olnum");
+						       "( at $olnum in $file");
 						}
 					}
 				$i++; # skip )
