@@ -4510,12 +4510,16 @@ foreach my $p (@extracas) {
 	Net::SSLeay::CTX_load_verify_locations($ssl_ctx, $p, "");
 	}
 
-Net::SSLeay::CTX_use_PrivateKey_file(
-	$ssl_ctx, $keyfile,
-	&Net::SSLeay::FILETYPE_PEM) || die "Failed to open SSL key $keyfile";
-Net::SSLeay::CTX_use_certificate_file(
-	$ssl_ctx, $certfile || $keyfile,
-	&Net::SSLeay::FILETYPE_PEM) || die "Failed to open SSL cert $certfile";
+if (!Net::SSLeay::CTX_use_PrivateKey_file($ssl_ctx, $keyfile,
+					  &Net::SSLeay::FILETYPE_PEM)) {
+	print STDERR "Failed to open SSL key $keyfile\n";
+	return undef;
+	}
+if (!Net::SSLeay::CTX_use_certificate_file($ssl_ctx, $certfile || $keyfile,
+					   &Net::SSLeay::FILETYPE_PEM)) {
+	print STDERR "Failed to open SSL cert $certfile\n";
+	return undef;
+	}
 
 if ($config{'no_ssl2'}) {
 	eval 'Net::SSLeay::CTX_set_options($ssl_ctx,
