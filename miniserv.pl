@@ -278,9 +278,11 @@ if ($use_ssl) {
 		$Net::SSLeay::ssl_version = $config{'ssl_version'};
 		}
 	$client_certs = 0 if (!-r $config{'ca'} || !%certs);
-	$ssl_contexts{"*"} = &create_ssl_context($config{'keyfile'},
-						 $config{'certfile'},
-						 $config{'extracas'});
+	$ctx = &create_ssl_context($config{'keyfile'},
+				   $config{'certfile'},
+				   $config{'extracas'});
+	$ctx || die "Failed to create default SSL context";
+	$ssl_contexts{"*"} = $ctx;
 	foreach $ipkey (@ipkeys) {
 		$ctx = &create_ssl_context($ipkey->{'key'}, $ipkey->{'cert'},
 				   $ipkey->{'extracas'} || $config{'extracas'});
