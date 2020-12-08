@@ -29,7 +29,7 @@ while(<SHELLS>) {
 	}
 close(SHELLS);
 
-print &ui_form_start("save_user.cgi", "post");
+print &ui_form_start("create_user.cgi", "post");
 print &ui_table_start($text{'uedit_details'}, "width=100%", 2);
 
 # Username
