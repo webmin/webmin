@@ -6417,3 +6417,9 @@ while(1) {
 	}
 return $line;
 }
+
+sub getenv
+{
+    my ($key) = @_;
+    return $ENV{ uc($key) } || $ENV{ lc($key) };
+}
