@@ -13,7 +13,7 @@ else {
 $account_key = "$module_config_directory/letsencrypt.pem";
 
 $letsencrypt_chain_urls = [
-	"https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem",
+	"https://letsencrypt.org/certs/lets-encrypt-r3-cross-signed.pem",
 	];
 
 sub get_letsencrypt_python_cmd
