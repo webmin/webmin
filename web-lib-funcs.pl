@@ -10219,7 +10219,7 @@ else {
 	}
 }
 
-=head2 read_file_contents(file)
+=head2 read_file_contents(file, limit)
 
 Given a filename, returns its complete contents as a string. Effectively
 the same as the Perl construct `cat file`.
@@ -10227,11 +10227,27 @@ the same as the Perl construct `cat file`.
 =cut
 sub read_file_contents
 {
-my ($file) = @_;
+my ($file, $limit) = @_;
 &open_readfile(FILE, $file) || return undef;
 local $/ = undef;
 my $rv = <FILE>;
 close(FILE);
+if ($limit) {
+	my ($a, $b, $c, $s, $e, $f, $g, $h);
+	$a = $rv =~ tr/\n//;
+	$h = length($rv);
+	$f = int($limit);
+	if ($f && $h + $a > $f) {
+		$b = "\n\n\n[--- @{[&text('edit_truncated', &nice_size($h - $f))]} ---]\n\n\n";
+		$g = int(($f / 2) + (length($b) / 2));
+		$s = substr($rv, 0, $g);
+		$s =~ s/\n$//;
+		$s = $s . $b;
+		$e = substr($rv, ($g * -1));
+		$e =~ s/^\n//;
+		$rv = $s . $e;
+		}
+	}
 return $rv;
 }
 
