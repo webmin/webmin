@@ -10219,7 +10219,7 @@ else {
 	}
 }
 
-=head2 read_file_contents(file, limit)
+=head2 read_file_contents(file, limit, reverse)
 
 Given a filename, returns its complete contents as a string. Effectively
 the same as the Perl construct `cat file`.
@@ -10227,7 +10227,7 @@ the same as the Perl construct `cat file`.
 =cut
 sub read_file_contents
 {
-my ($file, $limit) = @_;
+my ($file, $limit, $reverse) = @_;
 &open_readfile(FILE, $file) || return undef;
 local $/ = undef;
 my $rv = <FILE>;
@@ -10247,6 +10247,10 @@ if ($limit) {
 		$e =~ s/^\n//;
 		$rv = $s . $e;
 		}
+	}
+if ($reverse) {
+	my @rva = split("\n", $rv);
+	$rv = join("\n", reverse @rva);
 	}
 return $rv;
 }
