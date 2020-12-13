@@ -380,6 +380,4 @@ nice_size_b=bytes
 
 langauto_include=Include machine translations
 
-edit_truncated=truncated $1 of data
-
 __norefs=1

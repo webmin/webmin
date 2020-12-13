@@ -7,24 +7,21 @@ get_paths();
 
 my $file = &simplify_path($cwd . '/' . $in{'file'});
 &check_allowed_path($file);
-my $data = &read_file_contents($file, $in{'limit'});
+my $data = &read_file_contents($file);
 
 my $encoding_name;
-if ($in{'binary'}) {
-    $data =~ s/[^[:print:]\n\r\t]/ /g;
-} else {
-    eval "use Encode::Detect::Detector;";
-    if (!$@) {
-        $encoding_name = Encode::Detect::Detector::detect($data);
+eval "use Encode::Detect::Detector;";
+if (!$@) {
+    $encoding_name = Encode::Detect::Detector::detect($data);
+}
+my $forced = ($data =~ /(.*\n)(.*\n)(.*\n)/);
+$forced = (($1 . $2 . $3) =~ /coding[=:]\s*([-\w.]+)/);
+if ((lc(get_charset()) eq "utf-8" && ($encoding_name && lc($encoding_name) ne "utf-8")) || $forced) {
+    if ($forced) {
+        $encoding_name = "$1";
     }
-    my $forced = ($data =~ /(.*\n)(.*\n)(.*\n)/);
-    $forced = (($1 . $2 . $3) =~ /coding[=:]\s*([-\w.]+)/);
-    if ((lc(get_charset()) eq "utf-8" && ($encoding_name && lc($encoding_name) ne "utf-8")) || $forced) {
-        if ($forced) {
-            $encoding_name = "$1";
-        }
-        eval {$data = Encode::encode('utf-8', Encode::decode($encoding_name, $data))};
-    }
+    use Encode qw( encode decode );
+    eval {$data = Encode::encode('utf-8', Encode::decode($encoding_name, $data))};
 }
 
 &ui_print_header(undef, $text{'edit_file'}, "");
