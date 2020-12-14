@@ -1348,8 +1348,10 @@ sub load_theme_library
 return if (!$current_theme || $loaded_theme_library++);
 for(my $i=0; $i<@theme_root_directories; $i++) {
 	if ($theme_configs[$i]->{'functions'}) {
-		do $theme_root_directories[$i]."/".
-		   $theme_configs[$i]->{'functions'};
+		my @theme_funcs = split(/\s+/, $theme_configs[$i]->{'functions'});
+		foreach my $theme_func (@theme_funcs) {
+			do "$theme_root_directories[$i]/$theme_func";
+			}
 		}
 	}
 }
