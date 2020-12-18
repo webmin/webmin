@@ -6304,6 +6304,9 @@ if (!$pid) {
 	$ENV{"SERVER_PORT"} = $config{'port'};
 	$ENV{"WEBMIN_CRON"} = 1;
 	$ENV{"DOCUMENT_ROOT"} = $root0;
+	$ENV{"THEME_ROOT"} = "$root0/" .
+	                     ($config{"preroot_$ENV{'REMOTE_USER'}"} ||
+	                      $config{"preroot"});
 	$ENV{"DOCUMENT_REALROOT"} = $root0;
 	$ENV{"MINISERV_CONFIG"} = $config_file;
 	$ENV{"HTTPS"} = "ON" if ($use_ssl);
@@ -6413,4 +6416,10 @@ while(1) {
 	last if ($buf eq "\n");
 	}
 return $line;
+}
+
+sub getenv
+{
+    my ($key) = @_;
+    return $ENV{ uc($key) } || $ENV{ lc($key) };
 }
