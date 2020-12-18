@@ -10264,6 +10264,7 @@ Effective for reading super large files partially.
 * Returns a hash with : 
   - 'error'   : error message if file cannot be read
   - 'size'    : requested file size
+  - 'limit'   : limit to read
   - 'chomped' : truncated data size in bytes if any
   - 'head'    : fetched head data
   - 'tail'    : fetched tail data
@@ -10280,6 +10281,9 @@ my %return;
 my $reverse = sub {
     return join("\n", reverse split("\n", $_[0]));
     };
+
+# Store initial fetch limit
+$return{'limit'} = $limit;
 
 # Open file
 open(my $fh, "<", $file) ||
