@@ -45,10 +45,7 @@ foreach $t (@todo) {
 
 if ($tellcount) {
 	# Add link to Webmin
-	&get_miniserv_config(\%miniserv);
-	$proto = $miniserv{'ssl'} ? 'https' : 'http';
-	$port = $miniserv{'port'};
-	$url = $proto."://".&get_system_hostname().":".$port."/$module_name/";
+	$url = &get_webmin_email_url($module_name);
 	$body .= "Updates can be installed at $url\n\n";
 	}
 
