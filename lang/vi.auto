@@ -346,3 +346,6 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=byte
 langauto_include=Bao gồm dịch máy
+file_truncated_message=đã tìm nạp $1 dữ liệu, bị cắt bớt $2 / $3 
+file_truncated_message_head=đã tìm nạp bắt đầu $1 dữ liệu, bị cắt bớt $2 / $3 
+file_truncated_message_tail=đã tìm nạp kết thúc $1 của dữ liệu, bị cắt bớt $2 / $3 

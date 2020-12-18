@@ -16,3 +16,6 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=bytes
 langauto_include=Inclou traduccions automàtiques
+file_truncated_message=s'ha obtingut $1 de dades, s'ha truncat $2 de $3 
+file_truncated_message_head=s'ha obtingut l'inici de $1 de dades, s'ha truncat $2 de $3 
+file_truncated_message_tail=S'ha obtingut el final $1 de dades, s'ha truncat $2 de $3 

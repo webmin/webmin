@@ -165,3 +165,6 @@ nice_size_kB=KG
 nice_size_kiB=KIB
 nice_size_b=grepe
 langauto_include=Sluit masjienvertalings in
+file_truncated_message=het $1 van die data gehaal, $2 uit $3 afgekap
+file_truncated_message_head=begin $1 van die data, afgekap $2 uit $3 
+file_truncated_message_tail=beëindig $1 van die data, afgekap $2 uit $3 

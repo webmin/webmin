@@ -105,3 +105,6 @@ nice_size_kB=kB
 nice_size_kiB=Kib
 nice_size_b=bájt
 langauto_include=Tartalmazza a gépi fordításokat
+file_truncated_message=lekérte az $1 adatot, a (z) $2 csonkolta a (z) $3 közül
+file_truncated_message_head=lekérte az adatok $1 elejét, a (z) $2 csonkolta a (z) $3 -ból
+file_truncated_message_tail=lekérte az adatok $1 végét, a (z) $2 csonkolta a (z) $3 -ból

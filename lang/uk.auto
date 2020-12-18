@@ -89,3 +89,6 @@ nice_size_kB=кБ
 nice_size_kiB=кіБ
 nice_size_b=байт
 langauto_include=Включіть машинні переклади
+file_truncated_message=отримано $1 даних, усічено $2 з $3 
+file_truncated_message_head=отримано початок $1 даних, усічений $2 з $3 
+file_truncated_message_tail=отримано закінчення $1 даних, усічено $2 з $3 

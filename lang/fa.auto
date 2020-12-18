@@ -114,3 +114,6 @@ nice_size_kB=کیلوبایت
 nice_size_kiB=کیوب
 nice_size_b=بایت
 langauto_include=ترجمه های ماشینی را درج کنید
+file_truncated_message=$1 داده را واکشی کرد ،$2 از$3 کوتاه شد
+file_truncated_message_head=شروع$1 داده ها ،$2 از$3 کوتاه شده است
+file_truncated_message_tail=واکشی شده$1 داده پایان یافته ،$2 از$3 کوتاه شده

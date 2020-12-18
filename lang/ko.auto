@@ -64,3 +64,6 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=바이트
 langauto_include=기계 번역 포함
+file_truncated_message=$1 의 데이터를 가져 왔습니다. $3 에서 $2 을 (를) 잘랐습니다.
+file_truncated_message_head=데이터의 시작 $1 을 (를) 가져 왔고 $3 에서 $2 을 (를) 잘랐습니다.
+file_truncated_message_tail=데이터의 끝 $1 을 (를) 가져 왔습니다. $3 에서 $2 을 (를) 자릅니다

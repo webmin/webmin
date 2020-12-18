@@ -92,3 +92,6 @@ log_email_session=ID de session: $1
 log_email_remote=Adresse client: $1
 nice_size_b=octets
 langauto_include=Inclure les traductions automatiques
+file_truncated_message=extrait $1 des données, tronqué $2 sur $3 
+file_truncated_message_head=récupéré au début $1 des données, tronqué $2 sur $3 
+file_truncated_message_tail=récupéré se terminant $1 des données, tronqué $2 sur $3 

@@ -84,3 +84,6 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=bytes
 langauto_include=Συμπεριλάβετε μηχανικές μεταφράσεις
+file_truncated_message=ανάκτησε $1 δεδομένων, περικοπή $2 από $3 
+file_truncated_message_head=ανάκτησε την αρχή $1 των δεδομένων, περικοπή $2 από το $3 
+file_truncated_message_tail=ανακτήθηκε το $1 των δεδομένων, περικοπή $2 από το $3 

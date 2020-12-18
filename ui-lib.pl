@@ -2750,5 +2750,64 @@ $rv .= "</details>";
 return $rv;
 }
 
+=head2 ui_read_file_contents_limit(\%data)
+
+Reads file content with options and
+returns head and/or tail separated with
+chomped message
+
+=cut
+sub ui_read_file_contents_limit
+{
+if (defined(&theme_ui_read_file_contents_limit)) {
+	return &theme_ui_read_file_contents_limit(@_);
+	}
+my ($opts)  = @_;
+my $binary  = -B $opts->{'file'};
+my $data = &read_file_contents_limit($opts->{'file'}, $opts->{'limit'}, $opts);
+my $error = $data->{'error'};
+if ($error) {
+    return $error;
+	}
+my $nonulls = sub {
+    $_[0] =~ s/[^[:print:]\n\r\t]/\ /g;
+    return $_[0];
+	};
+my $head     = $data->{'head'};
+my $tail     = $data->{'tail'};
+my $chomped  = $data->{'chomped'};
+my $fsize    = $data->{'size'};
+my $flimit   = $data->{'limit'};
+my $msg_type = !$head &&  $tail ? '_tail' :
+                $head && !$tail ? '_head' : undef;
+my $nlines   = $nslines = $nelines = "\n" x 10;
+$nslines     = undef if (!$head);
+$nelines     = undef if (!$tail);
+my $chomped_msg;
+$chomped_msg =
+"${nslines}[--- @{[&text(\"file_truncated_message$msg_type\", 
+                         &nice_size($flimit), 
+                         &nice_size($chomped),
+                         &nice_size($fsize))]} ---]$nelines"
+  if ($chomped);
+
+# Trim nulls
+$head = &$nonulls($head)
+  if ($binary && $head);
+$tail = &$nonulls($tail)
+  if ($binary && $tail);
+
+# Return data
+if ($head && $tail) {
+    return $head . $chomped_msg . $tail;
+	}
+if ($tail) {
+    return $chomped_msg . $tail;
+	}
+if ($head) {
+    return $head . $chomped_msg;
+	}
+}
+
 1;
 

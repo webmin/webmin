@@ -67,3 +67,6 @@ nice_size_kB=kB
 nice_size_kiB=Kib
 nice_size_b=byte
 langauto_include=Includi traduzioni automatiche
+file_truncated_message=recuperato $1 di dati, troncato $2 su $3 
+file_truncated_message_head=recuperato all'inizio di $1 di dati, troncato $2 su $3 
+file_truncated_message_tail=recuperato $1 finale di dati, $2 troncato su $3 

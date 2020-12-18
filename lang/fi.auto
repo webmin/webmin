@@ -84,3 +84,6 @@ nice_size_kB=kB
 nice_size_kiB=KIB
 nice_size_b=tavua
 langauto_include=Sisällytä konekäännökset
+file_truncated_message=noutaa $1 datasta, katkaisi $2 / $3 : sta
+file_truncated_message_head=noutaa tiedon alun $1, katkaisi $2 / $3 
+file_truncated_message_tail=haettu loppu $1 datasta, katkaistu $2 / $3 

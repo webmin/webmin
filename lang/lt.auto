@@ -163,3 +163,6 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=baitų
 langauto_include=Įtraukite mašininius vertimus
+file_truncated_message=atnešė $1 duomenų, sutrumpino $2 iš $3 
+file_truncated_message_head=atnešė $1 duomenų pradžią, sutrumpino $2 iš $3 
+file_truncated_message_tail=parsivežta duomenų pabaigos pabaiga $1, sutrumpinta $2 iš $3 

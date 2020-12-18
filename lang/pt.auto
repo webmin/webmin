@@ -42,3 +42,6 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=bytes
 langauto_include=Incluir traduções automáticas
+file_truncated_message=buscou $1 de dados, truncado $2 de $3 
+file_truncated_message_head=buscado começando $1 de dados, truncado $2 de $3 
+file_truncated_message_tail=obtido até o final de $1 de dados, truncado $2 de $3 

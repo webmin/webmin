@@ -56,3 +56,6 @@ nice_size_kB=кБ
 nice_size_kiB=киБ
 nice_size_b=байт
 langauto_include=Включить машинные переводы
+file_truncated_message=получено $1 данных, усечено $2 из $3 
+file_truncated_message_head=извлечено начало $1 данных, усечено $2 из $3 
+file_truncated_message_tail=получено окончание $1 данных, усечено $2 из $3 

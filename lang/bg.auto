@@ -155,3 +155,6 @@ nice_size_kB=КБ
 nice_size_kiB=KiB
 nice_size_b=байта
 langauto_include=Включете машинни преводи
+file_truncated_message=извлечен $1 от данни, съкратен $2 от $3 
+file_truncated_message_head=извлечено начало $1 от данни, съкратено $2 от $3 
+file_truncated_message_tail=извлечен завършващ $1 от данни, съкратен $2 от $3 

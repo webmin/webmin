@@ -155,3 +155,6 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=個字節
 langauto_include=包括機器翻譯
+file_truncated_message=提取了 $1的數據，從 $3中截斷了 $2
+file_truncated_message_head=已提取數據的開頭 $1，在 $3中被截斷了 $2
+file_truncated_message_tail=已提取數據的結尾 $1，在 $3中被截斷了 $2

@@ -346,3 +346,6 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=bytes
 langauto_include=Inkludi traduzzjonijiet bil-magni
+file_truncated_message=ġab $1 ta 'dejta, maqtugħ $2 minn $3 
+file_truncated_message_head=ġab il-bidu ta ' $1 ta' dejta, maqtugħ $2 minn $3 
+file_truncated_message_tail=ġab it-tmiem $1 ta 'dejta, maqtugħ $2 minn $3 
