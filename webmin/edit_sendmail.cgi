@@ -67,6 +67,14 @@ print &ui_table_row($text{'sendmail_from'},
 			&text('sendmail_fromdef', $fromdef)."<br>",
 			$text{'sendmail_fromaddr'}));
 
+# URL for use in emails
+$url = $gconfig{'webmin_email_url'};
+$defurl = &get_webmin_email_url(undef, undef, 1);
+print &ui_table_row($text{'sendmail_url'},
+	&ui_opt_textbox("url", $url, 40,
+			&text('sendmail_url_def', "<tt>$defurl</tt>")."<br>",
+			$text{'sendmail_url_custom'}));
+
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'save'} ] ]);
 

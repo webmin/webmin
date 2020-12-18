@@ -1042,6 +1042,10 @@ sendmail_subject=Message subject
 sendmail_body=Message contents
 sendmail_desc2=This form can be used to send a test email with the settings above, to ensure that mail is being delivered correctly.
 sendmail_send=Send Email
+sendmail_url=Webmin URL for use in email
+sendmail_url_def=Default ($1)
+sendmail_url_custom=Custom URL
+sendmail_eurl=Missing or invalid custom URL
 
 testmail_title=Send Test Email
 testmail_err=Failed to send test message

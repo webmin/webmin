@@ -11202,6 +11202,38 @@ $referer =~ s/\/\//\//g;
 return $referer;
 }
 
+=head2 get_webmin_email_url([module], [cgi], [force-default])
+
+Returns the base URL for accessing this Webmin system, for use in URLs. 
+
+=cut
+sub get_webmin_email_url
+{
+my ($mod, $cgi, $def) = @_;
+
+# Work out the base URL
+my $url;
+if (!$def && $gconfig{'webmin_email_url'}) {
+	$url = $gconfig{'webmin_email_url'};
+	}
+else {
+	my %miniserv;
+	&get_miniserv_config(\%miniserv);
+	my $proto = $miniserv{'ssl'} ? 'https' : 'http';
+	my $port = $miniserv{'port'};
+	my $host = &get_system_hostname();
+	my $defport = $proto eq 'https' ? 443 : 80;
+	$url = $proto."://".$host.($port == $defport ? "" : ":".$port);
+	$url .= $gconfig{'webprefix'} if ($gconfig{'webprefix'});
+	}
+
+# Append module if needed
+$url =~ s/\/$//;
+$url .= "/".$mod if ($mod);
+$url .= "/".$cgi if ($cgi);
+return $url;
+}
+
 $done_web_lib_funcs = 1;
 
 1;
