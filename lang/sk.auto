@@ -134,3 +134,6 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=bajtov
 langauto_include=Zahrňte strojové preklady
+file_truncated_message=načítal $1 dát, skrátený $2 z $3 
+file_truncated_message_head=načítaný začiatok $1 dát, skrátený $2 z $3 
+file_truncated_message_tail=načítaný koniec $1 dát, skrátený $2 z $3 

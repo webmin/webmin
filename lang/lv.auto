@@ -346,3 +346,6 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=baiti
 langauto_include=Iekļaujiet mašīntulkojumus
+file_truncated_message=ienesa $1 no datiem, saīsināja $2 no $3 
+file_truncated_message_head=ienesa datu sākumu $1, saīsināja $2 no $3 
+file_truncated_message_tail=ienesa datu beigas $1, saīsināja $2 no $3 

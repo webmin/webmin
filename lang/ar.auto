@@ -13,3 +13,6 @@ nice_size_kB=كيلو بايت
 nice_size_kiB=بنك الكويت الدولي
 nice_size_b=بايت
 langauto_include=تضمين الترجمات الآلية
+file_truncated_message=تم جلب$1 من البيانات ، تم اقتطاع$2 من$3
+file_truncated_message_head=تم جلب بداية$1 من البيانات ، تم اقتطاع$2 من$3
+file_truncated_message_tail=تم جلب إنهاء$1 من البيانات ، اقتطاع$2 من$3

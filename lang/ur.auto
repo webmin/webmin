@@ -346,3 +346,6 @@ nice_size_kB=kB
 nice_size_kiB=کیی بی
 nice_size_b=بائٹس
 langauto_include=مشین ترجمہ شامل کریں
+file_truncated_message=ڈیٹا کا$1 حاصل کیا ،$3 میں سے$2 چھوٹا
+file_truncated_message_head=ڈیٹا کا آغاز$1 کیا گیا ،$3 میں سے$2 کو چھوٹا گیا
+file_truncated_message_tail=ڈیٹا کا$1 ختم ہونے والا نتیجہ ،$3 میں سے$2 کو چھوٹا

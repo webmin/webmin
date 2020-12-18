@@ -346,3 +346,6 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=bajtova
 langauto_include=Uključite strojne prijevode
+file_truncated_message=dohvatio $1 podataka, skratio $2 od $3 
+file_truncated_message_head=dohvaćen početak $1 podataka, skraćen $2 od $3 
+file_truncated_message_tail=dohvaćen završetak $1 podataka, skraćen $2 od $3 

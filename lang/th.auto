@@ -212,3 +212,6 @@ nice_size_kB=kB
 nice_size_kiB=โอเค
 nice_size_b=ไบต์
 langauto_include=รวมถึงการแปลด้วยเครื่อง
+file_truncated_message=ดึงข้อมูล $1 ออกโดยตัดทอน $2 ออกจาก $3 
+file_truncated_message_head=ดึงข้อมูลเริ่มต้น $1 ของข้อมูลตัดทอน $2 จาก $3 
+file_truncated_message_tail=ดึงข้อมูล $1 ที่สิ้นสุดโดยตัดทอน $2 ออกจาก $3 

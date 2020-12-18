@@ -259,3 +259,6 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=בתים
 langauto_include=כלול תרגומי מכונה
+file_truncated_message=הביא $1 מהנתונים, קטוע $2 מתוך $3 
+file_truncated_message_head=הביא $1 מתחיל הנתונים, קטוע $2 מתוך $3 
+file_truncated_message_tail=הושג סיום $1 מהנתונים, קטוע $2 מתוך $3 

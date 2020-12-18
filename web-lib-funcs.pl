@@ -10261,9 +10261,10 @@ Effective for reading super large files partially.
   - [tail]    : Tail the file only and just return ending bytes
   - [reverse] : Reverse line output
 
-* Returns a hash with : 
+* Returns a hash reference with :
   - 'error'   : error message if file cannot be read
   - 'size'    : requested file size
+  - 'limit'   : limit to read
   - 'chomped' : truncated data size in bytes if any
   - 'head'    : fetched head data
   - 'tail'    : fetched tail data
@@ -10281,9 +10282,13 @@ my $reverse = sub {
     return join("\n", reverse split("\n", $_[0]));
     };
 
+# Store initial fetch limit
+$limit = int($limit);
+$return{'limit'} = $limit;
+
 # Open file
 open(my $fh, "<", $file) ||
-    ($return{'error'} = $!, return %return);
+    ($return{'error'} = $!, return \%return);
 
 # Reading beginning of file
 my $get_head = sub {
@@ -10317,7 +10322,7 @@ if ($fsize <= $limit || !$limit) {
     $full = &$reverse($full)
       if ($opts->{'reverse'});
     $return{'head'} = $full;
-    return %return;
+    return \%return;
     }
 
 # Starting and ending number of bytes to read
@@ -10340,7 +10345,7 @@ $return{'chomped'} = $chomped;
 # Return head only if requested
 if ($opts->{'head'} &&
     !$opts->{'tail'}) {
-    return %return;
+    return \%return;
     }
 
 # Read tail
@@ -10351,9 +10356,9 @@ if ($opts->{'head'} &&
 # Return tail only if requested
 if ($opts->{'tail'} &&
     !$opts->{'head'}) {
-    return %return;
+    return \%return;
     }
-return %return;
+return \%return;
 }
 
 =head2 unix_crypt(password, salt)

@@ -7,8 +7,13 @@ get_paths();
 
 my $file = &simplify_path($cwd . '/' . $in{'file'});
 &check_allowed_path($file);
-my $data = &read_file_contents($file);
-
+my $data = &ui_read_file_contents_limit(
+            { 'file', $file,
+              'limit', $in{'limit'},
+              'reverse', $in{'reverse'},
+              'head', $in{'head'},
+              'tail', $in{'tail'}
+            });
 my $encoding_name;
 eval "use Encode::Detect::Detector;";
 if (!$@) {
@@ -20,7 +25,6 @@ if ((lc(get_charset()) eq "utf-8" && ($encoding_name && lc($encoding_name) ne "u
     if ($forced) {
         $encoding_name = "$1";
     }
-    use Encode qw( encode decode );
     eval {$data = Encode::encode('utf-8', Encode::decode($encoding_name, $data))};
 }
 

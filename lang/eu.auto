@@ -63,3 +63,6 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=byte
 langauto_include=Sartu itzulpen automatikoak
+file_truncated_message=datuen $1 eskuratu du, $2 moztu du $3 tik
+file_truncated_message_head=$1 hasierako datuak eskuratu ditu, $2 moztu dira $3 tik
+file_truncated_message_tail=datuen $1 amaiera lortu da, $2 moztu da $3 tik

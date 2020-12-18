@@ -240,3 +240,6 @@ nice_size_kB=kB
 nice_size_kiB=KIB
 nice_size_b=bayt
 langauto_include=Makine çevirilerini dahil et
+file_truncated_message=$1 veri getirildi, $3 / $3 kesildi
+file_truncated_message_head=$1 veri başlangıcından getirildi, $3 / $3 kesildi
+file_truncated_message_tail=Son $1 veri getirildi, $3 / $3 kesildi

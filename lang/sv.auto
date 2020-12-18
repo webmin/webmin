@@ -245,3 +245,6 @@ nice_size_kB=kB
 nice_size_kiB=KIB
 nice_size_b=bitgrupper
 langauto_include=Inkludera maskinöversättningar
+file_truncated_message=hämtade $1 av data, trunkerade $2 av $3 
+file_truncated_message_head=hämtade början $1 av data, trunkerade $2 av $3 
+file_truncated_message_tail=hämtade slut $1 av data, trunkerat $2 av $3 

@@ -96,3 +96,6 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=bytes
 langauto_include=Includeți traduceri automate
+file_truncated_message=a preluat $1 din date, a trunchiat $2 din $3 
+file_truncated_message_head=preluat începutul $1 din date, trunchiat $2 din $3 
+file_truncated_message_tail=a fost preluat sfârșitul $1 din date, trunchiat $2 din $3 

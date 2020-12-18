@@ -346,3 +346,6 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=bajti
 langauto_include=Vključite strojne prevode
+file_truncated_message=pridobljeno $1 podatkov, okrnjeno $2 od $3 
+file_truncated_message_head=pridobljen začetek $1 podatkov, okrnjen $2 od $3 
+file_truncated_message_tail=prenesen konec $1 podatkov, okrnjen $2 od $3 

@@ -25,3 +25,6 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=bajty
 langauto_include=Uwzględnij tłumaczenia maszynowe
+file_truncated_message=pobrano $1 danych, obcięto $2 z $3 
+file_truncated_message_head=pobrano początek $1 danych, obcięto $2 z $3 
+file_truncated_message_tail=pobrane zakończenie $1 danych, obcięte $2 z $3 

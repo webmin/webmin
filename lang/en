@@ -380,4 +380,8 @@ nice_size_b=bytes
 
 langauto_include=Include machine translations
 
+file_truncated_message=fetched $1 of data, truncated $2 out of $3
+file_truncated_message_head=fetched beginning $1 of data, truncated $2 out of $3
+file_truncated_message_tail=fetched ending $1 of data, truncated $2 out of $3
+
 __norefs=1

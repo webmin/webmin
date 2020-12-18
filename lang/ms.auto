@@ -26,3 +26,6 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=bait
 langauto_include=Sertakan terjemahan mesin
+file_truncated_message=mengambil $1 data, terpotong $2 daripada $3 
+file_truncated_message_head=mengambil $1 data, dipotong $2 daripada $3 
+file_truncated_message_tail=mengambil akhir $1 data, terpotong $2 daripada $3 

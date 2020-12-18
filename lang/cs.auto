@@ -25,3 +25,6 @@ nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=bajtů
 langauto_include=Zahrňte strojové překlady
+file_truncated_message=načteno $1 dat, zkráceno $2 z $3 
+file_truncated_message_head=načteno začátek $1 dat, zkráceno $2 z $3 
+file_truncated_message_tail=načtený konec $1 dat, zkrácen $2 z $3 
