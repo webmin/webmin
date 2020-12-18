@@ -20,7 +20,6 @@ if ((lc(get_charset()) eq "utf-8" && ($encoding_name && lc($encoding_name) ne "u
     if ($forced) {
         $encoding_name = "$1";
     }
-    use Encode qw( encode decode );
     eval {$data = Encode::encode('utf-8', Encode::decode($encoding_name, $data))};
 }
 
