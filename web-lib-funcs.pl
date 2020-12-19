@@ -10099,7 +10099,8 @@ if ($uinfo[8] ne "/bin/sh" && $uinfo[8] !~ /\/bash$/ && $env < 2) {
 		$shellarg = " -m";
 		}
 	}
-my $rv = "su".($env == 1 || $env == 3 ? " -" : "").$shellarg.
+my $su = &has_command("su") || "su";
+my $rv = $su.($env == 1 || $env == 3 ? " -" : "").$shellarg.
 	 " ".quotemeta($user)." -c ".quotemeta(join(" ", @args));
 return $rv;
 }
