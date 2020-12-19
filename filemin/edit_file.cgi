@@ -27,7 +27,7 @@ if ((lc(get_charset()) eq "utf-8" && ($encoding_name && lc($encoding_name) ne "u
     }
     eval {$data = Encode::encode('utf-8', Encode::decode($encoding_name, $data))};
 }
-
+my $file_binary = -B $file;
 &ui_print_header(undef, $text{'edit_file'}, "");
 $head = "<link rel='stylesheet' type='text/css' href='unauthenticated/css/style.css' />";
 
@@ -50,7 +50,7 @@ print $head;
 
 print ui_table_start(&html_escape("$path/$in{'file'}"), undef, 1);
 
-print &ui_form_start("save_file.cgi", "post", undef, "data-encoding=\"$encoding_name\"");
+print &ui_form_start("save_file.cgi", "post", undef, "data-encoding=\"$encoding_name\" data-binary=\"$file_binary\"");
 print &ui_hidden("file", $in{'file'}), "\n";
 print &ui_hidden("encoding", $encoding_name), "\n";
 print &ui_textarea("data", $data, 20, 80, undef, undef, "style='width: 100%' id='data'");
