@@ -4519,7 +4519,7 @@ if (!Net::SSLeay::CTX_use_PrivateKey_file($ssl_ctx, $keyfile,
 	}
 if (!Net::SSLeay::CTX_use_certificate_file($ssl_ctx, $certfile || $keyfile,
 					   &Net::SSLeay::FILETYPE_PEM)) {
-	print STDERR "Failed to open SSL cert $certfile\n";
+	print STDERR "Failed to open SSL cert ".($certfile || $keyfile)."\n";
 	return undef;
 	}
 
