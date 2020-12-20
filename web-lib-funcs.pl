@@ -8019,12 +8019,14 @@ if ($_[0] == 2) {
 	if ($_[1]) {
 		$progress_size = $_[1];
 		$progress_step = int($_[1] / 10);
-		print &text('progress_size2', $progress_callback_url,
+		print &text('progress_size2',
+			    &html_escape($progress_callback_url),
 			    &nice_size($progress_size)),"<br>\n";
 		}
 	else {
 		$progress_size = undef;
-		print &text('progress_nosize', $progress_callback_url),"<br>\n";
+		print &text('progress_nosize',
+			    &html_escape($progress_callback_url)),"<br>\n";
 		}
 	$last_progress_time = $last_progress_size = undef;
 	}
@@ -8064,7 +8066,8 @@ elsif ($_[0] == 5) {
 elsif ($_[0] == 6) {
 	# URL is in cache
 	$progress_callback_url = $_[1];
-	print &text('progress_incache', $progress_callback_url),"<br>\n";
+	print &text('progress_incache',
+		    &html_escape($progress_callback_url)),"<br>\n";
 	}
 }
 
