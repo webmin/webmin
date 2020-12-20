@@ -78,7 +78,7 @@ elsif ($in{source} == 2) {
 	else {
 		&install_error(&text('install_eurl', $in{'url'}));
 		}
-	&install_error($error) if ($error);
+	&install_error(&html_escape($error)) if ($error);
 	$source = $in{'url'};
 	$need_unlink = 1;
 	}
