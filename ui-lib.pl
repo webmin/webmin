@@ -2763,7 +2763,7 @@ if (defined(&theme_ui_read_file_contents_limit)) {
 	return &theme_ui_read_file_contents_limit(@_);
 	}
 my ($opts)  = @_;
-my $binary  = -B $opts->{'file'};
+my $binary  = -s $opts->{'file'} >= 128 && -B $opts->{'file'};
 my $data = &read_file_contents_limit($opts->{'file'}, $opts->{'limit'}, $opts);
 my $error = $data->{'error'};
 if ($error) {
