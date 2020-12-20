@@ -329,8 +329,28 @@ else {
 		}
 	-r $cert && -s $cert || return (0, &text('letsencrypt_ecert', $cert));
 
-	# Download the latest chained cert files
+	# Check if the returned cert contains a CA cert as well
 	my $chain = &transname();
+	my @certs = &cert_file_split($cert);
+	my %donecert;
+	if (@certs > 1) {
+		# Yes .. keep the first as the cert, and use the others as
+		# the chain
+		my $orig = shift(@certs);
+		my $fh = "CHAIN";
+		&open_tempfile($fh, ">$chain");
+		foreach my $c (@certs) {
+			&print_tempfile($fh, $c);
+			$donecert{$c}++;
+			}
+		&close_tempfile($fh);
+		my $fh2 = "CERT";
+		&open_tempfile($fh2, ">$cert");
+		&print_tempfile($fh2, $orig);
+		&close_tempfile($fh2);
+		}
+
+	# Download the latest chained cert files
 	foreach my $url (@$letsencrypt_chain_urls) {
 		my $cout;
 		my ($host, $port, $page, $ssl) = &parse_http_url($url);
@@ -344,10 +364,12 @@ else {
 			&cleanup_wellknown($wellknown_new, $challenge_new);
 			return (0, &text('letsencrypt_echain2', $url));
 			}
-		my $fh = "CHAIN";
-		&open_tempfile($fh, ">>$chain");
-		&print_tempfile($fh, $cout);
-		&close_tempfile($fh);
+		if (!$donecert{$cout}++) {
+			my $fh = "CHAIN";
+			&open_tempfile($fh, ">>$chain");
+			&print_tempfile($fh, $cout);
+			&close_tempfile($fh);
+			}
 		}
 
 	# Copy the per-domain files

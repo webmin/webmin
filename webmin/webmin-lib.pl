@@ -1919,6 +1919,29 @@ close(OUT);
 return $data;
 }
 
+=head2 cert_file_split(file)
+
+Returns a list of certs in some file
+
+=cut
+sub cert_file_split
+{
+my ($file) = @_;
+my @rv;
+my $lref = &read_file_lines($file, 1);
+foreach my $l (@$lref) {
+	my $cl = $l;
+	$cl =~ s/^#.*//;
+	if ($cl =~ /^-----BEGIN/) {
+		push(@rv, $cl."\n");
+		}
+	elsif ($cl =~ /\S/ && @rv) {
+		$rv[$#rv] .= $cl."\n";
+		}
+	}
+return @rv;
+}
+
 =head2 get_blocked_users_hosts(&miniserv)
 
 Returns a list of blocked users and hosts from the file written by Webmin
