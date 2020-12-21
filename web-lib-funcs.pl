@@ -3681,7 +3681,6 @@ $mdir =~ /^(.*)$/; # untaint, part 1
 $mdir = $1; 	   # untaint, part 2
 $mdir && -d $mdir || &error("Module $mod does not exist");
 @INC = &unique($mdir, @INC);
--d $mdir || &error("Module $mod does not exist");
 if (!&get_module_name() && $mod) {
 	chdir($mdir);
 	}
