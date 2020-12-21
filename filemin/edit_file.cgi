@@ -27,7 +27,7 @@ if ((lc(get_charset()) eq "utf-8" && ($encoding_name && lc($encoding_name) ne "u
     }
     eval {$data = Encode::encode('utf-8', Encode::decode($encoding_name, $data))};
 }
-my $file_binary = -B $file;
+my $file_binary = -s $file >= 128 && -B $file;
 &ui_print_header(undef, $text{'edit_file'}, "");
 $head = "<link rel='stylesheet' type='text/css' href='unauthenticated/css/style.css' />";
 
