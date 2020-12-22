@@ -634,7 +634,7 @@ foreach my $origl (@$lref) {
 			&set_parent_elines($parent, $lnum);
 			}
 		}
-	elsif ($l =~ /^(\s*)\-\s*(\S+):\s*(\S.*)$/) {
+	elsif ($l =~ /^(\s*)\-\s*(\S+):\s+(\S.*)$/) {
 		# Value that is itself a key-value pair
 		# routes:
 		#   - to: 1.2.3.4/24
