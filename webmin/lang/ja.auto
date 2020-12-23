@@ -110,6 +110,10 @@ sendmail_from=Webminからの電子メールの送信元アドレス
 sendmail_esmtp=SMTPサーバーのホスト名がないか、解決できない
 sendmail_esasl=<a href=$1>$2</a> Perlモジュールがインストールされていない場合、SMTP認証を有効にできません。
 sendmail_desc2=このフォームを使用して、上記の設定でテストメールを送信し、メールが正しく配信されていることを確認できます。
+sendmail_url=電子メールで使用するためのWebminURL
+sendmail_url_def=デフォルト（$1）
+sendmail_url_custom=カスタムURL
+sendmail_eurl=カスタムURLがないか無効です
 testmail_done=..メッセージが送信されました。宛先アドレスのメールボックスをチェックして、実際に配信されたことを確認します。
 webmincron_none=Webminスケジュール機能はまだ作成されていません。これらは通常、ユーザーではなく、他のモジュールによって作成されます。
 webmincron_einterval=間隔はゼロより大きい秒数である必要があります

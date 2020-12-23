@@ -27,9 +27,7 @@ index_global=Configuration Globale
 index_create=Créer un Serveur virtuel
 index_version=ProFTPd version $1
 index_proftpd=ProFTPd
-
 efailed=Sauvegarde de $1 échouée
-
 type_0=Options Réseau
 type_1=Options de journalisation
 type_2=Fichiers et Dossiers
@@ -37,7 +35,6 @@ type_3=Contrôle d'accès
 type_4=Divers
 type_5=Utilisateur et Groupe
 type_6=Authentification
-
 virt_title=Options du Serveur virtuel
 virt_header1=Pour $1
 virt_header2=Pour le serveur par défaut
@@ -53,7 +50,6 @@ virt_cmds=commandes FTP
 virt_return=serveur virtuel
 virt_virt=Configurer un Serveur virtuel
 virt_edit=Modifier les Directives
-
 vserv_title=Configuration du Serveur Virtuel
 vserv_addr=Addresse
 vserv_name=Nom du Serveur
@@ -62,7 +58,6 @@ vserv_delete=Supprimer ce serveur virtuel
 vserv_eaddr=Adresse manquante ou invalide
 vserv_eport=Numéro de port manquant ou invalide
 vserv_ename=Nom du serveur manquant
-
 anon_title=Options du FTP Anonyme
 anon_header1=Pour le Serveur virtuel $1
 anon_header2=Pour le serveur par défaut
@@ -70,7 +65,6 @@ anon_anon=Configurer le FTP Anonyme
 anon_return=Options du FTP Anonyme
 anon_header3=Pour le FTP Anonyme du Serveur virtuel $1
 anon_header4=Pour le FTP Anonyme du Serveur par défaut
-
 aserv_title=Configurer le FTP Anonyme
 aserv_create=Configuration initiale du FTP anonyme
 aserv_root=Limiter au répertoire
@@ -81,7 +75,6 @@ aserv_eroot=Répertoire chroot manquant ou invalide
 aserv_euser=Utilisateur Unix  manquant ou invalide
 aserv_egroup=Groupe Unix manquant ou invalide
 aserv_desc=Le FTP Anonyme n'a pas encore été mis en place pour ce serveur virtuel. Utilisez ce formulaire pour la configuration initiale.
-
 dir_title=Options par répertoire
 dir_header2=Pour le répertoire $1 du Serveur par défaut
 dir_header1=Pour le répertoire $1 dans le Serveur virtuel $2
@@ -92,7 +85,6 @@ dir_header=Options par commande
 dir_dir=Configurer le Répertoire
 dir_header4=Pour le répertoire $1 du FTP Anonyme
 dir_header5=Pour le répertoire $1 globalement
-
 manual_title=Modifier les Directives
 manual_header=Utilisez le champ de texte ci-dessous pour modifier manuellement les directives ProFTPD dans $1 qui s'appliqueront à ce serveur virtuel, ce répertoire ou ces commandes.
 manual_configs=Modifier les Fichiers de configuration
@@ -100,7 +92,6 @@ manual_ecannot=Vous n'êtes pas autorisé à modifier manuellement les directive
 manual_file=Modifier les Directives dans le fichier:
 manual_efile=Fichier de configuration ProFTPD invalide
 manual_etest=Erreur dans le fichier de configuration : $1
-
 limit_title=Options par commande
 limit_header4=Pour les commandes $1 dans le répertoire $2
 limit_header2=Pour les commandes $1 du Serveur par défaut
@@ -112,20 +103,17 @@ limit_return=options par commande
 limit_header5=Pour les commandes $1 du FTP Anonyme
 limit_header6=Pour les commandes $1 du fichier $2
 limit_header7=Pour les commandes $1 globalement
-
 lserv_title=Configurer les Commandes
 lserv_cmd=Commandes FTP
 lserv_delete=Supprimer les commandes de configuration
 lserv_err=Échec de l'enregistrement des commandes
 lserv_ecmd=Aucune commande sélectionnée
-
 dserv_title=Configurer le Répertoire
 dserv_dir=Chemin du répertoire
 dserv_err=Échec de l'enregistrement du répertoire
 dserv_edir=Chemin du répertoire manquant
 dserv_delete=Supprimer la configuration du répertoire
 dserv_eanondir=Le Répertoire doit être un sous-répertoire de la racine du FTP Anonyme
-
 mod_core_type=Type de Serveur
 mod_core_inetd=Démarrer depuis Inetd
 mod_core_stand=Démon autonome
@@ -313,7 +301,6 @@ mod_core_duser=Interdire les utilisateurs
 mod_core_eip='$1' n'est pas une adresse IP valide
 mod_core_enet='$1' n'est pas une adresse de réseau valide
 mod_core_ehost='$1' n'est pas un nom d'hôte valide
-
 mod_ls_fakegroup=Simuler le groupe dans le listage des répertoires?
 mod_ls_fakeuser=Simuler l'utilisateur dans le listage des répertoires?
 mod_ls_fakemode=Simuler les permissions dans le listage des répertoires?
@@ -330,7 +317,6 @@ mod_ls_efakeuser=Utilisateur simulé manquant ou invalide
 mod_ls_efakegroup=Groupe simulé manquant ou invalide
 mod_ls_options=Options de listage de répertoire
 mod_ls_strict=Outrepasser les options de l'utilisateur?
-
 mod_auth_chdir=Répertoire initial à la connexion
 mod_auth_echdir=Répertoire initial manquant ou invalide
 mod_auth_chroot=Encager les utilisateurs dans le répertoire
@@ -344,9 +330,7 @@ mod_auth_egroups=Aucun groupe entré pour l'encagement
 mod_auth_echroot=Répertoire cage manquant ou invalide
 mod_auth_login=Ne pas demander de mot de passe si l'accès est refusé?
 mod_auth_root=Autoriser les connexions root?
-
 mod_site_chmod=Autoriser la commande chmod?
-
 mod_unixpw_ufile=Fichier de mots de passe Unix alternatif
 mod_unixpw_eufile=Fichier de mots de passe Unix manquant ou invalide
 mod_unixpw_gfile=Fichier de groupes Unix alternatif
@@ -354,7 +338,6 @@ mod_unixpw_egfile=Fichier de groupes Unix manquant ou invalide
 mod_unixpw_none=Aucun
 mod_unixpw_pam=Toujours accepter l'autorisation PAM?
 mod_unixpw_persist=Garder le fichier de mots de passe ouvert?
-
 mod_log_syslog=Journaliser les erreurs dans le fichier
 mod_log_sysdef=Journal système
 mod_log_esyslog=Fichier journal  manquant ou invalide
@@ -371,25 +354,19 @@ mod_log_fmt=Chaîne de format
 mod_log_format=Formats de journal personnalisés
 mod_log_enickname=Format de journal manquant ou invalide
 mod_log_efmt=Chaîne de format manquante
-
 mod_pam_pam=Utiliser l'authentification PAM?
 mod_pam_config=Authentifier en utilisant le service PAM
 mod_pam_econfig=Service PAM manquant ou invalide
-
 mod_readme_display=Notifier l'utilisateur des fichiers LISEZMOI correspondant à
 mod_readme_none=Aucun
 mod_readme_edisplay=Motif de fichier LISEZMOI manquant
-
 start_err=Échec du démarrage du serveur FTP
 start_einetd=Vous ne pouvez pas démarrer le serveur FTP lorsqu'il est en mode inetd.
-
 stop_err=Échec de l'arrêt du serveur FTP
 stop_einetd=Vous ne pouvez pas arrêter le serveur FTP lorsqu'il est en mode inetd.
 stop_erun=Le serveur est arrêté
-
 apply_err=Échec de chargement de la configuration
 apply_egone=Le serveur s'est arrêté
-
 ftpaccess_title=Fichiers d'options de répertoire
 ftpaccess_desc=Les options propres à un répertoire peuvent être spécifiées dans un fichier (en général appelé <tt>.ftpaccess</tt>) placé dans le répertoire concerné. Les options définies s'appliquent à tous les fichiers et sous-répertoires, à moins qu'elles ne soient redéfinies dans un autre fichier.
 ftpaccess_create=Créer un fichier d'options
@@ -397,10 +374,8 @@ ftpaccess_find=Rechercher des fichiers d'options
 ftpaccess_auto=Sous le dossier racine "accès anonyme"
 ftpaccess_from=À partir du sous-répertoire
 ftpaccess_return=Liste des fichiers d'options
-
 ftpusers_title=Utilisateurs FTP interdits
 ftpusers_desc=Si cette options est activée dans la section <tt>Authentification</tt>, Les utilisateurs listés ci-dessous depuis le fichier $1 se verront refuser l'accès au serveur FTP.
-
 ftpindex_title=Fichier d'options de répertoire
 ftpindex_delete=Supprimer le fichier
 ftpindex_opts=Options du répertoire
@@ -410,10 +385,8 @@ ftpindex_addlimit=Ajouter des options à la commande ..
 ftpindex_header2=$1 dans $2
 ftpindex_return=Fichier d'options de répertoire
 ftpindex_header=Pour $1
-
 find_err=Impossible de trouver un fichier d'options
 find_eanon=L'accès FTP anonyme n'est activé sur aucun serveur
-
 log_global=Options globales $1 modifiées
 log_ftpusers=Utilisateurs FTP interdits modifiés
 log_virtc=Serveur $1 créé
@@ -447,10 +420,7 @@ log_anonm=FTP anonyme édité manuellement pour le serveur  $1
 log_anon=$1 modifié dans le FTP anonyme pour le serveur $2
 log_start=proftpd démarré
 log_apply=modifications appliquées
-
 eafter=Vérification de la configuration échouée : Modifications de $1 non sauvegardées.
 proftpd_apply=Appliquer les modifications
 proftpd_stop=Stop ProFTPd
 proftpd_start=Démarrer ProFTPd
-
-__norefs=1

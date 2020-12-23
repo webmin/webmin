@@ -65,7 +65,6 @@ index_checkconfig=Assurez-vous que le répertoire chroot est correctement défin
 index_eexpired=Avertissement: les zones suivantes ont expiré les signatures DNSSEC : $1
 index_eexpired_conf=La signature automatique doit être réactivée sur la page $1.
 index_eexpired_mod=Utilisez le module $1 pour désactiver DNSSEC pour ces domaines ou vérifier pourquoi la signature échoue.
-
 master_title=Édition d'une zone primaire
 master_inview=$1 en vue $2
 master_ecannot=Vous n'êtes pas autorisé à modifier cette zone
@@ -147,7 +146,6 @@ master_defttl=Durée de vie par défaut des enregistrements
 master_edefttl="$1' n'est pas une durée de vie par défaut valide pour les enregistrements
 master_esoagone=Aucun enregistrement SOA trouvé!
 master_einclude=Le fichier de modèle supplémentaire n'existe pas
-
 delete_title=Suppression d'une zone
 delete_mesg=Êtes-vous sûr de vouloir supprimer la zone $1 ? Tous les enregistrements ainsi que le fichier de zone seront supprimés.
 delete_mesg2=Êtes-vous sûr de vouloir supprimer la zone racine ? Votre serveur DNS risque de ne plus pouvoir consulter les adresses sur l'Internet.
@@ -159,7 +157,6 @@ delete_errslave=La zone maître a été supprimée, mais les erreurs suivantes s
 delete_ezone=La zone n'a pas été trouvée sur le serveur secondaire
 delete_vwarn=Cette zone est associée au domaine Virtualmin $1 et ne doit donc pas être supprimée ici!
 delete_vwarn2=Cette zone est associée aux domaines Virtualmin $1 et $2 autres, et ne doit donc pas être supprimée ici!
-
 mcreate_title=Création d'une zone primaire
 mcreate_ecannot=Vous n'êtes pas autorisé à créer des zones primaires
 mcreate_opts=Options de la nouvelle zone primaire
@@ -174,7 +171,6 @@ mcreate_auto=Automatique
 mcreate_err=Impossible de créer la zone primaire
 mcreate_ednssecsize=Impossible de calculer la taille de la clé : $1
 mcreate_ednssec=La création de l'enregistrement a réussi, mais DNSSEC a échoué : $1
-
 slave_title=Édition d'une zone secondaire
 stub_title=Édition d'une zone stub
 slave_ecannot=Vous n'êtes pas autorisé à modifier cette zone
@@ -206,7 +202,6 @@ slave_applymsg2=Cliquez sur ce bouton pour forcer un nouveau transfert de la zon
 slave_last=Dernier transfert : $1
 slave_never=Jamais
 slave_xfer=Transfert de zone de test
-
 screate_title1=Création d'une zone secondaire
 screate_title2=Création d'une zone stub
 screate_ecannot1=Vous n'êtes pas autorisé à créer des zones secondaires
@@ -219,7 +214,6 @@ screate_rev=Inverse (adresses -> noms)
 screate_dom=Nom de domaine / réseau
 screate_err1=Impossible de créer la zone secondaire
 screate_err2=Impossible de créer la zone stub
-
 recs_ecannot=Vous n'êtes pas autorisé à modifier des enregistrements dans cette zone
 recs_ecannottype=Vous n'êtes pas autorisé à modifier des enregistrements de ce type
 recs_title=Enregistrements $1
@@ -237,7 +231,6 @@ recs_drev=Supprimer également les revers?
 recs_none=Le domaine n'a pas encore d'enregistrements $1.
 recs_nosearch=Aucun enregistrement ne correspond à votre recherche.
 recs_needsearch=Entrez une recherche pour trouver les enregistrements correspondants.
-
 edit_title=Édition de $1
 edit_header=Dans $1
 edit_edit=Modifier l'enregistrement $1
@@ -249,11 +242,11 @@ edit_zonename=Nom de la zone
 edit_ttl=Durée de vie
 edit_comment=Commentaire
 edit_cnamemsg=les noms absolus doivent se terminer par un '.'
-edit_egone=L'enregistrement sélectionné n'existe plus!
 edit_uprev=Mettre à jour l'adresse inverse ?
 edit_over=Oui (et remplacer l'adresse existante)
 edit_upfwd=Mettre à jour l'adresse de transfert ?
 edit_err=Impossible d'enregistrer l'enregistrement
+edit_egone=L'enregistrement sélectionné n'existe plus!
 edit_ettl='$1' n'est pas une durée de vie valide
 edit_eip='$1' n'est pas une adresse IP valide
 edit_eip6='$1' n'est pas une adresse IPv6 valide
@@ -313,7 +306,6 @@ edit_edmarcpct=Le pourcentage de messages doit être un entier compris entre 0 e
 edit_edmarcrua=Adresse de rétroaction agrégée manquante
 edit_edmarcruf=Adresse d'information médico-légale manquante
 edit_ecaavalue2=Nom de domaine manquant ou non valide
-
 text_title=Édition d'un fichier d'enregistrements
 text_title2=Affichage d'un fichier d'enregistrements
 text_desc3=Ce formulaire vous permet de modifier manuellement le fichier d'enregistrements DNS $1. Aucune vérification de syntaxe ne sera effectuée par Webmin.
@@ -323,7 +315,6 @@ text_ecannot=Vous n'êtes pas autorisé à modifier les fichiers d'enregistremen
 text_none=Cependant, le fichier est actuellement vide, probablement parce que la zone n'a pas encore été transférée depuis le serveur primaire.
 text_soa=Augmentez le numéro de série automatiquement
 text_rawformat=Cette zone est au format binaire brut et ne peut donc pas être affichée sous forme de texte.
-
 restart_err=Échec de l'application des modifications
 restart_ecannot=Vous n'êtes pas autorisé à redémarrer BIND
 restart_epidfile=Impossible de trouver le PID BIND dans $1
@@ -332,12 +323,10 @@ restart_erunning2=BIND ne semble pas fonctionner sur le serveur esclave $1
 restart_endc=Commande NDC impossible : $1
 restart_ecmd=Redémarrage de la commande impossible : $1
 restart_eversion=Le serveur esclave $1 n'exécute pas la version Webmin $2 ou une version ultérieure.
-
 start_ecannot=Vous n'êtes pas autorisé à démarrer BIND
 start_error=Impossible de démarrer BIND : $1
 stop_epid=BIND n'est pas en cours d'exécution
 stop_ecannot=Vous n'êtes pas autorisé à arrêter BIND
-
 fwd_title=Édition d'une zone directe
 fwd_ecannot=Vous n'êtes pas autorisé à modifier cette zone
 fwd_opts=Options de la zone
@@ -346,14 +335,12 @@ fwd_forward=Essayer d'autres serveurs ?
 fwd_check=Vérifier les noms ?
 fwd_err=Impossible d'enregistrer les options
 fwd_delmsg=Cliquez sur ce bouton pour supprimer cette zone de votre serveur DNS. Les enregistrements qu'il contient seront ensuite recherchés en utilisant le processus de résolution normal.
-
 delegation_title=Édition d'une zone de délégation
 delegation_ecannot=Vous n'êtes pas autorisé à modifier cette zone
 delegation_opts=Options de la zone
 delegation_err=Impossible d'enregistrer les options
 delegation_noopts=Les zones de délégation n'ont aucune option configurable.
 delegation_delmsg=Cliquez sur ce bouton pour supprimer cette zone de votre serveur DNS. Les types d'enregistrement qu'il contient autre que NS seront alors reconnus par BIND.
-
 fcreate_title=Création d'une zone directe
 fcreate_ecannot=Vous n'êtes pas autorisé à créer des zones directes
 fcreate_opts=Options de la nouvelle zone directe
@@ -363,12 +350,10 @@ fcreate_rev=Inverse (adresses -> noms)
 fcreate_dom=Nom de domaine / réseau
 fcreate_masters=Serveurs primaires
 fcreate_err=Impossible de créer la zone directe
-
 dcreate_title=Création d'une zone de délégation seule
 dcreate_ecannot=Vous n'êtes pas autorisé à créer des zones de délégation
 dcreate_opts=Options de la nouvelle zone de délégation
 dcreate_err=Impossible de créer la zone de délégation
-
 create_enet=$1 n'est pas un réseau valide
 create_edom=$1 n'est pas un nom de domaine valide
 create_edom2=$1 doit être un domaine, non un réseau
@@ -378,11 +363,9 @@ create_efile3=Impossible de créer $1 : $2
 create_efile4=Le fichier $2 existe déjà
 create_emaster=$1 n'est pas une adresse de serveur primaire valide
 create_enone=Vous devez saisir au moins un serveur primaire
-
 boot_err=Impossible d'effectuer le téléchargement
 boot_egzip=Le fichier de la zone racine est compressé, mais la commande <tt>gzip</tt> n'est pas installée sur votre système!
 boot_egzip2=La décompression du fichier de la zone racine a échoué : $1
-
 type_A=Adresse
 type_AAAA=Adresse IPv6
 type_NS=Serveur de noms
@@ -403,7 +386,6 @@ type_SRV=Adresse du service
 type_ALL=Tous les types d'enregistrements
 type_KEY=Clé publique
 type_CAA=Autorité de certification
-
 edit_A=Adresse
 edit_AAAA=Adresse IPv6
 edit_NS=Serveur de noms
@@ -423,7 +405,6 @@ edit_NSEC3PARAM=Paramètres DNSSEC
 edit_TLSA=Certificat SSL
 edit_SSHFP=Clé publique SSH
 edit_CAA=Autorité de certification
-
 recs_defttl=TTL par défaut
 recs_A=Adresse
 recs_AAAA=Adresse IPv6
@@ -446,7 +427,6 @@ recs_TLSA=Certificat SSL
 recs_SSHFP=Clé publique SSH
 recs_CAA=Autorité de certification
 recs_delete=Supprimer les sélections
-
 value_A1=Adresse
 value_AAAA1=Adresse IPv6
 value_NS1=Serveur de noms
@@ -523,7 +503,6 @@ value_CAA3=Nom de domaine CA
 value_caa_issue=CERT de domaine unique
 value_caa_issuewild=Certificat générique
 value_caa_iodef=URL de violation des règles
-
 tlsa_usage0=Autorité de certification
 tlsa_usage1=Entité finale
 tlsa_usage2=Ancre de confiance
@@ -533,14 +512,12 @@ tlsa_selector1=Informations sur la clé publique
 tlsa_match0=Contenu non haché
 tlsa_match1=SHA-256 haché
 tlsa_match2=SHA-512 haché
-
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDSA
 sshfp_alg4=Ed25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
-
 warn=Avertissement
 fail=Impossible
 ignore=Ignorer
@@ -554,7 +531,6 @@ listed=Répertorié...
 eip='$1' n'est pas une adresse IP valide
 eport='$1' n'est pas un numéro de port valide
 eipacl='$1' n'est pas une adresse IP ou un nom ACL valide
-
 acl_zones=Domaines que cet utilisateur peut modifier
 acl_zall=Toutes les zones
 acl_zsel=Zones sélectionnées...
@@ -599,7 +575,6 @@ acl_ztypes_master=Primaires
 acl_ztypes_slave=Secondaires / stub
 acl_ztypes_delegation=Délégation
 acl_ztypes_forward=Directs
-
 servers_title=Autres serveurs DNS
 servers_ip=Adresse IP
 servers_bogus=Ignorer le faux serveur ?
@@ -611,7 +586,6 @@ servers_keys=Utiliser les clés DNS
 servers_err=Impossible d'enregistrer d'autres serveurs DNS
 servers_eip='$1' n'est pas une adresse IP valide
 servers_etrans='$1' n'est pas un nombre de maximum de transferts valide
-
 logging_title=Journalisation et erreurs
 logging_ecannot=Vous n'êtes pas autorisé à configurer la journalisation
 logging_header=Options globales de la journalisation et des erreurs
@@ -650,7 +624,6 @@ logging_efile=Nom de fichier journal manquant
 logging_efile2=Le nom du fichier journal doit être un chemin absolu
 logging_ever='$1' n'est pas un numéro de version valide
 logging_esize='$1' n'est pas une taille de fichier journal valide
-
 acls_title=Listes de contrôle d'accès (ACL)
 acls_ecannot=Vous n'êtes pas autorisé à modifier les ACL globales
 acls_name=Nom de l'ACL
@@ -658,7 +631,6 @@ acls_values=Adresses, réseaux et ACL correspondants
 acls_err=Impossible d'enregistrer les ACL
 acls_ename='$1' n'est pas un nom d'ACL valide
 acls_eline=Chaque adresse IP doit être entrée sur une ligne distincte pour ACL '$1'
-
 files_title=Fichiers et répertoires
 files_ecannot=Vous n'êtes pas autorisé à configurer les fichiers
 files_header=Options globales des fichiers et des répertoires
@@ -668,7 +640,6 @@ files_pid=Fichier d'ID de processus
 files_xfer=Chemin d'accès au programme de transfert de zone
 files_err=Impossible d'enregistrer les options des fichiers et des répertoires
 files_efile=Fichier manquant ou invalide
-
 forwarding_title=Redirection et transferts
 forwarding_ecannot=Vous n'êtes pas autorisé à modifier les options de redirection et de transfert
 forwarding_header=Options globales de redirection et de transfert
@@ -687,7 +658,6 @@ forwarding_etrans=Maximum de transferts simultané manquant ou invalide
 forwarding_minutes=minutes
 forwarding_ip=Adresse IP
 forwarding_port=Port (optionnel)
-
 net_title=Adresses et topologie
 net_ecannot=Vous n'êtes pas autorisé à modifier les options d'adresse et de topologie
 net_header=Options globales d'adresse et de topologie
@@ -713,7 +683,6 @@ net_taddrdef=IP la plus proche
 net_etport=Un port source de transfert ne peut pas être spécifié sans adresse
 net_eaddr='$1' n'est pas une adresse IPv4 valide
 net_eaddr6='$1' n'est pas une adresse IPv6 valide
-
 controls_title=Options de l'interface de contrôle
 controls_ecannot=Vous n'êtes pas autorisé à modifier les options de contrôle
 controls_header=Options de contrôle
@@ -735,7 +704,6 @@ controls_eunixpath=Chemin d'accès au fichier FIFO manquant ou non valide
 controls_eunixperm=Autorisations de fichier octal manquantes ou invalides
 controls_eunixowner=Propriétaire de fichier manquant ou invalide
 controls_eunixgroup=Groupe de fichiers manquant ou invalide
-
 controls_inet=Accès au port Internt
 controls_unix=Accès au FIFO Unix
 controls_port=Port
@@ -749,7 +717,6 @@ controls_efile=Nom de fichier FIFO manquant
 controls_eperms=Droits d'accès au FIFO manquants ou invalides
 controls_eowner=UID du propriétaire du FIFO manquant ou invalide
 controls_egroup=GID du propriétaire du FIFO manquant ou invalide
-
 keys_title=Clés DNS
 keys_id=ID de la clé
 keys_alg=Algorithme
@@ -758,7 +725,6 @@ keys_ecannot=Vous n'êtes pas autorisé à modifier les clés DNS
 keys_err=Impossible d'enregistrer les clés DNS
 keys_ekey='$1' n'est pas un ID de clé valide
 keys_esecret=Secret encodé en base 64 pour la clé $1 manquant ou invalide
-
 misc_title=Options diverses
 misc_ecannot=Vous n'êtes pas autorisé à modifier les options diverses
 misc_header=Options diverses globales
@@ -778,7 +744,6 @@ misc_esize='$1' n'est pas une taille valide
 misc_efiles='$1' n'est pas un nombre maximal de fichiers ouverts valide
 misc_emins='$1' n'est pas nombre de minutes valide
 misc_mins=mins
-
 zonedef_title=Valeurs par défaut d'une zone
 zonedef_msg=Valeurs par défaut pour les nouvelles zones primaires
 zonedef_err=Impossible d'enregistrer les valeurs par défaut de la zone
@@ -802,13 +767,10 @@ zonedef_size=Taille de clé initiale
 zonedef_single=Nombre de clés à créer
 zonedef_two=Clé de zone et clé de signature de clé
 zonedef_one=Clé de zone uniquement
-
 find_title=Recherche de zones
 find_match=Zones correspondant à $1...
 find_none=Aucune zone trouvée.
-
 efirst=Première directive incorrecte à la ligne $1 dans $2
-
 findfree_title=Recherche d'IP libres
 findfree_desc=Recherche d'IP libres
 findfree_nofind=Vous ne pouvez pas chercher des IP libres
@@ -820,10 +782,8 @@ findfree_cf=Considérer les noms <em>freeXXX</em> comme des IP libres ?
 findfree_search=Rechercher
 findfree_msg=$1 adresses IP gratuites trouvées
 findfree_msg2=(dont $1 sont comme <i>freeXXX</i>, $2 comme <i>freemac</i>)
-
 free_title=Adresses IP libres
 free_ip=Adresse IP
-
 log_servers=Changé d'autres serveurs DNS
 log_logging=Changé la journalisation et les erreurs
 log_acls=Changé les listes de contrôle d'accès
@@ -880,17 +840,14 @@ log_sign=Signature des signatures DNSSEC pour la zone $1
 log_resign=Clé DNSSEC re-signée pour la zone $1
 log_trusted=Vérification DNSSEC modifiée
 log_dnssec=Modifier la nouvelle signature de clé DNSSEC
-
 convert_err=Impossible de convertir la zone
 convert_efile=Un fichier d'enregistrements doit être spécifié avant de pouvoir convertir une zone secondaire en zone primaire.
 convert_efilesize=Le fichier d'enregistrements $1 n'existe pas ou est vide
 convert_ebinary=La commande nécessaire pour convertir d'une zone esclave binaire en un maître au format texte n'est pas installée
 convert_ecompile=Échec de la conversion du format binaire en texte : $1
-
 whois_title=Informations WHOIS
 whois_header=Sortie de la commande $1...
 whois_ecannot=Vous n'êtes pas autorisé à consulter les informations WHOIS
-
 view_title=Édition d'une vue client
 view_opts=Détails de la vue client
 view_opts2=Options pour les zones en vue
@@ -901,7 +858,6 @@ view_recursion=Effectuer des consultations récursives pour les clients ?
 view_ecannot=Vous n'êtes pas autorisé à modifier cette vue
 view_delete=Supprimer la vue
 view_deletemsg=Cliquez sur ce bouton pour supprimer la vue. Vous aurez le choix de déplacer les zones qu'il contient vers une autre vue, ou de les supprimer également.
-
 vcreate_title=Création d'une vue client
 vcreate_match_all=Tous les clients
 vcreate_match_sel=Adresses, réseaux et ACL sélectionnés
@@ -910,7 +866,6 @@ vcreate_ename=Nom de vue manquant ou invalide
 vcreate_etaken=Le nom de vue est déjà pris
 vcreate_eclass=Nom de classe manquant ou invalide
 vcreate_ecannot=Vous n'êtes pas autorisé à créer des vues
-
 hint_title=Édition d'une zone racine
 hint_desc=Votre serveur DNS utilise la zone racine pour entrer en contact avec les serveurs racine sur l'Internet, de façon à ce qu'il puisse résoudre les noms en domaines non gérés par votre serveur DNS, comme <tt>.com</tt> ou <tt>.net.au</tt>. À moins que votre serveur DNS ne soit destiné à une utilisation sur un réseau internet ou que vous ne redirigiez toutes les requêtes vers un autre serveur, vous ne devriez pas supprimer cette zone racine.
 hint_move=Déplacer vers la vue :
@@ -919,7 +874,6 @@ hint_refetch=Retélécharger les noms de serveurs Root
 hint_refetchdesc=Cliquez sur ce bouton pour que Webmin télécharge à nouveau le fichier de la zone racine à partir de sa source sur le serveur FTP Internic.
 hint_delete=Supprimer la Zone Root
 hint_deletedesc=Cliquez sur ce bouton pour supprimer cette zone racine. Sans cela, votre serveur de noms ne pourra pas résoudre les domaines sur Internet autres que ceux pour lesquels il est secondaire.
-
 hcreate_title=Création d'une zone racine
 hcreate_desc=Votre serveur DNS utilise la zone racine pour entrer en contact avec les serveurs racine sur l'Internet, de façon à ce qu'il puisse résoudre les noms en domaines non gérés par votre serveur DNS, comme <tt>.com</tt> ou <tt>.net.au</tt>. Si vous utilisez des vues multiples, il se peut que vous ayez besoin d'avoir une zone racine séparée dans chaque vue, de façon à ce que tous les clients puissent résoudre les domaines Internet correctement.
 hcreate_header=Détails de la zone racine
@@ -933,7 +887,6 @@ hcreate_efile='$1' n'est pas un fichier racine acceptable
 hcreate_efile2=Fichier racine manquant ou invalide
 mcreate_erecs=N'est pas un fichier de zone racine existant valide
 hcreate_err=Impossible de créer la zone racine
-
 vdelete_title=Suppression d'une vue
 vdelete_mesg=Êtes-vous sûr de vouloir supprimer la vue client $1 ? Toutes les zones dans cette vue seront soit supprimées (ainsi que leurs fichiers de zones) ou déplacées vers une autre vue en fonction de votre sélection ci-dessous.
 vdelete_mesg2=Êtes-vous sûr de vouloir supprimer la vue client $1 ?
@@ -941,7 +894,6 @@ vdelete_newview=Zones à l'intérieur de cette vue
 vdelete_root=Retirer des vues
 vdelete_delete=Supprimer totalement
 vdelete_move=Déplacer dans la vue
-
 gen_title=Générateurs d'enregistrements
 gen_desc=Cette page vous permet de définir des générateurs dont chacun créera des enregistrements multiples dans cette zone à l'aide d'un compteur d'incrémentation. Ce comportement peut être utile pour déléguer des parties de la zone inverse à un autre serveur.
 gen_range=Plage
@@ -961,9 +913,7 @@ gen_evalue=Motif de nom d'hôte pour le générateur $1 manquant ou invalide
 gen_title2=Enregistrements générés
 gen_raw=Ligne du fichier de configuration
 gen_ecannot=Vous n'êtes pas autorisé à modifier les générateurs d'enregistrements
-
 refetch_err=Impossible de télécharger à nouveau la zone racine
-
 slaves_title=Serveurs esclaves de cluster
 slaves_none=Aucun serveur n'a encore été ajouté au cluster DNS.
 slaves_host=Nom d'hôte
@@ -991,7 +941,6 @@ slaves_sec=Créer un secondaire sur l'esclave lors de la création locale?
 slaves_name=Nom de l'enregistrement NS
 slaves_same=Identique au nom d'hôte
 slaves_header=Options du serveur esclave de cluster
-
 add_title=Ajouter des serveurs
 add_msg=Ajout de $1 ..
 add_gmsg=Ajout de serveurs dans le groupe $1 ..
@@ -1009,7 +958,6 @@ add_createok=Configurez $1 avec $2 de nouvelles zones esclaves.
 add_ename=Nom d'enregistrement NS manquant ou invalide
 add_egname=Un nom d'enregistrement NS ne peut pas être spécifié lors de l'ajout d'un groupe
 add_emyip=Impossible de déterminer l'adresse IP de ce système. Vous devez définir l '<b>IP du serveur maître par défaut pour les zones esclaves distantes</b> sur la page Configuration du module.
-
 mass_title=Créer des zones à partir d'un fichier batch
 mass_desc=Cette page vous permet de créer plusieurs zones à la fois à partir d'un fichier texte téléchargé ou côté serveur. Chaque ligne du fichier doit avoir le format suivant: <p></p> <tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt> <p></p> Le <i>type</i> doit être un <tt>master</tt>, un <tt>slave</tt>, un <tt>stub</tt> ou un <tt>forward</tt>. Le <i>nom de fichier</i> est facultatif et sera calculé automatiquement s'il est manquant. Les <i>adresses IP principales</i> doivent uniquement être fournies pour les zones esclaves.
 mass_local=Fichier de commandes local
@@ -1041,7 +989,6 @@ mass_emips=Adresses IP principales manquantes
 mass_addedslaves=Ajout de $1 aux serveurs esclaves OK.
 mass_eonslave=Des erreurs se sont produites lors de la création de serveurs esclaves : $1
 mass_eviewcannot=Vous n'êtes pas autorisé à ajouter des zones à cette vue
-
 massdelete_title=Supprimer des zones
 massdelete_rusure=Voulez-vous vraiment supprimer les $1 zones sélectionnées? ($2)
 massdelete_ok=Effacer maintenant
@@ -1051,7 +998,6 @@ massdelete_slaves=Suppression de la zone $1 des serveurs esclaves.
 massdelete_failed=.. certains esclaves ont échoué :
 massdelete_vwarn=Certaines zones sont associées au domaine Virtualmin $1 et ne doivent donc pas être supprimées ici!
 massdelete_vwarn2=Certaines zones sont associées au domaine Virtualmin $1 et $2 autres, et ne doivent donc pas être supprimées ici!
-
 rndc_title=Installer RNDC
 rndc_desc=Cette page peut être utilisée pour configurer BIND pour le contrôle par le programme RNDC, afin que les zones individuelles puissent être actualisées sans avoir à effectuer un redémarrage complet de BIND.
 rndc_desc2=RNDC semble déjà être configuré correctement, vous n'avez donc probablement pas besoin d'utiliser ce formulaire.
@@ -1062,13 +1008,11 @@ rndc_ok=Oui, Installer RNDC
 rndc_err=Echec de l'installation de RNDC
 rndc_ekey=Impossible de trouver la clé dans rndc.conf
 rndc_esecret=Impossible de trouver le secret dans rndc.conf
-
 drecs_err=Impossible de supprimer les enregistrements
 drecs_enone=Aucune sélection
 drecs_title=Supprimer les enregistrements
 drecs_rusure=Voulez-vous vraiment supprimer les $1 enregistrements sélectionnés de $2?
 drecs_ok=Supprimer Maintenant
-
 manual_title=Edition du Fichier de Configuration
 manual_ecannot=Vous n'êtes pas autorisé à modifier le fichier de configuration BIND
 manual_ok=Editer
@@ -1076,9 +1020,7 @@ manual_efile=Le fichier sélectionné ne fait pas partie de la configuration BIN
 manual_file=Edition du fichier de configuration
 manual_edata=Rien n'est entré!
 manual_err=Impossible d'enregistrer le fichier de configuration
-
 syslog_desc=Lier les messages du serveur DNS
-
 umass_err=Échec de la mise à jour des zones
 umass_enone=Aucune sélection
 umass_title=Mettre à jour les enregistrements dans les zones
@@ -1097,7 +1039,6 @@ umass_done=.. a mis à jour $1 les enregistrements correspondants à partir de $
 umass_none=.. aucun enregistrement correspondant sur $1 à mettre à jour n'a été trouvé.
 umass_egone=La zone n'existe pas
 emass_emx='$1' n'est pas un numéro de priorité de serveur de messagerie suivi d'un nom d'hôte valide
-
 rdmass_err=Impossible de supprimer les enregistrements dans les zones
 rdmass_enone=Aucune sélection
 rdmass_title=Supprimer des enregistrements dans des zones
@@ -1114,7 +1055,6 @@ rdmass_done=.. supprimé $1 enregistrements correspondants de $2.
 rdmass_none=.. aucun enregistrement correspondant sur $1 à supprimer n'a été trouvé.
 rdmass_ok=Supprimer les enregistrements
 rdmass_sel=Records nommés
-
 rmass_err=Échec de l'ajout d'enregistrements
 rmass_enone=Aucune sélection
 rmass_title=Ajouter un enregistrement aux zones
@@ -1134,22 +1074,18 @@ rmass_esign=.. terminé, mais la signature a échoué : $1
 rmass_eclash=.. un enregistrement avec le même nom et la même valeur $1 existe déjà.
 rmass_eclash2=.. un enregistrement avec le même nom et la même valeur $1 existe déjà.
 rmass_clash=Créer même si l'enregistrement existe déjà?
-
 check_title=Vérifier les enregistrements
 check_ecannot=Vous n'êtes pas autorisé à vérifier les enregistrements
 check_errs=Les erreurs suivantes ont été trouvées dans le fichier d'enregistrements $1 ..
 check_allok=Aucune erreur n'a été trouvée dans le fichier d'enregistrements $1.
-
 ncheck_title=Vérification de La Configuration BIND
 ncheck_ecannot=Vous n'êtes pas autorisé à vérifier la configuration BIND
 ncheck_errs=Les erreurs suivantes ont été trouvées dans le fichier de configuration BIND $1 ou dans les fichiers de zone référencés.
 ncheck_allok=Aucune erreur n'a été trouvée dans le fichier de configuration BIND $1 ou dans les fichiers de zone référencés.
-
 links_restart=Appliquer La Configuration
 links_stop=Arrêter BIND
 links_start=Démarrer BIND
 links_apply=Aplliquer La Zone
-
 dnssec_title=Nouvelle signature de clé DNSSEC
 dnssec_ecannot=Vous n'êtes pas autorisé à configurer DNSSEC
 dnssec_header=Options de re-signature clés
@@ -1160,7 +1096,6 @@ dnssec_secs=secondes
 dnssec_desc=Les zones signées avec DNSSEC ont généralement deux clés - une clé de zone qui doit être régénérée et signée régulièrement, et une clé de signature de clé qui reste constante. Cette page vous permet de configurer Webmin pour effectuer cette nouvelle signature automatiquement.
 dnssec_err=Échec de l'enregistrement de la nouvelle signature de clé DNSSEC
 dnssec_eperiod=Nombre de jours manquant ou invalide entre les renouvellements de signature
-
 dnssectools_title=DNSSEC-Tools Automation
 dt_conf_title=DNSSEC-Tools Automation
 dt_enable_title=DNSSEC-Tools Automation
@@ -1225,7 +1160,6 @@ dt_status_inKSKroll=Dans KSK Roll
 dt_status_inZSKroll=Dans le rouleau ZSK
 dt_status_signed=Signé
 dt_status_unsigned=Non signé
-
 zonekey_title=Configurer la clé DNSSEC
 zonekey_desc=Cette zone n'a pas encore de clé de signature DNSSEC. Vous pouvez utiliser ce formulaire pour que Webmin en crée un, afin que les clients résolvant cette zone soient protégés contre les attaques d'usurpation DNS.
 zonekey_header=Nouvelles options clés DNSSEC
@@ -1259,12 +1193,9 @@ zonekey_sign=Zone de signe
 zonekey_signdesc=Re-signez immédiatement cette zone, de sorte que toute modification des enregistrements effectuée manuellement soit incluse dans les enregistrements de signature.
 zonekey_resign=Zone de nouvelle signature
 zonekey_resigndesc=Générez une nouvelle clé de signature de zone, signez-la avec la clé principale de la zone et re-signez tous les enregistrements.
-
 sign_err=Impossible de signer la zone
 sign_emsg=Signature DNSSEC après l'échec de la modification des enregistrements : $1
-
 resign_err=Échec de la nouvelle signature de la zone
-
 trusted_title=Vérification DNSSEC
 trusted_ecannot=Vous n'êtes pas autorisé à configurer la vérification DNSSEC
 trusted_esupport=Votre version de BIND ne prend pas en charge la vérification DNSSEC
@@ -1299,12 +1230,9 @@ trusted_setup=Pour que DNSSEC soit utile pour vérifier la majorité des zones s
 trusted_ok=Configurer DLV et activer la vérification DNSSEC
 trusted_warning=Avertissement! Votre configuration client BIND DNSSEC contient des clés obsolètes qui cesseront de fonctionner en octobre 2017. Utilisez la <a href='$1'>page de vérification BIND DNSSEC</a> pour ajuster la configuration, ou cliquez sur le bouton ci-dessous.
 trusted_fix=Correction de la configuration DNSSEC
-
 xfer_title=Transfert de zone de test
 xfer_doing=Test du transfert de la zone esclave de $1 ..
 xfer_failed=.. à partir de $1: Échec : $2
 xfer_done=.. de $1: Terminé OK
 xfer_count=Le transfert de test a réussi à récupérer les enregistrements $1 à partir d'au moins un serveur de noms. Les transferts réels par BIND devraient également réussir.
 xfer_none=Le transfert de test a semblé réussir, mais n'a en fait pas récupéré d'enregistrements!
-
-__norefs=1

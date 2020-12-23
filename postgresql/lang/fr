@@ -48,12 +48,10 @@ index_gist=Arbre de recherche d'index généralisé
 index_jump=Ou modifiez la base de données:
 index_jumpok=Ouvert
 index_edithosts=Configurer les systèmes hôtes autorisés
-
 login_err=Impossible de se connecter
 login_ecannot=Vous n'êtes pas autorisé à configurer le nom de connexion à la base de données
 login_elogin=Nom de connexion d'administration manquant
 login_epass=Nom d'utilisateur ou mot de passe d'administration incorrect
-
 dbase_title=Édition d'une base de données
 dbase_noconn=Comme cette base de données n'accepte pas de connexions actuellement, vous ne pouvez effectuer aucune action dans celle-ci.
 dbase_header=Tables de base de données, index, vues et séquences
@@ -80,7 +78,6 @@ dbase_jump=Modifier le tableau:
 dbase_vjump=Modifier vue:
 dbase_ijump=Modifier l'index:
 dbase_sjump=Modifier la séquence:
-
 table_title=Édition d'une table
 table_title2=Création d'une table
 table_opts=Options des champs
@@ -108,7 +105,6 @@ table_eblob=Aucune taille n'est requise pour le champ BLOB $1
 table_csv=Exporter en CSV
 table_index=Créer un index
 table_delete=Supprimer les champs sélectionnés
-
 field_title1=Ajout d'un champ
 field_title2=Modification d'un champ
 field_in=Dans la table $1 dans la base de données $2
@@ -127,7 +123,6 @@ field_esize='$1' n'est pas une taille de champ valide
 field_eenum=Aucune valeur énumérée saisie
 field_efield='$1' n'est pas un nom de champ valide
 field_ekey=Les champs qui autorisent les valeurs « null » ne peuvent pas faire partie de la clé primaire
-
 exec_title=Exécuter SQL
 exec_header=Saisissez une commande SQL à exécuter sur la base de données $1...
 exec_old=Ou sélectionnez une commande SQL précédente :
@@ -157,25 +152,21 @@ exec_tabexec=Exécuter SQL
 exec_tabfile=Exécuter SQL à partir d'un fichier
 exec_tabimport=Importer un fichier texte
 exec_return=exécuter le formulaire SQL
-
 stop_err=Impossible d'arrêter le serveur de bases de données
 stop_epidfile=Impossible d'ouvrir le fichier PID $1
 stop_ekill=Impossible de tuer le processus $1 : $2
 stop_ecannot=Vous n'êtes pas autorisé à arrêter le serveur de bases de données
 start_err=Impossible de démarrer le serveur de bases de données
 start_ecannot=Vous n'êtes pas autorisé à démarrer le serveur de bases de données
-
 ddrop_err=Impossible de supprimer la base de données
 ddrop_title=Suppression d'une base de données
 ddrop_rusure=Êtes-vous sûr de vouloir éliminer la base de données $1 ? $2 tables contenant $3 lignes de données seront supprimées.
 ddrop_mysql=Du fait qu'il s'agit de la base de données primaire, le fait de l'éliminer rendra probablement votre serveur MySQL inutilisable !
 ddrop_ok=Supprimer la base de données
-
 tdrop_err=Impossible de supprimer la table
 tdrop_title=Supprimer la table
 tdrop_rusure=Êtes-vous sûr de vouloir éliminer la table $1 dans la base de données $2 ? $3 lignes de données seront supprimées.
 tdrop_ok=Supprimer la table
-
 view_title=Données d'une table
 view_pos=Lignes $1 à $2 de $3
 view_none=Cette table ne contient aucune donnée
@@ -210,7 +201,6 @@ view_set=Adapter au contenu du fichier...
 view_warn=<b>Avertissement</b> - le fait de déposer des fichiers sur le serveur et d'afficher le contenu des champs <tt>texte</tt> ou <tt>octets</tt> risque de ne pas fonctionner à moins que les modules Perl $1 et $2 ne soient installés et en cours d'utilisation.
 view_adv=Recherche avancée
 view_sqlrun=Résultats générés par la requête SQL : $1
-
 newdb_title=Création d'une base de données
 newdb_header=Options de la nouvelle base de données
 newdb_db=Nom de la base de données
@@ -225,7 +215,6 @@ newdb_encoding=Encodage du jeu de caractères
 newdb_eencoding=Encodage du jeu de caractères manquant
 newdb_template=Base de données de modèles
 newdb_notemplate=Aucun
-
 user_title=Utilisateurs PostgreSQL
 user_vwarning=AVERTISSEMENT: cet utilisateur PostgreSQL est la connexion d'administration pour le domaine Virtualmin $1. La modification des paramètres ici peut provoquer des erreurs dans Virtualmin.
 user_ecannot=Vous n'êtes pas autorisé à modifier des utilisateurs
@@ -255,7 +244,6 @@ user_sync_delete=Supprimer un utilisateur PostgreSQL quand l'utilisateur Unix co
 user_delete=Supprimer sélectionnée
 user_derr=Impossible de supprimer des utilisateurs
 user_enone=Aucun utilisateur sélectionné
-
 host_ecannot=Vous n'êtes pas autorisé à modifier des hôtes autorisés
 host_title=Hôtes autorisés
 host_desc=Quand un client se connecte à la base de données, les hôtes répertoriés ci-dessous sont traités dans l'ordre jusqu'à ce que l'un corresponde et que le client soit autorisé ou interdit.
@@ -311,10 +299,8 @@ host_derr=Impossible de supprimer les hôtes autorisés
 host_enone=Aucun hôte sélectionné
 host_manual=Modifier le fichier de configuration
 host_manualdesc=Cliquez sur ce bouton pour modifier manuellement le fichier de configuration des hôtes autorisés.
-
 manual_title=Modifier le fichier de configuration
 manual_err=Impossible d'enregistrer le fichier de configuration
-
 grant_title=Privilèges accordés
 grant_tvi=Objet
 grant_type=Type
@@ -342,7 +328,6 @@ grant_none=Aucune table, vue, séquence ou index n'existe sur laquelle accorder 
 grant_toomany=Il y a trop d'objets à afficher. Trouvez les objets correspondants:
 grant_showing=Affichage des objets correspondant à $1 ..
 grant_delete=Réinitialiser les subventions sélectionnées
-
 group_title=Groupes PostgreSQL
 group_ecannot=Vous n'êtes pas autorisé à modifier les groupes
 group_name=Nom du groupe
@@ -362,9 +347,7 @@ group_etaken=Le nom de groupe est déjà en cours d'utilisation
 group_none=Aucun groupe PostgreSQL n'existe actuellement
 group_derr=Impossible de supprimer des groupes
 group_enone=Aucun groupe sélectionné
-
 esql=SQL $1 a échoué : $2
-
 log_start=Démarré le serveur PostgreSQL
 log_stop=Arrêté le serveur PostgreSQL
 log_db_create=Créé la base de données $1
@@ -420,7 +403,6 @@ log_backup_l=Sauvegardé la base de données $1 dans le fichier $2
 log_backup_all=Sauvegardé toutes les bases de données
 log_backup_all_l=Sauvegardé toutes les bases de données dans le fichier $2
 log_manual=Fichier de configuration des hôtes autorisés modifié manuellement
-
 acl_dbs=Bases de données que cet utilisateur peut gérer
 acl_dbscannot=Ce contrôle d'accès deviendra effectif après le démarrage du serveur de bases de données PostgreSQL.
 acl_dall=Toutes les bases de données
@@ -441,17 +423,13 @@ acl_cmds=Peut modifier avant et après les commandes de sauvegarde?
 acl_views=Peut afficher et gérer les vues?
 acl_indexes=Peut afficher et gérer les index?
 acl_seqs=Peut visualiser et gérer des séquences?
-
 fdrop_err=Erreur au cours de l'élimination du champ
 fdrop_enone=Aucune sélection
 fdrop_eall=Vous ne pouvez pas supprimer tous les champs d'une table!
-
 setup_err=Echec de l'initialisation de la base de données
 setup_ecannot=Vous n'êtes pas autorisé à initialiser la base de données
-
 dbase_bkup=Sauvegarder
 dbase_rstr=Restaurer
-
 restore_title=Restauration d'une base de données
 restore_header=Options de restauration d'une base de données
 restore_db=Nom de la base de données
@@ -474,7 +452,6 @@ restore_tables=Tables à restaurer
 restore_tables1=Tout dans le fichier de sauvegarde
 restore_tables0=Tableaux répertoriés
 restore_failed=La restauration a échoué : $1
-
 backup_title=Sauvegarde d'une base de données
 backup_title2=Sauvegarder toutes les bases de données
 backup_header1=Destination de sauvegarde
@@ -523,21 +500,17 @@ backup_ebefore=La commande avant la sauvegarde a échoué!
 backup_cmode=Quand exécuter les commandes
 backup_cmode1=Avant/après toutes les bases de données
 backup_cmode0=Avant/après chaque base de données
-
 r_command=Commande non prise en charge
-
 adv_title=Recherche avancée
 adv_and=Chercher les enregistrements correspondant à tous les critères...
 adv_or=Chercher les enregistrements correspondant à n'importe quel critère...
 adv_ok=Effectuer la recherche maintenant
-
 tdrops_enone=Aucune table à supprimer sélectionnée
 tdrops_err=Impossible de supprimer les tables
 tdrops_ok=Laissez tomber
 tdrops_title=Supprimer la sélection
 tdrops_rusure=Voulez-vous vraiment supprimer $1 les tables sélectionnées dans la base de données $2 ? $3 lignes de données seront supprimées.
 tdrops_rusure2=Voulez-vous vraiment supprimer $1 les tables sélectionnées dans la base de données $2 ?
-
 ddrops_err=Impossible de supprimer les bases de données
 ddrops_title=Supprimer des bases de données
 ddrops_rusure=Voulez-vous vraiment supprimer les bases de données $1 sélectionnées? Les tableaux $2 contenant $3 lignes de données seront supprimés.
@@ -545,7 +518,6 @@ ddrops_mysql=La base de données master étant sélectionnée, sa suppression re
 ddrops_ok=Supprimer des bases de données
 ddrops_enone=Aucune base de données sélectionnée
 ddrops_ecannotdb=Vous n'êtes pas autorisé à supprimer la base de données $1
-
 csv_title=Exporter un fichier CSV
 csv_header=Options d'exportation CSV
 csv_dest=Destination d'exportation
@@ -566,7 +538,6 @@ csv_done=L'exportation CSV vers $1 est terminée. La taille du fichier résultan
 csv_headers=Inclure les noms de colonne dans CSV?
 csv_cols=Colonnes à inclure dans CSV
 csv_ecols=Aucune colonne sélectionnée
-
 import_title=Importer des données
 import_uploadout=Importation de données à partir d'un fichier téléchargé ..
 import_fileout=Importation de données à partir du fichier $1 ..
@@ -574,7 +545,6 @@ import_eupload=Fichier d'importation importé manquant
 import_efile=Nom de fichier d'importation manquant
 import_done=.. créé $1 lignes, ignoré $2 doublons.
 import_erow=.. aucun champ trouvé dans la ligne $1
-
 index_title1=Créer un index
 index_header1=Options d'index
 index_name=Nom d'index
@@ -592,7 +562,6 @@ index_ecols=Aucun champ sélectionné
 index_title2=Modifier l'index
 index_header=Index $1 dans la base de données $2
 index_ecannot=Vous n'êtes pas autorisé à gérer les index
-
 view_title1=Créer une vue
 view_title2=Modifier vue
 view_header1=Voir les détails
@@ -607,7 +576,6 @@ view_eclash=Une vue du même nom existe déjà
 view_equery=Requête SQL manquante
 view_ecols=Aucun nom de colonne entré
 view_ecannot=Vous n'êtes pas autorisé à gérer les vues
-
 seq_title1=Créer une séquence
 seq_title2=Modifier la séquence
 seq_header1=Incrémentation des options de séquence
@@ -627,7 +595,5 @@ seq_emin=Valeur minimale manquante ou non valide
 seq_emax=Valeur maximale manquante ou non valide
 seq_ecache=Nombre de valeurs manquantes ou non valides à mettre en cache
 seq_ecannot=Vous n'êtes pas autorisé à gérer les séquences
-
 dgrant_err=Impossible de réinitialiser les subventions
 dgrant_enone=Aucun objet sélectionné
-__norefs=1

@@ -9,7 +9,6 @@ index_restart=Redémarrez Webmin
 index_restartmsg=Cliquez sur ce bouton pour redémarrer le processus du serveur Webmin. Cela peut être nécessaire si vous avez récemment mis à jour Perl.
 index_refresh=Actualiser les modules
 index_refreshmsg=Vérifiez à nouveau tous les modules Webmin pour les serveurs installés et mettez à jour ceux qui apparaissent dans la catégorie 'Modules non utilisés'.
-
 access_title=Contrôle d'accès IP
 access_desc=Le serveur Webmin peut être configuré pour refuser ou autoriser l'accès uniquement à partir de certaines adresses IP à l'aide de ce formulaire. Les noms d'hôte (comme foo.bar.com) et les réseaux IP (comme 10.254.3.0 ou 10.254.1.0/255.255.255.128 ou 10.254.1.0/25 ou 10.254.1.5-10.254.97.127) peuvent également être saisis. Vous devez limiter l'accès à votre serveur aux adresses de confiance, en particulier s'il est accessible depuis Internet. Sinon, toute personne qui devine votre mot de passe aura le contrôle total de votre système.
 access_ip=Adresses IP autorisées
@@ -34,7 +33,6 @@ access_ehost=Impossible de trouver l'adresse IP pour '$1'
 access_eself=Votre adresse IP actuelle ($1) serait refusée
 access_always=Résoudre les noms d'hôte à chaque demande?
 access_trust=Faire confiance à l'adresse IP distante fournie par les proxys?
-
 bind_title=Ports et adresses
 bind_desc2=Ce formulaire peut être utilisé pour modifier le numéro de port sur lequel Webmin écoute ou pour qu'il n'écoute que sur une seule adresse IP de votre système. Vous pouvez également le configurer pour accepter les connexions sur plusieurs ports ou pour écouter sur plusieurs adresses IP. Remarque - votre navigateur Web peut vous inviter à vous reconnecter après avoir modifié le port ou l'adresse de liaison.
 bind_header=Adresses IP et ports
@@ -63,7 +61,6 @@ bind_eipv6=IPv6 ne peut être activé que si le module Perl $1 est installé
 bind_redirecting=Redirection vers une nouvelle URL ...
 bind_elsof=Le nouveau port $1 est déjà utilisé par un autre processus
 bind_eonsystem=L'adresse IP $1 n'est pas active sur ce système et ne peut donc pas être utilisée
-
 log_title=Journalisation
 log_desc=Webmin peut être configuré pour écrire un journal des hits du serveur Web, au format de fichier journal CLF standard. Si la journalisation est activée, vous pouvez également choisir si les adresses IP ou les noms d'hôte sont enregistrés et à quelle fréquence le fichier journal est effacé. Lorsqu'elle est activée, les journaux sont écrits dans le fichier $1.
 log_desc2=Lorsque la journalisation est activée, Webmin écrit également un journal plus détaillé des actions utilisateur dans le fichier $1. Ce journal peut être consulté et analysé avec le module Journal des actions Webmin pour voir exactement ce que chaque utilisateur Webmin a fait.
@@ -95,7 +92,6 @@ log_login=Inclure les connexions et déconnexions Webmin dans le journal des act
 log_email=Envoyer les actions enregistrées par e-mail à
 log_emailnone=Ne pas envoyer
 log_inmodsemail=Envoyer un e-mail pour les actions dans
-
 proxy_title=Serveurs proxy et téléchargements
 proxy_desc=Si l'hôte sur lequel Webmin s'exécute se trouve derrière un pare-feu quelconque, vous devrez peut-être définir le serveur proxy à utiliser pour accéder aux sites Web et FTP. Certains modules, tels que <tt>Software Packages</tt>, utiliseront ces proxies lors du téléchargement de fichiers ou de programmes.
 proxy_header=Serveurs proxy
@@ -138,7 +134,6 @@ proxy_return=serveurs proxy et téléchargements
 proxy_tabproxy=Proxying
 proxy_tabdown=Téléchargement
 proxy_fallback=Essayez la demande directe si le proxy est en panne?
-
 ui_title=Interface utilisateur
 ui_desc=Ce formulaire vous permet de modifier les options d'interface utilisateur utilisées par tous les modules. Lors de la saisie des couleurs, chacune doit être spécifiée à l'aide du système RGB standard, où chaque valeur est un nombre hexadécimal de 00 à ff.
 ui_header=Options d'interface utilisateur
@@ -188,9 +183,7 @@ ui_dateformat_dd/mm/yyyy=dd/mm/yyyy (ie. 16/09/2001)
 ui_dateformat_mm/dd/yyyy=mm/dd/yyyy (ie. 09/16/2001)
 ui_dateformat_yyyy/mm/dd=yyyy/mm/dd (ie. 2001/09/16)
 ui_ehostnamedisplay=Nom d'hôte d'affichage manquant ou non valide
-
 mods_title=Modules Webmin
-mods_tabinstall=Installer
 mods_desc1=Les modules Webmin peuvent être ajoutés après l'installation en utilisant le formulaire à droite. Les modules sont généralement distribués dans des fichiers <tt>.wbm</tt>, chacun pouvant contenir un ou plusieurs modules. Les modules peuvent également être installés à partir de fichiers RPM s'ils sont pris en charge par votre système d'exploitation.
 mods_installsource=Installer depuis
 mods_grantto=Accorder l'accès à
@@ -208,7 +201,6 @@ mods_grant2=Accorder l'accès uniquement aux utilisateurs et aux groupes :
 mods_grant1=Accorder l'accès à tous les utilisateurs Webmin
 mods_checksig=Vérifier le fichier de signature pour les modules téléchargés?
 mods_installok=Installer le module
-mods_tabclone=Cloner
 mods_desc2=Si vous souhaitez avoir plus d'une copie du même module avec des configurations différentes, le formulaire à droite vous permet de cloner n'importe quel module existant. Le clone aura un nouveau nom, une nouvelle configuration de module, de nouvelles options de contrôle d'accès et pourra être mis à la disposition de différents utilisateurs.
 mods_clone=Module de clonage
 mods_cname=Module à cloner
@@ -217,12 +209,10 @@ mods_ccat=Attribuer à la catégorie
 mods_csame=Identique à l'original
 mods_creset=Réinitialiser la configuration par défaut?
 mods_cloneok=Module de clonage
-mods_tabdelete=Supprimer
 mods_desc3=Les modules existants et les clones de modules peuvent être supprimés, ils seront également supprimés. Une fois qu'un module a été supprimé, il doit être réinstallé avant que vous puissiez l'utiliser à nouveau. Un module ne peut pas être supprimé si d'autres modules en dépendent.
 mods_delete=Supprimer des modules
 mods_deleteok=Supprimer les modules sélectionnés
 mods_eroot=Les modules Webmin ne peuvent pas être installés ou gérés lorsque le code Webmin est partagé avec un autre système, par exemple lorsqu'il est exécuté dans une zone ou monté via NFS.
-mods_tabexport=Exportation
 mods_desc4=Les modules installés peuvent être exportés sous forme de fichier wbm.gz en utilisant le formulaire ci-dessous. Un fichier de module peut ensuite être installé sur un autre système exécutant Webmin.
 mods_header4=Options d'exportation du module
 mods_exportmods=Modules à exporter
@@ -232,7 +222,10 @@ mods_exportshow=Télécharger dans le navigateur
 mods_export=Modules d'exportation
 mods_exportok=Exporter les modules sélectionnés
 mods_return=forme des modules
-
+mods_tabinstall=Installer
+mods_tabclone=Cloner
+mods_tabdelete=Supprimer
+mods_tabexport=Exportation
 install_err1=Échec de l'installation du module depuis $1
 install_efile=Fichier ne existe pas
 install_err2=Échec de l'installation du module téléchargé
@@ -266,12 +259,10 @@ install_cat=Sous catégorie $1.
 install_eneither=RPM ne contient pas de module ou de thème Webmin
 install_err4=Échec de l'installation du module standard
 install_emissing=Le module spécifié n'existe pas
-
 clone_err=Échec du clonage du module
 clone_elink=le lien symbolique a échoué : $1
 clone_ecopy=échec de la copie de la configuration : $1
 clone_desc=Clone de $1
-
 delete_err=Échec de la suppression des modules
 delete_edep=Le module $1 ne peut pas être supprimé, car le module $2 en dépend
 delete_desc1=$1 (Clone de $2)
@@ -283,7 +274,6 @@ delete_rusure2=Voulez-vous vraiment supprimer le thème $2? $1 Ko de fichiers se
 delete_rusure3=Êtes-vous sûr de vouloir supprimer le ou les clones du module $2 ?
 delete_acls=Supprimer des utilisateurs et réinitialiser les paramètres de contrôle d'accès?
 delete_enone=Aucun module sélectionné
-
 os_title=Système d'exploitation et environnement
 os_desc3=Cette page affiche le système d'exploitation détecté par Webmin au moment de l'installation et le système actuellement détecté. S'ils sont différents, vous pouvez choisir de mettre à jour les informations du système d'exploitation de Webmin, ce qui peut être nécessaire si vous avez récemment effectué une mise à niveau.
 os_desc2=Vous pouvez également modifier le chemin de recherche utilisé par Webmin lors de l'exécution de programmes et le chemin de la bibliothèque partagée transmis à tous les programmes.
@@ -306,7 +296,6 @@ os_eiversion=Version du système d'exploitation interne manquante
 os_incorrect=Avertissement - Votre système exécute actuellement $1 version $2.
 os_fix=Mettre à jour le système d'exploitation détecté
 os_usermin=Mettez également à jour le système d'exploitation Usermin
-
 lang_title=Langue
 lang_title2=Langue Webmin
 lang_lang=Afficher dans la langue
@@ -318,7 +307,6 @@ lang_chardef=Déterminé par la langue
 lang_charover=Jeu de caractères de force
 lang_err=Échec de l'enregistrement de la langue
 lang_echarset=Jeu de caractères manquant ou non valide
-
 ssl_title=Cryptage SSL
 ssl_essl=Le module perl Net :: SSLeay ne semble pas être installé sur votre système. Pour installer la bibliothèque OpenSSL et Net::SSLeay, suivez <a href='$1'>ces instructions</a> depuis le site Web Webmin.
 ssl_cpan=Vous pouvez également demander à Webmin <a href='$1'>de télécharger et d'installer</a> le module Net::SSLeay Perl requis pour vous.
@@ -424,7 +412,6 @@ ssl_letsnotrenew=Renouveler uniquement manuellement
 ssl_staging=Serveur Let's Encrypt
 ssl_staging0=Réel
 ssl_staging1=Mise en scène (test uniquement)
-
 newkey_err=Échec de la création de la clé SSL
 newkey_ecn=Nom de serveur manquant ou non valide
 newkey_ecns=Aucun nom de serveur entré
@@ -437,13 +424,11 @@ newkey_ok=Génération réussie de la clé SSL suivante :
 newkey_esize=Taille de clé manquante ou non valide
 newkey_edays=Nombre de jours manquant ou invalide avant l'expiration
 newkey_ecountry=Le code du pays doit être composé de deux lettres
-
 newcsr_err=Échec de la création du CSR SSL
 newcsr_efile=Nom de fichier CSR manquant
 newcsr_title=Générer un CSR
 newcsr_ok=Génération réussie de la demande de certificat SSL suivante :
 newcsr_ok2=Ce CSR doit être envoyé à une autorité de signature, qui retournera un certificat signé. Cela peut être installé avec la clé ci-dessus en utilisant l'onglet <b>Télécharger le certificat</b>.
-
 startpage_title=Options de la page d'index
 startpage_intro2=Cette page vous permet de contrôler l'apparence du menu principal Webmin. Certaines options peuvent n'être efficaces que lors de l'utilisation du thème par défaut.
 startpage_tabs=Catégoriser les modules?
@@ -457,7 +442,6 @@ startpage_gotonone=&lt;Aucun&gt;
 startpage_gotomodule=Après la connexion, accédez toujours au module
 startpage_webminup=Afficher les mises à jour Webmin sur la page Informations système?
 startpage_moduleup=Afficher les mises à jour du module sur la page Informations système?
-
 upgrade_title=Mettre à niveau Webmin
 upgrade_desc=Ce formulaire vous permet de mettre à niveau l'ensemble de votre installation Webmin vers une nouvelle version. Vous pouvez installer à partir d'un fichier local, d'un fichier téléchargé ou de la dernière version sur <a href=http://www.webmin.com/>www.webmin.com</a>. Tout comme avec une mise à niveau manuelle, tous vos paramètres de configuration et modules tiers seront conservés.
 upgrade_descrpm=Ce formulaire vous permet de mettre à niveau l'ensemble de votre installation webmin vers une nouvelle version à l'aide de l'option de mise à niveau de RPM. Vous pouvez installer à partir d'un fichier RPM local, d'un fichier téléchargé ou de la dernière version sur <a href=http://www.webmin.com/>www.webmin.com</a>. Tout comme avec une mise à niveau manuelle, tous vos paramètres de configuration et modules tiers seront conservés.
@@ -522,12 +506,10 @@ upgrade_tabupdate=Mettre à jour les modules
 upgrade_tabsched=Mise à jour programmée
 upgrade_src=Mettre à niveau Webmin à partir de
 upgrade_opts=Options de mise à niveau
-
 newmod_desc=Lorsque Webmin est mis à niveau, tous les nouveaux modules de la nouvelle version seront accordés à un ou plusieurs utilisateurs. Ce formulaire vous permet de définir les utilisateurs qui reçoivent de nouveaux modules. Ce paramètre s'appliquera lors de la mise à niveau en ligne de commande ou en utilisant le formulaire ci-dessus.
 newmod_header=Nouvelles subventions de module
 newmod_def=Comportement par défaut - attribuez de nouveaux modules à <tt>root</tt> ou <tt>admin</tt>
 newmod_users=Accorder de nouveaux modules à :
-
 update_desc1=Ce formulaire vous permet de mettre à niveau les modules Webmin qui contiennent des bogues ou des failles de sécurité à partir de la page <a href=http://www.webmin.com/updates.html>Mises à jour Webmin</a> ou d'une autre source. Cela comparera les modules actuellement installés avec ceux disponibles pour la mise à jour, et éventuellement téléchargera et installera automatiquement tous les modules qui sont obsolètes.
 update_header1=Mettre à jour les modules maintenant
 update_header2=Mettre à jour les modules dans les délais
@@ -554,7 +536,6 @@ update_enomodsig=Impossible de télécharger le fichier de signature pour le mod
 update_ebadmodsig=La vérification de la signature du module a échoué : $1
 update_src=Mettre à niveau les modules de
 update_opts=Options de mise à jour du module
-
 ca_title=Autorité de certification
 ca_old=Certificat existant
 ca_header1=Créer un nouveau certificat CA
@@ -586,7 +567,6 @@ ca_eminiserv=Les certificats clients SSL ne sont pris en charge que sous miniser
 ca_eversion=La version du module Perl Net :: SSLeay installée sur votre système ne prend pas en charge les certificats clients SSL.
 ca_essleay=La commande d'administration SSL $1 n'a pas été trouvée sur votre système. Vous devrez peut-être modifier le chemin dans la configuration du module Utilisateurs Webmin.
 ca_essl=La certification SSL ne peut être configurée que lorsque le serveur Web fonctionne en mode SSL.
-
 session_title=Authentification
 session_desc1=Lorsqu'ils sont activés, les délais d'expiration des mots de passe protègent votre serveur Webmin contre les attaques de piratage de mot de passe par force brute en ajoutant un délai en constante augmentation entre chaque tentative de connexion échouée pour le même utilisateur.
 session_header=Options d'authentification et de session
@@ -650,12 +630,10 @@ session_sha512=Utilisez le cryptage SHA512
 session_emd5mod=Le chiffrement MD5 ne peut pas être utilisé, car le module Perl $1 n'est pas installé.
 session_esha512mod=Le chiffrement SHA512 ne peut pas être utilisé, car le module Perl $1 n'est pas installé.
 session_blocklock=Verrouillez également les utilisateurs avec des échecs de connexion
-
 assignment_title=Réaffecter les modules
 assignment_header=Attributions de catégorie de module
 assignment_ok=Changer de catégorie
 assignment_desc=Ce formulaire vous permet de configurer la catégorie sous laquelle chaque module est affiché sur la page d'index Webmin.
-
 categories_title=Modifier les catégories
 categories_header=ID de catégorie et descriptions
 categories_desc=Ce formulaire vous permet de renommer les catégories Webmin existantes et d'en créer de nouvelles auxquelles attribuer des modules. La partie supérieure du tableau sert à modifier les descriptions des catégories intégrées, tandis que la partie inférieure sert à ajouter de nouveaux identifiants et descriptions de catégorie.
@@ -668,7 +646,6 @@ categories_name=Description affichée
 categories_lang=Modifier les catégories dans la langue:
 categories_langok=Changer
 categories_custom=Personnalisé
-
 log_access=Contrôle d'accès IP modifié
 log_bind=Port et adresse modifiés
 log_log=Options de journalisation modifiées
@@ -714,7 +691,6 @@ log_onedelete_webmincron=Fonction programmée supprimée dans le module $1
 log_letsencrypt=Nouveau certificat SSL demandé à Let's Encrypt
 log_letsencryptdns=Création d'un enregistrement DNS Let's Encrypt pour $1
 log_letsencryptcleanup=Suppression de l'enregistrement DNS Let's Encrypt pour $1
-
 themes_title=Thèmes Webmin
 themes_desc=Les thèmes contrôlent l'apparence de l'interface utilisateur Webmin, y compris les icônes, les couleurs, les arrière-plans et la disposition des pages. La boîte de sélection ci-dessous peut être utilisée pour choisir l'un des thèmes installés sur votre système.
 themes_sel=Thème actuel :
@@ -730,7 +706,6 @@ themes_taboverlay=Changer de superposition
 themes_tabinstall=Installer le thème
 themes_tabdelete=Supprimer les thèmes
 themes_tabexport=Exporter des thèmes
-
 themes_err1=Échec de l'installation du thème depuis $1
 themes_efile=Fichier ne existe pas
 themes_err2=Échec de l'installation du thème téléchargé
@@ -756,11 +731,9 @@ themes_delok=Thème à supprimer :
 themes_return=liste des thèmes
 themes_err4=Échec de la modification du thème de superposition
 themes_eoverlay=La superposition sélectionnée n'est pas compatible avec le thème global actuel
-
 themes_desc4=Les thèmes installés peuvent être exportés sous forme de fichier wbt.gz en utilisant le formulaire ci-dessous. Un fichier de thème peut ensuite être installé sur un autre système exécutant Webmin.
 themes_exportmods=Thèmes à exporter
 themes_exportok=Exporter les thèmes sélectionnés
-
 referers_title=Références de confiance
 referers_desc=Cette page vous permet de configurer la prise en charge de la vérification des référents de Webmin, qui est utilisée pour empêcher les liens malveillants provenant d'autres sites Web d'inciter votre navigateur à faire des choses dangereuses avec Webmin. Cependant, si vous avez des liens vers Webmin à partir de vos propres sites Web dont vous ne voulez pas être averti, vous devez ajouter ces sites à la liste ci-dessous.
 referers_list=Sites Web de confiance
@@ -769,7 +742,6 @@ referers_none2=AVERTISSEMENT: Cela ouvre votre système aux attaques XSS!
 referers_referer=Vérification des référents activée?
 referers_err=Échec de l'enregistrement des référents
 referers_ehost='$1' n'est pas un nom d'hôte de confiance valide
-
 update_err=Échec de la mise à jour des modules
 update_eurl=URL de mise à jour manquante ou non valide
 update_title=Modules de mise à jour
@@ -790,7 +762,6 @@ update_rv=Vérification des modules Webmin mis à jour à partir de $1
 update_eemail=Vous devez entrer une adresse e-mail si ce n'est que ce qui serait mis à jour.
 update_subject=Rapport de mise à jour des modules Webmin
 update_version=Une nouvelle version de Webmin (version $1) est maintenant disponible au téléchargement. Les futures mises à jour ne seront publiées que pour la dernière version.
-
 anon_title=Accès au module anonyme
 anon_desc=Cette page vous permet d'accorder l'accès aux modules et chemins Webmin sélectionnés sans que les clients aient besoin de se connecter. Pour chaque chemin de module que vous entrez ci-dessous (tel que <tt>/custom</tt> ou <tt>/passwd</tt>), vous devez également entrer le nom d'un utilisateur Webmin dont les autorisations seront utilisées pour accéder au module.
 anon_desc2=Vous devez être TRÈS prudent lorsque vous accordez un accès anonyme, car des contrôles d'accès IP insuffisants ou l'octroi d'un accès au mauvais module peuvent permettre à des attaquants de prendre le contrôle de votre système.
@@ -799,19 +770,15 @@ anon_user=Utilisateur Webmin
 anon_err=Échec de l'enregistrement de l'accès anonyme
 anon_eurl='$1' n'est pas un chemin d'URL valide
 anon_euser=Utilisateur Webmin manquant ou non valide pour le chemin de l'URL '$1'
-
 enogpg=GnuPG n'est pas installé
-
 standard_failed=Échec du téléchargement de la liste des modules : $1
 standard_header=Modules Webmin standard
 standard_warn=Attention - vous n'exécutez pas la dernière version de Webmin $1, donc l'installation de ces modules échouera probablement.
 standard_eurl=URL des modules standard non valide
-
 third_failed=Échec du téléchargement de la liste des modules : $1
 third_header=Modules Webmin tiers
 third_eurl=URL des modules tiers non valide
 third_title=Sélectionnez un module tiers
-
 lock_title=Verrouillage de fichiers
 lock_desc=Par défaut, Webmin obtiendra un verrou sur tout fichier qu'il modifie afin d'éviter toute modification simultanée par plusieurs processus, ce qui pourrait entraîner une corruption de fichier. Cette page vous permet de désactiver sélectivement ou totalement le verrouillage s'il pose des problèmes.
 lock_header=Paramètres de verrouillage de fichier
@@ -822,7 +789,6 @@ lock_except=Verrouillez tous les fichiers et répertoires sauf ...
 lock_err=Échec de l'enregistrement du verrouillage du fichier
 lock_edir='$1' n'est pas un chemin absolu
 lock_edirs=Aucun fichier ou répertoire entré
-
 ipkey_title1=Créer une clé SSL
 ipkey_title2=Modifier la clé SSL
 ipkey_header=Détails de la clé SSL spécifique à l'adresse IP
@@ -832,7 +798,6 @@ ipkey_eip2='$1' n'est pas une adresse IP ou un nom d'hôte valide
 ipkey_eips=Aucune adresse IP saisie
 ipkey_eextracas=Aucun fichier de certificat supplémentaire entré
 ipkey_eextraca=Le fichier de certificat supplémentaire $1 n'existe pas
-
 descs_title=Titres des modules
 descs_info=Cette page vous permet de spécifier des titres alternatifs pour les modules Webmin, afin de remplacer leurs descriptions standard.
 descs_mod=Module
@@ -842,13 +807,11 @@ descs_cdesc=Titre du clone
 descs_err=Échec de l'enregistrement des titres des modules
 descs_edesc=Titre manquant pour le module '$1'
 descs_etitle=Titre manquant pour le clone '$1'
-
 export_err=Échec de l'exportation des modules
 export_ecmd=Commande nécessaire manquante $1
 export_efile=Fichier d'exportation manquant ou non valide
 export_done=Exporté avec succès les modules sélectionnés vers $1.
 export_title=Modules d'exportation
-
 advanced_title=Options avancées
 advanced_header=Options avancées et expérimentales
 advanced_temp=Répertoire des fichiers temporaires
@@ -892,13 +855,10 @@ advanced_listdir=Répertorier les répertoires sans fichier d'index?
 advanced_headers=En-têtes HTTP supplémentaires
 advanced_eheader=Les en-têtes doivent être au format <tt>Header: Value</tt>
 advanced_sortconfigs=Enregistrer les fichiers de configuration triés par ses clés?
-
 syslog_errorlog=Journal des erreurs Webmin
-
 clear_title=Effacer le cache de téléchargement
 clear_done=Le cache Webmin contenant $1 de fichiers à partir d'URL $2 a été effacé avec succès.
 clear_none=Il n'y a actuellement aucune URL dans le cache de téléchargement Webmin.
-
 savekey_err=Échec de l'enregistrement de la nouvelle clé
 savekey_ekey=Clé de format PEM manquante ou non valide
 savekey_ecert=Certificat de format PEM manquant ou non valide
@@ -908,7 +868,6 @@ savekey_title=Télécharger la clé existante
 savekey_done2=La clé SSL fournie a été enregistrée dans $1 et le certificat dans $2.
 savekey_done=La clé SSL et le certificat fournis ont été enregistrés dans le fichier $1.
 savekey_done3=Le certificat SSL chaîné fourni a été enregistré dans le fichier $1.
-
 cache_title=URL en cache
 cache_search=Trouvez des URL contenant:
 cache_ok=Rechercher
@@ -921,10 +880,8 @@ cache_delete=Vider la sélection du cache
 cache_err=Échec du vidage des URL mises en cache
 cache_enone=Aucune sélection
 cache_efile=Nom de fichier non valide
-
 restart_title=Redémarrage de Webmin
 restart_done=Le processus du serveur Webmin est en train de redémarrer - veuillez patienter quelques secondes avant de continuer.
-
 mobile_title=Options des appareils mobiles
 mobile_header=Options pour les navigateurs mobiles
 mobile_theme=Thème pour les navigateurs mobiles
@@ -933,7 +890,6 @@ mobile_nosession=Forcer l'utilisation de l'authentification HTTP?
 mobile_agents=Agents utilisateurs supplémentaires pour les navigateurs mobiles
 mobile_err=Échec de l'enregistrement des options de l'appareil mobile
 mobile_prefixes=Préfixes de nom d'hôte d'URL pour les navigateurs mobiles
-
 blocked_title=Hôtes et utilisateurs bloqués
 blocked_type=Type
 blocked_who=Nom d'hôte ou nom d'utilisateur
@@ -945,11 +901,9 @@ blocked_host=Hôte client
 blocked_clear=Effacer tous les blocs
 blocked_cleardesc=Cliquez sur ce bouton pour effacer tous les blocs d'hôte et d'utilisateur actuels en redémarrant le processus du serveur Webmin.
 blocked_restarting=Le processus du serveur Webmin redémarre maintenant pour effacer les hôtes et les utilisateurs bloqués - veuillez patienter quelques secondes avant de continuer.
-
 refreshmods_title=Actualiser les modules
 refreshmods_installed=Vérification des modules Webmin utilisables ...
 refeshmods_counts=... trouvé $2 avec les applications installées, $1 non installé.
-
 debug_title=Fichier journal de débogage
 debug_header=Options du fichier journal de débogage Webmin
 debug_enabled=Journal de débogage activé?
@@ -977,7 +931,6 @@ debug_cmd=Ligne de commande
 debug_cron=Emplois en arrière-plan
 debug_inmods=Modules pour écrire des journaux de débogage pour
 debug_emodules=Aucun module à déboguer pour la sélection
-
 notif_passexpired=Votre mot de passe Webmin a expiré! Vous serez obligé de le modifier à la prochaine connexion.
 notif_passchange=Votre mot de passe Webmin a été modifié pour la dernière fois le $1 et doit être changé dans $2 jours.
 notif_passlock=Votre mot de passe Webmin a été modifié pour la dernière fois le $1 et votre compte sera verrouillé dans $2 s'il n'est pas modifié.
@@ -993,7 +946,6 @@ notify_updatedesc=Corrections problème
 notif_updateok=Installer les mises à jour maintenant
 notif_reboot=Les mises à jour récentes des packages (comme une nouvelle version du noyau) nécessitent un redémarrage pour être pleinement appliquées.
 notif_rebootok=Redémarrer maintenant
-
 status_title=Collection d'état d'arrière-plan
 status_header=Paramètres du travail de collecte de statut
 status_interval=Recueillir l'état du système en arrière-plan?
@@ -1005,7 +957,6 @@ status_temp=Collecter les températures du lecteur?
 status_units=Unités de températures
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
-
 sendmail_title=Envoi d'un courriel
 sendmail_desc=Cette page contrôle la manière dont Webmin envoie les e-mails, par exemple à partir de sauvegardes planifiées ou de surveillance en arrière-plan. Il affecte également les e-mails envoyés à l'aide du module Lire le courrier utilisateur.
 sendmail_header=Options d'envoi de courrier
@@ -1042,14 +993,12 @@ sendmail_subject=Objet du message
 sendmail_body=Contenu du message
 sendmail_desc2=Ce formulaire peut être utilisé pour envoyer un e-mail de test avec les paramètres ci-dessus, afin de s'assurer que le courrier est correctement livré.
 sendmail_send=Envoyer un e-mail
-
 testmail_title=Envoyer un e-mail de test
 testmail_err=Échec de l'envoi du message de test
 testmail_eto=Aucune adresse de destination saisie
 testmail_sending=Envoi d'un message de $1 à $2 ...
 testmail_done=... message envoyé. Vérifiez la boîte aux lettres de l'adresse de destination pour vous assurer qu'elle a bien été livrée.
 testmail_failed=... Envoi échoué : $1
-
 web_title=Options du serveur Web
 web_header=Options pour le serveur Web intégré de Webmin
 web_expires=Temps de cache côté client pour les fichiers statiques
@@ -1061,7 +1010,6 @@ web_expirespaths=Temps de cache côté client en fonction du chemin de l'URL
 web_expirespath=Expression régulière de chemin
 web_expirestime=Temps de cache en secondes
 web_eexpires2=Heure de cache côté client manquante ou non numérique dans la ligne $1
-
 webmincron_title=Fonctions planifiées Webmin
 webmincron_emodule=Le module Webmin Cron Jobs n'est pas installé!
 webmincron_module=Module Webmin
@@ -1085,7 +1033,6 @@ webmincron_when1=Horaires spécifiques
 webmincron_secs=seconds
 webmincron_err=Échec de l'enregistrement de la fonction programmée
 webmincron_einterval=L'intervalle doit être un nombre de secondes supérieur à zéro
-
 twofactor_title=Authentification à deux facteurs
 twofactor_header=Options d'authentification à deux facteurs
 twofactor_provider=Fournisseur d'authentification
@@ -1124,7 +1071,6 @@ twofactor_secret1=Généré aléatoirement
 twofactor_secret0=Utiliser une clé à 16 caractères
 twofactor_esecret=La clé secrète doit contenir exactement 16 caractères et ne contenir que des lettres et des chiffres
 twofactor_esession=L'authentification à deux facteurs ne peut être utilisée que si l'authentification basée sur la session est active
-
 letsencrypt_title=Let's Encrypt Certificate Request
 letsencrypt_err=Échec de la demande de certificat
 letsencrypt_ecmds=Ni la commande client Let's Encrypt <tt>certbot</tt> ni la commande <tt>python</tt> n’ont été trouvées sur votre système
@@ -1158,8 +1104,5 @@ letsencrypt_ecsr=Échec de la génération du CSR : $1
 letsencrypt_ekeygen=Échec de la génération de la clé privée : $1
 letsencrypt_enative=Le client natif Let's Encrypt (certbot) a été utilisé précédemment sur ce système et doit être utilisé pour toutes les futures demandes de certificat
 letsencrypt_eacmedns=Seul le client officiel Let's Encrypt prend en charge la validation DNS
-
 announce_hide=Cacher cette annonce
 alert_hide=Masquer l'alerte
-
-__norefs=1
