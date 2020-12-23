@@ -251,7 +251,10 @@ elsif (!$dir && defined($value)) {
 		&renumber($conf, $cmt->{'line'}+1, $cmt->{'file'}, 1);
 		push(@$conf, { 'name' => $name,
 			       'value' => $value,
+			       'enabled' => 1,
+			       'file' => $cmt->{'file'},
 			       'line' => $cmt->{'line'}+1,
+			       'eline' => $cmt->{'line'}+1,
 			       'sectionname' => $sname,
 			       'sectionvalue' => $svalue });
 		}
@@ -267,7 +270,10 @@ elsif (!$dir && defined($value)) {
 		&renumber($conf, $line, $insect[$#insect]->{'file'}, 1);
 		push(@$conf, { 'name' => $name,
 			       'value' => $value,
+			       'enabled' => 1,
+			       'file' => $insect[$#insect]->{'file'},
 			       'line' => $line,
+			       'eline' => $line,
 			       'sectionname' => $sname,
 			       'sectionvalue' => $svalue });
 		}
@@ -277,7 +283,10 @@ elsif (!$dir && defined($value)) {
 		push(@$lref, $newline);
 		push(@$conf, { 'name' => $name,
 			       'value' => $value,
+			       'enabled' => 1,
+			       'file' => &get_config_file(),
 			       'line' => scalar(@$lref)-1,
+			       'eline' => scalar(@$lref)-1,
 			       'sectionname' => $sname,
 			       'sectionvalue' => $svalue });
 		}
@@ -286,6 +295,7 @@ elsif (!$dir && defined($value)) {
 
 # save_section(&conf, &section)
 # Updates one section in the config file
+# XXX when adding a section, the part to replace shouldn't depend on eline
 sub save_section
 {
 local ($conf, $section) = @_;
