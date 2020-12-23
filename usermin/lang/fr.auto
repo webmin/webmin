@@ -1,9 +1,0 @@
-index_eroot=Le répertoire de configuration Usermin $1 existe, mais le répertoire racine du programme $2 auquel il fait référence n'existe pas! Vous devez télécharger et réinstaller manuellement Usermin.
-session_authmode=Méthode d'authentification
-ssl_savekey=Ce formulaire vous permet de télécharger une clé privée SSL au format PEM et un certificat existants pour votre serveur Usermin à utiliser.
-ssl_copycert=Copier le certificat de Webmin
-ssl_copycertdesc=Copiez le certificat SSL, la clé privée, le certificat CA et d'autres paramètres que Webmin utilise.
-log_copycert=Paramètres SSL copiés de Webmin
-copycert_err=Impossible de copier les paramètres SSL de Webmin
-copycert_essl=SSL n'est pas activé
-copycert_ekeyfile=Aucun fichier de clé privée n'est défini dans Webmin
