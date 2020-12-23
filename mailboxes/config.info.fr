@@ -1,0 +1,87 @@
+line0=Options d'interface utilisateur,11
+wrap_width=Largeur pour envelopper les messages électroniques à,0,6
+wrap_compose=Largeur pour envelopper les messages électroniques composés à,10,-Ne pas envelopper,80-80 colonnes (standard),Autre taille
+perpage=Messages électroniques à afficher par page,0,6
+show_to=Afficher à: adresse dans les boîtes aux lettres?,1,1-Oui,0-Non
+top_buttons=Afficher les boutons en haut pour,1,2-Boîtes aux lettres et mails,1-Boîtes aux lettres uniquement,0-Jamais
+arrows=Afficher les flèches du téléavertisseur en bas pour,1,2-Boîtes aux lettres et mails,1-Boîtes aux lettres uniquement,0-Jamais
+show_delall=Afficher le bouton pour supprimer toute la boîte aux lettres?,1,1-Oui,0-Non
+show_sent=Afficher le nombre de messages dans le dossier des e-mails envoyés?,1,1-Oui,0-Non
+fwd_mode=Transférer les messages avec citation?,1,0-Oui,1-Non
+delete_warn=Demander une confirmation avant de supprimer?,10,y-Oui,n-Non,Pour les fichiers mbox supérieurs à
+view_html=Afficher le corps du message comme,4,0-Texte toujours brut,1-Texte si possible&#44; HTML sinon,2-HTML si possible&#44; texte autrement,3-Convertir du HTML en texte brut
+html_edit=Utiliser l'éditeur HTML pour composer?,4,2-Toujours,1-Lorsque vous répondez à un e-mail HTML,0-Jamais
+html_quote=Mode de citation HTML,1,1-Message ci-dessous &lt;hr&gt;,0-Message à l'intérieur &lt;blockquote&gt;
+log_read=Enregistrer la lecture du courrier dans le journal des actions Webmin?,1,1-Oui,0-Non
+bcc_to=Cci: messages envoyés à,0
+sig_file=Fichier de signature,10,*-Aucun,.signature-~/.signature,Autre fichier
+show_body=Afficher les aperçus du corps du message dans la liste?,1,1-Oui,0-Non
+open_mode=Ouvrir les messages dans,1,1-Nouvelle fenêtre,0-Fenêtre de liste
+link_mode=Ouvrir les liens dans,1,1-Nouvelle fenêtre,0-Même fenêtre
+download=Types de pièces jointes MIME à toujours télécharger,9,20,4,\t
+date_fmt=Format de date dans la liste de diffusion,1,dmy-DD/MM/YYYY,mdy-MM/DD/YYYY,ymd-YYYY/MM/DD
+date_tz=Fuseau horaire pour l'affichage de la date,3,Défaut du système
+
+line0.4=Options de la liste des utilisateurs,11
+max_records=Nombre maximum d'utilisateurs à afficher,0,6
+show_size=Mode d'affichage utilisateur,1,0-Nom d'utilisateur uniquement,1-Nom d'utilisateur et taille,2-Tous les détails
+show_size_below=Nom d'utilisateur et taille &#45 Où afficher la taille,1,0-À droite du nom d'utilisateur,1-Sous le nom d'utilisateur
+column_count=Nombre de colonnes dans lesquelles afficher les noms d'utilisateur,1,3-3,4-4,5-5,6-6,7-7,8-8,9-9
+show_count=Afficher le nombre de messages dans la boîte de réception?,1,1-Oui,0-Non
+sort_mode=Trier les boîtes aux lettres par,1,2-Taille,1-Nom d'utilisateur,0-Commander dans le fichier de mot de passe
+show_mail=Afficher uniquement les utilisateurs qui ont du courrier?,1,1-Oui,0-Non
+size_mode=Inclure tous les dossiers dans la taille?,1,1-Oui,0-Non (premier dossier uniquement)
+ignore_users=Ignorer ces noms d'utilisateur (ne pas afficher),15,Liste des utilisateurs ignorés
+ignore_users_enabled=Ignorer l'état de la liste,1,1-Activé,0-Désactivé
+
+line0.5=Options de dossier,11
+track_read=Gardez une trace des e&#45mails lus/non lus,1,1-Oui,0-Non
+show_unread=Afficher le nombre de messages non lus?,1,2-Oui,0-Non
+check_mod=Vérifier la modification de la boîte aux lettres lors de la suppression du courrier?,1,1-Oui,0-No,
+maildir_deleted=Ignorer les messages marqués comme supprimés dans Maildir?,1,1-Oui,0-Non
+noindex_hostname=Inclure le nom d'hôte dans les fichiers d'index?,1,0-Oui,1-Non
+
+line3=Options de spam,11
+spam_buttons=Afficher les boutons de rapport de spam pour,2,list-Boîtes aux lettres,mail-Messages
+spam_del=Supprimer le spam lors du signalement?,1,1-Oui,0-Non
+spam_report=Signaler le spam en utilisant,1,sa_learn-sa&#45;learn --spam,spamassassin-spamassasin -r,-Décider automatiquement
+
+line3.5=À partir des options d'adresse,11
+from_addr=De: adresse à utiliser lors de l'envoi manuel d'un e-mail,3,À partir du nom d'utilisateur de la boîte aux lettres
+webmin_from=De: adresse à utiliser lorsque Webmin envoie un e-mail,3,Défaut (webmin@<i>yourhost</i>)
+from_virtualmin=Obtenir de: adresse de Virtualmin?,1,1-Oui,0-Non
+from_dom=Domaine à utiliser dans De: adresse,3,Nom d'hôte du système
+no_orig_ip=Inclure l'adresse IP du navigateur dans l'en-tête X-Originating-IP?,1,0-Oui,1-Non
+no_mailer=Inclure la version Webmin dans l'en-tête X-Mailer?,1,0-Oui,1-Non
+helo_name=Nom d'hôte à utiliser dans la ligne SMTP HELO,3,Identique au nom d'hôte du système
+
+line1=Configuration du système,11
+mail_system=Serveur de messagerie installé,4,1-Sendmail,0-Postfix,2-Qmail,4-Qmail+LDAP,5-Qmail+VPopMail,6-Exim,3-Détecter automatiquement
+send_mode=Envoyer des e-mails en utilisant,10,-Programme de serveur de messagerie,Serveur SMTP
+no_crlf=Ajouter un retour chariot ( \r ) à chaque ligne?,1,0-Oui,1-Non
+smtp_user=Nom de connexion SMTP pour le serveur de messagerie,3,Aucun
+smtp_pass=Mot de passe SMTP pour le serveur de messagerie,3,Aucun
+smtp_auth=Méthode d'authentification SMTP,4,-Défaut,Cram-MD5-Cram&#45;MD5,Digest-MD5-Digest&#45;MD5,Plain-Plain,Login-Connexion
+auto=Détecter automatiquement l'emplacement des fichiers courrier?,1,1-Oui&#44; basé sur le serveur de messagerie,0-Non&#44; utiliser les paramètres ci-dessous ...
+mail_dir=Répertoire des fichiers courrier de l'utilisateur,3,Aucun
+mail_style=Style de répertoire de fichiers de messagerie,4,0-mail/username,1-mail/u/username,2-mail/u/us/username,3-mail/u/s/username
+mail_file=Fichier courrier dans les répertoires personnels des utilisateurs,3,Aucun
+mail_sub=Répertoire de messagerie dans les répertoires de base des utilisateurs,3,Aucun
+mail_usermin=Sous-répertoire des dossiers sous le répertoire de base,3,Aucun
+mailbox_user=Usermin lit le répertoire de configuration du courrier dans le répertoire personnel,3,Aucun
+
+line2=User synchronization,11
+sync_create=Créer une boîte aux lettres lorsque l'utilisateur est créé?,1,1-Oui,0-Non
+sync_modify=Renommer la boîte aux lettres lorsque l'utilisateur est renommé?,1,1-Oui,0-Non
+sync_delete=Supprimer la boîte aux lettres lorsque l'utilisateur est supprimé?,1,1-Oui,0-Non
+sync_perms=Autorisations pour les nouvelles boîtes aux lettres,0,4
+
+line4=Options VPOPMail,11
+vpopmail_dir=Répertoire de base pour VPOPMail,0
+
+line5=Options Qmail+LDAP,11
+ldap_host=Serveur LDAP,0
+ldap_port=Port LDAP,3,Défaut
+ldap_login=Connexion au serveur LDAP,0
+ldap_pass=Mot de passe du serveur LDAP,0
+ldap_base=Base pour les utilisateurs de messagerie,0
