@@ -295,7 +295,6 @@ elsif (!$dir && defined($value)) {
 
 # save_section(&conf, &section)
 # Updates one section in the config file
-# XXX when adding a section, the part to replace shouldn't depend on eline
 sub save_section
 {
 local ($conf, $section) = @_;
@@ -316,6 +315,47 @@ my $i = 1;
 foreach my $m (@{$section->{'members'}}) {
 	$m->{'line'} = $m->{'eline'} = $section->{'line'} + $i++;
 	$m->{'space'} = "  ";
+	$m->{'file'} = $section->{'file'};
+	$m->{'sectionname'} = $section->{'name'};
+	$m->{'sectionvalue'} = $section->{'value'};
+	}
+}
+
+# create_section(&conf, &section, [&parent])
+# Adds a section to the config file
+sub create_section
+{
+local ($conf, $section, $parent) = @_;
+local $indent = "  " x $section->{'indent'};
+local @newlines;
+push(@newlines, $indent.$section->{'name'}." ".$section->{'value'}." {");
+foreach my $m (@{$section->{'members'}}) {
+	push(@newlines, $indent."  ".$m->{'name'}." = ".$m->{'value'});
+	}
+push(@newlines, $indent."}");
+my $file;
+my $lref;
+if ($parent) {
+	# Add to another config block
+	$file = $parent->{'file'};
+	$lref = &read_file_lines($file);
+	$section->{'line'} = $parent->{'eline'};
+	}
+else {
+	# Add to the end of the global config file
+	$file = &get_config_file();
+	$lref = &read_file_lines($file);
+	$section->{'line'} = scalar(@$lref);
+	}
+splice(@$lref, $section->{'line'}, 0, @newlines);
+&renumber($conf, $section->{'eline'}, $section->{'file'},
+	  scalar(@newlines)-$oldlen);
+$section->{'eline'} = $section->{'line'} + scalar(@newlines) - 1;
+my $i = 1;
+foreach my $m (@{$section->{'members'}}) {
+	$m->{'line'} = $m->{'eline'} = $section->{'line'} + $i++;
+	$m->{'space'} = "  ";
+	$m->{'indent'} = $section->{'indent'} + 1;
 	$m->{'file'} = $section->{'file'};
 	$m->{'sectionname'} = $section->{'name'};
 	$m->{'sectionvalue'} = $section->{'value'};
