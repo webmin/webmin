@@ -1,4 +1,8 @@
-display_mode=La page principale montre,1,0-Toutes les commandes et parametres,1-Liens vers les commandes
-width=Largeur de la fenetre d'edition du fichier,3,Defaut (80 caracteres)
-height=Hauteur de la fenetre d'edition du fichier,3,Defaut (20 caracteres)
-wrap=wrap mode de l'editeur de fichiers,1,-Defaut (Soft),hard-Hard,off-Off
+display_mode=Afficher la page principale,1,0-Toutes les commandes et paramètres,1-Liens vers les commandes
+width=Largeur de la fenêtre de l'éditeur de fichiers,3,Par défaut (80 caractères)
+height=Hauteur de la fenêtre de l'éditeur de fichiers,3,Par défaut (20 caractères)
+wrap=Mode wrap de l'éditeur de fichiers,1,-Par défaut (Soft),hard-Dur,off-Désactivé
+columns=Colonnes dans lesquelles afficher les commandes,1,2-2,1-1
+sort=Trier les commandes par,1,desc-Nom de la commande,html-Description,-Ordre des commandes
+params_file=Traiter les valeurs par défaut commençant par / comme un fichier à lire?,1,1-Oui,0-Non
+params_cmd=Traitez les valeurs par défaut se terminant par | comme commande à exécuter?,1,1-Oui,0-Non
