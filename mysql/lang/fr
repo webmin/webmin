@@ -23,16 +23,18 @@ index_db=Nom de base de données
 index_tables=Tableaux
 index_elibrary=Le programme client MySQL $1 ne peut être exécuté, car il ne pouvait pas trouver les bibliothèques partagées MySQL. Vérifiez la <a href='$2'>configuration du module</a> et assurez-vous que le <i>Chemin à bibliothèques partagées de MySQL</i> est réglé.
 index_version=MySQL Version $1
+index_version2=$3 version $1 sur $2
 index_nomod=Attention: Le module Perl $1 n'est pas installé sur votre système, si Webmin ne sera pas en mesure d'accéder de façon fiable votre base de données MySQL. <a href='$2'>Cliquez ici</a> pour l'installer maintenant.
 index_nomods=Avertissement: Le Perl modules $1 et $2 ne sont pas installés sur votre système, aussi Webmin ne sera pas en mesure d'accéder de façon fiable votre base de données MySQL. <a href='$3'>Cliquez ici</a> pour les installer maintenant.
 index_mysqlver=  La commande <tt>$1</tt> a retourné:
 index_eenvpass=Le programme client MySQL $1 ne pas accepter les mots de passe transmis en utilisant les <tt>MYSQL_PWD</tt> variable d'environnement. Pour veiller à ce que Webmin est capable de communiquer pleinement avec MySQL, cette option doit être désactivée sur le <a href='$2'>configuration du module</a> <a.
+index_ecnf=Le fichier de configuration MySQL $1 est introuvable sur votre système. Utilisez la page <a href='$2'>de configuration du module</a> pour définir le chemin correct.
 index_nodbs=Vous n'avez pas accès à des bases de données MySQL.
 index_nodbs2=Aucune base de données MySQL ont été trouvés sur votre système.
 index_nodbs3=Aucune base de données MySQL ne correspond à votre recherche.
 index_backup=Bases de données de sauvegarde
 index_backupmsg=Cliquez sur ce bouton pour configurer la sauvegarde de toutes les bases de données MySQL, soit immédiatement, soit sur une planification configurée.
-index_drops=Chute bases de données choisies
+index_drops=Supprimer les bases de données sélectionnées
 index_mysqladmin=Programme d'administration MySQL
 index_mysql=MySQL programme client
 index_mysqlshow=MySQL programme d'état
@@ -43,17 +45,21 @@ index_showing=Affichage des bases de données correspondant à $1 ..
 index_emsg=Le message d'erreur complet MySQL est: $1
 index_jump=ou modifier base de données:
 index_jumpok=Ouvrir
+
 login_err=Échec de la connexion
 login_ecannot=Vous n'êtes pas autorisé à configurer la connexion de base de données
 login_elogin=Connexion d'administration manquant  
 login_epass=Mauvaise nom d'utilisateur ou mot de passe d'administration
+
 stop_err=Impossible d'arrêter la base de données
 start_err=Impossible de démarrer la base de données
+
 dbase_title=Modifier la base de données
 dbase_header=Tables de base de données, index et vues
 dbase_tables=tables de la base
 dbase_add=Créer une nouvelle table
 dbase_drop=Chute la base de données
+dbase_empty=Base de données vide
 dbase_exec=Exécuter SQL
 dbase_backup=Sauvegarder la base de données
 dbase_none=Cette base de données n'a pas de tables.
@@ -78,12 +84,16 @@ dbase_type=Type
 dbase_typetable=Table ($1)
 dbase_typeindex=Indice
 dbase_typeview=Voir
+
 ddrop_err=Impossible de déposer base de données
 ddrop_title=Chute la base de données
 ddrop_rusure=Êtes-vous sûr de vouloir supprimer la base $1? $2 tables contenant $3 des lignes de données seront supprimées.
+ddrop_rusure2=Voulez-vous vraiment vider la base de données $1 ? Les tableaux $2 contenant $3 lignes de données seront supprimés.
 ddrop_mysql=Parce que ceci est la base de données principal, en déposant aura probablement faire de votre serveur MySQL inutilisable!
 ddrop_ok=Chute la base de données
 ddrop_empty=Il suffit de supprimer toutes les tables
+ddrop_empty2=Supprimer toutes les tables
+
 ddrops_err=Impossible de supprimer des bases
 ddrops_title=Chute Bases de données
 ddrops_rusure=Êtes-vous sûr de vouloir supprimer les bases de données sélectionnées $1? $2 tables contenant $3 des lignes de données seront supprimées.
@@ -92,6 +102,7 @@ ddrops_mysql=Parce que la base de données principal est sélectionné, en dépo
 ddrops_ok=Chute Bases de données
 ddrops_enone=Pas de bases de données sélectionnées
 ddrops_ecannotdb=Vous n'êtes pas autorisé à supprimer la base $1
+
 table_title=Modifier Table
 table_title2=Créer un tableau
 table_header=Tableau $1 en base de données $2
@@ -137,16 +148,19 @@ table_nextra=Supplémentaire attribué
 table_eautokey=Le champ de l'auto-incremenent doit également être une clé primaire
 table_eauto=Seul un champ peut être de auto-incrémentation
 table_delete=Supprimer des champs sélectionnés
+
 tdrop_err=Impossible de supprimer table
 tdrop_title=Supprimer Table
 tdrop_rusure=Êtes-vous sûr de vouloir supprimer la table $1 en base de données $2? $3 lignes de données seront supprimées.
 tdrop_ok=Supprimer Table
+
 tdrops_enone=Aucun objet ne sélectionnés
 tdrops_err=Impossible de déposer des objets
 tdrops_ok=Déposer objets
 tdrops_title=Déposer objets
 tdrops_rusure=Êtes-vous sûr de vouloir supprimer les $1 objets sélectionnés dans la base de données $2? $3 lignes de données seront supprimées.
 tdrops_rusure2=Êtes-vous sûr de vouloir supprimer les $1 objets sélectionnés dans la base de données $2?
+
 field_title1=Ajouter un champ
 field_title2=Modifier le champ
 field_in=Dans le tableau $1 en base de données $2
@@ -180,12 +194,14 @@ field_esize='$1' n'n'est pas une taille de champ valide
 field_eenum=Pas de valeurs énumérées sont entrés
 field_efield='$1' n'n'est pas un nom de domaine valide
 field_ekey=Champs qui autorisent des valeurs NULL ne peuvent pas faire partie de la clé primaire
+
 view_title=Données de Table
 view_pos=Rangées $1 à $2 de $3
 view_none=Ce tableau ne contient pas de données.
 view_edit=Modifier les lignes sélectionnées
 view_new=Ajouter une ligne
 view_delete=Supprimer les lignes sélectionnées
+view_refresh=Rafraîchir
 view_nokey=Données de ce tableau ne peut pas être modifiée, car elle n'a pas de clé primaire.
 view_all=Sélectionner tous
 view_invert=Inverser la sélection
@@ -197,8 +213,9 @@ view_match3=ne correspond pas
 view_match4=supérieur
 view_match5=moins de
 view_searchok=Recherche
-view_searchhead=Résultats de recherche pour $1 en champ $2 ..
-view_searchhead2= Résultats de la recherche avancée sur  $1 champs ..
+view_searchhead=Résultats de recherche pour $1 en champ $2 ...
+view_searchheadnot=Résultats de la recherche pour non $1 dans le champ $2 ...
+view_searchhead2= Résultats de la recherche avancée sur  $1 champs ...
 view_searchreset=Réinitialiser recherche
 view_sorthead1=Tri de $1, ordre décroissant
 view_sorthead2=Tri de $1, ordre croissant
@@ -206,11 +223,13 @@ view_sortreset=Réinitialiser sorte
 view_field=Nom du champ
 view_data=New données
 view_jump=Sauter à la ligne:
-view_download=Téléchargement ..
+view_go=Allerview_go=Aller
+view_download=Téléchargement ...
 view_keep=Laisser inchangé
-view_set=Mettre au contenu de fichier ..
+view_set=Mettre au contenu de fichier ...
 view_adv=Recherche avancée
 view_sqlrun=Les résultats générés par la Query SQL: $1
+
 users_title=Autorisations des utilisateurs
 users_user=Utilisateur
 users_host=Hôtes
@@ -236,22 +255,56 @@ users_enone=Aucun utilisateurs sélectionnés
 users_ssl=Certificat
 users_dtitle=Supprimer autorisations de l'utilisateur
 users_drusure=Êtes-vous sûr de vouloir supprimer les autorisations d'utilisateur MySQL sélectionnés $1?
-users_dok=Supprimer utilisateurs 
+users_dok=Supprimer utilisateurs
+
 user_title1=Créer un utilisateur
 user_title2=Modifier l'utilisateur
 user_header=MySQL détails de l'utilisateur
+user_vwarning=AVERTISSEMENT: cet utilisateur MySQL est la connexion d'administration pour le domaine Virtualmin $1. La modification des paramètres ici peut provoquer des erreurs dans Virtualmin.
 user_user=Nom d'utilisateur
 user_all=Utilisateur anonyme
 user_pass=Mot de passe
 user_leave=Ne pas changer
+user_locked=Verrouillé
 user_none=Aucun
 user_any=Tout
-user_set=Mettre à ..
+user_set=Mettre à ...
 user_host=Hôtes
 user_perms=Permissions
+user_priv_select=Sélectionnez les données du tableau
+user_priv_insert=Insérer des données de table
+user_priv_update=Mettre à jour les données de la table
+user_priv_delete=Supprimer les données de table
+user_priv_create=Créer des tableaux
+user_priv_drop=Tables basses
+user_priv_reload=Recharger les subventions
+user_priv_shutdown=Base de données d'arrêt
+user_priv_process=Gérer les processus
+user_priv_file=Opérations sur les fichiers
+user_priv_grant=Accorder des privilèges
+user_priv_references=Opérations de référence
+user_priv_index=Gérer les index
+user_priv_alter=Modifier les tables
+user_priv_show_db=Afficher les bases de données
+user_priv_super=Superutilisateur
+user_priv_create_tmp_table=Créer des tables temporaires
+user_priv_lock=Tables de verrouillage
+user_priv_lock_tables=Tables de verrouillage
+user_priv_execute=Exécuter
+user_priv_repl_slave=Réplication esclave
+user_priv_repl_client=Réplication client
+user_priv_create_view=Créer une vue
+user_priv_show_view=Afficher la vue
+user_priv_create_routine=Créer une routine
+user_priv_alter_routine=Modifier la routine
+user_priv_create_user=Créer un utilisateur
+user_priv_event=Créer un évènement
+user_priv_trigger=Créer un déclencheur
+user_priv_create_tablespace=Créer un tablespace
 user_err=Impossible d'enregistrer l'utilisateur
 user_euser=Nom d'utilisateur manquant ou invalide
 user_ehost=Manquant ou invalide permettre hôte(s)
+user_eslash=MySQL ne prend pas en charge un mot de passe contenant une barre oblique inverse
 user_ssl=Type de certificat requis
 user_cipher=SSL chiffre
 user_ssl_=Aucun
@@ -267,6 +320,7 @@ user_emax_user_connections=Connexions simultanées maximum doit être un nombre
 user_emax_connections=Nombre maximal de connexions par heure doit être un nombre
 user_emax_updates=Mises à jour maximum par heure doit être un nombre
 user_emax_questions=Maximum de requêtes par heure doit être un nombre
+
 dbs_title=Permissions de base de données
 dbs_db=Bases de données
 dbs_user=Utilisateur
@@ -285,6 +339,7 @@ dbs_enone=Pas de bases de données sélectionnées
 dbs_dtitle=Permissions de données de suppression
 dbs_drusure=Êtes-vous sûr de vouloir supprimer les autorisations de base de données MySQL sélectionnés $1?
 dbs_dok=autorisations de suppression
+
 db_title1=Créer des autorisations de base de données
 db_title2=Modifier autorisations de la base de données
 db_header=Options d'autorisation de Base de données
@@ -299,6 +354,7 @@ db_err=Impossible d'enregistrer les autorisations de base de données
 db_euser=Nom d'utilisateur manquant ou invalide
 db_ehost=Nom d'hôte manquant ou invalide
 db_edb=Nom de base de données manquant ou invalide
+
 hosts_title=Permissions d'hôte
 hosts_db=Bases de données
 hosts_host=Hôtes
@@ -313,14 +369,18 @@ hosts_enone=Aucun hôtes sélectionnés
 hosts_dtitle=Supprimer des autorisations d'hôte
 hosts_drusure=Êtes-vous sûr de vouloir supprimer les autorisations d'hôte MySQL $1 sélectionnés?
 hosts_dok=Autorisations de suppression
+hosts_return=autorisations d'hôte
+
 host_title1=Créer des autorisations d'hôte
 host_title2=Modifier les autorisations d'hôte
+host_header=Options d'autorisations d'hôte
 host_db=Bases de données
 host_any=Tout
 host_sel=Sélectionnés
 host_otherdb=Modèle de correspondance
 host_host=Hôtes
 host_perms=Permissions
+
 newdb_title=Créer la base de données
 newdb_header=Nouvelles options de base de données
 newdb_db=Nom de base de données
@@ -334,6 +394,7 @@ newdb_err=Impossible de créer la base de données
 newdb_edb=Nom de base de données manquant ou invalide
 newdb_ecannot=Vous n'êtes pas autorisé à créer des bases de données
 newdb_ecannot2=Vous n'êtes pas autorisé à créer plus bases de données
+
 exec_title=Exécuter SQL
 exec_header=Entrez une commande SQL à exécuter sur la base $1 ..
 exec_old=Ou sélectionnez une commande SQL précédente:
@@ -370,6 +431,7 @@ exec_iheader=Fichier texte d'options d'importation
 exec_created=$1 tableaux ont été créés.
 exec_inserted=$1 enregistrements  ont été insérés.
 exec_cs=Jeu de caractères pour les données
+
 tprivs_title=Autorisations de table  
 tprivs_table=Table
 tprivs_db=Base de données
@@ -388,6 +450,7 @@ tprivs_enone=Pas de tables sélectionnées
 tprivs_dtitle=Supprimer autorisations de table
 tprivs_drusure=Êtes-vous sûr de vouloir supprimer les $1 autorisations de tables MySQL sélectionnés?
 tprivs_dok=Autorisations de suppression
+
 tpriv_title1=Créer permissions de TABLE
 tpriv_title2=Editer autorisations de la table
 tpriv_header=Tableau des options d'autorisation
@@ -404,6 +467,7 @@ tpriv_etable=Pas de table sélectionné
 tpriv_euser=Nom d'utilisateur manquant ou invalide
 tpriv_ehost=Hôte manquant ou invalide
 tpriv_edb=Nom de base de données manquant ou invalide
+
 cprivs_title=Autorisations de champ
 cprivs_field=Champ
 cprivs_table=Table
@@ -423,6 +487,7 @@ cprivs_enone=Aucun champs sélectionnés
 cprivs_dtitle=Supprimer Autorisations sur les colonnes
 cprivs_drusure=Êtes-vous sûr de vouloir supprimer les autorisations de colonne MySQL $1 sélectionnés?
 cprivs_dok=autorisations de suppression
+
 cpriv_title1=Créer des autorisations de champ
 cpriv_title2=Modifier Autorisations de champ 
 cpriv_header=Champ des options d'autorisation
@@ -439,11 +504,13 @@ cpriv_etable=Pas de table sélectionné
 cpriv_euser=Nom d'utilisateur manquant ou invalide
 cpriv_ehost=Hôte manquant ou invalide
 cpriv_edb=Nom de base de données manquant ou invalide
+
 esql=SQL $1 manqué : $2
 eparse=Webmin ne peut pas analyser la sortie de la commande $1 en raison de la nature des données dans votre base de données. Vous aurez besoin d'installer $2 et $3 modules Perl pour résoudre ce problème.
 edenied=Vous n'avez pas accès à cette base de données MySQL
 perms_ecannot=Vous n'êtes pas autorisé à modifier les autorisations
 perms_edb=Vous n'êtes pas autorisé à modifier les autorisations pour vos propres bases de données
+
 acl_dbs=Bases de données que cet utilisateur peut gérer
 acl_dall=Toutes les bases de données
 acl_dsel=Sélectionné ..
@@ -464,6 +531,7 @@ acl_bnone=Interdire les sauvegardes
 acl_indexes=Peut afficher et gérer les index?
 acl_views=Peut afficher et gérer vues?
 acl_files=Peut exécuter SQL à partir de fichiers locaux?
+
 log_start=Serveur MySQL en route
 log_stop=Serveur MySQL arrêté
 log_cnf=Configuration du serveur MySQL changé
@@ -527,6 +595,8 @@ log_importupload=Les données importées à partir du fichier téléchargé
 log_importfile=Données importé de le fichier $1
 log_set=Modifiées $1 variables de MySQL
 log_root=Changement de mot de passe d'administration
+log_manual=Fichier de configuration modifié manuellement
+
 backup_title=Sauvegarder la base de données
 backup_title2=sauvegarder toutes les bases de données
 backup_edump=Le programme de sauvegarde MySQL $1 n'a pas été trouvé sur votre système. Peut-être que votre <a href='$2'>configuration du module</a> est incorrect.
@@ -538,6 +608,11 @@ backup_header2=Autres options de sauvegarde
 backup_header3=Planification de la sauvegarde
 backup_file=Sauvegarde à fichier
 backup_file2=Sauvegarde à répertoire
+backup_prefix=Préfixe du nom de fichier
+backup_eprefix=Le préfixe du nom de fichier ne peut pas contenir /
+backup_noprefix=Aucun
+backup_download=Télécharger dans le navigateur
+backup_path=Chemin sur le serveur
 backup_mkdir=Créer un répertoire de destination?
 backup_where=Seules les lignes de sauvegarde correspondant à <tt>where</tt> clause
 backup_none=Toutes les lignes
@@ -557,6 +632,7 @@ backup_ewhere=manquant <tt>where</tt> clause
 backup_echarset=jeu de caractères manquant
 backup_ebackup=<tt>mysqldump</tt> a échoué: $1
 backup_ebefore=Avant-sauvegarde commande a échoué!
+backup_eisdir=La destination de sauvegarde $1 est un répertoire
 backup_done=sauvegardé avec succès $3 bytes de base $1 à fichier $2.
 backup_sched=Sauvegarde planifiée est activée?
 backup_sched1=Oui, à des moments choisis ci-dessous ..
@@ -595,16 +671,22 @@ backup_bodydoing=Sauvegarde de $1 à $2 ..
 backup_bodyfailed=.. sauvegarde a échoué: $1
 backup_bodyok=.. sauvegarde de $1 créé OK
 backup_bodytotal=taille de la sauvegarde totale: $1
+backup_bodyspace=Taille du système de fichiers: $1 Espace libre : $2
 backup_bodyall=tous
+backup_edownloadall=Une seule sauvegarde de base de données peut être téléchargée
+backup_edownloadsave=Le mode de téléchargement ne peut pas être utilisé pour les sauvegardes planifiées
+
 import_title=Importation de données
 import_uploadout=Importation de données à partir du fichier téléchargé ..
 import_fileout=Importation de données depuis le fichier $1 ..
 import_eupload=fichier d'importation téléchargé manquant 
 import_efile=Nom de fichier d'importation manquant
+
 adv_title=Recherche Avancée
 adv_and=Trouver les enregistrements correspondant à tous les critères ..
 adv_or=Trouver les enregistrements correspondant à des critères ..
 adv_ok=Chercher maintenant
+
 csv_title=Exporter fichier CSV
 csv_header=CSV options d'exportation
 csv_dest=Destination des exportations
@@ -625,32 +707,57 @@ csv_done=Export CSV à $1 est complet. La taille du fichier résultant est de $2
 csv_headers=Inclure les noms de colonnes dans CSV?
 csv_cols=Colonnes à inclure dans CSV
 csv_ecols=Aucun colonnes sélectionnées
+
 cnf_title=Configuration du serveur MySQL
 cnf_efile=Le fichier de configuration MySQL $1 n'a pas été trouvé sur votre système. Vous devrez peut-être ajuster la  <a href='$2'>configuration du module</a> d'utiliser le bon chemin.
 cnf_header=Options de serveur MySQL
 cnf_port=Port du serveur MySQL
 cnf_bind=Serveur MySQL adresse d'écoute
 cnf_all=Tout
+cnf_socket=Socket MySQL Unix
 cnf_datadir=Bases de données du répertoire des fichiers
-cnf_stor= Moteur de stockage par défaut 
+cnf_stor= Moteur de stockage par défaut
+cnf_big-tables=Autoriser les grandes tables?
 cnf_emysqld=Impossible de trouver section [mysqld] dans my.cnf
 cnf_err=Impossible d'enregistrer les options du serveur MySQL
 cnf_eport=numéro de port manquant ou invalide
 cnf_ebind=Adresse IP à écouter sur manquant ou invalide 
 cnf_esocket=manquant fichier de socket
 cnf_edatadir=Répertoire des fichiers de base de données manquantes ou invalides
+cnf_key_buffer=Taille du tampon de clé
+cnf_key_buffer_size=Taille du tampon de clé
+cnf_max_allowed_packet=Taille maximale des paquets
+cnf_max_connections=Nombre maximum de connexions
 cnf_query_cache_size=requêtes taille du cache en octets
 cnf_equery_cache_size=Query cache size non valide
+cnf_table_cache=Tables à mettre en cache
+cnf_table_open_cache=Tables à mettre en cache
+cnf_sort_buffer=Trier la taille du tampon
+cnf_sort_buffer_size=Trier la taille du tampon
+cnf_net_buffer_length=Taille du tampon réseau
+cnf_myisam_sort_buffer_size=Taille du tampon de tri MyISAM
+cnf_ekey_buffer_size=Taille du tampon de clés manquante ou non valide
 cnf_ekey_buffer=Key buffer size manquant ou invalide
 cnf_emax_allowed_packet=Maximum packet size manquant ou invalide
 cnf_etable_cache=Données manquantes ou invalides tables à cache
 cnf_esort_buffer=Sort buffer size manquant ou invalide
+cnf_esort_buffer_size=Taille du tampon de tri manquante ou non valide
 cnf_enet_buffer_length=Network buffer size manquant ou invalide
 cnf_emyisam_sort_buffer_size=taille du tampon manquant ou invalide MyISAM sorte
 cnf_emax_connections=Nombre maximum de connexions manquant ou invalide 
 cnf_restart=Enregistrer et Redémarrer MySQL
 cnf_fpt=Fichier séparé pour chaque table InnoDB?
+cnf_ilt=Délai d'expiration du verrouillage InnoDB (en secondes)
+cnf_eilt=Le délai d'expiration du verrouillage InnoDB doit être un entier
+
+manual_title=Modifier les fichiers de configuration
+manual_file=Modifier le fichier de configuration:
+manual_ok=D'accord
+manual_efile=Fichier de configuration non valide!
+manual_err=Impossible d'enregistrer le fichier de configuration
+
 index_title1=Créer l'index
+index_header1=Options d'index
 index_name=Nom Index
 index_fields=Champs dans l'index
 index_type=Type d'index
@@ -664,10 +771,14 @@ index_ecols=Aucun champs sélectionnés
 index_title2=Éditer l'index
 index_header=Indice $1 en base de données $2
 index_ecannot=Vous n'êtes pas autorisé à gérer les index
+
 syslog_desc=MySQL messages d'erreur
+syslog_logdesc=Requêtes MySQL
+
 fdrop_err=Impossible de supprimer des champs
 fdrop_enone=Aucun sélectionné
 fdrop_eall=Vous ne pouvez pas supprimer tous les champs d'une table!
+
 view_title1=Créer une vue
 view_title2=Éditer
 view_header1=Voir les détails
@@ -693,6 +804,7 @@ view_cascaded=Vues sous-jacents
 view_local=Seulement ce vue
 view_nocheck=Aucun
 view_ecannot=Vous n'êtes pas autorisé à gérer vues
+
 procs_title=Connexions de Base de données
 procs_id=ID
 procs_user=Nom d'utilisateur
@@ -704,9 +816,11 @@ procs_query=Query en cours d'exécution
 procs_kill=Tuer connexions sélectionnées
 procs_ecannot=Vous n'êtes pas autorisé à voir les connexions de base de données
 procs_none=Il n'y a pas d'autres connexions client de base de données à l'heure actuelle.
+
 kill_err=Impossible de tuer les connexions de base de données
 kill_ecannot=Vous n'êtes pas autorisé à gérer les connexions de base de données
 kill_enone=Aucun sélectionné
+
 vars_title=Variables système MySQL
 vars_desc=Avertissement - Variables définies sur cette page seront remis à leurs valeurs par défaut lorsque MySQL est redémarré. Paramètres permanentes doivent être effectuées sur la page de la <a href='$1'>Configuration du Serveur MySQL</a>.
 vars_ecannot=Vous n'êtes pas autorisé à modifier les variables de système
@@ -717,6 +831,7 @@ vars_search=Afficher les variables correspondantes:
 vars_ok=Recherche
 vars_none2=Pas de variables système correspond à votre recherche.
 vars_none=Pas de variables système ont été trouvés!
+
 compat_ansi=ANSI
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQL 4.0
@@ -728,7 +843,9 @@ compat_maxdb=MaxDB
 compat_no_key_options=Options clés
 compat_no_table_options=Options de la table
 compat_no_field_options=Options de champ
+
 config_echarset=Jeu de caractères Missing manquant ou invalide
+
 root_title=Changer le mot de passe d'administration
 root_header=Nouveau mot de passe d'administration
 root_user=Connexion d'administration
@@ -741,3 +858,4 @@ root_epass1=Pas de nouveau mot de passe saisi
 root_epass2=Les mots de passe ne correspondent pas
 root_none=Aucun mot de passe!
 root_auto=automatique (typiquement <tt>root</tt>)
+__norefs=1
