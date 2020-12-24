@@ -87,6 +87,7 @@ index_ipset_maxe=# Max
 index_ipset_size=Size
 index_ipvxmode=Change IP protocol version:
 index_ipvx4=IPv4
+index_ipvx6=IPv6
 
 desc_p=protocol is $1
 desc_p!=protocol is not $1
