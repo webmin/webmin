@@ -14,3 +14,6 @@ iface=Network interface to activate firewall on,3,Automatic
 line2=IPv4 configuration,11
 save_file=File to save/edit <tt>IPv4</tt> rules,3,Use operating system or Webmin default
 direct=Directly edit firewall <tt>IPv4</tt> rules instead of save file?,1,1-Yes,0-No
+line3=IPv6 configuration,11
+save_file6=File to save/edit <tt>IPv6</tt> rules,3,Use operating system or Webmin default
+direct6=Directly edit firewall <tt>IPv6</tt> rules instead of save file?,1,1-Yes,0-No
