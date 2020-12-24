@@ -1,8 +1,9 @@
 line1=Options configurables,11
-refresh_days=Intervalle de rafraîchissement de la liste des modules CPAN,0,5
-save_partial=Garder le module téléchargé si l'installation échoue ?,1,1-Oui,0-Non
-def_args=Arguments par défaut pour Makefile.PL,0
-incpackages=Inclure les modules Perl des paquetages logiciels ?,1,1-Oui,0-Non
+refresh_days=Jours avant l'actualisation de la liste des modules CPAN,0,5
+save_partial=Conserver le module téléchargé si l'installation échoue?,1,1-Oui,0-Non
+def_args=Arguments par défaut de Makefile.PL,0
+incpackages=Inclure les modules Perl des progiciels?,1,1-Oui,0-Non
+incyum=Installer les modules Perl à partir des progiciels disponibles?,1,1-Oui,0-Non
 line2=Configuration du système,11
-packages=Liste des modules Perl CPAN
-cpan=URL de base des modules CPAN
+packages=Liste des modules CPAN Perl,0
+cpan=URL de base des modules CPAN,0
