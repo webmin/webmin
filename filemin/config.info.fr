@@ -1,0 +1,2 @@
+allowed_paths=Répertoires accessibles aux utilisateurs d'Usermin,9,60,5,\t
+max=Taille maximale des fichiers téléchargés,3,Illimité
