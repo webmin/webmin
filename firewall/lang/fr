@@ -1,6 +1,5 @@
 index_title=Firewall IPTables Linux
 index_title_v=Pare-feu IPv4
-index_title_v6=Pare-feu IPv6
 index_editing=Fichier de règles $1
 index_ecommand=La commande $1 n'a pas été trouvée sur votre système. Webmin a besoin de cette commande pour configurer IPtables.
 index_ekernel=Une erreur est survenue lors du contrôle de la configuration courante d'IPtables : $1 ceci indique que votre noyau ne supporte pas IPtables
@@ -88,7 +87,6 @@ index_ipset_maxe=# Max
 index_ipset_size=Taille
 index_ipvxmode=Changer la version du protocole IP:
 index_ipvx4=IPv4
-index_ipvx6=IPv6
 
 desc_p=le protocole est $1
 desc_p!=le protocole n'est pas $1
