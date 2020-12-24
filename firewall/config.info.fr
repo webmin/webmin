@@ -14,3 +14,6 @@ iface=Interface réseau pour activer le pare-feu,3,Automatique
 line2=Configuration IPv4,11
 save_file=Fichier pour enregistrer/modifier les règles <tt>IPv4</tt>,3,Utiliser le système d'exploitation ou Webmin par défaut
 direct=Modifier directement les règles du pare-feu <tt>IPv4</tt> au lieu de sauvegarder le fichier?,1,1-Oui,0-Non
+line3=IPv6 configuration,11
+save_file6=Fichier pour enregistrer/modifier les règles <tt>IPv6</tt>,3,Utiliser le système d'exploitation ou Webmin par défaut
+direct6=Modifier directement les règles du pare-feu <tt>IPv6</tt> au lieu de sauvegarder le fichier?,1,1-Oui,0-Non
