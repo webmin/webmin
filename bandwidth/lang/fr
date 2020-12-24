@@ -24,11 +24,11 @@ index_oport=port externe
 index_port=port
 index_for=pour
 index_all=&lt;tout&gt;
-index_forhour=heure..
-index_forhost=hôte..
-index_forproto=protocole..
-index_foriport=port interne..
-index_foroport=port externe..
+index_forhour=heure ...
+index_forhost=hôte ...
+index_forproto=protocole ...
+index_foriport=port interne ...
+index_foroport=port externe ...
 index_search=Générer le rapport
 index_none=Aucun trafic n'a encore été traité par ce module. Si vous venez d'installer le service, au moins une heure peut être nécessaire avant qu'un trafic ne soit traité.
 index_ehour=Heure invalide - doit avoir le format aaaa-mm-jj hh:mm
@@ -40,7 +40,7 @@ index_to=Pour le trafic avant
 index_efrom=Date ou heure de début invalide.
 index_eto=Date ou heure de fin invalide.
 index_err=Impossible de générer le rapport
-index_usage=Trafic réseau <font color=#ff0000>downloadé</font> et <font color=#0000ff>uploadé</font>
+index_usage=Trafic réseau <font color=#ff0000>téléchargé</font> et <font color=#0000ff>téléversé</font>
 index_hhour=Heure
 index_hhost=Hôte
 index_hday=Jour
@@ -57,20 +57,29 @@ index_rotate=Mise à jour des Statistiques
 index_rotatedesc=Cliquez ce bouton pour analyser tout le trafic déjà enregistré jusqu'à maintenant, afin de le rendre disponible pour créer un rapport immédiatement.
 index_eiptables=Attention - Votre configuration d'IPTables a une erreur : $1. Activer la surveillance de bande passante va effacer toutes vos règles du pare-feu.
 index_return=Formulaire de rapport
+
 log_setup=Installer la surveillance de bande passante sur l'interface $1
 log_turnoff=Désactiver la surveillance de bande passante
 log_rotate=Statistiques mises à jour
+
 acl_setup=Peut activer ou désactiver la surveillance?
+
 turnoff_ecannot=Vous n'êtes pas autorisé à désactiver la surveillance
+
 setup_ecannot=Vous n'êtes pas autorisé à activer la surveillance
 setup_eiface=Nom d'interface invalide ou manquant
 setup_ezone=Impossible de trouver la zone Shorewall pour l'interface sélectionnée
+
 system_firewall=IPtables
 system_ipfw=IPFW
 system_ipfilter=IPFilter
 system_shorewall=Shorewall
+
 syslog_syslog=Syslog
 syslog_syslog-ng=Syslog-NG
-rotate_title=Statistiques en cours de mise à jour ..
-rotate_doing=Analyse du trafic réseau enregistré ..
-rotate_done=.. terminé.
+
+rotate_title=Statistiques en cours de mise à jour ...
+rotate_doing=Analyse du trafic réseau enregistré ...
+rotate_done=... terminé.
+
+__norefs=1
