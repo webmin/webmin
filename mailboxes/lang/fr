@@ -2,6 +2,7 @@ index_title=Lire les mails des usagers
 index_none=Vous n'êtes pas autorisé à lire des emails pour tous les utilisateurs de ce système.
 index_header=Boîtes aux lettres des usagers
 index_empty=Pas de courier
+index_return=user list
 index_esystem=Aucun des serveurs de messagerie pris en charge (Exim, Qmail, Postfix et Sendmail) ont été détectés sur votre système. Vous aurez besoin d'ajuster la <a href='$1'>configuration du module</a> pour définir le serveur de messagerie et éventuellement chemins de messagerie manuellement.
 index_esystem2=Le serveur de messagerie dans le <a href='$1'>configuration du module</a> n'a pas été trouvé sur votre système. Vous aurez besoin d'ajuster la configuration pour utiliser le serveur correct.
 index_esystem3=Une erreur est survenue en contact avec le système de messagerie dans le <a href='$1'>configuration du module</a> : $2.
@@ -19,6 +20,7 @@ index_eperl=Le module Perl $1 nécessaire pour le mode d'authentification SMTP s
 index_file=Lire le courrier du Fichier:
 index_nousers=Aucun membre n'a été trouvé!
 index_nousersmail=Aucun membre avec email ont été trouvés.
+
 mail_title=Courrier de l'Usager
 mail_from=De
 mail_date=Date
@@ -75,6 +77,7 @@ mail_fromfilter=Créer filtre par l'expéditeur
 mail_tofilter=Créer filtre par destinataire
 mail_subfilter=Créer filtre par sujet
 mail_unknown=Inconnu
+
 mail_sign=Signer avec la clé
 mail_nosign=&lt;Ne signez pas&gt;
 mail_crypt=Chiffrer pour
@@ -108,6 +111,8 @@ mail_esystem=Une erreur est survenue en contact avec le système de messagerie :
 mail_selread=Sélectionner lu.
 mail_selunread=Sélectionner non lu.
 mail_selspecial=Sélectionner spécial.
+mail_specialsync=Spécial Sync
+
 view_title=Lire un Courrier
 view_desc=Courrier $1 dans $2
 view_desc2=Message $1 pour l'utilisateur $2
@@ -149,6 +154,7 @@ view_sub=Attaché Email
 view_sub2=Attaché email de <i>$1</i>
 view_egone=Ce message ne existe plus
 view_eugone=Ne existe pas cet utilisateur
+
 view_gnupg=GnuPG vérification de la signature
 view_gnupg_0=Signature par $1 est valide.
 view_gnupg_1=Signature par $1 est valide, mais la chaîne de confiance ne pouvait être établie.
@@ -185,7 +191,9 @@ view_images=Voir les images
 view_raw=Voir le message brut
 view_aall=Enregistrer toutes les pièces jointes comme ZIP.
 view_aslideshow=Voir toutes les images.
+
 compose_title=Écrire un Courrier
+
 reply_title=Répondre au Courrier
 forward_title=Rediriger un Courrier
 enew_title=Editer le message
@@ -215,9 +223,11 @@ reply_addattach=Ajouter un champ de attachement.
 reply_addssattach=Ajouter un champ de attachement côté-serveur.
 reply_html0=Composer le texte
 reply_html1=Composer HTML
+
 reply_spell=Vérifiez les erreurs d'orthographe?
 reply_draft=Sauver comme brouillon
 reply_save=Enregistrer et modifier
+
 send_err=Impossible d'envoyer le courrier
 send_eto=Adresse du destinataire manquante
 send_efrom=Adresse de l'émetteur manquant
@@ -225,7 +235,7 @@ send_esubject=Sujet manquante ou non valide
 send_title=Courrier Envoyé
 send_title2=Courrier Sauvé
 send_ok=Courrier envoyé avec succès à $1
-send_sending=Envoi d'un mail à $1 ..
+send_sending=Envoi d'un mail à $1 ...
 send_ecannot=Vous n'êtes pas autorisé à envoyer un courrier de cet usager
 send_esmtp=Impossible d'exécuter la commande SMTP $1 : $2
 send_eattach=Les pièces jointes ne peuvent pas totaliser plus que $1 kB en taille.
@@ -233,7 +243,8 @@ send_eperms=L'utilisateur $1 ne peut pas lire $2
 send_eperms2=Vous n'êtes pas autorisé à envoyer le fichier $1
 send_epath=L'exécutable de Sendmail $1 n'existe pas.
 send_efile=Impossible de lire attachement $1 : $2
-send_done=.. fait.
+send_done=... fait.
+
 send_epass=Vous ne pouvez pas signer un message parce que votre mot de passe n'a pas encore être mis en place dans le module GnuPG.
 send_esign=Impossible de signer un message : $1
 send_ekey=Impossible de trouver la clé pour l'adresse e-mail $1
@@ -241,10 +252,11 @@ send_ecrypt=Impossible de chiffrer un message : $1
 send_eword=Mot de mal orthographié $1
 send_eword2=Mot de mal orthographié $1 - corrections possibles $2
 send_eline=En ligne $1 :
-send_espell=Les fautes d'orthographe suivantes ont été trouvées dans votre message ..
+send_espell=Les fautes d'orthographe suivantes ont été trouvées dans votre message ...
 send_draft=Mail à $1 sauvegardé dans le dossier des brouillons.
-send_drafting=Enregistrer mail à $1 dans le dossier des brouillons. ..
+send_drafting=Enregistrer mail à $1 dans le dossier des brouillons ...
 send_eattachsize=La pièce jointe dépasse la taille autorisée maximale de $1 bytes
+
 delete_title=Effacer le message
 delete_rusure=Etes-vous sûr que vous voulez supprimer les $1 messages sélectionnés de $2? Cela peut prendre un certain temps pour un gros fichier mail. Jusqu'à ce que la suppression est terminée, aucune autre action ne doit être effectuée.
 delete_rusure2=Êtes-vous sûr de vouloir supprimer ce message de $1? Cela peut prendre un certain temps pour un gros fichier mail. Jusqu'à ce que la suppression est terminée, aucune autre action ne doit être effectuée.
@@ -267,6 +279,7 @@ delete_nobutton=Aucun bouton cliqué
 delete_ereport=Pas réussi de raporter comme spam : $1
 delete_errc=Ne peut pas copier le courrier
 delete_errm=Ne peut pas déplacer le courrier
+
 confirm_title=Confirmer la suppression
 confirm_warn=Etes vous sur de vouloir supprimer les $1 messages sélectionnées?
 confirm_warnf=Etes-vous sûr de vouloir supprimer les $1 messages sélectionnés dans le dossier <b>$2</b>?
@@ -276,6 +289,7 @@ confirm_warn4=Jusqu'à la fin de l'effacement, aucune autre action ne peut êtes
 confirm_ok=Effacer maintenant
 confirm_warnall=Etes vous sûr de vouloir supprimer tous les messages de ce dossier?
 confirm_warnallf=Etes-vous sûr que vous voulez supprimer tous les messages dans le dossier <b>$1</b>?
+
 search_title=Résultats de recherche
 search_ecannot=Vous n'êtes pas autorisé à rechercher l'email de l'utilisateur
 search_ematch=Vous devez saisir texte auquel faire correspondre.
@@ -304,16 +318,19 @@ search_nolatest=Tout dans le dossier
 search_latestnum=Seuls les derniers
 search_elatest=nombre de messages à rechercher manquant ou invalide
 search_withstatus=, avec statut $1
+
 folder_inbox=Boite de Réception
 folder_sent=Courriers Envoyés
 folder_drafts=Brouillons
 folder_trash=Corbeille
+
 detach_err=Impossible de détacher fichier
 detach_edir=Aucun fichier ou répertoire auquel sauver entrée
 detach_eopen=Impossible d'ouvrir $1 : $2
 detach_ewrite=Impossible d'écrire à $1 : $2
 detach_title=Sauver les fichiers
 detach_ok=Écrit attachement à fichier côté-serveur $1 ($2).
+
 sform_title=Recherche Avancée
 sform_header=Les options avancées de recherche e-mail
 sform_andmode=Mode Critères
@@ -338,6 +355,7 @@ sform_headers=n'importe quel en-tête
 sform_allmsg=message entier
 sform_size=la taille du message
 sform_return=formulaire de recherche avancée
+
 find_enone=Aucun membre correspondant à votre recherche ont été trouvés
 find_title=Résultats de la recherche
 find_results=Utilisateurs correspondant à la recherche pour $1 ..
@@ -350,6 +368,7 @@ find_incount=Courriers
 find_sentcount=Envoyés
 find_fcount=Dossiers
 find_in=$1 dans $2
+
 acl_none=Aucun
 acl_same=L'utilisateur avec le même nom
 acl_all=Tous
@@ -375,12 +394,15 @@ acl_usersu=Avec UID dans la gamme
 acl_sec=Inclure les groupes secondaires?
 acl_dir=Peut lire des fichiers courrier dans le répertoire
 acl_dirauto=Décider automatiquement (n'importe où si tous les utilisateurs sont visibles, nulle part autrement)
+
 log_delmail=Supprimés $1 messages de $2
 log_movemail=Déplacés $1 messages de $2 à $3
 log_copymail=Copiés $1 messages de $2 à $3
 log_send=Mail envoyé à $1
 log_read=Lire le courrier de $1
+
 emodified=Ce dossier a été modifié depuis sa dernière consultation! Retour à la <a href='$1'>liste mail</a> et essayez à nouveau.
+
 razor_title=Rapporter comme Spam
 razor_title2=Rapporter comme Ham
 razor_report=Rapporter ce message à Razor et d'autres bases de données de spam SpamAssassin blocage ..
@@ -390,17 +412,43 @@ razor_done=.. fait
 razor_err=.. échoué! Voir le message d'erreur ci-dessus pour la raison.
 razor_moved=.. fait, et déplacé vers le dossier $1.
 razor_deleted=.. fait, et message aussi supprimé.
+
 ham_title=Signale comme Ham
-ham_report=Signalé ce message comme non-spam à Razor et d'autres bases de données de SpamAssassin ..
+ham_report=Signalé ce message comme non-spam à Razor et d'autres bases de données de SpamAssassin ...
+
 black_title=Refuser l'expéditeur
 black_done=Ajout de l'adresse e-mail $1 sur la liste SpamAssassin des adresses refusées.
 black_already=L'adresse e-mail $1 est déjà sur la liste SpamAssassin des adresses refusées.
+
 white_title=En autorisant l'expéditeur
 white_done=Ajout de l'adresse e-mail $1 sur la liste des adresses autorisées de SpamAssassin.
 white_already=L'adresse e-mail $1 est déjà sur la liste des adresses autorisées de SpamAssassin.
+
+ldap_emod=Module Perl manquant $1 nécessaire pour la connexion à LDAP
+ldap_econn=Impossible de se connecter au serveur LDAP $1 port $2
+ldap_elogin=Impossible de se lier au serveur LDAP $1 comme $2 : $3
+ldap_ehost=Aucun serveur LDAP défini dans la configuration du module
+ldap_eport=Aucun port de serveur LDAP valide défini dans la configuration du module
+ldap_euser=Aucune connexion LDAP définie dans la configuration du module
+ldap_ebase=Aucun DN de base LDAP défini dans la configuration du module
+
 delall_title=Détruire Tous les Couriers
 delall_rusure=Etes-vous sûr que vous voulez supprimer tous les messages de $1? $2 messages totalisant $3 seront supprimés pour toujours.
 delall_ok=Détruire Maintenant
+
 slide_title=Images attachées
 slide_prev=Précédent
 slide_next=Prochaine
+
+left_mail=Courrier
+left_search=Chercher:
+left_folders=Gérer les dossiers
+left_addresses=Carnet d'adresses
+left_prefs=Préférences de messagerie
+left_forward=Un courriel transféré
+left_autoreply=Réponse automatique
+left_filter=Filtres de messagerie
+left_pass=Changer le mot de passe
+left_sig=Editer la signature
+
+__norefs=1
