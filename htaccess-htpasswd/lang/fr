@@ -12,16 +12,20 @@ index_eaccess=Vous n'avez accès à aucun répertoire!
 index_search=Trouver un répertoire protégé dans:
 index_md5=Le chiffrement MD5 est activé dans la configuration du module, mais le module Perl $1 nécessaire n'est pas installé.
 index_sha1=Le chiffrement SHA1 est activé dans la configuration du module, mais le module Perl $1 nécessaire n'est pas installé.
+index_digest2=Le chiffrement de résumé est activé dans la configuration du module, mais la commande $1 ou le module Perl $2 nécessaire pour cela n'est pas installé.
 index_cpan=<a href='$1'>Cliquez ici</a> pour le télécharger et l'installer maintenant.
 index_delete=Déprotéger les répertoires sélectionnés
+index_remove=Dé-protéger et supprimer des fichiers
+
 dir_title1=Ajouter un répertoire protégé
 dir_title2=Editer un répertoire protégé
 dir_header=Options du répertoire protégé
+dir_header2=Options de synchronisation utilisateur
 dir_dir=Chemin du répertoire
 dir_file=Fichier contenant les utilisateurs
 dir_gfile=Fichier contenant les groupes
 dir_auto=Choisir automatiquement
-dir_sel=Fichier sélectionné ..
+dir_sel=Fichier sélectionné ...
 dir_none=Aucun
 dir_crypt=Cryptage du mot de passe
 dir_crypt0=Cryptage Unix
@@ -33,6 +37,7 @@ dir_err=Impossible de sauvegarder le répertoire
 dir_eclash=Ce répertoire est déjà protégé
 dir_edir=Répertoire invalide ou manquant
 dir_ecannot=Vous n'êtes pas autorisé à protéger ce répertoire
+dir_ecannotcreate=Vous n'êtes pas autorisé à configurer les répertoires protégés
 dir_efile=Fichier des utilisateurs invalide ou manquant
 dir_ehtaccess=Impossible de créer le fichier d'options Apache $1 : $2
 dir_ehtpasswd=Impossible de créer le fichier des utilisateurs $1 : $2
@@ -46,12 +51,17 @@ dir_sync_delete=Effacer l'utilisateur lorsque l'utilisateur Unix est supprimé?
 dir_egfile=Aucun fichier de groupes entré.
 dir_require=Utilisateurs à autoriser
 dir_requirev=Tous les utilisateurs du fichier
-dir_requireu=#Seulement les utilisateurs ..
-dir_requireg=Seulement les membres du groupe ..
+dir_requireu=#Seulement les utilisateurs ...
+dir_requireg=Seulement les membres du groupe ...
 dir_erequire_user=Aucun utilisateur à autorisé entré
 dir_erequire_group=Aucun groupe à autoriser entré
 dir_delete=Déprotéger
+dir_delete2=Dé-protéger et supprimer des fichiers
+dir_delete3=Dé-protéger et supprimer un fichier
 dir_apache=Editer les Option d'Apache
+dir_efiledir='$1' est un répertoire et ne peut donc pas être utilisé comme fichier utilisateur
+dir_egfiledir='$1' est un répertoire et ne peut donc pas être utilisé comme fichier de groupe
+
 edit_title1=Créer un utilisateur
 edit_title2=Editer un utilisateur
 edit_header=Détails de l'utilisateur dans le fichier
@@ -63,11 +73,13 @@ edit_pass0=Mettre à
 edit_passfrom=Changer de
 edit_passto=vers un nouveau mot de passe
 edit_dom=type de somme de contrôle
+
 gedit_title1=Créer un groupe
 gedit_title2=Modifier un groupe
 gedit_header=Détails d'un groupe d'authentification Web
 gedit_group=Nom du Groupe
 gedit_members=Membres du groupe
+
 save_err=Impossible de sauver l'utilisateur
 save_euser1=Nom d'utilisateur manquant
 save_euser2=Le nom d'utilisateur ne peut pas contenir le caractère :
@@ -76,15 +88,19 @@ save_eclash=Un utilisateur avec le même nom existe déjà
 save_eoldpass=Ancien mot de passe incorrect.
 save_title=Utilisateur sauvé
 save_edom=Type de somme de contrôle manquant ou invalide
+
 gsave_err=Enregistrement du groupe échoué
 gsave_egroup1=Nom du groupe manquant
 gsave_egroup2=Le nom du groupe ne doit contenir ni :, ni espaces
 gsave_eclash=Un groupe de ce nom existe déjà
+
 acl_dirs=Répertoires autorisés
 acl_user=Création du fichier .htaccess et htusers avec l'utilisateur Unix
 acl_same=Comme le login Webmin
 acl_home=Inclure le répertoire principal de l'utilisateur Unix?
 acl_sync=Peut paramétrer la synchronisation des utilisateurs Unix?
+acl_uonly=Peut ajouter et modifier des répertoires protégés?
+
 log_create_dir=Répertoire $1 ajouté
 log_modify_dir=Répertoire $1 modifié
 log_delete_dir=Répertoire $1 supprimé
@@ -95,13 +111,16 @@ log_create_group=Groupe $1 créé
 log_modify_group=Groupe $1 modifié
 log_delete_group=Groupe $1 supprimé
 log_delete_dirs=$1 répertoires supprimés
+
 search_title=Résultats de la recherche
 search_err=Recherche échouée
 search_edir=Répertoire de recherche invalide ou manquant
 search_ecannot=Vous n'êtes pas autorisé à chercher ce répertoire
-search_doing=Recherche des répertoires protégés dans $1 ..
+search_doing=Recherche des répertoires protégés dans $1 ...
 search_found=Trouvé un nouveau fichier d'options Apache $1 avec des utilisateurs dans $2.
 search_already=Saut du fichier d'option Apache connu $1
 search_noprot=Saut du fichier d'options Apache $1, qui ne protège pas le répertoire.
 search_open=Impossible d'ouvrir le fichier d'options Apache $1 : $2
-search_done=.. fait
+search_done=... fait
+
+__norefs=1
