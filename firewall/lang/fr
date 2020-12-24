@@ -1,5 +1,6 @@
 index_title=Firewall IPTables Linux
 index_title_v=Pare-feu IPv4
+index_title_v6=Pare-feu IPv6
 index_editing=Fichier de règles $1
 index_ecommand=La commande $1 n'a pas été trouvée sur votre système. Webmin a besoin de cette commande pour configurer IPtables.
 index_ekernel=Une erreur est survenue lors du contrôle de la configuration courante d'IPtables : $1 ceci indique que votre noyau ne supporte pas IPtables
@@ -115,6 +116,8 @@ desc_tcp-option=le paquet utilise l'option TCP $1
 desc_tcp-option!=le paquet n'utilise pas l'option TCP $1
 desc_icmp-type=le type ICMP est $1
 desc_icmp-type!=le type ICMP n'est pas $1
+desc_icmpv6-type=Le type ICMP est $1
+desc_icmpv6-type!=Le type ICMP n'est pas $1
 desc_mac-source=l'adresse ethernet est $1
 desc_mac-source!=l'adresse ethernet n'est pas $1
 desc_limit=le taux est moins que $1
@@ -154,6 +157,7 @@ redhat_eoutput=Une erreur est survenue en tentant d'obtenir le status d'IPtables
 gentoo_escript=Le script de démarrage $1 de Gentoo n'a pas été trouvé sur votre système.
 
 eiptables=Ligne inconnue dans le fichier IPtables : $1
+eip6tables=Ligne de fichier de sauvegarde Ip6tables inconnue : $1
 
 edit_title1=Ajouter la règle
 edit_title2=Editer la règle
