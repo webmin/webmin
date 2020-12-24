@@ -1,1 +1,16 @@
-../firewall/config.info.fr
+line0=Options globales configurables,11
+perpage=Nombre de règles à afficher par page,3,50
+view_condition=Afficher la condition dans la liste des règles?,1,1-Oui,0-Non
+view_comment=Afficher le commentaire dans la liste des règles?,1,1-Oui,0-Non
+comment_mod=Stocker les commentaires sous,1,0-# commentaires dans le fichier de sauvegarde,1-&#45;&#45;option de commentaire
+cluster_mode=Mettre à jour les serveurs de cluster,1,0-Chaque fois qu'un changement est effectué,1-Lors de l'application de la configuration
+before_cmd=Commande à exécuter avant de modifier les règles,3,Aucun
+after_cmd=Commande à exécuter après avoir changé les règles,3,Aucun
+before_apply_cmd=Commande à exécuter avant d'appliquer la configuration,3,Aucun
+after_apply_cmd=Commande à exécuter après l'application de la configuration,3,Aucun
+force_init=Démarrez toujours le pare-feu à partir du script init sur Debian,1,1-Oui,0-Non
+filter_chain=Liste séparée par des virgules des expressions régulières pour filtrer les chaînes non gérées par le pare-feu,0
+iface=Interface réseau pour activer le pare-feu,3,Automatique
+line3=IPv6 configuration,11
+save_file6=Fichier pour enregistrer/modifier les règles <tt>IPv6</tt>,3,Utiliser le système d'exploitation ou Webmin par défaut
+direct6=Modifier directement les règles du pare-feu <tt>IPv6</tt> au lieu de sauvegarder le fichier?,1,1-Oui,0-Non
