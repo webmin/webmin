@@ -1,0 +1,6 @@
+config_file=Chemin complet du fichier de configuration du client Open-iSCSI,0
+initiator_file=Chemin complet du fichier de nom de l'initiateur,0
+ifaces_dir=Chemin complet du répertoire des interfaces,0
+init_name=Noms des scripts de démarrage,0
+iscsiadm=Chemin complet de la commande iscsiadm,0
+iscsiiname=Chemin complet de la commande iscsi-iname,0
