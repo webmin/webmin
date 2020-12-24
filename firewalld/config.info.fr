@@ -1,0 +1,2 @@
+firewall_cmd=Chemin d'accès complet au programme firewall-cmd,0
+init_name=Nom du script d'initialisation de FirewallD,0
