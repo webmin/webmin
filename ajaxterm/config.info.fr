@@ -1,0 +1,2 @@
+autologin=Mode de connexion,1,0-Demander le nom d'utilisateur et le mot de passe,1-Ouvrir le shell racine
+timeout=Délai d'inactivité avant la fermeture de la connexion,0,5,,secondes
