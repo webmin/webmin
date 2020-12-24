@@ -1,6 +1,5 @@
 index_title=Linux IPTables Firewall
 index_title_v=IPv4 Firewall
-index_title_v6=IPv6 Firewall
 index_editing=Rules file $1
 index_ecommand=The command $1 was not found on your system. Webmin needs this command to configure IPtables.
 index_ekernel=An error occured when checking your current IPtables configuration : $1 This may indicate that your kernel does not support IPtables.
@@ -88,7 +87,6 @@ index_ipset_maxe=# Max
 index_ipset_size=Size
 index_ipvxmode=Change IP protocol version:
 index_ipvx4=IPv4
-index_ipvx6=IPv6
 
 desc_p=protocol is $1
 desc_p!=protocol is not $1
