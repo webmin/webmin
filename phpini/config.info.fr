@@ -1,0 +1,1 @@
+php_ini=Fichiers de configuration PHP globaux<br>(Au format <i>filename</i>=<i>description</i>),9,70,5,\t
