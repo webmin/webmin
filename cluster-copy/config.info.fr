@@ -1,0 +1,1 @@
+sort_mode=Trier les commandes de copie par,1,0-Commande créée,1-Nom de fichier,2-Serveurs de destination
