@@ -24,7 +24,6 @@ index_style=Système d'impression: $1
 index_cluster=Serveurs de cluster
 index_clusterdesc=Cliquez sur ce bouton pour configurer des serveurs Webmin supplémentaires sur lesquels les imprimantes seront créées, mises à jour et supprimées.
 index_delete=Supprimer les imprimantes sélectionnées
-
 style_solaris=Solaris
 style_linux=Linux LPR
 style_freebsd=FreeBSD LPR
@@ -34,7 +33,6 @@ style_unixware=UnixWare
 style_cups=CUPS
 style_irix=IRIX
 style_aix=AIX
-
 edit_eedit=Vous n'êtes pas autorisé à éditer cette imprimante
 edit_eadd=Vous n'êtes pas autorisé à ajouter une imprimante
 edit_add=Créer une imprimante
@@ -78,9 +76,7 @@ edit_direct=Connection TCP directe
 edit_dport=Port
 edit_driver=Pilote d'Impression
 edit_check=Vérifier si le serveur distant tourne ?
-
 blocks=blocs
-
 save_err=Impossible d'enregistrer l'imprimante
 save_eadd=Vous n'êtes pas autorisé à ajouter une imprimante
 save_eedit=Vous n'êtes pas autorisé à éditer cette imprimante
@@ -102,7 +98,6 @@ save_evalid=Le système d'impression n'a pas autorisé cette imprimante
 save_errslave=L'imprimante a bien été créée sur ce système, mais les erreurs suivantes se sont produites sur les systèmes de cluster : $1
 save_egone=Aucune imprimante nommée «$1» n'a été trouvée
 save_errdelslave=L'imprimante a supprimé OK sur ce système, mais les erreurs suivantes se sont produites sur les systèmes de cluster : $1
-
 jobs_title=Tâches d'Impression
 jobs_header=Tâches d'impression pour $1
 jobs_id=Numéro de la tâche
@@ -119,23 +114,17 @@ jobs_test=Imprimer une page de test
 jobs_cancelsel=Annuler les travaux sélectionnés
 jobs_on=Sur l'imprimante $1
 jobs_return=liste des travaux d'impression
-
 cancel_ecannot=Vous n'êtes pas autorisé à annuler une tâche d'impression
 cancel_err=Impossible d'annuler la tâche d'impression
 cancel_egone=La tâche d'impression $1 n'existe plus
-
 view_ecannot=Vous ne pouvez voir cette tâche d'impression
 view_egone=Cette tâche d'impression n'existe plus
-
 start_ecannot=Vous n'êtes pas autorisé à démarrer le gestionnaire d'impression
 start_err=Impossible d'arrêter le gestionnaire d'impression
-
 stop_ecannot=Vous n'êtes pas autorisé à arrêter le gestionnaire
 stop_err=Impossible d'arrêter le gestionnaire
-
 restart_ecannot=Vous n'êtes pas autorisé à redémarrer le gestionnaire
 restart_err=Echec du redémarrage du gestionnaire
-
 webmin_none=Aucune
 webmin_nonemsg=Imprimante Postscript ou texte
 webmin_remotemsg=Imprimante distante
@@ -146,7 +135,6 @@ webmin_uniprint=Pilote Uniprint
 webmin_edrivers=Impossible de prendre les pilotes de $1.  Les pilotes Webmin utilisant Ghostscript ne seront pas disponible
 webmin_egs=La commande $1 n'a pas été trouvé.  Les pilotes Webmin utilisant Ghostscript ne seront pas disponible
 webmin_edriver=$1 n'existe pas
-
 caldera_none=Aucune
 caldera_nonemsg=Imprimante distante ou directe
 caldera_prog=Programme
@@ -160,7 +148,6 @@ caldera_uniprint=Pilote Uniprint
 caldera_eprog=$1 n'existe pas
 caldera_edriver=Aucun pilote d'imprimante sélectionné
 caldera_eres=Aucune résolution sélectionnée
-
 redhat_none=Aucune
 redhat_nonemsg=Imprimante texte ou Postscript
 redhat_prog=Programme
@@ -179,7 +166,6 @@ redhat_ehmargin=Marge Droite/Gauche manquante ou invalide
 redhat_evmargin=Marge Haut/Bas manquante ou invalide
 redhat_eres=Aucune résolution de sélectionné
 redhat_printer2=Modèle d'imprimante et pilote
-
 suse_none=Aucune
 suse_nonemsg=Imprimante texte ou Postscript
 suse_prog=Programme
@@ -196,9 +182,7 @@ suse_extra=Options ghostscript supplémentaires
 suse_yast2=Pilote YAST2
 suse_edriver=Aucun type d'imprimante sélectionné
 suse_eres=Résolution manquante ou invalide
-
 estop=Echec de l'arrêt de lpd : $1
-
 acl_printers=Imprimantes que cet usager peut configurer
 acl_add=Peut ajouter de nouvelle imprimante?
 acl_cancel=Peut annuler une tâche d'impression?
@@ -214,7 +198,6 @@ acl_user_all=Tous les utilisateurs
 acl_user_this=Utilisateur Webmin actuel
 acl_delete=Peut supprimer des imprimantes ?
 acl_cluster=Peut gérer le cluster d'imprimantes ?
-
 log_stop=Gestionnaire d'impression stoppé
 log_start=Gestionnaire d'impression démarré
 log_restart=Gestionnaire d'impression redémarré
@@ -227,45 +210,37 @@ log_delete=Imprimante $1 supprimée sur $2
 log_create_l=Created $3 printer $1 on $2
 log_modify_l=Modified $3 printer $1 on $2
 log_delete_l=Deleted $3 printer $1 on $2
-
 linux_paralel=Port parallèle $1
 linux_serial=Port série $1 (COM$1)
 linux_null=Périphérique nul
 linux_usb=Imprimante USB $1
 linux_ecmd=La commande $1 est introuvable sur votre système, ce qui indique que le système d'impression Linux n'est pas installé.
 linux_espool=Le répertoire de spoule $1 n'existe pas sur votre système, ce qui indique que le système d'impression Linux n'est pas installé.
-
 freebsd_paralel=Port parallèle
 freebsd_serial=Port série $1 (COM$1)
 freebsd_ecmd=La commande $1 est introuvable sur votre système, ce qui indique que le système d'impression FreeBSD n'est pas installé.
 freebsd_espool=Le répertoire de spoule $1 n'existe pas sur votre système, ce qui indique que le système d'impression FreeBSD n'est pas installé.
-
 openbsd_paralel=Port parallèle
 openbsd_serial=Port série $1 (COM$1)
-
 unixware_paralel=Port parallèle $1
 unixware_serial=Port série $1
 unixware_null=Périphérique nul
 unixware_ecmd=La commande $1 est introuvable sur votre système, ce qui indique que le système d'impression UnixWare n'est pas installé.
-
 hpux_paralel=Parallèle $1
 hpux_serial=Série $1
 hpux_null=Périphérique nul
 hpux_ecmd=La commande $1 est introuvable sur votre système, ce qui indique que le système d'impression HPUX n'est pas installé.
 hpux_eiface=Le répertoire des scripts d'interface $1 n'existe pas sur votre système, ce qui indique que le système d'impression HPUX n'est pas installé.
-
 lprng_paralel=Port parallèle $1
 lprng_serial=Port série $1 (COM$1)
 lprng_null=Périphérique nul
 lprng_ecmd=La commande $1 est introuvable sur votre système, ce qui indique que le système d'impression LPRng n'est pas installé.
 lprng_espool=Le répertoire de spouleur $1 n'existe pas sur votre système, ce qui indique que le système d'impression LPRng n'est pas installé.
-
 solaris_paralel=Port parallèle
 solaris_uparalel=Port parallèle Ultra 5/10
 solaris_serial=Port série $1
 solaris_null=Périphérique nul
 solaris_ecmd=La commande $1 est introuvable sur votre système, ce qui indique que le système d'impression Solaris n'est pas installé.
-
 test_title=Imprimer une page de test
 test_ecannot=Vous n'êtes pas autorisé à imprimer des pages de test
 test_desc=Ce formulaire vous permet d'imprimer une page de test pour l'imprimante $1. Sélectionner le type de page que vous voulez imprimer :
@@ -277,7 +252,6 @@ test_print=Imprimer la page
 test_exec=Impression de la page de test avec la commande $1 ...
 test_failed=... commande échouée !
 test_ok=... commande réussie.
-
 cups_none=Aucun
 cups_nonemsg=Imprimante distante ou sans traitement
 cups_prog=Programme
@@ -285,14 +259,11 @@ cups_driver=Pilote CUPS
 cups_eprog='$1' n'est pas un programme valide
 cups_opts=Options pour $1
 cups_ecmd=La commande $1 est introuvable sur votre système, ce qui indique que le système d'impression CUPS n'est pas installé.
-
 irix_ecmd=La commande $1 est introuvable sur votre système, ce qui indique que le système d'impression IRIX n'est pas installé.
 irix_eiface=Le répertoire des scripts d'interface $1 n'existe pas sur votre système, ce qui indique que le système d'impression IRIX n'est pas installé.
-
 aix_port=Port d'imprimante $1
 aix_edesc=Description non valide - seuls les lettres et les chiffres sont autorisés et aucun espace
 aix_ecmd=Le serveur d'impression AIX $1 est introuvable. Il n'est peut-être pas installé ou un autre système d'impression est en cours d'utilisation.
-
 cluster_title=Serveurs d'imprimante en cluster
 cluster_none=Aucun serveur n'a encore été ajouté au cluster d'imprimantes.
 cluster_host=Nom d'hôte
@@ -304,7 +275,6 @@ cluster_need=Vous devez ajouter des serveurs avec un identifiant et un mot de pa
 cluster_return=serveurs de cluster
 cluster_delete=Enlever la sélection
 cluster_ecannot=Vous n'êtes pas autorisé à gérer les serveurs d'imprimantes en cluster
-
 add_title=Ajouter des serveurs
 add_msg=Ajout de $1 ..
 add_gmsg=Ajout de serveurs dans le groupe $1 ..
@@ -314,5 +284,3 @@ add_echeck=Le serveur $1 ne dispose pas du module d'administration d'imprimante
 add_ediff=Le serveur $1 utilise un système d'impression différent ($2) sur ce serveur
 add_ediff2=Le serveur $1 utilise un pilote d'impression différent ($2) sur ce serveur
 add_ok=$1 ajouté, avec $2 imprimantes.
-
-__norefs=1

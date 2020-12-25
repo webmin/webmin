@@ -10,7 +10,6 @@ index_hosts=Hôtes
 index_cmd=Commande
 index_delete=Supprimer les Sélections
 index_none=aucun
-
 edit_title1allow=Création d'un Règle de Permission
 edit_title2allow=Édition de Règles de Permission 
 edit_title1deny=Création d'une Règle d'Interdiction
@@ -23,12 +22,9 @@ edit_hosts=Hôtes distants
 edit_hostsexcept=Sauf les hôtes
 edit_cmd=Commandes Shell
 edit_efound=Le démon '$1' est introuvable dans la configuration de xinetd.
-
 save_errtitle=Erreur sur la règle d'enregistrement
 save_ehost=L'entrée de l'hôte contient des caractères incorrects
 save_ecmd=L'entrée de commande contient des caractères incorrects
 save_eservice=Les noms de démons contiennent de mauvais caractères
-
 del_errtitle=Erreur lors de la suppression des règles
 del_enone=Aucune règle marquée à supprimer
-__norefs=1

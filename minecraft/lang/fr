@@ -20,11 +20,9 @@ index_download=Télécharger le fichier serveur
 index_downloaddesc=Cliquez sur ce bouton pour télécharger la dernière version du serveur Minecraft.
 index_upgradedesc=Une nouvelle version de mise à jour est disponible dès maintenant.
 index_upgrade=Mettre à jour maintenant
-
 check_edir=Le chemin du dossier de base $1 n'existe pas
 check_ejar=Le fichier serveur JAR file $1 n'existe pas
 check_ejava=L'éxécutable JAVA $1 n'a pas été trouvé
-
 conf_title=Configuration du serveur
 conf_desc=Ces paramètres ne seront pris en compte qu'une seul fois après avoir redémarré le serveur.
 conf_header=Configuration globale du serveur
@@ -64,7 +62,6 @@ conf_eprotect=Le cercle de sécuritée des apparitions doit être un nombre
 conf_eip=Adresse IP manquante ou invalide
 conf_eport=Port manquant ou valeur numérique
 conf_args=Commande java
-
 users_title=Utilisateurs et opérateurs
 users_tabwhite=Utilisateurs autorisés
 users_tabop=Opérateurs
@@ -74,7 +71,6 @@ users_whitedesc=Si activé, seul les utilisateurs listés seront autorisés a se
 users_opdesc=Seul les utilisateurs listés seront autorisés à lancer des commandes Adminsitrateurs.
 users_ipdesc=Ces adresses IP ne seront pas autorisés à se connecter.
 users_enabled=N'autoriser que les utilisateurs dans la liste blanche
-
 conns_title=Joueurs connectés
 conns_desc=Les joueurs actuels sont connectés à votre serveur. Cliquez sur son nom pour afiner ses droits.
 conns_edown=Les joueurs ne peuvent être gérés que lorsque le serveur tourne
@@ -83,19 +79,16 @@ conns_disc=Séléction des déconnectés
 conns_enter=Gérer le joueur nommé:
 conns_ok=OK
 conns_return=Liste des joueurs
-
 logs_title=Afficher le log
 logs_lines=Afficher les dernières lignes
 logs_matching=Lignes manquantes
 logs_ok=Rechercher
-
 console_title=Serveur (mode console)
 console_run=Insérer une commande
 console_ok=OK
 console_old=or Séléctionner le précedent
 console_edit=Éditer le précédent
 console_edown=Le mode console du serveur Minecraft ne peut être utilisé que lorsque le serveur tourne
-
 conn_title=Gérer le joueur
 conn_header=Détails du joueur et activitée récente
 conn_name=Nom du joueur
@@ -162,14 +155,12 @@ conn_kickdone=Joueur déconnecté
 conn_edate=Date et heure
 conn_emsg=Description
 conn_events=Evénements récents
-conn_nostats=Aucune statistique disponible
 conn_noperl=Le module Perl $1 est nécessaire et n'est pas installé !
 conn_ejson=Erreur pour lire les statistiques du joueur : $1
 conn_stats=Statistique du joueur
 conn_stat=Statistique
 conn_statv=Valeur
 conn_nostats=Aucune statistique n'a encore été enregistrée
-
 worlds_title=Gérér les mondes
 worlds_def=Activer
 worlds_name=Nom du monde
@@ -183,7 +174,6 @@ worlds_none=Aucun monde n'a déja été crée!
 worlds_return=Liste des mondes
 worlds_err=Erreur lors de la création d'un nouveau monde
 worlds_esel=Pas de monde séléctionné !
-
 world_edit=Éditer un monde
 world_create=Créer un monde
 world_header=Détails d'un monde Minecraft
@@ -208,14 +198,12 @@ world_ezip=Ne monde uploadé ne semble pas être dans un format ZIP
 world_eunzip=Erreur au dézippage du monde : $1
 world_edat=Ce ZIP ne contient pas de fichier level.dat
 world_download=Téléchharger ce monde (ZIP)
-
 chooser_title=Séléctionner objet
 chooser_id=ID de l'objet
 chooser_name=Nom de l'objet
 chooser_none=Aucun objet ne coorespond à votre recherche !
 chooser_search=Afficher les objets coorespondant
 chooser_ok=Rechercher
-
 cmds_title=Commande dans monde
 cmds_header=Opérations dans monde
 cmds_gamemode=Changer le mode de jeu
@@ -255,12 +243,10 @@ cmds_difficultydone=Difficulté du jeu changée
 cmds_say=Message général
 cmds_sayb=Envoyé
 cmds_msgdone=Envoyer à tout les joueurs
-
 manual_title=Éditer le fichier de configuration
 manual_desc=Cette page vous permet d'editer manuellement le fichier de configuration Minecraft <tt>$1</tt>. Attention, aucune validation ne sera effectuée sur votre entrée. Toute modification ne sera pas activée tant que le serveur n’aura pas redémarré.
 manual_err=Erreur lors de la tentative d'enregistrement du fichier
 manual_econf=Rien n'a été ajouté/modifié!
-
 download_title=Télécharger le serveur Minecraft
 download_already=Votre système éxécute déja la dernière version de Minecraft.
 download_done=Votre système à mis à jour votre serveur Minecraft à sa dernière version.
@@ -273,7 +259,6 @@ download_err=Erreur lors de la configuration du serveur Minecraft
 download_edir=Dossier manquant ou invalide
 download_euser=L'utilisateur UNIX défini est introuvable ou inexistant
 download_eurl=Impossible de télécharger le serveur depuis une URL
-
 backup_title=Backup programmée
 backup_header=Options pour les backups programmées
 backup_sched=Backup programmée
@@ -290,7 +275,6 @@ backup_email=Signaler les backup à
 backup_noemail=Personne
 backup_email_err=Seulement lors des échecs de backups
 backup_emailto=Adresse
-
 log_conf=Changer la configuration du serveur
 log_stop=Éteindre le serveur Minecraft
 log_start=Démarrer le serveur Minecraft
@@ -304,7 +288,6 @@ log_delboot=Désactiver le serveur au démarrage
 log_enable_backup=Activer les mises à jour programmés le $1
 log_disable_backup=Désactiver les backups programmées
 log_playtime=Changer le temps de jeu
-
 monitor_up=Minecraft Server Alive
 monitor_latest=Serveur Minecraft à jour
 monitor_down=Le processus du serveur n'est pas actif
@@ -313,7 +296,6 @@ monitor_notype=Type de moniteur inconnu!
 monitor_newversion=Une nouvelle version est disponible
 monitor_nojar=le fichier JAR $1 n'existe pas
 monitor_checklog=Check server response to commands?
-
 playtime_title=Heures quotidiennes de jeu
 playtime_user=Nom du joueur
 playtime_time=Durée du jeu

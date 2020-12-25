@@ -28,7 +28,6 @@ index_tabinstall=Installer le module
 index_tabsuggest=Modules suggérés
 index_allmods2=Modules manquants utilisés par Webmin
 index_wantmods=Modules à installer
-
 download_err=Échec de l'installation du module
 download_elocal=Aucun fichier local n'est fourni.
 download_elocal2='$1' n'existe pas
@@ -66,7 +65,6 @@ download_ebuild=Un ou plusieurs modules Perl ont besoin d'être construits, mais
 download_yum=Installation du module Perl $1 à partir du package $2 ...
 download_missingok=Modules manquants dans CPAN
 download_fallback=Certains modules n'ont pas pu être installés à partir des packages, essayant plutôt l'installation à partir des sources.
-
 install_title=Installer le module
 install_untar=Désarchivage du module
 install_make=Compilation du module
@@ -86,13 +84,11 @@ install_err2=Vous pouvez également installer le module depuis CPAN avec la comm
 install_exec=Exécution de $1 ..
 install_efile=Le module $1 n'existe plus
 install_needunlink=Vous pouvez essayer de réinstaller en revenant sur la page précédente et en choisissant des options différentes. Autrement, <a href='$1'>cliquez ici pour effacer les fichiers temporaires</a> pour libérer de la place sur le disque.
-
 cpan_sel=Module dans $1 ...
 cpan_title=Sélectionner le module Perl
 cpan_search=Trouvé les modules nommés
 cpan_match=Modules correspondant à $1 ...
 cpan_none=Aucun résultat.
-
 edit_title=Précisions sur le module
 edit_header=Informations concernant le module
 edit_mod=Nom du module
@@ -109,7 +105,6 @@ edit_method=Installé depuis
 edit_rpm=Paquet RPM $1
 edit_debian=Paquet debian $1
 edit_manual=Installation manuelle du module Perl
-
 uninstall_title=Désinstallation d'un module Perl
 uninstall_rusure=Etes-vous sûr de vouloir désinstaller le module Perl $1 ? Les fichiers suivants seront effacés :
 uninstall_rusure2=Etes-vous sûr de vouloir désinstaller le module Perl $1 et le(s) sous-module(s) $2 ?<br>Les fichiers suivants seront effacés :
@@ -117,12 +112,9 @@ uninstall_ok=Désinstaller maintenant
 uninstall_rpm=Ce module a été retiré lors de la désinstallation du paquet RPM $1.
 uninstall_debian=Ce module a été retiré lors de la désinstallation du paquet Debian $1.
 uninstall_err=Echec de désinstallation du module
-
 delete_efile=Nom du package invalide !
-
 uninstalls_title=Désinstaller les modules
 uninstalls_err=Echec de désinstallation des modules
 uninstalls_enone=Aucune sélection
 uninstalls_emod=$1 a échoué : $2
 uninstalls_rusure=Etes-vous certain de vouloir désinstaller les $1 modules sélectionnés ? $2 sous-modules et $3 fichiers seront supprimés.
-__norefs=1

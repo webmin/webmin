@@ -7,7 +7,6 @@ index_delete2=Supprimer les interfaces sélectionnées
 index_delete3=Supprimer et appliquer les interfaces sélectionnées
 index_apply2=Appliquer les interfaces sélectionnées
 index_vmin=Virtualmin
-
 ifcs_title=Interfaces Réseau
 ifcs_now=Interfaces Actives
 ifcs_activedesc=Les interfaces répertoriées dans ce tableau sont actuellement actives sur le système. Dans la plupart des cas, vous devez les modifier sous l'onglet <b>Activé au démarrage</b>.
@@ -23,9 +22,9 @@ ifcs_virtual=Virtuel
 ifcs_up=Effectif
 ifcs_down=Arrêté
 ifcs_add=Ajouter une nouvelle interface
-ifcs_boot=Interfaces Permanentes
 ifcs_radd=Ajoutez une nouvelle plage d'adresses.
 ifcs_badd=Ajoutez un nouveau pont.
+ifcs_boot=Interfaces Permanentes
 ifcs_act=Permanente?
 ifcs_bootp=Par BOOTP
 ifcs_dhcp=Par DHCP
@@ -56,7 +55,6 @@ ifcs_linkyes=Connecté
 ifcs_linkno=Débranché
 ifcs_speed=Vitesse d'interface
 ifcs_duplex=, $1 duplex
-
 aifc_create=Créer une Interface Active
 aifc_edit=Éditer une Interface Active
 aifc_desc1=Paramètres d'une Interface Active
@@ -81,7 +79,6 @@ aifc_eaddress6=L'adresse IPv6 de la ligne $1 n'est pas valide
 aifc_enetmask6=Le masque de réseau IPv6 dans la ligne $1 doit être un entier compris entre 1 et 128
 aifc_eclash6=L'adresse IPv6 de la ligne $1 est déjà utilisée par l'interface $2
 aifc_eaddresses6=Aucune adresse IPv6 saisie
-
 bifc_create=Créer une Interface Permanente
 bifc_act=Activer au démarrage?
 bifc_edit=Éditer une Interface Permanente
@@ -113,7 +110,6 @@ bifc_bridgestp=Protocole Spanning Tree
 bifc_bridgefd=Retard avant
 bifc_bridgewait=Délai pour devenir disponible
 bifc_ebond=L'interface de liaison doit être un nombre
-
 bonding_add=Ajoutez une nouvelle interface de liaison.
 bonding_create=Créer une interface de liaison
 bonding_teamparts=Partenaires de Teaming
@@ -125,14 +121,11 @@ bonding_miimon=Intervalle de surveillance Mii
 bonding_miimondesc=(Laisser vide pour désactiver la surveillance des liens)
 bonding_updelay=Updelay
 bonding_downdelay=Retard
-
 vlan_add=Ajouter une interface balisée Vlan
 vlan_physical=Périphérique physique
 vlan_id=ID Vlan
 vlan_create=Créer une interface VLAN
-
 bridge_create=Créer une interface de pont
-
 routes_title=Passerelles et Routage
 routes_boot=Configuration de routage activé au <i>démarrage</i>
 routes_now=Configuration de routage activée maintenant
@@ -201,7 +194,6 @@ routes_tabboot=Configuration de l'heure de démarrage
 routes_tabactive=Configuration active
 routes_descactive=Cette section répertorie les itinéraires actuellement configurés par le système et vous permet d'ajouter ou de supprimer des itinéraires actifs sur certains systèmes. Soyez prudent, car des modifications incorrectes peuvent couper le système exécutant Webmin du reste du réseau.
 routes_descboot=Cette section vous permet de configurer les itinéraires qui sont activés au démarrage du système ou lorsque les paramètres réseau sont entièrement réappliqués.
-
 dns_title=Client DNS
 dns_options=Options du Client DNS
 dns_hostname=Nom du poste
@@ -219,7 +211,6 @@ dns_edomain='$1' n'est pas un nom de domaine valide
 dns_esearch=Aucun domaine donné à chercher
 dns_hoststoo=Mettre a jour le " hostname" dans les adresses en cas de modification
 dns_dhcp=Le nom d'hôte est défini par le serveur DHCP?
-
 hosts_title=Adresses de la machine
 hosts_active=Activée?
 hosts_ip=Adresse IP
@@ -231,7 +222,6 @@ hosts_detail=Machine et adresse
 hosts_return=liste des adresses des machines
 hosts_ecannot=Vous n'avez pas le droit d'éditer les adresses des machines
 hosts_delete=Supprimer les adresses hôtes sélectionnées
-
 ipnodes_title=Adresses d'hôtes IPv6
 ipnodes_ip=Adresse IPv6
 ipnodes_host=Noms d'hôtes
@@ -243,7 +233,6 @@ ipnodes_return=Liste d'adresses d'hôte IPv6
 ipnodes_ecannot=Vous n'êtes pas autorisé à modifier les adresses d'hôte IPv6
 ipnodes_none=Aucune adresse d'hôte IPv6 n'a encore été définie.
 ipnodes_delete=Supprimer les adresses d'hôte IPv6 sélectionnées
-
 log_create_host=Adresse de machine $1 créée
 log_delete_host=Adresse de machine $1 supprimée
 log_modify_host=Adresse de machine $1 modifiée
@@ -267,7 +256,6 @@ log_apply_bfics=Interfaces de démarrage $1 activées
 log_create_route=Route active créée pour $1
 log_create_defroute=Route par défaut active créée
 log_delete_routes=$1 itinéraires actifs supprimés
-
 acl_ifcs=Peut éditer les interfaces réseau ?
 acl_routes=Peut éditer le routage et les passerelles ?
 acl_dns=Peut éditer les paramètres de client DNS ?
@@ -285,7 +273,6 @@ acl_virt=Peut ajouter des interfaces virtuelles?
 acl_delete=Peut supprimer des interfaces?
 acl_hide=Masquer les interfaces non modifiables?
 acl_sysinfo=Afficher les interfaces réseau disponibles sur Dashboard
-
 interfaces_title1=Choisissez les interfaces ...
 interfaces_all=Toutes les interfaces ...
 interfaces_sel=Interfaces sélectionnées
@@ -293,9 +280,7 @@ interfaces_ok=D'accord
 interfaces_cancel=Annuler
 interfaces_clear=Clair
 interfaces_title2=Sélectionnez un utilisateur ...
-
 apply_ecannot=Vous n'êtes pas autorisé à appliquer la configuration
-
 mod_egone=L'interface n'est plus active!
 mod_title=Interface active
 mod_desc=L'interface $1 est utilisée pour $2 et ne peut donc pas être gérée à l'aide de ce module.
@@ -307,7 +292,6 @@ mod_pptpc=la connexion PPTP $1
 mod_zones=une interface virtuelle pour la zone <tt>$1</tt>
 mod_virtualmin=le serveur Virtualmin <tt>$1</tt>
 mod_reseller=le revendeur Virtualmin <tt>$1</tt>
-
 range_edit=Modifier la plage d'adresses
 range_create=Créer une plage d'adresses
 range_header=Options d'interface de plage d'adresses
@@ -323,19 +307,13 @@ range_eend=Adresse IP de fin manquante ou non valide
 range_enum=Premier numéro d'interface virtuelle manquant ou non numérique
 range_eclass=Les adresses de début et de fin doivent se trouver dans le même réseau de classe C
 range_ebefore=L'adresse de fin doit être supérieure à l'adresse de départ
-
 chooser_any=&lt;Tout&gt;
 chooser_other=Autre ...
-
 dafics_err=Impossible de désactiver les interfaces
 daifcs_enone=Aucune sélection
 daifcs_egone=L'interface n'existe plus!
-
 dbifcs_err=Impossible de supprimer les interfaces
 dbifcs_err2=Impossible d'activer les interfaces
-
 hdelete_err=Impossible de supprimer les adresses d'hôtes
 hdelete_enone=Aucune sélection
 idelete_err=Impossible de supprimer les adresses d'hôte IPv6
-
-__norefs=1

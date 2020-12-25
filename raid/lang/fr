@@ -21,7 +21,6 @@ index_mailfromnone=Par défaut (<tt>root</tt>)
 index_program=Commande à exécuter lorsque des problèmes sont détectés
 index_programnone=Ne pas en exécuter
 index_monitor=Surveillance activée?
-
 linear=En série (concatenation)
 raid0=En bandes (RAID0)
 raid1=Miroir (RAID1)
@@ -30,7 +29,6 @@ raid5=Redoublé (RAID5)
 raid6=RAID6 (double parité distribuée)
 raid10=RAID10 (Striped et Mirrored)
 blocks=blocs
-
 create_title=Créer dispositif RAID
 create_header=Options de dispositif RAID
 create_device=Fichier de dispositif
@@ -64,7 +62,6 @@ create_o2_layout=2 copies offset
 create_n3_layout=3 quasi-copies
 create_f3_layout=3 copies éloignées
 create_o3_layout=3 copies offset
-
 view_title=Dispositif de RAID
 view_header=Options du dispositif de RAID
 view_device=Fichier de dispositif
@@ -120,7 +117,6 @@ view_mountmsg=Entrez un répertoire et cliquez sur ce bouton pour accéder à un
 view_mountmsg2=Cliquez sur ce bouton pour utiliser ce périphérique RAID pour la mémoire virtuelle sur votre système.
 view_blocks=$1 blocs
 view_sparegroup=Groupe de rechange
-
 mkfs_title=Créer Système de Fichiers
 mkfs_header2=Ce formulaire vous permet de créer un nouveau système de fichiers $2 sur $1. <b>Toutes</b> les données existantes seront effacées!
 mkfs_options=Options du nouveau système de fichiers
@@ -128,7 +124,6 @@ mkfs_err=Le nouveau système de fichiers ne peut pas être crée
 mkfs_exec=Executant la commande $1 ...
 mkfs_failed=... la commande a échoué!
 mkfs_ok=... commande completée.
-
 emkraid=<tt>mkraid</tt> échoué: $1
 eraidstop=<tt>raidstop</tt> échoué: $1
 eraidstart=<tt>raidstart</tt> échoué: $1
@@ -140,7 +135,6 @@ emdadmgrow=<tt>mdadm</tt> dans <tt>--grow</tt> mode échoué : $1
 emdadmremove=<tt>mdadm</tt> dans <tt>--manage --remove</tt> mode échoué : $1
 emdadmreplace=<tt>mdadm</tt> dans <tt>--manage --replace</tt> mode échoué : $1
 emdadmfail=<tt>mdadm</tt> dans <tt>--manage --fail</tt> mode échoué : $1
-
 log_create=Création du RAID $1 sur dispositif $2
 log_stop=Desactivation du dispositif de RAID $1
 log_start=Activation du dispositif de RAID $1
@@ -153,14 +147,11 @@ log_grow=Périphérique RAID développé $1 à un total de $2 disques
 log_convert_to_raid6=Périphérique RAID5 $1 converti en périphérique RAID6
 log_convert_to_raid5=Périphérique RAID6 $1 converti en périphérique RAID5
 log_notif=Options de notification de problème RAID mises à jour
-
 notif_err=Échec de l'enregistrement des options de notification de problème RAID
 notif_emailaddr=Adresse de notification manquante ou invalide
 notif_emailfrom=Adresse de l'expéditeur manquante ou non valide
 notif_eprogram=Programme manquant ou inexistant à exécuter
-
 remove_title=Supprimer la partition de la matrice RAID
 remove_rusure=Voulez-vous vraiment supprimer la partition $2 de la matrice RAID $1 ?
 remove_ok=Oui, supprimez-le
 remove_eidx=Aucune matrice RAID sélectionnée!
-__norefs=1

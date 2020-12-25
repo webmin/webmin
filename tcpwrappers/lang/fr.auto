@@ -1,9 +1,0 @@
-index_return=indice
-index_nofile=Le fichier '$1' n'existe pas - vérifiez la <a href="/config.cgi?tcpwrappers">configuration du module</a>
-edit_efound=Le démon '$1' est introuvable dans la configuration xinetd.
-save_errtitle=Erreur sur la règle de sauvegarde
-save_ehost=L'entrée hôte contient des caractères incorrects
-save_ecmd=L'entrée de commande contient des caractères incorrects
-save_eservice=Les noms de démons contiennent de mauvais caractères
-del_errtitle=Erreur sur la suppression des règles
-del_enone=Aucune règle marquée à supprimer

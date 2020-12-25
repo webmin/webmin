@@ -19,7 +19,6 @@ index_refsel=Actualiser la sélection
 index_group=Membres de $1
 index_tmpls=Modifier les modèles d'e-mail
 index_tmplsdesc=Affichez et modifiez les modèles utilisés pour créer les messages électroniques envoyés lorsque les services surveillés tombent en panne.
-
 type_apache=Serveur web Apache
 type_inetd=Serveur Internet et RPC
 type_xinetd=Serveur Internet étendu (xinetd)
@@ -74,7 +73,6 @@ type_alive=Système vivant
 type_rssh=SSH à distance
 type_slapd=Serveur LDAP
 type_ldap=Connexion LDAP
-
 mon_create=Création d'un moniteur
 mon_edit=Modification d'un moniteur
 mon_virtualmin=Attention! Ce moniteur est associé au domaine Virtualmin $1 et ne doit donc pas être modifié ou supprimé ici.
@@ -141,7 +139,6 @@ mon_changes0=Afficher chaque type d'événement
 mon_changes1=Afficher uniquement les modifications
 mon_all=Afficher tous les événements historiques
 mon_nochanges=Aucun changement de statut ne s'est produit lors des derniers événements historiques à $1.
-
 sched_title=Surveillance programmée
 sched_header=Options de la surveillance programmée en arrière-plan
 sched_mode=Vérification programmée activée ?
@@ -188,19 +185,16 @@ sched_subject0=Aucun (l'alerte est dans le corps)
 sched_subject1=Texte d'alerte (laisser le corps vide)
 sched_subject2=Texte personnalisé
 sched_esubject=Objet du message SMS manquant
-
 up_since=Démarré depuis $1
 depends_mod=Le module $1 n'est pas installé sur votre système
 depends_os=Votre système ne gère pas le module $1
 depends_remote=Le serveur $2 ne gère pas le module $1
-
 tcp_host=Hôte auquel se connecter
 tcp_port=Port sur lequel se connecter
 tcp_alarm=Temps de connexion imparti
 tcp_ehost=Nom d'hôte manquant ou invalide
 tcp_eport=Numéro de port manquant ou invalide
 tcp_ealarm=Temps de connexion imparti manquant ou invalide
-
 http_url=URL à demander
 http_alarm=Temps de connexion imparti
 http_eurl=URL manquante ou invalide
@@ -215,13 +209,11 @@ http_regexp=Page doit correspondre regexp
 http_eregexp=Aucune expression régulière pour la page à correspondre entrée
 http_none2=Ne correspond pas
 http_ehead=La méthode de requête HEAD ne peut pas être utilisée lors de la recherche d'une expression régulière
-
 ping_host=Hôte sur lequel exécuter des commandes ping
 ping_wait=Temps à attendre une réponse
 ping_ehost=Nom d'hôte manquant ou invalide
 ping_ewait=Temps d'attente manquant ou invalide
 ping_econfig=Aucune commande ping n'a été définie dans la configuration du module
-
 proc_pid=S'exécute avec les PID $1
 proc_cmd=Commande à vérifier
 proc_not=Impossible si le processus est
@@ -233,7 +225,6 @@ proc_ethresh=Nombre de processus manquant ou invalide
 proc_asuser=Exécution en tant qu'utilisateur
 proc_anyuser=Tout utilisateur
 proc_easuser=Utilisateur pour que le processus s'exécute car il n'existe pas
-
 exec_cmd=Commande dont il faut vérifier l'état de sortie
 exec_mode=Vérification de l'état de sortie
 exec_mode0=Échec du moniteur si la commande échoue
@@ -245,7 +236,6 @@ exec_noregexp=Ne vérifie pas
 exec_remode=Vérification regex
 exec_remode0=Échec si la sortie ne correspond pas
 exec_remode1=Échec si la sortie correspond
-
 file_file=Fichier à vérifier
 file_test=Test à effectuer
 file_test_0=Le fichier doit exister
@@ -264,7 +254,6 @@ file_group=Le groupe de fichiers doit être
 file_nocheck=N'importe qui
 file_perms=Les autorisations octales doivent être
 file_eperm=Fichiers avec de mauvaises autorisations : $1
-
 traffic_iface=Interface à surveiller
 traffic_bytes=Nombre d'octets ou de secondes maximal
 traffic_dir=Direction à surveiller
@@ -274,7 +263,6 @@ traffic_dir2=Émission seulement
 traffic_desc=Ce moniteur surveille le trafic réseau sur une interface sélectionnée et affiche le moniteur comme étant arrêté si le trafic dépasse le nombre d'octets par seconde saisi ci-dessous. Ce comportement ne fonctionne vraiment bien que si la surveillance programmée est fixée à un intervalle court, par exemple toutes les 5 minutes.
 traffic_eifaces=Votre système d'exploitation ne comporte pas de fichier /proc/net/dev
 traffic_ebytes=Nombre d'octets ou de secondes manquant ou invalide
-
 space_fs=Système de fichiers à vérifier
 space_min2=Espace libre minimum
 space_mode0=Taille absolue
@@ -290,7 +278,6 @@ space_ierr=Seulement $1 inodes gratuits
 space_merr=Seulement $1 d'espace gratuit
 space_perr=Seulement $1% gratuit
 space_dferr=Impossible d'obtenir la taille du système de fichiers
-
 load_time=Charge moyenne à vérifier
 load_1=1 minute
 load_5=5 minutes
@@ -299,7 +286,6 @@ load_max=Charge moyenne maximale
 load_emax=Charge moyenne maximale manquante ou invalide
 load_ecmd=La commande <tt>uptime</tt> n'a pas été trouvée sur votre système
 load_efmt=La sortie de la commande <tt>uptime</tt> n'a pas pu être analysée
-
 log_create=Créé le moniteur $1
 log_modify=Modifié le moniteur $1
 log_delete=Supprimé le moniteur $1
@@ -310,14 +296,10 @@ log_tmpl_modify=Modèle d'e-mail modifié $1
 log_tmpl_delete=Modèle d'e-mail supprimé $1
 log_tmpl_deletes=Modèles d'e-mails à $1 supprimés
 log_refresh=États du moniteur actualisés
-
 acl_edit=Peut modifier et créer des moniteurs ?
 acl_sched=Peut changer la surveillance programmée ?
-
 change_file=Fichier à surveiller (impossible s'il est changé)
-
 jabber_eparser=Le module Perl $1 n'est pas installé sur votre système.
-
 memory_min2=Mémoire réelle libre minimale
 memory_emin=Quantité de mémoire libre manquante ou invalide
 memory_eproc=Webmin ne sait pas comment vérifier la mémoire libre sur votre système d'exploitation
@@ -327,9 +309,7 @@ memory_freelow=Seulement $1 réel de mémoire libre
 memory_freelowswap=Seulement $1 de mémoire virtuelle gratuite
 memory_minswap=Mémoire virtuelle libre minimale
 memory_eminswap=Quantité de mémoire virtuelle libre manquante ou non valide
-
 proftpd_etype=Ce moniteur ne peut pas être utilisé quand ProFTPD est exécuté en mode autonome
-
 mailserver_to=Envoyer un message électronique à l'adresse
 mailserver_timeout=Temps imparti et intervalle
 mailserver_units_0=Secondes
@@ -337,28 +317,22 @@ mailserver_units_1=Minutes
 mailserver_units_2=Heures
 mailserver_units_3=Jours
 mailserver_desc=L'adresse ci-dessous doit être un répondeur automatique qui répond à l'adresse source avec la même ligne Subject:.
-
 oldfile_file=Fichier à surveiller (impossible s'il n'est pas changé)
 oldfile_diff=Impossible s'il n'est pas changé en
 oldfile_secs=secondes
-
 raid_device=Périphérique RAID
 raid_edevice=Pas de périphérique RAID sélectionné
 raid_bad=Disque détecté incorrect
 raid_resync=Resynchronisation en cours
 raid_notfound=Périphérique RAID $1 non trouvé
 raid_other=Autre..
-
 iface_iface=Interface à vérifier
-
 init_action=Action à vérifier
 init_eaction=Aucune action sélectionnée
-
 refresh_title=Rafraîchissement d'un état
 refresh_doing=Rafraîchissement de l'état de tous les moniteurs en cours...
 refresh_doing2=Actualisation de l'état des moniteurs sélectionnés à $1 ...
 refresh_done=.. effectué.
-
 sensors_name=Capteur à vérifier
 sensors_value=Echec quand
 sensors_value0=Le système indique un avertissement
@@ -369,7 +343,6 @@ sensors_none=Aucun capteur n'a été détecté sur votre système. Vous devriez 
 sensors_cur=$1 (actuellement $2 $3)
 sensors_emin=Valeur minimale manquante ou invalide
 sensors_emax=Valeur maximale manquante ou invalide
-
 nut_ups=UPS NUT à vérifier
 nut_name=Attribut à vérifier
 nut_value=Echec quand
@@ -380,7 +353,6 @@ nut_eups=Aucun USP à vérifier entré
 nut_cur=$1 (actuellement $2)
 nut_emin=Valeur minimale manquante ou invalide
 nut_emax=Valeur maximale manquante ou invalide
-
 mailq_system=Serveur de courrier électronique
 mailq_qmailadmin=Qmail
 mailq_postfix=Postfix
@@ -389,7 +361,6 @@ mailq_size=Taille maximale de la file d'attente de courrier électronique
 mailq_esize=Taille maximale de la file d'attente manquante ou invalide
 mailq_toomany=Non OK - $1 messages en attente
 mailq_ok=OK - $1 messages en attente
-
 dns_server=Serveur dns
 dns_host=Nom d'hôte à rechercher
 dns_address=Adresse IP attendue
@@ -397,7 +368,6 @@ dns_eserver=Serveur DNS manquant ou non valide
 dns_ehost=Nom d'hôte manquant ou d'apparence non valide à rechercher
 dns_eaddress=Adresse IP attendue manquante ou non valide
 dns_ecmds=Ni les commandes <tt>nslookup</tt> ni <tt>dig</tt> ne sont installées sur votre système
-
 monitor_sub_down=$1 vers le bas sur $2
 monitor_pager_down=$1: "$2" est éteint $3
 monitor_snmp_down=$1: $2
@@ -429,10 +399,8 @@ monitor_run1=Exécution de $1 sur $2 ...
 monitor_run2=Exécution de $1 ...
 monitor_runerr=Échec de l'exécution de $1 sur $2 : $3
 monitor_email_stat=Statut actuel: $1
-
 deletes_egone=L'un des moniteurs sélectionnés n'existe plus
 deletes_enone=Aucun moniteur sélectionné
-
 ftp_host=Hôte du serveur FTP
 ftp_port=Port FTP
 ftp_user=Connectez-vous en tant qu'utilisateur
@@ -449,7 +417,6 @@ ftp_econn=La connexion FTP TLS a échoué
 ftp_econn2=La connexion FTP TLS a échoué : $1
 ftp_elogin=Échec de la connexion FTP TLS : $1
 ftp_etlsfile=Le téléchargement FTP TLS a échoué : $1
-
 query_driver=Type de base de données SQL
 query_db=Nom de la base de données
 query_host=Hôte du serveur de base de données
@@ -470,12 +437,9 @@ query_elogin=Échec de la connexion : $1
 query_eprepare=Erreur SQL : $1
 query_eexecute=SQL a échoué : $1
 query_ewrong=Résultat incorrect : $1
-
 consume_rate=Taux de consommation maximum (par seconde)
 consume_high=Le taux de consommation est de $1 / seconde
-
 alive_up=Prêt pour $1
-
 rssh_host=Hôte du serveur SSH
 rssh_ruser=Connectez-vous en tant qu'utilisateur
 rssh_rpass=Connectez-vous avec mot de passe
@@ -491,7 +455,6 @@ rssh_error=Erreur SSH
 rssh_haspass=Mot de passe
 rssh_port=Port du serveur SSH
 rssh_eport=Numéro de port manquant ou non valide
-
 tmpls_title=Modèles d'e-mails
 tmpls_ecannot=Vous n'êtes pas autorisé à modifier les modèles d'e-mail
 tmpls_none=Aucun modèle d'e-mail n'a encore été défini. Toutes les alertes seront envoyées à l'aide des messages par défaut de Webmin.
@@ -500,7 +463,6 @@ tmpls_email=Message électronique
 tmpls_add=Ajoutez un nouveau modèle d'e-mail.
 tmpls_return=liste de modèles
 tmpls_delete=Supprimer les modèles sélectionnés
-
 tmpl_title1=Créer un modèle d'e-mail
 tmpl_title2=Modifier le modèle d'e-mail
 tmpl_header=Messages de modèle d'e-mail d'alerte
@@ -525,11 +487,9 @@ tmpl_esms=Message SMS manquant
 tmpl_esnmp=Message SNMP manquant
 tmpl_err2=Échec de la suppression du modèle d'e-mail
 tmpl_eusers=Il est utilisé par les moniteurs suivants : $1
-
 dtmpls_err=Échec de la suppression des modèles
 dtmpls_enone=Aucune sélection
 dtmpls_eusers=$1 est utilisé par les moniteurs suivants : $2
-
 sslcert_src=Emplacement du certificat
 sslcert_url=Depuis l'URL HTTPS
 sslcert_file=À partir du fichier sur le serveur
@@ -547,23 +507,18 @@ sslcert_eend=Non valide après $1
 sslcert_left=Up - $1 jours jusqu'à l'expiration
 sslcert_ematch=Le nom d'hôte $1 ne correspond pas au certificat $2
 sslcert_emismatch=La vérification du nom d'hôte du certificat ne peut être utilisée que lors de la vérification d'une URL
-
 du_dir=Répertoire à surveiller
 du_max=Taille maximum
 du_edir=Chemin de répertoire manquant ou non absolu
 du_emax=Taille maximale manquante ou non numérique
 du_over=La taille est $1
 du_under=La taille est seulement $1
-
 ldap_edriver=The Perl module $1 is not installed
 ldap_host=Nom d'hôte du serveur LDAP
 ldap_port=Port du serveur LDAP
 ldap_ssl=Utiliser une connexion SSL?
 ldap_user=Connexion au serveur LDAP
 ldap_pass=Mot de passe du serveur LDAP
-
 info_desc=Moniteur système
 info_last=Statut actuel
 info_title=État du système et du serveur
-
-__norefs=1

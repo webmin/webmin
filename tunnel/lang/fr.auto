@@ -1,5 +1,0 @@
-index_elink=Aucune URL vers laquelle tunneler n'a encore été définie.
-link_eurl=URL de tunnel non valide : $1 
-link_elogin=Impossible de se connecter à $1 en tant que $2.
-link_eautologin=Identifiant ou mot de passe non valide pour $1. <a href='$2'>Cliquez ici</a> pour vous connecter.
-link_mconfig=Utilisez la page <a href='$1'>configuration du module</a> pour modifier la connexion.

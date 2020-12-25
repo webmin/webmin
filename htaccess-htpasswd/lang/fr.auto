@@ -1,9 +1,0 @@
-index_digest2=Le chiffrement de résumé est activé dans la configuration du module, mais la commande $1 ou le module Perl $2 nécessaire pour cela n'est pas installé.
-index_remove=Dé-protéger et supprimer des fichiers
-dir_header2=Options de synchronisation utilisateur
-dir_ecannotcreate=Vous n'êtes pas autorisé à configurer les répertoires protégés
-dir_delete2=Dé-protéger et supprimer des fichiers
-dir_delete3=Dé-protéger et supprimer un fichier
-dir_efiledir='$1' est un répertoire et ne peut donc pas être utilisé comme fichier utilisateur
-dir_egfiledir='$1' est un répertoire et ne peut donc pas être utilisé comme fichier de groupe
-acl_uonly=Peut ajouter et modifier des répertoires protégés?
