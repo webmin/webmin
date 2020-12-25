@@ -3,14 +3,15 @@ index_add=Créer une nouvelle copie de fichiers programmée
 index_none=Aucune copie de fichiers programmée n'a été définie.
 index_servers=Copier dans les serveurs
 index_return=à la liste des copies des clusters
-index_more=$1 de plus...
-index_run=Exécuter maintenant...
+index_more=$1 de plus ...
+index_run=Exécuter&nbsp;maintenant ...
 index_files=Fichiers à copier
 index_sched=Programmé ?
 index_when=Oui, $1
 index_act=Action
 index_exec=Exécute
 index_delete=Supprimer les copies sélectionnées
+
 edit_title=Édition d'une copie de cluster
 create_title=Création d'une copie de cluster
 edit_header=Détails de la copie de cluster
@@ -26,19 +27,22 @@ edit_group=Membres de $1
 edit_this=Ce serveur
 edit_all=&lt;Tous les hôtes&gt;
 edit_sched=Copier dans les délais prévus ?
-edit_schedyes=Oui, aux heures sélectionnées ci-dessous...
+edit_schedyes=Oui, aux heures sélectionnées ci-dessous ...
 edit_run=Copier maintenant
 edit_return=à la copie des clusters
+edit_email=Envoi par e-mail à
 edit_none=Personne
+
 save_err=Impossible d'enregistrer la tâche Cron sur le cluster
 save_efiles=Aucun fichier à copier saisi
 save_edest=Répertoire de destination manquant
 save_eservers=Aucun serveur dans lequel copier saisi
 save_efile=Le fichier à copier '$1' n'est pas un chemin d'accès absolu
 save_eemail=Adresse Mail invalide ou manquante
+
 exec_title=Copie de fichiers
-exec_files1=Copie de $1 fichiers dans les serveurs $2 sélectionnés en cours...
-exec_files2=Copie de $1 dans les serveurs $2 sélectionnés en cours...
+exec_files1=Copie de $1 fichiers dans les serveurs $2 sélectionnés en cours ...
+exec_files2=Copie de $1 dans les serveurs $2 sélectionnés en cours ...
 exec_under=(dans le répertoire $1)
 exec_failed=Impossible de copier dans $1 : $2
 exec_success=Copié les fichiers suivants dans $1 :
@@ -46,11 +50,20 @@ exec_made=Créé les répertoires suivants sur $1 :
 exec_nohosts=Aucun hôte sélectionné sur lequel exécuter ou les groupes sélectionnés ne contiennent aucun hôte susceptible d'être utilisé.
 exec_nothing=Aucun fichier n'a été copié avec succès dans $1.
 exec_not=Impossible de copier les fichiers suivants dans $1 :
+exec_cmd=Sortie de la commande de post-copie sur $1  :
+exec_before=Sortie de la commande avant copie sur $1  :
 exec_on=L'exécution a échouée sur $1 : $2
+
 log_create=Créé le copie pour $1 dans $2 serveurs
 log_modify=Modifié la copie pour $1 dans $2 serveurs
 log_delete=Supprimé la copie pour $1 dans $2 serveurs
 log_exec=Copié $1 dans $2 serveurs
 log_deletes=Les copies supprimées $1
+
+email_subject_succeeded=La copie de cluster de $1 a réussi
+email_subject_failed=Échec de la copie du cluster de $1
+
 delete_err=Échec de l'effacement des copies
 delete_enone=aucun n'est sélectionné
+
+__norefs=1
