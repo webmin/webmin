@@ -368,6 +368,7 @@ linux_noenforce=Yes, but don't enforce
 linux_df=Include reserved blocks in filesystem size?
 linux_noatime=Avoid updating last access times?
 linux_netdev=Wait until network interfaces are up?
+linux_nofail=Continue boot even if mount fails?
 linux_ecname=Missing or invalid client netbios name
 linux_emname=Missing or invalid server hostname or IP address
 linux_bind=Original Directory

@@ -1205,6 +1205,9 @@ if ($type ne "swap" && $type ne "auto" &&
 
 	print &ui_table_row(&hlink($text{'linux_netdev'}, "linux_netdev"),
 		&ui_yesno_radio("lnx_netdev", defined($options{"_netdev"})));
+
+	print &ui_table_row(&hlink($text{'linux_nofail'}, "linux_nofail"),
+		&ui_yesno_radio("lnx_nofail", defined($options{"nofail"})));
 	}
 	
 if ($type =~ /^ext\d+$/) {
@@ -1810,6 +1813,9 @@ if ($_[0] ne "swap" && $_[0] ne "auto" &&
 
 	delete($options{"_netdev"});
 	$options{"_netdev"} = "" if ($in{'lnx_netdev'});
+
+	delete($options{"nofail"});
+	$options{"nofail"} = "" if ($in{'lnx_nofail'});
 	}
 
 if (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
