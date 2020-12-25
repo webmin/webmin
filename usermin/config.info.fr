@@ -1,0 +1,4 @@
+usermin_dir=Répertoire de configuration Usermin,0
+cron_mode=Afficher les heures de mise à jour comme,1,0-Interface simple,1-Sélecteur de temps Cron
+host=Nom d'hôte Usermin pour changer d'utilisateur,3,Identique à Webmin
+port=Port Usermin pour changer d'utilisateur,3,Déterminer automatiquement

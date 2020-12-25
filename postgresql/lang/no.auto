@@ -1,7 +1,0 @@
-view_refresh=Forfriske
-view_go=Gå
-host_manual=Rediger konfigurasjonsfil
-host_manualdesc=Klikk på denne knappen for å manuelt redigere konfigurasjonsfilen for de tillatte vertene.
-manual_title=Rediger konfigurasjonsfil
-manual_err=Kunne ikke lagre konfigurasjonsfilen
-log_manual=Manuelt redigert konfigurerte fil for tillatte verter
