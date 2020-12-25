@@ -1,0 +1,7 @@
+line1=Options configurables,11
+max_size=Nombre maximum d'enregistrements à afficher,0
+manual_build=Reconstruire automatiquement les cartes NIS?,1,0-Oui,1-Non
+line2=Configuration du système,11
+client_conf=Fichier de configuration du client NIS,0
+nsswitch_conf=Fichier de commutateur client NIS,0
+securenets=Fichier des réseaux de confiance,3,Aucun
