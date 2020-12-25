@@ -1,0 +1,2 @@
+show_table=Afficher les volumes et les groupes comme,1,1-Table,0-Icônes
+lvm_conf=Chemin du fichier de configuration LVM,8
