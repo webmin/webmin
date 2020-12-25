@@ -3,20 +3,26 @@ index_add=Créer une nouvelle tâche Cron sur clusters
 index_none=Aucune tâche Cron sur clusters n'a été définie.
 index_servers=Exécuter sur les serveurs
 index_return=à la liste des tâches Cron sur clusters
-index_more=$1 de plus...
-index_run=Exécuter maintenant...
+index_more=$1 de plus ...
+index_run=Exécuter&nbsp;maintenant ...
+index_actions=Actions
+
 edit_title=Éditon d'une tâche Cron sur clusters
 create_title=Création d'une tâche Cron sur clusters
 edit_servers=Exécuter sur les serveurs
 edit_group=Membres de $1
 edit_this=Ce serveur
 edit_all=&lt;Tous les hôtes&gt;
+edit_emissing=Le travail Cron n'existe plus!
+
 save_err=Impossible d'enregistrer la tâche Cron sur clusters
+
 exec_title=Exécution d'une tâche Cron sur clusters
-exec_cmd=Exécution de $1 sur les serveurs sélectionnés en cours...
+exec_cmd=Exécution de $1 sur les serveurs sélectionnés en cours ...
 exec_failed=Impossible d'exécuter sur $1 : $2
-exec_success=Sortie de $1...
+exec_success=Sortie de $1 ...
 exec_nohosts=Aucun hôte sélectionné sur lequel exécuter ou les groupes sélectionnés ne contiennent aucun hôte susceptible d'être utilisé.
+
 log_run=Exécuté $1 sur $2 serveurs
 log_run_l=Exécuté $1 sur $2
 log_create=Créé la tâche Cron sur clusters pour $1
@@ -25,3 +31,8 @@ log_modify=Modifié la tâche Cron sur clusters $1
 log_modify_l=Modifié la tâche Cron sur les clusters $2 pour $1
 log_delete=Supprimé la tâche Cron sur clusters pour $1
 log_delete_l=Supprimé la tâche Cron sur les clusters $2 pour $1
+log_deletes=Tâches cron $1 supprimées
+
+delete_err=Impossible de supprimer les tâches cron de cluster
+delete_enone=Aucune sélection
+__norefs=1
