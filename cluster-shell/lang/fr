@@ -8,12 +8,16 @@ index_this=Ce serveur
 index_all=&lt;Tous les hôtes&gt;
 index_group=Membres de $1
 index_clear=Effacer l'historique
+index_edit=Modifier le précédent
+
 run_title=Exécution d'une commande
 run_err=Impossible d'exécuter la commande
 run_ecmd=Aucune commande saisie
 run_failed=Impossible d'exécuter sur $1 : $2
-run_success=Sortie de $1...
+run_success=Sortie de $1 ...
 run_enone=Aucun serveur sur lequel exécuter sélectionné
+
 log_clear=Effacé l'historique des commandes
 log_run=Exécuté $1 sur $2 serveurs
 log_run_l=Exécuté $1 sur $2
+__norefs=1
