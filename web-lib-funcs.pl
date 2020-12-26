@@ -127,23 +127,26 @@ $main::read_file_cache_time{$realfile} = $st[9];
 return $rv;
 }
 
-=head2 write_file(file, &hash, [join-char], [sort])
+=head2 write_file(file, &data-hash, [join-char], [sort], [sorted-by], [sorted-by-preserved])
 
 Write out the contents of a hash as name=value lines. The parameters are :
 
 =item file - Full path to write to
 
-=item hash - A hash reference containing names and values to output
+=item data-hash - A hash reference containing names and values to output
 
 =item join-char - If given, names and values are separated by this instead of =
 
 =item sort - If given, passed hash reference will be sorted by its keys
 
-=item sortedby - If given, hash reference that is being saved will be sorted by the keys of sortby hashref
+=item sorted-by - If given, hash reference that is being saved will be sorted by the keys of sortby hashref
+
+=item sorted-by-preserved - If sortedby is used, then preserve the line-breaks as in hash reference
 
 =cut
 sub write_file
 {
+# my ($file, $data_hash, $join_char, $sort ) = @_;
 my (%old, @order);
 my $join = defined($_[2]) ? $_[2] : "=";
 my $realfile = &translate_filename($_[0]);
@@ -177,6 +180,41 @@ if (defined($main::read_file_cache{$realfile})) {
 	}
 if (defined($main::read_file_missing{$realfile})) {
 	$main::read_file_missing{$realfile} = 0;
+	}
+
+if ($_[4] && $_[5]) {
+	my $target = read_file_contents($_[0]);
+	my $model = read_file_contents($_[4]);
+	my @lines;
+	my @blocks;
+	my @block;
+
+	# Build blocks of line's key separated with a new line break
+	@lines = ($model =~ m/(.*?)$join|(^\s*$)/gm);
+	for (my $line = 0; $line < scalar(@lines) - 1; $line += 2) {
+	    if ($lines[$line] =~ /\S+/) {
+	        push(@block, $lines[$line]);
+	    	}
+	    else {
+	        push(@blocks, [@block]);
+	        @block = ();
+	    	}
+		}
+	for (my $block = 0; $block <= scalar(@blocks) - 1; $block++) {
+	    foreach my $line (reverse @{$blocks[$block]}) {
+	        if (
+	            # Go to another block immediately
+	            # if new line already exists
+	            $target =~ /($line)$join.*?(\r?\n|\r\n?)+$/m ||
+
+	            # Add new line to the last element of
+	            # the block and go to another block
+	            $target =~ s/($line)$join(.*)/$1=$2\n/) {
+	            last;
+	        	}
+	    	}
+		}
+	write_file_contents($_[0], $target);
 	}
 }
 
