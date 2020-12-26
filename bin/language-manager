@@ -1530,9 +1530,9 @@ sub go
                     }
                     my $file      = $mpath . "/$code";
                     my $file_auto = $mpath . "/$code.$language_suffix";
-                    write_file($file, \%language, undef, undef, $mfile), chmod(0664, $file)
+                    write_file($file, \%language, undef, undef, $mfile, 1), chmod(0664, $file)
                       if (%language);
-                    write_file($file_auto, \%language_auto, undef, undef, $mfile), chmod(0664, $file_auto)
+                    write_file($file_auto, \%language_auto, undef, undef, $mfile, 1), chmod(0664, $file_auto)
                       if ((%language_auto || !%language_auto) && !$opt->{'only-transcode'});
 
                     # Remove empty files
