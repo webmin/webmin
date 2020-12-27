@@ -139,7 +139,7 @@ Write out the contents of a hash as name=value lines. The parameters are :
 
 =item sort - If given, passed hash reference will be sorted by its keys
 
-=item sorted-by - If given, hash reference that is being saved will be sorted by the keys of sort-by hashref
+=item sorted-by - If given, hash reference that is being saved will be sorted by the keys of sorted-by hashref
 
 =item sorted-by-sectioning-preserved - If sorted-by is used, then preserve the sectioning (line-breaks) as in hash reference
 
