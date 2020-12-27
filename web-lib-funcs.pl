@@ -139,19 +139,19 @@ Write out the contents of a hash as name=value lines. The parameters are :
 
 =item sort - If given, passed hash reference will be sorted by its keys
 
-=item sorted-by - If given, hash reference that is being saved will be sorted by the keys of sortby hashref
+=item sorted-by - If given, hash reference that is being saved will be sorted by the keys of sort-by hashref
 
-=item sorted-by-sectioning-preserved - If sortedby is used, then preserve the sectioning (line-breaks) as in hash reference
+=item sorted-by-sectioning-preserved - If sorted-by is used, then preserve the sectioning (line-breaks) as in hash reference
 
 =cut
 sub write_file
 {
 my ($file, 
-	$data_hash,
-	$join_char,
-	$sort,
-	$sorted_by,
-	$sorted_by_sectioning_preserved) = @_;
+    $data_hash,
+    $join_char,
+    $sort,
+    $sorted_by,
+    $sorted_by_sectioning_preserved) = @_;
 my (%old, @order);
 my $join = defined($join_char) ? $join_char : "=";
 my $realfile = &translate_filename($file);
