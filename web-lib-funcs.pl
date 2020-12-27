@@ -141,20 +141,25 @@ Write out the contents of a hash as name=value lines. The parameters are :
 
 =item sorted-by - If given, hash reference that is being saved will be sorted by the keys of sortby hashref
 
-=item sorted-by-preserved - If sortedby is used, then preserve the line-breaks as in hash reference
+=item sorted-by-sectioning-preserved - If sortedby is used, then preserve the sectioning (line-breaks) as in hash reference
 
 =cut
 sub write_file
 {
-my ($file, $data_hash, $join_char, $sort ) = @_;
+my ($file, 
+	$data_hash,
+	$join_char,
+	$sort,
+	$sorted_by,
+	$sorted_by_sectioning_preserved) = @_;
 my (%old, @order);
-my $join = defined($_[2]) ? $_[2] : "=";
-my $realfile = &translate_filename($_[0]);
-&read_file($_[4] || $_[0], \%old, \@order);
-&open_tempfile(ARFILE, ">$_[0]");
-if ($_[3] || $gconfig{'sortconfigs'}) {
-    foreach $k (sort keys %{$_[1]}) {
-        (print ARFILE $k,$join,$_[1]->{$k},"\n") ||
+my $join = defined($join_char) ? $join_char : "=";
+my $realfile = &translate_filename($file);
+&read_file($sorted_by || $file, \%old, \@order);
+&open_tempfile(ARFILE, ">$file");
+if ($sort || $gconfig{'sortconfigs'}) {
+    foreach $k (sort keys %{$data_hash}) {
+        (print ARFILE $k,$join,$data_hash->{$k},"\n") ||
             &error(&text("efilewrite", $realfile, $!));
         
         }
@@ -162,29 +167,29 @@ if ($_[3] || $gconfig{'sortconfigs'}) {
 else {
     my %done;
     foreach $k (@order) {
-        if (exists($_[1]->{$k}) && !$done{$k}++) {
-            (print ARFILE $k,$join,$_[1]->{$k},"\n") ||
+        if (exists($data_hash->{$k}) && !$done{$k}++) {
+            (print ARFILE $k,$join,$data_hash->{$k},"\n") ||
                 &error(&text("efilewrite", $realfile, $!));
             }
         }
-    foreach $k (keys %{$_[1]}) {
+    foreach $k (keys %{$data_hash}) {
         if (!exists($old{$k}) && !$done{$k}++) {
-            (print ARFILE $k,$join,$_[1]->{$k},"\n") ||
+            (print ARFILE $k,$join,$data_hash->{$k},"\n") ||
                 &error(&text("efilewrite", $realfile, $!));
             }
         }
     }
 &close_tempfile(ARFILE);
 if (defined($main::read_file_cache{$realfile})) {
-    %{$main::read_file_cache{$realfile}} = %{$_[1]};
+    %{$main::read_file_cache{$realfile}} = %{$data_hash};
     }
 if (defined($main::read_file_missing{$realfile})) {
     $main::read_file_missing{$realfile} = 0;
     }
 
-if ($_[4] && $_[5]) {
-    my $target = read_file_contents($_[0]);
-    my $model = read_file_contents($_[4]);
+if ($sorted_by && $sorted_by_sectioning_preserved) {
+    my $target = read_file_contents($file);
+    my $model = read_file_contents($sorted_by);
     my @lines;
     my @blocks;
     my @block;
@@ -214,7 +219,7 @@ if ($_[4] && $_[5]) {
                 }
             }
         }
-    write_file_contents($_[0], $target);
+    write_file_contents($file, $target);
     }
 }
 
