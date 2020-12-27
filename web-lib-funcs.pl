@@ -210,11 +210,11 @@ if ($sorted_by && $sorted_by_sectioning_preserved) {
             if (
                 # Go to another block immediately
                 # if new line already exists
-                $target =~ /($line)$join.*?(\r?\n|\r\n?)+$/m ||
+                $target =~ /(\Q$line\E)$join.*?(\r?\n|\r\n?)+$/m ||
 
                 # Add new line to the last element of
                 # the block and go to another block
-                $target =~ s/($line)$join(.*)/$1=$2\n/) {
+                $target =~ s/(\Q$line\E)$join(.*)/$1=$2\n/) {
                 last;
                 }
             }
