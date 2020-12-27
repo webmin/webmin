@@ -146,76 +146,76 @@ Write out the contents of a hash as name=value lines. The parameters are :
 =cut
 sub write_file
 {
-# my ($file, $data_hash, $join_char, $sort ) = @_;
+my ($file, $data_hash, $join_char, $sort ) = @_;
 my (%old, @order);
 my $join = defined($_[2]) ? $_[2] : "=";
 my $realfile = &translate_filename($_[0]);
 &read_file($_[4] || $_[0], \%old, \@order);
 &open_tempfile(ARFILE, ">$_[0]");
 if ($_[3] || $gconfig{'sortconfigs'}) {
-	foreach $k (sort keys %{$_[1]}) {
-		(print ARFILE $k,$join,$_[1]->{$k},"\n") ||
-			&error(&text("efilewrite", $realfile, $!));
-		
-	    }
-	}
+    foreach $k (sort keys %{$_[1]}) {
+        (print ARFILE $k,$join,$_[1]->{$k},"\n") ||
+            &error(&text("efilewrite", $realfile, $!));
+        
+        }
+    }
 else {
-	my %done;
-	foreach $k (@order) {
-		if (exists($_[1]->{$k}) && !$done{$k}++) {
-			(print ARFILE $k,$join,$_[1]->{$k},"\n") ||
-				&error(&text("efilewrite", $realfile, $!));
-			}
-		}
-	foreach $k (keys %{$_[1]}) {
-		if (!exists($old{$k}) && !$done{$k}++) {
-			(print ARFILE $k,$join,$_[1]->{$k},"\n") ||
-				&error(&text("efilewrite", $realfile, $!));
-			}
-	    }
-	}
+    my %done;
+    foreach $k (@order) {
+        if (exists($_[1]->{$k}) && !$done{$k}++) {
+            (print ARFILE $k,$join,$_[1]->{$k},"\n") ||
+                &error(&text("efilewrite", $realfile, $!));
+            }
+        }
+    foreach $k (keys %{$_[1]}) {
+        if (!exists($old{$k}) && !$done{$k}++) {
+            (print ARFILE $k,$join,$_[1]->{$k},"\n") ||
+                &error(&text("efilewrite", $realfile, $!));
+            }
+        }
+    }
 &close_tempfile(ARFILE);
 if (defined($main::read_file_cache{$realfile})) {
-	%{$main::read_file_cache{$realfile}} = %{$_[1]};
-	}
+    %{$main::read_file_cache{$realfile}} = %{$_[1]};
+    }
 if (defined($main::read_file_missing{$realfile})) {
-	$main::read_file_missing{$realfile} = 0;
-	}
+    $main::read_file_missing{$realfile} = 0;
+    }
 
 if ($_[4] && $_[5]) {
-	my $target = read_file_contents($_[0]);
-	my $model = read_file_contents($_[4]);
-	my @lines;
-	my @blocks;
-	my @block;
+    my $target = read_file_contents($_[0]);
+    my $model = read_file_contents($_[4]);
+    my @lines;
+    my @blocks;
+    my @block;
 
-	# Build blocks of line's key separated with a new line break
-	@lines = ($model =~ m/(.*?)$join|(^\s*$)/gm);
-	for (my $line = 0; $line < scalar(@lines) - 1; $line += 2) {
-	    if ($lines[$line] =~ /\S+/) {
-	        push(@block, $lines[$line]);
-	    	}
-	    else {
-	        push(@blocks, [@block]);
-	        @block = ();
-	    	}
-		}
-	for (my $block = 0; $block <= scalar(@blocks) - 1; $block++) {
-	    foreach my $line (reverse @{$blocks[$block]}) {
-	        if (
-	            # Go to another block immediately
-	            # if new line already exists
-	            $target =~ /($line)$join.*?(\r?\n|\r\n?)+$/m ||
+    # Build blocks of line's key separated with a new line break
+    @lines = ($model =~ m/(.*?)$join|(^\s*$)/gm);
+    for (my $line = 0; $line < scalar(@lines) - 1; $line += 2) {
+        if ($lines[$line] =~ /\S+/) {
+            push(@block, $lines[$line]);
+            }
+        else {
+            push(@blocks, [@block]);
+            @block = ();
+            }
+        }
+    for (my $block = 0; $block <= scalar(@blocks) - 1; $block++) {
+        foreach my $line (reverse @{$blocks[$block]}) {
+            if (
+                # Go to another block immediately
+                # if new line already exists
+                $target =~ /($line)$join.*?(\r?\n|\r\n?)+$/m ||
 
-	            # Add new line to the last element of
-	            # the block and go to another block
-	            $target =~ s/($line)$join(.*)/$1=$2\n/) {
-	            last;
-	        	}
-	    	}
-		}
-	write_file_contents($_[0], $target);
-	}
+                # Add new line to the last element of
+                # the block and go to another block
+                $target =~ s/($line)$join(.*)/$1=$2\n/) {
+                last;
+                }
+            }
+        }
+    write_file_contents($_[0], $target);
+    }
 }
 
 =head2 html_escape(string)
