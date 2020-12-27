@@ -10,6 +10,7 @@ index_apply=Aplicar Cambios
 index_applydesc=Pulse en este botón para aplicar la configuración actual de SpamAssassin enviando una señal HUP a todos los procesos $1 en ejecución.
 index_cpan=Dado que SpamAssassin es un módulo Perl, también puede instalarlo automáticamente utilizando el módulo de Webmin <a href='$2'>Módulos de Perl (CPAN)</a> para descargar $1 desde CPAN.
 index_spamassassin=SpamAssassin
+
 header_title=Tests de Cabecera y Cuerpo
 header_desc=Esta página le permite definir tests adicionales que SpamAssassin aplicará al email, basándose en las cabeceras del mensaje, el contenido del cuerpo, las URLs halladas en el cuerpo, o combinaciones de otros tests. El nombre asignado a cada test depende de usted, pero normalmente es algo parecido a CONTIENE_ALGO. La cadena real que SpamAssassin añadirá a los mensajes que cumplan un test puede configurarse introduciendo los que vienen por defecto o sus propios nombres de test en las tablas de la parte inferior de la página.
 header_switch=Cambiar a modo simple..
@@ -43,6 +44,7 @@ header_eeval='$1' no es una función de evaluación válida
 header_eheader='$1' no es una cabecera de email válida
 header_eregexp='$1' no es una expresión regular válida (debe ser algo como /expresión/)
 header_emeta=Falta expresión de prueba para el test '$1'
+
 priv_desc=Las opciones de esta parte sólo pueden configurarse globalmente, en lugar de en archivos de configuración individual de cada usuario. They control with paths to various configuration and logging file.
 priv_header=Configuraciones varias de nivel privilegiado
 priv_dcc=Argumentos de comando DCC
@@ -54,7 +56,9 @@ priv_eargs='$1' no es una lista válida de argumentos
 priv_emscore='$1' no es una anotación de frase mayor válido
 priv_ephrase='$1' no es una frase de spam de dos palabras válida
 priv_escore=Anotación para frase spam '$1' falta o no válida
+
 ecannot=No está autorizado a utilizar esta página
+
 log_white=Se modificaron direcciones permitidas y denegadas
 log_score=Se modificó clasificación de spam
 log_report=Se modificó modificación de mensaje
@@ -64,12 +68,14 @@ log_priv=Se modificaron las opciones varias privilegiadas
 log_setup=Configurar Procmail para SpamAssassin
 log_procmail=Se cambió la configuración Procmail
 log_import=Se importaron $1 direcciones permitidas
+
 import_title=Importar Direcciones
 import_err=Fallo al importar direcciones
 import_efile=No hay archivo desde el que importar seleccionado
 import_enone=No se encontraron direcciones email en el archivo
 import_ok1=$2 direcciones email se encontraron en el archivo, de las cuales $1 eran nuevas y han sido añadidas a la lista de direcciones permitidas
 import_ok2=$1 direcciones email se encontraron en el archivo, pero ya estaban todas en la lista de direcciones permitidas.
+
 mail_title=Correo Spam
 mail_desc=Esta página lista los mensajes que han sido clasificados como spam, y que están a la espera de alguna acción. Los mensajes que hayan sido incorrectamente identificados pueden moverse a su Bandeja de Entrada, y los que realmente son Spam pueden ser borrados.
 mail_level=Anotar
@@ -87,8 +93,10 @@ mail_will=Refresco automático en $1 minutos
 mail_wills=Refresco automático en $1 segundos
 mail_delall=Borrar Todo el Spam
 mail_search3=Buscar anotaciones arriba:
+
 apply_err=Fallo al aplicar cambios
 apply_none=¡No se encontraron procesos demonio de SpamAssassin!
+
 acl_avail=Iconos accesibles al usuario
 acl_file=Archivo de configuración de SpamAssassin a editar
 acl_filedef=Archivo de configuración global

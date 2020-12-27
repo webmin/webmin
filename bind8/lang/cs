@@ -51,6 +51,7 @@ index_massdelete=Smazat vybrané
 index_massupdate=Aktualizovat záznamy z vybraných
 index_masscreate=Přidat záznam do vybraných
 index_bind=BIND
+
 master_title=Editovat master zónu
 master_ecannot=Nemáte oprávnění editovat tuto zónu
 master_eviewcannot=V tomto zobrazení nemáte oprávnění vytvářet zónu
@@ -121,6 +122,7 @@ master_eserial=Serial number musí být tvořeno číslicemi
 master_apply=Zapsat změny
 master_defttl=Výchozí time-to-live pro záznamy
 master_edefttl='$1' není platný výchozí time-to-live pro záznamy
+
 delete_title=Smazat zónu
 delete_mesg=Opravdu chcete vymazat zónu $1 ? Všechny záznamy této zóny budou vymazány.
 delete_mesg2=Opravdu chcete vymazat root zóny $1 ? Váš DNS server od toho momentu nemusí vykonávat překlad adres.
@@ -129,6 +131,7 @@ delete_fwd=Vymazat forward záznamy v ostatních zónách?
 delete_onslave=Smazat taktéž podřízené servery?
 delete_errslave=Hlavní zóna byla v pořádku smazána, nicméně v podřízených se vyskytly následující chyby : $1
 delete_ezone=Zone nebyla nalezena na slave serveru
+
 mcreate_title=Vytvořit master zónu
 mcreate_ecannot=Nemůžete vytvářet master zóny
 mcreate_opts=Vlastnosti nové master zóny
@@ -140,6 +143,7 @@ mcreate_view=Vytvořit v zobrazení
 mcreate_file=Soubor záznamů
 mcreate_auto=Automaticky
 mcreate_err=Chyba při vytváření zóny
+
 slave_title=Editovat slave zónu
 stub_title=Editovat stub zónu
 slave_ecannot=Nemáte oprávnění editovat tuto zónu
@@ -168,6 +172,7 @@ slave_delmsg=Klepnutím na toto tlačítko smažete tuto zónu z vašeho DNS ser
 slave_apply=Vnutit aktualizaci
 slave_last=Naposledy převedeno : $1
 slave_never=Nikdy
+
 screate_title1=Vytvořit slave zónu
 screate_title2=Vytvořit stub zónu
 screate_ecannot1=Nemáte oprávnění vytvářet slave zóny
@@ -180,6 +185,7 @@ screate_rev=Reverse (Adresy na jména)
 screate_dom=Doménové jméno / Síť
 screate_err1=Chyba při vytváření slave zóny
 screate_err2=Chyba při vytváření stub zóny
+
 recs_ecannot=Nemáte oprávnění editovat záznamy v této zóně
 recs_ecannottype=Nemáte oprávnění pro úpravu záznamů tohoto typu
 recs_title=$1 záznamy
@@ -194,6 +200,7 @@ recs_vals=Hodnoty
 recs_find=Zobrazit záznamy odpovídající:
 recs_search=Hledat
 recs_drev=Smazat taktéž reverzní?
+
 edit_title=Editovat $1
 edit_header=V $1
 edit_edit=Editovat záznam $1
@@ -249,12 +256,14 @@ edit_espfa='$1' není správný host, který by vyhovoval odesílání z
 edit_espfmx='$1' není platné jméno domény, které by umožňovalo MX odesílání z
 edit_espfip='$1' není platná IP adresa nebo IP prefix, která by umožňovala odesílání z
 edit_espfinclude='$1' není není správná přídavná doména, ze které byl mail odeslán
+
 text_title=Editovat soubor záznamů
 text_title2=Zobrazot soubor se záznamy
 text_desc2=Tato stránka zobrazuje soubor $1 s DNS záznamy, vytvořený systémem BIND v momentě, kdy byla přesunuta zóna z hlavního serveru.
 text_undo=Zpět
 text_ecannot=Nemáte oprávnění editovat záznamový soubor
 text_none=Vypadá to, že soubor je momentálně prázdný. To je pravděpodobně způsobeno tím, že doposud nebyla zóna převedena z hlavního serveru.
+
 restart_err=Chyba při aplikování změn
 restart_ecannot=Nemáte oprávnění restartovat BIND
 restart_epidfile=Není možné nalézt BIND PID na $1
@@ -263,10 +272,12 @@ restart_erunning2=Vypadá to, že BIND neběží na podřízeném serveru $1
 restart_endc=NDC příkaz nefunguje : $1
 restart_ecmd=Chyba v příkazu por restart : $1
 restart_eversion=Podřízený server $1 neběží pod Webmin verzí $2 a výše.
+
 start_ecannot=Nemáte oprávnění spustit BIND
 start_error=Chyba při startu BINDu : $1
 stop_epid=BIND neběží
 stop_ecannot=Nemáte oprávnění zastavit BIND
+
 fwd_title=Editovat Forward Zónu
 fwd_ecannot=Nemáte oprávní editovat tuto zónu
 fwd_opts=Vlastnosti zóny
@@ -274,11 +285,13 @@ fwd_masters=Master servery
 fwd_forward=Zkusit další servery?
 fwd_check=Zkontrolovat jména?
 fwd_err=Chyba při ukládání vlastností
+
 delegation_title=Upravit delegační zónu
 delegation_ecannot=Nemáte oprávnění k úpravě této zóny
 delegation_opts=Volby zóny
 delegation_err=Chyba při ukládání voleb
 delegation_noopts=Delegační zóny
+
 fcreate_title=Vytvořit Forward Zónu
 fcreate_ecannot=Nemáte oprávnění vytvořit forward zónu
 fcreate_opts=Vlastnosti nové forward zóny
@@ -288,10 +301,12 @@ fcreate_rev=Reverse (Adresy na jména)
 fcreate_dom=Doménové jméno/Síť
 fcreate_masters=Hlavní servery
 fcreate_err=Chyba při vytváření forward zóny
+
 dcreate_title=Vytvořit zónu výhradně delegační
 dcreate_ecannot=Nemáte oprávnění vytvořit delegační zóny
 dcreate_opts=Volby pro novou delegační zónu
 dcreate_err=Chyba při vytváření delegační zóny
+
 create_enet='$1' není platná síť
 create_edom='$1' není platné doménové jméno
 create_edom2='$1' musí být doména, nikoliv síť
@@ -301,7 +316,9 @@ create_efile3=Chyba při vytváření '$1' : $2
 create_efile4=Soubor $1 již existuje
 create_emaster='$1' není správná adresa hlavního serveru
 create_enone=Musíte nastavit nejméně jeden hlavní server
+
 boot_err=Chyba stahování (downloadu)
+
 type_A=Adresa (A)
 type_AAAA=IPv6 Adresa (AAAA)
 type_NS=Jmenný Server (NS)
@@ -317,6 +334,7 @@ type_LOC=Umístění (LOC)
 type_SRV=Adresa služby (SRV)
 type_ALL=Všechny typy záznamu (ALL)
 type_KEY=Veřejný klíč
+
 edit_A=Adresa
 edit_AAAA=IPv6 Adresa
 edit_NS=Jmenný server
@@ -331,6 +349,7 @@ edit_PTR=Reverzní adresa
 edit_LOC=Umístění
 edit_SRV=Adresa služby
 edit_KEY=Veřejný klíč
+
 recs_A=Adresa
 recs_AAAA=IPv6 Adresa
 recs_NS=Jmenný server
@@ -347,6 +366,7 @@ recs_SRV=Adresa služby
 recs_ALL=Všechny
 recs_KEY=Veřejný klíč
 recs_delete=Smazat vybrané
+
 value_A1=Adresy
 value_NS1=Jmenný server
 value_CNAME1=Reálné jméno
@@ -385,6 +405,7 @@ value_spfall2=Odradit (~vše)
 value_spfall1=Neutrální (?vše)
 value_spfall0=Povolit (+vše)
 value_spfalldef=Výchozí
+
 warn=Varování
 fail=Chyba
 ignore=Ignorovat
@@ -398,6 +419,7 @@ listed=Listovat ..
 eip='$1' není platná IP adresa
 eport='$1' není platné číslo portu
 eipacl='$1' není platná IP adresa nebo ACL jméno
+
 acl_zones=Domény, které může uživatel editovat
 acl_zall=Všechny zóny
 acl_zsel=Vybrané zóny..
@@ -439,6 +461,7 @@ acl_ztypes_master=Hlavní
 acl_ztypes_slave=Podřízený/zástupce
 acl_ztypes_delegation=Delegování
 acl_ztypes_forward=Dopravit
+
 servers_title=Další DNS Servery
 servers_ip=IP adresy
 servers_bogus=Ignorovat bogus server?
@@ -450,6 +473,7 @@ servers_keys=Použít DNS klíče
 servers_err=Chyba při ukládání dalších DNS serverů
 servers_eip='$1' není platná IP adresa
 servers_etrans='$1' není platný počet maximálních transferů
+
 logging_title=Logování a chyby
 logging_ecannot=Nemáte oprávnění konfigurovat logování
 logging_header=Globalní logování and vlastnosti chyb
@@ -481,12 +505,14 @@ logging_ename='$1' není platné jméno kanálu
 logging_efile=Chybějící jméno souboru
 logging_ever='$1' není platné číslo verze
 logging_esize='$1'není platná velikost logu
+
 acls_title=Přístupový list
 acls_ecannot=Nemáte oprávnění editovat globální přístupový seznam
 acls_name=Jméno přístupového seznamu
 acls_values=Výběr adres, sítí a přístupových seznamů
 acls_err=Chyba při ukládání přístupového seznamu
 acls_ename='$1' není platné jméno přístupového seznamue
+
 files_title=Soubory a adresáře
 files_ecannot=Nemáte oprávnění konfigurovat soubory
 files_header=Globální nastavení vlastností souborů a adresářů
@@ -496,6 +522,7 @@ files_pid=Process ID file
 files_xfer=Cesta k programu pro transfer zón
 files_err=Chyba při ukládání vlastností souborů a adresářů
 files_efile=Chybějící nebo neplatné jméno souboru
+
 forwarding_title=Forwardování a transformace (transfery)
 forwarding_ecannot=Nemáte oprávnění editovat vlastnosti forwardování a transformací
 forwarding_header=Globální vlastnosti forwardování a transformací zón
@@ -512,6 +539,7 @@ forwarding_etrans=Chybějící nebo neplatné maximum souběžný transformací
 forwarding_minutes=minuty
 forwarding_ip=IP adresa
 forwarding_port=Port (volitelně)
+
 net_title=Adresace a topologie
 net_ecannot=Nemáte oprávnění editovat vlastnosti adresace a topologie
 net_header=Globální vlastnosti adresace a topologie
@@ -528,6 +556,7 @@ net_eport='$1' není platné číslo portu
 net_eusedport=Pro port $1 je povolen pouze jeden řádek pro zapsání adres
 net_etopology=Nebyla vložena žádná topologie adres
 net_erecur=Nebyla vložena žádná adresa povolující rekurzi
+
 controls_title=Možnosti kontrolního rozhraní
 controls_ecannot=Nemáte oprávnění editovat možnosti kontroly
 controls_header=Možnosti kontroly
@@ -549,6 +578,7 @@ controls_eunixpath=Chybějící nebo chybná FIFO cesta k souboru
 controls_eunixperm=Chybějící nebo chybná práva souboru
 controls_eunixowner=Chybějící nebo chybný vlastník souboru
 controls_eunixgroup=Chybějící nebo chybný skupina souboru
+
 controls_inet=Internet port přístup
 controls_unix=Unix FIFO přístup
 controls_port=port
@@ -562,6 +592,7 @@ controls_efile=Chybějící nebo nesprávný FIFO soubor
 controls_eperms=Chybějící nebo nesprávná FIFO práva
 controls_eowner=Chybějící nebo nesprávný FIFO vlastník UID
 controls_egroup=Chybějící nebo nesprávný FIFO vlastník GID
+
 keys_title=DNS Klíče
 keys_id=ID klíče
 keys_alg=Algoritmus
@@ -570,6 +601,7 @@ keys_ecannot=Nemáte oprávnění editovat DNS klíče
 keys_err=Chyba při ukládání DNS klíčů
 keys_ekey='$1' není platné ID klíče
 keys_esecret=Chybějící nebo nesprávné base-64 encoded zabepečnení pro klíč $1
+
 misc_title=Další rozšířené vlastnosti
 misc_ecannot=Nemáte oprávnění konfigurovat rozšířené vlastnosti
 misc_header=Globální rozšířené vlastnosti
@@ -589,6 +621,7 @@ misc_esize='$1' není platná velikost
 misc_efiles='$1' není platné číslo maximálního počtu otevřených souborů
 misc_emins='$1' není platný počet minut
 misc_mins=min
+
 zonedef_title=Výchozí nastavení pro zónu
 zonedef_msg=Výchozí hodnoty nových master zón
 zonedef_err=Chyba při ukládání výchozích hodnot master zón
@@ -604,17 +637,22 @@ zonedef_email=výchozí email adresa
 zonedef_prins=Výchozí nameserver pro hlavní domény
 zonedef_this=Systémový hostname ($1)
 zonedef_eprins=Chybějící nebo nesprávný výchozí nameserver pro hlavní domény
+
 find_title=Nalezení zón
 find_match=Zóny obsahující $1 ..
 find_none=Žádné zóny nebyly nalezeny.
+
 efirst=Špatná první directiva na řádku $1 v $2
+
 findfree_title=Nalezení volných IP
+
 findfree_desc=Nalézt volné IP
 findfree_nofind=Nemůžete se podívat na volná IP
 findfree_header=V $1
 findfree_sopt=Možnosti hledání
 findfree_cf=Má se brát ohled na <em>freeXXX</em> názvy volných IP?
 findfree_search=Hledat
+
 free_title=Volné IP adresy
 log_servers=Změny ostatních DNS serverů
 log_logging=Změněno přihlašování a chyby
@@ -664,11 +702,14 @@ log_delete_recs=Smazáno $1 záznamů
 log_delete_zones=Smazáno $1 zón
 log_freeze=Zmrazila se zóna $1
 log_thaw=Odmrazila se zóna $1
+
 convert_err=Chyba při převodu zóny
 convert_efile=Soubor záznamů musí být specifikován dříve než hodláte převést podřízenou zónu do hlavní zóny.
+
 whois_title=WHOIS Informace
 whois_header=Výstup z příkazu $1 ..
 whois_ecannot=Nemáte oprávnění prohlížet WHOIS informace
+
 view_title=Editovat zobrazení klienta
 view_opts=Detaily zobrazení klienta
 view_name=Název zobrazení
@@ -676,6 +717,7 @@ view_class=DNS třída záznamů
 view_match=Použít toto zobrazení na klienty
 view_recursion=Provést pro klienty plné rekurzivní zobrazení?
 view_ecannot=Nemáte oprávnění upravovat zobrazení
+
 vcreate_title=Vytvořit zobrazení klienta
 vcreate_match_all=Všichni klienti
 vcreate_match_sel=Vybrané adresy, sítě a ACL
@@ -684,11 +726,13 @@ vcreate_ename=Chybějící nebo nesprávný název zobrazení
 vcreate_etaken=Název zobrazení je již používán
 vcreate_eclass=Chybějící nebo nesprávná název třídy
 vcreate_ecannot=Nemáte oprávnění vytvářet zobrazení
+
 hint_title=Edit root (kořenovou) zónu
 hint_desc=Root (kořenová) zóna je na vašem DNS serveru používána za účelem připojení root serverů k internetu tak, aby mohl analyzovat jména v doménách, jež nejsou udržována vaším DNS serverem (např. <tt>.com</tt> or <tt>.net.au</tt>). Dokud je váš DNS server používán v rámci interní sítě či jsou vaše žádosti přesměrovávány na jiný server, nemusíte mazat tuto root zónu.
 hint_move=Přejít do zobrazení:
 hint_ecannot=Nemáte oprávnění editovat tuto root zónu
 hint_refetch=Přehrát kořen nameservery
+
 hcreate_title=Vytvořit root (kořenovou) zónu
 hcreate_desc=Root (kořenová) zóna je na vašem DNS serveru používána za účelem připojení root serverů k internetu tak, aby mohl analyzovat jména v doménách, jež nejsou udržována vaším DNS serverem (např. <tt>.com</tt> or <tt>.net.au</tt>). Používáte-li vícenásobná zobrazení, můžete mít oddělenou root zónu v každém zobrazení a tím pádem všichni klienti mohou přijímat internet domény zvlášť.
 hcreate_file=Zapsat root servery do souboru
@@ -701,6 +745,7 @@ hcreate_efile=Root soubor '$1' neumožňuje zápis
 hcreate_efile2=Chybějící nebo nesprávný root soubor
 mcreate_erecs=Neplatný stávající soubor root zóny
 hcreate_err=Chyba při vytváření root zóny
+
 vdelete_title=Smazat zobrazení
 vdelete_mesg=Skutečně chcete smazat klientské zobrazení $1 ? Všechny zóny v tomto zobrazení budou taktéž smazány (společně s jejich soubory zón) nebo převedeny do jiného zobrazení vybrané níže.
 vdelete_mesg2=Skutečně chcete smazat klientské zobrazení $1 ?
@@ -708,6 +753,7 @@ vdelete_newview=Zóny bez tohoto zobrazení
 vdelete_root=Vyjmout ze zobrazení
 vdelete_delete=Úplně odstranit
 vdelete_move=Přesunout do zobrazení
+
 gen_title=Generátory záznamů
 gen_desc=Tato stránka umožňuje definovat generátory, které dokáží v dané zóně vytvořit vícenásobné záznamy použitím rostoucích čítačů. Tento postup může být užitečný při delegování částí z reverzní zóny na rozdílné servery.
 gen_range=Rozsah
@@ -727,7 +773,9 @@ gen_evalue=Chybějící nebo nesprávná maska host jména pro generátor $1
 gen_title2=Generování záznamů
 gen_raw=Řádkový režim konfigurace
 gen_ecannot=Nemáte oprávnění editovat generátory záznamů
+
 refetch_err=Chyba při opětovném nahrání kořenové zóny
+
 slaves_title=Cluster podřízených serverů
 slaves_none=Doposud nebyly do DNS clusteru přidány žádné servery.
 slaves_host=Jméno hosta
@@ -751,6 +799,7 @@ slaves_sync=Vytvořit všechny stávající hlavní zóny na podřízeném?
 slaves_sec=Při vytváření lokálně, vytvořit i sekundární na podřízeném?
 slaves_name=Jméno pro NS záznam
 slaves_same=Stejný jako hostname
+
 add_title=Přidat servery
 add_msg=Přidává se $1 ..
 add_gmsg=Přidávají se servery do skupiny $1 ..
@@ -766,6 +815,7 @@ add_createok=Nastavit $1 s $2 novými podřízenými zónami.
 add_ename=Chybějící nebo chybné jméno NS záznamu
 add_egname=Jméno NS záznamu nemůže být specifikováno přidáním skupiny
 add_emyip=Není možné pracovat mimo tuto systémovou IP adresu. V konfigurační stránce modulu můžete nastavit <b>IP výchozího hlavního serveru pro vzdálené vedlejší zóny</b>.
+
 mass_title=Vytvořit zóny z dávkového souboru
 mass_desc=Tato stránka umožňuje vytvoření vícero zón najednou a to pomocí textového souboru, umístěného na serveru. Každý řádek souboru musí obsahovat následující formát zápisu:<p><tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt><p><i>Typ</i> musí být zapsán řetězcem <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> nebo <tt>forward</tt>. <i>Filename</i> je volitelný, přičemž bude automaticky doplněn, pokud bude chybět. <i>Master IPs</i> jsou potřebné jen v případě vedlejších zón.
 mass_local=Lokální dávkový soubor
@@ -795,6 +845,7 @@ mass_emips=Chybějící hlavní IP adresy
 mass_addedslaves=Přidání $1 podřízeného serveru proběhlo v pořádku.
 mass_eonslave=Chyby, které se vyskytly při vytváření podřízených serverů : $1
 mass_eviewcannot=Pro toto zobrazení nemáte oprávnění přidávat zóny
+
 massdelete_title=Smazat zóny
 massdelete_rusure=Určitě chcete smazat $1 vybraných zón? ($2)
 massdelete_ok=Spustit mazání
@@ -802,6 +853,7 @@ massdelete_zone=Probíhá mazání zóny $1 ..
 massdelete_done=.. hotovo.
 massdelete_slaves=Probíhá mazání $1 z podřízených serverů ..
 massdelete_failed=.. v některých podřízených se vyskytly chyby :
+
 rndc_title=Nastavit RNDC
 rndc_desc=Tato stránka může být využita pro nastavení kontroly BINDu RNDC programem, takže individuální zóny mohou být aktualizovány bez nutnosti plného restartu BIND serveru.
 rndc_desc2=Vypadá to, RNDC je již nastaven, takže není potřeba použít tento formulář.
@@ -812,11 +864,13 @@ rndc_ok=Ano, nastavit RNDC
 rndc_err=Chyba při nastavení RNDC
 rndc_ekey=Není možné nalézt klíč v souboru rndc.conf
 rndc_esecret=Není možné najít zabezpečení v rndc.conf
+
 drecs_err=Chyba při mazání záznamů
 drecs_enone=Nic není vybráno
 drecs_title=Smazat záznamy
 drecs_rusure=Jste si jisti, že chcete smazat $1 vybraných záznamů z $2?
 drecs_ok=Spustit mazání
+
 manual_title=Upravit konfigurační soubor
 manual_ecannot=Nemáte oprávnění upravovat konfigurační soubor BINDu
 manual_ok=Upravit
@@ -824,7 +878,9 @@ manual_efile=Vybraný soubor není součásti konfigurace BINDu
 manual_file=Upravit konfigurační soubor:
 manual_edata=Nic nebylo vloženo!
 manual_err=Chyba při ukládání konfiguračního souboru
+
 syslog_desc=Zprávy BIND DNS serveru
+
 umass_err=Chyba při aktualizaci zón
 umass_enone=Nic nebylo vybráno
 umass_title=Aktualizovat záznamy v zónách
@@ -842,6 +898,7 @@ umass_done=.. aktualizováno $1 odpovídajících záznamů z $2
 umass_none=.. nebyly nalezeny žádné záznamy odpovídající $1.
 umass_egone=Zóna neexistuje
 emass_emx='$1' není číslo priority pro mail server, uvedené za správném jménem hosta
+
 rmass_err=Chyba při přidávání záznamů
 rmass_enone=Nic není vybráno
 rmass_title=Přidat záznam do zón

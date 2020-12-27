@@ -27,7 +27,9 @@ index_global=Cấu hình Toàn cầu
 index_create=Tạo máy chủ ảo
 index_version=Phiên bản ProFTPd $1 
 index_proftpd=ProFTPd
+
 efailed=Không thể lưu $1 
+
 type_0=Tùy chọn kết nối mạng
 type_1=Tùy chọn đăng nhập
 type_2=Hồ sơ và thư mục
@@ -35,6 +37,7 @@ type_3=Kiểm soát truy cập
 type_4=Điều khoản khác
 type_5=Người dùng và nhóm
 type_6=Xác thực
+
 virt_title=Tùy chọn máy chủ ảo
 virt_header1=Cho 1
 virt_header2=Đối với máy chủ mặc định
@@ -50,6 +53,7 @@ virt_cmds=Lệnh FTP
 virt_return=máy chủ ảo
 virt_virt=Cấu hình máy chủ ảo
 virt_edit=Chỉnh sửa chỉ thị
+
 vserv_title=Cấu hình máy chủ ảo
 vserv_addr=Địa chỉ
 vserv_name=Tên máy chủ
@@ -58,6 +62,7 @@ vserv_delete=Xóa máy chủ ảo
 vserv_eaddr=Địa chỉ thiếu hoặc không hợp lệ
 vserv_eport=Số cổng bị thiếu hoặc không hợp lệ
 vserv_ename=Tên máy chủ bị thiếu
+
 anon_title=Tùy chọn FTP ẩn danh
 anon_header1=Trong máy chủ ảo $1 
 anon_header2=Trong máy chủ mặc định
@@ -65,6 +70,7 @@ anon_anon=Cấu hình FTP ẩn danh
 anon_return=tùy chọn FTP ẩn danh
 anon_header3=Đối với FTP ẩn danh trong máy chủ ảo $1 
 anon_header4=Đối với FTP ẩn danh trong máy chủ mặc định
+
 aserv_title=Cấu hình FTP ẩn danh
 aserv_create=Thiết lập FTP ẩn danh
 aserv_root=Giới hạn thư mục
@@ -75,6 +81,7 @@ aserv_eroot=Thư mục chroot bị thiếu hoặc không hợp lệ
 aserv_euser=Người dùng Unix bị thiếu hoặc không hợp lệ
 aserv_egroup=Nhóm Unix bị thiếu hoặc không hợp lệ
 aserv_desc=FTP ẩn danh chưa được thiết lập cho máy chủ ảo này. Sử dụng mẫu này để đặt các tùy chọn cấu hình ban đầu.
+
 dir_title=Tùy chọn mỗi thư mục
 dir_header2=Đối với thư mục $1 trong máy chủ mặc định
 dir_header1=Đối với thư mục $1 trong máy chủ ảo $2 
@@ -85,6 +92,7 @@ dir_header=Tùy chọn mỗi lệnh
 dir_dir=Cấu hình thư mục
 dir_header4=Đối với thư mục $1 trong FTP ẩn danh
 dir_header5=Đối với thư mục $1 trên toàn cầu
+
 manual_title=Chỉnh sửa chỉ thị
 manual_header=Sử dụng hộp văn bản bên dưới để chỉnh sửa thủ công các lệnh ProFTPD trong $1 áp dụng cho máy chủ, thư mục hoặc lệnh ảo này.
 manual_configs=Chỉnh sửa tập tin cấu hình
@@ -92,6 +100,7 @@ manual_ecannot=Bạn không được phép chỉnh sửa thủ công các chỉ 
 manual_file=Chỉnh sửa chỉ thị trong tệp:
 manual_efile=Tệp cấu hình ProFTPd không hợp lệ
 manual_etest=Đã phát hiện lỗi tệp cấu hình : $1 
+
 limit_title=Tùy chọn mỗi lệnh
 limit_header4=Đối với các lệnh $1 trong thư mục $2 
 limit_header2=Đối với các lệnh $1 trong máy chủ mặc định
@@ -103,17 +112,20 @@ limit_return=tùy chọn cho mỗi lệnh
 limit_header5=Đối với các lệnh $1 trong FTP ẩn danh
 limit_header6=Đối với các lệnh $1 trong tệp $2 
 limit_header7=Đối với các lệnh $1 trên toàn cầu
+
 lserv_title=Cấu hình các lệnh
 lserv_cmd=Lệnh FTP
 lserv_delete=Xóa cấu hình lệnh
 lserv_err=Không thể lưu lệnh
 lserv_ecmd=Không có lệnh nào được chọn
+
 dserv_title=Cấu hình thư mục
 dserv_dir=Đường dẫn thư mục
 dserv_err=Không thể lưu thư mục
 dserv_edir=Thiếu đường dẫn thư mục
 dserv_delete=Xóa cấu hình thư mục
 dserv_eanondir=Thư mục phải nằm trong thư mục FTP ẩn danh
+
 mod_core_type=Loại máy chủ
 mod_core_inetd=Chạy từ Inetd
 mod_core_stand=Daemon độc lập
@@ -301,6 +313,7 @@ mod_core_duser=Từ chối người dùng
 mod_core_eip='$1' không phải là địa chỉ IP hợp lệ
 mod_core_enet='$1' không phải là địa chỉ mạng hợp lệ
 mod_core_ehost='$1' không phải là tên máy chủ hợp lệ
+
 mod_ls_fakegroup=Nhóm giả trong danh sách thư mục?
 mod_ls_fakeuser=Người dùng giả trong danh sách thư mục?
 mod_ls_fakemode=Quyền giả trong danh sách thư mục
@@ -317,6 +330,7 @@ mod_ls_efakeuser=Người dùng giả mạo thiếu hoặc không hợp lệ
 mod_ls_efakegroup=Nhóm giả mạo thiếu hoặc không hợp lệ
 mod_ls_options=Tùy chọn danh sách thư mục
 mod_ls_strict=Ghi đè tùy chọn người dùng?
+
 mod_auth_chdir=Thư mục đăng nhập ban đầu
 mod_auth_echdir=Thư mục ban đầu bị thiếu hoặc không hợp lệ
 mod_auth_chroot=Giới hạn người dùng vào thư mục
@@ -330,7 +344,9 @@ mod_auth_egroups=Không có nhóm Unix nào cho chroot được nhập
 mod_auth_echroot=Thư mục chroot bị thiếu hoặc không hợp lệ
 mod_auth_login=Đừng hỏi mật khẩu nếu đăng nhập bị từ chối?
 mod_auth_root=Cho phép đăng nhập bằng root?
+
 mod_site_chmod=Cho phép lệnh chmod?
+
 mod_unixpw_ufile=Tệp mật khẩu thay thế Unix
 mod_unixpw_eufile=Tệp mật khẩu Unix bị thiếu hoặc không hợp lệ
 mod_unixpw_gfile=Tập tin thay thế nhóm Unix
@@ -338,6 +354,7 @@ mod_unixpw_egfile=Tệp nhóm Unix bị thiếu hoặc không hợp lệ
 mod_unixpw_none=không ai
 mod_unixpw_pam=Luôn coi PAM là có thẩm quyền?
 mod_unixpw_persist=Giữ tập tin mật khẩu mở liên tục?
+
 mod_log_syslog=Đăng nhập lỗi vào tập tin
 mod_log_sysdef=Nhật ký hệ thống
 mod_log_esyslog=Tệp nhật ký bị thiếu hoặc không hợp lệ
@@ -354,19 +371,25 @@ mod_log_fmt=Chuỗi định dạng
 mod_log_format=Định dạng nhật ký tùy chỉnh
 mod_log_enickname=Tên định dạng bị thiếu hoặc không hợp lệ
 mod_log_efmt=Thiếu định dạng chuỗi
+
 mod_pam_pam=Sử dụng PAM để xác thực?
 mod_pam_config=Xác thực bằng dịch vụ PAM
 mod_pam_econfig=Dịch vụ PAM bị thiếu hoặc không hợp lệ
+
 mod_readme_display=Thông báo cho người dùng về tập tin readme phù hợp
 mod_readme_none=không ai
 mod_readme_edisplay=Thiếu mẫu tập tin readme
+
 start_err=Không thể khởi động máy chủ FTP
 start_einetd=Bạn không thể khởi động trình nền máy chủ khi ở chế độ inetd.
+
 stop_err=Không thể dừng máy chủ FTP
 stop_einetd=Bạn không thể dừng trình nền máy chủ khi ở chế độ inetd.
 stop_erun=Không chạy
+
 apply_err=Không thể áp dụng cấu hình FTP
 apply_egone=Không còn chạy
+
 ftpaccess_title=Tệp tùy chọn mỗi thư mục
 ftpaccess_desc=Tùy chọn mỗi thư mục bổ sung có thể được chỉ định trong một tệp (thường được gọi là <tt>.ftpaccess</tt>) trong mỗi thư mục. Các tùy chọn áp dụng cho tất cả các tệp trong thư mục đó và bất kỳ thư mục con nào, trừ khi bị ghi đè bởi tệp tùy chọn khác.
 ftpaccess_create=Tạo tập tin tùy chọn
@@ -374,8 +397,10 @@ ftpaccess_find=Tìm tập tin tùy chọn
 ftpaccess_auto=Dưới ẩn danh
 ftpaccess_from=Từ thư mục
 ftpaccess_return=danh sách tập tin tùy chọn
+
 ftpusers_title=Người dùng FTP bị từ chối
 ftpusers_desc=Nếu được bật trong biểu tượng <tt>Xác thực</tt>, người dùng được liệt kê bên dưới từ tệp $1 sẽ bị từ chối truy cập đăng nhập vào người dùng FTP.
+
 ftpindex_title=Tệp tùy chọn mỗi thư mục
 ftpindex_delete=Xóa tài liệu
 ftpindex_opts=Tùy chọn mỗi thư mục
@@ -385,8 +410,10 @@ ftpindex_addlimit=Thêm tùy chọn cho mỗi lệnh cho ..
 ftpindex_header2=$1 trong $2 
 ftpindex_return=tập tin tùy chọn mỗi thư mục
 ftpindex_header=Cho 1
+
 find_err=Không thể tìm thấy tệp tùy chọn
 find_eanon=FTP ẩn danh không được thiết lập trong bất kỳ máy chủ ảo nào
+
 log_global=Thay đổi tùy chọn $1 toàn cầu
 log_ftpusers=Thay đổi người dùng FTP bị từ chối
 log_virtc=Đã tạo máy chủ $1 
@@ -420,6 +447,7 @@ log_anonm=FTP ẩn danh thủ công cho máy chủ $1
 log_anon=Đã thay đổi $1 trong FTP ẩn danh cho máy chủ $2 
 log_start=Bắt đầu proftpd
 log_apply=Áp dụng thay đổi
+
 eafter=Xác minh cấu hình không thành công: $1 Thay đổi chưa được lưu.
 proftpd_apply=Áp dụng các thay đổi
 proftpd_stop=Dừng ProFTPd

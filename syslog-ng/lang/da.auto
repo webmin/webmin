@@ -9,6 +9,7 @@ index_start=Start Syslog-NG
 index_startdesc=Klik på denne knap for at starte Syslog-NG-dæmonen ved hjælp af den aktuelle konfiguration.
 index_return=modul indeks
 index_version=Syslog-NG $1 
+
 options_title=Logningsindstillinger
 options_header=Valgmuligheder for alle logfiler
 options_secs=sekunder
@@ -55,6 +56,7 @@ options_esync=Manglende eller ugyldigt antal meddelelser til buffer, før du skr
 options_estats=Manglende eller ikke-numerisk tid til at vente mellem statistiske meddelelser
 options_elog_fifo_size=Manglende eller ugyldigt antal meddelelser til buffer
 options_elog_msg_size=Manglende eller ikke-numerisk maksimal logbeskedstørrelse
+
 destinations_title=Log destinationer
 destinations_name=Destinationsnavn
 destinations_type=Skrive til
@@ -77,6 +79,7 @@ destinations_add=Tilføj en ny logdestination.
 destinations_return=log destinationer
 destinations_desc=Andet modulets log
 destinations_cmd=Output fra $1 
+
 destination_header=Log destinationsindstillinger
 destination_title1=Opret logdestination
 destination_title2=Rediger logdestination
@@ -117,17 +120,22 @@ destination_enet_localip=Manglende eller ugyldig lokal IP-adresse
 destination_enet_localport=Manglende eller ugyldigt lokalt portnummer
 destination_enet_host=Manglende eller ugyldig Syslog-serverhost eller -adresse
 destination_eunix=Manglende Unix-socket-navn
+
 ddelete_err=Kunne ikke slette destinationer
 ddelete_enone=Ingen valgt
 ddelete_eused=Destinationen $1 kan ikke slettes, da den bruges af et logmål
+
 sdelete_err=Kunne ikke slette kilder
 sdelete_enone=Ingen valgt
 sdelete_eused=Logkilden $1 kan ikke slettes, da den bruges af et logmål
+
 fdelete_err=Kunne ikke slette filtre
 fdelete_enone=Ingen valgt
 fdelete_eused=Logfilteret $1 kan ikke slettes, da det bruges af et logmål
+
 ldelete_err=Kunne ikke slette logmål
 ldelete_enone=Ingen valgt
+
 filters_title=Logfiltre
 filters_name=Filtrer navn
 filters_desc=Betingelser
@@ -144,6 +152,7 @@ filters_program=program <tt>$1</tt>
 filters_match=matcher "$1"
 filters_host=fra værtsnavnet <tt>$1</tt>
 filters_netmask=fra afsender <tt>$1</tt>
+
 filter_title1=Opret logfilter
 filter_title2=Rediger logfilter
 filter_header=Detaljer om logfilterens specifikation
@@ -169,6 +178,7 @@ filter_enet=Manglende eller ugyldig netværks IP-adresse
 filter_emask=Manglende eller ugyldig netmaske
 filter_ebool=Fejl i komplekst udtryk
 filter_egone=Filter findes ikke længere!
+
 logs_title=Logmål
 logs_source=Kilder
 logs_filter=filtre
@@ -177,6 +187,7 @@ logs_add=Tilføj et nyt logmål.
 logs_delete=Slet valgte logmål
 logs_return=log mål
 logs_none=Ingen
+
 log_title1=Opret logmål
 log_title2=Rediger logmål
 log_header=Log valg af kilde, filter og destination
@@ -190,6 +201,7 @@ log_flags=Målindstillinger
 log_egone=Logmålet findes ikke længere!
 log_err=Kunne ikke gemme logmålet
 log_esource=Ingen kilder valgt
+
 sources_title=Logkilder
 sources_none=Der er endnu ikke defineret nogen kilder!
 sources_add=Tilføj en ny logkilde.
@@ -207,6 +219,7 @@ sources_typen=Solstrøm
 sources_typenw=Syslog-server
 sources_return=log kilder
 sources_none2=Ingen
+
 source_title1=Opret logkilde
 source_title2=Rediger logkilde
 source_header=Indstillinger for logkilde
@@ -243,15 +256,20 @@ source_door=Dørens filnavn
 source_esun_streams_name=Manglende eller ugyldig Sun streams filnavn
 source_edoor=Manglende eller ugyldig Sun streams dørfilnavn
 source_transport=Netværksprotokol
+
 view_title=Se Logfile
 view_header=Sidste $1 linjer af $2 
 view_empty=Logfilen er tom
 view_refresh=Opdater
 view_filter=Vis kun linjer med tekst $1 
+
 apply_err=Kunne ikke anvende konfiguration
 apply_egone=Kører ikke!
+
 start_err=Kunne ikke starte Syslog-NG-server
+
 stop_err=Kunne ikke stoppe Syslog-NG-server
+
 log_create_destination=Oprettet logdestination $1 
 log_modify_destination=Ændret logdestination $1 
 log_delete_destination=Slettet logdestination $1 

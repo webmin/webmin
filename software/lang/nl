@@ -20,6 +20,7 @@ index_epackagecmd=Het $1 pakket systeem heeft de $2 opdracht nodig
 index_eupdatecmd=Het $1 update systeem heeft de $2 opdracht nodig
 index_epackagecheck=Het geselecteerde pakket management systeem is niet geldig : $1.<br>U moet een ander systeem selecteren op de <a href='$2'>module configuratie</a> pagina.
 index_eupdatecheck=Het geselecteerde update systeem is niet geldig : $1.<br>U moet een andere update methoden selecteren op de <a href='$2'>module configuratie</a> pagina.
+
 search_title=Zoek Pakket
 search_nomatch=Geen pakket komt overeen met $1
 search_none=Geen
@@ -32,6 +33,7 @@ search_esearch=U heeft niets ingevuld om naar te zoeken!
 search_delete=De-installeer geselecteerde pakketten
 search_selall=Selecteer alles
 search_invert=Keer de selectie om
+
 edit_title=Bewerk pakket
 edit_details=Pakket Detail
 edit_desc=Omschrijving
@@ -46,6 +48,7 @@ edit_list=File Lijst
 edit_uninst=De-installeer
 edit_return=Pakket detail
 edit_egone=Pakket is niet langer geinstalleerd
+
 list_title=Pakketten files
 list_files=Files voor pakket $1
 list_path=Pad
@@ -57,6 +60,7 @@ list_status=Status
 list_ok=OK
 list_view=(Bekijk)
 list_eview=Mislukt om $1 : $2 te openen
+
 delete_err=Mislukt om pakket $1 te verwijderen
 delete_epack=Het pakket $1 bestaat niet
 delete_title=Verwijder Pakket
@@ -66,6 +70,7 @@ delete_ok=Verwijderen
 delete_nodeps=Negeer afhankelijkheden?
 delete_noscripts=De-installatie scripts overslaan?
 delete_efile=Ongeldige temp file om te verwijderen
+
 file_title=File informatie
 file_notfound=Er is geen informatie aanwezig voor $1
 file_path=Pad
@@ -79,6 +84,7 @@ file_pack=Pakket
 file_class=Klasse
 file_desc=Omschrijving
 file_none=Geen
+
 install_err=Mislukt om pakket te installeren
 install_elocal=Geen locale file opgegeven
 install_elocal2='$1' bestaat niet
@@ -92,6 +98,7 @@ install_title=Installeer Pakket
 install_header=Installeer pakket
 install_packs=Pakketten die geinstalleerd worden
 install_ok=Installeer
+
 do_err=Mislukt om pakket $1 te installeren
 do_title=Installeer Pakket
 do_efailed=Installatie mislukt : $1
@@ -108,10 +115,12 @@ do_arch=Architectuur
 do_inst=Geïnstalleerd
 do_none=Geen
 do_files=Pakketten Files
+
 pkgadd_root=Root directory
 pkgadd_eroot=Root directory '$1' bestaat niet
 pkgadd_unknown=Onbekend
 pkgadd_manager=Systeem V Pakket Manager
+
 rpm_upgrade=Pakket upgraden?
 rpm_replacepkgs=Pakket overschrijven?
 rpm_nodeps=Negeer afhankelijkheid?
@@ -129,10 +138,12 @@ rpm_find=Zoek op rpmfind.net ..
 rpm_findrpm=Pakket filenaam
 rpm_finddistro=Distributie
 rpm_finddesc=Omschrijving
+
 bsd_unknown=Onbekend
 bsd_scripts=Uitvoeren van pre en post installatie scripts?
 bsd_force=Forceer een installatie ook als eerste vereisten ontbreken?
 bsd_manager=$1 Pakket Manager
+
 slack_unclass=Andere
 slack_unknown=Onbekend
 slack_missing=Ontbrekend
@@ -140,12 +151,14 @@ slack_root=Root directory
 slack_eroot=Ontbrekende of ongeldige root directory
 slack_manager=Slackware Pakket Manager
 slack_edir=Ontbrekende Slackware pakket directory $1
+
 debian_unknown=Onbekend
 debian_depends=Negeer afhankelijkheids problemen?
 debian_conflicts=Negeer Pakket conflicten?
 debian_overwrite=Deze Files van een ander pakket overschrijven?
 debian_downgrade=Vervang nieuwere pakketten met oudere?
 debian_manager=Debian DPKG
+
 log_install_package=Ge-installeerd pakket $1
 log_install_apt_l=Ge-installeerde pakket(ten) $1 van ATP
 log_install_apt=Ge-installeerde $2 pakket(ten) van ATP
@@ -160,6 +173,7 @@ log_upgrade_yum_l=Ge-upgraden pakket(ten) $1 van YUM
 log_upgrade_yum=Ge-upgraden $2 pakket(ten) van YUM
 log_check_rhn_l=Geupgrade pakket(ten) $1 van het Redhat Netwerk
 log_check_rhn=Geupgrade $2 pakket(ten) van het Redhat Netwerk
+
 rhn_input=Pakket van het Redhat Netwerk
 rhn_find=Zoek RHN ..
 rhn_install=Installeer pakket(ten) met de opdracht $1 ..
@@ -187,6 +201,7 @@ rhn_eproxy=Ontbrekende of ongeldige proxy server
 rhn_skip=Sla pakketten over die overeen komen
 rhn_nonefound=Geen pakketten beschikbaar voor update.
 rhn_name=Redhat Netwerk
+
 apt_input=Pakketten van APT
 apt_install=Installeer pakket (ten) met de opdracht $1 ..
 apt_ok=.. installatie compleet.
@@ -212,6 +227,7 @@ apt_search=Vind pakketten overeenkomend met :
 apt_find=Zoek APT ..
 apt_title=Zoek APT
 apt_name=APT
+
 yum_input=Pakket van YUM
 yum_install=Installeer pakket(ten) met  de opdracht $1 ..
 yum_ok=.. installatie compleet.
@@ -231,6 +247,7 @@ yum_title=Doorzoek YUM
 yum_name=YUM
 yum_enable=Repository aanzetten:
 yum_none=&lt;Geen&gt;
+
 urpmi_name=URPMI
 urpmi_input=Pakket van URPMI
 urpmi_find=Doorzoek URPMI ..
@@ -245,6 +262,7 @@ urpmi_upgradeok=.. compleet.
 urpmi_install=Installeer pakket(ten) met de opdracht $1 ..
 urpmi_ok=.. installatie compleet
 urpmi_failed=.. installatie mislukt
+
 rpm_missing=Ontbrekend
 rpm_checkfail=Mislukt $1 controleer
 rpm_md5=MD5
@@ -256,6 +274,7 @@ rpm_user=gebruiker eigendom
 rpm_perm=permissies
 rpm_group=groep eigendom
 rpm_erpm=RPM $1 vond niet : $2
+
 soft_reg=Reguliere File
 soft_dir=Directory
 soft_spec=Speciale File
@@ -267,6 +286,7 @@ soft_euncompress=File is gecomprimeerd, maar de <tt>decompressie</tt> opdracht i
 soft_euncmsg=Mislukt on file uit te pakken : $1
 soft_egzip=File is ge-gzip, maar de gzip opdracht is niet op uw systeem gevonden.
 soft_egzmsg=Mislukt om gunzip toe te passen op de file : $1
+
 aix_unknown=Onbekend
 aix_device=INPUT device / directory voor de software
 aix_software=SOFTWARE om te installeren
@@ -284,6 +304,7 @@ aix_accept=ACCEPTEER nieuwe licentie overeenkomst?
 aix_license=Bekijk de nieuwe LICENTIE overeenkomst?
 aix_clean=Opschonen van installatie mislukte?
 aix_manager=AIX Pakketten Manager
+
 emerge_input=Vanaf de pakketbeheer repository
 emerge_find=Zoek ..
 emerge_install=Installeer het pakket met de opdracht $1 ..
@@ -299,6 +320,7 @@ emerge_noreplace=Vervang bestaande pakketten?
 emerge_onlydeps=Alleen afhankelijkheden installeren?
 emerge_title=Zoek Pakketbeheer
 emerge_name=Pakketbeheer
+
 cygwin_fmissing=De file ontbreekt
 cygwin_lmissing=De link naar de file ontbreekt
 cygwin_estat=Niet gevonden file: $1
@@ -308,6 +330,7 @@ cygwin_badpostscript=Waarschuwing: het lijkt erop dat dit script niet is uitgevo
 cygwin_pkgexists=Pakket $1 is reeds aanwezig.
 cygwin_warnuse=Waarschuwing: Dit is geen officiële interface om Cygwin software te beheren. Gebruik is op eigen risico.
 cygwin_edb=Ontbrekende Cygwin pakket database $1
+
 deletes_err=Mislukt om pakketten te verwijderen
 deletes_enone=Geen pakketten geselecteerd
 deletes_title=Verwijder Pakketten
@@ -318,6 +341,7 @@ deletes_failed2=De-installeren mislukt : $1
 deletes_success2=.. de-installatie compleet.
 deletes_rusure=Weet u zeker dat u het pakket $1 wilt de-installeren ?
 deletes_ok=Alles verwijderen
+
 csw_input=Pakketten van CSW
 csw_install=Installeer pakketten met de opdracht $1 ..
 csw_ok=.. installatie compleet.
@@ -332,18 +356,21 @@ csw_name=CSW
 csw_form=Upgrade pakketten
 csw_upgrade=Upgrade Alle Geïnstalleerde Pakketten
 csw_updatedesc=Upgraden van alle geinstalleerde pakketten met de opdracht $1 ..
+
 find_title=Zoek naar het pakket
 find_search=Zoek pakket met de naam:
 find_name=Naam
 find_version=Versie
 find_desc=Omschrijving
 find_none=Geen pakket gevonden met deze naam.
+
 msi_users=Maak de nieuwe applicatie beschikbaar voor
 msi_users0=Niemand
 msi_users1=Huidige gebruiker
 msi_users2=Alle gebruikers
 msi_missing=Bestaat niet
 msi_size=Verkeerde afmeting
+
 hpux_create_target_path=Maak een doel pad?
 hpux_mount_all_filesystems=Alle file systemen mounten?
 hpux_reinstall=Herinstalleren?

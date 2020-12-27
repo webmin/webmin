@@ -8,6 +8,7 @@ index_none=Không có thư mục hiện đang được xuất khẩu trên hệ 
 index_apply=Áp dụng các thay đổi
 index_applydesc=Nhấn vào nút này để áp dụng cấu hình chia sẻ tập tin hiện tại. Điều này sẽ làm cho tất cả các thư mục được liệt kê ở trên có sẵn với các tùy chọn được chỉ định.
 index_return=danh sách cổ phiếu
+
 edit_title1=Chỉnh sửa chia sẻ
 edit_title2=Tạo chia sẻ
 edit_header1=Chia sẻ chi tiết
@@ -30,6 +31,7 @@ edit_anon1=Không truy cập
 edit_aclok=Cho phép ACL?
 edit_public=WebNFS chia sẻ?
 edit_index=Tệp chỉ mục WebNFS
+
 save_err=Không thể lưu chia sẻ
 save_edirectory='$1' không phải là tên thư mục hợp lệ
 save_edirectory2=Thư mục '$1' không tồn tại
@@ -38,13 +40,18 @@ save_ero=Bạn không liệt kê bất kỳ máy chủ nào để chia sẻ ch�
 save_eroot=Bạn không liệt kê bất kỳ máy chủ nào để chia sẻ root với
 save_ealready=Thư mục '$1' đã được chia sẻ
 save_ehost=Máy chủ '$1' không tồn tại
+
 log_modify=Chia sẻ NFS đã sửa đổi $1 
 log_rename=Thay đổi chia sẻ NFS $1 thành $2 
 log_create=Tạo NFS chia sẻ $1 
 log_delete=Đã xóa chia sẻ NFS $1 
 log_apply=Áp dụng thay đổi
+
 acl_view=Có thể chỉnh sửa cổ phiếu NFS?
+
 ecannot=Bạn không được phép quản lý cổ phiếu NFS
+
 delete_err=Không thể xóa cổ phiếu
 delete_enone=Không được chọn
+
 restart_err=Không thể áp dụng thay đổi

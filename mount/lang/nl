@@ -12,6 +12,7 @@ index_return=filesystemen lijst
 index_none=U heeft geen toegang tot een gemount filesysteem.
 index_mount2=Mount met wachtwoord :
 index_root=Root filesysteem
+
 edit_title=Bewerk Mount
 create_title=Maak Mount
 edit_err=Mislukt om mount te bewerken
@@ -58,6 +59,7 @@ edit_ecannot=U bent niet bevoegd om dit filesysteem te bewerken
 edit_ecannot2=U bent niet bevoegd om nieuwe filesystemen toe te voegen
 edit_3_or_lower=3 (of lager)
 edit_advanced=Geavanceerde Mode
+
 save_err=Mislukt om mount op te slaan
 save_edir='$1' is geen directory
 save_edirname='$1' is geen geldige directory naam
@@ -74,8 +76,10 @@ save_apply=Toevoegen Aan Permanenten Lijst
 save_fapply=Forceer Un-Mount
 save_eremount=Opnieuw mounten is mislukt : $1
 save_enone=U heeft niet gekozen om op te slaan of te mounten
+
 swap_err=Mislukt om een swap file te maken
 swap_esize='$1' is geen geldige grote
+
 nfs_server=Kies NFS Server..
 nfs_select=selecteer een NFS server om te mounten van..
 nfs_ip=IP Adres
@@ -87,6 +91,7 @@ nfs_seldir=Selecteer een NFS directory voor mount..
 nfs_seldirv4=Voor een NFSv4 mount, moet u ' / ' selecteren
 nfs_dir=Directory
 nfs_clients=Clients
+
 smb_choose=Gebruik SMB Server..
 smb_elist=Mislukt om een server lijst te krijgen van $1. Misschien staat de server geen doorzoekingen toe
 smb_ehost=De server $1 bestaat niet
@@ -101,6 +106,7 @@ smb_sel2=Selecteer een gedeelde map om te mounten..
 smb_share=Deling
 smb_comment=Commentaar
 smb_noshares=Er zijn geen beschikbare gedeelde files op de server $1
+
 solaris_scsidev=SCSI controller $1 doel $2 unit $3 partitie $4
 solaris_idedev=IDE controller $1 drive $2 partitie $3
 solaris_mddev=RAID apparaat $1
@@ -238,6 +244,7 @@ solaris_efstyp2=Controleren mislukt van het filesysteem type : $1
 solaris_ecachedir='$1' is geen geldige cache directory
 solaris_efmode='$1' is geen geldig getal file mode
 solaris_edmode='$1' is geen geldig getal directory mode
+
 linux_eamd=AMD mislukt
 linux_eauto=Automount mislukt : $1
 linux_esmbconn=Mislukt te verbinden met server
@@ -373,6 +380,7 @@ linux_codepage=Code pagina
 linux_iocharset=IO karakter set
 linux_ecodepage=Ontbrekende of ongeldige code pagina
 linux_eiocharset=Ontbrekende of ongeldige IO karakter set
+
 log_mount=Ge-Mount $3
 log_mount_l=Ge-Mount $2 $1 op $3
 log_umount=Un-mount $3
@@ -386,7 +394,9 @@ log_modify_l=Gemodificeerde $2 mount $1 op $3
 log_delete=Verwijderde mount $3
 log_delete_l=Verwijderde $2 mount $1 op $3
 log_swap=Aangemaakte swap file $1
+
 unmount_err=Mislukt om $1 te unmounten
+
 mount_err=Mislukt te mounten $1
 irix_nhost=NFS Hostnaam
 irix_ndir=NFS Directory
@@ -417,6 +427,7 @@ irix_rock=Gebruik Rock Ridge uitbreidingen?
 irix_nofsck=Controleer filesysteem tijdens boot?
 irix_auto=Automounter bron
 irix_automap=Map file
+
 irix_ehost=De host '$1' bestaat niet
 irix_eloss=De host '$1' is gestopt
 irix_eshowmount=De host '$1' ondersteund geen NFS
@@ -434,9 +445,11 @@ irix_efstyp2=Mislukt voor opvragen van filesysteem type $1 : $2
 irix_efstyp=Het type van filesysteem op $1 is $2, niet $3
 irix_eautomap=Automounter map file '$1' bestaat niet
 irix_eauthmap2=Ontbrekende of ongeldig automounter map file
+
 irix_devroot=Root partitie
 irix_devswap=Swap partitie
 irix_autohosts=Alle NFS exports
+
 acl_only=Alleen mounten en unmounten toestaan?
 acl_fs=Filesystemen die kunnen worden bewerkt
 acl_types=Filesysteem types die gebruikt kunnen worden
@@ -449,8 +462,10 @@ acl_hide=Verstop niet bewerkbare filesystemen?
 acl_simple=Laat simpele mount formulier zien?
 acl_simopts=Laat simpele filesysteem opties zien?
 acl_browse=Laat file en gedeelde zoek knoppen zien?
+
 egcc=De GCC of CC compiler die nodig is om een programma te maken om ge-mounten filesystemen in een lijst te zetten is niet beschikbaar.
 ecompile=Er ontstond een fout tijdens het opbouwen van een programma die de ge-mounten filesystemen in de lijst moest zetten op uw systeem : $1
+
 freebsd_eaddr=Ontbrekende of ongeldig server adres
 freebsd_eworkgroup=Ontbrekende of ongeldig werkgroep
 freebsd_ide=IDE harddisk
@@ -459,5 +474,6 @@ freebsd_slice=schijf
 freebsd_part=Partitie
 freebsd_scsi=SCSI harddisk
 freebsd_other=Ander apparaat
+
 cswap_file=De swap file $1 bestaat niet.
 cswap_size=Een swap file aanmaken en mounten met de grote

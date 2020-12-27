@@ -9,6 +9,7 @@ index_start=Porniți Syslog-NG
 index_startdesc=Faceți clic pe acest buton pentru a porni demonul Syslog-NG, utilizând configurația curentă.
 index_return=indexul modulului
 index_version=Syslog-NG $1 
+
 options_title=Opțiuni de înregistrare
 options_header=Opțiuni pentru toate fișierele jurnal
 options_secs=secunde
@@ -55,6 +56,7 @@ options_esync=Număr de mesaje lipsă sau nevalide în memoria tampon înainte d
 options_estats=Timp lipsit sau non-numeric pentru a aștepta între mesajele statistice
 options_elog_fifo_size=Număr de mesaje lipsă sau nevalid pentru buffer
 options_elog_msg_size=Lipsește sau nu numerică dimensiunea maximă a mesajului de jurnal
+
 destinations_title=Destinații jurnal
 destinations_name=Numele destinației
 destinations_type=Scrie la
@@ -77,6 +79,7 @@ destinations_add=Adăugați o nouă destinație de jurnal.
 destinations_return=jurnal de destinații
 destinations_desc=Jurnalul altui modul
 destinations_cmd=Ieșire de la $1 
+
 destination_header=Jurnal opțiuni de destinație
 destination_title1=Creați destinație jurnal
 destination_title2=Editare destinație jurnal
@@ -117,17 +120,22 @@ destination_enet_localip=Adresa IP locală lipsă sau nevalidă
 destination_enet_localport=Număr de port local lipsă sau nevalid
 destination_enet_host=Gazda sau adresa serverului Syslog lipsă sau nevalidă
 destination_eunix=Lipsește numele soclului Unix
+
 ddelete_err=Nu a reușit să ștergeți destinațiile
 ddelete_enone=Nimic selectat
 ddelete_eused=Destinația $1 nu poate fi ștersă, deoarece este utilizată de o țintă de jurnal
+
 sdelete_err=Nu a reușit ștergerea surselor
 sdelete_enone=Nimic selectat
 sdelete_eused=Sursa jurnalului $1 nu poate fi ștersă, deoarece este utilizată de o țintă a jurnalului
+
 fdelete_err=Ștergerea filtrelor nu a reușit
 fdelete_enone=Nimic selectat
 fdelete_eused=Filtrul jurnal $1 nu poate fi șters, deoarece este utilizat de o țintă a jurnalului
+
 ldelete_err=Nu a reușit să ștergi țintele de jurnal
 ldelete_enone=Nimic selectat
+
 filters_title=Filtre jurnal
 filters_name=Numele filtrului
 filters_desc=Condiții
@@ -144,6 +152,7 @@ filters_program=programul <tt>$1</tt>
 filters_match=se potrivește cu „$1”
 filters_host=din numele de gazdă <tt>$1</tt>
 filters_netmask=de la expeditor <tt>$1</tt>
+
 filter_title1=Creați filtru jurnal
 filter_title2=Editați filtrul jurnal
 filter_header=Detalii despre specificațiile filtrului de jurnal
@@ -169,6 +178,7 @@ filter_enet=Adresa IP a rețelei care lipsește sau este nevalidă
 filter_emask=Masca de net lipsă sau nevalidă
 filter_ebool=Eroare în expresia complexă
 filter_egone=Filtrul nu mai există!
+
 logs_title=Jurnalele de jurnal
 logs_source=surse
 logs_filter=Filtre
@@ -177,6 +187,7 @@ logs_add=Adăugați o nouă țintă de jurnal.
 logs_delete=Ștergeți țintele de jurnal selectate
 logs_return=jurnalele vizate
 logs_none=Nici unul
+
 log_title1=Creați țintă jurnal
 log_title2=Editează jurnalul de jurnal
 log_header=Selectare sursă jurnal, filtru și destinație
@@ -190,6 +201,7 @@ log_flags=Opțiuni țintă
 log_egone=Jurnalul de jurnal nu mai există!
 log_err=Nu a reușit să salvați ținta jurnalului
 log_esource=Nu au fost selectate surse
+
 sources_title=Surse de jurnal
 sources_none=Nu au fost definite încă surse!
 sources_add=Adăugați o nouă sursă de jurnal.
@@ -207,6 +219,7 @@ sources_typen=Curentul de soare
 sources_typenw=Server Syslog
 sources_return=surse de jurnal
 sources_none2=Nici unul
+
 source_title1=Creați sursa jurnal
 source_title2=Editează sursa jurnalului
 source_header=Opțiuni sursă jurnal
@@ -243,15 +256,20 @@ source_door=Numele fișierului ușii
 source_esun_streams_name=Numele fișierului Sun Streams lipsă sau nevalid
 source_edoor=Numele fișierului ușii Sun sau lipsește nevalide
 source_transport=Protocol de rețea
+
 view_title=Vizualizați fișierul de înregistrare
 view_header=Ultimele $1 linii din $2 
 view_empty=Fișierul jurnal este gol
 view_refresh=Reîmprospăta
 view_filter=Afișați doar linii cu text $1 
+
 apply_err=Eroare la aplicarea configurației
 apply_egone=Nu alearga!
+
 start_err=Eroare la pornirea serverului Syslog-NG
+
 stop_err=Nu a reușit să oprească serverul Syslog-NG
+
 log_create_destination=Crearea destinației de jurnal $1 
 log_modify_destination=Destinație de jurnal modificată $1 
 log_delete_destination=Ștergerea destinației de jurnal $1 

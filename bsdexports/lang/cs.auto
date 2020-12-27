@@ -9,9 +9,12 @@ index_apply=Aplikuj změny
 index_applydesc=Klepnutím na toto tlačítko použijete aktuální konfiguraci exportu souboru. Tím se zpřístupní všechny výše uvedené adresáře se zadanými možnostmi.
 index_return=seznam exportů
 index_echeck=Server NFS nelze v tomto systému použít : $1 
+
 check_ecmd=Příkaz serveru NFS $1 není nainstalován
+
 delete_err=Export se nepodařilo smazat
 delete_enone=Nebyl vybrán žádný
+
 edit_title1=Upravit export
 edit_title2=Vytvořit export
 edit_header1=Možnosti exportu
@@ -31,6 +34,7 @@ edit_clients=Klienti
 edit_hosts=Hostitelé / netgroup
 edit_network=Síť
 edit_mask=Maska
+
 save_err=Export se nepodařilo uložit
 save_edir='$1' není adresář nebo neexistuje
 save_enone=Chcete-li exportovat, musíte zadat alespoň jeden adresář
@@ -44,4 +48,5 @@ save_enetwork='$1' není platná síť
 save_enetmask='$1' není platná maska sítě
 save_esame1=Adresář <tt>$1</tt> se již exportuje do <tt>$2</tt>. Váš operační systém neumožňuje export adresářů na stejném <i>místním</i> souborovém systému samostatně na stejného hostitele
 save_esame2=Adresář <tt>$1</tt> se již exportuje do <tt>$2</tt>. Váš operační systém neumožňuje export adresářů ve stejném <i>místním</i> souborovém systému samostatně do stejné sítě
+
 restart_err=Nepodařilo se použít změny

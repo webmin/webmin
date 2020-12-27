@@ -1,12 +1,18 @@
 index_enis2=Solo se podrá utilizar la función de servicios al cliente de este módulo.
+
 client_enis=Parece que su máquina no tiene instalado el soporte de cliente NIS.
+
 switch_srcs=Fuentes de datos
 switch_return=servicios al cliente
+
 server_epwdir=Directorio de archivos fuente de contraseña inválida
+
 desc_auto.home=Inicio del montador automático
 desc_auto.master=Mapas de montadores automáticos
 desc_auto.local=Automounter local
+
 security_domain=Dominio NIS
+
 eswitch_title=Servicio de edición
 eswitch_egone=El servicio no existe!
 eswitch_header=Detalles del servicio

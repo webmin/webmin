@@ -10,6 +10,7 @@ index_range=إنشاء تقرير للنطاق الزمني
 index_view=عرض التقرير الذي تم إنشاؤه
 index_viewdesc=عرض أحدث تقرير تم إنشاؤه في الدليل$1.
 index_return=مؤشر الوحدة
+
 log_title=مصدر السجل ووجهة التقرير
 log_header=ملف سجل Squid المصدر وخيارات التقرير التي تم إنشاؤها
 log_access_log=ملف سجل الحبار المصدر
@@ -30,6 +31,7 @@ log_elastlog=رقم مفقود أو لا
 log_eemail=عنوان بريد إلكتروني مفقود أو غير صالح
 log_emailx=برنامج بريد مفقود أو غير موجود
 log_squidguard_log_path=ملف سجل SquidGuard
+
 style_title=نمط التقرير
 style_header=نمط تقرير HTML وخيارات الألوان
 style_title2=عنوان التقرير
@@ -54,6 +56,7 @@ style_efont=اسم الخط مفقود أو غير صالح
 style_esize=عرض وارتفاع الصورة مفقودان أو غير صالحين
 style_language=تقرير اللغة
 style_charset=تقرير مجموعة الأحرف
+
 report_title=خيارات التقرير
 report_header=تقرير المحتوى وخيارات التوليد
 report_resolve_ip=هل تريد حل عناوين IP؟
@@ -134,6 +137,7 @@ report_echar=المسافات غير مسموح بها
 report_estring=نص بديل مفقود أو غير صالح
 report_eselect=لا شيء محدد
 report_eenter=لم يدخل شيء
+
 sched_title=إنشاء تقرير مجدول
 sched_header=خيارات إعداد التقارير المجدولة
 sched_sched=هل تم تمكين التقرير المجدول؟
@@ -148,9 +152,11 @@ sched_rsel=هؤلاء من$1 إلى$2 يوم مضى
 sched_err=فشل في حفظ توليد التقرير المجدول
 sched_erfrom=عدد بداية مفقود أو غير صالح منذ أيام
 sched_erto=عدد نهاية مفقود أو غير صالح منذ أيام
+
 view_title=تقرير سرج
 view_efile=اسم الملف غير صالح!
 view_eopen=فشل في فتح ملف التقرير
+
 gen_title=انشاء تقرير
 gen_header=يتم الآن إنشاء تقرير Sarg من ملف سجل Squid $1 وجميع الإصدارات التي تم تدويرها ..
 gen_done=.. فعله
@@ -160,6 +166,7 @@ gen_view=عرض التقرير المكتمل.
 gen_err=فشل في إنشاء التقرير
 gen_efrom=مفقود أو غير صالح من اليوم
 gen_eto=مفقود أو غير صالح لليوم
+
 webmin_log_log=تحديث مصدر السجل وخيارات وجهة التقرير
 webmin_log_report=خيارات التقرير المحدثة
 webmin_log_style=خيارات نمط التقرير المحدثة

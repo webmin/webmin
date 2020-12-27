@@ -44,6 +44,7 @@ index_dscsi=Thiết bị SCSI $1 bộ điều khiển $2
 index_draid=Cấp độ RAID $1 
 index_dparts=Phân vùng
 index_none2=Không có đĩa được tìm thấy trên hệ thống này.
+
 bytes=byte
 megabytes=megabyte
 extended=Đa thế hệ
@@ -67,6 +68,7 @@ select_promise=Hứa với ổ RAID $1
 select_ppart=Hứa ổ đĩa RAID $1 phân vùng $2 
 select_nvme=SSD NVME $1 ổ $2 
 select_nvmepart=SSD NVME $1 ổ $2 phân vùng $3 
+
 edit_title=Chỉnh sửa phân vùng
 create_title=Tạo phân vùng
 edit_ecannot=Bạn không được phép chỉnh sửa đĩa này
@@ -110,6 +112,7 @@ edit_newmount2=Phân vùng núi
 edit_mountas=như
 edit_mountmsg=Gắn phân vùng này vào thư mục mới trên hệ thống của bạn, để nó có thể được sử dụng để lưu trữ các tệp. Một hệ thống tập tin phải được tạo trên phân vùng.
 edit_mountmsg2=Gắn phân vùng này làm bộ nhớ ảo trên hệ thống của bạn, để tăng dung lượng bộ nhớ khả dụng.
+
 mkfs_title=Hệ thống tập tin mới
 mkfs_ecannot=Bạn không được phép xây dựng một hệ thống tập tin mới trên đĩa này
 mkfs_desc1=Nhấp vào nút ở dưới cùng của biểu mẫu này sẽ xây dựng hệ thống tệp $1 mới trên thiết bị $2. Tất cả dữ liệu trên phân vùng này sẽ bị xóa vĩnh viễn.
@@ -120,6 +123,7 @@ mkfs_err=Không thể tạo hệ thống tập tin
 mkfs_exec=Thực hiện lệnh $1 ..
 mkfs_failed=.. Lệnh không thành công!
 mkfs_ok=.. lệnh hoàn thành.
+
 fsck_title=Sửa chữa hệ thống tập tin
 fsck_ecannot=Bạn không được phép fsck đĩa này
 fsck_desc1=Nhấp vào nút <tt>Sửa chữa Hệ thống tệp</tt> sẽ cố gắng sửa chữa hệ thống tệp $1 bị hỏng trên $2 để gắn vào $3. Nếu hệ thống tập tin không bị hỏng, sẽ không có thay đổi nào được thực hiện.
@@ -132,6 +136,7 @@ fsck_err3=lỗi được tìm thấy và sửa chữa - cần khởi động l�
 fsck_err4=tìm thấy lỗi nhưng KHÔNG sửa
 fsck_err16=lỗi dòng lệnh
 fsck_unknown=mã trả lại không xác định $1 
+
 tunefs_title=Điều chỉnh hệ thống tập tin
 tunefs_ecannot=Bạn không được phép điều chỉnh hệ thống tập tin này
 tunefs_desc=Biểu mẫu này cho phép bạn điều chỉnh các tham số khác nhau của hệ thống tệp $1 trên $2 để gắn vào $3. Các tập tin hiện có trên hệ thống tập tin này sẽ không bị ảnh hưởng.
@@ -153,10 +158,12 @@ tunefs_err=Không thể điều chỉnh hệ thống tập tin
 tunefs_exec=Thực hiện lệnh $1 ..
 tunefs_failed=.. Lệnh không thành công!
 tunefs_ok=.. lệnh hoàn thành.
+
 reboot_title=Khởi động lại
 reboot_msg=Khởi động lại ngay bây giờ ..
 reboot_ok=Khởi động lại ngay
 reboot_why=Bạn đã thay đổi bảng phân vùng trên $1. Để thay đổi này có hiệu lực, hệ thống của bạn phải được khởi động lại.
+
 save_err=Không thể lưu phân vùng
 save_ecannot=Bạn không được phép chỉnh sửa đĩa này
 save_estart='$1' không phải là hình trụ bắt đầu hợp lệ
@@ -165,6 +172,7 @@ save_emin=Hình trụ bắt đầu phải> = $1
 save_emax=Hình trụ kết thúc phải <= $1 
 save_eminmax=Xi lanh bắt đầu phải nhỏ hơn kết thúc
 save_eoverlap=Chồng chéo được phát hiện với phân vùng $1 ($2 đến $3)
+
 ext2_b=Kích thước khối
 ext2_f=Kích thước mảnh
 ext2_i=Byte trên mỗi nút
@@ -172,6 +180,7 @@ ext2_m=Khối dự trữ
 ext2_g=Khối mỗi nhóm
 ext2_c=Kiểm tra khối xấu?
 ext3_j=Kích thước tập tin tạp chí
+
 msdos_ff=Số lượng FAT
 msdos_F=Kích thước FAT
 msdos_F_other=Khác ..
@@ -180,24 +189,32 @@ msdos_n=Tên tập
 msdos_r=Mục gốc
 msdos_s=Kích thước cụm
 msdos_c=Kiểm tra khối xấu?
+
 minix_n=Độ dài tên tệp
 minix_i=Số lượng nút
 minix_b=Số khối
 minix_c=Kiểm tra khối xấu?
+
 reiserfs_force=Buộc tạo hệ thống tập tin
 reiserfs_hash=Hàm băm
+
 xfs_force=Buộc tạo hệ thống tập tin
 xfs_b=Kích thước khối
+
 jfs_s=Kích thước nhật ký
 jfs_c=Kiểm tra khối xấu?
+
 btrfs_l=Kích thước lá
 btrfs_n=Kích thước nút
 btrfs_s=Quy mô ngành
+
 fatx_none=Không có tùy chọn có sẵn cho các hệ thống tập tin FATX.
+
 acl_disks=Đĩa người dùng này có thể phân vùng và định dạng
 acl_dall=Tất cả các đĩa
 acl_dsel=Đã chọn ..
 acl_view=Có thể xem các đĩa không thể chỉnh sửa?
+
 hdparm_title=Chỉnh sửa tham số IDE
 hdparm_on=Trên
 hdparm_off=Tắt
@@ -226,9 +243,11 @@ hdparm_performing=Biểu diễn
 hdparm_buf1=Bộ đệm đệm:
 hdparm_buf2=Bộ đệm:
 hdparm_speedres=Kết quả kiểm tra tốc độ
+
 blink_title=Xác định ổ đĩa
 blink_desc=Đèn LED hoạt động của ổ đĩa sẽ sáng sáu mươi lần
 blink_back=Quay lại
+
 log_modify=Đã sửa đổi $1 
 log_create=Đã tạo $1 
 log_delete=Đã xóa $1 
@@ -236,6 +255,7 @@ log_mkfs=Tạo hệ thống tập tin $1 trên $2
 log_tunefs=Điều chỉnh hệ thống tập tin $1 trên $2 
 log_fsck=Đã sửa chữa hệ thống tập tin $1 trên $2 
 log_hdparm=Các tham số IDE đã sửa đổi cho $1 
+
 fs_ext2=Bản địa Linux cũ
 fs_minix=Minix
 fs_msdos=MS-DOS
@@ -246,9 +266,11 @@ fs_ext4=Bản địa Linux mới
 fs_xfs=SGI
 fs_jfs=Tạp chí IBM
 fs_btrfs=BTR
+
 delete_title=Xóa bỏ sự chia cắt
 delete_rusure=Bạn có chắc chắn muốn xóa $1 ($2) không? Dữ liệu trên phân vùng này có thể bị mất mãi mãi.
 delete_ok=Xóa ngay bây giờ
+
 disk_title=Chỉnh sửa phân vùng đĩa
 disk_egone=Đĩa không còn tồn tại!
 disk_no=Con số
@@ -269,11 +291,13 @@ disk_table=<b>Định dạng bảng phân vùng:</b> $1
 disk_notable=<b>Định dạng bảng phân vùng:</b> Không được tạo
 disk_needtable=Không có phân vùng có thể được tạo mà không có bảng phân vùng.
 disk_return=danh sách các phân vùng
+
 relabel_title=Xóa sạch phân vùng
 relabel_warn=Bạn có chắc chắn muốn xóa tất cả các phân vùng trên $1 ($2) bằng cách viết lại nhãn đĩa không? Tất cả dữ liệu và hệ thống tập tin hiện có sẽ bị mất!
 relabel_parts=Phân vùng hiện có
 relabel_noparts=Chưa có ai tạo
 relabel_table=Định dạng bảng phân vùng
 relabel_ok=Lau và dán nhãn lại
+
 table_msdos=MS-DOS (Định dạng phân vùng chuẩn)
 table_gpt=GPT (Dành cho đĩa 2T hoặc lớn hơn)

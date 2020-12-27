@@ -38,6 +38,7 @@ index_lvsize=Grote
 index_lvused=Gebruikte ruimte
 index_lvuse=Gebruikt voor
 index_snapof=(Snapshot van $1)
+
 lv_edit=Bewerk Logisch Volume
 lv_edit_snap=Bewerk Snapshot
 lv_create=Maak Logische Volume
@@ -106,6 +107,7 @@ lv_freedisk=Vrije ruimte
 lv_pvs=Fysiek volume toegewezen
 lv_snapusage=Snapshot gebruikt percentage
 lv_egone=Logisch volume bestaat niet langer!
+
 mkfs_title=Aangemaakt Filesysteem
 mkfs_desc=Met dit formulier kunt u een nieuw $2 ($1) filesysteem op het logische volume $3 bouwen. Alle bestaande data zal worden gewist.
 mkfs_header=Nieuwe filesysteem opties
@@ -113,6 +115,7 @@ mkfs_err=Mislukt om een filesysteem aan te maken
 mkfs_exec=Uitvoeren van opdracht $1 ..
 mkfs_failed=.. opdracht mislukt!
 mkfs_ok=.. opdracht compleet.
+
 resize_title=Verschalen Logisch Volume
 resize_mesg=Het $1 filesysteem op dit logische volume kan niet verschaalt worden. Als u het logische volume verschaalt moet u het filesysteem opnieuw maken waardoor alle data hierop gewist zal worden.
 resize_mesg2=Webmin weet niet wat voor soort filesysteem op dit logische volume staat. Als u het logische volume verschaalt moet u het filesysteem opnieuw aanmaken waardoor alle data hierop gewist zal worden.
@@ -120,8 +123,10 @@ resize_fs=Er is een fout opgetreden om het filesysteem $1 te verschalen op dit l
 resize_ok=Verschalen Logisch Volume
 resize_emounted=Het filesysteem op dit logische volume kan niet worden verschaalt omdat het ge-mount is.
 resize_emounted2=Het filesysteem op dit logische volume kan niet worden verkleint omdat het ge-mount is.
+
 init_title=Activeer LVM
 init_cmd=Uitvoerende opdracht $1 ..
+
 pv_edit=Bewerk Fysiek Volume
 pv_create=Fysiek Volume Toevoegen
 pv_vg=In volume groep $1
@@ -148,6 +153,7 @@ pv_eother=Ontbrekende of ongeldig harddisk
 pv_raid=RAID apparaat $1
 pv_lvs=Toegewezen door logische volumes
 pv_egone=Fysiek volume bestaat niet meer!
+
 vg_edit=Bewerk Volume Groep
 vg_create=Maak Volume Groep
 vg_name=Volume groep naam
@@ -166,6 +172,7 @@ vg_deleteok=Verwijder Nu
 vg_ename=Ontbrekende of ongeldige volume groep naam
 vg_epesize=Ontbrekende of ongeldige toegewezen blok grote
 vg_egone=Volume groep bestaat niet langer!
+
 log_create_vg=Aangemaakte volume groep $1
 log_modify_vg=Gemodificeerde volume groep $1
 log_delete_vg=Gewiste volume groep $1
@@ -177,4 +184,5 @@ log_create_pv=Toegevoegd fysiek volume $1 aan VG $1
 log_modify_pv=Gemodificeerd fysiek volume $1 in VG $2
 log_delete_pv=Verwijderde fysieke volume $1 van VG $2
 log_resize_pv=Aangepast formaat fysiek volume $1 in VG $2
+
 blocks=Blokken

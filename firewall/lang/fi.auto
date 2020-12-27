@@ -16,6 +16,7 @@ index_chain=Ketju $1
 index_action=Toiminta
 index_desc=Kunto
 index_comm=Kommentti
+index_no_comment=
 index_move=Liikkua
 index_none=Tätä ketjua ei ole määritelty.
 index_policy=Aseta oletustoimintoksi:
@@ -88,6 +89,7 @@ index_ipset_size=Koko
 index_ipvxmode=Vaihda IP-protokollan versio:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
 desc_p=protokolla on $1 
 desc_p!=protokolla ei ole $1 
 desc_s=lähde on $1 
@@ -114,6 +116,8 @@ desc_tcp-option=paketti käyttää TCP-vaihtoehtoa $1
 desc_tcp-option!=paketti ei käytä TCP-vaihtoehtoa $1 
 desc_icmp-type=ICMP-tyyppi on $1 
 desc_icmp-type!=ICMP-tyyppi ei ole $1 
+desc_icmpv6-type=ICMP-tyyppi on $1 
+desc_icmpv6-type!=ICMP-tyyppi ei ole $1 
 desc_mac-source=Ethernet-osoite on $1 
 desc_mac-source!=Ethernet-osoite ei ole $1 
 desc_limit=korko on alle $1 
@@ -146,10 +150,15 @@ desc_always=Aina
 desc_args--match-set=$2 sisältyy IP-joukkoon $1 
 desc_src=lähde
 desc_dest=määränpää
+
 redhat_einstalled=<tt>iptables (6)</tt> -käynnistystoimintoa ei löytynyt, mikä osoittaa, että IPtable-pakettia ei ole asennettu järjestelmään
 redhat_eoutput=IPtable-tilan saamisessa komennosta $1 tapahtui virhe. Tämä luultavasti osoittaa, että järjestelmäsi on määritetty käyttämään IP-ketjuja IPtaulujen sijasta.
+
 gentoo_escript=Gentoo IPtables -aloitusohjelmaa $1 ei löydy järjestelmästäsi.
+
 eiptables=Tuntemattomat IP-taulukot tallentavat tiedostojonon : $1 
+eip6tables=Tuntemattomat ip6table-tiedostot tallentavat tiedostojonon : $1 
+
 edit_title1=Lisää sääntö
 edit_title2=Muokkaa sääntöä
 edit_title3=Kloonisääntö
@@ -218,6 +227,7 @@ edit_physdevout=Lähtevä fyysinen käyttöliittymä
 edit_physdevisin=Paketti saapuu siltarajapinnalla
 edit_physdevisout=Pakettien lähtevä siltarajapinnalla
 edit_physdevisbridged=Paketti on sillassa
+
 save_err=Säännön tallentaminen epäonnistui
 save_echain=Puuttuva tai virheellinen ketju käynnissä
 save_esource=Puuttuva tai virheellinen lähdeosoite tai verkko
@@ -262,23 +272,28 @@ save_estates=Yhtään yhteystilaa ei ole valittu
 save_ecanjump=Et voi käyttää tätä toimintoa
 save_ephysdevin=Puuttuva tai virheellinen saapuva fyysinen käyttöliittymä
 save_ephysdevout=Puuttuva tai virheellinen lähtevä fyysinen käyttöliittymä
+
 delete_title=Poista ketju
 delete_rusure=Haluatko varmasti poistaa ketjun $1 ? $2 sen säännöt poistetaan.
 delete_ok=Poista nyt
 delete_ecannot=Et voi poistaa ketjuja
+
 clear_title=Tyhjennä ketju
 clear_rusure=Haluatko varmasti poistaa kaikki $2 -säännöt ketjusta $1 ?
 clear_ecannot=Ketjuja ei saa tyhjentää
+
 new_err=Ketjun luominen epäonnistui
 new_ename=Puuttuva tai virheellinen ketjun nimi
 new_etaken=Ketju tällä nimellä on jo olemassa
 new_ecannot=Et voi luoda ketjuja
+
 apply_err=Asetusten määrittäminen epäonnistui
 apply_ecannot=Et voi käyttää kokoonpanoa
 apply_remote=Virhe $1 : $2 
 unapply_err=Kokoonpanon palauttaminen epäonnistui
 unapply_ecannot=Et voi palauttaa kokoonpanoa
 bootup_ecannot=Palomuuria ei saa ottaa käyttöön tai poistaa käytöstä käynnistyksen yhteydessä
+
 log_create_rule=Lisätty sääntö ketjuun $1 taulukossa $2 
 log_modify_rule=Muokattu sääntö ketjussa $1 taulukossa $2 
 log_delete_rule=Poistettu sääntö ketjusta $1 taulukosta $2 
@@ -301,8 +316,10 @@ log_add_group=Lisätty klusteripalvelimet ryhmästä $1
 log_delete_host=Ryhmäpalvelin $1 poistettu
 log_delete_group=$1 klusteripalvelimet poistettu
 log_openports=Avatut palomuuriportit $1 
+
 setup_eiface=Ulkoista verkkoliitäntää ei annettu
 setup_ecannot=Et voi määrittää palomuuria
+
 acl_tables=Sallitut IP-taulukot
 acl_apply=Voiko asetusta käyttää?
 acl_unapply=Voiko konfiguraatiota poistaa?
@@ -314,9 +331,11 @@ acl_jall=Kaikki
 acl_newchain=Voiko luoda uusia ketjuja?
 acl_delchain=Voiko ketjut poistaa tai tyhjentää?
 acl_policy=Voiko muuttaa oletuskäytäntöä?
+
 etable=Et voi muokata tätä IP-taulukkoa
 ejump=Et voi muokata tätä sääntöä
 ecluster=Et voi hallita palomuuriklusteria
+
 cluster_title=Klusteripalomuuripalvelimet
 cluster_none=Palomuuriklusteriin ei ole vielä lisätty palvelimia.
 cluster_host=hostname
@@ -327,6 +346,7 @@ cluster_gadd=Lisää palvelimia ryhmään
 cluster_need=Sinun on lisättävä palvelimet, joilla on kirjautuminen ja salasana, Webmin Servers Index -moduuliin, ennen kuin niitä voidaan hallita täällä.
 cluster_return=klusteripalvelimet
 cluster_delete=Poista valitut
+
 add_title=Lisää palvelimia
 add_msg=Lisätään $1 ..
 add_gmsg=Palvelimien lisääminen ryhmään $1 ..
@@ -336,13 +356,16 @@ add_echeck=Palvelimella $1 ei ole Linux-palomuurimoduulia
 add_emissing=Palvelimelta $1 puuttuu palomuurikomento $2 
 add_ok=Lisätty $1, $2 aktiivisilla palomuurisääntöillä.
 add_enone=Ei lisättäviä palvelimia!
+
 policy_ecannot=Et voi muuttaa tämän ketjun oletuskäytäntöä
+
 move_title=Siirrä säännöt
 move_count=Säännöt valittu
 move_chain=Nykyinen muutos
 move_dest=Kohdeketju
 move_ok=Siirry nyt
 move_header=Sääntöjen siirtoasetukset
+
 rename_title=Nimeä ketju uudelleen
 rename_count=Säännöt ketjussa
 rename_chain=Nykyinen nimi
@@ -352,6 +375,3 @@ rename_header=Ketjun nimeämisvaihtoehdot
 rename_adjust=Muokkaa muita sääntöjä, jotka siirtyvät tähän ketjuun?
 rename_none=Ei mitään
 rename_ecannot=Ketjuja ei saa nimetä uudelleen
-desc_icmpv6-type=ICMP-tyyppi on $1 
-desc_icmpv6-type!=ICMP-tyyppi ei ole $1 
-eip6tables=Tuntemattomat ip6table-tiedostot tallentavat tiedostojonon : $1 

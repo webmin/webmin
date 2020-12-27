@@ -39,7 +39,9 @@ index_thost=hostname
 index_tdesc=Kuvaus
 index_tver=Versio
 index_ttype=OS-tyyppi
+
 this_server=tämä palvelin
+
 add_title=Lisää palvelimia
 add_msg=Lisätään $1 ..
 add_gmsg=Palvelimien lisääminen ryhmään $1 ..
@@ -49,6 +51,7 @@ add_echeck=Palvelimella $1 ei ole Webmin-määritysmoduulia
 add_echeck2=Palvelimella $1 ei ole Webmin-käyttäjien moduulia
 add_eversion=Palvelin $1 ei käytä Webmin-versiota $2 tai uudempaa.
 add_ok=Lisätty $1 $2 moduuleilla, $3 teemalla, $4 käyttäjillä ja $5 ryhmillä.
+
 refresh_title=Päivitä moduuli ja käyttäjäluettelot
 refresh_header=Moduuli-, käyttäjä- ja ryhmäluetteloiden uudelleenpyyntö kaikilta palvelimilta ..
 refresh_header4=$2 : n jäsenten moduuli-, käyttäjä- ja ryhmäluetteloiden uudelleenpyyntö.
@@ -64,6 +67,7 @@ refresh_g2=Poistettu $1 ryhmää.
 refresh_done=.. valmis
 refresh_del=Poistettu $1 palvelinluettelosta
 refresh_failed= $1 : $2 päivitys epäonnistui
+
 host_title=Hallittu palvelin
 host_header=Hallittujen Webmin-palvelimen yksityiskohdat
 host_name=Isäntänimi
@@ -81,6 +85,7 @@ host_header_u=Webmin-käyttäjät
 host_header_g=Webmin-ryhmät
 host_return=palvelimen yksityiskohdat
 host_version2=Versio
+
 edit_title_mod=Muokkaa moduulia
 edit_title_theme=Muokkaa teemaa
 edit_header_mod=Webmin-moduulin yksityiskohdat $1 : stä
@@ -104,6 +109,7 @@ edit_acl=Muokkaa ACL: tä
 edit_uacl=Käyttäjä $1 $2 : lla
 edit_gacl=Ryhmä $1 $2 : lla
 edit_config=Muokkaa kokoonpanoa päällä
+
 install_err=Moduulin asentaminen epäonnistui
 install_title=Asenna moduuli
 install_elocal=Paikallista tiedostoa ei annettu
@@ -124,6 +130,7 @@ do_failed=Asennus tiedostoon $1 epäonnistui : $2
 do_success_mod=Asennettu moduuli $2 $1 : een
 do_success_theme=Asennettu teema $2 $1 : een
 do_done=.. valmis
+
 delete_err=Moduulin $1 poistaminen epäonnistui
 delete_epack=Moduulia $1 ei ole
 delete_title=Poista moduuli
@@ -141,6 +148,7 @@ delete_edepends=Moduuli (t) $1 riippuu siitä.
 delete_egone=Moduulia ei enää ole
 delete_esuccess=Poistettu onnistuneesti kohdasta $1 : $2 
 delete_acls=Poistetaanko käyttäjiltä ja palautetaanko kulunvalvonta-asetukset?
+
 user_title1=Luo Webmin-käyttäjä
 user_header1=Uudet Webmin-käyttäjän tiedot
 user_name=Käyttäjätunnus
@@ -200,11 +208,13 @@ user_all=&lt;kaikki isännät&gt;
 user_donthave=&lt;isännät, joilla ei ole sitä&gt;
 user_have=&lt;isännät, joilla on se&gt;
 user_ofgroup=$1 : n jäsenet
+
 udelete_title=Poista käyttäjä
 udelete_doing=Poistetaan käyttäjä $1 kaikista isännöimistä ..
 udelete_success=Poistettu onnistuneesti kohdasta $1 
 udelete_failed=Poistaminen epäonnistui kohdasta $1 : $2 
 udelete_done=.. valmis
+
 group_title1=Luo ryhmä
 group_header1=Uudet Webmin-ryhmän tiedot
 group_name=Ryhmän nimi
@@ -232,6 +242,7 @@ group_failed2=Ryhmän $1 päivitys epäonnistui : $2
 group_return=ryhmän yksityiskohdat
 group_nomems=Ei jäseniä
 group_servers=Palvelimet, joilla luodaan
+
 gdelete_title=Poista ryhmä
 gdelete_desc=Haluatko varmasti poistaa ryhmän $1 ja sen jäsenet $2 kaikista koneista?
 gdelete_ok=Poista ryhmä
@@ -240,6 +251,7 @@ gdelete_success=Poistettu onnistuneesti kohdasta $1
 gdelete_failed=Poistaminen epäonnistui kohdasta $1 : $2 
 gdelete_done=.. valmis
 gdelete_esub=Tällä ryhmällä on alaryhmiä $1, joten sitä ei voida poistaa.
+
 acl_title=Moduulin pääsyn hallinta
 acl_title2=Käyttäjälle $1 $2 : ssa $3 
 acl_title3=Ryhmälle $1 $2 : ssa $3 
@@ -258,6 +270,7 @@ acl_doing2=$1 : n käyttöoikeuden asettaminen $2 : lla
 acl_success=Aseta käyttöoikeuden hallinta $1 : lle onnistuneesti
 acl_failed= $1 : $2 käyttöoikeuksien määrittäminen epäonnistui
 acl_done=.. valmis
+
 sync_title=Synkronoi palvelimet
 sync_desc=Tämän lomakkeen avulla voit luoda Webmin-käyttäjiä ja ryhmiä palvelimilla, joilla niitä ei tällä hetkellä ole, jotta tilit voidaan synkronoida kaikkien klusterisi palvelimien kanssa.
 sync_hosts=Synkronoitavat palvelimet
@@ -281,6 +294,7 @@ sync_gcreate=Webmin-ryhmän lisääminen $1 ..
 sync_acl=Kopioidaan ACL-tiedostoja $1 : lle.
 sync_test=Näytä vain mitä tehdään?
 sync_restart=Käynnistä Webmin uudelleen
+
 upgrade_title=Päivitä Webmin
 upgrade_header=Päivitetään Webmin kaikkia isäntiä ..
 upgrade_header2=Webmin päivitetään $1 : lle.
@@ -299,6 +313,7 @@ upgrade_failed=Asennus tiedostoon $1 epäonnistui : $2
 upgrade_done=.. valmis
 upgrade_efast=Vain palvelimet, jotka käyttävät nopeaa RPC-tilaa, voidaan päivittää
 upgrade_ereconn=Yhteyden muodostaminen Webminiin uudelleen epäonnistui päivityksen jälkeen!  : $1 
+
 update_title=Päivitä moduulit
 update_header=Päivitetään moduulit kaikki isännät ..
 update_header5=Päivitetään moduulit $2 : lla ..
@@ -306,6 +321,7 @@ update_header4=Päivitetään $2 : n jäsenten moduuleja.
 update_onhost=$1 : n päivityksen tulokset.
 update_failed=.. päivitys epäonnistui : $1 
 update_none=.. päivityksiä ei löytynyt.
+
 config_title=Muokkaa moduulin kokoonpanoa
 config_enone=Mitään isäntiä, joissa moduuli oli asennettu, ei valittu
 config_ethis=Moduulia ei ole asennettu tähän palvelimeen

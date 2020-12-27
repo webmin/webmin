@@ -19,6 +19,7 @@ index_amode1=Nur ausgewählte Benutzer ..
 index_amode2=Alle, außer den ausgewählten Benutzern ..
 index_delete=Ausgewählte Befehle abbrechen
 index_noat=Der $1 Befehl wurde auf Ihrem System nicht gefunden. Es ist entweder nicht installiert oder es ist für Ihr System nicht verfügbar.
+
 edit_title=Geplanter AT-Befehl
 edit_cmd=Vollständiges Skript zum Ausführen
 edit_shortcmd=Auszuführender Befehl
@@ -28,6 +29,7 @@ edit_run=Jetzt ausführen
 edit_ejob=Geplanter Befehl existiert nicht mehr!
 edit_ecannot=Sie sind nicht berechtigt, diesen geplanten Befehl zu bearbeiten
 edit_showfull=Zeige das ganze Skript.
+
 create_err=Konnte AT-Befehl nicht einrichten
 create_euser=Fehlender oder ungültiger Benutzername
 create_edate=Fehlende oder ungültige Datums- oder Zeitangabe
@@ -36,22 +38,28 @@ create_efuture=Datum und/oder Zeit liegt in der Vergangenheit
 create_edir=Fehlendes oder ungültiges Verzeichnis
 create_ecannot=Sie sind nicht berechtigt, geplante AT-Befehle für diesen Benutzer anzulegen
 create_eallow=Der ausgewählte Benutzer darf keine geplanten Aufträge ausführen
+
 delete_err=Konnte AT-Befehl nicht abbrechen
 delete_egone=Befehl bereits ausgeführt oder gelöscht
+
 acl_users=Darf geplante Befehle bearbeiten für
 acl_all=Alle Benutzer
 acl_this=Aktuellen Webmin-Benutzer
 acl_only=Nur diese Benutzer
 acl_except=Alle Benutzer außer
 acl_allow=Darf die Liste der zu erlaubenden AT-Benutzer bearbeiten?
+
 run_title=AT-Auftrag ausführen
 run_output=Ausgabe des AT-Auftrages ...
 run_none=Es wurde keine Ausgabe generiert
+
 allow_err=Konnte Liste der zu erlaubenden AT-Benutzer nicht speichern
 allow_ecannot=Sie dürfen die Liste der zu erlaubenden AT-Benutzer nicht ändern
 allow_eusers=Keine Benutzer eingegeben
+
 deletes_err=Abbrechen der Befehle fehlgeschlagen
 deletes_enone=Keine ausgewählt
+
 log_allow=Erlaubte Benutzer geändert
 log_create_job=Geplante Befehle für $1 erstellt
 log_delete_job=Geplante Befehle für $1 abgebrochen

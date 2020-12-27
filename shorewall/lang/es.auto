@@ -1,7 +1,10 @@
 index_dump=Mostrar volcado
 index_dumpdesc=Haga clic en este botón para ver la información de rastreo de Shorewall desde el comando <tt>shorewall dump</tt>.
+
 list_delete=Eliminar seleccionado
+
 dump_title=Descarga de cortafuegos
+
 zones_1new=Zona principal
 zones_2new=Tipo de zona
 zones_3new=Opciones de zona
@@ -14,10 +17,13 @@ zones_firewall=Sistema de cortafuegos
 zones_eopts=Opciones de zona inválidas
 zones_eopts_in=Opciones entrantes de zona no válidas
 zones_eopts_out=Opciones salientes de zona no válidas
+
 rules_macro=Parámetro de acción macro
 rules_none2=Ninguna
 rules_emacro=Parámetro macro faltante o no válido
+
 tos_6=Prueba
+
 masq_3=Restringir al protocolo
 masq_4=Restringir a los puertos
 masq_5=Opciones de IPsec
@@ -25,14 +31,18 @@ masq_any=Cualquier protocolo
 masq_all=Todos los puertos
 masq_eports=Lista de puertos separados por comas faltantes o no válidos
 masq_eipsec=Faltan opciones de IPsec
+
 routestopped_2=Opciones de ruta
+
 hosts_enet=Dirección de host faltante o inválida
 hosts_ip=Dirección o red $1 
 hosts_mac=Dirección MAC $1 
 hosts_ipset=IP set $1 
 hosts_any=Cualquier anfitrión
+
 blacklist_emac=Dirección MAC faltante o inválida
 blacklist_eipset=Falta el nombre del conjunto de IP
+
 providers_title=Proveedores de enrutamiento adicionales
 providers_desc=Esta página define tablas de enrutamiento adicionales. Estos son necesarios si tiene conexiones a más de un ISP o conexiones múltiples al mismo ISP, o ejecuta Squid como un proxy transparente en un host que no sea el firewall.
 providers_add=Agregar un nuevo proveedor de enrutamiento.
@@ -65,6 +75,7 @@ providers_emark=Número de marca del proveedor faltante o no válido
 providers_edup=Falta el proveedor para duplicar
 providers_egateway=Puerta de enlace faltante o inválida
 providers_return=lista de proveedores de enrutamiento
+
 route_rules_title=Reglas de enrutamiento
 route_rules_desc=La página controla qué tráfico se enruta a los proveedores definidos en la página Proveedores de enrutamiento adicionales.
 route_rules_ip=Dirección IP, red o interfaz
@@ -90,8 +101,10 @@ route_rules_emark=La marca del paquete debe estar en formato de número o númer
 route_rules_return=lista de reglas de enrutamiento
 route_rules_edit=Editar regla de enrutamiento
 route_rules_create=Crear regla de enrutamiento
+
 delete_err=Error al eliminar filas
 delete_enone=No hay filas seleccionadas
+
 opts_routeback=Aceptar el tráfico de regreso al host
 opts_source=Permitir desde el host a cualquier destino
 opts_dest=Permitir alojar desde cualquier fuente
@@ -109,6 +122,7 @@ opts_proxyarp=Habilitar ARP proxy
 opts_arp_filter=Solo responda a las solicitudes ARP para la interfaz IP
 opts_detectnets=Zona de Taylor para incluir solo hosts enrutados
 opts_upnp=Reasignación de paquetes a través de UPNP
+
 comment_add=Agrega un nuevo comentario.
 comment_edit=Editar comentario
 comment_create=Crear comentario
@@ -116,6 +130,7 @@ comment_header=Detalles del comentario de la tabla
 comment_msg=Mensaje
 comment_err=Error al guardar comentario
 comment_enone=Ningún mensaje ingresado
+
 log_create_table=Entrada agregada a la tabla $1 
 log_modify_table=Entrada modificada en la tabla $1 
 log_delete_table=Entrada eliminada de la tabla $1 
@@ -131,6 +146,7 @@ log_start=Firewall iniciado
 log_refresh=Cortafuegos actualizado
 log_restart=Firewall reiniciado
 log_clear=Cortafuegos despejado
+
 shorewall_conf_title=Archivo de configuración maestra
 shorewall_conf_desc=Esta página le permite configurar las variables de configuración global. NOTA: No se recomienda cambiar el orden de las variables aquí si desea conservar la posición relativa de los comentarios en el archivo de configuración.
 shorewall_conf_add=Agregar una nueva variable de configuración.
@@ -144,6 +160,7 @@ shorewall_conf_create=Crear variable de configuración
 shorewall_conf_header=Detalles de la variable de configuración
 shorewall_conf_err=Error al guardar la variable de configuración
 shorewall_conf_varname=Nombre de variable no válido (debe ser un nombre de variable de shell válido)
+
 params_title=Parámetros personalizados
 params_desc=Esta página le permite configurar los parámetros personalizados de Shorewall. NOTA: No se recomienda cambiar el orden de los parámetros aquí si desea conservar la posición relativa de los comentarios en el archivo de configuración.
 params_add=Agregue un nuevo parámetro personalizado.

@@ -16,6 +16,7 @@ index_loadname=CPU-las gemiddeldes:
 index_loadnums=$1 (1 min), $2 (5 min), $3 (15 min)
 index_cpuname=SVE-tipe:
 index_inzone=In sone $1 
+
 pid=ID
 owner=Eienaar
 command=Bevel
@@ -27,6 +28,7 @@ nice=Lekker vlak
 stime=begin
 sclass=IO-skeduleringsklas
 sprio=IO prioriteit
+
 search_user=Besit deur
 search_match=bypassende
 search_cpupc=Gebruik meer as $1% SVE
@@ -43,6 +45,7 @@ search_sigkill=Doodprosesse
 search_port=Met behulp van hawe
 search_protocol=protokol
 search_ip=Gebruik IP-adres
+
 run_command=Opdrag om te hardloop
 run_submit=Run
 run_mode=Begin modus
@@ -56,6 +59,7 @@ run_ecannot=U mag nie opdragte uitvoer nie
 run_as=Begin as gebruiker
 run_euser=Gebruikernaam ontbreek of ongeldig
 run_euser2=U is nie toegelaat om opdragte uit te voer as die geselekteerde gebruiker nie
+
 edit_title=Verwerk inligting
 edit_gone=Hierdie proses loop nie meer nie
 edit_sub=subprosesse
@@ -75,12 +79,15 @@ edit_sigcont=CV
 edit_open=Lêers en verbindings
 edit_trace=Spoorproses
 edit_return=prosesbesonderhede
+
 kill_err=Kon nie sein $1 stuur om $2 te verwerk nie
 kill_title=Stuur sein
 kill_sent=gestuur word
 kill_ecannot=U mag nie prosesse doodmaak nie
+
 renice_err=Kon nie $1 herhaal nie
 renice_ecannot=U mag nie prosesse herbenut nie
+
 linux_pri=prioriteit
 linux_tty=TTY
 linux_status=status
@@ -91,25 +98,30 @@ linux_ruser=Regte gebruiker
 linux_rgroup=Regte groep
 linux_pgid=Verwerk groep-ID
 linux_stime=begin
+
 linuxstat_R=loop
 linuxstat_S=slaap
 linuxstat_D=Diep slaap
 linuxstat_T=gestop
 linuxstat_Z=zombie
+
 linux_real=Ware tyd
 linux_be=Beste poging
 linux_idle=idle
+
 freebsd_ruser=Regte gebruiker
 freebsd_rgroup=Regte groep
 freebsd_tty=TTY
 freebsd_pgid=Proses groep
 freebsd_stime=begin
 freebsd_lim=Geheue limiet
+
 hpux_pri=prioriteit
 hpux_tty=TTY
 hpux_status=status
 hpux_wchan=Wag vir
 hpux_stime=begin
+
 hpuxstat_0=bestaande
 hpuxstat_S=slaap
 hpuxstat_W=wag
@@ -118,7 +130,9 @@ hpuxstat_I=Intermediêre
 hpuxstat_Z=zombie
 hpuxstat_T=gestop
 hpuxstat_G=groeiende
+
 macos_tty=TTY
+
 sysv_group=groep
 sysv_ruser=Regte gebruiker
 sysv_rgroup=Regte groep
@@ -127,12 +141,14 @@ sysv_tty=TTY
 sysv_stime=begin
 sysv_task=Taak-ID
 sysv_zone=Sone naam
+
 log_run=Ran-opdrag "$1"
 log_kill=Gestuur sein $1 om $2 te verwerk
 log_kills=Stuur sein $1 na $2 prosesse
 log_kill_l=Gestuur sein $1 om $2 te verwerk
 log_kills_l=Gestuur sein $1 na prosesse <br> $2 
 log_renice=Prioriteit van proses $2 na $1 verander
+
 acl_manage=Bestuur prosesse as gebruiker
 acl_manage_def=Huidige Webmin-gebruiker
 acl_edit=Kan prosesse doodmaak en herbenoem word?
@@ -142,11 +158,13 @@ acl_who=Kan prosesse vir gebruikers bestuur
 acl_who0=Alle gebruikers
 acl_who1=Huidige Webmin-gebruiker
 acl_who2=Genoteerde gebruikers ..
+
 kill_kill=Dood proses
 kill_term=beëindig
 kill_hup=Begin oor
 kill_stop=stop
 kill_cont=Aanhou
+
 open_title=Maak lêers en verbindings oop
 open_proc=Vir proses $1 (PID $2)
 open_header1=Maak lêers oop
@@ -170,6 +188,7 @@ open_blk=Blok spesiaal
 open_size=Lêergrootte
 open_inode=inode
 open_file=pad
+
 trace_title=Spoorproses
 trace_start=Begin stelseloproepspoor vir $1.
 trace_doing=Stelseloproepspoor vir $1  :
@@ -180,5 +199,7 @@ trace_syscalls=Spoorstelseloproepe:
 trace_all=Almal
 trace_sel=Gelys ..
 trace_change=verandering
+
 windows_threads=Draad in proses
+
 syslog_dmesg=Kernboodskappe

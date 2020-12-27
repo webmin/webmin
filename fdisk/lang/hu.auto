@@ -24,6 +24,7 @@ index_dscsi=$1 SCSI eszköz vezérlő $2
 index_draid=$1 RAID szint
 index_dparts=válaszfalak
 index_none2=Nem található lemez ezen a rendszeren.
+
 bytes=bájt
 megabytes=megabájt
 open_error=$1 parancs nem található
@@ -41,6 +42,7 @@ select_promise=Ígérd meg a (z) $1 RAID meghajtót
 select_ppart=Promise RAID meghajtó $1 partíció $2 
 select_nvme=NVME SSD $1 meghajtó $2 
 select_nvmepart=NVME SSD $1 meghajtó $2 partíció $3 
+
 edit_ehdparm=A <tt>hdparm</tt> futtatható fájl nem található a rendszerben
 edit_of=nak,-nek
 edit_cont1=1 partíciót tartalmaz
@@ -61,25 +63,35 @@ edit_newmount2=Mount válaszfal
 edit_mountas=mint
 edit_mountmsg=Helyezze ezt a partíciót a rendszer új könyvtárába, hogy fájlok tárolására felhasználható legyen. A fájlrendszert már létre kellett hozni a partíción.
 edit_mountmsg2=Csatlakoztassa ezt a partíciót virtuális memóriaként a rendszerére, hogy növelje a rendelkezésre álló memória mennyiségét.
+
 ext3_j=A napló fájl mérete
+
 msdos_ff=FAT-ok száma
 msdos_F_other=Egyéb ..
+
 reiserfs_force=A fájlrendszer létrehozásának kényszerítése
 reiserfs_hash=Hash funkció
+
 xfs_force=A fájlrendszer létrehozásának kényszerítése
 xfs_b=Blokk mérete
+
 jfs_s=Napló mérete
 jfs_c=Ellenőrizze a rossz blokkokat?
+
 btrfs_l=A levél mérete
 btrfs_n=Csomópont mérete
 btrfs_s=Ágazati méret
+
 fatx_none=A FATX fájlrendszerekre nem állnak rendelkezésre opciók.
+
 acl_dall=Minden lemez
 acl_dsel=Kiválasztott ..
 acl_view=Megtekintheti a nem szerkeszthető lemezeket?
+
 blink_title=Azonosítsa a meghajtót
 blink_desc=A meghajtó működési LED-je hatvanszor világít
 blink_back=menjen vissza
+
 log_modify=Módosítva $1 
 log_create=Létrehozva: $1 
 log_delete=Törölve: $1 
@@ -87,6 +99,7 @@ log_mkfs=Létrehozta a (z) $1 fájlrendszert a $2 -en
 log_tunefs=Hangolt a $1 fájlrendszer a $2 -en
 log_fsck=Javítva: $1 fájlrendszer a $2 -en
 log_hdparm=Módosított IDE paraméterek a (z) $1 -hez
+
 fs_ext2=Régi Linux natív
 fs_minix=Minix
 fs_msdos=MS-DOS
@@ -97,9 +110,11 @@ fs_ext4=Új Linux natív
 fs_xfs=SGI
 fs_jfs=IBM Journalling
 fs_btrfs=BTR
+
 delete_title=Törölje a partíciót
 delete_rusure=Biztosan törli a (z) $1 ($2) fájlt? A partícióra vonatkozó adatok örökre elveszhetnek.
 delete_ok=Törlés most
+
 disk_title=A lemezpartíciók szerkesztése
 disk_egone=A lemez már nem létezik!
 disk_no=Szám
@@ -120,11 +135,13 @@ disk_table=<b>Partíciós tábla formátuma:</b> $1
 disk_notable=<b>Partíciós tábla formátuma:</b> Nincs létrehozva
 disk_needtable=Partíciós tábla nélkül nem hozható létre partíció.
 disk_return=partíciók listája
+
 relabel_title=Törölje le a válaszfalakat
 relabel_warn=Biztosan törli az összes partíciót a (z) $1 ($2) -on a lemezcím újraírásával? Minden létező adat és fájlrendszer el fog veszni!
 relabel_parts=Meglévő partíciók
 relabel_noparts=Még nem készült
 relabel_table=Partíciós tábla formátuma
 relabel_ok=Törölje le és címkézze újra
+
 table_msdos=MS-DOS (szabványos partíciós formátum)
 table_gpt=GPT (2T vagy nagyobb lemezekhez)

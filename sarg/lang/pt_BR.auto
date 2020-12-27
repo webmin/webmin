@@ -10,6 +10,7 @@ index_range=Gerar relatório para o período
 index_view=Exibir relatório gerado
 index_viewdesc=Veja o relatório gerado mais recentemente no diretório $1.
 index_return=índice do módulo
+
 log_title=Origem do log e destino do relatório
 log_header=Arquivo de log do Squid de origem e opções de relatório geradas
 log_access_log=Arquivo de log do Squid de origem
@@ -30,6 +31,7 @@ log_elastlog=Falta ou não um número
 log_eemail=Endereço de e-mail ausente ou com aparência inválida
 log_emailx=Programa de correio ausente ou inexistente
 log_squidguard_log_path=Arquivo de log SquidGuard
+
 style_title=Estilo de relatório
 style_header=Estilo de relatório HTML e opções de cores
 style_title2=Título do relatório
@@ -54,6 +56,7 @@ style_efont=Nome de fonte ausente ou inválido
 style_esize=Largura e altura da imagem ausentes ou inválidas
 style_language=Idioma do relatório
 style_charset=Conjunto de caracteres do relatório
+
 report_title=Opções de relatório
 report_header=Conteúdo de relatório e opções de geração
 report_resolve_ip=Resolver endereços IP?
@@ -134,6 +137,7 @@ report_echar=Espaços não são permitidos
 report_estring=Texto de substituição ausente ou inválido
 report_eselect=Nada selecionado
 report_eenter=Nada inserido
+
 sched_title=Geração agendada de relatórios
 sched_header=Opções de relatórios agendados
 sched_sched=Relatório agendado ativado?
@@ -148,9 +152,11 @@ sched_rsel=Aqueles de $1 a $2 dias atrás
 sched_err=Falha ao salvar a geração agendada de relatórios
 sched_erfrom=Número inicial ausente ou inválido de dias atrás
 sched_erto=Número final de dias ausente ou inválido atrás
+
 view_title=Relatório Sarg
 view_efile=Nome de arquivo inválido!
 view_eopen=Falha ao abrir o arquivo de relatório
+
 gen_title=Gerar relatório
 gen_header=Agora gerando relatório Sarg a partir do arquivo de log do Squid $1 e todas as versões rotacionadas.
 gen_done=.. feito
@@ -160,6 +166,7 @@ gen_view=Ver relatório completo.
 gen_err=Falha ao gerar o relatório
 gen_efrom=Ausente ou inválido a partir do dia
 gen_eto=Ausente ou inválido para o dia
+
 webmin_log_log=Origem do log e opções de destino do relatório atualizadas
 webmin_log_report=Opções de relatório atualizadas
 webmin_log_style=Opções de estilo de relatório atualizadas

@@ -44,6 +44,7 @@ index_dscsi=SCSI gailua $1 kontroladorea $2
 index_draid=RAID $1 maila
 index_dparts=partizioak
 index_none2=Ez da disko honetan aurkitu sistema honetan.
+
 bytes=byte
 megabytes=megabyte
 extended=hedatua
@@ -67,6 +68,7 @@ select_promise=$1 RAID unitatearen promesa
 select_ppart=Promete RAID unitatea $1 partizio $2 
 select_nvme=NVME SSD $1 disko $2 
 select_nvmepart=NVME SSD $1 unitatea $2 partizio $3 
+
 edit_title=Editatu partizioa
 create_title=Sortu partizioa
 edit_ecannot=Ezin duzu disko hau editatu
@@ -110,6 +112,7 @@ edit_newmount2=Mendiaren partizioa
 edit_mountas=gisa
 edit_mountmsg=Muntatu partizio hau zure sisteman direktorio berrietan, fitxategiak gordetzeko erabili ahal izateko. Fitxategi-sistema sortu behar da jada partizioan.
 edit_mountmsg2=Muntatu partizio hau zure sistemako memoria birtual gisa, eskuragarri dagoen memoria kopurua handitzeko.
+
 mkfs_title=Fitxategi sistema berria
 mkfs_ecannot=Ezin duzu disko honetan fitxategi-sistema berririk eraiki
 mkfs_desc1=Inprimaki honen behealdean dagoen botoian klik egitean $1 fitxategi sistema berria garatuko da $2 gailuan. Partizio honetako datu guztiak betiko ezabatuko dira.
@@ -120,6 +123,7 @@ mkfs_err=Huts egin du fitxategi sistema sortzerakoan
 mkfs_exec=$1 komandoa exekutatzen.
 mkfs_failed=.. Komandoak huts egin du!
 mkfs_ok=.. agindua bukatuta.
+
 fsck_title=Konponketa fitxategi sistema
 fsck_ecannot=Ezin duzu disko hau fsckatu
 fsck_desc1=<tt>Konpontzen fitxategi-sistema</tt> botoia sakatzean $1 fitxategi-sistema kaltetua $2 konpontzen saiatuko da $3 an muntatzeko. Fitxategi-sistema hondatuta ez badago, ez da aldaketarik egingo.
@@ -132,6 +136,7 @@ fsck_err3=aurkitu eta zuzendu diren erroreak - berrabiarazi behar dira
 fsck_err4=aurkitu dira, baina EZ zuzendu
 fsck_err16=komando lerroko errorea
 fsck_unknown=$1 itzultzeko kode ezezaguna
+
 tunefs_title=Doinua fitxategi sistema
 tunefs_ecannot=Ezin duzu fitxategi sistema hau sintonizatu
 tunefs_desc=Inprimaki honek $1 fitxategi-sistemaren parametroak $2 an $3 an muntatzeko aukera ematen du. Fitxategi-sistema honetan dauden fitxategiek ez dute eraginik izango.
@@ -153,10 +158,12 @@ tunefs_err=Ezin izan da fitxategi-sistema sintonizatu
 tunefs_exec=$1 komandoa exekutatzen.
 tunefs_failed=.. Komandoak huts egin du!
 tunefs_ok=.. agindua bukatuta.
+
 reboot_title=Berrabiarazi
 reboot_msg=Berrabiarazi orain ..
 reboot_ok=Berrabiarazi orain
 reboot_why=Partizio taula $1 an aldatu duzu. Aldaketa behar bezala indarrean egon dadin, zure sistema berrabiarazi behar da.
+
 save_err=Ezin izan da partizioa gorde
 save_ecannot=Ezin duzu disko hau editatu
 save_estart='$1' ez da baliozko abiadura zilindroa
@@ -165,6 +172,7 @@ save_emin=Hasierako zilindroa> = $1 izan behar du
 save_emax=Amaierako zilindroak <= $1 izan behar du
 save_eminmax=Hasierako zilindroak amaiera baino txikiagoa izan behar du
 save_eoverlap=Gainjartze hautua $1 partizioarekin ($2 tik $3 ra)
+
 ext2_b=Blokearen tamaina
 ext2_f=Zatiketaren tamaina
 ext2_i=Inte bakoitzeko byteak
@@ -172,6 +180,7 @@ ext2_m=Erreserbatutako blokeak
 ext2_g=Talde bakoitzeko blokeak
 ext2_c=Begiratu bloke txarrak?
 ext3_j=Aldizkariaren fitxategiaren tamaina
+
 msdos_ff=FAT kopurua
 msdos_F=GAT neurria
 msdos_F_other=Beste ..
@@ -180,24 +189,32 @@ msdos_n=Bolumenaren izena
 msdos_r=Sarrerako erroak
 msdos_s=Kluster tamaina
 msdos_c=Begiratu bloke txarrak?
+
 minix_n=Fitxategiaren izenaren luzera
 minix_i=Inodo kopurua
 minix_b=Bloke kopurua
 minix_c=Begiratu bloke txarrak?
+
 reiserfs_force=Fitxategien sistema sortzea behartu
 reiserfs_hash=Hash funtzioa
+
 xfs_force=Fitxategien sistema sortzea behartu
 xfs_b=Blokearen tamaina
+
 jfs_s=Erregistroaren tamaina
 jfs_c=Begiratu bloke txarrak?
+
 btrfs_l=Hostoen tamaina
 btrfs_n=Nodoen tamaina
 btrfs_s=Sektorearen tamaina
+
 fatx_none=Ez dago aukerarik FATX fitxategi sistemetarako.
+
 acl_disks=Erabiltzaile honek partitu eta formatu dezake diskoak
 acl_dall=Disko guztiak
 acl_dsel=Hautatutako ..
 acl_view=Editatu gabeko diskoak ikus al ditzake?
+
 hdparm_title=Editatu IDE parametroak
 hdparm_on=on
 hdparm_off=Off
@@ -226,9 +243,11 @@ hdparm_performing=eszenikoen
 hdparm_buf1=Buffer cachea:
 hdparm_buf2=bufferrean:
 hdparm_speedres=Abiadura proben emaitzak
+
 blink_title=Identifikatu Drive
 blink_desc=Unitatearen LED jarduera orain hirurogei aldiz argituko da
 blink_back=Atzera egin
+
 log_modify=$1 aldatua
 log_create=$1 sortu da
 log_delete=$1 ezabatu da
@@ -236,6 +255,7 @@ log_mkfs=$1 fitxategi sistema sortu da $2 an
 log_tunefs=$1 fitxategi sistema sintonizatuta $2 an
 log_fsck=$1 fitxategi sistema konpondua $2 an
 log_hdparm=$1 erako IDE parametroak aldatu
+
 fs_ext2=Linux jatorrizko zaharra
 fs_minix=Minix
 fs_msdos=MS-DOS
@@ -246,9 +266,11 @@ fs_ext4=Linux jatorri berria
 fs_xfs=SGI
 fs_jfs=IBM Journalling
 fs_btrfs=BTR
+
 delete_title=Ezabatu partizioa
 delete_rusure=Ziur $1 ($2) ezabatu nahi duzula? Partizio honi buruzko datuak betirako galdu daitezke.
 delete_ok=Ezabatu orain
+
 disk_title=Editatu Disko Partizioak
 disk_egone=Diskoa jada ez dago!
 disk_no=zenbakia
@@ -269,11 +291,13 @@ disk_table=<b>Partizioen taularen formatua:</b> $1
 disk_notable=<b>Partizioen taularen formatua:</b> Ez da batere sortu
 disk_needtable=Ezin da partiziorik sortu partizio-taula gabe.
 disk_return=partizioen zerrenda
+
 relabel_title=Ezabatu partizioak
 relabel_warn=Ziur zaude $1 ($2) partizio guztiak ezabatu nahi dituzula diskoaren etiketa berriro idazten baduzu? Dauden datu eta fitxategi sistema guztiak galduko dira!
 relabel_parts=Existitzen diren partizioak
 relabel_noparts=Oraindik ez da sortu
 relabel_table=Zatikien taularen formatua
 relabel_ok=Ezabatu eta berriro etiketatu
+
 table_msdos=MS-DOS (Partizio formatu estandarra)
 table_gpt=GPT (2T disko handiagoetarako)

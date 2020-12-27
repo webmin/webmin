@@ -12,6 +12,7 @@ index_ereq_resource_cmd=Jūsų sistemoje nerastas scenarijus prašyti išteklių
 index_version=$1 širdies plakimo versija
 index_noversion=Įspėjimas - jūsų sistemoje įdiegtos „Heartbeat“ versijos nepavyko aptikti automatiškai. Tai turėtumėte nustatyti puslapyje <a href='$1'>modulio konfigūracija</a>.
 index_status=Širdies plakimo būsena
+
 conf_title=Konfigūracijos parinktys
 conf_header=Širdies plakimo konfigūravimo parinktys
 conf_serials=Serijiniai širdies plakimo prievadai
@@ -54,6 +55,7 @@ conf_auto_on={conf_enabled}
 conf_auto_off=$ {conf_disabled}
 conf_auto_legacy=Palikimo režimas
 conf_auto_=$ {numatytasis}
+
 res_title=Klasterio ištekliai
 res_node=Pirminis mazgas
 res_ips=IP adresai
@@ -67,6 +69,7 @@ res_getserv=Gaukite išteklių
 res_hbdown=Širdies plakimas
 res_up=AUKŠTYN
 res_down=Žemyn
+
 node_create=Pridėti klasterio šaltinį
 node_edit=Redaguoti klasterio šaltinį
 node_header=Informacija apie klasterio išteklius
@@ -83,6 +86,7 @@ node_enone=Trūksta arba netinkamas pirminis mazgas
 node_eip=„$1“ nėra galiojantis IP adresas
 node_ecidr=„$1“ negalioja CIDR
 node_ebroad=„$1“ nėra teisingas transliacijos adresas
+
 auth_title=Autentifikacijos raktai
 auth_header=Klasterio mazgo autentifikavimas
 auth_mode=Autentifikavimo režimas
@@ -92,6 +96,8 @@ auth_md5=MD5 su slaptažodžiu
 auth_err=Nepavyko išsaugoti autentifikavimo raktų
 auth_emd5=Trūksta arba netinkamas MD5 slaptažodis
 auth_esha1=Nėra arba netinkamas SHA1 slaptažodis
+
 start_err=Nepavyko pradėti širdies plakimo
+
 apply_err=Nepavyko pritaikyti pakeitimų
 apply_epid=Procesas nebeveikia

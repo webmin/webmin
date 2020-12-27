@@ -65,6 +65,7 @@ index_checkconfig=Kun żgur li d-direttorju tal-chroot huwa ssettjat sew fuq il-
 index_eexpired=Twissija: Iż-żoni li ġejjin skadew il-firem DNSSEC : $1
 index_eexpired_conf=L-iffirmar awtomatiku għandu jkun attivat mill-ġdid fuq il-paġna $1.
 index_eexpired_mod=Uża l-modulu $1 biex jew tiddiżattiva DNSSEC għal dawn l-oqsma, jew ivverifika għaliex l-iffirmar qed ifalli.
+
 master_title=Editja Żona tal-Kaptan
 master_inview=$1 fil-fehma $2 
 master_ecannot=M'għandekx permess teditja din iż-żona
@@ -146,6 +147,7 @@ master_defttl=Żmien tal-għajxien awtomatiku għar-rekords
 master_edefttl="$1" m'huwiex il-ħin ta 'l-għajxien validu għar-rekords
 master_esoagone=Ma nstab l-ebda rekord SOA!
 master_einclude=Fajl mudell addizzjonali ma jeżistix
+
 delete_title=Ħassar Żona
 delete_mesg=Int żgur li trid tħassar iż-żona $1? Ir-rekords kollha u l-fajl taż-żona se jitħassru.
 delete_mesg2=Int żgur li trid tħassar iż-żona tal-għeruq? Is-server DNS tiegħek jista 'ma jibqax ikun jista' jfittex indirizzi fuq l-internet.
@@ -157,6 +159,7 @@ delete_errslave=Iż-żona kaptan tħassret OK, iżda l-iżbalji li ġejjin seħ�
 delete_ezone=Iż-żona ma nstabetx fuq is-server skjavi
 delete_vwarn=Din iż-żona hija assoċjata mad-dominju Virtualmin $1, u għalhekk m'għandhiex titħassar hawn!
 delete_vwarn2=Din iż-żona hija assoċjata mad-dominju Virtualmin $1 u $2 oħrajn, u għalhekk m'għandhiex titħassar hawn!
+
 mcreate_title=Oħloq Żona Master
 mcreate_ecannot=Ma tistax toħloq żoni kaptan
 mcreate_opts=Għażliet ġodda taż-żona kaptan
@@ -171,6 +174,7 @@ mcreate_auto=Awtomatiku
 mcreate_err=Ma rnexxielux joħloq żona kaptan
 mcreate_ednssecsize=Naqset milli tikkalkula d-daqs taċ-ċavetta : $1
 mcreate_ednssec=Il-ħolqien tar-rekords irnexxa, iżda DNSSEC falla : $1
+
 slave_title=Editja Żona Skjavi
 stub_title=Editja Stub Zone
 slave_ecannot=M'għandekx permess teditja din iż-żona
@@ -202,6 +206,7 @@ slave_applymsg2=Ikklikkja din il-buttuna biex iġġiegħel terġa 'tittrasferixx
 slave_last=Trasferit l-aħħar : $1
 slave_never=Qatt
 slave_xfer=Test tat-Trasferiment taż-Żona
+
 screate_title1=Oħloq Żona Slav
 screate_title2=Oħloq Żona Stub
 screate_ecannot1=M'għandekx permess toħloq żoni skjavi
@@ -214,6 +219,7 @@ screate_rev=Bil-maqlub (Indirizzi għall-Ismijiet)
 screate_dom=Isem / Netwerk tad-Dominju
 screate_err1=Naqset milli toħloq żona skjavi
 screate_err2=Ma rnexxielux joħloq żona ta ’stub
+
 recs_ecannot=M'għandekx permess teditja r-rekords f'din iż-żona
 recs_ecannottype=M'għandekx permess teditja rekords ta 'dan it-tip
 recs_title=$1 Rekords
@@ -231,6 +237,7 @@ recs_drev=Ħassar ukoll ir-rivers?
 recs_none=Id-dominju m'għandu l-ebda $1 s'issa.
 recs_nosearch=L-ebda rekord ma jaqbel mat-tfittxija tiegħek.
 recs_needsearch=Daħħal tfittxija biex issib rekords ta 'tqabbil.
+
 edit_title=Edit $1
 edit_header=Fi $1
 edit_edit=Edit $1 Rekord
@@ -306,6 +313,7 @@ edit_edmarcpct=Perċentwali ta 'messaġġi għandu jkun numru sħiħ bejn 0 u 10
 edit_edmarcrua=Nieqes l-indirizz ta 'feedback aggregat
 edit_edmarcruf=Indirizz ta ’informazzjoni forensika nieqes
 edit_ecaavalue2=Isem ta 'dominju nieqes jew li jidher b'validu
+
 text_title=Editja l-Fajl tar-Rekords
 text_title2=Ara l-Fajl tar-Rekords
 text_desc3=Din il-formola jippermettilek teditja manwalment il-fajl tar-rekords DNS $1. L-ebda kontroll tas-sintassi ma jsir mill-Webmin.
@@ -315,6 +323,7 @@ text_ecannot=M'għandekx permess teditja fajls tar-rekord
 text_none=Madankollu l-fajl bħalissa huwa vojt, probabbilment minħabba li ż-żona għadha ma ġietx trasferita mis-server ewlieni.
 text_soa=Iżżid in-numru tas-serje awtomatikament
 text_rawformat=Din iż-żona hija f'format binarju mhux maħdum, u għalhekk ma tistax tintwera bħala test.
+
 restart_err=Ma rnexxielux japplika tibdil
 restart_ecannot=M'għandekx permess terġa 'tibda BIND
 restart_epidfile=Ma nistax insib BIND PID f '$1
@@ -323,10 +332,12 @@ restart_erunning2=Jidher li BIND ma jaħdimx fuq is-server skjavi $1
 restart_endc=Il-kmand NDC falla : $1
 restart_ecmd=Irrestartja l-kmand falla : $1
 restart_eversion=Is-server skjavi $1 mhux qed imexxi verżjoni tal-Webmin $2 jew aktar.
+
 start_ecannot=M'għandekx permess tibda BIND
 start_error=Naqset milli tibda BIND : $1
 stop_epid=BIND mhux qed jaħdem
 stop_ecannot=M'għandekx permess tieqaf BIND
+
 fwd_title=Editja 'l Qasam Żona
 fwd_ecannot=M'għandekx permess teditja din iż-żona
 fwd_opts=Għażliet taż-Żona
@@ -335,12 +346,14 @@ fwd_forward=Ipprova servers oħra?
 fwd_check=Iċċekkja l-ismijiet?
 fwd_err=Ma rnexxielux isalva l-għażliet
 fwd_delmsg=Ikklikkja din il-buttuna biex tħassar din iż-żona mis-server DNS tiegħek. Imbagħad jiġu eżaminati r-rekords bl-użu tal-proċess ta 'riżoluzzjoni normali.
+
 delegation_title=Editja Żona ta 'Delegazzjoni
 delegation_ecannot=M'għandekx permess teditja din iż-żona
 delegation_opts=Għażliet taż-Żona
 delegation_err=Ma rnexxielux isalva l-għażliet
 delegation_noopts=Iż-żoni ta 'delegazzjoni m'għandhom l-ebda għażla li tista' tinbidel
 delegation_delmsg=Ikklikkja din il-buttuna biex tħassar din iż-żona mis-server DNS tiegħek. Tipi ta 'reġistrazzjoni fiha barra minn NS imbagħad ikunu rikonoxxuti mill-BIND.
+
 fcreate_title=Oħloq Żona Quddiem
 fcreate_ecannot=M'għandekx permess toħloq żoni 'l quddiem
 fcreate_opts=Għażliet ġodda taż-żona 'l quddiem
@@ -350,10 +363,12 @@ fcreate_rev=Bil-maqlub (Indirizzi għall-Ismijiet)
 fcreate_dom=Isem / Netwerk tad-Dominju
 fcreate_masters=Servers kaptan
 fcreate_err=Naqset milli toħloq żona 'l quddiem
+
 dcreate_title=Oħloq Żona Biss għad-Delegazzjoni
 dcreate_ecannot=M'għandekx permess toħloq żoni ta 'delegazzjoni
 dcreate_opts=Għażliet ġodda ta 'żona ta' delegazzjoni
 dcreate_err=Ma rnexxielux joħloq żona ta 'delegazzjoni
+
 create_enet="$1" mhix netwerk validu
 create_edom="$1" mhux isem ta 'dominju validu
 create_edom2="$1" għandu jkun dominju, mhux netwerk
@@ -363,9 +378,11 @@ create_efile3=Ma rnexxielux joħloq '$1' : $2
 create_efile4=Fajl $1 diġà jeżisti
 create_emaster="$1" mhuwiex indirizz server validu
 create_enone=Trid tidħol mill-inqas server kaptan wieħed
+
 boot_err=Id-download naqas
 boot_egzip=Il-fajl taż-żona tal-għeruq huwa kkompressat, iżda l-kmand <tt>gzip</tt> mhux installat fis-sistema tiegħek!
 boot_egzip2=Nuqqas tal-kompressjoni tal-fajl taż-żona tal-għeruq : $1
+
 type_A=Indirizz
 type_AAAA=Indirizz IPv6
 type_NS=Server tal-Isem
@@ -386,6 +403,7 @@ type_SRV=Indirizz tas-Servizz
 type_ALL=It-Tipi kollha ta ’Rekord
 type_KEY=Ċavetta Pubblika
 type_CAA=Ċertifikat tal-Awtorità
+
 edit_A=Indirizz
 edit_AAAA=Indirizz IPv6
 edit_NS=Server tal-Isem
@@ -405,6 +423,7 @@ edit_NSEC3PARAM=Parametri DNSSEC
 edit_TLSA=Ċertifikat SSL
 edit_SSHFP=Ċavetta Pubblika SSH
 edit_CAA=Ċertifikat tal-Awtorità
+
 recs_defttl=TTL Default
 recs_A=Indirizz
 recs_AAAA=Indirizz IPv6
@@ -427,6 +446,7 @@ recs_TLSA=Ċertifikat SSL
 recs_SSHFP=Ċavetta Pubblika SSH
 recs_CAA=Ċertifikat tal-Awtorità
 recs_delete=Ħassar Magħżul
+
 value_A1=Indirizz
 value_AAAA1=Indirizz IPv6
 value_NS1=Server tal-Isem
@@ -503,6 +523,7 @@ value_CAA3=Isem tad-dominju CA
 value_caa_issue=Ċert ta 'dominju uniku
 value_caa_issuewild=Ċert tal-wildcard
 value_caa_iodef=URL tal-ksur tal-politika
+
 tlsa_usage0=Ċertifikat tal-awtorità
 tlsa_usage1=Entità finali
 tlsa_usage2=Fiduċja l-ankra
@@ -512,12 +533,14 @@ tlsa_selector1=Informazzjoni ewlenija pubblika
 tlsa_match0=Kontenuti bla ħsara
 tlsa_match1=SHH-256 hashed
 tlsa_match2=SHH-512 hashed
+
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDSA
 sshfp_alg4=Ed25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 warn=Iwissi
 fail=Fin-nuqqas
 ignore=Injora
@@ -531,6 +554,7 @@ listed=Elenkati ..
 eip="$1" mhuwiex indirizz IP validu
 eport="$1" mhux numru tal-port validu
 eipacl="$1" mhuwiex indirizz IP validu jew isem ACL
+
 acl_zones=Dominji li dan l-utent jista 'jeditja
 acl_zall=Iż-żoni kollha
 acl_zsel=Żoni magħżula ..
@@ -575,6 +599,7 @@ acl_ztypes_master=Kaptan
 acl_ztypes_slave=Skjavi / stub
 acl_ztypes_delegation=Delegazzjoni
 acl_ztypes_forward=’Il quddiem
+
 servers_title=Servers DNS oħra
 servers_ip=Indirizz IP
 servers_bogus=Injora server taparsi?
@@ -586,6 +611,7 @@ servers_keys=Uża ċwievet DNS
 servers_err=Ma rnexxielux isalva servers DNS oħra
 servers_eip="$1" mhuwiex indirizz IP validu
 servers_etrans="$1" mhux numru validu ta 'trasferimenti massimi
+
 logging_title=Qtugħ u Żbalji
 logging_ecannot=M'għandekx permess biex tikkonfigura l-illoggjar
 logging_header=Għażliet ta 'qtugħ u żbalji globali
@@ -624,6 +650,7 @@ logging_efile=Nieqes il-fajl tal-log
 logging_efile2=L-isem tal-fajl Log għandu jkun mogħdija assoluta
 logging_ever="$1" mhux numru validu ta 'verżjonijiet
 logging_esize="$1" mhijiex daqs tal-log validu
+
 acls_title=Listi ta 'Kontroll ta' l-Aċċess
 acls_ecannot=M’intix permess li teditja acls globali
 acls_name=Isem ACL
@@ -631,6 +658,7 @@ acls_values=Indirizzi, netwerks u ACLs li jaqblu
 acls_err=Ma rnexxielux isalva l-listi tal-kontroll tal-aċċess
 acls_ename="$1" mhuwiex isem validu ta 'ACL
 acls_eline=Kull indirizz IP għandu jkun miktub fuq linja separata għal ACL "$1"
+
 files_title=Fajls u Direttorji
 files_ecannot=M'għandekx permess tikkonfigura fajls
 files_header=Fajls u għażliet ta 'direttorji globali
@@ -640,6 +668,7 @@ files_pid=Proċess tal-ID tal-fajl
 files_xfer=Programm ta 'trasferiment minn passaġġ għal żona
 files_err=Ma rnexxielux isalva fajls u għażliet ta 'direttorji
 files_efile=Isem tal-fajl nieqes jew invalidu
+
 forwarding_title=Trasmissjoni u Trasferimenti
 forwarding_ecannot=M'għandekx permess teditja l-għażliet ta 'trasferiment u trasferiment
 forwarding_header=Trasmissjoni globali u għażliet ta 'trasferiment taż-żona
@@ -658,6 +687,7 @@ forwarding_etrans=Trasferimenti massimi fl-istess ħin nieqsa jew invalidi
 forwarding_minutes=minuti
 forwarding_ip=Indirizz IP
 forwarding_port=Port
+
 net_title=Indirizzi u Topoloġija
 net_ecannot=M'għandekx permess teditja l-indirizz u l-għażliet tat-topoloġija
 net_header=Indirizz globali u għażliet ta 'topoloġija
@@ -683,6 +713,7 @@ net_taddrdef=IP mill-qrib
 net_etport=Port ta 'sors ta' trasferiment ma jistax jiġi speċifikat mingħajr indirizz
 net_eaddr="$1" mhuwiex indirizz IPv4 validu
 net_eaddr6="$1" mhuwiex indirizz IPv6 validu
+
 controls_title=Għażliet ta 'Interfaċċja ta' Kontroll
 controls_ecannot=M'għandekx permess teditja l-għażliet ta 'kontroll
 controls_header=Għażliet ta 'kontroll
@@ -704,6 +735,7 @@ controls_eunixpath=It-triq tal-fajl FIFO nieqsa jew invalida
 controls_eunixperm=Permessi ta 'fajl octal nieqsa jew invalidi
 controls_eunixowner=Sid ta 'fajl nieqes jew invalidu
 controls_eunixgroup=Grupp tal-fajl nieqes jew invalidu
+
 controls_inet=Aċċess għall-port tal-Internet
 controls_unix=Aċċess FIFO Unix
 controls_port=il-port
@@ -717,6 +749,7 @@ controls_efile=Nofs il-fajl FIFO nieqes jew invalidu
 controls_eperms=Permessi ta 'FIFO nieqsa jew invalidi
 controls_eowner=Sid tal-FIFO UID nieqes jew invalidu
 controls_egroup=Is-sid tal-FIFO nieqes jew invalidu GID
+
 keys_title=Ċwievet DNS
 keys_id=Identità taċ-ċavetta
 keys_alg=Algoritmu
@@ -725,6 +758,7 @@ keys_ecannot=M'għandekx permess teditja ċ-ċwievet DNS
 keys_err=Ma rnexxielux isalva ċ-ċwievet DNS
 keys_ekey="$1" mhux ID ewlieni validu
 keys_esecret=Sigriet kodifikat tal-bażi-64 nieqes jew invalidu għaċ-ċavetta $1
+
 misc_title=Għażliet Varji
 misc_ecannot=M'għandekx permess teditja għażliet varji
 misc_header=Għażliet globali varji
@@ -744,6 +778,7 @@ misc_esize="$1" mhux daqs validu
 misc_efiles="$1" mhux numru validu ta 'fajls miftuħa massimi
 misc_emins="$1" mhux numru validu ta 'minuti
 misc_mins=mins
+
 zonedef_title=Żoni Defaulti
 zonedef_msg=Nuqqasijiet għal żoni kaptan ġodda
 zonedef_err=Ma rnexxielux isalva nuqqasijiet taż-żona
@@ -767,10 +802,13 @@ zonedef_size=Daqs inizjali taċ-ċavetta
 zonedef_single=Numru ta 'ċwievet li jinħolqu
 zonedef_two=Żona ewlenija u ċavetta għall-iffirmar taċ-ċavetta
 zonedef_one=Żona ewlenija biss
+
 find_title=Sib Żoni
 find_match=Żoni li jaqblu $1 ..
 find_none=Ma nstabu żoni
+
 efirst=L-ewwel direttiva ħażina fil-linja $1 fi $2
+
 findfree_title=Sib IPs Ħieles
 findfree_desc=Sib IPs Ħieles
 findfree_nofind=Ma tistax tfittex IP ħielsa
@@ -782,8 +820,10 @@ findfree_cf=Ikkunsidra <em>freeXXX</em> hostnames bħala IPs b'xejn?
 findfree_search=Fittex
 findfree_msg=Jinstabu $1 Indirizzi IP bla ħlas
 findfree_msg2=(li minnhom $1 huma bħal <i>freeXXX</i>, $2 bħal <i>freemac</i>)
+
 free_title=Indirizzi IP Ħieles
 free_ip=Indirizz IP
+
 log_servers=Inbidlu servers DNS oħra
 log_logging=Inbidlet logging u żbalji
 log_acls=Bidliet fil-listi tal-kontroll tal-aċċess
@@ -840,14 +880,17 @@ log_sign=Firma DNSSEC aġġornati għaż-żona $1
 log_resign=Ċavetta DNSSEC ffirmata mill-ġdid għaż-żona $1
 log_trusted=Inbidlet il-verifika DNSSEC
 log_dnssec=Ibdel l-iffirmar mill-ġdid taċ-ċavetta DNSSEC
+
 convert_err=Naqset milli tikkonverti żona
 convert_efile=Fajl tar-rekords għandu jkun speċifikat qabel ma żona ta 'skjavi tista' tiġi kkonvertita għal kaptan.
 convert_efilesize=Ir-rekords tal-fajl $1 ma jeżistux jew huma vojta
 convert_ebinary=Il-kmand meħtieġ biex tikkonverti minn żona ta 'skjavi binarja għal format ta' test tal-kaptan mhuwiex installat
 convert_ecompile=Il-konverżjoni tal-format binarju għal test falliet : $1
+
 whois_title=Informazzjoni WHOIS
 whois_header=Ħruġ mill-kmand $1 ..
 whois_ecannot=M'għandekx permess li tfittex informazzjoni dwar il-WHOIS
+
 view_title=Editja Ħarsien tal-Klijent
 view_opts=Dettalji tal-Klijent
 view_opts2=Għażliet għal żoni bil-ħsieb
@@ -858,6 +901,7 @@ view_recursion=Tiftix rikursiv sħiħ għall-klijenti?
 view_ecannot=M'għandekx permess teditja din il-fehma
 view_delete=Ħassar Ħarsa
 view_deletemsg=Ikklikkja din il-buttuna biex tħassar il-veduta. Int ser ikollok għażla ta 'żoni li jiċċaqilqu fih għal fehma oħra, jew li tħassarhom ukoll.
+
 vcreate_title=Oħloq Veduta tal-Klijent
 vcreate_match_all=Il-klijenti kollha
 vcreate_match_sel=Elenki ta 'indirizzi, netwerks u ACLs ..
@@ -866,6 +910,7 @@ vcreate_ename=Isem ta 'vista nieqes jew invalidu
 vcreate_etaken=L-isem tal-vista huwa diġà meħud
 vcreate_eclass=Isem tal-klassi nieqes jew invalidu
 vcreate_ecannot=M'għandekx permess toħloq veduti
+
 hint_title=Editja Żona Għerq
 hint_desc=Iż-żona ta 'l-għeruq tintuża mis-server DNS tiegħek biex tikkuntattja s-servers ta' l-għeruq fuq l-internet, sabiex tkun tista 'ssolvi ismijiet f'oqsma li mhumiex immaniġġjati mis-server DNS tiegħek, bħal <tt>.com</tt> jew <tt>.net. au</tt>. Sakemm is-server DNS tiegħek ma jintużax fuq netwerk intern jew jekk inti tibgħat il-mistoqsijiet kollha lil server ieħor, m'għandekx tħassar din iż-żona għerq.
 hint_move=Nimxu biex tara:
@@ -874,6 +919,7 @@ hint_refetch=Erġa 'niżżel is-Serveurs tal-Għeruq
 hint_refetchdesc=Ikklikkja din il-buttuna biex Webmin terġa 'tniżżel il-fajl taż-żona ta' l-għeruq mis-sors tiegħu fuq is-server FTP Intern.
 hint_delete=Ħassar Żona tal-Għerq
 hint_deletedesc=Ikklikkja din il-buttuna biex tneħħi din iż-żona tal-għeruq. Mingħajrha, is-server tal-ismijiet tiegħek mhux ikun jista ’jsolvi dominji fuq l-Internet għajr dawk li għalihom hija sekondarja.
+
 hcreate_title=Oħloq Żona Għerq
 hcreate_desc=Iż-żona ta 'l-għeruq tintuża mis-server DNS tiegħek biex tikkuntattja s-servers ta' l-għeruq fuq l-internet, sabiex tkun tista 'ssolvi ismijiet f'oqsma li mhumiex immaniġġjati mis-server DNS tiegħek, bħal <tt>.com</tt> jew <tt>.net. au</tt>. Jekk qed tuża opinjonijiet multipli, jista 'jkun li jkollok bżonn żona ta' għeruq separata f'kull veduta sabiex il-klijenti kollha jkunu jistgħu jsolvu dominji tal-internet kif suppost.
 hcreate_header=Dettalji taż-żona tal-għerq
@@ -887,6 +933,7 @@ hcreate_efile="$1" mhux fajl ta 'għeruq permissibbli
 hcreate_efile2=Fajl ta 'għerq nieqes jew invalidu
 mcreate_erecs=Mhux fajl taż-żona tal-għeruq eżistenti validu
 hcreate_err=Ma rnexxielux joħloq żona għeruq
+
 vdelete_title=Ħassar Ħarsa
 vdelete_mesg=Int żgur li trid tħassar il-veduta tal-klijent $1? Iż-żoni kollha f'dan il-ħsieb se jitħassru (flimkien mal-fajls taż-żona tagħhom) jew jiġu mċaqalqa għal veduta oħra skont l-għażla tiegħek hawn taħt.
 vdelete_mesg2=Int żgur li trid tħassar il-veduta tal-klijent $1?
@@ -894,6 +941,7 @@ vdelete_newview=Żoni f'dan il-ħsieb
 vdelete_root=Iċċaqlaq mill-veduti
 vdelete_delete=Ħassar totalment
 vdelete_move=Mexxi biex tara
+
 gen_title=Ġeneraturi tar-Rekords
 gen_desc=Din il-paġna jippermettilek tiddefinixxi ġeneraturi, li kull wieħed minnhom se joħloq rekords multipli f'din iż-żona bl-użu ta 'counter li jiżdied. Dan jista 'jkun utli biex jiġu ddelegati partijiet taż-żona b'lura għal server ieħor.
 gen_range=Firxa
@@ -913,7 +961,9 @@ gen_evalue=Mudell ta 'hostname nieqes jew invalidu għall-ġeneratur $1
 gen_title2=Rekords Ġenerati
 gen_raw=Ikkonfigura l-linja tal-fajl
 gen_ecannot=M'għandekx permess teditja ġeneraturi ta 'rekords
+
 refetch_err=Naqset milli terġa 'tniżżel iż-żona tal-għeruq
+
 slaves_title=Cluster Servers Skjavi
 slaves_none=L-ebda server ma ġew miżjuda mal-cluster DNS s'issa.
 slaves_host=L-isem tal-host
@@ -941,6 +991,7 @@ slaves_sec=Oħloq sekondarju fuq l-iskjavi meta toħloq lokalment?
 slaves_name=Isem għar-rekord tal-NS
 slaves_same=L-istess bħall-hostname
 slaves_header=Għażliet ta 'server skjavi ta' raggruppament
+
 add_title=Żid is-Servers
 add_msg=Iż-żieda ta '$1 ..
 add_gmsg=Iż-żieda ta 'servers fil-grupp $1 ..
@@ -958,6 +1009,7 @@ add_createok=Twaqqaf $1 ma '$2 żoni ta' skjavi ġodda.
 add_ename=L-isem tar-rekord NS nieqes jew invalidu
 add_egname=Ma jistax jiġi speċifikat isem tar-reġistrazzjoni NS meta jiġi miżjud grupp
 add_emyip=Ma setgħetx taħdem l-indirizz IP ta 'din is-sistema. Għandek issettja <b>Is-server kap tad-Default IP għal żoni skjavi remoti</b> fuq il-paġna tal-Modulu ta 'Konfigurazzjoni.
+
 mass_title=Oħloq Żoni Minn Fajl tal-Lott
 mass_desc=Din il-paġna jippermettilek toħloq żoni multipli f'daqqa minn fajl ta 'test imtella' jew minn naħa tas-server. Kull linja fil-fajl għandu jkollha l-format li ġej: <p></p> <tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt> <p></p> It- <i>tip</i> għandu jkun dak ta ' <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> jew <tt>forward</tt>. L- <i>isem tal-fajl</i> huwa fakultattiv, u jiġi kkalkulat awtomatikament jekk ikun nieqes. L <i>-IPs prinċipali</i> biss għandhom jingħataw għaż-żoni tal-iskjavi.
 mass_local=Fajl tal-lott lokali
@@ -989,6 +1041,7 @@ mass_emips=Indirizzi IP kaptan nieqsa
 mass_addedslaves=Miżjud $1 mas-servers skjavi.
 mass_eonslave=Ġraw ħoloq żbalji fuq servers ta 'skjavi : $1
 mass_eviewcannot=M'għandekx permess li żżid żoni ma 'din il-fehma
+
 massdelete_title=Ħassar Żoni
 massdelete_rusure=Int żgur li trid tħassar $1 f'żoni magħżula? ($2)
 massdelete_ok=Ħassar issa
@@ -998,6 +1051,7 @@ massdelete_slaves=Ħassar iż-żona $1 mis-servers skjavi.
 massdelete_failed=.. xi skjavi fallew :
 massdelete_vwarn=Xi żoni huma assoċjati mad-dominju Virtualmin $1, u għalhekk m'għandhomx jitħassru hawn!
 massdelete_vwarn2=Xi żoni huma assoċjati mad-dominju Virtualmin $1 u oħrajn $2, u għalhekk m'għandhomx jitħassru hawn!
+
 rndc_title=Twaqqif RNDC
 rndc_desc=Din il-paġna tista 'tintuża biex tissettja BIND għall-kontroll mill-programm RNDC, sabiex iż-żoni individwali jistgħu jiġu aġġornati mingħajr il-bżonn li terġa' tibda mill-ġdid BIND.
 rndc_desc2=L-RNDC jidher li diġà ġie stabbilit sewwa, għalhekk probabbilment m'għandekx bżonn tuża din il-formola.
@@ -1008,11 +1062,13 @@ rndc_ok=Iva, Twaqqaf RNDC
 rndc_err=Naqas mill-installazzjoni RNDC
 rndc_ekey=Ma setgħetx issib iċ-ċavetta f 'rndc.conf
 rndc_esecret=Ma setgħetx issib sigriet f 'rndc.conf
+
 drecs_err=Naqset milli tħassar ir-rekords
 drecs_enone=L-ebda magħżul
 drecs_title=Ħassar ir-Rekords
 drecs_rusure=Int żgur li trid tħassar ir-rekords magħżula minn $1 minn $2?
 drecs_ok=Ħassar issa
+
 manual_title=Editja l-File Config
 manual_ecannot=M'għandekx permess teditja l-fajl tal-konfigurazzjoni BIND
 manual_ok=Editja
@@ -1020,7 +1076,9 @@ manual_efile=Fajl magħżul mhux parti mill-konfigurazzjoni BIND
 manual_file=Editja l-fajl konfigurazzjoni:
 manual_edata=Ma daħal xejn!
 manual_err=Ma rnexxielux isalva fajl konfigurativ
+
 syslog_desc=Messaġġi tas-server DNS BIND
+
 umass_err=Naqset milli taġġorna ż-żoni
 umass_enone=L-ebda magħżul
 umass_title=Aġġorna r-Rekords fiż-Żoni
@@ -1039,6 +1097,7 @@ umass_done=.. aġġornat $1 rekords ta 'tqabbil barra minn $2.
 umass_none=.. l-ebda rekord ta 'tqabbil barra minn $1 għall-aġġornament misjub.
 umass_egone=Żona ma teżistix
 emass_emx="$1" mhuwiex numru ta 'prijorità fis-server tal-posta segwit minn hostname validu
+
 rdmass_err=Naqset milli tħassar ir-rekords fiż-żoni
 rdmass_enone=L-ebda magħżul
 rdmass_title=Ħassar Rekords fiż-Żoni
@@ -1055,6 +1114,7 @@ rdmass_done=.. imħassra $1 rekords ta 'tqabbil barra minn $2.
 rdmass_none=.. l-ebda rekord ta 'tqabbil barra minn $1 li nħassar misjub.
 rdmass_ok=Ħassar ir-Rekords
 rdmass_sel=Rekords imsemmija
+
 rmass_err=Naqset milli żżid ir-rekords
 rmass_enone=L-ebda magħżul
 rmass_title=Żid Rekord maż-Żoni
@@ -1074,18 +1134,22 @@ rmass_esign=.. sar, iżda l-iffirmar falla : $1
 rmass_eclash=.. rekord bl-istess isem u valur $1 diġà jeżisti.
 rmass_eclash2=.. rekord bl-istess isem u l-istess valur $1 diġà jeżisti.
 rmass_clash=Oħloq anke jekk ir-rekord diġà jeżisti?
+
 check_title=Iċċekkja r-Rekords
 check_ecannot=M'għandekx permess tiċċekkja r-rekords
 check_errs=L-iżbalji li ġejjin instabu fil-fajl tar-rekords $1 ..
 check_allok=Ma nstab l-ebda żball fil-fajl tar-rekords $1.
+
 ncheck_title=Iċċekkja BIND Config
 ncheck_ecannot=M'għandekx permess tiċċekkja l-konfigurazzjoni BIND
 ncheck_errs=L-iżbalji li ġejjin instabu fil-fajl tal-konfigurazzjoni BIND $1 jew fil-fajls taż-żona referenzjati ..
 ncheck_allok=Ma nstab l-ebda żball fil-fajl tal-konfigurazzjoni BIND $1 jew fil-fajls taż-żona referenzjati.
+
 links_restart=Applika Konfigurazzjoni
 links_stop=Waqqaf BIND
 links_start=Ibda BIND
 links_apply=Applika Żona
+
 dnssec_title=DNSSEC Key Re-Iffirmar
 dnssec_ecannot=M'għandekx permess biex tikkonfigura DNSSEC
 dnssec_header=Għażliet ewlenin ta 'ffirmar mill-ġdid
@@ -1096,6 +1160,7 @@ dnssec_secs=sekondi
 dnssec_desc=Iż-żoni ffirmati bid-DNSSEC ġeneralment għandhom żewġ ċwievet - ċavetta taż-żona li għandha tiġi ġġenerata mill-ġdid u ffirmata regolarment, u ċavetta tal-iffirmar taċ-ċavetta li tibqa 'kostanti. Din il-paġna jippermettilek li tikkonfigura Webmin biex twettaq din l-iffirmar mill-ġdid awtomatikament.
 dnssec_err=Naqset milli ssalva l-iffirmar mill-ġdid taċ-ċavetta DNSSEC
 dnssec_eperiod=Numru ta 'jiem nieqsa jew invalidi bejn sinjali mill-ġdid
+
 dnssectools_title=DNSSEC-Tools Automation
 dt_conf_title=DNSSEC-Tools Automation
 dt_enable_title=DNSSEC-Tools Automation
@@ -1160,6 +1225,7 @@ dt_status_inKSKroll=Fir-Romblu tal-KSK
 dt_status_inZSKroll=Fir-Rulett ZSK
 dt_status_signed=Iffirmat
 dt_status_unsigned=Mhux iffirmat
+
 zonekey_title=Twaqqif ta 'DNSSEC Key
 zonekey_desc=Din iż-żona għad m'għandhiex ċavetta ta 'ffirmar ta' DNSSEC. Tista 'tuża din il-formola biex Webmin toħloq waħda, sabiex il-klijenti li jsolvu din iż-żona jkunu protetti kontra attakki ta' spoofing DNS.
 zonekey_header=Għażliet ewlenin DNSSEC
@@ -1193,9 +1259,12 @@ zonekey_sign=Żona tas-Sinjali
 zonekey_signdesc=Immedjatament iffirma mill-ġdid din iż-żona, sabiex kull bidla fir-rekords li jsiru bl-idejn ser tkun inkluża fir-rekords tal-iffirmar.
 zonekey_resign=Żona Sinjal mill-ġdid
 zonekey_resigndesc=Iġġenera ċavetta ġdida għall-iffirmar taż-żona, iffirmaha bil-buttuna ewlenija taż-żona, u iffirma mill-ġdid ir-rekords kollha.
+
 sign_err=Naqas milli jiffirma żona
 sign_emsg=L-iffirmar DNSSEC wara l-bidla tar-rekords falla : $1
+
 resign_err=Naqas milli jerġa 'jiffirma ż-żona
+
 trusted_title=Verifika DNSSEC
 trusted_ecannot=M'għandekx permess tikkonfigura verifika DNSSEC
 trusted_esupport=Il-verżjoni tiegħek tal-BIND ma tappoġġjax il-verifika DNSSEC
@@ -1230,6 +1299,7 @@ trusted_setup=Sabiex DNSSEC ikun utli biex tivverifika l-maġġoranza taż-żoni
 trusted_ok=Twaqqif DLV u Agħti Verifika DNSSEC
 trusted_warning=Twissija! Il-konfigurazzjoni tal-klijent BIND DNSSEC tiegħek għandha ċwievet skaduti li se tieqaf taħdem f'Ottubru 2017. Jew uża l-paġna <a href='$1'>BIND DNSSEC Verifika</a> biex taġġusta l-konfigurazzjoni, jew ikklikkja l-buttuna hawn taħt.
 trusted_fix=Waħħal il-Konfigurazzjoni DNSSEC
+
 xfer_title=Test tat-Trasferiment taż-Żona
 xfer_doing=Ittestjar tat-trasferiment taż-żona tal-iskjavi minn $1 ..
 xfer_failed=.. minn $1: Ma rnexxiex : $2

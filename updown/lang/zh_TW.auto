@@ -13,6 +13,7 @@ index_descfetch=該頁面用於從運行Webmin的系統下載文件以在瀏覽�
 index_email=完成下載後發送電子郵件嗎？
 index_emailto=是的，解決
 index_email2=上傳完成後發送電子郵件嗎？
+
 upload_ecmd=缺少命令 $1
 upload_eextract=，無法提取： $1
 upload_extracted=，並提取文件 ..
@@ -23,12 +24,15 @@ upload_saving=正在保存文件 $1 ..
 upload_saved=..寫了 $1
 upload_unzipping=提取文件 $1 ..
 upload_unzipdone=.. $1
+
 download_enone=沒有輸入要下載的網址
+
 acl_nosched=是的，但不是背景
 acl_max=最大上傳大小
 acl_unlim=無限
 acl_b=個字節
 acl_fetch=可以將文件下載到PC嗎？
+
 fetch_err=下載文件失敗
 fetch_ecannot=不允許將文件下載到PC
 fetch_efile=沒有輸入文件名
@@ -37,6 +41,7 @@ fetch_eopen=無法打開文件： $1
 fetch_eaccess=您不允許從 $1下載文件
 fetch_ezip=除非安裝了<tt>zip</tt>命令，否則無法下載目錄
 fetch_eroot=根目錄無法下載！
+
 email_downmsg=以下下載已完成：
 email_downurl=網址： $1
 email_downerr=錯誤消息： $1

@@ -24,8 +24,10 @@ all=Visi
 index_view=Peržiūrėti ..
 index_viewfile=Peržiūrėti žurnalo failą:
 index_viewok=Vaizdas
+
 restart_ekill=Nepavyko pranešti apie sistemos žurnalo procesą $1 : $2 
 restart_ecannot=Jums neleidžiama paleisti „syslog“ iš naujo
+
 start_ecannot=Jums neleidžiama paleisti syslog
 edit_title=Redaguoti sistemos žurnalą
 create_title=Pridėti sistemos žurnalą
@@ -56,11 +58,13 @@ edit_tag=Tik programai
 edit_return=žurnalo duomenys
 edit_ecannot=Jums neleidžiama redaguoti žurnalo nustatymų
 edit_ecannot2=Jums neleidžiama redaguoti šio žurnalo
+
 view_title=Peržiūrėti žurnalo failą
 view_header=Paskutinės $1 eilutės iš $2 
 view_empty=Žurnalo failas tuščias
 view_refresh=Atnaujinkite
 view_filter=Rodyti tik eilutes su tekstu $1 
+
 save_err=Nepavyko išsaugoti žurnalo
 save_efile=„$1“ nėra teisingas failo vardas : $2 
 save_epipe=„$1“ nėra tinkamas pavadintas vamzdis
@@ -80,11 +84,13 @@ save_ecannot5=Jums neleidžiama modifikuoti šio žurnalo
 save_ecannot6=Jums neleidžiama žiūrėti savavališkų žurnalų
 save_ecannot7=Jums neleidžiama žiūrėti šio papildomo žurnalo
 save_emissing=Trūksta žiūrimo failo
+
 log_modify=Pakeistas žurnalas į $1 
 log_create=Pridėtas žurnalas prie $1 
 log_delete=Ištrintas žurnalas į $1 
 log_apply=Taikomi pakeitimai
 log_start=Pradėtas registravimo serveris
+
 desc_sysmesg=Sistemos pranešimai
 desc_mail=Pašto žurnalas
 desc_auth=Autentifikavimo žurnalas
@@ -93,6 +99,7 @@ desc_news=NNTP naujienų žurnalas
 desc_uucp=UUCP žurnalas
 desc_debug=Derinimo pranešimai
 desc_cron=„Cron Job Log“
+
 acl_noedit=Ar galima žiūrėti tik žurnalus?
 acl_any=Ar galite peržiūrėti bet kurį failą kaip žurnalą?
 acl_logs=Gali peržiūrėti ir konfigūruoti žurnalo failus

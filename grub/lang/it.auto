@@ -1,6 +1,7 @@
 title_modules=Moduli extra
 title_none1=Nessuna
 title_none2=(voce di menu senza avvio)
+
 log_create_title=Opzione di avvio creata $1 
 log_delete_title=Opzione di avvio eliminata $1 
 log_modify_title=Opzione di avvio modificata $1 

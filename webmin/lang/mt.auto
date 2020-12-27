@@ -9,6 +9,7 @@ index_restart=Irristartja Webmin
 index_restartmsg=Ikklikkja din il-buttuna biex terġa 'tibda l-proċess tas-server Webmin. Dan jista 'jkun meħtieġ jekk tkun reċentement immodernizzat Perl.
 index_refresh=Moduli ta ’Aġġornament
 index_refreshmsg=Iċċekkja mill-ġdid il-moduli Webmin kollha għas-servers installati u aġġorna dawk li jidhru fil-kategorija 'Moduli mhux użati'.
+
 access_title=Kontroll tal-Aċċess IP
 access_desc=Is-server Webmin jista 'jiġi kkonfigurat biex jiċħad jew jippermetti aċċess biss minn ċerti indirizzi IP billi juża din il-formola. Ismijiet ospitanti (bħal foo.bar.com) u netwerks IP (bħal 10.254.3.0 jew 10.254.1.0/255.255.255.128 jew 10.254.1.0/25 jew 10.254.1.5-10.254.97.127) jistgħu wkoll jiddaħħlu. Għandek tillimita l-aċċess għas-server tiegħek għal indirizzi fdati, speċjalment jekk tkun aċċessibbli mill-Internet. Inkella, kull min jivvinta l-password tiegħek ikollu kontroll sħiħ tas-sistema tiegħek.
 access_ip=Indirizzi IP permessi
@@ -33,6 +34,7 @@ access_ehost=Naqas milli jsib indirizz IP għal '$1'
 access_eself=L-indirizz IP preżenti tiegħek ($1) jiġi miċħud
 access_always=Issolvi l-hostnames fuq kull talba?
 access_trust=Trid tafda l-indirizz IP remot ipprovdut mill-prokuri?
+
 bind_title=Portijiet u Indirizzi
 bind_desc2=Din il-formola tista 'tintuża biex tbiddel in-numru tal-port li jisma' Webmin, jew biex tisma 'fuq indirizz IP wieħed biss fis-sistema tiegħek. Tista 'wkoll tikkonfiguraha biex taċċetta konnessjonijiet fuq portijiet multipli, jew biex tisma' diversi indirizzi IP. Nota - il-browser web tiegħek jista 'jġiegħlek terġa' tidħol wara li tbiddel il-port jew l-indirizz li jorbot.
 bind_header=Indirizzi IP u portijiet
@@ -61,6 +63,7 @@ bind_eipv6=L-IPv6 ma jistax ikun attivat sakemm il-modulu $1 Perl ikun installat
 bind_redirecting=Rindirizzar lejn URL ġdid ..
 bind_elsof=Port ġdid $1 diġà qed jintuża bi proċess ieħor
 bind_eonsystem=L-indirizz IP $1 mhuwiex attiv fuq din is-sistema, u għalhekk ma jistax jintuża
+
 log_title=Qtugħ
 log_desc=Webmin jista 'jiġi kkonfigurat biex jikteb log ta' hits tas-server tal-web, fil-format standard tal-fajl log CLF. Jekk l-illoggjar huwa attivat, tista 'wkoll tagħżel jekk l-indirizzi IP jew il-hostnames huma rreġistrati, u kemm-il darba l-fajl tal-ġurnal jitneħħa. Meta jkun attivat, iz-zkuk huma miktuba fuq il-fajl $1.
 log_desc2=Meta l-qtugħ ikun attivat, Webmin se jikteb ukoll reġistru aktar dettaljat tal-azzjonijiet tal-utent fil-fajl $1. Dan il-ġurnal jista 'jarah u jiġi analizzat bil-modulu Log Web Actions Logħob biex tara eżattament dak li kull utent ta' Webmin kien qed jagħmel.
@@ -92,6 +95,7 @@ log_login=Jinkludu l-logins tal-Webmin u l-logouts fl-azzjonijiet tal-ġurnal?
 log_email=Ibgħat azzjonijiet illoggjati permezz ta 'email lil
 log_emailnone=Ibgħatx
 log_inmodsemail=Ibgħat email għall-azzjonijiet fi
+
 proxy_title=Servers u Proxy ta 'Proxy
 proxy_desc=Jekk l-ospitanti li taħdem Webmin ikun wara firewall ta 'xi tip, jista' jkollok bżonn issettja s-server proxy biex tużah għall-aċċess għall-web u siti FTP. Ċerti moduli, bħal <tt>Pakketti ta 'Softwer</tt>, jużaw dawn il-prokuri meta jniżżlu fajls jew programmi.
 proxy_header=Servers tal-prokura
@@ -134,6 +138,7 @@ proxy_return=Serversji u downloads proxy
 proxy_tabproxy=Proxying
 proxy_tabdown=Tniżżil
 proxy_fallback=Ipprova talba diretta jekk il-prokura tonqos?
+
 ui_title=Interfaċċa tal-Utent
 ui_desc=Din il-formola jippermettilek teditja l-għażliet tal-interface tal-utent użati mill-moduli kollha. Meta jidħlu l-kuluri, kull wieħed għandu jkun speċifikat bl-użu tas-sistema standard RGB, fejn kull valur huwa numru hex minn 00 sa ff.
 ui_header=Għażliet ta 'interface għall-utent
@@ -183,6 +188,7 @@ ui_dateformat_dd/mm/yyyy=dd/mm/yyy (jiġifieri. 16/09/2001)
 ui_dateformat_mm/dd/yyyy=mm/dd/yyy (jiġifieri. 16/09/2001)
 ui_dateformat_yyyy/mm/dd=yyyy/mm/dd (jiġifieri. 2001/09/16)
 ui_ehostnamedisplay=Kunjom host nieqes jew invalidu
+
 mods_title=Moduli Webmin
 mods_desc1=Moduli Webmin jistgħu jiġu miżjuda wara l-installazzjoni billi tuża l-formola fuq il-lemin. Moduli huma tipikament mqassma fi fajls <tt>.wbm</tt>, li kull wieħed minnhom jista ’jkun fih modulu wieħed jew aktar. Moduli jistgħu wkoll jiġu installati minn fajls RPM jekk appoġġjati mis-sistema operattiva tiegħek.
 mods_installsource=Installa minn
@@ -226,6 +232,7 @@ mods_tabinstall=Installa
 mods_tabclone=Klonu
 mods_tabdelete=Ħassar
 mods_tabexport=Esportazzjoni
+
 install_err1=Ma rnexxiex tinstalla modulu minn $1
 install_efile=Fajl ma jeżistix
 install_err2=Naqset milli tinstalla l-modulu mtella '
@@ -259,10 +266,12 @@ install_cat=Taħt il-kategorija $1.
 install_eneither=L-RPM ma fihx modulu jew tema tal-webmin
 install_err4=Naqset milli tinstalla modulu standard
 install_emissing=Il-modulu speċifikat ma jeżistix
+
 clone_err=Naqas mill-modulu tal-klonu
 clone_elink=symlink falla : $1
 clone_ecopy=naqset milli tikkopja config : $1
 clone_desc=Klonu ta '$1
+
 delete_err=Naqset milli tħassar il-moduli
 delete_edep=Il-modulu $1 ma jistax jitħassar, minħabba li l-modulu $2 jiddependi minnu
 delete_desc1=$1 (Klonu ta '$2)
@@ -274,6 +283,7 @@ delete_rusure2=Int żgur li trid tħassar it-tema $2? $1 kB ta 'fajls se jitħas
 delete_rusure3=Int żgur li trid tħassar il-kloni tal-moduli $2?
 delete_acls=Neħħi mill-utenti u Irrisettja l-issettjar tal-kontroll tal-aċċess?
 delete_enone=L-ebda moduli magħżula
+
 os_title=Sistema Operattiva u Ambjent
 os_desc3=Din il-paġna turi s-sistema operattiva misjuba minn Webmin fil-ħin tal-installazzjoni, u s-sistema li bħalissa tinsab. Jekk huma differenti, tista 'tagħżel li jkollok l-informazzjoni tal-OS ta' Webmin aġġornata, li tista 'tkun meħtieġa jekk tkun reċentement immodernizzat.
 os_desc2=Tista 'wkoll tbiddel it-triq tat-tiftix użata minn Webmin meta tħaddem il-programmi, u l-passaġġ tal-librerija maqsuma jgħaddi għal kwalunkwe programm.
@@ -296,6 +306,7 @@ os_eiversion=Nieqes il-verżjoni tas-sistema operattiva interna
 os_incorrect=Twissija - Is-sistema tiegħek attwalment qed taħdem $1 verżjoni $2.
 os_fix=Aġġornat Sistema Operattiva Maqbuda
 os_usermin=Aġġorna wkoll OS Usermin
+
 lang_title=Lingwa
 lang_title2=Lingwa Webmin
 lang_lang=Wiri bil-lingwa
@@ -307,6 +318,7 @@ lang_chardef=Determinat mil-lingwa
 lang_charover=Forza ta 'karattru stabbilita
 lang_err=Naqset milli ssalva lingwa
 lang_echarset=Sett ta 'karattri nieqes jew li jħares invalidu
+
 ssl_title=SSL Encryption
 ssl_essl=Il-modulu Net::SSLeay perl ma jidhirx li huwa installat fis-sistema tiegħek. Biex tinstalla l-librerija OpenSSL u Net::SSLeay, segwi <a href='$1'>dawn l-istruzzjonijiet</a> mill-websajt Webmin.
 ssl_cpan=Inkella, jista 'jkollok Webmin <a href='$1'>tniżżel u tinstalla</a> il-modulu Net::SSLeay Perl meħtieġ għalik.
@@ -412,6 +424,7 @@ ssl_letsnotrenew=Iġġedded biss manwalment
 ssl_staging=Ejja nikkriptaw is-server
 ssl_staging0=Real
 ssl_staging1=Waqfien (test biss)
+
 newkey_err=Ma rnexxielux joħloq ċavetta SSL
 newkey_ecn=Is-server nieqes jew invalidu
 newkey_ecns=L-ebda ismijiet tas-server ma daħlu
@@ -424,11 +437,13 @@ newkey_ok=Iġġenera b'suċċess iċ-ċavetta SSL li ġejja :
 newkey_esize=Id-daqs taċ-ċavetta nieqes jew invalidu
 newkey_edays=Numru ta 'jiem nieqsa jew invalidi qabel l-iskadenza
 newkey_ecountry=Il-kodiċi tal-pajjiż għandu jkun ta 'żewġ ittri
+
 newcsr_err=Ma rnexxielux joħloq SSL CSR
 newcsr_efile=Isem tal-fajl CSR Nieqes
 newcsr_title=Iġġenera CSR
 newcsr_ok=Iġġenera b'suċċess it-talba taċ-ċertifikat SSL li ġejja :
 newcsr_ok2=Dan is-CSR għandu jintbagħat lill-awtorità li tiffirma, li tirritorna ċertifikat iffirmat. Dan jista 'jiġi installat biċ-ċavetta hawn fuq billi tuża t-tab <b>Upload certificate</b>.
+
 startpage_title=Għażliet ta 'Paġna ta' Indiċi
 startpage_intro2=Din il-paġna jippermettilek tikkontrolla d-dehra tal-menu ewlieni tal-Webmin. Xi għażliet jistgħu jkunu effettivi biss meta tuża t-tema default.
 startpage_tabs=Tikkategorizza l-moduli?
@@ -442,6 +457,7 @@ startpage_gotonone=&lt;Mejn&gt;
 startpage_gotomodule=Wara l-login, mur dejjem għall-modulu
 startpage_webminup=Uri l-aġġornamenti tal-Webmin fuq il-paġna ta ’Informazzjoni tas-Sistema?
 startpage_moduleup=Uri l-aġġornamenti tal-moduli fil-paġna Informazzjoni tas-Sistema?
+
 upgrade_title=Aġġorna Webmin
 upgrade_desc=Din il-formola jippermettilek taġġorna l-installazzjoni sħiħa ta 'Webmin tiegħek għal verżjoni ġdida. Tista 'tinstalla minn fajl lokali, fajl imtella' jew mill-aħħar verżjoni fuq <a href=http://www.webmin.com/>www.webmin.com</a>. L-istess bħal ma 'aġġornament manwali, l-issettjar kollu tal-konfigurazzjoni tiegħek u l-moduli ta' partijiet terzi jinżammu.
 upgrade_descrpm=Din il-formola jippermettilek taġġorna l-installazzjoni sħiħa tal-webmin tiegħek għal verżjoni ġdida bl-użu tal-għażla ta ’aġġornament tal-RPM. Tista 'tinstalla minn fajl RPM lokali, fajl imtella' jew mill-aħħar verżjoni fi <a href=http://www.webmin.com/>www.webmin.com</a>. L-istess bħal ma 'aġġornament manwali, l-issettjar kollu tal-konfigurazzjoni tiegħek u l-moduli ta' partijiet terzi jinżammu.
@@ -506,10 +522,12 @@ upgrade_tabupdate=Aġġorna moduli
 upgrade_tabsched=Aġġornament skedat
 upgrade_src=Aġġorna Webmin minn
 upgrade_opts=Għażliet ta 'aġġornament
+
 newmod_desc=Meta Webmin jiġi aġġornat, kull modulu ġdid fil-verżjoni l-ġdida se jingħata lil utent wieħed jew aktar. Din il-formola jippermettilek tissettja l-utenti li jirċievu moduli ġodda. Din l-issettjar tapplika meta tiġi aġġornata fil-linja tal-kmand jew tuża l-formola ta 'hawn fuq.
 newmod_header=Modulu ġdid ta 'għotjiet
 newmod_def=Imġieba ta 'inadempjenza - tagħti moduli ġodda lil <tt>root</tt> jew <tt>admin</tt>
 newmod_users=Għoti moduli ġodda lil :
+
 update_desc1=Din il-formola tippermetti li ttejjeb il-moduli Webmin li nstabu li fihom bugs jew toqob tas-sigurtà mill-paġna <a href=http://www.webmin.com/updates.html>Aġġornamenti Webmin</a> jew minn sors ieħor. Dan se jqabbel il-moduli installati bħalissa ma 'dawk disponibbli għall-aġġornament, u b'għażla awtomatikament iniżżel u jinstalla kwalunkwe modulu li m'għadux aġġornat.
 update_header1=Aġġorna moduli issa
 update_header2=Aġġorna moduli skont l-iskeda
@@ -536,6 +554,7 @@ update_enomodsig=Ma setgħetx tniżżel fajl tal-firma għall-modulu : $1
 update_ebadmodsig=Il-kontroll tal-modulu tal-firma falla : $1
 update_src=Aġġorna moduli minn
 update_opts=Għażliet ta 'aġġornament tal-modulu
+
 ca_title=Ċertifikat tal-Awtorità
 ca_old=Ċertifikat eżistenti
 ca_header1=Oħloq ċertifikat CA ġdid
@@ -567,6 +586,7 @@ ca_eminiserv=Iċ-ċertifikati tal-klijent SSL huma appoġġjati biss taħt minis
 ca_eversion=Il-verżjoni tal-modulu Perl Net::SSLeay installat fis-sistema tiegħek ma tappoġġjax ċertifikati tal-klijent SSL.
 ca_essleay=Il-kmand tal-amministrazzjoni SSL $1 ma nstabx fis-sistema tiegħek. Jista 'jkollok bżonn tibdel it-triq fil-konfigurazzjoni tal-modulu Utenti Webmin.
 ca_essl=Iċ-ċertifikazzjoni SSL tista 'tiġi ssettjata biss meta n-webserver jibda jaħdem fil-mod SSL.
+
 session_title=Awtentikazzjoni
 session_desc1=Meta tkun attivata, l-iskedi ta 'ħin tal-password jipproteġu s-server Webmin tiegħek minn attakki ta' qsim ta 'password brutali billi jżidu dewmien li qed jespandi kontinwament bejn kull tentattiv ta' login fallut għall-istess utent.
 session_header=Awtentikazzjoni u għażliet tas-sessjoni
@@ -630,10 +650,12 @@ session_sha512=Uża kriptaġġ SHA512
 session_emd5mod=L-encryption MD5 ma jistax jintuża, billi l-modulu Perl $1 mhuwiex installat.
 session_esha512mod=L-encryption SHA512 ma jistax jintuża, billi l-modulu Perl $1 mhuwiex installat.
 session_blocklock=Issakkar ukoll lill-utenti bi logins falluti
+
 assignment_title=Moduli mill-ġdid
 assignment_header=Assenjazzjonijiet tal-kategorija tal-moduli
 assignment_ok=Ibdel il-Kategoriji
 assignment_desc=Din il-formola tippermetti li tikkonfigura liema kategorija tidher taħt kull modulu fil-paġna tal-indiċi Webmin.
+
 categories_title=Editja l-Kategoriji
 categories_header=ID tal-Kategorija u deskrizzjonijiet
 categories_desc=Din il-formola jippermettilek tibdel isem il-kategoriji eżistenti ta 'Webmin u toħloq oħrajn biex tassenja moduli. Il-parti ta 'fuq tat-tabella hija għall-bdil tad-deskrizzjonijiet tal-kategoriji inkorporati, filwaqt li l-parti ta' isfel hija biex iżżid IDs u deskrizzjonijiet ġodda tal-kategorija.
@@ -646,6 +668,7 @@ categories_name=Deskrizzjoni murija
 categories_lang=Edit il-kategoriji bil-lingwa:
 categories_langok=Ibdel
 categories_custom=Custom
+
 log_access=Biddel il-kontroll tal-aċċess għall-IP
 log_bind=Port u indirizz mibdula
 log_log=Inbidlet fl-għażliet tal-qtugħ
@@ -691,6 +714,7 @@ log_onedelete_webmincron=Funzjoni skedata mħassra mill-modulu $1
 log_letsencrypt=Intalab ċertifikat SSL ġdid mingħand Let's Encrypt
 log_letsencryptdns=Ħoloq Ejja Kriptaġġ rekord DNS għal $1
 log_letsencryptcleanup=Imneħħi Ejja Kriptaġġ rekord DNS għal $1
+
 themes_title=Temi tal-Webmin
 themes_desc=It-temi jikkontrollaw id-dehra tal-interface tal-utent Webmin, inklużi ikoni, kuluri, sfondi u t-tqassim tal-paġni. Il-kaxxa tal-għażla hawn taħt tista 'tintuża biex tagħżel waħda mit-temi installati fis-sistema tiegħek.
 themes_sel=Tema kurrenti :
@@ -706,6 +730,7 @@ themes_taboverlay=Ibdel overlay
 themes_tabinstall=Installa tema
 themes_tabdelete=Ħassar it-temi
 themes_tabexport=Esportazzjoni temi
+
 themes_err1=Ma rnexxiex tinstalla tema minn $1
 themes_efile=Fajl ma jeżistix
 themes_err2=Naqset milli tinstalla tema mtellgħa
@@ -731,9 +756,11 @@ themes_delok=Tema li titħassar :
 themes_return=Lista tat-temi
 themes_err4=Naqset milli tbiddel it-tema tal-overlay
 themes_eoverlay=L-overlay magħżul mhux kompatibbli mat-tema globali attwali
+
 themes_desc4=It-temi installati jistgħu jiġu esportati bħala fajl wbt.gz billi tuża l-formola hawn taħt. Fajl tema jista 'mbagħad jiġi installat fuq sistema oħra li taħdem Webmin.
 themes_exportmods=Temi għall-esportazzjoni
 themes_exportok=Esportazzjoni Temi Magħżula
+
 referers_title=Referenti ta 'fiduċja
 referers_desc=Din il-paġna jippermettilek li tikkonfigura l-appoġġ għall-iċċekkjar tal-referrer ta 'Webmin, li jintuża biex jipprevjeni rabtiet malizzjużi minn websajts oħra li joqogħdu l-browser tiegħek biex jagħmlu affarijiet perikolużi ma' Webmin. Madankollu, jekk għandek links għal Webmin mill-websajts tiegħek stess li ma tridx tkun mwissija dwarek għandek iżżid dawk is-siti fil-lista hawn taħt.
 referers_list=Websajts ta 'fiduċja
@@ -742,6 +769,7 @@ referers_none2=TWISSIJA: Dan jiftaħ is-sistema tiegħek għal attakki ta 'XSS!
 referers_referer=Iċċekkjar tar-referrer ippermetta?
 referers_err=Naqset milli ssalva referis
 referers_ehost="$1" mhux hostname affidabbli validu
+
 update_err=Naqset milli taġġorna l-moduli
 update_eurl=URL ta 'aġġornament nieqes jew invalidu
 update_title=Moduli ta 'Aġġornament
@@ -762,6 +790,7 @@ update_rv=Tivverifika moduli aġġornati tal-Webmin minn $1
 update_eemail=Trid tidħol indirizz elettroniku jekk turi biss dak li ser jiġi aġġornat.
 update_subject=Moduli tal-Webmin jirrapportaw aġġornament
 update_version=Rilaxx ġdid ta 'Webmin (il-verżjoni $1) issa huwa disponibbli biex jitniżżel. Aġġornamenti futuri jiġu rilaxxati biss għall-aħħar verżjoni.
+
 anon_title=Aċċess għall-Modulu Anonimu
 anon_desc=Din il-paġna jippermettilek li tagħti aċċess għal moduli u mogħdijiet Webmin magħżula mingħajr ma l-klijenti jkollhom bżonn jidħlu. Għal kull passaġġ tal-modulu li tidħol hawn taħt (bħal <tt>/custom</tt> jew <tt>/passwd</tt>) trid tidħol ukoll l-isem ta 'utent tal-Webmin li l-permessi tiegħu se jintużaw għall-aċċess għall- modulu.
 anon_desc2=Għandek toqgħod attent ħafna meta tagħti aċċess anonimu, peress li kontrolli ta 'aċċess IP insuffiċjenti jew li jagħtu aċċess għal modulu ħażin jistgħu jippermettu lill-attakkanti jieħdu f'idejhom is-sistema tiegħek.
@@ -770,15 +799,19 @@ anon_user=Utent tal-Webmin
 anon_err=Ma rnexxielux isalva aċċess anonimu
 anon_eurl="$1" mhix triq URL valida
 anon_euser=Utent ta 'Webmin nieqes jew invalidu għall-passaġġ URL "$1"
+
 enogpg=GnuPG mhux installat
+
 standard_failed=Ma rnexxielux iniżżel il-lista tal-moduli : $1
 standard_header=Moduli Webmin standard
 standard_warn=Twissija - m'intix qed tħaddem l-aħħar verżjoni ta 'Webmin $1, u għalhekk dawn il-moduli x'aktarx ma jirnexxilhomx jinstallaw.
 standard_eurl=Moduli URL mhux validi
+
 third_failed=Ma rnexxielux iniżżel il-lista tal-moduli : $1
 third_header=Moduli ta 'Webmin minn Partijiet Terzi
 third_eurl=URL ta 'moduli ta' partijiet terzi invalidi
 third_title=Agħżel Modulu ta ’Parti Terza
+
 lock_title=Imblokkar tal-Fajl
 lock_desc=B'mod awtomatiku, Webmin tikseb serratura fuq kwalunkwe fajl li timmodifika sabiex tevita modifika fl-istess ħin minn proċessi multipli, li jistgħu jwasslu għal korruzzjoni fil-fajl. Din il-paġna jippermettilek issib il-qfil b'mod selettiv jew totalment jekk tikkawża problemi.
 lock_header=L-issettjar tal-illokkjar tal-fajl
@@ -789,6 +822,7 @@ lock_except=Lock il-fajls u d-direttorji kollha ħlief ..
 lock_err=Ma rnexxielux isalva l-illokkjar tal-fajl
 lock_edir="$1" mhix triq assoluta
 lock_edirs=L-ebda fajls jew direttorji mdaħħla
+
 ipkey_title1=Oħloq SSL Key
 ipkey_title2=Editja SSL Key
 ipkey_header=Dettalji ewlenin tal-SSL speċifiku għall-IP
@@ -798,6 +832,7 @@ ipkey_eip2="$1" mhuwiex indirizz IP validu jew isem tal-host
 ipkey_eips=Ma daħlu l-ebda indirizzi IP
 ipkey_eextracas=L-ebda fajl ta 'ċertifikat addizzjonali ma daħal
 ipkey_eextraca=Fajl taċ-ċertifikat addizzjonali $1 ma jeżistix
+
 descs_title=Titolu tal-Modulu
 descs_info=Din il-paġna jippermettilek tispeċifika titoli alternattivi għal moduli Webmin, li jwarrab id-deskrizzjonijiet standard tagħhom.
 descs_mod=Modulu
@@ -807,11 +842,13 @@ descs_cdesc=Titlu tal-klonu
 descs_err=Ma rnexxielux isalva t-titli tal-moduli
 descs_edesc=Titlu nieqes għall-modulu "$1"
 descs_etitle=Titlu nieqes għall-klonu "$1"
+
 export_err=Ma rnexxielux jesporta l-moduli
 export_ecmd=Nieqes il-kmand meħtieġ $1
 export_efile=Fajl ta 'esportazzjoni nieqes jew invalidu
 export_done=Esportaw b'suċċess il-moduli magħżula għal $1.
 export_title=Moduli ta 'Esportazzjoni
+
 advanced_title=Għażliet Avvanzati
 advanced_header=Għażliet avvanzati u sperimentali
 advanced_temp=Direttorju tal-fajls temporanji
@@ -855,10 +892,13 @@ advanced_listdir=Lista tad-direttorji mingħajr fajl ta 'indiċi?
 advanced_headers=Intestaturi HTTP żejda
 advanced_eheader=L-intestaturi għandhom ikunu fformattjati bħal <tt>Intestatura: Valur</tt>
 advanced_sortconfigs=Issejvja l-fajls config issortjati skont iċ-ċwievet tagħha?
+
 syslog_errorlog=Log ta 'żbalji Webmin
+
 clear_title=Ċara Niżżel il-Cache
 clear_done=Il-cache tal-Webmin li fih $1 ta 'fajls minn $2 URLs ġew ikklerjati b'suċċess.
 clear_none=M'hemm l-ebda URL fil-preżent fil-cache tat-tniżżil ta 'Webmin.
+
 savekey_err=Ma rnexxielux isalva ċavetta ġdida
 savekey_ekey=Ċavetta tal-format PEM nieqsa jew invalida
 savekey_ecert=Ċertifikat tal-format PEM nieqes jew invalidu
@@ -868,6 +908,7 @@ savekey_title=Itella 'Ċavetta Eżistenti
 savekey_done2=Iċ-ċavetta SSL fornuta ġiet salvata f '$1, u ċ-ċertifikat f' $2.
 savekey_done=Iċ-ċavetta u ċ-ċertifikat SSL fornuti ġew salvati fil-fajl $1.
 savekey_done3=Iċ-ċertifikat SSL b'katina fornut ġie ffrankat fil-fajl $1.
+
 cache_title=URL Cached
 cache_search=Sib URLs li fihom:
 cache_ok=Fittex
@@ -880,8 +921,10 @@ cache_delete=Laħlaħ magħżul mill-Cache
 cache_err=Naqset milli tifflaxxja URL cached
 cache_enone=L-ebda magħżul
 cache_efile=Isem tal-fajl mhux validu
+
 restart_title=Bidu mill-ġdid ta 'Webmin
 restart_done=Il-proċess tas-server Webmin qiegħed jerġa 'jibda - jekk jogħġbok stenna għal ftit sekondi qabel tkompli.
+
 mobile_title=Għażliet ta 'Apparat Mobbli
 mobile_header=Għażliet għall-browsers mobbli
 mobile_theme=Tema għal browsers mobbli
@@ -890,6 +933,7 @@ mobile_nosession=Qiegħed tuża l-awtentikazzjoni HTTP?
 mobile_agents=Aġenti addizzjonali għall-utenti għall-browsers mobbli
 mobile_err=Ma rnexxielux isalva l-għażliet tal-apparat mobbli
 mobile_prefixes=Prefissi tal-host host għal browsers mobbli
+
 blocked_title=Ospitanti u Utenti Imblukkati
 blocked_type=Tip
 blocked_who=Isem jew isem tal-utent
@@ -901,9 +945,11 @@ blocked_host=Klijent ospitanti
 blocked_clear=Ċari l-Blokki Kollha
 blocked_cleardesc=Ikklikkja din il-buttuna biex tikklerja l-blokki kollha tal-host u l-utenti kurrenti, billi terġa 'tibda l-proċess tas-server Webmin.
 blocked_restarting=Il-proċess tas-server Webmin issa qed jerġa jibda mill-ġdid biex ikklerja hosts imblukkati u utenti - jekk jogħġbok stenna għal ftit sekondi qabel tkompli.
+
 refreshmods_title=Moduli ta ’Aġġornament
 refreshmods_installed=Iċċekkjar għal moduli Webmin li jistgħu jintużaw ..
 refeshmods_counts=.. instab $2 bl-applikazzjonijiet installati, $1 mhux installat.
+
 debug_title=File ta 'Log debugging
 debug_header=Webmin debug għażliet tal-fajl log
 debug_enabled=Log debug attivat?
@@ -931,6 +977,7 @@ debug_cmd=Linja tal-kmand
 debug_cron=Impjiegi fl-isfond
 debug_inmods=Moduli għall-kitba ta 'zkuk ta' debug
 debug_emodules=M'hemm l-ebda moduli għall-debug għal magħżula
+
 notif_passexpired=Il-password tal-Webmin tiegħek skada! Inti tkun imġiegħel tibdelha fil-login li jmiss.
 notif_passchange=Il-password tal-Webmin tiegħek inbidlet l-aħħar fi $1, u għandha tinbidel f '$2 ijiem.
 notif_passlock=Il-password tal-Webmin tiegħek inbidel l-aħħar fi $1, u l-kont tiegħek se jkun imsakkar f '$2 ijiem jekk ma jinbidilx.
@@ -946,6 +993,7 @@ notify_updatedesc=Tissolvi l-problema
 notif_updateok=Installa Aġġornamenti Issa
 notif_reboot=Aġġornamenti reċenti tal-pakkett (bħal verżjoni tal-għadma ġdida) jeħtieġu li l-istartjar mill-ġdid jiġi applikat għal kollox.
 notif_rebootok=Irristartja Issa
+
 status_title=Ġbir ta 'Status ta' Sfond
 status_header=L-issettjar tal-ġabra tal-istatus tax-xogħol
 status_interval=Iġbor l-istatus tas-sistema fl-isfond?
@@ -957,6 +1005,7 @@ status_temp=Iġbor it-temperaturi tas-sewqan?
 status_units=Unitajiet għat-temperaturi
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
+
 sendmail_title=Ibgħat Email
 sendmail_desc=Din il-paġna tikkontrolla kif Webmin jibgħat imejl, bħal backups skedati jew monitoraġġ fl-isfond. Taffettwa wkoll l-imejl mibgħut bl-użu tal-modulu Aqra Mail tal-Utent.
 sendmail_header=Għażliet li jibagħtu Mail
@@ -997,12 +1046,14 @@ sendmail_url=Webmin URL għall-użu fl-email
 sendmail_url_def=Default ($1)
 sendmail_url_custom=URL apposta
 sendmail_eurl=URL tad-dwana nieqes jew invalidu
+
 testmail_title=Ibgħat Email Test
 testmail_err=Naqas milli jibgħat messaġġ tat-test
 testmail_eto=L-ebda indirizz ta 'destinazzjoni ma daħal
 testmail_sending=Qed jibgħat messaġġ minn $1 lil $2 ..
 testmail_done=.. Messaġġ mibgħut. Iċċekkja l-kaxxa postali tal-indirizz tad-destinazzjoni biex tiżgura li kienet attwalment ikkunsinnata.
 testmail_failed=.. naqset il-bgħit : $1
+
 web_title=Għażliet tal-Web Server
 web_header=Għażliet għall-webserver integrat ta 'Webmin
 web_expires=Ħin ta 'cache min-naħa tal-klijent għal fajls statiċi
@@ -1014,6 +1065,7 @@ web_expirespaths=Drabi tal-cache tal-ġenb tal-klijent ibbażati fuq it-triq tal
 web_expirespath=Espressjoni regolari tal-passaġġ
 web_expirestime=Ħin tal-cache f'sekondi
 web_eexpires2=Ħin tal-cache tal-ġenb nieqes jew mhux numeriku fil-filliera $1
+
 webmincron_title=Funzjonijiet Skedati Webmin
 webmincron_emodule=Il-modulu Webmin Cron Jobs mhuwiex installat.
 webmincron_module=Modulu Webmin
@@ -1037,6 +1089,7 @@ webmincron_when1=Ħinijiet speċifiċi
 webmincron_secs=sekondi
 webmincron_err=Ma rnexxielux isalva funzjoni skedata
 webmincron_einterval=L-intervall għandu jkun numru ta ’sekondi akbar minn żero
+
 twofactor_title=Awtentikazzjoni b'żewġ Fatturi
 twofactor_header=Għażliet ta 'awtentikazzjoni b'żewġ fatturi
 twofactor_provider=Fornitur ta 'l-awtentikazzjoni
@@ -1075,6 +1128,7 @@ twofactor_secret1=Ġenerat bl-addoċċ
 twofactor_secret0=Uża ċavetta b'16-il karattru
 twofactor_esecret=Iċ-ċavetta sigrieta trid tkun twila eżattament 16-il karattru u jkun fiha biss ittri u numri
 twofactor_esession=Awtentikazzjoni b'żewġ fatturi ma tistax tintuża sakemm l-awtentikazzjoni bbażata fuq is-sessjoni ma tkunx attiva
+
 letsencrypt_title=Ejja Ikkripta t-Talba taċ-Ċertifikat
 letsencrypt_err=Naqset milli titlob iċ-ċertifikat
 letsencrypt_ecmds=La l-kmand tal-klijent Let's Encrypt <tt>certbot</tt> u l-kmand <tt>python</tt> ma nstabu fis-sistema tiegħek
@@ -1108,5 +1162,6 @@ letsencrypt_ecsr=Ma rnexxielux jiġġenera CSR : $1
 letsencrypt_ekeygen=Ma rnexxielux jiġġenera ċavetta privata : $1
 letsencrypt_enative=Il-klijent indiġenu Let's Encrypt (certbot) kien użat qabel fuq din is-sistema, u għandu jintuża għat-talbiet taċ-ċertifikati futuri kollha
 letsencrypt_eacmedns=Il-klijent uffiċjal Ejja Encrypt jappoġġja validazzjoni bbażata fuq id-DNS
+
 announce_hide=Aħbi din it-Tħabbira
 alert_hide=Aħbi Twissija

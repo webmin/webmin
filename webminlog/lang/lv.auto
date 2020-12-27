@@ -30,6 +30,7 @@ index_sdesc=Darbības aprakstā ir
 index_shost=Avots Webmin serveris
 index_long=Rādīt pilnus darbību aprakstus?
 index_global=&lt;Nav nevienā modulī&gt;
+
 search_title=Meklēšanas rezultāti
 search_date=Datums
 search_time=Laiks
@@ -63,6 +64,7 @@ search_global_baduser=Slikts lietotājvārds
 search_global_badpass=Nepareiza parole
 search_global_twofactor=Nederīgs divu faktoru marķieris
 search_csv=Eksportēt kā CSV.
+
 view_title=Darbības detaļas
 view_header=Sīkāka informācija par reģistrēto darbību $1 
 view_action=Apraksts
@@ -96,12 +98,14 @@ view_files=Faili ir mainīti un komandas darbojas
 view_raw=Neapstrādāti žurnāla dati
 view_rawname=Parametra nosaukums
 view_rawvalue=Parametra vērtība
+
 acl_mods=Var apskatīt žurnālus moduļos
 acl_all=Visi
 acl_sel=Atlasīts zemāk ..
 acl_self=Tikai es pats
 acl_users=Var skatīt lietotāju veiktās darbības
 acl_rollback=Vai var atcelt darbības?
+
 rollback_title=Atcelšanas darbība
 rollback_rusure=Vai tiešām pirms šo darbību veikšanas vēlaties atjaunot visu zemāk uzskaitīto failu saturu? Visus tajos esošos datus pārrakstīs ar šādām izmaiņām :
 rollback_isdir=Direktorijs - izmaiņas netiks veiktas.
@@ -124,4 +128,5 @@ rollback_modfile=Atjaunots faila $1 saturs.
 rollback_deleted=Izdzēsts fails $1.
 rollback_nodeleted=Izlaists neesošs fails $1.
 rollback_enone=Nav atlasīts neviens fails
+
 log_rollback=$1 mainītā darbība $2 modulī

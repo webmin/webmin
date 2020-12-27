@@ -180,6 +180,7 @@ whats_this_NSTATE=Naslednje stanje storitve, uporabno pri prehodu storitve. A "-
 whats_this_SCOPE=Ime obsega primerka storitve. Glej: smf (5). Glej: svcs (1).
 whats_this_STIME=Čas (če je danes) ali datum, ko je storitev vnesla trenutno stanje. Glej: smf (5). Glej: svcs (1).
 whats_this_Select=Tukaj preverite seznam storitev, ki jih želite omogočiti/onemogočiti/osvežiti itd.
+
 whats_this_service_detail=Tukaj podajte/uredite podatke storitve o storitvi toplevel: ime storitve, številko različice, ime svežnja za manifest in stabilnost. Glej: smf (5). Glej: svccfg (1M). Glej: service_bundle (4).
 whats_this_bundle_name=Ime svežnja storitev v manifestu. V enem manifestu je mogoče združiti več storitev, toda ime tukaj ni pomembno. Za že obstoječe storitve bo nastavljen za izvoz, saj to počne svccfg, ko izvozi manifest iz skladišča SMF. Glej: svccfg (1M). Glej: service_bundle (4).
 whats_this_service_name=Ime storitve. Konvencija je uporaba oblike [general_service_category]/[ime]. Določene kategorije vključujejo aplikacije (aplikacije višjega nivoja), mejnik (zbirke drugih storitev, na primer storitve z imeni), platformo (storitve, specifične za platformo), sistem (storitve sistema Solaris), napravo (posebne storitve za naprave), omrežje (omrežne/internetne storitve) in spletno mesto (posebni opisi spletnega mesta). Seveda lahko določite tudi svojo kategorijo, vendar se mora večina storitev udobno prilegati enemu od zgornjih. Glej: smf (5).

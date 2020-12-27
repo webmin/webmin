@@ -1,4 +1,5 @@
 quota_unlimited=Ilimitada
+
 acl_fss=Sistemas de archivo que este usuario puede editar
 acl_fall=Todos los sistemas de archivo
 acl_fsel=Los seleccionados...
@@ -23,9 +24,11 @@ acl_maxblocks=Máxima cuota de bloques que conceder
 acl_maxfiles=Máxima cuota de ficheros que conceder
 acl_unlimited=Ilimitado
 acl_email=¿Puede configurar notificaciones por email?
+
 activate_eallow=No estás autorizado a activar o desactivar cuotas en este sistema de archivos
 activate_eon=No pude encender las cuotas
 activate_eoff=No pude apagar las cuotas
+
 check_title=Revisar Cuotas
 check_return=lista $1
 check_ecannot=No puedes revisar cuotas en este sistema de archivos
@@ -33,11 +36,13 @@ check_running=El comando <tt>quotacheck</tt> se está ejecutando ahora para revi
 check_done=... Hecho.
 check_rgroup=grupo
 check_ruser=usuario
+
 cgroup_efail=No pude copiar las cuotas
 cgroup_ecannot=No puedes copiar las cuotas
 cgroup_egallow=No estás autorizado a copiar las cuotas de este grupo
 cgroup_enogroup=No hay grupos a donde copiar
 cgroup_eallowto=No estás autorizado a copiar cuotas a '$1'
+
 cgform_title=Copiar Cuotas
 cgform_return=Cuota de grupo
 cgform_ecannot=No puedes copiar cuotas
@@ -47,11 +52,13 @@ cgform_all=Todos los grupos en tu sistema
 cgform_select=Grupos seleccionados
 cgform_contain=Grupos conteniendo usuarios
 cgform_doit=Copiar
+
 cuser_efail=No pude copiar cuotas
 cuser_ecannot=No puedes copiar cuotas
 cuser_euallow=No estás autorizado a copiar las cuotas de este usuario
 cuser_enouser=No hay usuarios a donde copiar
 cuser_eallowto=No esta autorizado a copiar cuotas a '$1'
+
 cuform_title=Copiar Cuotas
 cuform_return=cuota de usuario
 cuform_ecannot=No puedes copiar cuotas
@@ -61,6 +68,7 @@ cuform_all=Todos los usuarios en tu sistema
 cuform_select=Usuarios seleccionados
 cuform_members=Miembros del grupos selectos
 cuform_doit=Copiar
+
 egroup_title=Editar Cuota
 egroup_freturn=lista de sistemas de archivo
 egroup_greturn=lista de grupos
@@ -78,6 +86,7 @@ egroup_sflimit=Límite de Archivos por Soft
 egroup_hflimit=Límite de Archivos por Hard
 egroup_update=Actualizar
 egroup_listall=Listar Todas las Cuotas
+
 euser_title=Editar Cuota
 euser_freturn=lista de sistemas de archivo
 euser_ureturn=lista de usuarios
@@ -99,6 +108,7 @@ euser_sflimit=Límite de Archivos por Soft
 euser_hflimit=Límite de Archivos por Hard
 euser_update=Actualizar
 euser_listall=Listar Todas las Cuotas
+
 gfilesys_title=Cuotas de Grupo
 gfilesys_return=lista de sistemas de archivo
 gfilesys_ecannot=No puedes editar cuotas para '$1'
@@ -114,6 +124,7 @@ gfilesys_hard=Límite por Hard
 gfilesys_nogquota=El grupo <tt>$1</tt> no tiene cuotas en ningún sistema de archivos
 gfilesys_edit=Editar Cuota En:
 gfilesys_copy=Copiar Cuotas
+
 ggracef_title=Tiempos de Gracia
 ggracef_return=lista de grupos
 ggracef_ecannot=No puedes editar tiempos de gracia en este sistema de archivos
@@ -122,9 +133,11 @@ ggracef_graces=Tiempos de Gracia de Grupo para <tt>$1</tt>
 ggracef_block=Para cuota de bloque
 ggracef_file=Para cuota de archivo
 ggracef_update=Actualizar
+
 ggraces_esave=No pude salvar tiempos de gracia
 ggraces_eedit=No puedes editar tiempos de gracia en este sistema de archivos
 ggraces_enumber='$1' no es un número
+
 index_quser=Cuotas de Usuario
 index_qgroup=Cuotas de Grupo
 index_qboth=Cuotas de Usuario y Grupo
@@ -144,6 +157,7 @@ index_euser=Editar Cuotas de Usuario:
 index_egroup=Editar Cuotas de Grupo:
 index_nosupport=No hay sistemas de archivo locales que puedan soportar cuotas
 index_mountmod=Puede habilitar las cuotas para un sistema de archivos en el módulo <a href='$1'>Sistemas de archivo de Disco y de Red</a>
+
 lgroups_failed=No pude listar grupos
 lgroups_eallow=No estás autorizado a editar cuotas en este sistema de archivos
 lgroups_title=Cuotas de Sistema de Archivos
@@ -164,13 +178,17 @@ lgroups_grace=Editar Tiempos de Gracia
 lgroups_check=Revisar Cuotas
 lgroups_info=Webmin puede configurarse para que configure automáticamente las cuotas en este sistema de archivos, cuando se crea un nuevo grupo Unix. Esto sólo funcionará cuando se use para añadir los grupos el módulo Webmin $1.
 lgroups_newgroup=Cuotas de Nuevo Grupo
+
 sgroup_egroup=No estás autorizado a editar las cuotas para este grupo
 sgroup_efs=No estás autorizado a editar las cuotas en este sistema de archivos
+
 ssync_ecannot=No puedes poner la cuota por defecto para este sistema de archivos
+
 suser_euser=No estás autorizado a editar las cuotas de este usuario
 suser_efs=No estás autorizado a editar las cuotas en este sistema de archivos
 suser_emaxblocks=No tiene permiso para conceder límites de bloques superiores a $1
 suser_emaxfiles=No tiene permiso para conceder límites de ficheros superiores a $1
+
 ufilesys_title=Cuotas de Usuario
 ufilesys_return=lista de sistema de archivos
 ufilesys_ecannot=No puedes editar cuotas para '$1'
@@ -187,6 +205,7 @@ ufilesys_nouquota=El usuario <tt>$1</tt> no tiene cuotas en este sistema de arch
 ufilesys_edit=Editar Cuota En:
 ufilesys_copy=Copiar Cuotas
 ufilesys_grace=Gracia
+
 ugracef_title=Tiempos de Gracia
 ugracef_return=lista de usuarios
 ugracef_ecannot=No puedes editar tiempos de gracia en este sistema de archivos
@@ -195,9 +214,11 @@ ugracef_graces=Tiempos de Gracia de Usuario <tt>$1</tt>
 ugracef_block=Para cuota de bloque
 ugracef_file=Para cuota de archivo
 ugracef_update=Actualizar
+
 ugraces_esave=No pude salvar tiempos de gracia
 ugraces_eedit=No puedes editar tiempos de gracia en este sistema de archivos
 ugraces_enumber='$1' no es un número
+
 lusers_failed=No pude listar usuarios
 lusers_eallow=No estás autorizado a editar cuotas en este sistema de archivos
 lusers_title=Cuotas de Sistema de Archivos
@@ -236,12 +257,14 @@ lusers_percent=Avisar cuando el uso alcanza
 lusers_domain=Dominio para direcciones de usuario
 luser_virtualmin=¿Tomar dominio de Virtualmin?
 lusers_from=De: dirección para el email
+
 grace_seconds=Segundos
 grace_minutes=Minutos
 grace_hours=Horas
 grace_days=Días
 grace_weeks=Semanas
 grace_months=Meses
+
 log_activate_u=Cuotas de usuario activadas en $1
 log_activate_g=Cuotas de grupo activadas en $1
 log_activate_ug=Cuotas de usuario y grupo activadas en $1
@@ -256,6 +279,7 @@ log_grace_g=Cambiados períodos de gracia de grupo en $1
 log_check=Revisadas cuotas en $1
 log_copy_u=Copiadas cuotas de usuario $1's
 log_copy_g=Copiadas cuotas de grupo $1's
+
 email_err=Fallo al salvar opciones de email
 email_ecannot=No está autorizado a modificar las opciones de email
 email_einterval=Intervalo no válido o sin introducir

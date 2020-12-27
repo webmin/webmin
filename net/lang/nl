@@ -7,6 +7,7 @@ index_delete2=Verwijder Geselecteerde Interfaces
 index_delete3=Verwijderen en Toevoegen Geselecteerde Interfaces
 index_apply2=Geselecteerde Interfaces Toevoegen
 index_vmin=Virtualmin
+
 ifcs_title=Netwerk Interfaces
 ifcs_now=Interfaces nu geactiveerd
 ifcs_activedesc=Interfaces die in deze tabel staan zijn op dit moment actief op dit systeem. In de meeste gevallen kunt u deze het best bewerken bij de <b>Activeren Tijdens Booten</b> tab.
@@ -55,6 +56,7 @@ ifcs_linkyes=Verbonden
 ifcs_linkno=Verbroken
 ifcs_speed=Interface snelheid
 ifcs_duplex=, $1 dubbelzijdig
+
 aifc_create=Actieve Interface Aanmaken
 aifc_edit=Bewerk Actieve Interface
 aifc_desc1=Actieve Interface Instellingen
@@ -79,6 +81,7 @@ aifc_eaddress6=IPv6 adres in rij $1 is niet geldig
 aifc_enetmask6=IPv6 netmask is rij $1 moet een geheel getal zijn tussen 1 en 128
 aifc_eclash6=IPv6 adres in rij $1 is reeds in gebruik door interface $2
 aifc_eaddresses6=Geen IPv6 adres ingevuld
+
 bifc_create=Boot Interface Aanmaken
 bifc_act=Activeren tijdens booten?
 bifc_edit=Bewerk Bootup Interface
@@ -104,6 +107,7 @@ bifc_edhcpmain=U kunt de DHCP alleen aan zetten op primaire netwerk interface
 bifc_bridgeto=Verbind de bridge aan de interface
 bifc_ebridgeto=Een bestaande Ethernet interface moet worden geselecteerd om te gebruiken voor deze bridge.
 bifc_ebridgeto2=Er mag geen adres zijn toegewezen aan de geselecteerde interface voor de bridge.
+
 bonding_add=Voeg een nieuwe hechtende interface toe.
 bonding_create=Bindende Interface Aanmaken
 bonding_teamparts=Teaming Partner
@@ -111,11 +115,14 @@ bonding_teammode=Teaming Mode
 bonding_miimon=Mii-Monitor Interval
 bonding_updelay=Oplopende vertraging
 bonding_downdelay=Teruglopende vertraging
+
 vlan_add=Vlan Geëtiketteerde Interface Toevoegen
 vlan_physical=Fysiek Apparaat
 vlan_id=Vlan ID
 vlan_create=Vlan Interface Aanmaken
+
 bridge_create=Bridge Interface Aanmaken
+
 routes_title=Routing en Gateways
 routes_boot=Routing configuratie actief tijdens <i>booten</i>
 routes_now=Routing configuratie nu activeren
@@ -184,6 +191,7 @@ routes_tabboot=Boot tijd configuratie
 routes_tabactive=Actieve configuratie
 routes_descactive=In deze sectie ziet u een lijst van de routes zoals het systeem op dit moment geconfigureerd is, en kunt u actieve routes toevoegen of weghalen op sommige systemen. Wees voorzichtig hiermee, omdat verkeerde veranderingen, het systeem waar Webmin op werkt, kan afsluiten van de rest van het netwerk.
 routes_descboot=In deze sectie kunt u de routes configureren die worden geactiveerd tijdens systeem boot, of wanneer netwerk instellingen volledig worden verandert.
+
 dns_title=Hostnaam en DNS Client
 dns_options=DNS Client Opties
 dns_hostname=Hostnaam
@@ -201,6 +209,7 @@ dns_edomain='$1' is geen geldige domein naam.
 dns_esearch=Geen domein opgeven om naar te zoeken.
 dns_hoststoo=Update hostnaam in host adressen bij wijzigingen?
 dns_dhcp=Hostnaam is gemaakt door de DHCP server?
+
 hosts_title=Host Adressen
 hosts_ip=IP Adres
 hosts_host=Hostnamen
@@ -211,6 +220,7 @@ hosts_detail=Host and Adressen
 hosts_return=host adressenlijst
 hosts_ecannot=U heeft geen rechten om host adressen te bewerken.
 hosts_delete=Verwijder Geselecteerde Host Adressen
+
 ipnodes_title=IPv6 Host Adressen
 ipnodes_ip=IPv6 Adres
 ipnodes_host=Hostnamen
@@ -222,6 +232,7 @@ ipnodes_return=IPv6 host adressen lijst
 ipnodes_ecannot=U bent niet bevoegd om IPv6 host adressen te bewerken
 ipnodes_none=Er zijn nog geen IPv6 Host Adressen gedefinieerd.
 ipnodes_delete=Verwijder Geselecteerde IPv6 Host Adres
+
 log_create_host=Host adres $1 aangemaakt.
 log_delete_host=Host adres $1 verwijderd.
 log_modify_host=Host adres $1 veranderd.
@@ -245,6 +256,7 @@ log_apply_bfics=Activeer $1 boot interfaces
 log_create_route=Aangemaakte actieve route voor $1
 log_create_defroute=Maak actieve standaard route
 log_delete_routes=Verwijder $1 actieve routes
+
 acl_ifcs=Mag netwerk interfaces bewerken?
 acl_routes=Mag routing en gateways bewerken?
 acl_dns=Mag DNS client instellingen bewerken?
@@ -261,6 +273,7 @@ acl_up=Mag de actieve staat bewerken?
 acl_virt=Mag virtuele interfaces toevoegen?
 acl_delete=Mag interfaces verwijderen?
 acl_hide=Verstop niet bewerkbare interfaces?
+
 interfaces_title1=Kies Interfaces...
 interfaces_all=Alle Interfaces...
 interfaces_sel=Geselecteerde Interfaces
@@ -268,7 +281,9 @@ interfaces_ok=OK
 interfaces_cancel=Annuleer
 interfaces_clear=Wissen
 interfaces_title2=Selecteer Gebruiker...
+
 apply_ecannot=U bent niet bevoegd deze configuratie toe te voegen
+
 mod_egone=Interface is niet langer actieve!
 mod_title=Actieve Interface
 mod_desc=De $1 interface word gebruikt voor $2, en kan daarom niet beheerd worden met deze module.
@@ -280,6 +295,7 @@ mod_pptpc=de PPTP verbinding $1
 mod_zones=een virtuele interface voor zone <tt>$1</tt>
 mod_virtualmin=De Virtualmin server <tt>$1</tt>
 mod_reseller=De Virtualmin verkoper <tt>$1</tt>
+
 range_edit=Bewerk Adres Reeks
 range_create=Adres Reeks Aanmaken
 range_header=Adres reeks interface opties
@@ -295,13 +311,17 @@ range_eend=Ontbrekend of ongeldig eind IP adres
 range_enum=Ontbrekende of geen-numeriek eerste virtuele interface nummer
 range_eclass=Start- en eind adressen moeten binnen hetzelfde clasd C netwerk vallen
 range_ebefore=Het eind adres moet hoger zijn dan het start adres
+
 chooser_any=&lt;Alle&gt;
 chooser_other=Andere..
+
 dafics_err=Mislukt on interfaces te deactiveren
 daifcs_enone=Niets geselecteerd
 daifcs_egone=Interface bestaat niet meer!
+
 dbifcs_err=Mislukt on interfaces te verwijderen
 dbifcs_err2=Mislukt on interfaces te activeren
+
 hdelete_err=Mislukt om host adressen te verwijderen
 hdelete_enone=Niets geselecteerd
 idelete_err=Mislukt om IPv6 host adres te verwijderen

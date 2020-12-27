@@ -21,6 +21,7 @@ index_eversion=Zure sisteman instalatutako STunnel bertsioa $1 da, baina modulu 
 index_conf=$1 fitxategi konfiguratzailea
 index_noconf=Ez dago konfigurazio fitxategirik!
 index_delete=Ezabatu hautatutako tunelak
+
 edit_title=Editatu SSL tunela
 create_title=Sortu SSL tunela
 edit_header1=Tunelaren iturriaren aukerak
@@ -47,6 +48,7 @@ edit_tcpw=TCP-wrappers izena
 edit_auto=automatikoa
 edit_iface=Irteerako iturriaren helbidea
 edit_type=Exekutatu
+
 save_err=Huts egin du SSL tunela gordetzean
 save_enclash=$2 zerbitzuaren izena $1 portuan dagoeneko erabiltzen da.
 save_einetd=$1 izeneko inetd zerbitzua dagoeneko dago.
@@ -61,6 +63,7 @@ save_etcpw=TCP-wrappers izen falta edo baliogabea
 save_eiface=Irteerako iturri helbidea falta edo baliogabea
 save_exinetd=$1 izeneko xinetd zerbitzua dagoeneko dago
 save_export=$1 portua xinetd $2 zerbitzuak erabiltzen du dagoeneko
+
 log_apply=Aplikatutako Aldaketak
 log_create=$1 SSL tunela sortu da
 log_delete=$1 SSL tunela ezabatu da

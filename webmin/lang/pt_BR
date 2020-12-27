@@ -9,6 +9,7 @@ index_restart=Reiniciar Webmin
 index_restartmsg=Clique neste botão para reiniciar o processo servidor do Webmin. Isto pode ser necessário se você atualmente atualizou o Pearl.
 index_refresh=Atualizar Módulos
 index_refreshmsg=Verificar novamente todos os módulos para servidores instalados, e atualizar aqueles que aparecerem na categoria 'Módulos não-usados'.
+
 access_title=Controle de Acesso por IP
 access_desc=O servidor Webmin pode ser configurado para negar ou permitir o acesso somente para certos endereços IP usando este formulário. Nomes de computador (como foo.bar.com) e redes IP (como 10.254.3.0 ou 10.254.1.0/255.255.255.128) podem também ser especificados. Você deve limitar o acesso a seu servidor somente para usuários confiáveis, especialmente caso o mesmo seja acessível a partir da Internet. De outra forma, qualquer pessoa que conheça sua senha terá controle total de seu sistema.
 access_ip=Endereços IP permitidos
@@ -26,6 +27,7 @@ access_eip='$1' não é um endereço IP ou de rede completo
 access_ehost=Falha ao encontrar o procurar IP para '$1'
 access_eself=Seu endereço IP atual ($1) seria negado
 access_always=Resolver hostnames em cada requisição
+
 bind_title=Portas e Endereços
 bind_desc2=Este formulário pode ser usado para alterar o número da porta que o Webmin escuta, ou tê-lo ouvindo apenas em um endereço de IP sozinho no seu sistema. Você pode também configurá-lo para aceitar conexões de múltiplas portas, ou para ouvir de muitos endereços IP. Nota - Seu navegador pode solicitar que você se autentique novamente após alterar os endereços de porta e endereço de amarração.
 bind_header=Endereço IP e Porta
@@ -48,6 +50,7 @@ bind_erestart=Um erro ocorreu ao iniciar o Webmin com o novo endereço e configu
 bind_elisten=Porta para ouvir para transmissões UDP inválida ou faltando
 bind_ehostname=Nome do computador servidor de internet inválido ou faltando
 bind_resolv_myname=Resolução-reversa para endereços IP conectados?
+
 log_title=Registros (Logs)
 log_desc=O Webmin pode ser configurado para gravar um registro dos kits do servidor web no formato de registro de arquivos padrão CLF. Caso o registro seja habilitado, você pode também escolher se os endereços IP ou nomes de computadores (hostnames) serão gravados e a periodicidade de limpeza do arquivo de registro. Quando habilitados, os registros são gravados no arquivo $1.
 log_desc2=Quando o registro está habilitado, o Webmin irá também gravar um registro mais detalhado das ações do usuário no arquivo $1. Este registro pode ser visualizado e analisado com o módulo Registro de Ações do Webmin para que você possa visualizar exatamente o que cada usuário Webmin esteve fazendo.
@@ -74,6 +77,7 @@ log_perms=Permissões para arquivos de registro
 log_eperms=Permissões octal (como 755) inválidas ou faltando
 log_syslog=Também registrar para syslog?
 log_login=Incluir os logins e logouts do Webmin no registro de atividades?
+
 proxy_title=Servidores Proxy
 proxy_desc=Caso o host no qual o Webmin esteja sendo executado esteja atrás de algum tipo de firewall você pode precisar definir o servidor proxy a ser usado para acessar sites web e FTP. Certos módulos, como o <tt>Pacotes de Software</tt>, utilizarão estes proxies quando estiverem fazendo o download de arquivos ou programas.
 proxy_header=Servidor Proxy
@@ -116,6 +120,7 @@ proxy_return=servidores proxy e downloads
 proxy_tabproxy=Proxy
 proxy_tabdown=Baixando
 proxy_fallback=Tentar requisições diretamente se o proxy não estiver em execução?
+
 ui_title=Interface de Usuário
 ui_desc=Este formulário permite editar opções de interface de usuário usadas por todos os módulos. Quando informar cores, cada uma deve ser especificada usando o sistema padrão RGB, onde cada valor é um número hexadecimal de 00 até ff.
 ui_header=Opções de Interface de Usuário
@@ -162,6 +167,7 @@ ui_dateformat_dd/mon/yyyy=dd/mes/aaaa (ex. 16/Set/2001)
 ui_dateformat_dd/mm/yyyy=dd/mm/aaaa (ex. 16/09/2001)
 ui_dateformat_mm/dd/yyyy=mm/dd/aaaa (ex. 09/16/2001)
 ui_dateformat_yyyy/mm/dd=aaaa/mm/dd (ex. 2001/09/16)
+
 mods_title=Módulos do Webmin
 mods_desc1=Módulos do Webmin podem ser adicionados depois da instalação usando o formulário presente na direita. Módulos são tipicamente distribuídos em arquivos <tt>.wbm</tt>, cada arquivo pode conter um ou mais módulos. Módulos podem somente ser instalados a partir de arquivos RPM caso seu sistema operacional tenha suporte.
 mods_installsource=Instalar de
@@ -204,6 +210,7 @@ mods_tabinstall=Instalar
 mods_tabclone=Clonar
 mods_tabdelete=Apagar
 mods_tabexport=Exportar
+
 install_err1=Falha ao instalar o módulo a partir de $1
 install_efile=Arquivo não existe
 install_err2=Falha ao instalar módulo a partir de um arquivo via upload
@@ -237,10 +244,12 @@ install_cat=Sob Categoria $1.
 install_eneither=O RPM não contém um módulo webmin ou tema
 install_err4=Falhou ao instalar módulo padrão
 install_emissing=O módulo especificado não existe
+
 clone_err=Falha ao clonar módulo
 clone_elink=symlink falhou: $1
 clone_ecopy=falha ao copiar configuração: $1
 clone_desc=Clone de $1
+
 delete_err=Falha ao remover módulos
 delete_edep=Módulo $1 não pode ser removido, uma vez que o módulo $2 depende do mesmo
 delete_desc1=$1 (Clone de $2)
@@ -252,6 +261,7 @@ delete_rusure2=Você tem certeza de que deseja remover o tema $2 ? $1 kB de arqu
 delete_rusure3=Você tem certeza de que deseja remover os clones de módulos $2 ?
 delete_acls=Remover de usuários e zerar a lista de controle de acesso
 delete_enone=Sem módulos selecionados
+
 os_title=Sistema Operacional e Ambiente
 os_desc3=Esta página exibe o sistema operacional detectado pelo Webmin na hora da instalação e o sistema que é atualmente detectado. Se eles são diferentes, você pode escolher ter as opções de SO do Webmin atualizadas, que é necessário, caso você tenha feito upgrade recentemente.
 os_desc2=Você pode também mudar o caminho de procura usando pelo Webmin quando o mesmo executa programas e o caminho de procura de bibliotecas compartilhadas passado para quaisquer programas.
@@ -273,6 +283,7 @@ os_eversion=Versão do sistema operacional faltando
 os_eiversion=Versão interna do sistema operacional faltando
 os_incorrect=Aviso - Seu sistema está atualmente executando $1 versão $2.
 os_fix=Detectada Atualização do Sistema Operacional
+
 lang_title=Idioma
 lang_title2=Idioma do Webmin
 lang_lang=Exibir no idioma
@@ -284,6 +295,7 @@ lang_chardef=Determinado por idioma
 lang_charover=Forçar definição de caracteres
 lang_err=Falhou ao salvar idioma
 lang_echarset=Definição de caracteres inválido ou faltando
+
 ssl_title=Criptografia SSL
 ssl_essl=O módulo perl Net:SSLeay não parece estar instalado em seu sistema. Para instalar a biblioteca OpenSSL e o Net::SSLeay siga <a href='$1'>estas instruções</a> do website do Webmin.
 ssl_cpan=Alternativamente, você pode ter deixar o Webmin <a href='$1'>baixar e instalar</a> o módulo requerido do Pearl Net::SSLeay para você.
@@ -345,6 +357,7 @@ ssl_pem=Formato PEM
 ssl_pkcs12=Formato PKCS12
 ssl_current=Esta seção exibe os detalhes do certificado SSL atual do Webmin, e permite que o mesmo seja baixado, então ele pode ser baixado e aceito pelo seu navegador.
 ssl_edownload=Falhou ao extrair dados do PEM para certificado
+
 newkey_err=Falha ao criar chave SSL
 newkey_ecn=Nome de servidor ausente ou inválido
 newkey_efile=Nome de arquivo de chave ausente
@@ -356,6 +369,7 @@ newkey_ok=A chave SSL foi gerada com sucesso.
 newkey_esize=Tamanho da chave inválido ou faltando
 newkey_edays=Número de dias antes de expirar inválido ou faltando
 newkey_ecountry=Código do pais deve conter duas letras
+
 startpage_title=Opções da Página Indíce
 startpage_intro2=Esta página permite controlar a aparência do menu principal do Webmin. Algumas opções podem somente ser efetivas quando usando o tema padrão.
 startpage_tabs=Categorizar módulos ?
@@ -367,6 +381,7 @@ startpage_deftab=Categoria padrão
 startpage_nohost=Exibir versão, hostname e sistema operacional ?
 startpage_gotonone=&lt;Nenhum&gt;
 startpage_gotomodule=Ao iniciar sessão, sempre ir para o módulo
+
 upgrade_title=Atualizar Webmin
 upgrade_desc=Este formulário permite atualizar toda sua instalação do Webmin para uma nova versão. Você pode instalar a partir de um arquivo local, um arquivo vindo por upload ou a partir da última versão em <a href=http://www.webmin.com/>www.webmin.com</a>. Da mesma forma que em uma atualização manual, todas as suas configurações e módulos de terceiros seão mantidos.
 upgrade_descrpm=Este formulário permite fazer o upgrade completo de sua instalação do Webmin para uma nova versão, usando a opção de upgrade de RPM. Você pode instalar de um arquivo RPM local, de um arquivo enviado ou da última versão em <a href=http://www.webmin.com/>www.webmin.com</a>. Todas as suas configurações e módulos de terceiros serão mantidos.
@@ -428,10 +443,12 @@ upgrade_tabupgrade=Atualizar o Webmin
 upgrade_tabgrants=Novas permissões do módulo
 upgrade_tabupdate=Atualizar módulos
 upgrade_tabsched=Atualização agendada
+
 newmod_desc=Quando o Webmin estiver atualizado, quaisquer novos módulos na nova versão irão ser permitidos para um ou mais usuários. Este formulário permite definir os usuários que recebem novos módulos. Esta configuração irá ser aplicadas quando atualizar na linha de comando ou usando o formulário acima.
 newmod_header=Novas permissões do módulo
 newmod_def=Comportamento padrão - permitir novos módulos para <tt>root</tt> ou </tt>admin</tt>
 newmod_users=Permitir acesso a novos módulos para :
+
 update_desc1=Este formulário permite atualizar os módulos do Webmin nos quais bugs ou falhas de segurança foram encontrados a partir da página <a href=http://www.webmin.com/updates.html>Atualizações do Webmin</a> ou a partir de outra fonte. Isto irá comparar os módulos atualmente instalados com aqueles disponíveis para atualização e opcionalmente fazer o download e instalar quaisquer módulos que estejam desatualizados.
 update_header1=Atualizar módulos agora
 update_header2=Atualizar módulos agendados
@@ -456,6 +473,7 @@ update_enosig=Não foi possível baixar arquivo de assinatura para atualizaçõe
 update_ebadsig=Falhou na verificação de atualização de assinatura : $1
 update_enomodsig=Não foi possível baixar arquivo de assinatura para o módulo : $1
 update_ebadmodsig=Falhou na verificação da assinatura do módulo : $1
+
 ca_title=Autoridade Certificadora
 ca_old=Certificado existente
 ca_header1=Criar novo certificado CA
@@ -486,6 +504,7 @@ ca_eminiserv=Certificados de clientes SSL somente terão suporte sob o miniserv.
 ca_eversion=A versão do módulo Perl Net::SSLeay instalado em seu servidor não suporta certificados de clientes SSL.
 ca_essleay=O comando de administração SSL $1 não foi encontrado em seu sistema. Você pode precisar mudar o caminho na configuração do módulo Usuários do Webmin.
 ca_essl=Certificação SSL somente pode ser configurada quando o servidor web está sendo executado em modo SSL.
+
 session_title=Autenticação
 session_desc1=Quando habilitado, tempo-limite de senhas irão proteger seu servidor Webmin contra ataques de força bruta a senhas adicionando um atraso continuamente expansível entre cada falha de tentativa de login para o mesmo usuário.
 session_header=Opções de autenticação e sessão
@@ -534,10 +553,12 @@ session_md5off=Usar criptografia de padrão Unix <tt>crypt</tt> para senhas do W
 session_md5on=Usar criptografia MD5 para senhas do Webmin (permitir senhas longas)
 session_emd5mod=Criptografia MD5 não pode ser usada, assim, o módulo $1 do Pearl não pôde ser instalado.
 session_blocklock=Também travar usuários com os logins com falha
+
 assignment_title=Reatribuir Módulos
 assignment_header=Atribuições de categorias de módulos
 assignment_ok=Mudar Categorias
 assignment_desc=Este formulário permite configurar sob qual categoria cada módulo é exibido na página de índice do Webmin.
+
 categories_title=Editar Categorias
 categories_header=ID de Categoria e descrições
 categories_desc=Este formulário permite renomear as categorias do Webmin existentes e criar novas categorias para as quais atribuir módulos. A parte superior da tablea é para mudar as descrições de categorias embutidas, enquanto a parte inferior é para adicionar IDs e descrições.
@@ -549,6 +570,7 @@ categories_code=ID
 categories_name=Descrição exibida
 categories_lang=Editar categorias no idioma:
 categories_langok=Alterar
+
 log_access=Controle de acesso IP modificado
 log_bind=Porta e endereço modificados
 log_log=Opções de log modificadas
@@ -582,6 +604,7 @@ log_savekey=Enviar chave SSL existente
 log_deletecache=Apagar $1 URLs do cache
 log_clearcache=Limpar todas as URLs do cache
 log_lock=Travamento de arquivo alterado
+
 themes_title=Temas do Webmin
 themes_desc=Os temas controlam a aparência da interface do Webmin com o usuário, incluíndo ícones, cores, fundos e possivelmente o layout das páginas. A caixa de seleção abaixo pode ser usada para escolher um dos temas instalados em seu sistema.
 themes_sel=Tema atual :
@@ -597,6 +620,7 @@ themes_taboverlay=Alterar capa
 themes_tabinstall=Instalar tema
 themes_tabdelete=Apagar tema
 themes_tabexport=Exportar tema
+
 themes_err1=Falha ao instalar tem a partir de $1
 themes_efile=Arquivo não existe
 themes_err2=Falha ao instalar tema via upload
@@ -622,9 +646,11 @@ themes_delok=Tema a ser removido:
 themes_return=lista de temas
 themes_err4=Falhou ao alterar capa de tema
 themes_eoverlay=A capa selecionada não é compatível com o atual tema global
+
 themes_desc4=Os temas instalados pode ser exportados como um arquivo wbt.gz usando o formulário abaixo. Um arquivo de tema então é instalado dentro de outro sistema executando o Webmin.
 themes_exportmods=Tema para exportar
 themes_exportok=Exportar Temas Selecionados
+
 referers_title=Referências Confiáveis
 referers_desc=Esta página permite configurar o suporte a verificação de referências do Webmin, o qual é usado para prevenir que links malicioso de outros websites enganem seu navegador e o levem a fazer coisas perigosas com o Webmin. Porém, caso você possua links para o Webmin a partir de seus próprios websites para os quais você não queira ser avisado, adicione estes sites a lista abaixo.
 referers_list=Websites confiáveis
@@ -632,6 +658,7 @@ referers_none=Confiar em links de referências desconhecidas
 referers_referer=Verificação de referências habilitada ?
 referers_err=Falhou ao salvar referência
 referers_ehost='$1' não é um nome de computador confiável válido
+
 update_err=Falha ao atualizar módulos
 update_eurl=URL de atualização faltando ou inválida
 update_title=Atualizar Módulos
@@ -652,6 +679,7 @@ update_rv=Procurando por módulos atualizados do Webmin a partir de $1
 update_eemail=Você deve informar um endereço de e-mail caso somente exibindo o que deveria ser atualizado.
 update_subject=Relatório de atualizações de módulos do Webmin
 update_version=Uma nova versão do Webmin (versão $1) está disponível agora para download. Atualizações futuras serão lançadas somente para a última versão.
+
 anon_title=Módulo de Acesso Anônimo
 anon_desc=Esta página permite dar acesso a módulos e caminhos selecionados do Webmin sem que os clientes tenham que se autenticar. Para cada caminho de módulo que você informar abaixo (como <tt>custom</tt> ou <tt>passwd</tt> você deve também informar o nome de um usuário do Webmin do qual as permissões serão usadas para o acesso ao módulo.
 anon_desc2=Você deverá ser MUITO cuidadoso ao permitir acesso anônimo, pois controles de acesso de IP insuficientes ou garantir acesso ao módulo errado pode permitir que invasores se apoderem de seu sistema.
@@ -660,15 +688,19 @@ anon_user=Usuário do Webmin
 anon_err=Falha ao gravar acesso anônimo
 anon_eurl='$1' não é um caminho de URL válido
 anon_euser=Usuário do Webmin faltando ou inválido para o caminho de URL '$1'
+
 enogpg=GnuPG não está instalado
+
 standard_failed=Falhou ao baixar a lista de módulos : $1
 standard_header=Módulos padrões do Webmin
 standard_warn=Aviso - Você atualmente não está executando a última versão do Webmin $1, então estes módulos provavelmente irão falhar na instalação.
 standard_eurl=URL de módulos padrão inválida
+
 third_failed=Falhou ao baixar lista de módulos : $1
 third_header=Módulos do Webmin de Terceiros
 third_eurl=URL de módulos de terceiros inválido
 third_title=Selecionar Módulos de Terceiros
+
 lock_title=Travamento de Arquivo
 lock_desc=Por padrão, o Webmim irá realizar um travamento de qualquer arquivo que o modifica, na ação de prevenir a modificação concorrente de processos múltiplos, o que pode causar corrupção de arquivo. Esta página permite selecionar ou desativar totalmente o travamento, se isso estiver causando problemas.
 lock_header=Configurações do arquivo de travamento
@@ -679,22 +711,26 @@ lock_except=Travar todos os arquivos e diretórios, exceto ..
 lock_err=Falhou ao salvar arquivo de travamento
 lock_edir='$1' não é um caminho absoluto
 lock_edirs=Nenhum arquivo ou diretório inserido
+
 ipkey_title1=Criar Chave SSL
 ipkey_title2=Editar Chave SSL
 ipkey_header=Detalhes da chave SSL de IP específico
 ipkey_err=Falhou ao salvar chave SSL
 ipkey_eips=Nenhum endereço IP inserido
+
 descs_title=Títulos dos Módulos
 descs_info=Esta página permite especificar títulos alternativos para os módulos do Webmin, para sobrescrever suas descrições padrão.
 descs_mod=Módulo
 descs_desc=Novo  título
 descs_err=Falhou ao salvar títulos dos módulos
 descs_edesc=Título para módulo '$1' faltando
+
 export_err=Falhou ao exportar módulos
 export_ecmd=Comando $1 necessário faltando
 export_efile=Arquivo de exportação inválido ou faltando
 export_done=Módulos selecionados exportados com sucesso para $1.
 export_title=Exportar Módulos
+
 advanced_title=Opções Avançadas
 advanced_header=Opções avançadas e experimentais
 advanced_temp=Diretório de arquivos temporários
@@ -721,10 +757,13 @@ advanced_nice=Prioridade de CPU para trabalhos agendados
 advanced_pri=Nível de prioridade
 advanced_sclass=Classe de E/S para trabalhos agendados
 advanced_sprio=Prioridade de E/S para trabalhos agendados
+
 syslog_errorlog=Registro de erro do Webmin
+
 clear_title=Limpar Download de Cache
 clear_done=O cache do Webmin contendo $1 arquivos de $2 URLS foi limpo com sucesso.
 clear_none=Não há atualmente URLs no cache de download do Webmin.
+
 savekey_err=Falhou ao salvar nova chave
 savekey_ekey=Formato de chave PEM inválido ou faltando
 savekey_ecert=Formato de certificado PEM inválido ou faltando
@@ -732,6 +771,7 @@ savekey_ecert2=Formato de chave e certificado PEM inválido ou faltando
 savekey_title=Enviar Chave Existente
 savekey_done2=A chave SSL fornecida foi salva em $1, e o certificado em $2.
 savekey_done=A chave e certificado SSL fornecidos foram salvos no arquivo $1.
+
 cache_title=URLs armazenadas
 cache_search=Encontrar URLs contendo:
 cache_ok=Busca
@@ -744,8 +784,10 @@ cache_delete=Descarregar Selecionados do Cache
 cache_err=Falhou ao descarregar URLs armazenadas
 cache_enone=Nenhum selecionado
 cache_efile=Nome do arquivo inválido
+
 restart_title=Reiniciar o Webmin
 restart_done=O processo servidor do Webmin está sendo reiniciado - por favor, aguarde alguns segundos antes de continuar.
+
 mobile_title=Opções de Dispositivos Móveis
 mobile_header=Opções para navegadores móveis
 mobile_theme=Tema para navegadores móveis
@@ -754,6 +796,7 @@ mobile_nosession=Forçar uso da autenticação HTTP?
 mobile_agents=User agents adicionais para navegadores móveis
 mobile_err=Falhou ao salvar opções de dispositivo móvel
 mobile_prefixes=Prefixo da URL do nome do computador para navegadores móveis
+
 blocked_title=Hosts e Usuários Bloqueados
 blocked_type=Tipo
 blocked_who=Nome do computador e nome do usuário
@@ -765,9 +808,11 @@ blocked_host=Host cliente
 blocked_clear=Limpar Todos os Bloqueios
 blocked_cleardesc=Clique neste botão para limpar todos os hosts e usuários bloqueados, reiniciando o processo do servidor do Webmin.
 blocked_restarting=O processo de servidor do Webmin está agora sendo reiniciado para limpar os bloqueios de hosts e usuários - Por favor, aguarde por alguns segundos antes de continuar.
+
 refreshmods_title=Atualizar Módulos
 refreshmods_installed=Verificando módulos usáveis do Webmin ..
 refeshmods_counts=.. encontrado $2 com aplicativos instalados, $1 não instalados.
+
 debug_title=Arquivo de Registro de Depuração
 debug_header=Opções de arquivo de registros de depuração do Webmin
 debug_enabled=Registro de depuração habilitado?
@@ -795,6 +840,7 @@ debug_cmd=Linha de comando
 debug_cron=Trabalhos em segundo plano
 debug_inmods=Módulos para gravar os registros de depuração
 debug_emodules=Nenhum módulo para depuração selecionado
+
 notif_passexpired=Sua senha do Webmin expirou! Você será forçado a alterá-la no próximo início de sessão.
 notif_passchange=Sua senha do Webmin foi alterada na última vez em $1, e deve ser alterada em $2 dias.
 notif_passlock=Sua senha do Webmin foi alterada na última vez em $1, e sua conta irá ser travada em $2 dias se não for alterada.
@@ -808,6 +854,7 @@ notify_updatemod=Módulo
 notify_updatever=Versão
 notify_updatedesc=Corrigir problemas
 notif_updateok=Instalar Atualizações
+
 status_title=Coleta de Status em Segundo plano
 status_header=Coleta de configurações de trabalhos
 status_interval=Coletar o status do sistema em segundo plano?

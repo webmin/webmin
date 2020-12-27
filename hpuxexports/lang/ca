@@ -14,6 +14,7 @@ index_ro_rw=accés de lectura per a tots els hosts, accés d'escriptura per a ho
 index_sel_rw=accés d'escriptura per a hosts seleccionats
 index_all_rw=accés d'escriptura per a tots els hosts
 index_sel_root=accés root per a hosts seleccionats
+
 edit_title=Edició d'Exportació
 create_title=Creació d'Exportació
 edit_details=Detalls de l'exportació
@@ -56,6 +57,7 @@ edit_anon_access=Usuari anònim
 edit_anon_notset=No establert
 edit_anon_noaccess=No té accés
 edit_async=Escriptures asíncrones
+
 save_err=No s'ha pogut desar l'exportació
 save_edir=El directori '$1' no existeix
 save_enetgroup=Hi falta el grup de xarxa o bé no és vàlid
@@ -65,6 +67,7 @@ save_ehost='$2' - '$1' no és un nom de host vàlid
 save_enohost='$1' - No has especificat cap host
 save_euids=Els UIDs no fiables han de ser una llista de números o rangs separats per comes
 save_egids=Els GIDs no fiables han de ser una llista de números o rangs separats per comes
+
 log_modify=S'ha modificat l'exportació NFS $1
 log_modify_l=S'ha modificat l'exportació NFS $1 to $2
 log_delete=S'ha suprimit l'exportació NFS $1

@@ -25,12 +25,15 @@ index_up=Bắt đầu kết nối:
 index_updesc=Chọn một kết nối từ danh sách bên cạnh nút này và nhấp vào nó để thử thiết lập ngay lập tức.
 index_nopol=Không tìm thấy chính sách mạng nào - có thể <a href='$1'>cấu hình mạng</a> của bạn không chính xác.
 index_import=Nhập kết nối từ tập tin.
+
 stop_err=Không thể dừng máy chủ IPsec
 start_err=Không thể khởi động máy chủ IPsec
 restart_err=Không thể khởi động lại máy chủ IPsec
 start_elog=Các lỗi sau đã được ghi lại : $1 
+
 newkey_err=Không thể tạo khóa
 newkey_ehost=Tên máy chủ bị thiếu hoặc không hợp lệ
+
 edit_title1=Tạo kết nối
 edit_title2=Chỉnh sửa kết nối
 edit_header=Chi tiết kết nối VPN IPsec
@@ -101,6 +104,7 @@ edit_unit_s=giây
 edit_unit_m=phút
 edit_unit_h=giờ
 edit_unit_d=ngày
+
 config_title=Cấu hình máy chủ
 config_header=Cài đặt máy chủ VPN toàn cầu
 config_ifaces=Giao diện mạng cho IPsec
@@ -118,6 +122,7 @@ config_nat=Cho phép NAT truyền tải?
 config_err=Không thể lưu cấu hình máy chủ
 config_eri=Giao diện thực '$1' được liệt kê nhiều lần
 config_enone=Không có giao diện mạng được chỉ định
+
 showkey_title=Hiển thị khóa công khai
 showkey_desc1=Khóa RSA công khai hiển thị bên dưới phải được sao chép vào cấu hình của các hệ thống khác kết nối với hệ thống này, trong phần liên quan đến máy chủ này.
 showkey_desc2=Các giá trị hiển thị bên dưới có thể được sử dụng để tạo bản ghi DNS KEY cho máy chủ này, để các hệ thống khác kết nối với nó có thể tra cứu khóa chung của nó.
@@ -125,6 +130,7 @@ showkey_flags=Cờ
 showkey_proto=Giao thức
 showkey_alg=Thuật toán
 showkey_key=Dữ liệu quan trọng
+
 policy_desc_block=Mạng bị chặn
 policy_desc_clear=Xóa mạng lưu lượng
 policy_desc_private=Mạng được mã hóa
@@ -145,6 +151,7 @@ policy_mask=Tiếp đầu ngữ
 policy_err=Không thể lưu mạng
 policy_enet=Địa chỉ IP mạng không hợp lệ trên hàng $1 
 policy_emask=Độ dài tiền tố không hợp lệ trên hàng $2 
+
 save_err=Không thể lưu kết nối
 save_ename=Tên kết nối bị thiếu hoặc không hợp lệ
 save_ekeying=Thiếu hoặc không hợp lệ số lần thử lại khóa
@@ -164,6 +171,7 @@ save_eleftcert=Chứng chỉ máy chủ cục bộ bị thiếu hoặc không h�
 save_erightcert=Chứng chỉ máy chủ từ xa bị thiếu hoặc không hợp lệ
 save_ekeylife=Thiếu khóa kết nối hoặc không hợp lệ trọn đời
 save_eikelifetime=Thiếu khóa hoặc không hợp lệ trọn đời kênh
+
 log_create_conn=Đã tạo kết nối $1 
 log_delete_conn=Đã xóa kết nối $1 
 log_modify_conn=Kết nối đã sửa đổi $1 
@@ -182,8 +190,10 @@ log_delete_secret=Đã xóa khóa bí mật cho $1
 log_create_secret_nn=Tạo khóa bí mật cho bất kỳ máy chủ lưu trữ
 log_modify_secret_nn=Khóa bí mật đã sửa đổi cho bất kỳ máy chủ lưu trữ nào
 log_delete_secret_nn=Đã xóa khóa bí mật cho bất kỳ máy chủ lưu trữ
+
 up_title=Bắt đầu kết nối
 up_cmd=Bắt đầu kết nối với lệnh $1 ..
+
 export_title=Cấu hình xuất
 export_desc=Biểu mẫu này có thể được sử dụng để xuất phần tệp cấu hình cho kết nối $1, để có thể dễ dàng nhập vào máy chủ ở đầu kia.
 export_print=Hiển thị cấu hình trong trình duyệt
@@ -193,11 +203,13 @@ export_err=Không thể xuất cấu hình
 export_efile=Thiếu tên tập tin
 export_esave=Không thể ghi vào tệp : $1 
 export_done=Cấu hình đã xuất cho kết nối $1 đến $2 ($3 byte).
+
 import_title=Cấu hình nhập
 import_desc=Biểu mẫu này có thể được sử dụng để nhập phần tệp cấu hình cho kết nối, chẳng hạn như phần được tạo bởi tính năng xuất của mô-đun trên hệ thống khác.
 import_upload=Nhập từ tệp tải lên ..
 import_file=Nhập từ tệp phía máy chủ ..
 import_ok=Nhập ngay
+
 import_err=Không thể nhập cấu hình
 import_eupload=Không có tệp nào được chọn để tải lên
 import_efile=Không có tệp phía máy chủ nào được nhập
@@ -207,6 +219,7 @@ import_eclash=Một kết nối được gọi là $1 đã tồn tại.
 import_done1=Đã thêm thành công kết nối IPsec mới $1.
 import_done2=Đã cập nhật thành công kết nối IPsec $1.
 import_over=Ghi đè kết nối hiện có cùng tên?
+
 secrets_title=Chìa khóa bí mật
 secrets_none=Không có chìa khóa bí mật đã được tìm thấy!
 secrets_name=Bí mật cho
@@ -220,6 +233,7 @@ secrets_mod=Mô-đun $1
 secrets_newpsk=Tạo khóa bí mật mới được chia sẻ.
 secrets_newrsa=Tạo khóa RSA mới.
 secrets_return=danh sách khóa bí mật
+
 secret_title1=Tạo khóa bí mật
 secret_title2=Chỉnh sửa khóa bí mật
 secret_header=Bí mật chi tiết

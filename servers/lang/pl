@@ -22,6 +22,7 @@ index_auto=Automatycznie szukaj serwerów
 index_automsg=Naciśnij na ten przycisk, aby automatycznie skonfigurować wykrywanie serwerów Webmina w twojej sieci.
 index_search=Serwery zawierające:
 index_ok=Szukaj
+
 edit_title=Zmień serwer
 create_title=Zarejestruj serwer
 edit_details=Dane serwera
@@ -56,6 +57,7 @@ edit_baduser=Login odrzucony
 edit_invalid=RPC: błąd użytkownika
 edit_version=Uruchomiono Webmin $1
 edit_same=Dostępne tylko gdy tryb uwierzytelniania nie jest ustawiony na sesję i gdy hasło jest dostępna dla programów Webmin.
+
 save_err=Nie udało się zachować serwera
 save_ehost=Nie podana lub niepoprawna nazwa hosta.
 save_ehost2=Host nie istnieje
@@ -66,6 +68,7 @@ save_epass=Nie podano hasła.
 save_egroup=Nie podano nazwy grupy
 save_elogin=Błędny login lub hasło dla hosta
 save_egroup2=Błędna nazwa nowej grupy
+
 find_title=Szukaj serwerów
 find_new=Znaleziono nowy serwer na $1
 find_but=Znaleziono nowy serwer na $1, ale uwierzytelnianie nie powiodło się : $2
@@ -79,16 +82,20 @@ find_ecannot=Nie masz uprawnień do poszukiwania serwerów
 find_scanning=Skanowanie serwerów w sieci $1 ..
 find_broading=Nadawanie do serwera o adresie $1 ..
 find_eport=Błędny lub nieprawidłowy numer portu
+
 log_modify=Zmieniono serwer $1
 log_create=Zarejestrowano serwer $1
 log_delete=Usunięto serwer $1
 log_find=Znaleziono serwer $1
 log_deletes=Usunięto $1 serwer(ów)
+
 link_elogin=Nie udało się zalogować do $1 jako $2
 link_ecannot=Nie masz uprawnień do korzystania z tego serwera
 link_essl=Nie masz zainstalowanej biblioteki perla Net::SSLeay
 link_eautologin=Błędny login lub hasło dla $1. <a href='$2'>Kliknij tutaj</a>, aby spróbować ponownie.
+
 lib_other=Inny
+
 acl_edit=Może zmieniać serwery
 acl_find=Może poszukiwać serwerów
 acl_servers=Może korzystać z serwerów
@@ -100,6 +107,7 @@ acl_forcefast=Wymuś szybki tryb RPC jako domyślny?
 acl_forcetype=Wymuś typ systemu OS jako domyślny?
 acl_forcelink=Wymuś typ logowania jako domyślny?
 acl_links=Może połączyć się przez serwery?
+
 login_title=Logowanie do serwera
 login_desc=Musisz podać nazwę użytkownika i hasło, aby się zalogować do serwera Webmin $1
 login_header=Uwierzytelnianie Webmina
@@ -107,13 +115,16 @@ login_user=Nazwa użytkownika
 login_pass=Hasło
 login_login=Login
 login_esame=Możliwość wykorzystania tego samego loginu jak z tego serwera może być stosowana tylko wtedy, gdy uwierzytelnianie nie jest ustawione w trybie sesji oraz gdy hasło jest udostępnione do programów Webmina.
+
 this_server=ten serwer
+
 delete_err=Błąd usuwania serwerów
 delete_enone=Nic nie wybrano
 delete_ecannot=Nie masz uprawnień do usuwania serwerów
 delete_title=Usuwanie serwerów
 delete_rusure=Jesteś pewny, że chcesz usunąć $1 wybranych serwerów?
 delete_confirm=Usuń teraz
+
 auto_title=Automatyczne szukanie serwerów
 auto_header=Opcje automatycznej rejestracji serwerów
 auto_sched=Szukać nowych serwerów?
@@ -139,8 +150,10 @@ auto_smtp=Wyślij przez serwer SMTP
 auto_self=Ten system
 auto_esmtp=Brakujący lub nieprawidłowy serwer SMTP
 auto_findself=Zarejestrować też ten system?
+
 config_deftype=Domyślny typ systemu
 config_typeauto=Automatycznie
+
 email_regsubject=System $1 zarejestrowany
 email_reg=Ten system będzie automatycznie zarejestrowany.
 email_unregsubject=System $1 wyrejestrowany

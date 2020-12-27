@@ -23,6 +23,7 @@ index_follow=Po $1
 index_forcetar=Ve formátu TAR
 index_delete=Smazat vybrané zálohy
 index_nostrftime=Pozor - některé úkoly se zálohami využívají ve svém názvu %, avšak na konfigurační stránce modulu není substituce strftime povolena.
+
 dump_dir=Adresář k zálohování
 dump_dirs=Adresář k zálohování
 dump_fs=Souborový systém
@@ -98,6 +99,7 @@ dump_emulti2=Více souborové zálohování nemůže být prováděno na vzdále
 dump_ermt=Chybějící nebo neplatná cesta pro program <tt>rmt</tt>
 dump_reverify=Pokusit se otestovat obnovu po ověření zálohy?
 dump_remount=Během zálohy znovu připojovat pomocí volby <tt>noatime</tt>?
+
 edit_err=Chyba při vytváření zálohy
 edit_edir=Chybějící adresář pro zálohování
 edit_efs=Souborévé systémy typu $1 nemohou být pomocí tohoto modulu zálohovány
@@ -119,9 +121,11 @@ edit_restore=Obnovit ..
 edit_to=$1 do $2
 edit_tolevel=$1 do $2 (úroveň $3)
 edit_special=Plánovač zálohování
+
 save_err=Chyba při ukládání zálohy
 save_edir=Chybějící nebo neplatný adresář pro zálohu
 save_efs=Zálohovací adresář nemůže přejít na jiný souborový systém
+
 backup_title=Průběh zálohování
 backup_desc=Probíhá zálohování $1 do $2 ..
 backup_reverify=.. je ukončena. Nyní se záloha ověřuje ..
@@ -134,6 +138,7 @@ backup_notape=.. záloha překročila kapacitu jedné pásky. Výměna pásky je
 backup_egone=Záloha neexistuje!
 backup_bg=Spouští se proces zálohování na pozadí. Tento proces můžete monitorovat v sekci <b>Běžící úkoly zálohování</b> na hlavní stránce modulu. O výsledku tohoto procese budete informování prostřednictvím e-mailu.
 backup_ecannot=Nemáte oprávnění zálohovat tento adresář
+
 restore_title=Obnova zálohy
 restore_err=Chyba při obnově zálohy
 restore_ecommand=TPříkaz $1, který je potřebný pro obnovu $2 zálohy souborového systému, nebyl ve vašem systému nalezen. Možná není správně nainstalován.
@@ -177,19 +182,23 @@ restore_gzip=Dekompresovat archív?
 restore_keep=Nepřepisovat soubory?
 restore_emulti=Z páskových zařízení nemůže být provedena více souborová obnova
 restore_emulti2=Ze vzdáleného serveru nemůže být provedena více souborová obnova
+
 log_create=Vytvořena konfigurace zálohování pro $1
 log_modify=Modifikována konfigurace zálohování pro $1
 log_delete=Smazána konfigurace zálohování pro $1
 log_backup=Zálohováno $1 do $2
 log_bgbackup=Spuštěna záloha $1 do $2
 log_restore=Obnovena záloha z $1
+
 kill_err=Chyba při přerušení zálohy
 kill_egone=Nadále neběží!
 kill_ecannot=Nemáte oprávnění k přerušení této zálohy
+
 newtape_err=Chyba v signalizování nové pásky
 newtape_egone=Zálohování již nadále neběží!
 newtape_estatus=Záloha nadále nepočká na novou pásku
 newtape_ecannot=Nemáte oprávněnní spravovat tuto zálohu
+
 acl_edit=Může vytvořit a upravovat zálohování?
 acl_restore=Může obnovit zálohy?
 acl_cmds=Může upravit příkazy před a po zálohování?
@@ -197,8 +206,10 @@ acl_extra=Může upravit extra parametry pro řádkový příkaz?
 acl_dirs=Povolené adresáře pro zálohování
 acl_all=Všechny adresáře
 acl_list=Pouze uvedení ..
+
 delete_err=Chyba při mazání záloh
 delete_enone=Nic není vybráno
+
 email_already=Záloha je momentálně spuštěna na PID $1.
 email_ebefore=Chyba v příkazu před zálohou!
 email_verify=Ověřuje se záloha ..
@@ -206,5 +217,6 @@ email_eafter=Chyba v příkazu po záloze!
 email_subject=Záloha $1 na $2
 email_ok=Záloha byla úspěšná
 email_failed=Chyba v zálohování!
+
 newtape_subject=Změna pásky $1 pro zálohu $2 na $3
 newtape_body=Záloha $2 na $3 narostla na maximální velikost povolenou na pásce $1. Chcete-li pokračovat v zálohování, musíte vložit novou pásku a klepnout na odkaz 'Páska vložena' v modulu Zálohování souborového systému.

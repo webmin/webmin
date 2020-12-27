@@ -26,6 +26,7 @@ index_start=شیڈول کمانڈز سرور شروع کریں
 index_startdesc=Start up the <tt>atd</tt> background server process that runs scheduled commands. This is required for commands to execute at their specified times.
 index_boot=بوٹ میں سرور شروع کریں؟
 index_bootdesc=سسٹم بوٹ وقت شیڈول کمانڈز سرور کو شروع کرنے کے قابل یا غیر فعال کرنے کے لئے اس ترتیب کو تبدیل کریں۔
+
 edit_title=شیڈول کمانڈ
 edit_cmd=عمل کرنے کے لئے مکمل اسکرپٹ
 edit_shortcmd=پھانسی دینے کا حکم
@@ -35,6 +36,7 @@ edit_run=ابھی چلائیں
 edit_ejob=شیڈول کمانڈ اب موجود نہیں!
 edit_ecannot=آپ کو اس شیڈول کمانڈ میں ترمیم کرنے کی اجازت نہیں ہے
 edit_showfull=مکمل اسکرپٹ دکھائیں۔
+
 create_err=شیڈول کمانڈ بنانے میں ناکام
 create_euser=غائب یا غلط صارف نام
 create_edate=گمشدہ یا غلط تاریخ یا وقت
@@ -43,22 +45,28 @@ create_efuture=تاریخ اور وقت ماضی کا ہے
 create_edir=غائب یا غلط ڈائریکٹری
 create_ecannot=آپ کو اس صارف کے لئے شیڈول کمانڈز بنانے کی اجازت نہیں ہے
 create_eallow=مخصوص صارف کو شیڈول کمانڈز چلانے کی اجازت نہیں ہے
+
 delete_err=کمانڈ منسوخ کرنے میں ناکام
 delete_egone=کمانڈ پہلے ہی چل رہا ہے یا حذف ہوگیا ہے
+
 acl_users=کے لئے شیڈول کمانڈوں میں ترمیم کرسکتے ہیں
 acl_all=تمام صارفین
 acl_this=موجودہ ویب مین صارف
 acl_only=صرف صارف
 acl_except=سوائے صارفین کے
 acl_allow=کیا اجازت شدہ صارفین میں ترمیم کی جاسکتی ہے؟
+
 run_title=کمانڈ چل رہا ہے
 run_output=شیڈول کمانڈ سے آؤٹ پٹ ..
 run_none=کوئی پیداوار پیدا نہیں ہوئی
+
 allow_err=اجازت شدہ صارفین کو بچانے میں ناکام
 allow_ecannot=آپ کو اجازت یافتہ صارفین کا انتظام کرنے کی اجازت نہیں ہے
 allow_eusers=کوئی صارف داخل نہیں ہوا
+
 deletes_err=احکامات منسوخ کرنے میں ناکام
 deletes_enone=کوئی بھی منتخب نہیں ہوا
+
 log_allow=اجازت شدہ صارفین کو تبدیل کردیا گیا
 log_create_job=$1 کیلئے شیڈول کمانڈ تشکیل دیا گیا
 log_delete_job=$1 کے لئے شیڈول کمانڈ منسوخ کردیا گیا
@@ -68,5 +76,6 @@ log_stop=شیڈول کمانڈز سرور رک گیا
 log_start=شیڈول کمانڈز سرور شروع کیا
 log_bootup=بوٹ پر شیڈول کمانڈز سرور کو فعال کردیا
 log_bootdown=بوٹ کے وقت غیر فعال شیڈول کمانڈز سرور
+
 stop_err=سرور کو روکنے میں ناکام
 start_err=سرور شروع کرنے میں ناکام

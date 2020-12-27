@@ -3,5 +3,7 @@ index_eversion=您的系统上安装的STunnel的版本为 $1，但是该模块�
 index_conf=从配置文件 $1
 index_noconf=没有配置文件！
 index_delete=删除选定的隧道
+
 save_erport=无效的远程端口
+
 log_delete_stunnels=已删除 $1 SSL隧道

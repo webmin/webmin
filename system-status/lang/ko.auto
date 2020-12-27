@@ -44,6 +44,7 @@ right_upsec=$1 패키지 업데이트가 있으며 그 중 $2 는 보안 업데�
 right_recollect=시스템 정보 새로 고침
 right_vvirtualmin=Virtualmin 버전
 right_vvm2=Cloudmin 버전
+
 acl_show=표시 할 시스템 정보
 acl_showall=모두
 acl_showsel=선택 만 ..

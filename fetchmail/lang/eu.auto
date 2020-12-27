@@ -25,6 +25,7 @@ index_header=Fetchmail konfigurazioak dituzten erabiltzaileak
 index_search=Erakutsi Fetchmail konfigurazioa honetarako:
 index_show=Show
 index_toomany=Erabiltzaile gehiegi daude zure sisteman bistaratzeko.
+
 poll_create=Gehitu zerbitzaria
 poll_edit=Editatu zerbitzaria
 poll_header=Posta zerbitzariaren aukerak
@@ -64,18 +65,22 @@ poll_ecannot=Ez duzu baimenik erabiltzailearen fetchmail konfigurazioa editatzek
 poll_efile=Erabiltzaileen fetchmail konfigurazio fitxategiak bakarrik editatu daitezke
 poll_eusername=Erabiltzailea ez da existitzen!
 poll_foruser=$1 erabiltzailearentzat
+
 stop_err=Ezin izan da fetchmail gelditu
 stop_ecannot=Ez duzu baimenik gabe fetchmail-era uztea
 start_err=Huts egin du fetchmail abiaraztean
 start_einterval=Falta edo egiaztatzeko tartea baliogabea
 start_ecannot=Ezin duzu fetchmail abiarazten
+
 check_title=Zerbitzariak egiaztatzea
 check_exec=Zerbitzariko posta elektronikoetan $1 kontsultatzen ari da ..
 check_ok=.. egiaztatzea osoa.
 check_failed=.. egiaztapena huts egin du!
+
 global_title=Ezarpen lehenetsiak
 global_header=Zerbitzari guztientzako ezarpen lehenetsiak
 global_err=Huts egin du ezarpen lehenetsiak gordetzean
+
 log_create_poll_file=$1 zerbitzaria gehitu da $2 fitxategian
 log_modify_poll_file=$1 zerbitzari aldatua $2 fitxategian
 log_delete_poll_file=$1 zerbitzaria ezabatu da $2 fitxategian
@@ -94,6 +99,7 @@ log_stop=Gelditu fetchmail daemon
 log_create_cron=Gaitutako egiaztapen programatua
 log_update_cron=Aldatutako egiaztapen programatua
 log_delete_cron=Ezgaituta dago egiaztatutako programazioa
+
 acl_users=Ezin da fetchmail konfigurazioa editatu
 acl_all=Erabiltzaile guztiak
 acl_this=Uneko webmin erabiltzailea
@@ -101,6 +107,7 @@ acl_only=Erabiltzaileak bakarrik
 acl_except=Guztiak erabiltzaileak izan ezik
 acl_cron=Konfigurazio programatua konfiguratu al dezakezu?
 acl_daemon=Fetchmail daemon konfiguratu al daiteke?
+
 cron_title=Egindako egiaztapena
 cron_desc=Orrialde hau Cron lan bat gaitzeko edo desgaitzeko erabil daiteke Fetchmail konfigurazioan posta zerbitzariak ikusteko ohiko ordutegian. Fetchmail deabrua exekutatzeko Cron lana erabiliz, abio garaian berriro hasi beharrik ez dagoenez.
 cron_header=Fetchmail-en ezarpenak antolatu
@@ -119,8 +126,10 @@ cron_email=Helbide elektroniko falta edo baliogabea
 cron_euser=Unix-eko erabiltzaile falta edo baliogabea
 cron_errors=Irteera bakarra akatsen bat gertatzen bada?
 cron_ecannot2=Ez duzu baimendutako egiaztapenik konfiguratzeko
+
 user_title=Fetchmail-en konfigurazioa
 user_header=$1 erabiltzailearentzat
 user_return=erabiltzailearen konfigurazioa
+
 email_ok=Fetchmail irteera
 email_failed=Fetchmail errorea

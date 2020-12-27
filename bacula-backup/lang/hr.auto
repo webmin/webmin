@@ -29,12 +29,14 @@ index_fd=Datoteka Konfiguracija datoteke
 index_groups=Konfiguracija grupe Bacula
 index_actions=Radnje sigurnosne kopije i vraćanja
 index_ocmin=Doprinos <a href=$2 target=_new>Linmin</a> </a>
+
 connect_emysql=Učitavanje DBI upravljačkog programa $1 nije uspjelo
 connect_elogin=Prijavljivanje u bazu podataka $1:$2 nije uspjelo.
 connect_equery=Čini se da baza podataka $1 ne sadrži tablice Bacula.
 connect_equery2=To se može dogoditi zato što je instalirani modul SQLite Perl previše nov i ne podržava stariji format baze podataka SQLite koji koristi Bacula.
 connect_equery3=Čini se da baza podataka $1 ne sadrži tablice grupe OC Bacula.
 esql=SQL pogreška : $1 
+
 check_edir=Konfiguracijski direktorij Bacula $1 nije pronađen u vašem sustavu.
 check_ebacula=Naredba za kontrolu Bacule $1 nije pronađena.
 check_econsole=Naredba konzole Bacula $1 nije pronađena.
@@ -43,12 +45,14 @@ check_eclient=Čini se da je ovaj sustav <a href='$2'>klijent Bacula</a>, a ne d
 check_econfigs=U $1 nisu pronađene konfiguracijske datoteke Bacula
 check_eservers=Nije definirana nijedna skupina poslužitelja Webmin
 check_engmod=Modul grupa OpenCountry Bacula nije instaliran
+
 proc_bacula-sd=Skladišni demon
 proc_bacula-fd=File demona
 proc_bacula-dir=Bacula redateljski demon
 proc_bareos-sd=Skladišni demon
 proc_bareos-fd=File demona
 proc_bareos-dir=Bacula redateljski demon
+
 stop_err=Zaustavljanje Bacule nije uspjelo
 start_err=Nije uspio pokrenuti Bacula
 start_einit=Nije pronađena init skripta za $1 
@@ -57,6 +61,7 @@ restart_err=Ponovno pokretanje Bacule nije uspjelo
 apply_err=Konfiguracija nije primijenjena
 apply_failed=Otkrivena je konfiguracijska pogreška
 apply_problem=Konfiguracija nije primijenjena : $1 
+
 jobs_title=Rezervni poslovi
 jobs_none=Još nisu definirani rezervni poslovi.
 jobs_name=Ime posla
@@ -69,6 +74,7 @@ jobs_add=Dodajte novi zadatak sigurnosnog kopiranja.
 jobs_delete=Izbriši odabrane zadatke
 jobs_return=popis poslova
 jobs_derr=Brisanje poslova nije uspjelo
+
 filesets_title=Datoteke setovi
 filesets_none=Još nisu definirani skupovi datoteka sigurnosnih kopija.
 filesets_name=Naziv datoteke
@@ -78,6 +84,7 @@ filesets_delete=Izbriši odabrane setove datoteka
 filesets_return=popis skupova datoteka
 filesets_derr=Brisanje skupa datoteka nije uspjelo
 filesets_ednone=Nijedna nije odabrana
+
 fileset_title1=Stvaranje skupa datoteka
 fileset_title2=Uredi skup datoteka
 fileset_header=Pojedinosti o sigurnosnoj kopiji datoteke
@@ -97,6 +104,7 @@ fileset_gzipdef=&lt;Zadana razina kompresije&gt;
 fileset_lzo=Kompresija LZO
 fileset_gzip=Gzip razina $1 
 fileset_onefs=Ograničite sigurnosnu kopiju na jedan datotečni sustav?
+
 clients_title=Rezervni klijenti
 clients_none=Još nisu definirani rezervni klijenti.
 clients_name=Ime klijenta
@@ -106,6 +114,7 @@ clients_add=Dodajte novog rezervnog klijenta.
 clients_delete=Izbriši odabrane klijente
 clients_return=popis klijenata
 clients_derr=Brisanje klijenata nije uspjelo
+
 client_title1=Stvorite sigurnosnu kopiju klijenta
 client_title2=Uredi Backup Client
 client_header=Pojedinosti o klijentu koji treba izraditi sigurnosnu kopiju
@@ -128,6 +137,7 @@ client_efileret=Nedostaje ili nije valjano razdoblje zadržavanja datoteka
 client_ejobret=Nedostaje ili nije valjano razdoblje zadržavanja posla
 client_echild=Klijenta nije moguće izbrisati jer ga koristi $1 
 client_status=Prikaži status
+
 job_title1=Napravite pričuvni posao
 job_title2=Uredite pričuvni posao
 job_header=Sigurnosni podaci o zadatku
@@ -156,6 +166,7 @@ job_before=Zapovjedite prije posla
 job_after=Zapovjedništvo nakon posla
 job_cbefore=Naredba prije posla (na klijentu)
 job_cafter=Naredba nakon posla (na klijentu)
+
 schedules_title=Rezervni rasporedi
 schedules_none=Još nisu definirani rezervni rasporedi.
 schedules_name=Naziv rasporeda
@@ -164,6 +175,7 @@ schedules_add=Dodajte novi raspored sigurnosnih kopija.
 schedules_delete=Izbrišite odabrane rasporede
 schedules_return=popis rasporeda
 schedules_derr=Brisanje rasporeda nije uspjelo
+
 schedule_title1=Stvorite sigurnosnu kopiju
 schedule_title2=Uređivanje sigurnosne kopije
 schedule_header=Pojedinosti o rezervnom rasporedu
@@ -177,6 +189,7 @@ schedule_ename=Nedostaje ili nevažeće ime rasporeda
 schedule_eclash=Raspored s istim nazivom već postoji
 schedule_etimes=Nedostaje vrijeme sigurnosne kopije u redu $1 
 schedule_echild=Ovaj se raspored ne može izbrisati jer ga koristi $1 
+
 backup_title=Pokrenite Backup Job
 backup_header=Sigurnosni podaci o zadatku
 backup_job=Posao za pokretanje
@@ -191,11 +204,13 @@ backup_running=.. sada se pokreće sigurnosno kopiranje. Kada su gotovi, rezulta
 backup_running2=.. u pozadini je započet posao sigurnosne kopije.
 backup_done=.. sigurnosna kopija dovršena.
 backup_failed=.. sigurnosna kopija nije uspješno završena. Pojedinosti potražite u gornjoj poruci o pogrešci.
+
 gbackup_title=Pokrenite sigurnosnu kopiju grupe Bacula
 gbackup_run=Pokretanje rezervnog posla $1 na $2 klijenta ..
 gbackup_on=Izvođenje sigurnosnih kopija na klijentu $1  :
 gbackup_header=Pojedinosti o sigurnosnim kopijama Bacula grupe
 gbackup_jd=$1 (Skup datoteka $2 u grupi $3)
+
 dirstatus_title=Status redatelja
 dirstatus_sched=Planirani rezervni poslovi
 dirstatus_name=Ime posla
@@ -216,12 +231,14 @@ dirstatus_status2=Status
 dirstatus_donenone=Nisu pokrenuti rezervni poslovi.
 dirstatus_cancel=Otkaži odabrane zadatke
 dirstatus_refresh=Osvježi popis
+
 clientstatus_title=Status klijenta
 clientstatus_err=Dohvaćanje statusa s $1 : $2 nije uspjelo
 clientstatus_msg=Status od $1 : $2 
 clientstatus_show=Prikaži status klijenta:
 clientstatus_ok=u redu
 clientstatus_on=$1 (na $2)
+
 storages_title=Skladišni demoni
 storages_none=Još nisu definirani demoni pohrane.
 storages_name=Naziv mjesta za pohranu
@@ -232,6 +249,7 @@ storages_add=Dodajte novi demon za pohranu.
 storages_delete=Izbriši odabrane demone za pohranu
 storages_return=popis demona za pohranu
 storages_derr=Brisanje demona pohrane nije uspjelo
+
 storage_title1=Stvaranje demona za pohranu
 storage_title2=Storage Daemon
 storage_header=Pojedinosti o demonu udaljenog skladištenja
@@ -255,6 +273,7 @@ storage_emedia=Nedostaje naziv vrste medija
 storage_emaxjobs=Nedostaju maksimalni istodobni poslovi
 storage_echild=Klijenta nije moguće izbrisati jer ga koristi $1 
 storage_status=Prikaži status
+
 devices_title=Uređaji za pohranu
 devices_none=Još nisu definirani uređaji za pohranu podataka.
 devices_name=Naziv uređaja
@@ -264,6 +283,7 @@ devices_add=Dodajte novi uređaj za pohranu.
 devices_delete=Izbrišite odabrane uređaje za pohranu
 devices_return=popis uređaja za pohranu
 devices_derr=Brisanje uređaja za pohranu nije uspjelo
+
 device_title1=Stvorite uređaj za pohranu
 device_title2=Uređivanje uređaja za pohranu
 device_header=Pojedinosti o uređaju za pohranu datoteka
@@ -282,11 +302,13 @@ device_eclash=Spremnik s istim nazivom već postoji
 device_emedia=Nedostaje naziv vrste medija
 device_edevice=Nedostaje ili nije važeći arhivski uređaj ili direktorij
 device_echild=Klijenta nije moguće izbrisati jer ga koristi $1 
+
 storagestatus_title=Skladištenje demonskog statusa
 storagestatus_err=Dohvaćanje statusa s $1 : $2 nije uspjelo
 storagestatus_msg=Status od $1 : $2 
 storagestatus_show=Prikaži status demona za pohranu:
 storagestatus_ok=u redu
+
 label_title=Volumen etiketa
 label_header=Pojedinosti volumena do oznake
 label_storage=Skladišni demon na etiketi
@@ -302,6 +324,7 @@ label_done=.. označavanje je uspješno.
 label_epool=.. nisam mogao pronaći bazen!
 label_err=Oznaka nije uspjela
 label_elabel=Nije unešena naljepnica
+
 pools_title=Količinski bazeni
 pools_none=Još nisu definirani bazeni volumena.
 pools_name=Ime bazena
@@ -311,6 +334,7 @@ pools_add=Dodajte novi bazen volumena.
 pools_delete=Izbrišite odabrane bazene volumena
 pools_return=popis bazena volumena
 pools_derr=Brisanje bazena volumena nije uspjelo
+
 pool_title1=Stvaranje bazena volumena
 pool_title2=Uređivanje volumena Pool
 pool_header=Pojedinosti o rezervnom spremištu volumena
@@ -332,6 +356,7 @@ pool_ereten=Nedostaje ili nije valjano razdoblje zadržavanja
 pool_status=Pokaži sveske
 pool_autolabel=Automatski označi prefiks volumena
 pool_maxvolsize=Maksimalna veličina zvuka (npr. 5G za 5 gigabajta)
+
 poolstatus_title=Količine u bazenu
 poolstatus_show=Pokaži količinu u bazenu:
 poolstatus_ok=u redu
@@ -345,9 +370,11 @@ poolstatus_status=Način izrade sigurnosne kopije
 poolstatus_none=Trenutno nema volumena u ovom pričuvnom fondu.
 poolstatus_never=Nikada
 poolstatus_delete=Brisanje odabranih svezaka
+
 dvolumes_err=Brisanje svezaka nije uspjelo
 dvolumes_enone=Nijedna nije odabrana
 dvolumes_ebacula=Pogreška bacule : $1 
+
 mount_title=Montirajte ili demontirajte
 mount_header=Mogućnosti skladištenja ili uklanjanja
 mount_storage=Uređaj za pohranu
@@ -365,8 +392,10 @@ unmount_failed=.. un-mount nije uspio! Pogledajte gornju poruku pogreške zbog r
 mount_return=obrazac za montažu
 mount_err=Nije uspio montirati uređaj za pohranu
 mount_eslot=Nedostaje ili nevažeći broj utora
+
 cancel_err=Otkazivanje poslova nije uspjelo
 cancel_enone=Nijedna nije odabrana
+
 gjobs_title=Bacula Group Backup Jobs
 gjobs_none=Još nije definiran nijedan sigurnosni posao grupe Bacula.
 gjobs_add=Dodajte novi posao sigurnosne kopije Bacula.
@@ -374,10 +403,12 @@ gjobs_delete=Izbriši odabrane zadatke
 gjobs_return=popis poslova grupe Bacula
 gjobs_derr=Brisanje poslova Bacula grupe nije uspjelo
 gjobs_client=Bacula grupu za podršku
+
 gjob_title1=Izradite sigurnosnu kopiju za Bacula Group
 gjob_title2=Uredite posao sigurnosne kopije Bacula Group
 gjob_header=Pojedinosti o sigurnosnim kopijama Bacula grupe
 gjob_client=Bacula grupu za podršku
+
 groups_title=Bacula grupe
 groups_none=Još nijedna grupa Bacula nije odabrana za rezervaciju.
 groups_name=Grupno ime
@@ -391,6 +422,7 @@ groups_derr=Brisanje grupa nije uspjelo
 groups_noadd=Ne postoje skupine Bacula koje bi se mogle odabrati za izradu sigurnosnih kopija.
 groups_info=$1 ($2 članova)
 groups_already=Sve grupe Bacula već su dodane.
+
 group_title1=Stvorite Bacula Group
 group_title2=Uredite Bacula Group
 group_header=Pojedinosti o grupi Bacula koju treba poduprijeti
@@ -401,11 +433,13 @@ group_port=Bacula FD port
 group_err=Nije uspjelo spremanje grupe Bacula
 group_eclash=Grupa s istim nazivom već postoji
 group_members=Domaćini u grupi Bacula
+
 sync_title=Sinkronizacija Bacula grupe
 sync_header=Opcije automatske sinkronizacije klijenta Bacula
 sync_sched=Sinkronizirati prema rasporedu?
 sync_schedyes=Da, u odabranim trenucima.
 sync_err=Spremanje sinkronizacije grupe Bacula nije uspjelo
+
 log_create_client=Izrađen je zamjenski klijent $1 
 log_modify_client=Izmijenjeni klijent sigurnosne kopije $1 
 log_delete_client=Izbrisan klijent sigurnosne kopije $1 
@@ -464,6 +498,7 @@ log_director=Spremljena globalna konfiguracija direktora Bacula
 log_file=Spremljena konfiguracija demonske datoteke Bacula
 log_storagec=Spremljena konfiguracija demona za pohranu Bacula
 log_fixpass=Fiksna lozinka za konzole Bacula
+
 director_title=Konfiguracija direktora
 director_header=Opcije režisera globalne Bacule
 director_name=Ime ravnatelja
@@ -477,6 +512,7 @@ director_ename=Nedostaje ili nevaljano ime direktora
 director_eport=Nedostaje ili nevažeći broj porta
 director_ejobs=Nedostaje ili nije važeći broj istodobnih poslova
 director_edir=Nedostaje ili ne postoji radni imenik
+
 tls_enable=Želite li omogućiti TLS šifriranje?
 tls_require=Prihvaćate samo TLS veze?
 tls_verify=Potvrditi TLS klijente?
@@ -488,6 +524,7 @@ tls_ecert=Nedostaje ili nepostojeća datoteka TLS certifikata
 tls_ekey=Nedostaje ili nepostojeća datoteka s ključem TLS
 tls_ecacert=Nedostaje ili nepostojeća datoteka TLS CA certifikata
 tls_ecerts=Da bi se TLS omogućio, moraju se navesti datoteke certifikata, ključa i CA
+
 file_title=Datoteka Konfiguracija datoteke
 file_header=Opcije datoteka datoteke Bacula
 file_name=Naziv daona demona
@@ -500,6 +537,7 @@ file_ename=Nedostaje ili nevaljano ime daemon datoteke
 file_eport=Nedostaje ili nevažeći broj porta
 file_ejobs=Nedostaje ili nije važeći broj istodobnih poslova
 file_edir=Nedostaje ili ne postoji radni imenik
+
 fdirectors_title=File direktori Daemon
 fdirectors_none=Još nisu definirani direktori.
 fdirectors_name=Ime ravnatelja
@@ -508,6 +546,7 @@ fdirectors_add=Dodajte novog ravnatelja.
 fdirectors_delete=Izbrišite odabrane direktore
 fdirectors_return=popis redatelja
 fdirectors_derr=Brisanje redatelja nije uspjelo
+
 fdirector_title1=Stvorite Daemon Director
 fdirector_title2=Uredi datoteku Daemon Director
 fdirector_header=Pojedinosti o kontroli daljinskog direktora
@@ -519,6 +558,7 @@ fdirector_err=Nije uspjelo spremanje režima daemona datoteka
 fdirector_ename=Nedostaje ime direktora
 fdirector_eclash=Redatelj s istim imenom već postoji
 fdirector_epass=Nedostaje lozinka
+
 sdirectors_title=Pohranjivanje Daemonovih direktora
 sdirectors_none=Još nisu definirani direktori.
 sdirectors_name=Ime ravnatelja
@@ -527,6 +567,7 @@ sdirectors_add=Dodajte novog ravnatelja.
 sdirectors_delete=Izbrišite odabrane direktore
 sdirectors_return=popis redatelja
 sdirectors_derr=Brisanje redatelja nije uspjelo
+
 sdirector_title1=Stvorite Storage Daemon Director
 sdirector_title2=Uređivanje Storage Daemon Director
 sdirector_header=Pojedinosti o kontroli daljinskog direktora
@@ -538,6 +579,7 @@ sdirector_err=Direktor demona za pohranu nije uspio spremiti
 sdirector_ename=Nedostaje ime direktora
 sdirector_eclash=Redatelj s istim imenom već postoji
 sdirector_epass=Nedostaje lozinka
+
 storagec_title=Pohrana Daemon Konfiguracija
 storagec_header=Opcije demona za pohranu Bacula
 storagec_name=Daemonovo ime
@@ -550,6 +592,7 @@ storagec_ename=Nedostaje ili nevaljano ime demona za pohranu
 storagec_eport=Nedostaje ili nevažeći broj porta
 storagec_ejobs=Nedostaje ili nije važeći broj istodobnih poslova
 storagec_edir=Nedostaje ili ne postoji radni imenik
+
 chooser_title=Odaberite Raspored
 chooser_monthsh=Mjeseci za izvršenje
 chooser_months=Mjeseci u godini
@@ -574,11 +617,13 @@ chooser_emonthsrange=Odabrani mjeseci moraju biti neprekidni
 chooser_eweekdaysrange=Odabrani radni dani moraju biti neprekidni
 chooser_eweekdaynumsrange=Odabrani brojevi radnim danima moraju biti uzastopni
 chooser_edaysrange=Odabrani dani u mjesecu moraju biti povezani
+
 weekdaynum_1=Prvi
 weekdaynum_2=Drugi
 weekdaynum_3=treći
 weekdaynum_4=Četvrta
 weekdaynum_5=Peti
+
 restore_title=Obnoviti povrat
 restore_title2=Vratite sigurnosnu kopiju u Bacula Group
 restore_title3=Vratite sigurnosnu kopiju grupe Bacula

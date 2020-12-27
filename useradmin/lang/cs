@@ -33,11 +33,13 @@ index_mass=Smazat vybrané uživatele
 index_mass2=Zablokovat vybrané
 index_mass3=Odblokovat vybrané
 index_gmass=Smazat vybrané skupiny
+
 search_title=Výsledek hledání
 search_notfound=Nenalezeni žádní odpovídající uživatelé
 search_found=Nalezeno $1 odpovídajících uživatelů ..
 search_gnotfound=Nenalezeny žádné odpovídající  skupiny
 search_gfound=Nalezeno $1 odpovídajících skupin ..
+
 uedit_title=Editovat uživatele
 uedit_title2=Vytvořit uživatele
 uedit_details=Detaily uživatele
@@ -109,6 +111,7 @@ uedit_forcechange=Přimět k provedení změny při následném přihlášení?
 uedit_uid_def=Automaticky
 uedit_uid_calc=Vypočítáno
 uedit_disabled=Dočasné přihlašování je vypnuto
+
 usave_err=Chyba při ukládání uživatele
 usave_eedit=Nemůžete editovat tohoto uživatele
 usave_ecreate=Nemůžete vytvořit nové uživatele
@@ -158,6 +161,7 @@ usave_epasswd_re=Heslo nevyhovuje regexp $1
 usave_epasswd_dict=Heslo je ze slovníku
 usave_epasswd_same=Heslo obsahuje jméno uživatele
 usave_eothers=Uživatel byl úspěšně uložen, vyskytla se však chyba v jiném modulu : $1
+
 gedit_title=Editovat skupinu
 gedit_title2=Vytvořit skupinu
 gedit_details=Detaily skupiny
@@ -172,6 +176,7 @@ gedit_cothers=Vytvořit skupinu v jiných modulech?
 gedit_mothers=Změnit skupinu v jiných modulech?
 gedit_gid_calc=Vypočítáno
 gedit_gid_def=Automaticky
+
 gsave_err=Nepodřrilo se uložit skupinu
 gsave_eedit=Nemůžete editovat tuto skupinu
 gsave_ecreate=Nemůžete vytvořit nové skupiny
@@ -188,6 +193,7 @@ usave_egidused=Skupina $1 již používá GID $2
 gsave_egidused2=GID je již používán
 usave_efromroot=Nemůžete přesunout domovský adresář z /
 usave_etoroot=Nemůžete přesunout domovský adresář do /
+
 logins_title=Zaznamenaná přihlášení
 logins_head=Přihlášení zaznamenané od $1
 logins_from=Přihlášení od
@@ -200,6 +206,7 @@ logins_none=Nejsou zaznamenana žádná přihlášení
 logins_elist=Nemáte oprávnění zobrazovat seznam přihlášení
 logins_elistu=Nemáte oprávnění zobrazovat seznam přihlášení pro '$1'
 logins_local=Lokální
+
 udel_title=Smazat uživatele
 udel_err=Chyba při mazání uživatele
 udel_enum=Neplatné číslo uživatele
@@ -221,6 +228,7 @@ udel_del2=Smazat uživatele a jeho domovský adresář
 udel_others=Varování! Domovský adresář $1 obsahuje $2 souborů vlastněných jinými uživateli.
 udel_dothers=Smazat uživatele z jiných modulů?
 udel_root=Varování! Jestliže je smazán uživatel root, nemusí být možná administrace systému.
+
 gdel_title=Smazat skupinu
 gdel_err=Chyba při mazání skupiny
 gdel_eroot=Nemáte oprávnění mazat systémové skupiny (tedy takové, u kterých je GID menší nebo rovno 10).
@@ -234,6 +242,7 @@ gdel_sure=Opravdu chcete smazat skupinu uživatelů $1 ?
 gdel_del=Smazat skupinu
 gdel_dothers=Smazat skupinu v jiných modulech?
 gdel_other=Probíhá mazání z jiných modulů ..
+
 many_title=Hromadné vytváření uživatelů
 many_desc=Tento formulář umožňuje vytvoření více uživatelů najednou, buď uploadem nebo textovým souborem. Každý řádek souboru specifikuje jednoho uživatale. Formát je následující:
 many_desc2=username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire
@@ -257,6 +266,7 @@ many_eshell=Chybný shell na řádku $1 : $2
 many_emkdir=Chyba při vytváření domovského adresáře $1 : $2
 many_egtaken=Jméno skupiny již existuje na řádku $1 : $2
 many_ok=Vytvořen uživatel $1
+
 acl_uedit=Uživatele, které lze editovat
 acl_uedit_all=Všichni uživatelé
 acl_uedit_none=Nikdo
@@ -316,6 +326,7 @@ acl_udelete=Může mazat uživatele?
 acl_gdelete=Může mazat skupiny?
 acl_urename=Může přejmenovávat uživatele?
 acl_grename=Může přejmenovávat skupiny?
+
 log_urename=Přejmenován uživatel $1 na $2
 log_umodify=Modifikován uživatel $1
 log_ucreate=Vytvořen uživatel $1
@@ -328,6 +339,7 @@ log_batch=Spuštěn dávkový soubor $1
 log_batch_l=Spuštěn dávkový soubor $1 ($2 vytvořeno, $3 modifikováno, $4 smazáno)
 log_ubatch=Spuštěn uploadovaný dávkový soubor
 log_ubatch_l=Spuštěn uploadovaný dávkový soubor ($1 vytvořeno, $2 modifikováno, $3 smazáno)
+
 batch_title=Spuštění dávkového souboru
 batch_ecannot=Nemůžete použít formulář pro dávkový soubor
 batch_desc=Tento formulář umožňuje vytvořit, modifikovat nebo mazat více uživatelů najednou pomocí uploadovaného nebo lokálního textového souboru. Každý řádek souboru specifikuje jednoho uživatale. Formát je následující:
@@ -386,12 +398,14 @@ batch_eexpire=Neplatný den vypršení v řádku $1 : $2
 batch_echange=Neplatný den pro změnu hesla v řádku $1 : $2
 batch_instr=Instrukce a formát dávky
 batch_header=Volby pro dávku, vytvářející, aktualizující a mazající uživatele
+
 who_title=Přihlášení uživatelé
 who_user=Unix uživatel
 who_tty=TTY
 who_when=Přihlášen na
 who_from=Přihlášen z
 who_none=Momemntálně nejsou přihlášëní žádní uživatelé.
+
 export_title=Exportovat dávkový soubor
 export_desc=Níže uvedený formulář umožňuje vytvoření dávkového souboru, obsahující některé nebo dokonce všechny uživatele vašeho systému. Tento soubor může být následně využit na stránce pro export přes dávkový soubor, čímž docílíte znovu vytovření příslušných uživatelů, aniž byste se museli trápit správným naformátováním dávkového souboru.
 export_to=Cíl dávkového soubor
@@ -410,6 +424,7 @@ export_egid2=Neplatné druhé GID v definovaném rozsahu
 export_done=Bylo úspěšně exportováno $1 uživatelů do souboru $2 ($3).
 export_pft=Formát dávkového souboru
 export_who=Uživatelé pro export
+
 pft_0=Pouze klasický soubor <tt>passwd</tt>
 pft_1=Soubor BSD <tt>master.passwd</tt>
 pft_2=Standardní soubory <tt>passwd</tt> a <tt>shadow</tt>
@@ -417,6 +432,7 @@ pft_3=Unixware soubor <tt>passwd</tt>
 pft_4=AIX soubory <tt>passwd</tt> a <tt>security</tt>
 pft_5=OpenServer soubory <tt>passwd</tt> a krátký <tt>shadow</tt>
 pft_6=MacOS NetInfo databáze
+
 umass_title=Smazat uživatele
 umass_err=Chyba při mazání uživatelů
 umass_sure=Určitě chcete smazat $1 vybraných uživatelů? Jejich domovské adresáře obsahují $1 souborů.
@@ -426,6 +442,7 @@ umass_del1=Smazat uživatele
 umass_del2=Smazat uživatele a jejich domovské adresáře
 umass_eroot=Nemáte oprávnění k mazání systémových uživatelů (tedy takových, u kterých je UID menší nebo rovno 10).
 umass_doing=Probíhá mazání uživatele $1 ..
+
 gmass_title=Smazat skupiny
 gmass_err=Chyba při mazání skupin
 gmass_sure=Určitě chcete smazat $1 vybraných skupin?
@@ -435,12 +452,14 @@ gmass_del=Smazat skupiny
 gmass_eroot=Nemáte oprávnění mazat systémové skupiny (tedy takové, u kterých je GID menší nebo rovno 10).
 gmass_doing=Probíhá mazání skupiny $1 ..
 gmass_eprimary=Skupina $1 nemůže být smazána, protože je uvedena jako primární skupina u uživatele $2.
+
 dmass_title=Zablokovat uživatele
 dmass_sure=Určitě chcete zablokovat $1 vybraných uživatelů? Později je můžete opětovně povolit, aniž by byla ztracena jejich hesla nebo data.
 dmass_dis=Nepovolit uživatele
 dmass_pass=Probíhá dočasné uzamykání hesla ..
 dmass_doing=Probíhá blokování uživatele $1 ..
 dmass_already=.. vždy vypnuto!
+
 emass_title=Odblokovat uživatele
 emass_pass=Provádí se odemykání hesla ..
 emass_doing=Provádí se odblokování uživatele $1 ..

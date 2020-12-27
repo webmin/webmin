@@ -21,6 +21,7 @@ index_thost=Nom de host
 index_tdesc=Descripció
 index_tcount=Paquets
 index_ttype=Tipus de SO
+
 install_err=No s'ha pogut instal·lar el paquet
 install_elocal=No has donat cap fitxer local
 install_elocal2='$1' no existeix
@@ -37,6 +38,7 @@ install_ok=Instal·la-ho
 install_erus=Aquest servidor utilitza un sistema d'actualització diferents cap al servidor mestre ($1 versus $2)
 install_eupdate=S'ha produït un error en instal·lar les actualitzacions especificades
 install_ealready=La versió $1 ja està instal·lada
+
 add_title=Addició de Servidors
 add_msg=S'està afegint $1...
 add_gmsg=S'estan afegint servidors al grup $1...
@@ -45,6 +47,7 @@ add_gerr=No s'ha pogut afegir el grup
 add_echeck=El servidor $1 no té el mòdul de paquets de programari
 add_esystem=El servidor $1 no està utilitzant el mateix sistema de paquets que aquesta màquina
 add_ok=S'ha afegit $1 amb $2 paquets.
+
 search_title=Recerca de Paquets
 search_nomatch=No hi ha cap paquet que coincideixi amb $1
 search_none=Cap
@@ -56,6 +59,7 @@ search_return=als resultats de la recerca
 search_delete=Desinstal·la els Paquets Seleccionats De:
 search_selall=Selecciona-ho Tot
 search_invert=Inverteix la Selecció
+
 host_title=Servidor Gestionat
 host_header=Detalls del servidor gestionat
 host_name=Nom de host
@@ -70,6 +74,7 @@ host_count=Paquets instal·lats
 host_os=SO del Webmin
 host_return=als detalls del servidor
 host_system=Sistema de paquets
+
 edit_title=Edició de Paquet
 edit_details=Detalls del Paquet de $1
 edit_desc=Descripció
@@ -88,6 +93,7 @@ edit_all=&lt;tots els hosts&gt;
 edit_donthave=&lt;hosts que no ho tenen&gt;
 edit_have=&lt;hosts que ho tenen&gt;
 edit_group=Membres de $1
+
 list_title=Fitxer de Paquet
 list_files=Fitxers del Paquet $1 de $2
 list_path=Camí
@@ -97,6 +103,7 @@ list_type=Tipus
 list_size=Mida
 list_status=Estat
 list_ok=Bé
+
 refresh_title=Refresc de les Llistes de Paquets
 refresh_header=S'estan tornant a demanar les llistes de paquets de tots els servidors...
 refresh_header4=S'estan tornant a demanar les llistes de paquets dels membres de $2...
@@ -108,6 +115,7 @@ refresh_4=S'ha refrescat $1 (cap canvi)
 refresh_done=... fet
 refresh_del=S'ha eliminat $1 de la llista del servidor
 refresh_failed=No s'ha pogut refrescar $1: $2
+
 delete_err=No s'ha pogut suprimir el paquet $1
 delete_epack=El paquet $1 no existeix
 delete_title=Supressió de Paquets
@@ -120,6 +128,7 @@ delete_error=No s'ha pogut esborrar de $1: $2
 delete_success=S'ha suprimit de $1.
 delete_done=...fet
 delete_header=S'està suprimint el paquet $1...
+
 do_title=Instal·lació de Paquet
 do_header=S'està instal·lant $1 a tots els hosts...
 do_header3=S'està instal·lant $1 als hosts que encara no ho tenen...
@@ -139,6 +148,7 @@ do_arch=Arquitectura
 do_inst=Instal·lat
 do_none=Cap
 do_edeleted=El fitxer d'instal·lació ha estat esborrat - torna al mòdul i prova-ho altre cop.
+
 compare_title=Compara els Paquets
 compare_desc=Aquest formulari es pot utilitzar per comparar els paquets instal·lats en dos o més servidors i trobar qualsevol discrepància entre les versions dels paquets disponibles. 
 compare_hosts=Servidors a comparar
@@ -153,6 +163,7 @@ compare_showall=Paquets a mostrar
 compare_showall1=Tots
 compare_showall0=Només les no coincidències
 compare_got=Bé
+
 deletes_err=No s'ha pogut suprimir els paquets
 deletes_enone=No has seleccionat cap paquet
 deletes_title=Suprimeix els Paquets

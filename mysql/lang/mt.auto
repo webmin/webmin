@@ -45,12 +45,15 @@ index_showing=Li juru databases li jaqblu ma ' $1 ..
 index_emsg=Il-messaġġ ta 'żball MySQL sħiħ kien : $1 
 index_jump=Jew editja database:
 index_jumpok=Miftuħ
+
 login_err=Id-dħul ma rnexxiex
 login_ecannot=M'għandekx permess tikkonfigura l-login tad-database
 login_elogin=Nieqes id-dħul tal-amministrazzjoni
 login_epass=Username jew password ta 'l-amministrazzjoni mhux korretta
+
 stop_err=Naqset milli tieqaf id-database
 start_err=Naqset milli tibda d-database
+
 dbase_title=Editja Database
 dbase_header=Database tabelli, indiċijiet u veduti
 dbase_tables=Database Tabelli
@@ -81,6 +84,7 @@ dbase_type=Tip
 dbase_typetable=Tabella ($1)
 dbase_typeindex=Indiċi
 dbase_typeview=Ara
+
 ddrop_err=Naqset milli tinżel database
 ddrop_title=Database tal-Qatra
 ddrop_rusure=Int żgur li trid tinżel id-database $1 ? $2 tabelli li fihom $3 ringieli ta 'dejta jiġu mħassra.
@@ -89,6 +93,7 @@ ddrop_mysql=Minħabba li din hija d-database ewlenija, it-twaqqigħ probabbilmen
 ddrop_ok=Database tal-Qatra
 ddrop_empty=Ħassar biss it-Tabelli Kollha
 ddrop_empty2=Ħassar it-Tabelli Kollha
+
 ddrops_err=Naqset milli twaqqa 'bażijiet tad-data
 ddrops_title=Bażi ta 'Databases
 ddrops_rusure=Int żgur li trid twaqqa 'l-bażijiet tad-data magħżula $1 ? $2 tabelli li fihom $3 ringieli ta 'dejta jiġu mħassra.
@@ -97,6 +102,7 @@ ddrops_mysql=Minħabba li d-database kaptan hija magħżula, it-twaqqigħ probab
 ddrops_ok=Bażi ta 'Databases
 ddrops_enone=L-ebda bażi tad-data magħżula
 ddrops_ecannotdb=M'għandekx permess tinżel id-database $1 
+
 table_title=Editja Tabella
 table_title2=Oħloq Tabella
 table_header=Tabella $1 fid-database $2 
@@ -142,16 +148,19 @@ table_nextra=Attribwita Extra
 table_eautokey=Il-kamp awtomatiku jiżdied ukoll għandu jkun ċavetta primarja
 table_eauto=Qasam wieħed biss jista 'jiżdied awtomatikament
 table_delete=Ħassar l-Oqsma magħżula
+
 tdrop_err=Naqset milli tinżel fit-tabella
 tdrop_title=Tabella tal-qatra
 tdrop_rusure=Int żgur li trid twaqqa 't-tabella $1 fid-database $2 ? $3 ringieli ta 'dejta se jitħassru
 tdrop_ok=Tabella tal-qatra
+
 tdrops_enone=L-ebda tabella (i) li tinżel magħżula
 tdrops_err=Naqset milli tinżel tabella (i)
 tdrops_ok=Waqqa '
 tdrops_title=Qatra magħżula
 tdrops_rusure=Int żgur li trid twaħħal $1 tabella (i) magħżula fid-database $2 ? $3 ringieli ta 'dejta se jitħassru
 tdrops_rusure2=Int żgur li trid twaħħal $1 tabella (i) magħżula fid-database $2 ?
+
 field_title1=Żid il-Qasam
 field_title2=Ibdel il-Qasam
 field_in=Fit-tabella $1 fid-database $2 
@@ -185,6 +194,7 @@ field_esize="$1" m'huwiex daqs kamp validu
 field_eenum=L-ebda valuri enumerati ma daħlu
 field_efield="$1" mhux isem tal-qasam validu
 field_ekey=L-oqsma li jippermettu n-null ma jistgħux ikunu parti miċ-ċavetta primarja
+
 view_title=Tabella ta 'Dejta
 view_pos=Ringieli $1 sa $2 ta ' $3 
 view_none=Din it-tabella ma fiha l-ebda data.
@@ -219,6 +229,7 @@ view_keep=Ħalli l-istess
 view_set=Issettja għall-kontenut tal-fajl ..
 view_adv=Tiftix Avvanzat
 view_sqlrun=Riżultati ġġenerati mill-mistoqsija SQL : $1 
+
 users_title=Permessi ta 'l-Utent
 users_user=Utent
 users_host=L-ospiti
@@ -245,6 +256,7 @@ users_ssl=Ċertifikat
 users_dtitle=Ħassar il-Permessi tal-Utenti
 users_drusure=Int żgur li trid tħassar il-permessi tal-utent tal-MySQL $1 magħżula?
 users_dok=Ħassar l-Utenti
+
 user_title1=Oħloq Utent
 user_title2=Editja l-Utent
 user_header=Dettalji tal-utent MySQL
@@ -308,6 +320,7 @@ user_emax_user_connections=Il-massimu ta 'logins simultanji għandhom ikunu numr
 user_emax_connections=Il-konnessjonijiet massimi fis-siegħa għandhom ikunu numru
 user_emax_updates=Aġġornamenti massimi fis-siegħa għandhom ikunu numru
 user_emax_questions=Mistoqsijiet massimi fis-siegħa għandhom ikunu numru
+
 dbs_title=Database Permessi
 dbs_db=Databases
 dbs_user=Utent
@@ -326,6 +339,7 @@ dbs_enone=L-ebda bażi tad-data magħżula
 dbs_dtitle=Ħassar il-Permessi tad-Database
 dbs_drusure=Int żgur li trid tħassar il-permessi tad-database MySQL $1 magħżula?
 dbs_dok=Ħassar il-Permessi
+
 db_title1=Oħloq Permessi ta 'Database
 db_title2=Editja l-Permessi tad-Database
 db_header=Għażliet ta 'permess ta' database
@@ -340,6 +354,7 @@ db_err=Ma rnexxielux isalva l-permessi tad-database
 db_euser=Username nieqes jew invalidu
 db_ehost=Name host nieqes jew invalidu
 db_edb=Isem tad-database nieqes jew invalidu
+
 hosts_title=Permessi tal-Ospitanti
 hosts_db=Databases
 hosts_host=L-ospiti
@@ -355,6 +370,7 @@ hosts_dtitle=Ħassar il-Permessi tal-Ospitanti
 hosts_drusure=Int żgur li trid tħassar il-permessi tal-ospitanti MySQL $1 magħżula?
 hosts_dok=Ħassar il-Permessi
 hosts_return=permessi ospitanti
+
 host_title1=Oħloq Permessi Ospitanti
 host_title2=Editja l-Permessi tal-Ospitanti
 host_header=Għażliet tal-permessi ospitanti
@@ -364,6 +380,7 @@ host_sel=Magħżula
 host_otherdb=Disinn li jqabbel
 host_host=L-ospiti
 host_perms=Permessi
+
 newdb_title=Oħloq Database
 newdb_header=Għażliet tad-database ġodda
 newdb_db=Isem tad-database
@@ -377,6 +394,7 @@ newdb_err=Ma rnexxielux joħloq database
 newdb_edb=Isem tad-database nieqes jew invalidu
 newdb_ecannot=M'għandekx permess toħloq databases
 newdb_ecannot2=M'għandekx permess toħloq aktar bażijiet tad-data
+
 exec_title=Eżegwixxi SQL
 exec_header=Daħħal kmand SQL li tesegwixxi fuq database $1 ..
 exec_old=Jew agħżel kmand SQL preċedenti :
@@ -413,6 +431,7 @@ exec_iheader=Għażliet ta 'importazzjoni ta' fajl tat-test
 exec_created=$1 tabelli ġew maħluqa.
 exec_inserted=$1 rekords iddaħħlu.
 exec_cs=Sett ta 'karattri għad-dejta
+
 tprivs_title=Permessi tat-Tabella
 tprivs_table=Tabella
 tprivs_db=Database
@@ -431,6 +450,7 @@ tprivs_enone=L-ebda tabelli magħżula
 tprivs_dtitle=Ħassar il-Permessi tat-Tabella
 tprivs_drusure=Int żgur li trid tħassar il-permessi magħżula $1 tat-tabella MySQL?
 tprivs_dok=Ħassar il-Permessi
+
 tpriv_title1=Oħloq Permessi tat-Tabella
 tpriv_title2=Editja l-Permessi tat-Tabella
 tpriv_header=Għażliet ta 'permess tat-tabella
@@ -447,6 +467,7 @@ tpriv_etable=L-ebda tabella magħżula
 tpriv_euser=Username nieqes jew invalidu
 tpriv_ehost=Ospitanti nieqsa jew invalidi
 tpriv_edb=Isem tad-database nieqes jew invalidu
+
 cprivs_title=Permessi tal-Qasam
 cprivs_field=Qasam
 cprivs_table=Tabella
@@ -466,6 +487,7 @@ cprivs_enone=L-ebda oqsma magħżula
 cprivs_dtitle=Ħassar il-Permessi tal-Kolonna
 cprivs_drusure=Int żgur li trid tħassar il-permessi magħżula $1 tal-kolonna MySQL?
 cprivs_dok=Ħassar il-Permessi
+
 cpriv_title1=Oħloq Permessi tal-Qasam
 cpriv_title2=Editja l-Permessi tal-Qasam
 cpriv_header=Għażliet ta 'permess fuq il-post
@@ -482,11 +504,13 @@ cpriv_etable=L-ebda tabella magħżula
 cpriv_euser=Username nieqes jew invalidu
 cpriv_ehost=Ospitanti nieqsa jew invalidi
 cpriv_edb=Isem tad-database nieqes jew invalidu
+
 esql=SQL $1 falliet : $2 
 eparse=Webmin ma jistax jiddekorri l-output mill-kmand $1 minħabba n-natura tad-data fid-database tiegħek. Ikollok bżonn tinstalla l-moduli $2 u $3 Perl biex issolvi din il-problema.
 edenied=M'għandekx aċċess għal din id-database MySQL
 perms_ecannot=M'għandekx permess teditja l-permessi
 perms_edb=Inti permess biss li jeditja l-permessi għad-databases tiegħek stess
+
 acl_dbs=Databases ta ’dan l-utent jistgħu jimmaniġġjaw
 acl_dall=Il-bażijiet tad-dejta kollha
 acl_dsel=Magħżula ..
@@ -507,6 +531,7 @@ acl_bnone=Ħalli l-backups
 acl_indexes=Tista 'tara u timmaniġġja indiċi?
 acl_views=Tista 'tara u timmaniġġja veduti?
 acl_files=Tista 'tesegwixxi SQL minn fajls lokali?
+
 log_start=Beda server MySQL
 log_stop=Waqqaf is-server MySQL
 log_cnf=Biddel il-konfigurazzjoni tas-server MySQL
@@ -571,6 +596,7 @@ log_importfile=Dejta importata mill-fajl $1
 log_set=Bidla $1 ta 'varjabbli MySQL
 log_root=Inbidlet il-password tal-amministrazzjoni
 log_manual=Fajl konfigurazzjoni editjat manwalment
+
 backup_title=Database tad-Dejt
 backup_title2=Backup Il-Databases kollha
 backup_edump=Il-programm tal-backup MySQL $1 ma nstabx fis-sistema tiegħek. Forsi l-konfigurazzjoni tal-modulu <a href='$2'></a> mhix korretta.
@@ -649,15 +675,18 @@ backup_bodyspace=Daqs tas-sistema tal-fajl: $1 Spazju ħieles : $2
 backup_bodyall=kollha
 backup_edownloadall=Backup ta 'database waħda biss tista' titniżżel
 backup_edownloadsave=Il-mod tat-tniżżil ma jistax jintuża għal backups skedati
+
 import_title=Importazzjoni tad-Dejta
 import_uploadout=Timporta data minn fajl imtella ' ..
 import_fileout=Jimporta data mill-fajl $1 ..
 import_eupload=Fajl ta 'importazzjoni mtella' nieqes
 import_efile=Nieqes il-fajl tal-importazzjoni
+
 adv_title=Tiftix Avvanzat
 adv_and=Sib rekords li jaqblu mal-kriterji kollha ..
 adv_or=Sib rekords li jaqblu ma 'xi kriterji ..
 adv_ok=Fittex Issa
+
 csv_title=Esportazzjoni tal-Fajl CSV
 csv_header=Għażliet ta 'esportazzjoni CSV
 csv_dest=Destinazzjoni tal-esportazzjoni
@@ -678,6 +707,7 @@ csv_done=L-esportazzjoni CSV għal $1 hija kompluta. Id-daqs tal-fajl li jirriż
 csv_headers=Jinkludu ismijiet tal-kolonni fi CSV?
 csv_cols=Kolonni li għandhom jinkludu fis-CSV
 csv_ecols=L-ebda kolonni magħżula
+
 cnf_title=Konfigurazzjoni tas-Server MySQL
 cnf_efile=Il-fajl tal-konfigurazzjoni MySQL $1 ma nstabx fis-sistema tiegħek. Jista 'jkollok bżonn taġġusta l-konfigurazzjoni tal-modulu <a href='$2'></a> biex tuża t-triq it-tajba.
 cnf_header=Għażliet ta 'server MySQL
@@ -719,11 +749,13 @@ cnf_restart=Issejvja u Irristartja MySQL
 cnf_fpt=Fajl separat għal kull tabella InnoDB?
 cnf_ilt=Żmien tal-illokkjar InnoDB (f'sekondi)
 cnf_eilt=It-tul ta 'żmien tal-illokkjar InnoDB għandu jkun numru sħiħ
+
 manual_title=Editja l-Iskedi tal-Konfigurazzjoni
 manual_file=Editja l-fajl konfigurazzjoni:
 manual_ok=kollox sew
 manual_efile=Fajl ta 'konfigurazzjoni mhux validu!
 manual_err=Ma rnexxielux isalva l-fajl tal-konfigurazzjoni
+
 index_title1=Oħloq Indiċi
 index_header1=Għażliet ta 'indiċi
 index_name=Isem tal-indiċi
@@ -739,12 +771,15 @@ index_ecols=L-ebda oqsma magħżula
 index_title2=Edit Indiċi
 index_header=Indiċi $1 fid-database $2 
 index_ecannot=M'għandekx permess timmaniġġja indiċi
+
 syslog_desc=Messaġġi ta ’żball MySQL
 syslog_desc2=Messaġġ ta 'żball MySQL
 syslog_logdesc=Mistoqsijiet tal-MySQL
+
 fdrop_err=Naqset milli tħassar l-oqsma
 fdrop_enone=L-ebda magħżul
 fdrop_eall=Ma tistax tħassar l-oqsma kollha minn tabella!
+
 view_title1=Oħloq Ara
 view_title2=Editja Ara
 view_header1=Ara d-dettalji
@@ -770,6 +805,7 @@ view_cascaded=Opinjonijiet sottostanti
 view_local=Dan il-ħsieb biss
 view_nocheck=Xejn
 view_ecannot=M'għandekx permess timmaniġġja l-opinjonijiet
+
 procs_title=Konnessjonijiet ta 'Database
 procs_id=ID
 procs_user=Username
@@ -781,9 +817,11 @@ procs_query=Tmexxi mistoqsija
 procs_kill=Konnessjonijiet Maqtula
 procs_ecannot=M'għandekx permess tara konnessjonijiet ta 'database
 procs_none=M'hemm l-ebda konnessjoni oħra ta 'klijenti tad-database f'dan il-ħin.
+
 kill_err=Ma rnexxielux joqtol il-konnessjonijiet tad-database
 kill_ecannot=M'għandekx permess timmaniġġja konnessjonijiet ta 'database
 kill_enone=L-ebda magħżul
+
 vars_title=Varjabbli tas-Sistema MySQL
 vars_desc=Twissija - Il-varjabbli ssettjati f'din il-paġna se jerġgħu jiddaħħlu għall-valuri awtomatiċi tagħhom meta MySQL jerġa 'jinbeda. L-issettjar permanenti għandu jsir fuq il-paġna <a href='$1'>MySQL Server Configuration</a>.
 vars_ecannot=M'għandekx permess teditja l-varjabbli tas-sistema
@@ -794,6 +832,7 @@ vars_search=Uri tqabbil tal-varjabbli:
 vars_ok=Fittex
 vars_none2=L-ebda varjabbli tas-sistema ma jaqblu mat-tfittxija tiegħek.
 vars_none=Ma nstabu l-ebda varjabbli tas-sistema!
+
 compat_ansi=ANSI
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQL 4.0
@@ -805,7 +844,9 @@ compat_maxdb=MaxDB
 compat_no_key_options=Għażliet ewlenin
 compat_no_table_options=Għażliet tat-tabella
 compat_no_field_options=Għażliet tal-qasam
+
 config_echarset=Sett ta 'karattri nieqes jew li jħares invalidu
+
 root_title=Ibdel il-Password tal-Amministrazzjoni
 root_header=Password ta ’amministrazzjoni ġdida
 root_user=Login tal-amministrazzjoni
@@ -818,6 +859,7 @@ root_epass1=Ma ddaħħlet l-ebda password ġdida
 root_epass2=Il-passwords ma jaqblux
 root_none=Ebda password!
 root_auto=Awtomatiku (tipikament <tt>root</tt>)
+
 mysqlpass_err=MySQL safe mode
 mysqlpass_esafecmd=Il-kmand $1 meħtieġ biex tibda MySQL b'awtentikazzjoni diżattivata ma nstabx
 mysqlpass_eshutdown=It-tmiem falla : $1 

@@ -15,5 +15,6 @@ edit_special_daily=Svakodnevno (u ponoć)
 edit_special_weekly=Tjedno (nedjelja)
 edit_special_monthly=Mjesečno (1. siječnja)
 edit_special_yearly=Godišnje (1. siječnja)
+
 log_success=Uspješno je pokrenut <tt>$2</tt> u <tt>$1</tt>
 log_failure=Nije pokrenuto <tt>$2</tt> u <tt>$1</tt> : $3 

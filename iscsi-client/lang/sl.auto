@@ -3,8 +3,10 @@ index_clink=Mogoče ni nameščen ali pa je vaša <a href='$1'>konfiguracija mod
 index_return=kazalo modula
 index_atboot=Začeti ob zagonu?
 index_atbootdesc=Spremenite to možnost, če želite nadzirati, ali se odjemalec iSCSI zažene ob zagonu ali ne. To je potrebno za samodejno namestitev datotečnih sistemov, nameščenih iz strežnikov iSCSI.
+
 check_econfig=Konfiguracijske datoteke odjemalca iSCSI $1 v vašem sistemu ni bilo mogoče najti.
 check_eiscsiadm=Programa za upravljanje odjemalca iSCSI $1 v vašem sistemu ni bilo mogoče najti.
+
 auth_title=Možnosti preverjanja pristnosti
 auth_header=avtentikacija odjemalca in strežnika iSCSI
 auth_name=Ime lokalnega sistemskega pobudnika
@@ -29,6 +31,7 @@ auth_edpassword=Manjka geslo za odkritje strežnika
 auth_edusername_in=Manjka uporabniško ime za odkritje za stranko
 auth_edpassword_in=Manjka geslo za odkritje za stranko
 auth_egen=Novega imena ni bilo mogoče ustvariti!
+
 timeout_title=Prekinitve iSCSI
 timeout_header=Možnosti časovne omejitve odjemalca iSCSI
 timeout_timeout=Čas za čakanje, preden SCSI ukazi ne uspejo
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=Manjka ali neštevilčen čas za čakanje na ping, pre
 timeout_eabort_timeout=Manjkajoči ali neštevilčni čas za čakanje na prekinitev odziva, preden ne uspe
 timeout_elu_reset_timeout=Manjka ali neštevilčen čas za čakanje na odgovor logične enote, preden ne uspe
 timeout_etgt_reset_timeout=Manjkajoči ali neštevilčni čas za čakanje na ciljni odgovor, preden ne uspe
+
 iscsi_title=Možnosti iSCSI
 iscsi_header=Druge možnosti iSCSI
 iscsi_startup=Povežite seje ob zagonu?
@@ -62,6 +66,7 @@ iscsi_err=Možnosti iSCSI ni bilo mogoče shraniti
 iscsi_eretry=Manjkajoče ali neštevilčno število ponovnih poskusov za prijavo
 iscsi_ecmds=Manjkajoči ali neštevilčni največji ukazi, ki so v čakalni vrstici
 iscsi_equeue=Manjkajoči ali neštevilčni največji ukazi iz čakalne vrste na napravo
+
 ifaces_title=iSCSI vmesniki
 ifaces_elist=Vmesnikov ni bilo mogoče navesti : $1 
 ifaces_name=Ime vmesnika
@@ -78,11 +83,13 @@ ifaces_hwaddress=Mac naslov
 ifaces_ifacename=Izvorni vmesnik
 ifaces_ipaddressdef=Samodejno
 ifaces_notset=Samodejno
+
 iadd_err=Vmesnika ni bilo mogoče dodati
 iadd_eclash=Vmesnik z imenom $1 že obstaja
 iadd_eipaddress=Manjkajoči ali neveljaven vir naslova IP
 iadd_ehwaddress=Manjkajoč ali neveljaven MAC naslov
 iadd_ename=Ime vmesnika manjka ali vsebuje neveljavne znake
+
 difaces_err=Odstranjevanje vmesnikov ni uspelo
 difaces_enone=Izbrana ni nobena
 difaces_edelete=Odstranjevanje vmesnika $1 ni uspelo : $2 
@@ -93,6 +100,7 @@ difaces_confirm=Odstranite vmesnike
 difaces_target=iSCSI cilj
 difaces_ip=iSCSI strežnik
 difaces_users=Nekatere povezave, ki uporabljajo te vmesnike, so trenutno aktivne in ne bodo delovale, ko so vmesniki odstranjeni :
+
 conns_title=Povezave iSCSI
 conns_elist=Povezave ni bilo mogoče navesti : $1 
 conns_ip=IP strežnika
@@ -113,6 +121,7 @@ conns_return=seznam povezav
 conns_iface=iSCSI vmesnik
 conns_ifacedef=Izberite samodejno
 conns_ifaceerr=Vmesnikov ni bilo mogoče pridobiti : $1 
+
 add_title=Dodaj povezavo iSCSI
 add_err=Povezave iSCSI ni bilo mogoče dodati
 add_ehost=Manjkajoče ali nerešljivo ime gostitelja
@@ -129,6 +138,7 @@ add_on=$1 na $2
 add_auth=Prijava v strežnik
 add_auth1=Uporabite privzeti način preverjanja pristnosti
 add_auth0=Prijavite se kot $2 z geslom $3 z uporabo metode $1 
+
 dconns_err=Povezave ni bilo mogoče prekiniti
 dconns_enone=Izbrana ni nobena
 dconns_edelete=Odstranjevanje cilja $2 iz gostitelja $1 ni uspelo : $3 
@@ -142,6 +152,7 @@ dconns_use=Uporablja
 dconns_size=Velikost particije
 dconns_confirm=Odstranite povezave
 dconns_unused=Neuporabljen
+
 vconn_title=Povezava iSCSI
 vconn_egone=Izbrana povezava ne obstaja več!
 vconn_header=Podrobnosti o povezavi iSCSI
@@ -160,8 +171,10 @@ vconn_device3=Stalno ime naprave
 vconn_delete=Prekinite povezavo
 vconn_users=Trenutni uporabniki
 vconn_size=Velikost diska
+
 atboot_err=V času zagona ni bilo mogoče omogočiti
 atboot_einit=Ni akcijskega zagona z imenom $1 
+
 log_auth=Shranjene možnosti preverjanja pristnosti
 log_timeout=Shranjene možnosti časovne omejitve
 log_iscsi=Shranjene možnosti iSCSI

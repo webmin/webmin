@@ -25,12 +25,15 @@ index_up=Mula Sambungan:
 index_updesc=Pilih sambungan dari senarai di sebelah butang ini, dan klik untuk mencubanya.
 index_nopol=Tiada dasar rangkaian dijumpai - mungkin konfigurasi rangkaian <a href='$1'>anda</a> tidak betul.
 index_import=Import sambungan dari fail.
+
 stop_err=Gagal menghentikan pelayan IPsec
 start_err=Gagal memulakan pelayan IPsec
 restart_err=Gagal memulakan semula pelayan IPsec
 start_elog=Kesalahan berikut telah dilog : $1 
+
 newkey_err=Gagal menjana kunci
 newkey_ehost=Nama tuan rumah yang hilang atau tidak sah
+
 edit_title1=Buat Sambungan
 edit_title2=Edit Sambungan
 edit_header=Butiran sambungan VPN IPsec
@@ -101,6 +104,7 @@ edit_unit_s=secs
 edit_unit_m=minit
 edit_unit_h=Jam
 edit_unit_d=hari
+
 config_title=Konfigurasi Server
 config_header=Tetapan pelayan VPN global
 config_ifaces=Antara muka rangkaian untuk IPsec
@@ -118,6 +122,7 @@ config_nat=Membolehkan NAT melintas?
 config_err=Gagal menyimpan konfigurasi pelayan
 config_eri=Antara muka sebenar '$1' disenaraikan lebih daripada sekali
 config_enone=Tiada antaramuka rangkaian ditentukan
+
 showkey_title=Tunjukkan Kunci Awam
 showkey_desc1=Kekunci RSA awam yang ditunjukkan di bawah harus disalin ke dalam konfigurasi sistem lain yang menyambung ke yang satu ini, di bahagian yang berkaitan dengan hos ini.
 showkey_desc2=Nilai yang ditunjukkan di bawah boleh digunakan untuk membuat rekod DNS KEY untuk hos ini, supaya sistem lain yang menyambungkannya dapat melihat kunci publiknya.
@@ -125,6 +130,7 @@ showkey_flags=Bendera
 showkey_proto=Protokol
 showkey_alg=Algoritma
 showkey_key=Data kunci
+
 policy_desc_block=Rangkaian yang Dikeluarkan
 policy_desc_clear=Jelas Rangkaian Lalu Lintas
 policy_desc_private=Rangkaian yang disulitkan
@@ -145,6 +151,7 @@ policy_mask=Awalan
 policy_err=Gagal menyimpan rangkaian
 policy_enet=Alamat IP rangkaian tidak sah pada baris $1 
 policy_emask=Panjang awalan tidak sah pada baris $2 
+
 save_err=Gagal menyimpan sambungan
 save_ename=Nama sambungan hilang atau tidak sah
 save_ekeying=Nombor keying yang hilang atau tidak sah
@@ -164,6 +171,7 @@ save_eleftcert=Sijil pelayan tempatan yang hilang atau tidak sah
 save_erightcert=Sijil pelayan jauh atau tidak sah
 save_ekeylife=Kehilangan kunci sambungan sepanjang hayat atau tidak sah
 save_eikelifetime=Kehidupan saluran hos atau tidak sah sepanjang hayat
+
 log_create_conn=Sambungan yang dibuat $1 
 log_delete_conn=Sambungan dipadamkan $1 
 log_modify_conn=Sambungan diubah suai $1 
@@ -182,8 +190,10 @@ log_delete_secret=Kunci rahsia dipadamkan untuk $1
 log_create_secret_nn=Kunci rahsia yang dibuat untuk mana-mana tuan rumah
 log_modify_secret_nn=Kunci kunci rahsia untuk mana-mana tuan rumah
 log_delete_secret_nn=Kunci rahsia dipadamkan untuk mana-mana hos
+
 up_title=Mula Sambungan
 up_cmd=Memulakan sambungan dengan perintah $1 ..
+
 export_title=Konfigurasi Eksport
 export_desc=Borang ini boleh digunakan untuk mengeksport bahagian fail konfigurasi untuk sambungan $1, supaya ia boleh diimport dengan mudah di pelayan di hujung yang lain.
 export_print=Konfigurasi paparan dalam penyemak imbas
@@ -193,11 +203,13 @@ export_err=Gagal mengeksport konfigurasi
 export_efile=Nama fail yang hilang
 export_esave=Gagal menulis ke fail : $1 
 export_done=Konfigurasi yang dieksport untuk sambungan $1 hingga $2 ($3 bait).
+
 import_title=Konfigurasi Import
 import_desc=Borang ini boleh digunakan untuk mengimport bahagian fail konfigurasi untuk sambungan, seperti yang dibuat oleh ciri eksport modul pada sistem lain.
 import_upload=Import daripada fail muat naik ..
 import_file=Import dari fail sisi pelayan ..
 import_ok=Import Sekarang
+
 import_err=Gagal mengimport konfigurasi
 import_eupload=Tiada fail yang dipilih untuk dimuat naik
 import_efile=Tiada fail sisi pelayan yang dimasukkan
@@ -207,6 +219,7 @@ import_eclash=Sambungan yang dipanggil $1 sudah wujud.
 import_done1=Berhasil menambah sambungan IPsec baru $1.
 import_done2=Berjaya memperbaharui sambungan IPsec $1.
 import_over=Timpa sambungan sedia ada dengan nama yang sama?
+
 secrets_title=Kunci Rahsia
 secrets_none=Tiada kunci rahsia ditemui!
 secrets_name=Rahsia untuk
@@ -220,6 +233,7 @@ secrets_mod=Modulus $1
 secrets_newpsk=Buat kunci rahsia kongsi baharu.
 secrets_newrsa=Buat kunci RSA baharu.
 secrets_return=senarai kunci rahsia
+
 secret_title1=Buat Kunci Rahsia
 secret_title2=Edit Kunci Rahsia
 secret_header=Butiran utama rahsia

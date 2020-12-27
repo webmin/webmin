@@ -23,6 +23,7 @@ index_follow=Dopo $1
 index_forcetar=Nel formato TAR
 index_delete=Elimina i backup selezionati
 index_nostrftime=Avviso: alcuni processi di backup utilizzano % nei nomi dei file, ma la sostituzione strftime non è abilitata nella pagina Configurazione modulo.
+
 dump_dir=Directory per il backup
 dump_dirs=Directory per il backup
 dump_fs=filesystem
@@ -108,6 +109,7 @@ dump_remount=Rimontare con l'opzione <tt>noatime</tt> durante il backup?
 dump_eftpupdate=L'aggiunta di file a un archivio esistente non è possibile quando si utilizza FTP.
 dump_eleveldir=Sono consentiti solo backup di livello 0 per le directory che non sono punti di montaggio del filesystem
 dump_eupdatedir=Il file <tt>/etc/dumpdates</tt> può essere aggiornato solo per le directory che sono punti di montaggio del filesystem
+
 edit_err=Impossibile creare il backup
 edit_edir=Directory di backup mancante
 edit_efs=Non è possibile eseguire il backup di filesystem di tipo $1 da questo modulo
@@ -132,9 +134,11 @@ edit_tolevel=Da $1 a $2 (livello $3)
 edit_special=Pianificazione del backup
 edit_when=Quando eseguire il backup
 edit_clone=Clone
+
 save_err=Impossibile salvare il backup
 save_edir=Directory di backup mancante o non valida
 save_efs=La directory di backup non può cambiare in un file system diverso
+
 backup_title=Esegui il backup ora
 backup_desc=Esecuzione di backup da $1 a $2 ..
 backup_reverify=.. completare. Ora verifica il backup ..
@@ -147,6 +151,7 @@ backup_notape=.. il backup ha superato la capacità di un singolo nastro. La sos
 backup_egone=Il backup non esiste!
 backup_bg=Avvio del processo di backup in background. Puoi monitorare i suoi progressi nella sezione <b>Esecuzione di processi di backup</b> nella pagina principale del modulo e riceverai una notifica via e-mail dello stato finale.
 backup_ecannot=Non è consentito eseguire il backup di questa directory
+
 restore_title=Ripristinare il backup
 restore_err=Impossibile ripristinare il backup
 restore_ecommand=Il comando $1 necessario per ripristinare i backup del filesystem $2 non è stato trovato sul tuo sistema. Forse non è attualmente installato.
@@ -190,6 +195,7 @@ restore_gzip=Non decomprimere l'archivio?
 restore_keep=Non sovrascrivere i file?
 restore_emulti=I ripristini di più file non possono essere eseguiti da un dispositivo a nastro
 restore_emulti2=I ripristini di più file non possono essere eseguiti da un server remoto
+
 log_create=Configurazione di backup creata per $1 
 log_modify=Configurazione di backup modificata per $1 
 log_delete=Configurazione di backup eliminata per $1 
@@ -197,13 +203,16 @@ log_backup=Backup da $1 a $2
 log_bgbackup=Backup avviato da $1 a $2 
 log_restore=Backup ripristinato da $1 
 log_kill=Backup terminato per $1 
+
 kill_err=Impossibile terminare il backup
 kill_egone=Non più in esecuzione!
 kill_ecannot=Non è consentito terminare questo backup
+
 newtape_err=Impossibile segnalare un nuovo nastro
 newtape_egone=Il backup non è più in esecuzione!
 newtape_estatus=Il backup non è più in attesa di un nuovo nastro
 newtape_ecannot=Non sei autorizzato a gestire questo backup
+
 acl_edit=È possibile creare e modificare backup?
 acl_restore=È possibile ripristinare i backup?
 acl_cmds=È possibile modificare i comandi prima e dopo?
@@ -211,8 +220,10 @@ acl_extra=È possibile modificare ulteriori parametri della riga di comando?
 acl_dirs=Directory consentite per i backup
 acl_all=Tutte le directory
 acl_list=Solo elencato ..
+
 delete_err=Impossibile eliminare i backup
 delete_enone=Nessuno selezionato
+
 email_already=Il backup è già in esecuzione con PID $1.
 email_ebefore=Comando prima del backup non riuscito!
 email_verify=Verifica backup ..
@@ -220,5 +231,6 @@ email_eafter=Comando post-backup non riuscito!
 email_subject=Backup di $1 su $2 
 email_ok=Backup riuscito
 email_failed=Backup fallito!
+
 newtape_subject=Cambio nastro $1 per backup di $2 su $3 
 newtape_body=Il backup di $2 su $3 ha raggiunto la quantità massima di dati consentiti sul nastro $1. Sarà necessario caricare un nuovo nastro e premere il collegamento "Nastro caricato" nel modulo di backup del filesystem di Webmin per continuare il backup.

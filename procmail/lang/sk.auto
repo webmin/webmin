@@ -32,6 +32,7 @@ index_man=Ručné úpravy konfigurácie
 index_mandesc=Priamo upravte primárny konfiguračný súbor Procmail a vytvorte si vlastné pravidlá, premenné a bloky.
 index_ecmd=Program Procmail $1 nebol vo vašom systéme nájdený. Buď nie je nainštalovaný, alebo je <a href='$2'>konfigurácia modulu</a> nesprávna.
 index_delete=Odstrániť vybrané akcie
+
 edit_title2=Upraviť akciu
 edit_title1=Vytvorenie akcie
 edit_header1=Podrobnosti o dodávke
@@ -67,6 +68,7 @@ edit_none=nikto
 edit_lock=Konkrétny súbor
 edit_ctype=Typ podmienky
 edit_cvalue=Regulárny výraz alebo príkaz
+
 save_err=Nepodarilo sa uložiť akciu
 save_eaction_0=Chýba súbor na pripojenie
 save_eaction_1=Chýba priečinok MH na zápis
@@ -79,6 +81,7 @@ save_elockfile=Chýba názov súboru zámku
 save_esize=Chýbajúca alebo neplatná veľkosť pošty pre podmienku $1 
 save_ere=Chýba regulárny výraz pre podmienku $1 
 save_eshell=Chýba príkaz pre podmienku $1 
+
 env_title1=Vytvorte premennú
 env_title2=Upraviť premennú
 env_header=Premenná prostredia Procmail
@@ -86,15 +89,19 @@ env_name=Názov premennej
 env_value=hodnota
 env_err=Nepodarilo sa uložiť premennú
 env_ename=Chýba alebo je neplatný názov premennej
+
 inc_title1=Pridať zahrnúť súbor
 inc_title2=Upraviť zahrnúť súbor
 inc_header=Zahrnutý súbor pravidiel procmailu
 inc_inc=Zahrnutý súbor
 inc_einc=Nebol zadaný žiadny súbor na zahrnutie
+
 config_eline=Neznámy riadok $1 v $2 : $3 
+
 manual_title=Upraviť konfiguráciu
 manual_desc=Táto stránka sa dá použiť na manuálnu úpravu konfiguračného súboru Procmail $1. Buďte opatrní, pretože nebude vykonaná žiadna kontrola syntaxe.
 manual_edata=Váš prehliadač neposkytol žiadne údaje!
+
 log_create_rec=Vytvoril sa recept na $1 
 log_delete_rec=Odstránený recept na $1 
 log_modify_rec=Upravený recept na $1 
@@ -114,7 +121,9 @@ log_delete_inc=Odstránené zahŕňajú súbor $1
 log_manual=Ručne upravená konfigurácia
 log_up=Posunul záznam nahor
 log_down=Posunutý vstup nadol
+
 delete_err=Akcie sa nepodarilo odstrániť
 delete_enone=Žiadne vybraté
+
 check_epostfix=Procmail nie je povolený v konfigurácii Postfixu. Konfiguračný súbor <tt>$2</tt> musí mať možnosť <tt>$1</tt> nastavenú na <tt>$3</tt>.
 check_esendmail=Program Sendmail nie je nastavený na používanie protokolu Procmail na lokálne doručovanie. Toto je možné nakonfigurovať v module <a href='$1'>Sendmail Mail Server</a> správcu webu.

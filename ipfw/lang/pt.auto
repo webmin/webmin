@@ -25,6 +25,7 @@ index_resetdesc=Clique neste botão para limpar todas as regras de firewall exis
 index_cluster=Servidores de cluster
 index_clusterdesc=Clique neste botão para configurar servidores Webmin adicionais nos quais a configuração do firewall será copiada automaticamente.
 index_return=regras de firewall
+
 index_num=Num
 index_action=Açao
 index_desc=Condição
@@ -37,6 +38,7 @@ index_delete=Excluir selecionado
 index_existing=O Webmin detectou $1 regras de firewall IPFW atualmente em uso, que não são registradas no arquivo $2. Essas regras provavelmente foram configuradas a partir de um script, que este módulo não sabe ler e editar. <p> Se você deseja usar este módulo para gerenciar seu firewall IPFW, clique no botão abaixo para converter as regras existentes em um arquivo salvo. e desabilite o script de firewall existente.
 index_saveex=Salvar regras de firewall
 index_headerex=Configuração de firewall existente
+
 action_allow=<font color=#00aa00>Permitir</font>
 action_deny=<font color=#ff0000>Soltar</font>
 action_reject=<font color=#ff4400>Rejeitar</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>Soltar pacote</font>
 laction_reject=<font color=#ff4400>Rejeição de retorno ICMP</font>
 laction_reset=<font color=#ff4400>Redefinir conexão TCP</font>
 laction_skipto=Ir para a regra
+
 edit_title1=Criar regra
 edit_title2=Editar regra $1 
 edit_header1=Ação da regra
@@ -114,6 +117,7 @@ edit_src-addr=Do endereço de origem ..
 edit_src-port=Da porta de origem ..
 edit_dst-addr=Para o endereço de destino ..
 edit_dst-port=Para a porta de destino ..
+
 save_err=Falha ao salvar regra
 save_enum=Número de regra ausente ou inválido
 save_eskipto=Número de regra ausente ou inválido para o qual pular
@@ -144,7 +148,9 @@ save_etcpflags=Os sinalizadores TCP só podem ser especificados se o protocolo f
 save_elimit=Limite máximo ausente ou inválido
 save_edstport=Porta de destino ausente ou inválida
 save_esrcport=Porta de origem ausente ou inválida
+
 apply_err=Falha ao aplicar a configuração
+
 desc_if=Se $1 
 desc_and=e
 desc_always=Sempre
@@ -191,6 +197,7 @@ desc_where=onde $1
 desc_all=para todos os pacotes
 desc_in=pacote está chegando
 desc_out=pacote está saindo
+
 log_create_rule=Regra $1 criada
 log_delete_rule=Regra $1 excluída
 log_modify_rule=Regra $1 modificada
@@ -206,6 +213,7 @@ log_convert=Regras de firewall ativo convertido
 log_setup=Execução da configuração inicial do firewall
 log_unapply=Configuração de firewall revertida
 log_delsel=$1 regras excluídas
+
 cluster_title=Servidores de firewall de cluster
 cluster_none=Nenhum servidor foi adicionado ao cluster de firewall ainda.
 cluster_host=nome de anfitrião
@@ -216,6 +224,7 @@ cluster_gadd=Adicionar servidores no grupo
 cluster_need=Você deve adicionar servidores com login e senha no módulo Webmin Servers Index antes que possam ser gerenciados aqui.
 cluster_return=servidores de cluster
 cluster_delete=Remover Selecionado
+
 add_title=Adicionar servidores
 add_msg=Adicionando $1 ..
 add_gmsg=Adicionando servidores no grupo $1 ..

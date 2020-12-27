@@ -10,6 +10,7 @@ index_hosts=Hosts
 index_cmd=Opdracht
 index_delete=Verwijder Geselecteerden
 index_none=Niets
+
 edit_title1allow=Maak een Sta-Toe Regel
 edit_title2allow=Bewerk Sta-Toe Regel
 edit_title1deny=Maak een Weiger Regel
@@ -22,9 +23,11 @@ edit_hosts=Remote hosts
 edit_hostsexcept=Behalve hosts
 edit_cmd=Shell opdrachten
 edit_efound=Daemon '$1' is niet gevonden in de xinetd configuratie
+
 save_errtitle=Fout bij opslaan regel
 save_ehost=Host input bevat foute karakters
 save_ecmd=Deze opdracht bevat foute karakters
 save_eservice=Daemon namen bevatten foute karakters
+
 del_errtitle=Fout op regel verwijdert
 del_enone=Geen regel gemarkeerd om te verwijderen

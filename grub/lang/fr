@@ -8,6 +8,7 @@ index_none=Aucune option de démarrage n'est définie. Vérifiez que vous en ave
 index_efile=Le menu de GRUB $1 n'a pas été trouvé sur votre système. GRUB n'est peut être pas installé, ou la <a href='$2'>configuration du module</a> est incorrecte.
 index_epath=Le programme GRUB $1 n'a pas été trouvé sur votre système. GRUB n'est peut être pas installé, ou la <a href='$2'>configuration du module</a> est incorrecte.
 index_return=Liste des options
+
 title_add=Ajouter une option de démarrage
 title_edit=Editer les options de démarrage
 title_header=Détails de l'option du menu
@@ -33,6 +34,7 @@ title_echain=Programme de boot manquant ou invalide pour chaînage
 title_edev=Partition racine $1 non supportée
 title_einitrd=Nom du ramdisk manquant ou invalide
 title_lock=Protéger par mot de passe ?
+
 global_title=Options globales
 global_header=Options globales du menu de démarrage
 global_default=Option de démarrage par défaut
@@ -53,6 +55,7 @@ global_edev=Disque/Partition d'installation $1 non supporté
 global_eother=Disque/Partition manquant ou invalide
 global_epassword=Mot de passe de démarrage manquant ou invalide
 global_epasswordfile=Nom du fichier de menu secondaire manquant
+
 install_title=Installer GRUB
 install_err=Impossible d'installer GRUB
 install_efind=Impossible de trouver le fichier de menu

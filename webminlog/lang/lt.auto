@@ -30,6 +30,7 @@ index_sdesc=Veiksmo aprašyme yra
 index_shost=Šaltinis „Webmin“ serveris
 index_long=Rodyti visus veiksmų aprašymus?
 index_global=&lt;Nei viename modulyje&gt;
+
 search_title=Paieškos rezultatai
 search_date=Data
 search_time=Laikas
@@ -63,6 +64,7 @@ search_global_baduser=Netinkamas vartotojo vardas
 search_global_badpass=Netinkamas slaptažodis
 search_global_twofactor=Netinkamas dviejų faktorių prieigos raktas
 search_csv=Eksportuoti kaip CSV.
+
 view_title=Informacija apie veiksmą
 view_header=Išsami informacija apie užregistruotą veiksmą $1 
 view_action=apibūdinimas
@@ -96,12 +98,14 @@ view_files=Pakeisti failai ir vykdomos komandos
 view_raw=Neapdoroti žurnalo duomenys
 view_rawname=Parametro pavadinimas
 view_rawvalue=Parametro vertė
+
 acl_mods=Gali peržiūrėti žurnalus moduliuose
 acl_all=Visi
 acl_sel=Pasirinkta žemiau ..
 acl_self=Tik aš pats
 acl_users=Gali peržiūrėti vartotojų veiksmus
 acl_rollback=Ar galima atsisakyti veiksmų?
+
 rollback_title=Atšaukimo veiksmas
 rollback_rusure=Ar tikrai norite grąžinti visų toliau išvardytų failų turinį prieš imantis šio veiksmo? Visi duomenys, kuriuos jie turi šiuo metu, bus pakeisti šiais pakeitimais :
 rollback_isdir=Katalogas - pakeitimai nebus atlikti.
@@ -124,4 +128,5 @@ rollback_modfile=Atnaujintas failo $1 turinys.
 rollback_deleted=Ištrintas failas $1.
 rollback_nodeleted=Praleistas neegzistuojantis failas $1.
 rollback_enone=Nepasirinktas nė vienas failas
+
 log_rollback=Atgal veiksmas $1 modulyje $2 

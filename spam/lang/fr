@@ -34,6 +34,7 @@ white_import=Importer des adresses à partir d'un fichier
 white_sort=Trier les adresses autorisées après l'importation ?
 white_importok=Importer maintenant
 white_return=Adresses autorisées et interdites
+
 score_title=Classification du spam
 score_desc=SpamAssassin affecte un score à chaque message selon son contenu et ses en-têtes. Les options de cette page déterminent le score au-dessus duquel un message est considéré comme du spam, et certaines des méthodes permettant de calculer ce score.
 score_header=Options de classification des messages de spam
@@ -65,6 +66,7 @@ score_emx=Nombre de contôles MX de l'adresse de From: absent ou invalide
 score_emxdelay=Nombre de secondes à attendre entre deux contrôles MX absent ou invalide
 score_etimeout=Nombre de secondes à attendre les requêtes RBL absent ou invalide
 score_ereceived=Nombre d'en-têtes Received: à vérifier avec RBL absent ou invalide
+
 report_title=Modification des messages
 report_desc=Les options de cette page contrôlent les modifications que SpamAssassin apporte aux en-têtes et aux corps de tous les messages qu'il analyse, ainsi que les modifications qu'il apporte à ceux qui sont classifiés comme du spam.
 report_header=Options de modification des messages analysés et du spam
@@ -96,6 +98,7 @@ report_addspam=Spam
 report_addham=Ham
 report_addall=Tout
 report_eaddheader=En-tête à ajouter $1 manquant ou invalide
+
 user_title=Options utilisateur diverses
 user_desc=Les options de cette page concernent surtout les chemins d'accès et les paramètres que SpamAssassin utilise pour les paquetages externes d'identification du spam Razor, DCC et Pyzor. Vous pouvez également indiquer si SpamAssassin sera en mesure d'effectuer ou non des requêtes DNS.
 user_header=Options diverses au niveau de l'utilisateur
@@ -118,6 +121,7 @@ user_err=Impossible d'enregistrer les options utilisateur
 user_etimeout='$1' n'est pas un temps imparti valide
 user_epath='$1' n'est pas un chemin de programme client valide
 user_emax='$1' n'est pas un calcul de somme de contrôle valide
+
 header_title=Tests de l'en-tête et du corps
 header_desc=Cette page vous permet de définir des tests additionnels que SpamAssassin appliquera au courrier électronique, selon les en-têtes du message, le contenu du corps, les URL trouvés dans le corps, ou des combinaisons d'autres tests. Le nom affecté à chaque test vous appartient, mais il est le plus souvent de la forme CONTAINS_FOO. Le score réel que SpamAssassin ajoute aux messages correspondant à un test peut être défini en saisissant vos propres noms de tests ou intégrés dans les tableaux au bas de la page.
 header_header=Test additionnels de l'en-tête et du corps
@@ -147,6 +151,7 @@ header_eeval='$1' n'est pas une fonction d'évaluation valide
 header_eheader='$1' n'est pas un en-tête de message électronique valide
 header_eregexp='$1' n'est pas une expression régulière valide (doit être de la forme /expression/)
 header_emeta=Expression du test absente pour le test '$1'
+
 priv_title=Options privilégiées diverses
 priv_desc=Les options de cette page ne peuvent être définies que globalement, plutôt que dans les fichiers individuels de configuration des utilisateurs. Elles déterminent à l'aide de chemins les divers fichiers de configuration et de journalisation.
 priv_header=Réglages divers des niveaux de privilèges
@@ -166,8 +171,10 @@ priv_eargs='$1' n'est pas une liste d'arguments valide
 priv_emscore='$1' n'est pas un score de phrase le plus élevé valide
 priv_ephrase='$1' n'est pas une phrase de spam de deux mots valide
 priv_escore=Score de phrase de spam '$1' absent ou invalide
+
 usually=Habituellement $1
 ecannot=Vous n'êtes pas autorisé à utiliser cette page
+
 setup_title=Configuration de Procmail pour SpamAssassin
 setup_desc_webmin=Ce formulaire peut être utilisé pour configurer Procmail dans $1 pour exécuter SpamAssassin sur tous les messages électroniques que reçoit votre système. Cependant, ceci n'aura d'effet que si votre serveur de messagerie a été configuré pour utiliser Procmail pour une distribution locale ou pour les utilisateurs dont les fichiers <tt>.forward</tt> sont configurés pour exécuter Procmail.
 setup_desc_usermin=Ce formulaire peut être utilisé pour configurer Procmail dans $1 pour exécuter SpamAssassin sur tous les messages électroniques envoyés sur votre compte. Cependant, ceci n'aura d'effet que si le serveur de messagerie a été configuré pour utiliser Procmail pour une distribution locale ou si vos fichiers <tt>.forward</tt> sont configurés pour fournir tout le courrier électronique à Procmail.
@@ -184,10 +191,12 @@ setup_drop=Exécuter SpamAssassin et écrire sur le fichier comme
 setup_drop1=Utilisateur Unix destinataire
 setup_drop0=Utilisateur <tt>root</tt>
 setup_ok=Configurer Procmail pour SpamAssassin
+
 setup_err=Impossible de configurer SpamAssassin
 setup_efile=Fichier de format mbox absent ou invalide
 setup_emaildir=Répertoire de courrier Qmail absent ou invalide
 setup_emhdir=Répertoire de courrier MH absent ou invalide
+
 log_white=Adresses autorisées et interdites modifiées
 log_score=Classification du spam modifié
 log_report=Modification des messages modifiés
@@ -196,12 +205,14 @@ log_header=Tests d'en-têtes et de corps modifiés
 log_priv=Options privilégiées diverses modifiées
 log_setup=Configurer Procmail pour SpamAssassin
 log_import=Adresses autorisées $1 importées
+
 import_title=Importation d'adresses
 import_err=Impossible d'importer des adresses
 import_efile=Aucun fichier à importer dans la sélection
 import_enone=Aucune adresse électronique trouvée dans le fichier
 import_ok1=Les adresses électroniques $2 ont été trouvées dans le fichier, parmi lesquelles $1 étai(en)t nouvelle(s) et a(ont) été ajoutée(s) à la liste des adresses autorisées.
 import_ok2=Les adresses électroniques $1 ont été trouvées dans le fichier, mais elles avaient déjà été ajoutées à la liste des adresses autorisées.
+
 mail_title=Courrier non sollicité (spam)
 mail_desc=Cette page dresse la liste des messages qui ont été classifiés comme du spam et attendent une action. Les messages qui ont été identifiés de façon incorrecte peuvent être déplacés dans votre boîte de réception, tandis que ceux qui sont rééllement du spam peuvent être supprimés.
 mail_level=Score
@@ -219,13 +230,18 @@ mail_will=Rafraîchir automatiquement dans $1 minutes
 mail_wills=Rafraîchir automatiquement dans $1 secondes
 mail_delall=Supprimer tout le spam
 mail_search3=Rechercher le score ci-dessus :
+
 process_eclean=Une erreur s'est produite lors de la suppression des en-têtes SpamAssassin provenant de ce message électronique
 process_ereport=Impossible de faire un rapport du courrier électronique à SpamAssassin : $1
+
 apply_err=Impossible d'appliquer les changements
 apply_none=Aucun processus de démon SpamAssassin n'a été trouvé !
+
 acl_avail=Icônes à la disposition de l'utilisateur
+
 search_escore=Score du spam manquant ou invalide
 search_results5=$1 messages de courrier ayant un score égal à ou au-dessus de $2...
+
 razor_title=Configuration du détecteur de spam Razor
 razor_desc=Razor de Vipul est un système collaboratif de détection et de rapport de spam qui peut améliorer la classification du spam envoyé à votre adresse. Cependant, avant de pouvoir l'utiliser, vous devez enregistrer un compte Razor à l'aide du formulaire ci-dessous.
 razor_user=Nom d'utilisateur de Razor

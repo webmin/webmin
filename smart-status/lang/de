@@ -25,6 +25,7 @@ index_family=Modell-Familie
 index_serial=Seriennummer
 index_capacity=Kapazität
 index_norm=Normalisiert:
+
 monitor_type=SMART Festplattentest
 monitor_type2=SSD Wearout
 monitor_drive=Festplatte zum Prüfen
@@ -40,14 +41,17 @@ monitor_wearlevel=Schlägt fehl, wenn Level fällt unter
 monitor_ewearlevel=Ungültiger Wear Level Prozentsatz
 monitor_nowearout=Laufwerk meldet keine SSD Wearout Anzeige
 monitor_wornout=Wear Level ist auf $1 gefallen
+
 short_title=Kurzer Selbsttest
 short_doing=Starte kurzen Selbsttest auf $1 ..
 short_failed=.. fehlgeschlagen!
 short_ok=.. Test erfolgreich gestartet. Beachten Sie bitte die Festplatten-Statusanzeige auf der Hauptseite dieses Modules für die Ergebnisse.
+
 ext_title=Erweiterter Selbsttest
 ext_doing=Erweiterter Selbsttest von $1 gestartet ..
 ext_failed=.. fehlgeschlagen!
 ext_ok=.. Test gestartet OK. Siehe die Festplatten-Status auf der Modul Hauptseite für die Ergebnisse.
+
 data_title=Datenerfassungs-Test
 data_doing=Starte Offline-Datenerfassung on $1 ...
 data_failed=.. fehlgeschlagen!

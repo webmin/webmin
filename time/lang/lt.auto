@@ -17,6 +17,7 @@ index_tabsync=Laiko serverio sinchronizavimas
 index_desctime=Ši forma skirta pakeisti esamą sistemos laiką, kurį naudoja visi vykdomi procesai. Operacinėse sistemose, turinčiose atskirą aparatinės įrangos laikrodį, jis gali būti naudojamas ir tam nustatyti.
 index_desczone=Ši forma leidžia nustatyti numatytąją sistemos laiko juostą, kuri naudojama norint konvertuoti sistemos laiką į žmonėms suprantamą formatą ir kompensuoti.
 index_descsync=Ši forma skirta konfigūruoti sistemą, kad ji automatiškai sinchronizuotų laiką su nuotoliniu serveriu. Sinchronizavimas bus atliekamas naudojant „Unix“ <tt>laiko</tt> protokolą arba NTP, atsižvelgiant į tai, kurios komandos yra įdiegtos ir ką palaiko nuotolinė sistema.
+
 action_save=Sutaupyti
 action_apply=Taikyti
 action_sync=Nustatykite sistemos laiką pagal aparatūros laiką
@@ -24,6 +25,7 @@ action_sync_s=Nustatykite aparatūros laiką pagal sistemos laiką
 action_timeserver_sys=Sinchronizuoti sistemos laiką
 action_timeserver_hw=Sinchronizuokite aparatūros laiką
 action_savezone=Pakeisti laiko juostą
+
 acl_sys=Vartotojas gali redaguoti sistemos laiką?
 acl_hw=Vartotojas gali redaguoti aparatūros laiką?
 acl_timezone=Vartotojas gali nustatyti laiko juostą?
@@ -34,8 +36,10 @@ acl_error=Jūs turite prieigą prie sistemos laiko modulio, tačiau negalite red
 acl_nosys=Jums neleidžiama redaguoti sistemos laiko
 acl_nohw=Jums neleidžiama redaguoti aparatūros laiko
 acl_nontp=Jums neleidžiama sinchronizuoti su laiko serveriu
+
 sys_title=Sistemos laikas
 hw_title=Aparatūros laikas
+
 day=Diena
 month=Mėnuo
 date=Data
@@ -43,12 +47,14 @@ hour=Valanda
 year=Metai
 minute=Minutė
 second=Antra
+
 error_cnf=Klaida: komanda $1 nerasta
 error_hw=Neįmanoma nustatyti aparatūros laiko : $1 
 error_sync=Neįmanoma sinchronizuoti su sistemos laiku : $1 
 error_ediff=Laiko serveris skiriasi nuo vietinio laiko per didelis: $1 dienos
 error_entp=Nepavyko sinchronizuoti NTP laiko : $1 
 error_etimeserver=Nėra laiko serverių, su kuriais reikia sinchronizuoti
+
 log_set_date=Nustatykite sistemos laiką į $1 
 log_set_hwclock=Aparatinės įrangos laikrodį nustatykite į $1 
 log_remote_date=Pateiktos sistemos laikas nuo $2 
@@ -58,6 +64,7 @@ log_remote_hwclock_l=Gauta aparatinės įrangos laikas $1 iš $2
 log_sync=Sinchronizuotas sistemos laikas su aparatinės įrangos laiku
 log_sync_s=Sinchronizuotas aparatinės įrangos laikas su sistemos laiku
 log_timezone=Laiko juosta pakeista į $1 
+
 timezone_err=Nepavyko išsaugoti laiko juostos
 timezone_ecannot=Jums neleidžiama pakeisti laiko juostos
 timezone_enone=Nepasirinkta jokia zona

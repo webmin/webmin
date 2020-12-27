@@ -2,6 +2,7 @@ index_title=Voicemailserver
 index_ecmd=Vgetty-kommandoen $1 blev ikke fundet på dit system. Måske er det ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
 index_econfig=Vgetty-konfigurationsfilen $1 blev ikke fundet på dit system. Måske er det ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
 index_return=voicemail indeks
+
 vgetty_title=Seriel portkonfiguration
 vgetty_desc=For at din server kan besvare stemmekald med et modem, der er tilsluttet en seriel port, skal det være vist nedenfor. Når du tilføjer en port til denne liste, konfigureres $1 -programmet til at besvare opkald og afspille en meddelelse.
 vgetty_add=Tilføj en ny seriel port
@@ -32,6 +33,7 @@ vgetty_erings=Manglende eller ugyldigt antal ringe
 vgetty_erings2=Antal ringe skal være mindst 2
 vgetty_eans=Der er ikke valgt nogen svartilstande
 vgetty_eclash=Seriel port $1 er allerede i brug
+
 options_title=Valg af voicemail-server
 options_header=Valgmuligheder for alle serielle porte
 options_maxlen=Maksimal beskedlængde
@@ -68,6 +70,7 @@ options_eprog=Manglende eller ikke-eksisterende program at køre
 options_eowner=Manglende eller ugyldig Unix-bruger til meddelelsesfiler
 options_egroup=Manglende eller ugyldig Unix-gruppe til meddelelsesfiler
 options_emode=Manglende eller ugyldige oktale tilladelser til meddelelsesfiler
+
 received_title=Modtagne meddelelser
 recieved_desc=Voicemails, der er modtaget af din server, er vist nedenfor. Klik på dato/tid i den første kolonne for at lytte til en meddelelse.
 received_none=Ingen modtagne telefonsvarer blev fundet.
@@ -79,9 +82,12 @@ received_delete=Slet valgte meddelelser
 received_move=Konverter valgt til hilsener
 received_all=Vælg alle
 received_invert=Invertere valg
+
 listen_efile=Ugyldigt meddelelsesfilnavn!
 listen_epath=Voicemail-besked findes ikke længere
+
 delete_efile=Ugyldigt meddelelsesfilnavn!
+
 messages_title=Hilsen beskeder
 messages_desc=Denne side viser hilsningsmeddelelser, der afspilles, når en opkaldsforbindelse til din voicemailserver. Hvis du har mere end den, bruges en enkelt tilfældigt valgt besked.
 messages_file=Filnavn
@@ -89,12 +95,15 @@ messages_none=Ingen hilsen beskeder er tilgængelige.
 messages_updesc=Denne formular giver dig mulighed for at uploade en yderligere hilsenmeddelelse WAV-fil, der konverteres til det valgte format til brug af dit modem. Eksempelfrekvensen for det uploadede WAV skal være den samme som eksempelfrekvensen for modtagne meddelelser, ligesom det valgte format.
 messages_upload=Upload besked
 messages_fmt=konvertere til
+
 pvfdesc=$1, $2 bit
+
 upload_err=Kunne ikke tilføje besked
 upload_emessage=Ingen WAV-fil valgt
 upload_ewav=Kunne ikke konvertere WAV-fil : $1 
 upload_epvf=Kunne ikke oprette RMD-fil : $1 
 upload_esame=Meddelelsesfilen $1 findes allerede
+
 log_apply=Anvendt konfiguration
 log_upload=Uploadet hilsen $1 
 log_move=Konverterede $1 modtagne meddelelser
@@ -104,5 +113,6 @@ log_options=Ændrede valgmuligheder for voicemail
 log_vgetty_create=Tilføjet seriel port $1 
 log_vgetty_modify=Ændret seriel port $1 
 log_vgetty_delete=Slettet seriel port $1 
+
 email_subject=Talebesked
 email_body=Talemeddelelsesmeddelelse modtaget $1 af $2.

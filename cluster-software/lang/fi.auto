@@ -21,6 +21,7 @@ index_thost=hostname
 index_tdesc=Kuvaus
 index_tcount=paketit
 index_ttype=OS-tyyppi
+
 install_err=Paketin asennus epäonnistui
 install_elocal=Paikallista tiedostoa ei annettu
 install_elocal2='$1' ei ole olemassa
@@ -37,6 +38,7 @@ install_ok=Asentaa
 install_erus=Tämä palvelin käyttää erilaista päivitysjärjestelmää kuin pääpalvelin ($1 vs. $2)
 install_eupdate=Määritettyjen päivitysten asentamisessa tapahtui virhe
 install_ealready=Versio $1 on jo asennettu
+
 add_title=Lisää palvelimia
 add_msg=Lisätään $1 ..
 add_gmsg=Palvelimien lisääminen ryhmään $1 ..
@@ -45,6 +47,7 @@ add_gerr=Ryhmän lisääminen epäonnistui
 add_echeck=Palvelimella $1 ei ole ohjelmistopakettimoduulia
 add_esystem=Palvelin $1 ei käytä samaa pakettijärjestelmää kuin tämä kone
 add_ok=Lisätty $1 paketeilla $2.
+
 search_title=Pakettihaku
 search_nomatch=Ei paketteja, jotka vastasivat $1 : tä
 search_none=Ei mitään
@@ -56,6 +59,7 @@ search_return=Hakutulokset
 search_delete=Poista valitut paketit
 search_selall=Valitse kaikki
 search_invert=Käänteinen valinta
+
 host_title=Hallittu palvelin
 host_header=Ohjelmiston hallinnoimat palvelimen yksityiskohdat
 host_name=Isäntänimi
@@ -70,6 +74,7 @@ host_count=Paketit asennettu
 host_os=Webminin käyttöjärjestelmä
 host_return=palvelimen yksityiskohdat
 host_system=Pakkausjärjestelmä
+
 edit_title=Muokkaa pakettia
 edit_details=Paketin yksityiskohdat $1 
 edit_desc=Kuvaus
@@ -88,6 +93,7 @@ edit_all=&lt;kaikki isännät&gt;
 edit_donthave=&lt;isännät, joilla ei ole sitä&gt;
 edit_have=&lt;isännät, joilla on se&gt;
 edit_group=$1 : n jäsenet
+
 list_title=Paketitiedostot
 list_files=Paketin $1 tiedostot $2 : lla
 list_path=polku
@@ -97,6 +103,7 @@ list_type=Tyyppi
 list_size=Koko
 list_status=Tila
 list_ok=kunnossa
+
 refresh_title=Päivitä pakettiluettelot
 refresh_header=Pakettiluetteloiden uudelleenpyyntö kaikilta palvelimilta ..
 refresh_header4=Pakettiluetteloiden uudelleenpyyntö $2 : n jäseniltä.
@@ -108,6 +115,7 @@ refresh_4=Päivitetty $1 (ei muutoksia)
 refresh_done=.. valmis
 refresh_del=Poistettu $1 palvelinluettelosta
 refresh_failed= $1 : $2 päivitys epäonnistui
+
 delete_err=Paketin $1 poistaminen epäonnistui
 delete_epack=Paketti $1 ei ole olemassa
 delete_title=Poista paketti
@@ -120,6 +128,7 @@ delete_error=Poistaminen epäonnistui kohdasta $1 : $2
 delete_success=Poistettu $1 : stä.
 delete_done=.. valmis
 delete_header=Poistetaan paketti $1 ..
+
 do_title=Asenna paketti
 do_header=Asennetaan $1 kaikille isäntäille ..
 do_header3=Asennetaan $1 isäntään, jolla ei vielä ole sitä ..
@@ -140,6 +149,7 @@ do_arch=Arkkitehtuuri
 do_inst=asennetut
 do_none=Ei mitään
 do_edeleted=Asennustiedosto on poistettu - palaa moduulihakemistoon ja yritä uudelleen.
+
 compare_title=Vertaa paketteja
 compare_desc=Tätä lomaketta voidaan käyttää kahden tai useamman palvelimen asennettujen pakettien vertaamiseen ja saatavissa olevien versioiden tai pakettien välisten erojen löytämiseen.
 compare_hosts=Palvelimet vertailtavaksi
@@ -154,6 +164,7 @@ compare_showall=Näytettävät paketit
 compare_showall1=Kaikki
 compare_showall0=Vain yhteensopimattomuudet
 compare_got=kunnossa
+
 deletes_err=Pakettien poistaminen epäonnistui
 deletes_enone=Ei paketteja valittu
 deletes_title=Poista paketit

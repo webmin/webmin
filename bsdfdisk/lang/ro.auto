@@ -7,6 +7,7 @@ index_dsize=Marimea totala
 index_dmodel=Marcă și model
 index_dparts=felii
 index_return=lista discurilor
+
 disk_title=Editează discul
 disk_egone=Discul nu mai există!
 disk_no=Felie
@@ -31,9 +32,11 @@ disk_return=detalii de disc și listă de felii
 disk_add=Creați o felie nouă.
 disk_smart=Afișează starea SMART
 disk_smartdesc=Afișați starea curentă a acestei unități, detectată de SMART și verificați-o dacă există erori de disc.
+
 select_device=$1 dispozitiv $2 
 select_slice=$1 dispozitiv $2 felie $3 
 select_part=$1 dispozitiv $2 felie $3 partiție $4 
+
 slice_title=Editează felie
 slice_egone=Felia selectată nu există!
 slice_ssize=Dimensiunea feliei
@@ -58,6 +61,7 @@ slice_return=detalii felie și listă de partiții
 slice_err=Modificarea feliei nu a reușit
 slice_header=Detalii felie
 slice_suse=Folosit direct de
+
 dslice_title=Ștergeți felie
 dslice_rusure=Sigur doriți să ștergeți felia $1 ? Orice partiții și sisteme de fișiere din cadrul acesteia vor fi, de asemenea, șterse.
 dslice_warn=Avertisment - această felie este folosită în prezent de : $1 
@@ -65,6 +69,7 @@ dslice_confirm=Șterge acum
 dslice_deleting=Ștergerea feliei $1 ..
 dslice_failed=.. ștergerea a eșuat : $1 
 dslice_done=.. Terminat
+
 nslice_title=Creați felie
 nslice_header=Noi detalii de felie
 nslice_number=Numarul feliei
@@ -86,6 +91,7 @@ nslice_done=.. felie adăugată
 nslice_parting=Creați partiții implicite în felia $1 pe $2 ..
 nslice_pfailed=.. crearea partiției a eșuat : $1 
 nslice_pdone=.. partiție adăugată
+
 npart_title=Creați partiție
 npart_header=Detalii noi despre partiție
 npart_letter=Scrisoarea de despărțire
@@ -98,6 +104,7 @@ npart_emax=Blocul final nu poate fi mai mare decât dimensiunea feliei de blocur
 npart_creating=Crearea partiției $1 pe $2 ..
 npart_failed=.. crearea partiției a eșuat : $1 
 npart_done=.. partiție adăugată
+
 part_title=Editați partiția
 part_egone=Partiția nu mai există!
 part_header=Detalii despre partiție
@@ -124,6 +131,7 @@ part_newmount2=Partition Mount
 part_mountmsg=Montați acest dispozitiv pe un director nou pe sistemul dvs., astfel încât să poată fi folosit pentru a stoca fișiere. Un dispozitiv de fișiere trebuie să fi fost deja creat pe dispozitiv.
 part_mountmsg2=Montați acest dispozitiv ca memorie virtuală pe sistemul dvs., pentru a crește cantitatea de memorie disponibilă.
 part_cannotedit=Această partiție nu poate fi modificată, deoarece este în prezent utilizată.
+
 dpart_title=Ștergeți partiția
 dpart_rusure=Sigur doriți să ștergeți partiția $1 ? Orice sistem de fișiere din acesta vor fi, de asemenea, șterse.
 dpart_warn=Avertisment - această partiție este folosită în prezent de $1 
@@ -131,6 +139,7 @@ dpart_confirm=Șterge acum
 dpart_deleting=Ștergerea partiției $1 ..
 dpart_failed=.. ștergerea a eșuat : $1 
 dpart_done=.. Terminat
+
 newfs_title=Creați sistem de fișiere
 newfs_header=Detalii despre sistemul de fișiere noi
 newfs_free=Spațiu de rezervat pentru rădăcină
@@ -145,11 +154,13 @@ newfs_elabel=Etichetă lipsă sau nevalidă
 newfs_creating=Crearea unui sistem de fișiere pe $1 ..
 newfs_failed=.. crearea nu a reușit!
 newfs_done=.. creat cu succes
+
 fsck_title=Verificați sistemul de fișiere
 fsck_err=Verificarea sistemului de fișiere nu a reușit
 fsck_checking=Verificarea sistemului de fișiere pe $1 ..
 fsck_failed=.. verificare eșuată!
 fsck_done=.. verificare finalizată fără a fi găsite erori
+
 log_create_slice=Felie creată $1 
 log_delete_slice=Felie ștersă $1 
 log_modify_slice=Felie modificată $1 

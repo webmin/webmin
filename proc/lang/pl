@@ -16,6 +16,7 @@ index_loadname=Średnie obciążenie CPU:
 index_loadnums=$1 (1 minuta) , $2 (5 minut) , $3 (15 minut)
 index_cpuname=Typ CPU:
 index_inzone=w strefie $1
+
 pid=Nr ID procesu
 owner=Właściciel
 command=Polecenie
@@ -27,6 +28,7 @@ nice=Poziom <i>nice</i>
 stime=Uruchomiony
 sclass=Zaplanowana klasa IO
 sprio=Priorytet IO
+
 search_user=Właściciel
 search_match=Wzorzec nazwy
 search_cpupc=Wykorzystujący więcej niż $1% CPU
@@ -43,6 +45,7 @@ search_sigkill=Zabij procesy
 search_port=Używa portu
 search_protocol=protokół
 search_ip=Używa adresu IP
+
 run_command=Polecenie do uruchomienia
 run_submit=Uruchom
 run_mode=Sposób uruchomienia
@@ -56,6 +59,7 @@ run_ecannot=Nie masz uprawnień do uruchamiania poleceń
 run_as=Uruchom jako użytkownik
 run_euser=Brakująca lub błędna nazwa użytkownika
 run_euser2=Nie masz uprawnień do uruchamiania poleceń jako wybrany użytkownik
+
 edit_title=Informacje o procesie
 edit_gone=Ten proces już nie działa
 edit_sub=Podprocesy
@@ -75,12 +79,15 @@ edit_sigcont=Wznów
 edit_open=Pliki i połączenia
 edit_trace=Śledzenie procesu
 edit_return=szczegółów procesów
+
 kill_err=Nie udało się wysłać sygnału $1 do procesu $2
 kill_title=Wyślij sygnał
 kill_sent=wyślij
 kill_ecannot=Nie masz uprawnień do zabijania procesów
+
 renice_err=Nie udało się zmienić nice dla procesu $1
 renice_ecannot=Nie masz uprawnień do zmiany nice dla procesów
+
 linux_pri=Priorytet
 linux_tty=Terminal
 linux_status=Stan
@@ -91,25 +98,30 @@ linux_ruser=Rzeczywisty użytkownik
 linux_rgroup=Rzeczywista grupa
 linux_pgid=Nr ID grupy procesów
 linux_stime=Uruchomiony
+
 linuxstat_R=Działa
 linuxstat_S=Uśpiony
 linuxstat_D=Głęboko uśpiony
 linuxstat_T=Zatrzymany
 linuxstat_Z=Zombie
+
 linux_real=Czasu rzeczywistego
 linux_be=nie gwarantowana
 linux_idle=Idle
+
 freebsd_ruser=Rzeczywisty użytkownik
 freebsd_rgroup=Rzeczywista grupa
 freebsd_tty=Terminal
 freebsd_pgid=Grupa procesu
 freebsd_stime=Uruchomiony
 freebsd_lim=Ograniczenie pamięci
+
 hpux_pri=Priorytet
 hpux_tty=Terminal
 hpux_status=Stan
 hpux_wchan=Czeka na
 hpux_stime=Uruchomiony
+
 hpuxstat_0=Nie istnieje
 hpuxstat_S=Uśpiony
 hpuxstat_W=Czeka
@@ -118,7 +130,9 @@ hpuxstat_I=Przejściowy
 hpuxstat_Z=Zombie
 hpuxstat_T=Zatrzymany
 hpuxstat_G=Growing
+
 macos_tty=Terminal
+
 sysv_group=Grupa
 sysv_ruser=Rzeczywisty użytkownik
 sysv_rgroup=Rzeczywista grupa
@@ -127,12 +141,14 @@ sysv_tty=Terminal
 sysv_stime=Uruchomiony
 sysv_task=ID zadania
 sysv_zone=Nazwa strefy
+
 log_run=Uruchomiono polecenie "$1"
 log_kill=Wysłano sygnał $1 do procesu $2
 log_kills=Wysłano sygnał $1 do procesów $2
 log_kill_l=Wysłano sygnał $1 do procesu $2
 log_kills_l=Wysłano sygnał $1 do procesów<br>$2
 log_renice=Zmieniono priorytet dla procesu $2 na $1
+
 acl_manage=Zarządzać procesami jako użytkownik
 acl_manage_def=Aktualny użytkownik Webmina
 acl_edit=Może zabijać i zmieniać nice dla procesów
@@ -142,11 +158,13 @@ acl_who=Może zarządzać procesami dla użytkowników
 acl_who0=Wszyscy użytkownicy
 acl_who1=Aktualny użytkownik Webmina
 acl_who2=Wybranych użytkowników ..
+
 kill_kill=Zabij proces
 kill_term=  Przerwij  
 kill_hup= Zrestartuj 
 kill_stop= Zatrzymaj  
 kill_cont= Kontynuuj  
+
 open_title=Otwarte pliki i połączenia
 open_proc=Dla procesu $1 (PID $2)
 open_header1=Otwarte pliki
@@ -170,6 +188,7 @@ open_blk=Bblok specjalny
 open_size=Rozmiar pliku
 open_inode=węzeł
 open_file=Ścieżka
+
 trace_title=Śledzenie procesu
 trace_start=Uruchamianie systemu śledzenia połączeń dla $1 ..
 trace_doing=Namierzanie połączeń dla $1 :
@@ -180,5 +199,7 @@ trace_syscalls=System śledzenia połączeń:
 trace_all=Wszystkie
 trace_sel=Wymienione ..
 trace_change=Zmień
+
 windows_threads=Wątki w procesie
+
 syslog_dmesg=Wiadomości kernela

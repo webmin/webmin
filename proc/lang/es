@@ -7,6 +7,7 @@ index_cpu=UCP
 index_search=Buscar
 index_run=Ejecutar...
 index_return=lista de procesos
+
 pid=ID de Proceso
 owner=Propietario
 command=Comando
@@ -15,6 +16,7 @@ size=Medida
 parent=Proceso padre
 runtime=Tiempo de Ejecución
 nice=Nivel de prioridad (Nice)
+
 search_user=Propiedad de
 search_match=Coincidiendo con
 search_cpupc=Usando más de $1% de UCP
@@ -29,6 +31,7 @@ search_sigterm=Terminar Procesos
 search_sigkill=Matar Procesos
 search_port=Usando puerto
 search_protocol=protocolo
+
 run_command=Comando a ejecutar
 run_submit=Ejecutar
 run_mode=Modo de Ejecución
@@ -39,6 +42,7 @@ run_title=Salida del comando
 run_output=Salida de $1 ...
 run_none=No se ha generado salida
 run_ecannot=No estás autorizado a ejecutar comandos
+
 edit_title=Información de Proceso
 edit_gone=Este proceso ya no se está ejecutando
 edit_sub=Subprocesos
@@ -52,12 +56,15 @@ edit_ecannot=No estás autorizado a editar procesos
 edit_sigterm=Terminar Proceso
 edit_sigkill=Matar Proceso
 edit_open=Archivos y Conexiones
+
 kill_err=Error al enviar señal $1 al proceso $2
 kill_title=Enviar Señal
 kill_sent=enviada
 kill_ecannot=No estás autorizado a matar procesos
+
 renice_err=Error en cambio de prioridad de $1
 renice_ecannot=No estás autorizado a cambiar procesos de prioridad
+
 linux_pri=Prioridad
 linux_tty=TTY
 linux_status=Estado
@@ -67,20 +74,24 @@ linux_group=Grupo
 linux_ruser=Usuario Real
 linux_rgroup=Grupo Real
 linux_pgid=ID de grupo de Proceso
+
 linuxstat_R=Ejecutando
 linuxstat_S=Durmiendo
 linuxstat_D=Sueño profundo
 linuxstat_T=Parado
 linuxstat_Z=Zombi
+
 freebsd_ruser=Usuario Real
 freebsd_rgroup=Grupo Real
 freebsd_tty=TTY
 freebsd_pgid=Grupo del Proceso
 freebsd_lim=Límite de Memoria
+
 hpux_pri=Prioridad
 hpux_tty=TTY
 hpux_status=Status
 hpux_wchan=Esperando por
+
 hpuxstat_0=No existe
 hpuxstat_S=Durmiendo
 hpuxstat_W=Esperando
@@ -89,26 +100,32 @@ hpuxstat_I=Intermedio
 hpuxstat_Z=Zombi
 hpuxstat_T=Parado
 hpuxstat_G=Creciendo
+
 macos_tty=TTY
+
 sysv_group=Grupo
 sysv_ruser=Usuario Real
 sysv_rgroup=Grupo Real
 sysv_pgid=ID de grupo del Proceso
 sysv_tty=TTY
+
 log_run=Ejecutado comando "$1"
 log_kill=Enviada señal $1 a proceso $2
 log_kills=Envía señal $1 a $2 procesos
 log_kill_l=Enviada señal $1 a proceso $2
 log_kills_l=Enviada señal $1 a procesos<br>$2
+
 acl_manage=Gestionar procesos como usuario
 acl_manage_def=Usuario de Webmin en curso
 acl_edit=¿Puede matar y cambiar procesos de prioridad?
 acl_run=¿Puede ejecutar comandos?
+
 kill_kill=Matar Proceso
 kill_term= Terminar  
 kill_hup=  Rearrancar   
 kill_stop=    Parar    
 kill_cont=  Continuar  
+
 open_title=Archivos Abiertos y Conexiones
 open_proc=Para proceso $1 (PID $2)
 open_header1=Archivos abiertos

@@ -15,5 +15,6 @@ edit_special_daily=Ежедневно (в полунощ)
 edit_special_weekly=Ежеседмично (в неделя)
 edit_special_monthly=Месечно (на 1-во)
 edit_special_yearly=Годишно (на 1 януари)
+
 log_success=Успешно изпълни <tt>$2</tt> в <tt>$1</tt>
 log_failure=Неуспешно стартиране <tt>$2</tt> в <tt>$1</tt> : $3 

@@ -8,6 +8,7 @@ index_none=Actualment no hi ha cap directori exportat en aquest sistema.
 index_apply=Aplica els Canvis
 index_applydesc=Fes clic sobre aquest botó per aplica la configuració actual de compartició de fitxers. Això farà disponibles tots els directoris llistats més amunt amb les opcions especificades.
 index_return=a la llista de recursos
+
 edit_title1=Edició de Recurs
 edit_title2=Creació de Recurs
 edit_header1=Detalls del recurs
@@ -30,6 +31,7 @@ edit_anon1=Sense accés
 edit_aclok=Permet ACLs
 edit_public=Recurs WebNFS
 edit_index=Fitxer d'índex WebNFS
+
 save_err=No s'ha pogut desar el recurs
 save_edirectory='$1' no és un nom de directori vàlid
 save_edirectory2=El directori '$1' no existeix
@@ -38,13 +40,18 @@ save_ero=No has llistat cap host per a la compartició només lectura
 save_eroot=No has llistat cap host per a la compartició root
 save_ealready=El directori '$1' ja està compartit
 save_ehost=El host '$1' no existeix
+
 log_modify=Recurs NFS $1 modificat
 log_rename=Recurs NFS $1 canviat a $2
 log_create=Recurs NFS $1 creat
 log_delete=Recurs NFS $1 suprimit
 log_apply=Canvis aplicats
+
 acl_view=Pot editar els recursos NFS
+
 ecannot=No tens permís per gestionar recursos NFS
+
 delete_err=No s'han pogut suprimir els recursos compartits
 delete_enone=No has seleccionat cap recurs
+
 restart_err=No s'han pogut aplicar els canvis

@@ -44,6 +44,7 @@ right_upsec=Er zijn $1 pakketupdates beschikbaar, waarvan $2 beveiligingsupdates
 right_recollect=Systeeminformatie vernieuwen
 right_vvirtualmin=Virtualmin-versie
 right_vvm2=Cloudmin-versie
+
 acl_show=Systeeminformatie om weer te geven
 acl_showall=Alles
 acl_showsel=Alleen geselecteerd ..

@@ -57,6 +57,7 @@ index_fmode1=Servers virtwali fajl $1
 index_fmode1d=Fajl ġdid taħt direttorju ta 'servers virtwali $1
 index_fmode2=Fajl magħżul ..
 index_delete=Ħassar Servers Magħżula
+
 cvirt_ecannot=M'għandekx permess toħloq server virtwali
 cvirt_err=Ma rnexxielux joħloq server virtwali
 cvirt_eaddr1=Ma daħal l-ebda indirizz
@@ -70,6 +71,7 @@ cvirt_eroot4=L-ebda Utent definit fil-konfigurazzjoni Apache
 cvirt_etaken=Diġà jeżisti server virtwali bl-istess isem u port
 cvirt_efile=Ma rnexxielux jikteb lil $1 : $2 
 cvirt_emissing=Is-server virtwali l-ġdid ġie miżjud ma '$1, iżda dan il-fajl ma jintużax minn Apache. Iċċekkja l- <a href='$2'>konfigurazzjoni tal-modulu</a> u kun żgur li l-'Fajl jew direttorju biex iżżid servers virtwali 'hija korretta.
+
 etype=M'għandekx permess teditja għażliet ta 'dan it-tip
 efailed=Ma rnexxielux isalva $1
 apache_apply=Applika l-Bidliet
@@ -80,6 +82,7 @@ default_serv=server default
 bytes=bytes
 eafter=Verifika tal-konfigurazzjoni naqset: $1 Il-bidliet ma ġewx salvati.
 enewline=Karattru mhux validu fil-valur
+
 global_ecannot=M'għandekx permess teditja għażliet globali
 global_mime=Lista tat-tipi MIME Globali
 global_mimedesc=Ikklikkja fuq it-tip MIME mil-lista ta 'hawn taħt biex tibdilha, jew uża l-link fil-qiegħ tal-paġna biex iżżid tip ġdid fil-lista.
@@ -87,6 +90,7 @@ global_type=Tip
 global_ext=Estensjonijiet
 global_add=Żid tip MIME ġdid.
 global_return=Tipi MIME
+
 mime_ecannot=M'għandekx permess teditja tipi mimi
 mime_edit=Editja MIME Type
 mime_add=Żid it-Tip MIME
@@ -95,6 +99,7 @@ mime_type=Tip MIME
 mime_ext=Estensjonijiet
 mime_err=Ma rnexxielux isalva t-tip MIME
 mime_etype="$1" mhux tip MIME validu
+
 virt_ecannot=Ma tistax teditja dan is-server virtwali
 virt_eprotocol=Trid tagħżel mill-inqas verżjoni waħda tal-protokoll SSL/TLS li tista 'tintuża
 virt_title=Għażliet ta 'Server Virtwali
@@ -121,6 +126,7 @@ virt_path=Triq
 virt_return=indiċi tas-server
 virt_euser=M'għandekx permess tbiddel l-utent jew il-grupp għal dan is-server virtwali.
 virt_header2=$1 għal $2
+
 vserv_title=Konfigurazzjoni tas-Server Virtwali
 vserv_virtualmin=Dan l-ospitanti virtwali Apache jappartjeni għas-server Virtualmin <tt>$1</tt>, għalhekk l-indirizz, il-port, id-direttorju bażi u l-isem tal-host ma jistgħux jinbidlu hawn.
 vserv_ecannot=Ma tistax tibdel l-indirizz ta 'dan is-server virtwali
@@ -140,10 +146,12 @@ vserv_eport="$1" mhux port validu
 vserv_eroot="$1" mhijiex għerq ta 'dokument validu
 vserv_ename="$1" mhuwiex isem tas-server validu
 vserv_eaddrs=L-ebda indirizzi tas-server virtwali ma daħlu
+
 show_title=Direttivi
 show_edit=Editja d-direttiva Apache:
 show_these=Editja manwalment id-direttivi
 show_ok=Editja
+
 manual_configs=Editja l-Iskedi tal-Konfigurazzjoni
 manual_title=Editja Direttivi
 manual_header=Uża l-kaxxa tat-test hawn taħt biex teditja manwalment id-direttivi ta 'Apache f' $1 li japplikaw għal dan is-server virtwali, direttorju jew fajls.
@@ -153,6 +161,7 @@ manual_efile=Fajl tal-konfigurazzjoni Apache mhux validu
 manual_etest=Żball tal-fajl ta 'konfigurazzjoni misjub : $1
 manual_editfile=Editja l-fajl konfigurazzjoni:
 manual_switch=Editja
+
 dir_title=Għażliet Per-Direttorju
 dir_proxyall=It-talbiet kollha tal-prokura
 dir_header=Għal $1 fuq $2
@@ -169,6 +178,7 @@ dir_re=Loghba regexp
 dir_path=Triq
 dir_return=Indiċi tad-direttorju
 dir_header2=$1 għal $2
+
 type_0=Proċessi u Limiti
 type_1=Netwerking u Indirizzi
 type_2=Moduli Apache
@@ -190,6 +200,7 @@ type_17=Hosts Virtwali Awtomatiċi
 type_18=Filtri
 type_19=Lingwi
 type_20=Image Maps
+
 htaccess_title=Fajls Għażliet Per-Direttorju
 htaccess_ecannot=Ma tistax teditja fajls htaccess
 htaccess_file=Fajls ta 'għażliet eżistenti
@@ -205,6 +216,7 @@ htaccess_edelete=M'għandekx permess tħassar dan il-fajl tal-għażliet
 htaccess_eempty=L-ebda direttorju tal-fajl tal-għażliet ma daħal
 htaccess_eabsolute=L-għażliet tad-direttorju tal-fajl għandhom ikunu mogħdija assoluta
 htaccess_err=Ma rnexxielux joħloq fajl tal-għażliet
+
 htindex_ecannot=M’intix permess li teditja dan il-fajl tal-għażliet
 htindex_title=Fajl ta 'Għażliet Per-Direttorju
 htindex_delete=Ħassar fajl
@@ -220,12 +232,14 @@ htindex_path=Triq
 htindex_header=Għal $1
 htindex_header2=$1 għall-fajl tal-għażliet $2
 htindex_return=għażliet ta 'indiċi tal-fajl
+
 htfile_title=Għażliet Per-File
 htfile_header=Għal $1 f '$2
 htfile_show=Uri Direttivi
 htfile_edit=Editja Direttivi
 htfile_apply=L-għażliet japplikaw għal ..
 htfile_header2=$1 għal $2
+
 reconfig_title=Ikkonfigura mill-ġdid il-Moduli Magħrufa
 reconfig_ecannot=M'għandekx permess terġa 'tikkonfigura Apache
 reconfig_ever=Naqset milli tikseb il-verżjoni tas-server Apache eżegwibbli $1. Iċċekkja l-konfigurazzjoni tal-modulu <a href='$2'></a> biex tiżgura li din hija t-triq it-tajba.
@@ -233,11 +247,13 @@ reconfig_desc1=Il-konfigurazzjoni Apache tiegħek inbidlet, jew għadha ma ġiet
 reconfig_desc2=Hawn taħt hawn lista tal-moduli Apache kollha appoġġjati minn Webmin, b'dawk installati magħżula bħalissa. Jekk qed tuża moduli mgħobbija b'mod dinamiku allura jista 'jkollok bżonn tagħżel dawk li huma mgħobbija b'mod dinamiku.
 reconfig_desc3=Jekk m'intix ċert liema moduli huma appoġġjati minn Apache fis-sistema tiegħek, sempliċement Ikkonfigura kif Webmin jista 'normalment jaħdem il-moduli appoġġjati awtomatikament.
 reconfig_ok=Kkonfigurat
+
 defines_title=Editja l-Parametri Definiti
 defines_ecannot=M'għandekx permess teditjah billi tiddefinixxi httpd
 defines_desc=Meta Apache jibda, il-parametri jistgħu jgħadduha bl-għażla <tt>-D</tt> linja ta 'kmand. Minħabba li dawn il-parametri jistgħu jaffettwaw liema direttivi jintużaw fil-fajls ta 'konfigurazzjoni tiegħek, Webmin jeħtieġ li jkun jaf liema huma jiġu mgħoddija lil Apache meta tkun bdiet. Daħħal il-parametri użati fis-sistema tiegħek fil-qasam tat-test fuq il-lemin.
 defines_config=Innota li l-parametri definiti li ġejjin huma diġà magħrufa : $1
 defines_list=Parametri definiti
+
 authu_ecannot="$1" mhux fajl ta 'test tal-utenti permess
 authu_title=Lista tal-Utenti
 authu_header=Fil-fajl $1
@@ -259,6 +275,7 @@ authu_sync=L-għażliet hawn taħt jippermettu li tikkonfigura Webmin biex awtom
 authu_screate=Żid utent meta jkun miżjud utent Unix
 authu_sdelete=Ħassar l-utent meta utent Unix jitħassar
 authu_smodify=Ibdel l-utent meta jinbidel utent Unix
+
 authg_ecannot="$1" mhux fajl ta 'test tal-gruppi permess
 authg_title=Lista tal-Grupp
 authg_header=Fil-fajl $1
@@ -276,22 +293,26 @@ authg_err=Ma rnexxielux isalva grupp
 authg_euser=Ma daħal l-ebda isem tal-grupp
 authg_euser2=L-isem tal-grupp ma jistax ikun fih :
 authg_edup=Grupp imsejjaħ '$1' diġà jeżisti
+
 stop_err=Ma rnexxielux iwaqqaf apache
 stop_ecannot=M'għandekx permess tieqaf apache
 stop_epid=Naqset milli tiftaħ fajl PID $1
 stop_epid2=Fajl PID invalidu $1
 stop_esig=Naqset milli tibgħat SIGTERM biex tipproċessa $1
+
 start_err=Naqset milli tibda apache
 start_ecannot=M'għandekx permess tibda apache
 start_ecmd=$1 falla : $2
 start_eunknown=Raġuni mhux magħrufa
 start_eafter=Apache ma jidhirx li qed jaħdem
+
 restart_err=Ma rnexxielux japplika tibdil
 restart_epid=Naqset milli tiftaħ fajl PID $1
 restart_epid2=Fajl PID invalidu $1
 restart_esig=Naqset milli tibgħat SIGHUP għall-proċess $1
 restart_eunknown=Raġuni mhux magħrufa
 restart_ecannot=M'għandekx permess tapplika bidliet
+
 acl_virts=Servers virtwali li dan l-utent jista 'jeditja
 acl_vall=Is-servers kollha
 acl_vsel=Magħżula ..
@@ -314,6 +335,7 @@ acl_dirs=Id-direttivi Apache huma disponibbli fuq <font size=-1>(Soġġett għal
 acl_dirs0=Kollha
 acl_dirs1=Elenkati biss ..
 acl_dirs2=Kollha ħlief elenkati ..
+
 core_maxconc=Talbiet massimi fl-istess ħin
 core_maxkeep=Keepalives massimi għal kull konnessjoni
 core_maxreq=Talbiet massimi għal kull proċess tas-server
@@ -499,10 +521,12 @@ core_infilter=Applika filtri għall-input għall-fajls kollha
 core_outfilter=Applika filtri tal-ħruġ għall-fajls kollha
 core_defchar=Sett ta 'karattri għad-dokumenti
 core_edefchar=Sett ta 'karattri nieqes jew invalidi għad-dokumenti
+
 mod_negotiation_cache=Dokumenti negozjati bil-kontenut Cache?
 mod_negotiation_pri=Prijorità tal-lingwa għal opinjonijiet multipli
 mod_negotiation_def=Default
 mod_negotiation_epri=Prijoritajiet lingwistiċi nieqsa
+
 mod_cgi_logname=Script CGI log
 mod_cgi_none=Xejn
 mod_cgi_elogname=Fajl tal-ġurnal tal-iskritt CGI validu
@@ -512,6 +536,7 @@ mod_cgi_elogsize=Id-daqs tal-log CGI għandu jkun numru sħiħ
 mod_cgi_post=Daqs massimu tad - data ta 'wara logged
 mod_cgi_epost=Id-daqs tal-informazzjoni tad-dejta għandu jkun numru sħiħ
 mod_cgi_eunder=Il-ġurnal tal-iskritt CGI mhux taħt id-direttorju permess
+
 mod_alias_from=Minn
 mod_alias_to=Biex
 mod_alias_status=Status
@@ -535,6 +560,7 @@ mod_alias_cgi2=Direttur CGI alias
 mod_alias_rcgi=Regexp CGI aliases direttorju
 mod_alias_rcgi2=regexp CGI alias directory
 mod_alias_estatus="$1" mhux status validu
+
 mod_proxy_proxy=Taġixxi bħala server tal-prokura?
 mod_proxy_req=It-talbiet
 mod_proxy_forw=Quddiem
@@ -605,11 +631,13 @@ mod_proxy_timeout=Ħin tat-talba tal-prokura f'sekondi
 mod_proxy_etimeout=L-iskadenza tat-talba bi prokura għandha tkun ta 'numru ta' sekondi
 mod_proxy_via=Via ssettjata: intestaturi
 mod_proxy_not=Xejn
+
 mod_log_agent_default=Default
 mod_log_agent_file=Fajl ..
 mod_log_agent_program=Programm ..
 mod_log_agent_log=Fajl log tal-browser
 mod_log_agent_efile=$1 mhuwiex isem tal-fajl tal-log tal-aġent validu
+
 mod_log_config_common=Format Komuni tal-Ġurnal
 mod_log_config_named=Formati ta 'reġistrazzjoni msemmija
 mod_log_config_nick=Nickname
@@ -628,6 +656,7 @@ mod_log_config_enofilprog=Nieqes il-fajl tal-isem jew il-programm
 mod_log_config_efilprog="$1" mhux isem tal-fajl jew tal-programm permess
 mod_log_config_eifset=L-għażla "Jekk issettjat" ma tistax tintuża mal-format tal-log default
 mod_log_config_edir=Direttorju għall-fajl tal-ġurnal '$1' ma jeżistix
+
 mod_log_referer_default=Default
 mod_log_referer_file=Fajl ..
 mod_log_referer_program=Programm ..
@@ -635,7 +664,9 @@ mod_log_referer_log=Fajl tal-log tal-referer
 mod_log_referer_nolog=M'għandekx tilloggja r-referenzi minn
 mod_log_referer_elog=$1 Mhux validu li jibda l-isem tal-fajl
 mod_log_referer_edir=Ir-reġistru ta ’l-iskeda mhux taħt id-direttorju permess
+
 mod_status_msg=Uri informazzjoni estiża dwar stat
+
 mod_mime_ext=Estensjonijiet
 mod_mime_xtype=Tipi MIME Extra
 mod_mime_mtype=Tat-tip MIME
@@ -668,6 +699,7 @@ mod_mime_outfilter=Filtri tal-ħruġ
 mod_mime_infilter=Filtri tad-dħul
 mod_mime_filters=Filtri li japplikaw
 mod_mime_efext=L-ebda estensjoni mogħtija għall-filtri (i) $1
+
 mod_setenvif_header=Intestatura
 mod_setenvif_match=Loghba
 mod_setenvif_case=Logħba każ
@@ -678,11 +710,13 @@ mod_setenvif_eheader=Intestatura tat-talba mhux valida "$1"
 mod_setenvif_eregex=Espressjoni regolari mhux valida "$1"
 mod_setenvif_evar=Isem tal-varjabbli mhux validu "$1"
 mod_setenvif_clear=Ċari
+
 mod_userdir_default=Default
 mod_userdir_all=L-utenti kollha aċċessibbli
 mod_userdir_except=L-utenti kollha minbarra
 mod_userdir_dir=Direttorju WWW għall-Utenti
 mod_userdir_edir=M'għandekx permess tuża d-direttorju WWW għall-utent speċifikat
+
 mod_imap_action=Azzjoni fuq użu mhux korrett ta 'immaġini
 mod_imap_default=Default
 mod_imap_godefurl=Mur fil-URL default
@@ -702,8 +736,10 @@ mod_imap_refurl=URL li tirreferi
 mod_imap_url=URL. ..
 mod_imap_defbase=Bażi default għal immaġini
 mod_imap_eurl="$1" mhix URL valida
+
 mod_speling_autocorr=Ikkoreġi awtomatikament l-URL miktuba ħażin?
 mod_speling_default=Default
+
 mod_actions_mime=Immaniġġjar / tip MIME
 mod_actions_cgiurl=URL tal-iskritt CGI
 mod_actions_mimecgi=Azzjonijiet tas-CGI Handler jew MIME
@@ -713,10 +749,13 @@ mod_actions_httpcgi=Metodi HTTP azzjonijiet CGI
 mod_actions_emime="$1" m'huwiex handler validu jew tip MIME
 mod_actions_ecgi="$1" mhix skript CGI validu
 mod_actions_enometh=L-ebda metodu magħżul għall-iskritt CGI "$1"
+
 mod_include_incl=Proċess li jinkludi fuq il-fajls bit-tesegwixxi bit?
 mod_include_set=Iva u ssettja d-data modifikata l-aħħar
 mod_include_default=Default
+
 mod_dir_txt=Fajls indiċi tad-Direttorju
+
 mod_autoindex_default=Default
 mod_autoindex_asc=Axxendenti
 mod_autoindex_descend=Dixxendenti
@@ -725,6 +764,7 @@ mod_autoindex_date=Data
 mod_autoindex_size=Daqs
 mod_autoindex_desc=Deskrizzjoni
 mod_autoindex_sort=Issortja l-indiċi tad-direttorju skont
+
 browsermatch_regexp=Browser regex
 browsermatch_case=Loghba tal-kaz?
 browsermatch_var=Issettja varjabbli
@@ -732,6 +772,7 @@ browsermatch_value=Valur
 browsermatch_txt=Varjabbli stabbiliti bbażati fuq it-tip tal-browser
 browsermatch_evar=Isem tal-varjabbli mhux validu "$1"
 browsermatch_clear=Ċari
+
 autoindex_fname=Isem tal-fajl
 autoindex_mime=Tat-tip MIME
 autoindex_enc=Kodifikazzjoni
@@ -785,9 +826,11 @@ autoindex_sicon=Uri ikoni tal-fajl
 autoindex_srules=Uri l-linji &lt;hr&gt;
 autoindex_track=Inkludi ETags fl-intestatura
 autoindex_version=Issortja skont il-kordi tal-verżjoni
+
 mod_mime_magic_file=Fajl MIME magic numri
 mod_mime_magic_none=Xejn
 mod_mime_magic_efile=Numru tal-fajl MIME mhux validi
+
 mod_env_var=Varjabbli
 mod_env_value=Valur
 mod_env_pass=Għaddi minn ġo
@@ -798,6 +841,7 @@ mod_env_passall=Għaddi l-varjabbli kollha tal-ambjent għas-CGI
 mod_env_default=Default
 mod_env_evar="$1" mhux isem varjabbli validu
 mod_env_evalue="$1" mhuwiex valur varjabbli validu
+
 mod_access_order=Ordni ta 'verifika ta' aċċess:
 mod_access_denyallow=Iċħad imbagħad ħalli
 mod_access_allowdeny=Ħalli mbagħad tiċħad
@@ -820,6 +864,7 @@ mod_access_epip="$1" mhuwiex indirizz IP parzjali validu
 mod_access_emask="$1" mhix par valida għan-netwerk / netmask
 mod_access_ecidr="$1" mhux netwerk / par CIDR validi
 mod_access_evar="$1" mhux isem varjabbli validu
+
 mod_auth_ufile=Fajl test tal-utent
 mod_auth_uedit=Editja l-utenti
 mod_auth_gfile=Fajl tat-test tal-grupp
@@ -830,6 +875,7 @@ mod_auth_eudir=Fajl tat-test tal-utent mhux taħt id-direttorju permess
 mod_auth_egdir=Fajl tat-test tal-grupp mhux taħt id-direttorju permess
 mod_auth_eufile=Isem tal-fajl tat-test tal-utent mhux validu
 mod_auth_egfile=Isem tal-fajl tat-test tal-grupp mhux validu
+
 mod_auth_dbm_ufile=Fajl DBM tal-utent
 mod_auth_dbm_gfile=Fajl DBM tal-grupp
 mod_auth_dbm_pass=Għaddi l-fallimenti għall-modulu li jmiss?
@@ -840,6 +886,7 @@ mod_auth_dbm_egfile=Isem tal-fajl DBM tal-grupp mhux validu
 mod_auth_dbm_type=Dejta tad-database DBM
 mod_auth_dbm_gtype=Tip ta ’bażi tad-database tal-grupp DBM
 mod_auth_dbm_default=Format tad-DBM Default
+
 mod_cern_meta_process=Ipproċessa metafiles ta 'intestatura
 mod_cern_meta_dir=Sottodirettorju għal metafiles ta 'l-intestatura
 mod_cern_meta_default=Default
@@ -847,6 +894,7 @@ mod_cern_meta_edir=Isem tas-sottodirettorju metafile mhux validu
 mod_cern_meta_suffix=Is-suffiss tal-fajl għall-metafiles tal-intestatura
 mod_cern_meta_default2=Default
 mod_cern_meta_esuffix=Is-suffiss metafile mhux validu
+
 mod_ssl_enable=Jippermettu SSL?
 mod_ssl_proto=Protokolli SSL
 mod_ssl_cfile=Ċertifikat / fajl taċ-ċavetta privata
@@ -874,6 +922,7 @@ mod_ssl_passsc=Eżegwixxi skript $1
 mod_ssl_epassph=L-ebda password SSL ma daħlet
 mod_ssl_epasssc=Skript tal-password SSL nieqes jew invalidu
 mod_ssl_ecerton=Meta SSL huwa attivat, fajl taċ-ċertifikat għandu jintgħażel
+
 mod_apachessl_notssl=Iċħad aċċess SSL
 mod_apachessl_forcessl=Forza l-aċċess SSL / notSSL?
 mod_apachessl_capath=Triq lejn direttorju b'ċertifikati ta 'l-Awtoritajiet taċ-Ċertifikazzjoni fi Triq
@@ -906,6 +955,7 @@ mod_apachessl_nov2=Itfi l-verżjoni 2 tal-SSL
 mod_apachessl_fake=Jissimula logon ta 'awtentikazzjoni bażika tal-utent, billi juża l-isem taċ-ċertifikat
 mod_apachessl_cdnfile=Fajl kontra d-DN tal-klijent huwa kkontrollat
 mod_apachessl_ecdnfile=Fajl Nieqes kontra d-DN tal-klijent huwa kkontrollat
+
 log_global=Biddel l-għażliet globali $1
 log_virtc=Ħoloq server $1
 log_virts=Server ikkonfigurat mill-ġdid $1
@@ -946,8 +996,10 @@ log_stop=Websajt li waqaf
 log_apply=Bidliet applikati
 log_manual=Fajl ta 'konfigurazzjoni editjat manwalment $1
 log_virts_delete=$1 servers mħassra
+
 search_title=Sib Servers
 search_notfound=Ma nstab l-ebda server virtwali li jaqbel
+
 mod_php_value=Valuri tal-Konfigurazzjoni PHP
 mod_php_flag=Bnadar tal-Konfigurazzjoni PHP
 mod_php_admin_value=Valuri ta 'Konfigurazzjoni tal-Amministratur PHP
@@ -956,6 +1008,7 @@ mod_php_name_header=Twaqqif
 mod_php_value_header=Valur
 mod_php_ename="$1" huwa isem mhux validu
 mod_php_evalue="$1" huwa valur invalidu għal $2
+
 mod_vhost_alias_root=Għerq tal-host virtwali awtomatiku
 mod_vhost_alias_ip=Uża indirizz IP minflok isem host?
 mod_vhost_alias_none=Xejn
@@ -963,12 +1016,14 @@ mod_vhost_alias_script=Cgi-bin ospitanti virtwali awtomatiku
 mod_vhost_alias_eroot=Għerq virtwali nieqes jew invalidu
 mod_vhost_alias_eroot2=Direttorju ta 'l-għeruq virtwali ospitanti mhux permess
 mod_vhost_alias_escript=Cgi-bin ospitanti virtwali nieqes jew invalidu
+
 worker_minspare=Ħjut minflok l-ispare parts
 worker_maxspare=Ħjut massimi ta 'rikambju
 worker_eminspare=Il-ħajt minimu ta 'rikambju għandu jkun numru sħiħ
 worker_emaxspare=Il-ħjut żejda massimi għandhom ikunu numru sħiħ
 worker_threads=Ħjut għal kull proċess tat-tfal
 worker_ethreads=In-numru ta 'ħjut għal kull wild għandu jkun proċess sħiħ
+
 perchild_sthreads=Ħjut inizjali għal kull proċess tat-tfal
 perchild_esthreads=In-numru ta 'ħjut għal kull wild għandu jkun proċess sħiħ
 perchild_numservers=Numru ta 'proċessi tat - tfal
@@ -984,6 +1039,7 @@ perchild_gid=GID
 perchild_enum=In-numru tal-proċess għandu jkun numru sħiħ mhux żero
 perchild_euid=UID għandu jkun numru sħiħ
 perchild_egid=GID għandu jkun numru sħiħ
+
 cache_enable=Attiv?
 cache_type=Maħżen tal-cache
 cache_disk=Disk
@@ -1004,12 +1060,14 @@ cache_eminos=Id-daqs minimu tal-oġġett għall-cache għandu jkun numru ta ’b
 cache_emaxos=Id-daqs massimu tal-oġġett għall-cache għandu jkun numru ta ’bytes
 cache_maxoc=Oġġetti massimi għall-cache fil-memorja
 cache_emaxoc=L-għadd ta 'oġġetti għall-cache fil-memorja għandu jkun numru sħiħ
+
 suexec_su=Mexxi programmi CGI kif
 suexec_none=Utent minn konfigurazzjoni globali
 suexec_user=Utent Unix
 suexec_group=u grupp
 suexec_euser=Utent nieqes jew invalidu biex imexxi programmi CGI kif inhu
 suexec_egroup=Grupp nieqes jew invalidu biex imexxi programmi CGI kif inhu
+
 filter_name=Isem
 filter_intype=Input tat-tip MIME
 filter_outtype=Output tat-tip MIME
@@ -1019,11 +1077,13 @@ filter_in=Definizzjonijiet tal-Filtru tal-Input
 filter_out=Filtru tal-Output Definizzjonijiet
 filter_ename=Isem tal-filtru mhux validu "$1"
 filter_ecmd=Mandat nieqes għall-filtru "$1"
+
 cdir_err=Ma rnexxielux joħloq għażliet għal kull direttorju
 cdir_err2=Ma rnexxielux isalva għażliet għal kull direttorju
 cdir_epath=Nieqes it-triq
 cdir_eproxy=L-għażliet tal-prokura ma jistgħux jinħolqu bl-għażla ta 'match regexp attivata
 cdir_ecannot=M'għandekx permess toħloq għażliet għal kull direttorju għall-passaġġ mogħti
+
 mod_band_enable=Il-limitazzjoni tal-bandwid attivata?
 mod_band_bw=Limitu (bytes / sek)
 mod_band_client=Għall-klijenti
@@ -1042,24 +1102,30 @@ mod_band_epulse=Intervall nieqes jew invalidu bejn pakketti limitati
 mod_band_dir=Bandwidth li tillimita d-direttorju tal-fajls tad-dejta
 mod_band_edir=Direttorju tal-fajls tad-dejta tal-bandwidth nieqsa jew ineżistenti
 mod_band_esubdir=Nieqes is-sottodirettorju <tt>$1</tt> taħt id-direttorju tal-fajls tad-dejta tal-bandwidth
+
 mod_dav_active=WebDAV attivat?
 mod_dav_inf=Tippermetti talbiet profondament DAV PROPFIND?
 mod_dav_timeout=Żmien minimu ta 'DAV f'sekondi
 mod_dav_etimeout=Tmiem id-DAV nieqes jew invalidu
+
 delete_err=Ma rnexxielux jitħassar is-servers virtwali
 delete_enone=L-ebda magħżul
 delete_ecannot=M'għandekx permess tħassar is-servers
 delete_ecannot2=M’intix permess li teditja s-server $1
+
 syslog_desc=Log tal-iżball Apache
+
 mod_auth_basic_pass=Għaddi l-fallimenti bażiċi tal-login għall-modulu li jmiss?
 mod_auth_basic_prov=Tipi bażiċi ta 'fajls ta' utenti ta 'login
 mod_auth_basic_file=Fajl test
 mod_auth_basic_dbm=Database tad-DBM
+
 mod_auth_digest_pass=Għaddi l-fallimenti tal-login diġestivi għall-modulu li jmiss?
 mod_auth_digest_prov=Tip ta 'fajl ta' l-utent ta 'login diġest
 mod_auth_digest_al=Algoritmu ta ’tfassil
 mod_auth_digest_domain=URLs u mogħdijiet fl-istess dominju
 mod_auth_digest_edomain=URL nieqsa u mogħdijiet fl-istess dominju
+
 mods_title=Ikkonfigura Moduli Apache
 mods_mod=Modulu
 mods_state=Stat attwali

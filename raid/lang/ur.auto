@@ -21,6 +21,7 @@ index_mailfromnone=Default (<tt>root</tt>)
 index_program=جب مسائل کا پتہ چل جائے تو چلانے کا حکم
 index_programnone=کوئی نہ چلائیں
 index_monitor=مانیٹرنگ قابل ہے؟
+
 linear=لکیری (جڑے ہوئے)
 raid0=RAID0 (دھاری دار)
 raid1=RAID1 (آئینہ دار)
@@ -29,6 +30,7 @@ raid5=RAID5 (تقسیم تقسیم)
 raid6=RAID6 (دوہری تقسیم تقسیم)
 raid10=RAID10 (دھاری دار اور آئینہ دار)
 blocks=بلاکس
+
 create_title=RAID ڈیوائس بنائیں
 create_header=RAID ڈیوائس کے اختیارات
 create_device=ڈیوائس فائل
@@ -62,6 +64,7 @@ create_o2_layout=2 آفسیٹ کاپیاں
 create_n3_layout=3 قریب کاپیاں
 create_f3_layout=3 دور کاپیاں
 create_o3_layout=3 آفسیٹ کاپیاں
+
 view_title=RAID ڈیوائس
 view_header=RAID ڈیوائس کے اختیارات
 view_device=ڈیوائس فائل
@@ -117,6 +120,7 @@ view_mountmsg=ڈائریکٹری درج کریں اور RAID ڈیوائس کو �
 view_mountmsg2=اپنے سسٹم پر ورچوئل میموری کے ل RA اس RAID ڈیوائس کو استعمال کرنے کے ل button اس بٹن پر کلک کریں۔
 view_blocks=$1 بلاکس
 view_sparegroup=اسپیئر گروپ
+
 mkfs_title=فائل سسٹم بنائیں
 mkfs_header2=This form allows you to build a new $2 filesystem on $1. <b>All</b> existing data will be erased!
 mkfs_options=نیا لینکس فائل سسٹم کے اختیارات
@@ -124,6 +128,7 @@ mkfs_err=فائل سسٹم بنانے میں ناکام
 mkfs_exec=کمانڈ$1 پر عملدرآمد ..
 mkfs_failed=.. حکم ناکام!
 mkfs_ok=.. کمانڈ مکمل۔
+
 emkraid=<tt>mkraid</tt> failed : $1
 eraidstop=<tt>raidstop</tt> failed : $1
 eraidstart=<tt>raidstart</tt> failed : $1
@@ -135,6 +140,7 @@ emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
 log_create=$1 RAID ڈیوائس$2 بنائی گئی
 log_stop=غیر فعال RAID آلہ$1
 log_start=چالو RAID ڈیوائس$1
@@ -147,14 +153,17 @@ log_grow=بڑھتی ہوئی RAID ڈیوائس$1 سے کل$2 ڈسکیں
 log_convert_to_raid6=RAID5 آلہ$1 کو RAID6 ڈیوائس میں تبدیل کیا
 log_convert_to_raid5=RAID6 آلہ$1 کو RAID5 ڈیوائس میں تبدیل کیا
 log_notif=تازہ کاری RAID مسئلہ نوٹیفکیشن کے اختیارات
+
 notif_err=RAID مسئلہ نوٹیفیکیشن کے اختیارات کو بچانے میں ناکام
 notif_emailaddr=گمشدہ یا غلط اطلاع نامہ
 notif_emailfrom=پتہ سے لاپتہ یا غلط
 notif_eprogram=چلانے کے لئے لاپتہ یا غیر موجود پروگرام
+
 delete_title=RAID صف کو حذف کریں
 delete_rusure=کیا آپ واقعی RAID سرنی$1 کو حذف کرنا چاہتے ہیں ، جو ڈسک کی جگہ کا$2 استعمال کرتا ہے؟
 delete_ok=ہاں ، اسے حذف کریں
 delete_eidx=کوئی RAID سرنی منتخب نہیں کی گئی!
+
 remove_title=RAID صف سے تقسیم ہٹائیں
 remove_rusure=کیا آپ واقعی RAID سرنی$1 کا$2 تقسیم ختم کرنا چاہتے ہیں؟
 remove_ok=ہاں ، اسے ہٹا دیں

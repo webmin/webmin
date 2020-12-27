@@ -7,6 +7,7 @@ index_stop=Zatrzymaj Sendmaila
 index_stopmsg=Naciśnij ten przycisk aby zatrzymać Sendmaila. Spowoduje to zaprzestanie doręczania lokalnym użytkownikom poczty pochodzącej z innych systemów, jak również uniemożliwi używanie tego systemu jako serwera poczty wychodzącej.
 index_start=Uruchom Sendmaila
 index_startmsg=Naciśnij ten przycisk aby uruchomić Sendmaila poleceniem $1. Dopóki tego nie uczynisz, poczta z innych systemów nie będzie doręczana lokalnym użytkownikom oraz stacje klienckie nie będą mogły używać tego systemu jako serwera poczty wychodzącej.
+
 opts_title=Ustawienia Sendmaila
 opts_ecannot=Nie masz uprawnień do zmiany ustawień Sendmaila
 opts_ds=Wysyłaj pocztę za pośrednictwem komputera
@@ -45,6 +46,7 @@ opts_interactive=Interakcyjnie
 opts_deferred=Odroczone
 opts_gecos=Przyjmować pocztę adresowaną rzeczywistymi nazwami uzytkowników?
 opts_hops=Maksymalna liczba etapów przesyłania poczty
+
 aliases_title=Aliasy pocztowe
 aliases_ecannot=Nie masz uprawnień do modyfikacji aliasów
 aliases_addr=Adres
@@ -57,6 +59,7 @@ aliases_type5=Plik z automatyczną odpowiedzią $1
 aliases_type6=Użyć pliku filtru $1
 aliases_none=Brak
 aliases_return=listy aliasów
+
 aform_type0=Brak
 aform_type1=Adres e-mail
 aform_type2=Adresy w pliku
@@ -71,10 +74,12 @@ aform_enabled=Aktywny?
 aform_val=Alias
 aform_afile=Zmień..
 aform_return=aliasu
+
 afile_title=Zmień plik z adresami
 afile_desc=Użyj pola tekstowego poniżej do zmiany adresów w pliku $1.
 afile_efile=Nie masz uprawnień do zmiany $1.
 afile_undo=Cofnij zmiany
+
 ffile_title=Zmień plik filtru
 ffile_desc=Za pomocą poniższego formularza ustaw reguły filtru w pliku $1.
 ffile_efile=Nie masz uprawnień do zmiany $1.
@@ -88,12 +93,15 @@ ffile_what0=nie pasuje
 ffile_what1=pasuje
 ffile_other=W przeciwnym przypadku prześlij do $1
 ffile_err=Nie udało się zachować pliku filtru
+
 ffile_ematch=Brak wzorca
 ffile_eaction=Brak adresu, na ktry przesyłać
+
 rfile_title=Zmień plik automatycznej odpowiedzi
 rfile_desc=Użyj pola tekstowego poniżej do modyfikacji komunikatu automatycznej odpowiedzi w $1. Ten komunikat może zawierać makra $SUBJECT, $FROM, $TO, $DATE i $BODY, które będą rozwinięte podczas aktywacji automatycznek odpowiedzi.
 rfile_efile=Nie masz uprawnień do modyfikacji $1.
 rfile_undo=Cofnij zmiany
+
 asave_err=Nie udało się zachować aliasu
 asave_ecannot2=Nie masz uprawnień do modyfikacji aliasów
 asave_ecannot=Nie masz uprawnień do zmiany tego aliasu
@@ -109,6 +117,7 @@ asave_etype4='$1' nie jest poprawnym programem lub nie istnieje
 asave_etype5=Plik automatycznej odpowiedzi '$1' nie jest poprawny
 asave_etype4none=Nie podano programu
 asave_etype6=Plik filtru '$1' nie jest poprawny
+
 cws_title=Domeny lokalne
 cws_ecannot=Nie masz uprawnień do zmian lokalnych domen
 cws_domains=Domeny obsługiwane przez ten serwer
@@ -117,6 +126,7 @@ cws_desc2=Zauważ, że dopisanie tu domeny zazwyczaj nie wystarcza. Musisz równ
 cws_err=Nie udało się zachować domen lokalnych
 cws_ehost='$1' nie jest prawidłową nazwą komputera ani domeny
 cws_eip='$1' jest adresem IP, a nie nazwą domeny
+
 masq_title=Maskowanie domen
 masq_ecannot=Nie masz uprawnień do konfiguracji maskowania
 masq_domain=Zamaskuj jako domenę
@@ -127,12 +137,14 @@ masq_err=Nie udało się zachować maskowania domen
 masq_edomain='$1' nie jest prawidłową domeną maskującą
 masq_ehost='$1' nie jest prawidłową nazwą komputera ani domeny
 masq_eip='$1' jest adresem IP, a nie nazwą domeny
+
 trusts_title=Zaufani użytkownicy
 trusts_ecannot=Nie masz uprawnień do modyfikacji listy zaufanych użytkowników
 trusts_users=Lokalni zaufani użytkownicy
 trusts_desc=Jeśli użytkownik lokalny spróbuje wysłać wiadomość, musi on znajdować się na liście po lewej, aby Sendmail pozwolił mu podać inny adres źródłowy (<tt>From:</tt>). To ograniczenie ma na celu uniemożliwienie podawania fałszywego adresu źródłowego (<tt>From:</tt>) użytkownikom wysyłającym pocztę z twojego systemu.
 trusts_err=Nie udało się zachować listy zaufanych użytkowników
 trusts_euser='$1' nie jest prawidłową nazwą użytkownika
+
 virtusers_title=Podstawianie adresów
 virtusers_ecannot=Nie masz uprawnień do modyfikacji podstawiania adresów
 virtusers_efile=Plik teksowy $1, na podstawie którego jest tworzona baza danych podstawień adresów $2 nie istnieje. Być może musisz zmienić <a href='$3'>konfigurację modułu</a> aby korzystał z prawidłowej ścieżki.
@@ -144,6 +156,7 @@ virtusers_error=Błąd $1
 virtusers_domain=Domena $1
 virtusers_address=Adres $1
 virtusers_return=listy podstawień adresów
+
 vform_edit=Zmień podstawienie
 vform_create=Nowe podstawienie
 vform_for=Poczta dla
@@ -156,6 +169,7 @@ vform_err_nouser=brak użytkownika
 vform_err_nohost=brak komputera
 vform_end=Przenieś na koniec
 vform_ecannot=Nie masz prawa do zmiany podstawienia dla tego adresu
+
 vsave_ecannot=Nie masz uprawnień do modyfikacji podstawiania adresów
 vsave_ecannot2=Nie masz uprawnień do zmiany podstawienia dla tego adresu
 vsave_emax=Nie masz uprawnień do utworzenia więcej niż $1 podstawień adresu
@@ -170,6 +184,7 @@ vsave_eaddr='$1' nie jest prawidłowym adresem
 vsave_ecannot4=Nie masz uprawnień do tworzenia podstawień dla domen
 vsave_edomdom=Jedynie domena może być podstawiona za inną domenę
 vsave_ecannot5=Nie masz uprawnień do tworzenia podstawień, które generują błąd
+
 mailers_title=Routing według domen
 mailers_cannot=routing według domen
 mailers_edirective=Twój plik konfiguracyjny Sendmaila nie zawiera części niezbędnej dla routingu według domen.
@@ -180,6 +195,7 @@ mailers_for=Poczta dla..
 mailers_delivery=Doręczanie
 mailers_to=Wyślij do..
 mailers_return=listy routingu według domen
+
 mform_edit=Popraw routing
 mform_create=Utwórz routing
 mform_for=Poczta dla
@@ -200,10 +216,12 @@ mform_procmail=Procmail
 mform_mail11=DECnet mail11
 mform_error=Błąd
 mform_ecannot=Nie masz uprawnień do modyfikacji routingu według domen
+
 msave_ecannot=Nie masz uprawnień do modyfikacji routingu według domen
 msave_err=Nie udało się zachować routingu według domen
 msave_edomain='$1' nie jest prawidłową nazwą komputera ani domeny
 msave_edup=Routing dla domeny '$1' jest już zdefiniowany
+
 generics_title=Adresy wychodzące
 generics_cannot=Nie masz uprawnień do modyfikacji adresów wychodzących
 generics_econfig=Twój plik konfiguracyjny Sendmaila nie zawiera części niezbędnej dla podstawiania adresów wychodzących.
@@ -213,17 +231,20 @@ generics_desc2=Zauważ, że musisz mieć wpis w tabeli <a href='$1'>domen wycho
 generics_from=Poczta z..
 generics_to=Zmień na..
 generics_return=listy podstawień adresów
+
 gform_edit=Zmień podstawienie
 gform_create=Nowe podstawienie
 gform_from=Poczta z
 gform_to=Zmień na
 gform_ecannot=Nie masz uprawnień do zmiany tego adresu wychodzącego
+
 gsave_ecannot=Nie masz uprawnień do modyfikacji adresów wychodzących
 gsave_ecannot2=Nie masz uprawnień do zmiany tego adresu wychodzącego
 gsave_err=Nie udało sie zachować adresów wychodzących
 gsave_efrom='$1' nie jest prawidłowym adresem źródłowym
 gsave_ematch=Adres żródłowy nie pasuje do '$1'
 gsave_eto='$1' nie jest prawidłowym nowym adresem
+
 cgs_title=Domeny wychodzące
 cgs_ecannot=Nie masz uprawnień do modyfikacji domen wychodzących
 cgs_header=Adresy domen wychodzących
@@ -231,6 +252,7 @@ cgs_desc=Pominąwszy pocztę wysłaną przez lokalnych użytkowników, Sendmail 
 cgs_err=Nie udało sie zachować domen wychodzących
 cgs_ehost='$1' nie jest prawidłową nazwą komputera ani domeny
 cgs_eip='$1' jest adresem IP, a nie nazwą domeny
+
 domains_title=Podstawianie domen
 domains_ecannot=Nie masz uprawnień do modyfikacji podstawiania domen
 domains_econfig=Twój plik konfiguracyjny Sendmaila nie zawiera części niezbędnej dla podstawiania domen.
@@ -239,14 +261,17 @@ domains_desc=Podstawianie domen zmienia adres docelowy (<tt>To:</tt>) wiadomośc
 domains_from=Z domeny..
 domains_to=Do domeny..
 domains_return=listy podstawień domen
+
 dform_edit=Zmień podstawienie
 dform_create=Nowe podstawienie
 dform_from=Z domeny
 dform_to=Do domeny
 dform_ecannot=Nie masz uprawnień do modyfikacji podstawiania domen
+
 dsave_ecannot=Nie masz uprawnień do modyfikacji podstawiania domen
 dsave_err=Nie udało się zachować podstawień domen
 dsave_edomain='$1' nie jest prawidłową nazwą domeny
+
 access_title=Kontrola spamu
 access_ecannot=Nie masz uprawnień do konfigurowania kontroli spamu
 access_efile=Plik tekstowy $1, na podstawie którego jest tworzona baza danych kontroli spamu $2 nie istnieje. Być może musisz zmienić <a href='$3'>konfigurację modułu</a> aby korzystał z prawidłowej ścieżki.
@@ -270,12 +295,14 @@ sform_discard=Zignoruj milcząco
 sform_err=Kod błędu
 sform_msg=Komunikat
 sform_ecannot=Nie masz uprawnień do konfigurowania kontroli spamu
+
 ssave_err=Nie udało się zachować reguły kontroli spamu
 ssave_etype0='$1' nie jest prawidłowym adresem
 ssave_etype1='$1' nie jest prawidłowym adresem sieci
 ssave_etype2='$1' nie jest prawidłową nazwą użytkownika
 ssave_etype3='$1' nie jest prawidłową nazwą domeny
 ssave_ecode='$1' nie jest prawidłowym kodem błędu SMTP
+
 relay_title=Przekazywanie poczty
 relay_ecannot=Nie masz uprawnień do zmiany konfiguracji przekazywania poczty
 relay_eversion=Jedynie Sendmail w wersji 8.9 i wyższej posiadają kontrolę przekazywania poczty
@@ -284,6 +311,7 @@ relay_desc1=Jeśli nie pozwolisz inaczej w <a href='$1'>kontroli spamu</a>, Sen
 relay_desc2=Jeśli twój system jest bramką dla pewnych domen, które nie są bezpośrednio dostępne z sieci zewnętrznej (przy użyciu <a href='$1'>routingu według domen</a>), wówczas wszystkie te domeny powinny być tu wymienione.
 relay_err=Nie udało się zachować konfiguracji przekazywania poczty
 relay_edomain='$1' nie jest prawidłową nazwą domeny
+
 mailq_title=Kolejka poczty
 mailq_ecannot=Nie masz uprawnień do przeghlądania kolejki poczty
 mailq_id=Nr ID wiadomości
@@ -299,8 +327,10 @@ mailq_force=Aby wymusić natychmiastowe doręczenie wiadomości z kolejki, <a h
 mailq_none=Brak wiadomości w kolejce
 mailq_delete=Kasuj wybrane wiadomości
 mailq_return=kolejki poczty
+
 flushq_title=Opróżnij kolejkę
 flushq_desc=Wymuszenie próby doręczenia poczty poleceniem $1 ..
+
 delq_err=Nie udało sie skasować wiadomości
 delq_ecannot=Nie masz uprawnień do usuwania wiadomości z kolejki
 delq_locked=Plik jest obecnie zablokowany ze względu na wysyłanie
@@ -311,6 +341,7 @@ delq_egone=już skasowane lub doręczone
 delq_elocked=zablokowane ze względu na wysyłanie
 delq_ok=skasowane pomyślnie
 delq_title=Kasowanie wiadomości
+
 boxes_title=Skrzynki pocztowe
 boxes_user=Użytkownik
 boxes_size=Rozmiar skrzynki
@@ -318,6 +349,7 @@ boxes_none=Brak poczty
 boxes_return=listy skrzynek pocztowych
 boxes_sent=Poczta wysłana
 boxes_ecannot=Nie masz uprawnień do czytania poczty
+
 mail_title=Poczta użytkownika
 mail_from=Od
 mail_date=Wysłano
@@ -352,6 +384,7 @@ mail_mark=Zaznacz wybrane jako:
 mail_mark0=Nie przeczytane
 mail_mark1=Przeczytane
 mail_mark2=Specjalne
+
 view_title=Czytaj pocztę
 view_desc=Wiadomość $1 w $2
 view_desc2=Wiadomość $1 dla użytkownika $2
@@ -372,6 +405,7 @@ view_mark0=Nie przeczytaną
 view_mark1=Przeczytaną
 view_mark2=Specjalną
 view_return=pierwotnego adresu e-mail
+
 compose_title=Utwórz wiadomość
 reply_title=Odpowiedz na wiadomość
 forward_title=Przekaż dalej
@@ -380,6 +414,7 @@ reply_attach=Przekazywane załączniki
 reply_attach2=Załączniki
 reply_send=Wyślij
 reply_ecannot=Nie masz uprawnień do czytania poczty jako ten użytkownik
+
 send_err=Nie udało się wysłać wiadomości
 send_eto=Brak adresu docelowego
 send_efrom=Brak adresu źródłowego
@@ -391,13 +426,16 @@ send_efile=Plik załącznika $1 nie istnieje
 send_eattach=Łączny rozmiar załączników nie może przekraczać $1 kB.
 send_eperms=Użytkownik $1 nie ma uprawnień do czytania $2
 send_eperms2=Nie masz uprawnień do wysłania pliku $1
+
 delete_ecannot=Nie masz uprawnień do kasowania poczty tego użytkownika
 delete_enone=Nie wybrano wiadomości do skasowania
 delete_emnone=Nie wybrano wiadomości do zaznaczenia
+
 search_title=Wyniki poszukiwania
 search_ecannot=Nie masz uprawnień do przeszukiwania poczty tego użytkownika
 search_ematch=Musisz wprowadzić poszukiwany tekst
 search_none=Nie znaleziono żadnej wiadomości
+
 file_title=Zmień plik Sendmaila
 file_desc=Użyj pola tekstowego poniżej do ręcznej zmiany pliku Sendmaila $1.
 file_undo=Cofnij zmiany
@@ -462,6 +500,7 @@ acl_boxname=Pokaż nazwę skrzynki pocztowej jako
 acl_boxname0=Nazwę pliku
 acl_boxname1=Rzeczywistą nazwę użytkownika
 acl_boxname2=Bez nazwy
+
 log_opts=Zmieniono opcje Sendmaila
 log_alias_create=Utworzono alias $1
 log_alias_modify=Zmieniono alias $1
@@ -490,6 +529,7 @@ log_domain_manual=Ręcznie zmodyfikowano plik podstawień dla domen $1
 log_access_create=Utworzono regułę kontroli spamu dla $1
 log_access_modify=Zmieniono regułę kontroli spamu dla $1
 log_access_delete=Usunięto regułę kontroli spamu dla $1
+
 log_access_manual=Ręcznie zmodyfikowano plik kontroli spamu $1
 log_relay=Zmieniono przekazywanie poczty wg domen
 log_flushq=Opróżniono kolejkę poczty
@@ -499,6 +539,7 @@ log_stop=Zatrzymano serwer Sendmaila
 log_start=Uruchomiono serwer Sendmaila
 log_delmail=Usunięto $1 wiadomości z $2
 log_send=Wysłano wiadomość do $1
+
 match_from=From: pasuje
 match_subject=Subject: pasuje
 match_to=To: pasuje

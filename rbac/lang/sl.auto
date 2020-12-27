@@ -1,5 +1,6 @@
 index_euser=Konfiguracijske datoteke RBAC $1 v vašem sistemu ni bilo mogoče najti. Mogoče RBAC ni nameščen ali pa je <a href='$2'>konfiguracija modula</a> napačna.
 index_return=kazalo modula
+
 users_title=Lastnosti uporabnika
 users_user=Uporabniško ime
 users_profiles=Ograjeni profili
@@ -10,6 +11,7 @@ users_return=seznam uporabniških atributov
 users_type=Vtipkajte
 users_role=Vloga
 users_project=Projekt
+
 user_title1=Ustvari uporabniške lastnosti
 user_title2=Urejanje uporabniških lastnosti
 user_header=Atributi, dodeljeni uporabniku Unixa
@@ -35,6 +37,7 @@ user_eauth='$1' ni veljavno pooblastilo
 user_ecannot=Tega uporabnika ni dovoljeno urejati
 user_erole=Ne morete dodeliti vloge "$1"
 user_eprof=Ni vam dovoljeno dodeliti profilu "$1"
+
 auths_title=Dovoljenja
 auths_name=Ime dovoljenja
 auths_desc=Opis
@@ -42,8 +45,10 @@ auths_none=Dovoljenja še niso definirana.
 auths_add=Dodajte novo pooblastilo.
 auths_return=seznam dovoljenj
 auths_ecannot=Nimate dovoljenja za urejanje pooblastil
+
 authc_name=Pooblastilo
 authc_desc=Opis
+
 auth_title1=Ustvari avtorizacijo
 auth_title2=Uredi avtorizacijo
 auth_header=Podrobnosti o pooblastilu za avtorizacijo
@@ -57,6 +62,7 @@ auth_edesc=Neveljaven dolg opis
 auth_eclash=Pooblastilo z istim imenom že obstaja
 auth_einuseu=To pooblastilo uporablja uporabnik $1, zato ga ni mogoče izbrisati
 auth_einusep=To pooblastilo uporablja profil $1, zato ga ni mogoče izbrisati
+
 profs_title=Profili
 profs_name=Ime profila
 profs_desc=Opis
@@ -65,6 +71,7 @@ profs_none=Še ni definiran noben profil.
 profs_add=Dodajte nov profil.
 profs_return=seznam profilov
 profs_ecannot=Ni vam dovoljeno urejati profilov
+
 prof_title1=Ustvari profil
 prof_title2=Uredi profil
 prof_header=Podrobnosti o avtorizacijskem profilu
@@ -81,6 +88,7 @@ prof_einuseu=Ta profil uporablja uporabnik $1, zato ga ni mogoče izbrisati
 prof_einusep=Ta profil uporablja profil $1, zato ga ni mogoče izbrisati
 prof_einusee=Ta profil ima $1 povezanih izvedbenih profilov, zato ga ni mogoče izbrisati
 prof_none=Ni razpoložljivih profilov
+
 execs_title=Izvršilni profili
 execs_name=Profil
 execs_policy=Varnostna politika
@@ -92,6 +100,7 @@ execs_none=Še ni definiran izvedbeni profil.
 execs_add=Dodajte nov profil izvajanja.
 execs_return=seznam profilov izvajanja
 execs_ecannot=Ni vam dovoljeno urejati izvedbenih profilov
+
 exec_title1=Ustvari profil izvajanja
 exec_title2=Uredite izvedbeni profil
 exec_header=Podrobnosti profila izvajanja
@@ -113,6 +122,7 @@ exec_erruid=Manjkajoči ali neveljaven uporabnik, ki bi ga lahko izvajal
 exec_errgid=Manjkajoča ali neveljavna skupina, ki bi jo lahko vodila kot
 exec_erreuid=Manjkajoč ali neveljaven učinkovit uporabnik, ki bi ga lahko izvajal
 exec_erregid=Manjkajoča ali neveljavna učinkovita skupina za zagon kot
+
 policy_title=Sistemske politike
 policy_header=Nastavitve globalne sistemske politike
 policy_auths=Pooblastila za vse uporabnike
@@ -126,16 +136,20 @@ policy_err=Sistemskih pravilnikov ni bilo mogoče shraniti
 policy_eallow=Ni izbranih algoritmov
 policy_eclash=Algoritma za dovoljenje in opustitev ni mogoče izbrati hkrati
 policy_ecannot=Ne morete urejati sistemskih pravilnikov
+
 attr_none=Ni definiranih atributov uporabnikov
 attr_nonenormal=Uporabniki Unixa niso definirani
 attr_nonerole=Ni definiranih vlog
+
 help_epath=Neveljavna pot datoteke za pomoč!
 help_link=(Pomoč..)
+
 crypt___unix__=Kriptovaluta Unix
 crypt_1=BSD MD5
 crypt_2a=BSD Flowfish
 crypt_md5=Ned MD5
 crypt_rot13=ROT13
+
 log_create_user=Ustvarjeni uporabniški atributi za $1 
 log_modify_user=Spremenjeni uporabniški atributi za $1 
 log_delete_user=Izbrisani uporabniški atributi za $1 
@@ -152,6 +166,7 @@ log_create_project=Ustvarjen projekt $1
 log_modify_project=Spremenjen projekt $1 
 log_delete_project=Izbrisan projekt $1 
 log_policy=Spremenjene sistemske politike
+
 acl_roles=Ali lahko urejate vloge?
 acl_users=Ali lahko urejate uporabniške atribute?
 acl_roleassign=Lahko dodeljuje vloge
@@ -166,6 +181,7 @@ acl_profs=Ali lahko urejate profile?
 acl_ro=Samo ogled
 acl_execs=Ali lahko urejate izvedbene profile?
 acl_projects=Ali lahko urejate projekte?
+
 projects_title=Projekti
 projects_name=Ime
 projects_id=ID
@@ -184,6 +200,7 @@ projects_exceptusers=Vsi uporabniki razen $1
 projects_exceptgroups=Vse skupine, razen $1 
 projects_onlyusers=Samo $1 
 projects_onlygroups=Samo $1 
+
 project_title1=Ustvari projekt
 project_title2=Urejanje projekta
 project_header=Podrobnosti o projektu in člani
@@ -219,6 +236,7 @@ project_egroupscannot=Izbrana ni nobena skupina
 project_elimit=Manjkajoča ali neveljavna omejitev v vrstici $1 
 project_epool=Manjkajoče ali neveljavno ime skupine projektov
 project_erss=Manjkajoči ali neveljavni največji pomnilnik
+
 prctl_title=Nadzor virov
 prctl_ok=Prikaži omejitve za:
 prctl_mode0=Obdelajte z ID-jem

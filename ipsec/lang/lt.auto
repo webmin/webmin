@@ -25,12 +25,15 @@ index_up=Pradėti ryšį:
 index_updesc=Pasirinkite ryšį iš sąrašo, esančio šalia šio mygtuko, ir spustelėkite jį, kad bandytumėte jį nedelsiant užmegzti.
 index_nopol=Nerasta jokios tinklo strategijos - galbūt jūsų <a href='$1'>tinklo konfigūracija</a> neteisinga.
 index_import=Importuoti ryšį iš failo.
+
 stop_err=Nepavyko sustabdyti „IPsec“ serverio
 start_err=Nepavyko paleisti „IPsec“ serverio
 restart_err=Nepavyko iš naujo paleisti „IPsec“ serverio
 start_elog=Buvo užregistruotos šios klaidos : $1 
+
 newkey_err=Nepavyko sugeneruoti rakto
 newkey_ehost=Trūksta arba netinkamas pagrindinio kompiuterio vardas
+
 edit_title1=Sukurti ryšį
 edit_title2=Redaguoti ryšį
 edit_header=„IPsec“ VPN ryšio informacija
@@ -101,6 +104,7 @@ edit_unit_s=sek
 edit_unit_m=min
 edit_unit_h=valandos
 edit_unit_d=dienų
+
 config_title=Serverio konfigūracija
 config_header=Visuotiniai VPN serverio nustatymai
 config_ifaces=„IPsec“ tinklo sąsajos
@@ -118,6 +122,7 @@ config_nat=Įgalinti NAT perėjimą?
 config_err=Nepavyko išsaugoti serverio konfigūracijos
 config_eri=Tikroji sąsaja „$1“ yra išvardyta daugiau nei vieną kartą
 config_enone=Tinklo sąsajos nebuvo nurodytos
+
 showkey_title=Rodyti viešą raktą
 showkey_desc1=Žemiau parodytas viešas RSA raktas turėtų būti nukopijuotas į kitų sistemų, jungiančių prie šios sistemos, konfigūraciją, skyriuje, susijusiame su šiuo pagrindiniu kompiuteriu.
 showkey_desc2=Žemiau pateiktos vertės gali būti naudojamos kuriant DNS pagrindinį įrašą šiam kompiuteriui, kad kitos prie jo prisijungiančios sistemos galėtų ieškoti jo viešojo rakto.
@@ -125,6 +130,7 @@ showkey_flags=Vėliavos
 showkey_proto=Protokolas
 showkey_alg=Algoritmas
 showkey_key=Pagrindiniai duomenys
+
 policy_desc_block=Užblokuoti tinklai
 policy_desc_clear=Išvalyti eismo tinklus
 policy_desc_private=Užšifruoti tinklai
@@ -145,6 +151,7 @@ policy_mask=Priešdėlis
 policy_err=Nepavyko išsaugoti tinklų
 policy_enet=Netinkamas tinklo IP adresas $1 eilutėje
 policy_emask=Netinkamas prefikso ilgis $2 eilutėje
+
 save_err=Nepavyko išsaugoti ryšio
 save_ename=Trūksta arba netinkamas ryšio pavadinimas
 save_ekeying=Trūksta arba netinkamas klavišų pakartojimų skaičius
@@ -164,6 +171,7 @@ save_eleftcert=Trūksta arba netinkamas vietinio serverio sertifikatas
 save_erightcert=Trūksta arba netinkamas nuotolinio serverio sertifikatas
 save_ekeylife=Trūksta arba netinkamas ryšio rakto galiojimo laikas
 save_eikelifetime=Trūksta arba netinkamas pagrindinio kanalo veikimo laikas
+
 log_create_conn=Sukurtas ryšys $1 
 log_delete_conn=Ištrinta jungtis $1 
 log_modify_conn=Modifikuotas ryšys $1 
@@ -182,8 +190,10 @@ log_delete_secret=Ištrintas slaptas $1 raktas
 log_create_secret_nn=Sukurtas slaptas raktas bet kokiam kompiuteriui
 log_modify_secret_nn=Modifikuotas slaptas bet kurio kompiuterio raktas
 log_delete_secret_nn=Ištrintas slaptas bet kurio kompiuterio raktas
+
 up_title=Pradėkite ryšį
 up_cmd=Pradėti ryšį su komanda $1 ..
+
 export_title=Eksportuoti konfigūraciją
 export_desc=Ši forma gali būti naudojama eksportuoti $1 ryšio konfigūracijos failo skyrių, kad jį būtų galima lengvai importuoti kitame serveryje.
 export_print=Rodyti konfigūraciją naršyklėje
@@ -193,11 +203,13 @@ export_err=Nepavyko eksportuoti konfigūracijos
 export_efile=Trūksta failo vardo
 export_esave=Nepavyko parašyti failo : $1 
 export_done=Eksportuota jungties nuo $1 iki $2 konfigūracija ($3 baitai).
+
 import_title=Importuoti konfigūraciją
 import_desc=Ši forma gali būti naudojama importuoti jungties konfigūracijos failo skyrių, tokį, kokį sukuria modulio eksporto funkcija kitoje sistemoje.
 import_upload=Importuoti iš įkelto failo ..
 import_file=Importuoti iš serverio pusės failo ..
 import_ok=Importuoti dabar
+
 import_err=Nepavyko importuoti konfigūracijos
 import_eupload=Nepasirinktas failas
 import_efile=Neįvestas serverio pusės failas
@@ -207,6 +219,7 @@ import_eclash=Ryšys, vadinamas $1, jau yra.
 import_done1=Sėkmingai pridėtas naujas „IPsec“ ryšys $1.
 import_done2=Sėkmingai atnaujinau „IPsec“ ryšį $1.
 import_over=Parašyti esamą ryšį tuo pačiu vardu?
+
 secrets_title=Slapti raktai
 secrets_none=Paslapčių raktų nerasta!
 secrets_name=Paslaptis
@@ -220,6 +233,7 @@ secrets_mod=$1 modulis
 secrets_newpsk=Sukurkite naują bendrą slaptą raktą.
 secrets_newrsa=Sukurkite naują RSA raktą.
 secrets_return=slaptų raktų sąrašas
+
 secret_title1=Sukurti slaptą raktą
 secret_title2=Redaguoti slaptą raktą
 secret_header=Slapta pagrindinė informacija

@@ -301,5 +301,3 @@ relabel_ok=Essuyez et ré-étiquetez
 
 table_msdos=MS-DOS (format de partition standard)
 table_gpt=GPT (pour disques 2T ou plus)
-
-__norefs=1

@@ -65,6 +65,7 @@ index_checkconfig=וודא כי ספריית הערוצים מוגדרת כהל�
 index_eexpired=אזהרה: פג תוקף של חתימות DNSSEC עבור האזורים הבאים : $1 
 index_eexpired_conf=יש להפעיל מחדש חתימה אוטומטית בדף $1.
 index_eexpired_mod=השתמש במודול $1 כדי להשבית DNSSEC עבור דומיינים אלה, או לבדוק מדוע החתימה נכשלה.
+
 master_title=ערוך אזור מאסטר
 master_inview=$1 לצפייה $2 
 master_ecannot=אינך רשאי לערוך אזור זה
@@ -146,6 +147,7 @@ master_defttl=זמן ברירת המחדל לחיים עבור רשומות
 master_edefttl='$1' אינו זמן ברירת מחדל תקף לחיות עבור רשומות
 master_esoagone=לא נמצאה רשומת SOA!
 master_einclude=קובץ תבנית נוסף אינו קיים
+
 delete_title=מחק אזור
 delete_mesg=האם אתה בטוח שברצונך למחוק את האזור $1 ? כל הרשומות וקובץ האזור יימחקו.
 delete_mesg2=האם אתה בטוח שברצונך למחוק את אזור השורש? ייתכן ששרת ה- DNS שלך כבר לא יוכל לחפש כתובות באינטרנט.
@@ -157,6 +159,7 @@ delete_errslave=אזור הבסיס נמחק אישור, אך השגיאות ה�
 delete_ezone=אזור לא נמצא בשרת העבדים
 delete_vwarn=אזור זה משויך לתחום Virtualmin $1, ולכן אין למחוק אותו כאן!
 delete_vwarn2=אזור זה משויך לתחום Virtualmin $1 ו- $2 אחרים, ולכן אין למחוק אותו כאן!
+
 mcreate_title=צור אזור מאסטר
 mcreate_ecannot=אינך יכול ליצור אזורי אב
 mcreate_opts=אפשרויות אזור חדש למקור
@@ -171,6 +174,7 @@ mcreate_auto=אוטומטי
 mcreate_err=יצירת אזור האב נכשלה
 mcreate_ednssecsize=נכשלה חישוב גודל המפתח : $1 
 mcreate_ednssec=יצירת הרשומות הצליחה, אך DNSSEC נכשלה : $1 
+
 slave_title=ערוך את אזור העבדים
 stub_title=ערוך אזור Stub
 slave_ecannot=אינך רשאי לערוך אזור זה
@@ -202,6 +206,7 @@ slave_applymsg2=לחץ על כפתור זה כדי לאלץ העברה מחדש 
 slave_last=הועבר לאחרונה : $1 
 slave_never=לעולם לא
 slave_xfer=העברת אזור מבחן
+
 screate_title1=צור אזור עבדים
 screate_title2=צור אזור Stub
 screate_ecannot1=אינך מורשה ליצור אזורי עבדים
@@ -214,6 +219,7 @@ screate_rev=הפוך (כתובות לשמות)
 screate_dom=שם תחום / רשת
 screate_err1=יצירת אזור העבדים נכשלה
 screate_err2=נכשל יצירת אזור הגזילה
+
 recs_ecannot=אינך רשאי לערוך רשומות באזור זה
 recs_ecannottype=אינך רשאי לערוך רשומות מסוג זה
 recs_title=$1 רשומות
@@ -231,6 +237,7 @@ recs_drev=למחוק גם הפכים?
 recs_none=לדומיין אין רשומות $1 עדיין.
 recs_nosearch=אין רשומות תואמות את החיפוש שלך.
 recs_needsearch=הזן חיפוש כדי למצוא רשומות תואמות.
+
 edit_title=ערוך $1 
 edit_header=ב- $1 
 edit_edit=ערוך רשומה $1 
@@ -306,6 +313,7 @@ edit_edmarcpct=אחוז ההודעות חייב להיות מספר שלם בי�
 edit_edmarcrua=חסרה כתובת משוב מצטברת
 edit_edmarcruf=כתובת מידע משפטית חסרה
 edit_ecaavalue2=שם דומיין חסר או לא חוקי למראה
+
 text_title=ערוך קובץ רשומות
 text_title2=הצגת קובץ רשומות
 text_desc3=טופס זה מאפשר לערוך ידנית את קובץ רשומות ה- DNS $1. Webmin לא יבצע בדיקת תחביר.
@@ -315,6 +323,7 @@ text_ecannot=אינך מורשה לערוך קבצי רשומות
 text_none=עם זאת הקובץ כרגע ריק, כנראה מכיוון שהאזור טרם הועבר משרת הראשי.
 text_soa=הגדל את המספר הסידורי באופן אוטומטי
 text_rawformat=אזור זה בפורמט בינארי גולמי, ולכן לא ניתן להציג אותו כטקסט.
+
 restart_err=החלת השינויים נכשלה
 restart_ecannot=אינך רשאי להפעיל מחדש את BIND
 restart_epidfile=לא הצלחנו למצוא את BIND PID ב- $1 
@@ -323,10 +332,12 @@ restart_erunning2=נראה כי BIND לא פועל בשרת העבדים $1
 restart_endc=הפקודה NDC נכשלה : $1 
 restart_ecmd=הפקודה להפעלה מחדש נכשלה : $1 
 restart_eversion=שרת העבדים $1 אינו פועל בגרסת Webmin $2 ומעלה.
+
 start_ecannot=אינך מורשה להתחיל BIND
 start_error=ההתחלה של BIND נכשלה : $1 
 stop_epid=BIND לא פועל
 stop_ecannot=אסור לך לעצור את BIND
+
 fwd_title=ערוך אזור קדימה
 fwd_ecannot=אינך רשאי לערוך אזור זה
 fwd_opts=אפשרויות אזור
@@ -335,12 +346,14 @@ fwd_forward=לנסות שרתים אחרים?
 fwd_check=לבדוק שמות?
 fwd_err=שמירת אפשרויות נכשלה
 fwd_delmsg=לחץ על כפתור זה כדי למחוק אזור זה משרת ה- DNS שלך. לאחר מכן יירשמו רשומות בה באמצעות הרזולוציה הרגילה.
+
 delegation_title=ערוך אזור משלחת
 delegation_ecannot=אינך רשאי לערוך אזור זה
 delegation_opts=אפשרויות אזור
 delegation_err=שמירת אפשרויות נכשלה
 delegation_noopts=לאזורי האצלה אין אפשרויות להגדרה.
 delegation_delmsg=לחץ על כפתור זה כדי למחוק אזור זה משרת ה- DNS שלך. סוגי הרשומה בו שאינם NS יוכרו אז על ידי BIND.
+
 fcreate_title=צור אזור קדימה
 fcreate_ecannot=אינך מורשה ליצור אזורי קדימה
 fcreate_opts=אפשרויות אזור קדימה חדשות
@@ -350,10 +363,12 @@ fcreate_rev=הפוך (כתובות לשמות)
 fcreate_dom=שם תחום / רשת
 fcreate_masters=שרתי אב
 fcreate_err=יצירת אזור קדימה נכשלה
+
 dcreate_title=צור אזור משלחת בלבד
 dcreate_ecannot=אינך מורשה ליצור אזורי משלחות
 dcreate_opts=אפשרויות אזור משלחות חדשות
 dcreate_err=יצירת אזור משלחת נכשלה
+
 create_enet='$1' אינה רשת חוקית
 create_edom='$1' אינו שם תחום תקף
 create_edom2='$1' חייב להיות תחום ולא רשת
@@ -363,9 +378,11 @@ create_efile3=יצירת '$1' נכשלה : $2
 create_efile4=הקובץ $1 כבר קיים
 create_emaster='$1' אינה כתובת שרת אב חוקית
 create_enone=עליך להזין שרת אב אחד לפחות
+
 boot_err=הורדה נכשלה
 boot_egzip=קובץ אזור השורש דחוס, אך הפקודה <tt>gzip</tt> אינה מותקנת במערכת שלך!
 boot_egzip2=אי-דחיסת קובץ אזור השורש נכשלה : $1 
+
 type_A=כתובת
 type_AAAA=כתובת IPv6
 type_NS=שם שרת
@@ -386,6 +403,7 @@ type_SRV=כתובת שירות
 type_ALL=כל סוגי הרשומות
 type_KEY=מפתח ציבורי
 type_CAA=רשות אישורים
+
 edit_A=כתובת
 edit_AAAA=כתובת IPv6
 edit_NS=שם שרת
@@ -405,6 +423,7 @@ edit_NSEC3PARAM=פרמטרים של DNSSEC
 edit_TLSA=תעודת SSL
 edit_SSHFP=מפתח ציבורי של SSH
 edit_CAA=רשות אישורים
+
 recs_defttl=ברירת מחדל TTL
 recs_A=כתובת
 recs_AAAA=כתובת IPv6
@@ -427,6 +446,7 @@ recs_TLSA=תעודת SSL
 recs_SSHFP=מפתח ציבורי של SSH
 recs_CAA=רשות אישורים
 recs_delete=מחק את הנבחר
+
 value_A1=כתובת
 value_AAAA1=כתובת IPv6
 value_NS1=שם שרת
@@ -503,6 +523,7 @@ value_CAA3=שם תחום CA
 value_caa_issue=אישור תחום בודד
 value_caa_issuewild=אישור Wildcard
 value_caa_iodef=כתובת אתר להפרת מדיניות
+
 tlsa_usage0=רשות אישורים
 tlsa_usage1=ישות סוף
 tlsa_usage2=עוגן אמון
@@ -512,12 +533,14 @@ tlsa_selector1=מידע על מפתח ציבורי
 tlsa_match0=תוכן ללא שטף
 tlsa_match1=SHA-256 נרתע
 tlsa_match2=SHA-512 נרתע
+
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDSA
 sshfp_alg4=Ed25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 warn=הזהירו
 fail=נכשל
 ignore=להתעלם
@@ -531,6 +554,7 @@ listed=רשום ..
 eip='$1' אינה כתובת IP חוקית
 eport='$1' אינו מספר יציאה חוקי
 eipacl='$1' אינו כתובת IP חוקית או שם ACL
+
 acl_zones=דומיינים שמשתמש זה יכול לערוך
 acl_zall=כל האזורים
 acl_zsel=אזורים נבחרים ..
@@ -575,6 +599,7 @@ acl_ztypes_master=אדון
 acl_ztypes_slave=עבד/דשן
 acl_ztypes_delegation=משלחת
 acl_ztypes_forward=קדימה
+
 servers_title=שרתי DNS אחרים
 servers_ip=כתובת ה - IP
 servers_bogus=להתעלם משרת מזויף?
@@ -586,6 +611,7 @@ servers_keys=השתמש במקשי DNS
 servers_err=שמירת שרתי DNS אחרים נכשלה
 servers_eip='$1' אינה כתובת IP חוקית
 servers_etrans='$1' אינו מספר תקף של העברות מרביות
+
 logging_title=רישום וטעויות
 logging_ecannot=אינך מורשה להגדיר רישום
 logging_header=אפשרויות רישום גלובליות ושגיאות
@@ -624,6 +650,7 @@ logging_efile=שם קובץ יומן חסר
 logging_efile2=שם קובץ היומן חייב להיות נתיב מוחלט
 logging_ever='$1' אינו מספר גרסאות תקף
 logging_esize='$1' אינו גודל יומן חוקי
+
 acls_title=רשימות בקרת גישה
 acls_ecannot=אינך רשאי לערוך ערכי acls גלובליים
 acls_name=שם ACL
@@ -631,6 +658,7 @@ acls_values=כתובות, רשתות ו- ACL תואמים
 acls_err=שמירת רשימות בקרת הגישה נכשלה
 acls_ename='$1' אינו שם ACL חוקי
 acls_eline=יש להזין כל כתובת IP בשורה נפרדת עבור ACL '$1'
+
 files_title=קבצים וספריות
 files_ecannot=אינך מורשה להגדיר קבצים
 files_header=אפשרויות קבצים וספריות גלובליים
@@ -640,6 +668,7 @@ files_pid=עיבוד קובץ מזהה
 files_xfer=תוכנית העברת אזור לאזור
 files_err=שמירת קבצים ואפשרויות ספריות נכשלה
 files_efile=שם קובץ חסר או לא חוקי
+
 forwarding_title=העברה והעברות
 forwarding_ecannot=אינך רשאי לערוך אפשרויות העברה והעברה
 forwarding_header=אפשרויות העברה גלובלית והעברת אזור
@@ -658,6 +687,7 @@ forwarding_etrans=העברות במקביל מקסימליות חסרות או �
 forwarding_minutes=דקות
 forwarding_ip=כתובת ה - IP
 forwarding_port=נמל
+
 net_title=כתובות וטופולוגיה
 net_ecannot=אינך רשאי לערוך אפשרויות כתובת וטופולוגיה
 net_header=אפשרויות כתובת וטופולוגיה גלובליות
@@ -683,6 +713,7 @@ net_taddrdef=ה- IP הכי קרוב
 net_etport=לא ניתן לציין יציאת מקור העברה ללא כתובת
 net_eaddr='$1' אינה כתובת IPv4 חוקית
 net_eaddr6='$1' אינה כתובת IPv6 חוקית
+
 controls_title=אפשרויות ממשק שליטה
 controls_ecannot=אינך רשאי לערוך את אפשרויות הבקרה
 controls_header=אפשרויות בקרה
@@ -704,6 +735,7 @@ controls_eunixpath=נתיב קבצי FIFO חסר או לא חוקי
 controls_eunixperm=הרשאות קובץ אוקטאלי חסרות או לא חוקיות
 controls_eunixowner=בעל קובץ חסר או לא חוקי
 controls_eunixgroup=קבוצת קבצים חסרה או לא חוקית
+
 controls_inet=גישה לנמל אינטרנט
 controls_unix=גישה ל- Unix FIFO
 controls_port=נמל
@@ -717,6 +749,7 @@ controls_efile=שם קובץ ה- FIFO חסר או לא חוקי
 controls_eperms=הרשאות FIFO חסרות או לא חוקיות
 controls_eowner=UID של בעל FIFO חסר או לא תקף
 controls_egroup=GID של בעל FIFO חסר או לא תקף
+
 keys_title=מפתחות DNS
 keys_id=מזהה מפתח
 keys_alg=אלגוריתם
@@ -725,6 +758,7 @@ keys_ecannot=אינך מורשה לערוך מפתחות DNS
 keys_err=שמירת מפתחות DNS נכשלה
 keys_ekey='$1' אינו מזהה מפתח תקף
 keys_esecret=סוד מקודד בסיס -64 חסר או לא חוקי עבור מפתח $1 
+
 misc_title=אפשרויות שונות
 misc_ecannot=אינך רשאי לערוך אפשרויות שונות
 misc_header=אפשרויות גלובליות שונות
@@ -744,6 +778,7 @@ misc_esize='$1' אינו בגודל תקף
 misc_efiles='$1' אינו מספר תקף של קבצים פתוחים מקסימליים
 misc_emins='$1' אינו מספר דקות תקף
 misc_mins=דקות
+
 zonedef_title=ברירות מחדל לאזור
 zonedef_msg=ברירות מחדל עבור אזורי אב חדשים
 zonedef_err=שמירת ברירות המחדל של אזור נכשלה
@@ -767,10 +802,13 @@ zonedef_size=גודל מפתח ראשוני
 zonedef_single=מספר המפתחות ליצירה
 zonedef_two=מפתח אזור ומפתח חתימת מקשים
 zonedef_one=מפתח אזור בלבד
+
 find_title=מצא אזורים
 find_match=אזורים התואמים $1 ..
 find_none=לא נמצאו אזורים.
+
 efirst=הנחיה ראשונה גרועה בשורה $1 ב- $2 
+
 findfree_title=מצא IPs בחינם
 findfree_desc=מצא IPs בחינם
 findfree_nofind=אינך יכול לחפש שירותי IP בחינם
@@ -782,8 +820,10 @@ findfree_cf=רואים <em>freeXXX</em> שמות מארחים כ- IP בחינם?
 findfree_search=לחפש
 findfree_msg=נמצאו $1 כתובות IP בחינם
 findfree_msg2=(מתוכם $1 הם כמו <i>freeXXX</i>, $2 כמו <i>freemac</i>)
+
 free_title=כתובות IP בחינם
 free_ip=כתובת ה - IP
+
 log_servers=שינה שרתי DNS אחרים
 log_logging=רישום ושגיאות השתנו
 log_acls=רשימות בקרת גישה השתנו
@@ -840,14 +880,17 @@ log_sign=חתימות DNSSEC עודכנו עבור אזור $1
 log_resign=חתימה מחדש של מפתח DNSSEC לאזור $1 
 log_trusted=אימות DNSSEC שינה
 log_dnssec=שנה חתימה מחדש על מפתח DNSSEC
+
 convert_err=המרת אזור נכשלה
 convert_efile=יש לציין קובץ רשומות לפני שניתן יהיה להמיר אזור עבדים למאסטר.
 convert_efilesize=קובץ הרשומות $1 אינו קיים או שהוא ריק
 convert_ebinary=הפקודה הדרושה להמרה מאזור עבדים בינארי למאסטר בפורמט טקסט אינה מותקנת
 convert_ecompile=המרה של תבנית בינארית לטקסט נכשלה : $1 
+
 whois_title=מידע על WHOIS
 whois_header=פלט מפקודה $1 ..
 whois_ecannot=אינך רשאי לחפש מידע על WHOIS
+
 view_title=ערוך את תצוגת הלקוח
 view_opts=פרטי תצוגת לקוח
 view_opts2=אפשרויות עבור אזורים בתצוגה
@@ -858,6 +901,7 @@ view_recursion=האם חיפושים רקורסיביים מלאים ללקוח�
 view_ecannot=אינך רשאי לערוך תצוגה זו
 view_delete=מחק תצוגה
 view_deletemsg=לחץ על כפתור זה כדי למחוק את התצוגה. תוכלו לבחור בין אזורי מעבר שהם מכילים לתצוגה אחרת, או למחוק אותם גם.
+
 vcreate_title=צור תצוגת לקוח
 vcreate_match_all=כל הלקוחות
 vcreate_match_sel=כתובות, רשתות ורשימות ACL רשומות ..
@@ -866,6 +910,7 @@ vcreate_ename=שם תצוגה חסר או לא חוקי
 vcreate_etaken=שם התצוגה כבר צולם
 vcreate_eclass=שם כיתה חסר או לא תקף
 vcreate_ecannot=אינך מורשה ליצור תצוגות
+
 hint_title=ערוך אזור שורש
 hint_desc=אזור השורש משמש לשרת ה- DNS שלך ליצירת קשר עם שרתי השורש באינטרנט, כך שהוא יכול לפתור שמות בתחומים שלא מטופלים על ידי שרת ה- DNS שלך, כמו <tt>.com</tt> או <tt>.net. au</tt>. אלא אם כן שרת ה- DNS שלך מיועד לשימוש ברשת פנימית או שאתה מעביר את כל השאילתות לשרת אחר, אתה לא צריך למחוק את אזור השורש הזה.
 hint_move=מעבר לתצוגה:
@@ -874,6 +919,7 @@ hint_refetch=הורד מחדש שרתי שמות שורש
 hint_refetchdesc=לחץ על כפתור זה כדי ש- Webmin יוריד מחדש את קובץ אזור השורש ממקורו בשרת ה- FTP של Internic.
 hint_delete=מחק את אזור השורש
 hint_deletedesc=לחץ על כפתור זה כדי להסיר את אזור השורש הזה. בלעדיו, שרת השמות שלך לא יוכל לפתור דומיינים באינטרנט פרט לאלה שהם משניים עבורם.
+
 hcreate_title=צור אזור שורש
 hcreate_desc=אזור השורש משמש לשרת ה- DNS שלך ליצירת קשר עם שרתי השורש באינטרנט, כך שהוא יכול לפתור שמות בתחומים שלא מטופלים על ידי שרת ה- DNS שלך, כמו <tt>.com</tt> או <tt>.net. au</tt>. אם אתה משתמש במספר תצוגות, ייתכן שיהיה עליך להיות אזור שורש נפרד בכל תצוגה כדי שכל הלקוחות יוכלו לפתור דומיינים באינטרנט כראוי.
 hcreate_header=פרטי אזור השורש
@@ -887,6 +933,7 @@ hcreate_efile='$1' אינו קובץ שורש מותר
 hcreate_efile2=קובץ שורש חסר או לא חוקי
 mcreate_erecs=אין קובץ חוקי שורש קיים
 hcreate_err=יצירת אזור שורש נכשלה
+
 vdelete_title=מחק תצוגה
 vdelete_mesg=האם אתה בטוח שברצונך למחוק את תצוגת הלקוח $1 ? כל האזורים בתצוגה זו יימחקו (יחד עם קבצי האזור שלהם) או יועברו לתצוגה אחרת בהתאם לבחירתך למטה.
 vdelete_mesg2=האם אתה בטוח שברצונך למחוק את תצוגת הלקוח $1 ?
@@ -894,6 +941,7 @@ vdelete_newview=אזורים בתצוגה זו
 vdelete_root=צאו מהנופים
 vdelete_delete=מחק לחלוטין
 vdelete_move=עברו לתצוגה
+
 gen_title=מחוללי תקליטים
 gen_desc=דף זה מאפשר לך להגדיר גנרטורים, שכל אחד מהם יצור מספר רשומות באזור זה באמצעות מונה מצטבר. זה יכול להיות שימושי להאצלת חלקים מאזור ההפוך לשרת אחר.
 gen_range=טווח
@@ -913,7 +961,9 @@ gen_evalue=דפוס שם מארח חסר או לא חוקי לגנרטור $1
 gen_title2=רשומות שנוצרו
 gen_raw=הגדרת שורת קבצים
 gen_ecannot=אינך רשאי לערוך מחוללי רשומות
+
 refetch_err=ההורדה מחדש של אזור השורש נכשלה
+
 slaves_title=שרתי עבדים באשכול
 slaves_none=עדיין לא נוספו שרתים לאשכול ה- DNS.
 slaves_host=שם מארח
@@ -941,6 +991,7 @@ slaves_sec=ליצור משני על עבד בעת היצירה מקומית?
 slaves_name=שם לרשומת NS
 slaves_same=זהה לשם המארח
 slaves_header=אפשרויות שרת עבדים באשכול
+
 add_title=הוסף שרתים
 add_msg=מוסיף $1 ..
 add_gmsg=הוספת שרתים בקבוצה $1 ..
@@ -958,6 +1009,7 @@ add_createok=הגדרת $1 עם $2 אזורי עבדים חדשים.
 add_ename=שם רשומת NS חסר או לא תקף
 add_egname=לא ניתן לציין שם רשומת NS בעת הוספת קבוצה
 add_emyip=לא ניתן היה לפענח את כתובת ה- IP של מערכת זו. עליך להגדיר את <b>IP שרת אב ברירת מחדל עבור אזורי עבדים מרוחקים</b> בדף תצורת המודול.
+
 mass_title=צור אזורים מקובץ אצווה
 mass_desc=דף זה מאפשר לך ליצור אזורים מרובים בבת אחת מקובץ טקסט שהועלה או בצד השרת. על כל שורה בקובץ להיות בתבנית הבאה: <p style=";text-align:right;direction:rtl"></p> <tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt> <p style=";text-align:right;direction:rtl"></p> <i>הסוג</i> חייב להיות אחד של <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> או <tt>forward</tt>. <i>שם הקובץ</i> הוא לא חובה ויחושב אוטומטית אם חסר. יש לספק את ה- <i>IP הראשי</i> עבור אזורי עבדים.
 mass_local=קובץ אצווה מקומי
@@ -989,6 +1041,7 @@ mass_emips=כתובות IP חסרות חסרות
 mass_addedslaves=הוסיף $1 לשרתי העבדים אישור.
 mass_eonslave=אירעו שגיאות שנוצרו בשרתי העבדים : $1 
 mass_eviewcannot=אינך רשאי להוסיף אזורים לתצוגה זו
+
 massdelete_title=מחק אזורים
 massdelete_rusure=האם אתה בטוח שברצונך למחוק את האזורים שנבחרו $1 ? ($2)
 massdelete_ok=תמחק עכשיו
@@ -998,6 +1051,7 @@ massdelete_slaves=מוחק אזור $1 משרתי העבדים ..
 massdelete_failed=.. כמה עבדים נכשלו :
 massdelete_vwarn=אזורים מסוימים משויכים לתחום Virtualmin $1, ולכן אין למחוק אותם כאן!
 massdelete_vwarn2=אזורים מסוימים משויכים לתחום Virtualmin $1 ו- $2 אחרים, ולכן אין למחוק אותם כאן!
+
 rndc_title=הגדרת RNDC
 rndc_desc=ניתן להשתמש בדף זה כדי להגדיר את BIND לבקרה על ידי תוכנית RNDC, כך שניתן יהיה לרענן אזורים בודדים ללא צורך בהפעלה מחדש מלאה של BIND.
 rndc_desc2=נראה כי RNDC כבר התקין כראוי, כך שאתה כנראה לא צריך להשתמש בטופס זה.
@@ -1008,11 +1062,13 @@ rndc_ok=כן, הגדרת RNDC
 rndc_err=התקנת RNDC נכשלה
 rndc_ekey=לא ניתן למצוא מפתח ב- rndc.conf
 rndc_esecret=לא ניתן למצוא סוד ב- rndc.conf
+
 drecs_err=מחיקת הרשומות נכשלה
 drecs_enone=לא נבחר
 drecs_title=מחק רשומות
 drecs_rusure=האם אתה בטוח שברצונך למחוק את הרשומות שנבחרו $1 מ- $2 ?
 drecs_ok=תמחק עכשיו
+
 manual_title=ערוך קובץ תצורה
 manual_ecannot=אינך רשאי לערוך את קובץ התצורה של BIND
 manual_ok=ערוך
@@ -1020,7 +1076,9 @@ manual_efile=הקובץ שנבחר אינו חלק מתצורת ה- BIND
 manual_file=ערוך קובץ תצורה:
 manual_edata=שום דבר לא נכנס!
 manual_err=שמירת קובץ התצורה נכשלה
+
 syslog_desc=כבל הודעות שרת DNS
+
 umass_err=עדכון אזורי נכשל
 umass_enone=לא נבחר
 umass_title=עדכן רשומות באזורים
@@ -1039,6 +1097,7 @@ umass_done=.. עדכן $1 רשומות תואמות מתוך $2.
 umass_none=.. לא נמצאו רשומות תואמות מתוך $1 לעדכון.
 umass_egone=אזור לא קיים
 emass_emx='$1' אינו מספר עדיפות לשרת הדואר ואחריו שם מארח תקף
+
 rdmass_err=מחיקת הרשומות באזורים נכשלה
 rdmass_enone=לא נבחר
 rdmass_title=מחק רשומות באזורים
@@ -1055,6 +1114,7 @@ rdmass_done=.. מחק $1 רשומות תואמות מתוך $2.
 rdmass_none=.. אין רשומות תואמות מתוך $1 למחיקה נמצאו.
 rdmass_ok=מחק רשומות
 rdmass_sel=רשומות בשם
+
 rmass_err=הוספת רשומות נכשלה
 rmass_enone=לא נבחר
 rmass_title=הוסף רשומה לאזורים
@@ -1074,18 +1134,22 @@ rmass_esign=.. נעשה, אך החתימה נכשלה : $1
 rmass_eclash=.. קיימת כבר רשומה עם אותו שם וערך $1.
 rmass_eclash2=.. קיימת כבר רשומה עם אותו שם וערך זהה $1.
 rmass_clash=ליצור גם אם הרשומה כבר קיימת?
+
 check_title=בדוק רשומות
 check_ecannot=אינך רשאי לבדוק רשומות
 check_errs=השגיאות הבאות נמצאו בקובץ הרשומות $1.
 check_allok=לא נמצאו שגיאות בקובץ הרשומות $1.
+
 ncheck_title=בדוק את תצורת BIND
 ncheck_ecannot=אינך רשאי לבדוק את תצורת ה- BIND
 ncheck_errs=השגיאות שלהלן נמצאו בקובץ התצורה של BIND $1 או בקבצי אזור שהוזכרו.
 ncheck_allok=לא נמצאו שגיאות בקובץ התצורה BIND $1 או בקבצי אזור שהוזכרו.
+
 links_restart=החל תצורה
 links_stop=עצור BIND
 links_start=התחל BIND
 links_apply=החל אזור
+
 dnssec_title=חתימה מחדש על מפתח DNSSEC
 dnssec_ecannot=אינך רשאי לקבוע את התצורה של DNSSEC
 dnssec_header=אפשרויות חתימה מחדש על מפתח
@@ -1096,6 +1160,7 @@ dnssec_secs=שניות
 dnssec_desc=באזורים שנחתמים עם DNSSEC יש בדרך כלל שני מפתחות - מפתח אזור שיש לייצר מחדש ולחתום באופן קבוע, ומפתח חתימת מפתח שנשאר קבוע. דף זה מאפשר לך להגדיר את Webmin לביצוע חתימה מחדש אוטומטית.
 dnssec_err=שמירת חתימה מחדש על מפתח DNSSEC נכשלה
 dnssec_eperiod=מספר ימים חסר או לא חוקי בין השלטים המחודשים
+
 dnssectools_title=DNSSEC-כלים אוטומציה
 dt_conf_title=DNSSEC-כלים אוטומציה
 dt_enable_title=DNSSEC-כלים אוטומציה
@@ -1160,6 +1225,7 @@ dt_status_inKSKroll=ב- KSK Roll
 dt_status_inZSKroll=ברול ZSK
 dt_status_signed=חתם
 dt_status_unsigned=לא חתום
+
 zonekey_title=הגדרת מפתח DNSSEC
 zonekey_desc=לאזור זה עדיין אין מפתח חתימה של DNSSEC. אתה יכול להשתמש בטופס זה כדי ש- Webmin ייצור אחד כזה, כך שלקוחות המחליטים אזור זה מוגנים מפני התקפות זיוף DNS.
 zonekey_header=אפשרויות מפתח חדשות של DNSSEC
@@ -1193,9 +1259,12 @@ zonekey_sign=אזור השלטים
 zonekey_signdesc=מייד לחתום מחדש על אזור זה, כך שכל שינוי ברשומות שבוצעו ידנית ייכלל ברשומות החתימה.
 zonekey_resign=חותם מחדש על אזור
 zonekey_resigndesc=צור מפתח חתימה חדש לאזור, חתום עליו באמצעות מפתח הראשי של האזור וחתום מחדש על כל הרשומות.
+
 sign_err=כניסה לשטח נכשלה
 sign_emsg=חתימת DNSSEC לאחר שינוי הרשומות נכשלה : $1 
+
 resign_err=כניסה מחדש לאזור נכשלה
+
 trusted_title=אימות DNSSEC
 trusted_ecannot=אינך רשאי לקבוע את התצורה של אימות DNSSEC
 trusted_esupport=גרסת ה- BIND שלך אינה תומכת באימות DNSSEC
@@ -1230,6 +1299,7 @@ trusted_setup=כדי ש- DNSSEC יהיה שימושי לאמת את מרבית �
 trusted_ok=הגדר DLV והפעל אימות DNSSEC
 trusted_warning=אזהרה! תצורת לקוח BIND DNSSEC שלך מכילה מפתחות לא מעודכנים שיפסיקו לעבוד באוקטובר 2017. או השתמש ב <a href='$1'>דף אימות BIND DNSSEC</a> כדי להתאים את התצורה, או לחץ על הכפתור למטה.
 trusted_fix=תקן את תצורת DNSSEC
+
 xfer_title=העברת אזור מבחן
 xfer_doing=בדיקת העברה של אזור העבדים מ- $1.
 xfer_failed=.. מ- $1 : נכשל : $2 

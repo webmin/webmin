@@ -21,10 +21,12 @@ index_buttapply=Aplicar Alterações
 index_apply=Clique neste botão para aplicar a configuração actual ao servidor DHCP em execução através da sua paragem e reiniciar.
 index_buttstart=Iniciar Servidor
 index_start=Clique neste botão para iniciar o servidor DHCP no seu sistema, usando a configuração actual.
+
 butt_save=Guardar
 butt_eco=Editar Opções de Cliente
 butt_del=Apagar
 butt_create=Criar
+
 esub_crheader=Criar Sub-rede
 esub_edheader=Editar Sub-rede
 esub_tabhdr=Detalhes da Sub-rede
@@ -34,26 +36,31 @@ esub_arange=Alcance dos endereços
 esub_dbooptpq=BOOTP dinâmico ?
 esub_shnet=Rede partilhada
 esub_return=lista de sub-redes
+
 esh_crheader=Criar Rede Partilhada
 esh_eheader=Editar Rede Partilhada
 esh_tabhdr=Detalhes da Rede Partilhada
 esh_netname=Nome da rede
 esh_return=lista de sub-redes
+
 ehost_crheader=Criar Anfitrião
 ehost_eheader=Editar Anfitrião
 ehost_tabhdr=Detalhes do Anfitrião
 ehost_hname=Nome do anfitrião
 ehost_fixedip=Endereço IP fixo
 ehost_return=lista de anfitriões
+
 egroup_crheader=Criar Grupo de Anfitriões
 egroup_eheader=Editar Grupo de Anfitriões
 egroup_tblhdr=Detalhes do Grupo
 egroup_hosts=Anfitriões neste grupo
 egroup_nchoice=Use name as client hostname? Usar o nome como anfitrião do cliente?
 egroup_return=lista de anfitriões
+
 default=Predefinido
 secs=segundos
 none=Nenhum
+
 listl_header=Concessões DHCP
 listl_lfnotexist=O ficheiro da concessão DHCPd <tt>$1</tt> não existe.
 listl_lfnotcont=O ficheiro da concessão DHCPd <tt>$1</tt> não contém nehuma concessão$2.
@@ -64,27 +71,34 @@ listl_host=Nome do Anfitrião
 listl_start=Começar Data
 listl_end=Terminar Data
 listl_return=lista de sub-redes
+
 restart_errmsg1=Erro ao reiniciar o servidor dhcpd
 restart_errmsg2=Erro ao sinalizar processo
 start_failstart=Erro ao iniciar o servidor dhcpd
+
 sgroup_faildel=Erro ao apagar grupo
 sgroup_failsave=Erro ao guardar grupo
+
 shost_faildel=Erro ao apagar anfitrião
 shost_failsave=Erro ao guardar anfitrião
 shost_invalidhn=não é um nome de anfitrião válido
 shost_invalidhwa='$1' não é um endereço válido $2
+
 sopt_failsave=Erro ao guardar opções de cliente
 sopt_invalidip=não é um endereço IP válido
 sopt_invalidint=não é um número inteiro
 sopt_invalidipp=não é um par de endereço IP válido (como 1.2.3.4,5.6.7.8)
+
 sshared_faildel=Erro ao apagar rede partilhada
 sshared_failsave=Erro ao guardar rede partilhada
 sshared_invalidsname=Nome de rede partilhada inválido ou em falta
+
 ssub_faildel=Erro ao apagar sub-rede
 ssub_failsave=Erro ao guardar sub-rede
 ssub_invalidsubaddr=não é um endereço de sub-rede válido
 ssub_invalidnmask=não é uma máscara de rede válida
 ssub_invalidipr=não é um alcance de endereço IP válido
+
 plib_deflt=Tempo de concessão predefinido
 plib_bfname=Carregar nome de ficheiro
 plib_maxlt=Tempo máximo de concessão
@@ -118,6 +132,7 @@ plib_ntpserv=Servidores NTP
 plib_nbns=Servidores de nome NetBIOS
 plib_nbscope=Alcance do NetBIOS
 plib_nbntype=Tipo de nodo do NetBIOS
+
 eopt_header=Opções de Cliente
 eopt_subtitle=Para a sub-rede $1
 eopt_returnsub=lista de sub-redes

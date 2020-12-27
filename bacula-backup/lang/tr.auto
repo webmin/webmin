@@ -29,12 +29,14 @@ index_fd=Dosya Daemon Yapılandırması
 index_groups=Bacula Grubu Yapılandırması
 index_actions=Eylemleri Yedekleme ve Geri Yükleme
 index_ocmin=Katkıda bulunan: <a href=$2 target=_new>Linmin</a> </a>
+
 connect_emysql=$1 veritabanı DBI sürücüsü yüklenemedi
 connect_elogin= $1:$2 veritabanına giriş yapılamadı.
 connect_equery=$1 veritabanı Bacula tablolarını içermiyor.
 connect_equery2=Bunun nedeni, kurulu SQLite Perl modülünün çok yeni olması ve Bacula tarafından kullanılan daha eski SQLite veritabanı formatını desteklememesi olabilir.
 connect_equery3=$1 veritabanı OC Bacula grup tablolarını içermiyor.
 esql=SQL hatası : $1 
+
 check_edir=$1 Bacula yapılandırma dizini sisteminizde bulunamadı.
 check_ebacula=$1 Bacula kontrol komutu bulunamadı.
 check_econsole=$1 Bacula konsol komutu bulunamadı.
@@ -43,12 +45,14 @@ check_eclient=Bu sistem yönetmen yerine <a href='$2'>Bacula istemcisi</a> gibi 
 check_econfigs=$1 içinde hiçbir Bacula yapılandırma dosyası bulunamadı
 check_eservers=Hiçbir Webmin sunucu grubu tanımlanmadı
 check_engmod=OpenCountry Bacula grupları modülü kurulu değil
+
 proc_bacula-sd=Depolama arka plan programı
 proc_bacula-fd=Dosya arka plan programı
 proc_bacula-dir=Bacula Yönetmen arka plan programı
 proc_bareos-sd=Depolama arka plan programı
 proc_bareos-fd=Dosya arka plan programı
 proc_bareos-dir=Bacula Yönetmen arka plan programı
+
 stop_err=Bacula durdurulamadı
 start_err=Bacula başlatılamadı
 start_einit=$1 için init betiği bulunamadı
@@ -57,6 +61,7 @@ restart_err=Bacula yeniden başlatılamadı
 apply_err=Yapılandırma uygulanamadı
 apply_failed=Bir yapılandırma hatası tespit edildi
 apply_problem=Yapılandırma uygulanamadı : $1 
+
 jobs_title=Yedekleme İşleri
 jobs_none=Henüz hiçbir yedekleme işi tanımlanmadı.
 jobs_name=İş adı
@@ -69,6 +74,7 @@ jobs_add=Yeni bir yedekleme işi ekleyin.
 jobs_delete=Seçilen İşleri Sil
 jobs_return=iş listesi
 jobs_derr=İşler silinemedi
+
 filesets_title=Dosya Setleri
 filesets_none=Henüz hiçbir yedek dosya seti tanımlanmadı.
 filesets_name=Dosya kümesi adı
@@ -78,6 +84,7 @@ filesets_delete=Seçilen Dosya Kümelerini Sil
 filesets_return=dosya kümelerinin listesi
 filesets_derr=Dosya kümeleri silinemedi
 filesets_ednone=Hiçbiri seçilmedi
+
 fileset_title1=Dosya Kümesi Oluştur
 fileset_title2=Dosya Kümesini Düzenle
 fileset_header=Yedek dosya kümesi ayrıntıları
@@ -97,6 +104,7 @@ fileset_gzipdef=&lt;Varsayılan sıkıştırma seviyesi&gt;
 fileset_lzo=LZO sıkıştırma
 fileset_gzip=Gzip düzeyi $1 
 fileset_onefs=Yedeklemeyi bir dosya sistemi ile sınırlansın mı?
+
 clients_title=Yedekleme İstemcileri
 clients_none=Henüz hiçbir yedekleme istemcisi tanımlanmadı.
 clients_name=Müşteri Adı
@@ -106,6 +114,7 @@ clients_add=Yeni bir yedekleme istemcisi ekleyin.
 clients_delete=Seçilen İstemcileri Sil
 clients_return=müşteri listesi
 clients_derr=İstemciler silinemedi
+
 client_title1=Yedekleme İstemcisi Oluşturun
 client_title2=Yedekleme İstemcisini Düzenle
 client_header=Yedeklenecek istemcinin ayrıntıları
@@ -128,6 +137,7 @@ client_efileret=Eksik veya geçersiz dosya saklama süresi
 client_ejobret=İş tutma süresi eksik veya geçersiz
 client_echild=Bu istemci $1 tarafından kullanıldığı için silinemiyor
 client_status=Durumu Göster
+
 job_title1=Yedekleme İşi Oluştur
 job_title2=Yedekleme İşini Düzenle
 job_header=Yedekleme işi ayrıntıları
@@ -156,6 +166,7 @@ job_before=İşten önce komut
 job_after=İşten sonra komut
 job_cbefore=İşten önce komut (istemcide)
 job_cafter=İşten sonra komut (istemcide)
+
 schedules_title=Yedekleme Programları
 schedules_none=Henüz hiçbir yedekleme programı tanımlanmadı.
 schedules_name=Program adı
@@ -164,6 +175,7 @@ schedules_add=Yeni bir yedekleme programı ekleyin.
 schedules_delete=Seçilen Programları Sil
 schedules_return=çizelgelerin listesi
 schedules_derr=Zamanlamalar silinemedi
+
 schedule_title1=Yedekleme Zamanlaması Oluştur
 schedule_title2=Yedekleme Zamanlamasını Düzenle
 schedule_header=Yedekleme programı ayrıntıları
@@ -177,6 +189,7 @@ schedule_ename=Eksik veya geçersiz program adı
 schedule_eclash=Aynı ada sahip bir zamanlama zaten var
 schedule_etimes=$1 satırında yedekleme süreleri eksik
 schedule_echild=$1 tarafından kullanıldığı için bu zamanlama silinemiyor
+
 backup_title=Yedekleme İşini Çalıştır
 backup_header=Yedekleme işi ayrıntıları
 backup_job=Çalıştırılacak iş
@@ -191,11 +204,13 @@ backup_running=.. yedekleme işi şimdi çalışıyor. Tamamlandığında, sonu�
 backup_running2=.. yedekleme işi arka planda başlatıldı.
 backup_done=.. yedekleme tamamlandı.
 backup_failed=.. yedekleme başarıyla tamamlanmadı. Ayrıntılar için yukarıdaki hata mesajına bakın.
+
 gbackup_title=Bacula Group Yedekleme İşini Çalıştırma
 gbackup_run=$2 istemcide $1 yedekleme işi başlatılıyor.
 gbackup_on=$1 istemcisinde yedekleme işi çalıştırılıyor :
 gbackup_header=Bacula grup yedekleme işi ayrıntıları
 gbackup_jd=$1 ($3 grubundaki $2 dosya kümesi)
+
 dirstatus_title=Yönetmen Durumu
 dirstatus_sched=Zamanlanmış Yedekleme İşleri
 dirstatus_name=İş adı
@@ -216,12 +231,14 @@ dirstatus_status2=durum
 dirstatus_donenone=Hiçbir yedekleme işi yürütülmedi.
 dirstatus_cancel=Seçilen İşleri İptal Et
 dirstatus_refresh=Listeyi Yenile
+
 clientstatus_title=Müşteri Durumu
 clientstatus_err= $1 : $2 konumundan durum getirilemedi
 clientstatus_msg=$1 durumundan : $2 
 clientstatus_show=İstemcinin durumunu göster:
 clientstatus_ok=tamam
 clientstatus_on=$1 ($2 üzerinde)
+
 storages_title=Depolama Tarzları
 storages_none=Henüz hiçbir depolama arka planı tanımlanmadı.
 storages_name=Depolama alanı adı
@@ -232,6 +249,7 @@ storages_add=Yeni bir depolama arka plan programı ekleyin.
 storages_delete=Seçili Depolama Alanlarını Sil
 storages_return=depolama cinleri listesi
 storages_derr=Depolama cinleri silinemedi
+
 storage_title1=Depolama Daemon Oluşturun
 storage_title2=Depolama Daemon'unu Düzenle
 storage_header=Uzak depolama daemon ayrıntıları
@@ -255,6 +273,7 @@ storage_emedia=Ortam türü adı eksik
 storage_emaxjobs=Eşzamanlı maksimum eş zamanlı işler eksik
 storage_echild=Bu istemci $1 tarafından kullanıldığı için silinemiyor
 storage_status=Durumu Göster
+
 devices_title=Depolama aygıtları
 devices_none=Henüz hiçbir depolama cihazı tanımlanmadı.
 devices_name=Cihaz adı
@@ -264,6 +283,7 @@ devices_add=Yeni bir depolama cihazı ekleyin.
 devices_delete=Seçilen Depolama Aygıtlarını Sil
 devices_return=depolama aygıtlarının listesi
 devices_derr=Depolama cihazları silinemedi
+
 device_title1=Depolama Aygıtı Oluştur
 device_title2=Depolama Cihazını Düzenle
 device_header=Dosya depolama aygıtının ayrıntıları
@@ -282,11 +302,13 @@ device_eclash=Aynı ada sahip bir depolama cihazı zaten var
 device_emedia=Ortam türü adı eksik
 device_edevice=Eksik veya geçersiz arşivleme cihazı veya dizini
 device_echild=Bu istemci $1 tarafından kullanıldığı için silinemiyor
+
 storagestatus_title=Depolama Daemon Durumu
 storagestatus_err= $1 : $2 konumundan durum getirilemedi
 storagestatus_msg=$1 durumundan : $2 
 storagestatus_show=Depolama arka plan programının durumunu göster:
 storagestatus_ok=tamam
+
 label_title=Etiket Hacmi
 label_header=Etiketlenecek hacmin ayrıntıları
 label_storage=Etiketlemek için depolama arka plan programı
@@ -302,6 +324,7 @@ label_done=.. etiketleme başarılı.
 label_epool=.. havuz bulunamadı!
 label_err=Etiket başarısız oldu
 label_elabel=Etiket girilmedi
+
 pools_title=Hacim Havuzları
 pools_none=Henüz hacim havuzu tanımlanmadı.
 pools_name=Havuz adı
@@ -311,6 +334,7 @@ pools_add=Yeni bir birim havuzu ekleyin.
 pools_delete=Seçili Birim Havuzlarını Sil
 pools_return=hacim havuzları listesi
 pools_derr=Birim havuzları silinemedi
+
 pool_title1=Birim Havuzu Oluştur
 pool_title2=Birim Havuzunu Düzenle
 pool_header=Yedek birim havuzunun ayrıntıları
@@ -332,6 +356,7 @@ pool_ereten=Eksik veya geçersiz saklama süresi
 pool_status=Birimleri Göster
 pool_autolabel=Birim önekini otomatik olarak etiketle
 pool_maxvolsize=Maksimum hacim boyutu (örneğin 5 Gigabayt için 5G)
+
 poolstatus_title=Havuzdaki Hacimler
 poolstatus_show=Havuzdaki hacimleri göster:
 poolstatus_ok=tamam
@@ -345,9 +370,11 @@ poolstatus_status=Yedekleme modu
 poolstatus_none=Şu anda bu yedekleme havuzunda birim yok.
 poolstatus_never=Asla
 poolstatus_delete=Seçilen Birimleri Sil
+
 dvolumes_err=Birimler silinemedi
 dvolumes_enone=Hiçbiri seçilmedi
 dvolumes_ebacula=Bacula hatası : $1 
+
 mount_title=Montaj veya Çıkarma
 mount_header=Depolama montajı veya montajı kaldırma seçenekleri
 mount_storage=Depolama aygıtı
@@ -365,8 +392,10 @@ unmount_failed=.. montajı başarısız! Nedeni için yukarıdaki hata mesajına
 mount_return=montaj formu
 mount_err=Depolama cihazı takılamadı
 mount_eslot=Eksik veya geçersiz alan numarası
+
 cancel_err=İşler iptal edilemedi
 cancel_enone=Hiçbiri seçilmedi
+
 gjobs_title=Bacula Group Backup İşleri
 gjobs_none=Henüz hiçbir Bacula grubu yedekleme işi tanımlanmadı.
 gjobs_add=Yeni bir Bacula grubu yedekleme işi ekleyin.
@@ -374,10 +403,12 @@ gjobs_delete=Seçilen İşleri Sil
 gjobs_return=Bacula group iş ilanları
 gjobs_derr=Bacula grubu işleri silinemedi
 gjobs_client=Yedeklemek için Bacula grubu
+
 gjob_title1=Bacula Group Yedekleme İşi Oluşturma
 gjob_title2=Bacula Grubu Yedekleme İşini Düzenle
 gjob_header=Bacula grup yedekleme işi ayrıntıları
 gjob_client=Yedeklemek için Bacula grubu
+
 groups_title=Bacula Grupları
 groups_none=Bacula tarafından yedeklenmek üzere henüz hiçbir Bacula grubu seçilmedi.
 groups_name=Grup ismi
@@ -391,6 +422,7 @@ groups_derr=Gruplar silinemedi
 groups_noadd=Yedeklemeler için hiçbir Bacula grubu seçilmemiştir.
 groups_info=$1 ($2 üye)
 groups_already=Tüm Bacula grupları zaten eklenmiştir.
+
 group_title1=Bacula Grubu Oluştur
 group_title2=Bacula Grubunu Düzenle
 group_header=Yedeklenecek Bacula grubunun ayrıntıları
@@ -401,11 +433,13 @@ group_port=Bacula FD bağlantı noktası
 group_err=Bacula grubu kaydedilemedi
 group_eclash=Aynı ada sahip bir grup zaten var
 group_members=Bacula grubundaki konuklar
+
 sync_title=Bacula Grubu Senkronizasyonu
 sync_header=Otomatik Bacula grubu istemci senkronizasyon seçenekleri
 sync_sched=Zamanlamaya göre senkronize edilsin mi?
 sync_schedyes=Evet, aşağıda seçilen zamanlarda ..
 sync_err=Bacula grup senkronizasyonu kaydedilemedi
+
 log_create_client=$1 yedekleme istemcisi oluşturuldu
 log_modify_client=Değiştirilmiş yedekleme istemcisi $1 
 log_delete_client=$1 yedekleme istemcisi silindi
@@ -464,6 +498,7 @@ log_director=Kaydedilmiş global Bacula yönetici yapılandırması
 log_file=Kaydedilmiş Bacula dosyası arka plan programı yapılandırması
 log_storagec=Kaydedilmiş Bacula depolama daemon yapılandırması
 log_fixpass=Bacula konsol program şifresi düzeltildi
+
 director_title=Yönetmen Konfigürasyonu
 director_header=Global Bacula yönetici seçenekleri
 director_name=Yönetmen adı
@@ -477,6 +512,7 @@ director_ename=Eksik veya geçersiz yönetmen adı
 director_eport=Eksik veya geçersiz bağlantı noktası numarası
 director_ejobs=Eksik veya geçersiz eşzamanlı iş sayısı
 director_edir=Eksik veya var olmayan çalışma dizini
+
 tls_enable=TLS şifrelemesi etkinleştirilsin mi?
 tls_require=Sadece TLS bağlantılarını mı kabul ediyorsunuz?
 tls_verify=TLS istemcileri doğrulansın mı?
@@ -488,6 +524,7 @@ tls_ecert=Eksik veya var olmayan TLS sertifika dosyası
 tls_ekey=Eksik veya var olmayan TLS anahtar dosyası
 tls_ecacert=Eksik veya var olmayan TLS CA sertifika dosyası
 tls_ecerts=TLS'nin etkinleştirilebilmesi için sertifika, anahtar ve CA dosyaları belirtilmelidir
+
 file_title=Dosya Daemon Yapılandırması
 file_header=Bacula dosyası arka plan programı seçenekleri
 file_name=Dosya arka plan programı adı
@@ -500,6 +537,7 @@ file_ename=Eksik veya geçersiz dosya arka plan programı adı
 file_eport=Eksik veya geçersiz bağlantı noktası numarası
 file_ejobs=Eksik veya geçersiz eşzamanlı iş sayısı
 file_edir=Eksik veya var olmayan çalışma dizini
+
 fdirectors_title=Dosya Daemon Yöneticileri
 fdirectors_none=Henüz yönetmen tanımlanmadı.
 fdirectors_name=Yönetmen adı
@@ -508,6 +546,7 @@ fdirectors_add=Yeni bir yönetmen ekleyin.
 fdirectors_delete=Seçilen Yöneticileri Sil
 fdirectors_return=yönetim listesi
 fdirectors_derr=Yönetmenler silinemedi
+
 fdirector_title1=Dosya Daemon Director Oluşturun
 fdirector_title2=Daemon Director Dosyasını Düzenle
 fdirector_header=Uzaktan yönetmenin kontrolünün ayrıntıları
@@ -519,6 +558,7 @@ fdirector_err=Dosya arka plan programı yöneticisi kaydedilemedi
 fdirector_ename=Eksik yönetmen adı
 fdirector_eclash=Aynı ada sahip bir yönetmen zaten var
 fdirector_epass=Eksik şifre
+
 sdirectors_title=Depolama Daemon Yöneticileri
 sdirectors_none=Henüz yönetmen tanımlanmadı.
 sdirectors_name=Yönetmen adı
@@ -527,6 +567,7 @@ sdirectors_add=Yeni bir yönetmen ekleyin.
 sdirectors_delete=Seçilen Yöneticileri Sil
 sdirectors_return=yönetim listesi
 sdirectors_derr=Yönetmenler silinemedi
+
 sdirector_title1=Depolama Daemon Director'ı oluşturun
 sdirector_title2=Depolama Daemon Director'ı Düzenle
 sdirector_header=Uzaktan yönetmenin kontrolünün ayrıntıları
@@ -538,6 +579,7 @@ sdirector_err=Depolama arka plan programı yöneticisi kaydedilemedi
 sdirector_ename=Eksik yönetmen adı
 sdirector_eclash=Aynı ada sahip bir yönetmen zaten var
 sdirector_epass=Eksik şifre
+
 storagec_title=Depolama Daemon Yapılandırması
 storagec_header=Bacula depolama daemon seçenekleri
 storagec_name=Daemon adı
@@ -550,6 +592,7 @@ storagec_ename=Eksik veya geçersiz depolama arka plan programı adı
 storagec_eport=Eksik veya geçersiz bağlantı noktası numarası
 storagec_ejobs=Eksik veya geçersiz eşzamanlı iş sayısı
 storagec_edir=Eksik veya var olmayan çalışma dizini
+
 chooser_title=Program Seçin
 chooser_monthsh=Yürütüleceği aylar
 chooser_months=Yılın ayları
@@ -574,11 +617,13 @@ chooser_emonthsrange=Seçilen aylar bitişik olmalıdır
 chooser_eweekdaysrange=Seçilen hafta içi günler bitişik olmalıdır
 chooser_eweekdaynumsrange=Seçilen hafta içi sayılar bitişik olmalıdır
 chooser_edaysrange=Ayın seçilen günleri bitişik olmalıdır
+
 weekdaynum_1=İlk
 weekdaynum_2=İkinci
 weekdaynum_3=Üçüncü
 weekdaynum_4=Dördüncü
 weekdaynum_5=Beşinci
+
 restore_title=Yedeği Geri Yükle
 restore_title2=Bacula Group Yedeklemesini Geri Yükle
 restore_title3=Bacula Group Yedeklemesini Geri Yükle

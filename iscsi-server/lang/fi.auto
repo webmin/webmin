@@ -1,5 +1,6 @@
 check_etargets=ISCSI-palvelimen määritystiedostoa $1 ei löydy järjestelmästäsi.
 check_eserver=ISCSI-palvelinohjelmaa $1 ei löydy järjestelmästäsi.
+
 index_title=iSCSI-palvelin
 index_clink=Ehkä sitä ei ole asennettu, tai <a href='$1'>moduulin määritykset</a> ovat vääriä.
 index_stop=Pysäytä iSCSI-palvelin
@@ -11,6 +12,7 @@ index_restartdesc=Napsauta tätä painiketta, jos haluat käyttää nykyistä ko
 index_atboot=Aloita käynnistyessä?
 index_atbootdesc=Muuta tätä asetusta hallitaksesi, käynnistetäänkö iSCSI-palvelin käynnistyksen yhteydessä vai ei. Jos sitä ei käynnistetä käynnistyksen aikana ja Kyllä on valittu, uusi init-komentosarja luodaan.
 index_return=moduulihakemisto
+
 extents_title=Jaettavat laitteet
 extents_none=Yhtään jaettavaa laitetta ei ole vielä luotu.
 extents_name=Laitteen nimi
@@ -25,6 +27,7 @@ extents_denone=Mitään ei ole valittu
 extents_einuse=Laitetta $1 ei voi poistaa, koska sitä käyttää : $2 
 extents_drusure=Haluatko varmasti poistaa seuraavat laitteet: $1 ? Niiden sisältö säilytetään, mutta ne eivät ole enää iSCSI-asiakkaiden käytettävissä.
 extents_sure=Poista laitteet
+
 extent_create=Luo jaettava laite
 extent_edit=Muokkaa jaettavaa laitetta
 extent_egone=Laitetta jakamaan $1 ei ole!
@@ -50,6 +53,7 @@ extent_estart=Laajuuden alun on oltava numero
 extent_esize=Laajuuden koon on oltava numero
 extent_esizemax=Leveyden loppu ei voi olla suurempi kuin laitteen koko $1 
 extent_einuse=Tätä laitetta ei voi poistaa, koska sitä käyttää : $1 
+
 devices_title=Laiteyhdistelmät
 devices_none=Laiteyhdistelmiä ei ole vielä luotu.
 devices_name=Yhdistelmän nimi
@@ -65,6 +69,7 @@ devices_denone=Mitään ei ole valittu
 devices_einuse=Yhdistelmää $1 ei voida poistaa, koska sitä käyttää : $2 
 devices_drusure=Haluatko varmasti poistaa seuraavat laiteyhdistelmät: $1 ? Niiden sisältö säilytetään, mutta ne eivät ole enää iSCSI-asiakkaiden käytettävissä.
 devices_sure=Poista laiteyhdistelmät
+
 device_create=Luo laiteyhdistelmä
 device_edit=Muokkaa laiteyhdistelmää
 device_egone=Laiteyhdistelmää $1 ei ole!
@@ -81,6 +86,7 @@ device_sure=Poista laiteyhdistelmä
 device_einuse=Tätä laiteyhdistelmää ei voi poistaa, koska sitä käyttää : $1 
 device_eextents=Jäsenlaitteita ei ole valittu
 device_eself=Yksi valituista jäsenlaitteista sisältää tämän laitteen!
+
 targets_title=Kohteiden jakaminen
 targets_none=Jakokohteita ei ole vielä luotu.
 targets_name=Kohde nimi
@@ -96,6 +102,7 @@ targets_derr=Jakamiskohteiden poistaminen epäonnistui
 targets_denone=Mitään ei ole valittu
 targets_drusure=Haluatko varmasti poistaa seuraavat jakamiskohteet: $1 ? Tietoja ei menetetä, mutta ne eivät ole enää iSCSI-asiakkaiden käytettävissä.
 targets_sure=Poista jakamiskohteet
+
 target_create=Luo jakamiskohteet
 target_edit=Muokkaa jakamiskohteita
 target_egone=Jakamistavoitetta $1 ei ole!
@@ -112,6 +119,7 @@ target_rusure=Haluatko varmasti poistaa jakamiskohteen $1 ? Tietoja ei menetetä
 target_sure=Poista kohde
 target_enetwork=Puuttuva tai virheellinen verkko, jonka kanssa jakaa
 target_emask=Puuttuva tai virheellinen verkkomaski, jonka kanssa jakaa
+
 opts_title=iSCSI-palvelimen asetukset
 opts_header=Kaikkien iSCSI-kohteiden asetukset
 opts_ip4=Hyväksy IPv4-yhteydet
@@ -124,10 +132,12 @@ opts_err=Asetusten tallentaminen epäonnistui
 opts_ename=Puuttuva tai virheellinen nimi - sallitaan vain kirjaimet, numerot, viiva, piste ja alaviiva
 opts_eport=Puuttuva tai ei-numeerinen porttinumero
 opts_esess=Puuttuvat tai ei-numeeriset enimmäisistunnot
+
 manual_title=Muokkaa asetustiedostoa
 manual_desc=Muokkaa alla olevaa tekstikenttää iSCSI-palvelimen määritystiedostoon $1. Ole varovainen, koska syötteellesi ei suoriteta validointia!
 manual_err=Asetustiedoston tallentaminen epäonnistui
 manual_edata=Sisältöä ei annettu!
+
 users_title=iSCSI-todennus
 users_none=Yhtään iSCSI-käyttäjää ei ole vielä luotu. Asiakkaat voivat käyttää jaettuja laitteita ilman todennusta.
 users_add=Lisää uusi iSCSI-käyttäjä.
@@ -135,6 +145,7 @@ users_delete=Poista valitut käyttäjät
 users_name=Käyttäjätunnus
 users_mode=Todennus tapa
 users_return=käyttäjäluettelo
+
 user_create=Luo iSCSI-käyttäjä
 user_edit=Muokkaa iSCSI-käyttäjää
 user_header=iSCSI-käyttäjän tiedot
@@ -145,13 +156,16 @@ user_egone=Käyttäjää ei enää ole!
 user_err=ISCSI-käyttäjän tallentaminen epäonnistui
 user_euser=Puuttuva tai virheellinen käyttäjänimi - välilyöntejä ja kaksoispisteitä ei sallita
 user_epass=Puuttuva tai virheellinen salasana - välilyöntejä ja kaksoispisteitä ei sallita
+
 desc_extent=Laite jakamaan $1 
 desc_device=Laiteyhdistelmä $1 
 desc_target=Jako tavoite $1 
+
 start_err=ISCSI-palvelimen käynnistäminen epäonnistui
 stop_err=ISCSI-palvelimen pysäyttäminen epäonnistui
 restart_err=ISCSI-palvelimen käynnistäminen epäonnistui
 atboot_err=Käynnistäminen epäonnistui
+
 log_create_extent=Luotu laite jakamaan $1 
 log_modify_extent=Päivitetty laite jakamaan $1 
 log_delete_extent=Poistettu laite jakamaan $1 

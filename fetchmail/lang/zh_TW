@@ -16,6 +16,7 @@ index_startmsg=按下按鈕來啟動此伺服器上的fetchmail程式讓他在�
 index_stopmsg=按下按鈕來停止當前用使用者$1身分執行的fetchmail程式，郵件將不會在每$2秒時自動下載。
 index_efetchmail=在您的系統上找不到fetchmail程式$1，也許 fetchmail 還沒安裝，或您的模組組態不正確。
 index_none=無Unix使用者有 <tt>.fetchmailrc</tt> 檔案
+
 poll_create=新增伺服器
 poll_edit=編輯伺服器
 poll_header=郵件伺服器選項
@@ -49,16 +50,20 @@ poll_preconnect=連接前執行指令
 poll_postconnect=連接後執行指令
 poll_ecannot=您不被允許編輯此使用者的fetchmail設定檔
 poll_efile=只有使用者fetchmail設定檔可被編輯
+
 stop_err=停止fetchmail失敗
 start_err=啟動fetchmail失敗
 start_einterval=沒有輸入或錯誤的檢查間隔
+
 check_title=檢查伺服器
 check_exec=在伺服器上用$1指令檢查郵件  ..
 check_ok=.. 檢查完成
 check_failed=.. 檢查失敗!
+
 global_title=預設值
 global_header=所有伺服器預設值
 global_err=儲存預設值失敗
+
 log_create_poll_file=新增伺服器$1在檔案$2
 log_modify_poll_file=修改伺服器$1在檔案$2
 log_delete_poll_file=刪除伺服器$1在檔案$2
@@ -74,6 +79,7 @@ log_global_user=變更全域設定給使用者 $1
 log_global_file=變更全域設定在檔案$1
 log_start=啟動fetchmail程式
 log_stop=停止fetchmail程式
+
 acl_users=可以編輯fetchmail設定給
 acl_all=所有使用者
 acl_this=目前WEBMIN使用者

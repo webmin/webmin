@@ -1,5 +1,6 @@
 index_euser=RBAC konfigurācijas fails $1 jūsu sistēmā netika atrasts. Varbūt RBAC nav instalēts, vai <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
 index_return=moduļa indekss
+
 users_title=Lietotāja atribūti
 users_user=Lietotājvārds
 users_profiles=Piešķirtie profili
@@ -10,6 +11,7 @@ users_return=lietotāja atribūtu saraksts
 users_type=Veids
 users_role=Loma
 users_project=Projekts
+
 user_title1=Izveidot lietotāja atribūtus
 user_title2=Rediģēt lietotāja atribūtus
 user_header=Atribūti, kas piešķirti Unix lietotājam
@@ -35,6 +37,7 @@ user_eauth='$1' nav derīga autorizācija
 user_ecannot=Jums nav atļauts rediģēt šo lietotāju
 user_erole=Jums nav atļauts piešķirt lomu “$1”
 user_eprof=Jums nav atļauts piešķirt profilu '$1'
+
 auths_title=Pilnvaras
 auths_name=Autorizācijas nosaukums
 auths_desc=Apraksts
@@ -42,8 +45,10 @@ auths_none=Pagaidām nav definētas pilnvaras.
 auths_add=Pievienojiet jaunu atļauju.
 auths_return=atļauju saraksts
 auths_ecannot=Jums nav atļauts rediģēt pilnvaras
+
 authc_name=Pilnvarojums
 authc_desc=Apraksts
+
 auth_title1=Izveidot pilnvarojumu
 auth_title2=Rediģēt autorizāciju
 auth_header=Informācija par autorizācijas privilēģijām
@@ -57,6 +62,7 @@ auth_edesc=Nederīgs garš apraksts
 auth_eclash=Pilnvarojums ar tādu pašu nosaukumu jau pastāv
 auth_einuseu=Šo atļauju izmanto lietotājs $1, tāpēc to nevar izdzēst
 auth_einusep=Šo pilnvarojumu izmanto profils $1, tāpēc to nevar izdzēst
+
 profs_title=Profili
 profs_name=Profila vārds
 profs_desc=Apraksts
@@ -65,6 +71,7 @@ profs_none=Vēl nav definēts neviens profils.
 profs_add=Pievienojiet jaunu profilu.
 profs_return=profilu saraksts
 profs_ecannot=Jums nav atļauts rediģēt profilus
+
 prof_title1=Izveidot profilu
 prof_title2=Rediģēt profilu
 prof_header=Informācija par autorizācijas profilu
@@ -81,6 +88,7 @@ prof_einuseu=Šo profilu izmanto lietotājs $1, tāpēc to nevar izdzēst
 prof_einusep=Šo profilu izmanto profils $1, tāpēc to nevar izdzēst
 prof_einusee=Šim profilam ir $1 izpildes profili, tāpēc to nevar izdzēst
 prof_none=Nav pieejamu profilu
+
 execs_title=Izpildes profili
 execs_name=Profils
 execs_policy=Drošības politika
@@ -92,6 +100,7 @@ execs_none=Pagaidām nav definēts neviens izpildes profils.
 execs_add=Pievienojiet jaunu izpildes profilu.
 execs_return=izpildes profilu saraksts
 execs_ecannot=Jums nav atļauts rediģēt izpildes profilus
+
 exec_title1=Izveidot izpildes profilu
 exec_title2=Rediģēt izpildes profilu
 exec_header=Izpildes profila informācija
@@ -113,6 +122,7 @@ exec_erruid=Trūkst vai nav derīgs lietotājs, kas darbojas kā
 exec_errgid=Trūkst vai nav derīga grupa, kas darbojas kā
 exec_erreuid=Trūkst vai nav derīgs faktiskais lietotājs, kas darbojas kā
 exec_erregid=Trūkst vai nav derīga efektīva grupa, kas darbojas kā
+
 policy_title=Sistēmas politikas
 policy_header=Globālie sistēmas politikas iestatījumi
 policy_auths=Pilnvaras visiem lietotājiem
@@ -126,16 +136,20 @@ policy_err=Neizdevās saglabāt sistēmas politikas
 policy_eallow=Nav atlasītu algoritmu
 policy_eclash=Gan algoritmu, kas atļauj, gan nolietotu, nevar atlasīt vienlaikus
 policy_ecannot=Jums nav atļauts rediģēt sistēmas politikas
+
 attr_none=Nav definēts neviens lietotāja atribūts
 attr_nonenormal=Nav definēts neviens Unix lietotājs
 attr_nonerole=Nav definētas pieejamās lomas
+
 help_epath=Nederīgs palīdzības faila ceļš!
 help_link=(Palīdzība..)
+
 crypt___unix__=Unix kripta
 crypt_1=BSD MD5
 crypt_2a=BSD plūsmas zivs
 crypt_md5=Saule MD5
 crypt_rot13=ROT13
+
 log_create_user=Izveidoti lietotāja atribūti $1 
 log_modify_user=Modificēti lietotāja atribūti $1 
 log_delete_user=Dzēsti lietotāja atribūti $1 
@@ -152,6 +166,7 @@ log_create_project=Izveidots projekts $1
 log_modify_project=Modificēts projekts $1 
 log_delete_project=Izdzēsts projekts $1 
 log_policy=Mainītas sistēmas politikas
+
 acl_roles=Vai var rediģēt lomas?
 acl_users=Vai var rediģēt lietotāja atribūtus?
 acl_roleassign=Var piešķirt lomas
@@ -166,6 +181,7 @@ acl_profs=Vai var rediģēt profilus?
 acl_ro=Tikai skatāms
 acl_execs=Vai var rediģēt izpildes profilus?
 acl_projects=Vai var rediģēt projektus?
+
 projects_title=Projekti
 projects_name=Vārds
 projects_id=ID
@@ -184,6 +200,7 @@ projects_exceptusers=Visi lietotāji, izņemot $1
 projects_exceptgroups=Visas grupas, izņemot $1 
 projects_onlyusers=Tikai $1 
 projects_onlygroups=Tikai $1 
+
 project_title1=Izveidot projektu
 project_title2=Rediģēt projektu
 project_header=Informācija par projektu un dalībnieki
@@ -219,6 +236,7 @@ project_egroupscannot=Nav nevienas atlasītas grupas
 project_elimit=Trūkst vai nav derīgs ierobežojums rindā $1 
 project_epool=Trūkst vai nav derīgs projekta kopas nosaukums
 project_erss=Trūkst vai nav derīga maksimālā atmiņa
+
 prctl_title=Resursu vadība
 prctl_ok=Rādīt ierobežojumus:
 prctl_mode0=Process ar ID

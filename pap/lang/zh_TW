@@ -10,8 +10,10 @@ index_onadd=新增PPP帳號當新增一個Unix使用者在系統時
 index_onchange=更變PPP帳號當Unix使用者被改變時
 index_ondelete=刪除PPP帳號當Unix使用者被刪除時
 index_apply=套用
+
 secrets_title=PPP帳號
 secrets_return=索引
+
 edit_secret_etitle=編輯PPP帳號
 edit_secret_ctitle=新增PPP帳號
 edit_secret_acc=PPP帳號
@@ -31,8 +33,10 @@ edit_secret_alist=允許清單中..
 edit_secret_save=儲存
 edit_secret_del=刪除
 edit_secret_return=帳號清單
+
 save_secret_esave=儲存帳號失敗
 save_secret_enoip='$1' 不是個有效的位置
+
 log_create=新增 PPP 使用者 $1
 log_modify=修改 PPP 使用者 $1
 log_delete=刪除 PPP 使用者 $1

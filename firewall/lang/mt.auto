@@ -16,6 +16,7 @@ index_chain=Katina $1
 index_action=Azzjoni
 index_desc=Kundizzjoni
 index_comm=Kumment
+index_no_comment=
 index_move=Tmexxi
 index_none=M'hemm l-ebda regoli definiti għal din il-katina.
 index_policy=Issettja l-Azzjoni Default Li:
@@ -88,6 +89,7 @@ index_ipset_size=Daqs
 index_ipvxmode=Ibdel il-verżjoni tal-protokoll IP:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
 desc_p=il-protokoll huwa $1 
 desc_p!=il-protokoll mhux $1 
 desc_s=sors huwa $1 
@@ -114,6 +116,8 @@ desc_tcp-option=il-pakkett juża l-għażla TCP $1
 desc_tcp-option!=il-pakkett ma jużax l-għażla TCP $1 
 desc_icmp-type=It-tip ICMP huwa $1 
 desc_icmp-type!=It-tip ICMP mhux $1 
+desc_icmpv6-type=It-tip ICMP huwa $1 
+desc_icmpv6-type!=It-tip ICMP mhux $1 
 desc_mac-source=L-indirizz ethernet huwa $1 
 desc_mac-source!=L-indirizz ethernet mhux $1 
 desc_limit=ir-rata hija inqas minn $1 
@@ -146,10 +150,15 @@ desc_always=Dejjem
 desc_args--match-set=$2 jinsab fis-sett tal-IP $1 
 desc_src=sors
 desc_dest=destinazzjoni
+
 redhat_einstalled=L-ebda <tt>iptables (6)</tt> azzjoni ta 'boot ma nstabet, li tindika li l-pakkett IPtables mhuwiex installat fis-sistema tiegħek
 redhat_eoutput=Sar żball li ġab status ta 'IPtables mill-kmand $1. Dan probabbilment jindika li s-sistema tiegħek ġiet ikkonfigurata biex tuża IPchains minflok IPtables.
+
 gentoo_escript=L-iskritt tal-istartjar Gentoo IPtables $1 ma nstabx fis-sistema tiegħek.
+
 eiptables=IPtables mhux magħrufa jiffrankaw linja ta 'fajl : $1 
+eip6tables=Mhux magħrufa ip6tables jiffrankaw linja ta 'fajl : $1 
+
 edit_title1=Żid ir-Regola
 edit_title2=Editja r-Regola
 edit_title3=Regola tal-Klonu
@@ -218,6 +227,7 @@ edit_physdevout=Interfaċċa fiżika ħierġa
 edit_physdevisin=Pakkett li jkun dieħel fuq l-interface tal-pont
 edit_physdevisout=Pakkett ħiereġ fuq l-interface tal-pont
 edit_physdevisbridged=Il-pakkett qed jiġi bridged
+
 save_err=Irnexxielu jiffranka r-regola
 save_echain=Katina nieqsa jew invalida biex titħaddem
 save_esource=Indirizz jew netwerk tas-sors nieqes jew invalidu
@@ -262,23 +272,28 @@ save_estates=L-ebda stati ta ’konnessjoni magħżula
 save_ecanjump=M'għandekx permess tuża din l-azzjoni
 save_ephysdevin=Interfaċċa fiżika dieħla nieqsa jew invalida
 save_ephysdevout=Interfaċċa fiżika ħierġa nieqsa jew invalida
+
 delete_title=Ħassar il-Katina
 delete_rusure=Int żgur li trid tħassar il-katina $1 ? $2 ir-regoli fi ħdanha se jitħassru.
 delete_ok=Ħassar issa
 delete_ecannot=M'għandekx permess tħassar il-ktajjen
+
 clear_title=Katina ċara
 clear_rusure=Int żgur li trid tħassar ir-regoli kollha $2 mill-katina $1 ?
 clear_ecannot=M'intix permess li tnaddaf il-ktajjen
+
 new_err=Naqset milli toħloq katina
 new_ename=Isem il-katina nieqes jew invalidu
 new_etaken=Katina b'dan l-isem diġà teżisti
 new_ecannot=M'għandekx permess toħloq ktajjen
+
 apply_err=Ma rnexxielux japplika l-konfigurazzjoni
 apply_ecannot=M'għandekx permess tapplika l-konfigurazzjoni
 apply_remote=Żball minn $1 : $2 
 unapply_err=Ma rnexxielux jerġa 'jmur lura l-konfigurazzjoni
 unapply_ecannot=M'għandekx permess li terġa 'taqbad il-konfigurazzjoni
 bootup_ecannot=M'għandekx permess li tħalli jew tiddiżattiva l-firewall waqt l-istartjar
+
 log_create_rule=Ġiet miżjuda r-regola għall-katina $1 fit-tabella $2 
 log_modify_rule=Regola modifikata fil-katina $1 fit-tabella $2 
 log_delete_rule=Regola mħassra fil-katina $1 fit-tabella $2 
@@ -301,8 +316,10 @@ log_add_group=Servi tal-cluster miżjuda mill-grupp $1
 log_delete_host=Tneħħa s-server tal-cluster $1 
 log_delete_group=Tneħħew $1 cluster servers
 log_openports=Portijiet tal-firewall miftuħa $1 
+
 setup_eiface=L-ebda interface ta 'netwerk estern ma daħal
 setup_ecannot=M'għandekx permess li twaqqaf il-firewall
+
 acl_tables=IPtables permessi
 acl_apply=Tista 'tapplika konfigurazzjoni?
 acl_unapply=Tista 'ma tapplikax konfigurazzjoni?
@@ -314,9 +331,11 @@ acl_jall=Kollha
 acl_newchain=Tista 'toħloq katini ġodda?
 acl_delchain=Tista 'tħassar jew tnaddaf il-ktajjen?
 acl_policy=Tista 'tbiddel politika ta' inadempjenza?
+
 etable=M'għandekx permess teditja dan l-IPtable
 ejump=M'għandekx permess teditja din ir-regola
 ecluster=M'għandekx permess tmexxi l-cluster tal-firewall
+
 cluster_title=Cluster Firewall Servers
 cluster_none=L-ebda servers ma ġew miżjuda mal-cluster tal-firewall s'issa.
 cluster_host=L-isem tal-host
@@ -327,6 +346,7 @@ cluster_gadd=Żid is-servers fi grupp
 cluster_need=Trid iżżid is-servers bil-login u l-password fil-modulu tal-Indiċi Servers tal-Webmin qabel ma jkunu jistgħu jiġu ġestiti hawn.
 cluster_return=Servers ta 'raggruppament
 cluster_delete=Neħħi Magħżul
+
 add_title=Żid is-Servers
 add_msg=Żieda ta ' $1 ..
 add_gmsg=Żieda ta 'servers fil-grupp $1 ..
@@ -336,13 +356,16 @@ add_echeck=Server $1 ma għandux il-modulu Firewall Linux
 add_emissing=Is-server $1 huwa nieqes mill-kmand tal-firewall $2 
 add_ok=Miżjud $1, mar-regoli tal-firewall attivi $2.
 add_enone=M'hemm l-ebda server magħżul!
+
 policy_ecannot=M'għandekx permess tibdel il-politika tal-inadempjenza għal din il-katina
+
 move_title=Regoli ta 'Nimxu
 move_count=Regoli magħżula
 move_chain=Bidla attwali
 move_dest=Katina ta 'destinazzjoni
 move_ok=Mexxi Issa
 move_header=Għażliet ta 'ċaqliq tar-Regola
+
 rename_title=Semmi l-Katina
 rename_count=Regoli fil-katina
 rename_chain=Isem attwali
@@ -352,6 +375,3 @@ rename_header=Għażliet ta 'isem ġdid tal-katina
 rename_adjust=Tibdel regoli oħra li jaqbżu din il-katina?
 rename_none=Xejn
 rename_ecannot=M'għandekx permess tibdel il-katina
-desc_icmpv6-type=It-tip ICMP huwa $1 
-desc_icmpv6-type!=It-tip ICMP mhux $1 
-eip6tables=Mhux magħrufa ip6tables jiffrankaw linja ta 'fajl : $1 

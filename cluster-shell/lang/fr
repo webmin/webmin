@@ -20,4 +20,3 @@ run_enone=Aucun serveur sur lequel exécuter sélectionné
 log_clear=Effacé l'historique des commandes
 log_run=Exécuté $1 sur $2 serveurs
 log_run_l=Exécuté $1 sur $2
-__norefs=1

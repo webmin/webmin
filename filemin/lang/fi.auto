@@ -155,8 +155,10 @@ menu_bookmarks=kirjanmerkit
 notallowed=Sinulla ei ole pääsyä $1 : een. Sallitut hakemistot ovat : $2 
 error_upload_emax=Lähetetty tiedosto on suurempi kuin $1 -raja
 extract_etype=Ei tuettua arkistotiedostotyyppiä
+
 info_total1=Yhteensä: $1 tiedosto ja $2 hakemisto
 info_total2=Yhteensä: $1 tiedostoa ja $2 hakemisto
 info_total3=Yhteensä: $1 tiedosto ja $2 hakemistoa
 info_total4=Yhteensä: $1 tiedostoa ja $2 hakemistoa
+
 ownership=Omistaja

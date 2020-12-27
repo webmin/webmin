@@ -12,10 +12,12 @@ index_restart=Starte Fail2Ban Server
 index_restartdesc=Klicke auf diese Schaltfläche, um die aktuelle Konfiguration durch einen Neustart des Fail2Ban Server anwenden.
 index_return=Modulindex
 index_header=Fail2Ban Modul
+
 check_edir=Das Konfigurationsverzeichnis $1 existiert nicht
 check_econf=Die Konfigurationsdatei $2 in $1 existiert nicht
 check_eclient=Der Client-Befehl $1 wurde nicht gefunden
 check_eserver=Der Server-Befehl $1 wurde nicht gefunden
+
 filters_title=Log-Filter
 filters_name=Filtername
 filters_re=Regulärer Ausdruck
@@ -25,6 +27,7 @@ filters_return=Liste an Filter
 filters_derr=Fehlgeschlagen Filter zu löschen
 filters_enone=Nichts ausgewählt
 filters_einuse=Der Filter $1 kann nicht gelöscht werden, da sie bereits von dem Gefängnis : $2 genutzt wird
+
 filter_title1=Erstelle Filter
 filter_title2=Editiere Filter
 filter_desc=Benutze <i>&lt;HOST&gt;</i> in regulären Ausdruck, wobei Hostname oder IP-Adresse angezeigt werden soll.
@@ -39,6 +42,7 @@ filter_ename=Fehlender oder ungültiger Filtername
 filter_eclash=Filtername ist bereits in Benutzung
 filter_efail=Kein regulärer Ausdruck zum übereinstimmen eingegeben
 filter_einuse=Dieser Filter kann nicht gelöscht werden, da sie bereits von dem Gefängnis : $1 genutzt wird
+
 actions_title=Übereinstimmende Aktionen
 actions_name=Aktionname
 actions_ban=Bann-Befehl
@@ -48,6 +52,7 @@ actions_return=Liste an Aktionen
 actions_derr=Fehlgeschlagen Aktionen zu löschen
 actions_enone=Nichts ausgewählt
 actions_einuse=Die Aktion $1 kann nicht gelöscht werden, da sie bereits von dem Gefängnis : $2 genutzt wird
+
 action_title1=Erstelle übereinstimmende Aktion
 action_title2=Editiere übereinstimmende Aktion
 action_header=Übereinstimmende Aktiondetails
@@ -64,6 +69,7 @@ action_ban=Befehl, um eine IP zu verbannen
 action_unban=Befehl, um IP nicht mehr zu bannen
 action_desc=<i>&lt;ip&gt;</i> wird mit der IP-Adresse ersetzt, welche verbannt ist.
 action_einuse=Diese Aktion kann nicht gelöscht werden, da sie bereits von dem Gefängnis : $1 genutzt wird
+
 jails_title=Filter Aktion Gefängnisse
 jails_add=Füge ein neues Gefängnis hinzu.
 jails_name=Gefängnis Name
@@ -76,6 +82,7 @@ jails_defdesc=Editiere Standardeinstellungen und Limits, die für alle oben aufg
 jails_return=Liste an Gefängnissen
 jails_derr=Fehlgeschlagen Gefängnisse zu löschen
 jails_enone=Keine ausgewählt
+
 jail_title1=Erstelle Gefängnis
 jail_title2=Editiere Gefängnis
 jail_header=Filter Aktions Gefängnis Details
@@ -115,13 +122,16 @@ jail_banaction=Standard Aktion zum anwenden
 jail_defprotocol=Standard Protokoll für AKtionen
 jail_edestemail=Fehlende oder ungültige Standard Benachrichtigungs-E-Mail-Adresse
 jail_eignoreip=Ungültige IP-Adresse zum ignorieren
+
 jaildef_title=Standard Gefängnis Optionen
 jaildef_header=Standards für alle Gefängnisse
 jaildef_err=Fehlgeschlagen Standard Gefängnis Optionen zu speichern
 jaildef_egone=Kein STANDARD Gefängnis gefunden!
+
 start_err=Fehlgeschlagen Server zu starten
 stop_err=Fehlgeschlagen Server zu stoppen
 restart_err=Fehlgeschlagen Server neu zu starten
+
 log_create_filter=Filter $1 erstellt
 log_update_filter=Filter $1 modifiziert
 log_delete_filter=Filter $1 gelöscht
@@ -139,6 +149,7 @@ log_atboot=Fail2Ban beim Booten aktiviert
 log_delboot=Fail2Ban beim Booten deaktiviert
 log_manual=Konfigurationsdatei $1 editiert
 log_jaildef=Standard Gefängnis Optionen geändert
+
 config_title=Globale Konfiguration
 config_edef=Kein Definition Abschnitt in der Konfigurationsdatei gefunden!
 config_header=Konfiguriert Einstellungen für Fail2Ban
@@ -151,10 +162,12 @@ config_socket=Socket für Kommunikation mit Server
 config_err=Fehlgeschlagen globale Konfiguration zu speichern
 config_elogtarget=Datei, um Protokolle zu schreiben, muss ein absoluter Pfad sein
 config_esocket=Socket-Datei muss ein absoluter Pfad sein
+
 manual_title=Editiere Konfigurationsdateien
 manual_desc=Datei zum editieren:
 manual_ok=OK
 manual_efile=Ausgewählte Datei ist nicht Bestandteil der Fail2Ban Konfiguration!
 manual_err=Fehlgeschlagen Konfigurationsdateien zu editieren
 manual_edata=Keinen Inhalt für Konfigurationsdatei eingegeben
+
 syslog_logtarget=Fail2Ban Aktion Log

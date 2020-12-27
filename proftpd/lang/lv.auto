@@ -27,7 +27,9 @@ index_global=Globālā konfigurācija
 index_create=Izveidojiet virtuālo serveri
 index_version=ProFTPd versija $1 
 index_proftpd=ProFTPd
+
 efailed=Neizdevās saglabāt $1 
+
 type_0=Tīkla izveides iespējas
 type_1=Mežizstrādes iespējas
 type_2=Faili un direktorijas
@@ -35,6 +37,7 @@ type_3=Piekļuves kontrole
 type_4=Dažādi
 type_5=Lietotājs un grupa
 type_6=Autentifikācija
+
 virt_title=Virtuālā servera opcijas
 virt_header1=$1 
 virt_header2=Noklusējuma serverim
@@ -50,6 +53,7 @@ virt_cmds=FTP komandas
 virt_return=virtuālais serveris
 virt_virt=Konfigurējiet virtuālo serveri
 virt_edit=Rediģēt direktīvas
+
 vserv_title=Konfigurējiet virtuālo serveri
 vserv_addr=Adrese
 vserv_name=Servera nosaukums
@@ -58,6 +62,7 @@ vserv_delete=Dzēst virtuālo serveri
 vserv_eaddr=Trūkst vai nav norādīta adrese
 vserv_eport=Trūkst vai nav derīgs porta numurs
 vserv_ename=Trūkst servera nosaukuma
+
 anon_title=Anonīmas FTP opcijas
 anon_header1=Virtuālajā serverī $1 
 anon_header2=Noklusējuma serverī
@@ -65,6 +70,7 @@ anon_anon=Konfigurējiet anonīmu FTP
 anon_return=anonīmas FTP iespējas
 anon_header3=Anonīmam FTP virtuālajā serverī $1 
 anon_header4=Anonīmam FTP noklusējuma serverī
+
 aserv_title=Konfigurējiet anonīmu FTP
 aserv_create=Iestatīt anonīmu FTP
 aserv_root=Ierobežot direktorijā
@@ -75,6 +81,7 @@ aserv_eroot=Trūkst vai nav derīgs chroot direktorijs
 aserv_euser=Trūkst vai nav derīgs Unix lietotājs
 aserv_egroup=Trūkst vai nav derīga Unix grupa
 aserv_desc=Anonīmais FTP šim virtuālajam serverim vēl nav iestatīts. Izmantojiet šo formu, lai iestatītu sākotnējās konfigurācijas opcijas.
+
 dir_title=Opcijas direktorijā
 dir_header2=Katalogam $1 noklusējuma serverī
 dir_header1=Mapei $1 virtuālajā serverī $2 
@@ -85,6 +92,7 @@ dir_header=Vienas komandas iespējas
 dir_dir=Konfigurējiet direktoriju
 dir_header4=Mapei $1 anonīmā FTP
 dir_header5=Katalogam $1 visā pasaulē
+
 manual_title=Rediģēt direktīvas
 manual_header=Izmantojiet zemāk esošo lodziņu, lai manuāli rediģētu ProFTPD direktīvas $1, kas attiecas uz šo virtuālo serveri, direktoriju vai komandām.
 manual_configs=Rediģēt konfigurācijas failus
@@ -92,6 +100,7 @@ manual_ecannot=Jums nav atļauts manuāli rediģēt direktīvas
 manual_file=Rediģēt esošās direktīvas:
 manual_efile=Nederīgs ProFTPd konfigurācijas fails
 manual_etest=Konstatēta faila kļūda : $1 
+
 limit_title=Vienas komandas opcijas
 limit_header4=Komandām $1 direktorijā $2 
 limit_header2=Komandām $1 noklusējuma serverī
@@ -103,17 +112,20 @@ limit_return=opcijas vienai komandai
 limit_header5=Komandām $1 anonīmā FTP
 limit_header6=Komandām $1 failā $2 
 limit_header7=Komandām $1 visā pasaulē
+
 lserv_title=Konfigurējiet komandas
 lserv_cmd=FTP komandas
 lserv_delete=Dzēst komandas config
 lserv_err=Neizdevās saglabāt komandas
 lserv_ecmd=Nav atlasīta neviena komanda
+
 dserv_title=Konfigurējiet direktoriju
 dserv_dir=Direktorija ceļš
 dserv_err=Neizdevās saglabāt direktoriju
 dserv_edir=Trūkst direktorijas ceļa
 dserv_delete=Dzēst direktoriju konfigur
 dserv_eanondir=Direktorijam jābūt zem anonīma FTP direktorija
+
 mod_core_type=Servera tips
 mod_core_inetd=Palaist no Inetd
 mod_core_stand=Patstāvīgs dēmons
@@ -301,6 +313,7 @@ mod_core_duser=Liegt lietotājiem
 mod_core_eip=“$1” nav derīga IP adrese
 mod_core_enet='$1' nav derīga tīkla adrese
 mod_core_ehost='$1' nav derīgs resursdatora nosaukums
+
 mod_ls_fakegroup=Viltus grupa direktoriju sarakstos?
 mod_ls_fakeuser=Viltus lietotājs direktoriju sarakstos?
 mod_ls_fakemode=Viltus atļaujas direktoriju sarakstos
@@ -317,6 +330,7 @@ mod_ls_efakeuser=Trūkst vai nav derīgs viltus lietotājs
 mod_ls_efakegroup=Trūkst vai nav derīga viltus grupa
 mod_ls_options=Direktoriju saraksta opcijas
 mod_ls_strict=Vai ignorēt lietotāja iespējas?
+
 mod_auth_chdir=Sākotnējais pieteikšanās direktorijs
 mod_auth_echdir=Trūkst vai nav derīgs sākotnējais direktorijs
 mod_auth_chroot=Ierobežojiet lietotājus tikai direktorijos
@@ -330,7 +344,9 @@ mod_auth_egroups=Neviena Unix grupa chroot nav ievadīta
 mod_auth_echroot=Trūkst vai nav derīgs chroot direktorijs
 mod_auth_login=Neprasi paroli, ja pieteikšanās tiek liegta?
 mod_auth_root=Vai atļaut pieteikšanos, izmantojot sakni?
+
 mod_site_chmod=Vai atļaut chmod komandu?
+
 mod_unixpw_ufile=Alternatīvs Unix paroles fails
 mod_unixpw_eufile=Trūkst vai nav derīgs Unix paroles fails
 mod_unixpw_gfile=Alternatīvs Unix grupas fails
@@ -338,6 +354,7 @@ mod_unixpw_egfile=Trūkst vai nav derīgs Unix grupas fails
 mod_unixpw_none=Nav
 mod_unixpw_pam=Vienmēr izturieties pret PAM kā autoritatīvu?
 mod_unixpw_persist=Vai saglabāt paroles failu pastāvīgi atvērtu?
+
 mod_log_syslog=Reģistrējiet kļūdas failā
 mod_log_sysdef=Sistēmas žurnāls
 mod_log_esyslog=Trūkst vai nav derīgs žurnāla fails
@@ -354,19 +371,25 @@ mod_log_fmt=Formāta virkne
 mod_log_format=Pielāgoti žurnālu formāti
 mod_log_enickname=Trūkst vai nav derīgs formāta nosaukums
 mod_log_efmt=Trūkst formāta virknes
+
 mod_pam_pam=Vai autentifikācijai izmantot PAM?
 mod_pam_config=Autentificēties, izmantojot PAM pakalpojumu
 mod_pam_econfig=Trūkst vai nav derīgs PAM pakalpojums
+
 mod_readme_display=Paziņojiet lietotājam par readme failu atbilstību
 mod_readme_none=Nav
 mod_readme_edisplay=Trūkst readme failu parauga
+
 start_err=Neizdevās startēt FTP serveri
 start_einetd=Iekšējā režīmā nevar palaist servera dēmonu.
+
 stop_err=Neizdevās apturēt FTP serveri
 stop_einetd=Iekšējā režīmā nevar apturēt servera dēmonu.
 stop_erun=Neskrien
+
 apply_err=Neizdevās piemērot FTP konfigurāciju
 apply_egone=Vairs neskrienu
+
 ftpaccess_title=Failu direktorija opcijās
 ftpaccess_desc=Katrā direktorijā failā (parasti to sauc par <tt>.ftpaccess</tt>) var norādīt papildu direktoriju opcijas. Opcijas attiecas uz visiem failiem šajā direktorijā un visiem apakšdirektorijiem, ja vien tie nav aizstāti ar citu opciju failu.
 ftpaccess_create=Izveidot opciju failu
@@ -374,8 +397,10 @@ ftpaccess_find=Atrodiet opciju failus
 ftpaccess_auto=Zem anonīma
 ftpaccess_from=No direktorija
 ftpaccess_return=opciju failu saraksts
+
 ftpusers_title=Noraidīti FTP lietotāji
 ftpusers_desc=Ja tas ir iespējots zem ikonas <tt>Autentifikācija</tt>, lietotājiem, kas uzskaitīti zemāk no faila $1, tiks liegta pieteikšanās piekļuve FTP lietotājam.
+
 ftpindex_title=Katra direktorija opciju fails
 ftpindex_delete=Izdzēst failu
 ftpindex_opts=Opcijas direktorijā
@@ -385,8 +410,10 @@ ftpindex_addlimit=Pievienojiet katras komandas iespējas
 ftpindex_header2=$1 $2 
 ftpindex_return=direktoriju opciju fails
 ftpindex_header=$1 
+
 find_err=Neizdevās atrast iespēju failus
 find_eanon=Nevienā virtuālajā serverī nav iestatīta anonīma FTP
+
 log_global=Mainītas globālās $1 iespējas
 log_ftpusers=Mainīti noraidīti FTP lietotāji
 log_virtc=Izveidots serveris $1 
@@ -420,6 +447,7 @@ log_anonm=Manuāli rediģēts anonīms FTP serverim $1
 log_anon=Mainīts $1 anonīmā FTP serverī $2 
 log_start=Sācis proftpd
 log_apply=Lietotās izmaiņas
+
 eafter=Konfigurācijas pārbaude neizdevās: $1 izmaiņas nav saglabātas.
 proftpd_apply=Lietot izmaiņas
 proftpd_stop=Apturēt ProFTPd

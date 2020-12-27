@@ -1,5 +1,6 @@
 index_none=Nie możesz czytać wiadomości e-mail dla użytkowników w tym systemie.
 index_empty=Brak poczty
+index_return=Lista użytkowników
 index_esystem=Żaden z obsługiwanych serwerów pocztowych (Exim, Qmail, Postfix i Sendmail) nie został wykryty w twoim systemie. Konieczne będzie dostosowanie <a href='$1'>konfiguracji modułu</a>, aby ręcznie ustawić serwer poczty i ewentualnie ścieżki poczty.
 index_esystem2=Serwer poczty ustawiony w <a href='$1'>konfiguracji modułu</a> nie został znaleziony w twoim systemie. Będziesz musiał dostosować konfigurację, aby używać poprawnego serwera.
 index_esystem3=Wystąpił błąd podczas łączenia się z systemem poczty ustawionym w konfiguracji modułu <a href='$1'></a>: $2.
@@ -10,6 +11,7 @@ index_contains=zawiera
 index_eperl=Moduł Perla $1 wymagany dla wybranego trybu uwierzytelniania SMTP nie jest zainstalowany lub brakuje modułu zależnego. <a href='$2'>Kliknij tutaj</a>, aby zainstalować teraz.
 index_nousers=Nie znaleziono użytkowników!
 index_nousersmail=Nie znaleziono użytkowników z e-mailem.
+
 mail_level=Wynik
 mail_nosort=Zresetuj sortowanie.
 mail_eexists=Wiadomość już nie istnieje!
@@ -23,6 +25,7 @@ mail_tosrch=Znajdź adres e-mail z odbiorcą
 mail_fromfilter=Utwórz filtr według nadawcy
 mail_tofilter=Utwórz filtr według odbiorcy
 mail_subfilter=Utwórz filtr według tematu
+
 mail_sign=Podpisać za pomocą klucza
 mail_nosign=&lt;Nie podpisuj&gt;
 mail_crypt=Szyfruj dla
@@ -34,11 +37,13 @@ mail_sig=Edytuj podpis
 mail_search3=Znajdź z wynikiem powyżej:
 mail_esystem=Wystąpił błąd podczas łączenia się z systemem pocztowym: $1. Musi to naprawić administrator systemu.
 mail_specialsync=Synchronizacja specjalna
+
 view_aview=Widok
 view_sub=Dołączony e-mail
 view_sub2=Załączony e-mail od $1
 view_egone=Ta wiadomość już nie istnieje
 view_eugone=Ten użytkownik nie istnieje
+
 view_gnupg=Weryfikacja podpisu GnuPG
 view_gnupg_0=Podpis przez $1 jest ważny.
 view_gnupg_1=Podpis przez $1 jest prawidłowy, ale nie można ustanowić łańcucha zaufania.
@@ -71,6 +76,7 @@ view_remote-mta=Zdalny serwer pocztowy
 view_reporting-mta=Serwer poczty raportowania
 view_images=Pokaż zdjęcia
 view_raw=Wyświetl nieprzetworzoną wiadomość
+
 enew_title=Edytuj adres e-mail
 reply_mailforward=Przekazywane wiadomości
 reply_attach3=Przesłane załączniki
@@ -93,15 +99,18 @@ reply_addattach=Dodaj pole załącznika.
 reply_addssattach=Dodaj pole załącznika po stronie serwera.
 reply_html0=Utwórz tekst
 reply_html1=Utwórz HTML
+
 reply_spell=Sprawdź błędy ortograficzne?
 reply_draft=Zapisz jako szkic
 reply_save=Zapisz i edytuj
+
 send_esubject=Brakujący temat wiadomości e-mail
 send_title2=Mail Saved
 send_sending=Wysyłanie poczty do $1 ..
 send_epath=Plik wykonywalny Sendmail $1 nie istnieje.
 send_efile=Nie można odczytać załącznika $1 : $2 
 send_done=.. gotowy.
+
 send_epass=Nie możesz podpisać wiadomości, ponieważ twoje hasło nie zostało jeszcze skonfigurowane w module GnuPG.
 send_esign=Nie udało się podpisać wiadomości : $1
 send_ekey=Nie można znaleźć klucza do adresu e-mail $1
@@ -113,6 +122,7 @@ send_espell=W Twojej wiadomości znaleziono następujące błędy ortograficzne.
 send_draft=Wyślij do $1 zapisanego w folderze Robocze.
 send_drafting=Zapisywanie wiadomości do $1 w folderze Robocze.
 send_eattachsize=Załącznik wiadomości przekroczył maksymalny dozwolony rozmiar $1 bajtów
+
 delete_title=Usuń pocztę
 delete_rusure=Czy na pewno chcesz usunąć wybrane wiadomości $1 z $2? W przypadku dużego pliku poczty może to zająć trochę czasu. Do czasu zakończenia usuwania nie należy wykonywać żadnych innych czynności.
 delete_rusure2=Czy na pewno chcesz usunąć tę wiadomość z $1? W przypadku dużego pliku poczty może to zająć trochę czasu. Do czasu zakończenia usuwania nie należy wykonywać żadnych innych czynności.
@@ -132,6 +142,7 @@ delete_nobutton=Nie kliknięto żadnego przycisku
 delete_ereport=Nie udało się zgłosić jako spam : $1
 delete_errc=Nie udało się skopiować wiadomości
 delete_errm=Nie udało się przenieść poczty
+
 confirm_title=Potwierdź usunięcie
 confirm_warn=Czy na pewno chcesz usunąć wybrane wiadomości $1 z tego folderu?
 confirm_warnf=Czy na pewno chcesz usunąć wybrane wiadomości $1 z folderu <b>$2</b>?
@@ -141,6 +152,7 @@ confirm_warn4=Do czasu zakończenia usuwania nie należy wykonywać żadnych inn
 confirm_ok=Usuń teraz
 confirm_warnall=Czy na pewno chcesz usunąć wszystkie wiadomości z tego folderu?
 confirm_warnallf=Czy na pewno chcesz usunąć wszystkie wiadomości z folderu <b>$1</b>?
+
 search_escore=Brakujący lub nieprawidłowy wynik spamu
 search_efield=Musisz wybrać typ wyszukiwania.
 search_ewhat=Brak tekstu do dopasowania dla wprowadzonego dla wiersza $1
@@ -165,16 +177,19 @@ search_nolatest=Wszystko w folderze
 search_latestnum=Tylko najnowsze
 search_elatest=Brakująca lub niepoprawna liczba wiadomości do przeszukania
 search_withstatus=, ze statusem $1
+
 folder_inbox=W pudełku
 folder_sent=Wysłany mail
 folder_drafts=Warcaby
 folder_trash=Śmieci
+
 detach_err=Nie można odłączyć pliku
 detach_edir=Brak pliku lub katalogu do zapisania we wpisanym
 detach_eopen=Nie udało się otworzyć $1 : $2 
 detach_ewrite=Nie udało się napisać do $1 : $2 
 detach_title=Odłącz plik
 detach_ok=Napisano załącznik do pliku po stronie serwera $1 ($2).
+
 sform_header=Zaawansowane opcje wyszukiwania wiadomości e-mail
 sform_andmode=Tryb kryteriów
 sform_and=Znajdź wiadomości spełniające wszystkie poniższe kryteria ..
@@ -194,6 +209,7 @@ sform_date=Data: nagłówek
 sform_body=treść wiadomości
 sform_headers=dowolny nagłówek
 sform_allmsg=cała wiadomość
+
 find_enone=Nie znaleziono użytkowników pasujących do wyszukiwania
 find_title=Wyniki wyszukiwania
 find_results=Użytkownicy pasujący do wyszukiwania $1 ..
@@ -206,6 +222,7 @@ find_incount=E-maile
 find_sentcount=Wysłano
 find_fcount=Lornetka składana
 find_in=$1 w $2
+
 acl_unlimited=bez limitu
 acl_candetach=Czy można odłączyć pliki na serwerze?
 acl_usersm=Użytkownicy pasujący
@@ -213,7 +230,9 @@ acl_usersu=Z UID w zasięgu
 acl_sec=Uwzględnić grupy drugorzędne?
 acl_dir=Czyta pliki poczty w katalogu
 acl_dirauto=Zdecyduj automatycznie (gdziekolwiek wszyscy użytkownicy są widoczni, nigdzie indziej)
+
 emodified=Ten folder został zmodyfikowany od czasu jego ostatniego przeglądania! Wróć do <a href='$1'>listy mailowej</a> i spróbuj ponownie.
+
 razor_title=Zgłaszanie jako spam
 razor_title2=Zgłaszanie jako szynka
 razor_report=Zgłaszanie tej wiadomości do Razor i innych baz danych blokujących spam SpamAssassin ..
@@ -223,14 +242,18 @@ razor_done=.. gotowy
 razor_err=.. nie powiodło się! Zobacz powyższy komunikat o błędzie, z jakiego powodu.
 razor_moved=.. gotowe i przeniesiono do folderu $1.
 razor_deleted=... zrobione, a także usunięte wiadomości.
+
 ham_title=Zgłaszanie jako szynka
 ham_report=Zgłaszanie tej wiadomości jako nie-spam do Razor i innych baz danych SpamAssassin ..
+
 black_title=Odmawianie nadawcy
 black_done=Dodano adres e-mail $1 do listy odmówionych adresów SpamAssassin.
 black_already=Adres e-mail $1 znajduje się już na liście odmówionych adresów SpamAssassin.
+
 white_title=Zezwalanie na nadawcę
 white_done=Dodano adres e-mail $1 do listy dozwolonych adresów SpamAssassin.
 white_already=Adres e-mail $1 znajduje się już na liście dozwolonych adresów SpamAssassin.
+
 ldap_emod=Brakujący moduł Perla $1 potrzebny do połączenia z LDAP
 ldap_econn=Nie udało się połączyć z serwerem LDAP $1 port $2
 ldap_elogin=Nie udało się powiązać z serwerem LDAP $1 jako $2 : $3 
@@ -238,12 +261,15 @@ ldap_ehost=Brak serwera LDAP w konfiguracji modułu
 ldap_eport=W konfiguracji modułu nie ustawiono prawidłowego portu serwera LDAP
 ldap_euser=Brak konfiguracji logowania LDAP w konfiguracji modułu
 ldap_ebase=Brak podstawowej nazwy wyróżniającej LDAP w konfiguracji modułu
+
 delall_title=Usuń całą pocztę
 delall_rusure=Czy na pewno chcesz usunąć cały e-mail z $1? $2 wiadomości o łącznej wartości $3 zostaną usunięte na zawsze.
 delall_ok=Usuń teraz
+
 slide_title=Załączone obrazy
 slide_prev=Poprzedni
 slide_next=Kolejny
+
 left_mail=Poczta
 left_search=Szukaj:
 left_folders=Zarządzaj folderami

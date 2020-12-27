@@ -25,12 +25,15 @@ index_up=启动连接:
 index_updesc=从列表中选择一个连接，按这个按钮后将立即生效.
 index_nopol=没有找到网络策略- 可能您的 <a href='$1'>网络配置</a> 是错误的.
 index_import=从文件导入连接配置.
+
 stop_err=停止 IPsec 服务器失败
 start_err=启动 IPsec 服务器失败
 restart_err=重新启动 IPsec 服务器失败
 start_elog=随后的错误将被记录到 : $1
+
 newkey_err=生成密匙失败
 newkey_ehost=丢失或错误的主机名
+
 edit_title1=创建连接
 edit_title2=编辑连接
 edit_header=IPsec VPN 连接描述
@@ -101,6 +104,7 @@ edit_unit_s=秒
 edit_unit_m=分
 edit_unit_h=小时
 edit_unit_d=天
+
 config_title=服务器配置
 config_header=VPN服务器全局设置
 config_ifaces=网卡界面
@@ -118,6 +122,7 @@ config_nat=打开NAT传输?
 config_err=保存服务器配置失败
 config_eri=真实界面 '$1' 被列出超过一次
 config_enone=没有定义网卡界面
+
 showkey_title=显示公共密匙
 showkey_desc1=请将显示在下面的公用RSA密匙复制到其他连接到这里的系统的配置文件中 , 在相关的部分中.
 showkey_desc2=显示在下面的值用来为这个主机建立一个DNS KEY记录, 其他系统连接后可以查询到它们的公用 key.
@@ -125,6 +130,7 @@ showkey_flags=标志
 showkey_proto=协议
 showkey_alg=算法
 showkey_key=密匙数据
+
 policy_desc_block=封闭的网络
 policy_desc_clear=清除传输网络
 policy_desc_private=加密网络
@@ -145,6 +151,7 @@ policy_mask=前缀
 policy_err=保存网络失败
 policy_enet=错误的网络IP地址在行 $1
 policy_emask=错误的前缀长度在行$2
+
 save_err=保存连接失败
 save_ename=丢失或错误的连接名
 save_ekeying=丢失或错误的密匙重试次数
@@ -164,6 +171,7 @@ save_eleftcert=丢失或错误的本地服务器证书
 save_erightcert=丢失或错误的远程服务器证书
 save_ekeylife=丢失或错误的连接key存活时间
 save_eikelifetime=丢失或错误的调制通道存活时间
+
 log_create_conn=创建连接 $1
 log_delete_conn=删除连接 $1
 log_modify_conn=编辑连接 $1
@@ -182,8 +190,10 @@ log_delete_secret=删除密匙给 $1
 log_create_secret_nn=为任何主机创建密匙
 log_modify_secret_nn=为任何主机编辑密匙
 log_delete_secret_nn=为任何主机删除密匙
+
 up_title=启动连接
 up_cmd=启动连接，使用命令 $1 ..
+
 export_title=导出配置
 export_desc=这个页面用来导出连接 $1 的配置文件, 并且可以很容易地重新导入.
 export_print=在浏览器中显示配置
@@ -193,11 +203,13 @@ export_err=导出配置失败
 export_efile=丢失文件名
 export_esave=不能写文件到 : $1
 export_done=导出配置从 $1 到 $2 ($3 字节).
+
 import_title=导入配置
 import_desc=这个页面用来导入一个连接的配置文件, 这样可以使用其他系统上导出的配置文件.
 import_upload=从上传的文件中导入 ..
 import_file=导入服务器上的文件 ..
 import_ok=现在就导入
+
 import_err=导入配置失败
 import_eupload=没有选中上传的文件
 import_efile=服务器上的文件不存在
@@ -207,6 +219,7 @@ import_eclash=这个连接 $1 已经存在.
 import_done1=成功添加新的IPsec连接 $1.
 import_done2=成功更新IPsec连接 $1.
 import_over=用相同的名字覆盖已存在的连接?
+
 secrets_title=密匙
 secrets_none=没有找到密匙!
 secrets_name=Secret for
@@ -220,6 +233,7 @@ secrets_mod=模块 $1
 secrets_newpsk=创建新的共享密匙.
 secrets_newrsa=创建新的 RSA key.
 secrets_return=密匙列表
+
 secret_title1=创建密匙
 secret_title2=编辑密匙
 secret_header=密匙描述

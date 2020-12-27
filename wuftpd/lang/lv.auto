@@ -9,6 +9,7 @@ index_startmsg=Noklikšķiniet uz šīs pogas, lai startētu FTP serveri ar paš
 index_startmsg2=Noklikšķiniet uz šīs pogas, lai startētu FTP serveri ar pašreizējo konfigurāciju. Varat arī konfigurēt serveri tā, lai tas automātiski tiktu startēts, ja nepieciešams, izmantojot inetd vai līdzvērtīgu programmu.
 index_return=FTP servera opcijas
 index_version=WU-FTPd versija $1 
+
 class_title=Lietotāji un klases
 class_header=Lietotāju klases un lietotāju iespējas
 class_class=Lietotāju klases
@@ -31,6 +32,7 @@ class_err=Neizdevās saglabāt lietotāju klases
 class_eclass='$1' nav derīgs klases nosaukums
 class_etypes=Klasei '$1' nav izvēlēti tipi
 class_eaddrs=Klasē '$1' nav ievadītas adreses
+
 message_title=Ziņojumi un reklāmkarogi
 message_header=Ziņojumi, reklāmkarogi un README faili
 message_message=Ziņojumu faili
@@ -59,6 +61,7 @@ message_eclass=Klase '$1' neeksistē
 message_ebanner='$1' nav derīgs pieteikšanās reklāmkarogu fails
 message_ehostname=Trūkst vai nav derīgs resursdatora nosaukums
 message_eemail=Trūkst vai nav derīga e-pasta adrese
+
 acl_title=Ierobežojumi un piekļuves kontrole
 acl_header=Ierobežojumi un piekļuves kontroles iespējas
 acl_deny=Liegt piekļuvi no plkst
@@ -105,6 +108,7 @@ acl_elmsg='$1' nav derīgs kļūdas ziņojuma fails
 acl_efbcount='$1' nav derīgs failu vai baitu skaits
 acl_elimit='$1' nav derīgs laika ierobežojums
 acl_efails='$1' nav derīgs pieteikšanās kļūdu skaits
+
 net_title=Tīklošana
 net_header=Tīkla izveides iespējas
 net_tcp=TCP logu izmēri
@@ -122,6 +126,7 @@ net_eip=“$1” nav derīga IP adrese
 net_enet='$1' nav derīga tīkla adrese
 net_ecidr='$1' nav derīgs tīkla bitu skaits
 net_eport='$1' nav derīgs porta numurs
+
 log_title=Mežizstrāde
 log_header=Mežizstrādes iespējas
 log_commands=Reģistrējiet visas komandas
@@ -139,6 +144,7 @@ log_syslog=Sistēmas žurnāls
 log_xferlog=XFER žurnālfails
 log_sysxfer=Abi galamērķi
 log_err=Neizdevās saglabāt reģistrēšanas iespējas
+
 alias_title=Pseidonīmi un ceļi
 alias_header=Pseidonīms un ceļa iespējas
 alias_alias=CD direktoriju pseidonīmi
@@ -149,6 +155,7 @@ alias_err=Neizdevās saglabāt pseidonīmus un ceļus
 alias_efrom='$1' nav derīgs aizstājvārds
 alias_eto='$1' nav derīgs aizstājvārdu katalogs
 alias_ecdpath='$1' nav derīgs kompaktdisku meklēšanas direktorijs
+
 anon_title=Anonīms FTP
 anon_eftp=Brīdinājums - jūsu sistēmā nav <tt>ftp</tt> lietotāja, un tādējādi anonīmais FTP, iespējams, nav konfigurēts.
 anon_header=Anonīmas FTP iespējas
@@ -171,6 +178,7 @@ anon_uids=Unix lietotājiem
 anon_err=Neizdevās saglabāt anonīmas FTP iespējas
 anon_edir='$1' nav derīgs direktorijs
 anon_egroup='$1' nav derīga grupa
+
 perm_title=Atļaujas
 perm_header=Atļaujas iespējas
 perm_perms=Komandu ierobežojumi
@@ -192,7 +200,9 @@ perm_err=Neizdevās saglabāt atļaujas
 perm_echar='$1' nav derīga rakstzīmju kopas regulārā izteiksme
 perm_etypes=Nav atlasīts neviens lietotāju tips
 perm_emesg='$1' nav derīgs kļūdas ziņojuma fails
+
 host_title=Resursdatora piekļuves kontrole
+
 misc_title=Dažādas iespējas
 misc_header=Dažādas iespējas
 misc_lslong=Gara saraksta komanda
@@ -213,6 +223,7 @@ misc_elsplain=Trūkst komandas vienkāršā sarakstā
 misc_eshutdown=Trūkst izslēgšanas paziņojuma faila
 misc_enice='$1' nav derīgs jauks līmenis
 misc_eumask='$1' nav derīgs umask
+
 log_class=Mainīti lietotāji un klases
 log_message=Mainīti ziņojumi un reklāmkarogi
 log_acl=Mainīti ierobežojumi un piekļuves kontrole

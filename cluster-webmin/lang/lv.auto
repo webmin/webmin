@@ -39,7 +39,9 @@ index_thost=Resursdatora nosaukums
 index_tdesc=Apraksts
 index_tver=Versija
 index_ttype=OS tips
+
 this_server=šis serveris
+
 add_title=Pievienot serverus
 add_msg=Notiek $1 pievienošana.
 add_gmsg=Serveru pievienošana grupā $1.
@@ -49,6 +51,7 @@ add_echeck=Serverim $1 nav Webmin konfigurācijas moduļa
 add_echeck2=Serverim $1 nav Webmin lietotāju moduļa
 add_eversion=Serverī $1 nedarbojas Webmin versija $2 vai jaunāka.
 add_ok=Pievienots $1 ar $2 moduļiem, $3 tēmām, $4 lietotājiem un $5 grupām.
+
 refresh_title=Atsvaidziniet moduli un lietotāju sarakstus
 refresh_header=Atkārtoti pieprasīt moduļus, lietotāju un grupu sarakstus no visiem serveriem.
 refresh_header4=Moduļu, lietotāju un grupu sarakstu atkārtota pieprasīšana no dalībniekiem $2.
@@ -64,6 +67,7 @@ refresh_g2=Noņemtas $1 grupas.
 refresh_done=.. darīts
 refresh_del=$1 tika noņemts no serveru saraksta
 refresh_failed=Neizdevās atsvaidzināt $1 : $2 
+
 host_title=Pārvaldīts serveris
 host_header=Pārvaldīta Webmin servera informācija
 host_name=Resursdatora nosaukums
@@ -81,6 +85,7 @@ host_header_u=Webmin lietotāji
 host_header_g=Webmin grupas
 host_return=informācija par serveri
 host_version2=Versija
+
 edit_title_mod=Rediģēt moduli
 edit_title_theme=Rediģēt motīvu
 edit_header_mod=Webmin moduļa informācija no $1 
@@ -104,6 +109,7 @@ edit_acl=Rediģēt ACL
 edit_uacl=$1 lietotājs $1 
 edit_gacl=$1 grupa $2 
 edit_config=Rediģēt konfigur
+
 install_err=Neizdevās instalēt moduli
 install_title=Instalējiet moduli
 install_elocal=Vietējā lieta nav dota
@@ -124,6 +130,7 @@ do_failed=Neizdevās instalēt vietnē $1 : $2
 do_success_mod=Instalēts modulis $2 uz $1 
 do_success_theme=Instalēta tēma $2 $1 
 do_done=.. darīts
+
 delete_err=Neizdevās izdzēst moduli $1 
 delete_epack=Modulis $1 neeksistē
 delete_title=Dzēst moduli
@@ -141,6 +148,7 @@ delete_edepends=Modulis (-i) $1 ir atkarīgs no tā.
 delete_egone=Moduļa vairs nav
 delete_esuccess=Veiksmīgi izdzēsts no $1 : $2 
 delete_acls=Vai noņemt no lietotājiem un atiestatīt piekļuves kontroles iestatījumus?
+
 user_title1=Izveidot Webmin lietotāju
 user_header1=Jauna Webmin lietotāja informācija
 user_name=Lietotājvārds
@@ -200,11 +208,13 @@ user_all=&lt;visi saimnieki&gt;
 user_donthave=&lt;saimniekiem, kuriem to nav&gt;
 user_have=&lt;saimniekiem, kuriem tas ir&gt;
 user_ofgroup=$1 dalībnieki
+
 udelete_title=Dzēst lietotāju
 udelete_doing=Lietotāja $1 dzēšana no visām saimniekiem.
 udelete_success=Veiksmīgi izdzēsts no $1 
 udelete_failed=Neizdevās izdzēst no $1 : $2 
 udelete_done=.. darīts
+
 group_title1=Izveidot grupu
 group_header1=Jauna Webmin grupas informācija
 group_name=Grupas nosaukums
@@ -232,6 +242,7 @@ group_failed2=Neizdevās atjaunināt grupu $1 : $2
 group_return=grupas informācija
 group_nomems=Nav dalībnieku
 group_servers=Serveris (-i), ko izveidot
+
 gdelete_title=Dzēst grupu
 gdelete_desc=Vai tiešām vēlaties izdzēst grupu $1 un tās dalībniekus $2 no visiem mitinātājiem?
 gdelete_ok=Dzēst grupu
@@ -240,6 +251,7 @@ gdelete_success=Veiksmīgi izdzēsts no $1
 gdelete_failed=Neizdevās izdzēst no $1 : $2 
 gdelete_done=.. darīts
 gdelete_esub=Šai grupai ir apakšgrupas $1, tāpēc to nevar izdzēst.
+
 acl_title=Moduļu piekļuves kontrole
 acl_title2=Lietotājam $1 $2 no $3 uz $3 
 acl_title3=Grupai $1 $2 uz $3 
@@ -258,6 +270,7 @@ acl_doing2=Iestatot piekļuves kontroli $1 uz $2.
 acl_success=Veiksmīgi iestatiet piekļuves kontroli $1 
 acl_failed=Neizdevās iestatīt piekļuves kontroli $1 : $2 
 acl_done=.. darīts
+
 sync_title=Sinhronizēt serverus
 sync_desc=Šī veidlapa ļauj izveidot Webmin lietotājus un grupas serveros, kuriem to pašlaik nav, lai sinhronizētu kontus visos jūsu klastera serveros.
 sync_hosts=Sinhronizējami serveri
@@ -281,6 +294,7 @@ sync_gcreate=Notiek Webmin grupas $1 pievienošana.
 sync_acl=Notiek ACL failu kopēšana $1.
 sync_test=Tikai parādiet, kas tiktu darīts?
 sync_restart=Webmin atsākšana ..
+
 upgrade_title=Jauniniet Webmin
 upgrade_header=Webmin jaunināšana visos resursdatoros ..
 upgrade_header2=Webmin jaunināšana uz $1.
@@ -299,6 +313,7 @@ upgrade_failed=Neizdevās instalēt vietnē $1 : $2
 upgrade_done=.. darīts
 upgrade_efast=Jaunināt var tikai tos serverus, kuri izmanto ātro RPC režīmu
 upgrade_ereconn=Pēc jaunināšanas neizdevās atkārtoti izveidot savienojumu ar Webmin!  : $1 
+
 update_title=Atjauniniet moduļus
 update_header=Visu resursdatoru moduļu atjaunināšana ..
 update_header5=Notiek moduļu atjaunināšana $2.
@@ -306,6 +321,7 @@ update_header4=$2 dalībnieku moduļu atjaunināšana.
 update_onhost=$1 atjaunināšanas rezultāti.
 update_failed=.. atjaunināšana neizdevās : $1 
 update_none=.. netika atrasti atjauninājumi.
+
 config_title=Rediģēt moduļa konfigurāciju
 config_enone=Netika atlasīti nekādi saimnieki ar instalētu moduli
 config_ethis=Modulis nav instalēts šajā serverī

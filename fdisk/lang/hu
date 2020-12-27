@@ -18,12 +18,14 @@ index_addlog=Logikai partíció hozzáadása
 index_addext=Kiterjesztett partíció hozzáadása
 index_hdparm=IDE paraméterek szerkesztése
 index_return=lemezek listájához
+
 extended=Kiterjesztett
 opt_default=Alapértelmezett
 opt_error=A(z) '$1' egy érvénytelen $2
 select_device=$1 eszköz $2
 select_part=$1 eszköz $2 partíció $3
 select_fd=Floppy lemez $1
+
 edit_title=Partíció szerkesztése
 create_title=Partíció létrehozása
 edit_ecannot=Önnek nincs jogosultsága a lemez szerkesztéséhez.
@@ -47,6 +49,7 @@ edit_fsck=Fájlrendszer javítás
 edit_fsckmsg=Meghívja a(z) $1 programot, hogy megjavítsa a fájlrendszert, ami csatolt állapotban is lehetséges. Ezt ajánlott megtenni, ha a gép szabálytalanul lett leállítva.
 edit_tune=Fájlrendszer tuning
 edit_tunemsg=Lehetőséget nyújt egy létező fájlrendszer különféle paramétereinek módosításához.
+
 mkfs_title=Új fájlrendszer
 mkfs_ecannot=Önnek nincs jogosultsága ezen a lemezen új fájlrendszert telepíteni.
 mkfs_desc1=Az űrlap alján lévő nyomógombra kattintva létrejön egy új $1 fájlrendszer a $2 eszközön. A partíción minden adat véglegesen le fog törlődni.
@@ -57,6 +60,7 @@ mkfs_err=A fájlrendszer létrehozása nem sikerült.
 mkfs_exec=A(z) $1 parancs futtatása...
 mkfs_failed=... parancs megszakadt!
 mkfs_ok=.. parancs végrehajtása befejeződött.
+
 fsck_title=Fájlrendszer javítása
 fsck_ecannot=Önnek nincs jogosultsága fsck-zni ezt a lemezt.
 fsck_desc1=A <tt>Fájlrendszer javítása</tt> gombra kattintva a program megpróbálja megjavítani a $2 $1 fájlrendszerét, melynek csatolási helye a $3. Ha a fájlrendszer nem sérült, akkor semmi sem fog megváltozni.
@@ -69,6 +73,7 @@ fsck_err3=hibák észlelve és kijavítva - a gép újraindítása szükséges
 fsck_err4=hibák észlelve, de kijavításuk NEM történt meg
 fsck_err16=parancssori hiba
 fsck_unknown=ismeretlen visszatérési kód: $1
+
 tunefs_title=Fájlrendszer hangolása
 tunefs_ecannot=Önnek nincs jogosultsága ennek a fájlrendszernek a hangolásához.
 tunefs_desc=Ezzel az űrlappal $3 könyvtárba csatolt $2 eszköz $1 fájlrendszer különféle paramétereit szabályozhatja. A fájlrendszeren lévő fájlokra ez nincs kihatással.
@@ -90,10 +95,12 @@ tunefs_err=A fájlrendszer beállítása nem sikerült.
 tunefs_exec=A(z) $1 parancs végrehajtása...
 tunefs_failed=... a parancs megakadt!
 tunefs_ok=... a parancs végrehajtása befejeződött.
+
 reboot_title=Rendszer-újraindítás
 reboot_msg=Újraindítás most...
 reboot_ok=Újraindítás most
 reboot_why=Ön megváltoztatta a $1 partíciós tábláját. Hogy ennek a hatása érzékelhető legyen, a gépét újra kell indítani.
+
 save_err=A partíció elmentése nem sikerült
 save_ecannot=Önnek nincs jogosultsága szerkeszteni ezt a lemezt.
 save_estart=A(z) '$1' egy érvénytelen kezdő cilinder.
@@ -102,23 +109,28 @@ save_emin=A kezdő cilindernek >= kell lennie, mint $1.
 save_emax=A befejező cilindernek <= kell lennie $1.
 save_eminmax=A kezdő cilindernek kisebbnek kell lennie a befejezőnél.
 save_eoverlap=Átfedés mutatható ki a(z) $1 partíciónál ($2 - $3).
+
 ext2_b=Blokkméret
 ext2_f=Töredezettség mérete
 ext2_i=bájt/I-bög
 ext2_m=Fenntartott blokkok
 ext2_g=Blokk/csoport
 ext2_c=Hibás blokkok figyelése?
+
 msdos_F=FAT méret
 msdos_i=Köteg ID
 msdos_n=Köteg neve
 msdos_r=Root bejegyzések
 msdos_s=Klaszter méret
 msdos_c=Hibás blokkok figyelése?
+
 minix_n=Fájlnévhossz
 minix_i=I-bögök száma
 minix_b=Blokkok száma
 minix_c=Hibás blokkok figyelése?
+
 acl_disks=Ez a felhasználó partícionálhat és formázhat ezen a lemezen.
+
 hdparm_title=IDE paraméterek szerkesztése
 hdparm_on=Be
 hdparm_off=Ki

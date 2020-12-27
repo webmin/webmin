@@ -19,10 +19,12 @@ index_samba=Samba?
 index_cyrus=IMAP?
 index_users=Usuários LDAP
 index_groups=Grupos LDAP
+
 imap_econn=Falhou ao tentar conectar ao servidor IMAP $1
 imap_elogin=Falhou ao tentar autenticar no servidor IMAP $1 como $2 : $3
 conn_eldap_host=Nenhum arquivo de configuração de cliente LDAP foi encontrado no seu sistema. Por esse motivo, o servidor LDAP deve ser definido na página de Configuração do Módulo.
 conn_elogin=Falha ao pesquisar no servidor LDAP $1 como $2 : $3
+
 uedit_cap=do usuário
 uedit_samba=Autenticar no Samba?
 uedit_cyrus=Autenticar no servidor IMAP?
@@ -36,6 +38,7 @@ uedit_raw=Atributos LDAP
 uedit_return=detalhes do usuário
 uedit_quota=Cota IMAP
 uedit_unquota=Não modifique
+
 usave_eadd=Falhou ao adicionar usuário à base LDAP : $1
 usave_emod=Falhou ao modificar usuário na base LDAP : $1
 usave_emoddn=Falhou ao renomear usuário na base LDAP : $1
@@ -61,26 +64,33 @@ usave_eattrdupu=O usuário $1 já está usando o $2 $3
 usave_eattrdupg=O grupo $1 já está usando o $2 $3
 usave_ereal=Faltando nome real
 usave_equota=A cota de IMAP não foi informada ou o valor informado está inválido
+
 search_err=Procura por $1 em $2 falhou : $3
+
 gedit_dn=DN do grupo LDAP
 gedit_return=detalhes do grupo
 gedit_cap=Capacidades do grupo
 gedit_samba=Grupo Samba?
+
 gsave_egone=O grupo não existe!
 gsave_edelete=Falhou ao apagar o grupo do banco de dados LDAP : $1
 gsave_eadd=Falhou ao adicionar o grupo ao bando de dados LDAP : $1
 gsave_emod=Falhou ao modificar o grupo no banco de dados LDAP : $1
 gsave_emoddn=Erro ao renomear o grupo na base do LDAP: $1
+
 gdel_group=Apagando o grupo LDAP ..
+
 udel_pass=Apagando o usuário LDAP ..
 udel_book=Apagando do livro de endereços ..
 udel_imap=Apagando a pasta IMAP ..
 udel_warnimap=A caixa de correio existente será removida quando o diretório home for removido!
 udel_failed=.. erro! : $1
+
 raw_title=Atributos do LDAP
 raw_name=Nome do atributo
 raw_value=Valores
 raw_for=Para $1
+
 batch_samba=Criar conta no Samba para novos usuários?
 batch_descafter3=Nas linhas <b>criar</b> e <b>modificar</b>, você pode opcionalmente adicionar campos extras contendo atributos do LDAP no formato <i>nome</i>=<i>valor</i>, para serem atribuídos aos usuários novos ou modificados.
 batch_eattr=Atributo LDAP inválido na linha $1 : $2

@@ -18,10 +18,12 @@ index_version=PPPd $1 bertsioa
 index_boot=Konektatu abioian:
 index_noboot=&lt;Ez konektatu&gt;
 index_bootdesc=Aldatu aukera hau hautatutako PPTP VPN konexioa abiarazi den ala ez kontrolatzeko.
+
 disc_err=Ezin izan da tunela deskonektatu
 disc_egone=Ez dago aktibo
 disc_ekill=Huts egin du pppd prozesua hiltzean
 disc_done=$1 tunela behar bezala deskonektatu da.
+
 conn_err=Huts egin du tunela konektatzean
 conn_egone=Tunela ez da jada existitzen
 cone_ealready=Dagoeneko konektatuta
@@ -32,6 +34,7 @@ conn_ok=.. konexioa $1 interfazea erabiliz aktibatu da. Zure tokiko helbidea $2 
 conn_timeout=.. konexioa huts egin du! Kontsultatu beheko egunkarien mezuak zergatik dauden jakiteko.
 conn_routes=Ibilbideak komandoekin gehitzea ..
 conn_mppe=VPN enkriptatzeko MPPE protokoloak PPP daemon eta nukleoaren laguntza behar du. Goiko akatsek, ordea, bat edo biak zure sisteman ez daudela iradokitzen dute. PPTP zerbitzariak MPPE behar ez badu, saiatu horri lotutako aukera guztiak desaktibatzen <a href='$1'>PPP aukera globala</a> orrian.
+
 edit_title1=Gehitu PPTP tunela
 edit_title2=Editatu PPTP tunela
 edit_header=PPTP VPN tunelaren aukerak
@@ -60,6 +63,7 @@ edit_file=PPP aukeren fitxategia
 edit_none=Bat ere ez
 edit_global=Fitxategi global estandarra
 edit_ofile=Beste fitxategi bat ..
+
 save_err=Huts egin du tunela gordetzean
 save_ename=Tunelaren izena falta da
 save_eserver=Lotzeko zerbitzari falta edo baliogabea
@@ -75,6 +79,7 @@ save_egw2=$1 ibilbideko ostalariaren ate-joka baliogabea
 save_erename=Ezin izan da tuneleko fitxategia berriz izendatu
 save_eclash=Izen bera duen tunela edo PPP parekoa dagoeneko
 save_efile=Falta diren edo baliogabeak diren PPP aukeren fitxategia
+
 opts_title=PPP Aukera Globala
 opts_desc=Beheko ezarpenak $1 etik hartuak dira eta PPP aukera estandar globalen fitxategia erabiltzeko ezarritako tunel guztiei aplikatuko zaizkie.
 opts_header=Tunel guztietarako PPP aukerak
@@ -84,6 +89,7 @@ opts_err=Ezin izan da PPP aukera globala gorde
 opts_emtu=Pakete-tamaina bidaltzeko gehienezko falta edo baliogabea
 opts_emru=Gehienezko paketeen tamaina jasotzeko edo falta da
 opts_msdesc=Beheko aukerek MPPE enkriptatzea gaitzen dute, Windows VPN zerbitzariek erabilita. Hala ere, MPPEk laguntza behar du bai PPP demonian bai sistema eragilearen nukleoan.
+
 mppe_mppe-40=Erabili 40 bit MPPE enkriptatzea?
 mppe_mppe-128=Erabili 128 bit MPPE enkriptatzea?
 mppe_mppe-stateless=Gaitu estatu gabeko MPPE modua?
@@ -95,6 +101,7 @@ mppe_d1=Baimendutako
 mppe_mppe-stateful=Gaitu MPPE modu estatuzkoa?
 mppe_old=Abisua - $1 estilo zaharreko MPPE arauak zure konfigurazio fitxategian aurkitu dira, nahiz eta zure PPP demoniak estilo berriaren zuzentarauak onartzen dituen.
 mppe_new=Abisua - $1 estilo berriko MPPE arauak zure konfigurazio fitxategian aurkitu dira, nahiz eta zure PPP demoniak estilo zaharreko zuzentzaileak bakarrik onartzen dituen.
+
 log_create=$1 PPTP tunela sortu da
 log_update=$1 PPTP tunela aldatu da
 log_delete=$1 PPTP tunela ezabatu da

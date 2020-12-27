@@ -42,6 +42,7 @@ index_lvused=Használt hely
 index_lvuse=Használt
 index_snapof=(Pillanatkép a $1 -ről)
 index_thin=LVM vékony medence $1 LVs számára
+
 lv_edit=Logikai kötet szerkesztése
 lv_edit_snap=Pillanatkép szerkesztése
 lv_create=Hozzon létre logikai kötet
@@ -128,6 +129,7 @@ lv_pvfrom=Mozgás a blokkokat a fizikai hangerő
 lv_pvto=A fizikai hangerőig
 lv_moveok=Blokkok áthelyezése
 lv_return=logikai kötet
+
 mkfs_title=Filesystem létrehozása
 mkfs_desc=Ez az űrlap lehetővé teszi egy új $2 ($1) fájlrendszer felépítését a $3 logikai köteten. Minden létező adat törlődik.
 mkfs_header=Új fájlrendszer-beállítások
@@ -135,6 +137,7 @@ mkfs_err=Nem sikerült létrehozni a fájlrendszert
 mkfs_exec=$1 parancs végrehajtása.
 mkfs_failed=.. parancs sikertelen!
 mkfs_ok=.. parancs teljes.
+
 resize_title=A logikai kötet átméretezése
 resize_mesg=Ezen a logikai köteten található $1 fájlrendszer átméretezése nem lehetséges. A logikai kötet átméretezésével újra létre kell hoznia a fájlrendszert, amely törli az összes adatot.
 resize_mesg2=A Webmin nem tudja, hogy milyen fájlrendszer található ezen a logikai köteten, ha van. A logikai kötet átméretezésével újra létre kell hoznia a fájlrendszert, amely törli az összes adatot.
@@ -142,8 +145,10 @@ resize_fs=Hiba történt a (z) $1 fájlrendszer átméretezése mellett a követ
 resize_ok=A logikai kötet átméretezése
 resize_emounted=Ezen a logikai köteten található fájlrendszer átméretezése nem lehetséges, amíg fel van szerelve
 resize_emounted2=Ezen a logikai köteten a fájlrendszer nem csatlakoztatható összecsukódás közben
+
 init_title=Aktiválja az LVM-et
 init_cmd=$1 futó parancs
+
 pv_edit=A fizikai kötet szerkesztése
 pv_create=Fizikai mennyiség hozzáadása
 pv_vg=A $1 kötetcsoportban
@@ -170,6 +175,7 @@ pv_eother=Hiányzó vagy érvénytelen lemezes eszköz
 pv_raid=$1 RAID eszköz
 pv_lvs=Elosztás logikai kötetek szerint
 pv_egone=A fizikai térfogat már nem létezik!
+
 vg_edit=A kötetcsoport szerkesztése
 vg_create=Hozzon létre kötetcsoportot
 vg_name=Kötetcsoport neve
@@ -188,11 +194,13 @@ vg_deleteok=Törlés most
 vg_ename=Hiányzó vagy érvénytelen kötetcsoport neve
 vg_epesize=Hiányzó vagy érvénytelen allokációs blokk mérete
 vg_egone=Kötetcsoport már nem létezik!
+
 pvmove_err=Nem sikerült a logikai kötet áthelyezése
 pvmove_title=Logikai kötet mozgatása
 pvmove_start=A (z) $1 logikai kötet mozgatása $2 -ről $3 -ra.
 pvmove_failed=..mozgás sikertelen!
 pvmove_done=.. teljes lépés
+
 thin_title=Hozzon létre vékony medencét
 thin_desc=A vékony medence egy pár LV, amely felhasználható további LV létrehozására, amelyek meghaladhatják a rendelkezésre álló kiterjesztéseket. Helyet csak szükség esetén fogyasztanak el, nem pedig a medence belsejében lévő LV-k létrehozásakor. FIGYELMEZTETÉS - A kiválasztott LV-kkel kapcsolatos adatok elvesznek!
 thin_header=Új vékony medence részletek
@@ -204,6 +212,7 @@ thin_err=Nem sikerült létrehozni a vékony medencét
 thin_esame=Mindkét kiválasztott LV azonos
 thin_edata=A kiválasztott adat LV már használatban van
 thin_emetadata=A kiválasztott LV metaadatok már használatban vannak
+
 log_create_vg=Létrehozva a (z) $1 kötetcsoport
 log_modify_vg=Módosított $1 kötetcsoport
 log_delete_vg=Törölt $1 kötetcsoport
@@ -216,4 +225,5 @@ log_create_pv=A (z) $1 fizikai kötet hozzáadva a VG $1 értékhez
 log_modify_pv=Módosított $1 fizikai térfogat a VG $2 -ban
 log_delete_pv=Eltávolítva a (z) $1 fizikai kötet a VG $2 -ből
 log_resize_pv=Átméretezett $1 fizikai térfogat a VG $2 -ban
+
 blocks=blokkok

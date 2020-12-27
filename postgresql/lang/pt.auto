@@ -5,6 +5,7 @@ index_db=Nome do banco de dados
 index_tables=Tabelas
 index_drops=Descartar bancos de dados selecionados
 index_postgresql=PostgreSQL
+
 index_toomany=Existem muitos bancos de dados para exibir. Encontre bancos de dados correspondentes:
 index_search=Procurar
 index_showing=Mostrando bancos de dados correspondentes a $1 ..
@@ -18,6 +19,7 @@ index_gist=Árvore de Pesquisa de Índice Generalizado
 index_jump=Ou edite o banco de dados:
 index_jumpok=Aberto
 index_edithosts=Configurar sistemas host permitidos
+
 dbase_header=Tabelas, índices, visualizações e sequências de banco de dados
 dbase_vadd=Criar vista
 dbase_sadd=Criar sequência
@@ -34,9 +36,11 @@ dbase_jump=Editar tabela:
 dbase_vjump=Editar visualização:
 dbase_ijump=Editar índice:
 dbase_sjump=Editar sequência:
+
 table_csv=Exportar como CSV
 table_index=Criar índice
 table_delete=Excluir campos selecionados
+
 exec_old=Ou selecione um comando SQL anterior :
 exec_clear=Limpar histórico
 exec_import=Tabela para importar dados para
@@ -52,6 +56,7 @@ exec_tabexec=Executar SQL
 exec_tabfile=Executar SQL do arquivo
 exec_tabimport=Importar arquivo de texto
 exec_return=executar formulário SQL
+
 view_refresh=Atualizar
 view_match4=Maior que
 view_match5=Menor que
@@ -60,15 +65,18 @@ view_sorthead2=Classificando por $1, ordem crescente
 view_sortreset=Redefinir classificação
 view_go=Ir
 view_sqlrun=Resultados gerados pela consulta SQL : $1 
+
 newdb_encoding=Codificação do conjunto de caracteres
 newdb_eencoding=Codificação do conjunto de caracteres ausente
 newdb_template=Banco de dados de modelos
 newdb_notemplate=Nenhum
+
 user_vwarning=AVISO: Esse usuário do PostgreSQL é o logon de administração do domínio $1 do Virtualmin. Alterar as configurações aqui pode causar erros no Virtualmin.
 user_syncwhen=Quando sincronizar
 user_delete=Excluir selecionado
 user_derr=Falha ao excluir usuários
 user_enone=Nenhum usuário selecionado
+
 host_peer=Ponto de rede
 host_identarg0=Não use nenhum mapa do usuário
 host_identarg1=Os usuários do PostgreSQL e Unix são os mesmos
@@ -78,16 +86,20 @@ host_derr=Falha ao excluir hosts permitidos
 host_enone=Nenhum host selecionado
 host_manual=Editar arquivo de configuração
 host_manualdesc=Clique neste botão para editar manualmente o arquivo de configuração de hosts permitido.
+
 manual_title=Editar arquivo de configuração
 manual_err=Falha ao salvar o arquivo de configuração
+
 grant_ns=Esquema
 grant_toomany=Existem muitos objetos para exibir. Encontre objetos correspondentes:
 grant_showing=Mostrando objetos correspondentes a $1 ..
 grant_delete=Redefinir bolsas selecionadas
+
 group_memsopts=Todos os usuários
 group_memsvals=Usuários no grupo
 group_derr=Falha ao excluir grupos
 group_enone=Nenhum grupo selecionado
+
 log_dbs_delete=$1 bancos de dados descartados
 log_users_delete=$1 usuários excluídos
 log_groups_delete=$1 grupos excluídos
@@ -105,12 +117,15 @@ log_tables_delete=Objetos $1 descartados do banco de dados $2
 log_fields_delete=$1 campos excluídos de $2 no banco de dados $3 
 log_degrant=Removidos privilégios concedidos em $1 objetos
 log_manual=Arquivo de configuração de hosts permitidos editado manualmente
+
 acl_cmds=Pode editar antes e depois dos comandos de backup?
 acl_views=Pode visualizar e gerenciar visualizações?
 acl_indexes=Pode visualizar e gerenciar índices?
 acl_seqs=Pode visualizar e gerenciar sequências?
+
 fdrop_enone=Nenhum selecionado
 fdrop_eall=Você não pode excluir todos os campos de uma tabela!
+
 restore_src=Restaurar de
 restore_src0=Arquivo no servidor $1 
 restore_src1=Arquivo carregado $1 
@@ -118,6 +133,7 @@ restore_tables=Tabelas para restaurar
 restore_tables1=Tudo no arquivo de backup
 restore_tables0=Tabelas listadas
 restore_failed=Falha na restauração : $1 
+
 backup_header1=Destino de backup
 backup_header2=Outras opções de backup
 backup_header3=Agenda de backup
@@ -128,12 +144,14 @@ backup_ebefore=O comando antes do backup falhou!
 backup_cmode=Quando executar comandos
 backup_cmode1=Antes/depois de todos os bancos de dados
 backup_cmode0=Antes/depois de cada banco de dados
+
 tdrops_enone=Nenhuma tabela a ser selecionada
 tdrops_err=Falha ao descartar tabela (s)
 tdrops_ok=Solta
 tdrops_title=Soltar selecionado
 tdrops_rusure=Tem certeza de que deseja soltar $1 tabela (s) selecionada (s) no banco de dados $2 ? $3 linhas de dados serão excluídas.
 tdrops_rusure2=Tem certeza de que deseja soltar $1 tabela (s) selecionada (s) no banco de dados $2 ?
+
 ddrops_err=Falha ao descartar bancos de dados
 ddrops_title=Soltar bancos de dados
 ddrops_rusure=Tem certeza de que deseja eliminar os $1 bancos de dados selecionados? $2 tabelas contendo $3 linhas de dados serão excluídas.
@@ -141,6 +159,7 @@ ddrops_mysql=Como o banco de dados mestre está selecionado, a eliminação prov
 ddrops_ok=Soltar bancos de dados
 ddrops_enone=Nenhum banco de dados selecionado
 ddrops_ecannotdb=Você não tem permissão para descartar o banco de dados $1 
+
 csv_title=Exportar arquivo CSV
 csv_header=Opções de exportação de CSV
 csv_dest=Destino de exportação
@@ -161,6 +180,7 @@ csv_done=A exportação de CSV para $1 está concluída. O tamanho do arquivo re
 csv_headers=Incluir nomes de colunas no CSV?
 csv_cols=Colunas a serem incluídas no CSV
 csv_ecols=Nenhuma coluna selecionada
+
 import_title=Importar dados
 import_uploadout=Importando dados do arquivo carregado.
 import_fileout=Importando dados do arquivo $1 ..
@@ -168,6 +188,7 @@ import_eupload=Arquivo de importação enviado ausente
 import_efile=Nome de arquivo de importação ausente
 import_done=.. criou $1 linhas, ignorou $2 duplicatas.
 import_erow=.. nenhum campo encontrado na linha $1 
+
 index_title1=Criar índice
 index_header1=Opções de índice
 index_name=Nome do índice
@@ -185,6 +206,7 @@ index_ecols=Nenhum campo selecionado
 index_title2=Editar índice
 index_header=Índice $1 no banco de dados $2 
 index_ecannot=Você não tem permissão para gerenciar índices
+
 view_title1=Criar vista
 view_title2=Editar visualização
 view_header1=Ver detalhes
@@ -199,6 +221,7 @@ view_eclash=Já existe uma visualização com o mesmo nome
 view_equery=Consulta SQL ausente
 view_ecols=Nenhum nome de coluna digitado
 view_ecannot=Você não tem permissão para gerenciar visualizações
+
 seq_title1=Criar sequência
 seq_title2=Editar sequência
 seq_header1=Incrementando opções de sequência
@@ -218,5 +241,6 @@ seq_emin=Valor mínimo ausente ou inválido
 seq_emax=Valor máximo ausente ou inválido
 seq_ecache=Número de valores ausente ou inválido para armazenar em cache
 seq_ecannot=Você não tem permissão para gerenciar sequências
+
 dgrant_err=Falha ao redefinir concessões
 dgrant_enone=Nenhum objeto selecionado

@@ -32,6 +32,7 @@ index_man=Ročno uredite konfiguracijo
 index_mandesc=Neposredno uredite primarno konfiguracijsko datoteko Procmail in ustvarite svoja pravila, spremenljivke in bloke.
 index_ecmd=Procmail programa $1 v vašem sistemu ni bilo mogoče najti. Ali ni nameščen ali je konfiguracija <a href='$2'>modula</a> napačna.
 index_delete=Izbriši izbrana dejanja
+
 edit_title2=Urejanje dejanja
 edit_title1=Ustvari dejanje
 edit_header1=Podrobnosti o akcijski dostavi
@@ -67,6 +68,7 @@ edit_none=Noben
 edit_lock=Posebna datoteka
 edit_ctype=Vrsta stanja
 edit_cvalue=Redno izražanje ali ukaz
+
 save_err=Dejanja ni bilo mogoče shraniti
 save_eaction_0=Manjka datoteka, ki jo je treba dodati
 save_eaction_1=Manjka mapa MH, ki jo lahko napišete
@@ -79,6 +81,7 @@ save_elockfile=Manjka ime datoteke za zaklepanje
 save_esize=Manjkajoča ali neveljavna velikost pošte za pogoj $1 
 save_ere=Manjka redni izraz za pogoj $1 
 save_eshell=Manjka ukaz za pogoj $1 
+
 env_title1=Ustvari spremenljivko
 env_title2=Uredi spremenljivko
 env_header=Spremenljivka okolja Procmail
@@ -86,15 +89,19 @@ env_name=Ime spremenljivke
 env_value=Vrednost
 env_err=Spremenljivke ni bilo mogoče shraniti
 env_ename=Manjkajoče ali neveljavno ime spremenljivke
+
 inc_title1=Dodaj Vključi datoteko
 inc_title2=Uredi Vključi datoteko
 inc_header=Vključena datoteka pravil protokola
 inc_inc=Vključena datoteka
 inc_einc=Vnesena datoteka ni vključena
+
 config_eline=Neznana vrstica $1 v $2 : $3 
+
 manual_title=Uredi konfiguracijo
 manual_desc=To stran lahko uporabite za ročno urejanje konfiguracijske datoteke Procmail $1. Bodite previdni, saj preverjanje skladenj ne bo izvedeno.
 manual_edata=Vaš brskalnik ni posredoval podatkov!
+
 log_create_rec=Ustvaril recept za $1 
 log_delete_rec=Izbrisan recept na $1 
 log_modify_rec=Spremenjen recept v $1 
@@ -114,7 +121,9 @@ log_delete_inc=Izbrisana vključuje datoteko $1
 log_manual=Ročno urejena konfiguracija
 log_up=Premaknil je vstop navzgor
 log_down=Vnos premaknil navzdol
+
 delete_err=Dejavnosti ni bilo mogoče izbrisati
 delete_enone=Izbrana ni nobena
+
 check_epostfix=Procmail v konfiguraciji Postfix ni omogočen. V konfiguracijski datoteki <tt>$2</tt> mora biti možnost <tt>$1</tt> nastavljena na <tt>$3</tt>.
 check_esendmail=Sendmail ni nastavljen za uporabo Procmail za lokalno dostavo. To je mogoče konfigurirati v Webminovem modulu <a href='$1'>Sendmail Mail Server</a>.

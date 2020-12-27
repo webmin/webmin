@@ -7,6 +7,7 @@ index_none=NFS-vientiä ei ole vielä määritelty.
 index_apply=Käytä määritystä
 index_applydesc=Napsauta tätä painiketta, jos haluat kaikkien yllä lueteltujen vientien aktivoituneiksi määritettyjen asetusten kanssa.
 index_return=vientiluettelo
+
 edit_title1=Luo vienti
 edit_title2=Muokkaa vientiä
 edit_header=Vie yksityiskohdat
@@ -24,12 +25,14 @@ edit_access=Mount pääsy
 edit_all=Kaikki isännät
 edit_sel=Listatut isännät ..
 edit_none=Ei isäntiä
+
 save_err=Viennin tallennus epäonnistui
 save_edir=Puuttuva tai puuttuva hakemisto vietäväksi
 save_eanon=Puuttuva tai virheellinen pääkäyttäjä
 save_erw=Ei luku- ja kirjoitusisäntäjä kirjoitettu
 save_eroot=Juuritiedoston käyttöoikeutta ei ole annettu
 save_eaccess=Mount käyttöoikeuksia ei annettu
+
 log_create_export=Luotu $1 : n vienti
 log_delete_export=$1 vienti poistettu
 log_modify_export=$1 muutettu vienti

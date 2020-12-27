@@ -25,6 +25,7 @@ index_echeckupdate=Nenhum sistema de atualização foi detectado!
 index_filter=Pacotes de filtro
 index_filterclear=Filtro limpo
 index_filtered=Exibindo <tt>$1</tt> pacotes de <tt>$2</tt>
+
 search_title=Pesquisa de Pacotes
 search_nomatch=Nenhum pacote corresponde a $1 
 search_none=Nenhum
@@ -37,6 +38,7 @@ search_esearch=Você não inseriu nada para procurar!
 search_delete=Desinstalar pacotes selecionados
 search_selall=Selecionar tudo
 search_invert=Seleção invertida
+
 edit_title=Editar pacote
 edit_details=Detalhes de embalagem
 edit_desc=Descrição
@@ -53,6 +55,7 @@ edit_uninst=Desinstalar
 edit_uninstdesc=Remova este pacote do seu sistema.
 edit_return=Detalhes de embalagem
 edit_egone=O pacote não está mais instalado
+
 list_title=Arquivos de pacote
 list_files=Arquivos para o pacote $1 
 list_path=Caminho
@@ -64,6 +67,7 @@ list_status=Status
 list_ok=Está bem
 list_view=(Visão)
 list_eview=Falha ao abrir $1 : $2 
+
 delete_err=Falha ao excluir o pacote $1 
 delete_epack=O pacote $1 não existe
 delete_title=Excluir pacote
@@ -75,6 +79,7 @@ delete_noscripts=Ignorar scripts de desinstalação?
 delete_efile=Arquivo temporário inválido para excluir
 delete_purge=Limpar arquivos de configuração?
 delete_depstoo=Removidas dependências não utilizadas também?
+
 file_title=Informações do arquivo
 file_notfound=Nenhuma informação sobre $1 está disponível
 file_path=Caminho
@@ -88,6 +93,7 @@ file_pack=Pacote
 file_class=Classe
 file_desc=Descrição
 file_none=Nenhum
+
 install_err=Falha ao instalar o pacote
 install_elocal=Nenhum arquivo local fornecido
 install_elocal2='$1' não existe
@@ -101,6 +107,7 @@ install_title=Instalar pacote
 install_header=Instalar pacote
 install_packs=Pacotes a serem instalados
 install_ok=Instalar
+
 do_err=Falha ao instalar o pacote $1 
 do_title=Instalar pacote
 do_efailed=Falha na instalação : $1 
@@ -117,10 +124,12 @@ do_arch=Arquitetura
 do_inst=Instalado
 do_none=Nenhum
 do_files=Arquivos de pacote
+
 pkgadd_root=Diretório raiz
 pkgadd_eroot=O diretório raiz '$1' não existe
 pkgadd_unknown=Desconhecido
 pkgadd_manager=System V Package Manager
+
 rpm_upgrade=Pacote de atualização?
 rpm_replacepkgs=Substituir pacote?
 rpm_nodeps=Ignorar dependências?
@@ -138,10 +147,12 @@ rpm_find=Pesquise rpmfind.net ..
 rpm_findrpm=Nome do arquivo do pacote
 rpm_finddistro=Distribuição
 rpm_finddesc=Descrição
+
 bsd_unknown=Desconhecido
 bsd_scripts=Executar scripts de pré e pós-instalação?
 bsd_force=Forçar a instalação se houver pré-requisitos ausentes?
 bsd_manager=$1 Gerenciador de Pacotes
+
 slack_unclass=De outros
 slack_unknown=Desconhecido
 slack_missing=Ausência de
@@ -149,12 +160,14 @@ slack_root=Diretório raiz
 slack_eroot=Diretório raiz ausente ou inválido
 slack_manager=Gerenciador de Pacotes Slackware
 slack_edir=Diretório de pacotes do Slackware ausente $1 
+
 debian_unknown=Desconhecido
 debian_depends=Ignorar problemas de dependência?
 debian_conflicts=Ignorar conflitos de pacotes?
 debian_overwrite=Sobrescrever arquivos de outros pacotes?
 debian_downgrade=Substituir pacote mais novo por antigo?
 debian_manager=Debian DPKG
+
 log_install_package=Pacote instalado $1 
 log_install_apt_l=Pacote (s) instalado (s) $1 do APT
 log_install_apt=$2 pacotes instalados do APT
@@ -173,6 +186,7 @@ log_upgrade_yum_l=Pacotes atualizados $1 do YUM
 log_upgrade_yum=$2 pacotes atualizados de YUM
 log_check_rhn_l=Pacotes atualizados $1 da Redhat Network
 log_check_rhn=$2 pacotes atualizados da Redhat Network
+
 rhn_input=Pacote da Rede Redhat
 rhn_find=Pesquisar RHN ..
 rhn_install=Instalando pacotes com o comando $1 ..
@@ -200,6 +214,7 @@ rhn_eproxy=Servidor proxy ausente ou inválido
 rhn_skip=Ignorar pacotes correspondentes
 rhn_nonefound=Nenhum pacote disponível para atualização.
 rhn_name=Rede Redhat
+
 apt_input=Pacote do APT
 apt_install=Instalando pacotes com o comando $1 ..
 apt_ok=.. instalar completo.
@@ -229,6 +244,7 @@ apt_repo_url=URL base do repositório
 apt_repo_path=Componentes do caminho de distribuição
 apt_repo_eurl=URL base ausente ou com aparência inválida
 apt_repo_epath=Caminho de distribuição ausente
+
 yum_input=Pacote da YUM
 yum_install=Instalando pacotes com o comando $1 ..
 yum_ok=.. instalar completo.
@@ -259,6 +275,7 @@ yum_repo_ename=Nome do repositório ausente
 yum_repo_eurl=URL do repositório ausente ou inválido
 yum_repo_egpg=Arquivo de certificação GPG ausente ou não existe
 yum_repo_efile=O arquivo do repositório já existe!
+
 urpmi_name=URPMI
 urpmi_input=Pacote de URPMI
 urpmi_find=Navegue pelo URPMI ..
@@ -273,6 +290,7 @@ urpmi_upgradeok=.. completo.
 urpmi_install=Instalando pacotes com o comando $1 ..
 urpmi_ok=.. instalar completo.
 urpmi_failed=.. instalação falhou!
+
 rpm_missing=Ausência de
 rpm_checkfail=$1 falha na verificação
 rpm_md5=MD5
@@ -284,6 +302,7 @@ rpm_user=propriedade do usuário
 rpm_perm=permissões
 rpm_group=propriedade do grupo
 rpm_erpm=RPM $1 não encontrado : $2 
+
 soft_reg=Arquivo Regular
 soft_dir=Diretório
 soft_spec=Arquivo Especial
@@ -295,6 +314,7 @@ soft_euncompress=O arquivo está compactado, mas o comando <tt>descompactar</tt>
 soft_euncmsg=Falha ao descompactar o arquivo : $1 
 soft_egzip=O arquivo foi compactado com gzip, mas o comando gzip não foi encontrado no seu sistema.
 soft_egzmsg=Falha ao arquivar o arquivo gunzip : $1 
+
 aix_unknown=Desconhecido
 aix_device=Dispositivo / diretório INPUT para software
 aix_software=SOFTWARE para instalar
@@ -312,6 +332,7 @@ aix_accept=ACEITAR novos contratos de licença?
 aix_license=Visualizar novos contratos de LICENÇA?
 aix_clean=Falha na instalação da limpeza?
 aix_manager=Gerenciador de Pacotes AIX
+
 emerge_input=Do repositório do Portage
 emerge_find=Pesquisar ..
 emerge_install=Instalando o pacote com o comando $1 ..
@@ -327,6 +348,7 @@ emerge_noreplace=Substituir pacotes existentes?
 emerge_onlydeps=Instalar apenas dependências?
 emerge_title=Pesquisar Portage
 emerge_name=Portage
+
 cygwin_fmissing=O arquivo está ausente
 cygwin_lmissing=O arquivo para o qual o link aponta está ausente
 cygwin_estat=Falha no arquivo stat: $1 
@@ -336,6 +358,7 @@ cygwin_badpostscript=Aviso: este script não parece ter sido executado
 cygwin_pkgexists=O pacote $1 já existe.
 cygwin_warnuse=Aviso: Esta não é uma interface oficial para gerenciar o software Cygwin. Use por sua conta e risco.
 cygwin_edb=Banco de dados de pacotes Cygwin ausente $1 
+
 deletes_err=Falha ao excluir pacotes
 deletes_enone=Nenhum pacote selecionado
 deletes_title=Excluir pacotes
@@ -346,6 +369,7 @@ deletes_failed2=Falha na desinstalação : $1
 deletes_success2=.. desinstalação concluída.
 deletes_rusure=Tem certeza de que deseja desinstalar os pacotes $1 ?
 deletes_ok=Exclua todos
+
 csw_input=Pacote da CSW
 csw_install=Instalando pacotes com o comando $1 ..
 csw_ok=.. instalar completo.
@@ -360,20 +384,24 @@ csw_name=CSW
 csw_form=Pacotes de atualização
 csw_upgrade=Atualizar todos os pacotes instalados
 csw_updatedesc=Atualizando todos os pacotes instalados com o comando $1 ..
+
 missing_msg=O pacote $1 pode ser instalado automaticamente pelo Webmin usando $2.
 missing_now=instale agora
+
 find_title=Pesquisar pacote
 find_search=Encontre pacotes correspondentes:
 find_name=Nome
 find_version=Versão
 find_desc=Descrição
 find_none=Nenhum pacote correspondente à sua pesquisa foi encontrado.
+
 msi_users=Disponibilize o novo aplicativo para
 msi_users0=Ninguém
 msi_users1=Usuário atual
 msi_users2=Todos os usuários
 msi_missing=Não existe
 msi_size=Tamanho errado
+
 hpux_create_target_path=Criar caminho de destino?
 hpux_mount_all_filesystems=Montar todos os sistemas de arquivos?
 hpux_reinstall=Reinstalar?
@@ -389,6 +417,7 @@ hpux_enforce_dependencies=Aplicar dependências?
 hpux_enforce_scripts=Aplicar scripts?
 hpux_enforce_dsa=Aplicar análise de espaço em disco?
 hpux_root=Diretório raiz
+
 ports_install=Instalando as portas do FreeBSD $1 ..
 ports_failed=.. algumas portas falharam
 ports_ok=.. instalar completo
@@ -399,18 +428,22 @@ ports_form=Banco de dados de portas de atualização
 ports_apply=Download do último instantâneo
 ports_upgrade=Baixando o snapshot de portas
 ports_running=Executando o comando $1 ..
+
 pkg_install=Instalando os pacotes do FreeBSD $1 ..
 pkg_failed=.. alguns pacotes falharam
 pkg_ok=.. instalar completo
 pkg_find=Pesquisar pkgng
 pkg_input=Pacote de pkgng
+
 pkgsrc_install=Instalando os pacotes pkgsrc $1 ..
 pkgsrc_failed=.. alguns pacotes falharam
 pkgsrc_ok=.. instalar completo
 pkgsrc_find=Pesquisar pkgng
 pkgsrc_input=Pacote do pkgsrc
+
 log_IPKG_update=Banco de dados IPKG atualizado
 log_IPKG_upgrade=Pacotes IPKG instalados atualizados
+
 IPKG_name=IPKG
 IPKG_input=Pacote do IPKG
 IPKG_find=Navegue pelo IPKG ..

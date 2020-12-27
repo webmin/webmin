@@ -17,6 +17,7 @@ index_restartmsg=Klik op deze knop om de huidige configuratie toe te voegen en d
 index_comments=Waarschuwing - uw Jabber config file $1 bevat commentaar, wat zal worden gewist wanneer u met deze module veranderingen maakt in de configuratie.
 index_return=Jabber menu
 index_version=Jabber versie $1
+
 general_title=Algemene Opties
 general_header=Globale Jabber server opties
 general_host=Uw server's hostnaam
@@ -32,6 +33,7 @@ general_eelogfmt=Ontbrekende fouten log formaat
 general_erlog=Ontbrekende of ongeldige traffic log file
 general_erlogfmt=Ontbrekende traffic log formaat
 general_epidfile=Ontbrekende of ongeldige proces ID file
+
 messages_title=Berichten
 messages_header=Jabber server bericht voor clients
 messages_wsubject=Welkom bericht onderwerp
@@ -44,6 +46,7 @@ messages_vcard2jud=Verstuur vCard naar Jabber gebruiker directorie?
 messages_err=Mislukt om bericht op te slaan
 messages_evcard=Ongeldige vCard XML : $1
 messages_etag=Server vCard XML start niet met &lt;vCard&gt;
+
 modules_title=Jabber Modules
 modules_desc=De modules in de lijst hieronder worden in deze volgorde gebruikt  om ontvangen berichten te verwerken door de Jabber sessie manager.
 modules_header=Jabber server sessie manager modules
@@ -52,6 +55,7 @@ modules_so=Gedeelde bibliotheek
 modules_err=Mislukt om Jabber modules op te slaan
 modules_emod='$1' is geen geldige module naam
 modules_eso=Gedeelde bibliotheek '$1' bestaat niet
+
 karma_title=Karma Verkeer Controle
 karma_header=Verkeer rate controle opties
 karma_rate=Extreme verbindings afhandeling
@@ -80,6 +84,7 @@ karma_epenalty=Ontbrekende of ongeldige penalty periodes
 karma_erestore=Ontbrekende of ongeldige herstel periodes
 karma_epoints=Ontbrekende of ongeldige aantal verbindingen
 karma_etime=Ontbrekende of ongeldige tijd om te blokkeren voor
+
 ips_title=IP Toegang Controle
 ips_header=Jabber server IP toegang controle
 ips_allow=Toegestane client IPs
@@ -89,10 +94,12 @@ ips_none=Niets
 ips_sel=Lijst van adressen/netmasken ..
 ips_err=Mislukt om IP toegang controle file op te slaan
 ips_eaddr='$1' is geen geldig IP adres of IP adres/netmask
+
 file_title=Bewerk Config File
 file_desc=Gebruik het formulier hieronder om direct de Jabber config file te bewerken. U moet dit alleen doen indien u het XML configuratie formaat begrijpt.
 file_header=Bewerk Jabber configuratie file
 file_err=Mislukt om config file op te slaan
+
 admin_title=Administratieve Gebruikers
 admin_header=Server adminstratie gebruikers
 admin_read=Lees toegang admins
@@ -100,11 +107,13 @@ admin_write=Schrijf toegang admins
 admin_reply=Auto-antwoord naar admin berichten?
 admin_rsubject=Auto-antwoord onderwerp
 admin_rbody=Auto-antwoord bericht
+
 filter_title=Gebruiker Filters
 filter_header=Gebruiker filter permissies
 filter_max=Maximum filter regels
 filter_conds=Toegestane filter condities
 filter_acts=Toegestane filter acties
+
 restart_err=Mislukt om veranderingen toe te voegen
 stop_err=Mislukt om Jabber te stoppen
 stop_epid=Mislukt om Jabber proces te vinden

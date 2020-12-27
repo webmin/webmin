@@ -5,6 +5,7 @@ index_eenvpass=MySQLクライアントプログラム $1は、<tt>MYSQL_PWD</tt>
 index_ecnf=MySQL構成ファイル $1がシステムで見つかりませんでした。 <a href='$2'>モジュール構成</a>ページを使用して、正しいパスを設定します。
 index_nodbs3=検索に一致するMySQLデータベースはありません。
 index_mysqlstatus=MySQL起動スクリプト
+
 dbase_empty=空のデータベース
 dbase_name=名前
 dbase_vjump=編集ビュー：
@@ -13,21 +14,26 @@ dbase_type=タイプ
 dbase_typetable=表1）
 dbase_typeindex=索引
 dbase_typeview=見る
+
 ddrop_rusure2=データベース $1を空にしてもよろしいですか？ $3行のデータを含む $2テーブルが削除されます。
 ddrop_empty2=すべてのテーブルを削除
+
 field_defdef=MySQLのデフォルト
 field_defempty=空の文字列
+
 view_refresh=リフレッシュ
 view_match4=より大きい
 view_match5=未満
 view_searchheadnot=フィールド $2の $1ではないための検索結果 ..
 view_go=行く
 view_sqlrun=SQLクエリによって生成された結果： $1
+
 users_syncwhen=同期するタイミング
 users_ssl=証明書
 users_dtitle=ユーザー権限を削除する
 users_drusure=選択した $1のMySQLユーザー権限を削除してもよろしいですか？
 users_dok=ユーザーを削除する
+
 user_vwarning=警告：このMySQLユーザーは、Virtualminドメイン $1の管理ログインです。ここで設定を変更すると、Virtualminでエラーが発生する場合があります。
 user_locked=ロック済み
 user_priv_select=テーブルデータを選択
@@ -76,23 +82,32 @@ user_emax_user_connections=最大同時ログイン数は数字である必要�
 user_emax_connections=1時間あたりの最大接続数は数値である必要があります
 user_emax_updates=1時間あたりの最大更新数は数値である必要があります
 user_emax_questions=1時間あたりの最大クエリ数は数値である必要があります
+
 dbs_dtitle=データベース権限を削除する
 dbs_drusure=$1の選択されたMySQLデータベース権限を削除してもよろしいですか？
 dbs_dok=権限を削除
+
 hosts_dtitle=ホスト権限を削除
 hosts_drusure=選択した $1のMySQLホスト権限を削除してもよろしいですか？
 hosts_dok=権限を削除
 hosts_return=ホスト権限
+
 newdb_collation=照合順序
+
 exec_cs=データの文字セット
+
 tprivs_dtitle=テーブルのアクセス許可を削除する
 tprivs_drusure=$1の選択したMySQLテーブルのアクセス許可を削除してもよろしいですか？
 tprivs_dok=権限を削除
+
 cprivs_dtitle=列のアクセス許可を削除する
 cprivs_drusure=$1で選択したMySQL列のアクセス許可を削除してもよろしいですか？
 cprivs_dok=権限を削除
+
 acl_files=ローカルファイルからSQLを実行できますか？
+
 log_manual=手動で編集された構成ファイル
+
 backup_prefix=ファイル名のプレフィックス
 backup_eprefix=ファイル名のプレフィックスに/を含めることはできません
 backup_noprefix=なし
@@ -119,6 +134,7 @@ backup_bodyspace=ファイルシステムのサイズ： $1空き容量： $2
 backup_bodyall=すべて
 backup_edownloadall=単一のデータベースバックアップのみをダウンロードできます
 backup_edownloadsave=ダウンロードモードは、スケジュールされたバックアップには使用できません
+
 cnf_stor=デフォルトのテーブルストレージエンジン
 cnf_key_buffer_size=キーバッファサイズ
 cnf_query_cache_size=バイト単位のクエリキャッシュサイズ
@@ -131,13 +147,17 @@ cnf_restart=MySQLを保存して再起動する
 cnf_fpt=InnoDBテーブルごとに個別のファイルですか？
 cnf_ilt=InnoDBロックタイムアウト（秒）
 cnf_eilt=InnoDBロックタイムアウトは整数である必要があります
+
 manual_title=構成ファイルの編集
 manual_file=設定ファイルの編集：
 manual_ok=OK
 manual_efile=無効な構成ファイル！
 manual_err=構成ファイルを保存できませんでした
+
 syslog_desc2=MySQLエラーメッセージ
+
 vars_desc=警告-このページで設定された変数は、MySQLの再起動時にデフォルト値にリセットされます。 <a href='$1'>MySQLサーバーの構成</a>ページで永続的な設定を行う必要があります。
+
 mysqlpass_err=MySQLセーフモード
 mysqlpass_esafecmd=認証を無効にしてMySQLを起動するために必要なコマンド $1が見つかりませんでした
 mysqlpass_eshutdown=シャットダウンに失敗しました： $1

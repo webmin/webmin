@@ -175,6 +175,3 @@ deletes_failed2=La désinstallation a échouée : $1
 deletes_success2=... désinstallation accomplie.
 deletes_rusure=Voulez-vous vraiment désinstaller les packages $1 des hôtes sélectionnés?
 deletes_ok=Tous supprimer
-
-
-__norefs=1

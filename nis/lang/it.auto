@@ -2,6 +2,7 @@ index_title=Client e server NIS
 index_return=Menu NIS
 index_enis=Sembra che sul tuo computer non sia installato il supporto client o server NIS.
 index_enis2=Sarà utilizzabile solo la funzionalità dei servizi client di questo modulo.
+
 client_title=Client NIS
 client_header=Configurazione client NIS
 client_domain=Dominio NIS
@@ -17,10 +18,12 @@ client_eserver='$1' non è un nome server valido
 client_eypwhich=impossibile eseguire il bind al dominio NIS
 client_ehosts='$1' non è nel file hosts
 client_enis=Sembra che sul tuo computer non sia installato il supporto client NIS.
+
 switch_title=Servizi alla clientela
 switch_service=Servizio
 switch_srcs=Origine dei dati
 switch_return=servizi clienti
+
 order_=&nbsp;
 order_nisplus=NIS +
 order_nis=NIS
@@ -32,6 +35,7 @@ order_hesiod=Esiodo
 order_ldap=LDAP
 order_user=Stampanti utente
 order_xfn=XFN
+
 server_title=Server NIS
 server_header=Opzioni del server NIS
 server_boot=Abilitare il server NIS?
@@ -65,6 +69,7 @@ server_solaris=Nota: su Solaris, i domini NIS client e server sono sempre gli st
 server_edir=Directory dei file di origine non valida
 server_epwdir=Directory dei file di origine della password non valida
 server_enis=Sembra che sul tuo computer non sia installato il supporto del server NIS.
+
 tables_title=Tabelle NIS
 tables_switch=Modifica tabella NIS :
 tables_header=$1 tabella NIS da $2 
@@ -81,6 +86,7 @@ tables_search=Ricerca
 tables_nomatch=Nessun record corrisponde alla tua ricerca
 tables_build=Ricostruisci le tabelle NIS
 tables_buildmsg=Fare clic su questo pulsante per ricostruire i database NIS dai dati della tabella. Se hai apportato delle modifiche, dovrai farlo per renderle disponibili ai client NIS.
+
 desc_aliases=Alias di Sendmail
 desc_mail=Alias di Sendmail
 desc_hosts=Indirizzi host
@@ -116,6 +122,7 @@ desc_printers=stampanti
 desc_ipnodes=Nodi IP
 desc_timezone=Fusi orari
 desc_locale=locali
+
 hosts_title=Indirizzo dell'host
 hosts_ip=indirizzo IP
 hosts_name=Nome host
@@ -124,6 +131,7 @@ hosts_err=Impossibile salvare l'host
 hosts_eip=Indirizzo IP mancante o non valido
 hosts_ename=Nome host mancante o non valido
 hosts_aliases=alias
+
 group_name=Nome del gruppo
 group_gid=ID gruppo
 group_members=Membri del gruppo
@@ -134,6 +142,7 @@ group_none=Nessuna password richiesta
 group_encrypted=Password pre-crittografata
 group_clear=Password normale
 group_err=Impossibile salvare il gruppo
+
 passwd_name=Nome utente
 passwd_uid=ID utente
 passwd_real=Vero nome
@@ -171,6 +180,7 @@ passwd_emax=Numero massimo di giorni non valido
 passwd_emin=Numero minimo di giorni non valido
 passwd_einactive=Numero di giorni inattivi non valido
 passwd_eexpiry=Data di scadenza non valida
+
 services_name=Nome di Servizio
 services_proto=Protocollo
 services_port=Porta
@@ -179,6 +189,7 @@ services_header=Opzioni di servizio di rete Inetd
 services_err=Impossibile salvare il servizio
 services_ename=Nome del servizio mancante o non valido
 services_eport=Porta mancante o non valida
+
 protocols_name=Nome del protocollo
 protocols_number=Numero
 protocols_aliases=alias
@@ -187,6 +198,7 @@ protocols_header=Opzioni del protocollo di rete
 protocols_err=Impossibile salvare il protocollo
 protocols_ename=Nome mancante o non valido
 protocols_enumber=Numero mancante o non valido
+
 netgroup_name=Nome del netgroup
 netgroup_members=Membri
 netgroup_title=Gruppo di rete
@@ -201,6 +213,7 @@ netgroup_ename=Nome netgroup mancante o non valido
 netgroup_ehost=Host mancante o non valido nella riga $1 
 netgroup_euser=Utente mancante o non valido nella riga $1 
 netgroup_edom=Dominio NIS mancante o non valido nella riga $1 
+
 ethers_mac=Indirizzo ethernet
 ethers_ip=indirizzo IP
 ethers_title=Indirizzo Ethernet
@@ -208,6 +221,7 @@ ethers_header=Opzioni di mappatura Ethernet
 ethers_err=Impossibile salvare l'indirizzo Ethernet
 ethers_emac=Indirizzo Ethernet non valido
 ethers_eip=Indirizzo IP non valido
+
 rpc_name=Nome del programma
 rpc_number=Numero
 rpc_aliases=alias
@@ -216,6 +230,7 @@ rpc_header=Dettagli del programma RPC
 rpc_err=Impossibile salvare il programma RPC
 rpc_ename=Nome del programma mancante o non valido
 rpc_enumber=Numero mancante o non valido
+
 networks_title=Indirizzo di rete
 networks_ip=indirizzo IP
 networks_name=Nome della rete
@@ -224,6 +239,7 @@ networks_err=Impossibile salvare la rete
 networks_eip=Indirizzo IP mancante o non valido
 networks_ename=Nome mancante o non valido
 networks_aliases=alias
+
 netmasks_net=Indirizzo di rete
 netmasks_mask=maschera di rete
 netmasks_title=maschera di rete
@@ -231,6 +247,7 @@ netmasks_header=Dettagli maschera di rete
 netmasks_err=Impossibile salvare la maschera di rete
 netmasks_enet=Indirizzo di rete mancante o non valido
 netmasks_emask=Maschera di rete mancante o non valida
+
 aliases_from=Indirizzo
 aliases_to=Alias a
 aliases_title=Alias di Sendmail
@@ -238,6 +255,7 @@ aliases_header=Dettagli dell'alias di Sendmail
 aliases_err=Impossibile salvare l'alias
 aliases_efrom=Indirizzo mancante o non valido
 aliases_eto=Manca di indirizzi
+
 security_title=Sicurezza del server
 security_header=Opzioni di sicurezza del server NIS
 security_ok=Salva e applica
@@ -266,6 +284,7 @@ security_sec_des=Richiedi DES
 security_ehost='$1' non è un nome host valido
 security_emap='$1' non è una tabella NIS valida
 security_efield='$1' non è un numero di campo valido
+
 eswitch_title=Modifica servizio
 eswitch_egone=Il servizio non esiste!
 eswitch_header=Dettagli del servizio

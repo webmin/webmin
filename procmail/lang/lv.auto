@@ -32,6 +32,7 @@ index_man=Manuāli rediģēt konfigurāciju
 index_mandesc=Tieši rediģējiet primāro Procmail konfigurācijas failu, lai izveidotu savus noteikumus, mainīgos un blokus.
 index_ecmd=Procmail programma $1 jūsu sistēmā netika atrasta. Vai nu tā nav instalēta, vai arī <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
 index_delete=Dzēst atlasītās darbības
+
 edit_title2=Rediģēt darbību
 edit_title1=Izveidot darbību
 edit_header1=Informācija par piegādes darbību
@@ -67,6 +68,7 @@ edit_none=Nav
 edit_lock=Konkrēts fails
 edit_ctype=Stāvokļa tips
 edit_cvalue=Regulārā izteiksme vai komanda
+
 save_err=Neizdevās saglabāt darbību
 save_eaction_0=Trūkst faila, ko pievienot
 save_eaction_1=Trūkst mapes MH, kurā rakstīt
@@ -79,6 +81,7 @@ save_elockfile=Trūkst bloķēšanas faila nosaukuma
 save_esize=Trūkst vai nav derīgs pasta lielums nosacījumam $1 
 save_ere=Trūkst nosacījuma $1 regulārā izteiksme
 save_eshell=Trūkst komandas nosacījumam $1 
+
 env_title1=Izveidot mainīgo
 env_title2=Rediģēt mainīgo
 env_header=Procmail vides mainīgais
@@ -86,15 +89,19 @@ env_name=Mainīgais nosaukums
 env_value=Vērtība
 env_err=Neizdevās saglabāt mainīgo
 env_ename=Trūkst vai nav derīgs mainīgā nosaukums
+
 inc_title1=Pievienojiet iekļaut failu
 inc_title2=Rediģēt iekļaut failu
 inc_header=Iekļauts procmail noteikumu fails
 inc_inc=Iekļauts fails
 inc_einc=Nav iekļauts neviens ievadītais fails
+
 config_eline=Nezināma līnija $1 $2 : $3 
+
 manual_title=Rediģēt konfigurāciju
 manual_desc=Šo lapu var izmantot, lai manuāli rediģētu Procmail konfigurācijas failu $1. Esiet piesardzīgs, jo sintakses pārbaude netiks veikta.
 manual_edata=Jūsu pārlūks datus nesniedza!
+
 log_create_rec=Izveidota recepte $1 
 log_delete_rec=Dzēsta recepte $1 
 log_modify_rec=Modificēta recepte uz $1 
@@ -114,7 +121,9 @@ log_delete_inc=Izdzēsts ietver failu $1
 log_manual=Manuāli rediģēta konfigurācija
 log_up=Pārvietoja ierakstu uz augšu
 log_down=Ierakstu pārvietoja uz leju
+
 delete_err=Neizdevās izdzēst darbības
 delete_enone=Nav atlasīts
+
 check_epostfix=Procmail nav iespējots jūsu Postfix konfigurācijā. Konfigurācijas failā <tt>$2</tt> jābūt opcijai <tt>$1</tt>, kas iestatīta uz <tt>$3</tt>.
 check_esendmail=Sendmail nav iestatīts, lai izmantotu Procmail vietējai piegādei. To var konfigurēt Webmin modulī <a href='$1'>Sendmail Mail Server</a>.

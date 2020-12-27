@@ -16,6 +16,7 @@ index_setupdesc=Jūsu LDAP servera datu bāzē vēl nav saknes DN $1, kas nozīm
 index_setup=Izveidojiet saknes DN
 index_permsdesc=LDAP servera datu direktorijā $1 ir faili, kas nepieder pareizajam lietotājam $2, kas nozīmē, ka tas, visticamāk, netiks pareizi palaists. Tomēr Webmin var to labot, noklikšķinot uz zemāk esošās pogas.
 index_perms=Noteikt īpašumtiesības
+
 connect_eserver=LDAP serveris $1 neeksistē
 connect_euser=Neviens lietotājs nevar pieteikties, kā tas ir konfigurēts
 connect_epass=Nav konfigurēta parole, ar kuru pieteikties
@@ -28,6 +29,7 @@ connect_eldap=Neizdevās izveidot savienojumu ar LDAP serveri $1 ostā $2
 connect_essl=Neizdevās sākt TLS šifrēšanu ar LDAP serveri $1 : $2 
 connect_elogin=Neizdevās pieteikties LDAP serverī $1 kā $2 : $3 
 connect_cpan=Jums var būt <tt>$1</tt> Perl modulis <a href='$2'>automātiski instalēts</a> no CPAN.
+
 slapd_title=OpenLDAP servera konfigurācija
 ldif_title=OpenLDAP servera konfigurācija
 slapd_header=Globālās LDAP servera opcijas
@@ -76,6 +78,7 @@ slapd_protos=Pieņemtie LDAP savienojumi
 slapd_ldap=LDAP tīklā
 slapd_ldaps=LDAP virs SSL
 slapd_ldapi=Unix ligzdas fails
+
 schema_title=Pārvaldīt shēmu
 schema_file=Vārds
 schema_desc=Apraksts
@@ -93,6 +96,7 @@ schema_edesc=Šī lapa ļauj manuāli rediģēt LDAP shēmas failu. Tas jādara 
 schema_return=shēmu saraksts
 schema_emove=Nevarēju atrast pārvietojamo shēmas failu.
 schema_ecannot=Jums nav atļauts pārvaldīt LDAP shēmu
+
 acl_title=LDAP piekļuves kontrole
 acl_ecannot=Jums nav atļauts konfigurēt LDAP piekļuves kontroli
 acl_what=Objekti
@@ -103,6 +107,7 @@ acl_none=Piekļuves kontroles noteikumi vēl nav definēti. Visus objektus LDAP 
 acl_delete=Dzēst atlasītos noteikumus
 acl_add=Pievienojiet jaunu piekļuves kontroles noteikumu.
 acl_return=piekļuves kontroles noteikumi
+
 browser_title=Pārlūkot datu bāzi
 browser_econn=LDAP pārlūku nevar izmantot : $1 
 browser_ecannot=Jums nav atļauts pārlūkot LDAP datu bāzi
@@ -136,24 +141,30 @@ browser_nomatch=Neviens objekts neatbilst jūsu meklēšanai $1.
 browser_search=Atrodiet objektus, kas atbilst :
 browser_search2=Tiek rādīti atbilstošie objekti :
 browser_sok=Meklēt
+
 save_err=Neizdevās mainīt atribūtu
 save_ebase=Objektu $1 nevarēja iegūt no datu bāzes
 save_emodify=$2 LDAP modifikācija $1 neizdevās : $3 
 save_enone=Nav ievadītas vērtības
+
 add_err=Neizdevās pievienot atribūtu
 add_eadd=Trūkst vai nav derīgs atribūta nosaukums
 add_evalue=Trūkst vērtības
 add_emodify=Neizdevās pievienot LDAP no $2 līdz $1 : $3 
+
 delete_err=Neizdevās noņemt atribūtus
 delete_enone=Nav atlasīts
 delete_emodify=$2 LDAP izdzēšana no $1 neizdevās : $3 
+
 sdelete_err=Neizdevās izdzēst objektus
 sdelete_edn=Objekts $1 netika atrasts
 sdelete_edel=$1 LDAP dzēšana neizdevās : $2 
+
 rename_err=Neizdevās pārdēvēt objektu
 rename_eget=Nevarēju atrast objektu ar DN $1 
 rename_enew=Jaunais vārds, šķiet, nav derīgs
 rename_erename=LDAP newdn uz $2 no $1 neizdevās : $3 
+
 oadd_title=Izveidot objektu
 oadd_header=Jaunā LDAP objekta informācija
 oadd_base=Mātes objekts DN
@@ -170,6 +181,7 @@ oadd_eget2=Neizdevās pārbaudīt sadursmi ar $1 : $2
 oadd_eclash=Objekts ar DN $1 jau pastāv
 oadd_eadd=Neizdevās pievienot LDAP $1 : $2 
 oadd_err=Neizdevās izveidot jaunu objektu
+
 create_title=Izveidot koku
 create_ecannot=Jums nav atļauts izveidot jaunu koku
 create_desc=Šī lapa nodrošināja ērtu veidu, kā izveidot DN, kas būs jauna koka bāze datu bāzē. Tas var arī izveidot lietotāja paraugu vai e-pasta aizstājvārdu zem koka kā veidni saviem objektiem.
@@ -191,18 +203,23 @@ create_done=.. darīts
 create_doingex=Objekta parauga izveidošana ar DN $1.
 create_edoingex=.. neizdevās: $1. Tomēr koku joprojām var izmantot.
 create_eoc=Nevarēju atrast piemērotajai objekta klasei jauno DN
+
 eunknown=Nezināma kļūda
+
 apply_err=Neizdevās piemērot konfigurāciju
 apply_ecmd=$1 neizdevās : $2 
 apply_ecannot=Jums nav atļauts lietot konfigurāciju
+
 stop_err=Neizdevās apturēt LDAP serveri
 stop_ecmd=$1 neizdevās : $2 
 stop_egone=Vairs neskrien!
 stop_ekill=Nogalināšanas process neizdevās : $1 
 stop_ecannot=Jums nav atļauts apturēt LDAP serveri
+
 start_err=Neizdevās palaist LDAP serveri
 start_ecmd=$1 neizdevās : $2 
 start_ecannot=Jums nav atļauts palaist LDAP serveri
+
 log_create_dn=Izveidots objekts $1 
 log_delete_dn=Izdzēsts objekts $1 
 log_rename_dn=Pārdēvēts objekts $1 
@@ -234,6 +251,7 @@ log_up_access=Pārvietots piekļuves kontroles noteikums $1
 log_down_access=Pārvietots uz leju piekļuves kontroles noteikums $1 
 log_delete_accesses=Dzēsti $1 piekļuves kontroles noteikumi
 log_all=visi objekti
+
 gencert_title=Ģenerējiet SSL sertifikātu
 gencert_header=Jauna SSL sertifikāta informācija
 gencert_create=Izveidot sertifikātu
@@ -245,7 +263,9 @@ gencert_dir=Katalogs
 gencert_err=Neizdevās ģenerēt sertifikātu
 gencert_edest=Galamērķa direktorija neeksistē
 gencert_epath=Sertifikātu un atslēgu failiem LDAP servera konfigurācijā jābūt absolūtiem ceļiem
+
 perms_err=Neizdevās noteikt faila īpašumtiesības
+
 acl_slapd=Vai var konfigurēt LDAP serveri?
 acl_ldif=Vai var konfigurēt LDAP serveri?
 acl_schema=Vai var pārvaldīt shēmu?
@@ -254,6 +274,7 @@ acl_browser=Vai var pārlūkot un rediģēt datu bāzi?
 acl_create=Vai var izveidot jaunu koku?
 acl_start=Vai var palaist un apturēt LDAP serveri?
 acl_apply=Vai var piemērot konfigurācijas izmaiņas?
+
 access_desc=$2 pa $1 
 access_self=sevi
 access_users=autentificēti lietotāji
@@ -273,6 +294,7 @@ access_lcompare=Salīdzināt
 access_lsearch=Meklēt
 access_lread=Lasīt
 access_lwrite=Raksti
+
 eacl_title1=Izveidojiet piekļuves kontroles kārtulu
 eacl_title2=Rediģēt piekļuves kontroles noteikumu
 eacl_header=LDAP datu bāzes piekļuves kontroles noteikumu informācija

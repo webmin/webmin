@@ -17,6 +17,7 @@ index_restartmsg=Klik op hierdie knoppie om die huidige konfigurasie toe te pas 
 index_comments=Waarskuwing - u Jabber config-lêer $1 bevat opmerkings, wat verwyder sal word indien enige konfigurasieveranderings met hierdie module aangebring word.
 index_return=Jabber-spyskaart
 index_version=Jabber-weergawe $1 
+
 general_title=Algemene opsies
 general_header=Globale Jabber-bedieneropsies
 general_host=U bediener se gasheernaam
@@ -32,6 +33,7 @@ general_eelogfmt=Ontbrekende foutmeldingsformaat
 general_erlog=Ontbrekende of ongeldige verkeersloglêer
 general_erlogfmt=Ontbreek verkeerslogformaat
 general_epidfile=Ontbrekende of ongeldige proses-ID-lêer
+
 messages_title=boodskappe
 messages_header=Jabber-bedienerboodskap vir kliënte
 messages_wsubject=Welkomboodskap onderwerp
@@ -44,6 +46,7 @@ messages_vcard2jud=Stuur vCard na die gebruikersgids van Jabber?
 messages_err=Kon nie boodskappe stoor nie
 messages_evcard=Ongeldige vCard XML : $1 
 messages_etag=Bediener vCard XML begin nie met &lt;vCard&gt; nie
+
 modules_title=Jabber-modules
 modules_desc=Die onderstaande modules word gebruik om boodskappe wat deur die Jabber-sessiebestuurder ontvang is, te verwerk. U moet hierdie lys slegs verander as u weet wat u doen.
 modules_header=Jabber-bedienersessiebestuurder-modules
@@ -52,6 +55,7 @@ modules_so=Gedeelde biblioteek
 modules_err=Kon nie Jabber-modules stoor nie
 modules_emod='$1' is nie 'n geldige modulenaam nie
 modules_eso=Die gedeelde biblioteek '$1' bestaan nie
+
 karma_title=Karma Traffic Control
 karma_header=Opsies vir verkeer tariefbeheer
 karma_rate=Oormatige hantering van verbindings
@@ -80,6 +84,7 @@ karma_epenalty=Strafperiodes ontbreek of ongeldig
 karma_erestore=Ontbrekende of ongeldige herstelperiodes
 karma_epoints=Ontbrekende of ongeldige aantal verbindings
 karma_etime=Ontbrekende of ongeldige tyd om voor te sluit
+
 ips_title=IP-toegangsbeheer
 ips_header=Jabber-bediener se IP-toegangsbeheer
 ips_allow=Toegestane kliënt-IP's
@@ -89,10 +94,12 @@ ips_none=Geen
 ips_sel=Geadresseerde adresse/netmasks ..
 ips_err=Kon nie IP-toegangsbeheer stoor nie
 ips_eaddr='$1' is nie 'n geldige IP-adres of IP-adres/netmasker nie
+
 file_title=Wysig konfiglêer
 file_desc=Gebruik die vorm hieronder om die Jabber-opstellêer direk te wysig. Dit moet slegs gedoen word as u die XML-konfigurasieformaat verstaan.
 file_header=Wysig Jabber-konfigurasielêer
 file_err=Kon nie die konfigurasielêer stoor nie
+
 admin_title=Administratiewe gebruikers
 admin_header=Gebruikers van bedieneradministrasie
 admin_read=Lees toegangsadministrateurs
@@ -100,11 +107,13 @@ admin_write=Skryf toegang administrateurs
 admin_reply=Antwoord outomaties op adminboodskappe?
 admin_rsubject=Onderwerp outomaties beantwoord
 admin_rbody=Beantwoord outomaties
+
 filter_title=Gebruikersfilters
 filter_header=Toestemmings vir gebruikersfilter
 filter_max=Maksimum filterreëls
 filter_conds=Toelaatbare filtertoestande
 filter_acts=Toegestane filterhandelinge
+
 restart_err=Kon nie veranderinge toepas nie
 stop_err=Kon nie Jabber stop nie
 stop_epid=Kon nie die Jabber-proses vind nie

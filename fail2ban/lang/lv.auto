@@ -12,10 +12,12 @@ index_restart=Restartējiet Fail2Ban serveri
 index_restartdesc=Noklikšķiniet uz šīs pogas, lai lietotu pašreizējo konfigurāciju, restartējot Fail2Ban serveri.
 index_return=moduļa indekss
 index_header=Fail2Ban modulis
+
 check_edir=Konfigurācijas direktorija $1 neeksistē
 check_econf=$1 konfigurācijas fails $2 neeksistē
 check_eclient=Klienta komanda $1 netika atrasta
 check_eserver=Servera komanda $1 netika atrasta
+
 filters_title=Žurnāla filtri
 filters_name=Filtra nosaukums
 filters_re=Regulāra izteiksme
@@ -25,6 +27,7 @@ filters_return=filtru saraksts
 filters_derr=Neizdevās izdzēst filtrus
 filters_enone=Nav atlasīts
 filters_einuse=Filtru $1 nevar izdzēst, jo cietumi to izmanto : $2 
+
 filter_title1=Izveidot filtru
 filter_title2=Rediģēt filtru
 filter_desc=Izmantojiet <i>&lt;HOST&gt;</i> parastās izteiksmēs, kur vajadzētu parādīties resursdatora nosaukumam vai IP adresei.
@@ -39,6 +42,7 @@ filter_ename=Trūkst vai nav derīgs filtra nosaukums
 filter_eclash=Filtra nosaukums jau tiek izmantots
 filter_efail=Nav ievadīta atbilstoša regulārā izteiksme
 filter_einuse=Šo filtru nevar izdzēst, jo cietumi to izmanto : $1 
+
 actions_title=Spēles darbības
 actions_name=Darbības nosaukums
 actions_ban=Aizliegt komandu
@@ -48,6 +52,7 @@ actions_return=darbību saraksts
 actions_derr=Neizdevās izdzēst darbības
 actions_enone=Nav atlasīts
 actions_einuse=Darbību $1 nevar izdzēst, jo cietumi to izmanto : $2 
+
 action_title1=Izveidot spēles darbību
 action_title2=Rediģēt spēles darbību
 action_header=Atbilstoša darbības informācija
@@ -64,6 +69,7 @@ action_ban=Komanda aizliegt IP
 action_unban=Komanda IP aizliegšanai
 action_desc=<i>&lt;ip&gt;</i> tiks aizstāts ar aizliegto IP adresi.
 action_einuse=Šo darbību nevar izdzēst, jo cietumi to izmanto : $1 
+
 jails_title=Filtrējiet darbības cietumus
 jails_add=Pievienojiet jaunu cietumu.
 jails_name=Cietuma nosaukums
@@ -76,6 +82,7 @@ jails_defdesc=Rediģējiet noklusējuma iestatījumus un ierobežojumus, kas att
 jails_return=cietumu saraksts
 jails_derr=Neizdevās izdzēst cietumus
 jails_enone=Nav atlasīts
+
 jail_title1=Izveidojiet cietumu
 jail_title2=Rediģēt cietumu
 jail_header=Filtrējiet darbības cietuma informāciju
@@ -115,13 +122,16 @@ jail_banaction=Tiek piemērota noklusējuma darbība
 jail_defprotocol=Noklusējuma protokols darbībām
 jail_edestemail=Trūkst vai nav derīga noklusējuma paziņojuma e-pasta adrese
 jail_eignoreip=Nederīga IP adrese, kuru ignorēt
+
 jaildef_title=Noklusētās cietuma iespējas
 jaildef_header=Noklusējumi visām cietumiem
 jaildef_err=Neizdevās saglabāt noklusējuma cietuma opcijas
 jaildef_egone=Neviens DEFAULT cietums nav atrasts.
+
 start_err=Neizdevās palaist serveri
 stop_err=Neizdevās apturēt serveri
 restart_err=Neizdevās restartēt serveri
+
 log_create_filter=Izveidots filtrs $1 
 log_update_filter=Pārveidots filtrs $1 
 log_delete_filter=Izdzēsts filtrs $1 
@@ -139,6 +149,7 @@ log_atboot=Iespējot Fail2Ban sāknēšanas laikā
 log_delboot=Atspējots Fail2Ban sāknēšanas laikā
 log_manual=Rediģēts konfigurācijas fails $1 
 log_jaildef=Pārveidotas noklusējuma cietuma iespējas
+
 config_title=Globālā konfigurācija
 config_edef=Konfigurācijas failā nav atrasta sadaļa Definīcija!
 config_header=Konfigurējiet Fail2Ban iestatījumus
@@ -151,10 +162,12 @@ config_socket=Kontaktligzda saziņai ar serveri
 config_err=Neizdevās saglabāt globālo konfigurāciju
 config_elogtarget=Failam, uz kuru jāraksta žurnāli, ir jābūt absolūtam ceļam
 config_esocket=Socket failam jābūt absolūtam ceļam
+
 manual_title=Rediģēt konfigurācijas failus
 manual_desc=Rediģējamais fails:
 manual_ok=labi
 manual_efile=Atlasītais fails neietilpst Fail2Ban konfigurācijā!
 manual_err=Neizdevās rediģēt konfigurācijas failu
 manual_edata=Nav ievadīts konfigurācijas faila saturs
+
 syslog_logtarget=Fail2Ban darbību žurnāls

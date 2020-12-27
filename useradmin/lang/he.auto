@@ -51,11 +51,13 @@ index_mass=מחק משתמשים שנבחרו
 index_mass2=השבת נבחר
 index_mass3=אפשר נבחרים
 index_gmass=מחק קבוצות שנבחרו
+
 search_title=תוצאות חיפוש
 search_notfound=לא נמצאו משתמשים תואמים
 search_found=Found $1 matching users ..
 search_gnotfound=לא נמצאו קבוצות תואמות
 search_gfound=Found $1 matching groups ..
+
 uedit_title=ערוך משתמש
 uedit_title2=צור משתמש
 uedit_details=פרטי המשתמש
@@ -133,6 +135,7 @@ uedit_uid_calc=מחושב
 uedit_disabled=התחברות מושבתת באופן זמני
 uedit_sys=ברירת מחדל של המערכת
 uedit_clone=משתמש שיבוט
+
 usave_err=שמירת המשתמש נכשלה
 usave_eedit=אינך יכול לערוך משתמש זה
 usave_ecreate=אינך יכול ליצור משתמשים חדשים
@@ -186,6 +189,7 @@ usave_epasswd_same=הסיסמה מכילה או זהה לשם המשתמש
 usave_epasswd_mindays=Password was changed less than $1 days ago
 usave_epasswd_cmd=פקודת אימות הסיסמה נכשלה
 usave_eothers=The user was successfully saved, but an error occured in another module : $1
+
 gedit_title=ערוך קבוצה
 gedit_title2=צור קבוצה
 gedit_details=פרטי הקבוצה
@@ -208,6 +212,7 @@ gedit_selu=משתמשים בקבוצה
 gedit_pri=חברי הקבוצה הראשית
 gedit_prinone=אין למשתמשים קבוצה זו העיקרית
 gedit_clone=קבוצת שיבוטים
+
 gsave_err=שמירת הקבוצה נכשלה
 gsave_eedit=אינך יכול לערוך קבוצה זו
 gsave_ecreate=אינך יכול ליצור קבוצות חדשות
@@ -224,6 +229,7 @@ usave_egidused=Group $1 is already using GID $2
 gsave_egidused2=GID כבר בשימוש
 usave_efromroot=אינך יכול להעביר את ספריית הבית מ- /
 usave_etoroot=אינך יכול להעביר את ספריית הבית ל /
+
 logins_title=כניסות מוקלטות
 logins_head=Recorded logins for $1
 logins_from=כניסה מ-
@@ -236,6 +242,7 @@ logins_none=לא נרשמו כניסות
 logins_elist=אינך מורשה לרשום כניסות
 logins_elistu=You are not allowed to list logins for '$1'
 logins_local=מקומי
+
 udel_title=מחק משתמש
 udel_err=מחיקת המשתמש נכשלה
 udel_enum=מספר משתמש לא חוקי
@@ -258,6 +265,7 @@ udel_del2=מחק את מדריך המשתמש והבית
 udel_others=WARNING! Home directory $1 contains $2 files owned by other users.
 udel_dothers=למחוק משתמש במודולים אחרים?
 udel_root=אזהרה! אם משתמש השורש יימחק, יתכן שלא תוכל לנהל את המערכת שלך בעתיד.
+
 gdel_title=מחק קבוצה
 gdel_err=מחיקת הקבוצה נכשלה
 gdel_eroot=אינך מורשה למחוק קבוצות מערכות (אלה עם GID פחות או שווה ל 10).
@@ -271,6 +279,7 @@ gdel_sure=Are you sure you want to delete the group $1 ?
 gdel_del=מחק קבוצה
 gdel_dothers=למחוק קבוצה במודולים אחרים?
 gdel_other=מוחק ממודולים אחרים ..
+
 many_title=צור מספר משתמשים
 many_desc=טופס זה מאפשר ליצור משתמשים רבים בו זמנית מקובץ טקסט שהועלה או מקומי. כל שורה בקובץ מציינת משתמש אחד בפורמט הבא:
 many_desc2=username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire
@@ -294,6 +303,7 @@ many_eshell=Invalid shell at line $1 : $2
 many_emkdir=Failed to create home directory $1 : $2
 many_egtaken=Group name already in use at line $1 : $2
 many_ok=Created user $1
+
 acl_uedit=יוניקס משתמשים שניתן לערוך
 acl_uedit_all=כל המשתמשים
 acl_uedit_none=אין משתמשים
@@ -353,6 +363,7 @@ acl_udelete=האם ניתן למחוק משתמשים?
 acl_gdelete=האם ניתן למחוק קבוצות?
 acl_urename=האם ניתן לשנות שם של משתמשים?
 acl_grename=האם ניתן לשנות שם של קבוצות?
+
 log_urename=Renamed user $1 to $2
 log_umodify=Modified user $1
 log_ucreate=Created user $1
@@ -371,6 +382,7 @@ log_ugbatch=בוצע קובץ אצווה קבוצתי שהועלה
 log_ugbatch_l=Executed uploaded group batch file ($1 created, $2 modified, $3 deleted)
 log_delete_users=Deleted $1 users
 log_delete_groups=Deleted $1 groups
+
 batch_title=בצע קובץ אצווה
 batch_ecannot=אינך יכול להשתמש בטופס קובץ האצווה
 batch_desc=טופס זה מאפשר ליצור, לשנות או למחוק משתמשים רבים בבת אחת מקובץ טקסט שהועלה או מקומי. כל שורה בקובץ מציינת פעולה אחת שיש לבצע, בהתאם לשדה הראשון שלה. פורמטי השורות הם :
@@ -429,12 +441,14 @@ batch_eexpire=Invalid expiry day on line $1 : $2
 batch_echange=Invalid password change day on line $1 : $2
 batch_instr=הוראות ותבנית אצווה
 batch_header=אפשרויות אצווה של יצירה, עדכון ומחיקה של משתמשים
+
 who_title=משתמשים מחוברים
 who_user=משתמש יוניקס
 who_tty=TTY
 who_when=התחבר בשעה
 who_from=התחבר מ-
 who_none=כרגע אין משתמשים מחוברים.
+
 export_title=ייצא קובץ אצווה
 export_desc=טופס זה מאפשר לך ליצור קובץ אצווה המכיל חלק או כל המשתמשים הזמינים במערכת. ניתן להשתמש בקובץ בדף ביצוע קובץ אצווה במערכת אחרת כדי ליצור מחדש את המשתמשים המיוצאים, בהנחה שהוא משתמש בתבנית קובץ האצווה שנבחרה.
 export_header=אפשרויות יצוא של קבוצות אצווה
@@ -455,6 +469,7 @@ export_done=Successfully exported $1 users to the file $2 ($3).
 export_pft=תבנית קובץ אצווה
 export_who=משתמשים לייצוא
 export_ecannot=אינך מורשה לייצא משתמשים
+
 gexport_title=ייצא קובץ אצווה של קבוצות
 gexport_desc=טופס זה מאפשר לך ליצור קובץ אצווה המכיל חלק או את כל הקבוצות הזמינות במערכת. ניתן להשתמש בקובץ בדף ביצוע קבצי אצווה של קבוצה במערכת אחרת כדי ליצור מחדש את הקבוצות המיוצאות.
 gexport_header=אפשרויות יצוא של קבוצות אצווה
@@ -463,6 +478,7 @@ gexport_ecannot=אינך מורשה לייצא קבוצות
 gexport_err=ייצוא קובץ האצווה הקבוצתי נכשל
 gexport_egid=GID ראשון לא חוקי בטווח
 gexport_egid2=GID שני לא חוקי בטווח
+
 pft_0=Classic <tt>passwd</tt> file only
 pft_1=BSD <tt>master.passwd</tt> file
 pft_2=Standard <tt>passwd</tt> and <tt>shadow</tt> files
@@ -470,6 +486,7 @@ pft_3=Unixware <tt>passwd</tt> file
 pft_4=AIX <tt>passwd</tt> and <tt>security</tt> files
 pft_5=OpenServer <tt>passwd</tt> and short <tt>shadow</tt> files
 pft_6=בסיס נתונים של MacOS NetInfo
+
 umass_title=מחק משתמשים
 umass_err=מחיקת המשתמשים נכשלה
 umass_sure=Are you sure you want to delete the $1 selected users? Their home directories contain $2 of files.
@@ -481,6 +498,7 @@ umass_del1=מחק משתמשים
 umass_del2=מחק משתמשים ומדריכי בית
 umass_eroot=אינך מורשה למחוק את משתמשי המערכת (משתמשים עם UID פחות או שווה ל- 10).
 umass_doing=Deleting user $1 ..
+
 gmass_title=מחק קבוצות
 gmass_err=מחיקת קבוצות נכשלה
 gmass_sure=Are you sure you want to delete the $1 selected groups?
@@ -490,16 +508,19 @@ gmass_del=מחק קבוצות
 gmass_eroot=אינך מורשה למחוק קבוצות מערכות (אלה עם GID פחות או שווה ל 10).
 gmass_doing=Deleting group $1 ..
 gmass_eprimary=The group $1 cannot be deleted, as it is the primary group of user $2.
+
 dmass_title=השבת משתמשים
 dmass_sure=Are you sure you want to disable the $1 selected users? They can be re-enabled later with no loss of their passwords or data.
 dmass_dis=השבת משתמשים
 dmass_pass=נעילת סיסמא באופן זמני ..
 dmass_doing=Disabling user $1 ..
 dmass_already=.. כבר מושבת!
+
 emass_title=אפשר משתמשים
 emass_pass=ביטול נעילת הסיסמא ..
 emass_doing=Enabling user $1 ..
 emass_already=.. כבר מופעלת!
+
 gbatch_title=ביצוע קובץ אצווה קבוצתי
 gbatch_ecannot=אינך יכול להשתמש בטופס קובץ האצווה הקבוצתי
 gbatch_desc=טופס זה מאפשר ליצור, לשנות או למחוק קבוצות רבות בבת אחת מקובץ טקסט שהועלה או מקומי. כל שורה בקובץ מציינת פעולה אחת שיש לבצע, בהתאם לשדה הראשון שלה. פורמטי השורות הם :

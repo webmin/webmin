@@ -19,6 +19,7 @@ index_refsel=Actualizza magħżul
 index_group=Membri ta ' $1 
 index_tmpls=Editja Mudelli ta 'Email
 index_tmplsdesc=Ara u teditja l-mudelli użati biex jinbnew messaġġi bl-email mibgħuta meta s-servizzi mmonitorjati jinżlu.
+
 type_apache=Webserver Apache
 type_inetd=Internet u Server RPC
 type_xinetd=Internet Server Estiż
@@ -73,8 +74,10 @@ type_alive=Sistema Alive
 type_rssh=SSH mill-bogħod
 type_slapd=Server LDAP
 type_ldap=Konnessjoni LDAP
+
 mon_create=Oħloq Monitor
 mon_edit=Editja Monitoraġġ
+mon_virtualmin=Twissija! Dan il-monitor huwa assoċjat mad-dominju Virtualmin $1, u għalhekk m'għandux jiġi editjat jew imħassar hawn.
 mon_header=Tissorvelja d-dettalji
 mon_header2=Kmandi biex jimxu
 mon_header3=Għażliet ta 'servizz issorveljati
@@ -138,6 +141,7 @@ mon_changes0=Uri kull tip ta 'avveniment
 mon_changes1=Uri biss bidliet
 mon_all=Uri l-avvenimenti storiċi kollha
 mon_nochanges=L-ebda tibdil tal-istat ma ġara fl-aħħar ġrajjiet storiċi $1.
+
 sched_title=Monitoraġġ Skedat
 sched_header=Għażliet skedati ta 'monitoraġġ fl-isfond
 sched_mode=Iċċekkjar skedat ippermetta?
@@ -184,16 +188,19 @@ sched_subject0=Xejn (l-allert huwa fil-ġisem)
 sched_subject1=Test tat-twissija (ħalli l-korp vojt)
 sched_subject2=Test apposta
 sched_esubject=Nieqes is-suġġett tal-messaġġ SMS
+
 up_since=Sa minn $1 
 depends_mod=Il-modulu $1 mhuwiex installat fis-sistema tiegħek
 depends_os=Il-modulu $1 mhuwiex appoġġat fis-sistema tiegħek
 depends_remote=Il-modulu $1 mhux sostnut fuq server $2 
+
 tcp_host=Ospitanti biex tikkonnettja ma '
 tcp_port=Port li jgħaqqad
 tcp_alarm=Skadenza tal-konnessjoni
 tcp_ehost=Name host nieqes jew invalidu
 tcp_eport=Numru tal-port nieqes jew invalidu
 tcp_ealarm=It-terminu tal-konnessjoni nieqes jew invalidu
+
 http_url=URL li titlob
 http_alarm=Skadenza tal-konnessjoni
 http_eurl=URL nieqes jew invalidu
@@ -208,11 +215,13 @@ http_regexp=Paġna trid taqbel ma 'regexp
 http_eregexp=L-ebda espressjoni regolari għall-paġna ma tiddaħħal
 http_none2=Ma taqbilx
 http_ehead=Il-metodu tat-talba HEAD ma jistax jintuża meta tkun qed tivverifika espressjoni regolari
+
 ping_host=Ospitanti biex ping
 ping_wait=Ħin biex tistenna risposta
 ping_ehost=Name host nieqes jew invalidu
 ping_ewait=Ħin ta 'stennija nieqes jew invalidu
 ping_econfig=L-ebda kmand ping ma ġie stabbilit fil-Modulu Config
+
 proc_pid=It-tmexxija bl-PIDs $1 
 proc_cmd=Kmand biex tiċċekkja għal
 proc_not=Falliment jekk il-proċess hu
@@ -224,6 +233,7 @@ proc_ethresh=Numru ta 'proċessi nieqsa jew invalidi
 proc_asuser=Ħaddem bħala utent
 proc_anyuser=Kull utent
 proc_easuser=Utent għall-proċess biex jimxi kif ma jeżistix
+
 exec_cmd=Kmand biex titmexxa
 exec_mode=Kontroll tal-istatus tal-ħruġ
 exec_mode0=Falliment tissorvelja jekk il-kmand ifalli
@@ -235,6 +245,7 @@ exec_noregexp=Tivverifikax
 exec_remode=Regexp check
 exec_remode0=Falliment jekk il-produzzjoni ma taqbilx
 exec_remode1=Fallik jekk l-output ma jaqbilx
+
 file_file=Fajl, direttorju jew disinn biex tivverifika
 file_test=Test biex iwettaq
 file_test_0=Irid jeżisti
@@ -253,6 +264,7 @@ file_group=Il-grupp tal-fajl għandu jkun
 file_nocheck=Kull ħaġa
 file_perms=Il-permessi tal-octal għandhom ikunu
 file_eperm=Fajls b'permessi żbaljati : $1 
+
 traffic_iface=Interfaċċa biex tissorvelja
 traffic_bytes=Bytes massimi/sekonda
 traffic_dir=Direzzjoni li tissorvelja
@@ -262,6 +274,7 @@ traffic_dir2=Ħierġa biss
 traffic_desc=Dan il-monitor iżomm rekord tat-traffiku tan-netwerk fuq interface magħżula, u juri l-monitor kif 'l isfel jekk it-traffiku jaqbeż in-numru ta' bytes fis-sekonda mdaħħal hawn taħt. Dan jaħdem biss tajjeb jekk il-monitoraġġ skedat huwa attivat f'sett ta 'intervall qasir, bħal kull 5 minuti.
 traffic_eifaces=Is-sistema operattiva tiegħek ma għandhiex fajl/proc/net/dev
 traffic_ebytes=Numru ta 'bytes nieqsa jew invalidi/sekonda
+
 space_fs=Sistema ta 'fajls biex tiċċekkja
 space_min2=Spazju minimu b'xejn
 space_mode0=Daqs assolut
@@ -277,6 +290,7 @@ space_ierr=L-inodi $1 huma ħielsa biss
 space_merr=L-ispazju $1 biss
 space_perr=$1% biss b'xejn
 space_dferr=Ma rnexxiex nikseb id-daqs tas-sistema tal-files
+
 load_time=Medja tat-Tagħbija biex tiċċekkja
 load_1=1 minuta
 load_5=5 minuti
@@ -285,6 +299,7 @@ load_max=It-tagħbija massima medja
 load_emax=Medja tat-tagħbija massima nieqsa jew invalida
 load_ecmd=Il-kmand <tt>uptime</tt> ma nstabx fis-sistema tiegħek
 load_efmt=L-output tal-kmand <tt>uptime</tt> ma setax jiġi analizzat
+
 log_create=Monitor maħluq $1 
 log_modify=Monitor immodifikat $1 
 log_delete=Monitor imħassar $1 
@@ -295,10 +310,14 @@ log_tmpl_modify=Mudell ta 'email modifikat $1
 log_tmpl_delete=Mudell ta 'email imħassar $1 
 log_tmpl_deletes=Mħassra mudelli tal-email $1 
 log_refresh=Status imsaħħaħ tal-monitoraġġ
+
 acl_edit=Tista 'teditja u toħloq monitors?
 acl_sched=Tista 'tinbidel il-monitoraġġ skedat?
+
 change_file=Fajl jew direttorju biex tissorvelja (tfalli jekk tinbidel)
+
 jabber_eparser=Il-modulu Perl $1 mhuwiex installat fis-sistema tiegħek.
+
 memory_min2=Memorja reali ħielsa minima
 memory_emin=Ammont nieqes jew invalidu ta 'memorja reali b'xejn
 memory_eproc=Webmin ma jafx kif jiċċekkja l-memorja b'xejn fis-sistema operattiva tiegħek
@@ -308,7 +327,9 @@ memory_freelow=$1 biss bla memorja reali
 memory_freelowswap=Memorja virtwali $1 biss ħielsa
 memory_minswap=Memorja virtwali minima b'xejn
 memory_eminswap=Ammont nieqes jew invalidu ta 'memorja virtwali b'xejn
+
 proftpd_etype=Dan il-monitor ma jistax jintuża meta ProFTPD jinżel waħdu
+
 mailserver_to=Ibgħat email lill-indirizz
 mailserver_timeout=Ħin ta 'żmien u intervall
 mailserver_units_0=Sekondi
@@ -316,22 +337,28 @@ mailserver_units_1=Minuti
 mailserver_units_2=Sigħat
 mailserver_units_3=Jiem
 mailserver_desc=L-indirizz hawn taħt għandu jkun tweġiba awtomatika li twieġeb għall-indirizz sors bl-istess Suġġett: linja.
+
 oldfile_file=Fajl biex tissorvelja (tfalli jekk ma nbidlitx)
 oldfile_diff=Falli jekk ma nbidlitx għal
 oldfile_secs=seks
+
 raid_device=Apparat RAID
 raid_edevice=L-ebda apparat RAID ma ntgħażel
 raid_bad=Diska ħażina misjuba
 raid_resync=Bħalissa r-rianċinjar
 raid_notfound=Apparat RAID $1 ma nstabx
 raid_other=Oħrajn ..
+
 iface_iface=Interfaċċja biex tivverifika
+
 init_action=Azzjoni biex tiċċekkja
 init_eaction=L-ebda azzjoni magħżula
+
 refresh_title=Status ta ’Refresh
 refresh_doing=Refresing tal-istatus tal-monitors kollha ..
 refresh_doing2=Jġedded l-istatus ta ' $1 monitors magħżula ..
 refresh_done=.. ghamel.
+
 sensors_name=Senser li jiċċekkja
 sensors_value=Naqset meta
 sensors_value0=Sistema tindika twissija
@@ -342,6 +369,7 @@ sensors_none=Ma nstab l-ebda senser fis-sistema tiegħek. Jista 'jkollok bżonn 
 sensors_cur=$1 (bħalissa $2 $3)
 sensors_emin=Valur minimu nieqes jew invalidu
 sensors_emax=Valur massimu nieqes jew invalidu
+
 nut_ups=UPS NUT biex tiċċekkja
 nut_name=Attribut biex tiċċekkja
 nut_value=Naqset meta
@@ -352,6 +380,7 @@ nut_eups=L-ebda USP ma jiċċekkja li daħal
 nut_cur=$1 (bħalissa $2)
 nut_emin=Valur minimu nieqes jew invalidu
 nut_emax=Valur massimu nieqes jew invalidu
+
 mailq_system=Server tal-posta
 mailq_qmailadmin=Qmail
 mailq_postfix=Postfix
@@ -360,6 +389,7 @@ mailq_size=Daqs massimu tal-kju tal-posta
 mailq_esize=Id-daqs massimu tal-kju nieqes jew invalidu
 mailq_toomany='L isfel - $1 messaġġi fil-kju
 mailq_ok=Up - $1 messaġġi fil-kju
+
 dns_server=Server DNS
 dns_host=Isem biex tfittex
 dns_address=Indirizz IP mistenni
@@ -367,6 +397,7 @@ dns_eserver=Server DNS nieqes jew invalidu
 dns_ehost=Kunjom ta 'host nieqes jew li jħares mhux validu għat-tfittxija
 dns_eaddress=Indirizz IP mistenni nieqes jew invalidu
 dns_ecmds=La l-kmand <tt>nslookup</tt> u <tt>dig</tt> mhumiex installati fis-sistema tiegħek
+
 monitor_sub_down=$1 'l isfel fuq $2 
 monitor_pager_down=$1 : "$2" huwa stabbiliti $3 
 monitor_snmp_down= $1:$2 
@@ -398,8 +429,10 @@ monitor_run1=It-tmexxija $1 fuq $2 ..
 monitor_run2=Tmexxija $1 ..
 monitor_runerr=Ma rnexxiex taħdem $1 fuq $2 : $3 
 monitor_email_stat=Status attwali: $1 
+
 deletes_egone=Wieħed mill-monitors magħżula m'għadux jeżisti
 deletes_enone=L-ebda monitors magħżula
+
 ftp_host=Ospitanti tas-server FTP
 ftp_port=Port FTP
 ftp_user=Idħol bħala utent
@@ -416,6 +449,7 @@ ftp_econn=Il-konnessjoni FTP TLS falliet
 ftp_econn2=Konnessjoni FTP TLS naqset : $1 
 ftp_elogin=Il-login FTP TLS falla : $1 
 ftp_etlsfile=It-TTP tal-FTP TLS falla : $1 
+
 query_driver=Tip ta 'database SQL
 query_db=Isem tad-database
 query_host=Database server ospitanti
@@ -436,9 +470,12 @@ query_elogin=Il-login fallew : $1
 query_eprepare=Żball SQL : $1 
 query_eexecute=SQL fallut : $1 
 query_ewrong=Riżultat mhux korrett : $1 
+
 consume_rate=Rata massima ta 'konsum (kull sekonda)
 consume_high=Ir-rata ta ’konsum hija $1 / sekonda
+
 alive_up=Up għal $1 
+
 rssh_host=SSH server ospitanti
 rssh_ruser=Idħol bħala utent
 rssh_rpass=Idħol bil-password
@@ -454,6 +491,7 @@ rssh_error=Żball SSH
 rssh_haspass=Password
 rssh_port=Port tas-server SSH
 rssh_eport=Numru tal-port nieqes jew invalidu
+
 tmpls_title=Mudelli ta 'Email
 tmpls_ecannot=M'għandekx permess teditja mudelli tal-email
 tmpls_none=L-ebda templates tal-email ma ġew definiti s'issa. It-twissijiet kollha se jintbagħtu bl-użu tal-messaġġi ta 'Webmin default.
@@ -462,6 +500,7 @@ tmpls_email=Messaġġ bl-email
 tmpls_add=Żid mudell tal-email ġdid.
 tmpls_return=lista tal-mudelli
 tmpls_delete=Ħassar il-Mudelli Magħżula
+
 tmpl_title1=Oħloq Template Email
 tmpl_title2=Editja Template Email
 tmpl_header=Messaġġi ta 'mudell ta' email ta 'allert
@@ -486,9 +525,11 @@ tmpl_esms=Nieqes messaġġ SMS
 tmpl_esnmp=Messaġġ SNMP nieqes
 tmpl_err2=Naqset milli tħassar il-mudell tal-email
 tmpl_eusers=Jintuża mill-monitors li ġejjin : $1 
+
 dtmpls_err=Ma rnexxielhiex tħassar il-mudelli
 dtmpls_enone=L-ebda magħżul
 dtmpls_eusers=$1 jintuża mill-monitors li ġejjin : $2 
+
 sslcert_src=Post taċ-Ċertifikat
 sslcert_url=Minn URL HTTPS
 sslcert_file=Minn fajl fuq server
@@ -506,18 +547,21 @@ sslcert_eend=Mhux valida wara $1
 sslcert_left=Up - $1 ijiem sal-iskadenza
 sslcert_ematch=Il-hostname $1 ma jaqbilx maċ-ċertifikat $2 
 sslcert_emismatch=Iċċekkjar tal-isem ospitanti jista 'jintuża biss meta tkun iċċekkjat URL
+
 du_dir=Direttorju li jissorvelja
 du_max=Daqs massimu
 du_edir=It-triq tad-direttorju nieqsa jew mhux assoluta
 du_emax=Daqs massimu nieqes jew mhux numeriku
 du_over=Id-daqs huwa $1 
 du_under=Id-daqs huwa biss ta ' $1 
+
 ldap_edriver=Il-modulu Perl $1 mhuwiex installat
 ldap_host=Isem tas-server LDAP
 ldap_port=Port tas-server LDAP
 ldap_ssl=Uża konnessjoni SSL?
 ldap_user=Login tal-server LDAP
 ldap_pass=Password server LDAP
+
 info_desc=Tissorvelja s-sistema
 info_last=Status attwali
 info_title=Sistema tas-Sistema u l-Istatus tas-Server

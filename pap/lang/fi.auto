@@ -14,10 +14,12 @@ index_apply=Käytä
 index_return=PPP-indeksi
 index_none=Sinulla ei ole pääsyä mihinkään tämän moduulin ominaisuuksiin.
 index_delete=Poista valitut tilit
+
 secrets_title=PPP-tilit
 secrets_return=indeksi
 secrets_none=PPP-tilejä ei ole vielä luotu.
 secrets_ecannot=Et voi muokata PPP-tilejä
+
 edit_secret_etitle=Muokkaa PPP-tiliä
 edit_secret_ctitle=Luo PPP-tili
 edit_secret_acc=PPP-tili
@@ -37,8 +39,10 @@ edit_secret_alist=Salli listattu ..
 edit_secret_save=Tallentaa
 edit_secret_del=Poistaa
 edit_secret_return=tililuettelo
+
 save_secret_esave=Tilin tallentaminen epäonnistui
 save_secret_enoip='$1' ei ole kelvollinen osoite
+
 log_create=Luotu PPP-tili $1 
 log_modify=Muokattu PPP-tili $1 
 log_delete=Poistettu PPP-tili $1 
@@ -54,6 +58,7 @@ log_dialin_move=Siirretty soittajan tunnusnumero $1
 log_mgetty_create=Luotu sarjaportti $1 
 log_mgetty_modify=Muokattu sarjaportti $1 
 log_mgetty_delete=Sarjaportti $1 poistettu
+
 options_title=PPP-asetukset
 options_serial=Sarjaportti $1 
 options_dev=Laitteelle $1 
@@ -84,6 +89,7 @@ options_idle=Joutoaika ennen irrottamista
 options_idle_def=Ei koskaan
 options_eidle=Puuttuva tai kelpaa lepotila
 options_ecannot=Et voi muokata PPP-asetuksia
+
 mgetty_title=Sarjaportin kokoonpano
 mgetty_ecmd=Komentoa $1 ei löydy järjestelmästäsi. Tätä ohjelmaa tarvitaan sarjaporttien kirjautumisten käsittelemiseen modeemin tai suoran yhteyden kautta.
 mgetty_desc=Jotta palvelimesi sallii kirjautumisen sarjaporttiin modeemin tai suoran yhteyden kautta, sen on oltava lueteltu alla. Kun lisäät portin tähän luetteloon, $1 -ohjelma määritetään vastaamaan modeemiyhteyksiin ja näyttämään kirjautumiskehote.
@@ -125,6 +131,7 @@ mgetty_apply=Käytä määritystä
 mgetty_applydesc=Napsauta tätä painiketta, kun haluat käyttää nykyistä sarjaportin määritystä suorittamalla komento $1 ja tappamalla kaikki Mgetty-prosessit.
 mgetty_applyerr=Asetusten määrittäminen epäonnistui
 mgetty_ecannot=Sarjaporttimäärityksiä ei saa muokata
+
 dialin_title=Soittajan henkilöllisyys
 dialin_desc=Tällä sivulla voit määrittää Mgettyn sallimaan tai estämään dialiinin käytön soittajan puhelinnumeron perusteella. Kun puhelu tulee, luettelon ensimmäinen merkintä, joka vastaa puhelinnumeroa, määrittää, hyväksytäänkö puhelu vai ei.
 dialin_efile=Mgetty-soittajan tunnuksen käyttöoikeustiedostoa $1 ei löydy järjestelmästäsi. Ehkä Mgettyä ei ole asennettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
@@ -145,9 +152,12 @@ dialin_move=Liikkua
 dialin_err=Soittajan tunnusnumeron tallentaminen epäonnistui
 dialin_enumber=Puuttuva tai virheellinen puhelinnumero
 dialin_ecannot=Sinulla ei ole oikeutta muokata soittajan tunnusta
+
 acl_pages=Käytettävissä olevat sivut
 acl_direct=Siirry suoraan yhdelle sivulle?
+
 sync_ecannot=Et voi muokata unix-ppp-synkronointiasetuksia
 sync_title=Käyttäjän synkronointi
+
 delete_err=Tilien poistaminen epäonnistui
 delete_enone=Mitään ei ole valittu

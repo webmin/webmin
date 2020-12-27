@@ -14,6 +14,7 @@ index_identmsg=$1 データベースを検索するためのコマンドまた�
 index_identok=検索対象:
 index_all=すべてのパッケージ
 index_return=パッケージ リスト
+
 search_title=パッケージの検索
 search_nomatch=$1 に一致したパッケージはありません
 search_none=なし
@@ -22,6 +23,7 @@ search_class=クラス
 search_pack=パッケージ
 search_match=$1 に一致したパッケージ
 search_return=検索結果
+
 edit_title=パッケージの編集
 edit_details=パッケージの詳細
 edit_desc=説明
@@ -35,6 +37,7 @@ edit_inst=インストール済み
 edit_list=ファイルのリスト
 edit_uninst=アンインストール
 edit_return=パッケージの詳細
+
 list_title=パッケージ ファイル
 list_files=パッケージ $1 のファイル
 list_path=パス
@@ -44,11 +47,13 @@ list_type=種類
 list_size=サイズ
 list_status=ステータス
 list_ok=OK
+
 delete_err=パッケージ $1 を削除できませんでした
 delete_epack=パッケージ $1 は存在しません
 delete_title=パッケージの削除
 delete_rusure=パッケージ $1 を削除してもよろしいですか? $2 ファイル ($3) まで永久に削除されます。
 delete_ok=削除
+
 file_title=ファイルの情報
 file_notfound=$1 についての情報はありません
 file_path=パス
@@ -62,6 +67,7 @@ file_pack=パッケージ
 file_class=クラス
 file_desc=説明
 file_none=なし
+
 install_err=パッケージをインストールできませんでした
 install_elocal=ローカル ファイルがありません
 install_elocal2='$1' は存在しません
@@ -74,6 +80,7 @@ install_title=パッケージのインストール
 install_header=パッケージのインストール
 install_packs=インストールするパッケージ
 install_ok=インストール
+
 do_err=パッケージ $1 をインストールできませんでした
 do_title=パッケージのインストール
 do_efailed=インストールに失敗しました: $1
@@ -90,10 +97,12 @@ do_arch=アーキテクチャ
 do_inst=インストール済み
 do_none=なし
 do_files=パッケージ ファイル
+
 pkgadd_root=ルート ディレクトリ
 pkgadd_eroot=root ディレクトリ '$1' は存在しません
 pkgadd_unknown=不明
 pkgadd_manager=システム バージョン パッケージ マネージャ
+
 rpm_upgrade=パッケージをアップグレードしますか？
 rpm_replacepkgs=パッケージを上書きしますか？
 rpm_nodeps=依存性を無視しますか？
@@ -103,28 +112,33 @@ rpm_excludedocs=マニュアルをインストールしますか？
 rpm_replacefiles=ファイルを上書きしますか？
 rpm_root=root ディレクトリ
 rpm_eroot=root ディレクトリ '$1' は存在しません
+
 bsd_unknown=不明
 bsd_scripts=プリ インストールおよびポスト インストール スクリプトを実行しますか？
 bsd_force=前提条件がない場合はインストールを強制しますか？
 bsd_manager=$1 パッケージ マネージャ  
+
 slack_unclass=その他
 slack_unknown=不明
 slack_missing=次のものがありません
 slack_root=root ディレクトリ
 slack_eroot=root ディレクトリがないか無効です
 slack_manager=Slackware パッケージ マネージャ
+
 debian_unknown=不明
 debian_depends=依存性の問題を無視しますか？
 debian_conflicts=パッケージの競合を無視しますか？
 debian_overwrite=他のパッケージからファイルを上書きしますか？
 debian_downgrade=古いパッケージを新しいパッケージで置き換えますか？
 debian_manager=Debian DPKG
+
 log_install_package=パッケージ $1 をインストールしました
 log_install_apt_l=パッケージ $1 を APT からインストールしました
 log_install_apt=$2 パッケージを APT からインストールしました
 log_check_apt_l=パッケージ $1 を APT からアップグレードしました
 log_check_apt=$2 パッケージを APT からアップグレードしました
 log_delete=パッケージ $1 をアンインストールしました
+
 rhn_input=Redhat Network からのパッケージ
 rhn_install=パッケージをコマンド $1 でインストール中..
 rhn_ok=.. インストールを完了しました。
@@ -148,6 +162,7 @@ rhn_proxy=ダウンロード用のプロキシ サーバ URL
 rhn_none=無効
 rhn_eproxy=プロキシ サーバがないか無効です
 rhn_skip=一致したパッケージをスキップ
+
 apt_input=APT からのパッケージ
 apt_install=パッケージをコマンド $1 でインストール中..
 apt_ok=.. インストールを完了しました。
@@ -168,6 +183,7 @@ apt_upgradedesc=アップグレード中..
 apt_upgradedescsim=すべてのパッケージをコマンド $1 を使ってシミュレート中 ..
 apt_upgradefailed=.. アップグレードできませんでした。
 apt_upgradeok=.. アップグレードを完了しました。
+
 rpm_missing=次のものがありません
 rpm_checkfail=$1 チェックに失敗しました
 rpm_md5=MD5
@@ -179,6 +195,7 @@ rpm_user=ユーザ所有権
 rpm_perm=許可
 rpm_group=グループ所有権
 rpm_erpm=RPM $1 がありません: $2
+
 soft_reg=標準ファイル
 soft_dir=ディレクトリ
 soft_spec=特殊ファイル

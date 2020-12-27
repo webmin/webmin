@@ -24,6 +24,7 @@ index_style=Sistem de imprimare: $1
 index_cluster=Servere Cluster
 index_clusterdesc=Faceți clic pe acest buton pentru a configura servere Webmin suplimentare pe care vor fi create, actualizate și șterse imprimante.
 index_delete=Ștergeți imprimante selectate
+
 style_solaris=Solaris
 style_linux=LPR Linux
 style_freebsd=LPR FreeBSD
@@ -33,6 +34,7 @@ style_unixware=UnixWare
 style_cups=CUPS
 style_irix=IRIX
 style_aix=AIX
+
 edit_eedit=Nu aveți voie să editați această imprimantă
 edit_eadd=Nu aveți voie să adăugați imprimante
 edit_add=Creați imprimantă
@@ -76,7 +78,9 @@ edit_direct=Conexiune directă TCP
 edit_dport=Port
 edit_driver=Driver de imprimantă
 edit_check=Verificați dacă serverul de la distanță este activ?
+
 blocks=blocuri
+
 save_err=Salvarea imprimantei nu a reușit
 save_eadd=Nu aveți voie să adăugați imprimante
 save_eedit=Nu aveți voie să editați această imprimantă
@@ -98,6 +102,7 @@ save_evalid=Sistemul de imprimare nu a permis această imprimantă
 save_errslave=Imprimanta a creat OK pe acest sistem, dar au apărut următoarele erori la sistemele de cluster : $1 
 save_egone=Nu a fost găsită nicio imprimantă numită „$1”
 save_errdelslave=Imprimanta a șters OK pe acest sistem, dar au apărut următoarele erori pe sistemele de cluster : $1 
+
 jobs_title=Tipărire lucrări
 jobs_header=Tipăriți lucrările pe $1 
 jobs_id=ID post
@@ -114,17 +119,23 @@ jobs_test=Tipăriți pagina de testare
 jobs_cancelsel=Anulați lucrările selectate
 jobs_on=Pe imprimantă $1 
 jobs_return=lista lucrărilor tipărite
+
 cancel_ecannot=Nu aveți voie să anulați lucrările de imprimare
 cancel_err=Eroare la anularea lucrării de imprimare
 cancel_egone=Lucrarea de imprimare $1 nu mai există
+
 view_ecannot=Nu puteți vedea această lucrare de tipărire
 view_egone=Această lucrare de tipărire nu mai există
+
 start_ecannot=Nu aveți voie să porniți programatorul
 start_err=Eșecul la pornirea programului
+
 stop_ecannot=Nu aveți voie să opriți programatorul
 stop_err=Nu a reușit oprirea programului
+
 restart_ecannot=Nu aveți voie să reporniți programatorul
 restart_err=Nu a putut reporni programatorul
+
 webmin_none=Nici unul
 webmin_nonemsg=Postscript sau imprimantă text
 webmin_remotemsg=Imprimantă la distanță
@@ -135,6 +146,7 @@ webmin_uniprint=Driver uniprint
 webmin_edrivers=Nu a reușit să obțineți șoferi de la $1. Driverele de imprimantă Webmin care folosesc ghostscript nu sunt disponibile
 webmin_egs=Comanda $1 nu a fost găsită. Driverele de imprimantă Webmin care folosesc ghostscript nu sunt disponibile
 webmin_edriver=„$1” nu există
+
 caldera_none=Nici unul
 caldera_nonemsg=Imprimantă la distanță sau brută
 caldera_prog=Program
@@ -148,6 +160,7 @@ caldera_uniprint=Driver uniprint
 caldera_eprog=„$1” nu există
 caldera_edriver=Nu a fost selectat un driver de imprimantă
 caldera_eres=Nici o rezoluție selectată
+
 redhat_none=Nici unul
 redhat_nonemsg=Postscript sau imprimantă text
 redhat_prog=Program
@@ -166,6 +179,7 @@ redhat_ehmargin=Lipsește sau este nevalidă marginea din dreapta/stânga
 redhat_evmargin=Lipsește sau nu este valabilă marja de sus/jos
 redhat_eres=Nici o rezoluție selectată
 redhat_printer2=Modelul și driverul imprimantei
+
 suse_none=Nici unul
 suse_nonemsg=Postscript sau imprimantă text
 suse_prog=Program
@@ -182,7 +196,9 @@ suse_extra=Opțiuni extra-scripturi
 suse_yast2=Șofer YAST2
 suse_edriver=Nu a fost selectat tipul de imprimantă
 suse_eres=Rezoluție lipsă sau nevalidă
+
 estop=Nu a reușit oprirea lpd : $1 
+
 acl_printers=Imprimantele pe care le poate configura acest utilizator
 acl_add=Poți adăuga noi imprimante?
 acl_cancel=Pot anula lucrările de tipărire?
@@ -198,6 +214,7 @@ acl_user_all=Toți utilizatorii
 acl_user_this=Utilizator curent Webmin
 acl_delete=Se pot șterge imprimantele?
 acl_cluster=Poate gestiona clusterul de imprimantă?
+
 log_stop=Planificatorul de imprimare oprit
 log_start=A început programatorul de imprimare
 log_restart=S-a repornit programatorul de imprimare
@@ -210,37 +227,45 @@ log_delete=S-a șters imprimanta $1 pe $2
 log_create_l=Imprimantă creată $3 $1 pe $2 
 log_modify_l=Imprimantă modificată $3 $1 pe $2 
 log_delete_l=S-a șters imprimanta $3 $1 pe $2 
+
 linux_paralel=Port paralel $1 
 linux_serial=Port serial $1 (COM $1)
 linux_null=Dispozitiv nul
 linux_usb=Imprimantă USB $1 
 linux_ecmd=Comanda $1 nu a fost găsită pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare Linux nu este instalat.
 linux_espool=Directorul spool $1 nu există pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare Linux nu este instalat.
+
 freebsd_paralel=Port paralel
 freebsd_serial=Port serial $1 (COM $1)
 freebsd_ecmd=Comanda $1 nu a fost găsită pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare FreeBSD nu este instalat.
 freebsd_espool=Directorul spool $1 nu există pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare FreeBSD nu este instalat.
+
 openbsd_paralel=Port paralel
 openbsd_serial=Port serial $1 (COM $1)
+
 unixware_paralel=Port paralel $1 
 unixware_serial=Port serial $1 
 unixware_null=Dispozitiv nul
 unixware_ecmd=Comanda $1 nu a fost găsită pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare UnixWare nu este instalat.
+
 hpux_paralel=Paralel $1 
 hpux_serial=Serial $1 
 hpux_null=Dispozitiv nul
 hpux_ecmd=Comanda $1 nu a fost găsită în sistemul dvs., ceea ce indică faptul că sistemul de imprimare HPUX nu este instalat.
 hpux_eiface=Directorul scripturilor de interfață $1 nu există pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare HPUX nu este instalat.
+
 lprng_paralel=Port paralel $1 
 lprng_serial=Port serial $1 (COM $1)
 lprng_null=Dispozitiv nul
 lprng_ecmd=Comanda $1 nu a fost găsită pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare LPRng nu este instalat.
 lprng_espool=Directorul spool $1 nu există pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare LPRng nu este instalat.
+
 solaris_paralel=Port paralel
 solaris_uparalel=Port paralel Ultra 5/10
 solaris_serial=Port serial $1 
 solaris_null=Dispozitiv nul
 solaris_ecmd=Comanda $1 nu a fost găsită pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare Solaris nu este instalat.
+
 test_title=Tipăriți pagina de testare
 test_ecannot=Nu aveți voie să imprimați pagini de testare
 test_desc=Acest formular vă permite să imprimați o pagină de testare pentru imprimanta $1. Selectați tipul de pagină pe care doriți să o imprimați :
@@ -252,6 +277,7 @@ test_print=Imprima pagina
 test_exec=Tipărirea paginii de testare cu comanda $1 ..
 test_failed=.. comanda nu a reușit!
 test_ok=.. comanda finalizată.
+
 cups_none=Nici unul
 cups_nonemsg=Imprimantă la distanță sau brută
 cups_prog=Program
@@ -259,11 +285,14 @@ cups_driver=Sofer CUPS
 cups_eprog=„$1” nu este un program valid
 cups_opts=Opțiuni pentru $1 
 cups_ecmd=Comanda $1 nu a fost găsită pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare CUPS nu este instalat.
+
 irix_ecmd=Comanda $1 nu a fost găsită în sistemul dvs., ceea ce indică faptul că sistemul de imprimare IRIX nu este instalat.
 irix_eiface=Directorul scripturilor de interfață $1 nu există pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare IRIX nu este instalat.
+
 aix_port=Portul de imprimantă $1 
 aix_edesc=Descriere nevalidă - sunt permise doar litere și numere și fără spații
 aix_ecmd=Serverul de imprimantă AIX $1 nu a fost găsit. Poate că nu este instalat sau este folosit un alt sistem de imprimare.
+
 cluster_title=Cluster Servere de imprimantă
 cluster_none=Încă nu au fost adăugate servere la clusterul de imprimantă.
 cluster_host=Numele gazdei
@@ -275,6 +304,7 @@ cluster_need=Pentru a putea fi gestionate aici, trebuie să adăugați servere c
 cluster_return=serverele de cluster
 cluster_delete=Sterge selectia
 cluster_ecannot=Nu aveți voie să gestionați serverele de imprimantă cluster
+
 add_title=Adăugați servere
 add_msg=Se adaugă $1 ..
 add_gmsg=Adăugarea serverelor în grupul $1 ..

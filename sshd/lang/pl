@@ -16,8 +16,10 @@ index_type=Typ klucza SSH:
 index_rsa1=RSA (dla SSH v1)
 index_rsa=RSA (dla SSH v2)
 index_dsa=DSA (dla SSH v2)
+
 bits=bitów
 secs=sekund
+
 users_title=Autoryzacja
 users_header=Opcje autoryzacji logowania
 users_expire=Liczba dni dla ostrzegania użytkownika o upływie ważności konta
@@ -54,6 +56,7 @@ users_eauthkeys=Brakujący lub nieprawidłowy plik autoryzowanych kluczy
 users_maxauthtries=Maksymalnie próby logowania na połączenie
 users_emaxauthtries=Brakująca lub nie numeryczna liczba prób logowania na połączenie
 users_chal=Korzystać z uwierzytelniania typu challenge-response?
+
 net_title=Sieć
 net_header=Opcje sieciowe
 net_port=Słuchać na porcie
@@ -91,6 +94,7 @@ net_eprots=Musisz wybrać co najmniej jeden protokół
 net_eladdress='$1' nie jest prawidłowym adresem, który można nasłuchiwać
 net_elport='$1' nie jest prawidłowym portem do nasłuchiwania
 net_elisten2=Nie wpisano adresów do nasłuchiwania
+
 access_title=Kontrola dostępu
 access_header=Opcje kontroli dostępu dla sieci i logowania
 access_allowu=Wpuszczać tylko użytkowników
@@ -108,6 +112,7 @@ access_eallowg=Nie podano dozwolonych grup
 access_edenyg=Nie podano zabronionych grup
 access_eallowh=Nie podano dozwolonych hostów
 access_edenyh=Nie podano zabronionych hostów
+
 misc_title=Opcje różne
 misc_header=Różne inne opcje serwera SSH
 misc_x11=Zezwalać na przekazywanie połączeń X11?
@@ -131,14 +136,17 @@ misc_eumask=Nie podana lub niepoprawna 4-cyfrowa ósemkowa umaska
 misc_ebits=Nie podana lub niepoprawna długość klucza serwera
 misc_eregen=Nie podany lub niepoprawny okres regeneracji klucza
 misc_epid=Nie podana ścieżka do pliku z numerem PID
+
 start_err=Nie udało się uruchomić serwera SSH
 apply_epid=Nie uruchomiony
+
 hosts_title=Opcje hostów klienckich
 hosts_header=Hosty klienckie SSH
 hosts_none=Nie zdefiniowano opcji dla hostów klienckich. Wszystkie logowania klientów SSH będą korzystać z ustawień domyślnych
 hosts_all=Wszystkie hosty
 hosts_add=Dodaj opcje dla hosta klienckiego.
 hosts_return=listy hostów klienckich
+
 host_create=Dodaj opcje dla hosta
 host_edit=Zmień opcje dla hosta
 host_header=Opcje klienckie dla hosta SSH
@@ -194,6 +202,7 @@ host_eprots=Musisz wybrać co najmniej jeden protokół
 host_proxy=Polecenie połączenia proxy
 host_proxy_def=Żadne
 host_eproxy=Brakujące lub nieprawidłowe polecenie połączenia proxy
+
 log_users=Zmieniono opcje autoryzacji
 log_net=Zmieniono opcje sieciowe
 log_access=Zmieniono kontrolę dostępu
@@ -208,6 +217,7 @@ log_stop=Zatrzymano serwer SSH
 log_start=Uruchomiono serwer SSH
 log_apply=Zastosowano konfigurację
 log_manual=Ręcznie edytowano plik konfiguracji $1
+
 sync_title=Konfiguracja klucza SSH użytkownika
 sync_desc=Ta strona umożliwia automatyczną konfigurację SSH dla nowych użytkowników Unix utworzonych na twoim systemie. Po skonfigurowaniu, nowi użytkownicy nie będą musieli używać <tt>ssh-keygen</tt> przed użyciem SSH.
 sync_create=Konfiguracja klucza SSH dla nowych użytkowników systemu Unix?
@@ -216,9 +226,11 @@ sync_pass=Użyć hasła jako klucza kod dostępu?
 sync_gnupg=Konfiguracja GnuPG dla nowych użytkowników systemu Unix.
 sync_type=Typ klucza
 sync_auto=&lt;Automatycznie&gt;
+
 keys_title=Klucze hosta SSH
 keys_desc=Ta strona pozwala na wyświetlenie kluczy SSH dla tego hosta.
 keys_none=Nie można odnaleźć żadnego klucza hosta w twojej konfiguracji SSHD
+
 manual_title=Edycja plików konfiguracyjnych
 manual_ecannot=Nie masz uprawnień do edycjo pliku konfiguracji serwera SSH
 manual_ok=Edytuj
@@ -226,5 +238,6 @@ manual_efile=Wybrany plik nie jest częścią konfiguracji serwera SSH
 manual_file=Edycja pliku:
 manual_edata=Nic nie wpisano!
 manual_err=Zapisanie pliku konfiguracyjnego nie powiodło się
+
 dknown_err=Kasowanie znanych hostów nie powiodło się
 dknown_enone=Nic nie wybrano

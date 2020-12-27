@@ -1,27 +1,39 @@
 main_title3=Webmin $1 ($2)
 main_unused=Moduli non utilizzati
 main_refreshmods=Aggiorna i moduli
+
 category_=Utensili
+
 longcategory_=Moduli che svolgono altre attività varie
+
 fail=mancato
 euserdbacl=Impossibile recuperare ACL utente : $1
 euserdbacl2=Aggiornamento ACL utente non riuscito : $1
 egroupdbacl=Impossibile recuperare il gruppo ACL : $1
 egroupdbacl2=Aggiornamento del gruppo ACL non riuscito : $1
+
 config_emodule=Il modulo non esiste
+
 referer_fix3u=Assicurati che il tuo browser sia configurato per inviare informazioni sui referrer in modo che possano essere verificate da Webmin.
+
 session_twofactor=Token a due fattori
 session_twofailed=Autenticazione a due fattori non riuscita : $1
+
 acl_readonly2=L'utente è in modalità demo?
 acl_readonlyyes=Sì (alcuni moduli potrebbero non essere disponibili)
 acl_negative=Concedere all'utente le nuove autorizzazioni del modulo?
 acl_webminsearch=Mostra campo di ricerca Webmin?
+
 elock_tries2=Impossibile bloccare il file $1 dopo $2 minuti. L'ultimo errore è stato : $3
+
 progress_size2=Download di $1 ($2) ..
 progress_datan=Ricevuto $1 ($2 %)
 progress_data2n=Ricevuto $1
+
 password_temp=È necessario selezionare una nuova password per sostituire il login temporaneo.
+
 ui_filterbox=Digita per filtrare ..
+
 wsearch_on=(Su $1)
 wsearch_helpfor=Aiuto per <i>$1</i>
 wsearch_htext=Testo corrispondente
@@ -36,6 +48,7 @@ wsearch_hmod=Modulo
 wsearch_moddir=Percorso URL /$1/
 wsearch_searching=Ricerca $1 ..
 wsearch_found=trovato $1 risultati :
+
 sql_emysqldriver=Caricamento del driver DBI MySQL non riuscito
 sql_emysqlconnect=Impossibile connettersi al database MySQL : $1
 sql_epostgresqldriver=Caricamento del driver DBI PostgreSQL non riuscito
@@ -44,6 +57,7 @@ sql_eldapdriver=Caricamento del modulo perl LDAP non riuscito
 sql_eldapconnect=Impossibile connettersi al server LDAP $1
 sql_eldaptls=Impossibile avviare la crittografia TLS per LDAP : $1
 sql_eldaplogin=Accesso al server LDAP non riuscito come $1 : $2 
+
 log_email_subject=Azione webmin in $1
 log_email_global=Azione globale Webmin
 log_email_desc=Questa e-mail è stata inviata da Webmin in risposta a un'azione dell'utente.
@@ -55,6 +69,7 @@ log_email_user=Eseguito dall'utente: $1
 log_email_script=Script Webmin: $1
 log_email_session=ID sessione: $1
 log_email_remote=Indirizzo client: $1
+
 nice_size_PB=PB
 nice_size_PiB=PiB
 nice_size_TB=TB
@@ -66,7 +81,9 @@ nice_size_MiB=MiB
 nice_size_kB=kB
 nice_size_kiB=Kib
 nice_size_b=byte
+
 langauto_include=Includi traduzioni automatiche
+
 file_truncated_message=recuperato $1 di dati, troncato $2 su $3 
 file_truncated_message_head=recuperato all'inizio di $1 di dati, troncato $2 su $3 
 file_truncated_message_tail=recuperato $1 finale di dati, $2 troncato su $3 

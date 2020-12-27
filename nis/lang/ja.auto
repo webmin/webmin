@@ -1,17 +1,24 @@
 index_enis2=このモジュールのクライアントサービス機能のみが使用可能です。
+
 client_enis=お使いのマシンには、NISクライアントサポートがインストールされていないようです。
+
 switch_srcs=データソース
 switch_return=クライアントサービス
+
 server_epwdir=無効なパスワードソースファイルディレクトリ
+
 tables_find=$2が $3と一致する $1を見つける
 tables_search=探す
 tables_nomatch=検索に一致するレコードはありません
 tables_build=NISテーブルを再構築する
 tables_buildmsg=このボタンをクリックして、テーブルデータからNISデータベースを再構築します。変更を行った場合は、これを行ってNISクライアントが利用できるようにする必要があります。
+
 desc_auto.home=オートマウンターホーム
 desc_auto.master=オートマウンターマップ
 desc_auto.local=オートマウンターローカル
+
 security_domain=NISドメイン
+
 eswitch_title=サービスを編集
 eswitch_egone=サービスは存在しません！
 eswitch_header=サービスの詳細

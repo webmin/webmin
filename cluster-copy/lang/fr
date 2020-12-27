@@ -65,5 +65,3 @@ email_subject_failed=Échec de la copie du cluster de $1
 
 delete_err=Échec de l'effacement des copies
 delete_enone=aucun n'est sélectionné
-
-__norefs=1

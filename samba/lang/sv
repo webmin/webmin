@@ -4,6 +4,7 @@ index_userlist=användarlista
 index_fileshare=filresurs
 index_printershare=skrivarresurs
 index_shareconf=resurskonfiguration
+
 index_sharename=Resursnamn
 index_path=Sökväg
 index_security=Säkerhet
@@ -29,12 +30,14 @@ index_start=Starta Samba-servrar
 index_startmsg=Samba-servrarna verkar inte köras på ditt system. Detta medför att resurserna som räknas upp ovan inte går att komma åt från andra datorer.
 index_restart=Starta om Samba-servrar
 index_restartmsg=Tryck på denna knapp för att starta om de Samba-servrar som körs på ditt system. De inställningar du nu har gjort kommer att tas i drift.
+
 config_mins=minuter
 config_secs=sekund
 config_bytes=byte
 config_never=Aldrig
 config_all=Alla
 config_neither=Ingen
+
 global_title=Globala inställningar
 global_unixnetwork=Unix-nätverk
 global_winnetwork=Windows-nätverk
@@ -44,6 +47,7 @@ global_misc=Blandade inställningar
 global_filedefault=Standardinställningar för filresurs
 global_prndefault=Standardinställningar för skrivarresurs
 global_password=Krypterade lösenord
+
 error_nosamba=Samba-serverprogrammet <tt>$1</tt> kunde inte hittas. Samba verkar inte ha installerats på ditt system, eller också är dina <a href="$2">modulinställningar</a> felaktiga.
 error_version=Webmin kunde inte hitta något versionsnummer på ditt Samba-serverprogram <tt>$1</tt>. Kontrollera i dina <a href="$2">modulinställningar</a> att du verkligen har angivit rätt sökväg.
 error_config=Inställningsfilen file $1 kunde inte hittas. Det troligaste är att Samba inte installerats på ditt system, eller också är dina <a href="$2">modulinställningar</a> felaktiga.
@@ -51,6 +55,7 @@ error_include=Webmin kan inte hantera inställningsfiler för Samba som använde
 error_delshare=Det gick inte att ta bort resursen
 error_delcopy=Resursen '$1' kopierar denna resurs
 error_savename=Det gick inte att spara filnamnet
+
 convert_title=Gör om Unix-användare till Samba-användare
 convert_msg=I detta formulär kan du synkronisera listorna med Unix- och Samba-användare. Om Samba kör med <a href=$1>krypterade lösenord</a>, kommer en separat lista med användare och lösenord att användas istället för systemets lista med användare.
 convert_noconv=Flytta inte över och ta inte bort följande användare:
@@ -62,6 +67,7 @@ convert_nopasswd=Inget lösenord
 convert_lock=Kontot låst
 convert_passwd=Använd detta lösenord
 convert_convert=Flytta över användare
+
 misc_title=Blandade inställningar
 misc_debug=Debuggningsnivå
 misc_cachecall=Cacha <tt>getwd()</tt>-anrop?
@@ -75,6 +81,7 @@ misc_chroot=<tt>chroot()</tt>-katalog
 misc_smbrun=Sökväg till <tt>smbrun</tt>
 misc_clienttime=Client time offset
 misc_readprediction=Läsa i förväg?
+
 net_title=Inställningar för Unix-nätverk
 net_idle=Väntetid före nedkoppling
 net_trustlist=Fil med betrodda datorer/användare
@@ -89,6 +96,7 @@ net_every=Skicka var
 net_maxpacket=Maximal paketstorlek
 net_listen=Lyssna på adress
 net_socket=Socket-inställningar
+
 passwd_title=Lösenordsinställningar
 passwd_encrypt=Ska krypterade lösenord användas?
 passwd_allownull=Ska tomma lösenord tillåtas?
@@ -101,11 +109,13 @@ passwd_send=Skicka
 passwd_map=Uppslagning av användarnamn
 passwd_unixuser=Unix-användare
 passwd_winuser=Windows-användare
+
 print_title=Skrivarinställningar
 print_style=Unix-utskrifter
 print_show=Visa alla skrivare?
 print_printcap=Printcap-fil
 print_cachetime=Hur länge ska skrivarstatus cachas?
+
 smb_title=Inställningar för Windows-nätverk
 smb_workgroup=Arbetsgrupp
 smb_wins=WINS-mode
@@ -132,13 +142,16 @@ smb_nowhere=Ingenstans
 smb_fromlist=Från lista ...
 smb_ip=IP-adress
 smb_asworkgroup=<b>Som arbetsgrupp</b> (valfritt)
+
 create_title=Skapa kopia
 create_msg=En kopierad resurs ärver alla standardvärden från den valda resursen. Om originalet ändras kommer kopian också att göra det.
 create_from=Resurs som ska kopieras:
 create_name=Namn på ny resurs:
+
 smbuser_title=Samba-användare
 smbuser_list=Lista över Samba-användare
 smbuser_nouser=Du har inte definierat några Samba-användare
+
 euser_title=Ändra Samba-användare
 euser_name=Användarnamn
 euser_uid=Unix-UID
@@ -155,6 +168,7 @@ euser_normal=Normal användare
 euser_nopwrequired=Ingen lösenord behövs
 euser_disable=Kontot avstängt
 euser_trust=Betrott arbetsstationskonto
+
 fmisc_title=Blandade standardinställningar för filer
 fmisc_for=För resurs <tt>$1</tt>
 fmisc_lockfile=Låsa fil?
@@ -170,6 +184,7 @@ fmisc_conncmd=Kommando vid uppkoppling
 fmisc_disconncmd=Kommando vid nedkoppling
 fmisc_rootconn=Kommando vid uppkoppling <i>som root</i>
 fmisc_rootdisconn=Kommando vid nedkoppling <i>som root</i>
+
 fname_title1=Standardvärden för filnamngivning
 fname_title2=Ändra filnamngivning
 fname_option=Inställningar för filnamngivning
@@ -184,6 +199,7 @@ fname_hide=Gömma punktfiler?
 fname_archive=Spara DOS-arkivflaggan?
 fname_hidden=Spara DOS Gömd-flagga?
 fname_system=Spara DOS systemflagga?
+
 fperm_title1=Standardvärden för filrättigheter
 fperm_title2=Ändra filrättigheter
 fperm_option=Inställningar för filrättigheter
@@ -196,6 +212,7 @@ fperm_link=Tillåta symboliska länkar som går utanför resursen?
 fperm_delro=Kunna ta bort filer som endast är läsbara?
 fperm_forcefile=Använd alltid Unix-filmode
 fperm_forcedir=Använd alltid Unix-katalogmode
+
 share_title1=Standardvärden för filresurser
 share_title2=Ändra filresurs
 share_title3=Lägg till filresurs
@@ -213,6 +230,7 @@ share_security=Säkerhet och åtkomstkontroll
 share_permission=Filrättigheter
 share_naming=Filnamngivning
 share_misc=Blandade inställningar
+
 print_title1=Standardinställningar för skrivare
 print_title2=Ändra skrivarinställningar
 print_option=Skrivarinställningar
@@ -224,6 +242,7 @@ print_delete=Kommando för att ta bort utskriftsjobb
 print_pause=Kommando för att stanna utskriftsjobb
 print_unresume=Kommando för att inte återuppta utskriftsjobb
 print_driver=Skrivardrivrutin
+
 pshare_title1=Standardvärden för skrivarresurser
 pshare_title2=Ändra skrivarresurs
 pshare_title3=Lägg till skrivarresurs
@@ -232,6 +251,7 @@ pshare_name=Resursnamn
 pshare_all=Resurs för alla skrivare
 pshare_unixprn=Unix-skrivare
 pshare_spool=Spool-katalog
+
 sec_index1=Standardvärden för åtkomst
 sec_index2=Ändra åtkomst
 sec_writable=Skrivbart?
@@ -254,12 +274,14 @@ sec_rouser=Användare som endast får läsa
 sec_rogroup=Grupper som endast får läsa
 sec_rwuser=Användare som får läsa och skriva
 sec_rwgroup=Grupper som får läsa och skriva
+
 esync_title=Användarsynkronisering
 esync_msg=Webmin kan ställas in så att ändringar av Unix-användare automatiskt också görs för motsvarande Samba-användare. Detta fungerar dock bara då Webmin-modulen <tt>Användare och grupper</tt> används för att lägga till, ta bort eller ändra användare.
 esync_add=Lägg till en Samba-användare när en Unix-användare läggs till
 esync_chg=Ändra Samba-användaren när motsvarande Unix-användare ändras
 esync_del=Ta bort Samba-användaren när motsvarande Unix-användare tas bort
 esync_apply=Ta i drift
+
 mkpass_title=Gör om användare
 mkpass_convfail=Det gick inte att göra om användare
 mkpass_msg=Gör om Unix-användare ...
@@ -268,24 +290,30 @@ mkpass_same=är redan samma
 mkpass_update=uppdateras
 mkpass_del=tas bort
 mkpass_passfail=Det gick inte att sätta lösenordet
+
 savecopy_fail=Det gick inte att skapa en kopia
 savecopy_global=Du får inte använda namnet 'global' på en resurs
 savecopy_exist=Det finns redan en resurs med namnet '$1'
+
 saveuser_fail=Det gick inte att spara användare
 saveuser_uid='$1' är inte ett giltigt Unix-UID
 saveuser_colon=Det verkliga namnet får inte innehålla tecknet :
 saveuser_home=Hemkatalogen '$1' finns inte
 saveuser_shell=$1 är inte ett giltigt skal
 saveuser_pass=Det gick inte att byta lösenord med smbpasswd: $1
+
 savefmisc_fail=Det gick inte att spara blandade inställningar
 savefmisc_number='$1' är inte ett giltigt antal uppkopplingar
+
 savefperm_fail=Det gick inte att spara filrättigheter
 savefperm_mode='$1' är inte en giltig Unix-filmod
+
 savefshare_fail=Det gick inte att spara resursen
 savefshare_nopath=Du har inte angivit någon sökväg
 savefshare_exist=Det finns redan en resurs med namnet '$1'
 savefshare_mode='$1' är inte ett giltigt resursnamn
 savefshare_global=Du får inte använda namnet 'global' på en resurs
+
 savemisc_fail=Det gick inte att spara inställningarna
 savemisc_lockdir=Katalogen som ska innehålla låskatalogen finns inte
 savemisc_logdir=Katalogen som ska innehålla loggfilen finns inte
@@ -294,10 +322,13 @@ savemisc_overlap='$1' är inte en giltig storlek för överskjutande läsning
 savemisc_chroot=chroot-katalogen '$1' finns inte
 savemisc_smbrun=smbrun-programmet '$1' finns inte eller går inte att köra
 savemisc_time='$1' är inte en giltig time offset
+
 start_err=Det gick inte att starta någon Samba-server
 start_fail=$1 misslyckades
+
 swats_fail=Det gick inte att spara användarnamn
 swats_user=SWAT-användarnamn fattas
+
 viewu_index=Uppkopplade användare
 viewu_list=Användare uppkopplade till $1
 viewu_share=Resurs
@@ -308,6 +339,7 @@ viewu_time=Kopplade upp vid
 viewu_pid=Process-ID
 viewu_msg1=Klicka på ett process-ID i listan ovan för att koppla ned användaren.
 viewu_msg2=För tillfället är ingen användare uppkopplad
+
 log_apply=Startade om Samba-servrar
 log_start=Startade Samba-servrar
 log_save_fshare=Modifierade filresurs $1
@@ -336,6 +368,7 @@ log_epass_l=Gjorde om Unix-användare till Samba-användare ($1 skapade, $2 modi
 log_copy=Kopierade resurs $2 to $1
 log_save_euser=Modifierade Samba-användare $1
 log_delete_euser=Tog bort Samba-användare $1
+
 swat_title=SWAT-inloggning
 swat_list=SWAT-inloggning
 swat_msg1=Ditt SWAT-användarnamn och -lösenord är felaktiga. Logga in igen i formuläret nedan.
@@ -346,6 +379,7 @@ swat_username=Användarnamn
 swat_password=Lösenord
 swat_login=Logga in
 swat_clear=Rensa
+
 eacl_aviol=Rättighetsöverträdelse
 eacl_np=Du har inte rättighet att
 eacl_papply=starta om denna tjänst
@@ -380,6 +414,7 @@ eacl_pafs=komma åt denna filresurs
 eacl_paps=komma åt denna skrivarresurs
 eacl_pcps=lägga till en skrivarresurs
 eacl_pcfs=lägga till en filresurs
+
 acl_apply=Kunna ta ändringar i drift?
 acl_view_all_con=Kunna se alla förbindelser?
 acl_kill_con=Kunna ta bort förbindelser?

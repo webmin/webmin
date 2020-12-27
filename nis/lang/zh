@@ -1,6 +1,7 @@
 index_title=NIS客户端和服务器
 index_return=NIS菜单
 index_enis=您的机器中没有安装所支持的NIS客户端或服务器。
+
 client_title=NIS 客户端
 client_header=NIS 客户端配置
 client_domain=NIS域
@@ -15,8 +16,10 @@ client_edomain=未输入或无效的域名
 client_eserver='$1' 不是一个有效的服务器名称
 client_eypwhich=无法连接至NIS 域
 client_ehosts='$1'不在主机文件中
+
 switch_title=客户端服务
 switch_service=服务
+
 order_= 
 order_nisplus=NIS+
 order_nis=NIS
@@ -28,6 +31,7 @@ order_hesiod=Hesiod
 order_ldap=LDAP
 order_user=用户打印机
 order_xfn=XFN
+
 server_title=NIS服务器
 server_header=NIS服务器选项
 server_boot=启动NIS服务器？
@@ -61,6 +65,7 @@ server_solaris=注意--- 在Solaris系统中，客户端和服务器NIS域通常
 server_edir=无效的源文件目录
 server_epwdir=无效的口令源文件目录
 server_enis=您的机器尚未安装所支持的NIS服务器。
+
 tables_title=NIS表
 tables_switch=编辑NIS表：
 tables_header=$2中的$1 NIS表
@@ -77,6 +82,7 @@ tables_search=搜索
 tables_nomatch=未找到任何与您的搜索匹配的记录
 tables_build=重建NIS表
 tables_buildmsg=点击此按钮从表数据来重建NIS数据库。如果您已经改变数据，您需要重建 NIS数据库，这样NIS 客户端才能接受这些更改。
+
 desc_aliases=Sendmail别名
 desc_mail=Sendmail别名
 desc_hosts=主机地址
@@ -109,6 +115,7 @@ desc_printers=打印机
 desc_ipnodes=IP节点
 desc_timezone=时区
 desc_locale=区域
+
 hosts_title=主机地址
 hosts_ip=IP地址
 hosts_name=主机名
@@ -117,6 +124,7 @@ hosts_err=保存主机失败
 hosts_eip=未输入或无效的IP地址
 hosts_ename=未输入或无效的主机名
 hosts_aliases=别名
+
 group_name=组名
 group_gid=组ID
 group_members=组成员
@@ -127,6 +135,7 @@ group_none=不需要口令
 group_encrypted=已加密的口令
 group_clear=纯文字口令
 group_err=无法保存组
+
 passwd_name=用户名
 passwd_uid=用户ID
 passwd_real=真实姓名
@@ -164,6 +173,7 @@ passwd_emax=无效的最大天数
 passwd_emin=无效的最小天数
 passwd_einactive=无效的未使用天数
 passwd_eexpiry=无效的过期日期
+
 services_name=服务名称
 services_proto=协议
 services_port=端口
@@ -172,6 +182,7 @@ services_header=Inetd网络服务选项
 services_err=无法保存服务
 services_ename=未输入或无效的服务名称
 services_eport=未输入或无效的端口
+
 protocols_name=协议名称
 protocols_number=编号
 protocols_aliases=别名
@@ -180,6 +191,7 @@ protocols_header=网络协议选项
 protocols_err=无法保存协议
 protocols_ename=未输入或无效的名称
 protocols_enumber=未输入或无效的编号
+
 netgroup_name=网络组名
 netgroup_members=成员
 netgroup_title=网络组
@@ -194,6 +206,7 @@ netgroup_ename=未输入或无效的网络组名
 netgroup_ehost=行$1中未输入或无效的主机
 netgroup_euser=行$1中未输入或无效的用户
 netgroup_edom=行$1中未输入或无效的NIS域
+
 ethers_mac=乙太网地址
 ethers_ip=IP地址
 ethers_title=乙太网地址
@@ -201,6 +214,7 @@ ethers_header=乙太网映射选项
 ethers_err=无法保存乙太网地址
 ethers_emac=无效的乙太网地址
 ethers_eip=无效的 IP地址
+
 rpc_name=程序名
 rpc_number=编号
 rpc_aliases=别名
@@ -209,6 +223,7 @@ rpc_header=RPC 程序详节
 rpc_err=无法保存RPC 程序
 rpc_ename=未输入或无效的程序名
 rpc_enumber=未输入或无效的编号
+
 networks_title=网络地址
 networks_ip=IP地址
 networks_name=网络名称
@@ -217,6 +232,7 @@ networks_err=无法保存网络
 networks_eip=未输入或无效的IP 地址
 networks_ename=未输入或无效的名称
 networks_aliases=别名
+
 netmasks_net=网络地址
 netmasks_mask=网络掩码
 netmasks_title=网络掩码
@@ -224,6 +240,7 @@ netmasks_header=网络掩码细节
 netmasks_err=无法保存网络掩码
 netmasks_enet=未输入或无效的网络地址
 netmasks_emask=未输入或无效的网络掩码
+
 aliases_from=地址
 aliases_to=别名
 aliases_title=Sendmail别名
@@ -231,6 +248,7 @@ aliases_header=Sendmail 别名细节
 aliases_err=无法保存别名
 aliases_efrom=未输入或无效的地址
 aliases_eto=未输入to地址
+
 security_title=服务器安全
 security_header=NIS服务器安全选项
 security_ok=保存并应用

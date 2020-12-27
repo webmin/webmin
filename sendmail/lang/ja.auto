@@ -2,6 +2,7 @@ index_version2=Sendmailバージョン $1、構成 $2
 index_xversion=Sendmailバージョン $1
 index_version=Sendmail構成 $1
 index_sendmail=Sendmail
+
 opts_gecos=ユーザーの本名のメールを受け入れますか？
 opts_hops=最大メールホップカウント
 opts_daemon=SMTPポートオプション
@@ -12,16 +13,20 @@ opts_qso=メールキューを並べ替える
 opts_priority=優先度
 opts_host=ホスト名
 opts_time=受信時間
+
 aliases_enofile=Sendmail構成にエイリアスファイルが定義されていません
 aliases_type6=フィルターファイル $1を適用
 aliases_toomany=このページに表示するには、システムのメールエイリアスが多すぎます。
 aliases_go=一致するエイリアスを検索：
 aliases_delete=選択したエイリアスを削除
+
 aform_ecannot=このエイリアスの編集は許可されていません
 aform_type6=フィルターファイルを適用する
 aform_file=エイリアスファイルに追加
 aform_cmt=説明
+
 afile_ewrite=アドレスファイルへの書き込みに失敗しました： $1
+
 ffile_title=フィルターファイルの編集
 ffile_desc=以下のフォームを使用して、ファイル $1にフィルタールールを設定します。
 ffile_efile=$1の編集は許可されていません。
@@ -37,6 +42,7 @@ ffile_other=それ以外の場合は $1に転送します
 ffile_err=フィルターファイルを保存できませんでした
 ffile_ematch=一致しない
 ffile_eaction=転送先アドレスがありません
+
 rfile_desc2=次のような行を追加して、自動返信で使用されるデフォルトに追加または置換するメールヘッダーを設定することもできます。<br><tt> From：foo@bar.com </tt><br> <tt>Subject：On holiday</tt> <br>メッセージの上部にあり、1行の空白行で本文と区切られています。
 rfile_replies=返信を追跡してメールのループを防ぎますか？
 rfile_none=番号
@@ -52,60 +58,81 @@ rfile_from=差出人：返信用アドレス
 rfile_auto=自動（受信者のアドレスに基づいて）
 rfile_efrom=差出人：アドレス
 rfile_fromdesc=自動方法は信頼できない場合があるため、From：アドレスは可能な限り常に指定する必要があります。
+
 asave_etype6=フィルターファイル '$1'は無効です
 asave_esame=webminログインと同じ名前のエイリアスのみを作成できます
+
 adelete_err=エイリアスを削除できませんでした
 adelete_enone=何も選択されていません
 adelete_ecannot=エイリアス $1を削除することはできません
+
 masq_ndomains=偽装しないドメイン
+
 virtusers_efeature=sendmail構成では、アドレスマッピング（<tt>virtuser</tt>）機能が有効になっていません。 <a href='$1'>ここをクリック</a>してsendmail機能を設定します。
 virtusers_createfile=または、この機能を有効にしたばかりの場合は、<a href='$1'>ここをクリック</a>してファイルを作成します。
 virtusers_cmt=説明
 virtusers_toomany=このページに表示するには、システムのアドレスマッピングが多すぎます。
 virtusers_go=一致するアドレスマッピングを検索します。
 virtusers_delete=選択したアドレスマッピングを削除する
+
 vform_cmt=説明
 vform_err_unavailable=利用できません
 vform_err_tempfail=一時的な故障
 vform_err_protocol=プロトコルエラー
+
 vsave_esame=ユーザー名のアドレスマッピングのみを作成できます
+
 vdelete_err=アドレスマッピングを削除できませんでした
 vdelete_ecannot=$1のマッピングを削除することはできません
+
 mailers_efeature=sendmail構成では、ドメインルーティング（<tt>mailertable</tt>）機能が有効になっていません。 <a href='$1'>ここをクリック</a>してsendmail機能を設定します。
 mailers_desc3=また、各ドメインの<a href='$1'>リレードメイン</a>リストにもエントリが必要です。
 mailers_delete=選択したドメインルートを削除する
+
 mform_host2=ホストまたはドメイン
 mform_domain2=ドメイン内のすべてのホスト
 mform_domain3=ドメインとそのすべてのホスト
+
 mdelete_err=ドメインルーターを削除できませんでした
 mdelete_ecannot=$1のルートを削除することはできません
+
 generics_efeature=sendmail構成では、送信アドレスマッピング（<tt>generics</tt>）機能が有効になっていません。 <a href='$1'>ここをクリック</a>してsendmail機能を設定します。
 generics_toomany=システムの発信アドレスが多すぎるため、このページに表示できません。
 generics_go=一致する発信アドレスを検索します。
 generics_delete=選択した送信アドレスを削除する
+
 gsave_ecannot3=この送信アドレスを保存することはできません
 gsave_ealready=「$1」の発信アドレスマッピングは既に存在します
+
 gdelete_err=発信アドレスマッピングを削除できませんでした
 gdelete_ecannot=$1のマッピングを削除することはできません
+
 domains_efeature=sendmail構成では、ドメインマッピング（<tt>domaintable</tt>）機能が有効になっていません。 <a href='$1'>ここをクリック</a>してsendmail機能を設定します。
 domains_delete=選択したドメインマッピングを削除する
+
 dsave_ealready=「$1」のドメインマッピングは既に存在します
+
 ddelete_err=ドメインマッピングを削除できませんでした
 ddelete_ecannot=$1のマッピングを削除することはできません
+
 access_efeature=sendmail構成では、スパム制御（<tt>access_db</tt>）機能が有効になっていません。 <a href='$1'>ここをクリック</a>してsendmail機能を設定します。
 access_toomany=このページに表示するには、システム上のスパム制御ルールが多すぎます。
 access_go=一致するスパム制御ルールを検索：
 access_delete=選択したスパム制御ルールを削除
+
 sform_tag=対戦
 sform_tag_=すべて
 sform_tag_from=差出人：アドレス
 sform_tag_to=宛先：アドレス
 sform_tag_connect=接続情報
 sform_tag_spam=スパム情報
+
 ssave_ealready=「$1」のスパム制御ルールは既に存在します
 ssave_ecannot2=このスパム制御ルールを保存することはできません
+
 sdelete_err=スパム制御ルールを削除できませんでした
 sdelete_ecannot=$1のルールを削除することはできません
+
 mailq_count=$1メッセージ
 mailq_cc=Cc
 mailq_subject=件名
@@ -120,17 +147,22 @@ mailq_search=キューに入っているメッセージを見つける
 mailq_quar=検疫済み
 mailq_refresh=メールキューを更新
 mailq_refreshdesc=このページを再読み込みして、メールキューの現在の状態を表示します。
+
 flushq_desc2=$1個の選択されたメッセージの配信試行を強制します。
 flushq_ecannot=メールキューをフラッシュすることはできません
+
 searchq_title=キューの検索結果
 searchq_none=キューに入れられたメッセージは見つかりませんでした。
+
 delq_titles=メッセージを削除する
 delq_force=とにかく強制削除
 delq_ecannot2=このメッセージは削除できません
 delq_rusure=選択した $1個のキューに入っているメッセージを削除してもよろしいですか？
 delq_confirm=メッセージを削除する
+
 boxes_toomany=システム上のユーザーが多すぎて、すべてのメールボックスをリストできません。
 boxes_go=ユーザーのメールを表示：
+
 mail_for2=ユーザー $1の場合
 mail_euserexists=このUnixユーザーは存在しません
 mail_mark=としてマークする：
@@ -142,6 +174,7 @@ mail_move=へ引っ越す：
 mail_copy=コピー先：
 mail_rfc=行から
 mail_eexists=メッセージはもう存在しません！
+
 view_desc2=ユーザー $2のメッセージ $1
 view_desc3=メッセージ $1
 view_body=メッセージ本文
@@ -160,10 +193,13 @@ view_egone=このメッセージはもう存在しません
 view_afile=添付ファイル名
 view_atype=添付ファイルの種類
 view_asize=ファイルサイズ
+
 enew_title=メールを編集
 reply_mailforward=転送されたメッセージ
 reply_body=メッセージ本文
+
 send_epath=Sendmail実行可能ファイル $1は存在しません。
+
 delete_title=メールを削除
 delete_rusure=$1の選択したメッセージを $2から削除してもよろしいですか？大きなメールファイルの場合、これには時間がかかる場合があります。削除が完了するまで、他のアクションは実行されません。
 delete_rusure2=このメッセージを $1から削除してもよろしいですか？大きなメールファイルの場合、これには時間がかかる場合があります。削除が完了するまで、他のアクションは実行されません。
@@ -174,6 +210,7 @@ delete_emoveuser=メールを移動するユーザーが存在しません
 delete_emovecannot=指定されたユーザーにメールを移動することはできません
 delete_emovenone=移動するメールが選択されていません
 delete_nobutton=ボタンがクリックされていません
+
 search_efield=検索タイプを選択する必要があります。
 search_ewhat=行 $1に入力されたテキストと一致するテキストはありません
 search_enone=検索条件が入力されていません
@@ -183,9 +220,11 @@ search_results4=検索に一致する $1メールメッセージ ..
 search_local=ローカルフォルダー内
 search_all=すべてのフォルダー内
 search_eboolean=「and」と「or」の両方を使用したブール検索はサポートされていません
+
 file_ecannot=このファイルを編集することはできません
 file_ealias=エイリアスファイルの行の形式が無効です： $1
 file_etab=マップファイルの行の形式が無効です： $1
+
 acl_ports=ネットワークポートを編集できますか？
 acl_manual=ファイルを手動で編集できますか？
 acl_flushq=メールキューをフラッシュできますか？
@@ -207,6 +246,7 @@ acl_usersm=一致するユーザー
 acl_asame=ユーザー名と同じ
 acl_usersu=UIDが範囲内
 acl_spam=このユーザーが編集できるスパム制御アドレス
+
 log_ports=ネットワークポートを変更する
 log_movemail=$1メッセージを $2から $3に移動しました
 log_feature_create=M4エントリ $1を追加しました
@@ -220,6 +260,7 @@ log_delete_domains=$1ドメインマッピングを削除しました
 log_delete_accesses=$1のスパム制御エントリを削除しました
 log_delete_generics=$1の発信アドレスを削除しました
 log_delete_mailers=$1ドメインルートを削除しました
+
 match_status=ステータス一致
 match_headers=ヘッダーが一致
 match_=-----------------
@@ -232,6 +273,7 @@ match_!status=ステータスが一致しません
 match_!body=体が一致しません
 match_!size=サイズがより小さい
 match_!headers=ヘッダーが一致しません
+
 features_title=Sendmail M4の構成
 features_desc=このページには、Sendmail M4構成ファイル $1からの関連エントリがリストされ、そこから実際の構成ファイル $2が作成されます。
 features_type=エントリータイプ
@@ -251,6 +293,7 @@ features_efeatures=Sendmail M4構成ベースディレクトリ $2がシステ�
 features_econfig=Sendmail M4ベースディレクトリとM4構成ファイルの場所は、<a href='$1'>モジュール構成</a>でまだ設定されていません。ソースからSendmailをインストールした場合、これらは元のソースディレクトリにあるはずです。
 features_move=移動する
 features_manual=ファイルを手動で編集する
+
 feature_add=構成エントリを追加
 feature_edit=構成エントリの編集
 feature_header=M4構成エントリの詳細
@@ -271,12 +314,15 @@ feature_emailer=メーラー $1は既に存在します
 feature_eostype=OSタイプはすでに $1として定義されています
 feature_manual=M4ファイルの編集
 feature_mdesc=このページでは、Sendmail M4構成ファイル $1を手動で編集できます。編集では構文チェックが行われないため、注意してください。
+
 feat_access_db=スパム制御ファイル
 feat_virtusertable=アドレスマッピング
 feat_mailertable=ドメインルーティング
 feat_genericstable=発信アドレス
 feat_domaintable=ドメインマッピング
+
 mailer_local=ローカルUnix配信
+
 build_title=Sendmail設定の再構築
 build_em4=Sendmail構成ファイルの再構築に必要なコマンド $1がシステムで見つかりませんでした。
 build_ebuild=構成の構築に失敗しました： $1
@@ -285,13 +331,16 @@ build_rusure2=[Sendmailオプション]ページでSendmailに変更を加えた
 build_ok=はい、今すぐ交換してください
 build_diff=Sendmail構成ファイルに次の変更が加えられます。
 build_nodiff=sendmail構成ファイルは既に最新です。
+
 stop_err=sendmailを停止できませんでした
 stop_ecannot=sendmailを停止することはできません
 stop_epid=Sendmailが実行されていないようです
 restart_epids=sendmailプロセスが見つかりませんでした
 restart_ekill=sendmailプロセスのシグナル送信に失敗しました： $1
+
 start_err=sendmailを開始できませんでした
 start_ecannot=sendmailを開始することはできません
+
 ports_title=ネットワークポート
 ports_name=ポート名
 ports_addr=アドレスを聞く

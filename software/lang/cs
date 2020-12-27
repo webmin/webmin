@@ -16,6 +16,7 @@ index_all=Všechny balíčky
 index_return=seznam balíčků
 index_treturn=strom balíčku
 index_tree=Strom balíčku
+
 search_title=Vyhledávání balíčků
 search_nomatch=Nebyl vybrán žádný balíček $1
 search_none=Nenalezeno
@@ -28,6 +29,7 @@ search_esearch=Neuvedli jste nic k hledání!
 search_delete=Odinstalovat vybrané balíčky
 search_selall=Vybrat vše
 search_invert=Inverovat výběr
+
 edit_title=Editování balíčku
 edit_details=Detail balíčku
 edit_desc=Popis
@@ -42,6 +44,7 @@ edit_list=Seznam souborů
 edit_uninst=Odinstalovat
 edit_return=Detaily balíčku
 edit_egone=Balíček není nainstalován
+
 list_title=balíčky souborů
 list_files=Soubory v balíčku $1
 list_path=Cesta
@@ -53,6 +56,7 @@ list_status=Stav
 list_ok=OK
 list_view=(Náhled)
 list_eview=Chyba při otevírání $1 : $2
+
 delete_err=Nepodařilo se smazat balíček $1
 delete_epack=balíček $1 neexistuje
 delete_title=Smazat balíček
@@ -62,6 +66,7 @@ delete_ok=Smazat!
 delete_nodeps=Ignorovat závislosti?
 delete_noscripts=Přeskočit skripty pro odinstalování?
 delete_efile=Nesprávný temp soubor ke smazání
+
 file_title=Informace o souboru
 file_notfound=Informace o $1 nejsou k dispozici :-(
 file_path=Cesta
@@ -75,6 +80,7 @@ file_pack=balíček
 file_class=Třída
 file_desc=Popis
 file_none=Nic
+
 install_err=Nepodařilo se nainstalovat balíček
 install_elocal=Nebyl zadán žádný lokální soubor
 install_elocal2='$1' neexistuje
@@ -87,6 +93,7 @@ install_title=Nainstalovat balíček
 install_header=Instalovat balíček
 install_packs=balíček(y) k instalaci
 install_ok=Instalovat
+
 do_err=Nepodařilo se nainstalovat balíček $1
 do_title=Instalovat balíček
 do_efailed=Chyba při instalaci : $1
@@ -103,10 +110,12 @@ do_arch=Architektura
 do_inst=Instalováno
 do_none=Nic
 do_files=Soubory balíčku
+
 pkgadd_root=Kořenový adresář
 pkgadd_eroot=Kořenový adresář '$1' neexistuje!
 pkgadd_unknown=Neznámý
 pkgadd_manager=Manažer balíčku systému V
+
 rpm_upgrade=Aktualizovat balíček?
 rpm_replacepkgs=Přepsat balíček?
 rpm_nodeps=Ignorovat závislosti?
@@ -124,22 +133,26 @@ rpm_find=Prohledává se rpmfind.net ..
 rpm_findrpm=Název souboru balíčku
 rpm_finddistro=Popis
 rpm_finddesc=Popis
+
 bsd_unknown=Neznámý
 bsd_scripts=Spustit před a po instalační skripty?
 bsd_force=Povolit instalci, jestliže chybí předpoklady?
 bsd_manager=$1 manažer balíčku
+
 slack_unclass=Různé
 slack_unknown=Neznámý
 slack_missing=Chybějící
 slack_root=Kořenový adresář
 slack_eroot=Kořenový adresář chybí nebo je nesprávný
 slack_manager=Slackware manažer balíčku
+
 debian_unknown=Neznámý
 debian_depends=Ignorovat problémy v závislostech?
 debian_conflicts=Ignorovat konflikty balíčku?
 debian_overwrite=Přepsat soubory z jiných balíčků?
 debian_downgrade=Změnit novějsí balíček starým?
 debian_manager=Debian DPKG
+
 log_install_package=Nainstalován balíček $1
 log_install_apt_l=Nainstalován balíček(ky) $1 z APT
 log_install_apt=Nainstalován $2 balíček(ky) z APT
@@ -154,6 +167,7 @@ log_upgrade_yum_l=Upgradováno balíčků $1 z YUM
 log_upgrade_yum=Upgradováno $2 balíčků z YUM
 log_check_rhn_l=Upgradováno balíčků $1 z Redhat Network
 log_check_rhn=Upgradováno $2 balíčků z Redhat Network
+
 rhn_input=Balíček ze sítě Redhat
 rhn_find=Hledat RHN ..
 rhn_install=Instalace balíček(ků) pomocí příkazu $1 ..
@@ -181,6 +195,7 @@ rhn_eproxy=Chybějící nebo nesprávný proxy server
 rhn_skip=Přeskočitbalíčky obsahující
 rhn_nonefound=68dné balíčky nejsou k updatování.
 rhn_name=Redhat Network
+
 apt_input=Balíček z APT
 apt_install=Instalace balíček(ků) pomocí příkazu $1 ..
 apt_ok=.. instalace proběhla úspěšně.
@@ -206,6 +221,7 @@ apt_search=Hledat balíčky, které obsahují :
 apt_find=Hledat APT ..
 apt_title=Hledat APT
 apt_name=APT
+
 yum_input=Balíček z YUM
 yum_install=Probíhá instalace balíčku(ů) pomocí příkazu $1 ..
 yum_ok=.. instalace je kompletní.
@@ -225,6 +241,7 @@ yum_title=Prozkoumat YUM
 yum_name=YUM
 yum_enable=Povolit repozitář:
 yum_none=&lt;Nic&gt;
+
 urpmi_name=URPMI
 urpmi_input=Balíček z URPMI
 urpmi_find=Procházet URPMI ..
@@ -239,6 +256,7 @@ urpmi_upgradeok=.. je kompletní.
 urpmi_install=Probíhá instalace balíčku(ů) pomocí příkazu $1 ..
 urpmi_ok=.. instalace je kompletní.
 urpmi_failed=.. chybná instalace!
+
 rpm_missing=Chybějící
 rpm_checkfail=Chyba kontroly $1
 rpm_md5=MD5
@@ -250,6 +268,7 @@ rpm_user=vlastník
 rpm_perm=práva
 rpm_group=vlastnická skupina
 rpm_erpm=RPM $1 není nalezen : $2
+
 soft_reg=Obyčejný soubor
 soft_dir=Adresář
 soft_spec=Speciální soubor
@@ -261,6 +280,7 @@ soft_euncompress=Soubor je komprimován, ale <tt>dekomprimační</tt> příkaz n
 soft_euncmsg=Chyba při dekomprimaci souboru : $1
 soft_egzip=Soubor je za gzipován, ale gzip příkaz nebyl ve vašem systému nalezen.
 soft_egzmsg=Chyba při odgzipování souboru : $1
+
 aix_unknown=Neznámý
 aix_device=VSTUPNÍ zařízení / adresář pro program
 aix_software=SOFTWARE k instalaci
@@ -278,6 +298,7 @@ aix_accept=AKCEPTOVAT souhlas s novou licencí?
 aix_license=Nahlédnout na souhlas s novou LICENCÍ?
 aix_clean=Vyčistit instalační nezdary?
 aix_manager=AIX manažer balíčků
+
 emerge_input=Od Portage repositáře
 emerge_find=Hledat ..
 emerge_install=Instalace balíčku za pomoci příkazu $1 ..
@@ -293,6 +314,7 @@ emerge_noreplace=Nahradit existující balíčky?
 emerge_onlydeps=Instalovat pouze závislosti?
 emerge_title=Vyhledat transport
 emerge_name=Transport
+
 cygwin_fmissing=Chybí soubor
 cygwin_lmissing=Soubor, na který se odkazuje link, chybí
 cygwin_estat=Chyba při stati souboru: $1
@@ -301,6 +323,7 @@ cygwin_elstat=Chyba při stati symbolického linku: $1
 cygwin_badpostscript=Upozornění: tento skript nevypadá, že by byl spuštěn
 cygwin_pkgexists=Balíček $1 již existuje.
 cygwin_warnuse=Upozornění: Toto není oficiální rozhraní pro správu Cygwin softwaru. Používáte jej na vlastní riziko.
+
 deletes_err=Chyba při mazání balíčků
 deletes_enone=Nebyly vybrány žádné balíčky
 deletes_title=Smazat balíčky
@@ -311,6 +334,7 @@ deletes_failed2=Při odinstalování se stala chyba : $1
 deletes_success2=.. odinstalování je kompletní.
 deletes_rusure=Určitě chcete odinstalovat balíčky $1 ?
 deletes_ok=Smazat je všechny
+
 csw_input=Balíček z CSW
 csw_install=Instaluje se balíček(ky) pomocí příkazu $1 ..
 csw_ok=.. instalace je kompletní.
@@ -325,18 +349,21 @@ csw_name=CSW
 csw_form=Upgrade balíčků
 csw_upgrade=Upgrade všech nainstalovaných balíčků
 csw_updatedesc=Provádí se upgrade všech nainstalovaných balíčků pomocí příkazu $1 ..
+
 find_title=Vyhledat balíček
 find_search=Najít balíčky, které budou odpovídat:
 find_name=Název
 find_version=Verze
 find_desc=Popis
 find_none=Nebyly nalezeny žádné balíčky, které by vyhovovaly vašemu zadání.
+
 msi_users=Vytvořit novou aplikaci, která je k dispozici pro
 msi_users0=Nikoho
 msi_users1=Platný uživatel
 msi_users2=Všichni uživatelé
 msi_missing=Neexistuje
 msi_size=Špatná velikost
+
 hpux_create_target_path=Vytvořit cílovou cestu?
 hpux_mount_all_filesystems=Připojit všechny souborové systémy?
 hpux_reinstall=Reinstalovat?

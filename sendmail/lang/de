@@ -11,6 +11,7 @@ index_version2=Sendmail Version $1, Konfiguration $2
 index_xversion=Sendmail Version $1
 index_version=Sendmail Konfiguration $1
 index_sendmail=Sendmail
+
 opts_title=Sendmail-Einstellungen
 opts_ecannot=Sie haben keine Berechtigung, Sendmail-Einstellungen zu bearbeiten
 opts_ds=Sende ausgehende Mail durch Host
@@ -57,6 +58,7 @@ opts_qso=Sort mail queue by
 opts_priority=Priorität
 opts_host=Hostname
 opts_time=Zeit empfangen
+
 aliases_title=Mail-Aliases
 aliases_ecannot=Sie haben keine Berechtigung, Aliases zu bearbeiten.
 aliases_enofile=Es ist kein Aliases Config-File in Ihrer Sendmail-Konfiguration definiert!
@@ -73,6 +75,7 @@ aliases_return=Alias-Liste
 aliases_toomany=Sie verfügen über zu viele Aliase, Sie können auf dieser Seite nicht mehr angezeigt werden.
 aliases_go=Finde Aliases welche mit übereinstimmen:
 aliases_delete=Lösche ausgewählte Aliase
+
 aform_ecannot=Sie haben keine Berechtigung die Aliasliste zu bearbeiten!
 aform_type0=Keine
 aform_type1=E-Mail-Adresse
@@ -90,11 +93,13 @@ aform_val=Alias zu
 aform_afile=Bearbeite..
 aform_return=alias
 aform_cmt=Beschreibung
+
 afile_title=Bearbeite Addressdatei
 afile_desc=Verwenden Sie den unteren Textbereich um die Adressen in der Datei $1 zu editieren.
 afile_efile=Sie haben keine Berechtigung die Datei $1 zu editieren.
 afile_undo=Rückgängig
 afile_ewrite=Konnte nicht in die Adressdatei $1 schreiben.
+
 ffile_title=Bearbeite Filterdatei
 ffile_desc=Verwenden Sie den unteren Textbereich um die Filterregeln in der Datei $1 zu definieren.
 ffile_efile=Sie haben keine Berechtigung die Datei $1 zu editieren.
@@ -110,6 +115,7 @@ ffile_other=Andererseits leite weiter an $1
 ffile_err=Konnte Filterdatei nicht speichern
 ffile_ematch=Vermisse was..
 ffile_eaction=Vermisse an zu leitende Mail Adresse
+
 rfile_title=Bearbeite die Autoreply Datei
 rfile_desc=Verwenden Sie den Textbereich unten um die autoreply Nachricht in der Datei $1 zu editieren. Die Anzeige kann die Makros enthalten $SUBJECT, $FROM, $DATE und $BODY das erweitert wird, wenn autoreply aktiviert wird.
 rfile_desc2=Sie können den Mail Header auch so setzen, dass die normal verwendeten Absenderangaben ersetze werden. Fügen Sie folgende Linien der Textbox hizu: <br><tt>From: foo@bar.com</tt><br><tt>Subject: In den Ferien</tt><br>an der Oberseite der Anzeige, getrennt vom body durch eine einzelne Leerzeile.
@@ -129,6 +135,7 @@ rfile_from=Absenderadresse für Antwort (From:)
 rfile_auto=Automatisch (basierend auf der Empfängeradresse)
 rfile_efrom=Fehlende Absenderadresse (From:)
 rfile_fromdesc=Eine Absenderadresse (From:) sollte immer, wenn möglich, angegeben werden, da die automatische Methode ansonsten nicht zuverlässig sein könnte.
+
 asave_err=Das Speichern des Alias schlug fehl
 asave_ecannot2=Sie haben keine Berechtigung, Aliases zu bearbeiten.
 asave_ecannot=Sie haben keine Berechtigung, Aliases zu bearbeiten
@@ -145,9 +152,11 @@ asave_etype5=Datei '$1' für automatische Antwort ist entweder ungültig oder ex
 asave_etype4none=Kein Programm angegeben
 asave_etype6=Filterdatei '$1' ist nicht gültig!
 asave_esame=Sie sind nicht berechtigt, einen Alias welcher mit Ihrem Webmin Login identisch ist, zu erstellen.
+
 adelete_err=Löschen der Aliase fehlgeschlagen
 adelete_enone=Keine Ausgewählt
 adelete_ecannot=Sie haben keine Berechtigung, daß Alias $1 zu löschen
+
 cws_title=Lokale Domänen
 cws_ecannot=Sie haben keine Berechtigung, lokale Domänen zu bearbeiten
 cws_domains=Domänen die von diesem Server behandelt werden
@@ -156,6 +165,7 @@ cws_desc2=Beachten Sie, dass es normalerweise nicht ausreicht, eine Domäne einf
 cws_err=Fehler beim Speichern der lokalen Domänen
 cws_ehost='$1' ist kein gültiger Host- oder Domänenname
 cws_eip='$1' ist eine IP-Adresse, keine Domäne
+
 masq_title=Domänenmaskierung
 masq_ecannot=Sie haben keine Berechtigung, die Maskierung zu konfigurieren
 masq_domain=Maskiere als Domäne
@@ -167,12 +177,14 @@ masq_err=Fehler beim Speichern der Domänenmaskierung
 masq_edomain='$1' ist keine gültige Domäne zur Maskierung
 masq_ehost='$1' ist kein gültiger Host- oder Domänenname
 masq_eip='$1' ist eine IP-Adresse, keine Domäne
+
 trusts_title=Vertraute Benutzer
 trusts_ecannot=Sie haben keine Berechtigung, vertraute Benutzer zu bearbeiten
 trusts_users=Lokale Benutzer, denen von Sendmail getraut wird
 trusts_desc=Wenn ein lokaler Benutzer versucht E-Mails zu versenden, wird Sendmail ihm nur gestatten eine andere Adresse unter <TT>From:</TT> anzugeben, wenn er in der Liste links steht. Diese Einschränkung hält Benutzer davon ab, gefälschte <tt>From:</TT>-Adressen in E-Mails zu benutzen, die von Ihrem System aus gesendet werden.
 trusts_err=Fehler beim Speichern der vertrauten Benutzer
 trusts_euser='$1' ist kein gültiger Benutzer
+
 virtusers_title=Adressenverknüpfung
 virtusers_ecannot=Sie haben keine Berechtigung, die Adressenverknüpfung zu bearbeiten
 virtusers_efeature=Ihre Sendmail Konfiguration hat das Adress-Mapping (<tt>virtuser</tt>) feature nicht aktiviert. <a href='$1'>Klicken Sie hier</a> um das Sendmail feature zu aktivieren.
@@ -190,6 +202,7 @@ virtusers_return=Adressenverknüpfungsliste
 virtusers_toomany=Sie verfügen über zu viele Adress-Mappings, Sie können auf dieser Seite nicht mehr angezeigt werden.
 virtusers_go=Suche Adress-Mappings:
 virtusers_delete=Lösche ausgewählte Adress-Mappings
+
 vform_edit=Verknüpfung bearbeiten
 vform_create=Verknüpfung erstellen
 vform_for=Mail für
@@ -206,6 +219,7 @@ vform_err_tempfail=Vorübergehender Ausfall
 vform_err_protocol=Protokollfehler
 vform_end=Zum Ende gehen
 vform_ecannot=Sie haben keine Berechtigung, diese Adressenverknüpfung zu bearbeiten
+
 vsave_ecannot=Sie haben keine Berechtigung, die Adressenverknüpfung zu bearbeiten
 vsave_ecannot2=Sie haben keine Berechtigung, diese Adressenverknüpfung zu bearbeiten
 vsave_emax=Sie haben keine Berechtigung, mehr als $1 Adressenverknüpfungen zu erstellen
@@ -221,8 +235,10 @@ vsave_eaddr='$1' ist keine gütige Adresse
 vsave_ecannot4=Sie haben keine Berechtigung, Domänenverknüpfungen zu erstellen
 vsave_edomdom=Es nur eine Domäne kann auf eine andere Domäne umgeleitet werden
 vsave_ecannot5=Sie haben keine Berechtigung, eine Verknüpfung zu definieren, die einen Fehler zurück gibt
+
 vdelete_err=Fehlgeschlagen Adress-Mappings zu löschen
 vdelete_ecannot=Es ist ihnen nicht erlaubt das Mapping für $1 zu löschen
+
 mailers_title=Domänen-Routing
 mailers_cannot=Sie haben keine Berechtigung, das Domänen-Routing zu bearbeiten
 mailers_edirective=Ihre Sendmail-Konfiguration hat nicht die benötigte Direktive für Domänen-Routing.
@@ -236,6 +252,7 @@ mailers_delivery=Auslieferung
 mailers_to=Sende an..
 mailers_return=Domänen-Routing-Liste
 mailers_delete=Lösche ausgewählte Domain Routen
+
 mform_edit=Routing bearbeiten
 mform_create=Routing erstellen
 mform_for=Mail für
@@ -259,12 +276,15 @@ mform_procmail=Procmail
 mform_mail11=DECnet mail11
 mform_error=Fehler
 mform_ecannot=Sie haben keine Berechtigung, das Domänen-Routing zu bearbeiten
+
 msave_ecannot=Sie haben keine Berechtigung, das Domänen-Routing zu bearbeiten
 msave_err=Fehler beim Speichern des Domänen-Routings
 msave_edomain='$1' ist kein gültiger Host oder Domäne
 msave_edup=Es ist bereits Domänen-Routing für '$1' definiert
+
 mdelete_err=Fehlgeschlagen Domain Router zu löschen
 mdelete_ecannot=Es ist Ihnen nicht erlaubt die Route für $1 zu löschen
+
 generics_title=Ausgehende Adressen
 generics_cannot=Sie haben keine Berechtigung, ausgehende Adressen zu bearbeiten
 generics_econfig=Ihre Sendmail-Konfiguration hat nicht die benötigte Direktive für ausgehende Adressenverknüpfung.
@@ -278,11 +298,13 @@ generics_return=Adressenverknüpfungsliste
 generics_toomany=Sie verfügen über zu viele ausgehende Adressen, Sie können auf dieser Seite nicht mehr angezeigt werden.
 generics_go=Suche ausgehende Adressen:
 generics_delete=Delete Selected Outgoing Addresses
+
 gform_edit=Verknüpfung bearbeiten
 gform_create=Verknüpfung erstellen
 gform_from=Mail von
 gform_to=Ändern zu
 gform_ecannot=Sie haben keine Berechtigung, diese ausgehende Adresse zu bearbeiten
+
 gsave_ecannot=Sie haben keine Berechtigung, ausgehende Adressen zu bearbeiten
 gsave_ecannot2=Sie haben keine Berechtigung, diese ausgehende Adresse zu bearbeiten
 gsave_ecannot3=You are not allowed to save this outgoing address
@@ -291,8 +313,10 @@ gsave_efrom='$1' ist keine gültige Absenderadresse
 gsave_ematch=Die Absenderadresse entspricht nicht '$1'
 gsave_eto='$1' ist keine gültige neue Adresse
 gsave_ealready=An outgoing address mapping for '$1' already exists
+
 gdelete_err=Failed to delete outgoing address mappings
 gdelete_ecannot=You are not allowed to delete the mapping for $1
+
 cgs_title=Ausgehende Domänen
 cgs_ecannot=Sie haben keine Berechtigung, ausgehende Domänen zu bearbeiten
 cgs_header=Domänen von ausgehenden Adressen
@@ -300,6 +324,7 @@ cgs_desc=Abgesehen von E-Mails, die von lokalen Benutzern versendet werden, wird
 cgs_err=Fehler beim Speichern von ausgehenden Domänen
 cgs_ehost='$1' ist kein gültiger Host- oder Domänenname
 cgs_eip='$1' ist eine IP-Adresse, keine Domäne
+
 domains_title=Domänenverknüpfung
 domains_ecannot=Sie haben keine Berechtigung, die Domänenverknüpfung zu bearbeiten
 domains_econfig=Ihre Sendmail-Konfiguration hat nicht die benötigte Direktive für Domänenverknüpfung.
@@ -310,17 +335,21 @@ domains_from=Von Domäne..
 domains_to=Zu Domäne..
 domains_return=Domänenverknüpfungsliste
 domains_delete=Delete Selected Domain Mappings
+
 dform_edit=Verknüpfung bearbeiten
 dform_create=Verknüpfung erstellen
 dform_from=Von Domäne
 dform_to=Zu Domäne
 dform_ecannot=Sie haben keine Berechtigung, die Domänenverknüpfung zu bearbeiten
+
 dsave_ecannot=Sie haben keine Berechtigung, die Domänenverknüpfung zu bearbeiten
 dsave_err=Fehler beim Speichern der Domänenverknüpfung
 dsave_edomain='$1' ist kein gültiger Domänenname
 dsave_ealready=A domain mapping for '$1' already exists
+
 ddelete_err=Failed to delete domain mappings
 ddelete_ecannot=You are not allowed to delete the mapping for $1
+
 access_title=Spamkontrolle
 access_ecannot=Sie haben keine Berechtigung, die Spamkontrolle zu konfigurieren
 access_efeature=Ihre Sendmail-Konfiguration hat das (<tt>access_db</tt>)-Feature nicht aktiviert, welches für die Spamkontrolle zuständig ist. <a href='$1'>Klicken Sie hier</a> um das Feature zu aktivieren.
@@ -333,6 +362,7 @@ access_return=Spamkontrollliste
 access_toomany=Sie verfügen über zu viele Spamkontrollregeln, diese können auf dieser Seite nicht mehr angezeigt werden.
 access_go=Suche Spamkontrollregeln:
 access_delete=Delete Selected Spam Control Rules
+
 sform_edit=Spam-Kontrollregel bearbeiten
 sform_create=Spam-Kontrollregel erstellen
 sform_source=Mail-Quelle
@@ -354,6 +384,7 @@ sform_discard=Leise löschen
 sform_err=Fehlercode
 sform_msg=Nachricht
 sform_ecannot=Sie dürfen diese Spam-Kontrollregel nicht bearbeiten
+
 ssave_err=Fehler beim Speichern der Anti-Spam-Regel
 ssave_etype0='$1' ist keine gütige Adresse
 ssave_etype1='$1' ist keine gültige Netzwerkadresse
@@ -362,8 +393,10 @@ ssave_etype3='$1' ist keine gültige Domäne
 ssave_ecode='$1' ist kein gültiger SMTP-Fehlercode
 ssave_ealready=Eine Spamkontrollregel for '$1' existiert bereits
 ssave_ecannot2=Sie dürfen diese Spam-Kontrollregel nicht speichern
+
 sdelete_err=Löschen der Spam-Kontrollregeln fehlgeschlagen
 sdelete_ecannot=Es ist Ihnen nicht erlaubt die Regel für $1 zu löschen
+
 relay_title=Weiterleitungsdomänen
 relay_ecannot=Sie haben keine Berechtigung, Weiterleitungsdomänen zu bearbeiten
 relay_eversion=Nur Sendmail-Versionen 8.9 und höher unterstützen die Weiterleitungsfunktion.
@@ -372,6 +405,7 @@ relay_desc1=Wenn es nicht durch eine <a href='$1'>Spam-Kontrollregel</a> erlaubt
 relay_desc2=Wenn Ihr System als Gateway für mehrere Domänen arbeitet, die nicht direkt (durch Benutzen der <a href='$1'>Domänen-Routing</a>-Funktion), von außerhalb des Netzwerks zu erreichen sind, sollten alle solche Domänen hier aufgelistet sein.
 relay_err=Fehler beim Speichern der Weiterleitungsdomänen.
 relay_edomain='$1' ist kein gültiger Domänenname
+
 mailq_title=E-Mail-Warteschlange
 mailq_count=$1 E-Mails
 mailq_ecannot=Sie haben keine Berechtigung, die E-Mail-Warteschlange einzusehen
@@ -401,12 +435,15 @@ mailq_search=Finde wartende E-Mails wo
 mailq_quar=unter Quarantäne gestellt
 mailq_refresh=Refresh Mail Queue
 mailq_refreshdesc=Reload this page to show the current state of the mail queue.
+
 flushq_title=Liefere Warteschlange aus
 flushq_desc=Erzwingen der Auslieferung von E-Mails in der Warteschlange mit dem Befehl $1 ..
 flushq_desc2=Forcing the attempted delivery of $1 selected messages ..
 flushq_ecannot=You are not allowed to flush the mail queue
+
 searchq_title=Warteschlangen-Suchergebnisse
 searchq_none=Keine wartenden Nachrichten gefunden.
+
 delq_err=Fehler beim Löschen der Nachricht
 delq_ecannot=Sie haben keine Berechtigung, E-Mails aus der Warteschlagen zu nehmen
 delq_locked=Datei ist z. Z. zum Senden gesperrt
@@ -422,6 +459,7 @@ delq_force=Erzwinge löschen
 delq_ecannot2=Sie können diese Nachricht löschen
 delq_rusure=Are you sure you want to delete the $1 selected queued messages?
 delq_confirm=Lösche Nachrichten
+
 boxes_title=Benutzer-Mailboxes
 boxes_user=Benutzer
 boxes_size=Mailbox-Größe
@@ -431,6 +469,7 @@ boxes_sent=Gesendete Mails
 boxes_ecannot=Sie haben keine Berechtigung, E-Mails zu lesen
 boxes_toomany=Es sind zu viele Benutzermailboxes auf Ihrem System, sie können deswegen nicht angezeigt werden.
 boxes_go=Betrachte Mails von Benutzer:
+
 mail_title=Benutzer-E-Mail
 mail_from=Von
 mail_date=Datum
@@ -471,6 +510,7 @@ mail_move=Verschieben zu:
 mail_copy=Kopieren nach/an:
 mail_rfc=From-Zeile
 mail_eexists=Diese Nachricht existiert nicht mehr!
+
 view_title=E-Mail lesen
 view_desc=Nachricht $1 in $2
 view_desc2=Nachricht $1 für Benutzer $2
@@ -501,6 +541,7 @@ view_egone=Diese Nachricht existiert nicht mehr
 view_afile=Name des Anhangs
 view_atype=Typ des Anhangs
 view_asize=Dateigröße
+
 compose_title=E-Mail verfassen
 reply_title=E-Mail beantworten
 forward_title=E-Mail weiterleiten
@@ -512,6 +553,7 @@ reply_attach2=Anhänge
 reply_send=Senden
 reply_ecannot=Sie haben keine Berechtigung, als dieser Benutzer eine E-Mail zu senden
 reply_body=Nachrichtentext
+
 send_err=Fehler beim Senden der E-Mail
 send_eto=Fehlende Empfängeradresse
 send_efrom=Vermisse From-Adresse
@@ -524,6 +566,7 @@ send_eattach=Attachments dürfen die grössen von $1 kB nicht überschreiten.
 send_eperms=Benutzer $1 kann nicht lesen $2
 send_eperms2=Sie haben keine Berechtigung die Datei $1 zu senden.
 send_epath=Sendmail executable $1 existiert nicht.
+
 delete_title=Lösche Mail
 delete_rusure=Sind Sie sicher, dass Sie die $1 selektierten Nachrichten von $2 löschen möchten? Bei großen Dateien kann dies einen Moment dauern. Bis zur Löschung beendet ist, sollten keine weiteren Aktionen durchgeführt werden.
 delete_rusure2=Sind Sie sicher, dass Sie die Nachricht von $1 löschen möchten? Bei großen Dateien kann dies einen Moment dauern. Bis die Löschung beendet ist, sollten keine weiteren Aktionen durchgeführt werden.
@@ -536,6 +579,7 @@ delete_emoveuser=Benutzer an welchen Sie das Mail verschieben möchten existiert
 delete_emovecannot=Sie sind nicht berechtigt, Mails an diesen Benutzer zu senden
 delete_emovenone=Keine Mails um zu verschieben selektiert
 delete_nobutton=Kein Button angeklickt
+
 search_title=Suchergebnisse
 search_ecannot=Sie haben keine Berechtigung, die E-Mail dieses Benutzer zu durchsuchen
 search_ematch=Sie müssen Text eingeben, nach dem gesucht werden soll.
@@ -549,6 +593,7 @@ search_results4=$1 E-Mail-Nachricht passt auf Ihre Suche ..
 search_local=In lokalen Ordnern
 search_all=In allen Ordnern
 search_eboolean=Boolesche Suche, die sowohl 'UND' und 'ODER' benutzen, werden nicht unterstützt.
+
 file_title=Sendmail-Datei bearbeiten
 file_desc=Benutzen Sie das Textfeld unten, um die Sendmail-Datei $1 manuell zu bearbeiten.
 file_undo=Veränderungen rückgängig machen
@@ -564,6 +609,7 @@ file_emode=Unbekannter Modus!
 file_err=Das Bearbeiten der Datei schlug fehl
 file_ealias=Invalid format for aliases file line : $1
 file_etab=Invalid format for map file line : $1
+
 acl_opts=Darf Sendmailoptionen bearbeiten?
 acl_ports=Kann Netzwerk Ports editieren?
 acl_cws=Darf lokale Domänen bearbeiten?
@@ -630,6 +676,7 @@ acl_usersm=Diese Benutzer
 acl_asame=Identisch wie der Benutzername
 acl_usersu=Mit UID aus dem Bereich
 acl_spam=Spam-Kontroll-Adressen, die der Benutzer editieren darf
+
 log_opts=Geänderte Sendmail Optionen
 log_ports=Ändere Netzwerk Ports
 log_alias_create=Erstellter alias $1
@@ -680,6 +727,7 @@ log_delete_domains=$1 Domain Mappings gelöscht
 log_delete_accesses=$1 Spam-Kontroll-Einträge gelöscht
 log_delete_generics=$1 ausgehende Adressen gelöscht
 log_delete_mailers=$1 Domain-Routen gelöscht
+
 match_from=From: enthält
 match_subject=Betreff: enthält
 match_to=An: enthält
@@ -699,6 +747,7 @@ match_!status=Status nicht entspricht
 match_!body=dem Body enthält nicht
 match_!size=Größe ist kleiner als
 match_!headers=Kopfzeilen nicht entsprechen
+
 features_title=Sendmail M4 Konfiguration
 features_desc=Diese Seite listet die relevanten Enträge der Sendmail M4 Konfigurationsdatei $1, welche aus der aktuellen Konfigurationsdatei $2 erstellt wurde.
 features_type=Eintragstyp
@@ -718,6 +767,7 @@ features_efeatures=Das Sendmail M4 Konfigurationsverzeichnis $2 wurde auf Ihrem 
 features_econfig=Die Dateipfade des Sendmail M4 Verzeichnises und die M4 Konfigurationsdatei wurden in der <a href='$1'>Modulkonfiguration</a> nicht angegeben. Wenn Sie Sendmail von der Source installiert haben, so befinden sich die Dateien in dem Original Source Verzeichnis.
 features_move=Verschieben
 features_manual=Bearbeite Datei manuell
+
 feature_add=Füge Konfigurationseintrag hinzu
 feature_edit=Bearbeite Konfigurationseintrag hinzu
 feature_header=M4 Konfigurationseintrag Details
@@ -738,12 +788,15 @@ feature_emailer=Der Mailer $1 existiert bereits
 feature_eostype=Der Betriebssystem-Typ bereits als $1 definiert
 feature_manual=Bearbeite M4 Datei
 feature_mdesc=Diese Seite ermöglicht es Ihnen die manuelle bearbeitung der Sendmail M4 Konfigurationsdatei $1. Seien Sie vorsichtig, es wird kein Syntax Check durchgeführt!
+
 feat_access_db=Spamkontolldatei
 feat_virtusertable=Adress Mapping
 feat_mailertable=Domain Routing
 feat_genericstable=Ausgehende Adressen
 feat_domaintable=Domain Mapping
+
 mailer_local=Lokale Unix Auslieferung
+
 build_title=Erstelle die Sendmail-Konfiguration neu
 build_em4=Der Befehl $1, welcher zum erstellen der neuen Konfiguration notwendig ist, wurde auf Ihrem System nicht gefunden.
 build_ebuild=Konnte Konfiguration nicht erstellen: $1
@@ -752,13 +805,16 @@ build_rusure2=Seien Sie sich bewusst, dass wenn Sie Änderungen in der Optionen-
 build_ok=Ja, ersetze dies jetzt!
 build_diff=Die folgenden Änderungen werden nun in Ihre Konfiguration eingepielt ..
 build_nodiff=Ihre Sendmail-Konfiguration ist bereits auf dem neuesten Stand.
+
 stop_err=Sendmail anhalten fehlgeschlagen
 stop_ecannot=Sie dürfen Sendmail nicht anhalten
 stop_epid=Sendmail scheint nicht zu laufen
 restart_epids=Konnte sendmail Prozesse nicht finden
 restart_ekill=Fehlgeschlagen sendmail Prozesse zu signalisieren : $1
+
 start_err=Starten von Sendmail fehlgeschlagen
 start_ecannot=Es ist Ihnen nicht erlaubt sendmail zu starten
+
 ports_title=Netzwerkports
 ports_name=Portname
 ports_addr=Horche auf Adresse

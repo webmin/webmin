@@ -22,6 +22,7 @@ index_unix=Unix felhasználó azonosításának a beállítása
 index_sessions=Belépési folyamat megtekintése
 index_rbac=RBAC beállítása
 index_delete=Kiválasztott törlése
+
 edit_title=Felhasználói profil módosítása
 edit_title2=Új felhasználó felvétele
 edit_readonly=Ezt a Webmin felhasználót találn szerkesztette egy másik modul $1. <a href='$2'>Katitntson ide</a> hogy átlépje ezt a figyelmeztetést, és szerkeszteni tudja a felhasználót. Ne feledkezzen meg róla, hogy a kézileg beállított értékek bfelül fognak íródni!
@@ -76,6 +77,7 @@ edit_alldays=Minden nap
 edit_allhours=Bármikor
 edit_proto_mysql=MySQL adatbázis
 edit_proto_postgresql=PostgreSQL adatbázis
+
 save_err=Nem sikerült elmenteni
 save_ename='$1' hibás azonosító
 save_enamewebmin=A 'webmin' felhasználói név már le lett foglalva belső felhasználásra
@@ -98,10 +100,12 @@ save_emask='$1' nem érvényes hálózati maszk
 save_eip='$1' nem egy teljes IP vagy hálózati cím
 save_ehost=Nem sikerült megtalálni az IP címet a '$1' -hez
 save_elogouttime=Hiányzó vagy nem mnumerikus inaktív lejárati idő
+
 delete_err=Nem sikerült a törlés
 delete_eself=Nem törölheted önmagadat
 delete_ecannot=Nincs jogod felhasználókat törölni
 delete_euser=Nincs jogod törölni ezt a felhasználót
+
 cert_title=Igazolvány kérése
 cert_issue=Igazolvány kiadása
 cert_header=Az új igazolvány tartalma
@@ -120,6 +124,7 @@ cert_install=ASzz Ön tanusítványának telepítése a böngészőbe
 cert_ekey=Az új SSL kulcsot nem sikerült átadni a böngésződnek. Talán azért, mert nem támogatja az kliensoldali SSL igazolványokat.
 cert_eca=Nem sikerült a hitelesítő központ felállítása: $1
 cert_already=Figyelem! Már van egy igazolványod: $1.
+
 acl_title=Hozzáférési jogok
 acl_title2=$1 számára a "$2" modulhoz
 acl_title3=A $1 csoportnak a $2 -ben
@@ -128,6 +133,7 @@ acl_config=Megváltoztathatja a modul konfigurációját?
 acl_reset=Beállítás teljes hozzáférésre
 acl_rbac=Hozzáférési kontroll beállítások az RBAC -ből?
 acl_rbacyes=Igen (felülírja a beállításokat alább)
+
 acl_uall=Minden felhasználó
 acl_uthis=Ez a felhasználó
 acl_usel=Kiválasztott felhasználók..
@@ -164,6 +170,7 @@ acl_cats=Kategórizálást tud változtatni?
 acl_theme=Beállíthatja a személyes témákat?
 acl_ips=Módosíthat IP hozzáférési jogot?
 acl_switch=Átválthat más felhaználóra?
+
 log_modify=$1 Webmin felhasználó módosítása
 log_rename=$1 Webmin felhasználó átnevezése $2-ra/re
 log_create=$1 Webmin felhasználó létrehozása
@@ -179,6 +186,7 @@ log_delete_g=Törölt Webmin csoport $1
 log_switch=Átváltás Webmin felhasználóra $1
 log_delete_users=Törölt Webmin felhasználó $1
 log_delete_groups=Törölt Webmin csoport $1
+
 gedit_ecannot=Önnek nincs engedélyezve a csoport szerkesztése
 gedit_title=Webmin csoport szerkesztése
 gedit_title2=Webmin csoport létrehozása
@@ -186,6 +194,7 @@ gedit_group=Csoport neve
 gedit_rights=Webmin csoport hozzáférési jogok
 gedit_modules=Tagok moduljai
 gedit_members=A csoport tagjai
+
 gdelete_err=Nem sikerült törölni a csoportot
 gdelete_ecannot=Önnek nincs joga törölni a csoportot
 gdelete_euser=Ön nem tudja a saját csoportját letörölni
@@ -193,10 +202,12 @@ gdelete_esub=Csoportot alcsoporttal nem lehet törölni
 gdelete_title=Csoport törlése
 gdelete_desc=Biztos benne, hogy a $1 csoportot törölni szeretné $2 tagokkal együtt?
 gdelete_ok=Csoport törlése
+
 gsave_err=Nem sikerült a csoport mentése
 gsave_ename=Hiányzó vagy hibás csoportnév
 gsave_enamewebmin=A 'webmin' csoportnév le van foglalva belső felhasználásra
 gsave_edup=A csoportnév már létezik
+
 convert_title=Felhasnálók konvertálása
 convert_ecannot=Önnek nincs joga a Unix felhasználó konvertálására
 convert_nogroups=Nincs webmin csoport definiálva az Ön rendszerében. Legalább egy csoportot létre kell hoznia ahhoz, hogy jogosultságokat tudjon definiálni a konvertált felhasználóknak.
@@ -220,6 +231,7 @@ convert_exists=$1 már létezik
 convert_invalid=$1 nem érvényes Webmin felhasználó
 convert_added=$1 hozzá lett adva
 convert_msg=Konvertálom a Unix felhasználókat
+
 sync_title=Unix felhasználó szinkronizálása
 sync_desc=Ezen a formon Ön be tudja állírani az automatikus szinkronizációt a Unix felhasználók és webmin felhasználók létrehozásakor ebben a modulban.
 sync_nogroups=Nem lett Webmin csoport definiálva a rendszerbe. Legalább egy csoportot definiálni kell, hogy be lehessen állítani a hozzáférési jogokat a létrehozott felhasználóknak.
@@ -229,6 +241,7 @@ sync_delete=A kiválasztott Webmin felhasználó törlése ha az azonos Unix fel
 sync_group=Új felhaszn áló hozzárendelése Webmin csoporthoz
 sync_unix=Jelszó beállítása az új felhasználóknak a Unix azonosításhoz.
 sync_ecannot=Önnek nincs joga a felhasználó szinkronizálását beállítani.
+
 unix_title=Unix felhasználó azonosítás
 unix_desc=Ezen az oldalon engedélyezni tudja a Webmin konfigurálását hogy a belépési kísérleteket a rendszer a felhasználói listából vagy PAM -ból validálja. Ez hasznos lehet, hogyha Önnek nagy számú Unix felhasználója van, akik hozzá akarnak férni a Webmin-hez.
 unix_def=Csak a Webmin felhasználóknak engedélyezve a belépés
@@ -253,26 +266,31 @@ unix_ewhogroup=Hibás csoport lett engedélyezve a $1 sorban
 unix_ewhouser=Hibás felhasználó lett engedélyezve a $1 sorban
 unix_enone=Nem lett egyetlen egy Unix felhasználónak vagycsoportnak engedélyezve a belépés
 unix_same=&lt;Ugyanaz a felhasználó vagy csoport&gt;
+
 sessions_title=Aktuális belépési folyamatok
 sessions_id=Folyamat azonosító
 sessions_user=Webmin felhasználó
 sessions_login=Belépve mint
 sessions_host=IP cím
 sessions_lview=Napló megtekintése
+
 hide_title=Nem használt modulok elrejtése
 hide_desc=A következő modulok el leszken távolítva a hozzáférési listából $1 mert a hozzájuk kapcsolódó szerver nem lett telepítve az Ön rendszerére
 hide_ok=Modulok elrejtése most
 hide_none=Nincs mit elrejteni - $1 nincs megfelelő hozzáférése bármelyik modulhoz amely a kapcsolódó szerverek közül nem lett installálva.
 hide_desc2=Figyelem! Ezek a modulok nem lesznek automatikusan hozzárendelve, hogyha a megfelelő szerver installálva lesz. Önnek kézileg kell megadnia a jogokat ezekre a modulokra.
 hide_clone=(Klón $1)
+
 switch_euser=Önnek ninc joga átváltani erre a felhasználóra
 switch_eold=Meglévő folyamatot nem találom!
+
 rbac_title=RBAC beállítása
 rbac_desc=A webmin RBAC integráció segítségével Ön hozzá tud kapcsolódni és fel tudja használni az RBAC (Jogosultság bázisú hozzáférési kontroll) adatbázist, ahelyett, hogy a Webmin saját ACL rendszerét használná. Miután az RBAC engedélyezve lett, bármelyik felhasználó aki <b>$edit_rbacdeny1</b> beállítást kiváalsztotta kontrollálni tudja, hogy az RBAC -t használja a Webmin sdaját jogosultsági rendszere helyett.
 rbac_esolaris=RBAC csak a Solaris rendszereket támogatja jelenleg, ezért az Ön rendszerében $1 nem használható.
 rbac_eperl=A Perl modul $1 szükséges az RBAC integrációhoz, de nem lett installálva.  <a href='$2'>Kattintson ide</a>, hogyha telepíteni szeretné.
 rbac_ecpan=Önnek nincs joga hozzáférni a Webmin Perl modul oldalhoz, hogy a megfelelő modult $1 telepítse a RBAC integrációhoz.
 rbac_ok=RBAC integráció létezik az Ön rendszerében, és engedélyezni lehet a per felhasználó bázisú használatát a Webmin felhasználó szerkesztése oldalon.
+
 udeletes_err=Nem sikerült a felhasználó törlése.
 udeletes_enone=Nem lett kiválasztva
 udeletes_title=Felhasználó törlése
@@ -280,12 +298,17 @@ udeletes_rusure=Biztos Ön abban, hogy le akarja törölni a kiválasztott felha
 udeletes_users=Kiválasztott felhasználó: $1
 udeletes_ok=Felhasználó törlése
 udeletes_ereadonly=Valamelyik felhasználó a kiválasztottak közül nem szerkeszthetőnek lett megjelölve.
+
 gdeletes_err=Sikertelen csoport törlése
 gdeletes_title=Csoport törlése
 gdeletes_rusure=Biztos Ön benne, hogy le akarja törölni a kiválasztott csoportot $1, és a hozzá tartozó felhasználókat $2? Minden hozzájuk tartozó hozzáférési jog és beállítás, ileltve felhasználói adat el fog veszni.
 gdeletes_users=Kiválasztott csoport: $1
 gdeletes_ok=Csoport törlése
+
 pass_days=nap
+
 sql_host=Hosztnév
+
 make_done=.. kész
+
 makedn_done=.. kész

@@ -30,6 +30,7 @@ index_other_google=Μηχανή αναζήτησης Google
 index_other_kde=Τεκμηρίωση του KDE
 index_and=Ταίριασμα όλων
 index_or=Ταιριάξτε με οποιοδήποτε
+
 search_efor=Δεν υπάρχει σελίδα χειρωνακτικής αναζήτησης για εισαγωγή
 search_title=Αποτελέσματα αναζήτησης
 search_desc=Περιγραφή
@@ -47,24 +48,32 @@ search_none=Δεν βρέθηκε καμία τεκμηρίωση που να α
 search_for=Για το $1 
 search_google=Αποτέλεσμα αναζήτησης Google
 search_doxfer=Ηλεκτρονική τεκμηρίωση Webmin
+
 howto_title=HOWTO Document
 howto_header=HOWTO αρχείο εγγράφου $1 
 howto_epath=Μη έγκυρη διαδρομή εγγράφου HOWTO
+
 doc_title=Τεκμηρίωση συσκευασίας
 doc_header=Αρχείο εγγράφου πακέτου $1 
 doc_epath=Μη έγκυρη διαδρομή τεκμηρίωσης πακέτου
+
 man_title=Εγχειρίδιο σελίδας
 man_header=Χειροκίνητη σελίδα για $1 ($2)
 man_noentry=Η μη αυτόματη σελίδα για το $1 δεν υπάρχει!
 man_epath=Η χειροκίνητη σελίδα δεν μπορεί να είναι διαδρομή!
+
 kernel_title=Αρχείο πυρήνα
 kernel_header=Αρχείο εγγράφου πυρήνα $1 
 kernel_epath=Μη έγκυρη διαδρομή εγγράφου πυρήνα
+
 kde_title=Τεκμηρίωση του KDE
 kde_header=Αρχείο εγγράφου του KDE $1 
 kde_epath=Μη έγκυρη διαδρομή τεκμηρίωσης του KDE
+
 perl_title=Μονάδα Perl
 perl_header=Τεκμηρίωση για τη μονάδα Perl $1 
 perl_emod=Μη έγκυρο όνομα μονάδας Perl
+
 acl_allow=Μπορούν να επεξεργαστούν επιτρεπόμενους τύπους αναζήτησης
+
 check_ecannot=Δεν επιτρέπεται η επεξεργασία επιτρεπόμενων τύπων αναζήτησης

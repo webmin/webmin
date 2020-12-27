@@ -11,6 +11,7 @@ index_when=Ja, $1
 index_act=Aktion
 index_exec=Ausführen
 index_delete=Ausgewählte Kopien löschen
+
 edit_title=Bearbeite Cluster-Kopierauftrag
 create_title=Erzeuge Cluster-Kopierauftrag
 edit_header=Eigenschaften des Cluster-Kopierauftrag
@@ -31,12 +32,14 @@ edit_run=Jetzt kopieren
 edit_return=Cluster-Kopierauftrag
 edit_email=Sende Bildschirmausgabe via E-Mail an
 edit_none=Niemanden
+
 save_err=Konnte Cron-Job für Cluster-Kopierauftrag nicht speichern
 save_efiles=Es wurden keine Dateien zum Kopieren angegeben
 save_edest=Fehlendes Zielverzeichnis
 save_eservers=Es wurden keine Server zum Kopieren angegeben
 save_efile=Datei zum Kopieren '$1' ist kein absoluter Pfad
 save_eemail=Fehlende oder ungültige E-Mail-Adresse
+
 exec_title=Kopiere Dateien
 exec_files1=Kopiere $1 Dateien auf ausgewählte Server $2 ..
 exec_files2=Kopiere $1 auf ausgewählte Server $2 ..
@@ -50,12 +53,15 @@ exec_not=Fehler beim Kopieren der folgenden Dateien nach $1 :
 exec_cmd=Kommandoausgabe auf $1 nach dem Kopieren :
 exec_before=Ausgabe des vor dem Kopieren auszuführenden Befehls auf $1 :
 exec_on=Ausführung fehlgeschlagen auf $1 : $2
+
 log_create=Cluster-Kopierauftrag $1 nach $2 Servern erzeugt
 log_modify=Cluster-Kopierauftrag $1 nach $2 Servern modifiziert
 log_delete=Cluster-Kopierauftrag $1 nach $2 Servern gelöscht
 log_exec=$1 nach $2 Servern kopiert
 log_deletes=$1 Kopien gelöscht
+
 email_subject_succeeded=Cluster-Kopierauftrag von $1 war erfolgreich
 email_subject_failed=Cluster-Kopierauftrag von $1 ist fehlgeschlagen
+
 delete_err=Löschen der Kopien fehlgeschlagen
 delete_enone=Keine Ausgewählt

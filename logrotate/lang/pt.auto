@@ -19,11 +19,13 @@ index_force=Forçar rotação do registro
 index_forcedesc=Força a rotação imediata de todos os arquivos de log, mesmo que ainda não esteja na hora.
 index_logrotate=Logrotate
 index_delete=Excluir rotações de log selecionadas
+
 period_daily=Diariamente
 period_weekly=Semanal
 period_monthly=Por mês
 period_never=Nunca
 period_bytes=bytes
+
 edit_title1=Editar arquivo de log
 edit_title2=Criar arquivo de log
 edit_header=Detalhes do arquivo de log girado
@@ -62,8 +64,10 @@ edit_pre=Comandos a serem executados antes da rotação
 edit_default=Padrão ($1)
 edit_sharedscripts=Executar scripts apenas uma vez para todos os arquivos?
 edit_now=Rodar agora
+
 global_title=Opções Globais
 global_header=Opções padrão para todos os arquivos de log
+
 save_err=Falha ao salvar o log
 save_efile=Nome de arquivo de log ausente ou inválido
 save_esize=Tamanho máximo ausente ou inválido
@@ -81,6 +85,7 @@ save_eerrors=Endereço de e-mail ausente para mensagens de erro
 save_epre=O script de pré-rotação não pode conter uma linha <tt>endscript</tt> ou <tt>endrotate</tt>
 save_epost=O script pós-rotação não pode conter uma linha <tt>endscript</tt> ou <tt>endrotate</tt>
 save_enofiles=Nenhum arquivo para girar inserido
+
 log_modify_sched=Trabalho de Cron de rotação de log alterado
 log_create_sched=Trabalho Cron de rotação de log criado
 log_delete_sched=Trabalho de cron de rotação de log excluído
@@ -89,6 +94,7 @@ log_create=Adicionada rotação para o arquivo de log $1
 log_modify=Rotação modificada para o arquivo de log $1 
 log_delete=Rotação excluída para o arquivo de log $1 
 log_delete_logs=Rotação excluída para $1 arquivos de log
+
 sched_title=Programação de rotação de logs
 sched_desc=Para que a rotação de log configurada usando este módulo seja executada, o comando $1 deve ser executado regularmente (normalmente diariamente) pelo Cron.
 sched_runparts=Atualmente, o comando de rotação de log está sendo executado a partir do script $1 $2 e não pode ser ajustado.
@@ -98,10 +104,12 @@ sched_enabled=Ativado, às vezes abaixo ..
 sched_save=Update Cron Job
 sched_err=Falha ao salvar a programação de rotação
 sched_when=Tempos a executar
+
 force_title=Forçar rotação do registro
 force_doing=Forçando a rotação imediata de todos os arquivos de log.
 force_doingone=Forçando a rotação imediata de um arquivo de log.
 force_done=.. feito.
 force_failed=.. falhou! Veja a saída acima para o motivo.
+
 delete_err=Falha ao excluir logs
 delete_enone=Nenhum selecionado

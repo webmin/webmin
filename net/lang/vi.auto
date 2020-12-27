@@ -7,6 +7,7 @@ index_delete2=Xóa các giao diện đã chọn
 index_delete3=Xóa và áp dụng các giao diện được chọn
 index_apply2=Áp dụng giao diện được chọn
 index_vmin=Virtualmin
+
 ifcs_title=Giao diện mạng
 ifcs_now=Hoạt động ngay
 ifcs_activedesc=Các giao diện được liệt kê trong bảng này hiện đang hoạt động trên hệ thống. Trong hầu hết các trường hợp, bạn nên chỉnh sửa chúng trong tab <b>Được kích hoạt khi khởi động</b>.
@@ -55,6 +56,7 @@ ifcs_linkyes=Đã kết nối
 ifcs_linkno=Ngắt kết nối
 ifcs_speed=Tốc độ giao diện
 ifcs_duplex=, $1 song công
+
 aifc_create=Tạo giao diện hoạt động
 aifc_edit=Chỉnh sửa giao diện hoạt động
 aifc_desc1=Thông số giao diện hoạt động
@@ -79,6 +81,7 @@ aifc_eaddress6=Địa chỉ IPv6 trong hàng $1 không hợp lệ
 aifc_enetmask6=IPv6 netmask trong hàng $1 phải là số nguyên từ 1 đến 128
 aifc_eclash6=Địa chỉ IPv6 trong hàng $1 đã được sử dụng bởi giao diện $2 
 aifc_eaddresses6=Không có địa chỉ IPv6 được nhập
+
 bifc_create=Tạo giao diện khởi động
 bifc_act=Kích hoạt khi khởi động?
 bifc_edit=Chỉnh sửa giao diện khởi động
@@ -110,6 +113,7 @@ bifc_bridgestp=Giao thức cây Spanning
 bifc_bridgefd=Trì hoãn chuyển tiếp
 bifc_bridgewait=Trì hoãn để có sẵn
 bifc_ebond=Giao diện trái phiếu phải là một số
+
 bonding_add=Thêm một giao diện liên kết mới.
 bonding_create=Tạo giao diện liên kết
 bonding_teamparts=Đối tác hợp tác
@@ -121,11 +125,14 @@ bonding_miimon=Khoảng thời gian giám sát Mii
 bonding_miimondesc=(Để trống để tắt theo dõi liên kết)
 bonding_updelay=Cập nhật
 bonding_downdelay=Hạ cấp
+
 vlan_add=Thêm giao diện được gắn thẻ Vlan
 vlan_physical=Thiết bị vật lý
 vlan_id=ID Vlan
 vlan_create=Tạo giao diện Vlan
+
 bridge_create=Tạo giao diện cầu
+
 routes_title=Định tuyến và cổng
 routes_boot=Cấu hình định tuyến được kích hoạt tại <i>thời gian khởi động</i>
 routes_now=Cấu hình định tuyến được kích hoạt ngay bây giờ
@@ -194,6 +201,7 @@ routes_tabboot=Cấu hình thời gian khởi động
 routes_tabactive=Cấu hình hoạt động
 routes_descactive=Phần này liệt kê các tuyến đường mà hệ thống hiện đang định cấu hình và cho phép bạn thêm hoặc xóa các tuyến đang hoạt động trên một số hệ thống. Hãy cẩn thận làm điều này, vì những thay đổi không chính xác có thể cắt hệ thống chạy Webmin khỏi phần còn lại của mạng.
 routes_descboot=Phần này cho phép bạn định cấu hình các tuyến đường được kích hoạt khi hệ thống khởi động hoặc khi cài đặt mạng được áp dụng lại hoàn toàn.
+
 dns_title=Tên máy chủ và máy khách DNS
 dns_options=Tùy chọn máy khách DNS
 dns_hostname=Tên máy chủ
@@ -211,6 +219,7 @@ dns_edomain='$1' không phải là một tên miền hợp lệ
 dns_esearch=Không có tên miền để tìm kiếm
 dns_hoststoo=Cập nhật tên máy chủ trong địa chỉ máy chủ nếu thay đổi?
 dns_dhcp=Tên máy chủ được đặt bởi máy chủ DHCP?
+
 hosts_title=Địa chỉ máy chủ
 hosts_active=Đã bật?
 hosts_ip=Địa chỉ IP
@@ -222,6 +231,7 @@ hosts_detail=Máy chủ và địa chỉ
 hosts_return=danh sách địa chỉ máy chủ
 hosts_ecannot=Bạn không được phép chỉnh sửa địa chỉ máy chủ
 hosts_delete=Xóa địa chỉ máy chủ được chọn
+
 ipnodes_title=Địa chỉ máy chủ IPv6
 ipnodes_ip=Địa chỉ IPv6
 ipnodes_host=Tên máy chủ
@@ -233,6 +243,7 @@ ipnodes_return=Danh sách địa chỉ máy chủ IPv6
 ipnodes_ecannot=Bạn không được phép chỉnh sửa địa chỉ máy chủ IPv6
 ipnodes_none=Chưa có địa chỉ máy chủ IPv6 nào được xác định.
 ipnodes_delete=Xóa địa chỉ máy chủ IPv6 được chọn
+
 log_create_host=Đã tạo địa chỉ máy chủ $1 
 log_delete_host=Đã xóa địa chỉ máy chủ $1 
 log_modify_host=Địa chỉ máy chủ được sửa đổi $1 
@@ -256,6 +267,7 @@ log_apply_bfics=Đã kích hoạt giao diện thời gian khởi động $1
 log_create_route=Đã tạo tuyến hoạt động cho $1 
 log_create_defroute=Tạo tuyến mặc định hoạt động
 log_delete_routes=Đã xóa $1 tuyến đang hoạt động
+
 acl_ifcs=Có thể chỉnh sửa giao diện mạng?
 acl_routes=Có thể chỉnh sửa định tuyến và cổng?
 acl_dns=Có thể chỉnh sửa cài đặt máy khách DNS không?
@@ -273,6 +285,7 @@ acl_virt=Có thể thêm giao diện ảo?
 acl_delete=Có thể xóa giao diện?
 acl_hide=Ẩn giao diện không thể chỉnh sửa?
 acl_sysinfo=Hiển thị giao diện mạng khả dụng trên Bảng điều khiển
+
 interfaces_title1=Chọn Giao diện. ..
 interfaces_all=Tất cả các giao diện. ..
 interfaces_sel=Giao diện được chọn
@@ -280,7 +293,9 @@ interfaces_ok=đồng ý
 interfaces_cancel=Hủy bỏ
 interfaces_clear=Thông thoáng
 interfaces_title2=Chọn người dùng. ..
+
 apply_ecannot=Bạn không được phép áp dụng cấu hình
+
 mod_egone=Giao diện không còn hoạt động!
 mod_title=Giao diện hoạt động
 mod_desc=Giao diện $1 đang được sử dụng cho $2 và do đó không thể được quản lý bằng mô-đun này.
@@ -292,6 +307,7 @@ mod_pptpc=kết nối PPTP $1
 mod_zones=giao diện ảo cho vùng <tt>$1</tt>
 mod_virtualmin=máy chủ Virtualmin <tt>$1</tt>
 mod_reseller=người bán lại Virtualmin <tt>$1</tt>
+
 range_edit=Chỉnh sửa phạm vi địa chỉ
 range_create=Tạo dải địa chỉ
 range_header=Tùy chọn giao diện phạm vi địa chỉ
@@ -307,13 +323,17 @@ range_eend=Địa chỉ IP kết thúc bị thiếu hoặc không hợp lệ
 range_enum=Số giao diện ảo đầu tiên bị thiếu hoặc không phải là số
 range_eclass=Địa chỉ bắt đầu và kết thúc phải nằm trong cùng một mạng lớp C
 range_ebefore=Địa chỉ kết thúc phải cao hơn địa chỉ bắt đầu
+
 chooser_any=&lt;Bất kỳ&gt;
 chooser_other=Khác ..
+
 dafics_err=Không thể hủy kích hoạt giao diện
 daifcs_enone=Không được chọn
 daifcs_egone=Giao diện không còn tồn tại!
+
 dbifcs_err=Không thể xóa giao diện
 dbifcs_err2=Không thể kích hoạt giao diện
+
 hdelete_err=Không thể xóa địa chỉ máy chủ
 hdelete_enone=Không được chọn
 idelete_err=Không thể xóa địa chỉ máy chủ IPv6

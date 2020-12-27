@@ -12,6 +12,7 @@ index_eprog=لم يتم العثور على خادم NFS القابل للتنف
 index_delete=حذف الصادرات المحددة
 index_disable=تعطيل المحدد
 index_enable=تمكين المحدد
+
 edit_title=تحرير التصدير
 create_title=إنشاء تصدير
 edit_details=تفاصيل التصدير
@@ -65,6 +66,7 @@ edit_sec_krb5i=سلامة Kerberos
 edit_sec_krb5p=خصوصية Kerberos
 edit_sec_lipkey=ليبكي
 edit_sec_spkm=SPKM
+
 save_err=فشل في حفظ التصدير
 save_edir=الدليل '$1' غير موجود
 save_epfs=لا يبدو مسار نظام الملفات المزيفة '$1' كمسار مطلق
@@ -78,6 +80,7 @@ save_pfs=تم تصدير '$1' بالفعل كدليل
 save_create_dir=لا يمكن إنشاء الدليل '$1'
 save_eanonuid=اسم مستخدم الوصول المجهول غير صالح
 save_eanongid=اسم مجموعة وصول مجهول غير صالح
+
 exports_webnfs=عملاء WebNFS
 exports_ngroup=Netgroup$1
 exports_net=شبكة$1
@@ -85,6 +88,7 @@ exports_all=كل واحد
 exports_hosts=تستضيف$1
 exports_host=المضيف$1
 exports_gss=شبكة مصادقة:$1
+
 log_modify=تصدير NFS المعدل$1
 log_modify_l=تصدير NFS المعدل$1 إلى$2
 log_delete=تم حذف تصدير NFS$1

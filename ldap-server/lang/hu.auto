@@ -16,6 +16,7 @@ index_setupdesc=Az LDAP szerver adatbázisa még nem tartalmazza a (z) $1 gyök�
 index_setup=Hozzon létre Root DN-t
 index_permsdesc=A (z) $1 LDAP szerver adatkönyvtár olyan fájlokat tartalmaz, amelyek nem a megfelelő $2 felhasználó tulajdonában vannak, ami azt jelenti, hogy valószínűtlen a megfelelő indítás. A Webmin azonban az alábbi gombra kattintva kijavíthatja ezt az Ön számára.
 index_perms=Fix tulajdonjog
+
 connect_eserver=A (z) $1 LDAP szerver nem létezik
 connect_euser=Nincs felhasználó bejelentkezve, ahogy a konfigurálva van
 connect_epass=Nincs konfigurálva a jelszó a bejelentkezéshez
@@ -28,6 +29,7 @@ connect_eldap=Nem sikerült csatlakozni a (z) $2 porthoz tartozó $1 LDAP szerve
 connect_essl=A TLS titkosítás elindítása nem sikerült az LDAP kiszolgálón: $1 : $2 
 connect_elogin=Nem sikerült bejelentkezni a (z) $1 LDAP kiszolgálóra, mint $2 : $3 
 connect_cpan=A <tt>$1</tt> Perl modul <a href='$2'>automatikusan telepíthető</a> a CPAN-ból.
+
 slapd_title=OpenLDAP szerver konfiguráció
 ldif_title=OpenLDAP szerver konfiguráció
 slapd_header=Globális LDAP-kiszolgáló-beállítások
@@ -76,6 +78,7 @@ slapd_protos=Az elfogadható LDAP kapcsolatok
 slapd_ldap=LDAP hálózaton keresztül
 slapd_ldaps=LDAP SSL felett
 slapd_ldapi=Unix socket fájl
+
 schema_title=Séma kezelése
 schema_file=Név
 schema_desc=Leírás
@@ -93,6 +96,7 @@ schema_edesc=Ezen az oldalon manuálisan szerkesztheti az LDAP sémafájlt. Ezt 
 schema_return=séma lista
 schema_emove=Nem található az áthelyezendő sémafájl!
 schema_ecannot=Nem engedélyezi az LDAP séma kezelését
+
 acl_title=LDAP hozzáférés-vezérlés
 acl_ecannot=Az LDAP hozzáférés-vezérlés nem konfigurálható
 acl_what=tárgyak
@@ -103,6 +107,7 @@ acl_none=Még nem határoztak meg belépési szabályokat. Az LDAP adatbázisban
 acl_delete=Törölje a kiválasztott szabályokat
 acl_add=Adjon hozzá egy új hozzáférés-vezérlő szabályt.
 acl_return=hozzáférés-ellenőrzési szabályok
+
 browser_title=Böngészés az adatbázisban
 browser_econn=Az LDAP böngésző nem használható : $1 
 browser_ecannot=Az LDAP adatbázisban nem szabad böngészni
@@ -136,24 +141,30 @@ browser_nomatch=Egyik objektum sem felelt meg a (z) $1 kereséséhez.
 browser_search=Keressen megfelelő objektumokat :
 browser_search2=Megjeleníti a megfelelő objektumokat :
 browser_sok=Keresés
+
 save_err=Az attribútum megváltoztatása nem sikerült
 save_ebase=Nem sikerült beolvasni a (z) $1 objektumot az adatbázisból
 save_emodify=$2 LDAP módosítása az $1 -ben sikertelen : $3 
 save_enone=Nincs megadva érték
+
 add_err=Nem sikerült hozzáadni az attribútumot
 add_eadd=Hiányzó vagy érvénytelen attribútumnév
 add_evalue=Hiányzó érték
 add_emodify=$2 LDAP hozzáadás a $1 -hez : $3 
+
 delete_err=Az attribútumok eltávolítása nem sikerült
 delete_enone=Egy sincs kiválasztva
 delete_emodify=$2 LDAP törlése a (z) $1 helyről sikertelen : $3 
+
 sdelete_err=Az objektumok törlése nem sikerült
 sdelete_edn=A (z) $1 objektum nem található
 sdelete_edel=$1 LDAP törlése sikertelen : $2 
+
 rename_err=Az objektum átnevezése nem sikerült
 rename_eget=Nem található objektum a következővel: DN $1 
 rename_enew=Úgy tűnik, hogy az új név nem érvényes
 rename_erename=LDAP newdn a $2 -re $1 -ből sikertelen : $3 
+
 oadd_title=Objektum létrehozása
 oadd_header=Új LDAP-objektum részletei
 oadd_base=Szülőobjektum DN
@@ -170,6 +181,7 @@ oadd_eget2=Nem sikerült ellenőrizni a (z) $1 ütközését : $2
 oadd_eclash=A DN $1 objektum már létezik
 oadd_eadd=$1 LDAP hozzáadása sikertelen : $2 
 oadd_err=Nem sikerült új objektumot létrehozni
+
 create_title=Fa létrehozása
 create_ecannot=Nem hozhat létre új fát
 create_desc=Ez az oldal kényelmes módon biztosította a DN létrehozását, amely az új fa alapja lesz az adatbázisban. Ezenkívül létrehozhat egy példa felhasználót vagy e-mail álnevet a fa alatt, mint sablont a saját objektumaihoz.
@@ -191,18 +203,23 @@ create_done=.. Kész
 create_doingex=Példaobjektum létrehozása DN $1 értékkel.
 create_edoingex=.. sikertelen: $1. A fa azonban továbbra is használható.
 create_eoc=Nem található megfelelő objektumosztály az új DN-hez
+
 eunknown=Ismeretlen hiba
+
 apply_err=A konfiguráció alkalmazása nem sikerült
 apply_ecmd=$1 sikertelen : $2 
 apply_ecannot=A konfiguráció alkalmazása nem engedélyezett
+
 stop_err=Az LDAP szerver megállítása nem sikerült
 stop_ecmd=$1 sikertelen : $2 
 stop_egone=Már nem fut!
 stop_ekill=A gyilkos folyamat sikertelen : $1 
 stop_ecannot=Nem szabad megállítani az LDAP szervert
+
 start_err=Nem sikerült elindítani az LDAP szervert
 start_ecmd=$1 sikertelen : $2 
 start_ecannot=Az LDAP szerver nem indítható el
+
 log_create_dn=Létrehozott objektum: $1 
 log_delete_dn=Törölt objektum: $1 
 log_rename_dn=Objektum átnevezése: $1 
@@ -234,6 +251,7 @@ log_up_access=A $1 hozzáférés-vezérlő szabálya felfelé került
 log_down_access=A hozzáférés-vezérlő szabály lefelé mozgatása a (z) $1 számára
 log_delete_accesses=Törölték a (z) $1 hozzáférés-vezérlő szabályokat
 log_all=minden tárgy
+
 gencert_title=Generáljon SSL tanúsítványt
 gencert_header=Új SSL tanúsítvány részletei
 gencert_create=Hozzon létre tanúsítványt
@@ -245,7 +263,9 @@ gencert_dir=Könyvtár
 gencert_err=Nem sikerült létrehozni a tanúsítványt
 gencert_edest=A célkönyvtár nem létezik
 gencert_epath=Az LDAP-kiszolgáló konfigurációs tanúsítványának és kulcsfájljainak abszolút útvonalaknak kell lenniük
+
 perms_err=Nem sikerült rögzíteni a fájl tulajdonjogát
+
 acl_slapd=Be tudja állítani az LDAP szervert?
 acl_ldif=Be tudja állítani az LDAP szervert?
 acl_schema=Kezelni tudja a sémát?
@@ -254,6 +274,7 @@ acl_browser=Böngészhet és szerkeszthet adatbázisokat?
 acl_create=Új fát hozhat létre?
 acl_start=Indíthatom és leállíthatom az LDAP szervert?
 acl_apply=Alkalmazhatja a konfigurációs változtatásokat?
+
 access_desc=$2 $1 
 access_self=maga
 access_users=hitelesített felhasználók
@@ -273,6 +294,7 @@ access_lcompare=Összehasonlítás
 access_lsearch=Keresés
 access_lread=Olvas
 access_lwrite=Ír
+
 eacl_title1=Hozzon létre hozzáférési szabályt
 eacl_title2=A hozzáférés-vezérlő szabály szerkesztése
 eacl_header=LDAP adatbázis-hozzáférés-vezérlő szabály részletei

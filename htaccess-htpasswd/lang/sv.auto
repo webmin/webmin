@@ -16,6 +16,7 @@ index_digest2=Digest-kryptering är aktiverad i modulkonfigurationen, men $1 -ko
 index_cpan=<a href='$1'>Klicka här</a> för att ladda ner och installera det nu.
 index_delete=Avskydda valda kataloger
 index_remove=Avskydda och ta bort filer
+
 dir_title1=Lägg till skyddad katalog
 dir_title2=Redigera skyddad katalog
 dir_header=Skyddade katalogalternativ
@@ -60,6 +61,7 @@ dir_delete3=Avskydda och ta bort fil
 dir_apache=Redigera Apache-alternativ
 dir_efiledir='$1' är en katalog och kan därför inte användas som en användarfil
 dir_egfiledir='$1' är en katalog och kan därför inte användas som en gruppfil
+
 edit_title1=Skapa användare
 edit_title2=Redigera användare
 edit_header=Användarinformation för webbverifiering
@@ -71,11 +73,13 @@ edit_pass0=Satt till
 edit_passfrom=Byt från
 edit_passto=till nytt lösenord
 edit_dom=Digest rike
+
 gedit_title1=Skapa grupp
 gedit_title2=Redigera grupp
 gedit_header=Gruppinformation för webbverifiering
 gedit_group=Grupp namn
 gedit_members=Medlemmar i gruppen
+
 save_err=Det gick inte att spara användaren
 save_euser1=Saknar användarnamn
 save_euser2=Användarnamn kan inte innehålla: -tecknet
@@ -84,16 +88,19 @@ save_eclash=En användare med samma namn finns redan
 save_eoldpass=Det gamla lösenordet är inte korrekt
 save_title=Användare sparad
 save_edom=Saknas eller ogiltig digerera rike
+
 gsave_err=Det gick inte att spara grupp
 gsave_egroup1=Gruppnamn saknas
 gsave_egroup2=Gruppnamnet kan inte innehålla: tecken eller mellanslag
 gsave_eclash=En grupp med samma namn finns redan
+
 acl_dirs=Tillåtna kataloger
 acl_user=Skapa.htaccess- och htusers-filer som Unix-användare
 acl_same=Samma som Webmin-inloggning
 acl_home=Inkludera Unix-användarens hemkatalog?
 acl_sync=Kan man konfigurera Unix-användarsynkronisering?
 acl_uonly=Kan lägga till och ändra skyddade kataloger?
+
 log_create_dir=Lade till katalog $1 
 log_modify_dir=Modifierad katalog $1 
 log_delete_dir=Raderad katalog $1 
@@ -104,6 +111,7 @@ log_create_group=Skapade grupp $1
 log_modify_group=Modifierad grupp $1 
 log_delete_group=Raderad grupp $1 
 log_delete_dirs=$1 -kataloger raderade
+
 search_title=sökresultat
 search_err=Sökningen misslyckades
 search_edir=Saknad eller ogiltig absolut katalog att söka

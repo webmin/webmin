@@ -12,7 +12,9 @@ main_readonly=(Chế độ chỉ đọc)
 main_return=Quay trở lại $1
 main_unused=Mô-đun không sử dụng
 main_refreshmods=Làm mới mô-đun
+
 link_essl=Mô-đun Net::SSLeay Perl cần thiết để tạo kết nối HTTPS không được cài đặt trên hệ thống của bạn.
+
 category_servers=May chủ
 category_hardware=Phần cứng
 category_system=Hệ thống
@@ -22,6 +24,7 @@ category_syslet=Syslets
 category_cluster=Cụm
 category_info=Thông tin
 category_=Công cụ
+
 longcategory_servers=Các mô-đun cho cấu hình web, email, FTP và các máy chủ khác
 longcategory_hardware=Các mô-đun cho máy in, đĩa và cấu hình phần cứng khác
 longcategory_system=Các mô-đun cho người dùng, hệ thống tập tin, công việc Cron và các cài đặt hệ thống khác
@@ -30,11 +33,13 @@ longcategory_net=Các mô-đun để cấu hình các dịch vụ mạng và m�
 longcategory_cluster=Các mô-đun có thể quản lý nhiều máy chủ từ một giao diện duy nhất
 longcategory_info=Các mô-đun hiển thị thông tin về hệ thống của bạn
 longcategory_=Các mô-đun thực hiện các tác vụ linh tinh khác
+
 header_webmin=Chỉ số Webmin
 header_module=Chỉ số mô-đun
 header_help=Cứu giúp ..
 header_config=Cấu hình mô-đun
 header_servers=Máy chủ webmin
+
 index=mục lục
 yes=Đúng
 no=Không
@@ -65,12 +70,14 @@ euserdbacl=Không thể tìm nạp người dùng ACL : $1
 euserdbacl2=Không thể cập nhật người dùng ACL : $1
 egroupdbacl=Không thể tìm nạp nhóm ACL : $1
 egroupdbacl2=Không thể cập nhật ACL nhóm : $1
+
 chooser_title1=Chọn tập tin ..
 chooser_title2=Chọn thư mục ..
 chooser_dir=Thư mục của $1
 chooser_ok=Đồng ý
 chooser_date=Chọn ngày
 chooser_eopen=Danh sách không thành công : $1
+
 users_title1=Chọn người dùng ..
 users_title2=Chọn người dùng ..
 users_sel=Người dùng được chọn
@@ -78,6 +85,7 @@ users_all=Tất cả người dùng
 users_ok=Đồng ý
 users_cancel=Hủy bỏ
 users_clear=Thông thoáng
+
 groups_title1=Chọn nhóm ..
 groups_title2=Chọn nhóm ..
 groups_all=Tất cả các nhóm
@@ -85,6 +93,7 @@ groups_sel=Nhóm được chọn
 groups_ok=Đồng ý
 groups_cancel=Hủy bỏ
 groups_clear=Thông thoáng
+
 modules_title1=Chọn mô-đun ..
 modules_title2=Chọn Mô-đun ..
 modules_sel=Mô-đun được chọn
@@ -92,6 +101,7 @@ modules_all=Tất cả các mô-đun
 modules_ok=Đồng ý
 modules_cancel=Hủy bỏ
 modules_clear=Thông thoáng
+
 config_ecannot=Bạn không được phép cấu hình mô-đun này
 config_title=Cấu hình
 config_dir=Đối với mô-đun $1
@@ -103,6 +113,7 @@ config_err=Không thể lưu cấu hình
 config_nochange=Đừng thay đổi
 config_setto=Đặt thành
 config_ewebmin=Kiểu tham số 14 chỉ hoạt động trong Webmin
+
 help_err=Không thể hiển thị trợ giúp
 help_epath=Đường dẫn trợ giúp bị thiếu hoặc không hợp lệ
 help_efile=Không thể đọc tệp trợ giúp $1
@@ -110,6 +121,7 @@ help_eheader=Thiếu phần &lt;tiêu đề&gt;
 help_einclude=Không thể bao gồm $1
 help_eif=$1 không thành công : $2
 help_eexec=$1 không thành công : $2
+
 referer_title=Cảnh báo an ninh
 referer_warn=<b> Cảnh báo! Máy chủ Webmin. Đây có thể là một nỗ lực để lừa máy chủ của bạn thực hiện một lệnh nguy hiểm.
 referer_warn_unknown=<b>Cảnh báo!</b> Webmin đã phát hiện ra rằng chương trình $1 được liên kết đến từ một URL không xác định, có vẻ như nằm ngoài máy chủ Webmin. Đây có thể là một nỗ lực để lừa máy chủ của bạn thực hiện một lệnh nguy hiểm.
@@ -117,6 +129,7 @@ referer_fix1=If this is a legitimate link, you can allow links from this URL as 
 referer_fix2=Alternately, you can configure Webmin to allow this link from the command line by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Add the line <tt>referers=$1</tt> at the end, or if a <tt>referers</tt> line already exists add <tt>$1</tt> to it.</li><li>Save the file.</li></ul>
 referer_fix3u=Đảm bảo trình duyệt của bạn được định cấu hình để gửi thông tin giới thiệu để Webmin có thể được xác minh.
 referer_fix2u=Alternately, you can configure Webmin to allow links from unknown referers by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Find the line <tt>referers_none=1</tt> and change it to <tt>referers_none=0</tt>.</li><li>Save the file.</li></ul><p></p>WARNING - this has the side effect of opening your system up to reflected XSS attacks and so is not recommended!
+
 session_header=Đăng nhập vào Webmin
 session_mesg=Bạn phải nhập tên người dùng và mật khẩu để đăng nhập vào máy chủ Webmin trên $1.
 session_mesg2=Bạn phải nhập tên người dùng và mật khẩu để đăng nhập.
@@ -130,11 +143,13 @@ session_twofailed=Xác thực hai yếu tố không thành công : $1
 session_logout=Thoát ra thành công. Sử dụng mẫu dưới đây để đăng nhập lại.
 session_timed_out=Phiên đã hết thời gian sau khi $1 phút không hoạt động.
 session_save=Nhớ đăng nhập vĩnh viễn?
+
 pam_header=Đăng nhập vào Webmin
 pam_mesg=Bạn phải trả lời câu hỏi bên dưới để đăng nhập vào máy chủ Webmin trên $1.
 pam_mesg2=Bạn phải trả lời câu hỏi dưới đây để đăng nhập.
 pam_login=Tiếp tục
 pam_restart=Khởi động lại
+
 acl_root=Thư mục gốc cho trình chọn tập tin
 acl_otherdirs=Các thư mục hiển thị khác trong trình chọn tệp
 acl_nodot=Ẩn tập tin dấu chấm trong trình chọn tập tin?
@@ -167,6 +182,7 @@ acl_negative=Cấp quyền mô-đun mới cho người dùng?
 acl_fileunix=Duyệt các tệp như người dùng Unix
 acl_sameunix=Giống như đăng nhập Webmin
 acl_webminsearch=Hiển thị trường tìm kiếm Webmin?
+
 month_1=tháng Giêng
 month_2=Tháng hai
 month_3=tháng Ba
@@ -179,6 +195,7 @@ month_9=Tháng Chín
 month_10=Tháng Mười
 month_11=Tháng 11
 month_12=Tháng 12
+
 day_0=chủ nhật
 day_1=Thứ hai
 day_2=Thứ ba
@@ -186,6 +203,7 @@ day_3=Thứ tư
 day_4=Thứ năm
 day_5=Thứ sáu
 day_6=ngày thứ bảy
+
 smonth_1=tháng một
 smonth_2=Tháng hai
 smonth_3=Tháng ba
@@ -198,6 +216,7 @@ smonth_9=Tháng chín
 smonth_10=Tháng 10
 smonth_11=Tháng 11
 smonth_12=Tháng 12
+
 sday_0=Su
 sday_1=Mơ
 sday_2=Tu
@@ -205,12 +224,15 @@ sday_3=Chúng tôi
 sday_4=Thứ tự
 sday_5=Fr
 sday_6=Sa
+
 emodule=Truy cập bị từ chối: Người dùng $1 không được phép sử dụng mô đun $2
 emodulecheck=Mô-đun $1 không khả dụng trên hệ thống của bạn
 elock_tries2=Không thể khóa tệp $1 sau $2 phút. Lỗi cuối cùng là : $3
+
 skill_high=Chuyên gia
 skill_medium=Trung gian
 skill_low=Người mới
+
 feedback_title=Phản hồi trên webmin
 feedback_desc=Biểu mẫu này cho phép bạn báo cáo các lỗi về việc đưa ra đề xuất cho nhà phát triển Webmin về bất kỳ vấn đề hoặc tính năng nào bị thiếu mà bạn đã tìm thấy. Khi nhấp vào nút Gửi, các chi tiết được nhập vào biểu mẫu sẽ được gửi qua email tới $1.
 feedback_desc2=Phản hồi này sẽ được gửi đến nhà phát triển Webmin, không phải quản trị viên hệ thống, ISP hoặc công ty lưu trữ của bạn. Vui lòng viết phản hồi của bạn bằng tiếng Anh, ngay cả khi bạn hiện đang chạy Webmin bằng ngôn ngữ khác.
@@ -239,15 +261,18 @@ feedback_to=Gửi phản hồi đến địa chỉ
 feedback_enoto=Không có địa chỉ nào được nhập để gửi phản hồi tới
 feedback_ecannot=Bạn không được phép gửi phản hồi
 feedback_ecannot2=Bạn không được phép gửi phản hồi có chứa tệp cấu hình
+
 progress_size2=Đang tải xuống $1 ($2) ..
 progress_nosize=Đang tải xuống $1 ..
 progress_datan=Đã nhận $1 ($2 %)
 progress_data2n=Đã nhận $1
 progress_done=.. hoan thanh tải.
 progress_incache=Đã tìm thấy $1 trong bộ đệm ..
+
 readparse_cdheader=Thiếu tiêu đề xử lý nội dung
 readparse_enc=Yêu cầu mã hóa dữ liệu biểu mẫu, nhưng có mã hóa bình thường
 readparse_max=Dữ liệu vượt quá kích thước tối đa của $1 byte
+
 password_expired=Mật khẩu của bạn đã hết hạn và phải chọn mật khẩu mới.
 password_temp=Bạn phải chọn một mật khẩu mới để thay thế đăng nhập tạm thời của bạn.
 password_header=Chọn mật khẩu mới
@@ -266,6 +291,7 @@ password_enew2=Mật khẩu mới của bạn không khớp
 password_epam=Lỗi PAM : $1
 password_emodpam=Mô-đun Perhen Authen::PAM cần thiết để thực hiện thay đổi mật khẩu chưa được cài đặt!
 password_enewpass=Mật khẩu mới không được phép : $1
+
 ui_mandatory=Lĩnh vực này là bắt buộc
 ui_checkmandatory=Không có gì được chọn
 ui_errors=Nhiều lỗi đã được tìm thấy :
@@ -280,7 +306,9 @@ ui_etime=Thời gian không hợp lệ
 ui_paging=Hiển thị các hàng $1 cho $2 của $3
 ui_rowlabel=$2 trong hàng $1 :
 ui_filterbox=Nhập để lọc ..
+
 header_statusmsg=$1 đã đăng nhập vào $2 $3 trên $4 ($5)
+
 uptracker_title=Tải tệp lên
 uptracker_file=Tên tệp
 uptracker_size=Kích thước
@@ -288,6 +316,7 @@ uptracker_pc=Phát triển
 uptracker_eid=Không có ID tải lên được chỉ định
 uptracker_eid2=ID tải lên không hợp lệ!
 uptracker_of=$1 của $2
+
 wsearch_title=Tìm kiếm $1
 wsearch_modt=Mô-đun
 wsearch_mtitle=Tên mô-đun
@@ -315,6 +344,7 @@ wsearch_hmod=Mô-đun
 wsearch_moddir=Đường dẫn URL /$1/
 wsearch_searching=Tìm kiếm $1 ..
 wsearch_found=đã tìm thấy kết quả $1 :
+
 sql_emysqldriver=Không thể tải trình điều khiển DBI MySQL
 sql_emysqlconnect=Không thể kết nối với cơ sở dữ liệu MySQL : $1
 sql_epostgresqldriver=Không thể tải trình điều khiển DBI PostgreSQL
@@ -323,6 +353,7 @@ sql_eldapdriver=Không thể tải mô-đun LDAP perl
 sql_eldapconnect=Không thể kết nối với máy chủ LDAP $1
 sql_eldaptls=Không thể bắt đầu mã hóa TLS cho LDAP : $1
 sql_eldaplogin=Không thể đăng nhập vào máy chủ LDAP dưới dạng $1 : $2 
+
 log_email_subject=Hành động trên webmin trong $1
 log_email_global=Webmin hành động toàn cầu
 log_email_desc=Email này đã được gửi bởi Webmin để phản hồi lại hành động của người dùng.
@@ -334,6 +365,7 @@ log_email_user=Được thực hiện bởi người dùng: $1
 log_email_script=Tập lệnh Webmin: $1
 log_email_session=ID phiên: $1
 log_email_remote=Địa chỉ khách hàng: $1
+
 nice_size_PB=PB
 nice_size_PiB=PiB
 nice_size_TB=Lao
@@ -345,7 +377,9 @@ nice_size_MiB=MiB
 nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=byte
+
 langauto_include=Bao gồm dịch máy
+
 file_truncated_message=đã tìm nạp $1 dữ liệu, bị cắt bớt $2 / $3 
 file_truncated_message_head=đã tìm nạp bắt đầu $1 dữ liệu, bị cắt bớt $2 / $3 
 file_truncated_message_tail=đã tìm nạp kết thúc $1 của dữ liệu, bị cắt bớt $2 / $3 

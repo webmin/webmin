@@ -18,10 +18,12 @@ index_version=Wersja PPPd $1
 index_boot=Połącz przy rozruchu:
 index_noboot=&lt;Nie łącz się&gt;
 index_bootdesc=Zmień tę opcję, aby kontrolować, czy wybrane połączenie PPTP VPN jest uruchamiane podczas uruchamiania, czy nie.
+
 disc_err=Nie udało się odłączyć tunelu
 disc_egone=Nie jest już aktywny
 disc_ekill=Nie udało się zabić procesu pppd
 disc_done=Tunel $1 został pomyślnie odłączony.
+
 conn_err=Nie udało się połączyć tunelu
 conn_egone=Tunel już nie istnieje
 cone_ealready=Już połączony
@@ -32,6 +34,7 @@ conn_ok=.. połączenie zostało pomyślnie aktywowane przy użyciu interfejsu $
 conn_timeout=.. połączenie nieudane! Sprawdź komunikaty dziennika poniżej, aby uzyskać informacje o tym, dlaczego
 conn_routes=Dodawanie tras za pomocą poleceń ..
 conn_mppe=Protokół MPPE do szyfrowania VPN wymaga demona PPP i obsługi jądra. Jednak powyższe błędy sugerują, że jeden lub oba nie są dostępne w twoim systemie. Jeśli serwer PPTP nie wymaga MPPE, spróbuj wyłączyć wszystkie powiązane z nim opcje na stronie <a href='$1'>globalne opcje PPP</a>.
+
 edit_title1=Dodaj tunel PPTP
 edit_title2=Edytuj tunel PPTP
 edit_header=Opcje tunelu PPTP VPN
@@ -60,6 +63,7 @@ edit_file=Plik opcji PPP
 edit_none=Żaden
 edit_global=Standardowy plik globalny
 edit_ofile=Inny plik ..
+
 save_err=Nie udało się zapisać tunelu
 save_ename=Brak nazwy tunelu
 save_eserver=Brakujący lub nieprawidłowy serwer do połączenia
@@ -75,6 +79,7 @@ save_egw2=Nieprawidłowa brama dla hosta na trasie $1
 save_erename=Nie można zmienić nazwy pliku tunelu
 save_eclash=Tunel lub partner PPP o tej samej nazwie już istnieje
 save_efile=Brakujący lub nieprawidłowy plik opcji PPP
+
 opts_title=Globalne opcje PPP
 opts_desc=Poniższe ustawienia pochodzą z $1 i będą miały zastosowanie do wszystkich tuneli skonfigurowanych do korzystania ze standardowego globalnego pliku opcji PPP.
 opts_header=Opcje PPP dla wszystkich tuneli
@@ -84,6 +89,7 @@ opts_err=Nie udało się zapisać globalnych opcji PPP
 opts_emtu=Brakujący lub nieprawidłowy maksymalny rozmiar pakietu wysyłającego
 opts_emru=Brakujący lub nieprawidłowy maksymalny rozmiar pakietu odbiorczego
 opts_msdesc=Poniższe opcje włączają szyfrowanie MPPE, używane przez serwery Windows VPN. Jednak MPPE wymaga obsługi zarówno demona PPP, jak i jądra systemu operacyjnego.
+
 mppe_mppe-40=Używać 40-bitowego szyfrowania MPPE?
 mppe_mppe-128=Używać 128-bitowego szyfrowania MPPE?
 mppe_mppe-stateless=Włączyć tryb bezstanowy MPPE?
@@ -95,6 +101,7 @@ mppe_d1=Dozwolony
 mppe_mppe-stateful=Włączyć stanowy tryb MPPE?
 mppe_old=Ostrzeżenie - w pliku konfiguracyjnym znaleziono stare dyrektywy MPPE $1, mimo że demon PPP obsługuje dyrektywy w nowym stylu.
 mppe_new=Ostrzeżenie - w pliku konfiguracyjnym znaleziono nowe dyrektywy MPPE $1, mimo że demon PPP obsługuje tylko dyrektywy w starym stylu.
+
 log_create=Utworzono tunel PPTP $1 
 log_update=Zmodyfikowany tunel PPTP $1 
 log_delete=Usunięto tunel PPTP $1 

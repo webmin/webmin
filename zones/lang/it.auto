@@ -4,6 +4,7 @@ index_none=Nessuna zona è stata ancora definita.
 index_add=Aggiungi una nuova zona.
 index_return=elenco zone
 index_zones=Zone esistenti
+
 edit_title=Modifica zona
 edit_common=Configurazione della zona generale
 edit_name=Nome della zona
@@ -57,20 +58,26 @@ edit_attrnone=Non sono stati ancora definiti attributi generici.
 edit_attradd=Aggiungi un nuovo attributo generico.
 edit_webmin=Apri Webmin
 edit_brand=Marca
+
 ui_cancel=Annulla
+
 save_err=Impossibile salvare la zona
 save_epool=Pool mancante o non valido
 save_ewebmin=Webmin non è in esecuzione in questa zona
+
 reboot_title=Riavvia la zona
 reboot_rusure=Sei sicuro di voler riavviare la zona $1 ? Tutti i processi in esecuzione al suo interno verranno riavviati.
 reboot_err=Impossibile riavviare la zona
 reboot_doing=Ora riavvio della zona ..
+
 reboot_failed=.. fallito :
 reboot_ok=.. completare.
+
 halt_title=Zona di spegnimento
 halt_rusure=Sei sicuro di voler chiudere la zona $1 ? Tutti i processi in esecuzione al suo interno verranno interrotti.
 halt_err=Impossibile arrestare la zona
 halt_doing=Ora chiudendo zona ..
+
 boot_title=Zona di avvio
 boot_err=Zona di avvio non riuscita
 boot_doing=Ora si avvia la zona ..
@@ -78,10 +85,12 @@ delete_title=Elimina zona
 delete_rusure=Sei sicuro di voler eliminare la zona $1 ? Tutti i file all'interno dei suoi filesystem privati andranno persi.
 delete_err=Impossibile eliminare la zona
 delete_doing=Ora eliminazione della zona ..
+
 uninstall_title=Sistema di disinstallazione
 uninstall_rusure=Sei sicuro di voler disinstallare il software di sistema dalla zona $1 ? Tutti i file all'interno dei suoi filesystem privati andranno persi.
 uninstall_err=Impossibile disinstallare il software di sistema dalla zona
 uninstall_doing=Ora disinstallazione del sistema dalla zona ..
+
 install_title=Installa il sistema
 install_doing=Ora installa il sistema nella zona ..
 net_title1=Crea interfaccia di rete
@@ -96,6 +105,7 @@ net_enetmask=Maschera di rete non valida
 net_eaddress=Indirizzo IP non valido
 net_egone=L'interfaccia non esiste più!
 net_eclash=In questa zona esiste già un'interfaccia di rete con lo stesso indirizzo IP
+
 pkg_title1=Aggiungi directory dei pacchetti
 pkg_title2=Modifica directory dei pacchetti
 pkg_header=Dettagli della directory del pacchetto ereditato
@@ -107,6 +117,7 @@ pkg_eclash=La directory del pacchetto esiste già in questa zona
 pkg_inherit=Eredita i pacchetti dalla zona globale
 pkg_inherit_yes=Sì (zona radice sparsa)
 pkg_inherit_no=No (intera zona radice)
+
 fs_title1=Crea filesystem
 fs_title2=Modifica filesystem
 fs_header=Ulteriori dettagli sul filesystem
@@ -128,6 +139,7 @@ fs_eoptions=Opzioni di montaggio non valide (deve essere un elenco separato da v
 fs_egone=Il filesystem non esiste più!
 fs_mount=Montare dopo aver creato?
 fs_eclash=In questa zona esiste già un filesystem che utilizza la stessa directory
+
 rctl_title1=Crea controllo delle risorse
 rctl_title2=Modifica controllo risorse
 rctl_header=Tipo e limiti di controllo delle risorse
@@ -148,6 +160,7 @@ rctl_elimit=Non un numero
 rctl_eaction=Nessun segnale selezionato nella riga $1 
 rctl_evalues=Nessun limite inserito
 rctl_eclash=Un controllo per la stessa risorsa esiste già in questa zona
+
 attr_title1=Crea attributo generico
 attr_title2=Modifica attributo generico
 attr_header=Dettagli dell'attributo della zona generica
@@ -165,6 +178,7 @@ attr_euint=Il valore non è un numero intero positivo
 attr_eboolean=Il valore non è "vero" o "falso"
 attr_egone=L'attributo non esiste più!
 attr_eclash=In questa zona esiste già un attributo con lo stesso nome
+
 status_running=In esecuzione
 status_installed=Halted
 status_configured=Non installato
@@ -172,13 +186,16 @@ status_incomplete=In fase di installazione
 status_ready=Pronto
 status_down=Giù
 status_shutting_down=chiudere
+
 list_name=Nome della zona
 list_id=ID n.
 list_path=Directory zone
 list_status=Stato
 list_actions=Azioni
+
 zone_in=Nella zona $1 
 pool_none=Nessuna
+
 create_title=Crea zona
 create_header=Nuovi dettagli della zona
 create_path=Directory dei file di zona
@@ -239,6 +256,7 @@ create_erouter=Indirizzo IP del router predefinito mancante o non valido
 create_removingpkgs=rimozione delle directory dei pacchetti ereditate. ..
 create_brand=Marca
 create_brandmsg=Zona di branding
+
 log_create_zone=Zona creata $1 
 log_delete_zone=Zona eliminata $1 
 log_save_zone=Configurazione modificata per la zona $1 
@@ -262,6 +280,7 @@ log_delete_rctl=Controllo delle risorse eliminato per $1 nella zona $2
 log_create_attr=Creato attributo generico $1 nella zona $2 
 log_modify_attr=Attributo generico modificato $1 nella zona $2 
 log_delete_attr=Attributo generico $1 eliminato nella zona $2 
+
 webmin_eperl=Perl non è installato su $1 
 webmin_eroot=La directory $1 non esiste o non contiene Webmin.
 webmin_title=Installa Webmin

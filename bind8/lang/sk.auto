@@ -65,6 +65,7 @@ index_checkconfig=Uistite sa, že adresár chroot je nastavený správne na str�
 index_eexpired=Varovanie: Platnosť nasledujúcich zón vypršala podpisom DNSSEC : $1
 index_eexpired_conf=Automatické podpisovanie by sa malo znova povoliť na stránke $1.
 index_eexpired_mod=Pomocou modulu $1 buď zakázajte DNSSEC pre tieto domény, alebo skontrolujte, prečo zlyháva podpísanie.
+
 master_title=Upraviť hlavnú zónu
 master_inview=$1 v zobrazení $2 
 master_ecannot=Nemáte povolenie upravovať túto zónu
@@ -146,6 +147,7 @@ master_defttl=Predvolený čas dožívania záznamov
 master_edefttl='$1' nie je platný predvolený čas do života záznamov
 master_esoagone=Nenašli sa žiadne záznamy SOA!
 master_einclude=Dodatočný súbor šablóny neexistuje
+
 delete_title=Odstrániť zónu
 delete_mesg=Naozaj chcete odstrániť zónu $1? Všetky záznamy a súbor zóny budú vymazané.
 delete_mesg2=Naozaj chcete odstrániť koreňovú zónu? Váš server DNS už nebude môcť vyhľadávať adresy na internete.
@@ -157,6 +159,7 @@ delete_errslave=Hlavná zóna bola odstránená v poriadku, ale pri otrokoch sa 
 delete_ezone=Zóna sa nenašla na slave serveri
 delete_vwarn=Táto zóna je spojená s doménou Virtualmin $1, a preto by tu nemala byť odstránená!
 delete_vwarn2=Táto zóna je spojená s doménou Virtualmin $1 a $2 ďalšími, a preto by tu nemala byť odstránená!
+
 mcreate_title=Vytvorte hlavnú zónu
 mcreate_ecannot=Nemôžete vytvoriť hlavné zóny
 mcreate_opts=Nové možnosti hlavnej zóny
@@ -171,6 +174,7 @@ mcreate_auto=automatický
 mcreate_err=Vytvorenie hlavnej zóny zlyhalo
 mcreate_ednssecsize=Nepodarilo sa vypočítať veľkosť kľúča : $1
 mcreate_ednssec=Vytvorenie záznamu bolo úspešné, ale DNSSEC zlyhal : $1
+
 slave_title=Upraviť Slave Zone
 stub_title=Edit Stub Zone
 slave_ecannot=Nemáte povolenie upravovať túto zónu
@@ -202,6 +206,7 @@ slave_applymsg2=Kliknite na toto tlačidlo, ak chcete vynútiť opätovný preno
 slave_last=Naposledy prevedené : $1
 slave_never=nikdy
 slave_xfer=Prenos testovacej zóny
+
 screate_title1=Vytvorte Slave Zone
 screate_title2=Vytvorte Stub Zone
 screate_ecannot1=Nemáte oprávnenie vytvárať podriadené zóny
@@ -214,6 +219,7 @@ screate_rev=Reverzný (adresy k menám)
 screate_dom=Názov domény / sieť
 screate_err1=Vytvorenie slave zóny zlyhalo
 screate_err2=Nepodarilo sa vytvoriť zakázanú zónu
+
 recs_ecannot=V tejto zóne nemáte dovolené upravovať záznamy
 recs_ecannottype=Nemáte oprávnenie upravovať záznamy tohto typu
 recs_title=$1 Záznamy
@@ -231,6 +237,7 @@ recs_drev=Odstrániť aj obrátenia?
 recs_none=Doména zatiaľ nemá žiadne záznamy $1.
 recs_nosearch=Vášmu vyhľadávaniu nezodpovedajú žiadne záznamy.
 recs_needsearch=Zadajte vyhľadávanie a vyhľadajte zodpovedajúce záznamy.
+
 edit_title=Upravte $1
 edit_header=V $1
 edit_edit=Upravte $1 Záznam
@@ -306,6 +313,7 @@ edit_edmarcpct=Percento správ musí byť celé číslo od 0 do 100
 edit_edmarcrua=Chýba súhrnná adresa spätnej väzby
 edit_edmarcruf=Chýbajúca forenzná informačná adresa
 edit_ecaavalue2=Chýba alebo neplatí názov domény
+
 text_title=Upraviť súbor záznamov
 text_title2=Zobraziť súbor záznamov
 text_desc3=Tento formulár umožňuje manuálne upraviť súbor záznamov DNS $1. Webmin nebude vykonávať žiadnu kontrolu syntaxe.
@@ -315,6 +323,7 @@ text_ecannot=Nemáte oprávnenie upravovať záznamové súbory
 text_none=Súbor je však momentálne prázdny, pravdepodobne preto, že zóna ešte nebola prenesená z hlavného servera.
 text_soa=Automatické zvyšovanie sériového čísla
 text_rawformat=Táto zóna je v surovom binárnom formáte, a preto ju nemožno zobraziť ako text.
+
 restart_err=Nepodarilo sa uplatniť zmeny
 restart_ecannot=Nemáte povolenie na reštart BIND
 restart_epidfile=Nepodarilo sa nájsť BIND PID v $1
@@ -323,10 +332,12 @@ restart_erunning2=Zdá sa, že BIND nie je spustený na slave serveri $1
 restart_endc=Príkaz NDC zlyhal : $1
 restart_ecmd=Príkaz na reštart bol neúspešný : $1
 restart_eversion=Slave server $1 nemá spustenú webovú verziu $2 alebo vyššiu.
+
 start_ecannot=Nemáte oprávnenie na spustenie BIND
 start_error=Nepodarilo sa spustiť BIND : $1
 stop_epid=BIND nie je spustený
 stop_ecannot=Nie je dovolené zastaviť BIND
+
 fwd_title=Upraviť prednú zónu
 fwd_ecannot=Nemáte povolenie upravovať túto zónu
 fwd_opts=Možnosti zóny
@@ -335,12 +346,14 @@ fwd_forward=Vyskúšajte iné servery?
 fwd_check=Skontrolujte mená?
 fwd_err=Možnosti sa nepodarilo uložiť
 fwd_delmsg=Kliknutím na toto tlačidlo odstránite túto zónu zo servera DNS. Záznamy v ňom sa potom vyhľadajú pomocou procesu normálneho rozlíšenia.
+
 delegation_title=Upraviť zónu delegácie
 delegation_ecannot=Nemáte povolenie upravovať túto zónu
 delegation_opts=Možnosti zóny
 delegation_err=Možnosti sa nepodarilo uložiť
 delegation_noopts=Zóny delegácie nemajú žiadne konfigurovateľné možnosti.
 delegation_delmsg=Kliknutím na toto tlačidlo odstránite túto zónu zo servera DNS. Typy záznamov v ňom iné ako NS potom BIND rozpozná.
+
 fcreate_title=Vytvorenie prednej zóny
 fcreate_ecannot=Nemáte oprávnenie vytvárať predné zóny
 fcreate_opts=Nové možnosti prednej zóny
@@ -350,10 +363,12 @@ fcreate_rev=Reverzný (adresy k menám)
 fcreate_dom=Názov domény / sieť
 fcreate_masters=Hlavné servery
 fcreate_err=Nepodarilo sa vytvoriť prednú zónu
+
 dcreate_title=Vytvorte iba zónu delegácie
 dcreate_ecannot=Nemáte oprávnenie vytvárať zóny delegovania
 dcreate_opts=Nové možnosti zóny delegácie
 dcreate_err=Vytvorenie zóny delegovania zlyhalo
+
 create_enet=$1 nie je platná sieť
 create_edom=$1 nie je platný názov domény
 create_edom2=$1 musí byť doménou, nie sieťou
@@ -363,9 +378,11 @@ create_efile3=Nepodarilo sa vytvoriť '$1' : $2
 create_efile4=Súbor $1 už existuje
 create_emaster='$1' nie je platná adresa hlavného servera
 create_enone=Musíte zadať aspoň jeden hlavný server
+
 boot_err=Sťahovanie zlyhalo
 boot_egzip=Súbor koreňovej zóny je komprimovaný, ale príkaz <tt>gzip</tt> nie je vo vašom systéme nainštalovaný!
 boot_egzip2=Dekompresia súboru koreňovej zóny zlyhala : $1
+
 type_A=adresa
 type_AAAA=Adresa IPv6
 type_NS=Názov servera
@@ -386,6 +403,7 @@ type_SRV=Adresa služby
 type_ALL=Všetky typy záznamov
 type_KEY=Verejný kľúč
 type_CAA=Certifikačná autorita
+
 edit_A=adresa
 edit_AAAA=Adresa IPv6
 edit_NS=Názov servera
@@ -405,6 +423,7 @@ edit_NSEC3PARAM=Parametre DNSSEC
 edit_TLSA=Certifikát SSL
 edit_SSHFP=Verejný kľúč SSH
 edit_CAA=Certifikačná autorita
+
 recs_defttl=Predvolené TTL
 recs_A=adresa
 recs_AAAA=Adresa IPv6
@@ -427,6 +446,7 @@ recs_TLSA=Certifikát SSL
 recs_SSHFP=Verejný kľúč SSH
 recs_CAA=Certifikačná autorita
 recs_delete=Zmaž označené
+
 value_A1=adresa
 value_AAAA1=Adresa IPv6
 value_NS1=Názov servera
@@ -503,6 +523,7 @@ value_CAA3=Názov domény CA.
 value_caa_issue=Certifikát s jednou doménou
 value_caa_issuewild=Zástupný znak cert
 value_caa_iodef=Adresa URL na porušenie pravidiel
+
 tlsa_usage0=Certifikačná autorita
 tlsa_usage1=Konečný subjekt
 tlsa_usage2=Dôverná kotva
@@ -512,12 +533,14 @@ tlsa_selector1=Informácie o verejnom kľúči
 tlsa_match0=Neprijatý obsah
 tlsa_match1=SHA-256 hash
 tlsa_match2=SHA-512 - hash
+
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDSA
 sshfp_alg4=Ed25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 warn=varovať
 fail=Fail
 ignore=Ignorovať
@@ -531,6 +554,7 @@ listed=Uvedené ..
 eip=$1 nie je platná adresa IP
 eport='$1' nie je platné číslo portu
 eipacl=$1 nie je platná adresa IP alebo názov ACL
+
 acl_zones=Domény, ktoré môže tento používateľ upravovať
 acl_zall=Všetky zóny
 acl_zsel=Vybrané zóny ..
@@ -575,6 +599,7 @@ acl_ztypes_master=majster
 acl_ztypes_slave=Slave / stub
 acl_ztypes_delegation=delegácia
 acl_ztypes_forward=vpred
+
 servers_title=Ostatné servery DNS
 servers_ip=IP adresa
 servers_bogus=Ignorovať falošný server?
@@ -586,6 +611,7 @@ servers_keys=Použite kľúče DNS
 servers_err=Nepodarilo sa uložiť ďalšie servery DNS
 servers_eip=$1 nie je platná adresa IP
 servers_etrans='$1' nie je platný počet maximálnych prevodov
+
 logging_title=Protokolovanie a chyby
 logging_ecannot=Nemáte povolenie konfigurovať protokolovanie
 logging_header=Globálne možnosti protokolovania a chýb
@@ -624,6 +650,7 @@ logging_efile=Chýba názov súboru denníka
 logging_efile2=Názov súboru denníka musí byť absolútna cesta
 logging_ever=$1 nie je platný počet verzií
 logging_esize='$1' nie je platná veľkosť denníka
+
 acls_title=Zoznamy kontroly prístupu
 acls_ecannot=Nemáte oprávnenie upravovať globálne acls
 acls_name=Názov ACL
@@ -631,6 +658,7 @@ acls_values=Zodpovedajúce adresy, siete a ACL
 acls_err=Zoznamy na kontrolu prístupu sa nepodarilo uložiť
 acls_ename='$1' nie je platný názov ACL
 acls_eline=Každá adresa IP musí byť zadaná na samostatnom riadku pre ACL $1
+
 files_title=Súbory a adresáre
 files_ecannot=Nemáte povolenie konfigurovať súbory
 files_header=Globálne možnosti súborov a adresárov
@@ -640,6 +668,7 @@ files_pid=Spracovať ID súbor
 files_xfer=Program na prenos cesty do zóny
 files_err=Nepodarilo sa uložiť možnosti súborov a adresárov
 files_efile=Chýba alebo je neplatný názov súboru
+
 forwarding_title=Zasielateľstvo a prevody
 forwarding_ecannot=Nemáte dovolené upravovať možnosti presmerovania a prenosu
 forwarding_header=Možnosti globálneho zasielania a prenosu zón
@@ -658,6 +687,7 @@ forwarding_etrans=Chýbajúce alebo neplatné maximálne súbežné prevody
 forwarding_minutes=minúty
 forwarding_ip=IP adresa
 forwarding_port=prístav
+
 net_title=Adresy a topológia
 net_ecannot=Nemáte oprávnenie upravovať možnosti adresy a topológie
 net_header=Možnosti globálnej adresy a topológie
@@ -683,6 +713,7 @@ net_taddrdef=Najbližšia IP
 net_etport=Port zdroja prenosu nie je možné zadať bez adresy
 net_eaddr=$1 nie je platná adresa IPv4
 net_eaddr6=$1 nie je platná adresa IPv6
+
 controls_title=Možnosti ovládacieho rozhrania
 controls_ecannot=Nemáte dovolené upravovať možnosti ovládania
 controls_header=Možnosti ovládania
@@ -704,6 +735,7 @@ controls_eunixpath=Chýbajúca alebo neplatná cesta k súboru FIFO
 controls_eunixperm=Chýbajúce alebo neplatné povolenia pre osmičkový súbor
 controls_eunixowner=Chýbajúci alebo neplatný vlastník súboru
 controls_eunixgroup=Chýba alebo je neplatná skupina súborov
+
 controls_inet=Prístup na internetový port
 controls_unix=Unixový prístup FIFO
 controls_port=prístav
@@ -717,6 +749,7 @@ controls_efile=Chýba alebo je neplatný názov súboru FIFO
 controls_eperms=Chýbajúce alebo neplatné povolenia FIFO
 controls_eowner=Chýbajúci alebo neplatný identifikátor UID vlastníka FIFO
 controls_egroup=GID chýba vlastníkovi FIFO alebo je neplatný
+
 keys_title=Kľúče DNS
 keys_id=ID kľúča
 keys_alg=algoritmus
@@ -725,6 +758,7 @@ keys_ecannot=Nemáte oprávnenie upravovať kľúče DNS
 keys_err=Uloženie kľúčov DNS zlyhalo
 keys_ekey=$1 nie je platné ID kľúča
 keys_esecret=Chýbajúce alebo neplatné tajomstvo kódované základňou 64 pre kľúč $1
+
 misc_title=Rôzne možnosti
 misc_ecannot=Nemáte dovolené upravovať rôzne možnosti
 misc_header=Rôzne globálne možnosti
@@ -744,6 +778,7 @@ misc_esize='$1' nie je platná veľkosť
 misc_efiles='$1' nie je platný počet maximálnych otvorených súborov
 misc_emins='$1' nie je platný počet minút
 misc_mins=min
+
 zonedef_title=Predvolené zóny
 zonedef_msg=Predvolené hodnoty pre nové hlavné zóny
 zonedef_err=Predvolené hodnoty zóny sa nepodarilo uložiť
@@ -767,10 +802,13 @@ zonedef_size=Počiatočná veľkosť kľúča
 zonedef_single=Počet kľúčov, ktoré sa majú vytvoriť
 zonedef_two=Kľúč zóny a kľúč na podpísanie kľúča
 zonedef_one=Iba kľúč zóny
+
 find_title=Nájdite zóny
 find_match=Zóny zodpovedajúce $1 ..
 find_none=Nenašli sa žiadne zóny.
+
 efirst=Zlá prvá smernica na riadku $1 v $2
+
 findfree_title=Nájdite bezplatné adresy IP
 findfree_desc=Nájdite bezplatné adresy IP
 findfree_nofind=Nemôžete hľadať bezplatné adresy IP
@@ -782,8 +820,10 @@ findfree_cf=Zvážte <em>freeXXX</em> názvy hostiteľov ako bezplatné IP?
 findfree_search=Vyhľadávanie
 findfree_msg=Našli sa $1 bezplatné adresy IP
 findfree_msg2=(z ktorých $1 je ako <i>freeXXX</i>, $2 ako <i>freemac</i>)
+
 free_title=Zadarmo IP adresy
 free_ip=IP adresa
+
 log_servers=Zmenené ďalšie servery DNS
 log_logging=Zmenené protokolovanie a chyby
 log_acls=Zmenené zoznamy riadenia prístupu
@@ -840,14 +880,17 @@ log_sign=Aktualizované podpisy DNSSEC pre zónu $1
 log_resign=Znovu podpísaný kľúč DNSSEC pre zónu $1
 log_trusted=Zmenené overenie DNSSEC
 log_dnssec=Zmena opätovného podpisovania kľúča DNSSEC
+
 convert_err=Zóna sa nepodarilo konvertovať
 convert_efile=Predtým, ako je možné slave zónu previesť na master, musí byť zadaný súbor záznamov.
 convert_efilesize=Zaznamená súbor $1 neexistuje alebo je prázdny
 convert_ebinary=Nie je nainštalovaný príkaz potrebný na konverziu z binárnej zóny slave na master textového formátu
 convert_ecompile=Konverzia binárneho do textového formátu zlyhala : $1
+
 whois_title=Informácie WHOIS
 whois_header=Výstup z príkazu $1 ..
 whois_ecannot=Nemáte dovolené vyhľadávať informácie WHOIS
+
 view_title=Upraviť zobrazenie klienta
 view_opts=Podrobnosti o zobrazení klienta
 view_opts2=Možnosti pre zobrazené zóny
@@ -858,6 +901,7 @@ view_recursion=Uskutočňujú úplné rekurzívne vyhľadávanie pre klientov?
 view_ecannot=Nemáte povolenie upravovať toto zobrazenie
 view_delete=Odstrániť zobrazenie
 view_deletemsg=Kliknutím na toto tlačidlo zobrazenie odstránite. Budete mať možnosť presunúť zóny, ktoré obsahuje, do iného zobrazenia alebo ich tiež odstrániť.
+
 vcreate_title=Vytvoriť zobrazenie klienta
 vcreate_match_all=Všetci klienti
 vcreate_match_sel=Zoznam adries, sietí a zoznamov prístupových práv.
@@ -866,6 +910,7 @@ vcreate_ename=Chýba alebo je neplatné meno zobrazenia
 vcreate_etaken=Prezreté meno je už zadané
 vcreate_eclass=Chýba alebo je neplatný názov triedy
 vcreate_ecannot=Nemáte dovolené vytvárať zobrazenia
+
 hint_title=Upraviť koreňovú zónu
 hint_desc=Koreňovú zónu používa váš server DNS na kontaktovanie koreňových serverov na internete, aby mohla rozlišovať názvy v doménach, ktoré nespracováva váš server DNS, napríklad <tt>.com</tt> alebo <tt>.net. au</tt>. Pokiaľ váš server DNS nie je určený na použitie v internej sieti alebo neodosielate všetky dotazy na iný server, túto koreňovú zónu by ste nemali odstrániť.
 hint_move=Presunúť do zobrazenia:
@@ -874,6 +919,7 @@ hint_refetch=Znova stiahnite koreňové názvy serverov
 hint_refetchdesc=Kliknutím na toto tlačidlo Webmin znova stiahne súbor koreňovej zóny zo zdroja na internom FTP serveri.
 hint_delete=Odstrániť koreňovú zónu
 hint_deletedesc=Kliknutím na toto tlačidlo odstránite túto koreňovú zónu. Bez tohto servera nebude váš menný server schopný rozlíšiť domény na internete okrem tých, pre ktoré je sekundárny.
+
 hcreate_title=Vytvorte koreňovú zónu
 hcreate_desc=Koreňovú zónu používa váš server DNS na kontaktovanie koreňových serverov na internete, aby mohla rozlišovať názvy v doménach, ktoré nespracováva váš server DNS, napríklad <tt>.com</tt> alebo <tt>.net. au</tt>. Ak používate viac zobrazení, možno budete musieť mať v každom zobrazení samostatnú koreňovú zónu, aby všetci klienti mohli správne riešiť internetové domény.
 hcreate_header=Podrobnosti o koreňovej zóne
@@ -887,6 +933,7 @@ hcreate_efile='$1' nie je povolený koreňový súbor
 hcreate_efile2=Chýba alebo je neplatný koreňový súbor
 mcreate_erecs=Nie je platný existujúci súbor koreňovej zóny
 hcreate_err=Vytvorenie koreňovej zóny zlyhalo
+
 vdelete_title=Odstrániť zobrazenie
 vdelete_mesg=Naozaj chcete odstrániť zobrazenie klienta $1? Všetky zóny v tomto zobrazení sa odstránia (spolu so súbormi ich zón) alebo sa presunú do iného zobrazenia v závislosti od vášho výberu nižšie.
 vdelete_mesg2=Naozaj chcete odstrániť zobrazenie klienta $1?
@@ -894,6 +941,7 @@ vdelete_newview=Zóny v tomto zobrazení
 vdelete_root=Vystúpte z pohľadu
 vdelete_delete=Odstrániť úplne
 vdelete_move=Presunúť do zobrazenia
+
 gen_title=Generátory záznamov
 gen_desc=Táto stránka vám umožňuje definovať generátory, z ktorých každý vytvorí v tejto zóne pomocou počítadla prírastkov viac záznamov. To môže byť užitočné pri delegovaní častí reverznej zóny na iný server.
 gen_range=rozsah
@@ -913,7 +961,9 @@ gen_evalue=Chýbajúci alebo neplatný vzor názvu hostiteľa pre generátor $1
 gen_title2=Generované záznamy
 gen_raw=Riadok konfiguračného súboru
 gen_ecannot=Nemáte oprávnenie upravovať generátory záznamov
+
 refetch_err=Nepodarilo sa znova stiahnuť koreňovú zónu
+
 slaves_title=Servery klastrových slave
 slaves_none=Do klastra DNS zatiaľ neboli pridané žiadne servery.
 slaves_host=Meno hosťa
@@ -941,6 +991,7 @@ slaves_sec=Pri sekundárnom vytváraní vytvoriť sekundárne na otroka?
 slaves_name=Názov záznamu NS
 slaves_same=Rovnaké ako meno hostiteľa
 slaves_header=Možnosti servera klastra slave
+
 add_title=Pridať servery
 add_msg=Pridáva sa $1 ..
 add_gmsg=Pridávanie serverov do skupiny $1 ..
@@ -958,6 +1009,7 @@ add_createok=Inštalácia $1 s $2 novými slave zónami.
 add_ename=Chýba alebo je neplatný názov záznamu NS
 add_egname=Názov záznamu NS nie je možné zadať pri pridávaní skupiny
 add_emyip=Nepodarilo sa zistiť adresu IP tohto systému. Na stránke Konfigurácia modulu by ste mali nastaviť <b>Predvolenú IP hlavného servera pre vzdialené podradené zóny</b>.
+
 mass_title=Vytvorte zóny zo súboru šarže
 mass_desc=Táto stránka umožňuje vytvoriť viac nahraných zón naraz alebo z textového súboru na strane servera. Každý riadok v súbore musí mať nasledujúci formát: <p></p> <tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt> <p></p> <i>Typ</i> musí byť typu <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> alebo <tt>forward</tt>. Názov <i>súboru</i> je voliteľný a v prípade, že chýba, bude vypočítaný automaticky. <i>Hlavné adresy IP je</i> potrebné <i>zadať</i> iba pre podriadené zóny.
 mass_local=Lokálny dávkový súbor
@@ -989,6 +1041,7 @@ mass_emips=Chýbajúce hlavné adresy IP
 mass_addedslaves=$1 na slave servery OK.
 mass_eonslave=Na serveroch slave sa vyskytli chyby : $1
 mass_eviewcannot=Do tohto zobrazenia nemôžete pridať zóny
+
 massdelete_title=Odstrániť zóny
 massdelete_rusure=Naozaj chcete odstrániť vybraté zóny $1? ($2)
 massdelete_ok=Odstrániť teraz
@@ -998,6 +1051,7 @@ massdelete_slaves=Odstraňuje sa zóna $1 zo slave serverov.
 massdelete_failed=.. niektorí otroci zlyhali :
 massdelete_vwarn=Niektoré zóny sú spojené s doménou Virtualmin $1, a preto by sa tu nemali vymazať!
 massdelete_vwarn2=Niektoré zóny sú spojené s doménou Virtualmin $1 a $2 ďalšími, a preto by ste ich tu nemali odstrániť!
+
 rndc_title=Nastavenie RNDC
 rndc_desc=Táto stránka sa dá použiť na nastavenie BIND na riadenie pomocou programu RNDC, takže jednotlivé zóny môžu byť obnovené bez potreby úplného reštartu BIND.
 rndc_desc2=Zdá sa, že RNDC je už správne nastavený, takže pravdepodobne nebudete musieť tento formulár používať.
@@ -1008,11 +1062,13 @@ rndc_ok=Áno, nastavenie RNDC
 rndc_err=Nepodarilo sa nastaviť RNDC
 rndc_ekey=Kľúč rndc.conf sa nepodarilo nájsť
 rndc_esecret=V rndc.conf sa nepodarilo nájsť tajomstvo
+
 drecs_err=Nepodarilo sa odstrániť záznamy
 drecs_enone=Žiadne vybraté
 drecs_title=Odstrániť záznamy
 drecs_rusure=Naozaj chcete odstrániť vybraté záznamy $1 z $2?
 drecs_ok=Odstrániť teraz
+
 manual_title=Upraviť konfiguračný súbor
 manual_ecannot=Nemáte oprávnenie upravovať konfiguračný súbor BIND
 manual_ok=editovať
@@ -1020,7 +1076,9 @@ manual_efile=Vybraný súbor nie je súčasťou konfigurácie BIND
 manual_file=Upraviť konfiguračný súbor:
 manual_edata=Nič nevstúpilo!
 manual_err=Nepodarilo sa uložiť konfiguračný súbor
+
 syslog_desc=VIAZANIE správ servera DNS
+
 umass_err=Aktualizácia zón zlyhala
 umass_enone=Žiadne vybraté
 umass_title=Aktualizácia záznamov v zónach
@@ -1039,6 +1097,7 @@ umass_done=.. aktualizované $1 zodpovedajúce záznamy z $2.
 umass_none=.. z $1 neboli nájdené žiadne zodpovedajúce záznamy na aktualizáciu.
 umass_egone=Zóna neexistuje
 emass_emx=$1 nie je prioritné číslo poštového servera, za ktorým nasleduje platné meno hostiteľa
+
 rdmass_err=Nepodarilo sa odstrániť záznamy v zónach
 rdmass_enone=Žiadne vybraté
 rdmass_title=Odstrániť záznamy v zónach
@@ -1055,6 +1114,7 @@ rdmass_done=.. odstránené $1 zodpovedajúce záznamy z $2.
 rdmass_none=.. nenašli sa žiadne zodpovedajúce záznamy z $1 na odstránenie.
 rdmass_ok=Odstrániť záznamy
 rdmass_sel=Záznamy pomenované
+
 rmass_err=Nepodarilo sa pridať záznamy
 rmass_enone=Žiadne vybraté
 rmass_title=Pridať záznam do zón
@@ -1074,18 +1134,22 @@ rmass_esign=.. hotovo, ale podpísanie zlyhalo : $1
 rmass_eclash=.. záznam s rovnakým názvom a hodnotou $1 už existuje.
 rmass_eclash2=.. záznam s rovnakým názvom a rovnakou hodnotou $1 už existuje.
 rmass_clash=Vytvoriť, aj keď už záznam existuje?
+
 check_title=Skontrolujte záznamy
 check_ecannot=Nemáte oprávnenie kontrolovať záznamy
 check_errs=V súbore záznamov $1 sa našli nasledujúce chyby.
 check_allok=V súbore záznamov $1 sa nenašli žiadne chyby.
+
 ncheck_title=Skontrolujte BIND Config
 ncheck_ecannot=Nemáte povolenie skontrolovať konfiguráciu BIND
 ncheck_errs=V konfiguračnom súbore BIND $1 alebo v referenčných zónach sa našli nasledujúce chyby.
 ncheck_allok=V konfiguračnom súbore BIND $1 alebo v referenčných zónach neboli nájdené žiadne chyby.
+
 links_restart=Použiť konfiguráciu
 links_stop=Zastavte BIND
 links_start=Spustiť BIND
 links_apply=Použiť zónu
+
 dnssec_title=Opätovné podpisovanie kľúčov DNSSEC
 dnssec_ecannot=Nemáte povolenie konfigurovať DNSSEC
 dnssec_header=Kľúčové možnosti opätovného podpisu
@@ -1096,6 +1160,7 @@ dnssec_secs=sekundy
 dnssec_desc=Zóny podpísané pomocou DNSSEC majú zvyčajne dva kľúče - kľúč zóny, ktorý sa musí generovať a pravidelne podpisovať, a kľúč podpisovania kľúča, ktorý zostáva konštantný. Táto stránka umožňuje nakonfigurovať Webmin tak, aby automaticky vykonával toto opätovné podpisovanie.
 dnssec_err=Nepodarilo sa uložiť opätovné podpísanie kľúča DNSSEC
 dnssec_eperiod=Chýbajúci alebo neplatný počet dní medzi opätovnými znameniami
+
 dnssectools_title=Automatizácia nástrojov DNSSEC
 dt_conf_title=Automatizácia nástrojov DNSSEC
 dt_enable_title=Automatizácia nástrojov DNSSEC
@@ -1160,6 +1225,7 @@ dt_status_inKSKroll=V KSK Roll
 dt_status_inZSKroll=V ZSK Roll
 dt_status_signed=podpísaný
 dt_status_unsigned=nepodpísaný
+
 zonekey_title=Nastaviť kľúč DNSSEC
 zonekey_desc=Táto zóna zatiaľ nemá podpisový kľúč DNSSEC. Pomocou tohto formulára môžete webmin vytvoriť, aby boli klienti, ktorí riešia túto zónu, chránení pred útokmi spoofingu DNS.
 zonekey_header=Nové možnosti kľúčov DNSSEC
@@ -1193,9 +1259,12 @@ zonekey_sign=Zóna sign
 zonekey_signdesc=Okamžite znova podpíšte túto zónu, aby sa všetky zmeny v manuálnych záznamoch zaznamenali do podpisových záznamov.
 zonekey_resign=Znovu podpíšte zónu
 zonekey_resigndesc=Vytvorte nový podpisovací kľúč zóny, podpíšte ho hlavným kľúčom zóny a znova podpíšte všetky záznamy.
+
 sign_err=Zónu sa nepodarilo podpísať
 sign_emsg=Podpisovanie DNSSEC po neúspešnej zmene záznamov : $1
+
 resign_err=Zónu sa nepodarilo znova podpísať
+
 trusted_title=Overenie DNSSEC
 trusted_ecannot=Nemáte povolenie nakonfigurovať overenie DNSSEC
 trusted_esupport=Vaša verzia BIND nepodporuje overenie DNSSEC
@@ -1230,6 +1299,7 @@ trusted_setup=Aby bol DNSSEC užitočný na overenie väčšiny podpísaných z�
 trusted_ok=Nastaviť DLV a povoliť overenie DNSSEC
 trusted_warning=Výstraha! Konfigurácia klienta BIND DNSSEC obsahuje zastarané kľúče, ktoré prestanú fungovať v októbri 2017. Na úpravu konfigurácie použite <a href='$1'>stránku BIND DNSSEC Verification</a> alebo kliknite na tlačidlo nižšie.
 trusted_fix=Opravte konfiguráciu DNSSEC
+
 xfer_title=Prenos testovacej zóny
 xfer_doing=Testuje sa prenos slave zóny z $1 ..
 xfer_failed=.. z $1: Zlyhanie : $2

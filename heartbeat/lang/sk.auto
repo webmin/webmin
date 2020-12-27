@@ -12,6 +12,7 @@ index_ereq_resource_cmd=Skript na vyžiadanie zdrojov z druhého uzla ($1) nebol
 index_version=Heartbeat verzia $1 
 index_noversion=Varovanie - Verzia Heartbeat nainštalovaná vo vašom systéme sa nedala automaticky zistiť. Mali by ste ho nastaviť na stránke <a href='$1'>Konfigurácia modulu</a>.
 index_status=Stav srdca
+
 conf_title=Možnosti konfigurácie
 conf_header=Možnosti konfigurácie prezenčného signálu
 conf_serials=Sériové porty srdcového rytmu
@@ -54,6 +55,7 @@ conf_auto_on=$ {Conf_enabled}
 conf_auto_off=$ {Conf_disabled}
 conf_auto_legacy=Starý režim
 conf_auto_=$ {Predvolené}
+
 res_title=Klastrové zdroje
 res_node=Primárny uzol
 res_ips=IP adresy
@@ -67,6 +69,7 @@ res_getserv=Získajte prostriedky
 res_hbdown=Srdce dole
 res_up=UP
 res_down=DOWN
+
 node_create=Pridať zdroj klastra
 node_edit=Upraviť klastrový prostriedok
 node_header=Podrobnosti o klastrovom prostriedku
@@ -83,6 +86,7 @@ node_enone=Chýba alebo je neplatný primárny uzol
 node_eip=$1 nie je platná adresa IP
 node_ecidr=$1 nie je platný CIDR
 node_ebroad=$1 nie je platná vysielacia adresa
+
 auth_title=Autentifikačné kľúče
 auth_header=Autentifikácia klastrových uzlov
 auth_mode=Režim overovania
@@ -92,6 +96,8 @@ auth_md5=MD5 s heslom
 auth_err=Autentifikačné kľúče sa nepodarilo uložiť
 auth_emd5=Chýbajúce alebo neplatné heslo MD5
 auth_esha1=Chýbajúce alebo neplatné heslo SHA1
+
 start_err=Nepodarilo sa spustiť tlkot srdca
+
 apply_err=Nepodarilo sa uplatniť zmeny
 apply_epid=Proces už nie je spustený

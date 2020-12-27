@@ -7,6 +7,7 @@ index_none=L-ebda esportazzjonijiet NFS ma ġew definiti s'issa.
 index_apply=Applika Konfigurazzjoni
 index_applydesc=Ikklikkja din il-buttuna biex tagħmel l-esportazzjonijiet kollha elenkati hawn fuq attivi, bl-għażliet konfigurati tagħhom.
 index_return=lista tal-esportazzjonijiet
+
 edit_title1=Oħloq Esportazzjoni
 edit_title2=Editja Esportazzjoni
 edit_header=Dettalji tal-esportazzjoni
@@ -24,12 +25,14 @@ edit_access=Aċċess għall-impunjazzjoni
 edit_all=L-ospiti kollha
 edit_sel=Ospitanti elenkati ..
 edit_none=L-ebda ospiti
+
 save_err=Ma rnexxielux jiffranka l-esportazzjoni
 save_edir=Direttorju nieqes jew ineżistenti għall-esportazzjoni
 save_eanon=Utent għerq nieqes jew invalidu
 save_erw=L-ebda host ta 'read-write ma daħal
 save_eroot=L-ebda host għall-aċċess tal-fajl għeruq ma daħal
 save_eaccess=L-ebda host ta 'aċċess għall-impunjazzjoni ma daħal
+
 log_create_export=Esportazzjoni maħluqa ta ' $1 
 log_delete_export=Esportazzjoni mħassra ta ' $1 
 log_modify_export=Esportazzjoni modifikata ta ' $1 

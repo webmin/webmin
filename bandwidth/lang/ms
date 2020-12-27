@@ -57,20 +57,27 @@ index_rotate=Kemaskini statistik
 index_rotatedesc=Klik butang ini untuk memproses semua log trafik rangkaian terkini, menjadikannya siap sedia untuk laporan.
 index_eiptables=Amaran - konfigurasi iptables anda mempunyai ralat : $1. Menetapkan pemantauan jalur lebar akan membersihkan semua peraturan firewall.
 index_return=borang laporan
+
 log_setup=Tetapan pemantauan jalur lebar pada antara muka $1
 log_turnoff=Nyah-aktif pemantauan jalur lebar
 log_rotate=Statistik yang telah dikemaskini
+
 acl_setup=Boleh menetapkan dan mematikan pemantauan?
+
 turnoff_ecannot=Anda tidak dibenarkan untuk menyah-aktifkan pemantauan
+
 setup_ecannot=Anda tidak dibenarkan untuk membenarkan pemantauan
 setup_eiface=Hilang atau nama antara muka tidak sah
 setup_ezone=Gagal mencari zon Shorewall untuk antara muka yang dipilih
+
 system_firewall=IPtables
 system_ipfw=IPFW
 system_ipfilter=IPFilter
 system_shorewall=Shorewall
+
 syslog_syslog=Syslog
 syslog_syslog-ng=Syslog-NG
+
 rotate_title=Mengemaskini statistik
 rotate_doing=Memproses log trafik rangkaian ..
 rotate_done=.. selesai.

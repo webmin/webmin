@@ -12,6 +12,7 @@ index_db=Jméno databáze
 index_tables=Tabulky
 index_drops=Přetažení vybraných databází
 index_postgresql=PostgreSQL
+
 index_toomany=Existuje příliš mnoho databází k zobrazení. Najít odpovídající databáze:
 index_search=Vyhledávání
 index_showing=Zobrazují se databáze odpovídající $1 ..
@@ -25,6 +26,7 @@ index_gist=Generalizovaný strom vyhledávání indexů
 index_jump=Nebo upravit databázi:
 index_jumpok=otevřeno
 index_edithosts=Konfigurace povolených hostitelských systémů
+
 dbase_header=Databázové tabulky, indexy, pohledy a sekvence
 dbase_vadd=Vytvořit pohled
 dbase_sadd=Vytvořit sekvenci
@@ -41,12 +43,15 @@ dbase_jump=Upravit tabulku:
 dbase_vjump=Upravit zobrazení:
 dbase_ijump=Upravit index:
 dbase_sjump=Upravit posloupnost:
+
 table_eblob=Pro pole BLOB $1 není potřeba žádná velikost
 table_csv=Exportovat jako CSV
 table_index=Vytvořit index
 table_delete=Odstranit vybraná pole
+
 field_err2=Pole se nepodařilo uložit
 field_err1=Pole se nepodařilo smazat
+
 exec_old=Nebo vyberte předchozí příkaz SQL :
 exec_clear=Smazat historii
 exec_header2=Vyberte soubor příkazů SQL, který chcete spustit v databázi $1 ..
@@ -70,6 +75,7 @@ exec_tabexec=Spustit SQL
 exec_tabfile=Spusťte SQL ze souboru
 exec_tabimport=Import textového souboru
 exec_return=provedení SQL formuláře
+
 view_refresh=Obnovit
 view_search2=Vyhledejte řádky, kde pole $2 $3 $1 
 view_match0=obsahuje
@@ -95,12 +101,14 @@ view_set=Nastavit na obsah souboru ..
 view_warn=Upozornění - nahrávání souborů do a prohlížení obsahu polí <tt>text</tt> nebo <tt>bytea</tt> pravděpodobně nebude fungovat, pokud nebudou nainstalovány a používány moduly $1 a $2 Perl.
 view_adv=pokročilé vyhledávání
 view_sqlrun=Výsledky generované dotazem SQL : $1 
+
 newdb_ecannot2=Není dovoleno vytvářet žádné další databáze
 newdb_user=Vlastněno uživatelem
 newdb_encoding=Kódování znakové sady
 newdb_eencoding=Chybí kódování znakové sady
 newdb_template=Databáze šablon
 newdb_notemplate=Žádný
+
 user_vwarning=UPOZORNĚNÍ: Tento uživatel PostgreSQL je administrační přihlašovací jméno pro doménu Virtualmin $1. Změna zde uvedených nastavení může způsobit chyby ve Virtualmin.
 user_setto=Nastaven na
 user_nochange=Neměňte
@@ -108,6 +116,7 @@ user_syncwhen=Kdy synchronizovat
 user_delete=Smazat vybrané
 user_derr=Smazání uživatelů se nezdařilo
 user_enone=Nebyli vybráni žádní uživatelé
+
 host_header=Podrobnosti o ověření klienta PostgreSQL
 host_peer=Síť peer
 host_user=Uživatelé
@@ -131,16 +140,20 @@ host_derr=Odstranění povolených hostitelů se nezdařilo
 host_enone=Nebyli vybráni žádní hostitelé
 host_manual=Upravit konfigurační soubor
 host_manualdesc=Klepnutím na toto tlačítko ručně upravíte konfigurační soubor povolených hostitelů.
+
 manual_title=Upravit konfigurační soubor
 manual_err=Uložení konfiguračního souboru se nezdařilo
+
 grant_ns=Schéma
 grant_toomany=Je příliš mnoho objektů k zobrazení. Najít odpovídající objekty:
 grant_showing=Zobrazují se objekty odpovídající $1 ..
 grant_delete=Obnovit vybrané granty
+
 group_memsopts=Všichni uživatelé
 group_memsvals=Uživatelé ve skupině
 group_derr=Skupiny se nepodařilo smazat
 group_enone=Nebyly vybrány žádné skupiny
+
 log_dbs_delete=Vynechané $1 databáze
 log_users_delete=Smazáno $1 uživatelů
 log_groups_delete=Smazáno $1 skupin
@@ -162,6 +175,7 @@ log_backup_l=Zálohovaná databáze $1 do souboru $2
 log_backup_all=Zálohujte všechny databáze
 log_backup_all_l=Zálohujte všechny databáze do souboru $2 
 log_manual=Ručně upravený konfigurační soubor povolených hostitelů
+
 acl_max=Ano, nejvýše
 acl_backup=Lze vytvářet zálohy?
 acl_restore=Lze obnovit zálohy?
@@ -174,10 +188,13 @@ acl_cmds=Lze upravovat před a po příkazech zálohování?
 acl_views=Lze prohlížet a spravovat zobrazení?
 acl_indexes=Lze prohlížet a spravovat indexy?
 acl_seqs=Umí zobrazit a spravovat sekvence?
+
 fdrop_enone=Nebyl vybrán žádný
 fdrop_eall=Z tabulky nelze vymazat všechna pole!
+
 dbase_bkup=Záloha
 dbase_rstr=Obnovit
+
 restore_title=Obnovte databázi
 restore_header=Obnovte možnosti databáze
 restore_db=Jméno databáze
@@ -200,6 +217,7 @@ restore_tables=Tabulky k obnovení
 restore_tables1=Vše v záložním souboru
 restore_tables0=Uvedené tabulky
 restore_failed=Obnovení selhalo : $1 
+
 backup_title=Záložní databáze
 backup_title2=Zálohujte všechny databáze
 backup_header1=Cíl zálohování
@@ -248,17 +266,21 @@ backup_ebefore=Příkaz před zálohováním selhal!
 backup_cmode=Kdy spouštět příkazy
 backup_cmode1=Před/po všech databázích
 backup_cmode0=Před/po každé databázi
+
 r_command=Příkaz není podporován
+
 adv_title=pokročilé vyhledávání
 adv_and=Najděte záznamy odpovídající všem kritériím ..
 adv_or=Najděte záznamy odpovídající všem kritériím ..
 adv_ok=Hledat nyní
+
 tdrops_enone=Nebyly vybrány žádné tabulky
 tdrops_err=Nepodařilo se zrušit tabulky
 tdrops_ok=Pokles
 tdrops_title=Drop Vybrané
 tdrops_rusure=Opravdu chcete zařadit $1 vybrané tabulky do databáze $2 ? Řádky dat $3 budou smazány.
 tdrops_rusure2=Opravdu chcete zařadit $1 vybrané tabulky do databáze $2 ?
+
 ddrops_err=Nepodařilo se zrušit databáze
 ddrops_title=Přetažení databází
 ddrops_rusure=Opravdu chcete zrušit vybrané databáze $1 ? Tabulky $2 obsahující $3 řádky dat budou smazány.
@@ -266,6 +288,7 @@ ddrops_mysql=Protože je vybrána hlavní databáze, její vypuštění pravděp
 ddrops_ok=Přetažení databází
 ddrops_enone=Nebyly vybrány žádné databáze
 ddrops_ecannotdb=Není dovoleno zrušit databázi $1 
+
 csv_title=Export souboru CSV
 csv_header=Možnosti exportu ve formátu CSV
 csv_dest=Exportovat cíl
@@ -286,6 +309,7 @@ csv_done=Export souboru CSV do $1 je dokončen. Výsledná velikost souboru je $
 csv_headers=Zahrnout názvy sloupců do CSV?
 csv_cols=Sloupce, které mají být zahrnuty do CSV
 csv_ecols=Nebyly vybrány žádné sloupce
+
 import_title=Importovat data
 import_uploadout=Import dat z nahraného souboru ..
 import_fileout=Import dat ze souboru $1 ..
@@ -293,6 +317,7 @@ import_eupload=Chybí nahraný importovaný soubor
 import_efile=Chybí název importovaného souboru
 import_done=.. vytvořil $1 řádků, vynechal duplikáty $2.
 import_erow=.. v řádku $1 nebyla nalezena žádná pole
+
 index_title1=Vytvořit index
 index_header1=Možnosti indexu
 index_name=Název indexu
@@ -310,6 +335,7 @@ index_ecols=Nebyla vybrána žádná pole
 index_title2=Upravit index
 index_header=Index $1 v databázi $2 
 index_ecannot=Nemáte oprávnění spravovat indexy
+
 view_title1=Vytvořit pohled
 view_title2=Upravit pohled
 view_header1=Zobrazit podrobnosti
@@ -324,6 +350,7 @@ view_eclash=Pohled se stejným názvem již existuje
 view_equery=Chybí dotaz SQL
 view_ecols=Nebyly zadány žádné názvy sloupců
 view_ecannot=Nemáte oprávnění ke správě zobrazení
+
 seq_title1=Vytvořit sekvenci
 seq_title2=Upravit sekvenci
 seq_header1=Zvýšení možností sekvence
@@ -343,5 +370,6 @@ seq_emin=Chybějící nebo neplatná minimální hodnota
 seq_emax=Chybí nebo neplatná maximální hodnota
 seq_ecache=Chybějící nebo neplatný počet hodnot do mezipaměti
 seq_ecannot=Není dovoleno spravovat sekvence
+
 dgrant_err=Obnovení grantů se nezdařilo
 dgrant_enone=Nebyly vybrány žádné objekty

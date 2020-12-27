@@ -16,8 +16,10 @@ index_type=SSH key type:
 index_rsa1=RSA (for SSH v1)
 index_rsa=RSA (for SSH v2)
 index_dsa=DSA (for SSH v2)
+
 bits=ビット
 secs=秒
+
 users_title=認証
 users_header=ログイン及び認証設定
 users_expire=アカウント終了前の警告日数
@@ -48,6 +50,7 @@ users_eexpire=不正な失効警告日数です
 users_ebanner=不正なログイン前メッセージです
 users_authkeys=ユーザ認証キーファイル
 users_authkeys_def=デフォルト(~/.ssh/authorized_keys)
+
 net_title=ネットワーク
 net_header=ネットワークオプション
 net_port=待受け(Listen)ポート
@@ -82,6 +85,7 @@ net_eprots=少なくとも１つ以上のプロトコルを選択してくださ
 net_eladdress='$1'は有効な待ち受けアドレスではありません
 net_elport='$1'は有効な待ち受けポートではありません
 net_elisten2=待ち受けアドレスが入力されていません
+
 access_title=アクセス制御
 access_header=ネットワーク及びログインアクセスコントロールオプション
 access_allowu=ユーザにのみ許可する
@@ -99,6 +103,7 @@ access_eallowg=許可するグループがありません
 access_edenyg=拒否するグループがありません
 access_eallowh=許可するホストがありません
 access_edenyh=拒否するホストがありません
+
 misc_title=その他のオプション
 misc_header=その他のSSHサーバオプション
 misc_x11=X11接続のフォワーディングを許可する
@@ -122,14 +127,17 @@ misc_eumask=無効な４桁８進表記のumaskです
 misc_ebits=無効なサーバ鍵サイズです
 misc_eregen=無効なキー再生成間隔です
 misc_epid=PIDファイルパスが見付かりません
+
 start_err=SSHサーバの起動に失敗しました
 apply_epid=Not running
+
 hosts_title=クライアントオプション
 hosts_header=SSHクライアントホスト
 hosts_none=クライアントオプションが定義されていません。全てのSSHクライアントはデフォルト設定でログインします
 hosts_all=全てのホスト
 hosts_add=クライアントホストにオプションを追加する
 hosts_return=クライアントホストリスト
+
 host_create=ホストオプションの追加
 host_edit=ホストオプションの編集
 host_header=SSHホスト用クライアントオプション
@@ -181,6 +189,7 @@ host_eprots=１つ以上のプロトコルを選択する必要があります
 host_proxy=Connection proxy command
 host_proxy_def=None
 host_eproxy=Missing or invalid-looking connection proxy command
+
 log_users=認証オプションが変更されました
 log_net=ネットワークオプションが変更されました
 log_access=アクセス制御が変更されました
@@ -195,6 +204,7 @@ log_stop=SSHサーバを停止しました
 log_start=SSHサーバを開始しました
 log_apply=変更を適用しました
 log_manual=設定ファイル$1を手で編集しました
+
 sync_title=ユーザSSH鍵を設定する
 sync_desc=このページでは新しく作成したUNIXユーザのためにSSH設定を自動化することができます。設定をした場合、新しいユーザはSSHの前に<tt>ssh-keygen</tt>を実行する必要が無くなります
 sync_create=新しいUNIXユーザのためにSSH鍵を設定する
@@ -203,6 +213,7 @@ sync_pass=パスワードにパスフレーズを使用する
 sync_gnupg=新しいユーザのためにGNUPG鍵を設定する
 sync_type=鍵の種類
 sync_auto=&lt;自動&gt;
+
 manual_title=設定ファイルの編集
 manual_ecannot=You are not allowed to edit the SSH server config file
 manual_ok=編集
@@ -210,5 +221,6 @@ manual_efile=Selected file is not part of the SSH server configuration
 manual_file=編集する設定ファイル:
 manual_edata=Nothing entered!
 manual_err=Failed to save config file
+
 dknown_err=Failed to delete knwon hosts
 dknown_enone=None selected

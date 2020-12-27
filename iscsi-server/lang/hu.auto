@@ -1,5 +1,6 @@
 check_etargets=A (z) $1 iSCSI szerver konfigurációs fájl nem található a rendszerén.
 check_eserver=A (z) $1 iSCSI szerverprogram nem található a rendszerén.
+
 index_title=iSCSI Server
 index_clink=Lehet, hogy nincs telepítve, vagy a <a href='$1'>modul konfigurációja</a> helytelen.
 index_stop=Állítsa le az iSCSI szervert
@@ -11,6 +12,7 @@ index_restartdesc=Kattintson erre a gombra az aktuális konfiguráció alkalmaz�
 index_atboot=Induláskor indul?
 index_atbootdesc=Ezzel a beállítással ellenőrizheti, hogy az iSCSI-kiszolgáló elindul-e a rendszerindításkor. Ha a rendszerindításkor még nem indul el, és az Igen lehetőséget választja, akkor új init szkript jön létre.
 index_return=modul index
+
 extents_title=Megosztható eszközök
 extents_none=Még nem jött létre megosztandó eszköz.
 extents_name=Eszköz neve
@@ -25,6 +27,7 @@ extents_denone=Egy sincs kiválasztva
 extents_einuse=A (z) $1 eszközt nem lehet törölni, mivel a következő használja : $2 
 extents_drusure=Biztosan eltávolítja a következő eszközöket: $1 ? Tartalmuk megmarad, de az iSCSI ügyfelek számára már nem lesznek elérhetők.
 extents_sure=Eszközök törlése
+
 extent_create=Hozzon létre megosztandó eszközt
 extent_edit=Szerkesztés az eszköz megosztása céljából
 extent_egone=A (z) $1 megosztására szolgáló eszköz nem létezik!
@@ -50,6 +53,7 @@ extent_estart=A mérték kezdetének számnak kell lennie
 extent_esize=A terjedelem méretének számnak kell lennie
 extent_esizemax=A kiterjedés vége nem lehet nagyobb, mint a (z) $1 eszköz mérete
 extent_einuse=Ezt az eszközt nem lehet törölni, mivel a következő használja : $1 
+
 devices_title=Készülékkombinációk
 devices_none=Még nem hoztak létre eszközkombinációkat.
 devices_name=Kombinációs név
@@ -65,6 +69,7 @@ devices_denone=Egy sincs kiválasztva
 devices_einuse=A (z) $1 kombináció nem törölhető, mivel a : $2 használja
 devices_drusure=Biztosan el akarja távolítani a következő eszközkombinációkat: $1 ? Tartalmuk megmarad, de az iSCSI ügyfelek számára már nem lesznek elérhetők.
 devices_sure=Törölje az eszközkombinációkat
+
 device_create=Készítsen eszközkombinációt
 device_edit=Eszközkombináció szerkesztése
 device_egone=A (z) $1 eszközkombináció nem létezik!
@@ -81,6 +86,7 @@ device_sure=Törölje az eszközkombinációt
 device_einuse=Ezt az eszközkombinációt nem lehet törölni, mivel a következő használja : $1 
 device_eextents=Nincs kiválasztott tag eszköz
 device_eself=Az egyik kiválasztott tag eszköz tartalmazza ezt az eszközt!
+
 targets_title=Célok megosztása
 targets_none=Még nem hoztak létre megosztási célokat.
 targets_name=Cél név
@@ -96,6 +102,7 @@ targets_derr=A megosztási célok törlése nem sikerült
 targets_denone=Egy sincs kiválasztva
 targets_drusure=Biztosan el akarja távolítani a következő megosztási célokat: $1 ? Nem vesznek el adatok, de az iSCSI-ügyfelek számára már nem lesznek elérhetők.
 targets_sure=Törölje a megosztási célokat
+
 target_create=Hozzon létre megosztási célokat
 target_edit=A megosztási célok szerkesztése
 target_egone=A (z) $1 megosztási cél nem létezik!
@@ -112,6 +119,7 @@ target_rusure=Biztosan törli a $1 megosztási célt? Nem vesznek el adatok, de 
 target_sure=Törölje a célt
 target_enetwork=Hiányzó vagy érvénytelen hálózat megosztani
 target_emask=Hiányzó vagy érvénytelen hálómaszk, amellyel megoszthatja
+
 opts_title=iSCSI szerver opciók
 opts_header=Opciók minden iSCSI-célhoz
 opts_ip4=Fogadja el az IPv4 kapcsolatokat
@@ -124,10 +132,12 @@ opts_err=Nem sikerült menteni az opciókat
 opts_ename=Hiányzó vagy érvénytelen név - csak betűk, számok, kötőjel, pont és aláhúzás megengedettek
 opts_eport=Hiányzó vagy nem numerikus portszám
 opts_esess=Hiányzó vagy nem numerikus maximális munkamenetek
+
 manual_title=A konfigurációs fájl szerkesztése
 manual_desc=Az alábbi szövegmező segítségével szerkesztheti a (z) $1 iSCSI szerver konfigurációs fájlt. Legyen óvatos, mivel a bemenetre nem kerül sor érvényesítésre!
 manual_err=A konfigurációs fájl mentése nem sikerült
 manual_edata=Nincs megadva tartalom!
+
 users_title=iSCSI hitelesítés
 users_none=Még nem hoztak létre iSCSI-felhasználót. Az ügyfelek hitelesítés nélkül hozzáférhetnek a megosztott eszközökhöz.
 users_add=Új iSCSI-felhasználó hozzáadása.
@@ -135,6 +145,7 @@ users_delete=Törölje a kijelölt felhasználókat
 users_name=Felhasználónév
 users_mode=Hitelesítési módszer
 users_return=a felhasználók listája
+
 user_create=Hozzon létre iSCSI felhasználót
 user_edit=Az iSCSI felhasználó szerkesztése
 user_header=iSCSI felhasználói adatok
@@ -145,13 +156,16 @@ user_egone=A felhasználó már nem létezik!
 user_err=Nem sikerült menteni az iSCSI felhasználót
 user_euser=Hiányzó vagy érvénytelen felhasználónév - szóközök és kettőspontok nem engedélyezettek
 user_epass=Hiányzó vagy érvénytelen jelszó - szóközök és kettőspontok nem engedélyezettek
+
 desc_extent=Eszköz a (z) $1 megosztására
 desc_device=$1 eszközkombináció
 desc_target=A (z) $1 cél megosztása
+
 start_err=Nem sikerült indítani az iSCSI szervert
 stop_err=Az iSCSI szerver megállítása nem sikerült
 restart_err=Nem sikerült újraindítani az iSCSI szervert
 atboot_err=Az indításkor nem sikerült engedélyezni
+
 log_create_extent=Készült eszköz a (z) $1 megosztására
 log_modify_extent=Frissített eszköz a (z) $1 megosztására
 log_delete_extent=Törölt eszköz a (z) $1 megosztására

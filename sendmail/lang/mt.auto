@@ -11,6 +11,7 @@ index_version2=Sendmail verżjoni $1, konfigurazzjoni $2
 index_xversion=Verżjoni tal-Sendmail $1 
 index_version=Sendmail config $1 
 index_sendmail=Sendmail
+
 opts_title=Għażliet ta 'Sendmail
 opts_ecannot=M'għandekx permess tibdel l-għażliet ta 'sendmail
 opts_ds=Ibgħat posta ħierġa permezz ta 'host
@@ -57,6 +58,7 @@ opts_qso=Issortja l-kju tal-posta skont
 opts_priority=Prijorità
 opts_host=L-isem tal-host
 opts_time=Żmien riċevut
+
 aliases_title=Aliases tal-Mail
 aliases_ecannot=M'għandekx permess teditja psewdonimi
 aliases_enofile=L-ebda fajl alias ma huwa definit fil-konfigurazzjoni Sendmail tiegħek
@@ -73,6 +75,7 @@ aliases_return=lista tal-alias
 aliases_toomany=Hemm wisq alias tal-posta fis-sistema tiegħek biex jintwerew f'din il-paġna.
 aliases_go=Sib psewdonimi li jaqblu:
 aliases_delete=Ħassar Aliases Magħżula
+
 aform_ecannot=M'għandekx permess teditja dan il-psewdonimu
 aform_type0=Xejn
 aform_type1=Indirizz tal-Email
@@ -90,11 +93,13 @@ aform_val=Psewdonimu
 aform_afile=Editja ..
 aform_return=psewdonimu
 aform_cmt=Deskrizzjoni
+
 afile_title=Editja l-Fajl tal-Indirizz
 afile_desc=Uża ż-żona tat-test hawn taħt biex teditja l-indirizzi fil-fajl $1.
 afile_efile=Mhux permess li jeditja $1.
 afile_undo=Ħassar il-Bidliet
 afile_ewrite=Naqset milli tikteb fil-fajl tal-indirizzi : $1 
+
 ffile_title=Editja l-File File
 ffile_desc=Uża l-formola hawn taħt biex tissettja r-regoli tal-filtru fil-fajl $1.
 ffile_efile=Mhux permess li jeditja $1.
@@ -110,6 +115,7 @@ ffile_other=Inkella 'l quddiem għal $1
 ffile_err=Ma rnexxielux isalva fajl tal-filtru
 ffile_ematch=Partita nieqsa
 ffile_eaction=Indirizz ta 'trasmissjoni nieqsa
+
 rfile_title=Editja l-Fajl Autoreply
 rfile_desc=Uża l-erja tat-test hawn taħt biex teditja l-messaġġ awtomatiku f ' $1. Il-messaġġ jista 'jkun fih il-makros $ SUBJETT, $ MINN, $ TO, $ DATA u $ BODY li se jitwessgħu meta l-autoreply ikun attivat.
 rfile_desc2=Tista 'wkoll tissettja intestaturi tal-posta li jżidu ma' jew jibdlu n-nuqqasijiet użati fl-autoreply billi tpoġġi linji bħal: <br><tt> Minn: foo@bar.com </tt><br> <tt>Suġġett: Fil-vaganza</tt> <br> fil-quċċata tal-messaġġ, separat mill-ġisem b'linja vojta waħda.
@@ -129,6 +135,7 @@ rfile_from=Minn: indirizz għat-tweġiba
 rfile_auto=Awtomatika (ibbażata fuq l-indirizz tar-riċevitur)
 rfile_efrom=Nieqes Minn: indirizz
 rfile_fromdesc=A Minn: l-indirizz għandu dejjem ikun speċifikat fejn possibbli, billi l-metodu awtomatiku jista 'ma jkunx ta' min joqgħod fuqu.
+
 asave_err=Naqset milli ssalva alias
 asave_ecannot2=M'għandekx permess teditja psewdonimi
 asave_ecannot=M'għandekx permess teditja dan il-psewdonimu
@@ -145,9 +152,11 @@ asave_etype5=Fajl awtomatikament "$1" mhux validu
 asave_etype4none=L-ebda programm mogħti
 asave_etype6=Fajl tal-filtru "$1" mhux validu
 asave_esame=Inti permess biss li toħloq alias bl-istess isem bħall-login tal-webmin tiegħek
+
 adelete_err=Ma rnexxielux iħassar il-psewdonimu
 adelete_enone=L-ebda magħżul
 adelete_ecannot=Mhux permess li tħassar l-alias $1 
+
 cws_title=Dominji Lokali
 cws_ecannot=M'għandekx permess teditja oqsma lokali
 cws_domains=Dominji mmaniġġjati minn dan is-server
@@ -156,6 +165,7 @@ cws_desc2=Innota li sempliċement tinkludi dominju fil-lista normalment ma tkunx
 cws_err=Ma rnexxielux isalva dominji lokali
 cws_ehost="$1" mhux host validu jew isem ta 'dominju
 cws_eip="$1" huwa indirizz IP, mhux dominju
+
 masq_title=Masquerading tad-Dominju
 masq_ecannot=M'għandekx permess biex tikkonfigura masquerading
 masq_domain=Masquerade bħala dominju
@@ -167,12 +177,14 @@ masq_err=Ma rnexxielux isalva masquerading tad-dominju
 masq_edomain="$1" mhux dominju validu biex jiġi mgħarraf kif
 masq_ehost="$1" mhux host validu jew isem ta 'dominju
 masq_eip="$1" huwa indirizz IP, mhux dominju
+
 trusts_title=Utenti ta 'fiduċja
 trusts_ecannot=M'għandekx permess teditja utenti fdati
 trusts_users=Utenti lokali fdati minn sendmail
 trusts_desc=Jekk utent lokali jipprova jibgħat imejl, sendmail jippermetti lill-utent biss li jipprovdi indirizz <tt>Minn:</tt> differenti jekk l-utent ikun fil-lista hawn taħt. Din ir-restrizzjoni teżisti biex tipprevjeni lill-utenti milli jfittxu email bl-ittestjar <tt>Minn:</tt> iffalsifikati ta 'oriġini mis-sistema tiegħek.
 trusts_err=Ma rnexxielux isalva utenti fdati
 trusts_euser="$1" mhux utent validu
+
 virtusers_title=Immappjar tal-Indirizz
 virtusers_ecannot=M'għandekx permess teditja mappings tal-indirizzi
 virtusers_efeature=Il-konfigurazzjoni ta 'sendmail tiegħek m'għandhiex il-karatteristika attivata għall-immappjar tal-indirizzi (<tt>virtuser</tt>). <a href='$1'>Ikklikkja hawn</a> biex tissettja l-karatteristiċi ta 'sendmail.
@@ -190,6 +202,7 @@ virtusers_return=lista tal-immappjar tal-indirizzi
 virtusers_toomany=Hemm wisq mappings ta 'indirizzi fis-sistema tiegħek biex jintwerew f'din il-paġna.
 virtusers_go=Sib mapep ta ’indirizzi li jaqblu:
 virtusers_delete=Ħassar l-Immappjar tal-Indirizzi magħżula
+
 vform_edit=Editja l-Immappjar tal-Indirizzi
 vform_create=Oħloq Immappjar tal-Indirizz
 vform_for=Mail għall
@@ -206,6 +219,7 @@ vform_err_tempfail=Falliment temporanju
 vform_err_protocol=Żball fil-Protokoll
 vform_end=Mexxi sal-aħħar
 vform_ecannot=M’intix permess li teditja dan il-mapping tal-indirizzi
+
 vsave_ecannot=M'għandekx permess teditja mappings tal-indirizzi
 vsave_ecannot2=M’intix permess li teditja dan il-mapping tal-indirizzi
 vsave_emax=M'għandekx permess toħloq aktar minn mappings ta 'indirizzi $1 
@@ -221,8 +235,10 @@ vsave_eaddr="$1" mhuwiex indirizz validu
 vsave_ecannot4=M'għandekx permess toħloq mappings għal dominji
 vsave_edomdom=Dominju biss jista 'jkun mapep għal dominju ieħor
 vsave_ecannot5=M'għandekx permess toħloq mappings li jirritornaw żball
+
 vdelete_err=Ma rnexxielhiex tħassar l-immappjar tal-indirizz
 vdelete_ecannot=M'għandekx permess tħassar l-immappjar għal $1 
+
 mailers_title=Routing tad-Dominju
 mailers_cannot=M’intix permess li teditja r-rotta tad-dominju
 mailers_edirective=Il-fajl tal-konfigurazzjoni sendmail tiegħek m'għandux id-direttiva meħtieġa għar-rotta tad-dominju.
@@ -236,6 +252,7 @@ mailers_delivery=Konsenja
 mailers_to=Ibgħat lil ..
 mailers_return=Lista tar-rotta tad-dominju
 mailers_delete=Ħassar ir-Rotot tad-Dominju magħżula
+
 mform_edit=Editja r-rotta
 mform_create=Oħloq rotta
 mform_for=Mail għall
@@ -259,12 +276,15 @@ mform_procmail=Procmail
 mform_mail11=DECnet posta11
 mform_error=Żball
 mform_ecannot=M’intix permess li teditja r-rotta tad-dominju
+
 msave_ecannot=M’intix permess li teditja r-rotta tad-dominju
 msave_err=Naqset milli ssalva r-rotta tad-dominju
 msave_edomain="$1" mhux host jew dominju validu
 msave_edup=Ir-rotta tad-domain għal '$1' hija diġà definita
+
 mdelete_err=Naqset milli tħassar router tad-dominju
 mdelete_ecannot=M'għandekx permess tħassar ir-rotta għal $1 
+
 generics_title=Indirizzi ħerġin
 generics_cannot=M'għandekx permess teditja l-indirizzi ħerġin
 generics_econfig=Il-fajl tal-konfigurazzjoni sendmail tiegħek m'għandux id-direttiva meħtieġa għall-immappjar tal-indirizzi.
@@ -278,11 +298,13 @@ generics_return=lista tal-immappjar tal-indirizzi
 generics_toomany=Hemm wisq indirizzi ħerġin fis-sistema tiegħek biex jintwerew fuq din il-paġna.
 generics_go=Sib l-indirizzi li ħerġin jaqblu:
 generics_delete=Ħassar l-Indirizzi Ħerġin magħżula
+
 gform_edit=Editja l-Immappjar
 gform_create=Oħloq Immappjar
 gform_from=Mail minn
 gform_to=Ibdel għal
 gform_ecannot=M’intix permess li teditja dan l-indirizz ħierġa
+
 gsave_ecannot=M'għandekx permess teditja l-indirizzi ħerġin
 gsave_ecannot2=M’intix permess li teditja dan l-indirizz ħierġa
 gsave_ecannot3=M'għandekx permess issalva dan l-indirizz ħierġa
@@ -291,8 +313,10 @@ gsave_efrom="$1" mhux validu mill-indirizz
 gsave_ematch=L-indirizz mill-indirizz ma jaqbilx ma ''$1'
 gsave_eto="$1" mhuwiex indirizz ġdid validu
 gsave_ealready=L-immappjar ta 'indirizzi ħerġin għal'$1'diġà jeżisti
+
 gdelete_err=Ma rnexxielhiex tħassar l-immappjar tal-indirizzi ħerġin
 gdelete_ecannot=M'għandekx permess tħassar l-immappjar għal $1 
+
 cgs_title=Dominji Ħerġin
 cgs_ecannot=M'għandekx permess teditja dominji ħierġa
 cgs_header=Dominji ta 'indirizzi ħerġin
@@ -300,6 +324,7 @@ cgs_desc=Minbarra l-posta mibgħuta mill-utenti lokali, sendmail se jwettaq biss
 cgs_err=Ma rnexxielux isalva dominji ħierġa
 cgs_ehost="$1" mhux host validu jew isem ta 'dominju
 cgs_eip="$1" huwa indirizz IP, mhux dominju
+
 domains_title=Immappjar tad-Dominju
 domains_ecannot=M’intix permess li teditja mmappjar tad-dominju
 domains_econfig=Il-fajl tal-konfigurazzjoni sendmail tiegħek m'għandux id-direttiva meħtieġa għall-immappjar tad-dominju.
@@ -310,17 +335,21 @@ domains_from=Minn dominju ..
 domains_to=Biex dominju ..
 domains_return=Lista tal-immappjar tad-dominju
 domains_delete=Ħassar Mapep ta 'Dominju magħżula
+
 dform_edit=Editja l-Immappjar
 dform_create=Oħloq Immappjar
 dform_from=Minn dominju
 dform_to=Id-dominju
 dform_ecannot=M’intix permess li teditja mmappjar tad-dominju
+
 dsave_ecannot=M’intix permess li teditja mmappjar tad-dominju
 dsave_err=Ma rnexxielux isalva l-immappjar tad-dominju
 dsave_edomain="$1" mhux isem ta 'dominju validu
 dsave_ealready=L-immappjar tad-dominju għal "$1" diġà jeżisti
+
 ddelete_err=Naqset milli tħassar il-mappings tad-dominju
 ddelete_ecannot=M'għandekx permess tħassar l-immappjar għal $1 
+
 access_title=Kontroll tal-ispam
 access_ecannot=M'għandekx permess tikkonfigura l-kontroll tal-ispam
 access_efeature=Il-konfigurazzjoni ta 'sendmail tiegħek m'għandhiex il-karatteristika tal-kontroll tal-ispam (<tt>access_db</tt>) attivata. <a href='$1'>Ikklikkja hawn</a> biex tissettja l-karatteristiċi ta 'sendmail.
@@ -333,6 +362,7 @@ access_return=lista tal-kontroll tal-ispam
 access_toomany=Hemm wisq regoli ta 'kontroll tal-ispam fis-sistema tiegħek biex jintwerew f'din il-paġna.
 access_go=Sib ir-regoli tal-kontroll tal-ispam li jaqblu:
 access_delete=Ħassar ir-Regoli magħżula għall-Kontroll tal-Ispam
+
 sform_edit=Editja r-Regola għall-Kontroll tal-Ispam
 sform_create=Oħloq Regola tal-Kontroll tal-Ispam
 sform_source=Sors tal-posta
@@ -354,6 +384,7 @@ sform_discard=Armi skiet
 sform_err=Kodiċi ta ’żball
 sform_msg=Messaġġ
 sform_ecannot=M'għandekx permess teditja din ir-regola tal-kontroll tal-ispam
+
 ssave_err=Irnexxielu jiffranka r-regola tal-kontroll tal-ispam
 ssave_etype0="$1" mhuwiex indirizz validu
 ssave_etype1="$1" mhuwiex indirizz validu tan-netwerk
@@ -362,8 +393,10 @@ ssave_etype3="$1" mhux dominju validu
 ssave_ecode="$1" mhuwiex kodiċi ta 'żball SMTP validu
 ssave_ealready=Diġà teżisti regola ta 'kontroll tal-ispam għal'$1'
 ssave_ecannot2=M'għandekx permess issalva din ir-regola tal-kontroll tal-ispam
+
 sdelete_err=Naqset milli tħassar ir-regoli tal-kontroll tal-ispam
 sdelete_ecannot=M'għandekx permess tħassar ir-regola għal $1 
+
 relay_title=Domini tar-Relay
 relay_ecannot=M'għandekx permess teditja oqsma tar-relay
 relay_eversion=Il-verżjonijiet sendmail 8.9 u aktar biss jappoġġjaw il-karatteristika tad-dominji tar-rilej.
@@ -372,6 +405,7 @@ relay_desc1=Sakemm ma jkunx permess mir-regoli <a href='$1'>kontroll tal-ispam</
 relay_desc2=Jekk is-sistema tiegħek qed isservi bħala portal għal diversi dominji li mhumiex aċċessibbli direttament minn barra n-netwerk tiegħek (billi tuża l-karatteristika <a href='$1'>routing tad-dominju</a>), allura dawk id-dominji kollha għandhom jiġu elenkati hawn.
 relay_err=Ma rnexxielux isalva dominji tar-rilejs
 relay_edomain="$1" mhux isem ta 'dominju validu
+
 mailq_title=Kju tal-Mail
 mailq_count=$1 messaġġi
 mailq_ecannot=M'għandekx permess tara l-kju tal-posta
@@ -401,12 +435,15 @@ mailq_search=Sib messaġġi fil-kju fejn
 mailq_quar=Kwarantina
 mailq_refresh=Aġġorna Kju tal-Mail
 mailq_refreshdesc=Reload din il-paġna biex turi l-istat attwali tal-kju tal-posta.
+
 flushq_title=Kju tal-flus
 flushq_desc=Ġie sfurzat it-twassil tal-messaġġi kollha bil-kmand $1 ..
 flushq_desc2=Ġie sfurzat il-konsenja attentata ta ' $1 messaġġi magħżula ..
 flushq_ecannot=M'għandekx permess li tlaħliħ il-kju tal-posta
+
 searchq_title=Riżultati tat-Tiftix tal-Kju
 searchq_none=Ma nstab l-ebda messaġġ fil-kju.
+
 delq_err=Naqset milli tħassar il-messaġġ
 delq_ecannot=M'għandekx permess li tħassar il-messaġġi
 delq_locked=Bħalissa l-fajl huwa msakkar biex jintbagħat
@@ -422,6 +459,7 @@ delq_force=Forza t-tħassir xorta waħda
 delq_ecannot2=ma tistax tħassar dan il-messaġġ
 delq_rusure=Int żgur li trid tħassar il-messaġġi fil-kju magħżula $1 ?
 delq_confirm=Ħassar Messaġġi
+
 boxes_title=Kaxxi tal-posta tal-utenti
 boxes_user=Utent
 boxes_size=Daqs tal-kaxxa tal-posta
@@ -431,6 +469,7 @@ boxes_sent=Intbagħat il-posta
 boxes_ecannot=M'għandekx permess taqra email
 boxes_toomany=Hemm wisq utenti fis-sistema tiegħek biex jelenka l-kaxxi tal-posta kollha tagħhom.
 boxes_go=Ara l-posta elettronika għall-utent:
+
 mail_title=Email tal-Utent
 mail_from=Minn
 mail_date=Data
@@ -471,6 +510,7 @@ mail_move=Nimxu lejn:
 mail_copy=Kopja lil:
 mail_rfc=Mil-linja
 mail_eexists=Messaġġ m'għadux jeżisti!
+
 view_title=Aqra l-Email
 view_desc=Messaġġ $1 f' $2 
 view_desc2=Messaġġ $1 għall-utent $2 
@@ -501,6 +541,7 @@ view_egone=Dan il-messaġġ m'għadux jeżisti
 view_afile=Isem Mehmuż
 view_atype=Tip ta 'żjieda
 view_asize=Daqs tal-fajl
+
 compose_title=Ikteb Email
 reply_title=Irrispondi għall-Email
 forward_title=Ibgħat Email
@@ -512,6 +553,7 @@ reply_attach2=Attachments min-naħa tal-klijent u tas-server
 reply_send=Ibgħat Mail
 reply_ecannot=M'għandekx permess tibgħat posta bħala dan l-utent
 reply_body=Test tal-messaġġ
+
 send_err=Naqset milli tibgħat il-posta
 send_eto=Nieqes Biex tindirizza
 send_efrom=Nieqes mill-indirizz
@@ -524,6 +566,7 @@ send_eattach=L-aċċessorji ma jistgħux jammontaw għal aktar minn $1 kB fid-da
 send_eperms=L-utent $1 ma jistax jaqra $2 
 send_eperms2=M'għandekx permess tibgħat fajl $1 
 send_epath=Sendmail eżegwibbli $1 ma jeżistix.
+
 delete_title=Ħassar Mail
 delete_rusure=Int żgur li trid tħassar il-messaġġi magħżula $1 minn $2 ? Dan jista 'jieħu ftit taż-żmien għal fajl kbir tal-posta. Sakemm it-tħassir ikun intemm, l-ebda azzjoni oħra ma għandha titwettaq.
 delete_rusure2=Int żgur li trid tħassar dan il-messaġġ minn $1 ? Dan jista 'jieħu ftit taż-żmien għal fajl kbir tal-posta. Sakemm it-tħassir ikun intemm, l-ebda azzjoni oħra ma għandha titwettaq.
@@ -536,6 +579,7 @@ delete_emoveuser=Utent li jċaqlaq il-posta ma jeżistix
 delete_emovecannot=M'għandekx permess iċċaqlaq il-posta lill-utent speċifikat
 delete_emovenone=Ebda posta magħżula biex tiċċaqlaq
 delete_nobutton=Mingħajr ebda buttuna
+
 search_title=Riżultati tat-Tiftix
 search_ecannot=M'għandekx permess tfittex l-email ta 'dan l-utent
 search_ematch=Trid tidħol test biex taqbel ma '.
@@ -549,6 +593,7 @@ search_results4=$1 messaġġi li jaqblu mat-tfittxija tiegħek ..
 search_local=Fil-fowlders lokali
 search_all=Fil-fowlders kollha
 search_eboolean=Tfittxijiet booleani bl-użu ta '' u 'u' u 'mhumiex appoġġjati
+
 file_title=Editja Sendmail File
 file_desc=Uża l-kaxxa tat-test hawn taħt biex teditja manwalment il-fajl Sendmail $1.
 file_undo=Ħassar il-Bidliet
@@ -564,6 +609,7 @@ file_emode=Mod mhux magħruf!
 file_err=Ma rnexxielux jeditja l-fajl
 file_ealias=Format mhux validu għal-linja tal-aliases file : $1 
 file_etab=Format mhux validu għal-linja tal-fajl tal-mappa : $1 
+
 acl_opts=Tista 'teditja l-għażliet ta' sendmail?
 acl_ports=Jista 'jeditja portijiet tan-netwerk?
 acl_cws=Tista 'teditja oqsma lokali?
@@ -630,6 +676,7 @@ acl_usersm=Utenti li jaqblu
 acl_asame=L-istess bħall-username
 acl_usersu=Bil-UID fil-medda
 acl_spam=Il-kontroll tal-ispam jindirizza dan l-utent jista 'jeditjah
+
 log_opts=Inbidlet l-għażliet ta 'sendmail
 log_ports=Ibdel il-portijiet tan-netwerk
 log_alias_create=Alias maħluq $1 
@@ -680,6 +727,7 @@ log_delete_domains=Mappings tad-dominju $1 imħassra
 log_delete_accesses=Iskrizzjonijiet ta ' $1 tal-kontroll tal-ispam imħassra
 log_delete_generics=Indirizzi ħerġin $1 imħassra
 log_delete_mailers=Rotot ta 'dominju $1 imħassra
+
 match_from=Minn: logħbiet
 match_subject=Suġġett: taqbiliet
 match_to=Għal: taqbiliet
@@ -699,6 +747,7 @@ match_!status=L-istatus ma jaqbilx
 match_!body=Korp ma jaqbilx
 match_!size=Id-daqs huwa inqas minn
 match_!headers=Intestaturi ma jaqblux
+
 features_title=Konfigurazzjoni Messaġġ M4
 features_desc=Din il-paġna telenka l-entrati rilevanti mill-fajl ta 'konfigurazzjoni Sendmail M4 $1, li minnu l-fajl tal-konfigurazzjoni attwali $2 huwa mibni.
 features_type=Tip ta 'dħul
@@ -718,6 +767,7 @@ features_efeatures=Id-direttorju bażi tal-konfigurazzjoni Sendmail M4 $2 ma nst
 features_econfig=Il-postijiet tad-direttorju bażi Sendmail M4 u l-fajl konfigurazzjoni M4 għadhom ma ġewx issettjati fil-konfigurazzjoni <a href='$1'>tal-modulu</a> tiegħek. Jekk għandek installat Sendmail mis-sors, dawn għandhom ikunu taħt id-direttorju tas-sors oriġinali.
 features_move=Tmexxi
 features_manual=Editja l-fajl manwalment
+
 feature_add=Żid id-Dħul tal-Konfigurazzjoni
 feature_edit=Edit Id-Dħul tal-Konfigurazzjoni
 feature_header=Dettalji tad-dħul tal-konfigurazzjoni M4
@@ -738,12 +788,15 @@ feature_emailer=Il-mailer $1 diġà jeżisti
 feature_eostype=It-tip ta ’l-OS huwa diġà definit bħala $1 
 feature_manual=Editja M4 File
 feature_mdesc=Il-paġna jippermettilek teditja manwalment il-fajl ta 'konfigurazzjoni ta' Sendmail M4 $1. Oqgħod attent, peress li ebda kontroll tas-sintassi ma jsir fuq l-editjar tiegħek.
+
 feat_access_db=Fajl ta 'kontroll spam
 feat_virtusertable=Immappjar tal-Indirizz
 feat_mailertable=Routing tad-Dominju
 feat_genericstable=Indirizzi ħerġin
 feat_domaintable=Immappjar tad-Dominju
+
 mailer_local=Kunsinna Unix Lokali
+
 build_title=Ibni l-Konfigurazzjoni Sendmail
 build_em4=Il-kmand $1 meħtieġ għall-bini mill-ġdid tal-fajl tal-konfigurazzjoni Sendmail ma nstabx fis-sistema tiegħek.
 build_ebuild=Ma rnexxielux jibni konfigurazzjoni : $1 
@@ -752,13 +805,16 @@ build_rusure2=Kun af li jekk għamilt tibdiliet lil Sendmail fil-paġna tal-Għa
 build_ok=Iva, ibdilha issa
 build_diff=Il-bidliet li ġejjin se jsiru fil-fajl tal-konfigurazzjoni Sendmail tiegħek ..
 build_nodiff=Il-fajl tal-konfigurazzjoni sendmail tiegħek huwa diġà aġġornat.
+
 stop_err=Ma rnexxielux iwaqqaf sendmail
 stop_ecannot=M'għandekx permess tieqaf sendmail
 stop_epid=Sendmail ma jidhirx li qiegħed jaħdem
 restart_epids=Ma stajtx issib proċessi ta 'sendmail
 restart_ekill=Ma rnexxielux jissinjalja l-proċessi ta 'sendmail : $1 
+
 start_err=Naqset milli tibda sendmail
 start_ecannot=Mhux permess li tibda sendmail
+
 ports_title=Portijiet tan-Netwerk
 ports_name=Isem il-port
 ports_addr=Isma 'l-indirizz

@@ -11,11 +11,13 @@ index_boot=Iniciar na inicialização?
 index_bootdesc=Altere essa configuração para ativar ou desativar a inicialização do servidor Dovecot no momento da inicialização do sistema.
 index_return=índice do módulo
 index_version=Versão $1
+
 stop_err=Falha ao parar o Dovecot
 stop_erunning=Não está mais em execução
 start_err=Falha ao iniciar o Dovecot
 start_eprotos=Nenhum protocolo selecionado na página <b>Rede e protocolos</b>
 apply_err=Falha ao aplicar a configuração
+
 net_title=Redes e protocolos
 net_header=Opções de rede e protocolo de correio Dovecot
 net_protocols=Servir protocolos de correio
@@ -42,8 +44,11 @@ net_eimaps_listen=Endereço IP inválido para conexões SSL IMAP
 net_epop3s_listen=Endereço IP inválido para conexões SSL POP3
 net_elisten=Endereço IP inválido para conexões não SSL
 net_essl_listen=Endereço IP inválido para conexões SSL
+
 imap_title=Opções IMAP
+
 pop3_title=Opções de POP3
+
 ssl_title=Configuração SSL
 ssl_header=Opções de modo IMAP e POP3 SSL
 ssl_key=Arquivo de Chave Privada SSL
@@ -61,7 +66,9 @@ ssl_ecert=Arquivo de certificado ausente ou inexistente
 ssl_eca=Arquivo de certificado CA de cliente ausente ou inexistente
 ssl_eregen=Intervalo de regeneração de parâmetro ausente ou não numérico
 ssl_epass=Nenhuma senha do arquivo de chave SSL inserida
+
 misc_title=Outras opções
+
 login_title=Opções de Usuário e Login
 login_header=Opções de autenticação e login do usuário
 login_fuid=UID mínimo válido
@@ -117,6 +124,7 @@ login_procs=Processos máximos de login
 login_count=Processos de login inicial
 login_eprocs=Número máximo ausente ou inválido de processos de login
 login_ecount=Número inicial ausente ou inválido de processos de login
+
 mail_title=Arquivos de Correio
 mail_header=Localização de correio e opções de leitura
 mail_env=Local do arquivo de mensagens
@@ -169,6 +177,7 @@ mail_eindexmode=O local dos arquivos de índice não pode ser definido quando o 
 mail_econtrolmode=O local dos arquivos de controle não pode ser definido quando o local do arquivo de mensagens é detectado automaticamente
 mail_eindex=Caminho absoluto ausente ou inválido para arquivos de índice
 mail_econtrol=Caminho absoluto ausente ou inválido para arquivos de controle
+
 log_net=Redes e protocolos alterados
 log_login=Usuário Alterado e Opções de Login
 log_mail=Arquivos de correio alterados
@@ -179,6 +188,7 @@ log_stop=Servidor Dovecot parado
 log_bootup=Dovecot ativado no momento da inicialização
 log_bootdown=Pombal desativado no momento da inicialização
 log_manual=Arquivo de configuração editado manualmente $1
+
 manual_title=Editar arquivos de configuração
 manual_editsel=Editar arquivo de configuração Dovecot
 manual_err=Falha ao salvar o arquivo de configuração

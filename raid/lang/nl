@@ -19,6 +19,7 @@ index_mailfromnone=Standaard (<tt>root</tt>)
 index_program=Opdracht om uit te voeren indien er problemen ondekt worden
 index_programnone=Geen enkele uitvoeren
 index_monitor=Monitoren aanzetten?
+
 linear=Aaneengeschakeld (Linear)
 raid0=Striped (RAID0)
 raid1=Mirrored (RAID1)
@@ -27,6 +28,7 @@ raid5=Redundant (RAID5)
 raid6=Dual Redundant (RAID6)
 raid10=Striped en Mirrored (RAID10)
 blocks=blokken
+
 create_title=RAID Apparaat Aanmaken
 create_header=RAID apparaat opties
 create_device=Apparaat file
@@ -54,6 +56,7 @@ create_nogroup=Geen (gebruik alleen eigen reserve)
 create_oldgroup=Bestaande groep
 create_newgroup=Nieuwe groep
 create_enewgroup=Ontbrekende of niet alfa numerieke reserve groep naam
+
 view_title=RAID apparaat
 view_header=RAID apparaat opties
 view_device=Apparaat file
@@ -104,6 +107,7 @@ view_mountmsg=Enter een directory en klik op deze knop om naar een formulier te 
 view_mountmsg2=Klik op deze knop om dit RAID apparaat te gebruiken voor virtueel geheugen op uw systeem.
 view_blocks=$1 blokken
 view_sparegroup=Reserve groep
+
 mkfs_title=Filesysteem Aanmaken
 mkfs_header2=Met dit formulier maakt u een nieuw $2 filesysteem op $1. <b>Alle</b> bestaande data zal worden gewist!
 mkfs_options=Nieuwe Linux filesysteem opties
@@ -111,6 +115,7 @@ mkfs_err=Mislukt om filesysteem te maken
 mkfs_exec=Uitvoeren opdracht $1 ..
 mkfs_failed=.. opdracht mislukt!
 mkfs_ok=.. opdracht uitgevoerd.
+
 emkraid=<tt>mkraid</tt> mislukte : $1
 eraidstop=<tt>raidstop</tt> mislukte : $1
 eraidstart=<tt>raidstart</tt> mislukte : $1
@@ -121,6 +126,7 @@ emdadmadd=<tt>mdadm</tt> in <tt>--manage --add</tt> mode mislukte : $1
 emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode mislukt : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode mislukte : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode mislukte : $1
+
 log_create=Aangemaakt $1 RAID apparaat $2
 log_stop=Ge-deactiveerd RAID apparaat $1
 log_start=Geactiveerd RAID apparaat $1
@@ -132,10 +138,12 @@ log_grow=RAID5 apparaat $1 laten groeien naar een totaal van $2 harddisk(en)
 log_convert_to_raid6=RAID5 apparaat $1 geconverteerd naar een RAID6 apparaat
 log_convert_to_raid5=RAID6 apparaat $1 geconverteerd naar een RAID5 apparaat
 log_notif=Geupdate RAID problemen berichten opties
+
 notif_err=Mislukt om RAID problemen berichten opties op te slaan
 notif_emailaddr=Ontbrekende of ongeldig berichten adres
 notif_emailfrom=Ontbrekende of ongeldig Van adres
 notif_eprogram=Ontbrekende of niet bestaand programma om uit te voeren
+
 delete_title=Verwijder RAID Array
 delete_rusure=Weet u zeker dat u de RAID array $1 wilt verwijderen, wat $2 gebruikt aan harddisk ruimte?
 delete_ok=Ja, verwijder het

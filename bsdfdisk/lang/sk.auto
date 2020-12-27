@@ -7,6 +7,7 @@ index_dsize=Celková velkosť
 index_dmodel=Značka a model
 index_dparts=plátky
 index_return=zoznam diskov
+
 disk_title=Upraviť disk
 disk_egone=Disk už neexistuje!
 disk_no=plátok
@@ -31,9 +32,11 @@ disk_return=podrobnosti o disku a zoznam rezov
 disk_add=Vytvorte nový plátok.
 disk_smart=Zobraziť stav SMART
 disk_smartdesc=Zobrazte aktuálny stav tejto jednotky zistený serverom SMART a skontrolujte, či neobsahuje chyby na disku.
+
 select_device=Zariadenie $1 $2 
 select_slice=$1 zariadenie $2 plátok $3 
 select_part=$1 device $2 slice $3 partition $4 
+
 slice_title=Upraviť rez
 slice_egone=Vybraný rez neexistuje!
 slice_ssize=Veľkosť rezu
@@ -58,6 +61,7 @@ slice_return=podrobnosti o rezoch a zoznam oddielov
 slice_err=Plátok sa nepodarilo upraviť
 slice_header=Podrobnosti plátok
 slice_suse=Priamo využívané
+
 dslice_title=Odstrániť plátok
 dslice_rusure=Naozaj chcete odstrániť plátok $1 ? Všetky oddiely a súborové systémy v ňom budú tiež odstránené.
 dslice_warn=Varovanie - tento segment v súčasnosti používa : $1 
@@ -65,6 +69,7 @@ dslice_confirm=Odstrániť teraz
 dslice_deleting=Odstraňuje sa plátok $1 ..
 dslice_failed=.. odstránenie zlyhalo : $1 
 dslice_done=.. hotový
+
 nslice_title=Vytvorenie rezu
 nslice_header=Nové podrobnosti o plátkoch
 nslice_number=Číslo výrezu
@@ -86,6 +91,7 @@ nslice_done=.. plátok bol pridaný
 nslice_parting=Vytvorte predvolené oddiely v oblasti $1 na $2 ..
 nslice_pfailed=.. vytvorenie oddielu zlyhalo : $1 
 nslice_pdone=.. oddiel bol pridaný
+
 npart_title=Vytvorte oddiel
 npart_header=Nové podrobnosti o oddiele
 npart_letter=Rozdeľovací list
@@ -98,6 +104,7 @@ npart_emax=Koncový blok nemôže byť väčší ako veľkosť segmentu $1 bloko
 npart_creating=Vytvára sa oddiel $1 na $2 ..
 npart_failed=.. vytvorenie oddielu zlyhalo : $1 
 npart_done=.. oddiel bol pridaný
+
 part_title=Upraviť oblasť
 part_egone=Oddiel už neexistuje!
 part_header=Podrobnosti oddielu
@@ -124,6 +131,7 @@ part_newmount2=Mount Partition
 part_mountmsg=Pripojte toto zariadenie do nového adresára vo vašom systéme, aby ste ho mohli použiť na ukladanie súborov. V zariadení už musí byť vytvorený súborový systém.
 part_mountmsg2=Ak chcete zvýšiť množstvo dostupnej pamäte, pripojte toto zariadenie ako virtuálnu pamäť k systému.
 part_cannotedit=Tento oddiel nie je možné upraviť, pretože sa momentálne používa.
+
 dpart_title=Odstrániť oblasť
 dpart_rusure=Naozaj chcete odstrániť oddiel $1 ? Všetky súborové systémy v nej budú tiež odstránené.
 dpart_warn=Varovanie - tento oddiel momentálne používa $1 
@@ -131,6 +139,7 @@ dpart_confirm=Odstrániť teraz
 dpart_deleting=Odstraňuje sa oddiel $1 ..
 dpart_failed=.. odstránenie zlyhalo : $1 
 dpart_done=.. hotový
+
 newfs_title=Vytvorte súborový systém
 newfs_header=Nové podrobnosti o súborovom systéme
 newfs_free=Priestor pre rezervovanie koreňov
@@ -145,11 +154,13 @@ newfs_elabel=Chýba alebo je neplatná menovka
 newfs_creating=Vytvára sa súborový systém na $1 ..
 newfs_failed=.. tvorba zlyhala!
 newfs_done=.. úspešne vytvorené
+
 fsck_title=Skontrolujte súborový systém
 fsck_err=Nepodarilo sa skontrolovať systém súborov
 fsck_checking=Prebieha kontrola súborového systému na $1 ..
 fsck_failed=.. kontrola zlyhala!
 fsck_done=.. kontrola dokončená bez nájdených chýb
+
 log_create_slice=Vytvoril sa plátok $1 
 log_delete_slice=Vymazaný plátok $1 
 log_modify_slice=Upravený plátok $1 

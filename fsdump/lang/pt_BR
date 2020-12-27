@@ -23,6 +23,7 @@ index_follow=Depois de $1
 index_forcetar=No formato TAR
 index_delete=Remover Backups Selecionados
 index_nostrftime=Alerta ? algumas tarefas de backup usam % nos seus nomes de arquivo, mas a substituição strftime não está habilitada na página de Configuração de Módulo.
+
 dump_dir=Diretório para fazer backup
 dump_dirs=Diretórios para fazer backup
 dump_fs=Sistema de Arquivos
@@ -104,6 +105,7 @@ dump_remount=Remontar, com a opção <tt>noatime</tt>, durante o backup?
 dump_eftpupdate=Não é possível acrescentar arquivos a um backup existente usando FTP.
 dump_eleveldir=Só são permitidos backups de nível 0 para diretórios que não são pontos de montagem de sistemas de arquivos
 dump_eupdatedir=O arquivo <tt>/etc/dumpdates</tt> só pode ser atualizado para diretórios que são pontos de montagem de sistemas de arquivos
+
 edit_err=Erro ao criar backup
 edit_edir=Diretório de backup não preenchido
 edit_efs=Não é possível fazer o backup de sistemas de arquivos do tipo $1 com este módulo
@@ -125,9 +127,11 @@ edit_restore=Restaurar ..
 edit_to=$1 em $2
 edit_tolevel=$1 em $2 (nível $3)
 edit_special=Agenda de backups
+
 save_err=Erro ao salvar backup
 save_edir=Diretório de backup inválido ou não preenchido
 save_efs=O diretório do backup não pode trocar de sistema de arquivos
+
 backup_title=Fazer Backup Agora
 backup_desc=Fazendo o backup de $1 em $2 ..
 backup_reverify=.. completo. Verificando backup ..
@@ -140,6 +144,7 @@ backup_notape=.. backup excedeu a capacidade de uma fita única. A troca de fita
 backup_egone=Backup não existe!
 backup_bg=Iniciando o processo de backup. Você pode monitorar o progresso na sessão <b>Tarefas de Plano de Fundo em Execução</b> na página principal do módulo. O sistema informará o término do processo via e-mail.
 backup_ecannot=Você não tem permissão para fazer backup com este diretório
+
 restore_title=Restaurar Backup
 restore_err=Erro ao restaurar backup
 restore_ecommand=O comando $1, necessário para a restauração de backups de sistemas de arquivos $2, não foi encontrado no seu sistema. Pode ser que ele não esteja instalado.
@@ -183,6 +188,7 @@ restore_gzip=Descompactar arquivo?
 restore_keep=Não sobrescrever arquivos?
 restore_emulti=Não é possível fazer restaurações de múltiplos arquivos de um dispositivo de fita
 restore_emulti2=Não é possível fazer restaurações de múltiplos arquivos de um servidor remoto
+
 log_create=Foram criadas configurações de backup para $1
 log_modify=Foram modificadas as configurações de backup para $1
 log_delete=Foram removidas as configurações de backup para $1
@@ -190,13 +196,16 @@ log_backup=Foi feito o backup de $1 em $2
 log_bgbackup=O backup de $1 em $2 foi iniciado
 log_restore=O backup de $1 foi restaurado
 log_kill=O backup para $1 foi finalizado
+
 kill_err=Falha ao finalizar o backup
 kill_egone=Inativo!
 kill_ecannot=Você não tem permissão para interromper este backup
+
 newtape_err=Falha ao indicar a nova fita
 newtape_egone=Backup não está mais sendo executado!
 newtape_estatus=Backup não está mais esperando uma nova fita
 newtape_ecannot=Você não tem permissão para gerenciar este backup
+
 acl_edit=Pode criar e editar backups?
 acl_restore=Pode restaurar backups?
 acl_cmds=Pode editar comandos pré e pós backup?
@@ -204,8 +213,10 @@ acl_extra=Pode editar parâmetros de linha de comando?
 acl_dirs=Diretórios permitidos para backup
 acl_all=Todos os diretórios
 acl_list=Somente os listados ..
+
 delete_err=Erro ao excluir backups
 delete_enone=Nenhum selecionado
+
 email_already=O backup já está sendo executado, com PID $1.
 email_ebefore=Falha no comando pré-backup!
 email_verify=Verificando backup ..
@@ -213,5 +224,6 @@ email_eafter=Falha no comando pós-backup!
 email_subject=Backup de $1 em $2
 email_ok=Backup completo
 email_failed=Falha no backup
+
 newtape_subject=Mudança de fita $1 para o backup de $2 em $3
 newtape_body=O backup de $2 em $3 atingiu a quantidade máxima de dados permitidos na fita $1. Será necessário inserir outra fita e clicar no link ?Fita carregada? no módulo de Backup de Sustemas de Arquivos do Webmin para que o backup continue.

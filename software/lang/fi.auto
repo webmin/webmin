@@ -25,6 +25,7 @@ index_echeckupdate=Päivitysjärjestelmää ei havaittu!
 index_filter=Suodata paketit
 index_filterclear=Tyhjennä suodatin
 index_filtered=Näytetään <tt>$1</tt> paketit pois <tt>$2</tt>
+
 search_title=Pakettihaku
 search_nomatch=Ei paketteja, jotka vastasivat $1 : tä
 search_none=Ei mitään
@@ -37,6 +38,7 @@ search_esearch=Et kirjoittanut mitään etsiäksesi!
 search_delete=Poista valitut paketit
 search_selall=Valitse kaikki
 search_invert=Käänteinen valinta
+
 edit_title=Muokkaa pakettia
 edit_details=Paketin tiedot
 edit_desc=Kuvaus
@@ -53,6 +55,7 @@ edit_uninst=Uninstall
 edit_uninstdesc=Poista tämä paketti järjestelmästäsi.
 edit_return=paketin yksityiskohdat
 edit_egone=Paketti ei ole enää asennettu
+
 list_title=Paketitiedostot
 list_files=Paketin $1 tiedostot
 list_path=polku
@@ -64,6 +67,7 @@ list_status=Tila
 list_ok=kunnossa
 list_view=(Katso)
 list_eview= $1 : $2 avaaminen epäonnistui
+
 delete_err=Paketin $1 poistaminen epäonnistui
 delete_epack=Paketti $1 ei ole olemassa
 delete_title=Poista paketti
@@ -75,6 +79,7 @@ delete_noscripts=Ohitetaanko skriptien poisto?
 delete_efile=Virheellinen poistettava välitiedosto
 delete_purge=Poistetaanko konfiguraatiotiedostot?
 delete_depstoo=Poistettiin myös käyttämättömät riippuvuudet?
+
 file_title=Tiedoston tiedot
 file_notfound=Tietoja $1 : stä ei ole saatavana
 file_path=polku
@@ -88,6 +93,7 @@ file_pack=Paketti
 file_class=luokka
 file_desc=Kuvaus
 file_none=Ei mitään
+
 install_err=Paketin asennus epäonnistui
 install_elocal=Paikallista tiedostoa ei annettu
 install_elocal2='$1' ei ole olemassa
@@ -101,6 +107,7 @@ install_title=Asenna paketti
 install_header=Asenna paketti
 install_packs=Asennettavat paketit
 install_ok=Asentaa
+
 do_err=Paketin $1 asennus epäonnistui
 do_title=Asenna paketti
 do_efailed=Asennus epäonnistui : $1 
@@ -117,10 +124,12 @@ do_arch=Arkkitehtuuri
 do_inst=asennetut
 do_none=Ei mitään
 do_files=Paketitiedostot
+
 pkgadd_root=Juurihakemisto
 pkgadd_eroot=Juurihakemistoa '$1' ei ole
 pkgadd_unknown=Tuntematon
 pkgadd_manager=System V -paketinhallinta
+
 rpm_upgrade=Päivitä paketti?
 rpm_replacepkgs=Korvaako paketti?
 rpm_nodeps=Ohitetaan riippuvuudet?
@@ -138,10 +147,12 @@ rpm_find=Hae rpmfind.net ..
 rpm_findrpm=Paketin tiedostonimi
 rpm_finddistro=Jakelu
 rpm_finddesc=Kuvaus
+
 bsd_unknown=Tuntematon
 bsd_scripts=Suoritetaanko asennuksen ennakko- ja jälkeisiä komentosarjoja?
 bsd_force=Pakota asennus, jos puuttuvat edellytykset?
 bsd_manager=$1 paketinhallinta
+
 slack_unclass=muut
 slack_unknown=Tuntematon
 slack_missing=puuttuva
@@ -149,12 +160,14 @@ slack_root=Juurihakemisto
 slack_eroot=Puuttuva tai virheellinen juurihakemisto
 slack_manager=Slackware Package Manager
 slack_edir=Puuttuvat Slackware-pakettihakemisto $1 
+
 debian_unknown=Tuntematon
 debian_depends=Ohitetaan riippuvuusongelmat?
 debian_conflicts=Ohitetaanko pakettiristiriidat?
 debian_overwrite=Korvaako tiedostoja muista paketeista?
 debian_downgrade=Korvataanko uudempi paketti vanhalla?
 debian_manager=Debian DPKG
+
 log_install_package=Asennettu paketti $1 
 log_install_apt_l=Asennetut paketit $1 APT: ltä
 log_install_apt=Asennettu $2 paketti APT: ltä
@@ -173,6 +186,7 @@ log_upgrade_yum_l=Päivitetyt paketit $1 YUM: lta
 log_upgrade_yum=Päivitetty $2 paketti YUM: lta
 log_check_rhn_l=Päivitetyt paketit $1 Redhat Networkistä
 log_check_rhn=Päivitetty $2 pakettia Redhat Network -palvelusta
+
 rhn_input=Paketti Redhat Network -yritykseltä
 rhn_find=Etsi RHN ..
 rhn_install=Asennetaan paketteja komentoilla $1 ..
@@ -200,6 +214,7 @@ rhn_eproxy=Puuttuva tai virheellinen välityspalvelin
 rhn_skip=Ohita vastaavat paketit
 rhn_nonefound=Ei päivitettäviä paketteja.
 rhn_name=Redhat-verkko
+
 apt_input=Paketti APT: ltä
 apt_install=Asennetaan paketteja komentoilla $1 ..
 apt_ok=.. asennus valmis.
@@ -229,6 +244,7 @@ apt_repo_url=Varastotietokannan URL-osoite
 apt_repo_path=Jakelupolun komponentit
 apt_repo_eurl=Puuttuva tai virheellisen näköinen perus-URL-osoite
 apt_repo_epath=Puuttuva jakelupolku
+
 yum_input=Pakkaus YUM: lta
 yum_install=Asennetaan paketteja komentoilla $1 ..
 yum_ok=.. asennus valmis.
@@ -259,6 +275,7 @@ yum_repo_ename=Puuttuu arkiston nimi
 yum_repo_eurl=Puuttuva tai virheellinen arkiston URL-osoite
 yum_repo_egpg=GPG-varmennustiedosto puuttuu tai sitä ei ole
 yum_repo_efile=Varastotiedosto on jo olemassa!
+
 urpmi_name=urpmi
 urpmi_input=Paketti URPMI: ltä
 urpmi_find=Selaa URPMI ..
@@ -273,6 +290,7 @@ urpmi_upgradeok=.. saattaa loppuun.
 urpmi_install=Asennetaan paketteja komentoilla $1 ..
 urpmi_ok=.. asennus valmis.
 urpmi_failed=.. asennus epäonnistui!
+
 rpm_missing=puuttuva
 rpm_checkfail=$1 -tarkistus epäonnistui
 rpm_md5=MD5
@@ -284,6 +302,7 @@ rpm_user=käyttäjän omistajuus
 rpm_perm=käyttöoikeudet
 rpm_group=ryhmäomistus
 rpm_erpm=RPM $1 ei löydy : $2 
+
 soft_reg=Normaali tiedosto
 soft_dir=hakemisto
 soft_spec=Erityinen tiedosto
@@ -295,6 +314,7 @@ soft_euncompress=Tiedosto on pakattu, mutta <tt>purkaa</tt> -komentoa ei löydy 
 soft_euncmsg=Tiedoston purkaminen epäonnistui : $1 
 soft_egzip=Tiedosto on gzipattu, mutta gzip-komentoa ei löydy järjestelmästäsi.
 soft_egzmsg=Tiedoston ampuminen epäonnistui : $1 
+
 aix_unknown=Tuntematon
 aix_device=INPUT-laite / ohjelmistohakemisto
 aix_software=OHJELMISTO asentaa
@@ -312,6 +332,7 @@ aix_accept=HYVÄKSYT uusia lisenssisopimuksia?
 aix_license=Esikatsele uusia LISENSSISopimuksia?
 aix_clean=Siivousasennuksen vika?
 aix_manager=AIX-pakettihallinta
+
 emerge_input=Portage-arkistosta
 emerge_find=Hae ..
 emerge_install=Asennetaan paketti komennolla $1 ..
@@ -327,6 +348,7 @@ emerge_noreplace=Korvataanko olemassa olevat paketit?
 emerge_onlydeps=Asennetaanko vain riippuvuuksia?
 emerge_title=Hae Portagesta
 emerge_name=portage
+
 cygwin_fmissing=Tiedosto puuttuu
 cygwin_lmissing=Tiedosto, johon linkkipisteet puuttuvat
 cygwin_estat=Stat-tiedosto epäonnistui: $1 
@@ -336,6 +358,7 @@ cygwin_badpostscript=Varoitus: tämä komentojono ei vaikuta suoritetulta
 cygwin_pkgexists=Paketti $1 on jo olemassa.
 cygwin_warnuse=Varoitus: Tämä ei ole virallinen käyttöliittymä Cygwin-ohjelmiston hallintaan. Käytä omalla vastuullasi.
 cygwin_edb=Puuttuvat Cygwin-paketitietokanta $1 
+
 deletes_err=Pakettien poistaminen epäonnistui
 deletes_enone=Ei paketteja valittu
 deletes_title=Poista paketit
@@ -346,6 +369,7 @@ deletes_failed2=Asennuksen poisto epäonnistui : $1
 deletes_success2=.. asennus on valmis.
 deletes_rusure=Haluatko varmasti poistaa paketit $1 ?
 deletes_ok=Poista ne kaikki
+
 csw_input=Paketti CSW: ltä
 csw_install=Asennetaan paketteja komentoilla $1 ..
 csw_ok=.. asennus valmis.
@@ -360,20 +384,24 @@ csw_name=CSW
 csw_form=Päivitä paketit
 csw_upgrade=Päivitä kaikki asennetut paketit
 csw_updatedesc=Päivitetään kaikki asennetut paketit komennolla $1 ..
+
 missing_msg=Webmin voi asentaa $1 -paketin automaattisesti käyttämällä $2.
 missing_now=Asenna nyt
+
 find_title=Etsi paketti
 find_search=Etsi vastaavia paketteja:
 find_name=Nimi
 find_version=Versio
 find_desc=Kuvaus
 find_none=Hakuasi vastaavia paketteja ei löytynyt.
+
 msi_users=Aseta uusi sovellus sivustolle
 msi_users0=ei kukaan
 msi_users1=Nykyinen käyttäjä
 msi_users2=Kaikki käyttäjät
 msi_missing=Ei ole olemassa
 msi_size=Väärä koko
+
 hpux_create_target_path=Luoko kohdepolku?
 hpux_mount_all_filesystems=Asennetaanko kaikki tiedostojärjestelmät?
 hpux_reinstall=Asenna uudelleen?
@@ -389,6 +417,7 @@ hpux_enforce_dependencies=Pakota riippuvuudet?
 hpux_enforce_scripts=Ota skriptit käyttöön?
 hpux_enforce_dsa=Aseta levytila-analyysi täytäntöön?
 hpux_root=Juurihakemisto
+
 ports_install=FreeBSD-porttien asennus $1 ..
 ports_failed=.. jotkut satamat epäonnistuivat
 ports_ok=.. asennus valmis
@@ -399,18 +428,22 @@ ports_form=Päivitä porttitietokanta
 ports_apply=Lataa viimeisin tilannekuva
 ports_upgrade=Porttien tilannekuvan lataaminen
 ports_running=Käynnissä komento $1 ..
+
 pkg_install=FreeBSD-pakettien $1 asentaminen ..
 pkg_failed=.. jotkut paketit epäonnistuivat
 pkg_ok=.. asennus valmis
 pkg_find=Hae pkgng
 pkg_input=Pakkaus pkgng: ltä
+
 pkgsrc_install=Pkgsrc-pakettien asennus $1.
 pkgsrc_failed=.. jotkut paketit epäonnistuivat
 pkgsrc_ok=.. asennus valmis
 pkgsrc_find=Hae pkgng
 pkgsrc_input=Paketti pkgsrc
+
 log_IPKG_update=Päivitetty IPKG-tietokanta
 log_IPKG_upgrade=Päivitetyt asennetut IPKG-paketit
+
 IPKG_name=IPKG
 IPKG_input=Paketti IPKG: ltä
 IPKG_find=Selaa IPKG: tä ..

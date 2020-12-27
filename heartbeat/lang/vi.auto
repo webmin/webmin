@@ -12,6 +12,7 @@ index_ereq_resource_cmd=Tập lệnh yêu cầu tài nguyên từ nút khác ($1
 index_version=Phiên bản nhịp tim $1 
 index_noversion=Cảnh báo - Không thể tự động phát hiện phiên bản Heartbeat được cài đặt trên hệ thống của bạn. Bạn nên đặt nó trên trang <a href='$1'>cấu hình mô-đun</a>.
 index_status=Tình trạng nhịp tim
+
 conf_title=Tùy chọn cấu hình
 conf_header=Tùy chọn cấu hình Heartbeat
 conf_serials=Cổng nhịp tim nối tiếp
@@ -54,6 +55,7 @@ conf_auto_on=$ {conf_enables}
 conf_auto_off=$ {conf_disables}
 conf_auto_legacy=Chế độ kế thừa
 conf_auto_=$ {mặc định}
+
 res_title=Tài nguyên cụm
 res_node=Nút chính
 res_ips=Các địa chỉ IP
@@ -67,6 +69,7 @@ res_getserv=Nhận tài nguyên
 res_hbdown=Nhịp tim đập xuống
 res_up=LÊN
 res_down=XUỐNG
+
 node_create=Thêm tài nguyên cụm
 node_edit=Chỉnh sửa tài nguyên cụm
 node_header=Chi tiết tài nguyên cụm
@@ -83,6 +86,7 @@ node_enone=Nút chính bị thiếu hoặc không hợp lệ
 node_eip='$1' không phải là địa chỉ IP hợp lệ
 node_ecidr='$1' không phải là CIDR hợp lệ
 node_ebroad='$1' không phải là địa chỉ quảng bá hợp lệ
+
 auth_title=Khóa xác thực
 auth_header=Xác thực nút cụm
 auth_mode=Chế độ xác thực
@@ -92,6 +96,8 @@ auth_md5=MD5 với mật khẩu
 auth_err=Không thể lưu khóa xác thực
 auth_emd5=Mật khẩu MD5 bị thiếu hoặc không hợp lệ
 auth_esha1=Mật khẩu SHA1 bị thiếu hoặc không hợp lệ
+
 start_err=Không thể bắt đầu nhịp tim
+
 apply_err=Không thể áp dụng thay đổi
 apply_epid=Quá trình không còn chạy

@@ -11,6 +11,7 @@ index_version2=Sendmail verzia $1, config $2
 index_xversion=Sendmail verzia $1 
 index_version=Sendmail config $1 
 index_sendmail=Poslať mail
+
 opts_title=Sendmail Options
 opts_ecannot=Nemáte oprávnenie upravovať možnosti odosielania pošty
 opts_ds=Odošlite odchádzajúcu poštu prostredníctvom hostiteľa
@@ -57,6 +58,7 @@ opts_qso=Zoradiť frontu pošty podľa
 opts_priority=priorita
 opts_host=Meno hosťa
 opts_time=Čas prijatý
+
 aliases_title=Aliasy pošty
 aliases_ecannot=Nemáte oprávnenie upravovať aliasy
 aliases_enofile=V konfigurácii Sendmailu nie je definovaný žiadny súbor aliasu
@@ -73,6 +75,7 @@ aliases_return=zoznam aliasov
 aliases_toomany=Vo vašom systéme je príliš veľa aliasov na zobrazenie na tejto stránke.
 aliases_go=Nájsť zodpovedajúce aliasy:
 aliases_delete=Odstrániť vybraté aliasy
+
 aform_ecannot=Nemáte oprávnenie upravovať tento alias
 aform_type0=nikto
 aform_type1=Emailová adresa
@@ -90,11 +93,13 @@ aform_val=Alias to
 aform_afile=Edit ..
 aform_return=prezývka
 aform_cmt=popis
+
 afile_title=Upraviť súbor s adresou
 afile_desc=Pomocou textovej oblasti nižšie upravte adresy v súbore $1.
 afile_efile=Nemáte oprávnenie upravovať $1.
 afile_undo=Vrátiť zmeny
 afile_ewrite=Nepodarilo sa zapísať do súboru s adresami : $1 
+
 ffile_title=Upraviť súbor filtra
 ffile_desc=Použite nasledujúci formulár na nastavenie pravidiel filtrovania v súbore $1.
 ffile_efile=Nemáte oprávnenie upravovať $1.
@@ -110,6 +115,7 @@ ffile_other=Inak vpred na $1
 ffile_err=Súbor filtra sa nepodarilo uložiť
 ffile_ematch=Chýba zápas
 ffile_eaction=Chýba presmerovacia adresa
+
 rfile_title=Upraviť autoreply súbor
 rfile_desc=Pomocou textovej oblasti nižšie upravte autoreply správu v $1. Správa môže obsahovať makrá $SUBJECT, $FROM, $TO, $DATE a $BODY, ktoré sa po aktivácii autoreply budú rozširovať.
 rfile_desc2=Môžete tiež nastaviť hlavičky pošty, ktoré pridávajú alebo nahrádzajú predvolené hodnoty použité v autoreply tak, že zadáte riadky ako: <br><tt> Od: foo@bar.com </tt><br> <tt>Predmet: Na dovolenke</tt> <br> v hornej časti správy, oddelené od tela jediným prázdnym riadkom.
@@ -129,6 +135,7 @@ rfile_from=Od: adresa pre odpoveď
 rfile_auto=Automaticky (na základe adresy príjemcu)
 rfile_efrom=Chýba od: adresa
 rfile_fromdesc=Od: Adresa by sa mala uvádzať vždy, keď je to možné, pretože automatická metóda nemusí byť spoľahlivá.
+
 asave_err=Nepodarilo sa uložiť alias
 asave_ecannot2=Nemáte oprávnenie upravovať aliasy
 asave_ecannot=Nemáte oprávnenie upravovať tento alias
@@ -145,9 +152,11 @@ asave_etype5=Autoreply súbor '$1' nie je platný
 asave_etype4none=Nie je uvedený žiadny program
 asave_etype6=Súbor filtra '$1' nie je platný
 asave_esame=Môžete si vytvoriť iba prezývku s rovnakým menom ako vaše prihlasovacie meno pre webmin
+
 adelete_err=Nepodarilo sa odstrániť aliasy
 adelete_enone=Žiadne vybraté
 adelete_ecannot=Nemáte povolenie odstrániť alias $1 
+
 cws_title=Lokálne domény
 cws_ecannot=Nemáte oprávnenie upravovať miestne domény
 cws_domains=Domény spracované týmto serverom
@@ -156,6 +165,7 @@ cws_desc2=Všimnite si, že iba zahrnutie domény do zoznamu nestačí. Musíte 
 cws_err=Lokálne domény sa nepodarilo uložiť
 cws_ehost=$1 nie je platný názov hostiteľa alebo domény
 cws_eip=$1 je IP adresa, nie doména
+
 masq_title=Maškaráda domén
 masq_ecannot=Nemáte dovolené nakonfigurovať maskovanie
 masq_domain=Maškaráda ako doména
@@ -167,12 +177,14 @@ masq_err=Nepodarilo sa uložiť maskovanie domén
 masq_edomain=$1 nie je platnou doménou na maskovanie ako
 masq_ehost=$1 nie je platný názov hostiteľa alebo domény
 masq_eip=$1 je IP adresa, nie doména
+
 trusts_title=Dôveryhodní používatelia
 trusts_ecannot=Nemáte oprávnenie upravovať dôveryhodných používateľov
 trusts_users=Lokálni používatelia, ktorým dôveruje služba sendmail
 trusts_desc=Ak sa miestny používateľ pokúša odoslať e-mail, funkcia sendmail mu umožní poskytnúť inú adresu <tt>From:</tt>, ak je používateľ uvedený v zozname nižšie. Toto obmedzenie existuje, aby sa používateľom zabránilo falšovať e-maily s falošnými adresami <tt>From:</tt> z vášho systému.
 trusts_err=Uloženie dôveryhodných používateľov zlyhalo
 trusts_euser=$1 nie je platný používateľ
+
 virtusers_title=Mapovanie adresy
 virtusers_ecannot=Nemáte dovolené upravovať mapovania adries
 virtusers_efeature=Vaša konfigurácia sendmail nemá povolenú funkciu mapovania adries (<tt>virtuser</tt>). <a href='$1'>Kliknite sem</a> a nastavte funkcie sendmailu.
@@ -190,6 +202,7 @@ virtusers_return=zoznam mapovania adries
 virtusers_toomany=Vo vašom systéme je príliš veľa mapovaní adries na zobrazenie na tejto stránke.
 virtusers_go=Nájdite priradenia mapovaní adries:
 virtusers_delete=Odstrániť vybraté mapovania adries
+
 vform_edit=Upraviť mapovanie adries
 vform_create=Vytvorenie mapovania adries
 vform_for=Mail pre
@@ -206,6 +219,7 @@ vform_err_tempfail=Dočasné zlyhanie
 vform_err_protocol=Chyba protokolu
 vform_end=Presunúť do konca
 vform_ecannot=Nemáte oprávnenie upravovať toto mapovanie adries
+
 vsave_ecannot=Nemáte dovolené upravovať mapovania adries
 vsave_ecannot2=Nemáte oprávnenie upravovať toto mapovanie adries
 vsave_emax=Nemáte oprávnenie vytvárať viac ako $1 mapovaní adries
@@ -221,8 +235,10 @@ vsave_eaddr='$1' nie je platná adresa
 vsave_ecannot4=Nemáte oprávnenie vytvárať mapovania domén
 vsave_edomdom=Do inej domény je možné mapovať iba doménu
 vsave_ecannot5=Nemáte oprávnenie vytvárať mapovania, ktoré vracajú chybu
+
 vdelete_err=Nepodarilo sa odstrániť mapovania adries
 vdelete_ecannot=Nemáte povolenie vymazať mapovanie pre $1 
+
 mailers_title=Smerovanie domén
 mailers_cannot=Nemáte oprávnenie upravovať smerovanie domén
 mailers_edirective=Váš konfiguračný súbor sendmail nemá potrebnú smernicu na smerovanie domény.
@@ -236,6 +252,7 @@ mailers_delivery=dodávka
 mailers_to=Poslať ..
 mailers_return=smerovací zoznam domén
 mailers_delete=Odstránenie vybratých doménových trás
+
 mform_edit=Upraviť smerovanie
 mform_create=Vytvoriť smerovanie
 mform_for=Mail pre
@@ -259,12 +276,15 @@ mform_procmail=procmail
 mform_mail11=DECnet mail11
 mform_error=Chyba
 mform_ecannot=Nemáte oprávnenie upravovať smerovanie domén
+
 msave_ecannot=Nemáte oprávnenie upravovať smerovanie domén
 msave_err=Nepodarilo sa uložiť smerovanie domény
 msave_edomain=$1 nie je platný hostiteľ ani doména
 msave_edup=Smerovanie domény pre '$1' je už definované
+
 mdelete_err=Odstránenie smerovača domény zlyhalo
 mdelete_ecannot=Nemáte povolenie vymazať trasu pre $1 
+
 generics_title=Odchádzajúce adresy
 generics_cannot=Nemáte oprávnenie upravovať odchádzajúce adresy
 generics_econfig=Váš konfiguračný súbor sendmail nemá potrebnú smernicu na mapovanie odchádzajúcich adries.
@@ -278,11 +298,13 @@ generics_return=zoznam mapovania adries
 generics_toomany=Vo vašom systéme je príliš veľa odchádzajúcich adries na zobrazenie na tejto stránke.
 generics_go=Nájsť zodpovedajúce odchádzajúce adresy:
 generics_delete=Odstrániť vybrané odchádzajúce adresy
+
 gform_edit=Upraviť mapovanie
 gform_create=Vytvorenie mapovania
 gform_from=Pošta od
 gform_to=Zmeniť na
 gform_ecannot=Túto odchádzajúcu adresu nemáte dovolené upravovať
+
 gsave_ecannot=Nemáte oprávnenie upravovať odchádzajúce adresy
 gsave_ecannot2=Túto odchádzajúcu adresu nemáte dovolené upravovať
 gsave_ecannot3=Túto odchádzajúcu adresu nemáte dovolené ukladať
@@ -291,8 +313,10 @@ gsave_efrom='$1' nie je platný z adresy
 gsave_ematch=Adresa z adresy nezodpovedá $1
 gsave_eto=$1 nie je platná nová adresa
 gsave_ealready=Mapovanie odchádzajúcej adresy pre '$1' už existuje
+
 gdelete_err=Odstránenie mapovania odchádzajúcej adresy zlyhalo
 gdelete_ecannot=Nemáte povolenie vymazať mapovanie pre $1 
+
 cgs_title=Odchádzajúce domény
 cgs_ecannot=Nemáte oprávnenie upravovať odchádzajúce domény
 cgs_header=Domény odchádzajúcich adries
@@ -300,6 +324,7 @@ cgs_desc=Okrem pošty odosielanej miestnymi používateľmi bude služba sendmai
 cgs_err=Uloženie odchádzajúcich domén zlyhalo
 cgs_ehost=$1 nie je platný názov hostiteľa alebo domény
 cgs_eip=$1 je IP adresa, nie doména
+
 domains_title=Mapovanie domén
 domains_ecannot=Nemáte oprávnenie upravovať mapovanie domén
 domains_econfig=Váš konfiguračný súbor sendmail nemá potrebnú smernicu na mapovanie domén.
@@ -310,17 +335,21 @@ domains_from=Z domény ..
 domains_to=Do domény ..
 domains_return=zoznam mapovania domén
 domains_delete=Odstrániť vybraté mapovania domén
+
 dform_edit=Upraviť mapovanie
 dform_create=Vytvorenie mapovania
 dform_from=Z domény
 dform_to=Do domény
 dform_ecannot=Nemáte oprávnenie upravovať mapovanie domén
+
 dsave_ecannot=Nemáte oprávnenie upravovať mapovanie domén
 dsave_err=Mapovanie domény sa nepodarilo uložiť
 dsave_edomain=$1 nie je platný názov domény
 dsave_ealready=Mapovanie domény „$1“ už existuje
+
 ddelete_err=Nepodarilo sa odstrániť mapovania domén
 ddelete_ecannot=Nemáte povolenie vymazať mapovanie pre $1 
+
 access_title=Kontrola spamu
 access_ecannot=Nemáte povolenie na kontrolu spamu
 access_efeature=Vaša konfigurácia sendmail nemá povolenú funkciu kontroly spamu (<tt>access_db</tt>). <a href='$1'>Kliknite sem</a> a nastavte funkcie sendmailu.
@@ -333,6 +362,7 @@ access_return=zoznam kontroly spamu
 access_toomany=Na vašom systéme je príliš veľa pravidiel na kontrolu nevyžiadanej pošty, ktoré sa môžu zobraziť na tejto stránke.
 access_go=Nájdite pravidlá na kontrolu nevyžiadanej pošty zodpovedajúce:
 access_delete=Odstrániť vybrané pravidlá kontroly spamu
+
 sform_edit=Upraviť pravidlo kontroly spamu
 sform_create=Vytvorte pravidlo kontroly spamu
 sform_source=Zdroj pošty
@@ -354,6 +384,7 @@ sform_discard=Zlikvidujte ticho
 sform_err=Kód chyby
 sform_msg=správa
 sform_ecannot=Nemáte povolenie upravovať toto pravidlo kontroly spamu
+
 ssave_err=Pravidlo kontroly spamu sa nepodarilo uložiť
 ssave_etype0='$1' nie je platná adresa
 ssave_etype1=$1 nie je platná sieťová adresa
@@ -362,8 +393,10 @@ ssave_etype3=$1 nie je platná doména
 ssave_ecode=$1 nie je platný chybový kód SMTP
 ssave_ealready=Pravidlo kontroly spamu pre $1 už existuje
 ssave_ecannot2=Toto pravidlo kontroly spamu nemôžete ukladať
+
 sdelete_err=Nepodarilo sa odstrániť pravidlá kontroly spamu
 sdelete_ecannot=Nemáte povolenie na odstránenie pravidla pre $1 
+
 relay_title=Reléové domény
 relay_ecannot=Nemáte oprávnenie upravovať prenosové domény
 relay_eversion=Funkciu prenosu domén podporujú iba funkcie sendmail verzie 8.9 a vyššie.
@@ -372,6 +405,7 @@ relay_desc1=Pokiaľ to nepovoľujú pravidlá <a href='$1'>kontroly spamu</a>, s
 relay_desc2=Ak váš systém slúži ako brána pre niekoľko domén, ktoré nie sú priamo prístupné mimo vašej siete (pomocou funkcie <a href='$1'>smerovanie domén</a>), mali by ste tu uviesť všetky tieto domény.
 relay_err=Nepodarilo sa uložiť reléové domény
 relay_edomain=$1 nie je platný názov domény
+
 mailq_title=Poštový front
 mailq_count=Počet správ: $1 
 mailq_ecannot=Nemáte povolenie na prezeranie e-mailového frontu
@@ -401,12 +435,15 @@ mailq_search=Nájdite správy vo fronte, kde
 mailq_quar=karanténe
 mailq_refresh=Obnoviť frontu pošty
 mailq_refreshdesc=Načítaním tejto stránky zobrazíte aktuálny stav frontu pošty.
+
 flushq_title=Splachovacia fronta
 flushq_desc=Vynútenie pokusu o doručenie všetkých správ pomocou príkazu $1 ..
 flushq_desc2=Vynútiť pokus o doručenie vybraných správ: $1.
 flushq_ecannot=Nemáte dovolené vyprázdniť frontu pošty
+
 searchq_title=Výsledky vyhľadávania vo fronte
 searchq_none=Nenašli sa žiadne správy vo fronte.
+
 delq_err=Správu sa nepodarilo odstrániť
 delq_ecannot=Nemáte oprávnenie odstraňovať správy
 delq_locked=Súbor je momentálne zablokovaný na odoslanie
@@ -422,6 +459,7 @@ delq_force=Vynútiť odstránenie napriek tomu
 delq_ecannot2=túto správu nemôžete odstrániť
 delq_rusure=Naozaj chcete odstrániť správy vo fronte $1 vybrané?
 delq_confirm=Odstrániť správy
+
 boxes_title=Používateľské schránky
 boxes_user=užívateľ
 boxes_size=Veľkosť poštovej schránky
@@ -431,6 +469,7 @@ boxes_sent=Odoslaná pošta
 boxes_ecannot=Nemáte oprávnenie čítať e-maily
 boxes_toomany=Vo vašom systéme je príliš veľa používateľov na to, aby uviedli všetky svoje poštové schránky.
 boxes_go=Zobraziť poštu pre používateľa:
+
 mail_title=E-mail používateľa
 mail_from=z
 mail_date=Dátum
@@ -471,6 +510,7 @@ mail_move=Presunúť do:
 mail_copy=Kopírovať do:
 mail_rfc=Z riadku
 mail_eexists=Správa už neexistuje!
+
 view_title=Prečítajte si e-mail
 view_desc=Správa $1 v $2 
 view_desc2=Správa $1 pre používateľa $2 
@@ -501,6 +541,7 @@ view_egone=Táto správa už neexistuje
 view_afile=Názov prílohy
 view_atype=Typ prílohy
 view_asize=Veľkosť súboru
+
 compose_title=Napíšte e-mail
 reply_title=Odpoveď na e-mail
 forward_title=Poslať ďalej e-mailom
@@ -512,6 +553,7 @@ reply_attach2=Prílohy na strane klienta a servera
 reply_send=Poslať mail
 reply_ecannot=Ako tento používateľ nemáte povolenie odosielať poštu
 reply_body=Text správy
+
 send_err=Nepodarilo sa odoslať poštu
 send_eto=Chýba adresa
 send_efrom=Chýba adresa
@@ -524,6 +566,7 @@ send_eattach=Prílohy nemôžu presahovať celkovú veľkosť $1 kB.
 send_eperms=Používateľ $1 nemôže čítať $2 
 send_eperms2=Nemáte oprávnenie odosielať súbor $1 
 send_epath=Spustiteľný súbor Sendmail $1 neexistuje.
+
 delete_title=Odstrániť poštu
 delete_rusure=Naozaj chcete odstrániť $1 vybrané správy z $2 ? V prípade veľkého poštového súboru to môže chvíľu trvať. Kým nebude vymazanie ukončené, nemala by sa vykonávať žiadna iná akcia.
 delete_rusure2=Naozaj chcete odstrániť túto správu z $1 ? V prípade veľkého poštového súboru to môže chvíľu trvať. Kým nebude vymazanie ukončené, nemala by sa vykonávať žiadna iná akcia.
@@ -536,6 +579,7 @@ delete_emoveuser=Používateľ, ktorý presunul poštu, neexistuje
 delete_emovecannot=Nemáte dovolené presúvať poštu k uvedenému používateľovi
 delete_emovenone=Na presun nebol vybratý žiadny e-mail
 delete_nobutton=Klikli na žiadne tlačidlo
+
 search_title=Výsledky vyhľadávania
 search_ecannot=Nemáte povolené prehľadávať e-maily tohto používateľa
 search_ematch=Musíte zadať text, aby sa zhodoval s.
@@ -549,6 +593,7 @@ search_results4=E-mailové správy: $1 zodpovedajúce vášmu vyhľadávaniu.
 search_local=V miestnych priečinkoch
 search_all=Vo všetkých priečinkoch
 search_eboolean=Booleovské vyhľadávania využívajúce znaky „aj“ a „alebo“ nie sú podporované
+
 file_title=Upraviť súbor Sendmail
 file_desc=Pomocou textového poľa nižšie manuálne upravte súbor Sendmail $1.
 file_undo=Vrátiť zmeny
@@ -564,6 +609,7 @@ file_emode=Neznámy režim!
 file_err=Súbor sa nepodarilo upraviť
 file_ealias=Neplatný formát pre riadok súboru aliasu : $1 
 file_etab=Neplatný formát pre riadok s mapovým súborom : $1 
+
 acl_opts=Môžete upravovať možnosti odosielania pošty?
 acl_ports=Môžete upravovať sieťové porty?
 acl_cws=Môžete upravovať miestne domény?
@@ -630,6 +676,7 @@ acl_usersm=Používatelia sa zhodujú
 acl_asame=Rovnaké ako používateľské meno
 acl_usersu=S rozsahom UID
 acl_spam=Kontrolné adresy spamu, ktoré môže tento používateľ upravovať
+
 log_opts=Zmenené možnosti odosielania pošty
 log_ports=Zmena sieťových portov
 log_alias_create=Vytvorený alias $1 
@@ -680,6 +727,7 @@ log_delete_domains=Odstránené $1 mapovania domén
 log_delete_accesses=Odstránené $1 záznamy na kontrolu spamu
 log_delete_generics=Odstránené $1 odchádzajúce adresy
 log_delete_mailers=Odstránené trasy domény $1 
+
 match_from=Z: zápasy
 match_subject=Predmet: zápasy
 match_to=Komu: zápasy
@@ -699,6 +747,7 @@ match_!status=Stav sa nezhoduje
 match_!body=Telo sa nezhoduje
 match_!size=Veľkosť je menšia ako
 match_!headers=Záhlavia sa nezhodujú
+
 features_title=Sendmail M4 Configuration
 features_desc=Táto stránka obsahuje zoznam dôležitých položiek z konfiguračného súboru Sendmail M4 $1, z ktorého je zostavený skutočný konfiguračný súbor $2.
 features_type=Druh vstupu
@@ -718,6 +767,7 @@ features_efeatures=Konfiguračný základný adresár Sendmail M4 $2 nebol vo va
 features_econfig=Umiestnenia základného adresára Sendmail M4 a konfiguračného súboru M4 ešte neboli nastavené v konfigurácii vášho <a href='$1'></a>. Ak ste nainštalovali Sendmail zo zdroja, mali by sa nachádzať v pôvodnom zdrojovom adresári.
 features_move=sťahovať
 features_manual=Upravte súbor ručne
+
 feature_add=Pridať položku konfigurácie
 feature_edit=Upraviť položku konfigurácie
 feature_header=Podrobnosti o vstupe do konfigurácie M4
@@ -738,12 +788,15 @@ feature_emailer=Mailer $1 už existuje
 feature_eostype=Typ OS je už definovaný ako $1 
 feature_manual=Upravte súbor M4
 feature_mdesc=Táto stránka vám umožňuje manuálne upraviť konfiguračný súbor Sendmail M4 $1. Buďte opatrní, pretože pri vašich úpravách sa nebude vykonávať žiadna kontrola syntaxe.
+
 feat_access_db=Súbor na kontrolu spamu
 feat_virtusertable=Mapovanie adries
 feat_mailertable=Smerovanie domén
 feat_genericstable=Odchádzajúce adresy
 feat_domaintable=Mapovanie domén
+
 mailer_local=Doručenie v miestnom Unixe
+
 build_title=Znovu zostaviť konfiguráciu Sendmail
 build_em4=Príkaz $1 potrebný na prebudovanie konfiguračného súboru Sendmail nebol vo vašom systéme nájdený.
 build_ebuild=Nepodarilo sa vytvoriť konfiguráciu : $1 
@@ -752,13 +805,16 @@ build_rusure2=Uvedomte si, že ak ste vykonali zmeny Sendmailu na stránke Sendm
 build_ok=Áno, vymeňte ho teraz
 build_diff=V konfiguračnom súbore Sendmail sa vykonajú nasledujúce zmeny.
 build_nodiff=Váš konfiguračný súbor sendmail je už aktuálny.
+
 stop_err=Nepodarilo sa zastaviť odosielanie pošty
 stop_ecannot=Nemáte povolenie zastaviť odosielanie pošty
 stop_epid=Zdá sa, že program Sendmail nie je spustený
 restart_epids=Nepodarilo sa nájsť procesy sendmail
 restart_ekill=Nepodarilo sa signalizovať procesy Sendmail : $1 
+
 start_err=Nepodarilo sa spustiť sendmail
 start_ecannot=Nemáte povolenie na spustenie funkcie sendmail
+
 ports_title=Sieťové porty
 ports_name=Názov prístavu
 ports_addr=Vypočujte si adresu

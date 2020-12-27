@@ -21,6 +21,7 @@ index_eversion=Phiên bản STunnel được cài đặt trên hệ thống củ
 index_conf=Từ tệp cấu hình $1 
 index_noconf=Không có tập tin cấu hình!
 index_delete=Xóa các đường hầm đã chọn
+
 edit_title=Chỉnh sửa đường hầm SSL
 create_title=Tạo đường hầm SSL
 edit_header1=Tùy chọn nguồn đường hầm
@@ -47,6 +48,7 @@ edit_tcpw=Tên trình bao bọc TCP
 edit_auto=Tự động
 edit_iface=Địa chỉ nguồn đi
 edit_type=Chạy từ
+
 save_err=Không thể lưu đường hầm SSL
 save_enclash=Tên dịch vụ $2 đã được sử dụng trên cổng $1.
 save_einetd=Đã có một dịch vụ inetd được gọi là $1.
@@ -61,6 +63,7 @@ save_etcpw=Tên trình bao bọc TCP bị thiếu hoặc không hợp lệ
 save_eiface=Thiếu hoặc không hợp lệ địa chỉ nguồn đi
 save_exinetd=Hiện đã có dịch vụ xinetd gọi là $1 
 save_export=Cổng $1 đã được sử dụng bởi dịch vụ xinetd $2 
+
 log_apply=Thay đổi ứng dụng
 log_create=Đã tạo đường hầm SSL $1 
 log_delete=Đã xóa đường hầm SSL $1 

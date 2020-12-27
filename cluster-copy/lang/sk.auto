@@ -11,6 +11,7 @@ index_when=Áno, $1
 index_act=akčné
 index_exec=popraviť
 index_delete=Odstrániť vybrané kópie
+
 edit_title=Upraviť kópiu klastra
 create_title=Vytvorte kópiu klastra
 edit_header=Podrobnosti o kópii klastra
@@ -31,12 +32,14 @@ edit_run=Teraz skopírujte
 edit_return=kópia klastra
 edit_email=Výstup e-mailu na adresu
 edit_none=nikto
+
 save_err=Uloženie úlohy cron klastra zlyhalo
 save_efiles=Neboli zadané žiadne súbory na kopírovanie
 save_edest=Chýba cieľový adresár
 save_eservers=Nie sú zadané žiadne servery na kopírovanie
 save_efile=Súbor na kopírovanie $1 nie je absolútna cesta
 save_eemail=Chýbajúca alebo neplatná e-mailová adresa
+
 exec_title=Kopírovanie súborov
 exec_files1=Kopíruje sa súbor $1 na vybrané servery $2 ..
 exec_files2=Kopíruje sa $1 na vybrané servery $2 ..
@@ -50,12 +53,15 @@ exec_not=Nepodarilo sa skopírovať nasledujúce súbory do $1  :
 exec_cmd=Výstup príkazu po kopírovaní na $1  :
 exec_before=Výstup príkazu pred kopírovaním na $1  :
 exec_on=Spustenie zlyhalo na $1 : $2 
+
 log_create=Vytvorená kópia pre servery $1 až $2 
 log_modify=Upravená kópia pre servery $1 až $2 
 log_delete=Odstránená kópia pre servery $1 až $2 
 log_exec=Skopírované servery $1 až $2 
 log_deletes=Odstránené $1 kópie
+
 email_subject_succeeded=Klastrová kópia $1 bola úspešná
 email_subject_failed=Klastrová kópia $1 zlyhala
+
 delete_err=Kópie sa nepodarilo odstrániť
 delete_enone=Žiadne vybraté

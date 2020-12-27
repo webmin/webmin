@@ -1,5 +1,6 @@
 check_etargets=Không tìm thấy tệp cấu hình máy chủ iSCSI $1 trên hệ thống của bạn.
 check_eserver=Không tìm thấy chương trình máy chủ iSCSI $1 trên hệ thống của bạn.
+
 index_title=Máy chủ iSCSI
 index_clink=Có thể nó chưa được cài đặt hoặc cấu hình mô-đun <a href='$1'></a> của bạn không chính xác.
 index_stop=Dừng máy chủ iSCSI
@@ -11,6 +12,7 @@ index_restartdesc=Nhấp vào nút này để áp dụng cấu hình hiện tạ
 index_atboot=Bắt đầu lúc khởi động?
 index_atbootdesc=Thay đổi tùy chọn này để kiểm soát xem máy chủ iSCSI có được khởi động khi khởi động hay không. Nếu nó hiện không được khởi động khi khởi động và Có được chọn, một tập lệnh init mới sẽ được tạo.
 index_return=chỉ số mô-đun
+
 extents_title=Thiết bị chia sẻ
 extents_none=Không có thiết bị để chia sẻ đã được tạo ra.
 extents_name=Tên thiết bị
@@ -25,6 +27,7 @@ extents_denone=Không được chọn
 extents_einuse=Thiết bị $1 không thể bị xóa, vì nó được sử dụng bởi : $2 
 extents_drusure=Bạn có chắc chắn muốn xóa các thiết bị sau: $1 không? Nội dung của chúng sẽ được bảo tồn, nhưng chúng sẽ không thể truy cập được đối với các máy khách iSCSI.
 extents_sure=Xóa thiết bị
+
 extent_create=Tạo thiết bị để chia sẻ
 extent_edit=Chỉnh sửa thiết bị để chia sẻ
 extent_egone=Thiết bị chia sẻ $1 không tồn tại!
@@ -50,6 +53,7 @@ extent_estart=Bắt đầu phạm vi phải là một số
 extent_esize=Kích thước của phạm vi phải là một số
 extent_esizemax=Kết thúc phạm vi không thể lớn hơn kích thước thiết bị của $1 
 extent_einuse=Thiết bị này không thể bị xóa, vì nó được sử dụng bởi : $1 
+
 devices_title=Kết hợp thiết bị
 devices_none=Không có kết hợp thiết bị đã được tạo ra.
 devices_name=Tên kết hợp
@@ -65,6 +69,7 @@ devices_denone=Không được chọn
 devices_einuse=Kết hợp $1 không thể bị xóa, vì nó được sử dụng bởi : $2 
 devices_drusure=Bạn có chắc chắn muốn xóa các kết hợp thiết bị sau: $1 không? Nội dung của chúng sẽ được bảo tồn, nhưng chúng sẽ không thể truy cập được đối với các máy khách iSCSI.
 devices_sure=Xóa kết hợp thiết bị
+
 device_create=Tạo kết hợp thiết bị
 device_edit=Chỉnh sửa kết hợp thiết bị
 device_egone=Kết hợp thiết bị $1 không tồn tại!
@@ -81,6 +86,7 @@ device_sure=Xóa kết hợp thiết bị
 device_einuse=Không thể xóa kết hợp thiết bị này vì nó được sử dụng bởi : $1 
 device_eextents=Không có thiết bị thành viên nào được chọn
 device_eself=Một trong những thiết bị thành viên được chọn có chứa thiết bị này!
+
 targets_title=Chia sẻ mục tiêu
 targets_none=Không có mục tiêu chia sẻ đã được tạo ra.
 targets_name=Tên mục tiêu
@@ -96,6 +102,7 @@ targets_derr=Không thể xóa mục tiêu chia sẻ
 targets_denone=Không được chọn
 targets_drusure=Bạn có chắc chắn muốn xóa các mục tiêu chia sẻ sau: $1 không? Không có dữ liệu sẽ bị mất, nhưng chúng sẽ không thể truy cập được đối với các máy khách iSCSI.
 targets_sure=Xóa mục tiêu chia sẻ
+
 target_create=Tạo mục tiêu chia sẻ
 target_edit=Chỉnh sửa mục tiêu chia sẻ
 target_egone=Chia sẻ mục tiêu $1 không tồn tại!
@@ -112,6 +119,7 @@ target_rusure=Bạn có chắc chắn muốn xóa mục tiêu chia sẻ $1 khôn
 target_sure=Xóa mục tiêu
 target_enetwork=Mạng bị thiếu hoặc không hợp lệ để chia sẻ với
 target_emask=Netmask bị thiếu hoặc không hợp lệ để chia sẻ với
+
 opts_title=Tùy chọn máy chủ iSCSI
 opts_header=Tùy chọn cho tất cả các mục tiêu iSCSI
 opts_ip4=Chấp nhận kết nối IPv4
@@ -124,10 +132,12 @@ opts_err=Không thể lưu tùy chọn
 opts_ename=Tên thiếu hoặc không hợp lệ - chỉ cho phép chữ cái, số, dấu gạch ngang, dấu chấm và dấu gạch dưới
 opts_eport=Số cổng bị thiếu hoặc không phải là số
 opts_esess=Các phiên tối đa bị thiếu hoặc không có số
+
 manual_title=Chỉnh sửa tập tin cấu hình
 manual_desc=Sử dụng hộp văn bản bên dưới để chỉnh sửa tệp cấu hình máy chủ iSCSI $1. Hãy cẩn thận, vì không có xác nhận sẽ được thực hiện trên đầu vào của bạn!
 manual_err=Không thể lưu tệp cấu hình
 manual_edata=Không có nội dung được nhập!
+
 users_title=Xác thực iSCSI
 users_none=Chưa có người dùng iSCSI nào được tạo. Khách hàng sẽ có thể truy cập các thiết bị được chia sẻ mà không cần xác thực.
 users_add=Thêm người dùng iSCSI mới.
@@ -135,6 +145,7 @@ users_delete=Xóa người dùng đã chọn
 users_name=tên tài khoản
 users_mode=Phương pháp xác thực
 users_return=danh sách người dùng
+
 user_create=Tạo người dùng iSCSI
 user_edit=Chỉnh sửa người dùng iSCSI
 user_header=chi tiết người dùng iSCSI
@@ -145,13 +156,16 @@ user_egone=Người dùng không còn tồn tại!
 user_err=Không thể lưu người dùng iSCSI
 user_euser=Tên người dùng bị thiếu hoặc không hợp lệ - dấu cách và dấu hai chấm không được phép
 user_epass=Thiếu mật khẩu hoặc mật khẩu không hợp lệ - dấu cách và dấu hai chấm không được phép
+
 desc_extent=Thiết bị chia sẻ $1 
 desc_device=Kết hợp thiết bị $1 
 desc_target=Chia sẻ mục tiêu $1 
+
 start_err=Không thể khởi động máy chủ iSCSI
 stop_err=Không thể dừng máy chủ iSCSI
 restart_err=Không thể khởi động lại máy chủ iSCSI
 atboot_err=Không thể bật khi khởi động
+
 log_create_extent=Đã tạo thiết bị để chia sẻ $1 
 log_modify_extent=Thiết bị được cập nhật để chia sẻ $1 
 log_delete_extent=Đã xóa thiết bị để chia sẻ $1 

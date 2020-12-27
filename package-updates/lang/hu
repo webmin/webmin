@@ -44,6 +44,7 @@ index_count=Found $1 matching packages ..
 index_search=Find packages matching:
 index_searchok=Search
 index_clear=Show All
+
 update_title=Update Packages
 update_pkg=Now updating $1 ..
 update_pkg2=Now installing $1 ..
@@ -77,18 +78,22 @@ update_newver=New version
 update_confirm=Install Now
 update_none=None
 update_ops=Building complete list of updates ..
+
 sched_title=Scheduled Update
 sched_yes=Scheduled checking for updates is now active.
 sched_no=Scheduled checking for updates has been disabled.
+
 log_update=Installed $1 updated packages
 log_sched=Enabled scheduled updates
 log_unsched=Disabled scheduled updates
 log_refresh=Refreshed available packages
+
 refresh_title=Refreshing Packages
 refresh_clearing=Clearing package caches ..
 refresh_done=.. done
 refresh_available=Re-fetching available packages ..
 refresh_done3=.. found $1 possible updates
+
 view_title=Package Details
 view_header=Updatable package information
 view_name=Package name
@@ -102,6 +107,7 @@ view_changelog=Changelog for available version
 view_software=Manage Package
 view_update=Update Package
 view_install=Install Package
+
 system_yum=YUM
 system_apt=APT
 system_csw=CSW (Blastwave)

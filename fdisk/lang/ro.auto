@@ -44,6 +44,7 @@ index_dscsi=Dispozitiv SCSI $1 controller $2
 index_draid=Nivel RAID $1 
 index_dparts=Partițiile
 index_none2=Nu s-au găsit discuri pe acest sistem.
+
 bytes=bytes
 megabytes=megaocteți
 extended=Extins
@@ -67,6 +68,7 @@ select_promise=Promiteți unitatea RAID $1
 select_ppart=Promiteți unitatea RAID $1 partiție $2 
 select_nvme=NVME SSD $1 unitate $2 
 select_nvmepart=NVME SSD $1 unitate $2 partiție $3 
+
 edit_title=Editați partiția
 create_title=Creați partiție
 edit_ecannot=Nu aveți voie să editați acest disc
@@ -110,6 +112,7 @@ edit_newmount2=Partition Mount
 edit_mountas=la fel de
 edit_mountmsg=Montați această partiție pe un director nou pe sistemul dvs., astfel încât să poată fi folosită pentru a stoca fișiere. Un sistem de fișiere trebuie să fi fost deja creat pe partiție.
 edit_mountmsg2=Montați această partiție ca memorie virtuală pe sistemul dvs., pentru a crește cantitatea de memorie disponibilă.
+
 mkfs_title=Sistem de fișiere nou
 mkfs_ecannot=Nu aveți voie să construiți un nou sistem de fișiere pe acest disc
 mkfs_desc1=Făcând clic pe butonul din partea de jos a acestui formular va crea un nou sistem de fișiere $1 pe dispozitivul $2. Toate datele din această partiție vor fi șterse definitiv.
@@ -120,6 +123,7 @@ mkfs_err=Crearea sistemului de fișiere nu a reușit
 mkfs_exec=Executarea comenzii $1 ..
 mkfs_failed=.. comanda nu a reușit!
 mkfs_ok=.. comanda finalizată.
+
 fsck_title=Reparați sistemul de fișiere
 fsck_ecannot=Nu aveți voie să fsck acest disc
 fsck_desc1=Făcând clic pe butonul <tt>Repararea fișierelor</tt> va încerca să reparați sistemul de fișiere $1 deteriorat pe $2 pentru montare pe $3. Dacă sistemul de fișiere nu este deteriorat, nu se vor face modificări.
@@ -132,6 +136,7 @@ fsck_err3=erorile găsite și corectate - este necesar să reporniți
 fsck_err4=erori găsite, dar NU corectate
 fsck_err16=eroare în linia de comandă
 fsck_unknown=cod de retur necunoscut $1 
+
 tunefs_title=Tune Filesystem
 tunefs_ecannot=Nu aveți voie să acordați acest sistem de fișiere
 tunefs_desc=Acest formular vă permite să ajustați diverși parametri ai sistemului de fișiere $1 pe $2 pentru montare pe $3. Fișierele existente pe acest sistem de fișiere nu vor fi afectate.
@@ -153,10 +158,12 @@ tunefs_err=Nu a reușit să ajusteze sistemul de fișiere
 tunefs_exec=Executarea comenzii $1 ..
 tunefs_failed=.. comanda nu a reușit!
 tunefs_ok=.. comanda finalizată.
+
 reboot_title=reboot
 reboot_msg=Rebooting acum ..
 reboot_ok=Restarteaza acum
 reboot_why=Ați modificat tabelul partițiilor pe $1. Pentru ca această modificare să aibă efect în mod corespunzător, sistemul dvs. trebuie repornit.
+
 save_err=Salvarea partiției nu a reușit
 save_ecannot=Nu aveți voie să editați acest disc
 save_estart=„$1” nu este un cilindru de pornire valid
@@ -165,6 +172,7 @@ save_emin=Cilindrul de pornire trebuie să fie> = $1
 save_emax=Cilindrul final trebuie să fie <= $1 
 save_eminmax=Cilindrul de pornire trebuie să fie mai mic decât capătul
 save_eoverlap=Suprapunerea detectată cu partiția $1 (de la 2 la $3)
+
 ext2_b=Dimensiunea blocului
 ext2_f=Dimensiunea fragmentului
 ext2_i=Bytes per inode
@@ -172,6 +180,7 @@ ext2_m=Blocuri rezervate
 ext2_g=Blocuri pe grup
 ext2_c=Verificați dacă există blocaje proaste?
 ext3_j=Mărimea fișierului jurnalului
+
 msdos_ff=Numărul de FAT
 msdos_F=Mărimea grăsimilor
 msdos_F_other=Alte ..
@@ -180,24 +189,32 @@ msdos_n=Numele volumului
 msdos_r=Înregistrări rădăcină
 msdos_s=Dimensiunea clusterului
 msdos_c=Verificați dacă există blocaje proaste?
+
 minix_n=Lungime nume fișier
 minix_i=Numărul de inodi
 minix_b=Numărul de blocuri
 minix_c=Verificați dacă există blocaje proaste?
+
 reiserfs_force=Forțează crearea sistemului de fișiere
 reiserfs_hash=Funcția Hash
+
 xfs_force=Forțează crearea sistemului de fișiere
 xfs_b=Dimensiunea blocului
+
 jfs_s=Dimensiunea jurnalului
 jfs_c=Verificați dacă există blocaje proaste?
+
 btrfs_l=Dimensiunea frunzelor
 btrfs_n=Mărimea nodului
 btrfs_s=Mărimea sectorului
+
 fatx_none=Nu sunt disponibile opțiuni pentru sistemele de fișiere FATX.
+
 acl_disks=Discurile pe care acest utilizator le poate partiționa și forma
 acl_dall=Toate discurile
 acl_dsel=Selectat ..
 acl_view=Se pot vizualiza discuri care nu pot fi modificate?
+
 hdparm_title=Editează parametrii IDE
 hdparm_on=Pe
 hdparm_off=de pe
@@ -226,9 +243,11 @@ hdparm_performing=efectuarea
 hdparm_buf1=Memorie cache buffer:
 hdparm_buf2=tamponate:
 hdparm_speedres=Rezultatele testelor de viteză
+
 blink_title=Identificați Drive
 blink_desc=LED-ul de activitate al unității va lumina acum de șaizeci de ori
 blink_back=Întoarce-te
+
 log_modify=$1 modificat
 log_create=Creat $1 
 log_delete=$1 șters
@@ -236,6 +255,7 @@ log_mkfs=Sistem de fișiere $1 creat pe $2
 log_tunefs=Sistem de fișiere ajustat $1 pe $2 
 log_fsck=Sistem de fișiere $1 reparat pe $2 
 log_hdparm=Parametri IDE modificați pentru $1 
+
 fs_ext2=Nativ vechi Linux
 fs_minix=Minix
 fs_msdos=MS-DOS
@@ -246,9 +266,11 @@ fs_ext4=Nativ Linux nou
 fs_xfs=SGI
 fs_jfs=Journalling IBM
 fs_btrfs=BTR
+
 delete_title=Ștergeți partiția
 delete_rusure=Sigur doriți să ștergeți $1 ($2)? Datele despre această partiție pot fi pierdute pentru totdeauna.
 delete_ok=Șterge acum
+
 disk_title=Editați partițiile de disc
 disk_egone=Discul nu mai există!
 disk_no=Număr
@@ -269,11 +291,13 @@ disk_table=<b>Format tabel partiție:</b> $1
 disk_notable=<b>Format tabel de partiție:</b> Nu a fost creat niciunul
 disk_needtable=Nu se pot crea partiții fără o tabelă de partiții.
 disk_return=lista partițiilor
+
 relabel_title=Ștergeți partițiile
 relabel_warn=Sunteți sigur că doriți să ștergeți toate partițiile de pe $1 ($2) prin rescrierea etichetei de disc? Toate datele existente și sistemele de fișiere vor fi pierdute!
 relabel_parts=Partiții existente
 relabel_noparts=Nici unul creat încă
 relabel_table=Format tabel partiție
 relabel_ok=Ștergeți și re-etichetați
+
 table_msdos=MS-DOS (formatul partiției standard)
 table_gpt=GPT (pentru discuri de 2T sau mai mari)

@@ -38,16 +38,20 @@ index_fmode1=Sanal sunucular dosyası $1
 index_fmode1d=Sanal sunucular dizini altındaki yeni dosya $1
 index_fmode2=Seçilen dosya ..
 index_delete=Seçilen Sunucuları Sil
+
 cvirt_eroot1=Bir belge kökü girmelisiniz
 cvirt_eroot3='$1' kök dizinini kullanmanıza izin verilmiyor
 cvirt_eroot4=Apache yapılandırmasında Kullanıcı tanımlanmadı
 cvirt_etaken=Aynı ada ve bağlantı noktasına sahip bir sanal sunucu zaten var
 cvirt_efile=$1 'a yazılamadı : $2
 cvirt_emissing=Yeni sanal sunucu $1 'a eklendi, ancak bu dosya Apache tarafından kullanılmıyor. <a href='$2'>modül yapılandırmasını</a> kontrol edin ve 'Sanal sunucu eklemek için dosya veya dizin'in doğru olduğundan emin olun.
+
 bytes=bayt
 eafter=Yapılandırma doğrulaması başarısız oldu: $1 Değişiklikler kaydedilmedi.
 enewline=Değerde geçersiz karakter
+
 global_mimedesc=Düzenlemek için aşağıdaki listeden bir MIME türünü tıklayın veya listeye yeni bir tür eklemek için sayfanın altındaki bağlantıyı kullanın.
+
 virt_eprotocol=En az bir kullanılabilir SSL/TLS protokol sürümü seçmelisiniz
 virt_opts2=Sanal Sunucu Seçenekleri
 virt_show=Yönergeleri Göster
@@ -63,11 +67,13 @@ virt_LocationMatch=Konum normal ifadesi
 virt_ProxyMatch=Proxy normal ifadesi
 virt_re=Normal ifadeyi eşleştir
 virt_regexp=Normal ifade?
+
 vserv_virtualmin=Bu Apache sanal ana makinesi, <tt>$1</tt> Virtualmin sunucusuna aittir, bu nedenle adres, bağlantı noktası, temel dizin ve ana bilgisayar adı burada değiştirilemez.
 vserv_addrs=Adresler
 vserv_addr1=Varsayılan sunucu
 vserv_default=Varsayılan
 vserv_eaddrs=Sanal sunucu adresi girilmedi
+
 manual_configs=Yapılandırma Dosyalarını Düzenle
 manual_ecannot=Direktifleri manuel olarak düzenleme izniniz yok
 manual_file=Dosyadaki Yönergeleri Düzenle:
@@ -75,6 +81,7 @@ manual_efile=Geçersiz Apache yapılandırma dosyası
 manual_etest=Yapılandırma dosyası hatası algılandı : $1
 manual_editfile=Yapılandırma dosyasını düzenle:
 manual_switch=Düzenle
+
 dir_proxyall=Tüm proxy istekleri
 dir_header=$2 üzerindeki $1 için
 dir_edit=Direktifleri Düzenle
@@ -87,30 +94,40 @@ dir_exact=Tam eşleşme
 dir_re=Normal ifadeyi eşleştir
 dir_path=yol
 dir_header2=$2 için $1
+
 type_17=Otomatik Sanal Ana Bilgisayarlar
 type_18=Filtreler
 type_19=Diller
 type_20=Görüntü Haritaları
+
 htaccess_file=Mevcut seçenekler dosyaları
 htaccess_desc=Her klasördeki bir dosyada (genellikle <tt>.htaccess</tt> denir) dizin başına ek seçenekler belirtilebilir. Seçenekler, başka bir seçenek dosyası tarafından geçersiz kılınmadıkça, bu dizindeki tüm dosyalar ve tüm alt dizinler için geçerlidir.
 htaccess_eempty=Hiçbir seçenek dosya dizini girilmedi
 htaccess_eabsolute=Seçenekler dosya dizini mutlak bir yol olmalıdır
 htaccess_err=Seçenekler dosyası oluşturulamadı
+
 htindex_edit=Direktifleri Düzenle
 htindex_regexp=Normal ifade?
 htindex_exact=Tam eşleşme
 htindex_re=Normal ifadeyi eşleştir
+
 htfile_header=$2 içindeki $1 için
 htfile_apply=Seçenekler geçerlidir ..
 htfile_header2=$2 için $1
+
 reconfig_desc1=Apache yapılandırmanız değişti veya henüz Webmin tarafından incelenmedi. Aşağıda, şu anda yüklü olanlar seçili olarak Webmin tarafından desteklenen tüm Apache modüllerinin bir listesi bulunmaktadır. Liste yanlışsa modülleri seçebilir veya seçimini kaldırabilirsiniz.
 reconfig_desc2=Aşağıda, şu anda yüklü olanlar seçili olarak Webmin tarafından desteklenen tüm Apache modüllerinin bir listesi bulunmaktadır. Dinamik olarak yüklenen modüller kullanıyorsanız, dinamik olarak yüklenen modülleri seçmeniz gerekebilir.
 reconfig_desc3=Sisteminizde Apache tarafından hangi modüllerin desteklendiğinden emin değilseniz, Webmin normalde desteklenen modülleri otomatik olarak çalıştırabileceği için Yapılandırın.
+
 defines_desc=Apache başlatıldığında, parametreler <tt>-D</tt> komut satırı seçeneğiyle iletilebilir. Bu parametreler yapılandırma dosyalarınızda hangi direktiflerin kullanıldığını etkileyebileceğinden, Webmin başlatıldığında hangilerinin Apache'ye aktarıldığını bilmesi gerekir. Sisteminizde kullanılan parametreleri sağdaki metin alanına girin.
 defines_list=Tanımlı parametreler
+
 authg_set=Ayarlanır ..
+
 start_eafter=Apache çalışıyor gibi görünmüyor
+
 restart_ecannot=Değişiklik uygulama izniniz yok
+
 acl_vall=Tüm sunucular
 acl_vsel=Seçilen ..
 acl_defserv=Varsayılan Sunucu
@@ -121,6 +138,7 @@ acl_dirs=Apache yönergeleri mevcut <br><font size=-1> (Yukarıdaki tür sınır
 acl_dirs0=Herşey
 acl_dirs1=Sadece listelenmiş ..
 acl_dirs2=Listelenenler hariç tümü ..
+
 core_maxkeep=Bağlantı başına maksimum saklama sayısı
 core_minspare=Minimum yedek sunucu işlemleri
 core_maxspare=Maksimum yedek sunucu işlemleri
@@ -175,10 +193,13 @@ core_infilter=Tüm dosyalar için giriş filtreleri uygulama
 core_outfilter=Tüm dosyalar için çıktı filtreleri uygulama
 core_defchar=Belgeler için karakter kümesi
 core_edefchar=Belgeler için eksik veya geçersiz karakter kümesi
+
 mod_negotiation_cache=İçerik anlaşmalı belgeleri önbellekte saklıyor musunuz?
 mod_negotiation_pri=Çoklu görünümler için dil önceliği
 mod_negotiation_def=Varsayılan
+
 mod_cgi_default=Varsayılan
+
 mod_alias_from=itibaren
 mod_alias_to=için
 mod_alias_status=durum
@@ -191,6 +212,7 @@ mod_alias_tredir2=geçici URL yönlendirmesi
 mod_alias_predir2=kalıcı URL yönlendirmesi
 mod_alias_cgi2=CGI dizini diğer adı
 mod_alias_rcgi2=regexp CGI dizini diğer adı
+
 mod_proxy_match=Eşleştirme ..
 mod_proxy_pass=Başka bir proxy'ye geçme istekleri
 mod_proxy_block=Alan adlarına yönelik istekleri engelle
@@ -214,11 +236,15 @@ mod_proxy_timeout=Saniye cinsinden proxy isteği zaman aşımı
 mod_proxy_etimeout=Proxy isteği zaman aşımı birkaç saniye olmalıdır
 mod_proxy_via=Set Via: başlıklar
 mod_proxy_not=Yok
+
 mod_log_agent_default=Varsayılan
+
 mod_log_config_default=Varsayılan
 mod_log_config_ifset=Ayarlanmışsa
 mod_log_config_edir='$1' günlük dosyası dizini mevcut değil
+
 mod_log_referer_default=Varsayılan
+
 mod_mime_pass=Tüm dosyaları işleyiciye aktar
 mod_mime_default=Varsayılan
 mod_mime_eext=$1 için $2 için uzantı belirtilmedi
@@ -230,15 +256,23 @@ mod_mime_outfilter=Çıkış filtreleri
 mod_mime_infilter=Giriş filtreleri
 mod_mime_filters=Uygulanacak filtreler
 mod_mime_efext=Filtreler için uzantı belirtilmedi $1
+
 mod_setenvif_case=Maç davası
+
 mod_userdir_default=Varsayılan
 mod_userdir_edir=Belirtilen kullanıcı WWW dizinini kullanmanıza izin verilmiyor
+
 mod_imap_default=Varsayılan
 mod_imap_default2=Varsayılan
+
 mod_speling_default=Varsayılan
+
 mod_include_default=Varsayılan
+
 mod_autoindex_default=Varsayılan
+
 browsermatch_case=Maç durumu mu?
+
 autoindex_default=Varsayılan
 autoindex_fancy=Fantezi dizin dizinlerini görüntüle
 autoindex_iheight=Simge yüksekliği
@@ -254,16 +288,21 @@ autoindex_sicon=Dosya simgelerini göster
 autoindex_srules=&lt;hr&gt; satırlarını göster
 autoindex_track=Başlığa ETag'ları dahil et
 autoindex_version=Sürüm dizelerine göre sırala
+
 mod_env_default=Varsayılan
+
 mod_access_default=Varsayılan
 mod_access_allow=İzin vermek
 mod_access_deny=Reddetmek
+
 mod_auth_dbm_gpass=Grup hatalarını bir sonraki modüle geçmeli mi?
 mod_auth_dbm_type=DBM veritabanı türü
 mod_auth_dbm_gtype=DBM grubu veritabanı türü
 mod_auth_dbm_default=Varsayılan DBM biçimi
+
 mod_cern_meta_default=Varsayılan
 mod_cern_meta_default2=Varsayılan
+
 mod_ssl_enable=SSL etkinleştirilsin mi?
 mod_ssl_default=Varsayılan
 mod_ssl_cafile=Sertifika yetkilileri dosyası
@@ -276,6 +315,7 @@ mod_ssl_passsc=Komut dosyasını $1 yürütün
 mod_ssl_epassph=SSL şifresi girilmedi
 mod_ssl_epasssc=Eksik veya geçersiz SSL şifre komut dosyası
 mod_ssl_ecerton=SSL etkinleştirildiğinde, bir sertifika dosyası seçilmelidir
+
 mod_apachessl_notssl=SSL erişimini reddet
 mod_apachessl_forcessl=SSL / notSSL erişimine zorlansın mı?
 mod_apachessl_capath=Sertifika Yetkililerinin sertifikalarının bulunduğu dizine giden yol
@@ -308,11 +348,14 @@ mod_apachessl_nov2=SSL sürüm 2'yi devre dışı bırak
 mod_apachessl_fake=Sertifika adını kullanarak kullanıcı temel kimlik doğrulama oturumlarını taklit eder
 mod_apachessl_cdnfile=İstemci DN'sine karşı dosya kontrol edildi
 mod_apachessl_ecdnfile=İstemci DN'sinde eksik Dosya işaretlendi
+
 log_mods=Yapılandırılmış Apache modülleri değiştirildi
 log_manual=El ile düzenlenen yapılandırma dosyası $1
 log_virts_delete=$1 sanal sunucusunu sildi
+
 search_title=Sunucu Bul
 search_notfound=Eşleşen sanal sunucu bulunamadı
+
 mod_php_value=PHP Yapılandırma Değerleri
 mod_php_flag=PHP Yapılandırma Bayrakları
 mod_php_admin_value=PHP Yönetici Yapılandırma Değerleri
@@ -321,6 +364,7 @@ mod_php_name_header=Ayar
 mod_php_value_header=değer
 mod_php_ename='$1' geçersiz bir ad
 mod_php_evalue='$1', $2 için geçersiz bir değerdir
+
 mod_vhost_alias_root=Otomatik sanal ana bilgisayar kökü
 mod_vhost_alias_ip=Ana bilgisayar adı yerine IP adresi kullanılsın mı?
 mod_vhost_alias_none=Yok
@@ -328,12 +372,14 @@ mod_vhost_alias_script=Otomatik sanal ana bilgisayar cgi-bin
 mod_vhost_alias_eroot=Eksik veya geçersiz sanal ana bilgisayar kökü
 mod_vhost_alias_eroot2=Sanal ana bilgisayar kök dizinine izin verilmiyor
 mod_vhost_alias_escript=Eksik veya geçersiz sanal ana bilgisayar cgi-bin
+
 worker_minspare=Minimum yedek dişler
 worker_maxspare=Maksimum yedek dişler
 worker_eminspare=Minimum yedek iş parçacığı bir tam sayı olmalıdır
 worker_emaxspare=Maksimum yedek iş parçacığı bir tamsayı olmalıdır
 worker_threads=Alt işlem başına iş parçacığı
 worker_ethreads=Alt işlem başına iş parçacığı sayısı bir tamsayı olmalıdır
+
 perchild_sthreads=Alt işlem başına ilk iş parçacıkları
 perchild_esthreads=Alt işlem başına iş parçacığı sayısı bir tamsayı olmalıdır
 perchild_numservers=Alt süreçlerin sayısı
@@ -349,6 +395,7 @@ perchild_gid=GID
 perchild_enum=İşlem numarası sıfırdan farklı bir tam sayı olmalıdır
 perchild_euid=UID bir tamsayı olmalıdır
 perchild_egid=GID bir tamsayı olmalıdır
+
 cache_enable=Aktif?
 cache_type=Önbellek deposu
 cache_disk=Disk
@@ -369,12 +416,14 @@ cache_eminos=Önbelleğe alınacak minimum nesne boyutu bir bayt sayısı olmal�
 cache_emaxos=Önbelleğe alınacak maksimum nesne boyutu bir dizi bayt olmalıdır
 cache_maxoc=Bellekte önbelleklenecek maksimum nesne
 cache_emaxoc=Bellekte önbelleklenecek nesne sayısı bir tamsayı olmalıdır
+
 suexec_su=CGI programlarını şu şekilde çalıştır:
 suexec_none=Global konfigürasyondan kullanıcı
 suexec_user=Unix kullanıcısı
 suexec_group=ve grup
 suexec_euser=CGI programlarını şu şekilde çalıştırmak için eksik veya geçersiz kullanıcı
 suexec_egroup=CGI programlarını şu şekilde çalıştırmak için eksik veya geçersiz grup
+
 filter_name=ad
 filter_intype=MIME türünü girin
 filter_outtype=Çıktı MIME türü
@@ -384,11 +433,13 @@ filter_in=Giriş Filtresi Tanımları
 filter_out=Çıkış Filtresi Tanımları
 filter_ename=Geçersiz filtre adı '$1'
 filter_ecmd='$1' filtresi için eksik komut
+
 cdir_err=Dizin başına seçenek oluşturulamadı
 cdir_err2=Dizin başına seçenekler kaydedilemedi
 cdir_epath=Eksik yol
 cdir_eproxy=Eşleme normal ifade seçeneği etkinken proxy seçenekleri oluşturulamaz
 cdir_ecannot=Belirli bir yol için dizin başına seçenekler oluşturma izniniz yok
+
 mod_band_enable=Bant genişliği sınırlama etkin mi?
 mod_band_bw=Sınır (bayt / sn)
 mod_band_client=Müşteriler için
@@ -407,24 +458,30 @@ mod_band_epulse=Sınırlı paketler arasında eksik veya geçersiz aralık
 mod_band_dir=Bant genişliği sınırlayıcı veri dosyaları dizini
 mod_band_edir=Eksik veya var olmayan bant genişliği veri dosyaları dizini
 mod_band_esubdir=Bant genişliği veri dosyaları dizini altında <tt>$1</tt> eksik alt dizini eksik
+
 mod_dav_active=WebDAV etkin mi?
 mod_dav_inf=Sonsuz derinlik DAV PROPFIND isteklerine izin veriliyor mu?
 mod_dav_timeout=Saniye cinsinden minimum DAV zaman aşımı
 mod_dav_etimeout=Eksik veya geçersiz DAV zaman aşımı
+
 delete_err=Sanal sunucular silinemedi
 delete_enone=Hiçbiri seçilmedi
 delete_ecannot=Sunucuları silme izniniz yok
 delete_ecannot2=$1 sunucusunu düzenlemenize izin verilmiyor
+
 syslog_desc=Apache hata günlüğü
+
 mod_auth_basic_pass=Temel giriş hatalarını bir sonraki modüle geçecek misiniz?
 mod_auth_basic_prov=Temel giriş kullanıcı dosyası türleri
 mod_auth_basic_file=Metin dosyası
 mod_auth_basic_dbm=DBM veritabanı
+
 mod_auth_digest_pass=Özet oturum açma hatalarını bir sonraki modüle geçecek misiniz?
 mod_auth_digest_prov=Özet giriş kullanıcı dosya türleri
 mod_auth_digest_al=Karma algoritması
 mod_auth_digest_domain=Aynı alan adındaki URL'ler ve yollar
 mod_auth_digest_edomain=Aynı alan adında eksik URL'ler ve yollar
+
 mods_title=Apache Modüllerini Yapılandırma
 mods_mod=modül
 mods_state=Mevcut durum

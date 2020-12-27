@@ -22,6 +22,7 @@ index_auto=Automātiski atrast serverus
 index_automsg=Noklikšķiniet uz šīs pogas, lai iestatītu jaunu Webmin serveru automātisku periodisku atklāšanu jūsu tīklā.
 index_search=Rādīt atbilstošos serverus:
 index_ok=Meklēt
+
 edit_title=Rediģēt serveri
 create_title=Reģistrēt serveri
 edit_details=Informācija par serveri
@@ -57,6 +58,7 @@ edit_baduser=Pieteikšanās noraidīta
 edit_invalid=Lietotājs nevar veikt RPC
 edit_version=Darbojas Webmin $1 
 edit_same=Pieejams tikai sesijas autentifikācijas režīmā un kad parole ir pieejama Webmin programmām.
+
 save_err=Neizdevās saglabāt serveri
 save_ehost=Trūkst vai nav derīgs resursdatora nosaukums
 save_ehost2=Saimnieks neeksistē
@@ -67,6 +69,7 @@ save_epass=Trūkst paroles
 save_egroup=Trūkst grupas nosaukuma
 save_elogin=Nederīga resursdatora pieteikšanās vai parole
 save_egroup2=Nederīgs jauns grupas nosaukums
+
 find_title=Atrodiet serverus
 find_new=Tika atrasts jauns serveris $1 
 find_but=Tika atrasts jauns serveris $1, bet autentificēšana neizdevās : $2 
@@ -81,16 +84,20 @@ find_ecannot=Jums nav atļauts atrast serverus
 find_scanning=Skenēšana serveriem tīklā $1.
 find_broading=Apraide serveriem uz adresēm $1.
 find_eport=Trūkst vai nav derīgs porta numurs
+
 log_modify=Pārveidots serveris $1 
 log_create=Reģistrēts serveris $1 
 log_delete=Izdzēsts serveris $1 
 log_find=Atrasts serveris $1 
 log_deletes=Izdzēsti $1 serveri
+
 link_elogin=Neizdevās pieteikties $1 kā $2 
 link_ecannot=Jums nav atļauts izmantot šo serveri
 link_essl=Jums nav instalēta perl Net::SSLeay bibliotēka
 link_eautologin=Nederīga pieteikšanās vai parole $1. <a href='$2'>Noklikšķiniet šeit</a>, lai mēģinātu vēlreiz.
+
 lib_other=Cits
+
 acl_edit=Vai var rediģēt serverus?
 acl_find=Vai varat atrast serverus?
 acl_servers=Var izmantot serverus
@@ -102,6 +109,7 @@ acl_forcefast=Piespiest ātru RPC režīmu pēc noklusējuma?
 acl_forcetype=Vai piespiest OS tipu pēc noklusējuma?
 acl_forcelink=Vai piespiest pieteikšanās veidu pēc noklusējuma?
 acl_links=Vai var izveidot savienojumu ar serveriem?
+
 login_title=Pieteikšanās serverī
 login_desc=Lai pieteiktos Webmin serverī $1, jums ir jānorāda lietotājvārds un parole.
 login_header=Webmin autentifikācija
@@ -109,13 +117,16 @@ login_user=Lietotājvārds
 login_pass=Parole
 login_login=Pieslēgties
 login_esame=Iespēju izmantot to pašu pieteikumvārdu kā šo serveri var izmantot tikai tad, ja neatrodas sesijas autentifikācijas režīmā un kad parole ir pieejama Webmin programmām.
+
 this_server=šis serveris
+
 delete_err=Neizdevās izdzēst serverus
 delete_enone=Nav atlasīts
 delete_ecannot=Jums nav atļauts dzēst serverus
 delete_title=Dzēst serverus
 delete_rusure=Vai tiešām vēlaties noņemt atlasītos serverus $1 ?
 delete_confirm=Dzēst tūlīt
+
 auto_title=Automātiski atrast serverus
 auto_header=Automātiskas servera reģistrācijas iespējas
 auto_sched=Vai jums nav jaunu serveru?
@@ -141,8 +152,10 @@ auto_smtp=Sūtīt caur SMTP serveri
 auto_self=Šī sistēma
 auto_esmtp=Trūkst vai nav derīgs SMTP serveris
 auto_findself=Reģistrēt arī šo sistēmu?
+
 config_deftype=Noklusējuma sistēmas tips
 config_typeauto=Automātiska
+
 email_regsubject=Sistēma $1 reģistrēta
 email_reg=Sistēma $1 ir automātiski reģistrēta.
 email_unregsubject=Sistēma $1 nav reģistrēta

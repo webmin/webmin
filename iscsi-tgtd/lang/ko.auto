@@ -2,6 +2,7 @@ check_econfigset=iSCSI TGTd 구성 파일 세트가 없습니다!
 check_econfig=시스템에서 iSCSI TGTd 구성 파일 $1 을 (를) 찾을 수 없습니다.
 check_etgtadm=시스템에서 iSCSI TGTd 관리 명령 $1 을 (를) 찾을 수 없습니다.
 check_einit=부팅 동작 $1 이 (가) 없습니다
+
 index_title=iSCSI TGTd
 index_clink=설치되지 않았거나 <a href='$1'>모듈 구성</a>이 잘못되었을 수 있습니다.
 index_stop=iSCSI TGTd 중지
@@ -24,8 +25,10 @@ index_users=허용 된 사용자
 index_size=총합 크기
 index_noluns=없음
 index_nousers=어떤
+
 dtargets_err=대상을 삭제하지 못했습니다.
 dtargets_enone=선택하지 않았습니다!
+
 target_title1=iSCSI 대상 생성
 target_title2=iSCSI 대상 편집
 target_header=iSCSI 공유 장치 옵션
@@ -74,11 +77,13 @@ target_direct=직접 장치 액세스
 target_cache=장치에 캐시 쓰기?
 target_eaddr=허용되지 않는 IP 주소
 target_eaname=허용되는 초 기자 이름이 잘못되었습니다
+
 start_err=iSCSI TGTd를 시작하지 못했습니다
 stop_err=iSCSI TGTd를 중지하지 못했습니다
 restart_err=iSCSI TGTd를 다시 시작하지 못했습니다
 atboot_err=부팅시 활성화하지 못했습니다
 atboot_einit=초기화 스크립트 $1 이 (가) 없습니다
+
 log_create_target=생성 된 목표 $1 
 log_delete_target=삭제 된 대상 $1 
 log_modify_target=수정 된 목표 $1 
@@ -89,6 +94,7 @@ log_restart=iSCSI 서버를 다시 시작했습니다
 log_atboot=부팅시 활성화 된 iSCSI 서버
 log_delboot=부팅시 비활성화 된 iSCSI 서버
 log_manual=수동으로 편집 된 구성 파일
+
 manual_title=구성 파일 편집
 manual_file=편집 할 파일을 선택하십시오.
 manual_ok=열다

@@ -11,6 +11,7 @@ index_when=是， $1
 index_act=行動
 index_exec=執行
 index_delete=刪除選定的副本
+
 edit_title=編輯集群副本
 create_title=創建群集副本
 edit_header=集群副本詳細信息
@@ -31,12 +32,14 @@ edit_run=立即復制
 edit_return=集群副本
 edit_email=電子郵件輸出到
 edit_none=沒有人
+
 save_err=保存集群Cron作業失敗
 save_efiles=沒有輸入要復制的文件
 save_edest=缺少目標目錄
 save_eservers=沒有要復製到輸入的服務器
 save_efile=複製“$1”的文件不是絕對路徑
 save_eemail=電子郵件地址丟失或無效
+
 exec_title=複製文件
 exec_files1=將 $1文件複製到選定的服務器 $2 ..
 exec_files2=將 $1複製到選定的服務器 $2 ..
@@ -50,12 +53,15 @@ exec_not=無法將以下文件複製到 $1：
 exec_cmd=$1上的複制後命令輸出：
 exec_before=$1上的複制前命令輸出：
 exec_on=無法在 $1上運行： $2
+
 log_create=已創建從 $1到 $2服務器的副本
 log_modify=已將 $1的副本複製到 $2服務器
 log_delete=已將 $1的副本刪除到 $2服務器
 log_exec=已將 $1服務器複製到 $2服務器
 log_deletes=已刪除 $1份
+
 email_subject_succeeded=$1的集群副本成功
 email_subject_failed=$1的群集副本失敗
+
 delete_err=刪除副本失敗
 delete_enone=未選擇

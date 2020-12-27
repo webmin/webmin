@@ -14,6 +14,7 @@ index_identmsg=Entrer une commande ou le chemin d'accès d'un fichier à recherc
 index_identok=Rechercher:
 index_all=Tous les composants
 index_return=composants installés
+
 search_title=Chercher un composant
 search_nomatch=Aucun composant $1 correspondant
 search_none=Aucun
@@ -22,6 +23,7 @@ search_class=Classe
 search_pack=Composant
 search_match=Composant correspondant à $1
 search_return=résultats de la recherche
+
 edit_title=Éditer un composant
 edit_details=Détail du composant
 edit_desc=Description
@@ -35,6 +37,7 @@ edit_inst=Installé le
 edit_list=Liste des fichiers
 edit_uninst=Désinstaller
 edit_return=détails du composant
+
 list_title=Fichiers du composant
 list_files=Fichiers du composant $1
 list_path=Chemin
@@ -46,12 +49,14 @@ list_status=État
 list_ok=OK
 list_view=(Voir)
 list_eview=Echec de l'ouverture de $1 : $2
+
 delete_err=Impossible de supprimer le composant $1
 delete_epack=Le composant $1 n'existe pas
 delete_title=Supprimer un composant
 delete_rusure=Êtes-vous sur de vouloir supprimer le composant $1 contenant $2 fichiers ($3) définitivement?
 delete_ok=Supprimer
 delete_nodeps=Ignorer les dépendances.
+
 file_title=Informations sur un fichier
 file_notfound=Aucune information disponible pour $1
 file_path=Chemin
@@ -65,6 +70,7 @@ file_pack=Composant
 file_class=Classe
 file_desc=Description
 file_none=Aucun
+
 install_err=Impossible d'installer le composant
 install_elocal=Aucun nom de fichier local spécifié
 install_elocal2='$1' n'existe pas
@@ -77,6 +83,7 @@ install_title=Installer un composant
 install_header=Installer un composant
 install_packs=Composants à installer
 install_ok=Installer
+
 do_err=Impossible d'installer le composant $1
 do_title=Installer un composant
 do_efailed=Installation impossible : $1
@@ -93,10 +100,12 @@ do_arch=Architecture
 do_inst=Installé le
 do_none=Aucun
 do_files=Fichiers du composant
+
 pkgadd_root=Répertoire racine
 pkgadd_eroot=Le répertoire racine '$1' n'existe pas
 pkgadd_unknown=Inconnu
 pkgadd_manager=Gestionnaire de composants System V
+
 rpm_upgrade=Mettre le composant à jour?
 rpm_replacepkgs=Écraser le composant?
 rpm_nodeps=Ignorer les dépendances?
@@ -106,28 +115,33 @@ rpm_excludedocs=Installer la documentation?
 rpm_replacefiles=Écraser les fichiers?
 rpm_root=Répertoire racine
 rpm_eroot=Le répertoire racine '$1' est introuvable
+
 bsd_unknown=Inconnu
 bsd_scripts=Exécuter les script pre/post-installation?
 bsd_force=Forcer l'installation même s'il manque des prérequis?
 bsd_manager=Gestionnaire de composants $1
+
 slack_unclass=Autre
 slack_unknown=Inconnu
 slack_missing=Manquant
 slack_root=Répertoire racine
 slack_eroot=Répertoire racine introuvable
 slack_manager=Gestionnaire de composants Slackware
+
 debian_unknown=Inconnu
 debian_depends=Ignorer les problèmes de dépendances?
 debian_conflicts=Ignorer les conflits entre composants?
 debian_overwrite=Écraser les fichiers des autres composants?
 debian_downgrade=Remplacer un nouveau composant par un plus ancien?
 debian_manager=Debian DPKG
+
 log_install_package=Composant $1 installé
 log_install_apt_l=Composant(s) $1 installé(s) depuis APT
 log_install_apt=$2 composant(s) installé(s) depuis APT
 log_check_apt_l=Composant(s) $1 mis à jour depuis APT
 log_check_apt=$2 composant(s) mis à jour depuis APT
 log_delete=Composant $1 désinstallé
+
 rhn_input=Composant de Redhat Network
 rhn_install=Installation le(s) composant(s) avec la commande $1 ...
 rhn_ok=... installation effectuée.
@@ -151,6 +165,7 @@ rhn_proxy=URL du serveur proxy pour le téléchargement
 rhn_none=Désactivé
 rhn_eproxy=Serveur proxy manquant ou invalide
 rhn_skip=Sauter les composants qui correspondent
+
 apt_input=Composant d'APT
 apt_install=Installation le(s) composant(s) avec la commande $1 ...
 apt_ok=... installation effectuée.
@@ -175,7 +190,9 @@ apt_search=Trouver les composants ressemblant à :
 apt_find=Recherche APT ...
 apt_title=Recherche APT
 apt_name=APT
+
 yum_source=Source
+
 rpm_missing=Manquant
 rpm_checkfail=Vérification $1 échouée
 rpm_md5=MD5
@@ -187,6 +204,7 @@ rpm_user=utilisateur propriétaire
 rpm_perm=permissions
 rpm_group=groupe propriétaire
 rpm_erpm=RPM $1 non trouvé : $2
+
 soft_reg=Fichier régulier
 soft_dir=Répertoire
 soft_spec=Fichier spécial
@@ -198,12 +216,16 @@ soft_euncompress=Le fichier est compressé, mais la commande <tt>uncompress</tt>
 soft_euncmsg=Echec de la décompression de fichier : $1
 soft_egzip=Le fichier est gzippé, mais la commande gzip n'a pas été trouvée sur votre système.
 soft_egzmsg=Echec de la decompression avec gunzip : $1
+
 emerge_version=Version
 emerge_desc=Description
+
 deletes_enone=Aucun paquet n'est sélectionné
 deletes_title=Suppression de Paquets
+
 csw_already=.. déjà installé.
 csw_version=Version
+
 find_name=Nom
 find_version=Version
 find_desc=Description

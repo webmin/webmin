@@ -9,7 +9,9 @@ index_sadd=Sortu sistema berriko zerbitzua.
 index_always=beti
 index_ladd=Sortu abiarazteko agente berria.
 index_lname=Agente izena
+
 edit_reloadnow2=Berriro irakurri Konfigurazio fitxategia
+
 mass_ustart=Zerbitzuak abiaraztea
 mass_urestart=Zerbitzuak berrabiarazten dira
 mass_ustop=Zerbitzuak gelditzea
@@ -18,6 +20,7 @@ mass_udisable=$1 zerbitzua desgaitzea abiaraztean.
 mass_ustarting=$1 abiarazteko zerbitzua.
 mass_ustopping=$1. zerbitzua gelditzea.
 mass_urestarting=$1 zerbitzua berrabiarazten da.
+
 mode_init=SysV init
 mode_osx=MacOS
 mode_local=Abioko script bakarra
@@ -26,6 +29,7 @@ mode_rc=FreeBSD RC gidoiak
 mode_upstart=upstart
 mode_systemd=Systemd
 mode_launchd=LaunchD
+
 upstart_title1=Sortu Upstart zerbitzua
 upstart_title2=Editatu Upstart zerbitzua
 upstart_egone=Zerbitzua ez dago jada!
@@ -50,6 +54,7 @@ upstart_eserver=Ez da zerbitzariaren agindurik sartu
 upstart_eserver2=Ez da zerbitzariaren komandoa existitzen
 upstart_eserver3=Zerbitzari komando bakarra sar daiteke
 upstart_return=goialdeko zerbitzua
+
 systemd_title1=Sortu Systemd zerbitzua
 systemd_title2=Editatu Systemd zerbitzua
 systemd_egone=Zerbitzua ez dago jada!
@@ -73,6 +78,7 @@ systemd_edesc=Zerbitzuaren deskribapena falta da
 systemd_return=systemd zerbitzua
 systemd_econf=Ez da sistemako konfiguraziorik sartu
 systemd_estart=Komandoak falta dira abiarazteko exekutatzeko
+
 launchd_title1=Sortu Launchd agentea
 launchd_title2=Editatu Launchd agentea
 launchd_egone=Agentea jada ez da!
@@ -93,4 +99,5 @@ launchd_eclash=Izen bera duen agente bat dagoeneko badago
 launchd_return=laund agente
 launchd_econf=Ez da abiarazpen konfiguraziorik sartu
 launchd_estart=Zerbitzariaren agindua falta da
+
 syslog_journalctl=SystemD erregistroak

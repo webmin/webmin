@@ -51,11 +51,13 @@ index_mass=Xóa người dùng đã chọn
 index_mass2=Vô hiệu hóa được chọn
 index_mass3=Cho phép chọn
 index_gmass=Xóa các nhóm đã chọn
+
 search_title=kết quả tìm kiếm
 search_notfound=Không tìm thấy người dùng phù hợp
 search_found=Đã tìm thấy $1 phù hợp với người dùng ..
 search_gnotfound=Không tìm thấy nhóm phù hợp
 search_gfound=Đã tìm thấy $1 nhóm phù hợp ..
+
 uedit_title=Người dùng biên tập
 uedit_title2=Tạo người dùng
 uedit_details=Chi tiết người dùng
@@ -133,6 +135,7 @@ uedit_uid_calc=Tính
 uedit_disabled=Đăng nhập tạm thời bị vô hiệu hóa
 uedit_sys=Mặc định hệ thống
 uedit_clone=Người dùng nhân bản
+
 usave_err=Không thể lưu người dùng
 usave_eedit=Bạn không thể chỉnh sửa người dùng này
 usave_ecreate=Bạn không thể tạo người dùng mới
@@ -186,6 +189,7 @@ usave_epasswd_same=Mật khẩu chứa hoặc giống như tên người dùng
 usave_epasswd_mindays=Mật khẩu đã được thay đổi ít hơn $1 ngày trước
 usave_epasswd_cmd=Lệnh xác thực mật khẩu không thành công
 usave_eothers=Người dùng đã được lưu thành công, nhưng đã xảy ra lỗi trong một mô-đun khác : $1
+
 gedit_title=Chỉnh sửa nhóm
 gedit_title2=Tạo nhóm
 gedit_details=Chi tiết nhóm
@@ -208,6 +212,7 @@ gedit_selu=Người dùng trong nhóm
 gedit_pri=Thành viên nhóm chính
 gedit_prinone=Không có người dùng nào có nhóm này là chính
 gedit_clone=Nhóm nhái
+
 gsave_err=Không thể lưu nhóm
 gsave_eedit=Bạn không thể chỉnh sửa nhóm này
 gsave_ecreate=Bạn không thể tạo nhóm mới
@@ -224,6 +229,7 @@ usave_egidused=Nhóm $1 đã sử dụng GID $2
 gsave_egidused2=GID đã được sử dụng
 usave_efromroot=Bạn không thể di chuyển thư mục nhà từ /
 usave_etoroot=Bạn không thể di chuyển thư mục nhà đến /
+
 logins_title=Đăng nhập
 logins_head=Thông tin đăng nhập được ghi lại cho $1
 logins_from=Đăng nhập từ
@@ -236,6 +242,7 @@ logins_none=Không có thông tin đăng nhập
 logins_elist=Bạn không được phép liệt kê thông tin đăng nhập
 logins_elistu=Bạn không được phép liệt kê thông tin đăng nhập cho '$1'
 logins_local=Địa phương
+
 udel_title=Xóa người dùng
 udel_err=Không thể xóa người dùng
 udel_enum=Số người dùng không hợp lệ
@@ -258,6 +265,7 @@ udel_del2=Xóa thư mục người dùng và nhà
 udel_others=CẢNH BÁO! Thư mục chính $1 chứa các tệp $2 do người dùng khác sở hữu.
 udel_dothers=Xóa người dùng trong các mô-đun khác?
 udel_root=Cảnh báo! Nếu người dùng root bị xóa, bạn có thể không thể quản trị hệ thống của mình trong tương lai.
+
 gdel_title=Xóa nhóm
 gdel_err=Không thể xóa nhóm
 gdel_eroot=Bạn không được phép xóa các nhóm hệ thống (những nhóm có GID nhỏ hơn hoặc bằng 10).
@@ -271,6 +279,7 @@ gdel_sure=Bạn có chắc chắn muốn xóa nhóm $1?
 gdel_del=Xóa nhóm
 gdel_dothers=Xóa nhóm trong các mô-đun khác?
 gdel_other=Xóa khỏi các mô-đun khác ..
+
 many_title=Tạo nhiều người dùng
 many_desc=Biểu mẫu này cho phép bạn tạo nhiều người dùng cùng một lúc từ tệp văn bản được tải lên hoặc cục bộ. Mỗi dòng trong tệp chỉ định một người dùng theo định dạng sau:
 many_desc2=username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire
@@ -294,6 +303,7 @@ many_eshell=Shell không hợp lệ tại dòng $1 : $2
 many_emkdir=Không thể tạo thư mục chính $1 : $2 
 many_egtaken=Tên nhóm đã được sử dụng tại dòng $1 : $2 
 many_ok=Người dùng đã tạo $1
+
 acl_uedit=Người dùng Unix có thể được chỉnh sửa
 acl_uedit_all=Tất cả người dùng
 acl_uedit_none=Không có người dùng
@@ -353,6 +363,7 @@ acl_udelete=Có thể xóa người dùng?
 acl_gdelete=Có thể xóa nhóm?
 acl_urename=Có thể đổi tên người dùng?
 acl_grename=Có thể đổi tên nhóm?
+
 log_urename=Người dùng đã đổi tên $1 thành $2
 log_umodify=Người dùng đã sửa đổi $1
 log_ucreate=Người dùng đã tạo $1
@@ -371,6 +382,7 @@ log_ugbatch=Đã thực hiện tập tin nhóm tải lên
 log_ugbatch_l=Đã thực hiện tệp bó nhóm đã tải lên ($1 đã tạo, $2 đã sửa đổi, $3 đã xóa)
 log_delete_users=Đã xóa $1 người dùng
 log_delete_groups=Đã xóa các nhóm $1
+
 batch_title=Thực hiện tập tin hàng loạt
 batch_ecannot=Bạn không thể sử dụng mẫu tệp bó
 batch_desc=Biểu mẫu này cho phép bạn tạo, sửa đổi hoặc xóa nhiều người dùng cùng một lúc từ tệp văn bản được tải lên hoặc cục bộ. Mỗi dòng trong tệp chỉ định một hành động cần thực hiện, tùy thuộc vào trường đầu tiên của nó. Các định dạng dòng là :
@@ -429,12 +441,14 @@ batch_eexpire=Ngày hết hạn không hợp lệ trên dòng $1 : $2
 batch_echange=Ngày thay đổi mật khẩu không hợp lệ trên dòng $1 : $2 
 batch_instr=Hướng dẫn và định dạng hàng loạt
 batch_header=Tùy chọn tạo, cập nhật và xóa hàng loạt người dùng
+
 who_title=Người dùng đã đăng nhập
 who_user=Người dùng Unix
 who_tty=TTY
 who_when=Đăng nhập tại
 who_from=Đăng nhập từ
 who_none=Không có người dùng hiện đang đăng nhập.
+
 export_title=Xuất tập tin hàng loạt
 export_desc=Biểu mẫu này cho phép bạn tạo một tệp bó chứa một số hoặc tất cả người dùng có sẵn trên hệ thống. Tệp có thể được sử dụng trên trang Thực thi hàng loạt tệp trên một hệ thống khác để tạo lại người dùng đã xuất, giả sử rằng nó sử dụng định dạng tệp bó đã chọn.
 export_header=Tùy chọn xuất hàng loạt người dùng
@@ -455,6 +469,7 @@ export_done=Đã xuất thành công $1 người dùng vào tệp $2 ($3).
 export_pft=Định dạng tập tin hàng loạt
 export_who=Người dùng xuất
 export_ecannot=Bạn không được phép xuất người dùng
+
 gexport_title=Xuất nhóm hàng loạt tệp
 gexport_desc=Biểu mẫu này cho phép bạn tạo một tệp bó chứa một số hoặc tất cả các nhóm có sẵn trên hệ thống. Tập tin có thể được sử dụng trên trang Tập tin thực thi nhóm thực thi trên một hệ thống khác để tạo lại các nhóm đã xuất.
 gexport_header=Tùy chọn xuất nhóm
@@ -463,6 +478,7 @@ gexport_ecannot=Bạn không được phép xuất nhóm
 gexport_err=Không thể xuất tệp bó nhóm
 gexport_egid=GID đầu tiên không hợp lệ trong phạm vi
 gexport_egid2=GID thứ hai không hợp lệ trong phạm vi
+
 pft_0=Chỉ tập tin <tt>passwd</tt> cổ điển
 pft_1=Tệp BSD <tt>master.passwd</tt>
 pft_2=Các tệp <tt>passwd</tt> và <tt>tiêu chuẩn</tt>
@@ -470,6 +486,7 @@ pft_3=Tệp Unix <tt>passwd</tt>
 pft_4=Các tệp AIX <tt>passwd</tt> và <tt>bảo mật</tt>
 pft_5=OpenServer <tt>passwd</tt> và các tệp <tt>bóng</tt> ngắn
 pft_6=Cơ sở dữ liệu MacOS NetInfo
+
 umass_title=Xóa người dùng
 umass_err=Không thể xóa người dùng
 umass_sure=Bạn có chắc chắn muốn xóa $1 người dùng đã chọn không? Các thư mục nhà của họ chứa $2 của các tệp.
@@ -481,6 +498,7 @@ umass_del1=Xóa người dùng
 umass_del2=Xóa người dùng và thư mục nhà
 umass_eroot=Bạn không được phép xóa người dùng hệ thống (những người có UID nhỏ hơn hoặc bằng 10).
 umass_doing=Xóa người dùng $1 ..
+
 gmass_title=Xóa nhóm
 gmass_err=Không thể xóa nhóm
 gmass_sure=Bạn có chắc chắn muốn xóa các nhóm $1 không?
@@ -490,16 +508,19 @@ gmass_del=Xóa nhóm
 gmass_eroot=Bạn không được phép xóa các nhóm hệ thống (những nhóm có GID nhỏ hơn hoặc bằng 10).
 gmass_doing=Xóa nhóm $1 ..
 gmass_eprimary=Không thể xóa nhóm $1 vì đây là nhóm chính của người dùng $2.
+
 dmass_title=Vô hiệu hóa người dùng
 dmass_sure=Bạn có chắc chắn muốn tắt $1 người dùng đã chọn không? Họ có thể được kích hoạt lại sau mà không mất mật khẩu hoặc dữ liệu.
 dmass_dis=Vô hiệu hóa người dùng
 dmass_pass=Tạm thời khóa mật khẩu ..
 dmass_doing=Vô hiệu hóa người dùng $1 ..
 dmass_already=.. đã bị vô hiệu hóa!
+
 emass_title=Cho phép người dùng
 emass_pass=Mở khóa mật khẩu ..
 emass_doing=Kích hoạt người dùng $1 ..
 emass_already=.. đã được kích hoạt!
+
 gbatch_title=Thực hiện tập tin hàng loạt nhóm
 gbatch_ecannot=Bạn không thể sử dụng mẫu tệp nhóm
 gbatch_desc=Biểu mẫu này cho phép bạn tạo, sửa đổi hoặc xóa nhiều nhóm cùng một lúc từ tệp văn bản được tải lên hoặc cục bộ. Mỗi dòng trong tệp chỉ định một hành động cần thực hiện, tùy thuộc vào trường đầu tiên của nó. Các định dạng dòng là :

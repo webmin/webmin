@@ -15,6 +15,7 @@ index_eperl=SMTP 인증 모드를 위한 $1 펄모듈이 설치되어 있지 않
 index_file=파일의 메일 읽기:
 index_nousers=유저를 찾을 수 없습니다!
 index_nousersmail=이메일을 가지고 있는 유저가 존재하지 않습니다.
+
 mail_title=사용자 전자 메일
 mail_from=발신자
 mail_date=날짜
@@ -66,6 +67,7 @@ mail_fromsrch=보내는이와 같이..
 mail_subsrch=같은 제목..
 mail_tosrch=같은 수신자..
 mail_unknown=알수 없음
+
 mail_sign=키로 서명
 mail_nosign=&lt;서명 안함&gt;
 mail_crypt=암호화
@@ -97,6 +99,7 @@ mail_esystem=메일 시스템에 접속할 때 에러가 발생했습니다 : $1
 mail_selread=읽은 파일 선택
 mail_selunread=읽지 않은 메일 선택
 mail_selspecial=별표 선택
+
 view_title=전자 메일 읽기
 view_desc=$2에 있는 메시지 $1
 view_desc2=$2 유저의 메시지 $1
@@ -135,6 +138,7 @@ view_return=메일 원문
 view_sub=첨부 메일
 view_egone=이 메시지는 더이상 존재하지 않습니다.
 view_eugone=이 유저는 존재하지 않습니다.
+
 view_gnupg=GnuPG 사인 검증
 view_gnupg_0=$1에 의한 사인이 유효합니다.
 view_gnupg_1=$1에 의한 사인이 유효하지만 신뢰 사슬이 연결되어 있지 않습니다.
@@ -169,7 +173,9 @@ view_images=이미지 보기
 view_raw=원문 보기
 view_aall=모든 첨부파일을 ZIP 으로 저장
 view_aslideshow=모든 이미지 보기
+
 compose_title=전자 메일 작성
+
 reply_title=전자 메일에 회신
 forward_title=전자 메일 전달
 enew_title=메일 편집
@@ -185,9 +191,11 @@ reply_errc=메일 복사 실패
 reply_errm=메일 이동 실패
 reply_return=메일 작성
 reply_efwdnone=전달할 메시지가 존재하지 않습니다.
+
 reply_spell=철자 검사를 하겠습니까?
 reply_draft=Draft(초안)으로 저장
 reply_save=저장과 수정
+
 send_err=메일을 전송하지 못했습니다
 send_eto=없는 수신자 주소
 send_efrom=없는 발신자 주소
@@ -204,6 +212,7 @@ send_eperms2=파일 $1을(를) 보낼 수 없습니다
 send_epath=Sendmail $1 실행파일이 존재하지 않습니다.
 send_efile=첨부파일 $1 읽기 실패 : $2
 send_done=.. 완료
+
 send_epass=GunPG 모듈에 패스어구가 설정이 되어 있지 않아 메시지에 사인을 할 수 없습니다.
 send_esign=메시지 사인 실패 : $1
 send_ekey=$1 메일 주소에 대한 키를 찾을 수 없습니다.
@@ -215,6 +224,7 @@ send_espell=메시지에서 다음의 철차 오류가 발견되었습니다..
 send_draft=메일을 초안 폴더에 $1로 저장
 send_drafting=초안 폴더에 메일을 $1로 저장 ..
 send_eattachsize=메일의 첨부파일의 최대 사이즈는 $1 바이트 입니다.
+
 delete_title=메일 삭제
 delete_rusure=$2의 선택된 메시지 $1을(를) 삭제하겠습니까? 큰 메일 파일을 제거할 경우에는 시간이 좀 소요가 되므로, 삭제가 끝날때 까지 아무 작업도 하지 마십시오.
 delete_rusure2=$1의 이 메시지를 삭제하겠습니까? 큰 메일 파일을 제거할 경우에는 시간이 좀 소요가 되므로, 삭제가 끝날때 까지 아무 작업도 하지 마십시오.
@@ -237,6 +247,7 @@ delete_nobutton=버튼을 클릭하지 않았습니다.
 delete_ereport=스팸 보고 실패 : $1
 delete_errc=메일 복사 실패
 delete_errm=메일 이동 실패
+
 confirm_title=삭제 확인
 confirm_warn=이 폴더에서 선택된 메시지 $1을(를) 삭제하겠습니까?
 confirm_warnf=<b>$2</b> 폴더의 선택된 메시지 $1을(를) 삭제하겠습니까?
@@ -246,6 +257,7 @@ confirm_warn4=삭제가 종료될 때까지 아무런 작업을 하지 마십시
 confirm_ok=지금 삭제
 confirm_warnall=이 폴더의 모든 메시지를 삭제하겠습니까?
 confirm_warnallf=<b>$1</b> 폴더의 모든 메시지를 삭제하겠습니까?
+
 search_title=검색 결과
 search_ecannot=이 사용자의 전자 메일을 검색할 수 없습니다
 search_ematch=검색할 텍스트를 입력해야 합니다.
@@ -271,16 +283,19 @@ search_nolatest=폴더의 전부
 search_latestnum=최근만
 search_elatest=검색 메시지수가 지정되지 않았거나 유효하지 않습니다.
 search_withstatus=, 상태 $1로
+
 folder_inbox=인박스
 folder_sent=메일 보내기
 folder_drafts=초안
 folder_trash=휴지통
+
 detach_err=첨부파일 제거 실패
 detach_edir=저장을 위한 파일또는 디렉토리가 입력되지 않았습니다.
 detach_eopen=$1을(를) 여는데 실패 : $2
 detach_ewrite=$1에 작성 실패 : $2
 detach_title=파일 삭제
 detach_ok=서버에 $1 파일을 첨부합니다($2).
+
 sform_title=고급 검색
 sform_header=고급 메일 검색 옵션
 sform_and=다음의 모든 조건이 일치하는 메시지 찾기 ..
@@ -304,6 +319,7 @@ sform_headers=다른 헤더
 sform_allmsg=전체 메시지
 sform_size=메시지 크기
 sform_return=고급 검색 폼
+
 find_enone=검색결과 일치하는 사용자가 없습니다.
 find_title=검색 결과
 find_results=$1 사용자 검색 ..
@@ -316,6 +332,7 @@ find_incount=이메일
 find_sentcount=보내기
 find_fcount=폴더
 find_in=$2, $1
+
 acl_none=없음
 acl_same=이름이 동일한 사용자
 acl_all=모두
@@ -341,12 +358,15 @@ acl_usersu=범위안의 UID 로
 acl_sec=2번째 그룹을 포함하겠습니까?
 acl_dir=디렉토리의 메일 파일을 읽을 수 없습니다.
 acl_dirauto=자동으로 결정 (모든 유저가 보인다면 어느 곳이나, 아니면 아무 곳도 아님)
+
 log_delmail=$2에서 $1개 메시지 삭제됨
 log_movemail=$2에서 $3(으)로 $1 메시지를 이동했습니다.
 log_copymail=$2 에서 $3(으)로 $1 메시지를 복사했습니다.
 log_send=$1에게 메일 전송 완료
 log_read=$1의 메일 읽기
+
 emodified=마지막으로 본 이후에 이 폴더에 변경이 있었습니다. <a href='$1'>메일 리스트</a>로 돌아가서 다시 시도 하십시오.
+
 razor_title=스팸으로 보고
 razor_title2=Ham으로 보고
 razor_report=이 메시지를 Razor 와 다른 스팸어쌔신 스팸-블럭킹 데이터베이스로 보고 ..
@@ -356,14 +376,18 @@ razor_done=.. 완료
 razor_err=.. 실패! 이유에 대해서는 상단의 에러 메시지를 참고 하십시오.
 razor_moved=.. 완료, $1 폴더로 이동
 razor_deleted=.. 완료, 메시지 삭제도 완료.
+
 ham_title=Ham 으로 보고
 ham_report=이 메시지를 Razor 와 다른 스팸어쌔신 데이터베이스에 스팸이 아닌 것으로 보고
+
 black_title=거부할 보내는이
 black_done=스팸어쌔신 거부 주소 리스트에 $1 메일 주소 추가
 black_already=$1 메일 주소는 스팸 어쌔신의 거부 주소 리스트에 이미 포함되어 있습니다.
+
 white_title=허가할 보내는이 명단
 white_done=스팸 어쌔신 허가 주소 리스트에 $1 주소를 추가.
 white_already=$1 메일 주소는 스팸 어쌔신의 허가 주소 리스트에 이미 등록되어 있습니다.
+
 ldap_emod=LDAP 에 연결하기 위하여 필요한 $1 펄모듈이 없습니다.
 ldap_econn=$1 LDAP 서버의 $2 포트로 연결을 실패했습니다.
 ldap_elogin=$1 LDAP 서버를 $2로 바인드하는데 실패했습니다 : $3
@@ -371,9 +395,11 @@ ldap_ehost=모듈 구서에 LDAP 서버가 설정되어 있지 않습니다.
 ldap_eport=모듈 구성의 LDAP 서버 포트가 유효하지 않습니다.
 ldap_euser=모듈 구성에 LDAP 로그인 설정이 없습니다.
 ldap_ebase=모듈 구성에서 LDAP 베이스의 DN 이 설정되어 있지 않습니다.
+
 delall_title=모든 메일 삭제
 delall_rusure=$1의 모든 메일을 삭제하겠습니까? $2 메시지 총 $3이(가) 완전히 삭제 됩니다.
 delall_ok=지금 삭제
+
 slide_title=첨부된 이미지
 slide_prev=이전
 slide_next=다음

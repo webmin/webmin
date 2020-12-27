@@ -13,6 +13,7 @@ index_os=Type de serveur
 index_group=Groupe
 index_none=&lt;Aucun&gt;
 index_logout=déconnecter
+
 edit_title=Édition d'un serveur
 create_title=Déclaration d'un serveur
 edit_details=Détails du serveur
@@ -41,6 +42,7 @@ edit_failed=Impossible de se connecter
 edit_baduser=Nom de connexion refusé
 edit_invalid=L'utilisateur ne peut pas effectuer de RPC
 edit_version=Webmin $1 en cours d'exécution
+
 save_err=Impossible d'enregistrer le serveur
 save_ehost=Nom d'hôte manquant ou invalide
 save_eport=Port manquant ou invalide
@@ -48,6 +50,7 @@ save_euser=Nom d'utilisateur manquant
 save_epass=Mot de passe manquant
 save_egroup=Nom de groupe manquant
 save_elogin=Nom de connexion ou mot de passe pour l'hôte invalide
+
 find_title=Recherche des serveurs
 find_new=Nouveau serveur trouvé à l'adresse $1
 find_already=Serveur connu trouvé à l'adresse $1
@@ -57,24 +60,30 @@ find_none=Aucun serveur n'a répondu lors de l'analyse.
 find_ecannot=Vous n'êtes pas autorisé à chercher les serveurs
 find_scanning=Analyse des serveurs dans le réseau $1 en cours...
 find_broading=Diffusion des serveurs sur les adresses $1 en cours...
+
 log_modify=Modifié le seveur $1
 log_create=Déclaré le serveur $1
 log_delete=Supprimé le serveur $1
 log_find=Trouvé le serveur $1
+
 link_elogin=Impossible de se connecter à $1 en tant que $2
 link_ecannot=Vous n'êtes pas autorisé à utiliser ce serveur
 link_essl=Vous n'avez pas installé la bibliothèque Perl Net:SSLeay
 link_eautologin=Nom de connexion ou mot de passe pour $1. <a href='$2'>Cliquez ici</a> pour essayer à nouveau.
+
 lib_other=Autre
+
 acl_edit=Peut modifier les serveurs ?
 acl_find=Peut chercher les serveurs ?
 acl_servers=Peux utiliser les serveurs
 acl_sall=Tous les serveurs
 acl_ssel=Sélectionnés...
+
 login_title=Connexion au serveur
 login_desc=Vous devez fournir un nom d'utilisateur et un mot de passe pour vous connecter au serveur Webmin $1.
 login_header=Authentification Webmin
 login_user=Nom d'utilisateur
 login_pass=Mot de passe
 login_login=Connexion
+
 this_server=Ce serveur

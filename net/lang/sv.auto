@@ -5,6 +5,7 @@ index_delete2=Radera valda gränssnitt
 index_delete3=Radera och tillämpa valda gränssnitt
 index_apply2=Använd utvalda gränssnitt
 index_vmin=Virtualmin
+
 ifcs_activedesc=Gränssnitt som listas i denna tabell är för närvarande aktiva i systemet. I de flesta fall bör du redigera dem under fliken <b>Aktiverad vid start</b>.
 ifcs_bootdesc=Gränssnitt som listas i denna tabell aktiveras när systemet startar och kommer i allmänhet också att vara aktivt nu.
 ifcs_ip6=IPv6-adress
@@ -31,12 +32,14 @@ ifcs_linkyes=Ansluten
 ifcs_linkno=Osammanhängande
 ifcs_speed=Gränssnittshastighet
 ifcs_duplex=, $1 duplex
+
 aifc_evirtmin=Det virtuella gränssnittsnumret måste vara minst $1 
 aifc_eclash=Gränssnittet $1 använder redan denna IP-adress
 aifc_eaddress6=IPv6-adressen i rad $1 är inte giltig
 aifc_enetmask6=IPv6-nätmask i rad $1 måste vara ett heltal mellan 1 och 128
 aifc_eclash6=IPv6-adress i rad $1 används redan av gränssnitt $2 
 aifc_eaddresses6=Inga IPv6-adresser har angivits
+
 bifc_act=Aktivera vid start?
 bifc_dapply=Radera och applicera
 bifc_err4=Det gick inte att inaktivera gränssnittet
@@ -52,6 +55,7 @@ bifc_bridgestp=Spanning Tree Protocol
 bifc_bridgefd=Framåt försening
 bifc_bridgewait=Försena för att bli tillgänglig
 bifc_ebond=Obligationsgränssnittet måste vara ett nummer
+
 bonding_add=Lägg till ett nytt bindningsgränssnitt.
 bonding_create=Skapa limningsgränssnitt
 bonding_teamparts=Teaming Partners
@@ -63,11 +67,14 @@ bonding_miimon=Mii-Monitoring Interval
 bonding_miimondesc=(Lämna tomt för att inaktivera länkövervakning)
 bonding_updelay=Updelay
 bonding_downdelay=Downdelay
+
 vlan_add=Lägg till Vlan taggat gränssnitt
 vlan_physical=Fysisk enhet
 vlan_id=Vlan ID
 vlan_create=Skapa VLAN-gränssnitt
+
 bridge_create=Skapa Bridge-gränssnitt
+
 routes_now=Routingkonfiguration aktiverad nu
 routes_default6=Standard IPv6-router
 routes_default2=Standardrutter
@@ -114,6 +121,7 @@ routes_tabboot=Starttidskonfiguration
 routes_tabactive=Aktiv konfiguration
 routes_descactive=Det här avsnittet listar rutter som systemet för närvarande har konfigurerat och låter dig lägga till eller ta bort aktiva rutter på vissa system. Var noga med att göra detta, eftersom felaktiga ändringar kan skära av systemet som kör Webmin från resten av nätverket.
 routes_descboot=Det här avsnittet låter dig konfigurera rutter som aktiveras när systemet startar upp eller när nätverksinställningarna tillämpas igen.
+
 dns_ecannot=Du får inte redigera DNS-klientinställningar
 dns_err=Det gick inte att spara DNS-konfiguration
 dns_ehost='$1' är inte ett giltigt värdnamn
@@ -122,9 +130,11 @@ dns_edomain='$1' är inte ett giltigt domännamn
 dns_esearch=Inga domäner att söka angivna
 dns_hoststoo=Uppdatera värdnamn i värdadresser om det ändras?
 dns_dhcp=Värdnamn ställs in av DHCP-servern?
+
 hosts_active=Aktiverad?
 hosts_ecannot=Du får inte redigera värdadresser
 hosts_delete=Radera valda värdadresser
+
 ipnodes_title=IPv6-värdadresser
 ipnodes_ip=IPv6-adress
 ipnodes_host=Värdnamn
@@ -136,6 +146,7 @@ ipnodes_return=IPv6-värdadresslista
 ipnodes_ecannot=Du får inte redigera IPv6-värdadresser
 ipnodes_none=Inga IPv6-värdadresser har definierats än.
 ipnodes_delete=Radera valda IPv6-värdadresser
+
 log_create_ipnode=Skapad IPv6-värdadress $1 
 log_delete_ipnode=Raderad IPv6-värdadress $1 
 log_modify_ipnode=Modifierad IPv6-värdadress $1 
@@ -147,6 +158,7 @@ log_apply_bfics=Aktiverade $1 starttidgränssnitt
 log_create_route=Skapade aktiv rutt för $1 
 log_create_defroute=Skapade aktiv standardväg
 log_delete_routes=$1 aktiva rutter raderade
+
 acl_ifcs=Kan redigera nätverksgränssnitt?
 acl_routes=Kan redigera routing och gateways?
 acl_dns=Kan redigera DNS-klientinställningar?
@@ -164,6 +176,7 @@ acl_virt=Kan läggas till virtuella gränssnitt?
 acl_delete=Kan ta bort gränssnitt?
 acl_hide=Dölja gränssnitt som inte kan redigeras?
 acl_sysinfo=Visa tillgängliga nätverksgränssnitt på instrumentpanelen
+
 interfaces_title1=Välj gränssnitt. ..
 interfaces_all=Alla gränssnitt. ..
 interfaces_sel=Valda gränssnitt
@@ -171,7 +184,9 @@ interfaces_ok=OK
 interfaces_cancel=Annullera
 interfaces_clear=Klar
 interfaces_title2=Välj användare. ..
+
 apply_ecannot=Du får inte tillämpa konfigurationen
+
 mod_egone=Gränssnittet är inte längre aktivt!
 mod_title=Aktivt gränssnitt
 mod_desc=Gränssnittet $1 används för $2 och kan därför inte hanteras med den här modulen.
@@ -183,6 +198,7 @@ mod_pptpc=PPTP-anslutningen $1
 mod_zones=ett virtuellt gränssnitt för zon <tt>$1</tt>
 mod_virtualmin=Virtualmin-servern <tt>$1</tt>
 mod_reseller=Virtualmin-återförsäljaren <tt>$1</tt>
+
 range_edit=Redigera adressintervall
 range_create=Skapa adressintervall
 range_header=Alternativ för adressintervall
@@ -198,13 +214,17 @@ range_eend=IP-adress saknas eller ogiltig
 range_enum=Det första virtuella gränssnittsnumret saknas eller ej
 range_eclass=Start- och slutadresser måste vara i samma klass C-nätverk
 range_ebefore=Slutadressen måste vara högre än startadressen
+
 chooser_any=&lt;Any&gt;
 chooser_other=Övrig ..
+
 dafics_err=Det gick inte att avaktivera gränssnitt
 daifcs_enone=Ingen vald
 daifcs_egone=Gränssnittet finns inte längre!
+
 dbifcs_err=Det gick inte att ta bort gränssnitt
 dbifcs_err2=Det gick inte att aktivera gränssnitten
+
 hdelete_err=Det gick inte att ta bort värdadresser
 hdelete_enone=Ingen vald
 idelete_err=Det gick inte att ta bort IPv6-värdadresser

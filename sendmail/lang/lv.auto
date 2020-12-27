@@ -11,6 +11,7 @@ index_version2=Sendmail versija $1, config $2
 index_xversion=Sūtīšanas versijas $1 versija
 index_version=Sūtīšanas pasta konfigurācija $1 
 index_sendmail=Nosūtīt pastu
+
 opts_title=Sūtīšanas iespējas
 opts_ecannot=Jums nav atļauts rediģēt sūtīšanas iespējas
 opts_ds=Nosūtiet izejošo pastu caur resursdatoru
@@ -57,6 +58,7 @@ opts_qso=Kārtot pasta rindu pēc
 opts_priority=Prioritāte
 opts_host=Resursdatora nosaukums
 opts_time=Laiks saņemts
+
 aliases_title=Pasta pseidonīmi
 aliases_ecannot=Jums nav atļauts rediģēt pseidonīmus
 aliases_enofile=Sendmail konfigurācijā nav definēts pseidonīmu fails
@@ -73,6 +75,7 @@ aliases_return=pseidonīmu saraksts
 aliases_toomany=Jūsu sistēmā ir pārāk daudz pasta aizstājvārdu, lai tos parādītu šajā lapā.
 aliases_go=Atrodiet aizstājvārdus:
 aliases_delete=Dzēst atlasītos pseidonīmus
+
 aform_ecannot=Jums nav atļauts rediģēt šo aizstājvārdu
 aform_type0=Nav
 aform_type1=Epasta adrese
@@ -90,11 +93,13 @@ aform_val=Pseidonīms
 aform_afile=Rediģēt ..
 aform_return=pseidonīms
 aform_cmt=Apraksts
+
 afile_title=Rediģēt adreses failu
 afile_desc=Izmantojiet zemāk esošo teksta laukumu, lai rediģētu adreses failā $1.
 afile_efile=Jums nav atļauts rediģēt $1.
 afile_undo=Atsaukt izmaiņas
 afile_ewrite=Neizdevās uzrakstīt uz adrešu failu : $1 
+
 ffile_title=Rediģēt filtra failu
 ffile_desc=Izmantojiet zemāk esošo formu, lai iestatītu filtra kārtulas failā $1.
 ffile_efile=Jums nav atļauts rediģēt $1.
@@ -110,6 +115,7 @@ ffile_other=Pretējā gadījumā pārsūtīt uz $1
 ffile_err=Neizdevās saglabāt filtra failu
 ffile_ematch=Trūkst spēles
 ffile_eaction=Trūkst pārsūtīšanas adreses
+
 rfile_title=Rediģēt automātiskās atbildes failu
 rfile_desc=Izmantojiet zemāk esošo teksta laukumu, lai rediģētu automātiskās atbildes ziņojumu $1. Ziņojumā var būt makro $SUBJECT, $FROM, $TO, $DATE un $BODY, kas tiks izvērsti, kad tiks aktivizēta automātiskā atbilde.
 rfile_desc2=Varat arī iestatīt pasta galvenes, kas papildina vai aizvieto automātiskajā atbildē izmantotos noklusējumus, ievietojot šādas rindiņas: <br><tt> No: foo@bar.com </tt><br> <tt>Temats: Brīvdienās</tt> <br> ziņojuma augšdaļā, atdalīta no pamatteksta ar vienu tukšu līniju.
@@ -129,6 +135,7 @@ rfile_from=No: adrese atbildei
 rfile_auto=Automātiska (pamatojoties uz adresāta adresi)
 rfile_efrom=Trūkst No: adrese
 rfile_fromdesc=A No: adrese vienmēr ir jānorāda, kur iespējams, jo automātiskā metode var nebūt uzticama.
+
 asave_err=Neizdevās saglabāt aizstājvārdu
 asave_ecannot2=Jums nav atļauts rediģēt pseidonīmus
 asave_ecannot=Jums nav atļauts rediģēt šo aizstājvārdu
@@ -145,9 +152,11 @@ asave_etype5=Automātiskās atbildes fails “$1” nav derīgs
 asave_etype4none=Programma nav dota
 asave_etype6=Filtra fails “$1” nav derīgs
 asave_esame=Jums ir atļauts izveidot tikai aizstājvārdu ar tādu pašu vārdu kā jūsu Webmin pieteikumvārdam
+
 adelete_err=Neizdevās izdzēst aizstājvārdus
 adelete_enone=Nav atlasīts
 adelete_ecannot=Jums nav atļauts izdzēst aizstājvārdu $1 
+
 cws_title=Vietējie domēni
 cws_ecannot=Jums nav atļauts rediģēt vietējos domēnus
 cws_domains=Domēni, kurus apstrādā šis serveris
@@ -156,6 +165,7 @@ cws_desc2=Ņemiet vērā, ka parasti nepietiek tikai ar domēna iekļaušanu sar
 cws_err=Neizdevās saglabāt vietējos domēnus
 cws_ehost=“$1” nav derīgs resursdatora vai domēna nosaukums
 cws_eip='$1' ir IP adrese, nevis domēns
+
 masq_title=Domēna maskēšana
 masq_ecannot=Jums nav atļauts konfigurēt maskēšanu
 masq_domain=Maskarāde kā domēns
@@ -167,12 +177,14 @@ masq_err=Neizdevās saglabāt domēna maskēšanu
 masq_edomain='$1' nav derīgs domēns, lai maskētos kā
 masq_ehost=“$1” nav derīgs resursdatora vai domēna nosaukums
 masq_eip='$1' ir IP adrese, nevis domēns
+
 trusts_title=Uzticami lietotāji
 trusts_ecannot=Jums nav atļauts rediģēt uzticamus lietotājus
 trusts_users=Vietējie lietotāji, kuriem uzticas sendmail
 trusts_desc=Ja vietējais lietotājs mēģina nosūtīt e-pastu, tad sendmail ļaus lietotājam sniegt citu <tt>No:</tt> adresi tikai tad, ja lietotājs ir zemāk esošajā sarakstā. Šis ierobežojums pastāv, lai neļautu lietotājiem viltot e-pastu ar viltus <tt>From:</tt> adresēm, kuru izcelsme ir jūsu sistēmā.
 trusts_err=Neizdevās saglabāt uzticamus lietotājus
 trusts_euser='$1' nav derīgs lietotājs
+
 virtusers_title=Adrešu kartēšana
 virtusers_ecannot=Jums nav atļauts rediģēt adrešu kartēšanu
 virtusers_efeature=Jūsu sendmail konfigurācijā nav iespējota adrešu kartēšanas (<tt>virtuālais serveris</tt>) funkcija. <a href='$1'>Noklikšķiniet šeit</a>, lai iestatītu sendmail funkcijas.
@@ -190,6 +202,7 @@ virtusers_return=adrešu kartēšanas saraksts
 virtusers_toomany=Jūsu sistēmā ir pārāk daudz adrešu kartēšanas, lai tās parādītu šajā lapā.
 virtusers_go=Atrodiet atbilstošu adrešu kartēšanu:
 virtusers_delete=Dzēst atlasītās adrešu kartēšanas
+
 vform_edit=Rediģēt adreses kartēšanu
 vform_create=Izveidot adrešu kartēšanu
 vform_for=Nosūtīt
@@ -206,6 +219,7 @@ vform_err_tempfail=Pagaidu neveiksme
 vform_err_protocol=Protokola kļūda
 vform_end=Pāriet uz beigām
 vform_ecannot=Jums nav atļauts rediģēt šo adrešu kartēšanu
+
 vsave_ecannot=Jums nav atļauts rediģēt adrešu kartēšanu
 vsave_ecannot2=Jums nav atļauts rediģēt šo adrešu kartēšanu
 vsave_emax=Jums nav atļauts izveidot vairāk kā $1 adrešu kartēšanu
@@ -221,8 +235,10 @@ vsave_eaddr=“$1” nav derīga adrese
 vsave_ecannot4=Jums nav atļauts izveidot domēnu kartēšanu
 vsave_edomdom=Tikai domēnu var saistīt ar citu domēnu
 vsave_ecannot5=Jums nav atļauts izveidot kartēšanu, kurā tiek parādīta kļūda
+
 vdelete_err=Neizdevās izdzēst adrešu kartēšanu
 vdelete_ecannot=Jums nav atļauts izdzēst kartes $1 kartējumu
+
 mailers_title=Domēna maršrutēšana
 mailers_cannot=Jums nav atļauts rediģēt domēna maršrutēšanu
 mailers_edirective=Jūsu sendmail konfigurācijas failam nav nepieciešamās direktīvas domēna maršrutēšanai.
@@ -236,6 +252,7 @@ mailers_delivery=Piegāde
 mailers_to=Nosūtīt ..
 mailers_return=domēna maršrutēšanas saraksts
 mailers_delete=Dzēst atlasītos domēna maršrutus
+
 mform_edit=Rediģēt maršrutēšanu
 mform_create=Izveidot maršrutēšanu
 mform_for=Nosūtīt
@@ -259,12 +276,15 @@ mform_procmail=Procmail
 mform_mail11=DECnet pasts11
 mform_error=Kļūda
 mform_ecannot=Jums nav atļauts rediģēt domēna maršrutēšanu
+
 msave_ecannot=Jums nav atļauts rediģēt domēna maršrutēšanu
 msave_err=Neizdevās saglabāt domēna maršrutēšanu
 msave_edomain=“$1” nav derīgs resursdators vai domēns
 msave_edup=Domēna maršrutēšana '$1' jau ir definēta
+
 mdelete_err=Neizdevās izdzēst domēna maršrutētāju
 mdelete_ecannot=Jums nav atļauts dzēst maršrutu $1 
+
 generics_title=Izejošās adreses
 generics_cannot=Jums nav atļauts rediģēt izejošās adreses
 generics_econfig=Jūsu sendmail konfigurācijas failam nav nepieciešamās direktīvas izejošās adreses kartēšanai.
@@ -278,11 +298,13 @@ generics_return=adrešu kartēšanas saraksts
 generics_toomany=Jūsu sistēmā ir pārāk daudz izejošo adrešu, lai tās parādītu šajā lapā.
 generics_go=Atrodiet izejošās adreses, kas atbilst:
 generics_delete=Dzēst atlasītās izejošās adreses
+
 gform_edit=Rediģēt kartēšanu
 gform_create=Izveidot kartēšanu
 gform_from=Pasts no
 gform_to=Mainīt uz
 gform_ecannot=Jums nav atļauts rediģēt šo izejošo adresi
+
 gsave_ecannot=Jums nav atļauts rediģēt izejošās adreses
 gsave_ecannot2=Jums nav atļauts rediģēt šo izejošo adresi
 gsave_ecannot3=Jums nav atļauts saglabāt šo izejošo adresi
@@ -291,8 +313,10 @@ gsave_efrom=“$1” nav derīga no adreses
 gsave_ematch=No adreses neatbilst “$1”
 gsave_eto='$1' nav derīga jaunā adrese
 gsave_ealready=Izejošās adreses kartēšana “$1” jau pastāv
+
 gdelete_err=Neizdevās izdzēst izejošo adrešu kartēšanu
 gdelete_ecannot=Jums nav atļauts izdzēst kartes $1 kartējumu
+
 cgs_title=Izejošie domēni
 cgs_ecannot=Jums nav atļauts rediģēt izejošos domēnus
 cgs_header=Izejošo adrešu domēni
@@ -300,6 +324,7 @@ cgs_desc=Neatkarīgi no vietējo lietotāju sūtītajiem sūtījumiem sendmail v
 cgs_err=Neizdevās saglabāt izejošos domēnus
 cgs_ehost=“$1” nav derīgs resursdatora vai domēna nosaukums
 cgs_eip='$1' ir IP adrese, nevis domēns
+
 domains_title=Domēna kartēšana
 domains_ecannot=Jums nav atļauts rediģēt domēna kartēšanu
 domains_econfig=Jūsu sendmail konfigurācijas failam nav nepieciešamās direktīvas domēna kartēšanai.
@@ -310,17 +335,21 @@ domains_from=No domēna ..
 domains_to=Uz domēnu ..
 domains_return=domēna kartēšanas saraksts
 domains_delete=Dzēst atlasītos domēna kartējumus
+
 dform_edit=Rediģēt kartēšanu
 dform_create=Izveidot kartēšanu
 dform_from=No domēna
 dform_to=Uz domēnu
 dform_ecannot=Jums nav atļauts rediģēt domēna kartēšanu
+
 dsave_ecannot=Jums nav atļauts rediģēt domēna kartēšanu
 dsave_err=Neizdevās saglabāt domēna kartēšanu
 dsave_edomain='$1' nav derīgs domēna vārds
 dsave_ealready=Domēna kartēšana “$1” jau pastāv
+
 ddelete_err=Neizdevās izdzēst domēna kartēšanu
 ddelete_ecannot=Jums nav atļauts izdzēst kartes $1 kartējumu
+
 access_title=Surogātpasta kontrole
 access_ecannot=Jums nav atļauts konfigurēt surogātpasta kontroli
 access_efeature=Jūsu sendmail konfigurācijā nav iespējota surogātpasta kontroles (<tt>access_db</tt>) funkcija. <a href='$1'>Noklikšķiniet šeit</a>, lai iestatītu sendmail funkcijas.
@@ -333,6 +362,7 @@ access_return=surogātpastu kontroles saraksts
 access_toomany=Jūsu sistēmā ir pārāk daudz surogātpasta kontroles noteikumu, lai tos parādītu šajā lapā.
 access_go=Atrodiet mēstuļu kontroles noteikumus, kas atbilst:
 access_delete=Dzēsiet atlasītos surogātpasta kontroles noteikumus
+
 sform_edit=Rediģēt mēstuļu kontroles noteikumu
 sform_create=Izveidojiet surogātpasta kontroles noteikumu
 sform_source=Pasta avots
@@ -354,6 +384,7 @@ sform_discard=Atmet klusu
 sform_err=Kļūdas kods
 sform_msg=Ziņa
 sform_ecannot=Jums nav atļauts rediģēt šo surogātpasta kontroles noteikumu
+
 ssave_err=Neizdevās saglabāt surogātpasta kontroles noteikumu
 ssave_etype0=“$1” nav derīga adrese
 ssave_etype1='$1' nav derīga tīkla adrese
@@ -362,8 +393,10 @@ ssave_etype3='$1' nav derīgs domēns
 ssave_ecode='$1' nav derīgs SMTP kļūdas kods
 ssave_ealready=Surogātpasta ierobežošanas kārtula “$1” jau pastāv
 ssave_ecannot2=Jums nav atļauts saglabāt šo surogātpasta kontroles noteikumu
+
 sdelete_err=Neizdevās izdzēst surogātpasta kontroles noteikumus
 sdelete_ecannot=Jums nav atļauts izdzēst $1 kārtulu
+
 relay_title=Releja domēni
 relay_ecannot=Jums nav atļauts rediģēt releju domēnus
 relay_eversion=Tikai sūtītās versijas 8.9 un jaunākas atbalsta releju domēnu funkciju.
@@ -372,6 +405,7 @@ relay_desc1=Ja vien to neatļauj <a href='$1'>surogātpasta kontroles</a> noteik
 relay_desc2=Ja jūsu sistēma kalpo kā vārteja vairākiem domēniem, kuriem nav tiešas piekļuves no ārpuses no jūsu tīkla (izmantojot funkciju <a href='$1'>domēnu maršrutēšana</a>), šeit visi šie domēni ir jāuzskaita.
 relay_err=Neizdevās saglabāt releju domēnus
 relay_edomain='$1' nav derīgs domēna vārds
+
 mailq_title=Pasta rinda
 mailq_count=$1 ziņojumi
 mailq_ecannot=Jums nav atļauts apskatīt pasta rindu
@@ -401,12 +435,15 @@ mailq_search=Atrodiet rindā esošos ziņojumus kur
 mailq_quar=Karantīnā
 mailq_refresh=Atsvaidzināt pasta rindu
 mailq_refreshdesc=Pārlādējiet šo lapu, lai parādītu pasta rindas pašreizējo stāvokli.
+
 flushq_title=Flush Queue
 flushq_desc=Visu ziņojumu mēģinājuma piegādes piespiešana ar komandu $1.
 flushq_desc2=Piespiedu mēģinājums piegādāt $1 atlasītās ziņas.
 flushq_ecannot=Jums nav atļauts izskalot pasta rindu
+
 searchq_title=Rindu meklēšanas rezultāti
 searchq_none=Nav atrasts neviens rindā esošs ziņojums.
+
 delq_err=Neizdevās izdzēst ziņojumu
 delq_ecannot=Jums nav atļauts novilkt ziņojumus
 delq_locked=Fails pašlaik ir bloķēts nosūtīšanai
@@ -422,6 +459,7 @@ delq_force=Jebkurā gadījumā piespiest dzēst
 delq_ecannot2=šo ziņojumu nevar izdzēst
 delq_rusure=Vai tiešām vēlaties dzēst $1 atlasītos rindas ziņojumus?
 delq_confirm=Dzēst ziņas
+
 boxes_title=Lietotāju pastkastes
 boxes_user=Lietotājs
 boxes_size=Pastkastes lielums
@@ -431,6 +469,7 @@ boxes_sent=Nosūtītais pasts
 boxes_ecannot=Jums nav atļauts lasīt e-pastu
 boxes_toomany=Jūsu sistēmā ir pārāk daudz lietotāju, lai uzskaitītu visas viņu pastkastes.
 boxes_go=Skatīt lietotāja pastu:
+
 mail_title=Lietotāja e-pasts
 mail_from=No plkst
 mail_date=Datums
@@ -471,6 +510,7 @@ mail_move=Pārvietot uz:
 mail_copy=Kopēt uz:
 mail_rfc=No līnijas
 mail_eexists=Ziņojums vairs nepastāv!
+
 view_title=Lasīt e-pastu
 view_desc=Ziņojums $1 $2 
 view_desc2=Ziņojums $1 lietotājam $2 
@@ -501,6 +541,7 @@ view_egone=Šis ziņojums vairs nepastāv
 view_afile=Pielikuma nosaukums
 view_atype=Pielikuma tips
 view_asize=Faila lielums
+
 compose_title=Sastādīt e-pastu
 reply_title=Atbildēt uz e-pastu
 forward_title=Pārsūtīt e-pastu
@@ -512,6 +553,7 @@ reply_attach2=Klienta un servera puses pielikumi
 reply_send=Nosūtīt pastu
 reply_ecannot=Jums nav atļauts sūtīt vēstules kā šim lietotājam
 reply_body=Ziņojuma teksts
+
 send_err=Neizdevās nosūtīt pastu
 send_eto=Trūkst adreses
 send_efrom=Trūkst adreses
@@ -524,6 +566,7 @@ send_eattach=Pielikumu kopsumma nedrīkst pārsniegt $1 kB.
 send_eperms=Lietotājs $1 nevar nolasīt $2 
 send_eperms2=Jums nav atļauts sūtīt failu $1 
 send_epath=Nosūtīšanas izpildāmais $1 neeksistē.
+
 delete_title=Dzēst pastu
 delete_rusure=Vai tiešām vēlaties dzēst $1 atlasītos ziņojumus no $2 ? Tas var aizņemt kādu laiku, kamēr tiek izveidots liels pasta fails. Kamēr dzēšana nav pabeigta, citas darbības nevajadzētu veikt.
 delete_rusure2=Vai tiešām vēlaties dzēst šo ziņojumu no $1 ? Tas var aizņemt kādu laiku, kamēr tiek izveidots liels pasta fails. Kamēr dzēšana nav pabeigta, citas darbības nevajadzētu veikt.
@@ -536,6 +579,7 @@ delete_emoveuser=Lietotājs, uz kuru pārvietot pastu, nepastāv
 delete_emovecannot=Jums nav atļauts pārvietot pastu norādītajam lietotājam
 delete_emovenone=Pārvietošanai nav atlasīts neviens pasts
 delete_nobutton=Neviena poga nav noklikšķinājusi
+
 search_title=Meklēšanas rezultāti
 search_ecannot=Jums nav atļauts meklēt šī lietotāja e-pastā
 search_ematch=Jums ir jāievada teksts, kuram jāsakrīt.
@@ -549,6 +593,7 @@ search_results4=$1 pasta ziņas, kas atbilst jūsu meklēšanai ..
 search_local=Vietējās mapēs
 search_all=Visās mapēs
 search_eboolean=Būla meklēšana, izmantojot gan “, gan” un “vai”, netiek atbalstīta
+
 file_title=Rediģēt Sendmail failu
 file_desc=Izmantojiet zemāk esošo lodziņu, lai manuāli rediģētu Sendmail failu $1.
 file_undo=Atsaukt izmaiņas
@@ -564,6 +609,7 @@ file_emode=Nezināms režīms!
 file_err=Neizdevās rediģēt failu
 file_ealias=Nederīgs aizstājvārdu faila līnijas formāts : $1 
 file_etab=Nederīgs kartes faila līnijas formāts : $1 
+
 acl_opts=Vai var rediģēt sendmail opcijas?
 acl_ports=Vai var rediģēt tīkla portus?
 acl_cws=Vai var rediģēt vietējos domēnus?
@@ -630,6 +676,7 @@ acl_usersm=Lietotāji atbilst
 acl_asame=Tas pats, kas lietotājvārds
 acl_usersu=Ar UID diapazonā
 acl_spam=Surogātpasta kontroles adreses, kuras šis lietotājs var rediģēt
+
 log_opts=Mainītas sūtīšanas iespējas
 log_ports=Mainiet tīkla portus
 log_alias_create=Izveidots aizstājvārds $1 
@@ -680,6 +727,7 @@ log_delete_domains=Izdzēsta $1 domēna kartēšana
 log_delete_accesses=Izdzēsti $1 surogātpasta kontroles ieraksti
 log_delete_generics=Izdzēstas $1 izejošās adreses
 log_delete_mailers=Izdzēsti $1 domēna maršruti
+
 match_from=No: sakritības
 match_subject=Temats: spēles
 match_to=Kam: atbilst
@@ -699,6 +747,7 @@ match_!status=Statuss neatbilst
 match_!body=Ķermenis neatbilst
 match_!size=Izmērs ir mazāks par
 match_!headers=Galvenes nesakrīt
+
 features_title=Sendmail M4 konfigurācija
 features_desc=Šajā lapā ir uzskaitīti attiecīgie ieraksti no Sendmail M4 konfigurācijas faila $1, no kura tiek veidots faktiskais konfigurācijas fails $2.
 features_type=Ieraksta tips
@@ -718,6 +767,7 @@ features_efeatures=Sendmail M4 konfigurācijas bāzes direktorijs $2 jūsu sist�
 features_econfig=Jūsu <a href='$1'>moduļa konfigurācijā</a> vēl nav iestatītas bāzes direktorijas Sendmail M4 un M4 konfigurācijas faila atrašanās vietas. Ja esat instalējis Sendmail no avota, tiem jābūt zem sākotnējā avota direktorija.
 features_move=Kustēties
 features_manual=Rediģēt failu manuāli
+
 feature_add=Pievienojiet konfigurācijas ierakstu
 feature_edit=Rediģēt konfigurācijas ierakstu
 feature_header=Informācija par M4 konfigurācijas ierakstu
@@ -738,12 +788,15 @@ feature_emailer=Maize $1 jau pastāv
 feature_eostype=OS tips jau ir definēts kā $1 
 feature_manual=Rediģēt M4 failu
 feature_mdesc=Šī lapa ļauj manuāli rediģēt Sendmail M4 konfigurācijas failu $1. Esiet piesardzīgs, jo labojumi neveic sintakse pārbaudi.
+
 feat_access_db=Surogātpasta kontroles fails
 feat_virtusertable=Adrešu kartēšana
 feat_mailertable=Domēna maršrutēšana
 feat_genericstable=Izejošās adreses
 feat_domaintable=Domēna kartēšana
+
 mailer_local=Vietējā Unix piegāde
+
 build_title=Atjaunojiet Sendmail konfigurāciju
 build_em4=Komanda $1, kas nepieciešama Sendmail konfigurācijas faila atjaunošanai, jūsu sistēmā netika atrasta.
 build_ebuild=Neizdevās izveidot konfigurāciju : $1 
@@ -752,13 +805,16 @@ build_rusure2=Ņemiet vērā: ja lapā Sendmail Options esat veicis izmaiņas Se
 build_ok=Jā, nomainiet to tagad
 build_diff=Jūsu Sendmail konfigurācijas failā tiks veiktas šādas izmaiņas.
 build_nodiff=Jūsu sendmail konfigurācijas fails jau ir atjaunināts.
+
 stop_err=Neizdevās apturēt sūtīšanu
 stop_ecannot=Jums nav atļauts pārtraukt sūtīšanu
 stop_epid=Izskatās, ka Sendmail nedarbojas
 restart_epids=Nevarēja atrast sendmail procesus
 restart_ekill=Neizdevās signalizēt sūtīt pasta procesus : $1 
+
 start_err=Neizdevās sākt sendmail
 start_ecannot=Jums nav atļauts sākt sūtīt pastu
+
 ports_title=Tīkla porti
 ports_name=Ostas nosaukums
 ports_addr=Klausieties uz adresi

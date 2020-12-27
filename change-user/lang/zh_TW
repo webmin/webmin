@@ -9,6 +9,7 @@ index_passleave=離開不改變
 index_passset=設成 ..
 index_ok=變更
 index_themedef=舊Webmin佈景
+
 change_title=變更設定
 change_user=變更Webmin登入 ..
 change_done=.. 完成

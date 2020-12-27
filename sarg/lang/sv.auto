@@ -10,6 +10,7 @@ index_range=Skapa rapport för datumintervall
 index_view=Visa genererad rapport
 index_viewdesc=Visa den senast genererade rapporten i katalogen $1.
 index_return=modulindex
+
 log_title=Loggkälla och rapportdestination
 log_header=Källa bläckfisk loggfil och genererade rapportalternativ
 log_access_log=Källa bläckfisk loggfil
@@ -30,6 +31,7 @@ log_elastlog=Saknas eller inte ett nummer
 log_eemail=E-postadress saknas eller ogiltig
 log_emailx=E-postprogram saknas eller inte
 log_squidguard_log_path=SquidGuard-loggfil
+
 style_title=Rapportera stil
 style_header=HTML-rapportstil och färgalternativ
 style_title2=Rapportera titel
@@ -54,6 +56,7 @@ style_efont=Saknas eller ogiltigt typsnitt
 style_esize=Saknas eller ogiltig bildbredd och höjd
 style_language=Rapportera språk
 style_charset=Rapportera teckenuppsättning
+
 report_title=Rapportera alternativ
 report_header=Rapportera innehåll och genereringsalternativ
 report_resolve_ip=Lösa IP-adresser?
@@ -134,6 +137,7 @@ report_echar=Utrymmen är inte tillåtna
 report_estring=Saknad eller ogiltig ersättningstext
 report_eselect=Ingenting valt
 report_eenter=Ingenting kom in
+
 sched_title=Genererad schemalagd rapport
 sched_header=Schemalagda rapporteringsalternativ
 sched_sched=Planerad rapport aktiverad?
@@ -148,9 +152,11 @@ sched_rsel=De från $1 till $2 dagar sedan
 sched_err=Det gick inte att spara schemalagd rapportgenerering
 sched_erfrom=Det saknas eller ogiltigt startnummer för dagar sedan
 sched_erto=Det slutade antalet dagar sedan saknas eller ogiltigt
+
 view_title=Sarg-rapport
 view_efile=Ogiltigt filnamn!
 view_eopen=Det gick inte att öppna rapportfilen
+
 gen_title=Generera rapport
 gen_header=Genererar nu Sarg-rapport från bläckfiskloggfilen $1 och alla roterade versioner ..
 gen_done=.. Gjort
@@ -160,6 +166,7 @@ gen_view=Visa färdig rapport.
 gen_err=Det gick inte att generera rapport
 gen_efrom=Saknas eller ogiltig från dagen
 gen_eto=Saknas eller ogiltig i dag
+
 webmin_log_log=Uppdaterade loggkällor och rapporteringsalternativ
 webmin_log_report=Uppdaterade rapportalternativ
 webmin_log_style=Uppdaterade alternativ för rapportstil

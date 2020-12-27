@@ -42,6 +42,7 @@ index_lvused=Naudojama erdvė
 index_lvuse=Naudojama
 index_snapof=($1 momentinė nuotrauka)
 index_thin=LVM plonas baseinas $1 LV
+
 lv_edit=Redaguoti loginį tūrį
 lv_edit_snap=Redaguoti momentinę nuotrauką
 lv_create=Sukurti loginį tūrį
@@ -128,6 +129,7 @@ lv_pvfrom=Perkelkite blokus iš fizinio tūrio
 lv_pvto=Iki fizinio tūrio
 lv_moveok=Perkelti blokus
 lv_return=loginis tūris
+
 mkfs_title=Sukurkite failų sistemą
 mkfs_desc=Ši forma leidžia sukurti naują $2 ($1) failų sistemą loginiame tome $3. Visi esami duomenys bus ištrinti.
 mkfs_header=Naujos failų sistemos parinktys
@@ -135,6 +137,7 @@ mkfs_err=Nepavyko sukurti failų sistemos
 mkfs_exec=Vykdoma komanda $1.
 mkfs_failed=.. komanda nepavyko!
 mkfs_ok=.. komanda baigta.
+
 resize_title=Keisti loginio tūrio dydį
 resize_mesg=Šio loginio tomo failo sistemos $1 dydis negali būti pakeistas. Jei pakeisite loginio tūrio dydį, turėsite iš naujo sukurti failų sistemą, kuri ištrins visus joje esančius duomenis.
 resize_mesg2=„Webmin“ nežino, kokia failų sistema yra šiame loginiame tome, jei toks yra. Jei pakeisite loginio tūrio dydį, turėsite iš naujo sukurti failų sistemą, kuri ištrins visus joje esančius duomenis.
@@ -142,8 +145,10 @@ resize_fs=Pakeitus šio loginio tūrio failų sistemą $1 įvyko klaida: $2 Jei 
 resize_ok=Keisti loginio tūrio dydį
 resize_emounted=Šio loginio tūrio failų sistemos dydis negali būti pakeistas, kol ji yra sumontuota
 resize_emounted2=Šio loginio tomo failų sistema negali būti susitraukusi, kol ji yra sumontuota
+
 init_title=Suaktyvinti LVM
 init_cmd=Veikia komanda $1.
+
 pv_edit=Redaguoti fizinį tūrį
 pv_create=Pridėti fizinį tūrį
 pv_vg=Tūrio grupėje $1 
@@ -170,6 +175,7 @@ pv_eother=Trūksta arba netinkamas disko įrenginys
 pv_raid=RAID įrenginys $1 
 pv_lvs=Paskirstymas pagal loginius tomus
 pv_egone=Fizinis tūris nebeegzistuoja!
+
 vg_edit=Redaguoti tūrio grupę
 vg_create=Sukurti apimties grupę
 vg_name=Apimties grupės pavadinimas
@@ -188,11 +194,13 @@ vg_deleteok=Ištrinti dabar
 vg_ename=Trūksta arba netinkamas tomo grupės pavadinimas
 vg_epesize=Trūksta arba netinkamas paskirstymo bloko dydis
 vg_egone=Apimties grupė nebeegzistuoja!
+
 pvmove_err=Nepavyko perkelti loginio tūrio
 pvmove_title=Perkelti loginį tūrį
 pvmove_start=Loginio tūrio $1 perkėlimas iš $2 į $3.
 pvmove_failed=.. perkelti nepavyko!
 pvmove_done=.. judėti visiškai
+
 thin_title=Sukurkite ploną baseiną
 thin_desc=Plonas baseinas yra LV pora, kurią galima naudoti kuriant papildomus LV, kurie gali būti didesni nei galimi plėtiniai. Erdvė sunaudojama tik tada, kai reikia, o ne tada, kai sukuriamos mažos vertės baseino viduje. ĮSPĖJIMAS - bet kokie duomenys apie pasirinktus LV bus prarasti!
 thin_header=Naujos plonos baseino detalės
@@ -204,6 +212,7 @@ thin_err=Nepavyko sukurti plono baseino
 thin_esame=Abi pasirinktos LV yra vienodos
 thin_edata=Pasirinkti duomenys LV jau naudojami
 thin_emetadata=Pasirinkti metaduomenys LV jau naudojami
+
 log_create_vg=Sukurta tūrio grupė $1 
 log_modify_vg=Modifikuota tūrio grupė $1 
 log_delete_vg=Ištrinta tūrio grupė $1 
@@ -216,4 +225,5 @@ log_create_pv=Pridėta fizinė apimtis $1 prie VG $1
 log_modify_pv=Modifikuotas fizinis tūris $1 VG $2 
 log_delete_pv=Pašalinta fizinė apimtis $1 iš VG $2 
 log_resize_pv=Pakeistas fizinis tūris $1 VG $2 
+
 blocks=blokai

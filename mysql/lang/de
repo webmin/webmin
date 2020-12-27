@@ -45,12 +45,15 @@ index_showing=Zeige Datenbanken passend zu $1 ..
 index_emsg=Die komplette MySQL Fehlermeldung lautet : $1
 index_jump=Oder editiere Datenbank:
 index_jumpok=Öffnen
+
 login_err=Anmeldung fehlgeschlagen
 login_ecannot=Sie haben keine Berechtigung, die Datenbankanmeldung zu konfigurieren
 login_elogin=Administrationsanmeldung fehlt
 login_epass=Falscher Administratorbenutzername oder Passwort
+
 stop_err=Datenbank konnte nicht gestoppt werden
 start_err=Datenbank konnte nicht gestartet werden
+
 dbase_title=Datenbank bearbeiten
 dbase_header=Datenbank Tabellen, Indexe und Anzeigen
 dbase_tables=Datenbanktabellen
@@ -81,6 +84,7 @@ dbase_type=Typ
 dbase_typetable=Tabelle ($1)
 dbase_typeindex=Index
 dbase_typeview=Anzeigen
+
 ddrop_err=Fehler beim Löschen der Datenbank
 ddrop_title=Lösche Datenbank
 ddrop_rusure=Sind sie sicher, dass Sie die Datenbank $1 löschen möchten? $2 Tabellen mit $3 Zeilen werden gelöscht werden.
@@ -89,6 +93,7 @@ ddrop_mysql=Da dies die Hauptdatenbank ist, wird das Löschen Ihren MySQL-Server
 ddrop_ok=Lösche Datenbank
 ddrop_empty=Nur alle Tabellen löschen
 ddrop_empty2=Lösche alle Tabellen
+
 ddrops_err=Fehlgeschlagen Datenbanken zu verwerfen
 ddrops_title=Verwerfe Datenbanken
 ddrops_rusure=Sind Sie sicher, die $1 ausgewählten Datenbanken zu löschen? $2 Tabellen beinhalten $3 Datenzeilen und werden gelöscht.
@@ -97,6 +102,7 @@ ddrops_mysql=Da der Master-Datenbank ausgewählt ist, machen Sie Ihren MySQL-Ser
 ddrops_ok=Verwerfe Datenbank
 ddrops_enone=Keine Datenbank ausgewählt
 ddrops_ecannotdb=Sie sind nicht berechtigt die Datenbank $1 zu verwerfen
+
 table_title=Tabelle bearbeiten
 table_title2=Tabelle erstellen
 table_header=Tabelle $1 in Datenbank $2
@@ -142,16 +148,19 @@ table_nextra=Besitzt Extra-Attribute
 table_eautokey=Das Auto-Increment Feld muss auch ein Primärschlüssel sein
 table_eauto=Nur ein Feld darf ein Auto-Increment Feld sein
 table_delete=Lösche ausgewählte Felder
+
 tdrop_err=Fehler beim Löschen der Tabelle
 tdrop_title=Lösche Tabelle
 tdrop_rusure=Sind Sie sicher, dass Sie die Tabelle $1 in Datenbank $2 löschen wollen? $3 Zeilen werden gelöscht werden?
 tdrop_ok=Lösche Tabelle
+
 tdrops_enone=Keine Objekte zum Verwerfen ausgewählt
 tdrops_err=Fehlgeschlagen Objekte zu verwerfen
 tdrops_ok=Verwerfe Objekte
 tdrops_title=Verwerfe Objekte
 tdrops_rusure=Sind Sie sicher, dass Sie die $1 ausgewählten Objekte in der Datenbank $2 verwerfen möchten? $3 Datenzeilen werden gelöscht.
 tdrops_rusure2=Sind Sie sicher, dass Sie die $1 ausgewählten Objekte in der Datenbank $2 verwerfen möchten?
+
 field_title1=Feld hinzufügen
 field_title2=Feld bearbeiten
 field_in=In Tabelle $1 in Datenbank $2
@@ -185,6 +194,7 @@ field_esize='$1' ist kein gültige Feldgröße
 field_eenum=Es wurden keine numerierten Werte angegeben
 field_efield='$1' ist kein gültiger Feldname
 field_ekey=Felder die NULL enthalten dürfen, dürfen nicht Teil des Primärschlüssels sein
+
 view_title=Tabellendaten
 view_pos=Zeilen $1 bis $2 von $3
 view_none=Diese Tabelle enthält keine Daten
@@ -217,6 +227,7 @@ view_keep=Unverändert lassen
 view_set=Durch Dateiinhalt ersetzen..
 view_adv=Erweiterte Suche
 view_sqlrun=Resultate von SQL-Abfrage $1 generiert
+
 users_title=Benutzerberechtigungen
 users_user=Benutzer
 users_host=Hosts
@@ -243,6 +254,7 @@ users_ssl=Zertifikat
 users_dtitle=Lösche Benutzerberechtigungen
 users_drusure=Sind Sie sicher, dass Sie die $1 MySQL ausgewählten Benutzerrechte löschen möchten?
 users_dok=Lösche Benutzer
+
 user_title1=Benutzer anlegen
 user_title2=Benutzer bearbeiten
 user_header=MySQL-Benutzerdetails
@@ -305,6 +317,7 @@ user_emax_user_connections=Maximale gleichzeitige Logins muss eine Zahl sein
 user_emax_connections=Maximale Verbindungen pro Stunde muss eine Zahl sein
 user_emax_updates=Maximale Updates pro Stunde muss eine Zahl sein
 user_emax_questions=Maximale Abfragen pro Stunde muss eine Zahl sein
+
 dbs_title=Datenbankrechte
 dbs_db=Datenbanken
 dbs_user=Benutzer
@@ -323,6 +336,7 @@ dbs_enone=Keine Datenbank ausgewählt
 dbs_dtitle=Lösche Datenbankberechtigungen
 dbs_drusure=Sind Sie sicher, dass Sie die $1 ausgewählte MySQL Datenbank-Berechtigungen löschen möchten?
 dbs_dok=Lösche Berechtigungen
+
 db_title1=Datenbankrechte erstellen
 db_title2=Datenbankrechte bearbeiten
 db_header=Einstellungen zu Datenbankrechten
@@ -337,6 +351,7 @@ db_err=Fehler beim Speichern der Datenbankrechte
 db_euser=Fehlender oder ungültiger Benutzername
 db_ehost=Fehlender oder ungültiger Host-Name
 db_edb=Fehlender oder ungültiger Datenbankname
+
 hosts_title=Host-Rechte
 hosts_db=Datenbanken
 hosts_host=Hosts
@@ -352,6 +367,7 @@ hosts_dtitle=Lösche Host Berechtigungen
 hosts_drusure=Sind Sie sicher, dass Sie die $1 ausgewählten MySQL Host Berechtigungen löschen möchten?
 hosts_dok=Lösche Berechtigungen
 hosts_return=Host-Rechte
+
 host_title1=Host-Rechte erstellen
 host_title2=Host-Rechte bearbeiten
 host_header=Einstellungen zu Host-Rechten
@@ -361,6 +377,7 @@ host_sel=Ausgewählt
 host_otherdb=Passende Muster
 host_host=Hosts
 host_perms=Rechte
+
 newdb_title=Datenbank erstellen
 newdb_header=Einstellungen der neuen Datenbank
 newdb_db=Datenbankname
@@ -374,6 +391,7 @@ newdb_err=Fehler beim Erstellen der Datenbank
 newdb_edb=Fehlender oder ungültiger Datenbankname
 newdb_ecannot=Sie haben keine Berechtigung, Datenbanken anzulegen
 newdb_ecannot2=Sie dürfen nicht mehr Datenbanken erstellen
+
 exec_title=SQL ausführen
 exec_header=Geben Sie den SQL Befehl ein, der auf der Datenbank $1 ausgeführt werden soll ..
 exec_old=Oder wählen Sie einen schon einmal benutzten SQL Befehl aus :
@@ -410,6 +428,7 @@ exec_iheader=Text-Datei-Import-Optionen
 exec_created=$1 Tabellen wurden erstellt.
 exec_inserted=$1 Einträge wurden eingefügt.
 exec_cs=Zeichensatz für Daten
+
 tprivs_title=Tabellenrechte
 tprivs_table=Tabelle
 tprivs_db=Datenbank
@@ -428,6 +447,7 @@ tprivs_enone=Keine Tabellen ausgewählt
 tprivs_dtitle=Lösche Tabellenrechte
 tprivs_drusure=Sind Sie sicher, dass Sie die $1 ausgewählten MySQL-Tabelle Berechtigungen löschen möchten?
 tprivs_dok=Lösche Rechte
+
 tpriv_title1=Tabellenrechte erstellen
 tpriv_title2=Tabellenrechte bearbeiten
 tpriv_header=Einstellungen der Tabellenrechte
@@ -444,6 +464,7 @@ tpriv_etable=Keine Tabelle gewählt
 tpriv_euser=Fehlender oder ungültiger Benutzername
 tpriv_ehost=Fehlender oder ungültiger Host
 tpriv_edb=Fehlender oder ungültiger Datenbankname
+
 cprivs_title=Feldrechte
 cprivs_field=Feld
 cprivs_table=Tabelle
@@ -463,6 +484,7 @@ cprivs_enone=Keine Felder ausgewählt
 cprivs_dtitle=Löschen Spalten-Berechtigungen
 cprivs_drusure=Sind Sie sicher, dass Sie die $1 ausgewählten MySQL Spalten-Berechtigungen löschen möchten?
 cprivs_dok=Lösche Berechtigungen
+
 cpriv_title1=Feldrechte erstellen
 cpriv_title2=Feldrechte bearbeiten
 cpriv_header=Einstellungen der Feldrechte
@@ -479,11 +501,13 @@ cpriv_etable=Kein Feld gewählt
 cpriv_euser=Fehlender oder ungültiger Benutzername
 cpriv_ehost=Fehlender oder ungültiger Host
 cpriv_edb=Fehlender oder ungültiger Datenbankname
+
 esql=SQL $1 schlug fehl: $2
 eparse=Webmin kann aufgrund der in Ihrer Datenbank enthaltenen Daten die Ausgabe des Befehls $1 nicht analysieren. Sie müßen die Perlmodule $2 und $3 installieren um dieses Problem zu lösen.
 edenied=Sie dürfen nicht auf die MySQL-Datenbank zugreifen
 perms_ecannot=Sie haben keine Berechtigung, die Berechtigungen zu bearbeiten
 perms_edb=Sie besitzen nur die Berechtigungen, Ihre eigenen Datenbanken zu bearbeiten
+
 acl_dbs=Datenbanken, die dieser Benutzer verwalten darf
 acl_dall=Alle Datenbanken
 acl_dsel=Ausgewählte..
@@ -504,6 +528,7 @@ acl_bnone=Backups nicht erlauben
 acl_indexes=Kann Indexe anzeigen und verwalten?
 acl_views=Kann Ansichten verwalten und einsehen?
 acl_files=Kann SQL von lokalen Dateien ausführen?
+
 log_start=MySQL-Server gestartet
 log_stop=MySQL-Server gestoppt
 log_cnf=MySQL Server Konfiguration geändert
@@ -568,6 +593,7 @@ log_importfile=Daten aus Datei $1 importiert
 log_set=$1 MySQL Variablen geändert
 log_root=Administrationspasswort geändert
 log_manual=Manuell bearbeitete Konfigurationsdatei
+
 backup_title=Datenbank sichern
 backup_title2=Backup aller Datenbanken
 backup_edump=Das MySQL-Datensicherungsprogramm konnte auf Ihrem System nicht gefunden werden. Möglicherweise ist Ihre <a href='$2'>Modulkonfiguration</a> fehlerhaft.
@@ -646,15 +672,18 @@ backup_bodyspace=Filesystem-Größe : $1 Freier Speicherplatz : $2
 backup_bodyall=Alle
 backup_edownloadall=Es kann nur ein Datenbank-Backup heruntergeladen werden
 backup_edownloadsave=Download-Modus kann nicht für geplante Sicherungen verwendet werden
+
 import_title=Daten importieren
 import_uploadout=Daten aus hochgeladener Datei importieren ..
 import_fileout=Importiere Daten aus Datei $1 ..
 import_eupload=Fehlende hochgeladene Importdate
 import_efile=Fehlender Importdateiname
+
 adv_title=Erweiterte Suche
 adv_and=Suche Datensätze passend zu alle Kriterien ..
 adv_or=Suche Datensätze passend zu jeden Kriterien ..
 adv_ok=Suche jetzt
+
 csv_title=Exportiere CSV Datei
 csv_header=CSV Exportoptionen
 csv_dest=Export-Ziel
@@ -675,6 +704,7 @@ csv_done=CSV-Export zu $1 ist abgeschlossen. Die resultierende Dateigröße ist 
 csv_headers=Einschließlich Spaltennamen in CSV?
 csv_cols=Spalten, die in CSV einbezogen werden
 csv_ecols=Keine Spalten ausgewählt
+
 cnf_title=MySQL Server Konfiguration
 cnf_efile=Die MySQL-Konfigurationsdatei $1 wurde nicht auf Ihrem System gefunden. Möglicherweise müssen Sie die <a href='$2'>Modulkonfiguration</a> anzupassen, um den richtigen Pfad zu verwenden.
 cnf_header=MySQL Server Optionen
@@ -715,11 +745,13 @@ cnf_restart=Speichere und starte MySQL neu
 cnf_fpt=Separate Datei für jede InnoDB-Tabelle?
 cnf_ilt=InnoDB-Sperrzeitlimit (in Sekunden)
 cnf_eilt=Das InnoDB-Sperrzeitlimit muss eine ganze Zahl sein
+
 manual_title=Konfigurationsdateien bearbeiten
 manual_file=Konfigurationsdatei bearbeiten:
 manual_ok=OK
 manual_efile=Ungültige Konfigurationsdatei!
 manual_err=Fehler beim Speichern der Konfigurationsdatei
+
 index_title1=Erstelle Index
 index_header1=Indexoptionen
 index_name=Indexname
@@ -735,11 +767,14 @@ index_ecols=Keine Felder ausgewählt
 index_title2=Editiere Index
 index_header=Index $1 in Datenbank $2
 index_ecannot=Es ist Ihnen nicht erlaubt Indexe zu verwalten
+
 syslog_desc=MySQL Fehlermeldungen
 syslog_logdesc=MySQL Queries
+
 fdrop_err=Löschen der Felder fehlgeschlagen
 fdrop_enone=Nichts ausgewählt
 fdrop_eall=Sie können nicht alle Felder aus einer Tabelle löschen!
+
 view_title1=Erstelle Anzeige
 view_title2=Editiere Anzeige
 view_header1=Zeige Details
@@ -765,6 +800,7 @@ view_cascaded=Zugrundeliegende Ansichten
 view_local=Nur diese Anzeige
 view_nocheck=Nichts
 view_ecannot=Es ist Ihnen nicht erlaubt Anzeigen zu verwalten
+
 procs_title=Datenbankverbindungen
 procs_id=ID
 procs_user=Benutzername
@@ -776,9 +812,11 @@ procs_query=Führe Abfrage aus
 procs_kill=Kille ausgewählte Verbindungen
 procs_ecannot=Sie sind nicht berechtigt, Datenbank-Verbindungen anzeigen zu lassen
 procs_none=Es gibt keine anderen Datenbank-Client-Verbindungen zu diesem Zeitpunkt.
+
 kill_err=Konnte Datenbank-Verbindungen nicht töten
 kill_ecannot=Sie sind nicht berechtigt Datenbank-Verbindungen zu verwalten
 kill_enone=Nichts ausgewählt
+
 vars_title=MySQL Systemvariablen
 vars_desc=Warnung - Variablen, die auf dieser Seite eingestellt werden auf die Standardwerte zurückgesetzt, wenn MySQL neu gestartet wird. Dauerhafte Einstellungen müssen auf der <a href='$1'>MySQL-Server-Konfiguration</a> Seite vorgenommen werden.
 vars_ecannot=Sie sind nicht berechtigt, Systemvariablen zu bearbeiten
@@ -789,6 +827,7 @@ vars_search=Zeige Variablen zutreffend:
 vars_ok=Suche
 vars_none2=Keine Systemvariablen stimmen mit Ihrer Suche überein.
 vars_none=Keine Systemvariablen gefunden!
+
 compat_ansi=ANSI
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQL 4.0
@@ -800,7 +839,9 @@ compat_maxdb=MaxDB
 compat_no_key_options=Schlüssel-Optionen
 compat_no_table_options=Tabellenoptionen
 compat_no_field_options=Feldoptionen
+
 config_echarset=Fehlender oder ungültig aussehender Zeichensatz
+
 root_title=Ändere Administrationspasswort
 root_header=Neues Administratorpasswort
 root_user=Administrativer Login

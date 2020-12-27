@@ -1,4 +1,5 @@
 index_samba=桑巴舞
+
 index_start_wb=启动Winbind服务器
 index_startmsg_wb=Winbind服务器似乎未在系统上运行。
 index_restart_wb=重新启动Winbind服务器
@@ -9,53 +10,71 @@ index_stopmsg=单击此按钮以关闭系统上正在运行的Samba服务器。�
 index_stopmsg_wb=单击此按钮以关闭系统上正在运行的Winbind服务器。
 index_einclude=警告-您的Samba配置文件 $1包含 $2或 $3指令。这可能会导致Webmin错误地修改文件。
 index_delete=删除选定的共享
+
 global_users=Samba用户
 global_group=桑巴舞团体
 global_bind=温宾德期权
+
 convert_ncdesc=不转换的用户列表可以包含用户名，UID，以<tt>@</tt>开头的组名或UID范围，例如<i>500-1000</i>或<i>500-</ i >。
 convert_cannot=Unix用户无法转换为Samba用户
 convert_who=Unix用户转换
 convert_who0=仅列出的用户或UID范围
 convert_who1=除列出的用户和UID范围外的所有
+
 net_ip=IP地址
+
 passwd_sync=还要更改Unix密码吗？
+
 smb_descriptionnone=没有
 smb_master_auto=自动
 smb_server=密码服务器
 smb_ads=活动目录
+
 smbuser_cannot=无法列出Samba用户
+
 euser_noexpire=密码永不过期
 euser_locked=帐户已被锁定
+
 fmisc_oplocks=启用oplock？
 fmisc_level2=只读oplock？
+
 share_create=自动创建目录？
 share_owner=与所有者创建
 share_createperms=具有权限创建
 share_group=与组一起创建
 share_samedesc1=注意-这些设置也会影响所有文件共享的默认设置。
 share_samedesc2=注意-这些设置也会影响所有打印机共享的默认设置。
+
 esync_del_profile=删除Unix用户时删除漫游配置文件
 esync_chg_profile=重命名Unix用户时重命名漫游配置文件
 esync_gid=新用户的组SID或RID
 esync_cannot=无法配置用户同步
 esync_egid=缺少组SID或RID
+
 mkpass_added=添加
 mkpass_user=用户名
 mkpass_action=所采取的行动
 mkpass_skipcount=已跳过 $1个用户进行转换。
+
 savecopy_ename=没有输入共享名
+
 saveuser_ews=无法为现有用户启用“工作站信任帐户”选项
+
 savefshare_owner=新目录的所有者缺失或无效
 savefshare_group=新目录的组缺失或无效
 savefshare_perms=新目录的权限丢失或无效
 savefshare_emkdir=无法创建目录： $1
+
 start_err_wb=无法启动Winbind服务器
+
 restart_err=重新启动Samba服务器失败
 restart_err_wb=重新启动Winbind服务器失败
+
 viewu_ecmd=您的系统上似乎未安装Samba状态程序 $1。也许<a href='$2'>模块配置</a>不正确。
 viewu_kill=断开所选用户的连接
 viewu_enone=未选择用户
 viewu_refresh=刷新页面。
+
 log_apply_wb=重新启动Winbind服务器
 log_stop=停止的Samba服务器
 log_stop_wb=停止的Winbind服务器
@@ -69,12 +88,14 @@ log_modify_group=修改后的Samba组 $1
 log_delete_group=删除的Samba组 $1
 log_gsync=配置的Unix组同步
 log_manual=手动编辑的配置文件 $1
+
 acl_manual=可以手动编辑配置文件吗？
 acl_group_opts=Samba组选项
 acl_maint_groups=可以查看，编辑和添加组吗？
 acl_maint_gsync=可以维持自动Unix到Samba组的同步吗？
 acl_winbind=可以绑定到域吗？
 acl_bind=可以使用winbind选项吗？
+
 groups_title=桑巴舞团体
 groups_name=组的名字
 groups_unix=Unix组
@@ -90,6 +111,7 @@ groups_return=组列表
 groups_add=添加一个新的Samba组。
 groups_ecannot=您无权查看或编辑Samba组
 groups_cannot=无法列出Samba组
+
 gedit_title2=编辑Samba组
 gedit_title1=创建Samba组
 gedit_header=桑巴团体详情
@@ -102,11 +124,13 @@ gedit_unix=Unix组
 gedit_unixgr=组 ..
 gedit_none=没有
 gedit_set=上市 ..
+
 gsave_err=无法保存组
 gsave_eunix=Unix组名或GID丢失或无效
 gsave_ename=团体名称缺失
 gsave_epriv=缺少组权限
 gsave_elocal=只能为本地组设置权限
+
 gsync_title=组同步
 gsync_msg=可以配置Webmin，以便对Unix组列表的更改将自动应用于Samba组列表。仅当<b>用户和组</b> Webmin模块用于添加，删除或更改组时，此方法才有效。
 gsync_add=添加Unix组时添加Samba组
@@ -117,10 +141,12 @@ gsync_type=新组的类型
 gsync_priv=新组的特权（如果在本地）
 gsync_ecannot=您无权配置组同步
 gsync_cannot=无法配置组同步
+
 check_user1=$1：<a href='$2'>Authentication</a>页面上未启用加密密码。
 check_user2=$1：在<a href='$2'>“模块配置”</a>页上未设置Samba密码文件或pdbedit的路径。
 check_group1=$1：仅Samba版本3支持组。
 check_group2=$1：<a href='$2'>“模块配置”</a>页上没有设置smbgroupedit或net命令的路径。
+
 winbind_title=绑定到域
 winbind_ecannot=您不允许绑定到域
 winbind_msg=该表格可用于将Samba服务器绑定到Windows域，该Windows域通常由其他服务器管理。
@@ -136,6 +162,7 @@ winbind_edom=缺少域名
 winbind_cmd=使用命令 $1..绑定到域
 winbind_failed=..失败了！请参阅上面的输出以了解原因。
 winbind_ok=..完成。
+
 bind_title=温宾德期权
 bind_ecannot=您无权编辑winbind选项
 bind_header=Windows域绑定选项
@@ -154,9 +181,11 @@ bind_erealm=无效的Kerberos领域
 bind_ecache=缺少或无效的缓存时间
 bind_euid=UID范围无效-必须为20000-30000
 bind_egid=GID范围无效-必须为20000-30000
+
 manual_title=编辑配置文件
 manual_desc=编辑Samba配置文件 $1 ..
 manual_err=保存配置文件失败
 manual_edata=什么都没输入！
+
 delete_err=删除共享失败
 delete_enone=未选择

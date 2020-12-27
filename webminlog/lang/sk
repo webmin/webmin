@@ -16,6 +16,7 @@ index_fall=Ktorý modifikuje ktorýkoľvek súbor
 index_file=Tento modifikovaný súbor
 index_wall=Z ktoréhokoľvek serveru Webmina
 index_whost=Zo serveru
+
 search_title=Výsledky vyhľadávania
 search_date=Dátum
 search_time=Čas
@@ -36,6 +37,7 @@ search_critt2=$1
 search_config=Zmenená konfigurácia modulu
 search_etime=Chybný počiatočný alebo konečný čas
 search_err=Vyhľadávanie zlyhalo
+
 view_title=Detaily akcie
 view_header=Podrobnosti zaznamenanej akcie $1
 view_action=Popis
@@ -62,11 +64,13 @@ view_type_rename=Premenovaný súbor $1 na súbor $2
 view_ecannot=Nemáte oprávnenie zobraziť tento záznam
 view_return=podrobnosti akcie
 view_input=Vstup pre príkaz
+
 acl_mods=Môže vidieť záznamy v moduloch
 acl_all=Všetky
 acl_sel=Vybrané...
 acl_users=Môže vidieť akcie užívateľov
 acl_rollback=Môže vrátiť naspäť uskutočnené akcie?
+
 rollback_title=Akcia návratu
 rollback_rusure=Ste si istý, že sa majú zobrazené súbory nahradiť pôvodnými súbormi? Všetky možné dáta, ktoré tieto súbory teraz obsahujú budú nahradené nasledujúcimi zmenami :
 rollback_isdir=Adresár - bez zmien.

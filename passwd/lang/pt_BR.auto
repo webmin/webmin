@@ -1,7 +1,9 @@
 index_none=Você não tem acesso a nenhum usuário para alterar suas senhas.
+
 passwd_expire=Forçar o usuário a alterar a senha no próximo login?
 passwd_others=Alterar senha em outros módulos?
 passwd_ok2=A senha do usuário $1 foi alterada com sucesso.
+
 acl_self=Sempre permitir que a própria senha seja alterada?
 acl_opt=Opcional
 acl_expire=Pode forçar os usuários a alterar a senha no próximo login?

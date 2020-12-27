@@ -12,7 +12,9 @@ main_readonly=(Mode només lectura)
 main_return=Torna $1
 main_unused=Mòduls No utilitzats
 main_refreshmods=Refresca els Mòduls
+
 link_essl=El mòdul Perl Net::SSLeay necessari per establir connexions HTTPS no es troba instal·lat al sistema.
+
 category_servers=Servidors
 category_hardware=Maquinari
 category_system=Sistema
@@ -21,6 +23,7 @@ category_net=Xarxa
 category_syslet=Syslets
 category_cluster=Cluster
 category_info=Informació
+
 longcategory_servers=Mòduls per configurar web, correu electrònic, FTP i altres servidors
 longcategory_hardware=Mòduls per impressores, discs i altres configuracions de maquinari
 longcategory_system=Mòduls per usuaris, sistemes de fitxers, treballs cron i altres valors del sistema
@@ -28,11 +31,13 @@ longcategory_webmin=Mòduls per configurar el propi Webmin
 longcategory_net=Mòduls per configurar la xarxa i els serveis de xarxa
 longcategory_cluster=Mòduls que poden gestionar servidors múltiples des d'una sola interfície
 longcategory_info=Mòduls que mostren informació del sistema
+
 header_webmin=Índex de Webmin
 header_module=Índex de Mòduls
 header_help=Ajuda...
 header_config=Configuració del Mòdul
 header_servers=Servidors Webmin
+
 index=a l'índex
 yes=Sí
 no=No
@@ -63,12 +68,14 @@ euserdbacl=No s'ha pogut obtenir l'ACL de l'usuari: $1
 euserdbacl2=No s'ha pogut actualitzar l'ACL de l'usuari: $1
 egroupdbacl=No s'ha pogut obtenir l'ACL del grup: $1
 egroupdbacl2=No s'ha pogut actualitzar l'ACL del grup: $1
+
 chooser_title1=Tria Fitxer...
 chooser_title2=Tria Directori...
 chooser_dir=Directori de $1
 chooser_ok=Bé
 chooser_date=Tria la Data
 chooser_eopen=El llistat ha fallat: $1
+
 users_title1=Selecciona els Usuaris...
 users_title2=Selecciona l'Usuari...
 users_sel=Usuaris seleccionats
@@ -76,6 +83,7 @@ users_all=Tots els Usuaris
 users_ok=Bé
 users_cancel=Cancel·la
 users_clear=Neteja
+
 groups_title1=Selecciona els Grups...
 groups_title2=Selecciona el Grup...
 groups_all=Tots els Grups
@@ -83,6 +91,7 @@ groups_sel=Grups Seleccionats
 groups_ok=Bé
 groups_cancel=Cancel·la
 groups_clear=Neteja
+
 modules_title1=Selecciona els Mòduls...
 modules_title2=Selecciona el Mòdul...
 modules_sel=Mòduls seleccionats
@@ -90,6 +99,7 @@ modules_all=Tots els Mòduls
 modules_ok=Bé
 modules_cancel=Cancel·la
 modules_clear=Neteja
+
 config_ecannot=No tens permís per configurar aquest mòdul
 config_title=Configuració
 config_dir=$1
@@ -100,6 +110,7 @@ config_err=No he pogut desar la configuració
 config_nochange=No ho canviïs
 config_setto=Estableix a
 config_ewebmin=Els paràmetres de tipus 14 només funcionen amb Webmin
+
 help_err=No he pogut mostrar l'ajuda
 help_epath=Hi falta el camí de l'ajuda o bé no és vàlid
 help_efile=No he pogut llegir el fitxer d'ajuda $1
@@ -107,6 +118,7 @@ help_eheader=Hi falta la secció &lt;header&gt;
 help_einclude=No he pogut incloure $1
 help_eif=$1 ha fallat: $2
 help_eexec=$1 ha fallat: $2
+
 referer_title=Avís de Seguretat
 referer_warn=<b>Atenció!</b> Webmin ha detectat que el programa $2 és un enllaç a l'URL $1, que sembla ser que queda fora del servidor Webmin. Això pot ser un intent d'enganyar el servidor per tal que executi una ordre perillosa.
 referer_warn_unknown=<b>Atenció!</b> Webmin ha detectat que el programa $1 és un enllaç a un URL desconegut, que sembla ser que queda fora del servidor Webmin. Això pot ser un intent d'enganyar el servidor per tal que executi una ordre perillosa.
@@ -114,6 +126,7 @@ referer_fix1=Si això és un enllaç legítim, pots permetre els enllaços des d
 referer_fix2=Alternativament, pots configurar Webmin per que permeti aquest enllaç des de la línia d'ordres:<ul><li>Entra com a <tt>root</tt> i edita el fitxer <tt>/etc/webmin/config</tt>.<li>Afegeix-hi la línia <tt>referers=$1</tt> al final o, si ja existeix una línia <tt>referers</tt>, afegeix-hi <tt>$1</tt>.<li>Desa el fitxer.</ul>
 referer_fix3u=Assegura't que el teu navegador està configurat per enviar la informació del referenciador per tal que Webmin ho pugui verificar.
 referer_fix2u=Alternativament, pots configurar Webmin per permetre enllaços des de referenciadors desconeguts:<ul><li>Entra com a <tt>root</tt> i edita el fitxer <tt>/etc/webmin/config</tt>.<li>Busca la línia <tt>referers_none=1</tt> i canvia-la per <tt>referers_none=0</tt>.<li>Desa el fitxer.</ul><p>ATENCIÓ - això té l'efecte secundari d'obrir el sistema a atacs XSS reflectits i per tant no és recomanable!!
+
 session_header=Entrada a Webmin
 session_mesg=Per entrar al servidor Webmin de $1, has d'introduir un nom d'usuari i una contrasenya.
 session_mesg2=Per entrar, has d'introduir un nom d'usuari i una contrasenya.
@@ -127,11 +140,13 @@ session_twofailed=L'autenticació de dos factors ha fallat: $1
 session_logout=Has sortit amb èxit. Utilitza el formulari de sota per tornar a entrar.
 session_timed_out=La sessió s'ha cancel·lat després de $1 minuts d'inactivitat.
 session_save=Recorda la contrasenya
+
 pam_header=Entrada a Webmin
 pam_mesg=Has de respondre la pregunta següent per entrar al servidor Webmin de $1.
 pam_mesg2=Has de respondre la pregunta següent per entrar.
 pam_login=Continua
 pam_restart=Reinicia
+
 acl_root=Directori arrel del selector de fitxers
 acl_otherdirs=Altres directoris visibles en el triador de fitxers
 acl_nodot=Amaga els fitxers punt en el triador de fitxers
@@ -164,6 +179,7 @@ acl_negative=Concedeix permisos del nou mòdul a l'usuari
 acl_fileunix=Fulleja els fitxers com a Usuari Unix
 acl_sameunix=El mateix que l'usuari Webmin
 acl_webminsearch=Mostra el camp de cerca de Webmin
+
 month_1=Gener
 month_2=Febrer
 month_3=Març
@@ -176,6 +192,7 @@ month_9=Setembre
 month_10=Octubre
 month_11=Novembre
 month_12=Desembre
+
 day_0=Diumenge
 day_1=Dilluns
 day_2=Dimarts
@@ -183,6 +200,7 @@ day_3=Dimecres
 day_4=Dijous
 day_5=Divendres
 day_6=Dissabte
+
 smonth_1=Gen
 smonth_2=Feb
 smonth_3=Mar
@@ -195,6 +213,7 @@ smonth_9=Set
 smonth_10=Oct
 smonth_11=Nov
 smonth_12=Des
+
 sday_0=Dmg
 sday_1=Dll
 sday_2=Dmt
@@ -202,12 +221,15 @@ sday_3=Dmc
 sday_4=Djs
 sday_5=Dvs
 sday_6=Dss
+
 emodule=Accés denegat : L'usuari $1 no té permís per utilitzar el mòdul $2
 emodulecheck=El mòdul $1 no està disponible en aquest sistema
 elock_tries2=No he pogut bloquejar el fitxer $1 després de $2 minuts. Darrer error: $3
+
 skill_high=Expert
 skill_medium=Mitjà
 skill_low=Passerell
+
 feedback_title=Informe de Webmin
 feedback_desc=Aquest formulari et permet informar de defectes o fer suggeriments als desenvolupadors de Webmin sobre qualsevol problema o mancança de funcionalitats que hagis trobat. Quan facis clic sobre el botó Envia, s'enviaran a $1 els detalls introduïts al formulari.
 feedback_desc2=Aquestes opinions s'enviaran al desenvolupador de Webmin, no al teu administrador del sistema, ISP ni empresa d'hostalatge. Escriu les teves opinions en anglès, si et plau, encara que estiguis executant Webmin en un altre idioma.
@@ -236,12 +258,15 @@ feedback_to=Envia l'informe a les adreces
 feedback_enoto=No has introduït cap adreça per enviar l'informe
 feedback_ecannot=No tens permís per enviar informes
 feedback_ecannot2=No tens permís per enviar informes que contenen fitxers de configuració
+
 progress_nosize=Descarregant $1...
 progress_done=...descàrrega completa.
 progress_incache=N'he trobat $1 al cau...
+
 readparse_cdheader=Hi falta la capçalera Content-Disposition
 readparse_enc=Esperava la codificació de dades de formulari, però he rebut la codificació normal
 readparse_max=Les dades excedeixen la mida màxima de $1 bytes
+
 password_expired=La teva contrasenya ha caducat i n'has de triar una de nova.
 password_temp=Has de seleccionar una nova contrasenya  per substituir la teva entrada temporal.
 password_header=Selecciona la Nova Contrasenya
@@ -260,6 +285,7 @@ password_enew2=Les contrasenyes noves no coincideixen
 password_epam=Error PAM: $1
 password_emodpam=El mòdul Perl Authen::PAM necessari per al canvi de contrasenya no està instal·lat!
 password_enewpass=No es permet la nova contrasenya: $1
+
 ui_mandatory=Aquest camp és obligatori
 ui_checkmandatory=No has seleccionat res
 ui_errors=S'han trobat múltiples errors:
@@ -274,7 +300,9 @@ ui_etime=Hora invàlida
 ui_paging=Mostrant les files $1 a $2 de $3
 ui_rowlabel=$2 a la fila $1:
 ui_filterbox=Tipus a filtrar...
+
 header_statusmsg=$1 ha entrat a $2 $3 el $4 ($5)
+
 uptracker_title=Puja de Fitxer
 uptracker_file=Nom del fitxer
 uptracker_size=Mida
@@ -282,6 +310,7 @@ uptracker_pc=Progrés
 uptracker_eid=No has especificat cap ID de pujada
 uptracker_eid2=L'ID de pujada és invàlid!
 uptracker_of=$1 de $2
+
 wsearch_title=Cerca $1
 wsearch_modt=Mòdul
 wsearch_mtitle=Nom del mòdul
@@ -309,6 +338,7 @@ wsearch_hmod=Mòdul
 wsearch_moddir=/$1/ del camí de l'URL
 wsearch_searching=Buscant $1...
 wsearch_found=he trobat $1 resultats:
+
 sql_emysqldriver=No s'ha pogut carregar el driver DBI de MySQL
 sql_emysqlconnect=No s'ha pogut connectar amb la base de dades MySQL: $1
 sql_epostgresqldriver=No s'ha pogut carregar el driver DBI de PostgreSQL
@@ -317,6 +347,7 @@ sql_eldapdriver=No s'ha pogut carregar el mòdul perl de LDAP
 sql_eldapconnect=No s'ha pogut connectar amb el servidor LDAP $1
 sql_eldaptls=No s'ha pogut iniciar el xifratge TLS per a LDAP: $1
 sql_eldaplogin=No s'ha pogut entrar al servidor LDAP com a $1: $2
+
 log_email_subject=Acció de Webmin a $1
 log_email_global=Acció global de Webmin
 log_email_desc=Aquest correu ha estat enviat per Webmin en resposta a l'acció d'un usuari.

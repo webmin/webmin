@@ -21,6 +21,7 @@ index_thost=ホスト名
 index_tdesc=説明
 index_tcount=パッケージ
 index_ttype=OSタイプ
+
 install_err=パッケージのインストールに失敗しました
 install_elocal=ローカルファイルが指定されていません
 install_elocal2=「$1」は存在しません
@@ -37,6 +38,7 @@ install_ok=インストール
 install_erus=このサーバーは、マスターサーバーとは異なる更新システムを使用しています（$1対 $2）
 install_eupdate=指定された更新のインストール中にエラーが発生しました
 install_ealready=バージョン $1は既にインストールされています
+
 add_title=サーバーを追加する
 add_msg=$1を追加します ..
 add_gmsg=グループ $1にサーバーを追加します ..
@@ -45,6 +47,7 @@ add_gerr=グループを追加できませんでした
 add_echeck=サーバー $1にはソフトウェアパッケージモジュールがありません
 add_esystem=サーバー $1はこのマシンと同じパッケージシステムを使用していません
 add_ok=$1パッケージと $2パッケージを追加しました。
+
 search_title=パッケージ検索
 search_nomatch=一致するパッケージはありません $1
 search_none=なし
@@ -56,6 +59,7 @@ search_return=の検索結果
 search_delete=選択したパッケージのアンインストール：
 search_selall=すべて選択
 search_invert=選択を反転
+
 host_title=管理対象サーバー
 host_header=ソフトウェア管理対象サーバーの詳細
 host_name=ホスト名
@@ -70,6 +74,7 @@ host_count=インストールされたパッケージ
 host_os=WebminのOS
 host_return=サーバーの詳細
 host_system=パッケージシステム
+
 edit_title=パッケージを編集
 edit_details=$1のパッケージの詳細
 edit_desc=説明
@@ -88,6 +93,7 @@ edit_all=&lt;すべてのホスト&gt;
 edit_donthave=&lt;それを持たないホスト&gt;
 edit_have=&lt;それを持っているホスト&gt;
 edit_group=$1のメンバー
+
 list_title=パッケージファイル
 list_files=$2のパッケージ $1のファイル
 list_path=道
@@ -97,6 +103,7 @@ list_type=タイプ
 list_size=サイズ
 list_status=状態
 list_ok=OK
+
 refresh_title=パッケージリストの更新
 refresh_header=すべてのサーバーからのパッケージリストの再リクエスト ..
 refresh_header4=$2..のメンバーにパッケージリストを再要求しています。
@@ -108,6 +115,7 @@ refresh_4=更新された $1（変更なし）
 refresh_done=..完了
 refresh_del=サーバーリストから $1を削除しました
 refresh_failed=$1の更新に失敗しました： $2
+
 delete_err=パッケージ $1を削除できませんでした
 delete_epack=パッケージ $1は存在しません
 delete_title=パッケージを削除
@@ -120,6 +128,7 @@ delete_error=$1から削除できませんでした： $2
 delete_success=$1から削除しました。
 delete_done=..完了
 delete_header=パッケージ $1を削除しています ..
+
 do_title=パッケージをインストール
 do_header=すべてのホストに $1をインストールしています ..
 do_header3=$1をまだ持っていないホストにインストールしています ..
@@ -140,6 +149,7 @@ do_arch=建築
 do_inst=インストール済み
 do_none=なし
 do_edeleted=インストールファイルが削除されました-モジュールのインデックスに戻り、再試行してください。
+
 compare_title=パッケージを比較する
 compare_desc=このフォームを使用して、2つ以上のサーバーにインストールされているパッケージを比較し、使用可能なバージョンまたはパッケージ間の不一致を見つけることができます。
 compare_hosts=比較するサーバー
@@ -154,6 +164,7 @@ compare_showall=表示するパッケージ
 compare_showall1=すべて
 compare_showall0=不一致のみ
 compare_got=OK
+
 deletes_err=パッケージを削除できませんでした
 deletes_enone=パッケージが選択されていません
 deletes_title=パッケージを削除する

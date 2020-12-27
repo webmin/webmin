@@ -17,6 +17,7 @@ index_tabsync=Tijd server sync
 index_desctime=Met dit formulier verandert u de huidige systeemtijd, wat word gebruikt voor alle lopende processen. U kunt dit ook gebruiken om andere systemen die een aparte hardware klok hebben te veranderen.
 index_desczone=Met dit formulier zet u de standaard systeemtijd zone, wat word gebruikt om te converteren naar een formaat wat mensen kunnen lezen.
 index_descsync=Met dit formulier configureert u het systeem om automatisch te synchroniseren met een server op afstand. Synchronisatie word gedaan met het Unix <tt>tijd</tt> protocol of NTP, afhankelijk van welke opdrachten gebruikt worden en wat het systeem op afstand ondersteund.
+
 action_save=Opslaan
 action_apply=Toevoegen
 action_sync=Systeemtijd naar hardware tijd instellen
@@ -24,6 +25,7 @@ action_sync_s=Hardware tijd naar systeemtijd instellen
 action_timeserver_sys=Sync systeem-tijd
 action_timeserver_hw=Sync hardware-tijd
 action_savezone=Verander tijdzone
+
 acl_sys=Gebruiker mag de systeemtijd wijzigen?
 acl_hw=Mag gebruiker de hardware tijd wijzigen?
 acl_timezone=Gebruiker mag de tijdzone instellen?
@@ -34,8 +36,10 @@ acl_error=U bevind zich in de systeemtijd module, maar u kunt de systeem of hard
 acl_nosys=U bent niet bevoegd om de systeem tijd te wijzigen
 acl_nohw=U bent niet bevoegd de hardware tijd te wijzigen
 acl_nontp=U bent niet bevoegd om te synchroniseren met een tijd server
+
 sys_title=Systeemtijd
 hw_title=Hardware tijd
+
 day=Dag
 month=Maand
 date=Datum
@@ -43,12 +47,14 @@ hour=Uur
 year=Jaar
 minute=Minuten
 second=Seconden
+
 error_cnf=Fout : $1 opdracht is niet gevonden
 error_hw=Kan de hardware-tijd niet instellen : $1
 error_sync=Kan niet synchroniseren met de systeemtijd : $1
 error_ediff=Tijd verschil van server met de locale tijd is te groot : $1 dagen
 error_entp=NTP tijd synchronisatie mislukte : $1
 error_etimeserver=Geen tijd server gevonden om te synchroniseren met het ingevulde
+
 log_set_date=Systeemtijd instellen naar $1
 log_set_hwclock=Hardware klok instellen naar $1
 log_remote_date=Opgehaalde systeemtijd van $2
@@ -58,6 +64,7 @@ log_remote_hwclock_l=Opgehaalde hardware-tijd $1 van $2
 log_sync=Synchroniseer systeemtijd met hardware-tijd
 log_sync_s=Synchroniseer hardware-tijd met systeemtijd
 log_timezone=Wijzig de tijdzone naar $1
+
 timezone_err=Mislukt om tijdzone op te slaan
 timezone_ecannot=U bent niet bevoegd om de tijdzone te veranderen
 timezone_enone=Geen zone geselecteerd

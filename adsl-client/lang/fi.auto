@@ -16,6 +16,7 @@ index_cancel=Peruuta yhteys
 index_canceldesc=ADSL-asiakas yrittää parhaillaan muodostaa yhteyttä. Napsauta tätä painiketta, jos haluat peruuttaa yrityksen komennolla $1.
 index_cdemand=Peruuta kysyntä
 index_cdemanddesc=ADSL-asiakas odottaa tällä hetkellä on-demand-yhteyspyyntöä. Napsauta tätä painiketta, kun haluat lopettaa sen komennolla $1.
+
 index_header=ADSL-asiakasmääritysasetukset
 index_desc=Alla olevat asetukset koskevat kaikkia uusia järjestelmän käynnistämiä ADSL-yhteyksiä. Jos muutat niitä, yhteys on sammutettava ja käynnistettävä uudelleen, jotta muutokset tulevat voimaan.
 index_eth=Ethernet-liitäntä
@@ -36,11 +37,13 @@ index_fw_standalone=Yhdelle isäntälle
 index_fw_masquerade=NAT-yhdyskäytävälle
 index_connect=Aika yrittää muodostaa yhteys
 index_forever=Ikuisesti
+
 start_err=ADSL-yhteyden muodostaminen epäonnistui
 start_title=Käynnistä ADSL
 start_ip=ADSL-yhteys on muodostettu IP-osoitteella $1.
 start_demand=Koska yhteydenpito-tila on käytössä, ADSL-yhteytesi käynnistetään vain tarvittaessa.
 start_bg=ADSL-yhteyttä ei muodostettu 20 sekunnissa. ADSL-asiakas jatkaa yhteyden muodostamista taustalla, kunnes onnistunut.
+
 save_err=ADSL-määritysten tallentaminen epäonnistui
 save_eeth=Puuttuva tai virheellisen näköinen ethernet-liittymä
 save_etimeout=Puuttuva tai virheellinen tilausaika
@@ -49,10 +52,12 @@ save_econnect=Puuttuva tai virheellinen yhteyden aikakatkaisu
 save_emss=Puuttuva tai virheellinen paketin koko
 save_title=Tallenna kokoonpano
 save_desc=ADSL-asiakasmäärityksesi on tallennettu onnistuneesti, mutta sitä ei käytetä, ennen kuin muodostat yhteyden uudelleen.
+
 stop_err=ADSL-yhteyden katkaiseminen epäonnistui
 stop_title=Sammuta ADSL
 stop_ok=ADSL-yhteytesi katkaistiin onnistuneesti.
 stop_failed=ADSL-yhteytesi on edelleen aktiivinen jostain syystä!
+
 log_save=Tallennetut asiakasmääritykset
 log_stop=Sammuta ADSL
 log_start=Aloitti ADSL: n

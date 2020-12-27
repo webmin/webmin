@@ -9,6 +9,7 @@ index_start=Käynnistä Syslog-NG
 index_startdesc=Napsauta tätä painiketta, jos haluat käynnistää Syslog-NG-demonin nykyisen kokoonpanon avulla.
 index_return=moduulihakemisto
 index_version=Syslog-NG $1 
+
 options_title=Kirjausasetukset
 options_header=Kaikkien lokitiedostojen asetukset
 options_secs=sekuntia
@@ -55,6 +56,7 @@ options_esync=Puuttuva tai virheellinen puskurointiin tarkoitettujen viestien lu
 options_estats=Puuttuva tai ei-numeerinen aika odottaa tilastoviestien välillä
 options_elog_fifo_size=Puuttuva tai virheellinen puskuriviestien lukumäärä
 options_elog_msg_size=Puuttuva tai ei-numeerinen lokilähetyskoko
+
 destinations_title=Lokikohteet
 destinations_name=Kohteen nimi
 destinations_type=Kirjoittaa
@@ -77,6 +79,7 @@ destinations_add=Lisää uusi lokikohde.
 destinations_return=lokikohteet
 destinations_desc=Muu moduulin loki
 destinations_cmd=Tulos $1 : stä
+
 destination_header=Lokikohteen asetukset
 destination_title1=Luo lokikohde
 destination_title2=Muokkaa lokin määränpäätä
@@ -117,17 +120,22 @@ destination_enet_localip=Puuttuva tai virheellinen paikallinen IP-osoite
 destination_enet_localport=Puuttuva tai virheellinen paikallinen porttinumero
 destination_enet_host=Puuttuva tai virheellinen Syslog-palvelimen isäntä tai osoite
 destination_eunix=Puuttuu Unix-pistorasian nimi
+
 ddelete_err=Kohteiden poistaminen epäonnistui
 ddelete_enone=Mitään ei ole valittu
 ddelete_eused=Kohtetta $1 ei voi poistaa, koska lokikohde käyttää sitä
+
 sdelete_err=Lähteiden poistaminen epäonnistui
 sdelete_enone=Mitään ei ole valittu
 sdelete_eused=Lokilähdettä $1 ei voi poistaa, koska lokikokoelma käyttää sitä
+
 fdelete_err=Suodattimien poistaminen epäonnistui
 fdelete_enone=Mitään ei ole valittu
 fdelete_eused=Lokisuodatinta $1 ei voi poistaa, koska loki-kohde käyttää sitä
+
 ldelete_err=Lokikohteiden poistaminen epäonnistui
 ldelete_enone=Mitään ei ole valittu
+
 filters_title=Lokisuodattimet
 filters_name=Suodattimen nimi
 filters_desc=olosuhteet
@@ -144,6 +152,7 @@ filters_program=ohjelma <tt>$1</tt>
 filters_match=vastaa "$1"
 filters_host=isäntänimestä <tt>$1</tt>
 filters_netmask=lähettäjältä <tt>$1</tt>
+
 filter_title1=Luo lokisuodatin
 filter_title2=Muokkaa lokisuodatinta
 filter_header=Lokisuodatinmääritystiedot
@@ -169,6 +178,7 @@ filter_enet=Puuttuva tai virheellinen verkko-IP-osoite
 filter_emask=Puuttuva tai virheellinen verkkomaski
 filter_ebool=Virhe monimutkaisessa lausekkeessa
 filter_egone=Suodatinta ei enää ole!
+
 logs_title=Lokikohteet
 logs_source=Lähteet
 logs_filter=Suodattimet
@@ -177,6 +187,7 @@ logs_add=Lisää uusi lokikohde.
 logs_delete=Poista valitut lokikohteet
 logs_return=lokikohteet
 logs_none=Ei mitään
+
 log_title1=Luo lokikohde
 log_title2=Muokkaa lokitavoitetta
 log_header=Lokilähteen, suodattimen ja määränpään valinnat
@@ -190,6 +201,7 @@ log_flags=Kohdevaihtoehdot
 log_egone=Lokikohteita ei enää ole!
 log_err=Lokikohteen tallentaminen epäonnistui
 log_esource=Lähteitä ei ole valittu
+
 sources_title=Lokilähteet
 sources_none=Lähteitä ei ole vielä määritelty!
 sources_add=Lisää uusi lokilähde.
@@ -207,6 +219,7 @@ sources_typen=Aurinkovirta
 sources_typenw=Syslog-palvelin
 sources_return=lokilähteet
 sources_none2=Ei mitään
+
 source_title1=Luo lokilähde
 source_title2=Muokkaa lokilähdettä
 source_header=Lokilähteen asetukset
@@ -243,15 +256,20 @@ source_door=Oven tiedostonimi
 source_esun_streams_name=Puuttuva tai virheellinen Sun-stream-tiedostonimi
 source_edoor=Puuttuva tai virheellinen Sun-suoratoisto-ovetiedoston nimi
 source_transport=Verkkoprotokolla
+
 view_title=Näytä lokitiedosto
 view_header=$2 : n viimeiset rivit $1 
 view_empty=Lokitiedosto on tyhjä
 view_refresh=virkistää
 view_filter=Näytä vain rivit, joissa on teksti $1 
+
 apply_err=Asetusten määrittäminen epäonnistui
 apply_egone=Ei käynnissä!
+
 start_err=Syslog-NG-palvelimen käynnistäminen epäonnistui
+
 stop_err=Syslog-NG-palvelimen pysäyttäminen epäonnistui
+
 log_create_destination=Luotu lokikohde $1 
 log_modify_destination=Muokattu lokikohde $1 
 log_delete_destination=Poistettu lokikohde $1 

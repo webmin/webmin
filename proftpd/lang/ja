@@ -23,7 +23,9 @@ index_eip=&lt;不明&gt;
 index_global=グローバル設定
 index_create=バーチャルサーバ作成
 index_version=ProFTPd version $1
+
 efailed=$1を保存できませんでした。
+
 type_0=ネットワークオプション
 type_1=ログオプション
 type_2=ファイルとディレクトリ
@@ -31,6 +33,7 @@ type_3=アクセス制御
 type_4=その他
 type_5=ユーザとグループ
 type_6=認証
+
 virt_title=バーチャルサーバオプション
 virt_header1=$1用
 virt_header2=デフォルトサーバ用
@@ -46,6 +49,7 @@ virt_cmds=FTPコマンド
 virt_return=バーチャルサーバ
 virt_virt=バーチャルサーバ設定
 virt_edit=ディレクティブ編集
+
 vserv_title=バーチャルサーバ設定
 vserv_addr=アドレス
 vserv_name=サーバ名
@@ -54,6 +58,7 @@ vserv_delete=バーチャルサーバを削除
 vserv_eaddr=アドレスが未入力か、または不正な値です
 vserv_eport=ポート番号が未入力か、または不正な値です
 vserv_ename=見つからないサーバ名
+
 anon_title=Anonymous FTP オプション
 anon_header1=バーチャルサーバ $1のオプション
 anon_header2=デフォルトサーバのオプション
@@ -61,6 +66,7 @@ anon_anon=Anonymous FTP設定
 anon_return=anonymous FTPオプション
 anon_header3=バーチャルサーバ $1のanonymous FTP
 anon_header4=デフォルトサーバのanonymous FTP
+
 aserv_title=Anonymous FTP設定
 aserv_create=Anonymous FTPのセットアップ
 aserv_root=Limit to directory
@@ -71,6 +77,7 @@ aserv_eroot=Missing or invalid chroot directory
 aserv_euser=見つからないか、または間違っているUnixユーザ
 aserv_egroup=見つからないか、または間違っているUnixグループ
 aserv_desc=このバーチャルサーバには、まだAnonymous FTPがセットアップされていません。フォームを使って初期設定して下さい。
+
 dir_title=ディレクトリオプション
 dir_header2=デフォルトサーバのディレクトリ $1
 dir_header1=バーチャルサーバ$2のディレクトリ $1
@@ -81,6 +88,7 @@ dir_header=コマンドオプション
 dir_dir=ディレクトリ設定
 dir_header4=anonymous FTPのディレクトリ $1
 dir_header5=共通ディレクトリ $1
+
 manual_title=ディレクティブ編集
 manual_header=テキストボックスで編集された$1のProFTPDディレクティブは、バーチャルサーバやディレクトリ、コマンドに反映されます。
 manual_configs=設定ファイル編集
@@ -88,6 +96,7 @@ manual_ecannot=ディレクティブ編集は許可されません。
 manual_file=ファイルのディレクティブを編集:
 manual_efile=不正な ProFTPd設定ファイル
 manual_etest=設定ファイルエラー : $1
+
 limit_title=コマンドオプション
 limit_header4=ディレクトリ$2のコマンド$1
 limit_header2=バーチャルサーバのコマンド$1
@@ -99,17 +108,20 @@ limit_return=コマンドオプション
 limit_header5=anonymous FTPの$1
 limit_header6=ファイル$2のコマンド$1
 limit_header7=共通コマンド$1
+
 lserv_title=コマンド設定
 lserv_cmd=FTP コマンド
 lserv_delete=コマンド削除
 lserv_err=コマンドを保存できませんでした
 lserv_ecmd=コマンドが選択されていません。
+
 dserv_title=ディレクトリ設定
 dserv_dir=ディレクトリのパス
 dserv_err=ディレクトリの保存に失敗しました
 dserv_edir=ディレクトリのパスが見つかりません
 dserv_delete=ディレクトリ設定を削除
 dserv_eanondir=ディレクトリは匿名FTPディレクトリ配下にある必要があります
+
 mod_core_type=サーバタイプ
 mod_core_inetd=Inetdから実行
 mod_core_stand=スタンドアローンのデーモン
@@ -296,6 +308,7 @@ mod_core_duser=拒否するユーザ
 mod_core_eip=IPアドレス'$1'は正しくありません
 mod_core_enet=ネットワークアドレス'$1'は正しくありません
 mod_core_ehost=ホスト名'$1'は正しくありません
+
 mod_ls_fakegroup=ディレクトリ一覧でのフェイクグループ(?)
 mod_ls_fakeuser=ディレクトリ一覧でのフェイクユーザ(?)
 mod_ls_fakemode=ディレクトリ一覧でのフェイク権限(?)
@@ -312,6 +325,7 @@ mod_ls_efakeuser=フェイクユーザが未入力か、または不正な値で
 mod_ls_efakegroup=フェイクグループが未入力か、または不正な値です
 mod_ls_options=ディレクトリ一覧オプション
 mod_ls_strict=ユーザオプションを上書きしますか?
+
 mod_auth_chdir=初期ログインディレクトリ
 mod_auth_echdir=初期ログインディレクトリが未入力か、または不正な値です
 mod_auth_chroot=chroot するユーザ最大数(?)
@@ -325,7 +339,9 @@ mod_auth_egroups=chrootのUnixグループ名が入力されていません
 mod_auth_echroot=chrootディレクトリが未入力か、または不正な値です
 mod_auth_login=ログインが拒否されたときパスワードを尋ねないようにしますか?
 mod_auth_root=rootログインを許可しますか?
+
 mod_site_chmod=chmodコマンドを許可しますか?
+
 mod_unixpw_ufile=代替Unixパスワードファイル
 mod_unixpw_eufile=代替Unixパスワードファイルが未入力か、または不正な値です
 mod_unixpw_gfile=代替Unixグループファイル
@@ -333,6 +349,7 @@ mod_unixpw_egfile=代替Unixグループファイルが未入力か、または�
 mod_unixpw_none=なし
 mod_unixpw_pam=PAM認証を承認しますか?(?)
 mod_unixpw_persist=パスワードファイルをオープンしたままにしますか?
+
 mod_log_syslog=ログ保存ファイル
 mod_log_sysdef=システムログ
 mod_log_esyslog=ログファイルが未入力か、または不正な値です
@@ -349,14 +366,18 @@ mod_log_fmt=フォーマット文字列
 mod_log_format=カスタムログフォーマット
 mod_log_enickname=フォーマット名が未入力か、または不正な値です
 mod_log_efmt=フォーマット文字列が入力されていません
+
 mod_pam_pam=PAM認証を使用しますか?
 mod_pam_config=認証で使用するPAMサービス(?)
 mod_pam_econfig=認証で使用するPAMサービスが未入力か、または不正な値です(?)
+
 mod_readme_display=ユーザに通知するReadMeファイルの形式
 mod_readme_none=なし
 mod_readme_edisplay=ユーザに通知するReadMeファイルの形式が未入力か、または不正な値です
+
 start_err=FTPサーバの起動に失敗しました
 start_einetd=inetdモードのときはサーバデーモンを起動できません
+
 ftpaccess_title=ディレクトリごとのオプションとファイル
 ftpaccess_desc=ディレクトリごとの追加オプションは各ディレクトリーの（通常<tt>.ftpaccess</tt>と呼ばれる）ファイルで指定できます。別のオプションファイルで上書きされなければ、オプションはそのディレクトリと任意のサブディレクトリのすべてのファイルに適用されます。
 ftpaccess_create=オプションファイルを作成
@@ -364,8 +385,10 @@ ftpaccess_find=オプションファイルを検索
 ftpaccess_auto=anonymousから
 ftpaccess_from=ディレクトリから
 ftpaccess_return=オプションファイルリスト
+
 ftpusers_title=拒否されたFTPユーザ(?)
 ftpusers_desc=<tt>認証</tt>メニューで有効に設定すると、$1ファイルにリストアップされたユーザはFTPアクセスを拒否されます
+
 ftpindex_title=ディレクトリごとのオプションとファイル
 ftpindex_delete=ファイルを削除
 ftpindex_opts=ディレクトリごとのオプション
@@ -375,8 +398,10 @@ ftpindex_addlimit=コマンドオプションを追加 ..
 ftpindex_header2=$2 の $1
 ftpindex_return=ディレクトリごとのオプションとファイル
 ftpindex_header=$1用
+
 find_err=オプションとファイルの検索に失敗しました
 find_eanon=Anonymous FTPはバーチャルサーバにはセットアップされていません
+
 log_global=Changed global $1 options
 log_ftpusers=Changed denied FTP users
 log_virtc=Created server $1
@@ -405,6 +430,7 @@ log_ftpaccessm=Manually edited options file $1
 log_ftpaccess=Changed $1 in options file $2
 log_start=Started proftpd
 log_apply=Applied changes
+
 eafter=設定内容のチェックに失敗しました: $1 変更は保存されていません
 proftpd_apply=設定を適用する
 proftpd_stop=ProFTPdの停止

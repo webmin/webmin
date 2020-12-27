@@ -21,6 +21,7 @@ index_mailfromnone=Standard (<tt>rod</tt>)
 index_program=Kommando, der skal køres, når der opdages problemer
 index_programnone=Kør ikke nogen
 index_monitor=Overvågning aktiveret?
+
 linear=Lineær (sammenkoblet)
 raid0=RAID0 (stribet)
 raid1=RAID1 (spejlet)
@@ -29,6 +30,7 @@ raid5=RAID5 (Distribueret paritet)
 raid6=RAID6 (Dual Distribueret Paritet)
 raid10=RAID10 (stribet og spejlet)
 blocks=blokke
+
 create_title=Opret RAID-enhed
 create_header=RAID-enhedsindstillinger
 create_device=Enhedsfil
@@ -62,6 +64,7 @@ create_o2_layout=2 Offsetkopier
 create_n3_layout=3 Nær kopier
 create_f3_layout=3 Far kopier
 create_o3_layout=3 Offsetkopier
+
 view_title=RAID-enhed
 view_header=RAID-enhedsindstillinger
 view_device=Enhedsfil
@@ -117,6 +120,7 @@ view_mountmsg=Gå ind i et bibliotek, og klik på denne knap for at gå til en f
 view_mountmsg2=Klik på denne knap for at bruge denne RAID-enhed til virtuel hukommelse på dit system.
 view_blocks=$1 blokke
 view_sparegroup=Reserve gruppe
+
 mkfs_title=Opret filsystem
 mkfs_header2=Denne formular giver dig mulighed for at opbygge et nyt $2 -filsystem på $1. <b>Alle</b> eksisterende data slettes!
 mkfs_options=Nye Linux-filsystemindstillinger
@@ -124,6 +128,7 @@ mkfs_err=Kunne ikke oprette filsystem
 mkfs_exec=Udfører kommando $1 ..
 mkfs_failed=.. kommandoen mislykkedes!
 mkfs_ok=.. kommandoen fuldført.
+
 emkraid=<tt>mkraid</tt> mislykkedes : $1 
 eraidstop=<tt>raidstop</tt> mislykkedes : $1 
 eraidstart=<tt>raidstart</tt> mislykkedes : $1 
@@ -135,6 +140,7 @@ emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
 log_create=Oprettet $1 RAID-enhed $2 
 log_stop=Deaktiveret RAID-enhed $1 
 log_start=Aktiveret RAID-enhed $1 
@@ -147,14 +153,17 @@ log_grow=Dyrkede RAID-enhed $1 til i alt $2 diske
 log_convert_to_raid6=Konverterede RAID5-enhed $1 til en RAID6-enhed
 log_convert_to_raid5=Konverterede RAID6-enhed $1 til en RAID5-enhed
 log_notif=Opdaterede RAID-problemmeddelelsesindstillinger
+
 notif_err=Kunne ikke gemme RAID-meddelelsesindstillinger for problemer
 notif_emailaddr=Manglende eller ugyldig anmeldelse adresse
 notif_emailfrom=Manglende eller ugyldig Fra adresse
 notif_eprogram=Manglende eller ikke-eksisterende program at køre
+
 delete_title=Slet RAID Array
 delete_rusure=Er du sikker på, at du vil slette RAID-array $1, der bruger $2 af diskplads?
 delete_ok=Ja, slet det
 delete_eidx=Ingen RAID-matrix valgt!
+
 remove_title=Fjern partition fra RAID Array
 remove_rusure=Er du sikker på, at du vil fjerne partition $2 af RAID-matrix $1 ?
 remove_ok=Ja, fjern det

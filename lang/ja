@@ -12,7 +12,9 @@ main_readonly=(読み取り専用モード)
 main_return= $1に戻る
 main_unused= 未使用のモジュール
 main_refreshmods= モジュールをリフレッシュする
+
 link_essl= HTTPS接続を確立するために必要なNet::SSLeay Perlモジュールは、システムにインストールされていません。
+
 category_servers= サーバー
 category_hardware= ハードウェア
 category_system=システム
@@ -21,6 +23,7 @@ category_net= ネットワーキング
 category_syslet= シセレット
 category_cluster= クラスタ
 category_info= 情報
+
 longcategory_servers= Web、電子メール、FTP、その他のサーバの設定用のモジュール
 longcategory_hardware= プリンタ、ディスク、その他のハードウェア構成用のモジュール
 longcategory_system= ユーザー、ファイルシステム、Cronジョブ、その他のシステム設定用のモジュール
@@ -28,11 +31,13 @@ longcategory_webmin= Webmin自身を設定するためのモジュール
 longcategory_net= ネットワークとネットワークサービスを設定するためのモジュール
 longcategory_cluster= 1つのインターフェースから複数のサーバーを管理できるモジュール
 longcategory_info= システムに関する情報を表示するモジュール
+
 header_webmin=Webmin インデックス
 header_module=Module インデックス
 header_help=ヘルプ..
 header_config=Module コンフィグ
 header_servers=Webmin Servers
+
 index=インデックス
 yes=はい
 no=いいえ
@@ -63,12 +68,14 @@ euserdbacl= ユーザーACLを取得できませんでした : $1
 euserdbacl2= ユーザーACLの更新に失敗しました : $1
 egroupdbacl= グループACLを取得できませんでした : $1
 egroupdbacl2= グループACLの更新に失敗しました : $1
+
 chooser_title1= ファイルを選ぶ..
 chooser_title2= ディレクトリを選択..
 chooser_dir= $1のディレクトリ
 chooser_ok=OK
 chooser_date= 日付を選択
 chooser_eopen= リスティングに失敗 : $1
+
 users_title1= ユーザーを選択してください。
 users_title2= ユーザーを選択します。
 users_sel= 選択されたユーザー
@@ -76,6 +83,7 @@ users_all= すべてのユーザー
 users_ok=OK
 users_cancel= キャンセル
 users_clear= クリア
+
 groups_title1= グループを選択..
 groups_title2= グループを選択..
 groups_all= すべてのグループ
@@ -83,6 +91,7 @@ groups_sel= 選択したグループ
 groups_ok=OK
 groups_cancel= キャンセル
 groups_clear=クリア
+
 modules_title1= モジュールを選択..
 modules_title2= モジュールを選択..
 modules_sel= 選択されたモジュール
@@ -90,6 +99,7 @@ modules_all= すべてのモジュール
 modules_ok=OK
 modules_cancel=キャンセル
 modules_clear=クリア
+
 config_ecannot= このモジュールを設定することはできません
 config_title= 構成
 config_dir= モジュール$1
@@ -101,6 +111,7 @@ config_err= 設定を保存できませんでした
 config_nochange= 変更しない
 config_setto= 設定する
 config_ewebmin= パラメータタイプ14はWebminでのみ機能します
+
 help_err= ヘルプの表示に失敗しました
 help_epath= ヘルプパスがないか無効です
 help_efile= ヘルプファイル$1の読み込みに失敗しました
@@ -108,6 +119,7 @@ help_eheader= 欠落&lt;ヘッダー&gt;セクション
 help_einclude= $1を含むことができませんでした
 help_eif= $1は失敗しました : $2
 help_eexec= $1は失敗しました : $2
+
 referer_title= セキュリティ警告
 referer_warn= <b>警告！</b> Webminは、プログラム$2がURL $1からリンクされていることを検出しました。これはWebminサーバの外にあるようです。これは、危険なコマンドを実行するためにサーバーを騙そうとする試みかもしれません。
 referer_warn_unknown= <b>警告！</ b> Webminは、プログラム$ 1が未知のURLからリンクされていることを検出しました。これはWebminサーバの外にあるようです。これは、危険なコマンドを実行するためにサーバーを騙そうとする試みかもしれません。
@@ -115,6 +127,7 @@ referer_fix1= <li><b> Webmin設定</b>モジュールに移動します。 <b>�
 referer_fix2= または、<tt> root </tt>としてログインし、<tt> /etc /webmin /config </tt>ファイルを編集してWebminがコマンドラインからこのリンクを許可するように設定できます。 <li>最後に<tt> referers=$1</tt>行を追加するか、<tt> referers </tt>行が既に存在する場合は、<tt> $ 1 </tt>ファイルを保存します。</ul>
 referer_fix3u= Webminで確認できるように参照情報を送信するようにブラウザが設定されていることを確認してください。
 referer_fix2u= <ul> <li> <tt> root </tt>としてログインし、<tt> /etc/webmin/config </tt>ファイルを編集することで、未知のリファラーからのリンクを許可するようにWebminを設定することができます。 li> <tt> referers_none = 1 </tt>行を探し、<tt> referers_none = 0 </tt>に変更してください。<li>ファイルを保存してください。</ul> <p>反射XSS攻撃までシステムを開く効果があるので、お勧めしません！
+
 session_header= Webminにログインする
 session_mesg= $1でWebminサーバにログインするには、ユーザ名とパスワードを入力する必要があります。
 session_mesg2= ログインするには、ユーザー名とパスワードを入力する必要があります。
@@ -128,11 +141,13 @@ session_twofailed= 二要素認証に失敗しました : $1
 session_logout= ログアウトに成功しました。以下のフォームを使用して再度ログインしてください。
 session_timed_out= $1分後にセッションがタイムアウトしました。
 session_save=ログインを保存。
+
 pam_header= Webminにログインする
 pam_mesg= $1でWebminサーバーにログインするには、以下の質問に回答する必要があります。
 pam_mesg2= ログインするには、以下の質問に回答する必要があります。
 pam_login= 持続する
 pam_restart= 再起動
+
 acl_root= ファイルチューザーのルートディレクトリ
 acl_otherdirs= ファイルチューザ内の他の表示可能なディレクトリ
 acl_nodot= ファイルチューザーでドットファイルを非表示にしますか？
@@ -165,6 +180,7 @@ acl_negative= ユーザーに新しいモジュール権限を与えますか？
 acl_fileunix= Unixユーザとしてファイルを参照する
 acl_sameunix= Webminログインと同じ
 acl_webminsearch= Webminの検索フィールドを表示しますか？
+
 month_1= 1月
 month_2=2月
 month_3=3月
@@ -177,6 +193,7 @@ month_9=9月
 month_10=10月
 month_11=11月
 month_12=12月
+
 day_0= 日曜日
 day_1=月曜日
 day_2=火曜日
@@ -184,6 +201,7 @@ day_3=水曜日
 day_4=木曜日
 day_5=金曜日
 day_6=土曜日
+
 smonth_1=1
 smonth_2=2
 smonth_3=3
@@ -196,6 +214,7 @@ smonth_9=9
 smonth_10=10
 smonth_11=11
 smonth_12=12
+
 sday_0=日
 sday_1=月
 sday_2=火
@@ -203,12 +222,15 @@ sday_3=水
 sday_4=木
 sday_5=金
 sday_6=土
+
 emodule= アクセス拒否:ユーザー$1は$2モジュールを使用できません
 emodulecheck= $1モジュールはあなたのシステムで利用できません
 elock_tries2= $2分後にファイル$ 1をロックできませんでした。最後のエラーは：$3
+
 skill_high= 専門家
 skill_medium= 中級
 skill_low= 初心者
+
 feedback_title=Webmin フィードバック
 feedback_desc= このフォームを使用すると、見つかった問題や欠落している機能に関するWebmin開発者への提案のバグを報告することができます。 [送信]ボタンをクリックすると、フォームに入力された詳細が$1に電子メールで送信されます。
 feedback_desc2=このフォームはあなたのシステム管理者やISP、ホスティング会社へ送られるものではなく、Webminの開発者へ送信されます。Webminを英語以外の言語でご利用であっても英語でご送信下さい。
@@ -237,15 +259,18 @@ feedback_to=フィードバック送信先アドレス(複数可)
 feedback_enoto=フィードバック送信先アドレスが指定されていません。
 feedback_ecannot=フィードバック送信の許可がされていません。
 feedback_ecannot2=設定ファイルを同梱したフィードバックを送信する許可がされていません。
+
 progress_size2=ダウンロード中 $1 ($2) ..
 progress_nosize=ダウンロード中 $1 ..
 progress_datan=受信済み $1 ($2 %)
 progress_data2n=受信済み $1
 progress_done=.. ダウンロード完了.
 progress_incache=$1 をキャッシュから見つけました ..
+
 readparse_cdheader=Content-Disposition ヘッダが見つかりません。
 readparse_enc=form-data エンコードではなく、通常のエンコードが使用されています。
 readparse_max=$1 バイトの上限を超えたデータサイズです。
+
 password_expired=パスワードは失効しています。新しいものを選択して下さい。
 password_temp=一時的なログインのために新しいパスワードを選択する必要があります。
 password_header=新しいパスワード
@@ -264,6 +289,7 @@ password_enew2=新しいパスワード（確認）が間違っています。
 password_epam=PAM エラー : $1
 password_emodpam=インストールされていない Authen::PAM perl モジュールがパスワード変更には必要です。
 password_enewpass=新しいパスワードは許可されていません : $1
+
 ui_mandatory=このフィールドは必須です
 ui_checkmandatory=何も選択されていません
 ui_errors=複数のエラーが見つかりました :
@@ -278,7 +304,9 @@ ui_etime=時刻を反転
 ui_paging=行を表示 $1 から $2 全 $3 中
 ui_rowlabel=$1 行の $2 :
 ui_filterbox=フィルタに入力..
+
 header_statusmsg=$1は$4で$2 $3にログインしました（$5）
+
 uptracker_title=ファイルアップロード中
 uptracker_file=ファイル名
 uptracker_size=サイズ
@@ -286,6 +314,7 @@ uptracker_pc=経過
 uptracker_eid=アップロードIDが指定されていません
 uptracker_eid2=アップロードIDが無効です
 uptracker_of=$2 の $1
+
 wsearch_title=$1 を検索
 wsearch_modt=モジュール
 wsearch_mtitle=モジュール名
@@ -313,6 +342,7 @@ wsearch_hmod=モジュール
 wsearch_moddir=URL パス /$1/
 wsearch_searching=$1 を検索中 . .
 wsearch_found=$1 の結果 :
+
 sql_emysqldriver=MySQL DBIドライバーのロードに失敗しました
 sql_emysqlconnect=MySQLデータベースへの接続に失敗しました : $1
 sql_epostgresqldriver=PostgreSQL DBIドライバーのロードに失敗しました
@@ -321,6 +351,7 @@ sql_eldapdriver=LDAP perlモジュールのロードに失敗しました
 sql_eldapconnect=LDAPサーバーに接続できませんでした $1
 sql_eldaptls=LDAPのTLS暗号化を開始できませんでした : $1
 sql_eldaplogin=$1 としてLDAPサーバーにログインできませんでした : $2
+
 log_email_subject=Webmin アクション in $1
 log_email_global=Webmin グローバルアクション
 log_email_desc=このメールは、ユーザーの操作に応じてWebminから送信されました。
@@ -332,6 +363,7 @@ log_email_user=ユーザーが実行: $1
 log_email_script=Webmin スクリプト: $1
 log_email_session=セッション ID: $1
 log_email_remote=クライアント アドレス: $1
+
 nice_size_PB=PB
 nice_size_PiB=PiB
 nice_size_TB=TB
@@ -343,4 +375,5 @@ nice_size_MiB=MiB
 nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=バイト
+
 langauto_include=機械翻訳を含める

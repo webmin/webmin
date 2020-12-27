@@ -18,6 +18,7 @@ index_showing=显示与 $1..相匹配的数据库
 index_emsg=完整的MySQL错误消息是： $1
 index_jump=或编辑数据库：
 index_jumpok=打开
+
 dbase_header=数据库表，索引和视图
 dbase_empty=空数据库
 dbase_none2=没有表与您的搜索匹配。
@@ -36,8 +37,10 @@ dbase_type=类型
 dbase_typetable=表格1）
 dbase_typeindex=指数
 dbase_typeview=视图
+
 ddrop_rusure2=您确定要清空数据库 $1吗？包含 $3行数据的 $2表将被删除。
 ddrop_empty2=删除所有表
+
 ddrops_err=无法删除数据库
 ddrops_title=删除数据库
 ddrops_rusure=您确定要删除 $1个选定的数据库吗？包含 $3行数据的 $2表将被删除。
@@ -46,18 +49,21 @@ ddrops_mysql=由于选择了master数据库，因此删除它可能会使您的M
 ddrops_ok=删除数据库
 ddrops_enone=未选择数据库
 ddrops_ecannotdb=您不允许删除数据库 $1
+
 table_csv=导出为CSV
 table_index=创建索引
 table_copy2=从数据库复制字段
 table_copy2t=和桌子
 table_epnull=主键字段 $1不能为空
 table_delete=删除所选字段
+
 tdrops_enone=没有要删除的表格
 tdrops_err=无法删除表格
 tdrops_ok=下降
 tdrops_title=删除所选
 tdrops_rusure=您确定要在数据库 $2中删除 $1个选定的表吗？ $3行数据将被删除。
 tdrops_rusure2=您确定要在数据库 $2中删除 $1个选定的表吗？
+
 field_current=当前时间
 field_defval=值
 field_defdef=MySQL默认
@@ -66,6 +72,7 @@ field_defempty=空字符串
 field_defleave=不要改变
 field_dmode0=没有
 field_dmode1=空值
+
 view_refresh=刷新
 view_match4=比...更棒
 view_match5=少于
@@ -77,6 +84,7 @@ view_sortreset=重设排序
 view_go=走
 view_adv=高级搜索
 view_sqlrun=SQL查询生成的结果： $1
+
 users_syncwhen=何时同步
 users_delete=删除所选
 users_derr=删除用户失败
@@ -85,6 +93,7 @@ users_ssl=证书
 users_dtitle=删除用户权限
 users_drusure=您确定要删除 $1个选定的MySQL用户权限吗？
 users_dok=删除用户
+
 user_vwarning=警告：此MySQL用户是Virtualmin域 $1的管理登录名。在此处更改任何设置可能会导致Virtualmin错误。
 user_locked=已锁定
 user_priv_select=选择表格数据
@@ -133,24 +142,29 @@ user_emax_user_connections=最大并发登录数必须为数字
 user_emax_connections=每小时最大连接数必须是一个数字
 user_emax_updates=每小时最大更新数必须为数字
 user_emax_questions=每小时最大查询数必须为数字
+
 dbs_derr=删除数据库权限失败
 dbs_enone=未选择数据库
 dbs_dtitle=删除数据库权限
 dbs_drusure=您确定要删除 $1个选定的MySQL数据库权限吗？
 dbs_dok=删除权限
+
 hosts_derr=删除主机权限失败
 hosts_enone=未选择主机
 hosts_dtitle=删除主机权限
 hosts_drusure=您确定要删除 $1个选定的MySQL主机权限吗？
 hosts_dok=删除权限
 hosts_return=主机权限
+
 host_sel=已选
 host_otherdb=配套图案
+
 newdb_tname=命名
 newdb_charset=字符集
 newdb_collation=整理顺序
 newdb_str=下面的字段
 newdb_ecannot2=您无权创建更多数据库
+
 exec_header2a=这也可以用于还原MySQL备份，它只是SQL命令的文件。
 exec_edit=编辑上一个
 exec_format=文件格式
@@ -164,23 +178,29 @@ exec_iheader=文本文件导入选项
 exec_created=已创建 $1个表。
 exec_inserted=已插入 $1个记录。
 exec_cs=数据字符集
+
 tprivs_derr=删除表权限失败
 tprivs_enone=未选择表
 tprivs_dtitle=删除表权限
 tprivs_drusure=您确定要删除 $1个选定的MySQL表权限吗？
 tprivs_dok=删除权限
+
 tpriv_edb=缺少或无效的数据库名称
+
 cprivs_add2=添加新权限：
 cprivs_derr=无法删除字段权限
 cprivs_enone=未选择任何字段
 cprivs_dtitle=删除列权限
 cprivs_drusure=您确定要删除 $1个选定的MySQL列权限吗？
 cprivs_dok=删除权限
+
 cpriv_edb=缺少或无效的数据库名称
+
 acl_max=是的，最多
 acl_indexes=可以查看和管理索引吗？
 acl_views=可以查看和管理视图吗？
 acl_files=可以从本地文件执行SQL吗？
+
 log_cnf=更改了MySQL服务器配置
 log_kill=杀死 $1个数据库连接
 log_vars=修改的 $1系统变量
@@ -202,6 +222,7 @@ log_backup_all_l=将所有数据库备份到文件 $2
 log_set=已更改 $1 MySQL变量
 log_root=更改管理密码
 log_manual=手动编辑的配置文件
+
 backup_title2=备份所有数据库
 backup_desc3=该表格允许您将所有数据库备份为SQL语句文件。要还原备份，可以使用“执行SQL”表单在其中一个文件中运行命令。
 backup_header1=备份目的地
@@ -256,10 +277,12 @@ backup_bodyspace=文件系统大小： $1可用空间： $2
 backup_bodyall=所有
 backup_edownloadall=只能下载一个数据库备份
 backup_edownloadsave=下载模式不能用于计划的备份
+
 adv_title=高级搜索
 adv_and=查找符合所有条件的记录 ..
 adv_or=查找符合任何条件的记录 ..
 adv_ok=马上搜索
+
 csv_title=导出CSV文件
 csv_header=CSV导出选项
 csv_dest=出口目的地
@@ -280,6 +303,7 @@ csv_done=CSV导出到 $1已完成。生成的文件大小为 $2。
 csv_headers=在CSV中包含列名？
 csv_cols=要包含在CSV中的列
 csv_ecols=未选择任何列
+
 cnf_title=MySQL服务器配置
 cnf_efile=在您的系统上找不到MySQL配置文件 $1。您可能需要调整<a href='$2'>模块配置</a>以使用正确的路径。
 cnf_header=MySQL服务器选项
@@ -321,11 +345,13 @@ cnf_restart=保存并重启MySQL
 cnf_fpt=每个InnoDB表有单独的文件吗？
 cnf_ilt=InnoDB锁定超时（以秒为单位）
 cnf_eilt=InnoDB锁定超时必须为整数
+
 manual_title=编辑配置文件
 manual_file=编辑配置文件：
 manual_ok=好
 manual_efile=无效的配置文件！
 manual_err=保存配置文件失败
+
 index_title1=创建索引
 index_header1=索引选项
 index_name=索引名称
@@ -341,12 +367,15 @@ index_ecols=未选择任何字段
 index_title2=编辑索引
 index_header=数据库 $2中的索引 $1
 index_ecannot=您无权管理索引
+
 syslog_desc=MySQL错误消息
 syslog_desc2=MySQL错误消息
 syslog_logdesc=MySQL查询
+
 fdrop_err=无法删除字段
 fdrop_enone=未选择
 fdrop_eall=您不能从表中删除所有字段！
+
 view_title1=建立检视
 view_title2=编辑视图
 view_header1=查看详情
@@ -372,6 +401,7 @@ view_cascaded=基本观点
 view_local=仅此视图
 view_nocheck=没有
 view_ecannot=您无权管理视图
+
 procs_title=数据库连接
 procs_id=ID
 procs_user=用户名
@@ -383,9 +413,11 @@ procs_query=运行查询
 procs_kill=杀死选定的连接
 procs_ecannot=您无权查看数据库连接
 procs_none=目前没有其他数据库客户端连接。
+
 kill_err=无法终止数据库连接
 kill_ecannot=您无权管理数据库连接
 kill_enone=未选择
+
 vars_title=MySQL系统变量
 vars_desc=警告-重新启动MySQL时，在此页面上设置的变量将重置为其默认值。永久设置必须在<a href='$1'>MySQL服务器配置</a>页面上进行。
 vars_ecannot=您无权编辑系统变量
@@ -396,10 +428,12 @@ vars_search=显示匹配的变量：
 vars_ok=搜索
 vars_none2=没有系统变量与您的搜索匹配。
 vars_none=找不到系统变量！
+
 compat_ansi=美标
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQL 4.0
 compat_postgresql=PostgreSQL的
+
 compat_oracle=甲骨文
 compat_mssql=Microsoft SQL
 compat_db2=DB2
@@ -407,7 +441,9 @@ compat_maxdb=最大数据库
 compat_no_key_options=关键选项
 compat_no_table_options=表格选项
 compat_no_field_options=栏位选项
+
 config_echarset=缺少字符或外观无效的字符集
+
 root_title=更改管理密码
 root_header=新的管理密码
 root_user=管理登录
@@ -420,6 +456,7 @@ root_epass1=没有输入新密码
 root_epass2=密码不匹配
 root_none=没有密码！
 root_auto=自动（通常为<tt>root</tt>）
+
 mysqlpass_err=MySQL安全模式
 mysqlpass_esafecmd=找不到启动禁用身份验证的MySQL所需的命令 $1
 mysqlpass_eshutdown=关机失败： $1

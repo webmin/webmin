@@ -57,6 +57,7 @@ index_reposdisable=Desgaitu biltegiak
 index_reposenable=Gaitu biltegiak
 index_reposdelete=Ezabatu gordailuak
 index_repoheader=Paketeen biltegi aukera berriak
+
 update_title=Eguneratu Paketeak
 update_title2=Paketeak instalatu
 update_enone=Ez da paketerik hautatu
@@ -94,9 +95,11 @@ update_none=Bat ere ez
 update_ops=Paketeen zerrenda osoa eraikitzen du ..
 update_rebootdesc=Instalatutako paketeetako batek berrabiarazpena erabat aplikatu behar du.
 update_reboot=Berrabiarazi orain
+
 sched_title=Eguneratutako egutegia
 sched_yes=Eguneratzeak planifikatuta egotea aktibo dago.
 sched_no=Eguneratzeak kontrolatzeko programazioa desgaituta dago.
+
 log_update=$1 pakete eguneratuak instalatu dira
 log_sched=Programatutako eguneratzeak gaitu dira
 log_unsched=Programatutako eguneratzeak desgaituta daude
@@ -108,11 +111,13 @@ log_enable_repo=$1 pakete biltegia gaituta dago
 log_disable_repo=Desgaituta dagoen $1 pakete biltegia
 log_delete_repo=$1 pakete biltegia ezabatu da
 log_create_repo=$1 pakete biltegia sortu da
+
 refresh_title=Pakete freskagarriak
 refresh_clearing=Paketeen katxeak garbitzen ..
 refresh_done=.. egin
 refresh_available=Eskuragarri dauden paketeak berriro ekartzea ..
 refresh_done3=.. $1 eguneratze posible aurkitu ditu
+
 view_title=Paketearen xehetasunak
 view_header=Paketeei buruzko informazio eguneratzailea
 view_name=Paketearen izena
@@ -126,12 +131,14 @@ view_changelog=Eskuragarri dagoen bertsiorako Changelog
 view_software=Paketea kudeatu
 view_update=Eguneratu paketea
 view_install=Instalatu paketea
+
 system_yum=YUM
 system_apt=APT
 system_csw=CSW (Blastwave)
 system_webmin=Webmin modulua
 system_usermin=Usermin modulua
 system_tgz=Webmin edo Usermin tar.gz
+
 repos_err_disable=Ezin izan da biltegiak desgaitu
 repos_err_enable=Ezin izan da biltegiak gaitu
 repos_err_delete=Ezin izan da biltegiak ezabatu

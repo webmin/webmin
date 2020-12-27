@@ -20,6 +20,7 @@ index_nostrftime=Waarskuwing - sommige rugsteunkoste gebruik % in hul lêernaam,
 index_tabsched=Geplande rugsteun
 index_tabbackup=Maak nou 'n rugsteun
 index_tabrestore=Herstel nou
+
 edit_title1=Skep geskeduleerde rugsteun
 edit_title2=Wysig geskeduleerde rugsteun
 edit_header=Geplande rugsteunopsies
@@ -44,9 +45,11 @@ edit_return=rugsteunvorm
 edit_other=Ander gelys lêers ..
 edit_pre=Voor-rugsteun opdrag
 edit_post=Na-rugsteun opdrag
+
 save_err=Kon nie rugsteun stoor nie
 save_emods=Geen modules gekies nie
 save_ewebmin=Nie webmin- of bedienerkonfigurasie-lêers is gekies nie
+
 backup_mode0=Plaaslike lêer
 backup_mode1=FTP-bediener
 backup_mode2=SSH-bediener
@@ -63,6 +66,7 @@ backup_egunzip=Rugsteun is saamgepers, maar <tt>pistool</tt> is nie geïnstallee
 backup_euntar=Un-TAR misluk : $1 
 backup_enone2=Geen van die lêers vir die geselekteerde modules is in die rugsteun nie
 backup_epre2=Module $1 verwerp herstel : $2 
+
 backup_err=Rugsteun het misluk
 backup_edest=Absolute of ongeldige plaaslike lêer ontbreek
 backup_eserver1=Ontbrekende of ongeldige FTP-bediener
@@ -78,6 +82,7 @@ backup_title=Rugsteunkonfigurasie
 backup_doing=Begin rugsteun van modulekonfigurasie-lêers na $1.
 backup_failed=.. misluk! $1 
 backup_done=.. voltooi. Die finale rugsteungrootte was $1, met $2 lêers.
+
 restore_err=Herstel het misluk
 restore_emods=Geen modules of ander lêers word gekies nie
 restore_title=Herstel die konfigurasie
@@ -86,22 +91,26 @@ restore_testing=Onttrek die inhoud van die rugsteun vanaf $1.
 restore_failed=.. misluk! $1 
 restore_done=.. voltooi. $1 lêers is herstel.
 restore_done2=.. lêers in die rugsteun is :
+
 nice_ftp=$2 op $1 via FTP
 nice_ftpp=$2 op $1 poort $3 via FTP
 nice_ssh=$2 op $1 via SSH
 nice_sshp=$2 op $1 hawe $3 via SSH
 nice_upload=opgelaaide lêer
 nice_download=leser
+
 log_backup=Ondersteun $1 modules na $2 
 log_restore=Herstel $1 modules vanaf $2 
 log_create_backup=Skep rugsteun van $1 modules na $2 
 log_modify_backup=Gewysigde rugsteun van $1 modules na $2 
 log_delete_backup=Rugsteun van $1 modules na $2 is verwyder
 log_run_backup=Uitvoer van rugsteun van $1 modules na $2 
+
 run_title=Rugsteunkonfigurasies
 run_doing=Begin rugsteun van $1 modules na $2.
 run_ok=.. rugsteun suksesvol voltooi.
 run_failed=.. rugsteun het misluk! Kyk na die foutboodskap hierbo om die rede.
+
 email_mods=Rugsteun van modules :
 email_failed=tot $1 misluk :
 email_ok=na $1 slaag.

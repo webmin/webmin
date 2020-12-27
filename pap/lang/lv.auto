@@ -14,10 +14,12 @@ index_apply=Piesakies
 index_return=PPP indekss
 index_none=Jums nav piekļuves nevienai no šī moduļa funkcijām.
 index_delete=Dzēst atlasītos kontus
+
 secrets_title=PPP konti
 secrets_return=indekss
 secrets_none=PPP konti vēl nav izveidoti.
 secrets_ecannot=Jums nav atļauts rediģēt PPP kontus
+
 edit_secret_etitle=Rediģēt PPP kontu
 edit_secret_ctitle=Izveidojiet PPP kontu
 edit_secret_acc=PPP konts
@@ -37,8 +39,10 @@ edit_secret_alist=Atļaut sarakstā ..
 edit_secret_save=Saglabāt
 edit_secret_del=Dzēst
 edit_secret_return=kontu saraksts
+
 save_secret_esave=Neizdevās saglabāt kontu
 save_secret_enoip=“$1” nav derīga adrese
+
 log_create=Izveidots PPP konts $1 
 log_modify=Modificēts PPP konts $1 
 log_delete=Dzēsts PPP konts $1 
@@ -54,6 +58,7 @@ log_dialin_move=Pārvietots zvanītāja ID numurs $1
 log_mgetty_create=Izveidots seriālais ports $1 
 log_mgetty_modify=Pārveidots seriālais ports $1 
 log_mgetty_delete=Dzēsts sērijas ports $1 
+
 options_title=PPP iespējas
 options_serial=Sērijas portam $1 
 options_dev=Ierīcei $1 
@@ -84,6 +89,7 @@ options_idle=Gaidīšanas laiks pirms atvienošanas
 options_idle_def=Nekad
 options_eidle=Trūkst vai nav derīgs dīkstāves laiks
 options_ecannot=Jums nav atļauts rediģēt PPP opcijas
+
 mgetty_title=Sērijas porta konfigurācija
 mgetty_ecmd=Komanda $1 jūsu sistēmā netika atrasta. Šī programma ir nepieciešama, lai apstrādātu seriālo portu pieteikšanās, izmantojot modemu vai tiešu savienojumu.
 mgetty_desc=Lai jūsu serveris atļautu pieteikšanos seriālajā ostā, izmantojot modemu vai tiešu savienojumu, tam jābūt uzskaitītam zemāk. Pievienojot portu šim sarakstam, programma $1 tiks konfigurēta, lai atbildētu uz modema savienojumiem un parādītu pieteikšanās uzvedni.
@@ -125,6 +131,7 @@ mgetty_apply=Lietot konfigurāciju
 mgetty_applydesc=Noklikšķiniet uz šīs pogas, lai lietotu pašreizējo seriālā porta konfigurāciju, palaižot komandu $1 un nogalinot visus Mgetty procesus.
 mgetty_applyerr=Neizdevās piemērot konfigurāciju
 mgetty_ecannot=Jums nav atļauts rediģēt seriālo portu konfigurācijas
+
 dialin_title=Piekļuve zvanītāja ID
 dialin_desc=Šī lapa ļauj jums konfigurēt Mgetty, lai atļautu vai aizliegtu piekļuvi iezvanpieejai, pamatojoties uz zvanītāja tālruņa numuru. Kad notiek zvans, pirmais ieraksts sarakstā, kas atbilst tālruņa numuram, noteiks, vai zvans tiek pieņemts.
 dialin_efile=Mgetty zvanītāja ID piekļuves kontroles fails $1 jūsu sistēmā netika atrasts. Varbūt Mgetty nav instalēta, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
@@ -145,9 +152,12 @@ dialin_move=Kustēties
 dialin_err=Neizdevās saglabāt zvanītāja ID numuru
 dialin_enumber=Trūkst vai nav derīgs tālruņa numurs
 dialin_ecannot=Jums nav atļauts rediģēt piekļuvi zvanītāja ID
+
 acl_pages=Pieejamās lapas
 acl_direct=Iet tieši uz vienu lapu?
+
 sync_ecannot=Jums nav atļauts rediģēt unix-ppp sinhronizācijas opcijas
 sync_title=Lietotāja sinhronizācija
+
 delete_err=Neizdevās izdzēst kontus
 delete_enone=Nav atlasīts

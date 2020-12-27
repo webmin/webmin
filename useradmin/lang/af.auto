@@ -51,11 +51,13 @@ index_mass=Vee geselekteerde gebruikers uit
 index_mass2=Deaktiveer gekies
 index_mass3=Aktiveer geselekteerde
 index_gmass=Vee geselekteerde groepe uit
+
 search_title=Soek Resultate
 search_notfound=Geen passende gebruikers gevind nie
 search_found=$1 passende gebruikers gevind
 search_gnotfound=Geen passende groepe gevind nie
 search_gfound=$1 passende groepe gevind.
+
 uedit_title=Gebruiker wysig
 uedit_title2=Skep gebruiker
 uedit_details=Gebruikersbesonderhede
@@ -133,6 +135,7 @@ uedit_uid_calc=bereken
 uedit_disabled=Aanmelding is tydelik gedeaktiveer
 uedit_sys=Stelsel verstek
 uedit_clone=Kloongebruiker
+
 usave_err=Kon nie gebruiker stoor nie
 usave_eedit=U kan nie hierdie gebruiker wysig nie
 usave_ecreate=U kan nie nuwe gebruikers skep nie
@@ -186,6 +189,7 @@ usave_epasswd_same=Wagwoord bevat of is dieselfde as gebruikersnaam
 usave_epasswd_mindays=Wagwoord is minder as $1 dae gelede verander
 usave_epasswd_cmd=Wagwoord validering opdrag misluk
 usave_eothers=Die gebruiker is suksesvol gestoor, maar 'n fout het in 'n ander module opgetree : $1
+
 gedit_title=Groep redigeer
 gedit_title2=Skep 'n groep
 gedit_details=Groepbesonderhede
@@ -208,6 +212,7 @@ gedit_selu=Gebruikers in groep
 gedit_pri=Primêre groeplede
 gedit_prinone=Geen gebruikers het hierdie groep as hul primêre nie
 gedit_clone=Kloongroep
+
 gsave_err=Kon nie groep stoor nie
 gsave_eedit=U kan nie hierdie groep wysig nie
 gsave_ecreate=U kan nie nuwe groepe skep nie
@@ -224,6 +229,7 @@ usave_egidused=Groep $1 gebruik al GID $2
 gsave_egidused2=GID is reeds in gebruik
 usave_efromroot=U kan nie die tuisgids skuif vanaf /
 usave_etoroot=U kan nie die tuisgids na /
+
 logins_title=Opgeneemde aanmeldings
 logins_head=Aangemelde aanmeldings vir $1
 logins_from=Teken in vanaf
@@ -236,6 +242,7 @@ logins_none=Geen aanmeldings opgeneem nie
 logins_elist=U mag nie aanmeldings noem nie
 logins_elistu=U mag nie aanmeldings vir '$1' lys nie
 logins_local=plaaslike
+
 udel_title=Verwyder gebruiker
 udel_err=Kon nie gebruiker uitvee nie
 udel_enum=Ongeldige gebruikersnommer
@@ -258,6 +265,7 @@ udel_del2=Verwyder gebruikers- en tuisgids
 udel_others=WAARSKUWING! Tuisgids $1 bevat $2 lêers wat deur ander gebruikers besit word.
 udel_dothers=Gebruiker in ander modules uitvee?
 udel_root=Waarskuwing! As die stamgebruiker uitgevee word, sal u moontlik nie in die toekoms u stelsel kan administreer nie.
+
 gdel_title=Vee groep uit
 gdel_err=Kon nie groep uitvee nie
 gdel_eroot=U mag nie stelselgroepe (dié met 'n GID kleiner as of gelyk aan 10) uitvee nie.
@@ -271,6 +279,7 @@ gdel_sure=Is u seker dat u die groep $1 wil verwyder?
 gdel_del=Vee groep uit
 gdel_dothers=Groep in ander modules uitvee?
 gdel_other=Skrap van ander modules ..
+
 many_title=Skep meerdere gebruikers
 many_desc=Met hierdie vorm kan u baie gebruikers tegelyk skep vanuit 'n opgelaaide of plaaslike tekslêer. Elke reël in die lêer spesifiseer een gebruiker in die volgende formaat:
 many_desc2=username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire
@@ -294,6 +303,7 @@ many_eshell=Ongeldige dop by lyn $1 : $2
 many_emkdir=Kon nie tuisgids skep nie $1 : $2 
 many_egtaken=Groepnaam wat reeds in gebruik is by reël $1 : $2 
 many_ok=Gebruiker is geskep $1
+
 acl_uedit=Unix gebruikers wat geredigeer kan word
 acl_uedit_all=Alle gebruikers
 acl_uedit_none=Geen gebruikers nie
@@ -353,6 +363,7 @@ acl_udelete=Kan gebruikers verwyder?
 acl_gdelete=Kan groepe uitgevee word?
 acl_urename=Kan gebruikers hernoem word?
 acl_grename=Kan groepe hernoem word?
+
 log_urename=Gebruiker hernoem $1 na $2
 log_umodify=Veranderde gebruiker $1
 log_ucreate=Gebruiker is geskep $1
@@ -371,6 +382,7 @@ log_ugbatch=Uitgevoer groep groep-lêer uitgevoer
 log_ugbatch_l=Uitgevoer groep groep-lêer ($1 geskep, $2 gewysig, $3 geskrap)
 log_delete_users=$1 gebruikers is uitgevee
 log_delete_groups=$1 groepe is uitgevee
+
 batch_title=Voer bondellêer uit
 batch_ecannot=U kan nie die groeplêervorm gebruik nie
 batch_desc=Met hierdie vorm kan u baie gebruikers gelyktydig uit 'n opgelaaide of plaaslike tekslêer skep, verander of uitvee. Afhangend van die eerste veld, bepaal elke reël in die lêer een aksie wat u moet neem. Die reëlformate is :
@@ -429,12 +441,14 @@ batch_eexpire=Ongeldige vervaldag op die lyn $1 : $2
 batch_echange=Ongeldige wagwoordveranderingsdag op die lyn $1 : $2 
 batch_instr=Instruksies en bondelformaat
 batch_header=Opsies, opdatering en verwydering van opsies vir gebruikers
+
 who_title=Aangemelde gebruikers
 who_user=Unix-gebruiker
 who_tty=TTY
 who_when=Meld aan by
 who_from=Aangemeld vanaf
 who_none=Geen gebruikers is tans aangemeld nie.
+
 export_title=Voer groeplêer uit
 export_desc=Met hierdie vorm kan u 'n groeplêer skep wat sommige of al die beskikbare gebruikers op die stelsel bevat. Die lêer kan op die Execute Batch File-bladsy op 'n ander stelsel gebruik word om die uitgevoerde gebruikers weer te skep, met die veronderstelling dat dit die geselekteerde groeplêerformaat gebruik.
 export_header=Groepuitvoeropsies vir gebruikers
@@ -455,6 +469,7 @@ export_done=$1 gebruikers is suksesvol uitgevoer na die lêer $2 ($3).
 export_pft=Groeplêerformaat
 export_who=Gebruikers om uit te voer
 export_ecannot=U mag nie gebruikers uitvoer nie
+
 gexport_title=Uitvoer groepjoernaal
 gexport_desc=Met hierdie vorm kan u 'n groeplêer skep wat sommige of al die beskikbare groepe op die stelsel bevat. Die lêer kan op die Execute Group Batch File-bladsy op 'n ander stelsel gebruik word om die uitgevoerde groepe weer te skep.
 gexport_header=Uitvoeropsies vir groepgroepe
@@ -463,6 +478,7 @@ gexport_ecannot=U mag nie groepe uitvoer nie
 gexport_err=Kon nie groep groeplêer uitvoer nie
 gexport_egid=Ongeldige eerste GID binne bereik
 gexport_egid2=Ongeldige tweede GID binne bereik
+
 pft_0=Net klassieke <tt>passwd</tt> lêer
 pft_1=BSD <tt>master.passwd</tt> lêer
 pft_2=Standaard <tt>passwd</tt> en <tt>skadu</tt> lêers
@@ -470,6 +486,7 @@ pft_3=Unixware <tt>passwd</tt> lêer
 pft_4=AIX <tt>passwd</tt> en <tt>beveiliging</tt> lêers
 pft_5=OpenServer <tt>passwd</tt> en kort <tt>skadu</tt> lêers
 pft_6=MacOS NetInfo-databasis
+
 umass_title=Verwyder gebruikers
 umass_err=Kon nie gebruikers uitvee nie
 umass_sure=Is u seker dat u die $1 geselekteerde gebruikers wil verwyder? Hul tuisgidse bevat $2 lêers.
@@ -481,6 +498,7 @@ umass_del1=Verwyder gebruikers
 umass_del2=Verwyder gebruikers en tuisgidse
 umass_eroot=U mag nie stelselgebruikers (diegene met 'n UID minder as of gelyk aan 10) uitvee nie.
 umass_doing=Gebruiker verwyder $1 ..
+
 gmass_title=Vee groepe uit
 gmass_err=Kon nie groepe uitvee nie
 gmass_sure=Is u seker dat u die $1 geselekteerde groepe wil verwyder?
@@ -490,16 +508,19 @@ gmass_del=Vee groepe uit
 gmass_eroot=U mag nie stelselgroepe (dié met 'n GID kleiner as of gelyk aan 10) uitvee nie.
 gmass_doing=Vee groep $1 uit.
 gmass_eprimary=Die groep $1 kan nie uitgevee word nie, want dit is die primêre groep gebruiker $2.
+
 dmass_title=Deaktiveer gebruikers
 dmass_sure=Is u seker dat u die $1 geselekteerde gebruikers wil deaktiveer? Dit kan later weer aangeskakel word sonder dat u wagwoorde of data verlore gaan.
 dmass_dis=Deaktiveer gebruikers
 dmass_pass=Wagwoord tydelik gesluit ..
 dmass_doing=Gebruiker deaktiveer $1 ..
 dmass_already=.. reeds gestrem!
+
 emass_title=Aktiveer gebruikers
 emass_pass=Ontsluit wagwoord ..
 emass_doing=Aktiveer gebruiker $1 ..
 emass_already=.. alreeds aangeskakel!
+
 gbatch_title=Voer groepjoernaallêers uit
 gbatch_ecannot=U kan nie die groep-groeplêervorm gebruik nie
 gbatch_desc=Met hierdie vorm kan u baie groepe gelyktydig uit 'n opgelaaide of plaaslike tekslêer skep, verander of uitvee. Afhangend van die eerste veld, bepaal elke reël in die lêer een aksie wat u moet neem. Die reëlformate is :

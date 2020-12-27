@@ -24,13 +24,16 @@ index_out=A saída de $1 foi
 index_boot=Conecte-se na inicialização com:
 index_noboot=&lt;Não conecte&gt;
 index_bootdesc=Altere esta opção para controlar se a conexão PPP selecionada é iniciada no momento da inicialização ou não.
+
 init_title=Detectar configuração
 init_cmd=Detectando um modem conectado com o comando $1 ..
 init_done=.. feito
 init_modems=Os modems estão configurados em $1 e $2.
 init_modem=Um modem foi detectado em $1.
 init_none=Nenhum modem foi detectado!
+
 device_serial=porta serial $1 
+
 connect_title=Estabelecer conexão
 connect_cmd=Tentativa de estabelecer uma conexão com o comando $1 ..
 connect_failed=.. conexão falhou! Veja a saída acima para o motivo.
@@ -40,12 +43,14 @@ connect_dns=Usando a configuração DNS atribuída ao PPP.
 connect_dns2=A configuração DNS atribuída ao PPP foi definida.
 connect_dnsto=Tempo limite aguardando a configuração do DNS atribuído pelo PPP.
 connect_dnsdown=A conexão parece ter falhado enquanto aguardava a configuração do DNS atribuído ao PPP.
+
 disc_title=Desligar PPP
 disc_err=Falha ao desligar a conexão PPP
 disc_edown=Já desconectado
 disc_ok1=Sua conexão PPP feita com $2 foi encerrada com êxito.
 disc_ok2=Sua conexão PPP foi encerrada com sucesso.
 disc_dns=Restaurada configuração DNS antiga.
+
 edit_title1=Adicionar discador ISP
 edit_title2=Editar discador ISP
 edit_ddesc=Essas configurações padrão serão aplicadas às conexões feitas com qualquer outro discador.
@@ -76,6 +81,7 @@ edit_idle=Tempo limite inativo (em segundos)
 edit_def=Das configurações padrão
 edit_inherits=Herdar configurações
 edit_from=Do discador ..
+
 save_err=Falha ao salvar o discador
 save_err2=Falha ao excluir o discador
 save_ename=Nome de discador ausente ou inválido
@@ -88,6 +94,7 @@ save_edial=Número de tentativas de discagem ausente ou inválido
 save_eidle=Tempo limite inativo ausente ou inválido
 save_einherits=Este discador não pode ser excluído porque '$1' herda configurações dele.
 save_eclash=Já existe um discador com o mesmo nome
+
 log_create=Criado $1 
 log_update=$1 atualizado
 log_delete=$1 excluído

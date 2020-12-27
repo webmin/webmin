@@ -6,6 +6,7 @@ index_stop=Zaustavite QMail procese
 index_stopmsg=Kliknite ovaj gumb kako biste zaustavili pozadinske procese QMail odgovorni za isporuku pošte u redu. Bez ovih postupaka, pošta se neće ispravno slati ili isporučiti vašem sustavu.
 index_start=Pokrenite QMail procese
 index_startmsg=Kliknite ovaj gumb da biste pokrenuli pozadinske procese QMail odgovorni za isporuku pošte u redu. Bez ovih postupaka, pošta se neće ispravno slati ili isporučiti vašem sustavu.
+
 opts_title=Opcije QMail
 opts_me=Lokalni naziv domaćina
 opts_helo=Naziv hosta za SMTP HELO
@@ -24,6 +25,7 @@ opts_etoremote=Nevažeće istek vremena odgovora SMTP
 opts_ebytes=Nevažeća maksimalna veličina poruke
 opts_etimeout=Nevažeće vremensko ograničenje dolaznih podataka SMTP
 opts_elocalip=Nevažeće ime domaćina IP adrese
+
 aliases_title=Aliases za poštu
 aliases_addr=Adresa
 aliases_to=Alias za ..
@@ -38,6 +40,7 @@ aliases_return=alias list
 aliases_toomany=Na vašem je sustavu previše pseudonima e-pošte za prikaz.
 aliases_go=Pronađi pseudonim koji odgovaraju:
 aliases_delete=Izbrišite odabrana imena
+
 aform_type0=nijedan
 aform_type1=Email adresa
 aform_type2=Imenik pošte
@@ -52,6 +55,7 @@ aform_val=Alias to
 aform_afile=Uredi ..
 aform_novirt=&lt;Sve domene&gt;
 aform_return=pseudonim
+
 asave_err=Spremanje aliasa nije uspjelo
 asave_eaddr='$1' nije valjana adresa
 asave_ealready=Alias za "$1" već postoji
@@ -62,13 +66,16 @@ asave_etype4='$1' nije važeći program ili ne postoji
 asave_etype5=Datoteka za automatsko odgovaranje '$1' nije valjana
 asave_etype4none=Nije dat program
 asave_etype6=Datoteka filtra "$1" nije valjana
+
 adelete_err=Brisanje aliasa nije uspjelo
 adelete_enone=Nijedna nije odabrana
+
 locals_title=Lokalne domene
 locals_domains=Lokalne domene za ovaj poslužitelj
 locals_desc=Qmail će prihvatiti dostavu lokalnim korisnicima e-poštom na domene i imena računala navedena u tekstnom polju s lijeve strane. Ako želite da vaš poslužitelj e-pošte obrađuje više domena e-pošte, sve bi trebale biti navedene na ovom obrascu.
 locals_only=Samo lokalni naziv računala $1 
 locals_sel=Domene navedene u nastavku ..
+
 rcpts_title=Prihvaćene domene
 rcpts_domains=Prihvaćena lokalna i relejna domena
 rcpts_all=Bilo koja domena
@@ -76,9 +83,11 @@ rcpts_sel=Domene navedene u nastavku ..
 rcpts_desc=Qmail će prihvatiti za prijenos ili lokalnu dostavu samo pošte na domene i imena računala navedena u tekstnom polju s lijeve strane. Možete unijeti i zamjenske znakove koji odgovaraju svim domaćinima u domeni poput <tt>.foo.com</tt>. Ako želite da vaš poslužitelj pošte preusmjerava e-poštu za klijente, morate prihvatiti poštu s bilo koje domene.
 rcpts_domains2=Dodatne lokalne i relejne domene
 rcpts_desc2=Ako imate veliki broj prihvaćenih domena, u ovaj tekstni okvir treba unijeti manje korištene. Općenito, prvih 50 dozvoljenih domena trebalo bi unijeti u gornji tekstni okvir, a ostale u ovo.
+
 bads_title=Odbijene adrese
 bads_addresses=Odbijene adrese e-pošte
 bads_desc=QMail će odbiti poštu za isporuku ili preusmjeravanje s bilo koje od adresa navedenih u tekstnom polju s lijeve strane, koje mora biti uneseno kao <tt>korisničko ime @ ime domene</tt>. Ako želite odbiti poštu s cijele domene, treba je unijeti kao <tt>@domainname</tt>.
+
 routes_title=Usmjeravanje domena
 routes_toomany=Na vašem je sustavu previše ruta za domenu da bi se prikazalo na ovoj stranici.
 routes_go=Pronađi odgovarajuće rute domene:
@@ -88,19 +97,24 @@ routes_direct=Isporučite izravno
 routes_defroute=Dostavite svu drugu odlaznu poštu putem:
 routes_return=rute domena
 routes_delete=Izbrišite odabrane rute domena
+
 rform_edit=Uređivanje rute domene
 rform_create=Stvaranje rute domene
 rform_from=Pošta za domaćina ili domenu
 rform_to=Slanje putem SMTP poslužitelja
 rform_port=SMTP port
+
 rsave_err=Spremanje rute domene nije uspjelo
 rsave_efrom='$1' nije valjano ime domene
 rsave_eto='$1' nije važeći SMTP poslužitelj
 rsave_eport='$1' nije važeći broj priključka
+
 rdelete_err=Brisanje ruta domene nije uspjelo
+
 percents_title=% Adresa domena
 percents_domains=Domene koje podržavaju % adrese
 percents_desc=QMail će prihvatiti e-poštu s adresama u formatu <tt>user%firstdomain@seconddomain</tt> ako je <tt>seconddomain</tt> naveden u tekstnom polju s lijeve strane. Poruke u ovom formatu bit će proslijeđene na <tt>user@firstdomain</tt> ovim poslužiteljem pošte.
+
 virts_title=Virtualna preslikavanja
 virts_toomany=Na vašem je sustavu previše virtualnih mapiranja za prikaz na ovoj stranici.
 virts_go=Pronađite podudaranje virtualnih mapiranja:
@@ -111,6 +125,7 @@ virts_none=Nije virtualno
 virts_desc=Virtualna preslikavanja QMail koriste za obradu e-pošte s različitim domenama na vašem poslužitelju, pretvarajući tekst na korisnički dio e-adrese prije daljnje obrade. Možete ih koristiti za postavljanje virtualnih domena pošte stvaranjem novog virtualnog preslikavanja za domenu, a zatim pomoću stranice <a href='$1'>Aliases Mail</a> da biste stvorili pseudonime u toj domeni.
 virts_return=virtualna preslikavanja
 virts_delete=Brisanje odabranih virtualnih mapiranja
+
 vform_edit=Uredi virtualno preslikavanje
 vform_create=Stvorite virtualno mapiranje
 vform_from=Pošta za adresu
@@ -121,13 +136,17 @@ vform_to=Dodajte korisničko ime
 vform_none=Ništa
 vform_prepend=Navedeni prefiks
 vform_auto=Automatski odabrani prefiks
+
 vsave_err=Spremanje virtualnog mapiranja nije uspjelo
 vsave_edomain='$1' nije valjana domena e-pošte
 vsave_euser='$1' nije valjano korisničko ime za e-poštu
 vsave_eprepend='$1' nije važeći prefiks mapiranja
 vsave_eboth=Ne možete odabrati obje opcije "Bilo koja adresa koja se ne podudara s drugim virtualnim mapiranjem" i "Ništa"
+
 vdelete_err=Brisanje virtualnih mapiranja nije uspjelo
+
 stop_err=qmail-send postupak se više ne pokreće
+
 log_stop=Zaustavljeni QMail procesi
 log_start=Pokrenuti QMail procesi
 log_opts=Izmijenjene su opcije QMaila
@@ -158,6 +177,7 @@ log_delete_assigns=Izbrisani korisnici e-pošte $1
 log_delmail=Izbrisane su poruke $1 od $2 
 log_movemail=Prenesene su $1 poruke s $2 na $3 
 log_send=Poslana pošta $1 
+
 rfile_title=Uređivanje datoteke Automatski odgovor
 rfile_desc=Upotrijebite područje teksta u nastavku za uređivanje poruke automatskog odgovora u $1. Poruka može sadržavati makronaredbe $SUBJECT, $FROM, $TO, $DATE i $BODY koje će se proširiti kada je aktivirano automatsko odgovaranje.
 rfile_desc2=Možete postaviti i zaglavlja e-pošte koja dodaju ili zamjenjuju zadane postavke korištene u automatskom odgovoru stavljanjem redaka poput: <br><tt> Od: foo@bar.com </tt><br> <tt>Tema: Na odmor</tt> <br> na vrhu poruke, odvojen od tijela jednim praznim retkom.
@@ -176,6 +196,7 @@ rfile_from=Od: adresa za odgovor
 rfile_auto=Automatski (na temelju adrese primatelja)
 rfile_efrom=Nedostaje: adresa
 rfile_fromdesc=O: Od adrese: uvijek treba navesti gdje je to moguće, jer automatska metoda možda nije pouzdana.
+
 ffile_title=Uredi datoteku filtra
 ffile_desc=Upotrijebite donji obrazac za postavljanje pravila filtra u datoteci $1.
 ffile_efile=Nije vam dopušteno uređivanje $1.
@@ -191,6 +212,7 @@ ffile_other=U protivnom proslijedite na $1
 ffile_err=Spremanje datoteke filtra nije uspjelo
 ffile_ematch=Nedostaje utakmica
 ffile_eaction=Nedostaje adresa za prosljeđivanje
+
 queue_title=Red čekanja
 queue_count=$1 poruke
 queue_none=Trenutno nijedna poruka e-pošte nije na redu za dostavu
@@ -206,10 +228,12 @@ queue_all=Odaberi sve
 queue_invert=Invert izbor
 queue_refresh=Osvježi red za poštu
 queue_refreshdesc=Ponovno učitajte ovu stranicu da biste prikazali trenutno stanje reda čekanja.
+
 qview_title=Poruka u redu
 qview_desc=Iz datoteke $1 
 qview_headers=Zaglavlja e-pošte
 qview_attach=Prilozi
+
 assigns_title=Dodjela korisnika pošte
 assigns_return=zadatke korisnika pošte
 assigns_toomany=Previše je korisnika pošte u vašem sustavu da bi se prikazalo na ovoj stranici.
@@ -221,6 +245,7 @@ assigns_gid=GID
 assigns_home=Domaći direktorij
 assigns_desc=Zadaci korisnika pošte omogućuju vam izradu poštanskih sandučića za korisnike koji nisu definirani na Unix popisu korisnika. Svaki zadatak isporučit će poštu za odabrani uzorak korisničkog imena ili korisničkog imena, kao da se dostavlja u stvarni Unixov poštanski sandučić.
 assigns_delete=Izbriši odabrane korisnike pošte
+
 sform_edit=Uređivanje korisnika pošte
 sform_create=Stvaranje korisnika pošte
 sform_address=Korisničko ime adrese
@@ -230,15 +255,19 @@ sform_user=Unix korisnik
 sform_uid=UID
 sform_gid=GID
 sform_home=Domaći direktorij
+
 ssave_err=Spremanje korisnika pošte nije uspjelo
 ssave_eaddress=Korisničko ime za nedostaje ili nije ispravno
 ssave_euser=Nedostaje ili nije važeći Unix korisnik
 ssave_euid=Nedostaje ili je nevažeći UID
 ssave_egid=Nedostaje ili nije važeći GID
 ssave_ehome=Nedostaje ili nije važeći kućni imenik
+
 sdelete_err=Brisanje korisnika pošte nije uspjelo
+
 delete_egone=Poruka u redu više ne postoji
 delete_ebogus=Nevažeće ime datoteke čekanja
+
 boxes_title=Korisničke poštanske sandučiće
 boxes_user=Korisnik
 boxes_size=Veličina poštanskog sandučića
@@ -248,6 +277,7 @@ boxes_sent=Poslana pošta
 boxes_ecannot=Nije vam dopušteno čitati e-poštu
 boxes_toomany=Na vašem sustavu ima previše korisnika da bi popisali sve svoje poštanske sandučiće.
 boxes_go=Pogledajte poštu za korisnika:
+
 mail_title=Korisnička adresa e-pošte
 mail_from=Iz
 mail_date=Datum
@@ -286,6 +316,7 @@ mail_forward=Naprijed
 mail_rfc=Iz linije
 mail_move=Premjesti u:
 mail_eexists=Poruka više ne postoji!
+
 view_title=Pročitajte e-poštu
 view_desc=Poruka $1 u $2 
 view_desc2=Poruka $1 za korisnika $2 
@@ -309,6 +340,7 @@ view_mark1=Čitati
 view_mark2=poseban
 view_return=originalnu e-poštu
 view_sub=Priložena e-pošta
+
 compose_title=Sastavite e-poštu
 reply_title=Odgovor na e-poštu
 forward_title=Prosljeđivanje e-pošte
@@ -319,6 +351,7 @@ reply_mailforward=Proslijeđene poruke
 reply_attach2=Prilozi na strani klijenta i poslužitelja
 reply_send=Poslati mail
 reply_ecannot=Nije vam dopušteno slanje pošte kao ovog korisnika
+
 send_err=Slanje pošte nije uspjelo
 send_eto=Nedostaje adresa
 send_efrom=Nedostaje s adrese
@@ -331,6 +364,7 @@ send_eattach=Prilozi ne mogu imati više od $1 kB.
 send_eperms=Korisnik $1 ne može čitati $2 
 send_eperms2=Nije vam dopušteno slanje datoteke $1 
 send_epath=Izvršni dokument Sendmail $1 ne postoji.
+
 delete_title=Izbriši poštu
 delete_rusure=Jeste li sigurni da želite izbrisati $1 odabrane poruke iz $2 ? Možda će potrajati neko vrijeme za veliku datoteku pošte. Dok se brisanje ne završi, ne smije se provoditi nikakva druga radnja.
 delete_rusure2=Jeste li sigurni da želite izbrisati ovu poruku sa $1 ? Možda će potrajati neko vrijeme za veliku datoteku pošte. Dok se brisanje ne završi, ne smije se provoditi nikakva druga radnja.
@@ -339,6 +373,7 @@ delete_ecannot=Sada vam je dopušteno brisanje pošte ovog korisnika
 delete_enone=Nije odabrana pošta za brisanje
 delete_emnone=Nije odabrana pošta za obilježavanje
 delete_nobutton=Nijedan klik nijedan gumb
+
 search_title=Rezultati pretraživanja
 search_ecannot=Nije vam dopušteno pretraživanje e-pošte ovog korisnika
 search_ematch=Morate unijeti tekst za podudaranje.
@@ -346,6 +381,7 @@ search_efield=Morate odabrati vrstu pretraživanja.
 search_none=Nisu pronađene poruke
 search_results2=$1 poruke e-pošte koji odgovaraju $2 ..
 search_results3=$1 poruke e-pošte ne odgovaraju $2 ..
+
 match_from=Od: šibice
 match_subject=Predmet: utakmice
 match_to=Za: utakmice
@@ -363,6 +399,7 @@ match_!date=Datum: ne podudara se
 match_!body=Tijelo se ne podudara
 match_!size=Veličina je manja od
 match_!headers=Zaglavlja se ne podudaraju
+
 delq_titles=Brisanje poruka
 delq_rusure=Jeste li sigurni da želite izbrisati $1 odabrane poruke u redu?
 delq_confirm=Izbriši poruke

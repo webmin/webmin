@@ -25,12 +25,15 @@ index_up=Začetek povezave:
 index_updesc=Na seznamu poleg tega gumba izberite povezavo in jo kliknite, da poskusite takoj vzpostaviti povezavo.
 index_nopol=Omrežnih pravil ni bilo mogoče najti - morda je vaša <a href='$1'>omrežna konfiguracija</a> napačna.
 index_import=Uvozi povezavo iz datoteke.
+
 stop_err=Ni uspelo zaustaviti strežnika IPsec
 start_err=Zagon strežnika IPsec ni uspel
 restart_err=Ni uspelo znova zagnati strežnika IPsec
 start_elog=Zabeležene so bile naslednje napake : $1 
+
 newkey_err=Generacije ključa ni bilo mogoče ustvariti
 newkey_ehost=Manjkajoče ali neveljavno ime gostitelja
+
 edit_title1=Ustvari povezavo
 edit_title2=Uredi povezavo
 edit_header=Podrobnosti o povezavi IPsec VPN
@@ -101,6 +104,7 @@ edit_unit_s=sek
 edit_unit_m=min
 edit_unit_h=ure
 edit_unit_d=dnevi
+
 config_title=Konfiguracija strežnika
 config_header=Globalne nastavitve strežnika VPN
 config_ifaces=Omrežni vmesniki za IPsec
@@ -118,6 +122,7 @@ config_nat=Želite omogočiti prečkanje NAT?
 config_err=Konfiguracije strežnika ni bilo mogoče shraniti
 config_eri=Pravi vmesnik '$1' je naveden večkrat
 config_enone=Ni bil določen noben omrežni vmesnik
+
 showkey_title=Pokaži javni ključ
 showkey_desc1=Spodnji javni ključ RSA je treba kopirati v konfiguracijo drugih sistemov, ki se povezujejo na ta, v razdelku, ki je povezan s tem gostiteljem.
 showkey_desc2=Spodnje vrednosti, prikazane spodaj, lahko uporabite za ustvarjanje zapisa DNS KEY za ta gostitelj, tako da lahko drugi sistemi, ki se nanj povezujejo, poiščejo njegov javni ključ.
@@ -125,6 +130,7 @@ showkey_flags=Zastave
 showkey_proto=Protokol
 showkey_alg=Algoritem
 showkey_key=Ključni podatki
+
 policy_desc_block=Blokirana omrežja
 policy_desc_clear=Počistite prometna omrežja
 policy_desc_private=Šifrirana omrežja
@@ -145,6 +151,7 @@ policy_mask=Predpona
 policy_err=Omrežja ni bilo mogoče shraniti
 policy_enet=Neveljaven omrežni naslov IP v vrstici $1 
 policy_emask=Neveljavna dolžina predpone v vrstici $2 
+
 save_err=Povezave ni bilo mogoče shraniti
 save_ename=Manjkajoče ali neveljavno ime povezave
 save_ekeying=Manjkajoča ali neveljavna številka ponovnih poskusov vnosa
@@ -164,6 +171,7 @@ save_eleftcert=Manjkajoče ali neveljavno potrdilo lokalnega strežnika
 save_erightcert=Manjkajoče ali neveljavno potrdilo oddaljenega strežnika
 save_ekeylife=Manjkajoča ali neveljavna življenjska doba ključa za povezavo
 save_eikelifetime=Manjkajoča ali neveljavna življenjska doba kanala
+
 log_create_conn=Ustvarjena povezava $1 
 log_delete_conn=Izbrisana povezava $1 
 log_modify_conn=Spremenjena povezava $1 
@@ -182,8 +190,10 @@ log_delete_secret=Izbrisan tajni ključ za $1
 log_create_secret_nn=Ustvaril skrivni ključ za katerega koli gostitelja
 log_modify_secret_nn=Spremenjen skrivni ključ za katerega koli gostitelja
 log_delete_secret_nn=Izbrisan skrivni ključ za katerega koli gostitelja
+
 up_title=Začetek povezave
 up_cmd=Začetek povezave z ukazom $1 ..
+
 export_title=Konfiguracija izvoza
 export_desc=Ta obrazec lahko uporabite za izvoz odseka konfiguracijske datoteke za povezavo $1, tako da ga je mogoče enostavno uvoziti na strežnik na drugem koncu.
 export_print=Prikaz konfiguracije v brskalniku
@@ -193,11 +203,13 @@ export_err=Konfiguracije ni bilo mogoče izvoziti
 export_efile=Manjka ime datoteke
 export_esave=Ni bilo mogoče zapisati v datoteko : $1 
 export_done=Izvožena konfiguracija za povezavo $1 do $2 ($3 bajtov).
+
 import_title=Uvozi konfiguracijo
 import_desc=Ta obrazec je mogoče uporabiti za uvoz razdelka konfiguracijske datoteke za povezavo, na primer tistega, ki ga je ustvarila funkcija izvoz modula v drug sistem.
 import_upload=Uvoz iz datoteke za nalaganje ..
 import_file=Uvoz iz datoteke na strani strežnika ..
 import_ok=Uvozi zdaj
+
 import_err=Uvoz konfiguracije ni uspel
 import_eupload=Za nalaganje ni izbrana nobena datoteka
 import_efile=Nobena datoteka na strani strežnika ni vnesena
@@ -207,6 +219,7 @@ import_eclash=Povezava, imenovana $1, že obstaja.
 import_done1=Nova povezava IPsec $1 je bila uspešno dodana.
 import_done2=Povezava IPsec $1 je uspešno posodobljena.
 import_over=Ali želite prepisati obstoječo povezavo z istim imenom?
+
 secrets_title=Skrivni ključi
 secrets_none=Nobenih skrivnostnih ključev ni bilo mogoče najti!
 secrets_name=Skrivnost za
@@ -220,6 +233,7 @@ secrets_mod=Modul $1
 secrets_newpsk=Ustvari nov skupni skrivni ključ.
 secrets_newrsa=Ustvari nov ključ RSA.
 secrets_return=seznam skrivnih ključev
+
 secret_title1=Ustvari tajni ključ
 secret_title2=Uredi tajni ključ
 secret_header=Skrivne ključne podrobnosti

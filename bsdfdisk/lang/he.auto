@@ -7,6 +7,7 @@ index_dsize=גודל כולל
 index_dmodel=לעשות ולעצב
 index_dparts=פרוסות
 index_return=רשימת דיסקים
+
 disk_title=ערוך דיסק
 disk_egone=הדיסק כבר לא קיים!
 disk_no=פרוסה
@@ -31,9 +32,11 @@ disk_return=פרטי דיסק ורשימת פרוסות
 disk_add=צור פרוסה חדשה.
 disk_smart=הצג סטטוס חכם
 disk_smartdesc=הצג את המצב הנוכחי של כונן זה כפי שזוהה על ידי SMART, ובדוק אם יש שגיאות בדיסק.
+
 select_device=מכשיר $1 $2 
 select_slice=$1 מכשיר $2 פרוסה $3 
 select_part=$1 מכשיר $2 פרוסה $3 מחיצה $4 
+
 slice_title=ערוך פרוסה
 slice_egone=פרוסה שנבחרה אינה קיימת!
 slice_ssize=גודל פרוסה
@@ -58,6 +61,7 @@ slice_return=פרוס פרטים ו רשימת המחיצות
 slice_err=שינוי הפרוסה נכשל
 slice_header=פרוס פרטים
 slice_suse=בשימוש ישיר על ידי
+
 dslice_title=מחק פרוסה
 dslice_rusure=האם אתה בטוח שברצונך למחוק את הפרוסה $1 ? כל המחיצות ומערכות הקבצים שבתוכו יימחקו גם הם.
 dslice_warn=אזהרה - פרוסה זו משמשת כיום על ידי : $1 
@@ -65,6 +69,7 @@ dslice_confirm=תמחק עכשיו
 dslice_deleting=מוחק פרוסה $1 ..
 dslice_failed=המחיקה נכשלה : $1 
 dslice_done=.. בוצע
+
 nslice_title=צור פרוסה
 nslice_header=פרטי פרוסה חדשים
 nslice_number=מספר פרוסה
@@ -86,6 +91,7 @@ nslice_done=.. פרוסה שנוספה
 nslice_parting=צור מחיצות ברירת מחדל בפרוסה $1 על $2.
 nslice_pfailed=.. יצירת המחיצה נכשלה : $1 
 nslice_pdone=.. מחיצה נוסף
+
 npart_title=צור מחיצה
 npart_header=פרטי מחיצה חדשים
 npart_letter=מכתב החלוקה
@@ -98,6 +104,7 @@ npart_emax=חסימת סיום לא יכולה להיות גדולה מגודל 
 npart_creating=יוצר מחיצה $1 על $2.
 npart_failed=.. יצירת המחיצה נכשלה : $1 
 npart_done=.. מחיצה נוסף
+
 part_title=ערוך מחיצה
 part_egone=המחיצה כבר לא קיימת!
 part_header=פרטי המחיצה
@@ -124,6 +131,7 @@ part_newmount2=הר מחיצה
 part_mountmsg=הר מכשיר זה לספריה חדשה במערכת שלך, כך שתוכל להשתמש בהם לאחסון קבצים. בטח כבר נוצרה מערכת קבצים במכשיר.
 part_mountmsg2=הרכיב מכשיר זה כזיכרון וירטואלי במערכת שלך, כדי להגדיל את כמות הזיכרון הזמינה.
 part_cannotedit=לא ניתן לשנות מחיצה זו מכיוון שהיא נמצאת כעת בשימוש.
+
 dpart_title=מחק מחיצה
 dpart_rusure=האם אתה בטוח שברצונך למחוק את המחיצה $1 ? גם כל מערכות הקבצים שבתוכו יימחקו.
 dpart_warn=אזהרה - כעת משתמשים במחיצה זו על ידי $1 
@@ -131,6 +139,7 @@ dpart_confirm=תמחק עכשיו
 dpart_deleting=מוחק מחיצה $1 ..
 dpart_failed=המחיקה נכשלה : $1 
 dpart_done=.. בוצע
+
 newfs_title=צור מערכת קבצים
 newfs_header=פרטי מערכת קבצים חדשים
 newfs_free=מקום לשריין לשורש
@@ -145,11 +154,13 @@ newfs_elabel=תווית חסרה או לא תקפה
 newfs_creating=יצירת מערכת קבצים ב- $1 ..
 newfs_failed=.. היצירה נכשלה!
 newfs_done=.. נוצר בהצלחה
+
 fsck_title=בדוק את מערכת הקבצים
 fsck_err=בדיקת מערכת הקבצים נכשלה
 fsck_checking=בודקת מערכת קבצים ב- $1 ..
 fsck_failed=.. הסימון נכשל!
 fsck_done=.. הסימון הושלם ולא נמצאו שגיאות
+
 log_create_slice=יצר פרוסה $1 
 log_delete_slice=פרוסה $1 נמחקה
 log_modify_slice=פרוסה שונה 1

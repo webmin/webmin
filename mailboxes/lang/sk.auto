@@ -2,6 +2,7 @@ index_title=Prečítajte si poštu používateľa
 index_none=V tomto systéme nemôžete čítať e-maily pre žiadnych používateľov.
 index_header=Poštové schránky používateľa
 index_empty=Žiadna pošta
+index_return=zoznam používateľov
 index_esystem=Vo vašom systéme nebol zistený žiadny z podporovaných poštových serverov (Exim, Qmail, Postfix a Sendmail). Ak chcete nastaviť poštový server a prípadne poštové cesty manuálne, budete musieť upraviť <a href='$1'>konfiguráciu modulu</a>.
 index_esystem2=Poštový server nastavený v <a href='$1'>konfigurácii modulu</a> nebol vo vašom systéme nájdený. Aby ste mohli používať správny server, budete musieť upraviť konfiguráciu.
 index_esystem3=Pri kontaktovaní poštového systému nastaveného v konfigurácii modulu <a href='$1'>došlo k chybe</a>: $2.
@@ -19,6 +20,7 @@ index_eperl=Nie je nainštalovaný modul Perl $1 potrebný pre vybratý režim a
 index_file=Čítanie správ v súbore alebo v pošte:
 index_nousers=Nenašli sa žiadni používatelia!
 index_nousersmail=Nenašli sa žiadni používatelia s e-mailom.
+
 mail_title=E-mail používateľa
 mail_from=z
 mail_date=Dátum
@@ -75,6 +77,7 @@ mail_fromfilter=Vytvorte filter podľa odosielateľa
 mail_tofilter=Vytvorte filter podľa príjemcu
 mail_subfilter=Vytvorte filter podľa predmetu
 mail_unknown=nevedno
+
 mail_sign=Podpis s kľúčom
 mail_nosign=&lt;Nepodpísať&gt;
 mail_crypt=Šifrovať pre
@@ -109,6 +112,7 @@ mail_selread=Vyberte prečítané.
 mail_selunread=Vyberte neprečítané.
 mail_selspecial=Vyberte špeciálne.
 mail_specialsync=Synchronizácia špeciálna
+
 view_title=Prečítajte si e-mail
 view_desc=Správa $1 v $2
 view_desc2=Správa $1 pre používateľa $2
@@ -150,6 +154,7 @@ view_sub=Priložený e-mail
 view_sub2=Priložený e-mail od $1
 view_egone=Táto správa už neexistuje
 view_eugone=Tento používateľ neexistuje
+
 view_gnupg=Overenie podpisu GnuPG
 view_gnupg_0=Podpis $1 je platný.
 view_gnupg_1=Podpis $1 je platný, ale reťaz dôvery sa nepodarilo vytvoriť.
@@ -186,7 +191,9 @@ view_images=Zobraziť obrázky
 view_raw=Zobraziť nespracovanú správu
 view_aall=Uložte všetky prílohy ako ZIP.
 view_aslideshow=Zobraziť všetky obrázky.
+
 compose_title=Napíšte e-mail
+
 reply_title=Odpoveď na e-mail
 forward_title=Poslať ďalej e-mailom
 enew_title=Upraviť e-mail
@@ -216,9 +223,11 @@ reply_addattach=Pridajte pole prílohy.
 reply_addssattach=Pridajte pole na strane servera.
 reply_html0=Napíšte text
 reply_html1=Vytvorte HTML
+
 reply_spell=Skontrolovať pravopisné chyby?
 reply_draft=Uložiť ako koncept
 reply_save=Uložiť a upraviť
+
 send_err=Nepodarilo sa odoslať poštu
 send_eto=Chýba adresa
 send_efrom=Chýba adresa
@@ -235,6 +244,7 @@ send_eperms2=Nemáte oprávnenie odosielať súbor $1
 send_epath=Spustiteľný súbor Sendmail $1 neexistuje.
 send_efile=Nepodarilo sa prečítať prílohu $1 : $2 
 send_done=.. hotový.
+
 send_epass=Správu nemôžete podpísať, pretože vaše prístupové frázy ešte neboli v module GnuPG nastavené.
 send_esign=Nepodarilo sa podpísať správu : $1
 send_ekey=Kľúč e-mailovej adresy sa nepodarilo nájsť $1
@@ -246,6 +256,7 @@ send_espell=Vo vašej správe sa našli nasledujúce pravopisné chyby.
 send_draft=Pošta do $1 uložená v priečinku Koncepty.
 send_drafting=Ukladá sa pošta do priečinka Koncepty na $1.
 send_eattachsize=Poštová príloha prekročila maximálnu povolenú veľkosť $1 bajtov
+
 delete_title=Odstrániť poštu
 delete_rusure=Naozaj chcete odstrániť vybraté správy $1 z $2? V prípade veľkého poštového súboru to môže chvíľu trvať. Kým nebude vymazanie ukončené, nemala by sa vykonávať žiadna iná akcia.
 delete_rusure2=Naozaj chcete odstrániť túto správu z $1? V prípade veľkého poštového súboru to môže chvíľu trvať. Kým nebude vymazanie ukončené, nemala by sa vykonávať žiadna iná akcia.
@@ -268,6 +279,7 @@ delete_nobutton=Klikli na žiadne tlačidlo
 delete_ereport=Nepodarilo sa nahlásiť ako spam : $1
 delete_errc=Nepodarilo sa skopírovať poštu
 delete_errm=Nepodarilo sa presunúť poštu
+
 confirm_title=Potvrďte odstránenie
 confirm_warn=Naozaj chcete odstrániť vybraté správy z tohto priečinka $1?
 confirm_warnf=Naozaj chcete odstrániť vybraté správy $1 z priečinka <b>$2</b>?
@@ -277,6 +289,7 @@ confirm_warn4=Kým nebude vymazanie ukončené, nemala by sa vykonávať žiadna
 confirm_ok=Odstrániť teraz
 confirm_warnall=Naozaj chcete odstrániť všetky správy v tomto priečinku?
 confirm_warnallf=Naozaj chcete odstrániť všetky správy v priečinku <b>$1</b>?
+
 search_title=Výsledky vyhľadávania
 search_ecannot=Nemáte povolené prehľadávať e-maily tohto používateľa
 search_ematch=Musíte zadať text, aby sa zhodoval s.
@@ -305,16 +318,19 @@ search_nolatest=Všetko v priečinku
 search_latestnum=Iba najnovšie
 search_elatest=Chýba alebo je neplatný počet správ na vyhľadávanie
 search_withstatus=, so stavom $1
+
 folder_inbox=Doručená pošta
 folder_sent=Odoslaná pošta
 folder_drafts=dáma
 folder_trash=Smeti
+
 detach_err=Súbor sa nepodarilo odpojiť
 detach_edir=Do súboru nebol vložený žiadny súbor alebo adresár
 detach_eopen=Nepodarilo sa otvoriť $1 : $2 
 detach_ewrite=Nepodarilo sa zapísať do $1 : $2 
 detach_title=Odpojte súbor
 detach_ok=Napísaná príloha k súboru na strane servera $1 ($2).
+
 sform_title=pokročilé vyhľadávanie
 sform_header=Možnosti rozšíreného vyhľadávania e-mailov
 sform_andmode=Režim kritérií
@@ -339,6 +355,7 @@ sform_headers=ľubovoľná hlavička
 sform_allmsg=celá správa
 sform_size=veľkosť správy
 sform_return=formulár rozšíreného vyhľadávania
+
 find_enone=Nenašli sa žiadni používatelia zodpovedajúci vášmu vyhľadávaniu
 find_title=Výsledky vyhľadávania
 find_results=Užívatelia zhodujúci sa s hľadaním $1 ..
@@ -351,6 +368,7 @@ find_incount=e-maily
 find_sentcount=odoslané
 find_fcount=zložky
 find_in=$1 v $2
+
 acl_none=nikto
 acl_same=Používateľ s rovnakým menom
 acl_all=všetko
@@ -376,12 +394,15 @@ acl_usersu=S rozsahom UID
 acl_sec=Zahrnúť sekundárne skupiny?
 acl_dir=Dokáže čítať poštové súbory v adresári
 acl_dirauto=Rozhodnite sa automaticky (kdekoľvek, ak sú všetci používatelia viditeľní, nikde inde)
+
 log_delmail=Odstránené $1 správy z $2
 log_movemail=Správy boli presunuté $1 z $2 do $3
 log_copymail=Skopírované správy $1 z $2 do $3
 log_send=Odoslaná pošta na adresu $1
 log_read=Čítať poštu pre $1
+
 emodified=Tento priečinok bol od posledného zobrazenia zmenený! Vráťte sa do <a href='$1'>zoznamu e-mailov</a> a skúste to znova.
+
 razor_title=Nahlásenie ako spam
 razor_title2=Reporting As Ham
 razor_report=Nahlásenie tejto správy Razorovi a iným databázam blokujúcim spam SpamAssassin.
@@ -391,14 +412,18 @@ razor_done=.. hotový
 razor_err=.. zlyhalo! Dôvod prečo je uvedený vyššie v chybovom hlásení.
 razor_moved=.. hotovo a presunuté do priečinka $1.
 razor_deleted=.. hotovo a tiež odstránená správa.
+
 ham_title=Reporting As Ham
 ham_report=Nahlásenie tejto správy ako nevyžiadanej pošty pre Razor a ďalšie databázy SpamAssassin.
+
 black_title=Odmietnutie odosielateľa
 black_done=Do zoznamu zamietnutých adries SpamAssassinu bola pridaná e-mailová adresa $1.
 black_already=E-mailová adresa $1 je už na zozname zakázaných adries SpamAssassinu.
+
 white_title=Povolenie odosielateľa
 white_done=Do zoznamu povolených adries SpamAssassinu bola pridaná e-mailová adresa $1.
 white_already=E-mailová adresa $1 je už na zozname povolených adries SpamAssassinu.
+
 ldap_emod=Chýba modul Perl $1 potrebný na pripojenie k LDAP
 ldap_econn=Nepodarilo sa pripojiť k serveru LDAP $1 port $2
 ldap_elogin=Nepodarilo sa naviazať na server LDAP $1 ako $2 : $3 
@@ -406,12 +431,15 @@ ldap_ehost=V konfigurácii modulu nie je nastavený žiadny server LDAP
 ldap_eport=V konfigurácii modulu nie je nastavený žiadny platný port servera LDAP
 ldap_euser=V konfigurácii modulu nie je nastavené žiadne prihlásenie LDAP
 ldap_ebase=V konfigurácii modulu nie je nastavený žiadny základný DN LDAP
+
 delall_title=Odstrániť všetky správy
 delall_rusure=Naozaj chcete odstrániť všetky e-maily z $1? $2 správy v celkovej hodnote $3 budú navždy odstránené.
 delall_ok=Odstrániť teraz
+
 slide_title=Priložené obrázky
 slide_prev=predchádzajúca
 slide_next=Ďalšie
+
 left_mail=pošta
 left_search=Vyhľadávanie:
 left_folders=Správa priečinkov

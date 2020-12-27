@@ -44,6 +44,7 @@ index_dscsi=SCSI naprava $1 krmilnik $2
 index_draid=RAID raven $1 
 index_dparts=Predelne stene
 index_none2=V tem sistemu ni bilo najdenih diskov.
+
 bytes=bajti
 megabytes=megabajtov
 extended=Podaljšana
@@ -67,6 +68,7 @@ select_promise=Obljubite pogon RAID $1
 select_ppart=Obljubite pogon RAID $1 particijo $2 
 select_nvme=NVME SSD $1 pogon $2 
 select_nvmepart=NVME SSD $1 pogon $2 particija $3 
+
 edit_title=Uredi particijo
 create_title=Ustvari particijo
 edit_ecannot=Tega diska ne smete urejati
@@ -110,6 +112,7 @@ edit_newmount2=Mount particija
 edit_mountas=kot
 edit_mountmsg=To particijo namestite na nov imenik v vašem sistemu, tako da se lahko uporablja za shranjevanje datotek. Na particiji mora biti že ustvarjen datotečni sistem.
 edit_mountmsg2=To particijo namestite kot virtualni pomnilnik v vašem sistemu, da povečate količino pomnilnika, ki je na voljo.
+
 mkfs_title=Nov datotečni sistem
 mkfs_ecannot=Na tem disku ne smete sestaviti novega datotečnega sistema
 mkfs_desc1=S klikom na gumb na dnu tega obrazca se ustvari nov $1 datotečni sistem na napravi $2. Vsi podatki na tej particiji bodo trajno izbrisani.
@@ -120,6 +123,7 @@ mkfs_err=Ustvarjanja datotečnega sistema ni uspelo
 mkfs_exec=Izvedba ukaza $1 ..
 mkfs_failed=.. ukaz ni uspel!
 mkfs_ok=.. ukaz končan.
+
 fsck_title=Popravite datotečni sistem
 fsck_ecannot=Tega diska ne smete odstraniti
 fsck_desc1=S klikom gumba <tt>Repair Filesystem</tt> poskušate popraviti poškodovani datotečni sistem $1 na $2 za namestitev na $3. Če datotečni sistem ni poškodovan, sprememb ne bo.
@@ -132,6 +136,7 @@ fsck_err3=najdene in odpravljene napake - ponovni zagon je potreben
 fsck_err4=najdene napake, vendar NI odpravljene
 fsck_err16=Napaka v ukazni vrstici
 fsck_unknown=neznana povratna koda $1 
+
 tunefs_title=Tune Filesystem
 tunefs_ecannot=Tega datotečnega sistema ni dovoljeno nastaviti
 tunefs_desc=Ta obrazec vam omogoča prilagajanje različnih parametrov datotečnega sistema $1 na $2 za namestitev na $3. Obstoječe datoteke v tem datotečnem sistemu ne bodo vplivale.
@@ -153,10 +158,12 @@ tunefs_err=Napetost datotečnega sistema ni uspela
 tunefs_exec=Izvedba ukaza $1 ..
 tunefs_failed=.. ukaz ni uspel!
 tunefs_ok=.. ukaz končan.
+
 reboot_title=Znova zaženite
 reboot_msg=Znova zaženite zdaj ..
 reboot_ok=Ponovno zaženi
 reboot_why=Tabelo particij ste spremenili na $1. Za pravilno uveljavitev te spremembe je treba vaš sistem znova zagnati.
+
 save_err=Particije ni bilo mogoče shraniti
 save_ecannot=Tega diska ne smete urejati
 save_estart='$1' ni veljaven začetni valj
@@ -165,6 +172,7 @@ save_emin=Začetni valj mora biti> = $1
 save_emax=Končni valj mora biti <= $1 
 save_eminmax=Začetni valj mora biti manjši od končnega
 save_eoverlap=Zaznano je prekrivanje s particijo $1 ($2 do $3)
+
 ext2_b=Velikost bloka
 ext2_f=Velikost fragmenta
 ext2_i=Bajti na inode
@@ -172,6 +180,7 @@ ext2_m=Rezervirani bloki
 ext2_g=Bloki na skupino
 ext2_c=Preverite, ali so bloki bloki?
 ext3_j=Velikost datoteke v dnevniku
+
 msdos_ff=Število FAT-ov
 msdos_F=FAT velikost
 msdos_F_other=Drugo ..
@@ -180,24 +189,32 @@ msdos_n=Ime zvezka
 msdos_r=Korenski vnosi
 msdos_s=Velikost grozda
 msdos_c=Preverite, ali so bloki bloki?
+
 minix_n=Dolžina imena datoteke
 minix_i=Število vozlišč
 minix_b=Število blokov
 minix_c=Preverite, ali so bloki bloki?
+
 reiserfs_force=Prisilno ustvarjanje datotečnega sistema
 reiserfs_hash=Hash funkcija
+
 xfs_force=Prisilno ustvarjanje datotečnega sistema
 xfs_b=Velikost bloka
+
 jfs_s=Velikost dnevnika
 jfs_c=Preverite, ali so bloki bloki?
+
 btrfs_l=Velikost listov
 btrfs_n=Velikost vozlišča
 btrfs_s=Velikost sektorja
+
 fatx_none=Za datotečne sisteme FATX ni na voljo nobenih možnosti.
+
 acl_disks=Diski, ki jih ta uporabnik lahko deli in formatira
 acl_dall=Vsi diski
 acl_dsel=Izbrano ..
 acl_view=Ali si lahko ogledate diske, ki jih ni mogoče urejati?
+
 hdparm_title=Uredi parametre IDE
 hdparm_on=Na
 hdparm_off=Izklopljeno
@@ -226,9 +243,11 @@ hdparm_performing=Nastopanje
 hdparm_buf1=Predpomnilnik predpomnilnika:
 hdparm_buf2=Kupljeno:
 hdparm_speedres=Rezultati hitrosti
+
 blink_title=Prepoznajte Drive
 blink_desc=LED-dioda pogona bo zasvetila šestdesetkrat
 blink_back=Pojdi nazaj
+
 log_modify=Spremenjeno $1 
 log_create=Ustvarjeno $1 
 log_delete=Izbrisan $1 
@@ -236,6 +255,7 @@ log_mkfs=Ustvaril je datotečni sistem $1 v $2
 log_tunefs=Uglašen $1 datotečni sistem v $2 
 log_fsck=Popravljen $1 datotečni sistem na $2 
 log_hdparm=Spremenjeni parametri IDE za $1 
+
 fs_ext2=Stari izvorni Linux
 fs_minix=Minix
 fs_msdos=MS-DOS
@@ -246,9 +266,11 @@ fs_ext4=Nov Linux Native
 fs_xfs=SGI
 fs_jfs=IBM Journalling
 fs_btrfs=BTR
+
 delete_title=Izbriši particijo
 delete_rusure=Ali ste prepričani, da želite izbrisati $1 ($2)? Podatki o tej particiji se lahko za vedno izgubijo.
 delete_ok=Izbriši zdaj
+
 disk_title=Urejanje particij diska
 disk_egone=Diska ne obstaja več!
 disk_no=Številka
@@ -269,11 +291,13 @@ disk_table=<b>Format particijske tabele:</b> $1
 disk_notable=<b>Format particijske tabele:</b> Ni ustvarjeno
 disk_needtable=Brez particijske tabele ni mogoče ustvariti nobenih particij.
 disk_return=seznam particij
+
 relabel_title=Obrišite predelne stene
 relabel_warn=Ali ste prepričani, da želite obrisati vse particije na $1 ($2) s ponovnim pisanjem nalepke na disk? Vsi obstoječi podatki in datotečni sistemi bodo izgubljeni!
 relabel_parts=Obstoječe predelne stene
 relabel_noparts=Nobena še ni ustvarjena
 relabel_table=Oblika particijske tabele
 relabel_ok=Obrišite in ponovno označite
+
 table_msdos=MS-DOS (standardni format particije)
 table_gpt=GPT (za 2T ali večje diske)

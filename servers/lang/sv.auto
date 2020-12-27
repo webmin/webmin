@@ -13,6 +13,7 @@ index_auto=Hitta servrar automatiskt
 index_automsg=Klicka på den här knappen för att ställa in den automatiska periodiska upptäckten av nya Webmin-servrar i ditt nätverk.
 index_search=Visa matchande servrar:
 index_ok=Sök
+
 edit_realhost=Riktigt värdnamn
 edit_portnone=Ingen uppsättning
 edit_checkssl=Kontrollera fjärr SSL-certifikat?
@@ -35,11 +36,13 @@ edit_baduser=Inloggning avvisad
 edit_invalid=Användaren kan inte göra RPC
 edit_version=Kör Webmin $1 
 edit_same=Endast tillgängligt inte i sessionverifieringsläge och när lösenordet görs tillgängligt för Webmin-program.
+
 save_ehost2=Värd finns inte
 save_eport2=En port måste anges om en länktyp med en inloggning är vald
 save_egroup=Gruppnamn saknas
 save_elogin=Ogiltig inloggning eller lösenord som värd
 save_egroup2=Ogiltigt nytt gruppnamn
+
 find_but=Hittade ny server på $1, men verifiering misslyckades : $2 
 find_already2=Hittade känd servervärd på $1 
 find_skip=Ignorerar servern med $1 
@@ -47,14 +50,18 @@ find_eiface=Det gick inte att hitta gränssnittet för att skanna
 find_scanning=Skanna efter servrar i nätverk $1 ..
 find_broading=Sändning för servrar på adress $1 ..
 find_eport=Portnummer saknas eller ogiltigt
+
 log_deletes=$1 -servrar har raderats
+
 link_eautologin=Ogiltigt inloggning eller lösenord för $1. <a href='$2'>Klicka här</a> för att försöka igen.
+
 acl_auto=Kan man ställa in automatisk upptäckt av servrar?
 acl_add=Kan registrera nya servrar?
 acl_forcefast=Tvinga snabbt RPC-läge till standard?
 acl_forcetype=Tvinga OS-typ till standard?
 acl_forcelink=Tvinga inloggningstyp till standard?
 acl_links=Kan ansluta till servrar?
+
 login_title=Logga in på servern
 login_desc=Du måste ange ett användarnamn och lösenord för att logga in på Webmin-servern $1.
 login_header=Webmin-autentisering
@@ -62,13 +69,16 @@ login_user=Användarnamn
 login_pass=Lösenord
 login_login=Logga in
 login_esame=Alternativet att använda samma inloggning som den här servern kan bara användas när den inte är i sessionens autentiseringsläge och när lösenordet görs tillgängligt för Webmin-program.
+
 this_server=den här servern
+
 delete_err=Det gick inte att ta bort servrar
 delete_enone=Ingen vald
 delete_ecannot=Du får inte ta bort servrar
 delete_title=Ta bort servrar
 delete_rusure=Är du säker på att du vill ta bort de valda servrarna $1 ?
 delete_confirm=Radera nu
+
 auto_title=Hitta servrar automatiskt
 auto_header=Automatiska serverregistreringsalternativ
 auto_sched=Leta efter nya servrar?
@@ -94,8 +104,10 @@ auto_smtp=Skicka via SMTP-server
 auto_self=Detta system
 auto_esmtp=Saknad eller ogiltig SMTP-server
 auto_findself=Registrera det här systemet också?
+
 config_deftype=Standard systemtyp
 config_typeauto=Automatisk
+
 email_regsubject=System $1 registrerat
 email_reg=Systemet $1 har automatiskt registrerats.
 email_unregsubject=System $1 oregistrerat

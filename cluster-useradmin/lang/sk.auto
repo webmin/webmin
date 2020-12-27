@@ -17,6 +17,7 @@ index_tdesc=popis
 index_tucount=užívatelia
 index_tgcount=skupiny
 index_ttype=Typ operačného systému
+
 add_title=Pridať servery
 add_msg=Pridáva sa $1 ..
 add_gmsg=Pridávanie serverov do skupiny $1 ..
@@ -26,6 +27,7 @@ add_echeck=Server $1 nemá modul používateľov a skupín
 add_epft=Server $1 nepoužíva rovnaký formát užívateľských súborov ako tento hostiteľ
 add_egft=Server $1 nepoužíva rovnaký formát súboru skupiny ako tento hostiteľ
 add_ok=Pridané $1 s používateľmi $2 a $3 skupinami.
+
 host_title=Spravovaný server
 host_header=Podrobnosti o serveri spravovanom softvérom
 host_name=Meno hosťa
@@ -34,8 +36,7 @@ host_delete=Odstrániť zo spravovaného zoznamu
 host_refresh=Obnovte používateľov a skupiny
 host_users=Počet používateľov
 host_groups=Počet skupín
-host_ulist=Používatelia na serveri
-host_glist=Skupiny na serveri
+
 host_return=podrobnosti servera
 refresh_title=Obnovte používateľov a skupiny
 refresh_header=Opätovné vyžiadanie zoznamov používateľov a skupín zo všetkých serverov.
@@ -49,6 +50,7 @@ refresh_gdel=odstrániť skupiny $1
 refresh_done=.. hotový
 refresh_del=Odstránené $1 zo zoznamu serverov
 refresh_failed=Nepodarilo sa obnoviť $1 : $2 
+
 uedit_host=Podrobnosti z $1 
 uedit_leave=Nemeňte sa
 uedit_set=Nastavený na
@@ -66,6 +68,7 @@ uedit_servers=Servery, na ktorých sa má vytvoriť
 uedit_all=&lt;všetci hostitelia&gt;
 uedit_donthave=&lt;hostitelia, ktorí ho nemajú&gt;
 uedit_group=Členovia $1 
+
 usave_einuse=Používateľ s rovnakým menom už existuje na $1 
 usave_esecgid=Sekundárna skupina $1 neexistuje
 usave_con=Vytvára sa na $1 ..
@@ -88,16 +91,20 @@ usave_header=Vytvára sa používateľ $1 na všetkých hostiteľoch.
 usave_header5=Vytvára sa používateľ $1 na $2 ..
 usave_header4=Vytvára sa používateľ $1 pre členov skupiny $2 ..
 usave_header3=Vytvára sa používateľ $1 na počítačoch, ktoré ho nemajú.
+
 search_hosts=hostitelia
+
 udel_on=Odstraňuje sa z $1 ..
 udel_servs=Odstrániť domáci adresár, ak existuje
 udel_others=Odstrániť používateľa z iných modulov?
 udel_dothers=Vymazávanie v iných moduloch ..
 udel_gone=Používateľ už neexistuje.
 udel_failed=Nepodarilo sa odstrániť používateľa : $1 
+
 gdel_on=Odstraňuje sa z $1 ..
 gdel_gone=Používateľ už neexistuje.
 gdel_failed=Nepodarilo sa odstrániť skupinu : $1 
+
 gsave_create=Pridáva sa položka súboru skupiny.
 gsave_con=Vytvára sa na $1 ..
 gsave_euser=Používateľ $1 neexistuje
@@ -110,10 +117,12 @@ gsave_header=Vytvára sa skupina $1 na všetkých hostiteľoch.
 gsave_header5=Vytvára sa skupina $1 na $2 ..
 gsave_header4=Vytvára sa skupina $1 pre členov skupiny $2 ..
 gsave_header3=Vytvára sa skupina $1 na počítačoch, ktoré ju nemajú.
+
 gedit_host=Podrobnosti z $1 
 gedit_add=Pridajte používateľov
 gedit_del=Odstráňte používateľov
 gedit_donthave=&lt;hostitelia, ktorí ho nemajú&gt;
+
 sync_title=Synchronizujte servery
 sync_desc=Tento formulár vám umožňuje vytvárať používateľov a skupiny na serveroch, ktoré ich momentálne nemajú, aby sa účty synchronizovali na všetkých serveroch vo vašom klastri.
 sync_hosts=Servery na synchronizáciu
@@ -141,6 +150,7 @@ sync_test=Ukážte, čo by sa urobilo?
 sync_makehome=Vytvoriť domáce adresáre?
 sync_copy=Kopírovať súbory do domovského adresára?
 sync_others=Vytvoriť používateľa v iných moduloch?
+
 log_create_user=Vytvorený používateľ $1 
 log_delete_user=Vymazaný používateľ $1 
 log_modify_user=Upravený používateľ $1 

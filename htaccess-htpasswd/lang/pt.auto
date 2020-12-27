@@ -16,6 +16,7 @@ index_digest2=A criptografia Digest está ativada na configuração do módulo, 
 index_cpan=<a href='$1'>Clique aqui</a> para baixar e instalar agora.
 index_delete=Desproteger diretórios selecionados
 index_remove=Desproteger e remover arquivos
+
 dir_title1=Adicionar diretório protegido
 dir_title2=Editar diretório protegido
 dir_header=Opções de diretório protegido
@@ -60,6 +61,7 @@ dir_delete3=Desproteger e remover arquivo
 dir_apache=Editar opções do Apache
 dir_efiledir='$1' é um diretório e, portanto, não pode ser usado como arquivo de usuários
 dir_egfiledir='$1' é um diretório e, portanto, não pode ser usado como um arquivo de grupos
+
 edit_title1=Criar usuário
 edit_title2=Editar usuário
 edit_header=Detalhes do usuário de autenticação da Web
@@ -71,11 +73,13 @@ edit_pass0=Definido como
 edit_passfrom=Alterar de
 edit_passto=para nova senha
 edit_dom=Domínio de resumo
+
 gedit_title1=Criar grupo
 gedit_title2=Editar grupo
 gedit_header=Detalhes do grupo de autenticação da Web
 gedit_group=Nome do grupo
 gedit_members=Membros do grupo
+
 save_err=Falha ao salvar o usuário
 save_euser1=Nome de usuário ausente
 save_euser2=O nome de usuário não pode conter o caractere:
@@ -84,16 +88,19 @@ save_eclash=Um usuário com o mesmo nome já existe
 save_eoldpass=A senha antiga não está correta
 save_title=Usuário salvo
 save_edom=Região de resumo ausente ou inválida
+
 gsave_err=Falha ao salvar o grupo
 gsave_egroup1=Nome do grupo ausente
 gsave_egroup2=O nome do grupo não pode conter o: caractere ou espaços
 gsave_eclash=Um grupo com o mesmo nome já existe
+
 acl_dirs=Diretórios permitidos
 acl_user=Crie arquivos.htaccess e htusers como usuário do Unix
 acl_same=Igual ao login no Webmin
 acl_home=Incluir diretório inicial do usuário Unix?
 acl_sync=Pode configurar a sincronização de usuário Unix?
 acl_uonly=Pode adicionar e alterar diretórios protegidos?
+
 log_create_dir=Diretório $1 adicionado
 log_modify_dir=Diretório modificado $1 
 log_delete_dir=Diretório excluído $1 
@@ -104,6 +111,7 @@ log_create_group=Grupo criado $1
 log_modify_group=Grupo modificado $1 
 log_delete_group=Grupo excluído $1 
 log_delete_dirs=$1 diretórios excluídos
+
 search_title=Procurar Resultados
 search_err=Falha na pesquisa
 search_edir=Diretório absoluto ausente ou inválido para pesquisa

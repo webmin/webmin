@@ -12,7 +12,9 @@ index_stopmsg=Kliknutím na toto tlačidlo zastavíte bežiaci server SSH. Po za
 index_rsa1=RSA (pre SSH v1)
 index_rsa=RSA (pre SSH v2)
 index_dsa=DSA (pre SSH v2)
+
 bits=bity
+
 users_header=Možnosti prihlásenia a overenia
 users_expire=Dni pred vypršaním platnosti účtu na upozornenie používateľa
 users_mail=Upozorniť používateľa na novú poštu?
@@ -41,6 +43,7 @@ users_eauthkeys=Chýbajúci alebo neplatný súbor autorizovaných kľúčov
 users_maxauthtries=Maximálny počet pokusov o prihlásenie na pripojenie
 users_emaxauthtries=Chýba alebo nečíselný počet pokusov o prihlásenie na pripojenie
 users_chal=Používate autentifikáciu výzva-reakcia?
+
 net_title=Networking
 net_header=Možnosti siete
 net_all4=Všetky adresy IPv4
@@ -69,6 +72,7 @@ net_eprots=Musíte vybrať aspoň jeden protokol
 net_eladdress='$1' nie je platná adresa, na ktorej sa dá počúvať
 net_elport='$1' nie je platný port na počúvanie
 net_elisten2=Neboli zadané žiadne adresy na počúvanie
+
 access_title=Riadenie prístupu
 access_header=Možnosti riadenia prístupu do siete a prihlásenia
 access_none=nikto
@@ -79,6 +83,7 @@ access_eallowg=Zadané nie sú žiadne skupiny, ktoré by to mohli povoliť
 access_edenyg=Nezadali sa žiadne skupiny na odmietnutie
 access_eallowh=Neboli zadaní žiadni hostitelia, ktorí by to mohli povoliť
 access_edenyh=Neboli zadaní žiadni hostitelia, ktorí by popreli
+
 misc_title=Rôzne možnosti
 misc_header=Ďalšie rôzne možnosti servera SSH
 misc_x11=Povoliť presmerovanie spojenia X11?
@@ -102,13 +107,16 @@ misc_eumask=Chýba alebo je neplatný štvormiestny osmičkový kód
 misc_ebits=Chýba alebo je neplatná veľkosť kľúča servera
 misc_eregen=Chýbajúci alebo neplatný interval regenerácie kľúča
 misc_epid=Chýba cesta k súboru PID
+
 apply_epid=Nie je spustený
+
 hosts_title=Možnosti hostiteľa klienta
 hosts_header=Hostitelia klientov SSH
 hosts_none=Neboli definované žiadne možnosti hostiteľa klienta. Všetky prihlásenia klienta SSH budú používať predvolené nastavenia.
 hosts_all=Všetci hostitelia
 hosts_add=Pridajte možnosti pre hostiteľa klienta.
 hosts_return=zoznam hostiteľov klientov
+
 host_create=Pridať možnosti hostiteľa
 host_edit=Upraviť možnosti hostiteľa
 host_header=Možnosti klienta pre hostiteľa SSH
@@ -151,6 +159,7 @@ host_elhost=Chýbajúce alebo neplatné miestne meno hostiteľa
 host_eprots=Musíte vybrať aspoň jeden protokol
 host_proxy=Príkaz proxy pripojenia
 host_eproxy=Chýbajúci alebo neplatný príkaz proxy pripojenia
+
 log_users=Zmenené možnosti overenia
 log_net=Zmenené možnosti siete
 log_access=Zmenená kontrola prístupu
@@ -163,6 +172,7 @@ log_update_all=Aktualizované možnosti pre všetkých hostiteľov
 log_delete_all=Odstránené možnosti pre všetkých hostiteľov
 log_apply=Aplikovaná konfigurácia
 log_manual=Manuálna úprava konfiguračného súboru $1
+
 sync_title=Nastavenie používateľa SSH kľúča
 sync_desc=Táto stránka umožňuje konfigurovať automatické nastavenie SSH pre nových používateľov Unixov vytvorených vo vašom systéme. Ak je nakonfigurovaný, noví používatelia nebudú musieť pred použitím SSH spustiť <tt>ssh-keygen</tt>.
 sync_create=Nastaviť kľúč SSH pre nových používateľov systému Unix?
@@ -170,14 +180,17 @@ sync_auth=Kopírovať nové <tt>identifikovať.pub</tt> do <tt>autorizovaných k
 sync_pass=Použiť heslo ako kľúčovú frázu?
 sync_gnupg=Nastavte kľúč GNUPG pre nových používateľov systému Unix.
 sync_auto=&lt;Automatické&gt;
+
 keys_title=Hostujte kľúče SSH
 keys_desc=Táto stránka umožňuje zobraziť kľúče SSH pre tohto hostiteľa.
 keys_none=Vo vašej konfigurácii SSHD sa nepodarilo nájsť žiadne položky HostKey.
+
 manual_title=Upraviť konfiguračné súbory
 manual_ecannot=Nemáte oprávnenie upravovať konfiguračný súbor servera SSH
 manual_ok=editovať
 manual_efile=Vybratý súbor nie je súčasťou konfigurácie servera SSH
 manual_file=Upraviť konfiguračný súbor:
 manual_err=Nepodarilo sa uložiť konfiguračný súbor
+
 dknown_err=Odstránenie známych hostiteľov zlyhalo
 dknown_enone=Žiadne vybraté

@@ -21,8 +21,10 @@ index_start=Démarrer le Serveur Syslog
 index_startmsg=Cliquez sur ce bouton pour démarrer le serveur Syslog $1. Tant qu'il n'a pas demarré, aucune journalisation n'est possible.
 all=Tous
 index_view=Voir...
+
 restart_ekill=Impossible de signaler le processus <b>syslog</b> $1 : $2
 restart_ecannot=Vous n'êtes pas autorisé à redémarrer <b>Syslog</b>
+
 start_ecannot=Vous n'êtes pas autorisé à démarrer <b>Syslog</b>
 edit_title=Modifier le journal système
 create_title=Ajouter un journal système
@@ -53,11 +55,13 @@ edit_tag=Seulement pour le programme
 edit_return=détails du journal
 edit_ecannot=Vous n'êtes pas autorisé à modifier les paramètres du journal
 edit_ecannot2=Vous n'êtes pas autorisé à modifier ce journal
+
 view_title=Voir le fichier journal
 view_header=Les $1 dernières lignes de $2
 view_empty=Le fichier journal est vide
 view_refresh=Rafraîchir
 view_filter=Afficher seulement les lignes contenant le texte $1
+
 save_err=Impossible d'enregistrer le journal
 save_efile='$1' n'est pas un nom de fichier valide : $2
 save_epipe='$1' n'est pas un tube nommé valide
@@ -74,11 +78,13 @@ save_ecannot2=Vous n'êtes pas autorisé à afficher ce journal
 save_ecannot3=Vous n'êtes pas autorisé à créer un journal avec cette destination
 save_ecannot4=Vous n'êtes pas autorisé à enregistrer un journal avec cette destination
 save_ecannot5=Vous n'êtes pas autorisé à modifier ce journal
+
 log_modify=Journal de $1 modifié
 log_create=Journal de $1 ajouté
 log_delete=Journal de $1 supprimé
 log_apply=Changements appliqués
 log_start=Serveur de journalisation démarré
+
 desc_sysmesg=Messages du système
 desc_mail=Journal de messagerie
 desc_auth=Journal d'authentification
@@ -87,6 +93,7 @@ desc_news=Journal des forums NNTP
 desc_uucp=Journal UUCP
 desc_debug=Messages de débogage
 desc_cron=Journal des tâches Cron
+
 acl_noedit=Peut seulement afficher les journaux ?
 acl_logs=Peut afficher et configurer les fichiers journaux
 acl_all=Tous les journaux

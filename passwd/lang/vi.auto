@@ -5,6 +5,7 @@ index_user=Thay đổi mật khẩu cho người dùng:
 index_euseradmin=Mô-đun này không thể được sử dụng vì mô-đun Người dùng và Nhóm không được cài đặt hoặc không được hỗ trợ trên hệ thống của bạn.
 index_toomany=Có quá nhiều người dùng để hiển thị trên hệ thống của bạn. Nhập tên người dùng có mật khẩu bạn muốn thay đổi bên dưới ..
 index_none=Bạn không có quyền truy cập vào bất kỳ người dùng để thay đổi mật khẩu của họ.
+
 passwd_title=Đổi mật khẩu
 passwd_header=Thay đổi mật khẩu người dùng Unix
 passwd_for=Thay đổi mật khẩu cho
@@ -23,7 +24,9 @@ passwd_erepeat=Mật khẩu mới không giống nhau
 passwd_ecmd=$1 thất bại : $2 
 passwd_ok=Mật khẩu cho người dùng $1 đã được thay đổi thành công. Nếu đây là người dùng Webmin hiện tại của bạn, bạn có thể buộc phải đăng nhập lại.
 passwd_ok2=Mật khẩu cho người dùng $1 đã được thay đổi thành công.
+
 log_passwd=Mật khẩu đã thay đổi cho người dùng $1 
+
 acl_repeat=Phải nhập lại mật khẩu mới?
 acl_self=Luôn cho phép mật khẩu riêng được thay đổi?
 acl_old=Phải nhập mật khẩu cũ?

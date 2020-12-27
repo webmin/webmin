@@ -2,6 +2,7 @@ check_econfigset=未設置iSCSI TGTd配置文件！
 check_econfig=在系統上找不到iSCSI TGTd配置文件 $1。
 check_etgtadm=在系統上找不到iSCSI TGTd管理命令 $1。
 check_einit=引導操作 $1不存在
+
 index_title=iSCSI TGTd
 index_clink=可能未安裝，或者您的<a href='$1'>模塊配置</a>不正確。
 index_stop=停止iSCSI TGTd
@@ -24,8 +25,10 @@ index_users=允許的用戶
 index_size=總尺寸
 index_noluns=沒有
 index_nousers=任何
+
 dtargets_err=刪除目標失敗
 dtargets_enone=未選擇！
+
 target_title1=創建iSCSI目標
 target_title2=編輯iSCSI目標
 target_header=iSCSI共享設備選項
@@ -74,11 +77,13 @@ target_direct=直接訪問設備
 target_cache=緩存寫入設備？
 target_eaddr=允許的IP地址無效
 target_eaname=允許的發起方名稱無效
+
 start_err=無法啟動iSCSI TGTd
 stop_err=無法停止iSCSI TGTd
 restart_err=無法重新啟動iSCSI TGTd
 atboot_err=無法在啟動時啟用
 atboot_einit=初始化腳本 $1不存在
+
 log_create_target=已創建目標 $1
 log_delete_target=已刪除目標 $1
 log_modify_target=修改後的目標 $1
@@ -89,6 +94,7 @@ log_restart=重新啟動iSCSI服務器
 log_atboot=引導時啟用的iSCSI服務器
 log_delboot=引導時禁用了iSCSI服務器
 log_manual=手動編輯的配置文件
+
 manual_title=編輯配置文件
 manual_file=選擇要編輯的文件：
 manual_ok=打開

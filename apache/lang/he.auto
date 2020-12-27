@@ -57,6 +57,7 @@ index_fmode1=Virtual servers file $1
 index_fmode1d=New file under virtual servers directory $1
 index_fmode2=קובץ שנבחר ..
 index_delete=מחק שרתים שנבחרו
+
 cvirt_ecannot=אינך מורשה ליצור שרת וירטואלי
 cvirt_err=יצירת שרת וירטואלי נכשלה
 cvirt_eaddr1=לא הוזנה כתובת
@@ -70,6 +71,7 @@ cvirt_eroot4=לא הוגדר משתמש בתצורת Apache
 cvirt_etaken=שרת וירטואלי עם אותו שם ויציאה כבר קיים
 cvirt_efile=Failed to write to $1 : $2
 cvirt_emissing=The new virtual server was added to $1, but this file is not used by Apache. Check the <a href='$2'>module configuration</a> and make sure the 'File or directory to add virtual servers to' is correct.
+
 etype=אינך רשאי לערוך אפשרויות מסוג זה
 efailed=Failed to save $1
 apache_apply=החל שינויים
@@ -80,6 +82,7 @@ default_serv=שרת ברירת מחדל
 bytes=בתים
 eafter=Configuration verification failed : $1 Changes have not been saved.
 enewline=תו לא חוקי בערך
+
 global_ecannot=אינך רשאי לערוך אפשרויות גלובליות
 global_mime=רשימת סוגי MIME גלובליים
 global_mimedesc=לחץ על סוג MIME מהרשימה שלהלן כדי לערוך אותו, או השתמש בקישור בתחתית העמוד כדי להוסיף סוג חדש לרשימה.
@@ -87,6 +90,7 @@ global_type=סוג
 global_ext=הרחבות
 global_add=הוסף סוג MIME חדש.
 global_return=סוגי MIME
+
 mime_ecannot=אינך מורשה לערוך סוגי פיים
 mime_edit=ערוך את סוג MIME
 mime_add=הוסף סוג MIME
@@ -95,6 +99,7 @@ mime_type=סוג MIME
 mime_ext=הרחבות
 mime_err=שמירת סוג MIME נכשלה
 mime_etype='$1' is not a valid MIME type
+
 virt_ecannot=אינך יכול לערוך שרת וירטואלי זה
 virt_eprotocol=עליך לבחור לפחות גרסת פרוטוקול SSL/TLS שמישה
 virt_title=אפשרויות שרת וירטואלי
@@ -121,6 +126,7 @@ virt_path=נתיב
 virt_return=אינדקס שרתים
 virt_euser=אינך רשאי לשנות את המשתמש או הקבוצה עבור שרת וירטואלי זה.
 virt_header2=$1 for $2
+
 vserv_title=תצורת שרת וירטואלי
 vserv_virtualmin=This Apache virtual host belongs to the Virtualmin server <tt>$1</tt>, so the address, port, base directory and hostname cannot be changed here.
 vserv_ecannot=אינך יכול לערוך את השרת הווירטואלי הזה
@@ -140,10 +146,12 @@ vserv_eport='$1' is not a valid port
 vserv_eroot='$1' is not a valid document root
 vserv_ename='$1' is not a valid server name
 vserv_eaddrs=לא הוזנו כתובות שרת וירטואליות
+
 show_title=הוראות
 show_edit=ערוך את הנחיית אפאצ'י:
 show_these=ערוך הוראות באופן ידני
 show_ok=ערוך
+
 manual_configs=ערוך קבצי תצורה
 manual_title=ערוך הוראות
 manual_header=Use the text box below to manually edit the Apache directives in $1 that apply to this virtual server, directory or files.
@@ -153,6 +161,7 @@ manual_efile=קובץ תצורת Apache לא חוקי
 manual_etest=Configuration file error detected : $1
 manual_editfile=ערוך קובץ תצורה:
 manual_switch=ערוך
+
 dir_title=אפשרויות לפי מדריך
 dir_proxyall=כל בקשות ה- proxy
 dir_header=For $1 on $2
@@ -169,6 +178,7 @@ dir_re=התאמה regexp
 dir_path=נתיב
 dir_return=אינדקס ספריות
 dir_header2=$1 for $2
+
 type_0=תהליכים ומגבלות
 type_1=רשת וכתובות
 type_2=מודולי אפאצ'י
@@ -190,6 +200,7 @@ type_17=מארחים וירטואליים אוטומטיים
 type_18=מסננים
 type_19=שפות
 type_20=מפות תמונה
+
 htaccess_title=קבצי אפשרויות לפי ספריה
 htaccess_ecannot=אינך יכול לערוך קבצי htaccess
 htaccess_file=קבצי אפשרויות קיימים
@@ -205,6 +216,7 @@ htaccess_edelete=אינך רשאי למחוק את קובץ האפשרויות �
 htaccess_eempty=לא הוזנה ספריית קובצי אפשרויות
 htaccess_eabsolute=ספריית קבצי האפשרויות חייבת להיות נתיב מוחלט
 htaccess_err=יצירת קובץ האפשרויות נכשלה
+
 htindex_ecannot=אינך רשאי לערוך את קובץ האפשרויות הזה
 htindex_title=קובץ אפשרויות לפי מדריך
 htindex_delete=מחק קובץ
@@ -220,12 +232,14 @@ htindex_path=נתיב
 htindex_header=For $1
 htindex_header2=$1 for options file $2
 htindex_return=אינדקס קובץ אפשרויות
+
 htfile_title=אפשרויות לכל קובץ
 htfile_header=For $1 in $2
 htfile_show=הצג הוראות
 htfile_edit=ערוך הוראות
 htfile_apply=האפשרויות חלות על ..
 htfile_header2=$1 for $2
+
 reconfig_title=קבע את התצורה מחדש של מודולים ידועים
 reconfig_ecannot=אינך רשאי להגדיר מחדש את אפאצ 'י
 reconfig_ever=Failed to get the version of Apache server executable $1. Check your <a href='$2'>module configuration</a> to make sure this is the correct path.
@@ -233,11 +247,13 @@ reconfig_desc1=תצורת ה- Apache שלך השתנתה, או שעוד לא נ�
 reconfig_desc2=להלן רשימה של כל המודולים של אפאצ'י הנתמכים על ידי Webmin, כאשר אלה המותקנים כעת נבחרו. אם אתה משתמש במודולים שהועמסו באופן דינאמי, ייתכן שיהיה עליך לבחור את אלה שטעונים באופן דינמי.
 reconfig_desc3=אם אינך בטוח אילו מודולים נתמכים על ידי Apache במערכת שלך, פשוט קביעת תצורה כפי ש- Webmin יכולה בדרך כלל לפתור את המודולים הנתמכים באופן אוטומטי.
 reconfig_ok=קבע את התצורה
+
 defines_title=ערוך פרמטרים מוגדרים
 defines_ecannot=אינך רשאי לערוך הגדרות httpd
 defines_desc=When Apache is started, parameters can be passed to it with the <tt>-D</tt> command line option. Because these parameters can affect which directives are used in your config files, Webmin needs to know which ones are passed to Apache when it is started up. Enter the parameters used on your system into the text field on the right.
 defines_config=Note that the following defined parameters are already known : $1
 defines_list=פרמטרים מוגדרים
+
 authu_ecannot='$1' is not an allowed users text file
 authu_title=רשימת משתמש
 authu_header=In file $1
@@ -259,6 +275,7 @@ authu_sync=The options below allow you to configure Webmin to automatically add,
 authu_screate=הוסף משתמש בעת הוספת משתמש יוניקס
 authu_sdelete=מחק את המשתמש כאשר משתמש יוניקס נמחק
 authu_smodify=שנה את המשתמש כאשר משתנה משתמש יוניקס
+
 authg_ecannot='$1' is not an allowed groups text file
 authg_title=רשימת קבוצות
 authg_header=In file $1
@@ -276,22 +293,26 @@ authg_err=שמירת הקבוצה נכשלה
 authg_euser=לא הוזן שם קבוצה
 authg_euser2=שם הקבוצה אינו יכול להכיל :
 authg_edup=A group called '$1' already exists
+
 stop_err=עצירת האפאצ'י נכשלה
 stop_ecannot=אינך מורשה להפסיק את האפאצ'י
 stop_epid=Failed to open PID file $1
 stop_epid2=Invalid PID file $1
 stop_esig=Failed to send SIGTERM to process $1
+
 start_err=התחלת האפצ'י נכשלה
 start_ecannot=אינך מורשה להתחיל אפאצ 'י
 start_ecmd=$1 failed : $2
 start_eunknown=סיבה לא ידועה
 start_eafter=נראה כי אפאצ'י פועל
+
 restart_err=החלת השינויים נכשלה
 restart_epid=Failed to open PID file $1
 restart_epid2=Invalid PID file $1
 restart_esig=Failed to send SIGHUP to process $1
 restart_eunknown=סיבה לא ידועה
 restart_ecannot=אינך רשאי להחיל שינויים
+
 acl_virts=שרתי וירטואלי שמשתמש זה יכול לערוך
 acl_vall=כל השרתים
 acl_vsel=נבחר ..
@@ -314,6 +335,7 @@ acl_dirs=Apache directives available<br><font size=-1>(Subject to types limit ab
 acl_dirs0=את כל
 acl_dirs1=רשום רק ..
 acl_dirs2=כולם למעט רשומים ..
+
 core_maxconc=בקשות מקסימאליות במקביל
 core_maxkeep=רמיזות מרבי מקסימאליות לחיבור
 core_maxreq=בקשות מרביות לכל תהליך שרת
@@ -499,10 +521,12 @@ core_infilter=החל מסנני קלט על כל הקבצים
 core_outfilter=החל מסנני פלט על כל הקבצים
 core_defchar=סט תווים למסמכים
 core_edefchar=סט תווים חסר או לא חוקי למסמכים
+
 mod_negotiation_cache=מטמון מסמכים המשא ומתן על תוכן?
 mod_negotiation_pri=עדיפות שפה עבור ריבוי צפיות
 mod_negotiation_def=ברירת מחדל
 mod_negotiation_epri=עדיפויות חסרות שפה
+
 mod_cgi_logname=יומן סקריפט CGI
 mod_cgi_none=אף אחד
 mod_cgi_elogname=קובץ יומן סקריפט לא חוקי של CGI
@@ -512,6 +536,7 @@ mod_cgi_elogsize=גודל יומן CGI חייב להיות מספר שלם
 mod_cgi_post=גודל נתונים מקסימלי של רשומות רשומות
 mod_cgi_epost=גודל נתוני ההודעה חייב להיות מספר שלם
 mod_cgi_eunder=יומן סקריפט CGI אינו נמצא תחת הספרייה המותרת
+
 mod_alias_from=מ
 mod_alias_to=ל
 mod_alias_status=סטטוס
@@ -535,6 +560,7 @@ mod_alias_cgi2=כינוי ספריית CGI
 mod_alias_rcgi=כינויי תיקיות של Regexp CGI
 mod_alias_rcgi2=כינוי ספריית CGI
 mod_alias_estatus='$1' is not a valid status
+
 mod_proxy_proxy=לפעול כשרת proxy?
 mod_proxy_req=בקשות
 mod_proxy_forw=קדימה ל
@@ -605,11 +631,13 @@ mod_proxy_timeout=פסק זמן לבקשת פרוקסי בשניות
 mod_proxy_etimeout=זמן הקצאת זמן לבקשת ה- Proxy חייב להיות מספר שניות
 mod_proxy_via=הגדר דרך: כותרות
 mod_proxy_not=אף אחד
+
 mod_log_agent_default=ברירת מחדל
 mod_log_agent_file=קובץ ..
 mod_log_agent_program=תכנית ..
 mod_log_agent_log=קובץ יומן דפדפן
 mod_log_agent_efile=$1 is not a valid agent log filename
+
 mod_log_config_common=פורמט יומן נפוץ
 mod_log_config_named=פורמטים של יומן שם
 mod_log_config_nick=כינוי
@@ -628,6 +656,7 @@ mod_log_config_enofilprog=שם קובץ יומן או תוכנית חסרים
 mod_log_config_efilprog='$1' is not an allowed log filename or program
 mod_log_config_eifset=לא ניתן להשתמש באפשרות 'אם מוגדרת' עם פורמט יומן ברירת המחדל
 mod_log_config_edir=Directory for log file '$1' does not exist
+
 mod_log_referer_default=ברירת מחדל
 mod_log_referer_file=קובץ ..
 mod_log_referer_program=תכנית ..
@@ -635,7 +664,9 @@ mod_log_referer_log=קובץ יומן מפנה
 mod_log_referer_nolog=אל תיכנס להפניות מ-
 mod_log_referer_elog=$1 is not a valid referer log filename
 mod_log_referer_edir=יומן הפניות אינו נמצא תחת הספרייה המותרת
+
 mod_status_msg=הצגת מידע על מצב מורחב
+
 mod_mime_ext=הרחבות
 mod_mime_xtype=סוגי MIME נוספים
 mod_mime_mtype=סוג MIME
@@ -668,6 +699,7 @@ mod_mime_outfilter=מסנני פלט
 mod_mime_infilter=מסנני קלט
 mod_mime_filters=מסננים ליישום
 mod_mime_efext=No extensions given for filter(s) $1
+
 mod_setenvif_header=כותרת עליונה
 mod_setenvif_match=התאמה
 mod_setenvif_case=מקרה התאמה
@@ -678,11 +710,13 @@ mod_setenvif_eheader=Invalid request header '$1'
 mod_setenvif_eregex=Invalid regular expression '$1'
 mod_setenvif_evar=Invalid variable name '$1'
 mod_setenvif_clear=ברור
+
 mod_userdir_default=ברירת מחדל
 mod_userdir_all=כל המשתמשים נגישים
 mod_userdir_except=כל המשתמשים למעט
 mod_userdir_dir=מדריך למשתמש של WWW
 mod_userdir_edir=אינך רשאי להשתמש בספריית ה- WWW של המשתמש שצוינה
+
 mod_imap_action=פעולה על שימוש לא נכון בתמונות
 mod_imap_default=ברירת מחדל
 mod_imap_godefurl=עבור אל כתובת אתר ברירת המחדל
@@ -702,8 +736,10 @@ mod_imap_refurl=מפנה URL
 mod_imap_url=כתובת אתר. ..
 mod_imap_defbase=בסיס ברירת מחדל עבור תמונות הדמיה
 mod_imap_eurl='$1' is not a valid URL
+
 mod_speling_autocorr=לתקן באופן אוטומטי כתובות אתרים עם איות שגוי?
 mod_speling_default=ברירת מחדל
+
 mod_actions_mime=סוג מטפל / MIME
 mod_actions_cgiurl=URL של סקריפט CGI
 mod_actions_mimecgi=מטפל או פעולות CGI מסוג MIME
@@ -713,10 +749,13 @@ mod_actions_httpcgi=פעולות CGI בשיטת HTTP
 mod_actions_emime='$1' is not a valid handler or MIME type
 mod_actions_ecgi='$1' is not a valid CGI script
 mod_actions_enometh=No method chosen for CGI script '$1'
+
 mod_include_incl=התהליך כולל על קבצים עם ביצוע bit?
 mod_include_set=כן וקבע תאריך ששונה לאחרונה
 mod_include_default=ברירת מחדל
+
 mod_dir_txt=קבצי אינדקס ספריות
+
 mod_autoindex_default=ברירת מחדל
 mod_autoindex_asc=עולה
 mod_autoindex_descend=יורד
@@ -725,6 +764,7 @@ mod_autoindex_date=תאריך
 mod_autoindex_size=גודל
 mod_autoindex_desc=תיאור
 mod_autoindex_sort=מיין את אינדקס הספריות לפי
+
 browsermatch_regexp=Regex דפדפן
 browsermatch_case=התאמת מקרה?
 browsermatch_var=הגדר משתנה
@@ -732,6 +772,7 @@ browsermatch_value=ערך
 browsermatch_txt=משתנים מוגדרים על פי סוג הדפדפן
 browsermatch_evar=Invalid variable name '$1'
 browsermatch_clear=ברור
+
 autoindex_fname=שם קובץ
 autoindex_mime=סוג MIME
 autoindex_enc=קידוד
@@ -785,9 +826,11 @@ autoindex_sicon=הצג סמלי קבצים
 autoindex_srules=הצג &lt;hr&gt; שורות
 autoindex_track=כלול תגיות ET בכותרת העליונה
 autoindex_version=מיין לפי מיתרי גרסאות
+
 mod_mime_magic_file=קובץ מספרי קסם של MIME
 mod_mime_magic_none=אף אחד
 mod_mime_magic_efile=שם קובץ קסם לא חוקי של MIME
+
 mod_env_var=משתנה
 mod_env_value=ערך
 mod_env_pass=עובר דרך
@@ -798,6 +841,7 @@ mod_env_passall=העבירו את כל משתני הסביבה ל- CGI
 mod_env_default=ברירת מחדל
 mod_env_evar='$1' is not a valid variable name
 mod_env_evalue='$1' is not a valid variable value
+
 mod_access_order=הזמנת בדיקת גישה:
 mod_access_denyallow=דחה אז הרשה
 mod_access_allowdeny=אפשר אז להכחיש
@@ -820,6 +864,7 @@ mod_access_epip='$1' is not a valid partial IP address
 mod_access_emask='$1' is not a valid network/netmask pair
 mod_access_ecidr='$1' is not a valid network/CIDR pair
 mod_access_evar='$1' is not a valid variable name
+
 mod_auth_ufile=קובץ טקסט למשתמש
 mod_auth_uedit=ערוך משתמשים
 mod_auth_gfile=קובץ טקסט קבוצתי
@@ -830,6 +875,7 @@ mod_auth_eudir=קובץ הטקסט של המשתמש אינו נמצא תחת ה
 mod_auth_egdir=קובץ הטקסט הקבוצתי אינו נמצא תחת הספרייה המותרת
 mod_auth_eufile=שם קובץ טקסט לא חוקי של משתמש
 mod_auth_egfile=שם קובץ טקסט לא חוקי בקבוצה
+
 mod_auth_dbm_ufile=קובץ DBM משתמש
 mod_auth_dbm_gfile=קבץ קובץ DBM
 mod_auth_dbm_pass=להעביר כישלונות למודול הבא?
@@ -840,6 +886,7 @@ mod_auth_dbm_egfile=שם קובץ DBM לא חוקי
 mod_auth_dbm_type=סוג מסד נתונים של DBM
 mod_auth_dbm_gtype=סוג מסד הנתונים של קבוצת DBM
 mod_auth_dbm_default=פורמט DBM ברירת מחדל
+
 mod_cern_meta_process=עבד מטא-נתונים של כותרות
 mod_cern_meta_dir=ספריית משנה למטאפי כותרות
 mod_cern_meta_default=ברירת מחדל
@@ -847,6 +894,7 @@ mod_cern_meta_edir=שם תיקיית משנה של metafile לא חוקי
 mod_cern_meta_suffix=סיומת קובץ עבור מטאפילות כותרות
 mod_cern_meta_default2=ברירת מחדל
 mod_cern_meta_esuffix=סיומת מטאפילית לא חוקית
+
 mod_ssl_enable=אפשר SSL?
 mod_ssl_proto=פרוטוקולי SSL
 mod_ssl_cfile=קובץ אישור / מפתח פרטי
@@ -874,6 +922,7 @@ mod_ssl_passsc=Execute script $1
 mod_ssl_epassph=לא הוזנה סיסמת SSL
 mod_ssl_epasssc=סקריפט סיסמת SSL חסר או לא חוקי
 mod_ssl_ecerton=כאשר SSL מופעל, יש לבחור קובץ אישור
+
 mod_apachessl_notssl=דחה את גישת ה- SSL
 mod_apachessl_forcessl=לכפות גישה ל- SSL / notSSL?
 mod_apachessl_capath=נתיב לספרייה עם אישורים של רשויות ההסמכה ב-
@@ -906,6 +955,7 @@ mod_apachessl_nov2=השבת גרסת 2 של SSL
 mod_apachessl_fake=מדמה את כניסי האימות הבסיסיים של המשתמש, באמצעות שם האישור
 mod_apachessl_cdnfile=התיק מול DN הלקוח נבדק
 mod_apachessl_ecdnfile=המסמך חסר נגד ה- DN של הלקוח מסומן
+
 log_global=Changed global $1 options
 log_virtc=Created server $1
 log_virts=Reconfigured server $1
@@ -946,8 +996,10 @@ log_stop=שרת אינטרנט הופסק
 log_apply=שינויים שהוחלו
 log_manual=Manually edited configuration file $1
 log_virts_delete=Deleted $1 virtual servers
+
 search_title=מצא שרתים
 search_notfound=לא נמצאו שרתים וירטואליים תואמים
+
 mod_php_value=ערכי תצורת PHP
 mod_php_flag=דגלי תצורת PHP
 mod_php_admin_value=ערכי תצורת מנהל מערכת PHP
@@ -956,6 +1008,7 @@ mod_php_name_header=הגדרה
 mod_php_value_header=ערך
 mod_php_ename='$1' is an invalid name
 mod_php_evalue='$1' is an invalid value for $2
+
 mod_vhost_alias_root=שורש מארח וירטואלי אוטומטי
 mod_vhost_alias_ip=משתמשים בכתובת IP במקום שם מארח?
 mod_vhost_alias_none=אף אחד
@@ -963,12 +1016,14 @@ mod_vhost_alias_script=מארח אוטומטי וירטואלי cgi-bin
 mod_vhost_alias_eroot=שורש מארח וירטואלי חסר או לא חוקי
 mod_vhost_alias_eroot2=ספריית שורש וירטואלית אינה מורשית
 mod_vhost_alias_escript=Cgi-bin מארח וירטואלי חסר או לא חוקי
+
 worker_minspare=חוטי חילוף מינימליים
 worker_maxspare=חוטי חילוף מרביים
 worker_eminspare=האשכולות החורפיים המינימליים חייבים להיות מספר שלם
 worker_emaxspare=האשכולות הרזרביים המרביים חייבים להיות מספר שלם
 worker_threads=חוטים לכל תהליך ילד
 worker_ethreads=מספר האשכולות לכל תהליך ילד חייב להיות מספר שלם
+
 perchild_sthreads=האשכולות הראשוניים לכל תהליך ילד
 perchild_esthreads=מספר האשכולות לכל תהליך ילד חייב להיות מספר שלם
 perchild_numservers=מספר תהליכי ילד
@@ -984,6 +1039,7 @@ perchild_gid=GID
 perchild_enum=מספר התהליך חייב להיות מספר שלם שאינו אפס
 perchild_euid=UID חייב להיות מספר שלם
 perchild_egid=GID חייב להיות מספר שלם
+
 cache_enable=פעיל?
 cache_type=חנות מטמון
 cache_disk=דיסק
@@ -1004,12 +1060,14 @@ cache_eminos=גודל אובייקט מינימלי למטמון חייב להי
 cache_emaxos=גודל האובייקט המרבי למטמון חייב להיות מספר בתים
 cache_maxoc=אובייקטים מרביים לזיכרון מטמון
 cache_emaxoc=מספר האובייקטים במטמון בזיכרון חייב להיות מספר שלם
+
 suexec_su=הפעל תוכניות CGI בתור
 suexec_none=משתמש מתצורה עולמית
 suexec_user=משתמש יוניקס
 suexec_group=וקבוצה
 suexec_euser=משתמש חסר או לא חוקי להפעלת תוכניות CGI כ
 suexec_egroup=קבוצה חסרה או לא חוקית להפעלת תוכניות CGI בתור
+
 filter_name=שם
 filter_intype=הזן סוג MIME
 filter_outtype=סוג MIME פלט
@@ -1019,11 +1077,13 @@ filter_in=הגדרות מסנן קלט
 filter_out=הגדרות מסנן פלט
 filter_ename=Invalid filter name '$1'
 filter_ecmd=Missing command for filter '$1'
+
 cdir_err=יצירת אפשרויות לספריה נכשלה
 cdir_err2=שמירת האפשרויות לספריה נכשלה
 cdir_epath=נתיב חסר
 cdir_eproxy=לא ניתן ליצור אפשרויות פרוקסי עם אפשרות הפעלת regexp התאמה
 cdir_ecannot=אינך רשאי ליצור אפשרויות לספריה עבור הנתיב הנתון
+
 mod_band_enable=הגבלת רוחב הפס מופעלת?
 mod_band_bw=הגבלה (בתים / שניה)
 mod_band_client=ללקוחות
@@ -1042,24 +1102,30 @@ mod_band_epulse=מרווח חסר או לא חוקי בין מנות מוגבל�
 mod_band_dir=רוחב הפס בספריית קבצי נתונים
 mod_band_edir=ספריית קבצי נתונים ברוחב פס חסרים או שאינם קיימים
 mod_band_esubdir=Missing required subdirectory <tt>$1</tt> under bandwidth data files directory
+
 mod_dav_active=WebDAV מופעל?
 mod_dav_inf=מאפשרים בקשות DAV PROPFIND עומק אינסופי?
 mod_dav_timeout=פסק זמן מינימלי של DAV בשניות
 mod_dav_etimeout=פסק זמן של DAV חסר או לא תקף
+
 delete_err=מחיקת שרתים וירטואליים נכשלה
 delete_enone=לא נבחר
 delete_ecannot=אינך מורשה למחוק שרתים
 delete_ecannot2=You are not allowed to edit the server $1
+
 syslog_desc=יומן שגיאות Apache
+
 mod_auth_basic_pass=להעביר כשלי כניסה בסיסיים למודול הבא?
 mod_auth_basic_prov=סוגי קבצי משתמש בסיסיים בסיסיים
 mod_auth_basic_file=קובץ טקסט
 mod_auth_basic_dbm=מסד נתונים של DBM
+
 mod_auth_digest_pass=להעביר כישלונות כניסה לעיכול למודול הבא?
 mod_auth_digest_prov=עיכול סוגי קבצי משתמש בכניסה
 mod_auth_digest_al=אלגוריתם שכול
 mod_auth_digest_domain=כתובות ונתיבים באותו תחום
 mod_auth_digest_edomain=חסרות כתובות URL ונתיבים באותו תחום
+
 mods_title=קביעת תצורת מודולי אפאצ 'י
 mods_mod=מודול
 mods_state=מצב נוכחי

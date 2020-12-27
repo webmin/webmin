@@ -15,6 +15,7 @@ index_use=Gebruik
 index_free=Vry
 index_format=Hierdie skyf is nie geformateer nie
 index_return=skyflys
+
 edit_ecannot=U mag nie hierdie skyf redigeer nie
 edit_title=Wysig partisie
 edit_header=Partisie besonderhede
@@ -56,6 +57,7 @@ edit_tunedesc2=U kan nie die lêerstelsel op hierdie partisie instel nie, want d
 edit_tunedesc3=U kan nie die lêerstelsel op hierdie partisie instel nie, want dit is tans gemonteer. Gebruik die <a href=/mount/>lêerstelselmodule</a> om dit eers te demonteer.
 edit_tunedesc4=U kan nie die lêerstelsel op hierdie partisie instel nie, omdat dit nie 'n lêerstelsel het nie.
 edit_tunedesc5=U kan nie die lêerstelsel op hierdie partisie instel nie, want slegs <tt>UFS</tt> lêerstelsels kan ingestel word.
+
 save_ecannot=U mag nie hierdie skyf redigeer nie
 save_edelete=Kon nie partisie uitvee nie
 save_esave=Kon nie partisie stoor nie
@@ -64,6 +66,7 @@ save_eend='$1' is nie 'n geldige eindsilinder nie
 save_estartmin=Die beginsilinder moet> 0 wees
 save_eendmax=Die eindsilinder moet < $1 wees
 save_estartend=Die beginsilinder moet minder wees as die einde
+
 newfs_title=Skep lêerstelsel
 newfs_ecannot=U mag nie hierdie skyf formateer nie
 newfs_desc=As u op die knoppie onderaan hierdie vorm klik, bou u 'n nuwe $1 op die toestel $2. Alle data op hierdie partisie sal permanent uitgevee word.
@@ -89,6 +92,7 @@ newfs_err=Kon nie lêerstelsel skep nie
 newfs_exec=Voer opdrag $1 uit.
 newfs_failed=.. opdrag misluk!
 newfs_ok=.. opdrag voltooi.
+
 fsck_title=Herstel lêerstelsel
 fsck_ecannot=U mag nie die skyf herstel nie
 fsck_desc=As u op die <b>Herstel</b> -knoppie klik, sal u $1 op $2 nagaan en herstel. Die vlak van kontrole en herstel word bepaal deur u keuse hieronder.
@@ -106,6 +110,7 @@ fsck_37=proses dood tydens die ondersoek
 fsck_39=onkorrigeerbare foute bespeur!
 fsck_40=geen foute opgespoor nie
 fsck_unknown=onbekende fout
+
 tunefs_title=Stel lêerstelsel in
 tunefs_ecannot=U mag nie hierdie skyf instel nie
 tunefs_desc=Met hierdie vorm kan u verskillende parameters van die $1 op $2 aanpas. Bestaande lêers op hierdie lêerstelsel sal nie benadeel word nie.
@@ -122,6 +127,7 @@ tunefs_err=Kon nie die lêerstelsel instel nie
 tunefs_exec=Voer opdrag $1 uit.
 tunefs_failed=.. opdrag misluk!
 tunefs_ok=.. opdrag voltooi.
+
 select_device=SCSI-beheerder $1 teiken $2 eenheid $3 
 select_idedevice=IDE-toestel $1 
 select_part=SCSI-beheerder $1 teiken $2 eenheid $3 partisie $4 
@@ -131,10 +137,13 @@ esun=Partisies kan slegs op Sun-hardeware verander word
 emounted=Skyf het partisies gemonteer
 elast=Die laaste partisie kan nie verwyder word nie
 eformat=<tt>formaat</tt> het geen skywe gevind nie!
+
 fstype_ufs=Solaris Unix-lêerstelsel
 fstype_unknown=Onbekende lêerstelsel
+
 acl_disks=Disks wat hierdie gebruiker kan partisie en formateer
 acl_dall=Alle skywe
 acl_dsel=Gekies ..
 acl_view=Kan skywe en partisies verander?
+
 ecannot=U mag nie partisies redigeer nie

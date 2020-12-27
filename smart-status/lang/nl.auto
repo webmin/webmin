@@ -2,6 +2,7 @@ index_family=Modelfamilie
 index_serial=Serienummer
 index_capacity=Capaciteit
 index_norm=Genormaliseerd:
+
 monitor_type2=SSD-slijtage
 monitor_wearlevel=Falen als het slijtage niveau daalt onder
 monitor_ewearlevel=Percentage ongeldige slijtage

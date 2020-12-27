@@ -16,6 +16,7 @@ index_d1=$1
 index_dlang=jezik u kojemu se moduli prikazuju
 index_dtheme=tema koja kontrolira Webmin prikazivanje
 index_dpass=lozinka korištena za logiranje
+
 change_title=Izmjena Postavki
 change_user=Izmjena Webmin pristupa ..
 change_done=.. gotovo
@@ -23,6 +24,7 @@ change_restart=Ponovno pokretanje Webmina-a ..
 change_redirect=Preusmjeravanje na glavni izbornik ..
 change_ecolon=Vaša lozinka ne smije sadržavati : znak
 change_epass=Nova lozinka nije valjana : $1
+
 acl_lang=Ne možete izmjeniti jezik?
 acl_theme=Ne možete izmjeniti temu?
 acl_pass=Ne možete izmjeniti lozinku (kada je namještena u Webmin-u) ?

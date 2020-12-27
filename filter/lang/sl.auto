@@ -45,6 +45,7 @@ index_ondate=Datum
 index_charset=Samodejno odgovori nabor znakov
 index_subject=Samodejno odgovori zadevo sporočila
 index_nowebmin=Ta modul se uporablja samo v programu Usermin. Če je vidna v Webminu, je tema, ki jo uporabljate, nepopolna.
+
 edit_title1=Ustvari filter
 edit_title2=Uredi filter
 edit_header1=Pogoj za filter
@@ -71,6 +72,7 @@ edit_amode7=Shrani v novo ime z imenom
 edit_nobounce=Zaustavite posredovanje sporočil o prekinitvi
 edit_apply=Pokaži ujemajočo e-pošto v mapi:
 edit_move=Prijavite se za e-pošto v mapi:
+
 save_err=Filtra ni bilo mogoče shraniti
 save_egone=Filter ne obstaja več!
 save_econdheader=Manjkajoča ali neveljavna glava e-pošte
@@ -89,8 +91,10 @@ save_enewfolder3=Mapa z istim imenom že obstaja
 save_estart=Neveljaven datum začetka samodejnega odgovora
 save_eend=Neveljaven končni datum samodejnega odgovora
 save_echarset=Manjkajoči ali neveljavni niz samodejnih odgovorov
+
 delete_err=Izbris filtrov ni uspel
 delete_enone=Izbrana ni nobena
+
 aliases_type1=Naslov 1
 aliases_type2=Naslovi v datoteki $1 
 aliases_type3=Datoteka $1 
@@ -101,6 +105,7 @@ aliases_your=Vaš poštni predal
 aliases_delete=Brisanje pošte
 aliases_other=Nabiralnik uporabnika $1 
 aliases_auto=Samodejni odzivnik s sporočilom $1 
+
 auto_title=Samodejni odgovor po e-pošti
 auto_header=Možnosti samodejnega odgovora na e-pošto
 auto_enabled=Samodejni odziv omogočen?
@@ -111,12 +116,14 @@ auto_charsetdef=Iz trenutnega jezika
 auto_charsetother=Drugi nabor znakov
 auto_period=Najmanjši interval med odgovori
 auto_err=Samodejnega odgovora ni bilo mogoče shraniti
+
 forward_title=Posreduj e-pošto
 forward_header=Možnosti posredovanja po e-pošti
 forward_enabled=Ali je posredovanje e-pošte omogočeno?
 forward_to=Posreduj na naslove
 forward_cont=Tudi dostaviti normalno?
 forward_err=Posredovanje e-pošte ni bilo mogoče shraniti
+
 move_err=Filtra ni bilo mogoče uporabiti
 move_esrc=Izvorna mapa $1 ne obstaja!
 move_edest=Ciljna mapa $1 ne obstaja!

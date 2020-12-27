@@ -2,6 +2,7 @@ index_title=Hangüzenet szerver
 index_ecmd=A Vgetty parancsot $1 nem talátlam meg az Ön rendszerében. Lehet, hogy nem lett felinstallálva, vagy a <a href='$2'>modul konfigurációban</a> helytelenűl lett beállítva.
 index_econfig=A Vgetty konfigurációs file -t $1 nem találtam meg az Ön rendszerében.Lehet, hogy nem lett felinstallálva, vagy a <a href='$2'>modul konfigurációban</a> helytelenűl lett beállítva.
 index_return=hangüzenet index
+
 vgetty_title=Soros port beállítása
 vgetty_desc=Hogy az Ön szervere válaszolni tudjon a hangüzentekre, modemnek kell csatlakoznia a soros porthoz, amit a lenti listából tud kiválasztani. Ha Ön hozzáad egy portot ehhez a listához, a $1 program be fogja konfigurálin a válaszhívásra és lejátsza az üzenetet.
 vgetty_add=Új soros port hozzáadása
@@ -32,6 +33,7 @@ vgetty_erings=Hiányzó vagy érvénytelen csöngetési szám
 vgetty_erings2=A csöngetések száma legalább 2 kell hogy legyen
 vgetty_eans=Nem lett kiválasztva válasz mód
 vgetty_eclash=A soros port $1 már használatban van
+
 options_title=Hangüzenet szerver beállításai
 options_header=Beállítások az összes soros porthoz
 options_maxlen=Maximális üzenet hossz
@@ -68,6 +70,7 @@ options_eprog=Hiányzó vagy nemlétező program a futtatáshoz
 options_eowner=Hiányzó vagy érvénytelen Unix felhasználó az üzenetfile -okhoz
 options_egroup=Hiányzó vagy hibás Unix csoport az üzenetfile -okhoz
 options_emode=Hiányzó vagy érvénytelen oktális jogosultság az üzenetfile -okhoz
+
 received_title=Fogadott üzenetek
 recieved_desc=A listában megtekintheti azokat a hangüzeneteket, amiket fogadott a szerver. Hogy meghallgassa az üzenetet, kérem kattintson a dátum/idő mezőre az első oszlopban.
 received_none=Nem találtam fogadott hangüzeneteket.
@@ -79,9 +82,12 @@ received_delete=Kiválasztott üzenetek törlése
 received_move=Kiválasztott üdvözletek átkonvertálása
 received_all=Összes kiválasztása
 received_invert=Kiválasztás megfordítása
+
 listen_efile=Érvénytelen üzenet filenév!
 listen_epath=A hangüzenet üzenet már nem létezik
+
 delete_efile=Érvénytelen üzenet filenév!
+
 messages_title=Üdvözlő üzenetek
 messages_desc=Ez az oldal megjeleníti az Ön üdvözlő üzeneteit, amit ha egy hívó csatlakozik a hangüzenet szerverhez, lejátszik. Ha Önnek több mint egy üzenete van, akkog váletlenszerűen kiválaszott üzenet lesz felhasználva.
 messages_file=Filenév
@@ -89,12 +95,15 @@ messages_none=Nincsenek üdvözlő üzenetek.
 messages_updesc=Ezen a lapon Ön fel tudo tölteni kiegészítő WAV formátumű üdvözlő üzenet file-okat, amiket a kiválasztott formátumra konvertál át a rendszer hogy a modemje tudja használni. A mintavételnek a feltöltött WAV file -ban meg kell egyeznie a mintavételezésével a fogadott üzeneteknek, ahogyan ki lett választva a listából.
 messages_upload=Üzenet feltöltése
 messages_fmt=konvertálás erre
+
 pvfdesc=$1, $2 bitek
+
 upload_err=Nem sikerült az üzenetet hozzáadni
 upload_emessage=Nem lett WAV file kiválasztva
 upload_ewav=Nem sikerült átkonvertálni a WAV file -t: $1
 upload_epvf=Nem sikerült az RMD file -t létrehozni : $1
 upload_esame=Az üzenet file $1 már létezik
+
 log_apply=Konfiguráció elfogadás
 log_upload=Feltöltött üdvözlő üzenet $1
 log_move=Átkonvertálva $1 fogadott üzenet

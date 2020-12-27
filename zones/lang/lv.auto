@@ -4,6 +4,7 @@ index_none=Vēl nav definētas zonas.
 index_add=Pievienojiet jaunu zonu.
 index_return=zonu saraksts
 index_zones=Esošās zonas
+
 edit_title=Rediģēt zonu
 edit_common=Vispārējā zonas konfigurācija
 edit_name=Zonas nosaukums
@@ -57,20 +58,26 @@ edit_attrnone=Pagaidām nav definēti vispārīgi atribūti.
 edit_attradd=Pievienojiet jaunu vispārīgu atribūtu.
 edit_webmin=Atveriet Webmin
 edit_brand=Zīmols
+
 ui_cancel=Atcelt
+
 save_err=Neizdevās saglabāt zonu
 save_epool=Trūkst vai nav derīgs baseins
 save_ewebmin=Webmin šajā zonā nedarbojas
+
 reboot_title=Atsāknēšanas zona
 reboot_rusure=Vai tiešām vēlaties atsāknēt zonu $1 ? Visi tajā darbinātie procesi tiks restartēti.
 reboot_err=Neizdevās pārstartēt zonu
 reboot_doing=Tagad tiek atsāknēta zona ..
+
 reboot_failed=.. neizdevās :
 reboot_ok=.. pabeigts.
+
 halt_title=Izslēgšanas zona
 halt_rusure=Vai tiešām vēlaties izslēgt zonu $1 ? Visi tajā notiekošie procesi tiks apturēti.
 halt_err=Neizdevās izslēgt zonu
 halt_doing=Tagad tiek slēgta zona ..
+
 boot_title=Bootup zona
 boot_err=Neizdevās palaišanas zona
 boot_doing=Tagad tiek sākta zonas izveidošana ..
@@ -78,10 +85,12 @@ delete_title=Dzēst zonu
 delete_rusure=Vai tiešām vēlaties dzēst zonu $1 ? Tiks zaudēti visi tās privātajās failu sistēmās esošie faili.
 delete_err=Neizdevās izdzēst zonu
 delete_doing=Tagad tiek dzēsta zona ..
+
 uninstall_title=Atinstalēt sistēmu
 uninstall_rusure=Vai tiešām vēlaties atinstalēt sistēmas programmatūru no zonas $1 ? Tiks zaudēti visi tās privātajās failu sistēmās esošie faili.
 uninstall_err=Neizdevās atinstalēt sistēmas programmatūru no zonas
 uninstall_doing=Tagad atinstalēt sistēmu no zonas ..
+
 install_title=Instalēt sistēmu
 install_doing=Tagad instalējam sistēmu zonā ..
 net_title1=Izveidot tīkla saskarni
@@ -96,6 +105,7 @@ net_enetmask=Nederīgs tīkla masks
 net_eaddress=Nederīga IP adrese
 net_egone=Saskarne vairs nepastāv!
 net_eclash=Šajā zonā jau pastāv tīkla saskarne ar tādu pašu IP adresi
+
 pkg_title1=Pievienojiet pakešu direktoriju
 pkg_title2=Rediģēt pakotņu direktoriju
 pkg_header=Iedzimta pakotņu kataloga informācija
@@ -107,6 +117,7 @@ pkg_eclash=Šajā zonā pakešu direktorijs jau pastāv
 pkg_inherit=Mantotās paketes no globālās zonas
 pkg_inherit_yes=Jā (reti saknes zona)
 pkg_inherit_no=Nē (visa saknes zona)
+
 fs_title1=Izveidot failu sistēmu
 fs_title2=Rediģēt failu sistēmu
 fs_header=Papildu informācija par failu sistēmu
@@ -128,6 +139,7 @@ fs_eoptions=Nederīgas montāžas opcijas (jābūt ar komatu atdalītam saraksta
 fs_egone=Failu sistēma vairs nepastāv!
 fs_mount=Pēc izveidošanas montēt?
 fs_eclash=Šajā zonā jau pastāv failu sistēma, kas izmanto to pašu direktoriju
+
 rctl_title1=Izveidot resursu kontroli
 rctl_title2=Rediģēt resursu kontroli
 rctl_header=Resursu kontroles tips un ierobežojumi
@@ -148,6 +160,7 @@ rctl_elimit=Nav skaitlis
 rctl_eaction=$1 rindā nav atlasīts neviens signāls
 rctl_evalues=Nav ievadīti ierobežojumi
 rctl_eclash=Šajā zonā jau pastāv tā paša resursa vadība
+
 attr_title1=Izveidot vispārējo atribūtu
 attr_title2=Rediģēt vispārīgo atribūtu
 attr_header=Ģenērisko zonu atribūtu informācija
@@ -165,6 +178,7 @@ attr_euint=Vērtība nav pozitīvs vesels skaitlis
 attr_eboolean=Vērtība nav “patiesa” vai “nepatiesa”
 attr_egone=Atribūts vairs nepastāv!
 attr_eclash=Šajā zonā jau pastāv atribūts ar tādu pašu nosaukumu
+
 status_running=Skriešana
 status_installed=Apstādināts
 status_configured=Nav ieinstalets
@@ -172,13 +186,16 @@ status_incomplete=Tiek uzstādīts
 status_ready=Gatavs
 status_down=Uz leju
 status_shutting_down=Izslēdzas
+
 list_name=Zonas nosaukums
 list_id=ID Nr.
 list_path=Zonu katalogs
 list_status=Statuss
 list_actions=Darbības
+
 zone_in=Zonā $1 
 pool_none=Nav
+
 create_title=Izveidot zonu
 create_header=Jauna zonas informācija
 create_path=Zonas failu direktorija
@@ -239,6 +256,7 @@ create_erouter=Trūkst vai nav derīga maršrutētāja IP adrese
 create_removingpkgs=mantoto pakotņu direktoriju noņemšana. ..
 create_brand=Zīmols
 create_brandmsg=Zīmolrades zona
+
 log_create_zone=Izveidota zona $1 
 log_delete_zone=Dzēsta zona $1 
 log_save_zone=Modificēta zonas 1 konfigurācija
@@ -262,6 +280,7 @@ log_delete_rctl=Izdzēsta resursa kontrole $1 zonā $2
 log_create_attr=Izveidots vispārējs atribūts $1 zonā $2 
 log_modify_attr=Modificēts vispārējs atribūts $1 zonā $2 
 log_delete_attr=Dzēsts vispārīgais atribūts $1 zonā $2 
+
 webmin_eperl=Perl nav instalēts $1 
 webmin_eroot=Mape $1 neeksistē vai tajā nav Webmin.
 webmin_title=Instalējiet Webmin

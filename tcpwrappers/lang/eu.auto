@@ -10,6 +10,7 @@ index_hosts=ostalariak
 index_cmd=Komando
 index_delete=Ezabatu Hautatuta
 index_none=bat ere ez
+
 edit_title1allow=Sortu Onartu araua
 edit_title2allow=Editatu baimendu araua
 edit_title1deny=Sortu ukatu araua
@@ -22,9 +23,11 @@ edit_hosts=Urruneko ostalariak
 edit_hostsexcept=Ostalariak izan ezik
 edit_cmd=Shell komandoak
 edit_efound=Daemon '$1' ez da xinetd konfigurazioan aurkitu.
+
 save_errtitle=Errorea gorde arauan
 save_ehost=Ostalariaren sarrerak karaktere txarrak ditu
 save_ecmd=Komandoaren sarrerak karaktere txarrak ditu
 save_eservice=Daemon izenek karaktere txarrak dituzte
+
 del_errtitle=Ezabatu arauak ezabatzea
 del_enone=Ez dago ezabatzeko araurik

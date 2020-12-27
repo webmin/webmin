@@ -52,6 +52,7 @@ index_sadd=Buat perkhidmatan sistem baru.
 index_always=Sentiasa
 index_ladd=Buat agen pelancaran baru.
 index_lname=Nama ejen
+
 edit_title=Edit Tindakan
 create_title=Buat Tindakan
 edit_ecannot=Anda tidak dibenarkan mengedit tindakan boot
@@ -85,6 +86,7 @@ edit_statusnow=Tunjukkan Status
 edit_return=tindakan
 edit_status=Dimulakan sekarang?
 edit_unknown=Tidak diketahui
+
 save_err=Gagal menyimpan tindakan
 save_ecannot=Anda tidak dibenarkan mengedit tindakan boot
 save_ealready=Tindakan yang dipanggil '$1' sudah wujud
@@ -93,6 +95,7 @@ save_ename=Nama tindakan hilang atau tidak sah
 save_eclash=Tindakan dengan nama yang sama sudah wujud
 save_escript=Tiada skrip tindakan yang dimasukkan
 save_estartcmd=Perintah bootup yang tiada
+
 ss_ecannot=Anda tidak dibenarkan memulakan atau menghentikan tindakan bootup
 ss_start=Mula Tindakan
 ss_stop=Hentikan Tindakan
@@ -103,21 +106,25 @@ ss_exec=Melaksanakan $1 ..
 ss_doingstart=Bermula tindakan $1 ..
 ss_doingstop=Menghentikan tindakan $1 ..
 ss_doingstatus=Meminta status tindakan $1 ..
+
 shutdown_ecannot=Anda tidak dibenarkan menutup sistem tersebut
 shutdown_title=Menutup
 shutdown_rusure=Adakah anda pasti mahu menutup sistem dengan arahan $1 ?
 shutdown_ok=Sistem Shutdown
 shutdown_exec=Menutup dengan arahan $1 ..
+
 reboot_ecannot=Anda tidak dibenarkan untuk menamatkan semula sistem
 reboot_title=Reboot
 reboot_rusure=Adakah anda pasti mahu reboot sistem dengan arahan $1 ?
 reboot_ok=Reboot System
 reboot_exec=Reboot dengan arahan $1 ..
+
 acl_script=Boleh edit skrip bootup?
 acl_actions=Bolehkah menjalankan, mengedit, membuat dan memadam tindakan?
 acl_runonly=Hanya berlari
 acl_reboot=Bolehkah reboot sistem?
 acl_shutdown=Bolehkah shutdown sistem?
+
 log_rename=Dinamakan semula tindakan $1 hingga $2 
 log_modify=Tindakan diubahsuai $1 
 log_create=Tindakan yang dibuat $1 
@@ -138,6 +145,7 @@ log_massrestart=Tindakan dimulakan semula $1
 log_massenable=Tindakan diaktifkan $1 
 log_massdisable=Tindakan kecacatan $1 
 log_telinit=Beralih ke runlevel $1 
+
 edit_hostconfig_startup=Skrip $1 dijalankan pada masa boot sistem jika tindakan ini aktif. Anda boleh mengeditnya di bawah
 edit_hostconfig_plist=Fail $1 menetapkan parameter tertentu berkenaan skrip boot. Anda boleh mengeditnya di bawah
 edit_hostconfig_new=Buat Tindakan Baru
@@ -149,6 +157,7 @@ edit_hostconfig_array=Medan $1, $2, dan $3 adalah medan pelbagai dan boleh menga
 edit_hostconfig_further=Selepas mencipta tindakan permulaan baru, anda akan dihantar ke halaman di mana anda boleh tweak skrip permulaan dan senarai parameter jika diperlukan.
 edit_hostconfig_hostconfig=Fail $1 mengawal sistem perkhidmatan yang luas dan daemon yang dimulakan pada boot sistem. Anda boleh mengeditnya di bawah
 edit_hostconfig_title=Edit Hostconfig
+
 mass_enone=Tiada tindakan yang dipilih
 mass_enone2=Tiada perkhidmatan dipilih
 mass_start=Memulakan Tindakan
@@ -169,9 +178,11 @@ mass_udisable=Melumpuhkan perkhidmatan $1 pada masa boot.
 mass_ustarting=Perkhidmatan bermula $1 ..
 mass_ustopping=Menghentikan perkhidmatan $1 ..
 mass_urestarting=Mulakan semula perkhidmatan $1 ..
+
 change_err=Anda tidak dibenarkan menukar runlevels
 change_title=Tukar Runlevel
 change_cmd=Beralih ke runlevel $1 dengan arahan $2. Ini mungkin mengambil sedikit masa, dan Webmin mungkin tidak lagi tersedia selepas menukar.
+
 mode_init=SysV init
 mode_osx=MacOS
 mode_local=Skrip boot tunggal
@@ -180,6 +191,7 @@ mode_rc=Skrip FreeBSD RC
 mode_upstart=Permulaan
 mode_systemd=Systemd
 mode_launchd=PelancaranD
+
 upstart_title1=Buat Perkhidmatan Permulaan
 upstart_title2=Edit Perkhidmatan Permulaan
 upstart_egone=Perkhidmatan tidak lagi wujud!
@@ -204,6 +216,7 @@ upstart_eserver=Tiada arahan pelayan yang dimasukkan
 upstart_eserver2=Perintah pelayan tidak wujud
 upstart_eserver3=Hanya satu arahan pelayan yang boleh dimasukkan
 upstart_return=perkhidmatan permulaan
+
 systemd_title1=Buat Perkhidmatan Sistem
 systemd_title2=Edit Perkhidmatan Sistem
 systemd_egone=Perkhidmatan tidak lagi wujud!
@@ -227,6 +240,7 @@ systemd_edesc=Huraian perkhidmatan yang tiada
 systemd_return=perkhidmatan sistem
 systemd_econf=Tiada konfigurasi systemd yang dimasukkan
 systemd_estart=Perintah yang hilang untuk disiarkan pada permulaan
+
 launchd_title1=Buat Launcher Agent
 launchd_title2=Edit Agen Launchd
 launchd_egone=Agen tidak lagi wujud!
@@ -247,4 +261,5 @@ launchd_eclash=Agen dengan nama yang sama sudah wujud
 launchd_return=ejen pelancaran
 launchd_econf=Tiada konfigurasi pelancaran yang dimasukkan
 launchd_estart=Perintah pelayan yang tiada
+
 syslog_journalctl=Log sistem

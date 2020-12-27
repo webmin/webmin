@@ -1,8 +1,12 @@
 index_ladd=Maak een nieuwe launchd-agent.
 index_lname=Naam agent
+
 edit_reloadnow2=Lees het configuratiebestand opnieuw
+
 mode_launchd=LaunchD
+
 systemd_status3=Onbekend!
+
 launchd_title1=Start Launchd Agent
 launchd_title2=Launchd Agent bewerken
 launchd_egone=Agent bestaat niet meer!
@@ -23,4 +27,5 @@ launchd_eclash=Er bestaat al een agent met dezelfde naam
 launchd_return=gelanceerde agent
 launchd_econf=Geen opstartconfiguratie ingevoerd
 launchd_estart=Serveropdracht ontbreekt
+
 syslog_journalctl=SystemD-logboeken

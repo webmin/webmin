@@ -9,14 +9,18 @@ index_edit=Spravovat
 index_manual=Upravit ručně
 index_anyfile=Upravit jiný PHP konfigurační soubor:
 index_return=konfigurační soubory
+
 file_global=Globální PHP konfigurace
+
 manual_title=Upravit konfiguraci ručně
 manual_desc=Tyto stránka umožňuje ručně upravovat PHP konfigurační soubor. Měli byste však být opatrní, protože u vašich návrhů změn neprobíhá žádá kontrola syntaxe a validity.
 manual_err=Chyba při úpravě konfiguračního souboru
 manual_edata=Nebyl vložen žádný nový obsah
+
 list_title=Spravovat PHP konfiguraci
 list_ecannot=Nemáte oprávnění spravovat tento PHP konfigurační soubor
 list_return=PHP konfigurace
+
 vars_title=PHP proměnné
 vars_header=Volby pro tvorbu a přidělování PHP proměnných 
 vars_magic=Přidělovat všechny vkládané proměnné?
@@ -25,6 +29,7 @@ vars_register=Zahrnout veškerý vstup do globálních proměnných?
 vars_args=Zahrnout parametry příkazového řádku do globálních proměnných?
 vars_long=Vytvořit pole ve starém stylu jako <tt>HTTP_GET_VARS</tt>?
 vars_err=Chyba při ukládání nastavení PHP proměnných
+
 dirs_title=Nastavení adresáře
 dirs_header=Nastavení pro adresář PHP skriptu a rozšíření
 dirs_include=Prohledat adresáře obsahující
@@ -36,6 +41,7 @@ dirs_err=Chyba při ukládání nastavení adresáře
 dirs_eincs=Neobsahuje žádné vyhledánání adresářů
 dirs_eutmp=Chybějící nebo neplatný adresář pro dočasné soubory
 dirs_eext=Chybějící adresář pro rozšíření
+
 db_title=Nastavení databáze
 db_header1=Nastavení pro připojení k MySQL databázi
 db_persist=Povolit trvalá připojení k databázi?
@@ -54,6 +60,7 @@ db_emaxlinks=Chybějící nebo neplatný maximální počet celkového připojen
 db_etimeout=Chybějící nebo neplatný timeout přípojení
 db_ehost=Chybějící nebo neplatný host MySQL serveru
 db_eport=Chybějící nebo neplatný port MySQL serveru
+
 session_title=Volby pro relace
 session_header=Volby pro sledování PHP relací
 session_handler=Mechanismus pro uchovávání relací
@@ -69,6 +76,7 @@ session_maxlife=Maximální lifetime relací
 session_epath=Chybějící nebo neplatný adresář pri soubory relací
 session_elife=Chybějící nebo neplatný lifetime pro cookie
 session_emaxlife=Chybějící nebo neplatný maximální lifetime pro cookie
+
 safe_title=Volby pro zabezpečený mód
 safe_header=Volby pro mód zabezpečeného přístupu k souboru
 safe_on=Povolit zabezpečený mód?
@@ -81,6 +89,7 @@ safe_err=Chyba při ukládání voleb zabezpečného módu
 safe_einclude=Chybějící nebo nepovolený přístup do adresáře pro vkládání souborů
 safe_eexec=Chybějící nebo nepovolený přístup do adresáře pro spouštění programů
 safe_ebasedir=Chybějící nebo neplatný adresář pro operace se soubory
+
 limits_title=Limity zdroje
 limits_header=Volby pro omezení paměti a přenosu
 limits_mem=Maximální velikost alokované paměti
@@ -94,6 +103,7 @@ limits_epost=Chybějící nebo neplatná maximální velikost pro HTTP POST
 limits_eupload=Chybějící nebo neplatná velikost nahrávaného souboru
 limits_eexec=Chybějící nebo neplatný maximální čas pro spuštění
 limits_einput=Chybějící nebo neplatný maximální čas pro vložení parsování
+
 errors_title=Logování chyb
 errors_header=Volby pro zobrazování a logování chybových zpráv
 errors_display=Zobrazit chybové zprávy?
@@ -124,6 +134,7 @@ errors_err=Chyba při ukládání chybového logování
 errors_ereporting=Nebyl vložen žádné rozšíření pro chybové typy
 errors_emaxlen=Chybějící nebo neplatná maximální velikost logovaných chyb
 errors_efile=Chybějící log soubor pro chyby
+
 misc_title=Jiná nastavení
 misc_header=Další různorodá PHP nastavení
 misc_short=Povolit PHP skripty začínající &lt;? ?
@@ -140,6 +151,7 @@ misc_esmtp=Chybějící nebo neplatný SMT server
 misc_esmtp_port=Chybějící nebo nečíselný SMTP port
 misc_esendmail=Neplatný příkaz pro odeslání mailu
 misc_esendmail2=Chybějící příkaz pro odeslání mailu
+
 log_manual=Ručně upraven soubor $1
 log_vars=Změněny PHP proměnné v $1
 log_dirs=Změněno nastavení adresáře v $1
@@ -149,6 +161,7 @@ log_safe=Změněny volby pro zabezpečný mód v $1
 log_limits=Změněny limity zdroje v $1
 log_errors=Změněno logování chyb v $1
 log_misc=Změněna jiná nastavení v $1
+
 acl_global=Může upravovat globální PHP konfiguraci?
 acl_anyfile=Může upravovat jakýkoliv soubor, který obsahuje PHP konfiguraci?
 acl_manual=Může ručně upravovat soubory?

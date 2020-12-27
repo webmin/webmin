@@ -19,6 +19,7 @@ index_dump=Dökümü Göster
 index_dumpdesc=<tt>shorewall6 dökümü</tt> komutundan Shorewall izleme bilgilerini görüntülemek için bu düğmeyi tıklayın.
 index_check=Güvenlik Duvarını Kontrol Et
 index_checkdesc=Shorewall'un güvenlik duvarı yapılandırmanızı <tt>shorewall6 check</tt> komutuyla doğrulaması için bu düğmeyi tıklayın.
+
 list_move=Hareket
 list_add=Ekle
 list_auto=Otomatik
@@ -30,6 +31,7 @@ list_manual=Dosyayı Manuel Olarak Düzenle
 list_manualdesc=Yukarıdaki girişlerin depolandığı $1 Shorewall dosyasını el ile düzenlemek için bu düğmeyi tıklatın.
 list_ecannot=Bu Shorewall tablosunu düzenlemenize izin verilmiyor.
 list_delete=Silme seçildi
+
 restart_err=Yapılandırma uygulanamadı
 refresh_err=Yapılandırma yenilenemedi
 start_err=Güvenlik duvarı başlatılamadı
@@ -41,6 +43,7 @@ check_title=Güvenlik Duvarını Kontrol Et
 check_ok=.. güvenlik duvarı yapılandırmanız iyi görünüyor.
 check_failed=.. güvenlik duvarı yapılandırmanızda bir hata bulundu!
 check_cmd=Yapılandırma kontrol ediliyor ..
+
 zones_title=Ağ Bölgeleri
 zones_desc=Bu sayfada listelenen bölgeler, sisteminizden erişilebilen farklı ağları temsil eder. Ancak, buradaki girişlerin güvenlik duvarı üzerinde hiçbir etkisi yoktur - bunun yerine, sadece bölge adlarını ve açıklamalarını tanımlarlar.
 zones_add=Yeni bir ağ bölgesi ekleyin.
@@ -72,6 +75,7 @@ zones_firewall=Güvenlik duvarı sistemi
 zones_eopts=Geçersiz bölge seçenekleri
 zones_eopts_in=Geçersiz bölge gelen seçenekleri
 zones_eopts_out=Geçersiz bölge giden seçenekleri
+
 policy_title=Varsayılan Politikalar
 policy_desc=Bu sayfa, farklı güvenlik duvarı bölgeleri arasındaki trafik için varsayılan eylemleri yapılandırmanıza olanak tanır. Güvenlik Duvarı Kuralları sayfasında belirli ana bilgisayarlar veya trafik türleri için geçersiz kılınabilir.
 policy_add=Yeni bir varsayılan politika ekleyin.
@@ -92,6 +96,7 @@ policy_ulog=ULOG'da oturum açın
 policy_efw=&lt;Firewall&gt; hem kaynak hem de hedef bölgeler için seçilebilir
 policy_elimit=Eksik veya geçersiz trafik sınırı numarası
 policy_eburst=Eksik veya geçersiz trafik patlama sayısı
+
 rules_title=Güvenlik Duvarı Kuralları
 rules_desc=Bu tablo, belirli trafik, kaynak veya hedef türleri için varsayılan politikaların istisnalarını listeler. Seçilen eylem, varsayılan yerine seçilen ölçütlerle eşleşen paketlere uygulanır.
 rules_add=Yeni bir güvenlik duvarı kuralı ekleyin.
@@ -138,6 +143,7 @@ rules_eaction=Hiçbir eylem seçilmedi
 rules_macro=Makro eylem parametresi
 rules_none2=Yok
 rules_emacro=Eksik veya geçersiz makro parametresi
+
 tos_title=Hizmet Türleri
 tos_desc=Bu sayfa, önceliklerini yükseltmek veya düşürmek için kullanılabilen belirli trafik türleri için IP hizmeti türlerini tanımlar.
 tos_add=Yeni bir hizmet türü ekleyin.
@@ -156,6 +162,7 @@ tos_edit=Hizmet Türünü Düzenle
 tos_create=Hizmet Türü Yaratma
 tos_header=Hizmet ayrıntılarının türü
 tos_err=Hizmet türü kaydedilemedi
+
 interfaces_title=Ağ arayüzleri
 interfaces_desc=Sisteminizde Shorewall'ın yönetmesini istediğiniz ağ arabirimlerinin her biri bu sayfada listelenmeli ve bağlı olduğu bölgeyle ilişkilendirilmelidir. Geridöngü arayüzü asla <tt>lo</tt> listelenmemelidir.
 interfaces_add=Yeni bir ağ arayüzü ekleyin.
@@ -171,6 +178,7 @@ interfaces_header=Ağ arayüzü ayrıntıları
 interfaces_err=Ağ arayüzü kaydedilemedi
 interfaces_eiface=Eksik veya geçersiz arayüz adı
 interfaces_ebroad=Eksik veya geçersiz yayın adresi
+
 masq_title=Maskelendirilmesi'nin
 masq_desc=Bu sayfadaki girişler, bazı ağlarla belirli bir arayüz arasında yönlendirilen trafik için ağ adresi çevirisini ayarlar.
 masq_add=Yeni bir maskeleme kuralı ekleyin.
@@ -201,6 +209,7 @@ masq_emnete=Boş istisna ağları listesi
 masq_esnat=Geçersiz SNAT IP adresi
 masq_eports=Virgülten ayrı bağlantı noktaları eksik veya geçersiz
 masq_eipsec=IPsec seçenekleri eksik
+
 nat_title=Statik NAT
 nat_desc=Bu tablodaki statik ağ adresi çeviri girişleri, güvenlik duvarınızdaki harici bir adres ile güvenlik duvarınızın arkasındaki bir makinenin RFC1918 adresi arasında 1-1 yazışma ayarlamak için kullanılabilir. Statik NAT genellikle ağınızın dışından bir iç sunucuya bağlantı yapılmasına izin vermek için kullanılır.
 nat_add=Yeni bir statik NAT girişi ekleyin.
@@ -219,6 +228,7 @@ nat_local=Güvenlik duvarı sistemi için aktif misiniz?
 nat_eext=Geçersiz harici IP adresi
 nat_eint=Geçersiz dahili IP adresi
 nat_evirt=Geçersiz sanal arayüz numarası
+
 proxyndp_title=Proxy NDP
 proxyndp_desc=Bu sayfa, sisteminizi IP adreslerinin kendisinden farklı NDP isteklerine yanıt verecek şekilde yapılandırmanıza olanak tanır, böylece paketleri bu adreslere gerçek hedeflerine yönlendirebilir.
 proxyndp_add=Yeni bir proxy NDP adresi ekleyin.
@@ -235,6 +245,7 @@ proxyndp_err=Proxy NDP kaydedilemedi
 proxyndp_have=Ana makine yolu var mı?
 proxyndp_eaddr=NDP'ye eksik veya geçersiz adres
 proxyndp_pers=Güvenlik duvarı durdurulmuş olsa bile rotadan ayrılsın mı?
+
 routestopped_title=Durdurulduğunda
 routestopped_desc=Varsayılan olarak, Shorewall durdurulduğunda tüm ana bilgisayarlardan erişimi reddeder. Bu sayfa, hala erişilebilir olacak ana bilgisayarları veya ağları tanımlamanızı sağlar.
 routestopped_add=Yeni bir durdurulmuş adres ekleyin.
@@ -250,6 +261,7 @@ routestopped_err=Durdurulmuş adres kaydedilemedi
 routestopped_eaddr=Adres girilmedi
 routestopped_all=Tüm adresler
 routestopped_list=Listelenen adresler ve ağlar ..
+
 tunnels_title=VPN Tünelleri
 tunnels_desc=Bu sayfada, güvenlik duvarınızdan geçen VPN tünelleri listelenir ve Shorewall yapılandırması tarafından izin verilmesi gerekir.
 tunnels_add=Yeni bir VPN tüneli ekleyin.
@@ -282,6 +294,7 @@ tunnels_generic_l=Genel, protokol için ..
 tunnels_gsel=Listelenen bölgeler
 tunnels_eopenvpn=OpenVPN tüneli için geçersiz port numarası
 tunnels_egeneric=Eksik protokol veya protokol: genel tünel için bağlantı noktası
+
 hosts_title=Bölge Ana Bilgisayarları
 hosts_desc=Bu sayfa, belirli bölgelerin parçası olan ana bilgisayarları ve ağları listeler. Genellikle bu listede herhangi bir değişiklik yapmanız gerekmez.
 hosts_add=Yeni bir bölge ana bilgisayarı ekleyin.
@@ -301,8 +314,10 @@ hosts_ip=Adres veya ağ $1
 hosts_mac=MAC adresi $1 
 hosts_ipset=IP seti $1 
 hosts_any=Herhangi bir ana bilgisayar
+
 edit_before=$1 girişinden önce
 edit_after=$1 girdikten sonra
+
 blacklist_title=Kara Liste Ana Bilgisayarları
 blacklist_desc=Bu sayfada, <b>kara liste</b> seçenek ayarlı bir arayüze onlardan gelen trafik geldiğinde engellenecek ana bilgisayarlar ve hizmetler listelenir.
 blacklist_add=Yeni bir kara liste ana bilgisayarı ekleyin.
@@ -325,6 +340,7 @@ blacklist_eproto=Eksik veya geçersiz protokol
 blacklist_eports=Geçersiz bağlantı noktası numarası veya virgülle ayrılmış bağlantı noktaları listesi
 blacklist_eports2=Bağlantı noktaları yalnızca TCP ve UDP protokolleri için belirtilebilir
 blacklist_return=kara liste sunucuları
+
 providers_title=Ek Yönlendirme Sağlayıcıları
 providers_desc=Bu sayfa ek yönlendirme tablolarını tanımlar. Birden fazla ISS'ye veya aynı ISS'ye birden fazla bağlantınız varsa veya Squid'i güvenlik duvarı dışındaki bir ana bilgisayarda şeffaf bir proxy olarak çalıştırıyorsanız bunlar gereklidir.
 providers_add=Yeni bir yönlendirme sağlayıcısı ekleyin.
@@ -359,17 +375,21 @@ providers_enumber=Eksik veya geçersiz sağlayıcı numarası
 providers_emark=Eksik veya geçersiz sağlayıcı işareti numarası
 providers_edup=Yinelenecek sağlayıcı eksik
 providers_egateway=Eksik veya geçersiz ağ geçidi
+
 manual_desc=Bu form Shorewall $1 dosyasını el ile düzenlemek için kullanılabilir. Değişiklikler üzerinde sözdizimi kontrolü yapılmayacağından dikkatli olun.
 manual_reset=Geri alma
 manual_err=Tablo dosyası kaydedilemedi
 manual_efile=Geçersiz tablo adı!
 manual_edata=Hiçbir tablo dosyası içeriği girilmedi.
+
 acl_nochange=Shorewall yapılandırmasını uygulayabilir, durdurabilir ve başlatabilir mi?
 acl_files=Mevcut Shorewall masaları
 acl_all=Herşey
 acl_sel=Aşağıda seçildi ..
+
 delete_err=Satırlar silinemedi
 delete_enone=Seçili satır yok
+
 opts_routeback=Ana bilgisayara geri gelen trafiği kabul et
 opts_source=Ana bilgisayardan herhangi bir hedefe izin ver
 opts_dest=Herhangi bir kaynaktan barındırmaya izin ver
@@ -386,12 +406,14 @@ opts_proxyndp=Proxy NDP'yi etkinleştir
 opts_ndp_filter=Yalnızca arayüz IP'si için NDP isteklerine yanıt verin
 opts_detectnets=Taylor bölgesi yalnızca yönlendirilmiş ana makineleri içerecek
 opts_upnp=Paketleri UPNP ile yeniden eşleştirin
+
 opts_dhcp=Arabirim DHCP kullanır
 opts_forward=Yönlendirmeyi ayarla
 opts_ignore=Yukarı/aşağı olaylarını yoksay
 opts_optional=Arayüz isteğe bağlıdır
 opts_required=Arayüz gerekli
 opts_bridge=Arayüz bir köprüdür
+
 comment_add=Yeni bir yorum ekleyin.
 comment_edit=Yorumu Düzenle
 comment_create=Yorum Oluştur
@@ -399,6 +421,7 @@ comment_header=Tablo yorumu ayrıntıları
 comment_msg=İleti
 comment_err=Yorum kaydedilemedi
 comment_enone=Mesaj girilmedi
+
 log_create_table=$1 tablosuna giriş eklendi
 log_modify_table=$1 tablosundaki değiştirilmiş giriş
 log_delete_table=$1 tablosundan giriş silindi
@@ -414,6 +437,7 @@ log_start=Güvenlik duvarı başlatıldı
 log_refresh=Yenilenmiş güvenlik duvarı
 log_restart=Yeniden başlatılan güvenlik duvarı
 log_clear=Güvenlik duvarı temizlendi
+
 shorewall_conf_title=Ana yapılandırma dosyası
 shorewall_conf_desc=Bu sayfa genel yapılandırma değişkenlerini yapılandırmanıza izin verir. NOT: Yapılandırma dosyasındaki yorumların göreli konumunu korumak istiyorsanız, burada değişkenlerin sırasını değiştirmeniz önerilmez.
 shorewall_conf_add=Yeni bir yapılandırma değişkeni ekleyin.
@@ -427,6 +451,7 @@ shorewall_conf_create=Yapılandırma değişkeni oluştur
 shorewall_conf_header=Yapılandırma değişkeni ayrıntıları
 shorewall_conf_err=Yapılandırma değişkeni kaydedilemedi
 shorewall_conf_varname=Geçersiz değişken adı (geçerli bir kabuk değişken adı olmalıdır)
+
 params_title=Özel parametreler
 params_desc=Bu sayfa Shorewall'un özel parametrelerini yapılandırmanıza izin verir. NOT: Yapılandırma dosyasındaki yorumların göreli konumunu korumak istiyorsanız, burada parametrelerin sırasını değiştirmek önerilmez.
 params_add=Yeni bir özel parametre ekleyin.

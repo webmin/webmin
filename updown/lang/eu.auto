@@ -40,6 +40,7 @@ index_descfetch=Orrialde hau Webmin erabiltzen ari den sistematik fitxategi bat 
 index_email=Bidali mezu elektronikoak deskargak egiten direnean?
 index_emailto=Bai, helbidera
 index_email2=Bidali mezu elektronikoak noiz igotzen direnean?
+
 upload_title=Kargatu fitxategiak
 upload_err=Ezin izan da fitxategiak kargatu
 upload_edir=Direktorioa falta da kargatzeko
@@ -63,6 +64,7 @@ upload_saving=$1 fitxategia gordetzen.
 upload_saved=.. $1 idatzi du
 upload_unzipping=$1 fitxategia ateratzea.
 upload_unzipdone=.. $1 
+
 download_err=Ezin izan da deskargatu gordetzea
 download_enone=Ez da deskargatzeko URLrik sartu
 download_eurl='$1' ez da baliozko URL bat
@@ -74,9 +76,11 @@ download_failed=Deskarga huts egin du : $1
 download_eaccess=Ezin duzu $1 fitxategiak deskargatu
 download_eucannot=Ezin duzu $1 erabiltzaile gisa fitxategiak deskargatu
 download_egcannot=Hautatutako taldeak ez du hautatutako erabiltzailea
+
 cancel_err=Ezin izan da deskargak bertan behera utzi
 cancel_enone=Ez da hautatu
 cancel_ecannot=Ezin duzu $1 erabiltzailearen deskargak ezeztatu
+
 log_cancel=$1 deskargatu ditu
 log_upload_l=Kargatutako $1 fitxategia (k)
 log_upload=Kargatutako $1 fitxategi (k)
@@ -84,6 +88,7 @@ log_download_l=$1 deskargatutako URLa
 log_download=$1 URL deskargatu
 log_sdownload_l=$1 URLaren deskarga programatu du
 log_sdownload=$1 URL (k) deskargatzea planifikatu da
+
 acl_users=Erabiltzaile gisa fitxategiak igo eta deskarga ditzake
 acl_all=Erabiltzaile guztiak
 acl_this=Uneko Webmin erabiltzailea
@@ -98,6 +103,7 @@ acl_max=Gehienezko kargaren tamaina
 acl_unlim=Mugarik gabe
 acl_b=byte
 acl_fetch=Fitxategiak deskarga ditzakezu PCan?
+
 fetch_err=Ezin izan da fitxategia deskargatu
 fetch_ecannot=Ezin duzu fitxategiak deskargatu PC batean
 fetch_efile=Ez da fitxategi-izenik sartu
@@ -106,6 +112,7 @@ fetch_eopen=Ezin izan da fitxategia ireki : $1
 fetch_eaccess=Ezin duzu $1 etik fitxategiak deskargatu
 fetch_ezip=Ezin da direktorio bat deskargatu <tt>zip</tt> komandoa instalatuta egon ezean
 fetch_eroot=Ezin da root direktorioa deskargatu!
+
 email_downmsg=Deskarga hau amaitu da :
 email_downurl=URL: $1 
 email_downerr=Errore mezua: $1 

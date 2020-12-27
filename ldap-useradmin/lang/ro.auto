@@ -19,10 +19,13 @@ index_samba=Samba?
 index_cyrus=IMAP?
 index_users=Utilizatori LDAP
 index_groups=Grupuri LDAP
+
 imap_econn=Conectarea la serverul IMAP $1 nu a reușit
 imap_elogin=Eroare la autentificarea pe serverul IMAP $1 ca $2 : $3 
 conn_eldap_host=Nu a fost găsit niciun fișier de configurare client LDAP în sistemul dvs., astfel încât serverul LDAP trebuie să fie setat pe pagina Modul Config
 conn_elogin=Niciun fișier de configurare a clientului LDAP nu a fost găsit în sistemul dvs., deci conectarea LDAP trebuie setată pe pagina Modul Config
+conn_efile_open=Nu s-a putut deschide fișierul de acreditări de legare LDAP:
+
 uedit_cap=Capabilitățile utilizatorului
 uedit_samba=Autentificare Samba?
 uedit_cyrus=Autentificare server IMAP?
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=Ultima actualizare a parolei
 uedit_sambapwdcanchange=Parola se poate schimba
 uedit_sambabadpasswordcount=Numărul de parole necorespunzător
 uedit_sambaacctflags=Steagurile contului
+
 usave_eadd=Eroare la adăugarea utilizatorului în baza de date LDAP : $1 
 usave_emod=Eroare la modificarea utilizatorului în baza de date LDAP : $1 
 usave_emoddn=Nu a reușit să redenumească utilizatorul în baza de date LDAP : $1 
@@ -66,26 +70,33 @@ usave_eattrdupu=Utilizatorul $1 utilizează deja $2 $3
 usave_eattrdupg=Grupul $1 utilizează deja $2 $3 
 usave_ereal=Lipsesc numele real
 usave_equota=Cota IMAP lipsește sau este nevalidă
+
 search_err=Căutarea $1 sub $2 a eșuat : $3 
+
 gedit_dn=DNAP LDAP al grupului
 gedit_return=detalii de grup
 gedit_cap=Capabilități de grup
 gedit_samba=Samba grup?
+
 gsave_egone=Grupul nu mai există!
 gsave_edelete=Nu a reușit să ștergeți grupul din baza de date LDAP : $1 
 gsave_eadd=Eroare la adăugarea grupului în baza de date LDAP : $1 
 gsave_emod=Eroare la modificarea grupului în baza de date LDAP : $1 
 gsave_emoddn=Nu a putut redenumi grupul în baza de date LDAP : $1 
+
 gdel_group=Ștergerea intrării grupului LDAP ..
+
 udel_pass=Ștergerea intrării utilizatorului LDAP ..
 udel_book=Ștergerea din agenda de adrese ..
 udel_imap=Ștergerea dosarului IMAP ..
 udel_warnimap=Căsuța poștală existentă va fi ștersă la ștergerea directorului de acasă!
 udel_failed=.. a eșuat!  : $1 
+
 raw_title=Atributele LDAP
 raw_name=Numele atributului
 raw_value=valori
 raw_for=Pentru $1 
+
 batch_samba=Creați un cont Samba pentru utilizatori noi?
 batch_imap=Creați un cont IMAP pentru utilizatori noi?
 batch_descafter3=În liniile <b>creați</b> și <b>modificați</b>, puteți, în mod opțional, să adăugați câmpuri suplimentare care conțin atribute LDAP în <i>nume</i> = <i>valoare</i> în format să fie atribuite utilizatorilor noi sau modificați.

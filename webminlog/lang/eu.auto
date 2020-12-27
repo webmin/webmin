@@ -30,6 +30,7 @@ index_sdesc=Ekintzaren deskribapenak dauka
 index_shost=Iturri Webmin zerbitzaria
 index_long=Erakutsi ekintzaren deskribapen osoa?
 index_global=&lt;Ez da inongo modutan&gt;
+
 search_title=Bilaketaren emaitzak
 search_date=data
 search_time=Ordua
@@ -63,6 +64,7 @@ search_global_baduser=Erabiltzaile-izena txarra
 search_global_badpass=Pasahitz txarra
 search_global_twofactor=Twofactor token baliogabea
 search_csv=Esportatu CSV gisa
+
 view_title=Ekintzaren xehetasunak
 view_header=$1 erregistratutako ekintzaren xehetasunak
 view_action=deskribapena
@@ -96,12 +98,14 @@ view_files=Fitxategiak aldatu eta komandoak exekutatzen dira
 view_raw=Erregistroaren datu gordinak
 view_rawname=Parametroaren izena
 view_rawvalue=Parametroaren balioa
+
 acl_mods=Erregistroak moduluetan ikusi ditzake
 acl_all=guztiak
 acl_sel=Jarraian hautatua ..
 acl_self=Norbera bakarrik
 acl_users=Erabiltzaileek ekintzak ikusi ditzakete
 acl_rollback=Ekintzak atzera bota ditzake?
+
 rollback_title=Rollback Ekintza
 rollback_rusure=Ziur al zaude azpian agertzen diren fitxategi guztiak berriro edukira itzuli nahi dituzula ekintza hau gauzatu aurretik? Gaur egun dituzten datuak honako aldaketa hauek gainidazten dira :
 rollback_isdir=Direktorioa - ez da aldaketarik egingo.
@@ -124,4 +128,5 @@ rollback_modfile=$1 fitxategiaren edukia atzera bota du.
 rollback_deleted=$1 fitxategia ezabatu da
 rollback_nodeleted=$1 fitxategi salto egin gabe dago.
 rollback_enone=Ez da fitxategirik hautatu
+
 log_rollback=Atzera egindako ekintza $1 moduluan $2 

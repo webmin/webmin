@@ -15,6 +15,7 @@ index_use=Usar
 index_free=Livre
 index_format=Este disco não está formatado
 index_return=lista de discos
+
 edit_ecannot=Você não tem permissão para editar este disco
 edit_title=Editar partição
 edit_header=Detalhes da Partição
@@ -56,6 +57,7 @@ edit_tunedesc2=Você não pode ajustar o sistema de arquivos nesta partição po
 edit_tunedesc3=Você não pode ajustar o sistema de arquivos nesta partição porque ela está atualmente montada. Use o <a href=/mount/>módulo de sistemas de arquivos</a> para desmontá-lo primeiro.
 edit_tunedesc4=Você não pode ajustar o sistema de arquivos nesta partição porque ela não possui um sistema de arquivos.
 edit_tunedesc5=Você não pode ajustar o sistema de arquivos nesta partição porque apenas os sistemas de arquivos <tt>UFS</tt> podem ser ajustados.
+
 save_ecannot=Você não tem permissão para editar este disco
 save_edelete=Falha ao excluir partição
 save_esave=Falha ao salvar a partição
@@ -64,6 +66,7 @@ save_eend='$1' não é um cilindro final válido
 save_estartmin=O cilindro de partida deve ser> 0
 save_eendmax=O cilindro final deve ser < $1 
 save_estartend=O cilindro inicial deve ser menor que o final
+
 newfs_title=Criar sistema de arquivos
 newfs_ecannot=Você não tem permissão para formatar este disco
 newfs_desc=Clicar no botão na parte inferior deste formulário criará um novo $1 no dispositivo $2. Todos os dados nesta partição serão apagados permanentemente.
@@ -89,6 +92,7 @@ newfs_err=Falha ao criar sistema de arquivos
 newfs_exec=Executando o comando $1 ..
 newfs_failed=.. comando falhou!
 newfs_ok=.. comando concluído.
+
 fsck_title=Reparar sistema de arquivos
 fsck_ecannot=Você não tem permissão para reparar este disco
 fsck_desc=Clicar no botão <b>Reparar</b> verificará e, opcionalmente, reparará o $1 em $2. O nível de verificação e reparo é determinado por sua escolha abaixo.
@@ -106,6 +110,7 @@ fsck_37=processo morto durante a verificação
 fsck_39=erros incorrigíveis detectados!
 fsck_40=nenhum erro detectado
 fsck_unknown=erro desconhecido
+
 tunefs_title=Ajustar sistema de arquivos
 tunefs_ecannot=Você não tem permissão para ajustar este disco
 tunefs_desc=Este formulário permite ajustar vários parâmetros do $1 em $2. Os arquivos existentes neste sistema de arquivos não serão prejudicados.
@@ -122,6 +127,7 @@ tunefs_err=Falha ao ajustar o sistema de arquivos
 tunefs_exec=Executando o comando $1 ..
 tunefs_failed=.. comando falhou!
 tunefs_ok=.. comando concluído.
+
 select_device=Controlador SCSI $1 destino $2 unidade $3 
 select_idedevice=Dispositivo IDE $1 
 select_part=Controlador SCSI $1 destino $2 unidade $3 partição $4 
@@ -131,10 +137,13 @@ esun=Partições só podem ser modificadas no hardware Sun
 emounted=O disco montou partições
 elast=A última partição não pode ser removida
 eformat=<tt>formato</tt> não encontrou nenhum disco!
+
 fstype_ufs=Sistema de arquivos Solaris Unix
 fstype_unknown=Sistema de arquivos desconhecido
+
 acl_disks=Discos que este usuário pode particionar e formatar
 acl_dall=Todos os discos
 acl_dsel=Selecionado ..
 acl_view=Pode editar discos e partições?
+
 ecannot=Você não tem permissão para editar partições

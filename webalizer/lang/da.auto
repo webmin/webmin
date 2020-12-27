@@ -26,6 +26,7 @@ index_when=Ja, $1
 index_webalizer=Webalizer
 index_enable=Planlagt valgt
 index_disable=De-plan valgt
+
 edit_title1=Tilføj logfil
 edit_title2=Rediger logfil
 edit_header=Indstillinger for logfilrapport
@@ -49,12 +50,14 @@ edit_cmode0=Brug globale indstillinger
 edit_cmode1=Tilpassede indstillinger
 edit_cmode2=Anden konfigurationsfil ..
 edit_clear=Rydde logfil (er) efter planlagt rapport?
+
 gen_title=Generer rapport
 gen_header=Kører Webalizer for at generere rapport fra $1 ..
 gen_done=.. Færdig
 gen_failed=.. Webalizer mislykkedes! Se output ovenfor for detaljer.
 gen_nothing=.. Webalizer er færdig, men der blev ikke genereret nogen rapport. Se output ovenfor for detaljer.
 gen_view=Se afsluttet rapport.
+
 save_err=Gemt logfil ikke
 save_efile=Logfil blev ikke indtastet eller findes ikke
 save_ecfile=Manglende eller ikke-eksisterende konfigurationsfil mangler
@@ -64,12 +67,14 @@ save_ewuser=Der findes ingen Unix-bruger kaldet $1
 save_ehost=Manglende eller ugyldigt webstedets værtsnavn
 save_etitle=Manglende rapporttitel
 save_ecannot=Du har kun tilladelse til at generere rapporter til logfiler under $1 
+
 view_epath=Ugyldig PATH_INFO
 view_efile=Ugyldigt rapportfilnavn
 view_elog=Ugyldig logfil
 view_ecannot=Du har ikke tilladelse til at se denne rapport
 view_eopen=Kunne ikke åbne rapportfil
 view_title=Se rapport
+
 global_title=Globale indstillinger for webalizer
 global_title2=Webalizer-rapportindstillinger
 global_for=For logfil $1 
@@ -130,6 +135,7 @@ global_includesite=Kunder ikke at ignorere
 global_includereferrer=Henvisere til ikke at ignorere
 global_includeuser=Brugere ikke at ignorere
 global_includeagent=Browsere ikke at ignorere
+
 global_err=Kunne ikke gemme Webalizer-indstillinger
 global_ereport=Manglende præfiks for rapporttitel
 global_ehost=Manglende eller ugyldigt værtsnavn
@@ -139,6 +145,7 @@ global_etable=Manglende eller ugyldig størrelse til '$1' -tabellen
 global_ehistory=Manglende eller ugyldig historiefilnavn
 global_ecurrent=Manglende eller ugyldigt trinvis filnavn
 global_ecache=Manglende eller ugyldig DNS-cache-filnavn
+
 log_create_log=Oprettet rapportering for $1 
 log_modify_log=Ændret rapportering for $1 
 log_delete_log=Rapportering for $1 er slettet
@@ -147,6 +154,7 @@ log_global=Ændrede globale Webalizer-indstillinger
 log_global2=Ændrede Webalizer-indstillinger for $1 
 log_enable_logs=Planlagt rapportering om $1 -logfiler
 log_disable_logs=De-planlagt rapportering om $1 -logfiler
+
 acl_view=Kan kun se eksisterende rapporter?
 acl_global=Kan du redigere globale webalizerindstillinger?
 acl_dir=Tillad kun visning og redigering af rapporter for logfiler under

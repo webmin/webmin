@@ -27,6 +27,7 @@ index_delete=Izbriši izbrano
 index_joingroup=Dodaj v skupino:
 index_eulist=Uporabnikov ni bilo mogoče navesti: $1 
 index_eglist=Skupine ni bilo mogoče našteti: $1 
+
 edit_title=Urejanje spletnega uporabnika
 edit_title2=Ustvari uporabnika Webmin
 edit_title3=Ustvari varnega uporabnika Webmin
@@ -115,6 +116,7 @@ edit_safe=Raven privilegijev
 edit_safe0=Neomejeno
 edit_safe1=Samo varni moduli
 edit_unsafe=Ponastavite na neomejeno
+
 save_err=Uporabnika ni bilo mogoče shraniti
 save_ename='$1' ni veljavno uporabniško ime
 save_eunixname=Uporabniško ime '$1' ni uporabnik Unixa in ga zato ni mogoče uporabljati v varnem načinu
@@ -145,11 +147,13 @@ save_edays=Ni dni, da bi dovolili izbrane
 save_ehours=Manjkajoči ali neveljavni časi za dovoljenje
 save_ehours2=Začetni čas dovolitve mora biti pred koncem
 save_etemp=Možnosti za prisilno spremembo gesla pri naslednji prijavi ni mogoče uporabiti, če ni omogočen <a href='$1'>, ki uporabnike poziva, da vnesejo nova gesla</a>
+
 delete_err=Uporabnika ni bilo mogoče izbrisati
 delete_eself=Ne morete se izbrisati
 delete_ecannot=Uporabnikom ni dovoljeno brisati
 delete_euser=Tega uporabnika ni dovoljeno izbrisati
 delete_eanonuser=Ta uporabnik se uporablja za dostop do anonimnih modulov
+
 cert_title=Zahtevajte potrdilo
 cert_issue=Izdati potrdilo
 cert_header=Nove podrobnosti potrdila
@@ -169,6 +173,7 @@ cert_ekey=Vaš brskalnik ni poslal novega ključa SSL - morda ne podpira potrdil
 cert_eca=Pooblastilo za potrditev ni uspelo: $1 
 cert_already=Opozorilo - že uporabljate potrdilo $1.
 cert_etempdir=Neveljavna datoteka s potrdilom
+
 acl_title=Modul Nadzor dostopa
 acl_title2=Za $1 v $2 
 acl_title3=Za skupino $1 v $2 
@@ -177,6 +182,7 @@ acl_config=Ali lahko uredite konfiguracijo modula?
 acl_reset=Ponastavitev na popoln dostop
 acl_rbac=Pridobite nastavitve nadzora dostopa od RBAC-a?
 acl_rbacyes=Da (preglasi spodnje nastavitve)
+
 acl_uall=Vsi uporabniki
 acl_uthis=Ta uporabnik
 acl_usel=Izbrani uporabniki..
@@ -216,6 +222,7 @@ acl_switch=Ali lahko preklopite na druge uporabnike?
 acl_times=Ali lahko spremenite dovoljene čase prijave?
 acl_pass=Ali lahko spremenite omejitve gesla?
 acl_sql=Ali lahko konfigurirate bazo podatkov uporabnikov in skupin?
+
 log_modify=Spremenjen uporabnik Webmin $1 
 log_rename=Preimenovan uporabnik Webmin $1 v $2 
 log_create=Ustvarjen uporabnik Webmin $1 
@@ -238,6 +245,7 @@ log_sync=Spremenjena sinhronizacija uporabnika unix
 log_sql=Spremenjena baza uporabnikov in skupin
 log_twofactor=Uporabnik $1 z ponudnikom z dvema faktorjema $2 
 log_onefactor=Izključen uporabnik $1 za dvofaktorsko preverjanje pristnosti
+
 gedit_ecannot=Nimate dovoljenja za urejanje skupin
 gedit_title=Urejanje Webmin Group
 gedit_title2=Ustvari skupino Webmin
@@ -247,6 +255,7 @@ gedit_modules=Moduli članov
 gedit_members=Uporabniki in skupine članov
 gedit_desc=Opis skupine
 gedit_egone=Izbrana skupina ne obstaja več!
+
 gdelete_err=Skupine ni bilo mogoče izbrisati
 gdelete_ecannot=Nimate dovoljenja za brisanje skupin
 gdelete_euser=Ne morete izbrisati lastne skupine
@@ -254,11 +263,13 @@ gdelete_esub=Skupin s podskupinami ni mogoče izbrisati
 gdelete_title=Izbriši skupino
 gdelete_desc=Ali ste prepričani, da želite izbrisati skupino $1 in njene člane uporabnike $2 ?
 gdelete_ok=Izbriši skupino
+
 gsave_err=Skupine ni bilo mogoče shraniti
 gsave_ename=Manjkajoče ali neveljavno ime skupine
 gsave_enamewebmin=Ime skupine 'webmin' je rezervirano za notranjo uporabo
 gsave_edup=Ime skupine je že v uporabi
 gsave_edesc=Neveljaven opis - znak: ni dovoljen
+
 convert_title=Pretvarjanje uporabnikov
 convert_ecannot=Ni vam dovoljeno pretvoriti Unixovega uporabnika
 convert_nogroups=V vašem sistemu ni bila določena nobena skupina Webmin. Pred pretvorbo je treba ustvariti vsaj eno skupino, da se določijo dovoljenja za pretvorjene uporabnike.
@@ -287,6 +298,7 @@ convert_user=Uporabnik Unixa
 convert_action=Sprejeti ukrepi
 convert_done= $1 uporabniki pretvorili, $2 neveljavni, $3 že obstajajo, $4 izključeno.
 convert_users=Uporabniki za pretvorbo
+
 sync_title=Sinhronizacija uporabnikov Unix
 sync_desc=Ta obrazec vam omogoča, da konfigurirate samodejno sinhronizacijo uporabnikov Unixa, ustvarjenih prek Webmina in uporabnikov v tem modulu.
 sync_nogroups=V vašem sistemu ni bila določena nobena skupina Webmin. Za nastavitev dostopa ustvarjenim uporabnikom mora biti ustvarjena vsaj ena skupina.
@@ -297,6 +309,7 @@ sync_delete=Ko izbrišete uporabnika Unixa, izbrišite ustreznega uporabnika Web
 sync_group=Dodelite nove uporabnike skupini Webmin
 sync_unix=Nastavite geslo za nove uporabnike na Unix preverjanje pristnosti.
 sync_ecannot=Ni vam dovoljeno konfigurirati sinhronizacije uporabnikov.
+
 unix_title=Unix preverjanje pristnosti uporabnikov
 unix_err=Unix pristnosti ni bilo mogoče shraniti
 unix_desc=Na tej strani lahko konfigurirate Webmin za preverjanje poskusov prijave glede na sistemski seznam uporabnikov in PAM. To je lahko koristno, če imate večje število obstoječih uporabnikov Unixa, ki jim želite omogočiti dostop do Webmin-a.
@@ -329,6 +342,7 @@ unix_esudo=Ukaz $1 ni nameščen
 unix_esudomod=Modul Perl $1 , potreben za preverjanje pristnosti <tt>sudo</tt>, ni nameščen
 unix_header=Nastavitve preverjanja pristnosti Unix
 unix_utable=Dovoljeni uporabniki Unixa
+
 sessions_title=Trenutne seje o prijavi
 sessions_id=ID seje
 sessions_user=Uporabnik Webmin
@@ -342,21 +356,26 @@ sessions_this=Ta prijava
 sessions_in=Prijavljeni
 sessions_out=Odjavljeni
 sessions_kill=Prekini povezavo..
+
 logins_title=Nedavne prijave v splet
+
 hide_title=Skrivanje neuporabljenih modulov
 hide_desc=Naslednji moduli bodo odstranjeni s seznama za dostop do modula za $1 , ker njihovi ustrezni strežniki niso nameščeni v vašem sistemu.
 hide_ok=Skrij module zdaj
 hide_none=Nič za skrivanje - $1 nima dostopa do nobenih modulov, katerih ustrezni strežniki niso nameščeni v vašem sistemu.
 hide_desc2=Upoštevajte, da se ti moduli ne bodo samodejno prikazali, če so nameščeni ustrezni strežniki. S tem modulom boste morali ročno odobriti dostop.
 hide_clone=(Klon $1 )
+
 switch_euser=Preklopite na tega uporabnika
 switch_eold=Obstoječe seje ni mogoče najti!
+
 rbac_title=Nastavite RBAC
 rbac_desc=Webminova integracija RBAC omogoča način določitve uporabniških modulov in dovoljenj ACL iz baze podatkov RBAC (Role-based Access Control), ne pa iz lastnih konfiguracijskih datotek Webmin-a. Ko je podpora za RBAC omogočena, lahko vsak uporabnik, za katerega je izbrana možnost <b>RBAC nadzira vse module in ACL-je</b>, svoje zmogljivosti določi z RBAC in ne s spletnimi nastavitvami nadzora dostopa.
 rbac_esolaris=RBAC je trenutno podprt samo v Solarisu, zato ga ni mogoče uporabljati v tem $1 sistemu.
 rbac_eperl=Modul Perl $1 , potreben za integracijo RBAC, ni nameščen. <a href='$2'>Kliknite tukaj</a>, da jo namestite zdaj.
 rbac_ecpan=Nimate dostopa do strani Webmin's Perl Modules, da bi namestili potrebni $1 modul za integracijo RBAC.
 rbac_ok=V tem sistemu je na voljo integracija RBAC in jo lahko omogočite za vsakega uporabnika na strani Uredi uporabnika Webmin.
+
 udeletes_err=Uporabnikov ni bilo mogoče izbrisati
 udeletes_jerr=Uporabnikov ni bilo mogoče dodati v skupino
 udeletes_enone=Izbrana ni nobena
@@ -365,11 +384,13 @@ udeletes_rusure=Ali ste prepričani, da želite izbrisati izbrane uporabnike $1 
 udeletes_users=Izbrani uporabniki: $1 
 udeletes_ok=Izbriši uporabnike
 udeletes_ereadonly=Eden od izbranih uporabnikov je označen kot neobvladljiv
+
 gdeletes_err=Brisanja skupin ni bilo mogoče
 gdeletes_title=Izbriši skupine
 gdeletes_rusure=Ali ste prepričani, da želite izbrisati $1 izbrane skupine in $2 uporabnike, ki jih vsebujejo? Vse njihove nastavitve nadzora dostopa in podatki o uporabniku bodo izgubljeni.
 gdeletes_users=Izbrane skupine: $1 
 gdeletes_ok=Izbriši skupine
+
 pass_title=Omejitve gesla
 pass_ecannot=Omejitve gesla ne morete urejati
 pass_header=Možnosti uveljavljanja gesla za Webmin
@@ -392,6 +413,7 @@ pass_eminsize=Manjkajoča ali neštevilčna najmanjša dolžina gesla
 pass_emaxdays=Manjkajoče ali neštevilčno število dni pred spremembo
 pass_elockdays=Manjkajoče ali neštevilčno število dni, preden je račun zaklenjen
 pass_eoldblock=Manjkajoče ali neštevilčno število starih gesel, ki jih želite zavrniti
+
 cpass_minsize=Dolge morajo biti vsaj $1 črke
 cpass_notre=Ujema z nedovoljenim vzorcem
 cpass_re=Ne ustreza zahtevanemu vzorcu
@@ -399,6 +421,7 @@ cpass_name=Vsebuje uporabniško ime
 cpass_dict=Je slovarska beseda
 cpass_spellcmd=Niti ukaza $1 niti $2 ni potrebnih za preverjanje besednih besed.
 cpass_old=Starih gesel ni mogoče ponovno uporabiti
+
 sql_title=Uporabniška in skupinska baza podatkov
 sql_ecannot=Ni vam dovoljeno konfigurirati uporabniške in skupinske baze podatkov
 sql_header=Možnosti za začasno bazo podatkov za uporabnike in skupine
@@ -441,21 +464,25 @@ sql_dnerr=Nastavitve podatkovne baze uporabnikov in skupin so veljavne, manjka p
 sql_dnerr2=Spodaj kliknite gumb <b>Ustvari DN</b>, da ga ustvarite samodejno, ali ga ročno dodajte na strežnik LDAP.
 sql_makedn=Ustvari DN
 sql_schema=Prenesite LDAP shemo
+
 make_title=Ustvari tabele uporabnikov in skupin
 make_err=Ustvarjanja tabel uporabnikov in skupin ni uspelo
 make_exec=Izvajanje SQL $1.
 make_failed=.. ustvarjanje ni uspelo: $1 
 make_done=.. Končano
 make_still=Nekatere težave so bile ugotovljene tudi po izdelavi tabele: $1 
+
 makedn_title=Ustvari LDAP DN
 makedn_eoc=Ni najdenih razredov strukturnih objektov!
 makedn_exec=Ustvarjanje nadrejenega DN $1.
 makedn_failed=.. ustvarjanje ni uspelo: $1 
 makedn_done=.. Končano
 makedn_still=Nekatere težave so bile ugotovljene tudi po ustvarjanju DN: $1 
+
 schema_title=Prenesite LDAP shemo
 schema_desc=Preden lahko Webmin uporabi strežnik LDAP za shranjevanje uporabnikov in skupin, mora biti konfiguriran za uporabo spodnje sheme. To lahko običajno storite tako, da definicijo sheme shranite v <tt>/etc/ldap/schema</tt> ali <tt>/etc/openldap/schema</tt> kot <tt>webmin.schema</tt>, nato konfigurirate strežnik za nalaganje datoteke s shemo.
 schema_download=Prenos datoteke sheme: <a href=$1>$1</a>
+
 twofactor_err=Dvofaktorske overitve ni bilo mogoče nastaviti
 twofactor_euser=Vašega spletnega uporabnika ni bilo mogoče najti!
 twofactor_title=Dvofaktorska overitev

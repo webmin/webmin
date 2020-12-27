@@ -19,11 +19,13 @@ index_force=Spēka žurnāla pagriešana
 index_forcedesc=Piespiest visu žurnālfailu tūlītēju pagriešanu, pat ja vēl nav laika.
 index_logrotate=Logrotāts
 index_delete=Dzēst atlasītās žurnāla rotācijas
+
 period_daily=Katru dienu
 period_weekly=Iknedēļas
 period_monthly=Mēnesī
 period_never=Nekad
 period_bytes=baiti
+
 edit_title1=Rediģēt žurnālfailu
 edit_title2=Izveidot žurnālfailu
 edit_header=Rotēta žurnāla faila informācija
@@ -62,8 +64,10 @@ edit_pre=Komandas palaist pirms rotācijas
 edit_default=Noklusējums ($1)
 edit_sharedscripts=Vai visiem failiem palaist skriptus tikai vienu reizi?
 edit_now=Pagriezt tūlīt
+
 global_title=Globālās iespējas
 global_header=Visu žurnālfailu noklusējuma opcijas
+
 save_err=Neizdevās saglabāt žurnālu
 save_efile=Trūkst vai nav derīgs žurnāla faila nosaukums
 save_esize=Trūkst vai nav derīgs maksimālais izmērs
@@ -81,6 +85,7 @@ save_eerrors=Trūkst e-pasta adreses kļūdu ziņojumiem
 save_epre=Pirms rotācijas skripts nedrīkst saturēt līniju <tt>endcript</tt> vai <tt>endrotate</tt>
 save_epost=Skripts pēc rotācijas nevar saturēt rindu <tt>endcript</tt> vai <tt>endrotate</tt>
 save_enofiles=Nav ievadīts neviens pagriežams fails
+
 log_modify_sched=Mainīts žurnāla rotācijas Cron darbs
 log_create_sched=Izveidots žurnāla rotācijas Cron darbs
 log_delete_sched=Izdzēsts žurnāla pagriešanas Cron darbs
@@ -89,6 +94,7 @@ log_create=Pievienota žurnāla faila $1 rotācija
 log_modify=Modificēta žurnāla faila rotācija $1 
 log_delete=Izdzēsta žurnāla faila $1 rotācija
 log_delete_logs=Izdzēsta pagriešana $1 žurnālfailiem
+
 sched_title=Žurnāla rotācijas grafiks
 sched_desc=Lai varētu veikt žurnāla pagriešanu, kas konfigurēta, izmantojot šo moduli, komandai $1 jāpalaiž Krons ar regulāru grafiku (parasti katru dienu).
 sched_runparts=Pašlaik žurnāla pagriešanas komanda tiek palaista no skripta $1 $2, un to nevar pielāgot.
@@ -98,10 +104,12 @@ sched_enabled=Iespējots, reizēm zem ..
 sched_save=Atjaunināt Kronu darbu
 sched_err=Neizdevās saglabāt rotācijas grafiku
 sched_when=Laiki jāskrien
+
 force_title=Spēka žurnāla pagriešana
 force_doing=Visu žurnālfailu tūlītēja pagriešana.
 force_doingone=Viena žurnāla faila tūlītēja pagriešana.
 force_done=.. darīts.
 force_failed=.. neizdevās! Iemeslu, kāpēc tā, skat. Iepriekš minētajā iznākumā.
+
 delete_err=Neizdevās izdzēst žurnālus
 delete_enone=Nav atlasīts

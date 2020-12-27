@@ -1,21 +1,38 @@
 index_reload=Konfiguráció újratöltése
 index_reloadmsg=Kattintson erre a gombra, hogy a Postfix újraolvassa az összes konfigurációs fájlt. Ez akkor lehet hasznos, ha a Postfix konfigurációs fájljait manuálisan módosították.
+
 opts_notify_classes_sel=Az alábbiak szerint választható
+
 smtpd_nomap2=A feladó címeinek korlátozására még nem került sor.
 smtpd_map=Megengedett címek a továbbításhoz
 smtpd_map2=A feladó címeire vonatkozó korlátozások
+
 opts_smtp_use_tls=Használja a TLS-t az SMTP-kapcsolatokhoz
 opts_smtp_sasl_security_options=SASL biztonsági lehetőségek
+
 mapping_toomany=Vannak $1 térképbejegyzések, ami meghaladja a $2 megjelenítési korlátot.
 mapping_find=Megfelelő leképezések megjelenítése:
 mapping_search=Keresés
 mapping_match=A <tt>$1</tt> megfelelő térképfájl-bejegyzések ..
+
+sni_title=Tanúsítvány-hozzárendelés
+sni_ecannot=Nem szerkesztheti a tanúsítvány-hozzárendelés konfigurációját
+opts_sni_maps=Tanúsítvány-leképező keresőtáblák
+sni_return=tanúsítványtérképek
+sni_dom=Gazdanév
+sni_certs=Tanúsítványfájlok
+
+acl_sni=Szerkesztheti a tanúsítványokat?
+
 mailq_deleteall=Törölje a levél sorát
 mailq_deletealldesc=Kattintson erre a gombra az összes üzenet törléséhez a levél sorban.
+
 dependent_title=Feladó-függő szállítási térképezés
 dependent_ecannot=A feladóktól függő szállítási leképezések nem szerkeszthetők
 dependent_eregexp=A feladóktól függő szállítási térképnek <tt>regexp:</tt> <i>fájlnév</i> formátumban kell lennie.
 dependent_return=feladóktól függő szállítási leképezések
+
+log_sni=Tanúsítvány-hozzárendelési beállítások módosítása
 log_dependent=Megváltozott a küldőtől függő címbeállítások
 log_reload=Újratöltött Postfix konfiguráció
 log_sender_dependent_default_transport_maps_create=Létrehozta a feladótől függő címet $1
@@ -23,6 +40,7 @@ log_sender_dependent_default_transport_maps_modify=Módosított feladófüggő c
 log_sender_dependent_default_transport_maps_delete=Törölve a feladótől függő cím $1
 log_delete_sender_dependent_default_transport_mapss=Törölt $1 küldőtől függő címek
 log_manual_sender_dependent_default_transport_mapss=A feladótól függő címek kézi szerkesztése a $1 mappában
+
 opts_smtp_sasl_auth_enable=Használ SASL SMTP hitelesítést?
 opts_smtpd_tls_auth_only=Tilos a SASL hitelesítés nem biztonságos kapcsolatok esetén?
 sasl_relay=SMTP továbbítási korlátozások
@@ -32,5 +50,6 @@ sasl_level_dane_only=Kötelező DANE TLS
 sasl_level_fingerprint=Tanúsítvány ujjlenyomat-ellenőrzése
 sasl_level_verify=Kötelező TLS ellenőrzés
 sasl_level_secure=Biztonsági csatorna TLS
+
 mysql_ecfile2=Nem található a táblázat a MySQL konfigurációs fájlban a $1 fájlban
 mysql_edriver=Nem sikerült betölteni az $1 adatbázis-illesztőprogramot

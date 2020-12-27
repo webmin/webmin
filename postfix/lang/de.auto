@@ -1,7 +1,17 @@
+sni_title=Zertifikatzuordnung
+sni_ecannot=Sie dürfen die Konfiguration der Zertifikatszuordnung nicht bearbeiten
+opts_sni_maps=Nachschlagetabellen für die Zertifikatszuordnung
+sni_return=Zertifikatskarten
+sni_dom=Hostname
+sni_certs=Zertifikatdateien
+
+acl_sni=Kann Zertifikate bearbeiten?
+
 log_opts=Adressumschreibung und Maskierung geändert
 log_aliases=Aliase-Optionen geändert
 log_canonical=Kanonische Mapping-Optionen ändern
 log_transport=Geänderte Transportzuordnungsoptionen
+log_sni=Ändern Sie die Zertifikatzuordnungsoptionen
 log_dependent=Geberabhängige Adressoptionen geändert
 log_relocated=Geänderte Optionen für die Zuordnungszuordnung
 log_header=Geänderte Optionen für die Headerprüfung

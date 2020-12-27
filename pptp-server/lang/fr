@@ -9,9 +9,11 @@ options_chap=Authentification CHAP
 options_version=PPPd version $1
 options_mschap=Authentication MS-CHAP
 options_mschap-v2=Authentication MS-CHAP version 2
+
 secrets_title=Comptes PPP
 secrets_ecannot=Vous n'êtes pas autorisés à éditer les comptes PPP
 secrets_ips=Adresses IP
 secrets_create=Créer un nouveau compte PPP.
+
 log_start=Serveur PPTP démarré
 log_stop=Serveur PPTP arrêté

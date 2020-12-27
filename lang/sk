@@ -8,7 +8,9 @@ main_title2=Webmin
 main_none=Nemáte prístup k modulom Webminu.
 main_skill=Úroveň znalostí
 main_return=Späť do $1
+
 link_essl=Perlovský modul Net::SSLeay potrebný pre tvorbu HTTPS spojení nie je na Vašom systéme nainštalovaný.
+
 category_servers=Servery
 category_hardware=Hardvér
 category_system=Systém
@@ -17,6 +19,7 @@ category_net=Sieť
 category_syslet=Syslets
 category_cluster=Cluster
 category_info=Informácie
+
 longcategory_servers=Moduly pre konfiguráciu webu, e-mailu, FTP a ďaľších serverových služieb
 longcategory_hardware=Moduly pre tlačiarne, disky a ďaľšiu hardvérovú konfiguráciu
 longcategory_system=Moduly pre užívateľov, súborové systémy, plánované úlohy ako aj ďaľšie systémové nastavenia
@@ -24,11 +27,13 @@ longcategory_webmin=Moduly pre konfiguráciu samotného Webminu
 longcategory_net=Moduly pre konfiguráciu siete a sieťových služieb
 longcategory_cluster=Moduly, ktoré umožňujú spravovanie viacerých serverov z jedného miesta
 longcategory_info=Moduly, ktoré zobrazujú informácie o Vašom systéme
+
 header_webmin=Index Webminu
 header_module=Index Modulov
 header_help=Nápoveda..
 header_config=Nastavenie Modulov
 header_servers=Servery s Webminom
+
 index=index
 yes=Áno
 no=Nie
@@ -46,10 +51,12 @@ cancel=Zrušiť
 helpsearch=Vyhľadaj dokumenty..
 switch_remote_euser=Unixový užívateľ $1 neexistuje.
 programname=Webmin
+
 chooser_title1=Vyber súbor..
 chooser_title2=Vyber adresár..
 chooser_dir=Adresár $1
 chooser_ok=Ok
+
 users_title1=Vyber užívateľov..
 users_title2=Vyber užívateľa..
 users_sel=Vybraní užívatelia
@@ -57,6 +64,7 @@ users_all=Všetci užívatelia
 users_ok=OK
 users_cancel=Zrušiť
 users_clear=Vymaž
+
 groups_title1=Vyber skupiny..
 groups_title2=Vyber skupinu..
 groups_all=Všetky skupiny
@@ -64,6 +72,7 @@ groups_sel=Vybrané skupiny
 groups_ok=Ok
 groups_cancel=Zrušiť
 groups_clear=Vymaž
+
 config_ecannot=Nemáte oprávnenie na nastavenie tohoto modulu
 config_title=Konfigurácia
 config_dir=Pre modul $1
@@ -74,6 +83,7 @@ config_err=Zlyhalo uloženie konfigurácie
 config_nochange=Nemeniť
 config_setto=Nastaviť
 config_ewebmin=Parameter typu 14 pracuje iba vo Webmine
+
 help_err=Porucha pri zobrazovaní nápovedy
 help_epath=Chybná alebo chýbajúca cesta k nápovede
 help_efile=Zlyhalo čítanie súboru s nápovedou $1
@@ -81,9 +91,11 @@ help_eheader=Chýbajúce &lt;header&gt; sekcie
 help_einclude=Porucha v priložení­ $1
 help_eif=$1 zlyhalo : $2
 help_eexec=$1 zlyhalo : $2
+
 referer_title=Bezpečnostné upozornenie
 referer_warn=<b>Upozornenie!</b> Webmin zistil že program $2 je napojený z URL $1, ktorá vyzererá byť vonku zo serveru Webminu. Toto môže byť pokus ako priviesť server ku vykonaniu nebezpečného príkazu.
 referer_warn_unknown=<b>Upozornenie!</b> Webmin zistil že program $1 je napojený z neznámej URL, ktorá vyzererá byť vonku zo serveru Webminu. Toto môže byť pokus ako priviesť server ku vykonaniu nebezpečného príkazu.
+
 session_header=Prihlásenie do Webminu
 session_mesg=Zadajte meno a heslo pre prihlásenie sa do Webminu na $1.
 session_mesg2=Zadajte meno a heslo pre prihlásenie.
@@ -95,6 +107,7 @@ session_failed=Prihlásenie zlyhalo. Skúste znovu.
 session_logout=Odhlásenie bolo úspešné. Použite formulár nižšie pre opätovné prihlásenie.
 session_timed_out=Vypršal čas platnosti spojenia po $1 minútach nečinnosti.
 session_save=Zapamätať si prihlasovacie údaje?
+
 acl_root=Koreňový adresár vo výbere
 acl_home=Domovský adresár
 acl_uedit=Užívatelia viditeľní vo výbere
@@ -119,6 +132,7 @@ acl_rpc=Môže akceptovať RPC požiadavky?
 acl_rpc2=Len <tt>root</tt> alebo <tt>admin</tt>
 acl_rpc1=Áno
 acl_rpc0=Nie
+
 month_1=Január
 month_2=Február
 month_3=Marec
@@ -131,6 +145,7 @@ month_9=September
 month_10=Október
 month_11=November
 month_12=December
+
 day_0=Nedeľa
 day_1=Pondelok
 day_2=Utorok
@@ -138,6 +153,7 @@ day_3=Streda
 day_4=Štvrtok
 day_5=Piatok
 day_6=Sobota
+
 smonth_1=Jan
 smonth_2=Feb
 smonth_3=Mar
@@ -150,6 +166,7 @@ smonth_9=Sep
 smonth_10=Okt
 smonth_11=Nov
 smonth_12=Dec
+
 sday_0=Ne
 sday_1=Po
 sday_2=Ut
@@ -157,10 +174,13 @@ sday_3=St
 sday_4=Št
 sday_5=Pi
 sday_6=So
+
 emodule=Prístup zamietnutý : Užívateľ $1 nemá oprávnenie používať modul $2
+
 skill_high=Expert
 skill_medium=Pokročilý
 skill_low=Začiatočník
+
 feedback_title=Správy spätnej väzby Webminu
 feedback_desc=Tento formulár slúži na hlásenie chýb a návrhov pre vývojárov Webminu. Keď stlačíte tlačidlo Odoslať, všetky údaje uvedené vo formulári budú odoslané na $1.
 feedback_desc2=Tento mail bude odoslaný vývojárom Webminu, nie Vašemu systémovému administrátorovi, alebo ISP alebo webhostingovej spoločnosti. Prosím, použite pri tvorbe e-mailu anglický jazyk, aj keď Webmin používate v Slovenčine, prípadne inom jazyku.
@@ -189,11 +209,14 @@ feedback_to=Pošli správu spätnej väzby na adresu
 feedback_enoto=Žiadne adresy neboli uvedené pre odoslanie spätnej väzby
 feedback_ecannot=Nemáte oprávnenie na odosielanie správ spätnej väzby
 feedback_ecannot2=Nemáte oprávnenie na odosielanie správ spätnej väzby obsahujúcich konfiguračné súbory
+
 progress_nosize=Sťahovanie $1 ..
 progress_done=.. Sťahovanie dokončené.
+
 readparse_cdheader=Chybná hlavička
 readparse_enc=Očakávané kódovanie formulára, získané obyčajné kódovanie
 readparse_max=Veľkosť údajov prekročila maximálnu veľkosť $1 bajtov
+
 password_expired=Platnosť Vašeho hesla skončila a tak musíte zadať nové heslo.
 password_header=Zadajte nové heslo
 password_user=Užívateľské meno

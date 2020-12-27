@@ -16,8 +16,10 @@ index_type=SSH key type:
 index_rsa1=RSA (for SSH v1)
 index_rsa=RSA (for SSH v2)
 index_dsa=DSA (for SSH v2)
+
 bits=bits
 secs=seconds
+
 users_title=Authentication
 users_header=Login and authentication options
 users_expire=Days before account expiry to warn user
@@ -53,6 +55,7 @@ users_authkeys_set=File under home
 users_eauthkeys=Missing or invalid-looking authorized keys file
 users_maxauthtries=Maximum login attempts per connection
 users_emaxauthtries=Missing or non-numeric number of login attempts per connection
+
 net_title=Networking
 net_header=Networking options
 net_port=Listen on port
@@ -90,6 +93,7 @@ net_eprots=You must select at least one protocol
 net_eladdress='$1' is not a valid address to listen on
 net_elport='$1' is not a valid port to listen on
 net_elisten2=No addresses to listen on entered
+
 access_title=Access Control
 access_header=Network and login access control options
 access_allowu=Only allow users
@@ -107,6 +111,7 @@ access_eallowg=No groups to allow entered
 access_edenyg=No groups to deny entered
 access_eallowh=No hosts to allow entered
 access_edenyh=No hosts to deny entered
+
 misc_title=Miscellaneous Options
 misc_header=Other miscellaneous SSH server options
 misc_x11=Allow X11 connection forwarding?
@@ -130,14 +135,17 @@ misc_eumask=Missing or invalid 4-digit octal umask
 misc_ebits=Missing or invalid server key size
 misc_eregen=Missing or invalid key regeneration interval
 misc_epid=Missing PID file path
+
 start_err=Failed to start SSH server
 apply_epid=Not running
+
 hosts_title=Client Host Options
 hosts_header=SSH Client Hosts
 hosts_none=No client host options have been defined. All SSH client logins will use the default settings.
 hosts_all=All Hosts
 hosts_add=Add options for client host.
 hosts_return=client hosts list
+
 host_create=Add Host Options
 host_edit=Edit Host Options
 host_header=Client options for SSH host
@@ -193,6 +201,7 @@ host_eprots=You must select at least one protocol
 host_proxy=Connection proxy command
 host_proxy_def=None
 host_eproxy=Missing or invalid-looking connection proxy command
+
 log_users=Changed authentication options
 log_net=Changed networking options
 log_access=Changed access control
@@ -207,6 +216,7 @@ log_stop=Stopped SSH server
 log_start=Started SSH server
 log_apply=Applied configuration
 log_manual=Manually editing config file $1
+
 sync_title=User SSH Key Setup
 sync_desc=This page allows you to configure the automatic setup of SSH for new Unix users created on your system. If configured, new users will not have to run <tt>ssh-keygen</tt> before using SSH.
 sync_create=Setup SSH key for new Unix users?
@@ -215,9 +225,11 @@ sync_pass=Use password as key passphrase?
 sync_gnupg=Setup GNUPG key for new Unix users.
 sync_type=Key type
 sync_auto=&lt;Automatic&gt;
+
 keys_title=Host SSH Keys
 keys_desc=This page allows you to view the SSH keys for this host.
 keys_none=Could not find any HostKey entries in your SSHD configuration.
+
 manual_title=Edit Config Files
 manual_ecannot=You are not allowed to edit the SSH server config file
 manual_ok=Edit
@@ -225,5 +237,6 @@ manual_efile=Selected file is not part of the SSH server configuration
 manual_file=Edit config file:
 manual_edata=Nothing entered!
 manual_err=Failed to save config file
+
 dknown_err=Failed to delete known hosts
 dknown_enone=None selected

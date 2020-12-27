@@ -26,6 +26,7 @@ index_when=כן, $1
 index_webalizer=Webalizer
 index_enable=לוח הזמנים שנבחר
 index_disable=נבחרה לוח הזמנים
+
 edit_title1=הוסף קובץ יומן
 edit_title2=ערוך קובץ יומן
 edit_header=אפשרויות דוח קובץ יומן
@@ -49,12 +50,14 @@ edit_cmode0=השתמש באפשרויות גלובליות
 edit_cmode1=אפשרויות בהתאמה אישית
 edit_cmode2=קובץ תצורה אחר ..
 edit_clear=האם לנקות קובצי יומן לאחר דוח מתוזמן?
+
 gen_title=להפיק דוח
 gen_header=הפעלת Webalizer כדי ליצור דוח מ- $1.
 gen_done=.. בוצע
 gen_failed=.. Webalizer נכשל! ראה את הפלט למעלה לפרטים.
 gen_nothing=.. Webalizer הסתיים, אך לא נוצר דוח. ראה את הפלט למעלה לפרטים.
 gen_view=צפה בדוח שהושלם.
+
 save_err=שמירת קובץ היומן נכשלה
 save_efile=קובץ היומן לא הוזן או שאינו קיים
 save_ecfile=קובץ תצורה אחר חסר או שאינו קיים
@@ -64,12 +67,14 @@ save_ewuser=אין משתמש Unix בשם $1
 save_ehost=שם מארח אתרים חסר או לא חוקי
 save_etitle=חסר שם הכותרת
 save_ecannot=אתה רשאי להפיק דוחות רק ליומנים מתחת ל- $1 
+
 view_epath=PATH_INFO לא חוקי
 view_efile=שם קובץ דוח לא חוקי
 view_elog=קובץ יומן לא חוקי
 view_ecannot=אינך רשאי להציג דוח זה
 view_eopen=פתיחת קובץ הדוח נכשלה
 view_title=צפה בדוח
+
 global_title=אפשרויות גלובלי וובליזר
 global_title2=אפשרויות דוח של Webalizer
 global_for=עבור קובץ logfile $1 
@@ -130,6 +135,7 @@ global_includesite=לקוחות לא להתעלם
 global_includereferrer=מפנים לא להתעלם
 global_includeuser=משתמשים לא להתעלם
 global_includeagent=דפדפנים לא להתעלם
+
 global_err=שמירת אפשרויות Webalizer נכשלה
 global_ereport=קידומת כותרת של דוח חסרה
 global_ehost=שם מארח חסר או לא חוקי
@@ -139,6 +145,7 @@ global_etable=גודל חסר או לא חוקי עבור הטבלה '$1'
 global_ehistory=שם קובץ היסטוריה חסר או לא חוקי
 global_ecurrent=שם קובץ מצטבר חסר או לא חוקי
 global_ecache=שם קובץ מטמון DNS חסר או לא חוקי
+
 log_create_log=נוצר דיווח עבור $1 
 log_modify_log=דיווח שונה עבור $1 
 log_delete_log=הדיווח נמחק עבור $1 
@@ -147,6 +154,7 @@ log_global=אפשרויות Webalizer גלובליות השתנו
 log_global2=אפשרויות Webalizer השתנו עבור $1 
 log_enable_logs=דיווח מתוזמן על יומני $1 
 log_disable_logs=דיווח מתוזמן על $1 יומני
+
 acl_view=האם ניתן להציג דוחות קיימים רק?
 acl_global=האם ניתן לערוך אפשרויות גלובלי רשת מקוונות?
 acl_dir=אפשר רק צפייה ועריכה של דוחות עבור יומנים תחת

@@ -30,6 +30,7 @@ index_return=luettelo vyöhykkeistä
 index_ezones=FirewallD-vyöhykkeitä ei löytynyt!
 index_none=Tällä vyöhykkeellä ei ole vielä sallittuja satamia tai palveluita.
 index_ifaces=Käytä sääntöjä rajapintoihin:
+
 port_edit=Muokkaa porttia
 port_create=Lisää portti
 port_header=Sallitut porttivaihtoehdot
@@ -45,11 +46,13 @@ port_eport=Puuttuva tai virheellinen porttinumero tai nimi
 port_eportlow=Alhaisen portin on oltava numero
 port_eporthigh=Korkean portin on oltava numero
 port_eportrange=Matalan portin on oltava korkean portin alapuolella
+
 serv_edit=Muokkaa palvelua
 serv_create=Lisää palvelu
 serv_header=Sallitut palveluvaihtoehdot
 serv_name=Palvelu sallia
 serv_err=Palvelun tallentaminen epäonnistui
+
 forward_edit=Muokkaa eteenpäin
 forward_create=Luo eteenpäin
 forward_header=Sataman edelleenlähetysvaihtoehdot
@@ -61,10 +64,13 @@ forward_dstaddr=Määränpään osoite
 forward_dstlocal=Tämä järjestelmä
 forward_edstaddr=Virheellinen IPv4-kohdeosoite
 forward_eneither=Joko kohdeosoite tai portti tai molemmat on syötettävä
+
 check_ecmd=Palomuuriohjauskomentoa $1 ei löydy järjestelmästäsi
+
 delete_err=Sääntöjen poistaminen epäonnistui
 delete_enone=Mitään ei ole valittu!
 delete_edel=$1 poisto epäonnistui : $2 
+
 zone_title=Luo vyöhyke
 zone_header=Uudet vyöhykevaihtoehdot
 zone_name=Vyöhykkeen nimi
@@ -77,12 +83,16 @@ zone_mode4=Virtuaaliseen isännöintiin käytettävät portit
 zone_err=Alueen luominen epäonnistui
 zone_ename=Puuttuva tai virheellinen vyöhykkeen nimi
 zone_eclash=Saman niminen vyöhyke on jo olemassa
+
 delzone_title=Poista vyöhyke
 delzone_err=Vyöhykkeen poistaminen epäonnistui
 delzone_edefault=Oletusvyöhykettä ei voi poistaa
 delzone_rusure=Haluatko varmasti poistaa vyöhykkeen $1, joka sisältää $2 portit ja $3 palvelut?
+
 defzone_err=Alueesta ei oletusarvoinen
+
 restart_err=Asetusten määrittäminen epäonnistui
+
 stop_err=FirewallD: n pysäyttäminen epäonnistui
 start_err=FirewallD: n käynnistäminen epäonnistui
 log_stop=Pysäytetty FirewallD

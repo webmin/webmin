@@ -20,6 +20,7 @@ index_nostrftime=Aviso - algumas tarefas de backup usam % em seus nomes de arqui
 index_tabsched=Backups agendados
 index_tabbackup=Faça backup agora
 index_tabrestore=Restaurar agora
+
 edit_title1=Criar backup agendado
 edit_title2=Editar backup agendado
 edit_header=Opções de backup agendado
@@ -44,9 +45,11 @@ edit_return=formulário de backup
 edit_other=Outros arquivos listados ..
 edit_pre=Comando de pré-backup
 edit_post=Comando pós-backup
+
 save_err=Falha ao salvar o backup
 save_emods=Nenhum módulo selecionado
 save_ewebmin=Os arquivos de configuração do webmin e do servidor não foram selecionados
+
 backup_mode0=Arquivo local
 backup_mode1=servidor FTP
 backup_mode2=Servidor SSH
@@ -63,6 +66,7 @@ backup_egunzip=O backup está compactado, mas o <tt>gunzip</tt> não está insta
 backup_euntar=Falha na remoção do TAR : $1 
 backup_enone2=Nenhum dos arquivos para os módulos selecionados estão no backup
 backup_epre2=Restauração rejeitada do módulo $1 : $2 
+
 backup_err=Falha no backup
 backup_edest=Arquivo local absoluto ausente ou inválido
 backup_eserver1=Servidor FTP ausente ou inválido
@@ -78,6 +82,7 @@ backup_title=Configuração de backup
 backup_doing=Iniciando o backup dos arquivos de configuração do módulo para $1 ..
 backup_failed=.. falhou! $1 
 backup_done=.. completo. O tamanho final do backup foi $1, contendo $2 arquivos.
+
 restore_err=Falha na restauração
 restore_emods=Nenhum módulo ou outro arquivo selecionado
 restore_title=Restaurar configuração
@@ -86,22 +91,26 @@ restore_testing=Extraindo o conteúdo do backup de $1 ..
 restore_failed=.. falhou! $1 
 restore_done=.. completo. $1 arquivos foram restaurados.
 restore_done2=.. arquivos no backup são :
+
 nice_ftp=$2 em $1 via FTP
 nice_ftpp=$2 na porta $1 $3 via FTP
 nice_ssh=$2 em $1 via SSH
 nice_sshp=$2 na porta $1 $3 via SSH
 nice_upload=arquivo enviado
 nice_download=navegador
+
 log_backup=Backup de $1 módulos em $2 
 log_restore=$1 módulos restaurados de $2 
 log_create_backup=Backup criado de $1 módulos para $2 
 log_modify_backup=Backup modificado de $1 módulos para $2 
 log_delete_backup=Backup excluído de $1 módulos para $2 
 log_run_backup=Backup executado de $1 módulos para $2 
+
 run_title=Configurações de backup
 run_doing=Iniciando o backup de $1 módulos para $2 ..
 run_ok=.. backup concluído com sucesso.
 run_failed=.. backup falhou! Veja a mensagem de erro acima pelo motivo.
+
 email_mods=Backup de módulos :
 email_failed=para $1 falhou :
 email_ok=para $1 foi bem-sucedido.

@@ -16,8 +16,10 @@ index_type=Tip ewlieni SSH:
 index_rsa1=RSA (għal SSH v1)
 index_rsa=RSA (għal SSH v2)
 index_dsa=DSA (għal SSH v2)
+
 bits=biċċiet
 secs=sekondi
+
 users_title=Awtentikazzjoni
 users_header=Għażliet ta 'login u awtentikazzjoni
 users_expire=Jiem qabel l-iskadenza tal-kont biex twissi lill-utent
@@ -54,6 +56,7 @@ users_eauthkeys=Fajl taċ-ċwievet awtorizzati nieqes jew li ma jidhrux validi
 users_maxauthtries=Tentattivi massimi ta 'dħul għal kull konnessjoni
 users_emaxauthtries=Numru nieqsa jew mhux numeriċi ta 'tentattivi ta' login għal kull konnessjoni
 users_chal=Uża awtentikazzjoni għall-isfida-tweġiba?
+
 net_title=Netwerking
 net_header=Għażliet ta 'netwerking
 net_port=Isma 'fil-port
@@ -91,6 +94,7 @@ net_eprots=Trid tagħżel mill-inqas protokoll wieħed
 net_eladdress="$1" mhuwiex indirizz validu biex tisma '
 net_elport="$1" mhux port validu biex tisma '
 net_elisten2=Ma daħlu l-ebda indirizzi biex jisimgħu
+
 access_title=Kontroll tal-Aċċess
 access_header=Netwerk u għażliet ta 'kontroll ta' aċċess għall-login
 access_allowu=Ħalli l-utenti biss
@@ -108,6 +112,7 @@ access_eallowg=L-ebda grupp ma jippermetti li jiddaħħal
 access_edenyg=L-ebda grupp li jiċħad ma daħal
 access_eallowh=L-ebda ospiti ma jippermettu li jiddaħħlu
 access_edenyh=L-ebda ospiti ma ċaħdu li daħlu
+
 misc_title=Għażliet Varji
 misc_header=Għażliet varji oħra tas-server SSH
 misc_x11=Ħalli t-trażmissjoni tal-konnessjoni X11?
@@ -131,14 +136,17 @@ misc_eumask=Nieqes jew invalidu ta 'erba' numri ta 'l-omm maskla invalidu
 misc_ebits=Id-daqs taċ-ċavetta tas-server nieqes jew invalidu
 misc_eregen=Intervall ta 'riġenerazzjoni taċ-ċavetta nieqes jew invalidu
 misc_epid=Nieqes il-passaġġ tal-fajl PID
+
 start_err=Ma rnexxielux jibda s-server SSH
 apply_epid=Mhux għaddej
+
 hosts_title=Għażliet tal-Ospitanti tal-Klijent
 hosts_header=SSH Client Hosts
 hosts_none=Ma ġew definiti l-ebda għażliet ospitanti għall-klijenti. Il-logins kollha tal-klijent SSH se jużaw l-issettjar default.
 hosts_all=L-Ospitanti Kollha
 hosts_add=Żid l-għażliet għall-klijent ospitanti.
 hosts_return=lista tal-ospiti tal-klijenti
+
 host_create=Żid l-Għażliet tal-Ospitanti
 host_edit=Editja l-Għażliet tal-Ospitanti
 host_header=Għażliet tal-klijenti għall-ospitanti SSH
@@ -194,6 +202,7 @@ host_eprots=Trid tagħżel mill-inqas protokoll wieħed
 host_proxy=Konnessjoni tal-kmand tal-prokura
 host_proxy_def=Xejn
 host_eproxy=Il-kmand tal-prokura tal-konnessjoni nieqes jew invalidu li qed iħares
+
 log_users=Bidliet fl-għażliet ta 'l-awtentikazzjoni
 log_net=Bidliet fl-għażliet tan-netwerking
 log_access=Biddel il-kontroll tal-aċċess
@@ -208,6 +217,7 @@ log_stop=Waqfet is-server SSH
 log_start=Beda s-server SSH
 log_apply=Konfigurazzjoni applikata
 log_manual=Editjar manwali tal-fajl konfigurazzjoni $1
+
 sync_title=Setup ta 'Key SSH għall-Utent
 sync_desc=Din il-paġna jippermettilek li tikkonfigura s-setup awtomatiku ta 'SSH għall-utenti Unix ġodda maħluqa fis-sistema tiegħek. Jekk konfigurat, utenti ġodda mhux se jkollhom jimxu <tt>ssh-keygen</tt> qabel ma jużaw SSH.
 sync_create=Twaqqaf ċavetta SSH għal utenti Unix ġodda?
@@ -216,9 +226,11 @@ sync_pass=Uża l-password bħala passfrażi ewlenija?
 sync_gnupg=Twaqqaf ċavetta GNUPG għal utenti Unix ġodda.
 sync_type=Tip ta 'ċavetta
 sync_auto=&lt;Awtomatiku&gt;
+
 keys_title=Ċwievet SSH Ospitanti
 keys_desc=Din il-paġna jippermettilek li tara ċ-ċwievet SSH għal dan l-ospitanti.
 keys_none=Ma setgħet issib xi daħliet ta 'HostKey fil-konfigurazzjoni SSHD tiegħek.
+
 manual_title=Editja l-Iskedi tal-Konfigurazzjoni
 manual_ecannot=M'għandekx permess teditja l-fajl tal-konfigurazzjoni tas-server SSH
 manual_ok=Editja
@@ -226,5 +238,6 @@ manual_efile=Fajl magħżul mhux parti mill-konfigurazzjoni tas-server SSH
 manual_file=Editja l-fajl konfigurazzjoni:
 manual_edata=Ma daħal xejn!
 manual_err=Ma rnexxielux isalva l-fajl tal-konfigurazzjoni
+
 dknown_err=Ma rnexxielux jitħassar hosts magħrufa
 dknown_enone=L-ebda magħżul

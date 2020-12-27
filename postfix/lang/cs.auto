@@ -1,11 +1,14 @@
 connect_emysql=Nepodařilo se načíst ovladač databáze $1
 connect_elogin=Nepodařilo se přihlásit do databáze $1:$2.
 index_postfix=Postfix
+
 index_esuper=Příkaz správce Postfixu $1 neexistuje. Možná je vaše <a href='$2'>konfigurace modulu</a> nesprávná.
 index_reload=Znovu načíst konfiguraci
 index_reloadmsg=Klepnutím na toto tlačítko bude Postfix znovu načten všechny své konfigurační soubory. To může být užitečné, pokud byly konfigurační soubory Postfixu ručně upraveny.
 index_version=Postfixová verze $1
+
 check_manual=Ručně upravte konfigurační soubor Postfixu.
+
 aliases_addr=Alias z ..
 aliases_to=Alias ..
 aliases_type1=Adresa $1
@@ -16,9 +19,11 @@ aliases_type5=Autoreply file $1
 aliases_type6=Použijte soubor filtru $1
 aliases_none=Žádný
 aliases_delete=Smazat vybrané aliasy
+
 postfinger_title=Kontrola konfigurace
 postfinger_show=Ukázat
 postfinger_ecannot=Není dovoleno kontrolovat konfiguraci Postfixu
+
 mailclean_title=Vyčištění MailQueue
 mailclean_ecannot=Čištění poštovních front nemá žádná oprávnění
 mailclean_active=Aktivní fronta
@@ -27,6 +32,7 @@ mailclean_deferred=Odložená fronta
 mailclean_defer=Odložit frontu
 mailclean_all=Všechny fronty
 mailclean_search=Vyhledávací řetězec
+
 aform_type0=Žádný
 aform_type1=Emailová adresa
 aform_type2=Adresy v souboru
@@ -42,6 +48,7 @@ aform_val=Alias to
 aform_afile=Upravit ..
 aform_return=alias
 aform_cmt=Popis
+
 asave_err=Alias se nepodařilo uložit
 asave_eaddr='$1' není platná adresa
 asave_ealready=Alias pro '$1' již existuje
@@ -52,11 +59,13 @@ asave_etype4='$1' není platný program nebo neexistuje
 asave_etype5=Autoreply soubor '$1' není platný
 asave_etype4none=Není zadán žádný program
 asave_etype6=Soubor filtru '$1' není platný
+
 afile_title=Upravit soubor s adresou
 afile_desc=Pomocí textové oblasti níže upravte adresy v souboru $1.
 afile_efile=Není dovoleno upravovat $1.
 afile_undo=Vrátit změny
 afile_ewrite=Nepodařilo se zapsat do souboru s adresami : $1
+
 ffile_title=Upravit soubor filtru
 ffile_desc=Pomocí následujícího formuláře můžete nastavit pravidla filtru v souboru $1.
 ffile_efile=Není dovoleno upravovat $1.
@@ -72,6 +81,7 @@ ffile_other=V opačném případě přejděte na $1
 ffile_err=Uložení souboru filtru se nezdařilo
 ffile_ematch=Chybějící zápas
 ffile_eaction=Chybí adresa pro přesměrování
+
 rfile_title=Upravit soubor Autoreply
 rfile_desc=Pomocí textové oblasti níže upravte autoreply zprávu v $1. Zpráva může obsahovat makra $SUBJECT, $FROM, $TO, $DATE a $BODY, které budou při aktivaci autoreply rozšířeny.
 rfile_desc2=Můžete také nastavit záhlaví pošty, která přidávají nebo nahrazují výchozí nastavení použitá v autoreply tak, že zadáte řádky jako: <br><tt> Od: foo@bar.com </tt><br> <tt>Předmět: Na dovolené</tt> <br> v horní části zprávy, oddělené od těla jediným prázdným řádkem.
@@ -90,31 +100,41 @@ rfile_from=Od: adresa pro odpověď
 rfile_auto=Automaticky (na základě adresy příjemce)
 rfile_efrom=Chybí od: adresa
 rfile_fromdesc=Od: adresa by měla být vždy uvedena tam, kde je to možné, protože automatická metoda nemusí být spolehlivá.
+
 opts_nomap=Není nastavena žádná mapa
 opts_setmap=Specifikace mapy
 opts_direct=Doručte přímo
 opts_notify_classes_sel=Vybráno níže
+
 opts_edir=Mapové soubory můžete zadat pouze pod $1
+
 opts_fallback_transport=Volitelný transport pro neznámé příjemce
 opts_prepend_delivered_header_default=Výchozí
+
 opts_mailbox_size_limit=Maximální velikost poštovní schránky
+
 opts_mynetworks_style=Automatické lokální sítě
 opts_mynetworks_subnet=Stejná podsíť IP
 opts_mynetworks_class=Stejná třída sítě
 opts_mynetworks_host=Pouze místní stroj
 opts_delay_warning_time_default2=Výchozí Postfix
 opts_content_filter_default=Žádný
+
 opts_relay_recipient_maps=Mapa povolených adres pro předávání
 smtpd_nomap=Dosud nebyla zadána žádná mapa povolených adres pro přenos.
 smtpd_nomap2=Dosud nebyla zadána žádná mapa pro omezení adres odesílatele.
 smtpd_map=Povolené adresy pro předávání
 smtpd_map2=Omezení adres odesílatele
+
 opts_smtp_use_tls=Pro připojení SMTP použijte TLS
 opts_smtp_sasl_security_options=Možnosti zabezpečení SASL
+
 opts_edebug=Chybějící nebo neplatná úroveň podrobného protokolování - musí být číslo větší než nula
+
 canonical_return_sender=odesílatele kanonické mapy
 canonical_return_recipient=příjemce kanonické mapy
 canonical_return=kanonické mapy
+
 mapping_delete=Smazat vybrané
 mapping_cmt=Popis
 mapping_ecannot=Mapy můžete upravovat pouze pod $1
@@ -128,15 +148,28 @@ mapping_toomany=Existují $1 položky mapy, což je nad limitem zobrazení $2.
 mapping_find=Zobrazit mapování odpovídající:
 mapping_search=Vyhledávání
 mapping_match=Položky mapových souborů odpovídající <tt>$1</tt> ..
+
 opts_virtual_alias_maps=Vyhledávací tabulky mapování domén
 opts_virtual_alias_domains=Domény k provedení virtuálního mapování
 virtual_same=Z tabulek mapování domény
 virtual_return=virtuální domény
+
 transport_return=dopravní mapy
+
+sni_title=Mapování certifikátů
+sni_ecannot=Není povoleno upravovat konfiguraci mapování certifikátu
+opts_sni_maps=Vyhledávací tabulky mapování certifikátů
+sni_return=mapy certifikátů
+sni_dom=Název hostitele
+sni_certs=Soubory certifikátů
+
 relocated_return=přemístěné mapy
 opts_content_filter=Filtr obsahu e-mailu
+
 start_efailed=Postfix se nepodařilo spustit
 start_ecannot=Není dovoleno spustit Postfix
+
+acl_sni=Mohou certifikáty upravovat?
 acl_header=Lze upravit kontrolu záhlaví?
 acl_sasl=Lze upravit ověřování SMTP?
 acl_client=Lze upravit omezení klientů SMTP?
@@ -147,17 +180,22 @@ acl_postfinger=Lze zkontrolovat konfiguraci postfixu?
 acl_manual=Lze upravit konfigurační soubor?
 acl_dir=Povolený adresář pro soubory mapy
 acl_bcc=Lze upravit mapování BCC?
+
 mail_move=Přesunout do:
 mail_eexists=Zpráva již neexistuje!
+
 view_flush=Vyplachování
 view_body=Text zprávy
 view_afile=Název přílohy
 view_atype=Typ přílohy
 view_asize=Velikost souboru
+
 search_efield=Musíte vybrat typ vyhledávání.
+
 match_headers=Záhlaví zápas
 match_=-----------------
 match_!headers=Záhlaví se neshodují
+
 mailq_title=Fronta pošty
 mailq_count=$1 zprávy
 mailq_none=V současné době nejsou ve frontě k doručení žádné poštovní zprávy
@@ -186,15 +224,20 @@ mailq_active=Aktivní
 mailq_deferred=Odložený
 mailq_hold=Vybrat
 mailq_unhold=Un-Hold Selected
+
 flushq_title=Flush Queue
 flushq_desc=Vynucení pokusu o doručení pošty příkazem $1 ..
+
 qview_title=Zpráva ve frontě
 qview_desc=Ze souboru $1
 qview_headers=Záhlaví pošty
 qview_attach=Přílohy
+
 after_err=Chyba konfigurace Postfixu : $1
+
 searchq_title=Výsledky hledání ve frontě
 searchq_none=Nebyly nalezeny žádné zprávy ve frontě.
+
 header_title=Kontroly záhlaví
 header_ecannot=Není dovoleno upravovat kontroly záhlaví
 header_eregexp=Mapa pro kontrolu záhlaví musí být ve formátu <tt>regexp:</tt> <i>název_souboru</i>
@@ -213,15 +256,18 @@ header_reject=Odmítnout (s chybovou zprávou..)
 header_warn=Varování protokolu (se zprávou..)
 header_ename=Neplatný regulární výraz - musí být jako / něco /
 header_return=kontroly záhlaví
+
 body_title=Tělesné kontroly
 body_ecannot=Není dovoleno upravovat tělesné kontroly
 body_eregexp=Mapa těla musí být ve formátu <tt>regexp:</tt> <i>název_souboru</i>
 opts_body_checks=Tabulky pro kontrolu textu zprávy
 body_return=tělesné kontroly
+
 dependent_title=Mapování závislé na odesílateli
 dependent_ecannot=Není dovoleno upravovat transportní mapování závislé na odesílateli
 dependent_eregexp=Mapa přenosu závislá na odesílateli musí být ve formátu <tt>regexp:</tt> <i>název_souboru</i>
 dependent_return=mapování dopravy závislé na odesílateli
+
 manual_title=Upravit soubor mapy
 manual_file=Vyberte soubor mapy, který chcete upravit:
 manual_change=Změna
@@ -229,9 +275,11 @@ manual_editing=Pomocí textového pole níže ručně upravte mapování v $1. B
 manual_err=Uložení souboru mapy se nezdařilo
 manual_efile=Neplatný název souboru mapy!
 manual_ecannot=Nemáte dovoleno manuálně upravovat mapové soubory
+
 delq_titles=Mazání zpráv
 delq_rusure=Opravdu chcete odstranit $1 vybrané zprávy ve frontě?
 delq_confirm=Smazat zprávy
+
 master_title=Procesy serveru
 master_name=Název procesu
 master_enabled=Povoleno?
@@ -272,7 +320,9 @@ master_einet=Hostitelskou adresu, na kterou lze poslouchat, lze zadat pouze pro 
 master_ecommand=Chybí příkaz procesu serveru
 master_ewakeup=Chybějící nebo neplatná doba probuzení
 master_emaxprocs=Chybějící nebo neplatný maximální počet procesů
+
 delete_err=Mapování se nepodařilo smazat
+
 cmanual_title=Upravit konfigurační soubory
 cmanual_ecannot=Není dovoleno upravovat konfigurační soubor Postfixu
 cmanual_ok=Upravit
@@ -280,10 +330,12 @@ cmanual_efile=Vybraný soubor není součástí konfigurace Postfixu
 cmanual_file=Upravit konfigurační soubor:
 cmanual_edata=Nic nevstoupilo!
 cmanual_err=Uložení konfiguračního souboru se nezdařilo
+
 access_return=tabulka přístupových map
 edit_map_file=Upravit soubor mapy
 opts_reject_rbl_client=Vyhledání černé listiny v reálném čase (RBL)
 opts_check_sender_access=Zkontrolujte tabulku přístupových map odesílatele
+
 log_misc=Změněny obecné možnosti
 log_opts=Změna přepisování adresy a maskování
 log_aliases=Změněné možnosti aliasu
@@ -291,6 +343,7 @@ log_canonical=Změna možností kanonického mapování
 log_virtual=Změněny možnosti virtuální domény
 log_bcc=Změněné možnosti mapy BCC
 log_transport=Změněné možnosti mapování dopravy
+log_sni=Změňte možnosti mapování certifikátu
 log_dependent=Změněné možnosti adresy závislé na odesílateli
 log_relocated=Změněné možnosti mapování přemístit
 log_header=Změněné možnosti kontroly záhlaví
@@ -368,6 +421,7 @@ log_sender_dependent_default_transport_maps_modify=Upravená adresa závislá na
 log_sender_dependent_default_transport_maps_delete=Odstraněná adresa závislá na odesílateli $1
 log_delete_sender_dependent_default_transport_mapss=Odstraněna adresa závislá na odesílateli $1
 log_manual_sender_dependent_default_transport_mapss=Ručně upravené adresy závislé na odesílateli v $1
+
 sasl_title=Ověřování a šifrování SMTP
 opts_smtpd_sasl_auth_enable=Vyžadujete SASL SMTP autentizaci?
 opts_smtp_sasl_auth_enable=Použít SASL SMTP autentizaci?
@@ -414,6 +468,7 @@ sasl_nologin=Není potřeba
 sasl_userpass=Přihlaste se jako $1 s heslem $2
 sasl_elogin=Chybějící nebo neplatné přihlašovací údaje pro SMTP (nejsou povoleny mezery ani dvojtečky)
 sasl_epass=Neplatné heslo SMTP (nejsou povoleny žádné mezery)
+
 client_title=Omezení klienta SMTP
 client_ecannot=Není dovoleno upravovat omezení klientů SMTP
 client_restrict=Zákaznická omezení
@@ -423,6 +478,7 @@ client_other=Další omezení :
 client_err=Uložení omezení klienta se nezdařilo
 client_evalue=Chybí hodnota pro omezení $1
 client_return=Omezení klienta SMTP
+
 chooser_title=Vyberte Zdroj mapy
 chooser_header=Zdroj mapy $1
 chooser_none=Žádný
@@ -478,6 +534,7 @@ chooser_elquery_filter=Chybějící filtr dotazů pro mapu $1
 chooser_elresult_attribute=Chybějící nebo neplatný název atributu výsledku pro mapu $1
 chooser_elbind_dn=Chybějící přihlášení pro server LDAP pro mapu $1
 chooser_elbind_pw=Chybí heslo pro server LDAP pro mapu $1
+
 mysql_ecfile=Konfigurační soubor MySQL $1 nebyl nalezen
 mysql_ecfile2=Nelze najít tabulku v konfiguračním souboru MySQL $1
 mysql_edriver=Nepodařilo se načíst ovladač databáze $1
@@ -489,6 +546,7 @@ mysql_eupdate=Aktualizace SQL se nezdařila : $1
 mysql_elist=SQL dotaz se nezdařil : $1
 mysql_esource=Nebyl nalezen žádný zdroj MySQL s názvem $1
 mysql_eneed=Konfigurační parametr MySQL $1 nebyl nalezen. Webmin to potřebuje, aby zjistil, které tabulky a pole k dotazu.
+
 ldap_ecfile=Konfigurační soubor LDAP $1 nebyl nalezen
 ldap_eldapmod=Modul Perl $1 potřebný pro komunikaci s LDAP není nainstalován nebo nelze načíst
 ldap_eldap=Nepodařilo se připojit k serveru LDAP $1 na portu $2
@@ -499,6 +557,7 @@ ldap_edelete=Odstranění LDAP $1 se nezdařilo : $2
 ldap_equery=LDAP vyhledávání $1 selhalo : $2
 ldap_erename=Přejmenování LDAP z $1 na $2 se nezdařilo : $3
 ldap_emodify=LDAP modifikace $1 selhala : $2
+
 bcc_title=Mapování BCC
 bcc_ecannot=Není dovoleno upravovat mapování BCC
 opts_sender_bcc_maps=Vyhledávací tabulky mapování odesílatele BCC

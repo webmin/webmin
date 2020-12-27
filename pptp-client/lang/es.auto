@@ -18,10 +18,12 @@ index_version=Versión PPPd $1
 index_boot=Conectar en el arranque:
 index_noboot=&lt;No te conectes&gt;
 index_bootdesc=Cambie esta opción para controlar si la conexión VPN PPTP seleccionada se inicia en el momento del arranque o no.
+
 disc_err=Error al desconectar el túnel
 disc_egone=Ya no activo
 disc_ekill=Error al eliminar el proceso pppd
 disc_done=El túnel $1 se desconectó correctamente.
+
 conn_err=Error al conectar el túnel
 conn_egone=Túnel ya no existe
 cone_ealready=Ya conectado
@@ -32,6 +34,7 @@ conn_ok=.. conexión activada con éxito utilizando la interfaz $1. Su direcció
 conn_timeout=.. ¡la conexión falló! Consulte los mensajes de registro a continuación para obtener información sobre por qué.
 conn_routes=Agregar rutas con comandos.
 conn_mppe=El protocolo MPPE para encriptación VPN requiere demonio PPP y soporte de kernel. Sin embargo, los errores anteriores sugieren que uno o ambos no están disponibles en su sistema. Si el servidor PPTP no requiere MPPE, intente desactivar todas las opciones relacionadas en la página <a href='$1'>opciones globales de PPP</a>.
+
 edit_title1=Añadir túnel PPTP
 edit_title2=Editar túnel PPTP
 edit_header=Opciones de túnel PPTP VPN
@@ -60,6 +63,7 @@ edit_file=Archivo de opciones de PPP
 edit_none=Ninguna
 edit_global=Archivo global estándar
 edit_ofile=Otro archivo. ..
+
 save_err=Error al guardar el túnel
 save_ename=Falta el nombre del túnel
 save_eserver=Servidor faltante o no válido para conectarse
@@ -75,6 +79,7 @@ save_egw2=Puerta de enlace no válida para el host en la ruta $1
 save_erename=Error al cambiar el nombre del archivo de túnel
 save_eclash=Ya existe un túnel o par PPP con el mismo nombre
 save_efile=Archivo de opciones de PPP faltante o no válido
+
 opts_title=Opciones globales de PPP
 opts_desc=La configuración a continuación se toma de $1 y se aplicará a todos los túneles configurados para usar el archivo de opciones PPP global estándar.
 opts_header=Opciones de PPP para todos los túneles
@@ -84,6 +89,7 @@ opts_err=Error al guardar las opciones globales de PPP
 opts_emtu=Tamaño de paquete de envío máximo faltante o no válido
 opts_emru=Tamaño máximo de paquete receptor perdido o no válido
 opts_msdesc=Las siguientes opciones permiten el cifrado MPPE, utilizado por los servidores VPN de Windows. Sin embargo, MPPE requiere soporte tanto en el demonio PPP como en el núcleo del sistema operativo.
+
 mppe_mppe-40=¿Utiliza cifrado MPPE de 40 bits?
 mppe_mppe-128=¿Utiliza cifrado MPPE de 128 bits?
 mppe_mppe-stateless=¿Habilitar el modo MPPE sin estado?
@@ -95,6 +101,7 @@ mppe_d1=Permitido
 mppe_mppe-stateful=¿Habilitar el modo MPPE con estado?
 mppe_old=Advertencia: las directivas MPPE de estilo antiguo $1 se encontraron en su archivo de configuración, a pesar de que su demonio PPP admite las directivas de estilo nuevo.
 mppe_new=Advertencia: las directivas MPPE de estilo nuevo $1 se encontraron en su archivo de configuración, a pesar de que su demonio PPP solo es compatible con las directivas de estilo antiguo.
+
 log_create=Túnel PPTP creado $1 
 log_update=Túnel PPTP modificado $1 
 log_delete=Túnel PPTP eliminado $1 

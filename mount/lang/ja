@@ -11,6 +11,7 @@ index_return=ファイル システムのリスト
 index_none=You do not have access to any mounted filesystems.
 index_mount2=Mount with password:
 index_root=ルートファイルシステム
+
 edit_title=マウントの編集
 create_title=マウントの作成
 edit_err=マウントを編集できませんでした
@@ -55,6 +56,7 @@ edit_ecannot=You are not allowed to edit this filesystem
 edit_ecannot2=新しいファイルシステムを追加することはできません
 edit_3_or_lower=3 (or lower)
 edit_advanced=Advanced Mode
+
 save_err=マウントを保存できませんでした
 save_edir='$1' はディレクトリではありません
 save_edirname='$1' は無効なディレクトリ名です
@@ -71,8 +73,10 @@ save_apply=永久リストに適用
 save_fapply=Force Un-Mount
 save_eremount=再マウントできませんでした: $1
 save_enone=保存またはマウントするために選択しませんでした
+
 swap_err=スワップ ファイルを作成できませんでした
 swap_esize='$1' は無効なサイズです
+
 nfs_server=NFSサーバを選択..
 nfs_select=マウントする NFS サーバを選択..
 nfs_ip=IP アドレス
@@ -84,6 +88,7 @@ nfs_seldir=マウントする NFS ディレクトリを選択..
 nfs_seldirv4=For an NFSv4 mount, you should select '/'
 nfs_dir=ディレクトリ
 nfs_clients=クライアント
+
 smb_choose=SMB サーバを選択..
 smb_elist=サーバ リストを $1 から検索できません。サーバが参照できない可能性があります
 smb_ehost=サーバ $1 は存在しません
@@ -98,6 +103,7 @@ smb_sel2=マウントする共有を選択..
 smb_share=共有
 smb_comment=コメント
 smb_noshares=サーバ $1 のファイル共有がありません
+
 solaris_scsidev=SCSI コントローラ $1 ターゲット $2 ユニット $3 パーティション $4
 solaris_idedev=IDE controller $1 drive $2 partition $3
 solaris_mddev=RAID デバイス $1
@@ -230,6 +236,7 @@ solaris_efstyp2=ファイル システムの種類を調べられませんでし
 solaris_ecachedir='$1' は無効なキャッシュ ディレクトリです
 solaris_efmode='$1' は無効なエラー メッセージ ファイルです
 solaris_edmode='$1' は無効な 8 進ディレクトリ モードです
+
 linux_eamd=AMD が失敗しました
 linux_eauto=Automount が失敗しました: $1
 linux_esmbconn=サーバに接続できませんでした
@@ -361,6 +368,7 @@ linux_codepage=Code page
 linux_iocharset=IO character set
 linux_ecodepage=Missing or invalid code page
 linux_eiocharset=Missing or invalid IO character set
+
 log_mount=$3 をマウントしました
 log_mount_l=$2 $1 ($3 上) をマウントしました
 log_umount=$3 をアンマウントしました
@@ -374,7 +382,9 @@ log_modify_l=$2 マウント $1 ( $3 上) を変更しました
 log_delete=マウント $3 を削除しました
 log_delete_l=$2 マウント $1 ($3 上) を削除しました
 log_swap=Created swap file $1
+
 unmount_err=Failed to unmount $1
+
 mount_err=$1をマウントできませんでした
 irix_nhost=NFS Hostname
 irix_ndir=NFS Directory
@@ -405,6 +415,7 @@ irix_rock=Use Rock Ridge extensions?
 irix_nofsck=Check filesystem at boot?
 irix_auto=オートマウンターソース
 irix_automap=地図ファイル
+
 irix_ehost=The host '$1' does not exist
 irix_eloss=ホスト '$1'がダウンしています
 irix_eshowmount=ホスト '$1'はNFSをサポートしていません
@@ -422,9 +433,11 @@ irix_efstyp2=ファイルシステムタイプ$1の取得に失敗しました�
 irix_efstyp=The type of filesystem on $1 is $2, not $3
 irix_eautomap=Automounter map file '$1' does not exist
 irix_eauthmap2=Missing or invalid automounter map file
+
 irix_devroot=Root partition
 irix_devswap=Swap partition
 irix_autohosts=All NFS exports
+
 acl_only=Only allow mounting and unmounting?
 acl_fs=Filesystems that can be edited
 acl_types=Filesystem types that can be used
@@ -437,7 +450,9 @@ acl_hide=Hide un-editable filesystems?
 acl_simple=Show simple mount form?
 acl_simopts=簡略化されたファイルシステムオプションを表示しますか？
 acl_browse=Show file and share browse buttons?
+
 egcc=The GCC or CC compiler needed to build a program for listing mounted filesystems on your system is not available.
 ecompile=An error has occurred building a program for listing mounted filesystems on your system : $1
+
 freebsd_eaddr=Missing or invalid server address
 freebsd_eworkgroup=Missing or invalid workgroup

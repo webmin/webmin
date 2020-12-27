@@ -42,6 +42,7 @@ index_rdesc=Description
 index_rboot=Start at boot?
 index_radd=Create a new action.
 index_unknown=Unknown
+
 edit_title=アクションの編集
 create_title=アクションの作成
 edit_ecannot=起動 アクションを編集できません
@@ -74,6 +75,7 @@ edit_statusnow=ステータスを表示
 edit_return=アクション
 edit_status=すぐに開始しましたか？
 edit_unknown=不明
+
 save_err=アクションを保存できませんでした
 save_ecannot=起動 アクションは編集できません
 save_ealready='$1' というアクション名はすでに存在しています
@@ -82,6 +84,7 @@ save_ename=Missing or invalid action name
 save_eclash=An action with the same name already exists
 save_escript=No action script entered
 save_estartcmd=Missing bootup command
+
 ss_ecannot=起動 アクションを開始または停止できません
 ss_start=起動アクション
 ss_stop=停止アクション
@@ -92,21 +95,25 @@ ss_exec=コマンド $1 を実行中..
 ss_doingstart=Starting action $1 ..
 ss_doingstop=Stopping action $1 ..
 ss_doingstatus=Requesting status of action $1 ..
+
 shutdown_ecannot=システムをシャットダウンできません
 shutdown_title=シャットダウン
 shutdown_rusure=コマンド $1 を使用してシステムをシャットダウンしてもよろしいですか？
 shutdown_ok=システムをシャットダウン
 shutdown_exec=コマンド $1 を使用してシャットダウン ..
+
 reboot_ecannot=システムを再起動できません
 reboot_title=再起動
 reboot_rusure=コマンド $1 を使用してシステムを再起動してもよろしいですか？
 reboot_ok=システムを再起動
 reboot_exec=コマンド $1 を使用して再起動中..
+
 acl_script=起動 スクリプトを編集可能にしますか？
 acl_actions=アクションを編集、作成および削除可能にしますか？
 acl_runonly=Only run
 acl_reboot=システムを再起動可能にしますか？
 acl_shutdown=システムをシャットダウン可能にしますか？
+
 log_rename=アクション $1 を $2 に名称変更しました
 log_modify=アクション $1 を変更しました
 log_create=アクション $1 を作成しました
@@ -123,6 +130,7 @@ log_massrestart=Restarted actions $1
 log_massenable=Enabled actions $1
 log_massdisable=Disabled actions $1
 log_telinit=Switched to runlevel $1
+
 edit_hostconfig_startup=スクリプト  $1 はこのアクションがアクティブな場合、システム起動時に実行されます。以下で編集することができます
 edit_hostconfig_plist=The file $1 sets certain parameters with respect the boot script. You may edit it below
 edit_hostconfig_new=アクションの新規作成
@@ -134,6 +142,7 @@ edit_hostconfig_array=フィールド $1,$2 及び $3 は配列フィールド�
 edit_hostconfig_further=新規のスタートアップアクションを作成した後、必要であれば次の画面でスクリプトと変数リストの調整をしてください
 edit_hostconfig_hostconfig=ファイル $1 はシステム全体の起動時に開始するサービス及びデーモンを制御します。以下で編集可能です
 edit_hostconfig_title=Hostconfigの編集
+
 mass_enone=アクションが選択されていません
 mass_enone2=No services selected
 mass_start=アクションの開始中
@@ -146,6 +155,7 @@ mass_starting=Starting action $1 ..
 mass_stopping=Stopping action $1 ..
 mass_failed=.. failed!
 mass_ok=.. done.
+
 change_err=ランレベルの変更は許可されていません
 change_title=ランレベルの変更
 change_cmd=コマンド $2 でランレベル $1 にスイッチしています。この処理には数分かかります。スイッチ後にはWebminが利用できない可能性があります。

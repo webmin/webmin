@@ -4,6 +4,7 @@ index_desc=Descripción
 index_add=Añadir un nuevo servicio PAM
 index_return=lista de servicio
 index_none=No se han hallado archivos de configuración de PAM en tu sistema en el directorio $1. Quizás PAM no está soportado o tu <a href='$2'>configuración del módulo</a> es incorrecta.
+
 desc_su=Conmutar usuario
 desc_login=Login local o remoto
 desc_samba=Servidor Samba de archivos Windows
@@ -61,6 +62,7 @@ desc_printconf-gui=Herramienta de configuración de impresoras de Redhat
 desc_rhn_register=Registro de Red de Redhat
 desc_system-auth=Autenticación común
 desc_cups=Impresión CUPS
+
 edit_title=Editar Servicio PAM
 edit_header=Detalles de servicio PAM
 edit_name=Nombre de servicio
@@ -77,6 +79,7 @@ edit_none=No se han especificado módulos de PAM para este paso
 edit_delete=Borrar servicio de PAM
 edit_move=Mover
 edit_return=Servicio de PAM
+
 pam_pwdb.so=Autenticación de clave de acceso de Unix
 pam_securetty.so=Revisión de TTY segura para root
 pam_nologin.so=Revisar archivo <tt>/etc/nologin</tt>
@@ -118,6 +121,7 @@ pam_desgold.so=Autenticación de tarjeta inteligente DESGold
 pam_console.so=Revisar sólo consola
 pam_xauth.so=Autenticación X
 pam_stack.so=Llamar a otro servicio PAM
+
 control_requisite=Requisito
 control_required=Requerido
 control_sufficient=Suficiente
@@ -126,6 +130,7 @@ control_desc_requisite=Fallo de autenticación inmediátamente tras fallo
 control_desc_required=Fallo de autenticación al final del fallo
 control_desc_sufficient=Pasar autenticación inmediátamente tras éxito
 control_desc_optional=Se ignora éxito o fallo
+
 create_title=Crear Servicio de PAM
 create_header=Nuevas opciones de servicio PAM
 create_name=Nombre de servicio
@@ -134,6 +139,7 @@ create_mods=Módulos iniciales de PAM
 create_0=Ninguno
 create_1=Autenticación Unix
 create_2=Denegar todos los accesos
+
 mod_edit=Editar Módulo de PAM
 mod_create=Añadir Módulo de PAM
 mod_header=Opciones de módulo de PAM
@@ -147,10 +153,12 @@ mod_type_password=Cambiar clave de acceso
 mod_control=Nivel de fallo
 mod_args=Argumentos de módulo
 mod_err=No pude salvar el módulo
+
 pwdb_shadow=¿Uso archivo de claves de acceso en la sombra?
 pwdb_nullok=¿Acepto claves de acceso nulas?
 pwdb_md5=¿Uso claves de acceso con encriptación MD5?
 pwdb_nodelay=¿Retardo tras login fallido?
+
 listfile_item=Buscar en archivo por
 listfile_item_user=Nombre de usuario
 listfile_item_tty=TTY
@@ -167,51 +175,64 @@ listfile_apply=Limitar revisión a
 listfile_all=Todos los usuarios
 listfile_user=Sólo el usuario
 listfile_group=Sólo el grupo
+
 cracklib_type=Tipo de clave de acceso en la petición
 cracklib_retry=Máximos reintentos antes de fallar
 cracklib_eretry=Número de reintentos sin poner o inválidos
 cracklib_etype=Tipo de clave de acceso sin poner o inválido
+
 rhosts_equiv=¿Leo el archivo <tt>/etc/hosts.equiv</tt>?
 rhosts_rhosts=¿Leo los archivos <tt>.rhosts</tt> de usuario?
 rhosts_promiscuous=¿La entrada <tt>+</tt> da permiso a todas las máquinas?
 rhosts_suppress=¿Llevo diario de fallos de autenticación?
+
 env_var=Nombre de variable
 env_def=Valor por defecto
 env_over=Pasar por alto valor
 env_evar=Los nombres de variable no pueden contener espacios
+
 securetty_ttys=TTYs seguras
+
 shells_shells=Shells de usuario válido
+
 tally_deny=Intentos fallidos antes de denegar el acceso
 tally_reset=Restablecer contador de fallos tras éxito
 tally_edeny=Número de intentos de fallo sin poner o inválido
 tally_magic=¿El contador de fallo se aplica a <tt>root</tt>?
 tally_root=¿La cuenta <tt>root</tt> puede ser denegada?
+
 time_services=Servicios
 time_ttys=TTYs
 time_users=Usuarios
 time_times=Tiempos de acceso
 time_info=Todos los campos pueden contener múltiples valores serparados por | y los valores pueden utilizar * como comodín o ! para negar.
+
 group_services=Servicios
 group_ttys=TTYs
 group_users=Usuarios
 group_times=Tiempos de acceso
 group_groups=Añadir grupos
 group_info=Todos los campos pueden contener múltiples valores separados por | y los valores pueden utilizar * como comodín o ! para negar.
+
 wheel_group=Revisar pertenencia a grupo
 wheel_group_def=Por defecto (<tt>wheel</tt> o GID 0)
 wheel_trust=¿Los miembros del grupo pasan por alto autenticaciones posteriores?
 wheel_deny=¿Deniego en vez de permitir a miembros de grupo?
 wheel_egroup=Nombre de grupo inválido o sin poner
+
 motd_file=Archivo a mostrar
 motd_file_def=Por defecto (<tt>/etc/motd</tt>)
 motd_efile=Nombre de archivo inválido o sin poner
+
 mail_nopen=¿Muestro notificación de correo al hacer login?
 mail_close=¿Muestro notificación de correo al salir a login?
 mail_empty=¿Notifico si el archivo de correo está vacío?
 mail_noenv=¿Pongo la variable de entorno $MAIL?
 mail_dir=Directorio de spool de correo
 mail_edir=Directorio de spool de correo inválido o sin poner
+
 stack_service=Pasar comprobación a servicio PAM
+
 log_pam_create=Creado servicio PAM $1
 log_pam_delete=Borrado servicio PAM $1
 log_mod_create=Añadido módulo de PAM $1 a servicio $2

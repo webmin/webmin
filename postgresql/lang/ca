@@ -16,6 +16,7 @@ index_add=Crea una Nova Base de Dades.
 index_users=Usuaris, Grups i Permisos
 index_return=a la llista de bases de dades
 index_esql=No s'ha trobat al sistema el programa client PostgreSQL $1. Pot ser que PostgreSQL no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+
 index_ehba=No s'ha trobat el fitxer de configuració del host PostgreSQL $1. Pot ser que PostgreSQL no hagi estat inicialitzat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_superuser=No s'ha pogut executar al sistema el programa client de PostgreSQL. Pot ser que PostgreSQL no estigui instal·lat, o bé que la <a href='$1'>configuració del mòdul</a> sigui incorrecta.
 index_eversion=La base de dades PostgreSQL del sistema és de la versió $1, però Webmin només suporta de la versió $2 en amunt. 
@@ -48,10 +49,12 @@ index_gist=Arbre de Recerca d'Índex Generalitzat
 index_jump=O edita la base de dades:
 index_jumpok=Obre
 index_edithosts=Configura els Sistemes de Hosts Permesos
+
 login_err=La connexió ha fallat
 login_ecannot=No tens permís per configurar les connexions a la base de dades
 login_elogin=Hi falta el nom d'usuari
 login_epass=Usuari o contrasenya d'administració incorrectes
+
 dbase_title=Edició de Base de Dades
 dbase_noconn=Aquesta base de dades actualment no suporta connexions, així que no s'hi pot efectuar cap acció.
 dbase_header=Taules, índexs, vistes i seqüències de la base de dades
@@ -77,6 +80,7 @@ dbase_seq=Seqüència
 dbase_vjump=Edita la vista:
 dbase_ijump=Edita l'índex:
 dbase_sjump=Edita la seqüència:
+
 table_title=Edició de Taula
 table_title2=Creació de Taula
 table_opts=Opcions del camp
@@ -104,6 +108,7 @@ table_eblob=No cal la mida per al camp BLOB $1
 table_csv=Exporta com a CSV
 table_index=Crea Índex
 table_delete=Suprimeix els Camps Seleccionats
+
 field_title1=Addició de Camp
 field_title2=Modificació de Camp
 field_in=De la taula $1 de la base de dades $2
@@ -122,6 +127,7 @@ field_esize='$1' no és una mida de camp vàlida
 field_eenum=No has introduït cap valor enumerat
 field_efield='$1' no és un nom de camp vàlid
 field_ekey=Els camps que permeten nuls no poden formar part de la clau primària
+
 exec_title=Execució de SQL
 exec_header=Introdueix l'ordre SQL a executar sobre la base de dades $1...
 exec_old=O selecciona una ordre SQL anterior:
@@ -151,21 +157,25 @@ exec_tabexec=Executa SQL
 exec_tabfile=Executa SQL a partir de fitxer
 exec_tabimport=Importa fitxer de text
 exec_return=al formulari d'execució SQL
+
 stop_err=No s'ha pogut aturar el servidor de bases de dades
 stop_epidfile=No s'ha pogut obrir el fitxer de PID $1
 stop_ekill=No s'ha pogut matar el procés $1: $2
 stop_ecannot=No tens permís per aturar el servidor de bases de dades
 start_err=No s'ha pogut iniciar el servidor de bases de dades
 start_ecannot=No tens permís per iniciar el servidor de bases de dades
+
 ddrop_err=No s'ha pogut destruir la base de dades
 ddrop_title=Destrucció de Base de Dades
 ddrop_rusure=Segur que vols destruir la base de dades $1? Es perdran $2 taules que contenen $3 files de dades.
 ddrop_mysql=Aquesta és la base de dades mestra, si la destrueixes el servidor PostgreSQL quedarà inutilitzat!
 ddrop_ok=Destrueix la Base de Dades
+
 tdrop_err=No s'ha pogut destruir la taula
 tdrop_title=Destrucció de Taula
 tdrop_rusure=Segur que vols destruir la taula $1 de la base de dades $2? Es perdran $3 files de dades.
 tdrop_ok=Destrueix la Taula
+
 view_title=Dades de Taula
 view_pos=Files $1 a $2 de $3
 view_none=Aquesta taula no conté dades
@@ -197,6 +207,7 @@ view_keep=Deixa-ho tal com està
 view_set=Estableix el contingut del fitxer...
 view_adv=Cerca Avançada
 view_sqlrun=Resultats generats per la consulta SQL: $1
+
 newdb_title=Creació de Bases de Dades
 newdb_header=Opcions de la nova base de dades
 newdb_db=Nom de la base de dades
@@ -211,6 +222,7 @@ newdb_encoding=Codificació del joc de caràcters
 newdb_eencoding=Hi falta la codificació del joc de caràcters
 newdb_template=Base de dades de plantilla
 newdb_notemplate=Cap
+
 user_title=Usuaris PostgreSQL
 user_vwarning=ATENCIÓ: Aquest usuari PostgreSQL és l'administrador del domini $1 de Virtualmin. Si canvies paràmetres aquí, es poden produir errors a Virtualmin.
 user_ecannot=No tens permís per editar els usuaris
@@ -240,6 +252,7 @@ user_sync_delete=Suprimeix un usuari PostgreSQL quan se suprimeixi l'usuari Unix
 user_delete=Suprimeix els Seleccionats
 user_derr=No s'han pogut suprimir els usuaris
 user_enone=No has seleccionat cap usuari
+
 host_ecannot=No tens permís per editar els hosts permesos
 host_title=Hosts Permesos
 host_desc=Quan es connecta un client a la base de dades, els hosts llistats a sota es processen per ordre fins que algun coincideix i el client és autoritzat o denegat.
@@ -295,8 +308,10 @@ host_derr=No s'han pogut suprimir els hosts seleccionats
 host_enone=No has seleccionat cap host
 host_manual=Edita el Fitxer de Configuració
 host_manualdesc=Fes clic sobre aquest botó per editar manualment el fitxer de configuració de hosts permesos. 
+
 manual_title=Edició del Fitxer de Configuració
 manual_err=No d'ha pogut desar el fitxer de configuració
+
 grant_title=Concessió de Drets
 grant_tvi=Objecte
 grant_type=Tipus
@@ -324,6 +339,7 @@ grant_none=No hi ha cap taula, vista, seqüència ni índex sobre el qual donar 
 grant_toomany=Hi ha massa objectes per mostrar. Busca els objectes que coincideixin amb:
 grant_showing=S'estan mostrant els objectes que coincideixen amb $1...
 grant_delete=Reinicia els Drets Seleccionats
+
 group_title=Grups PostgreSQL
 group_ecannot=No tens permís per editar grups
 group_name=Nom del grup
@@ -343,6 +359,7 @@ group_etaken=El nom del grup ja està en ús
 group_none=Actualment no hi ha cap grup PostgreSQL.
 group_derr=No s'han pogut suprimir els grups
 group_enone=No has seleccionat cap grup
+
 esql=L'ordre SQL $1 ha fallat: $2
 log_start=S'ha iniciat el servidor PostgreSQL
 log_stop=S'ha aturat el servidor PostgreSQL
@@ -399,6 +416,7 @@ log_backup_l=S'ha copiat la base de dades $1 al fitxer $2
 log_backup_all=S'han copiat totes les bases de dades
 log_backup_all_l=S'han copiat totes les bases de dades al fitxer $2
 log_manual=S'ha editat manualment el fitxer de configuració de hosts permesos
+
 acl_dbs=Bases de dades que aquest usuari pot gestionar
 acl_dbscannot=Aquest control d'accés serà efectiu després d'iniciar el servidor de bases de dades PostgreSQL.
 acl_dall=Totes les bases de dades
@@ -419,13 +437,17 @@ acl_cmds=Pot editar les ordres d'abans i després de la còpia
 acl_views=Pot veure i gestionar vistes
 acl_indexes=Pot veure i gestionar índexs
 acl_seqs=Pot veure i gestionar seqüències
+
 fdrop_err=No s'han pogut suprimir els camps
 fdrop_enone=No has seleccionat cap camp
 fdrop_eall=No pots suprimir tots els camps d'una taula!
+
 setup_err=No s'han pogut inicialitzar la base de dades
 setup_ecannot=No tens permís per inicialitzar la base de dades
+
 dbase_bkup=Copia
 dbase_rstr=Restaura
+
 restore_title=Restauració de Base de Dades
 restore_header=Opcions de restauració de la base de dades
 restore_db=Nom de la base de dades
@@ -448,6 +470,7 @@ restore_tables=Taules a restaurar
 restore_tables1=Totes les del fitxer de còpia
 restore_tables0=les taules llistades
 restore_failed=La restauració ha fallat: $1
+
 backup_title=Còpia de la Base de Dades
 backup_title2=Còpia de Totes les Bases de Dades
 backup_header1=Destinació de la còpia
@@ -496,17 +519,21 @@ backup_ebefore=L'ordre a executar abans de la còpia ha fallat!
 backup_cmode=Quan s'han d'executar les ordres
 backup_cmode1=Abans/després de totes les bases de dades
 backup_cmode0=Abans/després de cada base de dades
+
 r_command=Ordre No Suportada
+
 adv_title=Cerca Avançada
 adv_and=Busca registres que coincideixin amb tots els criteris...
 adv_or=Busca registres que coincideixin amb qualsevol criteri...
 adv_ok=Busca Ara
+
 tdrops_enone=No has introduït cap taula per destruir
 tdrops_err=No s'han pogut destruir les taules
 tdrops_ok=Destrueix
 tdrops_title=Destrueix les Seleccionades
 tdrops_rusure=Segur que vols destruir les $1 taules seleccionades de la base de dades $2? Se suprimiran $3 files de dades.
 tdrops_rusure2=Segur que vols destruir les $1 taules seleccionades de la base de dades $2?
+
 ddrops_err=No s'han pogut destruir les bases de dades
 ddrops_title=Destrucció de Bases de Dades
 ddrops_rusure=Segur que vols destruir les $1 bases de dades seleccionades? Se suprimiran $2 taules que contenen $3 files de dades.
@@ -514,6 +541,7 @@ ddrops_mysql=Com que has seleccionat la base de dades mestra, eliminant-la segur
 ddrops_ok=Destrueix les Bases de Dades
 ddrops_enone=No has seleccionat cap base de dades
 ddrops_ecannotdb=No tens permís per destruir la base de dades $1
+
 csv_title=Exportació a Fitxer CSV
 csv_header=Opcions de l'exportació CSV
 csv_dest=Destinació de l'exportació
@@ -534,6 +562,7 @@ csv_done=L'exportació CSV a $1 s'ha completat. La mida del fitxer resultant és
 csv_headers=Inclou els noms de columnes al CSV
 csv_cols=Columnes a incloure al CSV
 csv_ecols=No has seleccionat cap columna
+
 import_title=Importació de Dades
 import_uploadout=S'estan important dades del fitxer pujat...
 import_fileout=S'estan important dades del fitxer $1...
@@ -541,6 +570,7 @@ import_eupload=Hi falta el fitxer d'importació a pujar
 import_efile=Hi falta el nom del fitxer d'importació
 import_done=...s'han creat $1 files, s'han omès $2 duplicats.
 import_erow=...no s'ha trobat cap camp a la fila $1
+
 index_title1=Creació d'Índex
 index_header1=Opcions de l'Índex
 index_name=Nom de l'Índex
@@ -558,6 +588,7 @@ index_ecols=No has seleccionat cap camp
 index_title2=Edició d'Índex
 index_header=Índex $1 a la base de dades $2
 index_ecannot=No tens permís per gestionar índexs
+
 view_title1=Creació de Vista
 view_title2=Edició de Vista
 view_header1=Detalls de la vista
@@ -572,6 +603,7 @@ view_eclash=Ja existeix una vista amb el mateix nom
 view_equery=Hi falta la consulta SQL
 view_ecols=No has introduït cap nom de columna
 view_ecannot=No tens permís per gestionar vistes
+
 seq_title1=Creació de Seqüència
 seq_title2=Edició de Seqüència
 seq_header1=Opcions d'increment de la seqüència
@@ -591,5 +623,6 @@ seq_emin=Hi falta el valor mínim o bé és invàlid
 seq_emax=Hi falta el valor màxim o bé és invàlid
 seq_ecache=Hi falta el nombre de valors a desar en cau o bé és invàlid
 seq_ecannot=No tens permís per gestionar seqüències
+
 dgrant_err=No s'han pogut reiniciar els drets
 dgrant_enone=No has seleccionat cap objecte

@@ -26,6 +26,7 @@ index_return=영역 목록
 index_toomany=시스템 영역이 너무 많아서 여기에 표시할 수 없습니다.
 index_find=영역 검색 기준:
 index_search=검색
+
 master_title=마스터 영역 편집
 master_ecannot=이 영역을 편집할 수 없습니다
 master_manual=기록 파일 편집
@@ -74,10 +75,12 @@ master_esoacannot=영역 매개 변수를 편집할 수 없습니다
 master_eoptscannot=영역 옵션을 편집할 수 없습니다
 master_edeletecannot=영역을 삭제할 수 없습니다
 master_etaken=이 영역은 이미 있습니다
+
 delete_title=영역 삭제
 delete_mesg=영역 $1을(를) 삭제하시겠습니까? 모든 기록과 영역 파일이 삭제됩니다.
 delete_rev=다른 영역의 역방향 기록을 삭제합니까?
 delete_fwd=다른 영역의 정방향 기록을 삭제합니까?
+
 mcreate_title=마스터 영역 작성
 mcreate_ecannot=마스터 영역을 작성할 수 없습니다
 mcreate_opts=새 마스터 영역 옵션
@@ -88,6 +91,7 @@ mcreate_dom=도메인 이름/네트워크
 mcreate_file=기록 파일
 mcreate_auto=자동
 mcreate_err=마스터 영역을 작성하지 못했습니다
+
 slave_title=슬레이브 영역 편집
 stub_title=스텁 영역 편집
 slave_ecannot=이 영역을 편집할 수 없습니다
@@ -108,6 +112,7 @@ slave_emax='$1'은(는) 유효한 최대 전송 시간이 아닙니다
 slave_efile=없는 기록 파일
 slave_efile2='$1'은(는) 허용 가능한 기록 파일이 아닙니다
 slave_mins=분
+
 screate_title1=슬레이브 영역 작성
 screate_title2=스텁 영역 작성
 screate_ecannot1=슬레이브 영역을 작성할 수 없습니다
@@ -120,6 +125,7 @@ screate_rev=역방향(주소에서 이름으로)
 screate_dom=도메인 이름/네트워크
 screate_err1=슬레이브 영역을 작성하지 못했습니다
 screate_err2=스텁 영역을 작성하지 못했습니다
+
 recs_ecannot=이 영역의 기록을 편집할 수 없습니다
 recs_title=$1 기록
 recs_header=$1
@@ -128,6 +134,7 @@ recs_name=이름
 recs_ttl=TTL
 recs_comment=주석
 recs_return=기록 유형
+
 edit_title=$1 편집
 edit_header=$1
 edit_edit=$1 기록 편집
@@ -161,12 +168,16 @@ edit_efqdn=절대 이름 '$1'이(가) 너무 깁니다
 edit_elabel='$1'의 라벨이 너무 깁니다
 edit_eloc=없는 위도와 경도
 edit_return=기록
+
 text_title=기록 파일 편집
 text_undo=실행 취소
 text_ecannot=기록 파일을 편집할 수 없습니다
+
 restart_ecannot=BIND를 다시 시작할 수 없습니다
+
 start_ecannot=BIND를 시작할 수 없습니다
 start_error=BIND를 시작하지 못했습니다:  $1
+
 fwd_title=정방향 역역 편집
 fwd_ecannot=이 영역을 편집할 수 없습니다
 fwd_opts=영역 옵션
@@ -174,6 +185,7 @@ fwd_masters=마스터 서버
 fwd_forward=다른 서버를 시도합니까?
 fwd_check=이름을 검사합니까?
 fwd_err=옵션을 저장하지 못했습니다
+
 fcreate_title=정방향 영역 작성
 fcreate_ecannot=정방향 영역을 작성할 수 없습니다
 fcreate_opts=새 정방향 영역 옵션
@@ -183,6 +195,7 @@ fcreate_rev=역방향(주소에서 이름으로)
 fcreate_dom=도메인 이름/네트워크
 fcreate_masters=마스터 서버
 fcreate_err=정방향 영역을 작성하지 못했습니다
+
 create_enet='$1'은(는) 유효한 네트워크가 아닙니다
 create_edom='$1'은(는) 유효한 도메인 이름이 아닙니다
 create_edom2='$1'은(는) 네트워크가 아닌, 도메인이어야 합니다
@@ -191,7 +204,9 @@ create_efile2='$1'은(는) 허용 가능한 영역 파일이 아닙니다
 create_efile3='$1'을(를) 작성하지 못했습니다:  $2
 create_emaster='$1'은(는) 유효한 마스터 서버 주소가 아닙니다
 create_enone=적어도 하나의 마스터 서버를 입력해야 합니다
+
 boot_err=다운로드 실패
+
 type_A=주소
 type_AAAA=IPv6 주소
 type_NS=이름 서버
@@ -203,6 +218,7 @@ type_WKS=잘 알려진 서비스
 type_RP=담당자
 type_PTR=역방향 주소
 type_LOC=위치
+
 edit_A=주소
 edit_AAAA=IPv6 주소
 edit_NS=이름 서버
@@ -214,6 +230,7 @@ edit_WKS=잘 알려진 서비스
 edit_RP=담당자
 edit_PTR=역방향 주소
 edit_LOC=위치
+
 recs_A=주소
 recs_AAAA=IPv6 주소
 recs_NS=이름 서버
@@ -225,6 +242,7 @@ recs_WKS=잘 알려진 서비스
 recs_RP=담당자
 recs_PTR=역방향 주소
 recs_LOC=위치
+
 value_A1=주소
 value_NS1=이름 서버
 value_CNAME1=실제 이름
@@ -240,6 +258,7 @@ value_RP1=전자 메일 주소
 value_RP2=텍스트 기록 이름
 value_PTR1=호스트 이름
 value_LOC1=위도 및 경도
+
 warn=경고
 fail=실패
 ignore=무시
@@ -268,6 +287,7 @@ acl_params=영역 매개 변수를 편집할 수 있습니까?
 acl_opts=영역 옵션을 편집할 수 있습니까?
 acl_delete=영역을 삭제할 수 있습니까?
 acl_findfree=사용가능 IP 번호를 검색할 수 있습니까?
+
 servers_title=다른 DNS 서버
 servers_ip=IP 주소
 servers_bogus=무효한 서버를 무시합니까?
@@ -278,6 +298,7 @@ servers_many=다수
 servers_err=다른 DNS 서버를 저장하지 못했습니다
 servers_eip='$1'은(는) 유효한 IP 주소가 아닙니다
 servers_etrans='$1'은(는) 유효한 최대 전송 수가 아닙니다
+
 logging_title=로그 및 오류
 logging_ecannot=로그을 구성할 수 없습니다
 logging_header=글로벌 로그 및 오류 옵션
@@ -309,12 +330,14 @@ logging_ename='$1'은(는) 유효한 채널 이름이 아닙니다
 logging_efile=없는 로그 파일 이름
 logging_ever='$1'은(는) 유효한 버전 번호가 아닙니다
 logging_esize='$1'은(는) 유효한 로그 크기가 아닙니다
+
 acls_title=접근 제어 목록
 acls_ecannot=글로벌 ACL을 편집할 수 없습니다
 acls_name=ACL 이름
 acls_values=일치하는 주소, 네트워크 및 ACL
 acls_err=접근 제어 목록을 저장하지 못했습니다
 acls_ename='$1'은(는) 유효한 ACL 이름이 아닙니다
+
 files_title=파일 및 디렉토리
 files_ecannot=파일을 구성할 수 없습니다
 files_header=글로벌 파일 및 디렉토리 옵션
@@ -324,6 +347,7 @@ files_pid=프로세스 ID 파일
 files_xfer=영역 전송 프로그램의 경로
 files_err=파일 및 디렉토리 옵션을 저장하지 못했습니다
 files_efile=없거나 잘못된 파일 이름
+
 forwarding_title=전달 및 전송
 forwarding_ecannot=전달 및 전송 옵션을 편집할 수 없습니다
 forwarding_header=글로벌 전달 및 영역 전송 옵션
@@ -338,6 +362,7 @@ forwarding_err=전달 및 전송 옵션을 저장하지 못했습니다
 forwarding_emins=없거나 잘못된 최대 전송 시간
 forwarding_etrans=없거나 잘못된 최대 동시 전송 수
 forwarding_minutes=분
+
 net_title=주소 및 토폴로지
 net_ecannot=주소 및 토폴로지 옵션을 편집할 수 없습니다
 net_header=글로벌 주소 및 토폴로지 옵션
@@ -350,7 +375,9 @@ net_port=포트
 net_topol=이름 서버 선택 토폴로지
 net_err=주소 및 토폴로지 옵션을 저장하지 못했습니다
 net_eport='$1'은(는) 유효한 포트 번호가 아닙니다
+
 net_etopology=토폴로지 주소를 입력하지 않았습니다
+
 misc_title=기타 옵션
 misc_ecannot=기타 옵션을 편집할 수 없습니다
 misc_header=기타 글로벌 옵션
@@ -370,6 +397,7 @@ misc_esize='$1'은(는) 유효한 크기가 아닙니다
 misc_efiles='$1'은(는) 유효한 열 수 있는 최대 파일 수가 아닙니다
 misc_emins='$1'은(는) 유효한 시간(분)이 아닙니다
 misc_mins=분
+
 zonedef_title=영역 기본값
 zonedef_msg=새 마스터 영역에 대한 기본값
 zonedef_err=영역 기본값을 저장하지 못했습니다
@@ -382,17 +410,22 @@ zonedef_cslave=슬레이브 영역의 이름을 검사합니까?
 zonedef_cresponse=응답에 있는 이름을 검사합니까?
 zonedef_notify=변경 내용을 슬레이브에게 알립니까?
 zonedef_email=기본 전자 메일 주소
+
 find_title=영역 찾기
 find_match=$1과(와) 일치하는 영역을 찾는 중..
 find_none=일치하는 영역이 없습니다.
+
 efirst=$2의 $1 행에 있는 첫번째 지시어가 잘못됨
+
 findfree_title=사용가능 ip 찾기
+
 findfree_desc=사용가능 ip 찾기
 findfree_nofind=사용가능 ip를 찾을 수 없습니다
 findfree_header=$1
 findfree_sopt=검색 옵션
 findfree_cf=<em>freeXXX</em> 호스트 이름을 사용가능 ip로 간주합니까?
 findfree_search=검색
+
 log_servers=다른 DNS 서버 변경됨
 log_logging=로그 및 오류 변경됨
 log_acls=접근 제어 목록 변경됨

@@ -10,6 +10,7 @@ index_apply=Použiť konfiguráciu
 index_applydesc=Kliknite na toto tlačidlo, aby ste použili aktuálne možnosti servera PPTP zastavením a opätovným spustením procesu servera PPTP. Zmeny možností PPP a účtov PPP sa budú vždy vzťahovať na všetky nové pripojenia
 index_return=index modulu
 index_epppd=Vo vašom systéme nie je nainštalovaný program servera PPP $1. PPTP závisí od toho, ako bude fungovať.
+
 conf_title=Možnosti servera PPTP
 conf_ecannot=Nemáte oprávnenie upravovať možnosti servera PPTP
 conf_header=Konfigurácia servera PPTP
@@ -35,6 +36,7 @@ conf_elocalip='$1' nie je platná lokálna IP adresa alebo rozsah
 conf_eremoteip=$1 nie je platná vzdialená adresa IP alebo rozsah
 conf_efrom=Chýba alebo je neplatná sieť IPX z adresy
 conf_eto=Chýbajúca alebo neplatná sieť IPX na adresu
+
 options_title=Možnosti PPP
 options_ecannot=Nemáte oprávnenie upravovať možnosti PPP
 options_desc0=Možnosti PPP uvedené nižšie od $1 sa vzťahujú na VŠETKY prichádzajúce pripojenia prijaté vaším systémom vrátane tých, ktoré sa týkajú telefonických modemov.
@@ -67,6 +69,7 @@ options_mschap=Autentifikácia MS-CHAP
 options_mschap-v2=Autentifikácia MS-CHAP verzie 2
 options_chapms=Autentifikácia MS-CHAP
 options_chapms-v2=Autentifikácia MS-CHAP verzie 2
+
 secrets_title=Účty PPP
 secrets_ecannot=Nemáte oprávnenie upravovať účty PPP
 secrets_return=index
@@ -80,6 +83,7 @@ secrets_sany=AKÝKOĽVEK
 secrets_create=Vytvorte nový účet PPP.
 secrets_desc=Účty PPP uvedené na tejto stránke sú prevzaté zo súboru $1, ktorý sa používa na autentifikáciu $3. Zobrazia sa iba účty pre váš server $2, nie účty pre vytváranie odchádzajúcich pripojení.
 secrets_delete=Odstrániť vybrané účty PPP
+
 edit_secret_etitle=Upraviť účet PPP
 edit_secret_ctitle=Vytvorte si účet PPP
 edit_secret_acc=Účet PPP
@@ -99,15 +103,20 @@ edit_secret_alist=Povoliť uvedené ..
 edit_secret_save=Uložiť
 edit_secret_del=delete
 edit_secret_return=zoznam účtov
+
 save_secret_esave=Nepodarilo sa uložiť účet
 save_secret_enoip='$1' nie je platná adresa
+
 stop_err=Nepodarilo sa zastaviť server PPTP
 stop_egone=Už nebeží
 stop_ecannot=Nemáte povolenie zastaviť server PPTP
+
 start_err=Nepodarilo sa spustiť server PPTP
 start_ecannot=Nemáte povolenie na spustenie servera PPTP
+
 apply_err=Nepodarilo sa znova spustiť server PPTP
 apply_ecannot=Nemáte povolenie na opätovné spustenie servera PPTP
+
 conns_title=Aktívne pripojenia
 conns_ecannot=Nemáte oprávnenie spravovať aktívne pripojenia
 conns_desc=Táto stránka obsahuje zoznam aktívnych pripojení PPTP k vášmu serveru. Ak ho chcete násilne odpojiť, kliknite na jeho názov rozhrania.
@@ -119,9 +128,11 @@ conns_remote=VPN adresa klienta
 conns_none=Zdá sa, že v súčasnosti nie sú aktívne žiadne pripojenia PPTP.
 conns_unknown=nevedno
 conns_user=užívateľské meno
+
 disc_err=Nepodarilo sa odpojiť
 disc_egone=Spojenia už nie sú aktívne
 disc_ekill=Proces už nie je spustený
+
 log_secret_create=Vytvorený účet PPP $1 
 log_secret_modify=Upravený účet PPP $1 
 log_secret_delete=Odstránený účet PPP $1 
@@ -132,6 +143,7 @@ log_disc=Odpojený klient $1
 log_start=Spustený server PPTP
 log_stop=Zastavený server PPTP
 log_apply=Aplikovaná konfigurácia servera PPTP
+
 acl_conf=Môžete upraviť konfiguráciu?
 acl_options=Môžete upravovať možnosti?
 acl_secrets=Dokážete spravovať účty PPTP?

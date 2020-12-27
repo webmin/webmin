@@ -27,6 +27,7 @@ index_ok=Carian
 index_searchres=Tugas Cron yang sepadan $1 ..
 index_reset=Tetapan semula carian.
 index_econfigcheck=Tugas Cron tidak boleh diuruskan pada sistem anda, seperti konfigurasi modul itu tidak sah: $1
+
 edit_title=Ubah Tugas Cron
 create_title=Cipta Tugas Cron
 edit_ecannot=Anda tidak dibenarkan menyunting tugas cron untuk pengguna ini
@@ -65,6 +66,7 @@ lcedit_special_weekly=setiap minggu (pada hari ahad)
 lcedit_special_monthly=setiap bulan (pada tiap 1hb)
 lcedit_special_yearly=setiap tahun (pasa 1hb Jan)
 lcedit_special_reboot=bila sistem boot
+
 save_err=Gagal menyimpan tugas cron
 save_ecmd=Anda tidak memasukkan arahan untuk dilaksana
 save_euser=Anda perlu memilih satu pengguna
@@ -74,6 +76,7 @@ save_ecannot=Anda tidak dibenar untuk mencipta atau menyunting tugas cron untuk 
 save_enone=Anda tidak memilih sebarang $1 untuk dilaksana
 save_ecannot2=Anda tidak dibenarkan untuk mencipta tugas cron
 save_eidx=Tugas Cron telah berjaya disimpan, tetapi tidak dapat dijalankan kerana ia tidak dijumpai!
+
 allow_title=Kawalan Capaian Cron
 allow_desc=Borang ini membenarkan anda mengawal pengguna yang dibenar mencipta atau melarikan tugas cron.
 allow_ecannot=Anda tidak boleh mengawal capaian pengguna cron
@@ -82,6 +85,7 @@ allow_all2=Nafikan semua pengguna kecuali root
 allow_all3=Benarkan semua pengguna
 allow_allow=Hanya benarkan pengguna dalam senarai
 allow_deny=Hanya nafikan pengguna dalam senarai
+
 env_title1=Ubah Pembolehubah Persekitaran
 env_title2=Cipta Pembolehubah Persekitaran
 env_name=Nama Pembolehubah
@@ -97,11 +101,13 @@ env_where2=Pindah pembolehubah persekitaran
 env_top=Sebelum semua tugas Cron untuk pengguna
 env_bot=Selepas semua tugas Cron
 env_leave=Kedudukan semasa
+
 exec_title=Laksana Tugas Cron
 exec_ecannot=Anda tidak dibenar melaksanakan tugas cron untuk pelayan ini
 exec_cmd=Keluaran daripada arahan $1 ..
 exec_cmdbg=Melarikan perintah $1 sebagai proses latar belakang.
 exec_none=Tiada keluaran dijana
+
 acl_users=Boleh ubah tugas cron untuk
 acl_all=Semua pengguna
 acl_this=Pengguna webmin semasa
@@ -117,6 +123,7 @@ acl_move=Boleh pindahkan tugas Cron?
 acl_kill=Boleh matikan tugas Cron?
 acl_hourly=Hadkan pekerjaan pada setiap jam?
 acl_hourlydef=Seperti yang dinyatakan dalam Config Modul
+
 log_modify=Ubahsuai tugas cron untuk  $1
 log_modify_l=Ubahsuai tugas cron "$2" untuk $1
 log_create=Mencipta tugas cron untuk $1
@@ -134,7 +141,9 @@ log_move=Pindahkan tugas Cron untuk $1
 log_crons_delete=Memadam Tugas Cron $1
 log_crons_disable=Nyah-aktif Tugas Cron $1
 log_crons_enable=Aktifkan tugas Cron $1
+
 ecopy=Ralat dikesan dalam konfigurasi Cron yang baharu : $1 $2
+
 when_min=setiap minit
 when_hour=setiap jam pada $1 selepas sejam
 when_day=setiap hari pada $2:$1
@@ -142,6 +151,7 @@ when_month=pada hari ke $3 setiap bulan pada $2:$1
 when_weekday=setiap $3 pada $2:$1
 when_cron=pada masa cron $1
 when_interval=Setiap $1 saat
+
 ucwhen_min=Setipa minit
 ucwhen_hour=Setiap jam selepas $1 jam
 ucwhen_day=Setiap hari pada $2:$1
@@ -149,8 +159,10 @@ ucwhen_month=Pada hari $3 setiap bulan pada $2:$1
 ucwhen_weekday=Setiap $3 pada $2:$1
 ucwhen_cron=Pada masa cron $1
 ucwhen_interval=Setiap $1 saat
+
 move_err=Gagal untuk memindahkan tugas Cron
 move_etype=Tugas ini tidah boleh dipindahkan
+
 kill_err=Gagal untuk mematikan tugas Cron
 kill_ecannot=Anda tidak dibenarkan untuk menamatkan tugas ini
 kill_egone=Tiada lagi berlari
@@ -159,10 +171,12 @@ kill_title=Menamatkan Tugas Cron
 kill_rusure=Adakah anda pasti untuk mematikan proses $1 dengan PID $2?
 kill_rusure2=Adakah anda pasti untuk mematikan proses $1 dengan PID $2, dan kesemua sub-proses?
 kill_ok=Ya, matikan ia
+
 range_all=Dijalankan pada mana-mana tarikh
 range_start=Hanya jalankan dari $1
 range_end=pada $1
 range_estart=Hilang atau tarikh mula tidah sah dalam lingkungan untuk menjalankan
 range_eend=Hilang atau tarikh tamat tidah sah dalam lingkungan untuk menjalankan
+
 delete_err=Gagal untuk memadam tugas Cron
 delete_enone=Tiada dipilih

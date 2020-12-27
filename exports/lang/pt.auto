@@ -4,6 +4,7 @@ index_eprog=O executável do servidor NFS não foi encontrado no seu sistema. O 
 index_delete=Excluir exportações selecionadas
 index_disable=Desativar selecionado
 index_enable=Ativar selecionado
+
 edit_vers=Versão NFS
 edit_nfs_vers=Versão NFS
 edit_pfs=NFSv4 Pseudofilesystem para exportar
@@ -31,11 +32,13 @@ edit_sec_krb5i=Integridade Kerberos
 edit_sec_krb5p=Privacidade do Kerberos
 edit_sec_lipkey=LIPKEY
 edit_sec_spkm=SPKM
+
 save_epfs=O caminho do pseudo-sistema de arquivos '$1' não parece um caminho absoluto
 save_pfs='$1' já foi exportado como um diretório
 save_create_dir=Não é possível criar o diretório '$1'
 save_eanonuid=Nome de usuário de acesso anônimo inválido
 save_eanongid=Nome de grupo de acesso anônimo inválido
+
 exports_webnfs=Clientes WebNFS
 exports_ngroup=Grupo Net $1 
 exports_net=Rede $1 
@@ -43,6 +46,7 @@ exports_all=Todos
 exports_hosts=Hosts $1 
 exports_host=Host $1 
 exports_gss=Rede autenticada: $1 
+
 log_modify=Exportação NFS modificada $1 
 log_modify_l=Exportação NFS modificada $1 para $2 
 log_delete=Exportação NFS excluída $1 

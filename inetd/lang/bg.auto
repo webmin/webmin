@@ -14,6 +14,7 @@ index_search=Показване на услуги, съвпадащи:
 index_sok=Търсене
 index_toomany=На тази страница има прекалено много интернет услуги.
 index_none=Нито една интернет услуга не отговаря на вашето търсене.
+
 error_restart=Неуспешно рестартиране на Inetd
 error_saverpc=Неуспешно запазване на RPC програма
 error_invalidprgname='$ $1' не е валидно име на програмата
@@ -43,6 +44,7 @@ error_nameexist=Услуга с име $1 и протокол $2 вече същ
 error_inetservice=Интернет услуга с име $1 и протокол $2 вече съществува
 error_smfservice=Неуспешно актуализиране на smf услуга с cmd '$1', код на грешка $2 
 error_smf_cmdfield=За smf името на файла на програмата '$ $1' трябва да съвпада с първия аргумент на командното поле, т.е. да бъде '$ $2'
+
 editrpc_title1=Създайте RPC програма
 editrpc_title2=Редактиране на RPC програма
 editrpc_detail=Подробности за програмата RPC
@@ -69,6 +71,7 @@ editrpc_execasuser=Изпълнение като потребител
 editrpc_max=Макс на минута
 editrpc_default=По подразбиране
 editrpc_execasgrp=Изпълнете като група
+
 editserv_title1=Създайте Интернет услуга
 editserv_title2=Редактиране на Интернет услуга
 editserv_detail=Подробности за интернет услуги
@@ -82,6 +85,7 @@ editserv_wrapper=TCP-обвивка
 editserv_inetd=Вътрешно към <tt>inetd</tt>
 editserv_qm=Командата може да не съществува?
 editserv_ename=Не съществува услуга с това име и протокол
+
 log_apply=Приложени промени
 log_create_serv=Създадена услуга $1 
 log_modify_serv=Модифицирана услуга $1 
@@ -95,6 +99,7 @@ log_delete_serv_l=Изтрита услуга $1 на порт $2
 log_create_prog_l=Създадена услуга $1 на порт $2 за програма $3 
 log_modify_prog_l=Модифицирана услуга $1 на порт $2 за програма $3 
 log_delete_prog_l=Изтрита услуга $1 на порт $2 за програма $3 
+
 log_create_rpc=Създаден RPC $1 
 log_modify_rpc=Модифициран RPC $1 
 log_delete_rpc=Изтрита RPC $1 

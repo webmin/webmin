@@ -39,7 +39,9 @@ index_thost=Nome host
 index_tdesc=Descrizione
 index_tver=Versione
 index_ttype=Tipo di sistema operativo
+
 this_server=questo server
+
 add_title=Aggiungi server
 add_msg=Aggiunta di $1 ..
 add_gmsg=Aggiunta di server nel gruppo $1 ..
@@ -49,6 +51,7 @@ add_echeck=Il server $1 non ha il modulo di configurazione Webmin
 add_echeck2=Il server $1 non ha il modulo Utenti Webmin
 add_eversion=Il server $1 non esegue Webmin versione $2 o successiva.
 add_ok=Aggiunto $1 con $2 moduli, $3 temi, $4 utenti e $5 gruppi.
+
 refresh_title=Aggiorna modulo ed elenchi utenti
 refresh_header=Richiedere gli elenchi di moduli, utenti e gruppi da tutti i server.
 refresh_header4=Richiedere gli elenchi di moduli, utenti e gruppi dai membri di $2 ..
@@ -64,6 +67,7 @@ refresh_g2=$1 gruppi rimossi.
 refresh_done=.. fatto
 refresh_del=$1 rimosso dall'elenco dei server
 refresh_failed=Impossibile aggiornare $1 : $2 
+
 host_title=Server gestito
 host_header=Dettagli del server Webmin gestito
 host_name=Nome host
@@ -81,6 +85,7 @@ host_header_u=Utenti Webmin
 host_header_g=Gruppi Webmin
 host_return=dettagli del server
 host_version2=Versione
+
 edit_title_mod=Modifica modulo
 edit_title_theme=Modifica tema
 edit_header_mod=Dettagli del modulo Webmin da $1 
@@ -104,6 +109,7 @@ edit_acl=Modifica ACL per
 edit_uacl=Utente $1 su $2 
 edit_gacl=Gruppo $1 su $2 
 edit_config=Modifica configurazione attivata
+
 install_err=Impossibile installare il modulo
 install_title=Installa il modulo
 install_elocal=Nessun file locale fornito
@@ -124,6 +130,7 @@ do_failed=Impossibile installare su $1 : $2
 do_success_mod=Modulo installato $2 su $1 
 do_success_theme=Tema installato $2 su $1 
 do_done=.. fatto
+
 delete_err=Impossibile eliminare il modulo $1 
 delete_epack=Il modulo $1 non esiste
 delete_title=Elimina modulo
@@ -141,6 +148,7 @@ delete_edepends=I moduli $1 dipendono da esso.
 delete_egone=Il modulo non esiste più
 delete_esuccess=Eliminato correttamente da $1 : $2 
 delete_acls=Rimuovere dagli utenti e ripristinare le impostazioni di controllo dell'accesso?
+
 user_title1=Crea utente Webmin
 user_header1=Nuovi dettagli utente Webmin
 user_name=Nome utente
@@ -200,11 +208,13 @@ user_all=&lt;tutti gli host&gt;
 user_donthave=&lt;host che non ce l'hanno&gt;
 user_have=&lt;host che ce l'hanno&gt;
 user_ofgroup=Membri di $1 
+
 udelete_title=Elimina utente
 udelete_doing=Eliminazione dell'utente $1 da tutti gli host ..
 udelete_success=Eliminato correttamente da $1 
 udelete_failed=Impossibile eliminare da $1 : $2 
 udelete_done=.. fatto
+
 group_title1=Creare un gruppo
 group_header1=Nuovi dettagli del gruppo Webmin
 group_name=Nome del gruppo
@@ -232,6 +242,7 @@ group_failed2=Impossibile aggiornare il gruppo su $1 : $2
 group_return=dettagli del gruppo
 group_nomems=Nessun membro
 group_servers=Server su cui creare
+
 gdelete_title=Elimina gruppo
 gdelete_desc=Sei sicuro di voler eliminare il gruppo $1 e i suoi utenti membri $2 da tutti gli host?
 gdelete_ok=Elimina gruppo
@@ -240,6 +251,7 @@ gdelete_success=Eliminato correttamente da $1
 gdelete_failed=Impossibile eliminare da $1 : $2 
 gdelete_done=.. fatto
 gdelete_esub=Questo gruppo ha sottogruppi $1 e quindi non può essere eliminato.
+
 acl_title=Controllo dell'accesso al modulo
 acl_title2=Per l'utente $1 in $2 su $3 
 acl_title3=Per il gruppo $1 in $2 su $3 
@@ -258,6 +270,7 @@ acl_doing2=Impostazione del controllo di accesso per $1 su $2 ..
 acl_success=Impostare correttamente il controllo di accesso su $1 
 acl_failed=Impossibile impostare il controllo di accesso su $1 : $2 
 acl_done=.. fatto
+
 sync_title=Sincronizza server
 sync_desc=Questo modulo consente di creare utenti e gruppi Webmin su server che non li hanno attualmente, al fine di sincronizzare gli account su tutti i server del cluster.
 sync_hosts=Server da sincronizzare
@@ -281,6 +294,7 @@ sync_gcreate=Aggiunta del gruppo Webmin $1 ..
 sync_acl=Copia dei file ACL per $1 ..
 sync_test=Mostra solo cosa si farebbe?
 sync_restart=Riavvio di Webmin ..
+
 upgrade_title=Aggiorna Webmin
 upgrade_header=Aggiornamento di Webmin su tutti gli host ..
 upgrade_header2=Aggiornamento di Webmin su $1 ..
@@ -299,6 +313,7 @@ upgrade_failed=Impossibile installare su $1 : $2
 upgrade_done=.. fatto
 upgrade_efast=Solo i server che utilizzano la modalità RPC veloce possono essere aggiornati
 upgrade_ereconn=Impossibile riconnettersi a Webmin dopo l'aggiornamento!  : $1 
+
 update_title=Moduli di aggiornamento
 update_header=Aggiornamento moduli tutti gli host ..
 update_header5=Aggiornamento dei moduli su $2 ..
@@ -306,6 +321,7 @@ update_header4=Aggiornamento dei moduli sui membri di $2 ..
 update_onhost=Risultati dell'aggiornamento su $1 ..
 update_failed=.. aggiornamento non riuscito : $1 
 update_none=.. nessun aggiornamento trovato.
+
 config_title=Modifica configurazione modulo
 config_enone=Nessun host con il modulo installato è stato selezionato
 config_ethis=Il modulo non è installato su questo server

@@ -9,6 +9,7 @@ index_contains=Sisältää
 index_file=Luo sähköposti tiedostosta:
 index_nousers=Käyttäjiä ei löytynyt!
 index_nousersmail=Yhtään sähköpostikäyttäjää ei löytynyt.
+
 mail_title=Sähköposti
 mail_from=Lähettäjä
 mail_date=Päiväys
@@ -54,6 +55,7 @@ mail_fromsrch=Sama lähettäjä..
 mail_subsrch=Sama aihe..
 mail_tosrch=Sama vastaanottaja..
 mail_unknown=Tuntematon
+
 mail_sign=Allekirjoita avaimella
 mail_nosign=&lt;Älä allekirjoita&gt;
 mail_addresses=Hallitse osoitekirjaa
@@ -75,6 +77,7 @@ mail_search2=Etsi:
 mail_search3=Etsi viestit, joiden pistemäärä on yli:
 mail_advanced=Kehittyneempi Haku
 mail_return2=Sähköposti
+
 view_title=Lue sähköpostia
 view_desc=Viesti $1 kansiossa $2
 view_desc2=Viesti $1 käyttäjälle $2
@@ -99,6 +102,7 @@ view_mark2=Erityinen
 view_return=Alkuperäinen viesti
 view_egone=Tätä viestiä ei ole enää olemassa
 view_eugone=Tätä käyttäjää ei ole olemassa
+
 view_gnupg_4=Allekirjoituksen tarkistus epäonnistui : $1
 view_crypt=GnuPG sähköpostin salauksen purku
 view_crypt_1=Viesti on salattu mutta GnuPG tukea ei ole asennettu.
@@ -117,7 +121,9 @@ view_diagnostic-code=Virheen syy
 view_astext=Katsele tekstinä
 view_ashtml=Katsele HTML:nä
 view_raw=Näytä koko viesti
+
 compose_title=Uusi Viesti
+
 reply_title=Vastaa viestiin
 forward_title=Edelleenlähetä sähköposti
 enew_title=Muokkaa sähköpostia
@@ -133,8 +139,10 @@ reply_errc=Viestin kopioiminen epäonnistui
 reply_errm=Viestin siirtäminen epäonnistui
 reply_return=viestinkirjoitukseen
 reply_efwdnone=Mitään uudelleenlähetetyistä viesteista ei ole olemassa
+
 reply_spell=Tarkista kirjoitusvirheet?
 reply_draft=Tallenna Luonnoksiin
+
 send_err=Sähköpostin lähetys epäonnistui
 send_eto=Puuttuva Vastaanottajan osoite
 send_esubject=Puuttuva viestin aihe
@@ -145,9 +153,11 @@ send_ecannot=Ei oikeuksia lähettää sähköpostia tänä käyttäjänä
 send_eattach=Liitetiedostojen koko saa olla yhteensä vain $1 kB.
 send_efile=Liitetiedoston $1 lukeminen epäonnistui : $2
 send_done=.. tehty.
+
 send_esign=Viestin allekirjoitus epäonnistui : $1
 send_ecrypt=Viestin kryptaus epäonnistui : $1
 send_eattachsize=Liitetiedosto ylitti maksimikoon $1 b.
+
 delete_title=Poista sähköposti
 delete_rusure=Haluatko todella poistaa valitut viestit $1 kansiosta $2? Isolle postitiedostolle tämä voi viedä hetken. Kunnes poistaminen on suoritettu ei muita toimintoja tulisi tehdä.
 delete_ok=Poista nyt
@@ -169,6 +179,7 @@ delete_nobutton=Nappia ei ole painettu
 delete_ereport=Roskapostiksi raportointi epäonnistui : $1
 delete_errc=Sähköpostin kopiointi epäonnistui
 delete_errm=Sähköpostin siirtäminen epäonnistui
+
 confirm_title=Vahvista poisto
 confirm_warn=Haluatko todella poistaa valitut viestit $1?
 confirm_warn2=Postilaatikkosi koon ja formaatin johdosta tämä voi kestää hetken. Kunnes poistaminen on suoritetttu ei muita toimintoja pitäisi suorittaa.
@@ -176,6 +187,7 @@ confirm_warn3=Haluatko todella poistaa tämän viestin?
 confirm_warn4=Kunnes poistaminen on suoritetttu ei muita toimintoja pitäisi suorittaa.
 confirm_ok=Poista nyt
 confirm_warnall=Haluatko todella poistaa tämän kansion kaikki viestit?
+
 search_title=Hakutulokset
 search_ecannot=Ei oikeuksia etsiä tämän käyttäjän viestejä
 search_escore=Puuttava tai virheellinen spam pistemäärä
@@ -192,10 +204,13 @@ search_latest=Etsittäviä viestejä
 search_nolatest=Kaikki kansiossa
 search_latestnum=Vain viimeisimmät
 search_elatest=Puuttuva tai virheellinen määrä etsittäviä viestejä
+
 folder_sent=Lähetetyt
 folder_drafts=Luonnokset
 folder_trash=Roskakori
+
 detach_title=Tallenna tiedosto
+
 sform_title=Tarkempi haku
 sform_neg0=sisältää
 sform_neg1=ei sisällä
@@ -212,6 +227,7 @@ sform_date=Päiväys: otsake
 sform_body=Viesti
 sform_headers=mikä tahansa otsake
 sform_size=Viestin koko
+
 find_enone=Haku ei täsmännyt yhteenkään käyttäjään
 find_title=Hakutulokset
 find_user=Käyttäjätunnus
@@ -222,6 +238,7 @@ find_size=Postin koko
 find_incount=Sähköpostit
 find_sentcount=Lähetetyt
 find_fcount=Kansiot
+
 acl_none=Ei mikään
 acl_same=Samannimiset käyttäjät
 acl_all=Kaikki
@@ -247,11 +264,13 @@ acl_usersu=UID välillä
 acl_sec=Mukaanlue secondary ryhmät
 acl_dir=Voi lukea sähköpostitiedostoja hakemistossa
 acl_dirauto=Päätä automaattisesti (kaikkialla, jos kaikki käyttäjät näkyvissä, ei missään muutoin)
+
 log_delmail=Poistettu $1 viestiä kansiosta $2
 log_movemail=Siirretty $1 viestiä kansiosta $2 kansioon $3
 log_copymail=Kopioitu $1 viestiä kansiosta $2 kansioon $3
 log_send=Viesti lähetetty osoitteeseen $1
 log_read=Lue käyttäjän $1 sähköposteja
+
 razor_title=Raportoidaan spämmiksi
 razor_title2=Raportoidaan ei-spämmiksi
 razor_report=Raportoidaan tämä viesti roskapostina Razorille ja muille SpamAssassin spämmiesto tietokannoille ..
@@ -260,10 +279,13 @@ razor_report3=Raportoidaan valitut viestit ei-roskapostina Razorille ja muille S
 razor_done=.. tehty
 razor_err=.. epäonnistui! Katso virheilmoitus yllä tarkistaaksesi syyn.
 razor_deleted=.. tehty, ja poistettu viesti myös.
+
 ham_title=Raportoidaan ei-spämmiksi
+
 black_title=Kieltäytyvä lähettäjä
 black_done=Lisätty sähköpostiosoite $1 SpamAssassinin kiellettyjen osoitteiden listalle.
 black_already=Sähköpostiosoite $1 on jo SpamAssassinin kiellettyjen osoitteiden listalla.
+
 delall_title=Poista kaikki viestit
 delall_rusure=Haluatko todella poistaa kaikki viestit kansiosta $1? $2 viestiä yhteensä $3 poistetaan lopullisesti.
 delall_ok=Poista Nyt

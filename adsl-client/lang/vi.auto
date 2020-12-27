@@ -16,6 +16,7 @@ index_cancel=Hủy kết nối
 index_canceldesc=Máy khách ADSL hiện đang cố gắng thiết lập kết nối. Nhấp vào nút này để hủy bỏ nỗ lực với lệnh $1.
 index_cdemand=Hủy theo yêu cầu
 index_cdemanddesc=Máy khách ADSL hiện đang chờ yêu cầu kết nối theo yêu cầu. Nhấp vào nút này để dừng nó với comnmand $1.
+
 index_header=Tùy chọn cấu hình máy khách ADSL
 index_desc=Các cài đặt bên dưới áp dụng cho mọi kết nối ADSL mới được hệ thống của bạn bắt đầu. Nếu bạn thay đổi chúng, kết nối phải được tắt và khởi động lại để các sửa đổi có hiệu lực.
 index_eth=Giao diện Ethernet
@@ -36,11 +37,13 @@ index_fw_standalone=Đối với máy chủ duy nhất
 index_fw_masquerade=Đối với cổng NAT
 index_connect=Thời gian thử kết nối cho
 index_forever=Mãi mãi
+
 start_err=Không thể bắt đầu kết nối ADSL
 start_title=Khởi động ADSL
 start_ip=Kết nối ADSL đã được thiết lập với địa chỉ IP $1.
 start_demand=Vì chế độ kết nối theo yêu cầu được bật, kết nối ADSL của bạn sẽ chỉ được bắt đầu khi cần.
 start_bg=Kết nối ADSL không được bắt đầu trong vòng 20 giây. Máy khách ADSL sẽ tiếp tục cố gắng kết nối trong nền cho đến khi thành công.
+
 save_err=Không thể lưu cấu hình ADSL
 save_eeth=Giao diện ethernet bị thiếu hoặc không hợp lệ
 save_etimeout=Thiếu hoặc không hợp lệ thời gian chờ theo yêu cầu
@@ -49,10 +52,12 @@ save_econnect=Hết thời gian chờ kết nối bị thiếu hoặc không h�
 save_emss=Kích thước gói tối đa bị thiếu hoặc không hợp lệ
 save_title=Lưu cấu hình
 save_desc=Cấu hình máy khách ADSL của bạn đã được lưu thành công, nhưng sẽ không được sử dụng cho đến khi bạn kết nối lại.
+
 stop_err=Không thể tắt kết nối ADSL
 stop_title=Tắt ADSL
 stop_ok=Kết nối ADSL của bạn đã được tắt thành công.
 stop_failed=Kết nối ADSL của bạn vẫn hoạt động vì một số lý do!
+
 log_save=Cấu hình máy khách đã lưu
 log_stop=Tắt ADSL
 log_start=Bắt đầu lên ADSL

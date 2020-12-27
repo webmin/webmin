@@ -29,12 +29,14 @@ index_fd=File Daemon Configuration
 index_groups=Bacula csoport konfigurálása
 index_actions=Biztonsági mentés és visszaállítás műveletek
 index_ocmin=A közreműködő: <a href=$2 target=_new>Linmin</a> </a>
+
 connect_emysql=Nem sikerült betölteni az adatbázis 1 DBI illesztőprogramját
 connect_elogin=Nem sikerült bejelentkezni a (z) $1 adatbázisba: $2.
 connect_equery=A (z) $1 adatbázis nem tartalmaz Bacula táblákat.
 connect_equery2=Ennek oka lehet az, hogy a telepített SQLite Perl modul túl új, és nem támogatja a Bacula által használt régebbi SQLite adatbázis formátumot.
 connect_equery3=A (z) $1 adatbázis nem tartalmaz OC Bacula csoport táblázatokat.
 esql=SQL hiba : $1 
+
 check_edir=A (z) $1 Bacula konfigurációs könyvtár nem található a rendszerén.
 check_ebacula=A (z) $1 Bacula vezérlőparancs nem található.
 check_econsole=A (z) $1 Bacula konzol parancs nem található.
@@ -43,12 +45,14 @@ check_eclient=Úgy tűnik, hogy ez a rendszer <a href='$2'>Bacula kliens</a>, ne
 check_econfigs=Nem található Bacula konfigurációs fájl a $1 -ben
 check_eservers=Nincs meghatározva Webmin szervercsoport
 check_engmod=Az OpenCountry Bacula csoport modul nincs telepítve
+
 proc_bacula-sd=Tároló démon
 proc_bacula-fd=File démon
 proc_bacula-dir=Bacula Director démon
 proc_bareos-sd=Tároló démon
 proc_bareos-fd=File démon
 proc_bareos-dir=Bacula Director démon
+
 stop_err=A Bacula megállítása nem sikerült
 start_err=A Bacula elindítása nem sikerült
 start_einit=Nem található init szkript a (z) $1 számára
@@ -57,6 +61,7 @@ restart_err=A Bacula újraindítása nem sikerült
 apply_err=A konfiguráció alkalmazása nem sikerült
 apply_failed=Konfigurációs hibát észleltünk
 apply_problem=A konfiguráció alkalmazása nem sikerült : $1 
+
 jobs_title=Biztonsági mentési munkák
 jobs_none=Még nem határoztak meg biztonsági másolatot.
 jobs_name=Munka megnevezés
@@ -69,6 +74,7 @@ jobs_add=Adjon hozzá egy új biztonsági mentési feladatot.
 jobs_delete=Törölje a kijelölt feladatokat
 jobs_return=munkahelyek listája
 jobs_derr=Nem sikerült törölni a feladatokat
+
 filesets_title=Fájlkészletek
 filesets_none=Még nincs meghatározva biztonsági mentési fájlkészlet.
 filesets_name=Fájlkészlet neve
@@ -78,6 +84,7 @@ filesets_delete=Törölje a kiválasztott fájlkészleteket
 filesets_return=fájlkészletek listája
 filesets_derr=A fájlkészletek törlése nem sikerült
 filesets_ednone=Egy sincs kiválasztva
+
 fileset_title1=Hozzon létre fájlkészletet
 fileset_title2=Fájlkészlet szerkesztése
 fileset_header=A biztonsági mentési fájlkészlet részletei
@@ -97,6 +104,7 @@ fileset_gzipdef=&lt;Alapértelmezett tömörítési szint&gt;
 fileset_lzo=LZO tömörítés
 fileset_gzip=Gzip szint: $1 
 fileset_onefs=Biztonsági másolat korlátozása egy fájlrendszerre?
+
 clients_title=Biztonsági ügyfelek
 clients_none=Még nem határoztak meg tartalék ügyfeleket.
 clients_name=Ügyfél Neve
@@ -106,6 +114,7 @@ clients_add=Adjon hozzá egy új biztonsági mentési ügyfelet.
 clients_delete=Törölje a kiválasztott ügyfeleket
 clients_return=az ügyfelek listája
 clients_derr=Az ügyfelek törlése nem sikerült
+
 client_title1=Hozzon létre biztonsági mentési ügyfelet
 client_title2=A Biztonsági mentési ügyfél szerkesztése
 client_header=A biztonsági másolatot igénylő ügyfél adatai
@@ -128,6 +137,7 @@ client_efileret=Hiányzó vagy érvénytelen fájlmegőrzési idő
 client_ejobret=Hiányzó vagy érvénytelen munkamegőrzési időszak
 client_echild=Ezt az ügyfelet nem lehet törölni, mivel a $1 használja
 client_status=Állapot megjelenítése
+
 job_title1=Készítsen biztonsági másolatot
 job_title2=Biztonsági mentési munka szerkesztése
 job_header=Biztonsági másolat részletei
@@ -156,6 +166,7 @@ job_before=Parancs munka előtt
 job_after=Parancs munka után
 job_cbefore=Parancs munka előtt (kliensen)
 job_cafter=Parancs munka után (kliensen)
+
 schedules_title=Biztonsági mentési ütemtervek
 schedules_none=Még nem határoztak meg biztonsági mentési ütemtervet.
 schedules_name=Ütemezés neve
@@ -164,6 +175,7 @@ schedules_add=Adjon hozzá egy új biztonsági mentési ütemtervet.
 schedules_delete=Törölje a kijelölt ütemezéseket
 schedules_return=menetrendek listája
 schedules_derr=Az ütemtervek törlése nem sikerült
+
 schedule_title1=Hozzon létre biztonsági mentési ütemezést
 schedule_title2=A biztonsági mentési ütemezés szerkesztése
 schedule_header=A biztonsági mentési ütemterv részletei
@@ -177,6 +189,7 @@ schedule_ename=Hiányzó vagy érvénytelen ütemezési név
 schedule_eclash=Az azonos nevű ütemezés már létezik
 schedule_etimes=Hiányzik a biztonsági mentési idő a (z) $1 sorban
 schedule_echild=Ezt az ütemezést nem lehet törölni, mivel a $1 használja
+
 backup_title=Futtassa a biztonsági mentési feladatot
 backup_header=Biztonsági másolat részletei
 backup_job=Job futni
@@ -191,11 +204,13 @@ backup_running=.. a biztonsági mentési feladat most fut. Ha elkészült, az er
 backup_running2=.. a biztonsági mentési feladat a háttérben indult.
 backup_done=.. biztonsági mentés kész.
 backup_failed=.. a biztonsági mentés nem fejeződött be sikeresen. A részletekért ellenőrizze a fenti hibaüzenetet.
+
 gbackup_title=Futtassa a Bacula Group biztonsági mentési feladatát
 gbackup_run=$1 biztonsági mentési feladat indítása a $2 ügyfeleknél ..
 gbackup_on=Biztonsági mentési feladat futtatása a (z) $1 kliensen :
 gbackup_header=A Bacula csoport biztonsági mentési munkájának részletei
 gbackup_jd=$1 ($2 fájlkészlet a $3 csoportnál)
+
 dirstatus_title=Rendező státusza
 dirstatus_sched=Ütemezett biztonsági mentési munkák
 dirstatus_name=Munka megnevezés
@@ -216,12 +231,14 @@ dirstatus_status2=Állapot
 dirstatus_donenone=Nem ment biztonsági másolatot.
 dirstatus_cancel=A kiválasztott munkák törlése
 dirstatus_refresh=Lista frissítése
+
 clientstatus_title=Ügyfél státusza
 clientstatus_err=A (z) $1 állapotának beolvasása nem sikerült : $2 
 clientstatus_msg=Állapot $1 -től : $2 
 clientstatus_show=Megjeleníti az ügyfél állapotát:
 clientstatus_ok=rendben
 clientstatus_on=$1 (a $2 -en)
+
 storages_title=Tároló démonok
 storages_none=Még nem határoztak meg tároló démont.
 storages_name=Tárhely neve
@@ -232,6 +249,7 @@ storages_add=Adjon hozzá egy új tároló démont.
 storages_delete=Törölje a kiválasztott tároló démonokat
 storages_return=a tároló démonok listája
 storages_derr=A tároló démonok törlése nem sikerült
+
 storage_title1=Hozzon létre tároló démont
 storage_title2=A Storage Daemon szerkesztése
 storage_header=A távoli tároló démon részletei
@@ -255,6 +273,7 @@ storage_emedia=Hiányzik a médiatípus neve
 storage_emaxjobs=Hiányzik a maximális párhuzamos munka
 storage_echild=Ezt az ügyfelet nem lehet törölni, mivel a $1 használja
 storage_status=Állapot megjelenítése
+
 devices_title=Tárolóeszközök
 devices_none=Még nem határoztak meg tárolóeszközt.
 devices_name=Eszköz neve
@@ -264,6 +283,7 @@ devices_add=Új tárolóeszköz hozzáadása.
 devices_delete=Törölje a kiválasztott tárolóeszközöket
 devices_return=a tárolóeszközök listája
 devices_derr=A tárolóeszközök törlése nem sikerült
+
 device_title1=Hozzon létre tárolóeszközt
 device_title2=Tárolóeszköz szerkesztése
 device_header=A fájltároló eszköz részletei
@@ -282,11 +302,13 @@ device_eclash=Az azonos nevű tárolóeszköz már létezik
 device_emedia=Hiányzik a médiatípus neve
 device_edevice=Hiányzó vagy érvénytelen archiváló eszköz vagy könyvtár
 device_echild=Ezt az ügyfelet nem lehet törölni, mivel a $1 használja
+
 storagestatus_title=Storage Daemon állapota
 storagestatus_err=A (z) $1 állapotának beolvasása nem sikerült : $2 
 storagestatus_msg=Állapot $1 -től : $2 
 storagestatus_show=A tároló démon állapotának megjelenítése:
 storagestatus_ok=rendben
+
 label_title=Címke hangereje
 label_header=A címkézendő mennyiség részletei
 label_storage=Tárolási démon címkézésére
@@ -302,6 +324,7 @@ label_done=.. a címkézés sikeres.
 label_epool=.. nem található a medence!
 label_err=A címke sikertelen
 label_elabel=Nincs megadva címke
+
 pools_title=Mennyiségi medencék
 pools_none=Még nem határoztak meg kötetkészleteket.
 pools_name=Medence neve
@@ -311,6 +334,7 @@ pools_add=Adjon hozzá egy új kötetkészletet.
 pools_delete=Törölje a kiválasztott kötetkészleteket
 pools_return=a kötetkészletek listája
 pools_derr=A kötetkészletek törlése nem sikerült
+
 pool_title1=Hozzon létre kötetkészletet
 pool_title2=A kötetkészlet szerkesztése
 pool_header=A biztonsági mentési kötet részletei
@@ -332,6 +356,7 @@ pool_ereten=Hiányzó vagy érvénytelen megőrzési időszak
 pool_status=Show Volumes
 pool_autolabel=A kötetek előtagjának automatikus címkézése
 pool_maxvolsize=Maximális hangerő (például 5 Gb 5 gigabájtnál)
+
 poolstatus_title=Kötet a medencében
 poolstatus_show=A kötet megjelenítése a medencében:
 poolstatus_ok=rendben
@@ -345,9 +370,11 @@ poolstatus_status=Biztonsági mentési mód
 poolstatus_none=Ebben a tartalékkészletben jelenleg nincsenek kötetek.
 poolstatus_never=Soha
 poolstatus_delete=Törölje a kiválasztott köteteket
+
 dvolumes_err=Nem sikerült a kötetek törlése
 dvolumes_enone=Egy sincs kiválasztva
 dvolumes_ebacula=Bacula hiba : $1 
+
 mount_title=Szerelje fel vagy szerelje le
 mount_header=Tárolási csatlakoztatási vagy leválasztási lehetőségek
 mount_storage=Tárolóeszköz
@@ -365,8 +392,10 @@ unmount_failed=.. a leszerelés sikertelen! Ennek okát lásd a fenti hibaüzene
 mount_return=szerelési forma
 mount_err=Nem sikerült a tárolóeszköz csatlakoztatása
 mount_eslot=Hiányzó vagy érvénytelen hely száma
+
 cancel_err=Nem sikerült törölni a feladatokat
 cancel_enone=Egy sincs kiválasztva
+
 gjobs_title=Bacula csoport biztonsági mentési munkák
 gjobs_none=A Bacula csoport biztonsági mentési feladatát még nem határozták meg.
 gjobs_add=Adjon hozzá egy új Bacula csoport biztonsági mentési feladatot.
@@ -374,10 +403,12 @@ gjobs_delete=Törölje a kijelölt feladatokat
 gjobs_return=a Bacula csoportmunkák listája
 gjobs_derr=Nem sikerült törölni a Bacula csoport jobjait
 gjobs_client=Bacula-csoport a biztonsági mentéshez
+
 gjob_title1=Hozzon létre Bacula Group biztonsági mentési feladatot
 gjob_title2=A Bacula Group Backup Job szerkesztése
 gjob_header=A Bacula csoport biztonsági mentési munkájának részletei
 gjob_client=Bacula-csoport a biztonsági mentéshez
+
 groups_title=Bacula csoportok
 groups_none=A Bacula még nem választott ki egyetlen Bacula-csoportot sem a biztonsági mentéshez.
 groups_name=Csoport név
@@ -391,6 +422,7 @@ groups_derr=A csoportok törlése nem sikerült
 groups_noadd=Nincs olyan Bacula-csoport, amelyet ki lehet választani a biztonsági mentésekhez.
 groups_info=$1 ($2 tag)
 groups_already=Az összes Bacula-csoport már hozzáadásra került.
+
 group_title1=Hozzon létre Bacula csoportot
 group_title2=A Bacula Group szerkesztése
 group_header=A támogatandó Bacula-csoport részletei
@@ -401,11 +433,13 @@ group_port=Bacula FD port
 group_err=A Bacula csoport mentése nem sikerült
 group_eclash=Az azonos nevű csoport már létezik
 group_members=Házigazdák a Bacula csoportban
+
 sync_title=Bacula csoport szinkronizálás
 sync_header=Automatikus Bacula csoport kliens szinkronizálási lehetőségek
 sync_sched=Szinkronizálni az ütemezés szerint?
 sync_schedyes=Igen, az alábbiakban kiválasztott időpontokban ..
 sync_err=Nem sikerült menteni a Bacula csoport szinkronizálását
+
 log_create_client=Létrehozott biztonsági mentési ügyfél $1 
 log_modify_client=Módosított biztonsági mentési kliens $1 
 log_delete_client=A (z) $1 biztonsági mentési ügyfél törölve
@@ -464,6 +498,7 @@ log_director=A Bacula Director globális konfigurációjának mentése
 log_file=Mentett Bacula fájldémon-konfiguráció
 log_storagec=Mentett Bacula tároló démon konfiguráció
 log_fixpass=Rögzített Bacula konzol programjelszó
+
 director_title=Rendező konfigurációja
 director_header=Globális Bacula rendező lehetőségek
 director_name=Rendező neve
@@ -477,6 +512,7 @@ director_ename=Hiányzó vagy érvénytelen rendezőnév
 director_eport=Hiányzó vagy érvénytelen portszám
 director_ejobs=Hiányzó vagy érvénytelen számú párhuzamos munka
 director_edir=Hiányzó vagy nem létező munkakönyvtár
+
 tls_enable=Engedélyezi a TLS titkosítást?
 tls_require=Csak a TLS kapcsolatokat fogadja el?
 tls_verify=Ellenőrizze a TLS ügyfeleket?
@@ -488,6 +524,7 @@ tls_ecert=Hiányzó vagy nem létező TLS tanúsítványfájl
 tls_ekey=Hiányzó vagy nem létező TLS kulcsfájl
 tls_ecacert=Hiányzó vagy nem létező TLS CA tanúsítványfájl
 tls_ecerts=A TLS engedélyezéséhez meg kell adni a tanúsítvány-, kulcs- és CA-fájlokat
+
 file_title=File Daemon Configuration
 file_header=Bacula fájl démon lehetőségek
 file_name=A démon fájlneve
@@ -500,6 +537,7 @@ file_ename=Hiányzó vagy érvénytelen fájldémon neve
 file_eport=Hiányzó vagy érvénytelen portszám
 file_ejobs=Hiányzó vagy érvénytelen számú párhuzamos munka
 file_edir=Hiányzó vagy nem létező munkakönyvtár
+
 fdirectors_title=File Daemon rendezők
 fdirectors_none=Még nem határoztak meg rendezőket.
 fdirectors_name=Rendező neve
@@ -508,6 +546,7 @@ fdirectors_add=Adjon hozzá új rendezőt.
 fdirectors_delete=Törölje a kiválasztott rendezőket
 fdirectors_return=az igazgatók listája
 fdirectors_derr=Nem sikerült törölni a rendezőket
+
 fdirector_title1=Hozzon létre egy File Daemon Director programot
 fdirector_title2=A File Daemon Director szerkesztése
 fdirector_header=A távirányító vezérlésének részletei
@@ -519,6 +558,7 @@ fdirector_err=Nem sikerült a démon-kezelő fájl mentése
 fdirector_ename=Hiányzik a rendező neve
 fdirector_eclash=Az azonos nevű rendező már létezik
 fdirector_epass=Hiányzik a jelszó
+
 sdirectors_title=Storage Daemon rendezők
 sdirectors_none=Még nem határoztak meg rendezőket.
 sdirectors_name=Rendező neve
@@ -527,6 +567,7 @@ sdirectors_add=Adjon hozzá új rendezőt.
 sdirectors_delete=Törölje a kiválasztott rendezőket
 sdirectors_return=az igazgatók listája
 sdirectors_derr=Nem sikerült törölni a rendezőket
+
 sdirector_title1=Hozzon létre Storage Daemon Director programot
 sdirector_title2=A Storage Daemon Director szerkesztése
 sdirector_header=A távirányító vezérlésének részletei
@@ -538,6 +579,7 @@ sdirector_err=Nem sikerült menteni a tároló démon rendezőt
 sdirector_ename=Hiányzik a rendező neve
 sdirector_eclash=Az azonos nevű rendező már létezik
 sdirector_epass=Hiányzik a jelszó
+
 storagec_title=Storage Daemon konfiguráció
 storagec_header=Bacula tároló démon lehetőségei
 storagec_name=Démon neve
@@ -550,6 +592,7 @@ storagec_ename=Hiányzó vagy érvénytelen tároló démon neve
 storagec_eport=Hiányzó vagy érvénytelen portszám
 storagec_ejobs=Hiányzó vagy érvénytelen számú párhuzamos munka
 storagec_edir=Hiányzó vagy nem létező munkakönyvtár
+
 chooser_title=Válassza az Ütemezés lehetőséget
 chooser_monthsh=A végrehajtás hónapja
 chooser_months=Az év hónapjai
@@ -574,11 +617,13 @@ chooser_emonthsrange=A kiválasztott hónapoknak szomszédosnak kell lenniük
 chooser_eweekdaysrange=A kiválasztott hétköznapoknak szomszédosnak kell lenniük
 chooser_eweekdaynumsrange=A kiválasztott hétköznapok számának szomszédosnak kell lennie
 chooser_edaysrange=A hónap kiválasztott napjainak szomszédosnak kell lenniük
+
 weekdaynum_1=Első
 weekdaynum_2=Második
 weekdaynum_3=Harmadik
 weekdaynum_4=Negyedik
 weekdaynum_5=Ötödik
+
 restore_title=Biztonsági mentés visszaállítása
 restore_title2=A Bacula Group biztonsági másolatának visszaállítása
 restore_title3=Állítsa vissza a Bacula Group biztonsági másolatát

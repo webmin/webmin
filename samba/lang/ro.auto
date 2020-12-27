@@ -6,6 +6,7 @@ index_printershare=distribuire imprimantă
 index_shareconf=configurare partajare
 index_version=Versiunea Samba $1 
 index_samba=Samba
+
 index_sharename=Nume de partajare
 index_path=cale
 index_security=Securitate
@@ -42,12 +43,14 @@ index_stopmsg=Faceți clic pe acest buton pentru a opri serverele Samba care rul
 index_stopmsg_wb=Faceți clic pe acest buton pentru a opri serverele Winbind care rulează pe sistemul dvs.
 index_einclude=Avertisment - fișierul dvs. de configurare Samba $1 conține directiva $2 sau $3. Acest lucru poate determina Webmin să modifice fișierul incorect.
 index_delete=Șterge Acțiuni selectate
+
 config_mins=mins
 config_secs=secunde
 config_bytes=bytes
 config_never=Nu
 config_all=Toate
 config_neither=Nici
+
 global_title=Configurare globală
 global_unixnetwork=Unix Networking
 global_winnetwork=Windows Networking
@@ -60,6 +63,7 @@ global_password=Parole criptate
 global_users=Utilizatori Samba
 global_group=Samba Groups
 global_bind=Opțiuni Winbind
+
 error_nosamba=Serverul Samba executabil <tt>$1</tt> nu a fost găsit. Ori Samba nu este instalat pe sistemul dvs. sau <a href="$2">configurația modulului</a> este incorectă.
 error_version=Webmin nu a reușit să obțină versiunea serverului Samba <tt>$1</tt> executabil. Verificați <a href="$2">configurația modulului</a> pentru a vă asigura că aceasta este calea corectă.
 error_config=Fișierul de configurare $1 nu a fost găsit. Cel mai probabil Samba nu este instalat pe sistemul dvs. sau <a href="$2">configurația modulului</a> este incorectă.
@@ -67,6 +71,7 @@ error_include=Webmin nu poate gestiona fișierele de configurare Samba care folo
 error_delshare=Nu a reușit ștergerea partajării
 error_delcopy=Copii „$1” din această parte
 error_savename=Nu a putut salva denumirea fișierului
+
 convert_title=Conversia utilizatorilor
 convert_msg=Acest formular vă permite să sincronizați lista de utilizatori Unix și Samba. Când Samba folosește <a href=$1>parolele criptate</a>, se folosește o listă separată de utilizatori și parole în loc de lista de utilizatori a sistemului.
 convert_noconv=Nu convertiți și nu eliminați acești utilizatori:
@@ -83,6 +88,7 @@ convert_cannot=Utilizatorii Unix nu pot fi convertiți în utilizatori Samba
 convert_who=Utilizatorii Unix pentru a converti
 convert_who0=Numai utilizatorii enumerați sau intervalele UID
 convert_who1=Toate cu excepția utilizatorilor enumerați și a intervalelor UID
+
 misc_title=Opțiuni diverse
 misc_debug=Nivelul de depanare
 misc_cachecall=Cache <tt>getwd ()</tt> apeluri?
@@ -96,6 +102,7 @@ misc_chroot=<tt>directorul chroot ()</tt>
 misc_smbrun=Calea către <tt>smbrun</tt>
 misc_clienttime=Decalare de timp a clientului
 misc_readprediction=Citiți predicția?
+
 net_title=Opțiuni de rețea Unix
 net_idle=Timp inactiv înainte de deconectare
 net_trustlist=Fișier de gazde/utilizatori de încredere
@@ -111,6 +118,7 @@ net_maxpacket=Dimensiunea maximă a pachetului
 net_listen=Ascultă pe adresă
 net_ip=adresa IP
 net_socket=Opțiuni de priză
+
 passwd_title=Opțiuni parolă
 passwd_encrypt=Folosiți parole criptate?
 passwd_allownull=Permiteți parole nule?
@@ -124,11 +132,13 @@ passwd_send=Trimite
 passwd_map=Maparea numelui de utilizator
 passwd_unixuser=Utilizatori Unix
 passwd_winuser=Utilizatori Windows
+
 print_title=Opțiuni de imprimare
 print_style=Stil de imprimare Unix
 print_show=Afișați toate imprimantele?
 print_printcap=Fișierul Printcap
 print_cachetime=Timpul de cache al stării imprimantei
+
 smb_title=Opțiuni de rețea Windows
 smb_workgroup=Workgroup
 smb_wins=Modul WINS
@@ -159,14 +169,17 @@ smb_nowhere=Nicăieri
 smb_fromlist=Din listă. ..
 smb_ip=Adresa IP
 smb_asworkgroup=<b>Ca grup de lucru</b> (opțional)
+
 create_title=Creați copiere
 create_msg=Un share share va moșteni toate valorile sale implicite din partea pe care o alegeți. Dacă partajarea sursă este modificată, la fel se va copia.
 create_from=Distribuie pentru a copia de la:
 create_name=Nume partajare nouă:
+
 smbuser_title=Utilizatori Samba
 smbuser_list=Lista utilizatorilor Samba
 smbuser_nouser=Nu au fost definiți utilizatori Samba.
 smbuser_cannot=Utilizatorii Samba nu pot fi enumerați
+
 euser_title=Editează Samba User
 euser_name=Nume de utilizator
 euser_uid=Unix UID
@@ -185,6 +198,7 @@ euser_locked=Contul este blocat
 euser_nopwrequired=Nu este necesară parola
 euser_disable=Cont dezactivat
 euser_trust=Cont de încredere pentru stația de lucru
+
 fmisc_title=Defaulturi diverse fișiere
 fmisc_for=Pentru share <tt>$1</tt>
 fmisc_lockfile=Blocarea fișierului?
@@ -202,6 +216,7 @@ fmisc_conncmd=Comanda de a rula pe conectare
 fmisc_disconncmd=Comanda de a rula pe deconectare
 fmisc_rootconn=Comanda de a rula pe conecta <i>ca root</i>
 fmisc_rootdisconn=Comanda de a rula pe deconecta <i>ca root</i>
+
 fname_title1=Valorile implicite pentru denumirea fișierului
 fname_title2=Editează Nume de fișiere
 fname_option=Opțiuni Naming File
@@ -216,6 +231,7 @@ fname_hide=Ascundeți fișierele dot?
 fname_archive=Salvați steagul arhivei DOS?
 fname_hidden=Salvați DOS steagul ascuns?
 fname_system=Salvați steagul sistemului DOS?
+
 fperm_title1=Valori implicite pentru fișiere
 fperm_title2=Editați Permisiunile fișierelor
 fperm_option=Opțiuni de permis de fișiere
@@ -228,6 +244,7 @@ fperm_link=Permiteți simboluri în afara distribuției?
 fperm_delro=Puteți șterge fișierele cu citire?
 fperm_forcefile=Forțează modul fișier Unix
 fperm_forcedir=Forțați modul director Unix
+
 share_title1=Valori implicite pentru partajarea fișierelor
 share_title2=Editează Partajarea fișierului
 share_title3=Creați partajare fișier
@@ -251,6 +268,7 @@ share_naming=Nume de fișiere
 share_misc=Opțiuni diverse
 share_samedesc1=Notă - aceste setări afectează de asemenea valorile implicite pentru toate partajările de fișiere.
 share_samedesc2=Notă - aceste setări afectează de asemenea valorile implicite pentru toate partajările imprimantei.
+
 print_title1=Opțiuni imprimantă implicite
 print_title2=Editați Opțiuni imprimantă
 print_option=Opțiuni imprimantă
@@ -262,6 +280,7 @@ print_delete=Ștergeți comanda de lucru
 print_pause=Întrerupeți comanda de lucru
 print_unresume=Necomanda comanda de lucru
 print_driver=Driver de imprimantă
+
 pshare_title1=Implicit Implicit Partajare imprimantă
 pshare_title2=Editați Partajarea imprimantei
 pshare_title3=Creare partajare imprimantă
@@ -270,6 +289,7 @@ pshare_name=Numele partajării
 pshare_all=Toate imprimantele partajează
 pshare_unixprn=Imprimanta Unix
 pshare_spool=Repertoriu
+
 sec_index1=Valori implicite de securitate
 sec_index2=Editează securitate
 sec_writable=Scriptibile?
@@ -292,6 +312,7 @@ sec_rouser=Citeste doar utilizatorii
 sec_rogroup=Citiți doar grupuri
 sec_rwuser=Utilizatorii de citire/scriere
 sec_rwgroup=Grupuri de citire/scriere
+
 esync_title=Sincronizare utilizator
 esync_msg=Webmin poate fi configurat astfel încât modificările aduse listei de utilizatori Unix să fie aplicate automat listei de utilizatori Samba. Acest lucru va funcționa numai atunci când modulul <b>Utilizatori și grupuri</b> Webmin este utilizat pentru a adăuga, șterge sau modifica utilizatori.
 esync_add=Adăugați un utilizator Samba atunci când este adăugat un utilizator Unix
@@ -303,6 +324,7 @@ esync_gid=Grupa SID sau RID pentru utilizatori noi
 esync_apply=aplica
 esync_cannot=Sincronizarea utilizatorului nu poate fi configurată
 esync_egid=Lipsește grupul SID sau RID
+
 mkpass_title=Conversia utilizatorilor
 mkpass_convfail=Conversia utilizatorului nu a reușit
 mkpass_msg=Conversia utilizatorilor Unix. ..
@@ -315,10 +337,12 @@ mkpass_passfail=Setarea parolei nu a reușit
 mkpass_user=Nume de utilizator
 mkpass_action=Acțiunile întreprinse
 mkpass_skipcount=$1 utilizatori au fost omisați pentru conversie.
+
 savecopy_fail=Crearea copiei nu a reușit
 savecopy_global=Numele „global” nu poate fi utilizat pentru o partajare
 savecopy_exist=O parte numită „$1” există deja
 savecopy_ename=Nu a fost introdus un nume de partajare
+
 saveuser_fail=Nu a reușit salvarea utilizatorului
 saveuser_uid=„$1” nu este un UID valid Unix
 saveuser_colon=Numele real nu poate conține caracterul :
@@ -326,10 +350,13 @@ saveuser_home=Directorul de acasă „$1” nu există
 saveuser_shell=$1 nu este un shell valid
 saveuser_pass=Nu a reușit să schimbe parola folosind smbpasswd : $1 
 saveuser_ews=Opțiunea „Cont de încredere pentru stația de lucru” nu poate fi activată pentru utilizatorii existenți
+
 savefmisc_fail=Nu a reușit să salveze opțiuni diverse
 savefmisc_number=„$1” nu este un număr valid de conexiuni
+
 savefperm_fail=Nu a reușit să salvați permisiunile pentru fișiere
 savefperm_mode=„$1” nu este un mod de fișier Unix valid
+
 savefshare_fail=Nu a reușit salvarea partajării
 savefshare_nopath=Nici o cale dată
 savefshare_exist=O parte numită „$1” există deja
@@ -339,6 +366,7 @@ savefshare_owner=Lipsește sau este nevalid proprietarul pentru noul director
 savefshare_group=Grup lipsit sau nevalid pentru un director nou
 savefshare_perms=Permisele lipsă sau invalide pentru noul director
 savefshare_emkdir=Crearea directorului nu a reușit : $1 
+
 savemisc_fail=Nu a reușit să salvați opțiunile
 savemisc_lockdir=Directorul care conține directorul de blocare nu există
 savemisc_logdir=Directorul care conține fișierul jurnal nu există
@@ -347,37 +375,48 @@ savemisc_overlap=„$1” nu este o dimensiune de citire suprapusă valabilă
 savemisc_chroot=Directorul chroot „$1” nu există
 savemisc_smbrun=Programul smbrun „$1” nu există sau nu este executabil
 savemisc_time=„$1” nu este o compensare de timp valabilă
+
 savenet_fail=Nu a reușit să salvați opțiunile
 savenet_timeout=„$1” nu este un interval de timp de deconectare valid
 savenet_ip=„$1” nu este un octet IP valid
 savenet_keep=„$1” nu este un interval de păstrare valid
 savenet_maxxmit=„$1” nu are o dimensiune maximă valabilă a pachetului
+
 savepass_fail=Nu a reușit să salvați opțiunile
 savepass_nopass=Versiunea dvs. de Samba nu acceptă parolele criptate
 savepass_passwd=Nu s-a dat niciun program de modificare a parolei
 savepass_level=„$1” nu este o diferență de caz validă cu parola
 savepass_chat=Secvența de chat de modificare a parolei este goală
+
 savepopts_fail=Nu a reușit să salvați opțiunile imprimantei
 savepopts_number=Spațiul liber minim trebuie să fie un număr
+
 saveprint_fail=Nu a reușit să salvați opțiunile
 saveprint_printcap=Fișierul printcap „$1” nu există
 saveprint_cache=„$1” nu este o perioadă valabilă în memoria cache
+
 savepshare_fail=Nu a reușit să salvați distribuirea imprimantei
 savepshare_exist=O parte numită „$1” există deja
 savepshare_name=„$1” nu este un nume de partaj valid
 savepshare_global=Numele „global” nu poate fi utilizat pentru o partajare
+
 savesec_fail=Economisirea securității
+
 savesmb_fail=Nu a reușit să salvați opțiunile
 savesmb_size=„$1” nu are o dimensiune de disc validă
 savesmb_oslevel=„$1” nu este o prioritate validă a browserului principal
 savesmb_server=Trebuie să introduceți un server de parolă
+
 start_err=Eșecul la pornirea serverelor Samba
 start_fail=$1 a eșuat
 start_err_wb=Eroare la pornirea serverelor Winbind
+
 restart_err=Nu a putut reporni serverele Samba
 restart_err_wb=Eroare la repornirea serverelor Winbind
+
 swats_fail=Nu a reușit salvarea numelui de utilizator
 swats_user=Lipsește numele de utilizator SWAT
+
 viewu_index=Utilizatori actuali
 viewu_list=Utilizatori actuali de $1 
 viewu_share=Acțiune
@@ -394,6 +433,7 @@ viewu_ecmd=Programul Samba status $1 nu pare să fie instalat pe sistemul tău. 
 viewu_kill=Deconectați utilizatorii selectați
 viewu_enone=Nu ați selectat utilizatori
 viewu_refresh=Reîmprospătare pagină.
+
 log_apply=Reîncepe serverele Samba
 log_apply_wb=Serverurile Winbind restartate
 log_stop=Serverele Samba oprite
@@ -435,6 +475,7 @@ log_modify_group=Grupul Samba modificat $1
 log_delete_group=Ștergeți grupul Samba $1 
 log_gsync=Sincronizarea grupului Unix configurat
 log_manual=Fișierul de configurare editat manual $1 
+
 swat_title=Autentificare SWAT
 swat_list=Autentificare SWAT
 swat_msg1=Numele dvs. de utilizator și parola SWAT curente sunt incorecte. Utilizați formularul de mai jos pentru a vă autentifica din nou.
@@ -446,6 +487,7 @@ swat_password=Parola
 swat_login=Autentificare
 swat_clear=clar
 swat_logout=Deconectare SWAT
+
 eacl_aviol=Încălcarea controlului de acces
 eacl_np=Nu aveți permisiuni pentru
 eacl_papply=reporniți acest serviciu
@@ -481,6 +523,7 @@ eacl_pafs=accesați acest file share
 eacl_paps=accesați acest distribuitor de imprimantă
 eacl_pcps=creați share share
 eacl_pcfs=crea fișier partajare
+
 acl_apply=Poate aplica modificări și opri Samba?
 acl_view_all_con=Pot vedea toate conexiunile?
 acl_kill_con=Poate elimina conexiunile?
@@ -527,6 +570,7 @@ acl_maint_groups=Poate vizualiza, edita și adăuga grupuri?
 acl_maint_gsync=Se poate menține sincronizarea automată a grupurilor Unix către Samba?
 acl_winbind=Se poate lega la domenii?
 acl_bind=Poate accesa opțiunile winbind?
+
 groups_title=Samba Groups
 groups_name=Numele Grupului
 groups_unix=Grupul Unix
@@ -542,6 +586,7 @@ groups_return=lista grupurilor
 groups_add=Adăugați un nou grup Samba.
 groups_ecannot=Nu aveți voie să vizualizați sau să editați grupuri Samba
 groups_cannot=Grupurile Samba nu pot fi listate
+
 gedit_title2=Editează Samba Group
 gedit_title1=Creați grupul Samba
 gedit_header=Detalii despre grupul Samba
@@ -554,11 +599,13 @@ gedit_unix=Grupul Unix
 gedit_unixgr=Grup ..
 gedit_none=Nici unul
 gedit_set=Enumerate ..
+
 gsave_err=Nu a reușit să salveze grupul
 gsave_eunix=Numele sau GID-ul grupului Unix lipsesc sau nevalide
 gsave_ename=Lipsește numele grupului
 gsave_epriv=Lipsesc privilegiile grupului
 gsave_elocal=Privilegiile pot fi setate numai pentru grupuri locale
+
 gsync_title=Sincronizare de grup
 gsync_msg=Webmin poate fi configurat astfel încât modificările aduse listei de grup Unix să fie aplicate automat listei de grup Samba. Acest lucru va funcționa numai atunci când modulul <b>Utilizatori și grupuri</b> Webmin este utilizat pentru a adăuga, șterge sau schimba grupuri.
 gsync_add=Adăugați un grup Samba atunci când este adăugat un grup Unix
@@ -569,10 +616,12 @@ gsync_type=Tip de grupuri noi
 gsync_priv=Privilegiile pentru grupuri noi (dacă sunt locale)
 gsync_ecannot=Nu aveți voie să configurați sincronizarea de grup
 gsync_cannot=Sincronizarea grupului nu poate fi configurată
+
 check_user1=$1 : Parolele criptate nu sunt activate pe pagina <a href='$2'>Autentificare</a>.
 check_user2=$1 : Nici fișierul cu parolă Samba, nici calea către pdbedit nu sunt setate pe pagina <a href='$2'>Configurare modul</a>.
 check_group1=$1 : Grupurile sunt acceptate doar în versiunea 3 Samba.
 check_group2=$1 : Nici calea către comenzile smbgroupedit sau net nu este setată pe pagina <a href='$2'>Configurare modul</a>.
+
 winbind_title=Legați-vă la domeniu
 winbind_ecannot=Nu aveți voie să vă legați de domenii
 winbind_msg=Acest formular poate fi folosit pentru a lega serverul dvs. Samba de un domeniu Windows, gestionat de obicei de un server diferit.
@@ -588,6 +637,7 @@ winbind_edom=Numele de domeniu care lipsește
 winbind_cmd=Legare la domeniu cu comanda $1 ..
 winbind_failed=.. a eșuat! Vedeți ieșirea de mai sus pentru motivul pentru care.
 winbind_ok=.. complet.
+
 bind_title=Opțiuni Winbind
 bind_ecannot=Nu aveți voie să editați opțiunile winbind
 bind_header=Opțiuni de legare a domeniului Windows
@@ -606,9 +656,11 @@ bind_erealm=Tărâmul Kerberos nevalid
 bind_ecache=Timpul cache lipsește sau este nevalid
 bind_euid=Gama UID nevalidă - trebuie să fie ca 20000-30000
 bind_egid=Interval GID nevalid - trebuie să fie ca 20000-30000
+
 manual_title=Editează fișierul de configurare
 manual_desc=Editarea fișierului de configurare Samba $1 ..
 manual_err=Nu a reușit să salvați fișierul de configurare
 manual_edata=Nu a intrat nimic!
+
 delete_err=Nu a reușit să ștergeți acțiunile
 delete_enone=Nimic selectat

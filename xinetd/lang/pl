@@ -25,6 +25,7 @@ index_estart=Polecenie do uruchomienie Xinetd $1 nie istnieje. Możliwe, że nie
 index_noport=Nieznany
 index_enable=Włącz zaznaczone
 index_disable=Wyłącz zaznaczone
+
 serv_create=Utwórz usługę internetową
 serv_edit=Zmień usługę internetową
 serv_header1=Ustawienia sieciowe usług
@@ -78,19 +79,24 @@ serv_enice=Brakujący lub niepoprawny poziom <tt>nice</tt>
 serv_ecps0=Brakująca lub niepoprawna liczba połączeń na sekundę
 serv_ecps1=Brakujące lub niepoprawne opóźnienie
 serv_etimes=Czas dostępu musi być podany w postaci HH:MM-HH:MM
+
 sock_stream=Stream
 sock_dgram=Datagram
 sock_raw=Raw
 sock_seqpacket=Sequential datagram
+
 proto_=Domyślny
 proto_ip=IP (Internet Protocol)
 proto_tcp=TCP (Transmission Control Protocol)
 proto_udp=UDP (User Datagram Protocol)
+
 restart_err=Nie udało się zastosować zmian
 restart_ekill=Nie udało się wysłać sygnału HUP do procesu $1 : $2
 restart_epid=Nie jest już uruchomiony
+
 start_err=Nie udało się uruchomić <tt>xinetd</tt>
 start_estart=NIe udało się $1 : $2
+
 defs_title=Ustawienia domyślne
 defs_header=Ustawienia domyślne dla usług
 defs_log=Tryb logowania Xinetd
@@ -115,6 +121,7 @@ defs_err=Nie udało się zachować domyślnych ustawień
 defs_efile=Brakująca lub niepoprawna nazwa pliku logu
 defs_esoft=Brakujące lub niepoprawne ograniczenie miękkie
 defs_ehard=Brakujące lub niepoprawne ograniczenie twarde
+
 log_create_serv=Utworzono usługę $2 $1
 log_modify_serv=Zmieniono usługę $2 $1
 log_delete_serv=Usunięto usługę $2 $1
@@ -125,5 +132,6 @@ log_enable=Włączono $1 usług
 log_disable=Wyłączono $1 usług
 log_enable_l=Włączono usługi $1
 log_disable_l=Wyłączono usługi $1
+
 config_dirdef=Plik konfiguracji Xinetd
 config_dirto=Nowy plik w katalogu

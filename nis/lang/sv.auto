@@ -1,20 +1,27 @@
 index_enis2=Endast klienttjänstfunktionen i denna modul kan användas.
+
 client_enis=Din maskin verkar inte ha NIS-klientstöd installerat.
+
 switch_srcs=Datakällor
 switch_return=klienttjänster
+
 server_epwdir=Ogiltig katalog för lösenordskällfiler
+
 tables_find=Hitta $1 där $2 matchar $3 
 tables_search=Sök
 tables_nomatch=Inga poster matchade din sökning
 tables_build=Ombygga NIS-bord
 tables_buildmsg=Klicka på den här knappen för att bygga om NIS-databaserna från tabelldata. Om du har gjort några ändringar måste du göra detta för att göra dem tillgängliga för NIS-klienter.
+
 desc_auto_local=Automounter lokalt
 desc_auto.home=Automounter hem
 desc_auto.master=Automounter kartor
 desc_auto.local=Automounter lokalt
 desc_timezone=Tidszoner
 desc_locale=lokaler
+
 security_domain=NIS-domän
+
 eswitch_title=Redigera tjänsten
 eswitch_egone=Tjänsten finns inte!
 eswitch_header=Serviceinformation

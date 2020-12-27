@@ -11,6 +11,7 @@ index_when=是， $1
 index_act=行动
 index_exec=执行
 index_delete=删除选定的副本
+
 edit_title=编辑群集副本
 create_title=创建群集副本
 edit_header=集群副本详细信息
@@ -31,12 +32,14 @@ edit_run=立即复制
 edit_return=集群副本
 edit_email=电子邮件输出到
 edit_none=没有人
+
 save_err=无法保存集群cron作业
 save_efiles=没有输入要复制的文件
 save_edest=缺少目标目录
 save_eservers=没有要复制到输入的服务器
 save_efile=复制“$1”的文件不是绝对路径
 save_eemail=电子邮件地址丢失或无效
+
 exec_title=复制文件
 exec_files1=将 $1文件复制到选定的服务器 $2 ..
 exec_files2=将 $1复制到选定的服务器 $2 ..
@@ -50,12 +53,15 @@ exec_not=无法将以下文件复制到 $1：
 exec_cmd=$1上的复制后命令输出：
 exec_before=$1上的复制前命令输出：
 exec_on=无法在 $1上运行： $2
+
 log_create=已创建从 $1到 $2服务器的副本
 log_modify=已将 $1的副本复制到 $2服务器
 log_delete=已将 $1的副本删除到 $2服务器
 log_exec=已将 $1服务器复制到 $2服务器
 log_deletes=已删除 $1份
+
 email_subject_succeeded=$1的集群副本成功
 email_subject_failed=$1的群集副本失败
+
 delete_err=删除副本失败
 delete_enone=未选择

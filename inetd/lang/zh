@@ -9,6 +9,7 @@ index_rpc=RPC程序
 index_newrpc=新建一个RPC服务
 index_apply=应用更改
 index_applymsg=点击此按钮，发送 SIGHUP 信号给正在运行的<tt>inetd</tt>进程，以应用当前的配置
+
 error_restart=重启Inetd失败
 error_saverpc=保存RPC程序失败
 error_invalidprgname='$1'不是一个有效的程序名
@@ -34,6 +35,7 @@ error_childnum=假如给定了每分钟最大值, 就必须给出子进程数目
 error_serviceexist=已存在一个使用端口 $1 和协议 $2 的服务
 error_nameexist=已存在一个名称为 $1 和协议为 $2 的服务
 error_inetservice=已存在一个名称为 $1 和协议为 $2 的因特网服务
+
 editrpc_title1=创建RPC程序
 editrpc_title2=编辑RPC程序
 editrpc_detail=RPC程序细节
@@ -56,6 +58,7 @@ editrpc_execasuser=作为用户运行
 editrpc_max=每分钟最大值
 editrpc_default=缺省
 editrpc_execasgrp=作为组运行
+
 editserv_title1=创建因特网服务
 editserv_title2=编辑因特网服务
 editserv_detail=因特网服务细节
@@ -67,6 +70,7 @@ editserv_maxchild=最多子进程数
 editserv_execlogin=以登录级别执行
 editserv_wrapper=TCP-Wrapper
 editserv_inetd=在 <tt>inetd</tt> 内部
+
 log_apply=已应用更改
 log_create_serv=已创建服务 $1
 log_modify_serv=已修改服务 $1
@@ -80,6 +84,7 @@ log_delete_serv_l=已在端口 $2 删除服务 $1
 log_create_prog_l=已在端口 $2 创建程序 $3 服务 $1
 log_modify_prog_l=已在端口 $2 更新程序 $3 服务 $1
 log_delete_prog_l=已在端口 $2 删除程序 $3 服务 $1
+
 log_create_rpc=已创建 RPC $1
 log_modify_rpc=已修改 RPC $1
 log_delete_rpc=已删除 RPC $1

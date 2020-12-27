@@ -51,11 +51,13 @@ index_mass=Suprimeix els Usuaris Seleccionats
 index_mass2=Desactiva els Seleccionats
 index_mass3=Activa els Seleccionats
 index_gmass=Suprimeix els Grups Seleccionats
+
 search_title=Resultats de la Recerca
 search_notfound=No s'ha trobat cap usuari que coincideixi
 search_found=S'han trobat $1 usuaris que coincideixen...
 search_gnotfound=No s'ha trobat cap grup que coincideixi
 search_gfound=S'han trobat $1 grups que coincideixen...
+
 uedit_title=Edició d'Usuari
 uedit_title2=Creació d'Usuari
 uedit_details=Detalls de l'usuari
@@ -133,6 +135,7 @@ uedit_uid_calc=Calculat
 uedit_disabled=Entrada desactivada temporalment
 uedit_sys=Per defecte del sistema
 uedit_clone=Clona l'Usuari
+
 usave_err=No s'ha pogut desar l'usuari
 usave_eedit=No pots editar aquest usuari
 usave_ecreate=No pots crear nous usuaris
@@ -186,6 +189,7 @@ usave_epasswd_same=La contrasenya conté o és igual que el nom de l'usuari
 usave_epasswd_mindays=La contrasenya s'ha canviat fa menys de $1 dies
 usave_epasswd_cmd=L'ordre de validació de la contrasenya ha fallat
 usave_eothers=L'usuari s'ha desat correctament, però s'ha produït un error en una altre mòdul: $1
+
 gedit_title=Edició de Grup
 gedit_title2=Creació Grup
 gedit_details=Detalls del Grup
@@ -208,6 +212,7 @@ gedit_selu=Els usuaris del grup
 gedit_pri=Membres del grup primari
 gedit_prinone=No hi ha cap usuari que tingui aquest grup com a primari
 gedit_clone=Clona el Grup
+
 gsave_err=No s'ha pogut desar el grup
 gsave_eedit=No pots editar aquest grup
 gsave_ecreate=No pots crear nous grups
@@ -224,6 +229,7 @@ usave_egidused=El grup $1 ja està utilitzant el GID $2
 gsave_egidused2=El GID ja està en ús
 usave_efromroot=No pots desplaçar el directori arrel de /
 usave_etoroot=No pots desplaçar el directori arrel a /
+
 logins_title=Connexions Registrades
 logins_head=Connexions registrades de $1
 logins_from=Connectat des de
@@ -236,6 +242,7 @@ logins_none=No hi ha cap connexió registrada
 logins_elist=No tens permís per llistar connexions
 logins_elistu=No tens permís per llistar les connexions de '$1'
 logins_local=Local
+
 udel_title=Supressió d'Usuari
 udel_err=No s'ha pogut suprimir l'usuari
 udel_enum=Número d'usuari invàlid
@@ -258,6 +265,7 @@ udel_del2=Suprimeix l'Usuari i el Directori Arrel
 udel_others=AVÍS! El directori arrel $1 conté $2 fitxers propietat d'altres usuaris.
 udel_dothers=Suprimeix l'usuari els altres mòduls
 udel_root=Atenció! Si esborres l'usuari root, no podràs administrar el sistema més endavant.
+
 gdel_title=Supressió de Grup
 gdel_err=No s'ha pogut suprimir el grup
 gdel_eroot=No tens permís per suprimir grups de sistema (aquells amb un GID menor o igual a 10).
@@ -271,6 +279,7 @@ gdel_sure=Segur que vols suprimir el grup $1?
 gdel_del=Suprimeix el Grup
 gdel_dothers=Suprimeix el grup dels altres mòduls
 gdel_other=S'està suprimint dels altres mòduls...
+
 many_title=Creació de Múltiples Usuaris
 many_desc=Aquest formulari permet crear molts usuaris a la vegada, bé des d'un fitxer de text local, bé des d'un fitxer pujat. Cada línia del fitxer especifica un usuari amb el format següent:
 many_desc2=usuari:contrasenya:uid:gid:nomreal:dirarrel:shell:min:max:avis:inactiu:expiracio
@@ -294,6 +303,7 @@ many_eshell=Shell invàlida a la línia $1: $2
 many_emkdir=No s'ha pogut crear el directori arrel $1: $2
 many_egtaken=El nom del grup ja s'utilitza a la línia $1: $2
 many_ok=S'ha creat l'usuari $1
+
 acl_uedit=Usuaris Unix que es poden editar
 acl_uedit_all=Tots els usuaris
 acl_uedit_none=Cap usuari
@@ -353,6 +363,7 @@ acl_udelete=Pot suprimir usuaris
 acl_gdelete=Pot suprimir grups
 acl_urename=Pot reanomenar usuaris
 acl_grename=Pot reanomenar grups
+
 log_urename=S'ha reanomenat l'usuari $1 a $2
 log_umodify=S'ha modificat l'usuari $1
 log_ucreate=S'ha creat l'usuari $1
@@ -371,6 +382,7 @@ log_ugbatch=S'ha executat el fitxer de de batch de grups pujat
 log_ugbatch_l=S'ha executat el fitxer de de batch de grups pujat ($1 de creats, $2 de modificats, $3 de suprimits)
 log_delete_users=S'han suprimit $1 usuaris
 log_delete_groups=S'han suprimit $1 grups
+
 batch_title=Execució de Fitxer Batch
 batch_ecannot=No pots utilitzar el formulari de fitxer <i>batch</i>
 batch_desc=Aquest formulari permet crear, modificar o suprimir més d'un usuari a la vegada, des d'un fitxer de text local o pujat. Cada línia del fitxer especifica una acció a prendre, depenent del seu primer camp. Els formats de línia són:
@@ -429,12 +441,14 @@ batch_eexpire=Data d'expiració invàlida a la línia $1: $2
 batch_echange=Dia invàlid de canvi de contrasenya a la línia $1: $2
 batch_instr=Instruccions i format batch
 batch_header=Opcions de creació, actualització i supressió d'usuaris batch
+
 who_title=Usuaris Connectats
 who_user=Usuari Unix
 who_tty=TTY
 who_when=Connectat a
 who_from=Connectat des de
 who_none=Actualment no hi ha cap usuari connectat.
+
 export_title=Exportació de Fitxer Batch
 export_desc=Aquest formulari permet crear un fitxer batch que conté alguns o tots els usuaris disponibles del sistema. El fitxer es pot utilitzar a la pàgina Execució de Fitxer Batch d'un altre sistema per recrear els usuaris exportats, assumint que utilitza el format de fitxer batch seleccionat.
 export_header=Opcions d'exportació batch d'usuaris
@@ -455,6 +469,7 @@ export_done=S'han exportat correctament $1 usuaris al fitxer $2 ($3).
 export_pft=Format del fitxer batch
 export_who=Usuaris a exportar
 export_ecannot=No tens permís per exportar usuaris
+
 gexport_title=Exportació de Fitxer de Batch de Grups
 gexport_desc=Aquest formulari permet crear un fitxer batch que conté alguns o tots els grups disponibles del sistema. El fitxer es pot utilitzar a la pàgina Execució de Fitxer Batch de Grups d'un altre sistema per recrear els grups exportats.
 gexport_header=Opcions d'exportació del batch de grups
@@ -463,6 +478,7 @@ gexport_ecannot=No tens permís per exportar grups
 gexport_err=No s'ha pogut exportar el fitxer de batch de grups
 gexport_egid=El primer GID del rang és invàlid
 gexport_egid2=El segon GID del rang és invàlid
+
 pft_0=Només el fitxer <tt>passwd</tt> clàssic
 pft_1=Fitxer<tt>master.passwd</tt> de BSD
 pft_2=Fitxers <tt>passwd</tt> i <tt>shadow</tt> estàndard
@@ -470,6 +486,7 @@ pft_3=Fitxer <tt>passwd</tt> de Unixware
 pft_4=Fitxers <tt>passwd</tt> i <tt>security</tt> d'AIX
 pft_5=Fitxers <tt>passwd</tt> i <tt>shadow</tt> curt d'OpenServer
 pft_6=Base de dades NetInfo de MacOS
+
 umass_title=Supressió d'Usuaris
 umass_err=No s'han pogut suprimir els usuaris
 umass_sure=Segur que vols suprimir els $1 usuaris seleccionats? Els seus directoris arrel contenen $2 de fitxers.
@@ -481,6 +498,7 @@ umass_del1=Suprimeix els Usuaris
 umass_del2=Suprimeix els Usuaris i els Directoris Arrel
 umass_eroot=No tens permís per suprimir usuaris de sistema (aquells amb un UID menor o igual a 10).
 umass_doing=S'està suprimint l'usuari $1...
+
 gmass_title=Supressió de Grups
 gmass_err=No s'han pogut suprimir els grups
 gmass_sure=Segur que vols suprimir els $1 grups seleccionats?
@@ -490,16 +508,19 @@ gmass_del=Suprimeix els Grups
 gmass_eroot=No tens permís per suprimir grups de sistema (aquells amb un GID menor o igual a 10).
 gmass_doing=S'està suprimint el grup $1...
 gmass_eprimary=No es pot suprimir el grup $1, ja que és el grup primari de l'usuari $2.
+
 dmass_title=Desactivació d'Usuaris
 dmass_sure=Segur que vols desactivar els $1 usuaris seleccionats? Es poden reactivar més endavant sense perdre les seves contrasenyes ni les seves dades.
 dmass_dis=Desactiva els Usuaris
 dmass_pass=S'està bloquejant temporalment la contrasenya...
 dmass_doing=S'està desactivant l'usuari $1...
 dmass_already=...ja estava desactivat!
+
 emass_title=Activació d'Usuaris
 emass_pass=S'està desbloquejant la contrasenya...
 emass_doing=S'està desactivant l'usuari $1...
 emass_already=...ja estava activat!
+
 gbatch_title=Execució de Fitxer Batch de Grups
 gbatch_ecannot=No pots utilitzar el formulari de fitxers batch de grups
 gbatch_desc=Aquest formulari permet crear, modificar o suprimir diversos grups de cop a partir d'un fitxer de text pujat o local. Cada línia del fitxer especifica una acció a prendre, depenent del primer camp. Els formats de línia són:

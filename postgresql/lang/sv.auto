@@ -18,6 +18,7 @@ index_db=Databas namn
 index_tables=tabeller
 index_drops=Släpp valda databaser
 index_postgresql=PostgreSQL
+
 index_toomany=Det finns för många databaser att visa. Hitta databaser som matchar:
 index_search=Sök
 index_showing=Visar databaser som matchar $1 ..
@@ -31,6 +32,7 @@ index_gist=Generaliserat indexsökträd
 index_jump=Eller redigera databasen:
 index_jumpok=Öppen
 index_edithosts=Konfigurera tillåtna värdsystem
+
 dbase_noconn=Denna databas accepterar för närvarande inte anslutningar, så inga åtgärder kan utföras i den.
 dbase_header=Databastabeller, index, vyer och sekvenser
 dbase_vadd=Skapa vy
@@ -48,13 +50,16 @@ dbase_jump=Redigera tabell:
 dbase_vjump=Redigera vy:
 dbase_ijump=Redigera index:
 dbase_sjump=Redigera sekvens:
+
 table_fielddrop=Drop Field
 table_eblob=Ingen storlek behövs för BLOB-fält $1 
 table_csv=Exportera som CSV
 table_index=Skapa index
 table_delete=Radera valda fält
+
 field_err2=Det gick inte att spara fältet
 field_err1=Det gick inte att ta bort fältet
+
 exec_old=Eller välj ett tidigare SQL-kommando :
 exec_clear=Rensa historik
 exec_header2=Välj en SQL-kommandofil som ska köras i databasen $1 ..
@@ -78,8 +83,10 @@ exec_tabexec=Kör SQL
 exec_tabfile=Kör SQL från fil
 exec_tabimport=Importera textfil
 exec_return=köra SQL-form
+
 stop_ecannot=Du får inte stoppa databaseservern
 start_ecannot=Du får inte starta databaseservern
+
 view_refresh=Uppdatera
 view_search2=Sök efter rader där fält $2 $3 $1 
 view_match0=innehåller
@@ -105,12 +112,14 @@ view_set=Ställ in på filens innehåll ..
 view_warn=Varning - att ladda upp filer till och visa innehållet i <tt>text</tt> eller <tt>bytea</tt> -fält kommer troligtvis inte att fungera om modulerna $1 och $2 Perl är installerade och används.
 view_adv=avancerad sökning
 view_sqlrun=Resultat genererade av SQL-fråga : $1 
+
 newdb_ecannot2=Du får inte skapa fler databaser
 newdb_user=Ägs av användaren
 newdb_encoding=Teckenuppsättning kodning
 newdb_eencoding=Saknad teckenuppsättning
 newdb_template=Malldatabas
 newdb_notemplate=Ingen
+
 user_vwarning=VARNING: Denna PostgreSQL-användare är administrationsinloggningen för Virtualmin-domänen $1. Ändring av inställningar här kan orsaka fel i Virtualmin.
 user_setto=Satt till
 user_nochange=Ändra inte
@@ -122,6 +131,7 @@ user_sync_delete=Radera en PostgreSQL-användare när den matchande Unix-använd
 user_delete=Radera valda
 user_derr=Det gick inte att ta bort användare
 user_enone=Inga användare valda
+
 host_desc=När en klient ansluter till databasen behandlas värdar som listas nedan i ordning tills en matchar och klienten tillåts eller nekas.
 host_header=PostgreSQL-klientverifieringsinformation
 host_peer=Nätverkskamrat
@@ -147,16 +157,20 @@ host_derr=Det gick inte att ta bort tillåtna värdar
 host_enone=Inga värdar valda
 host_manual=Redigera Config File
 host_manualdesc=Klicka på den här knappen för att manuellt redigera den tillåtna värdkonfigurationsfilen.
+
 manual_title=Redigera Config File
 manual_err=Det gick inte att spara konfigurationsfilen
+
 grant_ns=schema
 grant_toomany=Det finns för många objekt att visa. Hitta objekt som matchar:
 grant_showing=Visar objekt som matchar $1 ..
 grant_delete=Återställ valda bidrag
+
 group_memsopts=Alla användare
 group_memsvals=Användare i grupp
 group_derr=Det gick inte att ta bort grupper
 group_enone=Inga grupper valda
+
 log_dbs_delete=Tappade $1 -databaser
 log_users_delete=$1 användare har tagits bort
 log_groups_delete=$1 grupper raderade
@@ -182,6 +196,7 @@ log_backup_l=Säkerhetskopierad databas $1 till fil $2
 log_backup_all=Säkerhetskopierade alla databaser
 log_backup_all_l=Säkerhetskopierade alla databaser till fil $2 
 log_manual=Manuell redigerad tillåtna värd konfigurationsfil
+
 acl_dbscannot=Denna åtkomstkontroll träder i kraft efter att PostgreSQL-databaseservern startats.
 acl_max=Ja, som mest
 acl_backup=Kan du skapa säkerhetskopior?
@@ -195,13 +210,17 @@ acl_cmds=Kan redigera före och efter reservkommandon?
 acl_views=Kan visa och hantera vyer?
 acl_indexes=Kan visa och hantera index?
 acl_seqs=Kan visa och hantera sekvenser?
+
 fdrop_err=Det gick inte att ta bort fält
 fdrop_enone=Ingen vald
 fdrop_eall=Du kan inte ta bort alla fält från en tabell!
+
 setup_err=Det gick inte att initiera databasen
 setup_ecannot=Du får inte initialisera databasen
+
 dbase_bkup=Säkerhetskopiering
 dbase_rstr=Återställ
+
 restore_title=Återställ databasen
 restore_header=Återställ databasalternativ
 restore_db=Databas namn
@@ -224,6 +243,7 @@ restore_tables=Tabeller för att återställa
 restore_tables1=Allt i säkerhetskopia
 restore_tables0=Listade tabeller
 restore_failed=Återställning misslyckades : $1 
+
 backup_title=Säkerhetskopieringsdatabas
 backup_title2=Säkerhetskopiera alla databaser
 backup_header1=Backupdestination
@@ -272,17 +292,21 @@ backup_ebefore=Före säkerhetskopieringen misslyckades!
 backup_cmode=När kör kommandon
 backup_cmode1=Före/efter alla databaser
 backup_cmode0=Före/efter varje databas
+
 r_command=Kommando stöds inte
+
 adv_title=avancerad sökning
 adv_and=Hitta poster som matchar alla kriterier ..
 adv_or=Hitta poster som matchar alla kriterier ..
 adv_ok=Sök nu
+
 tdrops_enone=Inga tabeller / tabeller att släppa valda
 tdrops_err=Det gick inte att släppa tabellerna
 tdrops_ok=Släppa
 tdrops_title=Drop vald
 tdrops_rusure=Är du säker på att du vill släppa $1 valda tabeller / tabeller i databasen $2 ? $3 rader med data kommer att raderas.
 tdrops_rusure2=Är du säker på att du vill släppa $1 valda tabeller / tabeller i databasen $2 ?
+
 ddrops_err=Det gick inte att släppa databaser
 ddrops_title=Släpp databaser
 ddrops_rusure=Är du säker på att du vill släppa de valda databaserna $1 ? $2 tabeller som innehåller $3 rader med data kommer att raderas.
@@ -290,6 +314,7 @@ ddrops_mysql=Eftersom huvuddatabasen är vald, kommer det att förmodligen göra
 ddrops_ok=Släpp databaser
 ddrops_enone=Inga databaser valda
 ddrops_ecannotdb=Du får inte släppa databasen $1 
+
 csv_title=Exportera CSV-fil
 csv_header=CSV-exportalternativ
 csv_dest=Exportera destination
@@ -310,6 +335,7 @@ csv_done=CSV-export till $1 är klar. Den resulterande filstorleken är $2.
 csv_headers=Inkludera kolumnnamn i CSV?
 csv_cols=Kolumner som ska inkluderas i CSV
 csv_ecols=Inga kolumner har valts
+
 import_title=Importera data
 import_uploadout=Importerar data från uppladdad fil ..
 import_fileout=Importerar data från fil $1 ..
@@ -317,6 +343,7 @@ import_eupload=Saknad importerad importfil
 import_efile=Saknar importfilnamn
 import_done=.. skapade $1 rader, hoppade över $2 dubbletter.
 import_erow=.. inga fält hittades i rad $1 
+
 index_title1=Skapa index
 index_header1=Indexalternativ
 index_name=Indexnamn
@@ -334,6 +361,7 @@ index_ecols=Inga fält valda
 index_title2=Redigera index
 index_header=Index $1 i databasen $2 
 index_ecannot=Du får inte hantera index
+
 view_title1=Skapa vy
 view_title2=Redigera vy
 view_header1=Visa detaljer
@@ -348,6 +376,7 @@ view_eclash=En vy med samma namn finns redan
 view_equery=SQL-fråga saknas
 view_ecols=Inga kolumnnamn angivna
 view_ecannot=Du får inte hantera vyer
+
 seq_title1=Skapa sekvens
 seq_title2=Redigera sekvens
 seq_header1=Ökning av sekvensalternativ
@@ -367,5 +396,6 @@ seq_emin=Saknas eller ogiltigt minimivärde
 seq_emax=Det maximala värdet saknas eller ogiltigt
 seq_ecache=Det saknas eller ogiltigt antal värden som ska cache
 seq_ecannot=Du får inte hantera sekvenser
+
 dgrant_err=Det gick inte att återställa bidrag
 dgrant_enone=Inga objekt har valts

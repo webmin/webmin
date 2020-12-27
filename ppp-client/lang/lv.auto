@@ -24,13 +24,16 @@ index_out=Izvade no $1 bija
 index_boot=Pieslēdzieties sāknēšanas laikā ar:
 index_noboot=&lt;Nepievienot&gt;
 index_bootdesc=Mainiet šo opciju, lai kontrolētu, vai izvēlētais PPP savienojums tiek sākts sāknēšanas laikā vai nē.
+
 init_title=Konfigurācijas noteikšana
 init_cmd=Pievienotā modema noteikšana ar komandu $1.
 init_done=.. darīts
 init_modems=Modemi ir konfigurēti $1 un $2.
 init_modem=Modems tika atklāts $1.
 init_none=Neviens modems netika atklāts.
+
 device_serial=seriālais ports $1 
+
 connect_title=Izveidojiet savienojumu
 connect_cmd=Mēģinājums izveidot savienojumu ar komandu $1.
 connect_failed=.. savienojums neizdevās! Iemeslu, kāpēc tā, skat. Iepriekš minētajā iznākumā.
@@ -40,12 +43,14 @@ connect_dns=Izmantojot PPP piešķirto DNS konfigurāciju.
 connect_dns2=Ir iestatīta PPP piešķirta DNS konfigurācija.
 connect_dnsto=Taimauts gaida PPP piešķirto DNS konfigurāciju.
 connect_dnsdown=Šķiet, ka savienojums nav izdevies, gaidot PPP piešķirto DNS konfigurāciju.
+
 disc_title=Izslēdziet PPP
 disc_err=Neizdevās izslēgt PPP savienojumu
 disc_edown=Jau atvienots
 disc_ok1=Jūsu PPP savienojums, kas izveidots, izmantojot $2, tika veiksmīgi pārtraukts.
 disc_ok2=Jūsu PPP savienojums tika veiksmīgi pārtraukts.
 disc_dns=Atjaunota vecā DNS konfigurācija.
+
 edit_title1=Pievienojiet ISP zvanītājprogrammu
 edit_title2=Rediģēt ISP zvanītājprogrammu
 edit_ddesc=Šie noklusējuma iestatījumi attieksies uz savienojumiem, kas izveidoti, izmantojot jebkuru citu zvanītājprogrammu.
@@ -76,6 +81,7 @@ edit_idle=Dīkstāves noildze (sekundēs)
 edit_def=No noklusējuma iestatījumiem
 edit_inherits=Mantojuma iestatījumi
 edit_from=No zvanītāja ..
+
 save_err=Neizdevās saglabāt zvanītājprogrammu
 save_err2=Neizdevās izdzēst sastādītāju
 save_ename=Trūkst vai nav derīgs izsaucēja vārds
@@ -88,6 +94,7 @@ save_edial=Trūkst vai nav derīgs iezvanīšanas mēģinājumu skaits
 save_eidle=Trūkst vai nav derīgs dīkstāves noildze
 save_einherits=Šo zvanītājprogrammu nevar izdzēst, jo '$1' manto iestatījumus.
 save_eclash=Zvanītājprogramma ar tādu pašu vārdu jau pastāv
+
 log_create=Izveidots $1 
 log_update=Atjaunināts $1 
 log_delete=Izdzēsts $1 

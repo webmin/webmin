@@ -8,6 +8,7 @@ index_none=Nisu definirane mogućnosti pokretanja. Obavezno dodajte barem jednu 
 index_efile=Datoteka izbornika GRUB $1 u vašem sustavu nije pronađena. Možda GRUB nije instaliran ili je <a href='$2'>konfiguracija modula</a> netočna.
 index_epath=Izvršni GRUB $1 nije pronađen u vašem sustavu. Možda GRUB nije instaliran ili je <a href='$2'>konfiguracija modula</a> netočna.
 index_return=popis opcija
+
 title_add=Dodajte mogućnost pokretanja
 title_edit=Uredi mogućnost pokretanja
 title_header=Pojedinosti o izborniku za pokretanje
@@ -36,6 +37,7 @@ title_echain=Nedostaje ili nije važeća datoteka za pokretanje lanca
 title_edev=Nepodržani uređaj particije korijena $1 
 title_einitrd=Nedostaje početno ime datoteke ramdisk
 title_lock=Lozinka je zaključana?
+
 global_title=Opcije
 global_header=Opcije izbornika za globalno pokretanje
 global_default=Zadana opcija pokretanja
@@ -56,12 +58,14 @@ global_edev=Nepodržani instalacijski disk/particija $1
 global_eother=Nedostaje ili nije važeći disk/particija
 global_epassword=Nedostaje ili nije važeća lozinka za pokretanje
 global_epasswordfile=Nedostaje zamjensko ime datoteke izbornika
+
 install_title=Instalirajte GRUB
 install_err=Instalacija GRUB nije uspjela
 install_efind=Nije moguće pronaći datoteku izbornika
 install_desc=Instaliranje GRUB-a na $1 pomoću naredbi $2 i $3 ..
 install_ok=.. instalirati dovršeno.
 install_failed=.. instalacija nije uspjela!
+
 log_create_title=Stvorena opcija pokretanja $1 
 log_delete_title=Izbrisana opcija pokretanja $1 
 log_modify_title=Izmijenjena opcija pokretanja $1 

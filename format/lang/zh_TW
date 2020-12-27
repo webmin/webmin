@@ -15,7 +15,9 @@ index_use=使用
 index_free=空閒
 index_format=磁碟未格式化
 index_return=磁碟列表
+
 edit_ecannot=您沒有編輯此磁碟的權限
+
 edit_title=編輯分割區
 edit_header=分割區內容
 edit_location=位置
@@ -56,6 +58,7 @@ edit_tunedesc2=您不能調整此分割區上的檔案系統,因為分割區還�
 edit_tunedesc3=您不能調整此分割區上的檔案系統，因為其目前已掛載。先使用<a href=/mount/>檔案系統模組</a>來卸載該分割區。。
 edit_tunedesc4=您不能調整此分割區上的檔案系統，因為其上沒有檔案系統。
 edit_tunedesc5=您不能調整此分割區上的檔案系統，因為只有<tt>UFS</tt>檔案系統可被檢查。
+
 save_ecannot=您沒有編輯該磁碟的權限
 save_edelete=刪除分割區失敗
 save_esave=儲存分割區失敗
@@ -64,6 +67,7 @@ save_eend='$1'不是一個有效的結束磁柱
 save_estartmin=起始磁柱必須大於0
 save_eendmax=結束磁柱必須小於$1
 save_estartend=起始磁柱必須小於結束磁柱
+
 newfs_title=新增檔案系統
 newfs_ecannot=您沒有格式化磁碟的權限
 newfs_desc=點擊此表單下方的按鈕將在裝置 $2 上新增一個新的 $1,分割區上的所有資料將會被徹底刪除。
@@ -89,6 +93,7 @@ newfs_err=新增檔案系統失敗
 newfs_exec=執行命令$1..
 newfs_failed=..命令失敗!
 newfs_ok=..命令結束。
+
 fsck_title=修復檔案系統
 fsck_ecannot=您沒有修復該磁碟的權限
 fsck_desc=點擊<b>修復</b>按鈕將會檢測和有選擇地修復$2上的$1.檢測和修復標準由您下面作出的選擇而決定。
@@ -106,6 +111,7 @@ fsck_37=在檢測中進程被殺
 fsck_39=檢測到無法修復的錯誤!
 fsck_40=未發現任何錯誤。
 fsck_unknown=不認識的錯誤
+
 tunefs_title=調整檔案系統
 tunefs_ecannot=您沒有調整該磁碟的權限
 tunefs_desc=此表讓您調整$2上$1的不同參數。檔案系統上的現有檔案不會受到破壞。
@@ -122,6 +128,7 @@ tunefs_err=調整檔案系統失敗
 tunefs_exec=執行命令$1..
 tunefs_failed=..命令失敗!
 tunefs_ok=..命令結束
+
 select_device=SCSI控制器$1 目標$2 單元$3
 select_idedevice=IDE裝置 $1
 select_part=SCSI控制器$1 目標$2 單元$3 分割區$4
@@ -131,8 +138,10 @@ esun=分割區僅可以在SUN硬體平臺下進行修改
 emounted=磁碟上有掛載的分割區
 elast=最後的分割區不能移去
 eformat=<tt>format</tt> 沒有發現任何磁碟!
+
 fstype_ufs=Solaris Unix檔案系統
 fstype_unknown=未知檔案系統
+
 acl_disks=該使用者可以分割區和格式化的磁碟
 acl_dall=所有磁碟
 acl_dsel=選擇..

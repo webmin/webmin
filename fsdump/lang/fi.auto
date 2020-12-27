@@ -23,6 +23,7 @@ index_follow=$1 jälkeen
 index_forcetar=TAR-muodossa
 index_delete=Poista valitut varmuuskopiot
 index_nostrftime=Varoitus - jotkut varmuuskopiointityöt käyttävät % tiedostonimissään, mutta strftime-korvaaminen ei ole käytössä Moduulin kokoonpanosivulla.
+
 dump_dir=Varmuuskopioitava hakemisto
 dump_dirs=Hakemistot varmuuskopiointiin
 dump_fs=Tiedostojärjestelmä
@@ -108,6 +109,7 @@ dump_remount=Korjataanko <tt>noatime</tt> -vaihtoehdolla varmuuskopioinnin aikan
 dump_eftpupdate=Tiedostojen lisääminen olemassa olevaan arkistoon ei ole mahdollista, kun käytetään FTP: tä.
 dump_eleveldir=Vain tason 0 varmuuskopiot ovat sallittuja hakemistoille, jotka eivät ole tiedostojärjestelmän asennuspisteitä
 dump_eupdatedir=<tt>/etc/dumpdates</tt>-tiedosto voidaan päivittää vain hakemistoille, jotka ovat tiedostojärjestelmän liitäntäpisteitä
+
 edit_err=Varmuuskopion luonti epäonnistui
 edit_edir=Puuttuu varmuuskopiohakemisto
 edit_efs=Tämä moduuli ei voi varmuuskopioida tyypin $1 tiedostojärjestelmiä
@@ -132,9 +134,11 @@ edit_tolevel=$1 - $2 (taso $3)
 edit_special=Varmuuskopioaikataulu
 edit_when=Milloin varmuuskopioida
 edit_clone=Klooni
+
 save_err=Varmuuskopion tallentaminen epäonnistui
 save_edir=Puuttuva tai virheellinen varmuuskopiohakemisto
 save_efs=Varmuuskopiohakemistoa ei voi muuttaa toiseen tiedostojärjestelmään
+
 backup_title=Varmuuskopioi nyt
 backup_desc=Varmuuskopioidaan $1 - $2 ..
 backup_reverify=.. saattaa loppuun. Vahvistetaan nyt varmuuskopio ..
@@ -147,6 +151,7 @@ backup_notape=.. varmuuskopiointi ylitti yhden nauhan kapasiteetin. Nauhanvaihto
 backup_egone=Varmuuskopioita ei ole!
 backup_bg=Taustavarmuuskopion aloittaminen. Voit seurata sen etenemistä moduulin pääsivun <b>Varmistustöiden suorittaminen</b> -osiossa, ja sen lopullisesta tilasta ilmoitetaan sähköpostitse.
 backup_ecannot=Et voi varmuuskopioida tätä hakemistoa
+
 restore_title=Palauta varmuuskopio
 restore_err=Varmuuskopion palauttaminen epäonnistui
 restore_ecommand=$2 -tiedostojärjestelmän varmuuskopioiden palauttamiseen tarvittavaa komentoa $1 ei löydy järjestelmästäsi. Ehkä sitä ei ole tällä hetkellä asennettu.
@@ -190,6 +195,7 @@ restore_gzip=Pakkaako arkisto?
 restore_keep=Etkö korvaa tiedostoja?
 restore_emulti=Monitiedostojen palauttamista ei voi tehdä nauhalaitteesta
 restore_emulti2=Monitiedostojen palauttamista ei voida suorittaa etäpalvelimelta
+
 log_create=Luotu varmuuskopio $1 : lle
 log_modify=Muokattu varmuuskopio $1 : lle
 log_delete=Poistettu varmuuskopio $1 : lle
@@ -197,13 +203,16 @@ log_backup=Varmuuskopioidaan $1 - $2
 log_bgbackup=Aloitettiin varmuuskopio $1 - $2 
 log_restore=Palautettu varmuuskopio $1 : stä
 log_kill=Lopetettu varmuuskopio $1 : lle
+
 kill_err=Varmuuskopioinnin lopettaminen epäonnistui
 kill_egone=Ei enää juokse!
 kill_ecannot=Sinulla ei ole oikeutta lopettaa tätä varmuuskopiointia
+
 newtape_err=Uuden nauhan signalointi epäonnistui
 newtape_egone=Varmuuskopio ei ole enää käynnissä!
 newtape_estatus=Varmuuskopiointi ei enää odota uutta nauhaa
 newtape_ecannot=Sinulla ei ole oikeutta hallita tätä varmuuskopiota
+
 acl_edit=Voiko luoda ja muokata varmuuskopioita?
 acl_restore=Voiko varmuuskopiot palauttaa?
 acl_cmds=Voiko muokata ennen ja jälkeen komentoja?
@@ -211,8 +220,10 @@ acl_extra=Voiko muokata ylimääräisiä komentoriviparametreja?
 acl_dirs=Sallitut hakemistot varmuuskopioille
 acl_all=Kaikki hakemistot
 acl_list=Vain listattu ..
+
 delete_err=Varmuuskopioiden poistaminen epäonnistui
 delete_enone=Mitään ei ole valittu
+
 email_already=Varmuuskopiointi on jo käynnissä PID $1 : llä.
 email_ebefore=Ennen varmuuskopiointia -komento epäonnistui!
 email_verify=Varmennetaan varmuuskopio ..
@@ -220,5 +231,6 @@ email_eafter=Varmuuskopioinnin komento epäonnistui!
 email_subject=$1 : n varmuuskopio $2 : lle
 email_ok=Varmuuskopiointi onnistui
 email_failed=Varmuuskopiointi epäonnistui!
+
 newtape_subject=Nauhanvaihto $1, kun $2 varmuuskopioidaan $3 : een
 newtape_body=$2 : n varmuuskopio $3 : ssa on saavuttanut nauhalle $1 sallitun enimmäismäärän. Sinun on ladattava uusi nauha ja napsautettava Tape Loaded -linkkiä Webminin Filesystem Backup -moduulissa, jotta varmuuskopiointi jatkuu.

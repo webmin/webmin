@@ -20,6 +20,7 @@ index_d1=$1
 index_dlang=die taal waarin modules vertoon word
 index_dtheme=die tema wat Webmin se voorkoms beheer
 index_dpass=die wagwoord waarmee u kan aanmeld
+
 change_title=Verander instellings
 change_user=Verander die aanmelding van Webmin ..
 change_done=.. klaar
@@ -30,6 +31,7 @@ change_epass2=Nuwe wagwoorde stem nie ooreen nie
 change_epass=Nuwe wagwoord is nie geldig nie : $1 
 change_eoverlay=U kan nie 'n tema-oorleg kies nie, tensy 'n UI-tema ook gekies word
 change_eoverlay2=Die gekose tema-oorleg is nie versoenbaar met die gekose UI-tema nie
+
 acl_lang=Kan taal verander?
 acl_theme=Kan tema verander?
 acl_pass=Kan u wagwoord verander (as dit in Webmin gestel is)?

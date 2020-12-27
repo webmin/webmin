@@ -12,6 +12,7 @@ index_return=seznam souborových systémů
 index_none=Nemáte přístup k žádnému připojovanému souborovému systému.
 index_mount2=Připojit za pomoci hesla:
 index_root=Kořenový souborový systém
+
 edit_title=Editace připojení
 create_title=Vytvoření přípojného bodu
 edit_err=Chyba při editování připojení
@@ -56,6 +57,7 @@ edit_ecannot=Nemáte oprávnění editovat tento souborový systém
 edit_ecannot2=Nemáte oprávnění přidat nový souborový systém
 edit_3_or_lower=3 (nebo nižší)
 edit_advanced=Rozšířený mód
+
 save_err=Chyba při ukládání připojení
 save_edir='$1' není adresář
 save_edirname='$1' není platné jméno adresáře
@@ -72,8 +74,10 @@ save_apply=Použít na permanentní seznam
 save_fapply=Vynucené odpojení
 save_eremount=Opětovné připojení selhalo : $1
 save_enone=Nic nebylo zvoleno pro uložení či připojení
+
 swap_err=Chyba při vytvoření odkládacího souboru
 swap_esize='$1' není platná velikost
+
 nfs_server=Zvolit Server NFS..
 nfs_select=Vyberte server NFS, který bude připojen z..
 nfs_ip=Adresa IP
@@ -85,6 +89,7 @@ nfs_seldir=Vybrat adresář NFS pro připojení..
 nfs_seldirv4=Pro připojení NFSv4 je třeba vybrat '/'
 nfs_dir=Adresář
 nfs_clients=Klienti
+
 smb_choose=Zvolit server SMB..
 smb_elist=Chyba při získávání seznamu serverů z $1. Možná, že server nepovoluje procházení
 smb_ehost=Server $1 neexistuje
@@ -99,6 +104,7 @@ smb_sel2=Vybrat sdílení k připojení..
 smb_share=Sdílení
 smb_comment=Komentář
 smb_noshares=Na serveru $1 nejsou k dispozici žádná souborová sdílení
+
 solaris_scsidev=SCSI řadič $1 cíl $2 jednotka $3 oddíl $4
 solaris_idedev=IDE kontroler $1 zařízení $2 oddíl $3
 solaris_mddev=RAID zařízení $1
@@ -231,6 +237,7 @@ solaris_efstyp2=Chyba při kontrole typu souborového systému : $1
 solaris_ecachedir='$1' není platný cache adresář
 solaris_efmode='$1' není platný osmičkový mód souboru
 solaris_edmode='$1' není platný osmičkový mód adresáře
+
 linux_eamd=AMD selhal
 linux_eauto=Automatické připojení skončilo s chybou : $1
 linux_esmbconn=Chyba při připojení k serveru
@@ -363,6 +370,7 @@ linux_codepage=Kódová stránka
 linux_iocharset=Znaková sada IO
 linux_ecodepage=Chybějící nebo neplatná kódová stránka
 linux_eiocharset=Chybějící nebo neplatná znaková sada IO
+
 log_mount=Připojen $3
 log_mount_l=Připojen $2 $1 na $3
 log_umount=Odpojen $3
@@ -376,7 +384,9 @@ log_modify_l=Modifikován $2 přípojný bod $1 na $3
 log_delete=Smazán přípojný bod $3
 log_delete_l=Smazán $2 přípojný bod $1 na $3
 log_swap=Vytvořen odkládací soubor $1
+
 unmount_err=Chyba při odpojování $1
+
 mount_err=Chyba při připojování $1
 irix_nhost=Jméno hostitele NFS
 irix_ndir=Adresář NFS
@@ -407,6 +417,7 @@ irix_rock=Použít rozšíření Rock Ridge?
 irix_nofsck=Kontrolovat souborový systém při startu?
 irix_auto=Zdroj automatického připojování
 irix_automap=Mapový soubor
+
 irix_ehost=Host '$1' neexistuje
 irix_eloss=Host '$1' je vypnut
 irix_eshowmount=Host '$1' nepodporuje NFS
@@ -424,9 +435,11 @@ irix_efstyp2=Chyba při získání typu souborového systému $1 : $2
 irix_efstyp=Typ souborového systému na $1 je $2, nikoliv $3
 irix_eautomap=Mapový soubor automatického připojování '$1' neexistuje
 irix_eauthmap2=Chybějící nebo nesprávný mapový soubor automatického připojování
+
 irix_devroot=Kořenový oddíl
 irix_devswap=Odkládací oddíl
 irix_autohosts=Všechny NFS exporty
+
 acl_only=Povolit pouze připojování a odpojování?
 acl_fs=Souborové systémy, které mohou být editovány
 acl_types=Typy souborových systémů, které mohou být použity
@@ -439,7 +452,9 @@ acl_hide=Skrýt needitovatelné souborové systémy?
 acl_simple=Zobrazit zjednodušený formulář připojení?
 acl_simopts=Zobrazit zjednodušené volby pro souborový systém?
 acl_browse=Zobrazit tlačítka pro procházení souborů a sdílení?
+
 egcc=GCC nebo CC kompilátor, potřebný pro kompilaci programu generujícího seznam připojených souborových systémů, není ve Vašem systému k dispozici.
 ecompile=Objevila se chyba při generování seznamu připojených souborových systému ve Vašem systému : $1
+
 freebsd_eaddr=Chybějící nebo neplatná adresa serveru
 freebsd_eworkgroup=Chybějící nebo neplatná pracovní skupina

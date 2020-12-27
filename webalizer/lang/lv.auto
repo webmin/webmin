@@ -26,6 +26,7 @@ index_when=Jā, $1
 index_webalizer=Webalizer
 index_enable=Grafiks izvēlēts
 index_disable=Izvēlēts grafiks
+
 edit_title1=Pievienot žurnālfailu
 edit_title2=Rediģēt žurnālfailu
 edit_header=Žurnāla faila pārskata opcijas
@@ -49,12 +50,14 @@ edit_cmode0=Izmantojiet globālās iespējas
 edit_cmode1=Pielāgotas iespējas
 edit_cmode2=Cits konfigurācijas fails ..
 edit_clear=Vai notīrīt žurnālfailu (-us) pēc plānotā ziņojuma?
+
 gen_title=Ģenerēt pārskatu
 gen_header=Notiek Webalizer darbība, lai ģenerētu pārskatu no $1.
 gen_done=.. darīts
 gen_failed=.. Webalizer neizdevās! Skatīt sīkāku informāciju.
 gen_nothing=.. Webalizer ir pabeigts, bet neviens ziņojums netika izveidots. Skatīt sīkāku informāciju.
 gen_view=Skatīt pabeigto ziņojumu.
+
 save_err=Neizdevās saglabāt žurnālfailu
 save_efile=Žurnāla fails netika ievadīts vai neeksistē
 save_ecfile=Trūkst vai nav cita konfigurācijas faila
@@ -64,12 +67,14 @@ save_ewuser=Neviens Unix lietotājs ar nosaukumu $1 nepastāv
 save_ehost=Trūkst vai nav derīgs vietnes resursdators
 save_etitle=Trūkst pārskata nosaukuma
 save_ecannot=Jums ir atļauts ģenerēt pārskatus tikai žurnāliem, kas ir zem $1 
+
 view_epath=Nederīgs PATH_INFO
 view_efile=Nederīgs pārskata faila nosaukums
 view_elog=Nederīgs žurnālfails
 view_ecannot=Jums nav atļauts skatīt šo ziņojumu
 view_eopen=Neizdevās atvērt pārskata failu
 view_title=Skatīt ziņojumu
+
 global_title=Globālās Webalizer opcijas
 global_title2=Webalizer pārskata iespējas
 global_for=Logfailam $1 
@@ -130,6 +135,7 @@ global_includesite=Klienti nedrīkst ignorēt
 global_includereferrer=Atsauksmes neignorēt
 global_includeuser=Lietotāji nedrīkst ignorēt
 global_includeagent=Pārlūkprogrammas nedrīkst ignorēt
+
 global_err=Neizdevās saglabāt Webalizer opcijas
 global_ereport=Trūkst pārskata nosaukuma prefiksa
 global_ehost=Trūkst vai nav derīgs resursdatora nosaukums
@@ -139,6 +145,7 @@ global_etable=Trūkst vai nav derīgs tabulas '$1' izmērs
 global_ehistory=Trūkst vai nav derīgs vēstures faila nosaukums
 global_ecurrent=Trūkst vai nav derīgs faila nosaukums
 global_ecache=Trūkst vai nav derīgs DNS kešatmiņas faila nosaukums
+
 log_create_log=Izveidots pārskats par $1 
 log_modify_log=Modificēts pārskats $1 
 log_delete_log=Dzēsti pārskati par $1 
@@ -147,6 +154,7 @@ log_global=Pārveidotas globālās Webalizer iespējas
 log_global2=Modificētas Webalizer iespējas $1 
 log_enable_logs=Plānota ziņošana par $1 žurnāliem
 log_disable_logs=Atskaites par pārtraukšanu $1 žurnālos
+
 acl_view=Vai var skatīt tikai esošos pārskatus?
 acl_global=Vai var rediģēt globālās webalizer iespējas?
 acl_dir=Apskatīt un rediģēt tikai tos žurnālus, kas atrodas zem

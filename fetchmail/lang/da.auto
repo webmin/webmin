@@ -25,6 +25,7 @@ index_header=Brugere med Fetchmail-konfigurationer
 index_search=Vis Fetchmail-konfiguration for:
 index_show=At vise
 index_toomany=Der er for mange brugere på dit system til at vise.
+
 poll_create=Tilføj server
 poll_edit=Rediger server
 poll_header=Indstillinger for mailserver
@@ -64,18 +65,22 @@ poll_ecannot=Du har ikke tilladelse til at redigere denne brugers fetchmail-konf
 poll_efile=Kun brugernes fetchmail-konfigurationsfiler kan redigeres
 poll_eusername=Bruger eksisterer ikke!
 poll_foruser=For bruger $1 
+
 stop_err=Kunne ikke stoppe fetchmail
 stop_ecannot=Du må ikke stoppe fetchmail
 start_err=Kunne ikke starte fetchmail
 start_einterval=Manglende eller ugyldig kontrolinterval
 start_ecannot=Det er ikke tilladt at starte fetchmail
+
 check_title=Kontrol af servere
 check_exec=Tjekker for e-mail på server (e) med kommando $1 ..
 check_ok=.. kontrol fuldført.
 check_failed=.. kontrol mislykkedes!
+
 global_title=Standardindstillinger
 global_header=Standardindstillinger for alle servere
 global_err=Gemte standardindstillinger mislykkedes
+
 log_create_poll_file=Tilføjet server $1 i fil $2 
 log_modify_poll_file=Ændret server $1 i fil $2 
 log_delete_poll_file=Slet server $1 i fil $2 
@@ -94,6 +99,7 @@ log_stop=Stopet fetchmail-dæmon
 log_create_cron=Aktiveret planlagt kontrol
 log_update_cron=Ændret planlagt kontrol
 log_delete_cron=Deaktiveret planlagt kontrol
+
 acl_users=Kan redigere fetchmail-konfiguration til
 acl_all=Alle brugere
 acl_this=Nuværende webmin-bruger
@@ -101,6 +107,7 @@ acl_only=Kun brugere
 acl_except=Alle undtagen brugere
 acl_cron=Kan konfigurere planlagt kontrol?
 acl_daemon=Kan konfigurere Fetchmail-dæmonen?
+
 cron_title=Planlagt kontrol
 cron_desc=Denne side kan bruges til at aktivere eller deaktivere et Cron-job for at kontrollere mailserverne i din Fetchmail-konfiguration i en almindelig tidsplan. Brug af et Cron-job overlegent til at køre Fetchmail-dæmonen, da det ikke behøver at blive genstartet ved starttidspunktet.
 cron_header=Planlagte indstillinger for Fetchmail
@@ -119,8 +126,10 @@ cron_email=Manglende eller ugyldig e-mail-adresse
 cron_euser=Manglende eller ugyldig Unix-bruger
 cron_errors=Kun output, hvis der opstår en fejl?
 cron_ecannot2=Du har ikke tilladelse til at konfigurere planlagt kontrol
+
 user_title=Fetchmail-konfiguration
 user_header=For bruger $1 
 user_return=brugerens konfiguration
+
 email_ok=Fetchmail output
 email_failed=Fetchmail-fejl

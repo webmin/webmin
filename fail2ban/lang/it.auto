@@ -12,10 +12,12 @@ index_restart=Riavvia Fail2Ban Server
 index_restartdesc=Fare clic su questo pulsante per applicare la configurazione corrente riavviando il server Fail2Ban.
 index_return=indice del modulo
 index_header=Modulo Fail2Ban
+
 check_edir=La directory di configurazione $1 non esiste
 check_econf=Il file di configurazione $2 in $1 non esiste
 check_eclient=Il comando client $1 non è stato trovato
 check_eserver=Il comando server $1 non è stato trovato
+
 filters_title=Filtri di registro
 filters_name=Nome del filtro
 filters_re=Espressione regolare
@@ -25,6 +27,7 @@ filters_return=elenco di filtri
 filters_derr=Impossibile eliminare i filtri
 filters_enone=Nessuno selezionato
 filters_einuse=Il filtro $1 non può essere eliminato, in quanto utilizzato dalle jail : $2 
+
 filter_title1=Crea filtro
 filter_title2=Modifica filtro
 filter_desc=Usa <i>&lt;HOST&gt;</i> nelle espressioni regolari in cui dovrebbe apparire un nome host o un indirizzo IP.
@@ -39,6 +42,7 @@ filter_ename=Nome filtro mancante o non valido
 filter_eclash=Il nome del filtro è già in uso
 filter_efail=Nessuna espressione regolare da abbinare
 filter_einuse=Questo filtro non può essere eliminato, in quanto utilizzato dalle jail : $1 
+
 actions_title=Abbina azioni
 actions_name=Nome dell'azione
 actions_ban=Divieto di comando
@@ -48,6 +52,7 @@ actions_return=elenco di azioni
 actions_derr=Impossibile eliminare le azioni
 actions_enone=Nessuno selezionato
 actions_einuse=L'azione $1 non può essere eliminata, poiché viene utilizzata dalle jail : $2 
+
 action_title1=Crea azione partita
 action_title2=Modifica azione partita
 action_header=Abbina i dettagli dell'azione
@@ -64,6 +69,7 @@ action_ban=Comando per vietare un IP
 action_unban=Comando per annullare il divieto di un IP
 action_desc=<i>&lt;ip&gt;</i> sarà sostituito con l'indirizzo IP che è stato bandito.
 action_einuse=Questa azione non può essere eliminata, poiché viene utilizzata dalle jail : $1 
+
 jails_title=Filtro jail di azione
 jails_add=Aggiungi una nuova prigione.
 jails_name=Nome della prigione
@@ -76,6 +82,7 @@ jails_defdesc=Modifica le impostazioni predefinite e i limiti che si applicano a
 jails_return=elenco di carceri
 jails_derr=Impossibile eliminare le jail
 jails_enone=Nessuno selezionato
+
 jail_title1=Crea una prigione
 jail_title2=Modifica prigione
 jail_header=Filtra i dettagli della jail di azione
@@ -115,13 +122,16 @@ jail_banaction=Azione predefinita da applicare
 jail_defprotocol=Protocollo predefinito per le azioni
 jail_edestemail=Indirizzo email di notifica predefinito mancante o non valido
 jail_eignoreip=Indirizzo IP non valido da ignorare
+
 jaildef_title=Opzioni di prigione predefinite
 jaildef_header=Predefiniti per tutte le jail
 jaildef_err=Impossibile salvare le opzioni di jail predefinite
 jaildef_egone=Nessuna prigione DEFAULT trovata!
+
 start_err=Impossibile avviare il server
 stop_err=Impossibile arrestare il server
 restart_err=Riavvio del server non riuscito
+
 log_create_filter=Filtro creato $1 
 log_update_filter=Filtro modificato $1 
 log_delete_filter=Filtro eliminato $1 
@@ -139,6 +149,7 @@ log_atboot=Abilitato Fail2Ban al momento dell'avvio
 log_delboot=Fail2Ban disabilitato all'avvio
 log_manual=File di configurazione modificato $1 
 log_jaildef=Opzioni di jail predefinite modificate
+
 config_title=Configurazione globale
 config_edef=Nessuna sezione di definizione trovata nel file di configurazione!
 config_header=Impostazioni di configurazione per Fail2Ban
@@ -151,10 +162,12 @@ config_socket=Presa per la comunicazione con il server
 config_err=Impossibile salvare la configurazione globale
 config_elogtarget=Il file in cui scrivere i registri deve essere un percorso assoluto
 config_esocket=Il file socket deve essere un percorso assoluto
+
 manual_title=Modifica file di configurazione
 manual_desc=File da modificare:
 manual_ok=ok
 manual_efile=Il file selezionato non fa parte della configurazione Fail2Ban!
 manual_err=Impossibile modificare il file di configurazione
 manual_edata=Nessun contenuto del file di configurazione inserito
+
 syslog_logtarget=Registro azioni Fail2Ban

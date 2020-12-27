@@ -27,7 +27,9 @@ index_global=Globale Konfiguration
 index_create=Einen virtuellen Server erzeugen
 index_version=ProFTPd Version $1
 index_proftpd=ProFTPd
+
 efailed=Konnte $1 nicht speichern
+
 type_0=Netzwerk-Optionen
 type_1=Logging-Optionen
 type_2=Dateien und Verzeichnisse
@@ -35,6 +37,7 @@ type_3=Zugriffskontrollen
 type_4=Verschiedenes
 type_5=Benutzer und Gruppen
 type_6=Authentisierung
+
 virt_title=Optionen für Virtuelle Server
 virt_header1=Für $1
 virt_header2=Für Standard-Server
@@ -50,6 +53,7 @@ virt_cmds=FTP-Befehle
 virt_return=Virtuelle Server
 virt_virt=Virtuellen Server konfigurieren
 virt_edit=Richtlinien bearbeiten
+
 vserv_title=Virtuellen Server konfigurieren
 vserv_addr=Adresse
 vserv_name=Servername
@@ -58,6 +62,7 @@ vserv_delete=Virtuellen Server löschen
 vserv_eaddr=Fehlende oder ungültige Adresse
 vserv_eport=Fehlende oder ungültige Port-Nummer
 vserv_ename=Fehlender Servername
+
 anon_title=Optionen für Anonymes FTP
 anon_header1=Für Virtuellen Server $1
 anon_header2=Für Standard-Server
@@ -65,6 +70,7 @@ anon_anon=Anonymous FTP konfigurieren
 anon_return=Optionen für Anonymes FTP
 anon_header3=Für Anonymes FTP im Virtuellen Server $1
 anon_header4=Für Anonymes FTP im Standard-Server
+
 aserv_title=Anonymous FTP konfigurieren
 aserv_create=Anonymous FTP einrichten
 aserv_root=Auf dieses Verzeichnis beschränken.
@@ -75,6 +81,7 @@ aserv_eroot=Fehlendes oder ungültiges chroot-Verzeichnis
 aserv_euser=Fehlender oder ungültiger Unix-Benutzer
 aserv_egroup=Fehlende oder ungültige Unix-Gruppe
 aserv_desc=Anonymous FTP wurde für diesen Virtuellen Server noch nicht eingerichtet. Benutzen Sie dieses Formular, um eine Standard-Konfiguration zu erzeugen.
+
 dir_title=Pro-Verzeichnis-Optionen
 dir_header2=Für Verzeichnis $1 im Standard-Server
 dir_header1=Für Verzeichnis $1 im Virtuellen Server $2
@@ -85,6 +92,7 @@ dir_header=Pro-Befehl-Optionen
 dir_dir=Verzeichnis konfigurieren
 dir_header4=Für Verzeichnis $1 in Anonymous FTP
 dir_header5=Für Verzeichnis $1 global
+
 manual_title=Richtlinien bearbeiten
 manual_header=Benutzen Sie diese Textbox, um die ProFTPd-Richtlinien für $1, welche zu diesem Virtuellem Server, dem Verzeichnis oder Kommando gehören, manuell zu bearbeiten.
 manual_configs=Konfigurationsdateien bearbeiten
@@ -92,6 +100,7 @@ manual_ecannot=Sie dürfen die Richtlinien nicht manuell bearbeiten.
 manual_file=Bearbeite Richtlinien in der Datei:
 manual_efile=Ungültige ProFTPd-Konfigurationsdatei
 manual_etest=Fehler in der Konfigurationsdatei erkannt : $1
+
 limit_title=Pro-Befehle-Optionen
 limit_header4=Für Befehle $1 im Verzeichnis $2
 limit_header2=Für Befehle $1 im Standard-Server
@@ -103,17 +112,20 @@ limit_return=Pro-Befehl-Optionen
 limit_header5=Für Befehle $1 in Anonymes FTP
 limit_header6=Für Befehle $1 in Datei $2
 limit_header7=Für Befehle $1 global
+
 lserv_title=Befehle konfigurieren
 lserv_cmd=FTP-Befehle
 lserv_delete=Befehls-Konfiguration löschen
 lserv_err=Konnte Befehle nicht speichern
 lserv_ecmd=Es wurden keine Befehle ausgewählt
+
 dserv_title=Verzeichnis konfigurieren
 dserv_dir=Verzeichnis-Pfad
 dserv_err=Konnte Verzeichnis-Pfad nicht speichern
 dserv_edir=Fehlender Verzeichnis-Pfad
 dserv_delete=Verzeichnis-Pfad-Einstellungen löschen
 dserv_eanondir=Verzeichnis muss unter den anonymous FTP-Verzeichnis
+
 mod_core_type=Server-Typ
 mod_core_inetd=Durch <i>inetd</i> aufrufen
 mod_core_stand=Stand-Alone-Daemon
@@ -301,6 +313,7 @@ mod_core_duser=Verbiete Benutzer
 mod_core_eip='$1' ist keine gültige IP-Adresse
 mod_core_enet='$1' ist keine gültige Netzwerk-Adresse
 mod_core_ehost='$1' ist keine gültiger Hostname
+
 mod_ls_fakegroup=Gruppe, die in Verzeichnis-Listings vorgetäuscht wird?
 mod_ls_fakeuser=Benutzer, der in Verzeichnis-Listings vorgetäuscht wird?
 mod_ls_fakemode=Zugriffsrechte in Verzeichnis-Listings vortäuschen?
@@ -317,6 +330,7 @@ mod_ls_efakeuser=Fehlender oder ungültiger Benutzer, der in Verzeichnis-Listing
 mod_ls_efakegroup=Fehlende oder ungültige Gruppe, die in Verzeichnis-Listings vorgetäuscht werden soll
 mod_ls_options=Verzeichnislisten-Optionen
 mod_ls_strict=Benutzer-Optionen übergehen?
+
 mod_auth_chdir=Standard Login-Verzeichnis
 mod_auth_echdir=Fehlendes oder ungültiges Standard Login-Verzeichnis
 mod_auth_chroot=Begrenze Benutzer auf Verzeichnisse
@@ -330,7 +344,9 @@ mod_auth_egroups=Es wurden keine Unix-Benutzergruppe für <i>chroot</i> angegebe
 mod_auth_echroot=Fehlendes oder ungültiges <i>chroot</i>-Verzeichnis
 mod_auth_login=Nach Passwort fragen, wenn Anmelden verboten ist?
 mod_auth_root=Erlaube <i>root</i> das Anmelden?
+
 mod_site_chmod=Erlaube den <i>chmod</i>-Befehl?
+
 mod_unixpw_ufile=Alternative Unix-Passwort-Datei
 mod_unixpw_eufile=Fehlende oder ungültige Alternative Unix-Passwort-Datei
 mod_unixpw_gfile=Alternative Unix-Gruppen-Datei
@@ -338,6 +354,7 @@ mod_unixpw_egfile=Fehlende oder ungültige Alternative Unix-Gruppen-Datei
 mod_unixpw_none=keine
 mod_unixpw_pam=PAM immer als <i>zuständig</i> betrachten?
 mod_unixpw_persist=Lasse die Passwort-Datei immer geöffnet?
+
 mod_log_syslog=Speicher Fehler in die Datei
 mod_log_sysdef=System-Logfile
 mod_log_esyslog=Fehlendes oder ungültiges System-Logfile
@@ -354,19 +371,25 @@ mod_log_fmt=Format-String
 mod_log_format=Benutzerdefinierte Log-Formate
 mod_log_enickname=Fehlender oder ungültiger Format-Name
 mod_log_efmt=Fehlender Format-String
+
 mod_pam_pam=PAM zur Authentisierung nutzen?
 mod_pam_config=Authentisierung mit PAM-Service
 mod_pam_econfig=Fehlender oder ungültiger PAM-Service
+
 mod_readme_display=Benachrichtigung der Benutzer über README-Dateien (Regular Expressions)
 mod_readme_none=Keine
 mod_readme_edisplay=Fehlende Angaben für Benachrichtigung der Benutzer über README-Dateien (Regular Expressions)
+
 start_err=Konnte ProFTPd-Server nicht starten
 start_einetd=Sie können nicht den Server-Daemon, wenn in inetd-Modus, starten.
+
 stop_err=Fehlgeschlagen FTP-Server zu stoppen
 stop_einetd=Sie können nicht den Server-Daemon, wenn in inetd-Modus, stoppen.
 stop_erun=Läuft nicht
+
 apply_err=Fehlgeschlagen FTP Konfiguration anzuwenden
 apply_egone=Läuft nicht länger
+
 ftpaccess_title=<i>Pro-Verzeichnis-Optionen</i>-Dateien
 ftpaccess_desc=Zusätzliche Pro-Verzeichnis-Optionen können in einer Datei (normalerweise <tt>.ftpaccess</tt>) in jedem Verzeichnis abgelegt werden. Diese Optionen sind gültig für alle Dateien und alle Unterverzeichnisse dieses Verzeichnisses, wenn diese Einstellungen nicht durch eine andere Option außer Kraft gesetzt werden.
 ftpaccess_create=Erzeuge Optionen-Datei
@@ -374,8 +397,10 @@ ftpaccess_find=Finde Optionen-Dateien
 ftpaccess_auto=Innerhalb <i>Anonymes FTP</i>
 ftpaccess_from=Vom Verzeichnis
 ftpaccess_return=<i>Pro-Verzeichnis-Optionen</i>-Dateien-Auflistung
+
 ftpusers_title=Verbotene FTP-Benutzer
 ftpusers_desc=Wenn diese Option unter <tt>Authentisierung</tt> zugeschaltet ist, dann haben Benutzer von der unten stehenden Liste (gespeichert in Datei $1) keinen Zugriff auf Ihr System via FTP.
+
 ftpindex_title=<i>Pro-Verzeichnis-Optionen</i>-Datei
 ftpindex_delete=Lösche Datei
 ftpindex_opts=Pro-Verzeichnis-Optionen
@@ -385,8 +410,10 @@ ftpindex_addlimit=Füge eine Pro-Befehl-Option hinzu für ...
 ftpindex_header2=$1 in $2
 ftpindex_return=<i>Pro-Verzeichnis-Optionen</i>-Datei
 ftpindex_header=Für $1
+
 find_err=Konnte Optionen-Datei nicht finden
 find_eanon=Anonymes FTP ist für keinen Virtuellen Server eingerichtet
+
 log_global=Changed global $1 options
 log_ftpusers=Changed denied FTP users
 log_virtc=Server $1 erstellt
@@ -420,6 +447,7 @@ log_anonm=Anonymous FTP für Server $1 manuell editiert
 log_anon=$1 im anonymen FTP für Server $2 geändert
 log_start=Proftpd gestartet
 log_apply=Angewandte Änderungen
+
 eafter=Konfiguration fehlgeschlagen: $1 Änderungen wurden noch nicht gespeichert.
 proftpd_apply=Wende Änderungen an
 proftpd_stop=Stoppe ProFTPd

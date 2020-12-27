@@ -16,9 +16,11 @@ index_mailfromnone=默认值（<tt>root</tt>）
 index_program=检测到问题时运行的命令
 index_programnone=别跑
 index_monitor=启用监控？
+
 raid6=RAID6（双分布式奇偶校验）
 raid10=RAID10（条带化和镜像）
 blocks=块
+
 create_missing=包括当前丢失的磁盘？
 create_assume=跳过设备初始化？
 create_group=备用组成员
@@ -32,6 +34,7 @@ create_o2_layout=2张胶印副本
 create_n3_layout=3近份
 create_f3_layout=3份副本
 create_o3_layout=3份胶印副本
+
 view_uuid=UUID
 view_errors=RAID错误
 view_bad=$1个磁盘发生故障
@@ -64,6 +67,7 @@ view_mountmsg=输入目录，然后单击此按钮转到用于挂载RAID设备�
 view_mountmsg2=单击此按钮可将此RAID设备用于系统上的虚拟内存。
 view_blocks=$1个街区
 view_sparegroup=备用组
+
 emdadmstop=<tt>mdadm</tt> in <tt>--stop</tt> mode failed : $1
 emdadmcreate=<tt>mdadm</tt> in <tt>--create</tt> mode failed : $1
 emdadmadd=<tt>mdadm</tt> in <tt>--manage --add</tt> mode failed : $1
@@ -71,6 +75,7 @@ emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
 log_add=已将分区 $2添加到RAID设备 $1
 log_remove=已从RAID设备 $1删除分区 $2
 log_replace=RAID设备 $1中具有备用分区 $3的热替换分区 $2
@@ -78,14 +83,17 @@ log_grow=将RAID设备 $1增长到总共 $2磁盘
 log_convert_to_raid6=将RAID5设备 $1转换为RAID6设备
 log_convert_to_raid5=将RAID6设备 $1转换为RAID5设备
 log_notif=更新了RAID问题通知选项
+
 notif_err=无法保存RAID问题通知选项
 notif_emailaddr=通知地址缺失或无效
 notif_emailfrom=缺少或无效的发件人地址
 notif_eprogram=缺少或不存在要运行的程序
+
 delete_title=删除RAID阵列
 delete_rusure=您确定要删除使用磁盘空间 $2的RAID阵列 $1吗？
 delete_ok=是的，将其删除
 delete_eidx=未选择RAID阵列！
+
 remove_title=从RAID阵列中删除分区
 remove_rusure=您确定要删除RAID阵列 $1的分区 $2吗？
 remove_ok=是的，将其删除

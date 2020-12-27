@@ -1,5 +1,6 @@
 check_etargets=Fișierul de configurare a serverului iSCSI $1 nu a fost găsit în sistemul dvs.
 check_eserver=Programul serverului iSCSI $1 nu a fost găsit în sistemul dvs.
+
 index_title=Server iSCSI
 index_clink=Poate că nu este instalat sau configurația modulului <a href='$1'></a> este incorectă.
 index_stop=Opriți serverul iSCSI
@@ -11,6 +12,7 @@ index_restartdesc=Faceți clic pe acest buton pentru a aplica configurația cure
 index_atboot=Începeți la pornire?
 index_atbootdesc=Modificați această opțiune pentru a controla dacă serverul iSCSI este pornit la momentul de pornire sau nu. Dacă momentan nu este pornit de la boot și este ales Yes, va fi creat un nou script init.
 index_return=indexul modulului
+
 extents_title=Dispozitive de partajat
 extents_none=Nu s-au creat încă dispozitive de partajat.
 extents_name=Nume dispozitiv
@@ -25,6 +27,7 @@ extents_denone=Nimic selectat
 extents_einuse=Dispozitivul $1 nu poate fi șters, deoarece este utilizat de : $2 
 extents_drusure=Sigur doriți să eliminați următoarele dispozitive: $1 ? Conținutul lor va fi păstrat, dar nu va mai fi accesibil clienților iSCSI.
 extents_sure=Ștergeți dispozitive
+
 extent_create=Creați dispozitiv pentru a partaja
 extent_edit=Editați dispozitivul pentru a partaja
 extent_egone=Dispozitivul de partajare $1 nu există!
@@ -50,6 +53,7 @@ extent_estart=Începutul întinderii trebuie să fie un număr
 extent_esize=Dimensiunea dimensiunii trebuie să fie un număr
 extent_esizemax=Sfârșitul măsurii nu poate fi mai mare decât dimensiunea dispozitivului $1 
 extent_einuse=Acest dispozitiv nu poate fi șters, deoarece este utilizat de : $1 
+
 devices_title=Combinații de dispozitive
 devices_none=Nu s-au creat încă combinații de dispozitive.
 devices_name=Denumirea combinației
@@ -65,6 +69,7 @@ devices_denone=Nimic selectat
 devices_einuse=Combinația $1 nu poate fi ștearsă, deoarece este utilizată de : $2 
 devices_drusure=Sigur doriți să eliminați următoarele combinații de dispozitive: $1 ? Conținutul lor va fi păstrat, dar nu va mai fi accesibil clienților iSCSI.
 devices_sure=Ștergeți combinațiile de dispozitive
+
 device_create=Creați combinație de dispozitive
 device_edit=Editează combinația de dispozitive
 device_egone=Combinația de dispozitiv $1 nu există!
@@ -81,6 +86,7 @@ device_sure=Ștergeți combinația dispozitivului
 device_einuse=Această combinație de dispozitiv nu poate fi ștearsă, deoarece este utilizată de : $1 
 device_eextents=Nu au fost selectate dispozitive membre
 device_eself=Unul dintre dispozitivele selectate conține acest dispozitiv!
+
 targets_title=Împărțirea țintelor
 targets_none=Încă nu au fost create obiective de partajare.
 targets_name=Numele țintei
@@ -96,6 +102,7 @@ targets_derr=Nu a reușit să ștergeți obiectivele de partajare
 targets_denone=Nimic selectat
 targets_drusure=Sigur doriți să eliminați următoarele ținte de distribuire: $1 ? Nu se vor pierde date, dar nu vor mai fi accesibile pentru clienții iSCSI.
 targets_sure=Ștergeți obiectivele de partajare
+
 target_create=Creați obiective de partajare
 target_edit=Modificați accesul la ținte
 target_egone=Partajarea țintei $1 nu există!
@@ -112,6 +119,7 @@ target_rusure=Sigur doriți să ștergeți ținta de partajare $1 ? Nu se vor pi
 target_sure=Ștergeți ținta
 target_enetwork=Rețea care lipsește sau este nevalidă cu care să partajați
 target_emask=Masca de net lipsă sau nevalidă pentru a partaja
+
 opts_title=Opțiuni server iSCSI
 opts_header=Opțiuni pentru toate țintele iSCSI
 opts_ip4=Acceptați conexiunile IPv4
@@ -124,10 +132,12 @@ opts_err=Nu a reușit să salvați opțiunile
 opts_ename=Numele care lipsește sau este incorect - sunt permise doar litere, numere, liniuță, punct și subliniere
 opts_eport=Număr de port lipsă sau non-numeric
 opts_esess=Sesiuni maxime lipsă sau nenumerotate
+
 manual_title=Editează fișierul de configurare
 manual_desc=Utilizați caseta de text de mai jos pentru a edita fișierul de configurare a serverului iSCSI $1. Aveți grijă, deoarece nu va fi efectuată nicio validare pe intrarea dvs.!
 manual_err=Nu a reușit să salvați fișierul de configurare
 manual_edata=Nu a fost introdus conținut!
+
 users_title=Autentificare iSCSI
 users_none=Nu s-au creat încă utilizatori iSCSI. Clienții vor putea accesa dispozitivele partajate fără autentificare.
 users_add=Adăugați un nou utilizator iSCSI.
@@ -135,6 +145,7 @@ users_delete=Ștergeți utilizatorii selectați
 users_name=Nume de utilizator
 users_mode=Metoda de autentificare
 users_return=lista de utilizatori
+
 user_create=Creați un utilizator iSCSI
 user_edit=Editați Utilizatorul iSCSI
 user_header=Detalii despre utilizator iSCSI
@@ -145,13 +156,16 @@ user_egone=Utilizatorul nu mai există!
 user_err=Nu a reușit salvarea utilizatorului iSCSI
 user_euser=Nume de utilizator lipsă sau nevalide - spațiile și comenzile nu sunt permise
 user_epass=Parolă care lipsește sau este nevalidă - spațiile și comenzile nu sunt permise
+
 desc_extent=Dispozitiv de partajare $1 
 desc_device=Combinație de dispozitiv $1 
 desc_target=Împărtășirea țintei $1 
+
 start_err=Eroare la pornirea serverului iSCSI
 stop_err=Nu a reușit să oprească serverul iSCSI
 restart_err=Eroare la repornirea serverului iSCSI
 atboot_err=Activarea eșuată la pornire
+
 log_create_extent=Dispozitiv creat pentru a partaja $1 
 log_modify_extent=A fost actualizat dispozitivul pentru a partaja $1 
 log_delete_extent=Dispozitiv șters pentru a partaja $1 

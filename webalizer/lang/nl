@@ -26,6 +26,7 @@ index_when=Ja, $1
 index_webalizer=Webalizer
 index_enable=Geselecteerde Planning
 index_disable=Planning Geselecteerde Uitschakelen
+
 edit_title1=Voeg een log file toe
 edit_title2=Bewerk log File
 edit_header=Log file rapport opties
@@ -49,12 +50,14 @@ edit_cmode0=Gebruik globale opties
 edit_cmode1=Custom opties
 edit_cmode2=Andere config file ..
 edit_clear=Log file's wissen na een geplande rapport ?
+
 gen_title=Genereer Rapport
 gen_header=Start webalizer om een rapport te genereren van $1 ..
 gen_done=.. klaar
 gen_failed=.. Webalizer mislukten! Bekijk het resultaat hierboven waarom.
 gen_nothing=.. Webalizer is klaar, maar er is geen rapport gegenereerd. Bekijk het resultaat  hierboven waarom.
 gen_view=Bekijk het complete rapport
+
 save_err=Opslaan van de log file is mislukt
 save_efile=Log file is niet ingevuld of bestaat niet
 save_ecfile=Vermiste of niet bestaande andere config file
@@ -64,12 +67,14 @@ save_ewuser=Er bestaat geen Unix gebruiker met de naam $1
 save_ehost=Website hostnaam bestaat niet of is verkeerd
 save_etitle=Rapport titel is niet ingevuld
 save_ecannot=U bent alleen maar bevoegd om rapporten te maken voor de log's van $1
+
 view_epath=Foutieve PATH_INFO
 view_efile=Foutieve naam voor rapport filenaam
 view_elog=Foutieve log file
 view_ecannot=U bent niet bevoegd om dit rapport te bekijken
 view_eopen=De rapport file openen is mislukt
 view_title=Bekijk Rapport
+
 global_title=Globale Webalizer Opties
 global_title2=Webalizer Rapport Opties
 global_for=Voor logfile $1
@@ -130,6 +135,7 @@ global_includesite=Clients die niet genegeerd moeten worden
 global_includereferrer=Verwijzingen die niet genegeerd moeten worden
 global_includeuser=Gebruikers die niet genegeerd moeten worden
 global_includeagent=Browsers die niet genegeerd moeten worden
+
 global_err=Gefaald om de Webalizer opties op te slaan
 global_ereport=Ontbrekende rapport titel voorkeur
 global_ehost=Ontbrekende of verkeerde host naam
@@ -139,6 +145,7 @@ global_etable=Ontbrekende of verkeerd formaat voor de '$1' tabel
 global_ehistory=Ontbrekende of verkeerde file naam van de geschiedenis
 global_ecurrent=Ontbrekende of verkeerde incrementele file naam
 global_ecache=Ontbrekende of verkeerde DNS cache file naam
+
 log_create_log=Aangemaakt rapport voor $1
 log_modify_log=Gemodificeerde rapportage voor $1
 log_delete_log=Verwijdert rapport voor $1
@@ -147,6 +154,7 @@ log_global=Gemodificeerde globale Webalizer opties
 log_global2=Gemodificeerde Webalizer opties voor $1
 log_enable_logs=Planning rapporteren voor $1 log's
 log_disable_logs=Planning verwijderen van rapporteren voor $1 Log's
+
 acl_view=Mag alleen maar bestaande rapporten bekijken?
 acl_global=Mag globale webalizer opties bewerken?
 acl_dir=Alleen bekijken en bewerken toestaan van rapporten voor log's onder

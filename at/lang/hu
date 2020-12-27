@@ -16,6 +16,7 @@ index_amode=Felhasználók akiknek egedélyezve van
 index_amode0=Minde Unix felhasználó
 index_amode1=Csak a listában szereplő felhasználók
 index_amode2=Mindenki, kivéve a listán szereplő felhasználók
+
 edit_title=Ütemezett feladat
 edit_cmd=Teljes futtatandó szkript
 edit_header=Ütemezett parancs leírása
@@ -23,6 +24,7 @@ edit_delete=A parancs megszakítása
 edit_run=Futtatás most
 edit_ejob=Az ütemezett feladat már nem létezik!
 edit_ecannot=Önnek nincs joga ezt az ütemezett feladatot szerkeszteni
+
 create_err=Nem lehet létrehozzni az ütemezett feladatot
 create_euser=Hibás vagy érvénytelen felhasználói név
 create_edate=Hibás vagy érvénytelen dátum
@@ -31,17 +33,21 @@ create_efuture=A dátum és az idő a múltban van
 create_edir=Hibás vagy érvénytelen könyvtár
 create_ecannot=Önnek nincs joga létrehozzni ütemezett feladatot ezzel a felhasználóval
 create_eallow=A megadott felhasználónak nincs engedélyezve, hogy ütemezett parancsot futtasson
+
 delete_err=Nem lehet megszakítani a parancsot
 delete_egone=A parancs már fut, vagy le lett törölve
+
 acl_users=Ezt a feladatot szerkesztheti a következő felhasználó
 acl_all=Összes felhasználó
 acl_this=Jelenlegi Webmin felhasználó
 acl_only=Csak adott felhasználók
 acl_except=Semelyik felhasználó
 acl_allow=Engedélyezve legyen az engedélyezett At userek szerkesztése?
+
 run_title=Parancs ufttatása
 run_output=Az ütemezett parancs kimenete
 run_none=Nem keletkezett kimenet
+
 allow_err=Nem sikerült menteni az engedélyezett felhasználókat
 allow_ecannot=Önnek nincs joga managelni az engedélyezett felhasználók
 allow_eusers=Nem lett felhasználó megadva

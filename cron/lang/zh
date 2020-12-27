@@ -7,6 +7,7 @@ index_none2=没有你可以访问的自动作业。
 index_create=创建新的定时自动作业
 index_allow=控制用户对自动作业的访问
 index_return=自动作业列表
+
 edit_title=编辑自动作业
 create_title=创建自动作业
 edit_ecannot=您未被允许编辑此用户的自动作业
@@ -35,6 +36,7 @@ edit_special_weekly=每周（在星期日）
 edit_special_monthly=每月（在第一天）
 edit_special_yearly=每年（在1月1日）
 edit_special_reboot=当系统启动时
+
 save_err=保存自动作业失败
 save_ecmd=您没有输入要执行的命令
 save_euser=您必须选择一个用户
@@ -42,6 +44,7 @@ save_euser2=用户 '$1' 不存在
 save_eallow=用户 '$1' 未被允许访问自动作业
 save_ecannot=您未被允许为 '$1' 创建或编辑自动作业
 save_enone=您没有选择任何要执行的 $1
+
 allow_title=控制自动作业访问权限
 allow_desc=此表单允许您控制哪些用户可以创建和运行自动作业。
 allow_ecannot=您不能控制用户对自动作业的访问权限
@@ -50,13 +53,16 @@ allow_all2=拒绝除 root 外的所有用户
 allow_all3=允许所有用户
 allow_allow=只允许列出的用户
 allow_deny=只拒绝列出的用户
+
 env_name=变量名称
 env_value=值
 env_ename='$1' 不是有效的变量名称
+
 exec_title=执行自动作业
 exec_ecannot=你未被允许为此用户执行自动作业
 exec_cmd=命令 $1 的输出结果…
 exec_none=没有输出结果产生
+
 acl_users=可以为下列用户编辑自动作业
 acl_all=全部用户
 acl_this=当前Webmin用户
@@ -65,6 +71,7 @@ acl_except=除这些用户之外的全部用户
 acl_control=可以控制用户对自动作业的访问？
 acl_uid=UID在此范围内的用户
 acl_gid=此主要组下的用户
+
 log_modify=已修改 $1 的自动作业
 log_modify_l=已修改 $1 的自动作业“$2”
 log_create=已创建 $1 的自动作业
@@ -73,4 +80,5 @@ log_delete=已删除 $1 的自动作业
 log_exec=已以 $1 身份执行自动作业
 log_exec_l=以 $1 身份执行自动作业“$2”
 log_allow=已改变用户对自动作业的访问权限
+
 ecopy=在新的自动作业配置中发现错误：$1 $2

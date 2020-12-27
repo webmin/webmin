@@ -21,6 +21,7 @@ index_mailfromnone=پیش فرض (<tt>root</tt>)
 index_program=فرمان هنگام اجرای مشکلات هنگام اجرا
 index_programnone=هر کاری نکنید
 index_monitor=نظارت فعال شده است؟
+
 linear=خطی (بهم پیوسته)
 raid0=RAID0 (راه راه)
 raid1=RAID1 (آینه دار)
@@ -29,6 +30,7 @@ raid5=RAID5 (توزیع برابری)
 raid6=RAID6 (دو برابر توزیع شده)
 raid10=RAID10 (راه راه و آینه دار)
 blocks=بلوک
+
 create_title=دستگاه RAID ایجاد کنید
 create_header=گزینه های دستگاه RAID
 create_device=پرونده دستگاه
@@ -62,6 +64,7 @@ create_o2_layout=2 کپی افست
 create_n3_layout=3 نزدیک کپی
 create_f3_layout=3 کپی دور
 create_o3_layout=3 کپی افست
+
 view_title=دستگاه RAID
 view_header=گزینه های دستگاه RAID
 view_device=پرونده دستگاه
@@ -117,6 +120,7 @@ view_mountmsg=برای رفتن به یک فرم برای نصب دستگاه RA
 view_mountmsg2=برای استفاده از این دستگاه RAID برای حافظه مجازی روی سیستم خود ، روی این دکمه کلیک کنید.
 view_blocks=$1 بلوک
 view_sparegroup=گروه یدکی
+
 mkfs_title=Filesystem را ایجاد کنید
 mkfs_header2=این فرم به شما امکان می دهد سیستم جدید$2 فایل را با$1 بسازید. همه داده های موجود پاک خواهند شد!
 mkfs_options=گزینه های جدید سیستم فایل لینوکس
@@ -124,6 +128,7 @@ mkfs_err=ایجاد سیستم فایل انجام نشد
 mkfs_exec=اجرای دستور$1 ..
 mkfs_failed=.. فرمان انجام نشد!
 mkfs_ok=.. فرمان کامل است.
+
 emkraid=<tt>mkraid</tt> انجام نشد :$1
 eraidstop=<tt>خط حمله</tt> انجام نشد :$1
 eraidstart=<tt>raidstart</tt> انجام نشد :$1
@@ -135,6 +140,7 @@ emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
 log_create=دستگاه RAID $2 ایجاد شد
 log_stop=غیرفعال دستگاه RAID$1
 log_start=دستگاه RAID فعال$1
@@ -147,14 +153,17 @@ log_grow=دستگاه RAID رشد$1 تا در کل$2 دیسک
 log_convert_to_raid6=دستگاه RAID5$1 را به دستگاه RAID6 تبدیل کرد
 log_convert_to_raid5=دستگاه RAID6$1 را به دستگاه RAID5 تبدیل کرد
 log_notif=گزینه های اعلان مسئله RAID به روز شده است
+
 notif_err=گزینه های اعلان مسئله RAID ذخیره نشد
 notif_emailaddr=آدرس اطلاع رسانی موجود نیست یا نامعتبر است
 notif_emailfrom=از آدرس موجود نیست یا نامعتبر است
 notif_eprogram=برنامه اجرا نشده یا غیر وجود دارد
+
 delete_title=RAID Array را حذف کنید
 delete_rusure=آیا مطمئن هستید که می خواهید آرایه RAID $1 که از$2 از فضای دیسک استفاده می کند را حذف کنید؟
 delete_ok=بله ، آن را حذف کنید
 delete_eidx=هیچ آرایه RAID انتخاب نشده است!
+
 remove_title=Partition را از RAID Array حذف کنید
 remove_rusure=آیا مطمئن هستید که می خواهید پارتیشن$2 از آرایه RAID $1 را حذف کنید؟
 remove_ok=بله ، آن را حذف کنید

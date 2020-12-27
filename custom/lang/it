@@ -15,6 +15,7 @@ index_actform=Modulo
 index_actrun=Esegui
 index_actsql=Modulo
 index_acted=Apri
+
 edit_title=Modifica comando
 create_title=Crea comando
 edit_ecannot=Non hai i permessi per modificare i comandi
@@ -58,6 +59,7 @@ edit_format1=Output in formato MIME
 edit_servers=Esegui sui server Webmin
 edit_this=questo server
 edit_clone=Clona
+
 save_err=Salvataggio del comando non riuscito
 save_ecannot=Non sei abilitato a modificare comandi
 save_ecmd=Nessun comando inserito
@@ -68,6 +70,7 @@ save_eorder=L'ordinamento nella pagina principale deve essere un numero
 save_etimeout=Tempo massimo di attesa mancante o non valido
 save_eusermin=I comandi eseguiti su altri server non possono essere eseguiti da Usermin
 save_eformat=Tipo di output in formato MIME non valido
+
 run_err=Esecuzione del comando non riuscita
 run_ecannot=Non sei abilitato ad eseguire questo comando
 run_euser=Utente mancante o non valido
@@ -83,6 +86,7 @@ run_eopt=Opzione selezionata non valida
 run_eupload=Nessun file selezionato per l' upload
 run_emust=Valore mancante per il parametro '$1'
 run_timeout=Comando temrinato dopo $1 secondi di timeout.
+
 log_modify=Comando $1 modificato
 log_create=Comando $1 creato
 log_delete=Comando $1 eliminato
@@ -91,11 +95,13 @@ log_modify_edit=File editor $1 modificato
 log_create_edit=File editor $1 creato
 log_delete_edit=File editor $1 eliminato
 log_save_edit=File $1 salvato
+
 acl_cmds=Comandi che questo utente può eseguire
 acl_call=Tutti i comandi
 acl_csel=Selezionato...
 acl_cexcept=Tutti ad eccezione dei selezionati ...
 acl_edit=Può creare e modificare comandi?
+
 file_ecannot=Non sei abilitato alla modifica di file
 fcreate_title=Crea File Editor
 fedit_title=Modifica File Editor
@@ -118,15 +124,18 @@ file_egroup=Nome del gruppo mancante o non valido
 file_eperms=Permessi ottali mancanti o non validi
 file_envs=Sostituire le variabili d'ambiente nel nome del file?
 file_id=ID dell'editor
+
 view_err=Modifica del file non riuscita
 view_ecannot=Non sei abilitato a modificare questo file
 view_title=Modifica File
 view_efile=Scrittura su $1 non riuscita: $2
 view_header=Edita file $1
+
 form_ecannot=Non sei abilitato ad eseguire questo comando
 form_title=Esegui Comando
 form_exec=Esegui
 form_edit=Modifica
+
 sql_title1=Crea comando SQL
 sql_title2=Modifica comando SQL
 sql_header=Dettagli del comando SQL
@@ -142,6 +151,7 @@ sql_err=Salvataggio del comando SQL non riuscito
 sql_esql=Nessuna istruzione SQL inserita
 sql_ehost=Host server per il database mancante o non valido
 sql_edb=Nome del database mancante o non valido
+
 srun_title=Esegui il comando SQL
 srun_err=Esecuzione del comando SQL non riuscita
 srun_edriver=Non è stato possibile caricare il driver DBI

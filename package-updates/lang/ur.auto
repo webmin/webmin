@@ -57,6 +57,7 @@ index_reposdisable=ذخیروں کو غیر فعال کریں
 index_reposenable=ذخیروں کو فعال کریں
 index_reposdelete=ذخیروں کو حذف کریں
 index_repoheader=نئے پیکیج ذخیرہ کے اختیارات
+
 update_title=پیکیج کو اپ ڈیٹ کریں
 update_title2=پیکجز انسٹال کریں
 update_enone=کوئی پیکیج منتخب نہیں ہوئے ہیں
@@ -94,9 +95,11 @@ update_none=کوئی نہیں
 update_ops=پیکجوں کی مکمل فہرست بنانا ..
 update_rebootdesc=انسٹال کردہ پیکیج میں سے ایک کو مکمل طور پر لاگو ہونے کے لئے ریبوٹ کی ضرورت ہوتی ہے۔
 update_reboot=اب دوبارہ شروع
+
 sched_title=شیڈول اپ ڈیٹ
 sched_yes=تازہ کاریوں کے لئے شیڈول چیکنگ اب فعال ہے۔
 sched_no=تازہ کاریوں کی جانچ پڑتال کو غیر فعال کردیا گیا ہے۔
+
 log_update=$1 تازہ کاری شدہ پیکیج انسٹال ہوئے
 log_sched=قابل عمل طے شدہ اپ ڈیٹس
 log_unsched=غیر فعال شیڈیول اپ ڈیٹس
@@ -108,11 +111,13 @@ log_enable_repo=فعال پیکیج ذخیرہ$1
 log_disable_repo=غیر فعال پیکیج ذخیرہ$1
 log_delete_repo=حذف شدہ پیکیج ذخیرہ$1
 log_create_repo=پیکیج ذخیرہ$1 تشکیل دیا گیا
+
 refresh_title=تازگی پیکجز
 refresh_clearing=پیکیج کیشوں کو صاف کرنا ..
 refresh_done=.. ہو گیا
 refresh_available=دستیاب پیکیجوں کی دوبارہ بازیافت ..
 refresh_done3=.. کو$1 ممکنہ اپ ڈیٹ ملا
+
 view_title=پیکیج کی تفصیلات
 view_header=تازہ ترین قابل پیکیج کی معلومات
 view_name=پیکیج کا نام
@@ -126,12 +131,14 @@ view_changelog=دستیاب ورژن کے لئے چینلگ
 view_software=پیکیج کا نظم کریں
 view_update=پیکیج کو اپ ڈیٹ کریں
 view_install=پیکیج انسٹال کریں
+
 system_yum=YUM
 system_apt=اے پی ٹی
 system_csw=CSW (بلاسٹ ویو)
 system_webmin=ویب مین ماڈیول
 system_usermin=صارف کا ماڈیول
 system_tgz=ویبمین یا یوزر مین tar.gz
+
 repos_err_disable=ذخیروں کو غیر فعال کرنے میں ناکام
 repos_err_enable=ذخیروں کو قابل بنانے میں ناکام
 repos_err_delete=ذخیروں کو حذف کرنے میں ناکام

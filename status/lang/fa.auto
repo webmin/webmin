@@ -4,6 +4,7 @@ index_refsel=تازه کردن انتخاب شده است
 index_group=اعضای$1
 index_tmpls=قالب های ایمیل را ویرایش کنید
 index_tmplsdesc=مشاهده و ویرایش الگوهای استفاده شده برای ساخت پیام های ایمیل ارسال شده هنگام نظارت بر سرویس ها پایین می روند.
+
 type_squid=سرور پروکسی ماهی مرکب
 type_sslcert=گواهی SSL
 type_ftp=سرویس FTP از راه دور
@@ -18,6 +19,8 @@ type_alive=سیستم زنده
 type_rssh=SSH از راه دور
 type_slapd=سرور LDAP
 type_ldap=اتصال LDAP
+
+mon_virtualmin=هشدار این نمایشگر با دامنه Virtualmin $1 مرتبط است و بنابراین نباید در اینجا ویرایش یا حذف شود.
 mon_header2=دستورات اجرا
 mon_header3=گزینه های خدمات نظارت شده
 mon_remotes2=روی میزبان ها و گروه ها اجرا کنید
@@ -49,6 +52,7 @@ mon_changes0=نمایش هر نوع رویداد
 mon_changes1=فقط تغییرات را نمایش دهید
 mon_all=نمایش تمام وقایع تاریخی
 mon_nochanges=هیچ تغییری در وضعیت گذشته در$1 رویدادهای تاریخی رخ نداد.
+
 sched_pnone=صفحه ارسال نکنید
 sched_eemailserver=سرور نامه شما نصب نشده است :$1
 sched_sms=ارسال پیامک به
@@ -62,13 +66,16 @@ sched_subject0=هیچ کدام (هشدار در بدن است)
 sched_subject1=متن هشدار (بدن را خالی بگذارید)
 sched_subject2=متن سفارشی
 sched_esubject=موضوع پیام کوتاه وجود ندارد
+
 http_regexp=صفحه باید با regexp مطابقت داشته باشد
 http_eregexp=هیچ عبارت منظم برای مطابقت با صفحه وارد نشده است
 http_none2=مطابقت ندارد
 http_ehead=هنگام بررسی یک عبارت معمولی ، روش درخواست HEAD قابل استفاده نیست
+
 proc_asuser=در حال اجرا به عنوان کاربر
 proc_anyuser=هر کاربر
 proc_easuser=کاربر برای پردازش به عنوان وجود ندارد
+
 exec_mode=خروج از بررسی وضعیت
 exec_mode0=اگر فرمان نتواند مانیتور شود
 exec_mode1=اگر فرمان موفق شد مانیتور را انجام دهید
@@ -78,6 +85,7 @@ exec_noregexp=بررسی نکنید
 exec_remode=بررسی Regexp
 exec_remode0=اگر خروجی مطابقت نداشته باشد انجام نمی شود
 exec_remode1=اگر خروجی مطابقت نداشته باشد انجام نمی شود
+
 file_elarge=پرونده های بسیار بزرگ :$1
 file_esmall=پرونده ها بسیار کوچک هستند :$1
 file_eowner=پرونده های دارای مالک اشتباه :$1
@@ -87,6 +95,7 @@ file_group=گروه پرونده باید باشد
 file_nocheck=هر چیزی
 file_perms=مجوزهای روزمره باید باشد
 file_eperm=پرونده هایی با مجوزهای اشتباه :$1
+
 space_min2=حداقل فضای آزاد
 space_mode0=اندازه مطلق
 space_mode1=درصد از کل
@@ -96,12 +105,14 @@ space_ierr=فقط$1 inode رایگان است
 space_merr=فقط$1 فضای رایگان
 space_perr=فقط$1٪ رایگان
 space_dferr=اندازه سیستم پرونده دریافت نشد
+
 log_deletes=مانیتور$1 حذف شد
 log_tmpl_create=قالب ایمیل ایجاد شد$1
 log_tmpl_modify=الگوی ایمیل اصلاح شده$1
 log_tmpl_delete=قالب ایمیل$1 حذف شد
 log_tmpl_deletes=قالب های ایمیل$1 حذف شد
 log_refresh=وضعیت مانیتور را تازه کرد
+
 memory_min2=حداقل حافظه واقعی رایگان
 memory_free2=حافظه واقعی$1 رایگان
 memory_freeswap=حافظه مجازی$1 رایگان
@@ -109,10 +120,14 @@ memory_freelow=فقط$1 حافظه واقعی رایگان است
 memory_freelowswap=فقط$1 حافظه مجازی رایگان است
 memory_minswap=حداقل حافظه مجازی رایگان
 memory_eminswap=مقدار حافظه مجازی مجانی یا نامعتبر است
+
 init_action=اقدام برای بررسی
 init_eaction=هیچ عملی انتخاب نشده است
+
 refresh_doing2=تازه کردن وضعیت $1 مانیتور انتخاب شده ..
+
 nut_eups=هیچ USP برای بررسی وارد نشده است
+
 dns_server=سرور DNS
 dns_host=نام میزبان برای جستجو
 dns_address=آدرس IP مورد انتظار
@@ -120,6 +135,7 @@ dns_eserver=سرور DNS وجود ندارد یا نامعتبر است
 dns_ehost=نام میزبان برای جستجوی نامعتبر یا نامعتبر است
 dns_eaddress=آدرس IP مورد انتظار یا نامعتبر نیست
 dns_ecmds=دستورات <tt>nslookup</tt> یا <tt>dig</tt> روی سیستم شما نصب نشده است
+
 monitor_sub_down=$1 پایین تر از$2
 monitor_pager_down=$1: "$2" پایین$3 است
 monitor_snmp_down= $1:$2 
@@ -151,8 +167,10 @@ monitor_run1=در حال اجرا$1 در$2 ..
 monitor_run2=در حال اجرا$1 ..
 monitor_runerr=$1 در$2 اجرا نشد :$3
 monitor_email_stat=وضعیت فعلی:$1
+
 deletes_egone=یکی از مانیتورهای انتخاب شده دیگر وجود ندارد
 deletes_enone=هیچ مانیتوری انتخاب نشده است
+
 ftp_host=میزبان سرور FTP
 ftp_port=پورت FTP
 ftp_user=به عنوان کاربر وارد شوید
@@ -169,6 +187,7 @@ ftp_econn=اتصال TLS FTP انجام نشد
 ftp_econn2=اتصال TLS FTP انجام نشد :$1
 ftp_elogin=ورود TLS FTP انجام نشد :$1
 ftp_etlsfile=بارگیری TLS FTP انجام نشد :$1
+
 query_driver=نوع پایگاه داده SQL
 query_db=نام پایگاه داده
 query_host=میزبان سرور پایگاه داده
@@ -189,9 +208,12 @@ query_elogin=ورود به سیستم انجام نشد :$1
 query_eprepare=خطای SQL :$1
 query_eexecute=SQL انجام نشد :$1
 query_ewrong=نتیجه نادرست :$1
+
 consume_rate=حداکثر میزان مصرف (در ثانیه)
 consume_high=میزان مصرف$1 / ثانیه است
+
 alive_up=با$1 افزایش یابد
+
 rssh_host=میزبان سرور SSH
 rssh_ruser=به عنوان کاربر وارد شوید
 rssh_rpass=ورود با رمز ورود
@@ -207,6 +229,7 @@ rssh_error=خطای SSH
 rssh_haspass=کلمه عبور
 rssh_port=درگاه سرور SSH
 rssh_eport=شماره پورت موجود نیست یا نامعتبر است
+
 tmpls_title=الگوهای ایمیل
 tmpls_ecannot=شما مجاز به ویرایش الگوهای ایمیل نیستید
 tmpls_none=هنوز الگوی ایمیل تعریف نشده است. همه هشدارها با استفاده از پیامهای پیش فرض وبمین ارسال می شوند.
@@ -215,6 +238,7 @@ tmpls_email=پیام ایمیل
 tmpls_add=یک الگوی ایمیل جدید اضافه کنید.
 tmpls_return=لیست قالب ها
 tmpls_delete=الگوهای انتخابی را حذف کنید
+
 tmpl_title1=ایجاد الگوی ایمیل
 tmpl_title2=ویرایش الگوی ایمیل
 tmpl_header=پیام های الگوی ایمیل هشدار دهید
@@ -239,9 +263,11 @@ tmpl_esms=پیام پیامکی وجود ندارد
 tmpl_esnmp=پیام SNMP وجود ندارد
 tmpl_err2=الگوی ایمیل حذف نشد
 tmpl_eusers=مورد استفاده مانیتورهای زیر است :$1
+
 dtmpls_err=الگوهای حذف نشدند
 dtmpls_enone=هیچ یک انتخاب نشده است
 dtmpls_eusers=$1 توسط مانیتورهای زیر استفاده می شود :$2
+
 sslcert_src=محل گواهی
 sslcert_url=از آدرس HTTPS
 sslcert_file=از پرونده روی سرور
@@ -259,18 +285,21 @@ sslcert_eend=بعد از$1 معتبر نیست
 sslcert_left=بالاتر -$1 روز تا زمان انقضا
 sslcert_ematch=نام میزبان$1 با گواهی$2 مطابقت ندارد
 sslcert_emismatch=چک کردن نام میزبان گواهی فقط می تواند هنگام چک کردن URL مورد استفاده قرار گیرد
+
 du_dir=دایرکتوری برای نظارت
 du_max=حداکثر اندازه
 du_edir=مسیر دایرکتوری موجود نیست یا غیر مطلق است
 du_emax=حداکثر اندازه موجود یا غیر عددی است
 du_over=اندازه$1 است
 du_under=اندازه فقط$1 است
+
 ldap_edriver=ماژول Perl $1 نصب نشده است
 ldap_host=نام میزبان سرور LDAP
 ldap_port=درگاه سرور LDAP
 ldap_ssl=از اتصال SSL استفاده می کنید؟
 ldap_user=ورود به سیستم سرور LDAP
 ldap_pass=رمز عبور سرور LDAP
+
 info_desc=مانیتور سیستم
 info_last=وضعیت فعلی
 info_title=وضعیت سیستم و سرور

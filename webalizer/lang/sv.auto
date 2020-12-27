@@ -26,6 +26,7 @@ index_when=Ja, $1
 index_webalizer=Webalizer
 index_enable=Schema vald
 index_disable=De-schemat valt
+
 edit_title1=Lägg till loggfil
 edit_title2=Redigera loggfil
 edit_header=Alternativ för loggfilrapport
@@ -49,12 +50,14 @@ edit_cmode0=Använd globala alternativ
 edit_cmode1=Anpassade alternativ
 edit_cmode2=Annan konfigurationsfil ..
 edit_clear=Rensa loggfiler efter planerad rapport?
+
 gen_title=Generera rapport
 gen_header=Kör Webalizer för att generera rapport från $1 ..
 gen_done=.. Gjort
 gen_failed=.. Webalizer misslyckades! Se utgången ovan för detaljer.
 gen_nothing=.. Webalizer klar, men ingen rapport genererades. Se utgången ovan för detaljer.
 gen_view=Visa färdig rapport.
+
 save_err=Det gick inte att spara loggfilen
 save_efile=Loggfilen har inte skrivits in eller finns inte
 save_ecfile=En annan konfigurationsfil saknas eller saknas
@@ -64,12 +67,14 @@ save_ewuser=Ingen Unix-användare som heter $1 finns
 save_ehost=Saknat eller ogiltigt webbhotellnamn
 save_etitle=Saknas rapporttitel
 save_ecannot=Du får bara generera rapporter för loggar under $1 
+
 view_epath=Ogiltig PATH_INFO
 view_efile=Ogiltigt rapportfilnamn
 view_elog=Ogiltig loggfil
 view_ecannot=Du får inte se den här rapporten
 view_eopen=Det gick inte att öppna rapportfilen
 view_title=Visa rapport
+
 global_title=Globala webalizeralternativ
 global_title2=Webalizer-rapportalternativ
 global_for=För loggfil $1 
@@ -130,6 +135,7 @@ global_includesite=Kunder inte att ignorera
 global_includereferrer=Hänvisare att inte ignorera
 global_includeuser=Användare att inte ignorera
 global_includeagent=Webbläsare att inte ignorera
+
 global_err=Det gick inte att spara Webalizer-alternativ
 global_ereport=Prefix för rapporttitel saknas
 global_ehost=Saknat eller ogiltigt värdnamn
@@ -139,6 +145,7 @@ global_etable=Storleken saknas eller ogiltig för tabellen '$1'
 global_ehistory=Saknat eller ogiltigt historikfilnamn
 global_ecurrent=Saknas eller ogiltigt inkrementellt filnamn
 global_ecache=Saknat eller ogiltigt DNS-cache-filnamn
+
 log_create_log=Skapad rapportering för $1 
 log_modify_log=Ändrad rapportering för $1 
 log_delete_log=Raderad rapportering för $1 
@@ -147,6 +154,7 @@ log_global=Modifierade globala Webalizer-alternativ
 log_global2=Modifierade Webalizer-alternativ för $1 
 log_enable_logs=Schemalagd rapportering av $1 loggar
 log_disable_logs=De schemalagda rapportering av $1 loggar
+
 acl_view=Kan bara visa befintliga rapporter?
 acl_global=Kan du redigera globala webbalizeralternativ?
 acl_dir=Tillåt bara visning och redigering av rapporter för loggar under

@@ -39,7 +39,9 @@ index_thost=Numele gazdei
 index_tdesc=Descriere
 index_tver=Versiune
 index_ttype=Tip de sistem de operare
+
 this_server=acest server
+
 add_title=Adăugați servere
 add_msg=Se adaugă $1 ..
 add_gmsg=Adăugarea serverelor în grupul $1 ..
@@ -49,6 +51,7 @@ add_echeck=Serverul $1 nu are modulul de configurare Usermin
 add_echeck2=Serverul $1 nu are modulul Usermin User
 add_eversion=Serverul $1 nu rulează versiunea Usermin $2 sau mai mare.
 add_ok=S-au adăugat $1 cu $2 module și $3 teme.
+
 refresh_title=Actualizare modul și liste teme
 refresh_header=Re-solicitați modulul și listele de teme de la toate serverele ..
 refresh_header4=Re-solicitați modulul și listele de teme de la membrii $2 ..
@@ -64,6 +67,7 @@ refresh_g2=Eliminate $1 grupuri.
 refresh_done=.. Terminat
 refresh_del=A fost eliminat $1 din lista de server
 refresh_failed=Eroare la actualizare $1 : $2 
+
 host_title=Server gestionat
 host_header=Detalii despre server Usermin gestionate
 host_name=Numele gazdei
@@ -81,6 +85,7 @@ host_header_u=Utilizatori Usermin
 host_header_g=Grupuri Usermin
 host_return=detalii server
 host_version2=Versiune
+
 edit_title_mod=Modul Modificare
 edit_title_theme=Editează tema
 edit_header_mod=Detaliile modulului Usermin de la $1 
@@ -103,6 +108,7 @@ edit_codes=Din testul $1
 edit_acl=Editează ACL pentru
 edit_uacl=Utilizatorul $1 pe $2 
 edit_gacl=Grupa $1 pe $2 
+
 install_err=Instalarea modulului nu a reușit
 install_title=Instalați modulul
 install_elocal=Nu a fost furnizat niciun fișier local
@@ -123,6 +129,7 @@ do_failed=Instalarea eșuată pe $1 : $2
 do_success_mod=Modulul instalat $2 pe $1 
 do_success_theme=Tema instalată $2 pe $1 
 do_done=.. Terminat
+
 delete_err=Nu a reușit ștergerea modulului $1 
 delete_epack=Modulul $1 nu există
 delete_title=Ștergeți modulul
@@ -140,6 +147,7 @@ delete_edepends=Modulul (modulele) $1 depind de acesta.
 delete_egone=Modulul nu mai există
 delete_esuccess=Șters cu succes din $1 : $2 
 delete_acls=Ștergeți de la utilizatori și resetați setările de control de acces?
+
 user_title1=Creare utilizator Usermin
 user_header1=Detaliile utilizatorului Usermin noi
 user_name=Nume de utilizator
@@ -198,11 +206,13 @@ user_all=&lt;toate gazdele&gt;
 user_donthave=&lt;gazdele care nu au&gt;
 user_have=&lt;gazdele care îl au&gt;
 user_ofgroup=Membrii $1 
+
 udelete_title=Ștergeți utilizator
 udelete_doing=Ștergerea utilizatorului $1 din toate gazdele ..
 udelete_success=Șters cu succes din $1 
 udelete_failed=Nu a putut fi șters de la $1 : $2 
 udelete_done=.. Terminat
+
 group_title1=Creați grup
 group_header1=Detaliile grupului Usermin noi
 group_name=Numele Grupului
@@ -230,6 +240,7 @@ group_failed2=Actualizarea grupului nu a reușit pe $1 : $2
 group_return=detalii de grup
 group_nomems=Fără membri
 group_servers=Server (e) pentru a crea pe
+
 gdelete_title=Ștergeți grupul
 gdelete_desc=Sigur doriți să ștergeți grupul $1 și utilizatorii săi $2 din toate gazdele?
 gdelete_ok=Ștergeți grupul
@@ -238,6 +249,7 @@ gdelete_success=Șters cu succes din $1
 gdelete_failed=Nu a putut fi șters de la $1 : $2 
 gdelete_done=.. Terminat
 gdelete_esub=Acest grup are subgrupuri $1, deci nu poate fi șters.
+
 acl_title=Controlul accesului modulului
 acl_title2=Pentru utilizator $1 în $2 pe $3 
 acl_title3=Pentru grupul $1 în $2 pe $3 
@@ -256,6 +268,7 @@ acl_doing2=Setarea controlului de acces pentru $1 pe $2.
 acl_success=Setați cu succes controlul de acces pe $1 
 acl_failed=Setarea controlului de acces nu a reușit pe $1 : $2 
 acl_done=.. Terminat
+
 sync_title=Sincronizați serverele
 sync_desc=Acest formular vă permite să creați utilizatori și grupuri Usermin pe servere care nu le au în prezent, pentru a aduce conturile în sincronizare pe toate serverele din clusterul dvs.
 sync_hosts=Servere pentru sincronizare
@@ -279,6 +292,7 @@ sync_gcreate=Adăugarea grupului Usermin $1 ..
 sync_acl=Copierea fișierelor ACL pentru $1 ..
 sync_test=Arătați doar ce s-ar face?
 sync_restart=Repornirea Usermin ..
+
 upgrade_title=Actualizați Usermin
 upgrade_header=Actualizarea Usermin pe toate gazdele ..
 upgrade_header2=Actualizați Usermin pe $1 ..
@@ -297,6 +311,7 @@ upgrade_failed=Instalarea eșuată pe $1 : $2
 upgrade_done=.. Terminat
 upgrade_efast=Doar serverele care utilizează modul RPC rapid pot fi actualizate
 upgrade_ereconn=Nu a reușit să vă reconectați la Usermin după actualizare!  : $1 
+
 update_title=Module de actualizare
 update_header=Actualizarea modulelor pentru toate gazdele ..
 update_header5=Actualizarea modulelor pe $2 ..

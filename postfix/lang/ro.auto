@@ -3,6 +3,7 @@ connect_elogin=Eroare la autentificarea la baza de date $1:$2.
 index_title=Server de e-mail Postfix
 index_epath=Comanda Postfix control $1 nu este instalată în sistemul dvs. Poate că configurația modulului <a href='$2'></a> este incorectă sau Postfix nu este instalat.
 index_postfix=Postfix
+
 internal_error=Eroare internă
 index_econfig=Comanda de configurare Postfix $1 nu există. Poate că configurația modulului <a href='$2'></a> este incorectă.
 index_esuper=Comanda de supraveghere Postfix $1 nu există. Poate că configurația modulului <a href='$2'></a> este incorectă.
@@ -14,8 +15,10 @@ index_startmsg=Faceți clic pe acest buton pentru a porni serverul de poștă Po
 index_reloadmsg=Faceți clic pe acest buton pentru ca Postfix să citească din nou toate fișierele de configurare. Acest lucru poate fi util dacă fișierele de configurare Postfix au fost modificate manual.
 index_version=Versiunea postfix $1
 opts_err=Nu a reușit să salvați opțiunile
+
 check_error=Eroare în timp ce verificați configurația curentă Postfix. Vă rugăm să reparați manual configurația Postfix.
 check_manual=Editează manual fișierul de configurare Postfix.
+
 address_rewriting_title=Rescrierea adreselor și mascararea
 address_rewriting_ecannot=Nu aveți voie să editați rescrierea și mascarea adresei
 aliases_title=Aliasuri prin poștă
@@ -42,9 +45,11 @@ aliases_type5=Fișier automat $1
 aliases_type6=Aplicați fișierul de filtru $1
 aliases_none=Nici unul
 aliases_delete=Ștergeți pseudonimele selectate
+
 postfinger_title=Verificare configurație
 postfinger_show=Spectacol
 postfinger_ecannot=Nu aveți voie să verificați configurația Postfix
+
 mailclean_title=Curățați MailQueue
 mailclean_ecannot=Nu există privilegii pentru curățarea MailQueues
 mailclean_active=Active-Coadă
@@ -53,6 +58,7 @@ mailclean_deferred=Amânat-Coadă
 mailclean_defer=Suspendați-Coadă
 mailclean_all=Toate cozile
 mailclean_search=Caută-String
+
 aform_type0=Nici unul
 aform_type1=Adresa de email
 aform_type2=Adrese din dosar
@@ -68,6 +74,7 @@ aform_val=Alias pentru
 aform_afile=Editați | × ..
 aform_return=alias
 aform_cmt=Descriere
+
 asave_err=Nu a reușit să salveze alias
 asave_eaddr=„$1” nu este o adresă validă
 asave_ealready=Există deja un alias pentru „$1”
@@ -78,11 +85,13 @@ asave_etype4=„$1” nu este un program valid sau nu există
 asave_etype5=Fișierul automat „$1” nu este valid
 asave_etype4none=Nici un program dat
 asave_etype6=Fișierul de filtrare „$1” nu este valid
+
 afile_title=Editează fișierul de adrese
 afile_desc=Utilizați zona de text de mai jos pentru a edita adresele din fișierul $1.
 afile_efile=Nu aveți voie să editați $1.
 afile_undo=Anulează modificările
 afile_ewrite=Eroare la scrierea în fișierul de adrese : $1
+
 ffile_title=Editați fișierul de filtrare
 ffile_desc=Utilizați formularul de mai jos pentru a configura regulile de filtrare din fișierul $1.
 ffile_efile=Nu aveți voie să editați $1.
@@ -98,6 +107,7 @@ ffile_other=În caz contrar, transmiteți $1
 ffile_err=Nu a reușit să salvați fișierul de filtru
 ffile_ematch=Meciul lipsă
 ffile_eaction=Adresa de expediere lipsește
+
 rfile_title=Editați fișierul automat
 rfile_desc=Utilizați zona de text de mai jos pentru a edita mesajul automat în $1. Mesajul poate conține macro-urile $SUBJECT, $FROM, $TO, $DATE și $BODY, care vor fi extinse atunci când este activată automată.
 rfile_desc2=Puteți seta, de asemenea, anteturi de e-mail care adaugă sau înlocuiește valorile implicite utilizate în autoreply introducând linii precum: <br><tt> De la: foo@bar.com </tt><br> <tt>Subiect: În vacanță</tt> <br> în partea de sus a mesajului, separată de corp printr-o singură linie goală.
@@ -116,11 +126,13 @@ rfile_from=De la: adresa pentru răspuns
 rfile_auto=Automat (bazat pe adresa destinatarului)
 rfile_efrom=Lipsește de la: adresa
 rfile_fromdesc=O adresă From: ar trebui să fie întotdeauna specificată acolo unde este posibil, deoarece metoda automată poate să nu fie fiabilă.
+
 general_title=Optiuni generale
 general_title_sensible=Opțiuni generale cele mai utile
 general_title_others=Alte opțiuni generale
 general_ecannot=Nu aveți voie să editați Opțiuni generale
 what_is_it=Ce este?
+
 opts_default=Mod implicit
 opts_none=Nici unul
 opts_nomap=Fără hartă setată
@@ -140,10 +152,12 @@ opts_mail_owner=Proprietar de mail
 opts_default_privs=Drepturile implicite ale agentului de livrare
 opts_inet_interfaces=Interfețe de rețea pentru primirea e-mailului
 opts_all_interfaces=Toate
+
 opts_local_recipient_maps=Respingeți utilizatorii locali necunoscuți
 opts_no=Nu
 opts_save=Salvați și aplicați
 opts_edir=Vi se permite doar să specificați fișierele de hartă sub $1
+
 opts_allow_percent_hack=Rescrieți „user%domain” în „user@domain”
 opts_append_at_myorigin=Rescrie „user” la „user@$mydomain”
 opts_append_dot_mydomain=Rescrieți „user @ gazdă” pe „user@host.$mydomain”
@@ -153,13 +167,17 @@ opts_swap_bangpath=Rescrieți „site! User” în „user @ site”
 opts_masquerade_domains=Adresarea mascării
 opts_masquerade_exceptions=Excepții de mascare
 index_return=Configurație postfix
+
 opts_alias_maps=Baze de date alias utilizate de agentul de livrare local
 opts_alias_database=Baze de date alias construite prin comanda „newaliases”
 aliases_warning=Avertisment: <ul><li> când primul câmp nu este gol, comanda implicită de generare alias Postfix este utilizată pentru a construi bazele de date corespunzătoare; <li>Altfel se utilizează comanda de compatibilitate Sendmail „newaliases”, aceasta va folosi bazele de date al doilea câmp.</ul>
+
 aliases_name=Nume
 aliases_value=Alias pentru. ..
+
 new_alias=Creați un nou alias
 new_aliasmsg=Faceți clic pe acest buton pentru a crea un nou alias
+
 local_delivery_ecannot=Nu aveți voie să editați opțiunile locale de livrare
 local_delivery_title=Livrare locală
 opts_local_transport=Denumirea transportului pentru livrările locale
@@ -185,6 +203,7 @@ opts_local_destination_recipient_limit=Numărul maxim de destinatari per livrare
 opts_local_destination_recipient_limit_default=Mod implicit
 opts_prepend_delivered_header=Pregătiți un <tt>Livrat-către:</tt> când. ..
 opts_prepend_delivered_header_default=Mod implicit
+
 resource_title=Controlul general al resurselor
 resource_ecannot=Nu aveți voie să editați parametrii de control al resurselor
 opts_bounce_size_limit=Dimensiunea maximă a mesajului respins
@@ -204,6 +223,7 @@ opts_qmgr_message_recipient_limit=Numărul maxim de destinatari în memorie
 opts_queue_minfree=Minim spațiu liber în sistemul de fișiere de coadă
 opts_stale_lock_time=Perioada maximă după care este eliberată încuierea
 opts_transport_retry_time=Timp în secunde între încercările de a contacta un MDT stricat
+
 opts_always_bcc=Adresa care primește cb din fiecare mesaj
 opts_always_bcc_none=Nici unul
 opts_daemon_timeout=Interval de timp pentru gestionarea cererilor
@@ -242,6 +262,7 @@ opts_trigger_timeout=Timp maxim pentru a trimite un declanșator la un demon
 opts_delay_warning_time=Timp în ore înainte de a trimite un avertisment pentru nici o livrare
 opts_delay_warning_time_default2=Postfix implicit
 opts_content_filter_default=Nici unul
+
 smtpd_title=Opțiuni server SMTP
 smtpd_ecannot=Nu aveți voie să editați opțiunile serverului SMTP
 opts_disable_vrfy_command=Dezactivați comanda SMTP VRFY
@@ -273,6 +294,7 @@ smtpd_nomap=Nu a fost introdusă încă o hartă pentru adresele permise pentru 
 smtpd_nomap2=Nu a fost introdusă încă o hartă pentru restricții la adresele expeditorului.
 smtpd_map=Adresele permise pentru redare
 smtpd_map2=Restricții la adresele expeditorului
+
 smtp_title=Opțiuni client SMTP
 smtp_ecannot=Nu aveți voie să editați opțiunile clientului SMTP
 opts_best_mx_transport=Acțiune când este listată ca cea mai bună gazdă MX
@@ -293,6 +315,7 @@ opts_smtp_data_done_timeout=Perioada de așteptare pentru ca răspunsul să se �
 opts_smtp_quit_timeout=Timeout la așteptarea răspunsului la QUIT
 opts_smtp_use_tls=Utilizați TLS pentru conexiunile SMTP
 opts_smtp_sasl_security_options=Opțiuni de securitate SASL
+
 rate_title=Tarifele de livrare
 rate_ecannot=Nu aveți voie să modificați opțiunile privind tarifele de livrare
 opts_default_destination_concurrency_limit=Numărul maxim de livrări paralele către aceeași destinație
@@ -303,18 +326,21 @@ opts_maximal_queue_lifetime=Timpul maxim (zile) în coadă înainte ca mesajul s
 opts_minimal_backoff_time=Timp minim (secunde) între încercările de a transmite un mesaj amânat
 opts_queue_run_delay=Timp (secunde) între scanarea cozii amânate
 opts_defer_transports=Transporturi care nu trebuie livrate
+
 debug_title=Funcții de depanare
 debug_ecannot=Nu aveți voie să editați funcțiile de depanare
 opts_debug_peer_list=Lista modelelor de domeniu / rețea pentru care este activat jurnalul verbos
 opts_debug_peer_level=Verbose nivel de logare atunci când se potrivesc lista de mai sus
 debug_version=Modul postfix pentru Webmin - Versiunea $1
 opts_edebug=Nivelul de înregistrare a verbelor lipsă sau invalid - trebuie să fie un număr mai mare de zero
+
 ldap_title=Cercetări LDAP
 ldap_ecannot=Nu aveți voie să editați opțiunile de căutare LDAP
 ldap_non_existent=Se pare că LDAP nu există în sistemul dvs. Postfix
 opts_ldap_lookup_timeout=Perioadă de timp pentru căutări în baze de date LDAP
 opts_ldap_search_base=Baza de date LDAP pentru a căuta
 opts_ldap_server_host=Nume gazdă server LDAP
+
 canonical_title=Mapare Canonică
 canonical_ecannot=Nu aveți voie să editați configurația de mapare canonică
 opts_canonical_maps=Tabelele de căutare a mapării adreselor
@@ -328,6 +354,7 @@ canonical_edit_title=Editează Harta Canonică
 canonical_return_sender=hărți canonice ale expeditorului
 canonical_return_recipient=harti canonice destinatar
 canonical_return=hărți canonice
+
 mapping_name=Nume
 mapping_value=Hărți pentru. ..
 mapping_delete=Sterge selectia
@@ -355,6 +382,7 @@ mapping_toomany=Există $1 intrări pe hartă, care este peste limita de afișar
 mapping_find=Afișați mapări care se potrivesc:
 mapping_search=Căutare
 mapping_match=Intrările fișierului de hartă se potrivesc cu <tt>$1</tt> ..
+
 virtual_title=Domenii virtuale
 virtual_ecannot=Nu aveți voie să editați configurația de mapare a domeniilor virtuale
 opts_virtual_maps=Tabelele de căutare a mapării domeniilor
@@ -362,29 +390,44 @@ opts_virtual_alias_maps=Tabelele de căutare a mapării domeniilor
 opts_virtual_alias_domains=Domenii pentru a efectua mapare virtuală pentru
 virtual_same=Din tabele de mapare a domeniilor
 virtual_return=domenii virtuale
+
 transport_title=Cartografierea transporturilor
 transport_ecannot=Nu aveți voie să editați configurația de mapare a transportului
 opts_transport_maps=Transportați tabele de căutare a mapării
 transport_return=hărți de transport
+
+sni_title=Cartografierea certificatelor
+sni_ecannot=Nu aveți permisiunea de a edita configurația de mapare a certificatelor
+opts_sni_maps=Tabelele de căutare a mapării certificatelor
+sni_return=hărți certificate
+sni_dom=Numele gazdei
+sni_certs=Fișiere de certificate
+
 relocated_title=Mapare mutată
 relocated_ecannot=Nu aveți voie să editați configurația de mapare relocată
 relocated_return=hărți relocate
 opts_relocated_maps=Tabele de căutare pentru mapare mutate
 opts_content_filter=Filtrul de conținut prin e-mail
+
 map_click=Faceți clic pe orice mapare pentru a edita proprietățile sale:
 no_map=(În prezent nu există nicio hartă. Definiți mai întâi o hartă, apoi o puteți edita)
 no_map2=În prezent nu este definită nicio hartă. Definiți mai întâi o hartă, apoi o puteți edita.
+
 stop_efailed=Nu a reușit să oprească Postfix
 stop_ecannot=Nu aveți voie să opriți Postfix
+
 start_efailed=Eroare la pornirea Postfix
 start_ecannot=Nu aveți voie să porniți Postfix
+
 reload_efailed=Nu a putut reîncărca Postfix
 reload_ecannot=Nu aveți voie să reîncărcați Postfix
+
 query_get_efailed=Eșuat la interogarea comenzii de configurare Postfix pentru a obține valoarea curentă a parametrului $1: <tt>$2</tt>
 query_set_efailed=Nu a reușit să interogheze comanda de configurare Postfix pentru a seta valoarea curentă a parametrului $1 la $2: <tt>$3 ></tt>
 regenerate_ecannot=Nu ai voie să regenerezi Alias-ul
 regenerate_alias_efailed=Eroare la regenerarea aliaselor: <tt>$1</tt>
 regenerate_table_efailed=Nu a putut regenera tabela $1: <tt>$2</tt>
+
 acl_resource=Poate edita resurse?
 acl_aliases=Poate edita alias?
 acl_aliases_options=Poate edita opțiunile de alias?
@@ -393,6 +436,7 @@ acl_address_rewriting=Se poate edita rescrierea adresei?
 acl_canonical=Poate edita canonic?
 acl_virtual=Poate edita virtual?
 acl_transport=Poate edita transportul?
+acl_sni=Pot edita certificate?
 acl_relocated=Se poate edita relocat?
 acl_header=Se pot edita verificările antetului?
 acl_local_delivery=Se poate edita livrarea locală?
@@ -411,6 +455,7 @@ acl_postfinger=Se poate verifica configurația postfix?
 acl_manual=Se poate edita fișierul de configurare?
 acl_dir=Director permis pentru fișierele de hartă
 acl_bcc=Poate edita maparea BCC?
+
 boxes_title=Căsuțe poștale pentru utilizator
 boxes_user=Utilizator
 boxes_size=Dimensiunea căsuței poștale
@@ -420,6 +465,7 @@ boxes_sent=E-mail trimis
 boxes_ecannot=Nu aveți voie să citiți e-mailuri
 boxes_toomany=Există prea mulți utilizatori pe sistemul dvs. pentru a lista toate căsuțele poștale.
 boxes_go=Vizualizare e-mail pentru utilizator:
+
 mail_title=E-mail utilizator
 mail_from=Din
 mail_date=Data
@@ -458,6 +504,7 @@ mail_forward=Redirecţiona
 mail_rfc=Din linie
 mail_move=Treceți la:
 mail_eexists=Mesajul nu mai există!
+
 view_title=Citiți e-mail
 view_desc=Mesajul $1 în $2
 view_desc2=Mesajul $1 pentru utilizator $2
@@ -486,6 +533,7 @@ view_body=Mesaj text
 view_afile=Numele atașamentului
 view_atype=Tip atașament
 view_asize=Mărime fișier
+
 compose_title=Scrie un email
 reply_title=Răspundeți la e-mail
 forward_title=Redirecționare email
@@ -496,6 +544,7 @@ reply_mailforward=Mesaje transmise
 reply_attach2=Atașamente din partea clientului și a serverului
 reply_send=Trimite e-mail
 reply_ecannot=Nu aveți voie să trimiteți e-mail ca utilizator
+
 send_err=Eroare la trimiterea e-mailului
 send_eto=Lipsește adresa
 send_efrom=Lipsește de la adresa
@@ -509,6 +558,7 @@ send_eperms=Utilizatorul $1 nu poate citi $2
 send_eperms2=Nu aveți voie să trimiteți fișierul $1
 send_epath=Sendmail executabil $1 nu există.
 send_ewrapper=Programul de interfață sendmail postfix nu există
+
 search_title=rezultatele cautarii
 search_ecannot=Nu aveți voie să căutați pe e-mailul acestui utilizator
 search_ematch=Trebuie să introduceți text pentru a se potrivi cu.
@@ -516,6 +566,7 @@ search_efield=Trebuie să selectați un tip de căutare.
 search_none=Nu a fost găsit niciun mesaj.
 search_results2=$1 mesaje de poștă care se potrivesc cu $2 ..
 search_results3=$1 mesaje de e-mail care nu corespund $2 ..
+
 match_from=Din: meciuri
 match_subject=Subiect: meciuri
 match_to=Către: meciuri
@@ -533,6 +584,7 @@ match_!date=Data: nu se potrivește
 match_!body=Corpul nu se potrivește
 match_!size=Dimensiunea este mai mică decât
 match_!headers=Anteturile nu se potrivesc
+
 mailq_title=Coadă de e-mail
 mailq_count=$1 mesaje
 mailq_none=În prezent, nu există mesaje de e-mail în coadă pentru livrare
@@ -561,15 +613,20 @@ mailq_active=Activ
 mailq_deferred=amânat
 mailq_hold=Țineți selectat
 mailq_unhold=Dezactivează selectat
+
 flushq_title=Coada de spălare
 flushq_desc=Forțarea încercării de livrare a poștei cu comanda $1 ..
+
 qview_title=Mesaj în coadă
 qview_desc=Din fișierul $1
 qview_headers=Anteturi de e-mail
 qview_attach=Fișiere atașate
+
 after_err=Eroare de configurare postfix : $1
+
 searchq_title=Rezultate căutare coadă
 searchq_none=Nu s-au găsit mesaje în coadă.
+
 header_title=Verificări antet
 header_ecannot=Nu aveți voie să editați verificările antetului
 header_eregexp=Harta verificărilor antetului trebuie să fie în format <tt>regexp:</tt> <i>nume de fișier</i>
@@ -588,15 +645,18 @@ header_reject=Respingeți (cu mesaj de eroare..)
 header_warn=Jurnal de avertizare (cu mesaj..)
 header_ename=Expresie regulată nevalidă - trebuie să fie ca / ceva /
 header_return=verificări antet
+
 body_title=Verificări ale corpului
 body_ecannot=Nu aveți voie să editați verificările corporale
 body_eregexp=Harta verificărilor corpului trebuie să fie în format <tt>regexp:</tt> <i>nume de fișier</i>
 opts_body_checks=Tabelele de verificare a corpului de mesaje
 body_return=verificări ale corpului
+
 dependent_title=Cartografierea transportului dependent de expeditor
 dependent_ecannot=Nu aveți voie să editați mapări de transport dependente de expeditor
 dependent_eregexp=Harta de transport dependentă de expeditor trebuie să fie în format <tt>regexp:</tt> <i>nume de fișier</i>
 dependent_return=mapări de transport dependente de expeditor
+
 manual_title=Editați fișierul cu hartă
 manual_file=Selectați un fișier de hartă pentru a edita:
 manual_change=Schimbare
@@ -604,9 +664,11 @@ manual_editing=Utilizați caseta de text de mai jos pentru a edita manual mapăr
 manual_err=Nu a reușit salvarea fișierului hartă
 manual_efile=Nume de fișier hartă nevalid!
 manual_ecannot=Nu aveți voie să editați manual fișierele de hartă
+
 delq_titles=Ștergerea mesajelor
 delq_rusure=Sigur doriți să ștergeți $1 mesajele selectate în coadă?
 delq_confirm=Ștergeți mesajele
+
 master_title=Procese de server
 master_name=Numele procesului
 master_enabled=Activat?
@@ -647,8 +709,10 @@ master_einet=O adresă gazdă pentru a asculta poate fi specificată doar pentru
 master_ecommand=Lipsește comanda procesului serverului
 master_ewakeup=Timp de trezire lipsă sau nevalid
 master_emaxprocs=Număr maxim de procese lipsă sau nevalid
+
 delete_err=Nu a reușit să ștergeți mapările
 delete_enone=Nimic selectat
+
 cmanual_title=Editați fișierele de configurare
 cmanual_ecannot=Nu aveți voie să editați fișierul de configurare Postfix
 cmanual_ok=Editați | ×
@@ -656,10 +720,12 @@ cmanual_efile=Fișierul selectat nu face parte din configurația Postfix
 cmanual_file=Editați fișierul de configurare:
 cmanual_edata=Nu a intrat nimic!
 cmanual_err=Nu a reușit să salvați fișierul de configurare
+
 access_return=tabelul cu harta de acces
 edit_map_file=Editați fișierul cu hartă
 opts_reject_rbl_client=Cercetări în timp real pe liste negre (RBL)
 opts_check_sender_access=Verificați tabelul cu harta de acces a expeditorului
+
 log_misc=Opțiuni generale modificate
 log_opts=Schimbare rescriere de adresă și mascareding
 log_aliases=Opțiuni modificate pentru alias
@@ -667,6 +733,7 @@ log_canonical=Modificarea opțiunilor de mapare canonică
 log_virtual=Opțiuni de domeniu virtual modificate
 log_bcc=Opțiuni modificate pentru harta BCC
 log_transport=Opțiuni modificate de mapare a transportului
+log_sni=Schimbați opțiunile de mapare a certificatelor
 log_dependent=Opțiuni de adresă dependente modificate
 log_relocated=Opțiuni de mapare mutate
 log_header=Opțiuni modificate pentru verificarea antetului
@@ -744,6 +811,7 @@ log_sender_dependent_default_transport_maps_modify=Adresa dependentă a expedito
 log_sender_dependent_default_transport_maps_delete=Adresa dependentă a expeditorului $1
 log_delete_sender_dependent_default_transport_mapss=Șterse $1 adrese dependente ale expeditorului
 log_manual_sender_dependent_default_transport_mapss=Adrese dependente ale expeditorului editate manual în $1
+
 sasl_title=Autentificare și criptare SMTP
 opts_smtpd_sasl_auth_enable=Necesită autentificare SASL SMTP?
 opts_smtp_sasl_auth_enable=Utilizați autentificarea SASL SMTP?
@@ -790,6 +858,7 @@ sasl_nologin=Nu este nevoie
 sasl_userpass=Conectați-vă ca $1 cu parola $2
 sasl_elogin=Logare SMTP lipsă sau nevalidă (nu sunt permise spații sau coloane)
 sasl_epass=Parolă SMTP nevalidă (fără spații admise)
+
 client_title=Restricții client SMTP
 client_ecannot=Nu aveți voie să editați restricțiile clientului SMTP
 client_restrict=Restricții pentru clienți
@@ -799,6 +868,7 @@ client_other=Alte restricții :
 client_err=Nu a reușit să salveze restricțiile clientului
 client_evalue=Valoarea lipsă pentru restricția $1
 client_return=Restricții client SMTP
+
 chooser_title=Selectați sursa hărții
 chooser_header=Sursa hărții $1
 chooser_none=Nici unul
@@ -854,6 +924,7 @@ chooser_elquery_filter=Lipsește filtrul de interogare pentru harta $1
 chooser_elresult_attribute=Numele atributului rezultat lipsește sau nu este valabil pentru harta $1
 chooser_elbind_dn=Lipsește autentificarea pentru serverul LDAP pentru harta $1
 chooser_elbind_pw=Parcă lipsește serverul LDAP pentru harta $1
+
 mysql_ecfile=Fișierul de configurare MySQL $1 nu a fost găsit
 mysql_ecfile2=Nu s-a putut găsi tabelul în fișierul de configurare MySQL $1
 mysql_edriver=Nu a putut încărca driverul bazei de date $1
@@ -865,6 +936,7 @@ mysql_eupdate=Actualizarea SQL a eșuat : $1
 mysql_elist=Interogarea SQL a eșuat : $1
 mysql_esource=Nu a fost găsită nicio sursă MySQL numită $1
 mysql_eneed=Parametrul de configurare MySQL $1 nu a fost găsit. Webmin are nevoie de acest lucru pentru a afla ce tabel și câmpurile de interogare.
+
 ldap_ecfile=Fișierul de configurare LDAP $1 nu a fost găsit
 ldap_eldapmod=Modulul Perl $1 necesar pentru a comunica cu LDAP nu este instalat sau nu se poate încărca
 ldap_eldap=Nu a reușit să vă conectați la serverul LDAP $1 pe portul $2
@@ -875,6 +947,7 @@ ldap_edelete=Ștergerea LDAP a $1 nu a reușit : $2
 ldap_equery=Căutarea LDAP a $1 nu a reușit : $2
 ldap_erename=Redenumirea LDAP a $1 la $2 a eșuat : $3
 ldap_emodify=Modificarea LDAP a $1 nu a reușit : $2
+
 bcc_title=Cartografiere BCC
 bcc_ecannot=Nu aveți voie să editați mapări BCC
 opts_sender_bcc_maps=Sender tabele de căutare mapare BCC

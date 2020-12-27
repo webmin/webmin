@@ -5,6 +5,7 @@ index_return=índice do módulo
 index_fixpam=<b>Aviso</b> - Webmin detectou dois arquivos de configuração separados do LDAP no seu sistema. NSS-LDAP é configurado usando $1, enquanto PAM-LDAP usa $2. Isso pode causar inconsistência entre os dois serviços.
 index_fix=Corrigir criando links de arquivos
 index_ignore=Não mostrar esta mensagem
+
 server_title=Configuração do servidor LDAP
 server_header=Servidor LDAP e opções de login
 server_host=Nomes de máquina do servidor LDAP
@@ -42,6 +43,7 @@ server_etimelimit=Tempo limite de conexão não foi informado ou foi informado u
 server_ecacert=Arquivo de certificado CA não foi informado ou foi informado um arquivo inválido
 server_euport=Porta do servidor LDAP $1 não foi informada ou foi informado um valor inválido
 server_euri=Nenhum servidor LDAP informado
+
 base_title=Bases de pesquisa LDAP
 base_header=Locais de pesquisa de diretórios LDAP
 base_base=Base para pesquisa global
@@ -77,6 +79,7 @@ base_enetmasks=Está faltando a base para nomes de máscaras de rede
 base_ealiases=Está faltando a base para aliases de e-mail
 base_enetgroup=Está faltando a base para grupos de rede
 base_etimelimit=O limite para o tempo de pesquisa está faltando ou um valor inválido foi informado.
+
 pam_title=Opções de autenticação
 pam_header=Autenticação PAM e configurações de senha
 pam_filter=Filtro LDAP adicional
@@ -97,10 +100,12 @@ pam_efilter=Está faltando o filtro LDAP adicional
 pam_elogin=Atributo LDAP para nome de usuário não foi informado ou foi informado um atributo inválido
 pam_egroupdn=Grupo LDAP para forçar que seja membro não foi informado ou foi informado um grupo inválido
 pam_emember=Atributo LDAP para membros do grupo não foi informado ou foi informado um atributo inválido
+
 switch_title=Serviços usando LDAP
 switch_service=Serviço
 switch_srcs=Fontes de dados
 switch_return=serviços usando LDAP
+
 ldap_emodule=O módulo Perl $1 necessário para a comunicação com o servidor LDAP não está instalado. <a href='$2'>Clique aqui</a> para que o Webmin faça o download do módulo e instale-o agora.
 ldap_emodule2=O módulo Perl $1 necessário para a comunicação com o servidor LDAP não está instalado.
 ldap_econf=O arquivo de configuração do cliente LDAP $1 não foi encontrado no seu sistema.
@@ -110,6 +115,7 @@ ldap_elogin=Erro ao autenticar no servidor LDAP $1 como $2: $3
 ldap_anon=anônimo
 ldap_eparse=Não foi possível analisar a URI $1 do servidor LDAP
 ldap_etls=Erro ao alternar para o modo TLS: $1
+
 browser_title=Navegador LDAP
 browser_econn=O navegador LDAP não pode ser usado: $1
 browser_base=Navegando:
@@ -120,6 +126,7 @@ browser_attrs=Atributos de objeto
 browser_parent=Navegar pai
 browser_none=Nenhum
 browser_sel=Ok
+
 order_nisplus=NIS+
 order_nis=NIS
 order_dns=DNS
@@ -130,6 +137,7 @@ order_hesiod=Hesiod
 order_ldap=LDAP
 order_user=Impressoras do usuário
 order_xfn=XFN
+
 desc_aliases=Aliases do Sendmail
 desc_mail=Aliases do Sendmail
 desc_hosts=Endereço de máquina
@@ -165,6 +173,7 @@ desc_printers=Impressoras
 desc_ipnodes=Nós IP
 desc_timezone=Fusos horários
 desc_locale=Idiomas
+
 eswitch_title=Editar serviço
 eswitch_egone=Serviço não existe
 eswitch_header=Detalhes do serviço
@@ -184,10 +193,12 @@ eswitch_continue=Continue a pesquisa
 eswitch_none=Nenhum
 eswitch_err=Erro ao salvar o serviço
 eswitch_enone=Nenhuma fonte selecionada!
+
 log_server=Alterada a configuração do servidor LDAP
 log_base=Bases de pesquisa LDAP foram alteradas.
 log_pam=Alteradas as opções de autenticação
 log_modify_switch=Alterado o serviço $1
+
 check_title=Validando a configuração do LDAP
 check_base=Encontrando base LDAP para usuários..
 check_ebase=.. nenhuma base foi encontrada na configuração do cliente!

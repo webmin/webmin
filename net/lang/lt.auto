@@ -7,6 +7,7 @@ index_delete2=Ištrinti pasirinktas sąsajas
 index_delete3=Ištrinkite ir pritaikykite pasirinktas sąsajas
 index_apply2=Taikyti pasirinktas sąsajas
 index_vmin=„Virtualmin“
+
 ifcs_title=Tinklo sąsajos
 ifcs_now=Aktyvus Dabar
 ifcs_activedesc=Šioje lentelėje išvardytos sąsajos šiuo metu yra aktyvios sistemoje. Daugeliu atvejų juos turėtumėte redaguoti skirtuke <b>Activated at Boot</b>.
@@ -55,6 +56,7 @@ ifcs_linkyes=Prisijungta
 ifcs_linkno=Neprijungtas
 ifcs_speed=Sąsajos greitis
 ifcs_duplex=, $1 dvipusė
+
 aifc_create=Sukurti aktyvią sąsają
 aifc_edit=Redaguoti aktyvią sąsają
 aifc_desc1=Aktyviosios sąsajos parametrai
@@ -79,6 +81,7 @@ aifc_eaddress6=$1 eilutės IPv6 adresas negalioja
 aifc_enetmask6=$1 eilutės IPv6 tinklo maskavimas turi būti sveikas skaičius nuo 1 iki 128
 aifc_eclash6=$1 eilutės IPv6 adresą jau naudoja sąsaja $2 
 aifc_eaddresses6=Neįvestas IPv6 adresas
+
 bifc_create=Sukurti įkrovos sąsają
 bifc_act=Suaktyvinti įkrovos metu?
 bifc_edit=Redaguoti įkrovos sąsają
@@ -110,6 +113,7 @@ bifc_bridgestp=Kalbančio medžio protokolas
 bifc_bridgefd=Pirmyn atidėti
 bifc_bridgewait=Vėluokite, kol tapsite prieinami
 bifc_ebond=Obligacijos sąsaja turi būti skaičius
+
 bonding_add=Pridėkite naują klijavimo sąsają.
 bonding_create=Sukurkite klijavimo sąsają
 bonding_teamparts=Grupės partneriai
@@ -121,11 +125,14 @@ bonding_miimon=„Mii“ stebėjimo intervalas
 bonding_miimondesc=(Palikite tuščią, kad išjungtumėte nuorodų stebėjimą)
 bonding_updelay=Atidėjimas
 bonding_downdelay=Pavėluotai
+
 vlan_add=Pridėti „Vlan“ pažymėtą sąsają
 vlan_physical=Fizinis prietaisas
 vlan_id=„Vlan“ ID
 vlan_create=Sukurkite VLAN sąsają
+
 bridge_create=Sukurkite tilto sąsają
+
 routes_title=Maršrutai ir vartai
 routes_boot=Maršruto konfigūracija suaktyvinta <i>įkrovos metu</i>
 routes_now=Maršruto konfigūracija suaktyvinta dabar
@@ -194,6 +201,7 @@ routes_tabboot=Įkrovos laiko konfigūracija
 routes_tabactive=Aktyvi konfigūracija
 routes_descactive=Šiame skyriuje pateikiami maršrutai, kuriuos sistema šiuo metu sukonfigūravo, ir leidžiama pridėti arba pašalinti kai kurių sistemų aktyvius maršrutus. Atlikite tai atsargiai, nes dėl neteisingų pakeitimų sistema „Webmin“ paleidžianti sistema gali atsiriboti nuo likusio tinklo.
 routes_descboot=Šiame skyriuje galite sukonfigūruoti maršrutus, kurie suaktyvinami paleidus sistemą arba visiškai pritaikius tinklo parametrus.
+
 dns_title=Pagrindinio kompiuterio vardas ir DNS klientas
 dns_options=DNS kliento parinktys
 dns_hostname=Pagrindinio kompiuterio vardas
@@ -211,6 +219,7 @@ dns_edomain=„$1“ nėra teisingas domeno vardas
 dns_esearch=Nėra duotų domenų
 dns_hoststoo=Atnaujinti pagrindinio kompiuterio vardą pagrindiniuose adresuose, jei jie pasikeitė?
 dns_dhcp=Pagrindinio kompiuterio vardą nustato DHCP serveris?
+
 hosts_title=Pagrindinio kompiuterio adresai
 hosts_active=Įjungtas?
 hosts_ip=IP adresas
@@ -222,6 +231,7 @@ hosts_detail=Pagrindinis kompiuteris ir adresai
 hosts_return=pagrindinio kompiuterio adresų sąrašas
 hosts_ecannot=Jums neleidžiama redaguoti pagrindinio kompiuterio adresų
 hosts_delete=Ištrinti pasirinktus pagrindinius adresus
+
 ipnodes_title=IPv6 pagrindinio kompiuterio adresai
 ipnodes_ip=IPv6 adresas
 ipnodes_host=Pagrindiniai vardai
@@ -233,6 +243,7 @@ ipnodes_return=IPv6 pagrindinio kompiuterio adresų sąrašas
 ipnodes_ecannot=Jums neleidžiama redaguoti IPv6 pagrindinio kompiuterio adresų
 ipnodes_none=Dar nebuvo apibrėžti IPv6 pagrindinio kompiuterio adresai.
 ipnodes_delete=Ištrinkite pasirinktus „IPv6“ pagrindinius adresus
+
 log_create_host=Sukurtas pagrindinio kompiuterio adresas $1 
 log_delete_host=Ištrintas pagrindinio kompiuterio adresas $1 
 log_modify_host=Pakeistas pagrindinio kompiuterio adresas $1 
@@ -256,6 +267,7 @@ log_apply_bfics=Aktyvuotos $1 įkrovos laiko sąsajos
 log_create_route=Sukurtas aktyvus maršrutas $1 
 log_create_defroute=Sukurtas aktyvus numatytasis maršrutas
 log_delete_routes=Ištrinta $1 aktyvių maršrutų
+
 acl_ifcs=Ar galima redaguoti tinklo sąsajas?
 acl_routes=Ar galima redaguoti maršrutus ir šliuzus?
 acl_dns=Ar galima redaguoti DNS kliento nustatymus?
@@ -273,6 +285,7 @@ acl_virt=Ar galite pridėti virtualių sąsajų?
 acl_delete=Ar galima ištrinti sąsajas?
 acl_hide=Slėpti neredaguojamas sąsajas?
 acl_sysinfo=Rodyti galimas tinklo sąsajas informacijos suvestinėje
+
 interfaces_title1=Pasirinkite sąsajas. ..
 interfaces_all=Visos sąsajos. ..
 interfaces_sel=Pasirinktos sąsajos
@@ -280,7 +293,9 @@ interfaces_ok=Gerai
 interfaces_cancel=Atšaukti
 interfaces_clear=Aišku
 interfaces_title2=Pasirinkite vartotoją. ..
+
 apply_ecannot=Jums neleidžiama naudoti konfigūracijos
+
 mod_egone=Sąsaja nebeveikia!
 mod_title=Aktyvioji sąsaja
 mod_desc=$1 sąsaja naudojama $2, todėl jos negalima valdyti naudojant šį modulį.
@@ -292,6 +307,7 @@ mod_pptpc=PPTP ryšys $1
 mod_zones=virtuali sąsaja zonai <tt>$1</tt>
 mod_virtualmin=„Virtualmin“ serveris <tt>$1</tt>
 mod_reseller=„Virtualmin“ perpardavėjas <tt>$1</tt>
+
 range_edit=Redaguoti adresų diapazoną
 range_create=Sukurti adresų diapazoną
 range_header=Adresų diapazono sąsajos parinktys
@@ -307,13 +323,17 @@ range_eend=Trūksta arba netinkamas IP adresas
 range_enum=Trūksta pirmojo virtualiosios sąsajos numerio arba jo neturi skaitinis numeris
 range_eclass=Pradiniai ir pabaigos adresai turi būti tame pačiame C klasės tinkle
 range_ebefore=Pabaigos adresas turi būti didesnis nei pradinis adresas
+
 chooser_any=&lt;Any&gt;
 chooser_other=Kiti ..
+
 dafics_err=Nepavyko išaktyvinti sąsajų
 daifcs_enone=Nepasirinkta
 daifcs_egone=Sąsaja nebeegzistuoja!
+
 dbifcs_err=Nepavyko ištrinti sąsajų
 dbifcs_err2=Nepavyko suaktyvinti sąsajų
+
 hdelete_err=Nepavyko ištrinti pagrindinio kompiuterio adresų
 hdelete_enone=Nepasirinkta
 idelete_err=Nepavyko ištrinti IPv6 pagrindinio kompiuterio adresų

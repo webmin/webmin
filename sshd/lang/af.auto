@@ -16,8 +16,10 @@ index_type=SSH-sleuteltipe:
 index_rsa1=RSA (vir SSH v1)
 index_rsa=RSA (vir SSH v2)
 index_dsa=DSA (vir SSH v2)
+
 bits=stukkies
 secs=sekondes
+
 users_title=verifikasie
 users_header=Aanmeldings- en verifikasie-opsies
 users_expire=Dae voor die rekening verval om die gebruiker te waarsku
@@ -54,6 +56,7 @@ users_eauthkeys=Gemagtigde sleutellêer ontbreek of ongeldig
 users_maxauthtries=Maksimum aanmeldpogings per verbinding
 users_emaxauthtries=Ontbrekende of nie-numeriese aantal aanmeldpogings per verbinding
 users_chal=Gebruik verklaring vir uitdagings-antwoord?
+
 net_title=netwerk
 net_header=Netwerkopsies
 net_port=Luister op hawe
@@ -91,6 +94,7 @@ net_eprots=U moet ten minste een protokol kies
 net_eladdress='$1' is nie 'n geldige adres om na te luister nie
 net_elport='$1' is nie 'n geldige poort om na te luister nie
 net_elisten2=Geen adresse om in te luister nie
+
 access_title=Toegangsbeheer
 access_header=Opsies vir toegangsbeheer vir netwerk- en aanmelding
 access_allowu=Laat gebruikers slegs toe
@@ -108,6 +112,7 @@ access_eallowg=Geen groepe wat toegelaat is nie
 access_edenyg=Geen groepe het ontken nie
 access_eallowh=Geen gashere wat toegelaat is nie
 access_edenyh=Geen leërskare om in te teken nie
+
 misc_title=Diverse opsies
 misc_header=Ander diverse SSH-bedieneropsies
 misc_x11=Laat X11-verbinding deurstuur?
@@ -131,14 +136,17 @@ misc_eumask=4-syfer oktale umask ontbreek of ongeldig
 misc_ebits=Ontbrekende of ongeldige bedienersleutelgrootte
 misc_eregen=Ontbrekende of ongeldige interval vir herlewing van die sleutel
 misc_epid=PID-lêerpad ontbreek
+
 start_err=Kon nie SSH-bediener begin nie
 apply_epid=Nie hardloop nie
+
 hosts_title=Opsies vir kliëntgasheer
 hosts_header=SSH-kliente
 hosts_none=Geen kliëntgasheeropsies is gedefinieër nie. In alle SSH-kliëntaanmeldings word die verstekinstellings gebruik.
 hosts_all=Alle leërskare
 hosts_add=Voeg opsies by vir kliëntgasheer.
 hosts_return=kliënt gasheer lys
+
 host_create=Voeg gasheeropsies by
 host_edit=Wysig gasheeropsies
 host_header=Kliëntopsies vir SSH-gasheer
@@ -194,6 +202,7 @@ host_eprots=U moet ten minste een protokol kies
 host_proxy=Verbinding-instaanbediener
 host_proxy_def=Geen
 host_eproxy=Proxy-opdrag met verbinding of ongeldige voorkoms
+
 log_users=Veranderingsopsies is verander
 log_net=Veranderde netwerkopsies
 log_access=Veranderde toegangsbeheer
@@ -208,6 +217,7 @@ log_stop=Gestop SSH-bediener
 log_start=SSH-bediener is begin
 log_apply=Toegepaste konfigurasie
 log_manual=Opstel van die config-lêer $1
+
 sync_title=Gebruiker SSH-sleutelopstelling
 sync_desc=Op hierdie bladsy kan u die outomatiese opstelling van SSH opstel vir nuwe Unix-gebruikers wat op u stelsel geskep is. As dit gekonfigureer is, sal nuwe gebruikers nie <tt>ssh-keygen</tt> hoef uit te voer voordat hulle SSH gebruik nie.
 sync_create=Stel SSH-sleutel op vir nuwe Unix-gebruikers?
@@ -216,9 +226,11 @@ sync_pass=Gebruik u wagwoord as sleutelwagwoordfrase?
 sync_gnupg=Stel GNUPG-sleutel op vir nuwe Unix-gebruikers.
 sync_type=Sleutel tipe
 sync_auto=&lt;Outomatiese&gt;
+
 keys_title=Gasheer SSH-sleutels
 keys_desc=Op hierdie bladsy kan u die SSH-sleutels vir hierdie gasheer besigtig.
 keys_none=Kon geen HostKey-inskrywings in u SSHD-konfigurasie vind nie.
+
 manual_title=Wysig konfiglêers
 manual_ecannot=U mag nie die SSH-bediener se opstellinglêer wysig nie
 manual_ok=wysig
@@ -226,5 +238,6 @@ manual_efile=Die geselekteerde lêer is nie deel van die SSH-bedieneropstelling 
 manual_file=Wysig konfigurasielêer:
 manual_edata=Niks het ingekom nie!
 manual_err=Kon nie die konfigurasielêer stoor nie
+
 dknown_err=Kon nie leërskare uitvee nie
 dknown_enone=Geen gekies nie

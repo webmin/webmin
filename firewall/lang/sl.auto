@@ -16,6 +16,7 @@ index_chain=Veriga $1
 index_action=Ukrep
 index_desc=Pogoj
 index_comm=Komentar
+index_no_comment=
 index_move=Premakni se
 index_none=Za to verigo ni nobenih pravil.
 index_policy=Nastavi privzeto dejanje na:
@@ -88,6 +89,7 @@ index_ipset_size=Velikost
 index_ipvxmode=Spremeni različico protokola IP:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
 desc_p=protokol je $1 
 desc_p!=protokol ni $1 
 desc_s=vir je $1 
@@ -114,6 +116,8 @@ desc_tcp-option=paket uporablja možnost TCP $1
 desc_tcp-option!=paket ne uporablja možnosti TCP $1 
 desc_icmp-type=Vrsta ICMP je $1 
 desc_icmp-type!=Vrsta ICMP ni $1 
+desc_icmpv6-type=Vrsta ICMP je $1 
+desc_icmpv6-type!=Vrsta ICMP ni $1 
 desc_mac-source=ethernet naslov je $1 
 desc_mac-source!=ethernet naslov ni $1 
 desc_limit=stopnja je nižja od $1 
@@ -146,10 +150,15 @@ desc_always=Nenehno
 desc_args--match-set=$2 je vsebovan v IP-nizu $1 
 desc_src=vir
 desc_dest=cilj
+
 redhat_einstalled=Ni najdeno zagonskega dejanja <tt>iptables (6)</tt>, kar pomeni, da paket IPtables ni nameščen v vašem sistemu
 redhat_eoutput=Pri pridobivanju statusa IPtables iz ukaza $1 se je pojavila napaka. To verjetno kaže, da je bil vaš sistem konfiguriran tako, da uporablja IPchains namesto IPtables.
+
 gentoo_escript=Začetnega skripta Gentoo IPtables $1 v vašem sistemu ni bilo mogoče najti.
+
 eiptables=Neznani IPtables shranijo vrstico datoteke : $1 
+eip6tables=Neznani ip6tables shrani vrstico datoteke : $1 
+
 edit_title1=Dodajte pravilo
 edit_title2=Uredi pravilo
 edit_title3=Pravilo klona
@@ -218,6 +227,7 @@ edit_physdevout=Fizični vmesnik
 edit_physdevisin=Paket, ki prihaja na mostni vmesnik
 edit_physdevisout=Paket odhodni na mostni vmesnik
 edit_physdevisbridged=Paket se premošča
+
 save_err=Pravila ni bilo mogoče shraniti
 save_echain=Manjkajoča ali neveljavna veriga za zagon
 save_esource=Manjkajoči ali neveljaven izvorni naslov ali omrežje
@@ -262,23 +272,28 @@ save_estates=Ni izbranih stanj povezave
 save_ecanjump=Tega dejanja vam ni dovoljeno uporabljati
 save_ephysdevin=Manjkajoči ali neveljaven dohodni fizični vmesnik
 save_ephysdevout=Manjkajoči ali neveljaven odhodni fizični vmesnik
+
 delete_title=Izbriši verigo
 delete_rusure=Ali ste prepričani, da želite izbrisati verigo $1 ? $2 pravila znotraj njega bodo izbrisana.
 delete_ok=Izbriši zdaj
 delete_ecannot=Ne smete brisati verig
+
 clear_title=Bistra veriga
 clear_rusure=Ali ste prepričani, da želite izbrisati vsa pravila $2 iz verige $1 ?
 clear_ecannot=Ne smete čistiti verig
+
 new_err=Verige ni bilo mogoče ustvariti
 new_ename=Manjkajoče ali neveljavno ime verige
 new_etaken=Veriga s tem imenom že obstaja
 new_ecannot=Ni vam dovoljeno ustvarjati verig
+
 apply_err=Konfiguracije ni bilo mogoče uporabiti
 apply_ecannot=Konfiguracije ne morete uporabiti
 apply_remote=Napaka od $1 : $2 
 unapply_err=Konfiguracije ni bilo mogoče povrniti
 unapply_ecannot=Konfiguracije ne morete povrniti
 bootup_ecannot=Požarni zid ne morete omogočiti ali onemogočiti ob zagonu
+
 log_create_rule=Dodano pravilo za verigo $1 v tabeli $2 
 log_modify_rule=Spremenjeno pravilo v verigi $1 v tabeli $2 
 log_delete_rule=Izbrisano pravilo v verigi $1 v tabeli $2 
@@ -301,8 +316,10 @@ log_add_group=Dodani strežniki grozdov iz skupine $1
 log_delete_host=Odstranjen je strežnik gruče $1 
 log_delete_group=Odstranjeni so strežniki grozdov $1 
 log_openports=Odprta vrata požarnega zidu $1 
+
 setup_eiface=Noben zunanji omrežni vmesnik ni vnesen
 setup_ecannot=Požarni zid ne morete nastaviti
+
 acl_tables=Dovoljeni IPtables
 acl_apply=Ali lahko uporabite konfiguracijo?
 acl_unapply=Ali ne morete uporabiti konfiguracije?
@@ -314,9 +331,11 @@ acl_jall=Vse
 acl_newchain=Ali lahko ustvarite nove verige?
 acl_delchain=Ali lahko verige izbrišete ali počistite?
 acl_policy=Ali lahko spremenite privzeti pravilnik?
+
 etable=Tega protokola IPtable ne smete urejati
 ejump=Tega pravila ni dovoljeno urejati
 ecluster=Ne smete upravljati grozdne plošče
+
 cluster_title=Strežniki požarnega zidu gruč
 cluster_none=V grozdišče požarnega zidu še ni bil dodan noben strežnik.
 cluster_host=Ime gostitelja
@@ -327,6 +346,7 @@ cluster_gadd=Dodajte strežnike v skupino
 cluster_need=Preden lahko tukaj upravljate, morate v modul Webmin Servers Index dodati strežnike z prijavo in geslom.
 cluster_return=grozdni strežniki
 cluster_delete=Odstrani izbrano
+
 add_title=Dodaj strežnike
 add_msg=Dodajanje $1.
 add_gmsg=Dodajanje strežnikov v skupino $1.
@@ -336,13 +356,16 @@ add_echeck=Server $1 nima modula požarnega zidu Linux
 add_emissing=Strežniku $1 manjka ukaz požarnega zidu $2 
 add_ok=Dodano je $1 s pravili $2 aktivnega požarnega zidu.
 add_enone=Ni izbranih strežnikov!
+
 policy_ecannot=Za to verigo vam ni dovoljeno spreminjati privzetega pravilnika
+
 move_title=Pravila premikanja
 move_count=Izbrana pravila
 move_chain=Trenutna sprememba
 move_dest=Namenska veriga
 move_ok=Premakni se zdaj
 move_header=Možnosti premikanja pravila
+
 rename_title=Preimenujte verigo
 rename_count=Pravila v verigi
 rename_chain=Trenutno ime
@@ -352,6 +375,3 @@ rename_header=Možnosti preimenovanja verige
 rename_adjust=Ali spremenite druga pravila, ki skočijo na to verigo?
 rename_none=Noben
 rename_ecannot=Ne morete preimenovati verig
-desc_icmpv6-type=Vrsta ICMP je $1 
-desc_icmpv6-type!=Vrsta ICMP ni $1 
-eip6tables=Neznani ip6tables shrani vrstico datoteke : $1 

@@ -23,6 +23,7 @@ index_follow=Wara $1
 index_forcetar=Fil-format TAR
 index_delete=Ħassar il-Backups magħżula
 index_nostrftime=Twissija - uħud mill-impjiegi ta 'backup jużaw % fl-ismijiet tal-fajls tagħhom, iżda s-sostituzzjoni tal-pakkett mhux attivata fuq il-paġna tal-Modulu ta' Konfigurazzjoni.
+
 dump_dir=Direttorju għall-backup
 dump_dirs=Direttorji għall-backup
 dump_fs=Sistema tal-fajls
@@ -108,6 +109,7 @@ dump_remount=Remount bl-għażla <tt>noatime</tt> waqt il-backup?
 dump_eftpupdate=Iż-żieda tal-fajls ma 'arkivju eżistenti mhix possibbli meta tuża FTP.
 dump_eleveldir=Backups ta 'livell 0 biss huma permessi għal direttorji li mhumiex punti ta' mmuntar tas-sistema ta 'fajls
 dump_eupdatedir=Il-fajl <tt>/etc/dumpdates</tt> jista ’jkun aġġornat biss għal direttorji li huma punti li jintramaw f’sistema ta’ fajls
+
 edit_err=Ma rnexxielux joħloq backup
 edit_edir=Nieqes id-direttorju tal-backup
 edit_efs=Sistemi tal-fajls ta 'tip $1 ma jistgħux jiġu appoġġjati minn dan il-modulu
@@ -132,9 +134,11 @@ edit_tolevel=$1 sa $2 (livell $3)
 edit_special=Skeda ta 'backup
 edit_when=Meta tkun il-backup
 edit_clone=Klonu
+
 save_err=Ma rnexxielux isalva backup
 save_edir=Direttorju tal-backup nieqes jew invalidu
 save_efs=Direttorju ta 'backup ma jistax jinbidel għal sistema ta' fajls differenti
+
 backup_title=Backup Issa
 backup_desc=Twettiq backup ta ' $1 sa $2 ..
 backup_reverify=.. kompluta. Issa tivverifika l-backup ..
@@ -147,6 +151,7 @@ backup_notape=.. il-backup qabeż il-kapaċità ta 'tejp wieħed. It-tibdil tat-
 backup_egone=Il-backup ma jeżistix!
 backup_bg=Jibda proċess ta 'backup fl-isfond. Tista 'tissorvelja l-progress tagħha fit-taqsima <b>Ħaddim ta' Backup ta 'Backup</b> fuq il-paġna ewlenija tal-modulu, u tkun notifikata bl-istatus finali tagħha permezz ta' email.
 backup_ecannot=M'għandekx permess tagħmel backup f'dan id-direttorju
+
 restore_title=Irrestawra l-Backup
 restore_err=Ma rnexxielux jirrestawra l-backup
 restore_ecommand=Il-kmand $1 meħtieġ biex jirrestawra backups tas-sistema ta 'fajls $2 ma nstabx fis-sistema tiegħek. Forsi mhuwiex attwalment installat.
@@ -190,6 +195,7 @@ restore_gzip=Ikkompressa arkivju?
 restore_keep=M'għandekx tibdilha fajls?
 restore_emulti=Restawr ta 'fajls multipli ma jistax isir minn apparat tat-tejp
 restore_emulti2=Restawr ta 'diversi fajls ma jistax isir minn server remot
+
 log_create=Konfigurat backup tal-backup għal $1 
 log_modify=Konfigurazzjoni backup modifikata għal $1 
 log_delete=Konfigurazzjoni tal-backup mħassra għal $1 
@@ -197,13 +203,16 @@ log_backup=Appoġġjati minn $1 sa $2
 log_bgbackup=Beda backup ta ' $1 sa $2 
 log_restore=Backup restawrat minn $1 
 log_kill=Backup mitmum għal $1 
+
 kill_err=Ma rnexxilhiex ittemm il-backup
 kill_egone=Ma għadux għaddej!
 kill_ecannot=M'intix permess li ttemm dan il-backup
+
 newtape_err=Naqset milli tissinjalja tejp ġdid
 newtape_egone=Il-backup m'għadux għaddej!
 newtape_estatus=Backup m'għadux qed jistenna tejp ġdid
 newtape_ecannot=M'għandekx permess timmaniġġja dan il-backup
+
 acl_edit=Tista 'toħloq u teditja l-backups?
 acl_restore=Tista 'tirrestawra l-backups?
 acl_cmds=Tista 'teditja qabel u wara l-kmandi?
@@ -211,8 +220,10 @@ acl_extra=Tista 'teditja parametri żejda tal-linja ta' kmand?
 acl_dirs=Direttorji permessi għal backups
 acl_all=Direttorji kollha
 acl_list=Elenkati biss ..
+
 delete_err=Naqset milli tħassar il-backups
 delete_enone=L-ebda magħżul
+
 email_already=Il-backup diġà qed jibda bil-PID $1.
 email_ebefore=Il-kmand ta 'qabel il-backup falla!
 email_verify=Tivverifika l-backup ..
@@ -220,5 +231,6 @@ email_eafter=Il-kmand ta 'backup naqas!
 email_subject=Backup ta ' $1 fuq $2 
 email_ok=Il-backup irnexxielu
 email_failed=Il-backup falla!
+
 newtape_subject=Tibdil tat-tejp $1 għall-backup ta ' $2 fuq $3 
 newtape_body=Il-backup ta ' $2 fuq $3 laħaq l-ammont massimu ta' data permessa fuq tejp $1. Ikollok bżonn tagħbija tejp ġdid u laqat il-link 'Tape Loaded' fil-modulu tal-Backup tal-Filesystem ta 'Webmin biex il-backup ikompli.

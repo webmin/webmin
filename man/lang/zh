@@ -29,6 +29,7 @@ index_other_google=Google搜索引擎
 index_other_kde=KDE文档
 index_and=完全匹配
 index_or=部分匹配
+
 search_efor=没有输入要搜索的手册页
 search_title=搜索结果
 search_desc=描述
@@ -44,21 +45,27 @@ search_help=Webmin帮助
 search_none=没找到与 $1 匹配的文档
 search_for=搜索$1
 search_google=Google搜索结果
+
 howto_title=HOWTO文档
 howto_header=HOWTO文档文件$1
 howto_epath=无效的HOWTO文档路径
+
 doc_title=软件包文档
 doc_header=软件包文档文件$1
 doc_epath=无效的软件包文档文件
+
 man_title=手册页
 man_header=$1($2)的手册页
 man_noentry=$1的手册页不存在
+
 kernel_title=核心文档
 kernel_header=核心文档文件$1
 kernel_epath=无效的核心文档路径
+
 kde_title=KDE文档
 kde_header=KDE文档文件$1
 kde_epath=无效的KDE文档路径
+
 perl_title=Perl模块
 perl_header=Perl 模块 $1的文档
 perl_emod=无效的Perl模块名称

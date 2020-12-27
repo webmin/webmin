@@ -57,6 +57,7 @@ index_fmode1=Virtuele bedieners lêer $1
 index_fmode1d=Nuwe lêer onder die virtuele bedienergids $1
 index_fmode2=Geselekteerde lêer ..
 index_delete=Vee geselekteerde bedieners uit
+
 cvirt_ecannot=U mag nie 'n virtuele bediener skep nie
 cvirt_err=Kon nie virtuele bediener skep nie
 cvirt_eaddr1=Geen adres ingevoer nie
@@ -70,6 +71,7 @@ cvirt_eroot4=Geen gebruiker is gedefinieër in die Apache-opset nie
 cvirt_etaken=Daar bestaan reeds 'n virtuele bediener met dieselfde naam en poort
 cvirt_efile=Kon nie skryf aan $1 : $2 
 cvirt_emissing=Die nuwe virtuele bediener is bygevoeg tot $1, maar hierdie lêer word nie deur Apache gebruik nie. Gaan die <a href='$2'>modulekonfigurasie</a> na en maak seker dat die 'Lêer of gids om virtuele bedieners toe te voeg' korrek is.
+
 etype=U mag nie hierdie tipe opsies wysig nie
 efailed=Opslaan van $1 kon nie gestoor word nie
 apache_apply=Pas veranderinge toe
@@ -80,6 +82,7 @@ default_serv=standaardbediener
 bytes=grepe
 eafter=Konfigurasie-verifikasie het misluk: $1 Veranderings is nie gestoor nie.
 enewline=Ongeldige karakter in waarde
+
 global_ecannot=U mag nie globale opsies wysig nie
 global_mime=Globale MIME-soorte lys
 global_mimedesc=Klik op 'n MIME-tipe uit die onderstaande lys om dit te wysig, of gebruik die skakel onderaan die bladsy om 'n nuwe tipe aan die lys toe te voeg.
@@ -87,6 +90,7 @@ global_type=tipe
 global_ext=uitbreidings
 global_add=Voeg 'n nuwe MIME-tipe by.
 global_return=MIME-tipes
+
 mime_ecannot=U mag nie mimietipes redigeer nie
 mime_edit=Wysig MIME-tipe
 mime_add=Voeg MIME-tipe by
@@ -95,6 +99,7 @@ mime_type=MIME-tipe
 mime_ext=uitbreidings
 mime_err=Kon nie MIME-tipe stoor nie
 mime_etype='$1' is nie 'n geldige MIME-tipe nie
+
 virt_ecannot=U kan nie hierdie virtuele bediener wysig nie
 virt_eprotocol=U moet ten minste een bruikbare SSL/TLS-protokolweergawe kies
 virt_title=Virtuele bedieneropsies
@@ -121,6 +126,7 @@ virt_path=pad
 virt_return=bedienerindeks
 virt_euser=U mag nie die gebruiker of groep vir hierdie virtuele bediener verander nie.
 virt_header2=$1 vir $2
+
 vserv_title=Virtuele bediener konfigurasie
 vserv_virtualmin=Hierdie Apache-virtuele gasheer behoort aan die Virtualmin-bediener <tt>$1</tt>, dus die adres, poort, basisgids en gasheernaam kan hier nie verander word nie.
 vserv_ecannot=U kan nie die adres van hierdie virtuele bediener wysig nie
@@ -140,10 +146,12 @@ vserv_eport='$1' is nie 'n geldige poort nie
 vserv_eroot='$1' is nie 'n geldige dokumentwortel nie
 vserv_ename='$1' is nie 'n geldige bedienernaam nie
 vserv_eaddrs=Geen virtuele bedieneradresse ingevoer nie
+
 show_title=voorskrifte
 show_edit=Wysig Apache-opdrag:
 show_these=Riglyne handmatig te wysig
 show_ok=wysig
+
 manual_configs=Wysig konfiglêers
 manual_title=Riglyne te wysig
 manual_header=Gebruik die onderstaande teksblokkie om die Apache-aanwysings in $1 wat op hierdie virtuele bediener, gids of lêers van toepassing is, met die hand te wysig.
@@ -153,6 +161,7 @@ manual_efile=Ongeldige Apache-opstellinglêer
 manual_etest=Konfigurasie-lêerfout bespeur : $1
 manual_editfile=Wysig konfigurasielêer:
 manual_switch=wysig
+
 dir_title=Opsies per gids
 dir_proxyall=Alle gevolmagtigde versoeke
 dir_header=Vir $1 op $2
@@ -169,6 +178,7 @@ dir_re=Pas regexp
 dir_path=pad
 dir_return=gidsindeks
 dir_header2=$1 vir $2
+
 type_0=Prosesse en perke
 type_1=Netwerk en adresse
 type_2=Apache-modules
@@ -190,6 +200,7 @@ type_17=Outomatiese virtuele gashere
 type_18=filters
 type_19=tale
 type_20=Prentkaarte
+
 htaccess_title=Opsieslêers per gids
 htaccess_ecannot=U kan htaccess-lêers nie wysig nie
 htaccess_file=Bestaande opsielêers
@@ -205,6 +216,7 @@ htaccess_edelete=U mag nie hierdie opsielêer uitvee nie
 htaccess_eempty=Geen opsielêergids is ingevoer nie
 htaccess_eabsolute=Opsie lêer gids moet 'n absolute pad wees
 htaccess_err=Kon nie opsielêer skep nie
+
 htindex_ecannot=U mag nie hierdie opsielêer wysig nie
 htindex_title=Opsieslêer per gids
 htindex_delete=Verwyder lêer
@@ -220,12 +232,14 @@ htindex_path=pad
 htindex_header=Vir $1
 htindex_header2=$1 vir opsielêer $2
 htindex_return=opsies lêer indeks
+
 htfile_title=Opsies per lêer
 htfile_header=Vir $1 in $2
 htfile_show=Wys riglyne
 htfile_edit=Riglyne te wysig
 htfile_apply=Opsies is van toepassing op ..
 htfile_header2=$1 vir $2
+
 reconfig_title=Stel bekende modules weer op
 reconfig_ecannot=U mag nie apache herkonfigureer nie
 reconfig_ever=Kon nie die weergawe van die Apache-bediener uitvoerbaar $1 kry nie. Gaan u <a href='$2'>modulekonfigurasie</a> na om seker te maak dat dit die regte pad is.
@@ -233,11 +247,13 @@ reconfig_desc1=U Apache-opstelling het verander, of is nog nie deur Webmin onder
 reconfig_desc2=Hieronder is 'n lys van alle Apache-modules wat deur Webmin ondersteun word, met dié wat tans geïnstalleer is. As u dinamies gelaaide modules gebruik, moet u moontlik die wat dinamies gelaai is, kies.
 reconfig_desc3=As u nie seker is watter modules deur Apache op u stelsel ondersteun word nie, stel Configure net in omdat Webmin die ondersteunde modules normaalweg kan uitwerk.
 reconfig_ok=Konfigureer
+
 defines_title=Wysig gedefinieerde parameters
 defines_ecannot=U mag nie die definisies van httpd wysig nie
 defines_desc=Wanneer Apache begin word, kan parameters daarmee deurgegee word met die <tt>-D</tt> opdragreëlopsie. Aangesien hierdie parameters 'n invloed kan hê op die riglyne wat in u config-lêers gebruik word, moet Webmin weet watter een na Apache oorgedra word. Voer die parameters wat op u stelsel gebruik word, in die teksveld aan die regterkant in.
 defines_config=Let daarop dat die volgende gedefinieerde parameters reeds bekend is : $1
 defines_list=Gedefinieerde parameters
+
 authu_ecannot='$1' is nie 'n toegelate gebruikerslêer nie
 authu_title=Gebruikerslys
 authu_header=In lêer $1
@@ -259,6 +275,7 @@ authu_sync=Met die onderstaande opsies kan u Webmin instel om outomaties 'n gebr
 authu_screate=Voeg 'n gebruiker by wanneer 'n Unix-gebruiker bygevoeg word
 authu_sdelete=Vee die gebruiker uit wanneer 'n Unix-gebruiker uitgevee word
 authu_smodify=Verander die gebruiker wanneer 'n Unix-gebruiker verander word
+
 authg_ecannot='$1' is nie 'n toegelate groeplêer nie
 authg_title=Groeplys
 authg_header=In lêer $1
@@ -276,22 +293,26 @@ authg_err=Kon nie groep stoor nie
 authg_euser=Geen groepnaam ingevoer nie
 authg_euser2=Groepnaam kan nie 'n :
 authg_edup='N Groep met die naam'$1'bestaan reeds
+
 stop_err=Kon nie apache stop nie
 stop_ecannot=U mag nie apache stop nie
 stop_epid=Kon nie PID-lêer open nie $1
 stop_epid2=Ongeldige PID-lêer $1
 stop_esig=Kon nie SIGTERM stuur om $1
+
 start_err=Kon nie apache begin nie
 start_ecannot=U mag nie apache begin nie
 start_ecmd=$1 misluk : $2
 start_eunknown=Onbekende rede
 start_eafter=Dit lyk nie of Apache loop nie
+
 restart_err=Kon nie veranderinge toepas nie
 restart_epid=Kon nie PID-lêer open nie $1
 restart_epid2=Ongeldige PID-lêer $1
 restart_esig=Kon nie SIGHUP stuur om $1 te verwerk
 restart_eunknown=Onbekende rede
 restart_ecannot=U mag nie veranderinge toepas nie
+
 acl_virts=Virtuele bedieners wat hierdie gebruiker kan wysig
 acl_vall=Alle bedieners
 acl_vsel=Gekies ..
@@ -314,6 +335,7 @@ acl_dirs=Apache-riglyne beskikbaar <br><font size=-1> (Onderhewig aan die limiet
 acl_dirs0=Almal
 acl_dirs1=Slegs gelys ..
 acl_dirs2=Almal behalwe gelys ..
+
 core_maxconc=Maksimum gelyktydige versoeke
 core_maxkeep=Maksimum keepalives per verbinding
 core_maxreq=Maksimum versoeke per bedienerproses
@@ -499,10 +521,12 @@ core_infilter=Pas invoerfilters toe op alle lêers
 core_outfilter=Pas uitvoerfilters toe vir alle lêers
 core_defchar=Karakterset vir dokumente
 core_edefchar=Ontbrekende of ongeldige karakterset vir dokumente
+
 mod_negotiation_cache=Dokumente wat met inhoud onderhou word, en nie?
 mod_negotiation_pri=Taalprioriteit vir meeraansigte
 mod_negotiation_def=verstek
 mod_negotiation_epri=Taalprioriteite ontbreek
+
 mod_cgi_logname=CGI Skriplogboek
 mod_cgi_none=Geen
 mod_cgi_elogname=Ongeldige CGI-skriploglêer
@@ -512,6 +536,7 @@ mod_cgi_elogsize=CGI-loggrootte moet 'n heelgetal wees
 mod_cgi_post=Maksimum aangetekende gegewe posgrootte
 mod_cgi_epost=Die gegewe-grootte moet 'n heelgetal wees
 mod_cgi_eunder=CGI-skriplogboek is nie onder die toegelate gids nie
+
 mod_alias_from=Van
 mod_alias_to=om
 mod_alias_status=status
@@ -535,6 +560,7 @@ mod_alias_cgi2=CGI-alias
 mod_alias_rcgi=Regexp CGI-gidsaliasies
 mod_alias_rcgi2=regexp CGI-alias
 mod_alias_estatus='$1' is nie 'n geldige status nie
+
 mod_proxy_proxy=Tree op as 'n instaanbediener?
 mod_proxy_req=Versoeke
 mod_proxy_forw=Stuur aan na
@@ -605,11 +631,13 @@ mod_proxy_timeout=Proxy-time-outout in sekondes
 mod_proxy_etimeout=Die tydsverloop van die instaanbediener moet 'n paar sekondes duur
 mod_proxy_via=Stel Via: hoofde
 mod_proxy_not=Geen
+
 mod_log_agent_default=verstek
 mod_log_agent_file=Lêer ..
 mod_log_agent_program=Program ..
 mod_log_agent_log=Blaaierloglêer
 mod_log_agent_efile=$1 is nie 'n geldige agentloglêernaam nie
+
 mod_log_config_common=Algemene logformaat
 mod_log_config_named=Benoemde logformate
 mod_log_config_nick=bynaam
@@ -628,6 +656,7 @@ mod_log_config_enofilprog=Ontbrekende lêernaam of program ontbreek
 mod_log_config_efilprog='$1' is nie 'n toegelate lognaam of -program nie
 mod_log_config_eifset='As dit gestel' is, kan nie met die standaard-logformaat gebruik word nie
 mod_log_config_edir=Gids vir loglêer '$1' bestaan nie
+
 mod_log_referer_default=verstek
 mod_log_referer_file=Lêer ..
 mod_log_referer_program=Program ..
@@ -635,7 +664,9 @@ mod_log_referer_log=Verwysingsloglêer
 mod_log_referer_nolog=Moenie verwysings vanaf u aanteken nie
 mod_log_referer_elog=$1 is nie 'n geldige verwysingsloglêernaam nie
 mod_log_referer_edir=verwysingslogboek is nie onder die toegelate gids nie
+
 mod_status_msg=Vertoon uitgebreide statusinligting
+
 mod_mime_ext=uitbreidings
 mod_mime_xtype=Ekstra MIME-tipes
 mod_mime_mtype=MIME-tipe
@@ -668,6 +699,7 @@ mod_mime_outfilter=Uitsetfilters
 mod_mime_infilter=Invoer filters
 mod_mime_filters=Filters om aansoek te doen
 mod_mime_efext=Geen uitbreidings gegee vir filter (s) $1
+
 mod_setenvif_header=kop
 mod_setenvif_match=wedstryd
 mod_setenvif_case=Vuurhoutjie doos
@@ -678,11 +710,13 @@ mod_setenvif_eheader=Ongeldige versoekkop '$1'
 mod_setenvif_eregex=Ongeldige gewone uitdrukking '$1'
 mod_setenvif_evar=Ongeldige veranderlike naam '$1'
 mod_setenvif_clear=duidelik
+
 mod_userdir_default=verstek
 mod_userdir_all=Alle gebruikers toeganklik
 mod_userdir_except=Alle gebruikers behalwe
 mod_userdir_dir=Gebruikers-WWW-gids
 mod_userdir_edir=U mag nie die gespesifiseerde WWW-gids gebruik nie
+
 mod_imap_action=Aksie op verkeerde gebruik van beeldkaarte
 mod_imap_default=verstek
 mod_imap_godefurl=Gaan na die verstek-URL
@@ -702,8 +736,10 @@ mod_imap_refurl=Verwysende URL
 mod_imap_url=URL. ..
 mod_imap_defbase=Standaardbasis vir beeldkaarte
 mod_imap_eurl='$1' is nie 'n geldige URL nie
+
 mod_speling_autocorr=Korrigeer URL's met verkeerd gespelde outomaties?
 mod_speling_default=verstek
+
 mod_actions_mime=Hanteerder / MIME-tipe
 mod_actions_cgiurl=CGI-skrip-URL
 mod_actions_mimecgi=Hanteerder of MIME-tipe CGI-aksies
@@ -713,10 +749,13 @@ mod_actions_httpcgi=HTTP-metode CGI-aksies
 mod_actions_emime='$1' is nie 'n geldige hanteerder of MIME-tipe nie
 mod_actions_ecgi='$1' is nie 'n geldige CGI-skrip nie
 mod_actions_enometh=Geen metode gekies vir CGI-skrif '$1'
+
 mod_include_incl=Proses sluit in lêers met 'n uitvoeringsbit?
 mod_include_set=Ja en stel die laaste gewysigde datum in
 mod_include_default=verstek
+
 mod_dir_txt=Gidsindekslêers
+
 mod_autoindex_default=verstek
 mod_autoindex_asc=stygende
 mod_autoindex_descend=Neerdaal
@@ -725,6 +764,7 @@ mod_autoindex_date=datum
 mod_autoindex_size=grootte
 mod_autoindex_desc=beskrywing
 mod_autoindex_sort=Sorteer gidsindeks volgens
+
 browsermatch_regexp=Browser regex
 browsermatch_case=Vuurhoutjie doos?
 browsermatch_var=Stel veranderlike
@@ -732,6 +772,7 @@ browsermatch_value=waarde
 browsermatch_txt=Veranderlikes wat gebaseer is op die tipe blaaier
 browsermatch_evar=Ongeldige veranderlike naam '$1'
 browsermatch_clear=duidelik
+
 autoindex_fname=Lêernaam
 autoindex_mime=MIME-tipe
 autoindex_enc=enkodering
@@ -785,9 +826,11 @@ autoindex_sicon=Wys lêer-ikone
 autoindex_srules=Toon &lt;hr&gt; reëls
 autoindex_track=Sluit etikette in die kopskrif in
 autoindex_version=Sorteer volgens weergawe snare
+
 mod_mime_magic_file=MIME magie nommers lêer
 mod_mime_magic_none=Geen
 mod_mime_magic_efile=Ongeldige MIME-towernommerslêernaam
+
 mod_env_var=veranderlike
 mod_env_value=waarde
 mod_env_pass=Gaan deur
@@ -798,6 +841,7 @@ mod_env_passall=Stuur alle omgewingsveranderlikes na CGI's
 mod_env_default=verstek
 mod_env_evar='$1' is nie 'n geldige veranderlike naam nie
 mod_env_evalue='$1' is nie 'n geldige veranderlike waarde nie
+
 mod_access_order=Toegangsondersoekbestelling:
 mod_access_denyallow=Weier dan om dit toe te laat
 mod_access_allowdeny=Laat dan ontken
@@ -820,6 +864,7 @@ mod_access_epip='$1' is nie 'n geldige gedeeltelike IP-adres nie
 mod_access_emask='$1' is nie 'n geldige netwerk / netmaskerpaar nie
 mod_access_ecidr='$1' is nie 'n geldige netwerk / CIDR-paar nie
 mod_access_evar='$1' is nie 'n geldige veranderlike naam nie
+
 mod_auth_ufile=Gebruiker teks lêer
 mod_auth_uedit=Gebruikers wysig
 mod_auth_gfile=Groepeer tekslêer
@@ -830,6 +875,7 @@ mod_auth_eudir=Gebruikertekslêer is nie onder die toegelate gids nie
 mod_auth_egdir=Groep teks lêer is nie onder die toegelate gids nie
 mod_auth_eufile=Ongeldige naam van gebruikerslêer
 mod_auth_egfile=Ongeldige naam van die groeptekslêer
+
 mod_auth_dbm_ufile=Gebruiker DBM-lêer
 mod_auth_dbm_gfile=Groepeer DBM-lêer
 mod_auth_dbm_pass=Slaag mislukkings na die volgende module?
@@ -840,6 +886,7 @@ mod_auth_dbm_egfile=Ongeldige groep DBM-lêernaam
 mod_auth_dbm_type=DBM databasis tipe
 mod_auth_dbm_gtype=DBM groep databasis tipe
 mod_auth_dbm_default=Standaard DBM-formaat
+
 mod_cern_meta_process=Verwerk kop-metafiele
 mod_cern_meta_dir=Ondergids vir kop-metafiele
 mod_cern_meta_default=verstek
@@ -847,6 +894,7 @@ mod_cern_meta_edir=Ongeldige metafile-subgidsnaam
 mod_cern_meta_suffix=Lêer agtervoegsel vir kop metafiles
 mod_cern_meta_default2=verstek
 mod_cern_meta_esuffix=Ongeldige metafile agtervoegsel
+
 mod_ssl_enable=Aktiveer SSL?
 mod_ssl_proto=SSL-protokolle
 mod_ssl_cfile=Sertifikaat / privaat sleutellêer
@@ -874,6 +922,7 @@ mod_ssl_passsc=Voer skrip uit $1
 mod_ssl_epassph=Geen SSL-wagwoord ingevoer nie
 mod_ssl_epasssc=Ontbrekende of ongeldige SSL-wagwoordskrip
 mod_ssl_ecerton=As SSL aangeskakel is, moet 'n sertifikaatlêer gekies word
+
 mod_apachessl_notssl=Weier SSL-toegang
 mod_apachessl_forcessl=Dwing SSL / notSSL-toegang?
 mod_apachessl_capath=Pad na gids met sertifikate van die Sertifiseringsowerhede in
@@ -906,6 +955,7 @@ mod_apachessl_nov2=Deaktiveer SSL weergawe 2
 mod_apachessl_fake=Simuleer gebruikers se basiese verifikasie-aanmeldings deur die sertifikaatnaam te gebruik
 mod_apachessl_cdnfile=Die lêer teen die kliënt-DN word nagegaan
 mod_apachessl_ecdnfile=Die ontbrekende lêer teen die kliënt-DN word nagegaan
+
 log_global=Verander globale> $1 opsies
 log_virtc=Bediener is geskep $1
 log_virts=Herkonfigureerde bediener $1
@@ -946,8 +996,10 @@ log_stop=Gestopte webbediener
 log_apply=Toegepaste wysigings
 log_manual=Handmatig geredigeerde konfigurasielêer $1
 log_virts_delete=$1 virtuele bedieners uitgevee
+
 search_title=Soek bedieners
 search_notfound=Geen passende virtuele bedieners gevind nie
+
 mod_php_value=PHP-konfigurasiewaardes
 mod_php_flag=PHP-konfigurasievlae
 mod_php_admin_value=PHP Admin-konfigurasiewaardes
@@ -956,6 +1008,7 @@ mod_php_name_header=omgewing
 mod_php_value_header=waarde
 mod_php_ename='$1' is 'n ongeldige naam
 mod_php_evalue='$1' is 'n ongeldige waarde vir $2
+
 mod_vhost_alias_root=Outomatiese virtuele gasheerwortel
 mod_vhost_alias_ip=Gebruik IP-adres in plaas van gasheernaam?
 mod_vhost_alias_none=Geen
@@ -963,12 +1016,14 @@ mod_vhost_alias_script=Outomatiese virtuele gasheer-cgi-bin
 mod_vhost_alias_eroot=Ontbrekende of ongeldige virtuele gasheerwortel
 mod_vhost_alias_eroot2=Virtuele gasheer-wortelgids word nie toegelaat nie
 mod_vhost_alias_escript=Ontwerp of ongeldige virtuele gasheer-cgi-bin
+
 worker_minspare=Minimum spaardrade
 worker_maxspare=Maksimum onderdraaddrade
 worker_eminspare=Minimum onderdraaddrade moet 'n heelgetal wees
 worker_emaxspare=Maksimum onderdraaddrade moet 'n heelgetal wees
 worker_threads=Draad per kind-proses
 worker_ethreads=Aantal drade per kindproses moet 'n heelgetal wees
+
 perchild_sthreads=Aanvanklike drade per kindproses
 perchild_esthreads=Aantal drade per kindproses moet 'n heelgetal wees
 perchild_numservers=Aantal kinderprosesse
@@ -984,6 +1039,7 @@ perchild_gid=GID
 perchild_enum=Prosesnommer moet 'n heelgetal met geen nul wees nie
 perchild_euid=UID moet 'n heelgetal wees
 perchild_egid=GID moet 'n heelgetal wees
+
 cache_enable=Aktief?
 cache_type=Kaswinkel
 cache_disk=skyf
@@ -1004,12 +1060,14 @@ cache_eminos=Die minimum voorwerpgrootte vir die kas moet 'n aantal grepe wees
 cache_emaxos=Die maksimum voorwerpgrootte vir die kas moet 'n aantal grepe wees
 cache_maxoc=Maksimum voorwerpe om in die geheue te kas
 cache_emaxoc=Die aantal voorwerpe om in die geheue te kas, moet 'n heelgetal wees
+
 suexec_su=Begin CGI-programme as
 suexec_none=Gebruiker vanaf globale konfigurasie
 suexec_user=Unix-gebruiker
 suexec_group=en groep
 suexec_euser=Ontbrekende of ongeldige gebruiker om CGI-programme uit te voer as
 suexec_egroup=Ontbrekende of ongeldige groep om CGI-programme uit te voer as
+
 filter_name=naam
 filter_intype=Voer MIME-tipe in
 filter_outtype=Uitvoer MIME-tipe
@@ -1019,11 +1077,13 @@ filter_in=Definisies van invoerfilter
 filter_out=Definisies van uitsetfilter
 filter_ename=Ongeldige filternaam '$1'
 filter_ecmd=Ontbrekende opdrag vir filter '$1'
+
 cdir_err=Die skep van opsies per gids is misluk
 cdir_err2=Opslaan van opsies per gids is misluk
 cdir_epath=Pad ontbreek
 cdir_eproxy=Instaanbedieningsopsies kan nie geskep word as die opsie vir reg-uitpassing inskakel nie
 cdir_ecannot=U mag nie per-gids-opsies vir die gegewe pad skep nie
+
 mod_band_enable=Bandwydte beperk?
 mod_band_bw=Beperking (grepe / sek)
 mod_band_client=Vir kliënte
@@ -1042,24 +1102,30 @@ mod_band_epulse=Ontbrekende of ongeldige interval tussen beperkte pakkies
 mod_band_dir=Bandwydte beperk datalêers gids
 mod_band_edir=Ontbrekende of nie-bestaande bandwydte-datalêergids
 mod_band_esubdir=Ontbrekende vereiste subgids <tt>$1</tt> onder bandwydte datalêersgids
+
 mod_dav_active=WebDAV geaktiveer?
 mod_dav_inf=Laat u oneindige diepte DAV PROPFIND versoeke toe?
 mod_dav_timeout=Minimum DAV-time-out in sekondes
 mod_dav_etimeout=DAV-timeout ontbreek of ongeldig
+
 delete_err=Kon nie virtuele bedieners uitvee nie
 delete_enone=Geen gekies nie
 delete_ecannot=U mag nie bedieners uitvee nie
 delete_ecannot2=U mag nie die bediener $1 wysig nie
+
 syslog_desc=Apache-foutlogboek
+
 mod_auth_basic_pass=Slaag u basiese aanmeldfoute na die volgende module?
 mod_auth_basic_prov=Basiese gebruiker lêertipes
 mod_auth_basic_file=Tekslêer
 mod_auth_basic_dbm=DBM databasis
+
 mod_auth_digest_pass=Slaag u inlogfoute na die volgende module?
 mod_auth_digest_prov=Verteer die gebruiker se lêertipes
 mod_auth_digest_al=Hak algoritme
 mod_auth_digest_domain=URL's en paaie in dieselfde domein
 mod_auth_digest_edomain=URL's en paaie in dieselfde domein ontbreek
+
 mods_title=Stel Apache-modules op
 mods_mod=module
 mods_state=Huidige toestand

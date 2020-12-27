@@ -12,7 +12,9 @@ main_readonly=(Alleen-lezen mode)
 main_return=Terug keren naar $1
 main_unused=Ongebruikte Modules
 main_refreshmods=Ververs Modules
+
 link_essl=De Net::SSLeay Perl module die nodig is om HTTPS verbindingen te maken is niet geïnstalleerd op uw systeem.
+
 category_servers=Servers
 category_hardware=Hardware
 category_system=Systeem
@@ -21,6 +23,7 @@ category_net=Netwerken
 category_syslet=Syslets
 category_cluster=Cluster
 category_info=Informatie
+
 longcategory_servers=Modules voor het configureren van web, email, FTP en andere servers
 longcategory_hardware=Modules voor printer, harddisk en andere hardware configuratie
 longcategory_system=Modules voor gebruikers, file systemen, Cron taken en andere systeem instellingen
@@ -28,11 +31,13 @@ longcategory_webmin=Modules om Webmin zelf te configureren
 longcategory_net=Modules voor het configureren van netwerken en netwerk services
 longcategory_cluster=Modules die meerdere servers tegelijkertijd kunnen bedienen via een enkele interface.
 longcategory_info=Modules die informatie over uw systeem tonen
+
 header_webmin=Webmin Index
 header_module=Module Index
 header_help=Help..
 header_config=Module Configuratie
 header_servers=Webmin Servers
+
 index=index
 yes=Ja
 no=Nee
@@ -62,12 +67,14 @@ euserdbacl=Opvragen gebruikers ACL mislukten : $1
 euserdbacl2=Updaten gebruikers ACL mislukten : $1
 egroupdbacl=Opvragen van de groep ACL mislukten : $1
 egroupdbacl2=Updaten van de groep ACL mislukten : $1
+
 chooser_title1=Kies File ..
 chooser_title2=Kies Directory ..
 chooser_dir=Directory van $1
 chooser_ok=Ok
 chooser_date=Kies Datum
 chooser_eopen=Lijst maken mislukten : $1
+
 users_title1=Selecteer Gebruikers ..
 users_title2=Selecteer Gebruiker ..
 users_sel=Geselecteerde Gebruikers
@@ -75,6 +82,7 @@ users_all=Alle Gebruikers
 users_ok=Ok
 users_cancel=Annuleer
 users_clear=Wissen
+
 groups_title1=Selecteer Groepen ..
 groups_title2=Selecteer Groep ..
 groups_all=Alle Groepen
@@ -82,6 +90,7 @@ groups_sel=Geselecteerde Groepen
 groups_ok=Ok
 groups_cancel=Annuleer
 groups_clear=Wissen
+
 modules_title1=Selecteer Modules ..
 modules_title2=Selecteer Module ..
 modules_sel=Geselecteerde Modules
@@ -89,6 +98,7 @@ modules_all=Alle modules
 modules_ok=Ok
 modules_cancel=Annuleer
 modules_clear=Wissen
+
 config_ecannot=U mag deze module niet configureren
 config_title=Configuratie
 config_dir=Voor module $1
@@ -99,6 +109,7 @@ config_err=Mislukt om configuratie op te slaan
 config_nochange=Niet veranderen
 config_setto=Zet naar
 config_ewebmin=Parameter type 14 werkt alleen in Webmin
+
 help_err=Mislukt om help te tonen
 help_epath=Ontbrekende of ongeldig help pad
 help_efile=Lezen van help file $1 is mislukt
@@ -106,12 +117,14 @@ help_eheader=Ontbrekende &lt;header&gt; sectie
 help_einclude=Mislukt om $1 toe te voegen
 help_eif=$1 mislukt : $2
 help_eexec=$1 mislukten : $2
+
 referer_title=Veiligheid's Waarschuwing
 referer_warn=<b>Waarschuwing!</b> Webmin heeft gedetecteerd dat het programma $2 is gelinkt vanaf de URL $1 die zich buiten de Webmin server bevind. Dit kan een poging zijn om een truuk uit te halen op uw server om een gevaarlijke opdracht uit te voeren.
 referer_warn_unknown=<b>Waarschuwing!</b> Webmin heeft gedetecteerd dat het programma $1 is gelinkt vanaf een onbekende URL $1 die zich buiten de Webmin server bevind. Dit kan een poging zijn om een truuk uit te halen op uw server om een gevaarlijke opdracht uit te voeren.
 referer_fix1=Indien dit een legitieme link is kunt als volgt links toestaan van deze URL : <ul><li>Normaal inloggen bij Webmin.<li>Ga naar de <b>Webmin Configuratie</b> module.<li>Klik op Vertrouwde Verwijzingen icoon.<li>Vul de hostnaam $1 in het <b>Betrouwbare websites</b> veld, en klik dan op <b>Opslaan</b>.</ul>
 referer_fix2=Als alternatief kunt u Webmin ook configureren met de terminal opdracht regel door :<ul><li>Login als <tt>root</tt>, en bewerk de <tt>/etc/webmin/config</tt> file.<li>Voeg aan het einde deze regel toe <tt>referers=$1</tt>, indien er al een <tt>referers</tt> regel bestaat voegt u <tt>$1</tt> eraan toe. <li>Sla de file op.</ul>
 referer_fix2u=Als alternatief kunt u Webmin ook configureren om links van onbekende verwijzingen toe te staan door :<ul><li>Login als <tt>root</tt>, en bewerk de <tt>/etc/webmin/config</tt> file.<li>Zoek de regel <tt>referers_none=1</tt> en verander dit naar <tt>referers_none=0</tt>.<li>Sla de file op.</ul>
+
 session_header=Inloggen bij Webmin
 session_mesg=U moet een gebruikersnaam en wachtwoord invullen om in te loggen bij de Webmin server $1.
 session_mesg2=U moet een gebruikersnaam en wachtwoord invullen om in te loggen.
@@ -123,11 +136,13 @@ session_failed=Inloggen mislukten. Probeert u het opnieuw.
 session_logout=Succesvol uitgelogd. Gebruik het formulier hieronder op opnieuw in te loggen.
 session_timed_out=Sessie stopt na $1 minuten inactiviteit.
 session_save=Inlog permanent onthouden?
+
 pam_header=Inloggen bij Webmin
 pam_mesg=U moet reageren op de vraag hieronder om in te loggen bij de Webmin server op $1.
 pam_mesg2=U moet reageren op de vraag hieronder om in te loggen.
 pam_login=Doorgaan
 pam_restart=Herstart
+
 acl_root=Root directory voor file kiezer
 acl_otherdirs=Andere zichtbare directory's in de file kiezer
 acl_nodot=Verstop files met een punt in de file kiezer?
@@ -160,6 +175,7 @@ acl_negative=Nieuwe module permissies toekennen aan gebruiker?
 acl_fileunix=Doorzoek files als Unix gebruiker
 acl_sameunix=Zelfde als Webmin login
 acl_webminsearch=Toon Webmin zoek veld?
+
 month_1=Januari
 month_2=Februari
 month_3=Maart
@@ -172,6 +188,7 @@ month_9=September
 month_10=Oktober
 month_11=November
 month_12=December
+
 day_0=Zondag
 day_1=Maandag
 day_2=Dinsdag
@@ -179,6 +196,7 @@ day_3=Woensdag
 day_4=Donderdag
 day_5=Vrijdag
 day_6=Zaterdag
+
 smonth_1=Jan
 smonth_2=Feb
 smonth_3=Ma
@@ -191,6 +209,7 @@ smonth_9=Sep
 smonth_10=Okt
 smonth_11=Nov
 smonth_12=Dec
+
 sday_0=Zo
 sday_1=Ma
 sday_2=Di
@@ -198,12 +217,15 @@ sday_3=Wo
 sday_4=Do
 sday_5=Vr
 sday_6=Za
+
 emodule=Toegang geweigerd : gebruiker $1 mag niet de module $2 gebruiken
 emodulecheck=De module $1 is niet beschikbaar op uw systeem
 elock_tries2=File $1 op slot zetten mislukte na $2 minuten. Laatste fout was : $3
+
 skill_high=Exper
 skill_medium=Middelmatig
 skill_low=Gevorderde
+
 feedback_title=Webmin Terugkoppeling
 feedback_desc=Met dit formulier kunt u bug's rapporteren en suggesties geven aan de Webmin ontwikkelaars voor problemen of gemiste opties die u heeft gevonden. Wanneer u op de Verstuur knop heeft geklikt zullen de details in het formulier worden gemailt naar $1.
 feedback_desc2=Deze terugkoppeling zal worden verstuurd naar de ontwikkelaars van Webmin, niet naar uw systeem administrator, ISP of hosting bedrijf. Schrijf alstublieft uw terugkoppeling in de Engelse taal ook als u op dit moment Webmin in een andere taal gebruikt.
@@ -232,15 +254,18 @@ feedback_to=Verstuur de terugkoppeling naar de adressen
 feedback_enoto=Er is geen adres ingevuld om de terugkoppeling naar toe te sturen
 feedback_ecannot=U bent niet bevoegd een terugkoppeling te versturen
 feedback_ecannot2=U bent niet bevoegd een terugkoppeling te versturen met configuratie files
+
 progress_size2=Downloaden van $1 ($2) ..
 progress_nosize=$1 downloaden ..
 progress_datan=Ontvangen $1 ($2 %)
 progress_data2n=Ontvangen $1
 progress_done=.. download compleet.
 progress_incache=$1 gevonden in cache ..
+
 readparse_cdheader=Ontbrekende Inhoud-Dispositie header
 readparse_enc=Form-date decodering werd verwacht, maar kreeg een normale codering
 readparse_max=Data overschreed de maximale grote van $1 bytes
+
 password_expired=Uw wachtwoord is verlopen en u moet een nieuw wachtwoord kiezen.
 password_temp=U moet een nieuw wachtwoord selecteren om uw tijdelijke login te vervangen.
 password_header=Selecteer Nieuw Wachtwoord
@@ -259,6 +284,7 @@ password_enew2=Uw nieuwe wachtwoord komt niet overeen
 password_epam=PAM fout : $1
 password_emodpam=De Authen::PAM perl module die nodig is om wachtwoorden te wijzigen is niet geinstalleerd!
 password_enewpass=Het nieuwe wachtwoord is niet toegestaan : $1
+
 ui_mandatory=Dit veld is verplicht
 ui_checkmandatory=Er is niets geselecteerd
 ui_errors=Er zijn diverse fouten gevonden :
@@ -272,7 +298,9 @@ ui_edate=Ongeldige datum
 ui_etime=Ongeldige tijd
 ui_paging=Toon de rijen $1 tot $2 van $3
 ui_rowlabel=$2 in rij $1 :
+
 header_statusmsg=$1 is ingelogd bij $2 op $4 ($5)
+
 uptracker_title=Uploaden File
 uptracker_file=Filenaam
 uptracker_size=Grote
@@ -280,6 +308,7 @@ uptracker_pc=Voortgang
 uptracker_eid=Geen upload ID gespecificeerd
 uptracker_eid2=Upload ID is ongeldig!
 uptracker_of=$1 van $2
+
 wsearch_title=Zoek $1
 wsearch_modt=Module
 wsearch_mtitle=Module naam
@@ -307,6 +336,7 @@ wsearch_hmod=Module
 wsearch_moddir=URL pad /$1/
 wsearch_searching=Zoeken naar $1 . .
 wsearch_found=$1 resultaten gevonden :
+
 sql_emysqldriver=Laden van de MySQL DBI driver mislukten
 sql_emysqlconnect=Verbinden mislukte bij de MySQL database : $1
 sql_epostgresqldriver=Laden van de PostgreSQL DBI driver mislukten

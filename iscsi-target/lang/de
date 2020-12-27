@@ -1,6 +1,7 @@
 check_econfig=Die iSCSI-target-Konfigurationsdatei $1 wurde nicht auf Ihrem System gefunden.
 check_eietadm=Der iSCSI-target-Administrationsbefehl $1 wurde nicht auf Ihrem System gefunden.
 check_einit=Bootup-Aktion $1 existiert nicht
+
 index_title=iSCSI Target
 index_clink=Vielleicht ist es nicht installiert oder Ihre <a href='$1'>Modulkonfiguration</a> ist falsch.
 index_stop=Stoppe iSCSI Target
@@ -22,8 +23,10 @@ index_noluns=Keine
 index_nousers=Jeder
 index_nullio=RAM Disk von $1 Sektoren
 index_size=Gesamtgröße
+
 dtargets_err=Fehlgeschlagen targets zu löschen
 dtargets_enone=Nichts ausgewählt!
+
 target_title1=iSCSI-Target erstellen
 target_title2=iSCSI-Target editieren
 target_header=iSCSI freigegebene Geräte-Optionen
@@ -68,11 +71,13 @@ target_noalias=Kein
 target_hdigest=Header-Prüfsumme
 target_ddigest=Daten-Prüfsumme
 target_nodigest=Kein
+
 auth_title=Authentifizierungseinstellungen
 auth_header=Standard Authentifizierungs-Optionen für alle target
 auth_iuser=Authentifizierung von Clients
 auth_ouser=Authentifizierung für Clients
 auth_err=Fehlgeschlafen Authentifizierungseinstellungen zu speichern
+
 conn_title=Verbindungseinstellungen
 conn_header=Standard Verbindungs-Optionen für alle targets
 conn_sessions=Maximale Anzahl gleichzeitiger Sessions
@@ -91,6 +96,7 @@ conn_emaxrecv=Fehlende oder nicht-numerische maximale erhaltene Segmentlänge
 conn_emaxxmit=Fehlende oder nicht-numerische maximale empfangene Segmentlänge
 conn_emaxburst=Fehlende oder nicht-numerische maximale Client Burst-Größe
 conn_efirstburst=Fehlende oder nicht-numerische maximale unaufgeforderte Client-Datengröße
+
 timeout_title=Timeout-Einstellungen
 timeout_header=Client Timeout-Optionen
 timeout_nopi=Intervall zwischen pings im Leerlauf
@@ -98,6 +104,7 @@ timeout_nopinone=Niemals ping
 timeout_secs=Sekunden
 timeout_nopt=Zeit für ping-Antwort
 timeout_noptnone=Gleiche wie ping Zeit
+
 addr_title=Server-Adresse und Port
 addr_header=iSCSI-Server Netzwerk-Optionen
 addr_addr=Horchen auf IP-Adresse
@@ -110,18 +117,21 @@ addr_err=Fehlgeschlagen Server-Adresse zu speichern
 addr_eaddr=Adresse zum Horchen muss eine IP-Adresse sein
 addr_eport=Port zum Horchen muss eine Zahl sein
 addr_edebug=Debug-Level muss eine Zahl sein
+
 initiators_title=Erlaubte Client Adressen
 initiators_none=Keine erlaubte Client-Adresse wurden bisher definiert. Keine Clients werden in der Lage sein sich zu verbinden.
 initiators_ips=Erlaubte Clients
 initiators_title1=Erlaubte Client Adressen hinzufügen
 initiators_title2=Erlaubte Client Adressen editieren
 initiators_header=Erlaube iSCSI Clients für das target
+
 targets_title=Erlaubte Server-Adressen
 targets_none=Keine erlaubte Server-Adresse wurde bisher definiert. Keine Clients werden in der Lage sein sich zu verbinden.
 targets_ips=Erlaubte Server-Schnittstellen
 targets_title1=Erlaubte Server-Adressen hinzufügen
 targets_title2=Erlaubte Server-Adressen editieren
 targets_header=Erlaubte iSCSI-Server-Schnittstelle für das target
+
 allow_target=Target Name
 allow_move=Verschieben
 allow_delete=Ausgewählte löschen
@@ -133,17 +143,21 @@ allow_return=erlaubte targets und Adressen
 allow_err=Fehlgeschlagen erlaubte Adressen zu speichern
 allow_eaddr=Adresse $1 ist nicht gültig. Es muss entweder eine IPv4-Adresse, IPv4-Netzwerk/Maske oder IPv6-Adresse in eckigen Klammern sein.
 allow_eaddrs=Keine Adressen erlaubten eingegeben
+
 dallow_err=Fehlgeschlagen erlaubten Adressen zu löschen
 dallow_enone=Nichts ausgewählt
+
 manual_title=Editiere Konfigurationsdatei
 manual_desc=Verwenden Sie das Textfeld, um die iSCSI-Server-Konfigurationsdatei $1 zu bearbeiten. Seien Sie vorsichtig, da keine Validierung Ihrer Eingabe durchgeführt wird!
 manual_err=Fehlgeschlagen Konfigurationsdatei zu speichern
 manual_edata=Kein Inhalt eingegeben!
+
 start_err=Fehlgeschlagen iSCSI-Server zu starten
 stop_err=Fehlgeschlagen iSCSI-Server zu stoppen
 restart_err=Fehlgeschlagen iSCSI-Server neuzustarten
 atboot_err=Fehlgeschlagen beim Booten zu aktivieren
 atboot_einit=Init-Skript $1 existiert nicht
+
 log_create_target=Target $1 erstellt
 log_delete_target=Target $1 gelöscht
 log_modify_target=Target $1 modifiziert

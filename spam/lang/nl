@@ -12,6 +12,7 @@ index_applydesc=Klik op deze knop om de huidige SpamAssassin configuratie toe te
 index_cpan=Omdat SpamAssassin een Perl module is, kunt u het ook automatisch installeren met gebruik van de Webmin's a href='$2'>Perl Modules</a> module die dan $1 download van CPAN.
 index_spamassassin=SpamAssassin
 index_ecannot=U bent niet bevoegd om de SpamAssassin configuratie file $1 te bewerken.
+
 white_title=Toegestane en Niet-toegestane Adressen
 white_desc=Met de tabellen op deze pagina kunt u specificeren Van: en Naar: adressen voor email die altijd of nooit ge-categorieseerd zijn als spam. Elke andere email zal worden behandeld met normale SpamAssassin's regels. Alle email adressen mogen wildcarts bevatten, zoals *@foo.com of *.foo.com om met gehele domeinen overeen te komen.
 white_from=Afzenders-naar om nooit te classificeren als spam
@@ -42,6 +43,7 @@ white_tabham=Toegestane adressen
 white_tabspam=Geweigerde adressen
 white_tabsome=Bestemming's adressen
 white_tabimport=Importeer adressen
+
 score_title=Spam Classificatie
 score_desc=SpamAssassin wijst een score toe aan ieder bericht gebaseerd op zijn inhoud en header. De opties op deze pagina bepalen de hoogte van de score wanneer een bericht als spam word gezien, en sommige methoden hoer die score berekend word.
 score_header=Spam berichten classificatie opties
@@ -75,6 +77,7 @@ score_emxdelay=Ontbrekende of ongeldige aantal seconden om te wachten tussen MX 
 score_etimeout=Ontbrekende of ongeldige seconden om te wachten op RBL aanvragen
 score_ereceived=Ontbrekende of ongeldig aantal voor- Ontvangen: headers te controleren met RBL
 score_bayes=Gebruik Bayesian leer classificatie?
+
 report_title=Berichten Modificatie
 report_desc=De opties op deze pagina controleren de modificaties die SpamAssassin toepast op headers en body van alle berichten die hij analyseert, en modificaties die hij toepast op email wat geclassificeerd is als spam.
 report_header=Analyse en spam berichten modificatie opties
@@ -107,6 +110,7 @@ report_addspam=Spam
 report_addham=Ham
 report_addall=Alles
 report_eaddheader=Ontbrekende of ongeldige extra header om toe te voegen $1
+
 user_title=Extra Gebruikers Opties
 user_desc=De opties op deze pagina zijn meest gerelateerd tot de paden en instellingen die SpamAssassin gebruikt voor de externe spam identificatie pakketten Razor, DCC en Pyzor. U kunt SpamAssassin ook vertellen dat hij DNS moet opzoeken of niet.
 user_header=Extra gebruikers-niveau opties
@@ -129,6 +133,7 @@ user_err=Mislukt om gebruiker opties op te slaan
 user_etimeout='$1' is geen geldige time-out
 user_epath='$1' is geen geldige cliënt programma pad
 user_emax='$1' is geen geldige checksum telling
+
 header_title=Header en Body Tests
 header_desc=Op deze pagina kunt u extra testen definiëren die SpamAssassin zal toepassen op mail, Gebaseerd op berichten headers, de body inhoud, URL's gevonden in de body's, of combinaties en andere testen. U mag zelf de naam van de test verzinnen, maar het is meestal zoiets als CONTAINS_FOO of BEVAT_ONZIN. De actuele score die SpamAssassin op een bericht doet met een overeenkomende test kunt u zelf invullen of met een ingebouwde test doen die u onderaan deze pagina ziet staan.
 header_switch=Schakel over naar simpele mode ..
@@ -162,6 +167,7 @@ header_eeval='$1' is geen geldige evaluatie functie
 header_eheader='$1' is geen geldige email header
 header_eregexp='$1' is geen geldige reguliere expressie (moet lijken op /expressie/)
 header_emeta=Ontbrekende test expressie voor de test '$1'
+
 priv_title=Extra Privilege Opties
 priv_desc=De opties die hier staan kunnen alleen globaal gezet worden en niet voor de individuele gebruikers configuratie files. Zij doen dat door middel van het pad naar diverse configuratie en log files.
 priv_header=Extra voorkeur-niveau instellingen
@@ -181,6 +187,7 @@ priv_eargs='$1' is geen geldige lijst met argumenten
 priv_emscore='$1' is geen geldige hoogste uitdrukkings score
 priv_ephrase='$1' is geen geldig dubbele woord spam uitdrukking
 priv_escore=Ontbrekende of ongeldige score voor spam uitdrukking '$1'
+
 usually=Gebruikelijk $1
 ecannot=U bent niet bevoegd om deze pagina te gebruiken
 setup_title=Procmail instellen voor SpamAssassin
@@ -200,11 +207,13 @@ setup_drop1=Ontvanger Unix gebruiker
 setup_drop0=<tt>root</tt> gebruiker
 setup_ok=Procmail instellen voor SpamAssassin
 setup_email=Doorsturen naar email adres
+
 setup_err=Setup voor SpamAssassin mislukt
 setup_efile=Ontbrekende of ongeldig mbox-formaat file
 setup_emaildir=Ontbrekende of ongeldig Qmail mail directory
 setup_emhdir=Ontbrekende of ongeldig MH mail directory
 setup_eemail=Ontbrekende of ongeldig email adres
+
 log_white=Gemodificeerd toegestane en geweigerde adressen
 log_score=Gemodificeerde spam classificatie
 log_report=Gemodificeerde berichten modificatie
@@ -215,12 +224,14 @@ log_setup=Setup Procmail voor SpamAssassin
 log_procmail=Gewijzigde Procmail configuratie
 log_import=Geïmporteerde $1 met toegestane adressen
 log_manual=Handmatig bewerkte configuratie file
+
 import_title=Importeer adressen
 import_err=Importeren adressen mislukt
 import_efile=Geen file om te importeren van het geselecteerde
 import_enone=Geen email adres gevonden in file
 import_ok1=$2 email adressen zijn gevonden in de file, waarvan $1 nieuw is, en deze is toegevoegd aan de lijst van toegestane adressen.
 import_ok2=$1 email adressen zijn gevonden in de file, maar deze staan al in de lijst van toegestane adressen.
+
 mail_title=Spam Mail
 mail_desc=De lijst met berichten op deze pagina is geclassificeerd als spam, en wachten tot er actie word ondernomen. Berichten die verkeerd als spam aangemerkt zijn kunnen verplaatst worden naar uw Inbox, en echte spam kan gewist worden.
 mail_level=Score
@@ -238,10 +249,13 @@ mail_will=Automatisch herladen in $1 minuten
 mail_wills=Automatisch herladen in $1 seconden
 mail_delall=Alle Spam Wissen
 mail_search3=Zoek naar score boven :
+
 process_eclean=Er ontstond een fout tijdens verwijderen van de SpamAssassin headers van deze email
 process_ereport=Email rapport sturen naar SpamAssassin is mislukt : $1
+
 apply_err=Mislukt veranderingen toe te voegen
 apply_none=Geen SpamAssassin daemon proces gevonden!
+
 acl_avail=Beschikbaar iconen voor gebruiker
 acl_file=Bewerk SpamAssassin configuratie file
 acl_filedef=Globale config file
@@ -249,8 +263,10 @@ acl_awl=Gebruikers die de auto-witte-lijst mogen bewerken
 acl_awl0=Alle gebruikers
 acl_awl1=Alleen gebruikers in lijst $1
 acl_awl2=Alleen leden van groepen $1
+
 search_escore=Ontbrekende of ongeldige spam score
 search_results5=$1 mail bericht met spam score gelijk aan of hoger dan $2 ..
+
 razor_title=Setup Razor Spam Detector
 razor_desc=Vipul's Razor is een samenwerking's spam detectie en rapportering systeem die de classificatie kan verbeteren op de spam die naar uw adres gestuurd word. Maar voordat u het kunt gebruiken moet u het registratie formulier invullen voor een Razor account.
 razor_user=Razor gebruikersnaam
@@ -265,9 +281,11 @@ razor_epass=Ontbrekend wachtwoord
 razor_doing=Ik probeer nu om u te registreren en Razor setup te draaien ..
 razor_done=.. klaar.
 razor_failed=.. mislukt! Bekijk de fout melding hierboven waarom.
+
 procmail_title=Procmail Spam Aflevering
 procmail_ok=Verander Procmail Aflevering
 procmail_desc=Dit formulier kan gebruikt worden om de Procmail configuratie te veranderen die uitmaakt wat er gebeurt met berichten die als spam worden aangemerkt.
+
 simple_title=Header en Body Tests
 simple_desc=Op deze pagina kunt u extra testen definiëren die SpamAssassin zal toepassen op email, gebaseerd op berichten headers, de body inhoud, URL's gevonden in de body. De naam mag u zelf verzinnen maar gebruikelijk is het zoiets als CONTAINS_FOO of (BEVAT_ONZIN).
 simple_switch=Schakel naar geavanceerde mode ..
@@ -278,8 +296,10 @@ simple_regexp=Overeenkomende expressie
 simple_score=Score om toe te voegen
 simple_describe=Omschrijving
 simple_err=Mislukt om berichten test op te slaan
+
 before_ecmd=Opdracht vooraf het opslaan mislukte : $1
 after_ecmd=Opdracht na het opslaan mislukte : $1
+
 connect_emysql=Mislukt om de database driver $1 te laden
 connect_elogin=Mislukt in te loggen bij de databases $1 : $2.
 connect_equery=De database $1 bevat niet de voorkeur tabel $2
@@ -287,9 +307,11 @@ connect_eldapmod=Perl module $1 die nodig is om te communiceren met LDAP is niet
 connect_eldap=Mislukt te verbinden met LDAP server $1 op poort $2
 connect_eldaplogin=Mislukt in te loggen met LDAP server $1 als $2 : $3
 connect_ebase=LDAP base DN $1 is niet geldig : $2
+
 eldap=LDAP operatie mislukt : $1
 esql=SQL mislukt : $1
 ldap_euser=Kon het LDAP gebruiker object niet vinden voor $1
+
 db_title=SQL en LDAP Databases
 db_header=Configuratie opties opslag database
 db_dsn=Gebruiker configuraties opslaan in
@@ -325,6 +347,7 @@ db_eldapport=Ontbrekende of ongeldige LDAP server poort nummer
 db_eldapdn=Ontbrekende of ongeldige base DN - spaties zijn niet toegestaan
 db_eldapattr=Ontbrekende of ongeldige SpamAssassin attributen
 db_eldapuid=Ontbrekende of ongeldige gebruikersnaam attributen
+
 awl_title=Beheer Auto-Witte-lijst
 awl_search=Zoek in witte-lijst naar:
 awl_ok=Zoek
@@ -350,6 +373,7 @@ awl_deleteone=Opschonen Auto-Witte-Lijst
 awl_deleteonedesc=Verwijder alle auto-witte-lijst ingangen voor de gebruiker $1
 awl_deleteall=Opschonen Alle Auto-Witte-Lijst
 awl_deletealldesc=Verwijder alle auto-witte-lijst ingangen voor alle gebruikers op het systeem.
+
 dawl_err=Mislukt om van auto-witte-lijst te verwijderen
 dawl_eopen=Kon de witte-lijst niet openen
 dawl_enone=Geen adressen geselecteerd om te verwijderen
@@ -357,6 +381,7 @@ dawl_ecannot=U bent niet bevoegd om de auto-witte-lijst van deze gebruiker te be
 dawl_doing=Verwijder auto-witte-lijst voor alle gebruikers ..
 dawl_done=.. verwijder $2 ingangen van $1 gebruikers.
 dawl_title=Verwijder Alle Auto-Witte-Lijst
+
 manual_title=Bewerk Config Files
 manual_file=Bewerk config file :
 manual_ok=OK

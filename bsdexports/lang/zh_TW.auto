@@ -9,9 +9,12 @@ index_apply=應用更改
 index_applydesc=單擊此按鈕以應用當前文件導出配置。這將使上面列出的所有目錄都具有指定的選項。
 index_return=出口清單
 index_echeck=NFS服務器不能在此系統上使用： $1
+
 check_ecmd=未安裝NFS服務器命令 $1
+
 delete_err=無法刪除導出
 delete_enone=未選擇
+
 edit_title1=編輯導出
 edit_title2=創建導出
 edit_header1=導出選項
@@ -31,6 +34,7 @@ edit_clients=客戶群
 edit_hosts=主機/網絡組
 edit_network=網絡
 edit_mask=面具
+
 save_err=無法保存導出
 save_edir='$1'不是目錄或不存在
 save_enone=您必須至少輸入一個目錄才能導出
@@ -44,4 +48,5 @@ save_enetwork=“$1”不是有效的網絡
 save_enetmask='$1'不是有效的網絡掩碼
 save_esame1=目錄<tt>$1</tt>已被導出到<tt>$2</tt>。您的操作系統不允許將同一<i>local</i>文件系統上的目錄分別導出到同一主機
 save_esame2=目錄<tt>$1</tt>已被導出到<tt>$2</tt>。您的操作系統不允許將同一<i>local</i>文件系統上的目錄分別導出到同一網絡
+
 restart_err=無法應用更改

@@ -21,6 +21,7 @@ index_hdparm=编辑IDE参数
 index_use=用途
 index_free=可用
 index_return=磁盘列表
+
 bytes=字节
 extended=扩展
 opt_default=默认
@@ -35,6 +36,7 @@ select_cpq=Compaq RAID $1 驱动器 $2
 select_cpart=Compaq RAID $1驱动器$2分区$3
 select_scsi=SCSI控制器$1 总线 $2 目标 $3 LUN $4
 select_spart=SCSI 控制器 $1 总线 $2 目标 $3 LUN $4 分区 $5
+
 edit_title=编辑分区
 create_title=创建分区
 edit_ecannot=您没有编辑该分区的权限
@@ -69,6 +71,7 @@ edit_fsckmsg=调用$1程序来修复文件系统，这样它就会被系统加�
 edit_tune=调整文件系统
 edit_tunemsg=允许您修改现有的文件系统的各种参数
 edit_none=无
+
 mkfs_title=新的文件系统
 mkfs_ecannot=您没有在该磁盘上创建新文件系统的权限
 mkfs_desc1=点击此表底部上的按钮，您将会在装置$2上创建新的$1文件系统。此分区上的所有数据都会被永久删除。
@@ -79,6 +82,7 @@ mkfs_err=创建文件系统失败
 mkfs_exec=执行命令$1...
 mkfs_failed=..命令失败！
 mkfs_ok=..命令结束。
+
 fsck_title=修复文件系统
 fsck_ecannot=您没有用fsck修复该磁盘的权限
 fsck_desc1=点击<tt>修复文件系统</tt>按钮可尝试修复 $2 上已损坏的文件系统 $1，使之能加载到 $3 上。如果文件系统没有受到破坏，将不会有任何改变。
@@ -91,6 +95,7 @@ fsck_err3=发现错误并改正 - 需要重新启动机器
 fsck_err4=发现错误但无法改正
 fsck_err16=命令行错误
 fsck_unknown=未知的返回代码$1
+
 tunefs_title=调整文件系统	
 tunefs_ecannot=您没有调整本文件系统的权限
 tunefs_desc=您可以在此表中调整 $2 上文件系统 $1 的各种参数，以便将其加载到 $3上。此文件系统中的任何文件都不会受到影响。
@@ -112,10 +117,12 @@ tunefs_err=调整文件系统失败
 tunefs_exec=执行命令 $1...
 tunefs_failed=..命令失败!
 tunefs_ok=..命令完成。
+
 reboot_title=重新启动计算机
 reboot_msg=现在正在重新启动..
 reboot_ok=现在重新启动
 reboot_why=您已经修改了$1上的分区表。您必须重新启动机器以使修改生效。
+
 save_err=保存分区失败
 save_ecannot=您没有编辑此磁盘的权限
 save_estart='$1'不是一个有效的开始柱面
@@ -124,6 +131,7 @@ save_emin=开始柱面大小必须大于或者等于$1
 save_emax=结束柱面大小必须小于或者等于$1
 save_eminmax=开始柱面的值必须小于结束柱面
 save_eoverlap=检测到与分区 $1( $2 到 $3)重叠
+
 ext2_b=块大小
 ext2_f=碎片大小
 ext2_i=每个节点的字节数
@@ -131,6 +139,7 @@ ext2_m=保留的块
 ext2_g=每组的块数
 ext2_c=是否检测已损坏的块？
 ext3_j=日志文件大小
+
 msdos_ff=FAT号
 msdos_F=FAT大小
 msdos_i=卷标标识号
@@ -138,18 +147,23 @@ msdos_n=卷标名称
 msdos_r=根项数
 msdos_s=簇大小
 msdos_c=是否检测已损坏的块？
+
 minix_n=文件名长度
 minix_i=节点数目
 minix_b=块数目
 minix_c=是否检测损坏的块？
+
 reiserfs_force=强制创建文件系统
 reiserfs_hash=哈希函数
+
 xfs_force=强制创建文件系统
 xfs_b=块大小
+
 acl_disks=该用户能够分区和格式化的磁盘
 acl_dall=所有磁盘
 acl_dsel=选择..
 acl_view=可以浏览不可编辑的磁盘？
+
 hdparm_title=修改 IDE 参数
 hdparm_on=开
 hdparm_off=关
@@ -178,6 +192,7 @@ hdparm_performing=执行
 hdparm_buf1=缓存：
 hdparm_buf2=磁盘缓冲：
 hdparm_speedres=速度测试结果
+
 log_modify=修改 $1
 log_create=创建 $1
 log_delete=删除 $1
@@ -185,6 +200,7 @@ log_mkfs=在 $2 上创建文件系统 $1
 log_tunefs=在 $2 上调整文件系统 $1
 log_fsck=修复 $2 上的文件系统 $1
 log_hdparm=修改 $1 的 IDE 参数
+
 fs_ext2=Linux Native
 fs_minix=Minix
 fs_msdos=MS-DOS

@@ -5,6 +5,7 @@ index_user=Vaihda salasana käyttäjälle:
 index_euseradmin=Tätä moduulia ei voida käyttää, koska Käyttäjät ja Ryhmät moduuli ei ole asennettu tai sitä ei tueta järjestelmässäsi.
 index_toomany=Järjestelmässäsi on liian paljon käyttäjiä näytettäväksi. Kirjoita alle käyttäjän nimi, jonka salasanaa haluat muuttaa..
 index_none=Sinulla ei ole oikeutta muuttaa kenenkään käyttäjän salasanaa.
+
 passwd_title=Vaihda Salasana
 passwd_header=Vaihdetaan Unix käyttäjäsalasana
 passwd_for=Vaihdetaan salasanaa käyttäjälle
@@ -23,7 +24,9 @@ passwd_erepeat=Uudet salasanat eivät ole identtisiä
 passwd_ecmd=$1 epäonnistui : $2
 passwd_ok=Käyttäjän $1 salasana on vaihdettu onnistuneesti. Jos tämä on tämänhetkminen Webmin käyttäjäsi, sinun saattaa pitää kirjautua uudelleen.
 passwd_ok2=Käyttäjän $1 salasana on vaihdettu onnistuneesti.
+
 log_passwd=Vaihda salasana käyttäjälle $1
+
 acl_repeat=Täytyy syöttää salasana uudelleen?
 acl_old=Täytyy syöttää vanha salasana?
 acl_old_this=Vain muille käyttäjille

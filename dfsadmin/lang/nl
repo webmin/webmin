@@ -8,6 +8,7 @@ index_none=Er worden op dit moment geen directory's geëxporteerd op dit systeem
 index_apply=Veranderingen Toevoegen
 index_applydesc=Klik op deze knop om de huidige configuratie voor file delen toe te voegen. Dit zal alle directorys in de lijst hierboven beschikbaar maken met de gespecificeerde opties.
 index_return=lijst met gedeelde files
+
 edit_title1=Bewerk Gedeelde File
 edit_title2=Maak Gedeelde File
 edit_header1=Gedeelde File details
@@ -30,6 +31,7 @@ edit_anon1=Geen toegang
 edit_aclok=ACLs toestaan?
 edit_public=WebNFS delen?
 edit_index=WebNFS index file
+
 save_err=Mislukt om gedeelde file op te slaan
 save_edirectory='$1' is geen geldige directory naam
 save_edirectory2=De directory '$1' bestaat niet
@@ -38,13 +40,18 @@ save_ero=U heeft geen hosts in de lijst gezet waarmee alleen-lezen gedeeld kan w
 save_eroot=U heeft geen hosts in de lijst gezet waarmee root gedeeld kan worden
 save_ealready=De directory '$1' word reeds gedeeld
 save_ehost=De host '$1' bestaat niet
+
 log_modify=Gemodificeerde NFS deling $1
 log_rename=Veranderde NFS deling $1 naar $2
 log_create=Gemaakte NFS deling $1
 log_delete=Verwijderde NFS deling $1
 log_apply=Veranderingen toegevoegd
+
 acl_view=Mag NFS delingen bewerken?
+
 ecannot=U bent niet bevoegd om NFS delingen te beheren
+
 delete_err=Mislukt om delingen te verwijderen
 delete_enone=Niets geselecteerd
+
 restart_err=Mislukt om veranderingen toe te voegen

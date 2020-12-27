@@ -1,4 +1,5 @@
 quota_unlimited=Onbeperkt
+
 acl_fss=File systemen die deze gebruiker mag wijzigen
 acl_fall=Alle file systemen
 acl_fsel=Geselecteerd..
@@ -24,9 +25,11 @@ acl_maxblocks=Maximum toe te wijzen blok quotum
 acl_maxfiles=Maximum toe te wijzen bestands quotum
 acl_unlimited=Onbeperkt
 acl_email=Mag email notificaties instellen?
+
 activate_eallow=U bent niet gerechtigd quota voor dit filesysteem aan- of uit te zetten
 activate_eon=Het aanzetten van quota is mislukt
 activate_eoff=Het uitzetten van quota is mislukt
+
 check_title=Controleer Quota
 check_return=$1 lijst
 check_ecannot=U mag de quota voor dit filesysteem niet controleren
@@ -34,11 +37,13 @@ check_running=De <tt>quotacheck</tt> opdracht wordt nu uitgevoerd om het verbrui
 check_done=... Klaar.
 check_rgroup=groep
 check_ruser=gebruiker
+
 cgroup_efail=Kopiëren van quota mislukt
 cgroup_ecannot=U kunt geen quota kopiëren
 cgroup_egallow=U mag het quota van deze groep niet kopiëren
 cgroup_enogroup=Geen groepen om naar te kopiëren
 cgroup_eallowto=U mag geen quota kopiëren naar '$1'
+
 cgform_title=Kopieer Quota
 cgform_return=groep quota
 cgform_ecannot=U kunt geen quota kopiëren
@@ -48,11 +53,13 @@ cgform_all=Alle groepen op uw systeem
 cgform_select=Geselecteerde groepen
 cgform_contain=Groepen met gebruikers
 cgform_doit=Kopieer
+
 cuser_efail=Kopiëren van quota mislukt
 cuser_ecannot=U kunt geen quota kopiëren
 cuser_euallow=U mag het quota van deze gebruiker niet kopiëren
 cuser_enouser=Geen gebruikers om naar te kopiëren
 cuser_eallowto=U mag geen quota kopiëren naar '$1'
+
 cuform_title=Kopieer Quota
 cuform_return=gebruiker quota
 cuform_ecannot=U kunt geen quota kopiëren
@@ -62,6 +69,7 @@ cuform_all=Alle gebruikers op uw systeem
 cuform_select=Geselecteerde gebruikers
 cuform_members=Leden van geselecteerde groepen
 cuform_doit=Kopieer
+
 egroup_title=Bewerk Groep Quota
 egroup_freturn=filesysteem lijst
 egroup_greturn=groepen lijst
@@ -80,6 +88,7 @@ egroup_hflimit=Harde Bestand Limiet
 egroup_update=Update
 egroup_listall=Lijst Alle Quota
 egroup_listalldesc=Klik op deze knop om een lijst te zien van alle filesystemen waar deze groep harddisk quota's op heeft, met klikbare links om ze te bewerken.
+
 euser_title=Wijzig Gebruiker Quota
 euser_freturn=filesysteem lijst
 euser_ureturn=gebruikers lijst
@@ -102,6 +111,7 @@ euser_hflimit=Harde file limiet
 euser_update=Update
 euser_listall=Lijst Alle Quota
 euser_listalldesc=Klik op deze knop om een lijst te zien van alle filesystemen waar deze gebruiker harddisk quota's op heeft, met links om ze te bewerken.
+
 gfilesys_title=Groep Quota
 gfilesys_return=filesystemen lijst
 gfilesys_ecannot=U kan geen quota wijzigen voor '$1'
@@ -120,6 +130,7 @@ gfilesys_copy=Kopieer Quota's
 gfilesys_editdesc=Bekijk en bewerk de quota's voor deze groep op een ander filesysteem die op dit moment nog geen quota's hebben.
 gfilesys_copydesc=Kopieer quota limieten voor deze groep naar sommige of alle filesystemen of alle andere groepen.
 gfilesys_enone=Geen groep naam ingevuld
+
 ggracef_title=Waarschuwingstijd
 ggracef_return=groepen lijst
 ggracef_ecannot=U mag de waarschuwingstijd niet wijzigen op dit filesysteem
@@ -128,9 +139,11 @@ ggracef_graces=Groep waarschuwingstijd voor <tt>$1</tt>
 ggracef_block=Voor blok quota
 ggracef_file=Voor file quota
 ggracef_update=Wijzigen
+
 ggraces_esave=Opslaan waarschuwingstijd mislukt
 ggraces_eedit=U kunt de waarschuwingstijd niet wijzigen op dit filesysteem
 ggraces_enumber='$1' is geen getal
+
 index_quser=Gebruikers Quota
 index_qgroup=Groep Quota
 index_qboth=Gebruiker en Groep Quota
@@ -152,6 +165,7 @@ index_egroup=Wijzig Groep Quota:
 index_egroupdesc=Vul in of selecteer een groep en klik dan op deze knop om de quota's te bekijken op alle filesystemen.
 index_nosupport=Geen enkel lokaal filesysteem ondersteunt quota
 index_mountmod=U kunt quota's aanzetten voor een filesysteem in de <a href='$1'>Harddisk en Netwerk Filesystemen</a> module.
+
 lgroups_failed=Lijst maken van groepen mislukt
 lgroups_tablist=Groepen lijst
 lgroups_eallow=U bent niet bevoegd om quota's te wijzigen op dit filesysteem
@@ -180,13 +194,17 @@ lgroups_tofixed=Adres $1
 lgroups_emailheader=Email aan groepen die hun quota bereiken
 lgroups_email=Stuur email naar groepen?
 lgroups_tovirt=Virtualmin domein eigenaar
+
 sgroup_egroup=U mag geen quotum wijzigen voor deze groep
 sgroup_efs=U mag geen quota wijzigen op dit filesysteem
+
 ssync_ecannot=U mag de standaard quota voor dit filesysteem niet wijzigen
+
 suser_euser=U bent niet bevoegd om quota te wijzigen voor deze gebruiker
 suser_efs=U mag het quotum voor dit filesysteem niet wijzigen
 suser_emaxblocks=U bent niet bevoegd om het blok limiet boven $1 in te stellen
 suser_emaxfiles=U bent niet bevoegd om file limieten boven $1 in te stellen
+
 ufilesys_title=Gebruikers Quota
 ufilesys_return=filesystemen lijst
 ufilesys_ecannot=U kan geen quota wijzigen voor '$1'
@@ -206,6 +224,7 @@ ufilesys_copydesc=Kopieer quota limieten voor deze gebruiker naar alle filesyste
 ufilesys_copy=Kopieer Quota
 ufilesys_grace=Toekennen
 ufilesys_enone=Geen gebruikers naam ingevuld
+
 ugracef_title=Waarschuwingstijd
 ugracef_return=gebruiker lijst
 ugracef_ecannot=U kunt de waarschuwingstijd op dit filesysteem niet wijzigen
@@ -214,9 +233,11 @@ ugracef_graces=Gebruiker Waarschuwingstijd voor <tt>$1</tt>
 ugracef_block=Voor blok quota
 ugracef_file=Voor file quota
 ugracef_update=Updaten
+
 ugraces_esave=Opslaan van waarschuwingstijd mislukte
 ugraces_eedit=U kunt de waarschuwingstijd op dit filesysteem niet wijzigen
 ugraces_enumber='$1' is geen getal
+
 lusers_failed=Gebruikers lijst maken mislukt
 lusers_tablist=Gebruiker lijst
 lusers_tabdefault=Standaard quota's
@@ -262,12 +283,14 @@ lusers_from=Van: adres voor email
 lusers_mass=Update Geselecteerde Gebruikers
 lusers_cc=Ook Cc: email naar
 lusers_nocc=Geen Cc
+
 grace_seconds=Seconden
 grace_minutes=Minuten
 grace_hours=Uren
 grace_days=Dagen
 grace_weeks=Weken
 grace_months=Maanden
+
 log_activate_u=Gebruikers quota op $1 aangezet
 log_activate_g=Groep quota op $1 aangezet
 log_activate_ug=Gebruikers- en groepen quota op $1 aangezet
@@ -284,6 +307,7 @@ log_grace_g=Groep waarschuwingstijd op $1 gewijzigd
 log_check=Quota op $1 gecontroleerd
 log_copy_u=Quota van gebruiker $1 gekopieerd
 log_copy_g=Quota van groep $1 gekopieerd
+
 email_err=Mislukt om email opties op te slaan
 email_ecannot=U bent niet bevoegd om de email opties te bewerken
 email_einterval=Ontbrekende of ongeldige interval
@@ -296,6 +320,7 @@ gemail_msg=Disk gebruik voor groep $1 op filesysteem $2 heeft $3% bereikt van de
 email_subject=Disk quota overschreden
 gemail_subject=Harddisk quota is overschreden
 email_eto=Ontbrekende bestemming email adres
+
 umass_title=Update Gebruiker Quota
 umass_header=Quota veranderingen om toe te voegen aan geselecteerde gebruikers
 umass_sblocks=Zachte blokken limieten
@@ -312,6 +337,7 @@ umass_esfiles=Ontbrekende of ongeldige zachte file limieten
 umass_ehfiles=Ontbrekende of ongeldige harde file limieten
 umass_count=De veranderingen hieronder worden toegevoegd aan de $1 geselecteerde gebruikers
 umass_err=Mislukt om gebruiker quota te updaten
+
 gmass_title=Update Groepen Quota's
 gmass_header=Quota veranderingen om toe te voegen aan de geselecteerde groepen
 gmass_count=De veranderingen hieronder zullen worden toegevoegd aan $1 geselecteerde groepen ..

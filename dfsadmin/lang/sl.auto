@@ -8,6 +8,7 @@ index_none=V tem sistemu trenutno ni izvoženih nobenih imenikov.
 index_apply=Uporabi spremembe
 index_applydesc=Kliknite ta gumb, če želite uporabiti trenutno konfiguracijo za skupno rabo datotek. Tako bodo vsi našteti imeniki na voljo z navedenimi možnostmi.
 index_return=seznam delnic
+
 edit_title1=Urejanje skupne rabe
 edit_title2=Ustvari skupno rabo
 edit_header1=Delite podrobnosti
@@ -30,6 +31,7 @@ edit_anon1=Ni dostopa
 edit_aclok=Dovoli ACL?
 edit_public=Delite WebNFS?
 edit_index=Indeksna datoteka WebNFS
+
 save_err=Delitve ni bilo mogoče shraniti
 save_edirectory='$1' ni veljavno ime imenika
 save_edirectory2=Imenik '$1' ne obstaja
@@ -38,13 +40,18 @@ save_ero=Niste navedli gostiteljev, s katerimi bi dali v skupno rabo samo branje
 save_eroot=Niste navedli nobenega gostitelja, s katerim bi lahko delili root
 save_ealready=Imenik "$1" je že v skupni rabi
 save_ehost=Gostitelj '$1' ne obstaja
+
 log_modify=Spremenjen delež NFS $1 
 log_rename=Spremenjen delež NFS $1 na $2 
 log_create=Ustvarjen delež NFS $1 
 log_delete=Izbrisani delež NFS $1 
 log_apply=Uporabljene spremembe
+
 acl_view=Ali lahko urejate delnice NFS?
+
 ecannot=Ni vam dovoljeno upravljati delnic NFS
+
 delete_err=Delitve ni bilo mogoče izbrisati
 delete_enone=Izbrana ni nobena
+
 restart_err=Sprememb ni bilo mogoče uporabiti

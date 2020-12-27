@@ -2,6 +2,7 @@ index_title=Servidor i Client NIS
 index_return=al menú NIS
 index_enis=No sembla que la teva màquina tingui instal·lat el suport de servidor ni client NIS.
 index_enis2=Només es podrà utilitzar la característica de serveis de client d'aquest mòdul.
+
 client_title=Client NIS
 client_header=Configuració del client NIS
 client_domain=Domini NIS
@@ -17,10 +18,12 @@ client_eserver='$1' no és un nom de domini vàlid
 client_eypwhich=no s'ha pogut enllaçar amb el domini NIS
 client_ehosts='$1' no és al fitxer de hosts
 client_enis=No sembla que la teva màquina tingui el suport de client NIS instal·lat.
+
 switch_title=Serveis Client
 switch_service=Servei
 switch_srcs=Origen de les dades
 switch_return=als serveis del client
+
 order_= 
 order_nisplus=NIS+
 order_nis=NIS
@@ -32,6 +35,7 @@ order_hesiod=Hesiod
 order_ldap=LDAP
 order_user=Impressores de l'usuari
 order_xfn=XFN
+
 server_title=Servidor NIS
 server_header=Opcions del servidor NIS
 server_boot=Activa el servidor NIS
@@ -65,6 +69,7 @@ server_solaris=Nota - amb Solaris, els dominis NIS client i servidor són sempre
 server_edir=Directori de fitxers font invàlid
 server_epwdir=Directori de fitxers font de contrasenyes invàlid
 server_enis=No sembla que la teva màquina tingui el suport de NIS instal·lat.
+
 tables_title=Taules NIS
 tables_switch=Edita la taula NIS:
 tables_header=Taula NIS $1 de $2
@@ -81,6 +86,7 @@ tables_search=Busca
 tables_nomatch=No hi ha cap registre que coincideixi amb la recerca
 tables_build=Reconstrueix les taules NIS
 tables_buildmsg=Fes clic sobre aquest botó per reconstruir les bases de dades NIS a partir de les dades de la taula. Si hi has fet algun canvi, ho hauràs de fer per posar-lo a disposició dels clients NIS.
+
 desc_aliases=Àlies sendmail
 desc_mail=Àlies sendmail
 desc_hosts=Adreces de host
@@ -116,6 +122,7 @@ desc_printers=Impressores
 desc_ipnodes=Nodes IP
 desc_timezone=Zones horàries
 desc_locale=Localitzacions
+
 hosts_title=Adreça de Host
 hosts_ip=Adreça IP
 hosts_name=Nom de host
@@ -124,6 +131,7 @@ hosts_err=No s'ha pogut desar el host
 hosts_eip=Hi falta l'adreça IP o bé no és vàlida
 hosts_ename=Hi falta el nom del host o bé no és vàlid
 hosts_aliases=Àlies
+
 group_name=Nom del grup
 group_gid=ID del grup
 group_members=Membres
@@ -133,6 +141,7 @@ group_none=No cal contrasenya
 group_encrypted=Contrasenya prexifrada
 group_clear=Contrasenya normal
 group_err=No s'ha pogut desar el grup
+
 passwd_name=Nom de l'usuari
 passwd_uid=ID d'usuari
 passwd_real=Nom Real
@@ -170,6 +179,7 @@ passwd_emax=Nombre màxim de dies invàlids
 passwd_emin=Nombre mínim de dies invàlids
 passwd_einactive=Nombre dies inactius invàlid
 passwd_eexpiry=Data d'expiració invàlida
+
 services_name=Nom del servei
 services_proto=Protocol
 services_port=Port
@@ -178,6 +188,7 @@ services_header=Opcions del servei de xarxa inetd
 services_err=No s'ha pogut desar el servei
 services_ename=Hi falta el nom del servei o bé no és vàlid
 services_eport=Hi falta el port o bé és invàlid
+
 protocols_name=Nom del protocol
 protocols_number=Número
 protocols_aliases=Àlies
@@ -186,6 +197,7 @@ protocols_header=Opcions del protocol de xarxa
 protocols_err=No s'ha pogut desar el protocol
 protocols_ename=Hi falta el nom o bé és invàlid
 protocols_enumber=Hi falta el número o bé és invàlid
+
 netgroup_name=Nom del grup de xarxa
 netgroup_members=Membres
 netgroup_title=Grup de Xarxa
@@ -200,6 +212,7 @@ netgroup_ename=Hi falta el nom del grup o bé no és vàlid
 netgroup_ehost=Hi falta el host a la fila $1 o bé no és vàlid
 netgroup_euser=Hi falta l'usuari o bé no és vàlid
 netgroup_edom=Hi falta el domini NIS a la fila $1 o bé no és vàlid
+
 ethers_mac=Adreça Ethernet
 ethers_ip=Adreça IP
 ethers_title=Adreça Ethernet
@@ -207,6 +220,7 @@ ethers_header=Opcions de mapejat Ethernet
 ethers_err=No s'ha pogut desar l'adreça Ethernet
 ethers_emac=Adreça Ethernet invàlida
 ethers_eip=Adreça IP invàlida
+
 rpc_name=Nom del programa
 rpc_number=Número
 rpc_aliases=Àlies
@@ -215,6 +229,7 @@ rpc_header=Detalls del programa RPC
 rpc_err=No s'ha pogut desar el programa RPC
 rpc_ename=Hi falta el nom del programa o bé no és vàlid
 rpc_enumber=Hi falta el número o bé no és vàlid
+
 networks_title=Adreça de Xarxa
 networks_ip=Adreça IP
 networks_name=Nom de la xarxa
@@ -223,6 +238,7 @@ networks_err=No s'ha pogut desar la xarxa
 networks_eip=Hi falta l'adreça IP o bé no és vàlida
 networks_ename=Hi falta el nom o bé no és vàlid
 networks_aliases=Àlies
+
 netmasks_net=Adreça de Xarxa
 netmasks_mask=Màscara de subxarxa
 netmasks_title=Màscara de subxarxa
@@ -230,6 +246,7 @@ netmasks_header=Detalls de la màscara
 netmasks_err=No s'ha pogut desar la màscara
 netmasks_enet=Hi falta l'adreça de xarxa o bé no és vàlida
 netmasks_emask=Hi falta la màscara de subxarxa o bé no és vàlida
+
 aliases_from=Adreça
 aliases_to=Alia a
 aliases_title=Àlies Sendmail
@@ -237,6 +254,7 @@ aliases_header=Detalls de l'àlies sendmail
 aliases_err=No s'ha pogut desar l'àlies
 aliases_efrom=Hi falta l'adreça o bé no és vàlida
 aliases_eto=Hi falten les adreces de destinació
+
 security_title=Seguretat del Servidor
 security_header=Opcions de seguretat del servidor NIS
 security_ok=Desa i Aplica
@@ -265,6 +283,7 @@ security_sec_des=Exigeix DES
 security_ehost='$1' no és un nom de host vàlid
 security_emap='$1' no és una taula NIS vàlida
 security_efield='$1' no és un número de camp vàlid
+
 eswitch_title=Edició de Servei
 eswitch_egone=El servei no existeix!
 eswitch_header=Detalls del servei

@@ -17,6 +17,7 @@ index_tdesc=Opis
 index_tucount=Uporabniki
 index_tgcount=Skupine
 index_ttype=Vrsta OS-a
+
 add_title=Dodaj strežnike
 add_msg=Dodajanje $1.
 add_gmsg=Dodajanje strežnikov v skupino $1.
@@ -26,6 +27,7 @@ add_echeck=Strežnik $1 nima modula uporabnikov in skupin
 add_epft=Server $1 ne uporablja iste oblike uporabniških datotek kot ta gostitelj
 add_egft=Server $1 ne uporablja iste oblike datoteke skupine kot ta gostitelj
 add_ok=Dodano $1 z $2 uporabniki in $3 skupinami.
+
 host_title=Upravljavec strežnika
 host_header=Podrobnosti o strežniku, ki jih upravlja programska oprema
 host_name=Ime gostitelja
@@ -34,8 +36,7 @@ host_delete=Odstrani z upravljanega seznama
 host_refresh=Osvežite uporabnike in skupine
 host_users=Število uporabnikov
 host_groups=Število skupin
-host_ulist=Uporabniki na strežniku
-host_glist=Skupine na strežniku
+
 host_return=podrobnosti o strežniku
 refresh_title=Osvežite uporabnike in skupine
 refresh_header=Ponovna zahteva za sezname uporabnikov in skupin z vseh strežnikov ..
@@ -49,6 +50,7 @@ refresh_gdel=odstrani $1 skupin
 refresh_done=.. Končano
 refresh_del=Odstranjen je $1 s seznama strežnikov
 refresh_failed= $1 : $2 ni bilo mogoče osvežiti
+
 uedit_host=Podrobnosti od $1 
 uedit_leave=Ne spreminjaj se
 uedit_set=Nastavljena
@@ -66,6 +68,7 @@ uedit_servers=Strežniki, ki jih želite ustvariti
 uedit_all=&lt;vsi gostitelji&gt;
 uedit_donthave=&lt;gostitelji, ki ga nimajo&gt;
 uedit_group=Člani $1 
+
 usave_einuse=Uporabnik z istim imenom že obstaja na $1 
 usave_esecgid=Sekundarna skupina $1 ne obstaja
 usave_con=Ustvarjanje na $1.
@@ -88,16 +91,20 @@ usave_header=Ustvarjanje uporabnika $1 za vse gostitelje ..
 usave_header5=Ustvarjanje uporabnika $1 za $2 ..
 usave_header4=Ustvarjanje uporabnika $1 za člane skupine $2 ..
 usave_header3=Ustvarjanje uporabnika $1 za gostitelje, ki ga nimajo ..
+
 search_hosts=Gostitelji
+
 udel_on=Brisanje iz $1.
 udel_servs=Izbrišite domači imenik, če obstaja
 udel_others=Želite uporabnika izbrisati v drugih modulih?
 udel_dothers=Brisanje v drugih modulih ..
 udel_gone=Uporabnika ne obstaja več.
 udel_failed=Uporabnika ni bilo mogoče izbrisati : $1 
+
 gdel_on=Brisanje iz $1.
 gdel_gone=Uporabnika ne obstaja več.
 gdel_failed=Skupine ni bilo mogoče izbrisati : $1 
+
 gsave_create=Dodajanje vnosa v datoteko skupine ..
 gsave_con=Ustvarjanje na $1.
 gsave_euser=Uporabnik $1 ne obstaja
@@ -110,10 +117,12 @@ gsave_header=Ustvarjanje skupine $1 za vse gostitelje ..
 gsave_header5=Ustvarjanje skupine $1 v $2 ..
 gsave_header4=Ustvarjanje skupine $1 za člane skupine $2 ..
 gsave_header3=Ustvarjanje skupine $1 za gostitelje, ki ga nimajo.
+
 gedit_host=Podrobnosti od $1 
 gedit_add=Dodajte uporabnike
 gedit_del=Odstrani uporabnike
 gedit_donthave=&lt;gostitelji, ki ga nimajo&gt;
+
 sync_title=Sinhronizirajte strežnike
 sync_desc=Ta obrazec omogoča ustvarjanje uporabnikov in skupin na strežnikih, ki jih trenutno nimajo, da bi omogočili sinhronizacijo računov na vseh strežnikih v vašem grozdu.
 sync_hosts=Strežniki za sinhronizacijo
@@ -141,6 +150,7 @@ sync_test=Pokažite le, kaj bi bilo storjeno?
 sync_makehome=Ustvarite domače imenike?
 sync_copy=Ali želite kopirati datoteke v domači imenik?
 sync_others=Ustvari uporabnika v drugih modulih?
+
 log_create_user=Ustvarjen uporabnik $1 
 log_delete_user=Izbrisani uporabnik $1 
 log_modify_user=Spremenjen uporabnik $1 

@@ -7,6 +7,7 @@ index_none=Tiada eksport NFS telah ditakrifkan lagi.
 index_apply=Terapkan Konfigurasi
 index_applydesc=Klik butang ini untuk membuat semua eksport yang disenaraikan di atas aktif, dengan pilihan dikonfigurasikannya.
 index_return=senarai eksport
+
 edit_title1=Buat Eksport
 edit_title2=Edit Eksport
 edit_header=Butiran eksport
@@ -24,12 +25,14 @@ edit_access=Akses gunung
 edit_all=Semua tuan rumah
 edit_sel=Tuan rumah yang disenaraikan ..
 edit_none=Tiada tuan rumah
+
 save_err=Gagal menyimpan eksport
 save_edir=Direktori yang hilang atau tidak wujud untuk dieksport
 save_eanon=Pengguna root yang hilang atau tidak sah
 save_erw=Tiada hos membaca tulis yang dimasukkan
 save_eroot=Tiada host akses fail root yang dimasukkan
 save_eaccess=Tiada hos akses masuk masuk
+
 log_create_export=Eksport dibuat $1 
 log_delete_export=Eksport dipadamkan $1 
 log_modify_export=Eksport yang diubahsuai $1 

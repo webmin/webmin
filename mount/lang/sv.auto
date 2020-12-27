@@ -2,6 +2,7 @@ index_used=Begagnade
 index_none=Du har inte tillgång till några monterade filsystem.
 index_mount2=Montera med lösenord:
 index_root=Rotfilsystem
+
 edit_usage=Diskanvändning
 edit_comm_opt=Vanliga monteringsalternativ
 edit_ext_opt=ext2 / ext3 specifika alternativ
@@ -20,17 +21,22 @@ edit_ecannot=Du får inte redigera det här filsystemet
 edit_ecannot2=Du får inte lägga till nya filsystem
 edit_3_or_lower=3 (eller lägre)
 edit_advanced=Avancerat läge
+
 save_force=Fästet på $1 kunde inte tas bort, eftersom fästet för närvarande används. Klicka på knappen nedan om du vill försöka tvinga bort montering
 save_fapply=Tvinga bort montering
+
 nfs_seldirv4=För ett NFSv4-fäste bör du välja '/'
+
 smb_eworkgroup=Ingen arbetsgrupp inställd på sidan Modulkonfigurering
 smb_emaster=Ingen sök-master hittades för arbetsgrupp $1
+
 solaris_idedev=IDE-styrenhet $1 drive $2 partition $3
 solaris_lvm=LVM-enhet
 solaris_vg=Volymgrupp
 solaris_lv=Logisk volym
 solaris_vxfs=VXFS-enhet
 solaris_hfs=HFS-enhet
+
 linux_lvm=LVM logisk volym
 linux_ldev=LVM VG $1, LV $2
 linux_cddev2=CD-ROM-enhet $1
@@ -60,6 +66,7 @@ linux_noenforce=Ja, men verkställ inte
 linux_df=Inkludera reserverade block i filsystemstorlek?
 linux_noatime=Undvik att uppdatera de senaste åtkomsttiderna?
 linux_netdev=Vänta tills nätverksgränssnitten är uppe?
+linux_nofail=Fortsätt starta även om montering misslyckas?
 linux_ecname=Saknar eller ogiltigt klientnetbios namn
 linux_emname=Saknad eller ogiltig servervärdnamn eller IP-adress
 linux_bind=Original katalog
@@ -85,8 +92,11 @@ linux_nounix=Inaktivera CIFS Unix-tillägg?
 linux_noserverino=Generera inodenummer på klientsidan?
 linux_cvers=CIFS-version
 linux_ecvers=CIFS-versionen måste vara ett nummer
+
 log_swap=Skapad byttfil $1
+
 unmount_err=Det gick inte att ta bort $1
+
 mount_err=Det gick inte att montera $1
 irix_nhost=NFS värdnamn
 irix_ndir=NFS-katalog
@@ -117,6 +127,7 @@ irix_rock=Använd Rock Ridge-tillägg?
 irix_nofsck=Kontrollera filsystemet vid start?
 irix_auto=Automounter källa
 irix_automap=Kartfil
+
 irix_ehost=Värden "$1" finns inte
 irix_eloss=Värden "$1" är nere
 irix_eshowmount=Värden "$1" stöder inte NFS
@@ -134,9 +145,11 @@ irix_efstyp2=Det gick inte att hämta filsystemtyp $1 : $2
 irix_efstyp=Typen av filsystem på $1 är $2, inte $3
 irix_eautomap=Automounter-kartfilen '$1' finns inte
 irix_eauthmap2=Saknad eller ogiltig automounter-kartfil
+
 irix_devroot=Rotpartition
 irix_devswap=Byt partition
 irix_autohosts=All NFS-export
+
 acl_only=Tillåta bara montering och montering?
 acl_fs=Filsystem som kan redigeras
 acl_types=Filsystemtyper som kan användas
@@ -149,8 +162,10 @@ acl_hide=Dölja oredigerbara filsystem?
 acl_simple=Visa enkel monteringsform?
 acl_simopts=Visa förenklade filsystemalternativ?
 acl_browse=Visa fil och dela bläddringsknappar?
+
 egcc=GCC- eller CC-kompilatorn som behövs för att bygga ett program för listning av monterade filsystem på ditt system är inte tillgänglig.
 ecompile=Ett fel har uppstått vid uppbyggnad av ett program för listning av monterade filsystem på ditt system : $1
+
 freebsd_eaddr=Saknad eller ogiltig serveradress
 freebsd_eworkgroup=Saknad eller ogiltig arbetsgrupp
 freebsd_ide=IDE hårddisk
@@ -164,8 +179,10 @@ freebsd_idedev=IDE-enhet $1, skiva $2, partition $3
 freebsd_scsidev=SCSI-enhet $1, skiva $2, partition $3
 freebsd_edevpath=Andra enheter måste vara en absolut väg, till exempel <tt>/dev/cdrom</tt>
 freebsd_edevfile=Enhetsfilen '$1' finns inte
+
 cswap_file=Bytefilen $1 finns inte.
 cswap_size=Skapa och montera en bytefil med storlek
+
 acl_sysinfo=Visa tillgänglig diskdata på instrumentpanelen?
 sysinfo_total=Total
 sysinfo_dev=Enhets-ID

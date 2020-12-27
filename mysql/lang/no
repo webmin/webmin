@@ -45,12 +45,15 @@ index_showing=Viser databaser som stemmer med $1 ..
 index_emsg=Fullstendig MySQL feilmelding var : $1
 index_jump=Eller rediger database:
 index_jumpok=Åpne
+
 login_err=Innlogging feilet
 login_ecannot=Du har ikke tilgang til å konfigurere database innlogging
 login_elogin=Manglende brukernavn for administrasjon
 login_epass=Ugyldig administrasjonsbrukernavn eller passord
+
 stop_err=Kunne ikke stoppe database
 start_err=Kunne ikke starte database
+
 dbase_title=Rediger database
 dbase_header=Database tabeller, indekser og utsnitt
 dbase_tables=Databasetabeller
@@ -81,6 +84,7 @@ dbase_type=Type
 dbase_typetable=Tabell ($1)
 dbase_typeindex=Indeks
 dbase_typeview=Utsnitt
+
 ddrop_err=Kunne ikke droppe database
 ddrop_title=Drop Database
 ddrop_rusure=Er du sikker på at du ønsker å droppe databasen $1 ? $2 tabeller som inneholder $3 rader med data vil bli slettet.
@@ -89,6 +93,7 @@ ddrop_mysql=Siden dette er master databasen, vil drop av denne mest sannsynlig g
 ddrop_ok=Drop Database
 ddrop_empty=Bare slett alle tabellene
 ddrop_empty2=Slett alle tabeller
+
 ddrops_err=Kunne ikke droppe databaser
 ddrops_title=Drop databaser
 ddrops_rusure=Are you sure you want to drop the $1 selected databases? $2 tables containing $3 rows of data will be deleted.
@@ -97,6 +102,7 @@ ddrops_mysql=Because the master database is selected, dropping it will probably 
 ddrops_ok=Drop databaser
 ddrops_enone=Ingen databaser valgt
 ddrops_ecannotdb=Du har ikke tilgang til å droppe databasen $1
+
 table_title=Rediger tabell
 table_title2=Ny tabell
 table_header=Tabell $1 i database $2
@@ -142,16 +148,19 @@ table_nextra=Extra attributed
 table_eautokey=The auto-incremenent field must also be a primary key
 table_eauto=Only one field can be auto-incrementing
 table_delete=Slett valgte felt
+
 tdrop_err=Kunne ikke droppe tabell
 tdrop_title=Dropp tabell
 tdrop_rusure=Er du sikker på at du ønsker å droppe tabellen $1 i databasen $2 ? $3 rader med data vil bli slettet.
 tdrop_ok=Dropp tabell
+
 tdrops_enone=No objects to drop selected
 tdrops_err=Kunne ikke droppe objekter
 tdrops_ok=Dropp objekter
 tdrops_title=Dropp objekter
 tdrops_rusure=Are you sure you want to drop the $1 selected objects in database $2 ? $3 rows of data will be deleted.
 tdrops_rusure2=Are you sure you want to drop the $1 selected objects in database $2 ?
+
 field_title1=Nytt felt
 field_title2=Endre felt
 field_in=I tabellen $1 i databasen $2
@@ -185,6 +194,7 @@ field_esize='$1' er ikke en gyldig feltstørrelse
 field_eenum=No enumerated values entered
 field_efield='$1' is not a valid field name
 field_ekey=Fields that allow nulls cannot be part of the primary key
+
 view_title=Tabelldata
 view_pos=Radene $1 til $2 av $3
 view_none=Denne tabellen inneholder ingen data
@@ -219,6 +229,7 @@ view_keep=La stå uendret
 view_set=Sett til innhold i fil..
 view_adv=Avansert søk
 view_sqlrun=Resultater generert av SQL spørring : $1
+
 users_title=Brukertillatelser
 users_user=Bruker
 users_host=Verter
@@ -245,6 +256,7 @@ users_ssl=Sertifikat
 users_dtitle=Slett bruker tillatelser
 users_drusure=Er du sikker på at du ønsker å slette de $1 valgte MySQL bruker-tillatelsene?
 users_dok=Slett brukere
+
 user_title1=Ny bruker
 user_title2=Rediger bruker
 user_header=MySQL brukerdetaljer
@@ -308,6 +320,7 @@ user_emax_user_connections=Maks.samtidige innlogginger må være et tall
 user_emax_connections=Maks. tilkoblinger per time må være et tall
 user_emax_updates=Maks. oppdateringer per time må være et tall
 user_emax_questions=Maks. spørringer per time må være et tall
+
 dbs_title=Databasetillatelser
 dbs_db=Databaser
 dbs_user=Bruker
@@ -326,6 +339,7 @@ dbs_enone=Ingen databaser valgt
 dbs_dtitle=Slett database tillatelser
 dbs_drusure=Er du sikker på at du ønsker å slette de $1 valgte MySQL database-tillatelsene?
 dbs_dok=Slett tillatelser
+
 db_title1=Nye databasetillatelser
 db_title2=Rediger databasetillatelser
 db_header=Innstillinger for databasetillatelser
@@ -340,6 +354,7 @@ db_err=Kunne ikke lagre databasetillatelser
 db_euser=Manglende eller ugyldig brukernavn
 db_ehost=Manglende eller ugyldig vertsnavn
 db_edb=Manglende eller ugyldig databasenavn
+
 hosts_title=Vertstillatelser
 hosts_db=Databaser
 hosts_host=Verter
@@ -355,6 +370,7 @@ hosts_dtitle=Slett verts-tillatelser
 hosts_drusure=Er du sikker på at du ønsker å slette de $1 valgte MySQL verts-tillatelsene?
 hosts_dok=Slett tillatelser
 hosts_return=vert tillatelser
+
 host_title1=Opprett vertstillatelser
 host_title2=Rediger vertstillatelser
 host_header=Innstillinger for vertstillatelser
@@ -364,6 +380,7 @@ host_sel=Valgt
 host_otherdb=Matching pattern
 host_host=Verter
 host_perms=Tillatelser
+
 newdb_title=Ny database
 newdb_header=Innstillinger for ny database
 newdb_db=Database navn
@@ -377,6 +394,7 @@ newdb_err=Kunne ikke opprette database
 newdb_edb=Manglende eller ugyldig databasenavn
 newdb_ecannot=Du har ikke tilgang til å opprette databaser
 newdb_ecannot2=Du har ikke tilgang til å opprette flere databaser
+
 exec_title=Execute SQL
 exec_header=Enter an SQL command to execute on database $1 ..
 exec_old=Or select a previous SQL command :
@@ -413,6 +431,7 @@ exec_iheader=Innstillinger for tekstfil import
 exec_created=$1 tabeller ble opprettet.
 exec_inserted=$1 poster ble satt inn.
 exec_cs=Tegnsett for data
+
 tprivs_title=Tabelltillatelser
 tprivs_table=Tabell
 tprivs_db=Database
@@ -431,6 +450,7 @@ tprivs_enone=Ingen tabeller valgt
 tprivs_dtitle=Slett tabell-tillatelser
 tprivs_drusure=Er du sikker på at du ønsker å slette de $1 valgte MySQL tabell-tillatelsene?
 tprivs_dok=Slett tillatelser
+
 tpriv_title1=Nye tabelltillatelser
 tpriv_title2=Rediger tabelltillatelser
 tpriv_header=Innstillinger for tabelltillatelser
@@ -447,6 +467,7 @@ tpriv_etable=Ingen tabell valgt
 tpriv_euser=Manglende eller ugyldig brukernavn
 tpriv_ehost=Manglende eller ugyldig vert
 tpriv_edb=Manglende eller ugyldig databasenavn
+
 cprivs_title=Felttillatelser
 cprivs_field=Felt
 cprivs_table=Tabell
@@ -466,6 +487,7 @@ cprivs_enone=Ingen felt valgt
 cprivs_dtitle=Slett kolonne-tillatelser
 cprivs_drusure=Er du sikker på at du ønsker å slette de $1 valgte MySQL kolonne-tillatelsene?
 cprivs_dok=Slett tillatelser
+
 cpriv_title1=Nye felttillatelser
 cpriv_title2=Rediger felttillatelser
 cpriv_header=Innstillinger for felttillatelser
@@ -482,11 +504,13 @@ cpriv_etable=Ingen felt valgt
 cpriv_euser=Manglende eller ugyldig brukernavn
 cpriv_ehost=Manglende eller ugyldig vert
 cpriv_edb=Manglende eller ugyldig databasenavn
+
 esql=SQL $1 feilet : $2
 eparse=Webmin kan ikke analysere resultatet fra $1 kommandoen på grunn av datastrukturen i databasen din. Du blir nødt til å installere Perl modulene $2 og $3 for å løse dette problemet.
 edenied=Du har ikke tilgang til denne MySQL databasen
 perms_ecannot=Du har ikke tilgang til å redigere tillatelser
 perms_edb=Du har kun tilgang til å redigere tillatelser for dine egne databaser
+
 acl_dbs=Databaser denne brukeren kan vedlikeholde
 acl_dall=Alle databaser
 acl_dsel=Valgte..
@@ -507,6 +531,7 @@ acl_bnone=Ikke tillat sikkerhetskopier
 acl_indexes=Kan se og vedlikeholde indekser?
 acl_views=Kan se og vedlikehold utsnitt?
 acl_files=Kan utføre SQL fra lokale filer?
+
 log_start=Started MySQL server
 log_stop=Stopped MySQL server
 log_cnf=Endret MySQL tjener konfigurasjon
@@ -571,6 +596,7 @@ log_importfile=Imported data from file $1
 log_set=Endret $1 MySQL variabler
 log_root=Endret administrator passord
 log_manual=Manuelt redigerte konfig fil
+
 backup_title=Sikkerhetskopier database
 backup_title2=Sikkerhetskopier alle databaser
 backup_edump=MySQL sitt sikkerhetskopieringsprogram $1 ble ikke funnet på systemet ditt. Kanskje <a href='$2'>modulkonfigurasjonen</a> er feil.
@@ -649,15 +675,18 @@ backup_bodyspace=Filsystem størrelse : $1 Ledig plass : $2
 backup_bodyall=alle
 backup_edownloadall=Du kan bare laste ned en enkelt databasebackup
 backup_edownloadsave=Nedlastings-modus kan ikke brukes for tidsplanlagte sikkerhetskopier
+
 import_title=Importer data
 import_uploadout=Importerer data fra opplastet fil ..
 import_fileout=Importerer data fra filen $1 ..
 import_eupload=Manglende opplastet import fil
 import_efile=Manglende import filnavn
+
 adv_title=Avansert søk
 adv_and=Finn poster som stemmer med alle kriterier ..
 adv_or=Finn poster som stemmer med ett eller flere kriterier ..
 adv_ok=Søk nå
+
 csv_title=Eksporter CSV fil
 csv_header=Innstillinger for CSV eksport
 csv_dest=Bestemmelsessted for eksport
@@ -678,6 +707,7 @@ csv_done=CSV eksport til $1 er fullført. Størrelsen på resultatfilen er $2.
 csv_headers=Ta med kolonnenavn i CSV?
 csv_cols=Kolonner som skal tas med i CSV
 csv_ecols=Ingen kolonner valgt
+
 cnf_title=MySQL tjenerkonfigurasjon
 cnf_efile=Fant ikke MySQL konfigurasjonsfilen $1 på systemet ditt. Du må kanskje endre <a href='$2'>modulkonfigurasjonen</a> slik at den bruker riktig sti.
 cnf_header=Innstillinger for MySQL tjener
@@ -719,11 +749,13 @@ cnf_restart=Lagre og omstart MySQL
 cnf_fpt=Separat fil for hver InnoDB tabell?
 cnf_ilt=InnoDB tidsavbrudd for lås (i sekunder)
 cnf_eilt=InnoDB tidsavbrudd for lås må være et heltall
+
 manual_title=Rediger konfig-filer
 manual_file=Rediger konfig-fil:
 manual_ok=OK
 manual_efile=Ugyldig konfigurasjonsfil!
 manual_err=Kunne ikke lagre konfigurasjonsfil
+
 index_title1=Opprett indeks
 index_header1=Innstillinger for indeks
 index_name=Indeks navn
@@ -739,11 +771,14 @@ index_ecols=Ingen felt valgt
 index_title2=Rediger indeks
 index_header=Indeks $1 i database $2
 index_ecannot=Du har ikke tilgang til å vedlikeholde indekser
+
 syslog_desc=MySQL feilmeldinger
 syslog_logdesc=MySQL spørringer
+
 fdrop_err=Kunne ikke slette felt
 fdrop_enone=Ingen valgt
 fdrop_eall=You cannot delete all fields from a table!
+
 view_title1=Opprett visning
 view_title2=Rediger utsnitt
 view_header1=Utsnitt detaljer
@@ -769,6 +804,7 @@ view_cascaded=Underliggende utsnitt
 view_local=Kun dette utsnittet
 view_nocheck=Ingen
 view_ecannot=Du har ikke tilgang til å vedlikeholde utsnitt
+
 procs_title=Databasekoblinger
 procs_id=ID
 procs_user=Brukernavn
@@ -780,9 +816,11 @@ procs_query=Kjører spørring
 procs_kill=Kill Selected Connections
 procs_ecannot=You are not allowed to view database connections
 procs_none=There are no other database client connections at this time.
+
 kill_err=Failed to kill database connections
 kill_ecannot=Du har ikke tilgang til å vedlikeholde databasekoblinger
 kill_enone=Ingen valgt
+
 vars_title=MySQL systemvariabler
 vars_desc=Advarsel - Variabler som blir satt på denne siden vil bli tilbakestilt til sine standardverdier når MySQL omstartes. Permanente innstillinger må gjøres på siden <a href='$1'>MySQL tjenerkonfigurasjon</a> page.
 vars_ecannot=Du har ikke tilgang til å redigere systemvariabler
@@ -793,6 +831,7 @@ vars_search=Vis variabler som passer med:
 vars_ok=Søk
 vars_none2=Ingen systemvariabler stemte med søket ditt
 vars_none=Fant ingen systemvariabler!
+
 compat_ansi=ANSI
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQL 4.0
@@ -804,7 +843,9 @@ compat_maxdb=MaxDB
 compat_no_key_options=Key options
 compat_no_table_options=Tabell innstillinger
 compat_no_field_options=Felt innstillinger
+
 config_echarset=Manglende eller ugyldig-utseende tegnsett
+
 root_title=Endre administrator passord
 root_header=Nytt administrator passord
 root_user=Administration login

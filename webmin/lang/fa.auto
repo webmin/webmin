@@ -1,14 +1,17 @@
 index_refresh=تازه کردن ماژول ها
 index_refreshmsg=همه ماژول های Webmin را برای سرورهای نصب شده مجدداً بررسی کنید و مواردی را که در گروه "ماژول های استفاده نشده" قرار دارند ، به روز کنید.
+
 access_ip=آدرس های IP مجاز
 access_local=شبکه محلی را در لیست قرار دهید
 access_elibwrap=IP access control using TCP-wrappers is not available, as the $1 Perl module is not installed.
 access_libwrapcpan=<a href='$1'>Click here</a> to have Webmin automatically install the missing Perl module.
+
 access_ecidr='$1' is not a valid CIDR number
 access_eip6='$1' is not a complete IPv6 or network address
 access_ecidr6='$1' is not a valid IPv6 network size
 access_ecidr8=IPv6 network size '$1' must be divisible by 8
 access_trust=به آدرس IP راه دور که توسط پروکسی ها ارائه شده اعتماد کنید؟
+
 bind_firewall=پورت های جدید را در فایروال باز کنید؟
 bind_resolv_myname=آدرس IP متصل را برعکس کنید؟
 bind_ipv6=اتصالات IPv6 را قبول دارید؟
@@ -16,6 +19,7 @@ bind_eipv6=IPv6 cannot be enabled unless the $1 Perl module is installed
 bind_redirecting=هدایت به URL جدید ..
 bind_elsof=New port $1 is already in use by another process
 bind_eonsystem=The IP address $1 is not active on this system, and so cannot be used
+
 log_status=ورود به سیستم فعال است؟
 log_clear2=به طور دوره ای پرونده های سیاه را پاک کنید؟
 log_period=Yes, every $1 hours
@@ -28,6 +32,7 @@ log_login=ورود به سیستم و ورود به سیستم در وب ورو�
 log_email=اقدامات وارد شده را از طریق ایمیل به ارسال کنید
 log_emailnone=ارسال نکنید
 log_inmodsemail=ارسال ایمیل برای اقدامات در
+
 proxy_osdn=آینه OSDN ترجیحی برای بارگیری
 proxy_mirrordef=&lt;پیش فرض (بگذارید Sourceforge تصمیم بگیرد)&gt;
 proxy_mirrordef2=پیش فرض (بگذارید Sourceforge تصمیم بگیرد)
@@ -56,6 +61,7 @@ proxy_return=سرورهای پروکسی و بارگیریها
 proxy_tabproxy=پروکسی
 proxy_tabdown=بارگیری
 proxy_fallback=اگر پروکسی کم است درخواست مستقیم را امتحان کنید؟
+
 ui_nice_size_type=از واحدهای اندازه گیری باینری استفاده کنید (KiB ، MiB ، GiB به جای KB ، MB ، GB)
 ui_width=راهنما عرض پنجره
 ui_height=ارتفاع پنجره راهنما
@@ -77,6 +83,7 @@ ui_dateformat_dd/mm/yyyy=dd/mm/yyy (یعنی 16/09/2001)
 ui_dateformat_mm/dd/yyyy=mm/dd/yyy (یعنی 09/16/2001)
 ui_dateformat_yyyy/mm/dd=yyy/mm/dd (یعنی 2001/09/16)
 ui_ehostnamedisplay=نام میزبان نمایش نامعتبر یا نامعتبر است
+
 mods_installsource=نصب از
 mods_grantto=دسترسی به
 mods_nodeps2=هنگام حذف ، وابستگی ماژول را نادیده بگیرید
@@ -95,6 +102,7 @@ mods_tabinstall=نصب
 mods_tabclone=شبیه
 mods_tabdelete=حذف
 mods_tabexport=صادرات
+
 install_enotar=The <tt>tar</tt> command, needed for extracting Webmin modules, was not found on your system
 os_iwebmin=کد سیستم عامل داخلی که توسط Webmin استفاده می شود
 os_syspath=مسیر جستجوی خود سیستم را در نظر بگیرید؟
@@ -104,7 +112,9 @@ os_eiversion=نسخه سیستم عامل داخلی وجود ندارد
 os_incorrect=Warning - Your system is actually running $1 version $2.
 os_fix=سیستم عامل شناسایی شده را به روز کنید
 os_usermin=همچنین سیستم عامل Usermin را به روز کنید
+
 lang_charover=مجموعه کاراکتر نیرو
+
 ssl_deny=نسخه های پروتکل SSL را رد کنید
 ssl_compression=اتصال SSL فشرده شده مجاز است؟
 ssl_honorcipherorder=استفاده از سفارش رمزگذار تعریف شده توسط سرور؟
@@ -175,15 +185,19 @@ ssl_letsnotrenew=فقط به صورت دستی تجدید کنید
 ssl_staging=بیایید سرور را رمزگذاری کنیم
 ssl_staging0=واقعی
 ssl_staging1=مرحله بندی (فقط تست)
+
 newkey_ecns=هیچ نام سرور وارد نشده است
 newkey_ecountry=کد کشور باید دو حرف باشد
+
 newcsr_err=SSL CSR ایجاد نشد
 newcsr_efile=نام پرونده CSR وجود ندارد
 newcsr_title=CSR تولید کنید
 newcsr_ok=درخواست گواهی SSL زیر را با موفقیت ایجاد کرد :
 newcsr_ok2=This CSR must be sent to a signing authority, who will return a signed certificate. This can be installed with the key above using the <b>Upload certificate</b> tab.
+
 startpage_webminup=نمایش به روزرسانی های وبمین در صفحه اطلاعات سیستم؟
 startpage_moduleup=نمایش به روز رسانی های ماژول در صفحه اطلاعات سیستم؟
+
 upgrade_descdeb=This form allows you to upgrade your entire Webmin installation to a new version by upgrading its Debian package. You can install from a local .deb file, an uploaded file or from the latest version at <a href=http://www.webmin.com/>www.webmin.com</a>. Just as with a manual upgrade, all your config settings and third-party modules will be kept.
 upgrade_edeb=یک فایل بسته معتبر Webmin Debian نیست
 upgrade_egzip=Failed to gunzip file : $1
@@ -196,6 +210,7 @@ upgrade_tabupdate=ماژول ها را به روز کنید
 upgrade_tabsched=به روزرسانی برنامه ریزی شده
 upgrade_src=وبمین را از
 upgrade_opts=گزینه های ارتقا
+
 update_checksig=امضاها را در مخازن غیر وبمین بررسی کنید
 update_user=برای به روزرسانی سرور وارد شوید
 update_pass=رمز عبور برای سرور به روزرسانی
@@ -205,6 +220,7 @@ update_enomodsig=Could not download signature file for module : $1
 update_ebadmodsig=Module signature check failed : $1
 update_src=ماژول ها را از
 update_opts=گزینه های به روز رسانی ماژول
+
 ca_alt=دامنه های اضافی
 ca_city=شهر یا محل
 ca_issuer_cn=نام صادر کننده
@@ -212,6 +228,7 @@ ca_issuer_o=سازمان صادر کننده
 ca_issuer_email=آدرس ایمیل صادرکننده
 ca_type=نوع گواهینامه
 ca_notafter=اعتبار دارد تا
+
 session_ptimeout=زمانهای گذرواژه
 session_pblock=بلوک های ورود به سیستم انجام نشد
 session_blockuser=Block users with more than $1 failed logins for $2 seconds.
@@ -238,9 +255,11 @@ session_sha512=از رمزگذاری SHA512 استفاده کنید
 session_emd5mod=MD5 encryption cannot be used, as Perl $1 module is not installed.
 session_esha512mod=SHA512 encryption cannot be used, as Perl $1 module is not installed.
 session_blocklock=همچنین کاربران با ورود به سیستم شکست خورده را قفل کنید
+
 categories_lang=دسته بندی ها را به زبان ویرایش کنید:
 categories_langok=تغییر دادن
 categories_custom=سفارشی
+
 log_osdn=گزینه های بارگیری تغییر کرده است
 log_twofactor=گزینه های تأیید اعتبار دو عاملی را تغییر داد
 log_newcsr=SSL جدید CSR ایجاد کرد
@@ -262,6 +281,7 @@ log_onedelete_webmincron=Deleted scheduled function in module $1
 log_letsencrypt=گواهی SSL جدید را از Let Encrypt درخواست کردیم
 log_letsencryptdns=Created Let's Encrypt DNS record for $1
 log_letsencryptcleanup=Removed Let's Encrypt DNS record for $1
+
 themes_none=هیچ کدام - اجازه دهید موضوع تصمیم بگیرد
 themes_overdesc=پوشش ها با تغییر رنگ ها ، پس زمینه ها و نمادها ظاهر یک موضوع را تغییر می دهند. آنها طرح را تغییر نمی دهند.
 themes_overlay=پوشش فعلی :
@@ -270,21 +290,28 @@ themes_taboverlay=پوشش را تغییر دهید
 themes_tabinstall=نصب موضوع
 themes_tabdelete=تم ها را حذف کنید
 themes_tabexport=تم های صادراتی
+
 themes_ok2=پوشش با موفقیت تغییر کرد.. هدایت به صفحه فهرست وبمین.
 themes_err4=تغییر موضوع روکش انجام نشد
 themes_eoverlay=روکش انتخابی با موضوع جهانی فعلی سازگار نیست
+
 themes_desc4=مضامین نصب شده می توانند با استفاده از فرم زیر به عنوان فایل wbt.gz صادر شوند. سپس یک فایل تم بر روی سیستم دیگری که Webmin را اجرا می کند قابل نصب است.
 themes_exportmods=مضامین صادرات
 themes_exportok=موضوعات انتخاب شده را صادر کنید
+
 referers_none2=اخطار: این سیستم شما را تا حملات XSS باز می کند!
 referers_err=ذخیره داورها انجام نشد
 referers_ehost='$1' is not a valid trusted hostname
+
 update_mtype=Module $1 cannot be updated as it was installed from a $2 package
+
 third_title=ماژول شخص ثالث را انتخاب کنید
+
 ipkey_ips2=برای آدرس های IP و نام های میزبان
 ipkey_eip2='$1' is not a valid IP address or hostname
 ipkey_eextracas=هیچ پرونده گواهی اضافی وارد نشده است
 ipkey_eextraca=Additional certificate file $1 does not exist
+
 descs_title=عناوین ماژول
 descs_info=این صفحه به شما امکان می دهد عناوین متناوب را برای ماژول های Webmin تعیین کنید ، تا از توضیحات استاندارد آنها نادیده بگیرید.
 descs_mod=مدول
@@ -294,11 +321,13 @@ descs_cdesc=عنوان کلون
 descs_err=عناوین ماژول ذخیره نشد
 descs_edesc=Missing title for module '$1'
 descs_etitle=Missing title for clone '$1'
+
 export_err=صادرات ماژول انجام نشد
 export_ecmd=Missing needed command $1
 export_efile=پرونده صادراتی وجود ندارد یا نامعتبر است
 export_done=Successfully exported the selected modules to $1.
 export_title=ماژول های صادراتی
+
 advanced_title=گزینه های پیشرفته
 advanced_header=گزینه های پیشرفته و آزمایشی
 advanced_temp=فهرست پرونده های موقتی
@@ -342,10 +371,13 @@ advanced_listdir=لیست های دایرکتوری را بدون یک فایل 
 advanced_headers=هدرهای اضافی HTTP
 advanced_eheader=Headers must be formatted like <tt>Header: Value</tt>
 advanced_sortconfigs=ذخیره فایل های پیکربندی مرتب شده بر اساس کلیدهای آن؟
+
 syslog_errorlog=ورود به سیستم خطای وبمین
+
 clear_title=پاک کردن حافظه نهان
 clear_done=The Webmin cache containing $1 of files from $2 URLs has been successfully cleared.
 clear_none=هیچ URL در حال حاضر در حافظه نهان بارگیری Webmin موجود نیست.
+
 savekey_err=ذخیره کلید جدید انجام نشد
 savekey_ekey=کلید فرمت PEM موجود یا نامعتبر است
 savekey_ecert=گواهی فرمت PEM موجود یا نامعتبر است
@@ -355,6 +387,7 @@ savekey_title=کلید موجود بارگذاری شود
 savekey_done2=The supplied SSL key has been saved in $1, and the certificate in $2.
 savekey_done=The supplied SSL key and certificate have been saved in the file $1.
 savekey_done3=The supplied chained SSL certificate has been saved in the file $1.
+
 cache_title=URL های ذخیره شده
 cache_search=آدرسهای اینترنتی حاوی:
 cache_ok=جستجو کردن
@@ -367,8 +400,10 @@ cache_delete=Flush Selected from cache
 cache_err=گرگرفتگی URL های ذخیره شده انجام نشد
 cache_enone=هیچ یک انتخاب نشده است
 cache_efile=نام فایل نامعتبر است
+
 restart_title=راه اندازی مجدد وبمین
 restart_done=فرایند سرور Webmin اکنون دوباره شروع می شود - لطفاً چند ثانیه صبر کنید تا ادامه دهید.
+
 mobile_title=گزینه های دستگاه تلفن همراه
 mobile_header=گزینه هایی برای مرورگرهای تلفن همراه
 mobile_theme=تم برای مرورگرهای تلفن همراه
@@ -377,6 +412,7 @@ mobile_nosession=زور استفاده از احراز هویت HTTP؟
 mobile_agents=نمایندگان کاربر اضافی برای مرورگرهای تلفن همراه
 mobile_err=گزینه های دستگاه تلفن همراه ذخیره نشد
 mobile_prefixes=پیشوندهای نام میزبان URL برای مرورگرهای تلفن همراه
+
 blocked_title=میزبان ها و کاربران مسدود شده
 blocked_type=تایپ کنید
 blocked_who=نام میزبان یا نام کاربری
@@ -388,9 +424,11 @@ blocked_host=میزبان مشتری
 blocked_clear=پاک کردن همه بلاک
 blocked_cleardesc=با راه اندازی مجدد فرآیند سرور وبمین ، روی این دکمه کلیک کنید تا همه میزبان و کاربر فعلی پاک شود.
 blocked_restarting=اکنون فرآیند سرور وبمین برای پاک کردن میزبان ها و کاربران مسدود شده مجدداً شروع می شود - لطفاً چند ثانیه صبر کنید تا ادامه دهید.
+
 refreshmods_title=تازه کردن ماژول ها
 refreshmods_installed=در حال بررسی ماژول های Webmin قابل استفاده ..
 refeshmods_counts=.. found $2 with installed applications, $1 not installed.
+
 debug_title=اشکال زدایی پرونده ورود به سیستم
 debug_header=گزینه های پرونده ورود به سیستم اشکال زدایی Webmin
 debug_enabled=ورود به سیستم اشکال زدایی فعال شده است؟
@@ -418,6 +456,7 @@ debug_cmd=خط فرمان
 debug_cron=مشاغل پیش زمینه
 debug_inmods=ماژول هایی برای نوشتن سیاهههای مربوط به اشکال زدایی
 debug_emodules=هیچ ماژولی برای اشکال زدایی برای انتخاب وجود ندارد
+
 notif_passexpired=گذرواژه وبمین شما تمام شده است! شما مجبور خواهید شد در ورود بعدی آن را تغییر دهید.
 notif_passchange=Your Webmin password was last changed on $1, and must be changed in $2 days.
 notif_passlock=Your Webmin password was last changed on $1, and your account will be locked in $2 days if it is not changed.
@@ -433,6 +472,7 @@ notify_updatedesc=مشکل را برطرف می کند
 notif_updateok=اکنون به روزرسانی ها را نصب کنید
 notif_reboot=به روزرسانی های اخیر بسته (مانند نسخه هسته جدید) برای بکارگیری کامل نیاز به راه اندازی مجدد دارد.
 notif_rebootok=اکنون راه اندازی مجدد شود
+
 status_title=مجموعه وضعیت پس زمینه
 status_header=تنظیمات شغلی مجموعه وضعیت
 status_interval=وضعیت سیستم را در پس زمینه جمع کنید؟
@@ -444,6 +484,7 @@ status_temp=دمای درایو را جمع کنید؟
 status_units=واحد دما
 status_celsius=سلسیوس
 status_fahrenheit=فارنهایت
+
 sendmail_title=ارسال ایمیل
 sendmail_desc=این صفحه نحوه ارسال وبمین ، مانند پشتیبان های برنامه ریزی شده یا نظارت بر پس زمینه ، را کنترل می کند. همچنین با ایمیل ارسال شده با استفاده از ماژول Read User Mail اثر می گذارد.
 sendmail_header=گزینه های ارسال نامه
@@ -484,12 +525,14 @@ sendmail_url=URL وبمین برای استفاده در ایمیل
 sendmail_url_def=پیش فرض ($1)
 sendmail_url_custom=URL سفارشی
 sendmail_eurl=URL سفارشی موجود نیست یا نامعتبر است
+
 testmail_title=ارسال ایمیل آزمایش
 testmail_err=ارسال پیام آزمایشی انجام نشد
 testmail_eto=هیچ آدرس مقصد وارد نشده است
 testmail_sending=Sending message from $1 to $2 ..
 testmail_done=.. پیغام فرستاده شد. صندوق پستی آدرس مقصد را بررسی کنید تا اطمینان حاصل شود که در واقع تحویل داده شده است.
 testmail_failed=.. sending failed : $1
+
 web_title=گزینه های سرور وب
 web_header=گزینه هایی برای وب سرور داخلی Webmin
 web_expires=زمان حافظه پنهان حافظه نهان برای پرونده های استاتیک
@@ -501,6 +544,7 @@ web_expirespaths=بار حافظه پنهان حافظه نهان بر اساس 
 web_expirespath=بیان منظم مسیر
 web_expirestime=زمان حافظه پنهان در ثانیه
 web_eexpires2=Missing or non-numeric client side cache time in row $1
+
 webmincron_title=توابع برنامه ریزی شده وبمین
 webmincron_emodule=ماژول Webmin Cron Jobs نصب نشده است!
 webmincron_module=ماژول وبمین
@@ -524,6 +568,7 @@ webmincron_when1=زمان های خاص
 webmincron_secs=ثانیه
 webmincron_err=عملکرد برنامه ریزی شده ذخیره نشد
 webmincron_einterval=فاصله باید چند ثانیه بیشتر از صفر باشد
+
 twofactor_title=احراز هویت دو عاملی
 twofactor_header=گزینه های تأیید اعتبار دو عاملی
 twofactor_provider=ارائه دهنده تأیید اعتبار
@@ -562,6 +607,7 @@ twofactor_secret1=به طور تصادفی تولید می شود
 twofactor_secret0=از کلید 16 کاراکتر استفاده کنید
 twofactor_esecret=کلید مخفی باید دقیقا 16 نویسه داشته باشد و فقط حروف و اعداد را در خود جای دهد
 twofactor_esession=احراز هویت دو عاملی نمی تواند مورد استفاده قرار گیرد مگر اینکه احراز هویت مبتنی بر جلسه فعال باشد
+
 letsencrypt_title=بیایید درخواست گواهی را رمزگذاری کنیم
 letsencrypt_err=درخواست گواهی انجام نشد
 letsencrypt_ecmds=Neither the Let's Encrypt client command <tt>certbot</tt> or the <tt>python</tt> command were found on your system
@@ -595,5 +641,6 @@ letsencrypt_ecsr=Failed to generate CSR : $1
 letsencrypt_ekeygen=Failed to generate private key : $1
 letsencrypt_enative=مشتری بومی Let Encrypt (certbot) قبلاً در این سیستم استفاده شده بود ، و باید برای کلیه درخواست های گواهی آینده مورد استفاده قرار گیرد
 letsencrypt_eacmedns=فقط مشتری رسمی Letry Encrypt از اعتبار سنجی مبتنی بر DNS پشتیبانی می کند
+
 announce_hide=پنهان کردن این اعلامیه
 alert_hide=هشدار را مخفی کنید

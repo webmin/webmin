@@ -24,8 +24,10 @@ all=guztiak
 index_view=Ikusi ..
 index_viewfile=Ikusi erregistroko fitxategia:
 index_viewok=ikusi
+
 restart_ekill=Ezin izan da $1 : $2 syslog prozesua seinaletzean
 restart_ecannot=Ezin duzu syslog berrabiarazi
+
 start_ecannot=Ez duzu zilegi syslog abiaraztea
 edit_title=Editatu sistemaren erregistroa
 create_title=Gehitu sistemaren erregistroa
@@ -56,11 +58,13 @@ edit_tag=Programarako bakarrik
 edit_return=egunkariaren xehetasunak
 edit_ecannot=Ezin duzu erregistroko ezarpenak editatu
 edit_ecannot2=Ezin duzu erregistro hau editatu
+
 view_title=Ikusi Fitxategia
 view_header=Azken $1 lerroak $2 
 view_empty=Erregistroaren fitxategia hutsik dago
 view_refresh=Freskatu
 view_filter=Erakutsi $1 testuarekin lerroak soilik
+
 save_err=Ezin izan da erregistroa gorde
 save_efile='$1' ez da baliozko fitxategi-izena : $2 
 save_epipe='$1' ez da baliozko tuturik
@@ -80,11 +84,13 @@ save_ecannot5=Ezin duzu erregistro hau aldatu
 save_ecannot6=Ezin duzu erregistro arbitrarioak ikusi
 save_ecannot7=Ezin duzu erregistro gehigarri hau ikusi
 save_emissing=Ikusteko erregistro fitxategia falta da
+
 log_modify=$1 era erregistratutako aldaketa
 log_create=$1 erregistroa gehitu da
 log_delete=$1 erregistroa ezabatu da
 log_apply=Aplikatutako aldaketak
 log_start=Hasi da erregistroa zerbitzaria
+
 desc_sysmesg=Sistemaren mezuak
 desc_mail=Posta-erregistroa
 desc_auth=Autentifikazioen erregistroa
@@ -93,6 +99,7 @@ desc_news=NNTP albisteen erregistroa
 desc_uucp=UUCP egunkaria
 desc_debug=Arazoak araztea
 desc_cron=Cron Lanpostuen Erregistroa
+
 acl_noedit=Erregistroak bakarrik ikus ditzakezu?
 acl_any=Edozein fitxategi egunkari gisa ikusi al daiteke?
 acl_logs=Log fitxategiak ikusi eta konfiguratu ditzake

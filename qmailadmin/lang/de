@@ -6,6 +6,7 @@ index_stop=QMail beenden
 index_stopmsg=Klicken Sie hier, um die QMail-Prozesse zu beenden, die zum Verteilen der Mails zuständig sind. Ohne diese Prozesse werden keine Mails mehr verschickt oder angenommen.
 index_start=QMail starten
 index_startmsg=Klicken Sie hier, um die QMail-Prozesse zu starten, die zum Verteilen der Mails zuständig sind. Ohne diese Prozesse werden keine Mails mehr verschickt oder angenommen.
+
 opts_title=QMail Optionen
 opts_me=Lokaler Rechnername
 opts_helo=Rechnername für SMTP HELO
@@ -24,6 +25,7 @@ opts_etoremote=Ungültiger Timeout-Wert für ausgehende Antwort
 opts_ebytes=Ungültiger Wert für maximale Mailgröße
 opts_etimeout=Ungültiger Timeout-Wert für eingehende Daten
 opts_elocalip=Ungültiger Rechnername für Mails an die lokale IP-Adresse
+
 aliases_title=Mail Aliase
 aliases_addr=Adresse
 aliases_to=Alias an...
@@ -38,6 +40,7 @@ aliases_return=Alias-Liste
 aliases_toomany=Es gibt zu viele Aliase zum Anzeigen.
 aliases_go=Finde passende Aliase:
 aliases_delete=Lösche ausgewählte Aliase
+
 aform_type0=Keine
 aform_type1=Mail-Adresse
 aform_type2=Mail-Verzeichnis
@@ -52,6 +55,7 @@ aform_val=Alias an
 aform_afile=Bearbeiten..
 aform_novirt=&lt;Alle Domains&gt;
 aform_return=alias
+
 asave_err=Alias konnte nicht gespeichert werden
 asave_eaddr='$1' ist keine gültige Mailadresse
 asave_ealready=Es existiert schon ein Alias für '$1'
@@ -62,13 +66,16 @@ asave_etype4='$1' ist kein gültiges Programm oder existiert nicht
 asave_etype5=Die Autoreply-Datei '$1' ist ungültig
 asave_etype4none=Kein Programm angegeben
 asave_etype6=Filterdatei '$1' ist ungültig
+
 adelete_err=Fehlgeschlagen Aliase zu löschen
 adelete_enone=Nichts ausgewählt
+
 locals_title=Lokale Domains
 locals_domains=Lokale Domains für diesen Server
 locals_desc=QMail wird die Mails empfangen, die an die Domains und Hostnamen gehen, die in dem Textfeld links aufgelistet sind. Wenn Ihr Mailserver mehrere Domains bedienen soll, tragen Sie hier alle Domains ein.
 locals_only=Nur lokaler Rechnername $1
 locals_sel=Unten aufgelistete Domains ...
+
 rcpts_title=Akzeptierte Domains
 rcpts_domains=Akzeptierte lokale und Weiterleitungs-Domains
 rcpts_all=Alle Domains
@@ -76,9 +83,11 @@ rcpts_sel=Nur die unten aufgelisteten Domains ...
 rcpts_desc=qmail wird nur Mails für die in dem linken Textfeld angegebenen Domains und Rechnernamen akzeptieren. Sie könen auch Platzhalter eingeben, um alle Rechner in der Domain <tt>.foo.com</tt> zu akzeptieren. Wenn Ihr Mailserver Mails für Kunden weiterleiten soll, müssen Sie Mails von allen Domains akzeptieren.
 rcpts_domains2=Zusätzliche lokale und Weiterleitungs-Domains
 rcpts_desc2=Wenn Sie viele akzeptierte Domains haben, sollten Sie die weniger benutzten in dieses Textfeld eintragen. Generell sollten Sie die ersten 50 Domains im oberen Textfeld eintragen, den Rest hier.
+
 bads_title=»Böse« Adressen
 bads_addresses=»Böse« Mailadressen
 bads_desc=qmail wird keine Mails von den hier angegebenen Adressen annehmen. Einzelne Adressen können mit <tt>username@domainname</tt> gesperrt werden, ganze Domains mit <tt>@domainname</tt>.
+
 routes_title=Domain-Routing
 routes_toomany=Es gibt zu viele Domain-Routen im System, um sie hier anzuzeigen.
 routes_go=Finde passende Domain-Routen:
@@ -88,19 +97,24 @@ routes_direct=Direkt verschicken
 routes_defroute=Alle anderen ausgehenden Mails über diesen Rechner verschicken:
 routes_return=Domain-Routen
 routes_delete=Lösche ausgewählte Domain Routen
+
 rform_edit=Domain-Routen bearbeiten
 rform_create=Domain-Route anlegen
 rform_from=Mails für Rechner oder Domain
 rform_to=Über SMTP-Server verschicken
 rform_port=SMTP-Port
+
 rsave_err=Domain-Routen konnten nicht gespeichert werden
 rsave_efrom='$1' ist kein gültiger Domainname
 rsave_eto='$1' ist kein gültiger SMTP-Server
 rsave_eport='$1' ist keine gültige Portnummer
+
 rdelete_err=Fehlgeschlagen Domain-Routen zu löschen
+
 percents_title=%-Adressen
 percents_domains=Domains, die %-Adressen unterstützen
 percents_desc=Qmail wird Mails in der Form <tt>user%firstdomain@seconddomain</tt> akzeptieren, wenn <tt>seconddomain</tt> im linken Textfeld aufgelistet ist. Nachrichten in diesem Format werden dann an <tt>user@firstdomain</tt> weitergeleitet.
+
 virts_title=Virtuelle Abbildungen
 virts_toomany=Es gibt zu viele virtuelle Abbildungen im System, um sie hier anzuzeigen.
 virts_go=Finde passende virtuelle Abbildungen:
@@ -111,6 +125,7 @@ virts_none=Nicht virtuell
 virts_desc=Virtuelle Abbildungen werden von qmail benutzt, um Mails für verschiedene Domains auf einem Server zu verwalten. Dazu wird dem lokalen Teil der Adresse ein Text vorangestellt, bevor die Mail weiterverarbeitet wird. Sie können virtuelle Domains benutzen, indem Sie eine neue virtuelle Domain anlegen und dann in dieser Domain <a href='$1'>Mail-Aliase</a> anlegen.
 virts_return=Virtuelle Domains
 virts_delete=Delete Selected Virtual Mappings
+
 vform_edit=Virtuelle Abbildungen bearbeiten
 vform_create=Virtuelle Abbildung anlegen
 vform_from=Mails für die Adresse
@@ -121,13 +136,17 @@ vform_to=Dem lokalen Name voranstellen:
 vform_none=Nichts
 vform_prepend=Dieses Präfix
 vform_auto=Automatisch ausgewähltes Präfix
+
 vsave_err=Virtuelle Abbildungen konnten nicht gespeichert werden
 vsave_edomain='$1' ist keine gültige Mail-Domain
 vsave_euser='$1' ist kein gültiger lokaler Mail-Name
 vsave_eprepend='$1' is kein gültiges Präfix
 vsave_eboth=Sie können nicht '$vform_all' und '$vform_none' gleichzeitig auswählen
+
 vdelete_err=Failed to delete virtual mappings
+
 stop_err=Der QMail-send-Prozess läuft nicht mehr
+
 log_stop=Stopped qmail processes
 log_start=Started qmail processes
 log_opts=Changed qmail options
@@ -158,6 +177,7 @@ log_delete_assigns=$1 Mail-User gelöscht
 log_delmail=$1 Nachrichten von $2 gelöscht
 log_movemail=$1 Nachrichten von $2 nach $3 verschoben
 log_send=E-Mail an $1 versendet
+
 rfile_title=Autoreply-Datei bearbeiten
 rfile_desc=Bearbeiten Sie die Autoreply-Nachricht in $1. Die Nachricht darf die Makros $SUBJECT, $FROM, $TO, $DATE und $BODY enthalten, die ausgewertet werden, wenn Autoreply aktiviert ist.
 rfile_desc2=You can also set mail headers that add to or replace the defaults used in the autoreply by putting lines like:<br><tt>From: foo@bar.com</tt><br><tt>Subject: On holiday</tt><br>at the top of the message, separated from the body by a single blank line.
@@ -176,6 +196,7 @@ rfile_from=Von: Adresse für Antwort
 rfile_auto=Automatisch (basierend auf Empfänger-Adresse)
 rfile_efrom=Fehlenden "From:" Adresse
 rfile_fromdesc=A From: address should always be specified where possible, as the automatic method may not be reliable.
+
 ffile_title=Filterdatei bearbeiten
 ffile_desc=Benutzen Sie das Textfeld unten, um Filterregeln in der Datei $1 einzurichten.
 ffile_efile=Sie dürfen $1 nicht bearbeiten.
@@ -191,6 +212,7 @@ ffile_other=Sonst an $1 weiterleiten
 ffile_err=Filterdatei konnte nicht gespeichert werden.
 ffile_ematch=???Missing match???
 ffile_eaction=Weiterleitungsadresse fehlt
+
 queue_title=Wartende Mails
 queue_count=$1 Nachrichten
 queue_none=Im Moment warten keine Nachrichten darauf, verschickt zu werden.
@@ -206,10 +228,12 @@ queue_all=Alle auswählen
 queue_invert=Auswahl umkehren
 queue_refresh=Aktualisiere Mail-Warteschlange
 queue_refreshdesc=Lade diese Seite erneut, um den aktuellen Stand der Mail-Warteschlange zu zeigen.
+
 qview_title=Warteschlange Nachricht
 qview_desc=Von Datei $1
 qview_headers=E-Mail-Header
 qview_attach=Anhänge
+
 assigns_title=Mailbenutzer-Zuweisungen
 assigns_return=Mailbenutzer-Zuweisungen
 assigns_toomany=Es gibt zu viele Mailbenutzer im System, um sie hier anzuzeigen.
@@ -221,6 +245,7 @@ assigns_gid=GID
 assigns_home=Home-Verzeichnis
 assigns_desc=Mit Mailbenutzer-Zuweisungen können Sie Mailboxen für Benutzer einrichten, die nicht in der Unix-Benutzerliste stehen. Jede Zuweisung verteilt die Mails an einen Benutzer, so als ob sie an die Mailbox eines echten Unix-Benutzers verteilt würden.
 assigns_delete=Lösche ausgewählte Mail-User
+
 sform_edit=Mailbenutzer bearbeiten
 sform_create=Mailbenutzer anlegen
 sform_address=Benutzername in der Adresse
@@ -230,15 +255,19 @@ sform_user=Unix-Benutzer
 sform_uid=UID
 sform_gid=GID
 sform_home=Verzeichnis
+
 ssave_err=Mailbenutzer konnte nicht gespeichert werden
 ssave_eaddress=Fehlender oder ungültiger Benutzername in der Adresse
 ssave_euser=Fehlender oder ungültiger Unix-Benutzer
 ssave_euid=Fehlende oder ungültige UID
 ssave_egid=Fehlende oder ungültige GID
 ssave_ehome=Fehlendes oder ungültiges Verzeichnis
+
 sdelete_err=Fehlgeschlagen Mail-User zu löschen
+
 delete_egone=Die wartenden Nachrichten existieren nicht mehr
 delete_ebogus=Ungültige Warteschlange Dateiname
+
 boxes_title=Benutzer-Mailboxen
 boxes_user=Benutzer
 boxes_size=Mailboxgröße
@@ -248,6 +277,7 @@ boxes_sent=Gesendete Mail
 boxes_ecannot=Sie sind nicht berechtigt E-Mail zu lesen
 boxes_toomany=Es sind zu viele Benutzer auf Ihrem System um alle ihre Mailboxen aufzulisten.
 boxes_go=Zeige Mail für Benutzer:
+
 mail_title=Benutzer E-Mail
 mail_from=Von
 mail_date=Datum
@@ -286,6 +316,7 @@ mail_forward=Weiterleiten
 mail_rfc=Von Zeile
 mail_move=Verschieben nach:
 mail_eexists=Nachricht existiert nicht länger!
+
 view_title=Nachrichten in der Warteschlange
 view_desc=Aus Datei $1
 view_desc2=Nachricht $1 für Benutzer $2
@@ -309,6 +340,7 @@ view_mark1=Gelesen
 view_mark2=Speziell
 view_return=original E-Mail
 view_sub=Angehängte E-Mail
+
 compose_title=Erstelle E-Mail
 reply_title=Antworte auf E-Mail
 forward_title=Leite E-Mail weiter
@@ -319,6 +351,7 @@ reply_mailforward=Weitergeleitete Nachrichten
 reply_attach2=Client- und serverseitige Anhänge
 reply_send=Sende Mail
 reply_ecannot=Sie sind nicht berechtigt E-Mail an diesen Benutzer zu senden
+
 send_err=Fehlgeschlagen Mail zu senden
 send_eto=Fehlende To Adresse
 send_efrom=Fehlende "From" Adressen
@@ -331,6 +364,7 @@ send_eattach=Dateianhänge können insgesamt nicht mehr als $1 kB groß sein.
 send_eperms=Benutzer $1 kann nicht $2 lesen
 send_eperms2=Sie sind nicht berechtigt, Datei $1 zu verschicken
 send_epath=Ausführbare Sendmail Datei $1 existiert nicht.
+
 delete_title=Lösche E-Mail
 delete_rusure=Sind Sie sicher, dass Sie die $1 ausgewählten Nachrichten von $2 löschen möchten? Dies kann einige Zeit bei einer großen Mail-Datei dauern. Bis das Löschen beendet ist, sollte keine weitere Aktion durchgeführt werden.
 delete_rusure2=Sind Sie sicher, dass Sie diese Nachricht von $1 löschen möchten? Dies kann einige Zeit bei einer großen Mail-Datei dauern. Bis das Löschen beendet ist, sollte keine weitere Aktion durchgeführt werden.
@@ -339,6 +373,7 @@ delete_ecannot=Sie sind nicht berechtigt E-Mail von diesem Benutzer zu löschen
 delete_enone=Keine E-Mail zum löschen ausgewählt
 delete_emnone=Keine Mail ausgewählt, um zu kennzeichnen
 delete_nobutton=Kein Knopf gedrückt
+
 search_title=Suchresultate
 search_ecannot=Sie sind nicht berechtigt diesen Mail-User zu durchsuchen
 search_ematch=You must enter text to match against.
@@ -346,6 +381,7 @@ search_efield=Sie müssen ein Suchtyp auswählen.
 search_none=Keine Nachrichten gefunden.
 search_results2=$1 mail messages matching $2 ..
 search_results3=$1 mail messages not matching $2 ..
+
 match_from=Von: entspricht
 match_subject=Betreff: entspricht
 match_to=An: entspricht
@@ -363,6 +399,7 @@ match_!date=Datum: entspricht nicht
 match_!body=Textkörper entspricht nicht
 match_!size=Größe ist kleiner als
 match_!headers=Header entspricht nicht
+
 delq_titles=Lösche Nachrichten
 delq_rusure=Sind Sie sicher, dass Sie die $1 ausgewählten Nachrichten in der Warteschlange löschen möchten?
 delq_confirm=Lösche Nachrichten

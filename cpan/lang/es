@@ -14,6 +14,7 @@ index_ftp=Desde ftp o http URL
 index_installok=Instalar
 index_return=Lista de módulos
 index_pversion=Versión  Perl $1
+
 download_err=Fallo al instalar el módulo
 download_elocal=No está dado el archivo local
 download_elocal2='$1' no existe
@@ -47,6 +48,7 @@ download_need=Consiguiento Pre-Requisitos No Cumplidos
 download_missing=Módulos $1 no introducidos
 download_nomissing=Todo instalado
 download_ebuild=Uno o varios de los módulos Perl necesitan que $1 sea compilado, pero este módulo Perl no está instalado.
+
 install_title=Módulo a instalar
 install_untar=Descompactar archivo de módulo
 install_make=Compilar módulo
@@ -66,11 +68,13 @@ install_err2=Puede además instalar el módulo desde CPAN con el comando $1
 install_exec=Ejecutando $1 ..
 install_efile=Archivo de módulo $1 ya no existe
 install_needunlink=Puede intentar instalar de nuevo volviendo a la página anterior y eligiendo unas opciones diferentes. También puede <a href='$1'>pulsar aquí para borrar los archivos de paquete temporales</a> para ahorrar espacio de disco.
+
 cpan_sel=Módulos bajo $1 ..
 cpan_title=Seleccionar módulo Perl
 cpan_search=Encontrar módulos llamados
 cpan_match=Módulos que coinciden con $1 ..
 cpan_none=No se encontraron coincidencias.
+
 edit_title=Detalles del módulo
 edit_header=Información del módulo
 edit_mod=Nombre del módulo
@@ -87,6 +91,7 @@ edit_method=Instalado desde
 edit_rpm=Paquete RPM $1
 edit_debian=Paquete Debian $1
 edit_manual=Instalación manual de módulo Perl
+
 uninstall_title=Desinstalar Módulo
 uninstall_rusure=¿Está seguro de quere desinstalar el módulo Perl $1 ? Los siguientes archivos serán eliminados :
 uninstall_rusure2=¿Está seguro de querer desinstalar el módulo Perl $1 y el(los) submódulo(s) $2 ?<br>Los siguientes archivos serán eliminados :
@@ -94,4 +99,5 @@ uninstall_ok=Desinstalar ahora
 uninstall_rpm=El módulo se eliminará desinstalando el paquete RPM $1
 uninstall_debian=El módulo se eliminará desinstalando el paquete Debian $1
 uninstall_err=No se pudo desinstalar módulo
+
 delete_efile=¡Archivo de paquete no válido!

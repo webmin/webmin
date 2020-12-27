@@ -7,6 +7,7 @@ index_dsize=Mida total
 index_dmodel=Fabricant i model
 index_dparts=Llesques
 index_return=a la llista de discs
+
 disk_title=Edició de Disc
 disk_egone=El disc ja no existeix!
 disk_no=Llesca
@@ -31,9 +32,11 @@ disk_return=als detalls del disc i la llista de llesques
 disk_add=Crea una nova llesca.
 disk_smart=Mostra l'estat SMART
 disk_smartdesc=Mostra l'estat actual d'aquesta unitat tal i com el detecta SMART i en comprova els errors.
+
 select_device=$1 dispositiu $2
 select_slice=$1 dispositiu $2 llesca $3
 select_part=$1 dispositiu $2 llesca $3 partició $4
+
 slice_title=Edició de Llesca
 slice_egone=La llesca seleccionada no existeix!
 slice_ssize=Mida de la llesca
@@ -58,6 +61,7 @@ slice_return=als detalls de la llesca i la llista de particions
 slice_err=No s'ha pogut modificar la llesca
 slice_header=Detalls de la llesca
 slice_suse=Utilitzada directament per
+
 dslice_title=Supressió de Llesca
 dslice_rusure=Segur que vols suprimir la llesca $1? Se suprimiran també totes les particions i sistemes de fitxers que conté.
 dslice_warn=Atenció - aquesta llesca està utilitzada actualment per: $1
@@ -65,6 +69,7 @@ dslice_confirm=Suprimeix-la Ara
 dslice_deleting=S'està suprimint la llesca $1...
 dslice_failed=...la supressió ha fallat: $1
 dslice_done=...fet
+
 nslice_title=Creació de Llesca
 nslice_header=Detalls de la nova llesca
 nslice_number=Número de llesca
@@ -86,6 +91,7 @@ nslice_done=...s'ha afegit la llesca
 nslice_parting=Crea una partició per defecte a la llesca $1 de $2...
 nslice_pfailed=...la creació de la partició ha fallat: $1
 nslice_pdone=...s'ha afegit la partició
+
 npart_title=Creació de Partició
 npart_header=Detalls de la nova partició
 npart_letter=Lletra de la partició
@@ -98,6 +104,7 @@ npart_emax=El bloc final no pot ser més gran que la mida de la llesca, de $1 bl
 npart_creating=S'està creant la partició $1 a $2...
 npart_failed=...la creació de la partició ha fallat: $1
 npart_done=...s'ha afegit la partició
+
 part_title=Edició de Partició
 part_egone=La partició ja no existeix!
 part_header=Detalls de la partició
@@ -124,6 +131,7 @@ part_newmount2=Munta la Partició
 part_mountmsg=Munta aquest dispositiu un un nou directori al sistema de manera que es pugui utilitzar per a emmagatzemar fitxers. Cal haver creat abans un sistema de fitxers en aquest dispositiu.
 part_mountmsg2=Munta aquest dispositiu com a memòria virtual del sistema per a incrementar la quantitat de memòria disponible.
 part_cannotedit=Aquesta partició no es pot modificar perquè està essent utilitzada.
+
 dpart_title=Supressió de Partició
 dpart_rusure=Segur que vols suprimir la partició $1? Se suprimiran també tots els sistemes de fitxers que conté.
 dpart_warn=Atenció - aquesta partició està essent actualment utilitzada per $1
@@ -131,6 +139,7 @@ dpart_confirm=Suprimeix-la Ara
 dpart_deleting=S'està suprimint la partició $1...
 dpart_failed=...la supressió ha fallat: $1
 dpart_done=...fet
+
 newfs_title=Creació de Sistema de Fitxers
 newfs_header=Detalls del nou sistema de fitxers
 newfs_free=Espai de reserva per a l'arrel
@@ -145,11 +154,13 @@ newfs_elabel=Hi falta l'etiqueta o bé és invàlida
 newfs_creating=S'està creant el sistema de fitxers a $1...
 newfs_failed=...la creació ha fallat!
 newfs_done=...s'ha creat correctament
+
 fsck_title=Comprovació de Sistema de Fitxers
 fsck_err=No s'ha pogut comprovar el sistema de fitxers
 fsck_checking=S'està comprovant el sistema de fitxers de $1...
 fsck_failed=...la comprovació ha fallat!
 fsck_done=...s'ha completat la comprovació sense trobar cap error
+
 log_create_slice=S'ha creat la llesca $1
 log_delete_slice=S'ha suprimit la llesca $1
 log_modify_slice=S'ha modificat la llesca $1

@@ -11,6 +11,7 @@ index_version2=Sendmail ve verzi $1, konfigurace $2
 index_xversion=Sendmail ve verzi $1
 index_version=Konfigurace Sendmail $1
 index_sendmail=Sendmail
+
 opts_title=Nastavení sendmailu
 opts_ecannot=Nemáte oprávnění editovat nastavení sendmailu
 opts_ds=Odeslat odchozí poštu prostřednictvím hosta
@@ -57,6 +58,7 @@ opts_qso=Zřídit poštovní frontu podle
 opts_priority=Priorita
 opts_host=Jméno hosta
 opts_time=Čas přijetí
+
 aliases_title=Mail aliasy
 aliases_ecannot=Nemáte oprávnění editovat aliasy
 aliases_enofile=V konfiguraci Sendmailu není určen soubor s aliasy
@@ -73,6 +75,7 @@ aliases_return=seznam aliasů
 aliases_toomany=Ve vašem systému je příliš mnoho aliasů pro zobrazení na tuto stránku.
 aliases_go=Nálézt aliasy vyhovující:
 aliases_delete=Smazat vybrané aliasy
+
 aform_ecannot=Nemáte oprávnění editovat tento alias
 aform_type0=Nic
 aform_type1=Email adresa
@@ -89,11 +92,13 @@ aform_val=Alias pro
 aform_afile=Editovat..
 aform_return=alias
 aform_cmt=Popis
+
 afile_title=Editace souboru adres
 afile_desc=Použijte níže uvedené text area pro editaci adres v souboru $1.
 afile_efile=Nemáte oprávnění editovat $1.
 afile_undo=Odvolat změny
 afile_ewrite=Chyba při zápisu souboru s adresami : $1
+
 ffile_title=Editace souboru s filtry
 ffile_desc=Použijte níže uvedený formulář k nastavení pravidel filtrování v souboru $1.
 ffile_efile=Nemáte oprávnění editovat $1.
@@ -107,8 +112,10 @@ ffile_what0=neobsahuje
 ffile_what1=obsahuje
 ffile_other=jinak přeposlat $1
 ffile_err=Chyba při ukládání souboru s filtry
+
 ffile_ematch=Chybějící podmínka
 ffile_eaction=Chybějící adresa pro přeposlání
+
 rfile_title=Editace souboru s automatickými odpovědmi
 rfile_desc=Použijte níže uvedené text area pro editaci zpráv s automatickými odpovědmi v $1. Zprávy mohou obsahovat makra $SUBJECT, $FROM, $TO, $DATE a $BODY, která jsou využvána při aktivních automatických odpovědích.
 rfile_desc2=Můžete taktéž nastavit hlavičky mailu tak, aby docházelo k přidání nebo nahrazování výchozích hodnot při automatických odpovědích. Toto řešení je spojeno s přídáním řádků jako:<br><tt>From: foo@bar.com</tt><br><tt>Subject: On holiday</tt><br>na počátku zprávy, oddělených od těla prázdným řádkem.
@@ -128,6 +135,7 @@ rfile_from=Adresa Od: pro odpovědi
 rfile_auto=Automaticky (založeny na adrese příjemce)
 rfile_efrom=Chybějící adresa Od:
 rfile_fromdesc=Adresa Od: by měla být vždy uvedena, metoda automatického doplnění nemusí fungovat.
+
 asave_err=Chyby při ukládání alias
 asave_ecannot2=Nemáte oprávnění editovat aliasy
 asave_ecannot=Nemáte oprávnění editovat tento alias
@@ -144,9 +152,11 @@ asave_etype5=Soubor automatických odpovědí '$1' není platný
 asave_etype4none=Není uveden žádný program
 asave_etype6=Soubor s filtrem '$1' není platný
 asave_esame=Máte oprávnění vytvářet pouze aliasy shodného jména jako je příhlášení do Webminu
+
 adelete_err=Chyba při mazání aliasu
 adelete_enone=Nic není vybráno
 adelete_ecannot=Nemáte oprávnění smazat alias $1
+
 cws_title=Lokální Domény
 cws_ecannot=Nemáte oprávnění editovat lokální domény
 cws_domains=Domény, které jsou udržovány na tomto serveru
@@ -155,6 +165,7 @@ cws_desc2=Note that merely including a domain in the list is not usually enough.
 cws_err=Chyba při ukládání lokálních domén
 cws_ehost='$1' není platný host nebo název domény
 cws_eip='$1' je IP adresa, nikoliv doména
+
 masq_title=Maškaráda domén
 masq_ecannot=Nemáte oprávnění konfigurovat maškarádu
 masq_domain=Provádět maškarádu jako doménu
@@ -166,12 +177,14 @@ masq_err=Chyba při ukládání maškarády domén
 masq_edomain='$1' není platná doména pro provádění maškarády jako
 masq_ehost='$1'není platný host nebo jméno domény
 masq_eip='$1' je IP adresa, nikoliv doména
+
 trusts_title=Důvěryhodní uživatelé
 trusts_ecannot=Nemáte oprávnění editovat důvěryhodné uživatele
 trusts_users=Lokální uživatelé, kterým lze v sendmailu důvěřovat
 trusts_desc=Jestliže se lokální uživatele pokouší poslat mail, sendmail to povolí uživateli s rozdílnou <tt>From:</tt> adresou pouze v případě, že je uživatel uveden v seznamu vlevo. Toto omezení existuje proto, aby zamezilo uživatelům ve vašem systému v padělání <tt>From:</tt> originální adresy.
 trusts_err=Chyba při ukládání důvěryhodných uživatelů
 trusts_euser='$1' není platný uživatel
+
 virtusers_title=Mapování adres
 virtusers_ecannot=Nemáte oprávnění editovat mapování adres
 virtusers_efeature=Vaše konfigurace sendmailu neobsahuje příslušenství mapování adres (<tt>virtuser</tt>). <a href='$1'>Klepněte zde</a>, pokud chcete nastavit toto příslušenství sendmailu.
@@ -189,6 +202,7 @@ virtusers_return=seznam mapovaných adres
 virtusers_toomany=Ve vašem systému je příliš mnoho mapovaných adres pro zobrazení na této stránce.
 virtusers_go=Najít mapování adresy, které obsahuje:
 virtusers_delete=Smazat vybraná mapování adresy
+
 vform_edit=Editovat mapování
 vform_create=Vytvořit mapování
 vform_for=Mail pro
@@ -205,6 +219,7 @@ vform_err_tempfail=Dočasní selhání
 vform_err_protocol=Chyba protokolu
 vform_end=Přesunout na konec
 vform_ecannot=Nemáte oprávnění editovat toto mapování adresy
+
 vsave_ecannot=Nemáte oprávnění editovat mapování adres
 vsave_ecannot2=Nemáte oprávnění editovat toto mapování adresy
 vsave_emax=Nemáte oprávnění vytvořit více než $1 mapování adres
@@ -220,8 +235,10 @@ vsave_eaddr='$1' není platná adresa
 vsave_ecannot4=NeNemáte oprávnění vytvářet mapování na domény
 vsave_edomdom=Pouze doména může být mapována na jinou doménu
 vsave_ecannot5=Byla vrácena chyba, protože nemáte oprávnění vytvářet mapování
+
 vdelete_err=Chyba při mazání mapování adresy
 vdelete_ecannot=Nemáte oprávnění mazat mapování pro $1
+
 mailers_title=Routování domén
 mailers_cannot=Nemáte oprávnění editovat routování domén
 mailers_edirective=Váš soubor s konfigurací sendmailu neobsahuje nezbytné direktivy pro routování domén.
@@ -235,6 +252,7 @@ mailers_delivery=Doručování
 mailers_to=Poslat..
 mailers_return=seznam routování domény
 mailers_delete=Smazat vybrané směrování domén
+
 mform_edit=Editace routování
 mform_create=Vytvořit routování
 mform_for=Mail pro
@@ -258,12 +276,15 @@ mform_procmail=Procmail
 mform_mail11=DECnet mail11
 mform_error=Chyba
 mform_ecannot=Nemáte oprávnění editovat routování domén
+
 msave_ecannot=Nemáte oprávnění editovat routování domén
 msave_err=Chyba při ukládání routování domén
 msave_edomain='$1' není platný host nebo doména
 msave_edup=Routování domén pro '$1' je již definováno
+
 mdelete_err=Chyba při mazání směrování domény
 mdelete_ecannot=Nemáte oprávnění mazat směrování pro
+
 generics_title=Mapování odchozích adres
 generics_cannot=Nemáte oprávnění editovat mapování odchozích adres
 generics_econfig=Váš soubor s konfigurací sendmailu neobsahuje nezbytné direktivy pro mapování odchozích adres.
@@ -277,11 +298,13 @@ generics_return=seznam mapovaných adres
 generics_toomany=Ve vašem systému je příliš mnoho mapovaných odchozích adres pro zobrazení na této stránce.
 generics_go=Najít mapování odchozí adresy, které obsahuje:
 generics_delete=Smazat vybrané odchozí adresy
+
 gform_edit=Editování mapování
 gform_create=Vytvoření mapování
 gform_from=Mail od
 gform_to=Změnit na
 gform_ecannot=Nemáte oprávnění editovat mapování odchozích adres
+
 gsave_ecannot=Nemáte oprávnění editovat mapování odchozích adres
 gsave_ecannot2=Nemáte oprávnění editovat toto mapování odchozí adresy
 gsave_ecannot3=Nemáte oprávnění uložit tuto odchozí adresu
@@ -290,8 +313,10 @@ gsave_efrom='$1' není platná adresa
 gsave_ematch=Adresa neobsahuje '$1'
 gsave_eto='$1' není platná nová adresa
 gsave_ealready=Mapování odchozích adres pro '$1' již existuje
+
 gdelete_err=Chyba při mazání mapování odchozích adres
 gdelete_ecannot=Nemáte oprávnění ke smazání mapování pro $1
+
 cgs_title=Mapování odchozích domén
 cgs_ecannot=Nemáte oprávnění editovat mapování odchozích domén
 cgs_header=Domény odchozích adres
@@ -299,6 +324,7 @@ cgs_desc=Rozborem z mailů odeslaných lokálními uživateli, sendmail pouze pr
 cgs_err=Chyba při ukládání odchozích domén
 cgs_ehost='$1' není platný host nebo jméno domény
 cgs_eip='$1' je IP adresa, nikoliv doména
+
 domains_title=Mapování domény
 domains_ecannot=Nemáte oprávnění editovat mapování domény
 domains_econfig=Váš soubor s konfigurací sendmailu neobsahuje nezbytné direktivy pro mapování domény.
@@ -309,17 +335,21 @@ domains_from=Z domény..
 domains_to=Na doménu..
 domains_return=seznam mapování domény
 domains_delete=Smazat vybrané mapování domény
+
 dform_edit=Editovat mapování
 dform_create=Vytvořit mapování
 dform_from=Z domény
 dform_to=Na doménu
 dform_ecannot=Nemáte oprávnění editovat mapování domény
+
 dsave_ecannot=Nemáte oprávnění editovat mapování domény
 dsave_err=Chyba při ukládání mapování domény
 dsave_edomain='$1' není platné jméno domény
 dsave_ealready=Mapování domény pro '$1' již existuje
+
 ddelete_err=Chyba při mazání mapování domény
 ddelete_ecannot=Nemáte oprávnění smazat mapování pro $1
+
 access_title=Kontrola Spamů
 access_ecannot=Nemáte oprávnění ke konfiguraci kontroly spamů
 access_efeature=Váš soubor s konfigurací sendmailu neobsahuje příslušenství (<tt>access_db</tt>), nezbytné pro mapování domény. <a href='$1'>Klepnutím zde</a> nastavíte toto příslušenství sendmailu.
@@ -332,6 +362,7 @@ access_return=seznam kontroly spamů
 access_toomany=Ve vašem systému je příliš mnoho pravidel pro kontrolu spamů pro zobrazení na této stránce.
 access_go=Najít pravidlo pro kontrolu spamů, které obsahuje:
 access_delete=Smazat vybraná pravidla spam kontroly
+
 sform_edit=Editovat pravidlo pro kontrolu spamů
 sform_create=Vytvořit pravidlo pro kontrolu spamů
 sform_source=Zdroj mailu
@@ -353,6 +384,7 @@ sform_discard=Tiše se zbavit
 sform_err=Chybový kód
 sform_msg=Zpráva
 sform_ecannot=Nemáte oprávnění k úpravě tohoto pravidla pro spamovou kontrolu
+
 ssave_err=Chyba při ukládání pravidla pro kontrolu spamů
 ssave_etype0='$1' není platná adresa
 ssave_etype1='$1' není platná síťová adresa
@@ -361,8 +393,10 @@ ssave_etype3='$1' není platná doména
 ssave_ecode='$1' není platný SMTP chybový kód
 ssave_ealready=Pravidlo pro kontrolu spamů pro '$1' již existuje
 ssave_ecannot2=Nemáte oprávnění k uložení tohoto pravidla spamové kontroly
+
 sdelete_err=Chyba při mazání pravidla kontroly spamů
 sdelete_ecannot=Nemáte oprávnění smazat pravidlo pro $1
+
 relay_title=Relay domény
 relay_ecannot=Nemáte oprávnění editovat relay domény
 relay_eversion=Poze sendmail verze 8.9 a vyšší podporuje příslušenství pro realy domény.
@@ -371,6 +405,7 @@ relay_desc1=Dokud jsou povolena pravidla <a href='$1'>kontroly spamů</a>, sendm
 relay_desc2=Jestliže je váš systém spravován jako brána pro některé domény, které nejsou zvnějšku přístupné (použitím příslušenství <a href='$1'>routování domén</a>), pak takové domény by měly být uvedeny v tomto seznamu.
 relay_err=Chyba při ukládání relay domén
 relay_edomain='$1' inení platné jméno domény
+
 mailq_title=Mailová fronta
 mailq_count=$1 zpráv
 mailq_ecannot=Nemáte oprávnění zobrazovat mailovou frontu
@@ -398,12 +433,15 @@ mailq_flushquar=Vymazat karanténní frontu
 mailq_flushquardesc=Klepnutím na toto tlačítko zajistíte odpovědi pouze na ty zprávy ve frontě, které jsou vybrány ke karanténě.
 mailq_search=Nalézt zprávy ve frontě, kde
 mailq_quar=V karanténě
+
 flushq_title=Spláchnutí fronty
 flushq_desc=Provedena pokusná doručení mailů pomocí příkazu $1 ..
 flushq_desc2=Zajišťuje se pokusná odpověď na $1 vybraných zpráv ...
 flushq_ecannot=Nemáte oprávnění k vyprázdnění mailové fronty
+
 searchq_title=Výsledky hledání ve frontě
 searchq_none=Nebyly ve frontě nalezeny žádné zprávy.
+
 delq_err=Chyba při mazání správy
 delq_ecannot=Nemáte oprávnění vyjmout zprávy z fronty
 delq_locked=Soubor je momentálně uzačnen při odesílání
@@ -419,6 +457,7 @@ delq_force=Přesto požadovat smazání
 delq_ecannot2=tuto zprávu nemůžete smazat
 delq_rusure=Určitě chcete smazat $1 vybraných zpráv ve frontě?
 delq_confirm=Smazat zprávy
+
 boxes_title=Poštovní schránky uživatele
 boxes_user=Uživatel
 boxes_size=Velikost poštovní schránky
@@ -428,6 +467,7 @@ boxes_sent=Mail odeslán
 boxes_ecannot=Nemáte oprávnění číst mail
 boxes_toomany=Ve vašem systému je příliš mnoho uživatelů pro zobrazení seznamu jejich poštovních schránek.
 boxes_go=Zobrazit mail pro uživatele:
+
 mail_title=Email uživatele
 mail_from=Od
 mail_date=Datum
@@ -468,6 +508,7 @@ mail_move=Přesunout:
 mail_copy=Kopírovat:
 mail_rfc=Z řádku
 mail_eexists=Zpráva již neexistuje!
+
 view_title=Čtení emailu
 view_desc=Zpráva $1 v $2
 view_desc2=Zpráva $1 uživateli $2
@@ -495,6 +536,7 @@ view_mark2=Speciální
 view_return=originální email
 view_sub=Připojit email
 view_egone=Tato zpráva již neexistuje
+
 compose_title=Psaní emailu
 reply_title=Odpovědět na email
 forward_title=Předat dál email
@@ -506,6 +548,7 @@ reply_attach2=Přílohy klienta a serveru
 reply_send=Odeslat mail
 reply_ecannot=Nemáte oprávnění odeslat mail pod tímto uživatelem
 reply_body=Tělo zprávy
+
 send_err=Chyba při odesílání mailu
 send_eto=Chybějící adresa adresáta
 send_efrom=Chybějící adresa odesílatele
@@ -518,6 +561,7 @@ send_eattach=Přílohy nemohou celkově přesáhnout velikost $1 kB.
 send_eperms=Uživatel $1 nemůže číst $2
 send_eperms2=Nemáte oprávnění odeslat soubor $1
 send_epath=Sendmail sppuštění $1 neexistuje.
+
 delete_title=Smazat poštu
 delete_rusure=Určitě chcete smazat $1 vybraných zpráv z $2? Tato činnost může chvíli trvat, zvláště pak u velkých souborů. Do ukončení mazání neprovádějte jiné úkony.
 delete_rusure2=Určitě chcete smazat tuto zprávu z $1? Tato činnost může chvíli trvat, zvláště pak u velkého souboru. Do ukončení mazání neprovádějte jiné úkony.
@@ -530,6 +574,7 @@ delete_emoveuser=Uživatel, kterému má být pošta předána, neexistuje
 delete_emovecannot=Nemáte oprávnění přesunout poštu danému uživateli
 delete_emovenone=Nebyla vybrána žádná pošta pro přesun
 delete_nobutton=Neklepli jste na žádné tlačítko
+
 search_title=Výsledky hledání
 search_ecannot=Nemáte oprávnění hledat v mailu tohoto uživatele
 search_ematch=Musíte vložit text, který chcete vyhledat.
@@ -543,6 +588,7 @@ search_results4=$1 poštovních zpráv, vyhovujících vašemu hledání ..
 search_local=V lokálních složkách
 search_all=Ve všech složkách
 search_eboolean=Není podporováno logické hledání, využívající 'and' i 'or'.
+
 file_title=Editace souboru Sendmailu
 file_desc=Použijte níže uvedený text box k ruční editaci souboru sendmailu $1.
 file_undo=Odvolat změny
@@ -621,6 +667,7 @@ acl_usersm=Uživatlé, kteří obsahují
 acl_asame=Shodné s jménem uživatele
 acl_usersu=Při UID v rozsahu
 acl_spam=Adresy spam kontroly, které může tento uživatel upravit
+
 log_opts=Změněno nastavení sendmailu
 log_ports=Změnit síťové porty
 log_alias_create=Vytvořen alias $1
@@ -671,6 +718,7 @@ log_delete_domains=Smazáno $1 mapování domény
 log_delete_accesses=Smazáno $1 vstupů pro kontrolu spamu
 log_delete_generics=Smazáno $1 odchozích adres
 log_delete_mailers=Smazáno $1 směrování domén
+
 match_from=Od: obsahuje
 match_subject=Předmět: obsahuje
 match_to=Komu: obsahuje
@@ -690,6 +738,7 @@ match_!status=Status neodpovídá
 match_!body=Tělo: neobsahuje
 match_!size=Velikost je menší než
 match_!headers=Hlavičky neodpovídají
+
 features_title=Konfigurace sendmailu M4
 features_desc=Tato stránka vypisuje relevantní zápisy z konfiguračního souboru pro Sendmail M4 $1, ze kterého byl vystavěn aktuální konfigurační soubor $2.
 features_type=Typ zápisu
@@ -709,6 +758,7 @@ features_efeatures=Základní adresář konfigurace sendmailu M4 $2 nebyl ve va�
 features_econfig=Umístění základního adresáře sendmailu M4 a konfiguračního souboru M4 doposud nebyl nastaven ve vaší <a href='$1'>konfiguraci modulu</a>. Pokud jste nainstalovali Sendmail ze zdroje, může být vnořen do originálního zdrojového adresáře.
 features_move=Přesunout
 features_manual=Editovat soubor ručně
+
 feature_add=Přidat konfigurační zápis
 feature_edit=Editovat konfigurační zápis
 feature_header=Detaily zápisu M4 konfigurace
@@ -729,12 +779,15 @@ feature_emailer=Mailer $1 již existuje
 feature_eostype=Typ OS je již definován jako $1
 feature_manual=Editovat soubor M4
 feature_mdesc=Tato stránka umožňuje ruční editování konfiguračního souboru sendmail M4 $1. Buďte opatrní, jelikož nebude prováděna žádná kontrola syntaxe vaší editace.
+
 feat_access_db=Soubor kontroly spamu
 feat_virtusertable=Mapování adres
 feat_mailertable=Routování domény
 feat_genericstable=Odchozí adresy
 feat_domaintable=Mapování domény
+
 mailer_local=Lokální Unix doručování
+
 build_title=Přebudování konfigurace sendmailu
 build_em4=Příkaz $1, potřebný při přestavbě konfiguračního souboru sendmailu, nebyl ve vašem systému nalezen.
 build_ebuild=Chyba při přestavbě konfigurace : $1
@@ -743,13 +796,16 @@ build_rusure2=Buďte patrní, protože provedené změny v Sendmailu v stránce 
 build_ok=Ano, nahradit
 build_diff=Následující změny budou zapsány do vašeho konfiguračního souboru sendmailu ..
 build_nodiff=Vás konfigurační soubor sendmailu je právě aktualizován.
+
 stop_err=Chyba při zastavení sendmailu
 stop_ecannot=Nemáte oprávnění k zastavení sendmailu
 stop_epid=Vypadá to, že sendmail neběží
 restart_epids=Nemohu nalézt procesy sendmailu
 restart_ekill=Chyba při odeslání signálu procesů sendmailu : $1
+
 start_err=Chyba při spuštění sendmailu
 start_ecannot=Nemáte oprávnění ke spuštění sendmailu
+
 ports_title=Síťové porty
 ports_name=Název portu
 ports_addr=Naslouchat na adrese

@@ -14,6 +14,7 @@ index_restart=LDAP İstemci Daemon'u yeniden başlatın
 index_restartdesc=Yerel LDAP istemci arka plan programını yeniden başlatarak geçerli yapılandırmayı uygulayın.
 index_atboot=LDAP İstemcisini Önyüklemede Başlat
 index_atbootdesc=Sistem önyüklendiğinde LDAP istemci arka plan programının başlatılıp başlatılmayacağını değiştirir.
+
 server_title=LDAP Sunucu Yapılandırması
 server_header=LDAP sunucusu ve giriş seçenekleri
 server_host=LDAP sunucusu ana bilgisayar adları
@@ -51,6 +52,7 @@ server_etimelimit=Eksik veya geçersiz bağlantı süresi sınırı
 server_ecacert=Eksik veya geçersiz CA sertifika dosyası
 server_euport=$1 sunucusu için eksik veya geçersiz bağlantı noktası
 server_euri=LDAP sunucusu girilmedi
+
 base_title=LDAP Arama Tabanları
 base_header=LDAP dizini arama konumları
 base_base=Global arama tabanı
@@ -86,6 +88,7 @@ base_enetmasks=Ağ maskesi adları için eksik taban
 base_ealiases=E-posta takma adları için eksik taban
 base_enetgroup=Ağ grupları için eksik taban
 base_etimelimit=Eksik veya geçersiz arama süresi sınırı
+
 pam_title=Kimlik Doğrulama Seçenekleri
 pam_header=PAM kimlik doğrulaması ve şifre ayarları
 pam_filter=Ek LDAP filtresi
@@ -106,10 +109,12 @@ pam_efilter=Ek LDAP filtresi eksik
 pam_elogin=Kullanıcı adı için eksik veya geçersiz LDAP özelliği
 pam_egroupdn=Üyeliğini zorlamak için eksik LDAP grubu
 pam_emember=Grup üyeleri için eksik veya geçersiz LDAP özelliği
+
 switch_title=LDAP Kullanan Hizmetler
 switch_service=Hizmet
 switch_srcs=Veri kaynakları
 switch_return=LDAP kullanan hizmetler
+
 ldap_emodule=LDAP sunucusuyla konuşmak için gereken $1 Perl modülü kurulu değil. Webmin'i şimdi indirip yüklemek için <a href='$2'>burayı tıklayın</a>.
 ldap_emodule2=LDAP sunucusuyla konuşmak için gereken $1 Perl modülü kurulu değil.
 ldap_econf=$1 LDAP istemci yapılandırma dosyası sisteminizde bulunamadı
@@ -119,6 +124,7 @@ ldap_elogin=$1 LDAP sunucusuna $2 olarak bağlanamadı : $3
 ldap_anon=anonim
 ldap_eparse=$1 LDAP sunucusu URI'sı ayrıştırılamadı
 ldap_etls=TLS moduna geçilemedi : $1 
+
 browser_title=LDAP Tarayıcısı
 browser_econn=LDAP tarayıcısı kullanılamıyor : $1 
 browser_base=tarama:
@@ -129,6 +135,7 @@ browser_attrs=Nesne nitelikleri
 browser_parent=Ebeveyn Araştır
 browser_none=Yok
 browser_sel=tamam
+
 order_nisplus=NIS +
 order_nis=NIS
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=Kullanıcı yazıcıları
 order_xfn=XFN
 order_mdns4=Çok noktaya yayın DNS
 order_mdns4_minimal=Çok noktaya yayın DNS (minimum)
+
 desc_aliases=Sendmail takma adları
 desc_mail=Sendmail takma adları
 desc_hosts=Ana bilgisayar adresleri
@@ -177,6 +185,7 @@ desc_printers=Yazıcılar
 desc_ipnodes=IP düğümleri
 desc_timezone=Zaman dilimleri
 desc_locale=Yerel Ayarlar
+
 eswitch_title=Hizmeti Düzenle
 eswitch_egone=Hizmet mevcut değil!
 eswitch_header=Hizmet detayları
@@ -196,6 +205,7 @@ eswitch_continue=Aramaya devam et
 eswitch_none=Yok
 eswitch_err=Hizmet kaydedilemedi
 eswitch_enone=Seçili kaynak yok!
+
 log_server=Değiştirilmiş LDAP sunucusu yapılandırması
 log_base=Değiştirilmiş LDAP arama tabanları
 log_pam=Değiştirilmiş kimlik doğrulama seçenekleri
@@ -205,6 +215,7 @@ log_delboot=Önyükleme zamanında LDAP istemci arka plan programı devre dış�
 log_start=LDAP istemci arka plan programı başlatıldı
 log_stop=LDAP istemci arka plan programı durduruldu
 log_restart=Yeniden başlatılan LDAP istemci arka plan programı
+
 check_title=LDAP Yapılandırmasını Doğrulama
 check_base=Kullanıcılar için LDAP tabanı aranıyor ..
 check_ebase=.. istemci yapılandırmasında hiçbir temel bulunamadı!

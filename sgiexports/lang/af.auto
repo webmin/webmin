@@ -7,6 +7,7 @@ index_none=Geen NFS-uitvoer is nog gedefinieer nie.
 index_apply=Pas konfigurasie toe
 index_applydesc=Klik op hierdie knoppie om al die bogenoemde uitvoere met hul gekonfigureerde opsies aktief te maak.
 index_return=uitvoere lys
+
 edit_title1=Skep uitvoer
 edit_title2=Wysig Uitvoer
 edit_header=Voer besonderhede uit
@@ -24,12 +25,14 @@ edit_access=Berg toegang
 edit_all=Alle gashere
 edit_sel=Genoteerde gashere ..
 edit_none=Geen gashere nie
+
 save_err=Kon nie uitvoer stoor nie
 save_edir=Gids of nie-bestaande gids ontbreek om uit te voer
 save_eanon=Ontbrekende of ongeldige wortelgebruiker
 save_erw=Geen lees-skryf-gashere is ingevoer nie
 save_eroot=Daar is geen gasheer vir root-lêertoegang ingevoer nie
 save_eaccess=Geen gashere vir toegang tot bergings is ingevoer nie
+
 log_create_export=Geskep van $1 
 log_delete_export=Uitvoer van $1 is uitgevee
 log_modify_export=Gewysigde uitvoer van $1 

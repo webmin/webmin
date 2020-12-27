@@ -22,6 +22,7 @@ index_auto=Tự động tìm máy chủ
 index_automsg=Nhấp vào nút này để thiết lập tự động phát hiện định kỳ các máy chủ Webmin mới trên mạng của bạn.
 index_search=Hiển thị máy chủ phù hợp:
 index_ok=Tìm kiếm
+
 edit_title=Chỉnh sửa máy chủ
 create_title=Đăng ký máy chủ
 edit_details=Chi tiết máy chủ
@@ -57,6 +58,7 @@ edit_baduser=Đăng nhập bị từ chối
 edit_invalid=Người dùng không thể làm RPC
 edit_version=Chạy Webmin $1 
 edit_same=Chỉ khả dụng không có trong chế độ xác thực phiên và khi mật khẩu được cung cấp cho các chương trình Webmin.
+
 save_err=Không thể lưu máy chủ
 save_ehost=Tên máy chủ bị thiếu hoặc không hợp lệ
 save_ehost2=Máy chủ không tồn tại
@@ -67,6 +69,7 @@ save_epass=Thiếu mật khẩu
 save_egroup=Tên nhóm thiếu
 save_elogin=Đăng nhập hoặc mật khẩu không hợp lệ để lưu trữ
 save_egroup2=Tên nhóm mới không hợp lệ
+
 find_title=Tìm máy chủ
 find_new=Tìm thấy máy chủ mới ở $1 
 find_but=Tìm thấy máy chủ mới ở $1, nhưng xác thực thất bại : $2 
@@ -81,16 +84,20 @@ find_ecannot=Bạn không được phép tìm máy chủ
 find_scanning=Quét các máy chủ trong mạng $1 ..
 find_broading=Phát sóng cho các máy chủ trên địa chỉ $1 ..
 find_eport=Số cổng bị thiếu hoặc không hợp lệ
+
 log_modify=Máy chủ đã sửa đổi $1 
 log_create=Máy chủ đã đăng ký $1 
 log_delete=Đã xóa máy chủ $1 
 log_find=Đã tìm thấy máy chủ $1 
 log_deletes=Đã xóa $1 máy chủ
+
 link_elogin=Không thể đăng nhập vào $1 dưới dạng $2 
 link_ecannot=Bạn không được phép sử dụng máy chủ này
 link_essl=Bạn chưa cài đặt thư viện perl Net::SSLeay
 link_eautologin=Đăng nhập hoặc mật khẩu không hợp lệ cho $1. <a href='$2'>Nhấp vào đây</a> để thử lại.
+
 lib_other=Khác
+
 acl_edit=Có thể chỉnh sửa máy chủ?
 acl_find=Có thể tìm thấy máy chủ?
 acl_servers=Có thể sử dụng máy chủ
@@ -102,6 +109,7 @@ acl_forcefast=Buộc chế độ RPC nhanh để mặc định?
 acl_forcetype=Buộc loại hệ điều hành mặc định?
 acl_forcelink=Buộc loại đăng nhập để mặc định?
 acl_links=Có thể kết nối thông qua các máy chủ?
+
 login_title=Đăng nhập vào máy chủ
 login_desc=Bạn phải cung cấp tên người dùng và mật khẩu để đăng nhập vào máy chủ Webmin $1.
 login_header=Xác thực webmin
@@ -109,13 +117,16 @@ login_user=tên tài khoản
 login_pass=Mật khẩu
 login_login=Đăng nhập
 login_esame=Tùy chọn sử dụng cùng một thông tin đăng nhập như máy chủ này chỉ có thể được sử dụng khi không ở chế độ xác thực phiên và khi mật khẩu được cung cấp cho các chương trình Webmin.
+
 this_server=máy chủ này
+
 delete_err=Không thể xóa máy chủ
 delete_enone=Không được chọn
 delete_ecannot=Bạn không được phép xóa máy chủ
 delete_title=Xóa máy chủ
 delete_rusure=Bạn có chắc chắn muốn xóa $1 máy chủ đã chọn không?
 delete_confirm=Xóa ngay bây giờ
+
 auto_title=Tự động tìm máy chủ
 auto_header=Tùy chọn đăng ký máy chủ tự động
 auto_sched=Kiểm tra máy chủ mới?
@@ -141,8 +152,10 @@ auto_smtp=Gửi qua máy chủ SMTP
 auto_self=Hệ thống này
 auto_esmtp=Máy chủ SMTP bị thiếu hoặc không hợp lệ
 auto_findself=Đăng ký hệ thống này quá?
+
 config_deftype=Loại hệ thống mặc định
 config_typeauto=Tự động
+
 email_regsubject=Hệ thống $1 đã đăng ký
 email_reg=Hệ thống $1 đã được đăng ký tự động.
 email_unregsubject=Hệ thống $1 chưa đăng ký

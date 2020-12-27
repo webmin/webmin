@@ -19,10 +19,13 @@ index_samba=سامبا؟
 index_cyrus=الوصول عبر IMAP؟
 index_users=مستخدمو LDAP
 index_groups=مجموعات LDAP
+
 imap_econn=فشل الاتصال بخادم IMAP$1
 imap_elogin=فشل تسجيل الدخول إلى خادم IMAP $1 كـ $2 : $3 
 conn_eldap_host=لم يتم العثور على ملف تهيئة عميل LDAP على نظامك ، لذا يجب تعيين خادم LDAP على صفحة تهيئة الوحدة النمطية
 conn_elogin=لم يتم العثور على ملف تهيئة عميل LDAP على نظامك ، لذا يجب تعيين تسجيل دخول LDAP على صفحة تهيئة الوحدة النمطية
+conn_efile_open=تعذر فتح ملف بيانات اعتماد ربط LDAP:
+
 uedit_cap=قدرات المستخدم
 uedit_samba=تسجيل الدخول سامبا؟
 uedit_cyrus=تسجيل الدخول إلى خادم IMAP؟
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=آخر تحديث لكلمة المرور
 uedit_sambapwdcanchange=يمكن تغيير كلمة المرور
 uedit_sambabadpasswordcount=عدد كلمات المرور غير صحيح
 uedit_sambaacctflags=أعلام الحساب
+
 usave_eadd=فشلت إضافة المستخدم إلى قاعدة بيانات LDAP :$1
 usave_emod=فشل تعديل المستخدم في قاعدة بيانات LDAP :$1
 usave_emoddn=فشل في إعادة تسمية المستخدم في قاعدة بيانات LDAP :$1
@@ -66,26 +70,33 @@ usave_eattrdupu=المستخدم$1 يستخدم بالفعل$2 $3
 usave_eattrdupg=تستخدم المجموعة$1 بالفعل$2 $3
 usave_ereal=الاسم الحقيقي مفقود
 usave_equota=حصة IMAP مفقودة أو غير صالحة
+
 search_err=فشل البحث عن$1 ضمن $2 : $3 
+
 gedit_dn=مجموعة LDAP DN
 gedit_return=تفاصيل المجموعة
 gedit_cap=قدرات المجموعة
 gedit_samba=مجموعة سامبا؟
+
 gsave_egone=المجموعة لم تعد موجودة!
 gsave_edelete=فشل في حذف المجموعة من قاعدة بيانات LDAP :$1
 gsave_eadd=فشل في إضافة مجموعة إلى قاعدة بيانات LDAP :$1
 gsave_emod=فشل تعديل المجموعة في قاعدة بيانات LDAP :$1
 gsave_emoddn=فشل في إعادة تسمية المجموعة في قاعدة بيانات LDAP :$1
+
 gdel_group=حذف إدخال مجموعة LDAP ..
+
 udel_pass=حذف إدخال مستخدم LDAP ..
 udel_book=جاري الحذف من دفتر العناوين ..
 udel_imap=جارٍ حذف مجلد IMAP ..
 udel_warnimap=سيتم حذف صندوق بريد البريد الحالي عند حذف الدليل الرئيسي!
 udel_failed=.. فشل!  :$1
+
 raw_title=سمات LDAP
 raw_name=اسم السمة
 raw_value=القيم
 raw_for=ل 1
+
 batch_samba=إنشاء حساب سامبا للمستخدمين الجدد؟
 batch_imap=هل تريد إنشاء حساب IMAP للمستخدمين الجدد؟
 batch_descafter3=في <b>إنشاء</b> و <b>تعديل</b> خطوط ، يمكنك بشكل اختياري إلحاق حقول إضافية تحتوي على سمات LDAP بتنسيق <i>name</i> = <i>value</i> ، إلى يتم تعيينها للمستخدمين الجدد أو المعدلين.

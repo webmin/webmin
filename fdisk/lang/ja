@@ -21,6 +21,7 @@ index_hdparm=IDE パラメータを編集
 index_use=使用
 index_free=空き
 index_return=ディスクのリスト
+
 bytes=バイト
 extended=拡張
 opt_default=デフォルト
@@ -31,6 +32,7 @@ select_part=$1 デバイス $2 パーティション $3
 select_fd=フロッピー ディスク $1
 select_mylex=Mylex RAID $1 ドライブ $2
 select_mpart=Mylex RAID $1 ドライブ $2 パーティション $3
+
 edit_title=パーティションの編集
 create_title=パーティションの作成
 edit_ecannot=このディスクを編集することはできません
@@ -63,6 +65,7 @@ edit_fsckmsg=ファイル システムを修復するために $1 プログラ�
 edit_tune=ファイル システムの調整
 edit_tunemsg=既存のファイル システムの多様のパラメータを変更できるようにします。
 edit_none=なし
+
 mkfs_title=新規のファイル システム
 mkfs_ecannot=このディスクで新規のファイル システムを構築することはできません
 mkfs_desc1=この画面の下のボタンをクリックすると、$1 ファイル システムをデバイス $2 に構築します。このパーティションにあるすべてのデータは永久に消去されます。
@@ -73,6 +76,7 @@ mkfs_err=ファイル システムを作成できませんでした
 mkfs_exec=コマンド $1 を実行中..
 mkfs_failed=.. コマンドが失敗しました。
 mkfs_ok=.. コマンドを完了しました。
+
 fsck_title=ファイル システムの修復
 fsck_ecannot=このディスクは fsck できません
 fsck_desc1=ここで<tt>ファイル システムの修復</tt> ボタンをクリックすると、$2 上の破損した$1 ファイル システムを $3 にマウントするために破損の修復を試みます。ファイル システムが破損していない場合は、変更は行われません。
@@ -85,6 +89,7 @@ fsck_err3=エラーを検出し修正しました - リブートする必要が�
 fsck_err4=エラーを検出しましたが修正されませんでした
 fsck_err16=コマンド ライン エラー
 fsck_unknown=不明な戻りコード $1
+
 tunefs_title=ファイル システムの調整
 tunefs_ecannot=このファイル システムを調整することはできません
 tunefs_desc=これは$2 上の $1 ファイル システムを $3 にマウントする多様なパラメータの調整を可能にします。このファイル システムにある既存のファイルは影響されません。
@@ -106,10 +111,12 @@ tunefs_err=ファイル システムを調整できませんでした
 tunefs_exec=コマンド $1 を実行中..
 tunefs_failed=.. コマンドが失敗しました。
 tunefs_ok=.. コマンドを完了しました。
+
 reboot_title=リブート
 reboot_msg=リブート中..
 reboot_ok=今すぐリブート
 reboot_why=$1 のパーティション テーブルを変更しました。変更を正しく有効にするには、システムをリブートする必要があります。
+
 save_err=パーティションを保存できませんでした
 save_ecannot=このディスクを編集することはできません
 save_estart='$1' は有効な開始シリンダではありません
@@ -118,27 +125,33 @@ save_emin=開始シリンダは $1 以上である必要があります
 save_emax=終了シリンダは $1以下である必要があります
 save_eminmax=開始シリンダは終了シリンダより小さい必要があります
 save_eoverlap=パーティション $1 ($2 から $3) に重複があります
+
 ext2_b=ブロック サイズ
 ext2_f=フラグメント サイズ
 ext2_i=バイト / i ノード
 ext2_m=予約されたブロック
 ext2_g=ブロック / グループ
 ext2_c=不正なブロックを調べますか？
+
 msdos_F=FAT サイズ
 msdos_i=ボリューム ID
 msdos_n=ボリューム名
 msdos_r=root エントリ
 msdos_s=クラスタ サイズ
 msdos_c=不正なブロックを調べますか？
+
 minix_n=ファイル名の長さ
 minix_i=i ノード数
 minix_b=ブロック数
 minix_c=不正なブロックを調べますか？
+
 reiserfs_force=ファイル システムの作成を強制
 reiserfs_hash=ハッシュ関数
+
 acl_disks=このユーザがパーティションを切ってフォーマットできるディスク
 acl_dall=すべてのディスク
 acl_dsel=選択..
+
 hdparm_title=IDE パラメータの編集
 hdparm_on=オン
 hdparm_off=オフ
@@ -167,6 +180,7 @@ hdparm_performing=実行中
 hdparm_buf1=バッファ キャッシュ:
 hdparm_buf2=バッファ付き:
 hdparm_speedres=速度テスト結果
+
 log_modify=$1 を変更しました
 log_create=$1 を作成しました
 log_delete=$1 を削除しました

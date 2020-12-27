@@ -2,6 +2,7 @@ index_title=Client și server NIS
 index_return=Meniul NIS
 index_enis=Aparatul dvs. nu pare să aibă instalat suportul NIS pentru client sau server.
 index_enis2=Numai funcția de servicii pentru clienți din acest modul va fi utilizabilă.
+
 client_title=Client NIS
 client_header=Configurația clientului NIS
 client_domain=Domeniul NIS
@@ -17,10 +18,12 @@ client_eserver=„$1” nu este un nume de server valid
 client_eypwhich=nu a reușit să se lege la domeniul NIS
 client_ehosts=„$1” nu se află în fișierul gazdelor
 client_enis=Se pare că mașina dvs. nu are instalată asistența client NIS.
+
 switch_title=Servicii pentru clienți
 switch_service=Serviciu
 switch_srcs=Surse de date
 switch_return=servicii client
+
 order_=&nbsp;
 order_nisplus=NIS +
 order_nis=NIS
@@ -32,6 +35,7 @@ order_hesiod=Hesiod
 order_ldap=LDAP
 order_user=Imprimante utilizator
 order_xfn=XFN
+
 server_title=Server NIS
 server_header=Opțiuni server NIS
 server_boot=Activați serverul NIS?
@@ -65,6 +69,7 @@ server_solaris=Notă - pe Solaris, domeniile NIS client și server sunt întotde
 server_edir=Directorul fișiere sursă nevalide
 server_epwdir=Director de fișiere sursă de parolă nevalide
 server_enis=Se pare că aparatul dvs. nu are instalat suportul NIS.
+
 tables_title=Tabele NIS
 tables_switch=Editează tabelul NIS :
 tables_header=$1 Tabel NIS de la $2 
@@ -81,6 +86,7 @@ tables_search=Căutare
 tables_nomatch=Nicio înregistrare nu se potrivește căutării tale
 tables_build=Reconstruiți tabelele NIS
 tables_buildmsg=Faceți clic pe acest buton pentru a reconstrui bazele de date NIS din datele tabelului. Dacă ați făcut modificări, va trebui să faceți acest lucru pentru a le pune la dispoziția clienților NIS.
+
 desc_aliases=Alias-uri Sendmail
 desc_mail=Alias-uri Sendmail
 desc_hosts=Adrese de gazdă
@@ -116,6 +122,7 @@ desc_printers=Imprimante
 desc_ipnodes=Noduri IP
 desc_timezone=Fusuri orare
 desc_locale=Localizările
+
 hosts_title=Adresa gazdă
 hosts_ip=adresa IP
 hosts_name=Numele gazdei
@@ -124,6 +131,7 @@ hosts_err=Nu a reușit salvarea gazdei
 hosts_eip=Adresa IP lipsă sau nevalidă
 hosts_ename=Numele de gazdă lipsă sau nevalid
 hosts_aliases=Pseudonime
+
 group_name=Numele Grupului
 group_gid=ID de grup
 group_members=Membrii grupului
@@ -134,6 +142,7 @@ group_none=Nu este necesară parola
 group_encrypted=Parola pre-criptată
 group_clear=Parolă normală
 group_err=Nu a reușit să salveze grupul
+
 passwd_name=Nume de utilizator
 passwd_uid=numele de utilizator
 passwd_real=Nume real
@@ -171,6 +180,7 @@ passwd_emax=Numărul maxim de zile nevalid
 passwd_emin=Număr minim de zile nevalid
 passwd_einactive=Număr nevalid de zile inactive
 passwd_eexpiry=Data de expirare nevalidă
+
 services_name=Numele serviciului
 services_proto=Protocol
 services_port=Port
@@ -179,6 +189,7 @@ services_header=Opțiuni de serviciu de rețea Inetd
 services_err=Salvarea serviciului nu a reușit
 services_ename=Numele serviciului lipsit sau nevalid
 services_eport=Port lipsă sau nevalid
+
 protocols_name=Numele protocolului
 protocols_number=Număr
 protocols_aliases=Pseudonime
@@ -187,6 +198,7 @@ protocols_header=Opțiuni de protocol de rețea
 protocols_err=Salvarea protocolului nu a reușit
 protocols_ename=Numele care lipsește sau este nevalid
 protocols_enumber=Număr lipsă sau nevalid
+
 netgroup_name=Numele grupului de retea
 netgroup_members=Membrii
 netgroup_title=Grup de rețea
@@ -201,6 +213,7 @@ netgroup_ename=Lipsește sau nu este valabil numele de grup net
 netgroup_ehost=Gazda lipsă sau nevalidă din rândul $1 
 netgroup_euser=Utilizator care lipsește sau este nevalid în rândul $1 
 netgroup_edom=Lipsește sau nu este valabil domeniul NIS din rândul $1 
+
 ethers_mac=Adresa Ethernet
 ethers_ip=adresa IP
 ethers_title=Adresa Ethernet
@@ -208,6 +221,7 @@ ethers_header=Opțiuni de mapare Ethernet
 ethers_err=Nu a reușit să salveze adresa ethernet
 ethers_emac=Adresa ethernet nevalidă
 ethers_eip=Adresa IP nevalidă
+
 rpc_name=Numele programului
 rpc_number=Număr
 rpc_aliases=Pseudonime
@@ -216,6 +230,7 @@ rpc_header=Detalii despre programul RPC
 rpc_err=Nu a reușit să salveze programul RPC
 rpc_ename=Numele programului lipsă sau nevalid
 rpc_enumber=Număr lipsă sau nevalid
+
 networks_title=Adresă de rețea
 networks_ip=adresa IP
 networks_name=Numele retelei
@@ -224,6 +239,7 @@ networks_err=Nu a reușit salvarea rețelei
 networks_eip=Adresa IP lipsă sau nevalidă
 networks_ename=Numele care lipsește sau este nevalid
 networks_aliases=Pseudonime
+
 netmasks_net=Adresă de rețea
 netmasks_mask=Mască de rețea
 netmasks_title=Mască de rețea
@@ -231,6 +247,7 @@ netmasks_header=Detalii despre masca de rețea
 netmasks_err=Nu a reușit să salveze netmask
 netmasks_enet=Adresa de rețea lipsă sau nevalidă
 netmasks_emask=Masca de net lipsă sau nevalidă
+
 aliases_from=Abordare
 aliases_to=Alias pentru
 aliases_title=Sendmail Alias
@@ -238,6 +255,7 @@ aliases_header=Detalii despre alias Sendmail
 aliases_err=Nu a reușit să salveze alias
 aliases_efrom=Adresă lipsă sau nevalidă
 aliases_eto=Lipsesc adresele
+
 security_title=Securitatea serverului
 security_header=Opțiuni de securitate a serverului NIS
 security_ok=Salvați și aplicați
@@ -266,6 +284,7 @@ security_sec_des=Solicitați DES
 security_ehost=„$1” nu este un nume de gazdă valid
 security_emap=„$1” nu este un tabel NIS valid
 security_efield=„$1” nu este un număr de câmp valid
+
 eswitch_title=Editare Serviciu
 eswitch_egone=Serviciul nu există!
 eswitch_header=Detalii despre servicii

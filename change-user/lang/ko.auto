@@ -2,6 +2,7 @@ index_langglobal2=글로벌 언어.. $1 ($2)
 index_overlay=테마 오버레이
 index_overlaydef=없음-테마 기본값 사용
 index_passagain=비밀번호를 다시 입력하세요
+
 change_epass2=새 비밀번호가 일치하지 않습니다
 change_eoverlay=UI 테마도 선택하지 않으면 테마 오버레이를 선택할 수 없습니다
 change_eoverlay2=선택한 테마 오버레이가 선택한 UI 테마와 호환되지 않습니다

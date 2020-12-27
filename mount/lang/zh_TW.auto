@@ -2,6 +2,7 @@ index_used=用過的
 index_none=您無權訪問任何已掛載的文件系統。
 index_mount2=使用密碼掛載：
 index_root=根文件系統
+
 edit_usage=磁盤使用情況
 edit_comm_opt=通用安裝選項
 edit_ext_opt=ext2 / ext3特定選項
@@ -25,11 +26,15 @@ edit_ecannot=您無權編輯此文件系統
 edit_ecannot2=您不允許添加新的文件系統
 edit_3_or_lower=3（或更低）
 edit_advanced=高級模式
+
 save_force=無法刪除$1上的安裝，因為當前正在使用該安裝。要嘗試強制卸載，請點擊下面的按鈕
 save_fapply=強制取消掛載
+
 nfs_seldirv4=對於NFSv4掛載，您應該選擇'/'
+
 smb_eworkgroup=在“模塊配置”頁面上未設置工作組
 smb_emaster=找不到工作組$1的瀏覽主機
+
 solaris_idedev=IDE控制器$1驅動器$2分區$3
 solaris_dvd=DVD
 solaris_lvm=LVM設備
@@ -40,6 +45,7 @@ solaris_hfs=HFS設備
 solaris_immed=立即
 solaris_defer=遞延
 solaris_largebsize=使用大的頁面塊大小？
+
 linux_lvm=LVM邏輯卷
 linux_ldev=LVM VG $1，LV $2
 linux_cddev=光盤驅動器
@@ -72,6 +78,7 @@ linux_noenforce=是的，但不要強制執行
 linux_df=在文件系統大小中包括保留塊？
 linux_noatime=避免更新上次訪問時間？
 linux_netdev=等待網絡接口啟動？
+linux_nofail=即使安裝失敗也繼續啟動？
 linux_ecname=客戶端netbios名稱丟失或無效
 linux_emname=缺少或無效的服務器主機名或IP地址
 linux_bind=原始目錄
@@ -97,6 +104,7 @@ linux_nounix=禁用CIFS Unix擴展？
 linux_noserverino=在客戶端生成索引節點號？
 linux_cvers=CIFS版本
 linux_ecvers=CIFS版本必須為數字
+
 log_mount=掛載的$3
 log_mount_l=將$2 $1掛載在$3上
 log_umount=卸載的$3
@@ -110,7 +118,9 @@ log_modify_l=修改後的$2在$3上安裝$1
 log_delete=刪除的裝載$3
 log_delete_l=刪除的$2在$3上安裝$1
 log_swap=創建的交換文件$1
+
 unmount_err=無法卸載$1
+
 mount_err=無法掛載$1
 irix_nhost=NFS主機名
 irix_ndir=NFS目錄
@@ -141,6 +151,7 @@ irix_rock=使用Rock Ridge擴展程序？
 irix_nofsck=在啟動時檢查文件系統？
 irix_auto=自動掛載程序源
 irix_automap=地圖文件
+
 irix_ehost=主機“$1”不存在
 irix_eloss=主機“$1”已關閉
 irix_eshowmount=主機“$1”不支持NFS
@@ -158,9 +169,11 @@ irix_efstyp2=無法獲得文件系統類型$1 : $2
 irix_efstyp=$1上的文件系統類型是$2，而不是$3
 irix_eautomap=自動掛載程序映射文件'$1'不存在
 irix_eauthmap2=自動掛載器映射文件丟失或無效
+
 irix_devroot=根分區
 irix_devswap=交換分區
 irix_autohosts=所有NFS出口
+
 acl_only=只允許安裝和卸載？
 acl_fs=可以編輯的文件系統
 acl_types=可以使用的文件系統類型
@@ -173,8 +186,10 @@ acl_hide=隱藏不可編輯的文件系統？
 acl_simple=顯示簡單的安裝形式？
 acl_simopts=顯示簡化的文件系統選項？
 acl_browse=顯示文件並共享瀏覽按鈕？
+
 egcc=構建程序以列出系統上已掛載的文件系統所需的GCC或CC編譯器不可用。
 ecompile=生成用於列出系統上已掛載文件系統的程序時發生錯誤：$1
+
 freebsd_eaddr=缺少或無效的服務器地址
 freebsd_eworkgroup=工作組缺失或無效
 freebsd_ide=IDE硬盤
@@ -188,8 +203,10 @@ freebsd_idedev=IDE設備$1，切片$2，分區$3
 freebsd_scsidev=SCSI設備$1，切片$2，分區$3
 freebsd_edevpath=其他設備必須是絕對路徑，例如<tt>/dev/cdrom</tt>
 freebsd_edevfile=設備文件“$1”不存在
+
 cswap_file=交換文件$1不存在。
 cswap_size=創建並掛載具有大小的交換文件
+
 acl_sysinfo=在儀表板上顯示可用的磁盤數據？
 sysinfo_total=總
 sysinfo_dev=設備編號

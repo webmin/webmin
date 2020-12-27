@@ -25,6 +25,7 @@ index_resetdesc=Klik butang ini untuk membersihkan semua peraturan firewall yang
 index_cluster=Pelayan Kluster
 index_clusterdesc=Klik butang ini untuk menyediakan pelayan Webmin tambahan yang mana konfigurasi firewall akan disalin secara automatik.
 index_return=peraturan firewall
+
 index_num=No
 index_action=Tindakan
 index_desc=Keadaan
@@ -37,6 +38,7 @@ index_delete=Padam Dipilih
 index_existing=Webmin telah mengesan $1 peraturan firewall IPFW yang sedang digunakan, yang tidak direkodkan dalam fail $2. Peraturan ini mungkin persediaan dari skrip, yang modul ini tidak tahu cara membaca dan mengedit. <P> Jika anda ingin menggunakan modul ini untuk mengurus firewall IPFW anda, klik butang di bawah untuk menukar peraturan yang sedia ada untuk menyimpan fail, dan kemudian matikan skrip firewall anda yang sedia ada.
 index_saveex=Simpan Peraturan Firewall
 index_headerex=Konfigurasi firewall sedia ada
+
 action_allow=<font color=#00aa00>Benarkan</font>
 action_deny=<font color=#ff0000>Drop</font>
 action_reject=<font color=#ff4400>Tolak</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>Drop packet</font>
 laction_reject=<font color=#ff4400>Penolakan semula ICMP</font>
 laction_reset=<font color=#ff4400>Tetapkan sambungan TCP</font>
 laction_skipto=Langkau ke peraturan
+
 edit_title1=Buat Peraturan
 edit_title2=Edit Peraturan $1 
 edit_header1=Tindakan peraturan
@@ -114,6 +117,7 @@ edit_src-addr=Dari alamat sumber ..
 edit_src-port=Dari port sumber ..
 edit_dst-addr=Untuk alamat destinasi ..
 edit_dst-port=Kepada pelabuhan destinasi ..
+
 save_err=Gagal menyimpan peraturan
 save_enum=Nombor peraturan hilang atau tidak sah
 save_eskipto=Nombor peraturan hilang atau tidak sah untuk melangkau ke
@@ -144,7 +148,9 @@ save_etcpflags=Bendera TCP hanya boleh ditentukan jika protokol itu TCP
 save_elimit=Had maksima atau tidak sah
 save_edstport=Port destinasi hilang atau tidak sah
 save_esrcport=Port sumber hilang atau tidak sah
+
 apply_err=Gagal menggunakan konfigurasi
+
 desc_if=Jika $1 
 desc_and=dan
 desc_always=Sentiasa
@@ -191,6 +197,7 @@ desc_where=di mana $1
 desc_all=untuk semua paket
 desc_in=paket akan masuk
 desc_out=paket keluar
+
 log_create_rule=Peraturan $1 dibuat
 log_delete_rule=Peraturan $1 dipadam
 log_modify_rule=Peraturan $1 diubahsuai
@@ -206,6 +213,7 @@ log_convert=Peraturan firewall aktif yang ditukar
 log_setup=Persediaan firewall awal dilakukan
 log_unapply=Konfigurasi firewall dibalikkan
 log_delsel=$1 peraturan dipadam
+
 cluster_title=Pelayan Firewall Cluster
 cluster_none=Tiada pelayan telah ditambahkan ke cluster firewall lagi.
 cluster_host=Nama hos
@@ -216,6 +224,7 @@ cluster_gadd=Tambah pelayan dalam kumpulan
 cluster_need=Anda mesti menambah pelayan dengan log masuk dan kata laluan dalam Modul Indeks Servis Webmin sebelum mereka boleh diuruskan di sini.
 cluster_return=pelayan kluster
 cluster_delete=Buang yang ditanda
+
 add_title=Tambah Pelayan
 add_msg=Menambah $1 ..
 add_gmsg=Menambah pelayan dalam kumpulan $1 ..

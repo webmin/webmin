@@ -31,6 +31,7 @@ index_ok=Tìm kiếm
 index_searchres=Công việc định kỳ khớp với $1 ..
 index_reset=Đặt lại tìm kiếm.
 index_econfigcheck=Các công việc định kỳ không thể được quản lý trên hệ thống của bạn, vì cấu hình mô-đun không hợp lệ : $1 
+
 edit_title=Chỉnh sửa công việc định kỳ
 create_title=Tạo công việc định kỳ
 edit_ecannot=Bạn không được phép chỉnh sửa công việc định kỳ cho người dùng này
@@ -70,6 +71,7 @@ lcedit_special_weekly=hàng tuần (vào Chủ nhật)
 lcedit_special_monthly=hàng tháng (vào ngày 1)
 lcedit_special_yearly=hàng năm (vào ngày 1 tháng 1)
 lcedit_special_reboot=khi hệ thống khởi động
+
 save_err=Không thể lưu công việc định kỳ
 save_ecmd=Bạn đã không nhập lệnh để thực thi
 save_euser=Bạn phải chọn người dùng
@@ -79,6 +81,7 @@ save_ecannot=Bạn không được phép tạo hoặc chỉnh sửa các công v
 save_enone=Bạn đã không chọn bất kỳ $1 nào để thực thi
 save_ecannot2=Bạn không được phép tạo công việc định kỳ
 save_eidx=Công việc định kỳ đã được lưu thành công, nhưng không thể chạy được vì không tìm thấy!
+
 allow_title=Kiểm soát truy cập Cron
 allow_desc=Biểu mẫu này cho phép bạn kiểm soát những người dùng nào có thể tạo và chạy các công việc định kỳ.
 allow_ecannot=Bạn không thể kiểm soát quyền truy cập của người dùng vào cron
@@ -87,6 +90,7 @@ allow_all2=Từ chối tất cả người dùng ngoại trừ root
 allow_all3=Cho phép tất cả người dùng
 allow_allow=Chỉ cho phép người dùng được liệt kê
 allow_deny=Từ chối chỉ liệt kê người dùng
+
 env_title1=Chỉnh sửa biến môi trường
 env_title2=Tạo biến môi trường
 env_name=Tên biến
@@ -102,11 +106,13 @@ env_where2=Di chuyển biến môi trường
 env_top=Trước tất cả các công việc Cron cho người dùng
 env_bot=Sau tất cả các công việc Cron
 env_leave=Vị trí hiện tại
+
 exec_title=Thực thi công việc định kỳ
 exec_ecannot=Bạn không được phép thực hiện các công việc định kỳ cho người dùng này
 exec_cmd=Đầu ra từ lệnh $1 ..
 exec_cmdbg=Chạy lệnh $1 làm tiến trình nền.
 exec_none=Không có đầu ra được tạo ra
+
 acl_users=Có thể chỉnh sửa công việc định kỳ cho
 acl_all=Tất cả người dùng
 acl_this=Người dùng webmin hiện tại
@@ -122,6 +128,7 @@ acl_move=Có thể di chuyển công việc Cron?
 acl_kill=Có thể chấm dứt công việc Cron?
 acl_hourly=Giới hạn việc làm nhiều nhất là hàng giờ?
 acl_hourlydef=Như được đặt trong Module Config
+
 log_modify=Công việc Cron đã sửa đổi cho $1 
 log_modify_l=Công việc Cron đã sửa đổi "$2" cho $1 
 log_create=Đã tạo công việc Cron cho $1 
@@ -139,7 +146,9 @@ log_move=Đã chuyển công việc Cron cho $1
 log_crons_delete=Đã xóa $1 công việc định kỳ
 log_crons_disable=Công việc $1 Cron bị vô hiệu hóa
 log_crons_enable=Đã bật $1 công việc định kỳ
+
 ecopy=Đã phát hiện lỗi trong cấu hình Cron mới: $1 $2 
+
 when_min=mỗi phút
 when_hour=mỗi giờ ở $1 qua giờ
 when_day=mỗi ngày ở $2:$1 
@@ -148,6 +157,7 @@ when_weekday=mỗi $3 ở $2:$1
 when_cron=tại thời điểm định kỳ $1 
 when_interval=cứ sau 1 giây
 when_boot=tại thời điểm khởi động
+
 ucwhen_min=Mỗi phút
 ucwhen_hour=Mỗi giờ ở $1 giờ qua
 ucwhen_day=Mỗi ngày ở mức $2:$1 
@@ -156,8 +166,10 @@ ucwhen_weekday=Mỗi $3 ở $2:$1
 ucwhen_cron=Tại thời điểm định kỳ $1 
 ucwhen_interval=Cứ sau 1 giây
 ucwhen_boot=Lúc khởi động
+
 move_err=Không thể chuyển công việc Cron
 move_etype=Công việc này không thể được di chuyển
+
 kill_err=Không thể chấm dứt công việc Cron
 kill_ecannot=Bạn không được phép chấm dứt công việc này
 kill_egone=Không còn chạy
@@ -166,13 +178,16 @@ kill_title=Chấm dứt công việc Cron
 kill_rusure=Bạn có chắc chắn muốn chấm dứt quá trình $1 bằng PID $2 không?
 kill_rusure2=Bạn có chắc chắn muốn chấm dứt quá trình $1 bằng PID $2 và tất cả các quy trình phụ của nó không?
 kill_ok=Vâng, chấm dứt nó
+
 range_all=Chạy vào bất cứ ngày nào
 range_start=Chỉ chạy từ $1 
 range_end=đến 1
 range_estart=Ngày bắt đầu bị thiếu hoặc không hợp lệ trong phạm vi để chạy
 range_eend=Ngày kết thúc bị thiếu hoặc không hợp lệ trong phạm vi để chạy
+
 delete_err=Không thể xóa công việc Cron
 delete_enone=Không được chọn
+
 manual_title=Chỉnh sửa thủ công Cron Jobs
 manual_edit=Tập tin cron để chỉnh sửa:
 manual_ok=Biên tập

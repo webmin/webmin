@@ -5,6 +5,7 @@ index_family=Familia modelo
 index_serial=Número de serie
 index_capacity=Capacidad
 index_norm=Normalizado
+
 monitor_type2=Desgaste SSD
 monitor_errorsinc=Sí, pero solo alerta si el recuento de errores aumenta
 monitor_errorsfound=Se informaron $1 errores

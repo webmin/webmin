@@ -25,6 +25,7 @@ index_estart=Die opdrag om Xinetd $1 te begin bestaan nie. Miskien is dit nie ge
 index_noport=onbekend
 index_enable=Aktiveer geselekteerde
 index_disable=Deaktiveer gekies
+
 serv_create=Skep internetdiens
 serv_edit=Wysig internetdiens
 serv_header1=Diensnetwerkopsies
@@ -78,19 +79,24 @@ serv_enice=Mooi of ongeldige mooi vlak
 serv_ecps0=Ontbrekende of ongeldige aantal verbindings per sekonde
 serv_ecps1=Uitstel of ongeldige uitstel
 serv_etimes=Toegangstye moet in die formaat HH: MM-HH: MM wees
+
 sock_stream=stroom
 sock_dgram=datagram
 sock_raw=rou
 sock_seqpacket=Opeenvolgende datagram
+
 proto_=verstek
 proto_ip=IP (Internet Protocol)
 proto_tcp=TCP (Transmission Control Protocol)
 proto_udp=UDP (User Datagram Protocol)
+
 restart_err=Kon nie veranderinge toepas nie
 restart_ekill=Kon nie USR2-sein na PID $1 : $2 stuur nie
 restart_epid=Nie meer hardloop nie
+
 start_err=Kon nie xinetd begin nie
 start_estart=$1 het misluk : $2 
+
 defs_title=Standaardopsies
 defs_header=Standaardopsies vir dienste
 defs_log=Xinetd-aanmeldmodus
@@ -115,6 +121,7 @@ defs_err=Kon nie standaardopsies stoor nie
 defs_efile=Ontbrekende of ongeldige log-lêernaam
 defs_esoft=Sagte limiet ontbreek of ongeldig
 defs_ehard=Ontbrekende of ongeldige harde limiet
+
 log_create_serv=Skep $2 diens $1 
 log_modify_serv=Gewysigde $2 diens $1 
 log_delete_serv=$2 diens $1 is uitgevee
@@ -125,5 +132,6 @@ log_enable=$1 -dienste geaktiveer
 log_disable=Gestremd $1 dienste
 log_enable_l=Geaktiveerde dienste $1 
 log_disable_l=Dienste vir gestremdes $1 
+
 config_dirdef=Xinetd konfigurasie lêer
 config_dirto=Nuwe lêer in die gids

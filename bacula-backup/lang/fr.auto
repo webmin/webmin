@@ -29,12 +29,14 @@ index_fd=Configuration du fichier démon
 index_groups=Configuration du groupe Bacula
 index_actions=Actions de sauvegarde et de restauration
 index_ocmin=Contribué par <a href=$2 target=_new>Linmin</a> </a>
+
 connect_emysql=Impossible de charger le pilote DBI de la base de données $1 
 connect_elogin=Impossible de se connecter à la base de données $1:$2.
 connect_equery=La base de données $1 ne semble pas contenir de tables Bacula.
 connect_equery2=Cela peut être dû au fait que le module Perl SQLite installé est trop nouveau et ne prend pas en charge l'ancien format de base de données SQLite utilisé par Bacula.
 connect_equery3=La base de données $1 ne semble pas contenir de tables de groupe OC Bacula.
 esql=Erreur SQL : $1 
+
 check_edir=Le répertoire de configuration de Bacula $1 est introuvable sur votre système.
 check_ebacula=La commande de contrôle Bacula $1 est introuvable.
 check_econsole=La commande de console Bacula $1 est introuvable.
@@ -43,17 +45,20 @@ check_eclient=Ce système semble être un <a href='$2'>client Bacula</a> plutôt
 check_econfigs=Aucun fichier de configuration Bacula n'a été trouvé dans $1 
 check_eservers=Aucun groupe de serveurs Webmin n'a été défini
 check_engmod=Le module de groupes OpenCountry Bacula n'est pas installé
+
 proc_bacula-sd=Démon de stockage
 proc_bacula-fd=Démon de fichier
 proc_bacula-dir=Démon de Bacula Director
 proc_bareos-sd=Démon de stockage
 proc_bareos-fd=Démon de fichier
 proc_bareos-dir=Démon de Bacula Director
+
 stop_err=Impossible d'arrêter Bacula
 start_err=Impossible de démarrer Bacula
 start_einit=Aucun script d'initialisation trouvé pour $1 
 start_erun=Impossible de démarrer $1 : $2 
 restart_err=Impossible de redémarrer Bacula
+
 jobs_title=Travaux de sauvegarde
 jobs_none=Aucun travail de sauvegarde n'a encore été défini.
 jobs_name=Nom du travail
@@ -66,6 +71,7 @@ jobs_add=Ajoutez un nouveau travail de sauvegarde.
 jobs_delete=Supprimer les travaux sélectionnés
 jobs_return=liste d'emplois
 jobs_derr=Impossible de supprimer les travaux
+
 filesets_title=Ensembles de fichiers
 filesets_none=Aucun ensemble de fichiers de sauvegarde n'a encore été défini.
 filesets_name=Nom de l'ensemble de fichiers
@@ -75,6 +81,7 @@ filesets_delete=Supprimer les jeux de fichiers sélectionnés
 filesets_return=liste des ensembles de fichiers
 filesets_derr=Impossible de supprimer les ensembles de fichiers
 filesets_ednone=Aucune sélection
+
 fileset_title1=Créer un ensemble de fichiers
 fileset_title2=Modifier l'ensemble de fichiers
 fileset_header=Détails du jeu de fichiers de sauvegarde
@@ -94,6 +101,7 @@ fileset_gzipdef=&lt;Niveau de compression par défaut&gt;
 fileset_lzo=Compression LZO
 fileset_gzip=Niveau Gzip $1 
 fileset_onefs=Limiter la sauvegarde à un seul système de fichiers?
+
 clients_title=Clients de sauvegarde
 clients_none=Aucun client de sauvegarde n'a encore été défini.
 clients_name=Nom du client
@@ -103,6 +111,7 @@ clients_add=Ajoutez un nouveau client de sauvegarde.
 clients_delete=Supprimer les clients sélectionnés
 clients_return=liste des clients
 clients_derr=Impossible de supprimer des clients
+
 client_title1=Créer un client de sauvegarde
 client_title2=Modifier le client de sauvegarde
 client_header=Détails du client à sauvegarder
@@ -125,6 +134,7 @@ client_efileret=Période de conservation des fichiers manquante ou invalide
 client_ejobret=Période de maintien en poste manquante ou invalide
 client_echild=Ce client ne peut pas être supprimé car il est utilisé par $1 
 client_status=Afficher le statut
+
 job_title1=Créer un travail de sauvegarde
 job_title2=Modifier le travail de sauvegarde
 job_header=Détails du travail de sauvegarde
@@ -153,6 +163,7 @@ job_before=Commande avant le travail
 job_after=Commande après le travail
 job_cbefore=Commande avant le travail (sur le client)
 job_cafter=Commande après le travail (sur le client)
+
 schedules_title=Planifications de sauvegarde
 schedules_none=Aucune planification de sauvegarde n'a encore été définie.
 schedules_name=Nom du programme
@@ -161,6 +172,7 @@ schedules_add=Ajoutez une nouvelle planification de sauvegarde.
 schedules_delete=Supprimer les horaires sélectionnés
 schedules_return=liste des horaires
 schedules_derr=Impossible de supprimer les planifications
+
 schedule_title1=Créer une planification de sauvegarde
 schedule_title2=Modifier la planification de sauvegarde
 schedule_header=Détails du calendrier de sauvegarde
@@ -174,6 +186,7 @@ schedule_ename=Nom de programme manquant ou invalide
 schedule_eclash=Un programme portant le même nom existe déjà
 schedule_etimes=Temps de sauvegarde manquants dans la ligne $1 
 schedule_echild=Cette planification ne peut pas être supprimée car elle est utilisée par $1 
+
 backup_title=Exécuter le travail de sauvegarde
 backup_header=Détails du travail de sauvegarde
 backup_job=Travail à exécuter
@@ -184,11 +197,13 @@ backup_eok=.. le travail n'a pas pu être démarré
 backup_running=.. le job de sauvegarde est en cours d'exécution. Une fois terminé, les résultats seront affichés ci-dessous.
 backup_running2=.. le job de sauvegarde a été démarré en arrière-plan.
 backup_failed=.. la sauvegarde ne s'est pas terminée avec succès. Consultez le message d'erreur ci-dessus pour plus de détails.
+
 gbackup_title=Exécuter le travail de sauvegarde du groupe Bacula
 gbackup_run=Démarrage du travail de sauvegarde $1 sur les clients $2.
 gbackup_on=Exécution d'une tâche de sauvegarde sur le client $1  :
 gbackup_header=Détails du travail de sauvegarde du groupe Bacula
 gbackup_jd=$1 (ensemble de fichiers $2 sur le groupe $3)
+
 dirstatus_title=Statut de directeur
 dirstatus_sched=Travaux de sauvegarde planifiés
 dirstatus_name=Nom du travail
@@ -209,12 +224,14 @@ dirstatus_status2=Statut
 dirstatus_donenone=Aucune tâche de sauvegarde n'a été exécutée.
 dirstatus_cancel=Annuler les travaux sélectionnés
 dirstatus_refresh=Rafraîchir la liste
+
 clientstatus_title=Statut du client
 clientstatus_err=Impossible de récupérer l'état de $1 : $2 
 clientstatus_msg=Statut de $1 : $2 
 clientstatus_show=Afficher le statut du client:
 clientstatus_ok=D'accord
 clientstatus_on=$1 (sur $2)
+
 storages_title=Démons de stockage
 storages_none=Aucun démon de stockage n'a encore été défini.
 storages_name=Nom de stockage
@@ -225,6 +242,7 @@ storages_add=Ajoutez un nouveau démon de stockage.
 storages_delete=Supprimer les démons de stockage sélectionnés
 storages_return=liste des démons de stockage
 storages_derr=Impossible de supprimer les démons de stockage
+
 storage_title1=Créer un démon de stockage
 storage_title2=Modifier le démon de stockage
 storage_header=Détails du démon de stockage distant
@@ -248,6 +266,7 @@ storage_emedia=Nom de type de support manquant
 storage_emaxjobs=Nombre maximal de travaux simultanés manquants
 storage_echild=Ce client ne peut pas être supprimé car il est utilisé par $1 
 storage_status=Afficher le statut
+
 devices_title=Périphériques de stockage
 devices_none=Aucun périphérique de stockage n'a encore été défini.
 devices_name=Nom de l'appareil
@@ -257,6 +276,7 @@ devices_add=Ajoutez un nouveau périphérique de stockage.
 devices_delete=Supprimer les périphériques de stockage sélectionnés
 devices_return=liste des périphériques de stockage
 devices_derr=Impossible de supprimer les périphériques de stockage
+
 device_title1=Créer un périphérique de stockage
 device_title2=Modifier le périphérique de stockage
 device_header=Détails du périphérique de stockage de fichiers
@@ -275,11 +295,13 @@ device_eclash=Un périphérique de stockage portant le même nom existe déjà
 device_emedia=Nom de type de support manquant
 device_edevice=Périphérique ou répertoire d'archives manquant ou invalide
 device_echild=Ce client ne peut pas être supprimé car il est utilisé par $1 
+
 storagestatus_title=Statut du démon de stockage
 storagestatus_err=Impossible de récupérer l'état de $1 : $2 
 storagestatus_msg=Statut de $1 : $2 
 storagestatus_show=Afficher l'état du démon de stockage:
 storagestatus_ok=D'accord
+
 label_title=Volume d'étiquette
 label_header=Détails du volume à étiqueter
 label_storage=Démon de stockage à étiqueter
@@ -295,6 +317,7 @@ label_done=.. étiquetage réussi.
 label_epool=.. n'a pas pu trouver de piscine!
 label_err=Échec du libellé
 label_elabel=Aucune étiquette saisie
+
 pools_title=Pools de volumes
 pools_none=Aucun pool de volumes n'a encore été défini.
 pools_name=Nom de la piscine
@@ -304,6 +327,7 @@ pools_add=Ajoutez un nouveau pool de volumes.
 pools_delete=Supprimer les pools de volumes sélectionnés
 pools_return=liste des pools de volumes
 pools_derr=Impossible de supprimer les pools de volumes
+
 pool_title1=Créer un pool de volumes
 pool_title2=Modifier le pool de volumes
 pool_header=Détails du pool de volumes de sauvegarde
@@ -325,6 +349,7 @@ pool_ereten=Période de conservation manquante ou invalide
 pool_status=Afficher les volumes
 pool_autolabel=Étiqueter automatiquement le préfixe des volumes
 pool_maxvolsize=Taille de volume maximale (par exemple 5G pour 5 Gigaoctets)
+
 poolstatus_title=Volumes dans la piscine
 poolstatus_show=Afficher les volumes dans la piscine:
 poolstatus_ok=D'accord
@@ -338,9 +363,11 @@ poolstatus_status=Mode de sauvegarde
 poolstatus_none=Il n'y a actuellement aucun volume dans ce pool de sauvegarde.
 poolstatus_never=Jamais
 poolstatus_delete=Supprimer les volumes sélectionnés
+
 dvolumes_err=Impossible de supprimer les volumes
 dvolumes_enone=Aucune sélection
 dvolumes_ebacula=Erreur Bacula : $1 
+
 mount_title=Monter ou démonter
 mount_header=Options de montage ou de démontage du stockage
 mount_storage=Périphérique de stockage
@@ -358,7 +385,9 @@ unmount_failed=.. le démontage a échoué! Voir le message d'erreur ci-dessus p
 mount_return=forme de montage
 mount_err=Impossible de monter le périphérique de stockage
 mount_eslot=Numéro d'emplacement manquant ou invalide
+
 cancel_err=Échec de l'annulation des travaux
+
 gjobs_title=Emplois Bacula Group Backup
 gjobs_none=Aucun travail de sauvegarde de groupe Bacula n'a encore été défini.
 gjobs_add=Ajoutez un nouveau travail de sauvegarde de groupe Bacula.
@@ -366,10 +395,12 @@ gjobs_delete=Supprimer les travaux sélectionnés
 gjobs_return=liste des métiers du groupe Bacula
 gjobs_derr=Impossible de supprimer les travaux du groupe Bacula
 gjobs_client=Groupe Bacula à sauvegarder
+
 gjob_title1=Créer un travail de sauvegarde du groupe Bacula
 gjob_title2=Modifier le travail de sauvegarde du groupe Bacula
 gjob_header=Détails du travail de sauvegarde du groupe Bacula
 gjob_client=Groupe Bacula à sauvegarder
+
 groups_title=Groupes Bacula
 groups_none=Aucun groupe Bacula n'a encore été sélectionné pour la sauvegarde par Bacula.
 groups_name=Nom de groupe
@@ -383,6 +414,7 @@ groups_derr=Impossible de supprimer des groupes
 groups_noadd=Aucun groupe Bacula n'existe pour être sélectionné pour les sauvegardes.
 groups_info=$1 ($2 membres)
 groups_already=Tous les groupes Bacula ont déjà été ajoutés.
+
 group_title1=Créer un groupe Bacula
 group_title2=Modifier le groupe Bacula
 group_header=Détails du groupe Bacula à sauvegarder
@@ -393,11 +425,13 @@ group_port=Port Bacula FD
 group_err=Échec de l'enregistrement du groupe Bacula
 group_eclash=Un groupe du même nom existe déjà
 group_members=Hôtes du groupe Bacula
+
 sync_title=Synchronisation du groupe Bacula
 sync_header=Options de synchronisation automatique du client du groupe Bacula
 sync_sched=Synchroniser dans les délais?
 sync_schedyes=Oui, parfois sélectionné ci-dessous.
 sync_err=Échec de l'enregistrement de la synchronisation du groupe Bacula
+
 log_create_client=Client de sauvegarde créé $1 
 log_modify_client=Client de sauvegarde modifié $1 
 log_delete_client=Client de sauvegarde supprimé $1 
@@ -456,6 +490,7 @@ log_director=Configuration mondiale enregistrée du directeur Bacula
 log_file=Configuration du démon du fichier Bacula enregistré
 log_storagec=Configuration du démon de stockage Bacula enregistrée
 log_fixpass=Mot de passe du programme de la console Bacula fixe
+
 director_title=Configuration du directeur
 director_header=Options du directeur de Global Bacula
 director_name=Nom du réalisateur
@@ -469,6 +504,7 @@ director_ename=Nom de réalisateur manquant ou invalide
 director_eport=Numéro de port manquant ou invalide
 director_ejobs=Nombre de travaux simultanés manquant ou non valide
 director_edir=Répertoire de travail manquant ou inexistant
+
 tls_enable=Activer le cryptage TLS?
 tls_cert=Fichier de certificat TLS PEM
 tls_key=Fichier de clé TLS PEM
@@ -477,6 +513,7 @@ tls_ecert=Fichier de certificat TLS manquant ou inexistant
 tls_ekey=Fichier de clé TLS manquant ou inexistant
 tls_ecacert=Fichier de certificat TLS CA manquant ou inexistant
 tls_ecerts=Pour que TLS soit activé, les fichiers de certificat, de clé et d'autorité de certification doivent être spécifiés
+
 file_title=Configuration du fichier démon
 file_header=Options du démon de fichier Bacula
 file_name=Nom du démon de fichier
@@ -489,6 +526,7 @@ file_ename=Nom de démon de fichier manquant ou invalide
 file_eport=Numéro de port manquant ou invalide
 file_ejobs=Nombre de travaux simultanés manquant ou non valide
 file_edir=Répertoire de travail manquant ou inexistant
+
 fdirectors_title=Directeurs de démons de fichiers
 fdirectors_none=Aucun administrateur n'a encore été défini.
 fdirectors_name=Nom du réalisateur
@@ -497,6 +535,7 @@ fdirectors_add=Ajoutez un nouveau directeur.
 fdirectors_delete=Supprimer les administrateurs sélectionnés
 fdirectors_return=liste des administrateurs
 fdirectors_derr=Impossible de supprimer les administrateurs
+
 fdirector_title1=Créer un directeur de démon de fichiers
 fdirector_title2=Edit File Daemon Director
 fdirector_header=Détails du contrôle du directeur distant
@@ -508,6 +547,7 @@ fdirector_err=Échec de l'enregistrement du directeur du démon de fichier
 fdirector_ename=Nom du réalisateur manquant
 fdirector_eclash=Un réalisateur du même nom existe déjà
 fdirector_epass=Mot de passe manquant
+
 sdirectors_title=Directeurs de démon de stockage
 sdirectors_none=Aucun administrateur n'a encore été défini.
 sdirectors_name=Nom du réalisateur
@@ -516,6 +556,7 @@ sdirectors_add=Ajoutez un nouveau directeur.
 sdirectors_delete=Supprimer les administrateurs sélectionnés
 sdirectors_return=liste des administrateurs
 sdirectors_derr=Impossible de supprimer les administrateurs
+
 sdirector_title1=Créer un directeur de démon de stockage
 sdirector_title2=Modifier le directeur du démon de stockage
 sdirector_header=Détails du contrôle du directeur distant
@@ -527,6 +568,7 @@ sdirector_err=Échec de l'enregistrement du directeur du démon de stockage
 sdirector_ename=Nom du réalisateur manquant
 sdirector_eclash=Un réalisateur du même nom existe déjà
 sdirector_epass=Mot de passe manquant
+
 storagec_title=Configuration du démon de stockage
 storagec_header=Options du démon de stockage Bacula
 storagec_name=Nom du démon
@@ -539,6 +581,7 @@ storagec_ename=Nom de démon de stockage manquant ou non valide
 storagec_eport=Numéro de port manquant ou invalide
 storagec_ejobs=Nombre de travaux simultanés manquant ou non valide
 storagec_edir=Répertoire de travail manquant ou inexistant
+
 chooser_title=Sélectionnez le calendrier
 chooser_monthsh=Mois pour exécuter
 chooser_months=Mois de l'année
@@ -563,6 +606,7 @@ chooser_emonthsrange=Les mois sélectionnés doivent être contigus
 chooser_eweekdaysrange=Les jours de la semaine sélectionnés doivent être contigus
 chooser_eweekdaynumsrange=Les numéros de semaine sélectionnés doivent être contigus
 chooser_edaysrange=Les jours sélectionnés du mois doivent être contigus
+
 restore_title=Restaurer la sauvegarde
 restore_title2=Restaurer la sauvegarde dans le groupe Bacula
 restore_title3=Restaurer la sauvegarde du groupe Bacula

@@ -29,12 +29,14 @@ index_fd=Datei Daemon Konfiguration
 index_groups=Bacula Gruppen Konfiguration
 index_actions=Backup und Wiederherstellungsaktionen
 index_ocmin=Beigesteuert von <a href=$2 target=_new>Linmin <img align=middle border=0 src='$1'></a>
+
 connect_emysql=Konnte den Datenbank-DBI-Treiber $1 nicht laden
 connect_elogin=Konnte nicht in die Datenbank $1 einloggen : $2.
 connect_equery=In der Datenbank $1 scheinen keine Bacula-Tabellen zu sein.
 connect_equery2=Wahrscheinlich ist das SQLite Perlmodul zu aktuell und unterstützt ältere von Bacula genutzte SQLite-Datenbanken nicht.
 connect_equery3=In der Datenbank $1 scheinen keine OC-Bacula-Gruppentabellen zu sein.
 esql=SQL-Fehler : $1
+
 check_edir=Das Bacula-Konfigurationsverzeichnis $1 wurde auf Ihrem System nicht gefunden.
 check_ebacula=Das Bacula-Kontrollkomanndo $1 wurde nicht gefunden.
 check_econsole=Das Bacula-Konsolenkommando $1 wurde nicht gefunden.
@@ -43,12 +45,14 @@ check_eclient=Dieses System scheint mehr ein <a href='$2'>Bacula-Client</a> als 
 check_econfigs=Es wurden keine Bacula-Konfigurationsdateien in $1 gefunden
 check_eservers=Es wurden keine Webmin-Servergruppen definiert.
 check_engmod=Das OpenCountry Bacula-Gruppenmodul ist nicht installiert.
+
 proc_bacula-sd=Storage Daemon
 proc_bacula-fd=Datei Daemon
 proc_bacula-dir=Bacula Director Daemon
 proc_bareos-sd=Speicher Daemon
 proc_bareos-fd=Datei Daemon
 proc_bareos-dir=Bacula Director Daemon
+
 stop_err=Fehlgeschlagen Bacula zu stoppen
 start_err=Fehlgeschlagen Bacula zu starten
 start_einit=Keine Init-Skript für $1 gefunden
@@ -57,6 +61,7 @@ restart_err=Fehlgeschlagen Bacula neu zu starten
 apply_err=Fehler beim Anwenden der Konfiguration
 apply_failed=Ein Konfigurationsfehler wurde entdeckt
 apply_problem=Fehler beim Anwenden der Konfiguration : $1
+
 jobs_title=Backup-Jobs
 jobs_none=Keine Backup-Job wurden bisher definiert.
 jobs_name=Job Name
@@ -69,6 +74,7 @@ jobs_add=Füge einen neuen Backup-Job hinzu.
 jobs_delete=Lösche ausgewählte Jobs
 jobs_return=Liste an Jobs
 jobs_derr=Fehlgeschlagen Jobs zu löschen
+
 filesets_title=Dateiauswahlen
 filesets_none=Es wurden bisher keine Dateiauswahlen eingerichtet.
 filesets_name=Dateiauswahl-Name
@@ -78,6 +84,7 @@ filesets_delete=Lösche ausgewählte Dateiauswahlen
 filesets_return=Liste der Dateiauswahlen
 filesets_derr=Konnte Dateiauswahlen nicht löschen
 filesets_ednone=Nichts ausgewählt
+
 fileset_title1=Erzeuge Dateiauswahl
 fileset_title2=Bearbeite Dateiauswahl
 fileset_header=Backup-Dateiauswahl-Eigenschaften
@@ -97,6 +104,7 @@ fileset_gzipdef=&lt;Standard Kompressionslevel&gt;
 fileset_lzo=LZO-Kompression
 fileset_gzip=Gzip Level $1
 fileset_onefs=Limitiere Backup auf ein Dateisystem?
+
 clients_title=Backup-Clients
 clients_none=Es wurden bisher keine Backup-Clients definiert.
 clients_name=Client-Name
@@ -106,6 +114,7 @@ clients_add=Füge eine neuen Backup-Client hnzu.
 clients_delete=Lösche ausgewählte Clients
 clients_return=Liste der Clients
 clients_derr=Konnte ausgewählte Clients nicht löschen
+
 client_title1=Erzeuge Backup-Client
 client_title2=Bearbeite Backup-Client
 client_header=Details des Clients für die Sicherung
@@ -128,6 +137,7 @@ client_efileret=Fehlende oder ungültige Laufzeit
 client_ejobret=Fehlende oder ungültige Auftragslaufzeit
 client_echild=Dieser Client kann nicht gelöscht werden, da er von $1 genutzt wird.
 client_status=Zeige Status
+
 job_title1=Erstelle Backup-Job
 job_title2=Editiere Backup-Job
 job_header=Backup-Job Details
@@ -156,6 +166,7 @@ job_before=Befehl vor Job
 job_after=Befehl nach Job
 job_cbefore=Befehl vor Job (auf Client)
 job_cafter=Befehl nach Job (auf Client)
+
 schedules_title=Backup-Zeitpläne
 schedules_none=Keine Sicherungspläne wurden bisher festgelegt.
 schedules_name=Zeitplan Name
@@ -164,6 +175,7 @@ schedules_add=Füge einen neuen Backup-Zeitplan hinzu.
 schedules_delete=Lösche ausgewählte Zeitpläne
 schedules_return=Liste der Zeitpläne
 schedules_derr=Fehlgeschlagen Zeitpläne zu löschen
+
 schedule_title1=Erstelle Backup-Zeitplan
 schedule_title2=Editiere Backup-Zeitplan
 schedule_header=Sicherungszeitplan Details
@@ -177,6 +189,7 @@ schedule_ename=Fehlender oder ungültiger Zeitplan Name
 schedule_eclash=Ein Zeitplan mit dem selben Namen existiert bereits
 schedule_etimes=Fehlende Backup-Zeiten in Zeile $1
 schedule_echild=Dieser Zeitplan kann nicht gelöscht werden, da es von $1 verwendet wird
+
 backup_title=Starte Backupauftrag
 backup_header=Backupauftragdetails
 backup_job=Auftrag zum Ausführen
@@ -191,11 +204,13 @@ backup_running=.. der Backupauftrag läuft nun. Wenn er vollständig ist, dann w
 backup_running2=.. der Backupauftrag wurde im Hintergrund gestartet.
 backup_done=.. Backup komplett.
 backup_failed=.. das Backup konnte nicht erfolgreich durchgeführt werden. Lesen Sie die Fehlermeldung oben, um mehr zu erfahren.
+
 gbackup_title=Starte Bacula-Gruppensicherungsauftrag
 gbackup_run=Starte Backupauftrag $1 auf $2 Clients ..
 gbackup_on=Laufender Backupauftrag auf Client $1 :
 gbackup_header=Eigenschaften des Bacula-Gruppensicherungsauftrages
 gbackup_jd=$1 (Dateiauswahl $2 auf Gruppe $3)
+
 dirstatus_title=Serverstatus
 dirstatus_sched=Zeitgesteuerte Backupaufträge
 dirstatus_name=Auftragsname
@@ -216,12 +231,14 @@ dirstatus_status2=Status
 dirstatus_donenone=Keine Backupaufträge sind gelaufen.
 dirstatus_cancel=Ausgewählte Aufträge abbrechen
 dirstatus_refresh=Liste aktualisieren
+
 clientstatus_title=Client-Status
 clientstatus_err=Konnte Status nicht erhalten von $1 : $2
 clientstatus_msg=Status von $1 : $2
 clientstatus_show=Zeige Status des Clients:
 clientstatus_ok=OK
 clientstatus_on=$1 (auf $2)
+
 storages_title=Storage Daemons
 storages_none=Keine Speicher-Daemons wurden bisher definiert.
 storages_name=Storage Name
@@ -232,6 +249,7 @@ storages_add=Fügen einen neuen Storage Daemon hinzu.
 storages_delete=Lösche ausgewählten Storage Daemon
 storages_return=Liste an Speicher-Daemons
 storages_derr=Fehlgeschlagen Speicher-Daemons zu löschen
+
 storage_title1=Erstelle Storage Daemon
 storage_title2=Editiere Storage Daemon
 storage_header=Details vom entfernten Speicher Daemon
@@ -255,6 +273,7 @@ storage_emedia=Fehlender Media Typ Name
 storage_emaxjobs=Fehlende maximale gleichzeitige Jobs
 storage_echild=Dieser Client kann nicht gelöscht werden, da dieser von $1 verwendet wird
 storage_status=Zeige Status
+
 devices_title=Speichergerät
 devices_none=Es wurden bisher keine Speichergeräte angelegt.
 devices_name=Gerätename
@@ -264,6 +283,7 @@ devices_add=Füge neues Speichergerät hinzu.
 devices_delete=Lösche ausgewählte Speichergerät
 devices_return=Liste der Speichergeräte
 devices_derr=Konnte Speichergeräte nicht löschen
+
 device_title1=Erzeuge Speichergerät
 device_title2=Bearbeite Speichergerät
 device_header=Eigenschaften des Dateispeichergerätes
@@ -282,11 +302,13 @@ device_eclash=Ein Speichergerät mit dem gleichen Namen existiert bereits
 device_emedia=Fehlender Medientypname
 device_edevice=Fehlendes oder ungültiges Archivgerät oder -verzeichnis
 device_echild=Dieser Client kann nicht gelöscht werden, da er von $1 genutzt wird.
+
 storagestatus_title=Storage Daemon Status
 storagestatus_err=Konnte den Status von $1 : $2 nicht empfangen
 storagestatus_msg=Status von $1 : $2
 storagestatus_show=Zeige Status des Storage Daemon:
 storagestatus_ok=OK
+
 label_title=Label Volume
 label_header=Details von Volumen zu Label
 label_storage=Speicher-Daemon zum labeln
@@ -302,6 +324,7 @@ label_done=.. Kennzeichnung erfolgreich.
 label_epool=.. konnte Pool nicht finden!
 label_err=Label fehlgeschlagen
 label_elabel=Kein Label eingegeben
+
 pools_title=Volume Pools
 pools_none=Keine Volume Pools wurden bisher definiert.
 pools_name=Pool Name
@@ -311,6 +334,7 @@ pools_add=Füge einen neuen Volume Pool hinzu.
 pools_delete=Lösche ausgewählte Datenträger-Pools
 pools_return=Liste an Volume Pools
 pools_derr=Fehlgeschlagen Volume-Pools zu löschen
+
 pool_title1=Erstelle Volume Pool
 pool_title2=Editiere Volume Pool
 pool_header=Details vom Backup Volume Pool
@@ -332,6 +356,7 @@ pool_ereten=Fehlende oder ungültige Aufbewahrungsfrist
 pool_status=Zeige Volumes
 pool_autolabel=Automatisch Volumes Präfix beschriften
 pool_maxvolsize=Maximale Volume Größe (z.B. 5G für 5 Gigabyte)
+
 poolstatus_title=Volumes in Pool
 poolstatus_show=Zeige Volumes in Pool:
 poolstatus_ok=OK
@@ -345,9 +370,11 @@ poolstatus_status=Backupmodus
 poolstatus_none=Es sind keine Volumes momentan in diesem Sicherungspool.
 poolstatus_never=Niemals
 poolstatus_delete=Lösche ausgewählte Volumes
+
 dvolumes_err=Konnte Volume nicht löschen
 dvolumes_enone=Nichts ausgewählt
 dvolumes_ebacula=Bacula Fehler : $1
+
 mount_title=Mount oder Unmount
 mount_header=Speicher mount oder unmount Optionen
 mount_storage=Speichergerät
@@ -365,8 +392,10 @@ unmount_failed=.. unmount fehlgeschlagen! Siehe die Fehlermeldung für den Grund
 mount_return=montiert von
 mount_err=Fehlgeschlagen Speicher-Gerät zu mounten
 mount_eslot=Fehlende oder ungültige Slot Nummer
+
 cancel_err=Fehler beim Abbrechen von Aufträgen
 cancel_enone=Nichts ausgewählt
+
 gjobs_title=Bacula-Gruppensicherungsaufträge
 gjobs_none=Es wurden bisher keine Bacula-Gruppensicherungsaufträge definiert.
 gjobs_add=Füge einen neuen Bacula-Gruppensicherungsauftrag hinzu.
@@ -374,10 +403,12 @@ gjobs_delete=Lösche ausgewählte Aufträge
 gjobs_return=Liste der Bacula-Gruppensicherungsaufträge
 gjobs_derr=Konnte Bacula-Gruppensicherungsauftrag nicht löschen
 gjobs_client=Bacula-Gruppe zum Sichern
+
 gjob_title1=Erzeuge Bacula-Gruppensicherungsauftrag
 gjob_title2=Bearbeite Bacula-Gruppensicherungsauftrag
 gjob_header=Eigenschaften des Bacula-Gruppensicherungsauftrages
 gjob_client=Bacula-Gruppen zum Sichern
+
 groups_title=Bacula Gruppen
 groups_none=Keine Bacula Gruppen wurden bisher für die Sicherung von Bacula ausgewählt.
 groups_name=Gruppenname
@@ -391,6 +422,7 @@ groups_derr=Fehlgeschlagen Gruppen zu löschen
 groups_noadd=Keine Bacula Gruppen existieren, die für Backups ausgewählt werden können.
 groups_info=$1 ($2 Mitglieder)
 groups_already=Alle Bacula Gruppen wurden bereits hinzugefügt.
+
 group_title1=Erstelle Bacula Gruppe
 group_title2=Editiere Bacula Gruppe
 group_header=Details der Bacula Gruppen zum backuppen
@@ -401,11 +433,13 @@ group_port=Bacula FD Port
 group_err=Fehlgeschlagen die Bacula Gruppe zu speichern
 group_eclash=Eine Gruppe mit dem gleichen Namen existiert bereits
 group_members=Hosts in Bacula Gruppe
+
 sync_title=Bacula-Gruppe Synchronisation
 sync_header=Automatische Bacula Gruppe Client Synchronisierungsoptionen
 sync_sched=Synchronisieren nach Zeitplan?
 sync_schedyes=Ja, zu Zeiten ausgewählt unten ..
 sync_err=Konnte Bacula Gruppe Synchronisation nicht speichern
+
 log_create_client=Backup-Client $1 erstellt
 log_modify_client=Backup Client $1 modifiziert
 log_delete_client=Backup Client $1 gelöscht
@@ -464,6 +498,7 @@ log_director=Globale Bacula-Director-Konfiguration gespeichert
 log_file=Bacula Datei Daemonkonfiguration gespeichert
 log_storagec=Bacula Speicher Daemon-Konfiguration gespeichert
 log_fixpass=Bacula Konsolenprogramm Passwort behoben
+
 director_title=Serverkonfiguration
 director_header=Globale Bacula-Serveroptionen
 director_name=Servername
@@ -477,6 +512,7 @@ director_ename=Fehlender oder ungültiger Servername
 director_eport=Fehlende oder ungültige Portnummer
 director_ejobs=Fehlende oder ungültige Anzahl gleichzeitiger Aufträge
 director_edir=Fehlendes oder nicht-existentes Arbeitsverzeichnis
+
 tls_enable=Aktiviere TLS Verschlüsselung?
 tls_require=Akzeptiere nur TLS Verbindungen?
 tls_verify=Überprüfe TLS Clients?
@@ -488,6 +524,7 @@ tls_ecert=Fehlende oder nicht vorhandene TLS-Zertifikats-Datei
 tls_ekey=Fehlende oder nicht vorhandene TLS-Schlüssel-Datei
 tls_ecacert=Fehlende oder nicht vorhandene TLS-CA-Zertifikats-Datei
 tls_ecerts=Um TLS zu aktivieren, müssen Zertifikat, Schlüssel und CA-Dateien angegeben werden
+
 file_title=Dateidaemon-Konfiguration
 file_header=Bacula Dateidaemon-Optionen
 file_name=Dateidaemon-Name
@@ -500,6 +537,7 @@ file_ename=Fehlender oder ungültiger Dateidaemon-Name
 file_eport=Fehlende oder ungültige Portnummer
 file_ejobs=Fehlende oder ungültige Anzahl gleichzeitiger Aufträge
 file_edir=Fehlendes oder nicht-existentes Arbeitsverzeichnis
+
 fdirectors_title=Dateidaemon-Server
 fdirectors_none=Es wurden bisher keine Server definiert.
 fdirectors_name=Servername
@@ -508,6 +546,7 @@ fdirectors_add=Erstelle neuen Server
 fdirectors_delete=Lösche ausgewählte Server
 fdirectors_return=Liste der Server
 fdirectors_derr=Konnte Server nicht löschen
+
 fdirector_title1=Erzeuge Dateidaemon-Server
 fdirector_title2=Bearbeite Dateidaemon-Server
 fdirector_header=Details des kontrollierenden entfernten Servers
@@ -519,6 +558,7 @@ fdirector_err=Fehlender Dateidaemon-Server
 fdirector_ename=Fehlender Servername
 fdirector_eclash=Ein Server mit dem gleichen Namen existiert bereits
 fdirector_epass=Fehlendes Passwort
+
 sdirectors_title=Storage Daemon Director
 sdirectors_none=Keine Directors wurden bisher definiert.
 sdirectors_name=Director Name
@@ -527,6 +567,7 @@ sdirectors_add=Einen neuen Director hinzufügen.
 sdirectors_delete=Lösche ausgewählte Directors
 sdirectors_return=Liste an Directors
 sdirectors_derr=Fehlgeschlagen Directors zu löschen
+
 sdirector_title1=Erstelle Storage Daemon Director
 sdirector_title2=Editiere Storage Daemon Director
 sdirector_header=Details des Steuerung Remote Director
@@ -538,6 +579,7 @@ sdirector_err=Fehlgeschlagen Speicherdaemon-Direktor zu speichern
 sdirector_ename=Fehlender Director Name
 sdirector_eclash=Ein Direktor mit dem gleichen Namen ist bereits vorhanden
 sdirector_epass=Fehlendes Passwort
+
 storagec_title=Storage Daemon Konfiguration
 storagec_header=Bacula Storage Daemon Optionen
 storagec_name=Daemon Name
@@ -550,6 +592,7 @@ storagec_ename=Fehlender oder ungültiger Speicher-Daemon Namen
 storagec_eport=Fehlende oder ungültige Portnummer
 storagec_ejobs=Fehlende oder ungültige Anzahl von gleichzeitigen Jobs
 storagec_edir=Fehlendes oder nicht vorhandenes Arbeitsverzeichnis
+
 chooser_title=Wähle Zeitplan
 chooser_monthsh=Monate zum Ausführen
 chooser_months=Monate des Jahres
@@ -574,11 +617,13 @@ chooser_emonthsrange=Ausgewählte Monate müssen fortlaufend sein
 chooser_eweekdaysrange=Ausgewählte Wochentage müssen fortlaufend sein
 chooser_eweekdaynumsrange=Ausgewählte Wochentagnummern müssen fortlaufend sein
 chooser_edaysrange=Ausgewählte Tage eines Monats müssen fortlaufend sein
+
 weekdaynum_1=Erste
 weekdaynum_2=Zweite
 weekdaynum_3=Dritte
 weekdaynum_4=Vierte
 weekdaynum_5=Fünfte
+
 restore_title=Stelle Backup wieder her
 restore_title2=Wiederherstellung Backup zur Bacula-Gruppe
 restore_title3=Wiederherstellung Bacula-Backup-Gruppe

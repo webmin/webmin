@@ -11,6 +11,7 @@ index_when=Ja, $1
 index_act=Actie
 index_exec=Uitvoeren
 index_delete=Verwijder Geselecteerde Kopieën
+
 edit_title=Bewerk Cluster Kopie
 create_title=Cluster Kopie Aanmaken
 edit_header=Cluster kopie details
@@ -31,12 +32,14 @@ edit_run=Nu kopiëren
 edit_return=cluster kopie
 edit_email=Uitvoer e-mailen naar
 edit_none=Niemand
+
 save_err=Fout bij het opslaan van cluster cron taak
 save_efiles=Geen te kopiëren bestanden opgegeven
 save_edest=Ontbrekende bestemming directory
 save_eservers=Geen servers opgegeven om naar te kopiëren
 save_efile=File om te kopiëren '$1' is geen absoluut pad
 save_eemail=Ontbrekend of ongeldig email adres
+
 exec_title=Files Kopiëren
 exec_files1=Bezig met kopiëren van $1 bestanden naar geselecteerde servers $2 ..
 exec_files2=Bezig met kopiëren van $1 naar geselecteerde servers $2 ..
@@ -50,12 +53,15 @@ exec_not=Fout bij het kopiëren van de volgende bestanden naar $1 :
 exec_cmd=Uitvoer van post-kopie opdracht op $1 :
 exec_before=Uitvoer van pre-kopie opdracht op $1 :
 exec_on=Mislukt om uit te voeren op $1 : $2
+
 log_create=Kopie opdracht aangemaakt voor $1 naar $2 servers
 log_modify=Kopie opdracht gewijzigd voor $1 naar $2 servers
 log_delete=Kopie opdracht verwijderd voor $1 naar $2 servers
 log_exec=$1 gekopieerd naar $2 servers
 log_deletes=$1 kopieën verwijdert
+
 email_subject_succeeded=Cluster kopie van $1 succesvol
 email_subject_failed=Cluster kopie van $1 mislukt
+
 delete_err=Mislukt om kopieën te verwijderen
 delete_enone=Niets geselecteerd

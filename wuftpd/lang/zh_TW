@@ -7,6 +7,7 @@ index_applymsg=按下這個按鈕以套用目前的組態. 這將停止並重新
 index_start=啟動伺服器
 index_startmsg=按下這個按鈕以用目前的組態啟動 FTP 伺服器. 您也可以經由<a href='$1'>網際網路服務與協定</a>將這個伺服器組態為在需要時自動啟動
 index_return=FTP 伺服器選項
+
 class_title=使用者與等級
 class_header=使用者等級與使用者選項
 class_class=使用者等級
@@ -29,6 +30,7 @@ class_err=無法儲存使用者等級
 class_eclass='$1' 不是一個有效的階級名稱
 class_etypes=階級 '$1' 沒有選擇使用者類別
 class_eaddrs=階級 '$1' 沒有輸入位址
+
 message_title=訊息與標題
 message_header=訊息, 標題與讀我檔
 message_message=訊息檔
@@ -57,6 +59,7 @@ message_eclass=階級 '$1' 不存在
 message_ebanner='$1' 不是一個有效的登入標題檔案
 message_ehostname=遺失或錯誤的主機名稱
 message_eemail=遺失或錯誤的電子郵件位址
+
 acl_title=限制與存取控制
 acl_header=限制與存取控制選項
 acl_deny=拒絕存取來自
@@ -103,6 +106,7 @@ acl_elmsg='$1' 不是一個有效的錯誤訊息檔案
 acl_efbcount='$1' 不是一個有效的檔案或位元組數目
 acl_elimit='$1' 不是一個有效的時間限制
 acl_efails='$1' 不是一個有效的登入錯誤次數
+
 net_title=網路
 net_header=網路選項
 net_tcp=TCP 窗口大小
@@ -120,6 +124,7 @@ net_eip='$1' 不是一個有效的 IP 位址
 net_enet='$1' 不是一個有效的網路位址
 net_ecidr='$1' 不是一個有效的網路位元數字
 net_eport='$1' 不是一個有效的通訊埠號碼
+
 log_title=紀錄
 log_header=紀錄選項
 log_commands=紀錄使用者類別...的所有命令
@@ -136,6 +141,7 @@ log_to=紀錄傳送到
 log_syslog=系統紀錄
 log_xferlog=XFER 紀錄檔
 log_err=無法儲存紀錄選項
+
 alias_title=別名與路徑
 alias_header=別名與路徑選項
 alias_alias=CD 目錄別名
@@ -146,6 +152,7 @@ alias_err=無法儲存別名與路徑
 alias_efrom='$1' 不是一個有效的別名名稱
 alias_eto='$1' 不是一個有效的別名目錄
 alias_ecdpath='$1' 不是一個有效的 CD 搜尋目錄
+
 anon_title=匿名者 FTP
 anon_eftp=警告 - 您的系統沒有 <tt>ftp</tt> 使用者, 所以匿名者 FTP 無法被正確的組態.
 anon_header=匿名者 FTP 選項
@@ -168,6 +175,7 @@ anon_uids=給 Unix 使用者
 anon_err=無法儲存匿名者 FTP 選項
 anon_edir='$1' 不是一個有效的目錄
 anon_egroup='$1' 不是一個有效的群組
+
 perm_title=權限
 perm_header=權限選項
 perm_perms=指令的限制
@@ -189,7 +197,9 @@ perm_err=無法儲存權限
 perm_echar='$1' 不是一個有效的正規表示式字元集
 perm_etypes=沒有選擇使用者類別
 perm_emesg='$1' 不是一個有效的錯誤訊息檔案
+
 host_title=主機存取控制
+
 misc_title=其他選項
 misc_header=其他選項
 misc_lslong=長列表指令

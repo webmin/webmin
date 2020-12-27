@@ -12,6 +12,7 @@ index_return=zoznam súborových systémov
 index_none=Nemáte prístup k pripojeným súborovým systémom.
 index_mount2=Pripojiť pomocou hesla:
 index_root=Koreňový súborový systém
+
 edit_title=Upraviť Mount
 create_title=Vytvorte Mount
 edit_err=Pripojenie sa nepodarilo upraviť
@@ -58,6 +59,7 @@ edit_ecannot=Nemáte oprávnenie upravovať tento systém súborov
 edit_ecannot2=Nemáte povolenie pridávať nové súborové systémy
 edit_3_or_lower=3 (alebo nižšie)
 edit_advanced=Pokročilý mód
+
 save_err=Uloženie pripojenia zlyhalo
 save_edir=$1 nie je adresár
 save_edirname='$1' nie je platný názov adresára
@@ -74,8 +76,10 @@ save_apply=Použiť na trvalý zoznam
 save_fapply=Force Un-Mount
 save_eremount=Suma zlyhala : $1
 save_enone=Nevybrali ste si uložiť alebo pripojiť
+
 swap_err=Nepodarilo sa vytvoriť odkladací súbor
 swap_esize='$1' nie je platná veľkosť
+
 nfs_server=Vyberte server NFS ..
 nfs_select=Vyberte server NFS, z ktorého sa chcete pripojiť.
 nfs_ip=IP adresa
@@ -87,6 +91,7 @@ nfs_seldir=Vyberte adresár NFS, ktorý chcete pripojiť.
 nfs_seldirv4=V prípade pripojenia NFSv4 by ste mali zvoliť '/'
 nfs_dir=adresár
 nfs_clients=klienti
+
 smb_choose=Vyberte server CIFS.
 smb_elist=Nepodarilo sa načítať zoznam serverov z $1. Možno server nepovoľuje prehliadanie
 smb_eworkgroup=Na stránke Konfigurácia modulu nie je nastavená žiadna pracovná skupina
@@ -103,6 +108,7 @@ smb_sel2=Vyberte zdieľanú zložku.
 smb_share=zdieľam
 smb_comment=komentár
 smb_noshares=Na serveri nie sú dostupné žiadne zdieľané súbory $1
+
 solaris_scsidev=Radič SCSI $1 target $2 unit $3 partition $4
 solaris_idedev=Ovládač IDE $1 drive $2 partition $3
 solaris_mddev=Zariadenie RAID $1
@@ -240,6 +246,7 @@ solaris_efstyp2=Nepodarilo sa skontrolovať typ súborového systému : $1
 solaris_ecachedir='$1' nie je platný adresár vyrovnávacej pamäte
 solaris_efmode='$1' nie je platný režim osmičkového súboru
 solaris_edmode='$1' nie je platný režim osmičkového adresára
+
 linux_eamd=AMD zlyhalo
 linux_eauto=Automatické zlyhanie zlyhalo : $1
 linux_esmbconn=Nepodarilo sa pripojiť k serveru
@@ -361,6 +368,7 @@ linux_noenforce=Áno, ale nevymáhajú sa
 linux_df=Zahrnúť do veľkosti súborového systému vyhradené bloky?
 linux_noatime=Vyhnúť sa aktualizácii posledných prístupových časov?
 linux_netdev=Počkajte, kým nebudú sieťové rozhrania zapnuté?
+linux_nofail=Pokračovať v zavádzaní, aj keď sa pripojenie nepodarí?
 linux_ecname=Chýbajúci alebo neplatný názov netbios klienta
 linux_emname=Chýba alebo je neplatný názov hostiteľa servera alebo adresa IP
 linux_bind=Pôvodný adresár
@@ -386,6 +394,7 @@ linux_nounix=Zakázať rozšírenia CIFS Unix?
 linux_noserverino=Generovať čísla inode na strane klienta?
 linux_cvers=Verzia CIFS
 linux_ecvers=Verzia CIFS musí byť číslo
+
 log_mount=Pripojené $3
 log_mount_l=Pripojený $2 $1 na $3
 log_umount=Neprijatý $3
@@ -399,7 +408,9 @@ log_modify_l=Upravené pripojenie $2 $1 na $3
 log_delete=Odstránené pripojenie $3
 log_delete_l=Odstránené $2 mount $1 na $3
 log_swap=Vytvorený odkladací súbor $1
+
 unmount_err=Nepodarilo sa odpojiť $1
+
 mount_err=Nepodarilo sa pripojiť $1
 irix_nhost=Názov hostiteľa NFS
 irix_ndir=Adresár NFS
@@ -430,6 +441,7 @@ irix_rock=Používate rozšírenia Rock Ridge?
 irix_nofsck=Skontrolujte súborový systém pri štarte?
 irix_auto=Zdroj automatu
 irix_automap=Mapový súbor
+
 irix_ehost=Hostiteľ '$1' neexistuje
 irix_eloss=Hostiteľ '$1' je mimo prevádzky
 irix_eshowmount=Hostiteľ '$1' nepodporuje NFS
@@ -447,9 +459,11 @@ irix_efstyp2=Nepodarilo sa získať typ súborového systému $1 : $2
 irix_efstyp=Typ súborového systému v $1 je $2, nie $3
 irix_eautomap=Súbor mapy automatu '$1' neexistuje
 irix_eauthmap2=Chýbajúci alebo neplatný súbor mapy automatu
+
 irix_devroot=Root partition
 irix_devswap=Zameniť oddiel
 irix_autohosts=Všetky vývozy NFS
+
 acl_only=Povoliť iba montáž a demontáž?
 acl_fs=Súborové systémy, ktoré je možné upravovať
 acl_types=Typy súborových systémov, ktoré je možné použiť
@@ -462,8 +476,10 @@ acl_hide=Skryť neupraviteľné súborové systémy?
 acl_simple=Zobraziť jednoduchý formulár na pripojenie?
 acl_simopts=Zobraziť zjednodušené možnosti súborového systému?
 acl_browse=Zobraziť tlačidlá zdieľania a zdieľania súborov?
+
 egcc=Kompilátor GCC alebo CC potrebný na vytvorenie programu na výpis pripojených súborových systémov vo vašom systéme nie je k dispozícii.
 ecompile=Vyskytla sa chyba pri vytváraní programu na zaznamenávanie pripojených súborových systémov vo vašom systéme : $1
+
 freebsd_eaddr=Chýba alebo je neplatná adresa servera
 freebsd_eworkgroup=Chýba alebo je neplatná pracovná skupina
 freebsd_ide=Pevný disk IDE
@@ -477,8 +493,10 @@ freebsd_idedev=Zariadenie IDE $1, plátok $2, oddiel $3
 freebsd_scsidev=Zariadenie SCSI $1, plátok $2, oddiel $3
 freebsd_edevpath=Ostatné zariadenie musí byť absolútnou cestou, napríklad <tt>/dev/cdrom</tt>
 freebsd_edevfile=Súbor zariadenia „$1“ neexistuje
+
 cswap_file=Odkladací súbor $1 neexistuje.
 cswap_size=Vytvorte a pripojte odkladací súbor s veľkosťou
+
 acl_sysinfo=Zobraziť dostupné údaje o disku na informačnom paneli?
 sysinfo_total=Celkom
 sysinfo_dev=ID zariadenia

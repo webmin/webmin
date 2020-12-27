@@ -1,9 +1,11 @@
 index_title=Configuració de Kerberos5
 index_econf=No s'ha trobat al sistema el fitxer de configuració $1 de Kerberos5. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+
 logging=Fitxers de registre
 default_log=Fitxer de registre per defecte
 kdc_log=Fitxer de registre KDC
 admin_log=Fitxer de registre del servidor d'administració
+
 libdefaults=Configuració per Defecte
 dns_kdc=Utilitza DNS per consultar KDC
 default_realm=Reialme
@@ -11,4 +13,5 @@ domain=Nom de domini
 default_kdc=KDC
 default_admin=Servidor d'administració
 default_domain=Nom de domini per defecte
+
 save=Actualitza la Configuració

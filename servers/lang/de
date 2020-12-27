@@ -22,6 +22,7 @@ index_auto=Automatisch Server finden
 index_automsg=Klicke auf diese Schaltfläche, um das automatische, periodische Suchen neuer Webmin-Server in Ihrem Netzwerk einrichten.
 index_search=Zeige passende Server:
 index_ok=Suche
+
 edit_title=Server bearbeiten
 create_title=Server registrieren
 edit_details=Servereigenschaften
@@ -57,6 +58,7 @@ edit_baduser=Anmeldung abgelehnt
 edit_invalid=Benutzer kann kein RPC ausführen
 edit_version=Laufender Webmin $1
 edit_same=Nur verfügbar, nicht in Session-Authentifizierung-Modus, und wenn Sie das Passwort zur Verfügung gestellt wird Webmin-Programme.
+
 save_err=Fehler beim Speichern des Servers
 save_ehost=Fehlender oder ungültiger Hostname
 save_ehost2=Host existiert nicht
@@ -67,6 +69,7 @@ save_epass=Fehlendes Passwort
 save_egroup=Fehlender Gruppenname
 save_elogin=Ungültiger Benutzername oder Passwort für Host
 save_egroup2=Ungültiger neuer Gruppenname
+
 find_title=Server suchen
 find_new=Neuen Server bei $1 gefunden
 find_but=Neuen Server bei $1 gefunden, aber die Authentifizierung ist fehlgeschlagen : $2
@@ -81,16 +84,20 @@ find_ecannot=Sie sind nicht berechtigt, Server zu suchen!
 find_scanning=Scanne nach Servern im Netzwerk $1 ..
 find_broading=Suche nach Servern mit Adressen $1 ..
 find_eport=Fehlende oder ungültige Portnummer
+
 log_modify=Server $1 verändert
 log_create=Server $1 eingetragen
 log_delete=Server $1 gelöscht
 log_find=Server $1 gefunden
 log_deletes=$1 Server gelöscht
+
 link_elogin=Fehler beim Anmelden bei $1 als $2
 link_ecannot=Sie sind nicht berechtigt, diesen Server zu benutzen!
 link_essl=Sie haben die Perl 'Net::SSLeay'-Bibliothek nicht installiert!
 link_eautologin=Ungültiger Benutzername oder Passwort für $1. <a href='$2'>Erneut versuchen?</a>
+
 lib_other=Andere
+
 acl_edit=Kann Server bearbeiten
 acl_find=Kann Server suchen
 acl_servers=Kann Server benutzen
@@ -102,6 +109,7 @@ acl_forcefast=Erzwinge schnellen RPC Modus standardmäßig?
 acl_forcetype=Erzwinge Betriebssystem-Typ als Standard?
 acl_forcelink=Erzwinge Login-Typ auf Standard?
 acl_links=Kann über Server verbinden?
+
 login_title=Anmelden an Server
 login_desc=Sie müssen einen gültigen Benutzernamen und Passwort angeben um sich am Webminserver $1 anmelden zu können.
 login_header=Webminauthentifizierung
@@ -109,13 +117,16 @@ login_user=Benutzername
 login_pass=Passwort
 login_login=Benutzername
 login_esame=Die Option, den gleichen Login, wie dieser Server zu verwenden, kann nur verwendet werden, wenn sie sich nicht im Session-Authentifizierung-Modus befinden und wenn das Passwort für die Webmin-Programme zur Verfügung steht.
+
 this_server=dieser Server
+
 delete_err=Fehlgeschlagen Server zu löschen
 delete_enone=Nicht ausgewählt
 delete_ecannot=Es ist Ihnen nicht erlaubt Server zu löschen
 delete_title=Lösche Server
 delete_rusure=Sind Sie sich sicher, dass Sie die $1 ausgewählten Server löschen möchten?
 delete_confirm=Lösche jetzt
+
 auto_title=Finde automatisch Server
 auto_header=Automatische Server Registrierung Optionen
 auto_sched=Prüfe neue Server?
@@ -141,8 +152,10 @@ auto_smtp=Sende via SMTP-Server
 auto_self=Dieses System
 auto_esmtp=Fehlender oder ungültiger SMTP-Server
 auto_findself=Registriere auch dieses System?
+
 config_deftype=Standard Systemtyp
 config_typeauto=Automatisch
+
 email_regsubject=System $1 registriert
 email_reg=Das System $1 wurde automatisch registriert.
 email_unregsubject=System $1 deregistriert

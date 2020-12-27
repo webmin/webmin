@@ -26,6 +26,7 @@ index_when=Sì, $1
 index_webalizer=webalizer
 index_enable=Programma selezionato
 index_disable=De-Schedule selezionato
+
 edit_title1=Aggiungi file di registro
 edit_title2=Modifica file di registro
 edit_header=Opzioni di report del file di registro
@@ -49,12 +50,14 @@ edit_cmode0=Usa le opzioni globali
 edit_cmode1=Opzioni personalizzate
 edit_cmode2=Altro file di configurazione ..
 edit_clear=Cancellare i file di registro dopo il rapporto pianificato?
+
 gen_title=Genera rapporto
 gen_header=Esecuzione di Webalizer per generare report da $1 ..
 gen_done=.. fatto
 gen_failed=.. Webalizer fallito! Vedere l'output sopra per i dettagli.
 gen_nothing=.. Webalizer terminato, ma non è stato generato alcun rapporto. Vedere l'output sopra per i dettagli.
 gen_view=Visualizza rapporto completo.
+
 save_err=Impossibile salvare il file di registro
 save_efile=Il file di registro non è stato inserito o non esiste
 save_ecfile=Altro file di configurazione mancante o inesistente
@@ -64,12 +67,14 @@ save_ewuser=Non esiste alcun utente Unix chiamato $1
 save_ehost=Nome host del sito Web mancante o non valido
 save_etitle=Titolo del rapporto mancante
 save_ecannot=Puoi generare rapporti solo per i registri in $1 
+
 view_epath=PATH_INFO non valido
 view_efile=Nome file del rapporto non valido
 view_elog=File di registro non valido
 view_ecannot=Non sei autorizzato a visualizzare questo rapporto
 view_eopen=Impossibile aprire il file di report
 view_title=Visualizza rapporto
+
 global_title=Opzioni Webalizer globali
 global_title2=Opzioni del rapporto Webalizer
 global_for=Per il file di registro $1 
@@ -130,6 +135,7 @@ global_includesite=I clienti non devono ignorare
 global_includereferrer=Referenti da non ignorare
 global_includeuser=Gli utenti non devono ignorare
 global_includeagent=Browser da non ignorare
+
 global_err=Impossibile salvare le opzioni di Webalizer
 global_ereport=Prefisso del titolo del rapporto mancante
 global_ehost=Nome host mancante o non valido
@@ -139,6 +145,7 @@ global_etable=Dimensione mancante o non valida per la tabella "$1"
 global_ehistory=Nome del file della cronologia mancante o non valido
 global_ecurrent=Nome file incrementale mancante o non valido
 global_ecache=Nome file cache DNS mancante o non valido
+
 log_create_log=Creazione di rapporti per $1 
 log_modify_log=Rapporti modificati per $1 
 log_delete_log=Rapporti eliminati per $1 
@@ -147,6 +154,7 @@ log_global=Opzioni Webalizer globali modificate
 log_global2=Opzioni di Webalizer modificate per $1 
 log_enable_logs=Rapporti pianificati sui registri $1 
 log_disable_logs=Rapporti non programmati sui registri $1 
+
 acl_view=Puoi visualizzare solo i rapporti esistenti?
 acl_global=Puoi modificare le opzioni globali del webalizer?
 acl_dir=Consentire solo la visualizzazione e la modifica dei report per i log in

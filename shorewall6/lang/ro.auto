@@ -19,6 +19,7 @@ index_dump=Arată Dump
 index_dumpdesc=Faceți clic pe acest buton pentru a vizualiza informațiile de urmărire Shorewall din comanda <tt>shorewall6 dump</tt>.
 index_check=Verificați firewallul
 index_checkdesc=Faceți clic pe acest buton pentru ca Shorewall să valideze configurația firewallului cu comanda <tt>shorewall6 check</tt>.
+
 list_move=Mișcare
 list_add=Adăuga
 list_auto=Automat
@@ -30,6 +31,7 @@ list_manual=Editează manual fișierul
 list_manualdesc=Faceți clic pe acest buton pentru a edita manual fișierul Shorewall $1, în care sunt stocate intrările de mai sus.
 list_ecannot=Nu aveți voie să editați acest tabel Shorewall.
 list_delete=Sterge selectia
+
 restart_err=Eroare la aplicarea configurației
 refresh_err=Eroare la actualizarea configurației
 start_err=Eșecul la pornirea firewallului
@@ -41,6 +43,7 @@ check_title=Verificați firewallul
 check_ok=.. configurația firewallului dvs. pare OK.
 check_failed=.. a fost găsită o eroare în configurația firewallului!
 check_cmd=Verificarea configurației ..
+
 zones_title=Zonele de rețea
 zones_desc=Zonele enumerate în această pagină reprezintă diferite rețele care pot fi accesate de sistemul dvs. Cu toate acestea, intrările de aici nu au niciun efect asupra firewall-ului, ci definesc doar numele zonelor și descrierile.
 zones_add=Adăugați o nouă zonă de rețea.
@@ -72,6 +75,7 @@ zones_firewall=Sistem de firewall
 zones_eopts=Opțiuni de zonă nevalide
 zones_eopts_in=Opțiuni de intrare în zonă nevalide
 zones_eopts_out=Opțiuni de ieșire din zonă nevalide
+
 policy_title=Politici implicite
 policy_desc=Această pagină vă permite să configurați acțiunile implicite pentru trafic între diferite zone de firewall. Acestea pot fi anulate pentru anumite gazde sau tipuri de trafic din pagina Reguli de firewall.
 policy_add=Adăugați o nouă politică implicită.
@@ -92,6 +96,7 @@ policy_ulog=Conectați-vă la ULOG
 policy_efw=&lt;Firewall&gt; poate fi selectat atât pentru zonele sursă cât și pentru cele de destinație
 policy_elimit=Număr limită de trafic lipsă sau nevalid
 policy_eburst=Număr de explozie lipsă sau nevalid
+
 rules_title=Reguli de firewall
 rules_desc=Acest tabel listează excepții de la politicile implicite pentru anumite tipuri de trafic, surse sau destinații. Acțiunea aleasă va fi aplicată pachetelor care corespund criteriilor alese în loc de cele implicite.
 rules_add=Adăugați o nouă regulă pentru firewall.
@@ -138,6 +143,7 @@ rules_eaction=Nicio acțiune selectată
 rules_macro=Parametrul de acțiune macro
 rules_none2=Nici unul
 rules_emacro=Parametrul macro lipsă sau nevalid
+
 tos_title=Tipuri de servicii
 tos_desc=Această pagină definește tipurile de servicii IP pentru anumite tipuri de trafic, care pot fi utilizate pentru a ridica sau a reduce prioritățile.
 tos_add=Adăugați un nou tip de serviciu.
@@ -156,6 +162,7 @@ tos_edit=Editează tipul serviciului
 tos_create=Creați tipul de serviciu
 tos_header=Tip de detalii de serviciu
 tos_err=Eroare la salvarea tipului de serviciu
+
 interfaces_title=Interfețe de rețea
 interfaces_desc=Fiecare dintre interfețele de rețea ale sistemului dvs. pe care doriți să le administreze Shorewall ar trebui să fie listată pe această pagină și asociată cu zona la care este conectată. Interfața loopback <tt>lo</tt> nu trebuie să fie niciodată listată.
 interfaces_add=Adăugați o nouă interfață de rețea.
@@ -171,6 +178,7 @@ interfaces_header=Detalii despre interfața de rețea
 interfaces_err=Nu a reușit salvarea interfeței de rețea
 interfaces_eiface=Numele interfeței lipsește sau nu este valabil
 interfaces_ebroad=Adresa de difuzare lipsă sau nevalidă
+
 masq_title=Masqueradarea
 masq_desc=Înregistrările din această pagină setează traducerea adreselor de rețea pentru traficul rutat între o anumită rețea și o anumită interfață.
 masq_add=Adăugați o nouă regulă de mascare.
@@ -201,6 +209,7 @@ masq_emnete=Lista rețelelor de excepție goale
 masq_esnat=Adresa IP SNAT nevalidă
 masq_eports=Lista porturilor care lipsește sau nu este valabilă, separată de virgule
 masq_eipsec=Opțiunile IPsec lipsesc
+
 nat_title=NAT static
 nat_desc=Intrările de traducere a adreselor de rețea statică din acest tabel pot fi utilizate pentru a configura o corespondență 1-1 între o adresă externă pe firewallul dvs. și o adresă RFC1918 a unei mașini din spatele firewallului. NAT-ul static este adesea folosit pentru a permite conexiunile la un server intern din afara rețelei tale.
 nat_add=Adăugați o nouă intrare statică NAT.
@@ -219,6 +228,7 @@ nat_local=Ești activ pentru sistemul de firewall?
 nat_eext=Adresa IP externă nevalidă
 nat_eint=Adresa IP internă nevalidă
 nat_evirt=Număr de interfață virtual nevalid
+
 proxyndp_title=Proxy NDP
 proxyndp_desc=Această pagină vă permite să configurați sistemul pentru a răspunde solicitărilor NDP pentru adrese IP, altele decât cele proprii, astfel încât să poată trimite pachete către adresele respective către destinațiile lor reale.
 proxyndp_add=Adăugați o nouă adresă NDP proxy.
@@ -235,6 +245,7 @@ proxyndp_err=Nu a reușit să salvați proxy NDP
 proxyndp_have=Ruta către gazdă există?
 proxyndp_eaddr=Adresă lipsă sau nevalidă a NDP
 proxyndp_pers=Lăsați ruta chiar când firewallul s-a oprit?
+
 routestopped_title=Când oprit
 routestopped_desc=În mod implicit, atunci când Shorewall este oprit, acesta va refuza accesul de la toate gazdele. Această pagină vă permite să definiți gazde sau rețele care vor fi în continuare accesibile.
 routestopped_add=Adăugați o nouă adresă oprită.
@@ -250,6 +261,7 @@ routestopped_err=Nu a reușit să salvați adresa oprită
 routestopped_eaddr=Nu au fost introduse adrese
 routestopped_all=Toate adresele
 routestopped_list=Adrese și rețele listate ..
+
 tunnels_title=Tuneluri VPN
 tunnels_desc=Această pagină listează tuneluri VPN care trec prin firewall-ul dvs., și astfel trebuie permisă configurația Shorewall.
 tunnels_add=Adăugați un nou tunel VPN.
@@ -282,6 +294,7 @@ tunnels_generic_l=Generic, pentru protocol ..
 tunnels_gsel=Zonele enumerate
 tunnels_eopenvpn=Număr de port nevalid pentru tunelul OpenVPN
 tunnels_egeneric=Lipsește protocolul sau protocolul: portul pentru tunelul generic
+
 hosts_title=Zona gazde
 hosts_desc=Această pagină listează gazdele și rețelele care fac parte din anumite zone. În general, nu trebuie să faceți modificări la această listă.
 hosts_add=Adăugați o gazdă de zonă nouă.
@@ -301,8 +314,10 @@ hosts_ip=Adresa sau rețea $1
 hosts_mac=Adresa MAC $1 
 hosts_ipset=Set IP $1 
 hosts_any=Orice gazdă
+
 edit_before=Înainte de intrare $1 
 edit_after=După intrare $1 
+
 blacklist_title=Gazde cu lista neagră
 blacklist_desc=Această pagină listează gazdele și serviciile care vor fi blocate dacă traficul de la ele ajunge pe o interfață cu opțiunea <b>Lista neagră</b> setată.
 blacklist_add=Adăugați o nouă gazdă pentru lista neagră.
@@ -325,6 +340,7 @@ blacklist_eproto=Protocolul care lipsește sau nu este valabil
 blacklist_eports=Număr de porturi nevalide sau listă de porturi separate prin virgulă
 blacklist_eports2=Porturile pot fi specificate numai pentru protocoalele TCP și UDP
 blacklist_return=gazde cu lista neagră
+
 providers_title=Furnizori de rutare suplimentari
 providers_desc=Această pagină definește tabele de rutare suplimentare. Acestea sunt necesare dacă aveți conexiuni la mai multe ISP sau mai multe conexiuni la același ISP sau dacă rulați Squid ca proxy transparent pe o gazdă, alta decât firewallul.
 providers_add=Adăugați un nou furnizor de rutare.
@@ -359,17 +375,21 @@ providers_enumber=Număr de furnizor lipsă sau nevalid
 providers_emark=Număr de marcă al furnizorului lipsă sau nevalid
 providers_edup=Lipsește furnizorul pentru a dubla
 providers_egateway=Gateway lipsă sau nevalid
+
 manual_desc=Acest formular poate fi utilizat pentru a edita manual fișierul Shorewall $1. Aveți grijă, deoarece nu se va efectua verificarea sintaxei asupra modificărilor.
 manual_reset=Anula
 manual_err=Nu a reușit salvarea fișierului de tabel
 manual_efile=Nume tabel nevalid!
 manual_edata=Nu a fost introdus conținutul fișierului de tabel.
+
 acl_nochange=Poate aplica, opri și porni configurația Shorewall?
 acl_files=Mese disponibile Shorewall
 acl_all=Toate
 acl_sel=Selectat mai jos ..
+
 delete_err=Nu a reușit ștergerea rândurilor
 delete_enone=Nu au fost selectate rânduri
+
 opts_routeback=Acceptați traficul înapoi la gazdă
 opts_source=Permiteți de la gazdă la orice destinație
 opts_dest=Permiteți găzduirea din orice sursă
@@ -386,12 +406,14 @@ opts_proxyndp=Activați proxy NDP
 opts_ndp_filter=Răspundeți numai la solicitările NDP pentru IP-ul interfeței
 opts_detectnets=Zona Taylor pentru a include doar gazde rutate
 opts_upnp=Remap pachete prin UPNP
+
 opts_dhcp=Interfața folosește DHCP
 opts_forward=Setați redirecționarea
 opts_ignore=Ignorați evenimentele sus/jos
 opts_optional=Interfața este opțională
 opts_required=Interfața este necesară
 opts_bridge=Interfața este un pod
+
 comment_add=Adaugă un nou comentariu.
 comment_edit=Editați un comentariu
 comment_create=Creați un comentariu
@@ -399,6 +421,7 @@ comment_header=Detalii despre comentarii din tabel
 comment_msg=Mesaj
 comment_err=Nu a putut salva comentariul
 comment_enone=Nu a fost introdus niciun mesaj
+
 log_create_table=A fost adăugată intrarea în tabelul $1 
 log_modify_table=Intrare modificată în tabelul $1 
 log_delete_table=Intrare ștersă din tabelul $1 
@@ -414,6 +437,7 @@ log_start=Firewall pornit
 log_refresh=Firewall actualizat
 log_restart=Firewall repornit
 log_clear=Firewall-ul curățat
+
 shorewall_conf_title=Fișier de configurare master
 shorewall_conf_desc=Această pagină vă permite să configurați variabilele de configurare globală. NOTĂ: Modificarea ordinii variabilelor de aici nu este recomandată dacă doriți să păstrați poziția relativă a comentariilor în fișierul de configurare.
 shorewall_conf_add=Adăugați o nouă variabilă de configurare.
@@ -427,6 +451,7 @@ shorewall_conf_create=Creați variabilă de configurare
 shorewall_conf_header=Detalii despre variabila de configurare
 shorewall_conf_err=Nu a reușit salvarea variabilei de configurare
 shorewall_conf_varname=Nume variabilă nevalidă (trebuie să fie un nume de variabilă shell valid)
+
 params_title=Parametri personalizați
 params_desc=Această pagină vă permite să configurați parametrii personalizați de Shorewall. NOTĂ: Modificarea ordinii parametrilor aici nu este recomandată dacă doriți să păstrați poziția relativă a comentariilor în fișierul de configurare.
 params_add=Adăugați un nou parametru personalizat.

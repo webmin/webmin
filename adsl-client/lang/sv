@@ -16,6 +16,7 @@ index_cancel=Ångra uppkoppling
 index_canceldesc=ADSL klienten håller för tillfället på att etablera en uppkoppling. Klicka på denna knapp för att ångra försöket med kommandot $1.
 index_cdemand=Ångra På-Begärelse
 index_cdemanddesc=ADSL klienten väntar för tillfället på en På-Begärelse uppkopplings förfrågan. Klicka på denna knapp för att stoppa den med kommandot $1.
+
 index_header=ADSL klient konfigurations val
 index_desc=Denna inställning nedanför läggs till på alla nya ADSL uppkopplingar startade av systemet. Om du ändrar dem, måste uppkopplingen startas om för att modifikationen ska ta effekt.
 index_eth=Ethernet gränssnitt
@@ -36,11 +37,13 @@ index_fw_standalone=För enskild värd
 index_fw_masquerade=För NAT gateway
 index_connect=Tid att etablera uppkoppling för
 index_forever=För alltid
+
 start_err=Misslyckades att starta ADSL uppkopplingen
 start_title=Starta upp ADSL
 start_ip=En ADSL uppkoppling har blivit etablerad med IP adress $1.
 start_demand=Därför att uppkoppling på begäran mode är aktiverad, Din ADSL uppkoppling kommer endast att starta när den behövs.
 start_bg=ADSL uppkopplingen blev inte startad inom 20 sekunder. ADSL klienten kommer att försöka koppla upp i bakgrunden tills lyckad uppkoppling.
+
 save_err=Misslyckades att spara ADSL konfigurationen
 save_eeth=Saknad eller felaktig-låsning av ethernet gränssnitt
 save_etimeout=Saknad eller felaktig på-begäran paus
@@ -49,10 +52,12 @@ save_econnect=Saknad eller felaktig uppkopplings paus
 save_emss=Saknad eller felaktig maximal paket storlek
 save_title=Spara Konfiguration
 save_desc=Din ADSL klient konfiguration har blivit lyckligt sparad, men kommer inte att användas före du kopplar upp dig igen.
+
 stop_err=Misslyckades att stänga ner ADSL uppkopplingen
 stop_title=Stäng av ADSL
 stop_ok=Din ADSL uppkoppling blev lyckligt ner stägnd.
 stop_failed=Din ADSL uppkoppling är fortfarande aktiv av någon anledning!
+
 log_save=Sparad klient-konfiguration
 log_stop=Stäng av ADSL
 log_start=Starta upp ADSL

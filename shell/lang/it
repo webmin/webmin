@@ -6,7 +6,9 @@ index_clearcmds=Svuota la lista dei comandi precedenti
 index_desc=Inserisci un comando da eseguire nella casella di testo in basso.<br>Il comando <tt>cd</tt> può essere usato per cambiare directory per i comandi in sequenza.
 index_pok=Esegui comando precedente
 index_edit=Modifica un comando precedente
+
 acl_user=Esegui i comandi come utente
 acl_user_def=Utente Webmin corrente
+
 log_run=Comando $1 eseguito
 log_clear=Svuota la cronologia dei comandi

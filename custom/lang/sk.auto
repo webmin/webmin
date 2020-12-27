@@ -13,6 +13,7 @@ index_actform=formulár
 index_actrun=beh
 index_actsql=formulár
 index_acted=Otvorené
+
 edit_title=Upraviť príkaz
 create_title=Vytvorenie príkazu
 edit_ecannot=Nemáte oprávnenie upravovať príkazy
@@ -49,6 +50,7 @@ edit_format3=Presmerovať do formulára
 edit_format4=Ak je to možné, stiahnite si ho
 edit_servers=Beží na serveroch Webmin
 edit_clone=Clone
+
 save_err=Príkaz sa nepodarilo uložiť
 save_ecannot=Nemáte oprávnenie upravovať príkazy
 save_ecmd=Nebol zadaný žiadny príkaz
@@ -61,6 +63,7 @@ save_eusermin=Príkazy spúšťané na iných serveroch nie je možné spúšťa
 save_eformat=Neplatný typ MIME výstupu
 save_eopts=Chýba súbor možností pre parameter $1 
 save_eopts2=Súbor možností alebo predvolená hodnota pre parameter $1 nemôžu obsahovať :
+
 run_err=Nepodarilo sa vykonať príkaz
 run_ecannot=Nemáte povolenie tento príkaz spustiť
 run_euser=Chýbajúci alebo neplatný používateľ
@@ -77,6 +80,7 @@ run_eupload=Nie je vybratý žiadny súbor na odovzdanie
 run_emust=Chýba hodnota parametra $1
 run_timeout=Príkaz sa nepodarilo dokončiť pred vypršaním časového limitu $1 s.
 run_failed=Príkaz zlyhal so stavom ukončenia $1 
+
 log_modify=Upravený príkaz $1 
 log_create=Vytvorený príkaz $1 
 log_delete=Vymazaný príkaz $1 
@@ -85,9 +89,11 @@ log_modify_edit=Upravený editor súborov $1
 log_create_edit=Bol vytvorený editor súborov $1 
 log_delete_edit=Editor odstránených súborov $1 
 log_save_edit=Uložený súbor $1 
+
 acl_cmds=Príkazy, ktoré môže tento používateľ spustiť
 acl_cexcept=Všetky okrem vybraných ..
 acl_edit=Dokáže vytvárať a upravovať príkazy?
+
 file_ecannot=Nemáte oprávnenie upravovať súbory
 fcreate_title=Vytvorenie editora súborov
 fedit_title=Upraviť Editor súborov
@@ -110,6 +116,7 @@ file_egroup=Chýba alebo je neplatný názov skupiny
 file_eperms=Chýbajúce alebo neplatné osmičkové povolenia
 file_envs=Nahraďte premenné prostredia v názve súboru?
 file_id=ID editora
+
 view_err=Súbor sa nepodarilo upraviť
 view_ecannot=Nemáte oprávnenie upravovať tento súbor
 view_title=Upraviť súbor
@@ -118,10 +125,12 @@ view_header=Upravuje sa súbor $1
 view_ebeforeedit=Príkaz na predbežnú úpravu zlyhal : $1 
 view_ebefore=Príkaz pred uložením zlyhal : $1 
 view_eafter=Príkaz dodatočného uloženia zlyhal : $1 
+
 form_ecannot=Nemáte povolenie tento príkaz spustiť
 form_title=Vykonajte príkaz
 form_exec=popraviť
 form_edit=editovať
+
 sql_title1=Vytvorte príkaz SQL
 sql_title2=Upraviť príkaz SQL
 sql_header=Podrobnosti príkazu SQL
@@ -137,6 +146,7 @@ sql_err=Uloženie príkazu SQL zlyhalo
 sql_esql=Nebol zadaný žiadny SQL
 sql_ehost=Chýba alebo je neplatný hostiteľ databázového servera
 sql_edb=Chýba alebo je neplatný názov databázy
+
 srun_title=Vykonajte príkaz SQL
 srun_err=Nepodarilo sa vykonať príkaz SQL
 srun_edriver=Nepodarilo sa načítať ovládač DBI

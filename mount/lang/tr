@@ -8,6 +8,7 @@ index_add=Bağlantı ekle
 index_auto=Otomatik
 index_swap=Sanal bellek
 index_return=dosya sistemi listesi
+
 edit_title=Bağlantı değiştir
 create_title=Bağlantı oluştur
 edit_err=Bağlantı'yı değiştirmede hata oluştu
@@ -51,6 +52,7 @@ edit_del_umount=Umount Et ve Sil
 edit_ecannot=Bu dosya sistemini düzenlemek için izininiz yoktur
 edit_ecannot2=Yeni dosya sistemi eklemek için izininiz yoktur
 edit_3_or_lower=3 (ya da daha düşük)
+
 save_err=Bağlantının kaydedilmesinde hata oluştu
 save_edir='$1' bir dizin değil
 save_edirname='$1' geçerli bir dizin ismi değil
@@ -65,8 +67,10 @@ save_perm=$1'deki bağlantı zaten kullanımda olduğundan uygulanamadı.Butonu 
 save_apply=Kalıcı Listeye Uygula
 save_eremount=Tekrar bağlamada hata oluştu : $1
 save_enone=Kayıt ya da bağlantıyı seçmediniz
+
 swap_err=Swap dosyası oluşumunda hata oluştu
 swap_esize='$1' geçerli bir boyut değil
+
 nfs_server=NFS Sunucusu Seçin..
 nfs_select=Buradan bağlamak için bir NFS sunucusu seçin..
 nfs_ip=IP Adresi
@@ -78,6 +82,7 @@ nfs_seldir=Bağlantı için bir NFS dizini seçin..
 nfs_seldirv4=Bir NFSv4 mount yaparken '/' seçmelisiniz
 nfs_dir=Dizin
 nfs_clients=İstemciler
+
 smb_choose=SMB Sunucusu Seçiniz..
 smb_elist=$1'deki sunucudan listenin alınmasında hata oluştu.Sunucu erişime izin vermiyor olabilir
 smb_ehost=$1 sunucusu bulanamadı
@@ -92,6 +97,7 @@ smb_sel2=Bağlantı için bir paylaşım seçin..
 smb_share=Paylaşım
 smb_comment=Açıklama
 smb_noshares=$1 sunucusunda ulaşılabilir dosya paylaşımları bulunamadı
+
 solaris_scsidev=SCSI denetleyicisi $1 hedef $2 birim $3 disk bölümü $4
 solaris_mddev=RAID aracı $1
 solaris_ecacheexists=$1 dizini zaten mevcut. Onu silin
@@ -223,6 +229,7 @@ solaris_efstyp2=Dosya sistem tipi $1'in kontrolünde hata oluştu
 solaris_ecachedir='$1' geçerli bir bellek dizini değildir
 solaris_efmode='$1' geçerli bir sekizli dosya modu değil
 solaris_edmode='$1' geçerli bir sekizli dizin modu değil
+
 linux_eamd=AMD'de hata oluştu(otomatik bağlama)
 linux_eauto=Otomatik bağlamada hata oluştu : $1
 linux_esmbconn=Sunucuya bağlantıda hata oluştu
@@ -335,6 +342,7 @@ linux_eshare=Eksik paylaşım adı
 linux_auth=Onaylama modu
 linux_sec=Güvenlik seviyesi
 linux_transfert=RPC/Transfer Protocol
+
 log_mount=$3 bağlandı
 log_mount_l=$3'de $2 $1'e bağlandı
 log_umount=$3'in bağlantısı kaldırıldı
@@ -347,7 +355,9 @@ log_modify=Bağlantı $3 değiştirildi
 log_modify_l=$3'de $1'e $2 bağlantısı değiştirildi
 log_delete=$3 bağlantısı silindi
 log_delete_l=$3'de $1'e $2 bağlantısı silindi
+
 unmount_err=$1 'in umount edilmesinde hata oluştu
+
 mount_err=$1 'in mount edilmesinde hata oluştu
 irix_nhost=NFS Makine Adı
 irix_ndir=NFS Dizini
@@ -371,6 +381,7 @@ irix_mode0cd=SCSI controller $1 target $2
 irix_setx=Bütün dosyalar çalıştırılabilir yapılsın mı?
 irix_rock=Rock Ridge desteği kullanılsın mı?
 irix_nofsck=Açılışta dosya sistemi kontrol edilsin mi?
+
 irix_ehost='$1' makinesi mevcut değil
 irix_eloss='$1' makinesi kapalı
 irix_eshowmount='$1', NFS'i desteklemiyor
@@ -387,13 +398,16 @@ irix_eswapfile=Swap aygıtı '$1' mevcut değil
 irix_efstyp2=$1 dosya sistemi tipinin alınamadı : $2
 irix_efstyp=$1 'deki dosya sistemi tipi $2 'dir, $3 değildir
 irix_eautomap=Automounter map dosyası '$1' mevcut değil
+
 irix_devroot=Root bölümü
 irix_devswap=Swap bölümü
 irix_autohosts=Bütün NFS paylaşımları
+
 acl_only=Sadece mount ve umount işlemlerine izin verilsin mi?
 acl_fs=Düzenlenebilecek dosya sistemleri
 acl_all=Hepsi
 acl_list=Listeli dizinlerin altında
 acl_create=Yeni dosya sistemi ekleyebilir mi?
+
 freebsd_eaddr=Eksik ya da geçersiz sunucu adresi
 freebsd_eworkgroup=Eksik ya da geçersiz çalışma grubu

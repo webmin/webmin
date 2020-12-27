@@ -3,8 +3,10 @@ index_clink=Vielleicht ist es nicht installiert oder Ihre <a href='$1'>Modulkonf
 index_return=Moduleindex
 index_atboot=Starte beim Booten?
 index_atbootdesc=Ändert diese Option, um zu kontrollieren, ob der iSCSI-Client beim Booten gestartet wird oder nicht. Dies ist für Dateisysteme erforderlich, welche von iSCSI-Servern automatisch gemountet werden.
+
 check_econfig=Die iSCSI-Client-Konfigurationsdatei $1 wurde nicht auf Ihrem System gefunden.
 check_eiscsiadm=Die iSCSI-Client-Administrationsprogramm $1 wurde nicht auf Ihrem System gefunden.
+
 auth_title=Authentifizierungsoptionen
 auth_header=iSCSI-Client und Server Authentifizierung
 auth_name=Lokaler System Initiator Name
@@ -29,6 +31,7 @@ auth_edpassword=Fehlendes Discovery-Passwort für Server
 auth_edusername_in=Fehlender Discovery-Benutzername für Client
 auth_edpassword_in=Fehlendes Discovery-Passwort für Client
 auth_egen=Fehlgeschlagen einen neuen Namen zu generieren!
+
 timeout_title=iSCSI Timeouts
 timeout_header=iSCSI-Client Timeout-Optionen
 timeout_timeout=Zeit zu warten, bevor SCSI-Befehle fehlschlagen
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=Fehlende oder nicht-numerische Zeit vor Ping wartet, b
 timeout_eabort_timeout=Fehlende oder nicht-numerische Zeit für Abbruch-Antwort wartet, bevor es fehlschlägt
 timeout_elu_reset_timeout=Fehlende oder nicht-numerische Zeit für Antwort der logischen Einheit, bevor es fehlschlägt
 timeout_etgt_reset_timeout=Fehlende oder nicht-numerische Zeit für Ziel-Antwort, bevor es fehlschlägt
+
 iscsi_title=iSCSI Optionen
 iscsi_header=Andere iSCSI Optionen
 iscsi_startup=Verbindungssitzungen beim Booten?
@@ -62,6 +66,7 @@ iscsi_err=Fehlgeschlagen iSCSI Optionen zu speichern
 iscsi_eretry=Fehlende oder nicht-numerische Anzahl an erneuten Einlogversuchen
 iscsi_ecmds=Fehlende oder nicht-numerische maximal Befehlswarteschlange der Warteschlange pro Sitzung
 iscsi_equeue=Fehlende oder nicht-numerische maximal Befehlswarteschlange der Warteschlange pro Gerät
+
 ifaces_title=iSCSI Schnittstellen
 ifaces_elist=Fehlgeschlagen Schnittstellen aufzulisten : $1
 ifaces_name=Schnittstellenname
@@ -78,11 +83,13 @@ ifaces_hwaddress=MAC-Adresse
 ifaces_ifacename=Quell-Schnittstelle
 ifaces_ipaddressdef=Automatisch
 ifaces_notset=Automatisch
+
 iadd_err=Fehlgeschlaten Schnittstellen hinzuzufügen
 iadd_eclash=Eine Schnittstelle mit dem Namen $1 existiert bereits
 iadd_eipaddress=Fehlende oder ungültige Quell-IP-Adresse
 iadd_ehwaddress=Fehlende oder ungültige MAC-Adresse
 iadd_ename=Schnittstellennamen fehlt oder enthält ungültige Zeichen
+
 difaces_err=Fehlgeschlagen Schnittstellen zu entfernen
 difaces_enone=Nichts ausgewählt
 difaces_edelete=Entfernen der Schnittstelle $1 fehlgeschlagen: $2
@@ -93,6 +100,7 @@ difaces_confirm=Entferne Schnittstelle
 difaces_target=iSCSI Ziel
 difaces_ip=iSCSI-Server
 difaces_users=Einige Verbindungen, die diese Schnittstellen verwenden, sind derzeit aktiv und werden nicht funktionieren, wenn die Schnittstellen entfernt werden :
+
 conns_title=iSCSI Verbindungen
 conns_elist=Fehlgeschlagen Verbindung aufzulisten : $1
 conns_ip=Server IP
@@ -113,6 +121,7 @@ conns_return=Liste an Verbindungen
 conns_iface=iSCSI Schnittstelle
 conns_ifacedef=Wähle automatisch
 conns_ifaceerr=Fehlgeschlagen Schnittstellen abzuholen : $1
+
 add_title=Füge iSCSI Verbindung hinzu
 add_err=Fehlgeschlagen neue iSCSI Verbindung hinzuzufügen
 add_ehost=Fehlender oder nicht auflösbarer Hostname
@@ -129,6 +138,7 @@ add_on=$1 auf $2
 add_auth=Login zum Server
 add_auth1=Verwenden Sie standard Authentifizierungsmethode
 add_auth0=Login als $2 mit Passwort $3 mit der Methode $1
+
 dconns_err=Fehlgeschlagen Verbindungen zu trennen
 dconns_enone=Nichts ausgewählt
 dconns_edelete=Die Entfernung des Ziel $2 von Host $1 fehlgeschlagen : $3
@@ -142,6 +152,7 @@ dconns_use=Benutzt von
 dconns_size=Partitionsgröße
 dconns_confirm=Lösche Verbindungen
 dconns_unused=Unbenutzt
+
 vconn_title=iSCSI Verbindung
 vconn_egone=Die ausgewählte Verbindung existiert nicht länger!
 vconn_header=iSCSI-Verbindungsdetails
@@ -160,8 +171,10 @@ vconn_device3=Konstanter Gerätenamen
 vconn_delete=Verbindung trennen
 vconn_users=Aktuelle Benutzer
 vconn_size=Festplattengröße
+
 atboot_err=Fehlgeschlagen beim Booten zu aktivieren
 atboot_einit=Keine Boot-Aktionen $1 existieren
+
 log_auth=Authentifizierungsoptionen gespeichert
 log_timeout=Timeout-Optionen gespeichert
 log_iscsi=iSCSI Optionen gespeichert

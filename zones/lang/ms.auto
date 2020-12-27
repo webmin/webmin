@@ -4,6 +4,7 @@ index_none=Tiada zon lagi ditakrifkan.
 index_add=Tambah zon baru.
 index_return=senarai zon
 index_zones=Zon yang ada
+
 edit_title=Edit Zon
 edit_common=Konfigurasi zon am
 edit_name=Nama zon
@@ -57,20 +58,26 @@ edit_attrnone=Tiada sifat generik yang telah ditentukan.
 edit_attradd=Tambah atribut generik baharu.
 edit_webmin=Buka Webmin
 edit_brand=Jenama
+
 ui_cancel=Batalkan
+
 save_err=Gagal menyimpan zon
 save_epool=Kolam yang hilang atau tidak sah
 save_ewebmin=Webmin tidak berjalan di zon ini
+
 reboot_title=Reboot Zon
 reboot_rusure=Adakah anda pasti mahu reboot zon $1 ? Semua proses yang berjalan di dalamnya akan dimulakan semula.
 reboot_err=Gagal reboot zon
 reboot_doing=Sekarang reboot zon ..
+
 reboot_failed=.. gagal :
 reboot_ok=.. lengkap.
+
 halt_title=Zon Penutup
 halt_rusure=Adakah anda pasti mahu menutup zon $1 ? Semua proses yang berjalan di dalamnya akan dihentikan.
 halt_err=Gagal zon penutupan
 halt_doing=Sekarang tutup zon ..
+
 boot_title=Zon Bootup
 boot_err=Gagal zon bootup
 boot_doing=Sekarang zap rebat ..
@@ -78,10 +85,12 @@ delete_title=Padamkan Zon
 delete_rusure=Adakah anda pasti mahu memadamkan zon $1 ? Semua fail dalam sistem fail peribadi akan hilang.
 delete_err=Gagal memadam zon
 delete_doing=Sekarang memadam zon ..
+
 uninstall_title=Sistem Uninstall
 uninstall_rusure=Adakah anda pasti mahu tidak memasang perisian sistem dari zon $1 ? Semua fail dalam sistem fail peribadi akan hilang.
 uninstall_err=Gagal memasang perisian sistem dari zon
 uninstall_doing=Sekarang sistem un-pemasangan dari zon ..
+
 install_title=Pasang Sistem
 install_doing=Sekarang memasang sistem ke dalam zon ..
 net_title1=Buat Antara Muka Rangkaian
@@ -96,6 +105,7 @@ net_enetmask=Netmask tidak sah
 net_eaddress=Alamat IP tidak sah
 net_egone=Antara muka tidak lagi wujud!
 net_eclash=Antara muka rangkaian dengan alamat IP yang sama sudah wujud di zon ini
+
 pkg_title1=Tambah Direktori Pakej
 pkg_title2=Edit Direktori Pakej
 pkg_header=Butiran direktori paket warisan
@@ -107,6 +117,7 @@ pkg_eclash=Direktori pakej sudah wujud di zon ini
 pkg_inherit=Memperolehi pakej dari zon global
 pkg_inherit_yes=Ya (zon akar jarang)
 pkg_inherit_no=Tidak (zon akar keseluruhan)
+
 fs_title1=Buat Filesystem
 fs_title2=Edit Filesystem
 fs_header=Butiran sistem fail tambahan
@@ -128,6 +139,7 @@ fs_eoptions=Pilihan gunung tidak sah (mestilah senarai dipisahkan koma seperti r
 fs_egone=Filesystem tidak lagi wujud!
 fs_mount=Gunung selepas mencipta?
 fs_eclash=Sistem fail menggunakan direktori yang sama sudah ada di zon ini
+
 rctl_title1=Buat Kawalan Sumber
 rctl_title2=Edit Kawalan Sumber
 rctl_header=Jenis dan had kawalan sumber
@@ -148,6 +160,7 @@ rctl_elimit=Bukan nombor
 rctl_eaction=Tiada isyarat yang dipilih dalam baris $1 
 rctl_evalues=Tiada had yang dimasukkan
 rctl_eclash=Kawalan untuk sumber yang sama sudah wujud di zon ini
+
 attr_title1=Buat Atribut Generik
 attr_title2=Edit Atribut Generik
 attr_header=Butiran atribut zon generik
@@ -165,6 +178,7 @@ attr_euint=Nilai bukan integer positif
 attr_eboolean=Nilai tidak 'benar' atau 'palsu'
 attr_egone=Atribut tidak lagi wujud!
 attr_eclash=Atribut dengan nama yang sama sudah ada di zon ini
+
 status_running=Berjalan
 status_installed=Dihentikan
 status_configured=Tidak Dipasang
@@ -172,13 +186,16 @@ status_incomplete=Dipasang
 status_ready=Sedia
 status_down=Down
 status_shutting_down=Tutup
+
 list_name=Nama zon
 list_id=No ID
 list_path=Direktori zon
 list_status=Status
 list_actions=Tindakan
+
 zone_in=Dalam zon $1 
 pool_none=Tiada
+
 create_title=Buat Zon
 create_header=Butiran zon baru
 create_path=Direktori fail zon
@@ -239,6 +256,7 @@ create_erouter=Alamat IP router lalai atau tidak sah
 create_removingpkgs=membuang direktori pakej yang diwarisi. ..
 create_brand=Jenama
 create_brandmsg=Zon penjenamaan
+
 log_create_zone=Zon yang dibuat $1 
 log_delete_zone=Zon dipadamkan $1 
 log_save_zone=Konfigurasi diubahsuai untuk zon $1 
@@ -262,6 +280,7 @@ log_delete_rctl=Kawalan sumber terpotong untuk $1 di zon $2
 log_create_attr=Dicipta sifat atribut $1 dalam zon $2 
 log_modify_attr=Ubah sifat generik $1 di zon $2 
 log_delete_attr=Atribut generik yang dibuang $1 di zon $2 
+
 webmin_eperl=Perl tidak dipasang pada $1 
 webmin_eroot=Direktori $1 tidak ada atau tidak mengandungi Webmin.
 webmin_title=Pasang Webmin

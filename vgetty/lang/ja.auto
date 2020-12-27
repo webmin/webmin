@@ -2,6 +2,7 @@ index_title=ボイスメールサーバー
 index_ecmd=Vgettyコマンド $1がシステムで見つかりませんでした。インストールされていないか、<a href='$2'>モジュール設定</a>が間違っている可能性があります。
 index_econfig=Vgetty構成ファイル $1がシステムで見つかりませんでした。インストールされていないか、<a href='$2'>モジュール設定</a>が間違っている可能性があります。
 index_return=ボイスメールインデックス
+
 vgetty_title=シリアルポート構成
 vgetty_desc=サーバーがシリアルポートに接続されたモデムで音声通話に応答するには、以下にリストされている必要があります。このリストにポートを追加すると、 $1プログラムは通話に応答してメッセージを再生するように構成されます。
 vgetty_add=新しいシリアルポートを追加します
@@ -32,6 +33,7 @@ vgetty_erings=リングの欠落または無効な数
 vgetty_erings2=リングの数は少なくとも2でなければなりません
 vgetty_eans=回答モードが選択されていません
 vgetty_eclash=シリアルポート $1は既に使用されています
+
 options_title=ボイスメールサーバーオプション
 options_header=すべてのシリアルポートのオプション
 options_maxlen=最大メッセージ長
@@ -68,6 +70,7 @@ options_eprog=実行するプログラムが存在しないか存在しない
 options_eowner=メッセージファイルのUnixユーザーが見つからないか無効です
 options_egroup=メッセージファイルのUnixグループが見つからないか無効です
 options_emode=メッセージファイルの8進数の許可がないか、無効です
+
 received_title=受信したメッセージ
 recieved_desc=サーバーが受信したボイスメールメッセージは以下のとおりです。メッセージを聞くには、最初の列の日付/時刻をクリックします。
 received_none=受信したボイスメールメッセージは見つかりませんでした。
@@ -79,9 +82,12 @@ received_delete=選択したメッセージを削除
 received_move=選択したメッセージをグリーティングに変換する
 received_all=すべて選択
 received_invert=選択を反転
+
 listen_efile=無効なメッセージファイル名！
 listen_epath=ボイスメールメッセージはもう存在しません
+
 delete_efile=無効なメッセージファイル名！
+
 messages_title=あいさつ文
 messages_desc=このページには、発信者がボイスメールサーバーに接続したときに再生されるグリーティングメッセージが一覧表示されます。複数ある場合は、ランダムに選択された単一のメッセージが使用されます。
 messages_file=ファイル名
@@ -89,12 +95,15 @@ messages_none=挨拶メッセージはありません。
 messages_updesc=このフォームを使用すると、追加のグリーティングメッセージWAVファイルをアップロードできます。このファイルは、モデムで使用するために選択された形式に変換されます。アップロードされたWAVのサンプルレートは、選択した形式と同様に、受信したメッセージのサンプルレートと同じである必要があります。
 messages_upload=メッセージをアップロード
 messages_fmt=に変換
+
 pvfdesc=$1、 $2ビット
+
 upload_err=メッセージを追加できませんでした
 upload_emessage=WAVファイルが選択されていません
 upload_ewav=WAVファイルの変換に失敗しました： $1
 upload_epvf=RMDファイルの作成に失敗しました： $1
 upload_esame=メッセージファイル $1は既に存在します
+
 log_apply=適用された構成
 log_upload=グリーティングメッセージ $1をアップロードしました
 log_move=変換された $1受信メッセージ
@@ -104,5 +113,6 @@ log_options=ボイスメールオプションの変更
 log_vgetty_create=シリアルポート $1を追加しました
 log_vgetty_modify=変更されたシリアルポート $1
 log_vgetty_delete=シリアルポート $1を削除しました
+
 email_subject=ボイスメールメッセージ
 email_body=$1で $2が受信したボイスメールメッセージ。

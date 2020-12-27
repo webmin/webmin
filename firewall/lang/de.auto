@@ -1,3 +1,5 @@
+index_no_comment=
+
 log_create_rule=Regel zu Kette $1 in Tabelle $2 hinzugefügt
 log_modify_rule=Geänderte Regel in Kette $1 in Tabelle $2 
 log_delete_rule=Gelöschte Regel in Kette $1 in Tabelle $2 

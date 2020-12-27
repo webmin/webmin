@@ -7,6 +7,7 @@ index_local=Lokal
 index_add=Lägg till övervakning av typen
 index_sched=Schemalagd övervakning
 index_return=tjänstelista
+
 type_apache=Apache Webbserver
 type_inetd=Internet- och RPC-server
 type_xinetd=Utökad Internet-server
@@ -25,6 +26,7 @@ type_postgresql=PostgreSQL-databasserver
 type_samba=Samba-servrar
 type_nfs=NFS-server
 type_exec=Utför kommando
+
 mon_create=Lägg till övervakning
 mon_edit=Ändra övervakning
 mon_header=Uppgifter om övervakning
@@ -43,6 +45,7 @@ mon_err=Det gick inte att spara övervakningen
 mon_edesc=Det finns ingen beskrivning
 mon_elogin=Ogiltig RPC-inloggning på Webmin-server $1
 mon_estatus=Webmin-server $1 har inte modulen System- och serverstatus
+
 sched_title=Schemalagd övervakning
 sched_header=Inställningar för schemalagd övervakning i bakgrunden
 sched_mode=Schemalagd kontroll aktiv?
@@ -63,25 +66,31 @@ sched_err=Det gick inte att spara schemalagd övervakning
 sched_eemail=Du har inte angivit någon e-postadress
 sched_eint=Kontrollintervall saknas eller är felaktigt angivet
 sched_eoffset=Offset saknas eller är felaktigt angivet
+
 up_since=Uppe sedan $1
 depends_mod=Modulen $1 har inte installerats på systemet
 depends_os=Modulen $1 stöds inte av systemet
 depends_remote=Modulen $1 stöds inte av server $2
+
 tcp_host=Dator att koppla upp mot
 tcp_port=Port att koppla upp mot
 tcp_alarm=Tidsgräns för uppkoppling
 tcp_ehost=Datornamn saknas eller är felaktigt angivet
 tcp_eport=Portnummer saknas eller är felaktigt angivet
 tcp_ealarm=Tidsgräns saknas eller är felaktigt angiven
+
 http_url=URL att hämta
 http_alarm=Tidsgräns för uppkoppling
 http_eurl=URL saknas eller är felaktigt angiven
 http_ealarm=Tidsgräns saknas eller är felaktigt angiven
+
 ping_host=Dator att pinga
 ping_ehost=Datornamn saknas eller är felaktigt angivet
 ping_econfig=Du har inte angivit något ping-kommando i modulinställningarna
+
 proc_pid=Kör med PID $1
 proc_cmd=Kommando att titta efter
 proc_ecmd=Du har inte angivit något kommando
+
 exec_cmd=Kommando som exit-status ska kontrolleras för
 exec_ecmd=Du har inte angivit något kommando

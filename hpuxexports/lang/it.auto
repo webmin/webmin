@@ -14,6 +14,7 @@ index_ro_rw=tutti gli host hanno accesso in lettura, gli host selezionati hanno 
 index_sel_rw=host selezionati accesso in scrittura
 index_all_rw=tutti gli host hanno accesso in scrittura
 index_sel_root=host selezionato accesso root
+
 edit_title=Modifica esportazione
 create_title=Crea esportazione
 edit_details=Esporta dettagli
@@ -56,6 +57,7 @@ edit_anon_access=Utente anonimo
 edit_anon_notset=Non impostato
 edit_anon_noaccess=Nessun accesso
 edit_async=Scritture asincrone
+
 save_err=Impossibile salvare l'esportazione
 save_edir=La directory '$1' non esiste
 save_enetgroup=Netgroup non valido o mancante
@@ -65,6 +67,7 @@ save_ehost='$2' - '$1' non è un nome host valido
 save_enohost='$1' - Non hai elencato alcun host
 save_euids=Gli UID di cui non fidarsi devono essere un elenco separato da virgole di numeri o intervalli
 save_egids=I GID di cui non fidarsi devono essere un elenco separato da virgole di numeri o intervalli
+
 log_modify=Esportazione NFS modificata $1 
 log_modify_l=Esportazione NFS modificata da $1 a $2 
 log_delete=Esportazione NFS eliminata $1 

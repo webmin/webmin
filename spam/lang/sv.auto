@@ -13,6 +13,7 @@ index_applydesc=Klicka på den här knappen för att tillämpa den aktuella Spam
 index_cpan=Eftersom SpamAssassin är en Perl-modul kan du också installera den automatiskt med Webmins modul <a href='$2'>Perl-moduler</a> för att ladda ner $1 från CPAN.
 index_spamassassin=Spamassassin
 index_ecannot=Du får inte hantera SpamAssassin-konfigurationsfilen $1 
+
 white_title=Tillåtna och avvisade adresser
 white_desc=I tabellerna på denna sida kan du ange Från: och till: adresser för e-post som alltid eller aldrig kategoriseras som skräppost. Alla andra e-postmeddelanden kommer att behandlas som normalt enligt SpamAssassins regler. Alla e-postadresser kan innehålla jokertecken, som *@foo.com eller *.foo.com för att matcha hela domäner.
 white_from=Avsändare att aldrig klassificera som skräppost
@@ -44,6 +45,7 @@ white_tabham=Tillåtna adresser
 white_tabspam=Nekade adresser
 white_tabsome=Destinationsadresser
 white_tabimport=Importera adresser
+
 score_title=Skräppostklassificering
 score_desc=SpamAssassin tilldelar en poäng till varje meddelande baserat på dess innehåll och rubriker. Alternativen på denna sida bestämmer poängen över vilket ett meddelande betraktas som skräppost, och några av de metoder som den poängen beräknas på.
 score_header=Alternativ för skräppostmeddelande
@@ -77,6 +79,7 @@ score_emxdelay=Saknade eller ogiltiga sekunder att vänta mellan MX-kontroller
 score_etimeout=Saknas eller ogiltiga sekunder för att vänta på RBL-frågor
 score_ereceived=Saknat eller ogiltigt antal mottagna: rubriker för att kontrollera med RBL
 score_bayes=Använd Bayesian lärande klassificerare?
+
 report_title=Meddelandeändring
 report_desc=Alternativen på denna sida styr ändringarna som SpamAssassin gör till rubrikerna och kroppen för alla meddelanden som den analyserar, och ändringar som de gör till de som klassificeras som skräppost.
 report_header=Alternativ och modifieringsalternativ för skräppostmeddelanden
@@ -109,6 +112,7 @@ report_addspam=spam
 report_addham=Skinka
 report_addall=Allt
 report_eaddheader=Saknar eller ogiltig ytterligare rubrik för att lägga till $1 
+
 user_title=Diverse användaralternativ
 user_desc=Alternativen på denna sida är mest relaterade till sökvägarna och inställningarna som SpamAssassin använder för de externa skräppostidentifieringspaketen Razor, DCC och Pyzor. Du kan också berätta för SpamAssassin om den kan utföra DNS-sökningar eller inte.
 user_header=Diverse alternativ på användarnivå
@@ -131,6 +135,7 @@ user_err=Det gick inte att spara användaralternativ
 user_etimeout='$1' är inte en giltig timeout
 user_epath='$1' är inte en giltig klientprogramväg
 user_emax='$1' är inte ett giltigt kontrollsumman
+
 header_title=Test för huvud och kropp
 header_desc=På den här sidan kan du definiera ytterligare tester som SpamAssassin kommer att tillämpa på e-post, baserat på meddelandeshuvud, kroppsinnehåll, webbadresser som finns i kroppen eller kombinationer av andra tester. Namnet som tilldelas varje test är upp till dig, men är vanligtvis något som CONTAINS_FOO. Den verkliga poängen som SpamAssassin lägger till meddelanden som matchar ett test kan ställas in genom att ange dina egna eller inbyggda testnamn i tabellerna längst ner på sidan.
 header_switch=Byt till enkelt läge ..
@@ -164,6 +169,7 @@ header_eeval='$1' är inte en giltig utvärderingsfunktion
 header_eheader='$1' är inte en giltig e-posthuvud
 header_eregexp='$1' är inte ett giltigt reguljärt uttryck (måste vara som / expression /)
 header_emeta=Testuttrycket saknas för testet '$1'
+
 priv_title=Diverse privilegierade alternativ
 priv_desc=Alternativen på detta kan endast ställas in globalt, snarare än i enskilda användares konfigurationsfiler. De styr med banor till olika konfigurations- och loggfiler.
 priv_header=Inställningar för olika privilegier
@@ -183,6 +189,7 @@ priv_eargs='$1' är inte en giltig lista med argument
 priv_emscore='$1' är inte en giltig högsta fraspoäng
 priv_ephrase='$1' är inte en giltig två-ordspamfras
 priv_escore=Saknad eller ogiltig poäng för skräppostfras "$1"
+
 usually=Vanligtvis $1 
 ecannot=Du får inte använda den här sidan
 setup_title=Installera Procmail för SpamAssassin
@@ -202,11 +209,13 @@ setup_drop1=Mottagare Unix-användare
 setup_drop0=<tt>root</tt> användare
 setup_ok=Installera Procmail för SpamAssassin
 setup_email=Vidarebefordra till e-postadress
+
 setup_err=Det gick inte att konfigurera SpamAssassin
 setup_efile=Saknad eller ogiltig fil i mboxformat
 setup_emaildir=Saknad eller ogiltig Qmail-postkatalog
 setup_emhdir=MH-postkatalog saknas eller ogiltig
 setup_eemail=Saknad eller ogiltig e-postadress
+
 log_white=Modifierade tillåtna och nekade adresser
 log_score=Modifierad skräppostklassificering
 log_report=Modifierat meddelande modifiering
@@ -217,12 +226,14 @@ log_setup=Installera Procmail för SpamAssassin
 log_procmail=Ändrad Procmail-konfiguration
 log_import=Importerade $1 tillåtna adresser
 log_manual=Manuell redigerad konfigurationsfil
+
 import_title=Importera adresser
 import_err=Det gick inte att importera adresser
 import_efile=Ingen fil att importera från vald
 import_enone=Inga e-postadresser hittades i filen
 import_ok1=$2 e-postadresser hittades i filen, varav $1 var nya och har lagts till i listan med tilldelade adresser.
 import_ok2=$1 e-postadresser hittades i filen, men alla fanns redan i listan över tillåtna adresser.
+
 mail_title=Skräppost
 mail_desc=Den här sidan visar meddelanden som har klassificerats som skräppost och väntar på några åtgärder. Meddelanden som har felaktigt identifierats kan flyttas till din inkorg, medan de som verkligen är skräppost kan raderas.
 mail_level=Göra
@@ -240,10 +251,13 @@ mail_will=Automatisk uppdatering på $1 minuter
 mail_wills=Automatisk uppdatering på $1 sekunder
 mail_delall=Radera allt skräppost
 mail_search3=Sök efter poäng ovan:
+
 process_eclean=Ett fel uppstod när SpamAssassin-rubrikerna togs bort från det här e-postmeddelandet
 process_ereport=Det gick inte att rapportera e-post till SpamAssassin : $1 
+
 apply_err=Det gick inte att tillämpa ändringar
 apply_none=Inga SpamAssassin daemon-processer hittades!
+
 acl_avail=Ikoner tillgängliga för användaren
 acl_file=SpamAssassin-konfigurationsfil som ska redigeras
 acl_filedef=Global konfigurationsfil
@@ -251,8 +265,10 @@ acl_awl=Tillåtna användare för automatisk vitlistning
 acl_awl0=Alla användare
 acl_awl1=Endast listade användare $1 
 acl_awl2=Endast medlemmar i grupper $1 
+
 search_escore=Saknad eller ogiltig skräppost
 search_results5=$1 e-postmeddelanden med skräppost på eller över $2 ..
+
 razor_title=Inställning Razor Spam Detector
 razor_desc=Vipul's Razor är ett samarbetssystem för skräppostdetektering och rapportering som kan förbättra klassificeringen av skräppost som skickas till din adress. Innan det kan användas måste du dock registrera dig för ett Razor-konto med hjälp av formuläret nedan.
 razor_user=Razor-användarnamn
@@ -267,6 +283,7 @@ razor_epass=Lösenordet saknas
 razor_doing=Försöker nu registrera och ställa in Razor ..
 razor_done=.. Gjort.
 razor_failed=.. misslyckades! Se felutmatningen ovan för anledningen.
+
 amavisd_title=Amavisd Spam Delivery
 amavisd_desc=Formuläret kan användas för att ändra Amavisd-konfigurationen som avgör vad som händer med meddelanden klassificerade som skräppost.
 amavis_ok=Ändra leverans av Amavisd
@@ -304,9 +321,11 @@ amavis_quarantine_today=Skräppost i karantän idag (24 timmar)
 amavis_quarantine_week=Skräppostmeddelanden i karantän den här veckan (7 dagar)
 amavis_quarantine_month=Skräppostmeddelanden i karantän den här månaden (30 dagar)
 amavis_quarantine_total=Totalt antal skräppost i karantän
+
 procmail_title=Procmail-skräppostleverans
 procmail_ok=Ändra Procmail-leverans
 procmail_desc=Formuläret kan användas för att ändra Procmail-konfigurationen som avgör vad som händer med meddelanden som klassificeras som skräppost.
+
 simple_title=Test för huvud och kropp
 simple_desc=På den här sidan kan du definiera ytterligare tester som SpamAssassin kommer att tillämpa på e-post, baserat på meddelandeshuvud, kroppsinnehåll, webbadresser som finns i kroppen. Namnet som tilldelas varje test är upp till dig, men är vanligtvis något som CONTAINS_FOO.
 simple_switch=Byt till avancerat läge ..
@@ -317,8 +336,10 @@ simple_regexp=Matcha uttryck
 simple_score=Betyg som ska tillämpas
 simple_describe=Beskrivning
 simple_err=Det gick inte att spara meddelandetester
+
 before_ecmd=Före-spara kommandot misslyckades : $1 
 after_ecmd=Efter-sparande-kommando misslyckades : $1 
+
 connect_emysql=Det gick inte att ladda databasdrivrutinen $1 
 connect_elogin=Det gick inte att logga in på databasen $1:$2.
 connect_equery=Databasen $1 innehåller inte inställningstabellen $2 
@@ -326,9 +347,11 @@ connect_eldapmod=Perl-modul $1 som behövs för att kommunicera med LDAP är int
 connect_eldap=Det gick inte att ansluta till LDAP-servern $1 på port $2 
 connect_eldaplogin=Det gick inte att logga in på LDAP-servern $1 som $2 : $3 
 connect_ebase=LDAP-bas DN $1 är inte giltig : $2 
+
 eldap=LDAP-operationen misslyckades : $1 
 esql=SQL misslyckades : $1 
 ldap_euser=Det gick inte att hitta LDAP-användarobjekt för $1 
+
 db_title=SQL- och LDAP-databaser
 db_header=Alternativ för konfigurationslagringsdatabas
 db_dsn=Lagra användarkonfigurationer i
@@ -364,6 +387,7 @@ db_eldapport=Saknat eller ogiltigt LDAP-serverportnummer
 db_eldapdn=DN-saknad eller ogiltig bas - inga utrymmen är tillåtna
 db_eldapattr=SpamAssassin-attribut saknas eller ogiltigt
 db_eldapuid=Saknat eller ogiltigt användarnamnattribut
+
 awl_title=Hantera automatisk vitlistor
 awl_search=Sök i vitlista efter:
 awl_ok=Sök
@@ -389,6 +413,7 @@ awl_deleteone=Rensa automatisk vitlista
 awl_deleteonedesc=Ta bort alla poster med automatisk vitlista för användaren $1.
 awl_deleteall=Rensa alla auto-vitlistor
 awl_deletealldesc=Ta bort alla poster med automatisk vitlista för alla användare på systemet.
+
 dawl_err=Det gick inte att ta bort från automatisk vitlista
 dawl_eopen=Det gick inte att öppna vitlistan
 dawl_enone=Inga adresser att radera valda
@@ -396,6 +421,7 @@ dawl_ecannot=Du får inte hantera den automatiska vitlistan för den här använ
 dawl_doing=Radera auto-vitlistor för alla användare ..
 dawl_done=.. raderade $2 poster från $1 användare.
 dawl_title=Radera alla auto-vitlistor
+
 manual_title=Redigera konfigurationsfiler
 manual_file=Redigera konfigurationsfil:
 manual_ok=OK

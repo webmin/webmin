@@ -2,6 +2,7 @@ index_title_v=IPv4ファイアウォール
 index_title_v6=IPv6ファイアウォール
 index_editing=ルールファイル $1
 index_evalid=警告！現在のIPtables構成は無効です： $1
+index_no_comment=
 index_jump_log=ログパケット
 index_crename=チェーンの名前を変更
 index_cdeletesel=選択を削除します
@@ -29,6 +30,9 @@ index_ipset_size=サイズ
 index_ipvxmode=IPプロトコルバージョンの変更：
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
+desc_icmpv6-type=ICMPタイプは $1です
+desc_icmpv6-type!=ICMPタイプは $1ではありません
 desc_ctstate=接続の状態は $1です
 desc_ctstate!=接続の状態は $1ではありません
 desc_physdev-in=入力物理インターフェイスは $1です
@@ -38,7 +42,9 @@ desc_physdev-out!=出力物理インターフェースは $1ではありませ�
 desc_args--match-set=$2はIPセット $1に含まれています
 desc_src=ソース
 desc_dest=先
+
 redhat_einstalled=IPテーブルパッケージがシステムにインストールされていないことを示す<tt>iptables（6）</tt>ブートアップアクションが見つかりませんでした
+
 edit_state_untracked=追跡されない
 edit_state_snat=ソースNATd
 edit_state_dnat=宛先NATd
@@ -48,16 +54,22 @@ edit_physdevout=発信物理インターフェース
 edit_physdevisin=ブリッジインターフェイスで着信するパケット
 edit_physdevisout=ブリッジインターフェイスで発信するパケット
 edit_physdevisbridged=パケットがブリッジされています
+
 save_ecanjump=このアクションの使用は許可されていません
 save_ephysdevin=着信物理インターフェースが欠落しているか無効です
 save_ephysdevout=発信物理インターフェイスが欠落しているか無効です
+
 delete_ecannot=チェーンを削除することはできません
+
 clear_ecannot=チェーンをクリアすることはできません
+
 new_ecannot=チェーンを作成することはできません
+
 apply_ecannot=構成を適用することはできません
 apply_remote=$1からのエラー： $2
 unapply_ecannot=設定を元に戻すことはできません
 bootup_ecannot=起動時にファイアウォールを有効または無効にすることはできません
+
 log_rename_chain=テーブル $2のチェーン $1の名前を変更しました
 log_delsel_chain=テーブル $2のチェーン $1から $3ルールを削除しました
 log_movesel_chain=テーブル $2のチェーン $1から $3ルールを移動しました
@@ -66,7 +78,9 @@ log_add_group=グループ $1からクラスターサーバーを追加しまし
 log_delete_host=クラスターサーバー $1を削除しました
 log_delete_group=$1クラスターサーバーを削除しました
 log_openports=開いたファイアウォールポート $1
+
 setup_ecannot=ファイアウォールのセットアップは許可されていません
+
 acl_tables=許可されたIPtables
 acl_apply=構成を適用できますか？
 acl_unapply=設定を適用解除できますか？
@@ -78,9 +92,11 @@ acl_jall=すべて
 acl_newchain=新しいチェーンを作成できますか？
 acl_delchain=チェーンを削除またはクリアできますか？
 acl_policy=デフォルトポリシーを変更できますか？
+
 etable=このIPtableを編集することはできません
 ejump=このルールを編集することはできません
 ecluster=ファイアウォールクラスタを管理することは許可されていません
+
 cluster_title=クラスターファイアウォールサーバー
 cluster_none=ファイアウォールクラスターにサーバーがまだ追加されていません。
 cluster_host=ホスト名
@@ -91,6 +107,7 @@ cluster_gadd=グループにサーバーを追加
 cluster_need=ここで管理するには、Webmin Servers Indexモジュールでログインとパスワードを使用してサーバーを追加する必要があります。
 cluster_return=クラスタサーバー
 cluster_delete=削除選択
+
 add_title=サーバーを追加する
 add_msg=$1を追加します ..
 add_gmsg=グループ $1にサーバーを追加します ..
@@ -100,13 +117,16 @@ add_echeck=サーバー $1にはLinuxファイアウォールモジュールが�
 add_emissing=サーバー $1にはファイアウォールコマンド $2がありません
 add_ok=$1を追加し、 $2のアクティブなファイアウォールルールを追加しました。
 add_enone=追加するサーバーは選択されていません！
+
 policy_ecannot=このチェーンのデフォルトポリシーを変更することはできません
+
 move_title=移動ルール
 move_count=選択されたルール
 move_chain=現在の変化
 move_dest=宛先チェーン
 move_ok=今すぐ移動
 move_header=ルール移動オプション
+
 rename_title=チェーンの名前を変更
 rename_count=チェーンのルール
 rename_chain=現在の名前
@@ -116,5 +136,3 @@ rename_header=チェーンの名前変更オプション
 rename_adjust=このチェーンにジャンプする他のルールを変更しますか？
 rename_none=なし
 rename_ecannot=チェーンの名前を変更することはできません
-desc_icmpv6-type=ICMPタイプは $1です
-desc_icmpv6-type!=ICMPタイプは $1ではありません

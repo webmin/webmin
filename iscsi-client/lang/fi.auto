@@ -3,8 +3,10 @@ index_clink=Ehkä sitä ei ole asennettu, tai <a href='$1'>moduulin määritykse
 index_return=moduulihakemisto
 index_atboot=Aloita käynnistyessä?
 index_atbootdesc=Muuta tätä asetusta hallitaksesi onko iSCSI-asiakas käynnistetty käynnistyksen yhteydessä vai ei. Tätä tarvitaan, jotta iSCSI-palvelimista asennetut tiedostojärjestelmät asennetaan automaattisesti.
+
 check_econfig=ISCSI-asiakasmääritystiedostoa $1 ei löydy järjestelmästäsi.
 check_eiscsiadm=ISCSI-asiakashallintaohjelmaa $1 ei löydy järjestelmästäsi.
+
 auth_title=Todennusasetukset
 auth_header=iSCSI-asiakkaan ja palvelimen todennus
 auth_name=Paikallisen järjestelmän aloittajan nimi
@@ -29,6 +31,7 @@ auth_edpassword=Puuttuva palvelimen etsintäsalasana
 auth_edusername_in=Puuttuu löytö käyttäjänimi asiakkaalle
 auth_edpassword_in=Puuttuu löytösalasana asiakkaalle
 auth_egen=Uuden nimen luominen epäonnistui!
+
 timeout_title=iSCSI-aikakatkaisut
 timeout_header=iSCSI-asiakkaan aikakatkaisuasetukset
 timeout_timeout=Aika odottaa ennen SCSI-komentojen epäonnistumista
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=Puuttuva tai ei-numeerinen aika odottaa pingiä ennen 
 timeout_eabort_timeout=Puuttuva tai numeerinen aika odottaa keskeytymisvastausta ennen epäonnistumista
 timeout_elu_reset_timeout=Puuttuva tai ei-numeerinen aika odottaa loogisen yksikön vastausta ennen epäonnistumista
 timeout_etgt_reset_timeout=Puuttuva tai ei-numeerinen aika odottaa tavoitevastausta ennen epäonnistumista
+
 iscsi_title=iSCSI-asetukset
 iscsi_header=Muut iSCSI-vaihtoehdot
 iscsi_startup=Yhdistä istunnot käynnistyksen aikana?
@@ -62,6 +66,7 @@ iscsi_err=ISCSI-asetusten tallentaminen epäonnistui
 iscsi_eretry=Puuttuva tai ei-numeerinen määrä kirjautumisen uudelleenkokeiluun
 iscsi_ecmds=Puuttuvat tai ei-numeeriset maksimikäskyt, jotka on jonossa istuntoa kohti
 iscsi_equeue=Puuttuvat tai ei-numeeriset maksimikomennot jonossa laitetta kohden
+
 ifaces_title=iSCSI-liitännät
 ifaces_elist=Rajapintojen luettelointi epäonnistui : $1 
 ifaces_name=Rajapinnan nimi
@@ -78,11 +83,13 @@ ifaces_hwaddress=Mac osoite
 ifaces_ifacename=Lähderajapinta
 ifaces_ipaddressdef=Automaattinen
 ifaces_notset=Automaattinen
+
 iadd_err=Käyttöliittymän lisääminen epäonnistui
 iadd_eclash=Liitäntä nimeltä $1 on jo olemassa
 iadd_eipaddress=Puuttuva tai virheellinen lähteen IP-osoite
 iadd_ehwaddress=Puuttuva tai virheellinen MAC-osoite
 iadd_ename=Rajapinnan nimi puuttuu tai sisältää virheellisiä merkkejä
+
 difaces_err=Rajapintojen poistaminen epäonnistui
 difaces_enone=Mitään ei ole valittu
 difaces_edelete=Rajapinnan $1 poisto epäonnistui : $2 
@@ -93,6 +100,7 @@ difaces_confirm=Poista käyttöliittymät
 difaces_target=iSCSI-tavoite
 difaces_ip=iSCSI-palvelin
 difaces_users=Jotkin näitä rajapintoja käyttävät yhteydet ovat tällä hetkellä aktiivisia, eivätkä ne toimi, kun liitännät poistetaan :
+
 conns_title=iSCSI-yhteydet
 conns_elist=Yhteyksien luettelointi epäonnistui : $1 
 conns_ip=Palvelimen IP
@@ -113,6 +121,7 @@ conns_return=luettelo yhteyksistä
 conns_iface=iSCSI-käyttöliittymä
 conns_ifacedef=Valitse automaattisesti
 conns_ifaceerr=Rajapintojen nouto epäonnistui : $1 
+
 add_title=Lisää iSCSI-yhteys
 add_err=ISCSI-yhteyden lisääminen epäonnistui
 add_ehost=Puuttuva tai ratkaisematon isäntänimi
@@ -129,6 +138,7 @@ add_on=$1 $2 : lla
 add_auth=Kirjaudu palvelimelle
 add_auth1=Käytä oletustodennusmenetelmää
 add_auth0=Kirjaudu sisään nimellä $2 salasanalla $3 menetelmällä $1 
+
 dconns_err=Yhteysten katkaiseminen epäonnistui
 dconns_enone=Mitään ei ole valittu
 dconns_edelete=Kohteen $2 poisto isäntästä $1 epäonnistui : $3 
@@ -142,6 +152,7 @@ dconns_use=Käyttänyt
 dconns_size=Osion koko
 dconns_confirm=Poista yhteydet
 dconns_unused=käyttämätön
+
 vconn_title=iSCSI-yhteys
 vconn_egone=Valittua yhteyttä ei enää ole!
 vconn_header=iSCSI-yhteyden yksityiskohdat
@@ -160,8 +171,10 @@ vconn_device3=Laitteen vakio nimi
 vconn_delete=Katkaise yhteys
 vconn_users=Nykyiset käyttäjät
 vconn_size=Levyn koko
+
 atboot_err=Aktivointi epäonnistui käynnistyksen yhteydessä
 atboot_einit=$1 -nimistä käynnistystoimintoa ei ole
+
 log_auth=Tallennetut todennusasetukset
 log_timeout=Tallennetut aikakatkaisuasetukset
 log_iscsi=Tallennetut iSCSI-asetukset

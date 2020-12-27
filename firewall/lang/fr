@@ -88,6 +88,7 @@ index_ipset_size=Taille
 index_ipvxmode=Changer la version du protocole IP:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
 desc_p=le protocole est $1
 desc_p!=le protocole n'est pas $1
 desc_s=la source est $1
@@ -146,11 +147,15 @@ desc_always=Toujours
 desc_args--match-set=$2 est contenu dans l'ensemble IP $1
 desc_src=la source
 desc_dest=destination
+
 redhat_einstalled=Aucune action de démarrage <tt>iptables (6)</tt> n'a été trouvée, indiquant que le package IPtables n'est pas installé sur votre système
 redhat_eoutput=Une erreur est survenue en tentant d'obtenir le status d'IPtables à l'aide de la commande $1. Ceci indique probablement que votre système a été configuré pour utiliser IPchains au lieu de IPtables.
+
 gentoo_escript=Le script de démarrage $1 de Gentoo n'a pas été trouvé sur votre système.
+
 eiptables=Ligne inconnue dans le fichier IPtables : $1
 eip6tables=Ligne de fichier de sauvegarde Ip6tables inconnue : $1
+
 edit_title1=Ajouter la règle
 edit_title2=Editer la règle
 edit_title3=Cloner la règle
@@ -219,6 +224,7 @@ edit_physdevout=Interface physique sortante
 edit_physdevisin=Paquet entrant sur l'interface de pont
 edit_physdevisout=Paquet sortant sur l'interface de pont
 edit_physdevisbridged=Le paquet est ponté
+
 save_err=Impossible de sauvegarder la règle
 save_echain=Chaîne à exécuter manquante ou invalide
 save_esource=Adresse Source ou réseau manquant ou invalide
@@ -263,23 +269,28 @@ save_estates=Pas d'état de connexion sélectionnés
 save_ecanjump=Vous n'êtes pas autorisé à utiliser cette action
 save_ephysdevin=Interface physique entrante manquante ou invalide
 save_ephysdevout=Interface physique sortante manquante ou non valide
+
 delete_title=Supprimer la chaîne
 delete_rusure=Etes-vous certain de vouloir supprimer la chaîne $1 ? Les règles de $2 incluses seront également supprimées.
 delete_ok=Supprimer maintenant
 delete_ecannot=Vous n'êtes pas autorisés à supprimer les chaînes
+
 clear_title=Nettoyer la chaîne
 clear_rusure=Etes-vous certain de vouloir supprimer toutes les règles $2 de la chaîne $1 ?
 clear_ecannot=Vous n'êtes pas autorisé à vider les chaînes
+
 new_err=Impossible de créer la chaîne
 new_ename=Nom de chaîne manquant ou invalide
 new_etaken=Une chaîne avec ce nom existe déjà
 new_ecannot=Vous n'êtes pas autorisé à créer cette chaîne
+
 apply_err=Impossible d'appliquer la configuration
 apply_ecannot=Vous n'êtes pas autorisés à appliquer la configuration
 apply_remote=Erreur de $1 : $2
 unapply_err=Impossible de rétablir la configuration
 unapply_ecannot=Vous n'êtes pas autorisé à révoquer la configuration
 bootup_ecannot=Vous n'êtes pas autorisé à activer ou désactiver le parefeu au démarrage
+
 log_create_rule=Ajouté la règle à la chaîne $1 dans la table $2
 log_modify_rule=Modifié la règle dans la chaîne $1 dans la table $2
 log_delete_rule=Supprimé la règle dans la chaîne $1 dans la table $2
@@ -302,8 +313,10 @@ log_add_group=Serveurs de cluster ajoutés du groupe $1
 log_delete_host=Serveur de cluster supprimé $1
 log_delete_group=Suppression des serveurs de cluster $1
 log_openports=Ports de pare-feu ouverts $1
+
 setup_eiface=Pas d'interface réseau externe entrée
 setup_ecannot=Vous n'êtes pas autorisé à installer le parefeu
+
 acl_tables=IPtables autorisées
 acl_apply=Peut appliquer la configuration?
 acl_unapply=Peut annuler la configuration?
@@ -315,9 +328,11 @@ acl_jall=Tout
 acl_newchain=Peut créer de nouvelles chaînes?
 acl_delchain=Peut effacer ou vider des chaînes?
 acl_policy=Peut changer la politique par défaut?
+
 etable=Vous n'êtes pas autorisé à modifier cette table IP
 ejump=Vous n'êtes pas autorisé à éditer cette règle
 ecluster=Vous n'êtes pas autorisés à gérer le parefeu du cluster
+
 cluster_title=Parefeu des Serveurs de clusters
 cluster_none=Auncun serveur n'a été encore rajouté dans le parefeu cluster
 cluster_host=Nom du hôte
@@ -328,6 +343,7 @@ cluster_gadd=Ajouter les serveurs dans le groupe
 cluster_need=Vous devez ajouter des serveurs avec un identifiant et un mot de passe dans le module Webmin Servers Index avant de pouvoir les gérer ici.
 cluster_return=Serveurs de clusters
 cluster_delete=Enlever la sélection
+
 add_title=Ajouter des serveurs
 add_msg=Rajout $1 ...
 add_gmsg=Ajout de serveurs dans le groupe $1 ...
@@ -337,13 +353,16 @@ add_echeck=Le serveur $1 ne dispose pas du module de pare-feu Linux
 add_emissing=Le serveur $1 ne contient pas la commande de pare-feu $2
 add_ok=$1 ajouté, avec $2 règles de pare-feu actives.
 add_enone=Aucun serveur à ajouter sélectionné!
+
 policy_ecannot=Vous n'êtes pas autorisé à modifier la politique par défaut pour cette chaîne
+
 move_title=Déplacer les règles
 move_count=Règles sélectionnées
 move_chain=Changement actuel
 move_dest=Chaîne de destination
 move_ok=Déplacer maintenant
 move_header=Options de déplacement des règles
+
 rename_title=Renommer la chaîne
 rename_count=Règles en chaîne
 rename_chain=Nom actuel

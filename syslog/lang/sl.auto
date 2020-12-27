@@ -24,8 +24,10 @@ all=Vse
 index_view=Prikaži ..
 index_viewfile=Prikaži datoteko dnevnika:
 index_viewok=Pogled
+
 restart_ekill=Ni bilo mogoče signalizirati postopka syslog $1 : $2 
 restart_ecannot=Ni vam dovoljeno znova zagnati sistema
+
 start_ecannot=Ni vam dovoljeno zagnati sistema syslog
 edit_title=Uredi sistemski dnevnik
 create_title=Dodaj sistemski dnevnik
@@ -56,11 +58,13 @@ edit_tag=Samo za program
 edit_return=podrobnosti dnevnika
 edit_ecannot=Ni vam dovoljeno urejati nastavitev dnevnika
 edit_ecannot2=Tega dnevnika ne morete urejati
+
 view_title=Ogled dnevnika
 view_header=Zadnje $1 vrstice $2 
 view_empty=Datoteka dnevnika je prazna
 view_refresh=Osveži
 view_filter=Pokaži samo vrstice z besedilom $1 
+
 save_err=Dnevnika ni bilo mogoče shraniti
 save_efile='$1' ni veljavno ime datoteke : $2 
 save_epipe='$1' ni veljavna poimenovana cev
@@ -80,11 +84,13 @@ save_ecannot5=Tega dnevnika ne smete spreminjati
 save_ecannot6=Nimate dovoljenja za ogled samovoljnih dnevnikov
 save_ecannot7=Tega dodatnega dnevnika ni dovoljeno videti
 save_emissing=Manjka datoteko dnevnika za ogled
+
 log_modify=Spremenjen dnevnik v $1 
 log_create=Dnevnik je dodan v $1 
 log_delete=Izbrisan dnevnik v $1 
 log_apply=Uporabljene spremembe
 log_start=Zažen strežniški strežnik
+
 desc_sysmesg=Sistemska sporočila
 desc_mail=E-poštni dnevnik
 desc_auth=Dnevnik preverjanja pristnosti
@@ -93,6 +99,7 @@ desc_news=Dnevnik novic NNTP
 desc_uucp=UUCP Log
 desc_debug=Odpravljanje napak sporočil
 desc_cron=Dnevnik delovnih mest Cron
+
 acl_noedit=Ali si lahko ogledate le dnevnike?
 acl_any=Ali lahko katero koli datoteko vidite kot dnevnik?
 acl_logs=Ogled in konfiguracija dnevniških datotek

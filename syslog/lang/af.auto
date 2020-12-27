@@ -24,8 +24,10 @@ all=Almal
 index_view=Beskou ..
 index_viewfile=Bekyk loglêer:
 index_viewok=Beskou
+
 restart_ekill=Kon nie die tekenprosesproses $1 : $2 sein nie
 restart_ecannot=U mag nie syslog herbegin nie
+
 start_ecannot=U mag nie met syslog begin nie
 edit_title=Wysig stelsel log
 create_title=Voeg stelsellogboek by
@@ -56,11 +58,13 @@ edit_tag=Slegs vir program
 edit_return=log besonderhede
 edit_ecannot=U mag nie die loginstellings wysig nie
 edit_ecannot2=U mag nie die logboek wysig nie
+
 view_title=Kyk na Logfile
 view_header=Laaste $1 reëls van $2 
 view_empty=Die loglêer is leeg
 view_refresh=Verfris
 view_filter=Toon slegs reëls met teks $1 
+
 save_err=Kon nie die log stoor nie
 save_efile='$1' is nie 'n geldige lêernaam nie : $2 
 save_epipe='$1' is nie 'n geldige pyp met die naam nie
@@ -80,11 +84,13 @@ save_ecannot5=U mag nie die logboek wysig nie
 save_ecannot6=U mag nie arbitrêre logboeke sien nie
 save_ecannot7=U mag nie hierdie ekstra logboek sien nie
 save_emissing=Loglêer ontbreek om te bekyk
+
 log_modify=Gewysigde logboek na $1 
 log_create=Teken by $1 bygevoeg
 log_delete=Log na $1 uitgevee
 log_apply=Toegepaste wysigings
 log_start=Aanmeldbediener het begin
+
 desc_sysmesg=Stelselboodskappe
 desc_mail=Posloglêer
 desc_auth=Verifikasielog
@@ -93,6 +99,7 @@ desc_news=NNTP Nuuslogboek
 desc_uucp=UUCP-log
 desc_debug=Ontfoutingsboodskappe
 desc_cron=Cron Job Log
+
 acl_noedit=Kan logs slegs gesien word?
 acl_any=Kan enige lêer as 'n logboek gesien word?
 acl_logs=Kan loglêers besigtig en opstel

@@ -11,6 +11,7 @@ index_when=Da, $1
 index_act=Akcija
 index_exec=Izvrši
 index_delete=Izbriši Odabrane Kopije
+
 edit_title=Uredi Skupinu Kopija
 create_title=Kreiraj Skupinu Kopija
 edit_header=Skupine kopiranih detalja
@@ -31,12 +32,14 @@ edit_run=Kopiraj Sada
 edit_return=skupina kopija
 edit_email=Izlaz emaila u
 edit_none=Nitko
+
 save_err=Neuspjeli pokušaj da se sačuva skupina crona
 save_efiles=Nisu unešeni dokumenti koji se trebaju kopirati
 save_edest=Nedostaje mjesto direktorija
 save_eservers=Nema poslužitelja koji se mogu kopirati
 save_efile=Dokument za kopiranje '$1' nije potpuna putanja
 save_eemail=Email adresa nedostaje ili je neispravna
+
 exec_title=Kopirani Dokumenti
 exec_files1=Kopiram $1 dokumente u osabrane poslužitelje $2 ..
 exec_files2=KOpiram $1 na odabrene poslužitelje $2 ..
@@ -50,12 +53,15 @@ exec_not=Propali pokušaj kopiranja sljedećih dokumenata u $1 :
 exec_cmd=Izlazna naredba poslije-kopiranja na $1 :
 exec_before=Izlazna naredba prije-kopiranja na $1 :
 exec_on=Neuspijelo pokretanje na $1 : $2
+
 log_create=Kreirane kopije za $1 u $2 poslužitelj
 log_modify=Promijenjena kopija za $1 u $2 poslužitelj
 log_delete=Izbrisane kopije za $1 u $2 poslužitelj
 log_exec=Kopirani $1 u &2 poslužitelj
 log_deletes=Izbrisane $1 kopije
+
 email_subject_succeeded=Skupina kopija $1 je uspjela
 email_subject_failed=Skupina kopija $1 je propala
+
 delete_err=Neuspjelo brisanje kopija
 delete_enone=Ništa nije odabrano

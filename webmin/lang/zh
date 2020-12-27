@@ -1,5 +1,6 @@
 index_title=Webmin 配置
 index_return=webmin 配置
+
 access_title=IP 访问控制
 access_desc=可使用此表格将 Webmin 服务器配置为禁止访问或只允许某些IP地址访问。还可输入主机名（例如 foo.bar.com）或 IP 地址（例如 10.254.3.0 或 10.254.1.0/255.255.255.128）。您应该将您的服务器设置成只有可信任的地址才能访问，特别是可以从 Internet 访问服务器时。否则，任何人只要猜出您的密码就可以完全控制您的系统。
 access_header=访问控制
@@ -15,9 +16,11 @@ access_eip=‘$1’不是一个完整的 IP 或网址
 access_ehost=找不到‘$1’的 IP 地址
 access_eself=您当前的 IP 地址（$1）将会被禁止访问
 access_always=解析每一个请求中的主机名
+
 bind_title=端口与地址
 bind_header=IP 地址与端口
 bind_err=无法改变地址
+
 log_title=记入日志
 log_desc=可用标准 CLF 日志文件格式来配置 Webmin，以记载网络服务器点击数日志。如果启动日志功能，您还可选择是否记录 IP 地址或主机名，以及多长时间清除一次日志。该功能启动后，日志就会被写入文件 $1。
 log_desc2=启动日志功能时，Webmin 还在文件 $1 中记录用户的动作详细日志。您还可以将此日志与 Webmin“日志动作”模块一起查看和分析，来了解每个 Webmin 用户的使用情况。
@@ -33,6 +36,7 @@ log_files=记录每一动作对文件所做更改
 log_err=未能保存日志选项
 log_ehours=‘$1’不是有效的小时数
 log_ediff=您的系统中没有记录文件更改所需的命令 $1
+
 proxy_title=代理服务器
 proxy_desc=如果运行 Webmin 的主机在某种防火墙后， 您可能需要设置代理服务器用来访问 web 和 FTP 站点。某些模块，例如<tt>软件包</tt>，在下载文件或程序时将使用这些代理。
 proxy_header=代理服务器
@@ -43,6 +47,7 @@ proxy_nofor=以下地址无代理
 proxy_user=代理用户名
 proxy_pass=代理口令
 proxy_err=无法保存代理
+
 ui_title=用户界面
 ui_desc=您可在下表中编辑所有模块使用的用户界面选项。在输入颜色时，每个颜色都必须指定为标准的 RGB 系统，即每个值都必须是 00-ff 之间的十六进制数。
 ui_header=用户界面选项
@@ -60,6 +65,7 @@ ui_sysinfo2=在页面标题上
 ui_sysinfo3=无处
 ui_err=无法保存颜色
 ui_feedback=发送反馈信息给
+
 mods_title=Webmin 模块
 mods_desc1=在安装之后可用右方的表来新增 Webmin 模块。这些模块通常分布在 <tt>.wbm</tt> 文件中，每个文件可包含一个或多个模块。如果您的操作系统支持的话，这些模块也可从 RPM 文件安装。
 mods_install=安装模块
@@ -77,6 +83,7 @@ mods_cloneok=复制模块
 mods_desc3=可使用下表删除现有的模块和已复制的模块。如果您删除了被复制的模块，则由其复制出来的模块也会被删除。一旦删除了一个模块，您必须重新安装才能再次使用。一个被其他模块所依赖的模块是无法被删除的。
 mods_delete=删除模块
 mods_deleteok=删除选择的模块
+
 install_err1=无法从 $1 安装模块
 install_efile=文件不存在
 install_err2=无法安装上载的模块
@@ -103,10 +110,12 @@ install_erpm=不是一个 Webmin 模块或主题 RPM
 install_eirpm=RPM 安装失败: $1
 install_cat=在 $1 类别下。
 install_eneither=RPM 不包含 webmin 模块或主题
+
 clone_err=无法复制模块
 clone_elink=系统连接失败: $1
 clone_ecopy=无法复制配置: $1
 clone_desc=$1 的复制
+
 delete_err=无法删除模块
 delete_edep=无法删除模块 $1，因为模块 $2 依赖于它
 delete_desc1=$1 ($2 的复制)
@@ -115,22 +124,26 @@ delete_title=删除模块
 delete_msg=下列模块已成功地从您的 Webmin 装置中删除:
 delete_rusure=您确定要删除模块 $2？$1 kB 的文件将会被永远删除。
 delete_rusure2=您确定要删除主题 $2？$1 kB 的文件将会被永远删除。
+
 os_title=操作系统
 os_desc2=还可更改 Webmin 运行程序时的搜索路径及传递到任何程序的共享库路径。
 os_header=主机操作系统
 os_new=新的操作系统
 os_path=程序搜索路径
 os_ld_path=库搜索路径
+
 lang_title=语言
 lang_title2=Webmin 语言
 lang_lang=显示的语言
 lang_intro=您可在该页中选择 Webmin 显示标题、提示和消息所使用的语言。
 lang_ok=变更语言
+
 ssl_title=SSL 加密
 ssl_essl=您的系统中似乎没有安装 Net::SSLeay perl 模块。要安装 OpenSSL 库和 Net::SSLeay，请按照 Webmin 网址上的<a href='$1'>这些步骤</a>执行。
 ssl_desc1=运行 Webmin 的主机似乎已安装有 SSLeay Perl 模块。使用该模块，Webmin 支持在您的浏览器和服务器之间的 SSL 加密通讯。如果您通过 Internet 访问 Webmin 服务器，那么您应该考虑使用 SSL 来预防入侵者窃取您的 Webmin 口令。
 ssl_desc2=警告 -- 只有当您的浏览器支持 SSL (例如 Netscape 或 IE)，而且浏览器和 Webmin 主机之间没有防火墙堵塞 <b>https</b> 请求时，您才能使用 SSL 支持。
 ssl_header=SSL 支持
+
 startpage_title=索引页选项
 startpage_tabs=模块分类吗？
 startpage_nocol=列数
@@ -139,6 +152,7 @@ startpage_ecols=‘$1’不是有效的列数
 startpage_gotoone=如果用户只有一个模块时<br>是否直接跳转到该模块？
 startpage_deftab=默认类别
 startpage_nohost=显示版本、主机名和操作系统？
+
 upgrade_title=升级 Webmin
 upgrade_desc=在此表上，您可以将整个 webmin 安装升级。可从本地文件、上载文件或从 <a href=http://www.webmin.com/>www.webmin.com</a> 的最新的版本来安装。与手工升级一样，您的所有配置和第三方模块均被保留。
 upgrade_descrpm=在此表上，您可以用 RPM 的升级选项将整个 webmin 安装升级到一个新版本。可从本地文件、上载文件或从 <a href=http://www.webmin.com/>www.webmin.com</a> 的最新的版本来安装。与手工升级一样，您的所有配置和第三方模块均被保留。
@@ -168,6 +182,7 @@ upgrade_setuppackage=正在运行 pkgadd 升级 Webmin ... 请稍候，在升级
 upgrade_esolaris=在您从 Solaris 软件包安装之后，Webmin 的升级功能未能正常工作。请采用手工升级的方式。
 upgrade_eusermin=文件是 Usermin 版本 $1，而非 Webmin 更新版本。
 upgrade_updates=这个最新版本的 Webmin 共有 $1 项更新资料。现在<a href='$2'>点击此处</a> 自动下载并安装。
+
 update_desc1=在此表上，您可以从 <a href=http://www.webmin.com/webmin/updates.html>Webmin 更新</a> 页面或者以其他方式将出错或安全漏洞的 Webmin 升级。与此相反，现在安装的带有可更新功能的模块，当有的模块版本过时的情况时，会有选择性自动下载并安装到您的系统中。
 update_header1=现在更新模块
 update_header2=按时更新模块
@@ -182,6 +197,7 @@ update_enabled=当前已启用按时更新功能
 update_apply=保存并应用
 update_none=这版没有 Webmin 更新模块。
 update_desc2=此表示用来从 <a href=http://www.webmin.com/webmin/updates.html>Webmin 更新</a>或其他地方安排出错或有安全漏洞的 Webmin 模块的自动更新时间的。虽然这项服务很有帮助，但是您在使用时应该小心，防止出现更新服务器被入侵，攻击者入侵您的系统的情况。
+
 ca_title=证书颁发机构(CA)
 ca_old=现有证书
 ca_header1=创建新的 CA 证书
@@ -206,6 +222,7 @@ ca_eminiserv=仅在 miniserv 下支持 SSL 客户认证。
 ca_eversion=您机器上安装的这个版本的 Perl Net::SSLeay 模块不支持 SSL 客户证书。
 ca_essleay=您的系统中没有发现 SSL 管理命令 $1，您可能需更改“Webmin 用户”模块配置的路径。
 ca_essl=只有在 Web 服务器在 SSL 模式下运行时才能设置 SSL。
+
 session_title=验证
 session_desc1=口令超时功能启用时，可以保护您的 Webmin 服务器免遭由同一用户每次登录失败之间的延迟时间不断延长而造成的密码被破译的情况。
 session_header=验证和会话选项
@@ -234,10 +251,12 @@ session_epasswd_pindex=未输入或无效的 unix 口令索引
 session_banner1=无登录前的页面
 session_banner0=显示登录前的文件
 session_ebanner=未输入或无效的登录前文件
+
 assignment_title=重新分配模块
 assignment_header=模块类别的重新分配
 assignment_ok=变更类别
 assignment_desc=在此表上，您可以配置在 Webmin 索引页上显示每一模块的类别
+
 categories_title=编辑类别
 categories_header=类别 ID 和描述
 categories_desc=在此表上，您可以重新命名 Webmin 的类别，创建新的类别并指定给模块。该表格的上部是用来变更内置式目录的描述的，下部是用来增加新的类别 ID 和描述的。
@@ -245,6 +264,7 @@ categories_ok=保存类别
 categories_err=无法保存类别
 categories_edesc=未输入 $1 的描述
 categories_ecat=类别 ID $1 已被使用
+
 log_access=改变了 IP 访问控制
 log_bind=改变了端口和地址
 log_log=改变了日志选项
@@ -268,6 +288,7 @@ log_categories=改变了类别名称
 log_theme=将主题变更为 $1
 log_theme_def=将主题变更为 Webmin 默认值
 log_referers=改变了可信赖的访问来源
+
 themes_title=Webmin 主题
 themes_desc=主题控制 Webmin 用户界面的外观，包括图标、颜色、背景，可能还包括页面的布局。下面的选择框可用来选择安装在您系统上的主题。
 themes_sel=当前主题 ：
@@ -275,6 +296,7 @@ themes_default=默认 Webmin 主题
 themes_change=改变
 themes_installdesc=使用下表为您的系统上安装一个新的 Webmin 主题。主题通常分布在 <tt>.wbt</tt> 中，但如果系统支持，也可从 RPM 文件安装。
 themes_installok=安装主题
+
 themes_err1=无法从 $1 安装主题
 themes_efile=文件不存在
 themes_err2=无法安装上载主题
@@ -296,11 +318,13 @@ themes_eirpm=无法 RPM 安装：$1
 themes_ok=成功变更主题 .. 重新定向至 Webmin 索引页面。
 themes_delete=在此表上，您可以删除已安装到您的系统中，但没有使用的主题之一。
 themes_delok=要删除的主题：
+
 referers_title=可信赖的访问来源
 referers_desc=您可以在此页上配置 Webmin 访问来源检查支持，该功能是用来防止其他网址的恶意链接──将您的浏览器链接至使 Webmin 受到破坏的地方。但是，如果您已经从网址链接至 Webmin，而且不想被警告的话，您应该将这些网址增加至下面的列表中。
 referers_list=可信赖的网址
 referers_none=来自未知访问来源的可信赖的网址
 referers_referer=启动防问来源检查功能？
+
 update_err=无法更新模块
 update_eurl=未输入或无效的更新 URL 
 update_title=更新模块

@@ -1,5 +1,6 @@
 index_euser=O arquivo de configuração RBAC $1 não foi encontrado no seu sistema. Talvez o RBAC não esteja instalado ou a <a href='$2'>configuração do módulo</a> esteja incorreta.
 index_return=índice do módulo
+
 users_title=Atributos do Usuário
 users_user=Nome do usuário
 users_profiles=Perfis concedidos
@@ -10,6 +11,7 @@ users_return=lista de atributos do usuário
 users_type=Tipo
 users_role=Função
 users_project=Projeto
+
 user_title1=Criar atributos de usuário
 user_title2=Editar atributos do usuário
 user_header=Atributos concedidos ao usuário Unix
@@ -35,6 +37,7 @@ user_eauth='$1' não é uma autorização válida
 user_ecannot=Você não tem permissão para editar este usuário
 user_erole=Você não tem permissão para atribuir a função '$1'
 user_eprof=Você não tem permissão para atribuir o perfil '$1'
+
 auths_title=Autorizações
 auths_name=Nome da autorização
 auths_desc=Descrição
@@ -42,8 +45,10 @@ auths_none=Nenhuma autorização foi definida ainda.
 auths_add=Adicione uma nova autorização.
 auths_return=lista de autorizações
 auths_ecannot=Você não tem permissão para editar autorizações
+
 authc_name=Autorização
 authc_desc=Descrição
+
 auth_title1=Criar autorização
 auth_title2=Editar autorização
 auth_header=Detalhes do privilégio de autorização
@@ -57,6 +62,7 @@ auth_edesc=Descrição longa inválida
 auth_eclash=Já existe uma autorização com o mesmo nome
 auth_einuseu=Esta autorização está em uso pelo usuário $1 e, portanto, não pode ser excluída
 auth_einusep=Esta autorização está em uso pelo perfil $1 e, portanto, não pode ser excluída
+
 profs_title=Perfis
 profs_name=Nome do perfil
 profs_desc=Descrição
@@ -65,6 +71,7 @@ profs_none=Nenhum perfil foi definido ainda.
 profs_add=Adicione um novo perfil.
 profs_return=lista de perfis
 profs_ecannot=Você não tem permissão para editar perfis
+
 prof_title1=Criar perfil
 prof_title2=Editar Perfil
 prof_header=Detalhes do perfil de autorização
@@ -81,6 +88,7 @@ prof_einuseu=Este perfil está em uso pelo usuário $1 e, portanto, não pode se
 prof_einusep=Este perfil está em uso pelo perfil $1 e, portanto, não pode ser excluído
 prof_einusee=Este perfil possui $1 perfis de execução relacionados e, portanto, não pode ser excluído
 prof_none=Nenhum perfil disponível
+
 execs_title=Perfis de execução
 execs_name=Perfil
 execs_policy=Política de segurança
@@ -92,6 +100,7 @@ execs_none=Nenhum perfil de execução foi definido ainda.
 execs_add=Adicione um novo perfil de execução.
 execs_return=lista de perfis de execução
 execs_ecannot=Você não tem permissão para editar perfis de execução
+
 exec_title1=Criar perfil de execução
 exec_title2=Editar perfil de execução
 exec_header=Detalhes do perfil de execução
@@ -113,6 +122,7 @@ exec_erruid=Usuário ausente ou inválido para executar como
 exec_errgid=Grupo ausente ou inválido para executar como
 exec_erreuid=Usuário efetivo ausente ou inválido para executar como
 exec_erregid=Grupo efetivo ausente ou inválido para executar como
+
 policy_title=Políticas do sistema
 policy_header=Configurações globais de diretiva do sistema
 policy_auths=Autorizações para todos os usuários
@@ -126,16 +136,20 @@ policy_err=Falha ao salvar as políticas do sistema
 policy_eallow=Nenhum algoritmo para permitir selecionado
 policy_eclash=O algoritmo para permitir e descontinuar não pode ser selecionado ao mesmo tempo
 policy_ecannot=Você não tem permissão para editar políticas do sistema
+
 attr_none=Nenhum atributo de usuário definido
 attr_nonenormal=Nenhum usuário Unix definido
 attr_nonerole=Nenhuma função disponível definida
+
 help_epath=Caminho de arquivo de ajuda inválido!
 help_link=(Socorro..)
+
 crypt___unix__=Criptografia Unix
 crypt_1=BSD MD5
 crypt_2a=BSD Flowfish
 crypt_md5=Sun MD5
 crypt_rot13=ROT13
+
 log_create_user=Atributos de usuário criados para $1 
 log_modify_user=Atributos de usuário modificados para $1 
 log_delete_user=Atributos de usuário excluídos para $1 
@@ -152,6 +166,7 @@ log_create_project=Projeto criado $1
 log_modify_project=Projeto modificado $1 
 log_delete_project=Projeto excluído $1 
 log_policy=Políticas de sistema alteradas
+
 acl_roles=Pode editar funções?
 acl_users=Pode editar atributos do usuário?
 acl_roleassign=Pode atribuir funções
@@ -166,6 +181,7 @@ acl_profs=Pode editar perfis?
 acl_ro=Apenas visualização
 acl_execs=Pode editar perfis de execução?
 acl_projects=Pode editar projetos?
+
 projects_title=Projetos
 projects_name=Nome
 projects_id=EU IRIA
@@ -184,6 +200,7 @@ projects_exceptusers=Todos os usuários, exceto $1
 projects_exceptgroups=Todos os grupos, exceto $1 
 projects_onlyusers=Apenas 1
 projects_onlygroups=Apenas 1
+
 project_title1=Criar Projeto
 project_title2=Editar Projeto
 project_header=Detalhes do projeto e membros
@@ -219,6 +236,7 @@ project_egroupscannot=Nenhum grupo para excluir selecionado
 project_elimit=Limite ausente ou inválido na linha $1 
 project_epool=Nome do pool de projetos ausente ou inválido
 project_erss=Memória máxima ausente ou inválida
+
 prctl_title=Controles de recursos
 prctl_ok=Mostrar limites para:
 prctl_mode0=Processo com ID

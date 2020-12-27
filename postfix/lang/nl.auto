@@ -1,20 +1,36 @@
 index_reload=Configuratie opnieuw laden
 index_reloadmsg=Klik op deze knop om Postfix alle configuratiebestanden opnieuw te laten lezen. Dit kan handig zijn als de Postfix-configuratiebestanden handmatig zijn gewijzigd.
+
 smtpd_nomap2=Er is nog geen kaart met beperkingen voor afzenderadressen ingevoerd.
 smtpd_map=Toegestane adressen voor doorsturen
 smtpd_map2=Beperkingen op afzenderadressen
+
 opts_smtp_use_tls=Gebruik TLS voor SMTP-verbindingen
 opts_smtp_sasl_security_options=SASL beveiligingsopties
+
 mapping_toomany=Er zijn $1 kaartvermeldingen, die boven de weergavelimiet van $2 liggen.
 mapping_find=Overeenkomende toewijzingen weergeven:
 mapping_search=Zoeken
 mapping_match=Mapbestandvermeldingen die overeenkomen met <tt>$1</tt> ..
+
+sni_title=Certificaattoewijzing
+sni_ecannot=U mag de configuratie van de certificaattoewijzing niet bewerken
+opts_sni_maps=Opzoektabellen voor certificaattoewijzing
+sni_return=certificaatkaarten
+sni_dom=Hostnaam
+sni_certs=Certificaatbestanden
+
+acl_sni=Kan certificaten bewerken?
+
 mailq_deleteall=E-mailwachtrij wissen
 mailq_deletealldesc=Klik op deze knop om alle berichten in de e-mailwachtrij te verwijderen.
+
 dependent_title=Afzenderafhankelijke transporttoewijzing
 dependent_ecannot=Het is niet toegestaan afzenderafhankelijke transporttoewijzingen te bewerken
 dependent_eregexp=De kaart die afhankelijk is van de afzender moet de indeling <tt>regexp:</tt> <i>bestandsnaam</i> hebben
 dependent_return=afzenderafhankelijke transporttoewijzingen
+
+log_sni=Wijzig de opties voor certificaattoewijzing
 log_dependent=Veranderde afzenderafhankelijke adresopties
 log_reload=Herladen Postfix-configuratie
 log_sender_dependent_default_transport_maps_create=Afzenderafhankelijk adres gemaakt $1
@@ -22,6 +38,7 @@ log_sender_dependent_default_transport_maps_modify=Gewijzigd afzenderafhankelijk
 log_sender_dependent_default_transport_maps_delete=Verwijderd afhankelijk adres afzender $1
 log_delete_sender_dependent_default_transport_mapss=$1 afzenderafhankelijke adressen verwijderd
 log_manual_sender_dependent_default_transport_mapss=Handmatig bewerkte afzenderafhankelijke adressen in $1
+
 opts_smtp_sasl_auth_enable=SASL SMTP-authenticatie gebruiken?
 opts_smtpd_tls_auth_only=SASL-authenticatie over onveilige verbindingen niet toestaan?
 sasl_relay=SMTP-relaisbeperkingen
@@ -31,5 +48,6 @@ sasl_level_dane_only=Verplicht DANE TLS
 sasl_level_fingerprint=Vingerafdrukverificatie certificaat
 sasl_level_verify=Verplichte TLS-verificatie
 sasl_level_secure=TLS met beveiligd kanaal
+
 mysql_ecfile2=Kon tabel niet vinden in MySQL-configuratiebestand $1
 mysql_edriver=Kan het databasestuurprogramma $1 niet laden

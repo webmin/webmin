@@ -12,6 +12,7 @@ index_ereq_resource_cmd=The script to request resources from the other node ($1)
 index_version=دل کی دھڑکن کا ورژن$1
 index_noversion=Warning - The version of Heartbeat installed on your system could not be automatically detected. You should set it on the <a href='$1'>module configuration</a> page.
 index_status=دل کی دھڑکن کی حیثیت
+
 conf_title=تشکیل کے اختیارات
 conf_header=دل کی دھڑکن ترتیب کے اختیارات
 conf_serials=سیریل دل کی دھڑکن بندرگاہیں
@@ -54,6 +55,7 @@ conf_auto_on=$ {conf_en सक्षम}
 conf_auto_off=$ {conf_disabled}
 conf_auto_legacy=میراثی وضع
 conf_auto_={{پہلے سے طے شدہ}
+
 res_title=کلسٹر وسائل
 res_node=پرائمری نوڈ
 res_ips=IP پتے
@@ -67,6 +69,7 @@ res_getserv=وسیلہ حاصل کریں
 res_hbdown=دل کی دھڑکن نیچے
 res_up=یوپی
 res_down=نیچے
+
 node_create=کلسٹر ریسورس شامل کریں
 node_edit=کلسٹر ریسورس میں ترمیم کریں
 node_header=کلسٹر وسائل کی تفصیلات
@@ -83,6 +86,7 @@ node_enone=غائب یا غلط پرائمری نوڈ
 node_eip='$1' درست IP ایڈریس نہیں ہے
 node_ecidr='$1' درست CIDR نہیں ہے
 node_ebroad='$1' ایک درست نشریاتی پتہ نہیں ہے
+
 auth_title=توثیق کی کلیدیں
 auth_header=کلسٹر نوڈ کی توثیق
 auth_mode=توثیق کا طریقہ
@@ -92,6 +96,8 @@ auth_md5=پاس ورڈ کے ساتھ MD5
 auth_err=توثیق کیز کو بچانے میں ناکام
 auth_emd5=گم شدہ یا غلط MD5 پاس ورڈ
 auth_esha1=لاپتہ یا غلط SHA1 پاس ورڈ
+
 start_err=دل کی دھڑکن شروع کرنے میں ناکام
+
 apply_err=تبدیلیاں لاگو کرنے میں ناکام
 apply_epid=عمل اب نہیں چل رہا ہے

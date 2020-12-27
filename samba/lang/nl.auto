@@ -1,3 +1,5 @@
 smb_server=Wachtwoordserver
+
 savefshare_emkdir=Kan directory niet maken : $1 
+
 acl_bind=Heeft u toegang tot winbind-opties?

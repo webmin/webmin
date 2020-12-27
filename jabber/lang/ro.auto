@@ -17,6 +17,7 @@ index_restartmsg=Faceți clic pe acest buton pentru a aplica configurația curen
 index_comments=Avertisment - fișierul dvs. de configurare Jabber $1 conține comentarii, care vor fi eliminate dacă se efectuează modificări de configurare cu acest modul.
 index_return=Meniu Jabber
 index_version=Versiunea Jabber $1 
+
 general_title=Optiuni generale
 general_header=Opțiunile serverului Global Jabber
 general_host=Numele gazdă al serverului
@@ -32,6 +33,7 @@ general_eelogfmt=Lipsește formatul jurnalului de erori
 general_erlog=Fișierul jurnal de trafic lipsă sau nevalid
 general_erlogfmt=Lipsește formatul jurnalului de trafic
 general_epidfile=Fișierul de identificare a procesului lipsește sau este nevalid
+
 messages_title=Mesaje
 messages_header=Mesaj server Jabber pentru clienți
 messages_wsubject=Bine ati venit subiectul mesajului
@@ -44,6 +46,7 @@ messages_vcard2jud=Trimiteți vCard către directorul utilizatorului Jabber?
 messages_err=Nu a putut salva mesajele
 messages_evcard=XML vCard nevalid : $1 
 messages_etag=Serverul vCard XML nu începe cu &lt;vCard&gt;
+
 modules_title=Module Jabber
 modules_desc=Modulele enumerate mai jos sunt utilizate pentru a procesa mesajele primite de managerul de sesiuni Jabber. Ar trebui să schimbați această listă numai dacă știți ce faceți.
 modules_header=Module de manager de sesiuni server Jabber
@@ -52,6 +55,7 @@ modules_so=Biblioteca comună
 modules_err=Nu a reușit să salveze modulele Jabber
 modules_emod=„$1” nu este un nume de modul valid
 modules_eso=Biblioteca comună „$1” nu există
+
 karma_title=Controlul traficului Karma
 karma_header=Opțiuni de control al ratei de trafic
 karma_rate=Manipulare excesivă a conexiunilor
@@ -80,6 +84,7 @@ karma_epenalty=Perioade de penalizare lipsă sau nevalide
 karma_erestore=Perioadele de restaurare lipsă sau nevalide
 karma_epoints=Număr de conexiuni lipsă sau nevalid
 karma_etime=Timp lipsit sau nevalid pentru care se blochează
+
 ips_title=Control acces IP
 ips_header=Control acces IP server Jabber
 ips_allow=IP-uri permise pentru clienți
@@ -89,10 +94,12 @@ ips_none=Nici unul
 ips_sel=Adrese/mesaje net listate ..
 ips_err=Nu a reușit să salvați controlul de acces IP
 ips_eaddr=„$1” nu este o adresă IP validă sau o adresă IP/netmask
+
 file_title=Editează fișierul de configurare
 file_desc=Utilizați formularul de mai jos pentru a edita fișierul de configurare Jabber direct. Acest lucru trebuie făcut numai dacă înțelegeți formatul de configurare XML.
 file_header=Editați fișierul de configurare Jabber
 file_err=Nu a reușit să salvați fișierul de configurare
+
 admin_title=Utilizatori administrativi
 admin_header=Utilizatori de administrare server
 admin_read=Citeste administratorii de acces
@@ -100,11 +107,13 @@ admin_write=Scrie admin-uri de acces
 admin_reply=Autoreply pentru admin mesaje?
 admin_rsubject=Subiect automat
 admin_rbody=Mesaj automat
+
 filter_title=Filtre utilizator
 filter_header=Permisiunile de filtrare a utilizatorului
 filter_max=Reguli de filtrare maxime
 filter_conds=Condițiile admise ale filtrului
 filter_acts=Acțiuni de filtrare permise
+
 restart_err=Eroare la aplicarea modificărilor
 stop_err=Nu a reușit să oprească Jabber
 stop_epid=Nu a reușit să găsească procesul Jabber

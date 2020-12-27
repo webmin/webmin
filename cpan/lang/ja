@@ -25,6 +25,7 @@ index_none=インストールされた Perl モジュールは見つかりませ
 index_tabmods=インストールされたモジュール
 index_tabinstall=モジュールのインストール
 index_tabsuggest=推奨するモジュール
+
 download_err=モジュールをインストールできませんでした
 download_elocal=ローカル ファイルがありません
 download_elocal2='$1' は存在しません
@@ -60,6 +61,7 @@ download_missing=Missing $1 modules
 download_nomissing=All installed
 download_ebuild=One or more of the Perl modules needs $1 to be built, but this Perl module is not installed.
 download_yum=Installing Perl module $1 from package $2 ..
+
 install_title=モジュールのインストール
 install_untar=モジュール ファイルを untar する
 install_make=モジュールをコンパイル中
@@ -79,11 +81,13 @@ install_err2=You can also install the module from CPAN with the command $1.
 install_exec=コマンド $1 を実行中..
 install_efile=モジュール ファイル $1 はすでに存在しません
 install_needunlink=You may attempt to install again by going back to the previous page and selecting different options. Otherwise, <a href='$1'>click here to delete the temporary package files</a> in order to save disk space.
+
 cpan_sel=$1 の下にあるモジュール..
 cpan_title=Perl モジュールの選択
 cpan_search=モジュール名を検索
 cpan_match=$1 に一致したモジュール ..
 cpan_none=一致しませんでした。
+
 edit_title=モジュールの詳細
 edit_header=モジュール情報
 edit_mod=モジュール名
@@ -100,6 +104,7 @@ edit_method=Installed from
 edit_rpm=RPM package $1
 edit_debian=Debian package $1
 edit_manual=Perl module 手動インストール
+
 uninstall_title=モジュールのアンインストール
 uninstall_rusure=Perl モジュール $1 をアンインストールしますか? 以下のファイルが削除されます :
 uninstall_rusure2=Perl モジュール $1 とサブモジュール $2 をアンインストールしますか?<br>以下のファイルが削除されます :
@@ -107,7 +112,9 @@ uninstall_ok=アンインストール
 uninstall_rpm=The module will be removed by un-installing the $1 RPM package.
 uninstall_debian=The module will be removed by un-installing the $1 Debian package.
 uninstall_err=Failed to uninstall module
+
 delete_efile=Invalid package file!
+
 uninstalls_title=モジュールのアンインストール
 uninstalls_err=Failed to uninstall modules
 uninstalls_enone=None selected

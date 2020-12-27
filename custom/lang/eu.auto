@@ -15,6 +15,7 @@ index_actform=inprimakia
 index_actrun=Korrika egin
 index_actsql=inprimakia
 index_acted=Open
+
 edit_title=Editatu komandoa
 create_title=Sortu komandoa
 edit_ecannot=Ezin duzu komandoak editatu
@@ -66,6 +67,7 @@ edit_format4=Deskargatu ahal denean
 edit_servers=Exekutatu Webmin zerbitzarietan
 edit_this=zerbitzari hau
 edit_clone=Clone
+
 save_err=Ezin izan da agindua gorde
 save_ecannot=Ezin duzu komandoak editatu
 save_ecmd=Ez da komandorik sartu
@@ -78,6 +80,7 @@ save_eusermin=Beste zerbitzarietan exekutatzen diren komandoak ezin dira Usermin
 save_eformat=Irteera baliogabea MIME mota
 save_eopts=Aukera fitxategia falta da $1 parametroarentzako
 save_eopts2=$1 parametroarentzako aukera-fitxategiak edo balio lehenetsiak ezin dute :
+
 run_err=Ezin izan da komandoa exekutatu
 run_ecannot=Ezin duzu komando hau exekutatu
 run_euser=Erabiltzaile falta edo baliogabea
@@ -94,6 +97,7 @@ run_eupload=Ez da fitxategirik kargatzeko hautatuta
 run_emust='$1' parametroaren balioa falta da
 run_timeout=Komandoak huts egin du $1 bigarren denbora amaitu aurretik.
 run_failed=Komandoak huts egin du $1 irteera egoerarekin
+
 log_modify=$1 komando aldatua
 log_create=$1 komando sortua
 log_delete=$1 komandoa ezabatu da
@@ -102,11 +106,13 @@ log_modify_edit=$1 fitxategi editorea
 log_create_edit=$1 fitxategi editorea sortu da
 log_delete_edit=$1 fitxategi editorea ezabatu da
 log_save_edit=$1 fitxategia gorde da
+
 acl_cmds=Erabiltzaile honek exekutatu ditzakeen komandoak
 acl_call=Komando guztiak
 acl_csel=Hautatutako ..
 acl_cexcept=Hautatutako guztiak izan ezik ..
 acl_edit=Komandoak sortu eta editatu ditzakezu?
+
 file_ecannot=Ezin duzu fitxategiak editatu
 fcreate_title=Sortu Fitxategi Editorea
 fedit_title=Editatu Fitxategia
@@ -130,6 +136,7 @@ file_egroup=Talde izen falta edo baliogabea
 file_eperms=Zortzimeneko baimen falta edo baliogabea
 file_envs=Ordezko inguruneko aldagaiak fitxategi-izenean?
 file_id=Editore IDa
+
 view_err=Ezin izan da fitxategia editatu
 view_ecannot=Ezin duzu fitxategi hau editatu
 view_title=Editatu Fitxategia
@@ -138,10 +145,12 @@ view_header=$1 fitxategia editatzea
 view_ebeforeedit=Editatu aurretik komandoak huts egin du : $1 
 view_ebefore=Aurreztearen aginduak huts egin du : $1 
 view_eafter=Gorde ondoren komandoak huts egin du : $1 
+
 form_ecannot=Ezin duzu komando hau exekutatu
 form_title=Agintea egikaritzea
 form_exec=Exekuzio
 form_edit=Editatu
+
 sql_title1=Sortu SQL komandoa
 sql_title2=Editatu SQL komandoa
 sql_header=SQL komandoaren xehetasunak
@@ -157,6 +166,7 @@ sql_err=Huts egin du SQL agindua gordetzean
 sql_esql=Ez da SQL sartu
 sql_ehost=Datu-base zerbitzariaren ostalari falta edo baliogabea
 sql_edb=Datu-basearen izen falta edo baliogabea
+
 srun_title=SQL Komandoa exekutatu
 srun_err=Huts egin du SQL agindua exekutatzerakoan
 srun_edriver=Ezin izan da DBI kontrolatzailea kargatu

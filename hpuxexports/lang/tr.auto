@@ -4,6 +4,7 @@ index_ro_rw=tüm ana bilgisayarlar okuma erişimi, seçilen ana bilgisayarlar ya
 index_sel_rw=seçilen ana makineler yazma erişimi
 index_all_rw=tüm ev sahipleri yazma erişimi
 index_sel_root=seçilen ana bilgisayar kök erişimi
+
 edit_security=İhracat güvenliği
 edit_sel_ro=Listelenen ana makineler okuma erişimi
 edit_all_ro=Tüm ana bilgisayarlar okuma erişimi
@@ -18,4 +19,5 @@ edit_anon_access=Anonim kullanıcı
 edit_anon_notset=Belirlenmedi
 edit_anon_noaccess=Erişim yok
 edit_async=Asenkron yazarlar
+
 save_enohost='$1' - Hiçbir ana bilgisayarı listelemediniz

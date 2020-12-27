@@ -17,6 +17,7 @@ index_tabsync=Synchronizacja z serwerem czasu
 index_desctime=Niniejszy formularz służy do zmiany systemowego obecnego czasu, który jest używany przez wszystkie uruchomione procesy. W systemach operacyjnych, które mają odrębny zegar sprzętowy, może być używany do ustawiania go.
 index_desczone=Ten formularz pozwala na ustawienie domyślnej strefy czasowej systemu, który służy do konwersji czasu systemu na format czytelny dla człowieka i offset.
 index_descsync=Niniejszy formularz służy do konfiguracji systemu do automatycznej synchronizacji czasu ze zdalnym serwerem. Synchronizacja będzie odbywać się za pomocą <tt>time</tt> Unixa lub protokołu NTP, w zależności od zainstalowanych poleceń i obsługiwanych przez zdalny system.
+
 action_save=Zachowaj
 action_apply=Zastosuj
 action_sync=Synchronizuj czas systemowy z czasem sprzętowym
@@ -24,6 +25,7 @@ action_sync_s=Synchronizuj czas sprzętowy z czasem systemowym
 action_timeserver_sys=Synchronizuj czas systemowy
 action_timeserver_hw=Synchronizuj czas sprzętowy
 action_savezone=Zmień strefę czasową
+
 acl_sys=Użytkownik może zmieniać czas systemowy
 acl_hw=Użytkownik może zmieniać czas sprzętowy
 acl_timezone=Użytkownik może ustawić strefę czasową?
@@ -34,8 +36,10 @@ acl_error=Masz dostęp do modułu czasu systemowego, ale nie możesz zmieniać a
 acl_nosys=Nie masz uprawnień do zmiany czasu systemowego
 acl_nohw==Nie masz uprawnień do zmiany czasu sprzętowego
 acl_nontp=Nie masz uprawnień do synchronizacji z serwerem czasu
+
 sys_title=Czas systemowy
 hw_title=Czas sprzętowy
+
 day=Dzień tygodnia
 month=Miesiąc
 date=Dzień
@@ -43,12 +47,14 @@ hour=Godzina
 year=Rok
 minute=Minuty
 second=Sekundy
+
 error_cnf=Błąd : $1 nie ma takiego polecenia
 error_hw=Nie mogę ustawić czasu sprzętowego : $1
 error_sync=Nie mogę ustawić czasu systemowego : $1
 error_ediff=Różnica czasów serwera czasu i lokalnego jest zbyt duża : $1 dni
 error_entp=Synchronizacja czasu NTP nie powiodła się: $1
 error_etimeserver=Brak serwerów czasu do synchronizacji z wpisanych
+
 log_set_date=Ustawiono czas systemowy na $1
 log_set_hwclock=Ustawiono zagar sprzętowy na $1
 log_remote_date=Pobrano czas systemowy z $2
@@ -58,6 +64,7 @@ log_remote_hwclock_l=Pobrano czas sprzętowy $1 z $2
 log_sync=Zsynchronizowano czas systemowy z zegarem sprzętowym
 log_sync_s=Zsynchronizowano zegar sprzętowy z czasem systemowym
 log_timezone=Zmieniono strefę czasową na $1
+
 timezone_err=Nie udało się zapisać strefy czasowej
 timezone_ecannot=Nie możesz zmienić strefy czasowej
 timezone_enone=Nie wybrano strefy

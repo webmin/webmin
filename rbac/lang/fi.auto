@@ -1,5 +1,6 @@
 index_euser=RBAC-määritystiedostoa $1 ei löydy järjestelmästäsi. Ehkä RBAC: ta ei ole asennettu, tai <a href='$2'>moduulin kokoonpano</a> on väärä.
 index_return=moduulihakemisto
+
 users_title=Käyttäjän ominaisuudet
 users_user=Käyttäjätunnus
 users_profiles=Myönnetyt profiilit
@@ -10,6 +11,7 @@ users_return=käyttäjän määritteiden luettelo
 users_type=Tyyppi
 users_role=Rooli
 users_project=projekti
+
 user_title1=Luo käyttäjän määritteet
 user_title2=Muokkaa käyttäjän määritteitä
 user_header=Unix-käyttäjälle myönnetyt määritteet
@@ -35,6 +37,7 @@ user_eauth='$1' ei ole voimassa oleva valtuutus
 user_ecannot=Sinulla ei ole oikeutta muokata tätä käyttäjää
 user_erole=Et voi antaa '$1' -roolia
 user_eprof=Sinulla ei ole oikeutta antaa profiilia '$1'
+
 auths_title=valtuutukset
 auths_name=Valtuutuksen nimi
 auths_desc=Kuvaus
@@ -42,8 +45,10 @@ auths_none=Valtuutuksia ei ole vielä määritelty.
 auths_add=Lisää uusi valtuutus.
 auths_return=valtuutusluettelo
 auths_ecannot=Et voi muokata valtuutuksia
+
 authc_name=valtuutus
 authc_desc=Kuvaus
+
 auth_title1=Luo valtuutus
 auth_title2=Muokkaa valtuutusta
 auth_header=Valtuutusoikeuksien yksityiskohdat
@@ -57,6 +62,7 @@ auth_edesc=Virheellinen pitkä kuvaus
 auth_eclash=Saman nimen valtuutus on jo olemassa
 auth_einuseu=Tätä valtuutusta käyttää käyttäjä $1, joten sitä ei voi poistaa
 auth_einusep=Tätä valtuutusta käyttää profiili $1, joten sitä ei voi poistaa
+
 profs_title=Profiilit
 profs_name=Profiili nimi
 profs_desc=Kuvaus
@@ -65,6 +71,7 @@ profs_none=Profiileja ei ole vielä määritelty.
 profs_add=Lisää uusi profiili.
 profs_return=profiililuettelo
 profs_ecannot=Sinulla ei ole oikeutta muokata profiileja
+
 prof_title1=Luo profiili
 prof_title2=Muokkaa profiilia
 prof_header=Valtuutusprofiilin tiedot
@@ -81,6 +88,7 @@ prof_einuseu=Tätä profiilia käyttää käyttäjä $1, joten sitä ei voi pois
 prof_einusep=Profiili $1 käyttää tätä profiilia, joten sitä ei voi poistaa
 prof_einusee=Tällä profiililla on $1 liittyviä suoritusprofiileja, joten sitä ei voi poistaa
 prof_none=Ei saatavilla olevia profiileja
+
 execs_title=Suoritusprofiilit
 execs_name=Profiili
 execs_policy=Turvallisuuspolitiikka
@@ -92,6 +100,7 @@ execs_none=Suoritusprofiileja ei ole vielä määritetty.
 execs_add=Lisää uusi suoritusprofiili.
 execs_return=toteutusprofiilien luettelo
 execs_ecannot=Sinulla ei ole oikeutta muokata suoritusprofiileja
+
 exec_title1=Luo suoritusprofiili
 exec_title2=Muokkaa suoritusprofiilia
 exec_header=Suoritusprofiilin tiedot
@@ -113,6 +122,7 @@ exec_erruid=Puuttuva tai virheellinen käyttäjä ajaa nimellä
 exec_errgid=Puuttuva tai virheellinen ryhmä toimimaan nimellä
 exec_erreuid=Puuttuva tai kelpaa tehokas käyttäjä suoritettavaksi nimellä
 exec_erregid=Puuttuva tai virheellinen tehokas ryhmä suoritettavaksi nimellä
+
 policy_title=Järjestelmäkäytännöt
 policy_header=Globaalit järjestelmäkäytäntöasetukset
 policy_auths=Kaikkien käyttäjien valtuutukset
@@ -126,16 +136,20 @@ policy_err=Järjestelmäkäytäntöjen tallentaminen epäonnistui
 policy_eallow=Ei algoritmeja valitun sallimiseksi
 policy_eclash=Algoritmia salliakseen ja vanhentaa ei voida valita molemmat samanaikaisesti
 policy_ecannot=Et voi muokata järjestelmäkäytäntöjä
+
 attr_none=Ei käyttäjän määritteitä
 attr_nonenormal=Mitään Unix-käyttäjää ei ole määritelty
 attr_nonerole=Ei käytettävissä olevia rooleja
+
 help_epath=Virheellinen ohjetiedoston polku!
 help_link=(Auta..)
+
 crypt___unix__=Unix-krypta
 crypt_1=BSD MD5
 crypt_2a=BSD Flowfish
 crypt_md5=Sun MD5
 crypt_rot13=ROT13
+
 log_create_user=Luotut käyttäjän määritteet $1 : lle
 log_modify_user=Muokatut käyttäjän määritteet kohteelle $1 
 log_delete_user=Poistetut $1 käyttäjän määritteet
@@ -152,6 +166,7 @@ log_create_project=Luotu projekti $1
 log_modify_project=Muokattu projekti $1 
 log_delete_project=Poistettu projekti $1 
 log_policy=Muutettu järjestelmäkäytäntö
+
 acl_roles=Voiko muokata rooleja?
 acl_users=Voiko käyttäjäominaisuuksia muokata?
 acl_roleassign=Osaa antaa rooleja
@@ -166,6 +181,7 @@ acl_profs=Voiko profiileja muokata?
 acl_ro=Vain näkymä
 acl_execs=Voiko muokata suoritusprofiileja?
 acl_projects=Voiko projekteja muokata?
+
 projects_title=projektit
 projects_name=Nimi
 projects_id=ID
@@ -184,6 +200,7 @@ projects_exceptusers=Kaikki käyttäjät paitsi $1
 projects_exceptgroups=Kaikki ryhmät paitsi $1 
 projects_onlyusers=Vain 1
 projects_onlygroups=Vain 1
+
 project_title1=Luo projekti
 project_title2=Muokkaa projektia
 project_header=Projektin yksityiskohdat ja jäsenet
@@ -219,6 +236,7 @@ project_egroupscannot=Ei valittuja poissuljettavia ryhmiä
 project_elimit=Riviltä $1 puuttuu tai virheellinen raja
 project_epool=Puuttuva tai virheellinen projektiryhmän nimi
 project_erss=Puuttuva tai virheellinen maksimimuisti
+
 prctl_title=Resurssien hallinta
 prctl_ok=Näytä rajoitukset:
 prctl_mode0=Käytä tunnusta

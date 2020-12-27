@@ -4,6 +4,7 @@ index_desc=Descrizione
 index_add=Aggiungi un nuovo servizio PAM.
 index_return=elenco dei servizi
 index_none=Nessun file di configurazione PAM trovato sul tuo sistema nella directory $1. Forse PAM non è supportato o la <a href='$2'>configurazione del modulo</a> non è corretta.
+
 desc_su=Cambia utente
 desc_su-l=Cambia utente (con login)
 desc_login=Accesso locale o remoto
@@ -87,6 +88,7 @@ desc_common-account=Verifica dell'account comune
 desc_common-auth=Autenticazione comune
 desc_common-password=Cambio password comune
 desc_common-session=Impostazione della sessione comune
+
 edit_title=Modifica servizio PAM
 edit_header=Dettagli del servizio PAM
 edit_name=Nome di Servizio
@@ -107,6 +109,7 @@ edit_move=Mossa
 edit_return=Servizio PAM
 edit_inc=Includi servizio $1 
 edit_iheader=Servizi PAM inclusi
+
 pam_pwdb.so=Autenticazione password Unix
 pam_securetty.so=Verifica TTY sicura per root
 pam_nologin.so=Controllo file <tt>/etc/nologin</tt>
@@ -149,6 +152,7 @@ pam_console.so=Solo controllo console
 pam_xauth.so=Autenticazione X.
 pam_stack.so=Chiama altro servizio PAM
 pam_foreground.so=Configurazione della console
+
 control_requisite=requisito
 control_required=necessario
 control_sufficient=Sufficiente
@@ -157,6 +161,7 @@ control_desc_requisite=Autenticazione non riuscita immediatamente in caso di err
 control_desc_required=Autenticazione fallita alla fine in caso di fallimento
 control_desc_sufficient=Esegui l'autenticazione immediatamente in caso di successo
 control_desc_optional=L'esito positivo o negativo viene ignorato
+
 create_title=Crea servizio PAM
 create_header=Nuove opzioni di servizio PAM
 create_name=Nome di Servizio
@@ -165,6 +170,7 @@ create_mods=Moduli PAM iniziali
 create_0=Nessuna
 create_1=Autenticazione Unix
 create_2=Nega ogni accesso
+
 mod_edit=Modifica modulo PAM
 mod_create=Aggiungi modulo PAM
 mod_header=Opzioni del modulo PAM
@@ -178,10 +184,12 @@ mod_type_password=Cambio di password
 mod_control=Livello di fallimento
 mod_args=Argomenti del modulo
 mod_err=Impossibile salvare il modulo
+
 pwdb_shadow=Usa il file delle password shadow?
 pwdb_nullok=Accettare password null?
 pwdb_md5=Utilizzare password crittografate con MD5?
 pwdb_nodelay=Ritardo dopo l'accesso fallito?
+
 unix_nullok_secure=Accettare password null su TTY sicuri?
 unix_min=Lunghezza minima della password
 unix_nomin=Nessuna
@@ -190,6 +198,7 @@ unix_nomax=Senza limiti
 unix_obscure=Impedire l'uso di password semplici?
 unix_emin=Lunghezza minima della password mancante o non valida
 unix_emax=Lunghezza massima della password mancante o non valida
+
 listfile_item=Cerca file per
 listfile_item_user=Nome utente
 listfile_item_tty=TTY
@@ -206,51 +215,64 @@ listfile_apply=Limitare il controllo a
 listfile_all=Tutti gli utenti
 listfile_user=Solo utente
 listfile_group=Solo gruppo
+
 cracklib_type=Digitare la password nel prompt
 cracklib_retry=Numero massimo di tentativi prima dell'errore
 cracklib_eretry=Numero di tentativi mancante o non valido
 cracklib_etype=Tipo di password mancante o non valido
+
 rhosts_equiv=Leggi il file <tt>/etc/hosts.equiv</tt>?
 rhosts_rhosts=Leggi i file <tt>.rhosts</tt> degli utenti?
 rhosts_promiscuous=La voce <tt>+</tt> consente a tutti gli host?
 rhosts_suppress=Log autenticazione fallita?
+
 env_var=Nome della variabile
 env_def=Valore di default
 env_over=Sostituisci valore
 env_evar=I nomi delle variabili non possono contenere spazi
+
 securetty_ttys=TTY sicuri
+
 shells_shells=Shell utente valide
+
 tally_deny=Tentativi di errore prima di negare l'accesso
 tally_reset=Ripristina il conteggio errori in caso di successo
 tally_edeny=Numero mancante o non valido di tentativi di errore
 tally_magic=Il conteggio degli errori si applica a <tt>root</tt>?
 tally_root=L'account <tt>root</tt> può essere negato?
+
 time_services=Servizi
 time_ttys=TTY
 time_users=utenti
 time_times=Tempi di accesso
 time_info=Tutti i campi possono contenere più valori separati da | e i valori possono usare * come carattere jolly o! come negatore.
+
 group_services=Servizi
 group_ttys=TTY
 group_users=utenti
 group_times=Tempi di accesso
 group_groups=Aggiungi gruppi
 group_info=Tutti i campi possono contenere più valori separati da | e i valori possono usare * come carattere jolly o! come negatore.
+
 wheel_group=Controlla l'appartenenza al gruppo
 wheel_group_def=Predefinito (<tt>ruota</tt> o GID 0)
 wheel_trust=I membri del gruppo ignorano l'ulteriore autenticazione?
 wheel_deny=Negare invece di consentire ai membri del gruppo?
 wheel_egroup=Nome del gruppo mancante o non valido
+
 motd_file=File da visualizzare
 motd_file_def=Predefinito (<tt>/etc/motd</tt>)
 motd_efile=Nome file mancante o non valido
+
 mail_nopen=Visualizza notifica e-mail al login?
 mail_close=Visualizza notifica e-mail al logout?
 mail_empty=Avvisare se il file di posta è vuoto?
 mail_noenv=Impostare la variabile d'ambiente $ MAIL?
 mail_dir=Directory di spool della posta
 mail_edir=Directory di spool della posta mancante o non valida
+
 stack_service=Passare il controllo al servizio PAM
+
 log_pam_create=Servizio PAM creato $1 
 log_pam_delete=Servizio PAM eliminato $1 
 log_mod_create=Aggiunto modulo PAM $1 al servizio $2 
@@ -262,6 +284,7 @@ log_inc_create=Aggiunto include $1 per il servizio $2
 log_inc_modify=Modificato include $1 per il servizio $2 
 log_inc_delete=Eliminato includere $1 per il servizio $2 
 log_incs=Aggiornamenti inclusi per il servizio $1 
+
 inc_edit=Modifica servizio incluso
 inc_create=Crea servizio incluso
 inc_header=Dettagli del servizio PAM inclusi

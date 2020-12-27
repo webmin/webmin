@@ -44,6 +44,7 @@ right_upsec=تتوفر تحديثات حزمة$1 ، من بينها$2 تحديث
 right_recollect=تحديث معلومات النظام
 right_vvirtualmin=نسخة Virtualmin
 right_vvm2=إصدار Cloudmin
+
 acl_show=معلومات النظام لإظهار
 acl_showall=كل شىء
 acl_showsel=المحدد فقط ..

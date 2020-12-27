@@ -13,19 +13,26 @@ index_start=啟動計劃的命令服務器
 index_startdesc=啟動運行計劃的命令的<tt>atd</tt>後台服務器進程。這是命令在其指定時間執行所必需的。
 index_boot=在啟動時啟動服務器？
 index_bootdesc=更改此設置以啟用或禁用在系統引導時啟動計劃的命令服務器。
+
 edit_shortcmd=執行命令
 edit_run=現在跑步
 edit_showfull=顯示完整腳本。
+
 create_eallow=指定的用戶不允許運行計劃的命令
+
 acl_allow=可以編輯允許的At用戶嗎？
+
 run_title=運行命令
 run_output=計劃命令的輸出 ..
 run_none=沒有輸出
+
 allow_err=無法保存允許的用戶
 allow_ecannot=您無權管理允許的用戶
 allow_eusers=沒有用戶輸入
+
 deletes_err=取消命令失敗
 deletes_enone=未選擇
+
 log_allow=更改了允許的用戶
 log_create_job=為 $1創建了計劃的命令
 log_delete_job=已取消 $1的預定命令
@@ -35,5 +42,6 @@ log_stop=停止調度的命令服務器
 log_start=啟動計劃的命令服務器
 log_bootup=引導時啟用計劃的命令服務器
 log_bootdown=引導時禁用調度的命令服務器
+
 stop_err=無法停止服務器
 start_err=無法啟動服務器

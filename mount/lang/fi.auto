@@ -12,6 +12,7 @@ index_return=tiedostojärjestelmäluettelo
 index_none=Sinulla ei ole pääsyä mihinkään liitettyyn tiedostojärjestelmään.
 index_mount2=Asenna salasanalla:
 index_root=Juurtiedostojärjestelmä
+
 edit_title=Muokkaa Mount
 create_title=Luo Mount
 edit_err=Asennuksen muokkaaminen epäonnistui
@@ -58,6 +59,7 @@ edit_ecannot=Tätä tiedostojärjestelmää ei saa muokata
 edit_ecannot2=Et voi lisätä uusia tiedostojärjestelmiä
 edit_3_or_lower=3 (tai alempi)
 edit_advanced=Edistynyt tila
+
 save_err=Asennuksen tallentaminen epäonnistui
 save_edir='$1' ei ole hakemisto
 save_edirname='$1' ei ole kelvollinen hakemistonimi
@@ -74,8 +76,10 @@ save_apply=Hae pysyvään luetteloon
 save_fapply=Pakota irrottaminen
 save_eremount=Lasku epäonnistui : $1
 save_enone=Et ole päättänyt tallentaa tai asentaa
+
 swap_err=Vaihtotiedoston luominen epäonnistui
 swap_esize='$1' ei ole kelvollinen koko
+
 nfs_server=Valitse NFS-palvelin ..
 nfs_select=Valitse asennettava NFS-palvelin ..
 nfs_ip=IP-osoite
@@ -87,6 +91,7 @@ nfs_seldir=Valitse asennettava NFS-hakemisto.
 nfs_seldirv4=Jos valitset NFSv4-asennuksen, sinun tulee valita '/'
 nfs_dir=hakemisto
 nfs_clients=asiakkaat
+
 smb_choose=Valitse CIFS-palvelin ..
 smb_elist=Palvelinluettelon nouto epäonnistui $1. Ehkä palvelin ei salli selaamista
 smb_eworkgroup=Moduulin kokoonpanosivulla ei ole työryhmää
@@ -103,6 +108,7 @@ smb_sel2=Valitse asennettava osake ..
 smb_share=Jaa
 smb_comment=Kommentti
 smb_noshares=Palvelimella $1 ei ole saatavissa olevia tiedostojakoja
+
 solaris_scsidev=SCSI-ohjain $1 target $2 yksikkö $3 osio $4
 solaris_idedev=IDE-ohjain $1 asema $2 osio $3
 solaris_mddev=RAID-laite $1
@@ -240,6 +246,7 @@ solaris_efstyp2=Tiedostojärjestelmän tyypin tarkistaminen epäonnistui : $1
 solaris_ecachedir='$1' ei ole kelvollinen välimuistihakemisto
 solaris_efmode='$1' ei ole kelvollinen oktaalitiedostotila
 solaris_edmode='$1' ei ole kelvollinen oktaalihakemistotila
+
 linux_eamd=AMD epäonnistui
 linux_eauto=Automount epäonnistui : $1
 linux_esmbconn=Yhteyttä palvelimeen ei voitu muodostaa
@@ -361,6 +368,7 @@ linux_noenforce=Kyllä, mutta älä pakota
 linux_df=Sisällytetäänkö varatut lohkot tiedostojärjestelmän kokoon?
 linux_noatime=Vältä viimeisimpien käyttöaikojen päivittämistä?
 linux_netdev=Odota, kunnes verkkoliittymät ovat ylhäällä?
+linux_nofail=Jatketaanko käynnistystä, vaikka asennus epäonnistuu
 linux_ecname=Puuttuva tai virheellinen asiakkaan netbios-nimi
 linux_emname=Puuttuva tai virheellinen palvelimen isäntänimi tai IP-osoite
 linux_bind=Alkuperäinen hakemisto
@@ -386,6 +394,7 @@ linux_nounix=Poistetaanko CIFS Unix -laajennukset käytöstä?
 linux_noserverino=Luodaan inode-numerot asiakaspuolella?
 linux_cvers=CIFS-versio
 linux_ecvers=CIFS-version on oltava numero
+
 log_mount=Asennettu $3
 log_mount_l=Asennettu $2 $1 $3
 log_umount=Asentamaton $3
@@ -399,7 +408,9 @@ log_modify_l=Muokattu $2 mount $1 $3
 log_delete=Poistettu mount $3
 log_delete_l=Poistettu $2 mount $1 $3
 log_swap=Luotu vaihtotiedosto $1
+
 unmount_err=$1: n purkaminen epäonnistui
+
 mount_err=$1 -asennus epäonnistui
 irix_nhost=NFS-isäntänimi
 irix_ndir=NFS-hakemisto
@@ -430,6 +441,7 @@ irix_rock=Käytätkö Rock Ridge -laajennuksia?
 irix_nofsck=Tarkista tiedostojärjestelmä käynnistyksen yhteydessä?
 irix_auto=Automounter-lähde
 irix_automap=Kartta-tiedosto
+
 irix_ehost=Isäntä '$1' ei ole olemassa
 irix_eloss=Isäntä '$1' on alhaalla
 irix_eshowmount=Isäntä '$1' ei tue NFS: ää
@@ -447,9 +459,11 @@ irix_efstyp2=Tiedostojärjestelmätyypin $1 hakeminen epäonnistui : $2
 irix_efstyp=$1 -järjestelmän tiedostojärjestelmä on $2, ei $3
 irix_eautomap=Automounter-karttatiedostoa '$1' ei ole
 irix_eauthmap2=Puuttuva tai virheellinen automounter-karttatiedosto
+
 irix_devroot=Juuriosio
 irix_devswap=Vaihda osio
 irix_autohosts=Kaikki NFS-vienti
+
 acl_only=Saako vain asentaa ja irrottaa?
 acl_fs=Tiedostojärjestelmät, joita voidaan muokata
 acl_types=Tiedostojärjestelmätyypit, joita voidaan käyttää
@@ -462,8 +476,10 @@ acl_hide=Piilota muokkaamattomat tiedostojärjestelmät?
 acl_simple=Näytä yksinkertainen kiinnitysmuoto?
 acl_simopts=Näytä yksinkertaistetut tiedostojärjestelmän vaihtoehdot?
 acl_browse=Näytä tiedosto ja jaa selauspainikkeet?
+
 egcc=GCC- tai CC-kääntäjä, jota tarvitaan ohjelman luomiseen järjestelmään asennettujen tiedostojärjestelmien luetteloimiseksi, ei ole käytettävissä.
 ecompile=Järjestelmässä asennetun tiedostojärjestelmien luettelointiohjelman luomisessa tapahtui virhe : $1
+
 freebsd_eaddr=Puuttuva tai virheellinen palvelimen osoite
 freebsd_eworkgroup=Puuttuva tai virheellinen työryhmä
 freebsd_ide=IDE-kiintolevy
@@ -477,8 +493,10 @@ freebsd_idedev=IDE-laite $1, viipale $2, osio $3
 freebsd_scsidev=SCSI-laite $1, viipale $2, osio $3
 freebsd_edevpath=Muun laitteen on oltava absoluuttinen polku, kuten <tt>/dev/cdrom</tt>
 freebsd_edevfile=Laitetiedostoa '$1' ei ole
+
 cswap_file=Vaihtotiedostoa $1 ei ole.
 cswap_size=Luo ja asenna kokoinen vaihtotiedosto
+
 acl_sysinfo=Näytetäänkö käytettävissä olevat levytiedot hallintapaneelissa?
 sysinfo_total=Kaikki yhteensä
 sysinfo_dev=Laitetunnus

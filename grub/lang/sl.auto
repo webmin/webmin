@@ -8,6 +8,7 @@ index_none=Možnosti zagona niso definirane. Pred namestitvijo grušča se prepr
 index_efile=Datoteke menija GRUB $1 v vašem sistemu ni bilo mogoče najti. Morda GRUB ni nameščen ali je <a href='$2'>konfiguracija modula</a> napačna.
 index_epath=Izvedljivega GRUB $1 v vašem sistemu ni bilo mogoče najti. Morda GRUB ni nameščen ali je <a href='$2'>konfiguracija modula</a> napačna.
 index_return=seznam možnosti
+
 title_add=Dodaj možnost zagona
 title_edit=Uredi možnost zagona
 title_header=Podrobnosti o možnosti menija za zagon
@@ -36,6 +37,7 @@ title_echain=Manjkajoča ali neveljavna datoteka verižnika
 title_edev=Nepodprta naprava korenske particije $1 
 title_einitrd=Manjka začetno ime datoteke ramdisk
 title_lock=Geslo je zaklenjeno?
+
 global_title=Globalne možnosti
 global_header=Možnosti globalnega zagonskega menija
 global_default=Privzeta možnost zagona
@@ -56,12 +58,14 @@ global_edev=Nepodprta namestitev diska/particije $1
 global_eother=Manjkajoči ali neveljavni disk/particija
 global_epassword=Manjkajoče ali neveljavno zagonsko geslo
 global_epasswordfile=Manjka nadomestno ime datoteke
+
 install_title=Namestite GRUB
 install_err=Namestitve GRUB ni bilo mogoče namestiti
 install_efind=Datoteke menijev ni bilo mogoče najti
 install_desc=Namestitev GRUB na $1 z ukazi $2 in $3 ..
 install_ok=.. namestite dokončano.
 install_failed=.. namestitev ni uspela!
+
 log_create_title=Ustvarjena možnost zagona $1 
 log_delete_title=Izbrisana možnost zagona $1 
 log_modify_title=Spremenjena možnost zagona $1 

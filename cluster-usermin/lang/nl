@@ -39,7 +39,9 @@ index_thost=Hostnaam
 index_tdesc=Omschrijving
 index_tver=Versie
 index_ttype=OS type
+
 this_server=deze server
+
 add_title=Servers Toevoegen
 add_msg=Toevoegen $1 ..
 add_gmsg=Toevoegen van servers in groep $1 ..
@@ -49,6 +51,7 @@ add_echeck=Server $1 heeft niet de Usermin configuratie module
 add_echeck2=Server $1 heeft niet de Usermin Gebruikers module
 add_eversion=Server $1 werkt niet met Usermin versie $2 of hoger
 add_ok=$1 Toegevoegd met $2 modules en $3 themes.
+
 refresh_title=Ververs Module en Thema Lijst
 refresh_header=Her-aanvragen van module en thema lijst van alle servers ..
 refresh_header4=Her-aanvragen van module en thema lijst van leden van $2 ..
@@ -64,6 +67,7 @@ refresh_g2=$1 groepen verwijdert
 refresh_done=.. klaar
 refresh_del=$1 is verwijdert van de server lijst
 refresh_failed=Verversen van $1 is mislukt : $2
+
 host_title=Beheerde Server
 host_header=Beheer Usermin server details
 host_name=Hostnaam
@@ -81,6 +85,7 @@ host_header_u=Usermin gebruikers
 host_header_g=Usermin groepen
 host_return=server details
 host_version2=Versie
+
 edit_title_mod=Bewerk Module
 edit_title_theme=Bewerk Thema
 edit_header_mod=Usermin module details van $1
@@ -103,6 +108,7 @@ edit_codes=Van test $1
 edit_acl=Bewerk ACL voor
 edit_uacl=Gebruiker $1 op $2
 edit_gacl=Groep $1 op $2
+
 install_err=Mislukt om modules te installeren
 install_title=Installeer Module
 install_elocal=Geen locale file ingegeven
@@ -123,6 +129,7 @@ do_failed=Mislukt om te installeren op $1 : $2
 do_success_mod=Geïnstalleerde module $2 op $1
 do_success_theme=Geïnstalleerde thema $2 op $1
 do_done=.. klaar
+
 delete_err=Mislukt om module $1 te verwijderen
 delete_epack=De module $1 bestaat niet
 delete_title=Verwijder Module
@@ -140,6 +147,7 @@ delete_edepends=De module(s) $1 rekenen hierop.
 delete_egone=Module bestaat niet langer
 delete_esuccess=Succesvol verwijdert van $1 : $2
 delete_acls=Verwijder van gebruikers en reset toegang's controle instelling?
+
 user_title1=Maak Usermin Gebruiker
 user_header1=Nieuwe Usermin gebruiker details
 user_name=Gebruikersnaam
@@ -198,11 +206,13 @@ user_all=&lt;alle hosts&gt;
 user_donthave=&lt;hosts die het nog niet hebben&gt;
 user_have=&lt;hosts die het hebben&gt;
 user_ofgroup=Leden van $1
+
 udelete_title=Verwijder Gebruiker
 udelete_doing=Gebruiker $1 verwijderen van alle hosts ..
 udelete_success=Succesvol verwijdert van $1
 udelete_failed=Mislukt om te verwijderen van $1 : $2
 udelete_done=.. klaar
+
 group_title1=Maak groep
 group_header1=Nieuwe Usermin groep details
 group_name=Groep naam
@@ -230,6 +240,7 @@ group_failed2=Updaten van groep mislukte op $1 : $2
 group_return=groep details
 group_nomems=Geen leden
 group_servers=Server(s) om te maken op
+
 gdelete_title=Verwijder Groep
 gdelete_desc=Weet u zeker dat u de groep $1 en zijn gebruikers $2 wilt verwijderen van alle hosts ?
 gdelete_ok=Verwijder Groep
@@ -238,6 +249,7 @@ gdelete_success=Succesvol verwijdert van $1
 gdelete_failed=Verwijderen mislukt van $1 : $2
 gdelete_done=.. klaar
 gdelete_esub=Deze groep heeft subgroepen $1, en kan daarom niet verwijdert worden.
+
 acl_title=Module Toegang Controle
 acl_title2=Voor gebruiker $1 in $2 op $3
 acl_title3=Voor groep $1 in $2 op $3
@@ -256,6 +268,7 @@ acl_doing2=Toegang controle instelling voor $1 op $2 ..
 acl_success=Toegang controle succesvol ingesteld op $1
 acl_failed=Mislukt om toegang controle in te stellen op $1 : $2
 acl_done=.. klaar
+
 sync_title=Synchroniseren Servers
 sync_desc=Met dit formulier kunt u Usermin gebruikers en groepen maken op servers die dit nog niet hebben, waarbij gelijktijdig alle accounts tussen alle servers in sync worden gebracht in uw clusters.
 sync_hosts=Servers om te synchroniseren
@@ -279,6 +292,7 @@ sync_gcreate=Toevoegen van Usermin groep $1 ..
 sync_acl=Kopiëren van ACL files voor $1 ..
 sync_test=Alleen laten zien wat gedaan word?
 sync_restart=Usermin Herstarten ..
+
 upgrade_title=Upgrade Usermin
 upgrade_header=Usermin Upgraden op alle hosts ..
 upgrade_header2=Upgraden van Usermin op $1 ..
@@ -297,6 +311,7 @@ upgrade_failed=Installatie mislukte op $1 : $2
 upgrade_done=.. klaar
 upgrade_efast=Alleen servers die snelle RPC mode gebruiken kunnen worden ge-upgrade
 upgrade_ereconn=Opnieuw verbinden met Usermin mislukte na de upgrade! : $1
+
 update_title=Update Modules
 update_header=Updaten van modules op alle hosts ..
 update_header5=Updaten van modules op $2 ..

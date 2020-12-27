@@ -42,11 +42,13 @@ index_norder0=任务
 index_norder1=文件结构
 index_norder2=名称/IP 地址
 index_version=ISC DHCPd 版本 $1
+
 butt_save=保存
 butt_eco=编辑客户选项
 butt_vco=查看客户选项
 butt_del=删除
 butt_create=创建
+
 esub_crheader=创建子网
 esub_edheader=编辑子网
 esub_tabhdr=子网细节
@@ -60,10 +62,12 @@ esub_groups=本子网中的直接组
 esub_pools=子网的地址池
 esub_pool=池$1
 esub_poolnone=未定义地址池
+
 esub_pooladd=新增地址池
 esub_none=无
 esub_return=子网列表
 esub_retshar=共享网络
+
 esh_crheader=创建共享网络
 esh_eheader=编辑共享网络
 esh_tabhdr=共享网络细节
@@ -72,6 +76,7 @@ esh_hosts=本共享网络中的直接主机
 esh_groups=本共享网络中的直接组
 esh_subn=本共享网络中的子网
 esh_return=子网列表
+
 ehost_crheader=创建主机
 ehost_eheader=编辑主机
 ehost_tabhdr=主机细节
@@ -91,6 +96,7 @@ ehost_return=主机列表
 ehost_retgroup=组
 ehost_retsubn=子网
 ehost_retshar=共享网络
+
 egroup_crheader=创建主机组
 egroup_eheader=编辑主机组
 egroup_tblhdr=组细节
@@ -100,6 +106,7 @@ egroup_nchoice=用户名用作客户主机名？
 egroup_return=主机列表
 egroup_retsubn=子网
 egroup_retshar=共享网络
+
 default=默认
 secs=秒
 none=没有
@@ -115,33 +122,40 @@ listl_end=终止日期
 listl_return=子网和主机列表
 listl_all=列出所有活动和过期的租赁
 listl_delete=点击上面列表中的一个租赁IP地址以将其删除。
+
 restart_errmsg1=重启dhcpd失败
 restart_errmsg2=发信号给进程失败
 start_failstart=启动dhcpd失败
+
 sgroup_faildel=删除组失败
 sgroup_failsave=保存组失败
 sgroup_invassign=将组指定到不正确的区
 sgroup_echanged=配置文件内容以改变。请再试一次。
+
 shost_faildel=删除主机失败
 shost_failsave=保存主机失败
 shost_invalidhn=不是有效的主机名
 shost_invalidhwa='$1'不是有效的 $2 地址
 shost_invalidaddr='$1'包含无效的主机名或IP地址
 shost_invassign=将主机指定到不正确的区
+
 sopt_failsave=保存客户选项失败
 sopt_invalidip=不是有效的IP地址
 sopt_invalidint=不是一个整数
 sopt_invalidipp=不是有效的IP地址对 (象 1.2.3.4,5.6.7.8)
+
 sshared_faildel=删除共享网络失败
 sshared_failsave=保存共享网络失败
 sshared_invalidsname=缺少或非法的共享网络名
 sshared_nosubnet=共享网络'$1'未包含任何子网。
+
 ssub_faildel=删除子网失败
 ssub_failsave=保存子网失败
 ssub_invalidsubaddr=不是有效的子网地址
 ssub_invalidnmask=不是有效的掩码
 ssub_invalidipr=不是有效的IP地址范围
 ssub_nosubnet=共享网络'$1'未包含任何子网。
+
 plib_deflt=默认租赁时间
 plib_bfname=启动文件名
 plib_maxlt=最大租赁时间
@@ -185,6 +199,7 @@ plib_ddnsupstyle=动态DNS域名更新方式
 plib_adhoc=Ad-hoc
 plib_interim=Interim
 plib_none=无
+
 eopt_header=客户选项
 eopt_subtitle=用于子网 $1
 eopt_returnsub=子网
@@ -219,6 +234,7 @@ eopt_nbntype=NetBIOS节点类型
 eopt_custom=客户选项
 eopt_cnum=数字
 eopt_cval=值
+
 log_apply=应用更改
 log_start=启动DHCP逆向
 log_create_subnet=已创建子网$1
@@ -238,12 +254,14 @@ log_delete_group=已删除主机$1组
 log_modify_group=已修改主机$1组
 log_options_group=已为主机$1组修改选项
 log_delete_lease=已为$1删除租赁
+
 pool_edit=编辑地址池
 pool_create=已创建的地址池
 pool_header=地址池选项
 pool_allow=允许的客户
 pool_deny=禁止的客户
 pool_return=子网
+
 cdel_header=警告
 cdel_shared1=共享网络
 cdel_shared2=共享网络
@@ -261,6 +279,7 @@ cdel_txt=删除$1 '$2'也将会删除其所包含的目录：
 cdel_confirm=您真的想删除此$1
 cdel_eunknown=未知错误
 cdel_return=主机和网络列表
+
 eacl_aviol=违反访问控制
 eacl_np=您没有许可
 eacl_pdh=删除主机
@@ -284,6 +303,7 @@ eacl_pdl=删除租赁
 eacl_psl=浏览租赁
 eacl_pglob=编辑全局选项
 eacl_papply=重新启动本服务
+
 acl_apply=可以应用更改吗？
 acl_r_leases=可以浏览租赁吗？
 acl_w_leases=可以移除租赁吗？

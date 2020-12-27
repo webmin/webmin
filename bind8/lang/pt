@@ -23,6 +23,7 @@ index_stub=Stub
 index_forward=Forward
 index_opts=Opções Gerais do Servidor
 index_return=lista de zonas
+
 master_title=Editar a Zona Master
 master_ecannot=Você não está autorizado para editar esta zona
 master_manual=Editar o Ficheiro de Registos
@@ -57,6 +58,7 @@ master_eretry='$1' não é um tempo de retry de transferência válido
 master_eexpiry='$1' não é um tempo de expiração válido
 master_eminimum='$1' não é um TTL predefinido válido
 master_edelete=Você não está autorizado para apagar esta zona
+
 mcreate_title=Criar Zona Master
 mcreate_ecannot=Você não pode criar zonas master
 mcreate_opts=Novas opções de zona master
@@ -67,6 +69,7 @@ mcreate_dom=Nome do domínio / Network
 mcreate_file=Ficheiro de registos
 mcreate_auto=Automático
 mcreate_err=Erro ao criar zona
+
 slave_title=Editar Zona Slave
 stub_title=Editar Zona Stub
 slave_ecannot=Você não está autorizado para editar esta zona
@@ -87,6 +90,7 @@ slave_emax='$1' não é um tempo máximo de transferência válido
 slave_efile=Falta o ficheiro de registos
 slave_efile2='$1' não é um ficheiro de registos permissível
 slave_mins=minutos
+
 screate_title1=Criar Zona Slave
 screate_title2=Criar Zona Stub
 screate_ecannot1=Você não está autorizado para criar zonas slave
@@ -99,6 +103,7 @@ screate_rev=Reverse (Endereços para Nomes)
 screate_dom=Nome do domínio / Network
 screate_err1=Erro ao criar zona slave
 screate_err2=Erro ao criar zona stub
+
 recs_ecannot=Você não está autorizado para editar registos nesta zona
 recs_title=$1 Registos
 recs_header=Em $1
@@ -106,6 +111,7 @@ recs_addr=Endereço
 recs_name=Nome
 recs_ttl=TTL
 recs_return=tipos de registos
+
 edit_title=Editar $1
 edit_header=Em $1
 edit_edit=Editar Registo $1
@@ -131,9 +137,12 @@ edit_eserv=Você não introduziu nenhum serviço conhecido
 edit_eemail='$1' não é um endereço de email válido
 edit_etxt='$1' não é um nome de registo de texto válido
 edit_return=registos
+
 text_title=Editar Ficheiro de Registos
 text_undo=Anular
+
 restart_ecannot=Você não está autorizado para reiniciar o BIND
+
 start_ecannot=Você não está autorizado para iniciar o BIND
 fwd_title=Editar Zona Forward
 fwd_ecannot=Você não está autorizado para editar esta zona
@@ -142,6 +151,7 @@ fwd_masters=Servidores Master
 fwd_forward=Tentar outros servidores?
 fwd_check=Verificar nomes?
 fwd_err=Erro ao guardar opções
+
 fcreate_title=Criar Zona Forward
 fcreate_ecannot=Você não está autorizado para criar zonas forward
 fcreate_opts=Novas opções de zona forward
@@ -151,6 +161,7 @@ fcreate_rev=Reverse (Endereços para Nomes)
 fcreate_dom=Nome do domínio / Network
 fcreate_masters=Servidores Master
 fcreate_err=Erro ao criar zona forward
+
 create_enet='$1' não é uma network válida
 create_edom='$1' não é um nome de domínio válido
 create_edom2='$1' necessita ser um domínio, não uma network
@@ -159,7 +170,9 @@ create_efile2='$1' não é um ficheiro de zona permissível
 create_efile3=Erro ao criar '$1' : $2
 create_emaster='$1' não é um endereço de servidor master válido
 create_enone=Você tem de introduzir pelo menos um servidor master
+
 boot_err=O download falhou
+
 type_A=Endereço
 type_NS=Name Server
 type_CNAME=Name Alias
@@ -169,6 +182,7 @@ type_TXT=Texto
 type_WKS=Serviço Bem Conhecido
 type_RP=Pessoa Responsável
 type_PTR=Endereço Inverso
+
 edit_A=Endereço
 edit_NS=Name Server
 edit_CNAME=Name Alias
@@ -178,6 +192,7 @@ edit_TXT=Texto
 edit_WKS=Serviço Bem Conhecido
 edit_RP=Pessoa Responsável
 edit_PTR=Endereço Inverso
+
 recs_A=Endereço
 recs_NS=Name Server
 recs_CNAME=Name Alias
@@ -187,6 +202,7 @@ recs_TXT=Texto
 recs_WKS=Serviço Bem Conhecido
 recs_RP=Pessoa Responsável
 recs_PTR=Endereço Inverso
+
 value_A1=Endereço
 value_NS1=Name Server
 value_CNAME1=Nome Real
@@ -201,6 +217,7 @@ value_WKS3=Serviços
 value_RP1=Endereço de Email
 value_RP2=Registo de Texto
 value_PTR1=Nome do Anfitrião
+
 warn=Avisar
 fail=Falhar
 ignore=Ignorar
@@ -216,6 +233,7 @@ acl_reverse=Pode actualizar endereços inversos em qualquer domínio?
 acl_multiple=Endereços múltiplos podem ter o mesmo IP?
 acl_ro=Modo de acesso em read-only (leitura)?
 acl_dir=Restringir ficheiros de zona ao directório?
+
 servers_title=Outros Servidores DNS
 servers_ip=Endereço IP
 servers_bogus=Ignorar servidor bogus?
@@ -226,6 +244,7 @@ servers_many=Muitas
 servers_err=Erro ao guardar outros servidores DNS
 servers_eip='$1' não é um endereço IP válido
 servers_etrans='$1' não é um número válido tranferências máximas
+
 logging_title=Logging e Erros
 logging_ecannot=Você não está autorizado para configurar o logging
 logging_header=Logging geral e opções de erro
@@ -257,12 +276,14 @@ logging_ename='$1' não é um nome de canal válido
 logging_efile=Falta o nome do ficheiro de log
 logging_ever='$1' não é um número de versões válido
 logging_esize='$1' não é um tamanho de log válido
+
 acls_title=Listas de Controlo de Acesso
 acls_ecannot=Você não está autorizado para editar as acls gerais
 acls_name=Nome da ACL
 acls_values=Endereços correspondentes, networks e ACLs
 acls_err=Erro ao guardar listas de controlo de acesso
 acls_ename='$1' não é um nome de ACL válido
+
 files_title=Ficheiros e Directórios
 files_ecannot=Você não está autorizado para configurar ficheiros
 files_header=Opções gerais de ficheiros e directórios
@@ -272,6 +293,7 @@ files_pid=Ficheiro ID do processo
 files_xfer=Caminho para o programa de tranferência de zona
 files_err=Erro ao guardar opções de ficheiros e directórios
 files_efile=Nome de ficheiro em falta ou inválido
+
 forwarding_title=Reencaminhamento e Tranferências
 forwarding_ecannot=Você não está autorizado para editar opções de reencaminhamento e transferência
 forwarding_header=Reencaminhamento geral e opções de tranferência de zona
@@ -286,6 +308,7 @@ forwarding_err=Erro ao guardar opções de reencaminhamento e tranferência
 forwarding_emins=Tempo máximo de tranferência em falta ou inválido
 forwarding_etrans=Máximo de tranferências simultâneas em falta ou inválido
 forwarding_minutes=minutos
+
 net_title=Endereços e Topologia
 net_ecannot=Você não está autorizado para editar opções de endereços e topologia
 net_header=Opções gerais de endereços e topologia
@@ -298,6 +321,7 @@ net_port=Porta
 net_topol=Topologia de escolha do servidor de nomes
 net_err=Erro ao guardar opções de endereços e topologia
 net_eport='$1' não é um número de porta válido
+
 misc_title=Opções Miscelâneas
 misc_ecannot=Voçê não está autorizado para editar opções miscelâneas
 misc_header=Opções miscelâneas gerais
@@ -317,6 +341,7 @@ misc_esize='$1' não é um tamanho válido
 misc_efiles='$1' não um número máximo válido de ficheiros abertos
 misc_emins='$1' não é um núnero válido de minutos
 misc_mins=minutos
+
 zonedef_title=Predefinições de Zona
 zonedef_msg=Predefinições para novas zonas master
 zonedef_err=Erro ao guardar predefinições de zona

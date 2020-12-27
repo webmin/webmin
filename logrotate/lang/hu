@@ -19,11 +19,13 @@ index_force=Force Log Rotation
 index_forcedesc=Force the immediate rotation of all log files, even if it is not yet time.
 index_logrotate=Logrotate
 index_delete=Delete Selected Log Rotations
+
 period_daily=Daily
 period_weekly=Weekly
 period_monthly=Monthly
 period_never=Never
 period_bytes=bytes
+
 edit_title1=Edit Log File
 edit_title2=Create Log File
 edit_header=Rotated log file details
@@ -59,8 +61,10 @@ edit_pre=Commands to run before rotation
 edit_default=Default ($1)
 edit_sharedscripts=Only run scripts once for all files?
 edit_now=Rotate Now
+
 global_title=Global Options
 global_header=Default options for all log files
+
 save_err=Failed to save log
 save_efile=Missing or invalid log filename
 save_esize=Missing or invalid maximum size
@@ -76,6 +80,7 @@ save_emailto=Missing email address for rotated logs
 save_eerrors=Missing email address for error messages
 save_epre=Pre-rotation script cannot contain an <tt>endscript</tt> or <tt>endrotate</tt> line
 save_epost=Post-rotation script cannot contain an <tt>endscript</tt> or <tt>endrotate</tt> line
+
 log_modify_sched=Changed log rotation Cron job
 log_create_sched=Created log rotation Cron job
 log_delete_sched=Deleted log rotation Cron job
@@ -84,6 +89,7 @@ log_create=Added rotation for log file $1
 log_modify=Modified rotation for log file $1
 log_delete=Deleted rotation for log file $1
 log_delete_logs=Deleted rotation for $1 log files
+
 sched_title=Log Rotation Schedule
 sched_desc=For log rotation configured using this module to be performed, the command $1 must be run on a regular schedule (usually daily) by Cron.
 sched_runparts=Currently, the log rotation command is being run from the script $1 $2, and cannot be adjusted.
@@ -92,10 +98,12 @@ sched_disabled=Disabled
 sched_enabled=Enabled, at times below ..
 sched_save=Update Cron Job
 sched_err=Failed to save rotation schedule
+
 force_title=Force Log Rotation
 force_doing=Forcing the immediate rotation of all log files ..
 force_doingone=Forcing the immediate rotation of one log file ..
 force_done=.. done.
 force_failed=.. failed! See the output above for the reason why.
+
 delete_err=Failed to delete logs
 delete_enone=None selected

@@ -4,8 +4,11 @@ index_when=Ano, $1
 index_webalizer=Webalizer
 index_enable=Vybraný rozvrh
 index_disable=Odvolení vybrané
+
 edit_clear=Vymazat soubory protokolu po naplánované zprávě?
+
 gen_nothing=.. Webalizer byl dokončen, ale nebyla vygenerována žádná zpráva. Podrobnosti viz výše uvedený výstup.
+
 global_hidereferrer=Odkazující skrýt před tabulkami
 global_hideagent=Prohlížeče pro skrytí před tabulkami
 global_ignorereferrer=Doporučovatelé zcela ignorovat
@@ -15,5 +18,6 @@ global_includesite=Klienti nebudou ignorovat
 global_includereferrer=Doporučení se ignorovat
 global_includeuser=Uživatelé nebudou ignorovat
 global_includeagent=Prohlížeče neignorovat
+
 log_enable_logs=Plánované hlášení v $1 protokolech
 log_disable_logs=Plánované hlášení v $1 protokolech

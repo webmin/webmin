@@ -43,8 +43,10 @@ index_natnone=L-ebda regoli ta 'traduzzjoni tal-indirizz tan-netwerk ma ġew def
 index_nataction=Mod NAT
 index_natfrom=Pakketti mqabbla
 index_natto=Traduzzjoni
+
 dir_in=Dieħla
 dir_out=Ħiereġ
+
 action_pass=<font color=#00aa00>Għaddi</font>
 action_block=<font color=#ff0000>Blokk</font>
 action_skip=Aqbeż
@@ -57,6 +59,7 @@ action_map=Immappjar
 action_rdr=Rindirizz
 action_bimap=Immappjar Bidirezzjonali
 action_map-block=Immappjar tal-blokka
+
 laction_pass=<font color=#00aa00>Għaddi l-pakkett</font>
 laction_block=<font color=#ff0000>Pakkett blokk, bil-kodiċi ICMP</font>
 laction_log=Log pakkett, fil-livell
@@ -65,6 +68,7 @@ laction_skip=Aqbeż ir-regoli li jmiss
 laction_auth=Awtorizzazzjoni għall-ispazju tal-utent
 laction_preauth=Iċċekkja l-awtorizzazzjoni preċedenti
 laction_call=Funzjoni tal-qalba tas-Sejħa
+
 edit_title1=Oħloq Regola
 edit_title2=Editja r-Regola
 edit_header1=Azzjoni tar-Regola
@@ -130,6 +134,7 @@ edit_icmp=Tip ICMP
 edit_icmpany=&lt;Kull tip&gt;
 edit_icmpcode=u kodiċi
 edit_codeany=&lt;Kull kodiċi&gt;
+
 save_err=Irnexxielu jiffranka r-regola
 save_ehostfrom=Isem tas-sors nieqes jew invalidu
 save_ehostto=Kunjom host nieqes jew invalidu
@@ -158,11 +163,13 @@ save_eto=Interfaċċja nieqsa jew invalida biex tibgħatha
 save_etoip=Indirizz IP mhux validu biex jintbagħat 'il quddiem
 save_ereplyto=Interfaċċja nieqsa jew invalida biex tirrispondiha
 save_ereplytoip=Indirizz IP mhux validu għar-risposta fuq
+
 apply_err=Ma rnexxielux japplika l-konfigurazzjoni
 apply_remote=Żball minn $1 : $2 
 unapply_err=Ma rnexxielux jerġa 'jmur lura l-konfigurazzjoni
 unapply_ein=Naqset milli tikseb regoli ta 'input
 unapply_eout=Naqset milli tikseb ir-regoli tal-ħruġ
+
 desc_if=Jekk $1 
 desc_and=u
 desc_always=Dejjem
@@ -196,6 +203,7 @@ desc_rdr=Indirizzi IP $1 port $2
 desc_dport1=il-port huwa $1 
 desc_dport2=il-port huwa bejn $1 u $2 
 desc_nattoiface=indirizz tal-interface
+
 log_create_rule=Ħolqot regola $1 
 log_delete_rule=Regola mħassra $1 
 log_modify_rule=Regola modifikata $1 
@@ -224,6 +232,7 @@ log_add_host=Server miżjud tal-cluster $1
 log_add_group=Servi tal-cluster miżjuda mill-grupp $1 
 log_delete_host=Tneħħa s-server tal-cluster $1 
 log_delete_group=Tneħħew $1 cluster servers
+
 cluster_title=Cluster Firewall Servers
 cluster_none=L-ebda servers ma ġew miżjuda mal-cluster tal-firewall s'issa.
 cluster_host=L-isem tal-host
@@ -234,6 +243,7 @@ cluster_gadd=Żid is-servers fi grupp
 cluster_need=Trid iżżid is-servers bil-login u l-password fil-modulu tal-Indiċi Servers tal-Webmin qabel ma jkunu jistgħu jiġu ġestiti hawn.
 cluster_return=Servers ta 'raggruppament
 cluster_delete=Neħħi Magħżul
+
 add_title=Żid is-Servers
 add_msg=Żieda ta ' $1 ..
 add_gmsg=Żieda ta 'servers fil-grupp $1 ..
@@ -242,6 +252,7 @@ add_gerr=Naqset milli żżid grupp
 add_echeck=Server $1 m'għandux il-modulu Firewall IPFilter
 add_emissing=Is-server $1 huwa nieqes mill-kmand tal-firewall $2 
 add_ok=Miżjud $1, mar-regoli tal-firewall attivi $2.
+
 nat_title1=Oħloq Regola NAT
 nat_title2=Editja r-Regola NAT
 nat_action=Mod NAT
@@ -300,4 +311,5 @@ nat_edport2=Port oriġinali li jonqos jew nieqes
 net_erdrip="$1" mhuwiex indirizz IP ta 'destinazzjoni validu
 nat_erdrips=L-ebda IP ta 'destinazzjoni ma daħlet
 nat_erdrport=Port tad-destinazzjoni nieqes jew invalidu
+
 boot_esmf=Is-servizz SMF $1 ma jeżistix jew mhux fi stat magħruf

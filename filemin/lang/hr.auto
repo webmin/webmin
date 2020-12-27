@@ -155,8 +155,10 @@ menu_bookmarks=Oznake
 notallowed=Nije vam dopušten pristup $1. Dopušteni direktoriji su : $2 
 error_upload_emax=Prenesena datoteka veća je od granice od $1 
 extract_etype=Nepodržana vrsta datoteke arhiva
+
 info_total1=Ukupno: $1 datoteka i $2 direktorij
 info_total2=Ukupno: $1 datoteka i $2 direktorij
 info_total3=Ukupno: $1 datoteka i $2 direktorije
 info_total4=Ukupno: $1 datoteka i $2 direktorije
+
 ownership=Vlasnik

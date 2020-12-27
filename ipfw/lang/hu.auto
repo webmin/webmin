@@ -25,6 +25,7 @@ index_resetdesc=Kattintson erre a gombra az összes meglévő tűzfalszabály t�
 index_cluster=Klaszter szerverek
 index_clusterdesc=Kattintson erre a gombra további Webmin kiszolgálók beállításához, amelyekre a tűzfal konfigurációját automatikusan lemásolja.
 index_return=tűzfalszabályok
+
 index_num=Num
 index_action=Akció
 index_desc=Feltétel
@@ -37,6 +38,7 @@ index_delete=Kijelöltek eltávolítása
 index_existing=A Webmin észlelte a jelenleg használt $1 IPFW tűzfalszabályokat, amelyek nem kerülnek rögzítésre a $2 fájlban. Ezeket a szabályokat valószínűleg egy parancsfájlból állítottuk be, amelyet a modul nem tud olvasni és szerkeszteni. <p> Ha ezt a modult szeretné használni az IPFW tűzfal kezeléséhez, kattintson az alábbi gombra, hogy a meglévő szabályokat mentési fájlba konvertálja., majd tiltsa le a meglévő tűzfal szkriptet.
 index_saveex=A tűzfalszabályok mentése
 index_headerex=Meglévő tűzfalkonfiguráció
+
 action_allow=<font color=#00aa00>Engedélyezés</font>
 action_deny=<font color=#ff0000>Csepp</font>
 action_reject=<font color=#ff4400>Elutasítás</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>Csomag dobása</font>
 laction_reject=<font color=#ff4400>Visszaadja az ICMP elutasítását</font>
 laction_reset=<font color=#ff4400>A TCP kapcsolat visszaállítása</font>
 laction_skipto=Ugrás a szabályhoz
+
 edit_title1=Hozzon létre szabályt
 edit_title2=A (z) $1 szabály szerkesztése
 edit_header1=Szabály cselekvés
@@ -114,6 +117,7 @@ edit_src-addr=Forráscímtől ..
 edit_src-port=A forrás kikötőjéből ..
 edit_dst-addr=A rendeltetési helyhez ..
 edit_dst-port=A rendeltetési kikötőbe ..
+
 save_err=A szabály mentése nem sikerült
 save_enum=Hiányzó vagy érvénytelen szabályszám
 save_eskipto=Hiányzó vagy érvénytelen szabályszám, amelybe ugorhat
@@ -144,7 +148,9 @@ save_etcpflags=A TCP jelzőket csak akkor lehet megadni, ha a protokoll TCP
 save_elimit=Hiányzó vagy érvénytelen felső határ
 save_edstport=Hiányzó vagy érvénytelen rendeltetési port
 save_esrcport=Hiányzó vagy érvénytelen forrásport
+
 apply_err=A konfiguráció alkalmazása nem sikerült
+
 desc_if=Ha $1 
 desc_and=és
 desc_always=Mindig
@@ -191,6 +197,7 @@ desc_where=ahol $1
 desc_all=minden csomag esetében
 desc_in=beérkező csomag
 desc_out=a csomag kimenő
+
 log_create_rule=Létrehozta a $1 szabályt
 log_delete_rule=$1 szabály törölve
 log_modify_rule=Módosított $1 szabály
@@ -206,6 +213,7 @@ log_convert=Konvertált aktív tűzfalszabályok
 log_setup=A tűzfal kezdeti beállítása
 log_unapply=Visszaállította a tűzfal konfigurációját
 log_delsel=Törölt $1 szabályok
+
 cluster_title=Klaszter tűzfal szerverek
 cluster_none=A tűzfalfürtbe még nem adtak hozzá kiszolgálókat.
 cluster_host=hostname
@@ -216,6 +224,7 @@ cluster_gadd=Add kiszolgálók csoportba
 cluster_need=A webminiszolgálók indexmoduljába be kell állítania a kiszolgálókat bejelentkezési névvel és jelszóval, mielőtt itt kezelni tudják őket.
 cluster_return=fürtszerverek
 cluster_delete=A kiválasztott eltávolítása
+
 add_title=Szerverek hozzáadása
 add_msg=$1 hozzáadása ..
 add_gmsg=Szerverek hozzáadása a (z) $1 csoporthoz.

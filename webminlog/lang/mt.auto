@@ -30,6 +30,7 @@ index_sdesc=Deskrizzjoni tal-azzjoni fiha
 index_shost=Sors tal-Webmin Sors
 index_long=Uri deskrizzjonijiet ta 'azzjoni sħiħa?
 index_global=&lt;Mhux fl-ebda modulu&gt;
+
 search_title=Riżultati tat-Tiftix
 search_date=Data
 search_time=Ħin
@@ -63,6 +64,7 @@ search_global_baduser=Username ħażin
 search_global_badpass=Password ħażina
 search_global_twofactor=It-token tat-twofactor invalidu
 search_csv=Esportazzjoni bħala CSV.
+
 view_title=Dettalji tal-Azzjoni
 view_header=Dettalji ta 'l-azzjoni reġistrata $1 
 view_action=Deskrizzjoni
@@ -96,12 +98,14 @@ view_files=Il-fajls jinbidlu u l-kmandi jispiċċaw
 view_raw=Dejta tal-log mhux maħduma
 view_rawname=Isem tal-parametru
 view_rawvalue=Valur tal-parametru
+
 acl_mods=Jista 'jara zkuk fil-moduli
 acl_all=Kollha
 acl_sel=Magħżula hawn taħt ..
 acl_self=Awto biss
 acl_users=Jista 'jara azzjonijiet mill-utenti
 acl_rollback=Jistgħu jerġgħu jmexxu azzjonijiet?
+
 rollback_title=Azzjoni Rollback
 rollback_rusure=Int żgur li trid terġa 'ddaħħal il-fajls kollha elenkati hawn taħt għall-kontenut tagħhom qabel ma ttieħdet din l-azzjoni? Kwalunkwe data li jkun fiha bħalissa għandha tinkiteb mill-bidliet li ġejjin :
 rollback_isdir=Direttorju - ma ssir l-ebda bidla.
@@ -124,4 +128,5 @@ rollback_modfile=Kontenut ta 'lura tal-fajl $1.
 rollback_deleted=Fajl imħassar $1.
 rollback_nodeleted=Fajl li ma jeżistix $1.
 rollback_enone=L-ebda fajls magħżula
+
 log_rollback=Azzjoni roll-back $1 fil-modulu $2 

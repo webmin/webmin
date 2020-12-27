@@ -24,13 +24,16 @@ index_out=Der Output von $1 war
 index_boot=Verbinde beim Boot mit:
 index_noboot=&lt;Nicht verbunden&gt;
 index_bootdesc=Ändern Sie diese Option, um zu kontrollieren, ob die ausgewählte PPP-Verbindung beim Systemstart gestartet wird oder nicht.
+
 init_title=Erkenne Konfiguration
 init_cmd=Erkenne ein angeschlossenes Modem mit dem Befehl $1 ..
 init_done=.. fertig
 init_modems=Modems werden auf $1 und $2 konfiguriert.
 init_modem=Ein Modem wurde auf $1 erkannt.
 init_none=Keine Modems wurden erkannt!
+
 device_serial=Serieller Port $1
+
 connect_title=Verbindungsaufbau
 connect_cmd=Versuche eine Verbindung mit dem Befehl $1 herzustellen ..
 connect_failed=.. Verbindung fehlgeschlagen! Siehe die obige Ausgabe für den Grund.
@@ -40,12 +43,14 @@ connect_dns=Benutze PPP zugeordnete DNS-Konfiguration.
 connect_dns2=PPP zugeordnete DNS-Konfiguration wurde festgelegt
 connect_dnsto=Wartezeit der PPP-DNS-Konfiguration.
 connect_dnsdown=Verbindung scheint gescheitert zu sein, während die PPP-DNS-Konfiguration zugewiesen wird.
+
 disc_title=Abschalten PPP
 disc_err=Konnte PPP-Verbindung nicht beenden
 disc_edown=Bereits getrennt
 disc_ok1=Ihre PPP-Verbindung, welche mit $2 hergestellt worden ist, wurde erfolgreich heruntergefahren.
 disc_ok2=PPP-Verbindung wurde erfolgreich abgeschaltet.
 disc_dns=Stelle alte DNS-Konfiguration wieder her.
+
 edit_title1=Füge ISP-Dialer hinzu
 edit_title2=Editiere ISP-Dialer
 edit_ddesc=Diese Standardeinstellungen werden auf Verbindungen mit anderen Dialer gelten.
@@ -76,6 +81,7 @@ edit_idle=Idle Timeout (in Sekunden)
 edit_def=Von Standardeinstellungen
 edit_inherits=Einstellungen übernehmen
 edit_from=Von Dialer ...
+
 save_err=Fehlgeschlagen Dialer zu speichern
 save_err2=Fehlgeschlagen Dialer zu löschen
 save_ename=Fehlender oder ungültiger Dialer-Name
@@ -88,6 +94,7 @@ save_edial=Fehlende oder ungültige Nummer für Wähl-Versuche
 save_eidle=Fehlendes oder ungültiges Leerlaufzeitlimit
 save_einherits=Dieser Dialer kann nicht gelöscht werden, weil '$1' Einstellungen von ihm vererbt.
 save_eclash=Ein Dialer mit denselben Namen existiert bereits
+
 log_create=$1 erstellt
 log_update=$1 aktualisiert
 log_delete=$1 gelöscht

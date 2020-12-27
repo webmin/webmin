@@ -3,6 +3,7 @@ index_edit=Editar comando
 index_none=Não foram definidos comandos personalizados
 index_create=Criar novo comando personalizado
 index_return=comandos
+
 edit_title=Editar Comando
 create_title=Criar Comando
 edit_ecannot=Você não está autorizado para editar comandos
@@ -24,11 +25,13 @@ edit_type5=Ficheiro
 edit_type6=Directório
 edit_type7=Opção..
 edit_type8=Palavra de Passe
+
 save_err=Erro ao guardar comando
 save_ecannot=Você não está autorizado para editar comandos
 save_ecmd=Não foi introduzido comando algum
 save_edesc=Não foi introduzida uma descrição
 save_euser=Utilizador inválido ou em falta
+
 run_err=Erro ao executar o comando
 run_ecannot=Você não está autorizado para executar o comando
 run_euser=Utilizador inválido ou em falta

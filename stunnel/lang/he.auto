@@ -21,6 +21,7 @@ index_eversion=גרסת ה- STunnel המותקנת במערכת שלך היא $1
 index_conf=מקובץ config $1 
 index_noconf=אין קובץ תצורה!
 index_delete=מחק מנהרות שנבחרו
+
 edit_title=ערוך מנהרת SSL
 create_title=צור מנהרת SSL
 edit_header1=אפשרויות מקור המנהרה
@@ -47,6 +48,7 @@ edit_tcpw=שם עטיפות TCP
 edit_auto=אוטומטי
 edit_iface=כתובת מקור יוצאת
 edit_type=לברוח מ
+
 save_err=שמירת מנהרת SSL נכשלה
 save_enclash=שם השירות $2 משמש כבר ביציאה $1.
 save_einetd=יש כבר שירות inetd הנקרא $1.
@@ -61,6 +63,7 @@ save_etcpw=שם עטיפות TCP חסר או לא חוקי
 save_eiface=כתובת המקור היוצאת חסרה או לא חוקית
 save_exinetd=יש כבר שירות xinetd שנקרא $1 
 save_export=היציאה $1 משמשת כבר לשירות xinetd $2 
+
 log_apply=שינויים שהוחלו
 log_create=יצר מנהרת SSL $1 
 log_delete=מנהרת SSL $1 נמחקה

@@ -19,6 +19,7 @@ index_noact=実行されませんでした
 index_now=バックアップ中
 index_follow=あと $1
 index_forcetar=TARボール形式にする
+
 dump_dir=バックアップするディレクトリ
 dump_dirs=バックアップ先
 dump_fs=ファイルシステム
@@ -83,6 +84,7 @@ dump_egzip=The gzip compression option is incompatible with the tape size option
 dump_egzip2=The gzip compression option is incompatible with the multi-file backup option
 dump_emulti=Multi-file backups cannot be done to a tape device
 dump_emulti2=Multi-file backups cannot be done to a remote server
+
 edit_err=バックアップを作成できません
 edit_edir=バックアップディレクトリが存在しないか、間違っています
 edit_efs=Filesystems of type $1 cannot be backed up by this module
@@ -101,9 +103,11 @@ edit_return=dump
 edit_email=設定を通知する場合のメールアドレス
 edit_subject=メールの題名
 edit_restore=Restore Form
+
 save_err=Failed to save backup
 save_edir=バックアップ先のディレクトリが存在しません
 save_efs=Backup directory cannot change to a different filesystem
+
 backup_title=Backup Now
 backup_desc=Performing backup of $1 to $2 ..
 backup_done=.. backup complete.
@@ -112,6 +116,7 @@ backup_notape=.. backup exceeded the capacity of a single tape. Tape changing is
 backup_egone=Backup does not exist!
 backup_bg=Starting background backup process. You can monitor its progress in the <b>Running Backup Jobs</b> section on the module's main page, and will be notified of its final status via email.
 backup_ecannot=You are not allowed to backup this directory
+
 restore_title=Restore Backup
 restore_err=Failed to restore backup
 restore_ecommand=The command $1 needed to restore $2 filesystem backups was not found on your system. Maybe it is not currently installed.
@@ -155,19 +160,23 @@ restore_gzip=Uncompress gzipped archive?
 restore_keep=Don't overwrite files?
 restore_emulti=Multi-file restores cannot be done from a tape device
 restore_emulti2=Multi-file restores cannot be done from a remote server
+
 log_create=Created backup config for $1
 log_modify=Modified backup config for $1
 log_delete=Deleted backup config for $1
 log_backup=Backed up $1 to $2
 log_bgbackup=Started backup of $1 to $2
 log_restore=Restored backup from $1
+
 kill_err=Failed to terminate backup
 kill_egone=No longer running!
 kill_ecannot=You are not allowed to terminate this backup
+
 newtape_err=Failed to signal new tape
 newtape_egone=Backup is no longer running!
 newtape_estatus=Backup is no longer waiting for a new tape
 newtape_ecannot=You are not allowed to manage this backup
+
 acl_edit=Can create and edit backups?
 acl_restore=Can restore backups?
 acl_dirs=Allowed directories for backups

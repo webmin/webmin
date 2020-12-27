@@ -25,12 +25,15 @@ index_up=התחל חיבור:
 index_updesc=בחר חיבור מהרשימה שליד לחצן זה ולחץ עליו כדי לנסות את הקמתו המיידית.
 index_nopol=לא נמצאו מדיניות רשת - אולי <a href='$1'>תצורת הרשת</a> שלך שגויה.
 index_import=ייבא חיבור מהקובץ.
+
 stop_err=עצירת שרת ה- IPsec נכשלה
 start_err=הפעלת שרת ה- IPsec נכשלה
 restart_err=ההפעלה מחדש של שרת ה- IPsec נכשלה
 start_elog=השגיאות הבאות נרשמו : $1 
+
 newkey_err=יצירת המפתח נכשלה
 newkey_ehost=שם מארח חסר או לא חוקי
+
 edit_title1=צור חיבור
 edit_title2=ערוך חיבור
 edit_header=פרטי חיבור IPsec VPN
@@ -101,6 +104,7 @@ edit_unit_s=שניות
 edit_unit_m=דקות
 edit_unit_h=שעה (ות
 edit_unit_d=ימים
+
 config_title=תצורת שרת
 config_header=הגדרות שרת VPN גלובליות
 config_ifaces=ממשקי רשת עבור IPsec
@@ -118,6 +122,7 @@ config_nat=אפשר חציית NAT?
 config_err=שמירת תצורת השרת נכשלה
 config_eri=הממשק האמיתי '$1' מופיע לא פעם
 config_enone=לא צוינו ממשקי רשת
+
 showkey_title=הצג מפתח ציבורי
 showkey_desc1=יש להעתיק את מפתח ה- RSA הציבורי המוצג להלן לתצורה של מערכות אחרות המחברות למערכת זו, בחלק הקשור למארח זה.
 showkey_desc2=ניתן להשתמש בערכים המוצגים להלן ליצירת רשומת DNS KEY עבור מארח זה, כך שמערכות אחרות המחברות אליו יכולות לחפש את המפתח הציבורי שלה.
@@ -125,6 +130,7 @@ showkey_flags=דגלים
 showkey_proto=נוהל
 showkey_alg=אלגוריתם
 showkey_key=נתוני מפתח
+
 policy_desc_block=רשתות חסומות
 policy_desc_clear=נקה רשתות תנועה
 policy_desc_private=רשתות מוצפנות
@@ -145,6 +151,7 @@ policy_mask=קידומת
 policy_err=שמירת רשתות נכשלה
 policy_enet=כתובת IP לא חוקית בשורה $1 
 policy_emask=אורך קידומת לא חוקי בשורה $2 
+
 save_err=שמירת החיבור נכשלה
 save_ename=שם חיבור חסר או לא חוקי
 save_ekeying=מספר חסר או לא חוקי של ניסיונות חוזרים של מקש
@@ -164,6 +171,7 @@ save_eleftcert=אישור שרת מקומי חסר או לא חוקי
 save_erightcert=אישור שרת מרוחק חסר או לא חוקי
 save_ekeylife=אורך חיים של מפתח חיבור חסר או לא חוקי
 save_eikelifetime=חיי ערוץ מקש חסרים או לא תקפים
+
 log_create_conn=נוצר חיבור $1 
 log_delete_conn=החיבור $1 נמחק
 log_modify_conn=חיבור שונה 1
@@ -182,8 +190,10 @@ log_delete_secret=המפתח הסודי נמחק עבור $1
 log_create_secret_nn=נוצר מפתח סודי עבור כל מארח
 log_modify_secret_nn=מפתח סודי שונה לכל מארח
 log_delete_secret_nn=המפתח הסודי נמחק עבור כל מארח
+
 up_title=התחל חיבור
 up_cmd=התחלת חיבור עם פקודה $1 ..
+
 export_title=ייצוא תצורה
 export_desc=ניתן להשתמש בטופס זה לייצוא קטע קובץ התצורה עבור חיבור $1, כך שניתן לייבא אותו בקלות בשרת בקצה השני.
 export_print=תצורת תצוגה בדפדפן
@@ -193,11 +203,13 @@ export_err=ייצוא התצורה נכשל
 export_efile=שם קובץ חסר
 export_esave=הכתיבה לקובץ נכשלה : $1 
 export_done=תצורה מיוצאת לחיבור $1 ל- $2 ($3 בתים).
+
 import_title=ייבוא תצורה
 import_desc=ניתן להשתמש בטופס זה לייבוא קטע קובצי תצורה עבור חיבור, למשל כזה שנוצר על ידי תכונת הייצוא של המודול במערכת אחרת.
 import_upload=ייבא מקובץ העלאה ..
 import_file=ייבא מקובץ בצד השרת ..
 import_ok=ייבא עכשיו
+
 import_err=ייבוא התצורה נכשל
 import_eupload=לא נבחר קובץ להעלאה
 import_efile=לא נכנס קובץ בצד השרת
@@ -207,6 +219,7 @@ import_eclash=קיים כבר חיבור בשם $1.
 import_done1=הוסיף בהצלחה את חיבור ה- IPsec $1.
 import_done2=עדכן בהצלחה את חיבור ה- IPsec $1.
 import_over=להחליף חיבור קיים עם אותו שם?
+
 secrets_title=מפתחות סודיים
 secrets_none=לא נמצאו מפתחות סודות!
 secrets_name=סוד עבור
@@ -220,6 +233,7 @@ secrets_mod=מודולוס $1
 secrets_newpsk=צור מפתח סודי משותף חדש.
 secrets_newrsa=צור מפתח RSA חדש.
 secrets_return=רשימת מפתחות סודית
+
 secret_title1=צור מפתח סודי
 secret_title2=ערוך את המפתח הסודי
 secret_header=פרטי מפתח חשאיים

@@ -9,9 +9,12 @@ index_apply=Aplicar mudanças
 index_applydesc=Clique neste botão para aplicar a configuração atual de exportação de arquivo. Isso tornará todos os diretórios listados acima disponíveis com as opções especificadas.
 index_return=lista de exportações
 index_echeck=O servidor NFS não pode ser usado neste sistema : $1 
+
 check_ecmd=O comando do servidor NFS $1 não está instalado
+
 delete_err=Falha ao excluir exportações
 delete_enone=Nenhum selecionado
+
 edit_title1=Editar exportação
 edit_title2=Criar exportação
 edit_header1=Opções de exportação
@@ -31,6 +34,7 @@ edit_clients=Clientes
 edit_hosts=Hosts / grupos de redes
 edit_network=Rede
 edit_mask=mascarar
+
 save_err=Falha ao salvar a exportação
 save_edir='$1' não é um diretório ou não existe
 save_enone=Você deve inserir pelo menos um diretório para exportar
@@ -44,4 +48,5 @@ save_enetwork='$1' não é uma rede válida
 save_enetmask='$1' não é uma máscara de rede válida
 save_esame1=O diretório <tt>$1</tt> já está sendo exportado para <tt>$2</tt>. Seu sistema operacional não permite que diretórios no mesmo sistema de arquivos <i>local</i> sejam exportados para o mesmo host separadamente
 save_esame2=O diretório <tt>$1</tt> já está sendo exportado para <tt>$2</tt>. Seu sistema operacional não permite que diretórios no mesmo sistema de arquivos <i>local</i> sejam exportados para a mesma rede separadamente
+
 restart_err=Falha ao aplicar as alterações

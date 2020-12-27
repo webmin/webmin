@@ -7,6 +7,7 @@ index_dsize=Gesamtgröße
 index_dmodel=Marke und Modell
 index_dparts=Slices
 index_return=Liste an Festplatten
+
 disk_title=Editiere Festplatte
 disk_egone=Festplatte existiert nicht länger!
 disk_no=Slice
@@ -31,9 +32,11 @@ disk_return=Festplattendetails und Liste an Slices
 disk_add=Füge ein neues Slice hinzu.
 disk_smart=Zeige SMART Status
 disk_smartdesc=Zeigt den aktuellen Status dieses Laufwerk wie von SMART erkannt, und überprüft auf Festplattenfehler.
+
 select_device=$1 Gerät $2
 select_slice=$1 Gerät $2 Slice $3
 select_part=$1 Gerät $2 Slice $3 Partition $4
+
 slice_title=Editiere Slice
 slice_egone=Ausgewähltes Slice existiert nicht!
 slice_ssize=Slice Größe
@@ -58,6 +61,7 @@ slice_return=Slice Details und Liste an Partitionen
 slice_err=Fehlgeschlagen Slice zu modifizieren
 slice_header=Slice Details
 slice_suse=Direkt benutzt von
+
 dslice_title=Lösche Slice
 dslice_rusure=Sind Sie sicher, dass Sie den Slice $1 löschen möchten? Alle Partitionen und Dateisysteme in ihm werden ebenfalls gelöscht.
 dslice_warn=Warnung - Dieses Slice ist derzeit in Verwendung : $1
@@ -65,6 +69,7 @@ dslice_confirm=Jetzt löschen
 dslice_deleting=Lösche Slice $1 ..
 dslice_failed=.. löschen fehlgeschlagen : $1
 dslice_done=.. fertig
+
 nslice_title=Erstelle Slice
 nslice_header=Neues Slice Details
 nslice_number=Slice Nummer
@@ -86,6 +91,7 @@ nslice_done=.. Slice hinzugefügt
 nslice_parting=Erstelle Standard-Partitionen in Slice $1 auf $2 ..
 nslice_pfailed=.. Partition Erstellung fehlgeschlagen : $1
 nslice_pdone=.. Partition erstellt
+
 npart_title=Erstelle Partition
 npart_header=Neue Partition Details
 npart_letter=Partition Buchstabe
@@ -98,6 +104,7 @@ npart_emax=Endblock kann nicht größer als die Slice Größe von $1 Blöcken se
 npart_creating=Erstelle Partition $1 auf $2
 npart_failed=.. Partition Erstellung fehlgeschlagen : $1
 npart_done=.. Partition erstellt
+
 part_title=Editiere Partition
 part_egone=Partition existiert nicht länger!
 part_header=Partitionsdetails
@@ -124,6 +131,7 @@ part_newmount2=Mount Partition
 part_mountmsg=Mount dieses Gerät auf neues Verzeichnis auf Ihrem System, so dass es verwendet werden kann, um Dateien zu speichern. Ein Dateisystem muss bereits auf der Partition erstellt worden sein.
 part_mountmsg2=Mount dieses Gerät als virtuellen Speicher auf Ihrem System, um die Menge des verfügbaren Speichers zu erhöhen.
 part_cannotedit=Diese Partition kann nicht verändert werden, da diese derzeit in Gebrauch ist.
+
 dpart_title=Lösche Partition
 dpart_rusure=Sind Sie sicher, dass Sie die Partition $1 löschen möchten? Alle Dateisysteme in ihr werden ebenfalls gelöscht.
 dpart_warn=Warnung - diese Partition ist aktuell in Benutzung von $1
@@ -131,6 +139,7 @@ dpart_confirm=Lösche Jetzt
 dpart_deleting=Lösche Partition $1 ..
 dpart_failed=.. Löschen fehlgeschlagen : $1
 dpart_done=.. fertig
+
 newfs_title=Erstelle Dateisystem
 newfs_header=Neues Dateisystem Details
 newfs_free=Speicherplatz zum Reservieren für root
@@ -145,11 +154,13 @@ newfs_elabel=Fehlendes oder ungültiges Label
 newfs_creating=Erstelle Dateisystem auf $1 ..
 newfs_failed=.. erstellen fehlgeschlagen!
 newfs_done=.. erstellen erfolgreich
+
 fsck_title=Prüfe Dateisystem
 fsck_err=Fehlgeschlagen Dateisystem zu prüfen
 fsck_checking=Prüfe Dateisystem auf $1 ..
 fsck_failed=.. Prüfung fehlgeschlagen!
 fsck_done=.. Prüfung abgeschlossen ohne Fehler zu finden
+
 log_create_slice=Slice $1 erstellt
 log_delete_slice=Slice $1 gelöscht
 log_modify_slice=Slice $1 modifiziert

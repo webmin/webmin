@@ -14,6 +14,7 @@ index_loadname=CPU ロード平均:
 index_loadnums=$1 (5分) , $2 (10 分) , $3 (15 分)
 index_cpuname=CPU タイプ:
 index_inzone=In zone $1
+
 pid=プロセス ID
 owner=所有者
 command=コマンド
@@ -23,6 +24,7 @@ parent=親プロセス
 runtime=実行時間
 nice=Nice レベル
 stime=開始時刻
+
 search_user=所有者
 search_match=一致
 search_cpupc=CPU の$1% 以上使用中
@@ -39,6 +41,7 @@ search_sigkill=Kill Processes
 search_port=Using port
 search_protocol=protocol
 search_ip=Using IP address
+
 run_command=実行するコマンド
 run_submit=実行
 run_mode=実行モード
@@ -52,6 +55,7 @@ run_ecannot=You are not allowed to run commands
 run_as=ユーザ
 run_euser=Missing or invalid username
 run_euser2=You are not allowed to run commands as the selected user
+
 edit_title=プロセス情報
 edit_gone=このプロセスはもう実行されていません
 edit_sub=サブ プロセス
@@ -71,12 +75,15 @@ edit_sigcont=Resume
 edit_open=Files and Connections
 edit_trace=Trace Process
 edit_return=process details
+
 kill_err=シグナル $1 をプロセス $2 に送信できませんでした
 kill_title=シグナルの送信
 kill_sent=送信済み
 kill_ecannot=You are not allowed to kill processes
+
 renice_err=プロセス $1 を reniceできませんでした:
 renice_ecannot=You are not allowed to renice processes
+
 linux_pri=優先度
 linux_tty=TTY
 linux_status=ステータス
@@ -87,22 +94,26 @@ linux_ruser=リアル ユーザ
 linux_rgroup=リアル グループ
 linux_pgid=プロセス グループ ID
 linux_stime=$stime
+
 linuxstat_R=実行中
 linuxstat_S=スリープ中
 linuxstat_D=ディープ スリープ
 linuxstat_T=停止
 linuxstat_Z=ゾンビ
+
 freebsd_ruser=リアル ユーザ
 freebsd_rgroup=リアル グループ
 freebsd_tty=TTY
 freebsd_pgid=プロセス グループ
 freebsd_stime=$stime
 freebsd_lim=メモリ制限
+
 hpux_pri=優先度
 hpux_tty=TTY
 hpux_status=ステータス
 hpux_wchan=待機中
 hpux_stime=$stime
+
 hpuxstat_0=存在しない
 hpuxstat_S=スリープ中
 hpuxstat_W=待機中
@@ -111,7 +122,9 @@ hpuxstat_I=中間
 hpuxstat_Z=ゾンビ
 hpuxstat_T=停止
 hpuxstat_G=拡張中
+
 macos_tty=TTY
+
 sysv_group=グループ
 sysv_ruser=リアル ユーザ
 sysv_rgroup=リアル グループ
@@ -120,12 +133,14 @@ sysv_tty=TTY
 sysv_stime=$stime
 sysv_task=Task ID
 sysv_zone=Zone name
+
 log_run=コマンド "$1" を実行しました
 log_kill=シグナル $1 をプロセス $2 に送信しました
 log_kills=シグナル $1 をプロセス $2 に送信
 log_kill_l=シグナル $1 をプロセス $2 に送信しました
 log_kills_l=シグナル $1 をプロセスに送信しました<br>$2
 log_renice=Changed priority of process $2 to $1
+
 acl_manage=次のユーザとしてプロセスを管理
 acl_manage_def=Current Webmin user
 acl_edit=Can kill and renice processes?
@@ -135,11 +150,13 @@ acl_who=Can manage processes for users
 acl_who0=All users
 acl_who1=Current Webmin user
 acl_who2=Listed users ..
+
 kill_kill=プロセスを Kill 
 kill_term= 終了   
 kill_hup=  再度開始    
 kill_stop=    停止     
 kill_cont=  続行   
+
 open_title=Open Files and Connections
 open_proc=For process $1 (PID $2)
 open_header1=Open files
@@ -163,6 +180,7 @@ open_blk=Block special
 open_size=File size
 open_inode=Inode
 open_file=Path
+
 trace_title=Trace Process
 trace_start=Starting system call trace for $1 ..
 trace_doing=System call trace for $1 :
@@ -173,5 +191,7 @@ trace_syscalls=Trace system calls:
 trace_all=All
 trace_sel=Listed..
 trace_change=Change
+
 windows_threads=Threads in process
+
 syslog_dmesg=Kernel messages

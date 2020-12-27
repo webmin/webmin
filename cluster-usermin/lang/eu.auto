@@ -39,7 +39,9 @@ index_thost=hostname
 index_tdesc=deskribapena
 index_tver=Bertsio
 index_ttype=OS motakoa
+
 this_server=zerbitzari hau
+
 add_title=Gehitu zerbitzariak
 add_msg=$1 gehitzen ..
 add_gmsg=Zerbitzariak gehitzen $1 taldean.
@@ -49,6 +51,7 @@ add_echeck=$1 zerbitzariak ez du Usermin konfigurazio modulurik
 add_echeck2=$1 zerbitzariak ez du Usermin Users modulurik
 add_eversion=$1 zerbitzaria ez da Usermin bertsioaren $2 edo berriagoa exekutatzen.
 add_ok=$1 gehitu da $2 moduluekin eta $3 gaiekin.
+
 refresh_title=Eguneratu modulua eta gai zerrendak
 refresh_header=Zerbitzari guztietatik modulu eta gai zerrendak berriro eskatzea ..
 refresh_header4=$2 ko kideen modulua eta gai zerrendak berriro eskatzea.
@@ -64,6 +67,7 @@ refresh_g2=$1 talde kendu dira.
 refresh_done=.. egin
 refresh_del=$1 kendu da zerbitzariaren zerrendatik
 refresh_failed=Ezin izan da $1 : $2 freskatu
+
 host_title=Kudeatutako zerbitzaria
 host_header=Kudeatutako Usermin zerbitzariaren xehetasunak
 host_name=Ostalariaren izena
@@ -81,6 +85,7 @@ host_header_u=Usermin erabiltzaileak
 host_header_g=Erabiltzaile taldeak
 host_return=zerbitzariaren xehetasunak
 host_version2=Bertsio
+
 edit_title_mod=Editatu modulua
 edit_title_theme=Editatu gaia
 edit_header_mod=Usermin moduluaren xehetasunak $1 etik hasita
@@ -103,6 +108,7 @@ edit_codes=$1 probatik
 edit_acl=Editatu ACL fitxategiarentzat
 edit_uacl=$1 erabiltzailea $2 an
 edit_gacl=$1 taldean $2 an
+
 install_err=Ezin izan da modulua instalatu
 install_title=Instalatu modulua
 install_elocal=Ez da tokiko fitxategirik eman
@@ -123,6 +129,7 @@ do_failed=Ezin izan da instalatu $1 : $2 an
 do_success_mod=Instalatutako $2 modulua $1 ean
 do_success_theme=$2 gaia $1 instalatu da
 do_done=.. egin
+
 delete_err=Ezin izan da $1 modulua ezabatu
 delete_epack=$1 modulua ez da existitzen
 delete_title=Ezabatu modulua
@@ -140,6 +147,7 @@ delete_edepends=$1 modulua (k) horren araberakoa da.
 delete_egone=Modulua ez dago jada
 delete_esuccess= $1 : $2 ezabatu da
 delete_acls=Erabiltzaileetatik kendu eta sarbidea kontrolatzeko ezarpenak berrezarri?
+
 user_title1=Sortu Usermin erabiltzailea
 user_header1=Usermin erabiltzailearen xehetasun berriak
 user_name=Erabiltzaile izena
@@ -198,11 +206,13 @@ user_all=&lt;ostalari guztiak&gt;
 user_donthave=&lt;ez duten ostalariak&gt;
 user_have=&lt;duten ostalariak&gt;
 user_ofgroup=$1 eko kideak
+
 udelete_title=Erabiltzailea ezabatu
 udelete_doing=Erabiltzaile guztietatik $1 erabiltzailea ezabatzen da ..
 udelete_success=$1 -tik behar bezala ezabatu da
 udelete_failed=Ezin izan da $1 : $2 ezabatu
 udelete_done=.. egin
+
 group_title1=Sortu Taldea
 group_header1=Usermin talde berriaren xehetasunak
 group_name=Taldearen izena
@@ -230,6 +240,7 @@ group_failed2=Huts egin du taldea $1 eguneratzean : $2
 group_return=taldeko xehetasunak
 group_nomems=Taldekiderik ez
 group_servers=Sortzeko zerbitzaria (k)
+
 gdelete_title=Ezabatu Taldea
 gdelete_desc=Ziur al zaude $1 taldea eta bere kide erabiltzaileak $2 ostalari guztietatik ezabatu nahi duzula?
 gdelete_ok=Ezabatu Taldea
@@ -238,6 +249,7 @@ gdelete_success=$1 -tik behar bezala ezabatu da
 gdelete_failed=Ezin izan da $1 : $2 ezabatu
 gdelete_done=.. egin
 gdelete_esub=Talde honek $1 azpitaldeak ditu eta beraz ezin dira ezabatu.
+
 acl_title=Sarbideen kontrola
 acl_title2=$1 -en $2 erabiltzailearentzat $3 an
 acl_title3=$1 taldeko $2 rentzako $3 
@@ -256,6 +268,7 @@ acl_doing2=Sarbide kontrola ezartzen du $1 on $2 -n.
 acl_success=Sarbide-kontrola $1 gainean behar bezala ezarri du
 acl_failed=Ezin izan da $1 : $2 sarbide-kontrola ezarri
 acl_done=.. egin
+
 sync_title=Sinkronizatu Zerbitzariak
 sync_desc=Inprimaki honek Usermin erabiltzaile eta taldeak sor ditzake gaur egun ez dituzten zerbitzarietan, kontuak zure klusterreko zerbitzari guztietan sinkronizatzeko.
 sync_hosts=Zerbitzariak sinkronizatzeko
@@ -279,6 +292,7 @@ sync_gcreate=Usermin taldea $1 gehitzen ..
 sync_acl=$1 erako ACL fitxategiak kopiatzea.
 sync_test=Erakutsi besterik ez dago zer egingo zenuke?
 sync_restart=Erabiltzailea berriro hasten
+
 upgrade_title=Erabiltzailearen bertsioa berritu
 upgrade_header=Erabiltzaile guztietan eguneratzen Usermin ..
 upgrade_header2=Usermin $1 bertsio berritzailea ..
@@ -297,6 +311,7 @@ upgrade_failed=Ezin izan da instalatu $1 : $2 an
 upgrade_done=.. egin
 upgrade_efast=RPC modu azkarra erabiliz zerbitzariak bakarrik berritu daitezke
 upgrade_ereconn=Ezin izan da berritu berriro Usermin-ekin konektatu ondoren!  : $1 
+
 update_title=Eguneratzeko moduluak
 update_header=Modulu ostalari guztiak eguneratzen ..
 update_header5=Moduluak eguneratzen $2 an.

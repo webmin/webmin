@@ -24,6 +24,7 @@ index_rbac=RBAC instellen
 index_delete=Verwijder geselecteerde
 index_eulist=Gebruikers in lijst zetten mislukt : $1
 index_eglist=Groepen in lijst zetten mislukt : $1
+
 edit_title=Bewerk Webmin Gebruiker
 edit_title2=Maak een Webmin Gebruiker aan
 edit_readonly=Deze Webmin gebruiker mag niet worden gewijzigd omdat hij word beheerd door de $1 module. <a href='$2'>Klik Hier</a> om deze waarschuwing te negeren en de gebruiker toch te wijzigen - Vergeet niet dat achteraf de handmatige veranderingen automatisch overschreven kunnen worden!
@@ -102,6 +103,7 @@ edit_proto_mysql=MySQL database
 edit_proto_postgresql=PostgreSQL database
 edit_proto_ldap=LDAP server
 edit_proto_=Locale files
+
 save_err=Fout bij het opslaan van de gebruiker
 save_ename='$1' is geen geldige gebruikersnaam
 save_enamewebmin=De gebruiker 'webmin' is gereserveerd voor intern gebruik
@@ -131,10 +133,12 @@ save_edays=Geen dagen om geselecteerde toe te staan
 save_ehours=Ontbrekend of verkeerde tijden om toe te staan
 save_ehours2=Start tijd "om toe te staan" moet voor het einde staan
 save_etemp=De optie om gebruikers geforceerd hun wachtwoord te laten veranderen bij de volgende inlog kan niet worden gebruikt voordat de <a href='$1'>gebruikers prompt voor een nieuw wachtwoord</a> is aangezet
+
 delete_err=Fout bij het verwijderen van de gebruiker
 delete_eself=U kunt niet uzelf verwijderen
 delete_ecannot=U bent niet bevoegd om gebruikers te verwijderen
 delete_euser=U bent niet bevoegd om deze gebruiker te verwijderen
+
 cert_title=Certificaat aanvragen
 cert_issue=Geef Certificaat uit
 cert_header=Nieuwe certificaat details
@@ -153,6 +157,7 @@ cert_install=Installeer uw certificaat in uw browser
 cert_ekey=Een nieuwe SSL sleutel is niet verstuurd door uw browser - wellicht ondersteund deze geen SSL client certificaten.
 cert_eca=Fout bij het instellen van de certificaat autoriteit : $1
 cert_already=Waarschuwing - u maakt reeds gebruik van het volgende certificaat $1.
+
 acl_title=Module Toegang Controle
 acl_title2=Voor $1 in $2
 acl_title3=Voor groep $1 in $2
@@ -161,6 +166,7 @@ acl_config=Mag de module configuratie bewerken?
 acl_reset=Opnieuw instellen op volledige toegang
 acl_rbac=Haal toegang instellingen op van RBAC?
 acl_rbacyes=Ja (heeft voorrang onderstaande instellingen)
+
 acl_uall=Alle gebruikers
 acl_uthis=Deze gebruiker
 acl_usel=Geselecteerd ..
@@ -200,6 +206,7 @@ acl_switch=Mag naar andere gebruikers wisselen?
 acl_times=Mag het aantal keren inloggen veranderen?
 acl_pass=Mag wachtwoord instellingen veranderen?
 acl_sql=Mag gebruikers en groepen database configureren?
+
 log_modify=Aangepaste Webmin gebruiker $1
 log_rename=Webmin gebruiker hernoemd van $1 naar $2
 log_create=Webmin gebruiker $1 aangemaakt
@@ -219,6 +226,7 @@ log_pass=Verander wachtwoord beperkingen
 log_unix=Verander Unix gebruiker authentificatie
 log_sync=Verander Unix gebruiker synchronisatie
 log_sql=Gewijzigde gebruikers en groepen database
+
 gedit_ecannot=U bent niet bevoegd om groepen te bewerken
 gedit_title=Bewerk Webmin Groep
 gedit_title2=Maak Webmin Groep aan
@@ -228,6 +236,7 @@ gedit_modules=Leden modules
 gedit_members=Lid gebruikers en groepen
 gedit_desc=Omschrijving groep
 gedit_egone=Geselecteerd groep bestaat niet meer!
+
 gdelete_err=Fout bij het verwijderen van de groep
 gdelete_ecannot=U bent niet bevoegd om groepen te verwijderen
 gdelete_euser=U kunt niet uw eigen groep verwijderen
@@ -235,11 +244,13 @@ gdelete_esub=Groepen met subgroepen kunnen niet worden verwijderd
 gdelete_title=Verwijderen Groep
 gdelete_desc=Weet u zeker dat u de groep $1 en zijn leden $2 wilt verwijderen?
 gdelete_ok=Verwijderen Groep
+
 gsave_err=Fout bij het opslaan van de groep
 gsave_ename=Ontbrekende of ongeldige groep naam
 gsave_enamewebmin=De groepsnaam 'webmin' is gereserveerd voor intern gebruik
 gsave_edup=Groep naam bestaat al
 gsave_edesc=Ongeldige omschrijving - het ( : ) karakter is niet toegestaan.
+
 convert_title=Converteer Gebruikers
 convert_ecannot=U bent niet bevoegd om Unix gebruikers te converteren
 convert_nogroups=Er zijn nog geen Webmin groepen aangemaakt op uw systeem. Er moet minimaal 1 groep zijn aangemaakt alvorens de conversie te starten, om de rechten voor de geconverteerde gebruikers te kunnen bepalen.
@@ -264,6 +275,7 @@ convert_invalid=$1 is geen geldige Webmin gebruikersnaam
 convert_added=$1 wordt toegevoegd
 convert_msg=Converteren van Unix gebruikers...
 convert_done=$1 gebruikers geconverteerd, $2 ongeldig, $3 bestaan reeds, $4 uitgesloten
+
 sync_title=Unix Gebruiker Synchronisatie
 sync_desc=Dit formulier stelt u in staat de automatische synchronisatie tussen via Webmin aangemaakte Unix gebruikers en deze module in te stellen
 sync_nogroups=Er zijn geen Webmin groepen ingesteld op uw systeem. Er moet minimaal een groep zijn aangemaakt om de toegang voor nieuwe gebruikers in te stellen.
@@ -273,6 +285,7 @@ sync_delete=Wanneer de Unix gebruiker wordt verwijderd ook de bijbehorende Webmi
 sync_group=Nieuwe gebruikers toewijzen aan de Webmin groep
 sync_unix=Stel het wachtwoord in voor nieuwe gebruikers in naar Unix authenticatie.
 sync_ecannot=U bent niet bevoegd om gebruikers synchronisatie in te stellen
+
 unix_title=Unix Gebruikers Authenticatie
 unix_err=Mislukt om Unix authenticatie op te slaan
 unix_desc=Deze pagina stelt u in staat Webmin in te stellen om aanmeldingen te verifieren doormiddel van de systeem gebruikers lijst en PAM. Dit kan handig zijn wanneer u een groot aantal bestaande Unix gebruikers heeft welke u toegang tot Webmin wilt verlenen.
@@ -302,26 +315,31 @@ unix_sudo=Sta alleen gebruikers toe die opdrachten kunnen uitvoeren met <tt>sudo
 unix_pamany=Behandel inloggen alleen met PAM validatie als $1
 unix_esudo=De $1 opdracht is niet geinstalleerd
 unix_esudomod=De Perl module $1 is nodig voor <tt>sudo</tt> deze authenticatie is niet geinstalleerd
+
 sessions_title=Huidige Inlog Sessies
 sessions_id=Sessie ID
 sessions_user=Webmin gebruiker
 sessions_login=Aangemeld om
 sessions_host=IP adres
 sessions_lview=Log files bekijken..
+
 hide_title=Verberg Ongebruikte modules
 hide_desc=De volgende modules zullen worden verwijderd uit de module toegangs lijst $1, omdat de bijbehorende servers niet op uw systeem geïnstalleerd zijn ..
 hide_ok=Modules Nu Verbergen
 hide_none=Niets te verbergen - $1 heeft geen toegang tot modules waarvan de bijbehorende server niet op uw systeem zijn geinstalleerd.
 hide_desc2=Let er op dat deze modules niet automatisch zullen worden weergegeven wanneer u de bijbehorende servers installeert. U zult handmatig de toegangsrechten moeten instellen door middel van deze module.
 hide_clone=(Kloon $1)
+
 switch_euser=U bent niet bevoegd om over te schakelen naar deze gebruiker
 switch_eold=Geen bestaande sessies gevonden!
+
 rbac_title=RBAC instellen
 rbac_desc=Webmin's RBAC integratie geeft de mogelijkheid om de module toegang en ACL rechten voor gebruikers te bepalen aan de hand van een RBAC (Role Based Access Control) database, in plaats van gebruik te maken van de Webmin configuratie bestanden. Zodra de RBAC ondersteuning is aangezet zal voor iedere gebruiker waarvoor de <b>RBAC controleert alle modules en ACLs</b> optie is geselecteerd hun mogelijkheden worden bepaald door de RBAC in plaats van de eigen Webmin instellingen.
 rbac_esolaris=RBAC wordt op dit moment enkel op Solaris ondersteund, en kan derhalve niet op dit $1 systeem worden gebruikt.
 rbac_eperl=De voor RBAC integratie vereiste Perl module $1 is niet geinstalleerd. <a href='2'>Klik hier</a> om deze nu te installeren.
 rbac_ecpan=U heeft geen toegang tot Webmin's Perl Module pagina om de vereiste $1 module voor RBAC integratie te installeren
 rbac_ok=RBAC integratie is beschikbaar op dit systeem, en kan per gebruiker worden ingeschakeld op de Webmin Gebruikers pagina.
+
 udeletes_err=Mislukt om gebruikers te verwijderen
 udeletes_enone=Niets geselecteerd
 udeletes_title=Verwijder Gebruikers
@@ -329,11 +347,13 @@ udeletes_rusure=Weet u zeker dat u de $1 geselecteerde gebruikers wilt verwijder
 udeletes_users=Geselecteerde gebruikers : $1
 udeletes_ok=Verwijder Gebruikers
 udeletes_ereadonly=1 van de geselecteerde gebruikers is gemarkeerd als niet bewerkbaar
+
 gdeletes_err=Mislukt om groep te verwijderen
 gdeletes_title=Verwijder groepen
 gdeletes_rusure=Weet u zeker dat u de $1 geselecteerde groepen wilt verwijderen, en alles wat bij de $2 gebruikers hoort? Al hun toegang instellingen en alle gebruikers details zullen verloren gaan.
 gdeletes_users=Geselecteerde groepen : $1
 gdeletes_ok=Verwijder groepen
+
 pass_title=Wachtwoord Restricties
 pass_ecannot=U bent niet bevoegd om de wachtwoord instellingen te bewerken.
 pass_header=Webmin wachtwoord-handhaving opties
@@ -356,6 +376,7 @@ pass_eminsize=Ontbrekend of niet-numeriek minimum wachtwoord lengte
 pass_emaxdays=Ontbrekend of niet-numeriek aantal van dagen voordat word verandert
 pass_elockdays=Ontbrekend of niet-numeriek aantal van dagen voordat account word gesloten
 pass_eoldblock=Ontbrekend of niet-numeriek aantal van oude wachtwoorden weigeren
+
 cpass_minsize=Moet op zijn minst $1 aantal letters zijn
 cpass_notre=Komt overeen met een verboden patroon
 cpass_re=Komt niet overeen met het vereiste patroon
@@ -363,6 +384,7 @@ cpass_name=Bevat de gebruikersnaam
 cpass_dict=Is een woordenboek woord
 cpass_spellcmd=Noch de $1 of de $2 opdrachten die nodig zijn om woordenboeken te controleren zijn geinstalleerd
 cpass_old=Oude wachtwoorden kunnen niet meer her-gebruikt worden
+
 sql_title=Gebruiker en Groep Database
 sql_ecannot=U bent niet bevoegd om de gebruikers en groepen database te configureren.
 sql_header=Database opties voor gebruikers en groepen.
@@ -405,18 +427,21 @@ sql_dnerr=Gebruikers en groepen database instellingen zijn geldig, maar de LDAP 
 sql_dnerr2=Klik op de <b>Aanmaken DN</b> knop hieronder om het automatisch aan te maken, of voeg het handmatig toe aan de LDAP server.
 sql_makedn=Maak DN
 sql_schema=Download LDAP Schema
+
 make_title=Aanmaken van Gebruikers en Groepen Tabellen
 make_err=Mislukt om gebruikers en groepen tabellen aan te maken.
 make_exec=Uitvoeren van SQL $1 ..
 make_failed=.. aanmaken mislukte : $1
 make_done=.. uitgevoerd
 make_still=Er zijn wat problemen gevonden na het aanmaken van de tabel : $1
+
 makedn_title=Maak LDAP DN aan
 makedn_eoc=Er zijn geen structurele object klassen gevonden!
 makedn_exec=Aanmaken van bovenliggende DN $1 ..
 makedn_failed=.. aanmaken mislukte : $1
 makedn_done=.. uitgevoerd
 makedn_still=Er zijn wat problemen gevonden na het aanmaken van de DN : $1
+
 schema_title=Download LDAP Schema
 schema_desc=Voordat Webmin een LDAP server kan gebruiken voor het opslaan van gebruikers en groepen moet het geconfigureerd worden met onderstaand schema. Dit kan normaal gesproken gedaan worden door de schema definitie op te slaan in <tt>/etc/ldap/schema</tt> of <tt>/etc/openldap/schema</tt> als <tt>webmin.schema</tt>, en dan de server deze schema file te laten laden.
 schema_download=Download schema file : <a href=$1>$1</a>

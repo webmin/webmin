@@ -57,6 +57,7 @@ index_reposdisable=Itfi r-Repożitorji
 index_reposenable=Jippermettu Depożitorji
 index_reposdelete=Ħassar Repositorji
 index_repoheader=Għażliet ġodda ta 'repożitorju ta' pakketti
+
 update_title=Aġġorna Pakketti
 update_title2=Installa Pakketti
 update_enone=L-ebda pakketti magħżula
@@ -94,9 +95,11 @@ update_none=Xejn
 update_ops=Nibnu lista kompluta ta ’pakketti ..
 update_rebootdesc=Wieħed mill-pakketti installati jirrikjedi li nibdew nibdew jiġu applikati għal kollox.
 update_reboot=Irristartja Issa
+
 sched_title=Aġġornament Skedat
 sched_yes=L-iċċekkjar skedat għall-aġġornamenti issa huwa attiv.
 sched_no=L-iċċekkjar skedat għall-aġġornamenti ġie diżattivat.
+
 log_update=Ġew installati pakketti aġġornati $1 
 log_sched=Attiva l-aġġornamenti skedati
 log_unsched=Aġġornamenti skedati b'diżabilità
@@ -108,11 +111,13 @@ log_enable_repo=Ir-repożitorju tal-pakkett attivat $1
 log_disable_repo=Iddiżibixxi repożitorju tal-pakketti $1 
 log_delete_repo=Repożitorju tal-pakketti mħassra $1 
 log_create_repo=Ir-repożitorju tal-pakketti maħluqa $1 
+
 refresh_title=Pakketti ta 'rifreskar
 refresh_clearing=Ikklerjar tal-pakkett tal-caches ..
 refresh_done=.. sar
 refresh_available=Ġabru mill-ġdid il-pakketti disponibbli ..
 refresh_done3=.. sabet $1 aġġornamenti possibbli
+
 view_title=Dettalji tal-Pakkett
 view_header=Informazzjoni dwar pakkett aġġornabbli
 view_name=Isem il-pakkett
@@ -126,12 +131,14 @@ view_changelog=Changelog għall-verżjoni disponibbli
 view_software=Immaniġġja l-Pakkett
 view_update=Pakkett ta ’Aġġornament
 view_install=Installa l-Pakkett
+
 system_yum=YUM
 system_apt=APT
 system_csw=CSW (Blastwave)
 system_webmin=Modulu Webmin
 system_usermin=Modulu Usermin
 system_tgz=Webmin jew Usermin tar.gz
+
 repos_err_disable=Naqset milli tiddiżattiva r-repożitorji
 repos_err_enable=Naqset milli tippermetti r-repożitorji
 repos_err_delete=Naqset milli tħassar ir-repożitorji

@@ -19,10 +19,14 @@ index_match1=contient
 index_match2=allumettes
 index_dhcpd=ISC DHCPd
 index_delete=Supprimer sélectionnée
+
 esub_desc=Description du sous-réseau
 esub_fopeer=Peer de basculement
+
 ehost_desc=Description de l'hôte
+
 egroup_desc=Description du groupe
+
 listl_network=Dans le réseau $1 / $2 
 listl_lfnotcont2=Le fichier de bail DHCPd <tt>$1</tt> ne contient aucun bail actif à l'heure actuelle.
 listl_unknown=Inconnue
@@ -35,14 +39,19 @@ listl_used=Alloué
 listl_pc=Pourcentage
 listl_err=Échec de la suppression des baux
 listl_enone=Aucune sélection
+
 listl_refresh=Rafraîchir la liste
+
 restart_conftext=Lignes autour de $1 dans $2  :
+
 sopt_edname='$1' n'est pas un nom d'option valide
 sopt_ednum='$1' n'est pas un numéro d'option valide
 sopt_edtype='$1' n'est pas un type d'option valide
 sopt_ecval=Valeur manquante pour l'option personnalisée '$1'
 sopt_ecip=La valeur de l'option personnalisée '$1' doit être une adresse IP
+
 ssub_invalidfopeer=n'est pas un pair de basculement valide
+
 plib_toffset=Décalage horaire
 plib_serverid=Identifiant du serveur DHCP
 plib_ddnsupstyle=Style de mise à jour DNS dynamique
@@ -50,6 +59,7 @@ plib_adhoc=Ad hoc
 plib_interim=Intérimaire
 plib_none=Aucun
 plib_eexpr=Cette section de la configuration DHCP contient la directive d'expression $1, qui ne peut pas être modifiée en toute sécurité par Webmin.
+
 eopt_domsearch=Domaines DNS à rechercher
 eopt_toffset=Décalage horaire
 eopt_cname=Nom
@@ -61,9 +71,11 @@ eopt_slpa=IP d'agent d'annuaire SLP
 eopt_slpaips=Ces IP uniquement?
 eopt_slps=Étendue du service SLP
 eopt_slpsonly=Cette portée seulement?
+
 log_stop=Serveur DHCP arrêté
 log_delete_subnets=$1 sous-réseaux et réseaux partagés supprimés
 log_delete_hosts=$1 hôtes et groupes d'hôtes supprimés
+
 keys_edit=Modifier la clé TSIG
 keys_create=Clés TSIG créées
 keys_title=Clés DNS
@@ -74,11 +86,14 @@ keys_ecannot=Vous n'êtes pas autorisé à modifier les clés DNS
 keys_err=Impossible d'enregistrer les clés DNS
 keys_ekey='$1' n'est pas un ID de clé valide
 keys_esecret=Secret codé en base 64 manquant ou non valide pour la clé $1 
+
 eacl_uniqh=créer des hôtes avec des adresses matérielles en double
 eacl_uniqi=créer des hôtes avec des adresses IP en double
+
 acl_zones=Peut modifier des zones DNS dynamiques?
 acl_per_grp_acls=Activer les ACL par groupe?
 acl_per_sha_acls=Activer les ACL par réseau partagé?
+
 lookup_ehost=Aucun hôte portant le nom, l'adresse IP ou l'adresse MAC $1 n'existe
 lookup_ehostname=Aucun nom d'hôte, adresse IP ou adresse MAC entré
 lookup_egroup=Aucun groupe portant le nom ou le nom de domaine $1 n'existe
@@ -87,6 +102,7 @@ lookup_esubnet=Il n'existe aucun sous-réseau avec l'adresse ou l'adresse/le mas
 lookup_esubnetname=Aucune adresse de sous-réseau ou adresse/masque de réseau saisi
 lookup_eshared=Il n'existe aucun réseau partagé portant le nom $1 
 lookup_esharedname=Aucun nom de réseau partagé entré
+
 zone_key=Zones DNS
 index_addzone=Ajoutez une nouvelle zone DNS.
 index_zone=Zone
@@ -102,16 +118,21 @@ zone_faildel=Impossible de supprimer la zone
 zone_failsave=Impossible d'enregistrer la zone
 zone_tsigkey=Clé TSIG
 zone_ecannot=Vous n'êtes pas autorisé à modifier les zones DNS
+
 plib_clientupdates=Les clients peuvent-ils mettre à jour leurs propres dossiers?
+
 text_title=dhcpd.conf
 text_editor=Éditeur de texte
 text_return=menu principal
 text_undo=annuler
 text_ecannot=Vous n'êtes pas autorisé à modifier le fichier de configuration
+
 index_buttetext=Modifier manuellement la configuration
 index_text=Modifier manuellement le fichier de configuration
+
 stop_err=Impossible d'arrêter le serveur DHCP
 stop_ekill=Ne pas courrir!
+
 sdelete_err=Impossible de supprimer les sous-réseaux et les réseaux partagés
 sdelete_enone=Aucune sélection
 sdelete_title=Supprimer des sous-réseaux et des réseaux partagés
@@ -119,6 +140,7 @@ sdelete_rusure1=Voulez-vous vraiment supprimer les sous-réseaux $1 sélectionn�
 sdelete_rusure2=Voulez-vous vraiment supprimer les sous-réseaux $1 sélectionnés? Tous les autres objets dans les sous-réseaux seront également perdus.
 sdelete_rusure3=Voulez-vous vraiment supprimer les $2 réseaux partagés sélectionnés? Tous les sous-réseaux ou autres objets des réseaux seront également perdus.
 sdelete_ok=Effacer maintenant
+
 hdelete_err=Impossible de supprimer les hôtes et les groupes
 hdelete_enone=Aucune sélection
 hdelete_title=Supprimer les hôtes et les groupes

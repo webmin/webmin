@@ -1,6 +1,7 @@
 check_econfig=Không tìm thấy tệp cấu hình đích iSCSI $1 trên hệ thống của bạn.
 check_eietadm=Không tìm thấy lệnh quản trị mục tiêu iSCSI $1 trên hệ thống của bạn.
 check_einit=Hành động khởi động $1 không tồn tại
+
 index_title=Mục tiêu iSCSI
 index_clink=Có thể nó chưa được cài đặt hoặc cấu hình mô-đun <a href='$1'></a> của bạn không chính xác.
 index_stop=Dừng mục tiêu iSCSI
@@ -22,8 +23,10 @@ index_noluns=không ai
 index_nousers=Bất kì
 index_nullio=Đĩa RAM của $1 sector
 index_size=Tổng kích thước
+
 dtargets_err=Không thể xóa mục tiêu
 dtargets_enone=Không có lựa chọn!
+
 target_title1=Tạo mục tiêu iSCSI
 target_title2=Chỉnh sửa mục tiêu iSCSI
 target_header=tùy chọn thiết bị chia sẻ iSCSI
@@ -68,11 +71,13 @@ target_noalias=không ai
 target_hdigest=Tổng kiểm tra
 target_ddigest=Kiểm tra dữ liệu
 target_nodigest=không ai
+
 auth_title=Cài đặt xác thực
 auth_header=Tùy chọn xác thực mặc định cho tất cả các mục tiêu
 auth_iuser=Xác thực bởi khách hàng
 auth_ouser=Xác thực cho khách hàng
 auth_err=Không thể lưu cài đặt xác thực
+
 conn_title=Cài đặt kết nối
 conn_header=Tùy chọn kết nối mặc định cho tất cả các mục tiêu
 conn_sessions=Phiên đồng thời tối đa
@@ -91,6 +96,7 @@ conn_emaxrecv=Độ dài phân đoạn nhận tối đa hoặc không phải là
 conn_emaxxmit=Độ dài phân đoạn truyền tối đa thiếu hoặc không số
 conn_emaxburst=Kích thước cụm máy khách tối đa thiếu hoặc không số
 conn_efirstburst=Kích thước dữ liệu khách hàng không được yêu cầu tối đa hoặc không có số
+
 timeout_title=Cài đặt thời gian chờ
 timeout_header=Tùy chọn hết thời gian của khách hàng
 timeout_nopi=Khoảng giữa các lần ping khi không hoạt động
@@ -98,6 +104,7 @@ timeout_nopinone=Không bao giờ ping
 timeout_secs=giây
 timeout_nopt=Thời gian chờ phản hồi ping
 timeout_noptnone=Tương tự như thời gian ping
+
 addr_title=Địa chỉ máy chủ và cổng
 addr_header=tùy chọn mạng máy chủ iSCSI
 addr_addr=Nghe địa chỉ IP
@@ -110,18 +117,21 @@ addr_err=Không thể lưu địa chỉ máy chủ
 addr_eaddr=Địa chỉ để nghe phải là một địa chỉ IP
 addr_eport=Cổng để nghe phải là một số
 addr_edebug=Mức gỡ lỗi phải là một số
+
 initiators_title=Địa chỉ khách hàng được phép
 initiators_none=Không có địa chỉ khách hàng được phép đã được xác định. Không có khách hàng sẽ có thể kết nối.
 initiators_ips=Khách hàng được phép
 initiators_title1=Thêm địa chỉ khách hàng được phép
 initiators_title2=Chỉnh sửa địa chỉ khách hàng được phép
 initiators_header=Các máy khách iSCSI được phép cho mục tiêu
+
 targets_title=Địa chỉ máy chủ được phép
 targets_none=Không có địa chỉ máy chủ được phép đã được xác định. Không có khách hàng sẽ có thể kết nối.
 targets_ips=Giao diện máy chủ được phép
 targets_title1=Thêm địa chỉ máy chủ được phép
 targets_title2=Chỉnh sửa địa chỉ máy chủ được phép
 targets_header=Giao diện máy chủ iSCSI được phép cho mục tiêu
+
 allow_target=Tên mục tiêu
 allow_move=Di chuyển
 allow_delete=Xóa đã chọn
@@ -133,17 +143,21 @@ allow_return=mục tiêu và địa chỉ được phép
 allow_err=Không thể lưu địa chỉ được phép
 allow_eaddr=Địa chỉ $1 không hợp lệ. Nó phải là địa chỉ IPv4, mạng/mặt nạ IPv4 hoặc địa chỉ IPv6 trong ngoặc vuông.
 allow_eaddrs=Không có địa chỉ để cho phép nhập
+
 dallow_err=Không thể xóa địa chỉ được phép
 dallow_enone=Không được chọn
+
 manual_title=Chỉnh sửa tập tin cấu hình
 manual_desc=Sử dụng hộp văn bản bên dưới để chỉnh sửa tệp cấu hình máy chủ iSCSI $1. Hãy cẩn thận, vì không có xác nhận sẽ được thực hiện trên đầu vào của bạn!
 manual_err=Không thể lưu tệp cấu hình
 manual_edata=Không có nội dung được nhập!
+
 start_err=Không thể khởi động máy chủ iSCSI
 stop_err=Không thể dừng máy chủ iSCSI
 restart_err=Không thể khởi động lại máy chủ iSCSI
 atboot_err=Không thể bật khi khởi động
 atboot_einit=Tập lệnh ban đầu $1 không tồn tại
+
 log_create_target=Đã tạo mục tiêu $1 
 log_delete_target=Đã xóa mục tiêu $1 
 log_modify_target=Mục tiêu đã sửa đổi $1 

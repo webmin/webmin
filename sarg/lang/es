@@ -10,6 +10,7 @@ index_range=Generar informe para rango de fechas
 index_view=Ver Informe Generado
 index_viewdesc=Ver el informe generado más reciente en el directorio $1.
 index_return=índice del módulo
+
 log_title=Origen de Histórico y Destino de Informe
 log_header=Opciones de archivo histórico de Squid de origen y de informe generado
 log_access_log=Archivo histórico de Squid de origen
@@ -30,6 +31,7 @@ log_elastlog=Falta o no es un número
 log_eemail=Dirección email falta o parece no válida
 log_emailx=Programa de correo falta o no existe
 log_squidguard_log_path=Archivo histórico SquidGuard
+
 style_title=Estilo de Informe
 style_header=Opciones de color de estilo HTML de informe
 style_title2=Título de informe
@@ -53,6 +55,7 @@ style_efontsize=Offset de tamaño de fuente falta o no válido
 style_esize=Ancho y alto de imagen falta o no es válido
 style_language=Idioma de Informe
 style_charset=Juego de caracteres de informe
+
 report_title=Opciones de Informe
 report_header=Opciones de contenido y generación de informe
 report_resolve_ip=¿Resolver direcciones IP?
@@ -131,6 +134,7 @@ report_echar=No se permiten espacios
 report_estring=Texto de reemplazo falta o no es válido
 report_eselect=Nada seleccionado
 report_eenter=No se introdujo nada
+
 sched_title=Generación de Informe Planificado
 sched_header=Opciones de informe programado
 sched_sched=¿Habilitar informes planificados?
@@ -145,9 +149,11 @@ sched_rsel=Aquellos entre $1 y $2 días atrás
 sched_err=Fallo al salvar la generación del informe programado
 sched_erfrom=Número inicial de días atrás falta o no es válido
 sched_erto=Número final de días atrás falta o no es válido
+
 view_title=Informe Sarg
 view_efile=¡Nombre de archivo no válido!
 view_eopen=Fallo al abrir archivo de informe
+
 gen_title=Generar Informe
 gen_header=Generando informe Sarg desde el archivo histórico de Squid $1 y todas sus versiones rotadas ..
 gen_done=.. hecho
@@ -157,6 +163,7 @@ gen_view=Ver informe completado.
 gen_err=Fallo al generar informe
 gen_efrom=Día desde falta o no es válido
 gen_eto=Día hasta falta o no es válido
+
 webmin_log_log=Opciones de origen de histórico y destino de informe actualizadas
 webmin_log_report=Opciones de informe actualizadas
 webmin_log_style=Opciones de estilo de informe actualizadas

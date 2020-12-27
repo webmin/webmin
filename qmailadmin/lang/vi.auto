@@ -6,6 +6,7 @@ index_stop=Dừng quy trình QMail
 index_stopmsg=Nhấp vào nút này để dừng các quá trình QMail nền chịu trách nhiệm gửi thư xếp hàng. Nếu không có các quy trình này, thư sẽ không được gửi đi hoặc gửi đến hệ thống của bạn đúng cách.
 index_start=Bắt đầu quy trình QMail
 index_startmsg=Nhấp vào nút này để bắt đầu các quy trình QMail nền chịu trách nhiệm gửi thư xếp hàng. Nếu không có các quy trình này, thư sẽ không được gửi đi hoặc gửi đến hệ thống của bạn đúng cách.
+
 opts_title=Tùy chọn QMail
 opts_me=Tên máy chủ địa phương
 opts_helo=Tên máy chủ lưu trữ cho SMTP
@@ -24,6 +25,7 @@ opts_etoremote=Hết thời gian chờ phản hồi gửi đi không hợp lệ 
 opts_ebytes=Kích thước thư tối đa không hợp lệ
 opts_etimeout=Hết thời gian chờ dữ liệu SMTP không hợp lệ
 opts_elocalip=Tên máy chủ địa chỉ IP cục bộ không hợp lệ
+
 aliases_title=Bí danh thư
 aliases_addr=Địa chỉ
 aliases_to=Bí danh để ..
@@ -38,6 +40,7 @@ aliases_return=danh sách bí danh
 aliases_toomany=Có quá nhiều bí danh thư trên hệ thống của bạn để hiển thị trên trang này.
 aliases_go=Tìm bí danh phù hợp:
 aliases_delete=Xóa các bí danh đã chọn
+
 aform_type0=không ai
 aform_type1=Địa chỉ email
 aform_type2=Thư mục thư
@@ -52,6 +55,7 @@ aform_val=Bí danh để
 aform_afile=Biên tập ..
 aform_novirt=&lt;Tất cả tên miền&gt;
 aform_return=bí danh
+
 asave_err=Không thể lưu bí danh
 asave_eaddr='$1' không phải là địa chỉ hợp lệ
 asave_ealready=Một bí danh cho '$1' đã tồn tại
@@ -62,13 +66,16 @@ asave_etype4='$1' không phải là chương trình hợp lệ hoặc không t�
 asave_etype5=Tệp tự động '$1' không hợp lệ
 asave_etype4none=Không có chương trình nào
 asave_etype6=Tệp bộ lọc '$1' không hợp lệ
+
 adelete_err=Không thể xóa bí danh
 adelete_enone=Không được chọn
+
 locals_title=Tên miền địa phương
 locals_domains=Tên miền cục bộ cho máy chủ này
 locals_desc=Qmail sẽ chấp nhận gửi email cho người dùng địa phương gửi email đến các tên miền và tên máy chủ được liệt kê trong hộp văn bản ở bên trái. Nếu bạn muốn máy chủ thư của bạn xử lý nhiều tên miền email, tất cả chúng phải được liệt kê trong biểu mẫu này.
 locals_only=Chỉ tên máy chủ cục bộ $1 
 locals_sel=Tên miền được liệt kê dưới đây ..
+
 rcpts_title=Tên miền được chấp nhận
 rcpts_domains=Các miền địa phương và chuyển tiếp được chấp nhận
 rcpts_all=Bất kỳ miền nào
@@ -76,9 +83,11 @@ rcpts_sel=Tên miền được liệt kê dưới đây ..
 rcpts_desc=Qmail sẽ chấp nhận chuyển tiếp hoặc chuyển phát cục bộ chỉ gửi thư đến tên miền và tên máy chủ được liệt kê trong hộp văn bản ở bên trái. Bạn cũng có thể nhập các ký tự đại diện khớp với tất cả các máy chủ lưu trữ trong một tên miền như <tt>.foo.com</tt>. Nếu bạn muốn máy chủ thư của bạn chuyển tiếp email cho khách hàng, bạn phải chấp nhận thư từ bất kỳ tên miền nào.
 rcpts_domains2=Bổ sung tên miền địa phương và chuyển tiếp
 rcpts_desc2=Nếu bạn có một số lượng lớn các tên miền được chấp nhận, những tên miền ít được sử dụng hơn nên được nhập vào hộp văn bản này. Nói chung, 50 tên miền được phép đầu tiên của bạn nên được nhập vào hộp văn bản phía trên và phần còn lại vào tên miền này.
+
 bads_title=Địa chỉ bị từ chối
 bads_addresses=Địa chỉ email bị từ chối
 bads_desc=QMail sẽ từ chối thư để gửi hoặc chuyển tiếp từ bất kỳ địa chỉ nào được liệt kê trong hộp văn bản ở bên trái, phải được nhập dưới dạng <tt>tên người dùng @ tên miền</tt>. Nếu bạn muốn từ chối thư từ toàn bộ tên miền, thư này phải được nhập dưới dạng <tt>@domainname</tt>.
+
 routes_title=Định tuyến tên miền
 routes_toomany=Có quá nhiều tuyến tên miền trên hệ thống của bạn để hiển thị trên trang này.
 routes_go=Tìm các tuyến miền phù hợp:
@@ -88,19 +97,24 @@ routes_direct=Giao hàng trực tiếp
 routes_defroute=Gửi tất cả thư đi khác qua:
 routes_return=tuyến đường tên miền
 routes_delete=Xóa các tuyến miền được chọn
+
 rform_edit=Chỉnh sửa tên miền
 rform_create=Tạo lộ trình tên miền
 rform_from=Mail cho máy chủ hoặc tên miền
 rform_to=Gửi qua máy chủ SMTP
 rform_port=Cổng SMTP
+
 rsave_err=Không thể lưu tuyến tên miền
 rsave_efrom='$1' không phải là một tên miền hợp lệ
 rsave_eto='$1' không phải là máy chủ SMTP hợp lệ
 rsave_eport='$1' không phải là số cổng hợp lệ
+
 rdelete_err=Không thể xóa các tuyến miền
+
 percents_title=% Tên miền địa chỉ
 percents_domains=Tên miền hỗ trợ % địa chỉ
 percents_desc=QMail sẽ chấp nhận email có địa chỉ ở định dạng <tt>user%firstdomain@seconddomain</tt> nếu <tt>seconddomain</tt> được liệt kê trong hộp văn bản bên trái. Các thư ở định dạng này sau đó sẽ được chuyển tiếp tới <tt>user@firstdomain</tt> bởi máy chủ thư này.
+
 virts_title=Ánh xạ ảo
 virts_toomany=Có quá nhiều ánh xạ ảo trên hệ thống của bạn để hiển thị trên trang này.
 virts_go=Tìm ánh xạ ảo phù hợp:
@@ -111,6 +125,7 @@ virts_none=Không ảo
 virts_desc=Ánh xạ ảo được QMail sử dụng để xử lý email đến các tên miền khác nhau trên máy chủ của bạn, bằng cách thêm văn bản vào phần người dùng của địa chỉ email trước khi xử lý thêm. Bạn có thể sử dụng chúng để thiết lập tên miền thư ảo bằng cách tạo ánh xạ ảo mới cho tên miền, sau đó sử dụng trang <a href='$1'>Bí danh thư</a> để tạo bí danh trong tên miền đó.
 virts_return=ánh xạ ảo
 virts_delete=Xóa các ánh xạ ảo đã chọn
+
 vform_edit=Chỉnh sửa bản đồ ảo
 vform_create=Tạo bản đồ ảo
 vform_from=Mail cho địa chỉ
@@ -121,13 +136,17 @@ vform_to=Chuẩn bị tên người dùng
 vform_none=Không có gì
 vform_prepend=Tiền tố được chỉ định
 vform_auto=Tự động chọn tiền tố
+
 vsave_err=Không thể lưu bản đồ ảo
 vsave_edomain='$1' không phải là miền email hợp lệ
 vsave_euser='$1' không phải là tên người dùng email hợp lệ
 vsave_eprepend='$1' không phải là tiền tố ánh xạ hợp lệ
 vsave_eboth=Bạn không thể chọn cả 'Bất kỳ địa chỉ nào không khớp với ánh xạ ảo khác' và 'Không có gì'
+
 vdelete_err=Không thể xóa ánh xạ ảo
+
 stop_err=quá trình gửi thư không còn chạy
+
 log_stop=Đã dừng quá trình QMail
 log_start=Bắt đầu các quy trình QMail
 log_opts=Tùy chọn QMail đã thay đổi
@@ -158,6 +177,7 @@ log_delete_assigns=Đã xóa $1 người dùng thư
 log_delmail=Đã xóa $1 tin nhắn từ $2 
 log_movemail=Đã chuyển $1 tin nhắn từ $2 sang $3 
 log_send=Đã gửi thư đến $1 
+
 rfile_title=Chỉnh sửa tập tin tự động
 rfile_desc=Sử dụng vùng văn bản bên dưới để chỉnh sửa thông báo tự động trong $1. Thông báo có thể chứa các macro $ SUB DỰ ÁN, $ TỪ, $ ĐẾN, $ NGÀY và $ CƠ THỂ sẽ được mở rộng khi tính năng tự động được kích hoạt.
 rfile_desc2=Bạn cũng có thể đặt các tiêu đề thư thêm hoặc thay thế các mặc định được sử dụng trong tự động trả lời bằng cách đặt các dòng như: <br><tt> Từ: foo@bar.com </tt><br> <tt>Chủ đề: Vào kỳ nghỉ</tt> <br> ở đầu tin nhắn, được phân tách khỏi phần thân bằng một dòng trống duy nhất.
@@ -176,6 +196,7 @@ rfile_from=Từ: địa chỉ để trả lời
 rfile_auto=Tự động (dựa trên địa chỉ người nhận)
 rfile_efrom=Thiếu từ: địa chỉ
 rfile_fromdesc=Địa chỉ From: phải luôn được chỉ định khi có thể, vì phương thức tự động có thể không đáng tin cậy.
+
 ffile_title=Chỉnh sửa tập tin bộ lọc
 ffile_desc=Sử dụng mẫu dưới đây để thiết lập quy tắc lọc trong tệp $1.
 ffile_efile=Bạn không được phép chỉnh sửa $1.
@@ -191,6 +212,7 @@ ffile_other=Nếu không thì chuyển tiếp tới $1
 ffile_err=Không thể lưu tệp bộ lọc
 ffile_ematch=Trận đấu mất tích
 ffile_eaction=Thiếu địa chỉ chuyển tiếp
+
 queue_title=Hàng đợi thư
 queue_count=$1 tin nhắn
 queue_none=Không có thư hiện đang được xếp hàng để gửi
@@ -206,10 +228,12 @@ queue_all=Chọn tất cả
 queue_invert=Lựa chọn đối nghịch
 queue_refresh=Làm mới hàng đợi thư
 queue_refreshdesc=Tải lại trang này để hiển thị trạng thái hiện tại của hàng đợi thư.
+
 qview_title=Tin nhắn xếp hàng
 qview_desc=Từ tệp $1 
 qview_headers=Tiêu đề thư
 qview_attach=Tài liệu đính kèm
+
 assigns_title=Bài tập người dùng thư
 assigns_return=bài tập người dùng thư
 assigns_toomany=Có quá nhiều người dùng thư trên hệ thống của bạn để hiển thị trên trang này.
@@ -221,6 +245,7 @@ assigns_gid=GID
 assigns_home=Thư mục nhà
 assigns_desc=Bài tập người dùng thư cho phép bạn tạo hộp thư cho người dùng không được xác định trong danh sách người dùng Unix. Mỗi nhiệm vụ sẽ gửi thư cho một tên người dùng hoặc mẫu tên người dùng đã chọn, như thể nó được gửi đến hộp thư người dùng Unix thực sự.
 assigns_delete=Xóa người dùng thư đã chọn
+
 sform_edit=Chỉnh sửa người dùng thư
 sform_create=Tạo người dùng thư
 sform_address=Địa chỉ tên người dùng
@@ -230,15 +255,19 @@ sform_user=Người dùng Unix
 sform_uid=UID
 sform_gid=GID
 sform_home=Thư mục nhà
+
 ssave_err=Không thể lưu người dùng thư
 ssave_eaddress=Tên người dùng địa chỉ bị thiếu hoặc không hợp lệ
 ssave_euser=Người dùng Unix bị thiếu hoặc không hợp lệ
 ssave_euid=UID bị thiếu hoặc không hợp lệ
 ssave_egid=GID bị thiếu hoặc không hợp lệ
 ssave_ehome=Thư mục nhà bị thiếu hoặc không hợp lệ
+
 sdelete_err=Không thể xóa người dùng thư
+
 delete_egone=Tin nhắn xếp hàng không còn tồn tại
 delete_ebogus=Tên tệp hàng đợi không hợp lệ
+
 boxes_title=Hộp thư người dùng
 boxes_user=Người sử dụng
 boxes_size=Kích thước hộp thư
@@ -248,6 +277,7 @@ boxes_sent=Gửi mail
 boxes_ecannot=Bạn không được phép đọc email
 boxes_toomany=Có quá nhiều người dùng trên hệ thống của bạn để liệt kê tất cả các hộp thư của họ.
 boxes_go=Xem thư cho người dùng:
+
 mail_title=Email người dùng
 mail_from=Từ
 mail_date=Ngày
@@ -286,6 +316,7 @@ mail_forward=Ở đằng trước
 mail_rfc=Từ dòng
 mail_move=Chuyển tới:
 mail_eexists=Tin nhắn không còn tồn tại!
+
 view_title=Đọc mail
 view_desc=Tin nhắn $1 trong $2 
 view_desc2=Tin nhắn $1 cho người dùng $2 
@@ -309,6 +340,7 @@ view_mark1=Đọc
 view_mark2=Đặc biệt
 view_return=email gốc
 view_sub=Email đính kèm
+
 compose_title=Soạn email
 reply_title=Trả lời email
 forward_title=Chuyển tiếp email
@@ -319,6 +351,7 @@ reply_mailforward=Tin nhắn chuyển tiếp
 reply_attach2=Tệp đính kèm phía máy khách và máy chủ
 reply_send=Gửi thư
 reply_ecannot=Bạn không được phép gửi thư như người dùng này
+
 send_err=Không thể gửi thư
 send_eto=Thiếu địa chỉ
 send_efrom=Thiếu từ địa chỉ
@@ -331,6 +364,7 @@ send_eattach=Tệp đính kèm không thể có tổng kích thước $1 kB.
 send_eperms=Người dùng $1 không thể đọc $2 
 send_eperms2=Bạn không được phép gửi tệp $1 
 send_epath=Sendmail thực thi $1 không tồn tại.
+
 delete_title=Xóa thư
 delete_rusure=Bạn có chắc chắn muốn xóa $1 tin nhắn đã chọn khỏi $2 không? Điều này có thể mất một thời gian cho một tập tin thư lớn. Cho đến khi xóa xong, không nên thực hiện hành động nào khác.
 delete_rusure2=Bạn có chắc chắn muốn xóa tin nhắn này từ $1 không? Điều này có thể mất một thời gian cho một tập tin thư lớn. Cho đến khi xóa xong, không nên thực hiện hành động nào khác.
@@ -339,6 +373,7 @@ delete_ecannot=Bây giờ bạn được phép xóa thư từ người dùng nà
 delete_enone=Không có thư nào được chọn để xóa
 delete_emnone=Không có thư được chọn để đánh dấu
 delete_nobutton=Không có nút bấm
+
 search_title=kết quả tìm kiếm
 search_ecannot=Bạn không được phép tìm kiếm email của người dùng này
 search_ematch=Bạn phải nhập văn bản để phù hợp với.
@@ -346,6 +381,7 @@ search_efield=Bạn phải chọn một loại tìm kiếm.
 search_none=Không tìm thấy thư nào.
 search_results2=$1 thư phù hợp với $2 ..
 search_results3=$1 thư không khớp với $2 ..
+
 match_from=Từ: trận đấu
 match_subject=Chủ đề: trận đấu
 match_to=Tới: trận đấu
@@ -363,6 +399,7 @@ match_!date=Ngày: không khớp
 match_!body=Cơ thể không phù hợp
 match_!size=Kích thước nhỏ hơn
 match_!headers=Tiêu đề không khớp
+
 delq_titles=Xóa tin nhắn
 delq_rusure=Bạn có chắc chắn muốn xóa $1 tin nhắn được xếp hàng đã chọn không?
 delq_confirm=Xóa tin nhắn

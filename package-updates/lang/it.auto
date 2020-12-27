@@ -57,6 +57,7 @@ index_reposdisable=Disabilita i repository
 index_reposenable=Abilita repository
 index_reposdelete=Elimina repository
 index_repoheader=Nuove opzioni di repository di pacchetti
+
 update_title=Pacchetti di aggiornamento
 update_title2=Installa i pacchetti
 update_enone=Nessun pacchetto selezionato
@@ -94,9 +95,11 @@ update_none=Nessuna
 update_ops=Creazione di un elenco completo di pacchetti ..
 update_rebootdesc=Uno dei pacchetti installati richiede un riavvio per essere completamente applicato.
 update_reboot=Riavvia ora
+
 sched_title=Aggiornamento pianificato
 sched_yes=Il controllo pianificato per gli aggiornamenti è ora attivo.
 sched_no=Il controllo pianificato per gli aggiornamenti è stato disabilitato.
+
 log_update=Pacchetti aggiornati $1 installati
 log_sched=Aggiornamenti pianificati abilitati
 log_unsched=Aggiornamenti pianificati disabilitati
@@ -108,11 +111,13 @@ log_enable_repo=Repository di pacchetti abilitato $1
 log_disable_repo=Repository di pacchetti disabilitato $1 
 log_delete_repo=Repository di pacchetti eliminato $1 
 log_create_repo=Repository di pacchetti creato $1 
+
 refresh_title=Pacchetti rinfrescanti
 refresh_clearing=Svuotare le cache dei pacchetti ..
 refresh_done=.. fatto
 refresh_available=Recupero dei pacchetti disponibili.
 refresh_done3=.. trovati $1 possibili aggiornamenti
+
 view_title=Dettagli del pacchetto
 view_header=Informazioni sul pacchetto aggiornabile
 view_name=Nome del pacchetto
@@ -126,12 +131,14 @@ view_changelog=Log delle modifiche per la versione disponibile
 view_software=Gestisci pacchetto
 view_update=Pacchetto di aggiornamento
 view_install=Installa pacchetto
+
 system_yum=YUM
 system_apt=APT
 system_csw=CSW (Blastwave)
 system_webmin=Modulo Webmin
 system_usermin=Modulo Usermin
 system_tgz=Webmin o Usermin tar.gz
+
 repos_err_disable=Impossibile disabilitare i repository
 repos_err_enable=Impossibile abilitare i repository
 repos_err_delete=Impossibile eliminare i repository

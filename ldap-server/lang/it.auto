@@ -16,6 +16,7 @@ index_setupdesc=Il database del server LDAP non contiene ancora il DN radice $1,
 index_setup=Crea DN radice
 index_permsdesc=La directory di dati del server LDAP $1 contiene file non di proprietà dell'utente corretto $2, il che significa che è improbabile che si avvii correttamente. Tuttavia, Webmin può risolvere questo problema facendo clic sul pulsante in basso.
 index_perms=Proprietà fissa
+
 connect_eserver=Il server LDAP $1 non esiste
 connect_euser=Nessun utente per accedere come è stato configurato
 connect_epass=Nessuna password con cui accedere è stata configurata
@@ -28,6 +29,7 @@ connect_eldap=Impossibile connettersi al server LDAP $1 sulla porta $2
 connect_essl=Impossibile avviare la crittografia TLS con il server LDAP $1 : $2 
 connect_elogin=Impossibile accedere al server LDAP $1 come $2 : $3 
 connect_cpan=Puoi avere <tt>$1</tt> modulo Perl <a href='$2'>installato automaticamente</a> da CPAN.
+
 slapd_title=Configurazione del server OpenLDAP
 ldif_title=Configurazione del server OpenLDAP
 slapd_header=Opzioni del server LDAP globale
@@ -76,6 +78,7 @@ slapd_protos=Connessioni LDAP da accettare
 slapd_ldap=LDAP su rete
 slapd_ldaps=LDAP su SSL
 slapd_ldapi=File socket Unix
+
 schema_title=Gestisci schema
 schema_file=Nome
 schema_desc=Descrizione
@@ -93,6 +96,7 @@ schema_edesc=Questa pagina consente di modificare manualmente un file di schema 
 schema_return=elenco di schemi
 schema_emove=Impossibile trovare il file di schema da spostare!
 schema_ecannot=Non è consentito gestire lo schema LDAP
+
 acl_title=Controllo degli accessi LDAP
 acl_ecannot=Non è consentito configurare il controllo di accesso LDAP
 acl_what=Oggetti
@@ -103,6 +107,7 @@ acl_none=Non sono state ancora definite regole di controllo dell'accesso. Tutti 
 acl_delete=Elimina le regole selezionate
 acl_add=Aggiungi una nuova regola di controllo dell'accesso.
 acl_return=regole di controllo accessi
+
 browser_title=Sfoglia database
 browser_econn=Non è possibile utilizzare il browser LDAP : $1 
 browser_ecannot=Non è consentito sfogliare il database LDAP
@@ -136,24 +141,30 @@ browser_nomatch=Nessun oggetto corrisponde alla tua ricerca per $1.
 browser_search=Trova oggetti corrispondenti :
 browser_search2=Mostra oggetti corrispondenti :
 browser_sok=Ricerca
+
 save_err=Impossibile modificare l'attributo
 save_ebase=Impossibile recuperare l'oggetto $1 dal database
 save_emodify=Modifica LDAP di $2 in $1 non riuscita : $3 
 save_enone=Nessun valore inserito
+
 add_err=Impossibile aggiungere l'attributo
 add_eadd=Nome dell'attributo mancante o non valido
 add_evalue=Valore mancante
 add_emodify=Aggiunta LDAP da $2 a $1 non riuscita : $3 
+
 delete_err=Rimozione degli attributi non riuscita
 delete_enone=Nessuno selezionato
 delete_emodify=Eliminazione LDAP di $2 da $1 non riuscita : $3 
+
 sdelete_err=Impossibile eliminare gli oggetti
 sdelete_edn=L'oggetto $1 non è stato trovato
 sdelete_edel=Eliminazione LDAP di $1 non riuscita : $2 
+
 rename_err=Impossibile rinominare l'oggetto
 rename_eget=Impossibile trovare l'oggetto con DN $1 
 rename_enew=Il nuovo nome non sembra essere valido
 rename_erename=LDAP newdn su $2 da $1 non riuscito : $3 
+
 oadd_title=Crea oggetto
 oadd_header=Nuovi dettagli dell'oggetto LDAP
 oadd_base=DN oggetto padre
@@ -170,6 +181,7 @@ oadd_eget2=Impossibile verificare lo scontro con $1 : $2
 oadd_eclash=Un oggetto con il DN $1 esiste già
 oadd_eadd=Aggiunta LDAP di $1 non riuscita : $2 
 oadd_err=Impossibile creare un nuovo oggetto
+
 create_title=Crea albero
 create_ecannot=Non ti è permesso creare un nuovo albero
 create_desc=Questa pagina ha fornito un modo conveniente per creare DN che costituirà la base di un nuovo albero nel database. Può anche creare un utente di esempio o un alias email sotto l'albero, come modello per i tuoi oggetti.
@@ -191,18 +203,23 @@ create_done=.. fatto
 create_doingex=Creazione di un oggetto esempio con DN $1 ..
 create_edoingex=.. fallito: $1. Tuttavia, l'albero può ancora essere utilizzato.
 create_eoc=Impossibile trovare una classe di oggetti adatta per il nuovo DN
+
 eunknown=Errore sconosciuto
+
 apply_err=Impossibile applicare la configurazione
 apply_ecmd=$1 non riuscito : $2 
 apply_ecannot=Non è consentito applicare la configurazione
+
 stop_err=Impossibile arrestare il server LDAP
 stop_ecmd=$1 non riuscito : $2 
 stop_egone=Non più in esecuzione!
 stop_ekill=Processo di uccisione fallito : $1 
 stop_ecannot=Non è consentito arrestare il server LDAP
+
 start_err=Impossibile avviare il server LDAP
 start_ecmd=$1 non riuscito : $2 
 start_ecannot=Non è consentito avviare il server LDAP
+
 log_create_dn=Oggetto creato $1 
 log_delete_dn=Oggetto eliminato $1 
 log_rename_dn=Oggetto rinominato $1 
@@ -234,6 +251,7 @@ log_up_access=Sposta la regola di controllo dell'accesso per $1
 log_down_access=Spostato verso il basso la regola di controllo dell'accesso per $1 
 log_delete_accesses=Eliminate le regole di controllo dell'accesso $1 
 log_all=tutti gli oggetti
+
 gencert_title=Genera certificato SSL
 gencert_header=Nuovi dettagli del certificato SSL
 gencert_create=Crea certificato
@@ -245,7 +263,9 @@ gencert_dir=elenco
 gencert_err=Generazione del certificato non riuscita
 gencert_edest=La directory di destinazione non esiste
 gencert_epath=I file di certificati e chiavi nella configurazione del server LDAP devono essere percorsi assoluti
+
 perms_err=Impossibile correggere la proprietà del file
+
 acl_slapd=È possibile configurare il server LDAP?
 acl_ldif=È possibile configurare il server LDAP?
 acl_schema=Può gestire lo schema?
@@ -254,6 +274,7 @@ acl_browser=È possibile sfogliare e modificare il database?
 acl_create=Puoi creare un nuovo albero?
 acl_start=È possibile avviare e arrestare il server LDAP?
 acl_apply=È possibile applicare le modifiche alla configurazione?
+
 access_desc=$2 di $1 
 access_self=se stesso
 access_users=utenti autenticati
@@ -273,6 +294,7 @@ access_lcompare=Confrontare
 access_lsearch=Ricerca
 access_lread=Leggere
 access_lwrite=Scrivi
+
 eacl_title1=Crea regola controllo accessi
 eacl_title2=Modifica regola controllo accessi
 eacl_header=Dettagli della regola di controllo dell'accesso al database LDAP

@@ -25,6 +25,7 @@ index_resetdesc=بنیادی بنی ابتدائی ترتیب کے ل fire تم�
 index_cluster=کلسٹر سرورز
 index_clusterdesc=اضافی ویبمن سرورز ترتیب دینے کے لئے اس بٹن پر کلک کریں جس میں فائر وال کی ترتیب خود بخود کاپی ہوجائے گی۔
 index_return=فائر وال قواعد
+
 index_num=نمبر
 index_action=عمل
 index_desc=حالت
@@ -37,6 +38,7 @@ index_delete=منتخب کردہ کو حذف کریں
 index_existing=Webmin has detected $1 IPFW firewall rules currently in use, which are not recorded in the file $2. These rules were probably setup from a script, which this module does not know how to read and edit.<p>If you want to use this module to manage your IPFW firewall, click the button below to convert the existing rules to a save file, and then disable your existing firewall script.
 index_saveex=فائر وال قواعد محفوظ کریں
 index_headerex=موجودہ فائر وال کنفیگریشن
+
 action_allow=<font color=#00aa00>Allow</font>
 action_deny=<font color=#ff0000>Drop</font>
 action_reject=<font color=#ff4400>Reject</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>Drop packet</font>
 laction_reject=<font color=#ff4400>Return ICMP rejection</font>
 laction_reset=<font color=#ff4400>Reset TCP connection</font>
 laction_skipto=حکمرانی کرنے کے لئے جائیں
+
 edit_title1=اصول بنائیں
 edit_title2=قاعدہ$1 میں ترمیم کریں
 edit_header1=حکمرانی کی کارروائی
@@ -114,6 +117,7 @@ edit_src-addr=ماخذ کے پتہ سے ..
 edit_src-port=سورس پورٹ سے ..
 edit_dst-addr=منزل کا پتہ ..
 edit_dst-port=منزل پورٹ تک ..
+
 save_err=قاعدہ کو بچانے میں ناکام
 save_enum=لاپتہ یا غلط اصول نمبر
 save_eskipto=اس پر جانے کے لئے لاپتہ یا غلط اصول نمبر
@@ -144,7 +148,9 @@ save_etcpflags=اگر پروٹوکول ٹی سی پی ہے تو ٹی سی پی �
 save_elimit=لاپتہ یا غلط حد سے زیادہ حد
 save_edstport=گمشدہ یا غلط منزل بندرگاہ
 save_esrcport=غائب یا غلط سورس پورٹ
+
 apply_err=تشکیل دینے میں ناکام
+
 desc_if=اگر$1
 desc_and=اور
 desc_always=ہمیشہ
@@ -191,6 +197,7 @@ desc_where=جہاں$1
 desc_all=تمام پیکٹ کے لئے
 desc_in=پیکٹ آنے والا ہے
 desc_out=پیکٹ باہر جارہا ہے
+
 log_create_rule=$1 اصول بنایا گیا
 log_delete_rule=حذف شدہ$1 قاعدہ
 log_modify_rule=ترمیم شدہ$1 قاعدہ
@@ -206,6 +213,7 @@ log_convert=تبدیل شدہ فعال فائر وال قواعد
 log_setup=ابتدائی فائر وال سیٹ اپ انجام دیا
 log_unapply=الٹا فائر وال کی ترتیب
 log_delsel=حذف کردہ$1 قواعد
+
 cluster_title=کلسٹر فائر وال سرورز
 cluster_none=فائر وال کلسٹر میں ابھی تک کوئی سرور شامل نہیں کیا گیا ہے۔
 cluster_host=میزبان کا نام
@@ -216,6 +224,7 @@ cluster_gadd=گروپ میں سرورز شامل کریں
 cluster_need=ویب مین سرور انڈیکس ماڈیول میں لاگ ان اور پاس ورڈ والے سرورز کو یہاں منظم کرنے سے پہلے ان کو شامل کرنا ہوگا۔
 cluster_return=کلسٹر سرورز
 cluster_delete=منتخب کردہ کو ہٹا دیں
+
 add_title=سرورز شامل کریں
 add_msg=$1 شامل کرنا۔
 add_gmsg=گروپ$1 میں سرور شامل کرنا۔

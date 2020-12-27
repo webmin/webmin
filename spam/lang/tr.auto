@@ -13,6 +13,7 @@ index_applydesc=Çalışan tüm $1 işlemlerine bir HUP sinyali göndererek mevc
 index_cpan=SpamAssassin bir Perl modülü olduğundan, CPAN'dan $1 indirmek için Webmin <a href='$2'>Perl Modülleri</a> modülünü kullanarak da otomatik olarak yükleyebilirsiniz.
 index_spamassassin=SpamAssassin
 index_ecannot=$1 SpamAssassin yapılandırma dosyasını yönetmenize izin verilmiyor
+
 white_title=İzin Verilen ve Reddedilen Adresler
 white_desc=Bu sayfadaki tablolar, her zaman veya asla spam olarak kategorize edilmeyen e-postalar için Kimden: ve Kime: adreslerini belirtmenize olanak tanır. Diğer tüm e-postalar SpamAssassin'in kuralları uyarınca normal şekilde işlenecektir. Tüm e-posta adresleri, tüm alan adlarıyla eşleşmesi için *@foo.com veya *.foo.com gibi joker karakterler içerebilir.
 white_from=Asla spam olarak sınıflandırılmayacak gönderenler
@@ -44,6 +45,7 @@ white_tabham=İzin verilen adresler
 white_tabspam=Reddedilen adresler
 white_tabsome=Hedef adresleri
 white_tabimport=Adresleri içe aktar
+
 score_title=Spam Sınıflandırması
 score_desc=SpamAssassin, her iletiye içeriğine ve başlıklarına göre bir puan atar. Bu sayfadaki seçenekler, bir iletinin spam olarak değerlendirildiği puanı ve bu puanın hesaplanma yöntemlerinden bazılarını belirler.
 score_header=Spam mesajı sınıflandırma seçenekleri
@@ -77,6 +79,7 @@ score_emxdelay=MX kontrolleri arasında beklenecek eksik veya geçersiz saniye
 score_etimeout=RBL sorgularını beklemek için eksik veya geçersiz saniye
 score_ereceived=Eksik veya geçersiz Alınan: RBL ile kontrol edilecek başlıklar
 score_bayes=Bayesian öğrenme sınıflandırıcısı kullanılsın mı?
+
 report_title=Mesaj Değişikliği
 report_desc=Bu sayfadaki seçenekler, SpamAssassin'in analiz ettiği tüm iletilerin başlıklarında ve gövdesinde yaptığı değişiklikleri ve spam olarak sınıflandırılanlarda yaptığı değişiklikleri kontrol eder.
 report_header=Analiz edilen ve spam mesaj değiştirme seçenekleri
@@ -109,6 +112,7 @@ report_addspam=İstenmeyen e
 report_addham=jambon
 report_addall=Herşey
 report_eaddheader=$1 eklemek için eksik veya geçersiz ek başlık
+
 user_title=Çeşitli Kullanıcı Seçenekleri
 user_desc=Bu sayfadaki seçenekler çoğunlukla SpamAssassin'in Razor, DCC ve Pyzor harici spam tanımlama paketleri için kullandığı yollar ve ayarlarla ilgilidir. SpamAssassin'e DNS aramaları yapıp yapamayacağını da söyleyebilirsiniz.
 user_header=Çeşitli kullanıcı seviyesi seçenekleri
@@ -131,6 +135,7 @@ user_err=Kullanıcı seçenekleri kaydedilemedi
 user_etimeout='$1' geçerli bir zaman aşımı değil
 user_epath='$1' geçerli bir istemci program yolu değil
 user_emax='$1' geçerli bir sağlama toplamı sayısı değil
+
 header_title=Başlık ve Vücut Testleri
 header_desc=Bu sayfa, mesaj başlıklarına, gövde içeriğine, gövdede bulunan URL'lere veya diğer testlerin kombinasyonlarına dayanarak SpamAssassin'in e-postaya uygulayacağı ek testler tanımlamanıza olanak tanır. Her teste atanan ad size bağlıdır, ancak genellikle CONTAINS_FOO gibi bir şeydir. SpamAssassin'in bir testle eşleşen iletilere eklediği gerçek puan, sayfanın altındaki tablolara kendi veya yerleşik test adlarınızı girerek ayarlanabilir.
 header_switch=Basit moda geç.
@@ -164,6 +169,7 @@ header_eeval='$1' geçerli bir değerlendirme işlevi değil
 header_eheader='$1' geçerli bir e-posta başlığı değil
 header_eregexp='$1' geçerli bir normal ifade değil (/ expression / gibi olmalıdır)
 header_emeta='$1' testi için eksik test ifadesi
+
 priv_title=Çeşitli Ayrıcalıklı Seçenekler
 priv_desc=Buradaki seçenekler, bireysel kullanıcıların yapılandırma dosyalarında değil, yalnızca global olarak ayarlanabilir. Çeşitli yapılandırma ve günlük dosyalarına giden yollarla kontrol ederler.
 priv_header=Çeşitli ayrıcalık düzeyi ayarları
@@ -183,6 +189,7 @@ priv_eargs='$1' geçerli bir argüman listesi değil
 priv_emscore='$1' geçerli bir en yüksek ifade puanı değil
 priv_ephrase='$1' geçerli bir iki kelimelik spam ifadesi değil
 priv_escore='$1' spam ifadesi için eksik veya geçersiz puan
+
 usually=Genellikle $1 
 ecannot=Bu sayfayı kullanma izniniz yok
 setup_title=SpamAssassin için Procmail'i Kur
@@ -202,11 +209,13 @@ setup_drop1=Alıcı Unix kullanıcısı
 setup_drop0=<tt>kök</tt> kullanıcı
 setup_ok=SpamAssassin için Procmail'i Kur
 setup_email=E-posta adresine yönlendir
+
 setup_err=SpamAssassin kurulamadı
 setup_efile=Eksik veya geçersiz mbox biçimindeki dosya
 setup_emaildir=Eksik veya geçersiz Qmail posta dizini
 setup_emhdir=Eksik veya geçersiz MH posta dizini
 setup_eemail=Eksik veya geçersiz e-posta adresi
+
 log_white=Değiştirilmiş izin verilen ve reddedilen adresler
 log_score=Değiştirilmiş spam sınıflandırması
 log_report=Değiştirilmiş mesaj değişikliği
@@ -217,12 +226,14 @@ log_setup=SpamAssassin için Procmail'i Kur
 log_procmail=Procmail yapılandırması değiştirildi
 log_import=İçe aktarılan $1 adresleri
 log_manual=Manuel olarak düzenlenen yapılandırma dosyası
+
 import_title=Adresleri İçe Aktar
 import_err=Adresler içe aktarılamadı
 import_efile=Seçili dosyadan içe aktarılacak dosya yok
 import_enone=Dosyada e-posta adresi bulunamadı
 import_ok1=$1 yeni olan ve tüm adresler listesine eklenen $2 e-posta adresi dosyada bulundu.
 import_ok2=$1 e-posta adresi dosyada bulundu, ancak hepsi zaten izin verilen adresler listesindeydi.
+
 mail_title=Gereksiz mail
 mail_desc=Bu sayfada spam olarak sınıflandırılmış ve bazı işlemler yapılmasını bekleyen iletiler listelenmektedir. Yanlış girilen iletiler Gelen Kutunuza taşınabilirken, gerçekten spam olan iletiler silinebilir.
 mail_level=Puan
@@ -240,10 +251,13 @@ mail_will=$1 dakika içinde otomatik yenileme
 mail_wills=$1 saniye içinde otomatik yenileme
 mail_delall=Tüm Spam'leri Sil
 mail_search3=Yukarıdaki puanı arayın:
+
 process_eclean=Bu e-postadaki SpamAssassin başlıkları kaldırılırken bir hata oluştu
 process_ereport=SpamAssassin'e e-posta bildirilemedi : $1 
+
 apply_err=Değişiklikler uygulanamadı
 apply_none=SpamAssassin arka plan programı bulunamadı!
+
 acl_avail=Kullanıcının kullanabileceği simgeler
 acl_file=Düzenlenecek SpamAssassin yapılandırma dosyası
 acl_filedef=Global yapılandırma dosyası
@@ -251,8 +265,10 @@ acl_awl=Otomatik beyaz liste düzenleme için izin verilen kullanıcılar
 acl_awl0=Tüm kullanıcılar
 acl_awl1=Sadece listelenen kullanıcılar $1 
 acl_awl2=Sadece $1 grubunun üyeleri
+
 search_escore=Eksik veya geçersiz spam puanı
 search_results5=$2 veya üstünde spam puanı olan $1 posta iletisi ..
+
 razor_title=Razor Spam Dedektörünü Kur
 razor_desc=Vipul's Razor, adresinize gönderilen spam sınıflandırmasını iyileştirebilen işbirliğine dayalı bir spam algılama ve raporlama sistemidir. Ancak, kullanılabilmesi için önce aşağıdaki formu kullanarak bir Razor hesabı açmanız gerekir.
 razor_user=Ustura kullanıcı adı
@@ -267,6 +283,7 @@ razor_epass=Eksik şifre
 razor_doing=Şimdi Razor'a kayıt olmaya ve kurmaya çalışıyorum ..
 razor_done=.. bitti.
 razor_failed=.. başarısız oldu! Nedeni için yukarıdaki hata çıkışına bakın.
+
 amavisd_title=Amavisd Spam Dağıtımı
 amavisd_desc=Form, spam olarak sınıflandırılan iletilere ne olacağını belirleyen Amavisd yapılandırmasını değiştirmek için kullanılabilir.
 amavis_ok=Amavisd Teslimatını Değiştir
@@ -304,9 +321,11 @@ amavis_quarantine_today=Bugün Karantina'daki spam postalar (24 saat)
 amavis_quarantine_week=Bu hafta Karantinadaki spam postalar (7 gün)
 amavis_quarantine_month=Bu ay Karantina'daki spam postalar (30 gün)
 amavis_quarantine_total=Karantinadaki toplam Spam posta sayısı
+
 procmail_title=Procmail Spam Dağıtımı
 procmail_ok=Procmail Teslimatını Değiştirin
 procmail_desc=Form, spam olarak sınıflandırılan iletilere ne olacağını belirleyen Procmail yapılandırmasını değiştirmek için kullanılabilir.
+
 simple_title=Başlık ve Vücut Testleri
 simple_desc=Bu sayfa, mesaj başlıklarına, gövde içeriğine, gövdede bulunan URL'lere dayalı olarak SpamAssassin'in e-postaya uygulayacağı ek testler tanımlamanıza olanak tanır. Her teste atanan ad size bağlıdır, ancak genellikle CONTAINS_FOO gibi bir şeydir.
 simple_switch=Gelismis moda geç ..
@@ -317,8 +336,10 @@ simple_regexp=İfadeyi eşleştir
 simple_score=Başvuru puanı
 simple_describe=Açıklama
 simple_err=Mesaj testleri kaydedilemedi
+
 before_ecmd=Kaydetmeden önce komut başarısız oldu : $1 
 after_ecmd=Kayıt sonrası komutu başarısız oldu : $1 
+
 connect_emysql=$1 veritabanı sürücüsü yüklenemedi
 connect_elogin= $1:$2 veritabanına giriş yapılamadı.
 connect_equery=$1 veritabanı $2 tercih tablosunu içermiyor
@@ -326,9 +347,11 @@ connect_eldapmod=LDAP ile iletişim kurmak için gereken $1 perl modülü kurulu
 connect_eldap=$2 bağlantı noktasındaki $1 LDAP sunucusuna bağlanılamadı
 connect_eldaplogin=$1 LDAP sunucusuna $2 olarak giriş yapılamadı : $3 
 connect_ebase=LDAP tabanı DN $1 geçerli değil : $2 
+
 eldap=LDAP işlemi başarısız oldu : $1 
 esql=SQL başarısız oldu : $1 
 ldap_euser=$1 için LDAP kullanıcı nesnesi bulunamadı
+
 db_title=SQL ve LDAP Veritabanları
 db_header=Yapılandırma depolama veritabanı seçenekleri
 db_dsn=Kullanıcı yapılandırmalarını
@@ -364,6 +387,7 @@ db_eldapport=Eksik veya geçersiz LDAP sunucusu bağlantı noktası numarası
 db_eldapdn=Eksik veya geçersiz temel DN - boşluğa izin verilmiyor
 db_eldapattr=Eksik veya geçersiz SpamAssassin özelliği
 db_eldapuid=Eksik veya geçersiz kullanıcı adı özelliği
+
 awl_title=Otomatik Beyaz Listeleri Yönet
 awl_search=Beyaz listeyi şurada ara:
 awl_ok=Arama
@@ -389,6 +413,7 @@ awl_deleteone=Otomatik Beyaz Listeyi Temizle
 awl_deleteonedesc=$1 kullanıcısı için tüm otomatik beyaz liste girişlerini kaldırın.
 awl_deleteall=Tüm Otomatik Beyaz Listeleri Temizle
 awl_deletealldesc=Sistemdeki tüm kullanıcılar için tüm otomatik beyaz liste girişlerini kaldırın.
+
 dawl_err=Otomatik beyaz listeden silinemedi
 dawl_eopen=Beyaz liste açılamadı
 dawl_enone=Silinecek adres yok
@@ -396,6 +421,7 @@ dawl_ecannot=Bu kullanıcı için otomatik beyaz listeyi yönetme izniniz yok
 dawl_doing=Tüm kullanıcılar için otomatik beyaz listeler siliniyor ..
 dawl_done=.. $1 kullanıcıdan $2 kayıt silindi.
 dawl_title=Tüm Otomatik Beyaz Listeleri Sil
+
 manual_title=Yapılandırma Dosyalarını Düzenle
 manual_file=Yapılandırma dosyasını düzenle:
 manual_ok=tamam

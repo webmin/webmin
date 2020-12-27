@@ -3,6 +3,7 @@ index_twofactor=二要素認証
 index_joingroup=グループに追加：
 index_eulist=ユーザーのリストに失敗しました： $1 
 index_eglist=グループのリストに失敗しました： $1 
+
 edit_title3=安全なWebminユーザーを作成する
 edit_twofactor=二要素認証タイプ
 edit_twofactorprov=ID $2 のプロバイダー $1 を使用する
@@ -22,29 +23,40 @@ edit_safe=特権レベル
 edit_safe0=無制限
 edit_safe1=安全なモジュールのみ
 edit_unsafe=無制限にリセット
+
 save_eunixname=ユーザー名「$1」はUnixユーザーではないため、セーフモードでは使用できません
 save_eoverlay=テーマオーバーレイを選択できないのは、テーマが
 save_etemp=<a href='$1'>ユーザーに新しいパスワードの入力を促す</a>が有効になっていない限り、次回ログイン時にパスワードの変更を強制するオプションは使用できません
+
 delete_eanonuser=このユーザーは匿名モジュールアクセスに使用されています
+
 cert_etempdir=無効な証明書ファイル
+
 acl_pass=パスワード制限を変更できますか？
 acl_sql=ユーザーおよびグループデータベースを構成できますか？
+
 log_joingroup= $1 Webminユーザーをグループ $2 に追加しました
 log_sql=変更されたユーザーおよびグループデータベース
 log_twofactor=登録済みユーザー $1 と2要素プロバイダー $2 
 log_onefactor=二要素認証の登録解除ユーザー $1 
+
 gedit_desc=グループの説明
 gedit_egone=選択したグループはもう存在しません！
+
 gsave_edesc=無効な説明-：文字は使用できません
+
 convert_sync2=将来的にUnixユーザーとパスワードを同期しますか？
 convert_user=Unixユーザー
 convert_action=実行されたアクション
 convert_done= $1 変換されたユーザー、 $2 無効、 $3 は既に存在し、 $4 除外。
 convert_users=変換するユーザー
+
 sync_when=同期するタイミング
+
 unix_restrict2=追加の制限
 unix_header=Unixユーザー認証設定
 unix_utable=許可されたUnixユーザー
+
 sessions_actions=行動..
 sessions_logouts=ログアウトしたセッションも表示します。
 sessions_state=状態
@@ -52,9 +64,13 @@ sessions_this=このログイン
 sessions_in=ログイン済み
 sessions_out=ログアウトしました
 sessions_kill=切断します。
+
 logins_title=最近のWebminログイン
+
 udeletes_jerr=ユーザーをグループに追加できませんでした
+
 pass_ecannot=パスワード制限を編集することはできません
+
 sql_title=ユーザーおよびグループデータベース
 sql_ecannot=ユーザーおよびグループデータベースを構成することはできません
 sql_header=ユーザーおよびグループのデータベースバックエンドのオプション
@@ -97,21 +113,25 @@ sql_dnerr=ユーザーとグループのデータベース設定は有効です�
 sql_dnerr2=下の[<b>DNを作成</b>]ボタンをクリックして自動的に作成するか、LDAPサーバーに手動で追加します。
 sql_makedn=DNを作成
 sql_schema=LDAPスキーマをダウンロードする
+
 make_title=ユーザーテーブルとグループテーブルを作成する
 make_err=ユーザーテーブルとグループテーブルの作成に失敗しました
 make_exec=SQL $1 の実行..
 make_failed=..作成に失敗しました： $1 
 make_done=..完了
 make_still=テーブルの作成後でもいくつかの問題が見つかりました： $1 
+
 makedn_title=LDAP DNを作成する
 makedn_eoc=構造オブジェクトクラスが見つかりません！
 makedn_exec=親DNの作成 $1..
 makedn_failed=..作成に失敗しました： $1 
 makedn_done=..完了
 makedn_still=DNの作成後でもいくつかの問題が見つかりました： $1 
+
 schema_title=LDAPスキーマをダウンロードする
 schema_desc=WebminがLDAPサーバーを使用してユーザーとグループを保存する前に、以下のスキーマを使用するように構成する必要があります。これは通常、スキーマ定義を<tt>/etc/ldap/schema</tt>または<tt>/etc/openldap/schema</tt>に<tt>webmin.schema</tt>として保存することで実行できます。次に、そのスキーマファイルを読み込むようにサーバーを構成します。
 schema_download=スキーマファイルのダウンロード：<a href=$1>$1</a>
+
 twofactor_err=二要素認証のセットアップに失敗しました
 twofactor_euser=Webminユーザーが見つかりませんでした！
 twofactor_title=二要素認証

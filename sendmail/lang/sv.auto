@@ -2,6 +2,7 @@ index_version2=Sendmail-version $1, config $2
 index_xversion=Sendmail-version $1 
 index_version=Sendmailkonfigurering $1 
 index_sendmail=Skicka brev
+
 opts_gecos=Accepterar du mail för användarnas riktiga namn?
 opts_hops=Max antal räkningar per post
 opts_daemon=SMTP-portalternativ
@@ -12,16 +13,20 @@ opts_qso=Sortera e-postkön efter
 opts_priority=Prioritet
 opts_host=Värdnamn
 opts_time=Tid mottagen
+
 aliases_enofile=Ingen aliasfil definieras i din Sendmail-konfiguration
 aliases_type6=Använd filterfil $1 
 aliases_toomany=Det finns för många e-postalias på ditt system för att visas på den här sidan.
 aliases_go=Hitta alias matchande:
 aliases_delete=Radera valda alias
+
 aform_ecannot=Du får inte redigera detta alias
 aform_type6=Använd filterfil
 aform_file=Lägg till i aliasfilen
 aform_cmt=Beskrivning
+
 afile_ewrite=Det gick inte att skriva till adressfilen : $1 
+
 ffile_title=Redigera filterfil
 ffile_desc=Använd formuläret nedan för att ställa in filterregler i filen $1.
 ffile_efile=Du får inte redigera $1.
@@ -37,6 +42,7 @@ ffile_other=Annars vidare till $1
 ffile_err=Det gick inte att spara filterfilen
 ffile_ematch=Matchen saknas
 ffile_eaction=Saknad vidarebefordringsadress
+
 rfile_desc2=Du kan också ställa e-posthuvuden som lägger till eller ersätter standardinställningarna som används i autoskyddet genom att sätta rader som: <br><tt> Från: foo@bar.com </tt><br> <tt>Ämne: På semester</tt> <br> högst upp i meddelandet, separerat från kroppen med en enda tom rad.
 rfile_replies=Spåra svar för att förhindra e-postslingor?
 rfile_none=Nej
@@ -52,60 +58,81 @@ rfile_from=Från: adress för svar
 rfile_auto=Automatisk (baserad på mottagarens adress)
 rfile_efrom=Saknas från: adress
 rfile_fromdesc=A Från: adress ska alltid anges där det är möjligt eftersom den automatiska metoden kanske inte är tillförlitlig.
+
 asave_etype6=Filterfil "$1" är inte giltig
 asave_esame=Du får bara skapa ett alias med samma namn som din webmin-inloggning
+
 adelete_err=Det gick inte att ta bort alias
 adelete_enone=Ingen vald
 adelete_ecannot=Du får inte ta bort aliaset $1 
+
 masq_ndomains=Domäner inte till maskerad
+
 virtusers_efeature=Din sendmail-konfiguration har inte adresskartläggningsfunktionen (<tt>virtuser</tt>) aktiverad. <a href='$1'>Klicka här</a> för att ställa in sendmailfunktioner.
 virtusers_createfile=Eller om den här funktionen just har aktiverats, <a href='$1'>klicka här</a> för att skapa filen.
 virtusers_cmt=Beskrivning
 virtusers_toomany=Det finns för många adresskartläggningar på ditt system för att visas på den här sidan.
 virtusers_go=Hitta adresskartor som matchar:
 virtusers_delete=Radera valda adresskartor
+
 vform_cmt=Beskrivning
 vform_err_unavailable=Inte tillgänglig
 vform_err_tempfail=Tillfälligt misslyckande
 vform_err_protocol=Protokollfel
+
 vsave_esame=Du får bara skapa adresskartläggningar för ditt användarnamn
+
 vdelete_err=Det gick inte att ta bort adresskartläggningar
 vdelete_ecannot=Du får inte ta bort mappningen för $1 
+
 mailers_efeature=Din sendmail-konfiguration har inte domänrutningsfunktionen (<tt>mailertable</tt>) aktiverad. <a href='$1'>Klicka här</a> för att ställa in sendmailfunktioner.
 mailers_desc3=Du bör också ha en post i listan <a href='$1'>relädomäner</a> för varje domän också.
 mailers_delete=Radera valda domänrutor
+
 mform_host2=Värd eller domän
 mform_domain2=Alla värdar i domän
 mform_domain3=Domän och alla dess värdar
+
 mdelete_err=Det gick inte att ta bort domänrutern
 mdelete_ecannot=Du får inte ta bort rutten för $1 
+
 generics_efeature=Din sendmail-konfiguration har inte funktionen för utgående adressmappning (<tt>generik</tt>) aktiverad. <a href='$1'>Klicka här</a> för att ställa in sendmailfunktioner.
 generics_toomany=Det finns för många utgående adresser på ditt system för att visas på den här sidan.
 generics_go=Hitta utgående adresser som matchar:
 generics_delete=Radera valda utgående adresser
+
 gsave_ecannot3=Du får inte spara den utgående adressen
 gsave_ealready=En utgående adresskartläggning för '$1' finns redan
+
 gdelete_err=Det gick inte att ta bort utgående adresskartläggningar
 gdelete_ecannot=Du får inte ta bort mappningen för $1 
+
 domains_efeature=Din sendmail-konfiguration har inte domänmappning (<tt>domaintable</tt>) -funktionen aktiverad. <a href='$1'>Klicka här</a> för att ställa in sendmailfunktioner.
 domains_delete=Radera utvalda domänavbildningar
+
 dsave_ealready=En domänkartläggning för '$1' finns redan
+
 ddelete_err=Det gick inte att ta bort domänmappningar
 ddelete_ecannot=Du får inte ta bort mappningen för $1 
+
 access_efeature=Din sendmail-konfiguration har inte skräppostkontrollfunktionen (<tt>access_db</tt>) aktiverad. <a href='$1'>Klicka här</a> för att ställa in sendmailfunktioner.
 access_toomany=Det finns för många regler för skräppostkontroll på ditt system för att visas på den här sidan.
 access_go=Hitta matchande regler för skräppost:
 access_delete=Radera valda regler för skräppostkontroll
+
 sform_tag=Matchen mot
 sform_tag_=Allt
 sform_tag_from=Från: adress
 sform_tag_to=Att poängtera
 sform_tag_connect=Anslutningsinformation
 sform_tag_spam=Skräppostinformation
+
 ssave_ealready=En skräppostkontrollregel för '$1' finns redan
 ssave_ecannot2=Du får inte spara denna skräppostkontrollregel
+
 sdelete_err=Det gick inte att ta bort regler för skräppostkontroll
 sdelete_ecannot=Du får inte ta bort regeln för $1 
+
 mailq_count=$1 meddelanden
 mailq_cc=cc
 mailq_subject=Ämne
@@ -120,18 +147,23 @@ mailq_search=Hitta meddelanden i kö där
 mailq_quar=karantän
 mailq_refresh=Uppdatera e-postkön
 mailq_refreshdesc=Ladda om den här sidan för att visa aktuell status för e-postkön.
+
 flushq_desc2=Tvingar den försökte leveransen av $1 valda meddelanden ..
 flushq_ecannot=Du får inte spola e-postkön
+
 searchq_title=Resultat för kösökning
 searchq_none=Inga kömeddelanden hittades.
+
 delq_titles=Radera meddelanden
 delq_force=Tvinga bort radering ändå
 delq_ecannot2=du kan inte ta bort det här meddelandet
 delq_rusure=Är du säker på att du vill ta bort de $1 markerade kömeddelandena?
 delq_confirm=Radera meddelanden
+
 boxes_sent=Skickade post
 boxes_toomany=Det finns för många användare på ditt system för att lista alla sina brevlådor.
 boxes_go=Visa e-post för användare:
+
 mail_for2=För användare $1 
 mail_sent=I skickad e-postlista
 mail_euserexists=Den här Unix-användaren finns inte
@@ -144,6 +176,7 @@ mail_move=Flytta till:
 mail_copy=Kopia till:
 mail_rfc=Från rad
 mail_eexists=Meddelandet finns inte längre!
+
 view_desc2=Meddelande $1 för användare $2 
 view_desc3=Meddelande $1 
 view_sent=Meddelande $1 i skickad e-postlista
@@ -164,10 +197,13 @@ view_egone=Det här meddelandet finns inte längre
 view_afile=Bilaga namn
 view_atype=Tillbehörstyp
 view_asize=Filstorlek
+
 enew_title=Redigera e-post
 reply_mailforward=Vidarebefordrade meddelanden
 reply_body=Meddelandetext
+
 send_epath=Sendmail körbar $1 finns inte.
+
 delete_title=Ta bort post
 delete_rusure=Är du säker på att du vill ta bort de $1 markerade meddelandena från $2 ? Det kan ta lite tid för en stor e-postfil. Tills raderingen är klar bör ingen annan åtgärd utföras.
 delete_rusure2=Är du säker på att du vill ta bort det här meddelandet från $1 ? Det kan ta lite tid för en stor e-postfil. Tills raderingen är klar bör ingen annan åtgärd utföras.
@@ -178,6 +214,7 @@ delete_emoveuser=Användaren att flytta e-post till finns inte
 delete_emovecannot=Du får inte flytta e-post till den angivna användaren
 delete_emovenone=Ingen e-post valt att flytta
 delete_nobutton=Ingen knapp klickade
+
 search_efield=Du måste välja en söktyp.
 search_ewhat=Ingen text att matcha mot angavs för rad $1 
 search_enone=Inga sökkriterier har angivits
@@ -187,9 +224,11 @@ search_results4=$1 e-postmeddelanden matchar din sökning ..
 search_local=I lokala mappar
 search_all=I alla mappar
 search_eboolean=Booleska sökningar med både 'och' och 'eller' stöds inte
+
 file_ecannot=Du får inte redigera den här filen
 file_ealias=Ogiltigt format för fillinjens alias : $1 
 file_etab=Ogiltigt format för kartfilraden : $1 
+
 acl_ports=Kan redigera nätverksportar?
 acl_manual=Kan man redigera filer manuellt?
 acl_flushq=Kan spola mailkön?
@@ -212,6 +251,7 @@ acl_usersm=Användare som matchar
 acl_asame=Samma som användarnamn
 acl_usersu=Med UID inom räckvidd
 acl_spam=Spamkontroll adresserar den här användaren kan redigera
+
 log_ports=Byt nätverksportar
 log_movemail=Flyttade $1 meddelanden från $2 till $3 
 log_feature_create=Lade till M4-post $1 
@@ -225,6 +265,7 @@ log_delete_domains=$1 domänavbildningar raderade
 log_delete_accesses=$1 skräppostkontrollposter raderade
 log_delete_generics=$1 utgående adresser har raderats
 log_delete_mailers=$1 domänvägar har raderats
+
 match_status=Status matchar
 match_headers=Rubriker matchar
 match_=-----------------
@@ -237,6 +278,7 @@ match_!status=Status matchar inte
 match_!body=Kroppen matchar inte
 match_!size=Storleken är mindre än
 match_!headers=Rubriker matchar inte
+
 features_title=Sendmail M4-konfiguration
 features_desc=Denna sida visar relevanta poster från Sendmail M4-konfigurationsfilen $1, från vilken den faktiska konfigurationsfilen $2 är byggd.
 features_type=Ingångstyp
@@ -256,6 +298,7 @@ features_efeatures=Sendmail M4-konfigurationsbaskatalogen $2 hittades inte i dit
 features_econfig=Platserna för Sendmail M4-baskatalogen och M4-konfigurationsfilen har ännu inte ställts in i din <a href='$1'>modulkonfiguration</a>. Om du har installerat Sendmail från källan, bör dessa ligga under den ursprungliga källkatalogen.
 features_move=Flytta
 features_manual=Redigera filen manuellt
+
 feature_add=Lägg till konfigurationsinmatning
 feature_edit=Redigera konfigurationsinmatning
 feature_header=Detaljer för M4-konfigurationsinmatning
@@ -276,12 +319,15 @@ feature_emailer=Mailaren $1 finns redan
 feature_eostype=OS-typen är redan definierad som $1 
 feature_manual=Redigera M4-fil
 feature_mdesc=På sidan kan du manuellt redigera Sendmail M4-konfigurationsfilen $1. Var försiktig, eftersom ingen syntaxkontroll kommer att göras på dina redigeringar.
+
 feat_access_db=Spamkontrollfil
 feat_virtusertable=Adresskartläggning
 feat_mailertable=Domänrutning
 feat_genericstable=Utgående adresser
 feat_domaintable=Domänavbildning
+
 mailer_local=Lokal Unix-leverans
+
 build_title=Ombygga Sendmail-konfiguration
 build_em4=Kommandot $1 som behövs för att bygga om konfigurationsfilen för Sendmail hittades inte på ditt system.
 build_ebuild=Det gick inte att bygga konfiguration : $1 
@@ -290,13 +336,16 @@ build_rusure2=Var medveten om att om du har gjort ändringar i Sendmail på sida
 build_ok=Ja, byt ut det nu
 build_diff=Följande ändringar kommer att göras i din Sendmail-konfigurationsfil.
 build_nodiff=Din sendmail-konfigurationsfil är redan uppdaterad.
+
 stop_err=Det gick inte att stoppa sendmail
 stop_ecannot=Du får inte stoppa sendmail
 stop_epid=Sendmail verkar inte köras
 restart_epids=Det gick inte att hitta sendmail-processer
 restart_ekill=Det gick inte att signalera sendmail-processer : $1 
+
 start_err=Det gick inte att starta sendmail
 start_ecannot=Du får inte starta sendmail
+
 ports_title=Nätverksportar
 ports_name=Portnamn
 ports_addr=Lyssna på adress

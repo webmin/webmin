@@ -2,6 +2,7 @@ index_title=NIS klientas ir serveris
 index_return=NIS meniu
 index_enis=Neatrodo, kad jūsų kompiuteryje būtų įdiegtas NIS kliento ar serverio palaikymas.
 index_enis2=Bus galima naudoti tik šio modulio klientų aptarnavimo funkciją.
+
 client_title=NIS klientas
 client_header=NIS kliento konfigūracija
 client_domain=NIS domenas
@@ -17,10 +18,12 @@ client_eserver=„$1“ nėra teisingas serverio vardas
 client_eypwhich=nepavyko prisijungti prie NIS domeno
 client_ehosts=„$1“ nėra pagrindinio kompiuterio faile
 client_enis=Neatrodo, kad jūsų kompiuteryje būtų įdiegtas NIS kliento palaikymas.
+
 switch_title=Klientų aptarnavimas
 switch_service=Aptarnavimas
 switch_srcs=Duomenų šaltinis
 switch_return=klientų aptarnavimas
+
 order_=&nbsp;
 order_nisplus=NIS +
 order_nis=NIS
@@ -32,6 +35,7 @@ order_hesiod=Hesiodas
 order_ldap=LDAP
 order_user=Vartotojo spausdintuvai
 order_xfn=XFN
+
 server_title=NIS serveris
 server_header=NIS serverio parinktys
 server_boot=Įgalinti NIS serverį?
@@ -65,6 +69,7 @@ server_solaris=Pastaba: „Solaris“ kliento ir serverio NIS domenai visada yra
 server_edir=Netinkamas šaltinio failų katalogas
 server_epwdir=Netinkamas slaptažodžio šaltinio failų katalogas
 server_enis=Neatrodo, kad jūsų kompiuteryje būtų įdiegtas NIS serverio palaikymas.
+
 tables_title=NIS lentelės
 tables_switch=Redaguoti NIS lentelę :
 tables_header=$1 NIS lentelė iš $2 
@@ -81,6 +86,7 @@ tables_search=Paieška
 tables_nomatch=Nerasta įrašų, atitinkančių jūsų paiešką
 tables_build=Atstatykite NIS lenteles
 tables_buildmsg=Spustelėkite šį mygtuką, norėdami atstatyti NIS duomenų bazes iš lentelės duomenų. Jei atlikote kokius nors pakeitimus, turėsite tai padaryti, kad jie būtų prieinami NIS klientams.
+
 desc_aliases=„Sendmail“ slapyvardžiai
 desc_mail=„Sendmail“ slapyvardžiai
 desc_hosts=Pagrindinio kompiuterio adresai
@@ -116,6 +122,7 @@ desc_printers=Spausdintuvai
 desc_ipnodes=IP mazgai
 desc_timezone=Laiko juostos
 desc_locale=Vietos
+
 hosts_title=Pagrindinio kompiuterio adresas
 hosts_ip=IP adresas
 hosts_name=Pagrindinio kompiuterio vardas
@@ -124,6 +131,7 @@ hosts_err=Nepavyko išsaugoti pagrindinio kompiuterio
 hosts_eip=Trūksta arba netinkamas IP adresas
 hosts_ename=Trūksta arba netinkamas pagrindinio kompiuterio vardas
 hosts_aliases=Slapyvardžiai
+
 group_name=Grupės pavadinimas
 group_gid=Grupės ID
 group_members=Grupės nariai
@@ -134,6 +142,7 @@ group_none=Nereikia slaptažodžio
 group_encrypted=Iš anksto užšifruotas slaptažodis
 group_clear=Įprastas slaptažodis
 group_err=Nepavyko išsaugoti grupės
+
 passwd_name=Vartotojo vardas
 passwd_uid=Vartotojo ID
 passwd_real=Tikras vardas
@@ -171,6 +180,7 @@ passwd_emax=Neteisingas maksimalus dienų skaičius
 passwd_emin=Netinkamas minimalus dienų skaičius
 passwd_einactive=Neteisingas neaktyvių dienų skaičius
 passwd_eexpiry=Netinkama galiojimo data
+
 services_name=Paslaugos pavadinimas
 services_proto=Protokolas
 services_port=Uostas
@@ -179,6 +189,7 @@ services_header=„Inetd“ tinklo paslaugų parinktys
 services_err=Nepavyko išsaugoti paslaugos
 services_ename=Trūksta arba netinkamas paslaugos pavadinimas
 services_eport=Trūksta arba netinkamas prievadas
+
 protocols_name=Protokolo pavadinimas
 protocols_number=Skaičius
 protocols_aliases=Slapyvardžiai
@@ -187,6 +198,7 @@ protocols_header=Tinklo protokolo parinktys
 protocols_err=Nepavyko išsaugoti protokolo
 protocols_ename=Trūksta arba netinkamas vardas
 protocols_enumber=Trūksta arba netinkamas numeris
+
 netgroup_name=Tinklo grupės pavadinimas
 netgroup_members=Nariai
 netgroup_title=Tinklo grupė
@@ -201,6 +213,7 @@ netgroup_ename=Trūksta arba netinkamas tinklo grupės pavadinimas
 netgroup_ehost=Trūksta arba netinkamas kompiuteris $1 eilutėje
 netgroup_euser=Trūksta arba netinkamas $1 eilutės vartotojas
 netgroup_edom=Trūksta arba netinkamas NIS domenas $1 eilutėje
+
 ethers_mac=Eterneto adresas
 ethers_ip=IP adresas
 ethers_title=Eterneto adresas
@@ -208,6 +221,7 @@ ethers_header=Eterneto žemėlapių parinktys
 ethers_err=Nepavyko išsaugoti Ethernet adreso
 ethers_emac=Neteisingas Ethernet adresas
 ethers_eip=Neteisingas IP adresas
+
 rpc_name=Programos pavadinimas
 rpc_number=Skaičius
 rpc_aliases=Slapyvardžiai
@@ -216,6 +230,7 @@ rpc_header=RPC programos informacija
 rpc_err=Nepavyko išsaugoti RPC programos
 rpc_ename=Trūksta arba netinkamas programos pavadinimas
 rpc_enumber=Trūksta arba netinkamas numeris
+
 networks_title=Tinklo adresas
 networks_ip=IP adresas
 networks_name=Tinklo pavadinimas
@@ -224,6 +239,7 @@ networks_err=Nepavyko išsaugoti tinklo
 networks_eip=Trūksta arba netinkamas IP adresas
 networks_ename=Trūksta arba netinkamas vardas
 networks_aliases=Slapyvardžiai
+
 netmasks_net=Tinklo adresas
 netmasks_mask=„Netmask“
 netmasks_title=„Netmask“
@@ -231,6 +247,7 @@ netmasks_header=Tinklo kaukės informacija
 netmasks_err=Nepavyko išsaugoti tinklo masko
 netmasks_enet=Trūksta arba netinkamas tinklo adresas
 netmasks_emask=Trūksta arba netinkamas tinklo maskavimas
+
 aliases_from=Adresas
 aliases_to=Pseudonimas
 aliases_title=„Sendmail“ slapyvardis
@@ -238,6 +255,7 @@ aliases_header=„Sendmail“ slapyvardžio informacija
 aliases_err=Nepavyko išsaugoti slapyvardžio
 aliases_efrom=Trūksta arba netinkamas adresas
 aliases_eto=Trūksta adresų
+
 security_title=Serverio sauga
 security_header=NIS serverio saugos parinktys
 security_ok=Išsaugoti ir pritaikyti
@@ -266,6 +284,7 @@ security_sec_des=Reikalauti DES
 security_ehost=„$1“ nėra teisingas pagrindinio kompiuterio vardas
 security_emap=„$1“ negalioja NIS lentelė
 security_efield=„$1“ nėra galiojantis lauko numeris
+
 eswitch_title=Redaguoti paslaugą
 eswitch_egone=Paslauga neegzistuoja!
 eswitch_header=Informacija apie paslaugą

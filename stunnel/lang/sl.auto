@@ -21,6 +21,7 @@ index_eversion=Različica programa STunnel, nameščena v vašem sistemu, je $1,
 index_conf=Iz konfiguracijske datoteke $1 
 index_noconf=Konfiguracijske datoteke ni!
 index_delete=Izbriši izbrane predore
+
 edit_title=Uredi predor SSL
 create_title=Ustvari predor SSL
 edit_header1=Možnosti vira tunela
@@ -47,6 +48,7 @@ edit_tcpw=Ime TCP-ovojev
 edit_auto=Samodejno
 edit_iface=Naslov izhodnega vira
 edit_type=Teči od
+
 save_err=Tunela SSL ni bilo mogoče shraniti
 save_enclash=Ime storitve $2 se že uporablja na vratih $1.
 save_einetd=Obstaja že inetd storitev, imenovana $1.
@@ -61,6 +63,7 @@ save_etcpw=Manjkajoče ali neveljavno ime zavijanja TCP
 save_eiface=Manjkajoči ali neveljaven odhodni naslov vira
 save_exinetd=Obstaja že storitev xinetd, imenovana $1 
 save_export=Vrata $1 že uporablja storitev xinetd $2 
+
 log_apply=Uporabljene spremembe
 log_create=Ustvarjen tunel SSL $1 
 log_delete=Izbrisan predor SSL $1 

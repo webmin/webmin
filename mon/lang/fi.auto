@@ -6,6 +6,7 @@ mon_conf_title=Peruskokoonpano
 mon_status_title=Toimintatila
 hostgroups_title=MON-kokoonpano-isäntäryhmät
 services_title=Tarkkailuryhmät-palvelumääritelmät
+
 head_hostgroups=Isäntäryhmät ja palvelut
 head_groups=Isäntäryhmän nimi
 head_members=Isäntäryhmän jäsenet
@@ -17,6 +18,7 @@ head_monauth=Tarjoa todennus MONCMD: lle
 head_usr=Käyttäjätunnus
 head_pass=Salasana
 head_mand=(PUNAISEN VÄRIN parametrit ovat pakollisia)
+
 err_nomon=pakettia 'mon' ei ole asennettu järjestelmään
 err_nomonconf=MON-määritystiedostoa $1 ei löydy järjestelmästäsi. Ehkä MON: ää ei ole asennettu tai <a href='$2'>moduulin kokoonpano</a> on väärä.
 err_nowatch=Ei tarkkailuryhmiä valittu. Valitse vähintään yksi tarkkailuryhmä jatkaaksesi.
@@ -28,6 +30,7 @@ stop_epid=Ei enää juokse
 start_err=MON: n käynnistäminen epäonnistui
 restart_err=MON: n käynnistäminen epäonnistui
 restart_epid=PID: n nouto epäonnistui
+
 other=Muu (tila erotettu)
 next=Seuraava
 mon_stat=MON-tila
@@ -43,6 +46,7 @@ save_apply=Tallenna ja käytä
 watch=Watchgroup
 members=Jäsenet
 def_perargs=wd {la-su}
+
 def_desc=kuvaus
 def_inter=aikaväli
 def_mon=monitori
@@ -58,9 +62,11 @@ def_trapdur=trapduration
 def_rand=randskew
 def_exclhost=exclude_hosts
 def_exclper=exclude_period
+
 groups_title=Isäntäryhmät
 groups_group=Ryhmän nimi
 groups_members=Jäsenten isännät
+
 watches_title=Katso luettelot
 watches_group=Katseluryhmä
 watches_services=Tarkkailtavat palvelut
@@ -68,6 +74,7 @@ watches_sadd=Lisää palvelu ..
 watches_add=Lisää ryhmän tarkkailulista :
 watches_return=tarkkailuluettelot
 watches_none=Valvoluetteloita ei ole vielä määritetty.
+
 global_title=Globaalit vaihtoehdot
 global_header=Globaalit MON-asetusvaihtoehdot
 global_maxprocs=Suurimmat MON-prosessit
@@ -85,6 +92,7 @@ global_ehistlength=Puuttuva tai virheellinen tapahtumahistoria
 global_ealertdir=Puuttuva tai virheellinen hälytysohjelmahakemisto
 global_emondir=Puuttuva tai virheellinen näyttöohjelmahakemisto
 global_euserfile=Puuttuvat MON-käyttäjän tiedosto
+
 watch_title=Muokkaa tarkkailuluetteloa
 watch_header=Isäntäryhmän tarkkailun yksityiskohdat
 watch_group=Isäntäryhmä katsottavaksi
@@ -93,6 +101,7 @@ watch_service=Palvelun nimi
 watch_monitor=Käytettävä näyttö
 watch_interval=Tarkista jokainen
 watch_periods=Seurantajaksot
+
 service_title=Lisää palvelu
 service_title2=Muokkaa palvelua
 service_header=Katso palvelutiedot
@@ -145,16 +154,19 @@ service_epstr=Puuttuva jaksotiedot
 service_known0=<tt>Aika::Jakso</tt> merkkijono
 service_known1=Määritetyt päivät ja tunnit
 service_known2=Määritetty ajanjakso
+
 status_title=MON-tila
 status_ecgi=MON-tilan CGI-ohjelmaa $1 ei ole olemassa. Ehkä sitä ei ole asennettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
 status_eperl=MON-tilan CGI-ohjelma vaatii moduulin $1 perl. <a href='$2'>Asenna se suoraan CPANista napsauttamalla tätä</a>.
 status_esame=MON-tilan CGI-ohjelma $1 on asetettu <tt>mon.cgi</tt> -käsikirjoitukselle tässä Webmin-moduulissa, ei CGI-ohjelmassa, joka tulee MONin mukana. Säädä <a href='$2'>moduulin kokoonpano</a> käyttääksesi oikeaa polkua.
+
 users_title=MON-käyttäjät
 users_etype=MON-käyttäjien luetteloa ei voi muokata, koska MON: ää ei ole tällä hetkellä määritetty käyttämään sitä todennukseen <a href='$1'>globaalit asetukset</a> -sivulla.
 users_header=Sallitut MON-käyttäjät $1 : ssä
 users_nousers=Yksi MON-käyttäjää ei ole määritelty prosenttissa $1.
 users_add=Luo uusi käyttäjä.
 users_return=MON-käyttäjien luettelo
+
 user_create=Luo MON-käyttäjä
 user_edit=Muokkaa MON-käyttäjää
 user_header=MON käyttäjän tiedot
@@ -164,6 +176,7 @@ user_leave=Jätä muuttumattomaksi
 user_err=Käyttäjän tallentaminen epäonnistui
 user_euser=Puuttuva tai virheellinen käyttäjänimi
 user_esame=Käyttäjä, jolla on sama nimi, on jo olemassa
+
 auth_title=Asiakaskomennot
 auth_desc=Tällä sivulla voit hallita mitä MON-komentoja käyttäjät voivat suorittaa asiakasohjelmia käytettäessä.
 auth_cmd=MON-komento
@@ -173,6 +186,7 @@ auth_all=jokainen
 auth_sel=Vain käyttäjät
 auth_err=Asiakaskomentojen tallentaminen epäonnistui
 auth_eusers=Yksikään käyttäjä ei anna komentoa $1 
+
 periods_title=Määritetyt ajanjaksot
 periods_period=Kauden nimi
 periods_times=Päivät ja ajat
@@ -181,5 +195,6 @@ periods_allhours=Kaikki tunnit
 periods_err=Määritettyjen ajanjaksojen tallentaminen epäonnistui
 periods_ename='$1' ei ole kelvollinen jakson nimi
 periods_ehour=Puuttuva tai kelpaamaton tuntijaksolla $1 (täytyy olla kello 9–17)
+
 show_title=Toimintatila
 show_ecgi=MON-tilaohjelmaa $1 ei ole. Ehkä sitä ei ole asennettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.

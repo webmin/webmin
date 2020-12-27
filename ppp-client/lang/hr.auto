@@ -24,13 +24,16 @@ index_out=Izlaz od $1 bio je
 index_boot=Povežite se pri pokretanju sa:
 index_noboot=&lt;Ne spajaj&gt;
 index_bootdesc=Promijenite ovu opciju za kontrolu da li je odabrana PPP veza pokrenuta u vrijeme pokretanja ili ne.
+
 init_title=Otkrivanje konfiguracije
 init_cmd=Otkrivanje povezanog modema pomoću naredbe $1 ..
 init_done=.. gotovo
 init_modems=Modemi su konfigurirani na $1 i $2.
 init_modem=Modem je otkriven na $1.
 init_none=Nisu otkriveni modemi!
+
 device_serial=serijski port $1 
+
 connect_title=Uspostavite vezu
 connect_cmd=Pokušaj uspostavljanja veze sa naredbom $1 ..
 connect_failed=.. veza nije uspjela! Pogledajte izlazni razlog za razlog zašto.
@@ -40,12 +43,14 @@ connect_dns=Korištenje DNS konfiguracije dodijeljene PPP.
 connect_dns2=Postavljena je PPP konfiguracija DNS-a.
 connect_dnsto=Vrijeme čekanja za dodjelu PPP-a DNS konfiguracije.
 connect_dnsdown=Čini se da veza nije uspjela dok čekate konfiguraciju DNS-a dodijeljenu PPP-u.
+
 disc_title=Isključite PPP
 disc_err=Zatvaranje PPP veze nije uspjelo
 disc_edown=Već isključeno
 disc_ok1=Vaša PPP veza uspostavljena pomoću $2 uspješno je prekinuta.
 disc_ok2=Vaša PPP veza uspješno je prekinuta.
 disc_dns=Vraćena je stara konfiguracija DNS-a.
+
 edit_title1=Dodajte ISP birač
 edit_title2=Uređivanje ISP birača
 edit_ddesc=Ove zadane postavke primijenit će se na veze ostvarene pomoću bilo kojeg drugog birača.
@@ -76,6 +81,7 @@ edit_idle=Istek vremena mirovanja (u sekundama)
 edit_def=Od zadanih postavki
 edit_inherits=Nasljedne postavke
 edit_from=Od birača ..
+
 save_err=Spremanje brojača nije uspjelo
 save_err2=Brisanje birača nije uspjelo
 save_ename=Nedostaje ili nevažeće ime biranja brojača
@@ -88,6 +94,7 @@ save_edial=Nedostaje ili nevažeći broj pokušaja biranja
 save_eidle=Nedostaje ili nije valjan istek vremena praznog hoda
 save_einherits=Ovaj brojčanik nije moguće izbrisati jer '$1' nasljeđuje postavke s njega.
 save_eclash=Birač s istim imenom već postoji
+
 log_create=Izrađeno $1 
 log_update=Ažurirano $1 
 log_delete=Izbrisano $1 

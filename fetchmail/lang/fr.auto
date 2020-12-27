@@ -25,6 +25,7 @@ index_header=Utilisateurs avec des configurations Fetchmail
 index_search=Afficher la configuration de Fetchmail pour:
 index_show=Spectacle
 index_toomany=Il y a trop d'utilisateurs sur votre système à afficher.
+
 poll_create=Ajouter un serveur
 poll_edit=Modifier le serveur
 poll_header=Options du serveur de messagerie
@@ -64,18 +65,22 @@ poll_ecannot=Vous n'êtes pas autorisé à modifier la configuration de fetchmai
 poll_efile=Seuls les fichiers de configuration fetchmail des utilisateurs peuvent être modifiés
 poll_eusername=L'utilisateur n'existe pas!
 poll_foruser=Pour l'utilisateur $1 
+
 stop_err=Impossible d'arrêter fetchmail
 stop_ecannot=Vous n'êtes pas autorisé à arrêter fetchmail
 start_err=Impossible de démarrer fetchmail
 start_einterval=Intervalle de vérification manquant ou invalide
 start_ecannot=Vous n'êtes pas autorisé à démarrer fetchmail
+
 check_title=Vérification des serveurs
 check_exec=Recherche de courrier sur le (s) serveur (s) avec la commande $1 ..
 check_ok=.. vérification terminée.
 check_failed=.. la vérification a échoué!
+
 global_title=Paramètres par défaut
 global_header=Paramètres par défaut pour tous les serveurs
 global_err=Échec de l'enregistrement des paramètres par défaut
+
 log_create_poll_file=Serveur $1 ajouté dans le fichier $2 
 log_modify_poll_file=Serveur modifié $1 dans le fichier $2 
 log_delete_poll_file=Serveur $1 supprimé dans le fichier $2 
@@ -94,6 +99,7 @@ log_stop=Démon fetchmail arrêté
 log_create_cron=Vérification programmée activée
 log_update_cron=Vérification programmée modifiée
 log_delete_cron=Vérification programmée désactivée
+
 acl_users=Peut modifier la configuration de fetchmail pour
 acl_all=Tous les utilisateurs
 acl_this=Utilisateur Webmin actuel
@@ -101,6 +107,7 @@ acl_only=Seuls les utilisateurs
 acl_except=Tout sauf les utilisateurs
 acl_cron=Peut configurer la vérification planifiée?
 acl_daemon=Peut configurer le démon Fetchmail?
+
 cron_title=Vérification planifiée
 cron_desc=Cette page peut être utilisée pour activer ou désactiver une tâche Cron pour vérifier les serveurs de messagerie dans votre configuration Fetchmail sur une planification régulière. Utiliser un travail Cron supérieur à l'exécution du démon Fetchmail, car il n'a pas besoin d'être redémarré au démarrage.
 cron_header=Paramètres Fetchmail planifiés
@@ -119,8 +126,10 @@ cron_email=Adresse e-mail manquante ou invalide
 cron_euser=Utilisateur Unix manquant ou invalide
 cron_errors=Sortie uniquement en cas d'erreur?
 cron_ecannot2=Vous n'êtes pas autorisé à configurer la vérification planifiée
+
 user_title=Configuration de Fetchmail
 user_header=Pour l'utilisateur $1 
 user_return=configuration de l'utilisateur
+
 email_ok=Sortie Fetchmail
 email_failed=Erreur Fetchmail

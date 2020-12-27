@@ -12,6 +12,7 @@ index_eprog=Không thể tìm thấy máy chủ NFS trên hệ thống của b�
 index_delete=Xóa xuất khẩu đã chọn
 index_disable=Vô hiệu hóa được chọn
 index_enable=Cho phép chọn
+
 edit_title=Chỉnh sửa xuất
 create_title=Tạo xuất
 edit_details=Xuất chi tiết
@@ -65,6 +66,7 @@ edit_sec_krb5i=Kerberos toàn vẹn
 edit_sec_krb5p=Quyền riêng tư của Kerberos
 edit_sec_lipkey=LIPKEY
 edit_sec_spkm=SPKM
+
 save_err=Không thể lưu xuất
 save_edir=Thư mục '$1' không tồn tại
 save_epfs=Đường dẫn giả tệp '$1' trông không giống đường dẫn tuyệt đối
@@ -78,6 +80,7 @@ save_pfs='$1' đã được xuất dưới dạng thư mục
 save_create_dir=Không thể tạo thư mục '$1'
 save_eanonuid=Tên người dùng truy cập ẩn danh không hợp lệ
 save_eanongid=Tên nhóm truy cập ẩn danh không hợp lệ
+
 exports_webnfs=Máy khách WebNFS
 exports_ngroup=Nhóm mạng $1 
 exports_net=Mạng $1 
@@ -85,6 +88,7 @@ exports_all=Tất cả mọi người
 exports_hosts=Lưu trữ $1 
 exports_host=Lưu trữ $1 
 exports_gss=Mạng xác thực: $1 
+
 log_modify=Xuất khẩu NFS đã sửa đổi $1 
 log_modify_l=Xuất khẩu NFS đã sửa đổi $1 thành $2 
 log_delete=Đã xóa xuất NFS $1 

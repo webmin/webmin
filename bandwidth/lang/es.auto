@@ -2,6 +2,8 @@ index_emod=El módulo Webmin $1 no está instalado en este sistema o no es compa
 index_esyslog=Ninguno de los módulos de registros del sistema está instalado en este sistema y es compatible con su sistema operativo. El módulo de monitoreo de ancho de banda no puede funcionar sin uno de ellos.
 index_setupdesc2=<b>Advertencia: este módulo registrará TODO el tráfico de red enviado o recibido en la interfaz seleccionada. Esto consumirá una gran cantidad de espacio en disco y tiempo de CPU en una conexión de red rápida.</b>
 index_other=Otro ..
+
 setup_eiface=Nombre de interfaz faltante o no válido
+
 syslog_syslog=Syslog
 syslog_syslog-ng=Syslog-NG

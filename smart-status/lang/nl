@@ -21,6 +21,7 @@ index_ecount=$1 fouten gedetecteerd
 index_attrs=Extra SMART gereedschappen
 index_raw=Volledig SMART status rapport
 index_return=module index
+
 monitor_type=SMART Harddisk Controle
 monitor_drive=Harddisk om te controleren
 monitor_errors=Ook fouten log controleren?
@@ -31,14 +32,17 @@ monitor_nosuch=Niet zo'n harddisk
 monitor_nosmart=Geen SMART support
 monitor_errorsfound=Rapporteer $1 fouten
 monitor_errorsinced=Fouten zijn vermeerderd van $2 naar $1
+
 short_title=Korte Zelf Test
 short_doing=Starten van een korte zelf test van $1 ..
 short_failed=.. mislukt!
 short_ok=.. test gestart OK. Bekijk de disk status bij de modules hoofdpagina voor de resultaten.
+
 ext_title=Uitgebreide Zelf Test
 ext_doing=Starten met uitgebreide zelf test van $1 ..
 ext_failed=.. mislukt!
 ext_ok=.. test gestart OK. Bekijk de schijf status op de module hoofdpagina voor de resultaten.
+
 data_title=Data Verzamel Test
 data_doing=Beginnen met offline data verzamelen van $1 ..
 data_failed=.. mislukt!

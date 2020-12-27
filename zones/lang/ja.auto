@@ -4,6 +4,7 @@ index_none=ゾーンはまだ定義されていません。
 index_add=新しいゾーンを追加します。
 index_return=ゾーンリスト
 index_zones=既存のゾーン
+
 edit_title=ゾーンを編集
 edit_common=一般的なゾーン構成
 edit_name=ゾーン名
@@ -57,20 +58,26 @@ edit_attrnone=まだ一般的な属性は定義されていません。
 edit_attradd=新しい汎用属性を追加します。
 edit_webmin=Webminを開く
 edit_brand=ブランド
+
 ui_cancel=キャンセル
+
 save_err=ゾーンを保存できませんでした
 save_epool=プールが見つからないか無効です
 save_ewebmin=Webminはこのゾーンで実行されていません
+
 reboot_title=再起動ゾーン
 reboot_rusure=ゾーン $1を再起動してもよろしいですか？その中で実行されているすべてのプロセスが再起動されます。
 reboot_err=ゾーンの再起動に失敗しました
 reboot_doing=ゾーンを再起動します ..
+
 reboot_failed=..失敗しました：
 reboot_ok=..完了。
+
 halt_title=シャットダウンゾーン
 halt_rusure=ゾーン $1をシャットダウンしてもよろしいですか？その中で実行されているすべてのプロセスが停止します。
 halt_err=ゾーンのシャットダウンに失敗しました
 halt_doing=ゾーンをシャットダウンしています ..
+
 boot_title=起動ゾーン
 boot_err=ゾーンの起動に失敗しました
 boot_doing=ゾーンを起動します ..
@@ -78,10 +85,12 @@ delete_title=ゾーンを削除
 delete_rusure=ゾーン $1を削除してもよろしいですか？プライベートファイルシステム内のすべてのファイルは失われます。
 delete_err=ゾーンを削除できませんでした
 delete_doing=ゾーンを削除しています ..
+
 uninstall_title=システムのアンインストール
 uninstall_rusure=ゾーン $1からシステムソフトウェアをアンインストールしてもよろしいですか？プライベートファイルシステム内のすべてのファイルは失われます。
 uninstall_err=ゾーンからシステムソフトウェアをアンインストールできませんでした
 uninstall_doing=ゾーンからシステムをアンインストールします ..
+
 install_title=システムをインストールする
 install_doing=システムをゾーンにインストールしています。
 net_title1=ネットワークインターフェイスを作成する
@@ -96,6 +105,7 @@ net_enetmask=無効なネットマスク
 net_eaddress=無効なIPアドレス
 net_egone=インターフェイスはもう存在しません！
 net_eclash=同じIPアドレスを持つネットワークインターフェイスがこのゾーンに既に存在します
+
 pkg_title1=パッケージディレクトリを追加
 pkg_title2=パッケージディレクトリの編集
 pkg_header=継承されたパッケージディレクトリの詳細
@@ -107,6 +117,7 @@ pkg_eclash=パッケージディレクトリはこのゾーンに既に存在し
 pkg_inherit=大域ゾーンからパッケージを継承する
 pkg_inherit_yes=はい（疎ルートゾーン）
 pkg_inherit_no=いいえ（ルートゾーン全体）
+
 fs_title1=ファイルシステムを作成する
 fs_title2=ファイルシステムを編集
 fs_header=追加のファイルシステムの詳細
@@ -128,6 +139,7 @@ fs_eoptions=無効なマウントオプション（ro、nosuidのようなコン
 fs_egone=ファイルシステムはもう存在しません！
 fs_mount=作成後にマウントしますか？
 fs_eclash=同じディレクトリを使用するファイルシステムがこのゾーンに既に存在します
+
 rctl_title1=リソースコントロールを作成する
 rctl_title2=リソース制御の編集
 rctl_header=リソース制御の種類と制限
@@ -148,6 +160,7 @@ rctl_elimit=数ではない
 rctl_eaction=行 $1で信号が選択されていません
 rctl_evalues=制限なし
 rctl_eclash=同じリソースのコントロールがこのゾーンに既に存在します
+
 attr_title1=汎用属性を作成
 attr_title2=汎用属性を編集
 attr_header=汎用ゾーン属性の詳細
@@ -165,6 +178,7 @@ attr_euint=値は正の整数ではありません
 attr_eboolean=値が「true」または「false」ではありません
 attr_egone=属性はもう存在しません！
 attr_eclash=同じ名前の属性がこのゾーンに既に存在します
+
 status_running=ランニング
 status_installed=停止
 status_configured=インストールされていない
@@ -172,13 +186,16 @@ status_incomplete=インストール中
 status_ready=準備完了
 status_down=ダウン
 status_shutting_down=シャットダウン
+
 list_name=ゾーン名
 list_id=アイディー番号。
 list_path=ゾーンディレクトリ
 list_status=状態
 list_actions=行動
+
 zone_in=ゾーン $1
 pool_none=なし
+
 create_title=ゾーンを作成
 create_header=新しいゾーンの詳細
 create_path=ゾーンファイルディレクトリ
@@ -239,6 +256,7 @@ create_erouter=デフォルトルーターのIPアドレスが欠落している
 create_removingpkgs=継承されたパッケージディレクトリの削除. ..
 create_brand=ブランド
 create_brandmsg=ブランディングゾーン
+
 log_create_zone=ゾーン $1を作成しました
 log_delete_zone=ゾーン $1を削除しました
 log_save_zone=ゾーン $1の構成を変更しました
@@ -262,6 +280,7 @@ log_delete_rctl=ゾーン $2の $1のリソース制御を削除しました
 log_create_attr=ゾーン $2に汎用属性 $1を作成しました
 log_modify_attr=ゾーン $2の変更された汎用属性 $1
 log_delete_attr=ゾーン $2の汎用属性 $1を削除しました
+
 webmin_eperl=Perlは $1にインストールされていません
 webmin_eroot=ディレクトリ $1が存在しないか、Webminが含まれていません。
 webmin_title=Webminをインストールする

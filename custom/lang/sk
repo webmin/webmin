@@ -1,5 +1,6 @@
 index_cmd=Príkaz
 index_desc=Popis
+
 edit_desc=Popis
 edit_cmd=Príkaz
 edit_dir=Spustiť v adresári
@@ -15,6 +16,8 @@ edit_type10=Upload
 edit_timeoutdef=Navždy
 edit_secs=sekúnd
 edit_this=tento server
+
 acl_call=Všetky príkazy
 acl_csel=Vybrané...
+
 file_desc=Popis

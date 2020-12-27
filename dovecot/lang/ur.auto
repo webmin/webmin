@@ -11,11 +11,13 @@ index_boot=بوٹ پر شروع کریں؟
 index_bootdesc=سسٹم بوٹ وقت ڈوکوٹ سرور کو شروع کرنے کے قابل یا غیر فعال کرنے کے لئے اس ترتیب کو تبدیل کریں۔
 index_return=ماڈیول انڈیکس
 index_version=Version $1
+
 stop_err=ڈوکوٹ کو روکنے میں ناکام
 stop_erunning=اب نہیں چل رہا ہے
 start_err=ڈوکوٹ شروع کرنے میں ناکام
 start_eprotos=No protocols selected on the <b>Networking and Protocols</b> page
 apply_err=تشکیل دینے میں ناکام
+
 net_title=نیٹ ورکنگ اور پروٹوکول
 net_header=ڈوکوٹ نیٹ ورکنگ اور میل پروٹوکول کے اختیارات
 net_protocols=میل پروٹوکول پیش کریں
@@ -42,8 +44,11 @@ net_eimaps_listen=IMAP SSL کنکشن کے لئے غلط IP پتہ
 net_epop3s_listen=POP3 SSL کنکشن کے لئے غلط IP پتہ
 net_elisten=غیر SSL رابطوں کے لئے غلط IP پتہ
 net_essl_listen=SSL رابطوں کے لئے غلط IP پتہ
+
 imap_title=IMAP اختیارات
+
 pop3_title=POP3 اختیارات
+
 ssl_title=SSL تشکیل
 ssl_header=IMAP اور POP3 SSL وضع اختیارات
 ssl_key=SSL نجی کلید فائل
@@ -61,7 +66,9 @@ ssl_ecert=لاپتہ یا غیر موجود سرٹیفکیٹ فائل
 ssl_eca=لاپتہ یا غیر موجود کلائنٹ CA سرٹیفکیٹ فائل
 ssl_eregen=لاپتہ یا غیر عددی پیرامیٹر کی تخلیق نو کا وقفہ
 ssl_epass=کوئی SSL کلیدی فائل کا پاس ورڈ داخل نہیں کیا گیا
+
 misc_title=دوسرے اختیارات
+
 login_title=صارف اور لاگ ان کے اختیارات
 login_header=صارف کی توثیق اور لاگ ان کے اختیارات
 login_fuid=کم سے کم درست UID
@@ -117,6 +124,7 @@ login_procs=زیادہ سے زیادہ لاگ ان عمل
 login_count=ابتدائی لاگ ان عمل
 login_eprocs=لاگ ان عمل کی زیادہ سے زیادہ تعداد لاپتہ یا غلط ہے
 login_ecount=لاگ ان کے عمل کی ابتدائی تعداد لاپتہ یا غلط ہے
+
 mail_title=میل فائلیں
 mail_header=میل مقام اور پڑھنے کے اختیارات
 mail_env=میل فائل کا مقام
@@ -169,6 +177,7 @@ mail_eindexmode=جب میل فائل کا مقام خود بخود معلوم ہ
 mail_econtrolmode=جب میل فائل کا مقام خود بخود معلوم ہوجائے تو کنٹرول فائلوں کا مقام متعین نہیں کیا جاسکتا
 mail_eindex=انڈیکس فائلوں کے ل or یا گمشدہ مطلق راستہ
 mail_econtrol=کنٹرول فائلوں کیلئے لاپتہ یا غلط مطلق راستہ
+
 log_net=نیٹ ورکنگ اور پروٹوکول کو تبدیل کردیا
 log_login=صارف اور لاگ ان کے اختیارات بدل گئے
 log_mail=تبدیل شدہ میل فائلیں
@@ -179,6 +188,7 @@ log_stop=ڈوکوٹ سرور رک گیا
 log_bootup=بوٹ کے وقت ڈوکوٹ کو چالو کیا
 log_bootdown=بوٹ وقت ڈوکوٹ کو غیر فعال کردیا
 log_manual=Manually edited config file $1
+
 manual_title=کنفگ فائلوں میں ترمیم کریں
 manual_editsel=ڈوکوٹ کنفیگریشن فائل میں ترمیم کریں
 manual_err=کنفگ فائل کو محفوظ کرنے میں ناکام

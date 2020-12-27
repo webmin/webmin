@@ -8,6 +8,7 @@ index_none=Inga kataloger exporteras för närvarande med det här systemet.
 index_apply=Applicera förändringar
 index_applydesc=Klicka på den här knappen för att tillämpa den aktuella fildelningskonfigurationen. Detta kommer att göra alla kataloger listade ovan tillgängliga med de angivna alternativen.
 index_return=lista över aktier
+
 edit_title1=Redigera Dela
 edit_title2=Skapa Dela
 edit_header1=Dela detaljer
@@ -30,6 +31,7 @@ edit_anon1=Ingen åtkomst
 edit_aclok=Tillåt ACL: er?
 edit_public=WebNFS-aktie?
 edit_index=WebNFS-indexfil
+
 save_err=Det gick inte att spara delningen
 save_edirectory='$1' är inte ett giltigt katalognamn
 save_edirectory2=Katalogen '$1' finns inte
@@ -38,8 +40,12 @@ save_ero=Du listade inga värdar att dela skrivskyddad med
 save_eroot=Du listade inga värdar att dela rot med
 save_ealready=Katalogen '$1' delas redan
 save_ehost=Värden "$1" finns inte
+
 acl_view=Kan redigera NFS-aktier?
+
 ecannot=Du får inte hantera NFS-aktier
+
 delete_err=Det gick inte att ta bort delningar
 delete_enone=Ingen vald
+
 restart_err=Det gick inte att tillämpa ändringar

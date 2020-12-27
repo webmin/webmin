@@ -21,6 +21,7 @@ index_restartmsg=Bu butonu tıklayarak yazıcı zamanlandırıcısını yeniden 
 index_return=yazıcı listesi
 index_esystem=Ya yazıcı sistemini sisteminize kurunuz ya da <a href='$1'>modül yapılandırmasını</a> kullanarak değiştiriniz.
 index_style=$1 Kullanılıyor
+
 style_solaris=Solaris
 style_linux=Linux LPR
 style_freebsd=FreeBSD LPR
@@ -30,6 +31,7 @@ style_unixware=UnixWare
 style_cups=CUPS
 style_irix=IRIX
 style_aix=AIX
+
 edit_eedit=Bu yazıcıyı düzenlemek için izininiz yoktur
 edit_eadd=Yazıcı eklemeye izininiz yoktur
 edit_add=Yazıcı Oluştur
@@ -73,7 +75,9 @@ edit_direct=Doğrudan TCP bağlantısı
 edit_dport=Port
 edit_driver=Yazıcı Sürücüsü
 edit_check=Uzak yazıcının çalışıp çalışmadığı kontrol edilsin mi?
+
 blocks=blok
+
 save_err=Yazıcının kaydedilmesinde hata oluştu
 save_eadd=Yazıcı eklemenize izin verilmedi
 save_eedit=Yazıcı silmenize izin verilmedi
@@ -91,6 +95,7 @@ save_erqueue='$1' geçerli bir uzak kuyruk ismi değil
 save_eremote=Sürücüler uzak Unix yazıcıları ile kullanılamazlar
 save_edhost=Makine '$1' mevcut değil
 save_edport=Kayıp ya da yanlış doğrudan port
+
 jobs_title=Yazma İşleri
 jobs_header=$1'deki Yazma İşleri
 jobs_id=İş numarası
@@ -104,17 +109,23 @@ jobs_none=$1'de yazma işi bulunamadı
 jobs_all=Bütün yazma işlemleri iptal et
 jobs_bytes=byte
 jobs_test=Deneme Sayfası Yazdır
+
 cancel_ecannot=Yazma işlerini durdurmaya izininiz yoktur
 cancel_err=Yazma işinin durdurulmasında hata oluştu
 cancel_egone=Yazma işi $1 varolandan daha büyük
+
 view_ecannot=Bu yazma işini görüntülemeye izininiz yoktur
 view_egone=Yazma işi varolandan daha büyük
+
 start_ecannot=Zamanlayıcıyı başlatmak için izininiz yoktur
 start_err=Zamanlayıcının başlatılmasında hata oluştu
+
 stop_ecannot=Zamanlayıcıyı durdurmak için izininiz yoktur
 stop_err=Zamanlayıcının durdurulmasında hata oluştu
+
 restart_ecannot=Zamanlayıcıyı yeniden başlatmak için izininiz yoktur
 restart_err=Zamanlayıcının yeniden başlatılmasında hata oluştu
+
 webmin_none=Hiçbiri
 webmin_nonemsg=Postscript ya da yazı yazıcısı
 webmin_remotemsg=Uzak yazıcı
@@ -125,6 +136,7 @@ webmin_uniprint=Uniprint sürücüsü
 webmin_edrivers=$1'den sürücülerin alınmasında hata oluştu.Webmin yazıcı sürücülerinin kullandığı postscript kullanılabilir değildir
 webmin_egs=$1 komutu bulunamadı.Webmin yazıcı sürücülerinin kullandığı postscript kullanılabilir değildir
 webmin_edriver='$1' mevcut değil
+
 caldera_none=Hiçbiri
 caldera_nonemsg=Uzak ya da standart yazıcı
 caldera_prog=Program
@@ -138,6 +150,7 @@ caldera_uniprint=Uniprint sürücüsü
 caldera_eprog='$1' mevcut değil
 caldera_edriver=Yazıcı sürücüsü seçilmedi
 caldera_eres=Çözünürlük seçilmedi
+
 redhat_none=Hiçbiri
 redhat_nonemsg=Postscript ya da yazı yazıcısı
 redhat_prog=Program
@@ -156,6 +169,7 @@ redhat_ehmargin=Eksik ya da yanlış sağ/sol boşluk
 redhat_evmargin=Kayıp ya da yanlış üst/alt boşluk
 redhat_eres=Çözünürlük seçilmedi
 redhat_printer2=Yazıcı model ve sürücüsü
+
 suse_none=Hiçbiri
 suse_nonemsg=Postscript ya da düz metin yazıcısı
 suse_prog=Program
@@ -172,7 +186,9 @@ suse_extra=Ekstra ghostscript seçenekleri
 suse_yast2=YAST2 sürücüsü
 suse_edriver=Bir yazıcı tipi seçilmedi
 suse_eres=Eksik ya da geçersiz çözünürlük
+
 estop=lpd'nin durdurulmasında hata oluştu: $1
+
 acl_printers=Bu kullanıcı yazıcıları ayarlayabilir
 acl_add=Yeni yazıcılar ekleyebilir?
 acl_cancel=Yazım işlerini görüntüleyebilir ya da durdurabilir?
@@ -186,6 +202,7 @@ acl_test=Test sayfaları yazdırabilir mi?
 acl_user=Hangi kullanıcıların yazıcı işleri yönetilsin
 acl_user_all=Bütün kullanıcılar
 acl_user_this=Mevcut Webmin kullanıcısı
+
 log_stop=Yazıcı planlayıcısı durduruldu
 log_start=Yazıcı planlayıcısı çalıştırıldı
 log_restart=Yazıcı zamanlayıcısı yeniden başlatıldı
@@ -197,37 +214,45 @@ log_delete=$2'de $1 yazıcısı silindi
 log_create_l=$2'de $1 yazıcısı $3 oluşturuldu
 log_modify_l=$2'de $1 yazıcısı $3 değiştirildi
 log_delete_l=$2'de $1 yazıcısı $3 silindi
+
 linux_paralel=Paralel Port $1
 linux_serial=Seri Port $1 (COM$1)
 linux_null=Boş Aygıt
 linux_usb=USB yazıcı $1
 linux_ecmd=$1 komutu sisteminizde bulunamadı. Bu Linux yazıcı sisteminin kurulmamış olduğunu gösterir.
 linux_espool=Kuyruk dizini $1 sisteminizde bulunamadı. Bu Linux yazıcı sisteminin kurulmamış olduğunu gösterir.
+
 freebsd_paralel=Paralel Port
 freebsd_serial=Seri Port $1 (COM$1)
 freebsd_ecmd=$1 komutu sisteminizde bulunamadı. Bu FreeBSD yazıcı sisteminin kurulmamış olduğunu gösterir.
 freebsd_espool=$1 kuyruk dizini sisteminizde bulunamadı. Bu CUPS yazıcı sisteminin kurulmamış olduğunu gösterir.
+
 openbsd_paralel=Paralel Port
 openbsd_serial=Seri Port $1 (COM$1)
+
 unixware_paralel=Paralel Port $1
 unixware_serial=Seri Port $1
 unixware_null=Boş Aygıt
 unixware_ecmd=$1 komutu sisteminizde bulunamadı. Bu UnixWare yazıcı sisteminin kurulmamış olduğunu gösterir.
+
 hpux_paralel=Paralel $1
 hpux_serial=Seri $1
 hpux_null=Boş Aygıt
 hpux_ecmd=$1 komutu sisteminizde bulunamadı. Bu HPUX yazıcı sisteminin kurulmamış olduğunu gösterir.
 hpux_eiface=Arayüz script dizini $1 sisteminizde bulunamadı. Bu HPUX yazıcı sisteminin kurulmamış olduğunu gösterir.
+
 lprng_paralel=Paralel Port $1
 lprng_serial=Seri Port $1 (COM$1)
 lprng_null=Boş Aygıt
 lprng_ecmd=$1 komutu sisteminizde bulunamadı. Bu LPRng yazıcı sisteminin kurulmamış olduğunu gösterir.
 lprng_espool=Kuyruk dizini $1 sisteminizde bulunamadı. Bu LPRng yazıcı sisteminin kurulmamış olduğunu gösterir.
+
 solaris_paralel=Paralel Port
 solaris_uparalel=Ultra 5/10 Paralel Port
 solaris_serial=Seri Port $1
 solaris_null=Boş Aygıt
 solaris_ecmd=$1 komutu sisteminizde bulunamadı. Bu Solaris yazıcı sisteminin kurulmamış olduğunu gösterir.
+
 test_title=Deneme Sayfası Yazdır
 test_ecannot=Deneme sayfası yazdırmak için izininiz yoktur
 test_desc=Bu sayfa $1 yazıcısından deneme sayfası yazdırmanızı sağlar. Yazdırmak istediğiniz sayfa tipini seçiniz :
@@ -239,6 +264,7 @@ test_print=Sayfayı yazdır
 test_exec=Deneme sayfası $1 komutu ile yazdırılıyor ..
 test_failed=.. komutta hata oluştu!
 test_ok=.. komut tamamlandı.
+
 cups_none=Hiçbiri
 cups_nonemsg=Uzak ya da raw yazıcı
 cups_prog=Program
@@ -246,8 +272,10 @@ cups_driver=CUPS sürücüsü
 cups_eprog='$1' geçerli bir program değildir
 cups_opts=$1 seçenekleri
 cups_ecmd=$1 komutu sisteminizde bulunamadı. Bu CUPS yazıcı sisteminin kurulmamış olduğunu gösterir.
+
 irix_ecmd=$1 komutu sisteminizde bulunamadı. Bu IRIX yazıcı sisteminin kurulmamış olduğunu gösterir.
 irix_eiface=Arayüz script dizini $1 sisteminizde bulunamadı. Bu IRIX yazıcı sisteminin kurulmamış olduğunu gösterir.
+
 aix_port=Yazıcı portu $1
 aix_edesc=Geçersiz açıklama - sadece harfler ve rakamlar izin verilmiştir, boşluk kabul edilmemektedir.
 aix_ecmd=AIX yazıcı sunucusu $1 bulunamadı. Kurulmamış ya da başka bir yazıcı sistemi kullanılıyor olabilir.

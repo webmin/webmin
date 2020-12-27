@@ -65,6 +65,7 @@ index_checkconfig=Varmista, että chroot-hakemisto on asetettu oikein <a href='$
 index_eexpired=Varoitus: Seuraavat alueet ovat vanhentuneet DNSSEC-allekirjoitukset : $1
 index_eexpired_conf=Automaattinen allekirjoittaminen tulisi ottaa uudelleen käyttöön $1 -sivulla.
 index_eexpired_mod=Käytä $1 -moduulia joko poistamaan DNSSEC käytöstä näillä verkkotunnuksilla tai tarkistamaan, miksi allekirjoittaminen epäonnistuu.
+
 master_title=Muokkaa pääaluetta
 master_inview=$1 näkymässä $2 
 master_ecannot=Et voi muokata tätä vyöhykettä
@@ -146,6 +147,7 @@ master_defttl=Tietueiden oletusaika-aika
 master_edefttl='$1' ei ole kelvollinen oletusarvoinen elinaika tietueille
 master_esoagone=SOA-tietuetta ei löytynyt!
 master_einclude=Muuta mallitiedostoa ei ole
+
 delete_title=Poista vyöhyke
 delete_mesg=Haluatko varmasti poistaa vyöhykkeen $1? Kaikki tietueet ja vyöhyketiedosto poistetaan.
 delete_mesg2=Haluatko varmasti poistaa pääalueen? DNS-palvelimesi ei ehkä enää pysty etsimään osoitteita Internetistä.
@@ -157,6 +159,7 @@ delete_errslave=Päävyöhyke poistettu OK, mutta orjassa tapahtui seuraavia vir
 delete_ezone=Vyöhykettä ei löytynyt orjapalvelimesta
 delete_vwarn=Tämä vyöhyke liittyy Virtualmin-verkkotunnukseen $1, joten sitä ei pitäisi poistaa täältä!
 delete_vwarn2=Tämä vyöhyke liittyy Virtualmin-verkkotunnukseen $1 ja $2 muihin, joten sitä ei pitäisi poistaa täältä!
+
 mcreate_title=Luo pääalue
 mcreate_ecannot=Pääalueita ei voi luoda
 mcreate_opts=Uudet pääaluevyöhykkeet
@@ -171,6 +174,7 @@ mcreate_auto=Automaattinen
 mcreate_err=Pääalueen luominen epäonnistui
 mcreate_ednssecsize=Avaimen koon laskeminen epäonnistui : $1
 mcreate_ednssec=Tietueen luominen onnistui, mutta DNSSEC epäonnistui : $1
+
 slave_title=Muokkaa orjavyöhykettä
 stub_title=Muokkaa Stub-vyöhykettä
 slave_ecannot=Et voi muokata tätä vyöhykettä
@@ -202,6 +206,7 @@ slave_applymsg2=Napsauta tätä painiketta, jos haluat pakottaa vyöhykkeen siir
 slave_last=Viimeksi siirretty : $1
 slave_never=Ei koskaan
 slave_xfer=Testivyöhykkeen siirto
+
 screate_title1=Luo orjavyöhyke
 screate_title2=Luo tynkävyöhyke
 screate_ecannot1=Et voi luoda orjavyöhykkeitä
@@ -214,6 +219,7 @@ screate_rev=Käänteinen (osoitteet nimille)
 screate_dom=Verkkotunnus / verkko
 screate_err1=Slave-vyöhykkeen luominen epäonnistui
 screate_err2=Tyhjennysvyöhykkeen luominen epäonnistui
+
 recs_ecannot=Et voi muokata tietueita tällä vyöhykkeellä
 recs_ecannottype=Sinulla ei ole oikeutta muokata tämän tyyppisiä tietueita
 recs_title=$1 tietueet
@@ -231,6 +237,7 @@ recs_drev=Poistetaanko myös peruutukset?
 recs_none=Verkkotunnuksella ei ole vielä $1 -rekisteriä.
 recs_nosearch=Mikään tietue ei vastannut hakuasi.
 recs_needsearch=Kirjoita haku löytääksesi vastaavat tietueet.
+
 edit_title=Muokkaa $1
 edit_header=Kohdassa $1
 edit_edit=Muokkaa $1 tietuetta
@@ -306,6 +313,7 @@ edit_edmarcpct=Viestien prosenttimäärän on oltava kokonaisluku välillä 0–
 edit_edmarcrua=Puuttuu kokonaispalauteosoite
 edit_edmarcruf=Puuttuva oikeuslääketieteen osoite
 edit_ecaavalue2=Puuttuva tai virheellisen näköinen verkkotunnus
+
 text_title=Muokkaa tietuetiedostoa
 text_title2=Näytä tietuetiedosto
 text_desc3=Tämä muoto antaa sinun muokata manuaalisesti DNS-tietuetiedostoa $1. Webmin ei tee syntaksitarkistusta.
@@ -315,6 +323,7 @@ text_ecannot=Et voi muokata levytystiedostoja
 text_none=Tiedosto on kuitenkin tällä hetkellä tyhjä, luultavasti siksi, että vyöhykettä ei ole vielä siirretty pääpalvelimelta.
 text_soa=Lisää sarjanumero automaattisesti
 text_rawformat=Tämä vyöhyke on raa'assa binaarimuodossa, joten sitä ei voida näyttää tekstinä.
+
 restart_err=Muutosten asettaminen epäonnistui
 restart_ecannot=Sinulla ei ole oikeutta käynnistää BIND uudelleen
 restart_epidfile=BIND PID: tä ei löytynyt $1
@@ -323,10 +332,12 @@ restart_erunning2=BIND ei näytä toimivan orjapalvelimessa $1
 restart_endc=NDC-komento epäonnistui : $1
 restart_ecmd=Käynnistä uudelleen -komento epäonnistui : $1
 restart_eversion=Orjapalvelin $1 ei käytä Webmin-versiota $2 tai uudempi.
+
 start_ecannot=Sinulla ei ole oikeutta aloittaa BIND
 start_error=BIND: n käynnistäminen epäonnistui : $1
 stop_epid=BIND ei ole käynnissä
 stop_ecannot=Sinulla ei ole oikeutta pysäyttää BIND
+
 fwd_title=Muokkaa eteenpäin vyöhykettä
 fwd_ecannot=Et voi muokata tätä vyöhykettä
 fwd_opts=Vyöhykeasetukset
@@ -335,12 +346,14 @@ fwd_forward=Kokeiletko muita palvelimia?
 fwd_check=Tarkista nimet?
 fwd_err=Asetusten tallentaminen epäonnistui
 fwd_delmsg=Napsauta tätä painiketta, jos haluat poistaa tämän vyöhykkeen DNS-palvelimelta. Sen sisältämiä tietueita etsitään sitten normaalia resoluutioprosessia käyttäen.
+
 delegation_title=Muokkaa valtuuskunnan vyöhykettä
 delegation_ecannot=Et voi muokata tätä vyöhykettä
 delegation_opts=Vyöhykeasetukset
 delegation_err=Asetusten tallentaminen epäonnistui
 delegation_noopts=Delegointialueilla ei ole määritettävissä olevia vaihtoehtoja.
 delegation_delmsg=Napsauta tätä painiketta, jos haluat poistaa tämän vyöhykkeen DNS-palvelimelta. BIND tunnistaa sen jälkeen muut tietuetyypit kuin NS.
+
 fcreate_title=Luo eteenpäin vyöhyke
 fcreate_ecannot=Et voi luoda eteenpäin suuntautuvia vyöhykkeitä
 fcreate_opts=Uudet eteenpäin suuntautuvien vyöhykkeiden vaihtoehdot
@@ -350,10 +363,12 @@ fcreate_rev=Käänteinen (osoitteet nimille)
 fcreate_dom=Verkkotunnus / verkko
 fcreate_masters=Pääpalvelimet
 fcreate_err=Edelleenlähetysalueen luominen epäonnistui
+
 dcreate_title=Luo vain delegointialue
 dcreate_ecannot=Et voi luoda siirtovyöhykkeitä
 dcreate_opts=Uudet valtuuskuntien vyöhykevaihtoehdot
 dcreate_err=Valtuuskuntialueen luominen epäonnistui
+
 create_enet='$1' ei ole kelvollinen verkko
 create_edom='$1' ei ole kelvollinen verkkotunnus
 create_edom2='$1' on oltava verkkotunnus, ei verkko
@@ -363,9 +378,11 @@ create_efile3='$1' luonti epäonnistui : $2
 create_efile4=Tiedosto $1 on jo olemassa
 create_emaster='$1' ei ole kelvollinen pääpalvelimen osoite
 create_enone=Sinun on annettava ainakin yksi pääpalvelin
+
 boot_err=Lataus epäonnistui
 boot_egzip=Juurivyylitiedosto on pakattu, mutta <tt>gzip</tt> -komentoa ei ole asennettu järjestelmään!
 boot_egzip2=Juurivyylitiedoston pakkaaminen epäonnistui : $1
+
 type_A=Osoite
 type_AAAA=IPv6-osoite
 type_NS=Nimipalvelin
@@ -386,6 +403,7 @@ type_SRV=Palvelun osoite
 type_ALL=Kaikki levytyypit
 type_KEY=Julkinen avain
 type_CAA=Varmentaja
+
 edit_A=Osoite
 edit_AAAA=IPv6-osoite
 edit_NS=Nimipalvelin
@@ -405,6 +423,7 @@ edit_NSEC3PARAM=DNSSEC-parametrit
 edit_TLSA=SSL-varmenne
 edit_SSHFP=SSH julkinen avain
 edit_CAA=Varmentaja
+
 recs_defttl=Oletus TTL
 recs_A=Osoite
 recs_AAAA=IPv6-osoite
@@ -427,6 +446,7 @@ recs_TLSA=SSL-varmenne
 recs_SSHFP=SSH julkinen avain
 recs_CAA=Varmentaja
 recs_delete=Poista valitut
+
 value_A1=Osoite
 value_AAAA1=IPv6-osoite
 value_NS1=Nimipalvelin
@@ -503,6 +523,7 @@ value_CAA3=CA-verkkotunnus
 value_caa_issue=Yhden verkkotunnuksen sertifikaatti
 value_caa_issuewild=Jokerimerkki
 value_caa_iodef=Käytäntöloukkauksen URL-osoite
+
 tlsa_usage0=Varmentaja
 tlsa_usage1=Lopeta kokonaisuus
 tlsa_usage2=Luottakaa ankkuri
@@ -512,12 +533,14 @@ tlsa_selector1=Julkisen avaimen tiedot
 tlsa_match0=Uutta sisältöä
 tlsa_match1=SHA-256 hajautettu
 tlsa_match2=SHA-512 hajautettu
+
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDSA
 sshfp_alg4=Ed25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 warn=Varoittaa
 fail=Fail
 ignore=Jättää huomiotta
@@ -531,6 +554,7 @@ listed=Listattu ..
 eip='$1' ei ole kelvollinen IP-osoite
 eport='$1' ei ole kelvollinen porttinumero
 eipacl='$1' ei ole kelvollinen IP-osoite tai ACL-nimi
+
 acl_zones=Verkkotunnuksia, joita tämä käyttäjä voi muokata
 acl_zall=Kaikki vyöhykkeet
 acl_zsel=Valitut alueet ..
@@ -575,6 +599,7 @@ acl_ztypes_master=Hallita
 acl_ztypes_slave=Orja / tynkä
 acl_ztypes_delegation=valtuuskunta
 acl_ztypes_forward=Eteenpäin
+
 servers_title=Muut DNS-palvelimet
 servers_ip=IP-osoite
 servers_bogus=Ohitetaanko väärä palvelin?
@@ -586,6 +611,7 @@ servers_keys=Käytä DNS-avaimia
 servers_err=Muiden DNS-palvelimien tallentaminen epäonnistui
 servers_eip='$1' ei ole kelvollinen IP-osoite
 servers_etrans='$1' ei ole kelvollinen enimmäissiirtojen lukumäärä
+
 logging_title=Kirjaaminen ja virheet
 logging_ecannot=Et voi määrittää lokitietoja
 logging_header=Yleiset kirjaus- ja virheasetukset
@@ -624,6 +650,7 @@ logging_efile=Puuttuu lokitiedostonimi
 logging_efile2=Lokitiedoston nimen on oltava ehdoton polku
 logging_ever='$1' ei ole kelvollinen määrä versioita
 logging_esize='$1' ei ole kelvollinen lokikoko
+
 acls_title=Kulunvalvontalistat
 acls_ecannot=Sinulla ei ole oikeutta muokata yleisiä acls-tiedostoja
 acls_name=ACL-nimi
@@ -631,6 +658,7 @@ acls_values=Yhteensopivia osoitteita, verkkoja ja ACL-osoitteita
 acls_err=Käyttöoikeusluetteloiden tallentaminen epäonnistui
 acls_ename='$1' ei ole kelvollinen ACL-nimi
 acls_eline=Jokainen IP-osoite on syötettävä erilliselle riville ACL '$1'
+
 files_title=Tiedostot ja hakemistot
 files_ecannot=Sinulla ei ole oikeutta määrittää tiedostoja
 files_header=Globaalit tiedostot ja hakemistot -asetukset
@@ -640,6 +668,7 @@ files_pid=Prosessitunnus-tiedosto
 files_xfer=Polku vyöhykkeensiirto-ohjelmaan
 files_err=Tiedostojen ja hakemistojen asetusten tallentaminen epäonnistui
 files_efile=Puuttuva tai virheellinen tiedostonimi
+
 forwarding_title=Huolinta ja siirrot
 forwarding_ecannot=Et voi muokata edelleenlähetys- ja siirtovaihtoehtoja
 forwarding_header=Globaalit huolinta- ja vyöhykesiirtovaihtoehdot
@@ -658,6 +687,7 @@ forwarding_etrans=Puuttuvat tai virheelliset samanaikaiset siirrot
 forwarding_minutes=pöytäkirja
 forwarding_ip=IP-osoite
 forwarding_port=portti
+
 net_title=Osoitteet ja topologia
 net_ecannot=Et voi muokata osoite- ja topologiavaihtoehtoja
 net_header=Kokonaisosoite- ja topologiavaihtoehdot
@@ -683,6 +713,7 @@ net_taddrdef=Lähin IP
 net_etport=Siirtolähdeporttia ei voida määrittää ilman osoitetta
 net_eaddr='$1' ei ole kelvollinen IPv4-osoite
 net_eaddr6='$1' ei ole kelvollinen IPv6-osoite
+
 controls_title=Ohjausrajapinnan asetukset
 controls_ecannot=Ohjaustapoja ei voi muokata
 controls_header=Ohjausvaihtoehdot
@@ -704,6 +735,7 @@ controls_eunixpath=Puuttuva tai virheellinen FIFO-tiedostopolku
 controls_eunixperm=Puuttuvat tai virheelliset oktaalitiedostojen käyttöoikeudet
 controls_eunixowner=Puuttuva tai virheellinen tiedoston omistaja
 controls_eunixgroup=Puuttuva tai virheellinen tiedostoryhmä
+
 controls_inet=Internet-satama pääsy
 controls_unix=Unix-FIFO-käyttö
 controls_port=portti
@@ -717,6 +749,7 @@ controls_efile=Puuttuva tai virheellinen FIFO-tiedostonimi
 controls_eperms=Puuttuvat tai virheelliset FIFO-luvat
 controls_eowner=Puuttuva tai virheellinen FIFO-omistajan UID
 controls_egroup=Puuttuva tai virheellinen FIFO-omistajan GID
+
 keys_title=DNS-avaimet
 keys_id=Avaintunnus
 keys_alg=algoritmi
@@ -725,6 +758,7 @@ keys_ecannot=DNS-avaimia ei saa muokata
 keys_err=DNS-avainten tallentaminen epäonnistui
 keys_ekey='$1' ei ole kelvollinen avaintunnus
 keys_esecret=Puuttuva tai virheellinen base-64-koodattu salaisuus avaimelle $1
+
 misc_title=Sekalaiset vaihtoehdot
 misc_ecannot=Et voi muokata sekalaisia vaihtoehtoja
 misc_header=Sekalaiset globaalit vaihtoehdot
@@ -744,6 +778,7 @@ misc_esize='$1' ei ole kelvollinen koko
 misc_efiles='$1' ei ole kelvollinen enimmäismäärä avoimia tiedostoja
 misc_emins='$1' ei ole kelvollinen minuuttimäärä
 misc_mins=min
+
 zonedef_title=Vyöhykkeen oletukset
 zonedef_msg=Uusien pääalueiden oletusasetukset
 zonedef_err=Alueiden oletusasetusten tallentaminen epäonnistui
@@ -767,10 +802,13 @@ zonedef_size=Avaimen alkuperäinen koko
 zonedef_single=Luovien avainten lukumäärä
 zonedef_two=Vyöhyke-avain ja avaimen allekirjoitusavain
 zonedef_one=Vain vyöhyke-avain
+
 find_title=Etsi alueet
 find_match=Vyöhykkeet, jotka vastaavat $1 ..
 find_none=Ei vyöhykkeitä.
+
 efirst=Huono ensimmäinen direktiivi rivillä $1 $2
+
 findfree_title=Löydä ilmaisia IP-osoitteita
 findfree_desc=Löydä ilmaisia IP-osoitteita
 findfree_nofind=Et voi etsiä ilmaisia IP-osoitteita
@@ -782,8 +820,10 @@ findfree_cf=Pidätkö <em>freeXXX</em> isäntänimiä ilmaisina IP-osoitteina?
 findfree_search=Hae
 findfree_msg=Löytyi $1 ilmaisia IP-osoitteita
 findfree_msg2=(joista $1 ovat kuin <i>freeXXX</i>, $2 kuten <i>freemac</i>)
+
 free_title=Ilmaiset IP-osoitteet
 free_ip=IP-osoite
+
 log_servers=Muutti muita DNS-palvelimia
 log_logging=Muutokset kirjautumisessa ja virheissä
 log_acls=Muutettu kulunvalvonnan luetteloita
@@ -840,14 +880,17 @@ log_sign=Päivitetyt DNSSEC-allekirjoitukset vyöhykkeelle $1
 log_resign=Uudelleen allekirjoitettu DNSSEC-avain vyöhykkeelle $1
 log_trusted=DNSSEC-varmennus muuttunut
 log_dnssec=Vaihda DNSSEC-avaimen uudelleen allekirjoittaminen
+
 convert_err=Alueen muuntaminen epäonnistui
 convert_efile=Tietuetiedosto on määritettävä, ennen kuin orjavyöhyke voidaan muuntaa isäntänä.
 convert_efilesize=Tietuetiedostoa $1 ei ole tai se on tyhjä
 convert_ebinary=Binaarisesta orjavyöhykkeestä tekstimuotoisiksi muuntamiseen tarvittavaa komentoa ei ole asennettu
 convert_ecompile=Binaarimuodon muuttaminen tekstimuotoon epäonnistui : $1
+
 whois_title=WHOIS-tiedot
 whois_header=Tulos komennosta $1 ..
 whois_ecannot=Et voi etsiä WHOIS-tietoja
+
 view_title=Muokkaa asiakasnäkymää
 view_opts=Asiakasnäkymän tiedot
 view_opts2=Valittavissa olevat alueet
@@ -858,6 +901,7 @@ view_recursion=Tekevätkö asiakkaat täysin rekursiivisia hakuja?
 view_ecannot=Et voi muokata tätä näkymää
 view_delete=Poista näkymä
 view_deletemsg=Poista näkymä napsauttamalla tätä painiketta. Voit valita sen sisältämien vyöhykkeiden siirtämisen toiseen näkymään tai poistaa myös ne.
+
 vcreate_title=Luo asiakasnäkymä
 vcreate_match_all=Kaikki asiakkaat
 vcreate_match_sel=Listatut osoitteet, verkot ja ACL-osoitteet ..
@@ -866,6 +910,7 @@ vcreate_ename=Puuttuva tai virheellinen näkymän nimi
 vcreate_etaken=Katselunimi on jo otettu
 vcreate_eclass=Puuttuva tai virheellinen luokan nimi
 vcreate_ecannot=Et voi luoda näkymiä
+
 hint_title=Muokkaa juurivyöhykettä
 hint_desc=DNS-palvelin käyttää juurialuetta yhteydenpitoon Internetin juuripalvelimiin, jotta se voi ratkaista nimet verkkotunnuksissa, joita DNS-palvelin ei käsittele, kuten <tt>.com</tt> tai <tt>.net. AU</tt>. Ellet DNS-palvelintasi ole tarkoitettu käytettäväksi sisäisessä verkossa tai jos siirrät kaikki kyselyt toiselle palvelimelle, tätä juurivyöhykettä ei pitäisi poistaa.
 hint_move=Siirrä näkymään:
@@ -874,6 +919,7 @@ hint_refetch=Lataa Root Nameservers uudelleen
 hint_refetchdesc=Napsauta tätä painiketta, jotta Webmin lataa juurivyylitiedoston lähteestä sisäiseen FTP-palvelimeen.
 hint_delete=Poista juurivyöhyke
 hint_deletedesc=Napsauta tätä painiketta, jos haluat poistaa tämän juurivyöhykkeen. Ilman sitä nimipalvelimesi ei pysty ratkaisemaan muita verkkotunnuksia kuin ne, joille se on toissijainen.
+
 hcreate_title=Luo juurivyöhyke
 hcreate_desc=DNS-palvelin käyttää juurialuetta yhteydenpitoon Internetin juuripalvelimiin, jotta se voi ratkaista nimet verkkotunnuksissa, joita DNS-palvelin ei käsittele, kuten <tt>.com</tt> tai <tt>.net. AU</tt>. Jos käytät useita näkymiä, joudut ehkä tarvita erillisen juurivyöhykkeen jokaisessa näkymässä, jotta kaikki asiakkaat voivat ratkaista Internet-verkkotunnukset oikein.
 hcreate_header=Juurivyöhykkeen yksityiskohdat
@@ -887,6 +933,7 @@ hcreate_efile='$1' ei ole sallittu juuritiedosto
 hcreate_efile2=Puuttuva tai virheellinen juuritiedosto
 mcreate_erecs=Ole kelvollinen olemassa oleva juurivyylitiedosto
 hcreate_err=Juurivyöhykkeen luominen epäonnistui
+
 vdelete_title=Poista näkymä
 vdelete_mesg=Haluatko varmasti poistaa asiakasnäkymän $1? Kaikki tämän näkymän vyöhykkeet joko poistetaan (yhdessä niiden vyöhyketiedostojen kanssa) tai siirretään toiseen näkymään alla olevan valinnan mukaan.
 vdelete_mesg2=Haluatko varmasti poistaa asiakasnäkymän $1?
@@ -894,6 +941,7 @@ vdelete_newview=Vyöhykkeet tämän näkymän sisällä
 vdelete_root=Siirrä näkymistä pois
 vdelete_delete=Poista kokonaan
 vdelete_move=Siirry näkymään
+
 gen_title=Levygeneraattorit
 gen_desc=Tällä sivulla voit määrittää generaattorit, joista jokainen luo useita tietueita tässä vyöhykkeessä käyttämällä kasvavaa laskuria. Tämä voi olla hyödyllinen siirtämällä taaksepäin suuntautuvan vyöhykkeen osia toiselle palvelimelle.
 gen_range=alue
@@ -913,7 +961,9 @@ gen_evalue=Puuttuva tai virheellinen isäntänimimalli generaattorille $1
 gen_title2=Luotu levy
 gen_raw=Määritä tiedosto rivi
 gen_ecannot=Et voi muokata levyjen generaattoreita
+
 refetch_err=Juurivyöhykkeen uudelleenlataus epäonnistui
+
 slaves_title=Klusterijärjestelmät
 slaves_none=DNS-klusteriin ei ole vielä lisätty palvelimia.
 slaves_host=hostname
@@ -941,6 +991,7 @@ slaves_sec=Luo toissijainen orjassa, kun luot paikallisesti?
 slaves_name=NS-tietueen nimi
 slaves_same=Sama kuin isäntänimi
 slaves_header=Klusterin orjapalvelimen vaihtoehdot
+
 add_title=Lisää palvelimia
 add_msg=Lisätään $1 ..
 add_gmsg=Palvelimien lisääminen ryhmään $1 ..
@@ -958,6 +1009,7 @@ add_createok=Asenna $1 $2 uusilla orjavyöhykkeillä.
 add_ename=Puuttuva tai virheellinen NS-tietueen nimi
 add_egname=NS-tietueen nimeä ei voida määrittää lisättäessä ryhmää
 add_emyip=Tämän järjestelmän IP-osoitetta ei voitu selvittää. Sinun tulisi asettaa <b>Oletuspääpalvelimen IP-osoite etäorjavyöhykkeille</b> Moduulin kokoonpanosivulla.
+
 mass_title=Luo vyöhykkeitä komentojonotiedostosta
 mass_desc=Tällä sivulla voit luoda useita vyöhykkeitä kerralla ladatusta tai palvelimen puoleisesta tekstitiedostosta. Tiedoston jokaisella rivillä on oltava seuraava muoto: <p></p> <tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt> <p></p> <i>Tyypin</i> on oltava <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> tai <tt>forward</tt>. <i>Tiedostonimi</i> on valinnainen, ja se lasketaan automaattisesti, jos se puuttuu. <i>Pää IP-osoitteet</i> on annettava vain orjavyöhykkeille.
 mass_local=Paikallinen komentojonotiedosto
@@ -989,6 +1041,7 @@ mass_emips=Puuttuvat isäntä-IP-osoitteet
 mass_addedslaves=Lisätty $1 orjapalvelimille OK.
 mass_eonslave=Slave-palvelimilla luodut virheet : $1
 mass_eviewcannot=Et voi lisätä vyöhykkeitä tähän näkymään
+
 massdelete_title=Poista vyöhykkeet
 massdelete_rusure=Haluatko varmasti poistaa $1 valitut vyöhykkeet? ($2)
 massdelete_ok=Poista nyt
@@ -998,6 +1051,7 @@ massdelete_slaves=Poistetaan vyöhyke $1 orjapalvelimilta ..
 massdelete_failed=.. jotkut orjat epäonnistuivat :
 massdelete_vwarn=Jotkut vyöhykkeet liittyvät Virtualmin-verkkotunnukseen $1, joten niitä ei pitäisi poistaa täältä!
 massdelete_vwarn2=Jotkut alueet liittyvät Virtualmin-verkkotunnukseen $1 ja $2 toisiin, joten niitä ei pitäisi poistaa täältä!
+
 rndc_title=Asenna RNDC
 rndc_desc=Tätä sivua voidaan käyttää BIND: n asettamiseen RNDC-ohjelman hallintaa varten, jotta yksittäiset vyöhykkeet voidaan päivittää tarvitsematta tehdä täydellistä BIND-uudelleenkäynnistystä.
 rndc_desc2=RNDC näyttää olevan jo asennettu oikein, joten sinun ei todennäköisesti tarvitse käyttää tätä lomaketta.
@@ -1008,11 +1062,13 @@ rndc_ok=Kyllä, asenna RNDC
 rndc_err=RNDC: n määrittäminen epäonnistui
 rndc_ekey=Avainta ei löytynyt rndc.conf-tiedostosta
 rndc_esecret=Salaa ei löytynyt rndc.conf-tiedostosta
+
 drecs_err=Tietueiden poistaminen epäonnistui
 drecs_enone=Mitään ei ole valittu
 drecs_title=Poista tietueet
 drecs_rusure=Haluatko varmasti poistaa $1 valitut tietueet $2?
 drecs_ok=Poista nyt
+
 manual_title=Muokkaa asetustiedostoa
 manual_ecannot=Sinulla ei ole oikeutta muokata BIND-asetustiedostoa
 manual_ok=Muokata
@@ -1020,7 +1076,9 @@ manual_efile=Valittu tiedosto ei ole osa BIND-määritystä
 manual_file=Muokkaa asetustiedostoa:
 manual_edata=Mikään ei tullut sisään!
 manual_err=Konfigurointitiedoston tallentaminen epäonnistui
+
 syslog_desc=BIND DNS -palvelimen viestit
+
 umass_err=Alueiden päivitys epäonnistui
 umass_enone=Mitään ei ole valittu
 umass_title=Päivitä tietueet alueilla
@@ -1039,6 +1097,7 @@ umass_done=.. päivitetty $1 vastaavat tietueet luokasta $2.
 umass_none=.. ei löytynyt vastaavia tietueita luokasta $1 päivittää.
 umass_egone=Vyöhykettä ei ole olemassa
 emass_emx='$1' ei ole postipalvelimen prioriteettinumero, jota seuraa kelvollinen isäntänimi
+
 rdmass_err=Alueiden tietueiden poistaminen epäonnistui
 rdmass_enone=Mitään ei ole valittu
 rdmass_title=Poista tietueet alueilta
@@ -1055,6 +1114,7 @@ rdmass_done=.. poistettu $1 vastaavat tietueet luokasta $2.
 rdmass_none=.. ei löytynyt vastaavia tietueita luokasta $1.
 rdmass_ok=Poista tietueet
 rdmass_sel=Tietueet nimetty
+
 rmass_err=Tietueiden lisääminen epäonnistui
 rmass_enone=Mitään ei ole valittu
 rmass_title=Lisää tietue vyöhykkeisiin
@@ -1074,18 +1134,22 @@ rmass_esign=.. valmis, mutta allekirjoittaminen epäonnistui : $1
 rmass_eclash=.. saman nimen ja arvon tietue $1 on jo olemassa.
 rmass_eclash2=.. tietueella, jolla on sama nimi ja sama arvo $1, on jo olemassa.
 rmass_clash=Luo vaikka tietue on jo olemassa?
+
 check_title=Tarkista tietueet
 check_ecannot=Et voi tarkistaa tietueita
 check_errs=Seuraavat virheet löytyivät tietuetiedostosta $1 ..
 check_allok=Tietuetiedostossa $1 ei löytynyt virheitä.
+
 ncheck_title=Tarkista BIND-kokoonpano
 ncheck_ecannot=Sinulla ei ole oikeutta tarkistaa BIND-kokoonpanoa
 ncheck_errs=Seuraavat virheet löytyivät BIND-määritystiedostosta $1 tai viitattujen vyöhykkeiden tiedostoista ..
 ncheck_allok=BIND-määritystiedostossa $1 tai viitattujen vyöhykkeiden tiedostoissa ei löytynyt virheitä.
+
 links_restart=Käytä määritystä
 links_stop=Lopeta BIND
 links_start=Käynnistä BIND
 links_apply=Levitä vyöhyke
+
 dnssec_title=DNSSEC-avaimen uudelleen allekirjoittaminen
 dnssec_ecannot=Et voi määrittää DNSSEC: tä
 dnssec_header=Keskeiset allekirjoitusvaihtoehdot
@@ -1096,6 +1160,7 @@ dnssec_secs=sekuntia
 dnssec_desc=DNSSEC: llä allekirjoitetuissa vyöhykkeissä on tyypillisesti kaksi avainta - vyöhykeavain, joka on luotava ja allekirjoitettava säännöllisesti, ja avaimen allekirjoitusavain, joka pysyy vakiona. Tällä sivulla voit määrittää Webminin suorittamaan tämän allekirjoituksen automaattisesti.
 dnssec_err=DNSSEC-avaimen uudelleen allekirjoittamisen tallentaminen epäonnistui
 dnssec_eperiod=Puuttuva tai virheellinen päivämäärä uusien merkintöjen välillä
+
 dnssectools_title=DNSSEC-työkalujen automaatio
 dt_conf_title=DNSSEC-työkalujen automaatio
 dt_enable_title=DNSSEC-työkalujen automaatio
@@ -1160,6 +1225,7 @@ dt_status_inKSKroll=KSK-rullassa
 dt_status_inZSKroll=Kohteessa ZSK Roll
 dt_status_signed=allekirjoitettu
 dt_status_unsigned=allekirjoittamaton
+
 zonekey_title=Asenna DNSSEC-avain
 zonekey_desc=Tällä vyöhykkeellä ei ole vielä DNSSEC-allekirjoitusavainta. Voit käyttää tätä lomaketta Webminin luomiseen, jotta tätä vyöhykettä ratkaisevat asiakkaat ovat suojattuja DNS-väärentämishyökkäyksiä vastaan.
 zonekey_header=Uudet DNSSEC-avainvaihtoehdot
@@ -1193,9 +1259,12 @@ zonekey_sign=Merkkivyöhyke
 zonekey_signdesc=Allekirjoita välittömästi tämä vyöhyke uudelleen, jotta kaikki käsin tehdyt tietueisiin tehdyt muutokset sisällytetään allekirjoitustietueisiin.
 zonekey_resign=Allekirjoita vyöhyke
 zonekey_resigndesc=Luo uusi vyöhykkeen allekirjoitusavain, allekirjoita se vyöhykkeen pääavaimella ja allekirjoita kaikki tietueet uudelleen.
+
 sign_err=Alueen allekirjoittaminen epäonnistui
 sign_emsg=DNSSEC-allekirjoittaminen tietueiden muutoksen jälkeen epäonnistui : $1
+
 resign_err=Alueen uudelleen allekirjoittaminen epäonnistui
+
 trusted_title=DNSSEC-varmennus
 trusted_ecannot=Et voi määrittää DNSSEC-varmennusta
 trusted_esupport=BIND-versiosi ei tue DNSSEC-varmennusta
@@ -1230,6 +1299,7 @@ trusted_setup=Jotta DNSSEC: stä olisi hyötyä useimpien allekirjoitettujen vy�
 trusted_ok=Asenna DLV ja ota käyttöön DNSSEC-varmennus
 trusted_warning=Varoitus! BIND DNSSEC -asiakasmäärityksesi sisältää vanhentuneita avaimia, jotka lakkaavat toimimasta lokakuussa 2017. Käytä <a href='$1'>BIND DNSSEC -vahvistussivua</a> säätääksesi kokoonpanoa tai napsauta alla olevaa painiketta.
 trusted_fix=Korjaa DNSSEC-kokoonpano
+
 xfer_title=Testivyöhykkeen siirto
 xfer_doing=Orjavyöhykkeen siirron testaaminen $1 ..
 xfer_failed=.. lähteestä $1: epäonnistui : $2

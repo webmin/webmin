@@ -27,6 +27,7 @@ index_delete=Dzēst atlasīto
 index_joingroup=Pievienot grupai:
 index_eulist=Neizdevās uzskaitīt lietotājus: $1
 index_eglist=Neizdevās uzskaitīt grupas: $1
+
 edit_title=Rediģēt Webmin lietotāju
 edit_title2=Izveidot Webmin lietotāju
 edit_title3=Izveidojiet drošu Webmin lietotāju
@@ -115,6 +116,7 @@ edit_safe=Privilēģiju līmenis
 edit_safe0=Neierobežots
 edit_safe1=Tikai droši moduļi
 edit_unsafe=Atiestatīt uz neierobežotu
+
 save_err=Neizdevās saglabāt lietotāju
 save_ename='$1' nav derīgs lietotājvārds
 save_eunixname=Lietotājvārds '$1' nav Unix lietotājs, tāpēc to nevar izmantot drošajā režīmā
@@ -145,11 +147,13 @@ save_edays=Nav dienu, lai atļautu atlasīto
 save_ehours=Trūkst vai nav derīgi laiki
 save_ehours2=Sākuma laikam jābūt atļautam pirms beigām
 save_etemp=Iespēju piespiest mainīt paroli nākamajā pieteikšanās reizē nevar izmantot, ja nav iespējota <a href='$1'>pamudina lietotājus ievadīt jaunas paroles</a>.
+
 delete_err=Neizdevās izdzēst lietotāju
 delete_eself=Jūs pats nevarat izdzēst
 delete_ecannot=Jums nav atļauts izdzēst lietotājus
 delete_euser=Jums nav atļauts izdzēst šo lietotāju
 delete_eanonuser=Šis lietotājs tiek izmantots anonīmai piekļuvei moduļiem
+
 cert_title=Pieprasīt sertifikātu
 cert_issue=Izsniegt sertifikātu
 cert_header=Jauna sertifikāta informācija
@@ -169,6 +173,7 @@ cert_ekey=Jūsu pārlūkprogramma nav iesniegusi jaunu SSL atslēgu - iespējams
 cert_eca=Neizdevās iestatīt sertifikāta autoritāti: $1
 cert_already=Brīdinājums - jūs jau izmantojat sertifikātu $1.
 cert_etempdir=Nederīgs sertifikāta fails
+
 acl_title=Moduļu piekļuves kontrole
 acl_title2=$1 $2
 acl_title3=Grupai $1 grupā $2
@@ -177,6 +182,7 @@ acl_config=Vai var rediģēt moduļa konfigurāciju?
 acl_reset=Atiestatīt uz pilnu piekļuvi
 acl_rbac=Vai iegūt piekļuves kontroles iestatījumus no RBAC?
 acl_rbacyes=Jā (ignorē iestatījumus zemāk)
+
 acl_uall=Visi lietotāji
 acl_uthis=Šis lietotājs
 acl_usel=Atlasītie lietotāji..
@@ -216,6 +222,7 @@ acl_switch=Vai var pāriet uz citiem lietotājiem?
 acl_times=Vai var mainīt atļautos pieteikšanās laikus?
 acl_pass=Vai var mainīt paroles ierobežojumus?
 acl_sql=Vai var konfigurēt lietotāju un grupu datu bāzi?
+
 log_modify=Pārveidots Webmin lietotājs $1
 log_rename=Pārdēvēts Webmin lietotājs $1 uz $2
 log_create=Izveidots Webmin lietotājs $1
@@ -238,6 +245,7 @@ log_sync=Mainīta unix lietotāja sinhronizācija
 log_sql=Mainīta lietotāju un grupu datu bāze
 log_twofactor=Reģistrētais lietotājs $1 ar divu faktoru nodrošinātāju $2
 log_onefactor=Nereģistrēts lietotājs $1 divu faktoru autentifikācijai
+
 gedit_ecannot=Jums nav atļauts rediģēt grupas
 gedit_title=Rediģēt Webmin grupu
 gedit_title2=Izveidot Webmin grupu
@@ -247,6 +255,7 @@ gedit_modules=Locekļu moduļi
 gedit_members=Dalībnieki un grupas
 gedit_desc=Grupas apraksts
 gedit_egone=Atlasītā grupa vairs nepastāv!
+
 gdelete_err=Neizdevās izdzēst grupu
 gdelete_ecannot=Jums nav atļauts izdzēst grupas
 gdelete_euser=Jūs nevarat izdzēst savu grupu
@@ -254,11 +263,13 @@ gdelete_esub=Grupas ar apakšgrupām nevar izdzēst
 gdelete_title=Dzēst grupu
 gdelete_desc=Vai tiešām vēlaties izdzēst grupu $1 un tās dalībnieku lietotājus $2?
 gdelete_ok=Dzēst grupu
+
 gsave_err=Neizdevās saglabāt grupu
 gsave_ename=Trūkst vai nav derīgs grupas nosaukums
 gsave_enamewebmin=Grupas nosaukums “webmin” ir paredzēts iekšējai lietošanai
 gsave_edup=Grupas nosaukums jau tiek izmantots
 gsave_edesc=Nederīgs apraksts - rakstzīme: nav atļauta
+
 convert_title=Lietotāju konvertēšana
 convert_ecannot=Jums nav atļauts pārveidot Unix lietotāju
 convert_nogroups=Jūsu sistēmā nav definētas Webmin grupas. Pirms konvertēšanas ir jāizveido vismaz viena grupa, lai pārveidotajiem lietotājiem definētu atļaujas.
@@ -287,6 +298,7 @@ convert_user=Unix lietotājs
 convert_action=Darbība veikta
 convert_done=$1 lietotāji konvertēti, $2 nederīgi, $3 jau pastāv, $4 izslēgts.
 convert_users=Lietotāji konvertēšanai
+
 sync_title=Unix lietotāja sinhronizācija
 sync_desc=Šī forma ļauj konfigurēt automātisko Unix lietotāju, kas izveidoti, izmantojot Webmin, un šī moduļa lietotāju sinhronizāciju.
 sync_nogroups=Jūsu sistēmā nav definētas Webmin grupas. Lai iestatītu piekļuvi izveidotajiem lietotājiem, ir jāizveido vismaz viena grupa.
@@ -297,6 +309,7 @@ sync_delete=Dzēšot atbilstošo Webmin lietotāju, kad tiek izdzēsts Unix liet
 sync_group=Piešķiriet jaunus lietotājus Webmin grupai
 sync_unix=Iestatiet jauno lietotāju paroli Unix autentifikācijai.
 sync_ecannot=Jums nav atļauts konfigurēt lietotāja sinhronizāciju.
+
 unix_title=Unix lietotāja autentifikācija
 unix_err=Neizdevās saglabāt Unix autentifikāciju
 unix_desc=Šī lapa ļauj konfigurēt Webmin, lai validētu pieteikšanās mēģinājumus, izmantojot sistēmas lietotāju sarakstu un PAM. Tas var būt noderīgi, ja jums ir liels skaits esošo Unix lietotāju, kuriem vēlaties dot piekļuvi Webmin.
@@ -329,6 +342,7 @@ unix_esudo=Komanda $1 nav instalēta
 unix_esudomod=Perl modulis $1, kas nepieciešams <tt>sudo</tt> autentifikācijai, nav instalēts
 unix_header=Unix lietotāja autentifikācijas iestatījumi
 unix_utable=Atļautie Unix lietotāji
+
 sessions_title=Pašreizējās pieteikšanās sesijas
 sessions_id=Sesijas ID
 sessions_user=Webmin lietotājs
@@ -342,21 +356,26 @@ sessions_this=Šī pieteikšanās
 sessions_in=Pieteicies
 sessions_out=Izlogojies
 sessions_kill=Atvienot..
+
 logins_title=Jaunākie Webmin pieteikumi
+
 hide_title=Slēpt neizmantotos moduļus
 hide_desc=Šie moduļi tiks noņemti no moduļu piekļuves saraksta $1, jo atbilstošie serveri nav instalēti jūsu sistēmā.
 hide_ok=Slēpt moduļus tūlīt
 hide_none=Nav ko slēpt - $1 nav piekļuves moduļiem, kuru attiecīgie serveri nav instalēti jūsu sistēmā.
 hide_desc2=Ņemiet vērā, ka šie moduļi netiks automātiski parādīti automātiski, ja tiks instalēti atbilstošie serveri. Izmantojot šo moduli, jums būs jāpiešķir piekļuve manuāli.
 hide_clone=(Klons $1)
+
 switch_euser=Jums nav atļauts pārslēgties uz šo lietotāju
 switch_eold=Esošā sesija nav atrasta.
+
 rbac_title=Iestatīt RBAC
 rbac_desc=Webmin RBAC integrācija nodrošina veidu, kā lietotāja moduļa un ACL atļaujas var noteikt no RBAC (Role Based Access Control) datu bāzes, nevis no paša Webmin konfigurācijas failiem. Kad RBAC atbalsts ir iespējots, jebkuram lietotājam, kuram ir atlasīta opcija <b>RBAC kontrolē visus moduļus un ACL</b>, viņa iespējas nosaka RBAC, nevis Webmin paša piekļuves kontroles iestatījumi.
 rbac_esolaris=RBAC šobrīd tiek atbalstīts tikai Solaris, un tāpēc to nevar izmantot šajā $1 sistēmā.
 rbac_eperl=Perla modulis $1, kas nepieciešams RBAC integrācijai, nav instalēts. <a href='$2'>Noklikšķiniet šeit</a>, lai to instalētu tūlīt.
 rbac_ecpan=Jums nav piekļuves Webmin Perl moduļu lapai, lai instalētu nepieciešamo $1 moduli RBAC integrācijai.
 rbac_ok=RBAC integrācija ir pieejama šajā sistēmā, un to var iespējot katram lietotājam lapā Rediģēt Webmin lietotāju.
+
 udeletes_err=Neizdevās izdzēst lietotājus
 udeletes_jerr=Neizdevās pievienot lietotājus grupai
 udeletes_enone=Nav atlasīts
@@ -365,11 +384,13 @@ udeletes_rusure=Vai tiešām vēlaties dzēst $1 atlasītos lietotājus? Tiks za
 udeletes_users=Atlasītie lietotāji: $1
 udeletes_ok=Dzēst lietotājus
 udeletes_ereadonly=Viens no atlasītajiem lietotājiem ir atzīmēts kā rediģējams
+
 gdeletes_err=Neizdevās izdzēst grupas
 gdeletes_title=Dzēst grupas
 gdeletes_rusure=Vai tiešām vēlaties izdzēst atlasītās grupas $1 un tajās ietvertos $2 lietotājus? Tiks zaudēti visi piekļuves kontroles iestatījumi un informācija par lietotāju.
 gdeletes_users=Atlasītās grupas: $1
 gdeletes_ok=Dzēst grupas
+
 pass_title=Paroles ierobežojumi
 pass_ecannot=Jums nav atļauts rediģēt paroles ierobežojumus
 pass_header=Webmin paroles izpildes iespējas
@@ -392,6 +413,7 @@ pass_eminsize=Trūkst vai nav ciparu minimālais paroles garums
 pass_emaxdays=Trūkst vai nav skaitlisku dienu pirms mainīšanas
 pass_elockdays=Trūkst dienu vai dienu skaita, pirms konts tiek bloķēts
 pass_eoldblock=Trūkst noraidāmo veco paroļu vai to nav skaitliski
+
 cpass_minsize=Jābūt vismaz $1 burtiem
 cpass_notre=Atbilst aizliegtajam modelim
 cpass_re=Neatbilst prasītajam modelim
@@ -399,6 +421,7 @@ cpass_name=Satur lietotājvārdu
 cpass_dict=Ir vārdnīcas vārds
 cpass_spellcmd=Neviena komanda $1 vai $2 nav nepieciešama, lai pārbaudītu, vai nav vārdnīcas vārdu.
 cpass_old=Vecās paroles nevar izmantot atkārtoti
+
 sql_title=Lietotāju un grupu datu bāze
 sql_ecannot=Jums nav atļauts konfigurēt lietotāju un grupu datu bāzi
 sql_header=Lietotāju un grupu datu bāzes aizmugures opcijas
@@ -441,21 +464,25 @@ sql_dnerr=Lietotāju un grupu datu bāzes iestatījumi ir derīgi, taču trūkst
 sql_dnerr2=Noklikšķiniet uz <b>Izveidot DN</b> pogu zemāk, lai tā tiktu izveidota automātiski, vai arī manuāli pievienojiet to LDAP serverim.
 sql_makedn=Izveidot DN
 sql_schema=Lejupielādējiet LDAP shēmu
+
 make_title=Izveidojiet lietotāju un grupu tabulas
 make_err=Neizdevās izveidot lietotāju un grupu tabulas
 make_exec=Izpilda SQL $1.
 make_failed=.. izveidošana neizdevās: $1
 make_done=.. darīts
 make_still=Dažas problēmas tika atklātas pat pēc tabulas izveidošanas: $1
+
 makedn_title=Izveidojiet LDAP DN
 makedn_eoc=Neviena konstrukcijas objekta klase nav atrasta!
 makedn_exec=Vecāka DN izveidošana $1..
 makedn_failed=.. izveidošana neizdevās: $1
 makedn_done=.. darīts
 makedn_still=Dažas problēmas tika atrastas pat pēc DN izveidošanas: $1
+
 schema_title=Lejupielādējiet LDAP shēmu
 schema_desc=Lai Webmin varētu izmantot LDAP serveri, lai saglabātu lietotājus un grupas, tas jākonfigurē, lai izmantotu zemāk esošo shēmu. Parasti to var izdarīt, saglabājot shēmas definīciju mapē <tt>/etc/ldap/schema</tt> vai <tt>/etc/openldap/schema</tt> kā <tt>webmin.schema</tt>, pēc tam servera konfigurēšana, lai ielādētu šo shēmas failu.
 schema_download=Lejupielādēt shēmas failu: <a href=$1>$1</a>
+
 twofactor_err=Neizdevās iestatīt divu faktoru autentifikāciju
 twofactor_euser=Jūsu Webmin lietotājs netika atrasts.
 twofactor_title=Divfaktoru autentifikācija

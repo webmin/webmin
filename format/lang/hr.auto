@@ -15,6 +15,7 @@ index_use=Koristiti
 index_free=Besplatno
 index_format=Ovaj disk nije formatiran
 index_return=popis diskova
+
 edit_ecannot=Nemate mogućnost uređivanja ovog diska
 edit_title=Uređivanje particije
 edit_header=Pojedinosti o particiji
@@ -56,6 +57,7 @@ edit_tunedesc2=Ne možete prilagoditi datotečni sustav na ovoj particiji jer jo
 edit_tunedesc3=Ne možete prilagoditi datotečni sustav na ovoj particiji jer je trenutno montiran. Upotrijebite <a href=/mount/>modul datotečnih sustava</a> da ga prvo isključite.
 edit_tunedesc4=Ne možete prilagoditi datotečni sustav na ovoj particiji jer nema datotečni sustav.
 edit_tunedesc5=Ne možete prilagoditi datotečni sustav na ovoj particiji jer se može postaviti samo <tt>UFS</tt> datotečni sustav.
+
 save_ecannot=Nemate mogućnost uređivanja ovog diska
 save_edelete=Brisanje particije nije uspjelo
 save_esave=Spremanje particije nije uspjelo
@@ -64,6 +66,7 @@ save_eend="$1" nije valjani cilindar za završetak
 save_estartmin=Početni cilindar mora biti> 0
 save_eendmax=Završni cilindar mora biti < $1 
 save_estartend=Početni cilindar mora biti manji od završnog
+
 newfs_title=Stvorite datotečni sustav
 newfs_ecannot=Nemate mogućnost formatirati ovaj disk
 newfs_desc=Klikom na gumb na dnu ovog obrasca stvorit će se novi $1 na uređaju $2. Svi podaci na ovoj particiji bit će trajno izbrisani.
@@ -89,6 +92,7 @@ newfs_err=Izrada datotečnog sustava nije uspjela
 newfs_exec=Izvršavanje naredbe $1 ..
 newfs_failed=.. naredba nije uspjela!
 newfs_ok=.. naredba dovršena.
+
 fsck_title=Popravak datotečnog sustava
 fsck_ecannot=Nije vam dopušteno popraviti ovaj disk
 fsck_desc=Klikom na gumb <b>Popravak</b> provjerit ćete i po želji popraviti $1 na $2. Razinu provjere i popravka određuje vaš odabir ispod.
@@ -106,6 +110,7 @@ fsck_37=proces ubijen tijekom provjere
 fsck_39=otkrivene neispravljive pogreške!
 fsck_40=nisu otkrivene pogreške
 fsck_unknown=nepoznata pogreška
+
 tunefs_title=Podesite datotečni sustav
 tunefs_ecannot=Nije vam dopušteno podešavanje ovog diska
 tunefs_desc=Ovaj obrazac omogućuje vam podešavanje različitih parametara $1 na $2. Postojeće datoteke na ovom datotečnom sustavu neće naštetiti.
@@ -122,6 +127,7 @@ tunefs_err=Nije uspjelo podešavanje datotečnog sustava
 tunefs_exec=Izvršavanje naredbe $1 ..
 tunefs_failed=.. naredba nije uspjela!
 tunefs_ok=.. naredba dovršena.
+
 select_device=SCSI kontroler $1 target $2 jedinica $3 
 select_idedevice=IDE uređaj $1 
 select_part=SCSI kontroler $1 target $2 jedinica $3 particija $4 
@@ -131,10 +137,13 @@ esun=Particije se mogu mijenjati samo na Sun hardveru
 emounted=Disk ima montirane particije
 elast=Posljednja particija ne može se ukloniti
 eformat=<tt>format</tt> nije našao nijedan disk!
+
 fstype_ufs=Solaris Unix datotečni sustav
 fstype_unknown=Nepoznati datotečni sustav
+
 acl_disks=Diskovi koje ovaj korisnik može particirati i formatirati
 acl_dall=Svi diskovi
 acl_dsel=Odabran ..
 acl_view=Mogu li uređivati diskove i particije?
+
 ecannot=Ne možete uređivati particije

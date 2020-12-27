@@ -19,6 +19,7 @@ index_dump=Prikaži dump
 index_dumpdesc=Kliknite ovaj gumb da biste pogledali podatke o praćenju Shorewall-a iz naredbe <tt>izbacivanje obale</tt>.
 index_check=Provjerite vatrozid
 index_checkdesc=Kliknite ovaj gumb kako bi Shorewall potvrdio vašu konfiguraciju vatrozida pomoću naredbe <tt>provjera obale</tt>.
+
 list_move=Pomicati
 list_add=Dodati
 list_auto=Automatski
@@ -30,6 +31,7 @@ list_manual=Ručno uređivanje datoteke
 list_manualdesc=Kliknite ovaj gumb da biste ručno uredili datoteku Shorewall $1, u koju su gornji unosi pohranjeni.
 list_ecannot=Nije vam dopušteno uređivanje ove tablice Shorewall-a.
 list_delete=Obriši odabrano
+
 restart_err=Konfiguracija nije primijenjena
 refresh_err=Osvježavanje konfiguracije nije uspjelo
 start_err=Nije uspjelo pokretanje vatrozida
@@ -41,6 +43,7 @@ check_title=Provjerite vatrozid
 check_ok=.. vaša konfiguracija vatrozida izgleda u redu.
 check_failed=.. pronađena je pogreška u vašoj konfiguraciji vatrozida!
 check_cmd=Provjera konfiguracije ..
+
 zones_title=Mrežne zone
 zones_desc=Zone navedene na ovoj stranici predstavljaju različite mreže dostupne od vašeg sustava. Međutim, unosi ovdje zapravo nemaju utjecaja na vatrozid - već samo definiraju nazive zona i opise.
 zones_add=Dodajte novu mrežnu zonu.
@@ -69,6 +72,7 @@ zones_firewall=Sustav vatrozida
 zones_eopts=Nevažeće opcije zona
 zones_eopts_in=Nevažeće mogućnosti dolaznih zona
 zones_eopts_out=Nevažeće opcije odlazne zone
+
 policy_title=Zadana pravila
 policy_desc=Ova stranica omogućuje vam konfiguriranje zadanih radnji za promet između različitih zona vatrozida. Na stranici Pravila vatrozida mogu se nadjačati za određene hostove ili vrste prometa.
 policy_add=Dodajte novo zadano pravilo.
@@ -89,6 +93,7 @@ policy_ulog=Prijavite se na ULOG
 policy_efw=&lt;Firewall&gt; može se odabrati i za izvornu i za odredišnu zonu
 policy_elimit=Nedostaje ili nevažeći broj ograničenja prometa
 policy_eburst=Nedostaje ili nevažeći broj pucanja prometa
+
 rules_title=Pravila vatrozida
 rules_desc=U ovoj se tablici nalaze iznimke od zadanih pravila za određene vrste prometa, izvore ili odredišta. Odabrana radnja primijenit će se na pakete koji odgovaraju odabranim kriterijima umjesto zadanih.
 rules_add=Dodajte novo pravilo vatrozida.
@@ -135,6 +140,7 @@ rules_eaction=Nije odabrana nijedna radnja
 rules_macro=Parametar makro akcije
 rules_none2=nijedan
 rules_emacro=Nedostaje ili je nevažeći makro parametar
+
 tos_title=Vrste usluga
 tos_desc=Ova stranica definira vrste IP usluga za određene vrste prometa pomoću kojih se mogu povećati ili smanjiti njihovi prioriteti.
 tos_add=Dodajte novu vrstu usluge.
@@ -153,6 +159,7 @@ tos_edit=Uredi vrstu usluge
 tos_create=Stvorite vrstu usluge
 tos_header=Detalji usluge
 tos_err=Spremanje vrste usluge nije uspjelo
+
 interfaces_title=Mrežna sučelja
 interfaces_desc=Svako mrežno sučelje na vašem sustavu za koje želite da Shorewall upravlja, trebalo bi navesti na ovoj stranici i povezati se sa zonom na koju je spojen. Sučelje petlje <tt>lo</tt> nikada ne smije biti navedeno.
 interfaces_add=Dodajte novo mrežno sučelje.
@@ -169,6 +176,7 @@ interfaces_header=Pojedinosti o mrežnom sučelju
 interfaces_err=Nije uspjelo spremanje mrežnog sučelja
 interfaces_eiface=Nedostaje ili nevaljano ime sučelja
 interfaces_ebroad=Nedostaje ili nije valjana adresa emitiranja
+
 masq_title=zamaskirao
 masq_desc=Unosi na ovoj stranici postavljaju prijevod mrežne adrese za promet usmjeren između neke mreže i određenog sučelja.
 masq_add=Dodajte novo pravilo maskiranja.
@@ -199,6 +207,7 @@ masq_emnete=Popis praznih mreža izuzetaka
 masq_esnat=Nevaljana SNAT IP adresa
 masq_eports=Nedostaje ili nije važeći popis portova odvojen zarezom
 masq_eipsec=Nema IPsec opcija
+
 nat_title=Statički NAT
 nat_desc=Unosi prevođenja statičke mrežne adrese u ovoj tablici mogu se koristiti za postavljanje korespondencije 1-1 između vanjske adrese vašeg vatrozida i RFC1918 adrese stroja iza vašeg vatrozida. Statički NAT često se koristi kako bi se omogućilo povezivanje s internim poslužiteljem izvan vaše mreže.
 nat_add=Dodajte novi statički NAT unos.
@@ -217,6 +226,7 @@ nat_local=Aktivno za sustav vatrozida?
 nat_eext=Nevažeća vanjska IP adresa
 nat_eint=Nevažeća interna IP adresa
 nat_evirt=Nevažeći broj virtualnog sučelja
+
 proxyarp_title=Proxy ARP
 proxyarp_desc=Ova vam stranica omogućuje da konfigurirate svoj sustav da odgovara na ARP zahtjeve za IP adrese koje nisu njegove, tako da paket može prosljeđivati na te adrese na njihova stvarna odredišta.
 proxyarp_add=Dodajte novu proxy ARP adresu.
@@ -233,6 +243,7 @@ proxyarp_err=Spremanje ARP proxyja nije uspjelo
 proxyarp_have=Put do domaćina postoji?
 proxyarp_eaddr=Nedostaje ili neispravna adresa za ARP
 proxyarp_pers=Napustiti rutu čak i kad je firewall prestao?
+
 routestopped_title=Kad prestane
 routestopped_desc=Kada se Shorewall zaustavi, on će uskratiti pristup svim domaćinima. Ova stranica omogućuje vam definiranje domaćina ili mreža koje će i dalje biti dostupne.
 routestopped_add=Dodajte novu zaustavljenu adresu.
@@ -248,6 +259,7 @@ routestopped_err=Zaustavljena adresa nije uspjela
 routestopped_eaddr=Nema upisanih adresa
 routestopped_all=Sve adrese
 routestopped_list=Navedene adrese i mreže ..
+
 tunnels_title=VPN tuneli
 tunnels_desc=Na ovoj se stranici nalaze VPN tuneli koji prolaze kroz vaš vatrozid, pa ih mora dopustiti Shorewall konfiguracija.
 tunnels_add=Dodajte novi VPN tunel.
@@ -278,6 +290,7 @@ tunnels_generic_l=Općenito, za protokol ..
 tunnels_gsel=Navedene zone
 tunnels_eopenvpn=Nevažeći broj priključka za tunel OpenVPN
 tunnels_egeneric=Nedostaje protokol ili protokol: ulaz za generički tunel
+
 hosts_title=Domaćini zona
 hosts_desc=Ova stranica navodi hostove i mreže koji su dio određenih zona. Obično ne trebate mijenjati ovaj popis.
 hosts_add=Dodajte novog domaćina zona.
@@ -297,8 +310,10 @@ hosts_ip=Adresa ili mreža $1
 hosts_mac=MAC adresa $1 
 hosts_ipset=IP postavljena $1 
 hosts_any=Bilo koji domaćin
+
 edit_before=Prije unosa $1 
 edit_after=Nakon unosa $1 
+
 blacklist_title=Domaćini na crnoj listi
 blacklist_desc=Ova stranica navodi hostove i usluge koje će biti blokirane ako promet s njih dođe na sučelje s postavljenom opcijom <b>crna lista</b>.
 blacklist_add=Dodajte novog domaćina crne liste.
@@ -321,6 +336,7 @@ blacklist_eproto=Nedostaje ili nije važeći protokol
 blacklist_eports=Nevažeći broj priključaka ili popis priključaka odvojenih zarezom
 blacklist_eports2=Portovi se mogu specificirati samo za TCP i UDP protokole
 blacklist_return=domaćini s crne liste
+
 providers_title=Dodatni pružatelji usluga usmjeravanja
 providers_desc=Ova stranica definira dodatne tablice usmjeravanja. One su potrebne ako imate veze s više ISP-a ili više veza s istim davateljem internetskih usluga ili pokrećete lignje kao prozirni proxy na drugom računalu, a ne vatrozidu.
 providers_add=Dodajte novog davatelja usluga usmjeravanja.
@@ -353,6 +369,7 @@ providers_emark=Nedostaje ili nevažeći broj oznake pružatelja usluga
 providers_edup=Nedostaje davatelj kopije
 providers_egateway=Nedostaje ili nije važeći prolaz
 providers_return=popis pružatelja usluga usmjeravanja
+
 route_rules_title=Pravila usmjeravanja
 route_rules_desc=Stranica kontrolira koji promet se usmjerava prema davateljima definiranim na stranici Dodatni pružatelji usmjeravanja.
 route_rules_ip=IP adresa, mreža ili sučelje
@@ -378,17 +395,21 @@ route_rules_emark=Oznaka paketa mora biti u obliku broja ili broja/maske
 route_rules_return=popis pravila usmjeravanja
 route_rules_edit=Uređivanje pravila rutiranja
 route_rules_create=Stvorite pravilo usmjeravanja
+
 manual_desc=Ovaj se obrazac može koristiti za ručno uređivanje datoteke Shorewall $1. Budite oprezni jer se promjene ne izvršavaju po sintaksi.
 manual_reset=Poništi
 manual_err=Spremanje datoteke tablice nije uspjelo
 manual_efile=Nevažeće ime tablice!
 manual_edata=Nije unesen sadržaj datoteke tablice.
+
 acl_nochange=Može li se primijeniti, zaustaviti i pokrenuti Shorewall konfiguraciju?
 acl_files=Dostupni Shorewall stolovi
 acl_all=svi
 acl_sel=Odabrano u nastavku ..
+
 delete_err=Brisanje redaka nije uspjelo
 delete_enone=Nije odabran nijedan redak
+
 opts_routeback=Prihvatite povratak prometa domaćinu
 opts_source=Dopusti od domaćina do bilo kojeg odredišta
 opts_dest=Dopustite da ugostite iz bilo kojeg izvora
@@ -406,6 +427,7 @@ opts_proxyarp=Omogući ARP proxyja
 opts_arp_filter=Odgovarajte samo na ARP zahtjeve za IP sučeljem
 opts_detectnets=Taylor zona uključuje samo usmjerene domaćine
 opts_upnp=Remap pakete putem UPNP-a
+
 comment_add=Dodajte novi komentar.
 comment_edit=Uredi komentar
 comment_create=Stvori komentar
@@ -413,6 +435,7 @@ comment_header=Pojedinosti komentara u tablici
 comment_msg=Poruka
 comment_err=Spremanje komentara nije uspjelo
 comment_enone=Nije unesena poruka
+
 log_create_table=Dodan je unos u tablicu $1 
 log_modify_table=Izmijenjeni unos u tablici $1 
 log_delete_table=Izbrisan je unos iz $1 tablice
@@ -428,6 +451,7 @@ log_start=Pokrenut vatrozid
 log_refresh=Osvježeni vatrozid
 log_restart=Restartirani vatrozid
 log_clear=Pročišćeni vatrozid
+
 shorewall_conf_title=Glavna konfiguracijska datoteka
 shorewall_conf_desc=Ova stranica omogućuje konfiguriranje globalnih varijabli konfiguracije. NAPOMENA: Promjena redoslijeda varijabli ovdje se ne preporučuje ako želite sačuvati relativni položaj komentara u konfiguracijskoj datoteci.
 shorewall_conf_add=Dodajte novu konfiguracijsku varijablu.
@@ -441,6 +465,7 @@ shorewall_conf_create=Kreirajte varijablu konfiguracije
 shorewall_conf_header=Pojedinosti varijable konfiguracije
 shorewall_conf_err=Spremanje konfiguracijske varijable nije uspjelo
 shorewall_conf_varname=Nevažeće ime varijable (mora biti valjano ime varijable ljuske)
+
 params_title=Prilagođeni parametri
 params_desc=Ova stranica omogućuje vam konfiguriranje prilagođenih parametara Shorewall-a. NAPOMENA: Promjena redoslijeda parametara ovdje nije preporučljiva ako želite sačuvati relativni položaj komentara u konfiguracijskoj datoteci.
 params_add=Dodajte novi prilagođeni parametar.

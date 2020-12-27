@@ -10,6 +10,7 @@ index_apply=Uporabi konfiguracijo
 index_applydesc=Kliknite ta gumb, če želite uporabiti trenutne možnosti strežnika PPTP tako, da ustavite in ponovno zaženete postopek strežnika PPTP. Spremembe možnosti PPP in računov PPP bodo vedno veljale za vse nove povezave
 index_return=kazalo modula
 index_epppd=Program strežnika PPP $1 ni nameščen v vašem sistemu. PPTP je odvisen od njenega delovanja.
+
 conf_title=Možnosti strežnika PPTP
 conf_ecannot=Ni vam dovoljeno urejati možnosti strežnika PPTP
 conf_header=Konfiguracija strežnika PPTP
@@ -35,6 +36,7 @@ conf_elocalip='$1' ni veljaven lokalni naslov IP ali obseg
 conf_eremoteip='$1' ni veljaven oddaljeni naslov IP ali obseg
 conf_efrom=Manjkajoče ali neveljavno omrežje IPX z naslova
 conf_eto=Manjkajoče ali neveljavno omrežje IPX za naslov
+
 options_title=Možnosti PPP
 options_ecannot=Ni vam dovoljeno urejati možnosti PPP
 options_desc0=Spodnje možnosti PPP od $1 veljajo za VSE dohodne povezave, ki jih je prejel vaš sistem, vključno s tistimi za klicne modeme.
@@ -67,6 +69,7 @@ options_mschap=Preverjanje pristnosti MS-CHAP
 options_mschap-v2=Preverjanje pristnosti MS-CHAP različice 2
 options_chapms=Preverjanje pristnosti MS-CHAP
 options_chapms-v2=Preverjanje pristnosti MS-CHAP različice 2
+
 secrets_title=Računi PPP
 secrets_ecannot=Nimate dovoljenja za urejanje računov PPP
 secrets_return=kazalo
@@ -80,6 +83,7 @@ secrets_sany=KAJ
 secrets_create=Ustvari nov PPP račun.
 secrets_desc=Računi PPP, navedeni na tej strani, so vzeti iz datoteke $1, ki se uporablja za preverjanje pristnosti $3. Prikazani so samo tisti za vaš strežnik $2, ne pa računi za vzpostavitev odhodnih povezav.
 secrets_delete=Izbrišite izbrane račune PPP
+
 edit_secret_etitle=Uredi PPP račun
 edit_secret_ctitle=Ustvari PPP račun
 edit_secret_acc=PPP račun
@@ -99,15 +103,20 @@ edit_secret_alist=Dovoli na seznamu ..
 edit_secret_save=Shrani
 edit_secret_del=Izbriši
 edit_secret_return=seznam računov
+
 save_secret_esave=Računa ni bilo mogoče shraniti
 save_secret_enoip='$1' ni veljaven naslov
+
 stop_err=Ni mogoče ustaviti strežnika PPTP
 stop_egone=Ne teče več
 stop_ecannot=Ne morete ustaviti strežnika PPTP
+
 start_err=Zagon strežnika PPTP ni uspel
 start_ecannot=Ni vam dovoljeno zagnati strežnika PPTP
+
 apply_err=Ni uspelo znova zagnati strežnika PPTP
 apply_ecannot=Ni vam dovoljeno ponovno zagnati strežnika PPTP
+
 conns_title=Aktivne povezave
 conns_ecannot=Ni vam dovoljeno upravljati aktivnih povezav
 conns_desc=Ta stran prikazuje trenutno aktivne povezave PPTP s strežnikom. Če želite enega prisilno prekiniti, kliknite njegovo ime vmesnika.
@@ -119,9 +128,11 @@ conns_remote=Naslov VPN stranke
 conns_none=Trenutno ni videti, da so povezave PPTP aktivne.
 conns_unknown=Neznano
 conns_user=Uporabniško ime
+
 disc_err=Prekinitve povezave ni bilo mogoče
 disc_egone=Povezave niso več aktivne
 disc_ekill=Proces se ne izvaja več
+
 log_secret_create=Ustvarjen PPP račun $1 
 log_secret_modify=Spremenjen račun JPP $1 
 log_secret_delete=Izbrisan račun PPP $1 
@@ -132,6 +143,7 @@ log_disc=Odklopljena stranka $1
 log_start=Začetek strežnika PPTP
 log_stop=Ustavljen strežnik PPTP
 log_apply=Uporabljena konfiguracija strežnika PPTP
+
 acl_conf=Ali lahko uredite konfiguracijo?
 acl_options=Ali lahko urejate možnosti?
 acl_secrets=Ali lahko upravljate PPTP račune?

@@ -55,6 +55,7 @@ cvirt_eroot2=Creazione della directory '$1' fallita : $2
 cvirt_eroot3=Non sei autorizzato a creare la root directory '$1'
 cvirt_etaken=Esiste già un server virtuale con lo stesso nome e porta
 cvirt_efile=Scrittura di $1 fallita : $2
+
 etype=Non sei autorizzato a modificare le opzioni di questo tipo
 efailed=Salvataggio di $1 fallito
 apache_apply=Applica modifiche
@@ -64,6 +65,7 @@ auth_return=controllo accesso
 default_serv=server di default
 bytes=byte
 eafter=Verifica configurazione fallita : non sono state salvate $1 modifiche.
+
 global_ecannot=Non sei autorizzato a modificare le opzioni globali
 global_mime=Lista globale MIME type
 global_mimedesc=Seleziona un MIME type dall'elenco qui sotto per modificarlo, oppure usa il link in fondo alla pagina per aggiungerne uno nuovo.
@@ -71,6 +73,7 @@ global_type=Tipo
 global_ext=Estensione
 global_add=Aggiungi un nuovo MIME type
 global_return=MIME Type
+
 mime_ecannot=Non sei autorizzato a modificare i MIME type
 mime_edit=Modifica MIME Type
 mime_add=Aggiungi MIME Type
@@ -79,6 +82,7 @@ mime_type=MIME Type
 mime_ext=Estensione
 mime_err=Salvataggio MIME type fallito
 mime_etype='$1' non è un MIME type valido
+
 virt_ecannot=Non puoi modificare questo server virtuale
 virt_title=Opzioni server virtuali
 virt_header=Per $1
@@ -99,6 +103,7 @@ virt_path=Percorso
 virt_return=indice server
 virt_euser=Non sei autorizzato a cambiare il nome o il gruppo di questo server virtuale.
 virt_header2=$1 di $2
+
 vserv_title=Configurazione Server Virtuale
 vserv_ecannot=Non puoi modificare l'indirizzo di questo server virtuale
 vserv_addr=Indirizzo
@@ -117,10 +122,12 @@ vserv_eport='$1' non è una porta valida
 vserv_eroot='$1' non è una root per i documenti valida
 vserv_ename='$1' non è un nome di server valido
 vserv_eaddrs=Non è stato inserito un indirizzo per il server virtuale
+
 show_title=Direttive
 show_edit=Modifica direttive Apache:
 show_these=Modifica manualmente le direttive
 show_ok=Modifica
+
 manual_configs=Modifica file di configurazione
 manual_title=Modifica direttive
 manual_header=Usa il riquadro qui sotto per modificare manualmente le direttive di apache in $1 di questo virtual server, directory o file.
@@ -128,6 +135,7 @@ manual_ecannot=Non sei autorizzato a modificare manualmente le direttive
 manual_file=Modifica le direttive nel File:
 manual_efile=File di configurazione Apache invalido
 manual_etest=Rilevato errore nel file di configurazione: $1
+
 dir_title=Opzioni Per-Directory
 dir_header=Da $1 su $2
 dir_show=Visualizza Direttive
@@ -143,6 +151,7 @@ dir_re=Corrispondenza regexp
 dir_path=Percorso
 dir_return=indice directory
 dir_header2=$1 per $2
+
 type_0=Processi e limiti
 type_1=Rete e indirizzi
 type_2=Moduli Apache
@@ -164,6 +173,7 @@ type_17=Host virtuali automatici
 type_18=Filtri
 type_19=Linguaggi
 type_20=Immagini Mappe
+
 htaccess_title=File Opzioni Per-Directory
 htaccess_ecannot=Non puoi modificare i file htaccess
 htaccess_desc=Si posso aggiungere opzioni per-directory specificandole in un file (normalmente di nome <tt>.htaccess</tt>) in ogni directory. Le opzioni sono valide per tutti i file e tutte le sottodirectory di quella directory, a meno che non sia specificato diversamente da un'altro file di opzioni.
@@ -175,9 +185,11 @@ htaccess_return=elenco file di opzioni
 htaccess_edir='$1' non è una directory valida
 htaccess_ecreate=Non sei autorizzato a creare questo file di opzioni
 htaccess_edelete=Non sei autorizzato a cancellare questo file di opzioni
+
 htindex_ecannot=Non sei autorizzato a modificare questo file di opzioni
 htindex_title=File di opzioni Per-Directory
 htindex_delete=Cancella File
+
 htindex_show=Visualizza direttive
 htindex_edit=Modifica direttive
 htindex_opts=Opzioni Per-Directory
@@ -190,12 +202,14 @@ htindex_path=Percorso
 htindex_header=Per $1
 htindex_header2=$1 per il file di opzioni $2
 htindex_return=indice file di opzioni
+
 htfile_title=Opzioni Per-File
 htfile_header=Per $1 in $2
 htfile_show=Visualizza direttive
 htfile_edit=Modifica direttive
 htfile_apply=Opzioni valide per ..
 htfile_header2=$1 per $2
+
 reconfig_title=Riconfigura moduli conosciuti
 reconfig_ecannot=Non sei abilitato a riconfigurare Apache
 reconfig_ever=Non ho trovato la versione dell'eseguibile del server Apache $1. Controlla nella tua <a href='$2'>configurazione modulo</a> che questo sia il percorso corretto.
@@ -203,10 +217,12 @@ reconfig_desc1=La tua configurazione Apache è cambiata, o non è stata ancora e
 reconfig_desc2=Quello qui sotto è l'elenco di tutti i moduli Apache supportati da Webmin, con selezionati quelli attualmente installati. Se stai usando moduli caricati dinamicamente probabilmente avrai bisogno di selezionarli.
 reconfig_desc3=Se non sei sicuro di quali moduli siano supportati dall'Apache del tuo sistema, configurali come se Webmin potesse trovarli automaticamente.
 reconfig_ok=Configura
+
 defines_title=Modifica Parametri Define
 defines_ecannot=Non sei autorizzato a modificare i define di httpd
 defines_desc=Quando Apache parte, ancuni parametri posso essere passati tramite l'opzione command line <tt>-D</tt>. Questi parametri possono modificare l'utilizzo delle direttive del tuo file di configurazione, quindi Webmin deve conoscere quali define sono passati ad Apache alla sua partenza. Inserisci i paramentri usati dal tuo sistema nel riquadro sulla destra.
 defines_config=Nota che i seguenti parametri sono già noti a Webmin : $1
+
 authu_ecannot='$1' non è un file di autorizzazioni utenti
 authu_title=Elenco Utenti
 authu_header=Nel file $1
@@ -228,6 +244,7 @@ authu_sync=Le opzioni qui sotto ti permettono di configurare Webmin per aggiunge
 authu_screate=Aggiungi un utente quando è aggiunto un utente Unix
 authu_sdelete=Cancella l'utente quando l'utente Unix è cancellato
 authu_smodify=Modifica l'utente quando l'utente Unix è modificato
+
 authg_ecannot='$1' non è un file di autorizzazioni gruppi
 authg_title=Elenco Gruppi
 authg_header=Nel file $1
@@ -245,20 +262,24 @@ authg_err=Salvataggio gruppo fallito
 authg_euser=Non hai inserito il nome gruppo
 authg_euser2=Il nome del gruppo non può contenere un :
 authg_edup=Esiste già un gruppo di nome '$1'
+
 stop_err=Fallimento nel fermare apache
 stop_ecannot=Non sei autorizzato a fermare apache
 stop_epid=Opertura file PID $1 fallita
 stop_epid2=File PID $1 invalido
 stop_esig=Fallimento nel spedire SIGTERM al processo $1
+
 start_err=Fallimento nel far partire apache
 start_ecannot=Non sei autorizzato a far partire apache
 start_ecmd=$1 fallito : $2
 start_eunknown=Motivo sconosciuto
+
 restart_err=Applicazione modifiche fallita
 restart_epid=Apertura file PID $1 fallita
 restart_epid2=File PID $1 invalido
 restart_esig=Fallimento nel spedire SIGHUP al processo $1
 restart_eunknown=Motivo sconosciuto
+
 acl_virts=Server virtuali che questo utente può modificare
 acl_vall=Tutti i server
 acl_vsel=Selezionati..
@@ -274,6 +295,7 @@ acl_dir=Limita i file alla directory
 acl_types=Tipi di direttive disponibili
 acl_all=Tutte
 acl_sel=Selezionate..
+
 core_maxconc=Numero massimo di richieste concorrenti
 core_maxkeep=Numero massimo di keepalive per connessione
 core_maxreq=Numero massimo di richieste per processo server
@@ -451,10 +473,12 @@ core_infilter=Applica i filtri di input a tutti i file
 core_outfilter=Applica i filtri di output a tutti i file
 core_defchar=Set di caratteri per i documenti
 core_edefchar=Set di caratteri per i documenti mancante o invalido
+
 mod_negotiation_cache=Usare la cache per i documenti content-negotiated ?
 mod_negotiation_pri=Priorità di linguaggio per viste multiple
 mod_negotiation_def=Default
 mod_negotiation_epri=Priorità linguaggi mancanti
+
 mod_cgi_logname=log Script CGI
 mod_cgi_none=Nessuno
 mod_cgi_elogname=File di log degli script CGI invalido
@@ -464,6 +488,7 @@ mod_cgi_elogsize=La dimensione massima del log CGI deve essere un intero
 mod_cgi_post=Dimensione massima dei dati post loggati
 mod_cgi_epost=Dimensione dati post deve essere un intero
 mod_cgi_eunder=Il log degli script CGI non è sotto la directory permessa
+
 mod_alias_from=Da
 mod_alias_to=A
 mod_alias_status=Stato
@@ -486,6 +511,7 @@ mod_alias_cgi2=alias CGI directory
 mod_alias_rcgi=Alias CGI directory regexp
 mod_alias_rcgi2=alias CGI directory regexp
 mod_alias_estatus='$1' non è uno stato valido
+
 mod_proxy_proxy=Fare da proxy server?
 mod_proxy_req=Richieste
 mod_proxy_forw=Forward a
@@ -554,11 +580,13 @@ mod_proxy_preserve=Preserva originale l'header Host:
 mod_proxy_timeout=Timeout delle richieste proxy in secondi
 mod_proxy_etimeout=Il timeout delle richieste proxy deve essere un numero di secondi
 mod_proxy_via=Setta header Via:
+
 mod_log_agent_default=Default
 mod_log_agent_file=File..
 mod_log_agent_program=Programma..
 mod_log_agent_log=File log browser
 mod_log_agent_efile=$1 non è un nome di file di log agent valido
+
 mod_log_config_common=Formato Common Log
 mod_log_config_named=Formati Named log
 mod_log_config_nick=Nickname
@@ -575,6 +603,7 @@ mod_log_config_eformat=Non hai dato un formato per $1
 mod_log_config_enofilprog=Nome file log o programma mancante
 mod_log_config_efilprog='$1' non è un nome file log o progamma autorizzato
 mod_log_config_eifset=L'opzione 'If set' non può essere utilizzata con il formato log di default
+
 mod_log_referer_default=Default
 mod_log_referer_file=File..
 mod_log_referer_program=Programma..
@@ -582,7 +611,9 @@ mod_log_referer_log=File log Referer
 mod_log_referer_nolog=Non fare log dei reference da
 mod_log_referer_elog=$1 non è un nome di file di log per reference valido
 mod_log_referer_edir=I log dei referer non è in una directory permessa
+
 mod_status_msg=Visualizza informazioni estese sullo stato
+
 mod_mime_ext=Estensioni
 mod_mime_xtype=MIME type extra
 mod_mime_mtype=MIME type
@@ -615,6 +646,7 @@ mod_mime_outfilter=Filtri di output
 mod_mime_infilter=Filtri di input
 mod_mime_filters=Filtri da applicare
 mod_mime_efext=Nessuna estensione specificata per i filtri $1
+
 mod_setenvif_header=Header
 mod_setenvif_match=Match
 mod_setenvif_case=Match case
@@ -625,10 +657,12 @@ mod_setenvif_eheader=header di richiesta '$1' invalido
 mod_setenvif_eregex=regexp '$1' invalida
 mod_setenvif_evar=Nome variabile '$1' invalido
 mod_setenvif_clear=Cancella
+
 mod_userdir_default=Default
 mod_userdir_all=Accessibile da tutti gli utenti
 mod_userdir_except=Tutti gli utenti tranne
 mod_userdir_dir=Directory WWW per gli utenti
+
 mod_imap_action=Azione per uso errato di mappe immagine
 mod_imap_default=Default
 mod_imap_godefurl=Vai all'URL di default
@@ -648,8 +682,10 @@ mod_imap_refurl=Referring URL
 mod_imap_url=URL...
 mod_imap_defbase=base di Default mappe immagine
 mod_imap_eurl='$1' non è un URL valido
+
 mod_speling_autocorr=Correggere automaticamente URL errati?
 mod_speling_default=Default
+
 mod_actions_mime=Handler / MIME type
 mod_actions_cgiurl=URL script CGI
 mod_actions_mimecgi=Handler o azioni CGI per MIME type
@@ -659,10 +695,13 @@ mod_actions_httpcgi=Metodo HTTP per le azioni CGI
 mod_actions_emime='$1' non è un handler o MIME type valido
 mod_actions_ecgi='$1' non è un script CGI valido
 mod_actions_enometh=Nessun metodo specificato per lo script CGI '$1'
+
 mod_include_incl=Il processo include file con il bit di esecuzione attivo?
 mod_include_set=Si, e setta la data di ultima modifica
 mod_include_default=Default
+
 mod_dir_txt=File di indice Directory
+
 mod_autoindex_default=Default
 mod_autoindex_asc=Crescente
 mod_autoindex_descend=Decrescente
@@ -671,6 +710,7 @@ mod_autoindex_date=Data
 mod_autoindex_size=Dimensione
 mod_autoindex_desc=Descrizione
 mod_autoindex_sort=Ordina indice directory per
+
 browsermatch_regexp=Browser regex
 browsermatch_case=Controllo maiuscole/minuscole?
 browsermatch_var=Setta variable
@@ -678,6 +718,7 @@ browsermatch_value=Valore
 browsermatch_txt=Set di variabili basate sul tipo di browser
 browsermatch_evar=Nome variabile '$1' invalido
 browsermatch_clear=Cancella
+
 autoindex_fname=Nome file
 autoindex_mime=MIME type
 autoindex_enc=Codifica
@@ -731,9 +772,11 @@ autoindex_sicon=Visualizza icone file
 autoindex_srules=Visualizza linee &lt;hr&gt;
 autoindex_track=Includi nello header gli ETag
 autoindex_version=Ordina per le stringhe di versione
+
 mod_mime_magic_file=File per MIME magic number
 mod_mime_magic_none=Nessuno
 mod_mime_magic_efile=Nome file per MIME magic number invalido
+
 mod_env_var=Variabile
 mod_env_value=Valore
 mod_env_pass=Passa attraverso
@@ -744,6 +787,7 @@ mod_env_passall=Passa tutte le variabili d'ambiente ai CGI
 mod_env_default=Default
 mod_env_evar='$1' non è un nome di variabile valido
 mod_env_evalue='$1' non è un valore di variabile valido
+
 mod_access_order=Ordine di controllo dell'accesso:
 mod_access_denyallow=Deny poi allow
 mod_access_allowdeny=Allow poi deny
@@ -766,6 +810,7 @@ mod_access_epip='$1' non è un indirizzo IP parziale valido
 mod_access_emask='$1' non è una coppia rete/netmask valida
 mod_access_ecidr='$1' non è unca coppia rete/CIDR valida
 mod_access_evar='$1' non è un nome di variabile valido
+
 mod_auth_ufile=File di testo utenti
 mod_auth_uedit=Modifica utenti
 mod_auth_gfile=File di testo gruppi
@@ -776,6 +821,7 @@ mod_auth_eudir=Il file di testo utenti non è in una directory permessa
 mod_auth_egdir=Il file di testo gruppi non è in una directory permessa
 mod_auth_eufile=Nome file di testo utenti invalido
 mod_auth_egfile=Nome file di testo gruppi invalido
+
 mod_auth_dbm_ufile=File DBM utenti
 mod_auth_dbm_gfile=File DBM gruppi
 mod_auth_dbm_pass=Passare fallimenti al modulo successivo?
@@ -784,6 +830,7 @@ mod_auth_dbm_eufile=Nome file DBM utenti invalido
 mod_auth_dbm_egfile=Nome file DBM gruppi invalido
 mod_auth_dbm_type=Tipo di file DBM
 mod_auth_dbm_default=Formato DBM di default
+
 mod_cern_meta_process=Processo metafile header
 mod_cern_meta_dir=Subdirectory per gli header metafile
 mod_cern_meta_default=Default
@@ -791,6 +838,7 @@ mod_cern_meta_edir=Nome subdirectory metafile invalido
 mod_cern_meta_suffix=Suffisso file per gli header metafile
 mod_cern_meta_default2=Default
 mod_cern_meta_esuffix=Suffisso metafile invalido
+
 mod_ssl_enable=Abilitare SSL?
 mod_ssl_proto=Protocolli SSL
 mod_ssl_cfile=File certificato/chiave privata
@@ -808,6 +856,7 @@ mod_ssl_ecdepth=La Profondità certificato client deve essere un intero
 mod_ssl_log=File log SSL
 mod_ssl_elog=File log SSL mancante
 mod_ssl_onlyssl=Permetti solamente accesso SSL
+
 log_global=Cambiate $1 opzioni globali
 log_virtc=Creato server $1
 log_virts=Riconfigurato server $1
@@ -846,26 +895,31 @@ log_start=Fatto partire il server web
 log_stop=Fermato server web
 log_apply=Applicato modifiche
 log_manual=Modificato manualmente il file di configurazione $1
+
 search_title=Cerca Server
 search_notfound=Nessun server virtuale risultante dalla ricerca
+
 mod_php_value=Valori di configurazione PHP
 mod_php_flag=Flag di configurazione
 mod_php_name_header=Nome
 mod_php_value_header=Valore
 mod_php_ename='$1' è un nome invalido
 mod_php_evalue='$1' è un valore invalido per $2
+
 mod_vhost_alias_root=Virtual host root automatico
 mod_vhost_alias_ip=Utilizzare indirizzo IP invece dell'hostname?
 mod_vhost_alias_none=Nessuno
 mod_vhost_alias_script=cgi-bin virtual host automatici
 mod_vhost_alias_eroot=Virtual host root mancante o invalido
 mod_vhost_alias_escript=cgi-bin virtual host mancante o invalido
+
 worker_minspare=Numero minimo di thread di riserva
 worker_maxspare=Numero massimo di thread di riserva
 worker_eminspare=Il numero minimo di thread di riserva deve essere un intero
 worker_emaxspare=Il numero massimo di thread di riserva deve essere un intero
 worker_threads=Numero thread per processi figlio
 worker_ethreads=Il numero thread per processi figlio deve essere un intero
+
 perchild_sthreads=Numero iniziale di thread per processo figlio
 perchild_esthreads=Il numero di thread per processo figlio deve essere un intero
 perchild_numservers=Numero di processi figli
@@ -881,6 +935,7 @@ perchild_gid=GID
 perchild_enum=Il numero di processo deve essere un intero non nullo
 perchild_euid=UID deve essere in intero
 perchild_egid=GID deve essere in intero
+
 cache_enable=Attivo?
 cache_type=Cache su
 cache_disk=Disco
@@ -901,12 +956,14 @@ cache_eminos=La dimensione minima oggetto ci cui fare cache in memoria deve esse
 cache_emaxos=La dimensione massima oggetto ci cui fare cache in memoria deve essere un numero di byte
 cache_maxoc=Numero massimo di oggetti da tenere in cache in memoria
 cache_emaxoc=Il numero massimo di oggetti da tenere in cache in memoria deve essere un intero
+
 suexec_su=Esegui programmi CGI come
 suexec_none=Utente come da configurazione globale
 suexec_user=Utente Unix
 suexec_group=e gruppo
 suexec_euser=Utente con cui eseguire programmi CGI mancante o invalido
 suexec_egroup=Gruppo con cui eseguire programmi CGI mancante o invalido
+
 filter_name=Nome
 filter_intype=MIME type di input
 filter_outtype=MIME type di output
@@ -916,6 +973,7 @@ filter_in=Definizione filtro di input
 filter_out=Definizione filtro di output
 filter_ename=Nome filtro '$1' invalido
 filter_ecmd=Comando per filtro '$1' mancante
+
 cdir_err=Creazione opzioni per-directory fallita
 cdir_err2=Salvataggio opzioni per-directory fallita
 cdir_epath=Percorso mancante

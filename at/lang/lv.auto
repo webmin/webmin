@@ -26,6 +26,7 @@ index_start=Startējiet ieplānoto komandu serveri
 index_startdesc=Sāciet <tt>atd</tt> fona servera procesu, kas izpilda ieplānotās komandas. Tas ir nepieciešams, lai komandas varētu izpildīt noteiktajā laikā.
 index_boot=Vai sākt serveri palaišanas laikā?
 index_bootdesc=Mainiet šo iestatījumu, lai iespējotu vai atspējotu ieplānoto komandu servera palaišanu sistēmas sāknēšanas laikā.
+
 edit_title=Plānotā komanda
 edit_cmd=Pilns izpildāmais skripts
 edit_shortcmd=Komanda izpildīt
@@ -35,6 +36,7 @@ edit_run=Palaist tagad
 edit_ejob=Plānotā komanda vairs nepastāv!
 edit_ecannot=Jums nav atļauts rediģēt šo ieplānoto komandu
 edit_showfull=Rādīt pilnu skriptu.
+
 create_err=Neizdevās izveidot grafika komandu
 create_euser=Trūkst vai nav derīgs lietotājvārds
 create_edate=Trūkst vai nav derīgs datums vai laiks
@@ -43,22 +45,28 @@ create_efuture=Datums un laiks ir pagātnē
 create_edir=Trūkst vai nav derīgs direktorijs
 create_ecannot=Jums nav atļauts izveidot ieplānotas komandas šim lietotājam
 create_eallow=Norādītajam lietotājam nav atļauts palaist plānotās komandas
+
 delete_err=Neizdevās atcelt komandu
 delete_egone=Komanda jau ir palaista vai izdzēsta
+
 acl_users=Var rediģēt ieplānotās komandas
 acl_all=Visi lietotāji
 acl_this=Pašreizējais Webmin lietotājs
 acl_only=Tikai lietotāji
 acl_except=Visi, izņemot lietotājus
 acl_allow=Vai lietotāji var rediģēt?
+
 run_title=Darbojošā komanda
 run_output=Izeja no plānotās komandas ..
 run_none=Netika ģenerēta izvade
+
 allow_err=Neizdevās saglabāt atļautos lietotājus
 allow_ecannot=Jums nav atļauts pārvaldīt atļautos lietotājus
 allow_eusers=Nav ievadīts neviens lietotājs
+
 deletes_err=Neizdevās atcelt komandas
 deletes_enone=Nav atlasīts
+
 log_allow=Mainīti atļautie lietotāji
 log_create_job=Izveidota plānota komanda $1 
 log_delete_job=Atcelta plānotā komanda $1 
@@ -68,5 +76,6 @@ log_stop=Apturēts ieplānoto komandu serveris
 log_start=Sācis ieplānoto komandu serveris
 log_bootup=Iespējojot ieplānoto komandu serveri
 log_bootdown=Sāknēšanas laikā atspējots ieplānoto komandu serveris
+
 stop_err=Neizdevās apturēt serveri
 start_err=Neizdevās palaist serveri

@@ -25,6 +25,7 @@ index_header=Utenti con una configurazione Fetchmail
 index_search=Mostra la configurazione Fetchmail per:
 index_show=Mostra
 index_toomany=Ci sono troppi utenti sul tuo sistema e non possono essere visualizzati.
+
 poll_create=Aggiungi Server
 poll_edit=Modifica Server
 poll_header=Opzioni del server di posta
@@ -63,18 +64,22 @@ poll_postconnect=Comando da eseguire dopo la disconnessione
 poll_ecannot=Non hai i permessi per modificare la configurazione fetchmail per questo utente
 poll_efile=Tutte i file di configurazione fetchmail degli utenti possono essere modificati
 poll_eusername=L'utente non esiste!
+
 stop_err=Interruzione fetchmail non riuscita
 stop_ecannot=Non hai i permessi per fermare fetchmail
 start_err=Avvio di fetchmail non riuscito
 start_einterval=Intervallo tra i controlli mancante o non valido
 start_ecannot=Non hai i permessi per avviare fetchmail
+
 check_title=Controllo i server
 check_exec=Controllo della posta sul server con il comando $1 ...
 check_ok=... controllo completato!
 check_failed=... controllo non riuscito!
+
 global_title=Impostazioni predefinite
 global_header=Impostazioni predefinite valide per tutti i  server
 global_err=Salvataggio delle impostazioni predefinito non riuscito
+
 log_create_poll_file=Il server $1 è stato aggiunto nel file $2
 log_modify_poll_file=Il server $1 nel file $2 è stato modificato
 log_delete_poll_file=Il server $1 nel file $2 è stato eliminato
@@ -93,12 +98,14 @@ log_stop=Il demone fetchmail è stato interrotto
 log_create_cron=Abilita il controllo pianificato
 log_update_cron=Pianificazione del controllo modificata
 log_delete_cron=Disabilita il controllo pianificato
+
 acl_users=Può modificare la configurazione di fetchmail per:
 acl_all=Tutti gli utenti
 acl_this=L'utente Webmin corrente
 acl_only=Solo gli utenti:
 acl_except=Tutti eccetto gli utenti:
 acl_cron=Può configurare la pianificazione del controllo?
+
 cron_title=Controllo pianificato
 cron_desc=Questa pagina può essere usata per abilitare o disabilitare un Cron Job per il controllo dei server di posta configurati in Fetchmail sulla base di una pianificazione regolare. Using a Cron job superior to running the Fetchmail daemon, as it does not need to be re-started at boot time.
 cron_header=Impostazioni di pianificazione di Fetchmail
@@ -117,8 +124,10 @@ cron_email=Indirizzo email mancante o non valido
 cron_euser=Utente Unix mancante o non valido
 cron_errors=Dare l'output solo in caso di errori?
 cron_ecannot2=Non hai i permessi per configurare un controllo pianificato
+
 user_title=Configurazione di Fetchmail
 user_header=Per l'utente $1
 user_return=configurazione utente
+
 email_ok=Output di Fetchmail
 email_failed=Errore di Fetchmail

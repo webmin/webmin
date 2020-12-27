@@ -9,17 +9,21 @@ index_edit=Pārvaldīt
 index_manual=Rediģēt manuāli
 index_anyfile=Rediģēt citu PHP konfigurācijas failu:
 index_return=konfigurācijas faili
+
 file_global=Globālā PHP konfigurācija
 file_eread=Neizdevās nolasīt $1 : $2 
+
 manual_title=Rediģēt konfigurāciju manuāli
 manual_desc=Šo lapu var izmantot, lai manuāli rediģētu PHP konfigurācijas failu. Tas jādara uzmanīgi, jo jūsu izmaiņām netiks veikta sintakse vai cita derīguma pārbaude.
 manual_err=Neizdevās rediģēt konfigurācijas failu
 manual_edata=Nav ievadīts jauns saturs
+
 list_title=Pārvaldiet PHP konfigurāciju
 list_ecannot=Jums nav atļauts pārvaldīt šo PHP konfigurācijas failu
 list_return=PHP konfigurācija
 list_format_ini=INI formāts
 list_format_fpm=FPM formāts
+
 vars_title=PHP mainīgie
 vars_header=PHP mainīgo izveides un kotēšanas iespējas
 vars_magic=Citēt visus ievades mainīgos?
@@ -28,6 +32,7 @@ vars_register=Pārvērst visu ievadi globālajos mainīgajos?
 vars_args=Pārvērst komandrindas parametrus globālos mainīgos?
 vars_long=Izveidot vecā stila masīvus, piemēram, <tt>HTTP_GET_VARS</tt>?
 vars_err=Neizdevās saglabāt PHP mainīgo iestatījumus
+
 dirs_title=Direktorija iestatījumi
 dirs_header=PHP skripta un paplašinājumu direktoriju iestatījumi
 dirs_include=Meklēšanas direktorijos iekļauj
@@ -39,6 +44,7 @@ dirs_err=Neizdevās saglabāt direktoriju iestatījumus
 dirs_eincs=Neiekļauj ievadītos meklēšanas direktorijus
 dirs_eutmp=Trūkst vai nav derīgs pagaidu failu direktorijs
 dirs_eext=Trūkst paplašinājumu direktorija
+
 db_title=Datu bāzes iestatījumi
 db_header1=MySQL datu bāzes savienojuma iestatījumi
 db_persist=Vai atļaut pastāvīgus datu bāzes savienojumus?
@@ -57,6 +63,7 @@ db_emaxlinks=Trūkst vai nav derīgs kopējais savienojumu skaits
 db_etimeout=Trūkst vai nav derīga savienojuma noildze
 db_ehost=Trūkst vai nav derīga MySQL servera noklusējuma resursdators
 db_eport=Trūkst vai nav derīgs MySQL servera ports
+
 session_title=Sesijas iespējas
 session_header=Iespējas PHP sesijas izsekošanai
 session_handler=Sesiju glabāšanas mehānisms
@@ -73,6 +80,7 @@ session_epath=Trūkst vai nav derīgs sesiju failu direktorijs
 session_elife=Trūkst vai nav derīgs sīkfailu darbības laiks
 session_emaxlife=Trūkst vai nav derīgs sesijas ilgums
 session_eredis=Trūkst vai ir atspējots atkārtotās paplašināšanas paplašinājums
+
 safe_title=Drošā režīma opcijas
 safe_header=Drošas piekļuves failiem režīmi
 safe_on=Vai iespējot drošo režīmu?
@@ -85,6 +93,7 @@ safe_err=Neizdevās saglabāt drošā režīma opcijas
 safe_einclude=Trūkst vai nav derīgs iekļauto failu direktorijs
 safe_eexec=Trūkst vai nav derīgs izpildīto programmu direktorijs
 safe_ebasedir=Trūkst vai nav derīgs failu operāciju katalogs
+
 limits_title=Resursu ierobežojumi
 limits_header=Atmiņas un pārsūtīšanas ierobežojuma iespējas
 limits_mem=Maksimālais atmiņas sadalījums
@@ -98,6 +107,7 @@ limits_epost=Trūkst vai nav derīgs maksimālais HTTP POST lielums
 limits_eupload=Trūkst vai nav derīgs maksimālais faila augšupielādes lielums
 limits_eexec=Trūkst vai nav derīgs maksimālais izpildes laiks
 limits_einput=Trūkst vai nav derīgs maksimālais ievades parsēšanas laiks
+
 errors_title=Kļūda reģistrējoties
 errors_header=Kļūdu ziņojumu parādīšana un reģistrēšanas iespējas
 errors_display=Vai parādīt kļūdas ziņojumus?
@@ -128,6 +138,7 @@ errors_err=Neizdevās saglabāt kļūdu reģistrēšanu
 errors_ereporting=Nav ievadīts kļūdas veida izteiciens
 errors_emaxlen=Trūkst vai nav derīgs reģistrēto kļūdu maksimālais lielums
 errors_efile=Trūkst kļūdu žurnāla faila
+
 misc_title=Citi iestatījumi
 misc_header=Dažādi citi PHP iestatījumi
 misc_short=Vai atļaut PHP skriptus, kas sākas ar &lt;? ?
@@ -148,6 +159,7 @@ misc_include=Vai atļaut attālo atvēršanu Ietver?
 misc_path=CGI fiksētā ceļa informācija?
 misc_timezone=PHP laika josla
 misc_charset=Noklusējuma rakstzīmju kopa
+
 log_manual=Failu $1 manuāli rediģēt
 log_vars=Mainīti PHP mainīgie $1 
 log_dirs=Mainīti direktorija iestatījumi $1 
@@ -157,6 +169,7 @@ log_safe=Mainītas drošā režīma iespējas $1
 log_limits=Mainīti resursu ierobežojumi $1 
 log_errors=Mainītas kļūdas, reģistrējoties $1 
 log_misc=Mainīti citi $1 iestatījumi
+
 acl_global=Vai var rediģēt globālo PHP konfigurāciju?
 acl_anyfile=Vai var rediģēt jebkuru failu kā PHP konfigurāciju?
 acl_manual=Vai var manuāli rediģēt konfigurācijas failus?

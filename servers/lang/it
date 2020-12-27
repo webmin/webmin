@@ -19,6 +19,7 @@ index_defport=Porta Webmin
 index_delete=Rimuovi i server selezionati
 index_auto=Trova automaticamente i server
 index_automsg=Clicca su questo pulsante per impostare una ricerca periodica automatica di nuovi server Webmin nella tua rete.
+
 edit_title=Modifica server
 create_title=Registra server
 edit_details=Dettagli del server
@@ -52,6 +53,7 @@ edit_baduser=Accesso negato
 edit_invalid=L'utente non può effettuare RPC
 edit_version=E' in esecuzione Webmin $1
 edit_same=Disponibile solo se non si è in modalità di autenticazione della sessione e quando la password è resa disponibile ai programmi di Webmin.
+
 save_err=Salvataggio del server non riuscito
 save_ehost=Nome host mancante o non valido
 save_ehost2=L'host non esiste
@@ -61,6 +63,7 @@ save_epass=Password mancante
 save_egroup=Nome gruppo mancante
 save_elogin=Nome utente o password non validi per l'host
 save_egroup2=Nuovo nome del gruppo non valido
+
 find_title=Ricerca di server
 find_new=Nuovo server trovato all'indirizzo $1
 find_but=Nuovo server trovato all'indirizzo $1, ma l'autenticazione non è riuscita: $2
@@ -74,16 +77,20 @@ find_ecannot=Non hai i permessi per ricercare i server
 find_scanning=Ricerca di server nella rete $1...
 find_broading=Ricerca dei server i broadcast agli indirizzi $1...
 find_eport=Numero di porta mancante o non valido
+
 log_modify=Il server $1 è stato modificato
 log_create=Server $1 registrato
 log_delete=Server $1 rimosso
 log_find=E' stato trovato il server $1
 log_deletes=$1 server rimossi
+
 link_elogin=Connessione a $1 come $2 non riuscita
 link_ecannot=Non hai i permessi per usare questo server
 link_essl=La libreria Perl Net::SSLeay non è installata
 link_eautologin=Nome di login o password non validi per $1. <a href='$2'>Clicca qui</a> per riprovare.
+
 lib_other=Altro
+
 acl_edit=Può modificare i server?
 acl_find=Può trovare i server?
 acl_servers=Può usare i server
@@ -95,6 +102,7 @@ acl_forcefast=Forzare la modalità RPC velore al valore predefinito?
 acl_forcetype=Forzare il tipo di SO al valore predefinito?
 acl_forcelink=Forzare il tipo di accesso al valore predefinito?
 acl_links=Può connettersi attraverso i server?
+
 login_title=Connettiti al server
 login_desc=Devi fornire un nome utente e una password per connetterti al server Webmin $1.
 login_header=Autenticazione Webmin
@@ -102,10 +110,13 @@ login_user=Nome utente
 login_pass=Password
 login_login=Login
 login_esame=L'opzione per usare le stesse credenziali di accesso di questo server può essere usata solo se non si è in modalità di autenticazione della sessione e quando la password è resa disponibile ai programmi di Webmin.
+
 this_server=Questo server
+
 delete_err=Rimozione dei server non riuscita
 delete_enone=Nessuna selezione
 delete_ecannot=Non hai i permessi per rimuovere dei server
+
 auto_title=Trova i server automaticamente
 auto_header=Opzioni di registrazione automatica del server
 auto_sched=Controllare la presenza di nuovi server?
@@ -131,8 +142,10 @@ auto_smtp=Invia tramite server SMTP
 auto_self=Questo sistema
 auto_esmtp=Server SMTP mancante o non valido
 auto_findself=Registrare anche questo sistema?
+
 config_deftype=Tipo di sistema predefinito
 config_typeauto=Automatico
+
 email_regsubject=Sistema $1 registrato
 email_reg=Il sistema $1 è stato registrato automaticamente.
 email_unregsubject=Registrazione del sistema $1 rimossa

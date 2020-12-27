@@ -24,8 +24,10 @@ all=ทั้งหมด
 index_view=ดู ..
 index_viewfile=ดูไฟล์บันทึก:
 index_viewok=ดู
+
 restart_ekill=ไม่สามารถส่งสัญญาณกระบวนการ syslog $1 : $2 
 restart_ecannot=คุณไม่ได้รับอนุญาตให้รีสตาร์ท syslog
+
 start_ecannot=คุณไม่ได้รับอนุญาตให้เริ่ม syslog
 edit_title=แก้ไขบันทึกระบบ
 create_title=เพิ่มบันทึกระบบ
@@ -56,11 +58,13 @@ edit_tag=สำหรับโปรแกรมเท่านั้น
 edit_return=รายละเอียดบันทึก
 edit_ecannot=คุณไม่ได้รับอนุญาตให้แก้ไขการตั้งค่าบันทึก
 edit_ecannot2=คุณไม่ได้รับอนุญาตให้แก้ไขบันทึกนี้
+
 view_title=ดูไฟล์บันทึก
 view_header=$1 บรรทัดสุดท้ายของ $2 
 view_empty=ไฟล์บันทึกว่างเปล่า
 view_refresh=รีเฟรช
 view_filter=แสดงบรรทัดที่มีข้อความ $1 เท่านั้น
+
 save_err=บันทึกบันทึกไม่สำเร็จ
 save_efile='$1' ไม่ใช่ชื่อไฟล์ที่ถูกต้อง : $2 
 save_epipe='$1' ไม่ใช่ชื่อไปป์ที่ถูกต้อง
@@ -80,11 +84,13 @@ save_ecannot5=คุณไม่ได้รับอนุญาตให้แ
 save_ecannot6=คุณไม่ได้รับอนุญาตให้ดูบันทึกโดยพลการ
 save_ecannot7=คุณไม่ได้รับอนุญาตให้ดูบันทึกพิเศษนี้
 save_emissing=ไม่มีไฟล์บันทึกเพื่อดู
+
 log_modify=แก้ไขบันทึกเป็น $1 
 log_create=เพิ่มบันทึกไปยัง $1 
 log_delete=ลบบันทึกไปยัง $1 
 log_apply=การเปลี่ยนแปลงที่นำไปใช้
 log_start=เริ่มเซิร์ฟเวอร์การบันทึก
+
 desc_sysmesg=ข้อความระบบ
 desc_mail=บันทึกเมล
 desc_auth=บันทึกการตรวจสอบ
@@ -93,6 +99,7 @@ desc_news=บันทึกข่าวสารของ NNTP
 desc_uucp=บันทึก UUCP
 desc_debug=ข้อความดีบั๊ก
 desc_cron=Cron Job Log
+
 acl_noedit=ดูได้เฉพาะบันทึกได้หรือไม่
 acl_any=สามารถดูไฟล์ใด ๆ เป็นบันทึกได้หรือไม่?
 acl_logs=สามารถดูและกำหนดค่าไฟล์บันทึก

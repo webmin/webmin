@@ -1,6 +1,7 @@
 index_screate=Crea un nuovo utente sicuro.
 index_twofactor=Autenticazione a due fattori
 index_joingroup=Aggiungi al gruppo:
+
 edit_title3=Crea un utente Webmin sicuro
 edit_twofactor=Tipo di autenticazione a due fattori
 edit_twofactorprov=Utilizzo del provider $1 con ID $2
@@ -11,21 +12,29 @@ edit_safe=Livello di privilegio
 edit_safe0=illimitato
 edit_safe1=Solo moduli sicuri
 edit_unsafe=Ripristina su senza restrizioni
+
 save_eunixname=Il nome utente '$1' non è un utente Unix, quindi non può essere utilizzato in modalità provvisoria
+
 delete_eanonuser=Questo utente viene utilizzato per l'accesso al modulo anonimo
+
 cert_etempdir=File di certificato non valido
+
 log_joingroup=Aggiunti $1 utenti Webmin al gruppo $2
 log_twofactor=Utente registrato $1 con provider a due fattori $2
 log_onefactor=Utente non registrato $1 per l'autenticazione a due fattori
+
 convert_sync2=Sincronizzare la password con l'utente Unix in futuro?
 convert_user=Utente Unix
 convert_action=Azione intrapresa
 convert_done=$1 utenti convertiti, $2 non validi, $3 esistono già, $4 escluso.
 convert_users=Utenti da convertire
+
 sync_when=Quando sincronizzare
+
 unix_restrict2=Ulteriori restrizioni
 unix_header=Impostazioni di autenticazione utente Unix
 unix_utable=Utenti Unix consentiti
+
 sessions_actions=Azioni..
 sessions_logouts=Mostra anche sessioni disconnesse.
 sessions_state=Stato
@@ -33,8 +42,11 @@ sessions_this=Questo login
 sessions_in=Connesso
 sessions_out=Disconnesso
 sessions_kill=Scollegare..
+
 logins_title=Login Webmin recenti
+
 udeletes_jerr=Impossibile aggiungere utenti al gruppo
+
 twofactor_err=Impossibile impostare l'autenticazione a due fattori
 twofactor_euser=Il tuo utente Webmin non è stato trovato!
 twofactor_title=Autenticazione a due fattori

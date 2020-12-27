@@ -38,6 +38,7 @@ index_restartdesc=לחץ על כפתור זה כדי להפעיל את התצו�
 index_iptables=הגדרת ניתוב להפניה מחדש
 index_squid=שרת פרוקסי דיונון
 index_manual=ערוך קבצי תצורה
+
 manual_title=ערוך קבצי תצורה
 manual_file=בחר קובץ תצורה לעריכה:
 manual_change=שינוי
@@ -45,6 +46,7 @@ manual_editing=Use the text box below to manually edit the configs in $1. Be car
 manual_err=שמירת קובץ התצורה נכשלה
 manual_efile=שם קובץ config לא חוקי!
 manual_ecannot=אינך מורשה לערוך ידנית קבצי תצורה
+
 buttsave=להציל
 buttdel=מחק
 buttcreat=צור
@@ -54,6 +56,7 @@ default=ברירת מחדל
 none=אף אחד
 on=על
 off=כבוי
+
 acl_header1=צור ACL
 acl_header2=ערוך ACL
 acl_name=שם ACL
@@ -109,6 +112,7 @@ acl_file=אחסן ערכי ACL בקובץ
 acl_nofile=תצורת דיונון
 acl_infile=קובץ נפרד
 acl_keep=פשוט להשתמש בתוכן הקיים של הקובץ?
+
 aclsave_failsave=שמירת ACL נכשלה
 aclsave_faildel=מחיקת ACL נכשלה
 aclsave_epr=מגבלת ה- Proxy משמשת ל- ACL זה
@@ -128,11 +132,13 @@ aclsave_eemin=סיום לא חוקי של דקות
 aclsave_efile=You are not allowed to write to the ACL file '$1'
 aclsave_enofile=לא הוזן שם קובץ ACL
 aclsave_ealready=קובץ ACL כבר קיים
+
 cach_ecannot=אינך רשאי לגשת לסטטיסטיקה של ניהול מטמון
 cach_err=שגיאה
 cach_nfound=The Squid cache manager program <tt>$1</tt> was not found on your system. Maybe your <a href=/config.cgi?$2 >module configuration</a> is incorrect.
 cach_return=מדד דיונון
 cach_esame=The <b>Squid cachemgr.cgi executable</b> is set to Webmin's cachemgr.cgi program, not the one supplied by Squid.
+
 chown_header=שנה בעלות
 chown_stop=מפסיק דיונון. ..
 chown_done=.. בוצע
@@ -140,6 +146,7 @@ chown_chown=משנה בעלות. ..
 chown_restart=מתחיל מחדש דיונון. ..
 chown_failrestart=ההפעלה מחדש של דיונון נכשלה.
 chown_return=מדד דיונון
+
 clear_ecannot=אינך רשאי לנקות את הקובץ השמור ולבנות אותו מחדש
 clear_header=נקה ובנה מחדש את הקובץ השמור
 clear_msgclear=Are you sure you want to clear and rebuild your Squid cache? This will delete <b>all</b> the files you have cached and re-start your Squid server.
@@ -153,6 +160,7 @@ clear_failrestart=ההפעלה מחדש של דיונון נכשלה.
 clear_return=מדד דיונון
 clear_url=הסר כתובת אתר אחת מהמטמון:
 clear_ok=הסר
+
 eacl_ecannot=אינך מורשה לערוך בקרת גישה
 eacl_header=בקרת גישה
 eacl_acls=רשימות בקרת גישה
@@ -169,8 +177,10 @@ eacl_nopr=לא הוגדרו מגבלות proxy.
 eacl_addpr=הוסף הגבלת פרוקסי.
 eacl_noprr=לא הוגדרו מגבלות תשובת פרוקסי
 eacl_addprr=הוסף הגבלת תשובת פרוקסי.
+
 eacl_replypr=השב להגבלות שרת proxy
 eacl_replynopr=לא הוגדרו הגבלות על שרת proxy
+
 eacl_icpr=מגבלות ICP
 eacl_noicpr=לא הוגדרו מגבלות על ICP
 eacl_addicpr=הוסף מגבלת ICP.
@@ -187,6 +197,7 @@ eacl_eclass=לא נבחרה כיתת תוכנית
 eacl_cname=סוג שם
 eacl_file=From file $1
 eacl_hdelete=מחק הגבלות שנבחרו
+
 eadm_ecannot=אינך רשאי לערוך אפשרויות ניהול
 eadm_header=אפשרויות ניהול
 eadm_aao=אפשרויות ניהול והכרז
@@ -213,6 +224,7 @@ eadm_caf=קובץ הכרזת מטמון
 eadm_annp=תקופת הכרזה
 eadm_buttsave=להציל
 eadm_return=מדד דיונון
+
 eauth_ecannot=אינך רשאי לערוך אימות פרוקסי
 eauth_header=אימות פרוקסי
 eauth_aopt=אפשרויות אימות
@@ -226,6 +238,7 @@ eauth_pusers=משתמשי פרוקסי
 eauth_nopusers=לא מוגדרים כעת משתמשי פרוקסי.
 eauth_addpuser=הוסף משתמש Proxy חדש.
 eauth_return=מדד דיונון
+
 ec_ecannot=אינך רשאי לערוך אפשרויות מטמון
 ec_header=אפשרויות מטמון
 ec_cro=אפשרויות שמירה ובקשה
@@ -280,6 +293,7 @@ ec_return=מדד דיונון
 ec_maxreplies=גדלי גוף תשובה מרביים
 ec_maxrn=גודל (kB)
 ec_maxracls=לבקשות התואמות ACL (השאר ריק לכולם)
+
 ech_header=צור מארח מטמון
 ech_header1=ערוך מארח מטמון
 ech_cho=אפשרויות מארח מטמון
@@ -324,6 +338,7 @@ ech_origin=מתייחסים למארח כאל שרת מקור?
 ech_force=הכרח מארח: כותרת אל
 ech_same=ללא שינוי
 ech_ssl=להתחבר באמצעות SSL?
+
 eicp_ecannot=אינך רשאי לערוך מטמונים אחרים
 eicp_header=מטמונים אחרים
 eicp_opcs=שרתי מטמון פרוקסי אחרים
@@ -361,6 +376,7 @@ eicp_ttype=סוג
 eicp_tpport=יציאת פרוקסי
 eicp_tiport=יציאת ICP
 eicp_delete=מחק את המטמון שנבחר
+
 elogs_ecannot=אינך רשאי לערוך רישום רישום
 elogs_header=רישום
 elogs_lalo=אפשרויות רישום וכניסה
@@ -394,6 +410,7 @@ elogs_notset=לא מוכן
 elogs_dont=אל תתחבר
 elogs_file=File $1
 elogs_squid=תקן דיונון
+
 emem_ecannot=אינך רשאי לערוך את השימוש בזיכרון
 emem_dheader=שימוש בזיכרון ודיסק
 emem_header=שימוש בזיכרון
@@ -419,6 +436,7 @@ emem_lfuda=פחות דינמי בשימוש
 emem_hlru=ערימת הפחות נפוצה
 emem_return=מדד דיונון
 emem_mrp=מדיניות החלפת זיכרון
+
 emisc_ecannot=אינך רשאי לערוך אפשרויות שונות
 emisc_header=אפשרויות שונות
 emisc_mo=אפשרויות שונות
@@ -455,6 +473,7 @@ emisc_wccpin=WCCP כתובת נכנסת
 emisc_wccpout=כתובת יוצאת של WCCP
 emisc_none=אף אחד
 emisc_virtual=וירטואלי
+
 eports_ecannot=אינך מורשה לערוך יציאות ורשתות
 eports_header=נמלים ורשתות
 eports_pano=יציאות ואפשרויות רשת
@@ -480,6 +499,7 @@ eports_unc=האם כיבוי SSL לא נקי?
 eports_checkhost=לאמת שמות מארחים בכתובות URL?
 eports_underscore=לאפשר קו תחתון בשמות מארחים?
 eports_all=את כל
+
 eprogs_ecannot=אינך רשאי לערוך תוכניות עזרה
 eprogs_header=תוכניות עוזר
 eprogs_chpo=אפשרויות תכנית עוזר מטמון
@@ -508,6 +528,7 @@ eprogs_ttl=זמן מטמון אימות
 eprogs_aittl=אימות זמן מטמון IP
 eprogs_realm=תחום אימות
 eprogs_return=מדד דיונון
+
 euser_header=צור משתמש פרוקסי
 euser_header1=ערוך את משתמש ה- Proxy
 euser_pud=פרטי משתמש פרוקסי
@@ -516,6 +537,7 @@ euser_p=סיסמה
 euser_u1=ללא שינוי
 euser_e=מופעל?
 euser_return=רשימת משתמשים
+
 ahttp_header=צור הגבלת פרוקסי
 ahttp_header1=ערוך הגבלת פרוקסי
 ahttp_pr=הגבלת פרוקסי
@@ -525,10 +547,13 @@ ahttp_d=דחה
 ahttp_ma=התאמת רשימות ACL
 ahttp_dma=אל תתאים לרשימות ACL
 ahttp_return=רשימת ACL
+
 ahttp_replyheader=צור הגבלת תשובת פרוקסי
 ahttp_replyheader1=ערוך הגבלת תשובת פרוקסי
 ahttp_replypr=הגבלת תשובת פרוקסי
+
 sahttp_ftspr=שמירת הגבלת תשובת ה- proxy נכשלה
+
 aicp_header=צור הגבלת ICP
 aicp_header1=ערוך הגבלת ICP
 aicp_ir=הגבלת ICP
@@ -538,7 +563,9 @@ aicp_d=דחה
 aicp_ma=התאמת רשימות ACL
 aicp_dma=אל תתאים לרשימות ACL
 aicp_return=רשימת ACL
+
 saicp_ftsir=שמירת ההגבלה של ICP נכשלה
+
 icache_ecannot=אינך רשאי לאתחל את המטמון
 icache_ftic=אתחול המטמון נכשל
 icache_ymcautrsa=עליך לבחור משתמש להריץ את Squid as
@@ -546,7 +573,9 @@ icache_euser=המשתמש להריץ דיונון כפי שאינו קיים
 icache_itscwtc=Initializing the Squid cache with the command <tt>$1</tt> ..
 icache_return=מדד דיונון
 icache_title=לאתחל את המטמון
+
 restart_ftrs=נכשל תצורת הדיונון מחדש
+
 sadmin_ftsao=שמירת אפשרויות הניהול נכשלה
 sadmin_header=שנה בעלות
 sadmin_msg1=שינית את המשתמש או הקבוצה שסקוויד מנהל כ. כדי שזה ייכנס לתוקף כראוי, יש לעדכן את הבעלות על כל קבצי המטמון והיומן ולהתחיל את הדיונון מחדש.
@@ -556,10 +585,12 @@ sadmin_inavea='$1' is not a valid email address
 sadmin_inavh='$1' is not a valid hostname
 sadmin_inavap='$1' is not a valid announcement period
 sadmin_inavp='$1' is not a valid port
+
 sauth_ftsao=שמירת אפשרויות האימות נכשלה
 sauth_iomuf=שם קובץ משתמשים לא חוקי או חסר
 sauth_iomd=דומיין לא חוקי או חסר
 sauth_msg1=גרסת הדיונון שלך לא נערכה עם תמיכה לאימות פרוקסי
+
 scache_ftsco=שמירת אפשרויות המטמון נכשלה
 scache_emsg0=עליך להיכנס לספריית מטמון אחת לפחות
 scache_emsg1=The cache directory '$1' does not exist
@@ -577,14 +608,17 @@ scache_emsg12='$1' is not a valid directory size
 scache_emsg13='$1' is not a valid host
 scache_emsg14='$1' is not a valid port
 scache_emaxrs=Invalid maximum body size in row $1
+
 schost_ftsc=שמירת המטמון נכשלה
 schost_emsg1='$1' is not a valid cache hostname
 schost_emsg2='$1' is not a valid proxy port
 schost_emsg3='$1' is not a valid ICP port
 schost_emsg4='$1' is not a valid time-to-live
 schost_emsg5='$1' is not a valid weighting
+
 sicp_ftsco=שמירת אפשרויות המטמון נכשלה
 sicp_emsg1='$1' is not a valid timeout
+
 slogs_ftslo=שמירת אפשרויות רישום נכשלה
 slogs_emsg1='$1' is not an absolute filename
 slogs_emsg2='$1' is not a valid filename
@@ -594,20 +628,24 @@ slogs_emsg5='$1' is not a valid debug options list
 slogs_efname=Invalid format name in row $1
 slogs_effmt=Missing log format in row $1
 slogs_eafile=Missing or invalid log file in row $1
+
 smem_ftsmo=שמירת אפשרויות הזיכרון נכשלה
 smem_emsg1='$1' is not a valid cache size
 smem_emsg2='$1' is not a valid high-water mark
 smem_emsg3='$1' is not a valid low-water mark
 smem_emsg4='$1' is not a valid object size
+
 smisc_ftso=שמירת האפשרויות נכשלה
 smisc_emsg1='$1' is not a valid number of rotations
 smisc_emsg2='$1' is not a valid domain
 smisc_emsg3='$1' is not a valid proxy
 smisc_emsg4='$1' is not a valid number of hops
+
 sport_ftspo=שמירת אפשרויות היציאה נכשלה
 sport_emsg1='$1' is not a valid port number
 sport_emsg2='$1' is not a valid address
 sport_emsg3='$1' is not a valid buffer size
+
 sprog_ftshpo=שמירת אפשרויות תוכנית העזרה נכשלה
 sprog_emsg1=אפשרויות FTP חסרות
 sprog_emsg2='$1' is not a valid program
@@ -620,19 +658,23 @@ sprog_emsg8='$1' is not a valid IP address
 sprog_emsg9='$1' is not a valid cache time
 sprog_emsg10='$1' is not a valid TTL
 sprog_echildren=מספר התוכניות חייב להיות מספר גדול מאפס
+
 suser_ftsu=שמירת המשתמש נכשלה
 suser_emsg1=שם משתמש לא חוקי או חסר
 suser_etaken=שם המשתמש כבר בשימוש
+
 start_ftsq=ההפעלה של דיונון נכשלה
 start_ecannot=אסור לך להתחיל דיונון
 stop_ftsq=עצירת הדיונון נכשלה
 stop_ecannot=אסור לך לעצור דיונון
+
 calamaris_ecannot=אינך רשאי לגשת לניתוח יומן Calamaris
 calamaris_title=ניתוח קלמריס ביומן
 calamaris_last=Limiting analysis to last $1 lines of logs ..
 calamaris_eprog=The calamaris executable $1 was not found. Maybe it is not installed on your system, or your <a href='$2'>module configuration</a> is incorrect.
 calamaris_elogs=The log directory $1 does not contain any <tt>access.log</tt> files. Maybe squid has not been run yet, or your <a href='$2'>module configuration</a> is incorrect.
 calamaris_gen=Report generated on $1
+
 lib_emsg1='$1' is not a valid IP address
 lib_seconds=שניות
 lib_minutes=דקות
@@ -680,6 +722,7 @@ lib_aclmuip=IP מקסימאלי למשתמש
 lib_buttac=החל שינויים
 lib_buttss=עצור דיונון
 lib_buttss1=התחל דיונון
+
 log_ports=יציאות ואפשרויות רשת השתנו
 log_icp=שינו אפשרויות מטמון אחרות
 log_mem=אפשרויות שימוש בזיכרון השתנו
@@ -734,25 +777,31 @@ log_pools_delete=Deleted $1 delay pools
 log_delay_create=Added ACL for delay pool $1
 log_delay_modify=Modified ACL for delay pool $1
 log_delay_delete=Deleted ACL for delay pool $1
+
 log_delay_move=Moved ACL for delay pool $1
 log_refresh_create=Created refresh rule for $1
 log_refresh_modify=Modified refresh rule for $1
 log_refresh_delete=Deleted refresh rule for $1
+
 log_refresh_move=Moved refresh rule for $1
 log_refreshes_delete=Deleted $1 refresh rules
 log_iptables=הגדרת הפניה מחדש של יציאה מעודכנת
 log_purge=Removed URL $1 from cache
 log_cachemgr=סיסמאות של מנהל מטמון שונו
+
 acl_root=ספריית שורש עבור קבצי ACL
 acl_sections=דפי תצורה מותרים
 acl_start=האם ניתן להתחיל ולעצור דיונון?
 acl_restart=האם ניתן להחיל תצורת דיונון?
+
 always_create=צור אחזור ישיר
 always_edit=ערוך אחזור ישיר
 always_header=השג ישירות בקשות התואמות ל- ACL
+
 never_create=צור אחזור עקיפה
 never_edit=ערוך אחזור עקיפה
 never_header=לעולם אל תביא ישירות בקשות התואמות לרשימות ACL
+
 delay_title=עיכוב בריכות
 delay_add=הוסף מאגר עיכוב חדש.
 delay_num=מספר
@@ -802,11 +851,14 @@ pool_unit2=kb
 pool_unit3=kB
 pool_unit4=מגה
 pool_unit5=תואר שני
+
 dpool_err=מחיקת בריכות השהיה נכשלה
 dpool_enone=לא נבחר
+
 apool_header=הוסף ACL עיכוב בריכה
 apool_header1=ערוך ACL עיכוב בריכה
 apool_pr=עיכוב בריכת ACL
+
 authparam_title=תוכניות אימות
 authparam_header=אפשרויות תוכנית אימות חיצונית
 authparam_ttl=זמן לשמור סיסמאות במטמון
@@ -849,6 +901,7 @@ ext_ecache=גודל מטמון חסר או לא חוקי
 ext_eprogram=הוזן נתיב תוכנית לא חוקי
 ext_eclash=קיים כבר סוג תוכנית חיצונית עם אותו שם
 ext_eused=תוכנית חיצונית זו נמצאת בשימוש על ידי ACL
+
 header_title=בקרת גישה לכותרת
 header_none=טרם הוגדרו כללי בקרת גישה לכותרות.
 header_name=כותרת HTTP
@@ -868,6 +921,7 @@ header_err=שמירת כלל בקרת הגישה לכותרות נכשלה
 header_ename=שם כותרת חסר או לא חוקי
 header_request_header_access=בקש כותרות
 header_reply_header_access=השב לכותרות
+
 refresh_title=רענן כללים
 refresh_none=טרם הוגדרו כללי רענון.
 refresh_re=הבעה רגילה
@@ -894,6 +948,7 @@ refresh_epc=אחוז גיל חסר או לא תקף
 refresh_delete=מחק את כללי הרענון שנבחרו
 drefresh_err=מחיקת כללי הרענון נכשלה
 drefesh_enone=לא נבחר
+
 iptables_title=הגדרת ניתוב להפניה מחדש
 iptables_inst0=The IPtables firewall commands needed to setup port redirection do not appear to be installed on your system. See the <a href='$1'>Linux Firewall</a> module for more details.
 iptables_inst1=The <a href='$1'>Linux Firewall</a> module does not appear to have been fully setup on your system. This module makes use of that one to setup Frox port redirection.
@@ -908,18 +963,23 @@ iptables_enet=כתובת רשת חסרה או לא חוקית (צריכה להי
 iptables_eiface=ממשק רשת חסר או לא חוקי
 iptables_eapply=Apply firewall failed : $1
 iptables_eapply2=Apply Squid failed : $1
+
 syslog_access=יומן גישת דיונון
 syslog_cache=יומן שמור של דיונון
 syslog_store=יומן חנות אובייקטים דיונון
+
 purge_err=ניקוי כתובת האתר מהמטמון נכשל
 purge_title=נקה כתובת אתר במטמון
 purge_doing=Clearing URL $1 ..
 purge_done=.. בוצע.
 purge_failed=.. נכשל! עיין בהודעת השגיאה למעלה מהסיבה לכך.
+
 dhttp_err=מחיקת מגבלות ה- proxy נכשלה
 dhttp_enone=לא נבחר
+
 dicp_err=מחיקת מגבלות ה- ICP נכשלה
 dicp_enone=לא נבחר
+
 cachemgr_title=סיסמאות למנהל מטמון
 cachemgr_ecannot=אינך רשאי לערוך סיסמאות למנהל מטמון
 cachemgr_def1=אין צורך בסיסמאות

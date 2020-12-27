@@ -19,11 +19,13 @@ index_force=Günlük Döndürmeyi Zorla
 index_forcedesc=Henüz olmasa bile, tüm günlük dosyalarının hemen döndürülmesini sağlayın.
 index_logrotate=logrotate
 index_delete=Seçili Günlük Rotasyonlarını Sil
+
 period_daily=Günlük
 period_weekly=Haftalık
 period_monthly=Aylık
 period_never=Asla
 period_bytes=bayt
+
 edit_title1=Günlük Dosyasını Düzenle
 edit_title2=Günlük Dosyası Oluştur
 edit_header=Döndürülmüş günlük dosyası ayrıntıları
@@ -62,8 +64,10 @@ edit_pre=Döndürmeden önce çalıştırılacak komutlar
 edit_default=Varsayılan ($1)
 edit_sharedscripts=Tüm dosyalar için komut dosyalarını yalnızca bir kez mi çalıştırmak istiyorsunuz?
 edit_now=Şimdi Döndür
+
 global_title=Global Seçenekler
 global_header=Tüm günlük dosyaları için varsayılan seçenekler
+
 save_err=Günlük kaydedilemedi
 save_efile=Eksik veya geçersiz günlük dosya adı
 save_esize=Eksik veya geçersiz maksimum boyut
@@ -81,6 +85,7 @@ save_eerrors=Hata mesajları için eksik e-posta adresi
 save_epre=Döndürme öncesi komut dosyası <tt>endscript</tt> veya <tt>endrotate</tt> satırı içeremez
 save_epost=Döndürme sonrası komut dosyası <tt>endscript</tt> veya <tt>endrotate</tt> satırı içeremez
 save_enofiles=Döndürülecek dosya girilmedi
+
 log_modify_sched=Günlük döndürme Cron işi değiştirildi
 log_create_sched=Günlük döndürme Cron işi oluşturuldu
 log_delete_sched=Silinen günlük döndürme Cron işi
@@ -89,6 +94,7 @@ log_create=$1 günlük dosyası için döndürme eklendi
 log_modify=$1 günlük dosyası için değiştirilmiş döndürme
 log_delete=$1 günlük dosyası için döndürme silindi
 log_delete_logs=$1 günlük dosyası için silinen döndürme
+
 sched_title=Günlük Döndürme Programı
 sched_desc=Bu modül kullanılarak gerçekleştirilecek günlük dönüşü için $1 komutu Cron tarafından düzenli bir programda (genellikle günlük) çalıştırılmalıdır.
 sched_runparts=Şu anda, günlük döndürme komutu $1 $2 komut dosyasından çalıştırılıyor ve ayarlanamıyor.
@@ -98,10 +104,12 @@ sched_enabled=Aşağıdaki zamanlarda etkin ..
 sched_save=Cron İşini Güncelle
 sched_err=Dönüş programı kaydedilemedi
 sched_when=Koşma zamanı
+
 force_title=Günlük Döndürmeyi Zorla
 force_doing=Tüm günlük dosyalarının anında döndürülmesini zorlamak ..
 force_doingone=Bir günlük dosyasının hemen döndürülmesini zorlama ..
 force_done=.. bitti.
 force_failed=.. başarısız oldu! Nedeni için yukarıdaki çıktıya bakın.
+
 delete_err=Günlükler silinemedi
 delete_enone=Hiçbiri seçilmedi

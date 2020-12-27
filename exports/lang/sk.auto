@@ -12,6 +12,7 @@ index_eprog=Spustiteľný súbor NFS servera nebol vo vašom systéme nájdený.
 index_delete=Odstrániť vybraté vývozy
 index_disable=Zakázať vybraté
 index_enable=Povoliť vybraté
+
 edit_title=Upraviť export
 create_title=Vytvoriť export
 edit_details=Exportujte podrobnosti
@@ -65,6 +66,7 @@ edit_sec_krb5i=Integrita Kerberos
 edit_sec_krb5p=Súkromie Kerberos
 edit_sec_lipkey=LIPKEY
 edit_sec_spkm=SPKM
+
 save_err=Export sa nepodarilo uložiť
 save_edir=Adresár „$1“ neexistuje
 save_epfs=Cesta pseudo-súborového systému '$1' nevyzerá ako absolútna cesta
@@ -78,6 +80,7 @@ save_pfs=$1 je už exportovaný ako adresár
 save_create_dir=Adresár '$1' sa nedá vytvoriť
 save_eanonuid=Neplatné používateľské meno pre anonymný prístup
 save_eanongid=Neplatný názov anonymnej prístupovej skupiny
+
 exports_webnfs=WebNFS klientmi
 exports_ngroup=Netgroup $1 
 exports_net=Sieť $1 
@@ -85,6 +88,7 @@ exports_all=Každý
 exports_hosts=Hostitelia $1 
 exports_host=Hostiteľ $1 
 exports_gss=Overená sieť: $1 
+
 log_modify=Upravený export systému NFS $1 
 log_modify_l=Upravený export systému NFS $1 do $2 
 log_delete=Odstránený export NFS $1 

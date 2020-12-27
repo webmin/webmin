@@ -1,17 +1,22 @@
 index_unknown=neznámý
 index_ecannot=Nemáte oprávnění spravovat konfigurační soubor SpamAssassin $1 
+
 white_addr2=Adresa příjemce
 white_rcvd2=Odesílatel nikdy klasifikovat jako spam
 white_tabham=Povolené adresy
 white_tabspam=Odepřené adresy
 white_tabsome=Cílové adresy
 white_tabimport=Import adres
+
 score_trusted=Sítě a hostitelé, kterým důvěřujete
+
 log_manual=Ručně upravený konfigurační soubor
+
 acl_awl=Povoleno uživatelům pro automatické úpravy bílé listiny
 acl_awl0=Všichni uživatelé
 acl_awl1=Pouze uvedení uživatelé $1 
 acl_awl2=Pouze členové skupin $1 
+
 amavisd_title=Amavisd Spam Delivery
 amavisd_desc=Formulář lze použít ke změně konfigurace Amavisd, která určuje, co se stane se zprávami klasifikovanými jako spam.
 amavis_ok=Změnit dodávku Amavisd
@@ -33,6 +38,7 @@ amavis_quarantine_level=Hity, nad nimiž je spamová zpráva v karanténě.
 amavis_dsn_level=Hity, nad nimiž se odesílateli neposílá žádné oznámení.
 amavis_delete_level=Hity, nad nimiž je smazaná zpráva.
 amavis_report_header=Vložit záhlaví X-Spam do spamové zprávy?
+
 amavis_level_char=Znak používaný k zobrazení úrovně spamu v záhlaví X-Spam-Level:.
 amavis_rewrite=Upravit téma: záhlaví spamu?
 amavis_rsubject=Připojte text k záhlaví Předmět: záhlaví
@@ -49,6 +55,7 @@ amavis_quarantine_today=Nevyžádaná pošta v karanténě dnes (24 hodin)
 amavis_quarantine_week=Nevyžádaná pošta v karanténě tento týden (7 dní)
 amavis_quarantine_month=Nevyžádaná pošta v karanténě tento měsíc (30 dní)
 amavis_quarantine_total=Celkový počet nevyžádaných e-mailů v karanténě
+
 awl_title=Spravujte automatické seznamy povolených
 awl_search=Vyhledat whitelist pro:
 awl_ok=Vyhledávání
@@ -74,6 +81,7 @@ awl_deleteone=Vymazat automatický seznam povolených
 awl_deleteonedesc=Odebrat všechny položky automatického seznamu povolených pro uživatele $1.
 awl_deleteall=Vymazat všechny automatické seznamy povolených
 awl_deletealldesc=Odeberte všechny položky automatického seznamu povolených položek pro všechny uživatele v systému.
+
 dawl_err=Odstranění z automatického seznamu povolených položek se nezdařilo
 dawl_eopen=Nelze otevřít bílou listinu
 dawl_enone=Nebyly vybrány žádné adresy k odstranění
@@ -81,6 +89,7 @@ dawl_ecannot=Pro tohoto uživatele nemáte povoleno spravovat automatický sezna
 dawl_doing=Mazání automatických whitelistů pro všechny uživatele ..
 dawl_done=.. smazáno $2 záznamů od $1 uživatelů.
 dawl_title=Odstranit všechny automatické seznamy povolených
+
 manual_title=Upravit konfigurační soubory
 manual_file=Upravit konfigurační soubor:
 manual_ok=OK

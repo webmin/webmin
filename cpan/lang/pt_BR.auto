@@ -28,6 +28,7 @@ index_tabinstall=Módulo de instalação
 index_tabsuggest=Módulos sugeridos
 index_allmods2=Módulos ausentes usados pelo Webmin
 index_wantmods=Módulos a serem instalados
+
 download_err=Falha ao instalar o módulo
 download_elocal=Nenhum arquivo local fornecido
 download_elocal2='$1' não existe
@@ -65,6 +66,7 @@ download_ebuild=Um ou mais módulos Perl precisam que $1 seja construído, mas e
 download_yum=Instalando o módulo Perl $1 do pacote $2 ..
 download_missingok=Módulos ausentes no CPAN
 download_fallback=Alguns módulos falharam ao instalar a partir dos pacotes, tentando instalar a partir da fonte.
+
 install_title=Módulo de instalação
 install_untar=Descompactando o arquivo do módulo
 install_make=Módulo de compilação
@@ -84,11 +86,13 @@ install_err2=Você também pode instalar o módulo do CPAN com o comando $1.
 install_exec=Executando $1 ..
 install_efile=O arquivo do módulo $1 não existe mais
 install_needunlink=Você pode tentar instalar novamente, retornando à página anterior e selecionando opções diferentes. Caso contrário, <a href='$1'>clique aqui para excluir os arquivos de pacotes temporários</a> para economizar espaço em disco.
+
 cpan_sel=Módulos abaixo de $1 ..
 cpan_title=Selecione o módulo Perl
 cpan_search=Encontre módulos nomeados
 cpan_match=Módulos correspondentes a $1 ..
 cpan_none=Nenhuma equivalência encontrada.
+
 edit_title=Detalhes do módulo
 edit_header=Informações do módulo
 edit_mod=Nome do módulo
@@ -105,6 +109,7 @@ edit_method=Instalado a partir de
 edit_rpm=Pacote RPM $1 
 edit_debian=Pacote Debian $1 
 edit_manual=Instalação manual do módulo Perl
+
 uninstall_title=Desinstalar módulo
 uninstall_rusure=Tem certeza de que deseja desinstalar o módulo Perl $1 ? Os seguintes arquivos serão excluídos :
 uninstall_rusure2=Tem certeza de que deseja desinstalar o módulo Perl $1 e o submódulo (s) $2 ? <br> Os seguintes arquivos serão excluídos :
@@ -112,7 +117,9 @@ uninstall_ok=Desinstalar agora
 uninstall_rpm=O módulo será removido desinstalando o pacote $1 RPM.
 uninstall_debian=O módulo será removido através da desinstalação do pacote $1 Debian.
 uninstall_err=Falha ao desinstalar o módulo
+
 delete_efile=Arquivo de pacote inválido!
+
 uninstalls_title=Desinstalar módulos
 uninstalls_err=Falha ao desinstalar os módulos
 uninstalls_enone=Nenhum selecionado

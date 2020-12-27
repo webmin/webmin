@@ -21,6 +21,7 @@ index_mailfromnone=Mặc định (<tt>root</tt>)
 index_program=Lệnh chạy khi phát hiện sự cố
 index_programnone=Đừng chạy
 index_monitor=Giám sát kích hoạt?
+
 linear=Tuyến tính (nối)
 raid0=RAID0 (Sọc)
 raid1=RAID1 (Nhân đôi)
@@ -29,6 +30,7 @@ raid5=RAID5 (Phân phối chẵn lẻ)
 raid6=RAID6 (Chẵn lẻ phân phối kép)
 raid10=RAID10 (Sọc và Nhân đôi)
 blocks=khối
+
 create_title=Tạo thiết bị RAID
 create_header=Tùy chọn thiết bị RAID
 create_device=Tập tin thiết bị
@@ -62,6 +64,7 @@ create_o2_layout=2 bản sao bù
 create_n3_layout=3 bản sao gần
 create_f3_layout=3 bản sao xa
 create_o3_layout=3 bản sao bù
+
 view_title=Thiết bị RAID
 view_header=Tùy chọn thiết bị RAID
 view_device=Tập tin thiết bị
@@ -117,6 +120,7 @@ view_mountmsg=Nhập một thư mục và nhấp vào nút này để đến m�
 view_mountmsg2=Nhấp vào nút này để sử dụng thiết bị RAID này cho bộ nhớ ảo trên hệ thống của bạn.
 view_blocks=$1 khối
 view_sparegroup=Nhóm phụ tùng
+
 mkfs_title=Tạo hệ thống tập tin
 mkfs_header2=Biểu mẫu này cho phép bạn xây dựng hệ thống tệp $2 mới trên $1. <b>Tất cả</b> dữ liệu hiện có sẽ bị xóa!
 mkfs_options=Tùy chọn hệ thống tập tin Linux mới
@@ -124,6 +128,7 @@ mkfs_err=Không thể tạo hệ thống tập tin
 mkfs_exec=Thực hiện lệnh $1 ..
 mkfs_failed=.. Lệnh không thành công!
 mkfs_ok=.. lệnh hoàn thành.
+
 emkraid=<tt>mk ngại</tt> không thành công : $1 
 eraidstop=<tt>raidstop</tt> không thành công : $1 
 eraidstart=<tt>raidstart</tt> không thành công : $1 
@@ -135,6 +140,7 @@ emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
 log_create=Đã tạo $1 thiết bị RAID $2 
 log_stop=Thiết bị RAID bị vô hiệu hóa $1 
 log_start=Thiết bị RAID được kích hoạt $1 
@@ -147,14 +153,17 @@ log_grow=Phát triển thiết bị RAID $1 cho tổng số $2 đĩa
 log_convert_to_raid6=Đã chuyển đổi thiết bị RAID5 $1 sang thiết bị RAID6
 log_convert_to_raid5=Đã chuyển đổi thiết bị RAID6 $1 sang thiết bị RAID5
 log_notif=Cập nhật tùy chọn thông báo sự cố RAID
+
 notif_err=Không thể lưu tùy chọn thông báo sự cố RAID
 notif_emailaddr=Địa chỉ thông báo thiếu hoặc không hợp lệ
 notif_emailfrom=Thiếu hoặc không hợp lệ Từ địa chỉ
 notif_eprogram=Chương trình bị thiếu hoặc không tồn tại để chạy
+
 delete_title=Xóa mảng RAID
 delete_rusure=Bạn có chắc chắn muốn xóa mảng RAID $1, sử dụng $2 không gian đĩa?
 delete_ok=Có, xóa nó đi
 delete_eidx=Không có mảng RAID nào được chọn!
+
 remove_title=Xóa phân vùng khỏi mảng RAID
 remove_rusure=Bạn có chắc chắn muốn xóa phân vùng $2 của mảng RAID $1 không?
 remove_ok=Vâng, loại bỏ nó

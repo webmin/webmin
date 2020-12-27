@@ -7,6 +7,7 @@ index_refsel=刷新所选
 index_group=$1的成员
 index_tmpls=编辑电子邮件模板
 index_tmplsdesc=查看和编辑用于构造受监视服务中断时发送的电子邮件的模板。
+
 type_sslcert=SSL证书
 type_ftp=远程FTP服务
 type_fail2ban=Fail2Ban服务器
@@ -30,6 +31,8 @@ type_alive=生存系统
 type_rssh=远程SSH
 type_slapd=LDAP服务器
 type_ldap=LDAP连接
+
+mon_virtualmin=警告！该监视器与Virtualmin域 $1相关联，因此不应在此处进行编辑或删除。
 mon_header2=运行命令
 mon_header3=监控服务选项
 mon_remotes2=在主机和组上运行
@@ -73,6 +76,7 @@ mon_changes0=显示每种事件类型
 mon_changes1=仅显示更改
 mon_all=显示所有历史事件
 mon_nochanges=在最近的 $1个历史事件中，状态没有发生变化。
+
 sched_pnone=不发送页面
 sched_warn2=任何时候服务中断
 sched_eemailserver=您的邮件服务器未安装： $1
@@ -87,11 +91,13 @@ sched_subject0=无（警报在体内）
 sched_subject1=警报文本（将正文留空）
 sched_subject2=自订文字
 sched_esubject=缺少短信主题
+
 http_method=HTTP请求方法
 http_regexp=页面必须与正则表达式匹配
 http_eregexp=没有用于匹配页面的正则表达式
 http_none2=不匹配
 http_ehead=检查正则表达式时，无法使用HEAD请求方法
+
 proc_not=如果过程是失败的
 proc_not0=没有运行
 proc_not1=跑步
@@ -100,6 +106,7 @@ proc_ethresh=缺少或无效的进程数
 proc_asuser=以用户身份运行
 proc_anyuser=任何使用者
 proc_easuser=进程运行用户不存在
+
 exec_mode=退出状态检查
 exec_mode0=如果命令失败，则失败监视器
 exec_mode1=如果命令成功，则监视失败
@@ -109,6 +116,7 @@ exec_noregexp=不要检查
 exec_remode=正则表达式检查
 exec_remode0=如果输出不匹配则失败
 exec_remode1=如果输出匹配则失败
+
 file_elarge=文件太大： $1
 file_esmall=文件太小： $1
 file_eowner=具有错误所有者的文件： $1
@@ -118,6 +126,7 @@ file_group=文件组必须为
 file_nocheck=任何东西
 file_perms=八进制权限必须为
 file_eperm=权限错误的文件： $1
+
 space_min2=最小可用空间
 space_mode0=绝对尺寸
 space_mode1=占总数的百分比
@@ -127,12 +136,14 @@ space_ierr=仅可用 $1个inode
 space_merr=仅剩 $1空间
 space_perr=只有 $1％免费
 space_dferr=无法获取文件系统大小
+
 log_deletes=已删除 $1台监视器
 log_tmpl_create=已创建电子邮件模板 $1
 log_tmpl_modify=修改后的电子邮件模板 $1
 log_tmpl_delete=删除的电子邮件模板 $1
 log_tmpl_deletes=已删除 $1电子邮件模板
 log_refresh=刷新监视器状态
+
 memory_min2=最小可用实内存
 memory_emin=可用实内存丢失或无效
 memory_eproc=Webmin不知道如何检查操作系统上的可用内存
@@ -142,7 +153,9 @@ memory_freelow=只有 $1的实际内存可用
 memory_freelowswap=仅可用 $1虚拟内存
 memory_minswap=最小可用虚拟内存
 memory_eminswap=可用虚拟内存不足或无效
+
 proftpd_etype=ProFTPD独立运行时，不能使用此监视器
+
 mailserver_to=发送电子邮件到地址
 mailserver_timeout=超时和间隔
 mailserver_units_0=秒
@@ -150,22 +163,28 @@ mailserver_units_1=分钟
 mailserver_units_2=小时
 mailserver_units_3=天
 mailserver_desc=下面的地址必须是一个自动回复者，该回复者使用相同的Subject：行答复源地址。
+
 oldfile_file=要监视的文件（如果未更改则失败）
 oldfile_diff=如果未更改则失败
 oldfile_secs=秒
+
 raid_device=RAID设备
 raid_edevice=未选择RAID设备
 raid_bad=检测到错误的磁盘
 raid_resync=目前正在重新同步
 raid_notfound=找不到RAID设备 $1
 raid_other=其他 ..
+
 iface_iface=检查界面
+
 init_action=检查动作
 init_eaction=未选择任何动作
+
 refresh_title=刷新状态
 refresh_doing=刷新所有监视器的状态。
 refresh_doing2=刷新 $1所选监视器的状态。
 refresh_done=..完成。
+
 sensors_name=传感器检查
 sensors_value=失败时
 sensors_value0=系统显示警告
@@ -176,6 +195,7 @@ sensors_none=在您的系统上未检测到传感器。您可能需要运行<tt>
 sensors_cur=$1（当前为 $2 $3）
 sensors_emin=最小值缺失或无效
 sensors_emax=最大值缺失或无效
+
 nut_ups=NUT UPS检查
 nut_name=要检查的属性
 nut_value=失败时
@@ -186,6 +206,7 @@ nut_eups=没有USP要检查
 nut_cur=$1（当前为 $2）
 nut_emin=最小值缺失或无效
 nut_emax=最大值缺失或无效
+
 mailq_system=邮件服务器
 mailq_qmailadmin=邮箱
 mailq_postfix=后缀
@@ -194,6 +215,7 @@ mailq_size=最大邮件队列大小
 mailq_esize=最大队列大小丢失或无效
 mailq_toomany=关闭- $1邮件已排队
 mailq_ok=最多-已将 $1邮件排队
+
 dns_server=DNS服务器
 dns_host=要查找的主机名
 dns_address=预期的IP地址
@@ -201,6 +223,7 @@ dns_eserver=DNS服务器丢失或无效
 dns_ehost=查找缺少或外观无效的主机名
 dns_eaddress=预期IP地址缺失或无效
 dns_ecmds=系统上均未安装<tt>nslookup</tt>或<tt>dig</tt>命令
+
 monitor_sub_down=$1低于 $2
 monitor_pager_down=$1：“$2”下降了 $3
 monitor_snmp_down=$1:$2
@@ -232,8 +255,10 @@ monitor_run1=在 $2上运行 $1 ..
 monitor_run2=正在运行 $1 ..
 monitor_runerr=无法在 $2上运行 $1 : $3
 monitor_email_stat=当前状态： $1
+
 deletes_egone=选定的监视器之一不再存在
 deletes_enone=未选择监视器
+
 ftp_host=FTP服务器主机
 ftp_port=FTP端口
 ftp_user=以用户身份登录
@@ -250,6 +275,7 @@ ftp_econn=TLS FTP连接失败
 ftp_econn2=TLS FTP连接失败： $1
 ftp_elogin=TLS FTP登录失败： $1
 ftp_etlsfile=TLS FTP下载失败： $1
+
 query_driver=SQL数据库类型
 query_db=数据库名称
 query_host=数据库服务器主机
@@ -270,9 +296,12 @@ query_elogin=登录失败： $1
 query_eprepare=SQL错误： $1
 query_eexecute=SQL失败： $1
 query_ewrong=错误的结果： $1
+
 consume_rate=最大消耗率（每秒）
 consume_high=消耗率为 $1 /秒
+
 alive_up=最多 $1
+
 rssh_host=SSH服务器主机
 rssh_ruser=以用户身份登录
 rssh_rpass=用密码登录
@@ -288,6 +317,7 @@ rssh_error=SSH错误
 rssh_haspass=密码
 rssh_port=SSH服务器端口
 rssh_eport=端口号丢失或无效
+
 tmpls_title=电子邮件范本
 tmpls_ecannot=您无权编辑电子邮件模板
 tmpls_none=尚未定义电子邮件模板。所有警报将使用Webmin默认消息发送。
@@ -296,6 +326,7 @@ tmpls_email=电邮讯息
 tmpls_add=添加新的电子邮件模板。
 tmpls_return=模板清单
 tmpls_delete=删除所选模板
+
 tmpl_title1=创建电子邮件模板
 tmpl_title2=编辑电子邮件模板
 tmpl_header=警报电子邮件模板消息
@@ -320,9 +351,11 @@ tmpl_esms=缺少短信
 tmpl_esnmp=缺少SNMP消息
 tmpl_err2=删除电子邮件模板失败
 tmpl_eusers=以下监视器正在使用它： $1
+
 dtmpls_err=删除模板失败
 dtmpls_enone=未选择
 dtmpls_eusers=以下监视器正在使用 $1 : $2
+
 sslcert_src=证书位置
 sslcert_url=从HTTPS URL
 sslcert_file=来自服务器上的文件
@@ -340,18 +373,21 @@ sslcert_eend=$1之后无效
 sslcert_left=上-到期前 $1天
 sslcert_ematch=主机名 $1与证书 $2不匹配
 sslcert_emismatch=证书主机名检查只能在检查URL时使用
+
 du_dir=监控目录
 du_max=最大尺寸
 du_edir=缺少或非绝对目录路径
 du_emax=最大大小缺失或非数字
 du_over=大小为 $1
 du_under=大小仅为 $1
+
 ldap_edriver=未安装Perl模块 $1
 ldap_host=LDAP服务器主机名
 ldap_port=LDAP服务器端口
 ldap_ssl=使用SSL连接？
 ldap_user=LDAP服务器登录
 ldap_pass=LDAP服务器密码
+
 info_desc=系统监控器
 info_last=当前状态
 info_title=系统和服务器状态

@@ -27,6 +27,7 @@ index_lvused=Využitý prostor
 index_lvuse=Používá
 index_snapof=(Snímek $1)
 index_thin=Tenký fond LVM pro $1 LV
+
 lv_thin=Vytvořte jako tenký LV v bazénu
 lv_thin2=Tenké zajištěno v bazénu
 lv_nothin=Žádné (vytvořit jako normální LV)
@@ -69,21 +70,26 @@ lv_pvfrom=Přesun bloků z fyzického svazku
 lv_pvto=Na fyzický objem
 lv_moveok=Přesuňte bloky
 lv_return=logický svazek
+
 resize_emounted=Souborový systém v tomto logickém svazku nelze během připojení změnit
 resize_emounted2=Souborový systém na tomto logickém svazku nelze během připojení zmenšit
+
 pv_force=Vynutit přidání objemu?
 pv_petotal2=Přidělená velikost
 pv_resize=Změnit velikost tak, aby odpovídala zařízení
 pv_err3=Velikost fyzického svazku se nepodařilo změnit
 pv_lvs=Přidělení podle logických svazků
 pv_egone=Fyzický objem již neexistuje!
+
 vg_petotal2=Přidělená velikost
 vg_egone=Skupina svazků již neexistuje!
+
 pvmove_err=Nepodařilo se přesunout logický svazek
 pvmove_title=Přesunout logický svazek
 pvmove_start=Přesouvá se logický svazek $1 z $2 do $3 ..
 pvmove_failed=.. pohyb selhal!
 pvmove_done=.. pohybovat kompletní
+
 thin_title=Vytvořte tenký fond
 thin_desc=Tenká oblast je dvojice LV, které lze použít k vytvoření dalších LV, které mohou být větší než dostupné rozsahy. Místo je spotřebováno pouze v případě potřeby, nikoli při vytváření LV uvnitř fondu. VAROVÁNÍ - Všechna data na vybraných LV budou ztracena!
 thin_header=Nové podrobnosti o tenkém bazénu
@@ -95,6 +101,8 @@ thin_err=Vytvoření tenkého fondu se nezdařilo
 thin_esame=Obě vybrané LV jsou stejné
 thin_edata=Vybraná data LV se již používají
 thin_emetadata=Vybraná metadata LV se již používají
+
 log_rollback_lv=Snímek vrácený zpět $1 
 log_resize_pv=Změněný fyzický objem $1 v VG $2 
+
 blocks=bloky

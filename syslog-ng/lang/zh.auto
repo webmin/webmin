@@ -9,6 +9,7 @@ index_start=启动Syslog-NG
 index_startdesc=单击此按钮以使用当前配置启动Syslog-NG守护程序。
 index_return=模块索引
 index_version=Syslog-NG $1
+
 options_title=记录选项
 options_header=所有日志文件的选项
 options_secs=秒
@@ -55,6 +56,7 @@ options_esync=写入前缺少或无效的消息数要缓存
 options_estats=统计消息之间等待的时间丢失或非数字
 options_elog_fifo_size=缺少或无效的消息数要缓冲
 options_elog_msg_size=缺少或非数字的最大日志消息大小
+
 destinations_title=日志目标
 destinations_name=目的地名称
 destinations_type=写给
@@ -77,6 +79,7 @@ destinations_add=添加一个新的日志目标。
 destinations_return=日志目标
 destinations_desc=其他模块的日志
 destinations_cmd=$1的输出
+
 destination_header=日志目标选项
 destination_title1=创建日志目标
 destination_title2=编辑日志目标
@@ -117,17 +120,22 @@ destination_enet_localip=本地IP地址丢失或无效
 destination_enet_localport=本地端口号缺失或无效
 destination_enet_host=缺少或无效的Syslog服务器主机或地址
 destination_eunix=缺少Unix套接字名称
+
 ddelete_err=删除目的地失败
 ddelete_enone=未选择
 ddelete_eused=无法删除目标 $1，因为它由日志目标使用
+
 sdelete_err=删除源失败
 sdelete_enone=未选择
 sdelete_eused=无法删除日志源 $1，因为它由日志目标使用
+
 fdelete_err=删除过滤器失败
 fdelete_enone=未选择
 fdelete_eused=无法删除日志过滤器 $1，因为日志目标使用它
+
 ldelete_err=删除日志目标失败
 ldelete_enone=未选择
+
 filters_title=日志过滤器
 filters_name=筛选器名称
 filters_desc=条件
@@ -144,6 +152,7 @@ filters_program=程序<tt>$1</tt>
 filters_match=匹配“$1”
 filters_host=来自主机名<tt>$1</tt>
 filters_netmask=来自发件人<tt>$1</tt>
+
 filter_title1=创建日志过滤器
 filter_title2=编辑日志过滤器
 filter_header=日志过滤器规格详细信息
@@ -169,6 +178,7 @@ filter_enet=缺少或无效的网络IP地址
 filter_emask=缺少或无效的网络掩码
 filter_ebool=复杂表达中的错误
 filter_egone=过滤器不再存在！
+
 logs_title=记录目标
 logs_source=资料来源
 logs_filter=筛选器
@@ -177,6 +187,7 @@ logs_add=添加一个新的日志目标。
 logs_delete=删除选定的日志目标
 logs_return=记录目标
 logs_none=没有
+
 log_title1=创建日志目标
 log_title2=编辑日志目标
 log_header=记录源，过滤器和目标选择
@@ -190,6 +201,7 @@ log_flags=目标选项
 log_egone=日志目标不再存在！
 log_err=保存日志目标失败
 log_esource=未选择来源
+
 sources_title=日志来源
 sources_none=尚未定义任何来源！
 sources_add=添加一个新的日志源。
@@ -207,6 +219,7 @@ sources_typen=太阳流
 sources_typenw=Syslog服务器
 sources_return=日志来源
 sources_none2=没有
+
 source_title1=创建日志源
 source_title2=编辑日志源
 source_header=日志源选项
@@ -243,15 +256,20 @@ source_door=门文件名
 source_esun_streams_name=缺少或无效的Sun Streams文件名
 source_edoor=缺少或无效的Sun Streams Door文件名
 source_transport=网络协议
+
 view_title=查看日志文件
 view_header=$2的最后 $1行
 view_empty=日志文件为空
 view_refresh=刷新
 view_filter=仅显示文字为 $1的行
+
 apply_err=应用配置失败
 apply_egone=没有运行！
+
 start_err=无法启动Syslog-NG服务器
+
 stop_err=停止Syslog-NG服务器失败
+
 log_create_destination=已创建日志目标 $1
 log_modify_destination=修改的日志目标 $1
 log_delete_destination=删除的日志目标 $1

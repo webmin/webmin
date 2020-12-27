@@ -13,6 +13,7 @@ index_applydesc=Klik på denne knap for at anvende den aktuelle SpamAssassin-kon
 index_cpan=Da SpamAssassin er et Perl-modul, kan du også installere det automatisk ved hjælp af Webmins <a href='$2'>Perl-moduler</a> -modul til at downloade $1 fra CPAN.
 index_spamassassin=SpamAssassin
 index_ecannot=Du har ikke tilladelse til at administrere SpamAssassin-konfigurationsfilen $1 
+
 white_title=Tilladte og afvist adresser
 white_desc=Tabellerne på denne side giver dig mulighed for at specificere Fra: og Til: adresser til e-mail, der altid eller aldrig er kategoriseret som spam. Enhver anden e-mail vil blive behandlet som normalt efter SpamAssassins regler. Alle e-mail-adresser kan indeholde jokertegn, som *@foo.com eller *.foo.com for at matche hele domæner.
 white_from=Afsendere til aldrig at klassificere som spam
@@ -44,6 +45,7 @@ white_tabham=Tilladte adresser
 white_tabspam=Nægtede adresser
 white_tabsome=Destinationsadresser
 white_tabimport=Importer adresser
+
 score_title=Spamklassificering
 score_desc=SpamAssassin tildeler en score til hver meddelelse baseret på dens indhold og overskrifter. Valgmulighederne på denne side bestemmer den score, over hvilken en meddelelse betragtes som spam, og nogle af de metoder, hvorpå denne score beregnes.
 score_header=Indstillinger for klassificering af spammeddelelser
@@ -77,6 +79,7 @@ score_emxdelay=Manglende eller ugyldige sekunder for at vente mellem MX-kontroll
 score_etimeout=Manglende eller ugyldige sekunder for at vente på RBL-forespørgsler
 score_ereceived=Manglende eller ugyldigt antal modtagne: headere til kontrol med RBL
 score_bayes=Brug Bayesian learning classifier?
+
 report_title=Ændring af meddelelse
 report_desc=Valgmulighederne på denne side styrer de ændringer, SpamAssassin foretager til overskrifter og krop af alle meddelelser, den analyserer, og ændringer, som den foretager til dem, der er klassificeret som spam.
 report_header=Valgmuligheder for analyse og spam-besked
@@ -109,6 +112,7 @@ report_addspam=Spam
 report_addham=skinke
 report_addall=Alle
 report_eaddheader=Manglende eller ugyldig yderligere header for at tilføje $1 
+
 user_title=Diverse brugerindstillinger
 user_desc=Indstillingerne på denne side er for det meste relateret til stier og indstillinger, som SpamAssassin bruger til de eksterne spam-identifikationspakker Razor, DCC og Pyzor. Du kan også fortælle SpamAssassin, hvis det vil være i stand til at udføre DNS-opslag eller ej.
 user_header=Diverse indstillinger på brugerniveau
@@ -131,6 +135,7 @@ user_err=Kunne ikke gemme brugerindstillinger
 user_etimeout='$1' er ikke en gyldig timeout
 user_epath='$1' er ikke en gyldig klientprogramsti
 user_emax='$1' er ikke et gyldigt kontrolsumantal
+
 header_title=Header og Body Tests
 header_desc=Denne side giver dig mulighed for at definere yderligere test, som SpamAssassin vil anvende til e-mail, baseret på meddelelsesoverskrifter, kropsindhold, URL'er, der findes i kroppen, eller kombinationer af andre test. Navnet, der er tildelt til hver test, er op til dig, men er normalt noget som CONTAINS_FOO. Den aktuelle score, som SpamAssassin tilføjer til meddelelser, der matcher en test, kan indstilles ved at indtaste dine egne eller indbyggede testnavne i tabellerne nederst på siden.
 header_switch=Skift til simpel tilstand ..
@@ -164,6 +169,7 @@ header_eeval='$1' er ikke en gyldig evalueringsfunktion
 header_eheader='$1' er ikke en gyldig e-mailhoved
 header_eregexp='$1' er ikke et gyldigt regulært udtryk (skal være som / expression /)
 header_emeta=Manglende testudtryk for test '$1'
+
 priv_title=Diverse privilegerede indstillinger
 priv_desc=Indstillingerne på dette kan kun indstilles globalt snarere end i de enkelte brugers konfigurationsfiler. De styrer med stier til forskellige konfigurations- og loggingsfiler.
 priv_header=Diverse indstillinger på privilegium-niveau
@@ -183,6 +189,7 @@ priv_eargs='$1' er ikke en gyldig liste over argumenter
 priv_emscore='$1' er ikke en gyldig score for højeste sætning
 priv_ephrase='$1' er ikke en gyldig spam-sætning med to ord
 priv_escore=Manglende eller ugyldig score for spam-sætning '$1'
+
 usually=Normalt $1 
 ecannot=Du har ikke tilladelse til at bruge denne side
 setup_title=Opsætning af Procmail til SpamAssassin
@@ -202,11 +209,13 @@ setup_drop1=Modtager Unix-bruger
 setup_drop0=<tt>rod</tt> bruger
 setup_ok=Opsætning af Procmail til SpamAssassin
 setup_email=Videresendes til e-mail-adresse
+
 setup_err=Kunne ikke konfigurere SpamAssassin
 setup_efile=Mbox eller ugyldig fil i mbox-format
 setup_emaildir=Manglende eller ugyldig Qmail-mailkatalog
 setup_emhdir=MH-postkatalog mangler eller er ugyldigt
 setup_eemail=Manglende eller ugyldig e-mail-adresse
+
 log_white=Ændrede tilladte og nægtede adresser
 log_score=Ændret spam-klassificering
 log_report=Ændret meddelelsesændring
@@ -217,12 +226,14 @@ log_setup=Opsætning af Procmail til SpamAssassin
 log_procmail=Ændret Procmail-konfiguration
 log_import=Importerede $1 tilladte adresser
 log_manual=Manuel redigeret konfigurationsfil
+
 import_title=Importer adresser
 import_err=Import af adresser mislykkedes
 import_efile=Ingen fil at importere fra valgt
 import_enone=Der blev ikke fundet nogen e-mail-adresser i filen
 import_ok1=$2 e-mail-adresser blev fundet i filen, hvoraf $1 var nye og er føjet til listen over tildelte adresser.
 import_ok2=$1 e-mail-adresser blev fundet i filen, men de var alle allerede i listen over tilladte adresser.
+
 mail_title=Spam-mail
 mail_desc=Denne side viser meddelelser, der er klassificeret som spam, og afventer noget. Meddelelser, der er forkert identificeret, kan flyttes til din indbakke, mens de, der virkelig er spam, kan slettes.
 mail_level=score
@@ -240,10 +251,13 @@ mail_will=Automatisk opdatering på $1 minutter
 mail_wills=Automatisk opdatering i $1 sekunder
 mail_delall=Slet al spam
 mail_search3=Søg efter score ovenfor:
+
 process_eclean=Der opstod en fejl ved fjernelse af SpamAssassin-overskrifterne fra denne e-mail
 process_ereport=Kunne ikke rapportere e-mail til SpamAssassin : $1 
+
 apply_err=Kunne ikke anvende ændringer
 apply_none=Der blev ikke fundet nogen SpamAssassin-dæmonprocesser!
+
 acl_avail=Ikoner til rådighed for brugeren
 acl_file=SpamAssassin-konfigurationsfil, der skal redigeres
 acl_filedef=Global konfigurationsfil
@@ -251,8 +265,10 @@ acl_awl=Tilladte brugere til redigering af automatisk hvidliste
 acl_awl0=Alle brugere
 acl_awl1=Kun listede brugere $1 
 acl_awl2=Kun medlemmer af grupper $1 
+
 search_escore=Manglende eller ugyldig spam-score
 search_results5=$1 e-mail med spam-score på eller over $2 ..
+
 razor_title=Opsætning af barbermaskinens spamdetektor
 razor_desc=Vipul's Razor er et samarbejdsspamdetekterings- og rapporteringssystem, der kan forbedre klassificeringen af spam sendt til din adresse. Før den kan bruges, skal du imidlertid registrere dig på en Razor-konto ved hjælp af nedenstående formular.
 razor_user=Razor-brugernavn
@@ -267,6 +283,7 @@ razor_epass=Manglende adgangskode
 razor_doing=Forsøger nu at registrere og konfigurere Razor ..
 razor_done=.. Færdig.
 razor_failed=.. mislykkedes! Se fejloutput ovenfor for årsagen.
+
 amavisd_title=Amavisd-spamlevering
 amavisd_desc=Formularen kan bruges til at ændre Amavisd-konfigurationen, der bestemmer, hvad der sker med meddelelser klassificeret som spam.
 amavis_ok=Skift levering af Amavisd
@@ -304,9 +321,11 @@ amavis_quarantine_today=Spam-mails i karantæne i dag (24 timer)
 amavis_quarantine_week=Spam-mails i karantæne denne uge (7 dage)
 amavis_quarantine_month=Spam-mails i karantæne denne måned (30 dage)
 amavis_quarantine_total=Samlet antal spam-e-mails i karantæne
+
 procmail_title=Procmail-spam-levering
 procmail_ok=Skift Procmail-levering
 procmail_desc=Formularen kan bruges til at ændre Procmail-konfigurationen, der bestemmer, hvad der sker med meddelelser klassificeret som spam.
+
 simple_title=Header og Body Tests
 simple_desc=Denne side giver dig mulighed for at definere yderligere test, som SpamAssassin vil anvende til e-mail, baseret på meddelelsesoverskrifter, kropsindhold, URL'er, der findes i kroppen. Navnet, der er tildelt til hver test, er op til dig, men er normalt noget som CONTAINS_FOO.
 simple_switch=Skift til avanceret tilstand ..
@@ -317,8 +336,10 @@ simple_regexp=Match udtryk
 simple_score=Score, der skal anvendes
 simple_describe=Beskrivelse
 simple_err=Kunne ikke gemme meddelelsestests
+
 before_ecmd=Før-gemning kommando mislykkedes : $1 
 after_ecmd=Efter-gemenskommando mislykkedes : $1 
+
 connect_emysql=Kunne indlæse databasedriveren $1 
 connect_elogin=Kunne ikke logge ind på databasen $1:$2.
 connect_equery=Databasen $1 indeholder ikke præferencetabellen $2 
@@ -326,9 +347,11 @@ connect_eldapmod=Perl-modul $1, der er nødvendigt for at kommunikere med LDAP, 
 connect_eldap=Kunne ikke oprette forbindelse til LDAP-server $1 på port $2 
 connect_eldaplogin=Kunne ikke logge ind på LDAP-server $1 som $2 : $3 
 connect_ebase=LDAP-base DN $1 er ikke gyldig : $2 
+
 eldap=LDAP-operation mislykkedes : $1 
 esql=SQL mislykkedes : $1 
 ldap_euser=Kunne ikke finde LDAP-brugerobjekt for $1 
+
 db_title=SQL- og LDAP-databaser
 db_header=Indstillinger for konfigurationslagerdatabase
 db_dsn=Gem brugerkonfigurationer i
@@ -364,6 +387,7 @@ db_eldapport=Manglende eller ugyldigt LDAP-serverportnummer
 db_eldapdn=Manglende eller ugyldig base-DN - ingen mellemrum er tilladt
 db_eldapattr=Manglende eller ugyldig SpamAssassin-attribut
 db_eldapuid=Manglende eller ugyldig brugernavn attribut
+
 awl_title=Administrer automatisk hvidliste
 awl_search=Søg hvidliste efter:
 awl_ok=Søg
@@ -389,6 +413,7 @@ awl_deleteone=Ryd automatisk hvidliste
 awl_deleteonedesc=Fjern alle poster med automatisk hvidliste for brugeren $1.
 awl_deleteall=Ryd alle automatisk hvidliste
 awl_deletealldesc=Fjern alle auto-hvidlistelister for alle brugere på systemet.
+
 dawl_err=Kunne ikke slette fra automatisk hvidliste
 dawl_eopen=Kunne ikke åbne hvidliste
 dawl_enone=Ingen adresser til sletning er valgt
@@ -396,6 +421,7 @@ dawl_ecannot=Du har ikke tilladelse til at administrere automatisk hvidliste for
 dawl_doing=Sletning af automatisk hvidliste for alle brugere ..
 dawl_done=.. slettede $2 poster fra $1 brugere.
 dawl_title=Slet alle automatisk hvidliste
+
 manual_title=Rediger konfigurationsfiler
 manual_file=Rediger konfigurationsfil:
 manual_ok=Okay

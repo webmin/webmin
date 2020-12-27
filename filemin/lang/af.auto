@@ -155,8 +155,10 @@ menu_bookmarks=boekmerke
 notallowed=U mag nie toegang tot $1 hê nie. Die toegelate kaarte is : $2 
 error_upload_emax=Opgelaaide lêer is groter as die limiet van $1 
 extract_etype=Ongesteunde argieflêertipe
+
 info_total1=Totaal: $1 lêer en $2 gids
 info_total2=Totaal: $1 lêers en $2 gids
 info_total3=Totaal: $1 lêer en $2 -kaarte
 info_total4=Totaal: $1 lêers en $2 -kaarte
+
 ownership=Eienaar

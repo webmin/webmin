@@ -32,6 +32,7 @@ index_man=Rankiniu būdu redaguoti konfigūraciją
 index_mandesc=Tiesiogiai redaguokite pirminį „Procmail“ konfigūracijos failą, kad sukurtumėte savo taisykles, kintamuosius ir blokus.
 index_ecmd=„Procmail“ programa $1 nerasta jūsų sistemoje. Arba jis neįdiegtas, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
 index_delete=Ištrinti pasirinktus veiksmus
+
 edit_title2=Redaguoti veiksmą
 edit_title1=Sukurti veiksmą
 edit_header1=Išsami pristatymo veiksmo informacija
@@ -67,6 +68,7 @@ edit_none=Nė vienas
 edit_lock=Konkreti byla
 edit_ctype=Sąlygos tipas
 edit_cvalue=Reguliari išraiška ar komanda
+
 save_err=Nepavyko išsaugoti veiksmo
 save_eaction_0=Trūksta failo, kurį būtų galima pridėti
 save_eaction_1=Trūksta MH aplanko, į kurį būtų galima rašyti
@@ -79,6 +81,7 @@ save_elockfile=Trūksta užrakto failo pavadinimo
 save_esize=Trūksta arba netinkamas $1 būklės laiškas
 save_ere=Trūksta $1 sąlyginės išraiškos
 save_eshell=Trūksta komandos $1 sąlygai
+
 env_title1=Sukurti kintamąjį
 env_title2=Redaguoti kintamąjį
 env_header=Procmail aplinkos kintamasis
@@ -86,15 +89,19 @@ env_name=Kintamasis vardas
 env_value=Vertė
 env_err=Nepavyko išsaugoti kintamojo
 env_ename=Trūksta arba netinkamas kintamojo vardas
+
 inc_title1=Pridėti įtraukimo failą
 inc_title2=Redaguoti įtraukimo failą
 inc_header=Įtrauktas procmail taisyklių failas
 inc_inc=Įtrauktas failas
 inc_einc=Neįtrauktas failas
+
 config_eline=Nežinoma eilutė $1 $2 : $3 
+
 manual_title=Redaguoti konfigūraciją
 manual_desc=Šis puslapis gali būti naudojamas rankiniu būdu redaguoti „Procmail“ konfigūracijos failą $1. Būkite atsargūs, nes sintaksės patikrinimas nebus atliekamas.
 manual_edata=Jūsų naršyklė nepateikė jokių duomenų!
+
 log_create_rec=Sukurtas $1 receptas
 log_delete_rec=Ištrintas receptas iš $1 
 log_modify_rec=Pakeistas receptas į $1 
@@ -114,7 +121,9 @@ log_delete_inc=Ištrintas apima failą $1
 log_manual=Rankiniu būdu redaguojama konfigūracija
 log_up=Perkėlė įrašą aukštyn
 log_down=Įrašas perkeltas žemyn
+
 delete_err=Nepavyko ištrinti veiksmų
 delete_enone=Nepasirinkta
+
 check_epostfix=„Procmail“ neįgalintas jūsų „Postfix“ konfigūracijoje. Konfigūracijos faile <tt>$2</tt> turi būti <tt>$1</tt> parinktis, nustatyta kaip <tt>$3</tt>.
 check_esendmail=„Sendmail“ nėra sukonfigūruotas naudoti „Procmail“ vietiniam pristatymui. Tai galima sukonfigūruoti „Webmin“ <a href='$1'> „Sendmail Mail Server“ modulyje.

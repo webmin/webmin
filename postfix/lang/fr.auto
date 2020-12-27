@@ -1,18 +1,22 @@
 connect_emysql=Impossible de charger le pilote de base de données $1
 connect_elogin=Impossible de se connecter à la base de données $1:$2.
 index_postfix=Postfix
+
 index_esuper=La commande du superviseur Postfix $1 n'existe pas. La <a href='$2'>configuration du module</a> est peut-être incorrecte.
 index_reload=Recharger la configuration
 index_reloadmsg=Cliquez sur ce bouton pour que Postfix relise tous ses fichiers de configuration. Cela peut être utile si les fichiers de configuration de Postfix ont été modifiés manuellement.
 index_version=Version de Postfix $1
+
 aliases_addr=Alias de ..
 aliases_to=Alias pour ..
 aliases_type2=Adresses dans le fichier $1
 aliases_type5=Fichier à réponse automatique $1
 aliases_type6=Appliquer le fichier de filtre $1
 aliases_delete=Supprimer les alias sélectionnés
+
 postfinger_show=Spectacle
 postfinger_ecannot=Vous n'êtes pas autorisé à vérifier la configuration de Postfix
+
 mailclean_title=Nettoyer MailQueue
 mailclean_ecannot=Aucun privilège pour nettoyer MailQueues
 mailclean_active=Active-Queue
@@ -21,11 +25,13 @@ mailclean_deferred=File d'attente différée
 mailclean_defer=Defer-Queue
 mailclean_all=Toutes les files d'attente
 mailclean_search=Chaîne de recherche
+
 aform_type2=Adresses dans le fichier
 aform_type4=Flux à programmer
 aform_type5=Réponse automatique à partir du fichier
 aform_type6=Appliquer un fichier de filtre
 aform_val=Alias à
+
 asave_eaddr='$1' n'est pas une adresse valide
 asave_ealready=Un alias pour «$1» existe déjà
 asave_etype2=Le fichier d'adresses '$1' n'est pas valide ou n'existe pas
@@ -33,8 +39,10 @@ asave_etype4='$1' n'est pas un programme valide ou n'existe pas
 asave_etype5=Le fichier de réponse automatique «$1» n'est pas valide
 asave_etype4none=Aucun programme donné
 asave_etype6=Le fichier de filtre '$1' n'est pas valide
+
 afile_desc=Utilisez la zone de texte ci-dessous pour modifier les adresses dans le fichier $1.
 afile_ewrite=Échec de l'écriture dans le fichier d'adresses : $1
+
 ffile_title=Modifier le fichier de filtre
 ffile_desc=Utilisez le formulaire ci-dessous pour configurer les règles de filtrage dans le fichier $1.
 ffile_line=Si le champ $1 $2 $3, transférez-le à $4
@@ -49,6 +57,7 @@ ffile_other=Sinon, passez à $1
 ffile_err=Impossible d'enregistrer le fichier de filtre
 ffile_ematch=Match manquant
 ffile_eaction=Adresse de transfert manquante
+
 rfile_title=Modifier le fichier à réponse automatique
 rfile_desc=Utilisez la zone de texte ci-dessous pour modifier le message de réponse automatique dans $1. Le message peut contenir les macros $SUBJECT, $FROM, $TO, $DATE et $BODY qui seront développées lorsque la réponse automatique sera activée.
 rfile_desc2=Vous pouvez également définir des en-têtes de courrier qui ajoutent ou remplacent les valeurs par défaut utilisées dans la réponse automatique en mettant des lignes comme: <br><tt> De: foo@bar.com </tt><br> <tt>Objet: En vacances</tt> <br> en haut du message, séparé du corps par une seule ligne vierge.
@@ -67,28 +76,37 @@ rfile_from=De: adresse de réponse
 rfile_auto=Automatique (basé sur l'adresse du destinataire)
 rfile_efrom=Absent de: adresse
 rfile_fromdesc=A De: l'adresse doit toujours être spécifiée dans la mesure du possible, car la méthode automatique peut ne pas être fiable.
+
 opts_nomap=Aucune carte définie
 opts_setmap=Spécifications de la carte
 opts_notify_classes_sel=Sélectionné ci-dessous
+
 opts_edir=Vous êtes uniquement autorisé à spécifier des fichiers de carte sous $1
+
 opts_mailbox_size_limit=Taille maximale d'une boîte aux lettres
+
 opts_mynetworks_style=Réseaux locaux automatiques
 opts_mynetworks_subnet=Même sous-réseau IP
 opts_mynetworks_class=Même classe de réseau
 opts_mynetworks_host=Machine locale uniquement
 opts_delay_warning_time_default2=Postfix par défaut
 opts_content_filter_default=Aucun
+
 opts_relay_recipient_maps=Carte des adresses autorisées pour le relais
 smtpd_nomap=Aucune carte des adresses autorisées pour le relais n'a encore été saisie.
 smtpd_nomap2=Aucune carte pour les restrictions sur les adresses des expéditeurs n'a encore été saisie.
 smtpd_map=Adresses autorisées pour le relais
 smtpd_map2=Restrictions sur les adresses des expéditeurs
+
 opts_smtp_use_tls=Utiliser TLS pour les connexions SMTP
 opts_smtp_sasl_security_options=Options de sécurité SASL
+
 opts_edebug=Niveau de journalisation détaillé manquant ou non valide - doit être un nombre supérieur à zéro
+
 canonical_return_sender=envoyer des cartes canoniques
 canonical_return_recipient=cartes canoniques destinataires
 canonical_return=cartes canoniques
+
 mapping_delete=Supprimer sélectionnée
 mapping_cmt=La description
 mapping_ecannot=Vous êtes uniquement autorisé à modifier les cartes sous $1
@@ -102,13 +120,26 @@ mapping_toomany=Il existe des entrées de carte $1, ce qui est supérieur à la 
 mapping_find=Afficher les correspondances correspondant:
 mapping_search=Chercher
 mapping_match=Entrées de fichier de mappage correspondant à <tt>$1</tt> ..
+
 opts_virtual_alias_maps=Tables de recherche de mappage de domaine
 opts_virtual_alias_domains=Domaines pour effectuer le mappage virtuel pour
 virtual_same=À partir des tables de mappage de domaine
+
 transport_return=cartes de transport
+
+sni_title=Cartographie des certificats
+sni_ecannot=Vous n'êtes pas autorisé à modifier la configuration du mappage de certificat
+opts_sni_maps=Tables de recherche de mappage de certificat
+sni_return=cartes de certificat
+sni_dom=Nom d'hôte
+sni_certs=Fichiers de certificat
+
 relocated_return=cartes déplacées
 opts_content_filter=Filtre de contenu des e-mails
+
 start_efailed=Impossible de démarrer Postfix
+
+acl_sni=Pouvez-vous modifier les certificats?
 acl_header=Peut modifier les vérifications d'en-tête?
 acl_client=Peut modifier les restrictions du client SMTP?
 acl_master=Peut modifier les processus serveur?
@@ -116,6 +147,7 @@ acl_mailq=Peut gérer la file d'attente de messagerie?
 acl_boxes=Peut lire les courriels des utilisateurs?
 acl_dir=Répertoire autorisé pour les fichiers de carte
 acl_bcc=Peut modifier le mappage BCC?
+
 boxes_user=Utilisateur
 boxes_size=Taille de la boîte aux lettres
 boxes_none=Pas de courrier
@@ -124,6 +156,7 @@ boxes_sent=Mail envoyé
 boxes_ecannot=Vous n'êtes pas autorisé à lire les e-mails
 boxes_toomany=Il y a trop d'utilisateurs sur votre système pour répertorier toutes leurs boîtes aux lettres.
 boxes_go=Afficher le courrier de l'utilisateur:
+
 mail_title=Courriel de l'utilisateur
 mail_from=De
 mail_date=Date
@@ -162,6 +195,7 @@ mail_forward=Vers l'avant
 mail_rfc=De la ligne
 mail_move=Déménager à:
 mail_eexists=Le message n'existe plus!
+
 view_sent=Message $1 dans la liste de diffusion envoyée
 view_qdesc=Message en file d'attente $1
 view_headers=En-têtes de courrier
@@ -177,6 +211,7 @@ view_body=Texte du message
 view_afile=Nom de la pièce jointe
 view_atype=Type de pièce jointe
 view_asize=Taille du fichier
+
 compose_title=Écrire un email
 reply_title=Répondre à un e-mail
 forward_title=Un courriel transféré
@@ -187,6 +222,7 @@ reply_mailforward=Messages transférés
 reply_attach2=Pièces jointes côté client et côté serveur
 reply_send=Envoyer un mail
 reply_ecannot=Vous n'êtes pas autorisé à envoyer des e-mails en tant qu'utilisateur
+
 send_eto=Adresse manquante
 send_efrom=Adresse de l'expéditeur manquante
 send_ecannot=Vous n'êtes pas autorisé à envoyer des e-mails en tant qu'utilisateur
@@ -195,12 +231,14 @@ send_eattach=Les pièces jointes ne peuvent pas totaliser plus de $1 kB.
 send_eperms=L'utilisateur $1 ne peut pas lire $2
 send_epath=L'exécutable Sendmail $1 n'existe pas.
 send_ewrapper=Le programme d'interface de sendmail de Postfix n'existe pas
+
 search_title=Résultats de recherche
 search_ecannot=Vous n'êtes pas autorisé à rechercher l'e-mail de cet utilisateur
 search_ematch=Vous devez saisir du texte à comparer.
 search_efield=Vous devez sélectionner un type de recherche.
 search_results2=$1 messages électroniques correspondant à $2 ..
 search_results3=$1 les messages électroniques ne correspondent pas à $2 ..
+
 match_from=De: matchs
 match_subject=Objet: matches
 match_to=À: correspond
@@ -218,6 +256,7 @@ match_!date=Date: ne correspond pas
 match_!body=Le corps ne correspond pas
 match_!size=La taille est inférieure à
 match_!headers=Les en-têtes ne correspondent pas
+
 mailq_count=$1 messages
 mailq_id=Identifiant de messagerie
 mailq_date=Expédié
@@ -244,14 +283,18 @@ mailq_active=actif
 mailq_deferred=Différé
 mailq_hold=Conserver la sélection
 mailq_unhold=Retenir la sélection
+
 flushq_title=Queue de vidage
 flushq_desc=Forcer la tentative de remise du courrier avec la commande $1 ..
+
 qview_title=Message en file d'attente
 qview_desc=À partir du fichier $1
 qview_headers=En-têtes de courrier
 qview_attach=Pièces jointes
+
 searchq_title=Résultats de la recherche de file d'attente
 searchq_none=Aucun message en file d'attente trouvé.
+
 header_title=Vérifications d'en-tête
 header_ecannot=Vous n'êtes pas autorisé à modifier les vérifications d'en-tête
 header_eregexp=L'en-tête vérifie la carte doit être au format <tt>regexp:</tt> <i>nom de fichier</i>
@@ -270,15 +313,18 @@ header_reject=Rejeter (avec message d'erreur..)
 header_warn=Avertissement de journal (avec message..)
 header_ename=Expression régulière non valide - doit être comme / quelque chose /
 header_return=vérifications d'en-tête
+
 body_title=Vérifications du corps
 body_ecannot=Vous n'êtes pas autorisé à modifier les vérifications corporelles
 body_eregexp=La carte de vérification du corps doit être au format <tt>regexp:</tt> <i>nom de fichier</i>
 opts_body_checks=Tableaux de vérification du corps du message
 body_return=contrôles corporels
+
 dependent_title=Mappage de transport dépendant de l'expéditeur
 dependent_ecannot=Vous n'êtes pas autorisé à modifier les mappages de transport dépendants de l'expéditeur
 dependent_eregexp=La carte des transports dépendants de l'expéditeur doit être au format <tt>regexp:</tt> <i>filename</i>
 dependent_return=mappages de transport dépendants de l'expéditeur
+
 manual_title=Modifier le fichier de carte
 manual_file=Sélectionnez un fichier de carte à modifier:
 manual_change=Changement
@@ -286,9 +332,11 @@ manual_editing=Utilisez la zone de texte ci-dessous pour modifier manuellement l
 manual_err=Échec de l'enregistrement du fichier de carte
 manual_efile=Nom de fichier de carte non valide!
 manual_ecannot=Vous n'êtes pas autorisé à modifier manuellement les fichiers de carte
+
 delq_titles=Suppression de messages
 delq_rusure=Voulez-vous vraiment supprimer les $1 messages en file d'attente sélectionnés?
 delq_confirm=Supprimer les messages
+
 master_title=Processus du serveur
 master_name=Nom du processus
 master_enabled=Activée?
@@ -329,18 +377,22 @@ master_einet=Une adresse d'hôte à écouter ne peut être spécifiée que pour 
 master_ecommand=Commande de processus serveur manquante
 master_ewakeup=Heure de réveil manquante ou invalide
 master_emaxprocs=Nombre maximal de processus manquant ou invalide
+
 delete_err=Impossible de supprimer les mappages
 delete_enone=Aucune sélection
+
 cmanual_title=Modifier les fichiers de configuration
 cmanual_ok=Éditer
 cmanual_efile=Le fichier sélectionné ne fait pas partie de la configuration de Postfix
 cmanual_file=Modifier le fichier de configuration:
 cmanual_edata=Rien n'est entré!
 cmanual_err=Impossible d'enregistrer le fichier de configuration
+
 access_return=table de plan d'accès
 edit_map_file=Modifier le fichier de carte
 opts_reject_rbl_client=Recherches de listes noires en temps réel (RBL)
 opts_check_sender_access=Vérifier la table des cartes d'accès des expéditeurs
+
 log_misc=Options générales modifiées
 log_opts=Réécriture et masquage d'adresse modifiés
 log_aliases=Options d'alias modifiées
@@ -348,6 +400,7 @@ log_canonical=Modification des options de mappage canonique
 log_virtual=Options de domaine virtuel modifiées
 log_bcc=Options de carte BCC modifiées
 log_transport=Options de mappage de transport modifiées
+log_sni=Modifier les options de mappage de certificat
 log_dependent=Options d'adresse dépendantes de l'expéditeur modifiées
 log_relocated=Options de mappage de relocalisation modifiées
 log_header=Options de vérification d'en-tête modifiées
@@ -425,6 +478,7 @@ log_sender_dependent_default_transport_maps_modify=Adresse dépendante de l'exp�
 log_sender_dependent_default_transport_maps_delete=Adresse dépendante de l'expéditeur supprimée $1
 log_delete_sender_dependent_default_transport_mapss=$1 adresses dépendantes de l'expéditeur supprimées
 log_manual_sender_dependent_default_transport_mapss=Adresses dépendantes de l'expéditeur modifiées manuellement dans $1
+
 sasl_title=Authentification et cryptage SMTP
 opts_smtpd_sasl_auth_enable=Besoin d'une authentification SASL SMTP?
 opts_smtp_sasl_auth_enable=Utiliser l'authentification SASL SMTP?
@@ -471,11 +525,13 @@ sasl_nologin=Aucun nécessaire
 sasl_userpass=Connectez-vous en tant que $1 avec le mot de passe $2
 sasl_elogin=Connexion SMTP manquante ou invalide (aucun espace ni deux-points n'est autorisé)
 sasl_epass=Mot de passe SMTP non valide (aucun espace autorisé)
+
 client_restrict=Restrictions client
 client_restrict1=Postfix par défaut (autoriser tous les clients)
 client_restrict0=Sélectionné ci-dessous ..
 client_err=Échec de l'enregistrement des restrictions client
 client_evalue=Valeur manquante pour la restriction $1
+
 chooser_title=Sélectionnez la source de la carte
 chooser_header=Carte source $1
 chooser_none=Aucun
@@ -519,6 +575,7 @@ chooser_elquery_filter=Filtre de requête manquant pour la carte $1
 chooser_elresult_attribute=Nom d'attribut de résultat manquant ou non valide pour la carte $1
 chooser_elbind_dn=Connexion manquante pour le serveur LDAP pour la carte $1
 chooser_elbind_pw=Mot de passe manquant pour le serveur LDAP pour la carte $1
+
 mysql_ecfile=Le fichier de configuration MySQL $1 est introuvable
 mysql_ecfile2=Impossible de trouver la table dans le fichier de configuration MySQL $1
 mysql_edriver=Impossible de charger le pilote de base de données $1
@@ -530,6 +587,7 @@ mysql_eupdate=Échec de la mise à jour SQL : $1
 mysql_elist=Échec de la requête SQL : $1
 mysql_esource=Aucune source MySQL nommée $1 n'a été trouvée
 mysql_eneed=Le paramètre de configuration MySQL $1 est introuvable. Webmin en a besoin pour déterminer la table et les champs à interroger.
+
 ldap_ecfile=Le fichier de configuration LDAP $1 est introuvable
 ldap_eldapmod=Le module Perl $1 nécessaire pour communiquer avec LDAP n'est pas installé ou ne peut pas être chargé
 ldap_eldap=Impossible de se connecter au serveur LDAP $1 sur le port $2
@@ -540,6 +598,7 @@ ldap_edelete=Échec de la suppression LDAP de $1 : $2
 ldap_equery=Échec de la recherche LDAP de $1 : $2 
 ldap_erename=Échec du changement de nom de $1 en $2 : $3 
 ldap_emodify=Échec de la modification LDAP de $1 : $2 
+
 bcc_title=Cartographie BCC
 bcc_ecannot=Vous n'êtes pas autorisé à modifier les mappages BCC
 opts_sender_bcc_maps=Tables de recherche de mappage BCC de l'expéditeur

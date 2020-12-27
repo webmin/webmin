@@ -45,6 +45,7 @@ index_ondate=Data
 index_charset=Set di caratteri del messaggio di risposta automatica
 index_subject=Oggetto del messaggio di autoreply
 index_nowebmin=Questo modulo è solo per l'uso in Usermin. Se è visibile in Webmin, il tema che stai utilizzando è incompleto.
+
 edit_title1=Crea filtro
 edit_title2=Modifica filtro
 edit_header1=Condizione per filtro
@@ -71,6 +72,7 @@ edit_amode7=Salva nella nuova cartella denominata
 edit_nobounce=Sopprime l'inoltro dei messaggi di rimbalzo
 edit_apply=Mostra email corrispondente nella cartella:
 edit_move=Applica a e-mail nella cartella:
+
 save_err=Impossibile salvare il filtro
 save_egone=Il filtro non esiste più!
 save_econdheader=Intestazione email mancante o non valida
@@ -89,8 +91,10 @@ save_enewfolder3=Esiste già una cartella con lo stesso nome
 save_estart=Data di inizio della risposta automatica non valida
 save_eend=Data di fine della risposta automatica non valida
 save_echarset=Set di caratteri di risposta automatica mancante o non valido
+
 delete_err=Impossibile eliminare i filtri
 delete_enone=Nessuno selezionato
+
 aliases_type1=Indirizzo 1
 aliases_type2=Indirizzi nel file $1 
 aliases_type3=File $1 
@@ -101,6 +105,7 @@ aliases_your=La tua casella di posta
 aliases_delete=Elimina la posta
 aliases_other=Cassetta postale dell'utente $1 
 aliases_auto=Autoresponder con messaggio $1 
+
 auto_title=Email Risposta automatica
 auto_header=Opzioni di risposta automatica via email
 auto_enabled=Risposta automatica abilitata?
@@ -111,12 +116,14 @@ auto_charsetdef=Dalla lingua corrente
 auto_charsetother=Altro set di caratteri
 auto_period=Intervallo minimo tra le risposte
 auto_err=Impossibile salvare la risposta automatica
+
 forward_title=Inoltra email
 forward_header=Opzioni di inoltro e-mail
 forward_enabled=Inoltro email abilitato?
 forward_to=Inoltra agli indirizzi
 forward_cont=Anche consegnare normalmente?
 forward_err=Impossibile salvare l'inoltro e-mail
+
 move_err=Impossibile applicare il filtro
 move_esrc=La cartella di origine $1 non esiste!
 move_edest=La cartella di destinazione $1 non esiste!

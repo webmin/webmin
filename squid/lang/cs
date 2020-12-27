@@ -26,6 +26,7 @@ index_authparam=Programy autentikace
 index_return=Úvodní stránka
 index_squidver=Příkaz <tt>$1</tt> vrátil :
 index_version=Squid verze $1
+
 buttsave=Uložit
 buttdel=Smazat
 buttcreat=Vytvořit
@@ -35,6 +36,7 @@ default=Výchozí
 none=Nic
 on=Zapnuto
 off=Vypnuto
+
 acl_header1=Vytvořit ACL
 acl_header2=Editovat ACL
 acl_name=Název ACL
@@ -82,6 +84,7 @@ acl_failurl=Chybná URL
 acl_buttsave=Uložit
 acl_buttdel=Smazat
 acl_return=Seznam ACL
+
 aclsave_failsave=Chyba při ukládání ACL
 aclsave_faildel=Chyba při mazání ACL
 aclsave_epr=Toto ACL je používáno pro proxy omezení
@@ -99,10 +102,12 @@ aclsave_eehour=Naplatná konečná hodina
 aclsave_esmin=Naplatná počáteční minuta
 aclsave_eemin=Naplatná konečná minuta
 aclsave_efile=Nemáte oprávnění zapisovat do ACL souboru '$1'
+
 cach_ecannot=Nemáte oprávnění přistupovat ke statiskám cache manažeru
 cach_err=Chyba
 cach_nfound=Program squid cache manažer <tt>$1</tt> nebyl ve vašem systému nalezen. Možná vaše <a href=/config.cgi?$2 >konfigurace modulu</a> není správná.
 cach_return=úvodní stránka
+
 chown_header=Změnit vlastnictví
 chown_stop=Ukončuje se squid ...
 chown_done=.. Hotovo
@@ -110,6 +115,7 @@ chown_chown=Probíhá změna vlastnictví ...
 chown_restart=Restartuje se squid ...
 chown_failrestart=Chyba při restartování squidu ..
 chown_return=úvodní stránka squidu
+
 clear_ecannot=Nemáte oprávnění vyčistit a přestavět cache
 clear_header=Vyčistit a přestavět cache
 clear_msgclear=Skutečně chcete vyčistit a přestavět vaši squid cache? Tento úkon smaže <b>všechny</b> soubory v cache a restartuje váš squid server.
@@ -121,6 +127,7 @@ clear_del=Mažou se staré cache soubory ..
 clear_init=Probíhá inicializace squid cache pomocí příkazu <tt>$1</tt> ..
 clear_failrestart=Chyba při restartování squidu ..
 clear_return=úvodní stránka squidu
+
 eacl_ecannot=Nemáte oprávnění editovat kontrolu přístupu
 eacl_header=Kontrola přístupu
 eacl_acls=Seznamy kontroly přístupu
@@ -135,12 +142,14 @@ eacl_acls1=ACLs
 eacl_move=Přesun
 eacl_nopr=Nejsou definována žádná omezení
 eacl_addpr=Přidat proxy omezení
+
 eacl_icpr=ICP omezení
 eacl_noicpr=Nejsou definována žádná ICP omezení
 eacl_addicpr=Přidat ICP omezení
 eacl_return=úvodní stránka squidu
 eacl_allow=Povolit
 eacl_deny=Zakázat
+
 eadm_ecannot=Nemáte oprávnění editovat administrační nastavení
 eadm_header=Administrační nastavení
 eadm_aao=Administrační a oznamovací nastavení
@@ -167,6 +176,7 @@ eadm_caf=Cache oznamovacímu souboru
 eadm_annp=Oznamovací perioda
 eadm_buttsave=Uložit
 eadm_return=úvodní stránka squidu
+
 eauth_ecannot=Nemáte oprávnění editovat proxy autentikaci
 eauth_header=Proxy autentikace
 eauth_aopt=Nastavení autentikace
@@ -180,6 +190,7 @@ eauth_pusers=Proxy uživatelé
 eauth_nopusers=Zatím nejsou žádní proxy uživatelé definováni.
 eauth_addpuser=Přidat nového proxy uživatele
 eauth_return=úvodní stránka squidu
+
 ec_ecannot=Nemáte oprávnění editovat cache nastavení
 ec_header=Cache nastavení
 ec_cro=Caching a Request nastavení
@@ -229,6 +240,7 @@ ec_wrh=Host WAIS přenosu
 ec_wrp=Port WAIS přenosu
 ec_buttsave=Uložit
 ec_return=úvodní stránka squidu
+
 ech_header=Vytvořit cache hosta
 ech_header1=Editovat cache hosta
 ech_cho=Nastavení cache hosta
@@ -263,6 +275,7 @@ ech_dqfd=Nedotazovat se na domény
 ech_buttsave=Uložit
 ech_buttdel=Smazat
 ech_return=seznam cache
+
 eicp_ecannot=Nemáte oprávnění editovat jiné caches
 eicp_header=Jiné Caches
 eicp_opcs=Jiné proxy cache servery
@@ -295,6 +308,7 @@ eicp_addalways=Přidat ACLs s přímým převodem
 eicp_never=ACLs, které nikdy nebudou s přímým převodem
 eicp_nonever=Nejsou definovány ACLs,  které nikdy nebudou s přímým převodem
 eicp_addnever=Přidat ACLs, které nikdy nebudou s přímým převodem
+
 elogs_ecannot=Nemáte oprávnění editovat logging
 elogs_header=Logging
 elogs_lalo=Nastavení logging a log souboru
@@ -314,6 +328,7 @@ elogs_ln=Logging síťové masky
 elogs_do=Debug nastavení
 elogs_mht=Tabulka MIME hlaviček
 elogs_return=úvodní stránka squidu
+
 emem_ecannot=Nemáte oprávnění editovat využití paměti
 emem_dheader=Využití paměti a disku
 emem_header=Využití paměti
@@ -339,6 +354,7 @@ emem_lfuda=Dynamická nejmenší frekvence užití
 emem_hlru=Nakupení nejmenší frekvence užití
 emem_return=úvodní stránka squidu
 emem_mrp=Ochrana přepsání paměti
+
 emisc_ecannot=Nemáte oprávnění editovat ostatní nastavení
 emisc_header=Ostatní nastavení
 emisc_mo=Ostatní nastavení
@@ -375,6 +391,7 @@ emisc_wccpin=WCCP příchozí adresa
 emisc_wccpout=WCCP odchozí adresa
 emisc_none=Nic
 emisc_virtual=Virtuální
+
 eports_ecannot=Nemáte oprávnění editovat porty a sítě
 eports_header=Porty a sítě
 eports_pano=Nastavení portů a sítí
@@ -395,6 +412,7 @@ eports_return=úvodní stránka squidu
 eports_def=Výchozí (obvykle 3128)
 eports_sel=Uvedené v seznamu níže..
 eports_unc=Provést unclean SSL shutdowns?
+
 eprogs_ecannot=Nemáte oprávnění editovat pomocné programy
 eprogs_header=Pomocné programy
 eprogs_chpo=Nastavení cache pomocných programů
@@ -418,6 +436,7 @@ eprogs_noap=Počet autentikařčních programů
 eprogs_ttl=Doba autentikace cache
 eprogs_realm=Oblast autentikace
 eprogs_return=úvodní stránka squidu
+
 euser_header=Vytvořit Proxy uživatele
 euser_header1=Editovat Proxy uživatele
 euser_pud=Detaily proxy uživatele
@@ -426,6 +445,7 @@ euser_p=Heslo
 euser_u1=Neměnitelné
 euser_e=Povolit?
 euser_return=seznam uživatelů
+
 ahttp_header=Vytvořit Proxy omezení
 ahttp_header1=Editovat Proxy omezení
 ahttp_pr=Proxy omezení
@@ -435,7 +455,9 @@ ahttp_d=Zakázat
 ahttp_ma=Vyhovuje ACLs
 ahttp_dma=Nevyhovuje ACLs
 ahttp_return=Seznam ACL
+
 sahttp_ftspr=Chyba při ukládání proxy omezení
+
 aicp_header=Vytvořit ICP omezení
 aicp_header1=Editovat ICP omezení
 aicp_ir=ICP omezení
@@ -445,14 +467,18 @@ aicp_d=Zakázat
 aicp_ma=Vyhovuje ACLs
 aicp_dma=Nevyhovuje ACLs
 aicp_return=Seznam ACL
+
 saicp_ftsir=Chyba při ukládání ICP omezení
+
 icache_ecannot=Nemáte oprávnění inicializovat cache
 icache_ftic=Chyba při inicializaci cache
 icache_ymcautrsa=Musíte změnit uživatele, pod kterým je spuštěn squid
 icache_itscwtc=Probíhá inicializace squid cache za pomoci příkazu <tt>$1</tt> ..
 icache_return=úvodní stránka squidu
 icache_title=Inicializovat cache
+
 restart_ftrs=Chyba při rekonfiguraci squidu
+
 sadmin_ftsao=Chyba při ukládání administračního nastavení
 sadmin_header=Změnit vlastnictví
 sadmin_msg1=Změnil jste vlastníka nebo skupinu, pod kterým je spuštěn squid. Toto bude mít pravděpodobně za následek změnu vlastnictví všech cache a log souborů a restartování squidu.
@@ -462,10 +488,12 @@ sadmin_inavea='$1' není platná email adresa
 sadmin_inavh='$1' není platný hostname
 sadmin_inavap='$1' není platná oznamovací perioda
 sadmin_inavp='$1' není platný port
+
 sauth_ftsao=Chyba při ukládání autentikačního nastavení
 sauth_iomuf=Chybějící nebo nasprávné jméno souboru
 sauth_iomd=Chybějící nebo nasprávná doména
 sauth_msg1=Vaše verze squidu není kompilována s podporou pro proxy autentikaci
+
 scache_ftsco=Chyba při ukládání cache nastavení
 scache_emsg0=Musíte vložit nejméně jeden cache adresář
 scache_emsg1=Cache adresář '$1' neexistuje
@@ -482,34 +510,41 @@ scache_emsg11='$1' není platný počet objektý
 scache_emsg12='$1' není platná velikost adresáře
 scache_emsg13='$1' není platný host
 scache_emsg14='$1' není platný port
+
 schost_ftsc=Chyba při ukládání cache
 schost_emsg1='$1' není platný cache hostname
 schost_emsg2='$1' není platný proxy port
 schost_emsg3='$1' není platný ICP port
 schost_emsg4='$1' není platný time-to-live
 schost_emsg5='$1' není platná mocnost
+
 sicp_ftsco=Chyba při ukládání cache nastavení
 sicp_emsg1='$1' není platná časová prodleva
+
 slogs_ftslo=Chyba při ukládání logging nastavení
 slogs_emsg1='$1' není absolutní jméno souboru
 slogs_emsg2='$1' není platné jméno souboru
 slogs_emsg3=Adresář '$1' neexistuje
 slogs_emsg4='$1' není platná síťová maska
 slogs_emsg5='$1' není platný seznam debug nastavení
+
 smem_ftsmo=Chyba při ukládání nastavení paměti
 smem_emsg1='$1' není platná velikost cache
 smem_emsg2='$1' není platná horní hranice
 smem_emsg3='$1' není platná dolní hranice
 smem_emsg4='$1' není platná velikost objektu
+
 smisc_ftso=Chyba při ukládání nastavení
 smisc_emsg1='$1' není platný počet opakování
 smisc_emsg2='$1' není platná doména
 smisc_emsg3='$1' není platné proxy
 smisc_emsg4='$1' není platný počet hopů
+
 sport_ftspo=Chyba při ukládání nastavení portu
 sport_emsg1='$1' není platné číslo portu
 sport_emsg2='$1' není platná adresa
 sport_emsg3='$1' není platná velikost bufferu
+
 sprog_ftshpo=Chyba při ukládání nastavení pomocného programu
 sprog_emsg1=Chybějící FTP nastavení
 sprog_emsg2='$1' není platný program
@@ -520,19 +555,23 @@ sprog_emsg6='$1' není platná šířka sloupce
 sprog_emsg7=Nebyly vloženy žádné DNS servery
 sprog_emsg8='$1' není platná IP adresa
 sprog_emsg9='$1' není platná doba cache
+
 suser_ftsu=Chyba při ukládání uživatele
 suser_emsg1=Chybějící nebo nesprávné jméno uživatele
 suser_etaken=Uživatelské jméno se už používá
+
 start_ftsq=Chyba při spuštění squidu
 start_ecannot=Nemáte oprávnění spustit squid
 stop_ftsq=Chyba při ukončení squid
 stop_ecannot=Nemáte oprávnění ukončit squid
+
 calamaris_ecannot=Nemáte oprávnění přístupu k Calamaris log analýze
 calamaris_title=Calamaris log Analýza
 calamaris_last=Omezení analýzy na nejvíce $1 řádku v logs ..
 calamaris_eprog=Calamaris spuštěč $1 nebyl nalezen. Možná není ve vašem systému nainstalován, nebo vašer <a href='$2'>konfigurace modulu</a> není správná.
 calamaris_elogs=Log adresář $1 neobsahuje žádné <tt>access.log</tt> soubory. Možná není ve vašem systému nainstalován, nebo vašer <a href='$2'>konfigurace modulu</a> není správná.
 calamaris_gen=Report genrován do $1
+
 lib_emsg1='$1' není platná IP adresa
 lib_seconds=vtěřiny
 lib_minutes=minuty
@@ -579,6 +618,7 @@ lib_aclext=Externí program
 lib_buttac=Použít změny
 lib_buttss=Ukončit squid
 lib_buttss1=Spustit squid
+
 log_ports=Změněno nastavení portu a sítě
 log_icp=Změněna nastavení jiných cache
 log_mem=Změněno nastavení užití paměti
@@ -625,16 +665,21 @@ log_pool_delete=Smazána odkládací oblast $1
 log_delay_create=Přidán ACL pro odkládací oblast $1
 log_delay_modify=Modifikován ACL pro odkládací oblast $1
 log_delay_delete=Smazán ACL pro odkládací oblast $1
+
 log_delay_move=Přesunut ACL pro odkládací oblasti $1
+
 acl_root=Root adresář pro ACL soubory
 acl_sections=Povolené konfigurační stránky
 acl_start=Může spustit nebo ukončit squid?
+
 always_create=Vytvořit přímý převod
 always_edit=Editovat přímý převod
 always_header=Požadavky na přímě převody obsahující ACLs
+
 never_create=Vyvořit žádný přímý převod
 never_edit=Editovat žádný přímý převod
 never_header=Požadavky na žádné přímé převody obsahující ACLs
+
 delay_title=Odkládací oblasti
 delay_add=Přidat novou odkládací oblast
 delay_num=Číslo
@@ -677,9 +722,11 @@ pool_unit2=kb
 pool_unit3=kB
 pool_unit4=Mb
 pool_unit5=MB
+
 apool_header=Přidat ACL odkládací oblasti
 apool_header1=Editovat ACL odkládací oblasti
 apool_pr=ACL odkládací oblasti
+
 authparam_title=Autentikační programy
 authparam_header=Nastavení externího autentikačního programu
 authparam_ttl=Doba na cache hesel pro

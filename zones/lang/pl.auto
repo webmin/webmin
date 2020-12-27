@@ -4,6 +4,7 @@ index_none=Nie zdefiniowano jeszcze stref.
 index_add=Dodaj nową strefę.
 index_return=lista stref
 index_zones=Istniejące strefy
+
 edit_title=Edytuj strefę
 edit_common=Ogólna konfiguracja strefy
 edit_name=Nazwa strefy
@@ -57,20 +58,26 @@ edit_attrnone=Nie zdefiniowano jeszcze ogólnych atrybutów.
 edit_attradd=Dodaj nowy ogólny atrybut.
 edit_webmin=Otwórz Webmina
 edit_brand=Marka
+
 ui_cancel=Anuluj
+
 save_err=Nie udało się zapisać strefy
 save_epool=Brakująca lub nieprawidłowa pula
 save_ewebmin=Webmin nie działa w tej strefie
+
 reboot_title=Uruchom ponownie strefę
 reboot_rusure=Czy na pewno chcesz ponownie uruchomić strefę $1 ? Wszystkie uruchomione procesy zostaną zrestartowane.
 reboot_err=Nie można zrestartować strefy
 reboot_doing=Teraz strefa restartu ..
+
 reboot_failed=.. nie powiodło się :
 reboot_ok=.. ukończone.
+
 halt_title=Strefa wyłączenia
 halt_rusure=Czy na pewno chcesz zamknąć strefę $1 ? Wszystkie uruchomione procesy zostaną zatrzymane.
 halt_err=Nie udało się zamknąć strefy
 halt_doing=Teraz zamykam strefę. ..
+
 boot_title=Strefa rozruchowa
 boot_err=Nie udało się uruchomić strefy uruchamiania
 boot_doing=Teraz strefa uruchamiania.
@@ -78,10 +85,12 @@ delete_title=Usuń strefę
 delete_rusure=Czy na pewno chcesz usunąć strefę $1 ? Wszystkie pliki w jego prywatnych systemach plików zostaną utracone.
 delete_err=Nie udało się usunąć strefy
 delete_doing=Teraz usuwam strefę ..
+
 uninstall_title=Odinstaluj system
 uninstall_rusure=Czy na pewno chcesz odinstalować oprogramowanie systemowe ze strefy $1 ? Wszystkie pliki w jego prywatnych systemach plików zostaną utracone.
 uninstall_err=Nie można odinstalować oprogramowania systemowego ze strefy
 uninstall_doing=Teraz odinstalowuję system ze strefy ..
+
 install_title=Zainstaluj system
 install_doing=Teraz instaluję system w strefie ..
 net_title1=Utwórz interfejs sieciowy
@@ -96,6 +105,7 @@ net_enetmask=Nieprawidłowa maska sieci
 net_eaddress=Nieprawidłowy adres IP
 net_egone=Interfejs już nie istnieje!
 net_eclash=Interfejs sieciowy o tym samym adresie IP już istnieje w tej strefie
+
 pkg_title1=Dodaj katalog paczek
 pkg_title2=Edytuj katalog paczek
 pkg_header=Szczegóły katalogu odziedziczonego pakietu
@@ -107,6 +117,7 @@ pkg_eclash=Katalog pakietów już istnieje w tej strefie
 pkg_inherit=Dziedzicz paczki ze strefy globalnej
 pkg_inherit_yes=Tak (rzadka strefa korzenia)
 pkg_inherit_no=Nie (cała strefa główna)
+
 fs_title1=Utwórz system plików
 fs_title2=Edytuj system plików
 fs_header=Dodatkowe szczegóły systemu plików
@@ -128,6 +139,7 @@ fs_eoptions=Nieprawidłowe opcje montowania (musi to być lista oddzielona przec
 fs_egone=System plików już nie istnieje!
 fs_mount=Zamontować po utworzeniu?
 fs_eclash=System plików korzystający z tego samego katalogu już istnieje w tej strefie
+
 rctl_title1=Utwórz kontrolę zasobów
 rctl_title2=Edytuj kontrolę zasobów
 rctl_header=Rodzaj i ograniczenia kontroli zasobów
@@ -148,6 +160,7 @@ rctl_elimit=Nie jest liczbą
 rctl_eaction=Nie wybrano sygnału w wierszu $1 
 rctl_evalues=Nie wprowadzono limitów
 rctl_eclash=Kontrolka dla tego samego zasobu już istnieje w tej strefie
+
 attr_title1=Utwórz atrybut ogólny
 attr_title2=Edytuj atrybut ogólny
 attr_header=Ogólne informacje o atrybucie strefy
@@ -165,6 +178,7 @@ attr_euint=Wartość nie jest dodatnią liczbą całkowitą
 attr_eboolean=Wartość nie jest „prawda” ani „fałsz”
 attr_egone=Atrybut już nie istnieje!
 attr_eclash=Atrybut o tej samej nazwie już istnieje w tej strefie
+
 status_running=Bieganie
 status_installed=Zatrzymany
 status_configured=Nie zainstalowany
@@ -172,13 +186,16 @@ status_incomplete=W trakcie instalacji
 status_ready=Gotowy
 status_down=Na dół
 status_shutting_down=Wyłączanie
+
 list_name=Nazwa strefy
 list_id=Nr identyfikacyjny
 list_path=Katalog stref
 list_status=Status
 list_actions=działania
+
 zone_in=W strefie $1 
 pool_none=Żaden
+
 create_title=Utwórz strefę
 create_header=Szczegóły nowej strefy
 create_path=Katalog plików strefy
@@ -239,6 +256,7 @@ create_erouter=Brakujący lub nieprawidłowy domyślny adres IP routera
 create_removingpkgs=usuwanie odziedziczonych katalogów pakietów. ..
 create_brand=Marka
 create_brandmsg=Strefa brandingu
+
 log_create_zone=Utworzono strefę $1 
 log_delete_zone=Usunięta strefa $1 
 log_save_zone=Zmodyfikowana konfiguracja dla strefy $1 
@@ -262,6 +280,7 @@ log_delete_rctl=Usunięto kontrolę zasobów dla $1 w strefie $2
 log_create_attr=Utworzono ogólny atrybut $1 w strefie $2 
 log_modify_attr=Zmodyfikowano ogólny atrybut $1 w strefie $2 
 log_delete_attr=Usunięto ogólny atrybut $1 w strefie $2 
+
 webmin_eperl=Perl nie jest zainstalowany w $1 
 webmin_eroot=Katalog $1 nie istnieje lub nie zawiera Webmina.
 webmin_title=Zainstaluj Webmin

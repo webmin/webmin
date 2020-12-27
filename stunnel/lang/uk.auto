@@ -3,4 +3,5 @@ index_eversion=Версія STunnel, встановлена у вашій сис
 index_conf=З конфігураційного файлу $1 
 index_noconf=Немає файлу конфігурації!
 index_delete=Видалити вибрані тунелі
+
 log_delete_stunnels=Видалено $1 тунелі SSL

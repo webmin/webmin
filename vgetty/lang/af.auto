@@ -2,6 +2,7 @@ index_title=Stemposbediener
 index_ecmd=Die Vgetty-opdrag $1 is nie op u stelsel gevind nie. Miskien is dit nie geïnstalleer nie, of is u <a href='$2'>module-opstelling</a> verkeerd.
 index_econfig=Die Vgetty-opstellinglêer $1 is nie op u stelsel gevind nie. Miskien is dit nie geïnstalleer nie, of is u <a href='$2'>module-opstelling</a> verkeerd.
 index_return=stemposindeks
+
 vgetty_title=Seriële poortkonfigurasie
 vgetty_desc=Dat u bediener stemoproepe kan beantwoord met 'n modem wat aan 'n seriële poort gekoppel is, moet dit hieronder gelys word. As u 'n poort by hierdie lys voeg, sal die $1 -program opgestel word om oproepe te beantwoord en 'n boodskap te speel.
 vgetty_add=Voeg 'n nuwe reekspoort by
@@ -32,6 +33,7 @@ vgetty_erings=Ontbrekende of ongeldige aantal ringe
 vgetty_erings2=Aantal ringe moet minstens 2 wees
 vgetty_eans=Geen antwoordmodusse gekies nie
 vgetty_eclash=Die reekspoort $1 is reeds in gebruik
+
 options_title=Stemboodskapper-opsies
 options_header=Opsies vir alle seriële poorte
 options_maxlen=Maksimum boodskaplengte
@@ -68,6 +70,7 @@ options_eprog=Program ontbreek of bestaan nie om te loop nie
 options_eowner=Ontbrekende of ongeldige Unix-gebruiker vir boodskaplêers
 options_egroup=Unix-groep ontbreek of ongeldig vir boodskaplêers
 options_emode=Oktale regte vir boodskaplêers ontbreek of ongeldig
+
 received_title=Boodskappe ontvang
 recieved_desc=Stemposboodskappe wat deur u bediener ontvang is, word hieronder gelys. Klik op die datum/tyd in die eerste kolom om na 'n boodskap te luister.
 received_none=Geen stemposboodskappe is ontvang nie.
@@ -79,9 +82,12 @@ received_delete=Vee geselekteerde boodskappe uit
 received_move=Skakel gekies om na groete
 received_all=Kies alles
 received_invert=Keer die keuse om
+
 listen_efile=Ongeldige boodskaplêernaam!
 listen_epath=Stemposboodskap bestaan nie meer nie
+
 delete_efile=Ongeldige boodskaplêernaam!
+
 messages_title=Groete boodskappe
 messages_desc=Hierdie bladsy lys groetboodskappe wat gespeel sal word wanneer 'n oproeper met u stemposbediener skakel. As u meer as een het, word 'n enkele lukraak gekose boodskap gebruik.
 messages_file=Lêernaam
@@ -89,12 +95,15 @@ messages_none=Geen groetboodskappe is beskikbaar nie.
 messages_updesc=Met hierdie vorm kan u 'n ekstra WAV-lêer vir die groetboodskap oplaai, wat omgeskakel sal word na die gekose formaat vir gebruik deur u modem. Die voorbeeldtempo van die opgelaaide WAV moet dieselfde wees as die voorbeeldtempo van ontvangde boodskappe, net soos die gekose formaat.
 messages_upload=Laai boodskap op
 messages_fmt=verander na
+
 pvfdesc=$1, $2 bisse
+
 upload_err=Kon nie boodskap byvoeg nie
 upload_emessage=Geen WAV-lêer is gekies nie
 upload_ewav=Kon nie WAV-lêer omskakel nie : $1 
 upload_epvf=Kon nie RMD-lêer skep nie : $1 
 upload_esame=Die boodskaplêer $1 bestaan reeds
+
 log_apply=Toegepaste konfigurasie
 log_upload=Groetboodskap $1 opgelaai
 log_move=Omgeskakel $1 ontvang boodskappe
@@ -104,5 +113,6 @@ log_options=Verander stemposopsies
 log_vgetty_create=Seriële poort $1 bygevoeg
 log_vgetty_modify=Gewysigde reekspoort $1 
 log_vgetty_delete=Seriële poort $1 is uitgevee
+
 email_subject=Stemposboodskap
 email_body=Stemposboodskap ontvang teen $1 by $2.

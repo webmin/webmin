@@ -9,17 +9,21 @@ index_edit=Gérer
 index_manual=Modifier manuellement
 index_anyfile=Editez un autre fichier de configuration PHP:
 index_return=fichiers de configuration
+
 file_global=Configuration PHP globale
 file_eread=Impossible de lire $1 : $2
+
 manual_title=Modifier la configuration manuellement
 manual_desc=Cette page peut être utilisée pour éditer manuellement un fichier de configuration PHP. Cela doit être fait avec soin, car aucune syntaxe ou autre vérification de validité ne sera effectuée sur vos modifications.
 manual_err=Impossible de modifier le fichier de configuration
 manual_edata=Aucun nouveau contenu entré
+
 list_title=Gérer la configuration PHP
 list_ecannot=Vous n'êtes pas autorisé à gérer ce fichier de configuration PHP
 list_return=Configuration PHP
 list_format_ini=Format INI
 list_format_fpm=Format FPM
+
 vars_title=Variables PHP
 vars_header=Création de variables PHP et options de cotation
 vars_magic=Citez toutes les variables d'entrée?
@@ -28,6 +32,7 @@ vars_register=Transformer toutes les entrées en variables globales?
 vars_args=Transformer les paramètres de ligne de commande en variables globales?
 vars_long=Créer des tableaux à l'ancienne comme <tt>HTTP_GET_VARS</tt>?
 vars_err=Impossible d'enregistrer les paramètres des variables PHP
+
 dirs_title=Paramètres du répertoire
 dirs_header=Paramètres du répertoire et du script PHP
 dirs_include=Recherche dans les répertoires des inclusions
@@ -39,6 +44,7 @@ dirs_err=Échec de l'enregistrement des paramètres du répertoire
 dirs_eincs=Aucun inclure les répertoires de recherche saisis
 dirs_eutmp=Répertoire de fichiers temporaires manquant ou invalide
 dirs_eext=Répertoire d'extensions manquant
+
 db_title=Paramêtres de La Base De Données
 db_header1=Paramètres de connexion à la base de données MySQL
 db_persist=Autoriser les connexions de base de données persistantes?
@@ -57,6 +63,7 @@ db_emaxlinks=Nombre maximal de connexions totales manquant ou non valide
 db_etimeout=Délai de connexion manquant ou non valide
 db_ehost=Hôte de serveur MySQL par défaut manquant ou non valide
 db_eport=Port de serveur MySQL par défaut manquant ou non valide
+
 session_title=Options de La Session
 session_header=Options de suivi de session PHP
 session_handler=Mécanisme de stockage de session
@@ -73,6 +80,7 @@ session_epath=Répertoire manquant ou non valide pour les fichiers de session
 session_elife=Durée de vie des cookies manquante ou invalide
 session_emaxlife=Durée de vie maximale de session manquante ou invalide
 session_eredis=Extension redis manquante ou désactivée
+
 safe_title=Options du mode sans échec
 safe_header=Options du mode d'accès sécurisé aux fichiers
 safe_on=Activer le mode sans échec?
@@ -85,6 +93,7 @@ safe_err=Échec de l'enregistrement des options du mode sans échec
 safe_einclude=Répertoire autorisé manquant ou non valide pour les fichiers inclus
 safe_eexec=Répertoire autorisé manquant ou invalide pour les programmes exécutés
 safe_ebasedir=Répertoire manquant ou non valide pour les opérations sur les fichiers
+
 limits_title=Limites des ressources
 limits_header=Options de mémoire et de limite de transfert
 limits_mem=Allocation maximale de mémoire
@@ -98,6 +107,7 @@ limits_epost=Taille HTTP POST maximale manquante ou non valide
 limits_eupload=Taille maximale de téléchargement de fichier manquante ou non valide
 limits_eexec=Temps d'exécution maximal manquant ou invalide
 limits_einput=Temps d'analyse maximal d'entrée manquant ou non valide
+
 errors_title=Journalisation des erreurs
 errors_header=Options d'affichage et de journalisation des messages d'erreur
 errors_display=Afficher les messages d'erreur?
@@ -128,6 +138,7 @@ errors_err=Impossible d'enregistrer la journalisation des erreurs
 errors_ereporting=Aucune expression de type d'erreur saisie
 errors_emaxlen=Taille maximale manquante ou non valide des erreurs enregistrées
 errors_efile=Fichier journal des erreurs manquant
+
 misc_title=Autres réglages
 misc_header=Divers autres paramètres PHP
 misc_short=Autoriser les scripts PHP commençant par &lt;? ?
@@ -148,6 +159,7 @@ misc_include=Autoriser l'ouverture de la télécommande Comprend?
 misc_path=CGI Fix Path Info?
 misc_timezone=Fuseau horaire PHP
 misc_charset=Jeu de caractères par défaut
+
 log_manual=Modifier manuellement le fichier $1 
 log_vars=Variables PHP modifiées dans $1 
 log_dirs=Paramètres de répertoire modifiés dans $1 
@@ -157,6 +169,7 @@ log_safe=Options de mode sans échec modifiées dans $1
 log_limits=Limites des ressources modifiées dans $1 
 log_errors=Modification de la journalisation des erreurs dans $1 
 log_misc=Modification d'autres paramètres dans $1
+
 acl_global=Peut modifier la configuration PHP globale?
 acl_anyfile=Peut modifier n'importe quel fichier en tant que configuration PHP?
 acl_manual=Peut modifier manuellement les fichiers de configuration?

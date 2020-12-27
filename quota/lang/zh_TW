@@ -1,4 +1,5 @@
 quota_unlimited=無限制
+
 acl_fss=這個使用者可編輯的檔案系統
 acl_fall=所有檔案系統
 acl_fsel=已選取的..
@@ -22,9 +23,11 @@ acl_uuid=使用者在 UID 範圍是
 acl_maxblocks=最大可用區塊配額
 acl_maxfiles=最大可用檔案配額
 acl_unlimited=無限制
+
 activate_eallow=您沒有權限在本檔案系統上啟用和停用磁碟配額
 activate_eon=打開配額失敗
 activate_eoff=關閉配額失敗
+
 check_title=檢查配額
 check_return=$1 列表
 check_ecannot=您沒有權限檢查本檔案系統的配額
@@ -32,11 +35,13 @@ check_running=現在正在執行 <tt>quotacheck</tt> 命令以檢查 <tt>$1</tt>
 check_done=... 完成。
 check_rgroup=群組
 check_ruser=使用者
+
 cgroup_efail=複製配額失敗
 cgroup_ecannot=您沒有權限複製配額
 cgroup_egallow=您沒有權限複製這個群組的配額
 cgroup_enogroup=沒有群組可複製到
 cgroup_eallowto=您沒有權限複製配額到 '$1'
+
 cgform_title=複製配額
 cgform_return=群組配額
 cgform_ecannot=您沒有權限複製配額
@@ -46,11 +51,13 @@ cgform_all=系統上的所有群組
 cgform_select=選取群組
 cgform_contain=包含使用者的群組
 cgform_doit=複製
+
 cuser_efail=複製配額失敗
 cuser_ecannot=您沒有權限複製配額
 cuser_euallow=您沒有權限複製這個使用者的配額
 cuser_enouser=沒有使用者複製到
 cuser_eallowto=您沒有權限複製配額到 '$1'
+
 cuform_title=複製配額
 cuform_return=使用者配額
 cuform_ecannot=您沒有權限複製配額
@@ -60,6 +67,7 @@ cuform_all=系統上的所用使用者
 cuform_select=選取的使用者
 cuform_members=選取群組的成員
 cuform_doit=複製
+
 egroup_title=編輯配額
 egroup_freturn=檔案系統列表
 egroup_greturn=群組列表
@@ -77,6 +85,7 @@ egroup_sflimit=軟性檔案限制
 egroup_hflimit=硬性檔案限制
 egroup_update=更新
 egroup_listall=列出所有配額
+
 euser_title=編輯配額
 euser_freturn=檔案系統列表
 euser_ureturn=使用者列表
@@ -97,6 +106,7 @@ euser_sflimit=軟性檔案限制
 euser_hflimit=硬性檔案限制
 euser_update=更新
 euser_listall=列表所用配額
+
 gfilesys_title=群組配額
 gfilesys_return=檔案列表
 gfilesys_ecannot=您沒有權限編輯 '$1' 的檔案配額
@@ -111,6 +121,7 @@ gfilesys_hard=硬性限制
 gfilesys_nogquota=群組 <tt>$1</tt> 在任何檔案系統上都沒有配額
 gfilesys_edit=編輯限額於：
 gfilesys_copy=複製配額
+
 ggracef_title=寬限時間
 ggracef_return=群組列表
 ggracef_ecannot=您沒有權限編輯此檔案系統的寬限時間
@@ -119,9 +130,11 @@ ggracef_graces=<tt>$1</tt> 的群組寬限時間
 ggracef_block=對區塊配額
 ggracef_file=對檔案配額
 ggracef_update=更新
+
 ggraces_esave=保存寬限時間失敗
 ggraces_eedit=您沒有權限編輯此檔案系統的寬限時間
 ggraces_enumber='$1' 不是數字
+
 index_quser=使用者配額
 index_qgroup=群組配額
 index_qboth=使用者和群組配額
@@ -140,6 +153,7 @@ index_return=索引
 index_euser=編輯使用者配額：
 index_egroup=編輯群組配額：
 index_nosupport=本地檔案系統不支援配額
+
 lgroups_failed=列出群組失敗
 lgroups_eallow=您沒有權限編輯這個檔案系統上的配額
 lgroups_title=檔案系統配額
@@ -159,13 +173,17 @@ lgroups_grace=編輯寬限時間
 lgroups_check=檢查配額
 lgroups_info=Webmin 可以組態為當建立 Unix 群組時在檔案系統上自動設定磁碟配額，這只在用 $1 Webmin 模組新增群組有效。
 lgroups_newgroup=新群組配額
+
 sgroup_egroup=您沒有權限編輯這個群組的配額
 sgroup_efs=您沒有權限編輯這個檔案系統的配額
+
 ssync_ecannot=您沒有權限設置這個檔案系統的缺省配額
+
 suser_euser=您沒有權限編輯這個使用者的配額
 suser_efs=您沒有權限編輯這個檔案系統的配額
 suser_emaxblocks=您沒有權限給予區塊限制在 $1 之上
 suser_emaxfiles=您沒有權限給予檔案限制在 $1 之上
+
 ufilesys_title=使用者配額
 ufilesys_return=檔案系統列表
 ufilesys_ecannot=您沒有權限編輯 '$1' 的配額
@@ -181,6 +199,7 @@ ufilesys_nouquota=使用者 <tt>$1</tt> 在任何檔案系統都沒有配額
 ufilesys_edit=編輯配額在：
 ufilesys_copy=複製配額
 ufilesys_grace=寬限時間
+
 ugracef_title=寬限時間
 ugracef_return=使用者列表
 ugracef_ecannot=您沒有權限編輯本檔案系統的的寬限時間
@@ -189,9 +208,11 @@ ugracef_graces=<tt>$1</tt> 的使用者寬限時間
 ugracef_block=為區塊的配額
 ugracef_file=對檔案配額
 ugracef_update=更新
+
 ugraces_esave=保存寬限時間失敗
 ugraces_eedit=您沒有權限編輯本檔案系統上的寬限時間
 ugraces_enumber='$1' 不是數字
+
 lusers_failed=列出使用者失敗
 lusers_eallow=您沒有權限編輯本檔案系統上的配額
 lusers_title=檔案系統配額
@@ -219,12 +240,14 @@ lusers_hblimit=硬性限制
 lusers_sflimit=軟性檔案限制
 lusers_hflimit=硬性檔案限制
 lusers_apply=套用
+
 grace_seconds=秒
 grace_minutes=分鐘
 grace_hours=小時
 grace_days=天
 grace_weeks=星期
 grace_months=月
+
 log_activate_u=已在 $1 上啟用使用者配額
 log_activate_g=已在 $1 上啟用群組配額
 log_activate_ug=已在 $1 上啟用使用者和群組配額

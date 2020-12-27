@@ -12,18 +12,22 @@ index_tabinstall=安裝模塊
 index_tabsuggest=建議模塊
 index_allmods2=Webmin使用的缺少模塊
 index_wantmods=要安裝的模塊
+
 download_ecpangz=URL $1不是CPAN模塊列表。檢查模塊配置。
 download_ebuild=需要構建 $1的一個或多個Perl模塊，但是尚未安裝此Perl模塊。
 download_yum=從軟件包 $2..中安裝Perl模塊 $1。
 download_missingok=CPAN中缺少的模塊
 download_fallback=某些模塊無法從軟件包安裝，而是嘗試從源代碼安裝。
+
 edit_method=從安裝
 edit_rpm=RPM軟件包 $1
 edit_debian=Debian軟件包 $1
 edit_manual=手動安裝Perl模塊
+
 uninstall_rpm=卸載 $1 RPM軟件包將刪除該模塊。
 uninstall_debian=卸載 $1 Debian軟件包將刪除該模塊。
 uninstall_err=無法卸載模塊
+
 uninstalls_title=卸載模塊
 uninstalls_err=無法卸載模塊
 uninstalls_enone=未選擇

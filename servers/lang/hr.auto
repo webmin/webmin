@@ -22,6 +22,7 @@ index_auto=Automatski pronađi poslužitelje
 index_automsg=Kliknite ovaj gumb za postavljanje automatskog periodičnog otkrivanja novih Webmin poslužitelja na vašoj mreži.
 index_search=Prikaži servere koji odgovaraju:
 index_ok=traži
+
 edit_title=Uređivanje poslužitelja
 create_title=Registrirajte poslužitelj
 edit_details=Pojedinosti o poslužitelju
@@ -57,6 +58,7 @@ edit_baduser=Prijava je odbijena
 edit_invalid=Korisnik ne može vršiti RPC
 edit_version=Trčanje Webmin $1 
 edit_same=Dostupno je samo u načinu provjere autentičnosti sesije i kad lozinka postane dostupna Webmin programima.
+
 save_err=Spremanje poslužitelja nije uspjelo
 save_ehost=Nedostaje ili nevaljano ime računala
 save_ehost2=Domaćin ne postoji
@@ -67,6 +69,7 @@ save_epass=Nedostaje lozinka
 save_egroup=Nedostaje naziv grupe
 save_elogin=Nevažeća prijava ili lozinka za host
 save_egroup2=Nevažeće novo ime grupe
+
 find_title=Pronađite poslužitelje
 find_new=Pronađen je novi poslužitelj na $1 
 find_but=Pronađen je novi poslužitelj na $1, ali provjera identiteta nije uspjela : $2 
@@ -81,16 +84,20 @@ find_ecannot=Nije vam dopušteno pronaći poslužitelje
 find_scanning=Traženje poslužitelja u mreži $1 ..
 find_broading=Emitiranje poslužitelja na adresama $1 ..
 find_eport=Nedostaje ili nevažeći broj porta
+
 log_modify=Izmijenjen poslužitelj $1 
 log_create=Registrirani poslužitelj $1 
 log_delete=Izbrisan poslužitelj $1 
 log_find=Pronađen poslužitelj $1 
 log_deletes=Izbrisani su $1 poslužitelji
+
 link_elogin=Prijava nije uspjela na $1 kao $2 
 link_ecannot=Nije vam dopušteno korištenje ovog poslužitelja
 link_essl=Nemate instaliranu biblioteku perl Net::SSLeay
 link_eautologin=Nevažeća prijava ili zaporka za $1. <a href='$2'>Kliknite ovdje</a> da biste pokušali ponovo.
+
 lib_other=drugo
+
 acl_edit=Mogu li uređivati poslužitelje?
 acl_find=Možete li pronaći servere?
 acl_servers=Mogu se koristiti poslužitelji
@@ -102,6 +109,7 @@ acl_forcefast=Prisiliti brzi RPC način na zadanu postavku?
 acl_forcetype=Prisiliti zadanu vrstu OS-a?
 acl_forcelink=Prisiliti zadanu vrstu prijave?
 acl_links=Mogu li se povezati s poslužiteljima?
+
 login_title=Prijavite se na poslužitelj
 login_desc=Morate unijeti korisničko ime i lozinku za prijavu na Webmin poslužitelj $1.
 login_header=Provjera autentičnosti Webmin-a
@@ -109,13 +117,16 @@ login_user=Korisničko ime
 login_pass=Zaporka
 login_login=Prijaviti se
 login_esame=Mogućnost korištenja iste prijave kao i ovaj poslužitelj može se koristiti samo ako nije u načinu provjere autentičnosti sesije i kada se lozinka učini dostupnom programima Webmin.
+
 this_server=ovaj poslužitelj
+
 delete_err=Brisanje poslužitelja nije uspjelo
 delete_enone=Nijedna nije odabrana
 delete_ecannot=Nije vam dopušteno brisanje poslužitelja
 delete_title=Izbriši poslužitelje
 delete_rusure=Jeste li sigurni da želite ukloniti $1 odabrane poslužitelje?
 delete_confirm=Izbriši sada
+
 auto_title=Automatski pronađi poslužitelje
 auto_header=Opcije automatske registracije poslužitelja
 auto_sched=Potražite nove poslužitelje?
@@ -141,8 +152,10 @@ auto_smtp=Slanje putem SMTP poslužitelja
 auto_self=Ovaj sustav
 auto_esmtp=Nedostaje ili nije važeći SMTP poslužitelj
 auto_findself=Registrirati i ovaj sustav?
+
 config_deftype=Zadani tip sustava
 config_typeauto=Automatski
+
 email_regsubject=Sustav $1 registriran
 email_reg=Sustav $1 automatski je registriran.
 email_unregsubject=Sustav $1 nije registriran

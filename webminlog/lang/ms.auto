@@ -5,4 +5,5 @@ search_global_wrongpass=Kata laluan tidak sah
 search_global_baduser=Nama pengguna yang buruk
 search_global_badpass=Kata laluan yang buruk
 search_global_twofactor=Token duafaktor tidak sah
+
 acl_self=Hanya diri sendiri

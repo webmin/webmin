@@ -9,17 +9,21 @@ index_edit=Quản lý
 index_manual=Chỉnh sửa thủ công
 index_anyfile=Chỉnh sửa tập tin cấu hình PHP khác:
 index_return=tập tin cấu hình
+
 file_global=Cấu hình PHP toàn cầu
 file_eread=Không thể đọc $1 : $2 
+
 manual_title=Chỉnh sửa cấu hình thủ công
 manual_desc=Trang này có thể được sử dụng để chỉnh sửa thủ công tệp cấu hình PHP. Điều này nên được thực hiện cẩn thận, vì không có cú pháp hoặc kiểm tra tính hợp lệ khác sẽ được thực hiện trên các thay đổi của bạn.
 manual_err=Không thể chỉnh sửa tập tin cấu hình
 manual_edata=Không có nội dung mới được nhập
+
 list_title=Quản lý cấu hình PHP
 list_ecannot=Bạn không được phép quản lý tệp cấu hình PHP này
 list_return=Cấu hình PHP
 list_format_ini=Định dạng INI
 list_format_fpm=Định dạng FPM
+
 vars_title=Các biến PHP
 vars_header=Tùy chọn tạo và trích dẫn biến PHP
 vars_magic=Trích dẫn tất cả các biến đầu vào?
@@ -28,6 +32,7 @@ vars_register=Biến tất cả đầu vào thành biến toàn cục?
 vars_args=Biến tham số dòng lệnh thành biến toàn cục?
 vars_long=Tạo các mảng kiểu cũ như <tt>HTTP_GET_VARS</tt>?
 vars_err=Không thể lưu cài đặt biến PHP
+
 dirs_title=Cài đặt thư mục
 dirs_header=Tập lệnh PHP và cài đặt thư mục mở rộng
 dirs_include=Tìm kiếm thư mục bao gồm
@@ -39,6 +44,7 @@ dirs_err=Không thể lưu cài đặt thư mục
 dirs_eincs=Không bao gồm các thư mục tìm kiếm đã nhập
 dirs_eutmp=Thư mục tập tin tạm thời bị thiếu hoặc không hợp lệ
 dirs_eext=Thiếu thư mục tiện ích mở rộng
+
 db_title=Cài đặt cơ sở dữ liệu
 db_header1=Cài đặt kết nối cơ sở dữ liệu MySQL
 db_persist=Cho phép kết nối cơ sở dữ liệu liên tục?
@@ -57,6 +63,7 @@ db_emaxlinks=Thiếu hoặc không hợp lệ số lượng tối đa của tổ
 db_etimeout=Hết thời gian chờ kết nối bị thiếu hoặc không hợp lệ
 db_ehost=Thiếu hoặc không hợp lệ máy chủ lưu trữ máy chủ MySQL
 db_eport=Cổng máy chủ MySQL mặc định bị thiếu hoặc không hợp lệ
+
 session_title=Tùy chọn phiên
 session_header=Các tùy chọn để theo dõi phiên PHP
 session_handler=Cơ chế lưu trữ phiên
@@ -73,6 +80,7 @@ session_epath=Thư mục bị thiếu hoặc không hợp lệ cho các tệp ph
 session_elife=Tuổi thọ cookie bị thiếu hoặc không hợp lệ
 session_emaxlife=Thiếu phiên tối đa hoặc không hợp lệ trọn đời
 session_eredis=Thiếu hoặc mở rộng redis mở rộng
+
 safe_title=Tùy chọn chế độ an toàn
 safe_header=Tùy chọn chế độ truy cập tệp an toàn
 safe_on=Cho phép chế độ an toàn?
@@ -85,6 +93,7 @@ safe_err=Không thể lưu các tùy chọn chế độ an toàn
 safe_einclude=Thư mục bị thiếu hoặc không hợp lệ cho các tệp được bao gồm
 safe_eexec=Thư mục bị thiếu hoặc không hợp lệ cho các chương trình đã thực hiện
 safe_ebasedir=Thư mục bị thiếu hoặc không hợp lệ cho các hoạt động tập tin
+
 limits_title=Giới hạn tài nguyên
 limits_header=Tùy chọn giới hạn bộ nhớ và chuyển
 limits_mem=Cấp phát bộ nhớ tối đa
@@ -98,6 +107,7 @@ limits_epost=Kích thước POST HTTP tối đa bị thiếu hoặc không hợp
 limits_eupload=Kích thước tải lên tệp tối đa bị thiếu hoặc không hợp lệ
 limits_eexec=Thiếu thời gian thực hiện tối đa hoặc không hợp lệ
 limits_einput=Thiếu thời gian phân tích cú pháp đầu vào tối đa hoặc không hợp lệ
+
 errors_title=Lỗi đăng nhập
 errors_header=Tùy chọn hiển thị thông báo lỗi và ghi nhật ký
 errors_display=Hiển thị thông báo lỗi?
@@ -128,6 +138,7 @@ errors_err=Không thể lưu lỗi đăng nhập
 errors_ereporting=Không có biểu thức loại lỗi được nhập
 errors_emaxlen=Thiếu hoặc không hợp lệ kích thước tối đa của lỗi đăng nhập
 errors_efile=Thiếu tệp nhật ký lỗi
+
 misc_title=Các thiết lập khác
 misc_header=Các cài đặt PHP khác
 misc_short=Cho phép các tập lệnh PHP bắt đầu bằng &lt;? ?
@@ -148,6 +159,7 @@ misc_include=Cho phép mở remote Bao gồm?
 misc_path=CGI Sửa thông tin đường dẫn?
 misc_timezone=Múi giờ PHP
 misc_charset=Bộ ký tự mặc định
+
 log_manual=Chỉnh sửa thủ công tệp $1 
 log_vars=Các biến PHP đã thay đổi trong $1 
 log_dirs=Thay đổi cài đặt thư mục trong $1 
@@ -157,6 +169,7 @@ log_safe=Thay đổi tùy chọn chế độ an toàn trong $1
 log_limits=Thay đổi giới hạn tài nguyên trong $1 
 log_errors=Đã thay đổi đăng nhập lỗi trong $1 
 log_misc=Đã thay đổi cài đặt khác trong $1 
+
 acl_global=Có thể chỉnh sửa cấu hình PHP toàn cầu?
 acl_anyfile=Có thể chỉnh sửa bất kỳ tập tin như một cấu hình PHP?
 acl_manual=Có thể chỉnh sửa thủ công các tập tin cấu hình?

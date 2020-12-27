@@ -15,5 +15,6 @@ edit_special_daily=Päivittäin (keskiyöllä)
 edit_special_weekly=Viikoittain (sunnuntaina)
 edit_special_monthly=Kuukausittain (1. päivä)
 edit_special_yearly=Vuosittain (1. tammikuuta)
+
 log_success=Suoritettiin onnistuneesti <tt>$2</tt> hakemistossa <tt>$1</tt>
 log_failure=<tt>$2</tt> suorittaminen <tt>$1</tt> : $3 epäonnistui

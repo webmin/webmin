@@ -13,6 +13,7 @@ index_applydesc=Spustelėkite šį mygtuką, norėdami pritaikyti dabartinę „
 index_cpan=Kadangi „SpamAssassin“ yra „Perl“ modulis, galite jį automatiškai įdiegti naudodami „Webmin“ modulį <a href='$2'>„Perl“ moduliai</a> “, kad atsisiųstumėte $1 iš CPAN.
 index_spamassassin=„SpamAssassin“
 index_ecannot=Jums neleidžiama tvarkyti „SpamAssassin“ konfigūracijos failo $1 
+
 white_title=Leidžiami ir atmetami adresai
 white_desc=Šiame puslapyje pateiktose lentelėse galima nurodyti Nuo: ir Kam: el. Pašto adresus, kurie visada arba niekada nepriskiriami šlamšto kategorijai. Bet koks kitas el. Paštas bus tvarkomas kaip įprasta pagal „SpamAssassin“ taisykles. Visuose el. Pašto adresuose gali būti pakaitos simbolių, pvz., *@Foo.com arba *.foo.com, kad jie atitiktų visus domenus.
 white_from=Siuntėjai niekada neklasifikuojami kaip šlamštas
@@ -44,6 +45,7 @@ white_tabham=Leidžiami adresai
 white_tabspam=Atmesti adresai
 white_tabsome=Paskirties adresai
 white_tabimport=Importuoti adresus
+
 score_title=Šlamšto klasifikacija
 score_desc=„SpamAssassin“ kiekvienam pranešimui priskiria balą pagal jo turinį ir antraštes. Šiame puslapyje pateiktos parinktys nustato balą, virš kurio pranešimas laikomas šlamštu, ir kai kuriuos metodus, pagal kuriuos apskaičiuojamas tas balas.
 score_header=Šlamšto žinučių klasifikavimo parinktys
@@ -77,6 +79,7 @@ score_emxdelay=Trūksta arba netinkamos sekundės laukti tarp MX patikrinimų
 score_etimeout=Trūksta arba netinkamų sekundžių laukti RBL užklausų
 score_ereceived=Trūksta arba netinkamas gautų skaičius: antraštes patikrinti su RBL
 score_bayes=Naudoti Bajeso mokymosi klasifikatorių?
+
 report_title=Pranešimo modifikacija
 report_desc=Šiame puslapyje pateiktos parinktys kontroliuoja „SpamAssassin“ modifikacijas, kurias daro visų analizuojamų pranešimų antraštėse ir rinkinyje, ir modifikacijas, kurias ji daro tiems, kurie klasifikuojami kaip šlamštas.
 report_header=Išanalizuotos ir šlamšto modifikavimo parinktys
@@ -109,6 +112,7 @@ report_addspam=Šlamštas
 report_addham=Kumpis
 report_addall=Visi
 report_eaddheader=Trūksta arba netinkama papildoma antraštė, norint pridėti $1 
+
 user_title=Įvairios vartotojo parinktys
 user_desc=Šiame puslapyje pateiktos parinktys daugiausia susijusios su keliais ir nustatymais, kuriuos „SpamAssassin“ naudoja išoriniams šlamšto identifikavimo paketams „Razor“, DCC ir „Pyzor“. Taip pat galite pasakyti „SpamAssassin“, ar ji galės atlikti DNS paiešką, ar ne.
 user_header=Įvairios vartotojo lygio parinktys
@@ -131,6 +135,7 @@ user_err=Nepavyko išsaugoti vartotojo parinkčių
 user_etimeout=„$1“ negalioja
 user_epath=„$1“ nėra tinkamas kliento programos kelias
 user_emax=„$1“ nėra tinkamas kontrolinės sumos skaičius
+
 header_title=Antraštės ir kūno tyrimai
 header_desc=Šis puslapis leidžia apibrėžti papildomus testus, kuriuos „SpamAssassin“ taikys el. Laiškams, remiantis pranešimų antraštėmis, teksto turiniu, kūne rastais URL arba kitų testų deriniais. Kiekvienam testui priskirtas vardas priklauso nuo jūsų, tačiau paprastai tai yra kažkas panašaus į CONTAINS_FOO. Faktinį rezultatą, kurį „SpamAssassin“ prideda prie testą atitinkančių pranešimų, galima nustatyti įvedant savo arba įmontuotus testų pavadinimus puslapio lentelės apačioje.
 header_switch=Perjungti į paprastą režimą ..
@@ -164,6 +169,7 @@ header_eeval=„$1“ nėra tinkama vertinimo funkcija
 header_eheader=„$1“ nėra tinkama el. Pašto antraštė
 header_eregexp=„$1“ nėra teisinga reguliari išraiška (turi būti tokia kaip / išraiška /)
 header_emeta=Trūksta bandymo „$1“ išraiškos
+
 priv_title=Įvairios privilegijuotos parinktys
 priv_desc=Čia pateiktos parinktys gali būti nustatomos tik globaliai, o ne atskirų vartotojų konfigūracijos failuose. Jie valdo keliais į įvairius konfigūracijos ir registravimo failus.
 priv_header=Įvairūs privilegijų lygio nustatymai
@@ -183,6 +189,7 @@ priv_eargs=„$1“ nėra tinkamas argumentų sąrašas
 priv_emscore=„$1“ nėra teisingas didžiausias frazės balas
 priv_ephrase=„$1“ nėra tinkama dviejų žodžių šlamšto frazė
 priv_escore=Trūksta arba netinkamas šlamšto frazės „$1“ balas
+
 usually=Paprastai $1 
 ecannot=Jums neleidžiama naudotis šiuo puslapiu
 setup_title=Nustatyti „SpamAssassin“ „Procmail“
@@ -202,11 +209,13 @@ setup_drop1=Gavėjo „Unix“ vartotojas
 setup_drop0=<tt>šaknies</tt> vartotojas
 setup_ok=Nustatykite „SpamAssassin“ „Procmail“
 setup_email=Persiųsti el. Pašto adresą
+
 setup_err=Nepavyko nustatyti „SpamAssassin“
 setup_efile=Trūksta arba netinkamas „mbox“ formato failas
 setup_emaildir=Trūksta arba netinkamas „Qmail“ pašto katalogas
 setup_emhdir=Trūksta arba netinkamas MH pašto katalogas
 setup_eemail=Trūksta arba netinkamas el. Pašto adresas
+
 log_white=Pakeisti leidžiami ir atmesti adresai
 log_score=Modifikuota šlamšto klasifikacija
 log_report=Modifikuotas pranešimo modifikavimas
@@ -217,12 +226,14 @@ log_setup=Nustatykite „SpamAssassin“ „Procmail“
 log_procmail=Pakeista „Procmail“ konfigūracija
 log_import=Importuoti $1 leidžiami adresai
 log_manual=Rankiniu būdu redaguojamas konfigūracijos failas
+
 import_title=Importuoti adresus
 import_err=Nepavyko importuoti adresų
 import_efile=Nėra pasirinkto failo importuoti
 import_enone=Faile nerasta jokių el. Pašto adresų
 import_ok1=Faile buvo rasti $2 el. Pašto adresai, iš kurių $1 buvo naujas ir buvo įtrauktas į visų adresų sąrašą.
 import_ok2=$1 el. Pašto adresai buvo rasti faile, bet jie visi jau buvo leidžiamų adresų sąraše.
+
 mail_title=Šlamšto paštas
 mail_desc=Šiame puslapyje pateikiami pranešimai, kurie buvo klasifikuojami kaip šlamštas ir laukia kokių nors veiksmų. Neteisingai identifikuotus pranešimus galima perkelti į aplanką Gautieji, o tuos, kurie yra šlamštas, galite ištrinti.
 mail_level=Rezultatas
@@ -240,10 +251,13 @@ mail_will=Automatinis atnaujinimas per $1 minutes
 mail_wills=Automatinis atnaujinimas per $1 sekundes
 mail_delall=Ištrinti visą šlamštą
 mail_search3=Ieškokite aukščiau:
+
 process_eclean=Pašalinant „SpamAssassin“ antraštes iš šio el. Pašto įvyko klaida
 process_ereport=Nepavyko pranešti el. Pašto „SpamAssassin“ : $1 
+
 apply_err=Nepavyko pritaikyti pakeitimų
 apply_none=Nerasta „SpamAssassin“ demonų procesų!
+
 acl_avail=Naudotojui prieinamos piktogramos
 acl_file=Redaguoti „SpamAssassin“ konfigūracijos failą
 acl_filedef=Visuotinis konfigūracijos failas
@@ -251,8 +265,10 @@ acl_awl=Leidžiama vartotojams redaguoti automatinį baltąjį sąrašą
 acl_awl0=Visi vartotojai
 acl_awl1=Tik išvardyti vartotojai $1 
 acl_awl2=Tik grupių $1 nariai
+
 search_escore=Trūksta arba netinkamas šlamšto balas
 search_results5=$1 pašto pranešimai, kurių šlamšto procentas yra lygus arba didesnis nei $2 ..
+
 razor_title=Nustatyti skustuvo šlamšto detektorių
 razor_desc=„Vipul's Razor“ yra bendra šlamšto aptikimo ir pranešimo sistema, kuri gali pagerinti jūsų adresu siunčiamo šlamšto klasifikaciją. Tačiau prieš naudodamiesi šia forma, turite užsiregistruoti „Razor“ paskyroje.
 razor_user=Skustuvo vartotojo vardas
@@ -267,6 +283,7 @@ razor_epass=Nėra slaptažodžio
 razor_doing=Dabar bandoma užregistruoti ir nustatyti skustuvą ..
 razor_done=.. padaryta.
 razor_failed=.. nepavyko! Norėdami sužinoti priežastį, skaitykite aukščiau pateiktą klaidos išvestį.
+
 amavisd_title=„Amavisd“ šlamšto pristatymas
 amavisd_desc=Forma gali būti naudojama pakeisti „Amavisd“ konfigūraciją, kuri nustato, kas nutinka pranešimams, klasifikuojamiems kaip šlamštas.
 amavis_ok=Pakeisti „Amavisd“ pristatymą
@@ -304,9 +321,11 @@ amavis_quarantine_today=Šlamšto laiškai karantine šiandien (24 val.)
 amavis_quarantine_week=Šlamšto laiškai karantine šią savaitę (7 dienos)
 amavis_quarantine_month=Šlamšto laiškai karantine šį mėnesį (30 dienų)
 amavis_quarantine_total=Bendras šlamšto laiškų skaičius karantine
+
 procmail_title=„Procmail“ šlamšto pristatymas
 procmail_ok=Pakeisti „Procmail“ pristatymą
 procmail_desc=Forma gali būti naudojama norint pakeisti „Procmail“ konfigūraciją, kuri nustato, kas nutinka pranešimams, klasifikuojamiems kaip šlamštas.
+
 simple_title=Antraštės ir kūno tyrimai
 simple_desc=Šis puslapis leidžia apibrėžti papildomus testus, kuriuos „SpamAssassin“ taikys el. Laiškams, remiantis pranešimų antraštėmis, turinio turiniu, kūne rastais URL. Kiekvienam testui priskirtas vardas priklauso nuo jūsų, tačiau paprastai tai yra kažkas panašaus į CONTAINS_FOO.
 simple_switch=Perjungti į išplėstinį režimą ..
@@ -317,8 +336,10 @@ simple_regexp=Rungtynių išraiška
 simple_score=Taškas, kurį reikia pritaikyti
 simple_describe=apibūdinimas
 simple_err=Nepavyko išsaugoti pranešimų testų
+
 before_ecmd=Nepavyko išsaugoti komandos : $1 
 after_ecmd=Nepavyko išsaugoti komandos : $1 
+
 connect_emysql=Nepavyko įkelti duomenų bazės tvarkyklės $1 
 connect_elogin=Nepavyko prisijungti prie duomenų bazės $1:$2.
 connect_equery=Duomenų bazėje $1 nėra nuostatų lentelės $2 
@@ -326,9 +347,11 @@ connect_eldapmod=„Perl“ modulis $1, reikalingas ryšiui su LDAP, neįdiegtas
 connect_eldap=Nepavyko prisijungti prie $2 prievado LDAP serverio $1 
 connect_eldaplogin=Nepavyko prisijungti prie LDAP serverio $1 kaip $2 : $3 
 connect_ebase=LDAP bazė DN $1 negalioja : $2 
+
 eldap=LDAP operacija nepavyko : $1 
 esql=SQL nepavyko : $1 
 ldap_euser=Nepavyko rasti LDAP vartotojo objekto $1 
+
 db_title=SQL ir LDAP duomenų bazės
 db_header=Konfigūracijos saugyklos duomenų bazės parinktys
 db_dsn=Saugokite vartotojo konfigūraciją
@@ -364,6 +387,7 @@ db_eldapport=Trūksta arba netinkamas LDAP serverio prievado numeris
 db_eldapdn=Trūksta arba netinkama bazinė DN - tarpai neleidžiami
 db_eldapattr=Trūksta arba netinkamas „SpamAssassin“ atributas
 db_eldapuid=Trūksta arba netinkamas vartotojo vardo atributas
+
 awl_title=Tvarkykite automatinius baltuosius sąrašus
 awl_search=Ieškoti baltajame sąraše:
 awl_ok=Paieška
@@ -389,6 +413,7 @@ awl_deleteone=Išvalyti automatinį baltąjį sąrašą
 awl_deleteonedesc=Pašalinkite visus vartotojo 1 baltojo sąrašo įrašus.
 awl_deleteall=Išvalyti visus automatinius baltuosius sąrašus
 awl_deletealldesc=Pašalinkite visus automatinio baltojo sąrašo įrašus visiems sistemos vartotojams.
+
 dawl_err=Nepavyko ištrinti iš automatinio baltojo sąrašo
 dawl_eopen=Nepavyko atidaryti baltojo sąrašo
 dawl_enone=Nėra pasirinktų adresų
@@ -396,6 +421,7 @@ dawl_ecannot=Jums neleidžiama tvarkyti šio vartotojo automatinio baltojo sąra
 dawl_doing=Visų vartotojų automatinių baltųjų sąrašų ištrynimas ..
 dawl_done=.. ištrynė $2 įrašus iš $1 vartotojų.
 dawl_title=Ištrinti visus automatinius baltuosius sąrašus
+
 manual_title=Redaguoti konfigūravimo failus
 manual_file=Redaguoti konfigūracijos failą:
 manual_ok=Gerai

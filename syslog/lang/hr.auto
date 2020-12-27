@@ -24,8 +24,10 @@ all=svi
 index_view=Pogled ..
 index_viewfile=Pogledajte datoteku dnevnika:
 index_viewok=Pogled
+
 restart_ekill=Nije uspio signal syslog procesa $1 : $2 
 restart_ecannot=Nije vam dopušteno ponovno pokretanje syslog-a
+
 start_ecannot=Nije vam dopušteno pokrenuti syslog
 edit_title=Uređivanje dnevnika sustava
 create_title=Dodavanje zapisnika sustava
@@ -56,11 +58,13 @@ edit_tag=Samo za program
 edit_return=detalji zapisnika
 edit_ecannot=Nije vam dopušteno uređivanje postavki dnevnika
 edit_ecannot2=Nije vam dopušteno uređivanje ovog dnevnika
+
 view_title=Pogledajte Zapisnik
 view_header=Zadnji $1 redovi od $2 
 view_empty=Datoteka dnevnika je prazna
 view_refresh=Osvježiti
 view_filter=Pokaži samo retke s tekstom $1 
+
 save_err=Spremanje dnevnika nije uspjelo
 save_efile='$1' nije valjano ime datoteke : $2 
 save_epipe='$1' nije važeća cijev s nazivom
@@ -80,11 +84,13 @@ save_ecannot5=Ne možete mijenjati zapisnik
 save_ecannot6=Nije vam dopušteno pregledati proizvoljne zapisnike
 save_ecannot7=Nije vam dopušteno vidjeti ovaj dodatni zapisnik
 save_emissing=Nedostaje datoteka dnevnika za pregled
+
 log_modify=Izmijenjeni dnevnik u $1 
 log_create=Dnevnik je dodan u $1 
 log_delete=Izbrisani dnevnik u $1 
 log_apply=Primijenjene promjene
 log_start=Pokrenut poslužitelj za prijavu
+
 desc_sysmesg=Poruke sustava
 desc_mail=E-mail zapisnik
 desc_auth=Dnevnik provjere autentičnosti
@@ -93,6 +99,7 @@ desc_news=NNTP News Dnevnik
 desc_uucp=UUCP zapisnik
 desc_debug=Otklanjanje pogrešaka u porukama
 desc_cron=Dnevnik poslova Cron
+
 acl_noedit=Mogu li pregledavati samo zapisnike?
 acl_any=Možete li vidjeti bilo koju datoteku kao zapisnik?
 acl_logs=Može pregledavati i konfigurirati datoteke dnevnika

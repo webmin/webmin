@@ -16,6 +16,7 @@ index_setupdesc=La base de dades del servidor LDAP encara no conté el DN $1 arr
 index_setup=Crea DN Arrel
 index_permsdesc=El directori de dades $1 del servidor LDAP conté fitxers que no són propietat de l'usuari $2 correcte, cosa que vol dir que segurament no es podrà iniciar apropiadament. No obstant, Webmin ho pot arreglar per tu fent clic al botó de sota.
 index_perms=Corregeix els Propietaris
+
 connect_eserver=El servidor LDAP $1 no existeix
 connect_euser=No s'ha configurat l'usuari d'entrada
 connect_epass=No s'ha configurat la contrasenya d'entrada
@@ -28,6 +29,7 @@ connect_eldap=No s'ha pogut connectar amb el servidor LDAP $1 al port $2
 connect_essl=No s'ha pogut iniciar el xifratge TLS amb el servidor LDAP $1: $2
 connect_elogin=No s'ha pogut entrar al servidor LDAP $1 amb l'usuari $2: $3
 connect_cpan=Pots fer que el mòdul Perl <tt>$1</tt> <a href='$2'>s'instal·li automàticament</a> des de CPAN.
+
 slapd_title=Configuració del Servidor OpenLDAP
 ldif_title=Configuració del Servidor OpenLDAP
 slapd_header=Opcions globals del servidor LDAP
@@ -76,6 +78,7 @@ slapd_protos=Connexions LDAP a acceptar
 slapd_ldap=LDAP sobre xarxa
 slapd_ldaps=LDAP sobre SSL
 slapd_ldapi=Fitxer de sòcol Unix
+
 schema_title=Gestió de l'Esquema
 schema_file=Nom
 schema_desc=Descripció
@@ -93,6 +96,7 @@ schema_edesc=Aquesta pàgina permet editar manualment un fitxer d'esquema LDAP. 
 schema_return=a la llista d'esquemes
 schema_emove=No s'ha trobat el fitxer d'esquema a desplaçar!
 schema_ecannot=No tens permís per gestionar l'esquema LDAP
+
 acl_title=Control d'Accés LDAP
 acl_ecannot=No tens permís per configurar el control d'accés LDAP
 acl_what=Objectes
@@ -103,6 +107,7 @@ acl_none=Encara no s'ha definit cap regla de control d'accés. Tots els objectes
 acl_delete=Suprimeix les Regles Seleccionades
 acl_add=Afegeix una nova regla de control d'accés
 acl_return=a les regles de control d'accés
+
 browser_title=Exploració de la Base de Dades
 browser_econn=No es pot utilitzar l'explorador LDAP: $1
 browser_ecannot=No tens permís per explorar la base de dades LDAP
@@ -136,24 +141,30 @@ browser_nomatch=No hi ha cap objecte que coincideixi amb la recerca de $1.
 browser_search=S'han trobat objectes que coincideixen:
 browser_search2=Mostro els objectes que coincideixen:
 browser_sok=Busca
+
 save_err=No s'ha pogut canviar l'atribut
 save_ebase=No s'ha pogut obtenir l'objecte $1 de la base de dades
 save_emodify=La modificació LDAP de $2 a $1 ha fallat: $3
 save_enone=No has introduït cap valor
+
 add_err=No s'ha pogut afegir l'atribut
 add_eadd=Hi falta el nom de l'atribut o bé és invàlid
 add_evalue=Hi falta el valor
 add_emodify=L'addició LDAP de $2 a $1 ha fallat: $3
+
 delete_err=No s'han pogut eliminar els atributs
 delete_enone=No n'has seleccionat cap
 delete_emodify=La supressió LDAP de $2 de $1 ha fallat: $3
+
 sdelete_err=No s'han pogut suprimir els objectes
 sdelete_edn=No s'ha trobat l'objecte $1
 sdelete_edel=La supressió LDAP de $1 ha fallat: $2
+
 rename_err=No s'ha pogut reanomenar l'objecte
 rename_eget=No s'ha pogut trobar l'objecte amb DN $1
 rename_enew=Sembla que el nou nom no és vàlid
 rename_erename=El newdn LDAP de $2 de $1 ha fallat: $3
+
 oadd_title=Creació d'Objecte
 oadd_header=Detalls del nou objecte LDAP
 oadd_base=DN de l'objecte pare
@@ -170,6 +181,7 @@ oadd_eget2=No s'han pogut comprovar les contradiccions amb $1: $2
 oadd_eclash=Ja existeix un objecte amb el DN $1
 oadd_eadd=L'addició LDAP de $1 ha fallat: $2
 oadd_err=No s'ha pogut crear el nou objecte
+
 create_title=Creació d'Arbre
 create_ecannot=No tens permís per crear un nou arbre
 create_desc=Aquesta pàgina proporciona una forma convenient per crear un DN que serà la base d'un nou arbre a la base de dades. També pot crear un usuari o un àlies de correu electrònic d'exemple sota l'arbre, com a plantilla dels teus objectes.
@@ -191,18 +203,23 @@ create_done=...fet
 create_doingex=S'està creant l'objecte d'exemple amb DN $1...
 create_edoingex=...ha fallat: $1. No obstant, l'arbre encara es pot utilitzar.
 create_eoc=No s'ha pogut trobar una classe d'objecte apropiada per al nou DN
+
 eunknown=Error desconegut
+
 apply_err=No s'ha pogut aplicar la configuració
 apply_ecmd=$1 ha fallat: $2
 apply_ecannot=No tens permès d'aplicar la configuració
+
 stop_err=No s'ha pogut aturar el servidor LDAP
 stop_ecmd=$1 ha fallat: $2
 stop_egone=Ja no està en execució!
 stop_ekill=El procés de matat ha fallat: $1
 stop_ecannot=No tens permís per aturar el servidor LDAP
+
 start_err=No s'ha pogut inicialitzar el servidor LDAP
 start_ecmd=$1 ha fallat: $2
 start_ecannot=No tens permís per iniciar el servidor LDAP
+
 log_create_dn=S'ha creat l'objecte $1
 log_delete_dn=S'ha suprimit l'objecte $1
 log_rename_dn=S'ha renomenat l'objecte $1
@@ -234,6 +251,7 @@ log_up_access=S'ha desplaçat cap amunt la regla de control d'accés per a $1
 log_down_access=S'ha desplaçat cap avall la regla de control d'accés per a $1
 log_delete_accesses=S'han suprimit $1 regles de control d'accés
 log_all=tots els objectes
+
 gencert_title=Generació de Certificat
 gencert_header=Detalls del nou certificat SSL
 gencert_create=Crea el Certificat
@@ -245,7 +263,9 @@ gencert_dir=Directori
 gencert_err=No s'ha pogut generar el certificat
 gencert_edest=El directori de destinació no existeix
 gencert_epath=El certificat i els fitxers de clau de la configuració del servidor LDAP han de ser camins absoluts
+
 perms_err=No s'ha pogut corregit el propietari
+
 acl_slapd=Pot configurar el servidor LDAP
 acl_ldif=Pot configurar el servidor LDAP
 acl_schema=Pot gestionar l'esquema
@@ -254,6 +274,7 @@ acl_browser=Pot explorar i editar la base de dades
 acl_create=Pot crear un nou arbre
 acl_start=Pot iniciar i aturar el servidor LDAP
 acl_apply=Pot aplicar els canvis de configuració
+
 access_desc=$2 per $1
 access_self=el mateix
 access_users=usuaris autenticats
@@ -273,6 +294,7 @@ access_lcompare=Comparació
 access_lsearch=Cerca
 access_lread=Lectura
 access_lwrite=Escriptura
+
 eacl_title1=Creació de Regla de Control d'Accés
 eacl_title2=Edició de Regla de Control d'Accés
 eacl_header=Detalls de la regla de control d'accés a la base de dades LDAP

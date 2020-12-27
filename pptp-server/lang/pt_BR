@@ -10,6 +10,7 @@ index_apply=Aplicar Configurações
 index_applydesc=Clique neste botão para aplicar as opções de servidor PPTP atuais, interrompendo e reiniciando o processo de servidor. Mudanças das opções de PPP e contas PPP serão aplicadas a novas conexões.
 index_return=indice de módulo
 index_epppd=O programa de servidor PPP $1 não está instalado no seu sistema. O PPTP depende deste programa para funcionar.
+
 conf_title=Opções de Servidor PPTP
 conf_ecannot=Você não tem permissão para editar as opções de servidor PPTP
 conf_header=Configuração de servidor PPTP
@@ -35,6 +36,7 @@ conf_elocalip=$1' não é um endereço ou intervalo de IP local válido
 conf_eremoteip=$1' não é um endereço ou intervalo de IP remoto válido
 conf_efrom=Endereço de origem da rede IPX inválido ou não preenchido
 conf_eto=Endereço de destino da rede IPX inválido ou não preenchido
+
 options_title=Opções PPP
 options_ecannot=Você não tem permissão para editar as opções de PPP
 options_desc0=As opções de PPP abaixo, de $1, são aplicadas a TODAS as conexões recebidas pelo seu sistema, inclusive as de modem discado.
@@ -67,6 +69,7 @@ options_mschap=Autenticação MS-CHAP
 options_mschap-v2=Autenticação MS-CHAP versão 2
 options_chapms=$options_mschap
 options_chapms-v2=$options_mschap-v2
+
 secrets_title=Contas PPP
 secrets_ecannot=Você não tem permissão para editar contas PPP
 secrets_return=índice
@@ -80,6 +83,7 @@ secrets_sany=QUALQUER
 secrets_create=Criar nova conta PPP.
 secrets_desc=As contas PPP listadas nesta página foram tiradas do arquivo $1, que é usado para autenticação de $3. Somente as usadas no seu servidor $2 estão sendo exibidas, e não contas para fazer conexões de saída.
 secrets_delete=Remover Contas PPP Selecionadas
+
 edit_secret_etitle=Editar Conta PPP
 edit_secret_ctitle=Criar Conta PPP
 edit_secret_acc=Conta PPP
@@ -99,15 +103,20 @@ edit_secret_alist=Permitir listados..
 edit_secret_save=Salvar
 edit_secret_del=Remover
 edit_secret_return=lista de contas
+
 save_secret_esave=Erro ao salvar conta
 save_secret_enoip=$1' não é um endereço válido
+
 stop_err=Erro ao interromper servidor PPTP
 stop_egone=Inativo
 stop_ecannot=Você não tem permissão para interromper o servidor PPTP
+
 start_err=Erro ao iniciar o servidor PPTP
 start_ecannot=Você não tem permissão para iniciar o servidor PPTP
+
 apply_err=Erro ao reiniciar o servidor PPTP
 apply_ecannot=Você não tem permissão para reiniciar o servidor PPTP
+
 conns_title=Conexões Ativas
 conns_ecannot=Você não tem permissão para gerenciar conexões ativas
 conns_desc=Esta página lista as conexões PPTP ativas do seu servidor. Para forçar a desconexão de uma delas, clique no nome de interface da conexão.
@@ -119,9 +128,11 @@ conns_remote=Endereço do cliente VPN
 conns_none=Não parece haver conexões PPTP ativas no momento.
 conns_unknown=Desconhecido
 conns_user=Nome de usuário
+
 disc_err=Erro ao desconectar
 disc_egone=Conexão inativa
 disc_ekill=Processo inativo
+
 log_secret_create=Criada conta PPP $1
 log_secret_modify=Modificada conta PPP $1
 log_secret_delete=Removida conta PPP $1
@@ -132,6 +143,7 @@ log_disc=Cliente $1 desconectado
 log_start=Servidor PPTP iniciado
 log_stop=Servidor PPTP interrompido
 log_apply=Configuração de servidor PPTP aplicada
+
 acl_conf=Pode editar configurações?
 acl_options=Pode editar opções?
 acl_secrets=Pode gerenciar contas PPTP?

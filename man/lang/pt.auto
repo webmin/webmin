@@ -30,6 +30,7 @@ index_other_google=Mecanismo de pesquisa do Google
 index_other_kde=Documentação do KDE
 index_and=Corresponder a todos
 index_or=Corresponder a qualquer
+
 search_efor=Nenhuma página de manual para procurar inserida
 search_title=Procurar Resultados
 search_desc=Descrição
@@ -47,24 +48,32 @@ search_none=Nenhuma documentação correspondente a $1 encontrada.
 search_for=Por 1
 search_google=Resultado de pesquisa do Google
 search_doxfer=Documentação online do Webmin
+
 howto_title=Documento HOWTO
 howto_header=Arquivo de documento HOWTO $1 
 howto_epath=Caminho do documento HOWTO inválido
+
 doc_title=Documentação do pacote
 doc_header=Arquivo de documento do pacote $1 
 doc_epath=Caminho de documentação do pacote inválido
+
 man_title=Página Manual
 man_header=Página de manual para $1 ($2)
 man_noentry=A página do manual para $1 não existe!
 man_epath=A página do manual não pode ser o caminho!
+
 kernel_title=Documento do Kernel
 kernel_header=Arquivo de documento do kernel $1 
 kernel_epath=Caminho de documento do kernel inválido
+
 kde_title=Documentação do KDE
 kde_header=Arquivo de documento KDE $1 
 kde_epath=Caminho de documentação do KDE inválido
+
 perl_title=Módulo Perl
 perl_header=Documentação para o módulo Perl $1 
 perl_emod=Nome de módulo Perl inválido
+
 acl_allow=Pode editar os tipos de pesquisa permitidos?
+
 check_ecannot=Você não tem permissão para editar tipos de pesquisa permitidos

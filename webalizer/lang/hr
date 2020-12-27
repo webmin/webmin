@@ -11,6 +11,7 @@ index_rep=Raport
 index_view=Pogled..
 index_when=Da, $1
 index_webalizer=Webalizer
+
 edit_title1=Dodaj Log Datoteku
 edit_title2=Izmjeni Log Datoteku
 edit_header=Opcije reporta
@@ -32,14 +33,18 @@ edit_conf=Mogučnosti raporta
 edit_cmode0=Upotrijebi globalne opcije
 edit_cmode2=Druga konfiguracijska datoteka
 edit_clear=Izbriši log datoteke poslije redovnog raporta?
+
 gen_title=Generiraj Raport
 gen_header=Izvršavam Webalizer za generiranje raporta iz $1¸..
 gen_done=.. napravljeno
 gen_failed=.. Webalizer greska! Pogledaj iznad za detalje.
 gen_nothing=.. Webalizer završio ali izvještaj nije napravljen. Pogledaj iznad za detalje.
 gen_view=Pogledaj kompletan raport.
+
 save_etitle=Nedostaje report naslov
+
 view_title=Pogledaj izvještaj
+
 global_for=Log datoteka $1
 global_host=Hostname Websitea
 global_visit=Dužina posjeta
@@ -75,6 +80,7 @@ global_AllSearchStr=Internet pretraživači
 global_AllUsers=Korisnici
 global_delete=Izbriši i upotrebi globalnu konfigiraciju.
 global_ignoreagent=Ignoriraj  browsere
+
 global_err=Neuspjela pohrana Webalizer opcije
 global_ereport=Nedostaje naslov raporta i prefiksa
 global_ehost=Nedostaje ili je neispravno ime hosta
@@ -84,8 +90,10 @@ global_etable=Nedostaje ili neispravna veličina za '$1' tablicu
 global_ehistory=Nedostaje ili je neispravan history datoteka
 global_ecurrent=Nedostaje ili je neispravna incremental datoteka
 global_ecache=Fali ili neispravni DNS cache datoteka
+
 log_create_log=Kreiran raport za $1
 log_delete_log=Izbrisan raport za $1
+
 acl_view=Mogu vidjeti trenutnu statistiku?
 acl_user=Izvršavaj webalizer kao Unix korisnik
 acl_this=Trenutni webmin korisnik

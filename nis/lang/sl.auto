@@ -2,6 +2,7 @@ index_title=Odjemalec in strežnik NIS
 index_return=Meni NIS
 index_enis=Zdi se, da vaša naprava nima nameščene podpore za odjemalca ali strežnika.
 index_enis2=Uporabljene bodo samo funkcije za stranke v tem modulu.
+
 client_title=NIS odjemalec
 client_header=Konfiguracija odjemalca NIS
 client_domain=NIS domena
@@ -17,10 +18,12 @@ client_eserver='$1' ni veljavno ime strežnika
 client_eypwhich=ni bilo mogoče povezati z domeno NIS
 client_ehosts='$1' ni v datoteki gostiteljev
 client_enis=Zdi se, da vaša naprava nima nameščene podpore za odjemalce NIS.
+
 switch_title=Storitve za stranke
 switch_service=Storitev
 switch_srcs=Viri podatkov
 switch_return=storitve za stranke
+
 order_=&nbsp;
 order_nisplus=NIS +
 order_nis=NIS
@@ -32,6 +35,7 @@ order_hesiod=Hesiod
 order_ldap=LDAP
 order_user=Uporabniški tiskalniki
 order_xfn=XFN
+
 server_title=NIS strežnik
 server_header=Možnosti strežnika NIS
 server_boot=Ali želite omogočiti strežnik NIS?
@@ -65,6 +69,7 @@ server_solaris=Opomba - v Solarisu sta domena odjemalca in strežnika NIS vedno 
 server_edir=Neveljaven imenik izvornih datotek
 server_epwdir=Neveljaven imenik izvornih datotek z geslom
 server_enis=Zdi se, da vaša naprava nima nameščene podpore za NIS strežnik.
+
 tables_title=Tabele NIS
 tables_switch=Uredi tabelo NIS :
 tables_header=$1 NIS tabela od $2 
@@ -81,6 +86,7 @@ tables_search=Iskanje
 tables_nomatch=Noben zapis se ne ujema z vašim iskanjem
 tables_build=Obnovite tabele NIS
 tables_buildmsg=Kliknite ta gumb, da obnovite baze podatkov NIS iz podatkov tabele. Če ste spremenili kakršne koli spremembe, boste to morali storiti, da bodo na voljo strankam NIS.
+
 desc_aliases=Vzdevki Sendmail
 desc_mail=Vzdevki Sendmail
 desc_hosts=Naslovi gostiteljev
@@ -116,6 +122,7 @@ desc_printers=Tiskalniki
 desc_ipnodes=IP vozlišča
 desc_timezone=Časovni pasovi
 desc_locale=Lokale
+
 hosts_title=Naslov gostitelja
 hosts_ip=IP naslov
 hosts_name=Ime gostitelja
@@ -124,6 +131,7 @@ hosts_err=Gostitelja ni bilo mogoče shraniti
 hosts_eip=Manjkajoči ali neveljaven naslov IP
 hosts_ename=Manjkajoče ali neveljavno ime gostitelja
 hosts_aliases=Zimbe
+
 group_name=Ime skupine
 group_gid=ID skupine
 group_members=Člani skupine
@@ -134,6 +142,7 @@ group_none=Geslo ni potrebno
 group_encrypted=Vnaprej šifrirano geslo
 group_clear=Običajno geslo
 group_err=Skupine ni bilo mogoče shraniti
+
 passwd_name=Uporabniško ime
 passwd_uid=Uporabniško ime
 passwd_real=Pravo ime
@@ -171,6 +180,7 @@ passwd_emax=Neveljavno največje število dni
 passwd_emin=Neveljavno minimalno število dni
 passwd_einactive=Neveljavno število neaktivnih dni
 passwd_eexpiry=Neveljaven datum poteka
+
 services_name=Ime storitve
 services_proto=Protokol
 services_port=Pristanišče
@@ -179,6 +189,7 @@ services_header=Možnosti omrežne storitve Inetd
 services_err=Storitve ni bilo mogoče shraniti
 services_ename=Manjkajoče ali neveljavno ime storitve
 services_eport=Manjkajoče ali neveljavno pristanišče
+
 protocols_name=Ime protokola
 protocols_number=Številka
 protocols_aliases=Zimbe
@@ -187,6 +198,7 @@ protocols_header=Možnosti omrežnega protokola
 protocols_err=Protokola ni bilo mogoče shraniti
 protocols_ename=Manjkajoče ali neveljavno ime
 protocols_enumber=Manjkajoča ali neveljavna številka
+
 netgroup_name=Ime Netgroup
 netgroup_members=Člani
 netgroup_title=Mrežna skupina
@@ -201,6 +213,7 @@ netgroup_ename=Manjkajoče ali neveljavno ime omrežne skupine
 netgroup_ehost=Manjkajoči ali neveljaven gostitelj v vrstici $1 
 netgroup_euser=Manjkajoči ali neveljaven uporabnik v vrstici $1 
 netgroup_edom=Manjkajoča ali neveljavna domena NIS v vrstici $1 
+
 ethers_mac=Ethernet naslov
 ethers_ip=IP naslov
 ethers_title=Ethernet naslov
@@ -208,6 +221,7 @@ ethers_header=Možnosti preslikave v Ethernet
 ethers_err=Ethernetnega naslova ni bilo mogoče shraniti
 ethers_emac=Neveljaven ethernet naslov
 ethers_eip=Neveljaven naslov IP
+
 rpc_name=Ime programa
 rpc_number=Številka
 rpc_aliases=Zimbe
@@ -216,6 +230,7 @@ rpc_header=Podrobnosti o programu RPC
 rpc_err=Programa RPC ni bilo mogoče shraniti
 rpc_ename=Manjkajoče ali neveljavno ime programa
 rpc_enumber=Manjkajoča ali neveljavna številka
+
 networks_title=Omrežni naslov
 networks_ip=IP naslov
 networks_name=Ime omrežja
@@ -224,6 +239,7 @@ networks_err=Omrežja ni bilo mogoče shraniti
 networks_eip=Manjkajoči ali neveljaven naslov IP
 networks_ename=Manjkajoče ali neveljavno ime
 networks_aliases=Zimbe
+
 netmasks_net=Omrežni naslov
 netmasks_mask=Mrežna maska
 netmasks_title=Mrežna maska
@@ -231,6 +247,7 @@ netmasks_header=Podrobnosti mrežne maske
 netmasks_err=Netmask ni bilo mogoče shraniti
 netmasks_enet=Manjkajoč ali neveljaven omrežni naslov
 netmasks_emask=Manjkajoča ali neveljavna mreža
+
 aliases_from=Naslov
 aliases_to=Vzdevek k
 aliases_title=Sendmail Alias
@@ -238,6 +255,7 @@ aliases_header=Podrobnosti o vzdevku Sendmail
 aliases_err=Vzdevka ni bilo mogoče shraniti
 aliases_efrom=Manjkajoči ali neveljaven naslov
 aliases_eto=Manjkajo naslovi
+
 security_title=Varnost strežnika
 security_header=Možnosti varnosti strežnika NIS
 security_ok=Shrani in uveljavi
@@ -266,6 +284,7 @@ security_sec_des=Zahtevaj DES
 security_ehost='$1' ni veljavno ime gostitelja
 security_emap='$1' ni veljavna tabela NIS
 security_efield='$1' ni veljavna številka polja
+
 eswitch_title=Storitev urejanja
 eswitch_egone=Storitev ne obstaja!
 eswitch_header=Podrobnosti o storitvi

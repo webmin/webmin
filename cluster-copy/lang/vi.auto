@@ -11,6 +11,7 @@ index_when=Có, $1
 index_act=Hoạt động
 index_exec=Hành hình
 index_delete=Xóa các bản sao được chọn
+
 edit_title=Chỉnh sửa sao chép cụm
 create_title=Tạo bản sao cụm
 edit_header=Chi tiết sao chép cụm
@@ -31,12 +32,14 @@ edit_run=Sao chép ngay
 edit_return=sao chép cụm
 edit_email=Email xuất ra
 edit_none=Không ai
+
 save_err=Không thể lưu công việc cron cluster
 save_efiles=Không có tập tin để sao chép đã nhập
 save_edest=Thiếu thư mục đích
 save_eservers=Không có máy chủ để sao chép để nhập
 save_efile=Tệp để sao chép '$1' không phải là đường dẫn tuyệt đối
 save_eemail=Địa chỉ email bị thiếu hoặc không hợp lệ
+
 exec_title=Sao chép các tập tin
 exec_files1=Sao chép tệp $1 vào các máy chủ được chọn $2 ..
 exec_files2=Sao chép $1 vào các máy chủ được chọn $2 ..
@@ -50,12 +53,15 @@ exec_not=Không thể sao chép các tệp sau vào $1  :
 exec_cmd=Đầu ra lệnh sau sao chép trên $1  :
 exec_before=Đầu ra lệnh trước khi sao chép trên $1  :
 exec_on=Không thể chạy trên $1 : $2 
+
 log_create=Tạo bản sao cho máy chủ $1 đến $2 
 log_modify=Bản sao đã sửa đổi cho các máy chủ $1 đến $2 
 log_delete=Đã xóa bản sao cho máy chủ $1 đến $2 
 log_exec=Đã sao chép $1 đến $2 máy chủ
 log_deletes=Đã xóa $1 bản
+
 email_subject_succeeded=Bản sao cụm $1 đã thành công
 email_subject_failed=Sao chép cụm $1 không thành công
+
 delete_err=Không thể xóa bản sao
 delete_enone=Không được chọn

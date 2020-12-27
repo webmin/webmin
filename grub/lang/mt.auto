@@ -8,6 +8,7 @@ index_none=Ma ġew definiti l-ebda għażliet ta 'l-ibbutjar. Kun żgur li żżi
 index_efile=Il-fajl tal-menu GRUB $1 ma nstabx fis-sistema tiegħek. Forsi GRUB ma jiġix installat, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> mhix korretta.
 index_epath=L-eżekutibbli GRUB $1 ma nstabx fis-sistema tiegħek. Forsi GRUB ma jiġix installat, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> mhix korretta.
 index_return=lista ta 'għażliet
+
 title_add=Żid Għażla Boot
 title_edit=Editja l-Għażla Boot
 title_header=Dettalji tal-għażla tal-menu tal-ibbutjar
@@ -36,6 +37,7 @@ title_echain=Fajl tal-katina tal-katina nieqes jew invalidu
 title_edev=Mekkaniżmu ta 'diviżjoni mhux sostnut $1 
 title_einitrd=Nieqes il-fajl ramdisk inizjali
 title_lock=Password msakkra?
+
 global_title=Għażliet Globali
 global_header=Għażliet globali tal-menu tal-ibbutjar
 global_default=Għażla ta 'l-ibbutjar default
@@ -56,12 +58,14 @@ global_edev=Diska ta 'installazzjoni/partizzjoni mhux appoġġata $1
 global_eother=Diska/partizzjoni nieqsa jew invalida
 global_epassword=Password tal-istartjar nieqsa jew invalida
 global_epasswordfile=Nieqes il-fajl tal-menu alternattiv
+
 install_title=Installa GRUB
 install_err=Naqset milli tinstalla GRUB
 install_efind=Ma setgħetx issib fajl tal-menu
 install_desc=Installazzjoni GRUB fuq $1 bil-kmandi $2 u $3 ..
 install_ok=.. installazzjoni kompluta.
 install_failed=.. Installa fallut!
+
 log_create_title=L-għażla ta 'boot maħluqa $1 
 log_delete_title=L-għażla ta 'l-ibbutjar imħassra $1 
 log_modify_title=Għażla mmodifikata $1 

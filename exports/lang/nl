@@ -11,6 +11,7 @@ index_eprog=Het uitvoerbestand (exe) van de NFS server is niet gevonden op uw sy
 index_delete=Verwijder Geselecteerde Exports
 index_disable=Geselecteerde Uitschakelen
 index_enable=Geselecteerde Aanzetten
+
 edit_title=Bewerk Export
 create_title=Maak Een Export
 edit_details=Exporteer details
@@ -55,6 +56,7 @@ edit_sync1=Ja
 edit_sync2=Nee
 edit_sync0=Standaard
 edit_in=in
+
 save_err=Mislukt om export op te slaan
 save_edir=Directory '$1' bestaat al
 save_enetgroup=Ontbrekende of ongeldige netgroep
@@ -65,6 +67,7 @@ save_euids=UID's die niet worden vertrouwd moeten in een met komma gescheiden li
 save_egids=GID's die niet worden vertrouwd moeten in een met komma gescheiden lijst staan van nummers of in ranges
 save_pfs='$1' is al geexporteerd als een directory
 save_create_dir=Kan de directory '$1' niet maken
+
 exports_webnfs=WebNFS clients
 exports_ngroup=Netgroep $1
 exports_net=Netwerk $1
@@ -72,6 +75,7 @@ exports_all=Iedereen
 exports_hosts=Hosts $1
 exports_host=Host $1
 exports_gss=Authentificatie netwerk: $1
+
 log_modify=Gemodificeerde NFS export $1
 log_modify_l=Gemodificeerde NFS export $1 naar $2
 log_delete=Verwijderde NFS export $1

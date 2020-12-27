@@ -5,6 +5,7 @@ index_user=Změnit heslo uživatele:
 index_euseradmin=Tento modul nelze použít, protože module "Uživatelé a Skupiny" není nainstalován nebo podporován tímto systémem.
 index_toomany=Příliš mnoho uživatelů k zobrazení. Zadejte jméno uživatele, jehož heslo chcete změnit...
 index_none=Nemáte dostatečná oprávnění ke změně jejich hesel.
+
 passwd_title=Změnit heslo
 passwd_header=Změna hesla uživatele
 passwd_for=Měním heslo pro
@@ -23,7 +24,9 @@ passwd_erepeat=Nové heslo nebylo zopakováno správně
 passwd_ecmd=$1 selhalo : $2
 passwd_ok=Heslo uživatele $1 bylo úspěšně změněno. Pokud měníte heslo aktuálního uživatele, možná se budete muset přihlásit znovu.
 passwd_ok2=Heslo uživatele $1 bylo úspěšně změněno.
+
 log_passwd=Heslo uživatele $1 změněno
+
 acl_repeat=Musí zadat nové heslo znovu?
 acl_old=Musí zadat staré heslo?
 acl_old_this=Pouze pro ostatní uživatele

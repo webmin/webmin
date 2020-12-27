@@ -16,6 +16,7 @@ index_setupdesc=LDAP zerbitzariaren datu-baseak oraindik ez du erro $1 DN, eta h
 index_setup=Sortu erroa DN
 index_permsdesc=LDAP zerbitzariaren $1 datu-direktorioak $2 erabiltzaile zuzenaren jabe ez diren fitxategiak ditu. Horrek esan nahi du ez dela behar bezala abiarazten. Hala ere, Webmin-ek konpon dezake zuretzat, beheko botoian klik eginez.
 index_perms=Konpondu Titulartasuna
+
 connect_eserver=$1 LDAP zerbitzaria ez da existitzen
 connect_euser=Ez da erabiltzaileak konfiguratzeko konfiguratu den bezala
 connect_epass=Ez da saioa hasteko pasahitzik konfiguratu
@@ -28,6 +29,7 @@ connect_eldap=Huts egin du $1 atakako LDAP zerbitzariarekin konektatzerakoan
 connect_essl=Huts egin du TLS enkriptazioa hasterakoan LDAP zerbitzariarekin $1 : $2 
 connect_elogin=Ezin izan da $2 : $3 LDAP zerbitzarira saioa hasi
 connect_cpan=<tt>$1</tt> Perl modulua <a href='$2'>automatikoki instalatu dezakezu</a> CPAN-en.
+
 slapd_title=OpenLDAP zerbitzariaren konfigurazioa
 ldif_title=OpenLDAP zerbitzariaren konfigurazioa
 slapd_header=LDAP zerbitzari global aukerak
@@ -76,6 +78,7 @@ slapd_protos=LDAP konexioak onartu
 slapd_ldap=LDAP sare bidez
 slapd_ldaps=SSL bidez LDAP
 slapd_ldapi=Unix socket fitxategia
+
 schema_title=Kudeatu eskema
 schema_file=izena
 schema_desc=deskribapena
@@ -93,6 +96,7 @@ schema_edesc=Orrialde honek LDAP eskema fitxategi bat eskuz editatu ahal izango 
 schema_return=eskema zerrenda
 schema_emove=Ezin izan da eskemaren fitxategia aurkitu!
 schema_ecannot=Ezin duzu LDAP eskema kudeatu
+
 acl_title=LDAP Sarbide Kontrol
 acl_ecannot=Ezin duzu LDAP sarbide kontrola konfiguratu
 acl_what=objektuak
@@ -103,6 +107,7 @@ acl_none=Oraindik ez dira sarbide kontrolerako arauak zehaztu. LDAP datu-baseko 
 acl_delete=Ezabatu hautatutako arauak
 acl_add=Gehitu sarbide kontrolerako arau berria.
 acl_return=sarbide kontrolerako arauak
+
 browser_title=Arakatu datu-basea
 browser_econn=LDAP arakatzailea ezin da erabili : $1 
 browser_ecannot=Ezin duzu LDAP datu-basean arakatu
@@ -136,24 +141,30 @@ browser_nomatch=Ez da inolako objektuekin bat egiten zure $1 bilaketarekin.
 browser_search=Aurkitu behar dituzten objektuak
 browser_search2=Objektuak bat datozen erakusten :
 browser_sok=Search
+
 save_err=Ezin izan da atributua aldatu
 save_ebase=Ezin izan da $1 objektua datu-basetik atera
 save_emodify=$2 ko LDAP aldaketak $1 huts egin du : $3 
 save_enone=Ez da balorerik sartu
+
 add_err=Ezin izan da atributua gehitu
 add_eadd=Ezaugarri atributuaren izena edo falta da
 add_evalue=Falta den balioa
 add_emodify=$2 eta $1 LDAP gehitzeak huts egin du : $3 
+
 delete_err=Ezin izan da atributuak kendu
 delete_enone=Ez da hautatu
 delete_emodify=$2 -tik LDAP ezabatzeak $1 huts egin du : $3 
+
 sdelete_err=Ezin izan dira objektuak ezabatu
 sdelete_edn=Ez da $1 objektua aurkitu
 sdelete_edel=$1 LDAP ezabatzeak huts egin du : $2 
+
 rename_err=Huts egin du objektua berriz aldatzean
 rename_eget=Ezin izan da $1 DN duen objektua aurkitu
 rename_enew=Izen berriak ez du balio
 rename_erename=LDAP $1 etik $2 ra $1 huts egin da : $3 
+
 oadd_title=Objektua sortu
 oadd_header=LDAP objektuaren xehetasun berriak
 oadd_base=Guraso objektuaren DN
@@ -170,6 +181,7 @@ oadd_eget2=Ezin izan da $1 : $2 liskarra egiaztatu
 oadd_eclash=$1 DN duen objektu bat dagoeneko
 oadd_eadd=$1 LDAP gehitzeak huts egin du : $2 
 oadd_err=Huts egin du objektu berria sortzerakoan
+
 create_title=Sortu zuhaitza
 create_ecannot=Ezin duzu zuhaitz berririk sortu
 create_desc=Orrialde honek datu basoko zuhaitz berri baten oinarria izango den DN sortzeko modu egokia eskaintzen zuen. Erabiltzaile edo posta elektronikoko alias adibidea sor dezake zuhaitzaren azpian, zure objektuentzako txantiloi gisa.
@@ -191,18 +203,23 @@ create_done=.. egin
 create_doingex=Adibide objektua DN $1 -rekin sortzen.
 create_edoingex=.. huts egin du: $1. Hala ere, zuhaitza oraindik erabil daiteke.
 create_eoc=Ezin izan da objektu klase egokia aurkitu DN berrirako
+
 eunknown=Akats ezezaguna
+
 apply_err=Ezin izan da konfigurazioa aplikatu
 apply_ecmd=$1 huts egin da : $2 
 apply_ecannot=Ezin duzu konfigurazioa aplikatu
+
 stop_err=Ezin izan da LDAP zerbitzaria gelditu
 stop_ecmd=$1 huts egin da : $2 
 stop_egone=Jada ez korrika!
 stop_ekill=Hiltze prozesua huts egin da : $1 
 stop_ecannot=Ezin duzu LDAP zerbitzaria gelditu
+
 start_err=Huts egin du LDAP zerbitzaria abiaraztean
 start_ecmd=$1 huts egin da : $2 
 start_ecannot=Ezin duzu LDAP zerbitzaria abiarazi
+
 log_create_dn=$1 objektua sortu da
 log_delete_dn=$1 objektua ezabatu da
 log_rename_dn=$1 objektu berrizendatu du
@@ -234,6 +251,7 @@ log_up_access=$1 sarbide-kontrolerako araua aldatu da
 log_down_access=$1 erako sarbidea kontrolatzeko araua mugitu da
 log_delete_accesses=$1 sarbide kontrolerako arauak ezabatu dira
 log_all=objektu guztiak
+
 gencert_title=Sortu SSL ziurtagiria
 gencert_header=SSL ziurtagiri berriak
 gencert_create=Sortu Ziurtagiria
@@ -245,7 +263,9 @@ gencert_dir=Directory
 gencert_err=Ezin izan da ziurtagiria sortu
 gencert_edest=Ez da helburuko direktoriorik existitzen
 gencert_epath=Ziurtagiriaren eta gakoen fitxategiek LDAP zerbitzariaren konfigurazioan bide absolutuak izan behar dute
+
 perms_err=Ezin izan da fitxategiaren jabetza konpondu
+
 acl_slapd=LDAP zerbitzaria konfiguratu al dezakezu?
 acl_ldif=LDAP zerbitzaria konfiguratu al dezakezu?
 acl_schema=Gai al daiteke eskema?
@@ -254,6 +274,7 @@ acl_browser=Arakatu eta editatu al dezakezu datu basea?
 acl_create=Zuhaitz berria sor al daiteke?
 acl_start=LDAP zerbitzaria hasi eta gelditu al daiteke?
 acl_apply=Konfigurazio aldaketak aplika al ditzake?
+
 access_desc=$2 $1 arabera
 access_self=auto
 access_users=erabiltzaile autentifikatuak
@@ -273,6 +294,7 @@ access_lcompare=konparatu
 access_lsearch=Search
 access_lread=Irakurri
 access_lwrite=Idatzi
+
 eacl_title1=Sortu Sarbide Kontrolerako Araua
 eacl_title2=Editatu Sarbide Kontrolerako Araua
 eacl_header=LDAP datu-basearen sarbide kontrolerako arauaren xehetasunak

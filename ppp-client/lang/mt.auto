@@ -24,13 +24,16 @@ index_out=Il-produzzjoni minn $1 kienet
 index_boot=Qabbad mal-but ma ':
 index_noboot=&lt;M'għandekx tikkonnettja&gt;
 index_bootdesc=Ibdel din l-għażla biex tikkontrolla jekk il-konnessjoni PPP magħżula tkunx bdiet fil-ħin tal-bidu jew le.
+
 init_title=Tiskopri Konfigurazzjoni
 init_cmd=Tidentifika modem konness mal-kmand $1 ..
 init_done=.. ghamel
 init_modems=Il-mudelli huma kkonfigurati fuq $1 u $2.
 init_modem=Sar modem fuq $1.
 init_none=Ma nstabu l-ebda modems!
+
 device_serial=port tas-serje $1 
+
 connect_title=Tistabbilixxi Konnessjoni
 connect_cmd=Jippruvaw jistabbilixxu konnessjoni mal-kmand $1 ..
 connect_failed=.. konnessjoni fallew! Ara l-output hawn fuq għar-raġuni għaliex.
@@ -40,12 +43,14 @@ connect_dns=Uża konfigurazzjoni DNS assenjata PPP.
 connect_dns2=Il-konfigurazzjoni DNS assenjata mill-PPP ġiet stabbilita.
 connect_dnsto=It-timeout jistenna l-konfigurazzjoni DNS assenjata mill-PPP.
 connect_dnsdown=Il-konnessjoni jidher li falliet waqt li qed tistenna l-konfigurazzjoni DNS assenjata mill-PPP.
+
 disc_title=Għalaq il-PPP
 disc_err=Ma rnexxielhiex tintefa 'konnessjoni PPP
 disc_edown=Diġà skonnettjat
 disc_ok1=Il-konnessjoni PPP tiegħek magħmula bl-użu ta ' $2 ġiet mitfija b'suċċess.
 disc_ok2=Il-konnessjoni PPP tiegħek ġiet mitfija b'suċċess.
 disc_dns=Restawra konfigurazzjoni antika tad-DNS.
+
 edit_title1=Żid ISP Dialer
 edit_title2=Editja l-ISP Dialer
 edit_ddesc=Dawn l-issettjar default japplikaw għall-konnessjonijiet magħmula bl-użu ta 'kwalunkwe dialer ieħor.
@@ -76,6 +81,7 @@ edit_idle=Ħela ta 'ħin wieqaf (f'sekondi)
 edit_def=Mill-issettjar default
 edit_inherits=Tiret l-issettjar
 edit_from=Minn dialer ..
+
 save_err=Ma rnexxielux isalva dialer
 save_err2=Ma rnexxielhiex tħassar il-dialer
 save_ename=Isem tal-markatur nieqes jew invalidu
@@ -88,6 +94,7 @@ save_edial=Numru nieqes jew invalidi ta 'tentattivi ta' dial
 save_eidle=Nieqes jew invalidu li jiskadi
 save_einherits=Dan il-dialer ma jistax jitħassar għax "$1" jiret is-settings minnu.
 save_eclash=Diġà jeżisti dialer bl-istess isem
+
 log_create=$1 maħluqa
 log_update=Aġġornat $1 
 log_delete=$1 imħassar

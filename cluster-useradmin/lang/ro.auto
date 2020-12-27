@@ -17,6 +17,7 @@ index_tdesc=Descriere
 index_tucount=Utilizatori
 index_tgcount=Grupuri
 index_ttype=Tip de sistem de operare
+
 add_title=Adăugați servere
 add_msg=Se adaugă $1 ..
 add_gmsg=Adăugarea serverelor în grupul $1 ..
@@ -26,6 +27,7 @@ add_echeck=Serverul $1 nu are modulul de utilizatori și grupuri
 add_epft=Serverul $1 nu folosește același format de fișiere utilizator ca această gazdă
 add_egft=Serverul $1 nu folosește același format de fișier de grup ca această gazdă
 add_ok=S-au adăugat $1 cu $2 utilizatori și $3 grupuri.
+
 host_title=Server gestionat
 host_header=Detalii despre server gestionate de software
 host_name=Numele gazdei
@@ -34,8 +36,7 @@ host_delete=Eliminați din lista gestionată
 host_refresh=Actualizați utilizatorii și grupurile
 host_users=număr de utilizatori
 host_groups=Număr de grupuri
-host_ulist=Utilizatori pe server
-host_glist=Grupuri pe server
+
 host_return=detalii server
 refresh_title=Actualizați utilizatorii și grupurile
 refresh_header=Se solicită din nou listele utilizatorilor și grupurilor de pe toate serverele ..
@@ -49,6 +50,7 @@ refresh_gdel=eliminați grupurile $1
 refresh_done=.. Terminat
 refresh_del=A fost eliminat $1 din lista de server
 refresh_failed=Eroare la actualizare $1 : $2 
+
 uedit_host=Detalii de la $1 
 uedit_leave=Nu schimba
 uedit_set=Setat la
@@ -66,6 +68,7 @@ uedit_servers=Server (e) pentru a crea pe
 uedit_all=&lt;toate gazdele&gt;
 uedit_donthave=&lt;gazdele care nu-l au&gt;
 uedit_group=Membrii $1 
+
 usave_einuse=Un utilizator cu același nume există deja pe $1 
 usave_esecgid=Grupul secundar $1 nu există
 usave_con=Creare pe $1 ..
@@ -88,16 +91,20 @@ usave_header=Crearea utilizatorului $1 pe toate gazdele ..
 usave_header5=Crearea utilizatorului $1 pe $2.
 usave_header4=Crearea utilizatorului $1 pe membrii grupului $2 ..
 usave_header3=Crearea utilizatorului $1 pe gazdele care nu îl au ..
+
 search_hosts=gazdele
+
 udel_on=Ștergerea din $1 ..
 udel_servs=Ștergeți directorul de acasă dacă există
 udel_others=Ștergeți utilizatorul din alte module?
 udel_dothers=Ștergerea din alte module ..
 udel_gone=Utilizatorul nu mai există.
 udel_failed=Nu a reușit ștergerea utilizatorului : $1 
+
 gdel_on=Ștergerea din $1 ..
 gdel_gone=Utilizatorul nu mai există.
 gdel_failed=Nu a reușit ștergerea grupului : $1 
+
 gsave_create=Adăugarea intrării fișierului de grup ..
 gsave_con=Creare pe $1 ..
 gsave_euser=Utilizatorul $1 nu există
@@ -110,10 +117,12 @@ gsave_header=Crearea grupului $1 pe toate gazdele ..
 gsave_header5=Crearea grupului $1 pe $2 ..
 gsave_header4=Crearea grupului $1 pe membrii grupului $2 ..
 gsave_header3=Crearea grupului $1 pe gazdele care nu îl au ..
+
 gedit_host=Detalii de la $1 
 gedit_add=Adăugați utilizatori
 gedit_del=Eliminați utilizatorii
 gedit_donthave=&lt;gazdele care nu au&gt;
+
 sync_title=Sincronizați serverele
 sync_desc=Acest formular vă permite să creați utilizatori și grupuri pe servere care nu le au în prezent, pentru a aduce conturile în sincronizare pe toate serverele din clusterul dvs.
 sync_hosts=Servere pentru sincronizare
@@ -141,6 +150,7 @@ sync_test=Arătați doar ce s-ar face?
 sync_makehome=Creați directoare de acasă?
 sync_copy=Copiați fișiere în directorul de origine?
 sync_others=Creați utilizator în alte module?
+
 log_create_user=Utilizator creat $1 
 log_delete_user=Utilizatorul șters $1 
 log_modify_user=Utilizator modificat $1 

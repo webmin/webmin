@@ -13,6 +13,7 @@ index_applydesc=실행중인 모든 $1 프로세스에 HUP 신호를 보내서 �
 index_cpan=SpamAssassin은 Perl 모듈이므로 Webmin의 <a href='$2'>Perl 모듈</a> 모듈을 사용하여 자동으로 설치하여 CPAN에서 $1 을 다운로드 할 수 있습니다.
 index_spamassassin=스팸 어 ass 신
 index_ecannot=SpamAssassin 구성 파일 $1 을 (를) 관리 할 수 없습니다.
+
 white_title=허용 및 거부 된 주소
 white_desc=이 페이지의 표를 사용하면 항상 스팸으로 분류되거나 스팸으로 분류되지 않은 전자 메일의 보낸 사람 : 및받는 사람 : 주소를 지정할 수 있습니다. 다른 모든 이메일은 SpamAssassin의 규칙에 따라 정상적으로 처리됩니다. 모든 이메일 주소에는 전체 도메인과 일치시키기 위해 *@foo.com 또는 *.foo.com과 같은 와일드 카드가 포함될 수 있습니다.
 white_from=스팸으로 분류하지 않는 발신자
@@ -44,6 +45,7 @@ white_tabham=허용 된 주소
 white_tabspam=거부 된 주소
 white_tabsome=목적지 주소
 white_tabimport=주소 가져 오기
+
 score_title=스팸 분류
 score_desc=SpamAssassin은 내용과 헤더를 기반으로 각 메시지에 점수를 할당합니다. 이 페이지의 옵션은 메시지가 스팸으로 간주되는 점수와 해당 점수를 계산하는 방법 중 일부를 결정합니다.
 score_header=스팸 메시지 분류 옵션
@@ -77,6 +79,7 @@ score_emxdelay=MX 확인 사이에 대기 시간이 없거나 잘못되었습니
 score_etimeout=RBL 쿼리를 기다리는 초가 없거나 잘못되었습니다
 score_ereceived=Received : RBL로 확인할 헤더가 없거나 유효하지 않습니다.
 score_bayes=베이지안 학습 분류기를 사용합니까?
+
 report_title=메시지 수정
 report_desc=이 페이지의 옵션은 SpamAssassin이 분석하는 모든 메시지의 머리글과 본문에 대한 수정 사항과 스팸으로 분류 된 메시지에 대한 수정 사항을 제어합니다.
 report_header=분석 및 스팸 메시지 수정 옵션
@@ -109,6 +112,7 @@ report_addspam=스팸
 report_addham=햄
 report_addall=모두
 report_eaddheader=$1 을 추가 할 추가 헤더가 없거나 잘못되었습니다
+
 user_title=기타 사용자 옵션
 user_desc=이 페이지의 옵션은 주로 SpamAssassin이 외부 스팸 식별 패키지 Razor, DCC 및 Pyzor에 사용하는 경로 및 설정과 관련이 있습니다. DNS 조회를 수행 할 수 있는지 여부를 SpamAssassin에 알릴 수도 있습니다.
 user_header=기타 사용자 수준 옵션
@@ -131,6 +135,7 @@ user_err=사용자 옵션을 저장하지 못했습니다
 user_etimeout='$1'은 (는) 유효한 시간 초과가 아닙니다
 user_epath='$1'은 (는) 유효한 클라이언트 프로그램 경로가 아닙니다.
 user_emax='$1'은 (는) 유효한 체크섬 수가 아닙니다
+
 header_title=헤더 및 바디 테스트
 header_desc=이 페이지에서는 메시지 헤더, 본문 내용, 본문에있는 URL 또는 다른 테스트 조합을 기반으로 SpamAssassin이 전자 메일에 적용 할 추가 테스트를 정의 할 수 있습니다. 각 테스트에 할당 된 이름은 귀하에게 달려 있지만 일반적으로 CONTAINS_FOO와 같습니다. SpamAssassin이 테스트와 일치하는 메시지에 추가하는 실제 점수는 페이지 하단의 표에 자체 또는 내장 테스트 이름을 입력하여 설정할 수 있습니다.
 header_switch=단순 모드로 전환 ..
@@ -164,6 +169,7 @@ header_eeval='$1'은 (는) 유효한 평가 기능이 아닙니다
 header_eheader='$1'은 (는) 유효한 이메일 헤더가 아닙니다.
 header_eregexp='$1'은 (는) 유효한 정규 표현식이 아닙니다 (/ expression /과 같아야 함)
 header_emeta=테스트 '$1'에 대한 테스트식이 없습니다.
+
 priv_title=기타 권한있는 옵션
 priv_desc=이것에 대한 옵션은 개별 사용자의 구성 파일이 아닌 전체적으로 만 설정할 수 있습니다. 다양한 구성 및 로깅 파일에 대한 경로로 제어합니다.
 priv_header=기타 권한 수준 설정
@@ -183,6 +189,7 @@ priv_eargs='$1'은 (는) 유효한 인수 목록이 아닙니다.
 priv_emscore='$1'은 (는) 유효한 최고 문구 점수가 아닙니다.
 priv_ephrase='$1'은 (는) 유효한 두 단어 스팸 문구가 아닙니다.
 priv_escore=스팸 문구 '$1'에 대한 점수가 없거나 잘못되었습니다
+
 usually=보통 $1 
 ecannot=이 페이지를 사용할 수 없습니다
 setup_title=SpamAssassin에 대한 설정 Procmail
@@ -202,11 +209,13 @@ setup_drop1=받는 사람 유닉스 사용자
 setup_drop0=<tt>루트</tt> 사용자
 setup_ok=SpamAssassin에 대한 설정 Procmail
 setup_email=이메일 주소로 전달
+
 setup_err=SpamAssassin을 설정하지 못했습니다
 setup_efile=누락되거나 잘못된 mbox 형식 파일
 setup_emaildir=Qmail 메일 디렉토리가 없거나 잘못되었습니다
 setup_emhdir=MH 메일 디렉토리가 없거나 잘못되었습니다
 setup_eemail=이메일 주소가 없거나 잘못되었습니다
+
 log_white=수정 된 허용 및 거부 주소
 log_score=수정 된 스팸 분류
 log_report=수정 된 메시지 수정
@@ -217,12 +226,14 @@ log_setup=SpamAssassin에 대한 설정 Procmail
 log_procmail=변경된 Procmail 구성
 log_import=수입 된 $1 개의 허용 된 주소
 log_manual=수동으로 편집 된 구성 파일
+
 import_title=주소 가져 오기
 import_err=주소를 가져 오지 못했습니다
 import_efile=선택한 파일에서 가져올 파일이 없습니다
 import_enone=파일에 이메일 주소가 없습니다
 import_ok1=파일에서 $2 개의 이메일 주소가 발견되었으며 그 중 $1 이 새 주소이며 허용 된 주소 목록에 추가되었습니다.
 import_ok2=파일에서 $1 개의 이메일 주소가 발견되었지만 모두 허용 된 주소 목록에있었습니다.
+
 mail_title=스팸 메일
 mail_desc=이 페이지에는 스팸으로 분류되어 어떤 조치를 기다리는 메시지가 표시됩니다. 잘못 확인 된 메시지는받은 편지함으로 이동 될 수 있으며 실제로 스팸 인 메시지는 삭제할 수 있습니다.
 mail_level=점수
@@ -240,10 +251,13 @@ mail_will=$1 분 안에 자동 새로 고침
 mail_wills=$1 초 안에 자동 새로 고침
 mail_delall=모든 스팸 삭제
 mail_search3=위의 점수를 검색하십시오.
+
 process_eclean=이 이메일에서 SpamAssassin 헤더를 제거하는 중에 오류가 발생했습니다
 process_ereport=SpamAssassin에 이메일을보고하지 못했습니다  : $1 
+
 apply_err=변경 사항을 적용하지 못했습니다
 apply_none=SpamAssassin 데몬 프로세스가 없습니다!
+
 acl_avail=사용자가 사용할 수있는 아이콘
 acl_file=편집 할 SpamAssassin 구성 파일
 acl_filedef=글로벌 구성 파일
@@ -251,8 +265,10 @@ acl_awl=자동 화이트리스트 편집이 허용 된 사용자
 acl_awl0=모든 사용자들
 acl_awl1=나열된 사용자 만 $1 
 acl_awl2=그룹 $1 의 회원 만
+
 search_escore=스팸 점수가 없거나 잘못되었습니다
 search_results5=스팸 점수가 $2 이상인 메일 메시지 $1 ..
+
 razor_title=면도기 스팸 감지기 설정
 razor_desc=Vipul 's Razor는 공동 스팸 탐지 및보고 시스템으로, 주소로 전송되는 스팸의 분류를 향상시킬 수 있습니다. 그러나 사용하기 전에 아래 양식을 사용하여 Razor 계정에 등록해야합니다.
 razor_user=면도기 사용자 이름
@@ -267,6 +283,7 @@ razor_epass=비밀번호가 누락되었습니다
 razor_doing=Razor 등록 및 설정을 시도하고 있습니다.
 razor_done=.. 완료.
 razor_failed=.. 실패했습니다! 이유는 위의 오류 출력을 참조하십시오.
+
 amavisd_title=Amavisd 스팸 배달
 amavisd_desc=이 양식을 사용하여 스팸으로 분류 된 메시지에 발생하는 사항을 결정하는 Amavisd 구성을 변경할 수 있습니다.
 amavis_ok=Amavisd 배송 변경
@@ -304,9 +321,11 @@ amavis_quarantine_today=오늘 스팸 격리 보관소의 스팸 메일 (24 시�
 amavis_quarantine_week=이번 주 검역소 스팸 메일 (7 일)
 amavis_quarantine_month=이번 달 검역소 스팸 메일 (30 일)
 amavis_quarantine_total=검역소에있는 총 스팸 메일 수
+
 procmail_title=이메일 스팸 전달
 procmail_ok=Procmail Delivery 변경
 procmail_desc=이 양식을 사용하여 스팸으로 분류 된 메시지에 발생하는 사항을 결정하는 Procmail 구성을 변경할 수 있습니다.
+
 simple_title=헤더 및 바디 테스트
 simple_desc=이 페이지에서는 메시지 헤더, 본문 내용, 본문에있는 URL을 기반으로 SpamAssassin이 이메일에 적용 할 추가 테스트를 정의 할 수 있습니다. 각 테스트에 할당 된 이름은 귀하에게 달려 있지만 일반적으로 CONTAINS_FOO와 같습니다.
 simple_switch=고급 모드로 전환 ..
@@ -317,8 +336,10 @@ simple_regexp=매치 표현
 simple_score=적용 점수
 simple_describe=기술
 simple_err=메시지 테스트를 저장하지 못했습니다
+
 before_ecmd=저장 전 명령 실패  : $1 
 after_ecmd=저장 후 명령 실패  : $1 
+
 connect_emysql=데이터베이스 드라이버 $1 을 (를)로드하지 못했습니다.
 connect_elogin=$1 데이터베이스에 로그인하지 못했습니다 : $2.
 connect_equery=데이터베이스 $1 에 기본 설정 테이블 $2 이 (가) 없습니다
@@ -326,9 +347,11 @@ connect_eldapmod=LDAP와 통신하는 데 필요한 Perl 모듈 $1 이 (가) 설
 connect_eldap=포트 $2 에서 LDAP 서버 $1 에 연결하지 못했습니다.
 connect_eldaplogin=$2 (으)로 LDAP 서버 $1 에 로그인하지 못했습니다  : $3 
 connect_ebase=LDAP 기본 DN $1 이 (가) 유효하지 않습니다  : $2 
+
 eldap=LDAP 작업 실패  : $1 
 esql=SQL 실패  : $1 
 ldap_euser=$1 에 대한 LDAP 사용자 개체를 찾을 수 없습니다
+
 db_title=SQL 및 LDAP 데이터베이스
 db_header=구성 스토리지 데이터베이스 옵션
 db_dsn=사용자 구성 저장
@@ -364,6 +387,7 @@ db_eldapport=LDAP 서버 포트 번호가 없거나 유효하지 않습니다
 db_eldapdn=기본 DN이 없거나 유효하지 않습니다. 공백은 허용되지 않습니다
 db_eldapattr=SpamAssassin 속성이 없거나 잘못되었습니다
 db_eldapuid=누락되거나 잘못된 사용자 이름 속성
+
 awl_title=자동 화이트리스트 관리
 awl_search=화이트리스트 검색 :
 awl_ok=검색
@@ -389,6 +413,7 @@ awl_deleteone=자동 화이트리스트 지우기
 awl_deleteonedesc=사용자 $1 에 대한 모든 자동 화이트리스트 항목을 제거하십시오.
 awl_deleteall=모든 자동 화이트리스트 지우기
 awl_deletealldesc=시스템의 모든 사용자에 대한 모든 자동 화이트리스트 항목을 제거하십시오.
+
 dawl_err=자동 허용 목록에서 삭제하지 못했습니다.
 dawl_eopen=허용 목록을 열 수 없습니다
 dawl_enone=삭제할 주소가 없습니다
@@ -396,6 +421,7 @@ dawl_ecannot=이 사용자의 자동 허용 목록을 관리 할 수 없습니�
 dawl_doing=모든 사용자의 자동 화이트리스트 삭제 ..
 dawl_done=.. $1 사용자에서 $2 항목을 삭제했습니다.
 dawl_title=모든 자동 화이트리스트 삭제
+
 manual_title=구성 파일 편집
 manual_file=구성 파일 편집 :
 manual_ok=확인

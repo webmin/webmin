@@ -5,6 +5,7 @@ index_user=Erabiltzailearen pasahitza aldatu:
 index_euseradmin=Modulu hau ezin da Erabiltzaile eta Taldeen modulua zure sisteman ez dagoelako instalatuta edo ez dagoelako.
 index_toomany=Erabiltzaile gehiegi daude zure sisteman bistaratzeko. Idatzi azpian aldatu nahi duzun erabiltzailearen izena.
 index_none=Ez duzu inolako erabiltzaile sarbiderik pasahitzak aldatzeko.
+
 passwd_title=Aldatu pasahitza
 passwd_header=Unix erabiltzailearen pasahitza aldatzen
 passwd_for=Pasahitza aldatzen
@@ -23,7 +24,9 @@ passwd_erepeat=Pasahitz berriak ez dira berdinak
 passwd_ecmd=$1 huts egin du : $2 
 passwd_ok=$1 erabiltzailearen pasahitza ondo aldatu da. Hau zure uneko Webmin erabiltzailea bada, berriro saioa egitera behartu ahal izango zara.
 passwd_ok2=$1 erabiltzailearen pasahitza ondo aldatu da.
+
 log_passwd=$1 erabiltzailearen pasahitza aldatu da
+
 acl_repeat=Pasahitz berria sartu behar duzu berriro?
 acl_self=Baimendu beti pasahitza alda dadin?
 acl_old=Pasahitz zaharra sartu behar al duzu?

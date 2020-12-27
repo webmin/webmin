@@ -16,8 +16,10 @@ index_type=Typ SSH klíče:
 index_rsa1=RSA (pro SSH verze 1)
 index_rsa=RSA (pro SSH verze 2)
 index_dsa=DSA (pro SSH verze 2)
+
 bits=bity
 secs=vteřiny
+
 users_title=Autentikace
 users_header=Nastavení přihlášení a autentikace
 users_expire=Dny před upozorněním uživatele o vypršení účtu
@@ -48,6 +50,7 @@ users_eexpire=Chybějící nebo nesprávný počet dnů před varováním o vypr
 users_ebanner=Chybějící nebo nesprávný soubor s pre-login zprávou
 users_authkeys=Použít soubor s autorizačními klíči
 users_authkeys_def=Výchozí (~/.ssh/authorized_keys)
+
 net_title=Sitě
 net_header=Síťová nastavení
 net_port=Naslouchat na portu
@@ -82,6 +85,7 @@ net_eprots=Musíte vybrat alespoň jeden protokol
 net_eladdress='$1' není platná adresa, na které se bude naslouchat
 net_elport='$1' není platný port, na kterém se bude naslouchat
 net_elisten2=Nejsou vloženy žádné naslouchající adresy
+
 access_title=Kontrola přístupu
 access_header=Nastavení kontroly přístupu pro sítě a přihlášení
 access_allowu=Povolit pouze uživatele
@@ -99,6 +103,7 @@ access_eallowg=Nejsou vloženy žádné povolené skupiny
 access_edenyg=Nejsou vloženy žádné zakázané skupiny
 access_eallowh=Nejsou vloženi žádní povolení hosté
 access_edenyh=Nejsou vloženi žádní zakázaní hosté
+
 misc_title=Ostatní nastavení
 misc_header=Ostatní nastavení SSH serveru
 misc_x11=Povolit přesměrování X11 připojení?
@@ -122,14 +127,17 @@ misc_eumask=Chybějící nebo nesprávná 4-digit octal umask
 misc_ebits=Chybějící nebo nesprávná velikost klíče serveru
 misc_eregen=Chybějící nebo nesprávný interval regenerace klíče
 misc_epid=Chybějící cesta k PID souboru
+
 start_err=Chyba při spuštění SSH serveru
 apply_epid=Neběží
+
 hosts_title=Nastavení klientského hosta
 hosts_header=SSH klientští hosté
 hosts_none=Nejsou definována žádná nastavení pro klientské hosty. Všichni SSH přihlášení klienti používají výchozí nastavení.
 hosts_all=Všichni hosté
 hosts_add=Přidat nastavení pro klientského hosta.
 hosts_return=seznam klientských hostů
+
 host_create=Přidat nastavení hosta
 host_edit=Editovat nastavení hosta
 host_header=Klietská nastavení pro SSH hosta
@@ -181,6 +189,7 @@ host_eprots=Musíte vybrat alespoň jeden protokol
 host_proxy=Příkaz pro připojení k proxy
 host_proxy_def=Nic
 host_eproxy=Chybějící nebo neplatně vypadající příkaz pro připojení k proxy
+
 log_users=Změněna nastavení autentikace
 log_net=Změněna síťová nastavení
 log_access=Změněna kontrola přístupu
@@ -195,6 +204,7 @@ log_stop=Zastaven SSH server
 log_start=Spuštěn SSH server
 log_apply=Použitá konfigurace:
 log_manual=Ručně editovaný konfigurační soubor $1
+
 sync_title=Nastavení SSH klíče pro uživatele
 sync_desc=Tato stránka umožňuje konfigurovat automatické nastavení SSH pro nově vytvářené Unix uživatele ve vašem systému. Pokud je tato služba nakonfigurována, noví uživatele nebudou muset spouštět <tt>ssh-keygen</tt> před použitím SSH.
 sync_create=Nastavit SSH klíč pro nové Unix uživatele.
@@ -203,6 +213,7 @@ sync_pass=Použít heslo jako frázi pro klíč.
 sync_gnupg=Nastavitp GNUPG klíč pro nové Unix uživatele.
 sync_type=Typ klíče
 sync_auto=&lt;Automaticky&gt;
+
 manual_title=Upravit konfigurační soubory
 manual_ecannot=Nemáte oprávnění k úpravě konfiguračního souboru SSH serveru
 manual_ok=Ipravit
@@ -210,5 +221,6 @@ manual_efile=Vybraný soubor není dílčí části konfigurace SSH serveru
 manual_file=Upravit konfigurační soubor:
 manual_edata=Nic není vloženo!
 manual_err=Chyba při ukládání konfiguračního souboru
+
 dknown_err=Chyba při mazání známých hostů
 dknown_enone=Nic není vybráno

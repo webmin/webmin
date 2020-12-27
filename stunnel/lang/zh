@@ -16,6 +16,7 @@ index_cmd=运行命令 $1
 index_remote=连接到主机 $1
 index_rport=连接到端口 $1
 index_version=STunnel 版本 $1 
+
 edit_title=编辑 SSL 通道
 create_title=创建 SSL 通道
 edit_header1=通道源选项
@@ -42,6 +43,7 @@ edit_tcpw=TCP-wrappers 名称
 edit_auto=自动
 edit_iface=送出源地址
 edit_type=运行
+
 save_err=无法保存 SSL 通道
 save_enclash=服务名称 $2 已用于端口 $1。
 save_einetd=已经有一个名为 $1 的 inetd 服务了。
@@ -55,6 +57,7 @@ save_etcpw=未输入或无效的 TCP-wrappers 名称
 save_eiface=未输入或无效的送出源地址
 save_exinetd=已有一个名为 $1 的 xinetd 服务
 save_export=端口 $1 已用于 xinetd 服务 $2
+
 log_apply=应用变更
 log_create=已创建 SSL 通道 $1
 log_delete=已删除 SSL 通道 $1

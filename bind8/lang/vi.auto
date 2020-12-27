@@ -65,6 +65,7 @@ index_checkconfig=Đảm bảo rằng thư mục chroot được đặt chính x
 index_eexpired=Cảnh báo: Các khu vực sau đây đã hết hạn chữ ký DNSSEC : $1
 index_eexpired_conf=Việc đăng nhập tự động phải được bật lại trên trang $1.
 index_eexpired_mod=Sử dụng mô đun $1 để vô hiệu hóa DNSSEC cho các tên miền này hoặc kiểm tra lý do tại sao việc ký không thành công.
+
 master_title=Chỉnh sửa vùng chính
 master_inview=$1 trong lượt xem $2 
 master_ecannot=Bạn không được phép chỉnh sửa vùng này
@@ -146,6 +147,7 @@ master_defttl=Thời gian tồn tại mặc định cho hồ sơ
 master_edefttl='$1' không phải là thời gian tồn tại mặc định hợp lệ cho các bản ghi
 master_esoagone=Không tìm thấy bản ghi SOA!
 master_einclude=Tệp mẫu bổ sung không tồn tại
+
 delete_title=Xóa vùng
 delete_mesg=Bạn có chắc chắn muốn xóa vùng $1? Tất cả các hồ sơ và các tập tin khu vực sẽ bị xóa.
 delete_mesg2=Bạn có chắc chắn muốn xóa vùng gốc? Máy chủ DNS của bạn có thể không còn có thể tra cứu địa chỉ trên internet.
@@ -157,6 +159,7 @@ delete_errslave=Vùng chính đã xóa OK, nhưng các lỗi sau đã xảy ra t
 delete_ezone=Không tìm thấy vùng trên máy chủ nô lệ
 delete_vwarn=Vùng này được liên kết với tên miền Virtualmin $1, và vì vậy không nên xóa ở đây!
 delete_vwarn2=Vùng này được liên kết với tên miền Virtualmin $1 và $2 khác, và vì vậy không nên xóa ở đây!
+
 mcreate_title=Tạo vùng chính
 mcreate_ecannot=Bạn không thể tạo vùng chủ
 mcreate_opts=Tùy chọn vùng chủ mới
@@ -171,6 +174,7 @@ mcreate_auto=Tự động
 mcreate_err=Không thể tạo vùng chính
 mcreate_ednssecsize=Không thể tính kích thước khóa : $1
 mcreate_ednssec=Tạo bản ghi đã thành công, nhưng DNSSEC đã thất bại : $1
+
 slave_title=Chỉnh sửa vùng nô lệ
 stub_title=Chỉnh sửa vùng còn sơ khai
 slave_ecannot=Bạn không được phép chỉnh sửa vùng này
@@ -202,6 +206,7 @@ slave_applymsg2=Nhấp vào nút này để buộc chuyển lại vùng từ má
 slave_last=Lần chuyển cuối cùng : $1
 slave_never=Không bao giờ
 slave_xfer=Chuyển vùng thử nghiệm
+
 screate_title1=Tạo vùng nô lệ
 screate_title2=Tạo vùng còn sơ khai
 screate_ecannot1=Bạn không được phép tạo các vùng nô lệ
@@ -214,6 +219,7 @@ screate_rev=Đảo ngược (Địa chỉ thành tên)
 screate_dom=Tên miền / Mạng
 screate_err1=Không thể tạo vùng nô lệ
 screate_err2=Không thể tạo vùng còn sơ khai
+
 recs_ecannot=Bạn không được phép chỉnh sửa hồ sơ trong khu vực này
 recs_ecannottype=Bạn không được phép chỉnh sửa hồ sơ loại này
 recs_title=$1 Bản ghi
@@ -231,6 +237,7 @@ recs_drev=Xóa đảo ngược quá?
 recs_none=Tên miền chưa có bất kỳ bản ghi $1 nào.
 recs_nosearch=Không có hồ sơ phù hợp với tìm kiếm của bạn.
 recs_needsearch=Nhập một tìm kiếm để tìm hồ sơ phù hợp.
+
 edit_title=Chỉnh sửa $1
 edit_header=Trong $1
 edit_edit=Chỉnh sửa $1 Ghi
@@ -306,6 +313,7 @@ edit_edmarcpct=Tỷ lệ phần trăm của tin nhắn phải là một số ngu
 edit_edmarcrua=Thiếu địa chỉ phản hồi tổng hợp
 edit_edmarcruf=Thiếu địa chỉ thông tin pháp y
 edit_ecaavalue2=Tên miền bị thiếu hoặc không hợp lệ
+
 text_title=Chỉnh sửa tập tin hồ sơ
 text_title2=Xem hồ sơ
 text_desc3=Biểu mẫu này cho phép bạn chỉnh sửa thủ công tệp bản ghi DNS $1. Không có kiểm tra cú pháp sẽ được thực hiện bởi Webmin.
@@ -315,6 +323,7 @@ text_ecannot=Bạn không được phép chỉnh sửa tập tin hồ sơ
 text_none=Tuy nhiên, tệp hiện đang trống, có thể là do vùng này chưa được chuyển từ máy chủ chính.
 text_soa=Tăng số sê-ri tự động
 text_rawformat=Vùng này ở định dạng nhị phân thô và do đó không thể hiển thị dưới dạng văn bản.
+
 restart_err=Không thể áp dụng thay đổi
 restart_ecannot=Bạn không được phép khởi động lại BIND
 restart_epidfile=Không thể tìm thấy BIND PID trong $1
@@ -323,10 +332,12 @@ restart_erunning2=BIND dường như không chạy trên máy chủ nô lệ $1
 restart_endc=Lệnh NDC không thành công : $1
 restart_ecmd=Lệnh khởi động lại không thành công : $1
 restart_eversion=Máy chủ nô lệ $1 không chạy phiên bản Webmin $2 trở lên.
+
 start_ecannot=Bạn không được phép bắt đầu BIND
 start_error=Không thể bắt đầu BIND : $1
 stop_epid=BIND không chạy
 stop_ecannot=Bạn không được phép dừng BIND
+
 fwd_title=Chỉnh sửa vùng chuyển tiếp
 fwd_ecannot=Bạn không được phép chỉnh sửa vùng này
 fwd_opts=Tùy chọn vùng
@@ -335,12 +346,14 @@ fwd_forward=Hãy thử các máy chủ khác?
 fwd_check=Kiểm tra tên?
 fwd_err=Không thể lưu tùy chọn
 fwd_delmsg=Nhấp vào nút này để xóa vùng này khỏi máy chủ DNS của bạn. Các bản ghi trong đó sau đó sẽ được tra cứu bằng quy trình phân giải bình thường.
+
 delegation_title=Chỉnh sửa Khu vực Đoàn
 delegation_ecannot=Bạn không được phép chỉnh sửa vùng này
 delegation_opts=Tùy chọn vùng
 delegation_err=Không thể lưu tùy chọn
 delegation_noopts=Các khu vực đại biểu không có bất kỳ tùy chọn cấu hình.
 delegation_delmsg=Nhấp vào nút này để xóa vùng này khỏi máy chủ DNS của bạn. Các loại bản ghi trong đó không phải NS sẽ được BIND nhận ra.
+
 fcreate_title=Tạo vùng chuyển tiếp
 fcreate_ecannot=Bạn không được phép tạo vùng chuyển tiếp
 fcreate_opts=Tùy chọn vùng chuyển tiếp mới
@@ -350,10 +363,12 @@ fcreate_rev=Đảo ngược (Địa chỉ thành tên)
 fcreate_dom=Tên miền / Mạng
 fcreate_masters=Máy chủ chính
 fcreate_err=Không thể tạo vùng chuyển tiếp
+
 dcreate_title=Tạo khu vực chỉ dành cho đại biểu
 dcreate_ecannot=Bạn không được phép tạo vùng ủy nhiệm
 dcreate_opts=Tùy chọn khu vực đoàn mới
 dcreate_err=Không thể tạo vùng ủy nhiệm
+
 create_enet='$1' không phải là mạng hợp lệ
 create_edom='$1' không phải là một tên miền hợp lệ
 create_edom2='$1' phải là một miền, không phải là một mạng
@@ -363,9 +378,11 @@ create_efile3=Không thể tạo '$1' : $2
 create_efile4=Tệp $1 đã tồn tại
 create_emaster='$1' không phải là địa chỉ máy chủ chính hợp lệ
 create_enone=Bạn phải nhập ít nhất một máy chủ chính
+
 boot_err=Tải xuống thất bại
 boot_egzip=Tệp vùng gốc được nén, nhưng lệnh <tt>gzip</tt> không được cài đặt trên hệ thống của bạn!
 boot_egzip2=Giải nén tệp vùng gốc không thành công : $1
+
 type_A=Địa chỉ
 type_AAAA=Địa chỉ IPv6
 type_NS=Tên máy chủ
@@ -386,6 +403,7 @@ type_SRV=Địa chỉ dịch vụ
 type_ALL=Tất cả các loại hồ sơ
 type_KEY=Khóa công khai
 type_CAA=Cơ quan cấp chứng chỉ
+
 edit_A=Địa chỉ
 edit_AAAA=Địa chỉ IPv6
 edit_NS=Tên máy chủ
@@ -405,6 +423,7 @@ edit_NSEC3PARAM=Thông số DNSSEC
 edit_TLSA=Chứng chỉ SSL
 edit_SSHFP=Khóa công khai SSH
 edit_CAA=Cơ quan cấp chứng chỉ
+
 recs_defttl=TTL mặc định
 recs_A=Địa chỉ
 recs_AAAA=Địa chỉ IPv6
@@ -427,6 +446,7 @@ recs_TLSA=Chứng chỉ SSL
 recs_SSHFP=Khóa công khai SSH
 recs_CAA=Cơ quan cấp chứng chỉ
 recs_delete=Xóa đã chọn
+
 value_A1=Địa chỉ
 value_AAAA1=Địa chỉ IPv6
 value_NS1=Tên máy chủ
@@ -503,6 +523,7 @@ value_CAA3=Tên miền CA
 value_caa_issue=Chứng chỉ miền đơn
 value_caa_issuewild=Chứng nhận ký tự đại diện
 value_caa_iodef=URL vi phạm chính sách
+
 tlsa_usage0=Giấy chứng nhận
 tlsa_usage1=Thực thể cuối
 tlsa_usage2=Neo tin cậy
@@ -512,12 +533,14 @@ tlsa_selector1=Thông tin khóa công khai
 tlsa_match0=Nội dung chưa được chỉnh sửa
 tlsa_match1=SHA-256 băm
 tlsa_match2=SHA-512 băm
+
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDSA
 sshfp_alg4=Ed25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 warn=Cảnh báo
 fail=Thất bại
 ignore=Làm lơ
@@ -531,6 +554,7 @@ listed=Liệt kê ..
 eip='$1' không phải là địa chỉ IP hợp lệ
 eport='$1' không phải là số cổng hợp lệ
 eipacl='$1' không phải là địa chỉ IP hoặc tên ACL hợp lệ
+
 acl_zones=Tên miền người dùng này có thể chỉnh sửa
 acl_zall=Tất cả các khu
 acl_zsel=Các khu vực được chọn ..
@@ -575,6 +599,7 @@ acl_ztypes_master=Bậc thầy
 acl_ztypes_slave=Nô lệ / còn sơ khai
 acl_ztypes_delegation=Phái đoàn
 acl_ztypes_forward=Ở đằng trước
+
 servers_title=Máy chủ DNS khác
 servers_ip=địa chỉ IP
 servers_bogus=Bỏ qua máy chủ không có thật?
@@ -586,6 +611,7 @@ servers_keys=Sử dụng các khóa DNS
 servers_err=Không thể lưu các máy chủ DNS khác
 servers_eip='$1' không phải là địa chỉ IP hợp lệ
 servers_etrans='$1' không phải là số lần chuyển tối đa hợp lệ
+
 logging_title=Ghi nhật ký và lỗi
 logging_ecannot=Bạn không được phép cấu hình đăng nhập
 logging_header=Tùy chọn đăng nhập và lỗi toàn cầu
@@ -624,6 +650,7 @@ logging_efile=Thiếu tên tệp nhật ký
 logging_efile2=Tên tệp nhật ký phải là một đường dẫn tuyệt đối
 logging_ever='$1' không phải là số phiên bản hợp lệ
 logging_esize='$1' không phải là kích thước nhật ký hợp lệ
+
 acls_title=Danh sách kiểm soát truy cập
 acls_ecannot=Bạn không được phép chỉnh sửa acls toàn cầu
 acls_name=Tên ACL
@@ -631,6 +658,7 @@ acls_values=Kết hợp địa chỉ, mạng và ACL
 acls_err=Không thể lưu danh sách kiểm soát truy cập
 acls_ename='$1' không phải là tên ACL hợp lệ
 acls_eline=Mỗi địa chỉ IP phải được nhập trên một dòng riêng cho ACL '$1'
+
 files_title=Hồ sơ và thư mục
 files_ecannot=Bạn không được phép cấu hình tập tin
 files_header=Tùy chọn tập tin và thư mục toàn cầu
@@ -640,6 +668,7 @@ files_pid=Quy trình tập tin ID
 files_xfer=Đường dẫn đến chương trình chuyển vùng
 files_err=Không thể lưu các tùy chọn tệp và thư mục
 files_efile=Tên tệp bị thiếu hoặc không hợp lệ
+
 forwarding_title=Chuyển tiếp và chuyển giao
 forwarding_ecannot=Bạn không được phép chỉnh sửa tùy chọn chuyển tiếp và chuyển
 forwarding_header=Tùy chọn chuyển tiếp và chuyển vùng toàn cầu
@@ -658,6 +687,7 @@ forwarding_etrans=Thiếu hoặc chuyển khoản đồng thời tối đa khôn
 forwarding_minutes=phút
 forwarding_ip=địa chỉ IP
 forwarding_port=Hải cảng
+
 net_title=Địa chỉ và cấu trúc liên kết
 net_ecannot=Bạn không được phép chỉnh sửa các tùy chọn địa chỉ và cấu trúc liên kết
 net_header=Tùy chọn địa chỉ và cấu trúc liên kết toàn cầu
@@ -683,6 +713,7 @@ net_taddrdef=IP gần nhất
 net_etport=Một cổng nguồn chuyển không thể được chỉ định mà không có địa chỉ
 net_eaddr='$1' không phải là địa chỉ IPv4 hợp lệ
 net_eaddr6='$1' không phải là địa chỉ IPv6 hợp lệ
+
 controls_title=Tùy chọn giao diện điều khiển
 controls_ecannot=Bạn không được phép chỉnh sửa các tùy chọn điều khiển
 controls_header=Tùy chọn điều khiển
@@ -704,6 +735,7 @@ controls_eunixpath=Đường dẫn tệp FIFO bị thiếu hoặc không hợp l
 controls_eunixperm=Quyền tập tin bát phân bị thiếu hoặc không hợp lệ
 controls_eunixowner=Chủ sở hữu tập tin bị thiếu hoặc không hợp lệ
 controls_eunixgroup=Nhóm tệp bị thiếu hoặc không hợp lệ
+
 controls_inet=Truy cập cổng Internet
 controls_unix=Truy cập Unix FIFO
 controls_port=Hải cảng
@@ -717,6 +749,7 @@ controls_efile=Tên tập tin FIFO bị thiếu hoặc không hợp lệ
 controls_eperms=Thiếu quyền hoặc không hợp lệ
 controls_eowner=UID thiếu chủ sở hữu hoặc không hợp lệ
 controls_egroup=Chủ sở hữu FIFO bị thiếu hoặc không hợp lệ
+
 keys_title=Khóa DNS
 keys_id=ID chính
 keys_alg=Thuật toán
@@ -725,6 +758,7 @@ keys_ecannot=Bạn không được phép chỉnh sửa khóa DNS
 keys_err=Không thể lưu khóa DNS
 keys_ekey='$1' không phải là ID khóa hợp lệ
 keys_esecret=Bí mật được mã hóa cơ sở-64 bị thiếu hoặc không hợp lệ cho khóa $1
+
 misc_title=sự lựa chọn hỗn hợp
 misc_ecannot=Bạn không được phép chỉnh sửa các tùy chọn linh tinh
 misc_header=Tùy chọn toàn cầu linh tinh
@@ -744,6 +778,7 @@ misc_esize='$1' không phải là kích thước hợp lệ
 misc_efiles='$1' không phải là số lượng tệp mở tối đa hợp lệ
 misc_emins='$1' không phải là số phút hợp lệ
 misc_mins=phút
+
 zonedef_title=Mặc định khu vực
 zonedef_msg=Mặc định cho vùng chủ mới
 zonedef_err=Không thể lưu mặc định vùng
@@ -767,10 +802,13 @@ zonedef_size=Kích thước khóa ban đầu
 zonedef_single=Số lượng phím cần tạo
 zonedef_two=Khóa vùng và khóa ký
 zonedef_one=Chỉ khóa vùng
+
 find_title=Tìm khu
 find_match=Các khu vực khớp với $1 ..
 find_none=Không tìm thấy khu vực.
+
 efirst=Lệnh đầu tiên không tốt tại dòng $1 trong $2
+
 findfree_title=Tìm IP miễn phí
 findfree_desc=Tìm IP miễn phí
 findfree_nofind=Bạn không thể tìm IP miễn phí
@@ -782,8 +820,10 @@ findfree_cf=Xem xét <em>freeXXX</em> tên máy chủ là IP miễn phí?
 findfree_search=Tìm kiếm
 findfree_msg=Đã tìm thấy $1 địa chỉ IP miễn phí
 findfree_msg2=(trong đó $1 giống như <i>freeXXX</i>, $2 như <i>freemac</i>)
+
 free_title=Địa chỉ IP miễn phí
 free_ip=Địa chỉ IP
+
 log_servers=Thay đổi máy chủ DNS khác
 log_logging=Thay đổi đăng nhập và lỗi
 log_acls=Thay đổi danh sách kiểm soát truy cập
@@ -840,14 +880,17 @@ log_sign=Chữ ký DNSSEC được cập nhật cho vùng $1
 log_resign=Khóa DNSSEC đã ký lại cho vùng $1
 log_trusted=Thay đổi xác minh DNSSEC
 log_dnssec=Thay đổi ký lại khóa DNSSEC
+
 convert_err=Không thể chuyển đổi vùng
 convert_efile=Một tệp hồ sơ phải được chỉ định trước khi một vùng nô lệ có thể được chuyển đổi thành chủ.
 convert_efilesize=Tệp bản ghi $1 không tồn tại hoặc trống
 convert_ebinary=Lệnh cần thiết để chuyển đổi từ vùng nô lệ nhị phân sang bản gốc định dạng văn bản chưa được cài đặt
 convert_ecompile=Chuyển đổi định dạng nhị phân sang văn bản không thành công : $1
+
 whois_title=Thông tin WHOIS
 whois_header=Đầu ra từ lệnh $1 ..
 whois_ecannot=Bạn không được phép tra cứu thông tin WHOIS
+
 view_title=Chỉnh sửa giao diện khách hàng
 view_opts=Chi tiết xem khách hàng
 view_opts2=Tùy chọn cho các khu vực trong chế độ xem
@@ -858,6 +901,7 @@ view_recursion=Làm tra cứu đệ quy đầy đủ cho khách hàng?
 view_ecannot=Bạn không được phép chỉnh sửa quan điểm này
 view_delete=Xóa xem
 view_deletemsg=Nhấn vào nút này để xóa view. Bạn sẽ có lựa chọn các vùng di chuyển mà nó chứa sang một chế độ xem khác hoặc xóa chúng.
+
 vcreate_title=Tạo chế độ xem khách hàng
 vcreate_match_all=Tất cả khách hàng
 vcreate_match_sel=Địa chỉ, mạng và ACL được liệt kê ..
@@ -866,6 +910,7 @@ vcreate_ename=Tên xem thiếu hoặc không hợp lệ
 vcreate_etaken=Xem tên đã được thực hiện
 vcreate_eclass=Tên lớp bị thiếu hoặc không hợp lệ
 vcreate_ecannot=Bạn không được phép tạo lượt xem
+
 hint_title=Chỉnh sửa vùng gốc
 hint_desc=Vùng gốc được máy chủ DNS của bạn sử dụng để liên hệ với các máy chủ gốc trên internet, để nó có thể phân giải tên trong các tên miền không được xử lý bởi máy chủ DNS của bạn, như <tt>.com</tt> hoặc <tt>.net. au</tt>. Trừ khi máy chủ DNS của bạn được sử dụng trên mạng nội bộ hoặc bạn đang chuyển tiếp tất cả các truy vấn sang máy chủ khác, bạn không nên xóa vùng gốc này.
 hint_move=Di chuyển để xem:
@@ -874,6 +919,7 @@ hint_refetch=Tải xuống lại máy chủ tên gốc
 hint_refetchdesc=Nhấp vào nút này để Webmin tải xuống lại tệp vùng gốc từ nguồn của nó trên máy chủ FTP của Internic.
 hint_delete=Xóa vùng gốc
 hint_deletedesc=Nhấn vào nút này để loại bỏ vùng gốc này. Không có nó, máy chủ tên của bạn sẽ không thể giải quyết các tên miền trên Internet ngoài những tên miền đó là thứ yếu.
+
 hcreate_title=Tạo vùng gốc
 hcreate_desc=Vùng gốc được máy chủ DNS của bạn sử dụng để liên hệ với các máy chủ gốc trên internet, để nó có thể phân giải tên trong các tên miền không được xử lý bởi máy chủ DNS của bạn, như <tt>.com</tt> hoặc <tt>.net. au</tt>. Nếu bạn đang sử dụng nhiều chế độ xem, bạn có thể cần phải có một vùng gốc riêng biệt trong mỗi chế độ xem để tất cả khách hàng có thể phân giải tên miền internet đúng cách.
 hcreate_header=Chi tiết vùng gốc
@@ -887,6 +933,7 @@ hcreate_efile='$1' không phải là tệp gốc được phép
 hcreate_efile2=Thiếu tập tin gốc hoặc không hợp lệ
 mcreate_erecs=Không phải là một tập tin vùng gốc hiện có hợp lệ
 hcreate_err=Không thể tạo vùng gốc
+
 vdelete_title=Xóa xem
 vdelete_mesg=Bạn có chắc chắn muốn xóa chế độ xem máy khách $1? Tất cả các vùng trong chế độ xem này sẽ bị xóa (cùng với các tệp vùng của chúng) hoặc được chuyển sang chế độ xem khác tùy thuộc vào lựa chọn của bạn bên dưới.
 vdelete_mesg2=Bạn có chắc chắn muốn xóa chế độ xem máy khách $1?
@@ -894,6 +941,7 @@ vdelete_newview=Các khu trong chế độ xem này
 vdelete_root=Di chuyển ra khỏi tầm nhìn
 vdelete_delete=Xóa hoàn toàn
 vdelete_move=Di chuyển để xem
+
 gen_title=Máy phát điện
 gen_desc=Trang này cho phép bạn xác định các trình tạo, mỗi trình sẽ tạo nhiều bản ghi trong vùng này bằng cách sử dụng bộ đếm tăng dần. Điều này có thể hữu ích cho việc ủy thác các phần của vùng đảo ngược cho máy chủ khác.
 gen_range=Phạm vi
@@ -913,7 +961,9 @@ gen_evalue=Mẫu tên máy chủ bị thiếu hoặc không hợp lệ cho trìn
 gen_title2=Tạo hồ sơ
 gen_raw=Cấu hình dòng tập tin
 gen_ecannot=Bạn không được phép chỉnh sửa trình tạo bản ghi
+
 refetch_err=Không thể tải xuống lại vùng gốc
+
 slaves_title=Máy chủ nô lệ cụm
 slaves_none=Chưa có máy chủ nào được thêm vào cụm DNS.
 slaves_host=Tên máy chủ
@@ -941,6 +991,7 @@ slaves_sec=Tạo thứ cấp trên nô lệ khi tạo cục bộ?
 slaves_name=Tên cho hồ sơ NS
 slaves_same=Giống như tên máy chủ
 slaves_header=Tùy chọn máy chủ nô lệ cụm
+
 add_title=Thêm máy chủ
 add_msg=Thêm $1 ..
 add_gmsg=Thêm máy chủ trong nhóm $1 ..
@@ -958,6 +1009,7 @@ add_createok=Thiết lập $1 với $2 vùng nô lệ mới.
 add_ename=Tên hồ sơ NS bị thiếu hoặc không hợp lệ
 add_egname=Tên bản ghi NS không thể được chỉ định khi thêm một nhóm
 add_emyip=Không thể tìm ra địa chỉ IP của hệ thống này. Bạn nên đặt <b>IP máy chủ chính mặc định cho các vùng nô lệ từ xa</b> trên trang Cấu hình mô-đun.
+
 mass_title=Tạo các vùng từ tập tin hàng loạt
 mass_desc=Trang này cho phép bạn tạo nhiều vùng cùng một lúc từ tệp văn bản phía máy chủ được tải lên. Mỗi dòng trong tệp phải có định dạng sau: <p></p> <tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt> <p></p> <i>Loại</i> phải là một trong những <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> hoặc <tt>forward</tt>. Tên <i>tệp</i> là tùy chọn và sẽ được tính toán tự động nếu thiếu. <i>IP chính</i> chỉ cần được cung cấp cho các khu vực nô lệ.
 mass_local=Tệp bó cục bộ
@@ -989,6 +1041,7 @@ mass_emips=Thiếu địa chỉ IP chính
 mass_addedslaves=Đã thêm $1 vào máy chủ nô lệ OK.
 mass_eonslave=Đã xảy ra lỗi được tạo trên các máy chủ nô lệ : $1
 mass_eviewcannot=Bạn không được phép thêm vùng vào chế độ xem này
+
 massdelete_title=Xóa các khu
 massdelete_rusure=Bạn có chắc chắn muốn xóa $1 các vùng đã chọn không? ($2)
 massdelete_ok=Xóa ngay bây giờ
@@ -998,6 +1051,7 @@ massdelete_slaves=Xóa vùng $1 khỏi các máy chủ nô lệ ..
 massdelete_failed=.. một số nô lệ thất bại :
 massdelete_vwarn=Một số vùng được liên kết với tên miền Virtualmin $1, và vì vậy không nên xóa ở đây!
 massdelete_vwarn2=Một số khu vực được liên kết với tên miền Virtualmin $1 và $2 khác, và vì vậy không nên xóa ở đây!
+
 rndc_title=Thiết lập RNDC
 rndc_desc=Trang này có thể được sử dụng để thiết lập BIND để kiểm soát bởi chương trình RNDC, để các vùng riêng lẻ có thể được làm mới mà không cần phải khởi động lại BIND đầy đủ.
 rndc_desc2=RNDC dường như đã được thiết lập đúng, vì vậy bạn có thể không cần sử dụng biểu mẫu này.
@@ -1008,11 +1062,13 @@ rndc_ok=Có, Thiết lập RNDC
 rndc_err=Không thể thiết lập RNDC
 rndc_ekey=Không thể tìm thấy khóa trong rndc.conf
 rndc_esecret=Không thể tìm thấy bí mật trong rndc.conf
+
 drecs_err=Không thể xóa hồ sơ
 drecs_enone=Không được chọn
 drecs_title=Xóa hồ sơ
 drecs_rusure=Bạn có chắc chắn muốn xóa $1 các bản ghi được chọn từ $2?
 drecs_ok=Xóa ngay bây giờ
+
 manual_title=Chỉnh sửa tập tin cấu hình
 manual_ecannot=Bạn không được phép chỉnh sửa tệp cấu hình BIND
 manual_ok=Biên tập
@@ -1020,7 +1076,9 @@ manual_efile=Tệp đã chọn không phải là một phần của cấu hình 
 manual_file=Chỉnh sửa tập tin cấu hình:
 manual_edata=Không có gì vào!
 manual_err=Không thể lưu tập tin cấu hình
+
 syslog_desc=BIND tin nhắn máy chủ DNS
+
 umass_err=Không thể cập nhật vùng
 umass_enone=Không được chọn
 umass_title=Cập nhật hồ sơ trong khu
@@ -1039,6 +1097,7 @@ umass_done=.. đã cập nhật $1 khớp các bản ghi ngoài $2.
 umass_none=.. không có bản ghi phù hợp nào ngoài $1 để cập nhật được tìm thấy.
 umass_egone=Vùng không tồn tại
 emass_emx='$1' không phải là số ưu tiên của máy chủ thư theo sau là tên máy chủ hợp lệ
+
 rdmass_err=Không thể xóa hồ sơ trong khu vực
 rdmass_enone=Không được chọn
 rdmass_title=Xóa hồ sơ trong khu
@@ -1055,6 +1114,7 @@ rdmass_done=.. đã xóa $1 khớp các bản ghi ra khỏi $2.
 rdmass_none=.. không có bản ghi phù hợp nào ngoài $1 để xóa tìm thấy.
 rdmass_ok=Xóa hồ sơ
 rdmass_sel=Hồ sơ có tên
+
 rmass_err=Không thể thêm hồ sơ
 rmass_enone=Không được chọn
 rmass_title=Thêm bản ghi vào khu
@@ -1074,18 +1134,22 @@ rmass_esign=.. đã xong, nhưng việc ký không thành công : $1
 rmass_eclash=.. một bản ghi có cùng tên và giá trị $1 đã tồn tại.
 rmass_eclash2=.. một bản ghi có cùng tên và cùng giá trị $1 đã tồn tại.
 rmass_clash=Tạo ngay cả khi bản ghi đã tồn tại?
+
 check_title=Kiểm tra hồ sơ
 check_ecannot=Bạn không được phép kiểm tra hồ sơ
 check_errs=Các lỗi sau đã được tìm thấy trong tệp bản ghi $1 ..
 check_allok=Không tìm thấy lỗi nào trong tệp hồ sơ $1.
+
 ncheck_title=Kiểm tra cấu hình BIND
 ncheck_ecannot=Bạn không được phép kiểm tra cấu hình BIND
 ncheck_errs=Các lỗi sau đã được tìm thấy trong tệp cấu hình BIND $1 hoặc các tệp vùng tham chiếu ..
 ncheck_allok=Không tìm thấy lỗi nào trong tệp cấu hình BIND $1 hoặc các tệp vùng tham chiếu.
+
 links_restart=Áp dụng cấu hình
 links_stop=Dừng BIND
 links_start=Bắt đầu BIND
 links_apply=Áp dụng vùng
+
 dnssec_title=Đăng nhập lại khóa DNSSEC
 dnssec_ecannot=Bạn không được phép định cấu hình DNSSEC
 dnssec_header=Các tùy chọn ký lại chính
@@ -1096,6 +1160,7 @@ dnssec_secs=giây
 dnssec_desc=Các khu vực được ký kết với DNSSEC thường có hai khóa - một khóa khu vực phải được tạo lại và ký thường xuyên và một khóa ký kết khóa không đổi. Trang này cho phép bạn định cấu hình Webmin để thực hiện việc ký lại này tự động.
 dnssec_err=Không thể lưu lại mã khóa DNSSEC
 dnssec_eperiod=Số ngày bị thiếu hoặc không hợp lệ giữa các lần ký lại
+
 dnssectools_title=DNSSEC-Tự động hóa công cụ
 dt_conf_title=DNSSEC-Tự động hóa công cụ
 dt_enable_title=DNSSEC-Tự động hóa công cụ
@@ -1160,6 +1225,7 @@ dt_status_inKSKroll=Trong cuộn KSK
 dt_status_inZSKroll=Trong cuộn ZSK
 dt_status_signed=Đã ký
 dt_status_unsigned=Chưa ký
+
 zonekey_title=Cài đặt khóa DNSSEC
 zonekey_desc=Khu vực này chưa có khóa ký DNSSEC. Bạn có thể sử dụng biểu mẫu này để tạo Webmin để khách hàng giải quyết khu vực này được bảo vệ chống lại các cuộc tấn công giả mạo DNS.
 zonekey_header=Tùy chọn khóa DNSSEC mới
@@ -1193,9 +1259,12 @@ zonekey_sign=Khu ký hiệu
 zonekey_signdesc=Ngay lập tức ký lại khu vực này, để mọi thay đổi đối với hồ sơ được thực hiện thủ công sẽ được đưa vào hồ sơ ký kết.
 zonekey_resign=Khu ký lại
 zonekey_resigndesc=Tạo khóa ký khu vực mới, ký tên với khóa chính của khu vực và ký lại tất cả các hồ sơ.
+
 sign_err=Không thể ký tên
 sign_emsg=Ký DNSSEC sau khi thay đổi hồ sơ không thành công : $1
+
 resign_err=Không thể ký lại vùng
+
 trusted_title=Xác minh DNSSEC
 trusted_ecannot=Bạn không được phép định cấu hình xác minh DNSSEC
 trusted_esupport=Phiên bản BIND của bạn không hỗ trợ xác minh DNSSEC
@@ -1230,6 +1299,7 @@ trusted_setup=Để DNSSEC hữu ích để xác minh phần lớn các vùng đ
 trusted_ok=Thiết lập DLV và kích hoạt xác minh DNSSEC
 trusted_warning=Cảnh báo! Cấu hình máy khách BIND DNSSEC của bạn chứa các khóa hết hạn sẽ ngừng hoạt động vào tháng 10 năm 2017. Sử dụng <a href='$1'>trang Xác minh BIND DNSSEC</a> để điều chỉnh cấu hình hoặc nhấp vào nút bên dưới.
 trusted_fix=Sửa cấu hình DNSSEC
+
 xfer_title=Chuyển vùng thử nghiệm
 xfer_doing=Thử nghiệm chuyển vùng nô lệ từ $1 ..
 xfer_failed=.. từ $1: Không thành công : $2

@@ -16,6 +16,7 @@ index_all=Все пакеты
 index_return=меню модуля
 index_treturn=дереву пакетов
 index_tree=Дерево пакетов
+
 search_title=Поиск пакета
 search_nomatch=Пакетов, совпадающих с $1 не найдено
 search_none=Нет
@@ -25,6 +26,7 @@ search_pack=Пакет
 search_match=Пакеты, совпадающие с $1
 search_return=результатам поиска
 search_esearch=Вы не указали, что нужно искать!
+
 edit_title=Информация о пакете
 edit_details=Информация о пакете
 edit_desc=Описание
@@ -39,6 +41,7 @@ edit_list=Просмотреть список файлов
 edit_uninst=Удалить
 edit_return=информации о пакете
 edit_egone=Пакет более не установлен
+
 list_title=Файлы пакета
 list_files=Файлы пакета $1
 list_path=Путь
@@ -50,6 +53,7 @@ list_status=Состояние
 list_ok=ОК
 list_view=(Просмотреть)
 list_eview=Не удалось открыть $1 : $2
+
 delete_err=Не удалось удалить пакет $1
 delete_epack=Пакет $1 не существует
 delete_title=Удаление пакета
@@ -57,6 +61,7 @@ delete_rusure=Удалить пакет $1 ? До $2 файлов ($3) буду�
 delete_ok=Удалить
 delete_nodeps=Игнорировать зависимости?
 delete_efile=Неверный временный файл для удаления
+
 file_title=Информация о файле
 file_notfound=Информация о $1 недоступна
 file_path=Путь
@@ -70,6 +75,7 @@ file_pack=Пакет
 file_class=Класс
 file_desc=Описание
 file_none=Нет
+
 install_err=Не удалось установить пакет
 install_elocal=Не указан локальный файл
 install_elocal2='$1' не существует
@@ -82,6 +88,7 @@ install_title=Установка пакета
 install_header=Установка пакета
 install_packs=Устанавливаемый пакет(ы)
 install_ok=Установить
+
 do_err=Не удалось установить пакет $1
 do_title=Установка пакета
 do_efailed=Ошибка при установке : $1
@@ -98,10 +105,12 @@ do_arch=Архитектура
 do_inst=Установлен
 do_none=Нет
 do_files=Файлы пакета
+
 pkgadd_root=Корневой каталог
 pkgadd_eroot=Корневой каталог '$1' не существует
 pkgadd_unknown=Неизвестно
 pkgadd_manager=Менеджер пакетов System V
+
 rpm_upgrade=Обновить пакет?
 rpm_replacepkgs=Перезаписать пакет?
 rpm_nodeps=Игнорировать зависимости?
@@ -116,28 +125,33 @@ rpm_eroot=Корневой каталог '$1' не существует
 rpm_search=Искать на rpmfind.net:
 rpm_none=Пакеты, совпадающие с искомым, не обнаружены.
 rpm_find=Искать на rpmfind.net ..
+
 bsd_unknown=Неизвестно
 bsd_scripts=Выполнять пред- и послеустановочные сценарии?
 bsd_force=Игнорировать зависимости?
 bsd_manager=Менеджер пакетов $1
+
 slack_unclass=Other
 slack_unknown=Unknown
 slack_missing=Missing
 slack_root=Root directory
 slack_eroot=Missing or invalid root directory
 slack_manager=Slackware Package Manager
+
 debian_unknown=Unknown
 debian_depends=Ignore dependancy problems?
 debian_conflicts=Ignore package conflicts?
 debian_overwrite=Overwrite files from other packages?
 debian_downgrade=Replace newer package with old?
 debian_manager=Debian DPKG
+
 log_install_package=Установлен пакет $1
 log_install_apt_l=Установлены пакеты $1 из APT
 log_install_apt=Установлен $2 пакетов из APT
 log_check_apt_l=Обновлены пакеты $1 из APT
 log_check_apt=Обновлено $2 пакетов из APT
 log_delete=Удален пакет $1
+
 rhn_input=Пакеты из Redhat Network
 rhn_find=Искать в RHN ..
 rhn_install=Установка пакетов с помощью команды $1 ..
@@ -163,6 +177,7 @@ rhn_none=Отключено
 rhn_eproxy=Прокси-сервер не указан или указан неверно
 rhn_skip=Пропускать пакеты, совпадающие с
 rhn_nonefound=Нет пакетов для обновления.
+
 apt_input=Пакеты из APT
 apt_install=Установка пакетов с помощью команды $1 ..
 apt_ok=.. установка завершена.
@@ -181,6 +196,7 @@ apt_upgradefailed=.. ошибка при обновлении!
 apt_upgradeok=.. обновление завершено.
 apt_search=Найти пакеты, совпадающие с :
 apt_find=Искать в APT ..
+
 rpm_missing=Отсутствует
 rpm_checkfail=Ошибка при проверке $1
 rpm_md5=MD5
@@ -192,6 +208,7 @@ rpm_user=владельца
 rpm_perm=прав доступа
 rpm_group=группы
 rpm_erpm=RPM $1 не найден : $2
+
 soft_reg=Обычный файл
 soft_dir=Каталог
 soft_spec=Специальный файл
@@ -203,6 +220,7 @@ soft_euncompress=Файл упакован, а команда <tt>uncompress</tt
 soft_euncmsg=Не удалось распаковать файл : $1
 soft_egzip=Файл упакован, а команда <tt>gzip</tt> в вашей системе не обнаружена.
 soft_egzmsg=Не удалось распаковать файл : $1
+
 aix_unknown=Unknown
 aix_device=INPUT device / directory for software
 aix_software=SOFTWARE to install
@@ -220,6 +238,7 @@ aix_accept=ACCEPT new license agreements?
 aix_license=Preview new LICENSE agreements?
 aix_clean=Cleanup install failure?
 aix_manager=AIX Package Manager
+
 emerge_input=From Portage repository
 emerge_find=Search ..
 emerge_install=Installing package with command $1 ..

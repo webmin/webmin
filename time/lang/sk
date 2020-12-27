@@ -9,6 +9,7 @@ index_sync=Synchronizovať a nastaviť
 index_hardware2=Nastaviť tiež hardvérový čas
 index_tzheader=Časová zóna
 index_tz=Zmeň časovú zónu na
+
 action_save=Uložiť
 action_apply=Nastaviť
 action_sync=Nastaviť systémový čas na hardvérový čas
@@ -16,6 +17,7 @@ action_sync_s=Nastaviť hardvérový čas na systémový čas
 action_timeserver_sys=Synchronizovať systémový čas
 action_timeserver_hw=Synchronizovať hardvérový čas
 action_savezone=Zmeniť časovú zónu
+
 acl_sys=Môže užívateľ meniť systémový čas?
 acl_hw=Môže užívateľ meniť hardvérový čas?
 acl_timezone=Môže užívateľ definovať časovú zónu?
@@ -26,18 +28,22 @@ acl_error=Máte prístup do modulu systémového času, ale nemôžete meniť sy
 acl_nosys=Nemáte oprávnenie meniť systémový čas
 acl_nohw=Nemáte oprávnenie meniť hardvérový čas
 acl_nontp=Nemáte oprávnenie na synchronizáciu s časovým serverom
+
 sys_title=Systémový čas
 hw_title=Hardvérový čas
+
 day=Deň
 month=Mesiac
 date=Dátum
 hour=Hodina
 year=Rok
+
 error_cnf=Chyba : $1 príkaz nenájdený
 error_hw=Nemôžem nastaviť hardvérový čas : $1
 error_sync=Nemôžem synchronizovať so systémovým časom : $1
 error_ediff=Časový rozdiel medzi lokálnym časom a časom na časovom serveri je príliš veľký : $1 dní
 error_entp=NTP synchronizácia času zlyhala : $1
+
 log_set_date=Nastaviť systémový čas na $1
 log_set_hwclock=Nastaviť hardvérové hodiny na $1
 log_remote_date=Získaný systémový čas z $2
@@ -47,6 +53,7 @@ log_remote_hwclock_l=Získaný hardvérový čas $1 z $2
 log_sync=Synchronizovaný systémový čas s hardvérovým časom
 log_sync_s=Synchronizovaný hardvérový čas so systémovým časom
 log_timezone=Zmenená časová zóna na $1
+
 timezone_err=Chyba pri ukladaní časovej zóny
 timezone_ecannot=Nemáte oprávnenie zmeniť časovú zónu
 timezone_enone=Nie je vybraná žiadna časová zóna

@@ -10,15 +10,21 @@ index_ok=Ricerca
 index_searchres=Cron lavori corrispondenti a $1 ..
 index_reset=Reimposta ricerca.
 index_econfigcheck=I lavori Cron non possono essere gestiti sul sistema in quanto la configurazione del modulo non è valida : $1 
+
 edit_next=Tempo di esecuzione successivo
 edit_saverun=Salva ed esegui ora
+
 save_eidx=Cron job è stato salvato con successo, ma non può essere eseguito perché non è stato trovato!
+
 acl_hourly=Limitare i lavori al massimo ogni ora?
 acl_hourlydef=Come impostato in Module Config
+
 when_interval=ogni $1 secondi
 when_boot=al momento dell'avvio
+
 ucwhen_interval=Ogni $1 secondi
 ucwhen_boot=Al momento dell'avvio
+
 manual_title=Modifica manualmente Cron Jobs
 manual_edit=Cron file da modificare:
 manual_ok=modificare

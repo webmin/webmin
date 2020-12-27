@@ -12,6 +12,7 @@ index_return=failų sistemų sąrašas
 index_none=Jūs neturite prieigos prie jokių sujungtų failų sistemų.
 index_mount2=Mount su slaptažodžiu:
 index_root=Šakninė failų sistema
+
 edit_title=Redaguoti kalną
 create_title=Sukurti kalną
 edit_err=Nepavyko redaguoti kalno
@@ -58,6 +59,7 @@ edit_ecannot=Jums neleidžiama redaguoti šios failų sistemos
 edit_ecannot2=Jums neleidžiama pridėti naujų failų sistemų
 edit_3_or_lower=3 (arba žemesnė)
 edit_advanced=Išplėstinis režimas
+
 save_err=Nepavyko išsaugoti kalno
 save_edir=„$1“ nėra katalogas
 save_edirname='$1' yra neteisingas katalogo pavadinimas
@@ -74,8 +76,10 @@ save_apply=Kreipkitės į nuolatinį sąrašą
 save_fapply=„Force Un-Mount“
 save_eremount=Apmokėti nepavyko : $1
 save_enone=Nepasirinkote išsaugoti ar montuoti
+
 swap_err=Nepavyko sukurti apsikeitimo failo
 swap_esize=„$1“ yra netinkamas dydis
+
 nfs_server=Pasirinkite NFS serverį ..
 nfs_select=Pasirinkite NFS serverį, iš kurio norite prijungti.
 nfs_ip=IP adresas
@@ -87,6 +91,7 @@ nfs_seldir=Pasirinkite NFS katalogą, kurį norite prijungti.
 nfs_seldirv4=Jei norite įrengti NFSv4, turėtumėte pasirinkti „/“
 nfs_dir=Katalogas
 nfs_clients=Klientai
+
 smb_choose=Pasirinkite CIFS serverį ..
 smb_elist=Nepavyko gauti serverio sąrašo iš $1. Galbūt serveris neleidžia naršyti
 smb_eworkgroup=Puslapyje „Modulio konfigūracija“ nenustatyta jokia darbo grupė
@@ -103,6 +108,7 @@ smb_sel2=Pasirinkite norimą bendrinti akciją.
 smb_share=Dalintis
 smb_comment=Komentuok
 smb_noshares=Serverio $1 nėra failų bendrinimo
+
 solaris_scsidev=SCSI valdiklis $1 target $2 unit $3 skaidinys $4
 solaris_idedev=IDE valdiklis $1 diskas $2 skaidinys $3
 solaris_mddev=RAID įrenginys $1
@@ -240,6 +246,7 @@ solaris_efstyp2=Nepavyko patikrinti failų sistemos tipo : $1
 solaris_ecachedir=„$1“ nėra tinkamas talpyklos katalogas
 solaris_efmode=„$1“ nėra tinkamas aštuonkampio failo režimas
 solaris_edmode=„$1“ nėra tinkamas aštuonių katalogų režimas
+
 linux_eamd=AMD nepavyko
 linux_eauto=Automatinis sumontavimas nepavyko : $1
 linux_esmbconn=Nepavyko prisijungti prie serverio
@@ -361,6 +368,7 @@ linux_noenforce=Taip, bet nevykdykite
 linux_df=Įtraukti rezervuotus blokus į failų sistemos dydį?
 linux_noatime=Venkite atnaujinti paskutinės prieigos laikus?
 linux_netdev=Palaukite, kol pasieks tinklo sąsajos?
+linux_nofail=Tęsti įkrovą, net jei nepavyksta prijungti?
 linux_ecname=Trūksta arba netinkamas kliento „netbios“ vardas
 linux_emname=Trūksta arba netinkamas serverio pagrindinio kompiuterio vardas arba IP adresas
 linux_bind=Originalus katalogas
@@ -386,6 +394,7 @@ linux_nounix=Išjungti CIFS „Unix“ plėtinius?
 linux_noserverino=Sugeneruoti įtraukų numerius kliento pusėje?
 linux_cvers=CIFS versija
 linux_ecvers=CIFS versija turi būti skaičius
+
 log_mount=Sumontuota $3
 log_mount_l=Sumontuota $2 $1 $3
 log_umount=Neįmontuotas $3
@@ -399,7 +408,9 @@ log_modify_l=Modifikuotas $2 montavimas $1 $3
 log_delete=Ištrinta kalva $3
 log_delete_l=Ištrinta $2 sumontuoti $1 į $3
 log_swap=Sukurtas apsikeitimo failas $1
+
 unmount_err=Nepavyko išmontuoti $1
+
 mount_err=Nepavyko prijungti $1
 irix_nhost=NFS pagrindinio kompiuterio vardas
 irix_ndir=NFS katalogas
@@ -430,6 +441,7 @@ irix_rock=Naudoti „Rock Ridge“ plėtinius?
 irix_nofsck=Patikrinti failų sistemą įkrovos metu?
 irix_auto=Automounter šaltinis
 irix_automap=Žemėlapio failas
+
 irix_ehost=Pagrindinio kompiuterio „$1“ nėra
 irix_eloss=Pagrindinis „$1“ kompiuteris neveikia
 irix_eshowmount=Pagrindinis kompiuteris „$1“ nepalaiko NFS
@@ -447,9 +459,11 @@ irix_efstyp2=Nepavyko gauti failų sistemos tipo $1 : $2
 irix_efstyp=$1 failų sistemos tipas yra $2, o ne $3
 irix_eautomap=„Automounter“ žemėlapio failo „$1“ nėra
 irix_eauthmap2=Trūksta arba netinkamas automatinio žemėlapio failas
+
 irix_devroot=Šaknies pertvara
 irix_devswap=Sukeisti skaidinį
 irix_autohosts=Visas NFS eksportas
+
 acl_only=Ar leidžiama tik montuoti ir atkabinti?
 acl_fs=Failų sistemos, kurias galima redaguoti
 acl_types=Naudojamos failų sistemos rūšys
@@ -462,8 +476,10 @@ acl_hide=Slėpti neredaguojamas failų sistemas?
 acl_simple=Rodyti paprastą montavimo formą?
 acl_simopts=Rodyti supaprastintas failų sistemos parinktis?
 acl_browse=Rodyti failą ir bendrinti naršymo mygtukus?
+
 egcc=GCC arba CC kompiliatorius, kurio reikia norint sukurti programą, skirtą jūsų sistemoje pritvirtintoms failų sistemoms išvardyti, nėra.
 ecompile=Įvyko klaida kuriant programą jūsų sistemai prijungtų failų sistemų įtraukimui į sąrašą : $1
+
 freebsd_eaddr=Trūksta arba netinkamas serverio adresas
 freebsd_eworkgroup=Trūksta arba netinkama darbo grupė
 freebsd_ide=IDE standusis diskas
@@ -477,8 +493,10 @@ freebsd_idedev=IDE įrenginys $1, pjūvis $2, skaidinys $3
 freebsd_scsidev=SCSI įrenginys $1, gabalas $2, skaidinys $3
 freebsd_edevpath=Kitas įrenginys turi būti absoliutus kelias, kaip <tt>/dev/cdrom</tt>
 freebsd_edevfile=Įrenginio failo „$1“ nėra
+
 cswap_file=Mainų failas $1 neegzistuoja.
 cswap_size=Sukurkite ir prijunkite keičiamo dydžio failą
+
 acl_sysinfo=Rodyti galimus disko duomenis informacijos suvestinėje?
 sysinfo_total=Iš viso
 sysinfo_dev=Įrenginio ID

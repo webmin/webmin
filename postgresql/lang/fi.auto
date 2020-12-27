@@ -16,6 +16,7 @@ index_add=Luo uusi tietokanta.
 index_users=Käyttäjä, ryhmät ja käyttöoikeudet
 index_return=tietokantaluettelo
 index_esql=PostgreSQL-asiakasohjelmaa $1 ei löydy järjestelmästäsi. Ehkä PostgreSQL: tä ei ole asennettu tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
+
 index_ehba=PostgreSQL-isäntämääritystiedostoa $1 ei löydy järjestelmästäsi. Ehkä PostgreSQL: tä ei ole alustettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
 index_superuser=PostgreSQL-asiakasohjelma psql ei voinut suorittaa järjestelmääsi. Ehkä PostgreSQL: tä ei ole asennettu tai <a href='$1'>moduulin määritykset</a> ovat vääriä.
 index_eversion=Järjestelmäsi PostgreSQL-tietokanta on versio $1, mutta Webmin tukee vain versioita $2 tai uudempi.
@@ -48,10 +49,12 @@ index_gist=Yleinen hakemistohaku
 index_jump=Tai muokkaa tietokantaa:
 index_jumpok=Avata
 index_edithosts=Määritä sallitut isäntäjärjestelmät
+
 login_err=Kirjautuminen epäonnistui
 login_ecannot=Et voi määrittää tietokannan sisäänkirjautumista
 login_elogin=Puuttuu järjestelmänvalvojan sisäänkirjautuminen
 login_epass=Virheellinen järjestelmänvalvojan käyttäjänimi tai salasana
+
 dbase_title=Muokkaa tietokantaa
 dbase_noconn=Tämä tietokanta ei tällä hetkellä hyväksy yhteyksiä, joten siinä ei voida suorittaa mitään toimia.
 dbase_header=Tietokantataulut, hakemistot, näkymät ja sekvenssit
@@ -78,6 +81,7 @@ dbase_jump=Muokkaa taulukkoa:
 dbase_vjump=Muokkaa näkymää:
 dbase_ijump=Muokkaa hakemistoa:
 dbase_sjump=Muokkaa sekvenssiä:
+
 table_title=Muokkaa taulukkoa
 table_title2=Luo taulukko
 table_opts=Kenttävaihtoehdot
@@ -105,6 +109,7 @@ table_eblob=Kohtaa ei tarvita BLOB-kentälle $1
 table_csv=Vie CSV-muodossa
 table_index=Luo hakemisto
 table_delete=Poista valitut kentät
+
 field_title1=Lisää kenttä
 field_title2=Muokkaa kenttää
 field_in=Taulukossa $1 tietokannassa $2 
@@ -123,6 +128,7 @@ field_esize='$1' ei ole kelvollinen kentän koko
 field_eenum=Ei lueteltuja arvoja annettu
 field_efield='$1' ei ole kelvollinen kentän nimi
 field_ekey=Kentät, jotka sallivat tyhjät, eivät voi olla osa pääavainta
+
 exec_title=Suorita SQL
 exec_header=Kirjoita suoritettava SQL-komento tietokantaan $1.
 exec_old=Tai valitse edellinen SQL-komento :
@@ -152,21 +158,25 @@ exec_tabexec=Suorita SQL
 exec_tabfile=Suorita SQL tiedostosta
 exec_tabimport=Tuo tekstitiedosto
 exec_return=Suorita SQL-muoto
+
 stop_err=Tietokantapalvelimen pysäyttäminen epäonnistui
 stop_epidfile=PID-tiedoston $1 avaaminen epäonnistui
 stop_ekill=Prosessin $1 tappaminen epäonnistui : $2 
 stop_ecannot=Et voi pysäyttää tietokantapalvelinta
 start_err=Tietokantapalvelimen käynnistäminen epäonnistui
 start_ecannot=Sinulla ei ole oikeutta käynnistää tietokantapalvelinta
+
 ddrop_err=Tietokannan pudottaminen epäonnistui
 ddrop_title=Pudota tietokanta
 ddrop_rusure=Haluatko varmasti pudottaa tietokannan $1 ? $2 taulukkoa, jotka sisältävät $3 riviä, poistetaan.
 ddrop_mysql=Koska tämä on päätietokanta, sen pudottaminen tekee todennäköisesti PostgreSQL-palvelimesta käyttökelvottoman!
 ddrop_ok=Pudota tietokanta
+
 tdrop_err=Pöydän pudottaminen epäonnistui
 tdrop_title=Pudota taulukko
 tdrop_rusure=Haluatko varmasti pudottaa taulukon $1 tietokantaan $2 ? $3 tietoriviä poistetaan.
 tdrop_ok=Pudota taulukko
+
 view_title=Taulukkotiedot
 view_pos=Rivit $1 - $2 $3 : sta
 view_none=Tämä taulukko ei sisällä tietoja
@@ -201,6 +211,7 @@ view_set=Aseta tiedoston sisältöön ..
 view_warn=Varoitus - tiedostojen lähettäminen <tt>teksti</tt> tai <tt>bytea</tt> -kenttiin ja niiden sisällön tarkasteleminen todennäköisesti toimii, elleivät $1 ja $2 Perl -moduulit ole asennettu ja käytössä.
 view_adv=Tarkennettu Haku
 view_sqlrun=SQL-kyselyn tuottamat tulokset : $1 
+
 newdb_title=Luo tietokanta
 newdb_header=Uudet tietokantavaihtoehdot
 newdb_db=Tietokannan nimi
@@ -215,6 +226,7 @@ newdb_encoding=Merkkien koodaus
 newdb_eencoding=Puuttuu merkistökokoodaus
 newdb_template=Mallitietokanta
 newdb_notemplate=Ei mitään
+
 user_title=PostgreSQL-käyttäjät
 user_vwarning=VAROITUS: Tämä PostgreSQL-käyttäjä on Virtualmin-verkkotunnuksen $1 järjestelmänvalvonnan kirjautuminen. Asetusten muuttaminen tässä voi aiheuttaa virheitä Virtualminissa.
 user_ecannot=Et voi muokata käyttäjiä
@@ -244,6 +256,7 @@ user_sync_delete=Poista PostgreSQL-käyttäjä, kun vastaava Unix-käyttäjä po
 user_delete=Poista valitut
 user_derr=Käyttäjien poistaminen epäonnistui
 user_enone=Yhtään käyttäjää ei ole valittu
+
 host_ecannot=Et voi muokata sallittuja isäntiä
 host_title=Sallitut isännät
 host_desc=Kun asiakas muodostaa yhteyden tietokantaan, alla lueteltuja koneita käsitellään järjestyksessä, kunnes yksi vastaa ja asiakas sallitaan tai evätään.
@@ -299,8 +312,10 @@ host_derr=Sallittujen isäntien poistaminen epäonnistui
 host_enone=Ei isäntiä valittu
 host_manual=Muokkaa asetustiedostoa
 host_manualdesc=Napsauta tätä painiketta, jos haluat muokata sallittujen isäntien määritystiedostoa manuaalisesti.
+
 manual_title=Muokkaa asetustiedostoa
 manual_err=Konfigurointitiedoston tallentaminen epäonnistui
+
 grant_title=Myönnetyt oikeudet
 grant_tvi=Esine
 grant_type=Tyyppi
@@ -328,6 +343,7 @@ grant_none=Mitään taulukoita, näkymiä, sekvenssejä tai hakemistoja ei ole o
 grant_toomany=Esitettäviä kohteita on liian paljon. Etsi vastaavia esineitä:
 grant_showing=Näytetään kohteet, jotka vastaavat $1 ..
 grant_delete=Nollaa valitut apurahat
+
 group_title=PostgreSQL-ryhmät
 group_ecannot=Et voi muokata ryhmiä
 group_name=Ryhmän nimi
@@ -347,6 +363,7 @@ group_etaken=Ryhmän nimi on jo käytössä
 group_none=PostgreSQL-ryhmiä ei ole tällä hetkellä.
 group_derr=Ryhmien poistaminen epäonnistui
 group_enone=Yhtään ryhmää ei ole valittu
+
 esql=SQL $1 epäonnistui : $2 
 log_start=Käynnistettiin PostgreSQL-palvelin
 log_stop=Pysäytetty PostgreSQL-palvelin
@@ -403,6 +420,7 @@ log_backup_l=Varmuuskopioi tietokanta $1 tiedostoon $2
 log_backup_all=Varmuuskopioi kaikki tietokannat
 log_backup_all_l=Varmuuskopioi kaikki tietokannat tiedostoon $2 
 log_manual=Sallittujen isäntien konfigurointitiedosto manuaalisesti muokattu
+
 acl_dbs=Tietokannat, joita tämä käyttäjä voi hallita
 acl_dbscannot=Tämä pääsynhallinta tulee voimaan PostgreSQL-tietokantapalvelimen käynnistyksen jälkeen.
 acl_dall=Kaikki tietokannat
@@ -423,13 +441,17 @@ acl_cmds=Voiko muokata ennen ja jälkeen varmuuskopioita?
 acl_views=Voiko katsella ja hallita näkymiä?
 acl_indexes=Voiko katsella ja hallita hakemistoja?
 acl_seqs=Voiko katsella ja hallita sekvenssejä?
+
 fdrop_err=Kenttien poistaminen epäonnistui
 fdrop_enone=Mitään ei ole valittu
 fdrop_eall=Kaikkia kenttiä ei voi poistaa taulukosta!
+
 setup_err=Tietokannan alustaminen epäonnistui
 setup_ecannot=Sinulla ei ole oikeutta alustaa tietokantaa
+
 dbase_bkup=Varmuuskopioida
 dbase_rstr=Palauttaa
+
 restore_title=Palauta tietokanta
 restore_header=Palauta tietokanta-asetukset
 restore_db=Tietokannan nimi
@@ -452,6 +474,7 @@ restore_tables=Palautuspöydät
 restore_tables1=Kaikki varmuuskopiotiedostossa
 restore_tables0=Listatut taulukot
 restore_failed=Palauttaminen epäonnistui : $1 
+
 backup_title=Varmuuskopiotietokanta
 backup_title2=Varmuuskopioi kaikki tietokannat
 backup_header1=Varmuuskopiokohde
@@ -500,17 +523,21 @@ backup_ebefore=Ennen varmuuskopiointia -komento epäonnistui!
 backup_cmode=Milloin komennot suoritetaan
 backup_cmode1=Ennen/jälkeen kaikkia tietokantoja
 backup_cmode0=Ennen/jälkeen jokaisen tietokannan
+
 r_command=Komentoa ei tueta
+
 adv_title=Tarkennettu Haku
 adv_and=Etsi tietueet, jotka vastaavat kaikkia ehtoja ..
 adv_or=Etsi tietueet, jotka vastaavat kaikkia kriteerejä ..
 adv_ok=Etsi nyt
+
 tdrops_enone=Ei yhtään taulukkoa valittaviksi
 tdrops_err=Taulukoiden pudottaminen epäonnistui
 tdrops_ok=Pudota
 tdrops_title=Pudota valittu
 tdrops_rusure=Haluatko varmasti pudottaa $1 valitut taulukot tietokantaan $2 ? $3 tietoriviä poistetaan.
 tdrops_rusure2=Haluatko varmasti pudottaa $1 valitut taulukot tietokantaan $2 ?
+
 ddrops_err=Tietokantojen pudottaminen epäonnistui
 ddrops_title=Pudota tietokannat
 ddrops_rusure=Haluatko varmasti pudottaa valitut $1 tietokannat? $2 taulukkoa, jotka sisältävät $3 riviä, poistetaan.
@@ -518,6 +545,7 @@ ddrops_mysql=Koska päätietokanta on valittu, sen pudottaminen tekee todennäk�
 ddrops_ok=Pudota tietokannat
 ddrops_enone=Yhtään tietokantaa ei ole valittu
 ddrops_ecannotdb=Et voi pudottaa tietokantaa $1 
+
 csv_title=Vie CSV-tiedosto
 csv_header=CSV-vientivaihtoehdot
 csv_dest=Vie kohde
@@ -538,6 +566,7 @@ csv_done=CSV-vienti tiedostoon $1 on valmis. Tuloksena olevan tiedoston koko on 
 csv_headers=Sisällytetäänkö sarakkeiden nimet CSV: hen?
 csv_cols=CSV: hen sisällytettävät sarakkeet
 csv_ecols=Yhtään saraketta ei ole valittu
+
 import_title=Tuo tiedot
 import_uploadout=Tietojen tuominen ladatusta tiedostosta ..
 import_fileout=Tietojen tuominen tiedostosta $1 ..
@@ -545,6 +574,7 @@ import_eupload=Ladattu tuontitiedosto puuttuu
 import_efile=Puuttuu tuontitiedostonimi
 import_done=.. loi $1 riviä, ohitti $2 kaksoiskappaletta.
 import_erow=.. rivistä $1 ei löytynyt kenttiä
+
 index_title1=Luo hakemisto
 index_header1=Hakemistovaihtoehdot
 index_name=Hakemiston nimi
@@ -562,6 +592,7 @@ index_ecols=Ei kenttiä valittu
 index_title2=Muokkaa hakemistoa
 index_header=Hakemisto $1 tietokannassa $2 
 index_ecannot=Et voi hallita hakemistoja
+
 view_title1=Luo näkymä
 view_title2=Muokkaa näkymää
 view_header1=Tarkemmat tiedot
@@ -576,6 +607,7 @@ view_eclash=Saman nimen näkymä on jo olemassa
 view_equery=Puuttuu SQL-kysely
 view_ecols=Sarakkeiden nimiä ei annettu
 view_ecannot=Et voi hallita näkymiä
+
 seq_title1=Luo sekvenssi
 seq_title2=Muokkaa sekvenssiä
 seq_header1=Järjestysvaihtoehtojen lisääminen
@@ -595,5 +627,6 @@ seq_emin=Puuttuva tai virheellinen minimiarvo
 seq_emax=Puuttuva tai virheellinen maksimiarvo
 seq_ecache=Välimuistissa olevien arvojen määrä puuttuu tai on virheellinen
 seq_ecannot=Et voi hallita sekvenssejä
+
 dgrant_err=Apurahojen palauttaminen epäonnistui
 dgrant_enone=Objekteja ei ole valittu

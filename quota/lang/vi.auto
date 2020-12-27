@@ -1,4 +1,5 @@
 quota_unlimited=Vô hạn
+
 acl_fss=Hệ thống tập tin người dùng này có thể chỉnh sửa
 acl_fall=Tất cả các hệ thống tập tin
 acl_fsel=Đã chọn ..
@@ -24,9 +25,11 @@ acl_maxblocks=Hạn ngạch khối tối đa có thể cấp
 acl_maxfiles=Hạn mức tập tin tối đa có thể cấp
 acl_unlimited=Vô hạn
 acl_email=Có thể thiết lập thông báo email?
+
 activate_eallow=Bạn không được phép bật hoặc tắt hạn ngạch trên hệ thống tệp này
 activate_eon=Không thể bật hạn ngạch
 activate_eoff=Không thể tắt hạn ngạch
+
 check_title=Kiểm tra hạn ngạch
 check_return=$1 danh sách
 check_ecannot=Bạn không thể kiểm tra hạn ngạch trên hệ thống tập tin này
@@ -34,11 +37,13 @@ check_running=Lệnh <tt>quotacheck</tt> hiện đang được chạy để ki�
 check_done=... Làm xong.
 check_rgroup=nhóm
 check_ruser=người sử dụng
+
 cgroup_efail=Không thể sao chép hạn ngạch
 cgroup_ecannot=Bạn không thể sao chép hạn ngạch
 cgroup_egallow=Bạn không được phép sao chép hạn ngạch của nhóm này
 cgroup_enogroup=Không có nhóm để sao chép vào
 cgroup_eallowto=Bạn không được phép sao chép hạn ngạch sang '$1'
+
 cgform_title=Sao chép hạn ngạch
 cgform_return=hạn ngạch nhóm
 cgform_ecannot=Bạn không thể sao chép hạn ngạch
@@ -48,11 +53,13 @@ cgform_all=Tất cả các nhóm trên hệ thống của bạn
 cgform_select=Các nhóm được chọn
 cgform_contain=Nhóm chứa người dùng
 cgform_doit=Sao chép
+
 cuser_efail=Không thể sao chép hạn ngạch
 cuser_ecannot=Bạn không thể sao chép hạn ngạch
 cuser_euallow=Bạn không được phép sao chép hạn ngạch của người dùng này
 cuser_enouser=Không có người dùng để sao chép vào
 cuser_eallowto=Bạn không được phép sao chép hạn ngạch sang '$1'
+
 cuform_title=Sao chép hạn ngạch
 cuform_return=hạn ngạch người dùng
 cuform_ecannot=Bạn không thể sao chép hạn ngạch
@@ -62,6 +69,7 @@ cuform_all=Tất cả người dùng trên hệ thống của bạn
 cuform_select=Người dùng được chọn
 cuform_members=Thành viên của các nhóm được chọn
 cuform_doit=Sao chép
+
 egroup_title=Chỉnh sửa hạn ngạch nhóm
 egroup_freturn=danh sách hệ thống tập tin
 egroup_greturn=danh sách nhóm
@@ -80,6 +88,7 @@ egroup_hflimit=Giới hạn tệp cứng
 egroup_update=Cập nhật
 egroup_listall=Liệt kê tất cả các hạn ngạch
 egroup_listalldesc=Nhấp vào nút này để hiển thị danh sách tất cả các hệ thống tệp mà nhóm này có hạn ngạch đĩa, với các liên kết để chỉnh sửa chúng.
+
 euser_title=Chỉnh sửa hạn ngạch người dùng
 euser_freturn=danh sách hệ thống tập tin
 euser_ureturn=Danh sách người dùng
@@ -102,6 +111,7 @@ euser_hflimit=Giới hạn tập tin cứng
 euser_update=Cập nhật
 euser_listall=Liệt kê tất cả các hạn ngạch
 euser_listalldesc=Nhấp vào nút này để hiển thị danh sách tất cả các hệ thống tệp mà người dùng này có hạn ngạch đĩa, với các liên kết để chỉnh sửa chúng.
+
 gfilesys_title=Hạn ngạch nhóm
 gfilesys_return=danh sách hệ thống tập tin
 gfilesys_ecannot=Bạn không thể chỉnh sửa hạn ngạch cho '$1'
@@ -120,6 +130,7 @@ gfilesys_copy=Sao chép hạn ngạch
 gfilesys_editdesc=Xem và chỉnh sửa hạn ngạch cho nhóm này trên một số hệ thống tệp khác mà hiện tại nó không có hạn ngạch.
 gfilesys_copydesc=Sao chép giới hạn hạn ngạch cho nhóm này trên tất cả các hệ thống tệp vào một số hoặc tất cả các nhóm khác.
 gfilesys_enone=Không có tên nhóm được nhập
+
 ggracef_title=Thời gian ân sủng
 ggracef_return=danh sách nhóm
 ggracef_ecannot=Bạn không thể chỉnh sửa thời gian gia hạn trên hệ thống tập tin này
@@ -128,9 +139,11 @@ ggracef_graces=Nhóm Grace Times cho <tt>$1</tt>
 ggracef_block=Đối với hạn ngạch khối
 ggracef_file=Đối với hạn ngạch tập tin
 ggracef_update=Cập nhật
+
 ggraces_esave=Không thể lưu thời gian ân hạn
 ggraces_eedit=Bạn không thể chỉnh sửa thời gian gia hạn trên hệ thống tập tin này
 ggraces_enumber='$1' không phải là số
+
 index_quser=Hạn ngạch người dùng
 index_qgroup=Hạn ngạch nhóm
 index_qboth=Hạn ngạch người dùng và nhóm
@@ -154,6 +167,7 @@ index_egroup=Chỉnh sửa hạn ngạch nhóm:
 index_egroupdesc=Nhập hoặc chọn một nhóm và nhấp vào nút này để xem hạn ngạch của nó trên tất cả các hệ thống tệp.
 index_nosupport=Không có hệ thống tập tin cục bộ có thể hỗ trợ hạn ngạch.
 index_mountmod=Bạn có thể bật hạn ngạch cho một hệ thống tệp trong mô-đun <a href='$1'>Đĩa và Hệ thống tệp mạng</a>.
+
 lgroups_failed=Không thể liệt kê các nhóm
 lgroups_tablist=Danh sách nhóm
 lgroups_eallow=Bạn không được phép chỉnh sửa hạn ngạch trên hệ thống tập tin này
@@ -182,13 +196,17 @@ lgroups_tofixed=Địa chỉ 1
 lgroups_emailheader=Gửi email cho các nhóm tiếp cận hạn ngạch
 lgroups_email=Gửi email cho các nhóm?
 lgroups_tovirt=Chủ sở hữu tên miền Virtualmin
+
 sgroup_egroup=Bạn không được phép chỉnh sửa hạn ngạch cho nhóm này
 sgroup_efs=Bạn không được phép chỉnh sửa hạn ngạch trên hệ thống tập tin này
+
 ssync_ecannot=Bạn không thể đặt hạn ngạch mặc định cho hệ thống tệp này
+
 suser_euser=Bạn không được phép chỉnh sửa hạn ngạch cho người dùng này
 suser_efs=Bạn không được phép chỉnh sửa hạn ngạch trên hệ thống tập tin này
 suser_emaxblocks=Bạn không được phép cấp giới hạn khối trên $1 
 suser_emaxfiles=Bạn không được phép cấp giới hạn tệp trên $1 
+
 ufilesys_title=Hạn ngạch người dùng
 ufilesys_return=danh sách hệ thống tập tin
 ufilesys_ecannot=Bạn không thể chỉnh sửa hạn ngạch cho '$1'
@@ -208,6 +226,7 @@ ufilesys_copydesc=Sao chép giới hạn hạn ngạch cho người dùng này t
 ufilesys_copy=Sao chép hạn ngạch
 ufilesys_grace=Ân sủng
 ufilesys_enone=Không có tên người dùng đã nhập
+
 ugracef_title=Thời gian ân sủng
 ugracef_return=Danh sách người dùng
 ugracef_ecannot=Bạn không thể chỉnh sửa thời gian gia hạn trên hệ thống tập tin này
@@ -216,9 +235,11 @@ ugracef_graces=Thời gian ân sủng của người dùng cho <tt>$1</tt>
 ugracef_block=Đối với hạn ngạch khối
 ugracef_file=Đối với hạn ngạch tập tin
 ugracef_update=Cập nhật
+
 ugraces_esave=Không thể lưu thời gian ân hạn
 ugraces_eedit=Bạn không thể chỉnh sửa thời gian gia hạn trên hệ thống tập tin này
 ugraces_enumber='$1' không phải là số
+
 lusers_failed=Không thể liệt kê người dùng
 lusers_tablist=Danh sách người dùng
 lusers_tabdefault=Hạn ngạch mặc định
@@ -264,12 +285,14 @@ lusers_from=Từ: địa chỉ email
 lusers_mass=Cập nhật người dùng đã chọn
 lusers_cc=Đồng thời gửi email đến
 lusers_nocc=Không ai
+
 grace_seconds=Giây
 grace_minutes=Phút
 grace_hours=Giờ
 grace_days=Ngày
 grace_weeks=Tuần
 grace_months=Tháng
+
 log_activate_u=Đã bật hạn ngạch người dùng trên $1 
 log_activate_g=Đã bật hạn ngạch nhóm trên $1 
 log_activate_ug=Đã bật hạn ngạch người dùng và nhóm trên $1 
@@ -287,6 +310,7 @@ log_check=Đã kiểm tra hạn ngạch trên $1
 log_copy_u=Hạn ngạch của người dùng đã sao chép $1 
 log_copy_g=Hạn ngạch của nhóm sao chép $1 
 log_support=Hỗ trợ hạn ngạch cho $1 
+
 email_err=Không thể lưu tùy chọn email
 email_ecannot=Bạn không được phép sửa đổi các tùy chọn email
 email_einterval=Thiếu hoặc không hợp lệ khoảng
@@ -299,6 +323,7 @@ gemail_msg=Việc sử dụng đĩa cho nhóm $1 trên hệ thống tệp $2 đ�
 email_subject=vượt quá hạn mức đĩa
 gemail_subject=vượt quá hạn mức đĩa
 email_eto=Thiếu địa chỉ email đích
+
 umass_title=Cập nhật hạn ngạch người dùng
 umass_header=Thay đổi hạn ngạch để áp dụng cho người dùng đã chọn
 umass_sblocks=Giới hạn khối mềm
@@ -315,6 +340,7 @@ umass_esfiles=Giới hạn tệp mềm bị thiếu hoặc không hợp lệ
 umass_ehfiles=Giới hạn tập tin cứng bị thiếu hoặc không hợp lệ
 umass_count=Những thay đổi dưới đây sẽ áp dụng cho $1 người dùng đã chọn ..
 umass_err=Không thể cập nhật hạn ngạch người dùng
+
 gmass_title=Cập nhật hạn ngạch nhóm
 gmass_header=Thay đổi hạn ngạch để áp dụng cho các nhóm được chọn
 gmass_count=Những thay đổi dưới đây sẽ áp dụng cho $1 nhóm được chọn ..

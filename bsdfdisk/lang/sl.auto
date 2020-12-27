@@ -7,6 +7,7 @@ index_dsize=Skupna velikost
 index_dmodel=Znamka in model
 index_dparts=Rezine
 index_return=seznam diskov
+
 disk_title=Urejanje diska
 disk_egone=Diska ne obstaja več!
 disk_no=Rezina
@@ -31,9 +32,11 @@ disk_return=podrobnosti o disku in seznam rezin
 disk_add=Ustvari novo rezino.
 disk_smart=Pokaži stanje SMART
 disk_smartdesc=Pokažite trenutno stanje tega pogona, kot ga je zaznal SMART, in ga preverite, ali je prišlo do napak na disku.
+
 select_device=$1 naprava $2 
 select_slice=$1 naprava $2 rezina $3 
 select_part=$1 naprava $2 rezina $3 particija $4 
+
 slice_title=Uredite rezino
 slice_egone=Izbrana rezina ne obstaja!
 slice_ssize=Velikost rezine
@@ -58,6 +61,7 @@ slice_return=podrobnosti rezine in seznam particij
 slice_err=Ni bilo mogoče spremeniti rezine
 slice_header=Podrobnosti rezine
 slice_suse=Neposredno uporablja
+
 dslice_title=Brisanje rezine
 dslice_rusure=Ali ste prepričani, da želite izbrisati rezino $1 ? Izbrisane bodo tudi vse particije in datotečne sisteme znotraj njega.
 dslice_warn=Opozorilo - to rezino trenutno uporablja : $1 
@@ -65,6 +69,7 @@ dslice_confirm=Izbriši zdaj
 dslice_deleting=Brisanje rezine $1 ..
 dslice_failed=.. brisanje ni uspelo : $1 
 dslice_done=.. Končano
+
 nslice_title=Ustvari rezino
 nslice_header=Nove podrobnosti rezine
 nslice_number=Številčna rezina
@@ -86,6 +91,7 @@ nslice_done=.. dodana rezina
 nslice_parting=Ustvari privzete particije v rezini $1 na $2 ..
 nslice_pfailed=.. ustvarjanje particije ni uspelo : $1 
 nslice_pdone=.. particija je dodana
+
 npart_title=Ustvari particijo
 npart_header=Nove podrobnosti particije
 npart_letter=Pismo particije
@@ -98,6 +104,7 @@ npart_emax=Končni blok ne sme biti večji od velikosti kosov $1 blokov
 npart_creating=Ustvarjanje particije $1 na $2 ..
 npart_failed=.. ustvarjanje particije ni uspelo : $1 
 npart_done=.. particija je dodana
+
 part_title=Uredi particijo
 part_egone=Particije ne obstaja več!
 part_header=Podrobnosti o particiji
@@ -124,6 +131,7 @@ part_newmount2=Mount particija
 part_mountmsg=To napravo namestite na nov imenik v vašem sistemu, tako da se lahko uporablja za shranjevanje datotek. V napravi mora biti že ustvarjen datotečni sistem.
 part_mountmsg2=To napravo namestite kot navidezni pomnilnik v svojem sistemu, da povečate količino pomnilnika, ki je na voljo.
 part_cannotedit=Te particije ni mogoče spremeniti, kot je trenutno v uporabi.
+
 dpart_title=Izbriši particijo
 dpart_rusure=Ali ste prepričani, da želite izbrisati particijo $1 ? Vsi datotečni sistemi znotraj njega bodo tudi izbrisani.
 dpart_warn=Opozorilo - to particijo trenutno uporablja $1 
@@ -131,6 +139,7 @@ dpart_confirm=Izbriši zdaj
 dpart_deleting=Brisanje particije $1 ..
 dpart_failed=.. brisanje ni uspelo : $1 
 dpart_done=.. Končano
+
 newfs_title=Ustvari datotečni sistem
 newfs_header=Nove podrobnosti datotečnega sistema
 newfs_free=Prostor za rezervo za koren
@@ -145,11 +154,13 @@ newfs_elabel=Manjkajoča ali neveljavna nalepka
 newfs_creating=Ustvarjanje datotečnega sistema v $1.
 newfs_failed=.. ustvarjanje ni uspelo!
 newfs_done=.. ustvarjena uspešno
+
 fsck_title=Preverite datotečni sistem
 fsck_err=Ni bilo mogoče preveriti datotečnega sistema
 fsck_checking=Preverjanje datotečnega sistema v $1.
 fsck_failed=.. preverjanje ni uspelo!
 fsck_done=.. preverjanje zaključeno, da ni bilo najdenih napak
+
 log_create_slice=Ustvaril je rezino $1 
 log_delete_slice=Izbrisana rezina $1 
 log_modify_slice=Spremenjena rezina $1 

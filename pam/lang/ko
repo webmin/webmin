@@ -4,6 +4,7 @@ index_desc=설명
 index_add=새 PAM 서비스 추가
 index_return=서비스 목록
 index_none=시스템 디렉토리 $1에 PAM 구성 파일이 없습니다. PAM이 지원되지 않거나 <a href='$2'>모듈 구성</a>이 정확하지 않을 수 있습니다.
+
 desc_su=사용자 전환
 desc_su-l=사용자 교체 (로그인)
 desc_login=로컬 또는 원격 로그인
@@ -87,6 +88,7 @@ desc_common-account=공통 계정 확인
 desc_common-auth=공통 인증
 desc_common-password=공통 암호 변경
 desc_common-session=공통 세션 설정
+
 edit_title=PAM 서비스 편집
 edit_header=PAM 서비스 정보
 edit_name=서비스 이름
@@ -107,6 +109,7 @@ edit_move=이동
 edit_return=PAM 서비스
 edit_inc=내장 $1 서비스
 edit_iheader=내장 PAM 서비스
+
 pam_pwdb.so=유닉스 패스워드 인증
 pam_securetty.so=root의 보안 TTY 검사
 pam_nologin.so=<tt>/etc/nologin</tt> 파일 검사
@@ -149,6 +152,7 @@ pam_console.so=콘솔만 검사
 pam_xauth.so=X 인증
 pam_stack.so=다른 PAM 서비스 호출
 pam_foreground.so=콘솔 설정
+
 control_requisite=필요
 control_required=필수
 control_sufficient=충분
@@ -157,6 +161,7 @@ control_desc_requisite=실패 시 즉시 인증 실패
 control_desc_required=실패 시 마지막 단계에서 인증 실패
 control_desc_sufficient=성공 시 즉시 인증 성공
 control_desc_optional=성공 또는 실패 무시
+
 create_title=PAM 서비스 작성
 create_header=새 PAM 서비스 옵션
 create_name=서비스 이름
@@ -165,6 +170,7 @@ create_mods=초기 PAM 모듈
 create_0=없음
 create_1=유닉스 인증
 create_2=모든 접근 거부
+
 mod_edit=PAM 모듈 편집
 mod_create=PAM 모듈 추가
 mod_header=PAM 모듈 옵션
@@ -178,10 +184,12 @@ mod_type_password=패스워드 변경
 mod_control=실패 수준
 mod_args=모듈 인수
 mod_err=모듈을 저장하지 못했습니다
+
 pwdb_shadow=쉐도우 패스워드 파일을 사용합니까?
 pwdb_nullok=널 패스워드를 수락합니까?
 pwdb_md5=MD5 암호화된 패스워드를 사용합니까?
 pwdb_nodelay=로그인 실패 후 지연합니까?
+
 unix_nullok_secure=보안 TTY에서 빈 암호를 허가하겠습니까?
 unix_min=최소 암호 길이
 unix_nomin=없음
@@ -190,6 +198,7 @@ unix_nomax=제한 없음
 unix_obscure=쉬운 암호 사용을 막겠습니까?
 unix_emin=최소 암호 길이가 설정되지 않았거나 올바르지 않습니다.
 unix_emax=최대 암호 길이가 설정되지 않았거나 올바르지 않습니다.
+
 listfile_item=파일 검색 기준
 listfile_item_user=사용자 이름
 listfile_item_tty=TTY
@@ -206,51 +215,64 @@ listfile_apply=검사 대상
 listfile_all=모든 사용자
 listfile_user=사용자만
 listfile_group=그룹만
+
 cracklib_type=프롬프트의 패스워드 유형
 cracklib_retry=실패 전 최대 재시도 횟수
 cracklib_eretry=재시도 회수가 지정이 되지 않았거나 유효하지 않습니다.
 cracklib_etype=패스워드 형식이 지정이 되지 않았거나 유효하지 않습니다.
+
 rhosts_equiv=<tt>/etc/hosts.equiv</tt> 파일을 읽습니까?
 rhosts_rhosts=사용자의 <tt>.rhosts</tt> 파일을 읽습니까?
 rhosts_promiscuous=모든 호스트의 <tt>+</tt> 입력을 허용합니까?
 rhosts_suppress=인증 실패를 로그합니까?
+
 env_var=변수 이름
 env_def=기본값
 env_over=대체값
 env_evar=변수 이름에는 공백을 넣을 수 없습니다
+
 securetty_ttys=보안 TTY
+
 shells_shells=유효한 사용자 쉘
+
 tally_deny=접근 거부 전 실패 시도 횟수
 tally_reset=성공 시 실패 카운트 재설정
 tally_edeny=없거나 잘못된 실패 시도 횟수
 tally_magic=<tt>root</tt>에 실패 카운트를 적용합니까?
 tally_root=<tt>root</tt> 계정이 거부될 수 있습니까?
+
 time_services=서비스
 time_ttys=TTY
 time_users=사용자
 time_times=접근 시간
 time_info=모든 필드에 여러 개의 값(각 값은 |로 구분)이 포함될 수 있으며, 값은 와일드카드 *나 negagor !를 사용할 수 있습니다.
+
 group_services=서비스
 group_ttys=TTY
 group_users=사용자
 group_times=접근 시간
 group_groups=그룹 추가
 group_info=모든 필드에 여러 개의 값(각 값은 |로 구분)이 포함될 수 있으며, 값은 와일드카드 *나 negagor !를 사용할 수 있습니다.
+
 wheel_group=그룹 구성원 검사
 wheel_group_def=기본값(<tt>wheel</tt> 또는 GID 0)
 wheel_trust=그룹 구성원에 대한 추가 인증을 생략합니까?
 wheel_deny=그룹 구성원을 허용하지 않고 거부합니까?
 wheel_egroup=없거나 잘못된 그룹 이름
+
 motd_file=표시할 파일
 motd_file_def=기본값(<tt>/etc/motd</tt>)
 motd_efile=없거나 잘못된 파일 이름
+
 mail_nopen=로그인할 때 메일 알림을 표시합니까?
 mail_close=로그아웃할 때 메일 알림을 표시합니까?
 mail_empty=메일 파일이 비면 알립니까?
 mail_noenv=$MAIL 환경 변수를 설정합니까?
 mail_dir=메일 스풀 디렉토리
 mail_edir=없거나 잘못된 메일 스풀 디렉토리
+
 stack_service=PAM 서비스에 체크온 전달
+
 log_pam_create=PAM 서비스 $1 작성됨
 log_pam_delete=PAM 서비스 $1 삭제됨
 log_mod_create=서비스 $2에 PAM 모듈 $1 추가됨
@@ -262,6 +284,7 @@ log_inc_create=$2 서비스를 위한 내장 $1 추가
 log_inc_modify=$2 서비스를 위한 내장 $1 수정
 log_inc_delete=$2 서비스를 위한 내장 $1 삭제
 log_incs=$1 서비스를 위한 내장 기능 업데이트
+
 inc_edit=내장 서비스 편집
 inc_create=내장 서비스 생성
 inc_header=내장 PAM 서비스 상세사항

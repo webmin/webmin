@@ -2,6 +2,7 @@ index_title=NIS - klient i serwer
 index_return=menu NIS
 index_enis=Wygląda na to, że w systemie nie zainstalowano ani klienta ani serwera NIS.
 index_enis2=Tylko funkcja usług klienckich będzie używana w tym module.
+
 client_title=Klient NIS
 client_header=Konfiguracja klienta NIS
 client_domain=Domena NIS
@@ -17,10 +18,12 @@ client_eserver='$1' nie jest poprawną nazwą serwera
 client_eypwhich=Nie udało się przyłączyć do domeny NIS
 client_ehosts='$1' nie jest poprawnym plikiem hostów
 client_enis=Wygląda na to, że obsługa klienta NIS nie jest zainstalowana.
+
 switch_title=Usługi klienckie
 switch_service=Usługa
 switch_srcs=Źródła danych
 switch_return=usług klienckich
+
 order_= 
 order_nisplus=NIS+
 order_nis=NIS
@@ -32,6 +35,7 @@ order_hesiod=Hesiod
 order_ldap=LDAP
 order_user=Drukarki użytkowników
 order_xfn=XFN
+
 server_title=Serwer NIS
 server_header=Opcje serwera NIS
 server_boot=Włączyć serwer NIS?
@@ -65,6 +69,7 @@ server_solaris=Uwaga - na Solarisie domena NIS dla klienta i serwera jest zawsz
 server_edir=Niepoprawny katalog plików źródłowych
 server_epwdir=Niepoprawny katalog plików źródłowych haseł
 server_enis=Wygląda na to, że w systemie nie zainstalowano obsługi serwera NIS.
+
 tables_title=Tabele NIS
 tables_switch=Zmień tebelę NIS :
 tables_header=Tabela $1 NIS z $2
@@ -81,6 +86,7 @@ tables_search=Szukaj
 tables_nomatch=Nie znaleziono pasujących rekordów
 tables_build=Przebuduj tabele NIS
 tables_buildmsg=Naciśnij ten przycisk, aby przebudować bazy NIS na podstawie stablicowanych danych. Jeśli dokonałeś jakichś zmian, będziesz musiał to  uczynić, aby te zmiany udostępnić klientom NIS.
+
 desc_aliases=Aliasy Sendmaila
 desc_mail=Aliasy Sendmaila
 desc_hosts=Adresy hostów
@@ -116,6 +122,7 @@ desc_printers=Drukarki
 desc_ipnodes=Węzły IP
 desc_timezone=Strefy czasowe
 desc_locale=Lokalizacje
+
 hosts_title=Adresy hostów
 hosts_ip=Adres IP
 hosts_name=Nazwa hosta
@@ -124,6 +131,7 @@ hosts_err=Nie udało sie zachować hosta
 hosts_eip=Nie podany lub niepoprawny adres IP
 hosts_ename=Nie podana lub niepoprawna nazwa hosta
 hosts_aliases=Aliasy
+
 group_name=Nazwa grupy
 group_gid=ID grupy
 group_members=Członkowie grupy
@@ -134,6 +142,7 @@ group_none=Hasło nie wymagane
 group_encrypted=Hasło uprzednio zaszyfrowane
 group_clear=Zwykłe hasło
 group_err=Nie udało sie zachować grupy
+
 passwd_name=Nazwa użytkownika
 passwd_uid=ID użytkownika
 passwd_real=Rzeczywista nazwa
@@ -171,6 +180,7 @@ passwd_emax=Niepoprawna maksymalna liczba dni
 passwd_emin=Niepoprawna minimalna liczba dni
 passwd_einactive=Niepoprawna liczba dni do zablokowania
 passwd_eexpiry=Niepoprawna data ważności
+
 services_name=Nazwa usługi
 services_proto=Protokół
 services_port=Port
@@ -179,6 +189,7 @@ services_header=Opcje usługi sieciowej inetd
 services_err=Nie udało się zachować usługi
 services_ename=Nie podana lub niepoprawna nazwa usługi
 services_eport=Nie podany lub niepoprawny port
+
 protocols_name=Nazwa protokołu
 protocols_number=Numer
 protocols_aliases=Aliasy
@@ -187,6 +198,7 @@ protocols_header=Opcje protokołu sieciowego
 protocols_err=Nie udało się zachować protokołu
 protocols_ename=Nie podana lub niepoprawna nazwa
 protocols_enumber=Nie podany lub niepoprawny numer
+
 netgroup_name=Nazwa grupy sieciowej
 netgroup_members=Członkowie
 netgroup_title=Grupa sieciowa
@@ -201,6 +213,7 @@ netgroup_ename=Nie podana lub niepoprawna nazwa grupy sieciowej
 netgroup_ehost=Nie podany lub niepoprawny host w wierszu $1
 netgroup_euser=Nie podany lub niepoprawny użytkownik w wierszu $1
 netgroup_edom=Nie podana lub niepoprawna domena NIS w wierszu $1
+
 ethers_mac=Adres ethernetowy
 ethers_ip=Adres IP
 ethers_title=Adres ethernetowy
@@ -208,6 +221,7 @@ ethers_header=Opcje mapowania ethernetowego
 ethers_err=Nie udało się zachować adresu ethernetowego
 ethers_emac=Niepoprawny adres ethernetowy
 ethers_eip=Niepoprawny adres IP
+
 rpc_name=Nazwa programu
 rpc_number=Numer
 rpc_aliases=Aliasy
@@ -216,6 +230,7 @@ rpc_header=Dane programu RPC
 rpc_err=Nie udało się zachować programu RPC
 rpc_ename=Nie podana lub niepoprawna nazwa programu
 rpc_enumber=Nie podany lub niepoprawny numer
+
 networks_title=Adres sieci
 networks_ip=Adres IP
 networks_name=Nazwa sieci
@@ -224,6 +239,7 @@ networks_err=Nie udało się zachować sieci
 networks_eip=Nie podany lub niepoprawny adres IP
 networks_ename=Nie podana lub niepoprawna nazwa
 networks_aliases=Aliasy
+
 netmasks_net=Adres sieci
 netmasks_mask=Maska sieci
 netmasks_title=Maska sieci
@@ -231,6 +247,7 @@ netmasks_header=Dane maski sieci
 netmasks_err=Nie udało się zachować maski sieci
 netmasks_enet=Nie podany lub niepoprawny adres sieci
 netmasks_emask=Nie podana lub niepoprawna maska
+
 aliases_from=Adres
 aliases_to=Kieruj do
 aliases_title=Alias Sendmaila
@@ -238,6 +255,7 @@ aliases_header=Dane aliasu Sendmaila
 aliases_err=Nie udało się zachować aliasu
 aliases_efrom=Nie podany lub niepoprawny adres
 aliases_eto=Nie podany adres docelowy
+
 security_title=Zabezpieczenia serwera
 security_header=Opcje zabezpieczeń serwera NIS
 security_ok=Zachowaj i zastosuj
@@ -266,6 +284,7 @@ security_sec_des=Wymagaj DES-a
 security_ehost='$1' nie jest poprawną nazwą hosta
 security_emap='$1' nie jest porawną tabelą NIS
 security_efield='$1' nie jest poprawnym numerem pola
+
 eswitch_title=Edytuj usługę
 eswitch_egone=Usługa nie istnieje!
 eswitch_header=Szczegóły usługi

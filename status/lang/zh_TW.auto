@@ -7,6 +7,7 @@ index_refsel=刷新所選
 index_group=$1的成員
 index_tmpls=編輯電子郵件模板
 index_tmplsdesc=查看和編輯用於構造受監視服務中斷時發送的電子郵件的模板。
+
 type_sslcert=SSL證書
 type_ftp=遠程FTP服務
 type_fail2ban=Fail2Ban服務器
@@ -25,6 +26,8 @@ type_alive=生存系統
 type_rssh=遠程SSH
 type_slapd=LDAP服務器
 type_ldap=LDAP連接
+
+mon_virtualmin=警告！該監視器與Virtualmin域 $1相關聯，因此不應在此處進行編輯或刪除。
 mon_header2=運行命令
 mon_header3=監控服務選項
 mon_remotes2=在主機和組上運行
@@ -59,6 +62,7 @@ mon_changes0=顯示每種事件類型
 mon_changes1=僅顯示更改
 mon_all=顯示所有歷史事件
 mon_nochanges=最近 $1個歷史事件未發生狀態更改。
+
 sched_pnone=不發送頁面
 sched_eemailserver=您的郵件服務器未安裝： $1
 sched_sms=發送短信給
@@ -72,13 +76,16 @@ sched_subject0=無（警報在體內）
 sched_subject1=警報文本（將正文留空）
 sched_subject2=自訂文字
 sched_esubject=缺少短信主題
+
 http_regexp=頁面必須與正則表達式匹配
 http_eregexp=沒有用於匹配頁面的正則表達式
 http_none2=不匹配
 http_ehead=檢查正則表達式時，無法使用HEAD請求方法
+
 proc_asuser=以用戶身份運行
 proc_anyuser=任何使用者
 proc_easuser=進程運行用戶不存在
+
 exec_mode=退出狀態檢查
 exec_mode0=如果命令失敗，則失敗監視器
 exec_mode1=如果命令成功，則監視失敗
@@ -88,6 +95,7 @@ exec_noregexp=不要檢查
 exec_remode=正則表達式檢查
 exec_remode0=如果輸出不匹配則失敗
 exec_remode1=如果輸出匹配則失敗
+
 file_elarge=文件太大： $1
 file_esmall=文件太小： $1
 file_eowner=具有錯誤所有者的文件： $1
@@ -97,6 +105,7 @@ file_group=文件組必須為
 file_nocheck=任何東西
 file_perms=八進制權限必須為
 file_eperm=權限錯誤的文件： $1
+
 space_min2=最小可用空間
 space_mode0=絕對尺寸
 space_mode1=佔總數的百分比
@@ -106,12 +115,14 @@ space_ierr=僅可用 $1個inode
 space_merr=僅剩 $1空間
 space_perr=只有 $1％免費
 space_dferr=無法獲取文件系統大小
+
 log_deletes=已刪除 $1台監視器
 log_tmpl_create=已創建電子郵件模板 $1
 log_tmpl_modify=修改後的電子郵件模板 $1
 log_tmpl_delete=刪除的電子郵件模板 $1
 log_tmpl_deletes=已刪除 $1電子郵件模板
 log_refresh=刷新監視器狀態
+
 memory_min2=最小可用實內存
 memory_free2=$1的實際內存可用
 memory_freeswap=$1可用虛擬內存
@@ -119,19 +130,24 @@ memory_freelow=只有 $1的實際內存可用
 memory_freelowswap=僅可用 $1虛擬內存
 memory_minswap=最小可用虛擬內存
 memory_eminswap=可用虛擬內存不足或無效
+
 raid_device=RAID設備
 raid_edevice=未選擇RAID設備
 raid_bad=檢測到錯誤的磁盤
 raid_resync=目前正在重新同步
 raid_notfound=找不到RAID設備 $1
 raid_other=其他 ..
+
 iface_iface=檢查界面
+
 init_action=檢查動作
 init_eaction=未選擇任何動作
+
 refresh_title=刷新狀態
 refresh_doing=刷新所有監視器的狀態。
 refresh_doing2=刷新 $1所選監視器的狀態。
 refresh_done=..完成。
+
 sensors_name=傳感器檢查
 sensors_value=失敗時
 sensors_value0=系統顯示警告
@@ -142,6 +158,7 @@ sensors_none=在您的系統上未檢測到傳感器。您可能需要運行<tt>
 sensors_cur=$1（當前為 $2 $3）
 sensors_emin=最小值缺失或無效
 sensors_emax=最大值缺失或無效
+
 nut_ups=NUT UPS檢查
 nut_name=要檢查的屬性
 nut_value=失敗時
@@ -152,6 +169,7 @@ nut_eups=沒有USP要檢查
 nut_cur=$1（當前為 $2）
 nut_emin=最小值缺失或無效
 nut_emax=最大值缺失或無效
+
 mailq_system=郵件服務器
 mailq_qmailadmin=郵箱
 mailq_postfix=後綴
@@ -160,6 +178,7 @@ mailq_size=最大郵件隊列大小
 mailq_esize=最大隊列大小丟失或無效
 mailq_toomany=關閉- $1郵件已排隊
 mailq_ok=向上- $1郵件已排隊
+
 dns_server=DNS服務器
 dns_host=要查找的主機名
 dns_address=預期的IP地址
@@ -167,6 +186,7 @@ dns_eserver=DNS服務器丟失或無效
 dns_ehost=查找的主機名丟失或外觀無效
 dns_eaddress=預期IP地址缺失或無效
 dns_ecmds=系統上未安裝<tt>nslookup</tt>或<tt>dig</tt>命令
+
 monitor_sub_down=$1低於 $2
 monitor_pager_down=$1：“$2”下降了 $3
 monitor_snmp_down=$1:$2
@@ -198,8 +218,10 @@ monitor_run1=在 $2上運行 $1 ..
 monitor_run2=正在運行 $1 ..
 monitor_runerr=無法在 $2上運行 $1 : $3
 monitor_email_stat=當前狀態： $1
+
 deletes_egone=選定的監視器之一不再存在
 deletes_enone=未選擇監視器
+
 ftp_host=FTP服務器主機
 ftp_port=FTP端口
 ftp_user=以用戶身份登錄
@@ -216,6 +238,7 @@ ftp_econn=TLS FTP連接失敗
 ftp_econn2=TLS FTP連接失敗： $1
 ftp_elogin=TLS FTP登錄失敗： $1
 ftp_etlsfile=TLS FTP下載失敗： $1
+
 query_driver=SQL數據庫類型
 query_db=數據庫名稱
 query_host=數據庫服務器主機
@@ -236,9 +259,12 @@ query_elogin=登錄失敗： $1
 query_eprepare=SQL錯誤： $1
 query_eexecute=SQL失敗： $1
 query_ewrong=錯誤的結果： $1
+
 consume_rate=最大消耗率（每秒）
 consume_high=消耗率為 $1 /秒
+
 alive_up=最多 $1
+
 rssh_host=SSH服務器主機
 rssh_ruser=以用戶身份登錄
 rssh_rpass=用密碼登錄
@@ -254,6 +280,7 @@ rssh_error=SSH錯誤
 rssh_haspass=密碼
 rssh_port=SSH服務器端口
 rssh_eport=端口號缺失或無效
+
 tmpls_title=電子郵件範本
 tmpls_ecannot=您無權編輯電子郵件模板
 tmpls_none=尚未定義電子郵件模板。所有警報將使用Webmin默認消息發送。
@@ -262,6 +289,7 @@ tmpls_email=電郵訊息
 tmpls_add=添加新的電子郵件模板。
 tmpls_return=模板清單
 tmpls_delete=刪除所選模板
+
 tmpl_title1=創建電子郵件模板
 tmpl_title2=編輯電子郵件模板
 tmpl_header=警報電子郵件模板消息
@@ -286,9 +314,11 @@ tmpl_esms=缺少短信
 tmpl_esnmp=缺少SNMP消息
 tmpl_err2=刪除電子郵件模板失敗
 tmpl_eusers=以下監視器正在使用它： $1
+
 dtmpls_err=刪除模板失敗
 dtmpls_enone=未選擇
 dtmpls_eusers=以下監視器正在使用 $1 : $2
+
 sslcert_src=證書位置
 sslcert_url=從HTTPS URL
 sslcert_file=來自服務器上的文件
@@ -306,18 +336,21 @@ sslcert_eend=$1之後無效
 sslcert_left=上-到期前 $1天
 sslcert_ematch=主機名 $1與證書 $2不匹配
 sslcert_emismatch=證書主機名檢查只能在檢查URL時使用
+
 du_dir=監控目錄
 du_max=最大尺寸
 du_edir=缺少或非絕對目錄路徑
 du_emax=最大大小缺失或非數字
 du_over=大小為 $1
 du_under=大小僅為 $1
+
 ldap_edriver=未安裝Perl模塊 $1
 ldap_host=LDAP服務器主機名
 ldap_port=LDAP服務器端口
 ldap_ssl=使用SSL連接？
 ldap_user=LDAP服務器登錄
 ldap_pass=LDAP服務器密碼
+
 info_desc=系統監控器
 info_last=當前狀態
 info_title=系統和服務器狀態

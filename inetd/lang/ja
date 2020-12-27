@@ -9,6 +9,7 @@ index_rpc=RPC プログラム
 index_newrpc=新規 RPC プログラムの作成
 index_apply=変更を適用
 index_applymsg=実行中の<tt>inetd</tt> プロセスに SIGHUP 信号を送信して現在の設定を適用するには、このボタンをクリックしてください。
+
 error_restart=Inetd を再起動できませんでした
 error_saverpc=RPC プログラムを保存できませんでした
 error_invalidprgname='$1' は無効なプログラム名です
@@ -34,6 +35,7 @@ error_childnum=分単位の最大値を指定した場合は、子の処理数�
 error_serviceexist=ポート $1 とプロトコル $2 を使用したサービスはすでに存在します
 error_nameexist=名前 $1 とプロトコル $2 を使用したサービスはすでに存在します
 error_inetservice=名前 $1 とプロトコル $2 を使用したインターネット サービスはすでに存在します
+
 editrpc_title1=RPC プログラムの作成
 editrpc_title2=RPC プログラムの編集
 editrpc_detail=RPC プログラムの詳細
@@ -56,6 +58,7 @@ editrpc_execasuser=次のユーザとして実行
 editrpc_max=分単位の最大値
 editrpc_default=デフォルト
 editrpc_execasgrp=次のグループとして実行
+
 editserv_title1=インターネット サービスの作成
 editserv_title2=インターネット サービスの編集
 editserv_detail=インターネット サービスの詳細
@@ -67,6 +70,7 @@ editserv_maxchild=子処理最大値
 editserv_execlogin=ログイン クラスとして実行
 editserv_wrapper=TCP ラッパー
 editserv_inetd=inetd<tt>経由</tt>
+
 log_apply=変更を適用しました
 log_create_serv=サービス $1 を作成しました
 log_modify_serv=サービス $1 を変更しました
@@ -80,6 +84,7 @@ log_delete_serv_l=ポート $2 上のサービス $1 を削除しました
 log_create_prog_l=ポート $2上のプログラム $3 用サービス $1 を作成しました
 log_modify_prog_l=ポート $2上のプログラム $3 用サービス $1 を変更しました
 log_delete_prog_l=ポート $2上のプログラム $3 用サービス $1 を削除しました
+
 log_create_rpc=RPC $1 を作成しました
 log_modify_rpc=RPC $1 を変更しました
 log_delete_rpc=RPC $1 を削除しました

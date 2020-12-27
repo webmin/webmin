@@ -30,6 +30,7 @@ index_return=zoznam zón
 index_ezones=Nenašli sa žiadne zóny FirewallD!
 index_none=Táto zóna zatiaľ nemá povolené prístavy ani služby.
 index_ifaces=Použiť pravidlá na rozhrania:
+
 port_edit=Upraviť port
 port_create=Pridať port
 port_header=Povolené možnosti portu
@@ -45,11 +46,13 @@ port_eport=Chýbajúce alebo neplatné číslo alebo názov portu
 port_eportlow=Nízky port musí byť číslo
 port_eporthigh=Vysoký port musí byť číslo
 port_eportrange=Nízky port musí byť pod vysokým portom
+
 serv_edit=Upraviť službu
 serv_create=Pridajte službu
 serv_header=Povolené možnosti služieb
 serv_name=Služba povolená
 serv_err=Nepodarilo sa uložiť službu
+
 forward_edit=Upraviť vpred
 forward_create=Vytvoriť vpred
 forward_header=Možnosti presmerovania portov
@@ -61,10 +64,13 @@ forward_dstaddr=Cieľová adresa
 forward_dstlocal=Tento systém
 forward_edstaddr=Neplatná cieľová adresa IPv4
 forward_eneither=Musíte zadať cieľovú adresu alebo prístav alebo oboje
+
 check_ecmd=Vo vašom systéme sa nenašiel riadiaci príkaz FirewallD $1 
+
 delete_err=Nepodarilo sa odstrániť pravidlá
 delete_enone=Žiadne vybraté!
 delete_edel=Odstránenie $1 zlyhalo : $2 
+
 zone_title=Vytvorenie zóny
 zone_header=Nové možnosti zóny
 zone_name=Názov zóny
@@ -77,12 +83,16 @@ zone_mode4=Porty používané na virtuálny hosting
 zone_err=Zónu sa nepodarilo vytvoriť
 zone_ename=Chýba alebo je neplatný názov zóny
 zone_eclash=Zóna s rovnakým názvom už existuje
+
 delzone_title=Odstrániť zónu
 delzone_err=Zónu sa nepodarilo odstrániť
 delzone_edefault=Predvolenú zónu nie je možné odstrániť
 delzone_rusure=Naozaj chcete odstrániť zónu $1, ktorá obsahuje $2 porty a služby $3 ?
+
 defzone_err=Zónu sa nepodarilo nastaviť ako predvolenú
+
 restart_err=Nepodarilo sa použiť konfiguráciu
+
 stop_err=FirewallD sa nepodarilo zastaviť
 start_err=Nepodarilo sa spustiť FirewallD
 log_stop=Zastavená brána firewallD

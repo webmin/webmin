@@ -16,6 +16,7 @@ index_setupdesc=LDAPサーバーのデータベースにはルートDN $1がま�
 index_setup=ルートDNを作成
 index_permsdesc=LDAPサーバーのデータディレクトリ $1には、正しいユーザー $2が所有していないファイルが含まれています。これは、適切に起動する可能性が低いことを意味します。ただし、Webminは、下のボタンをクリックしてこれを修正できます。
 index_perms=所有権を修正
+
 connect_eserver=LDAPサーバー $1は存在しません
 connect_euser=構成済みのユーザーはログインできません
 connect_epass=ログインするためのパスワードが設定されていません
@@ -28,6 +29,7 @@ connect_eldap=ポート $2でLDAPサーバー $1に接続できませんでし�
 connect_essl=LDAPサーバー $1でTLS暗号化を開始できませんでした： $2
 connect_elogin=LDAPサーバー $1に $2としてログインできませんでした： $3
 connect_cpan=CPANから<tt>$1</tt> Perlモジュール<a href='$2'>自動的にインストール</a>することができます。
+
 slapd_title=OpenLDAPサーバーの構成
 ldif_title=OpenLDAPサーバーの構成
 slapd_header=グローバルLDAPサーバーオプション
@@ -76,6 +78,7 @@ slapd_protos=受け入れるLDAP接続
 slapd_ldap=ネットワーク上のLDAP
 slapd_ldaps=LDAP over SSL
 slapd_ldapi=Unixソケットファイル
+
 schema_title=スキーマを管理する
 schema_file=名前
 schema_desc=説明
@@ -93,6 +96,7 @@ schema_edesc=このページでは、LDAPスキーマファイルを手動で編
 schema_return=スキーマリスト
 schema_emove=移動するスキーマファイルが見つかりませんでした！
 schema_ecannot=LDAPスキーマを管理することは許可されていません
+
 acl_title=LDAPアクセス制御
 acl_ecannot=LDAPアクセス制御を構成することはできません
 acl_what=オブジェクト
@@ -103,6 +107,7 @@ acl_none=アクセス制御ルールはまだ定義されていません。 LDAP
 acl_delete=選択したルールを削除
 acl_add=新しいアクセス制御ルールを追加します。
 acl_return=アクセス制御規則
+
 browser_title=データベースを閲覧する
 browser_econn=LDAPブラウザーを使用できません： $1
 browser_ecannot=LDAPデータベースの閲覧は許可されていません
@@ -136,24 +141,30 @@ browser_nomatch=$1の検索に一致するオブジェクトはありません�
 browser_search=一致するオブジェクトを検索：
 browser_search2=一致するオブジェクトの表示：
 browser_sok=探す
+
 save_err=属性を変更できませんでした
 save_ebase=データベースからオブジェクト $1をフェッチできませんでした
 save_emodify=$1の $2のLDAP変更に失敗しました： $3
 save_enone=値が入力されていません
+
 add_err=属性を追加できませんでした
 add_eadd=属性名が欠落しているか無効です
 add_evalue=欠損値
 add_emodify=$1への $2のLDAP追加に失敗しました： $3
+
 delete_err=属性を削除できませんでした
 delete_enone=何も選択されていません
 delete_emodify=$1からの $2のLDAP削除に失敗しました： $3
+
 sdelete_err=オブジェクトを削除できませんでした
 sdelete_edn=オブジェクト $1が見つかりませんでした
 sdelete_edel=$1のLDAP削除に失敗しました： $2
+
 rename_err=オブジェクトの名前を変更できませんでした
 rename_eget=DN $1のオブジェクトが見つかりませんでした
 rename_enew=新しい名前は有効ではないようです
 rename_erename=$1から $2へのLDAP newdnが失敗しました： $3
+
 oadd_title=オブジェクトを作成
 oadd_header=新しいLDAPオブジェクトの詳細
 oadd_base=親オブジェクトDN
@@ -170,6 +181,7 @@ oadd_eget2=$1との衝突を確認できませんでした： $2
 oadd_eclash=DN $1のオブジェクトは既に存在します
 oadd_eadd=$1のLDAP追加に失敗しました： $2
 oadd_err=新しいオブジェクトを作成できませんでした
+
 create_title=ツリーを作成
 create_ecannot=新しいツリーを作成することはできません
 create_desc=このページは、データベースの新しいツリーのベースとなるDNを作成する便利な方法を提供しました。また、独自のオブジェクトのテンプレートとして、ツリーの下にサンプルユーザーまたは電子メールエイリアスを作成することもできます。
@@ -191,18 +203,23 @@ create_done=..完了
 create_doingex=DN $1のサンプルオブジェクトの作成 ..
 create_edoingex=..失敗しました： $1。ただし、ツリーは引き続き使用できます。
 create_eoc=新しいDNに適したオブジェクトクラスが見つかりませんでした
+
 eunknown=不明なエラー
+
 apply_err=構成を適用できませんでした
 apply_ecmd=$1が失敗しました： $2
 apply_ecannot=構成を適用することはできません
+
 stop_err=LDAPサーバーを停止できませんでした
 stop_ecmd=$1が失敗しました： $2
 stop_egone=もう走っていない！
 stop_ekill=プロセスの強制終了に失敗しました： $1
 stop_ecannot=LDAPサーバーを停止することはできません
+
 start_err=LDAPサーバーの起動に失敗しました
 start_ecmd=$1が失敗しました： $2
 start_ecannot=LDAPサーバーを起動することはできません
+
 log_create_dn=作成されたオブジェクト $1
 log_delete_dn=削除されたオブジェクト $1
 log_rename_dn=オブジェクト $1の名前を変更しました
@@ -234,6 +251,7 @@ log_up_access=$1のアクセス制御ルールを上に移動しました
 log_down_access=$1のアクセス制御ルールを下に移動しました
 log_delete_accesses=$1アクセス制御ルールを削除しました
 log_all=すべてのオブジェクト
+
 gencert_title=SSL証明書を生成する
 gencert_header=新しいSSL証明書の詳細
 gencert_create=証明書を作成
@@ -245,7 +263,9 @@ gencert_dir=ディレクトリ
 gencert_err=証明書を生成できませんでした
 gencert_edest=宛先ディレクトリが存在しません
 gencert_epath=LDAPサーバー構成の証明書およびキーファイルは絶対パスである必要があります
+
 perms_err=ファイルの所有権を修正できませんでした
+
 acl_slapd=LDAPサーバーを構成できますか？
 acl_ldif=LDAPサーバーを構成できますか？
 acl_schema=スキーマを管理できますか？
@@ -254,6 +274,7 @@ acl_browser=データベースを閲覧および編集できますか？
 acl_create=新しいツリーを作成できますか？
 acl_start=LDAPサーバーを起動および停止できますか？
 acl_apply=構成の変更を適用できますか？
+
 access_desc=$1による $2
 access_self=自己
 access_users=認証されたユーザー
@@ -273,6 +294,7 @@ access_lcompare=比較する
 access_lsearch=探す
 access_lread=読んだ
 access_lwrite=書く
+
 eacl_title1=アクセス制御ルールを作成する
 eacl_title2=アクセス制御ルールの編集
 eacl_header=LDAPデータベースアクセス制御ルールの詳細

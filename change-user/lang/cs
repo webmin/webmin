@@ -16,6 +16,7 @@ index_d1=$1
 index_dlang=jazyk, ve kterém se budou zobrazovat moduly
 index_dtheme=motiv, který je využíván v rozhraní Webminu
 index_dpass=heslo, používané pro přihlášení
+
 change_title=Mění se nastavení
 change_user=Modifikuje se přihlašování do Webminu ..
 change_done=.. hotovo
@@ -23,6 +24,7 @@ change_restart=Restartuje se Webmin ..
 change_redirect=dochází k přesměrování do hlavního menu ..
 change_ecolon=Vaše heslo nemůže obsahovat znak :
 change_epass=Nové heslo není platné : $1
+
 acl_lang=Lze změnit jazyk?
 acl_theme=Lze změnit motiv?
 acl_pass=Lze změnit heslo (je-li to v rámci Webminu nastavené)?

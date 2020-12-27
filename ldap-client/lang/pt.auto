@@ -14,6 +14,7 @@ index_restart=Reinicie o daemon do cliente LDAP
 index_restartdesc=Aplique a configuração atual reiniciando o daemon do cliente LDAP local.
 index_atboot=Iniciar cliente LDAP na inicialização
 index_atbootdesc=Altera se o daemon do cliente LDAP é iniciado quando o sistema é inicializado ou não.
+
 server_title=Configuração do servidor LDAP
 server_header=Servidor LDAP e opções de login
 server_host=Nomes de host do servidor LDAP
@@ -51,6 +52,7 @@ server_etimelimit=Tempo limite de conexão ausente ou inválido
 server_ecacert=Arquivo de certificado CA ausente ou inválido
 server_euport=Porta ausente ou inválida para o servidor $1 
 server_euri=Nenhum servidor LDAP inserido
+
 base_title=Bases de pesquisa LDAP
 base_header=Locais de pesquisa de diretório LDAP
 base_base=Base de pesquisa global
@@ -86,6 +88,7 @@ base_enetmasks=Base ausente para nomes de máscara de rede
 base_ealiases=Base ausente para aliases de email
 base_enetgroup=Base ausente para grupos de rede
 base_etimelimit=Tempo limite de pesquisa ausente ou inválido
+
 pam_title=Opções de autenticação
 pam_header=Configurações de autenticação e senha do PAM
 pam_filter=Filtro LDAP adicional
@@ -106,10 +109,12 @@ pam_efilter=Filtro LDAP adicional ausente
 pam_elogin=Atributo LDAP ausente ou inválido para o nome de usuário
 pam_egroupdn=Grupo LDAP ausente para forçar a associação a
 pam_emember=Atributo LDAP ausente ou inválido para membros do grupo
+
 switch_title=Serviços usando LDAP
 switch_service=Serviço
 switch_srcs=Fontes de dados
 switch_return=serviços usando LDAP
+
 ldap_emodule=O módulo $1 Perl necessário para conversar com o servidor LDAP não está instalado. <a href='$2'>Clique aqui</a> para que o Webmin faça o download e instale-o agora.
 ldap_emodule2=O módulo $1 Perl necessário para conversar com o servidor LDAP não está instalado.
 ldap_econf=O arquivo de configuração do cliente LDAP $1 não foi encontrado no seu sistema
@@ -119,6 +124,7 @@ ldap_elogin=Falha ao ligar ao servidor LDAP $1 como $2 : $3
 ldap_anon=anônimo
 ldap_eparse=Não foi possível analisar o URI do servidor LDAP $1 
 ldap_etls=Falha ao alternar para o modo TLS : $1 
+
 browser_title=Navegador LDAP
 browser_econn=O navegador LDAP não pode ser usado : $1 
 browser_base=Navegando:
@@ -129,6 +135,7 @@ browser_attrs=Atributos do objeto
 browser_parent=Procurar Pai
 browser_none=Nenhum
 browser_sel=Está bem
+
 order_nisplus=NIS +
 order_nis=NIS
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=Impressoras de usuário
 order_xfn=XFN
 order_mdns4=DNS multicast
 order_mdns4_minimal=DNS multicast (mínimo)
+
 desc_aliases=Aliases do Sendmail
 desc_mail=Aliases do Sendmail
 desc_hosts=Endereços de host
@@ -177,6 +185,7 @@ desc_printers=Impressoras
 desc_ipnodes=Nós IP
 desc_timezone=Fusos horários
 desc_locale=Localidades
+
 eswitch_title=Serviço de edição
 eswitch_egone=O serviço não existe!
 eswitch_header=Detalhes do serviço
@@ -196,6 +205,7 @@ eswitch_continue=Continuar a pesquisa
 eswitch_none=Nenhum
 eswitch_err=Falha ao salvar o serviço
 eswitch_enone=Nenhuma fonte selecionada!
+
 log_server=Configuração do servidor LDAP modificada
 log_base=Bases de pesquisa LDAP modificadas
 log_pam=Opções de autenticação modificadas
@@ -205,6 +215,7 @@ log_delboot=Daemon do cliente LDAP desativado no momento da inicialização
 log_start=Daemon do cliente LDAP iniciado
 log_stop=Daemon do cliente LDAP parado
 log_restart=Daemon do cliente LDAP reiniciado
+
 check_title=Validando a configuração LDAP
 check_base=Localizando a base LDAP para os usuários.
 check_ebase=.. não encontrado com base na configuração do cliente!

@@ -14,6 +14,7 @@ index_ro_rw=všichni hostitelé přístup pro čtení, vybraní hostitelé pří
 index_sel_rw=vybraní hostitelé mají přístup k zápisu
 index_all_rw=přístup ke všem hostům
 index_sel_root=vybraní hostitelé root přístup
+
 edit_title=Upravit export
 create_title=Vytvořit export
 edit_details=Exportovat podrobnosti
@@ -56,6 +57,7 @@ edit_anon_access=Anonymní uživatel
 edit_anon_notset=Nenastaveno
 edit_anon_noaccess=Žádný přístup
 edit_async=Asynchronní zápisy
+
 save_err=Export se nepodařilo uložit
 save_edir=Adresář '$1' neexistuje
 save_enetgroup=Neplatná nebo chybějící síť
@@ -65,6 +67,7 @@ save_ehost='$2' - '$1' není platné jméno hostitele
 save_enohost='$1' - Neuvedli jste žádného hostitele
 save_euids=UID, kterým nedůvěřují, musí být seznam čísel nebo rozsahů oddělených čárkami
 save_egids=GID, kterým nedůvěřujte, musí být seznam čísel nebo rozsahů oddělených čárkami
+
 log_modify=Upravený export NFS $1 
 log_modify_l=Upravený export NFS $1 do $2 
 log_delete=Odstraněn export NFS $1 

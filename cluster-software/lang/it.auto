@@ -21,6 +21,7 @@ index_thost=Nome host
 index_tdesc=Descrizione
 index_tcount=Pacchetti
 index_ttype=Tipo di sistema operativo
+
 install_err=Impossibile installare il pacchetto
 install_elocal=Nessun file locale fornito
 install_elocal2='$1' non esiste
@@ -37,6 +38,7 @@ install_ok=Installare
 install_erus=Questo server utilizza un sistema di aggiornamento diverso dal server principale ($1 contro $2)
 install_eupdate=Si è verificato un errore durante l'installazione degli aggiornamenti specificati
 install_ealready=La versione $1 è già installata
+
 add_title=Aggiungi server
 add_msg=Aggiunta di $1 ..
 add_gmsg=Aggiunta di server nel gruppo $1 ..
@@ -45,6 +47,7 @@ add_gerr=Impossibile aggiungere il gruppo
 add_echeck=Il server $1 non ha il modulo pacchetti software
 add_esystem=Il server $1 non utilizza lo stesso sistema di pacchetti di questa macchina
 add_ok=Aggiunto $1 con $2 pacchetti.
+
 search_title=Ricerca pacchetto
 search_nomatch=Nessun pacchetto corrisponde a $1 
 search_none=Nessuna
@@ -56,6 +59,7 @@ search_return=risultati di ricerca
 search_delete=Disinstalla i pacchetti selezionati da:
 search_selall=Seleziona tutto
 search_invert=Inverti selezione
+
 host_title=Server gestito
 host_header=Dettagli del server gestito dal software
 host_name=Nome host
@@ -70,6 +74,7 @@ host_count=Pacchetti installati
 host_os=Sistema operativo da Webmin
 host_return=dettagli del server
 host_system=Sistema di pacchetto
+
 edit_title=Modifica pacchetto
 edit_details=Dettagli del pacchetto da $1 
 edit_desc=Descrizione
@@ -88,6 +93,7 @@ edit_all=&lt;tutti gli host&gt;
 edit_donthave=&lt;host che non ce l'hanno&gt;
 edit_have=&lt;host che ce l'hanno&gt;
 edit_group=Membri di $1 
+
 list_title=File del pacchetto
 list_files=File per il pacchetto $1 su $2 
 list_path=Sentiero
@@ -97,6 +103,7 @@ list_type=genere
 list_size=Taglia
 list_status=Stato
 list_ok=ok
+
 refresh_title=Aggiorna gli elenchi dei pacchetti
 refresh_header=Richiesta di nuovi elenchi di pacchetti da tutti i server.
 refresh_header4=Richiesta di nuovi elenchi di pacchetti dai membri di $2 ..
@@ -108,6 +115,7 @@ refresh_4=$1 aggiornato (nessuna modifica)
 refresh_done=.. fatto
 refresh_del=$1 rimosso dall'elenco dei server
 refresh_failed=Impossibile aggiornare $1 : $2 
+
 delete_err=Impossibile eliminare il pacchetto $1 
 delete_epack=Il pacchetto $1 non esiste
 delete_title=Elimina pacchetto
@@ -120,6 +128,7 @@ delete_error=Impossibile eliminare da $1 : $2
 delete_success=Eliminato da $1.
 delete_done=.. fatto
 delete_header=Eliminazione del pacchetto $1 ..
+
 do_title=Installa pacchetto
 do_header=Installazione di $1 su tutti gli host ..
 do_header3=Installazione di $1 su host che non lo hanno ancora ..
@@ -140,6 +149,7 @@ do_arch=Architettura
 do_inst=installato
 do_none=Nessuna
 do_edeleted=Il file di installazione è stato eliminato: tornare all'indice del modulo e riprovare.
+
 compare_title=Confronta i pacchetti
 compare_desc=Questo modulo può essere utilizzato per confrontare i pacchetti installati su due o più server e trovare eventuali discrepanze tra le versioni o i pacchetti disponibili.
 compare_hosts=Server da confrontare
@@ -154,6 +164,7 @@ compare_showall=Pacchetti da mostrare
 compare_showall1=Tutti
 compare_showall0=Solo discrepanze
 compare_got=ok
+
 deletes_err=Impossibile eliminare i pacchetti
 deletes_enone=Nessun pacchetto selezionato
 deletes_title=Elimina pacchetti

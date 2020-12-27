@@ -24,6 +24,7 @@ index_when=Evet, $1
 index_webalizer=Webalizer
 index_enable=Seçili Olanı Planla
 index_disable=Seçili Olanıda Planı Kaldır
+
 edit_title1=Log Dosyası Ekle
 edit_title2=Log Dosyası Düzenle
 edit_header=Log dosyası rapor seçenekleri
@@ -47,12 +48,14 @@ edit_cmode0=Global seçenekleri kullan
 edit_cmode1=Özgün seçenekler
 edit_cmode2=Diğer konfigürasyon dosyası ..
 edit_clear=Planlı raporlama sonrası log dosyalarını sil?
+
 gen_title=Rapor Oluşturma
 gen_header=$1 raporunu oluşturmak için Webalizer çalıştırılıyor..
 gen_done=.. tamamlandı
 gen_failed=.. Webalizer başarısız! Detay için yukarıdaki açıklamaya bakınız.
 gen_nothing=.. Webalizer görevi tamamlandı, ama herhangi bir rapor oluşturalamadı.Detay için yukarıdaki açıklamaya bakınız.
 gen_view=Tamamlanmış raporu inceleyin.
+
 save_err=Log dosyası kayıt edilemedi
 save_efile=Herhangi bir log dosyası belirlenmedi veya mevcut değil
 save_ecfile=Eksik diğer configürasyon dosyası
@@ -62,12 +65,14 @@ save_ewuser=$1 diye bir unix kullanıcısı yok
 save_ehost=Eksik veya geçersiz websitesi makinismi
 save_etitle=Eksik rapor başlığı
 save_ecannot= Yalnızca $1 klasörü altındaki log dosyaları için rapor düzenleyebilirisiniz
+
 view_epath=Geçersiz PATH_INFO
 view_efile=Geçersiz rapor dosyaismi
 view_elog=Geçersiz log dosyası
 view_ecannot=Bu raporu inceleme yetkiniz yok
 view_eopen=Rapor dosyası açılamadı
 view_title=Rapor İncele
+
 global_title=Global Webalizer Seçenekleri
 global_title2=Webalizer Rapor Seçenekleri
 global_for=$1 log dosyası için
@@ -128,6 +133,7 @@ global_includesite=Ziyaretçileri yoksayma
 global_includereferrer=Yönlendiricileri yoksayma
 global_includeuser=Kullanıcıları yoksayma
 global_includeagent=Tarayıcıları yoksayma
+
 global_err=Webalizer seçenekleri kayıt edilemedi
 global_ereport=Eksik rapor başlık öneki
 global_ehost=Eksik veya geçersiz makina ismi
@@ -137,6 +143,7 @@ global_etable=Eksik veya geçersiz '$1' tablo boyutu
 global_ehistory=Eksik veya geçersiz geçmiş dosyası ismi
 global_ecurrent=Eksik veya geçersiz Webalizer dosyası
 global_ecache=Eksik veya geçersiz DNS biriktirme dosyası
+
 log_create_log=$1	için rapor yaratıdı
 log_modify_log=$1 için rapor güncellendi
 log_delete_log=$1 için rapor silindi
@@ -145,6 +152,7 @@ log_global=Güncellenmiş global Webalizer seçenekleri
 log_global2=$1 için güncellenmiş Webalizer secenekleri
 log_enable_logs=$1 logları için planlı raporlama aktif
 log_disable_logs=$1 logları için planlı raporlama pasif
+
 acl_view=Yalnızca mevcut raporları inceleyebilir?
 acl_global=Webalizer seçeneklerini düzenleyebilir?
 acl_dir=Bu dosya altındaki log dosyalarını inceleyebilir ve düzenleyebilir

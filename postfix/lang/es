@@ -1,5 +1,6 @@
 index_title=Agente de Correo Postfix
 index_epath=El comando de control de Postfix $1 no está instalado en tu sistema. Quizás tu <a href='$2'>configuración del módulo</a> sea incorrecta o postfix no está instalado.
+
 internal_error=Error Interno
 index_econfig=El comando $1 de configuración de Postfix no existe. Quizás tu <a href='$2'>configuración del módulo</a> es incorrecta.
 index_stop=Parar Postfix
@@ -7,7 +8,9 @@ index_start=Arrancar Postfix
 index_stopmsg=Haz click en este botón para parar el servidor de correo Postfix en curso. Esto hará que no se entregue correo a usuarios locales desde otros sistemas y prevendrá que los clientes, que usen este sistema como servidor de correo, envíen correo.
 index_startmsg=Haz click en este botón para arrancar el servidor de correo Postfix. Hasta que esto se haya realizado, el correo no será entregado a los usuarios locales desde otros sistemas y los clientes no podrán utilizar este sistema como servidor de correo.
 opts_err=No pude salvar las opciones
+
 check_error=Error al revisar la configuración de Postfix en curso. Por favor, arregla manuálmente la configuración de Postfix.
+
 address_rewriting_title=Reescritura de Dirección y Enmascaramiento
 address_rewriting_ecannot=No estás autorizado a editar la reescritura de dirección y enmascaramiento
 aliases_title=Aliases de Correo
@@ -24,11 +27,13 @@ alias_save_err=No pude salvar alias
 alias_delete_create=¿¡Deseas borrar un alias que estás creando ahora!?
 delete_alias=Borrar Alias
 aliases_click=Haz click en cualquier alias para editar sus propiedades
+
 general_title=Opciones Generales
 general_title_sensible=Opciones Generales más Útiles
 general_title_others=Otras Opciones Generales
 general_ecannot=No estás autorizado a editar Opciones Generales
 what_is_it=¿Qué es esto?
+
 opts_default=Por defecto
 opts_none=Ninguno
 opts_relayhost=Enviar correo saliente a través de máquina
@@ -45,9 +50,11 @@ opts_mail_owner=Propietario de correo
 opts_default_privs=Derechos por defecto del agente de entrega
 opts_inet_interfaces=Interfaces de red para recibir correo
 opts_all_interfaces=Todas
+
 opts_local_recipient_maps=Rechazar usuarios locales desconocidos
 opts_no=No
 opts_save=Salvar y Aplicar
+
 opts_allow_percent_hack=Reescribir "usuario%dominio" por "usuario@dominio"
 opts_append_at_myorigin=Reescribir "usuario" por "usuario@$midominio"
 opts_append_dot_mydomain=Reescribir "usuario@máquina" por "usuario@máquina.$midominio"
@@ -57,13 +64,17 @@ opts_swap_bangpath=Reescribir "sitio!usuario" por "usuario@sitio"
 opts_masquerade_domains=Enmascaramiento de dirección
 opts_masquerade_exceptions=Excepciones de enmascaramiento
 index_return=Configuración de Postfix
+
 opts_alias_maps=Bases de datos de alias usadas por agente de entrega local
 opts_alias_database=Bases de datos de alias construídas mediante el comando "newaliases"
 aliases_warning=Aviso: <ul><li>cuando el primer campo no está vacío, el comando de generación de alias por defecto de Postfix es usado para construir las bases de datos correspondientes; <li>en caso contrario el comando de compatibilidad con Sendmail "newaliases" es usado, esto usará el segundo campo de base de datos.</ul>
+
 aliases_name=Nombre
 aliases_value=Alias de...
+
 new_alias=Crear nuevo alias
 new_aliasmsg=Haz click en este botón para crear un nuevo alias
+
 local_delivery_ecannot=No estás autorizado a editar opciones de entrega local
 local_delivery_title=Entrega local
 opts_local_transport=Nombre del transporte para entregas locales
@@ -89,6 +100,7 @@ opts_local_destination_recipient_limit=Número máximo de destinatarios por entr
 opts_local_destination_recipient_limit_default=Por defecto
 opts_prepend_delivered_header=Poner un <tt>Delivered-To: (Entregado-A:)</tt> cuando...
 opts_prepend_delivered_header_default=Por defecto
+
 resource_title=Control general de recursos
 resource_ecannot=No estás autorizado a editar los parámetros de control de recursos
 opts_bounce_size_limit=Medida máxima de mensaje enviado
@@ -107,6 +119,7 @@ opts_qmgr_message_recipient_limit=Número máximo de destinatarios en memoria
 opts_queue_minfree=Espacio mínimo libre en el sistema de archivos de la cola
 opts_stale_lock_time=Tiempo máximo tras el cual se libera el bloqueo caducado
 opts_transport_retry_time=Tiempo en segundos entre intentos de contactar una MDT rota
+
 opts_always_bcc=Dirección que recibe bcc de cada mensaje
 opts_always_bcc_none=Ninguna
 opts_daemon_timeout=Tiempo máximo para manejar requerimientos
@@ -139,6 +152,7 @@ opts_relocated_maps_default=Por defecto (desactivados)
 opts_sun_mailtool_compatibility=Desactivar bloque de archivos de kernel en buzones
 opts_trigger_timeout=Tiempo máximo para enviar un disparador a un demonio
 opts_delay_warning_time=Tiempo en horas antes de enviar un aviso de no entrega
+
 smtpd_title=Opciones de servidor SMTP
 smtpd_ecannot=No estás autorizado a editar las opciones de servidor SMTP
 opts_disable_vrfy_command=Desactivar comando SMTP VRFY
@@ -165,6 +179,7 @@ opts_relay_domains_reject_code=Respuesta de servidor SMTP en relé prohibido
 opts_unknown_address_reject_code=Respuesta de servidor SMTP en rechazo de dominio desconocido
 opts_unknown_client_reject_code=Respuesta de servidor SMTP en rechazo de cliente desconocido
 opts_unknown_hostname_reject_code=Respuesta de servidor SMTP en rechazo de nombre de máquina desconocido
+
 smtp_title=Opciones de cliente SMTP
 smtp_ecannot=No estás autorizado a editar las opciones de cliente SMTP
 opts_best_mx_transport=Acción al ser listado como mejor máquina MX
@@ -183,6 +198,7 @@ opts_smtp_data_init_timeout=Tiempo máximo de espera por respuesta a DATA
 opts_smtp_data_xfer_timeout=Tiempo máximo de espera por respuesta a transmisión de contenido de mensaje
 opts_smtp_data_done_timeout=Tiempo máximo de espera por respuesta a "." final
 opts_smtp_quit_timeout=Tiempo máximo de espera por respuesta a QUIT
+
 rate_title=Porcentajes de entrega
 rate_ecannot=No estás autorizado a editar las opciones de porcentaje de entrega
 opts_default_destination_concurrency_limit=Máximo número de entregas paralelas al mismo destino
@@ -193,17 +209,20 @@ opts_maximal_queue_lifetime=Máximo tiempo (días) en cola antes de que los mens
 opts_minimal_backoff_time=Mínimo tiempo (segundos) entre intentos de entregar un mensaje diferido
 opts_queue_run_delay=Tiempo (segundos) entre exploración de la cola diferida
 opts_defer_transports=Transportes que no deberían de ser entregados
+
 debug_title=Características de depuración
 debug_ecannot=No estás autorizado a editar características de depuración
 opts_debug_peer_list=Lita de modelos de dominio/red para los que el diario detallado está activado
 opts_debug_peer_level=Nivel de diario detallado al coincidir con la lista superior
 debug_version=Módulo de Postfix para Webmin - Versión $1
+
 ldap_title=Búsquedas LDAP
 ldap_ecannot=No estás autorizado a editar opciones de búsqueda LDAP
 ldap_non_existent=Parece como si LDAP no existiera en tu sistema Postfix
 opts_ldap_lookup_timeout=Tiempo máximo para búsquedas en bases de datos LDAP
 opts_ldap_search_base=Base de datos LDAP a buscar
 opts_ldap_server_host=Nombre de máquina de servidor LDAP
+
 canonical_title=Mapeo Canónigo
 canonical_ecannot=No estás autorizado a editar la configuración de mapeos canónigos
 opts_canonical_maps=Tablas de búsqueda de mapeo de direcciones
@@ -214,6 +233,7 @@ edit_recipient_canonical_maps=Editar mapeos canónigos de destinatarios
 edit_sender_canonical_maps=Editar mapeos canónigos de remitente
 edit_canonical_maps_general=Haz click en uno de estos botones para editar los mapeos canónigos
 canonical_edit_title=Editar Un Mapeo Canónigo
+
 mapping_name=Nombre
 mapping_value=Se Mapea a...
 new_mapping=Nuevo mapeo
@@ -227,27 +247,35 @@ map_delete_create=No puedo borrar un mapa que ahora estás creando
 maps_internal_error=Mapa: error interno
 maps_cant_write=No puedo escribir
 help_map_format=¿Qué formato debería de usar?
+
 virtual_title=Dominios Virtuales
 virtual_ecannot=No estás autorizado a editar configuración de mapeo de dominios virtuales
 opts_virtual_maps=Tablas de búsqueda de mapeo de dominio
+
 transport_title=Mapeo de Transporte
 transport_ecannot=No estás autorizado a editar configuración de mapeo de transporte
 opts_transport_maps=Tablas de búsqueda de mapeo de transporte
+
 relocated_title=Mapeo Relocalizado
 relocated_ecannot=No estás autorizado a editar la configuración de mapeo relocalizado
 opts_relocated_maps=Tablas de búsqueda de mapeo relocalizado
+
 map_click=Haz click en cualquier mapeo para editar sus propiedades:
 no_map=(No hay ahora mismo definido mapa. Define primero un mapa, luego podrás editarlo)
 no_map2=No hay ahora mismo definido mapa. Define primero un mapa, luego podrás editarlo.
+
 stop_efailed=No pude parar Postfix
 stop_ecannot=No estás autorizado a parar Postfix
+
 reload_efailed=No pude recargar Postfix.
 reload_ecannot=No estás autorizado a recargar Postfix
+
 query_get_efailed=No pude consultar comando de configuración de Postfix para obetener el valor actual del parámetro $1: <tt>$2</tt>
 query_set_efailed=No pude consultar comando de configuración de Postfix para poner el valor actual del parámetro $1 a $2: <tt>$3</tt>
 regenerate_ecannot=No estás autorizado a regenerar los Aliases
 regenerate_alias_efailed=No pude regenerar aliases: <tt>$1</tt>
 regenerate_table_efailed=No pude regenerar tabla $1: <tt>$2</tt>
+
 acl_resource=¿Puede editar recursos?
 acl_aliases=¿Puede editar aliases?
 acl_aliases_options=¿Puede editar opciones de alias?

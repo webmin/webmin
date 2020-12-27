@@ -1,26 +1,33 @@
 access_local=Incluir rede local na lista
 access_elibwrap=O controle de acesso IP usando TCP-wrappers não está disponível, pois o módulo Perl $1 não está instalado.
 access_libwrapcpan=<a href='$1'>Clique aqui</a> para que o Webmin instale automaticamente o módulo Perl ausente.
+
 access_eip6='$1' não é um endereço IPv6 ou de rede completo
 access_ecidr6='$1' não é um tamanho de rede IPv6 válido
 access_ecidr8=O tamanho da rede IPv6 '$1' deve ser divisível por 8
 access_trust=Confia no endereço IP remoto fornecido pelos proxies?
+
 bind_firewall=Abrir novas portas no firewall?
 bind_ipv6=Aceitar conexões IPv6?
 bind_eipv6=O IPv6 não pode ser ativado a menos que o módulo Perl $1 esteja instalado
 bind_redirecting=Redirecionando para o novo URL.
 bind_elsof=A nova porta $1 já está sendo usada por outro processo
 bind_eonsystem=O endereço IP $1 não está ativo neste sistema e, portanto, não pode ser usado
+
 log_global=&lt;Ações globais&gt;
 log_sched=Registrar funções agendadas?
 log_email=Envie ações registradas por e-mail para
 log_emailnone=Não envie
 log_inmodsemail=Envie email para ações em
+
 ui_nice_size_type=Use unidades binárias de medida (KiB, MiB, GiB em vez de KB, MB, GB)
 ui_showhost=Anexar nome do host aos títulos da página?
 ui_ehostnamedisplay=Nome de host de exibição ausente ou inválido
+
 mods_checksig=Verifique o arquivo de assinatura para obter os módulos baixados?
+
 os_usermin=Atualize também o SO Usermin
+
 ssl_deny=Versões do protocolo SSL a serem rejeitadas
 ssl_compression=Permitir conexões SSL compactadas?
 ssl_honorcipherorder=Forçar o uso da ordem de cifra definida pelo servidor?
@@ -65,20 +72,27 @@ ssl_letsnotrenew=Renove apenas manualmente
 ssl_staging=Vamos criptografar o servidor
 ssl_staging0=Real
 ssl_staging1=Preparo (somente teste)
+
 newkey_ecns=Nenhum nome de servidor digitado
+
 newcsr_err=Falha ao criar CSR SSL
 newcsr_efile=Nome do arquivo CSR ausente
 newcsr_title=Gere CSR
 newcsr_ok=Gerou com êxito a seguinte solicitação de certificado SSL :
 newcsr_ok2=Esse CSR deve ser enviado a uma autoridade de assinatura, que retornará um certificado assinado. Isso pode ser instalado com a chave acima usando a guia <b>Carregar certificado</b>.
+
 startpage_webminup=Mostrar atualizações do Webmin na página Informações do sistema?
 startpage_moduleup=Mostrar atualizações de módulo na página Informações do sistema?
+
 upgrade_eportage=Atualmente, o recurso de atualização do Webmin não funciona quando você instala a partir de um pacote do Portage. Atualize usando as ferramentas do Portage.
 upgrade_src=Atualize o Webmin de
 upgrade_opts=Opções de atualização
+
 update_src=Atualizar módulos de
 update_opts=Opções de atualização do módulo
+
 ca_alt=Domínios adicionais
+
 session_ptimeout=Tempo limite da senha
 session_pblock=Blocos de login com falha
 session_syslog3=Falhas de log no <tt>syslog</tt>?
@@ -94,7 +108,9 @@ session_banner=Banner de pré-login
 session_md5=Formato de hash de senha do Webmin
 session_sha512=Use criptografia SHA512
 session_esha512mod=A criptografia SHA512 não pode ser usada, pois o módulo Perl $1 não está instalado.
+
 categories_custom=personalizadas
+
 log_twofactor=Opções de autenticação de dois fatores alteradas
 log_newcsr=Criado novo CSR SSL
 log_web=Opções alteradas do servidor da web
@@ -107,14 +123,18 @@ log_onedelete_webmincron=Função programada excluída no módulo $1
 log_letsencrypt=Solicitou novo certificado SSL da Let's Encrypt
 log_letsencryptdns=Criou o registro DNS Let's Encrypt para DNS para $1
 log_letsencryptcleanup=Removido Vamos criptografar o registro DNS para $1
+
 referers_none2=AVISO: Isso abre seu sistema para ataques XSS!
+
 ipkey_ips2=Para endereços IP e nomes de host
 ipkey_eip2='$1' não é um endereço IP ou nome de host válido
 ipkey_eextracas=Nenhum arquivo de certificado adicional foi inserido
 ipkey_eextraca=O arquivo de certificado adicional $1 não existe
+
 descs_cmod=Módulo original
 descs_cdesc=Título do clone
 descs_etitle=Título ausente para o clone '$1'
+
 advanced_precache=Arquivos de texto para pré-cache?
 advanced_precache0=Nenhum
 advanced_precache1=Arquivos de texto em inglês
@@ -132,14 +152,18 @@ advanced_listdir=Listar diretórios sem um arquivo de índice?
 advanced_headers=Cabeçalhos HTTP extras
 advanced_eheader=Cabeçalhos devem ser formatados como <tt>Cabeçalho: Valor</tt>
 advanced_sortconfigs=Salvar arquivos de configuração classificados por suas chaves?
+
 savekey_echain=Certificado encadeado em formato PEM inválido ou ausente
 savekey_done3=O certificado SSL encadeado fornecido foi salvo no arquivo $1.
+
 notif_reboot=As atualizações recentes de pacotes (como uma nova versão do kernel) exigem que a reinicialização seja totalmente aplicada.
 notif_rebootok=Reinicie agora
+
 status_temp=Coletar temperaturas da unidade?
 status_units=Unidades para temperaturas
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
+
 sendmail_title=Enviando email
 sendmail_desc=Esta página controla como o Webmin envia email, como backups agendados ou monitoramento em segundo plano. Ele também afeta o email enviado usando o módulo Read User Mail.
 sendmail_header=Opções de envio de correio
@@ -180,12 +204,14 @@ sendmail_url=URL do Webmin para uso em e-mail
 sendmail_url_def=Padrão ($1)
 sendmail_url_custom=URL personalizado
 sendmail_eurl=URL personalizado ausente ou inválido
+
 testmail_title=Enviar email de teste
 testmail_err=Falha ao enviar mensagem de teste
 testmail_eto=Nenhum endereço de destino digitado
 testmail_sending=Enviando mensagem de $1 para $2 ..
 testmail_done=.. mensagem enviada. Verifique a caixa de correio do endereço de destino para garantir que ela foi realmente entregue.
 testmail_failed=.. falha no envio : $1
+
 web_title=Opções do servidor Web
 web_header=Opções para o servidor da Web incorporado do Webmin
 web_expires=Tempo de cache do lado do cliente para arquivos estáticos
@@ -197,6 +223,7 @@ web_expirespaths=Tempos de cache do lado do cliente com base no caminho da URL
 web_expirespath=Expressão regular do caminho
 web_expirestime=Tempo de cache em segundos
 web_eexpires2=Tempo de cache do lado do cliente ausente ou não numérico na linha $1
+
 webmincron_title=Funções agendadas do Webmin
 webmincron_emodule=O módulo Trabalhos Webmin Cron não está instalado!
 webmincron_module=Módulo Webmin
@@ -220,6 +247,7 @@ webmincron_when1=Tempos específicos
 webmincron_secs=segundos
 webmincron_err=Falha ao salvar a função agendada
 webmincron_einterval=O intervalo deve ser um número de segundos maior que zero
+
 twofactor_title=Autenticação de dois fatores
 twofactor_header=Opções de autenticação de dois fatores
 twofactor_provider=Provedor de autenticação
@@ -258,6 +286,7 @@ twofactor_secret1=Gerado aleatoriamente
 twofactor_secret0=Use chave de 16 caracteres
 twofactor_esecret=A chave secreta deve ter exatamente 16 caracteres e conter apenas letras e números
 twofactor_esession=A autenticação de dois fatores não pode ser usada, a menos que a autenticação baseada em sessão esteja ativa
+
 letsencrypt_title=Vamos criptografar a solicitação de certificado
 letsencrypt_err=Falha ao solicitar certificado
 letsencrypt_ecmds=Nem o comando do cliente Let's Encrypt <tt>certbot</tt> nem o <tt>python</tt> foram encontrados em seu sistema
@@ -291,5 +320,6 @@ letsencrypt_ecsr=Falha ao gerar o CSR : $1
 letsencrypt_ekeygen=Falha ao gerar a chave privada : $1
 letsencrypt_enative=O cliente Let's Encrypt criptografado (certbot) foi usado anteriormente neste sistema e deve ser usado para todas as solicitações futuras de certificado
 letsencrypt_eacmedns=Somente o cliente oficial Let's Encrypt suporta validação baseada em DNS
+
 announce_hide=Ocultar este anúncio
 alert_hide=Ocultar alerta

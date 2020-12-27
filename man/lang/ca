@@ -30,6 +30,7 @@ index_other_google=Motor de recerca Google
 index_other_kde=Documentació KDE
 index_and=Busca-ho tot
 index_or=Busca'n qualsevol
+
 search_efor=No hi ha cap pàgina del manual
 search_title=Resultats de la Recerca
 search_desc=Descripció
@@ -47,22 +48,28 @@ search_none=No s'ha trobat cap document que coincideixi amb $1.
 search_for=per a $1
 search_google=Resultats de la recerca Google
 search_doxfer=Documentació en línia de Webmin
+
 howto_title=Document HOWTO
 howto_header=Fitxer $1 del document HOWTO
 howto_epath=Camí del document HOWTO invàlid
+
 doc_title=Documentació de Paquet
 doc_header=Fitxer $1 de documentació de paquet
 doc_epath=Camí de la documentació del paquet invàlid
+
 man_title=Pàgina del Manual
 man_header=Pàgina del manual de $1($2)
 man_noentry=La pàgina del manual de $1 no existeix!
 man_epath=La pàgina del manual no pot ser un camí!
+
 kernel_title=Documentació del Nucli
 kernel_header=Fitxer $i de la documentació del nucli
 kernel_epath=Camí de la documentació del nucli invàlid
+
 kde_title=Documentació KDE
 kde_header=Fitxer $1 de documentació KDE
 kde_epath=Camí de la documentació KDE invàlid
+
 perl_title=Mòdul Perl
 perl_header=Documentació del mòdul Perl $1
 perl_emod=Nom de mòdul Perl invàlid

@@ -19,11 +19,13 @@ index_force=Erzwinge Logrotation
 index_forcedesc=Erzwinge das sofortige Rotieren aller Logdateien, auch wenn es gerade nicht die Zeit dafür ist.
 index_logrotate=Logrotate
 index_delete=Lösche ausgewählte Logrotation
+
 period_daily=Täglich
 period_weekly=Wöchentlich
 period_monthly=Monatlich
 period_never=Niemals
 period_bytes=Bytes
+
 edit_title1=Neue Rotation einrichten
 edit_title2=Bestehende Rotation editieren
 edit_header=Eigenschaften der zu rotierenden Logdatei
@@ -62,8 +64,10 @@ edit_pre=Befehl, der vor der Rotation ausgeführt wird
 edit_default=Standard ($1)
 edit_sharedscripts=Lasse die Skripte nur einmal für alle Dateien laufen?
 edit_now=Jetzt rotieren
+
 global_title=Globale Optionen
 global_header=Standardoptioen für alle Logdateien
+
 save_err=Konnte Einstellungen der zu rotierenden Logdatei nicht speichen
 save_efile=Fehlender oder ungültiger Dateiname
 save_esize=Fehlende oder ungültige maximale Größe der Logdatei
@@ -81,6 +85,7 @@ save_eerrors=Fehlende E-Mail-Adresse für Fehlermeldungen
 save_epre=Das Vor-Rotation-Skript darf keine <tt>endscript</tt>- oder <tt>endrotate</tt>-Zeile enthalten.
 save_epost=Das Nach-Rotation-Skript darf keine <tt>endscript</tt>- oder <tt>endrotate</tt>-Zeile enthalten.
 save_enofiles=Keine Dateien zum rotieren eingegeben
+
 log_modify_sched=Einen Logrotation-Cron-Job geändert
 log_create_sched=Einen Logrotation-Cron-Job angelegt
 log_delete_sched=Einen Logrotation-Cron-Job gelöscht
@@ -89,6 +94,7 @@ log_create=Rotation für Logdatei $1 hinzugefügt
 log_modify=Rotation für Logdatei $1 geändert
 log_delete=Rotation für Logdatei $1 gelöscht
 log_delete_logs=Gelöschte Rotation für $1 Logdateien
+
 sched_title=Rotationszeitplan für Logdatei-Rotation
 sched_desc=Damit die mit diesem Modul konfigurierten Einstellungen ausgeführt werden, muss der Befehl <tt>$1</tt> regelmäßig ausgeführt werden. Standardmäßig sollte er täglich vom System mit <i>cron</i> ausgeführt werden.
 sched_runparts=Zum jetzigen Zeitpunkt wird <i>logrotate</i> mit dem Skript $1 $2 ausgeführt und kann daher nicht verändert werden. Diese Einstellung ist bei den meisten unixoiden Systemen völlig normal.
@@ -98,10 +104,12 @@ sched_enabled=Aktiviert, zu unten stehenden Zeiten ...
 sched_save=Cron-Auftrag speichern
 sched_err=Konnte den Logdatei-Rotationszeitplan nicht speichern
 sched_when=Ausführungszeiten
+
 force_title=Erzwinge Logrotation
 force_doing=Erzwinge die sofortiere Rotation aller Logdateien...
 force_doingone=Erzwinge die sofortiere Rotation von einer Logdatei...
 force_done=...fertig.
 force_failed=...fehlgeschlagen! Prüfe oben den Output für den Grund.
+
 delete_err=Fehlgeschlagen die Logs zu löschen
 delete_enone=Nichts ausgewählt

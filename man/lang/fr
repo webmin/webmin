@@ -30,6 +30,7 @@ index_other_google=Moteur de recherche Google
 index_other_kde=Documentation KDE
 index_and=Correspondance totale
 index_or=Correspondance partielle
+
 search_efor=Aucune page du manuel à rechercher
 search_title=Résultats de la recherche
 search_desc=Description
@@ -46,21 +47,27 @@ search_custom=Documentation personnalisée
 search_none=Aucune page correspondant à $1 n'a été trouvée.
 search_for=Pour $1
 search_google=Résultat de la recherche Google
+
 howto_title=Document HOWTO
 howto_header=Fichier HOWTO $1
 howto_epath=Chemin de documents HOWTO invalide
+
 doc_title=Documentation de composant
 doc_header=Fichier de documentation composant $1
 doc_epath=Chemin de la documentation des composants invalide
+
 man_title=Page de manuel
 man_header=Page de manuel pour $1($2)
 man_noentry=La page de manuel de $1 n'existe pas !
+
 kernel_title=Documentation du noyau
 kernel_header=Fichier de documentation noyau $1
 kernel_epath=Chemin de la documentation du noyau invalide
+
 kde_title=Documentation KDE
 kde_header=Fichier de documentation KDE $1
 kde_epath=Chemin de documentation KDE invalide
+
 perl_title=Module Perl
 perl_header=Documentation du module Perl $1
 perl_emod=Nom du module Perl invalide

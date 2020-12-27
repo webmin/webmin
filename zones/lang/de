@@ -4,6 +4,7 @@ index_none=Bisher wurden keine Zonen definiert.
 index_add=Eine neue Zone hinzufügen.
 index_return=Zonenliste
 index_zones=Verfügbare Zonen
+
 edit_title=Zone bearbeiten
 edit_common=Generelle Zonenkonfiguration
 edit_name=Zonenname
@@ -57,20 +58,26 @@ edit_attrnone=Es wurden bisher keine Eigenschaften definiert.
 edit_attradd=Eine neue allgemeine Eigenschaft hinzufügen
 edit_webmin=Öffne Webmin
 edit_brand=Brand
+
 ui_cancel=Abbrechen
+
 save_err=Konnte Zone nicht speichern
 save_epool=Fehlender oder ungültiger Pool
 save_ewebmin=Webmin läuft nicht in dieser Zone
+
 reboot_title=Neustart einer Zone
 reboot_rusure=Sind Sie sicher, dass Sie die Zone $1 neu starten möchten? Alle Prozesse in dieser Zone werden neu gestartet.
 reboot_err=Konnte Zone nicht neu starten
 reboot_doing=Starte Zone neu ..
+
 reboot_failed=.. fehlgeschlagen :
 reboot_ok=.. fertig.
+
 halt_title=Herunterfahren einer Zone
 halt_rusure=Sind Sie sicher, dass Sie die Zone $1 herunter fahren möchten? Alle Prozesse in dieser Zone werden angehalten.
 halt_err=Konnte Zone nicht herunter fahren
 halt_doing=Fahre Zonen nun herunter ..
+
 boot_title=Hochfahren einer Zone
 boot_err=Konnte Zone nicht hochfahren
 boot_doing=Fahre Zone hoch ..
@@ -78,10 +85,12 @@ delete_title=Löschen einer Zone
 delete_rusure=Sind Sie sicher, dass Sie die Zone $1 löschen möchten? Alle Dateien auf dem privatem Dateisystem gehen für immer verloren!
 delete_err=Konnte Zone nicht löschen.
 delete_doing=Löschen Zone ..
+
 uninstall_title=Deinstalliere Systemsoftware
 uninstall_rusure=Sind Sie sicher, dass Sie die Systemsoftware aus Zone $1 löschen möchten? Alle Dateien auf dem privatem Dateisystem gehen für immer verloren!
 uninstall_err=Konnte Systemsoftware aus Zone nicht löschen.
 uninstall_doing=Deinstalliere Systemsoftware aus der Zone ..
+
 install_title=Installiere System
 install_doing=Installiere Systemsoftware in die Zone ..
 net_title1=Erzeuge Netzwerkschnittstelle
@@ -96,6 +105,7 @@ net_enetmask=Ungültige Netzmaske
 net_eaddress=Ungültige IP-Adresse
 net_egone=Diese Schnittstelle existiert nicht mehr!
 net_eclash=Es existiert bereits eine Netzwerkschnittstelle mir der gleichen IP-Adresse in dieser Zone
+
 pkg_title1=Paketverzeichnis hinzufügen
 pkg_title2=Paketverzeichnis bearbeiten
 pkg_header=Eigenschaften der ererbten Paketverzeichnisse
@@ -107,6 +117,7 @@ pkg_eclash=Diese Verzeichnis existiert bereits in dieser Zone
 pkg_inherit=Vererbte Pakete von globale Zone
 pkg_inherit_yes=Ja (sparse root Zone)
 pkg_inherit_no=Nein (gesamte Root Zone)
+
 fs_title1=Erzeuge Dateisystem
 fs_title2=Bearbeite Dateisystem
 fs_header=Eigenschaften zusätzlicher Dateisysteme
@@ -128,6 +139,7 @@ fs_eoptions=Ungültige Einhängeoptionen (diese müssen Kommata-separiert sein z
 fs_egone=Dateisystem ist nicht mehr vorhanden!
 fs_mount=Nach dem Erzeugen auch einhängen?
 fs_eclash=Ein Dateisystem, welches auf dieses Verzeichnis zeigt, existiert bereits in dieser Zone
+
 rctl_title1=Erzeuge Ressourcenkontrolle
 rctl_title2=Bearbeite Ressourcenkontrolle
 rctl_header=Art und Grenzen der Ressourcenkontrolle
@@ -148,6 +160,7 @@ rctl_elimit=Dies ist keine Nummer
 rctl_eaction=Es wurde kein Signal in Reihe $1 ausgewählt
 rctl_evalues=Keine Grenzen eingegeben
 rctl_eclash=Eine Kontrolle für die gleiche Ressource ist bereits in der Zone vorhanden
+
 attr_title1=Erzeuge allgemeine Eigenschaft
 attr_title2=Bearbeite allgemeine Eigenschaft
 attr_header=Details der allgemeinen Zoneneigenschaft
@@ -165,6 +178,7 @@ attr_euint=Wert ist kein positiver Integer
 attr_eboolean=Wert ist weder 'wahr' oder 'falsch'
 attr_egone=Eigenschaft existiert nicht mehr!
 attr_eclash=Eine Eigenschaft mit dem gleichen Namen existiert bereits in der Zone
+
 status_running=Läuft
 status_installed=Angehalten
 status_configured=Nicht installiert
@@ -172,13 +186,16 @@ status_incomplete=Wird installiert
 status_ready=Fertig
 status_down=Ausgeschaltet
 status_shutting_down=Fährt herunter
+
 list_name=Zonenname
 list_id=ID-Nummer
 list_path=Zonenverzeichnis
 list_status=Status
 list_actions=Aktionen
+
 zone_in=In Zone $1
 pool_none=Kein
+
 create_title=Erzeuge Zone
 create_header=Eigenschaften der neuen Zone
 create_path=Verzeichnis der Zonendateien
@@ -239,6 +256,7 @@ create_erouter=Fehlende oder ungültige Standardrouter IP-Adresse
 create_removingpkgs=entferne vererbte Paket-Verzeichnisse ...
 create_brand=Brand
 create_brandmsg=Branding Zone
+
 log_create_zone=Created zone $1
 log_delete_zone=Deleted zone $1
 log_save_zone=Geänderte Konfiguration für Zone $1
@@ -262,6 +280,7 @@ log_delete_rctl=Deleted resource control for $1 in zone $2
 log_create_attr=Created generic attribute $1 in zone $2
 log_modify_attr=Modified generic attribute $1 in zone $2
 log_delete_attr=Deleted generic attribute $1 in zone $2
+
 webmin_eperl=Perl ist nicht installiert auf $1
 webmin_eroot=Das Verzeichnis $1 existiert nicht oder Webmin ist nicht darin enthalten.
 webmin_title=Installiere Webmin

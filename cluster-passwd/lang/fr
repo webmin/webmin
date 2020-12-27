@@ -6,5 +6,3 @@ passwd_err=Impossible de changer le mot de passe
 passwd_title=Changement de mot de passe
 passwd_on=Changement de mot de passe sur $1 en cours ...
 passwd_euser=L'utilisateur n'existe pas !
-__norefs=1
-

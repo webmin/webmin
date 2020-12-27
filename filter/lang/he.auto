@@ -45,6 +45,7 @@ index_ondate=תאריך
 index_charset=הגדר תווים אוטומטית של ערכת הודעה
 index_subject=נושא ההודעה באופן אוטומטי
 index_nowebmin=מודול זה מיועד לשימוש ב- Usermin בלבד. אם זה גלוי ב- Webmin, הנושא שאתה משתמש בו אינו שלם.
+
 edit_title1=צור פילטר
 edit_title2=ערוך מסנן
 edit_header1=תנאי למסנן
@@ -71,6 +72,7 @@ edit_amode7=שמור לתיקייה חדשה בשם
 edit_nobounce=לדכא העברת הודעות על כניסה
 edit_apply=הצג דוא"ל תואם בתיקיה:
 edit_move=הגש בקשה לדוא"ל בתיקיה:
+
 save_err=שמירת המסנן נכשלה
 save_egone=המסנן כבר לא קיים!
 save_econdheader=כותרת דוא"ל חסרה או לא חוקית
@@ -89,8 +91,10 @@ save_enewfolder3=כבר קיימת תיקיה עם אותו שם
 save_estart=תאריך התחלה לא חוקי למתן הרשאה אוטומטית
 save_eend=תאריך סיום לא חוקי למתן הרשאה
 save_echarset=ערכת תווים חסרה או לא חוקית
+
 delete_err=מחיקת המסננים נכשלה
 delete_enone=לא נבחר
+
 aliases_type1=כתובת 1
 aliases_type2=כתובות בקובץ $1 
 aliases_type3=קובץ $1 
@@ -101,6 +105,7 @@ aliases_your=תיבת הדואר שלך
 aliases_delete=מחק דואר
 aliases_other=תיבת דואר של המשתמש $1 
 aliases_auto=משיב אוטומטי עם ההודעה $1 
+
 auto_title=דוא"ל תשובה אוטומטית
 auto_header=אפשרויות תשובה אוטומטיות לדוא"ל
 auto_enabled=מופעלת תגובה אוטומטית?
@@ -111,12 +116,14 @@ auto_charsetdef=מהשפה הנוכחית
 auto_charsetother=סט תווים אחר
 auto_period=מרווח מינימלי בין התשובות
 auto_err=שמירת תשובה אוטומטית נכשלה
+
 forward_title=העברת דוא"ל
 forward_header=אפשרויות העברת דוא"ל
 forward_enabled=העברת דואר אלקטרוני מופעלת?
 forward_to=העבר לכתובות
 forward_cont=גם לספק בדרך כלל?
 forward_err=שמירת העברת הדוא"ל נכשלה
+
 move_err=החלת המסנן נכשלה
 move_esrc=תיקיית המקור $1 אינה קיימת!
 move_edest=תיקיית היעד $1 אינה קיימת!

@@ -16,6 +16,7 @@ index_digest2=Mã hóa Digest được kích hoạt trong cấu hình mô-đun, 
 index_cpan=<a href='$1'>Nhấp vào đây</a> để tải xuống và cài đặt ngay.
 index_delete=Không bảo vệ các thư mục được chọn
 index_remove=Không bảo vệ và xóa tệp
+
 dir_title1=Thêm thư mục được bảo vệ
 dir_title2=Chỉnh sửa thư mục được bảo vệ
 dir_header=Tùy chọn thư mục được bảo vệ
@@ -60,6 +61,7 @@ dir_delete3=Hủy bảo vệ và xóa tệp
 dir_apache=Chỉnh sửa tùy chọn Apache
 dir_efiledir='$1' là một thư mục và do đó không thể được sử dụng làm tệp người dùng
 dir_egfiledir='$1' là một thư mục và vì vậy không thể được sử dụng làm tệp nhóm
+
 edit_title1=Tạo người dùng
 edit_title2=Người dùng biên tập
 edit_header=Chi tiết người dùng xác thực web
@@ -71,11 +73,13 @@ edit_pass0=Đặt thành
 edit_passfrom=Thay đổi từ
 edit_passto=đến mật khẩu mới
 edit_dom=Cõi tiêu hóa
+
 gedit_title1=Tạo nhóm
 gedit_title2=Chỉnh sửa nhóm
 gedit_header=Chi tiết nhóm xác thực web
 gedit_group=Tên nhóm
 gedit_members=Thành viên của nhóm
+
 save_err=Không thể lưu người dùng
 save_euser1=Thiếu tên người dùng
 save_euser2=Tên người dùng không thể chứa: ký tự
@@ -84,16 +88,19 @@ save_eclash=Một người dùng có cùng tên đã tồn tại
 save_eoldpass=Mật khẩu cũ không đúng
 save_title=Người dùng đã lưu
 save_edom=Cõi tiêu hóa bị thiếu hoặc không hợp lệ
+
 gsave_err=Không thể lưu nhóm
 gsave_egroup1=Tên nhóm thiếu
 gsave_egroup2=Tên nhóm không thể chứa: ký tự hoặc dấu cách
 gsave_eclash=Một nhóm có cùng tên đã tồn tại
+
 acl_dirs=Thư mục được phép
 acl_user=Tạo tập tin.htaccess và htusers với tư cách là người dùng Unix
 acl_same=Giống như đăng nhập Webmin
 acl_home=Bao gồm thư mục nhà của người dùng Unix?
 acl_sync=Có thể thiết lập đồng bộ hóa người dùng Unix?
 acl_uonly=Có thể thêm và thay đổi các thư mục được bảo vệ?
+
 log_create_dir=Đã thêm thư mục $1 
 log_modify_dir=Thư mục đã sửa đổi $1 
 log_delete_dir=Đã xóa thư mục $1 
@@ -104,6 +111,7 @@ log_create_group=Đã tạo nhóm $1
 log_modify_group=Nhóm đã sửa đổi $1 
 log_delete_group=Đã xóa nhóm $1 
 log_delete_dirs=Đã xóa thư mục $1 
+
 search_title=kết quả tìm kiếm
 search_err=Tìm kiếm thất bại
 search_edir=Thiếu hoặc không hợp lệ thư mục tuyệt đối để tìm kiếm

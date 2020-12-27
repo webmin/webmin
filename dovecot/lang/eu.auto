@@ -11,11 +11,13 @@ index_boot=Hasi abiarazi?
 index_bootdesc=Aldatu ezarpen hau Dovecot zerbitzaria abiarazteko sistema abiarazteko orduan.
 index_return=moduluaren aurkibidea
 index_version=$1 bertsioa
+
 stop_err=Ezin izan da Dovecot gelditu
 stop_erunning=Jada ez da martxan
 start_err=Huts egin du Dovecot abiaraztean
 start_eprotos=<b>Sare eta protokoloak</b> orrialdean ez da protokolo hautatu
 apply_err=Ezin izan da konfigurazioa aplikatu
+
 net_title=Sare eta Protokoloak
 net_header=Dovecot sareko eta posta protokoloko aukerak
 net_protocols=Zerbitzatzeko posta protokoloak
@@ -42,8 +44,11 @@ net_eimaps_listen=IP helbide baliogabea IMAP SSL konexioetarako
 net_epop3s_listen=IP helbide baliogabea POP3 SSL konexioetarako
 net_elisten=SSL ez diren konexioetarako IP helbide baliogabea
 net_essl_listen=SSL konexioetarako IP helbide baliogabea
+
 imap_title=IMAP Aukerak
+
 pop3_title=POP3 Aukerak
+
 ssl_title=SSL konfigurazioa
 ssl_header=IMAP eta POP3 SSL moduko aukerak
 ssl_key=SSL gako pribatuko fitxategia
@@ -61,7 +66,9 @@ ssl_ecert=Ziurtagiriaren fitxategi falta edo ez dago
 ssl_eca=Bezeroaren CA ziurtagiri fitxategia falta da edo ez dago
 ssl_eregen=Falta den edo ez zenbakizko parametroen birsortze-tartea
 ssl_epass=Ez da SSL gako fitxategiaren pasahitzik sartu
+
 misc_title=Beste Aukerak
+
 login_title=Erabiltzailea eta Saioa hasteko aukerak
 login_header=Erabiltzailearen autentifikazio eta hasierako aukerak
 login_fuid=Baliozko gutxieneko UID
@@ -117,6 +124,7 @@ login_procs=Gehienezko hasierako prozesuak
 login_count=Hasierako hasierako prozesuak
 login_eprocs=Sarbide gehieneko kopurua saihestu edo falta da
 login_ecount=Saioa hasierako prozesuen hasierako kopurua falta edo baliogabea da
+
 mail_title=Mail fitxategiak
 mail_header=Posta kokapena eta irakurtzeko aukerak
 mail_env=Posta fitxategiaren kokapena
@@ -169,6 +177,7 @@ mail_eindexmode=Ezin da fitxategi aurkibidearen kokalekua ezarri fitxategi elekt
 mail_econtrolmode=Ezin da kontrolatu fitxategien kokapena posta-fitxategiaren kokapena automatikoki hautematen denean
 mail_eindex=Aurkibide absolutuentzako bide absolutua falta edo baliogabea da
 mail_econtrol=Falta fitxategi absolutua edo baliogabea kontrol fitxategietarako
+
 log_net=Aldatutako Sareak eta Protokoloak
 log_login=Erabiltzailearen eta sartzeko aukerak aldatu dira
 log_mail=Aldatutako posta fitxategiak
@@ -179,6 +188,7 @@ log_stop=Dovecot zerbitzaria gelditu da
 log_bootup=Dovecot gaituta dago abio momentuan
 log_bootdown=Desgaituta Dovecot abio momentuan
 log_manual=Eskuz editatutako $1 konfigurazio fitxategia
+
 manual_title=Editatu Konfiguratu fitxategiak
 manual_editsel=Editatu Dovecot konfigurazio fitxategia
 manual_err=Ezin izan da konfiguratu fitxategia gordetzean

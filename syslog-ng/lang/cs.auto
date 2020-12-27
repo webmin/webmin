@@ -9,6 +9,7 @@ index_start=Spusťte program Syslog-NG
 index_startdesc=Klepnutím na toto tlačítko spustíte démona Syslog-NG pomocí aktuální konfigurace.
 index_return=index modulu
 index_version=Syslog-NG $1 
+
 options_title=Možnosti protokolování
 options_header=Možnosti pro všechny soubory protokolu
 options_secs=sekundy
@@ -55,6 +56,7 @@ options_esync=Před zápisem chybí nebo je neplatný počet zpráv do vyrovnáv
 options_estats=Chybějící nebo nečíselný čas na čekání mezi statistickými zprávami
 options_elog_fifo_size=Chybějící nebo neplatný počet zpráv do vyrovnávací paměti
 options_elog_msg_size=Chybí nebo nečíselná maximální velikost zprávy protokolu
+
 destinations_title=Cíle protokolu
 destinations_name=Název cíle
 destinations_type=Napsat
@@ -77,6 +79,7 @@ destinations_add=Přidejte nový cíl protokolu.
 destinations_return=log destinace
 destinations_desc=Protokol jiného modulu
 destinations_cmd=Výstup z $1 
+
 destination_header=Protokolovat možnosti cílení
 destination_title1=Vytvořit cíl protokolu
 destination_title2=Upravit cíl protokolu
@@ -117,17 +120,22 @@ destination_enet_localip=Chybějící nebo neplatná místní adresa IP
 destination_enet_localport=Chybějící nebo neplatné číslo místního portu
 destination_enet_host=Chybějící nebo neplatný hostitel nebo adresa serveru Syslog
 destination_eunix=Chybí název soketu Unix
+
 ddelete_err=Odstranění cílů se nezdařilo
 ddelete_enone=Nebyl vybrán žádný
 ddelete_eused=Cíl $1 nelze odstranit, protože je používán cílem protokolu
+
 sdelete_err=Smazání zdrojů se nezdařilo
 sdelete_enone=Nebyl vybrán žádný
 sdelete_eused=Zdroj protokolu $1 nelze odstranit, protože je používán cílem protokolu
+
 fdelete_err=Filtry se nepodařilo smazat
 fdelete_enone=Nebyl vybrán žádný
 fdelete_eused=Filtr protokolu $1 nelze odstranit, protože je používán cílem protokolu
+
 ldelete_err=Cíle protokolu se nepodařilo smazat
 ldelete_enone=Nebyl vybrán žádný
+
 filters_title=Filtry protokolu
 filters_name=Název filtru
 filters_desc=Podmínky
@@ -144,6 +152,7 @@ filters_program=program <tt>$1</tt>
 filters_match=odpovídá „$1“
 filters_host=z hostname <tt>$1</tt>
 filters_netmask=od odesílatele <tt>$1</tt>
+
 filter_title1=Vytvořit filtr protokolu
 filter_title2=Upravit filtr protokolu
 filter_header=Podrobnosti specifikace filtru protokolu
@@ -169,6 +178,7 @@ filter_enet=Chybějící nebo neplatná síťová IP adresa
 filter_emask=Chybějící nebo neplatná maska sítě
 filter_ebool=Chyba ve složeném výrazu
 filter_egone=Filtr již neexistuje!
+
 logs_title=Cíle protokolu
 logs_source=Zdroje
 logs_filter=Filtry
@@ -177,6 +187,7 @@ logs_add=Přidejte nový cíl protokolu.
 logs_delete=Odstranit vybrané cíle protokolu
 logs_return=cíle protokolu
 logs_none=Žádný
+
 log_title1=Vytvořit cíl protokolu
 log_title2=Upravit cíl protokolu
 log_header=Výběr zdroje záznamu, filtru a cíle
@@ -190,6 +201,7 @@ log_flags=Cílové možnosti
 log_egone=Cíl protokolu již neexistuje!
 log_err=Cíl protokolu se nepodařilo uložit
 log_esource=Nebyly vybrány žádné zdroje
+
 sources_title=Zdroje protokolu
 sources_none=Zatím nebyly definovány žádné zdroje!
 sources_add=Přidejte nový zdroj protokolu.
@@ -207,6 +219,7 @@ sources_typen=Sluneční proud
 sources_typenw=Syslog server
 sources_return=zdroje protokolu
 sources_none2=Žádný
+
 source_title1=Vytvořit zdroj protokolu
 source_title2=Upravit zdroj protokolu
 source_header=Možnosti zdroje protokolu
@@ -243,15 +256,20 @@ source_door=Název souboru dveří
 source_esun_streams_name=Chybějící nebo neplatný název souboru Sun streamů
 source_edoor=Chybějící nebo neplatný název souboru datových proudů Sun
 source_transport=Síťový protokol
+
 view_title=Zobrazit soubor protokolu
 view_header=Poslední $1 řádky $2 
 view_empty=Soubor protokolu je prázdný
 view_refresh=Obnovit
 view_filter=Zobrazovat pouze řádky s textem $1 
+
 apply_err=Nepodařilo se použít konfiguraci
 apply_egone=Nefunguje!
+
 start_err=Spuštění serveru Syslog-NG se nezdařilo
+
 stop_err=Zastavení serveru Syslog-NG se nezdařilo
+
 log_create_destination=Vytvořený cíl protokolu $1 
 log_modify_destination=Upravený cíl protokolu $1 
 log_delete_destination=Cíl smazaného protokolu $1 

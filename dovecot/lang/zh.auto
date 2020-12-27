@@ -11,11 +11,13 @@ index_boot=从启动开始？
 index_bootdesc=更改此设置以启用或禁用在系统引导时启动Dovecot服务器。
 index_return=模块索引
 index_version=版本$1
+
 stop_err=无法停止鸽舍
 stop_erunning=不再运行
 start_err=无法启动鸽舍
 start_eprotos=<b>网络和协议</b>页面上未选择协议
 apply_err=应用配置失败
+
 net_title=网络和协议
 net_header=Dovecot网络和邮件协议选项
 net_protocols=服务邮件协议
@@ -42,8 +44,11 @@ net_eimaps_listen=IMAP SSL连接的IP地址无效
 net_epop3s_listen=POP3 SSL连接的IP地址无效
 net_elisten=非SSL连接的IP地址无效
 net_essl_listen=SSL连接的IP地址无效
+
 imap_title=IMAP选项
+
 pop3_title=POP3选项
+
 ssl_title=SSL配置
 ssl_header=IMAP和POP3 SSL模式选项
 ssl_key=SSL私钥文件
@@ -61,7 +66,9 @@ ssl_ecert=证书文件缺失或不存在
 ssl_eca=客户端CA证书文件缺失或不存在
 ssl_eregen=缺少或非数字参数重新生成间隔
 ssl_epass=没有输入SSL密钥文件密码
+
 misc_title=其他选择
+
 login_title=用户和登录选项
 login_header=用户身份验证和登录选项
 login_fuid=最小有效UID
@@ -117,6 +124,7 @@ login_procs=最大登录过程
 login_count=初始登录过程
 login_eprocs=缺少或无效的最大登录进程数
 login_ecount=缺少或无效的初始登录进程数
+
 mail_title=邮件文件
 mail_header=邮件位置和阅读选项
 mail_env=邮件文件位置
@@ -169,6 +177,7 @@ mail_eindexmode=自动检测到邮件文件位置时，无法设置索引文件�
 mail_econtrolmode=自动检测到邮件文件位置时，无法设置控制文件位置
 mail_eindex=索引文件的绝对路径丢失或无效
 mail_econtrol=控制文件的绝对路径丢失或无效
+
 log_net=更改的网络和协议
 log_login=更改的用户和登录选项
 log_mail=更改的邮件文件
@@ -179,6 +188,7 @@ log_stop=停止的Dovecot服务器
 log_bootup=在启动时启用Dovecot
 log_bootdown=引导时禁用鸽舍
 log_manual=手动编辑的配置文件$1
+
 manual_title=编辑配置文件
 manual_editsel=编辑Dovecot配置文件
 manual_err=保存配置文件失败

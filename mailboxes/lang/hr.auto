@@ -2,6 +2,7 @@ index_title=Pročitajte korisničku poštu
 index_none=Nije vam dopušteno čitati e-poštu bilo kojim korisnicima u ovom sustavu.
 index_header=Korisničke poštanske sandučiće
 index_empty=Nema pošte
+index_return=popis korisnika
 index_esystem=Nijedan od podržanih poslužitelja e-pošte (Exim, Qmail, Postfix i Sendmail) nije otkriven u vašem sustavu. Trebat ćete prilagoditi konfiguraciju <a href='$1'>modula</a> da biste ručno postavili poslužitelj e-pošte i eventualno staze pošte.
 index_esystem2=Poslužitelj e-pošte postavljen u konfiguraciji modula <a href='$1'></a> nije pronađen u vašem sustavu. Morat ćete prilagoditi konfiguraciju za upotrebu ispravnog poslužitelja.
 index_esystem3=Došlo je do pogreške u kontaktu s poštanskim sustavom postavljenim u konfiguraciji modula <a href='$1'></a>: $2.
@@ -19,6 +20,7 @@ index_eperl=Perl modul $1 potreban za odabrani način provjere identiteta SMTP n
 index_file=Pročitajte poštu u datoteci ili maildiru:
 index_nousers=Nisu pronađeni korisnici!
 index_nousersmail=Nije pronađen nijedan korisnik s e-poštom.
+
 mail_title=Korisnička adresa e-pošte
 mail_from=Iz
 mail_date=Datum
@@ -75,6 +77,7 @@ mail_fromfilter=Stvorite filtar po pošiljatelju
 mail_tofilter=Stvorite filtar prema primatelju
 mail_subfilter=Stvorite filter prema temi
 mail_unknown=Nepoznata
+
 mail_sign=Prijavite se ključem
 mail_nosign=&lt;Ne potpisujte&gt;
 mail_crypt=Šifrirajte za
@@ -109,6 +112,7 @@ mail_selread=Odaberite pročitajte.
 mail_selunread=Odaberite nepročitano.
 mail_selspecial=Odaberite posebnu.
 mail_specialsync=Posebna sinkronizacija
+
 view_title=Pročitajte e-poštu
 view_desc=Poruka $1 u $2
 view_desc2=Poruka $1 za korisnika $2
@@ -150,6 +154,7 @@ view_sub=Priložena e-pošta
 view_sub2=Priložena e-pošta od $1
 view_egone=Ova poruka više ne postoji
 view_eugone=Ovaj korisnik ne postoji
+
 view_gnupg=Potvrda potpisa GnuPG-a
 view_gnupg_0=Potpis sa $1 je valjan.
 view_gnupg_1=Potpis sa $1 je valjan, ali lanac povjerenja nije mogao biti uspostavljen.
@@ -186,7 +191,9 @@ view_images=Pokažite slike
 view_raw=Pogledajte sirovu poruku
 view_aall=Spremite sve privitke kao ZIP.
 view_aslideshow=Prikaži sve slike
+
 compose_title=Sastavite e-poštu
+
 reply_title=Odgovor na e-poštu
 forward_title=Prosljeđivanje e-pošte
 enew_title=Uređivanje e-pošte
@@ -216,9 +223,11 @@ reply_addattach=Dodajte polje privitka.
 reply_addssattach=Dodajte polje za prilaganje na strani poslužitelja.
 reply_html0=Sastavljanje teksta
 reply_html1=Sastavite HTML
+
 reply_spell=Provjerite pravopisne pogreške?
 reply_draft=Spremi kao skicu
 reply_save=Spremi i uredi
+
 send_err=Slanje pošte nije uspjelo
 send_eto=Nedostaje adresa
 send_efrom=Nedostaje s adrese
@@ -235,6 +244,7 @@ send_eperms2=Nije vam dopušteno slanje datoteke $1
 send_epath=Sendmail izvršni $1 ne postoji.
 send_efile=Pročitavanje privitka $1 : $2 nije uspjelo
 send_done=.. gotovo.
+
 send_epass=Ne možete potpisati poruku jer vaša lozinka još nije postavljena u GnuPG modulu.
 send_esign=Poruka nije uspjela : $1
 send_ekey=Nije moguće pronaći ključ za adresu e-pošte $1
@@ -246,6 +256,7 @@ send_espell=U vašoj poruci pronađene su sljedeće pravopisne pogreške.
 send_draft=Pošta na $1 spremljena u mapi skice.
 send_drafting=Spremanje pošte u $1 u mapi skice ..
 send_eattachsize=Privitak e-pošte premašio je maksimalno dopuštenu veličinu od $1 bajta
+
 delete_title=Izbriši poštu
 delete_rusure=Jeste li sigurni da želite izbrisati odabrane poruke $1 s $2? Možda će potrajati neko vrijeme za veliku datoteku pošte. Dok se brisanje ne završi, ne smije se provoditi druga radnja.
 delete_rusure2=Jeste li sigurni da želite izbrisati ovu poruku sa $1? Možda će potrajati neko vrijeme za veliku datoteku pošte. Dok se brisanje ne završi, ne smije se provoditi druga radnja.
@@ -268,6 +279,7 @@ delete_nobutton=Nijedan klik nijedan gumb
 delete_ereport=Prijavi se kao neželjena pošta : $1
 delete_errc=Kopiranje e-pošte nije uspjelo
 delete_errm=Premještanje pošte nije uspjelo
+
 confirm_title=Potvrdite Delete
 confirm_warn=Jeste li sigurni da želite izbrisati odabrane poruke $1 iz ove mape?
 confirm_warnf=Jeste li sigurni da želite izbrisati odabrane poruke $1 iz mape <b>$2</b>?
@@ -277,6 +289,7 @@ confirm_warn4=Dok se brisanje ne završi, ne smije se provoditi druga radnja.
 confirm_ok=Izbriši sada
 confirm_warnall=Jeste li sigurni da želite izbrisati sve poruke u ovoj mapi?
 confirm_warnallf=Jeste li sigurni da želite izbrisati sve poruke u mapi <b>$1</b>?
+
 search_title=Rezultati pretraživanja
 search_ecannot=Nije vam dopušteno pretraživanje e-pošte ovog korisnika
 search_ematch=Morate unijeti tekst za podudaranje.
@@ -305,16 +318,19 @@ search_nolatest=Sve u mapi
 search_latestnum=Samo najnovije
 search_elatest=Nedostaje ili nevažeći broj poruka za pretraživanje
 search_withstatus=, sa statusom $1
+
 folder_inbox=Ulazni spremnik
 folder_sent=Poslana pošta
 folder_drafts=nacrti
 folder_trash=Otpad
+
 detach_err=Odvajanje datoteke nije uspjelo
 detach_edir=Nema datoteke ili mape za spremanje
 detach_eopen=Otvaranje $1 : $2 nije uspjelo
 detach_ewrite=Pisanje u $1 : $2 nije uspjelo
 detach_title=Odvojite datoteku
 detach_ok=Napisao je privitak na datoteci na strani poslužitelja $1 ($2).
+
 sform_title=Napredna pretraga
 sform_header=Napredne mogućnosti pretraživanja putem e-pošte
 sform_andmode=Način kriterija
@@ -339,6 +355,7 @@ sform_headers=bilo koje zaglavlje
 sform_allmsg=cijela poruka
 sform_size=veličina poruke
 sform_return=napredni obrazac za pretraživanje
+
 find_enone=Nisu pronađeni korisnici koji odgovaraju vašoj pretrazi
 find_title=Rezultati pretraživanja
 find_results=Korisnici koji odgovaraju pretraživanju $1 ..
@@ -351,6 +368,7 @@ find_incount=E-pošta
 find_sentcount=Poslano
 find_fcount=mape
 find_in=$1 u $2
+
 acl_none=nijedan
 acl_same=Korisnik s istim imenom
 acl_all=svi
@@ -376,12 +394,15 @@ acl_usersu=Sa UID-om u dometu
 acl_sec=Uključiti sekundarne skupine?
 acl_dir=Mogu čitati datoteke e-pošte u direktoriju
 acl_dirauto=Odlučite automatski (bilo gdje ako su svi korisnici vidljivi, nigdje drugdje)
+
 log_delmail=Izbrisane su poruke $1 s $2
 log_movemail=Prenesene su poruke $1 s $2 u $3
 log_copymail=Kopirane su poruke $1 s $2 u $3
 log_send=Poslana pošta $1
 log_read=Pročitajte poštu za $1
+
 emodified=Ova je mapa izmijenjena otkako je zadnji put gledana! Vratite se na <a href='$1'>popis pošte</a> i pokušajte ponovo.
+
 razor_title=Izvješćivanje kao neželjene pošte
 razor_title2=Izvještavanje kao Ham
 razor_report=Prijavljivanje ove poruke Razoru i drugim bazama podataka koje blokiraju neželjenu poštu ..
@@ -391,14 +412,18 @@ razor_done=.. gotovo
 razor_err=.. neuspjeh! Pogledajte gornju poruku pogreške zbog razloga.
 razor_moved=.. gotov, i premješten u mapu $1.
 razor_deleted=.. gotov, i izbrisana poruka previše.
+
 ham_title=Izvještavanje kao Ham
 ham_report=Prijavljivanje ove poruke kao neželjene pošte Razoru i drugim bazama podataka SpamAssassin ..
+
 black_title=Odbijanje pošiljatelja
 black_done=Na popis odbijenih adresa SpamAssassin dodao je adresu e-pošte $1.
 black_already=Adresa e-pošte $1 već se nalazi na popisu odbijanih adresa tvrtke SpamAssassin.
+
 white_title=Dopuštanje pošiljatelja
 white_done=Na popis dopuštenih adresa SpamAssassin dodao je adresu e-pošte $1.
 white_already=Adresa e-pošte $1 već se nalazi na popisu dozvoljenih adresa SpamAssassina.
+
 ldap_emod=Nedostaje Perl modul $1 potreban za povezivanje na LDAP
 ldap_econn=Nije uspjelo povezivanje s poslužiteljem LDAP $1 port $2
 ldap_elogin=Povezivanje na LDAP poslužitelj $1 kao $2 : $3 nije uspjelo
@@ -406,12 +431,15 @@ ldap_ehost=U konfiguraciji modula nije postavljen LDAP poslužitelj
 ldap_eport=Nije postavljen valjani port za LDAP poslužitelj u konfiguraciji modula
 ldap_euser=U konfiguraciji modula nije postavljena prijava za LDAP
 ldap_ebase=Nema konfiguracije DN LDAP-a u konfiguraciji modula
+
 delall_title=Izbriši svu poštu
 delall_rusure=Jeste li sigurni da želite izbrisati svu e-poštu s $1? $2 poruke ukupne vrijednosti $3 bit će zauvijek izbrisane.
 delall_ok=Izbriši sada
+
 slide_title=Priložene slike
 slide_prev=prijašnji
 slide_next=Sljedeći
+
 left_mail=pošta
 left_search=Traži:
 left_folders=Upravljanje mapama

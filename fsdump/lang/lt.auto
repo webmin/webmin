@@ -23,6 +23,7 @@ index_follow=Po $1
 index_forcetar=TAR formatu
 index_delete=Ištrinti pasirinktas atsargines kopijas
 index_nostrftime=Įspėjimas - kai kurie atsarginės užduotys failų pavadinimuose naudoja % , tačiau pakeitimas strftime neleidžiamas „Modulio konfigūracija“ puslapyje.
+
 dump_dir=Atsarginė katalogo kopija
 dump_dirs=Katalogai sukurti atsarginę kopiją
 dump_fs=Failų sistema
@@ -108,6 +109,7 @@ dump_remount=Atnaujinti naudojant <tt>noatime</tt> parinktį atsarginės kopijos
 dump_eftpupdate=Įrašyti failus į esamą archyvą neįmanoma naudojant FTP.
 dump_eleveldir=Katalogams, kurie nėra failų sistemos prijungimo taškai, leidžiamos tik 0 lygio atsarginės kopijos
 dump_eupdatedir=<tt>/etc/dumpdates</tt> failą galima atnaujinti tik tiems katalogams, kurie yra failų sistemos prijungimo taškai
+
 edit_err=Nepavyko sukurti atsarginės kopijos
 edit_edir=Trūksta atsarginio katalogo
 edit_efs=Šis modulis negali sukurti atsarginių kopijų $1 failų sistemų
@@ -132,9 +134,11 @@ edit_tolevel=$1 - $2 ($3 lygis)
 edit_special=Atsarginis tvarkaraštis
 edit_when=Kada kurti atsarginę kopiją
 edit_clone=Klonas
+
 save_err=Nepavyko išsaugoti atsarginės kopijos
 save_edir=Trūksta arba netinkamas atsarginių kopijų katalogas
 save_efs=Atsarginio katalogo negalima pakeisti į kitą failų sistemą
+
 backup_title=Atsarginė kopija dabar
 backup_desc=Atliekame atsarginę kopiją nuo $1 iki $2 ..
 backup_reverify=.. baigta. Dabar tikrinu atsarginę kopiją ..
@@ -147,6 +151,7 @@ backup_notape=.. atsarginę kopiją viršijo vienos juostos talpa. Juostos keiti
 backup_egone=Atsarginės kopijos nėra!
 backup_bg=Pradėti atsarginių kopijų kūrimo procesą. Galite stebėti jo eigą pagrindiniame modulio puslapyje esančiame skyriuje <b>Vykdyti atsarginių kopijų kūrimo darbus</b> ir būsite informuoti apie galutinę jo būklę el. Paštu.
 backup_ecannot=Jums neleidžiama kurti šio katalogo atsarginę kopiją
+
 restore_title=Atstatyti atsarginę kopiją
 restore_err=Nepavyko atkurti atsarginės kopijos
 restore_ecommand=Komanda $1, reikalinga atkurti $2 failų sistemos atsargines kopijas, jūsų sistemoje nerasta. Galbūt jis šiuo metu neįdiegtas.
@@ -190,6 +195,7 @@ restore_gzip=Atspausti archyvą?
 restore_keep=Neperrašyti failų?
 restore_emulti=Kelių failų atkūrimas negali būti atliekamas iš juostinio įrenginio
 restore_emulti2=Kelių failų atkūrimas negali būti atliekamas iš nuotolinio serverio
+
 log_create=Sukurta atsarginė $1 konfigūracija
 log_modify=Pakeista atsarginės $1 konfigūracija
 log_delete=Ištrinta $1 atsarginė konfigūracija
@@ -197,13 +203,16 @@ log_backup=Kuriamos atsarginės kopijos nuo $1 iki $2
 log_bgbackup=Pradėta atsarginių kopijų kūrimas nuo $1 iki $2 
 log_restore=Atkurta atsarginė kopija iš $1 
 log_kill=Nutraukta $1 atsarginė kopija
+
 kill_err=Nepavyko nutraukti atsarginės kopijos kūrimo
 kill_egone=Nebėra!
 kill_ecannot=Jums neleidžiama nutraukti šios atsarginės kopijos
+
 newtape_err=Nepavyko pranešti apie naują juostą
 newtape_egone=Atsarginė kopija nebeveikia!
 newtape_estatus=Atsarginės kopijos nebelaukia naujos juostos
 newtape_ecannot=Jums neleidžiama tvarkyti šios atsarginės kopijos
+
 acl_edit=Ar galite kurti ir redaguoti atsargines kopijas?
 acl_restore=Ar galima atkurti atsargines kopijas?
 acl_cmds=Ar gali redaguoti prieš ir po komandų?
@@ -211,8 +220,10 @@ acl_extra=Ar galite redaguoti papildomus komandinės eilutės parametrus?
 acl_dirs=Leidžiami atsarginių kopijų katalogai
 acl_all=Visi katalogai
 acl_list=Tik išvardytos ..
+
 delete_err=Nepavyko ištrinti atsarginių kopijų
 delete_enone=Nepasirinkta
+
 email_already=Atsarginė kopija jau vykdoma naudojant PID $1.
 email_ebefore=Nepavyko įvesti komandos prieš atsarginę kopiją!
 email_verify=Tikrinama atsarginė kopija ..
@@ -220,5 +231,6 @@ email_eafter=Nepavyko sukurti atsarginę komandą!
 email_subject=$1 atsarginė kopija $2 
 email_ok=Atsarginė kopija pavyko
 email_failed=Atsarginė kopija nepavyko!
+
 newtape_subject=Pakeiskite $1 juostos atsarginę kopiją iš $2 $3 
 newtape_body=$2 atsarginė kopija $3 pasiekė didžiausią leidžiamą duomenų kiekį juostoje $1. Jei norite tęsti atsarginę kopiją, turėsite įkelti naują juostą ir paspausti nuorodą „Tape Loaded“ Webmin failo sistemos atsarginės kopijos modulyje.

@@ -1,6 +1,7 @@
 title_modules=Modules supplémentaires
 title_none1=Aucun
 title_none2=(entrée de menu sans démarrage)
+
 log_create_title=Option de démarrage créée $1 
 log_delete_title=Option de démarrage supprimée $1 
 log_modify_title=Option de démarrage modifiée $1 

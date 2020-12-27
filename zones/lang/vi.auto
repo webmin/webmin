@@ -4,6 +4,7 @@ index_none=Không có khu vực đã được xác định.
 index_add=Thêm một khu vực mới.
 index_return=danh sách khu vực
 index_zones=Các khu hiện có
+
 edit_title=Chỉnh sửa vùng
 edit_common=Cấu hình vùng chung
 edit_name=Tên khu vực
@@ -57,20 +58,26 @@ edit_attrnone=Không có thuộc tính chung đã được xác định.
 edit_attradd=Thêm một thuộc tính chung mới.
 edit_webmin=Mở Webmin
 edit_brand=Nhãn hiệu
+
 ui_cancel=Hủy bỏ
+
 save_err=Không thể lưu vùng
 save_epool=Hồ bơi bị thiếu hoặc không hợp lệ
 save_ewebmin=Webmin không chạy trong khu vực này
+
 reboot_title=Khu vực khởi động lại
 reboot_rusure=Bạn có chắc chắn muốn khởi động lại vùng $1 không? Tất cả các quy trình chạy trong nó sẽ được khởi động lại.
 reboot_err=Không thể khởi động lại vùng
 reboot_doing=Bây giờ khởi động lại khu vực ..
+
 reboot_failed=.. thất bại  :
 reboot_ok=.. hoàn thành.
+
 halt_title=Khu vực tắt máy
 halt_rusure=Bạn có chắc chắn muốn tắt vùng $1 không? Tất cả các quy trình chạy trong nó sẽ bị dừng lại.
 halt_err=Không thể tắt vùng
 halt_doing=Bây giờ đóng cửa khu vực ..
+
 boot_title=Khu vực khởi động
 boot_err=Không thể vào vùng khởi động
 boot_doing=Bây giờ khởi động lên vùng ..
@@ -78,10 +85,12 @@ delete_title=Xóa vùng
 delete_rusure=Bạn có chắc chắn muốn xóa vùng $1 không? Tất cả các tệp trong hệ thống tệp riêng của nó sẽ bị mất.
 delete_err=Không thể xóa vùng
 delete_doing=Bây giờ xóa vùng ..
+
 uninstall_title=Hệ thống chưa cài đặt
 uninstall_rusure=Bạn có chắc chắn muốn hủy cài đặt phần mềm hệ thống từ vùng $1 không? Tất cả các tệp trong hệ thống tệp riêng của nó sẽ bị mất.
 uninstall_err=Không thể cài đặt phần mềm hệ thống từ vùng
 uninstall_doing=Bây giờ hủy cài đặt hệ thống từ khu ..
+
 install_title=Cài đặt hệ thống
 install_doing=Bây giờ cài đặt hệ thống vào khu vực ..
 net_title1=Tạo giao diện mạng
@@ -96,6 +105,7 @@ net_enetmask=Netmask không hợp lệ
 net_eaddress=địa chỉ IP không hợp lệ
 net_egone=Giao diện không còn tồn tại!
 net_eclash=Giao diện mạng có cùng địa chỉ IP đã tồn tại trong vùng này
+
 pkg_title1=Thêm thư mục gói
 pkg_title2=Chỉnh sửa thư mục gói
 pkg_header=Chi tiết thư mục gói
@@ -107,6 +117,7 @@ pkg_eclash=Thư mục gói đã tồn tại trong vùng này
 pkg_inherit=Kế thừa các gói từ khu vực toàn cầu
 pkg_inherit_yes=Có (vùng gốc thưa thớt)
 pkg_inherit_no=Không (toàn bộ vùng gốc)
+
 fs_title1=Tạo hệ thống tập tin
 fs_title2=Chỉnh sửa hệ thống tập tin
 fs_header=Chi tiết hệ thống tập tin bổ sung
@@ -128,6 +139,7 @@ fs_eoptions=Tùy chọn gắn kết không hợp lệ (phải là danh sách đ�
 fs_egone=Hệ thống tập tin không còn tồn tại!
 fs_mount=Gắn kết sau khi tạo?
 fs_eclash=Một hệ thống tập tin sử dụng cùng một thư mục đã tồn tại trong vùng này
+
 rctl_title1=Tạo kiểm soát tài nguyên
 rctl_title2=Chỉnh sửa điều khiển tài nguyên
 rctl_header=Loại và giới hạn kiểm soát tài nguyên
@@ -148,6 +160,7 @@ rctl_elimit=Không phải là một con số
 rctl_eaction=Không có tín hiệu nào được chọn trong hàng $1 
 rctl_evalues=Không giới hạn nhập
 rctl_eclash=Một kiểm soát cho cùng một tài nguyên đã tồn tại trong khu vực này
+
 attr_title1=Tạo thuộc tính chung
 attr_title2=Chỉnh sửa thuộc tính chung
 attr_header=Chi tiết thuộc tính vùng chung
@@ -165,6 +178,7 @@ attr_euint=Giá trị không phải là số nguyên dương
 attr_eboolean=Giá trị không phải là 'đúng' hoặc 'sai'
 attr_egone=Thuộc tính không còn tồn tại!
 attr_eclash=Một thuộc tính có cùng tên đã tồn tại trong vùng này
+
 status_running=Đang chạy
 status_installed=Dừng lại
 status_configured=Chưa cài đặt
@@ -172,13 +186,16 @@ status_incomplete=Đang được cài đặt
 status_ready=Sẵn sàng
 status_down=Xuống
 status_shutting_down=Đang Tắt
+
 list_name=Tên khu vực
 list_id=Số ID
 list_path=Thư mục vùng
 list_status=Trạng thái
 list_actions=Hành động
+
 zone_in=Trong khu vực $1 
 pool_none=không ai
+
 create_title=Tạo vùng
 create_header=Chi tiết khu vực mới
 create_path=Thư mục tập tin vùng
@@ -239,6 +256,7 @@ create_erouter=Thiếu hoặc không hợp lệ địa chỉ IP của bộ đị
 create_removingpkgs=xóa thư mục gói được kế thừa. ..
 create_brand=Nhãn hiệu
 create_brandmsg=Khu vực xây dựng thương hiệu
+
 log_create_zone=Đã tạo vùng $1 
 log_delete_zone=Đã xóa vùng $1 
 log_save_zone=Cấu hình đã sửa đổi cho vùng $1 
@@ -262,6 +280,7 @@ log_delete_rctl=Đã xóa kiểm soát tài nguyên cho $1 trong vùng $2
 log_create_attr=Đã tạo thuộc tính chung $1 trong vùng $2 
 log_modify_attr=Thuộc tính chung được sửa đổi $1 trong vùng $2 
 log_delete_attr=Đã xóa thuộc tính chung $1 trong vùng $2 
+
 webmin_eperl=Perl không được cài đặt ở $1 
 webmin_eroot=Thư mục $1 không tồn tại hoặc không chứa Webmin.
 webmin_title=Cài đặt Webmin

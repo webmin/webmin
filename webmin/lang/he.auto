@@ -9,6 +9,7 @@ index_restart=הפעל מחדש את Webmin
 index_restartmsg=לחץ על כפתור זה כדי להפעיל מחדש את תהליך שרת Webmin. יתכן וזה נחוץ אם שדרגת לאחרונה את פרל.
 index_refresh=רענון מודולים
 index_refreshmsg=בדוק מחדש את כל המודולים של Webmin עבור שרתים מותקנים, ועדכן את אלה שמופיעים בקטגוריה 'מודולים לא בשימוש'.
+
 access_title=בקרת גישה IP
 access_desc=ניתן להגדיר את שרת ה- Webmin לשלול או לאפשר גישה רק מכתובות IP מסוימות באמצעות טופס זה. ניתן להזין שמות מארחים (כמו foo.bar.com) ורשתות IP (כמו 10.254.3.0 או 10.254.1.0/255.255.255.128 או 10.254.1.0/25 או 10.254.1.5-10.254.97.127). עליך להגביל את הגישה לשרת שלך לכתובות מהימנות, במיוחד אם הוא נגיש מהאינטרנט. אחרת, כל מי שמנחש את הסיסמא שלך יהיה בעל שליטה מלאה במערכת שלך.
 access_ip=כתובות IP מותרות
@@ -33,6 +34,7 @@ access_ehost=Failed to find IP address for '$1'
 access_eself=Your current IP address ($1) would be denied
 access_always=האם לפתור שמות מארחים בכל בקשה?
 access_trust=האם אתה סומך על כתובת IP מרוחקת המסופקת על ידי פרוקסי?
+
 bind_title=נמלים וכתובות
 bind_desc2=ניתן להשתמש בטופס זה כדי לשנות את מספר היציאה שעליו מקשיבה Webmin, או להקשיב רק לכתובת IP יחידה במערכת שלך. ניתן גם להגדיר את התצורה כך שתקבל חיבורים ביציאות מרובות, או להאזנה במספר כתובות IP. הערה - דפדפן האינטרנט שלך עשוי לבקש ממך להיכנס שוב לאחר שינוי היציאה או הכתובת המחייבת.
 bind_header=כתובות IP ויציאות
@@ -61,6 +63,7 @@ bind_eipv6=IPv6 cannot be enabled unless the $1 Perl module is installed
 bind_redirecting=מפנה לכתובת אתר חדשה ..
 bind_elsof=New port $1 is already in use by another process
 bind_eonsystem=The IP address $1 is not active on this system, and so cannot be used
+
 log_title=רישום
 log_desc=Webmin can be configured to write a log of web server hits, in the standard CLF log file format. If logging is enabled, you can also choose whether IP addresses or hostnames are recorded, and how often the log file is cleared. When enabled, logs are written to the file $1.
 log_desc2=When logging is enabled, Webmin will also write a more detailed log of user actions to the file $1. This log can be viewed and analysed with the Webmin Actions Log module to see exactly what each Webmin user has been doing.
@@ -92,6 +95,7 @@ log_login=לכלול יומני Webmin ויומנים ביומן פעולות?
 log_email=שלח פעולות רשומות באמצעות דואר אלקטרוני אל
 log_emailnone=אל תשלח
 log_inmodsemail=שלח דוא"ל לפעולות ב-
+
 proxy_title=שרתי פרוקסי והורדות
 proxy_desc=If the host on which Webmin is running is behind a firewall of some kind, you may need to set the proxy server to use for accessing web and FTP sites. Certain modules, such as <tt>Software Packages</tt>, will use these proxies when downloading files or programs.
 proxy_header=שרתי פרוקסי
@@ -134,6 +138,7 @@ proxy_return=שרתי פרוקסי והורדות
 proxy_tabproxy=מרגיז
 proxy_tabdown=מוריד
 proxy_fallback=נסה בקשה ישירה אם שרת ה- proxy אינו פעיל?
+
 ui_title=ממשק משתמש
 ui_desc=טופס זה מאפשר לך לערוך אפשרויות ממשק משתמש המשמשות את כל המודולים. כשאתם מזינים צבעים, יש לציין כל אחד מהם במערכת RGB הרגילה, כאשר כל ערך הוא מספר הקסס מ- 00 ל- ff.
 ui_header=אפשרויות ממשק משתמש
@@ -183,6 +188,7 @@ ui_dateformat_dd/mm/yyyy=dd/mm/yyyy (כלומר, 16/09/2001)
 ui_dateformat_mm/dd/yyyy=mm/dd/yyyy (כלומר 09/16/2001)
 ui_dateformat_yyyy/mm/dd=yyyy/mm/dd (כלומר 2001/09/16)
 ui_ehostnamedisplay=שם מארח תצוגה חסר או לא חוקי
+
 mods_title=מודולי Webmin
 mods_desc1=Webmin modules can be added after installation by using the form to the right. Modules are typically distributed in <tt>.wbm</tt> files, each of which can contain one or more modules. Modules can also be installed from RPM files if supported by your operating system.
 mods_installsource=התקן מ-
@@ -226,6 +232,7 @@ mods_tabinstall=להתקין
 mods_tabclone=שיבוט
 mods_tabdelete=מחק
 mods_tabexport=ייצוא
+
 install_err1=Failed to install module from $1
 install_efile=הקובץ אינו קיים
 install_err2=התקנת המודול שהועלה נכשלה
@@ -259,10 +266,12 @@ install_cat=Under category $1.
 install_eneither=RPM אינו מכיל מודול או נושא לניהול אתרים
 install_err4=התקנת מודול רגיל נכשלה
 install_emissing=המודול שצוין אינו קיים
+
 clone_err=שכפול המודול נכשל
 clone_elink=symlink failed : $1
 clone_ecopy=failed to copy config : $1
 clone_desc=Clone of $1
+
 delete_err=מחיקת המודולים נכשלה
 delete_edep=Module $1 cannot be deleted, as the module $2 depends on it
 delete_desc1=$1 (Clone of $2)
@@ -274,6 +283,7 @@ delete_rusure2=Are you sure you want to delete the theme $2 ? $1 kB of files wil
 delete_rusure3=Are you sure you want to delete the module clones(s) $2 ?
 delete_acls=האם להסיר מהמשתמשים ולאפס את הגדרות בקרת הגישה?
 delete_enone=לא נבחרו מודולים
+
 os_title=מערכת הפעלה וסביבה
 os_desc3=דף זה מציג את מערכת ההפעלה שאותרה על ידי Webmin בזמן ההתקנה, ואת המערכת שמתגלה כעת. אם הם שונים, אתה יכול לבחור לעדכן את מידע מערכת ההפעלה של Webmin, אשר עשוי להיות נחוץ אם שדרגת לאחרונה.
 os_desc2=ניתן גם לשנות את נתיב החיפוש המשמש את Webmin בעת הפעלת תוכניות, ואת נתיב הספרייה המשותפת מועבר לתוכנות כלשהן.
@@ -296,6 +306,7 @@ os_eiversion=חסרה גרסת מערכת הפעלה פנימית
 os_incorrect=Warning - Your system is actually running $1 version $2.
 os_fix=עדכון מערכת ההפעלה שזוהה
 os_usermin=עדכן גם מערכת ההפעלה Usermin
+
 lang_title=שפה
 lang_title2=שפת Webmin
 lang_lang=תצוגה בשפה
@@ -307,6 +318,7 @@ lang_chardef=נקבע לפי שפה
 lang_charover=כוח ערכת תווים
 lang_err=שמירת השפה נכשלה
 lang_echarset=מערך תווים חסר או לא חוקי למראה
+
 ssl_title=הצפנת SSL
 ssl_essl=The Net::SSLeay perl module does not appear to be installed on your system. To install the OpenSSL library and Net::SSLeay, follow <a href='$1'>these instructions</a> from the Webmin website.
 ssl_cpan=Alternately, you can have Webmin <a href='$1'>download and install</a> the required Net::SSLeay Perl module for you.
@@ -412,6 +424,7 @@ ssl_letsnotrenew=רק התחדש ידנית
 ssl_staging=בואו להצפין שרת
 ssl_staging0=אמיתי
 ssl_staging1=ביצוע (מבחן בלבד)
+
 newkey_err=יצירת מפתח SSL נכשלה
 newkey_ecn=שם שרת חסר או לא חוקי
 newkey_ecns=לא הוזנו שמות שרתים
@@ -424,11 +437,13 @@ newkey_ok=נוצר בהצלחה את מפתח ה- SSL הבא :
 newkey_esize=גודל מפתח חסר או לא חוקי
 newkey_edays=מספר חסר או לא חוקי של ימים לפני התום
 newkey_ecountry=קוד המדינה חייב להיות שני אותיות
+
 newcsr_err=יצירת CSR CSR נכשלה
 newcsr_efile=שם קובץ ה- CSR חסר
 newcsr_title=צור אחריות חברתית
 newcsr_ok=הופק בהצלחה את בקשת אישור ה- SSL הבאה :
 newcsr_ok2=This CSR must be sent to a signing authority, who will return a signed certificate. This can be installed with the key above using the <b>Upload certificate</b> tab.
+
 startpage_title=אפשרויות עמוד אינדקס
 startpage_intro2=דף זה מאפשר לך לשלוט במראה התפריט הראשי של Webmin. אפשרויות מסוימות עשויות להיות יעילות רק בעת שימוש בערכת הנושא המוגדרת כברירת מחדל.
 startpage_tabs=לסווג מודולים?
@@ -442,6 +457,7 @@ startpage_gotonone=&lt;אין&gt;
 startpage_gotomodule=לאחר הכניסה, עבור תמיד למודול
 startpage_webminup=האם להציג עדכוני Webmin בדף מידע מערכת?
 startpage_moduleup=האם להציג עדכוני מודול בדף מידע מערכת?
+
 upgrade_title=שדרג את וובמין
 upgrade_desc=This form allows you to upgrade your entire Webmin installation to a new version. You can install from a local file, an uploaded file or from the latest version at <a href=http://www.webmin.com/>www.webmin.com</a>. Just as with a manual upgrade, all your config settings and third-party modules will be kept.
 upgrade_descrpm=This form allows you to upgrade your entire webmin installation to a new version using RPM's upgrade option. You can install from a local RPM file, an uploaded file or from the latest version at <a href=http://www.webmin.com/>www.webmin.com</a>. Just as with a manual upgrade, all your config settings and third-party modules will be kept.
@@ -506,10 +522,12 @@ upgrade_tabupdate=עדכן מודולים
 upgrade_tabsched=עדכון מתוזמן
 upgrade_src=שדרג את Webmin מ-
 upgrade_opts=אפשרויות שדרוג
+
 newmod_desc=כאשר שדרוג Webmin, כל המודולים החדשים בגרסה החדשה יוענקו למשתמש אחד או יותר. טופס זה מאפשר לך להגדיר את המשתמשים המקבלים מודולים חדשים. הגדרה זו תחול בעת השדרוג בשורת הפקודה או באמצעות הטופס שלמעלה.
 newmod_header=מענקי מודול חדשים
 newmod_def=Default behavior - grant new modules to <tt>root</tt> or <tt>admin</tt>
 newmod_users=הענק מודולים חדשים ל :
+
 update_desc1=This form allows you to upgrade Webmin modules that have been found to contain bugs or security holes from the <a href=http://www.webmin.com/updates.html>Webmin Updates</a> page or from another source. This will compare the currently installed modules with those available for update, and optionally automatically download and install any modules that are out of date.
 update_header1=עדכן מודולים כעת
 update_header2=עדכן מודולים על פי לוח הזמנים
@@ -536,6 +554,7 @@ update_enomodsig=Could not download signature file for module : $1
 update_ebadmodsig=Module signature check failed : $1
 update_src=שדרג מודולים מ-
 update_opts=אפשרויות עדכון מודול
+
 ca_title=רשות אישורים
 ca_old=אישור קיים
 ca_header1=צור אישור CA חדש
@@ -567,6 +586,7 @@ ca_eminiserv=אישורי לקוח SSL נתמכים רק תחת miniserv.
 ca_eversion=גרסת המודול Perl Net::SSLeay המותקנת במערכת שלך אינה תומכת בתעודות לקוח SSL.
 ca_essleay=The SSL administration command $1 was not found on your system. You may need to change the path in the Webmin Users module configuration.
 ca_essl=ניתן להגדיר אישור SSL רק כאשר שרת האינטרנט פועל במצב SSL.
+
 session_title=אימות
 session_desc1=כאשר הדבר מופעל, פסק זמן של סיסמאות מגן על שרת האינטרנט שלך מפני התקפות סדק של סיסמאות בכוח על ידי הוספת עיכוב מתרחב ברציפות בין כל ניסיון כניסה שנכשל עבור אותו משתמש.
 session_header=אפשרויות אימות והפעלה
@@ -630,10 +650,12 @@ session_sha512=השתמש בהצפנת SHA512
 session_emd5mod=MD5 encryption cannot be used, as Perl $1 module is not installed.
 session_esha512mod=SHA512 encryption cannot be used, as Perl $1 module is not installed.
 session_blocklock=נעל גם משתמשים עם כניסות כושלות
+
 assignment_title=הקצה מחדש מודולים
 assignment_header=מטלות קטגוריות מודול
 assignment_ok=שנה קטגוריות
 assignment_desc=טופס זה מאפשר לך להגדיר איזו קטגוריה כל מודול מוצג תחת בדף האינדקס של Webmin.
+
 categories_title=ערוך קטגוריות
 categories_header=מזהה קטגוריה ותיאורים
 categories_desc=טופס זה מאפשר לשנות את שם הקטגוריות הקיימות ב- Webmin וליצור קטגוריות חדשות להקצאת מודולים אליהם. החלק העליון של הטבלה מיועד לשינוי התיאורים של הקטגוריות המובנות, ואילו החלק התחתון מיועד להוסיף מזהי קטגוריה ותיאורים חדשים.
@@ -646,6 +668,7 @@ categories_name=תיאור מוצג
 categories_lang=ערוך קטגוריות בשפה:
 categories_langok=שינוי
 categories_custom=המותאם אישית
+
 log_access=בקרת גישה IP השתנה
 log_bind=יציאה וכתובת השתנו
 log_log=אפשרויות רישום השתנו
@@ -691,6 +714,7 @@ log_onedelete_webmincron=Deleted scheduled function in module $1
 log_letsencrypt=ביקש אישור SSL חדש מ- Let's Encrypt
 log_letsencryptdns=Created Let's Encrypt DNS record for $1
 log_letsencryptcleanup=Removed Let's Encrypt DNS record for $1
+
 themes_title=ערכות נושא של Webmin
 themes_desc=ערכות הנושא שולטות במראה ממשק המשתמש של Webmin, כולל סמלים, צבעים, רקע ומערך העמודים. ניתן להשתמש בתיבת הבחירה שלהלן לבחירת אחד מהנושאים המותקנים במערכת שלך.
 themes_sel=נושא נוכחי :
@@ -706,6 +730,7 @@ themes_taboverlay=שנה שכבת-על
 themes_tabinstall=התקן נושא
 themes_tabdelete=מחק ערכות נושא
 themes_tabexport=ייצוא ערכות נושא
+
 themes_err1=Failed to install theme from $1
 themes_efile=הקובץ אינו קיים
 themes_err2=התקנת הנושא שהועלה נכשלה
@@ -731,9 +756,11 @@ themes_delok=נושא למחיקה :
 themes_return=רשימת נושאים
 themes_err4=שינוי נושא שכבת העל נכשל
 themes_eoverlay=שכבת-על שנבחרה אינה תואמת לנושא הגלובלי הנוכחי
+
 themes_desc4=ניתן לייצא ערכות נושא המותקנות כקובץ wbt.gz באמצעות הטופס שלהלן. לאחר מכן ניתן להתקין קובץ נושא במערכת אחרת שמפעילה את Webmin.
 themes_exportmods=ערכות נושא לייצוא
 themes_exportok=ייצא ערכות נושא שנבחרו
+
 referers_title=מפנים מהימנים
 referers_desc=דף זה מאפשר לך לקבוע את התצורה של התמיכה בבדיקת ההפניות של Webmin, המשמשת למניעת קישורים זדוניים מאתרים אחרים שמערים את הדפדפן שלך לעשות דברים מסוכנים עם Webmin. עם זאת, אם יש לך קישורים ל- Webmin מאתרים משלך שאינך רוצה להזהיר אותם עליך להוסיף אתרים אלה לרשימה שלהלן.
 referers_list=אתרים מהימנים
@@ -742,6 +769,7 @@ referers_none2=אזהרה: זה פותח את המערכת שלך להתקפות
 referers_referer=בדיקת הפניות מופעלת?
 referers_err=שמירת הפניות נכשלה
 referers_ehost='$1' is not a valid trusted hostname
+
 update_err=עדכון המודולים נכשל
 update_eurl=כתובת אתר לעדכון חסרה או לא חוקית
 update_title=עדכן מודולים
@@ -762,6 +790,7 @@ update_rv=Checking for updated Webmin modules from $1
 update_eemail=עליך להזין כתובת דוא"ל אם אתה מציג רק את מה שיעודכן.
 update_subject=דוח עדכוני מודולי Webmin
 update_version=A new release of Webmin (version $1) is now available for download. Future updates will be released only for the latest version.
+
 anon_title=גישה מודול אנונימית
 anon_desc=This page allows you to grant access to selected Webmin modules and paths without clients needing to login. For each module path that you enter below (such as <tt>/custom</tt> or <tt>/passwd</tt>) you must also enter the name of a Webmin user whose permissions will be used for access to the module.
 anon_desc2=עליך להיזהר מאוד בעת מתן גישה אנונימית, שכן בקרות גישה לא מספיקות IP או מתן גישה למודול השגוי עשויות לאפשר לתוקפים להשתלט על המערכת שלך.
@@ -770,15 +799,19 @@ anon_user=משתמש Webmin
 anon_err=שמירת גישה אנונימית נכשלה
 anon_eurl='$1' is not a valid URL path
 anon_euser=Missing or invalid Webmin user for URL path '$1'
+
 enogpg=GnuPG אינו מותקן
+
 standard_failed=Failed to download modules list : $1
 standard_header=מודולי Webmin סטנדרטיים
 standard_warn=Warning - you are not running the latest Webmin version $1, so these modules will probably fail to install.
 standard_eurl=כתובת אתר לא חוקית של מודולים סטנדרטיים
+
 third_failed=Failed to download modules list : $1
 third_header=מודולי וובמין של צד שלישי
 third_eurl=כתובת אתר לא חוקית של מודולים של צד שלישי
 third_title=בחר מודול צד שלישי
+
 lock_title=נעילת קבצים
 lock_desc=כברירת מחדל, Webmin תקבל מנעול בכל קובץ שהוא משנה כדי למנוע שינוי במקביל על ידי מספר תהליכים, מה שעלול להוביל לשחיתות קבצים. דף זה מאפשר לך להשבית נעילה באופן סלקטיבי או מוחלט אם הוא גורם לבעיות.
 lock_header=הגדרות נעילת קבצים
@@ -789,6 +822,7 @@ lock_except=נעל את כל הקבצים והספריות למעט ..
 lock_err=שמירת נעילת הקבצים נכשלה
 lock_edir='$1' is not an absolute path
 lock_edirs=לא נכנסו קבצים או ספריות
+
 ipkey_title1=צור מפתח SSL
 ipkey_title2=ערוך את מפתח ה- SSL
 ipkey_header=פרטי מפתח SSL ספציפיים ל- IP
@@ -798,6 +832,7 @@ ipkey_eip2='$1' is not a valid IP address or hostname
 ipkey_eips=לא הוזנו כתובות IP
 ipkey_eextracas=לא הוזנו קבצי אישור נוספים
 ipkey_eextraca=Additional certificate file $1 does not exist
+
 descs_title=כותרות מודול
 descs_info=דף זה מאפשר לך לציין כותרות חלופיות עבור מודולי Webmin, כדי לעקוף את התיאורים הסטנדרטיים שלהם.
 descs_mod=מודול
@@ -807,11 +842,13 @@ descs_cdesc=כותרת שיבוט
 descs_err=שמירת כותרות המודול נכשלה
 descs_edesc=Missing title for module '$1'
 descs_etitle=Missing title for clone '$1'
+
 export_err=ייצוא המודולים נכשל
 export_ecmd=Missing needed command $1
 export_efile=קובץ ייצוא חסר או לא חוקי
 export_done=Successfully exported the selected modules to $1.
 export_title=ייצוא מודולים
+
 advanced_title=אפשרויות מתקדמות
 advanced_header=אפשרויות מתקדמות וניסיוניות
 advanced_temp=ספריית קבצים זמנית
@@ -855,10 +892,13 @@ advanced_listdir=רשימת ספריות ללא קובץ אינדקס?
 advanced_headers=כותרות HTTP נוספות
 advanced_eheader=Headers must be formatted like <tt>Header: Value</tt>
 advanced_sortconfigs=לשמור קבצי config ממוינים לפי מפתחותיהם?
+
 syslog_errorlog=יומן שגיאות Webmin
+
 clear_title=נקה את מטמון ההורדה
 clear_done=The Webmin cache containing $1 of files from $2 URLs has been successfully cleared.
 clear_none=כרגע אין כתובות אתרים במטמון ההורדה של Webmin.
+
 savekey_err=שמירת מפתח חדש נכשלה
 savekey_ekey=מפתח פורמט PEM חסר או לא חוקי
 savekey_ecert=אישור בפורמט PEM חסר או לא חוקי
@@ -868,6 +908,7 @@ savekey_title=העלה מפתח קיים
 savekey_done2=The supplied SSL key has been saved in $1, and the certificate in $2.
 savekey_done=The supplied SSL key and certificate have been saved in the file $1.
 savekey_done3=The supplied chained SSL certificate has been saved in the file $1.
+
 cache_title=כתובות שמורות במטמון
 cache_search=מצא כתובות אתרים המכילות:
 cache_ok=לחפש
@@ -880,8 +921,10 @@ cache_delete=סומק שנבחר מהמטמון
 cache_err=כישלון כתובות URL במטמון נכשל
 cache_enone=לא נבחר
 cache_efile=שם קובץ לא תקין
+
 restart_title=הפעלה מחדש של Webmin
 restart_done=תהליך השרת של Webmin מופעל כעת מחדש - המתן מספר שניות לפני שתמשיך.
+
 mobile_title=אפשרויות מכשירים ניידים
 mobile_header=אפשרויות לדפדפני מובייל
 mobile_theme=נושא לדפדפני מובייל
@@ -890,6 +933,7 @@ mobile_nosession=לכפות שימוש באימות HTTP?
 mobile_agents=סוכני משתמש נוספים לדפדפני מובייל
 mobile_err=שמירת אפשרויות המכשירים הניידים נכשלה
 mobile_prefixes=קידומות של שם מארח של URL עבור דפדפני הנייד
+
 blocked_title=מארחים ומשתמשים חסומים
 blocked_type=סוג
 blocked_who=שם מארח או שם משתמש
@@ -901,9 +945,11 @@ blocked_host=מארח לקוח
 blocked_clear=נקה את כל החסימה
 blocked_cleardesc=לחץ על כפתור זה כדי לנקות את כל חסימות המשתמש המארח והמשתמש הנוכחי, על ידי הפעלה מחדש של תהליך שרת Webmin.
 blocked_restarting=תהליך השרת של Webmin מתחיל כעת לנקות מארחים ומשתמשים חסומים - המתן מספר שניות לפני שתמשיך.
+
 refreshmods_title=רענון מודולים
 refreshmods_installed=בודק אם יש מודולי Webmin שמישים ..
 refeshmods_counts=.. found $2 with installed applications, $1 not installed.
+
 debug_title=קובץ יומן באגים
 debug_header=אפשרויות קובץ יומן באגים ב- Webmin
 debug_enabled=יומן ניפוי מופעל?
@@ -931,6 +977,7 @@ debug_cmd=שורת פיקוד
 debug_cron=משרות רקע
 debug_inmods=מודולים לכתיבת יומני ניפוי עבור
 debug_emodules=אין מודולים לאיתור באגים שנבחרו
+
 notif_passexpired=פג תוקף הסיסמה שלך ב- Webmin! תיאלץ לשנות אותו בכניסה הבאה.
 notif_passchange=Your Webmin password was last changed on $1, and must be changed in $2 days.
 notif_passlock=Your Webmin password was last changed on $1, and your account will be locked in $2 days if it is not changed.
@@ -946,6 +993,7 @@ notify_updatedesc=פותר את הבעיה
 notif_updateok=התקן עדכונים עכשיו
 notif_reboot=עדכוני חבילה אחרונים (כמו גרסת גרעין חדשה) מחייבים הפעלה מחדש מחדש באופן מלא.
 notif_rebootok=הפעל מחדש עכשיו
+
 status_title=אוסף סטטוס רקע
 status_header=הגדרות משימת איסוף סטטוס
 status_interval=לאסוף סטטוס מערכת ברקע?
@@ -957,6 +1005,7 @@ status_temp=לאסוף טמפרטורות נסיעה?
 status_units=יחידות לטמפרטורות
 status_celsius=צלזיוס
 status_fahrenheit=פרנהייט
+
 sendmail_title=שולח דוא"ל
 sendmail_desc=דף זה קובע כיצד Webmin שולח דוא"ל, למשל מגיבויים מתוזמנים או מעקב רקע. זה משפיע גם על דוא"ל שנשלח באמצעות מודול קריאת דואר משתמש.
 sendmail_header=אפשרויות שליחת דואר
@@ -997,12 +1046,14 @@ sendmail_url=כתובת אתר Webmin לשימוש בדוא"ל
 sendmail_url_def=ברירת מחדל ($1)
 sendmail_url_custom=כתובת אתר מותאם אישית
 sendmail_eurl=כתובת אתר מותאמת אישית חסרה או לא חוקית
+
 testmail_title=שלח דוא"ל לבדיקה
 testmail_err=שליחת הודעת הבדיקה נכשלה
 testmail_eto=לא הוזנה כתובת יעד
 testmail_sending=Sending message from $1 to $2 ..
 testmail_done=.. הודעה נשלחה. בדוק את תיבת הדואר של כתובת היעד כדי לוודא שהיא נמסרה בפועל.
 testmail_failed=.. sending failed : $1
+
 web_title=אפשרויות שרת אינטרנט
 web_header=אפשרויות לשרת האינטרנט המובנה של וובמין
 web_expires=זמן מטמון בצד הלקוח לקבצים סטטיים
@@ -1014,6 +1065,7 @@ web_expirespaths=זמני מטמון בצד הלקוח על בסיס נתיב UR
 web_expirespath=נתיב ביטוי רגיל
 web_expirestime=זמן המטמון בשניות
 web_eexpires2=Missing or non-numeric client side cache time in row $1
+
 webmincron_title=פונקציות מתוזמנות של Webmin
 webmincron_emodule=מודול Webmin Cron Jobs אינו מותקן!
 webmincron_module=מודול Webmin
@@ -1037,6 +1089,7 @@ webmincron_when1=זמנים ספציפיים
 webmincron_secs=שניות
 webmincron_err=שמירת הפונקציה המתוזמנת נכשלה
 webmincron_einterval=המרווח חייב להיות מספר שניות גדול מאפס
+
 twofactor_title=אימות דו-גורמי
 twofactor_header=אפשרויות אימות של שני גורמים
 twofactor_provider=ספק אימות
@@ -1075,6 +1128,7 @@ twofactor_secret1=נוצר באופן אקראי
 twofactor_secret0=השתמש במקש בן 16 תווים
 twofactor_esecret=המפתח הסודי חייב להיות באורך של 16 תווים בדיוק ולהכיל רק אותיות ומספרים
 twofactor_esession=אי אפשר להשתמש באימות דו-גורמי אלא אם אימות מבוסס הפעלה פעיל
+
 letsencrypt_title=בואו להצפין בקשת אישור
 letsencrypt_err=בקשת האישור נכשלה
 letsencrypt_ecmds=Neither the Let's Encrypt client command <tt>certbot</tt> or the <tt>python</tt> command were found on your system
@@ -1108,5 +1162,6 @@ letsencrypt_ecsr=Failed to generate CSR : $1
 letsencrypt_ekeygen=Failed to generate private key : $1
 letsencrypt_enative=לקוח Let's Encrypt המקורי (certbot) שימש בעבר במערכת זו, ויש להשתמש בו לכל בקשות האישור העתידיות
 letsencrypt_eacmedns=רק לקוח Let's Encrypt הרשמי תומך באימות מבוסס DNS
+
 announce_hide=הסתר את ההודעה הזו
 alert_hide=הסתר התראה

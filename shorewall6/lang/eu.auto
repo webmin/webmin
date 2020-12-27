@@ -19,6 +19,7 @@ index_dump=Erakutsi Tanta
 index_dumpdesc=Egin klik botoi honetan Shorewall-en trazatzeko informazioa <tt>shorewall6 dump</tt> komandoan ikusteko.
 index_check=Begiratu suebakia
 index_checkdesc=Egin klik botoi honetan Shorewallek zure suebakiaren konfigurazioa <tt>shorewall6 check</tt> komandoarekin egiaztatzeko.
+
 list_move=Mugitu
 list_add=Gehitu
 list_auto=automatikoa
@@ -30,6 +31,7 @@ list_manual=Fitxategia eskuz editatu
 list_manualdesc=Egin klik botoi honetan Shorewall $1 fitxategia eskuz editatzeko, goiko sarrerak gordetzen baitira.
 list_ecannot=Ezin duzu Shorewall taula hau editatu.
 list_delete=Ezabatu Hautatuta
+
 restart_err=Ezin izan da konfigurazioa aplikatu
 refresh_err=Ezin izan da konfigurazioa freskatu
 start_err=Huts egin du suebakia abiaraztean
@@ -41,6 +43,7 @@ check_title=Begiratu suebakia
 check_ok=.. suebakiaren konfigurazioa ondo dago.
 check_failed=.. Errorea aurkitu da zure suebakiaren konfigurazioan!
 check_cmd=Konfigurazioa egiaztatzen ..
+
 zones_title=Sareko zonak
 zones_desc=Orrialde honetan zerrendatutako zonek zure sistematik lor daitezkeen sare desberdinak adierazten dituzte. Dena den, hemengo sarrerek ez dute inolako eraginik suebakian; horren ordez, zona-izenak eta deskribapenak definitzen dituzte.
 zones_add=Gehitu sareko zona berria.
@@ -72,6 +75,7 @@ zones_firewall=Suebakien sistema
 zones_eopts=Zona aukera baliogabeak
 zones_eopts_in=Aukera baliogabeko sarrerako aukerak
 zones_eopts_out=Aukerarik gabeko irteerako aukerak
+
 policy_title=Lehenespeneko Politikak
 policy_desc=Orrialde honek firewall gune desberdinen artean zirkulaziorako ekintza lehenetsiak konfiguratzeko aukera ematen du. Gehitu daitezke ostalari jakin batzuetarako edo trafiko motetarako firewall arauak orrialdean.
 policy_add=Gehitu lehenetsitako politika berria.
@@ -92,6 +96,7 @@ policy_ulog=Sartu ULOG-era
 policy_efw=&lt;Firewall&gt; iturria eta helmuga zonetarako aukeratu daiteke
 policy_elimit=Zirkulazio muga falta edo baliogabea da
 policy_eburst=Falta den trafiko lehertzearen zenbakia edo falta da
+
 rules_title=Firewall arauak
 rules_desc=Taula honetan trafiko, iturri edo helmuga mota jakin batzuetarako politika lehenetsiei dagozkien salbuespenak agertzen dira. Aukeratutako ekintza irizpideekin bat datozen paketeei aplikatuko zaie lehenetsitakoan.
 rules_add=Gehitu suebaki-arau berria.
@@ -138,6 +143,7 @@ rules_eaction=Ez da ekintza aukeratu
 rules_macro=Makro ekintza parametroa
 rules_none2=Bat ere ez
 rules_emacro=Makro parametro falta edo baliogabea
+
 tos_title=Zerbitzu motak
 tos_desc=Orrialde honek IP zerbitzu mota definitzen du trafiko mota jakin batzuetarako, eta horiek lehentasunak igotzeko edo jaisteko erabil daitezke.
 tos_add=Gehitu zerbitzu mota berri bat.
@@ -156,6 +162,7 @@ tos_edit=Editatu Zerbitzu Mota
 tos_create=Sortu Zerbitzu Mota
 tos_header=Zerbitzuaren xehetasunak
 tos_err=Huts egin du zerbitzu mota gordetzean
+
 interfaces_title=Sareko interfazeak
 interfaces_desc=Shorewall kudeatu nahi duzun zure sistemako sareko interfaze bakoitza orrialde honetan zerrendatu behar da eta konektatutako gunearekin lotuta. Lorategi itzultzeko interfazea <tt>lo</tt> ez da inoiz zerrendatu behar.
 interfaces_add=Gehitu sareko interfaze berria.
@@ -171,6 +178,7 @@ interfaces_header=Sarearen interfazearen xehetasunak
 interfaces_err=Huts egin du sareko interfazea gordetzean
 interfaces_eiface=Interfazearen izen falta edo baliogabea
 interfaces_ebroad=Igorri helbide falta edo baliogabea
+
 masq_title=masquerading
 masq_desc=Orrialde honetako sarrerek sareko helbideen itzulpena konfiguratzen dute sare batzuen eta interfaze jakin baten artean bideratutako trafikorako.
 masq_add=Gehitu maskara arau berria.
@@ -201,6 +209,7 @@ masq_emnete=Salbuespen salbuespen sareen zerrenda
 masq_esnat=SNAT IP helbide baliogabea
 masq_eports=Falta diren komak bereizita dauden portuen zerrenda hutsik edo hutsik
 masq_eipsec=IPsec aukerak falta dira
+
 nat_title=NAT estatikoa
 nat_desc=Taula honetako sare estatiko helbideen itzulpen sarrerak zure suebakian kanpoko helbide bat eta RFC1918 helbide baten artean 1-1 korrespondentzia konfiguratzeko erabil daitezke. NAT estatikoa sarritan erabiltzen da zure saretik kanpoko zerbitzari batekin konexioak ahalbidetzeko.
 nat_add=Gehitu NAT sarrera estatiko berria.
@@ -219,6 +228,7 @@ nat_local=Firewall sistemarentzako aktiboa da?
 nat_eext=Kanpoko IP helbide baliogabea
 nat_eint=Barne IP helbide baliogabea
 nat_evirt=Interfaz birtualaren zenbaki baliogabea
+
 proxyndp_title=Proxy NDP
 proxyndp_desc=Orrialde honek zure sistema konfiguratu dezake NDP eskaerei erantzuteko berea ez den IP helbideetarako, horrela paketeak helbide horietara helarazi ahal izango ditu bere helmuga errealetara.
 proxyndp_add=Gehitu proxy NDP helbide berria.
@@ -235,6 +245,7 @@ proxyndp_err=Huts egin du NDP proxy gordetzean
 proxyndp_have=Ostalatzeko ibilbidea existitzen al da?
 proxyndp_eaddr=NDP helbide falta edo baliogabea
 proxyndp_pers=Ibilbidea utzi, suebakia gelditu zenean ere?
+
 routestopped_title=Geldituta dagoenean
 routestopped_desc=Lehenespenez, Shorewall geldituta dagoenean, ostalari guztiei sarbidea ukatuko die. Orrialde honek oraindik eskuragarri egongo diren ostalariak edo sareak definitzeko aukera ematen du.
 routestopped_add=Gehitu gelditu den helbide berria.
@@ -250,6 +261,7 @@ routestopped_err=Huts egin du gelditutako helbidea gordetzean
 routestopped_eaddr=Ez da helbiderik sartu
 routestopped_all=Helbide guztiak
 routestopped_list=Zerrendatutako helbideak eta sareak ..
+
 tunnels_title=VPN tunelak
 tunnels_desc=Orrialde honetan zure firewalletik igarotzen diren VPN tunelak agertzen dira eta, beraz, Shorewall konfigurazioak baimendu behar du.
 tunnels_add=Gehitu VPN tunel berria.
@@ -282,6 +294,7 @@ tunnels_generic_l=Generikoa, protokolorako.
 tunnels_gsel=Zerrendatutako zonak
 tunnels_eopenvpn=OpenVPN tunelarentzako portu baliogabea
 tunnels_egeneric=Falta den protokoloa edo protokoloa: tunel generikorako portua
+
 hosts_title=Zona ostalariak
 hosts_desc=Orrialde honetan gune jakin batzuetako ostalariak eta sareak agertzen dira. Normalean ez duzu zerrenda horretan aldaketarik egin beharrik.
 hosts_add=Gehitu zona-ostalari berria.
@@ -301,8 +314,10 @@ hosts_ip=Helbidea edo sarea $1
 hosts_mac=MAC helbidea $1 
 hosts_ipset=IP multzoa $1 
 hosts_any=Edozein ostalari
+
 edit_before=$1 sartu aurretik
 edit_after=$1 sarrera ondoren
+
 blacklist_title=Zerrenda Beltzako ostalariak
 blacklist_desc=Orrialde honetan zerrendatutako ostalariak eta zerbitzuak blokeatuko dira, hauen trafikoa interfaze batean <b>zerrenda beltza</b> aukera ezarri ondoren.
 blacklist_add=Gehitu zerrenda beltzeko ostalari berria.
@@ -325,6 +340,7 @@ blacklist_eproto=Protokolo falta edo baliogabea
 blacklist_eports=Portuen zenbaki baliogabea edo komaz bereizitako portuen zerrenda
 blacklist_eports2=Portuak TCP eta UDP protokoloetarako soilik zehaztu daitezke
 blacklist_return=zerrenda beltzeko ostalariak
+
 providers_title=Bideratze hornitzaile osagarriak
 providers_desc=Orrialde honek bideratze taula osagarriak definitzen ditu. Beharrezkoak dira ISP bat baino gehiagorako konexioak edo ISP berberekin konexio bat baino gehiago baduzu edo Squid exekutatzen duen proxy garden gisa suebakia ez den ostalari batean.
 providers_add=Gehitu bideratze-hornitzaile berria.
@@ -359,17 +375,21 @@ providers_enumber=Hornitzaile-zenbakia edo falta da
 providers_emark=Hornitzailearen marka falta edo baliogabea da
 providers_edup=Bikoizteko hornitzaile falta da
 providers_egateway=Atebide falta edo baliogabea
+
 manual_desc=Inprimaki hau $1 Shorewall fitxategia eskuz editatzeko erabil daiteke. Kontuz ibili, ez baita aldaketekin sintaxi egiaztapenik egingo.
 manual_reset=Desegin
 manual_err=Ezin izan da taulako fitxategia gorde
 manual_efile=Taularen izena baliogabea!
 manual_edata=Ez da taulako fitxategiaren edukia sartu.
+
 acl_nochange=Shorewall konfigurazioa aplikatu, gelditu eta hasi daiteke?
 acl_files=Shorewall mahaiak eskuragarri
 acl_all=guztiak
 acl_sel=Jarraian hautatua ..
+
 delete_err=Ezin izan da errenkadak ezabatu
 delete_enone=Ez da errenkadarik hautatu
+
 opts_routeback=Onartu trafikoa ostalarira itzultzea
 opts_source=Onartu ostalaritik edozein helmugara
 opts_dest=Baimendu edozein iturritatik ostatatzea
@@ -386,12 +406,14 @@ opts_proxyndp=Gaitu NDP proxy
 opts_ndp_filter=NDP interfazearen IP eskaerei soilik erantzun
 opts_detectnets=Taylor gunea bideratutako ostalariak soilik barneratzeko
 opts_upnp=Lotu berriro paketeak UPNP bidez
+
 opts_dhcp=Interfazeak DHCP erabiltzen du
 opts_forward=Ezarri birbidalketa
 opts_ignore=Ezikusi gora/behera gertaerak
 opts_optional=Interfazea aukerakoa da
 opts_required=Interfazea beharrezkoa da
 opts_bridge=Interfazea zubi bat da
+
 comment_add=Gehitu iruzkin berria.
 comment_edit=Editatu Iruzkina
 comment_create=Sortu Iruzkinak
@@ -399,6 +421,7 @@ comment_header=Taularen iruzkinen xehetasunak
 comment_msg=Mezua
 comment_err=Ezin izan da iruzkinak gorde
 comment_enone=Ez da mezu bat sartu
+
 log_create_table=$1 taulan sarrera gehitu da
 log_modify_table=$1 taulan aldatutako sarrera
 log_delete_table=$1 sarrera ezabatu da taulatik
@@ -414,6 +437,7 @@ log_start=Firewall hasi da
 log_refresh=Berreskuratutako suebakia
 log_restart=Berrabiarazi da suebakia
 log_clear=Suebakiaren suebakia
+
 shorewall_conf_title=Konfigurazio maisuaren fitxategia
 shorewall_conf_desc=Orrialde honek konfigurazio globalaren aldagaiak konfiguratzeko aukera ematen du. OHARRA: ez da gomendagarria hemen aldagaien ordena aldatzea konfigurazio fitxategian iruzkinen posizio erlatiboa mantendu nahi baduzu.
 shorewall_conf_add=Gehitu konfigurazio aldagai berria.
@@ -427,6 +451,7 @@ shorewall_conf_create=Sortu konfigurazio aldagaia
 shorewall_conf_header=Konfigurazio aldagaiaren xehetasunak
 shorewall_conf_err=Huts egin du konfigurazio-aldagaia gordetzean
 shorewall_conf_varname=Aldagai izen baliogabea (baliozko shell aldagai izena izan behar du)
+
 params_title=Neurri pertsonalizatua
 params_desc=Orrialde honek Shorewall-en parametro pertsonalizatuak konfiguratzeko aukera ematen du. OHARRA: ez da gomendagarria hemen parametroen ordena aldatzea konfigurazio fitxategian iruzkinen posizio erlatiboa mantendu nahi baduzu.
 params_add=Gehitu pertsonalizatutako parametro berria.

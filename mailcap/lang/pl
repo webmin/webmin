@@ -9,6 +9,7 @@ index_disable=Wyłącz wybrane
 index_enable=Włącz wybrane
 index_enabled=Włączone?
 index_return=listy programów
+
 edit_title1=Tworzenie typu MIME programu
 edit_title2=Edycja typu MIME programu
 edit_header=Szczegóły programu obsługującego typ MIME
@@ -22,18 +23,21 @@ edit_none=Brak (zawsze użyj programu)
 edit_term=Wyświetlić dane wyjściowe w terminalu?
 edit_copious=Generuje wiele danych wyjściowych?
 edit_desc=Opis typu MIME
+
 save_err=Niepowodzenie zapisywania programu typu MIME
 save_etype=Brakujący lub nieprawidłowy typ MIME
 save_eprogram=Brakujący program obsługujący
 save_eclash=Włączony program dla wpisanego typu MIME już istnieje
 save_etest=Brakujące lub nieprawidłowe polecenie testowe
 save_edesc=Błędny opis typu MIME
+
 delete_err=Błąd usuwania typu programu MIME
 disable_err=Niepowodzenie wyłączenia programów typu MIME
 disable_eclash=Wyłączony typ MIME dla $1 już istnieje
 enable_err=Niepowodzenie włączania programów typu MIME
 enable_eclash=Włączony program typu MIME dla $1 już istnieje.
 delete_enone=Nic nie wybrano
+
 log_delete_mailcap=Usunięto program typu MIME dla $1
 log_create_mailcap=Utworzono program typu MIME dla $1
 log_modify_mailcap=Zmodyfikowano program typu MIME dla $1

@@ -6,6 +6,7 @@ index_printershare=printer deling
 index_shareconf=share configuratie
 index_version=Samba versie $1
 index_samba=Samba
+
 index_sharename=Gedeelde Naam
 index_path=Pad
 index_security=Beveiliging
@@ -42,12 +43,14 @@ index_stopmsg=Klik op deze knop om de lopende Samba servers te stoppen op uw sys
 index_stopmsg_wb=Klik op deze knop om de werkende Winbind servers te stoppen op uw systeem.
 index_einclude=Waarschuwing - Uw Samba configuratie file $1 bevat de $2 of $3 richtlijnen. Dit kan ervoor zorgen dat Webmin de file niet correct kan modificeren.
 index_delete=Verwijder Geselecteerde Shares
+
 config_mins=Min
 config_secs=Seconden
 config_bytes=Bytes
 config_never=Nooit
 config_all=Alles
 config_neither=Niet één
+
 global_title=Globale Configuratie
 global_unixnetwork=Unix Netwerken
 global_winnetwork=Windows Netwerken
@@ -60,6 +63,7 @@ global_password=Versleutelde Wachtwoorden
 global_users=Samba Gebruikers
 global_group=Samba Groepen
 global_bind=Winbind Opties
+
 error_nosamba=De Samba server executable <tt>$1</tt> is niet gevonden. Of Samba is niet geinstalleerd op uw systeem of uw <a href="$2">module configuratie</a> is niet correct.
 error_version=Webmin kon niet de versie van uw Samba server uitvoerbestand <tt>$1</tt> controleren. Controleer uw <a href="$2">module configuratie</a> om er zeker van te zijn dat het juiste pad gebruikt word.
 error_config=De configuratie file $1 is niet gevonden. Waarschijnlijk is SAMBA niet geinstalleerd op uw systeem, of uw <a href="$2">module configuratie</a> is niet correct.
@@ -67,6 +71,7 @@ error_include=Webmin kan niet werken met Samba config files die de <tt>config</t
 error_delshare=Mislukt om share te verwijderen
 error_delcopy=De share '$1' gekopieerd van deze share
 error_savename=Mislukt om de file benaming op te slaan
+
 convert_title=Converteer Gebruikers
 convert_msg=Met dit formulier kunt u de Unix en Samba gebruikers lijst synchroniseren. Wanneer Samba <a href=$1>versleutelde wachtwoorden</a> gebruikt, word er een aparte lijst met gebruikers en wachtwoorden gebruikt, in plaats van de systeem gebruikers lijst.
 convert_noconv=Converteer en verwijder niet de volgende gebruikers :
@@ -83,6 +88,7 @@ convert_cannot=Unix gebruikers kunnen niet worden geconverteerd naar Samba gebru
 convert_who=Unix gebruikers om te converteren
 convert_who0=Alleen gebruikers in lijst of in UID reeksen
 convert_who1=Alle behalve gebruikers in lijst of in UID reeksen
+
 misc_title=Extra Opties
 misc_debug=Debug Niveau
 misc_cachecall=Cache <tt>getwd()</tt> oproepen?
@@ -96,6 +102,7 @@ misc_chroot=<tt>chroot()</tt> directory
 misc_smbrun=Pad naar <tt>smbrun</tt>
 misc_clienttime=Client tijd compensatie
 misc_readprediction=Lezen voorspellen?
+
 net_title=Unix Netwerk Opties
 net_idle=Wacht tijd voordat word verbroken
 net_trustlist=Vertrouwde hosts/gebruikers file
@@ -111,6 +118,7 @@ net_maxpacket=Maximum pakket grote
 net_listen=Luister op adres
 net_ip=IP adres
 net_socket=Socket opties
+
 passwd_title=Wachtwoord Opties
 passwd_encrypt=Gebruik versleutelde wachtwoorden?
 passwd_allownull=Sta geen gebruik van wachtwoorden toe?
@@ -124,11 +132,13 @@ passwd_send=Stuur
 passwd_map=Gebruikersnaam mapping
 passwd_unixuser=Unix Gebruikers
 passwd_winuser=Windows gebruikers
+
 print_title=Print Opties
 print_style=Unix print stijl
 print_show=Laat alle printers zien?
 print_printcap=Printcap file
 print_cachetime=Printer status deling tijd
+
 smb_title=Windows Netwerk Opties
 smb_workgroup=Werkgroep
 smb_wins=WINS mode
@@ -158,14 +168,17 @@ smb_nowhere=Nergens
 smb_fromlist=Van lijst...
 smb_ip=IP Adres
 smb_asworkgroup=<b>Als Werkgroep</b> (optioneel)
+
 create_title=Maak Kopie
 create_msg=Een gekopieerde share zal gelijk zijn met de standaard waardes van de share die u kiest. Indien de bron share verandert zal hetzelfde veranderen in de kopie.
 create_from=Een gedeelde map om van te kopieren :
 create_name=Nieuwe share naam :
+
 smbuser_title=Samba Gebruikers
 smbuser_list=Samba Gebruikers Lijst
 smbuser_nouser=Geen Samba gebruikers gedefinieerd
 smbuser_cannot=Samba gebruikers die niet in lijst gezet kunnen worden
+
 euser_title=Bewerk Samba Gebruikers
 euser_name=Gebruikersnaam
 euser_uid=Unix UID
@@ -184,6 +197,7 @@ euser_locked=Account staat op slot
 euser_nopwrequired=Geen wachtwoord nodig
 euser_disable=Account uitgezet
 euser_trust=Werkstation vertrouwt account
+
 fmisc_title=Extra File Standaards
 fmisc_for=Voor share <tt>$1</tt>
 fmisc_lockfile=File op slot zetten doen?
@@ -201,6 +215,7 @@ fmisc_conncmd=Opdracht om uit te voeren bij verbinden
 fmisc_disconncmd=Opdracht om uit te voeren bij verbreken
 fmisc_rootconn=Opdracht om uit te voeren bij verbinden <i>als root</i>
 fmisc_rootdisconn=Opdracht om uit te voeren bij verbreken <i>als root</i>
+
 fname_title1=File Naam Standaarden
 fname_title2=Bewerk File Naam
 fname_option=File Naam Opties
@@ -215,6 +230,7 @@ fname_hide=Verstop files met punt ervoor?
 fname_archive=Opslaan DOS archief flag?
 fname_hidden=Opslaan DOS verstopte flag?
 fname_system=Opslaan DOS systeem flag?
+
 fperm_title1=File Permissie Standaarden
 fperm_title2=Bewerk File Permissies
 fperm_option=File Permissie Opties
@@ -227,6 +243,7 @@ fperm_link=Toestaan van symlinks buiten de share?
 fperm_delro=Mag de alleen lezen files verwijderen?
 fperm_forcefile=Forceer Unix file mode
 fperm_forcedir=Forceer Unix directory mode
+
 share_title1=File Deling Standaarden
 share_title2=Bewerk File Deling
 share_title3=Maak File Deling
@@ -250,6 +267,7 @@ share_naming=File Benaming
 share_misc=Extra Opties
 share_samedesc1=Note - deze instellingen hebben ook effect voor de standaard instellingen van alle file delingen.
 share_samedesc2=Note - deze instellingen hebben ook effect voor alle printer delingen.
+
 print_title1=Printer Optie Standaards
 print_title2=Bewerk Printer Opties
 print_option=Printer Opties
@@ -261,6 +279,7 @@ print_delete=Verwijder taak opdracht
 print_pause=Pauze taak opdracht
 print_unresume=Stoppen taak opdracht
 print_driver=Printer driver
+
 pshare_title1=Printer Deling Standaarden
 pshare_title2=Bewerk Printer Deling
 pshare_title3=Maak Printer Deling
@@ -269,6 +288,7 @@ pshare_name=Deling naam
 pshare_all=Alle Gedeelde Printers
 pshare_unixprn=Unix Printer
 pshare_spool=Spoel directory
+
 sec_index1=Beveiliging Standaarden
 sec_index2=Bewerk Beveiliging
 sec_writable=Beschrijfbaar?
@@ -291,6 +311,7 @@ sec_rouser=Alleen lezen gebruikers
 sec_rogroup=Alleen lezen groepen
 sec_rwuser=Lees/schrijf gebruikers
 sec_rwgroup=Lees/schrijf groepen
+
 esync_title=Gebruikers Synchronisatie
 esync_msg=Webmin kan zo geconfigureerd worden dat de veranderingen bij de Unix gebruikers lijst automatisch worden bijgewerkt bij de Samba gebruikers lijst. Dit zal alleen goed werken indien de <b>Gebruikers en Groepen</b> Webmin module word gebruikt om toe te voegen, verwijderen of veranderen van gebruikers.
 esync_add=Voeg een Samba gebruiker toe indien er een Unix gebruiker word toegevoegd
@@ -302,6 +323,7 @@ esync_gid=Groep SID of RID voor nieuwe gebruikers
 esync_apply=Toevoegen
 esync_cannot=Gebruiker synchronisatie kan niet worden geconfigureerd
 esync_egid=Ontbrekende groep SID of RID
+
 mkpass_title=Converteer Gebruikers
 mkpass_convfail=Mislukt om gebruiker te converteren
 mkpass_msg=Unix gebruikers converteren ...
@@ -314,10 +336,12 @@ mkpass_passfail=Mislukt om wachtwoord in te stellen
 mkpass_user=Gebruikersnaam
 mkpass_action=Ondernomen actie
 mkpass_skipcount=$1 gebruikers zijn overgeslagen voor conversie.
+
 savecopy_fail=Mislukt om een kopie te maken
 savecopy_global=De naam 'global' kan niet gebruikt worden voor een share
 savecopy_exist=Een deling met de naam '$1' bestaat reeds
 savecopy_ename=Geen deling naam ingevuld
+
 saveuser_fail=Mislukt om gebruiker op te slaan
 saveuser_uid='$1' is geen geldige Unix UID
 saveuser_colon=In de echte naam mag niet het volgende karakter zitten :
@@ -325,10 +349,13 @@ saveuser_home=De home directory '$1' bestaat niet
 saveuser_shell=$1 is geen geldige shell
 saveuser_pass=Mislukt om het wachtwoord te veranderen met gebruik van smbpasswd : $1
 saveuser_ews=Het 'Werkstation vertrouwde account' optie kan niet worden aangezet voor bestaande gebruikers
+
 savefmisc_fail=Mislukt om extra opties op te slaan
 savefmisc_number='$1' is geen geldig aantal verbindingen
+
 savefperm_fail=Mislukt om file permissies op te slaan
 savefperm_mode='$1' is geen geldige Unix file mode
+
 savefshare_fail=Mislukt om deling op te slaan
 savefshare_nopath=Geen pad ingevuld
 savefshare_exist=Een deling met de naam '$1' bestaat reeds
@@ -337,6 +364,7 @@ savefshare_global=De naam 'global' kan niet gebruikt worden voor een deling
 savefshare_owner=Ontbrekende of ongeldige eigenaar voor de nieuwe directory
 savefshare_group=Ontbrekende of ongeldige groep voor nieuwe directory
 savefshare_perms=Ontbrekende of ongeldige permissies voor nieuwe directory
+
 savemisc_fail=Mislukt om opties op te slaan
 savemisc_lockdir=De directory die de "lock directory" moet bevatten bestaat niet
 savemisc_logdir=De directory die de log file moet bevatten bestaat niet
@@ -345,37 +373,48 @@ savemisc_overlap='$1' is geen geldige overlappende lees grote
 savemisc_chroot=De chroot directory '$1' bestaat niet
 savemisc_smbrun=Het smbrun program '$1' bestaat niet of is niet uitvoerbaar
 savemisc_time='$1' is geen geldige tijd compensatie
+
 savenet_fail=Mislukt om opties op te slaan
 savenet_timeout='$1' is geen geldige time-out voor verbreken verbinding
 savenet_ip='$1' is geen geldige IP byte
 savenet_keep='$1' is geen geldige blijf-in-leven interval
 savenet_maxxmit='$1' is geen geldige maximum pakket grote
+
 savepass_fail=Mislukt om opties op te slaan
 savepass_nopass=Uw versie van Samba ondersteund geen versleutelde wachtwoorden
 savepass_passwd=Geen programma opgegeven om wachtwoorden te veranderen
 savepass_level='$1' is geen geldige waarde voor verschil in grote/kleine letters van het wachtwoord
 savepass_chat=De verander het wachtwoord chat opeenvolging is leeg
+
 savepopts_fail=Mislukt om printer opties op te slaan
 savepopts_number=Minimum vrije ruimte moet een getal zijn
+
 saveprint_fail=Mislukt om opties op te slaan
 saveprint_printcap=De printcap file '$1' bestaat niet
 saveprint_cache='$1' is geen geldige deling tijd
+
 savepshare_fail=Mislukt om printer deling op te slaan
 savepshare_exist=Een deling met de naam '$1' bestaat reeds
 savepshare_name='$1' is geen geldige deling naam
 savepshare_global=De naam 'global' kan niet gebruikt worden voor een deling
+
 savesec_fail=Mislukt om de Beveiliging op te slaan
+
 savesmb_fail=Mislukt om opties op te slaan
 savesmb_size='$1' is geen geldige harddisk grote
 savesmb_oslevel='$1' is geen geldige master browser prioriteit
 savesmb_server=U moet een wachtwoord server invullen
+
 start_err=Mislukt om Samba servers te starten
 start_fail=$1 mislukt
 start_err_wb=Mislukt om de Winbind servers te starten
+
 restart_err=Mislukt om Samba servers te herstarten
 restart_err_wb=Mislukt om de Winbind servers te herstarten
+
 swats_fail=Mislukt om gebruikersnaam op te slaan
 swats_user=Ontbrekende SWAT gebruikersnaam
+
 viewu_index=Huidige Gebruikers
 viewu_list=Huidige gebruikers van $1
 viewu_share=Deling
@@ -392,6 +431,7 @@ viewu_ecmd=Het Samba status programma $1 lijkt niet te zijn geinstalleerd op uw 
 viewu_kill=Verbreek Geselecteerde Gebruikers
 viewu_enone=Geen gebruikers geselecteerd
 viewu_refresh=Ververs de pagina.
+
 log_apply=Opnieuw gestarte Samba servers
 log_apply_wb=Opnieuw gestarte Winbind servers
 log_stop=Gestopte Samba servers
@@ -433,6 +473,7 @@ log_modify_group=Gemodificeerde Samba groep $1
 log_delete_group=Verwijderde Samba groep $1
 log_gsync=Geconfigureerde Unix groep synchronisatie
 log_manual=Handmatig bewerkte config file $1
+
 swat_title=SWAT Login
 swat_list=SWAT Login
 swat_msg1=Uw huidige SWAT gebruikersnaam en wachtwoord zijn incorrect. Gebruik het formulier hieronder om opnieuw in te loggen.
@@ -444,6 +485,7 @@ swat_password=Wachtwoord
 swat_login=Login
 swat_clear=Opruimen
 swat_logout=Uitloggen bij SWAT
+
 eacl_aviol=Toegang controle schending
 eacl_np=U heeft geen toestemming om
 eacl_papply=herstart deze service
@@ -479,6 +521,7 @@ eacl_pafs=toegang tot deze file share
 eacl_paps=toegang tot deze gedeelde printer
 eacl_pcps=maak gedeelde printer
 eacl_pcfs=maak een gedeelde file
+
 acl_apply=Mag veranderingen toevoegen en Samba stoppen?
 acl_view_all_con=Mag alle verbindingen bekijken?
 acl_kill_con=Mag verbindingen verwijderen?
@@ -524,6 +567,7 @@ acl_group_opts=Samba groep opties
 acl_maint_groups=Mag groepen bekijken, bewerken en toevoegen?
 acl_maint_gsync=Mag auto UNIX naar SAMBA groepen sync onderhouden?
 acl_winbind=Mag bind naar domeinen?
+
 groups_title=Samba Groepen
 groups_name=Groep naam
 groups_unix=Unix groep
@@ -539,6 +583,7 @@ groups_return=groepen lijst
 groups_add=Toevoegen nieuwe Samba groep.
 groups_ecannot=U bent niet bevoegd om Samba groepen te bekijken of te bewerken
 groups_cannot=Samba groepen kunnen niet in lijst gezet worden
+
 gedit_title2=Bewerk Samba Groep
 gedit_title1=Maak Samba Groep
 gedit_header=Samba groep details
@@ -551,11 +596,13 @@ gedit_unix=Unix groep
 gedit_unixgr=Groep ..
 gedit_none=Geen
 gedit_set=In Lijst ..
+
 gsave_err=Mislukt om groep op te slaan
 gsave_eunix=Ontbrekende of ongeldige Unix groep naam of GID
 gsave_ename=Ontbrekende groep naam
 gsave_epriv=Ontbrekende groep privileges
 gsave_elocal=Privileges kunnen alleen ingesteld worden voor locale groepen
+
 gsync_title=Groep Synchronisatie
 gsync_msg=Webmin kan zo geconfigureerd worden dan veranderingen aan de Unix groeps lijst automatisch word toegevoegd aan de Samba groep lijst. Dit zal alleen werken wanneer de <b>Gebruikers en Groepen</b> Webmin module word gebruikt om toe te voegen, te verwijderen en het veranderen van groepen.
 gsync_add=Voeg een Samba groep toe wanneer een Unix groep word toegevoegd
@@ -566,10 +613,12 @@ gsync_type=Type van nieuwe groepen
 gsync_priv=Privileges voor nieuwe groepen (indien lokaal)
 gsync_ecannot=U bent niet bevoegd om de groep synchronisatie te configureren
 gsync_cannot=Groep synchronisatie kan niet worden geconfigureerd
+
 check_user1=$1 : Versleutelde wachtwoorden zijn niet aangezet op de <a href='$2'>Authenticatie</a> pagina.
 check_user2=$1 : Noch de Samba wachtwoord file of het pad naar pdbedit is ingesteld op de <a href='$2'>Module Configuratie</a> pagina.
 check_group1=$1 : Groepen worden alleen ondersteund in Samba versie 3.
 check_group2=$1 : Noch het pad naar smbgroupedit of de net opdracht is ingesteld op de <a href='$2'>Module Configuratie</a> pagina.
+
 winbind_title=Bind aan Domein
 winbind_ecannot=U bent niet bevoegd om bind voor domeinen te maken
 winbind_msg=Dit formulier kan gebruikt worden om uw Samba server te binden aan een Windows domein, typisch geleid door een andere server
@@ -585,6 +634,7 @@ winbind_edom=Ontbrekende domein naam
 winbind_cmd=Binding aan domein met de opdracht $1 ..
 winbind_failed=.. mislukt! Bekijk de foutmelding hierboven waarom.
 winbind_ok=.. compleet.
+
 bind_title=Winbind Opties
 bind_ecannot=U bent niet bevoegd om winbind opties te bewerken
 bind_header=Windows domein binding opties
@@ -603,9 +653,11 @@ bind_erealm=Ongeldige Kerberos realm
 bind_ecache=Ontbrekende of ongeldige cache tijd
 bind_euid=Ongeldige UID reeks - dit moet lijken op 20000-30000
 bind_egid=Ongeldige GID reeks - dit moet lijken op 20000-30000
+
 manual_title=Bewerk Config File
 manual_desc=Bewerken van Samba configuratie file $1 ..
 manual_err=Mislukt om config file op te slaan
 manual_edata=Niets ingevuld!
+
 delete_err=Mislukt om gedeelde zaken te verwijderen
 delete_enone=Niets geselecteerd

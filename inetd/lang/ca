@@ -14,6 +14,7 @@ index_search=Mostra els serveis que coincideixin amb:
 index_sok=Cerca
 index_toomany=Hi ha massa serveis d'Internet com per mostrar-los en aquesta pàgina.
 index_none=No hi ha cap servei d'Internet que coincideixi amb la teva cerca.
+
 error_restart=No s'ha pogut reiniciar inetd
 error_saverpc=No s'ha pogut desar el programa RPC
 error_invalidprgname='$1' no és un nom de programa vàlid
@@ -43,6 +44,7 @@ error_nameexist=Ja existeix un servei amb el nom $1 i el protocol $2
 error_inetservice=Ja existeix un servei d'Internet amb el nom $1 i el protocol $2
 error_smfservice=No s'ha pogut actualitzar el servei smf amb l'ordre '$1', codi d'error $2
 error_smf_cmdfield=Per a smf, el nom del programa '$1' ha de coincidir amb el primer argument del camp de l'ordre, això és, ha de ser '$2'
+
 editrpc_title1=Creació de Programa RPC
 editrpc_title2=Edició de Programa RPC
 editrpc_detail=Detalls del Programa RPC
@@ -69,6 +71,7 @@ editrpc_execasuser=Executa com a Usuari
 editrpc_max=Màxim per Minut
 editrpc_default=Defecte
 editrpc_execasgrp=Executa com a Grup
+
 editserv_title1=Creació de Servei Internet
 editserv_title2=Edició de Servei Internet
 editserv_detail=Detalls del Servei d'Internet
@@ -82,6 +85,7 @@ editserv_wrapper=Embolcall TCP
 editserv_inetd=Intern d'<tt>inetd</tt>
 editserv_qm=L'ordre pot no existir
 editserv_ename=No existeix cap servei amb aquest nom i protocol
+
 log_apply=Canvis aplicats
 log_create_serv=S'ha creat el servei $1
 log_modify_serv=S'ha modificat el servei $1
@@ -95,6 +99,7 @@ log_delete_serv_l=S'ha suprimit el servei $1 al port $2
 log_create_prog_l=S'ha creat el servei $1 al port $2 pel programa $3
 log_modify_prog_l=S'ha modificat el servei $1 al port $2 pel programa $3
 log_delete_prog_l=S'ha suprimit el servei $1 al port $2 pel programa $3
+
 log_create_rpc=S'ha creat l'RPC $1
 log_modify_rpc=S'ha modificat l'RPC $1
 log_delete_rpc=S'ha suprimit l'RPC $1

@@ -22,7 +22,9 @@ index_vdesc=Handles all connections to $1
 index_eip=&lt;Unknown&gt;
 index_global=Global Configuration
 index_create=Create virtual server
+
 efailed=Failed to save $1
+
 type_0=Networking Options
 type_1=Logging Options
 type_2=Files and Directories
@@ -30,6 +32,7 @@ type_3=Access Control
 type_4=Miscellaneous
 type_5=User and Group
 type_6=Authentication
+
 virt_title=Virtual Server Options
 virt_header1=For $1
 virt_header2=For default server
@@ -45,6 +48,7 @@ virt_cmds=FTP commands
 virt_return=virtual server
 virt_virt=Configure Virtual Server
 virt_edit=Edit Directives
+
 vserv_title=Configure Virtual Server
 vserv_addr=Address
 vserv_name=Server name
@@ -53,6 +57,7 @@ vserv_delete=Delete virtual server
 vserv_eaddr=Missing or invalid address
 vserv_eport=Missing or invalid port number
 vserv_ename=Missing server name
+
 anon_title=Anonymous FTP Options
 anon_header1=In virtual server $1
 anon_header2=In default server
@@ -60,6 +65,7 @@ anon_anon=Configure Anonymous FTP
 anon_return=anonymous FTP options
 anon_header3=For anonymous FTP in virtual server $1
 anon_header4=For anonymous FTP in default server
+
 aserv_title=Configure Anonymous FTP
 aserv_create=Setup Anonymous FTP
 aserv_root=Chroot directory
@@ -70,6 +76,7 @@ aserv_eroot=Missing or invalid chroot directory
 aserv_euser=Missing or invalid Unix user
 aserv_egroup=Missing or invalid Unix group
 aserv_desc=Anonymous FTP has not yet been setup for this virtual server. Use this form to set the initial configuration options.
+
 dir_title=Per-Directory Options
 dir_header2=For directory $1 in default server
 dir_header1=For directory $1 in virtual server $2
@@ -79,8 +86,10 @@ dir_header3=$1 options in $2
 dir_header=Per-command options
 dir_dir=Configure Directory
 dir_header4=For directory $1 in anonymous FTP
+
 manual_title=Edit Directives
 manual_header=Use the text box below to manually edit the ProFTPD directives in $1 that apply to this virtual server, directory or commands.
+
 limit_title=Per-Command Options
 limit_header4=For commands $1 in directory $2
 limit_header2=For commands $1 in default server
@@ -91,16 +100,19 @@ limit_header3=$1 options for commands $2
 limit_return=per-command options
 limit_header5=For commands $1 in anonymous FTP
 limit_header6=For commands $1 in file $2
+
 lserv_title=Configure Commands
 lserv_cmd=FTP commands
 lserv_delete=Delete commands config
 lserv_err=Failed to save commands
 lserv_ecmd=No commands selected
+
 dserv_title=Configure Directory
 dserv_dir=Directory path
 dserv_err=Failed to save directory
 dserv_edir=Missing directory path
 dserv_delete=Delete directory config
+
 mod_core_type=Server type
 mod_core_inetd=Run from Inetd
 mod_core_stand=Stand-alone daemon
@@ -284,12 +296,14 @@ mod_core_duser=Deny users
 mod_core_eip='$1' is not a valid IP address
 mod_core_enet='$1' is not a valid network address
 mod_core_ehost='$1' is not a valid hostname
+
 mod_ls_fakegroup=Fake group in directory listings?
 mod_ls_fakeuser=Fake user in directory listings?
 mod_ls_fakemode=Fake permissions in directory listings?
 mod_ls_dotfiles=Show files starting with . in listings?
 mod_ls_ls=Additional ls options
 mod_ls_els=Missing additional ls options
+
 mod_auth_chdir=Initial login directory
 mod_auth_echdir=Missing or invalid initial directory
 mod_auth_chroot=Chroot directories
@@ -301,7 +315,9 @@ mod_auth_egroups=No Unix groups for chroot entered
 mod_auth_echroot=Missing or invalid chroot directory
 mod_auth_login=Don't ask for password if login is denied?
 mod_auth_root=Allow login by root?
+
 mod_site_chmod=Allow chmod command?
+
 mod_unixpw_ufile=Alternate Unix password file
 mod_unixpw_eufile=Missing or invalid Unix password file
 mod_unixpw_gfile=Alternate Unix group file
@@ -309,6 +325,7 @@ mod_unixpw_egfile=Missing or invalid Unix group file
 mod_unixpw_none=None
 mod_unixpw_pam=Always treat PAM as authorative?
 mod_unixpw_persist=Keep password file open persistently?
+
 mod_log_syslog=Log errors to file
 mod_log_sysdef=System log
 mod_log_esyslog=Missing or invalid log file
@@ -325,14 +342,18 @@ mod_log_fmt=Format string
 mod_log_format=Custom log formats
 mod_log_enickname=Missing or invalid format name
 mod_log_efmt=Missing format string
+
 mod_pam_pam=Use PAM for authentication?
 mod_pam_config=Authenticate using PAM service
 mod_pam_econfig=Missing or invalid PAM service
+
 mod_readme_display=Notify user of readme files matching
 mod_readme_none=None
 mod_readme_edisplay=Missing readme files pattern
+
 start_err=Failed to start FTP server
 start_einetd=You cannot start the server daemon when in inetd mode.
+
 ftpaccess_title=Per-Directory Options Files
 ftpaccess_desc=Additional per-directory options can be specified in a file (usually called <tt>.ftpaccess</tt>) in each directory. The options apply to all files in that directory and any sub-directories, unless overridden by another options file.
 ftpaccess_create=Create Options File
@@ -340,8 +361,10 @@ ftpaccess_find=Find Options Files
 ftpaccess_auto=Under anonymous
 ftpaccess_from=From directory
 ftpaccess_return=options file list
+
 ftpusers_title=Denied FTP Users
 ftpusers_desc=If enabled under the <tt>Authentication</tt> icon, the users listed below from the file $1 will be denied login access to the FTP user.
+
 ftpindex_title=Per-Directory Options File
 ftpindex_delete=Delete File
 ftpindex_opts=Per-Directory Options
@@ -351,8 +374,10 @@ ftpindex_addlimit=Add per-command options for ..
 ftpindex_header2=$1 in $2
 ftpindex_return=per-directory options file
 ftpindex_header=For $1
+
 find_err=Failed to find options files
 find_eanon=Anonymous FTP is not setup in any virtual server
+
 log_global=Changed global $1 options
 log_ftpusers=Changed denied FTP users
 log_virtc=Created server $1

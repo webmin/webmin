@@ -18,10 +18,12 @@ index_version=PPPd version $1
 index_boot=Opret forbindelse ved opstart:
 index_noboot=&lt;Tilslut ikke&gt;
 index_bootdesc=Skift denne mulighed for at kontrollere, om den valgte PPTP VPN-forbindelse startes ved starttidspunktet eller ej.
+
 disc_err=Kunne ikke frakoble tunnelen
 disc_egone=Ikke længere aktiv
 disc_ekill=Kunne ikke dræbe pppd-processen
 disc_done=Tunnel $1 blev afbrudt.
+
 conn_err=Kunne ikke tilslutte tunnel
 conn_egone=Tunnel findes ikke længere
 cone_ealready=Allerede tilsluttet
@@ -32,6 +34,7 @@ conn_ok=.. forbindelse aktiveret med interface $1. Din lokale adresse er $2, og 
 conn_timeout=.. forbindelsen mislykkedes! Kontroller log-meddelelserne nedenfor for at få oplysninger om.
 conn_routes=Tilføjelse af ruter med kommandoer ..
 conn_mppe=MPPE-protokollen til VPN-kryptering kræver understøttelse af PPP-demon og kerne. Imidlertid antyder fejlene ovenfor, at en eller begge ikke er tilgængelig på dit system. Hvis PPTP-serveren ikke kræver MPPE, kan du prøve at slukke for alle indstillinger, der er relateret til den på siden <a href='$1'>globale PPP-indstillinger</a>.
+
 edit_title1=Tilføj PPTP-tunnel
 edit_title2=Rediger PPTP-tunnel
 edit_header=PPTP VPN-tunnelindstillinger
@@ -60,6 +63,7 @@ edit_file=PPP-indstillingsfil
 edit_none=Ingen
 edit_global=Standard global fil
 edit_ofile=Anden fil ..
+
 save_err=Kunne ikke gemme tunnel
 save_ename=Manglende tunnelnavn
 save_eserver=Manglende eller ugyldig server til at oprette forbindelse til
@@ -75,6 +79,7 @@ save_egw2=Ugyldig gateway til vært i rute $1
 save_erename=Kunne ikke omdøbe tunnelfilen
 save_eclash=En tunnel eller PPP-peer med samme navn findes allerede
 save_efile=Manglende eller ugyldig PPP-indstillingsfil
+
 opts_title=Globale OPP-muligheder
 opts_desc=Indstillingerne nedenfor er taget fra $1 og gælder for alle tunneler, der er indstillet til at bruge standard global PPP-indstillingsfil.
 opts_header=PPP-indstillinger for alle tunneler
@@ -84,6 +89,7 @@ opts_err=Kunne ikke gemme globale PPP-indstillinger
 opts_emtu=Manglende eller ugyldig maksimal afsendelse af pakkestørrelse
 opts_emru=Manglende eller ugyldig maksimal modtagende pakkestørrelse
 opts_msdesc=Valgmulighederne nedenfor aktiverer MPPE-kryptering, der bruges af Windows VPN-servere. MPPE kræver dog support i både PPP-dæmonen og operativsystemkernen.
+
 mppe_mppe-40=Brug 40-bit MPPE-kryptering?
 mppe_mppe-128=Brug 128-bit MPPE-kryptering?
 mppe_mppe-stateless=Aktivér statløs MPPE-tilstand?
@@ -95,6 +101,7 @@ mppe_d1=Tilladt
 mppe_mppe-stateful=Aktivér tilstanden MPPE-tilstand?
 mppe_old=Advarsel - De gamle MPPE-direktiver $1 blev fundet i din konfigurationsfil, selvom din PPP-dæmon understøtter direktiverne i ny stil.
 mppe_new=Advarsel - MPPE-direktiverne $1 i ny stil blev fundet i din konfigurationsfil, selvom din PPP-demon kun understøtter de gamle direktiver.
+
 log_create=Oprettet PPTP-tunnel $1 
 log_update=Ændret PPTP-tunnel $1 
 log_delete=PPTP-tunnel $1 er slettet

@@ -4,6 +4,7 @@ index_none=Zatiaľ neboli definované žiadne zóny.
 index_add=Pridajte novú zónu.
 index_return=zoznam zón
 index_zones=Existujúce zóny
+
 edit_title=Upraviť zónu
 edit_common=Všeobecná konfigurácia zóny
 edit_name=Názov zóny
@@ -57,20 +58,26 @@ edit_attrnone=Zatiaľ neboli definované žiadne všeobecné atribúty.
 edit_attradd=Pridajte nový všeobecný atribút.
 edit_webmin=Otvorte Webmin
 edit_brand=značka
+
 ui_cancel=Zrušiť
+
 save_err=Zónu sa nepodarilo uložiť
 save_epool=Chýba alebo neplatná oblasť
 save_ewebmin=Webmin nie je spustený v tejto zóne
+
 reboot_title=Reštartujte zónu
 reboot_rusure=Naozaj chcete reštartovať zónu $1 ? Všetky procesy, ktoré v ňom prebiehajú, sa reštartujú.
 reboot_err=Zóna sa nepodarilo reštartovať
 reboot_doing=Teraz sa reštartuje zóna ..
+
 reboot_failed=.. zlyhalo :
 reboot_ok=.. dokončené.
+
 halt_title=Vypínacia zóna
 halt_rusure=Naozaj chcete vypnúť zónu $1 ? Všetky procesy v ňom prebiehajúce sa zastavia.
 halt_err=Zóna sa nepodarilo vypnúť
 halt_doing=Teraz sa vypína zóna ..
+
 boot_title=Bootup Zone
 boot_err=Zóna na zavedenie systému zlyhala
 boot_doing=Teraz sa spúšťa zóna.
@@ -78,10 +85,12 @@ delete_title=Odstrániť zónu
 delete_rusure=Naozaj chcete odstrániť zónu $1 ? Všetky súbory v rámci jeho súkromných súborových systémov budú stratené.
 delete_err=Zónu sa nepodarilo odstrániť
 delete_doing=Odstraňuje sa zóna ..
+
 uninstall_title=Odinštalovať systém
 uninstall_rusure=Naozaj chcete odinštalovať systémový softvér zo zóny $1 ? Všetky súbory v rámci jeho súkromných súborových systémov budú stratené.
 uninstall_err=Nepodarilo sa odinštalovať systémový softvér zo zóny
 uninstall_doing=Teraz odinštalujete systém zo zóny ..
+
 install_title=Nainštalujte systém
 install_doing=Inštalácia systému do zóny.
 net_title1=Vytvorenie sieťového rozhrania
@@ -96,6 +105,7 @@ net_enetmask=Neplatná maska siete
 net_eaddress=Neplatná adresa IP
 net_egone=Rozhranie už neexistuje!
 net_eclash=Sieťové rozhranie s rovnakou adresou IP už v tejto zóne existuje
+
 pkg_title1=Pridať adresár balíkov
 pkg_title2=Upraviť adresár balíkov
 pkg_header=Zdedené podrobnosti o adresári balíka
@@ -107,6 +117,7 @@ pkg_eclash=Adresár balíkov už v tejto zóne existuje
 pkg_inherit=Zdediť balíky z globálnej zóny
 pkg_inherit_yes=Áno (riedka koreňová zóna)
 pkg_inherit_no=Nie (celá koreňová zóna)
+
 fs_title1=Vytvorte súborový systém
 fs_title2=Upraviť systém súborov
 fs_header=Ďalšie podrobnosti o súborovom systéme
@@ -128,6 +139,7 @@ fs_eoptions=Neplatné možnosti pripojenia (musí to byť zoznam oddelený čiar
 fs_egone=Súborový systém už neexistuje!
 fs_mount=Pripojiť sa po vytvorení?
 fs_eclash=V tejto zóne už existuje súborový systém používajúci rovnaký adresár
+
 rctl_title1=Vytvorte kontrolu zdrojov
 rctl_title2=Upraviť riadenie zdrojov
 rctl_header=Typ a limity kontroly zdrojov
@@ -148,6 +160,7 @@ rctl_elimit=Nie číslo
 rctl_eaction=V riadku $1 nebol vybraný žiadny signál
 rctl_evalues=Neboli zadané žiadne limity
 rctl_eclash=V tejto zóne už existuje ovládací prvok pre ten istý prostriedok
+
 attr_title1=Vytvorte všeobecný atribút
 attr_title2=Upraviť všeobecný atribút
 attr_header=Podrobnosti o atribúte všeobecnej zóny
@@ -165,6 +178,7 @@ attr_euint=Hodnota nie je kladné celé číslo
 attr_eboolean=Hodnota nie je „true“ alebo „false“
 attr_egone=Atribút už neexistuje!
 attr_eclash=V tejto zóne už existuje atribút s rovnakým názvom
+
 status_running=beh
 status_installed=zastavil
 status_configured=Nie je nainštalované
@@ -172,13 +186,16 @@ status_incomplete=Inštaluje sa
 status_ready=pripravený
 status_down=nadol
 status_shutting_down=Vypínať
+
 list_name=Názov zóny
 list_id=Identifikačné číslo
 list_path=Adresár zóny
 list_status=Postavenie
 list_actions=Akcia
+
 zone_in=V zóne $1 
 pool_none=nikto
+
 create_title=Vytvorenie zóny
 create_header=Nové podrobnosti o zóne
 create_path=Adresár súborov zóny
@@ -239,6 +256,7 @@ create_erouter=Chýba alebo je neplatná predvolená adresa IP smerovača
 create_removingpkgs=odstraňujú sa zdedené adresáre balíkov. ..
 create_brand=značka
 create_brandmsg=Branding zone
+
 log_create_zone=Vytvorená zóna $1 
 log_delete_zone=Vymazaná zóna $1 
 log_save_zone=Upravená konfigurácia pre zónu $1 
@@ -262,6 +280,7 @@ log_delete_rctl=Odstránená kontrola prostriedkov pre $1 v zóne $2
 log_create_attr=Vytvoril sa všeobecný atribút $1 v zóne $2 
 log_modify_attr=Upravený všeobecný atribút $1 v zóne $2 
 log_delete_attr=Vymazaný všeobecný atribút $1 v zóne $2 
+
 webmin_eperl=Perl nie je nainštalovaný na $1 
 webmin_eroot=Adresár $1 neexistuje alebo neobsahuje Webmin.
 webmin_title=Nainštalujte program Webmin

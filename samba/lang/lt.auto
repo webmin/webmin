@@ -6,6 +6,7 @@ index_printershare=spausdintuvo dalis
 index_shareconf=dalintis konfigūracija
 index_version=$1 „Samba“ versija
 index_samba=Samba
+
 index_sharename=Dalintis Vardas
 index_path=Kelias
 index_security=Saugumas
@@ -42,12 +43,14 @@ index_stopmsg=Spustelėkite šį mygtuką, norėdami uždaryti jūsų sistemoje 
 index_stopmsg_wb=Spustelėkite šį mygtuką, norėdami išjungti veikiančius „Winbind“ serverius jūsų sistemoje.
 index_einclude=Įspėjimas - $1 jūsų „Samba“ konfigūracijos faile yra $2 arba $3 direktyva. Dėl šios priežasties „Webmin“ gali neteisingai modifikuoti failą.
 index_delete=Ištrinti pasirinktas akcijas
+
 config_mins=Minos
 config_secs=Sek
 config_bytes=Baitų
 config_never=Niekada
 config_all=Visi
 config_neither=Nei viena
+
 global_title=Visuotinė konfigūracija
 global_unixnetwork=„Unix“ tinklas
 global_winnetwork=„Windows“ tinklas
@@ -60,6 +63,7 @@ global_password=Užšifruoti slaptažodžiai
 global_users=„Samba“ vartotojai
 global_group=„Samba“ grupės
 global_bind=„Winbind“ parinktys
+
 error_nosamba=„Samba“ serverio vykdomasis <tt>$1</tt> nerastas. Arba „Samba“ neįdiegtas jūsų sistemoje, arba jūsų <a href="$2">modulio konfigūracija</a> yra neteisinga.
 error_version=„Webmin“ nepavyko gauti jūsų vykdomosios „Samba“ serverio versijos <tt>$1</tt>. Patikrinkite <a href="$2">modulio konfigūraciją</a> ir įsitikinkite, kad tai teisingas kelias.
 error_config=Konfigūracijos failas $1 nerastas. Greičiausiai „Samba“ neįdiegta jūsų sistemoje arba jūsų <a href="$2">modulio konfigūracija</a> yra neteisinga.
@@ -67,6 +71,7 @@ error_include=„Webmin“ negali valdyti „Samba“ konfigūracijos failų, ku
 error_delshare=Nepavyko ištrinti bendrinimo
 error_delcopy=„$1“ dalis nukopijuojama iš šios akcijos
 error_savename=Nepavyko išsaugoti failų pavadinimų
+
 convert_title=Konvertuoti vartotojus
 convert_msg=Ši forma leidžia sinchronizuoti „Unix“ ir „Samba“ vartotojų sąrašą. Kai „Samba“ naudoja <a href=$1>užšifruotus slaptažodžius</a>, vietoj sistemos vartotojų sąrašo naudojamas atskiras vartotojų ir slaptažodžių sąrašas.
 convert_noconv=Neverskite ir nepašalinkite šių vartotojų:
@@ -83,6 +88,7 @@ convert_cannot=„Unix“ vartotojų negalima konvertuoti į „Samba“ vartoto
 convert_who=„Unix“ vartotojai gali konvertuoti
 convert_who0=Tik išvardyti vartotojai arba UID diapazonai
 convert_who1=Visi, išskyrus išvardytus vartotojus ir UID intervalus
+
 misc_title=Įvairūs variantai
 misc_debug=Derinimo lygis
 misc_cachecall=Talpyklos <tt>getwd ()</tt> skambučiai?
@@ -96,6 +102,7 @@ misc_chroot=<tt>chroot ()</tt> katalogas
 misc_smbrun=Kelias į <tt>smbrun</tt>
 misc_clienttime=Kliento laiko kompensacija
 misc_readprediction=Perskaityti numatymą?
+
 net_title=„Unix“ tinklo galimybės
 net_idle=Laikas prieš atjungiant
 net_trustlist=Patikimų kompiuterių/vartotojų failas
@@ -111,6 +118,7 @@ net_maxpacket=Maksimalus paketo dydis
 net_listen=Klausykite pagal adresą
 net_ip=IP adresas
 net_socket=Lizdo parinktys
+
 passwd_title=Slaptažodžio parinktys
 passwd_encrypt=Naudoti užšifruotus slaptažodžius?
 passwd_allownull=Leisti slaptus slaptažodžius?
@@ -124,11 +132,13 @@ passwd_send=Siųsti
 passwd_map=Vartotojo vardo žemėlapis
 passwd_unixuser=„Unix“ vartotojai
 passwd_winuser=„Windows“ vartotojai
+
 print_title=Spausdinimo parinktys
 print_style=„Unix“ spausdinimo stilius
 print_show=Rodyti visus spausdintuvus?
 print_printcap=„Printcap“ failas
 print_cachetime=Spausdintuvo būsenos talpyklos laikas
+
 smb_title=„Windows“ tinklo galimybės
 smb_workgroup=Darbo grupė
 smb_wins=WINS režimas
@@ -159,14 +169,17 @@ smb_nowhere=Niekur
 smb_fromlist=Iš sąrašo. ..
 smb_ip=IP adresas
 smb_asworkgroup=<b>Kaip darbo grupė</b> (pasirenkama)
+
 create_title=Sukurti kopiją
 create_msg=Dalijant kopiją visos numatytosios vertės bus paveldimos iš jūsų pasirinktos dalies. Jei šaltinio dalis bus pakeista, tai ir kopija.
 create_from=Bendrinti kopijuoti iš:
 create_name=Naujas akcijos pavadinimas:
+
 smbuser_title=„Samba“ vartotojai
 smbuser_list=„Samba“ vartotojų sąrašas
 smbuser_nouser=Nėra apibrėžta „Samba“ vartotojų.
 smbuser_cannot=„Samba“ vartotojų sąraše negalima
+
 euser_title=Redaguoti „Samba“ vartotoją
 euser_name=Vartotojo vardas
 euser_uid=„Unix“ UID
@@ -185,6 +198,7 @@ euser_locked=Sąskaita užrakinta
 euser_nopwrequired=Nereikia slaptažodžio
 euser_disable=Paskyra išjungta
 euser_trust=Darbo vietos patikėjimo sąskaita
+
 fmisc_title=Įvairūs failų numatytieji nustatymai
 fmisc_for=Akcijai <tt>$1</tt>
 fmisc_lockfile=Ar failai užrakinami?
@@ -202,6 +216,7 @@ fmisc_conncmd=Komanda paleisti prisijungus
 fmisc_disconncmd=Komanda paleisti atsijungus
 fmisc_rootconn=Komanda paleisti prisijungti <i>kaip šaknis</i>
 fmisc_rootdisconn=Komanda paleisti atjungus <i>kaip šaknį</i>
+
 fname_title1=Numatytieji failų pavadinimo nustatymai
 fname_title2=Redaguoti failo pavadinimą
 fname_option=Failų pavadinimo parinktys
@@ -216,6 +231,7 @@ fname_hide=Slėpti taškinius failus?
 fname_archive=Išsaugoti DOS archyvo vėliavą?
 fname_hidden=Išsaugoti DOS paslėptą vėliavą?
 fname_system=Išsaugoti DOS sistemos vėliavą?
+
 fperm_title1=Numatytieji failo leidimai
 fperm_title2=Redaguoti failo leidimus
 fperm_option=Failų leidimo parinktys
@@ -228,6 +244,7 @@ fperm_link=Leisti saitus išorėje?
 fperm_delro=Ar galima ištrinti tik skaitomus failus?
 fperm_forcefile=Priverstinis „Unix“ failo režimas
 fperm_forcedir=Priverstinis „Unix“ katalogo režimas
+
 share_title1=Numatytieji failų bendrinimo failai
 share_title2=Redaguoti failo bendrinimą
 share_title3=Sukurkite failų bendrinimą
@@ -251,6 +268,7 @@ share_naming=Failų pavadinimai
 share_misc=Įvairūs variantai
 share_samedesc1=Pastaba - šie parametrai taip pat daro įtaką numatytosioms visų failų bendrinimo nuostatoms.
 share_samedesc2=Pastaba - šie nustatymai taip pat veikia numatytąsias reikšmes visoms spausdintuvo dalims.
+
 print_title1=Numatytosios spausdintuvo parinktys
 print_title2=Redaguoti spausdintuvo parinktis
 print_option=Spausdintuvo parinktys
@@ -262,6 +280,7 @@ print_delete=Ištrinti komandą
 print_pause=Pristabdyti darbo komandą
 print_unresume=Neatsisakykite darbo komandos
 print_driver=Spausdintuvo tvarkyklė
+
 pshare_title1=Numatytieji spausdintuvo bendro naudojimo parametrai
 pshare_title2=Redaguoti spausdintuvo bendrinimą
 pshare_title3=Sukurkite „Printer Share“
@@ -270,6 +289,7 @@ pshare_name=Dalytis vardu
 pshare_all=Visi spausdintuvai dalijasi
 pshare_unixprn=„Unix“ spausdintuvas
 pshare_spool=Ritinių katalogas
+
 sec_index1=Apsaugos numatytosios nuostatos
 sec_index2=Redaguoti saugą
 sec_writable=Rašytina?
@@ -292,6 +312,7 @@ sec_rouser=Tik skaitymo vartotojai
 sec_rogroup=Skaitykite tik grupes
 sec_rwuser=Skaitykite/rašykite vartotojams
 sec_rwgroup=Skaitykite/rašykite grupes
+
 esync_title=Vartotojo sinchronizavimas
 esync_msg=„Webmin“ galima sukonfigūruoti taip, kad „Unix“ vartotojų sąrašo pakeitimai būtų automatiškai pritaikyti „Samba“ vartotojų sąraše. Tai veiks tik tada, kai modulis <b>Vartotojai ir grupės</b> Webmin bus naudojamas vartotojams pridėti, ištrinti ar pakeisti.
 esync_add=Pridėkite „Samba“ vartotoją, kai pridedamas „Unix“ vartotojas
@@ -303,6 +324,7 @@ esync_gid=Grupė SID arba RID naujiems vartotojams
 esync_apply=Taikyti
 esync_cannot=Neįmanoma sukonfigūruoti vartotojo sinchronizacijos
 esync_egid=Trūksta grupės SID arba RID
+
 mkpass_title=Konvertuoti vartotojus
 mkpass_convfail=Nepavyko konvertuoti vartotojo
 mkpass_msg=Konvertuojami „Unix“ vartotojai. ..
@@ -315,10 +337,12 @@ mkpass_passfail=Nepavyko nustatyti slaptažodžio
 mkpass_user=Vartotojo vardas
 mkpass_action=Veiksmas atliktas
 mkpass_skipcount=$1 vartotojų buvo praleisti dėl konversijos.
+
 savecopy_fail=Nepavyko sukurti kopijos
 savecopy_global=Pavadinimas „global“ negali būti naudojamas akcijai
 savecopy_exist=Akcija, vadinama „$1“, jau egzistuoja
 savecopy_ename=Neįvestas joks vardo pavadinimas
+
 saveuser_fail=Nepavyko išsaugoti vartotojo
 saveuser_uid=„$1“ nėra galiojantis „Unix“ UID
 saveuser_colon=Tikrajame varde negali būti simbolio :
@@ -326,10 +350,13 @@ saveuser_home=Pagrindinio katalogo „$1“ nėra
 saveuser_shell=„ $1 “ nėra tinkamas apvalkalas
 saveuser_pass=Nepavyko pakeisti slaptažodžio naudojant smbpasswd : $1 
 saveuser_ews=Esamiems vartotojams negalima įjungti parinkties „Darbo vietos patikimumo sąskaita“
+
 savefmisc_fail=Nepavyko išsaugoti įvairių variantų
 savefmisc_number=„$1“ nėra tinkamas jungčių skaičius
+
 savefperm_fail=Nepavyko išsaugoti failų leidimų
 savefperm_mode=„$1“ nėra tinkamas „Unix“ failo režimas
+
 savefshare_fail=Nepavyko išsaugoti bendrinimo
 savefshare_nopath=Neįvestas kelias
 savefshare_exist=Akcija, vadinama „$1“, jau egzistuoja
@@ -339,6 +366,7 @@ savefshare_owner=Trūksta arba netinkamas naujo katalogo savininkas
 savefshare_group=Trūksta arba netinkama naujo katalogo grupė
 savefshare_perms=Trūksta arba netinkami naujo katalogo leidimai
 savefshare_emkdir=Nepavyko sukurti katalogo : $1 
+
 savemisc_fail=Nepavyko išsaugoti parinkčių
 savemisc_lockdir=Aplanko, kuriame yra užrakto katalogas, nėra
 savemisc_logdir=Katalogas, kuriame yra žurnalo failas, neegzistuoja
@@ -347,37 +375,48 @@ savemisc_overlap=„$1“ nėra tinkamas perskaityto skaitymo dydis
 savemisc_chroot=„Chroot“ katalogas „$1“ neegzistuoja
 savemisc_smbrun=Smbrun programa '$1' neegzistuoja arba nevykdoma
 savemisc_time=„$1“ nėra tinkamas laiko skirtumas
+
 savenet_fail=Nepavyko išsaugoti parinkčių
 savenet_timeout=„$1“ nėra tinkamas atjungimo laikas
 savenet_ip=„$1“ nėra galiojantis IP baitas
 savenet_keep=„$1“ nėra teisingas išlaikymo intervalas
 savenet_maxxmit=„$1“ nėra galiojantis maksimalus paketo dydis
+
 savepass_fail=Nepavyko išsaugoti parinkčių
 savepass_nopass=Jūsų „Samba“ versija nepalaiko šifruotų slaptažodžių
 savepass_passwd=Nėra suteikta slaptažodžio keitimo programa
 savepass_level=„$1“ nėra teisingas slaptažodžio skirtumas
 savepass_chat=Pakeiskite slaptažodžio pokalbių seką
+
 savepopts_fail=Nepavyko išsaugoti spausdintuvo parinkčių
 savepopts_number=Mažiausias laisvas plotas turi būti skaičius
+
 saveprint_fail=Nepavyko išsaugoti parinkčių
 saveprint_printcap=Spausdinimo dangtelio failo „$1“ nėra
 saveprint_cache=„$1“ nėra tinkamas talpyklos laikas
+
 savepshare_fail=Nepavyko išsaugoti spausdintuvo bendro naudojimo
 savepshare_exist=Akcija, vadinama „$1“, jau egzistuoja
 savepshare_name=„$1“ nėra teisingas akcijos pavadinimas
 savepshare_global=Pavadinimas „global“ negali būti naudojamas akcijai
+
 savesec_fail=Nepavyko išsaugoti saugumo
+
 savesmb_fail=Nepavyko išsaugoti parinkčių
 savesmb_size=„$1“ nėra tinkamas disko dydis
 savesmb_oslevel=„$1“ nėra tinkamas pagrindinės naršyklės prioritetas
 savesmb_server=Turite įvesti slaptažodžių serverį
+
 start_err=Nepavyko paleisti „Samba“ serverių
 start_fail=$1 nepavyko
 start_err_wb=Nepavyko paleisti „Winbind“ serverių
+
 restart_err=Nepavyko iš naujo paleisti „Samba“ serverių
 restart_err_wb=Nepavyko iš naujo paleisti „Winbind“ serverių
+
 swats_fail=Nepavyko išsaugoti vartotojo vardo
 swats_user=Trūksta SWAT vartotojo vardo
+
 viewu_index=Dabartiniai vartotojai
 viewu_list=Dabartiniai $1 vartotojai
 viewu_share=Dalintis
@@ -394,6 +433,7 @@ viewu_ecmd=Panašu, kad „Samba“ būsenos programa $1 nėra įdiegta jūsų s
 viewu_kill=Atjunkite pasirinktus vartotojus
 viewu_enone=Nepasirinktas nė vienas vartotojas
 viewu_refresh=Atnaujinti puslapį.
+
 log_apply=Iš naujo paleida „Samba“ serverius
 log_apply_wb=Iš naujo paleistos „Winbind“ serveriai
 log_stop=Sustabdė „Samba“ serverius
@@ -435,6 +475,7 @@ log_modify_group=Modifikuota „Samba“ grupė $1
 log_delete_group=Ištrinta $1 „Samba“ grupė
 log_gsync=Konfigūruota „Unix“ grupės sinchronizacija
 log_manual=Rankiniu būdu redaguotas konfigūracijos failas $1 
+
 swat_title=SWAT prisijungimas
 swat_list=SWAT prisijungimas
 swat_msg1=Dabartinis SWAT vartotojo vardas ir slaptažodis yra neteisingi. Norėdami vėl prisijungti, naudokite žemiau esančią formą.
@@ -446,6 +487,7 @@ swat_password=Slaptažodis
 swat_login=Prisijungti
 swat_clear=Aišku
 swat_logout=Atsijungti nuo SWAT
+
 eacl_aviol=Prieigos kontrolės pažeidimas
 eacl_np=Neturite leidimų
 eacl_papply=iš naujo paleiskite šią paslaugą
@@ -481,6 +523,7 @@ eacl_pafs=pasiekti šią failų dalį
 eacl_paps=pasiekti šią spausdintuvo dalį
 eacl_pcps=sukurti spausdintuvo bendrinimą
 eacl_pcfs=sukurti failų bendrinimą
+
 acl_apply=Ar gali pritaikyti pakeitimus ir sustabdyti „Samba“?
 acl_view_all_con=Ar galite peržiūrėti visus ryšius?
 acl_kill_con=Ar galima pašalinti ryšius?
@@ -527,6 +570,7 @@ acl_maint_groups=Ar galite peržiūrėti, redaguoti ir pridėti grupes?
 acl_maint_gsync=Ar galima palaikyti automatinį „Unix“ ir „Samba“ grupių sinchronizavimą?
 acl_winbind=Ar gali prisijungti prie domenų?
 acl_bind=Ar galima pasiekti „winbind“ parinktis?
+
 groups_title=„Samba“ grupės
 groups_name=Grupės pavadinimas
 groups_unix=„Unix“ grupė
@@ -542,6 +586,7 @@ groups_return=grupių sąrašas
 groups_add=Pridėkite naują „Samba“ grupę.
 groups_ecannot=Jums neleidžiama žiūrėti ar redaguoti „Samba“ grupių
 groups_cannot=„Samba“ grupių negalima išvardyti
+
 gedit_title2=Redaguoti „Samba Group“
 gedit_title1=Sukurkite „Samba“ grupę
 gedit_header=„Samba“ grupės informacija
@@ -554,11 +599,13 @@ gedit_unix=„Unix“ grupė
 gedit_unixgr=Grupė ..
 gedit_none=Nė vienas
 gedit_set=Išvardytos ..
+
 gsave_err=Nepavyko išsaugoti grupės
 gsave_eunix=Trūksta arba netinkamas „Unix“ grupės pavadinimas arba GID
 gsave_ename=Trūksta grupės pavadinimo
 gsave_epriv=Trūksta grupės privilegijų
 gsave_elocal=Privilegijos gali būti nustatomos tik vietinėms grupėms
+
 gsync_title=Grupės sinchronizavimas
 gsync_msg=„Webmin“ galima sukonfigūruoti taip, kad „Unix“ grupių sąrašo pakeitimai būtų automatiškai pritaikyti „Samba“ grupių sąraše. Tai veiks tik tada, kai <b>Vartotojai ir grupės</b> „Webmin“ modulis bus naudojamas grupėms pridėti, ištrinti ar pakeisti.
 gsync_add=Pridėkite „Samba“ grupę, kai pridedama „Unix“ grupė
@@ -569,10 +616,12 @@ gsync_type=Naujų grupių tipas
 gsync_priv=Privilegijos naujoms grupėms (jei vietinės)
 gsync_ecannot=Jums neleidžiama konfigūruoti grupės sinchronizacijos
 gsync_cannot=Grupės sinchronizacijos negalima sukonfigūruoti
+
 check_user1=$1 : šifruoti slaptažodžiai neįgalinami puslapyje <a href='$2'>autentifikavimas</a>.
 check_user2=$1 : Nei „Samba“ slaptažodžio failas, nei kelias į „pdbedit“ nenustatyti <a href='$2'>modulio konfigūracijos</a> puslapyje.
 check_group1=$1 : Grupės palaikomos tik 3 „Samba“ versijoje.
 check_group2=$1 : Puslapis <a href='$2'>modulio konfigūracija</a> nenustatytas nei „smbgroupedit“, nei tinklo komandų kelias.
+
 winbind_title=Susieti su domenu
 winbind_ecannot=Jums neleidžiama prisijungti prie domenų
 winbind_msg=Ši forma gali būti naudojama norint surišti „Samba“ serverį su „Windows“ domenu, kurį paprastai valdo kitas serveris.
@@ -588,6 +637,7 @@ winbind_edom=Trūksta domeno vardo
 winbind_cmd=Įrišimas į domeną su komanda $1.
 winbind_failed=.. nepavyko! Norėdami sužinoti priežastį, skaitykite aukščiau pateiktą išvestį.
 winbind_ok=.. baigta.
+
 bind_title=„Winbind“ parinktys
 bind_ecannot=Jums neleidžiama redaguoti „Winbind“ parinkčių
 bind_header=„Windows“ domeno įrišimo parinktys
@@ -606,9 +656,11 @@ bind_erealm=Netinkama „Kerberos“ sfera
 bind_ecache=Trūksta arba netinkamas talpyklos laikas
 bind_euid=Neteisingas UID diapazonas - turi būti 20000–30000
 bind_egid=Netinkamas GID diapazonas - turi būti 20000–30000
+
 manual_title=Redaguoti konfigūracijos failą
 manual_desc=Redaguoti „Samba“ konfigūracijos failą $1.
 manual_err=Nepavyko išsaugoti konfigūracijos failo
 manual_edata=Niekas neįėjo!
+
 delete_err=Nepavyko ištrinti bendrinimo
 delete_enone=Nepasirinkta

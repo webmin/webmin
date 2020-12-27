@@ -21,6 +21,7 @@ index_thost=Hostnaam
 index_tdesc=Omschrijving
 index_tcount=Pakketten
 index_ttype=OS type
+
 install_err=Mislukt om pakket te installeren
 install_elocal=Geen locale file opgegeven
 install_elocal2='$1' bestaat niet
@@ -36,6 +37,7 @@ install_servers=Server(s) om naar te installeren
 install_ok=Installeer
 install_erus=Deze server gebruikt een ander update systeem naar de master server ($1 versus $2)
 install_eupdate=Er ontstond een fout tijdens het installeren van specifieke updates
+
 add_title=Voeg servers toe
 add_msg=Toevoegen $1 ..
 add_gmsg=Server toevoegen in groep $1 ..
@@ -44,6 +46,7 @@ add_gerr=Mislukt om groep toe te voegen
 add_echeck=Server $1 heeft niet de software pakket module
 add_esystem=Server $1 gebruikt niet hetzelfde pakket systeem als deze machine
 add_ok=Toevoegen $1 met $2 pakketten.
+
 search_title=Zoek Pakketten
 search_nomatch=Geen pakket komt overeen met $1
 search_none=Niets
@@ -55,6 +58,7 @@ search_return=zoek resultaten
 search_delete=De-installeer Geselecteerde Pakketten Van:
 search_selall=Selecteer alles
 search_invert=Omkeren selectie
+
 host_title=Beheerde Server
 host_header=Server details beheerde software
 host_name=Host naam
@@ -69,6 +73,7 @@ host_count=Geïnstalleerde pakketten
 host_os=OS van Webmin
 host_return=server details
 host_system=Pakketten systeem
+
 edit_title=Bewerk pakket
 edit_details=Pakket Detail van $1
 edit_desc=Omschrijving
@@ -87,6 +92,7 @@ edit_all=&lt;alle hosts&gt;
 edit_donthave=&lt;hosts die het niet hebben&gt;
 edit_have=&lt;hosts die het hebben&gt;
 edit_group=Leden van $1
+
 list_title=Pakketten Files
 list_files=Files voor pakket $1 op $2
 list_path=Pad
@@ -96,6 +102,7 @@ list_type=Type
 list_size=Grote
 list_status=Status
 list_ok=OK
+
 refresh_title=Pakket Lijst Verversen
 refresh_header=Her-aanvragen van pakketten lijst van alle servers ..
 refresh_header4=Her-aanvragen van pakketten lijst van de leden van $2 ..
@@ -107,6 +114,7 @@ refresh_4=Ververst $1 (geen veranderingen)
 refresh_done=.. klaar
 refresh_del=$1 Verwijdert van server lijst
 refresh_failed=Verversen is mislukt van $1 : $2
+
 delete_err=Mislukt om pakket $1 te verwijderen
 delete_epack=Het pakket $1 bestaat niet
 delete_title=Verwijder Pakketten
@@ -119,6 +127,7 @@ delete_error=Verwijderen is mislukt van $1 : $2
 delete_success=Verwijdert van $1
 delete_done=.. klaar
 delete_header=Verwijderen van pakket $1 ..
+
 do_title=Installeer Pakket
 do_header=Installeer $1 op alle hosts ..
 do_header3=Installeer $1 op de hosts die dit nog niet hebben ..
@@ -138,6 +147,7 @@ do_arch=Architectuur
 do_inst=Geïnstalleerd
 do_none=Niets
 do_edeleted=Installatie file is verwijdert - ga terug naar de index module en probeer het opnieuw.
+
 compare_title=Vergelijk Pakketten
 compare_desc=Dit formulier kan gebruikt worden om geïnstalleerde pakketten te vergelijken op 2 of meer servers, en verschillen te vinden tussen de versies van de beschikbare pakketten.
 compare_hosts=Servers om te vergelijken
@@ -152,6 +162,7 @@ compare_showall=Pakketten om te laten zien
 compare_showall1=Alles
 compare_showall0=Alleen foute overeenkomsten
 compare_got=OK
+
 deletes_err=Mislukt om pakketten te verwijderen
 deletes_enone=Geen pakketten geselecteerd
 deletes_title=Verwijder Pakketten

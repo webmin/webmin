@@ -9,6 +9,7 @@ index_restart=Herbegin Webmin
 index_restartmsg=Klik op hierdie knoppie om die Webmin-bedienerproses weer te begin. Dit kan nodig wees as u Perl onlangs opgegradeer het.
 index_refresh=Verfris modules
 index_refreshmsg=Kontroleer alle Webmin-modules vir geïnstalleerde bedieners en werk die wat in die kategorie 'Ongebruikte modules' verskyn, op.
+
 access_title=IP-toegangsbeheer
 access_desc=Die Webmin-bediener kan gekonfigureer word om slegs toegang tot sekere IP-adresse te weier of toe te laat op hierdie vorm. Gasheername (soos foo.bar.com) en IP-netwerke (soos 10.254.3.0 of 10.254.1.0/255.255.255.128 of 10.254.1.0/25 of 10.254.1.5-10.254.97.127) kan ook ingevoer word. U moet toegang tot u bediener tot betroubare adresse beperk, veral as dit vanaf die internet toeganklik is. Andersins, sal elkeen wat u wagwoord raai volledige beheer oor u stelsel hê.
 access_ip=Toegestane IP-adresse
@@ -33,6 +34,7 @@ access_ehost=Kon nie IP-adres vir '$1' vind nie
 access_eself=U huidige IP-adres ($1) sal geweier word
 access_always=Los gasheername op elke versoek?
 access_trust=Vertrou u IP-adres wat deur gevolmagtigdes verskaf word?
+
 bind_title=Hawens en adresse
 bind_desc2=Hierdie vorm kan gebruik word om die poortnommer waarop Webmin luister te verander, of dit slegs op 'n enkele IP-adres op u stelsel te laat luister. U kan dit ook opstel om verbindings op verskeie poorte te aanvaar, of om op verskillende IP-adresse te luister. Let wel - u webblaaier sal u moontlik weer vra om aan te meld nadat u die hawe of die binding adres verander het.
 bind_header=IP-adresse en poorte
@@ -61,6 +63,7 @@ bind_eipv6=IPv6 kan nie geaktiveer word nie, tensy die $1 Perl-module geïnstall
 bind_redirecting=Verwys na nuwe URL ..
 bind_elsof=Nuwe poort $1 word reeds deur 'n ander proses gebruik
 bind_eonsystem=Die IP-adres $1 is nie aktief op hierdie stelsel nie, en kan dus nie gebruik word nie
+
 log_title=meld
 log_desc=Webmin kan gekonfigureer word om 'n logboek van treffers op die webbediener te skryf, in die standaard CLF-loglêerformaat. As aanmelding aangeskakel is, kan u ook kies of IP-adresse of gasheername opgeneem word, en hoe gereeld die loglêer verwyder word. As dit geaktiveer is, word logs na die lêer $1 geskryf.
 log_desc2=Wanneer aanmelding geaktiveer is, sal Webmin ook 'n meer gedetailleerde logboek van gebruikershandelinge na die lêer $1 skryf. Hierdie log kan gesien en ontleed word met die Webmin Actions Log-module om te sien presies wat elke Webmin-gebruiker gedoen het.
@@ -92,6 +95,7 @@ log_login=Webmin-aanmeldings en -afmeldings insluit in die aksielogboek?
 log_email=Stuur aangemelde aksies per e-pos na
 log_emailnone=Moenie stuur nie
 log_inmodsemail=Stuur e-pos vir aksies in
+
 proxy_title=Instaanbedieners en aflaaie
 proxy_desc=As die gasheer waarop Webmin loop, agter 'n firewall van een of ander aard is, moet u die instaanbediener moontlik instel om toegang tot web- en FTP-webwerwe te verkry. Sekere modules, soos <tt>sagtewarepakkette</tt>, gebruik hierdie gevolmagtigdes vir die aflaai van lêers of programme.
 proxy_header=Instaanbedieners
@@ -134,6 +138,7 @@ proxy_return=instaanbedieners en aflaaie
 proxy_tabproxy=proxying
 proxy_tabdown=aflaai
 proxy_fallback=Probeer direkte versoek indien die instaanbediener af is?
+
 ui_title=Gebruikerskoppelvlak
 ui_desc=Met hierdie vorm kan u die gebruikerskoppelvlak-opsies wat deur alle modules gebruik word, wysig. As u kleure invoer, moet elkeen met die standaard RGB-stelsel gespesifiseer word, waar elke waarde 'n heksgetal van 00 tot ff is.
 ui_header=Gebruikerskoppelvlak-opsies
@@ -183,6 +188,7 @@ ui_dateformat_dd/mm/yyyy=dd/mm/jjjj (dws. 16/09/2001)
 ui_dateformat_mm/dd/yyyy=mm/dd/jjjj (dws 09/16/2001)
 ui_dateformat_yyyy/mm/dd=jjjj/mm/dd (dws 2001/09/16)
 ui_ehostnamedisplay=Ontbrekende of ongeldige vertoonnaam van die vertoon
+
 mods_title=Webmin-modules
 mods_desc1=Webmin-modules kan na installasie bygevoeg word deur die vorm regs te gebruik. Modules word gewoonlik versprei in <tt>.wbm</tt> lêers, wat elk een of meer modules kan bevat. Modules kan ook vanaf RPM-lêers geïnstalleer word as dit deur u bestuurstelsel ondersteun word.
 mods_installsource=Installeer vanaf
@@ -226,6 +232,7 @@ mods_tabinstall=installeer
 mods_tabclone=kloon
 mods_tabdelete=Delete
 mods_tabexport=uitvoer
+
 install_err1=Kon nie module van $1 installeer nie
 install_efile=Lêer bestaan nie
 install_err2=Kon nie die opgelaaide module installeer nie
@@ -259,10 +266,12 @@ install_cat=Onder kategorie $1.
 install_eneither=RPM bevat nie 'n webmin-module of -tema nie
 install_err4=Kon nie die standaardmodule installeer nie
 install_emissing=Die gespesifiseerde module bestaan nie
+
 clone_err=Kon nie die module kloon nie
 clone_elink=symlink misluk : $1
 clone_ecopy=kon konfigurasie nie kopieer nie : $1
 clone_desc=Kloon van $1
+
 delete_err=Modules kon nie verwyder word nie
 delete_edep=Module $1 kan nie uitgevee word nie, aangesien die module $2 daarvan afhang
 delete_desc1=$1 (Kloon van $2)
@@ -274,6 +283,7 @@ delete_rusure2=Is u seker dat u die tema $2 wil uitvee? $1 kB lêers sal vir ewi
 delete_rusure3=Is u seker dat u die moduleklone (s) $2 wil verwyder?
 delete_acls=Verwyder van gebruikers en stel toegangsbeheerinstellings weer in?
 delete_enone=Geen modules gekies nie
+
 os_title=Bedryfstelsel en omgewing
 os_desc3=Hierdie bladsy vertoon die bedryfstelsel wat op die installeringstyd deur Webmin opgespoor is, en die stelsel wat tans opgespoor word. As dit verskil, kan u kies om die OS-inligting van Webmin op te dateer, wat nodig mag wees as u onlangs opgegradeer het.
 os_desc2=U kan ook die soekpad wat deur Webmin gebruik word tydens die bestuur van programme verander, en die gedeelde biblioteekkad na enige programme oorgaan.
@@ -296,6 +306,7 @@ os_eiversion=Ontbrekende weergawe van die interne bedryfstelsel
 os_incorrect=Waarskuwing - u stelsel werk eintlik met $1 weergawe $2.
 os_fix=Bestuurstelsel word opgespoor
 os_usermin=Werk ook Usermin OS op
+
 lang_title=Taal
 lang_title2=Webmin-taal
 lang_lang=Vertoon in taal
@@ -307,6 +318,7 @@ lang_chardef=Word bepaal deur taal
 lang_charover=Dwing karakterset af
 lang_err=Kon nie taal stoor nie
 lang_echarset=Karakterset ontbreek of ongeldig
+
 ssl_title=SSL-kodering
 ssl_essl=Dit lyk nie of die Net::SSLeay perl-module op u stelsel geïnstalleer is nie. Volg <a href='$1'>hierdie instruksies</a> van die Webmin-webwerf om die OpenSSL-biblioteek en Net::SSLeay te installeer.
 ssl_cpan=Alternatiewelik kan u Webmin <a href='$1'>laat aflaai en installeer</a> die vereiste Net::SSLeay Perl-module vir u.
@@ -412,6 +424,7 @@ ssl_letsnotrenew=Vernuwe slegs met die hand
 ssl_staging=Kom ons kodeer bediener
 ssl_staging0=Werklike
 ssl_staging1=Staging (slegs toets)
+
 newkey_err=Kon nie SSL-sleutel skep nie
 newkey_ecn=Ontbrekende of ongeldige bedienernaam
 newkey_ecns=Geen bedienername ingevoer nie
@@ -424,11 +437,13 @@ newkey_ok=Die volgende SSL-sleutel is suksesvol gegenereer :
 newkey_esize=Sleutelgrootte ontbreek of ongeldig
 newkey_edays=Ontbrekende of ongeldige aantal dae voor verstryking
 newkey_ecountry=Landkode moet twee letters bevat
+
 newcsr_err=Kon nie SSL CSR skep nie
 newcsr_efile=CSR-lêernaam ontbreek
 newcsr_title=Genereer CSR
 newcsr_ok=Die volgende SSL-sertifikaatversoek is suksesvol gegenereer :
 newcsr_ok2=Hierdie CSR moet aan 'n ondertekeningsowerheid gestuur word, wat 'n ondertekende sertifikaat sal terugbesorg. Dit kan met die sleutel hierbo geïnstalleer word deur die tab <b>Upload sertifikaat</b> te gebruik.
+
 startpage_title=Indeksbladsy-opsies
 startpage_intro2=Op hierdie bladsy kan u die voorkoms van die hoofmenu van Webmin beheer. Sommige opsies kan slegs effektief wees as u die standaardtema gebruik.
 startpage_tabs=Kategoriseer modules?
@@ -442,6 +457,7 @@ startpage_gotonone=&lt;Geen&gt;
 startpage_gotomodule=Gaan altyd na die module na aanmelding
 startpage_webminup=Wys Webmin-opdaterings op die Stelselinligting-bladsy?
 startpage_moduleup=Wys module-opdaterings op die Stelselinligting-bladsy?
+
 upgrade_title=Gradeer Webmin op
 upgrade_desc=Met hierdie vorm kan u u volledige Webmin-installasie na 'n nuwe weergawe opgradeer. U kan vanaf 'n plaaslike lêer, 'n opgelaaide lêer of vanaf die nuutste weergawe installeer op <a href=http://www.webmin.com/>www.webmin.com</a>. Net soos met 'n handmatige opgradering, sal al u instellings en derdeparty-modules gehou word.
 upgrade_descrpm=Met hierdie vorm kan u u hele webmin-installasie opgradeer na 'n nuwe weergawe met behulp van die opgraderingsopsie van RPM. U kan vanaf 'n plaaslike RPM-lêer, 'n opgelaaide lêer of vanaf die nuutste weergawe installeer op <a href=http://www.webmin.com/>www.webmin.com</a>. Net soos met 'n handmatige opgradering, sal al u instellings en derdeparty-modules gehou word.
@@ -506,10 +522,12 @@ upgrade_tabupdate=Modules op te dateer
 upgrade_tabsched=Geplande opdatering
 upgrade_src=Opgradering van Webmin vanaf
 upgrade_opts=Opgraderingsopsies
+
 newmod_desc=Wanneer Webmin opgegradeer word, sal enige nuwe modules in die nuwe weergawe aan een of meer gebruikers toegestaan word. Met hierdie vorm kan u die gebruikers instel wat nuwe modules ontvang. Hierdie instelling sal van toepassing wees tydens opgradering van die opdragreël of die vorm hierbo gebruik.
 newmod_header=Nuwe module-toelaes
 newmod_def=Standaardgedrag - ken nuwe modules toe aan <tt>root</tt> of <tt>admin</tt>
 newmod_users=Verleen nuwe modules aan :
+
 update_desc1=Met hierdie vorm kan u Webmin-modules opgradeer wat gevind is dat dit foute of sekuriteitsgate bevat vanaf die <a href=http://www.webmin.com/updates.html>Webmin Updates</a> -bladsy of vanaf 'n ander bron. Dit sal die modules wat tans geïnstalleer is, vergelyk met dié wat beskikbaar is vir opdatering, en sodanig dat u outomaties verouderde modules aflaai en installeer.
 update_header1=Opdatering van modules nou
 update_header2=Opdateer modules op skedule
@@ -536,6 +554,7 @@ update_enomodsig=Kon nie handtekeninglêer vir module aflaai nie : $1
 update_ebadmodsig=Kontrolering van modulehandtekening misluk : $1
 update_src=Opgradeer modules vanaf
 update_opts=Module-opdateringsopsies
+
 ca_title=Sertifikaatowerheid
 ca_old=Bestaande sertifikaat
 ca_header1=Skep 'n nuwe CA-sertifikaat
@@ -567,6 +586,7 @@ ca_eminiserv=SSL-kliëntsertifikate word slegs onder miniserv ondersteun.
 ca_eversion=Die weergawe van die Perl Net::SSLeay-module wat op u stelsel geïnstalleer is, ondersteun nie SSL-kliëntsertifikate nie.
 ca_essleay=Die SSL-administrasiekommando $1 is nie op u stelsel gevind nie. Miskien moet u die pad in die Webmin Users-module-opstelling verander.
 ca_essl=SSL-sertifisering kan slegs opgestel word as die webbediener in die SSL-modus loop.
+
 session_title=verifikasie
 session_desc1=As dit aangeskakel is, beskerm wagwoordtye u Webmin-bediener teen aanvalle met brute krag-wagwoorde deur 'n voortdurende uitbreiding van die vertraging tussen elke mislukte aanmeldpoging vir dieselfde gebruiker by te voeg.
 session_header=Verifikasie en sessie-opsies
@@ -630,10 +650,12 @@ session_sha512=Gebruik die SHA512-kodering
 session_emd5mod=MD5-kodering kan nie gebruik word nie, aangesien die Perl $1 module nie geïnstalleer is nie.
 session_esha512mod=SHA512-kodering kan nie gebruik word nie, aangesien die Perl $1 -module nie geïnstalleer is nie.
 session_blocklock=Sluit ook gebruikers met mislukte aanmeldings
+
 assignment_title=Modules herdeel
 assignment_header=Module-opdragte
 assignment_ok=Verander kategorieë
 assignment_desc=Met hierdie vorm kan u instel vir watter kategorie elke module op die Webmin-indeksbladsy vertoon word.
+
 categories_title=Wysig kategorieë
 categories_header=Kategorie-ID en beskrywings
 categories_desc=Met hierdie vorm kan u die bestaande Webmin-kategorieë hernoem en nuwes skep om aan modules toe te ken. Die boonste deel van die tabel is om die beskrywings van die ingeboude kategorieë te verander, terwyl die onderste deel is om nuwe kategorie-ID's en -beskrywings by te voeg.
@@ -646,6 +668,7 @@ categories_name=Vertoon beskrywing
 categories_lang=Wysig kategorieë in taal:
 categories_langok=verandering
 categories_custom=Custom
+
 log_access=Veranderde IP-toegangsbeheer
 log_bind=Poort en adres verander
 log_log=Verander logopsies
@@ -691,6 +714,7 @@ log_onedelete_webmincron=Die geskeduleerde funksie in die module $1 is verwyder
 log_letsencrypt=Nuwe SSL-sertifikaat versoek van Let's Encrypt
 log_letsencryptdns=Laat ons enkripteer DNS-record vir $1
 log_letsencryptcleanup=Laat ons DNS-rekord enkripteer vir $1
+
 themes_title=Webmin-temas
 themes_desc=Temas beheer die voorkoms van die Webmin-gebruikerskoppelvlak, insluitend ikone, kleure, agtergronde en die uitleg van bladsye. Die keusevak hieronder kan gebruik word om een van die temas te kies wat op u stelsel geïnstalleer is.
 themes_sel=Huidige tema :
@@ -706,6 +730,7 @@ themes_taboverlay=Verander oorleg
 themes_tabinstall=Installeer tema
 themes_tabdelete=Skrap temas
 themes_tabexport=Voer temas uit
+
 themes_err1=Kon nie tema installeer vanaf $1
 themes_efile=Lêer bestaan nie
 themes_err2=Kon nie die opgelaaide tema installeer nie
@@ -731,9 +756,11 @@ themes_delok=Tema om uit te vee :
 themes_return=temas lys
 themes_err4=Kon nie die oortrek-tema verander nie
 themes_eoverlay=Geselekteerde oorleg is nie versoenbaar met die huidige wêreldtema nie
+
 themes_desc4=Geïnstalleerde temas kan as 'n wbt.gz-lêer uitgevoer word deur die vorm hieronder te gebruik. 'N Temalêer kan dan geïnstalleer word op 'n ander stelsel wat Webmin bestuur.
 themes_exportmods=Temas om uit te voer
 themes_exportok=Uitvoer van geselekteerde temas
+
 referers_title=Vertroude verwysers
 referers_desc=Op hierdie bladsy kan u die ondersteuning van Webmin se verwysingkonfigurasie instel, wat gebruik word om te voorkom dat kwaadwillige skakels van ander webwerwe u blaaier laat verdwyn om gevaarlike dinge met Webmin te doen. As u egter skakels na Webmin het vanaf u eie webwerwe waarvoor u nie gewaarsku wil word nie, moet u hierdie webwerwe by die onderstaande lys voeg.
 referers_list=Vertroude webwerwe
@@ -742,6 +769,7 @@ referers_none2=WAARSKUWING: Dit maak u stelsel oop vir XSS-aanvalle!
 referers_referer=Verwyserkontrole geaktiveer?
 referers_err=Kon nie verwysers stoor nie
 referers_ehost='$1' is nie 'n geldige betroubare gasheernaam nie
+
 update_err=Kon nie modules opdateer nie
 update_eurl=URL of ontbrekende opdatering ontbreek
 update_title=Modules opdateer
@@ -762,6 +790,7 @@ update_rv=Kyk na opgedateerde Webmin-modules vanaf $1
 update_eemail=U moet 'n e-posadres invul as u slegs wys wat opgedateer sal word.
 update_subject=Webmin modules werk verslag op
 update_version='N Nuwe weergawe van Webmin (weergawe $1) is nou beskikbaar om af te laai. Toekomstige opdaterings sal slegs vir die nuutste weergawe vrygestel word.
+
 anon_title=Anonieme module-toegang
 anon_desc=Op hierdie bladsy kan u toegang verleen tot geselekteerde Webmin-modules en -paadjies sonder dat kliënte hoef aan te meld. Vir elke modulepad wat u hieronder invoer (soos <tt>/custom</tt> of <tt>/passwd</tt>), moet u ook die naam invoer van 'n Webmin-gebruiker wie se regte sal gebruik word om toegang tot die module.
 anon_desc2=U moet BAIE versigtig wees wanneer u anonieme toegang verleen, aangesien onvoldoende beheer van IP-toegang of toegang tot die verkeerde module toelaat dat aanvallers u stelsel kan oorneem.
@@ -770,15 +799,19 @@ anon_user=Webmin-gebruiker
 anon_err=Die anonieme toegang kon nie gestoor word nie
 anon_eurl='$1' is nie 'n geldige URL-pad nie
 anon_euser=Webmin-gebruiker ontbreek vir URL-pad '$1'
+
 enogpg=GnuPG is nie geïnstalleer nie
+
 standard_failed=Kon nie die lys van modules aflaai nie : $1
 standard_header=Standaard Webmin-modules
 standard_warn=Waarskuwing - u gebruik nie die nuutste Webmin-weergawe $1 nie, dus hierdie modules sal waarskynlik nie installeer nie.
 standard_eurl=Ongeldige standaardmodules-URL
+
 third_failed=Kon nie die lys van modules aflaai nie : $1
 third_header=Derde Party Webmin-modules
 third_eurl=Ongeldige URL vir derdeparty-modules
 third_title=Kies derdeparty-module
+
 lock_title=Lêersluit
 lock_desc=Webmin sal standaard 'n slot kry op enige lêer wat dit verander om gelyktydige wysiging deur verskeie prosesse te voorkom, wat kan lei tot korrupsie in die lêer. Op hierdie bladsy kan u die sluiting selektief of heeltemal deaktiveer as dit probleme veroorsaak.
 lock_header=Instellings vir lêerslot
@@ -789,6 +822,7 @@ lock_except=Sluit alle lêers en kaarte, behalwe ..
 lock_err=Kon nie lêer-vergrendeling stoor nie
 lock_edir='$1' is nie 'n absolute pad nie
 lock_edirs=Geen lêers of kaarte is ingevoer nie
+
 ipkey_title1=Skep SSL-sleutel
 ipkey_title2=Wysig SSL-sleutel
 ipkey_header=IP-spesifieke SSL-sleutelbesonderhede
@@ -798,6 +832,7 @@ ipkey_eip2='$1' is nie 'n geldige IP-adres of gasheernaam nie
 ipkey_eips=Geen IP-adresse ingevoer nie
 ipkey_eextracas=Geen addisionele sertifikaatlêers is ingevoer nie
 ipkey_eextraca=Bykomende sertifikaatlêer $1 bestaan nie
+
 descs_title=Module-titels
 descs_info=Op hierdie bladsy kan u alternatiewe titels vir Webmin-modules spesifiseer om hul standaardbeskrywings te ignoreer.
 descs_mod=module
@@ -807,11 +842,13 @@ descs_cdesc=Kloon titel
 descs_err=Die slaan van modeltitels kon nie
 descs_edesc=Titel ontbreek vir module '$1'
 descs_etitle=Titel ontbreek vir kloon '$1'
+
 export_err=Die uitvoer van modules kon nie uitgevoer word nie
 export_ecmd=Ontbrekende opdrag $1 ontbreek
 export_efile=Uitvoerlêer ontbreek of ongeldig
 export_done=Die geselekteerde modules is suksesvol uitgevoer na $1.
 export_title=Uitvoer van modules
+
 advanced_title=Gevorderde opsies
 advanced_header=Gevorderde en eksperimentele opsies
 advanced_temp=Tydelike lêergids
@@ -855,10 +892,13 @@ advanced_listdir=Lys kaarte sonder 'n indekslêer?
 advanced_headers=Ekstra HTTP-opskrifte
 advanced_eheader=Opskrifte moet geformateer word soos <tt>Header: Waarde</tt>
 advanced_sortconfigs=Stoor config-lêers gesorteer volgens sy sleutels?
+
 syslog_errorlog=Webmin-foutlogboek
+
 clear_title=Maak aflaai-kas skoon
 clear_done=Die Webmin-kas bevat $1 lêers van $2 URL's is suksesvol skoongemaak.
 clear_none=Daar is tans geen URL's in die Webmin-aflaai-kas nie.
+
 savekey_err=Kon nie die nuwe sleutel stoor nie
 savekey_ekey=PEM-formaat sleutel ontbreek of ongeldig
 savekey_ecert=Ontbrekende of ongeldige PEM-formaat sertifikaat
@@ -868,6 +908,7 @@ savekey_title=Laai bestaande sleutel op
 savekey_done2=Die meegeleverde SSL-sleutel is gestoor in $1, en die sertifikaat in $2.
 savekey_done=Die meegeleverde SSL-sleutel en sertifikaat is gestoor in die lêer $1.
 savekey_done3=Die meegeleverde geketting SSL-sertifikaat is gestoor in die lêer $1.
+
 cache_title=Gekaste URL's
 cache_search=Vind URL's wat die volgende bevat:
 cache_ok=Soek
@@ -880,8 +921,10 @@ cache_delete=Spoel gekies uit die kas
 cache_err=Kon nie URL's in die kas aflaai nie
 cache_enone=Geen gekies nie
 cache_efile=Ongeldige lêernaam
+
 restart_title=Herbegin Webmin
 restart_done=Die Webmin-bedienerproses begin nou weer - wag 'n paar sekondes voordat u verder gaan.
+
 mobile_title=Opsies vir mobiele toestelle
 mobile_header=Opsies vir mobiele blaaiers
 mobile_theme=Tema vir mobiele blaaiers
@@ -890,6 +933,7 @@ mobile_nosession=Dwing die gebruik van HTTP-verifikasie?
 mobile_agents=Bykomende gebruikersagente vir mobiele blaaiers
 mobile_err=Kon nie opsies vir mobiele toestelle stoor nie
 mobile_prefixes=URL-gasheernaamvoorvoegsels vir mobiele blaaiers
+
 blocked_title=Geblokkeerde gashere en gebruikers
 blocked_type=tipe
 blocked_who=Gasheernaam of gebruikersnaam
@@ -901,9 +945,11 @@ blocked_host=Kliëntgasheer
 blocked_clear=Maak alle blokke skoon
 blocked_cleardesc=Klik op hierdie knoppie om alle huidige gasheer- en gebruikersblokke te verwyder deur die Webmin-bedienerproses weer te begin.
 blocked_restarting=Die Webmin-bedienerproses begin nou om geblokkeerde leërskare en gebruikers skoon te maak - wag 'n paar sekondes voordat u verder gaan.
+
 refreshmods_title=Verfris modules
 refreshmods_installed=Kyk na bruikbare Webmin-modules ..
 refeshmods_counts=.. gevind $2 met geïnstalleerde toepassings, $1 nie geïnstalleer nie.
+
 debug_title=Ontfouting-loglêer
 debug_header=Webmin ontfout loglêeropsies
 debug_enabled=Ontfoutlogboek aangeskakel?
@@ -931,6 +977,7 @@ debug_cmd=Bevelreël
 debug_cron=Agtergrond werk
 debug_inmods=Modules om ontfout logs te skryf
 debug_emodules=Geen modules om te ontfout vir geselekteerde nie
+
 notif_passexpired=U Webmin-wagwoord het verval! U sal gedwing word om dit by die volgende aanmelding te verander.
 notif_passchange=U Webmin-wagwoord is laas verander op $1, en moet binne $2 dae verander word.
 notif_passlock=U Webmin-wagwoord is laas verander op $1, en u rekening sal in $2 dae gesluit wees as dit nie verander word nie.
@@ -946,6 +993,7 @@ notify_updatedesc=Los die probleem op
 notif_updateok=Installeer opdaterings nou
 notif_reboot=Onlangse pakketopdaterings (soos 'n nuwe kernweergawe) vereis dat 'n herlaai weer volledig toegepas moet word.
 notif_rebootok=Herbegin nou
+
 status_title=Versameling van agtergrondstatus
 status_header=Instellings vir statusversameling
 status_interval=Versamel stelselstatus in die agtergrond?
@@ -957,6 +1005,7 @@ status_temp=Versamel dryftemperature?
 status_units=Eenhede vir temperature
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
+
 sendmail_title=Stuur e-pos
 sendmail_desc=Hierdie bladsy beheer hoe Webmin e-pos stuur, soos vanaf geskeduleerde rugsteun of agtergrondmonitering. Dit beïnvloed ook e-pos wat met die Read User Mail-module gestuur word.
 sendmail_header=Posversendingsopsies
@@ -997,12 +1046,14 @@ sendmail_url=Webmin URL vir gebruik in e-pos
 sendmail_url_def=Verstek ($1)
 sendmail_url_custom=Gepasmaakte URL
 sendmail_eurl=Ontbrekende of ongeldige gepasmaakte URL
+
 testmail_title=Stuur toets e-pos
 testmail_err=Kon nie die toetsboodskap stuur nie
 testmail_eto=Geen bestemmingsadres ingevoer nie
 testmail_sending=Stuur boodskap van $1 na $2 ..
 testmail_done=.. boodskap gestuur. Gaan die posbus van die bestemmingsadres na om seker te maak dat dit werklik afgelewer is.
 testmail_failed=.. versending misluk : $1
+
 web_title=Webbedieneropsies
 web_header=Opsies vir die ingeboude webbediener van Webmin
 web_expires=Cache tyd van die kant van die kliënt vir statiese lêers
@@ -1014,6 +1065,7 @@ web_expirespaths=Cache-tye van kliënt-kant gebaseer op URL-pad
 web_expirespath=Pad gereelde uitdrukking
 web_expirestime=Kas tyd in sekondes
 web_eexpires2=Ontbrekende of nie-numeriese kasgeheertyd in die ry $1
+
 webmincron_title=Webmin geskeduleerde funksies
 webmincron_emodule=Die Webmin Cron Jobs-module is nie geïnstalleer nie!
 webmincron_module=Webmin module
@@ -1037,6 +1089,7 @@ webmincron_when1=Spesifieke tye
 webmincron_secs=sekondes
 webmincron_err=Kon nie die geskeduleerde funksie stoor nie
 webmincron_einterval=Die interval moet 'n aantal sekondes groter wees as nul
+
 twofactor_title=Tweefaktor-verifikasie
 twofactor_header=Twee-faktor-verifikasie-opsies
 twofactor_provider=Verifikasie-verskaffer
@@ -1075,6 +1128,7 @@ twofactor_secret1=Willekeurig gegenereer
 twofactor_secret0=Gebruik die sleutel van 16 karakters
 twofactor_esecret=Die geheime sleutel moet presies 16 karakters lank wees en slegs letters en syfers bevat
 twofactor_esession=Tweefaktor-verifikasie kan nie gebruik word tensy sessie-gebaseerde verifikasie aktief is nie
+
 letsencrypt_title=Kom ons kodifiseer sertifikaatversoek
 letsencrypt_err=Kon nie sertifikaat aanvra nie
 letsencrypt_ecmds=Die opdrag Let's Encrypt-kliënt <tt>certbot</tt> of die <tt>python</tt> -opdrag is nie op u stelsel gevind nie
@@ -1108,5 +1162,6 @@ letsencrypt_ecsr=CSR was gegenereer : $1
 letsencrypt_ekeygen=Kon nie die privaat sleutel genereer nie : $1
 letsencrypt_enative=Die inheemse Let's Encrypt-kliënt (certbot) is voorheen op hierdie stelsel gebruik en moet gebruik word vir alle toekomstige sertifikaatversoeke
 letsencrypt_eacmedns=Slegs die amptelike Let's Encrypt-kliënt ondersteun DNS-gebaseerde validering
+
 announce_hide=Verberg hierdie aankondiging
 alert_hide=Versteek waarskuwing

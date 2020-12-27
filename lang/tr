@@ -6,16 +6,19 @@ main_version=$2'de Sürüm $1 ($3)
 main_title=$2'de Webmin $1 ($3)
 main_none=Herhangi bir webmin modülüne ulaşmak için izininiz yoktur.
 main_return=Geri Dön ($1) 
+
 category_servers=Sunucular
 category_hardware=Donanım
 category_system=Sistem
 category_webmin=Webmin
 category_net=Ağ
+
 header_webmin=Webmin Indeksi
 header_module=Modül Indeksi
 header_help=Yardım..
 header_config=Modül Ayarları
 header_servers=Webmin Sunucuları
+
 index=Ana Sayfa
 yes=Evet
 no=Hayır
@@ -29,10 +32,12 @@ modify=Değiştir
 reset=Reset
 ok=Tamam
 cancel=İptal
+
 chooser_title1=Dosya Seç..
 chooser_title2=Dizin Seç..
 chooser_dir=$1'deki Dizin
 chooser_ok=Tamam
+
 users_title1=Kullanıcıları Seç..
 users_title2=Kullanıcı Seç..
 users_sel=Seçilen Kullanıcılar
@@ -40,6 +45,7 @@ users_all=Bütün Kullanıcılar
 users_ok=Tamam
 users_cancel=İptal
 users_clear=Temizle
+
 groups_title1=Grupları Seç..
 groups_title2=Grubu Seç..
 groups_all=Bütün Gruplar
@@ -47,12 +53,14 @@ groups_sel=Seçilen Gruplar
 groups_ok=Tamam
 groups_cancel=İptal
 groups_clear=Temizle
+
 config_ecannot=Bu modülü ayarlamak için izin verilmedi
 config_title=Ayarlama
 config_dir=$1 modülü için
 config_header=$1'deki ayarlanabilir seçenekler
 config_none=None
 config_eaccess=Bu modülü ayarlamak için izin verilmedi
+
 help_err=Yardımın görüntülenmesinde hata oluştu
 help_epath=Yardım dosyası bulunamadı
 help_efile=$1'in yadım dosyasının okunmasında hata oluştu
@@ -60,8 +68,10 @@ help_eheader=Aranan &lt;başlık&gt; bölüm
 help_einclude=$1'in içeriğinde hata oluştu
 help_eif=$1'de hata oluştu : $2
 help_eexec=$1'de hata oluştu : $2
+
 referer_title=Güvenlik Uyarısı
 referer_warn=<b>Uyarı!!!<b> Webmin program $2 programının $1 URL'sinden link aldığını tespit etti.Bu makinenize dışarıdan bir saldırı girişimi olabilir.
+
 session_header=Webmin'e Giriş
 session_mesg=$1'deki Webmin sunucusuna girmek için bir kullanıcı adı ve şifre girmelisiniz.
 session_user=Kullanıcı Adı
@@ -71,6 +81,7 @@ session_clear=Temizle
 session_failed=Giriş Başarısız. Lütfen tekrar deneyiniz.
 session_logout=Çıkış başarılı. Takip eden formu doldurarak tekrar girebilirsiniz.
 session_timed_out=Oturum $1 dakika işlem yapılmadığında inaktif olacaktır.
+
 month_1=Ocak
 month_2=Şubat
 month_3=Mart
@@ -83,6 +94,7 @@ month_9=Eylül
 month_10=Ekim
 month_11=Kasim
 month_12=Aralik
+
 day_0=Pazar
 day_1=Pazartesi
 day_2=Salı
@@ -90,6 +102,7 @@ day_3=Çarşamba
 day_4=Perşembe
 day_5=Cuma
 day_6=Cumartesi
+
 smonth_1=Oca
 smonth_2=Şub
 smonth_3=Mar
@@ -102,5 +115,6 @@ smonth_9=Eyl
 smonth_10=Eki
 smonth_11=Kas
 smonth_12=Ara
+
 ui_selall=Tümünü seç
 ui_selinv=Seçilenleri tersine çevir

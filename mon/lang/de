@@ -6,6 +6,7 @@ mon_conf_title=Basis-Konfiguration
 mon_status_title=Operationaler Status
 hostgroups_title=MON Konfigurations-Hostgruppe
 services_title=Beobachtungsgruppe-Dienste Definitionen
+
 head_hostgroups=Hostgruppe und Dienste
 head_groups=Hostgruppe Name
 head_members=Hostgruppe Mitglieder
@@ -17,6 +18,7 @@ head_monauth=Gebe Authentifizierung für MONCMD
 head_usr=Benutzername
 head_pass=Passwort
 head_mand=(Parameter in "Roter Farbe" sind Pflichtfelder)
+
 err_nomon=Paket 'mon' ist nicht auf dem System installiert
 err_nomonconf=Die MON-Konfigurationsdatei $1 wurde auf Ihrem System nicht gefunden. Vielleicht ist MON nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch.
 err_nowatch=Keine watchgroup ausgewählt. Wählen Sie mindestens eine Beobachtungsgruppe zum fortfahren aus.
@@ -28,6 +30,7 @@ stop_epid=Läuft nicht länger
 start_err=Fehlgeschlagen MON zu starten
 restart_err=Fehlgeschlagen MON neuzustarten
 restart_epid=Fehlgeschlagen PID zu empfangen
+
 other=Andere (Leerzeichen getrennt)
 next=Nächstes
 mon_stat=MON Status
@@ -43,6 +46,7 @@ save_apply=Speichern und anwenden
 watch=Beobachtungsgruppe
 members=Mitglieder
 def_perargs=wd {Sa-Son}
+
 def_desc=Beschreibung
 def_inter=Intervall
 def_mon=Monitor
@@ -58,9 +62,11 @@ def_trapdur=trapduration
 def_rand=randskew
 def_exclhost=exclude_hosts
 def_exclper=exclude_period
+
 groups_title=Hostgruppe
 groups_group=Gruppenname
 groups_members=Mitglieder Hosts
+
 watches_title=Beobachtungsliste
 watches_group=Beobachtungsgruppe
 watches_services=Dienste werden beobachtet
@@ -68,6 +74,7 @@ watches_sadd=Füge Dienst hinzu..
 watches_add=Füge Beobachtungsliste für Gruppe hinzu :
 watches_return=watch Liste
 watches_none=Keine Beobachtungsliste wurde bisher definiert.
+
 global_title=Globale Optionen
 global_header=Globale MON Konfiguration Optionen
 global_maxprocs=Maximale MON Prozesse
@@ -85,6 +92,7 @@ global_ehistlength=Fehlende oder ungültige Ereignishistorie Länge
 global_ealertdir=Fehlendes oder ungültiges Alarm-Programmverzeichnis
 global_emondir=Fehlendes oder ungültiges Monitor-Programm-Verzeichnis
 global_euserfile=Fehlende MON Benutzerdatei
+
 watch_title=Editiere Beobachtungsliste
 watch_header=Hostgruppe Beobachtungsdetails
 watch_group=Hostgruppe zum beobachten
@@ -93,6 +101,7 @@ watch_service=Dienstname
 watch_monitor=Monitor in Benutzung
 watch_interval=Prüfe jede
 watch_periods=Monitore Perioden
+
 service_title=Füge Dienst hinzu
 service_title2=Editiere Dienst
 service_header=Beobachtete Dienstedetails
@@ -145,16 +154,19 @@ service_epstr=Fehlende Periodenspezifikation
 service_known0=<tt>Time::Period</tt> String
 service_known1=Spezifiziere Tage und Stunden
 service_known2=Definierte Periode
+
 status_title=MON Status
 status_ecgi=Das MON Status CGI-Programm $1 existiert nicht. Vielleicht ist es nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch.
 status_eperl=Der MON Status CGI-Programm erfordert das $1 Perl-Modul. <a href='$2'>Klicken Sie hier</a>, um es direkt über CPAN zu installieren.
 status_esame=Das MON Status CGI-Programm $1 wurde an das<tt>mon.cgi</tt> Skript gesetzt in diesem Webmin-Modul, nicht die CGI-Programm, das mit MON kommt. Passen Sie die <a href='$2'>Modulkonfiguration</a> an, um den richtigen Pfad zu verwenden.
+
 users_title=MON Benutzer
 users_etype=Der MON Benutzerliste kann nicht bearbeitet werden, da MON noch nicht konfiguriert ist, um es für die Authentifizierung auf den <a href='$1'>Globale Optionen</a>-Seite zu verwenden.
 users_header=Erlaube MON Benutzer in $1
 users_nousers=Keine MON Benutzer wurden in $1 definiert.
 users_add=Erstelle einen neuen Benutzer.
 users_return=MON Benutzer Liste
+
 user_create=Erstelle MON Benutzer
 user_edit=Editiere MON Benutzer
 user_header=MON Benutzer Details
@@ -164,6 +176,7 @@ user_leave=Unverändert lassen
 user_err=Fehlgeschlagen Benutzer zu speichern
 user_euser=Fehlender oder ungültiger Benutzername
 user_esame=Ein Benutzer mit demselben Namen existiert bereits
+
 auth_title=Client Befehle
 auth_desc=Auf dieser Seite können Sie steuern, welche MON-Befehle, mit welchen Benutzer bei der Verwendung der Client-Programme ausgeführt werden können.
 auth_cmd=MON Befehl
@@ -173,6 +186,7 @@ auth_all=Jeder
 auth_sel=Nur Benutzer
 auth_err=Fehlgeschlagen den Client Befehl zu speichern
 auth_eusers=Keine Benutzer für Befehl $1 eingegeben
+
 periods_title=Definiere Periode
 periods_period=Periodenname
 periods_times=Tage und Zeiten
@@ -181,5 +195,6 @@ periods_allhours=Alle Stunden
 periods_err=Fehlgeschlagen definierte Perioden zu speichern
 periods_ename='$1' ist kein gültiger Periodenname
 periods_ehour=Fehlende oder ungültige Stunden für den Zeitraum $1 (muss wie 9am oder 5pm sein)
+
 show_title=Operationaler Status
 show_ecgi=Das MON-Status Programm $1 existiert nicht. Vielleicht ist es nicht installiert, oder Ihre <a href='$2'>Modukonfiguration</a> ist falsch.

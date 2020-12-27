@@ -10,6 +10,7 @@ index_range=Wygeneruj raport dla zakresu dat
 index_view=Wyświetl wygenerowany raport
 index_viewdesc=Wyświetl ostatnio wygenerowany raport w katalogu $1.
 index_return=indeks modułu
+
 log_title=Źródło dziennika i miejsce docelowe raportu
 log_header=Plik dziennika źródłowego Squid i wygenerowane opcje raportu
 log_access_log=Źródłowy plik dziennika Squid
@@ -30,6 +31,7 @@ log_elastlog=Brak lub brak numeru
 log_eemail=Brakujący lub nieprawidłowo wyglądający adres e-mail
 log_emailx=Brakujący lub nieistniejący program pocztowy
 log_squidguard_log_path=Plik dziennika SquidGuard
+
 style_title=Styl raportu
 style_header=Opcje stylu i koloru raportu HTML
 style_title2=Zgłoś tytuł
@@ -54,6 +56,7 @@ style_efont=Brakująca lub nieprawidłowa nazwa czcionki
 style_esize=Brakująca lub nieprawidłowa szerokość i wysokość obrazu
 style_language=Zgłoś język
 style_charset=Zgłoś zestaw znaków
+
 report_title=Opcje raportu
 report_header=Zgłoś treść i opcje generowania
 report_resolve_ip=Czy rozwiązać adresy IP?
@@ -134,6 +137,7 @@ report_echar=Spacje nie są dozwolone
 report_estring=Brakujący lub nieprawidłowy tekst zastępczy
 report_eselect=Nic nie wybrano
 report_eenter=Nic nie weszło
+
 sched_title=Zaplanowane generowanie raportu
 sched_header=Zaplanowane opcje raportowania
 sched_sched=Czy harmonogram zaplanowany jest włączony?
@@ -148,9 +152,11 @@ sched_rsel=Te od $1 do $2 dni temu
 sched_err=Nie udało się zapisać zaplanowanego generowania raportu
 sched_erfrom=Brakująca lub nieprawidłowa liczba dni temu
 sched_erto=Brakująca lub nieprawidłowa liczba dni temu
+
 view_title=Raport Sarg
 view_efile=Nieprawidłowa nazwa pliku!
 view_eopen=Nie można otworzyć pliku raportu
+
 gen_title=Generuj raport
 gen_header=Teraz generuję raport Sarg z pliku dziennika Squid $1 i wszystkich obróconych wersji.
 gen_done=.. gotowy
@@ -160,6 +166,7 @@ gen_view=Wyświetl ukończony raport.
 gen_err=Nie udało się wygenerować raportu
 gen_efrom=Brak lub nieprawidłowe od dnia
 gen_eto=Brakuje lub jest nieważny na dzień
+
 webmin_log_log=Zaktualizowano opcje źródła dziennika i miejsca docelowego raportu
 webmin_log_report=Zaktualizowano opcje raportu
 webmin_log_style=Zaktualizowano opcje stylu raportu

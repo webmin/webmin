@@ -12,6 +12,7 @@ index_return=fitxategi sistemen zerrenda
 index_none=Ez duzu muntatutako fitxategi sistemetarako sarbiderik.
 index_mount2=Pasahitzarekin muntatu:
 index_root=Fitxategi-sistema erroa
+
 edit_title=Editatu mendia
 create_title=Sortu mendia
 edit_err=Ezin izan da muntaketa editatu
@@ -58,6 +59,7 @@ edit_ecannot=Ezin duzu fitxategi-sistema hau editatu
 edit_ecannot2=Ezin duzu fitxategi-sistema berririk gehitu
 edit_3_or_lower=3 (edo txikiagoa)
 edit_advanced=Modu aurreratua
+
 save_err=Huts egin du mendia gordetzean
 save_edir='$1' ez da direktorio bat
 save_edirname='$1' ez da baliozko direktorioaren izena
@@ -74,8 +76,10 @@ save_apply=Aplikatu Zerrenda Iraunkorrean
 save_fapply=Indarrez mendia egin gabe
 save_eremount=Ordainketa huts egin da : $1
 save_enone=Ez zenuen gordetzea edo muntatzea aukeratu
+
 swap_err=Huts egin du swap fitxategia sortzerakoan
 swap_esize='$1' ez da baliozko tamaina
+
 nfs_server=Aukeratu NFS zerbitzaria ..
 nfs_select=Aukeratu NFS zerbitzaria ..
 nfs_ip=IP helbidea
@@ -87,6 +91,7 @@ nfs_seldir=Hautatu NFS direktorio bat muntatzeko ..
 nfs_seldirv4=NFSv4 muntaiarako, '/' aukeratu beharko zenuke
 nfs_dir=Directory
 nfs_clients=Bezeroak
+
 smb_choose=Aukeratu CIFS zerbitzaria ..
 smb_elist=Ezin izan da $1 zerbitzariaren zerrenda berreskuratu. Agian zerbitzariak ez du arakatzea onartzen
 smb_eworkgroup=Ez da lan-talderik ezarri moduluen konfigurazio orrian
@@ -103,6 +108,7 @@ smb_sel2=Aukeratu partekatzeko muntatu ..
 smb_share=Share
 smb_comment=Iruzkina
 smb_noshares=Ez dago eskuragarri fitxategi-partekatzeak $1 zerbitzarian
+
 solaris_scsidev=SCSI kontroladorea $1 target $2 unit $3 partition $4
 solaris_idedev=IDE kontroladorea $1 drive $2 partizioa $3
 solaris_mddev=RAID gailua $1
@@ -240,6 +246,7 @@ solaris_efstyp2=Ezin izan da fitxategi-sistema mota egiaztatu : $1
 solaris_ecachedir='$1' ez da baliozko cache direktorio bat
 solaris_efmode='$1' ez da zaldizko fitxategi modua
 solaris_edmode='$1' ez da baliozko zortzi direktorio modua
+
 linux_eamd=AMDk huts egin du
 linux_eauto=Automata huts egin du : $1
 linux_esmbconn=Ezin izan da zerbitzarira konektatu
@@ -361,6 +368,7 @@ linux_noenforce=Bai, baina ez ezazu betearazi
 linux_df=Erreserbatutako blokeak fitxategi-sistemen tamainan sartzea?
 linux_noatime=Azken sarbide orduak eguneratzea saihestu behar duzu?
 linux_netdev=Itxaron sareko interfazeak sortu arte?
+linux_nofail=Abiarazten jarraitu nahi baduzu muntatzeak huts egiten badu?
 linux_ecname=Bezeroaren netbios izena falta edo ez da baliozkoa
 linux_emname=Zerbitzari ostalari edo IP helbide falta edo baliogabea
 linux_bind=Jatorrizko direktorio
@@ -386,6 +394,7 @@ linux_nounix=Desgaitu CIFS Unix luzapenak?
 linux_noserverino=Sortu inodo zenbakiak bezeroaren aldean?
 linux_cvers=CIFS bertsioa
 linux_ecvers=CIFS bertsioak zenbaki bat izan behar du
+
 log_mount=$3 muntatuta
 log_mount_l=$2 $1 on $3
 log_umount=$3
@@ -399,7 +408,9 @@ log_modify_l=$2 aldatu $1 on $3
 log_delete=Ezabatu den mendia $3
 log_delete_l=$2 ezabatu $1 on $3
 log_swap=$1 swap fitxategia sortu du
+
 unmount_err=Ezin izan da $1 desmuntatu
+
 mount_err=Huts egin du $1 muntatzeak
 irix_nhost=NFS ostalariaren izena
 irix_ndir=NFS direktorioa
@@ -430,6 +441,7 @@ irix_rock=Erabili Rock Ridge luzapenak?
 irix_nofsck=Egiaztatu fitxategien sistema abiaraztean?
 irix_auto=Automataren iturria
 irix_automap=Mapa fitxategia
+
 irix_ehost='$1' ostalaria ez da existitzen
 irix_eloss='$1' ostalaria behera dago
 irix_eshowmount='$1' ostalariak ez du NFS onartzen
@@ -447,9 +459,11 @@ irix_efstyp2=Ezin izan da fitxategi sistema mota $1 : $2
 irix_efstyp=$1 fitxategi-sistema mota $2 da, ez $3
 irix_eautomap=Ez dago '$1' fitxategi automatikoko mapa
 irix_eauthmap2=Falta da edo automatikoen mapa-fitxategi falta
+
 irix_devroot=Partizio erroa
 irix_devswap=Swap partizioa
 irix_autohosts=NFS esportazio guztiak
+
 acl_only=Baimendu bakarrik muntatzea eta desmuntatzea?
 acl_fs=Editatu daitezkeen fitxategi-sistemak
 acl_types=Erabil daitezkeen fitxategi sistema motak
@@ -462,8 +476,10 @@ acl_hide=Editatu ezin dituzun fitxategi-sistemak ezkutatu?
 acl_simple=Erakutsi muntatze formulario sinplea?
 acl_simopts=Erakutsi fitxategi-sistema sinplifikatutako aukerak?
 acl_browse=Erakutsi fitxategiak eta partekatu arakatze botoiak?
+
 egcc=Ez dago erabilgarri zure sisteman muntatutako fitxategi sistemak zerrendatzeko programa bat eraikitzeko behar duen GCC edo CC konpiladorea.
 ecompile=Errore bat gertatu da zure sisteman muntatutako fitxategi sistemak zerrendatzeko programa eraikitzean : $1
+
 freebsd_eaddr=Zerbitzari helbide falta edo baliogabea
 freebsd_eworkgroup=Lan-talde falta edo baliogabea
 freebsd_ide=IDE disko gogorra
@@ -477,8 +493,10 @@ freebsd_idedev=IDE gailua $1, xerra $2, $3
 freebsd_scsidev=SCSI gailua $1, xerra $2, $3
 freebsd_edevpath=Beste gailuak bide absolutua izan behar du, adibidez <tt>/dev/cdrom</tt>
 freebsd_edevfile="$1" gailuaren fitxategia ez dago
+
 cswap_file=$1 swap fitxategia ez dago.
 cswap_size=Sortu eta muntatu swap fitxategia tamainarekin
+
 acl_sysinfo=Erakutsi eskuragarri dauden diskoaren datuak Arbelean?
 sysinfo_total=Guztira
 sysinfo_dev=Gailuaren IDa

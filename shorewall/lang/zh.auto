@@ -1,7 +1,10 @@
 index_dump=显示转储
 index_dumpdesc=单击此按钮可通过<tt>shorewall dump</tt>命令查看Shorewall跟踪信息。
+
 list_delete=删除所选
+
 dump_title=防火墙转储
+
 zones_1new=父区
 zones_2new=区域类型
 zones_3new=区域选项
@@ -14,11 +17,14 @@ zones_firewall=防火墙系统
 zones_eopts=无效的区域选项
 zones_eopts_in=无效的区域传入选项
 zones_eopts_out=无效的区域传出选项
+
 rules_eaction=未选择任何动作
 rules_macro=宏动作参数
 rules_none2=没有
 rules_emacro=宏参数缺失或无效
+
 tos_6=测试
+
 masq_3=限制协议
 masq_4=仅限端口
 masq_5=IPsec选项
@@ -26,15 +32,20 @@ masq_any=任何协议
 masq_all=所有港口
 masq_eports=缺少或无效的逗号分隔端口列表
 masq_eipsec=缺少IPsec选项
+
 routestopped_2=路线选项
+
 hosts_enet=主机地址丢失或无效
 hosts_ip=地址或网络 $1
 hosts_mac=MAC地址 $1
 hosts_ipset=IP设定 $1
 hosts_any=任何主机
+
 blacklist_emac=MAC地址丢失或无效
 blacklist_eipset=缺少IP集名称
+
 providers_return=路由提供者列表
+
 route_rules_title=路由规则
 route_rules_desc=该页面控制将哪些流量路由到“其他路由提供程序”页面上定义的提供程序。
 route_rules_ip=IP地址，网络或接口
@@ -60,8 +71,10 @@ route_rules_emark=封包标记必须为数字或数字/掩码格式
 route_rules_return=路由规则列表
 route_rules_edit=编辑路由规则
 route_rules_create=创建路由规则
+
 delete_err=删除行失败
 delete_enone=未选择任何行
+
 opts_routeback=接受流量返回主机
 opts_source=允许从主机到任何目的地
 opts_dest=允许从任何来源托管
@@ -79,6 +92,7 @@ opts_proxyarp=启用代理ARP
 opts_arp_filter=仅响应接口IP的ARP请求
 opts_detectnets=泰勒区域仅包含路由主机
 opts_upnp=通过UPNP重新映射数据包
+
 comment_add=添加新评论。
 comment_edit=编辑评论
 comment_create=建立评论
@@ -86,6 +100,7 @@ comment_header=表注释详细信息
 comment_msg=信息
 comment_err=无法保存评论
 comment_enone=没有输入消息
+
 log_create_table=已将条目添加到 $1表中
 log_modify_table=$1表中的已修改条目
 log_delete_table=已从 $1表中删除条目
@@ -101,6 +116,7 @@ log_start=启动防火墙
 log_refresh=刷新防火墙
 log_restart=重新启动防火墙
 log_clear=清除防火墙
+
 shorewall_conf_title=主配置文件
 shorewall_conf_desc=该页面允许您配置全局配置变量。注意：如果要保留注释在配置文件中的相对位置，建议不要在此处更改变量的顺序。
 shorewall_conf_add=添加一个新的配置变量。
@@ -114,6 +130,7 @@ shorewall_conf_create=创建配置变量
 shorewall_conf_header=配置变量详细信息
 shorewall_conf_err=保存配置变量失败
 shorewall_conf_varname=无效的变量名（必须是有效的shell变量名）
+
 params_title=自订参数
 params_desc=该页面允许您配置Shorewall的自定义参数。注意：如果要保留注释在配置文件中的相对位置，建议不要在此处更改参数的顺序。
 params_add=添加一个新的自定义参数。

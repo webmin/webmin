@@ -30,6 +30,7 @@ index_return=ゾーンのリスト
 index_ezones=FirewallDゾーンが見つかりません！
 index_none=このゾーンには、許可されたポートまたはサービスがまだありません。
 index_ifaces=インターフェイスにルールを適用します。
+
 port_edit=ポートを編集
 port_create=ポートを追加
 port_header=許可されたポートオプション
@@ -45,11 +46,13 @@ port_eport=ポート番号または名前が欠落しているか無効です
 port_eportlow=低ポートは数字でなければなりません
 port_eporthigh=ハイポートは数字でなければなりません
 port_eportrange=低ポートは高ポートより下でなければなりません
+
 serv_edit=サービスを編集
 serv_create=サービスを追加
 serv_header=許可されたサービスオプション
 serv_name=許可するサービス
 serv_err=サービスを保存できませんでした
+
 forward_edit=前方編集
 forward_create=前方に作成
 forward_header=ポート転送オプション
@@ -61,10 +64,13 @@ forward_dstaddr=宛先住所
 forward_dstlocal=このシステム
 forward_edstaddr=無効なIPv4宛先アドレス
 forward_eneither=宛先アドレスまたはポート、あるいはその両方を入力する必要があります
+
 check_ecmd=FirewallD制御コマンド $1がシステムで見つかりませんでした
+
 delete_err=ルールを削除できませんでした
 delete_enone=何も選択されていません！
 delete_edel=$1の削除に失敗しました： $2
+
 zone_title=ゾーンを作成
 zone_header=新しいゾーンオプション
 zone_name=ゾーン名
@@ -77,12 +83,16 @@ zone_mode4=仮想ホスティングに使用されるポート
 zone_err=ゾーンを作成できませんでした
 zone_ename=ゾーン名が欠落しているか無効です
 zone_eclash=同じ名前のゾーンが既に存在します
+
 delzone_title=ゾーンを削除
 delzone_err=ゾーンを削除できませんでした
 delzone_edefault=デフォルトゾーンは削除できません
 delzone_rusure=$2ポートと $3サービスを含むゾーン $1を削除してもよろしいですか？
+
 defzone_err=ゾーンをデフォルトにできませんでした
+
 restart_err=構成を適用できませんでした
+
 stop_err=FirewallDを停止できませんでした
 start_err=FirewallDを開始できませんでした
 log_stop=FirewallDを停止しました

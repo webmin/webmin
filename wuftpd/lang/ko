@@ -8,6 +8,7 @@ index_start=서버 시작
 index_startmsg=현재 구성으로 FTP 서버를 시작하려면 이 버튼을 누르십시오. 또한 <a href='$1'>인터넷 서비스</a> 모듈을 사용하여 필요할 때마다 자동으로 시작되도록 서버를 구성할 수도 있습니다.
 index_startmsg2=현재 구성으로 FTP 서버를 시작하려면 이 버튼을 누르십시오. inetd 또는 비슷한 성능의 프로그램을 사용하여 필요할 때마다 자동으로 시작되도록 서버를 구성할 수도 있습니다.
 index_return=FTP 서버 옵션
+
 class_title=사용자 및 클래스
 class_header=사용자 클래스 및 사용자 옵션
 class_class=사용자 클래스
@@ -30,6 +31,7 @@ class_err=사용자 클래스를 저장하지 못했습니다
 class_eclass='$1'은(는) 유효한 클래스 이름이 아닙니다
 class_etypes=클래스 '$1'에 대한 유형을 선택하지 않았습니다
 class_eaddrs=클래스 '$1'의 주소를 입력하지 않았습니다
+
 message_title=메시지 및 배너
 message_header=메시지, 배너 및 README 파일
 message_message=메시지 파일
@@ -58,6 +60,7 @@ message_eclass=클래스 '$1'이(가) 없습니다
 message_ebanner='$1'은(는) 유효한 로그인 배너 파일이 아닙니다
 message_ehostname=없거나 잘못된 호스트 이름
 message_eemail=없거나 잘못된 전자 메일 주소
+
 acl_title=제한 및 접근 제어
 acl_header=제한 및 접근 제어 옵션
 acl_deny=접근 거부 위치
@@ -104,6 +107,7 @@ acl_elmsg='$1'은(는) 유효한 오류 메시지 파일이 아닙니다
 acl_efbcount='$1'은(는) 유효한 파일 또는 바이트 수가 아닙니다
 acl_elimit='$1'은(는) 유효한 시간 제한이 아닙니다 
 acl_efails='$1'은(는) 유효한 로그인 실패 수가 아닙니다
+
 net_title=네트워킹
 net_header=네트워킹 옵션
 net_tcp=TCP 창 크기
@@ -121,6 +125,7 @@ net_eip='$1'은(는) 유효한 IP 주소가 아닙니다
 net_enet='$1'은(는) 유효한 네트워크 주소가 아닙니다
 net_ecidr='$1'은(는) 유효한 네트워크 비트 수가 아닙니다
 net_eport='$1'은(는) 유효한 포트 번호가 아닙니다
+
 log_title=로그
 log_header=로그 옵션
 log_commands=모든 명령 로그 대상
@@ -137,6 +142,7 @@ log_to=전송 로그 위치
 log_syslog=시스템 로그
 log_xferlog=XFER 로그 파일
 log_err=로그 옵션을 저장하지 못했습니다
+
 alias_title=별칭 및 경로
 alias_header=별칭 및 경로 옵션
 alias_alias=CD 디렉토리 별칭
@@ -147,6 +153,7 @@ alias_err=별칭 및 경로를 저장하지 못했습니다
 alias_efrom='$1'은(는) 유효한 별칭 이름이 아닙니다
 alias_eto='$1'은(는) 유효한 별칭 디렉토리가 아닙니다
 alias_ecdpath='$1'은(는) 유효한 CD 검색 디렉토리가 아닙니다
+
 anon_title=익명 FTP
 anon_eftp=경고 - 시스템에 <tt>ftp</tt> 사용자가 없으므로 익명 FTP가 구성되지 않을 수 있습니다.
 anon_header=익명 FTP 옵션
@@ -169,6 +176,7 @@ anon_uids=유닉스 사용자
 anon_err=익명 FTP 옵션을 저장하지 못했습니다
 anon_edir='$1'은(는) 유효한 디렉토리가 아닙니다
 anon_egroup='$1'은(는) 유효한 그룹이 아닙니다
+
 perm_title=사용 권한
 perm_header=사용 권한 옵션
 perm_perms=명령 제한
@@ -190,7 +198,9 @@ perm_err=사용 권한을 저장하지 못했습니다
 perm_echar='$1'은(는) 유효한 문자로 설정된 정규식이 아닙니다
 perm_etypes=사용자 유형을 선택하지 않았습니다
 perm_emesg='$1'은(는) 유효한 오류 메시지 파일이 아닙니다
+
 host_title=호스트 접근 제어
+
 misc_title=기타 옵션
 misc_header=기타 옵션
 misc_lslong=긴 목록 명령
@@ -211,6 +221,7 @@ misc_elsplain=일반 목록 명령이 없습니다
 misc_eshutdown=종료 알림 파일이 없습니다
 misc_enice='$1'은(는) 유효한 양호 수준이 아닙니다
 misc_eumask='$1'은(는) 유효한 umask가 아닙니다
+
 log_class=사용자 및 클래스 변경됨
 log_message=메시지 및 배너 변경됨
 log_acl=제한 및 접근 제어 변경됨

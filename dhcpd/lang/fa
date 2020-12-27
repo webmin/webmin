@@ -60,12 +60,14 @@ index_gdom=گروه براي $1
 index_match0=تساويها
 index_match1=شامل
 index_match2=تطبيقها
+
 butt_save=حفظ کردن
 butt_eco=ويرايش گزينه‌هاي کارخواه
 butt_vco=نمايش گزينه‌هاي کارخواه
 butt_del=حذف کردن
 butt_create=ايجاد کردن
 butt_leases=ليست IPهاي واگذار شده
+
 esub_crheader=ايجاد زير‌شبکه
 esub_edheader=ويرايش زير‌شبکه
 esub_tabhdr=جزئيات زير‌شبکه
@@ -79,12 +81,14 @@ esub_groups=گروه‌هاي موجود در اين زيرشبکه
 esub_pools=مجموعه نشاني براي زيرشبکه
 esub_pool=مجموعه نشاني $1
 esub_poolnone=هيچ مجموعه نشاني تعريف نشده‌است
+
 esub_pooladd=اضافه کردن يک مجموعه نشاني.
 esub_none=هيچ
 esub_return=ليست زيرشبکه‌ها
 esub_retshar=شبکه اشتراکي
 esub_desc=شرح زيرشبکه
 esub_fopeer=Failover Peer
+
 esh_crheader=ايجاد شبکه اشتراکي
 esh_eheader=ويرايش شبکه اشتراکي
 esh_tabhdr=جزئيات شبکه اشتراکي
@@ -95,6 +99,7 @@ esh_subn=زيرشبکه‌ها در اين شبکه اشتراکي
 esh_return=ليست زيرشبکه‌ها
 esh_pools=مجموعه نشانيها براي شبکه اشتراکي
 esh_desc=شرح شبکه اشتراکي
+
 ehost_crheader=ايجاد ميزبان
 ehost_eheader=ويرايش ميزبان
 ehost_tabhdr=جزئيات ميزبان
@@ -115,6 +120,7 @@ ehost_retgroup=گروه
 ehost_retsubn=زيرشبکه
 ehost_retshar=شبکه اشتراکي
 ehost_desc=شرح ميزبان
+
 egroup_crheader=ايجاد گروه ميزبان
 egroup_eheader=ويرايش گروه ميزبان
 egroup_tblhdr=جزئيات ميزبان
@@ -125,6 +131,7 @@ egroup_return=ليست ميزبانها
 egroup_retsubn=زيرشبکه
 egroup_retshar=شبکه اشتراکي
 egroup_desc=شرح گروه
+
 default=پيش‌گزيده
 secs=ثانيه
 none=هيچ
@@ -142,19 +149,23 @@ listl_end=تاريخ پايان
 listl_return=ليست ميزبانها و شبکه‌ها
 listl_all=ليست همه IPهاي واگذار شده فعال و سپري شده
 listl_delete=برروي يک نشاني IP واگذار شده از ليست بالا فشار دهيد تا حذف شود.
+
 restart_errmsg1=عدم موفقيت در بازآغازي dhcpd
 restart_errmsg2=عدم موفقيت در پردازش سيگنال
 start_failstart=عدم موفقيت در آغاز dhcpd
+
 sgroup_faildel=عدم موفقيت در حذف کردن گروه
 sgroup_failsave=عدم موفقيت در حفظ کردن گروه
 sgroup_invassign=گروه به بخش نادرستي منتسب شده‌است
 sgroup_echanged=محتويات پرونده پيکربندي تغيير يافته‌است. دوباره سعي کنيد
+
 shost_faildel=عدم موفقيت در حذف کردن ميزبان
 shost_failsave=عدم موفقيت در حفظ کردن ميزبان
 shost_invalidhn=نام ميزبان معتبر نيست
 shost_invalidhwa='$1' نشاني $2 معتبري نيست
 shost_invalidaddr='$1' شامل نام ميزبان و يا نشاني IP نامعتبر مي‌باشد.
 shost_invassign=ميزبان به بخش نادرستي منتسب شده‌است
+
 sopt_failsave=عدم موفقيت در حفظ کردن گزينه‌هاي کارخواه
 sopt_invalidip=نشاني IP معتبري نيست
 sopt_invalidint=صحيح نيست
@@ -162,10 +173,12 @@ sopt_invalidipp=يک جفت نشاني IP معتبر نيست(مانند (5.6.7.
 sopt_edname='$1' نام گزينه معتبري نيست
 sopt_ednum='$1' شماره گزينه معتبري نيست
 sopt_edtype='$1' نوع گزينه معتبري نيست
+
 sshared_faildel=عدم موفقيت در حذف کردن شبکه اشتراکي
 sshared_failsave=عدم موفقيت درحفظ شبکه اشتراکي
 sshared_invalidsname=نام شبکه اشتراکي نامعتبر است و يا يافت نشد
 sshared_nosubnet=شبکه اشتراکي '$1' شامل هيچ زيرشبکه‌اي نمي‌باشد.
+
 ssub_faildel=عدم موفقيت در حذف کردن زيرشبکه
 ssub_failsave=عدم موفقيت در حفظ کردن زيرشبکه
 ssub_invalidsubaddr=نشاني معتبري براي زيرشبکه نيست
@@ -173,6 +186,7 @@ ssub_invalidnmask=نقابي شبکه معتبر نيست
 ssub_invalidipr=گستره نشاني IP معتبري نيست
 ssub_nosubnet=شبکه اشتراکي '$1' شامل هيچ زيرشبکه‌اي نمي‌باشد.
 ssub_invalidfopeer=يک failover peer معتبر نيست.
+
 plib_deflt=زمان پيش‌گزيده واگذاري
 plib_bfname=نام پرونده راه‌انداز
 plib_maxlt=بيشينه زمان واگذاري
@@ -225,6 +239,7 @@ plib_eexpr=اين بخش از پيکربندي DHCP شامل عبارت دستو
 plib_auth_subnet=آيا کارساز براي اين زيرشبکه معتبر است؟
 plib_auth_shared-network=آيا کارساز براي اين شبکه اشتراکي معتبر است؟
 plib_auth_global=آيا کارساز براي همه زيرشبکه‌ها معتبر است؟
+
 eopt_header=گزينه‌هاي کارخواه
 eopt_subtitle=براي زيرشبکه $1
 eopt_returnsub=زيرشبکه
@@ -268,6 +283,7 @@ eopt_slpa=IPهاي عامل فهرست راهنماي SLP
 eopt_slpaips=فقط اين IPها؟
 eopt_slps=حوزه خدمت SLP
 eopt_slpsonly=فقط اين حوزه؟
+
 log_apply=به‌کاربستن تغييرات
 log_start=کارساز DHCP آغاز شد
 log_create_subnet=زيرشبکه $1 ايجاد شد
@@ -287,6 +303,7 @@ log_delete_group=گروه از $1 ميزبان حذف شد
 log_modify_group=گروه از $1 ميزبان تغيير کرد
 log_options_group=گزينه‌هاي گروه از $1 ميزبان تغيير کرد
 log_delete_lease=واگذار شده به $1 حذف شد
+
 keys_edit=ويرايش کليد TSIG
 keys_create=کليدهاي TSIG ايجادشد
 keys_title=کليدهاي DNS
@@ -297,12 +314,14 @@ keys_ecannot=اجازه ويرايش کليدهاي DNS را نداريد
 keys_err=عدم موفقيت در حفظ کردن کليدهاي DNS
 keys_ekey=$1 يک ID معتبر نيست
 keys_esecret=رمز گذاري محرمانه در مبناي 64 براي کليد $1 نامعتبر است و يا يافت نشد.
+
 pool_edit=ويرايش گستره نشاني IP
 pool_create=ايجاد گستره نشاني IP
 pool_header=گزينه‌هاي گستره نشاني
 pool_allow=براي کارخواه‌ها مجاز است
 pool_deny=براي کارخواه‌ها ممنوع است
 pool_return=زيرشبکه
+
 cdel_header=هشدار
 cdel_shared1=شبکه اشتراکي
 cdel_shared2=شبکه اشتراکي
@@ -320,6 +339,7 @@ cdel_txt=با حذف $1 محتويات $2 نيز حذف خواهد شد:
 cdel_confirm=آيا مايل به حذف اين $1 هستيد؟
 cdel_eunknown=خطاي ناشناخته
 cdel_return=ميزبان و ليست شبکه
+
 eacl_aviol=خطاي کنترل دستيابي
 eacl_np=شما مجاز نيستيد که
 eacl_pdh=حذف ميزبان
@@ -343,6 +363,7 @@ eacl_pdl=حذف واگذاري
 eacl_psl=نماي واگذاري
 eacl_pglob=ويرايش گزينه‌هاي سراسري
 eacl_papply=آغاز دوباره اين خدمت
+
 acl_apply=آيا مي‌توان تغييرات را به کار بست؟
 acl_r_leases=آيا مي‌توان واگذار شده‌ها را مشاهده نمود؟
 acl_w_leases=آيا مي‌توان واگذار شده‌ها را حذف نمود؟
@@ -371,9 +392,11 @@ acl_err=خطا در حفظ کردن ليست ACL
 acl_ernow=اگر خواهان فعال سازي دستيابي نوشتن در بعضي از انواع اشيا ACLهاي سراسري هستيد بايد دستيابي خواندن براي اين نوع شيء را هم فعال نماييد
 acl_normal=عادي
 acl_paranoic=سوءظن
+
 iface_title=کارت شبکه
 iface_desc=کارساز DHCP تنها توانايي انتساب نشانيهاي IP در شبکه‌هاي متصل به يکي از واسطهاي شبکه‌ انتخاب شده زير را دارد. همه زيرشبکه‌هاي تعريف شده بايد شامل واسط شبکه باشند. اگر هيچيک از واسطهاي شبکه انتخاب نشده باشد کارساز DHCP يکي از آنها را به‌صورت خودکار پيدا مي‌کند.
 iface_listen=گوش دادن به واسط شبکه‌
+
 lookup_ehost=هيچ ميزباني با نام، نشاني IP يا نشاني MAC $1 وجود ندارد
 lookup_ehostname=هيچ ميزباني با نام، نشاني IPيا نشاني MAC $1 وارد نشده‌است
 lookup_egroup=هيچ گروهي با نام يا نام دامنه $1 وجود ندارد
@@ -382,6 +405,7 @@ lookup_esubnet=هيچ زيرشبکه‌اي با نشاني يا نشاني/نق
 lookup_esubnetname=هيچ نشاني زيرشبکه‌اي يا نشاني/نقابي شبکه‌اي وارد نشده‌است
 lookup_eshared=هيچ شبکه اشتراکي با نام $1 وجود ندارد
 lookup_esharedname=نام شبکه اشتراکي وارد نشده‌است
+
 zone_key=منطقه‌هاي DNS
 index_addzone=افزودن منطقه DNS جديد
 index_zone=منطقه
@@ -395,11 +419,14 @@ zone_return=گزينگان اصلي
 zone_faildel=عدم موفقيت در حذف کردن منطقه
 zone_failsave=عدم موفقيت در حفظ کردن منطقه
 zone_tsigkey=کليد TSIG
+
 plib_clientupdates=به‌هنگام درآوردن کارخواه: آيا کارخواه‌ها مي‌توانند رکوردهاي خود را به‌هنگام درآورند؟
+
 text_title=dhcpd.conf
 text_editor=ويراستار متن
 text_return=گزينگان اصلي
 text_undo=واگرد
 text_ecannot=شمااجازه ويرايش پرونده پيکربندي را نداريد
+
 index_buttetext=پرونده پيکربندي
 index_text=ويرايش پرونده پيکربندي در ويراستار متن(توجه!)

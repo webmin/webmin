@@ -44,6 +44,7 @@ edit_ecannot=غير مسموح لك بتحرير نظام الملفات هذا
 edit_ecannot2=غير مسموح لك بإضافة أنظمة ملفات جديدة
 edit_3_or_lower=3 (أو أقل)
 edit_advanced=وضع متقدم
+
 save_err=فشل في حفظ جبل
 save_edir='$1' is not a directory
 save_edirname='$1' is not a valid directory name
@@ -60,8 +61,10 @@ save_apply=تنطبق على القائمة الدائمة
 save_fapply=قوة الامم المتحدة جبل
 save_eremount=Remount failed : $1
 save_enone=لم تختر الحفظ أو التثبيت
+
 swap_err=فشل في إنشاء ملف المبادلة
 swap_esize='$1' is not a valid size
+
 nfs_server=اختر خادم NFS ..
 nfs_select=حدد خادم NFS لتثبيته من ..
 nfs_ip=عنوان IP
@@ -73,6 +76,7 @@ nfs_seldir=حدد دليل NFS لتركيب ..
 nfs_seldirv4=لتركيب NFSv4 ، يجب عليك تحديد "/"
 nfs_dir=الدليل
 nfs_clients=عملاء
+
 smb_choose=اختر خادم CIFS ..
 smb_elist=Failed to retrieve server list from $1. Maybe the server does not allow browsing
 smb_eworkgroup=لم يتم تعيين مجموعة عمل على صفحة تكوين الوحدة النمطية
@@ -89,6 +93,7 @@ smb_sel2=حدد مشاركة لتثبيتها ..
 smb_share=شارك
 smb_comment=تعليق
 smb_noshares=There are no available file shares on the server $1
+
 solaris_scsidev=SCSI controller $1 target $2 unit $3 partition $4
 solaris_idedev=IDE controller $1 drive $2 partition $3
 solaris_mddev=RAID device $1
@@ -226,6 +231,7 @@ solaris_efstyp2=Failed to check filesystem type : $1
 solaris_ecachedir='$1' is not a valid cache directory
 solaris_efmode='$1' is not a valid octal file mode
 solaris_edmode='$1' is not a valid octal directory mode
+
 linux_eamd=فشل AMD
 linux_eauto=Automount failed : $1
 linux_esmbconn=فشل الاتصال بالخادم
@@ -347,6 +353,7 @@ linux_noenforce=نعم ، لكن لا تنفذ
 linux_df=تضمين القطع المحجوزة في حجم نظام الملفات؟
 linux_noatime=تجنب تحديث أوقات الوصول الأخيرة؟
 linux_netdev=انتظر حتى واجهات الشبكة تصل؟
+linux_nofail=متابعة التمهيد حتى لو فشل التثبيت؟
 linux_ecname=اسم NetBIOS العميل مفقود أو غير صالح
 linux_emname=اسم مضيف خادم مفقود أو غير صالح أو عنوان IP
 linux_bind=الدليل الأصلي
@@ -372,6 +379,7 @@ linux_nounix=تعطيل ملحقات CIFS يونيكس؟
 linux_noserverino=توليد أرقام inode على جانب العميل؟
 linux_cvers=نسخة CIFS
 linux_ecvers=يجب أن يكون إصدار CIFS رقمًا
+
 log_mount=Mounted $3
 log_mount_l=Mounted $2 $1 on $3
 log_umount=Unmounted $3
@@ -385,7 +393,9 @@ log_modify_l=Modified $2 mount $1 on $3
 log_delete=Deleted mount $3
 log_delete_l=Deleted $2 mount $1 on $3
 log_swap=Created swap file $1
+
 unmount_err=Failed to unmount $1
+
 mount_err=Failed to mount $1
 irix_nhost=اسم مضيف NFS
 irix_ndir=دليل NFS
@@ -416,6 +426,7 @@ irix_rock=استخدام ملحقات روك ريدج؟
 irix_nofsck=تحقق نظام الملفات في التمهيد؟
 irix_auto=مصدر تلقائي
 irix_automap=ملف الخريطة
+
 irix_ehost=The host '$1' does not exist
 irix_eloss=The host '$1' is down
 irix_eshowmount=The host '$1' does not support NFS
@@ -433,9 +444,11 @@ irix_efstyp2=Failed to get filesystem type $1 : $2
 irix_efstyp=The type of filesystem on $1 is $2, not $3
 irix_eautomap=Automounter map file '$1' does not exist
 irix_eauthmap2=ملف خريطة عداد المفقودين أو غير صالح
+
 irix_devroot=قسم الجذر
 irix_devswap=قسم المبادلة
 irix_autohosts=جميع صادرات NFS
+
 acl_only=فقط السماح للتركيب وإلغاء التثبيت؟
 acl_fs=أنظمة الملفات التي يمكن تحريرها
 acl_types=أنواع أنظمة الملفات التي يمكن استخدامها
@@ -448,8 +461,10 @@ acl_hide=إخفاء أنظمة الملفات غير القابلة للتحري
 acl_simple=عرض شكل جبل بسيط؟
 acl_simopts=إظهار خيارات نظام الملفات المبسطة؟
 acl_browse=عرض الملف وتبادل أزرار التصفح؟
+
 egcc=برنامج التحويل البرمجي GCC أو CC المطلوب لإنشاء برنامج لإدراج أنظمة الملفات المثبتة على نظامك غير متوفر.
 ecompile=An error has occurred building a program for listing mounted filesystems on your system : $1
+
 freebsd_eaddr=عنوان خادم مفقود أو غير صالح
 freebsd_eworkgroup=مجموعة العمل مفقودة أو غير صالحة
 freebsd_ide=القرص الصلب IDE
@@ -463,8 +478,10 @@ freebsd_idedev=IDE device $1, slice $2, partition $3
 freebsd_scsidev=SCSI device $1, slice $2, partition $3
 freebsd_edevpath=Other device must be an absolute path, like <tt>/dev/cdrom</tt>
 freebsd_edevfile=The device file '$1' does not exist
+
 cswap_file=The swap file $1 does not exist.
 cswap_size=إنشاء وتحميل ملف المبادلة مع الحجم
+
 acl_sysinfo=هل تريد عرض بيانات القرص المتوفرة على لوحة المعلومات؟
 sysinfo_total=مجموع
 sysinfo_dev=معرف الجهاز

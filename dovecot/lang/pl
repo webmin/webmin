@@ -11,11 +11,13 @@ index_boot=Uruchamiać przy starcie systemu?
 index_bootdesc=Włączenie tej funkcji spowoduje włączanie serwera Dovecot przy uruchamianiu systemu.
 index_return=indeksu modułu
 index_version=Wersja $1
+
 stop_err=Błąd zatrzymywania Dovecot
 stop_erunning=Nie jest dłużej uruchomiony
 start_err=Błąd uruchamiania Dovecot
 start_eprotos=Nie wybrano protokołów na stronie <b>Sieć i protokoły</b>
 apply_err=Zastosowanie konfiguracji nie powiodło się
+
 net_title=Sieć i protokoły
 net_header=Opcje sieci i protokołu e-mailowego.
 net_protocols=Protokoły e-mailowe
@@ -42,8 +44,11 @@ net_eimaps_listen=Błędny adres IP dla połączeń IMAP SSL
 net_epop3s_listen=Błędny adres IP dla połączeń POP3 SSL
 net_elisten=Błędny adres IP dla połączeń nie SSL (non-SSL)
 net_essl_listen=Nieprawidłowy adres IP dla połączeń SSL
+
 imap_title=Opcje IMAP
+
 pop3_title=Opcje POP3
+
 ssl_title=Konfiguracja SSL
 ssl_header=Opcje trybu SSL dla IMAP i POP3
 ssl_key=Plik klucza prywatnego SSL
@@ -61,7 +66,9 @@ ssl_ecert=Brakujący lub nieistniejący plik certyfikatu
 ssl_eca=Brakujący lub nieistniejący plik certyfikatu CA
 ssl_eregen=Brakujący lub nienumeryczny parametr regeneracji interwału
 ssl_epass=Nie wprowadzono hasła pliku klucza SSL
+
 misc_title=Inne opcje
+
 login_title=Opcje użytkownika i logowania
 login_header=Opcje uwierzytelniania i logowania użytkownika
 login_fuid=Minimalny poprawny UID
@@ -117,6 +124,7 @@ login_procs=Maksymalna liczba procesów logowań
 login_count=Początkowy proces logowania
 login_eprocs=Brakujący lub nieprawidłowy maksymalna liczba procesów logowania
 login_ecount=Brakująca lub nieprawidłowa początkowa liczba procesów logowania
+
 mail_title=Pliki skrzynki mail
 mail_header=Opcje odczytu i lokalizacji maili
 mail_env=Lokalizacja pliku Mail
@@ -169,6 +177,7 @@ mail_eindexmode=Lokalizacja plików indeksu nie może być ręcznie ustawienia, 
 mail_econtrolmode=Lokalizacja plików kontrolnych nie może być ręcznie ustawienia, jeżeli lokalizacja plików e-mail jest wykrywana automatycznie
 mail_eindex=Brakująca lub nieprawidłowa ścieżka absolutna do plików indeksu
 mail_econtrol=Brakująca lub nieprawidłowa ścieżka absolutna dla kontroli plików
+
 log_net=Zmieniono sieć i protokoły
 log_login=Zmieniono opcje użytkownika i logowania
 log_mail=Zmieniono pliki skrzynki mail
@@ -179,6 +188,7 @@ log_stop=Zatrzymano serwer Dovecot
 log_bootup=Włączono uruchamianie przy bootowaniu
 log_bootdown=Wyłączono uruchamianie przy bootowaniu
 log_manual=Ręcznie zedytowano plik konfiguracji $1
+
 manual_title=Edycja plików konfiguracyjnych
 manual_editsel=Edytuj plik konfiguracyjny Dovecota
 manual_err=Błąd zapisywania pliku konfiguracyjnego

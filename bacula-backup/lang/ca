@@ -29,12 +29,14 @@ index_fd=Configuració del Dimoni de Fitxers
 index_groups=Configuració dels Grups de Bacula
 index_actions=Accions de Còpia i Restauració
 index_ocmin=Contribuït per <a href=$2 target=_new>Linmin <img align=middle border=0 src='$1'></a>
+
 connect_emysql=No s'ha pogut carregar el controlador $1 DBI de la base de dades.
 connect_elogin=No s'ha pogut entrar a la base de dades $1: $2.
 connect_equery=No sembla que la base de dades $1 contingui cap taula de Bacula.
 connect_equery2=Això pot ser perquè el mòdul Perl SQLite que hi ha instal·lat és massa nou no suporta el format de les antigues bases de dades SQLite utilitzades per Bacula.
 connect_equery3=No sembla que la base de dades $1 contingui cap taula de grup OC Bacula.
 esql=Error de SQL: $1
+
 check_edir=No s'ha trobat al sistema el directori $1 de configuració de Bacula.
 check_ebacula=No s'ha trobat l'ordre de control $1 de Bacula.
 check_econsole=No s'ha trobat l'ordre de consola $1 de Bacula.
@@ -43,12 +45,14 @@ check_eclient=Aquest sistema sembla un <a href='$2'>Client de Bacula</a> més qu
 check_econfigs=No s'ha trobat cap fitxer de configuració de Bacula a $1
 check_eservers=No s'ha definit cap grup de servidor Webmin
 check_engmod=El mòdul del grups Bacula OpenCountry no està instal·lat
+
 proc_bacula-sd=Dimoni d'emmagatzematge
 proc_bacula-fd=Dimoni de fitxers
 proc_bacula-dir=Dimoni Director de Bacula
 proc_bareos-sd=Dimoni d'emmagatzematge
 proc_bareos-fd=Dimoni de fitxers
 proc_bareos-dir=Dimoni Director de Bacula
+
 stop_err=No s'ha pogut aturar Bacula
 start_err=No s'ha pogut iniciar Bacula
 start_einit=No s'ha trobat cap script d'inicialització per a $1
@@ -57,6 +61,7 @@ restart_err=No s'ha pogut reiniciar Bacula
 apply_err=No s'ha pogut aplicar la configuració
 apply_failed=S'ha detectat un error de configuració
 apply_problem=No s'ha pogut aplicar la configuració: $1
+
 jobs_title=Treballs de Còpia
 jobs_none=Encara no s'ha definit cap treball de còpia.
 jobs_name=Nom del treball
@@ -69,6 +74,7 @@ jobs_add=Afegeix un nou treball de còpia.
 jobs_delete=Suprimeix els Treballs Seleccionats
 jobs_return=a la llista de treballs
 jobs_derr=No s'ha pogut suprimir els treballs
+
 filesets_title=Conjunts de Fitxers
 filesets_none=Encara no s'ha definit cap conjunt de fitxers de còpia.
 filesets_name=Nom del conjunt de fitxers
@@ -78,6 +84,7 @@ filesets_delete=Suprimeix els Conjunts de Fitxers Seleccionats
 filesets_return=a la llista de conjunts de fitxers
 filesets_derr=No s'ha pogut suprimir els conjunts de fitxers
 filesets_ednone=No n'has seleccionat cap
+
 fileset_title1=Creació de Conjunt de Fitxers
 fileset_title2=Edició de Conjunt de Fitxers
 fileset_header=Detalls del conjunt de fitxers de còpia
@@ -97,6 +104,7 @@ fileset_gzipdef=&lt;Nivell de compressió per defecte&gt;
 fileset_lzo=Compressió LZO
 fileset_gzip=Gzip nivell $1
 fileset_onefs=Limita la còpia a un sol sistema de fitxers
+
 clients_title=Clients de Còpia
 clients_none=Encara no s'ha definit cap client de còpia.
 clients_name=Nom del client
@@ -106,6 +114,7 @@ clients_add=Afegeix un nou client de còpia.
 clients_delete=Suprimeix els Clients Seleccionats
 clients_return=a la llista de clients
 clients_derr=No s'ha pogut suprimir els clients
+
 client_title1=Creació de Client de Còpia
 client_title2=Edició de Client de Còpia
 client_header=Detalls del client a copiar
@@ -128,6 +137,7 @@ client_efileret=Hi falta el període de retenció dels fitxers o bé és invàli
 client_ejobret=Hi falta el període de retenció del treball o bé és invàlid
 client_echild=No es pot suprimir aquest client, ja que $1 l'està utilitzant
 client_status=Mostra l'Estat
+
 job_title1=Creació de Treball de Còpia
 job_title2=Edició de Treball de Còpia
 job_header=Detalls del treball de còpia
@@ -156,6 +166,7 @@ job_before=Ordre abans del treball
 job_after=Ordre després del treball
 job_cbefore=Ordre abans del treball (al client)
 job_cafter=Ordre després del treball (al client)
+
 schedules_title=Planificació de Còpies
 schedules_none=Encara no s'ha definit cap planificació de còpia.
 schedules_name=Nom de la planificació
@@ -164,6 +175,7 @@ schedules_add=Afegeix una nova planificació de còpia.
 schedules_delete=Suprimeix les Planificacions Seleccionades
 schedules_return=a la llista de planificacions
 schedules_derr=No s'ha pogut suprimir les planificacions
+
 schedule_title1=Creació de Planificació de Còpia
 schedule_title2=Edició de Planificació de Còpia
 schedule_header=Detalls de la planificació de còpia
@@ -177,6 +189,7 @@ schedule_ename=Hi falta el nom de la planificació de la còpia o bé és invàl
 schedule_eclash=Ja existeix una planificació amb aquest mateix nom
 schedule_etimes=Hi falten les hores de còpia a la fila $1
 schedule_echild=No es pot suprimir aquesta planificació, ja que $1 l'està utilitzant
+
 backup_title=Execució de Treball de Còpia
 backup_header=Detalls del treball de còpia
 backup_job=Treball a executar
@@ -191,11 +204,13 @@ backup_running=...el treball de còpia s'està executant. Quan es completi, es m
 backup_running2=...s'ha iniciat el treball de còpia en segon pla.
 backup_done=...còpia completa.
 backup_failed=...la còpia no s'ha completat correctament. Comprova els missatges d'error de sobre per a més detalls.
+
 gbackup_title=Execució de Treball de Còpia de Grup Bacula
 gbackup_run=S'està iniciant el treball de còpia $1 als clients $2...
 gbackup_on=S'està executant el treball de còpia al client $1:
 gbackup_header=Detalls del treball de còpia de grup Bacula
 gbackup_jd=$1 (Conjunt de fitxers $2 al grup $3)
+
 dirstatus_title=Estat del Director
 dirstatus_sched=Treballs de Còpia Planificats
 dirstatus_name=Nom del Treball
@@ -216,12 +231,14 @@ dirstatus_status2=Estat
 dirstatus_donenone=Encara no s'ha executat cap treball.
 dirstatus_cancel=Cancel·la els Treballs Seleccionats
 dirstatus_refresh=Refresca la Llista
+
 clientstatus_title=Estat del Client
 clientstatus_err=No pogut obtenir l'estat de $1: $2
 clientstatus_msg=Estat de $1: $2
 clientstatus_show=Mostra l'estat del client:
 clientstatus_ok=Bé
 clientstatus_on=$1 (a $2)
+
 storages_title=Dimonis d'Emmagatzematge
 storages_none=Encara no s'ha definit cap dimoni d'emmagatzematge.
 storages_name=Nom de l'emmagatzematge
@@ -232,6 +249,7 @@ storages_add=Afegeix un nou dimoni d'emmagatzematge.
 storages_delete=Suprimeix els Dimonis d'Emmagatzematge Seleccionats
 storages_return=a la llista dels dimonis d'emmagatzematge
 storages_derr=No s'ha pogut suprimir els dimonis d'emmagatzematge
+
 storage_title1=Creació de Dimoni d'Emmagatzematge
 storage_title2=Edició de Dimoni d'Emmagatzematge
 storage_header=Detalls del dimoni d'emmagatzematge remot
@@ -255,6 +273,7 @@ storage_emedia=Hi falta el nom del tipus de mitjà
 storage_emaxjobs=Hi falta el nombre màxim de treballs concurrents
 storage_echild=No es pot suprimir aquest client, ja que $1 l'est+a utilitzant
 storage_status=Mostra l'Estat
+
 devices_title=Dispositius d'Emmagatzematge
 devices_none=Encara no s'ha definit cap dispositiu d'emmagatzematge.
 devices_name=Nom del dispositiu
@@ -264,6 +283,7 @@ devices_add=Afegeix un nou dispositiu d'emmagatzematge.
 devices_delete=Suprimeix els Dispositius d'Emmagatzematge Seleccionats 
 devices_return=a la llista de dispositius d'emmagatzematge
 devices_derr=No s'ha pogut suprimir els dispositius d'emmagatzematge
+
 device_title1=Creació de Dispositiu d'Emmagatzematge
 device_title2=Edició de Dispositiu d'Emmagatzematge
 device_header=Detalls del dispositiu d'emmagatzematge de fitxers
@@ -282,11 +302,13 @@ device_eclash=Ja existeix un dispositiu d'emmagatzematge amb aquest mateix nom
 device_emedia=Hi falta el nom del tipus de mitjà
 device_edevice=Hi falta el directori o dispositiu de l'arxiu o bé és invàlid
 device_echild=No es pot suprimir aquest client perquè $1 l'està utilitzant
+
 storagestatus_title=Estat del Dimoni d'Emmagatzematge
 storagestatus_err=No s'ha pogut obtenir l'estat de $1: $2
 storagestatus_msg=Estat de $1: $2
 storagestatus_show=Mostra l'estat del dimoni d'emmagatzematge:
 storagestatus_ok=Bé
+
 label_title=Etiquetatge de Volum
 label_header=Detalls del volum a etiquetar
 label_storage=Dimoni d'emmagatzematge a etiquetar
@@ -302,6 +324,7 @@ label_done=...etiquetatge correcte.
 label_epool=...no es troba al pool!
 label_err=L'etiquetatge ha fallat
 label_elabel=No has introduït cap etiqueta
+
 pools_title=Pools de Volums
 pools_none=Encara no s'ha definit cap pool de volums.
 pools_name=Nom del pool
@@ -311,6 +334,7 @@ pools_add=Afegeix un nou pool de volums.
 pools_delete=Suprimeix els Pools de Volums Seleccionats
 pools_return=a la llista de pools de volums
 pools_derr=No s'ha pogut suprimir els pools de volums
+
 pool_title1=Creació de Pool de Volums
 pool_title2=Edició de Pool de Volums
 pool_header=Detalls del pool de volums de còpia
@@ -332,6 +356,7 @@ pool_ereten=Hi el període de retenció o bé és invàlid
 pool_status=Mostra els Volums
 pool_autolabel=Prefix per etiquetar els volums automàticament
 pool_maxvolsize=Mida màxima de volum (p.ex., 5G per a 5 Gigabytes)
+
 poolstatus_title=Volums del Pool
 poolstatus_show=Mostra els volums del pool:
 poolstatus_ok=Bé
@@ -345,9 +370,11 @@ poolstatus_status=Mode de còpia
 poolstatus_none=Actualment no hi ha cap volum en aquest pool de còpia.
 poolstatus_never=Mai
 poolstatus_delete=Suprimeix els Volums Seleccionats
+
 dvolumes_err=No s'ha pogut suprimir els volums
 dvolumes_enone=No n'has seleccionat cap
 dvolumes_ebacula=Error de Bacula: $1
+
 mount_title=Muntatge i Desmuntatge
 mount_header=Opcions de muntatge i desmuntatge de l'emmagatzematge
 mount_storage=Dispositiu d'emmagatzematge
@@ -365,8 +392,10 @@ unmount_failed=el desmuntatge ha fallat! Mira el missatge d'error de sobre per s
 mount_return=al formulari de muntatge
 mount_err=No s'ha pogut muntar el dispositiu d'emmagatzematge
 mount_eslot=Hi falta el número de slot o bé és invàlid
+
 cancel_err=No s'ha pogut cancel·lar els treballs
 cancel_enone=No n'has seleccionat cap
+
 gjobs_title=Treballs de Còpia de Grups Bacula
 gjobs_none=Encara no s'ha definit cap treball de còpia de grup Bacula.
 gjobs_add=Afegeix un nou treball de còpia de grup Bacula.
@@ -374,10 +403,12 @@ gjobs_delete=Suprimeix els Treballs Seleccionats
 gjobs_return=a la llista de treballs de grups Bacula
 gjobs_derr=No s'ha pogut suprimir ela treballs de grups Bacula
 gjobs_client=Grup Bacula a copiar
+
 gjob_title1=Creació de Treball de Còpia de Grup Bacula
 gjob_title2=Edició de Treball de Còpia de Grup Bacula
 gjob_header=Detalls del treball de còpia de grup Bacula
 gjob_client=Grup Bacula a copiar
+
 groups_title=Grups Bacula
 groups_none=Encara no s'ha seleccionat cap grup Bacula per copiar.
 groups_name=Nom del grup
@@ -391,6 +422,7 @@ groups_derr=No s'ha pogut suprimir els grups
 groups_noadd=No hi ha cap grup Bacula per seleccionar per a la còpia.
 groups_info=$1 ($2 membres)
 groups_already=Ja s'hi han afegit tos els grups Bacula.
+
 group_title1=Creació de Grup Bacula
 group_title2=Edició de Grup Bacula
 group_header=Detalls del grup Bacula a copiar
@@ -401,11 +433,13 @@ group_port=Port FD de Bacula
 group_err=No s'ha pogut desar el grup Bacula
 group_eclash=Ja existeix un grup amb aquest mateix nom
 group_members=Hosts del grup Bacula
+
 sync_title=Sincronització de Grups Bacula
 sync_header=Opcions de sincronització automàtica de clients de grups Bacula
 sync_sched=Sincronitza de forma planificada
 sync_schedyes=Sí, a les hores seleccionades a sota...
 sync_err=No s'ha pogut desar la sincronització de grups Bacula
+
 log_create_client=S'ha creat el client de còpia $1
 log_modify_client=S'ha modificat el client de còpia $1
 log_delete_client=S'ha suprimit el client de còpia $1
@@ -464,6 +498,7 @@ log_director=S'ha desat la configuració global del director Bacula
 log_file=S'ha desat la configuració del dimoni de fitxers de Bacula
 log_storagec=S'ha desat la configuració del dimoni d'emmagatzematge de Bacula
 log_fixpass=S'ha corregit la contrasenya del programa de consola de Bacula
+
 director_title=Configuració de Director
 director_header=Opcions globals del director de Bacula
 director_name=Nom del director
@@ -477,6 +512,7 @@ director_ename=Hi falta el nom del director o bé és invàlid
 director_eport=Hi falta el número de port o bé és invàlid
 director_ejobs=Hi falta el nombre de treballs concurrents o bé és invàlid
 director_edir=Hi falta el directori de treball o bé no existeix
+
 tls_enable=Activa el Xifratge TLS
 tls_require=Accepta només connexions TLS
 tls_verify=Verifica els clients TLS
@@ -488,6 +524,7 @@ tls_ecert=Hi falta el fitxer de certificat TLS o bé no existeix
 tls_ekey=Hi falta el fitxer de clau TLS o bé no existeix
 tls_ecacert=Hi falta el fitxer de CA TLS o bé no existeix
 tls_ecerts=Per activar TLS, cal especificar elis fitxers de certificat, clau i CA
+
 file_title=Configuració de Dimoni de Fitxers
 file_header=Opcions del dimoni de fitxers de Bacula
 file_name=Nom del dimoni de fitxers
@@ -500,6 +537,7 @@ file_ename=Hi falta el nom del dimoni de fitxers o bé és invàlid
 file_eport=Hi falta el número de port o bé és invàlid
 file_ejobs=Hi falta el nombre de treballs concurrents o bé és invàlid
 file_edir=Hi falta el directori de treball o bé no existeix
+
 fdirectors_title=Directors de Dimonis de Fitxers
 fdirectors_none=Encara no s'ha definit cap director.
 fdirectors_name=Nom del director
@@ -508,6 +546,7 @@ fdirectors_add=Afegeix un nou director.
 fdirectors_delete=Suprimeix els Directors Seleccionats
 fdirectors_return=a la llista de directors
 fdirectors_derr=No s'ha pogut suprimir els directors
+
 fdirector_title1=Creació de Director de Dimoni de Fitxers
 fdirector_title2=Edició de Director de Dimoni de Fitxers
 fdirector_header=Detalls del director remot controlador
@@ -519,6 +558,7 @@ fdirector_err=No s'ha pogut desar el directori de dimoni de fitxers
 fdirector_ename=Hi falta el nom del director
 fdirector_eclash=Ja existeix un director amb aquest mateix nom
 fdirector_epass=Hi falta la contrasenya
+
 sdirectors_title=Directors de Dimonis d'Emmagatzematge
 sdirectors_none=Encara no s'ha definit cap director.
 sdirectors_name=Nom del director
@@ -527,6 +567,7 @@ sdirectors_add=Afegeix un nou director.
 sdirectors_delete=Suprimeix els Directors Seleccionats
 sdirectors_return=a la llista de directors
 sdirectors_derr=No s'ha pogut suprimir els directors
+
 sdirector_title1=Creació de Director de Dimoni d'Emmagatzematge
 sdirector_title2=Edició de Director de Dimoni d'Emmagatzematge
 sdirector_header=Detalls del director remot controlador
@@ -538,6 +579,7 @@ sdirector_err=No s'ha pogut desar el directori de dimoni d'emmagatzematge
 sdirector_ename=Hi falta el nom del director
 sdirector_eclash=Ja existeix un director amb aquest mateix nom
 sdirector_epass=Hi falta la contrasenya
+
 storagec_title=Configuració de Dimoni d'Emmagatzematge
 storagec_header=Opcions del dimoni d'emmagatzematge de Bacula
 storagec_name=Nom del dimoni
@@ -550,6 +592,7 @@ storagec_ename=Hi falta el nom del dimoni d'emmagatzematge o bé és invàlid
 storagec_eport=Hi falta el número de port o bé és invàlid
 storagec_ejobs=Hi falta el nombre de treballs concurrents o bé és invàlid
 storagec_edir=Hi falta el directori de treball o bé no existeix
+
 chooser_title=Selecció de Planificació
 chooser_monthsh=Mesos a executar
 chooser_months=Mesos de l'any
@@ -574,11 +617,13 @@ chooser_emonthsrange=El mesos seleccionats han de ser contigus
 chooser_eweekdaysrange=Els dies de la setmana seleccionats han de ser contigus
 chooser_eweekdaynumsrange=Els números de dia de la setmana seleccionats han de ser contigus
 chooser_edaysrange=Els dies del mes seleccionats han de ser contigus
+
 weekdaynum_1=Primer
 weekdaynum_2=Segon
 weekdaynum_3=Tercer
 weekdaynum_4=Quart
 weekdaynum_5=Cinquè
+
 restore_title=Restauració de Còpia
 restore_title2=Restauració de Còpia A Grup Bacula
 restore_title3=Restauració de Còpia de Grup Bacula

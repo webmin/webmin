@@ -16,8 +16,10 @@ index_type=סוג מפתח SSH:
 index_rsa1=RSA (עבור SSH v1)
 index_rsa=RSA (עבור SSH v2)
 index_dsa=DSA (עבור SSH v2)
+
 bits=חתיכות
 secs=שניות
+
 users_title=אימות
 users_header=אפשרויות כניסה ואימות
 users_expire=ימים לפני תפוגת החשבון כדי להזהיר את המשתמש
@@ -54,6 +56,7 @@ users_eauthkeys=קובץ מורשים חסר או לא חוקי למראה
 users_maxauthtries=ניסיונות כניסה מקסימליים בחיבור
 users_emaxauthtries=מספר חסר או לא מספרי של ניסיונות כניסה לחיבור
 users_chal=משתמשים באימות תגובת אתגר?
+
 net_title=עבודה ברשת
 net_header=אפשרויות רשת
 net_port=האזן בנמל
@@ -91,6 +94,7 @@ net_eprots=עליך לבחור לפחות פרוטוקול אחד
 net_eladdress='$1' is not a valid address to listen on
 net_elport='$1' is not a valid port to listen on
 net_elisten2=לא הוזנו כתובות להאזנה
+
 access_title=בקרת גישה
 access_header=אפשרויות בקרת גישה לרשת וכניסה
 access_allowu=הרשה למשתמשים בלבד
@@ -108,6 +112,7 @@ access_eallowg=אין קבוצות לאפשר להזין
 access_edenyg=לא נכנסו קבוצות להכחיש
 access_eallowh=אין מארחים להתיר להזין
 access_edenyh=לא נכנסו ארחים להכחיש
+
 misc_title=אפשרויות שונות
 misc_header=אפשרויות שרת SSH שונות
 misc_x11=לאפשר העברת חיבור X11?
@@ -131,14 +136,17 @@ misc_eumask=Umask 4-ספרות חסר או לא תקף
 misc_ebits=גודל מפתח שרת חסר או לא חוקי
 misc_eregen=מרווח התחדשות מפתחות חסר או לא תקף
 misc_epid=נתיב קובץ PID חסר
+
 start_err=הפעלת שרת SSH נכשלה
 apply_epid=לא רץ
+
 hosts_title=אפשרויות מארח לקוח
 hosts_header=מארחי לקוח SSH
 hosts_none=לא הוגדרו אפשרויות מארח לקוח. כל כניסות לקוח SSH ישתמשו בהגדרות ברירת המחדל.
 hosts_all=כל המארחים
 hosts_add=הוסף אפשרויות למארח הלקוח.
 hosts_return=רשימת מארחי לקוח
+
 host_create=הוסף אפשרויות מארח
 host_edit=ערוך אפשרויות מארח
 host_header=אפשרויות לקוח עבור מארח SSH
@@ -194,6 +202,7 @@ host_eprots=עליך לבחור לפחות פרוטוקול אחד
 host_proxy=חיבור פקודת פרוקסי
 host_proxy_def=אף אחד
 host_eproxy=פקודת proxy של חיבור חסרה או לא חוקית
+
 log_users=אפשרויות אימות שונו
 log_net=אפשרויות רשת השתנו
 log_access=בקרת גישה שונה
@@ -208,6 +217,7 @@ log_stop=שרת SSH הופסק
 log_start=שרת SSH התחיל
 log_apply=תצורה מיושמת
 log_manual=Manually editing config file $1
+
 sync_title=הגדרת מפתח SSH של המשתמש
 sync_desc=This page allows you to configure the automatic setup of SSH for new Unix users created on your system. If configured, new users will not have to run <tt>ssh-keygen</tt> before using SSH.
 sync_create=הגדרת מפתח SSH למשתמשים חדשים של יוניקס?
@@ -216,9 +226,11 @@ sync_pass=האם להשתמש בסיסמה כמשפט סיסמה מפתח?
 sync_gnupg=הגדרת מפתח GNUPG למשתמשים חדשים ב- Unix.
 sync_type=סוג מפתח
 sync_auto=&lt;Automatic&gt;
+
 keys_title=מפתחות SSH מארחים
 keys_desc=דף זה מאפשר לך להציג את מקשי ה- SSH עבור מארח זה.
 keys_none=לא ניתן למצוא ערכי HostKey בתצורת SSHD שלך.
+
 manual_title=ערוך קבצי תצורה
 manual_ecannot=אינך רשאי לערוך את קובץ התצורה של שרת SSH
 manual_ok=ערוך
@@ -226,5 +238,6 @@ manual_efile=הקובץ שנבחר אינו חלק מתצורת שרת ה- SSH
 manual_file=ערוך קובץ תצורה:
 manual_edata=שום דבר לא נכנס!
 manual_err=שמירת קובץ התצורה נכשלה
+
 dknown_err=מחיקת המארחים הידועים נכשלה
 dknown_enone=לא נבחר

@@ -6,6 +6,7 @@ mon_conf_title=Basiese konfigurasie
 mon_status_title=Bedryfsstatus
 hostgroups_title=MON-konfigurasie-gasheergroepe
 services_title=Kykgroepe-diensdefinisies
+
 head_hostgroups=Gasheer groepe en dienste
 head_groups=Gasheergroep Naam
 head_members=Gasheer groeplede
@@ -17,6 +18,7 @@ head_monauth=Verskaf verifikasie vir MONCMD
 head_usr=Gebruikersnaam
 head_pass=wagwoord
 head_mand=(Parameters in "RODE KLEUR" is verpligtend)
+
 err_nomon=pakket 'mon' is nie op die stelsel geïnstalleer nie
 err_nomonconf=Die MON-konfigurasielêer $1 is nie op u stelsel gevind nie. Miskien is MON nie geïnstalleer nie, of is u <a href='$2'>module-opstelling</a> verkeerd.
 err_nowatch=Geen waggroepe gekies nie. Kies ten minste een waggroep om voort te gaan.
@@ -28,6 +30,7 @@ stop_epid=Nie meer hardloop nie
 start_err=Kon nie MON begin nie
 restart_err=Kon nie MON herbegin nie
 restart_epid=Kon nie PID kry nie
+
 other=Ander (ruimte geskei)
 next=volgende
 mon_stat=MAAN-status
@@ -43,6 +46,7 @@ save_apply=Stoor en pas toe
 watch=Watchgroup
 members=lede
 def_perargs=wd {Sat-Sun}
+
 def_desc=beskrywing
 def_inter=interval
 def_mon=monitor
@@ -58,9 +62,11 @@ def_trapdur=trapduration
 def_rand=randskew
 def_exclhost=exclude_hosts
 def_exclper=exclude_period
+
 groups_title=Gasheer groepe
 groups_group=Groepnaam
 groups_members=Lede gasheer
+
 watches_title=Kyklyste
 watches_group=Kyk groep
 watches_services=Dienste wat dopgehou word
@@ -68,6 +74,7 @@ watches_sadd=Voeg diens by ..
 watches_add=Voeg kyklys vir groep by :
 watches_return=dophoulyste
 watches_none=Geen kyklyste is nog gedefinieër nie.
+
 global_title=Wêreldwye opsies
 global_header=Globale MON-opstellingsopsies
 global_maxprocs=Maksimum MON-prosesse
@@ -85,6 +92,7 @@ global_ehistlength=Die lengte van die gebeurtenisgeskiedenis ontbreek of ongeldi
 global_ealertdir=Gids vir ontbrekende of ongeldige programme
 global_emondir=Gids vir ontbrekende of ongeldige monitorprogramme
 global_euserfile=Lêer van MON-gebruikers ontbreek
+
 watch_title=Wysigingslys wysig
 watch_header=Besonderhede van gasheergroephorlosies
 watch_group=Gasheer groep om te kyk
@@ -93,6 +101,7 @@ watch_service=Diensnaam
 watch_monitor=Monitor om te gebruik
 watch_interval=Gaan elkeen na
 watch_periods=Moniteringstydperke
+
 service_title=Voeg diens by
 service_title2=Redigeer diens
 service_header=Diensbesonderhede gekyk
@@ -145,16 +154,19 @@ service_epstr=Spesifisering van periode ontbreek
 service_known0=<tt>Tyd::Periode</tt> string
 service_known1=Gespesifiseerde dae en ure
 service_known2=Gedefinieerde periode
+
 status_title=MAAN-status
 status_ecgi=Die MON-status CGI-program $1 bestaan nie. Miskien is dit nie geïnstalleer nie, of is u <a href='$2'>module-opstelling</a> verkeerd.
 status_eperl=Die CGI-program vir die MON-status vereis die $1 perl-module. <a href='$2'>Klik hier</a> om dit direk vanaf CPAN te installeer.
 status_esame=Die MON-status CGI-program $1 is op die <tt>mon.cgi</tt> -skrip in hierdie Webmin-module ingestel, nie op die CGI-program wat met MON gelei word nie. Pas die <a href='$2'>module-opstelling</a> aan om die regte pad te gebruik.
+
 users_title=MON gebruikers
 users_etype=Die MON-gebruikerslys kan nie geredigeer word nie, omdat MON nie tans opgestel is om dit vir verifikasie op die <a href='$1'>Global Options</a> -bladsy te gebruik nie.
 users_header=MON-gebruikers in $1 toegelaat
 users_nousers=Geen MON-gebruikers is in $1 gedefinieer nie.
 users_add=Skep 'n nuwe gebruiker.
 users_return=MON gebruikers lys
+
 user_create=Skep MON-gebruiker
 user_edit=Wysig MON-gebruiker
 user_header=MON gebruikersbesonderhede
@@ -164,6 +176,7 @@ user_leave=Laat onveranderd
 user_err=Kon nie gebruiker stoor nie
 user_euser=Gebruikernaam ontbreek of ongeldig
 user_esame='N Gebruiker met dieselfde naam bestaan reeds
+
 auth_title=Kliëntopdragte
 auth_desc=Op hierdie bladsy kan u bepaal watter MON-opdragte uitgevoer kan word deur watter gebruikers wanneer u die kliëntprogramme gebruik.
 auth_cmd=MON opdrag
@@ -173,6 +186,7 @@ auth_all=almal
 auth_sel=Slegs gebruikers
 auth_err=Kon nie kliëntopdragte stoor nie
 auth_eusers=Geen gebruikers voer vir opdrag $1 in nie
+
 periods_title=Gedefinieerde periodes
 periods_period=Periode naam
 periods_times=Dae en tye
@@ -181,5 +195,6 @@ periods_allhours=Alle ure
 periods_err=Kon nie gedefinieerde periodes stoor nie
 periods_ename='$1' is nie 'n geldige periodenaam nie
 periods_ehour=Ontbrekende of ongeldige uur vir periode $1 (moet om 09:00 of 17:00 wees)
+
 show_title=Bedryfsstatus
 show_ecgi=Die MON-statusprogram $1 bestaan nie. Miskien is dit nie geïnstalleer nie, of is u <a href='$2'>module-opstelling</a> verkeerd.

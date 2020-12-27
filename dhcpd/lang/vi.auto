@@ -64,12 +64,14 @@ index_match1=chứa đựng
 index_match2=diêm
 index_dhcpd=ISC DHCPd
 index_delete=Xóa đã chọn
+
 butt_save=Tiết kiệm
 butt_eco=Chỉnh sửa tùy chọn khách hàng
 butt_vco=Xem tùy chọn khách hàng
 butt_del=Xóa bỏ
 butt_create=Tạo nên
 butt_leases=Danh sách cho thuê
+
 esub_crheader=Tạo mạng con
 esub_edheader=Chỉnh sửa mạng con
 esub_tabhdr=Chi tiết mạng con
@@ -83,12 +85,14 @@ esub_groups=Các nhóm trực tiếp trong mạng con này
 esub_pools=Địa chỉ nhóm cho mạng con
 esub_pool=Bể bơi $1 
 esub_poolnone=Không có nhóm địa chỉ được xác định
+
 esub_pooladd=Thêm một nhóm địa chỉ.
 esub_none=không ai
 esub_return=danh sách mạng con
 esub_retshar=mạng chia sẻ
 esub_desc=Mô tả mạng con
 esub_fopeer=Chuyển đổi dự phòng
+
 esh_crheader=Tạo mạng chia sẻ
 esh_eheader=Chỉnh sửa mạng chia sẻ
 esh_tabhdr=Chi tiết mạng được chia sẻ
@@ -99,6 +103,7 @@ esh_subn=Mạng con trong mạng chia sẻ này
 esh_return=danh sách mạng con
 esh_pools=Nhóm địa chỉ cho mạng chia sẻ
 esh_desc=Mô tả mạng được chia sẻ
+
 ehost_crheader=Tạo máy chủ
 ehost_eheader=Chỉnh sửa máy chủ
 ehost_tabhdr=Chi tiết máy chủ
@@ -119,6 +124,7 @@ ehost_retgroup=nhóm
 ehost_retsubn=mạng con
 ehost_retshar=mạng chia sẻ
 ehost_desc=Mô tả máy chủ
+
 egroup_crheader=Tạo nhóm máy chủ
 egroup_eheader=Chỉnh sửa nhóm máy chủ
 egroup_tblhdr=Chi tiết nhóm
@@ -129,6 +135,7 @@ egroup_return=danh sách máy chủ
 egroup_retsubn=mạng con
 egroup_retshar=mạng chia sẻ
 egroup_desc=Mô tả nhóm
+
 default=Mặc định
 secs=giây
 none=không ai
@@ -157,20 +164,24 @@ listl_pc=Tỷ lệ phần trăm
 listl_err=Không thể xóa hợp đồng thuê
 listl_enone=Không được chọn
 listl_refresh=Làm mới danh sách
+
 restart_errmsg1=Không thể khởi động lại dhcpd
 restart_errmsg2=Không thể xử lý tín hiệu
 start_failstart=Không thể bắt đầu dhcpd
 restart_conftext=Các dòng xung quanh $1 trong $2  :
+
 sgroup_faildel=Không thể xóa nhóm
 sgroup_failsave=Không thể lưu nhóm
 sgroup_invassign=nhóm được gán cho một phần không chính xác
 sgroup_echanged=Nội dung tập tin cấu hình đã được thay đổi. Thử lại.
+
 shost_faildel=Không thể xóa máy chủ
 shost_failsave=Không thể lưu máy chủ
 shost_invalidhn=không phải là tên máy chủ hợp lệ
 shost_invalidhwa='$1' không phải là địa chỉ $2 hợp lệ
 shost_invalidaddr='$1' chứa tên máy chủ hoặc địa chỉ IP không hợp lệ
 shost_invassign=máy chủ được gán cho một phần không chính xác
+
 sopt_failsave=Không thể lưu tùy chọn khách hàng
 sopt_invalidip=không phải là một địa chỉ IP hợp lệ
 sopt_invalidint=không phải là số nguyên
@@ -180,10 +191,12 @@ sopt_ednum='$1' không phải là số tùy chọn hợp lệ
 sopt_edtype='$1' không phải là loại tùy chọn hợp lệ
 sopt_ecval=Thiếu giá trị cho tùy chọn tùy chỉnh '$1'
 sopt_ecip=Giá trị cho tùy chọn tùy chỉnh '$1' phải là địa chỉ IP
+
 sshared_faildel=Không thể xóa mạng chia sẻ
 sshared_failsave=Không thể lưu mạng chia sẻ
 sshared_invalidsname=Tên mạng chia sẻ bị thiếu hoặc không hợp lệ.
 sshared_nosubnet=Mạng chia sẻ '$1' không chứa bất kỳ mạng con nào.
+
 ssub_faildel=Không thể xóa mạng con
 ssub_failsave=Không thể lưu mạng con
 ssub_invalidsubaddr=không phải là một địa chỉ mạng con hợp lệ
@@ -191,6 +204,7 @@ ssub_invalidnmask=không phải là một netmask hợp lệ
 ssub_invalidipr=không phải là một địa chỉ IP phạm vi hợp lệ
 ssub_nosubnet=Mạng chia sẻ '$1' không chứa bất kỳ mạng con nào.
 ssub_invalidfopeer=không phải là một chuyển đổi dự phòng hợp lệ
+
 plib_deflt=Thời gian thuê mặc định
 plib_bfname=Tên tệp khởi động
 plib_maxlt=Thời gian thuê tối đa
@@ -244,6 +258,7 @@ plib_eexpr=Phần cấu hình DHCP này chứa chỉ thị biểu thức $1, kh�
 plib_auth_subnet=Máy chủ có thẩm quyền cho mạng con này?
 plib_auth_shared-network=Máy chủ có thẩm quyền cho mạng chia sẻ này?
 plib_auth_global=Máy chủ có thẩm quyền cho tất cả các mạng con?
+
 eopt_header=Tùy chọn khách hàng
 eopt_subtitle=Đối với mạng con $1 
 eopt_returnsub=mạng con
@@ -289,6 +304,7 @@ eopt_slpa=IP đại lý thư mục SLP
 eopt_slpaips=Những IP này chỉ?
 eopt_slps=Phạm vi dịch vụ SLP
 eopt_slpsonly=Phạm vi này chỉ?
+
 log_apply=Áp dụng thay đổi
 log_start=Bắt đầu máy chủ DHCP
 log_stop=Máy chủ DHCP đã dừng
@@ -311,6 +327,7 @@ log_options_group=Tùy chọn đã sửa đổi cho nhóm $1 máy chủ
 log_delete_lease=Đã xóa hợp đồng cho $1 
 log_delete_subnets=Đã xóa $1 mạng con và mạng chia sẻ
 log_delete_hosts=Đã xóa $1 máy chủ và nhóm máy chủ
+
 keys_edit=Chỉnh sửa khóa TSIG
 keys_create=Đã tạo khóa TSIG
 keys_title=Khóa DNS
@@ -321,12 +338,14 @@ keys_ecannot=Bạn không được phép chỉnh sửa khóa DNS
 keys_err=Không thể lưu khóa DNS
 keys_ekey='$1' không phải là ID khóa hợp lệ
 keys_esecret=Bí mật mã hóa cơ sở 64 bị thiếu hoặc không hợp lệ cho khóa $1 
+
 pool_edit=Chỉnh sửa địa chỉ Pool
 pool_create=Tạo địa chỉ Pool
 pool_header=Tùy chọn nhóm địa chỉ
 pool_allow=Khách hàng cho phép
 pool_deny=Khách hàng từ chối
 pool_return=mạng con
+
 cdel_header=Cảnh báo
 cdel_shared1=mạng chia sẻ
 cdel_shared2=mạng chia sẻ
@@ -344,6 +363,7 @@ cdel_txt=Xóa $1 '$2' cũng sẽ xóa nội dung của nó:
 cdel_confirm=Bạn có thực sự muốn xóa $1 này không?
 cdel_eunknown=Lỗi không thể nhận biết
 cdel_return=danh sách máy chủ và mạng
+
 eacl_aviol=Vi phạm kiểm soát truy cập
 eacl_np=Bạn không có quyền
 eacl_pdh=xóa máy chủ
@@ -369,6 +389,7 @@ eacl_pdl=xóa hợp đồng thuê
 eacl_psl=xem cho thuê
 eacl_pglob=chỉnh sửa tùy chọn toàn cầu
 eacl_papply=khởi động lại dịch vụ này
+
 acl_apply=Có thể áp dụng thay đổi?
 acl_r_leases=Có thể xem cho thuê?
 acl_w_leases=Có thể loại bỏ hợp đồng thuê?
@@ -398,9 +419,11 @@ acl_err=Lỗi lưu danh sách ACL
 acl_ernow=Nếu bạn muốn kích hoạt quyền truy cập ghi trong ACL toàn cầu cho một số loại đối tượng, bạn cũng phải bật quyền truy cập đọc cho loại đối tượng này.
 acl_normal=bình thường
 acl_paranoic=hoang tưởng
+
 iface_title=Giao diện mạng
 iface_desc=Máy chủ DHCP chỉ có thể gán địa chỉ IP trên các mạng được kết nối với một trong các giao diện được chọn bên dưới. Giao diện mạng cho tất cả các mạng con được xác định phải được bao gồm. Nếu không được chọn, máy chủ DHCP sẽ cố gắng tự động tìm.
 iface_listen=Nghe trên giao diện
+
 lookup_ehost=Không có máy chủ nào có tên, địa chỉ IP hoặc địa chỉ MAC $1 tồn tại
 lookup_ehostname=Không có tên máy chủ, địa chỉ IP hoặc địa chỉ MAC được nhập
 lookup_egroup=Không có nhóm nào có tên hoặc tên miền $1 tồn tại
@@ -409,6 +432,7 @@ lookup_esubnet=Không có mạng con có địa chỉ hoặc địa chỉ/netmas
 lookup_esubnetname=Không có địa chỉ mạng con hoặc địa chỉ/netmask được nhập
 lookup_eshared=Không có mạng chia sẻ với tên $1 tồn tại
 lookup_esharedname=Không có tên mạng được chia sẻ
+
 zone_key=Khu DNS
 index_addzone=Thêm một vùng DNS mới.
 index_zone=Khu
@@ -424,16 +448,21 @@ zone_faildel=Không thể xóa vùng
 zone_failsave=Không thể lưu vùng
 zone_tsigkey=Khóa TSIG
 zone_ecannot=Bạn không được phép chỉnh sửa các vùng DNS
+
 plib_clientupdates=Khách hàng có thể cập nhật hồ sơ của riêng họ?
+
 text_title=dhcpd.conf
 text_editor=Trình soạn thảo văn bản
 text_return=thực đơn chính
 text_undo=Hoàn tác
 text_ecannot=Bạn không được phép chỉnh sửa tập tin cấu hình
+
 index_buttetext=Chỉnh sửa cấu hình thủ công
 index_text=Chỉnh sửa tập tin cấu hình văn bản thủ công
+
 stop_err=Không thể dừng máy chủ DHCP
 stop_ekill=Không chạy!
+
 sdelete_err=Không thể xóa mạng con và mạng chia sẻ
 sdelete_enone=Không được chọn
 sdelete_title=Xóa mạng con và mạng chia sẻ
@@ -441,6 +470,7 @@ sdelete_rusure1=Bạn có chắc chắn muốn xóa các mạng con được ch�
 sdelete_rusure2=Bạn có chắc chắn muốn xóa các mạng con được chọn $1 không? Bất kỳ đối tượng nào khác trong mạng con cũng sẽ bị mất.
 sdelete_rusure3=Bạn có chắc chắn muốn xóa $2 mạng được chia sẻ đã chọn không? Bất kỳ mạng con hoặc các đối tượng khác trong mạng cũng sẽ bị mất.
 sdelete_ok=Xóa ngay bây giờ
+
 hdelete_err=Không thể xóa máy chủ và nhóm
 hdelete_enone=Không được chọn
 hdelete_title=Xóa máy chủ và nhóm

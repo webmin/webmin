@@ -21,6 +21,7 @@ index_eversion=Verzija STunnela instalirana na vašem sustavu je $1, ali ovaj mo
 index_conf=Iz konfiguracijske datoteke $1 
 index_noconf=Nema konfiguracijske datoteke!
 index_delete=Izbriši odabrane tunele
+
 edit_title=Uredi SSL tunel
 create_title=Stvorite SSL tunel
 edit_header1=Opcije izvora tunela
@@ -47,6 +48,7 @@ edit_tcpw=Naziv TCP omota
 edit_auto=Automatski
 edit_iface=Adresa odlaznog izvora
 edit_type=Bježi od
+
 save_err=Nije uspjelo spremanje SSL tunela
 save_enclash=Naziv usluge $2 već se koristi na priključku $1.
 save_einetd=Već postoji inetd usluga nazvana $1.
@@ -61,6 +63,7 @@ save_etcpw=Nedostaje ili nevaljano ime TCP-omota
 save_eiface=Nedostaje ili neispravna adresa odlaznog izvora
 save_exinetd=Već postoji xinetd usluga pod nazivom $1 
 save_export=Port $1 već koristi xinetd usluga $2 
+
 log_apply=Primijenjene promjene
 log_create=Izrađen SSL tunel $1 
 log_delete=Izbrisan SSL tunel $1 

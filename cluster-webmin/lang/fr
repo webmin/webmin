@@ -330,4 +330,3 @@ config_have=Sur les serveurs qui l'ont
 config_group=Sur les membres du groupe $1
 config_on=Le $1
 config_err=Impossible d'enregistrer la configuration du module
-__norefs=1

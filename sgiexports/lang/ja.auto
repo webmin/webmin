@@ -7,6 +7,7 @@ index_none=NFSエクスポートはまだ定義されていません。
 index_apply=設定を適用
 index_applydesc=このボタンをクリックして、上記のすべてのエクスポートを、構成済みのオプションとともにアクティブにします。
 index_return=輸出リスト
+
 edit_title1=エクスポートを作成
 edit_title2=エクスポートを編集
 edit_header=エクスポートの詳細
@@ -24,12 +25,14 @@ edit_access=マウントアクセス
 edit_all=すべてのホスト
 edit_sel=リストされたホスト ..
 edit_none=ホストなし
+
 save_err=エクスポートを保存できませんでした
 save_edir=エクスポートするディレクトリが存在しないか存在しない
 save_eanon=ルートユーザーが見つからないか無効です
 save_erw=読み取り/書き込みホストが入力されていません
 save_eroot=ルートファイルアクセスホストが入力されていません
 save_eaccess=マウントアクセスホストが入力されていません
+
 log_create_export=$1のエクスポートを作成しました
 log_delete_export=$1のエクスポートを削除しました
 log_modify_export=$1の変更されたエクスポート

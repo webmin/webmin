@@ -7,6 +7,7 @@ index_stop=Sendmail'i Durdur
 index_stopmsg=Bu butonu tıklayarak çalışan sendmail işlemini durdurabilirsiniz. Durduğunda diğer sistemlerden yerel kullanıcılara gönderilen postalar duracak ve posta göndermek için posta sunucusu kullanan istemcilerin işlemleri engellenecektir
 index_start=Sendmail'i Çalıştır
 index_startmsg=Bu butonu tıklayarak sendmail'in çalışmasını sağlayabilirsiniz. Bu işlem bitene kadar diğer sistemlerden yerel kullanıcılara posta gelmeyecek ve posta göndermek için posta sunucusu olarak kullanan istemciler kullanamayacaktır
+
 opts_title=Sendmail Seçenekleri
 opts_ecannot=Sendmail seçeneklerini değiştirmeye izininiz yoktur
 opts_ds=Dış postaları makineye gönder
@@ -43,6 +44,7 @@ opts_background=Arka plan
 opts_queue-only=Sadece kuyruk
 opts_interactive=Etkileşimli
 opts_deferred=Ertelendi
+
 aliases_title=Posta Takma Adları
 aliases_ecannot=Takma adları değiştirmenize izin verilmedi
 aliases_addr=Adresler
@@ -54,6 +56,7 @@ aliases_type4=$1 programı
 aliases_type5=$1 dosyasını geri gönder
 aliases_none=Hiçbiri
 aliases_return=takma isim listesi
+
 aform_type0=Hiçbiri
 aform_type1=E-posta adresi
 aform_type2=Dosyadaki adresler
@@ -67,13 +70,16 @@ aform_enabled=Geçerli mi?
 aform_val=Takma isim
 aform_afile= Değiştir...
 aform_return=takma isim
+
 afile_title=Adres Dosyasını Değiştir
 afile_desc=$1 dosyasındaki adresleri değiştirmek için düz metin yazısı kutusunu kullanınız.
 afile_efile=$1'i değiştirmek için izininiz yoktur.
 afile_undo=Değişiklikleri Geri Al
+
 rfile_title=Otomatik Geri Gönderilem Mesajı Değiştir
 rfile_desc=$1'deki otomatik geri gönderilem mesajı değiştirmek için düz metin yazısı alanını kullanınız.Geri gönderme aktif hale getirildiğinde mesaj $SUBJECT, $FROM, $TO, $DATE ve $BODY makroları eklenerek genişletilebilir.
 rfile_efile=$1'i değiştirmek için izininiz yoktur
+
 asave_err=Takma isimlerinin kaydedilmesinde hata oluştu
 asave_ecannot2=Takma isimleri değiştirmenize izin verilmedi
 asave_ecannot=Bu takma isimi değiştirmenize izin verilmedi
@@ -88,6 +94,7 @@ asave_etype3='$1' geçerli bir dosya ismi değil
 asave_etype4='$1' geçerli bir program değil ya da mevcut değil
 asave_etype5=Geri döndürme dosyası $1 geçerli değil ya da mevcut değil
 asave_etype4none=Program girilmedi
+
 cws_title=Yerel Alanlar
 cws_ecannot=Yerel alanları değiştirmenize izin verilmedi
 cws_domains=Alanlar bu sunucu tarafından tutulmaktadır
@@ -96,6 +103,7 @@ cws_desc2=Listedeki bir alan genellikle tek başına yeterli değildir.
 cws_err=Yerel alanlanların kaydedilmesinde hata oluştu
 cws_ehost='$1' geçerli bir alan ya da makine ismi değil
 cws_eip='$1' bir IP adresidir, alan adı değildir
+
 masq_title=Alan Maskeleme
 masq_ecannot=Maskelemeyi yapılandırmanıza izininiz yoktur
 masq_domain=Alanı maskele
@@ -106,12 +114,14 @@ masq_err=Alan maskelemesinin kaydedilmesinde hata oluştu
 masq_edomain='$1' maskelenecek geçerli bir alan adı değil
 masq_ehost='$1' geçerli bir alan ya da makine adı değil
 masq_eip='$1' bir IP adresidir, alan adı değildir
+
 trusts_title=Doğrulanmış Kullanıcılar
 trusts_ecannot=Doğrulanmış kullanıcıları değiştirmek için izininiz yoktur
 trusts_users=Sendmail ile doğrulanmış yerel kullanıcılar
 trusts_desc=Yerel kullanıcılar e-posta göndermeyi denediğinde, eğer kullanıcı soldaki listede ise sendmail farklı bir <tt>From:</tt> kullanıcısına posta gönderilmesine izin verir.
 trusts_err=Doğrulanmış kullanıcıların kaydedilmesinde hata oluştu
 trusts_euser='$1' geçerli bir kullanıcı edı değil
+
 virtusers_title=Adres Haritalandırma
 virtusers_ecannot=Adres haritalandırmasını değiştirmek için izininiz yoktur
 virtusers_efile=Adres haritalandırma veritabanı $2'nin inşasında kullanılan $1 yazı dosyası mevcut değil.Belki doğru yolu bulmak için <a href='$3'>modül yapılandırması</a>yı değiştirmeye ihtiyacınız vardır
@@ -123,6 +133,7 @@ virtusers_error=$1 Hatası
 virtusers_domain=$1 Alanı
 virtusers_address=$1 Adresi
 virtusers_return=adres haritalandırma listesi
+
 vform_edit=Haritalandırmayı Değiştir
 vform_create=Haritalandırma Oluştur
 vform_for=Posta
@@ -135,6 +146,7 @@ vform_err_nouser=kullanıcı yok
 vform_err_nohost=makine yok
 vform_end=Sona taşı
 vform_ecannot=Bu adres haritalandırmasını değiştirmek için izininiz yoktur
+
 vsave_ecannot=Adres haritalandırmasını değiştirmek için izininiz yoktur
 vsave_ecannot2=Bu adres haritalandırmasını değiştirmek için izininiz yoktur
 vsave_emax=$1'den fazla adres haritalandırması oluşturmak için izininiz yoktur
@@ -149,6 +161,7 @@ vsave_eaddr='$1' geçerli bir adres değil
 vsave_ecannot4=Alan haritalarını oluşturmak için izininiz yoktur
 vsave_edomdom=Diğer alan için sadece bir alan haritalandırılabilir
 vsave_ecannot5=Hata haritalarını oluşturmak için izininiz yoktur
+
 mailers_title=Alan Yönlendirme
 mailers_cannot=Alan yönlendirmeleri değiştirmenize izin verilmemiştir
 mailers_edirective=Sendmail yapılandırma dosyanız alan yöneldirme için gerekli komutları içermiyor
@@ -159,6 +172,7 @@ mailers_for=Posta..
 mailers_delivery=Dağıtıcı
 mailers_to=Gönder..
 mailers_return=alan yönlendirme listesi
+
 mform_edit=Yönlendirmeyi Değiştir
 mform_create=Yönlendirme Oluştur
 mform_for=Posta
@@ -179,10 +193,12 @@ mform_procmail=Procmail
 mform_mail11=DECnet mail11
 mform_error=Hata
 mform_ecannot=Alan yönlendirmeyi değiştirmeye izininiz yoktur
+
 msave_ecannot=Alan yönlendirmeyi değiştirmeye izininiz yoktur
 msave_err=Alan yönlendirmenin kaydedilmesinde sorun oluştu
 msave_edomain='$1' geçerli bir makine ya da alan adı değildir
 msave_edup='$1' için alan yönlendirme her zaman mevcut
+
 generics_title=Dışa Giden Adresler
 generics_cannot=Dışa giden adresleri değiştirmeye hakkınız yoktur
 generics_econfig=Sendmail yapılandırma dosyanız dış adres haritalandırması için gerekli komutları içermiyor
@@ -192,17 +208,20 @@ generics_desc2=<a href='$1'>Dışa alanlar</a> tablosunda olmasını istediğini
 generics_from=Posta..
 generics_to=Değiştir...
 generics_return=adres haritalandırma listesi
+
 gform_edit=Haritalandırmayı Değiştir
 gform_create=Haritalandırma Oluştur
 gform_from=Posta
 gform_to=Değiştir
 gform_ecannot=Bu dış adresi değiştirmenize izin verilmemiştir
+
 gsave_ecannot=Dış adresleri değiştirmenize izin verilmemiştir
 gsave_ecannot2=Bu dış adresi değiştirmenize izin verilmemiştir
 gsave_err=Dış adresin kaydedilmesinde hata oluştu
 gsave_efrom='$1' geçerli bir gelen adresi değil
 gsave_ematch=From adresi '$1'e uymuyor
 gsave_eto='$1' geçerli bir yeni adres değil
+
 cgs_title=Dışa Giden Alanlar
 cgs_ecannot=Dışa giden alanları değiştirmeye hakkınız yoktur
 cgs_header=Dış adres alanları
@@ -210,6 +229,7 @@ cgs_desc=Yerel kullanıcılara gönderilen mesajlar haricinde, sendmail sadece s
 cgs_err=Dış alanın kaydedilmesinde hata oluştu
 cgs_ehost='$1' geçerli bir alan ya da makine değil
 cgs_eip='$1' bir IP adresidir, alan değildir.
+
 domains_title=Alan Haritalandırması
 domains_ecannot=Alan haritalandırmasını değiştirmeye izininiz yoktur.
 domains_econfig=Sendmail yapılandırma dosyanız alan haritalandırması için gerekli komutları içermiyor.
@@ -218,14 +238,17 @@ domains_desc=Alan haritalandırması sisteminizdeki kullanıcılara iletilenden 
 domains_from=Alandan..
 domains_to=Alana..
 domains_return=alan haritalandırma listesi
+
 dform_edit=Haritalandırmayı değiştir
 dform_create=Haritalandırma Oluştur
 dform_from=Alandan
 dform_to=Alana
 dform_ecannot=Haritalandırmayı değiştirmeye izininiz yoktur
+
 dsave_ecannot=Alan haritalandırmasını değiştirmeye izininiz yoktur.
 dsave_err=Alan haritalandırmasının kaydedilmesinde hata oluştu
 dsave_edomain='$1' geçerli bir alan adı değildir
+
 access_title=Spam Kontrolü
 access_ecannot=Spam kontrol yapılandırmasını değiştirmeye izininiz yoktur.
 access_efile=Adres haritalandırma veritabanı $2'nin inşasında kullanılan $1 yazı dosyası mevcut değildir.Doğru yol tanımlamalarını bulmak için belki de  <a href='$3'>modül yapılandırması</a>nı değiştirmelisiniz.
@@ -249,12 +272,14 @@ sform_discard=Sil
 sform_err=Hata kodu
 sform_msg=Mesaj
 sform_ecannot=Spam kontrol yapılandırmasını değiştirmeye izininiz yoktur.
+
 ssave_err=Spam kontrol kurallarının kaydedilmesinde hata oluştu
 ssave_etype0='$1' geçerli bir adres değildir
 ssave_etype1='$1' geçerli bir ağ maskesi değildir
 ssave_etype2='$1' geçerli bir kullanıcı adı değildir
 ssave_etype3='$1' geçerli bir alan değildir
 ssave_ecode='$1' geçerli bir SMTP hata kodu değildir
+
 relay_title=İletilen Alanlar
 relay_ecannot=İletilen alanları değiştirmeye izininiz yoktur.
 relay_eversion=Sendmail'in sadece 8.9 ve üzeri sürümleri iletilen alanlar özelliğini destekler
@@ -263,6 +288,7 @@ relay_desc1=<a href='$1'>Spam kontrol</a> kuralları kabul edilmezse, sendmail s
 relay_desc2=Eğer sisteminiz çeşitli alanlar için ağ geçidi hizmeti sunuyorsa ağınıza listelenmiş alanlar hariç dışarıdan doğrudan erişilemez (<a href='$1'>alan yönlendirme</a> özelliği kullanılır).
 relay_err=Alan iletiliminin kaydedilmesinde hata oluştu
 relay_edomain='$1' geçerli bir lan adı değildir
+
 mailq_title=Posta Kuyruğu
 mailq_ecannot=Posta kuyruğunu görmek için izininiz yoktur.
 mailq_id=Posta ID
@@ -277,17 +303,21 @@ mailq_dmsg=E-posta kuyruğundaki mesajları görmek için listedeki numarasını
 mailq_force=E-postanın dağıtıcı komutu için <a href='$1'>burayı tıklayınız</a>.
 mailq_none=Dağıtım için kuyruğa konulmuş mesaj yok
 mailq_return=posta kuyruğu
+
 flushq_title=Kuyruğu Boşalt
 flushq_desc=$1 komutu ile postanın dağıtımı deneniyor ..
+
 delq_err=Mesajın silinmesinde hata oluştu
 delq_ecannot=Mesajları kuyruktan çıkarmak için izininiz yoktur
 delq_locked=Göndeme işlemi kilitlendi
+
 boxes_title=Kullanıcı Posta Kutuları
 boxes_user=Kullanıcı
 boxes_size=Posta kutusu boyutu
 boxes_none=Postası yok
 boxes_return=posta kutuları
 boxes_ecannot=E-posta'nın okunmasında hata oluştu
+
 mail_title=Kullanıcı E-Posta
 mail_from=Nereden
 mail_date=Tarih
@@ -315,6 +345,7 @@ mail_search=Mesajların aranılacağı yer
 mail_body=Mesaj içeriği
 mail_match=matches
 mail_ok=Ara
+
 view_title=E-posta oku
 view_desc=Mesaj $1, $2'de
 view_qdesc=Kuyruğa konulmuş mesaj $1
@@ -325,6 +356,7 @@ view_reply2=Hepsine geri gönder
 view_forward=Döndür
 view_delete=Sil
 view_ecannot=Bu kullanıcının e-postasını okumak için izininiz yoktur
+
 compose_title=E-posta Gönder
 reply_title=E-postayı Geri Gönder
 forward_title=E-postayı Döndür
@@ -333,6 +365,7 @@ reply_attach=Döndürülmüş ekler
 reply_attach2=Ekler
 reply_send=Gönder
 reply_ecannot=Bu kullanıcı olarak e-posta göndermek için izininiz yoktur
+
 send_err=Postanın gönderilmesinde hata oluştu
 send_eto=Nereye adresini girmelisiniz
 send_efrom=Nereden adresini girmelisiniz
@@ -343,12 +376,15 @@ send_esmtp=SMTP komutu $1'de hata oluştu : $2
 send_efile=Eklenen dosya $1 mevcut değil
 send_eattach=Ek dosyaların boyutu $1 KB'den daha büyük olmamalıdırlar.
 send_eperms=$1 kullanıcısı $2'yi okuyamaz
+
 delete_ecannot=Bu kullanıcı olarak e-posta silmek için izininiz yoktur
 delete_enone=Silmek için posta silinmedi
+
 search_title=Arama sonuçları
 search_ecannot=Bu kullanıcı e-postalarını aramak için izininiz yoktur
 search_ematch=Takip eden kutuya bir yazı girmelisiniz
 search_none=Mesaj bulunamadı.
+
 file_title=Sendmail Dosyasını Değiştir
 file_desc=Sendmail dosyası $1'u elle değiştirmek için düz metin yazısı kutusunu kullanınız.
 file_undo=Değişiklikleri Geri Al
@@ -360,6 +396,7 @@ file_egenerics=Bütün dışa giden adresle için izininiz varsa dışa giden ad
 file_eaccess=Spam kontrol dosyasını değiştirmek için izininiz yoktur.
 file_emode=Bilinmeyen mod!
 file_err=Dosyanın değiştirilmesinde hata oluştu
+
 acl_opts=Sendmail seçeneklerini değiştirebilsin?
 acl_cws=Yerel alanları değiştirebilirsin?
 acl_masq=Alan maskelemeyi yapılandırabilsin?
@@ -402,6 +439,7 @@ acl_faddrs=Listelenmiş alanlar
 acl_fdom=Herhangi adres @ alan
 acl_apath=Dizin için program ve dosya limitleri
 acl_attach=En çok toplam posta ek dosyaları boyutu
+
 log_opts=Sendmail seçenekleri değiştirildi
 log_alias_create=Takma isim $1 oluşturuldu
 log_alias_modify=Takma isim $1 değiştirildi
@@ -430,6 +468,7 @@ log_domain_manual=Alan haritalandırma dosyası $1 elle değiştirildi
 log_access_create=$1 için spam kontrolü oluşturuldu
 log_access_modify=$1 için spam kontrolü değiştirildi
 log_access_delete=$1 için spam kontrolü silindi
+
 log_access_manual=Spam kontrol dosyası $1 elle değiştirildi
 log_relay=İletilen alanlar değiştirildi
 log_flushq=Posta kuyruğu boşaltıldı

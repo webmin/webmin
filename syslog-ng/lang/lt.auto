@@ -9,6 +9,7 @@ index_start=Paleiskite „Syslog-NG“
 index_startdesc=Spustelėkite šį mygtuką, kad paleistumėte „Syslog-NG“ demoną, naudodami dabartinę konfigūraciją.
 index_return=modulio rodyklė
 index_version=„Syslog-NG $1 “
+
 options_title=Registravimo parinktys
 options_header=Visų žurnalų failų parinktys
 options_secs=sekundžių
@@ -55,6 +56,7 @@ options_esync=Trūksta arba netinkamas žinučių buferiui prieš rašymą skai�
 options_estats=Trūksta arba neskaičiuojamas laikas laukti tarp statistinių pranešimų
 options_elog_fifo_size=Trūksta arba netinkamas buferiui skirtų pranešimų skaičius
 options_elog_msg_size=Trūksta didžiausio arba neskaitinio žurnalo pranešimo dydžio
+
 destinations_title=Prisijungti paskirties vietos
 destinations_name=Paskirties vietos pavadinimas
 destinations_type=Parašyti
@@ -77,6 +79,7 @@ destinations_add=Pridėti naują žurnalo vietą.
 destinations_return=žurnalo paskirties vietos
 destinations_desc=Kito modulio žurnalas
 destinations_cmd=Išvestis iš $1 
+
 destination_header=Žurnalo paskirties vietos parinktys
 destination_title1=Sukurti žurnalo tikslą
 destination_title2=Redaguoti žurnalo tikslą
@@ -117,17 +120,22 @@ destination_enet_localip=Trūksta arba netinkamas vietinis IP adresas
 destination_enet_localport=Trūksta arba netinkamas vietinio prievado numeris
 destination_enet_host=Trūksta arba netinkamas „Syslog“ serverio pagrindinis kompiuteris ar adresas
 destination_eunix=Trūksta „Unix“ lizdo pavadinimo
+
 ddelete_err=Nepavyko ištrinti paskirties vietų
 ddelete_enone=Nepasirinkta
 ddelete_eused=Paskirties $1 negalima ištrinti, nes ją naudoja žurnalo taikinys
+
 sdelete_err=Nepavyko ištrinti šaltinių
 sdelete_enone=Nepasirinkta
 sdelete_eused=Žurnalo šaltinio $1 negalima ištrinti, nes jį naudoja žurnalo taikinys
+
 fdelete_err=Nepavyko ištrinti filtrų
 fdelete_enone=Nepasirinkta
 fdelete_eused=Žurnalo filtro $1 negalima ištrinti, nes jį naudoja žurnalo taikinys
+
 ldelete_err=Nepavyko ištrinti žurnalo tikslų
 ldelete_enone=Nepasirinkta
+
 filters_title=Rąstų filtrai
 filters_name=Filtro pavadinimas
 filters_desc=Sąlygos
@@ -144,6 +152,7 @@ filters_program=programa <tt>$1</tt>
 filters_match=atitinka „$1“
 filters_host=iš pagrindinio kompiuterio vardo <tt>$1</tt>
 filters_netmask=iš siuntėjo <tt>$1</tt>
+
 filter_title1=Sukurti žurnalo filtrą
 filter_title2=Redaguoti žurnalo filtrą
 filter_header=Išsami žurnalo filtro specifikacijos informacija
@@ -169,6 +178,7 @@ filter_enet=Trūksta arba netinkamas tinklo IP adresas
 filter_emask=Trūksta arba netinkamas tinklo maskavimas
 filter_ebool=Klaida sudėtinga išraiška
 filter_egone=Filtro nebeegzistuoja!
+
 logs_title=Žurnalų tikslai
 logs_source=Šaltiniai
 logs_filter=Filtrai
@@ -177,6 +187,7 @@ logs_add=Pridėkite naują žurnalo tikslą.
 logs_delete=Ištrinti pasirinktus žurnalo tikslus
 logs_return=žurnalo taikiniai
 logs_none=Nė vienas
+
 log_title1=Sukurkite žurnalo tikslą
 log_title2=Redaguoti žurnalo tikslą
 log_header=Žurnalo šaltinio, filtro ir paskirties vietos pasirinkimai
@@ -190,6 +201,7 @@ log_flags=Tikslinės parinktys
 log_egone=Žurnalo tikslas nebeegzistuoja!
 log_err=Nepavyko išsaugoti žurnalo tikslo
 log_esource=Nepasirinktas nė vienas šaltinis
+
 sources_title=Prisijungti šaltiniai
 sources_none=Dar nėra apibrėžti šaltiniai!
 sources_add=Pridėkite naują žurnalo šaltinį.
@@ -207,6 +219,7 @@ sources_typen=Saulės srautas
 sources_typenw=„Syslog“ serveris
 sources_return=žurnalų šaltiniai
 sources_none2=Nė vienas
+
 source_title1=Sukurti žurnalo šaltinį
 source_title2=Redaguoti žurnalo šaltinį
 source_header=Žurnalo šaltinio parinktys
@@ -243,15 +256,20 @@ source_door=Durų failo vardas
 source_esun_streams_name=Trūksta arba netinkamas „Sun“ srautų failo vardas
 source_edoor=Trūksta arba netinkamas „Sun“ srautų durų failo vardas
 source_transport=Tinklo protokolas
+
 view_title=Peržiūrėti žurnalo failą
 view_header=Paskutinės $1 eilutės iš $2 
 view_empty=Žurnalo failas tuščias
 view_refresh=Atnaujinkite
 view_filter=Rodyti tik eilutes su tekstu $1 
+
 apply_err=Nepavyko pritaikyti konfigūracijos
 apply_egone=Nebėga!
+
 start_err=Nepavyko paleisti „Syslog-NG“ serverio
+
 stop_err=Nepavyko sustabdyti „Syslog-NG“ serverio
+
 log_create_destination=Sukurtas žurnalo tikslas $1 
 log_modify_destination=Modifikuota žurnalo paskirties vieta $1 
 log_delete_destination=Ištrinta žurnalo paskirties vieta $1 

@@ -16,6 +16,7 @@ index_chain=Chuỗi $1
 index_action=Hoạt động
 index_desc=Điều kiện
 index_comm=Bình luận
+index_no_comment=
 index_move=Di chuyển
 index_none=Không có quy tắc được xác định cho chuỗi này.
 index_policy=Đặt hành động mặc định thành:
@@ -88,6 +89,7 @@ index_ipset_size=Kích thước
 index_ipvxmode=Thay đổi phiên bản giao thức IP:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
 desc_p=giao thức là $1 
 desc_p!=giao thức không phải là $1 
 desc_s=nguồn là $1 
@@ -114,6 +116,8 @@ desc_tcp-option=gói sử dụng tùy chọn TCP $1
 desc_tcp-option!=gói không sử dụng tùy chọn TCP $1 
 desc_icmp-type=Loại ICMP là $1 
 desc_icmp-type!=Loại ICMP không phải là $1 
+desc_icmpv6-type=Loại ICMP là $1 
+desc_icmpv6-type!=Loại ICMP không phải là $1 
 desc_mac-source=địa chỉ ethernet là $1 
 desc_mac-source!=địa chỉ ethernet không phải là $1 
 desc_limit=tỷ lệ nhỏ hơn $1 
@@ -146,10 +150,15 @@ desc_always=Luôn luôn
 desc_args--match-set=$2 được chứa trong IP-set $1 
 desc_src=nguồn
 desc_dest=Nơi Đến
+
 redhat_einstalled=Không tìm thấy hành động khởi động <tt>iptables (6)</tt>, chỉ ra rằng gói IPtables không được cài đặt trên hệ thống của bạn
 redhat_eoutput=Đã xảy ra lỗi khi nhận trạng thái IPtables từ lệnh $1. Điều này có thể chỉ ra rằng hệ thống của bạn đã được cấu hình để sử dụng IPchains thay vì IPtables.
+
 gentoo_escript=Không tìm thấy tập lệnh khởi động Gentoo IPtables $1 trên hệ thống của bạn.
+
 eiptables=IPtables không xác định lưu dòng tệp : $1 
+eip6tables=IP6tables không thể lưu dòng tệp : $1 
+
 edit_title1=Thêm quy tắc
 edit_title2=Chỉnh sửa quy tắc
 edit_title3=Quy tắc nhân bản
@@ -218,6 +227,7 @@ edit_physdevout=Giao diện vật lý đi
 edit_physdevisin=Gói đến trên giao diện cầu
 edit_physdevisout=Gói đi trên giao diện cầu
 edit_physdevisbridged=Gói đang được bắc cầu
+
 save_err=Không thể lưu quy tắc
 save_echain=Chuỗi thiếu hoặc không hợp lệ để chạy
 save_esource=Địa chỉ hoặc mạng bị thiếu hoặc không hợp lệ
@@ -262,23 +272,28 @@ save_estates=Không có trạng thái kết nối nào được chọn
 save_ecanjump=Bạn không được phép sử dụng hành động này
 save_ephysdevin=Giao diện vật lý đến bị thiếu hoặc không hợp lệ
 save_ephysdevout=Giao diện vật lý bị mất hoặc không hợp lệ
+
 delete_title=Xóa chuỗi
 delete_rusure=Bạn có chắc chắn muốn xóa chuỗi $1 không? $2 quy tắc trong đó sẽ bị xóa.
 delete_ok=Xóa ngay bây giờ
 delete_ecannot=Bạn không được phép xóa chuỗi
+
 clear_title=Xóa chuỗi
 clear_rusure=Bạn có chắc chắn muốn xóa tất cả quy tắc $2 khỏi chuỗi $1 không?
 clear_ecannot=Bạn không được phép xóa chuỗi
+
 new_err=Không thể tạo chuỗi
 new_ename=Tên chuỗi bị thiếu hoặc không hợp lệ
 new_etaken=Một chuỗi có tên này đã tồn tại
 new_ecannot=Bạn không được phép tạo chuỗi
+
 apply_err=Không thể áp dụng cấu hình
 apply_ecannot=Bạn không được phép áp dụng cấu hình
 apply_remote=Lỗi từ $1 : $2 
 unapply_err=Không thể hoàn nguyên cấu hình
 unapply_ecannot=Bạn không được phép hoàn nguyên cấu hình
 bootup_ecannot=Bạn không được phép bật hoặc tắt tường lửa khi khởi động
+
 log_create_rule=Đã thêm quy tắc vào chuỗi $1 trong bảng $2 
 log_modify_rule=Quy tắc đã sửa đổi trong chuỗi $1 trong bảng $2 
 log_delete_rule=Đã xóa quy tắc trong chuỗi $1 trong bảng $2 
@@ -301,8 +316,10 @@ log_add_group=Đã thêm máy chủ cụm từ nhóm $1
 log_delete_host=Đã xóa máy chủ cụm $1 
 log_delete_group=Đã xóa $1 cụm máy chủ
 log_openports=Cổng tường lửa đã mở $1 
+
 setup_eiface=Không có giao diện mạng bên ngoài nào được nhập
 setup_ecannot=Bạn không được phép thiết lập tường lửa
+
 acl_tables=IPtables được phép
 acl_apply=Có thể áp dụng cấu hình?
 acl_unapply=Có thể không áp dụng cấu hình?
@@ -314,9 +331,11 @@ acl_jall=Tất cả
 acl_newchain=Có thể tạo ra chuỗi mới?
 acl_delchain=Có thể xóa hoặc xóa chuỗi?
 acl_policy=Có thể thay đổi chính sách mặc định?
+
 etable=Bạn không được phép chỉnh sửa IPtable này
 ejump=Bạn không được phép chỉnh sửa quy tắc này
 ecluster=Bạn không được phép quản lý cụm tường lửa
+
 cluster_title=Máy chủ tường lửa cụm
 cluster_none=Chưa có máy chủ nào được thêm vào cụm tường lửa.
 cluster_host=Tên máy chủ
@@ -327,6 +346,7 @@ cluster_gadd=Thêm máy chủ trong nhóm
 cluster_need=Bạn phải thêm các máy chủ có thông tin đăng nhập và mật khẩu trong mô-đun Chỉ mục Máy chủ Webmin trước khi chúng có thể được quản lý tại đây.
 cluster_return=máy chủ cụm
 cluster_delete=Bỏ đã chọn
+
 add_title=Thêm máy chủ
 add_msg=Thêm $1 ..
 add_gmsg=Thêm máy chủ trong nhóm $1 ..
@@ -336,13 +356,16 @@ add_echeck=Máy chủ $1 không có mô-đun Tường lửa Linux
 add_emissing=Máy chủ $1 thiếu lệnh tường lửa $2 
 add_ok=Đã thêm $1, với $2 quy tắc tường lửa hoạt động.
 add_enone=Không có máy chủ để thêm lựa chọn!
+
 policy_ecannot=Bạn không được phép thay đổi chính sách mặc định cho chuỗi này
+
 move_title=Di chuyển quy tắc
 move_count=Quy tắc được chọn
 move_chain=Thay đổi hiện tại
 move_dest=Chuỗi đích
 move_ok=Di chuyển ngay
 move_header=Tùy chọn di chuyển quy tắc
+
 rename_title=Đổi tên chuỗi
 rename_count=Quy tắc trong chuỗi
 rename_chain=Tên thật
@@ -352,6 +375,3 @@ rename_header=Tùy chọn đổi tên chuỗi
 rename_adjust=Sửa đổi các quy tắc khác mà nhảy vào chuỗi này?
 rename_none=không ai
 rename_ecannot=Bạn không được phép đổi tên chuỗi
-desc_icmpv6-type=Loại ICMP là $1 
-desc_icmpv6-type!=Loại ICMP không phải là $1 
-eip6tables=IP6tables không thể lưu dòng tệp : $1 

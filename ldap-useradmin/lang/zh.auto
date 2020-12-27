@@ -19,10 +19,13 @@ index_samba=桑巴舞
 index_cyrus=IMAP？
 index_users=LDAP用户
 index_groups=LDAP组
+
 imap_econn=无法连接到IMAP服务器 $1
 imap_elogin=无法以 $2的身份登录到IMAP服务器 $1 : $3
 conn_eldap_host=在您的系统上找不到LDAP客户端配置文件，因此必须在“模块配置”页面上设置LDAP服务器。
 conn_elogin=在系统上找不到LDAP客户端配置文件，因此必须在“模块配置”页面上设置LDAP登录名
+conn_efile_open=无法打开LDAP绑定凭证文件：
+
 uedit_cap=用户能力
 uedit_samba=Samba登录？
 uedit_cyrus=IMAP服务器登录？
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=上次密码更新
 uedit_sambapwdcanchange=密码可以更改
 uedit_sambabadpasswordcount=错误的密码计数
 uedit_sambaacctflags=帐户标志
+
 usave_eadd=无法将用户添加到LDAP数据库： $1
 usave_emod=无法修改LDAP数据库中的用户： $1
 usave_emoddn=无法重命名LDAP数据库中的用户： $1
@@ -66,26 +70,33 @@ usave_eattrdupu=用户 $1已在使用 $2 $3
 usave_eattrdupg=组 $1已在使用 $2 $3
 usave_ereal=缺少真实姓名
 usave_equota=IMAP配额不足或无效
+
 search_err=在 $2下搜索 $1失败： $3
+
 gedit_dn=组的LDAP DN
 gedit_return=组详细信息
 gedit_cap=小组能力
 gedit_samba=桑巴组？
+
 gsave_egone=组不再存在！
 gsave_edelete=无法从LDAP数据库中删除组： $1
 gsave_eadd=无法将组添加到LDAP数据库： $1
 gsave_emod=修改LDAP数据库中的组失败： $1
 gsave_emoddn=重命名LDAP数据库中的组失败： $1
+
 gdel_group=删除LDAP组条目 ..
+
 udel_pass=删除LDAP用户条目 ..
 udel_book=从通讯录中删除 ..
 udel_imap=删除IMAP文件夹 ..
 udel_warnimap=删除主目录时，现有的邮箱将被删除！
 udel_failed=..失败了！ ： $1
+
 raw_title=LDAP属性
 raw_name=属性名称
 raw_value=价值观
 raw_for=对于 $1
+
 batch_samba=为新用户创建Samba帐户？
 batch_imap=为新用户创建IMAP帐户？
 batch_descafter3=在<b>create</b>和<b>modify</b>行中，可以选择将包含<i>name</i> = <i>value</i>格式的LDAP属性的其他字段附加到分配给新用户或修改过的用户。

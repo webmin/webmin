@@ -30,6 +30,7 @@ index_return=liste des zones
 index_ezones=Aucune zone FirewallD trouvée!
 index_none=Cette zone n'a pas encore de ports ou de services autorisés.
 index_ifaces=Appliquer des règles aux interfaces:
+
 port_edit=Modifier le port
 port_create=Ajouter un port
 port_header=Options de port autorisées
@@ -45,11 +46,13 @@ port_eport=Numéro ou nom de port manquant ou invalide
 port_eportlow=Le port bas doit être un nombre
 port_eporthigh=Le port haut doit être un nombre
 port_eportrange=Le port bas doit être en dessous du port haut
+
 serv_edit=Modifier le service
 serv_create=Ajouter un service
 serv_header=Options de service autorisées
 serv_name=Service à permettre
 serv_err=Impossible d'enregistrer le service
+
 forward_edit=Modifier vers l'avant
 forward_create=Créer un renvoi
 forward_header=Options de redirection de port
@@ -61,10 +64,13 @@ forward_dstaddr=Adresse de destination
 forward_dstlocal=Ce système
 forward_edstaddr=Adresse de destination IPv4 non valide
 forward_eneither=Une adresse de destination ou un port ou les deux doivent être saisis
+
 check_ecmd=La commande de contrôle FirewallD $1 est introuvable sur votre système
+
 delete_err=Impossible de supprimer les règles
 delete_enone=Aucune sélection!
 delete_edel=Échec de la suppression de $1 : $2 
+
 zone_title=Créer une zone
 zone_header=Nouvelles options de zone
 zone_name=Nom de zone
@@ -77,12 +83,16 @@ zone_mode4=Ports utilisés pour l'hébergement virtuel
 zone_err=Impossible de créer la zone
 zone_ename=Nom de zone manquant ou invalide
 zone_eclash=Une zone du même nom existe déjà
+
 delzone_title=Supprimer la zone
 delzone_err=Impossible de supprimer la zone
 delzone_edefault=La zone par défaut ne peut pas être supprimée
 delzone_rusure=Voulez-vous vraiment supprimer la zone $1, qui contient $2 ports et $3 services?
+
 defzone_err=Impossible de définir la zone par défaut
+
 restart_err=Impossible d'appliquer la configuration
+
 stop_err=Impossible d'arrêter FirewallD
 start_err=Impossible de démarrer FirewallD
 log_stop=Pare-feu arrêtéD

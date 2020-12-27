@@ -11,6 +11,7 @@ index_version2=Sendmail versiunea $1, configurare $2
 index_xversion=Versiunea Sendmail $1 
 index_version=Configurare Sendmail $1 
 index_sendmail=sendmail
+
 opts_title=Opțiuni Sendmail
 opts_ecannot=Nu aveți voie să editați opțiunile sendmail
 opts_ds=Trimiteți un e-mail de ieșire prin gazdă
@@ -57,6 +58,7 @@ opts_qso=Sortează coada de e-mail după
 opts_priority=Prioritate
 opts_host=Numele gazdei
 opts_time=Timpul primit
+
 aliases_title=Aliasuri prin poștă
 aliases_ecannot=Nu aveți voie să editați alias
 aliases_enofile=În configurația Sendmail nu este definit niciun fișier de alias
@@ -73,6 +75,7 @@ aliases_return=lista de alias
 aliases_toomany=Există prea multe aliasuri de e-mail pe sistemul dvs. pentru a fi afișate pe această pagină.
 aliases_go=Găsiți alias-uri potrivite:
 aliases_delete=Ștergeți pseudonimele selectate
+
 aform_ecannot=Nu aveți voie să editați acest alias
 aform_type0=Nici unul
 aform_type1=Adresa de email
@@ -90,11 +93,13 @@ aform_val=Alias pentru
 aform_afile=Editați | × ..
 aform_return=alias
 aform_cmt=Descriere
+
 afile_title=Editează fișierul de adrese
 afile_desc=Utilizați zona de text de mai jos pentru a edita adresele din fișierul $1.
 afile_efile=Nu aveți voie să editați $1.
 afile_undo=Anulează modificările
 afile_ewrite=Eroare la scrierea în fișierul de adrese : $1 
+
 ffile_title=Editează fișierul de filtrare
 ffile_desc=Utilizați formularul de mai jos pentru a configura regulile de filtrare din fișierul $1.
 ffile_efile=Nu aveți voie să editați $1.
@@ -110,6 +115,7 @@ ffile_other=În caz contrar, transmiteți $1
 ffile_err=Nu a reușit să salvați fișierul de filtru
 ffile_ematch=Meciul lipsă
 ffile_eaction=Adresa de expediere lipsește
+
 rfile_title=Editați fișierul automat
 rfile_desc=Utilizați zona de text de mai jos pentru a edita mesajul de autoreply în $1. Mesajul poate conține macros macro $SUBJECT, $FROM, $TO, $DATE și $BODY, care vor fi extinse atunci când este activată automată.
 rfile_desc2=Puteți seta, de asemenea, anteturi de e-mail care adaugă sau înlocuiește valorile implicite utilizate în autoreply introducând linii precum: <br><tt> De la: foo@bar.com </tt><br> <tt>Subiect: În vacanță</tt> <br> în partea de sus a mesajului, separată de corp printr-o singură linie goală.
@@ -129,6 +135,7 @@ rfile_from=De la: adresa pentru răspuns
 rfile_auto=Automat (bazat pe adresa destinatarului)
 rfile_efrom=Lipsește de la: adresa
 rfile_fromdesc=O adresă From: ar trebui să fie întotdeauna specificată acolo unde este posibil, deoarece metoda automată poate să nu fie fiabilă.
+
 asave_err=Nu a reușit să salveze alias
 asave_ecannot2=Nu aveți voie să editați alias
 asave_ecannot=Nu aveți voie să editați acest alias
@@ -145,9 +152,11 @@ asave_etype5=Fișierul automat „$1” nu este valid
 asave_etype4none=Nici un program dat
 asave_etype6=Fișierul de filtrare „$1” nu este valid
 asave_esame=Aveți voie să creați doar un alias cu același nume ca autentificarea dvs. pe webmin
+
 adelete_err=Nu a reușit să ștergeți pseudonimele
 adelete_enone=Nimic selectat
 adelete_ecannot=Nu aveți voie să ștergeți aliasul $1 
+
 cws_title=Domenii locale
 cws_ecannot=Nu aveți voie să editați domenii locale
 cws_domains=Domenii gestionate de acest server
@@ -156,6 +165,7 @@ cws_desc2=Rețineți că doar includerea unui domeniu în listă nu este de obic
 cws_err=Salvarea domeniilor locale nu a reușit
 cws_ehost=„$1” nu este o gazdă sau un nume de domeniu valabil
 cws_eip=„$1” este o adresă IP, nu un domeniu
+
 masq_title=Masquerading de domeniu
 masq_ecannot=Nu aveți voie să configurați masquerading
 masq_domain=Masquerade ca domeniu
@@ -167,12 +177,14 @@ masq_err=Nu a reușit să salveze mascherarea domeniului
 masq_edomain=„$1” nu este un domeniu valabil pentru mascare
 masq_ehost=„$1” nu este o gazdă sau un nume de domeniu valabil
 masq_eip=„$1” este o adresă IP, nu un domeniu
+
 trusts_title=Utilizatori de încredere
 trusts_ecannot=Nu aveți voie să editați utilizatori de încredere
 trusts_users=Utilizatorii locali au încredere prin sendmail
 trusts_desc=Dacă un utilizator local încearcă să trimită e-mail, sendmail îi va permite utilizatorului să furnizeze o altă adresă <tt>From:</tt> dacă utilizatorul se află în lista de mai jos. Această restricție există pentru a împiedica utilizatorii să forțeze e-mailurile cu adresele false <tt>From:</tt> provenite din sistemul dvs.
 trusts_err=Nu a reușit salvarea utilizatorilor de încredere
 trusts_euser=„$1” nu este un utilizator valid
+
 virtusers_title=Mapări de adrese
 virtusers_ecannot=Nu aveți voie să editați mapări de adrese
 virtusers_efeature=Configurația dvs. de email nu are activată funcția de mapare a adreselor (<tt>virtuser</tt>). <a href='$1'>Faceți clic aici</a> pentru a configura funcțiile sendmail.
@@ -190,6 +202,7 @@ virtusers_return=lista de mapare a adreselor
 virtusers_toomany=Există prea multe mapări de adrese pe sistemul dvs. pentru a fi afișate pe această pagină.
 virtusers_go=Găsiți mapări de adrese corespunzătoare:
 virtusers_delete=Ștergeți mapările de adrese selectate
+
 vform_edit=Editați maparea adreselor
 vform_create=Creați mapare de adrese
 vform_for=Mail pentru
@@ -206,6 +219,7 @@ vform_err_tempfail=Eșec temporar
 vform_err_protocol=Eroare de protocol
 vform_end=Deplasați-vă până la capăt
 vform_ecannot=Nu aveți voie să editați această mapare a adreselor
+
 vsave_ecannot=Nu aveți voie să editați mapări de adrese
 vsave_ecannot2=Nu aveți voie să editați această mapare a adreselor
 vsave_emax=Nu aveți voie să creați mai multe $1 mapări de adrese
@@ -221,8 +235,10 @@ vsave_eaddr=„$1” nu este o adresă validă
 vsave_ecannot4=Nu aveți voie să creați mapări cu domenii
 vsave_edomdom=Doar un domeniu poate fi mapat într-un alt domeniu
 vsave_ecannot5=Nu aveți voie să creați mapări care să returneze o eroare
+
 vdelete_err=Nu a reușit să ștergi mapările de adrese
 vdelete_ecannot=Nu aveți voie să ștergeți maparea pentru $1 
+
 mailers_title=Routing de domenii
 mailers_cannot=Nu aveți voie să editați rutarea domeniului
 mailers_edirective=Fișierul dvs. de configurare sendmail nu are directiva necesară pentru rutarea domeniului.
@@ -236,6 +252,7 @@ mailers_delivery=Livrare
 mailers_to=Trimite catre ..
 mailers_return=lista de rutare a domeniilor
 mailers_delete=Ștergeți rutele de domeniu selectate
+
 mform_edit=Editare rutare
 mform_create=Creați rutare
 mform_for=Mail pentru
@@ -259,12 +276,15 @@ mform_procmail=procmail
 mform_mail11=DECnet mail11
 mform_error=Eroare
 mform_ecannot=Nu aveți voie să editați rutarea domeniului
+
 msave_ecannot=Nu aveți voie să editați rutarea domeniului
 msave_err=Nu a reușit să salvați rutarea domeniului
 msave_edomain=„$1” nu este o gazdă sau domeniu valabil
 msave_edup=Rutarea domeniului pentru „$1” este deja definită
+
 mdelete_err=Nu a reușit să ștergi routerul de domeniu
 mdelete_ecannot=Nu aveți voie să ștergeți ruta pentru $1 
+
 generics_title=Adrese de ieșire
 generics_cannot=Nu aveți voie să editați adresa de ieșire
 generics_econfig=Fișierul dvs. de configurare sendmail nu are directiva necesară pentru maparea adreselor.
@@ -278,11 +298,13 @@ generics_return=lista de mapare a adreselor
 generics_toomany=Există prea multe adrese de ieșire pe sistemul dvs. pentru a fi afișate pe această pagină.
 generics_go=Găsiți adrese de ieșire potrivite:
 generics_delete=Ștergeți adresele selectate de ieșire
+
 gform_edit=Modificați maparea
 gform_create=Creați mapare
 gform_from=Poșta de la
 gform_to=Schimba in
 gform_ecannot=Nu aveți voie să editați această adresă de ieșire
+
 gsave_ecannot=Nu aveți voie să editați adresa de ieșire
 gsave_ecannot2=Nu aveți voie să editați această adresă de ieșire
 gsave_ecannot3=Nu aveți voie să salvați această adresă de ieșire
@@ -291,8 +313,10 @@ gsave_efrom=„$1” nu este valid din adresă
 gsave_ematch=Adresa de la nu se potrivește cu „$1”
 gsave_eto=„$1” nu este o adresă nouă validă
 gsave_ealready=Există deja o mapare a adreselor de ieșire pentru „$1”
+
 gdelete_err=Nu a reușit să ștergeți mapările adreselor de ieșire
 gdelete_ecannot=Nu aveți voie să ștergeți maparea pentru $1 
+
 cgs_title=Domenii de ieșire
 cgs_ecannot=Nu aveți voie să editați domenii care ies
 cgs_header=Domenii de adresă ieșite
@@ -300,6 +324,7 @@ cgs_desc=În afară de e-mailurile trimise de utilizatorii locali, sendmail va e
 cgs_err=Nu a reușit să salveze domeniile ieșite
 cgs_ehost=„$1” nu este o gazdă sau un nume de domeniu valabil
 cgs_eip=„$1” este o adresă IP, nu un domeniu
+
 domains_title=Cartografierea domeniilor
 domains_ecannot=Nu aveți voie să editați maparea domeniilor
 domains_econfig=Fișierul dvs. de configurare sendmail nu are directiva necesară pentru maparea domeniilor.
@@ -310,17 +335,21 @@ domains_from=Din domeniu ..
 domains_to=În domeniu ..
 domains_return=lista de mapare a domeniilor
 domains_delete=Ștergeți mapări ale domeniului selectate
+
 dform_edit=Modificați maparea
 dform_create=Creați mapare
 dform_from=Din domeniu
 dform_to=Pentru domeniu
 dform_ecannot=Nu aveți voie să editați maparea domeniilor
+
 dsave_ecannot=Nu aveți voie să editați maparea domeniilor
 dsave_err=Nu a reușit să salvați maparea domeniului
 dsave_edomain=„$1” nu este un nume de domeniu valid
 dsave_ealready=Există deja o mapare a domeniului pentru „$1”
+
 ddelete_err=Nu a reușit să ștergi mapările de domeniu
 ddelete_ecannot=Nu aveți voie să ștergeți maparea pentru $1 
+
 access_title=Control Spam
 access_ecannot=Nu aveți voie să configurați controlul spam
 access_efeature=Configurația dvs. de e-mail nu are funcția de control spam (<tt>access_db</tt>) activată. <a href='$1'>Faceți clic aici</a> pentru a configura funcțiile sendmail.
@@ -333,6 +362,7 @@ access_return=lista de control spam
 access_toomany=Există prea multe reguli de control al spamului pe sistemul dvs. pentru a fi afișate pe această pagină.
 access_go=Găsiți potrivirea regulilor de control al spamului:
 access_delete=Ștergeți regulile de control al spamului selectate
+
 sform_edit=Editați regula de control al spamului
 sform_create=Creați o regulă de control spam
 sform_source=Sursa de mail
@@ -354,6 +384,7 @@ sform_discard=Aruncați în tăcere
 sform_err=Cod de eroare
 sform_msg=Mesaj
 sform_ecannot=Nu aveți voie să modificați această regulă de control al spamului
+
 ssave_err=Nu a reușit să salvați regula de control al spamului
 ssave_etype0=„$1” nu este o adresă validă
 ssave_etype1=„$1” nu este o adresă de rețea validă
@@ -362,8 +393,10 @@ ssave_etype3=„$1” nu este un domeniu valid
 ssave_ecode=„$1” nu este un cod de eroare SMTP valid
 ssave_ealready=Există deja o regulă de control al spamului pentru „$1”
 ssave_ecannot2=Nu aveți voie să salvați această regulă de control al spamului
+
 sdelete_err=Nu a reușit să ștergi regulile de control al spamului
 sdelete_ecannot=Nu aveți voie să ștergeți regula pentru $1 
+
 relay_title=Domenii de releu
 relay_ecannot=Nu aveți voie să editați domenii releu
 relay_eversion=Doar versiunile send9 8.9 și versiuni superioare acceptă caracteristica domeniilor de releu.
@@ -372,6 +405,7 @@ relay_desc1=Cu excepția cazului în care sunt permise de regulile <a href='$1'>
 relay_desc2=Dacă sistemul dvs. servește ca o poartă de acces pentru mai multe domenii care nu sunt direct accesibile din afara rețelei dvs. (folosind funcția <a href='$1'>rutare de domenii</a>), atunci toate aceste domenii ar trebui să fie enumerate aici.
 relay_err=Nu a reușit să salveze domeniile releului
 relay_edomain=„$1” nu este un nume de domeniu valid
+
 mailq_title=Coadă de e-mail
 mailq_count=$1 Mesaje
 mailq_ecannot=Nu aveți voie să vizualizați coada de mail
@@ -401,12 +435,15 @@ mailq_search=Găsiți mesaje în coadă unde
 mailq_quar=aflat în carantină
 mailq_refresh=Actualizează coada de e-mail
 mailq_refreshdesc=Reîncărcați această pagină pentru a afișa starea curentă a cozii de e-mail.
+
 flushq_title=Coada de spălare
 flushq_desc=Forțarea încercării de livrare a tuturor mesajelor cu comanda $1 ..
 flushq_desc2=Forțarea încercării de livrare a mesajelor selectate $1 ..
 flushq_ecannot=Nu aveți voie să curățați coada de e-mail
+
 searchq_title=Rezultate căutare coadă
 searchq_none=Nu s-au găsit mesaje în coadă.
+
 delq_err=Nu a reușit să ștergi mesajul
 delq_ecannot=Nu aveți voie să eliminați mesaje
 delq_locked=În prezent, fișierul este blocat pentru a fi trimis
@@ -422,6 +459,7 @@ delq_force=Forțează ștergerea oricum
 delq_ecannot2=nu puteți șterge acest mesaj
 delq_rusure=Sigur doriți să ștergeți mesajele selectate la coada selectate $1 ?
 delq_confirm=Ștergeți mesajele
+
 boxes_title=Căsuțe poștale pentru utilizator
 boxes_user=Utilizator
 boxes_size=Dimensiunea căsuței poștale
@@ -431,6 +469,7 @@ boxes_sent=E-mail trimis
 boxes_ecannot=Nu aveți voie să citiți e-mailuri
 boxes_toomany=Există prea mulți utilizatori pe sistemul dvs. pentru a lista toate căsuțele poștale.
 boxes_go=Vizualizare e-mail pentru utilizator:
+
 mail_title=E-mail utilizator
 mail_from=Din
 mail_date=Data
@@ -471,6 +510,7 @@ mail_move=Treceți la:
 mail_copy=Copiaza in:
 mail_rfc=Din linie
 mail_eexists=Mesajul nu mai există!
+
 view_title=Citiți e-mail
 view_desc=Mesaj $1 în $2 
 view_desc2=Mesaj $1 pentru utilizator $2 
@@ -501,6 +541,7 @@ view_egone=Acest mesaj nu mai există
 view_afile=Numele atașamentului
 view_atype=Tip atașament
 view_asize=Mărime fișier
+
 compose_title=Scrie un email
 reply_title=Răspundeți la e-mail
 forward_title=Redirecționare email
@@ -512,6 +553,7 @@ reply_attach2=Fișiere atașate client și server
 reply_send=Trimite e-mail
 reply_ecannot=Nu aveți voie să trimiteți e-mail ca utilizator
 reply_body=Mesaj text
+
 send_err=Eroare la trimiterea e-mailului
 send_eto=Lipsește adresa
 send_efrom=Lipsește de la adresa
@@ -524,6 +566,7 @@ send_eattach=Fișierele atașate nu pot totaliza mai mult de $1 kB.
 send_eperms=Utilizatorul $1 nu poate citi $2 
 send_eperms2=Nu aveți voie să trimiteți fișierul $1 
 send_epath=Sendmail executabil $1 nu există.
+
 delete_title=Ștergeți e-mail
 delete_rusure=Sigur doriți să ștergeți mesajele selectate $1 din $2 ? Este posibil să dureze ceva timp pentru un fișier de mail mare. Până la terminarea ștergerii, nu trebuie efectuată nicio altă acțiune.
 delete_rusure2=Sigur doriți să ștergeți acest mesaj din $1 ? Este posibil să dureze ceva timp pentru un fișier de mail mare. Până la terminarea ștergerii, nu trebuie efectuată nicio altă acțiune.
@@ -536,6 +579,7 @@ delete_emoveuser=Utilizatorul pentru a muta e-mailul nu există
 delete_emovecannot=Nu aveți voie să mutați e-mailul către utilizatorul specificat
 delete_emovenone=Nu a fost selectat niciun e-mail pentru a se muta
 delete_nobutton=Nu a apăsat niciun buton
+
 search_title=rezultatele cautarii
 search_ecannot=Nu aveți voie să căutați pe e-mailul acestui utilizator
 search_ematch=Trebuie să introduceți text pentru a se potrivi cu.
@@ -549,6 +593,7 @@ search_results4=$1 mesaje de corespondență care se potrivesc căutării dvs.
 search_local=În dosarele locale
 search_all=În toate dosarele
 search_eboolean=Căutările booleane folosind atât „cât”, cât și „sau” nu sunt acceptate
+
 file_title=Editați fișierul Sendmail
 file_desc=Utilizați caseta de text de mai jos pentru a edita manual fișierul Sendmail $1.
 file_undo=Anulează modificările
@@ -564,6 +609,7 @@ file_emode=Mod necunoscut!
 file_err=Eroare la editarea fișierului
 file_ealias=Format nevalid pentru linia de fișiere alias : $1 
 file_etab=Format nevalid pentru linia de fișier hartă : $1 
+
 acl_opts=Pot edita opțiunile sendmail?
 acl_ports=Poate edita porturile de rețea?
 acl_cws=Poate edita domenii locale?
@@ -630,6 +676,7 @@ acl_usersm=Se potrivesc utilizatorii
 acl_asame=La fel ca numele de utilizator
 acl_usersu=Cu UID în rază de acțiune
 acl_spam=Adresele de control spam pot fi editate de acest utilizator
+
 log_opts=Opțiuni modificate pentru email
 log_ports=Schimbă porturile de rețea
 log_alias_create=Alias creat 1
@@ -680,6 +727,7 @@ log_delete_domains=Mapări de domeniu $1 șterse
 log_delete_accesses=Înregistrări șterse de control spam $1
 log_delete_generics=Adrese de ieșire $1 șterse
 log_delete_mailers=Rute de domeniu $1 șterse
+
 match_from=Din: meciuri
 match_subject=Subiect: meciuri
 match_to=Către: meciuri
@@ -699,6 +747,7 @@ match_!status=Starea nu se potrivește
 match_!body=Corpul nu se potrivește
 match_!size=Dimensiunea este mai mică decât
 match_!headers=Anteturile nu se potrivesc
+
 features_title=Configurare Sendmail M4
 features_desc=Această pagină listează intrările relevante din fișierul de configurare Sendmail M4 $1, din care este construit fișierul de configurare real $2.
 features_type=Tipul de intrare
@@ -718,6 +767,7 @@ features_efeatures=Directorul de bază de configurare Sendmail M4 $2 nu a fost g
 features_econfig=Locațiile directorului de bază Sendmail M4 și fișierul de configurare M4 nu au fost încă setate în configurația modulului <a href='$1'></a>. Dacă ați instalat Sendmail de la sursă, acestea ar trebui să se afle în directorul sursă original.
 features_move=Mișcare
 features_manual=Editați fișierul manual
+
 feature_add=Adăugați intrare de configurare
 feature_edit=Editează intrarea de configurare
 feature_header=Detalii de intrare a configurației M4
@@ -738,12 +788,15 @@ feature_emailer=Mailerul $1 există deja
 feature_eostype=Tipul de sistem de operare este deja definit ca $1 
 feature_manual=Editați fișierul M4
 feature_mdesc=Pagina vă permite să editați manual fișierul de configurare Sendmail M4 $1. Aveți grijă, deoarece nu se va face verificarea sintaxei la modificările dvs.
+
 feat_access_db=Fișier de control spam
 feat_virtusertable=Adresare
 feat_mailertable=Routing de domenii
 feat_genericstable=Adrese de ieșire
 feat_domaintable=Cartografierea domeniilor
+
 mailer_local=Livrare locală Unix
+
 build_title=Reconstruiți configurația Sendmail
 build_em4=Comanda $1 necesară pentru reconstruirea fișierului de configurare Sendmail nu a fost găsită în sistemul dvs.
 build_ebuild=Configurația nu a reușit : $1 
@@ -752,13 +805,16 @@ build_rusure2=Rețineți că dacă ați făcut modificări la Sendmail în pagin
 build_ok=Da, înlocuiți-l acum
 build_diff=Următoarele modificări vor fi făcute în fișierul dvs. de configurare Sendmail ..
 build_nodiff=Fișierul dvs. de configurare sendmail este deja actualizat.
+
 stop_err=Nu a reușit să oprească sendmail-ul
 stop_ecannot=Nu aveți voie să opriți sendmail
 stop_epid=Sendmail nu pare să fie executat
 restart_epids=Nu s-au putut găsi procese de trimitere
 restart_ekill=Nu a reușit să semnalizeze procesele de trimitere : $1 
+
 start_err=Eșecul la pornirea sendmail-ului
 start_ecannot=Nu aveți voie să începeți sendmail
+
 ports_title=Porturi de rețea
 ports_name=Numele portului
 ports_addr=Ascultă pe adresă

@@ -16,6 +16,7 @@ index_cmd=Spustit příkaz $1
 index_remote=Připojit se k hostovi $1
 index_rport=Připojit se na port $1
 index_version=STunel verze $1
+
 edit_title=Editace SSL tunelu
 create_title=Vytvoření SSL tunelu
 edit_header1=Nastavení zdroje tunelu
@@ -42,6 +43,7 @@ edit_tcpw=Název TCP-wrappers
 edit_auto=Automaticky
 edit_iface=Odchozí adresa zdroje
 edit_type=Spustit z
+
 save_err=Chyba při ukládání SSL tunelu
 save_enclash=Název služby $2 je již použit na portu $1.
 save_einetd=Již je používána inetd služba s názvem $1.
@@ -56,6 +58,7 @@ save_etcpw=Chybějící nebo nesprávný název TCP-wrappers
 save_eiface=Chybějící nebo nesprávná odchozí adresa zdroje
 save_exinetd=Již je používána xinetd služba s názvem $1.
 save_export=Port $1 je již používán xinetd službou $2
+
 log_apply=Aplikovány změny
 log_create=Vytvořen SSL tunel $1
 log_delete=Smazán SSL tunel $1

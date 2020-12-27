@@ -5,6 +5,7 @@ index_user=Ibdel il-password għall-utent:
 index_euseradmin=Dan il-modulu ma jistax jintuża minħabba li l-modulu Utenti u Gruppi mhuwiex installat jew mhux sostnut fis-sistema tiegħek.
 index_toomany=Hemm wisq utenti biex juru fis-sistema tiegħek. Daħħal l-isem ta 'l-utent li l-password li trid tinbidel hawn taħt ..
 index_none=M'għandekx aċċess għal xi utenti biex tbiddel il-passwords tagħhom.
+
 passwd_title=Biddel il-password
 passwd_header=Nibdlu l-password tal-utent Unix
 passwd_for=Nibdlu password għal
@@ -23,7 +24,9 @@ passwd_erepeat=Passwords ġodda mhumiex l-istess
 passwd_ecmd=$1 falla : $2 
 passwd_ok=Il-password għall-utent $1 inbidlet b'suċċess. Jekk dan hu l-utent tal-Webmin attwali tiegħek, tista 'tkun imġiegħel terġa' tidħol.
 passwd_ok2=Il-password għall-utent $1 inbidlet b'suċċess.
+
 log_passwd=Password mibdula għall-utent $1 
+
 acl_repeat=Għandek terġa 'tidħol password ġdida?
 acl_self=Dejjem ħalli l-password proprja tinbidel?
 acl_old=Trid tidħol password qadima?

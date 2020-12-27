@@ -1,4 +1,5 @@
 session_eredis=Fehlende oder deaktivierte Redis-Erweiterung
+
 log_safe=Die Optionen für den abgesicherten Modus wurden in $1 geändert
 log_limits=Geänderte Ressourcenlimits in $1 
 log_errors=Die Fehlerprotokollierung in $1 wurde geändert

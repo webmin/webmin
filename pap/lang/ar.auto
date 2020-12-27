@@ -14,10 +14,12 @@ index_apply=تطبيق
 index_return=مؤشر PPP
 index_none=ليس لديك حق الوصول إلى أي من ميزات هذه الوحدة.
 index_delete=حذف الحسابات المحددة
+
 secrets_title=حسابات PPP
 secrets_return=فهرس
 secrets_none=لم يتم إنشاء حسابات PPP حتى الآن.
 secrets_ecannot=لا يسمح لك بتحرير حسابات PPP
+
 edit_secret_etitle=تحرير حساب PPP
 edit_secret_ctitle=إنشاء حساب PPP
 edit_secret_acc=حساب PPP
@@ -37,8 +39,10 @@ edit_secret_alist=القائمه المتاحه ..
 edit_secret_save=حفظ
 edit_secret_del=حذف
 edit_secret_return=قائمة الحسابات
+
 save_secret_esave=فشل في حفظ الحساب
 save_secret_enoip=إن '$1' ليس عنوانًا صالحًا
+
 log_create=إنشاء حساب PPP$1
 log_modify=حساب PPP المعدل$1
 log_delete=حساب PPP المحذوف$1
@@ -54,6 +58,7 @@ log_dialin_move=تم نقل رقم معرف المتصل$1
 log_mgetty_create=تم إنشاء المنفذ التسلسلي$1
 log_mgetty_modify=منفذ تسلسلي معدل$1
 log_mgetty_delete=تم حذف المنفذ التسلسلي$1
+
 options_title=خيارات PPP
 options_serial=للمنفذ التسلسلي$1
 options_dev=للجهاز$1
@@ -84,6 +89,7 @@ options_idle=وقت الخمول قبل قطع الاتصال
 options_idle_def=أبدا
 options_eidle=وقت خمول مفقود أو غير صالح
 options_ecannot=لا يسمح لك بتحرير خيارات PPP
+
 mgetty_title=تكوين المنفذ التسلسلي
 mgetty_ecmd=لم يتم العثور على الأمر$1 على نظامك. هذا البرنامج مطلوب للتعامل مع عمليات تسجيل الدخول إلى المنفذ التسلسلي عبر المودم أو الاتصال المباشر.
 mgetty_desc=لكي يسمح الخادم الخاص بك بتسجيل الدخول على منفذ تسلسلي عبر مودم أو اتصال مباشر ، يجب أن يتم سرده أدناه. عند إضافة منفذ إلى هذه القائمة ، سيتم تكوين برنامج$1 للرد على اتصالات المودم وعرض مطالبة تسجيل الدخول.
@@ -125,6 +131,7 @@ mgetty_apply=تطبيق التكوين
 mgetty_applydesc=انقر فوق هذا الزر لتطبيق تكوين المنفذ التسلسلي الحالي عن طريق تشغيل الأمر$1 وقتل كافة عمليات Mgetty.
 mgetty_applyerr=فشل في تطبيق التكوين
 mgetty_ecannot=لا يسمح لك بتحرير تكوينات المنفذ التسلسلي
+
 dialin_title=الوصول إلى معرف المتصل
 dialin_desc=تتيح لك هذه الصفحة تكوين Mgetty للسماح بالوصول إلى الاتصال الهاتفي أو رفضه بناءً على رقم هاتف المتصل. عند ورود مكالمة ، سيحدد الإدخال الأول في القائمة المطابق لرقم الهاتف ما إذا كانت المكالمة مقبولة أم لا.
 dialin_efile=لم يتم العثور على ملف التحكم بالوصول إلى معرف المتصل$1 على نظامك. ربما لم يتم تثبيت Mgetty ، أو أن <a href='$2'>تهيئة الوحدة النمطية</a> غير صحيحة.
@@ -145,9 +152,12 @@ dialin_move=نقل
 dialin_err=فشل في حفظ رقم معرف المتصل
 dialin_enumber=رقم الهاتف مفقود أو غير صالح
 dialin_ecannot=لا يسمح لك بتحرير وصول معرف المتصل
+
 acl_pages=الصفحات المتاحة
 acl_direct=انتقل مباشرة إلى صفحة واحدة؟
+
 sync_ecannot=غير مسموح لك بتحرير خيارات مزامنة unix-ppp
 sync_title=تزامن المستخدم
+
 delete_err=فشل حذف الحسابات
 delete_enone=لم يتم تحديد شيء

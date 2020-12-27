@@ -21,13 +21,16 @@ inittab_ctrlaltdel=暖開機 (Ctrl-Alt-Del)
 inittab_kbdrequest=特殊鍵組合
 inittab_kbrequest=特殊鍵組合
 inittab_return=inittab 索引
+
 edit_inittab_err=您不被允許編輯一個程序
 edit_inittab_title=編輯程序 $1
 edit_inittab_details=程序詳細資料
 edit_inittab_del=刪除
 edit_inittab_save=儲存
+
 new_inittab_err=您不被允許建立一個新程序
 new_inittab_title=新程序
+
 save_inittab_err=您不被允許儲存一個程序
 save_inittab_noid=錯誤, 沒有輸入程序名稱
 save_inittab_already=錯誤, 程序名稱已經存在

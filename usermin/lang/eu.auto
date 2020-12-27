@@ -16,11 +16,14 @@ index_esame=<1 href='$2'>moduluaren konfigurazioa</1> orrialdean $1 konfiguratut
 index_eroot=Usermin konfigurazioaren $1 direktorioa existitzen da, baina aipatzen duen programa $2 direktorio berria ez du! Usermin eskuz deskargatu eta berriro instalatu beharko zenuke.
 index_restart=Berrabiarazi Erabiltzailea
 index_restartmsg=Egin klik botoi honetan Usermin zerbitzariaren prozesua berriro hasteko. Hori beharrezkoa izan daiteke Perl berriki berritu baduzu.
+
 access_title=IP Sarbide Kontrola
 access_desc=Erabiltzaile zerbitzaria konfiguratu daiteke formulario hau erabiliz IP helbide jakin batzuetatik sarbidea ukatzeko edo baimentzeko. Ostalari izenak (foo.bar.com bezalakoak) eta IP sareak (10.254.3.0 edo 10.254.1.0/255.255.255.128 edo 10.254.1.0/25 edo 10.254.1.5-10.254.97.127) ere sar daitezke. Zure zerbitzariaren sarbidea konfiantzazko helbideetara mugatu beharko zenuke, batez ere Internetetik eskuragarri badago. Bestela, zure pasahitza asmatzen duen edonork zure sistemaren kontrol osoa izango du.
+
 bind_title=Portuak eta helbideak
 bind_desc2=Inprimaki hau Usermin-ek entzuten duen ataka zenbakia aldatzeko erabil daiteke edo zure sisteman IP helbide bakar batetan entzun ahal izateko. Hainbat portutan konexioak onartzeko edo IP helbideetan entzuteko ere konfigura dezakezu. Oharra: zure web-arakatzaileak berriro saioa hasteko eskatu dezake portua edo loteslearen helbidea aldatu ondoren.
 bind_erestart=Errorea gertatu da Usermin helbide berriarekin eta ataka ezarpenekin hasita : $1 
+
 mods_title=Usermin moduluak
 umods_title=Usermin moduluak
 mods_desc1=Erabiltzaile-moduluak instalatu ondoren gehitu daitezke inprimakia eskuinean erabiliz. Moduluak normalean <tt>.wbm</tt> fitxategietan banatzen dira, eta bakoitzak modulu bat edo gehiago eduki ditzake. Moduluak RPM fitxategietatik ere instala daitezke zure sistema eragileak onartzen badu.
@@ -41,15 +44,18 @@ mods_desc3=Existitzen diren moduluak beheko formularioa erabiliz ezaba daitezke.
 mods_delete=Ezabatu moduluak
 mods_deleteok=Ezabatu hautatutako moduluak
 mods_desc4=Instalatutako moduluak wbm.gz fitxategi gisa esportatu daitezke beheko formularioa erabiliz. Moduluko fitxategia Usermin erabiltzen duen beste sistema batean instala daiteke.
+
 os_title=Sistema Eragilea eta Ingurumena
 os_desc3=Orrialde honetan Usermin-ek atzematen duen sistema eragilea hautatzen du eta une honetan detektatzen den sistema. Ezberdinak badira, aukeratu dezakezu Usermin-en OS informazioa eguneratua izatea, eta hori beharrezkoa izan daiteke berriki berritu baduzu.
 os_desc2=Programak exekutatzean Usermin-ek erabiltzen duen bilaketa bidea alda dezakezu eta liburutegi partekatutako bidea edozein programetara pasatu.
 os_usermin=Sistema eragilea Usermin-en arabera
 os_iusermin=Usermin-ek erabiltzen duen barne sistema OS kodea
 os_update=Eguneratu Usermin detektatutako sistema operatiboa erabiltzeko
+
 lang_title=Hizkuntza
 lang_title2=Usermin Language
 lang_intro=Orrialde honek izenburuak, galderak eta mezuak bistaratzeko zein hizkuntza erabiliko duen aukeratu dezakezu
+
 session_title=Autentifikazioa
 session_desc1=Gaituta egonez gero, pasahitzen denbora tarteak zure Usermin zerbitzaria babestu egiten du pasahitzak gordetzeko eraso bruteen aurkako erasoetatik, erabiltzaile berarentzako saiakera huts egin duen bakoitzean etengabe zabaltzen den atzerapena gehituz.
 session_desc2=Saioaren autentikazioa gaituta dagoenean, saioa hasteko erabiltzaileen saio bakoitza Usermin-ek kontrolatuko du, erabiltzaileen inaktiboari automatikoki saioa ematea ahalbidetuz. Kontutan izan saioa autentikatzea gaituta edo desgaituta erabiltzaile guztiek berriro saioa egitera behartu dezaketela.
@@ -73,6 +79,7 @@ session_blank=Pasahitz hutsak dituzten erabiltzaileei hasierako saioa hastea esk
 session_homedir=Sortu hasierako direktorio falta falta?
 session_homedir_perms=Direktorio berriaren baimenak
 session_ehomedir_perms=Falta diren edo zortzi etxeko direktorioen baimenak falta dira
+
 themes_title=Usermin Gaiak
 themes_desc=Gaiak Usermin erabiltzailearen interfazearen itxura kontrolatzen du, ikonoak, koloreak, atzeko planoak eta, agian, orrien diseinua. Beheko hautatutako laukia zure sisteman instalatutako gaietako bat erabil dezakezu Usermin erabiltzaileentzat lehenetsia izango dena.
 themes_sel=Oraingo gaia :
@@ -101,7 +108,9 @@ themes_eirpm=RPM instalazioak huts egin du : $1
 themes_ok=Gaia aldatu egin da... Webmin aurkibidearen orrialdera birbideratzea.
 themes_delete=Inprimaki hau erabiltzen ari ez den sisteman instalatutako gairen bat ezabatzeko erabil daiteke.
 themes_delok=Ezabatu beharreko gaia :
+
 themes_desc4=Instalatutako gaiak wbt.gz fitxategi gisa esportatu daitezke beheko formularioa erabiliz. Gaiaren fitxategia Usermin erabiltzen duen beste sistema batean instala daiteke.
+
 configs_ecannot=Ezin duzu modulu hau konfiguratu
 configs_title=Usermin moduluaren konfigurazioa
 configs_header=Modulu konfiguragarriak
@@ -115,8 +124,10 @@ configs_global=Moduluen konfigurazio globala
 configs_globaldesc=Inprimaki honen ezarpenak moduluko erabiltzaile guztiei aplikatzen zaizkie eta, oro har, erabiltzen dituen programa eta fitxategiei lotutako aukerak ezartzen ditu.
 configs_user=Erabiltzaileen hobespen lehenetsiak
 configs_userdesc=Inprimaki honen ezarpenak modulu honetarako erabiltzailearen lehentasunen lehenetsiak definitzen dira. Bestela zehaztu ezean, erabiltzaile banakakoek gehiegizkoa izan dezakete.
+
 acl_title=Eskuragarri dauden moduluak
 acl_desc=Erabil ezazu orrialde hau Usermin moduluak instalatutako erabiltzaileek ikusgai dauden aukeratzeko.
+
 ssl_title=SSL enkriptatzea
 ssl_desc1=Usermin exekutatzen ari den ostalariak SSLeay Perl modulua instalatuta duela dirudi. Hau erabiliz, Usermin-ek SSL enkriptatutako komunikazioa onartzen du zure arakatzailearen eta zerbitzariaren artean. Erabiltzaileak zure Usermin zerbitzaria Internet bidez sartzen ari bazara, behin betiko kontuan hartu beharko zenuke SSL erabiltzea erasotzaileek euren pasahitzak harrapatzea ekiditeko.
 ssl_desc2=Abisua - SSL laguntza soilik aktibatu SSL onartzen duen arakatzailea baldin baduzu, eta ez dago <tt>https</tt> eskaerak blokeatzen zure arakatzailearen eta Usermin ostalariaren artean eskaerak blokeatzeko.
@@ -125,18 +136,23 @@ ssl_hole=Gaur egun denek eskura dezaketen Usermin SSL gako lehenetsia erabiltzen
 ssl_savekey=Inprimaki honek lehendik dagoen PEM formatuko SSL gako pribatua eta ziurtagiria kargatu ditzakezu Usermin zerbitzariak erabil dezan.
 ssl_copycert=Kopiatu ziurtagiria Webminetik
 ssl_copycertdesc=Kopiatu SSL ziurtagiria, gako pribatua, CA cert eta Webmin-ek erabiltzen dituen bestelako ezarpenak.
+
 ca_email=Posta elektroniko helbidea
 ca_ou=Sail
 ca_o=Erakundea
 ca_sp=Estatu
 ca_c=Herrialde kodea
+
 newkey_ok=Erabiltzailearentzako SSL gakoa ondo sortu da.
+
 stop_err=Ezin izan da Usermin gelditu
 stop_ekill=Huts egin du prozesua hiltzean : $1 
 stop_efile=Dagoeneko gelditu da
 stop_ecannot=Ez duzu baimenik Usermin uzteko
+
 start_err=Huts egin du Usermin abiaraztean
 start_ecannot=Ez duzu baimenik Usermin erabiltzen hasteko
+
 users_title=Erabiltzaile eta taldeak baimenduta
 users_desc=Usermin konfigura daiteke, horrelako unix erabiltzaileak eta taldeak sartzeko baimena eman dezaten, formulario hau erabiliz. Unix talde bateko kide nagusiak zehazteko, sartu <tt>@groupname</tt> zerrendan.
 users_desc2=UID sorta batekin bat egiteko, sartu <tt>start-end</tt>, <tt>start-</tt> edo <tt>-end</tt> zerrendan.
@@ -150,10 +166,12 @@ users_euser='$1' ez da baliozko erabiltzaile izena
 users_egroup='$1' ez da baliozko taldearen izena
 users_shells=Ukatu erabiltzaileei zein maskorrik ez dauden fitxategian
 users_eshells=Falta diren edo ez dauden shells fitxategia
+
 defacl_title=Sarbide-kontrolerako aukerak
 defacl_desc=Orrialde honek Usermin moduluei eta erabiltzaileei aplikatzen zaizkien sarbide-kontrolak konfiguratzeko aukera ematen du. Aukera hauek Web ACL erabiltzaileen moduluko erabiltzaile bakoitzeko ACL Globalaren antzekoak dira.
 defacl_header=Erabiltzaileen erabiltzaileentzako sarbide-kontrol aukerak
 defacl_err=Ezin izan da sarbidea kontrolatzeko aukerak gordetzea
+
 install_err1=Ezin izan da $1 modulua instalatu
 install_efile=Fitxategia ez da existitzen
 install_err2=Ezin izan da kargatutako modulua instalatu
@@ -180,6 +198,7 @@ install_erpm=Ez da Usermin modulua edo gaia RPM
 install_eirpm=RPM instalazioak huts egin du : $1 
 install_cat=$1 kategorian.
 install_eneither=RPM ez du usermin modulu edo gairik
+
 delete_err=Ezin izan da moduluak ezabatu
 delete_edep=$1 modulua ezin da ezabatu, $2 modulua haren araberakoa baita
 delete_desc1=$1 ($2 klona)
@@ -189,6 +208,7 @@ delete_msg=Ondorengo moduluak behar bezala ezabatu dira zure Usermin instalazioa
 delete_rusure=Ziur zaude $2 modulua (k) ezabatu nahi duzula? $1 kB fitxategiak betiko ezabatuko dira.
 delete_rusure2=Ziur $2 gaia ezabatu nahi duzula? $1 kB fitxategiak betiko ezabatuko dira.
 delete_enone=Ez da modulurik hautatu
+
 ui_title=Erabiltzaile interfazea
 ui_desc=Inprimaki honek Usermin modulu guztiek erabilitako erabiltzailearen interfazearen aukerak editatzeko aukera ematen du.
 ui_header=Erabiltzailearen interfazearen aukerak
@@ -230,6 +250,7 @@ ui_hnm1=Ostalariaren izena URL-tik
 ui_hnm2=Domeinu izena URL batetik
 ui_hnm3=Beste izen bat ..
 ui_tabs=Moduluak sailkatu?
+
 upgrade_title=Erabiltzailearen bertsioa berritu
 upgrade_title2=Instalatu Usermin
 upgrade_desc=Inprimaki honek zure Usermin instalazio osoa bertsio berrira berritzeko aukera ematen du. Tokiko fitxategietatik, kargatutako fitxategitik edo azken bertsiotik instala dezakezu <a href=http://www.usermin.com/>www.usermin.com</a>. Eskuzko berritzearekin gertatzen den bezala, zure konfigurazioko ezarpen guztiak eta hirugarrenen moduluak mantenduko dira.
@@ -263,6 +284,7 @@ upgrade_done=.. bertsio berritzea.
 upgrade_failed=.. bertsio berritzea huts egin du!
 upgrade_updates=Erabiltzailearen bertsio berri honetarako $1 eguneratze daude. <a href='$2'>Egin klik hemen</a> orain deskargatu eta instalatzeko automatikoki.
 upgrade_eupdates=Ezin izan da eguneratzeen zerrenda deskargatu : $1 
+
 update_desc1=Inprimaki honek <a href=http://www.usermin.com/uupdates.html>Usermin eguneratzeak</a> orrialdetik akatsak edo segurtasun zuloak aurkitu dituzten Usermin moduluak berritzea ahalbidetzen du. Honek gaur egun instalatutako moduluak eguneratzeko erabilgarri daudenekin alderatuko ditu eta, aukeran, zaharkituta dauden modulu guztiak deskargatu eta instalatuko ditu.
 update_header1=Eguneratu moduluak orain
 update_header2=Eguneratu moduluak ordutegian
@@ -279,10 +301,12 @@ update_sched=Eguneratu moduluak $1 : 00 bakoitzean $2 egun bakoitzean
 update_none=Ez dago Usermin eguneratzeik bertsio honetarako.
 update_failed=Ezin izan da modulua instalatu : $1 
 update_desc2=Inprimaki hau <a href=http://www.usermin.com/uupdates.html>Usermin Eguneratzeak</a> orritik edo beste iturri batetik akatsak edo segurtasun zuloak dituzten Usermin moduluen eguneratze automatikoa programatzeko da. Zerbitzua erabilgarria den bitartean, kontuz ibili beharko zenuke erasoei erasotzaileei zure sistema har dezaten eguneratze zerbitzaria arriskuan jarriko balitz.
+
 assignment_title=Moduluak berriro esleitu
 assignment_header=Moduluen kategoriako esleipenak
 assignment_ok=Kategoriak aldatu
 assignment_desc=Inprimaki honen bidez, modulu bakoitza zein den erakutsiko da Usermin index orrian.
+
 categories_title=Editatu Kategoriak
 categories_header=Kategoria IDa eta deskribapenak
 categories_desc=Inprimaki honi esker, lehendik dauden Usermin kategoriak berrizendatu eta beste batzuk sor ditzakezu moduluak esleitzeko. Taularen goiko zatia inkorporatutako kategorien deskribapenak aldatzeko da, eta beheko zatia kategoriako identifikazio eta deskripzio berriak gehitzeko da.
@@ -292,6 +316,7 @@ categories_edesc=$1 deskribapena falta da
 categories_ecat=$1 kategoriako IDa dagoeneko hartu da
 categories_code=NAN
 categories_name=Bistaratutako deskribapena
+
 log_access=IP sarbide-kontrola aldatu da
 log_bind=Aldatutako portua eta helbidea
 log_log=Aldaketa erregistratzeko aukerak
@@ -327,6 +352,7 @@ log_restrict_create=$1 erako murrizketa sortu da
 log_restrict_modify=$1 murriztapen aldatua
 log_restrict_delete=$1 murrizketa ezabatu da
 log_restrict_move=Mugitu da $1 murrizketa
+
 log_all=erabiltzaile guztiak
 log_group=$1 taldea
 log_switch=$1 Usermin erabiltzailearekin aldatu da
@@ -334,6 +360,7 @@ log_logout=Auto-irteera aldaketak aldatu dira
 log_dav=DAV zerbitzariaren ezarpenak aldatu dira
 log_advanced=Aukera aurreratuak aldatu dira
 log_mobile=Gailu mugikorreko aukerak aldatu dira
+
 update_err=Huts egin du moduluak eguneratzean
 update_eurl=Eguneratzeko URL falta edo baliogabea
 update_title=Eguneratzeko moduluak
@@ -352,6 +379,7 @@ update_rv=$1 etik Erabiltzaile modulu eguneratuak kontsultatzea
 update_eemail=Helbide elektronikoa idatzi behar duzu eguneratuko litzatekeena soilik erakusten bada.
 update_subject=Usermin moduluak eguneratzeko txostena
 update_version=Deskargatzeko erabilgarri dago Usermin bertsio berria ($1 bertsioa). Etorkizuneko eguneratzeak azken bertsiorako soilik kaleratuko dira.
+
 restrict_title=Moduluen Murrizketak
 restrict_desc=Orrialde honen bidez, Usermin moduluak erabiltzaile eta talde desberdinen eskuragarri dauden kontrolatu ahal izango duzu. Zerrendako moduluen gehikuntza eta kenketa guztiak aplikatzen dira, eta ez erabiltzaile bakoitzarekin bat egiten duen lehena. <br><a href='$1'> eskuragarri dauden moduluak </a> orrian ez dira sekula erabilgarri egongo. erabiltzaileak, hemen hautatuta badaude ere.
 restrict_who=Usermin erabiltzailea
@@ -384,6 +412,7 @@ restrict_egroup=Talde izen falta edo baliogabea
 restrict_efile=Erabiltzaileen eta taldeen fitxategia falta da, ez dagoena edo ez den erabatekoa
 restrict_move=Mugitu
 bootup_ecannot=Ezin duzu abiarazi konfiguratu
+
 acl_icons=Baimendutako konfigurazio orriak
 acl_mods=Moduluak konfiguratu ditzake
 acl_all=Modulu guztiak
@@ -391,10 +420,12 @@ acl_sel=Jarraian hautatua ..
 acl_stop=Erabiltzailea geldiarazi eta hasi dezakezu?
 acl_bootup=Konfigura daiteke abiapuntuan hasita?
 acl_ecannot=Ez duzu orrialde hau erabiltzeko baimenik
+
 clone_err=Huts egin du modulua klonatzerakoan
 clone_elink=symlink huts egin du : $1 
 clone_ecopy=Ezin izan da konfigurazioa kopiatu : $1 
 clone_desc=$1 klona
+
 sessions_title=Uneko saioa
 sessions_desc=Egungo Usermin saioen hasierako saioak jarraian agertzen dira. Lehendik dagoen saio bat bertan behera uzteko eta erabiltzailea berriro saiatzera behartzeko, egin klik sesioaren IDan.
 sessions_id=Saioaren IDa
@@ -404,12 +435,15 @@ sessions_login=Saioa hasi da
 sessions_none=Momentuz ez dago erabiltzailerik saioa hasi Usermin.
 sessions_switch=Aldatu Usermin erabiltzailearekin:
 sessions_ok=Aldatu
+
 referers_title=Erreferente fidagarriak
 referers_desc=Orrialde honen bidez, Usermin-en zuzendaritza egiaztapenaren laguntza konfiguratu daiteke, erabiltzaileen arakatzaileak Userminekin gauza arriskutsuak egiten dituzten beste webgune batzuetako esteka kaltegarriak ekiditeko. Nolanahi ere, Usermin-ekin estekak baldin badituzu abisatu nahi ez dituzun webguneetatik beherako zerrendan gehitu beharko zenituzke.
+
 anon_title=Sarbide anonimoak
 anon_desc=Orrialde honek hautatutako Usermin modulu eta bideetara sartzeko aukera ematen du bezeroak hasi beharrik izan gabe. Jarraian sartzen duzun moduluko bide bakoitzerako (adibidez / komandoak edo / changepass) Unix erabiltzaile baten izena ere idatzi beharko duzu, haren baimenak modulura sartzeko erabiliko baitira.
 anon_user=Unix erabiltzailea
 anon_euser=Falta den Unix erabiltzailea edo 'baliogabea' URL bidearentzat.
+
 logout_title=Autonektatzeko denborak
 logout_desc=Orrialde hau Erabiltzaileen erabiltzaile desorekarako irteera denbora desberdinak konfiguratzeko erabil daiteke. Minutuak sartu behar dira minututan, eta zeroen denbora-tartea esan nahi du erabiltzaileekin bat datozen saioak ez direla sekula automatikoki itxiko.
 logout_type=Mota
@@ -424,6 +458,7 @@ logout_egroup=Talde falta edo baliogabea $1 errenkadan
 logout_efile=Fitxategia falta da edo ez dago $1 errenkadan
 logout_etime=$1 errenkadan denbora-muga falta edo baliogabea
 logout_ecannot=Ezin duzu saioa amaitu denbora konfiguratu
+
 dav_title=DAV zerbitzaria
 dav_header=DAV zerbitzariaren aukerak
 dav_path=DAV gaituta?
@@ -444,16 +479,22 @@ dav_users=DAV erabil dezaketen erabiltzaileak
 dav_users1=Erabiltzaile guztiak
 dav_users0=Jarraian agertzen diren erabiltzaileak eta taldeak.
 dav_eusers=Ez da erabiltzaileik sartu
+
 syslog_errorlog=Erabiltzaile errorearen erregistroa
+
 descs_title=Moduluen tituluak
 descs_info=Orrialde honek Usermin moduluen ordezko izenburuak zehazteko aukera ematen du, haien deskribapen estandarrak gainidazteko.
+
 advanced_title=Aukera aurreratuak
 advanced_pass=Pasahitza Erabiltzaileentzako programak eskuragarri jarri? <br><font size=-1> (Ez du funtzionatzen saioa autentifikazioa gaituta dagoenean) </font>
+
 blocked_title=Erabiltzaile eta erabiltzaile blokeatuak
 blocked_none=Momentu honetan ez dago ostalaririk edo erabiltzailerik erabiltzailerik
 blocked_user=Usermin erabiltzailea
 blocked_cleardesc=Egin klik botoi honetan uneko ostalari eta erabiltzaile bloke guztiak garbitzeko, Usermin zerbitzariaren prozesua berrabiaraziz.
+
 mobile_title=Gailu mugikorrerako aukerak
+
 copycert_err=Ezin izan da SSL ezarpenak Webminetik kopiatu
 copycert_essl=SSL ez dago gaituta
 copycert_ekeyfile=Ez da gako pribatuko fitxategirik ezarri Webmin-en

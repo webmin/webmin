@@ -19,10 +19,12 @@ index_samba=Samba?
 index_cyrus=IMAP?
 index_users=LDAP Gebruikers
 index_groups=LDAP Groepen
+
 imap_econn=Mislukt te verbinden met IMAP server $1
 imap_elogin=Mislukt in te loggen bij IMAP server $1 als $2 : $3
 conn_eldap_host=Er is geen LDAP client configuratie file gevonden op uw systeem, controleer of de LDAP server aangevinkt staat op de  Module Configuratie pagina.
 conn_elogin=Bind mislukt naar LDAP server $1 als $2 : $3
+
 uedit_cap=Gebruiker mogelijkheden
 uedit_samba=Samba login?
 uedit_cyrus=IMAP server login?
@@ -36,6 +38,7 @@ uedit_raw=LDAP Attributen
 uedit_return=Gebruiker details
 uedit_quota=IMAP quota
 uedit_unquota=Niet veranderen
+
 usave_eadd=Mislukt om gebruiker toe te voegen aan LDAP database : $1
 usave_emod=Mislukt om gebruiker te modificeren in LDAP database : $1
 usave_emoddn=Mislukt om gebruiker te hernoemen in LDAP database : $1
@@ -61,26 +64,33 @@ usave_eattrdupu=De gebruiker $1 gebruikt reeds de $2 $3
 usave_eattrdupg=De groep $1 gebruikt reeds de $2 $3
 usave_ereal=Ontbrekende echte naam
 usave_equota=Ontbrekende of ongeldige IMAP quota
+
 search_err=Zoeken naar $1 in $2 mislukt : $3
+
 gedit_dn=Groepen LDAP DN
 gedit_return=groep details
 gedit_cap=Groep mogelijkheden
 gedit_samba=Samba groep?
+
 gsave_egone=Groep bestaat niet langer!
 gsave_edelete=Mislukt om groep te verwijderen van LDAP database : $1
 gsave_eadd=Mislukt om groep toe te voegen aan LDAP database : $1
 gsave_emod=Mislukt om groep te modificeren in LDAP database : $1
 gsave_emoddn=Mislukt om groep te hernoemen in LDAP database : $1
+
 gdel_group=Verwijderen LDAP groep ingang ..
+
 udel_pass=Verwijderen LDAP gebruiker ingang ..
 udel_book=Verwijderen van adresboek ..
 udel_imap=Verwijderen IMAP folder ..
 udel_warnimap=De bestaande mail postbox zal gewist worden wanneer u de home directory verwijdert!
 udel_failed=.. mislukt! : $1
+
 raw_title=LDAP Attributen
 raw_name=Attributen naam
 raw_value=Waardes
 raw_for=Voor $1
+
 batch_samba=Maak Samba account voor nieuwe gebruiker?
 batch_descafter3=In <b>gemaakte</b> en <b>gemodificeerde</b> regels, is het optioneel om extra velden toe te voegen met LDAP atttributen in <i>naam</i>=<i>waarde</i> formaat, om dit toe te wijzen aan de nieuwe of gemodificeerde gebruiker.
 batch_eattr=Ongeldige LDAP attributen op regel $1 : $2

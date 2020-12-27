@@ -21,6 +21,7 @@ index_eversion=A versão do STunnel instalada no seu sistema é $1, mas este mó
 index_conf=Do arquivo de configuração $1 
 index_noconf=Nenhum arquivo de configuração!
 index_delete=Excluir túneis selecionados
+
 edit_title=Editar túnel SSL
 create_title=Criar túnel SSL
 edit_header1=Opções de fonte de túnel
@@ -47,6 +48,7 @@ edit_tcpw=Nome dos invólucros TCP
 edit_auto=Automático
 edit_iface=Endereço de origem de saída
 edit_type=Correr de
+
 save_err=Falha ao salvar o túnel SSL
 save_enclash=O nome do serviço $2 já está sendo usado na porta $1.
 save_einetd=Já existe um serviço inetd chamado $1.
@@ -61,6 +63,7 @@ save_etcpw=Nome de invólucros TCP ausente ou inválido
 save_eiface=Endereço de origem de saída ausente ou inválido
 save_exinetd=Já existe um serviço xinetd chamado $1 
 save_export=A porta $1 já está sendo usada pelo serviço xinetd $2 
+
 log_apply=Alterações aplicadas
 log_create=Túnel SSL criado $1 
 log_delete=Túnel SSL excluído $1 

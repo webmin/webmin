@@ -14,19 +14,25 @@ index_return=listy działań
 index_man=Ręcznie edytuj konfigurację
 index_mandesc=Bezpośrednia edycja pliku konfiguracji Procmail. Pozwala stworzyć własne reguły, zmienne i instrukcje warunkwe.
 index_delete=Usuń wybrane akcje
+
 edit_action=Tryb dostarczania
 edit_amode_0=Dołącz do pliku
 edit_amode_1=Zapisz do katalogu MH
 edit_amode_3=Przekieruj na adres
 edit_amode_6=Ustaw zmienną
+
 env_title1=Tworzenie zmiennej
 env_title2=Edycja zmiennej
 env_name=Nazwa zmiennej
 env_value=Wartość
+
 inc_inc=Załącz plik
 inc_einc=Nie wpisano pliku do załączenia
+
 config_eline=Nieznana linia $1 w $2 : $3
+
 delete_err=błąd usuwania
 delete_enone=Nic nie wybrano
+
 check_epostfix=Procmail nie jest włączony w twojej konfiguracji Postfix. W pliku konfiguracyjnym <tt>$2</tt> opcja  <tt>$1</tt> musi być ustawiona na <tt>$3</tt>.
 check_esendmail=Sendmail nie jest skonfigurowany, aby używać Procmail. Możesz to ustawić w module <a href='$1'>Sendmail - serwer e-mailowy</a>

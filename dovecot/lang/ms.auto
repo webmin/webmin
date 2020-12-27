@@ -11,11 +11,13 @@ index_boot=Mula boot?
 index_bootdesc=Tukar tetapan ini untuk mendayakan atau melumpuhkan memulakan pelayan Dovecot pada masa boot sistem.
 index_return=indeks modul
 index_version=Versi $1
+
 stop_err=Gagal menghentikan Dovecot
 stop_erunning=Tidak lagi berjalan
 start_err=Gagal memulakan Dovecot
 start_eprotos=Tiada protokol yang dipilih pada halaman <b>Rangkaian dan Protokol</b>
 apply_err=Gagal menggunakan konfigurasi
+
 net_title=Rangkaian dan Protokol
 net_header=Pilih rangkaian dan pilihan protokol e-mel
 net_protocols=Melayani protokol mel
@@ -42,8 +44,11 @@ net_eimaps_listen=Alamat IP tidak sah untuk sambungan IMAP SSL
 net_epop3s_listen=Alamat IP tidak sah untuk sambungan SSL POP3
 net_elisten=Alamat IP tidak sah untuk sambungan bukan SSL
 net_essl_listen=Alamat IP tidak sah untuk sambungan SSL
+
 imap_title=Pilihan IMAP
+
 pop3_title=Pilihan POP3
+
 ssl_title=Konfigurasi SSL
 ssl_header=Pilihan mod IMAP dan POP3 SSL
 ssl_key=Fail kunci peribadi SSL
@@ -61,7 +66,9 @@ ssl_ecert=Fail sijil yang hilang atau tidak wujud
 ssl_eca=Fail sijil CA klien yang hilang atau tidak wujud
 ssl_eregen=Tempoh regenerasi parameter yang hilang atau tidak angka
 ssl_epass=Kata laluan fail utama SSL tidak dimasukkan
+
 misc_title=Pilihan lain
+
 login_title=Pilihan Pengguna dan Masuk
 login_header=Pilihan pengesahan pengguna dan log masuk
 login_fuid=UID sah minimum
@@ -117,6 +124,7 @@ login_procs=Proses log masuk maksimum
 login_count=Proses log masuk awal
 login_eprocs=Bilangan proses log masuk yang hilang atau tidak sah
 login_ecount=Bilangan proses log masuk awal yang hilang atau tidak sah
+
 mail_title=Fail Mail
 mail_header=Lokasi mel dan pilihan bacaan
 mail_env=Lokasi fail mel
@@ -169,6 +177,7 @@ mail_eindexmode=Lokasi fail indeks tidak boleh ditetapkan apabila lokasi fail me
 mail_econtrolmode=Lokasi fail kawalan tidak boleh ditetapkan apabila lokasi fail mel dikesan secara automatik
 mail_eindex=Laluan mutlak hilang atau tidak sah untuk fail indeks
 mail_econtrol=Jalan mutlak hilang atau tidak sah untuk fail kawalan
+
 log_net=Rangkaian dan Protokol yang Berubah
 log_login=Pengguna Pengguna dan Pilihan Log Masuk
 log_mail=Fail Surat Berubah
@@ -179,6 +188,7 @@ log_stop=Berhenti pelayan Dovecot
 log_bootup=Dihidupkan Dovecot pada waktu boot
 log_bootdown=Dovecot Kurang Upaya pada masa boot
 log_manual=Fail konfigurasi disunting secara manual $1
+
 manual_title=Edit Fail Config
 manual_editsel=Edit fail konfigurasi Dovecot
 manual_err=Gagal menyimpan fail konfigurasi

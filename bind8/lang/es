@@ -47,6 +47,7 @@ index_sapplymsg=Presione este botón para rearrancar el servidor BIND de la máq
 index_all=Todas las zonas
 index_massdelete=Borrar Seleccionados
 index_bind=BIND
+
 master_title=Editar Zona Maestra
 master_ecannot=No está autorizado a editar esta zona
 master_manual=Editar Archivo de Registros
@@ -108,6 +109,7 @@ master_emip=IP maestra '$1' inválida
 master_eview=No está autorizado a crear una zona en esa vista
 master_eserial=El Número serial debe ser una cadena de dígitos
 master_apply=Aplicar Cambios
+
 delete_title=Borrar Zona
 delete_mesg=¿Está seguro de querer borrar la zona $1?. Todos sus registros y el archivo de zona serán borrados.
 delete_mesg2=¿Está seguro de que quiere borrar la zona raíz? Es posible que su servidor DNS ya no pueda buscar direcciones en internet.
@@ -116,6 +118,7 @@ delete_fwd=¿Borrar los registros de reenvío de otras zonas?
 delete_onslave=¿Borrar también de servidores esclavos?
 delete_errslave=Zona maestra borrada OK, pero ocurrieron los siguiente errores en esclavas : $1
 delete_ezone=La Zona no fue hallada en servidor subordinado
+
 mcreate_title=Crear Zona Maestra
 mcreate_ecannot=No puede crear zonas maestras
 mcreate_opts=Opciones de nueva zona maestra
@@ -127,6 +130,7 @@ mcreate_view=Crear en vista
 mcreate_file=Archivo de Registros
 mcreate_auto=Automático
 mcreate_err=Error al crear zona maestra
+
 slave_title=Editar Zona Subordinada
 stub_title=Editar Zona de Sólo Caché
 slave_ecannot=No está autorizado a editar esta zona
@@ -150,6 +154,7 @@ slave_efile2='$1' no es una archivo de registros permitido
 slave_mins=minutos
 slave_master_port=puerto
 slave_convert=Convertir a zona maestra
+
 screate_title1=Crear Zona Subordinada
 screate_title2=Crear Zona de Sólo Caché
 screate_ecannot1=No está autorizado a crear zonas subordinadas
@@ -162,6 +167,7 @@ screate_rev=Inversas (Direcciones a Nombres)
 screate_dom=Nombre de Dominio/Red
 screate_err1=Error al crear zona subordinada
 screate_err2=Error al crear zona de sólo caché
+
 recs_ecannot=No está autorizado a editar registros en esta zona
 recs_title=$1 Registros
 recs_header=En $1
@@ -172,6 +178,7 @@ recs_comment=Comentario
 recs_return=tipos de registro
 recs_type=Tipo
 recs_vals=Valores
+
 edit_title=Editar $1
 edit_header=En $1
 edit_edit=Editar Registro $1
@@ -208,6 +215,7 @@ edit_elabel=Una etiqueta en '$1' es demasiado larga
 edit_eloc=Latitud y longitud no ingresada
 edit_eweight='$1' no es un peso válido de servicio
 edit_eport='$1' no es un número de puerto válido
+
 edit_etarget='$1' no es un nombre de servidor o dirección válido
 edit_return=registros
 edit_ecname1=No puede crear un registro de alias de nombre con el mismo nombre de un registro ya existente.
@@ -227,14 +235,18 @@ edit_espfa='$1' no es un host válido para autorizar el envio desde él
 edit_espfmx='$1' no es un nombre de dominio válido para autorizar el envio MX desde él
 edit_espfip='$1' no es una dirección IP o prefijo IP válido para autorizar el envio desde él
 edit_espfinclude='$1' no es un dominio adicional válido desde el que el correo es enviado
+
 text_title=Editar Archivo de Registros
 text_undo=Deshacer
 text_ecannot=No está autorizado a editar archivos de registro
+
 restart_ecannot=No está autorizado a rearrancar BIND
 restart_endc=Falló el comando NDC: $1
 restart_ecmd=Fallo al rearrancar comando : $1
+
 start_ecannot=No está autorizado a arrancar BIND
 start_error=Fallo al arrancar BIND: $1
+
 fwd_title=Editar Zona de Reenvío
 fwd_ecannot=No está autorizado a editar esta zona
 fwd_opts=Opciones de Zona
@@ -242,11 +254,13 @@ fwd_masters=Servidores maestros
 fwd_forward=¿Pruebar con otros servidores?
 fwd_check=¿Revisar nombres?
 fwd_err=Error al salvar opciones
+
 delegation_title=Editar Zona de Delegación
 delegation_ecannot=No está autorizado a editar esta zona
 delegation_opts=Opciones de Zona
 delegation_err=Fallo al salvar opciones
 delegation_noopts=Las zonas de delegación no tienen opciones configurables.
+
 fcreate_title=Crear Zona de Reenvío
 fcreate_ecannot=No está autorizado a crear zonas de reenvío
 fcreate_opts=Opciones de nueva zona de reenvío
@@ -256,10 +270,12 @@ fcreate_rev=Inversas (Direcciones a Nombres)
 fcreate_dom=Nombre de Dominio / Red
 fcreate_masters=Servidores maestros
 fcreate_err=Error al crear zona de reenvío
+
 dcreate_title=Crear Zona Sólo-Delegación
 dcreate_ecannot=No está autorizado a crear zonas de delegación
 dcreate_opts=Opciones de nueva zona de delegación
 dcreate_err=Fallo al crear zona de delegación
+
 create_enet='$1' no es una red válida
 create_edom='$1' no es un nombre de dominio válido
 create_edom2='$1' debe de ser un dominio, no una red
@@ -269,7 +285,9 @@ create_efile3=Fallo al crear '$1': $2
 create_efile4=El archivo $1 ya existe
 create_emaster='$1' no es una dirección de servidor maestro válida
 create_enone=Debe ingresar al menos un servidor maestro
+
 boot_err=Error en la descarga
+
 type_A=Dirección
 type_AAAA=Dirección IPv6
 type_NS=Servidor de Nombres
@@ -284,6 +302,7 @@ type_LOC=Localización
 type_SRV=Dirección del servicio
 type_ALL=Todos los Tipos de Registro
 type_KEY=Clave pública
+
 edit_A=Dirección
 edit_AAAA=Dirección IPv6
 edit_NS=Servidor de nombres
@@ -298,6 +317,7 @@ edit_PTR=Dirección Inversa
 edit_LOC=Localización
 edit_SRV=Dirección del servicio
 edit_KEY=Clave pública
+
 recs_A=Dirección
 recs_AAAA=Dirección IPv6
 recs_NS=Servidor de nombre
@@ -312,6 +332,7 @@ recs_LOC=Localización
 recs_SRV=Dirección del servicio
 recs_ALL=Todo
 recs_KEY=Clave pública
+
 value_A1=Dirección
 value_NS1=Servidor de Nombres
 value_CNAME1=Nombre Real
@@ -335,6 +356,7 @@ value_KEY1=Banderas
 value_KEY2=Protocolo
 value_KEY3=Algoritmo
 value_KEY4=Dato clave
+
 warn=Aviso
 fail=Fallo
 ignore=Ignorar
@@ -386,6 +408,7 @@ acl_ztypes_master=Maestro
 acl_ztypes_slave=Esclavo/stub
 acl_ztypes_delegation=Delegación
 acl_ztypes_forward=Enviar
+
 servers_title=Otros Servidores DNS
 servers_ip=Dirección IP
 servers_bogus=¿Ignorar servidor fraudulento?
@@ -397,6 +420,7 @@ servers_keys=Usar claves DNS
 servers_err=Error al salvar otros servidores DNS
 servers_eip='$1' no es una dirección IP válida
 servers_etrans='$1' no es un número válido de máximas transferencias
+
 logging_title=Bitácora y Errores
 logging_ecannot=No está autorizado a configurar la bitácora
 logging_header=Opciones Globales de error y bitácora
@@ -428,12 +452,14 @@ logging_ename='$1' no es un nombre de canal válido
 logging_efile=No se ha ingresado nombre de archivo de diario
 logging_ever='$1' no es un número válido de versiones
 logging_esize='$1' no es un tamaño válido de bitácora
+
 acls_title=Listas de Control de Acceso
 acls_ecannot=No estás autorizado a editar listas de control de acceso globales
 acls_name=Nombre de Lista de Control de Acceso
 acls_values=Direcciones que coincidan, redes y listas de control de acceso
 acls_err=Error al salvar listas de control de acceso
 acls_ename='$1' no es un nombre válido de Lista de Control de Acceso
+
 files_title=Archivos y Directorios
 files_ecannot=No está autorizado a configurar archivos
 files_header=Opciones Globales de archivos y directorios
@@ -443,6 +469,7 @@ files_pid=Archivo de ID de Proceso
 files_xfer=CAmino a programa de transferencia de zona
 files_err=Error al salvar opciones de archivos y directorios
 files_efile=Nombre de archivo no ingresado o no válido
+
 forwarding_title=Reenvío y Transferencias
 forwarding_ecannot=No está autorizado a editar opciones de reenvío y transferencia
 forwarding_header=Opciones globales de reenvío y transferencia de zona
@@ -459,6 +486,7 @@ forwarding_etrans=Máximas transferencias concurrentes no ingresado o no válida
 forwarding_minutes=minutos
 forwarding_ip=Dirección IP
 forwarding_port=Puerto (opcional)
+
 net_title=Direcciones y Topología
 net_ecannot=No está autorizado a editar opciones de dirección y topología
 net_header=Opciones globales de dirección y topología
@@ -472,6 +500,7 @@ net_topol=Selección de topología para Servidor de Nombres
 net_err=Error al salvar opciones de dirección y topología
 net_eport='$1' no es un número de puerto válido
 net_etopology=No se han ingresado direcciones de topología
+
 controls_title=Opciones de Interfase de Control
 controls_ecannot=No está autorizado a editar las opciones de control
 controls_header=Opciones de Control
@@ -493,6 +522,7 @@ controls_eunixpath=Ruta a archivo FIFO no válida o sin introducir
 controls_eunixperm=Permisos octales de archivo no válidos o sin introducir
 controls_eunixowner=Propietario de archivo no válido o sin introducir
 controls_eunixgroup=Grupo de archivo no válido o sin introducir
+
 controls_inet=Acceso a puerto de Internet
 controls_unix=Acceso a sistema de archivos de Unix
 controls_port=puerto
@@ -506,6 +536,7 @@ controls_efile=Nombre de archivo FIFO no ingresado o no válido
 controls_eperms=Permisos FIFO no ingresados o no válidos
 controls_eowner=ID de usuario del propietario FIFO no ingresado o no válido
 controls_egroup=ID de grupo del propietario FIFO no ingresado o no válido
+
 keys_title=Claves DNS
 keys_id=ID de clave
 keys_alg=Algoritmo
@@ -514,6 +545,7 @@ keys_ecannot=No está autorizado a editar las claves DNS
 keys_err=Fallo al salvar las claves DNS
 keys_ekey='$1' no es un ID de clave válido
 keys_esecret=Codificación en base 64 para la clave $1 no ingresada o no válida
+
 misc_title=Opciones Varias
 misc_ecannot=No estás autorizado a editar opciones misceláneas
 misc_header=Opciones globales misceláneas
@@ -533,6 +565,7 @@ misc_esize='$1' no es un tamaño válida
 misc_efiles='$1' no es un número válido de máximo número de archivos abiertos
 misc_emins='$1' no es un número válido de minutos
 misc_mins=mins
+
 zonedef_title=Valores por Defecto de Zona
 zonedef_msg=Valores por defecto para nuevas zonas maestras
 zonedef_err=Error al savar valores por defecto de zona
@@ -545,17 +578,22 @@ zonedef_cslave=¿Revisar nombres en zonas subordinadas?
 zonedef_cresponse=¿Revisar los nombres en la respuestas?
 zonedef_notify=¿Notificar a la subordinadas acerca de los cambios?
 zonedef_email=Dirección de correo por defecto
+
 find_title=Hallar Zonas
 find_match=Zonas que coincidan con $1...
 find_none=No se han hallado zonas.
+
 efirst=Primera directiva errónea en la línea $1 de $2
+
 findfree_title=Buscar IPs Libres
+
 findfree_desc=Buscar IPs Libres
 findfree_nofind=No puede buscar IPs libres
 findfree_header=En $1
 findfree_sopt=Opciones de búsqueda
 findfree_cf=¿Considerar nombres de máquina <em>freeXXX</em> como IPs libres?
 findfree_search=Buscar
+
 free_title=Direcciones IP Libres
 log_servers=Cambiados otros servidores DNS
 log_logging=Cambiados bitácora y errores
@@ -591,11 +629,14 @@ log_boot=Creado archivo de configuración primario
 log_move=Movida zona $1
 log_review=Cambiadas opciones de vista para $1
 log_add_group=Añadidos servidores esclavos desde el grupo $1
+
 convert_err=Fallo al convertir zona
 convert_efile=Se debe especificar un archivo de registros antes de que una zona subordinada pueda ser convertida en maestra.
+
 whois_title=Información de WHOIS
 whois_header=Salida del comando $1...
 whois_ecannot=Está autorizado a buscar en la información de WHOIS
+
 view_title=Editar Vista de Cliente
 view_opts=Detalles de vista de Cliente
 view_name=Nombre de vista
@@ -603,6 +644,7 @@ view_class=Clase de registros DNS
 view_match=Aplicar esta vista a clientes
 view_recursion=¿Hacer búsqueda recursiva completa para clientes?
 view_ecannot=No está autorizado a editar esta vista
+
 vcreate_title=Crear Vista de Cliente
 vcreate_match_all=Todos los clientes
 vcreate_match_sel=Direcciones seleccionas, redes y ACLs
@@ -611,11 +653,13 @@ vcreate_ename=Nombre de vista no ingresada o no válida
 vcreate_etaken=El nombre de vista ya está tomado
 vcreate_eclass=Nombre de clase no ingresado o no válido
 vcreate_ecannot=No está autorizado a crear vistas
+
 hint_title=Editar Zona Raíz
 hint_desc=La zona raíz es usada por su servidor DNS para contactar con los servidores raíz de internet, de tal manera que pueda resolver los nombres en dominios no manejados por su servidor DNS, como <tt>.com</tt> o <tt>.net.au</tt>. A menos que su servidor DNS sea para uso en una red interna or esté remitiendo todas las consultas a otro servidor, no debería borrar esta zona raíz.
 hint_move=Moverse a vista:
 hint_ecannot=No está autorizado a editar esta zona raíz
 hint_refetch=Re-Descargar Nombres de Servidor Raiz
+
 hcreate_title=Crear Zona Raíz
 hcreate_desc=La zona raíz es usada por su servidor DNS para contactar con los servidores raíz de internet, de tal manera que pueda resolver los nombres en dominios no manjados por su servidor DNS, como <tt>.com</tt> o <tt>.net.au</tt>. Si está usando múltiples vistas, puede que necesite tener una zona raíz separada en cada vista de tal manera que todos los clientes puedan resolver los dominios de internet de forma correcta.
 hcreate_file=Almacenar servidores raíz en archivo
@@ -628,6 +672,7 @@ hcreate_efile='$1' no es una archivo raíz adecuado
 hcreate_efile2=Archivo raíz no ingresado o no válido
 mcreate_erecs=No es un archivo de zona raíz que exista
 hcreate_err=Fallo al crear zona raíz
+
 vdelete_title=Borrar Vista
 vdelete_mesg=¿Está seguro de querer borrar la vista cliente $1?. Todas las zonas en esta vista serán también borradas (así como sus archivos de zona) o movidas a otra vista dependiendo de su selección debajo.
 vdelete_mesg2=¿Está seguro de querer borrar la vista cliente $1?
@@ -635,6 +680,7 @@ vdelete_newview=Zonas en esta vista
 vdelete_root=Mover fuera de vista
 vdelete_delete=Borrar totálmente
 vdelete_move=Mover a vista
+
 gen_title=Generadores de Registro
 gen_desc=Esta página le permite definir generadores, cada uno de los cuales creará múltiples registros en esta zona mediante un contador incremental. Esto puede ser útil para delegar partes de la zona inversa a otro servidor.
 gen_range=Rango
@@ -654,6 +700,7 @@ gen_evalue=Modelo de nombre de máquina no ingresado o no válido para generador
 gen_title2=Registros Generados
 gen_raw=Configurar línea de archivo
 gen_ecannot=No está autorizado a editar generadores de registros
+
 add_title=Añadir Servidores
 add_msg=Añadiendo $1 ..
 add_gmsg=Añadiendo servidores en grupo $1 ..

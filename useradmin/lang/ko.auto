@@ -30,8 +30,10 @@ index_mass=선택된 사용자 삭제
 index_mass2=선택된 비활성화
 index_mass3=선택 사용
 index_gmass=선택된 그룹 삭제
+
 search_found=일치하는 $1 사용자를 찾았습니다 ..
 search_gfound=일치하는 $1 그룹을 찾았습니다 ..
+
 gid=그룹
 gidnum=그룹 ID
 office=사무실
@@ -59,6 +61,7 @@ uedit_uid_calc=계획된
 uedit_disabled=로그인이 일시적으로 비활성화되었습니다
 uedit_sys=시스템 기본값
 uedit_clone=복제 사용자
+
 usave_elength=사용자 이름은 $1자를 초과 할 수 없습니다
 usave_ere=사용자 이름이 정규 표현식 $1와 일치하지 않습니다
 usave_euuid=사용자의 UID를 변경할 수 없습니다
@@ -79,6 +82,7 @@ usave_epasswd_same=비밀번호는 사용자 이름을 포함하거나 동일합
 usave_epasswd_mindays=비밀번호가 $1 일 전에 변경되었습니다.
 usave_epasswd_cmd=비밀번호 유효성 검증 명령이 실패했습니다
 usave_eothers=사용자가 성공적으로 저장되었지만 다른 모듈에서 오류가 발생했습니다  : $1
+
 gedit_desc=기술
 gedit_oneperline=(한 줄에 하나씩)
 gedit_egone=선택된 그룹이 더 이상 존재하지 않습니다!
@@ -91,21 +95,25 @@ gedit_selu=그룹의 사용자
 gedit_pri=기본 그룹 회원
 gedit_prinone=이 그룹을 기본으로 사용하는 사용자가 없습니다.
 gedit_clone=클론 그룹
+
 gsave_elength=그룹 이름은 $1자를 초과 할 수 없습니다.
 gsave_eggid=그룹의 GID를 변경할 수 없습니다
 gsave_eallgid=허용 된 모든 GID가 할당되었습니다
 gsave_eothers=그룹이 성공적으로 저장되었지만 다른 모듈에서 오류가 발생했습니다  : $1
 gsave_egidused2=GID는 이미 사용 중입니다
+
 udel_enum=잘못된 사용자 번호
 udel_eroot=시스템 사용자 (UID가 10 이하인 사용자)는 삭제할 수 없습니다.
 udel_ugroupother=다른 모듈에서이 사용자 그룹 삭제 ..
 udel_failed=.. 실패했습니다!  : $1
 udel_dothers=다른 모듈에서 사용자를 삭제 하시겠습니까?
 udel_root=경고! 루트 사용자가 삭제되면 나중에 시스템을 관리하지 못할 수 있습니다.
+
 gdel_eroot=시스템 그룹 (GID가 10 이하인 시스템 그룹)은 삭제할 수 없습니다.
 gdel_enum=잘못된 그룹 번호
 gdel_dothers=다른 모듈에서 그룹을 삭제 하시겠습니까?
 gdel_other=다른 모듈에서 삭제 ..
+
 acl_uedit_gid=범위에 GID가있는 사용자
 acl_uedit_sec=보조 그룹을 포함 하시겠습니까?
 acl_uedit_this=이 사용자 만
@@ -133,6 +141,7 @@ acl_udelete=사용자를 삭제할 수 있습니까?
 acl_gdelete=그룹을 삭제할 수 있습니까?
 acl_urename=사용자 이름을 바꿀 수 있습니까?
 acl_grename=그룹 이름을 바꿀 수 있습니까?
+
 log_batch=실행 된 배치 파일 $1
 log_batch_l=실행 된 배치 파일 $1 ($2 생성, $3 수정, $4 삭제)
 log_ubatch=업로드 된 배치 파일 실행
@@ -143,6 +152,7 @@ log_ugbatch=업로드 된 그룹 배치 파일 실행
 log_ugbatch_l=실행 된 업로드 된 그룹 배치 파일 ($1 생성, $2 수정, $3 삭제)
 log_delete_users=$1 사용자가 삭제되었습니다.
 log_delete_groups=$1 그룹이 삭제되었습니다.
+
 batch_ecannot=배치 파일 양식을 사용할 수 없습니다
 batch_desc6=<b>create</b>:username:passwd:uid:gid:realname:homedir:shell:class:change:expire<p><b>modify</b>:oldusername:username:passwd:uid:gid:realname:homedir:shell:class:change:expire<p><b>delete</b>:username
 batch_desc5=<b>create</b>:username:passwd:uid:gid:realname:homedir:shell:min:max<p><b>modify</b>:oldusername:username:passwd:uid:gid:realname:homedir:shell:min:max<p><b>delete</b>:username
@@ -171,12 +181,14 @@ batch_eexpire=$1 행에서 유효하지 않은 만료일  : $2
 batch_echange=$1 행에서 유효하지 않은 비밀번호 변경 날짜  : $2
 batch_instr=지침 및 배치 형식
 batch_header=배치 사용자 작성, 업데이트 및 삭제 옵션
+
 who_title=로그인 한 사용자
 who_user=유닉스 사용자
 who_tty=TTY
 who_when=에 로그인
 who_from=에서 로그인
 who_none=현재 로그인 한 사용자가 없습니다.
+
 export_title=배치 파일 내보내기
 export_desc=이 양식을 사용하면 시스템에서 사용 가능한 일부 또는 모든 사용자를 포함하는 배치 파일을 작성할 수 있습니다. 선택한 배치 파일 형식을 사용한다고 가정하면 다른 시스템의 배치 파일 실행 페이지에서 파일을 사용하여 내 보낸 사용자를 다시 작성할 수 있습니다.
 export_header=배치 사용자 내보내기 옵션
@@ -197,6 +209,7 @@ export_done=$1 사용자를 $2 파일 ($3)로 내보냈습니다.
 export_pft=배치 파일 형식
 export_who=내보낼 사용자
 export_ecannot=사용자를 내보낼 수 없습니다
+
 gexport_title=그룹 배치 파일 내보내기
 gexport_desc=이 양식을 사용하면 시스템에서 사용 가능한 그룹 중 일부 또는 전부를 포함하는 배치 파일을 작성할 수 있습니다. 다른 시스템의 그룹 배치 파일 실행 페이지에서 파일을 사용하여 내 보낸 그룹을 다시 작성할 수 있습니다.
 gexport_header=배치 그룹 내보내기 옵션
@@ -205,6 +218,7 @@ gexport_ecannot=그룹을 내보낼 수 없습니다
 gexport_err=그룹 배치 파일을 내 보내지 못했습니다.
 gexport_egid=범위 내 첫 번째 GID가 잘못되었습니다
 gexport_egid2=범위 내 잘못된 두 번째 GID
+
 pft_0=클래식 <tt>암호</tt> 파일 만
 pft_1=BSD <tt>master.passwd</tt> 파일
 pft_2=표준 <tt>암호</tt> 및 <tt>그림자</tt> 파일
@@ -212,6 +226,7 @@ pft_3=유닉스웨어 <tt>비밀번호</tt> 파일
 pft_4=AIX <tt>passwd</tt> 및 <tt>security</tt> 파일
 pft_5=OpenServer <tt>passwd</tt> 및 짧은 <tt>shadow</tt> 파일
 pft_6=MacOS NetInfo 데이터베이스
+
 umass_title=사용자 삭제
 umass_err=사용자를 삭제하지 못했습니다.
 umass_sure=선택한 사용자 $1을 삭제 하시겠습니까? 그들의 홈 디렉토리는 $2 파일을 포함합니다.
@@ -223,6 +238,7 @@ umass_del1=사용자 삭제
 umass_del2=사용자 및 홈 디렉토리 삭제
 umass_eroot=시스템 사용자 (UID가 10 이하인 사용자)는 삭제할 수 없습니다.
 umass_doing=$1 사용자 삭제 중 ..
+
 gmass_title=그룹 삭제
 gmass_err=그룹을 삭제하지 못했습니다.
 gmass_sure=선택한 $1 그룹을 삭제 하시겠습니까?
@@ -232,16 +248,19 @@ gmass_del=그룹 삭제
 gmass_eroot=시스템 그룹 (GID가 10 이하인 시스템 그룹)은 삭제할 수 없습니다.
 gmass_doing=$1 그룹 삭제 중 ..
 gmass_eprimary=$1 그룹은 $2 사용자의 기본 그룹이므로 삭제할 수 없습니다.
+
 dmass_title=사용자 비활성화
 dmass_sure=선택한 사용자 $1을 사용 중지 하시겠습니까? 비밀번호 나 데이터 손실없이 나중에 다시 활성화 할 수 있습니다.
 dmass_dis=사용자 비활성화
 dmass_pass=임시 비밀번호 잠금 ..
 dmass_doing=사용자 $1 사용 안함 ..
 dmass_already=.. 이미 비활성화되었습니다!
+
 emass_title=사용자 활성화
 emass_pass=비밀번호 잠금 해제 ..
 emass_doing=사용자 $1 활성화
 emass_already=.. 이미 활성화되었습니다!
+
 gbatch_title=그룹 배치 파일 실행
 gbatch_ecannot=그룹 배치 파일 양식을 사용할 수 없습니다
 gbatch_desc=이 양식을 사용하면 업로드되거나 로컬 텍스트 파일에서 여러 그룹을 한 번에 작성, 수정 또는 삭제할 수 있습니다. 파일의 각 행은 첫 번째 필드에 따라 수행 할 조치를 지정합니다. 라인 형식은 다음과 같습니다.

@@ -1,4 +1,5 @@
 quota_unlimited=제한 없음
+
 acl_fss=이 사용자가 편집할 수 있는 파일 시스템
 acl_fall=모든 파일 시스템
 acl_fsel=선택한 파일 시스템..
@@ -23,9 +24,11 @@ acl_maxblocks=최대 가능한 블럭 할당량
 acl_maxfiles=최대 가능한 파일 할당량
 acl_unlimited=제한 없음
 acl_email=이메일 통지 설정
+
 activate_eallow=이 파일 시스템에서는 할당량을 사용 가능/사용 불능으로 설정할 수 없습니다
 activate_eon=할당량을 활성화 못했습니다
 activate_eoff=할당량을 비 활성화하지 못했습니다
+
 check_title=할당량 검사
 check_return=$1 목록
 check_ecannot=이 파일 시스템에서는 할당량을 검사할 수 없습니다
@@ -33,11 +36,13 @@ check_running=<tt>$1</tt>의 블록 및 파일 사용을 검사하는 <tt>quotac
 check_done=... 완료되었습니다.
 check_rgroup=그룹
 check_ruser=사용자
+
 cgroup_efail=할당량을 복사하지 못했습니다
 cgroup_ecannot=할당량을 복사할 수 없습니다
 cgroup_egallow=이 그룹의 할당량을 복사할 수 없습니다
 cgroup_enogroup=복사할 그룹이 없습니다
 cgroup_eallowto='$1'에 할당량을 복사할 수 없습니다
+
 cgform_title=할당량 복사
 cgform_return=그룹 할당량
 cgform_ecannot=할당량을 복사할 수 없습니다
@@ -47,11 +52,13 @@ cgform_all=시스템의 모든 그룹
 cgform_select=선택한 그룹
 cgform_contain=사용자가 포함된 그룹
 cgform_doit=복사
+
 cuser_efail=할당량을 복사하지 못했습니다
 cuser_ecannot=할당량을 복사할 수 없습니다
 cuser_euallow=이 사용자의 할당량을 복사할 수 없습니다
 cuser_enouser=복사할 사용자가 없습니다
 cuser_eallowto='$1'에 할당량을 복사할 수 없습니다
+
 cuform_title=할당량 복사
 cuform_return=사용자 할당량
 cuform_ecannot=할당량을 복사할 수 없습니다
@@ -61,6 +68,7 @@ cuform_all=시스템의 모든 사용자
 cuform_select=선택한 사용자
 cuform_members=선택한 그룹의 구성원
 cuform_doit=복사
+
 egroup_title=할당량 편집
 egroup_freturn=파일 시스템 목록
 egroup_greturn=그룹 목록
@@ -78,6 +86,7 @@ egroup_sflimit=소프트 파일 제한
 egroup_hflimit=하드 파일 제한
 egroup_update=업데이트
 egroup_listall=모든 할당량 나열
+
 euser_title=할당량 편집
 euser_freturn=파일 시스템 목록
 euser_ureturn=사용자 목록
@@ -99,6 +108,7 @@ euser_sflimit=소프트 파일 제한
 euser_hflimit=하드 파일 제한
 euser_update=업데이트
 euser_listall=모든 할당량 나열
+
 gfilesys_title=그룹 할당량
 gfilesys_return=파일 시스템 목록
 gfilesys_ecannot='$1'의 할당량을 편집할 수 없습니다
@@ -114,6 +124,7 @@ gfilesys_hard=하드 제한
 gfilesys_nogquota=그룹 <tt>$1</tt>은(는) 아무 파일 시스템에도 할당량을 가지지 않습니다
 gfilesys_edit=할당량 편집 대상:
 gfilesys_copy=할당량 복사
+
 ggracef_title=유예 기간
 ggracef_return=그룹 목록
 ggracef_ecannot=이 파일 시스템의 유예 기간을 편집할 수 없습니다
@@ -122,9 +133,11 @@ ggracef_graces=<tt>$1</tt>의 그룹 유예 기간
 ggracef_block=블록 할당량의 경우
 ggracef_file=파일 할당량의 경우
 ggracef_update=업데이트
+
 ggraces_esave=유예 기간을 저장하지 못했습니다
 ggraces_eedit=이 파일 시스템의 유예 기간을 편집할 수 없습니다
 ggraces_enumber='$1'은(는) 숫자가 아닙니다
+
 index_quser=사용자 할당량
 index_qgroup=그룹 할당량
 index_qboth=사용자 및 그룹 할당량
@@ -144,6 +157,7 @@ index_euser=사용자 할당량 편집:
 index_egroup=그룹 할당량 편집:
 index_nosupport=할당량을 지원할 수 있는 로컬 파일 시스템이 없습니다
 index_mountmod=<a href='$1'>디스크 및 네트워크 파일 시스템</a> 모듈에서 파일시스템에 대한 할당량을 활성화 활 수 있습니다.
+
 lgroups_failed=그룹을 나열하지 못했습니다
 lgroups_eallow=이 파일 시스템에서는 할당량을 편집할 수 없습니다
 lgroups_title=파일 시스템 할당량
@@ -171,13 +185,17 @@ lgroups_tofixed=주소 $1
 lgroups_emailheader=할당량에 도달하면 그룹에 메일을 전송
 lgroups_email=그룹에 메일을 전송하겠습니까?
 lgroups_tovirt=Virtualmin 도메인 소유자
+
 sgroup_egroup=이 그룹의 할당량을 편집할 수 없습니다
 sgroup_efs=이 파일 시스템의 할당량을 편집할 수 없습니다
+
 ssync_ecannot=이 파일 시스템의 기본 할당량을 설정할 수 없습니다
+
 suser_euser=이 사용자의 할당량을 편집할 수 없습니다
 suser_efs=이 파일 시스템의 할당량을 편집할 수 없습니다
 suser_emaxblocks=$1 이상 블럭 제한을 할 권한이 없습니다.
 suser_emaxfiles=$1 이상 파일 제한을 할 권한이 없습니다.
+
 ufilesys_title=사용자 할당량
 ufilesys_return=파일 시스템 목록
 ufilesys_ecannot='$1'의 할당량을 편집할 수 없습니다
@@ -194,6 +212,7 @@ ufilesys_nouquota=사용자 <tt>$1</tt>은(는) 아무 파일 시스템에서도
 ufilesys_edit=할당량 편집 대상:
 ufilesys_copy=할당량 복사
 ufilesys_grace=유예
+
 ugracef_title=유예 기간
 ugracef_return=사용자 목록
 ugracef_ecannot=이 파일 시스템의 유예 기간을 편집할 수 없습니다
@@ -202,9 +221,11 @@ ugracef_graces=<tt>$1</tt>의 사용자 유예 기간
 ugracef_block=블록 할당량의 경우
 ugracef_file=파일 할당량의 경우
 ugracef_update=업데이트
+
 ugraces_esave=유예 기간을 저장하지 못했습니다
 ugraces_eedit=이 파일 시스템의 유예 기간을 편집할 수 없습니다
 ugraces_enumber='$1'은(는) 숫자가 아닙니다
+
 lusers_failed=사용자를 나열하지 못했습니다
 lusers_eallow=이 파일 시스템의 할당량을 편집할 수 없습니다
 lusers_title=파일 시스템 할당량
@@ -245,12 +266,14 @@ lusers_domain=사용자 주소를 위한 도메인
 luser_virtualmin=Virtualmin에서 도메인 가져오기
 lusers_from=이메일의 From: 주소
 lusers_mass=선택된 사용자 업데이트
+
 grace_seconds=초
 grace_minutes=분
 grace_hours=시
 grace_days=일
 grace_weeks=주
 grace_months=월
+
 log_activate_u=$1의 사용자 할당량이 사용 가능으로 설정됨
 log_activate_g=$1의 그룹 할당량이 사용 가능으로 설정됨
 log_activate_ug=$1의 사용자 및 그룹 할당량이 사용 가능으로 설정됨
@@ -267,6 +290,7 @@ log_grace_g=$1의 그룹 유예 기간 변경됨
 log_check=$1의 할당량 검사됨
 log_copy_u=사용자 $1의 할당량 복사됨
 log_copy_g=그룹 $1의 할당량 복사됨
+
 email_err=이메일 옵션 저장 실패
 email_ecannot=이메일 옵션을 수정할 권한이 없습니다.
 email_einterval=간격이 지정되지 않았거나 올바르지 않습니다.
@@ -278,6 +302,7 @@ gemail_msg=$2 파일시스템의 $1 사용자의 디스크 사용량이 허가�
 email_subject=디스크 할당량 초과
 gemail_subject=디스크 할당량 초과
 email_eto=받을 이메일 주소가 지정되지 않았습니다.
+
 umass_title=사용자 할당량 업데이트
 umass_header=선택된 사용자에게 할당량 변경 사항을 적용
 umass_sblocks=Soft 블럭 제한
@@ -294,6 +319,7 @@ umass_esfiles=Soft 파일 제한이 지정되지 않았거나 올바르지 않�
 umass_ehfiles=Hard 파일 제한이 지정되지 않았거나 올바르지 않습니다.
 umass_count=다음 변경 사항은 선택된 $1 사용자에게 적용이 됩니다 ..
 umass_err=사용자 할당량 업데이트 실패
+
 gmass_title=그룹 할당량 업데이트
 gmass_header=선택된 그룹에 할당량 변경 사항 적용
 gmass_count=선택된 $1 그룹에 다음 변경 사항이 적용 됩니다 ..

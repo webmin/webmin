@@ -17,6 +17,7 @@ index_status=Firewall Durumu
 index_statusdesc=Bu butona tıklayarak Shorewall dosyalarını ve uygulamış olduğunuz kuralları görebilirsiniz. Sistem otomatik olarak  <tt>shorewall status</tt> komutunu işletecektir.
 index_check=Firewall Kontrolü
 index_checkdesc=Bu butona tıklayarak yapmış olduğunuz konfigurasyonun hatalı olup olmadığını görebilirsiniz. Sistem otomatik olarak <tt>shorewall check</tt> komutunu işletecektir.
+
 list_move=Taşı
 list_add=Ekle
 list_auto=Otomatik
@@ -27,6 +28,7 @@ list_other=Diğer..
 list_manual=Dosyayı manual olarak görüntüle
 list_manualdesc=Bu butona tıklayarak yukaradıki verileri içeren $1 dosyasını görüntüleyebilirsiniz.
 list_ecannot=Bu Shorewall dosyasını görüntülemeye iznininiz yoktur.
+
 restart_err=Kongigurasyon Uygulanamadı
 refresh_err=Konfigurasyon Uygulanamadı
 start_err=Firewall Başlatılamadı
@@ -37,6 +39,7 @@ check_title=Firewall Kontrolü
 check_ok=.. firewall konfigurasyonunda herhangi bir hata yoktur.
 check_failed=.. firewall konfigurasyonunda bir hata bulunmuştur. 
 check_cmd=Firewall kontrol ediliyor ..
+
 zones_title=Ağ Bölgeleri
 zones_desc=Bu listede farklı ağ bölgeleri oluşturabilirsiniz. Oluşturacağınız bölgelerin firewall kuralları üzerinde bir etkisi olmayacaktır.
 zones_add=Yeni Bölge Ekle
@@ -53,6 +56,7 @@ zones_eid=Hatalı ya da eksik bölge kimliği
 zones_efwid=$FW ve fw  bölge kimlikleri firewall için rezerve edilmiştir,kullanılamaz.
 zones_ename=Hatalı ya da eksik bölge ismi
 zones_edesc=Hatalı ya da eksik bölge açıklaması
+
 policy_title=Standart Denetimler
 policy_desc=Standart Denetimler sayfasında farklı firewall bölgelerinin kendi aralarındaki kuralları belirliyebilirsiniz. Örnek olarak DMZ bölgesinden net bölgesine bütün portların açılmasını istiyorsunuz. Bu durumda bu kuralları "Firewall Kuralları" sayfasında belirtmek yerine, bu bölgeler için standart denetimler uygulayabilirsiniz.
 policy_add=Yeni Standart Denetim Ekle
@@ -73,6 +77,7 @@ policy_ulog=ULOG 'a loglar gönderiliyor
 policy_efw=Hem kaynak hem de hedef bölgeleri için &lt;Firewall&gt; seçilebilir.
 policy_elimit=Hatalı ya da eksik Trafik Limiti Numarası
 policy_eburst=Hatalı ya da eksik Trafik Burst Numarası
+
 rules_title=Firewall Kuralları
 rules_desc=Bu sayfada ağınız için belirlemiş olduğunuz Firewall kurallarını uyugulayabilirsiniz. Firewall kuralları yapılandırırken  Standart Denetimlerde uygulamış olduğunuz kuralların aksi bir kural belirtirseniz Standart Denetimlerde tanımlı olan kural kullanılacaktır. 
 rules_add=Yeni Firewall Kuralı Ekle
@@ -115,6 +120,7 @@ rules_rate=Rate Limit
 rules_norate=Limit yok
 rules_set=Kullanıcılar İçin Kuralları Ekle
 rules_noset=Bütün Kullanıcılar
+
 tos_title=Servis Türü (ToS)
 tos_desc=Bu sayfada ağ trafiğiniz için gecikme, sağlamlık vb. gibi çeşitli servis türleri tanıtabilirsiniz. 
 tos_add=Yeni Servis Türü Ekle
@@ -132,6 +138,7 @@ tos_edit=Servis Türünü Görüntüle/Değiştir
 tos_create=Yeni Servis Türü Oluştur
 tos_header=Servis Türü Detayları
 tos_err=Servis türü kaydedilemedi.
+
 interfaces_title=Ağ Arayüzleri
 interfaces_desc=Sisteminizde konfigure etmek istediğiniz bütün arayüzleri bu bölgede tanıtmanız gerekmektedir. Her tanıtılan yeni arayüz " Ağ Bölgeleri" sayfasında tanıtmış olduğunuz bölgelerle ilişkilendirilmek zorundadır. loopback arayüzü olan  <tt>lo</tt> arayüzünün bu bölgede kullanılmaması gerekmektedir.
 interfaces_add=Yeni Bir Arayüz Ekle
@@ -148,6 +155,7 @@ interfaces_header=Arayüz Detayları
 interfaces_err=Arayüz kaydedilemedi.
 interfaces_eiface=Hatalı ya da eksik arayüz ismi
 interfaces_ebroad=Hatalı ya da eksik broadcast adresi
+
 masq_title=Maskeleme
 masq_desc=Maskeleme işleminde bir arayüzü diğer bir arayüz üzerinden, ya da bir ağı diğer bir ağ üzerinden maskeleyerek çeşitli NAT seçenekleri oluşturabilirsiniz. Örnek olarak firewall unuzda tanımlı iki adet ethernet arayüzü var: bunlardan birincisi olan eth0'a 212.156.x.x gibi real bir ip adresi atanmış durumda, ikinci arayüz olan eth1'e ise 192.168.0.1 gibi bir local ip adresi atanmış ve kullanıcı bilgisayarlarının ağ geçidi doğal olarak 192.168.0.1 olacaktır ve kullanıcı bilgisayarlarının internete çıkabilmeleri için bir NAT işlemine ihtiyaçları olacaktır. Bu durumda eth1 arayüzünü eth0 üzerinden maskeleyerek lokal kullanıcıları internet ortamında tanımlı duruma getirebilirsiniz. 
 masq_add=Yeni Maskeleme Kuralı Ekle
@@ -171,6 +179,7 @@ masq_enet=Hatalı ya da eksik çıkı arayüz hedefi
 masq_emnet=Hatalı ya da eksik subnet adresi
 masq_emnete=Hariç Ağlar Listesi Boş
 masq_esnat=Hatalı SNAT IP Adresi
+
 nat_title=Statik NAT
 nat_desc=Maskeleme Sayfası' ndaki NAT işlemlerinden farklı olarak, statik nat özelliğini birebir uygulamalar için kullanabilirsiniz. Bu uygulama genellikle iç ağınızda yer alan lokal ip adresine sahip bilgisayar veya serverlara internet ortamından  erişim içim kullanılabilir.
 nat_add=Yeni Statik NAT Kuralı Ekle
@@ -189,6 +198,7 @@ nat_local=Firewall Sistemi İçin Aktif Hale Getir?
 nat_eext=Hatalı Dış IP Adresi
 nat_eint=Hatalı İç IP Adresi
 nat_evirt=Hatalı Sanal Arayüz Numarası
+
 proxyarp_title=Proxy ARP
 proxyarp_desc=This page allows you to configure your system to answer ARP requests for IP addresses other than its own, so that it can forward packets to those addresses to their real destinations.
 proxyarp_add=Yeni Proxy ARP Adresi Ekle
@@ -205,6 +215,7 @@ proxyarp_err=Proxy ARP kaydedilemedi
 proxyarp_have=Var olan hosta yönlendirme yapılsın mı?
 proxyarp_eaddr=Hatalı ya da eksik ARP Adresi
 proxyarp_pers=Firewall kapatılırsa yönlendirme işlemi durdurulsun mu?
+
 routestopped_title=Stop Durumu
 routestopped_desc=Standart olarak Firewall işlemi durdurulduğunda Shorewall bütün erişimleri kapatır. Bu sayfada firewall kapalı iken aktif etmek istediğiniz erişimleri konfigure edebilirsiniz. Bu konfigurasyon kritk uygulamalarınızın herhangi bir nedenden dolayı firewall kapansa bile çalışmasını sağlayacaktır.
 routestopped_add=Yeni Stop Durumu Kuralı Ekle
@@ -219,6 +230,7 @@ routestopped_err=Adres kaydedilemedi
 routestopped_eaddr=Adres girilmedi
 routestopped_all=Bütün Adresler
 routestopped_list=Listelenen Adresler ve Ağlar ..
+
 tunnels_title=VPN Tünelleri
 tunnels_desc=Bu sayfada VPN tünelleri oluşturup, firewall a oluşturulan VPN tünelleri için kural tanımlayabilirsiniz.
 tunnels_add=Yeni VPN tüneli ekle
@@ -249,6 +261,7 @@ tunnels_generic_l=Standart, protokol..
 tunnels_gsel=Listelenen bölgeler
 tunnels_eopenvpn=VPN tünel için Hatalı port numarası  
 tunnels_egeneric=Eksik  protokol veya protokol:standart tünel portu
+
 hosts_title=Bölge Hostları
 hosts_desc=Bu sayfada tanımlı bölgelere ait host ve ağ gruplarını konfigure edebilirsiniz. Normal koşullarda bu sayfada herhangi bir işlem yapmanızda gerek bulunmamaktadır. 
 hosts_add=Yeni Bölge Hostu Ekle
@@ -263,8 +276,10 @@ hosts_create=Yeni Bölge Hostu Ekle
 hosts_err=Bölge Hostu Kaydedilemedi
 hosts_header=Bölge Host Detayları
 hosts_routestopped=Firewall kapatılsa bile yönlendirmeye devam et
+
 edit_before=$1 numaralı girdi öncesi
 edit_after=$1 numaralı girdi sonrası
+
 blacklist_title=Kara Liste hostları
 blacklist_desc= Bu sayfada ağınıza zararlı içerik göndermek isteyen veya ağınıza zarar vermek isteyen host ve/veya ağları Kara Liste'ye ekleyerek, bu host ve/veya ağların ağınıza erişimini engelleyebilirsiniz.
 blacklist_add=Yeni Kara Liste Hostu Ekle
@@ -285,11 +300,13 @@ blacklist_eproto=Hatalı ya da eksik protokol
 blacklist_eports=Hatalı port numarası ya da virgüllerin yanlış kullanılmasından dolayı oluşan hatalı port listesi
 blacklist_eports2=Sadece TCP ve UDP protokolleri için host tanımlanabilir.
 blacklist_return=Kara Liste Hostları
+
 manual_desc=Bo formu kullanarak manual olarak $1 shorewall konfigurasyon dosyasını görüntüleyebilir ya da içeriğini değiştirebilirsiniz. 
 manual_reset=Undo
 manual_err=Tablo dosyası kaydedilemedi
 manual_efile=Hatalı tablo ismi
 manual_edata=Tablo dosyası içeriği bulunamadı
+
 acl_nochange=Shorewall konfigurasyonunu uygulayabilsin/durdurabilsin/başlatabilsin.
 acl_files=Shorewall Tabloları
 acl_all=Hepsi

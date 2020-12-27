@@ -14,10 +14,12 @@ index_apply=Anwenden
 index_return=Index
 index_none=You do not have access to any of the features of this module.
 index_delete=Delete Selected Accounts
+
 secrets_title=PPP-Konten
 secrets_return=Index
 secrets_none=Keine PPP-Konten wurden erstellt.
 secrets_ecannot=Sie sind nicht berechtigt, PPP-Konten zu bearbeiten
+
 edit_secret_etitle=PPP-Konto bearbeiten
 edit_secret_ctitle=PPP-Konto anlegen
 edit_secret_acc=PPP-Konten
@@ -37,8 +39,10 @@ edit_secret_alist=Erlaube angezeigte...
 edit_secret_save=Speichern
 edit_secret_del=Löschen
 edit_secret_return=Kontenliste
+
 save_secret_esave=Fehler beim Speichern des Kontos
 save_secret_enoip='$1' ist keine gültige Adresse
+
 log_create=Angelegter PPP-Benutzer $1
 log_modify=Geänderter PPP-Benutzer $1
 log_delete=Gelöschter PPP-Benutzer $1
@@ -50,6 +54,7 @@ log_options2=PPP Optionen für $1 gespeichert
 log_mgetty_create=Seriellen Port $1 erstellt
 log_mgetty_modify=Seriellen Port $1 modifiziert
 log_mgetty_delete=Seriellen Port $1 gelöscht
+
 options_title=PPP Optionen
 options_serial=Für seriellen Port $1
 options_dev=Für Gerät $1
@@ -80,6 +85,7 @@ options_idle=Leerlaufzeit bevor Trennung
 options_idle_def=Niemals
 options_eidle=Fehlende oder ungültige Leerlaufzeit
 options_ecannot=You are not allowed to edit PPP options
+
 mgetty_title=Serielle Portkonfiguration
 mgetty_ecmd=Der Befehl $1 wurde nicht auf Ihrem System gefunden. Dieses Programm wird benötigt, um das Login über serielle Schnittstelle über ein Modem oder eine direkte Verbindung zu behandeln.
 mgetty_desc=For your server to allow logins on a serial port via modem or a direct connection, it must be listed below. When you add a port to this list, the $1 program will be configured to answer modem connections and display a login prompt.
@@ -121,6 +127,7 @@ mgetty_apply=Konfiguration anwenden
 mgetty_applydesc=Click this button to apply the current serial port configuration by running the command $1 and killing all Mgetty processes.
 mgetty_applyerr=Fehlgeschlagen Konfiguration anzuwenden
 mgetty_ecannot=Sie sind nicht berechtigt die serielle Port-Konfigurationen zu bearbeiten
+
 dialin_title=Caller ID Access
 dialin_desc=This page allows you to configure Mgetty to allow or deny dialin access based on the phone number of a caller. When a call comes in, the first entry in the list that matches the phone number will determine whether the call is accepted or not.
 dialin_efile=The Mgetty caller ID access control file $1 was not found on your system. Maybe Mgetty is not installed, or your <a href='$2'>module configuration</a> is incorrect.
@@ -141,9 +148,12 @@ dialin_move=Verschieben
 dialin_err=Failed to save caller ID number
 dialin_enumber=Fehlende oder ungültige Telefonnummer
 dialin_ecannot=You are not allowed to edit caller ID access
+
 acl_pages=Verfügbare Seiten
 acl_direct=Gehe direkt zur ersten Seite?
+
 sync_ecannot=You are not allowed to edit unix-ppp synchronization options
 sync_title=Benutzer-Synchronisation
+
 delete_err=Fehlgeschlagen Accounts zu löschen
 delete_enone=Nichts ausgewählt

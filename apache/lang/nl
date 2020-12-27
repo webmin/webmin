@@ -57,6 +57,7 @@ index_fmode1=Virtuele servers file $1
 index_fmode1d=Nieuwe file in de virtuele servers directory $1
 index_fmode2=Geselecteerde file..
 index_delete=Verwijder Geselecteerde Servers
+
 cvirt_ecannot=U bent niet bevoegd om een virtuele server aan te maken
 cvirt_err=Fout bij het aanmaken van de virtuele server
 cvirt_eaddr1=Geen adres ingevuld
@@ -69,6 +70,7 @@ cvirt_eroot3=U bent niet bevoegd de root directory '$1' te gebruiken
 cvirt_etaken=Een virtuele server met dezelfde naam en poort bestaat al
 cvirt_efile=Mislukt te schrijven naar $1 : $2
 cvirt_emissing=De nieuwe virtuele server is toegevoegd aan $1, Maar de file word niet gebruikt door Apache. Controleer de <a href='$2'>module configuratie</a> en controleer vervolgens of de directory van de file om virtuele servers toe te voegen correct is.
+
 etype=U bent niet bevoegd om de opties van dit type te bewerken
 efailed=Fout bij het opslaan van $1
 apache_apply=Wijzigingen toepassen
@@ -78,6 +80,7 @@ auth_return=Toegang controle
 default_serv=standaard server
 bytes=bytes
 eafter=Verificatie van configuratie mislukt : $1 veranderingen zijn niet opgeslagen.
+
 global_ecannot=U bent niet bevoegd om de globale opties te bewerken
 global_mime=Globale MIME types lijst
 global_mimedesc=Klik op een MIME type in de onderstaande lijst om het te bewerken, of gebruik de link onderaan de pagina om een nieuw type aan de lijst toe te voegen.
@@ -85,6 +88,7 @@ global_type=Type
 global_ext=Extensies
 global_add=Voeg een nieuw MIME type toe
 global_return=MIME types
+
 mime_ecannot=U bent niet bevoegd om MIME types te bewerken
 mime_edit=Bewerk MIME Type
 mime_add=MIME Type Toevoegen
@@ -93,6 +97,7 @@ mime_type=MIME Type
 mime_ext=Extensies
 mime_err=Fout bij het opslaan van MIME type
 mime_etype='$1' is geen geldig MIME type
+
 virt_ecannot=U kunt deze virtuele server niet bewerken
 virt_title=Virtuele Server Opties
 virt_header=Voor $1
@@ -118,6 +123,7 @@ virt_path=Pad
 virt_return=server index
 virt_euser=U bent niet bevoegd de gebruiker of groep van deze virtuele server te wijzigen.
 virt_header2=$1 voor $2
+
 vserv_title=Virtuele Server Configuratie
 vserv_virtualmin=Deze Apache virtuele host behoort tot de Virtualmin server <tt>$1</tt>, dus het adres, de poort, de basis directory en de hostnaam kunnen hier niet worden verandert.
 vserv_ecannot=U kunt niet het adres voor deze virtuele server bewerken
@@ -137,10 +143,12 @@ vserv_eport='$1' is geen geldige poort
 vserv_eroot='$1' is geen geldige document root
 vserv_ename='$1' is geen geldige server naam
 vserv_eaddrs=Geen virtuele server adressen ingevoerd
+
 show_title=Richtlijnen
 show_edit=Bewerk Apache richtlijn:
 show_these=Bewerk richtlijnen met de hand
 show_ok=Bewerk
+
 manual_configs=Bewerk Config Files
 manual_title=Bewerk Richtlijnen
 manual_header=Gebruik het onderstaande tekstveld om de Apache richlijnen in $1 die van toepassing zijn op deze virtuele server, directory of bestanden handmatig te bewerken.
@@ -150,6 +158,7 @@ manual_efile=Ongeldige Apache config file
 manual_etest=Fout in configuratie file ontdekt : $1
 manual_editfile=Bewerk config file:
 manual_switch=Bewerk
+
 dir_title=Per-Directory Opties
 dir_proxyall=Alle proxy aanvragen
 dir_header=Voor $1 op $2
@@ -166,6 +175,7 @@ dir_re=Komt overeen met regexp
 dir_path=Pad
 dir_return=directory index
 dir_header2=$1 voor $2
+
 type_0=Processen en Limieten
 type_1=Netwerken en Adressen
 type_2=Apache Modules
@@ -187,6 +197,7 @@ type_17=Automatische Virtuele Hosts
 type_18=Filters
 type_19=Talen
 type_20=Afbeeldingen Mappen
+
 htaccess_title=Per-Directory Optie Files
 htaccess_ecannot=U kunt geen htaccess bestanden bewerken
 htaccess_file=Bestaande file opties
@@ -202,6 +213,7 @@ htaccess_edelete=U bent niet bevoegd om dit optie bestand te verwijderen
 htaccess_eempty=Er is geen optie file directory ingevuld
 htaccess_eabsolute=Optie file directory moet een absoluut pad zijn
 htaccess_err=Aanmaken van optie file is mislukt
+
 htindex_ecannot=U bent niet bevoegd om deze optie file te bewerken
 htindex_title=Per-Directory Optie File
 htindex_delete=Verwijder Bestand
@@ -217,12 +229,14 @@ htindex_path=Pad
 htindex_header=Voor $1
 htindex_header2=$1 voor optie bestand $2
 htindex_return=file index opties
+
 htfile_title=Per-File Opties
 htfile_header=Voor $1 in $2
 htfile_show=Toon Richtlijnen
 htfile_edit=Bewerk Richtlijnen
 htfile_apply=Opties toevoegen aan ..
 htfile_header2=$1 voor $2
+
 reconfig_title=Her-configureer Bekende Modules
 reconfig_ecannot=U bent niet bevoegd om apache te her-configureren
 reconfig_ever=Fout bij het ophalen van de versie van het Apache server programma $1. Controleer uw <a href='$2'>module configuratie</a> om er zeker van te zijn dat het pad correct is.
@@ -230,11 +244,13 @@ reconfig_desc1=Uw Apache configuratie is gewijzigd, of is nog niet onderzocht do
 reconfig_desc2=Hieronder staat een lijst van alle Apache modules die door Webmin worden ondersteund, met degenen die nu zijn geinstalleerd geselecteerd. Als u dynamisch geladen modules gebruikt moet u mogelijk de dynamisch geladen modules aanvinken.
 reconfig_desc3=Als u niet zeker bent welke modules worden gebruikt door Apache op uw systeem, kan Webmin automatisch uitzoeken welke modules ondersteund worden
 reconfig_ok=Configureer
+
 defines_title=Bewerk Gedefinieerde Parameters
 defines_ecannot=U bent niet bevoegd om httpd definities te bewerken
 defines_desc=Wanneer Apache wordt gestart, kunnen parameters aan apache worden meegegeven met de <tt>-D</tt> opdracht regel optie. Omdat deze parameters invloed kunnen uitoefenen welke richtlijnen gebruikt worden in uw configuratie bestanden, moet Webmin weten welke parameters er aan Apache worden meegegeven wanneer het wordt gestart. Vul de parameters die aan apache worden doorgegeven in het tekstveld aan de rechterkant.
 defines_config=Merk op dat de volgende gedefinieerde parameters al bekend zijn: $1
 defines_list=Definieer de parameters
+
 authu_ecannot='$1' is geen toegestaan gebruikers tekst file
 authu_title=Gebruikers Lijst
 authu_header=In file $1
@@ -256,6 +272,7 @@ authu_sync=De onderstaande opties stellen u in staat om Webmin te configureren v
 authu_screate=Voeg een gebruiker toe wanneer een Unix gebruiker wordt toegevoegd
 authu_sdelete=Verwijder de gebruiker wanneer de Unix gebruiker wordt verwijderd
 authu_smodify=Wijzig de gebruiker wanneer de Unix gebruiker wordt gewijzigd
+
 authg_ecannot='$1' is geen toegestane groepen tekst file
 authg_title=Groepen lijst
 authg_header=In file $1
@@ -273,22 +290,26 @@ authg_err=Fout bij het opslaan van de groep
 authg_euser=Geen groepsnaam ingevuld
 authg_euser2=Het volgende teken mag niet gebruikt worden in een groepsnaam :
 authg_edup=De groep '$1' bestaat al
+
 stop_err=Fout bij het stoppen van apache
 stop_ecannot=U bent niet bevoegd om apache te stoppen
 stop_epid=Fout bij het openen van PID bestand $1
 stop_epid2=Ongeldig PID bestand $1
 stop_esig=Fout bij het sturen van SIGTERM naar proces $1
+
 start_err=Fout bij het starten van apache
 start_ecannot=U bent niet bevoegd om apache te starten
 start_ecmd=$1 mislukt : $2
 start_eunknown=Onbekende reden
 start_eafter=Apache lijkt niet aan te staan
+
 restart_err=Fout bij het toepassen van de wijzigingen
 restart_epid=Fout bij het openen van PID bestand $1
 restart_epid2=Ongeldig PID bestand $1
 restart_esig=Fout bij het sturen van SIGHUP naar proces $1
 restart_eunknown=Onbekende reden
 restart_ecannot=U bent niet bevoegd om veranderingen toe te voegen
+
 acl_virts=Virtuele servers welke deze gebruiker mag bewerken
 acl_vall=Alle servers
 acl_vsel=Geselecteerd..
@@ -311,6 +332,7 @@ acl_dirs=Beschikbare Apache richtlijnen<br><font size=-1>(Behalve de soorten hie
 acl_dirs0=Alles
 acl_dirs1=Alleen die in de lijst
 acl_dirs2=Alles behalve die in de lijst ..
+
 core_maxconc=Maximum aantal opeenvolgende aanvragen
 core_maxkeep=Maximum aantal keep-alives per verbinding
 core_maxreq=Maximum aantal aanvragen per server proces
@@ -493,10 +515,12 @@ core_infilter=Voeg alle input filters toe aan alle files
 core_outfilter=Voeg output filters toe voor alle files
 core_defchar=Karakter set voor document
 core_edefchar=Ontbrekende of ongeldige karakter voor documenten
+
 mod_negotiation_cache=Cache de inhoud-onderhandelde documenten?
 mod_negotiation_pri=Talen prioriteit voor Multi-bekijken
 mod_negotiation_def=Standaard
 mod_negotiation_epri=Ontbrekende talen prioriteiten
+
 mod_cgi_logname=CGI Script log
 mod_cgi_none=Geen
 mod_cgi_elogname=Foutief CGI script voor log file
@@ -506,6 +530,7 @@ mod_cgi_elogsize=CGI log afmeting moet een heel cijfer zijn
 mod_cgi_post=Maximaal gelogde post data grote
 mod_cgi_epost=Post data grote moet een heel cijfer zijn
 mod_cgi_eunder=CGI script log zit niet in de toegestane directory
+
 mod_alias_from=Van
 mod_alias_to=Naar
 mod_alias_status=Status
@@ -529,6 +554,7 @@ mod_alias_cgi2=CGI directory alias
 mod_alias_rcgi=Regexp CGI directory aliassen
 mod_alias_rcgi2=regexp CGI directory alias
 mod_alias_estatus='$1' is geen geldige status
+
 mod_proxy_proxy=Werken als proxy server?
 mod_proxy_req=Aanvragen
 mod_proxy_forw=Doorsturen naar
@@ -599,11 +625,13 @@ mod_proxy_timeout=Proxy aanvraag timeout in seconden
 mod_proxy_etimeout=Proxy aanvraag time-out moet in aantal seconden
 mod_proxy_via=Set Via: headers
 mod_proxy_not=Geen
+
 mod_log_agent_default=Standaard
 mod_log_agent_file=File..
 mod_log_agent_program=Programma..
 mod_log_agent_log=Browser rapport file
 mod_log_agent_efile=$1 is geen geldig browser rapport bestand
+
 mod_log_config_common=Gebruikelijk Rapport Formaat
 mod_log_config_named=Benoemde Rapport Formaten
 mod_log_config_nick=Bijnaam
@@ -622,6 +650,7 @@ mod_log_config_enofilprog=Ontbrekende log filenaam of programma
 mod_log_config_efilprog='$1' is geen toegestane rapport bestandsnaam of programma
 mod_log_config_eifset='Indien ingesteld' kunnen opties niet gebruikt worden met het standaard rapport formaat
 mod_log_config_edir=Directory voor log file '$1' bestaat niet
+
 mod_log_referer_default=Standaard
 mod_log_referer_file=File..
 mod_log_referer_program=Programma..
@@ -629,7 +658,9 @@ mod_log_referer_log=Verwijzing log file
 mod_log_referer_nolog=Verwijzingen niet rapporteren van
 mod_log_referer_elog=$1 is geen geldig verwijzers rapport bestand
 mod_log_referer_edir=verwijzing rapport bevindt zich niet onder de toegestane directory
+
 mod_status_msg=Geef uitgebreide statusinformatie weer
+
 mod_mime_ext=Extensies
 mod_mime_xtype=Extra MIME typen
 mod_mime_mtype=MIME type
@@ -662,6 +693,7 @@ mod_mime_outfilter=Output filters
 mod_mime_infilter=Input filters
 mod_mime_filters=Filters om toe te voegen
 mod_mime_efext=Geen uitbreidingen gegeven voor filter(s) $1
+
 mod_setenvif_header=Header
 mod_setenvif_match=Overeenkomst
 mod_setenvif_case=Vergelijk hoofd / kleine letters
@@ -672,11 +704,13 @@ mod_setenvif_eheader=Ongeldige aanvraag header '$1'
 mod_setenvif_eregex=Ongeldige reguliere expressie  '$1'
 mod_setenvif_evar=Ongeldige variabele naam '$1'
 mod_setenvif_clear=Wissen
+
 mod_userdir_default=Standaard
 mod_userdir_all=Alle gebruikers toegankelijk
 mod_userdir_except=Alle gebruikers behalve
 mod_userdir_dir=Gebruikers WWW directory
 mod_userdir_edir=U bent niet bevoegd de WWW directory van deze gebruiker te gebruiken
+
 mod_imap_action=Actie bij onjuist gebruik van afbeeldings mappen
 mod_imap_default=Standaard
 mod_imap_godefurl=Ga naar standaard URL
@@ -696,8 +730,10 @@ mod_imap_refurl=Verwijzende URL
 mod_imap_url=URL...
 mod_imap_defbase=Standaard basis voor afbeeldings mappen
 mod_imap_eurl='$1' is geen geldige URL
+
 mod_speling_autocorr=Automatisch fout gespelde URLs corrigeren?
 mod_speling_default=Standaard
+
 mod_actions_mime=Verwerker / MIME type
 mod_actions_cgiurl=CGI script URL
 mod_actions_mimecgi=Verwerken van MIME type CGI acties
@@ -707,10 +743,13 @@ mod_actions_httpcgi=HTTP methode CGI acties
 mod_actions_emime='$1' is geen geldige verwerker of MIME type
 mod_actions_ecgi='$1' is geen geldig CGI script
 mod_actions_enometh=Geen methode gekozen voor CGI script '$1'
+
 mod_include_incl=Verwerk invoegingen op bestanden met uitvoer bit?
 mod_include_set=Ja en stel de laatst bewerkte datum in
 mod_include_default=Standaard
+
 mod_dir_txt=Directory index bestanden
+
 mod_autoindex_default=Standaard
 mod_autoindex_asc=Oplopend
 mod_autoindex_descend=Aflopend
@@ -719,6 +758,7 @@ mod_autoindex_date=Datum
 mod_autoindex_size=Grootte
 mod_autoindex_desc=Omschrijving
 mod_autoindex_sort=Sorteer directory index op
+
 browsermatch_regexp=Browser regex
 browsermatch_case=Vergelijk hoofd/kleine letters?
 browsermatch_var=Stel variabele in
@@ -726,6 +766,7 @@ browsermatch_value=Waarde
 browsermatch_txt=Variabelen instellen op basis van browser type
 browsermatch_evar=Ongeldige variabele naam '$1'
 browsermatch_clear=Leeg maken
+
 autoindex_fname=Filenaam
 autoindex_mime=MIME type
 autoindex_enc=Codering
@@ -779,9 +820,11 @@ autoindex_sicon=Laat file iconen zien
 autoindex_srules=Laat &lt;hr&gt; regels zien
 autoindex_track=Inclusief ETags in header
 autoindex_version=Sorteer met string versie
+
 mod_mime_magic_file=MIME magische nummers file
 mod_mime_magic_none=Geen
 mod_mime_magic_efile=Ongeldig MIME magisch nummers filenaam
+
 mod_env_var=Variabele
 mod_env_value=Waarde
 mod_env_pass=Geef door
@@ -792,6 +835,7 @@ mod_env_passall=Geef alle omgevingsvariabelen door aan CGIs
 mod_env_default=Standaard
 mod_env_evar='$1' is geen geldige variabele naam
 mod_env_evalue='$1' is geen geldige variabele waarde
+
 mod_access_order=Toegangscontrole volgorde :
 mod_access_denyallow=Weigeren en dan toestaan
 mod_access_allowdeny=Toestaan en dan weigeren
@@ -814,6 +858,7 @@ mod_access_epip='$1' is geen geldig gedeeltelijk IP adres
 mod_access_emask='$1' is geen geldig netwerk/netmask paar
 mod_access_ecidr='$1' is geen geldig network/CIDR paar
 mod_access_evar='$1' is geen geldige variabele naam
+
 mod_auth_ufile=Gebruikers tekst file
 mod_auth_uedit=Gebruikers bewerken
 mod_auth_gfile=Groep tekst bestand
@@ -824,6 +869,7 @@ mod_auth_eudir=Gebruikers tekst bestand bevindt zich niet onder de toegestane di
 mod_auth_egdir=Groep tekst bestand bevindt zich niet onder de toegestane directory
 mod_auth_eufile=Ongeldige gebruikers tekst bestandsnaam
 mod_auth_egfile=Ongeldige groep tekst bestandsnaam
+
 mod_auth_dbm_ufile=Gebruiker DBM bestand
 mod_auth_dbm_gfile=Groep DBM bestand
 mod_auth_dbm_pass=Geef fouten door aan volgende module?
@@ -834,6 +880,7 @@ mod_auth_dbm_egfile=Ongeldige groep DBM bestandsnaam
 mod_auth_dbm_type=DBM database type
 mod_auth_dbm_gtype=DBM groep database type
 mod_auth_dbm_default=Standaard DBM formaat
+
 mod_cern_meta_process=Verwerk header metafiles
 mod_cern_meta_dir=Subdirectory voor header metafiles
 mod_cern_meta_default=Standaard
@@ -841,6 +888,7 @@ mod_cern_meta_edir=Ongeldige metafile subdirectory naam
 mod_cern_meta_suffix=File voorvoegsel voor header metafiles
 mod_cern_meta_default2=Standaard
 mod_cern_meta_esuffix=Ongeldig metafile voorvoegsel
+
 mod_ssl_enable=SSL inschakelen?
 mod_ssl_proto=SSL protocollen
 mod_ssl_cfile=Certificaat / privé sleutel bestand
@@ -868,6 +916,7 @@ mod_ssl_passsc=Uitvoeren script $1
 mod_ssl_epassph=Geen SSL wachtwoord ingegeven
 mod_ssl_epasssc=Ontbrekende of ongeldige SSL wachtwoord script
 mod_ssl_ecerton=Wanneer SSL aanstaat moet er een certificaat geselecteerd zijn
+
 mod_apachessl_notssl=Negeer SSL toegang
 mod_apachessl_forcessl=Forceer SSL/geenSSL toegang?
 mod_apachessl_capath=Pad naar de directory met certificaten van de "Certificaten Autorisatie" in
@@ -900,6 +949,7 @@ mod_apachessl_nov2=Uitschakelen SSL versie 2
 mod_apachessl_fake=Simuleer de identificatie van de gebruiker inlog's, met gebruik van de certificaat naam
 mod_apachessl_cdnfile=File waarmee de cliënt DN is gecontroleerd
 mod_apachessl_ecdnfile=Ontbrekende File waarmee de cliënt DN is gecontroleerd
+
 log_global=Gewijzigd globale $1 opties
 log_virtc=Aangemaakte server $1
 log_virts=Her-configureer server $1
@@ -940,8 +990,10 @@ log_stop=Gestopte webserver
 log_apply=Wijzigingen toegevoegd
 log_manual=Handmatig gewijzigde configuratie file $1
 log_virts_delete=Verwijderde $1 virtuele servers
+
 search_title=Zoek servers
 search_notfound=Geen overeengekomen virtuele servers gevonden
+
 mod_php_value=PHP Configuratie Waardes
 mod_php_flag=PHP Configuratie Vlaggen
 mod_php_admin_value=PHP Admin Configuratie Waardes
@@ -950,6 +1002,7 @@ mod_php_name_header=Instelling
 mod_php_value_header=Waarde
 mod_php_ename='$1' is een verkeerde naam
 mod_php_evalue='$1' is een ongeldige waarde voor $2
+
 mod_vhost_alias_root=Automatische virtuele host root
 mod_vhost_alias_ip=IP adressen gebruiken in plaats van hostnaam?
 mod_vhost_alias_none=Geen
@@ -957,12 +1010,14 @@ mod_vhost_alias_script=Automatische virtuele host cgi-bin
 mod_vhost_alias_eroot=Ontbrekende of ongeldige virtuele host root
 mod_vhost_alias_eroot2=Virtuele host root directory is niet toegestaan
 mod_vhost_alias_escript=Ontbrekende of ongeldige virtuele host cgi-bin
+
 worker_minspare=Minimum reserve afhandelingen
 worker_maxspare=Maximum reserve afhandelingen
 worker_eminspare=Minimale reserve uitvoeringen moet een heel getal zijn
 worker_emaxspare=Maximale reserve uitvoeringen moet een heel getal zijn
 worker_threads=Afhandelingen per neven proces
 worker_ethreads=Aantal uitvoeringen per neven proces moet een heel getal zijn
+
 perchild_sthreads=Aanvankelijke uitvoeringen per neven proces
 perchild_esthreads=Aantal uitvoeringen per neven proces moet een geheel getal zijn
 perchild_numservers=Aantal neven processen
@@ -978,6 +1033,7 @@ perchild_gid=GID
 perchild_enum=Proces getal moet geheel getal zijn
 perchild_euid=UID moet een geheel getal zijn
 perchild_egid=GID moet een geheel getal zijn
+
 cache_enable=Actief?
 cache_type=Cache opslaan
 cache_disk=Harddisk
@@ -998,12 +1054,14 @@ cache_eminos=Minimale grote van het object wat in cache moet staan in bytes
 cache_emaxos=Maximale grote van het object wat in cache moet staan in bytes
 cache_maxoc=Maximaal aantal objecten om in het geheugen-cache te zetten
 cache_emaxoc=Het aantal objecten die in het cache-geheugen moeten staan is gelijk aan
+
 suexec_su=Voer CGI programma uit als
 suexec_none=Gebruikers van de globale configuratie
 suexec_user=Unix gebruiker
 suexec_group=en groep
 suexec_euser=Ontbrekende of ongeldige gebruiker om CGI programma's te starten als
 suexec_egroup=Ontbrekende of ongeldige groep om CGI programma's te starten als
+
 filter_name=Naam
 filter_intype=Input MIME type
 filter_outtype=Resultaat MIME type
@@ -1013,11 +1071,13 @@ filter_in=Opgeven Filter Definities
 filter_out=Resultaat Filter Definities
 filter_ename=Ongeldige filter naam '$1'
 filter_ecmd=Ontbrekende opdracht voor filter '$1'
+
 cdir_err=Slaagde er niet in om per-directory opties te veranderen
 cdir_err2=Slaagde er niet in om per-directory opties op te slaan
 cdir_epath=Pad ontbreekt
 cdir_eproxy=Proxy opties kunnen niet worden gemaakt wanneer de regexp optie aanstaat
 cdir_ecannot=U bent niet bevoegd opties te veranderen voor de directory van het opgegeven pad
+
 mod_band_enable=Bandbreedte Limieten aangeschakeld?
 mod_band_bw=Limiet (bytes/sec)
 mod_band_client=Voor clients
@@ -1036,24 +1096,30 @@ mod_band_epulse=Ontbrekende of ongeldige interval tussen gelimiteerde pakketten
 mod_band_dir=Bandbreedte limieten data file directory
 mod_band_edir=Ontbrekende of niet-bestaande bandbreedte data file directory
 mod_band_esubdir=Ontbrekende benodigde subdirectory <tt>$1</tt> in de bandbreedte data file directory
+
 mod_dav_active=WebDAV aanzetten?
 mod_dav_inf=Toestaan oneindige diepte DAV PROPFIND aanvragen?
 mod_dav_timeout=Minimale DAV timeout in seconden
 mod_dav_etimeout=Ontbrekend of ongeldige DAV time-out
+
 delete_err=Mislukt om virtuele servers te verwijderen
 delete_enone=Niets geselecteerd
 delete_ecannot=U bent niet bevoegd servers te verwijderen
 delete_ecannot2=U bent niet bevoegd de server $1 te bewerken
+
 syslog_desc=Apache fouten log
+
 mod_auth_basic_pass=Doorgeven van mislukte basis inlog fouten naar de volgende module?
 mod_auth_basic_prov=Basis gebruiker inlog file types
 mod_auth_basic_file=Tekst file
 mod_auth_basic_dbm=DBM database
+
 mod_auth_digest_pass=Doorgeven samenvatting inlog fouten naar de volgende module?
 mod_auth_digest_prov=Samenvatting gebruiker inlog file type
 mod_auth_digest_al=Hashing algoritme
 mod_auth_digest_domain=URLs en paden in hetzelfde domein
 mod_auth_digest_edomain=Ontbrekende URLs en paden in hetzelfde domein
+
 mods_title=Configureer Apache Modules
 mods_mod=Module
 mods_state=Huidige staat

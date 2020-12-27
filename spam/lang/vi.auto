@@ -13,6 +13,7 @@ index_applydesc=Nhấp vào nút này để áp dụng cấu hình SpamAssassin 
 index_cpan=Vì SpamAssassin là mô-đun Perl, bạn cũng có thể tự động cài đặt nó bằng mô-đun <a href='$2'>Mô-đun Perl</a> của Webmin để tải xuống $1 từ CPAN.
 index_spamassassin=SpamAssassin
 index_ecannot=Bạn không được phép quản lý tệp cấu hình SpamAssassin $1 
+
 white_title=Địa chỉ được phép và bị từ chối
 white_desc=Các bảng trên trang này cho phép bạn chỉ định các địa chỉ Từ: và Đến: cho email luôn luôn hoặc không bao giờ được phân loại là thư rác. Bất kỳ email nào khác sẽ được xử lý như bình thường theo quy tắc của SpamAssassin. Tất cả các địa chỉ email có thể chứa các ký tự đại diện, như *@foo.com hoặc *.foo.com để khớp với toàn bộ tên miền.
 white_from=Người gửi không bao giờ phân loại là thư rác
@@ -44,6 +45,7 @@ white_tabham=Địa chỉ được phép
 white_tabspam=Địa chỉ bị từ chối
 white_tabsome=Địa chỉ đích
 white_tabimport=Nhập địa chỉ
+
 score_title=Phân loại thư rác
 score_desc=SpamAssassin chỉ định điểm cho mỗi tin nhắn dựa trên nội dung và tiêu đề của nó. Các tùy chọn trên trang này xác định điểm trên đó tin nhắn được coi là thư rác và một số phương pháp tính điểm đó.
 score_header=Tùy chọn phân loại tin nhắn rác
@@ -77,6 +79,7 @@ score_emxdelay=Thiếu giây hoặc không hợp lệ để chờ giữa các l�
 score_etimeout=Thiếu hoặc không hợp lệ giây để chờ truy vấn RBL
 score_ereceived=Số lượng nhận hoặc thiếu không hợp lệ: các tiêu đề để kiểm tra với RBL
 score_bayes=Sử dụng phân loại học Bayes?
+
 report_title=Sửa đổi tin nhắn
 report_desc=Các tùy chọn trên trang này kiểm soát các sửa đổi mà SpamAssassin thực hiện đối với các tiêu đề và nội dung của tất cả các thư mà nó phân tích và các sửa đổi mà nó thực hiện đối với các thư được phân loại là spam.
 report_header=Tùy chọn sửa đổi phân tích và thư rác
@@ -109,6 +112,7 @@ report_addspam=Thư rác
 report_addham=giăm bông
 report_addall=Tất cả
 report_eaddheader=Thiếu tiêu đề bổ sung hoặc không hợp lệ để thêm $1 
+
 user_title=Tùy chọn người dùng khác
 user_desc=Các tùy chọn trên trang này hầu hết liên quan đến các đường dẫn và cài đặt mà SpamAssassin sử dụng cho các gói nhận dạng thư rác bên ngoài là Dao cạo, DCC và Pyzor. Bạn cũng có thể nói với SpamAssassin nếu nó có thể thực hiện tra cứu DNS hay không.
 user_header=Tùy chọn cấp độ người dùng khác
@@ -131,6 +135,7 @@ user_err=Không thể lưu tùy chọn người dùng
 user_etimeout='$1' không phải là thời gian chờ hợp lệ
 user_epath='$1' không phải là đường dẫn chương trình khách hàng hợp lệ
 user_emax='$1' không phải là tổng kiểm tra hợp lệ
+
 header_title=Kiểm tra tiêu đề và cơ thể
 header_desc=Trang này cho phép bạn xác định các thử nghiệm bổ sung mà SpamAssassin sẽ áp dụng cho email, dựa trên các tiêu đề thư, nội dung chính, URL được tìm thấy trong nội dung hoặc kết hợp các thử nghiệm khác. Tên được gán cho mỗi bài kiểm tra là tùy thuộc vào bạn, nhưng thường là một cái gì đó giống như CONTAINS_FOO. Điểm thực tế mà SpamAssassin thêm vào thư phù hợp với bài kiểm tra có thể được đặt bằng cách nhập tên bài kiểm tra của riêng bạn hoặc tích hợp vào các bảng ở cuối trang.
 header_switch=Chuyển sang chế độ đơn giản ..
@@ -164,6 +169,7 @@ header_eeval='$1' không phải là chức năng đánh giá hợp lệ
 header_eheader='$1' không phải là tiêu đề email hợp lệ
 header_eregexp='$1' không phải là biểu thức chính quy hợp lệ (phải giống như / biểu thức /)
 header_emeta=Thiếu biểu thức kiểm tra cho bài kiểm tra '$1'
+
 priv_title=Tùy chọn đặc quyền khác
 priv_desc=Các tùy chọn trên này chỉ có thể được đặt trên toàn cầu, thay vì trong các tệp cấu hình của người dùng cá nhân. Họ kiểm soát với các đường dẫn đến tập tin cấu hình và đăng nhập khác nhau.
 priv_header=Cài đặt cấp đặc quyền khác
@@ -183,6 +189,7 @@ priv_eargs='$1' không phải là danh sách đối số hợp lệ
 priv_emscore='$1' không phải là điểm số cụm từ cao nhất hợp lệ
 priv_ephrase='$1' không phải là cụm từ spam hai từ hợp lệ
 priv_escore=Điểm thiếu hoặc không hợp lệ cho cụm từ spam '$1'
+
 usually=Thường là $1 
 ecannot=Bạn không được phép sử dụng trang này
 setup_title=Cài đặt Procmail cho SpamAssassin
@@ -202,11 +209,13 @@ setup_drop1=Người dùng Unix người nhận
 setup_drop0=người dùng <tt>root</tt>
 setup_ok=Cài đặt Procmail cho SpamAssassin
 setup_email=Chuyển tiếp đến địa chỉ email
+
 setup_err=Không thể thiết lập SpamAssassin
 setup_efile=Tệp định dạng mbox bị thiếu hoặc không hợp lệ
 setup_emaildir=Thư mục thư Qmail bị thiếu hoặc không hợp lệ
 setup_emhdir=Thư mục thư MH bị thiếu hoặc không hợp lệ
 setup_eemail=Địa chỉ email bị thiếu hoặc không hợp lệ
+
 log_white=Sửa đổi địa chỉ được phép và bị từ chối
 log_score=Phân loại thư rác đã sửa đổi
 log_report=Sửa đổi thông báo sửa đổi
@@ -217,12 +226,14 @@ log_setup=Cài đặt Procmail cho SpamAssassin
 log_procmail=Thay đổi cấu hình Procmail
 log_import=Đã nhập $1 địa chỉ được phép
 log_manual=Chỉnh sửa tập tin cấu hình bằng tay
+
 import_title=Địa chỉ nhập khẩu
 import_err=Không thể nhập địa chỉ
 import_efile=Không có tệp nào để nhập từ đã chọn
 import_enone=Không tìm thấy địa chỉ email trong tập tin
 import_ok1=$2 địa chỉ email đã được tìm thấy trong tệp, trong đó $1 là địa chỉ mới và đã được thêm vào danh sách địa chỉ alllowed.
 import_ok2=$1 địa chỉ email đã được tìm thấy trong tệp, nhưng tất cả chúng đều đã có trong danh sách địa chỉ được phép.
+
 mail_title=Thư rác
 mail_desc=Trang này liệt kê các tin nhắn đã được phân loại là thư rác và đang chờ một số hành động. Tin nhắn đã được xác định không chính xác có thể được chuyển đến Hộp thư đến của bạn, trong khi những thư thực sự là thư rác có thể bị xóa.
 mail_level=Ghi bàn
@@ -240,10 +251,13 @@ mail_will=Tự động làm mới trong $1 phút
 mail_wills=Tự động làm mới sau $1 giây
 mail_delall=Xóa tất cả thư rác
 mail_search3=Tìm kiếm điểm trên:
+
 process_eclean=Đã xảy ra lỗi khi xóa các tiêu đề SpamAssassin khỏi email này
 process_ereport=Không thể báo cáo email đến SpamAssassin : $1 
+
 apply_err=Không thể áp dụng thay đổi
 apply_none=Không tìm thấy quy trình daemon SpamAssassin!
+
 acl_avail=Các biểu tượng có sẵn cho người dùng
 acl_file=Tệp cấu hình SpamAssassin để chỉnh sửa
 acl_filedef=Tập tin cấu hình toàn cầu
@@ -251,8 +265,10 @@ acl_awl=Người dùng được phép chỉnh sửa danh sách trắng tự đ�
 acl_awl0=Tất cả người dùng
 acl_awl1=Chỉ người dùng được liệt kê $1 
 acl_awl2=Chỉ thành viên của nhóm $1 
+
 search_escore=Điểm thư rác bị thiếu hoặc không hợp lệ
 search_results5=$1 thư có điểm thư rác bằng hoặc cao hơn $2 ..
+
 razor_title=Thiết lập công cụ phát hiện thư rác
 razor_desc=Vipul's Razor là một hệ thống báo cáo và phát hiện thư rác hợp tác có thể cải thiện việc phân loại thư rác được gửi đến địa chỉ của bạn. Tuy nhiên, trước khi có thể sử dụng, bạn phải đăng ký tài khoản Dao cạo, sử dụng mẫu dưới đây.
 razor_user=Tên người dùng dao cạo
@@ -267,6 +283,7 @@ razor_epass=Thiếu mật khẩu
 razor_doing=Bây giờ đang cố gắng đăng ký và thiết lập Dao cạo ..
 razor_done=.. làm xong.
 razor_failed=.. thất bại! Xem đầu ra lỗi ở trên cho lý do tại sao.
+
 amavisd_title=Chuyển phát thư rác
 amavisd_desc=Biểu mẫu có thể được sử dụng để thay đổi cấu hình Amav điều trị xác định điều gì xảy ra với các thư được phân loại là thư rác.
 amavis_ok=Thay đổi giao hàng tận nơi
@@ -304,9 +321,11 @@ amavis_quarantine_today=Thư rác trong Kiểm dịch hôm nay (24h)
 amavis_quarantine_week=Thư rác trong Kiểm dịch tuần này (7 ngày)
 amavis_quarantine_month=Thư rác trong Kiểm dịch tháng này (30 ngày)
 amavis_quarantine_total=Tổng số thư Spam trong Kiểm dịch
+
 procmail_title=Gửi thư rác Procmail
 procmail_ok=Thay đổi giao hàng Procmail
 procmail_desc=Biểu mẫu có thể được sử dụng để thay đổi cấu hình Procmail xác định điều gì xảy ra với các thư được phân loại là thư rác.
+
 simple_title=Kiểm tra tiêu đề và cơ thể
 simple_desc=Trang này cho phép bạn xác định các xét nghiệm bổ sung mà SpamAssassin sẽ áp dụng cho email, dựa trên các tiêu đề thư, nội dung cơ thể, URL được tìm thấy trong cơ thể. Tên được gán cho mỗi bài kiểm tra là tùy thuộc vào bạn, nhưng thường là một cái gì đó giống như CONTAINS_FOO.
 simple_switch=Chuyển sang chế độ nâng cao ..
@@ -317,8 +336,10 @@ simple_regexp=Biểu thức khớp
 simple_score=Điểm để áp dụng
 simple_describe=Sự miêu tả
 simple_err=Không thể lưu kiểm tra tin nhắn
+
 before_ecmd=Lệnh lưu trước không thành công : $1 
 after_ecmd=Lệnh lưu sau thất bại : $1 
+
 connect_emysql=Không thể tải trình điều khiển cơ sở dữ liệu $1 
 connect_elogin=Không thể đăng nhập vào cơ sở dữ liệu $1:$2.
 connect_equery=Cơ sở dữ liệu $1 không chứa bảng tùy chọn $2 
@@ -326,9 +347,11 @@ connect_eldapmod=Mô-đun Perl $1 cần thiết để giao tiếp với LDAP kh�
 connect_eldap=Không thể kết nối với máy chủ LDAP $1 trên cổng $2 
 connect_eldaplogin=Không thể đăng nhập vào máy chủ LDAP $1 dưới dạng $2 : $3 
 connect_ebase=Cơ sở LDAP DN $1 không hợp lệ : $2 
+
 eldap=Hoạt động LDAP không thành công : $1 
 esql=SQL thất bại : $1 
 ldap_euser=Không thể tìm thấy đối tượng người dùng LDAP cho $1 
+
 db_title=Cơ sở dữ liệu SQL và LDAP
 db_header=Tùy chọn cơ sở dữ liệu lưu trữ cấu hình
 db_dsn=Lưu cấu hình người dùng trong
@@ -364,6 +387,7 @@ db_eldapport=Số cổng máy chủ LDAP bị thiếu hoặc không hợp lệ
 db_eldapdn=DN thiếu hoặc không hợp lệ - không được phép có khoảng trắng
 db_eldapattr=Thiếu hoặc không hợp lệ thuộc tính SpamAssassin
 db_eldapuid=Thuộc tính tên người dùng bị thiếu hoặc không hợp lệ
+
 awl_title=Quản lý danh sách trắng tự động
 awl_search=Tìm kiếm danh sách trắng cho:
 awl_ok=Tìm kiếm
@@ -389,6 +413,7 @@ awl_deleteone=Xóa danh sách trắng tự động
 awl_deleteonedesc=Xóa tất cả các mục nhập danh sách trắng tự động cho người dùng $1.
 awl_deleteall=Xóa tất cả danh sách trắng tự động
 awl_deletealldesc=Xóa tất cả các mục nhập danh sách trắng tự động cho tất cả người dùng trên hệ thống.
+
 dawl_err=Không thể xóa khỏi danh sách trắng tự động
 dawl_eopen=Không thể mở danh sách trắng
 dawl_enone=Không có địa chỉ để xóa được chọn
@@ -396,6 +421,7 @@ dawl_ecannot=Bạn không được phép quản lý danh sách trắng tự đ�
 dawl_doing=Xóa danh sách trắng tự động cho tất cả người dùng ..
 dawl_done=.. đã xóa $2 mục từ $1 người dùng.
 dawl_title=Xóa tất cả danh sách trắng tự động
+
 manual_title=Chỉnh sửa tập tin cấu hình
 manual_file=Chỉnh sửa tập tin cấu hình:
 manual_ok=đồng ý

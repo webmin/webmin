@@ -16,6 +16,7 @@ index_cancel=Anulați conexiunea
 index_canceldesc=Clientul ADSL încearcă în prezent să stabilească o conexiune. Faceți clic pe acest buton pentru a anula încercarea cu comanda $1.
 index_cdemand=Anulați la cerere
 index_cdemanddesc=Clientul ADSL așteaptă în prezent o cerere de conectare la cerere. Faceți clic pe acest buton pentru ao opri cu comnmand $1.
+
 index_header=Opțiuni de configurare a clientului ADSL
 index_desc=Setările de mai jos se aplică oricărei noi conexiuni ADSL pornite de sistemul dvs. Dacă le schimbați, conexiunea trebuie să fie oprită și reluată pentru ca modificările să aibă efect.
 index_eth=Interfață Ethernet
@@ -36,11 +37,13 @@ index_fw_standalone=Pentru o singură gazdă
 index_fw_masquerade=Pentru gateway NAT
 index_connect=E timpul să încercați conexiunea pentru
 index_forever=Pentru totdeauna
+
 start_err=Eroare la pornirea conexiunii ADSL
 start_title=Porniți ADSL
 start_ip=S-a stabilit o conexiune ADSL cu adresa IP $1.
 start_demand=Deoarece modul de conectare la cerere este activat, conexiunea dvs. ADSL va fi pornită numai atunci când este nevoie.
 start_bg=Conexiunea ADSL nu a fost pornită în 20 de secunde. Clientul ADSL va continua să încerce să se conecteze în fundal până la succes.
+
 save_err=Nu a reușit să salveze configurația ADSL
 save_eeth=Interfață Ethernet care lipsește sau are aspect nevalid
 save_etimeout=Lipsește sau este nevalid un interval de timp la cerere
@@ -49,10 +52,12 @@ save_econnect=Lipsește sau nu este valabil timpul de conectare
 save_emss=Dimensiunea maximă a pachetului lipsește sau este nevalidă
 save_title=Salvați configurarea
 save_desc=Configurația clientului dvs. ADSL a fost salvată cu succes, dar nu va fi utilizată până când vă reconectați.
+
 stop_err=Nu a reușit să oprească conexiunea ADSL
 stop_title=Închideți ADSL
 stop_ok=Conexiunea dvs. ADSL a fost oprită cu succes.
 stop_failed=Conexiunea dvs. ADSL este încă activă din anumite motive!
+
 log_save=Configurarea clientului salvat
 log_stop=Opriți ADSL
 log_start=A început ADSL

@@ -8,6 +8,7 @@ index_none=לא הוגדרו אפשרויות אתחול. הקפד להוסיף 
 index_efile=קובץ התפריט GRUB $1 לא נמצא במערכת שלך. אולי GRUB אינו מותקן, או <a href='$2'>תצורת המודול</a> שגויה.
 index_epath=ההפעלה של GRUB $1 לא נמצאה במערכת שלך. אולי GRUB אינו מותקן, או <a href='$2'>תצורת המודול</a> שגויה.
 index_return=רשימת אפשרויות
+
 title_add=הוסף אפשרות אתחול
 title_edit=ערוך את אפשרות האתחול
 title_header=פרטי אפשרות תפריט אתחול
@@ -36,6 +37,7 @@ title_echain=קובץ טוען שרשרת חסר או לא חוקי
 title_edev=התקן מחיצת שורש לא נתמך $1 
 title_einitrd=חסר שם קובץ ramdisk ראשוני
 title_lock=סיסמא נעולה?
+
 global_title=אופציות עולמיות
 global_header=אפשרויות תפריט אתחול גלובליות
 global_default=אפשרות ברירת מחדל לאתחול
@@ -56,12 +58,14 @@ global_edev=התקנת דיסק/מחיצה $1 אינה נתמכת
 global_eother=דיסק/מחיצה חסרים או לא חוקיים
 global_epassword=סיסמת אתחול חסרה או לא חוקית
 global_epasswordfile=חסר שם קובץ חלופי בתפריט
+
 install_title=התקן GRUB
 install_err=התקנת GRUB נכשלה
 install_efind=לא נמצא קובץ תפריט
 install_desc=התקנת GRUB על $1 עם פקודות $2 ו- $3.
 install_ok=.. התקן הושלם.
 install_failed=.. ההתקנה נכשלה!
+
 log_create_title=נוצר אפשרות אתחול $1 
 log_delete_title=אפשרות האתחול $1 נמחקה
 log_modify_title=אפשרות אתחול שונה $1 

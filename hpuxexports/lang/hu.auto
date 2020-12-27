@@ -14,6 +14,7 @@ index_ro_rw=minden host olvasási hozzáférést, a kiválasztott hosts írási 
 index_sel_rw=kiválasztott házigazdák írási hozzáférést
 index_all_rw=minden házigazda írja a hozzáférést
 index_sel_root=a kiválasztott gazdagép-hozzáférés
+
 edit_title=Exportálás szerkesztése
 create_title=Exportálás létrehozása
 edit_details=Adatok exportálása
@@ -56,6 +57,7 @@ edit_anon_access=Névtelen felhasználó
 edit_anon_notset=Nincs beállítva
 edit_anon_noaccess=Nincs hozzáférés
 edit_async=Asynchronous ír
+
 save_err=Az exportálás mentése nem sikerült
 save_edir=A (z) '$1' könyvtár nem létezik
 save_enetgroup=Érvénytelen vagy hiányzó hálózati csoport
@@ -65,6 +67,7 @@ save_ehost='$2' - '$1' nem érvényes gazdagépnév
 save_enohost='$1' - Nem adott meg gazdagépet
 save_euids=A nem megbízható UID-k vesszővel elválasztott számok vagy tartományok listájának kell lennie
 save_egids=A nem megbízható GID-knek vesszővel elválasztott számok vagy tartományok listájának kell lennie
+
 log_modify=Módosított NFS export $1 
 log_modify_l=Módosított NFS export $1 - $2 
 log_delete=Törölt NFS export $1 

@@ -15,6 +15,7 @@ index_actform=Formulier
 index_actrun=Uitvoeren
 index_actsql=Formulier
 index_acted=Open
+
 edit_title=Bewerk Opdracht
 create_title=Maak nieuwe Opdracht
 edit_ecannot=U mag geen opdrachten wijzigen
@@ -65,6 +66,7 @@ edit_format3=Omleiden naar formulier
 edit_servers=Uitvoeren op Webmin servers
 edit_this=deze server
 edit_clone=Kloon
+
 save_err=Opslaan opdracht mislukt
 save_ecannot=U mag geen opdrachten wijzigen
 save_ecmd=Geen opdracht ingevoerd
@@ -75,6 +77,7 @@ save_eorder=Sortering op de hoofd pagina moet een nummer zijn
 save_etimeout=Ontbrekende of ongeldige maximum wachttijd
 save_eusermin=Opdrachten die op andere servers worden uitgevoerd kunnen niet worden uitgevoerd vanuit Usermin
 save_eformat=Ongeldig output MIME type
+
 run_err=Uitvoering opdracht mislukt
 run_ecannot=U mag deze opdrachten niet uitvoeren
 run_euser=Ontbrekende of ongeldige gebruiker
@@ -90,6 +93,7 @@ run_eopt=Ongeldige optie geselecteerd
 run_eupload=Geen file geselecteerd voor upload
 run_emust=Ontbrekende waarde voor parameter '$1'
 run_timeout=Opdracht beëindigd na een wachttijd van $1 seconden.
+
 log_modify=Opdracht $1 veranderd
 log_create=Opdracht $1 aangemaakt
 log_delete=Opdracht $1 verwijderd
@@ -98,11 +102,13 @@ log_modify_edit=Gemodificeerde file bewerker $1
 log_create_edit=File bewerker $1 aangemaakt
 log_delete_edit=File bewerker $1 verwijderd
 log_save_edit=File $1 opgeslagen
+
 acl_cmds=Opdrachten die deze gebruiker mag uitvoeren
 acl_call=Alle opdrachten
 acl_csel=Selectie..
 acl_cexcept=Alles behalve geselecteerde ..
 acl_edit=Mag opdrachten aanmaken en wijzigen?
+
 file_ecannot=U mag geen bestanden bewerken
 fcreate_title=Maak File Bewerker
 fedit_title=Wijzig File Bewerker
@@ -126,6 +132,7 @@ file_egroup=Naam groep ontbreekt of ongeldig
 file_eperms=Ontbrekende of ongeldige octale rechten
 file_envs=Vervang omgevingsvariabelen in bestandsnaam?
 file_id=Editor ID
+
 view_err=bewerken bestand mislukt
 view_ecannot=U mag dit bestand niet bewerken
 view_title=Bewerk Bestand
@@ -134,10 +141,12 @@ view_header=Bewerken file $1
 view_ebeforeedit=Opdracht vooraf het bewerken mislukten : $1
 view_ebefore=Opdracht voordat word opgeslagen mislukten : $1
 view_eafter=Opdracht voor na het opslaan mislukten : $1
+
 form_ecannot=U mag deze opdracht niet uitvoeren
 form_title=Uitvoeren Opdracht
 form_exec=Uitvoeren
 form_edit=Bewerk
+
 sql_title1=SQL opdracht aanmaken
 sql_title2=SQL opdracht bewerken
 sql_header=Details SQL opdracht
@@ -153,6 +162,7 @@ sql_err=Fout bij het opslaan van de SQL opdracht
 sql_esql=Geen SQL opgegeven
 sql_ehost=Ontbrekende of ongeldige database server host
 sql_edb=Ontbrekende of ongeldige database naam
+
 srun_title=SQL Opdracht Uitvoeren
 srun_err=Fout bij het uitvoeren van SQL opdracht
 srun_edriver=Kon DBI driver niet laden

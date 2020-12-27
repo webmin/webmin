@@ -20,6 +20,7 @@ index_applymsg=Clicca su questo pulsante per applicare la configurazione corrent
 index_start=Esegui Xinetd
 index_startmsg=Clicca su questo pulsante per eseguire Xinetd con la configurazione corrente
 index_econf=Il file di configurazione $1 per Xinetd non esiste. E' possibile che non sia stato installato, o che il <a href='$2'>modulo di configurazione</a> non sia corretto.
+
 serv_create=Crea servizio Internet
 serv_edit=Modifica servizio Internet
 serv_header1=Opzioni di rete
@@ -73,18 +74,23 @@ serv_enice=Il livello di priorita' manca o non e' valido
 serv_ecps0=Il numero di connessioni per secondo manca o non è valido
 serv_ecps1=Il ritardo manca o non e' valido
 serv_etimes=L'ora di accesso deve essere nel formato: HH:MM-HH:MM
+
 sock_stream=Stream
 sock_dgram=Datagram
 sock_raw=Raw
 sock_seqpacket=Sequential datagram
+
 proto_=Default
 proto_ip=IP (Internet Protocol)
 proto_tcp=TCP (Transmission Control Protocol)
 proto_udp=UDP (User Datagram Protocol)
+
 restart_err=Fallita l'applicazione delle modifiche
 restart_ekill=Fallito l'invio del segnale HUP a PID $1 : $2
+
 start_err=Fallito l'avvio di xinetd
 start_estart=$1 fallito : $2
+
 defs_title=Opzioni di Default
 defs_header=Opzioni di Default per i servizi
 defs_log=Modalita' di logging di Xinetd
@@ -109,6 +115,7 @@ defs_err=Fallito il salvataggio delle opzioni di defult
 defs_efile=Il nome del file di log manca o non e' valido
 defs_esoft=Limite "Soft" mancante o non valido
 defs_ehard=Limite "Hard" mancante o non valido
+
 log_create_serv=Creato $2 servizio $1
 log_modify_serv=Modificato $2 servizio $1
 log_delete_serv=Cancellato $2 servizio $1

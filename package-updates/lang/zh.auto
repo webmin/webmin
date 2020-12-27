@@ -57,6 +57,7 @@ index_reposdisable=禁用存储库
 index_reposenable=启用存储库
 index_reposdelete=删除储存库
 index_repoheader=新软件包存储库选项
+
 update_title=更新包
 update_title2=安装套件
 update_enone=未选择包
@@ -94,9 +95,11 @@ update_none=没有
 update_ops=构建软件包的完整列表 ..
 update_rebootdesc=已安装的软件包之一需要重新启动才能完全应用。
 update_reboot=马上重启
+
 sched_title=预定更新
 sched_yes=计划检查更新现在处于活动状态。
 sched_no=预定的更新检查已被禁用。
+
 log_update=已安装 $1个更新程序包
 log_sched=启用的预定更新
 log_unsched=禁用的计划更新
@@ -108,11 +111,13 @@ log_enable_repo=启用的软件包存储库 $1
 log_disable_repo=禁用的软件包存储库 $1
 log_delete_repo=软件包存储库 $1已删除
 log_create_repo=已创建软件包存储库 $1
+
 refresh_title=刷新包装
 refresh_clearing=清除程序包缓存 ..
 refresh_done=..完成
 refresh_available=重新获取可用的软件包 ..
 refresh_done3=..找到 $1个可能的更新
+
 view_title=包装详情
 view_header=可更新的包装信息
 view_name=包裹名字
@@ -126,12 +131,14 @@ view_changelog=可用版本的变更日志
 view_software=管理包裹
 view_update=更新包
 view_install=安装套件
+
 system_yum=百胜
 system_apt=易于
 system_csw=CSW（Blastwave）
 system_webmin=Webmin模块
 system_usermin=Usermin模块
 system_tgz=Webmin或Usermin tar.gz
+
 repos_err_disable=无法禁用存储库
 repos_err_enable=无法启用存储库
 repos_err_delete=删除存储库失败

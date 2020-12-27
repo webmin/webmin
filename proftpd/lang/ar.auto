@@ -27,7 +27,9 @@ index_global=التكوين العام
 index_create=إنشاء خادم افتراضي
 index_version=إصدار ProFTPd$1
 index_proftpd=ProFTPd
+
 efailed=فشل في حفظ$1
+
 type_0=خيارات الشبكات
 type_1=خيارات التسجيل
 type_2=الملفات والدلائل
@@ -35,6 +37,7 @@ type_3=صلاحية التحكم صلاحية الدخول
 type_4=متنوع
 type_5=المستخدم والمجموعة
 type_6=المصادقة
+
 virt_title=خيارات الخادم الظاهري
 virt_header1=ل 1
 virt_header2=للخادم الافتراضي
@@ -50,6 +53,7 @@ virt_cmds=أوامر FTP
 virt_return=خادم إفتراضي
 virt_virt=تكوين الخادم الظاهري
 virt_edit=تحرير التوجيهات
+
 vserv_title=تكوين الخادم الظاهري
 vserv_addr=عنوان
 vserv_name=اسم الخادم
@@ -58,6 +62,7 @@ vserv_delete=حذف الخادم الظاهري
 vserv_eaddr=العنوان مفقود أو غير صالح
 vserv_eport=رقم منفذ مفقود أو غير صالح
 vserv_ename=اسم الخادم مفقود
+
 anon_title=خيارات FTP مجهولة
 anon_header1=في الخادم الظاهري$1
 anon_header2=في الخادم الافتراضي
@@ -65,6 +70,7 @@ anon_anon=تكوين FTP مجهول
 anon_return=خيارات FTP مجهولة
 anon_header3=من أجل FTP مجهول في الملقم الظاهري$1
 anon_header4=لبروتوكول نقل الملفات المجهول في الخادم الافتراضي
+
 aserv_title=تكوين FTP مجهول
 aserv_create=إعداد FTP مجهول
 aserv_root=تقتصر على الدليل
@@ -75,6 +81,7 @@ aserv_eroot=دليل chroot مفقود أو غير صالح
 aserv_euser=مستخدم Unix مفقود أو غير صالح
 aserv_egroup=مجموعة Unix مفقودة أو غير صالحة
 aserv_desc=لم يتم إعداد FTP المجهول لهذا الخادم الظاهري بعد. استخدم هذا النموذج لتعيين خيارات التكوين الأولية.
+
 dir_title=خيارات لكل دليل
 dir_header2=للدليل$1 في الخادم الافتراضي
 dir_header1=للدليل$1 في الخادم الظاهري$2
@@ -85,6 +92,7 @@ dir_header=خيارات لكل أمر
 dir_dir=تكوين الدليل
 dir_header4=للدليل$1 في FTP مجهول
 dir_header5=للدليل$1 بشكل عام
+
 manual_title=تحرير التوجيهات
 manual_header=استخدم مربع النص أدناه لتحرير توجيهات ProFTPD يدويًا في$1 التي تنطبق على هذا الخادم أو الدليل أو الأوامر الافتراضية.
 manual_configs=تحرير ملفات التكوين
@@ -92,6 +100,7 @@ manual_ecannot=لا يسمح لك بتحرير التوجيهات يدويًا
 manual_file=تحرير التوجيهات في الملف:
 manual_efile=ملف تكوين ProFTPd غير صالح
 manual_etest=تم الكشف عن خطأ في ملف التكوين :$1
+
 limit_title=خيارات لكل أمر
 limit_header4=للأوامر$1 في الدليل$2
 limit_header2=للأوامر$1 في الخادم الافتراضي
@@ -103,17 +112,20 @@ limit_return=خيارات لكل أمر
 limit_header5=للأوامر$1 في FTP مجهول
 limit_header6=للأوامر$1 في الملف$2
 limit_header7=للأوامر$1 على مستوى العالم
+
 lserv_title=تكوين الأوامر
 lserv_cmd=أوامر FTP
 lserv_delete=حذف تكوين الأوامر
 lserv_err=فشل حفظ الأوامر
 lserv_ecmd=لم يتم تحديد أوامر
+
 dserv_title=تكوين الدليل
 dserv_dir=مسار الدليل
 dserv_err=فشل في حفظ الدليل
 dserv_edir=مسار الدليل مفقود
 dserv_delete=حذف تكوين الدليل
 dserv_eanondir=يجب أن يكون الدليل تحت دليل FTP المجهول
+
 mod_core_type=نوع الخادم
 mod_core_inetd=اركض من Inetd
 mod_core_stand=شيطان مستقل
@@ -301,6 +313,7 @@ mod_core_duser=رفض المستخدمين
 mod_core_eip=إن '$1' ليس عنوان IP صالحًا
 mod_core_enet=إن '$1' ليس عنوان شبكة صالحًا
 mod_core_ehost=إن '$1' ليس اسم مضيف صالح
+
 mod_ls_fakegroup=مجموعة وهمية في قوائم الدليل؟
 mod_ls_fakeuser=مستخدم مزيف في قوائم الدليل؟
 mod_ls_fakemode=أذونات وهمية في قوائم الدليل
@@ -317,6 +330,7 @@ mod_ls_efakeuser=مستخدم مزيف مفقود أو غير صالح
 mod_ls_efakegroup=مجموعة مزيفة مفقودة أو غير صالحة
 mod_ls_options=خيارات قائمة الدليل
 mod_ls_strict=هل تريد تجاوز خيارات المستخدم؟
+
 mod_auth_chdir=دليل تسجيل الدخول الأولي
 mod_auth_echdir=الدليل الأولي مفقود أو غير صالح
 mod_auth_chroot=قصر المستخدمين على الدلائل
@@ -330,7 +344,9 @@ mod_auth_egroups=لم يتم إدخال أي مجموعات Unix لـ chroot
 mod_auth_echroot=دليل chroot مفقود أو غير صالح
 mod_auth_login=لا تسأل عن كلمة المرور إذا تم رفض تسجيل الدخول؟
 mod_auth_root=السماح بتسجيل الدخول بالجذر؟
+
 mod_site_chmod=السماح لأمر chmod؟
+
 mod_unixpw_ufile=ملف كلمة مرور Unix البديل
 mod_unixpw_eufile=ملف كلمة مرور Unix مفقود أو غير صالح
 mod_unixpw_gfile=ملف مجموعة Unix البديل
@@ -338,6 +354,7 @@ mod_unixpw_egfile=ملف مجموعة Unix مفقود أو غير صالح
 mod_unixpw_none=لا يوجد
 mod_unixpw_pam=هل تعامل PAM دائمًا كمرجع؟
 mod_unixpw_persist=إبقاء ملف كلمة المرور مفتوحًا باستمرار؟
+
 mod_log_syslog=تسجيل أخطاء الملف
 mod_log_sysdef=سجل النظام
 mod_log_esyslog=ملف سجل مفقود أو غير صالح
@@ -354,19 +371,25 @@ mod_log_fmt=تنسيق السلسلة
 mod_log_format=تنسيقات السجل المخصصة
 mod_log_enickname=اسم تنسيق مفقود أو غير صالح
 mod_log_efmt=سلسلة تنسيق مفقودة
+
 mod_pam_pam=هل تريد استخدام PAM للمصادقة؟
 mod_pam_config=المصادقة باستخدام خدمة PAM
 mod_pam_econfig=خدمة PAM مفقودة أو غير صالحة
+
 mod_readme_display=إعلام المستخدم بملفات التمهيدي المطابقة
 mod_readme_none=لا يوجد
 mod_readme_edisplay=نمط ملفات المستند التمهيدي مفقود
+
 start_err=فشل بدء تشغيل خادم FTP
 start_einetd=لا يمكنك بدء البرنامج الخفي للخادم عندما تكون في وضع inetd.
+
 stop_err=فشل إيقاف خادم FTP
 stop_einetd=لا يمكنك إيقاف البرنامج الخفي للخادم عندما تكون في وضع inetd.
 stop_erun=لا يعمل
+
 apply_err=فشل في تطبيق تكوين FTP
 apply_egone=لم يعد يعمل
+
 ftpaccess_title=ملفات خيارات لكل دليل
 ftpaccess_desc=يمكن تحديد خيارات إضافية لكل دليل في ملف (يسمى عادة <tt>.ftpaccess</tt>) في كل دليل. تنطبق الخيارات على جميع الملفات في هذا الدليل وأي أدلة فرعية ، ما لم يتم تجاوزها بواسطة ملف خيارات آخر.
 ftpaccess_create=إنشاء ملف خيارات
@@ -374,8 +397,10 @@ ftpaccess_find=البحث عن ملفات الخيارات
 ftpaccess_auto=تحت مجهول
 ftpaccess_from=من الدليل
 ftpaccess_return=قائمة ملف الخيارات
+
 ftpusers_title=تم رفض مستخدمي FTP
 ftpusers_desc=إذا تم تمكينه تحت رمز <tt>المصادقة</tt> ، فسيتم رفض وصول المستخدمين المدرجين أدناه من الملف$1 إلى تسجيل الدخول إلى مستخدم FTP.
+
 ftpindex_title=ملف خيارات لكل دليل
 ftpindex_delete=حذف ملف
 ftpindex_opts=خيارات لكل دليل
@@ -385,8 +410,10 @@ ftpindex_addlimit=إضافة خيارات لكل أمر لـ ..
 ftpindex_header2=$1 في$2
 ftpindex_return=ملف خيارات لكل دليل
 ftpindex_header=ل 1
+
 find_err=فشل في العثور على ملفات الخيارات
 find_eanon=لم يتم إعداد FTP المجهول في أي خادم ظاهري
+
 log_global=تم تغيير خيارات $1 العمومية
 log_ftpusers=تم تغيير مستخدمي FTP المرفوضين
 log_virtc=تم إنشاء الخادم$1
@@ -420,6 +447,7 @@ log_anonm=تحرير FTP مجهول يدويًا للملقم$1
 log_anon=تم تغيير$1 في FTP مجهول للملقم$2
 log_start=بدأت proftpd
 log_apply=التغييرات التطبيقية
+
 eafter=فشل التحقق من التكوين:$1 لم يتم حفظ التغييرات.
 proftpd_apply=تطبيق التغييرات
 proftpd_stop=إيقاف ProFTPd

@@ -12,7 +12,9 @@ main_readonly=(Modalità li tinqara biss)
 main_return=Irritorna għal $1
 main_unused=Moduli mhux użati
 main_refreshmods=Moduli ta ’Aġġornament
+
 link_essl=Il-modulu Net::SSLeay Perl meħtieġ biex isiru konnessjonijiet HTTPS mhux installat fis-sistema tiegħek.
+
 category_servers=Servers
 category_hardware=Ħardwer
 category_system=Sistema
@@ -22,6 +24,7 @@ category_syslet=Syslets
 category_cluster=Cluster
 category_info=Informazzjoni
 category_=Għodda
+
 longcategory_servers=Moduli għall-konfigurazzjoni tal-web, email, FTP u servers oħra
 longcategory_hardware=Moduli għall-istampatur, diska u konfigurazzjoni oħra tal-ħardwer
 longcategory_system=Moduli għall-utenti, sistemi ta 'fajls, impjiegi Cron u settings oħra tas-sistema
@@ -30,11 +33,13 @@ longcategory_net=Moduli għall-konfigurazzjoni ta 'netwerking u servizzi ta' net
 longcategory_cluster=Moduli li jistgħu jimmaniġġjaw servers multipli minn interface waħda
 longcategory_info=Moduli li juru informazzjoni dwar is-sistema tiegħek
 longcategory_=Moduli li jwettqu kompiti mixxellanji oħra
+
 header_webmin=Indiċi tal-Webmin
 header_module=Indiċi tal-Modulu
 header_help=Għajnuna ..
 header_config=Konfigurazzjoni tal-Modulu
 header_servers=Servers tal-Webmin
+
 index=indiċi
 yes=Iva
 no=Le
@@ -65,12 +70,14 @@ euserdbacl=Naqset milli tfittex l-utent ACL : $1
 euserdbacl2=Naqset milli taġġorna l-ACL tal-utent : $1
 egroupdbacl=Naqas milli jġib il-grupp ACL : $1
 egroupdbacl2=Ma rnexxiex taġġorna l-ACL tal-grupp : $1
+
 chooser_title1=Agħżel Fajl ..
 chooser_title2=Agħżel Direttorju ..
 chooser_dir=Direttorju ta '$1
 chooser_ok=Kollox sew
 chooser_date=Agħżel id-Data
 chooser_eopen=Falla l-elenkar : $1
+
 users_title1=Utenti Agħżel ..
 users_title2=Agħżel Utent ..
 users_sel=Utenti magħżula
@@ -78,6 +85,7 @@ users_all=L-Utenti kollha
 users_ok=Kollox sew
 users_cancel=Ikkanċella
 users_clear=Ċari
+
 groups_title1=Agħżel Gruppi ..
 groups_title2=Agħżel Grupp ..
 groups_all=Il-Gruppi kollha
@@ -85,6 +93,7 @@ groups_sel=Gruppi magħżula
 groups_ok=Kollox sew
 groups_cancel=Ikkanċella
 groups_clear=Ċari
+
 modules_title1=Agħżel Moduli ..
 modules_title2=Agħżel Modulu ..
 modules_sel=Moduli magħżula
@@ -92,6 +101,7 @@ modules_all=Il-Moduli kollha
 modules_ok=Kollox sew
 modules_cancel=Ikkanċella
 modules_clear=Ċari
+
 config_ecannot=M'għandekx permess biex tikkonfigura dan il-modulu
 config_title=Konfigurazzjoni
 config_dir=Għall-modulu $1
@@ -103,6 +113,7 @@ config_err=Ma rnexxielux isalva l-konfigurazzjoni
 config_nochange=Tbiddilx
 config_setto=Issettja għal
 config_ewebmin=Il-parametru tat-tip 14 jaħdem biss fil-Webmin
+
 help_err=Ma rnexxielux juri l-għajnuna
 help_epath=Triq ta 'għajnuna nieqsa jew invalida
 help_efile=Ma rnexxiex naqra l-għajnuna tal-fajl $1
@@ -110,6 +121,7 @@ help_eheader=Nieqes it-taqsima &lt;intestatura&gt;
 help_einclude=Naqas milli jinkludi $1
 help_eif=$1 falla : $2
 help_eexec=$1 falla : $2
+
 referer_title=Twissija dwar is-Sigurtà
 referer_warn=<b>Twissija!</b> Webmin sab li l-programm $2 kien marbut mal-URL $1, li jidher li huwa barra l- Server Webmin Dan jista 'jkun attentat biex iħejji lis-server tiegħek biex iwettaq kmand perikoluż.
 referer_warn_unknown=<b>Twissija!</b> Webmin sab li l-programm $1 kien marbut ma 'URL mhux magħruf, li jidher li huwa barra mis-server Webmin. Dan jista 'jkun attentat biex iħejji lis-server tiegħek biex iwettaq kmand perikoluż.
@@ -117,6 +129,7 @@ referer_fix1=If this is a legitimate link, you can allow links from this URL as 
 referer_fix2=Alternately, you can configure Webmin to allow this link from the command line by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Add the line <tt>referers=$1</tt> at the end, or if a <tt>referers</tt> line already exists add <tt>$1</tt> to it.</li><li>Save the file.</li></ul>
 referer_fix3u=Kun żgur li l-browser tiegħek huwa kkonfigurat biex jibgħat informazzjoni referrer sabiex tkun tista 'tiġi verifikata minn Webmin.
 referer_fix2u=Alternately, you can configure Webmin to allow links from unknown referers by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Find the line <tt>referers_none=1</tt> and change it to <tt>referers_none=0</tt>.</li><li>Save the file.</li></ul><p></p>WARNING - this has the side effect of opening your system up to reflected XSS attacks and so is not recommended!
+
 session_header=Idħol fil-Webmin
 session_mesg=Trid tidħol isem tal-utent u password biex tidħol fis-server Webmin fuq $1.
 session_mesg2=Trid tidħol username u password biex tidħol.
@@ -130,11 +143,13 @@ session_twofailed=Falliet l-awtentikazzjoni b'żewġ fatturi : $1
 session_logout=Logout irnexxa. Uża l-formola t'hawn taħt biex terġa 'tidħol.
 session_timed_out=Is-sessjoni skedat wara $1 minuti ta 'inattività.
 session_save=Tiftakar id-dħul b'mod permanenti?
+
 pam_header=Idħol fil-Webmin
 pam_mesg=Int trid twieġeb għall-mistoqsija hawn taħt biex tidħol fis-server Webmin fuq $1.
 pam_mesg2=Int trid twieġeb għall-mistoqsija hawn taħt biex tidħol.
 pam_login=Kompli
 pam_restart=Erġa ibda
+
 acl_root=Direttorju tal-għeruq għal fajl li jagħżel
 acl_otherdirs=Direttorji oħra viżibbli fl-għażla tal-fajl
 acl_nodot=Aħbi l-fajls dot fil-file chooser?
@@ -167,6 +182,7 @@ acl_negative=Tikseb permessi ta 'moduli ġodda lill-utent?
 acl_fileunix=Ibbrawżja l-fajls bħala utent Unix
 acl_sameunix=L-istess bħall-login tal-Webmin
 acl_webminsearch=Uri l-qasam tat-tiftix tal-Webmin?
+
 month_1=Jannar
 month_2=Frar
 month_3=Marzu
@@ -179,6 +195,7 @@ month_9=Settembru
 month_10=Ottubru
 month_11=Novembru
 month_12=Diċembru
+
 day_0=Ħadd
 day_1=It-Tnejn
 day_2=It-Tlieta
@@ -186,6 +203,7 @@ day_3=L-Erbgħa
 day_4=Il-Ħamis
 day_5=Nhar il-Ġimgħa
 day_6=Is-Sibt
+
 smonth_1=Jan
 smonth_2=Frar
 smonth_3=Mar
@@ -198,6 +216,7 @@ smonth_9=Sett
 smonth_10=Ottubru
 smonth_11=Nov
 smonth_12=Dic
+
 sday_0=Su
 sday_1=Mo
 sday_2=Tiegħek
@@ -205,12 +224,15 @@ sday_3=Aħna
 sday_4=Th
 sday_5=Patri
 sday_6=Sa
+
 emodule=Aċċess miċħud: L-utent $1 mhuwiex permess juża l-modulu $2
 emodulecheck=Il-modulu $1 mhux disponibbli fis-sistema tiegħek
 elock_tries2=Ma rnexxielux jissakkar il-fajl $1 wara $2 minuti. L-aħħar żball kien : $3
+
 skill_high=Espert
 skill_medium=Intermedju
 skill_low=Novizzi
+
 feedback_title=Rispons tal-Webmin
 feedback_desc=Din il-formola jippermettilek tirrapporta bugs dwar is-suġġerimenti ta 'l-iżviluppaturi tal-Webmin rigward xi problemi jew karatteristiċi nieqsa li sibt. Meta tikklikkja l-buttuna Ibgħat, id-dettalji mdaħħla fil-formola se jiġu emailed lil $1.
 feedback_desc2=Dan ir-rispons se jintbagħat lill-iżviluppatur ta 'Webmin, mhux lill-amministratur tas-sistema tiegħek, ISP jew lill-kumpanija li tospita. Jekk jogħġbok ikteb ir-rispons tiegħek bl-Ingliż, anke jekk bħalissa qed tħaddem Webmin f'lingwa oħra.
@@ -239,15 +261,18 @@ feedback_to=Ibgħat feedback lil indirizzi
 feedback_enoto=L-ebda indirizzi ma ġew imdaħħla biex jibagħtu feedback lil
 feedback_ecannot=M'għandekx permess tibgħat feedback
 feedback_ecannot2=M'għandekx permess tibgħat feedback li jkun fih fajls konfigurati
+
 progress_size2=Tniżżil minn $1 ($2) ..
 progress_nosize=Tniżżil minn $1 ..
 progress_datan=Irċieva $1 ($2 %)
 progress_data2n=Irċieva $1
 progress_done=.. download kompluta.
 progress_incache=Jinstab $1 fil-cache ..
+
 readparse_cdheader=Kontenut tad-Dispożizzjoni ta 'Kontenut Nieqes
 readparse_enc=Jistennew kodifikazzjoni tal-formola tad-dejta, imma ltqajna kodifikazzjoni normali
 readparse_max=Id-dejta qabżet id-daqs massimu ta '$1 bytes
+
 password_expired=Il-password tiegħek skadiet, u għandha tintgħażel waħda ġdida.
 password_temp=Trid tagħżel password ġdida biex tissostitwixxi l-login temporanju tiegħek.
 password_header=Agħżel Password Ġdida
@@ -266,6 +291,7 @@ password_enew2=Il-passwords il-ġodda tiegħek ma jaqblux
 password_epam=Żball PAM : $1
 password_emodpam=Il-modulu Authen::PAM perl meħtieġ biex isir tibdil fil-password mhux installat!
 password_enewpass=Password ġdida mhix permessa : $1
+
 ui_mandatory=Dan il-qasam huwa obbligatorju
 ui_checkmandatory=Ma ntgħażel xejn
 ui_errors=Instabu bosta żbalji :
@@ -280,7 +306,9 @@ ui_etime=Żmien mhux validu
 ui_paging=Li juru r-ringieli $1 għal $2 ta '$3
 ui_rowlabel=$2 fir-ringiela $1 :
 ui_filterbox=Tip biex tiffiltra ..
+
 header_statusmsg=$1 dħalt $2 $3 fuq $4 ($5)
+
 uptracker_title=Tella 'Fajl
 uptracker_file=Isem tal-fajl
 uptracker_size=Daqs
@@ -288,6 +316,7 @@ uptracker_pc=Progress
 uptracker_eid=L-ebda ID tal-upload speċifikat
 uptracker_eid2=L-ID tat-Tlugħ mhix valida!
 uptracker_of=$1 ta '$2
+
 wsearch_title=Fittex $1
 wsearch_modt=Modulu
 wsearch_mtitle=Isem il-Modulu
@@ -315,6 +344,7 @@ wsearch_hmod=Modulu
 wsearch_moddir=Triq URL /$1/
 wsearch_searching=Tiftix għal $1 ..
 wsearch_found=instab $1 riżultati :
+
 sql_emysqldriver=Ma rnexxielux jitgħabba xufier DBI MySQL
 sql_emysqlconnect=Ma rnexxielux jaqbad mad-database MySQL : $1
 sql_epostgresqldriver=Ma rnexxielux jitgħabba xufier tad-DBI PostgreSQL
@@ -323,6 +353,7 @@ sql_eldapdriver=Ma rnexxielhiex tgħabbi l-modulu perl LDAP
 sql_eldapconnect=Naqset milli tikkonnettja mas-server LDAP $1
 sql_eldaptls=Ma rnexxielux jibda encryption TLS għal LDAP : $1
 sql_eldaplogin=Naqset milli tidħol fis-server LDAP bħala $1 : $2 
+
 log_email_subject=Azzjoni tal-Webmin f '$1
 log_email_global=Azzjoni globali tal-Webmin
 log_email_desc=Dan l-email intbagħat minn Webmin bi tweġiba għal azzjoni tal-utent.
@@ -334,6 +365,7 @@ log_email_user=Imwettaq mill-utent: $1
 log_email_script=Skritt tal-Webmin: $1
 log_email_session=ID tas-Sessjoni: $1
 log_email_remote=Indirizz tal-klijent: $1
+
 nice_size_PB=PB
 nice_size_PiB=PiB
 nice_size_TB=TB
@@ -345,7 +377,9 @@ nice_size_MiB=MiB
 nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=bytes
+
 langauto_include=Inkludi traduzzjonijiet bil-magni
+
 file_truncated_message=ġab $1 ta 'dejta, maqtugħ $2 minn $3 
 file_truncated_message_head=ġab il-bidu ta ' $1 ta' dejta, maqtugħ $2 minn $3 
 file_truncated_message_tail=ġab it-tmiem $1 ta 'dejta, maqtugħ $2 minn $3 

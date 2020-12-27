@@ -19,10 +19,13 @@ index_samba=Samba?
 index_cyrus=IMAP?
 index_users=LDAP erabiltzaileak
 index_groups=LDAP Taldeak
+
 imap_econn=Ezin izan da IMAP zerbitzariarekin konektatu $1 
 imap_elogin=Ezin izan da $2 : $3 IMAP zerbitzarira saioa hasi
 conn_eldap_host=Ez da LDAP bezeroaren konfigurazio fitxategirik aurkitu zure sisteman, eta, beraz, LDAP zerbitzaria ezarri behar da moduluen konfigurazio orrian
 conn_elogin=Ez da zure sisteman LDAP bezeroaren konfigurazio fitxategirik aurkitu, beraz, LDAP saioa moduluaren konfigurazio orrian ezarri behar da
+conn_efile_open=Ezin izan da LDAP lotura kredentzialen fitxategia ireki:
+
 uedit_cap=Erabiltzailearen gaitasunak
 uedit_samba=Samba saioa?
 uedit_cyrus=IMAP zerbitzariaren saioa?
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=Pasahitzaren azken eguneratzea
 uedit_sambapwdcanchange=Pasahitza alda daiteke
 uedit_sambabadpasswordcount=Pasahitzen kopurua okerra da
 uedit_sambaacctflags=Kontuaren banderak
+
 usave_eadd=Huts egin du erabiltzaileak LDAP datu-basean gehitzerakoan : $1 
 usave_emod=Ezin izan da erabiltzailea LDAP datu-basean aldatu : $1 
 usave_emoddn=Huts egin du erabiltzailea LDAP datu-basean berriz aldatzeak : $1 
@@ -66,26 +70,33 @@ usave_eattrdupu=$1 erabiltzailea $2 $3 erabiltzen ari da dagoeneko
 usave_eattrdupg=$1 taldea $2 $3 erabiltzen ari da dagoeneko
 usave_ereal=Izen erreala falta da
 usave_equota=IMAPeko kuota falta edo baliogabea da
+
 search_err=$2 azpian $1 bilatzeak huts egin du : $3 
+
 gedit_dn=Taldearen LDAP DN
 gedit_return=taldeko xehetasunak
 gedit_cap=Taldearen gaitasunak
 gedit_samba=Samba taldea?
+
 gsave_egone=Taldea ez dago jada!
 gsave_edelete=Ezin izan da taldea LDAP datu-basetik ezabatu : $1 
 gsave_eadd=Huts egin du taldea LDAP datu-basean gehitzeak : $1 
 gsave_emod=Ezin izan da taldea aldatu LDAP datu-basean : $1 
 gsave_emoddn=Huts egin du taldea berriz aldatzeak LDAP datu-basean : $1 
+
 gdel_group=LDAP taldeko sarrera ezabatzen ..
+
 udel_pass=LDAP erabiltzailearen sarrera ezabatzen ..
 udel_book=Helbide-liburutik ezabatzen ..
 udel_imap=IMAP karpeta ezabatzen ..
 udel_warnimap=Lehendik dagoen postontzia etxeko direktorio ezabatzean ezabatuko da!
 udel_failed=.. huts egin du!  : $1 
+
 raw_title=LDAP Ezaugarriak
 raw_name=Ezaugarri izena
 raw_value=Baloreak
 raw_for=$1 erako
+
 batch_samba=Sortu Samba kontua erabiltzaile berrientzako?
 batch_imap=Sortu IMAP kontua erabiltzaile berrientzako?
 batch_descafter3=<b>Sortu</b> eta <b>aldatu</b> lerroetan, aukeraz erantsi ahal izango dituzu LDAP atributuak dituzten eremu gehigarriak <i>izena</i> = <i>balioa</i> formatuan, erabiltzaile berriei edo aldatutakoei esleitu.

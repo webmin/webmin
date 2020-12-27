@@ -2,6 +2,7 @@ index_title=Serveur de messagerie vocale
 index_ecmd=La commande Vgetty $1 est introuvable sur votre système. Il n'est peut-être pas installé ou la configuration de votre <a href='$2'>module</a> est incorrecte.
 index_econfig=Le fichier de configuration Vgetty $1 est introuvable sur votre système. Il n'est peut-être pas installé ou la configuration de votre <a href='$2'>module</a> est incorrecte.
 index_return=index de la messagerie vocale
+
 vgetty_title=Configuration du port série
 vgetty_desc=Pour que votre serveur réponde aux appels vocaux avec un modem connecté à un port série, il doit être répertorié ci-dessous. Lorsque vous ajoutez un port à cette liste, le programme $1 sera configuré pour répondre aux appels et lire un message.
 vgetty_add=Ajouter un nouveau port série
@@ -32,6 +33,7 @@ vgetty_erings=Nombre de sonneries manquant ou invalide
 vgetty_erings2=Le nombre d'anneaux doit être d'au moins 2
 vgetty_eans=Aucun mode de réponse sélectionné
 vgetty_eclash=Le port série $1 est déjà utilisé
+
 options_title=Options du serveur de messagerie vocale
 options_header=Options pour tous les ports série
 options_maxlen=Longueur maximale des messages
@@ -68,6 +70,7 @@ options_eprog=Programme manquant ou inexistant à exécuter
 options_eowner=Utilisateur Unix manquant ou invalide pour les fichiers de messages
 options_egroup=Groupe Unix manquant ou non valide pour les fichiers de messages
 options_emode=Autorisations octales manquantes ou non valides pour les fichiers de messages
+
 received_title=Messages reçus
 recieved_desc=Les messages vocaux reçus par votre serveur sont répertoriés ci-dessous. Pour écouter un message, cliquez sur la date/heure dans la première colonne.
 received_none=Aucun message vocal reçu n'a été trouvé.
@@ -79,9 +82,12 @@ received_delete=Supprimer les messages sélectionnés
 received_move=Convertir la sélection en salutations
 received_all=Tout sélectionner
 received_invert=Inverser la sélection
+
 listen_efile=Nom de fichier du message non valide!
 listen_epath=Le message vocal n'existe plus
+
 delete_efile=Nom de fichier du message non valide!
+
 messages_title=Messages de salutation
 messages_desc=Cette page répertorie les messages d'accueil qui seront lus lorsqu'un appelant se connecte à votre serveur de messagerie vocale. Si vous en avez plusieurs, un seul message choisi au hasard sera utilisé.
 messages_file=Nom de fichier
@@ -89,12 +95,15 @@ messages_none=Aucun message d'accueil n'est disponible.
 messages_updesc=Ce formulaire vous permet de télécharger un fichier WAV de message d'accueil supplémentaire, qui sera converti au format choisi pour être utilisé par votre modem. Le taux d'échantillonnage du WAV téléchargé doit être le même que le taux d'échantillonnage des messages reçus, de même que le format sélectionné.
 messages_upload=Envoyer un message
 messages_fmt=convertir en
+
 pvfdesc=$1, $2 bits
+
 upload_err=Échec de l'ajout du message
 upload_emessage=Aucun fichier WAV sélectionné
 upload_ewav=Impossible de convertir le fichier WAV : $1 
 upload_epvf=Impossible de créer le fichier RMD : $1 
 upload_esame=Le fichier de message $1 existe déjà
+
 log_apply=Configuration appliquée
 log_upload=Message d'accueil téléchargé $1 
 log_move=$1 messages reçus convertis
@@ -104,5 +113,6 @@ log_options=Options de messagerie vocale modifiées
 log_vgetty_create=Port série $1 ajouté
 log_vgetty_modify=Port série modifié $1 
 log_vgetty_delete=Port série supprimé $1 
+
 email_subject=Message vocal
 email_body=Message vocal reçu à $1 par $2.

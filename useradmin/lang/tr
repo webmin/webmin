@@ -33,11 +33,13 @@ index_mass=Seçili Kullanıcıları Sil
 index_mass2=Seçili olanı Pasifleştir
 index_mass3=Seçili olanı Aktifleştir
 index_gmass=Seçili Grupları Sil
+
 search_title=Arama Sonuçları
 search_notfound=Aranan kullanıcı bulunamadı
 search_found=Eşleşen $1 kullanıcı bulundu ..
 search_gnotfound=Aranılan grup bulunamadı
 search_gfound=Eşleşen $1 grup bulundu ..
+
 uedit_title=Kullanıcı Düzenle
 uedit_title2=Kullanıcı Oluştur
 uedit_details=Kullanıcı Ayrıntıları
@@ -108,6 +110,7 @@ uedit_forcechange=Bir sonraki girişinde değiştirmesi sağlansın mı?
 uedit_uid_def=Otomatik
 uedit_uid_calc=Hesaplandı
 uedit_disabled=Giriş geçici olarak kapatıldı
+
 usave_err=Kullanıcının kaydedilmesinde hata oluştu
 usave_eedit=Bu kullanıcıyı düzenleyemezsiniz
 usave_ecreate=Yeni kullanıcı oluşturamazsınız
@@ -157,6 +160,7 @@ usave_epasswd_re=Parola regexp $1 ile eşleşmiyor
 usave_epasswd_dict=Parola, sözlükte bulunan bir kelimeden seçilmiş
 usave_epasswd_same=Parola ya kullanıcı adını içeriyor ya da kullanıcı adı ile aynı
 usave_eothers=Kullanıcı başarı ile oluşturuldu, ama başka bir modülde hata oluştu : $1
+
 gedit_title=Grup Düzenle
 gedit_title2=Grup Oluştur
 gedit_details=Grup Ayrıntıları
@@ -171,6 +175,7 @@ gedit_cothers=Diğer modüllerde gruplar oluşturulsun mu?
 gedit_mothers=Diğer modüllerdeki gruplar değiştirilsin mi?
 gedit_gid_calc=Hesaplandı
 gedit_gid_def=Otomatik
+
 gsave_err=Grubun kaydedilmesinde hata oluştu
 gsave_eedit=Bu grubun içeriğini düzenleyemezsiniz
 gsave_ecreate=Yeni grup oluşturamazsınız
@@ -186,6 +191,7 @@ usave_ehigid=GID $1'den küçük veya eşit olmalıdır
 usave_egidused=$1 grubu $2 GID'sini her zaman kullanıyor
 usave_efromroot=/'den ev dizininizi taşıyamazsınız
 usave_etoroot=/'e ev dizininizi taşıyamazsınız
+
 logins_title=Kayıtlı Girişler
 logins_head=$1 girişleri kaydedildi
 logins_from=Giriş Yeri
@@ -198,6 +204,7 @@ logins_none=Giriş Kayıtları Yok
 logins_elist=Girişleri listelemek için izininiz yoktur
 logins_elistu='$1' için girişleri listelemek için izininiz yoktur
 logins_local=Yerel
+
 udel_title=Kullanıcı Sil
 udel_err=Kullanıcı silinmesinde hata oluştu
 udel_enum=Geçersiz kullanıcı numarası
@@ -219,6 +226,7 @@ udel_del2=Kullanıcıyı ve Ev Dizinini Sil
 udel_others=UYARI! $1 ev dizini diğer kullanıcılara ait $2 dosyalarını içermektedir.
 udel_dothers=Diğer modüllerdeki kullanıcılar da silinsin mi?
 udel_root=Uyarı! Eğer root kullanıcısı silinirse, sisteminizi yönetmeniz mümkün olmayabilir.
+
 gdel_title=Grup Sil
 gdel_err=Grubun silinmesinde hata oluştu
 gdel_eroot=Sistem gruplarını (Bunlar GID'i 10 ya da daha dusuk olanlardır) silmek için izininiz yoktur
@@ -232,6 +240,7 @@ gdel_sure=$1 grubunu silmek istediğinizden emin misiniz?
 gdel_del=Grubu Sil
 gdel_dothers=Diğer gruplardaki gruplar da silinsin mi?
 gdel_other=Diğer modüllerden siliniyor ..
+
 many_title=Çoklu Kullanıcı Oluştur
 many_desc=Bu form yüklenilen bir dosya veya yerel bir dosya ile kullanıcıların oluşturulması için kullanılır. Aşağıdaki şekilde olduğu gibi her satırda bir kullanıcı olmalıdır :
 many_desc2=kullanıcı_adı:parola:uid:gid:Gerçek_İsim:ev_dizini:kabuk:en_az:en_çok:uyarı:aktif_değil:iptal
@@ -255,6 +264,7 @@ many_eshell=$1 satırında geçersiz kabuk : $2
 many_emkdir=$1 ev dizininin oluşturulmasında hata oluştu : $2
 many_egtaken=$1 satırındaki grup adı zaten var : $2
 many_ok=$1 kullanıcısı oluşturuldu
+
 acl_uedit=Düzenleyebileceği Unix kullanıcıları
 acl_uedit_all=Bütün kullanıcılar
 acl_uedit_none=Hiçbir kullanıcı
@@ -314,6 +324,7 @@ acl_udelete=Kullanıcıları sileyim mi?
 acl_gdelete=Grupları sileyim mi?
 acl_urename=Kullanıcıları yeniden adlandırayım mı?
 acl_grename=Grupları tekrar adlandırayım mı?
+
 log_urename=$1 kullanıcısı $2 olarak yeniden adlandırıldı
 log_umodify=$1 kullanıcısı değiştirildi
 log_ucreate=$1 kullanıcısı oluşturuldu
@@ -326,6 +337,7 @@ log_batch=Toplu iş dosyası $1 çalıştırıldı
 log_batch_l=Toplu iş dosyası $1 çalıştırıldı ($2 oluşturuldu, $3 değiştirildi, $4 silindi)
 log_ubatch=Yüklenilen toplu iş dosyaı çalıştırıldı
 log_ubatch_l=Yüklenilen toplu iş dosyaı çalıştırıldı ($1 oluşturuldu, $2 değiştirildi, $3 silindi)
+
 batch_title=Toplu İş Dosyasını Çalıştır
 batch_ecannot=Toplu iş dosyası formunu kullanamazsınız
 batch_desc=Bu form yüklenilecek ya da sunucu üzerindeki metin dosyası ile kullanıcı oluşturmak, değiştirmek ya da silmek için kullanılır. Dosyadaki her satır ilk alanın ne olduğuna göre yapılacak bir işlemi gösterir. Satırlar şu biçimde olmalıdır :
@@ -376,12 +388,14 @@ batch_edaccess=$1 satırındaki kullanıcıyı silmek için izininiz yoktur : $2
 batch_crypt=Parolalar şifrelenmiş mi?
 batch_return=toplu iş dosyası formu
 batch_eother=Başka bir modülde hata oluştu : $1
+
 who_title=Giriş Yapmış Kullanıcıları
 who_user=Unix kullanıcısı
 who_tty=TTY
 who_when=Giriş zamanı
 who_from=Giriş yeri
 who_none=Şu an giriş yapmış bir kullanıcı yok.
+
 export_title=Toplu İş Dosyasına Aktar
 export_desc=Bu form sisteminizdeki kullanıcıların hepsini ya da bir bölümünü bir toplu iş dosyasına aktarmanızı sağlar. Bu dosya ile başka bir sisteme aynı kullanıcıları aktarabilirsiniz.
 export_to=Toplu iş dosyasının yeri
@@ -395,6 +409,7 @@ export_eopen=Çıktı dosyasının açılmasında hata oluştu : $!
 export_done=$1 kullanıcı $2 dosyasına başarı ile aktarıldı ($3 byte)
 export_pft=Toplu iş dosyası biçimi
 export_who=Aktarılacak kullanıcılar
+
 pft_0=Classic <tt>passwd</tt> dosyası
 pft_1=BSD <tt>master.passwd</tt> dosyası
 pft_2=Standart <tt>passwd</tt> ve <tt>shadow</tt> dosyaları
@@ -402,6 +417,7 @@ pft_3=Unixware <tt>passwd</tt> dosyası
 pft_4=AIX <tt>passwd</tt> ve <tt>security</tt> dosyaları
 pft_5=OpenServer <tt>passwd</tt> ve kısa <tt>shadow</tt> dosyaları
 pft_6=MacOS NetInfo veritabanı
+
 umass_title=Kullanıcıları Sil
 umass_err=Kullanıcıların silinmesinde hata oluştu
 umass_sure=$1 seçili kullanıcı silmek istediğinizden emin misiniz? Ev dizinleri $2 dosya içeriyor.
@@ -411,6 +427,7 @@ umass_del1=Kullanıcıları Sil
 umass_del2=Kullanıcıları ve Ev Dizinlerini Sil
 umass_eroot=Sistem kullanıcılarını (UID'si 10 ya da daha aşağı olanlar) silmek için izininiz yoktur.
 umass_doing=$1 kullanıcısı siliniyor
+
 gmass_title=Grupları Sil
 gmass_err=Grupların silinmesinde hata oluştu
 gmass_sure=$1 seçili grubu silmek istediğinizden emin misiniz?
@@ -420,12 +437,14 @@ gmass_del=Grup Sil
 gmass_eroot=Sistem gruplarını (Bunlar GID'i 10 ya da daha dusuk olanlardır) silmek için izininiz yoktur
 gmass_doing=$1 grubu siliniyor ..
 gmass_eprimary=$1 grubu $2 kullanıcısının birincil grubu olduğundan silinemedi
+
 dmass_title=Kullanıcıları Pasifleştir
 dmass_sure=$1 seçili kullanıcıyı pasifleştirmek istediğiğinizden emin misiniz? daha sonra onlar şifreleri ya da verileri kaybolmaksızın tekrar aktifleştirilebilir.
 dmass_dis=Kullanıcıları Pasifleştir
 dmass_pass=Geçici olarak şifre kilitleniyor ..
 dmass_doing=$1 kullanıcısını pasifleştiriyor ..
 dmass_already=.. zaten pasifleştirilmiş!
+
 emass_title=Kullanıcıları Aktifleştir
 emass_pass=Şifre açılıyor .. 
 emass_doing=$1 kullanıcısı aktifleşiyor ..

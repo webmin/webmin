@@ -25,6 +25,7 @@ index_header=Benutzer mit Fetchmail-Konfiguration
 index_search=Zeige Fetchmailkonfiguration für:
 index_show=Zeige
 index_toomany=Es gibt zuviele Benutzer auf Ihrem System. Diese können nicht alle angezeigt werden.
+
 poll_create=Server hinzufügen
 poll_edit=Server bearbeiten
 poll_header=E-Mailserver-Optionen
@@ -64,18 +65,22 @@ poll_ecannot=Sie sind nicht berechtigt die Fetchmail-Konfiguration dieses Benutz
 poll_efile=Nur die Fetchmail-Konfigurationsdateien des Benutzers können geändert werden
 poll_eusername=Benutzer existiert nicht!
 poll_foruser=Für Benutzer $1
+
 stop_err=Konnte Fetchmail nicht anhalten
 stop_ecannot=Sie dürfen Fetchmail nicht stoppen
 start_err=Konnte Fetchmail nicht aktivieren
 start_einterval=Das Prüfintervall fehlt oder ist ungültig
 start_ecannot=Sie dürfen Fetchmail nicht starten
+
 check_title=Prüfe Server
 check_exec=Prüfe E-Mails auf Server(n) mit dem Befehl $1 ...
 check_ok=.. Prüfung vollständig.
 check_failed=.. Prüfung gescheitert!
+
 global_title=Standard-Einstellungen
 global_header=Standard-Einstellungen für alle Server
 global_err=Das Speichern der Standard-Einstellungen ist gescheitert
+
 log_create_poll_file=Server $1 wurde in der Datei $2 eingefügt
 log_modify_poll_file=Server $1 wurde in der Datei $2 bearbeitet
 log_delete_poll_file=Server $1 wurde in der Datei $2 gelöscht
@@ -94,6 +99,7 @@ log_stop=Fetchmail-Daemon gestoppt
 log_create_cron=Aktiviere regelmäßige Überprüfung
 log_update_cron=Ändere regelmäßige Überprüfung
 log_delete_cron=Deaktiviere regelmäßige Überprüfung
+
 acl_users=Kann Fetchmail-Konfiguration bearbeiten für
 acl_all=Alle Benutzer
 acl_this=Aktuellen Webmin-Benutzer
@@ -101,6 +107,7 @@ acl_only=Nur Benutzer
 acl_except=Alle Benutzer außer
 acl_cron=Darf periodische Prüfungen konfigurieren?
 acl_daemon=Darf den Fetchmaildaemon konfigurieren?
+
 cron_title=Regelmäßige Überprüfung
 cron_desc=Hier können Sie die Cron-Aufträge aktivieren oder deaktivieren, welche Ihre aufgrund Ihrer Fetchmail-Konfiguration regelmäßig von anderen E-Mail-Servern neue E-Mail für Sie herunterlädt und Ihrem lokalem Postfach zustellt. Diese Methode sollte der Benutzung der Daemon-Option von Fetchmail bevorzugt werden, da Cron-Aufträge beim einem Reboot des Servers nicht extra gestartet werden müssen.
 cron_header=Einstellungen des geplanten Fetchmail-Laufs
@@ -119,8 +126,10 @@ cron_email=Fehlende oder ungültige E-Mail-Adresse
 cron_euser=Fehlender oder ungültiger Unixbenutzer
 cron_errors=Ausgabe nur bei Fehlern?
 cron_ecannot2=Sie dürfen periodische Prüfungen nicht konfigurieren.
+
 user_title=Fetchmail-Konfiguration
 user_header=Für Benutzer $1
 user_return=Benutzerkonfiguration
+
 email_ok=Fetchmailausgabe
 email_failed=Fetchmailfehler

@@ -32,6 +32,7 @@ index_man=ערוך ידנית את התצורה
 index_mandesc=ערוך ישירות את קובץ התצורה Procmail הראשי, כדי ליצור חוקים, משתנים וחסימות משלך.
 index_ecmd=התוכנית Procmail $1 לא נמצאה במערכת שלך. או שהוא אינו מותקן, או שה <a href='$2'>תצורת המודול</a> אינה נכונה.
 index_delete=מחק פעולות שנבחרו
+
 edit_title2=ערוך פעולה
 edit_title1=צור פעולה
 edit_header1=פרטי פעולת משלוח
@@ -67,6 +68,7 @@ edit_none=אף אחד
 edit_lock=קובץ ספציפי
 edit_ctype=סוג מצב
 edit_cvalue=ביטוי או פקודה רגילים
+
 save_err=שמירת הפעולה נכשלה
 save_eaction_0=קובץ חסר לצירוף
 save_eaction_1=תיקיית MH חסרה לכתוב עליה
@@ -79,6 +81,7 @@ save_elockfile=שם קובץ נעילה חסר
 save_esize=גודל דואר חסר או לא חוקי בתנאי $1 
 save_ere=חסר ביטוי רגיל למצב $1 
 save_eshell=פקודה חסרה לתנאי $1 
+
 env_title1=צור משתנה
 env_title2=ערוך משתנה
 env_header=משתנה של סביבת Procmail
@@ -86,15 +89,19 @@ env_name=שם משתנה
 env_value=ערך
 env_err=שמירת המשתנה נכשלה
 env_ename=שם משתנה חסר או לא חוקי
+
 inc_title1=הוסף כלול קובץ
 inc_title2=ערוך כלול קובץ
 inc_header=קובץ הכללים של procmail כלול
 inc_inc=קובץ כלול
 inc_einc=לא הוזן קובץ
+
 config_eline=קו לא ידוע $1 ב- $2 : $3 
+
 manual_title=ערוך תצורה
 manual_desc=ניתן להשתמש בדף זה לעריכה ידנית של קובץ התצורה Procmail $1. היזהר, מכיוון שלא תבוצע בדיקת תחביר.
 manual_edata=הדפדפן שלך לא סיפק נתונים!
+
 log_create_rec=נוצר מתכון ל- $1 
 log_delete_rec=המתכון נמחק ל- $1 
 log_modify_rec=המתכון השתנה ל- $1 
@@ -114,7 +121,9 @@ log_delete_inc=נמחק כלול הקובץ $1
 log_manual=תצורה ערוכה ידנית
 log_up=העבר רשומה למעלה
 log_down=הועבר רשומה למטה
+
 delete_err=מחיקת הפעולות נכשלה
 delete_enone=לא נבחר
+
 check_epostfix=Procmail אינו מופעל בתצורת Postfix שלך. קובץ התצורה <tt>$2</tt> חייב להגדיר את האפשרות <tt>$1</tt> כ <tt>$3</tt>.
 check_esendmail=Sendmail אינו מוגדר לשימוש ב- Procmail למשלוח מקומי. ניתן לקבוע את התצורה במודול <a href='$1'>Sendmail Mail</a> של Webmin.

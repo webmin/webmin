@@ -9,6 +9,7 @@ index_startmsg=Klikni ovaj botun za startanje FTP servera sa trenutnom konfigura
 index_startmsg2=Klikni ovaj botun za startanje FTP servera sa trenutnom konfiguracijom. Možete također konfigurirati server tako da se starta automatski upotrebom inetd ili sličnog programa.
 index_return=FTP serverske opcije
 index_version=WU-FTPd verzija $1
+
 class_title=Korisnici i Klase
 class_header=Klase korisnika i njihove opcije
 class_class=Klase korisnika
@@ -31,6 +32,7 @@ class_err=Neuspješno pohranjivanje klase usera
 class_eclass='$1' nije ispravno ime klase
 class_etypes=Nema izabranog tipa za klasu '$1'
 class_eaddrs=Nema upisanih adresa za klasu '$1'
+
 message_title=Poruke i Oglasi
 message_header=Poruke, baneri i README datoteke
 message_message=Datoteke sa porukama
@@ -59,6 +61,7 @@ message_eclass=Klasa '$1' ne postoji
 message_ebanner='$1' nije ispravna datoteka oglasa
 message_ehostname=Nepostojeć ili neispravano ime računala
 message_eemail=Ne postoji ili neispravna email adresa
+
 acl_title=Limit i Kontrola Pristupa
 acl_header=Opcije za limit i kontrolu pristupa
 acl_deny=Zabrani pristup od
@@ -105,6 +108,7 @@ acl_elmsg='$1' nije ispravna datoteka sa porukama o greškama
 acl_efbcount='$1' nije ispravan broj datoteka ili byteova
 acl_elimit='$1' nije ispravno vrijeme limita
 acl_efails='$1' nije ispravan broj neuspješnih pokušaja spajanja
+
 net_title=Umreženost
 net_header=Mrežne opcije
 net_tcp=TCP windows velicina
@@ -122,6 +126,7 @@ net_eip='$1' nije ispravna IP adresa
 net_enet='$1' nije ispravna mrežna adresa
 net_ecidr='$1' nije ispravan broj mrežnih bitova
 net_eport='$1' nije ispravan broj porta
+
 log_title=Logiranje
 log_header=Opcije za pohranu
 log_commands=Zabilježi sve naredbe za
@@ -139,6 +144,7 @@ log_syslog=Sistemski log
 log_xferlog=XFER log datoteka
 log_sysxfer=Obje destinacije
 log_err=Nemoguće pohraniti opcije za pohranjivanje
+
 alias_title=Alias i Putanje
 alias_header=Opcije aliasa i putanje
 alias_alias=CD direktorij aliasa
@@ -149,6 +155,7 @@ alias_err=Neuspjelo pohranjivanje aliasa i putanja
 alias_efrom='$1' nije ispravan alias
 alias_eto='$1' nije ispravan alias foldera
 alias_ecdpath='$1' nije ispravan CD pretraživanje foldera
+
 anon_title=Anonimni FTP
 anon_eftp=Upozorenje, vaš sustav nema <tt>ftp</tt> korisnika i nema konfiguriranih FTP korisnika.
 anon_header=Anonimne FTP opcije
@@ -171,6 +178,7 @@ anon_uids=Za Unix korisnike
 anon_err=Neuspjelo snimanje anonymnih FTP opcija
 anon_edir='$1' nije ispravan folder
 anon_egroup='$1' nije u ispravnoj grupi
+
 perm_title=Dozvole
 perm_header=Opcije pravila pristupa
 perm_perms=restriktivne naredbe
@@ -192,7 +200,9 @@ perm_err=Neuspjela pohrana prava pristupa
 perm_echar='$1' nije ispravan karakter set regularne ekspresije
 perm_etypes=Nije odabran tip korisnika
 perm_emesg='$1' nije ispravna datoteka sa porukom pogreske
+
 host_title=Kontrola pristupa računalima
+
 misc_title=Ostale opcije
 misc_header=Ostale opcije
 misc_lslong=Naredba za dugi ispis
@@ -213,6 +223,7 @@ misc_elsplain=Nedostaje naredba za obično izlistavanje
 misc_eshutdown=Nedostaje datotake sa shoutdown obavjesti
 misc_enice='$1' nije ispravna nice razina
 misc_eumask='$1' nije ispravan umask
+
 log_class=Promjeni korisnike i klase
 log_message=Promjeni poruke i banere
 log_acl=Promjeni limite i kontrolu pristupa

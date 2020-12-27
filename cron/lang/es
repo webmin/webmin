@@ -15,6 +15,7 @@ index_move=Mover
 index_run=¿Ejecutando?
 index_ecmd=El comando $1 para gestionar configuraciones Cron de usuario no fué encontrado. ¿Puede que Cron no esté instalado en su sistema?
 index_esingle=El archivo $1 que lista las tareas de Cron no existe. ¿Puede que Cron no esté instalado en su sistema?
+
 edit_title=Editar Tarea de Cron
 create_title=Crear Tarea de Cron
 edit_ecannot=No está autorizado a editar tareas de cron para este usuario
@@ -51,6 +52,7 @@ lcedit_special_weekly=semanalmente (el Domingo)
 lcedit_special_monthly=mensualmente (el día 1)
 lcedit_special_yearly=anualmente (el 1 de enero)
 lcedit_special_reboot=cuando el sistema arranca
+
 save_err=Error al salvar tarea de cron
 save_ecmd=No ha introducido un comando a ejecutar
 save_euser=Debe de seleccionar un usuario
@@ -59,6 +61,7 @@ save_eallow=El usuario '$1' no está autorizado a acceder a cron...
 save_ecannot=No está autorizado a crear o a editar tareas de cron para '$1'
 save_enone=No ha seleccionado un $1 para ejecutar
 save_ecannot2=No está autorizado a crear tareas cron
+
 allow_title=Controlar Acceso de Cron
 allow_desc=Este formulario le permite controlar qué usuarios pueden crear y ejecutar tareas de cron.
 allow_ecannot=No puede controlar el acceso del usuario a cron
@@ -67,6 +70,7 @@ allow_all2=Denegar a todos los usuarios excepto a root
 allow_all3=Permitir a todos los usuarios
 allow_allow=Permitir sólo a los usuarios listados
 allow_deny=Denegar sólo a los usuarios listados
+
 env_title1=Editar Variable Entorno
 env_title2=Crear Variable Entorno
 env_name=Nombre de Variable
@@ -82,11 +86,13 @@ env_where2=Mover variable de entorno
 env_top=Antes de todas las tareas Cron para el usuario
 env_bot=Tras todas las tareas Cron
 env_leave=Posición actual
+
 exec_title=Ejecutar Tarea de Cron
 exec_ecannot=No está autorizado a ejecutar tareas de cron para este usuario
 exec_cmd=Salida del comando $1 ...
 exec_cmdbg=Ejecutando comando $1 en segundo plano.
 exec_none=No se ha generado salida
+
 acl_users=Puede editar tareas de cron para
 acl_all=Todos los usuarios
 acl_this=Usuario actual de Webmin
@@ -100,6 +106,7 @@ acl_create=¿Puede crear tareas de Cron?
 acl_delete=¿Puede borrar tareas de Cron?
 acl_move=¿Puede mover tareas de Cron?
 acl_kill=¿Puede terminar tareas de Cron?
+
 log_modify=Modificada tarea de cron para $1
 log_modify_l=Modificada tarea de cron "$2" para $1
 log_create=Creada tarea de Cron para $1
@@ -114,21 +121,26 @@ log_env_create=Se creó variable de entorno para $1
 log_env_modify=Se modificó variable de entorno para $1
 log_env_delete=Se borró variable de entorno para $1
 log_move=Se movió tarea Cron para $1
+
 ecopy=Se detectó un error en la nueva configuración de Cron : $1 $2
+
 when_min=cada minuto
 when_hour=cada hora en el minuto $1
 when_day=todos los días a las $2:$1
 when_month=el día $3 de cada mes a las $2:$1
 when_weekday=cada $3 a las $2:$1
 when_cron=a la hora cron $1
+
 ucwhen_min=Cada minuto
 ucwhen_hour=Cada hora en el minuto $1
 ucwhen_day=Todos los dias a las $2:$1
 ucwhen_month=En el día $3 de cada mes a las $2:$1
 ucwhen_weekday=Cada $3 a las $2:$1
 ucwhen_cron=A la hora cron $1
+
 move_err=Fallo al mover tarea Cron
 move_etype=Esta tarea no se puede mover
+
 kill_err=Fallo al terminar tarea Cron
 kill_ecannot=No está autorizado a terminar esta tarea
 kill_egone=Ya no se está ejecutando
@@ -137,6 +149,7 @@ kill_title=Finalizar Tarea Cron
 kill_rusure=¿Seguro que quiere finalizar el proceso $1 con PID $2?
 kill_rusure2=¿Seguro que quiere finalizar el proceso $1 con PID $2, y todos sus subprocesos?
 kill_ok=Si, Finalizarlo
+
 range_all=Ejecutar en cualquier fecha
 range_start=Sólo ejecutar desde $1
 range_end=a $1

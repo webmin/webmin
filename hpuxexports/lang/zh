@@ -14,6 +14,7 @@ index_ro_rw=所有主机只读访问，选择主机写入访问
 index_sel_rw=选择主机写入访问
 index_all_rw=所有主机写入访问
 index_sel_root=选择主机root访问
+
 edit_title=编辑输出
 create_title=创建输出
 edit_details=输出的细节
@@ -56,6 +57,7 @@ edit_anon_access=匿名用户
 edit_anon_notset=未设置
 edit_anon_noaccess=无访问
 edit_async=异步写入
+
 save_err=保存输出失败
 save_edir=目录'$1' 不存在
 save_enetgroup=无效的网络组或未输入网络组
@@ -65,6 +67,7 @@ save_ehost='$1'不是有效的主机名
 save_enohost='$1' - 您未列出的主机
 save_euids=不信任的UID必须是一个逗号分隔的数字序列或范围序列
 save_egids=不信任的GID必须是一个逗号分隔的数字序列或范围序列
+
 log_modify=已修改NFS 输出 $1
 log_modify_l=已修改到$2的NFS 输出 $1
 log_delete=已删除的NFS 输出 $1

@@ -4,6 +4,7 @@ index_none=טרם הוגדרו אזורים.
 index_add=הוסף אזור חדש.
 index_return=רשימת אזור
 index_zones=אזורים קיימים
+
 edit_title=ערוך אזור
 edit_common=תצורת אזור כללית
 edit_name=שם אזור
@@ -57,20 +58,26 @@ edit_attrnone=טרם הוגדרו תכונות כלליות.
 edit_attradd=הוסף תכונה גנרית חדשה.
 edit_webmin=פתח את Webmin
 edit_brand=מותג
+
 ui_cancel=בטל
+
 save_err=שמירת אזור נכשלה
 save_epool=מאגר חסר או לא חוקי
 save_ewebmin=Webmin אינו פועל באזור זה
+
 reboot_title=התחל מחדש את אזור
 reboot_rusure=האם אתה בטוח שברצונך לאתחל את האזור $1 מחדש? כל התהליכים שרצים בתוכו יופעלו מחדש.
 reboot_err=נכשלה אתחול האזור מחדש
 reboot_doing=כעת אתחול מחדש של אזור ..
+
 reboot_failed=.. נכשל :
 reboot_ok=.. שלם.
+
 halt_title=אזור הכיבוי
 halt_rusure=האם אתה בטוח שברצונך לכבות את האזור $1 ? כל התהליכים הפועלים בתוכה יופסקו.
 halt_err=כיבוי אזור נכשל
 halt_doing=כעת כבה את האזור ..
+
 boot_title=אזור אתחול
 boot_err=אזור האתחול נכשל
 boot_doing=כעת אתחול את אזור ..
@@ -78,10 +85,12 @@ delete_title=מחק אזור
 delete_rusure=האם אתה בטוח שברצונך למחוק את האזור $1 ? כל הקבצים במערכות הקבצים הפרטיות שלה יאבדו.
 delete_err=מחיקת האזור נכשלה
 delete_doing=כעת מוחק אזור ..
+
 uninstall_title=הסר את התקנת המערכת
 uninstall_rusure=האם אתה בטוח שברצונך להסיר את התקנת תוכנת המערכת מאזור $1 ? כל הקבצים במערכות הקבצים הפרטיות שלה יאבדו.
 uninstall_err=ביטול התקנת תוכנת המערכת מהאזור נכשל
 uninstall_doing=כעת בטל את התקנת המערכת מאזור ..
+
 install_title=התקן מערכת
 install_doing=עכשיו התקנת המערכת לאזור ..
 net_title1=צור ממשק רשת
@@ -96,6 +105,7 @@ net_enetmask=מסכת רשת לא חוקית
 net_eaddress=כתובת IP לא חוקית
 net_egone=הממשק כבר לא קיים!
 net_eclash=ממשק רשת עם אותה כתובת IP קיים כבר באזור זה
+
 pkg_title1=הוסף מדריך חבילות
 pkg_title2=ערוך את מדריך החבילות
 pkg_header=פרטי ספריית חבילה בירושה
@@ -107,6 +117,7 @@ pkg_eclash=ספריית החבילה כבר קיימת באזור זה
 pkg_inherit=ירש חבילות מאזור גלובלי
 pkg_inherit_yes=כן (אזור שורש דליל)
 pkg_inherit_no=לא (אזור שורש שלם)
+
 fs_title1=צור מערכת קבצים
 fs_title2=ערוך מערכת קבצים
 fs_header=פרטים נוספים על מערכת הקבצים
@@ -128,6 +139,7 @@ fs_eoptions=אפשרויות הרכבה לא חוקיות (חייבות להיו
 fs_egone=מערכת הקבצים כבר לא קיימת!
 fs_mount=הר לאחר היצירה?
 fs_eclash=מערכת קבצים המשתמשת באותה ספרייה קיימת כבר באזור זה
+
 rctl_title1=צור בקרת משאבים
 rctl_title2=ערוך בקרת משאבים
 rctl_header=סוג בקרת משאבים ומגבלות
@@ -148,6 +160,7 @@ rctl_elimit=לא מספר
 rctl_eaction=בשום $1 לא נבחר אות
 rctl_evalues=לא נכנסו גבולות
 rctl_eclash=בקרה לאותו משאב קיימת כבר באזור זה
+
 attr_title1=צור תכונה כללית
 attr_title2=ערוך תכונה גנרית
 attr_header=פרטי מאפיין אזור כללי
@@ -165,6 +178,7 @@ attr_euint=ערך אינו מספר שלם חיובי
 attr_eboolean=הערך אינו 'נכון' או 'שקרי'
 attr_egone=התכונה כבר לא קיימת!
 attr_eclash=מאפיין עם אותו שם כבר קיים באזור זה
+
 status_running=רץ
 status_installed=נעצר
 status_configured=לא מותקן
@@ -172,13 +186,16 @@ status_incomplete=מותקן
 status_ready=מוכנים
 status_down=מטה
 status_shutting_down=כיבוי
+
 list_name=שם אזור
 list_id=מספר תעודת זהות
 list_path=ספריית אזור
 list_status=סטטוס
 list_actions=פעולות
+
 zone_in=באזור $1 
 pool_none=אף אחד
+
 create_title=צור אזור
 create_header=פרטי אזור חדשים
 create_path=ספריית קבצי אזור
@@ -239,6 +256,7 @@ create_erouter=כתובת IP של נתב ברירת מחדל חסרה או לא 
 create_removingpkgs=מסיר ספריות חבילות בירושה. ..
 create_brand=מותג
 create_brandmsg=אזור מיתוג
+
 log_create_zone=נוצר אזור $1 
 log_delete_zone=אזור $1 נמחק
 log_save_zone=תצורה שונה לאזור $1 
@@ -262,6 +280,7 @@ log_delete_rctl=בקרת המשאבים נמחקה עבור $1 באזור $2
 log_create_attr=יצר תכונה גנרית $1 באזור $2 
 log_modify_attr=תכונה גנרית שונה $1 באזור $2 
 log_delete_attr=מאפיין גנרי $1 נמחק באזור $2 
+
 webmin_eperl=פרל אינו מותקן ב- $1 
 webmin_eroot=הספרייה $1 אינה קיימת או אינה מכילה Webmin.
 webmin_title=התקן את Webmin

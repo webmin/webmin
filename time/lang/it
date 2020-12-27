@@ -10,6 +10,7 @@ index_hardware2=Imposta anche l'ora hardware
 index_tzheader=Fuso orario
 index_tz=Cambia fuso orario a:
 index_ehwclock=$1 non riuscito: $2
+
 action_save=Salva
 action_apply=Applica
 action_sync=Imposta l'ora di sistema all'ora hardware
@@ -17,6 +18,7 @@ action_sync_s=Imposta l'ora hardware all'ora di sistema
 action_timeserver_sys=Sincronizza l'ora di sistema
 action_timeserver_hw=Sincronizza l'ora hardware
 action_savezone=Modifica il fuso orario
+
 acl_sys=L'utente può modificare l'ora di sistema?
 acl_hw=Gli utenti possono modificare l'ora hardware?
 acl_timezone=L'utente può impostare il fuso orario?
@@ -27,19 +29,23 @@ acl_error=Hai accesso al modulo sull'ora di sistema, ma non puoi modificare né 
 acl_nosys=Non hai i permessi per modificare l'ora di sistema
 acl_nohw=Non hai i permessi per modificare l'ora hardware
 acl_nontp=Non hai i permessi per la sincronizzazione con un server NTP
+
 sys_title=Ora di sistema
 hw_title=Ora hardware
+
 day=Giorno
 month=Mese
 date=Data
 hour=Ora
 year=Anno
+
 error_cnf=Errore: il comando $1 non è stato trovato
 error_hw=Puoi impostare l'ora hardware: $1
 error_sync=Non è possibile sincronizzarsi con l'ora di sistema: $1
 error_ediff=La differenza tra l'ora locale e l'ora sul server è tanta: $1 giorni
 error_entp=Sincronizzazione con il server NTP fallita: $1
 error_etimeserver=Nessun server NTP configurato
+
 log_set_date=Imposta l'ora di sistema a $1
 log_set_hwclock=Imposta l'ora hardware a $1
 log_remote_date=Recupera l'ora di sistema da $2
@@ -49,6 +55,7 @@ log_remote_hwclock_l=Recupera l'ora hardware $1 da $2
 log_sync=L'ora di sistema è stata sincronizzata con l'ora hardware
 log_sync_s=L'ora hardware è stata sincronizzata con l'ora di sistema
 log_timezone=Il fuso orario è stato cambiato a $1
+
 timezone_err=Il nuovo fuso orario non è stato salvato
 timezone_ecannot=Non hai i permessi per modificare il fuso orario
 timezone_enone=Nessuna zona selezionata

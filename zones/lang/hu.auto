@@ -4,6 +4,7 @@ index_none=Még nincs meghatározva zóna.
 index_add=Adjon hozzá egy új zónát.
 index_return=zóna lista
 index_zones=Meglévő zónák
+
 edit_title=Zóna szerkesztése
 edit_common=Általános zóna konfiguráció
 edit_name=Zóna neve
@@ -57,20 +58,26 @@ edit_attrnone=Még nem határoztak meg általános attribútumokat.
 edit_attradd=Adjon hozzá egy új általános attribútumot.
 edit_webmin=Nyissa meg a Webmin alkalmazást
 edit_brand=Márka
+
 ui_cancel=Megszünteti
+
 save_err=Nem sikerült menteni a zónát
 save_epool=Hiányzó vagy érvénytelen készlet
 save_ewebmin=A Webmin nem fut ezen a zónán
+
 reboot_title=Újraindító zóna
 reboot_rusure=Biztosan újra akarja indítani a (z) $1 zónát? A benne futó összes folyamatot újraindítják.
 reboot_err=A zóna újraindítása nem sikerült
 reboot_doing=Most újraindul a zóna ..
+
 reboot_failed=.. nem sikerült  :
 reboot_ok=.. teljes.
+
 halt_title=Leállási zóna
 halt_rusure=Biztosan le akarja állítani a (z) $1 zónát? A benne futó összes folyamat leáll.
 halt_err=Nem sikerült leállítani a zónát
 halt_doing=Most bezárja a zónát ..
+
 boot_title=Indító zóna
 boot_err=Nem sikerült a rendszerindítási zóna
 boot_doing=Most indul a zóna ..
@@ -78,10 +85,12 @@ delete_title=Törölje a zónát
 delete_rusure=Biztosan törli a (z) $1 zónát? A magán fájlrendszereiben található összes fájl el fog veszni.
 delete_err=A zóna törlése nem sikerült
 delete_doing=Most törli a zónát ..
+
 uninstall_title=Távolítsa el a rendszert
 uninstall_rusure=Biztosan eltávolítja a rendszerszoftvert a $1 zónából? A magán fájlrendszereiben található összes fájl el fog veszni.
 uninstall_err=Nem sikerült eltávolítani a rendszerszoftvert a zónából
 uninstall_doing=Most eltávolítja a rendszert a zónából.
+
 install_title=Telepítse a rendszert
 install_doing=Most telepítem a rendszert a zónába ..
 net_title1=Hozzon létre hálózati felületet
@@ -96,6 +105,7 @@ net_enetmask=Érvénytelen hálómaszk
 net_eaddress=Érvénytelen IP-cím
 net_egone=Az interfész már nem létezik!
 net_eclash=Ebben a zónában már létezik egy azonos IP-című hálózati interfész
+
 pkg_title1=Adja hozzá a Csomagkönyvtárat
 pkg_title2=Csomag könyvtár szerkesztése
 pkg_header=Örökölt csomagkönyvtár részletei
@@ -107,6 +117,7 @@ pkg_eclash=A csomagkönyvtár már létezik ebben a zónában
 pkg_inherit=Csomagok öröklése a globális zónából
 pkg_inherit_yes=Igen (ritka gyökérzóna)
 pkg_inherit_no=Nem (teljes gyökérzóna)
+
 fs_title1=Filesystem létrehozása
 fs_title2=A fájlrendszer szerkesztése
 fs_header=További fájlrendszer-részletek
@@ -128,6 +139,7 @@ fs_eoptions=Érvénytelen beillesztési beállítások (vesszővel elválasztott
 fs_egone=A fájlrendszer már nem létezik!
 fs_mount=Szerelje fel a létrehozás után?
 fs_eclash=Az ugyanazt a könyvtárat használó fájlrendszer már létezik ebben a zónában
+
 rctl_title1=Hozzon létre erőforrás-vezérlést
 rctl_title2=Az erőforrás-vezérlés szerkesztése
 rctl_header=Erőforrás-vezérlés típusa és korlátozásai
@@ -148,6 +160,7 @@ rctl_elimit=Nem számot
 rctl_eaction=Nincs jel kiválasztva a (z) $1 sorban
 rctl_evalues=Nincs megadva korlátozás
 rctl_eclash=Ugyanazon erőforrás vezérlése már létezik ebben a zónában
+
 attr_title1=Hozzon létre általános attribútumot
 attr_title2=Általános attribútum szerkesztése
 attr_header=Általános zóna attribútum részletei
@@ -165,6 +178,7 @@ attr_euint=Az érték nem pozitív egész szám
 attr_eboolean=Az érték nem „igaz” vagy „hamis”
 attr_egone=Az attribútum már nem létezik!
 attr_eclash=Az azonos nevű attribútum már létezik ebben a zónában
+
 status_running=Futó
 status_installed=megállt
 status_configured=Nem telepített
@@ -172,13 +186,16 @@ status_incomplete=Telepítve van
 status_ready=Kész
 status_down=Le
 status_shutting_down=Leállítás
+
 list_name=Zóna neve
 list_id=ID szám
 list_path=Zóna könyvtár
 list_status=Állapot
 list_actions=Hozzászólások
+
 zone_in=$1 zónában
 pool_none=Egyik sem
+
 create_title=Zóna létrehozása
 create_header=Új zóna részletei
 create_path=Zóna fájlok könyvtára
@@ -239,6 +256,7 @@ create_erouter=Hiányzó vagy érvénytelen alapértelmezett útválasztó IP-c�
 create_removingpkgs=az örökölt csomagkönyvtárak eltávolítása. ..
 create_brand=Márka
 create_brandmsg=Márkajelzési zóna
+
 log_create_zone=Létrehozta a (z) $1 zónát
 log_delete_zone=$1 zóna törölve
 log_save_zone=Módosított konfiguráció a (z) $1 zónához
@@ -262,6 +280,7 @@ log_delete_rctl=Törölt erőforrás-vezérlés a (z) $1 zónából
 log_create_attr=Létrehozta a (z) $1 általános attribútumot a (z) $2 zónában
 log_modify_attr=A (z) $1 módosított általános attribútuma a $2 zónában
 log_delete_attr=Törölve a (z) $1 általános attribútum a (z) $2 zónában
+
 webmin_eperl=A Perl nincs telepítve a következőre: $1 
 webmin_eroot=A $1 könyvtár nem létezik, vagy nem tartalmazza a Webmin-t.
 webmin_title=Telepítse a Webmin

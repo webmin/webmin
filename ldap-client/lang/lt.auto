@@ -14,6 +14,7 @@ index_restart=Iš naujo paleiskite LDAP kliento demoną
 index_restartdesc=Taikykite dabartinę konfigūraciją iš naujo paleisdami vietinį LDAP kliento demoną.
 index_atboot=Paleiskite „LDAP“ klientą įkrovos metu
 index_atbootdesc=Pakeičia, ar paleidžiamas LDAP kliento demonas, kai sistema paleidžiama, ar ne.
+
 server_title=LDAP serverio konfigūracija
 server_header=LDAP serverio ir prisijungimo parinktys
 server_host=LDAP serverio pagrindiniai vardai
@@ -51,6 +52,7 @@ server_etimelimit=Trūksta arba netinkamas prisijungimo laikas
 server_ecacert=Trūksta arba netinkamas CA pažymėjimo failas
 server_euport=Trūksta arba netinkamas $1 serverio prievadas
 server_euri=Neįvestas nė vienas LDAP serveris
+
 base_title=LDAP paieškos bazės
 base_header=LDAP katalogų paieškos vietos
 base_base=Visuotinė paieškos bazė
@@ -86,6 +88,7 @@ base_enetmasks=Trūksta tinklo maskavimo vardų bazės
 base_ealiases=Trūksta el. Pašto slapyvardžių bazės
 base_enetgroup=Trūksta tinklo grupių bazės
 base_etimelimit=Trūksta arba netinkamas paieškos terminas
+
 pam_title=Autentifikavimo parinktys
 pam_header=PAM autentifikavimo ir slaptažodžio nustatymai
 pam_filter=Papildomas LDAP filtras
@@ -106,10 +109,12 @@ pam_efilter=Trūksta papildomo LDAP filtro
 pam_elogin=Trūksta arba netinkamas LDAP vartotojo vardo atributas
 pam_egroupdn=Trūksta LDAP grupės, kad priverstų tapti naryste
 pam_emember=Trūksta arba netinkamas LDAP atributas grupės nariams
+
 switch_title=Paslaugos naudojant LDAP
 switch_service=Aptarnavimas
 switch_srcs=Duomenų šaltinis
 switch_return=paslaugas naudojant LDAP
+
 ldap_emodule=$1 „Perl“ modulis, reikalingas kalbėjimui su LDAP serveriu, neįdiegtas. <a href='$2'>Spustelėkite čia</a>, jei norite, kad „Webmin“ atsisiųstų ir įdėtų dabar.
 ldap_emodule2=$1 „Perl“ modulis, reikalingas kalbėjimui su LDAP serveriu, neįdiegtas.
 ldap_econf=Jūsų sistemoje nerastas LDAP kliento konfigūracijos failas $1 
@@ -119,6 +124,7 @@ ldap_elogin=Nepavyko susieti su LDAP serveriu $1 kaip $2 : $3
 ldap_anon=Anoniminis
 ldap_eparse=Nepavyko išanalizuoti LDAP serverio URI $1 
 ldap_etls=Nepavyko perjungti į TLS režimą : $1 
+
 browser_title=LDAP naršyklė
 browser_econn=Negalima naudoti LDAP naršyklės : $1 
 browser_base=Naršymas:
@@ -129,6 +135,7 @@ browser_attrs=Objekto atributai
 browser_parent=Naršykite Tėvai
 browser_none=Nė vienas
 browser_sel=Gerai
+
 order_nisplus=NIS +
 order_nis=NIS
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=Vartotojo spausdintuvai
 order_xfn=XFN
 order_mdns4=Multicast DNS
 order_mdns4_minimal=Multicast DNS (minimalus)
+
 desc_aliases=„Sendmail“ slapyvardžiai
 desc_mail=„Sendmail“ slapyvardžiai
 desc_hosts=Pagrindinio kompiuterio adresai
@@ -177,6 +185,7 @@ desc_printers=Spausdintuvai
 desc_ipnodes=IP mazgai
 desc_timezone=Laiko juostos
 desc_locale=Vietos
+
 eswitch_title=Redaguoti paslaugą
 eswitch_egone=Paslauga neegzistuoja!
 eswitch_header=Informacija apie paslaugą
@@ -196,6 +205,7 @@ eswitch_continue=Tęskite paiešką
 eswitch_none=Nė vienas
 eswitch_err=Nepavyko išsaugoti paslaugos
 eswitch_enone=Nepasirinktas nė vienas šaltinis
+
 log_server=Modifikuota LDAP serverio konfigūracija
 log_base=Modifikuotos LDAP paieškos bazės
 log_pam=Modifikuotos autentifikavimo parinktys
@@ -205,6 +215,7 @@ log_delboot=Išjungtas LDAP kliento demonas įkrovos metu
 log_start=Pradėtas LDAP kliento demonas
 log_stop=Sustabdytas LDAP kliento demonas
 log_restart=Iš naujo paleistas LDAP kliento demonas
+
 check_title=LDAP konfigūracijos patvirtinimas
 check_base=LDAP bazės suradimas vartotojams ..
 check_ebase=.. Nerasta kliento konfigūracijoje!

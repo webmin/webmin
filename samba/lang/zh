@@ -5,6 +5,7 @@ index_fileshare=文件共享
 index_printershare=打印机共享
 index_shareconf=共享配置
 index_version=Samba版本$1
+
 index_sharename=共享名
 index_path=路径
 index_security=安全
@@ -31,12 +32,14 @@ index_startmsg=您的系统似乎没有运行samba服务。这就意味着其他
 index_restart=重新启动Samba服务器
 index_restartmsg=点击此按扭重新启动您系统中正在运行的samba服务。这将会使当前配置立即生效。
 index_restartmsg2=这也将会中断所有连接至服务器的连线。所以如果您不想要当前的配置立即生效，只需等待1 分钟让 Samba 自动重新加载配置即可。
+
 config_mins=分
 config_secs=秒
 config_bytes=字节
 config_never=从不
 config_all=所有的
 config_neither=没有任何一个
+
 global_title=全局配置
 global_unixnetwork=Unix 网络
 global_winnetwork=Windows网络
@@ -46,6 +49,7 @@ global_misc=杂类选项
 global_filedefault=文件共享默认值
 global_prndefault=打印机共享默认值
 global_password=加密口令
+
 error_nosamba=未找到Samba 服务器执行文件<7/>$1</tt>。要么是系统没有安装 Samba，要么是<a href=\$2\>模块配置</a> 有误。
 error_version=Webmin 无法取得 samba 服务器执行文件 <tt>$1</tt>的版本号。请检查您的 <a href=\$2\>模块配置</a>以确定此为正确的路径。
 error_config=未找到配置文件 $1。您的系统中很可能没有安装 Samba，或者您的 <a href=\$2\>模块配置</a> 有误。
@@ -53,6 +57,7 @@ error_include=Webmin 无法使用<tt>配置</tt> 或<tt>包含</tt> 指令来处
 error_delshare=无法删除共享
 error_delcopy=共享来自本共享的'$1' 副本
 error_savename=无法保存文件命名
+
 convert_title=转换用户
 convert_msg=您可以在此表中将Unix 和 Samba 用户列表同步。当 Samba使用<a href=$1>加密口令</a>时，使用独立的用户和口令表，而不是系统用户列表。
 convert_noconv=不要转换或者删除下列用户：
@@ -64,6 +69,7 @@ convert_nopasswd=没有口令
 convert_lock=锁定帐号
 convert_passwd=使用此口令
 convert_convert=转换用户
+
 misc_title=杂类选项
 misc_debug=调试级别
 misc_cachecall=高速缓存<tt>getwd()</tt> 调用？
@@ -77,6 +83,7 @@ misc_chroot=<tt>chroot()</tt> 目录
 misc_smbrun=<tt>smbrun</tt>路径
 misc_clienttime=客户时间偏移
 misc_readprediction=读取预测？
+
 net_title=Unix 网络选项
 net_idle=在断线之前的闲置时间
 net_trustlist=可信主机/用户文件
@@ -91,6 +98,7 @@ net_every=发送每一个
 net_maxpacket=最大的数据包的大小
 net_listen=监听地址
 net_socket=Socket 选项
+
 passwd_title=口令选项
 passwd_encrypt=使用加密口令？
 passwd_allownull=允许空口令？
@@ -103,11 +111,13 @@ passwd_send=发送
 passwd_map=用户名映射
 passwd_unixuser=Unix 用户
 passwd_winuser=Windows 用户
+
 print_title=打印选项
 print_style=Unix 打印风格
 print_show=显示所有的打印机？
 print_printcap=打印性能文件
 print_cachetime=打印状态高速缓存时间
+
 smb_title=Windows 网络选项
 smb_workgroup=工作组
 smb_wins=WINS 模式
@@ -134,13 +144,16 @@ smb_nowhere=无处
 smb_fromlist=来自列表...
 smb_ip=IP 地址
 smb_asworkgroup=<b>作为工作组</b> (可选)
+
 create_title=创建副本
 create_msg=共享副本将继承您所选择共享的所有默认值。如原共享改变，副本将随之而改变。
 create_from=共享复制自：
 create_name=新的共享名：
+
 smbuser_title=Samba 用户
 smbuser_list=Samba 用户列表
 smbuser_nouser=未定义的 Samba 用户
+
 euser_title=编辑 Samba 用户
 euser_name=用户名
 euser_uid=Unix UID
@@ -157,6 +170,7 @@ euser_normal=普通用户
 euser_nopwrequired=无需口令
 euser_disable=帐号禁用
 euser_trust=工作站可信帐户
+
 fmisc_title=杂类文件默认值
 fmisc_for=共享<tt>$1</tt>
 fmisc_lockfile=是否锁定文件？
@@ -172,6 +186,7 @@ fmisc_conncmd=连接时运行的命令
 fmisc_disconncmd=中断连线时运行的命令
 fmisc_rootconn=<i>作为root</i>连接时要运行的命令
 fmisc_rootdisconn=<i>作为root</i>中断连线时要运行的命令
+
 fname_title1=文件命名默认值
 fname_title2=编辑文件命名
 fname_option=文件命名选项
@@ -186,6 +201,7 @@ fname_hide=隐藏"."文件？
 fname_archive=保存 DOS 归档标志？
 fname_hidden=保存 DOS 隐藏标志？
 fname_system=保存 DOS 系统标志？
+
 fperm_title1=文件许可默认
 fperm_title2=编辑文件许可
 fperm_option=文件许可选项
@@ -198,6 +214,7 @@ fperm_link=允许在共享外符号连接？
 fperm_delro=能删除只读文件吗？
 fperm_forcefile=强制Unix 文件模式
 fperm_forcedir=强制 Unix 目录模式
+
 share_title1=文件共享默认
 share_title2=编辑文件共享
 share_title3=创建文件共享
@@ -215,6 +232,7 @@ share_security=口令和访问控制
 share_permission=文件许可
 share_naming=文件命名
 share_misc=杂类选项
+
 print_title1=打印机选项默认值
 print_title2=编辑打印机选项
 print_option=打印机选项
@@ -226,6 +244,7 @@ print_delete=删除作业命令
 print_pause=暂停作业命令
 print_unresume=中断作业命令
 print_driver=打印机驱动程序
+
 pshare_title1=打印机共享默认
 pshare_title2=编辑打印共享
 pshare_title3=创建打印机共享
@@ -234,6 +253,7 @@ pshare_name=共享名
 pshare_all=所有打印机共享
 pshare_unixprn=Unix 打印机
 pshare_spool=后台打印目录
+
 sec_index1=安全默认
 sec_index2=编辑安全
 sec_writable=可写入？
@@ -256,12 +276,14 @@ sec_rouser=只读用户
 sec_rogroup=只读组
 sec_rwuser=读/写用户
 sec_rwgroup=读/写组
+
 esync_title=用户同步
 esync_msg=可以配置Webmin，会自动将对 Unix 用户列表的更改应用到 Samba 用户列表上。这仅在使用 <tt>用户和组</tt> Webmin 模块来添加、删除或改变用户时才有效。
 esync_add=新增Unix用户时也随之新增Samba 用户
 esync_chg=改变 Unix 用户时也随之改变Samba 用户
 esync_del=删除 Unix 用户时也随之删除Samba 用户
 esync_apply=应用
+
 mkpass_title=转换用户
 mkpass_convfail=无法转换用户
 mkpass_msg=转换Unix用户...
@@ -270,24 +292,30 @@ mkpass_same=已经相同
 mkpass_update=正被更新
 mkpass_del=正被删除
 mkpass_passfail=无法设置口令
+
 savecopy_fail=无法创建副本
 savecopy_global=名称 'global' 不能用于共享
 savecopy_exist=共享'$1'已存在
+
 saveuser_fail=无法保存用户
 saveuser_uid='$1' 不是有效的 Unix UID
 saveuser_colon=真名不能包含字符：
 saveuser_home=主目录'$1' 不存在
 saveuser_shell=$1 不是有效的shell
 saveuser_pass=无法使用smbpasswd更改口令: $1
+
 savefmisc_fail=无法保存杂类选项
 savefmisc_number='$1' 是不是有效的连接数
+
 savefperm_fail=无法保存文件许可
 savefperm_mode='$1' 不是有效的 Unix 文件模式
+
 savefshare_fail=无法保存共享
 savefshare_nopath=没有给定路径
 savefshare_exist=名为 '$1' 的共享已经存在
 savefshare_mode='$1' 不是有效的共享名
 savefshare_global='global'不能用作共享名称
+
 savemisc_fail=无法保存选项
 savemisc_lockdir=包含锁定目录的目录不存在
 savemisc_logdir=包含日志文件的目录不存在
@@ -296,34 +324,44 @@ savemisc_overlap='$1'不是有效的重叠读大小
 savemisc_chroot=chroot 目录'$1' 不存在
 savemisc_smbrun=smbrun 程序'$1' 不存在或不可执行
 savemisc_time='$1' 不是有效的时间偏移
+
 savenet_fail=无法保存选项
 savenet_timeout='$1' 不是有效的断线超时
 savenet_ip='$1' 不是有效的IP 字节
 savenet_keep='$1' 不是有效的保持活动间隔
 savenet_maxxmit='$1' 不是有效的最大数据包大小
+
 savepass_fail=无法保存选项
 savepass_nopass=这个版本的samba不支持口令加密
 savepass_passwd=没有给定的改变口令的程序
 savepass_level='$1' 不是有效的区分大小写的口令
 savepass_chat=改变口令的对话序列是空的
+
 savepopts_fail=无法保存打印机选项
 savepopts_number=最小的可用空间必须是个数字
+
 saveprint_fail=无法保存选项
 saveprint_printcap=打印性能文件'$1' 不存在
 saveprint_cache='$1' 不是有效的高速缓存时间
+
 savepshare_fail=无法保存打印机共享
 savepshare_exist='$1'共享已经存在
 savepshare_name='$1'不是有效的共享名
 savepshare_global='global'不能作为共享名
+
 savesec_fail=无法保存安全设置
+
 savesmb_fail=保存选项失败
 savesmb_size='$1' 不是有效的磁盘空间
 savesmb_oslevel='$1' 不是有效的主浏览器优先性
 savesmb_server=您必须输入密码服务器
+
 start_err=启动samba服务器失败
 start_fail=$1 失败
+
 swats_fail=保存用户名失败
 swats_user=未输入SWAT 用户名
+
 viewu_index=当前用户
 viewu_list=$1 的当前用户
 viewu_share=共享
@@ -336,6 +374,7 @@ viewu_msg1=点击上表中的进程 ID 以中断该用户的连接。
 viewu_msg2=没有当前连接用户
 viewu_locks=打开文件
 viewu_none=无
+
 log_apply=重新启动 Samba 服务器
 log_start=启动 Samba 服务器
 log_save_fshare=更新文件共享 $1
@@ -364,6 +403,7 @@ log_epass_l=将 Unix 用户转变为 Samba 用户($1 创建, $2 更新, $3 删�
 log_copy=副本共享 $2 到 $1
 log_save_euser=更新 Samba 用户 $1
 log_delete_euser=删除 Samba 用户 $1
+
 swat_title=SWAT 登录
 swat_list=SWAT 登录
 swat_msg1=您当前的 SWAT 用户名和口令不正确。请用在下表中重新登录。
@@ -375,6 +415,7 @@ swat_password=口令
 swat_login=登录
 swat_clear=清除
 swat_logout=登出SWAT
+
 eacl_aviol=违反控制
 eacl_np=您没有权限
 eacl_papply=重新启动本服务
@@ -410,6 +451,7 @@ eacl_pafs=访问此文件共享
 eacl_paps=访问此打印机共享
 eacl_pcps=创建打印机共享
 eacl_pcfs=创建文件共享
+
 acl_apply=可以应用更改吗？
 acl_view_all_con=可以察看所有连接吗？
 acl_kill_con=可以移除连接吗？

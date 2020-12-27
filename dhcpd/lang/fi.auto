@@ -64,12 +64,14 @@ index_match1=sisältää
 index_match2=Ottelut
 index_dhcpd=ISC DHCPd
 index_delete=Poista valitut
+
 butt_save=Tallentaa
 butt_eco=Muokkaa asiakasasetuksia
 butt_vco=Näytä asiakasasetukset
 butt_del=Poistaa
 butt_create=Luoda
 butt_leases=Listavuokrat
+
 esub_crheader=Luo aliverkko
 esub_edheader=Muokkaa aliverkkoa
 esub_tabhdr=Aliverkon yksityiskohdat
@@ -83,12 +85,14 @@ esub_groups=Ryhmittyy suoraan tähän aliverkkoon
 esub_pools=Aliverkon osoitepalvelut
 esub_pool=Allas $1 
 esub_poolnone=Osoitteita ei määritetty
+
 esub_pooladd=Lisää osoitevaranto.
 esub_none=Ei mitään
 esub_return=aliverkon luettelo
 esub_retshar=jaettu verkko
 esub_desc=Aliverkon kuvaus
 esub_fopeer=Faillover Peer
+
 esh_crheader=Luo jaettu verkko
 esh_eheader=Muokkaa jaettua verkkoa
 esh_tabhdr=Jaetut verkon yksityiskohdat
@@ -99,6 +103,7 @@ esh_subn=Aliverkot tässä jaetussa verkossa
 esh_return=aliverkon luettelo
 esh_pools=Jaetun verkon osoitepalvelut
 esh_desc=Jaettu verkon kuvaus
+
 ehost_crheader=Luo isäntä
 ehost_eheader=Muokkaa isäntä
 ehost_tabhdr=Isäntätiedot
@@ -119,6 +124,7 @@ ehost_retgroup=ryhmä
 ehost_retsubn=aliverkon
 ehost_retshar=jaettu verkko
 ehost_desc=Isäntäkuvaus
+
 egroup_crheader=Luo isäntäryhmä
 egroup_eheader=Muokkaa isäntäryhmää
 egroup_tblhdr=Ryhmän yksityiskohdat
@@ -129,6 +135,7 @@ egroup_return=isäntäluettelo
 egroup_retsubn=aliverkon
 egroup_retshar=jaettu verkko
 egroup_desc=Ryhmän kuvaus
+
 default=oletusarvo
 secs=sekuntia
 none=Ei mitään
@@ -157,20 +164,24 @@ listl_pc=prosenttimäärä
 listl_err=Vuokrasopimusten poisto epäonnistui
 listl_enone=Mitään ei ole valittu
 listl_refresh=Päivitä lista
+
 restart_errmsg1=Dhcpd: n käynnistäminen epäonnistui
 restart_errmsg2=Prosessin signalointi epäonnistui
 start_failstart=Dhcpd: n käynnistäminen epäonnistui
 restart_conftext=Rivit noin $1 $2 : ssa :
+
 sgroup_faildel=Ryhmän poistaminen epäonnistui
 sgroup_failsave=Ryhmän tallentaminen epäonnistui
 sgroup_invassign=ryhmä on määritetty väärään kohtaan
 sgroup_echanged=Konfiguraatiotiedoston sisältö on muutettu. Yritä uudelleen.
+
 shost_faildel=Isännän poistaminen epäonnistui
 shost_failsave=Isännän tallentaminen epäonnistui
 shost_invalidhn=ei ole kelvollinen isäntänimi
 shost_invalidhwa='$1' ei ole kelvollinen $2 -osoite
 shost_invalidaddr='$1' sisältää virheellisen isäntänimen tai IP-osoitteen
 shost_invassign=isäntä määritetty väärään osioon
+
 sopt_failsave=Asiakkaan asetusten tallentaminen epäonnistui
 sopt_invalidip=ei ole kelvollinen IP-osoite
 sopt_invalidint=ei ole kokonaisluku
@@ -180,10 +191,12 @@ sopt_ednum='$1' ei ole kelvollinen vaihtoehto
 sopt_edtype='$1' ei ole kelvollinen vaihtoehto
 sopt_ecval=Muokatun vaihtoehdon '$1' arvo puuttuu
 sopt_ecip=Muokatun vaihtoehdon '$1' arvon on oltava IP-osoite
+
 sshared_faildel=Jaetun verkon poistaminen epäonnistui
 sshared_failsave=Jaetun verkon tallentaminen epäonnistui
 sshared_invalidsname=Puuttuva tai virheellinen jaettu verkon nimi.
 sshared_nosubnet=Jaettu verkko '$1' ei sisällä aliverkkoa.
+
 ssub_faildel=Aliverkon poistaminen epäonnistui
 ssub_failsave=Aliverkon tallentaminen epäonnistui
 ssub_invalidsubaddr=ei ole kelvollinen aliverkon osoite
@@ -191,6 +204,7 @@ ssub_invalidnmask=ei ole kelvollinen verkkomaski
 ssub_invalidipr=ei ole kelvollinen IP-osoite
 ssub_nosubnet=Jaettu verkko '$1' ei sisällä aliverkkoa.
 ssub_invalidfopeer=ei ole kelvollinen vaihtosuhde
+
 plib_deflt=Oletuksena vuokra-aika
 plib_bfname=Käynnistä tiedostonimi
 plib_maxlt=Enimmäisvuokrausaika
@@ -244,6 +258,7 @@ plib_eexpr=Tämä DHCP-kokoonpanon osa sisältää lausekkeen $1, jota Webmin ei
 plib_auth_subnet=Palvelin on auktorisoitu tälle aliverkolle?
 plib_auth_shared-network=Palvelin on valtuutettu tälle jaetulle verkolle?
 plib_auth_global=Palvelin on arvovaltainen kaikille aliverkoille?
+
 eopt_header=Asiakkaan asetukset
 eopt_subtitle=Aliverkolle $1 
 eopt_returnsub=aliverkon
@@ -289,6 +304,7 @@ eopt_slpa=SLP-hakemistoagenttien IP: t
 eopt_slpaips=Vain nämä IP: t?
 eopt_slps=SLP-palvelun laajuus
 eopt_slpsonly=Vain tämä soveltamisala?
+
 log_apply=Sovelletut muutokset
 log_start=Käynnistettiin DHCP-palvelin
 log_stop=Pysäytetty DHCP-palvelin
@@ -311,6 +327,7 @@ log_options_group=Muutetut asetukset ryhmälle $1 isäntiä
 log_delete_lease=Poistettu vuokrasopimus $1 : lle
 log_delete_subnets=Poistettu $1 aliverkot ja jaetut verkot
 log_delete_hosts=Poistettu $1 isäntä ja isäntäryhmä
+
 keys_edit=Muokkaa TSIG-näppäintä
 keys_create=Luotut TSIG-avaimet
 keys_title=DNS-avaimet
@@ -321,12 +338,14 @@ keys_ecannot=DNS-avaimia ei saa muokata
 keys_err=DNS-avainten tallentaminen epäonnistui
 keys_ekey='$1' ei ole kelvollinen avaintunnus
 keys_esecret=Puuttuva tai virheellinen base-64-koodattu salaisuus avaimelle $1 
+
 pool_edit=Muokkaa osoitteistoa
 pool_create=Luotu osoiteosasto
 pool_header=Osoitepoolin vaihtoehdot
 pool_allow=Asiakkaat voivat sallia
 pool_deny=Asiakkaat kieltää
 pool_return=aliverkon
+
 cdel_header=Varoitus
 cdel_shared1=jaettu verkko
 cdel_shared2=jaettu verkko
@@ -344,6 +363,7 @@ cdel_txt=$1 '$2' poistaminen poistaa myös sen sisällön:
 cdel_confirm=Haluatko todella poistaa tämän $1 ?
 cdel_eunknown=Tuntematon virhe
 cdel_return=isäntä- ja verkkoluettelo
+
 eacl_aviol=Kulunvalvonnan rikkomus
 eacl_np=Sinulla ei ole käyttöoikeuksia
 eacl_pdh=poista isäntä
@@ -369,6 +389,7 @@ eacl_pdl=poista vuokrasopimukset
 eacl_psl=Näytä vuokrasopimukset
 eacl_pglob=muokata globaaleja vaihtoehtoja
 eacl_papply=käynnistä tämä palvelu uudelleen
+
 acl_apply=Voiko muutoksia soveltaa?
 acl_r_leases=Voiko katsella vuokrasopimuksia?
 acl_w_leases=Voiko vuokrasopimuksia poistaa?
@@ -398,9 +419,11 @@ acl_err=Virhe tallennettaessa ACL-luetteloa
 acl_ernow=Jos haluat ottaa kirjoitusoikeuden käyttöön globaaleissa ACL-luetteloissa joillekin objektityypeille, sinun on myös sallittava lukuoikeudet tälle objektityypille.
 acl_normal=normaali
 acl_paranoic=paranoic
+
 iface_title=Verkkoliitäntä
 iface_desc=DHCP-palvelin voi määrittää IP-osoitteita vain verkoissa, jotka on kytketty johonkin alla valituista rajapinnoista. Kaikkien määriteltyjen aliverkkojen verkkoliitäntä on sisällytettävä siihen. Jos mitään ei ole valittu, DHCP-palvelin yrittää löytää sellaisen automaattisesti.
 iface_listen=Kuuntele rajapinnoilla
+
 lookup_ehost=Isäntä, jolla on nimi, IP-osoite tai MAC-osoite $1, ei ole
 lookup_ehostname=Isäntänimeä, IP-osoitetta tai MAC-osoitetta ei ole annettu
 lookup_egroup=Ryhmää, jolla on nimi tai verkkotunnuksen nimi $1, ei ole
@@ -409,6 +432,7 @@ lookup_esubnet=Aliverkkoa, jolla on osoite tai osoite/verkon peite $1, ei ole
 lookup_esubnetname=Aliverkon osoitetta tai osoitetta/verkkomaskia ei ole annettu
 lookup_eshared=Jaettua verkkoa nimellä $1 ei ole
 lookup_esharedname=Jaettua verkon nimeä ei ole annettu
+
 zone_key=DNS-alueet
 index_addzone=Lisää uusi DNS-vyöhyke.
 index_zone=vyöhyke
@@ -424,16 +448,21 @@ zone_faildel=Vyöhykkeen poistaminen epäonnistui
 zone_failsave=Alueen tallentaminen epäonnistui
 zone_tsigkey=TSIG-avain
 zone_ecannot=Et voi muokata DNS-vyöhykkeitä
+
 plib_clientupdates=Voivatko asiakkaat päivittää omia tietueitaan?
+
 text_title=dhcpd.conf
 text_editor=Tekstieditori
 text_return=päävalikko
 text_undo=kumoa
 text_ecannot=Et voi muokata asetustiedostoa
+
 index_buttetext=Muokkaa kokoonpanoa manuaalisesti
 index_text=Muokkaa asetustiedostoa manuaalisesti tekstiä
+
 stop_err=DHCP-palvelimen pysäyttäminen epäonnistui
 stop_ekill=Ei käynnissä!
+
 sdelete_err=Aliverkkojen ja jaettujen verkkojen poistaminen epäonnistui
 sdelete_enone=Mitään ei ole valittu
 sdelete_title=Poista aliverkot ja jaetut verkot
@@ -441,6 +470,7 @@ sdelete_rusure1=Haluatko varmasti poistaa $1 valitut aliverkot ja $2 jaetut verk
 sdelete_rusure2=Haluatko varmasti poistaa valitut $1 aliverkot? Myös kaikki aliverkkojen sisäiset objektit menetetään.
 sdelete_rusure3=Haluatko varmasti poistaa $2 valitut jaetut verkot? Myös kaikki verkkojen aliverkot tai muut objektit katoavat.
 sdelete_ok=Poista nyt
+
 hdelete_err=Isäntä- ja ryhmäpoisto epäonnistui
 hdelete_enone=Mitään ei ole valittu
 hdelete_title=Poista isännät ja ryhmät

@@ -7,6 +7,7 @@ index_delete2=Lösche ausgewählte Schnittstelle
 index_delete3=Lösche und wende ausgewählte Schnittstelle an
 index_apply2=Wende auf ausgewählte Schnittstelle an
 index_vmin=Virtualmin
+
 ifcs_title=Netzwerkschnittstellen
 ifcs_now=Jetzt aktive Schnittstellen
 ifcs_activedesc=Schnittstellen, die in dieser Tabelle aufgelistet sind, sind derzeit auf dem System aktiv. In den meisten Fällen sollten Sie sie unter dem <b>Bei Boot aktiviert</b> Registerkarte bearbeitet werden.
@@ -55,6 +56,7 @@ ifcs_linkyes=Verbunden
 ifcs_linkno=Getrennt
 ifcs_speed=Schnittstellen Geschwindigkeit
 ifcs_duplex=, $1 duplex
+
 aifc_create=Aktive Schnittstelle erstellen
 aifc_edit=Aktive Schnittstelle bearbeiten
 aifc_desc1=Parameter der aktiven Schnittstelle
@@ -79,6 +81,7 @@ aifc_eaddress6=IPv6-Adresse in der Zeile $1 ist nicht gültig
 aifc_enetmask6=IPv6-Netzmaske in Zeile $1 muss eine ganze Zahl zwischen 1 und 128 sein
 aifc_eclash6=IPv6-Adresse in der Zeile $1 ist bereits von der Schnittstelle $2 benutzt
 aifc_eaddresses6=Keine IPv6-Adressen eingegeben
+
 bifc_create=Bootup-Schnittstelle erstellen
 bifc_act=Aktiviere beim Booten?
 bifc_edit=Bootup-Schnittstelle bearbeiten
@@ -110,6 +113,7 @@ bifc_bridgestp=Spanning Tree Protocol (Spannbaum-Protokoll)
 bifc_bridgefd=Forward Delay
 bifc_bridgewait=Verzögerung steht zur Verfügung
 bifc_ebond=Bondschnittstelle muss eine Zahl sein
+
 bonding_add=Füge eine neue Bondingschnittstelle hinzu.
 bonding_create=Erstelle Bondingschnittstelle
 bonding_teamparts=Teaming Partner
@@ -121,11 +125,14 @@ bonding_miimon=Mii-Monitoring Intervall
 bonding_miimondesc=(Leer lassen, um Link-Überwachung zu deaktivieren)
 bonding_updelay=Startverzögerung
 bonding_downdelay=Verzögerung
+
 vlan_add=VLAN getaggte Schnittstellen hinzufügen
 vlan_physical=Physikalisches Gerät
 vlan_id=VLAN ID
 vlan_create=Erstelle VLAN Schnittstelle
+
 bridge_create=Erstelle Brückenschnittstelle
+
 routes_title=Routing und Gateways
 routes_boot=Routing-Konfiguration, die zur <i>Boot-Zeit</i> aktiviert wird
 routes_now=Routing Konfiguration ist nun aktiviert
@@ -194,6 +201,7 @@ routes_tabboot=Bootzeit Konfiguration
 routes_tabactive=Aktive Konfiguration
 routes_descactive=In diesem Abschnitt werden Routen aufgelistet, die auf dem System derzeit konfiguriert wurden und ermöglicht das Hinzufügen oder Entfernen aktiven Routen auf einigen Systemen. Seien Sie vorsichtig, was Sie tun, da fehlerhafte Veränderungen das System vom Rest des Netzes trennen können.
 routes_descboot=Dieser Abschnitt ermöglicht Ihnen, die Routen, die aktiviert werden, wenn das System hochfährt, oder wenn Netzwerkeinstellungen wieder angewendet werden sollen.
+
 dns_title=DNS-Client
 dns_options=DNS-Client Optionen
 dns_hostname=Host-Name
@@ -211,6 +219,7 @@ dns_edomain='$1' ist kein gültiger Domänenname
 dns_esearch=Keine Suchdomänen angegeben
 dns_hoststoo=Aktualisiere Hostname in Host-Adressen, wenn verändert?
 dns_dhcp=Hostname wird vom DHCP Server gesetzt?
+
 hosts_title=Host-Adressen
 hosts_active=Aktiviert?
 hosts_ip=IP-Adresse
@@ -222,6 +231,7 @@ hosts_detail=Hosts und Adressen
 hosts_return=Host-Adressenliste
 hosts_ecannot=Sie sind nicht berechtigt, Host-Adressen zu bearbeiten
 hosts_delete=Lösche ausgewählte Host-Adressen
+
 ipnodes_title=IPv6 Hostadresse
 ipnodes_ip=IPv6-Adressen
 ipnodes_host=Hostnamen
@@ -233,6 +243,7 @@ ipnodes_return=IPv6 Host Adressenliste
 ipnodes_ecannot=Es ist Ihnen nicht erlaubt IPv6 Host Adressen zu editieren
 ipnodes_none=Keine IPv6-Host-Adressen wurden bisher definiert.
 ipnodes_delete=Lösche ausgewählte IPv6 Host Adressen
+
 log_create_host=Erzeugte Host-Adresse $1
 log_delete_host=Gelöschte Host-Adresse $1
 log_modify_host=Host-Adresse $1 modizifiert
@@ -256,6 +267,7 @@ log_apply_bfics=$1 Boot-Time Schnittstellen aktiviert
 log_create_route=Aktive Route für $1 erstellt
 log_create_defroute=Aktive Standardroute erstellt
 log_delete_routes=$1 aktiven Routen gelöscht
+
 acl_ifcs=Darf Netzwerkschnittstellen bearbeiten?
 acl_routes=Darf Routen und Gateways bearbeiten?
 acl_dns=Darf DNS-Client Einstellungen bearbeiten?
@@ -272,6 +284,7 @@ acl_up=Kann aktuellen Status editieren?
 acl_virt=Kann virtuelle Schnittstellen hinzufügen?
 acl_delete=Kann Schnittstellen löschen?
 acl_hide=Verstecke nicht editierbare Schnittstellen?
+
 interfaces_title1=Wähle Schnittstellen...
 interfaces_all=Alle Schnittstellen...
 interfaces_sel=Ausgewählte Schnittstellen
@@ -279,7 +292,9 @@ interfaces_ok=OK
 interfaces_cancel=Abbruch
 interfaces_clear=Löschen
 interfaces_title2=Wähle Benutzer...
+
 apply_ecannot=Berechtigung zur Anwendung der Konfiguration fehlt
+
 mod_egone=Schnittstelle ist nicht länger aktiv!
 mod_title=Aktive Schnittstelle
 mod_desc=Die $1 Schnittstelle wird für $2 verwendet und kann daher nicht von diesem Modul verwaltet werden.
@@ -291,6 +306,7 @@ mod_pptpc=die PPTP Verbindung $1
 mod_zones=eine virtuelle Schnittstelle für die Zone <tt>$1</tt>
 mod_virtualmin=der Virtualmin Server <tt>$1</tt>
 mod_reseller=Der Virtualmin Reseller <tt>$1</tt>
+
 range_edit=Editiere Adressbereich
 range_create=Erstelle Adressbereich
 range_header=Adressbereich Schnittstellen Optionen
@@ -306,13 +322,17 @@ range_eend=Fehlende oder ungültig endende IP-Adresse
 range_enum=Fehlende oder nicht-numerische erste virtuelle Schnittstellen-Nummer
 range_eclass=Start und Endadressen müssen in der gleichen Klasse-C-Netzwerk sein
 range_ebefore=Die Endadresse muss höher als die Startadresse sein
+
 chooser_any=&lt;Any&gt;
 chooser_other=Andere..
+
 dafics_err=Fehlgeschlagen Schnittstelle zu deaktivieren
 daifcs_enone=Nichts ausgewählt
 daifcs_egone=Schnittstelle existiert nicht länger!
+
 dbifcs_err=Fehlgeschlagen Schnittstelle zu löschen
 dbifcs_err2=Fehlgeschlagen Schnittstelle zu aktivieren
+
 hdelete_err=Fehlgeschlagen Host-Adressen zu löschen
 hdelete_enone=Nichts ausgewählt
 idelete_err=Fehlgeschlagen IPv6-Host-Adressen zu löschen

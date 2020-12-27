@@ -7,6 +7,7 @@ index_delete2=Poista valitut rajapinnat
 index_delete3=Poista ja käytä valittuja käyttöliittymiä
 index_apply2=Käytä valittuja käyttöliittymiä
 index_vmin=Virtualmin
+
 ifcs_title=Verkkoliitännät
 ifcs_now=Aktiivinen nyt
 ifcs_activedesc=Tässä taulukossa luetellut rajapinnat ovat tällä hetkellä aktiivisia järjestelmässä. Useimmissa tapauksissa sinun tulee muokata niitä <b>Aktivoitu käynnistettäessä</b> -välilehdessä.
@@ -55,6 +56,7 @@ ifcs_linkyes=kytketty
 ifcs_linkno=Dis-kytketty
 ifcs_speed=Rajapinnan nopeus
 ifcs_duplex=, $1 duplex
+
 aifc_create=Luo aktiivinen käyttöliittymä
 aifc_edit=Muokkaa aktiivista käyttöliittymää
 aifc_desc1=Aktiivisen rajapinnan parametrit
@@ -79,6 +81,7 @@ aifc_eaddress6=Rivin $1 IPv6-osoite ei kelpaa
 aifc_enetmask6=Rivillä $1 olevan IPv6-verkkomaskin on oltava kokonaisluku välillä 1–128
 aifc_eclash6=Rivin $1 IPv6-osoitetta käyttää jo käyttöliittymä $2 
 aifc_eaddresses6=IPv6-osoitteita ei ole annettu
+
 bifc_create=Luo käynnistysrajapinta
 bifc_act=Aktivoidaan käynnistyksen yhteydessä?
 bifc_edit=Muokkaa käynnistysliittymää
@@ -110,6 +113,7 @@ bifc_bridgestp=Puiden protokolla
 bifc_bridgefd=Eteenpäin viive
 bifc_bridgewait=Viivästyminen tulla saataville
 bifc_ebond=Joukkorajapinnan tulee olla numero
+
 bonding_add=Lisää uusi liitäntärajapinta.
 bonding_create=Luo liimausrajapinta
 bonding_teamparts=Yhteistyökumppanit
@@ -121,11 +125,14 @@ bonding_miimon=Mii-tarkkailuväli
 bonding_miimondesc=(Jätä tyhjä linkin valvonnan poistamiseksi käytöstä)
 bonding_updelay=Updelay
 bonding_downdelay=Downdelay
+
 vlan_add=Lisää Vlan-merkitty käyttöliittymä
 vlan_physical=Fyysinen laite
 vlan_id=Vlan-tunnus
 vlan_create=Luo VLAN-rajapinta
+
 bridge_create=Luo siltarajapinta
+
 routes_title=Reititys ja yhdyskäytävät
 routes_boot=Reititysmääritys aktivoitu <i>käynnistysaikaan</i>
 routes_now=Reititysmääritys aktivoitu nyt
@@ -194,6 +201,7 @@ routes_tabboot=Käynnistysajan konfigurointi
 routes_tabactive=Aktiivinen kokoonpano
 routes_descactive=Tässä osassa luetellaan reitit, jotka järjestelmä on tällä hetkellä määrittänyt, ja voit lisätä tai poistaa aktiivisia reittejä joissakin järjestelmissä. Ole varovainen tekemällä tätä, koska virheelliset muutokset saattavat estää Webminin käyttävän järjestelmän pois muusta verkosta.
 routes_descboot=Tässä osassa voit määrittää reitit, jotka aktivoidaan järjestelmän käynnistyessä tai kun verkkoasetukset otetaan käyttöön kokonaan.
+
 dns_title=Isäntänimi ja DNS-asiakas
 dns_options=DNS-asiakasasetukset
 dns_hostname=hostname
@@ -211,6 +219,7 @@ dns_edomain='$1' ei ole kelvollinen verkkotunnus
 dns_esearch=Ei annettuja verkkotunnuksia
 dns_hoststoo=Päivitetäänkö isäntänimi isäntäosoitteisiin, jos niitä muutetaan?
 dns_dhcp=Isäntänimen määrittää DHCP-palvelin?
+
 hosts_title=Isäntäosoitteet
 hosts_active=Käytössä?
 hosts_ip=IP-osoite
@@ -222,6 +231,7 @@ hosts_detail=Isäntä ja osoitteet
 hosts_return=isäntäosoitelista
 hosts_ecannot=Sinulla ei ole oikeutta muokata isäntäosoitteita
 hosts_delete=Poista valitut isäntäosoitteet
+
 ipnodes_title=IPv6-isäntäosoitteet
 ipnodes_ip=IPv6-osoite
 ipnodes_host=isäntänimiä
@@ -233,6 +243,7 @@ ipnodes_return=IPv6-isäntäosoitelista
 ipnodes_ecannot=IPv6-isäntäosoitteita ei voi muokata
 ipnodes_none=IPv6-isäntäosoitteita ei ole vielä määritetty.
 ipnodes_delete=Poista valitut IPv6-isäntäosoitteet
+
 log_create_host=Luotu isäntäosoite $1 
 log_delete_host=Poistettu isäntäosoite $1 
 log_modify_host=Muokattu isäntäosoite $1 
@@ -256,6 +267,7 @@ log_apply_bfics=Aktivoidut $1 käynnistysaikarajapinnat
 log_create_route=Luotu aktiivinen reitti kohteelle $1 
 log_create_defroute=Luotu aktiivinen oletusreitti
 log_delete_routes=Poistettu $1 aktiivista reittiä
+
 acl_ifcs=Voiko verkkoliittymiä muokata?
 acl_routes=Voiko muokata reititystä ja yhdyskäytäviä?
 acl_dns=Voiko DNS-asiakasasetuksia muokata?
@@ -273,6 +285,7 @@ acl_virt=Voiko lisätä virtuaalisia rajapintoja?
 acl_delete=Voiko rajapintoja poistaa?
 acl_hide=Piilota muokkaamattomat rajapinnat?
 acl_sysinfo=Näytä käytettävissä olevat verkkoliitännät hallintapaneelissa
+
 interfaces_title1=Valitse käyttöliittymät. ..
 interfaces_all=Kaikki rajapinnat. ..
 interfaces_sel=Valitut rajapinnat
@@ -280,7 +293,9 @@ interfaces_ok=kunnossa
 interfaces_cancel=Peruuttaa
 interfaces_clear=Asia selvä
 interfaces_title2=Valitse käyttäjä. ..
+
 apply_ecannot=Et voi käyttää kokoonpanoa
+
 mod_egone=Rajapinta ei ole enää aktiivinen!
 mod_title=Aktiivinen käyttöliittymä
 mod_desc=$1 -liitäntää käytetään $2 : ssa, joten sitä ei voida hallita tällä moduulilla.
@@ -292,6 +307,7 @@ mod_pptpc=PPTP-yhteys $1
 mod_zones=virtuaalirajapinta vyöhykkeelle <tt>$1</tt>
 mod_virtualmin=Virtualmin-palvelin <tt>$1</tt>
 mod_reseller=Virtualmin-jälleenmyyjä <tt>$1</tt>
+
 range_edit=Muokkaa osoitealuetta
 range_create=Luo osoitealue
 range_header=Osoitealueen rajapinnan vaihtoehdot
@@ -307,13 +323,17 @@ range_eend=Puuttuva tai virheellinen päättyvä IP-osoite
 range_enum=Puuttuva tai ei-numeerinen ensimmäinen virtuaalirajapinnan numero
 range_eclass=Aloitus- ja lopetusosoitteiden on oltava samassa luokan C verkossa
 range_ebefore=Loppuosoitteen on oltava korkeampi kuin aloitusosoite
+
 chooser_any=&lt;Any&gt;
 chooser_other=Muut ..
+
 dafics_err=Rajapintojen aktivointi epäonnistui
 daifcs_enone=Mitään ei ole valittu
 daifcs_egone=Käyttöliittymää ei enää ole!
+
 dbifcs_err=Rajapintojen poistaminen epäonnistui
 dbifcs_err2=Rajapintojen aktivointi epäonnistui
+
 hdelete_err=Isäntäosoitteiden poistaminen epäonnistui
 hdelete_enone=Mitään ei ole valittu
 idelete_err=IPv6-isäntäosoitteiden poistaminen epäonnistui

@@ -9,6 +9,7 @@ index_disable=Deaktiveer gekies
 index_enable=Aktiveer geselekteerde
 index_enabled=In staat gestel?
 index_return=lys van programme
+
 edit_title1=Skep MIME-tipe program
 edit_title2=Wysig MIME-tipe program
 edit_header=Besonderhede van die MIME-tipe hanteerderprogram
@@ -22,18 +23,21 @@ edit_none=Geen (gebruik altyd program)
 edit_term=Vertoon uitset in terminale?
 edit_copious=Produseer baie opbrengste?
 edit_desc=MIME-tipe beskrywing
+
 save_err=Die MIME-program kon nie gestoor word nie
 save_etype=MIME-tipe ontbreek of ongeldig
 save_eprogram=Ontbrekende hanteerderprogram
 save_eclash='N Geaktiveerde program vir die ingevoerde MIME-tipe bestaan reeds
 save_etest=Ontbrekende of ongeldige toetsopdrag
 save_edesc=Ongeldige MIME-tipe beskrywing
+
 delete_err=Kon nie MIME-tipe programme uitvee nie
 disable_err=Kon nie MIME-tipe programme deaktiveer nie
 disable_eclash=Daar is reeds 'n MIME-tipe program vir $1 gedeaktiveer
 enable_err=Kon nie MIME-tipe programme inskakel nie
 enable_eclash='N Geaktiveerde MIME-program vir $1 bestaan reeds
 delete_enone=Geen gekies nie
+
 log_delete_mailcap=Skrap die MIME-program vir $1 
 log_create_mailcap=MIME-program geskep vir $1 
 log_modify_mailcap=Gewysigde MIME-program vir $1 

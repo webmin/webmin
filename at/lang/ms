@@ -19,6 +19,7 @@ index_amode1=Hanya pengguna yang disenaraikan ..
 index_amode2=Semua kecuali pengguna yang disenaraikan ..
 index_delete=Batal perintah yang telah dipilih
 index_noat=Arahan $1 tidak dijumpai pada sistem anda - mungkin ia tidak dipasang, atau tiada untuk sistem operasi anda.
+
 edit_title=Arahan Berjadual
 edit_cmd=Skrip penuh untuk dilaksanakan
 edit_shortcmd=Perintah untuk dilaksanakan
@@ -28,6 +29,7 @@ edit_run=Jalankan Sekarang
 edit_ejob=arahan berjadual tidak lagi wujud
 edit_ecannot=Anda tidak dibenarkan untuk mengubah arahan berjadual ini
 edit_showfull=Menunjukkan skrip penuh.
+
 create_err=Gagal untuk mencipta arahan berjadual
 create_euser=Nama pengguna yang tidak sah atau hilang
 create_edate=Tarikh dan masa tidak sah atau hilang
@@ -36,22 +38,28 @@ create_efuture=Tarikh dan masa telah berlalu
 create_edir=Direktori tidak sah atau hilang
 create_ecannot=Anda tidak dibenarkan untuk mencipta arahan berjadual untuk pengguna ini
 create_eallow=Pengguna tertentu tidak dibenarkan untuk menjalankan arahan yang dijadualkan
+
 delete_err=Gagal membatalkan arahan
 delete_egone=Arahan sudah dilarikan atau dipadam
+
 acl_users=Boleh mengubah arahan berjadual untuk
 acl_all=Semua pengguna
 acl_this=Pengguna Webmin semasa
 acl_only=Hanya pengguna
 acl_except=Semua kecuali pengguna
 acl_allow=Pengubahan yang dibenarkan pada pengguna?
+
 run_title=Jalankan Arahan
 run_output=Keluaran daripada arahan berjadual ..
 run_none=Tiada keluaran dijana
+
 allow_err=Gagal untuk menyimpan pengguna yang dibenarkan
 allow_ecannot=Anda tidak dibenarkan untuk menguruskan pengguna yang telah dibenarkan
 allow_eusers=Tiada pengguna yang dimasukkan
+
 deletes_err=Gagal untuk membatalkan arahan
 deletes_enone=Tiada dipilih
+
 log_allow=Ubah pengguna yang dibenarkan
 log_create_job=Mencipta arahan yang dijadualkan untuk $1
 log_delete_job=Membatalkan arahan yang dijadualkan untuk $1

@@ -12,6 +12,7 @@ index_eprog=Az NFS-kiszolgáló végrehajtható fájlja nem található a rendsz
 index_delete=Törölje a kiválasztott exportálást
 index_disable=Letiltva a kiválasztott
 index_enable=Engedélyezze a Kiválasztott lehetőséget
+
 edit_title=Exportálás szerkesztése
 create_title=Exportálás létrehozása
 edit_details=Adatok exportálása
@@ -65,6 +66,7 @@ edit_sec_krb5i=Kerberos integritása
 edit_sec_krb5p=Kerberos adatvédelem
 edit_sec_lipkey=LIPKEY
 edit_sec_spkm=SPKM
+
 save_err=Az exportálás mentése nem sikerült
 save_edir=A (z) '$1' könyvtár nem létezik
 save_epfs=Az '$1' ál-fájlrendszer elérési útja nem tűnik abszolút útnak
@@ -78,6 +80,7 @@ save_pfs=A '$1' már exportálva van könyvtárként
 save_create_dir=Nem lehet létrehozni a (z) '$1' könyvtárat
 save_eanonuid=Érvénytelen névtelen hozzáférési felhasználónév
 save_eanongid=Érvénytelen névtelen hozzáférési csoport neve
+
 exports_webnfs=WebNFS ügyfelek
 exports_ngroup=Netgroup $1 
 exports_net=Hálózati $1 
@@ -85,6 +88,7 @@ exports_all=Mindenki
 exports_hosts=Host $1 
 exports_host=Host $1 
 exports_gss=Hitelesített hálózat: $1 
+
 log_modify=Módosított NFS export $1 
 log_modify_l=Módosított NFS export $1 - $2 
 log_delete=Törölt NFS export $1 

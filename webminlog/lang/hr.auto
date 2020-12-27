@@ -11,6 +11,7 @@ index_sdesc=Opis akcije sadrži
 index_shost=Izvorni Webmin poslužitelj
 index_long=Prikaži cjelovite opise radnji?
 index_global=&lt;Ne u bilo kojem modulu&gt;
+
 search_none2=Nijedna radnja ne odgovara vašoj potrazi za radnjama
 search_critd=gdje opis sadrži <tt>$1</tt>
 search_global=nijedan
@@ -24,6 +25,7 @@ search_global_baduser=Pogrešno korisničko ime
 search_global_badpass=Pogrešna lozinka
 search_global_twofactor=Nevažeći dvofaktni token
 search_csv=Izvezi kao CSV.
+
 view_rollback2=Povratne odabrane datoteke
 view_anno=Bilješka o unosu u dnevnik
 view_output=Sadržaj webmin stranice
@@ -31,6 +33,9 @@ view_files=Datoteke su se promijenile i naredbe se pokreću
 view_raw=Sirovi podaci dnevnika
 view_rawname=Naziv parametra
 view_rawvalue=Vrijednost parametra
+
 acl_self=Samo ja
+
 rollback_enone=Nije odabrana nijedna datoteka
+
 log_rollback=Vratna akcija natrag $1 u modulu $2 

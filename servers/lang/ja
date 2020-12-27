@@ -19,6 +19,7 @@ index_defport=Webmin ポート
 index_delete=選択したサーバを削除
 index_auto=自動的にサーバを検索
 index_automsg=ボタンをクリックすると、自動的に新しいWebminサーバをネットワーク上での定期的に検索する設定をします。
+
 edit_title=サーバの編集
 create_title=サーバの登録
 edit_details=サーバの詳細
@@ -52,6 +53,7 @@ edit_baduser=Login rejected
 edit_invalid=User cannot do RPC
 edit_version=Running Webmin $1
 edit_same=Only available not in session authentication mode, and when the password is made available to Webmin programs.
+
 save_err=サーバを保存できませんでした
 save_ehost=ホスト名がないか無効です
 save_ehost2=Host does not exist
@@ -61,6 +63,7 @@ save_epass=パスワードがありません
 save_egroup=Missing group name
 save_elogin=Invalid login or password to host
 save_egroup2=Invalid new group name
+
 find_title=サーバの検索
 find_new=新規のサーバが $1 として見つかりました
 find_but=Found new server at $1, but authentication failed : $2
@@ -74,16 +77,20 @@ find_ecannot=サーバを検索できません
 find_scanning=サーバを $1 のネットワークでスキャン中 ..
 find_broading=サーバを $1 のアドレスでブロードキャスト中 ..
 find_eport=Missing or invalid port number
+
 log_modify=サーバ $1 を変更しました
 log_create=サーバ $1 を登録しました
 log_delete=サーバ $1 を削除しました
 log_find=サーバ $1 を見つけました
 log_deletes=Deleted $1 servers
+
 link_elogin=$1 に $2 としてログインできませんでした
 link_ecannot=このサーバは使用できません
 link_essl=perl Net::SSLeay ライブラリがインストールされていません
 link_eautologin=Invalid login or password for $1. <a href='$2'>Click here</a> to try again.
+
 lib_other=その他
+
 acl_edit=サーバを編集可能
 acl_find=サーバを検索可能
 acl_servers=サーバを使用可能
@@ -95,6 +102,7 @@ acl_forcefast=Force fast RPC mode to default?
 acl_forcetype=Force OS type to default?
 acl_forcelink=Force login type to default?
 acl_links=Can connect through to servers?
+
 login_title=Login to Server
 login_desc=You must supply a username and password to login to the Webmin server $1.
 login_header=Webmin authentication
@@ -102,10 +110,13 @@ login_user=Username
 login_pass=Password
 login_login=Login
 login_esame=The option to use the same login as this server can only be used when not in session authentication mode, and when the password is made available to Webmin programs.
+
 this_server=this server
+
 delete_err=Failed to delete servers
 delete_enone=None selected
 delete_ecannot=You are not allowed to delete servers
+
 auto_title=サーバの自動探索
 auto_header=サーバ自動登録オプション
 auto_sched=新しいサーバをチェックしますか?
@@ -131,8 +142,10 @@ auto_smtp=SMTP サーバ経由で送信
 auto_self=このサーバ
 auto_esmtp=Missing or invalid SMTP server
 auto_findself=このサーバも登録しますか?
+
 config_deftype=Default system type
 config_typeauto=システム自動決定
+
 email_regsubject=System $1 registered
 email_reg=The system $1 has been automatically registered.
 email_unregsubject=System $1 un-registered

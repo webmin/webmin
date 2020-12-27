@@ -9,6 +9,7 @@ index_start=啟動Syslog-NG
 index_startdesc=單擊此按鈕以使用當前配置啟動Syslog-NG守護程序。
 index_return=模塊索引
 index_version=Syslog-NG $1
+
 options_title=記錄選項
 options_header=所有日誌文件的選項
 options_secs=秒
@@ -55,6 +56,7 @@ options_esync=寫入前缺少或無效的消息數要緩存
 options_estats=統計消息之間等待的時間丟失或非數字
 options_elog_fifo_size=缺少或無效的消息數要緩衝
 options_elog_msg_size=缺少或非數字的最大日誌消息大小
+
 destinations_title=日誌目標
 destinations_name=目的地名稱
 destinations_type=寫給
@@ -77,6 +79,7 @@ destinations_add=添加一個新的日誌目標。
 destinations_return=日誌目標
 destinations_desc=其他模塊的日誌
 destinations_cmd=$1的輸出
+
 destination_header=日誌目標選項
 destination_title1=創建日誌目標
 destination_title2=編輯日誌目標
@@ -117,17 +120,22 @@ destination_enet_localip=本地IP地址丟失或無效
 destination_enet_localport=本地端口號缺失或無效
 destination_enet_host=缺少或無效的Syslog服務器主機或地址
 destination_eunix=缺少Unix套接字名稱
+
 ddelete_err=刪除目的地失敗
 ddelete_enone=未選擇
 ddelete_eused=無法刪除目標 $1，因為它已由日誌目標使用
+
 sdelete_err=刪除源失敗
 sdelete_enone=未選擇
 sdelete_eused=無法刪除日誌源 $1，因為它由日誌目標使用
+
 fdelete_err=刪除過濾器失敗
 fdelete_enone=未選擇
 fdelete_eused=無法刪除日誌過濾器 $1，因為日誌目標使用它
+
 ldelete_err=刪除日誌目標失敗
 ldelete_enone=未選擇
+
 filters_title=日誌過濾器
 filters_name=篩選器名稱
 filters_desc=條件
@@ -144,6 +152,7 @@ filters_program=程序<tt>$1</tt>
 filters_match=匹配“$1”
 filters_host=來自主機名<tt>$1</tt>
 filters_netmask=來自發件人<tt>$1</tt>
+
 filter_title1=創建日誌過濾器
 filter_title2=編輯日誌過濾器
 filter_header=日誌過濾器規格詳細信息
@@ -169,6 +178,7 @@ filter_enet=缺少或無效的網絡IP地址
 filter_emask=缺少或無效的網絡掩碼
 filter_ebool=複雜表達式中的錯誤
 filter_egone=過濾器已不存在！
+
 logs_title=記錄目標
 logs_source=資料來源
 logs_filter=篩選器
@@ -177,6 +187,7 @@ logs_add=添加一個新的日誌目標。
 logs_delete=刪除選定的日誌目標
 logs_return=記錄目標
 logs_none=沒有
+
 log_title1=創建日誌目標
 log_title2=編輯日誌目標
 log_header=記錄源，過濾器和目標選擇
@@ -190,6 +201,7 @@ log_flags=目標選項
 log_egone=日誌目標不再存在！
 log_err=無法保存日誌目標
 log_esource=未選擇來源
+
 sources_title=日誌來源
 sources_none=尚未定義任何來源！
 sources_add=添加一個新的日誌源。
@@ -207,6 +219,7 @@ sources_typen=太陽流
 sources_typenw=Syslog服務器
 sources_return=日誌來源
 sources_none2=沒有
+
 source_title1=創建日誌源
 source_title2=編輯日誌源
 source_header=日誌源選項
@@ -243,15 +256,20 @@ source_door=門文件名
 source_esun_streams_name=缺少或無效的Sun Streams文件名
 source_edoor=缺少或無效的Sun Streams Door文件名
 source_transport=網絡協議
+
 view_title=查看日誌文件
 view_header=$2的最後 $1行
 view_empty=日誌文件為空
 view_refresh=刷新
 view_filter=僅顯示文字為 $1的行
+
 apply_err=應用配置失敗
 apply_egone=沒有運行！
+
 start_err=無法啟動Syslog-NG服務器
+
 stop_err=停止Syslog-NG服務器失敗
+
 log_create_destination=已創建日誌目標 $1
 log_modify_destination=修改的日誌目標 $1
 log_delete_destination=刪除的日誌目標 $1

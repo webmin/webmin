@@ -4,6 +4,7 @@ index_desc=描述
 index_add=新增PAM服务
 index_return=服务列表
 index_none=在您的系统目录 $1中找不到PAM的配置文件，可能不支持PAM，或者 <a href='$2'>模块设置</a> 不正确。
+
 desc_su=切换用户
 desc_login=本地或远程登录
 desc_samba=Samba Windows文件服务器
@@ -61,6 +62,7 @@ desc_printconf-gui=Redhat打印机配置工具
 desc_rhn_register=Redhat网络注册
 desc_system-auth=一般验证
 desc_cups=CUPS打印
+
 edit_title=编辑PAM服务
 edit_header=PAM服务细节
 edit_name=服务名称
@@ -77,6 +79,7 @@ edit_none=没有为该步骤指定PAM模块
 edit_delete=删除PAM服务
 edit_move=移动
 edit_return=PAM服务
+
 pam_pwdb.so=Unix密码验证
 pam_securetty.so=root的安全TTY检查
 pam_nologin.so=<tt>/etc/nologin</tt> 文件检查
@@ -118,6 +121,7 @@ pam_desgold.so=DESGold smartcard验证
 pam_console.so=仅限控制台的检查
 pam_xauth.so=X验证
 pam_stack.so=调用其他PAM服务
+
 control_requisite=必需品
 control_required=要求的
 control_sufficient=足够的
@@ -126,6 +130,7 @@ control_desc_requisite=在验证错误时立刻结束
 control_desc_required=在验证错误结束后才结束
 control_desc_sufficient=验证成功后正确立刻成功
 control_desc_optional=无论成功或错误与否都将忽略
+
 create_title=创建PAM服务
 create_header=新的PAM服务选项
 create_name=服务名称
@@ -134,6 +139,7 @@ create_mods=初始的PAM模块
 create_0=无
 create_1=Unix验证
 create_2=拒绝所有访问
+
 mod_edit=编辑PAM模块
 mod_create=增加PAM模块
 mod_header=PAM模块选项
@@ -147,10 +153,12 @@ mod_type_password=口令更改
 mod_control=失败等级
 mod_args=模块参数
 mod_err=无法保存模块
+
 pwdb_shadow=使用遮蔽口令文件？
 pwdb_nullok=接受口令为空？
 pwdb_md5=使用MD5加密的口令？
 pwdb_nodelay=登录失败后延迟？
+
 listfile_item=搜索文件
 listfile_item_user=用户名
 listfile_item_tty=TTY
@@ -167,51 +175,64 @@ listfile_apply=限制查看
 listfile_all=所有用户
 listfile_user=唯一用户
 listfile_group=唯一组
+
 cracklib_type=提示口令类型
 cracklib_retry=在失败之前最大的重复尝试次数
 cracklib_eretry=未输入或无效的重复尝试次数
 cracklib_etype=未输入或无效的口令类型
+
 rhosts_equiv=读取<tt>/etc/hosts.equiv</tt> 文件？
 rhosts_rhosts=读取用户<tt>.rhosts</tt> 文件？
 rhosts_promiscuous=<tt>+</tt> 允许所有主机进入？
 rhosts_suppress=登录验证失败？
+
 env_var=变量名称
 env_def=默认值
 env_over=覆盖值
 env_evar=变量名称不能有空格
+
 securetty_ttys=安全TTY
+
 shells_shells=有效的用户shells
+
 tally_deny=在拒绝访问之前的错误尝试
 tally_reset=成功之后重设失败次数
 tally_edeny=未输入或无效的尝试失败次数
 tally_magic=失败次数应用于<tt>root</tt>？
 tally_root=<tt>root</tt>账户也可以被拒绝吗？
+
 time_services=服务
 time_ttys=TTY
 time_users=用户
 time_times=访问次数
 time_info=所有的字段可以包含多个用 | 分隔的值，而且这些值可以使用通配符 * 或代表否定的 !。
+
 group_services=服务
 group_ttys=TTY
 group_users=用户
 group_times=访问次数
 group_groups=新增组
 group_info=所有的字段可以包含多个用 | 分隔数值，而且数值可以使用万用字元 * 和代表否定的 ! 。
+
 wheel_group=检查组的成员
 wheel_group_def=默认(<tt>wheel</tt> 或 GID 0)
 wheel_trust=组成员可以忽略更多验证？
 wheel_deny=将得到许可的组成员改为拒绝？
 wheel_egroup=未输入或无效的组名
+
 motd_file=显示文件
 motd_file_def=默认(<tt>/etc/motd</tt>)
 motd_efile=未输入或无效的文件名
+
 mail_nopen=在登录时显示邮件通知？
 mail_close=在登出显示邮件通知？
 mail_empty=是否通知邮件文件是空的?
 mail_noenv=设定 $MAIL 环境变量？
 mail_dir=邮件假脱目录
 mail_edir=未输入或无效的邮件假脱目录
+
 stack_service=检查PAM服务
+
 log_pam_create=创建PAM服务$1
 log_pam_delete=删除PAM服务 $1
 log_mod_create=将PAM 模块 $1 加入服务 $2

@@ -5,6 +5,7 @@ index_user=Wijzig het wachtwoord van :
 index_euseradmin=Deze module kan niet worden gebruikt omdat de Gebruikers en Groepen module niet is geïnstalleerd of op uw systeem niet wordt ondersteund.
 index_toomany=Er zijn teveel gebruikers op uw systeem om in een lijst te laten zien. Tik de naam van de gebruiker, waarvan het wachtwoord moet worden veranderd, hieronder in ..
 index_none=U heeft geen toegang tot gebruikers om hun wachtwoord te veranderen.
+
 passwd_title=Wijzig Wachtwoord
 passwd_header=Unix wachtwoord wijzigen
 passwd_for=Verander het wachtwoord van :
@@ -23,7 +24,9 @@ passwd_erepeat=Nieuwe wachtwoorden zijn niet hetzelfde
 passwd_ecmd=$1 mislukt : $2
 passwd_ok=Wachtwoord voor gebruiker $1 succesvol gewijzigd. Als dit uw huidige Webmin gebruiker is, moet u zich misschien opnieuw aanmelden.
 passwd_ok2=Het wachtwoord voor gebruiker $1 is succesvol gewijzigd.
+
 log_passwd=Wachtwoord voor gebruiker $1 gewijzigd
+
 acl_repeat=Nieuw wachtwoord tweemaal invoeren?
 acl_old=Oud wachtwoord verplicht invullen?
 acl_old_this=Alleen voor andere gebruikers

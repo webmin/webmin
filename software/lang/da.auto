@@ -25,6 +25,7 @@ index_echeckupdate=Intet opdateringssystem blev fundet!
 index_filter=Filtrer pakker
 index_filterclear=Ryd filter
 index_filtered=Viser <tt>$1</tt> pakker ud af <tt>$2</tt>
+
 search_title=Pakkesøgning
 search_nomatch=Ingen pakker matchede $1 
 search_none=Ingen
@@ -37,6 +38,7 @@ search_esearch=Du har ikke indtastet noget for at søge efter!
 search_delete=Afinstaller valgte pakker
 search_selall=Vælg alle
 search_invert=Invertere valg
+
 edit_title=Rediger pakke
 edit_details=Pakkeoplysninger
 edit_desc=Beskrivelse
@@ -53,6 +55,7 @@ edit_uninst=Afinstaller
 edit_uninstdesc=Fjern denne pakke fra dit system.
 edit_return=pakkeoplysninger
 edit_egone=Pakken er ikke længere installeret
+
 list_title=Pakkefiler
 list_files=Filer til pakke $1 
 list_path=Sti
@@ -64,6 +67,7 @@ list_status=status
 list_ok=Okay
 list_view=(Udsigt)
 list_eview=Kunne ikke åbne $1 : $2 
+
 delete_err=Kunne ikke slette pakke $1 
 delete_epack=Pakken $1 findes ikke
 delete_title=Slet pakke
@@ -75,6 +79,7 @@ delete_noscripts=Springe afinstallations scripts over?
 delete_efile=Ugyldig temp-fil, der skal slettes
 delete_purge=Rense konfigurationsfiler?
 delete_depstoo=Fjernet ubenyttede afhængigheder også?
+
 file_title=Filoplysninger
 file_notfound=Ingen oplysninger om $1 er tilgængelige
 file_path=Sti
@@ -88,6 +93,7 @@ file_pack=Pakke
 file_class=klasse
 file_desc=Beskrivelse
 file_none=Ingen
+
 install_err=Kunne ikke installere pakken
 install_elocal=Ingen lokal fil angivet
 install_elocal2='$1' findes ikke
@@ -101,6 +107,7 @@ install_title=Installer pakken
 install_header=Installer pakken
 install_packs=Pakke (r), der skal installeres
 install_ok=Installere
+
 do_err=Kunne ikke installere pakke $1 
 do_title=Installer pakken
 do_efailed=Installationen mislykkedes : $1 
@@ -117,10 +124,12 @@ do_arch=Arkitektur
 do_inst=Installeret
 do_none=Ingen
 do_files=Pakkefiler
+
 pkgadd_root=Rodkatalog
 pkgadd_eroot=Rootkataloget '$1' findes ikke
 pkgadd_unknown=Ukendt
 pkgadd_manager=System V Package Manager
+
 rpm_upgrade=Opgrader pakken?
 rpm_replacepkgs=Overskriv pakken?
 rpm_nodeps=Ignorerer afhængigheder?
@@ -138,10 +147,12 @@ rpm_find=Søg på rpmfind.net ..
 rpm_findrpm=Pakken filnavn
 rpm_finddistro=Fordeling
 rpm_finddesc=Beskrivelse
+
 bsd_unknown=Ukendt
 bsd_scripts=Udføre scripts før og efter installation?
 bsd_force=Tvinge installation, hvis der mangler forudsætninger?
 bsd_manager=$1 pakkehåndtering
+
 slack_unclass=Andet
 slack_unknown=Ukendt
 slack_missing=Mangler
@@ -149,12 +160,14 @@ slack_root=Rodkatalog
 slack_eroot=Manglende eller ugyldig rodkatalog
 slack_manager=Slackware Package Manager
 slack_edir=Manglende mappe med Slackware-pakker $1 
+
 debian_unknown=Ukendt
 debian_depends=Ignorerer afhængighedsproblemer?
 debian_conflicts=Ignorer pakkekonflikter?
 debian_overwrite=Overskrive filer fra andre pakker?
 debian_downgrade=Erstat nyere pakke med gammel?
 debian_manager=Debian DPKG
+
 log_install_package=Installeret pakke $1 
 log_install_apt_l=Installeret pakke (r) $1 fra APT
 log_install_apt=Installeret $2 pakke (r) fra APT
@@ -173,6 +186,7 @@ log_upgrade_yum_l=Opgraderet pakke (r) $1 fra YUM
 log_upgrade_yum=Opgraderet $2 -pakke (r) fra YUM
 log_check_rhn_l=Opgraderet pakke (r) $1 fra Redhat Network
 log_check_rhn=Opgraderet $2 -pakke (r) fra Redhat Network
+
 rhn_input=Pakke fra Redhat Network
 rhn_find=Søg RHN ..
 rhn_install=Installation af pakker med kommando $1 ..
@@ -200,6 +214,7 @@ rhn_eproxy=Manglende eller ugyldig proxyserver
 rhn_skip=Spring over matchende pakker
 rhn_nonefound=Der er ingen tilgængelige pakker til opdatering.
 rhn_name=Redhat Network
+
 apt_input=Pakke fra APT
 apt_install=Installation af pakker med kommando $1 ..
 apt_ok=.. installation komplet.
@@ -229,6 +244,7 @@ apt_repo_url=Databasens URL-adresse
 apt_repo_path=Distribution sti komponenter
 apt_repo_eurl=Manglende eller ugyldig grund-URL
 apt_repo_epath=Manglende distributionssti
+
 yum_input=Pakke fra YUM
 yum_install=Installation af pakker med kommando $1 ..
 yum_ok=.. installation komplet.
@@ -259,6 +275,7 @@ yum_repo_ename=Manglende opbevaringsnavn
 yum_repo_eurl=Manglende eller ugyldig URL-adresse
 yum_repo_egpg=GPG-certifikatfil mangler eller findes ikke
 yum_repo_efile=Lagringsfil findes allerede!
+
 urpmi_name=urpmi
 urpmi_input=Pakke fra URPMI
 urpmi_find=Gennemse URPMI ..
@@ -273,6 +290,7 @@ urpmi_upgradeok=.. komplet.
 urpmi_install=Installation af pakker med kommando $1 ..
 urpmi_ok=.. installation komplet.
 urpmi_failed=.. installation mislykkedes!
+
 rpm_missing=Mangler
 rpm_checkfail=Mislykkedes $1 kontrol
 rpm_md5=MD5
@@ -284,6 +302,7 @@ rpm_user=bruger ejerskab
 rpm_perm=tilladelser
 rpm_group=koncernsejerskab
 rpm_erpm=RPM $1 ikke fundet : $2 
+
 soft_reg=Regelmæssig fil
 soft_dir=Vejviser
 soft_spec=Speciel fil
@@ -295,6 +314,7 @@ soft_euncompress=Filen er komprimeret, men kommandoen <tt>uncompress</tt> blev i
 soft_euncmsg=Kunne ikke fjerne komprimering af fil : $1 
 soft_egzip=Filen gzippes, men gzip-kommandoen blev ikke fundet på dit system.
 soft_egzmsg=Kunne ikke skrue filen : $1 
+
 aix_unknown=Ukendt
 aix_device=INPUT enhed / bibliotek til software
 aix_software=SOFTWARE til installation
@@ -312,6 +332,7 @@ aix_accept=ACCEPT nye licensaftaler?
 aix_license=Forhåndsvise nye LICENSE-aftaler?
 aix_clean=Oprydningsinstallationsfejl?
 aix_manager=AIX Package Manager
+
 emerge_input=Fra Portage depot
 emerge_find=Søg ..
 emerge_install=Installation af pakke med kommando $1 ..
@@ -327,6 +348,7 @@ emerge_noreplace=Erstat eksisterende pakker?
 emerge_onlydeps=Kun installere afhængigheder?
 emerge_title=Søg portage
 emerge_name=Portage
+
 cygwin_fmissing=Filen mangler
 cygwin_lmissing=Filen, som linket peger på, mangler
 cygwin_estat=Kunne ikke stat-filen: $1 
@@ -336,6 +358,7 @@ cygwin_badpostscript=Advarsel: dette script ser ikke ud til at være kørt
 cygwin_pkgexists=Pakke $1 findes allerede.
 cygwin_warnuse=Advarsel: Dette er ikke en officiel grænseflade til styring af Cygwin-software. Brug på din egen risiko.
 cygwin_edb=Manglende Cygwin-pakkedatabase $1 
+
 deletes_err=Kunne ikke slette pakker
 deletes_enone=Ingen pakker valgt
 deletes_title=Slet pakker
@@ -346,6 +369,7 @@ deletes_failed2=Afinstallation mislykkedes : $1
 deletes_success2=.. afinstallation afsluttet.
 deletes_rusure=Er du sikker på, at du vil afinstallere pakkerne $1 ?
 deletes_ok=Slet dem alle
+
 csw_input=Pakke fra CSW
 csw_install=Installation af pakker med kommando $1 ..
 csw_ok=.. installation komplet.
@@ -360,20 +384,24 @@ csw_name=CSW
 csw_form=Opgrader pakker
 csw_upgrade=Opgrader alle installerede pakker
 csw_updatedesc=Opgradering af alle installerede pakker med kommando $1 ..
+
 missing_msg=Pakken $1 kan automatisk installeres af Webmin ved hjælp af $2.
 missing_now=Installer nu
+
 find_title=Søg efter pakke
 find_search=Find pakker, der matcher:
 find_name=Navn
 find_version=Version
 find_desc=Beskrivelse
 find_none=Der blev ikke fundet nogen pakker, der matchede din søgning.
+
 msi_users=Gør ny applikation tilgængelig for
 msi_users0=Ingen
 msi_users1=Nuværende bruger
 msi_users2=Alle brugere
 msi_missing=Eksisterer ikke
 msi_size=Forkert størrelse
+
 hpux_create_target_path=Opret målsti?
 hpux_mount_all_filesystems=Montering af alle filsystemer?
 hpux_reinstall=Geninstaller?
@@ -389,6 +417,7 @@ hpux_enforce_dependencies=Håndhæve afhængigheder?
 hpux_enforce_scripts=Håndhæve manuskripter?
 hpux_enforce_dsa=Håndhæve diskpladsanalyse?
 hpux_root=Rodkatalog
+
 ports_install=Installation af FreeBSD-porte $1 ..
 ports_failed=.. nogle porte mislykkedes
 ports_ok=.. installation komplet
@@ -399,18 +428,22 @@ ports_form=Opdater porte-database
 ports_apply=Download seneste snapshot
 ports_upgrade=Hentning af snapshot af porte
 ports_running=Kører kommando $1 ..
+
 pkg_install=Installation af FreeBSD-pakker $1 ..
 pkg_failed=.. nogle pakker mislykkedes
 pkg_ok=.. installation komplet
 pkg_find=Søg pkgng
 pkg_input=Pakke fra pkgng
+
 pkgsrc_install=Installation af pkgsrc-pakker $1 ..
 pkgsrc_failed=.. nogle pakker mislykkedes
 pkgsrc_ok=.. installation komplet
 pkgsrc_find=Søg pkgng
 pkgsrc_input=Pakke fra pkgsrc
+
 log_IPKG_update=Opdateret IPKG-database
 log_IPKG_upgrade=Opgraderede installerede IPKG-pakker
+
 IPKG_name=IPKG
 IPKG_input=Pakke fra IPKG
 IPKG_find=Gennemse IPKG ..

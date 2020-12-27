@@ -10,8 +10,10 @@ index_onadd=Skapa ett PPP-konto när en Unix-användare skapas, för servern
 index_onchange=Ändra PPP-kontot när en Unix-användare ändras
 index_ondelete=Ta bort PPP-kontot när en Unix-användare tas bort
 index_apply=Ta i drift
+
 secrets_title=PPP-konton
 secrets_return=index
+
 edit_secret_etitle=Ändra PPP-konto
 edit_secret_ctitle=Skapa PPP-konto
 edit_secret_acc=PPP-konto
@@ -31,8 +33,10 @@ edit_secret_alist=Tillåt angivna ...
 edit_secret_save=Spara
 edit_secret_del=Ta bort
 edit_secret_return=kontolista
+
 save_secret_esave=Det gick inte att spara kontot
 save_secret_enoip='$1' är inte en giltig adress
+
 log_create=Skapade PPP-användare $1
 log_modify=Modifierade PPP-användare $1
 log_delete=Tog bort PPP-användare $1

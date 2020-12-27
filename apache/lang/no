@@ -57,6 +57,7 @@ index_fmode1=File med virtuelle tjenere $1
 index_fmode1d=Ny fil under katalog for virtuelle tjenere $1
 index_fmode2=Valgt fil..
 index_delete=Slett valgte tjenere
+
 cvirt_ecannot=Du har ikke tilgang til å opprette en virtuell server
 cvirt_err=Kunne ikke opprette virtuell tjener
 cvirt_eaddr1=Ingen adresse angitt
@@ -70,6 +71,7 @@ cvirt_eroot4=Ingen bruker definert i Apache konfigurasjonen
 cvirt_etaken=En virtuell tjener med samme navn og port finnes allerede
 cvirt_efile=Kunne ikke skrive til $1 : $2
 cvirt_emissing=Den nye virtuelle tjeneren ble lagt til $1,  men denne filen brukes ikke av Apache. Sjekk <a href='$2'>modulkonfigurasjonen</a> og forsikre deg om at 'Fil eller katalog som virtuelle servere skal legges til' er korrekt
+
 etype=Du har ikke lov til å redigere innstillinger av denne typen
 efailed=Kunne ikke lagre $1
 apache_apply=Lagre endringer
@@ -80,6 +82,7 @@ default_serv=standard tjener
 bytes=bytes
 eafter=Verifisering av konfigurasjon feilet : $1 endringer er ikke lagret.
 enewline=Ugyldig tegn i verdi
+
 global_ecannot=Du har ikke lov til å redigere globale innstillinger
 global_mime=Global MIME type liste
 global_mimedesc=Klikk på en MIME type fra listen nedenfor for å redigere den, eller bruk lenken på bunnen av siden for å legge en ny type til listen.
@@ -87,6 +90,7 @@ global_type=Type
 global_ext=Filetternavn
 global_add=Legg til en ny MIME type
 global_return=MIME typer
+
 mime_ecannot=Du har ikke lov til å redigere mime typer
 mime_edit=Rediger MIME Type
 mime_add=Legg til MIME Type
@@ -95,6 +99,7 @@ mime_type=MIME Type
 mime_ext=Etternavn
 mime_err=Kunne ikke lagre MIME type
 mime_etype='$1' er ikke en gyldig MIME type
+
 virt_ecannot=Du kan ikke redigere denne virtuelle serveren
 virt_eprotocol=Du må velge minst en SSL/TLS prokollversjon som kan brukes
 virt_title=Innstillinger for virtuell tjener
@@ -121,6 +126,7 @@ virt_path=Sti
 virt_return=tjener indeks
 virt_euser=Du har ikke lov til å endre bruker eller gruppe for denne virtuelle serveren.
 virt_header2=$1 for $2
+
 vserv_title=Virtuell Tjener Konfigurasjon
 vserv_virtualmin=Denne Apache virtuelle verten tilhører Virtualmin virtuell tjener <tt>$1</tt>, så adresse, port, base-katalog og vertsnavn kan ikke endres her.
 vserv_ecannot=Du kan ikke redigere denne virtuelle tjenerens adresse
@@ -140,10 +146,12 @@ vserv_eport='$1' er ikke en gyldig port
 vserv_eroot='$1' er ikke en gyldig dokument rot
 vserv_ename='$1' er ikke et gyldig tjenernavn
 vserv_eaddrs=Ingen virtuell tjener adresser oppgitt
+
 show_title=Direktiver
 show_edit=Rediger Apache direktiv:
 show_these=Manuelt rediger direktiver
 show_ok=Rediger
+
 manual_configs=Rediger konfig. filer
 manual_title=Rediger direktiver
 manual_header=Bruk tekstboksen nedenfor for å redigere manuelt Apache direktivene i $1 som gjelder for denne virtuelle serveren, katalog eller filer.
@@ -153,6 +161,7 @@ manual_efile=Ugyldig Apache konfig fil
 manual_etest=Oppdaget feil i konfigurasjonsfil : $1
 manual_editfile=Rediger konfig fil:
 manual_switch=Rediger
+
 dir_title=Per-katalog innstillinger
 dir_proxyall=Alle proxy forespørsler
 dir_header=For $1 på $2
@@ -169,6 +178,7 @@ dir_re=Match regexp
 dir_path=Sti
 dir_return=katalog indeks
 dir_header2=$1 for $2
+
 type_0=Prosesser og begrensninger
 type_1=Nettverk og adresser
 type_2=Apache Moduler
@@ -190,6 +200,7 @@ type_17=Automatiske virtuelle verter
 type_18=Filtere
 type_19=Språk
 type_20=Bildekart
+
 htaccess_title=Per-katalog innstillingsfiler
 htaccess_ecannot=Du kan ikke redigere htaccess filer
 htaccess_file=Eksisterende innstillingsfiler
@@ -205,6 +216,7 @@ htaccess_edelete=Du har ikke lov til å slette denne innstillingsfilen
 htaccess_eempty=Ingen katalog for innstillingsfil angitt
 htaccess_eabsolute=Katalog for opsjonsfil må være en absolutt sti
 htaccess_err=Kunne ikke opprette innstillingsfil
+
 htindex_ecannot=Du har ikke lov til å redigere denne innstillingsfilen
 htindex_title=Per-katalog innstillingsfil
 htindex_delete=Slett fil
@@ -220,12 +232,14 @@ htindex_path=Sti
 htindex_header=For $1
 htindex_header2=$1 for innstillingsfil $2
 htindex_return=innstillingsfil indeks
+
 htfile_title=Per-Fil Innstillinger
 htfile_header=For $1 i $2
 htfile_show=Vis direktiver
 htfile_edit=Vis direktiver
 htfile_apply=Innstillingene gjelder for ..
 htfile_header2=$1 for $2
+
 reconfig_title=Rekonfigurer kjente moduler
 reconfig_ecannot=Du har ikke lov til å rekonfigurere apache
 reconfig_ever=Kunne ikke hente versjonsnummer på Apache server programmet $1. Sjekk din <a href='$2'>modul konfigurasjon</a> for å forsikre deg om at dette er riktig sti.
@@ -233,11 +247,13 @@ reconfig_desc1=Din Apache konfigurasjon er endret, eller har ikke blit undersøk
 reconfig_desc2=Nedenfor finner du en liste over alle Apache moduler som støttes av Webmin, med de installerte modulene avmerket. Dersom du benytter dynamisk lastede moduler kan det være nødvendig å velge de modulene som er dynamisk lastet.
 reconfig_desc3=Dersom du er usikker på hvilke moduler som støttes av Apache på ditt system, kan du klikke Konfigurer, siden Webmin normalt autmatisk vil kunne finne ut hvilke moduler som er støttet.
 reconfig_ok=Konfigurer
+
 defines_title=Rediger definerte parametere
 defines_ecannot=Du har ikke lov til å redigere httpd defines
 defines_desc=Når Apache er startet, kan parametere sendes til den med <tt>-D</tt> kommandolinje bryteren. Siden disse parmeterene kan påvirke hvilke direktiver som brukes i dine konfig.filer, må Webmin vite hvilke verdier som sendes til Apache ved oppstart. Skriv inn parametrene som er i bruk på ditt system i tekstfeltet til høyre.
 defines_config=Merk at følgende definerte parametere allerede er kjent : $1
 defines_list=Definerte parametere
+
 authu_ecannot='$1' er ikke en tillatt bruker tekstfil
 authu_title=Brukerliste
 authu_header=I filen $1
@@ -259,6 +275,7 @@ authu_sync=Innstillingene nedenfor lar deg konfigurerer Webmin til å automatisk
 authu_screate=Legg til en bruker når en Unix bruker blir lagt til
 authu_sdelete=Slett brukeren når en Unix bruker slettes
 authu_smodify=Endre brukeren når en Unix bruker endres
+
 authg_ecannot='$1' er ikke en tillatt grupper tekstfil
 authg_title=Gruppeliste
 authg_header=I filen $1
@@ -276,22 +293,26 @@ authg_err=Kunne ikke lagre gruppe
 authg_euser=Ikke noe gruppenavn angitt
 authg_euser2=Gruppenavn kan ikke inneholde en :
 authg_edup=En gruppe med navnet '$1' finnes allerede
+
 stop_err=Kunne ikke stoppe apache
 stop_ecannot=Du har ikke lov til å stoppe apache
 stop_epid=Kunne ikke åpne PID fil $1
 stop_epid2=Ugyldig PID fil $1
 stop_esig=Kunne ikke sende SIGTERM til prosess $1
+
 start_err=Kunne ikke starte apache
 start_ecannot=Du har ikke lov til å starte apache
 start_ecmd=$1 feilet : $2
 start_eunknown=Ukjent grunn
 start_eafter=Det ser ikke ut til at Apache kjører
+
 restart_err=Kunne ikke ta i bruk endringer
 restart_epid=Kunne ikke åpne PID filen $1
 restart_epid2=Ugyldig PID fil $1
 restart_esig=Kunne ikke sende SIGHUP til prosessen $1
 restart_eunknown=Ukjent grunn
 restart_ecannot=Du har ikke tilgang til å ta i bruk endringer
+
 acl_virts=Virtuelle tjenere denne brukeren kan redigere
 acl_vall=Alle tjenere
 acl_vsel=Valgte..
@@ -314,6 +335,7 @@ acl_dirs=Tilgjengelig Apache direktiver<br><font size=-1>(Med typebegrensninger 
 acl_dirs0=Alle
 acl_dirs1=Kun de i listen ..
 acl_dirs2=Alle unntatt de i listen ..
+
 core_maxconc=Maks samtidige forespørsler
 core_maxkeep=Maks. keepalives per oppkobling
 core_maxreq=Maks. forespørsler per server prosess
@@ -499,10 +521,12 @@ core_infilter=Aktiver input filtere for alle filer
 core_outfilter=Bruk output filtere for alle filer
 core_defchar=Tegnsett for dokumenter
 core_edefchar=Manglende eller ugyldig tegnsett for dokumenter
+
 mod_negotiation_cache=Hurtiglagre innholds-forhandlede dokumenter?
 mod_negotiation_pri=Språk prioritet for multi-visninger
 mod_negotiation_def=Standard
 mod_negotiation_epri=Manglende språkprioriteter
+
 mod_cgi_logname=CGI Script logg
 mod_cgi_none=Ingen
 mod_cgi_elogname=Ugyldig CGI script loggfil
@@ -512,6 +536,7 @@ mod_cgi_elogsize=CGI logg størrelse må være et heltall
 mod_cgi_post=Maksimum logget postdata størrelse
 mod_cgi_epost=Post data størrelse må være et heltall
 mod_cgi_eunder=CGI script logg er ikke under tillatt katalog
+
 mod_alias_from=Fra
 mod_alias_to=Til
 mod_alias_status=Status
@@ -535,6 +560,7 @@ mod_alias_cgi2=CGI katalog alias
 mod_alias_rcgi=Regexp CGI katalog aliaser
 mod_alias_rcgi2=regexp CGI katalog alias
 mod_alias_estatus='$1' er ikke en gyldig status
+
 mod_proxy_proxy=Opptre som proxy tjener?
 mod_proxy_req=Forespørsler
 mod_proxy_forw=Videresend til
@@ -605,11 +631,13 @@ mod_proxy_timeout=Tidsavbrudd i sekunder for proxy forespørsel
 mod_proxy_etimeout=Tidsavbrudd for proxy forespørsel må være et antall sekunder
 mod_proxy_via=Sett Via: headere
 mod_proxy_not=Ingen
+
 mod_log_agent_default=Standard
 mod_log_agent_file=Fil..
 mod_log_agent_program=Program..
 mod_log_agent_log=Nettleser loggfil
 mod_log_agent_efile=$1 er ikke et gyldig filnavn for nettleser (agent) logg
+
 mod_log_config_common=Common Logg Format
 mod_log_config_named=Navngitte loggformater
 mod_log_config_nick=Kallenavn
@@ -628,6 +656,7 @@ mod_log_config_enofilprog=Mangler logg filnavn eller program
 mod_log_config_efilprog='$1' er ikke et tillatt logg filnavn eller program
 mod_log_config_eifset='Hvis satt' innstillingen kan ikke brukes med standard loggformat
 mod_log_config_edir=Katalog fir loggfilen ' $1' finnes ikke
+
 mod_log_referer_default=Standard
 mod_log_referer_file=Fil..
 mod_log_referer_program=Program..
@@ -635,7 +664,9 @@ mod_log_referer_log=Referer loggfil
 mod_log_referer_nolog=Ikke logg referanser fra
 mod_log_referer_elog=$1 er ikke et gyldig filnavn for referer logg
 mod_log_referer_edir=referer logg er ikke under den tillatte katalogen
+
 mod_status_msg=Vis utvidet status informasjon
+
 mod_mime_ext=Filetternavn
 mod_mime_xtype=Ekstra MIME typer
 mod_mime_mtype=MIME type
@@ -668,6 +699,7 @@ mod_mime_outfilter=Output filtere
 mod_mime_infilter=Input filtere
 mod_mime_filters=Filtere som skal brukes
 mod_mime_efext=Ingen filtyper gitt for filter(e) $1
+
 mod_setenvif_header=Header
 mod_setenvif_match=Match
 mod_setenvif_case=Skill mellom små og store bokstaver
@@ -678,11 +710,13 @@ mod_setenvif_eheader=Ugyldig forespørsels-header '$1'
 mod_setenvif_eregex=Ugyldig regulært uttrykk '$1'
 mod_setenvif_evar=Ugyldig variabelnavn '$1'
 mod_setenvif_clear=Nullstill
+
 mod_userdir_default=Standard
 mod_userdir_all=Alle brukere tilgjengelige
 mod_userdir_except=Alle brukere unntatt
 mod_userdir_dir=Bruker WWW katalog
 mod_userdir_edir=Du har ikke tilgang til å bruker den angitter bruker WWW katalog
+
 mod_imap_action=Handling ved feil bruk av bildekart
 mod_imap_default=Standard
 mod_imap_godefurl=Gå til standard URL
@@ -702,8 +736,10 @@ mod_imap_refurl=Refererende URL
 mod_imap_url=URL...
 mod_imap_defbase=Standard base for bildekart
 mod_imap_eurl='$1' er ikke en gyldig URL
+
 mod_speling_autocorr=Korriger feilstavede URLer automatisk?
 mod_speling_default=Standard
+
 mod_actions_mime=Handler / MIME type
 mod_actions_cgiurl=CGI script URL
 mod_actions_mimecgi=Handler eller MIME type CGI handlinger
@@ -713,10 +749,13 @@ mod_actions_httpcgi=HTTP metode CGI handlinger
 mod_actions_emime='$1' er ikke en gyldig handler eller MIME type
 mod_actions_ecgi='$1' er ikke et gyldig CGI script
 mod_actions_enometh=Ingen metode valgt for CGI script '$1'
+
 mod_include_incl=Prosesser inkluderinger på filer med execute bit?
 mod_include_set=Ja og sett sist-endret dato
 mod_include_default=Standard
+
 mod_dir_txt=Katalog indeks filer
+
 mod_autoindex_default=Standard
 mod_autoindex_asc=Stigende
 mod_autoindex_descend=Synkende
@@ -725,6 +764,7 @@ mod_autoindex_date=Dato
 mod_autoindex_size=Størrelse
 mod_autoindex_desc=Beskrivelse
 mod_autoindex_sort=Sorter katalogindeks etter
+
 browsermatch_regexp=Nettleser regex
 browsermatch_case=Skill små/store bokstaver?
 browsermatch_var=Sett variabel
@@ -732,6 +772,7 @@ browsermatch_value=Verdi
 browsermatch_txt=Variabler satt basert på nettleser-type
 browsermatch_evar=Ugyldig variabelnavn '$1'
 browsermatch_clear=Nullstill
+
 autoindex_fname=Filnavn
 autoindex_mime=MIME type
 autoindex_enc=Koding
@@ -785,9 +826,11 @@ autoindex_sicon=Vis filikoner
 autoindex_srules=Vis &lt;hr&gt; linjer
 autoindex_track=Ta med ETags i header
 autoindex_version=Sorter etter versjonsstrenger
+
 mod_mime_magic_file=Fil med MIME magic numbers
 mod_mime_magic_none=Ingen
 mod_mime_magic_efile=Uguldig filnavn for MIME magic numbers
+
 mod_env_var=Variabel
 mod_env_value=Verdi
 mod_env_pass=Pass through
@@ -798,6 +841,7 @@ mod_env_passall=Send alle miljøvariabler til CGIer
 mod_env_default=Standard
 mod_env_evar='$1' er ikke et gyldig varaiabelnavn
 mod_env_evalue='$1' er ikke en gyldig variabelverdi
+
 mod_access_order=Rekkefølge for tilgangssjekk:
 mod_access_denyallow=Nekt så tillat
 mod_access_allowdeny=Tillat så nekt
@@ -820,6 +864,7 @@ mod_access_epip='$1' er ikke en gyldig delvis IP adresse
 mod_access_emask='$1' er ikke et gyldig nettverk/nettmaske par
 mod_access_ecidr='$1' er ikke et gyldig nettverk/CIDR par
 mod_access_evar='$1' er ikke et gyldig variabelnavn
+
 mod_auth_ufile=Bruker tekstfil
 mod_auth_uedit=Rediger brukere
 mod_auth_gfile=Gruppe tekstfil
@@ -830,6 +875,7 @@ mod_auth_eudir=Bruker tekstfil er ikke under tillatt katalog
 mod_auth_egdir=Gruppe tekstfil er ikke under tillatt katalog
 mod_auth_eufile=Ugyldig bruker tekst filnavn
 mod_auth_egfile=Ugyldig gruppe tekst filnavn
+
 mod_auth_dbm_ufile=Bruker DBM fil
 mod_auth_dbm_gfile=Gruppe DBM fil
 mod_auth_dbm_pass=Send feil videre til neste modul?
@@ -840,6 +886,7 @@ mod_auth_dbm_egfile=Ugyldig gruppe DBM filnavn
 mod_auth_dbm_type=DBM filer type
 mod_auth_dbm_gtype=DBM gruppedatabase type
 mod_auth_dbm_default=Standard DBM format
+
 mod_cern_meta_process=Prosesser header metafiler
 mod_cern_meta_dir=Underkatalog for header metafiler
 mod_cern_meta_default=Standard
@@ -847,6 +894,7 @@ mod_cern_meta_edir=Ugyldig underkatalog navn for metafil
 mod_cern_meta_suffix=Filendelse for header metafiler
 mod_cern_meta_default2=Standard
 mod_cern_meta_esuffix=Ugyldig metafil endelse
+
 mod_ssl_enable=Slå på SSL?
 mod_ssl_proto=SSL protokoller
 mod_ssl_cfile=Sertifikat/privat nøkkel fil
@@ -874,6 +922,7 @@ mod_ssl_passsc=Utføre script $1
 mod_ssl_epassph=Ingen SSL passord angitt
 mod_ssl_epasssc=Manglende eller ugyldig SSL passord script
 mod_ssl_ecerton=Når SSL er aktivert må du velge en sertifikatfil
+
 mod_apachessl_notssl=Nekt SSL tilgang
 mod_apachessl_forcessl=Tving gjennom SSL/ikkeSSL tilgang?
 mod_apachessl_capath=Sti til katalog med sertifikater for Sertifikat autoritetene i
@@ -906,6 +955,7 @@ mod_apachessl_nov2=Slå av SSL versjon 2
 mod_apachessl_fake=Silmulerer brukerinnlogging med grunnlegende autentisering, ver å bruke sertifikatnavnet
 mod_apachessl_cdnfile=Fil som klientens DN sjekkes mot
 mod_apachessl_ecdnfile=Manglende fil som klient DN skal sjekkes mot
+
 log_global=Endret globale $1 innstillinger
 log_virtc=Opprettet server $1
 log_virts=Rekonfigurert server $1
@@ -946,8 +996,10 @@ log_stop=Stoppet webserver
 log_apply=Endringer lagret
 log_manual=Manuelt redigert konfigurasjonsfil $1
 log_virts_delete=Slettet $1 virtuelle tjenere
+
 search_title=Finn tjenere
 search_notfound=Ingen matchende virtuelle tjenere funnet
+
 mod_php_value=PHP Konfigurasjonsverdier
 mod_php_flag=PHP Konfigurasjonsflagg
 mod_php_admin_value=PHP Admin konfigurasjonsverdier
@@ -956,6 +1008,7 @@ mod_php_name_header=Innstilling
 mod_php_value_header=Verdi
 mod_php_ename='$1' er et ugyldig navn
 mod_php_evalue='$1' er en ugyldig verdi for $2
+
 mod_vhost_alias_root=Automatisk rot for virtuell vert
 mod_vhost_alias_ip=Bruk IP adresse i stedet for vertsnavn?
 mod_vhost_alias_none=Ingen
@@ -963,12 +1016,14 @@ mod_vhost_alias_script=Automatisk virtuell vert cgi-bin
 mod_vhost_alias_eroot=Manglende eller ugyldig rot for virtuell vert
 mod_vhost_alias_eroot2=Rot-katalog for virtuell vert er ikke tillatt
 mod_vhost_alias_escript=Manglende eller ugyldig virtuell vert cgi-bin
+
 worker_minspare=Minimum ledige tråder
 worker_maxspare=Maks. ledige tråder
 worker_eminspare=Minimum ledige tråder må være et heltall
 worker_emaxspare=Maks. ledige tråder må være et heltall
 worker_threads=Tråder per under-prosess
 worker_ethreads=Antall tråder per under-prosess må være et heltall
+
 perchild_sthreads=Initielt ant. tråder per under-prosess
 perchild_esthreads=Antal tråder per underprosess må være et heltall
 perchild_numservers=Antall under-prosesser
@@ -984,6 +1039,7 @@ perchild_gid=GID
 perchild_enum=Prosess nummer må være et positivt heltall
 perchild_euid=UID må være et heltall
 perchild_egid=GID må være et heltall
+
 cache_enable=Aktiv?
 cache_type=Cache lager
 cache_disk=Disk
@@ -1004,12 +1060,14 @@ cache_eminos=Minimum objektstørrelse å cache må være et antall bytes
 cache_emaxos=Maksimum objektstørrelse å cache må være et antall bytes
 cache_maxoc=Maksimum antall objekter å cache i minne
 cache_emaxoc=Antall objekter å cache i minne må være et heltall
+
 suexec_su=Kjør CGI programmer som
 suexec_none=Bruker fra global konfigurasjon
 suexec_user=Unix bruker
 suexec_group=og gruppe
 suexec_euser=Manglende eller ugyldig bruker å kjøre CGI programmer som
 suexec_egroup=Manglende eller ugyldig gruppe å kjøre CGI programmer som
+
 filter_name=Navn
 filter_intype=Input MIME type
 filter_outtype=Output MIME type
@@ -1019,11 +1077,13 @@ filter_in=Input Filter definisjoner
 filter_out=Output Filter definisjoner
 filter_ename=Ugyldig filter navn '$1'
 filter_ecmd=Mangler kommando for filter '$1'
+
 cdir_err=Kunne ikke opprette per-directory instillinger
 cdir_err2=Kunne ikke lagre per-directory innstillinger
 cdir_epath=Manglende sti
 cdir_eproxy=Proxy innstillinger kan ikke opprettes med match regexp innstillingen slått på
 cdir_ecannot=Du har ikke tilgang til å opprette per-katalog innstillinger for den angitte stien
+
 mod_band_enable=Båndbreddebegrensing slått på?
 mod_band_bw=Grenseverdi (bytes/sek)
 mod_band_client=For klienter
@@ -1042,24 +1102,30 @@ mod_band_epulse=Manglende eller ugyldig intervall mellom begrensede pakker
 mod_band_dir=Katalog for datafiler for båndbreddebegrensing
 mod_band_edir=Manglende eller ikke-eksisterende katalog for datafiler for båndbredde
 mod_band_esubdir=Manglende påkrevd underkatalog <tt>$1</tt> under katalog for båndbredde datafiler
+
 mod_dav_active=WebDAV slått på?
 mod_dav_inf=Tillat uendelig dybde DAV PROPFIND forespørsler?
 mod_dav_timeout=Minimum DAV tidsavbrudd i sekunder
 mod_dav_etimeout=Manglende eller ugyldig DAV tidsavbrudd
+
 delete_err=Kunne ikke slette virtuelle tjenere
 delete_enone=Ingen valgt
 delete_ecannot=Du har ikke tilgang til å slette tjenere
 delete_ecannot2=Du har ikke tilgang til å slette tjeneren $1
+
 syslog_desc=Apache feillog
+
 mod_auth_basic_pass=Send basic innloggingsfeil til neste modul?
 mod_auth_basic_prov=Basic login user file types
 mod_auth_basic_file=Tekstfil
 mod_auth_basic_dbm=DBM database
+
 mod_auth_digest_pass=Send digest innloggingsfeil videre til neste modul?
 mod_auth_digest_prov=Digest login user file types
 mod_auth_digest_al=Hashing algoritme
 mod_auth_digest_domain=URLer og stier i samme domene
 mod_auth_digest_edomain=Manglende URLer og stier i samme domene
+
 mods_title=Konfigurer Apache moduler
 mods_mod=Modul
 mods_state=Gjeldende tilstand

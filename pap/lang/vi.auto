@@ -14,10 +14,12 @@ index_apply=Ứng dụng
 index_return=Chỉ số PPP
 index_none=Bạn không có quyền truy cập vào bất kỳ tính năng nào của mô-đun này.
 index_delete=Xóa tài khoản đã chọn
+
 secrets_title=Tài khoản PPP
 secrets_return=mục lục
 secrets_none=Chưa có tài khoản PPP nào được tạo.
 secrets_ecannot=Bạn không được phép chỉnh sửa tài khoản PPP
+
 edit_secret_etitle=Chỉnh sửa tài khoản PPP
 edit_secret_ctitle=Tạo tài khoản PPP
 edit_secret_acc=Tài khoản PPP
@@ -37,8 +39,10 @@ edit_secret_alist=Cho phép liệt kê ..
 edit_secret_save=Tiết kiệm
 edit_secret_del=Xóa bỏ
 edit_secret_return=danh sách tài khoản
+
 save_secret_esave=Không thể lưu tài khoản
 save_secret_enoip='$1' không phải là địa chỉ hợp lệ
+
 log_create=Đã tạo tài khoản PPP $1 
 log_modify=Tài khoản PPP được sửa đổi $1 
 log_delete=Đã xóa tài khoản PPP $1 
@@ -54,6 +58,7 @@ log_dialin_move=Đã chuyển số ID người gọi $1
 log_mgetty_create=Đã tạo cổng nối tiếp $1 
 log_mgetty_modify=Cổng nối tiếp được sửa đổi $1 
 log_mgetty_delete=Đã xóa cổng nối tiếp $1 
+
 options_title=Tùy chọn PPP
 options_serial=Đối với cổng nối tiếp $1 
 options_dev=Đối với thiết bị $1 
@@ -84,6 +89,7 @@ options_idle=Thời gian rảnh trước khi ngắt kết nối
 options_idle_def=Không bao giờ
 options_eidle=Thời gian nhàn rỗi hoặc không hợp lệ
 options_ecannot=Bạn không được phép chỉnh sửa tùy chọn PPP
+
 mgetty_title=Cấu hình cổng nối tiếp
 mgetty_ecmd=Lệnh $1 không được tìm thấy trên hệ thống của bạn. Chương trình này là cần thiết để xử lý đăng nhập cổng nối tiếp thông qua modem hoặc kết nối trực tiếp.
 mgetty_desc=Để máy chủ của bạn cho phép đăng nhập trên cổng nối tiếp qua modem hoặc kết nối trực tiếp, nó phải được liệt kê bên dưới. Khi bạn thêm một cổng vào danh sách này, chương trình $1 sẽ được cấu hình để trả lời các kết nối modem và hiển thị lời nhắc đăng nhập.
@@ -125,6 +131,7 @@ mgetty_apply=Áp dụng cấu hình
 mgetty_applydesc=Nhấp vào nút này để áp dụng cấu hình cổng nối tiếp hiện tại bằng cách chạy lệnh $1 và hủy tất cả các quy trình Mgetty.
 mgetty_applyerr=Không thể áp dụng cấu hình
 mgetty_ecannot=Bạn không được phép chỉnh sửa cấu hình cổng nối tiếp
+
 dialin_title=Truy cập ID người gọi
 dialin_desc=Trang này cho phép bạn định cấu hình Mgetty để cho phép hoặc từ chối truy cập dialin dựa trên số điện thoại của người gọi. Khi có cuộc gọi đến, mục đầu tiên trong danh sách khớp với số điện thoại sẽ xác định xem cuộc gọi có được chấp nhận hay không.
 dialin_efile=Không tìm thấy tệp kiểm soát truy cập ID người gọi Mgetty $1 trên hệ thống của bạn. Có thể Mgetty chưa được cài đặt hoặc cấu hình mô-đun <a href='$2'></a> của bạn không chính xác.
@@ -145,9 +152,12 @@ dialin_move=Di chuyển
 dialin_err=Không thể lưu số ID người gọi
 dialin_enumber=Số điện thoại bị thiếu hoặc không hợp lệ
 dialin_ecannot=Bạn không được phép chỉnh sửa quyền truy cập ID người gọi
+
 acl_pages=Trang có sẵn
 acl_direct=Đi thẳng đến một trang?
+
 sync_ecannot=Bạn không được phép chỉnh sửa các tùy chọn đồng bộ hóa unix-ppp
 sync_title=Đồng bộ hóa người dùng
+
 delete_err=Không thể xóa tài khoản
 delete_enone=Không được chọn

@@ -12,6 +12,7 @@ index_eprog=Die ausführbare Datei des NFS-Servers konnte nicht auf dem System g
 index_delete=Ausgewählte Exports löschen
 index_disable=Ausgewählte deaktivieren
 index_enable=Ausgewählte aktivieren
+
 edit_title=Export bearbeiten
 create_title=Export erstellen
 edit_details=Exportdetails
@@ -65,6 +66,7 @@ edit_sec_krb5i=Kerberos Integrität
 edit_sec_krb5p=Kerberos Privatsphäre
 edit_sec_lipkey=LIPKEY
 edit_sec_spkm=SPKM
+
 save_err=Fehler beim Speichern der Exporte
 save_edir=Verzeichnis '$1' existiert nicht
 save_epfs=Pseudo-Dateisystem-Pfad '$1' schaut nicht wie ein absoluten Pfad aus
@@ -78,6 +80,7 @@ save_pfs='$1' ist bereits als Verzeichnis exportiert
 save_create_dir=Kann das Verzeichnis '$1' nicht erzeugen
 save_eanonuid=Ungültige anonymen Zugriff Benutzernamen
 save_eanongid=Ungültiger anonymen Zugriff Gruppennamen
+
 exports_webnfs=WebNFS Clients
 exports_ngroup=Netzgruppe $1
 exports_net=Netzwerk $1
@@ -85,6 +88,7 @@ exports_all=Jedermann
 exports_hosts=Hosts $1
 exports_host=Host $1
 exports_gss=Überprüftes Netzwerk; $1
+
 log_modify=NFS-Export $1 geändert
 log_modify_l=NFS-Export $1 auf $2 geändert
 log_delete=NFS-Export $1 gelöscht

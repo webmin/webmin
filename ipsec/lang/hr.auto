@@ -25,12 +25,15 @@ index_up=Pokretanje veze:
 index_updesc=Odaberite vezu s popisa uz ovaj gumb i kliknite je da biste pokušali uspostaviti odmah.
 index_nopol=Nisu pronađena mrežna pravila - možda je vaša <a href='$1'> mrežna konfiguracija netočna.
 index_import=Uvezi vezu iz datoteke.
+
 stop_err=Zaustavljanje IPsec poslužitelja nije uspjelo
 start_err=Nije uspio pokretanje IPsec poslužitelja
 restart_err=Ponovno pokretanje poslužitelja IPsec nije uspjelo
 start_elog=Zabilježene su sljedeće pogreške : $1 
+
 newkey_err=Generiranje ključa nije uspjelo
 newkey_ehost=Nedostaje ili nevaljano ime računala
+
 edit_title1=Stvorite vezu
 edit_title2=Uredi vezu
 edit_header=Pojedinosti o IPsec VPN vezi
@@ -101,6 +104,7 @@ edit_unit_s=sekundi
 edit_unit_m=min
 edit_unit_h=sati
 edit_unit_d=dana
+
 config_title=Konfiguracija poslužitelja
 config_header=Globalne postavke VPN poslužitelja
 config_ifaces=Mrežna sučelja za IPsec
@@ -118,6 +122,7 @@ config_nat=Želite li omogućiti NAT prelaz?
 config_err=Nije uspjelo spremanje konfiguracije poslužitelja
 config_eri=Pravo sučelje '$1' navedeno je više puta
 config_enone=Nije navedeno mrežno sučelje
+
 showkey_title=Prikaži javni ključ
 showkey_desc1=Javni RSA ključ prikazan u nastavku treba kopirati u konfiguraciju ostalih sustava koji se spajaju na ovaj, u odjeljak koji se odnosi na ovaj domaćin.
 showkey_desc2=Vrijednosti prikazane u nastavku mogu se upotrijebiti za stvaranje DNS KEY zapisa za ovaj domaćin, tako da ostali sustavi koji se na njega povezuju mogu tražiti njegov javni ključ.
@@ -125,6 +130,7 @@ showkey_flags=zastavice
 showkey_proto=Protokol
 showkey_alg=Algoritam
 showkey_key=Ključni podaci
+
 policy_desc_block=Blokirane mreže
 policy_desc_clear=Očistite prometne mreže
 policy_desc_private=Šifrirane mreže
@@ -145,6 +151,7 @@ policy_mask=Prefiks
 policy_err=Spremanje mreža nije uspjelo
 policy_enet=Nevaljana mrežna IP adresa u retku $1 
 policy_emask=Nevaljana duljina prefiksa u retku $2 
+
 save_err=Nije uspjelo spremanje veze
 save_ename=Nedostaje ili nevažeće ime veze
 save_ekeying=Nedostaje ili nevažeći broj ponovnih pokušaja unosa
@@ -164,6 +171,7 @@ save_eleftcert=Nedostaje ili nije važeći certifikat lokalnog poslužitelja
 save_erightcert=Nedostaje ili je nevažeći certifikat udaljenog poslužitelja
 save_ekeylife=Nedostaje ili nevažeći vijek trajanja ključa veze
 save_eikelifetime=Nedostaje ili nije važeći vijek trajanja kanala
+
 log_create_conn=Stvorena je veza $1 
 log_delete_conn=Izbrisana je veza $1 
 log_modify_conn=Izmijenjena veza $1 
@@ -182,8 +190,10 @@ log_delete_secret=Izbrisan tajni ključ za $1
 log_create_secret_nn=Stvorio tajni ključ za bilo kojeg domaćina
 log_modify_secret_nn=Izmijenjeni tajni ključ za bilo kojeg domaćina
 log_delete_secret_nn=Izbrisan je tajni ključ za bilo kojeg domaćina
+
 up_title=Pokrenite vezu
 up_cmd=Pokretanje veze s naredbom $1 ..
+
 export_title=Konfiguracija izvoza
 export_desc=Ovaj se obrazac može koristiti za izvoz odjeljka konfiguracijske datoteke za vezu $1, tako da se na drugom kraju može lako uvesti na poslužitelj.
 export_print=Prikaz konfiguracije u pregledniku
@@ -193,11 +203,13 @@ export_err=Izvoz konfiguracije nije uspio
 export_efile=Nedostaje naziv datoteke
 export_esave=Pisanje u datoteku nije uspjelo : $1 
 export_done=Izvezana konfiguracija za vezu $1 do $2 ($3 bajta).
+
 import_title=Uvezi konfiguraciju
 import_desc=Ovaj se obrazac može koristiti za uvoz odjeljka konfiguracijske datoteke za vezu, poput one koju je stvorila značajka izvoza modula u drugi sustav.
 import_upload=Uvezi iz datoteke za prijenos ..
 import_file=Uvoz s datoteke na strani poslužitelja ..
 import_ok=Uvezi odmah
+
 import_err=Uvoz konfiguracije nije uspio
 import_eupload=Za prijenos nije odabrana datoteka
 import_efile=Nije upisana nijedna datoteka na strani poslužitelja
@@ -207,6 +219,7 @@ import_eclash=Veza pod nazivom $1 već postoji.
 import_done1=Nova IPsec veza uspješno je dodana $1.
 import_done2=Veza IPsec uspješno je ažurirana $1.
 import_over=Prepisati postojeću vezu s istim nazivom?
+
 secrets_title=Tajni ključevi
 secrets_none=Nisu pronađeni ključevi tajne!
 secrets_name=Tajna za
@@ -220,6 +233,7 @@ secrets_mod=Modul $1
 secrets_newpsk=Izradite novi zajednički tajni ključ.
 secrets_newrsa=Izradite novi RSA ključ.
 secrets_return=popis tajnih ključeva
+
 secret_title1=Stvorite tajni ključ
 secret_title2=Uređivanje tajnog ključa
 secret_header=Tajni ključni detalji

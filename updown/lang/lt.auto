@@ -40,6 +40,7 @@ index_descfetch=Šis puslapis skirtas failui atsisiųsti iš sistemos, kurioje v
 index_email=Siųsti el. Laišką, kai atsisiunčiama?
 index_emailto=Taip, kreiptis
 index_email2=Siųsti el. Laišką, kai įkelta?
+
 upload_title=Įkelti failus
 upload_err=Nepavyko įkelti failų
 upload_edir=Trūksta katalogo, į kurį būtų galima įkelti
@@ -63,6 +64,7 @@ upload_saving=Įrašomas failas $1 ..
 upload_saved=.. parašė $1 
 upload_unzipping=Išgaunamas failas $1.
 upload_unzipdone=.. $1 
+
 download_err=Nepavyko išsaugoti atsisiuntimo
 download_enone=Neįvestų URL, kuriuos reikia atsisiųsti
 download_eurl=„$1“ nėra galiojantis URL
@@ -74,9 +76,11 @@ download_failed=Atsisiųsti nepavyko : $1
 download_eaccess=Jums neleidžiama atsisiųsti failų į $1 
 download_eucannot=Jums neleidžiama atsisiųsti failų kaip $1 vartotojui
 download_egcannot=Pasirinktoje grupėje nėra pasirinkto vartotojo
+
 cancel_err=Nepavyko atšaukti atsisiuntimų
 cancel_enone=Nepasirinkta
 cancel_ecannot=Jums neleidžiama atšaukti vartotojo $1 atsisiuntimų
+
 log_cancel=Atšauktas $1 atsisiuntimas (-ų)
 log_upload_l=Įkeltas failas (-ai) $1 
 log_upload=Įkeltas $1 failas
@@ -84,6 +88,7 @@ log_download_l=Atsisiųstas URL (-ai) $1
 log_download=Atsisiųstas $1 URL
 log_sdownload_l=Suplanuotas URL (-ų) atsisiuntimas $1 
 log_sdownload=Suplanuotas $1 URL atsisiuntimas
+
 acl_users=Gali įkelti ir atsisiųsti failus kaip vartotojai
 acl_all=Visi vartotojai
 acl_this=Dabartinis „Webmin“ vartotojas
@@ -98,6 +103,7 @@ acl_max=Maksimalus įkėlimo dydis
 acl_unlim=Neribota
 acl_b=baitų
 acl_fetch=Ar galima atsisiųsti failus į kompiuterį?
+
 fetch_err=Nepavyko atsisiųsti failo
 fetch_ecannot=Jums neleidžiama atsisiųsti failų į kompiuterį
 fetch_efile=Neįvestas failo vardas
@@ -106,6 +112,7 @@ fetch_eopen=Nepavyko atidaryti failo : $1
 fetch_eaccess=Jums neleidžiama atsisiųsti failų iš $1 
 fetch_ezip=Katalogo atsisiųsti negalima, jei neįdiegta komanda <tt>zip</tt>
 fetch_eroot=Šaknies katalogo atsisiųsti negalima!
+
 email_downmsg=Šis atsisiuntimas baigtas :
 email_downurl=URL: $1 
 email_downerr=Klaidos pranešimas: $1 

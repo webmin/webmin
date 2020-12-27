@@ -2,6 +2,7 @@ index_used=Używany
 index_none=Nie masz dostępu do żadnego zamontowanego systemu plików.
 index_mount2=Zamontuj za pomocą hasła:
 index_root=Zrootowany system plików
+
 edit_usage=Użycie dysku
 edit_comm_opt=Typowe opcje montowania
 edit_ext_opt=Opcje specyficzne dla ext2 / ext3
@@ -20,17 +21,22 @@ edit_ecannot=Nie możesz edytować tego systemu plików
 edit_ecannot2=Nie możesz dodawać nowych systemów plików
 edit_3_or_lower=3 (lub mniej)
 edit_advanced=Tryb zaawansowany
+
 save_force=Nie można usunąć montowania na $1, ponieważ montowanie jest obecnie w użyciu. Aby spróbować wymusić odmontowanie, kliknij przycisk poniżej
 save_fapply=Force Un-Mount
+
 nfs_seldirv4=W przypadku montażu NFSv4 należy wybrać opcję „/”
+
 smb_eworkgroup=Brak grupy roboczej na stronie konfiguracji modułu
 smb_emaster=Nie znaleziono wzorca przeglądania dla grupy roboczej $1
+
 solaris_idedev=Kontroler IDE $1 dysk $2 partycja $3
 solaris_lvm=Urządzenie LVM
 solaris_vg=Grupa woluminów
 solaris_lv=Wolumin logiczny
 solaris_vxfs=Urządzenie VXFS
 solaris_hfs=Urządzenie HFS
+
 linux_lvm=Wolumin logiczny LVM
 linux_ldev=LVM VG $1, LVM $2
 linux_cddev2=Napęd CD-ROM $1
@@ -51,6 +57,7 @@ linux_noenforce=Tak, ale nie egzekwuj
 linux_df=Czy uwzględnić zastrzeżone bloki w rozmiarze systemu plików?
 linux_noatime=Unikać aktualizacji czasów ostatniego dostępu?
 linux_netdev=Poczekaj, aż interfejsy sieciowe będą gotowe?
+linux_nofail=Kontynuować rozruch, nawet jeśli montaż się nie powiedzie?
 linux_ecname=Brakująca lub nieprawidłowa nazwa klienta Netbios
 linux_emname=Brakująca lub nieprawidłowa nazwa hosta lub adres IP serwera
 linux_bind=Oryginalny katalog
@@ -76,8 +83,11 @@ linux_nounix=Wyłączyć rozszerzenia CIFS Unix?
 linux_noserverino=Generować numery i-węzłów po stronie klienta?
 linux_cvers=Wersja CIFS
 linux_ecvers=Wersja CIFS musi być liczbą
+
 log_swap=Utworzono plik wymiany $1
+
 unmount_err=Nie można odmontować $1
+
 mount_err=Nie udało się zamontować $1
 irix_nhost=Nazwa hosta NFS
 irix_ndir=Katalog NFS
@@ -108,6 +118,7 @@ irix_rock=Używasz rozszerzeń Rock Ridge?
 irix_nofsck=Sprawdź system plików podczas rozruchu?
 irix_auto=Źródło automountera
 irix_automap=Plik mapy
+
 irix_ehost=Host „$1” nie istnieje
 irix_eloss=Host „$1” jest wyłączony
 irix_eshowmount=Host „$1” nie obsługuje NFS
@@ -125,9 +136,11 @@ irix_efstyp2=Nie można pobrać typu systemu plików $1 : $2
 irix_efstyp=Typ systemu plików w $1 to $2, a nie $3
 irix_eautomap=Plik mapy automountera „$1” nie istnieje
 irix_eauthmap2=Brakujący lub nieprawidłowy plik mapy automountera
+
 irix_devroot=Partycja root
 irix_devswap=Zamień partycję
 irix_autohosts=Wszystkie eksporty NFS
+
 acl_only=Zezwolić tylko na montowanie i odmontowywanie?
 acl_fs=Systemy plików, które można edytować
 acl_types=Typy systemów plików, których można użyć
@@ -140,8 +153,10 @@ acl_hide=Ukryć nieedytowalne systemy plików?
 acl_simple=Pokaż prosty formularz montowania?
 acl_simopts=Pokaż uproszczone opcje systemu plików?
 acl_browse=Pokaż pliki i udostępnij przyciski przeglądania?
+
 egcc=Kompilator GCC lub CC potrzebny do zbudowania programu do wyświetlania zamontowanych systemów plików w systemie nie jest dostępny.
 ecompile=Wystąpił błąd podczas budowania programu do wyświetlania zamontowanych systemów plików w twoim systemie : $1
+
 freebsd_eaddr=Brakujący lub nieprawidłowy adres serwera
 freebsd_eworkgroup=Brakująca lub nieprawidłowa grupa robocza
 freebsd_ide=Dysk twardy IDE
@@ -155,8 +170,10 @@ freebsd_idedev=Urządzenie IDE $1, przekrój $2, partycja $3
 freebsd_scsidev=Urządzenie SCSI $1, przekrój $2, partycja $3
 freebsd_edevpath=Inne urządzenie musi być ścieżką bezwzględną, na przykład <tt>/dev/cdrom</tt>
 freebsd_edevfile=Plik urządzenia „$1” nie istnieje
+
 cswap_file=Plik wymiany $1 nie istnieje.
 cswap_size=Utwórz i zamontuj plik wymiany o rozmiarze
+
 acl_sysinfo=Pokaż dostępne dane na dysku w Panelu?
 sysinfo_total=Całkowity
 sysinfo_dev=Identyfikator urzadzenia

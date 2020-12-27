@@ -4,6 +4,7 @@ index_none=L-ebda żoni ma ġew definiti s'issa.
 index_add=Żid żona ġdida.
 index_return=lista taż-żoni
 index_zones=Żoni Eżistenti
+
 edit_title=Żona Editja
 edit_common=Konfigurazzjoni taż-żona ġenerali
 edit_name=Isem taż-żona
@@ -57,20 +58,26 @@ edit_attrnone=L-ebda attribut ġeneriku ma ġie definit s'issa.
 edit_attradd=Żid attribut ġeneriku ġdid.
 edit_webmin=Iftaħ il-Webmin
 edit_brand=Marka
+
 ui_cancel=Ikkanċella
+
 save_err=Naqas milli jsalva ż-żona
 save_epool=Ġabra nieqsa jew invalida
 save_ewebmin=Webmin mhux qed jaħdem f’din iż-żona
+
 reboot_title=Reboot Zone
 reboot_rusure=Int żgur li trid terġa 'tibda ż-żona $1 ? Il-proċessi kollha li jaħdmu fih ser jerġgħu jibdew.
 reboot_err=Naqset milli tirristartja ż-żona
 reboot_doing=Issa tirristartja ż-żona ..
+
 reboot_failed=.. Falla :
 reboot_ok=.. kompluta.
+
 halt_title=Żona ta 'għeluq
 halt_rusure=Int żgur li trid tingħalaq iż-żona $1 ? Il-proċessi kollha li jaħdmu fih ser jitwaqqfu.
 halt_err=Ma rnexxielux jagħlaq iż-żona
 halt_doing=Issa qed tagħlaq iż-żona ..
+
 boot_title=Żona Bootup
 boot_err=Ma rnexxiex fiż-żona tal-bootup
 boot_doing=Issa tibda l-bidu taż-żona ..
@@ -78,10 +85,12 @@ delete_title=Ħassar Żona
 delete_rusure=Int żgur li trid tħassar iż-żona $1 ? Il-fajls kollha fis-sistemi ta 'files privati tagħha jintilfu.
 delete_err=Ma rnexxielhiex tħassar iż-żona
 delete_doing=Issa tħassar iż-żona ..
+
 uninstall_title=Un-Installa Sistema
 uninstall_rusure=Int żgur li trid tinstalla s-softwer tas-sistema miż-żona $1 ? Il-fajls kollha fis-sistemi ta 'files privati tagħha jintilfu.
 uninstall_err=Naqset milli tinstalla s-softwer tas-sistema miż-żona
 uninstall_doing=Issa mhux qed tinstalla sistema miż-żona ..
+
 install_title=Installa Sistema
 install_doing=Issa qed tinstalla s-sistema fiż-żona ..
 net_title1=Oħloq Interfaċċa tan-Netwerk
@@ -96,6 +105,7 @@ net_enetmask=Netmask mhux validu
 net_eaddress=Indirizz IP mhux validu
 net_egone=L-interface m'għadux jeżisti!
 net_eclash=Interfaċċa tan-netwerk bl-istess indirizz IP diġà teżisti f'din iż-żona
+
 pkg_title1=Żid il-Pakkett tad-Direttorju
 pkg_title2=Editja l-Pakkett tad-Direttorju
 pkg_header=Dettalji tad-direttorju tal-pakkett ereditarju
@@ -107,6 +117,7 @@ pkg_eclash=Id-direttorju tal-pakketti diġà jeżisti f'din iż-żona
 pkg_inherit=Tiret pakketti miż-żona globali
 pkg_inherit_yes=Iva (żona ta 'għeruq skarsa)
 pkg_inherit_no=Le (żona sħiħa ta 'l-għeruq)
+
 fs_title1=Oħloq Sistema tal-Files
 fs_title2=Editja Sistema ta 'Fajls
 fs_header=Dettalji addizzjonali tas-sistema tal-fajls
@@ -128,6 +139,7 @@ fs_eoptions=Għażliet ta 'mmuntar mhux validi (iridu jkunu lista separata mill-
 fs_egone=Sistema ta 'fajls m'għadhiex teżisti!
 fs_mount=Immonta wara li toħloq?
 fs_eclash=Sistema ta 'fajls li tuża l-istess direttorju diġà teżisti f'din iż-żona
+
 rctl_title1=Oħloq Kontroll tar-Riżorsi
 rctl_title2=Editja l-Kontroll tar-Riżorsi
 rctl_header=Kontroll tar-riżorsi tat-tip u l-limiti
@@ -148,6 +160,7 @@ rctl_elimit=Mhux numru
 rctl_eaction=L-ebda sinjal magħżul fir-ringiela $1 
 rctl_evalues=Ma ddaħħlu l-ebda limiti
 rctl_eclash=Kontroll għall-istess riżors diġà jeżisti f'din iż-żona
+
 attr_title1=Oħloq Attribut Ġeneriku
 attr_title2=Edit Attribut Ġeneriku
 attr_header=Dettalji dwar l-attribut taż-żona ġenerika
@@ -165,6 +178,7 @@ attr_euint=Il-valur mhuwiex numru sħiħ pożittiv
 attr_eboolean=Il-valur mhux "veru" jew "falz"
 attr_egone=Attribut m'għadux jeżisti!
 attr_eclash=Attribut bl-istess isem diġà jeżisti f'din iż-żona
+
 status_running=Ġiri
 status_installed=Detentat
 status_configured=Mhux Installat
@@ -172,13 +186,16 @@ status_incomplete=Jiġu nstallati
 status_ready=Lest
 status_down=Isfel
 status_shutting_down=Tintemm
+
 list_name=Isem taż-żona
 list_id=ID Nru.
 list_path=Direttorju taż-żona
 list_status=Status
 list_actions=Azzjonijiet
+
 zone_in=Fiż-żona $1 
 pool_none=Xejn
+
 create_title=Oħloq Żona
 create_header=Dettalji ġodda taż-żona
 create_path=Direttorju tal-fajls taż-Żoni
@@ -239,6 +256,7 @@ create_erouter=Indirizz IP tar-router default nieqes jew invalidu
 create_removingpkgs=tneħħija tad-direttorji tal-pakkett li jintiret. ..
 create_brand=Marka
 create_brandmsg=Żona tal-marka
+
 log_create_zone=Żona maħluqa $1 
 log_delete_zone=Żona mħassra $1 
 log_save_zone=Konfigurazzjoni modifikata għaż-żona $1 
@@ -262,6 +280,7 @@ log_delete_rctl=Kontroll imħassar tar-riżorsi għal $1 fiż-żona $2
 log_create_attr=Ġie maħluq attribut ġeneriku $1 fiż-żona $2 
 log_modify_attr=Attribut ġeneriku modifikat $1 fiż-żona $2 
 log_delete_attr=Attribut ġeneriku mħassar $1 fiż-żona $2 
+
 webmin_eperl=Perl mhux installat f'$1
 webmin_eroot=Id-direttorju $1 ma jeżistix jew ma fihx Webmin.
 webmin_title=Installa Webmin

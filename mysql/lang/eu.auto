@@ -45,12 +45,15 @@ index_showing=$1 ekin bat datozen datu baseak erakusten ..
 index_emsg=MySQL errore-mezu osoa hau da : $1 
 index_jump=Edo editatu datu-basea:
 index_jumpok=Open
+
 login_err=Errorea saioa hastean
 login_ecannot=Ezin duzu datu-basearen hasiera konfiguratu
 login_elogin=Administrazioa identifikatzeko saioa falta da
 login_epass=Erabiltzaile-izena edo pasahitza okerra
+
 stop_err=Ezin izan da datu basea gelditu
 start_err=Ezin izan da datu basea abiarazi
+
 dbase_title=Editatu datu basea
 dbase_header=Datu base taulak, indizeak eta ikuspegiak
 dbase_tables=Datu baseko taulak
@@ -81,6 +84,7 @@ dbase_type=Mota
 dbase_typetable=Taula ($1)
 dbase_typeindex=Index
 dbase_typeview=ikusi
+
 ddrop_err=Ezin izan da datu basea jaregin
 ddrop_title=Beheko datu-basea
 ddrop_rusure=Ziur al zaude $1 datu-basea bota nahi duzula? $3 datu-ilara dituzten 2 taulak ezabatuko dira.
@@ -89,6 +93,7 @@ ddrop_mysql=Datu-basea maisua denez, botatzeak seguruenik MySQL zerbitzaria ezin
 ddrop_ok=Beheko datu-basea
 ddrop_empty=Besterik ezabatu taula guztiak
 ddrop_empty2=Ezabatu taula guztiak
+
 ddrops_err=Ezin izan da datu basea jaitsi
 ddrops_title=Jarri datu-baseak
 ddrops_rusure=Ziur zaude $1 hautatutako datu baseak bota nahi dituzula? $3 datu-ilara dituzten 2 taulak ezabatuko dira.
@@ -97,6 +102,7 @@ ddrops_mysql=Datu-base maisua hautatuta dagoenez gero, seguruenik, zure MySQL ze
 ddrops_ok=Jarri datu-baseak
 ddrops_enone=Ez da datu baseik hautatu
 ddrops_ecannotdb=Ezin duzu $1 datu-basea bota
+
 table_title=Editatu taula
 table_title2=Sortu taula
 table_header=$1 datu-baseko $1 taula
@@ -142,16 +148,19 @@ table_nextra=Ezaugarri gehigarria
 table_eautokey=Auto-hazkundearen eremua gako nagusia izan behar du
 table_eauto=Eremu bakarra automatikoki handitu daiteke
 table_delete=Ezabatu hautatutako eremuak
+
 tdrop_err=Ezin izan da taula jaitsi
 tdrop_title=Jareginen taula
 tdrop_rusure=Ziur al zaude $1 taula $2 datu-basean utzi nahi duzula? $3 datu-ilara ezabatu egingo dira.
 tdrop_ok=Jareginen taula
+
 tdrops_enone=Ez da mahairik aukeratu hautatuta
 tdrops_err=Ezin izan da mahaia jaitsi
 tdrops_ok=Drop
 tdrops_title=Hautatu hautua
 tdrops_rusure=Ziur $1 hautatutako $1 taula (k) jaitsi nahi duzula? $3 datu-ilara ezabatu egingo dira.
 tdrops_rusure2=Ziur $1 hautatutako $1 taula (k) jaitsi nahi duzula?
+
 field_title1=Gehitu eremua
 field_title2=Aldatu eremua
 field_in=$1 datu-baseko $1 taulan
@@ -185,6 +194,7 @@ field_esize='$1' ez da baliozko eremuaren tamaina
 field_eenum=Ez da sartu zenbakirik
 field_efield='$1' ez da baliozko eremu izen bat
 field_ekey=Baliogabetzen dituzten eremuak ezin dira gako primarioaren parte izan
+
 view_title=Taularen datuak
 view_pos=$1 etik $2 ko errenkadak 3
 view_none=Taula honek ez dauka daturik.
@@ -219,6 +229,7 @@ view_keep=Utzi aldatu gabe
 view_set=Ezarri fitxategiaren edukira.
 view_adv=Bilaketa aurreratua
 view_sqlrun=SQL kontsultak sortutako emaitzak : $1 
+
 users_title=Erabiltzaileentzako baimenak
 users_user=Erabiltzaileak
 users_host=ostalariak
@@ -245,6 +256,7 @@ users_ssl=Ziurtagiri
 users_dtitle=Ezabatu Erabiltzaileen baimenak
 users_drusure=Ziur $1 hautatutako MySQL erabiltzailearen baimenak ezabatu nahi dituzula?
 users_dok=Erabiltzaileak ezabatu
+
 user_title1=Erabiltzailea Sortu
 user_title2=Erabiltzailea editatu
 user_header=MySQL erabiltzailearen xehetasunak
@@ -308,6 +320,7 @@ user_emax_user_connections=Gehienezko aldi baterako saioak zenbaki bat izan beha
 user_emax_connections=Orduko gehienezko konexioek zenbaki bat izan behar dute
 user_emax_updates=Gehienez orduko eguneratzeak kopurua izan behar du
 user_emax_questions=Orduko gehienezko kontsultak kopurua izan behar da
+
 dbs_title=Datu-basearen baimenak
 dbs_db=Datu baseak
 dbs_user=Erabiltzaileak
@@ -326,6 +339,7 @@ dbs_enone=Ez da datu baseik hautatu
 dbs_dtitle=Ezabatu datu-basearen baimenak
 dbs_drusure=Ziur $1 hautatutako MySQL datu-basearen baimenak ezabatu nahi dituzula?
 dbs_dok=Ezabatu baimenak
+
 db_title1=Sortu datu-basearen baimenak
 db_title2=Editatu datu-basearen baimenak
 db_header=Datu-basearen baimen aukerak
@@ -340,6 +354,7 @@ db_err=Ezin izan da datu baseko baimenak gorde
 db_euser=Erabiltzaile-izena falta edo baliogabea
 db_ehost=Ostalari-izen falta edo baliogabea
 db_edb=Datu-basearen izen falta edo baliogabea
+
 hosts_title=Ostalari baimenak
 hosts_db=Datu baseak
 hosts_host=ostalariak
@@ -355,6 +370,7 @@ hosts_dtitle=Ezabatu ostalariaren baimenak
 hosts_drusure=Ziur $1 hautatutako MySQL ostalariaren baimenak ezabatu nahi duzula?
 hosts_dok=Ezabatu baimenak
 hosts_return=ostalariaren baimenak
+
 host_title1=Sortu ostalariaren baimenak
 host_title2=Editatu ostalariaren baimenak
 host_header=Ostalari baimeneko aukerak
@@ -364,6 +380,7 @@ host_sel=Hautatuak
 host_otherdb=Bat datorren eredua
 host_host=ostalariak
 host_perms=Baimenak
+
 newdb_title=Datu-basea sortu
 newdb_header=Datu base datu berriak
 newdb_db=Datu-basearen izena
@@ -377,6 +394,7 @@ newdb_err=Ezin izan da datu basea sortu
 newdb_edb=Datu-basearen izen falta edo baliogabea
 newdb_ecannot=Ezin duzu datu baserik sortu
 newdb_ecannot2=Ezin duzu datu base gehiago sortu
+
 exec_title=SQL exekutatu
 exec_header=Sartu SQL komandoa datu basean exekutatzeko $1 ..
 exec_old=Edo hautatu aurreko SQL komandoa :
@@ -413,6 +431,7 @@ exec_iheader=Testu fitxategiak inportatzeko aukerak
 exec_created=$1 taulak sortu dira.
 exec_inserted=$1 erregistro txertatu dira.
 exec_cs=Karaktereak datuetarako
+
 tprivs_title=Taula baimenak
 tprivs_table=Table
 tprivs_db=Database
@@ -431,6 +450,7 @@ tprivs_enone=Ez da taula aukeratu
 tprivs_dtitle=Ezabatu Taula Baimenak
 tprivs_drusure=Ziur zaude $1 hautatutako MySQL taula baimenak ezabatu nahi duzula?
 tprivs_dok=Ezabatu baimenak
+
 tpriv_title1=Sortu Taula Baimenak
 tpriv_title2=Editatu Taula Baimenak
 tpriv_header=Taula baimen aukerak
@@ -447,6 +467,7 @@ tpriv_etable=Ez da taula aukeratu
 tpriv_euser=Erabiltzaile-izena falta edo baliogabea
 tpriv_ehost=Ostalari falta edo baliogabea
 tpriv_edb=Datu-basearen izen falta edo baliogabea
+
 cprivs_title=Eremuko baimenak
 cprivs_field=eremua
 cprivs_table=Table
@@ -466,6 +487,7 @@ cprivs_enone=Ez da eremu hautatu
 cprivs_dtitle=Ezabatu zutabearen baimenak
 cprivs_drusure=Ziur $1 hautatutako MySQL zutabe baimenak ezabatu nahi duzula?
 cprivs_dok=Ezabatu baimenak
+
 cpriv_title1=Sortu Eremu Baimenak
 cpriv_title2=Editatu eremuen baimenak
 cpriv_header=Eremuko baimen-aukerak
@@ -482,11 +504,13 @@ cpriv_etable=Ez da taula aukeratu
 cpriv_euser=Erabiltzaile-izena falta edo baliogabea
 cpriv_ehost=Ostalari falta edo baliogabea
 cpriv_edb=Datu-basearen izen falta edo baliogabea
+
 esql=SQL $1 ek huts egin du : $2 
 eparse=Webminak ezin du $1 komandoaren irteera datubaseko datuen izaeragatik analizatu. $2 eta $3 Perl moduluak instalatu beharko dituzu arazo hau konpontzeko.
 edenied=Ez duzu MySQL datu-base honetarako sarbiderik
 perms_ecannot=Ezin duzu baimenik editatu
 perms_edb=Zure datu baseetarako baimenak editatzeko baimena besterik ez duzu
+
 acl_dbs=Erabiltzaile honek kudeatu ditzakeen datu-baseak
 acl_dall=Datu base guztiak
 acl_dsel=Hautatutako ..
@@ -507,6 +531,7 @@ acl_bnone=Ezabatu segurtasun kopiak
 acl_indexes=Indizeak ikusi eta kudeatu ditzakezu?
 acl_views=Ikuspegiak ikusi eta kudeatu ditzakezu?
 acl_files=SQL exekutatu daiteke fitxategi lokaletatik?
+
 log_start=MySQL zerbitzaria hasi da
 log_stop=MySQL zerbitzaria gelditu da
 log_cnf=MySQL zerbitzariaren konfigurazioa aldatu da
@@ -571,6 +596,7 @@ log_importfile=$1 fitxategitik inportatutako datuak
 log_set=$1 aldatu dira MySQL aldagaiak
 log_root=Administrazioko pasahitza aldatu da
 log_manual=Eskuz editatutako konfigurazio fitxategia
+
 backup_title=Backup datu-basea
 backup_title2=Babeskopia datu base guztiak
 backup_edump=MySQL backup programa 1 ez da zure sisteman aurkitu. Agian zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
@@ -649,15 +675,18 @@ backup_bodyspace=Fitxategi sistemaren tamaina: $1 Toki librea : $2
 backup_bodyall=guztiak
 backup_edownloadall=Datu-basearen babes bakarra deskargatu daiteke
 backup_edownloadsave=Deskargatzeko modua ezin da programatutako segurtasun kopiarako erabili
+
 import_title=Inportatu datuak
 import_uploadout=Kargatutako fitxategitik datuak inportatzen ..
 import_fileout=$1 fitxategitik datuak inportatzen.
 import_eupload=Igotako inportazio fitxategia falta da
 import_efile=Inportazio fitxategiaren izena falta da
+
 adv_title=Bilaketa aurreratua
 adv_and=Aurkitu irizpide guztiak betetzen dituzten erregistroak ..
 adv_or=Aurkitu edozein irizpide betetzen dituzten erregistroak ..
 adv_ok=Bilatu orain
+
 csv_title=Export CSV fitxategia
 csv_header=CSV esportatzeko aukerak
 csv_dest=Esportazioen helmuga
@@ -678,6 +707,7 @@ csv_done=$1 CSV esportazioa amaitu da. Lortutako fitxategiaren tamaina $2 da.
 csv_headers=Zutabe izenak sartu CSV-n?
 csv_cols=Zutabeak CSV-n sartzeko
 csv_ecols=Ez da zutabe aukeratu
+
 cnf_title=MySQL zerbitzariaren konfigurazioa
 cnf_efile=MySQL $1 konfigurazio fitxategia ez da zure sisteman aurkitu. Baliteke <a href='$2'>moduluaren konfigurazioa</a> egokitu behar izatea bide egokia erabiltzeko.
 cnf_header=MySQL zerbitzariaren aukerak
@@ -719,11 +749,13 @@ cnf_restart=Gorde eta berrabiarazi MySQL
 cnf_fpt=InnoDB taula bakoitzeko fitxategia bereiztea?
 cnf_ilt=InnoDB blokeatze-muga (segundo batzuetan)
 cnf_eilt=InnoDB blokeatze-muga denbora oso bat izan behar du
+
 manual_title=Editatu Konfigurazio fitxategiak
 manual_file=Editatu konfigurazio fitxategia:
 manual_ok=Ados
 manual_efile=Konfigurazio fitxategi baliogabea!
 manual_err=Ezin izan da konfigurazio fitxategia gordetzean
+
 index_title1=Sortu Aurkibidea
 index_header1=Indizearen aukerak
 index_name=Indizearen izena
@@ -739,12 +771,15 @@ index_ecols=Ez da eremu hautatu
 index_title2=Editatu aurkibidea
 index_header=$1 aurkibidea $2 datu-basean
 index_ecannot=Ezin duzu indizeak kudeatu
+
 syslog_desc=MySQL errore mezuak
 syslog_desc2=MySQL errore mezua
 syslog_logdesc=MySQL kontsultak
+
 fdrop_err=Ezin izan dira eremuak ezabatu
 fdrop_enone=Ez da hautatu
 fdrop_eall=Ezin dituzu eremu guztiak taula batetik ezabatu!
+
 view_title1=Sortu Ikusi
 view_title2=Editatu Ikusi
 view_header1=Ikusi xehetasunak
@@ -770,6 +805,7 @@ view_cascaded=Azpiko ikuspegiak
 view_local=Ikuspegi hau bakarrik
 view_nocheck=Bat ere ez
 view_ecannot=Ezin duzu bista kudeatu
+
 procs_title=Datu-base konexioak
 procs_id=NAN
 procs_user=Erabiltzaile izena
@@ -781,9 +817,11 @@ procs_query=Kontsulta exekutatzen
 procs_kill=Hiltzen hautatutako konexioak
 procs_ecannot=Ezin duzu datu-basearen konexioak ikusi
 procs_none=Momentuz ez dago datu baseko bezero konexiorik.
+
 kill_err=Huts egin du datu-basearen konexioak hiltzean
 kill_ecannot=Ezin duzu datu-basearen konexioak kudeatu
 kill_enone=Ez da hautatu
+
 vars_title=MySQL sistemaren aldagaiak
 vars_desc=Abisua - Orrialde honetan ezarritako aldagaiak lehenetsitako balioetara berrezarriko dira MySQL berrabiarazten denean. Ezarpen iraunkorrak <a href='$1'>MySQL zerbitzariaren konfigurazioa</a> orrian egin behar dira.
 vars_ecannot=Ezin duzu sistemaren aldagaiak editatu
@@ -794,6 +832,7 @@ vars_search=Erakutsi bat datozen aldagaiak:
 vars_ok=Search
 vars_none2=Ez da sistemako aldagairik bat etorri zure bilaketarekin.
 vars_none=Ez da sistemaren aldagairik aurkitu!
+
 compat_ansi=ANSI
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQL 4.0
@@ -805,7 +844,9 @@ compat_maxdb=MaxDB
 compat_no_key_options=Aukera gakoak
 compat_no_table_options=Taularen aukerak
 compat_no_field_options=Eremuko aukerak
+
 config_echarset=Falta edo itxura baliogabea duen karaktere-multzoa
+
 root_title=Aldatu Administrazioko Pasahitza
 root_header=Administrazioko pasahitz berria
 root_user=Administrazioaren hasiera
@@ -818,6 +859,7 @@ root_epass1=Ez da pasahitz berririk sartu
 root_epass2=Pasahitzak ez datoz bat
 root_none=Pasahitzik ez!
 root_auto=Automatikoa (normalean <tt>root</tt>)
+
 mysqlpass_err=MySQL modu segurua
 mysqlpass_esafecmd=Ez da aurkitu $1 komandoa MySQL autentifikazioa desgaituta hasteko
 mysqlpass_eshutdown=Itzalpenak huts egin du : $1 

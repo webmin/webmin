@@ -19,6 +19,7 @@ index_amode1=Alleen geselecteerde gebruikers ..
 index_amode2=Alles behalve de geselecteerde gebruikers ..
 index_delete=Annuleer Geselecteerde Opdrachten
 index_noat=De $1 opdracht is niet gevonden op uw systeem - misschien is het niet geinstalleerd of niet beschikbaar voor uw besturing systeem.
+
 edit_title=Geplande opdracht
 edit_cmd=Volledig uit te voeren script
 edit_shortcmd=Opdracht om uit te voeren
@@ -28,6 +29,7 @@ edit_run=Nu uitvoeren
 edit_ejob=Geplande opdracht bestaat niet meer!
 edit_ecannot=U bent niet bevoegd om deze geplande opdracht te bewerken
 edit_showfull=Laat volledig script zien.
+
 create_err=Fout bij het aanmaken van geplande opdracht
 create_euser=Ontbrekende of ongeldige gebruikersnaam
 create_edate=Ontbrekende of ongeldige datum of tijd
@@ -36,22 +38,28 @@ create_efuture=Datum en tijd is in het verleden
 create_edir=Ontbrekende of ongeldige directory
 create_ecannot=U bent niet bevoegd om opdrachten te plannen voor deze gebruiker
 create_eallow=De opgegeven gebruiker is niet bevoegd op geplande opdrachten uit te voeren
+
 delete_err=Fout bij het annuleren van de opdracht
 delete_egone=Opdracht reeds voltooid of verwijderd
+
 acl_users=Mag geplande opdrachten bewerken voor
 acl_all=Alle gebruikers
 acl_this=Huidige Webmin gebruiker
 acl_only=Alleen de gebruikers
 acl_except=Alle gebruikers behalve
 acl_allow=Mag toegestane At gebruikers bewerken?
+
 run_title=Uitvoeren Opdracht
 run_output=Resultaat van geplande opdracht ..
 run_none=Geen uitvoer gegenereerd
+
 allow_err=Fout bij het opslaan van toegestane gebruikers
 allow_ecannot=U bent niet bevoegd om toegestane gebruikers te bewerken
 allow_eusers=Geen gebruikers ingevuld
+
 deletes_err=Mislukt om opdracht te annuleren
 deletes_enone=Niets geselecteerd
+
 log_allow=Gewijzigde toegestane gebruikers
 log_create_job=De geplande opdracht voor $1 is aangemaakt
 log_delete_job=De geplande opdracht voor $1 is geannuleerd

@@ -10,6 +10,7 @@ index_apply=Configuratie Toevoegen
 index_applydesc=Klik op deze knop om de huidige PPTP server opties toe te voegen door het PPTP server proces te stoppen en te starten. Veranderingen aan de PPP opties en PPP accounts zullen altijd worden gebruikt voor nieuwe verbindingen
 index_return=module index
 index_epppd=Het PPP server programma $1 is niet geinstalleerd op uw systeem. Dit terwijl PPTP hiervan afhankelijk is,
+
 conf_title=PPTP Server Opties
 conf_ecannot=U bent niet bevoegd de PPTP server opties te bewerken
 conf_header=PPTP server configuratie
@@ -35,6 +36,7 @@ conf_elocalip='$1' is geen geldig lokaal IP adres of reeks
 conf_eremoteip='$1' is geen geldig remote IP adres of reeks
 conf_efrom=Ontbrekende of ongeldige IPX netwerk "van" adres
 conf_eto=Ontbrekende of ongeldig IPX netwerk "naar" adres
+
 options_title=PPP Opties
 options_ecannot=U bent niet bevoegd om PPP opties te bewerken
 options_desc0=De PPP opties hieronder van $1 gelden voor ALLE inkomende verbindingen die ontvangen worden door uw systeem,
@@ -67,6 +69,7 @@ options_mschap=MS-CHAP authenticatie
 options_mschap-v2=MS-CHAP  versie 2 authenticatie
 options_chapms=MS-CHAP authenticatie
 options_chapms-v2=MS-CHAP versie 2 authenticatie
+
 secrets_title=PPP Accounts
 secrets_ecannot=U bent niet bevoegd om PPP accounts te bewerken
 secrets_return=index
@@ -80,6 +83,7 @@ secrets_sany=IEDERE
 secrets_create=Maak een nieuw PPP account.
 secrets_desc=De PPP accounts in de lijst op deze pagina zijn opgehaald van de file $1 welke is gebruikt voor $3 authenticatie. Alleen die voor uw server $2 worden getoond, niet de accounts voor het maken van uitgaande verbindingen.
 secrets_delete=Verwijder Geselecteerde PPP Accounts
+
 edit_secret_etitle=Bewerk PPP Account
 edit_secret_ctitle=Maak een PPP Account
 edit_secret_acc=PPP Account
@@ -99,15 +103,20 @@ edit_secret_alist=Lijst maken toestaan ..
 edit_secret_save=Opslaan
 edit_secret_del=Verwijder
 edit_secret_return=account lijst
+
 save_secret_esave=Mislukt om account op te slaan
 save_secret_enoip='$1' is geen geldig adres
+
 stop_err=Mislukt de PPTP server te stoppen
 stop_egone=Niet langer aan het werk
 stop_ecannot=U bent niet bevoegd de PPTP server te stoppen
+
 start_err=Mislukt om de PPTP server te starten
 start_ecannot=U bent niet bevoegd de PPTP server te starten
+
 apply_err=Mislukt om de PPTP server te herstarten
 apply_ecannot=U bent niet bevoegd om de PPTP server te herstarten
+
 conns_title=Actieve verbindingen
 conns_ecannot=U bent niet bevoegd om actieve verbindingen te beheren
 conns_desc=Op deze pagina ziet u de huidige actieve PPTP verbindingen naar uw server. Om geforceerd een server af te sluiten klikt u op de interface naam.
@@ -119,9 +128,11 @@ conns_remote=Client VPN adres
 conns_none=Er lijken op dit moment geen PPTP verbindingen actief te zijn.
 conns_unknown=Onbekend
 conns_user=Gebruikersnaam
+
 disc_err=Mislukt om te verbreken
 disc_egone=Verbindingen is niet langer actief
 disc_ekill=Proces werkt niet meer
+
 log_secret_create=Gemaakte PPP account $1
 log_secret_modify=Gemodificeerde PPP account $1
 log_secret_delete=Verwijderde PPP account $1
@@ -132,6 +143,7 @@ log_disc=Verbroken client $1
 log_start=Gestarte PPTP server
 log_stop=Gestopte PPTP server
 log_apply=PPTP server configuratie toegevoegd
+
 acl_conf=Mag configuratie bewerken?
 acl_options=Mag opties bewerken?
 acl_secrets=Mag PPTP accounts beheren?

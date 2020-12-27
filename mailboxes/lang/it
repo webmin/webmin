@@ -19,6 +19,7 @@ index_eperl=Il modulo Perl $1 necessario per la modalità di autenticazione SMTP
 index_file=Leggi la posta nel file:
 index_nousers=Nessun utente trovato!
 index_nousersmail=Nessun utente con messaggi trovato.
+
 mail_title=Posta dell'utente
 mail_from=Da
 mail_date=Data
@@ -75,6 +76,7 @@ mail_fromfilter=Creare filtro mittente
 mail_tofilter=Creare filtro destinatario
 mail_subfilter=Creare filtro soggetto
 mail_unknown=Sconosciuto
+
 mail_sign=Firma con chiave:
 mail_nosign=&lt;Non firmare&gt;
 mail_crypt=Cripta il messaggio per
@@ -108,6 +110,7 @@ mail_esystem=Si è verificato un errore durante la comunicazione con il sistema 
 mail_selread=Seleziona i messaggi letti
 mail_selunread=Seleziona i messaggi non letti
 mail_selspecial=Seleziona gli speciali.
+
 view_title=Leggi messaggio
 view_desc=Messaggio $1 in  $2
 view_desc2=Messaggio $1 per l'utente $2
@@ -148,6 +151,7 @@ view_sub=Messaggio allegato
 view_sub2=Messaggio allegato da <i>$1</i>
 view_egone=Questo messaggio non esiste più
 view_eugone=Questo utente non esiste
+
 view_gnupg=Verifica la firma GnuPG
 view_gnupg_0=La firma di $1 è valida.
 view_gnupg_1=La firma di $1 è valida, ma non è possibile instaurare una connessione affidabile.
@@ -184,7 +188,9 @@ view_images=Mostra le immagini
 view_raw=Visualizza il messaggio originale
 view_aall=Salva tutti gli allegati in formato ZIP
 view_aslideshow=Mostra tutte le immagini.
+
 compose_title=Scrivi email
+
 reply_title=Rispondi al messaggio
 forward_title=Inoltra messaggio
 enew_title=Modifica Email
@@ -214,9 +220,11 @@ reply_addattach=Aggiungere campo allegato.
 reply_addssattach=Aggiungere campo allegato server-side.
 reply_html0=Componi testo
 reply_html1=Componi HTML
+
 reply_spell=Controllare l'ortografia?
 reply_draft=Salva come bozza
 reply_save=Salva e modifica
+
 send_err=Invio del messaggio non riuscito
 send_eto=Indirizzo del destinatario mancante
 send_efrom=Manca l'indirizzo del mittente
@@ -233,6 +241,7 @@ send_eperms2=Non hai i permessi per inviare file $1
 send_epath=L'eseguibile di Sendmail $1 non esiste.
 send_efile=Lettura dell'allegato $1 non riuscita: $2
 send_done=... fatto.
+
 send_epass=Non puoi apporre una firma al messaggio perchè la tua password non è stata ancora impostata nel modulo GnuPG.
 send_esign=Firma del messaggio non riuscita: $1
 send_ekey=Non è stata trovata alcuna chiave per l'indirizzo $1
@@ -244,6 +253,7 @@ send_espell=I seguenti errori grammaticali sono stati trovati nel messaggio:
 send_draft=Il messaggio a  $1 è stato salvato nella cartella bozze
 send_drafting=Sto salvando il messaggio a $1 nella cartella delle bozze...
 send_eattachsize=Gli allegati superano la dimensione massima permessa di $1 bytes
+
 delete_title=Cancella messaggio
 delete_rusure=Sei sicuro di voler cancellare i $1 messaggi selezionati da $2? Questa operazione potrebbe richiedere molto tempo per i messaggi più grossi. Finché l'operazione di cancellazione non sarà completata non sarà possibile eseguire altre operazioni.
 delete_rusure2=Sei sicuro di voler cancellare questo messaggio da $1? Questa operazione potrebbe richiedere molto tempo per i messaggi più grossi. Finché l'operazione di cancellazione non sarà completata non sarà possibile eseguire altre operazioni.
@@ -266,6 +276,7 @@ delete_nobutton=Nessun pulsante cliccato
 delete_ereport=Segnalazione del messaggio come spam non riuscita: $1
 delete_errc=Copia dei messaggi non riuscita
 delete_errm=Spostamento dei messaggi non riuscito
+
 confirm_title=Conferma eliminazione
 confirm_warn=Sei sicuro di voler cancellare i $1 messaggi selezionati da questa cartella?
 confirm_warnf=Sei sicuro di voler cancellare i $1 messaggi selezionati dalla cartella <b>$2</b>?
@@ -275,6 +286,7 @@ confirm_warn4=Finché l'operazione di cancellazione non sarà completata non sar
 confirm_ok=Cancella adesso
 confirm_warnall=Sei sicuro di voler eliminare tutti i messaggi in questa cartella?
 confirm_warnallf=Sei sicuro di voler cancellare tutti i messaggi nella cartella <b>$1</b>?
+
 search_title=Risultati della ricerca
 search_ecannot=Non hai i permessi per cercare tra i messaggi di questo utente
 search_ematch=Devi inserire del testo per il confronto.
@@ -302,16 +314,19 @@ search_nolatest=Tutti nella cartella
 search_latestnum=Solo i più recenti
 search_elatest=Numero di messaggi da cercare mancante o non valido
 search_withstatus=, con stato $1
+
 folder_inbox=Posta in arrivo
 folder_sent=Posta inviata
 folder_drafts=Bozze
 folder_trash=Cestino
+
 detach_err=Distacco del file non riuscito
 detach_edir=Nessun file o directory da salvare inserito
 detach_eopen=Apertura di $1 non riuscita: $2
 detach_ewrite=Scrittura su $1 non riuscita: $2
 detach_title=Stacca il file
 detach_ok=E' stato scritto un allegato sul file lato server $1 ($2).
+
 sform_title=Ricerca avanzata
 sform_header=Opzioni di ricerca avanzata dei messaggi
 sform_andmode=Criteri modalità
@@ -336,6 +351,7 @@ sform_headers=tutte le intestazioni
 sform_allmsg=intero messaggio
 sform_size=Dimensione del messaggio
 sform_return=Form di ricerca avanzata
+
 find_enone=Non è stato trovato alcun utente che corrisponde ai criteri di ricerca
 find_title=Risultati della ricerca
 find_results=Ricerca utenti corrispondenti a $1...
@@ -348,6 +364,7 @@ find_incount=Messaggi
 find_sentcount=Inviati
 find_fcount=Cartelle
 find_in=$1 in $2
+
 acl_none=Nessuno
 acl_same=Utente con lo stesso nome
 acl_all=Tutti
@@ -373,12 +390,15 @@ acl_usersu=Con l'UID nell'intervallo
 acl_sec=Includere i gruppi secondari?
 acl_dir=Può leggere mail nella directory
 acl_dirauto=Decidi automaticamente  (ovunque se tutti gli  utenti sono visibili, al contrario da nessuna parte)
+
 log_delmail=Sono stati cancellati $1 messaggi da $2
 log_movemail=Sono stati spostati $1 messaggi da $2 a $3
 log_copymail=Sono stati copiati $1 messaggi da $2 a $3
 log_send=Messaggio inviato a $1
 log_read=Leggi la posta di $1
+
 emodified=Questa cartella è stata modificata dall'ultima visita! Ritorna all'<a href='$1'>elenco dei messaggi</a> per riprovare.
+
 razor_title=Segnala come spam
 razor_title2=Segnalazione del messaggio come valido in corso...
 razor_report=Sto segnalando questo messaggio a Razor o ad altri archivi per il blocco dello spam di SpamAssassin ...
@@ -388,14 +408,18 @@ razor_done=... fatto
 razor_err=... non riuscito! Leggi i messaggi di errore in alto per individuare la ragione.
 razor_moved=... fatto, e i messaggi sono stati spostati nella cartella $1.
 razor_deleted=... fatto, e i messaggi sono stati cancellati.
+
 ham_title=Segnalazione di messaggio valido
 ham_report=Segnalazione di questo messaggio come non spam a Razor o ad altri archivi di SpamAssassin in corso...
+
 black_title=Mittente respinto
 black_done=L'indirizzo email $1 è stato aggiunto alla lista degli indirizzi negati di SpamAssassin.
 black_already=L'indirizzo email $1 è già sulla lista degli indirizzi negati di SpamAssassin.
+
 white_title=Mittente consentito
 white_done=L'indirizzo email $1 è stato aggiunto alla lista degli indirizzi consentiti da SpamAssassin.
 white_already=L'indirizzo email $1 è già sulla lista degli indirizzi consentiti da SpamAssassin.
+
 ldap_emod=Il modulo Perl $1 necessario per connettersi a LDAP non è stato trovato
 ldap_econn=Connessione al server LDAP $1 sulla porta $2 non riuscita
 ldap_elogin=Binding del server LDAP $1 come $2 non riuscito: $3
@@ -403,9 +427,11 @@ ldap_ehost=Nessun server LDAP impostato nella configurazione del modulo
 ldap_eport=Nessuna porta valido del server LDAP impostata nella configurazione del modulo
 ldap_euser=Nessuna impostazione di connessione al server LDAP impostata nella configurazione del modulo
 ldap_ebase=Nessun Base DN per LDAP impostato nella configurazione del modulo
+
 delall_title=Cancella tutti i messaggi
 delall_rusure=Sei sicuro di voler cancellare tutti i messaggi inviati da $1? $2 messaggi per un totale di $3 saranno cancellati in maniera definitiva.
 delall_ok=Cancella adesso
+
 slide_title=Immagini allegate
 slide_prev=Precedente
 slide_next=Successivo

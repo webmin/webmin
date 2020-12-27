@@ -5,6 +5,7 @@ index_user=Skift adgangskode til bruger:
 index_euseradmin=Dette modul kan ikke bruges, fordi modulet Brugere og grupper ikke er installeret eller ikke understøttes på dit system.
 index_toomany=Der er for mange brugere til at vise på dit system. Indtast navnet på den bruger, hvis adgangskode du vil ændre nedenfor.
 index_none=Du har ikke adgang til nogen brugere til at ændre deres adgangskoder.
+
 passwd_title=Skift kodeord
 passwd_header=Ændring af Unix brugeradgangskode
 passwd_for=Ændring af adgangskode til
@@ -23,7 +24,9 @@ passwd_erepeat=Nye adgangskoder er ikke de samme
 passwd_ecmd=$1 mislykkedes : $2 
 passwd_ok=Adgangskoden til bruger $1 er blevet ændret. Hvis dette er din nuværende Webmin-bruger, kan du blive tvunget til at logge ind igen.
 passwd_ok2=Adgangskoden til bruger $1 er blevet ændret.
+
 log_passwd=Ændret adgangskode til bruger $1 
+
 acl_repeat=Skal du indtaste en ny adgangskode igen?
 acl_self=Tillad du altid at ændre din egen adgangskode?
 acl_old=Skal du indtaste det gamle kodeord?

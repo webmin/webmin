@@ -4,6 +4,7 @@ index_return=listy użytkowników
 index_user=Zmiana hasła użytkownika:
 index_euseradmin=Nie można korzystać z tego modułu, gdyż nie zainstalowano w systemie modułu Użytkownicy i grupy.
 index_toomany=W systemie jest zbyt wielu użytkowników, aby ich wszystkich tu pokazać. Podaj poniżej nazwę użytkownika, którego hasło chcesz zmienić.
+
 passwd_title=Zmień hasło
 passwd_header=Zmiana hasła uniksowego
 passwd_for=Zmiana hasła dla
@@ -18,7 +19,9 @@ passwd_euser=Taki użytkownik nie istnieje
 passwd_eold=Nieprawidłowe poprzednie hasło
 passwd_erepeat=Nowe hasła nie są identyczne
 passwd_ok=Hasło użytkownika $1 zmieniono pomyślnie. Jeśli jest to użytkownik Webmina jako który pracujesz, możesz być zmuszony do ponownego zalogowania się.
+
 log_passwd=Zmieniono hasło użytkownika $1
+
 acl_repeat=Musi podawać hasło dwukrotnie?
 acl_old=Musi podawać poprzednie hasło?
 acl_old_this=Tylko dla użytkowników

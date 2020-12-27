@@ -56,6 +56,7 @@ index_reposdisable=Desactiva els Repositoris
 index_reposenable=Activa els Repositoris
 index_reposdelete=Suprimeix els Repositoris
 index_repoheader=Opcions del nou repositori de paquets
+
 update_title=Actualització de Paquets
 update_title2=Instal·lació de Paquets
 update_pkg=S'està actualitzant $1...
@@ -92,9 +93,11 @@ update_none=Cap
 update_ops=S'està construint la llista completa de paquets...
 update_rebootdesc=Un dels paquets instal·lats necessita reeengegar el sistema per a aplicar-se completament.
 update_reboot=Reengega Ara
+
 sched_title=Actualització Periòdica
 sched_yes=La comprovació periòdica d'actualitzacions està activa.
 sched_no=La comprovació periòdica d'actualitzacions està inactiva.
+
 log_update=S'han instal·lat $1 paquets actualitzats
 log_sched=S'han activat les actualitzacions periòdiques
 log_unsched=S'han desactivat les actualitzacions periòdiques
@@ -106,11 +109,13 @@ log_enable_repo=S'ha activat el repositori de paquets $1
 log_disable_repo=S'ha desactivat el repositori de paquets $1
 log_delete_repo=S'ha suprimit el repositori de paquets $1
 log_create_repo=S'ha creat el repositori de paquets $1
+
 refresh_title=Refresc de Paquets
 refresh_clearing=S'estan buidant els caus del paquet...
 refresh_done=...fet
 refresh_available=S'estan reobtenint els paquets disponibles...
 refresh_done3=...s'han trobat $1 possibles actualitzacions
+
 view_title=Detalls del Paquet
 view_header=Informació del paquet actualitzable
 view_name=Nom del paquet
@@ -124,12 +129,14 @@ view_changelog=Registre de canvis de la versió disponible
 view_software=Gestiona el Paquet
 view_update=Actualitza el Paquet
 view_install=Instal·la el Paquet
+
 system_yum=YUM
 system_apt=APT
 system_csw=CSW (Blastwave)
 system_webmin=Mòdul de Webmin
 system_usermin=Mòdul d'Usermin
 system_tgz=tar.gz de Webmin o Usermin
+
 repos_err_disable=No s'han pogut desactivar els repositories
 repos_err_enable=No s'han pogut activar els repositories
 repos_err_delete=No s'han pogut suprimir els repositories

@@ -33,6 +33,7 @@ index_sboot2=Oui
 index_sboot3=Non
 index_sboot4=Désactivé
 index_rdesc=Description
+
 edit_title=Éditer une action
 create_title=Créer une action
 edit_ecannot=Vous n'êtes pas autorisé à éditer une action
@@ -61,10 +62,12 @@ edit_statusnow=Montrer l'état
 edit_return=action
 edit_status=Démarré maintenant ?
 edit_unknown=Inconnu
+
 save_err=Impossible d'enregistrer l'action
 save_ecannot=Vous n'êtes pas autorisé à éditer une action de démarrage
 save_ealready=Une action appelée $1 existe déjà
 save_ewrite=Impossible d'écrire sur '$1' : $2
+
 ss_ecannot=Vous n'êtes pas autorisé à démarrer et arrêter la moindre action
 ss_start=Démarrer action
 ss_stop=Arrêter action
@@ -72,20 +75,24 @@ ss_restart=Redemarre l'action
 ss_reload=Recharger l'action
 ss_status=État de l'action
 ss_exec=Exécution '$1'...
+
 shutdown_ecannot=Vous n'êtes pas autorisé à arrêter le système
 shutdown_title=Arrêt du Système
 shutdown_rusure=Êtes-vous sûr de vouloir arrêter le système avec la commande '$1' ?
 shutdown_ok=Arrêt du système
 shutdown_exec=Arrêt du système avec la commande '$1'
+
 reboot_ecannot=Vous n'êtes pas autorisé à redémarrer le système
 reboot_title=Redémarrer
 reboot_rusure=Êtes-vous sûr de vouloir redémarrer le système avec la commande '$1' ?
 reboot_ok=Redémarrer le système
 reboot_exec=Redémarrer avec la commande '$1'
+
 acl_script=Peut éditer le script de démarrage?
 acl_actions=Peut éditer, créer et supprimer des actions?
 acl_reboot=Peut redémarrer le système?
 acl_shutdown=Peut arrêter le système?
+
 log_rename=Action $1 renommée en $2
 log_modify=Action $1 modifiée
 log_create=Action $1 créée
@@ -98,9 +105,11 @@ log_local=Script de démarrage modifié
 log_bootup=Action de démarrage modifiée pour $1
 log_massenable=Actions activées
 log_massdisable=Actions désactivées
+
 edit_hostconfig_new=Ajouter une nouvelle action
 edit_hostconfig_actionname=Nom de l'action
 edit_hostconfig_scriptname=Nom du script
+
 mass_start=Démarrage des actions
 mass_stop=Arrêt des actions
 mass_disable=Désactiver l'action $1 au moment du Boot.

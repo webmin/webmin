@@ -38,6 +38,7 @@ right_upsec=$1 paquet(s) de mise à jour sont disponible(s), dont $2 mise(s) à 
 right_recollect=Rafraîchir l'information système
 right_vvirtualmin=Version Virtualmin
 right_vvm2=Version Cloudmin
+
 acl_show=Information système à afficher
 acl_showall=Tout
 acl_showsel=Seulement sélectionné

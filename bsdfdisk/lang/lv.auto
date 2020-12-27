@@ -7,6 +7,7 @@ index_dsize=Kopējais lielums
 index_dmodel=Marka un modelis
 index_dparts=Šķēles
 index_return=disku saraksts
+
 disk_title=Rediģēt disku
 disk_egone=Diska vairs nav!
 disk_no=Šķēle
@@ -31,9 +32,11 @@ disk_return=diska informācija un šķēļu saraksts
 disk_add=Izveidojiet jaunu šķēli.
 disk_smart=Rādīt SMART statusu
 disk_smartdesc=Parādiet šī diska pašreizējo statusu, kā to ir atklājis SMART, un pārbaudiet, vai tajā nav kļūdas diskā.
+
 select_device=$1 ierīce $2 
 select_slice=$1 ierīce $2 šķēle $3 
 select_part=$1 ierīce $2 šķēle $3 nodalījums $4 
+
 slice_title=Rediģēt šķēli
 slice_egone=Atlasītā šķēle neeksistē!
 slice_ssize=Šķēles lielums
@@ -58,6 +61,7 @@ slice_return=detaļas šķēlēs un nodalījumu saraksts
 slice_err=Neizdevās modificēt šķēli
 slice_header=Sīkāka informācija
 slice_suse=Tieši izmanto
+
 dslice_title=Dzēst šķēli
 dslice_rusure=Vai tiešām vēlaties izdzēst sadaļu $1 ? Tiks izdzēsti arī visi tajā esošie nodalījumi un failu sistēmas.
 dslice_warn=Brīdinājums - šo šķēli pašlaik izmanto : $1 
@@ -65,6 +69,7 @@ dslice_confirm=Dzēst tūlīt
 dslice_deleting=Dzēš $1 šķēli.
 dslice_failed=.. dzēšana neizdevās : $1 
 dslice_done=.. darīts
+
 nslice_title=Izveidot šķēli
 nslice_header=Jauna šķēles informācija
 nslice_number=Šķēles numurs
@@ -86,6 +91,7 @@ nslice_done=.. pievienota šķēle
 nslice_parting=Izveidojiet noklusējuma nodalījumus $1 šķēlē $2.
 nslice_pfailed=.. nodalījuma izveidošana neizdevās : $1 
 nslice_pdone=.. pievienots nodalījums
+
 npart_title=Izveidot nodalījumu
 npart_header=Jauna nodalījuma informācija
 npart_letter=Sadalījuma vēstule
@@ -98,6 +104,7 @@ npart_emax=Beigu bloks nevar būt lielāks par šķēles lielumu $1 bloki
 npart_creating=Notiek nodalījuma $1 izveidošana uz $2.
 npart_failed=.. nodalījuma izveidošana neizdevās : $1 
 npart_done=.. pievienots nodalījums
+
 part_title=Rediģēt nodalījumu
 part_egone=Nodalījums vairs nepastāv!
 part_header=Dati par nodalījumu
@@ -124,6 +131,7 @@ part_newmount2=Mount nodalījums
 part_mountmsg=Piestipriniet šo ierīci jaunā sistēmas direktorijā, lai to varētu izmantot failu glabāšanai. Ierīcē jau jābūt izveidotai failu sistēmai.
 part_mountmsg2=Uzstādiet šo ierīci kā virtuālo atmiņu savā sistēmā, lai palielinātu pieejamās atmiņas daudzumu.
 part_cannotedit=Šo nodalījumu nevar modificēt, jo tas pašlaik tiek izmantots.
+
 dpart_title=Dzēst nodalījumu
 dpart_rusure=Vai tiešām vēlaties izdzēst nodalījumu $1 ? Tiks izdzēstas arī visas tajā esošās failu sistēmas.
 dpart_warn=Brīdinājums - šo nodalījumu pašlaik izmanto $1 
@@ -131,6 +139,7 @@ dpart_confirm=Dzēst tūlīt
 dpart_deleting=Notiek nodalījuma $1 dzēšana.
 dpart_failed=.. dzēšana neizdevās : $1 
 dpart_done=.. darīts
+
 newfs_title=Izveidot failu sistēmu
 newfs_header=Informācija par jaunu failu sistēmu
 newfs_free=Vietas rezervēšanai saknei
@@ -145,11 +154,13 @@ newfs_elabel=Trūkst vai nav derīga iezīme
 newfs_creating=Failu sistēmas izveidošana $1.
 newfs_failed=.. radīšana neizdevās!
 newfs_done=.. izveidots veiksmīgi
+
 fsck_title=Pārbaudiet failu sistēmu
 fsck_err=Neizdevās pārbaudīt failu sistēmu
 fsck_checking=Failu sistēmas pārbaude uz $1.
 fsck_failed=.. pārbaude neizdevās!
 fsck_done=.. pārbaude pabeigta bez kļūdām
+
 log_create_slice=Izveidota šķēle $1 
 log_delete_slice=Dzēsta šķēle $1 
 log_modify_slice=Modificēta šķēle $1 

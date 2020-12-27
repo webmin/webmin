@@ -2,6 +2,7 @@ index_title=NIS Client en Server
 index_return=NIS menu
 index_enis=Het lijkt erop dat uw machine geen ondersteuning voor NIS client of server heeft geinstalleerd.
 index_enis2=Alleen de client  service opties van deze module zijn bruikbaar.
+
 client_title=NIS Client
 client_header=NIS client configuratie
 client_domain=NIS domein
@@ -17,10 +18,12 @@ client_eserver='$1' is geen geldige server naam
 client_eypwhich=Mislukt om te binden aan NIS domein
 client_ehosts='$1' zit niet in de host file
 client_enis=Op uw machine lijkt geen NIS client ondersteuning geinstalleerd te zijn.
+
 switch_title=Client Services
 switch_service=Service
 switch_srcs=Data bronnen
 switch_return=client services
+
 order_= 
 order_nisplus=NIS+
 order_nis=NIS
@@ -32,6 +35,7 @@ order_hesiod=Hesiod
 order_ldap=LDAP
 order_user=Gebruiker printers
 order_xfn=XFN
+
 server_title=NIS Server
 server_header=NIS server opties
 server_boot=NIS server aanzetten?
@@ -65,6 +69,7 @@ server_solaris=Let Op - op Solaris , zijn de client en de server NIS domeinen al
 server_edir=Ongeldige bron file directory
 server_epwdir=Ongeldige wachtwoord bron file directory
 server_enis=Op uw machine lijkt er geen NIS server ondersteuning geinstalleerd te zijn.
+
 tables_title=NIS tabellen
 tables_switch=Bewerk NIS tabel :
 tables_header=$1 NIS tabel van $2
@@ -81,6 +86,7 @@ tables_search=Zoek
 tables_nomatch=Er zijn geen overeenkomende records gevonden
 tables_build=Opnieuw opbouwen NIS tabellen
 tables_buildmsg=Klik op deze knop om de NIS database opnieuw op te bouwen vanaf de tabellen data. Wanneer u zaken gewijzigd heeft moet u deze handeling uitvoeren om ze beschikbaar te maken voor alle NIS clients.
+
 desc_aliases=Sendmail aliassen
 desc_mail=Sendmail aliassen
 desc_hosts=Host adressen
@@ -116,6 +122,7 @@ desc_printers=Printers
 desc_ipnodes=IP nodes
 desc_timezone=Tijdzones
 desc_locale=Locaties
+
 hosts_title=Host Adres
 hosts_ip=IP adres
 hosts_name=Hostnaam
@@ -124,6 +131,7 @@ hosts_err=Mislukt om host op te slaan
 hosts_eip=Ontbrekend of ongeldig IP adres
 hosts_ename=Ontbrekend of ongeldige hostnaam
 hosts_aliases=Aliassen
+
 group_name=Groep naam
 group_gid=Groep ID
 group_members=Groep leden
@@ -134,6 +142,7 @@ group_none=Geen wachtwoord nodig
 group_encrypted=Vooraf versleuteld wachtwoord
 group_clear=Normaal wachtwoord
 group_err=Mislukt om groep op te slaan
+
 passwd_name=Gebruikersnaam
 passwd_uid=Gebruiker ID
 passwd_real=Echte naam
@@ -171,6 +180,7 @@ passwd_emax=Ongeldig maximum aantal dagen
 passwd_emin=Ongeldig minimum aantal dagen
 passwd_einactive=Ongeldig aantal inactieve dagen
 passwd_eexpiry=Ongeldige expiratie datum
+
 services_name=Service naam
 services_proto=Protocol
 services_port=Poort
@@ -179,6 +189,7 @@ services_header=Inetd netwerk service opties
 services_err=Mislukt om service op te slaan
 services_ename=Ontbrekende of ongeldige service naam
 services_eport=Ontbrekende of ongeldige poort
+
 protocols_name=Protocol naam
 protocols_number=Aantal
 protocols_aliases=Aliassen
@@ -187,6 +198,7 @@ protocols_header=Netwerk protocol opties
 protocols_err=Mislukt om protocol op te slaan
 protocols_ename=Ontbrekende of ongeldige naam
 protocols_enumber=Ontbrekende of ongeldige aantal
+
 netgroup_name=Netgroep naam
 netgroup_members=Leden
 netgroup_title=Netwerk Groep
@@ -201,6 +213,7 @@ netgroup_ename=Ontbrekende of ongeldig netgroep naam
 netgroup_ehost=Ontbrekende of ongeldig host in rij $1
 netgroup_euser=Ontbrekende of ongeldige gebruiker in rij $1
 netgroup_edom=Ontbrekende of ongeldig NIS domein in rij $1
+
 ethers_mac=Ethernet adres
 ethers_ip=IP adres
 ethers_title=Ethernet adres
@@ -208,6 +221,7 @@ ethers_header=Ethernet mapping opties
 ethers_err=Mislukt om ethernet adres op te slaan
 ethers_emac=Ongeldig ethernet adres
 ethers_eip=Ongeldig IP adres
+
 rpc_name=Programma naam
 rpc_number=Aantal
 rpc_aliases=Aliassen
@@ -216,6 +230,7 @@ rpc_header=RPC programma details
 rpc_err=Mislukt om RPC programma op te slaan
 rpc_ename=Ontbrekende of ongeldige programma naam
 rpc_enumber=Ontbrekende of ongeldige aantal
+
 networks_title=Netwerk Adres
 networks_ip=IP adres
 networks_name=Netwerk naam
@@ -224,6 +239,7 @@ networks_err=Mislukt om netwerk op te slaan
 networks_eip=Ontbrekende of ongeldig IP adres
 networks_ename=Ontbrekende of ongeldige naam
 networks_aliases=Aliassen
+
 netmasks_net=Netwerk adres
 netmasks_mask=Netmask
 netmasks_title=Netmask
@@ -231,6 +247,7 @@ netmasks_header=Netwerk mask details
 netmasks_err=Mislukt om netmask op te slaan
 netmasks_enet=Ontbrekende of ongeldig netwerk adres
 netmasks_emask=Ontbrekende of ongeldig netmask
+
 aliases_from=Adres
 aliases_to=Alias naar
 aliases_title=Sendmail Alias
@@ -238,6 +255,7 @@ aliases_header=Sendmail alias details
 aliases_err=Mislukt om alias op te slaan
 aliases_efrom=Ontbrekend of ongeldig adres
 aliases_eto=Ontbrekend naar adres
+
 security_title=Server Beveiliging
 security_header=NIS server beveiligings opties
 security_ok=Opslaan en Toevoegen
@@ -266,6 +284,7 @@ security_sec_des=Heeft DES nodig
 security_ehost='$1' is geen geldige hostnaam
 security_emap='$1' is geen geldige NIS tabel
 security_efield='$1' is geen geldig veld getal
+
 eswitch_title=Bewerk Service
 eswitch_egone=Service bestaat niet!
 eswitch_header=Service details

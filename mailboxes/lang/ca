@@ -19,6 +19,7 @@ index_eperl=El mòdul Perl $1 necessari per al mode d'autenticació SMTP selecci
 index_file=Llegeix el Correu del Fitxer o Directori:
 index_nousers=No s'ha trobat cap usuari!
 index_nousersmail=No s'ha trobat cap usuari amb correu.
+
 mail_title=Correu de l'Usuari
 mail_from=De
 mail_date=Data
@@ -75,6 +76,7 @@ mail_fromfilter=Crea un filtre per remitent
 mail_tofilter=Crea un filtre per destinatari
 mail_subfilter=Crea un filtre per assumpte
 mail_unknown=Desconegut/da
+
 mail_sign=Signa amb la clau
 mail_nosign=&lt;No el signis&gt;
 mail_crypt=Xifra per a
@@ -109,6 +111,7 @@ mail_selread=Selecciona els llegits.
 mail_selunread=Selecciona els no llegits.
 mail_selspecial=Selecciona els especials.
 mail_specialsync=Sincronitza els especials
+
 view_title=Lectura del Correu
 view_desc=Missatge $1 a $2
 view_desc2=Missatge $1 per a l'usuari $2
@@ -150,6 +153,7 @@ view_sub=Correu Adjunt
 view_sub2=Correu Adjunt de $1
 view_egone=Aquest missatge ja no existeix
 view_eugone=Aquest usuari no existeix
+
 view_gnupg=Verificació de la signatura GnuPG
 view_gnupg_0=La signatura de $1 és vàlida.
 view_gnupg_1=La signatura de $1 és vàlida, però no s'ha pogut establir la cadena de fiabilitat.
@@ -186,7 +190,9 @@ view_images=Mostra les imatges
 view_raw=Mostra el missatge tal com és
 view_aall=Desa totes les adjuncions com a ZIP.
 view_aslideshow=Mostra totes les imatges.
+
 compose_title=Redacció de Correu
+
 reply_title=Resposta de Correu
 forward_title=Reenviament de Correu
 enew_title=Edició de Correu
@@ -216,9 +222,11 @@ reply_addattach=Afegeix un camp d'adjunció.
 reply_addssattach=Afegeix un camp d'adjunció de la part del servidor.
 reply_html0=Redacta en text
 reply_html1=Redacta en HTML
+
 reply_spell=Comprova l'ortografia
 reply_draft=Desa com a Esborrany
 reply_save=Desa i Edita
+
 send_err=No s'ha pogut enviar el correu
 send_eto=Hi falta l'adreça To
 send_efrom=Hi falta l'adreça From
@@ -235,6 +243,7 @@ send_eperms2=No tens permís per enviar el fitxer $1
 send_epath=L'executable de Sendmail $1 no existeix.
 send_efile=No s'ha pogut llegir l'adjunció $1: $2
 send_done=...fet.
+
 send_epass=No pots signar cap missatge perquè la teva frase de contrasenya encara no està configurada al mòdul de GnuPG.
 send_esign=No s'ha pogut signar el missatge: $1
 send_ekey=No s'ha pogut trobar la clau per a l'adreça de correu $1
@@ -246,6 +255,7 @@ send_espell=S'han trobat els error ortogràfics següents al missatge...
 send_draft=El correu per a $1 s'ha desat a la carpeta d'esborranys.
 send_drafting=S'està desant el correu per a $1 a la carpeta d'esborranys...
 send_eattachsize=L'adjunció de correu excedeix la mida màxima permesa de $1 bytes
+
 delete_title=Supressió de Correu
 delete_rusure=Segur que vols suprimir les $1 missatges seleccionats de $2? Això pot trigar una mica si el fitxer de correu és gros. No es podrà realitzar cap altra acció fins que no s'hagi acabat la supressió.
 delete_rusure2=Segur que voleu suprimir aquest missatge de $1? Això pot trigar una mica si el fitxer de correu és gros. No es podrà realitzar cap altra acció fins que no s'hagi acabat la supressió.
@@ -268,6 +278,7 @@ delete_nobutton=No has fet clic a cap botó
 delete_ereport=No s'ha pogut informar com a spam: $1
 delete_errc=No s'ha pogut copiar el correu
 delete_errm=No s'ha pogut desplaçar el correu
+
 confirm_title=Confirmació de Supressió
 confirm_warn=Segur que vols suprimir els $1 missatges seleccionats d'aquesta carpeta?
 confirm_warnf=Segur que vols suprimir els $1 missatges seleccionats de la carpeta <b>$2</b>?
@@ -277,6 +288,7 @@ confirm_warn4=No es podrà realitzar cap altra acció fins que no s'hagi acabat 
 confirm_ok=Suprimeix Ara
 confirm_warnall=Segur que vols suprimir tots els missatges d'aquesta carpeta?
 confirm_warnallf=Segur que vols suprimir tots els missatges de la carpeta <b>$1</b>?
+
 search_title=Resultats de la Cerca
 search_ecannot=No tens permís per buscar dins del correu d'aquest usuari
 search_ematch=Has d'introduir un text de recerca.
@@ -305,16 +317,19 @@ search_nolatest=Tots els de la carpeta
 search_latestnum=Només els darrers
 search_elatest=Hi falta el nombre de missatges a buscar  o bé és invàlid
 search_withstatus=, amb estat $1
+
 folder_inbox=Entrada
 folder_sent=Enviat
 folder_drafts=Drafts
 folder_trash=Trash
+
 detach_err=No s'ha pogut separar el fitxer
 detach_edir=No has introduït cap fitxer o directori per desar
 detach_eopen=No s'ha pogut obrir $1: $2
 detach_ewrite=No s'ha pogut escriure a $1: $2
 detach_title=Alliberament de Fitxer
 detach_ok=S'ha escrit l'adjunció al fitxer del servidor $1 ($2).
+
 sform_title=Cerca Avançada
 sform_header=Opcions avançades de recerca de correu
 sform_andmode=Mode dels criteris
@@ -339,6 +354,7 @@ sform_headers=qualsevol capçalera
 sform_allmsg=tot el missatge
 sform_size=la mida del missatge
 sform_return=al formulari de recerca avançada
+
 find_enone=No s'ha trobat cap usuari que coincideixi amb la teva recerca
 find_title=Resultats de la Cerca
 find_results=Usuaris que coincideixin amb la recerca per a $1...
@@ -351,6 +367,7 @@ find_incount=Correus
 find_sentcount=Enviats
 find_fcount=Carpetes
 find_in=$1 a $2
+
 acl_none=Cap
 acl_same=Usuari amb el mateix nom
 acl_all=Tots
@@ -376,12 +393,15 @@ acl_usersu=Amb UID en el rang
 acl_sec=Inclou grups secundaris
 acl_dir=Pot llegir els fitxer de correu del directori
 acl_dirauto=Decideix automàticament (qualsevol lloc si tots els usuaris són visibles, enlloc altrament)
+
 log_delmail=S'han suprimit $1 missatges de $2
 log_movemail=S'han desplaçat $1 missatges de $2 a $3
 log_copymail=S'han copiat $1 missatges de $2 a $3
 log_send=S'ha enviat el correu a $1
 log_read=S'ha llegit el correu de $1
+
 emodified=Aquesta carpeta s'ha modificat des de la darrera visualització! Torna a la <a href='$1'>llista de correu</a> i torna-ho a provar.
+
 razor_title=Informació com a Spam
 razor_title2=Informació com a Ham
 razor_report=S'està informant aquest missatge a Razor i altres bases de dades de bloqueig de spam de SpamAssassin...
@@ -391,14 +411,18 @@ razor_done=... fet.
 razor_err=... ha fallat! Mira el missatge d'error de sobre per saber-ne el motiu.
 razor_moved=...fet, i s'ha desplaçat a la carpeta $1.
 razor_deleted=...fet, i també s'ha suprimit el missatge.
+
 ham_title=Informació com a Ham
 ham_report=S'està informant aquest missatges com a no spam a Razor i altres base de dades SpamAssassin...
+
 black_title=Denegació de Remitent
 black_done=S'ha afegit l'adreça de correu $1 a la llista d'adreces denegades de SpamAssassin.
 black_already=L'adreça de correu $1 ja és a la llista d'adreces denegades de SpamAssassin.
+
 white_title=Autorització de Remitent
 white_done=S'ha afegit l'adreça de correu $1 a la llista d'adreces permeses de SpamAssassin.
 white_already=L'adreça de correu $1 ja és a la llista d'adreces permeses de SpamAssassin.
+
 ldap_emod=Falta el mòdul Perl $1 necessari per connectar amb LDAP
 ldap_econn=No s'ha pogut connectar amb el servidor LDAP $1 port $2
 ldap_elogin=No s'ha pogut vincular el servidor LDAP $1 com a $2: $3
@@ -406,12 +430,15 @@ ldap_ehost=No hi ha cap servidor LDAP establert a la configuració del mòdul
 ldap_eport=No hi ha cap port de servidor vàlid LDAP establert a la configuració del mòdul
 ldap_euser=No hi ha cap entrada LDAP establerta a la configuració del mòdul
 ldap_ebase=No hi ha cap DN base establert a la configuració del mòdul
+
 delall_title=Suprimeix Tot el Correu
 delall_rusure=Segur que vols suprimir tot el correu de $1? $2 missatges amb un total de $3 seran suprimit per sempre més.
 delall_ok=Suprimeix-los Ara
+
 slide_title=Imatges Adjuntes
 slide_prev=Anterior
 slide_next=Següent
+
 left_mail=Correu
 left_search=Cerca:
 left_folders=Gestiona Carpetes

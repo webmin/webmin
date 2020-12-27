@@ -43,8 +43,10 @@ index_natnone=Aucune règle de traduction d'adresse réseau n'a encore été dé
 index_nataction=Mode NAT
 index_natfrom=Paquets pour correspondre
 index_natto=Traduction
+
 dir_in=Entrant
 dir_out=Sortant
+
 action_pass=<font color=#00aa00>Passer</font>
 action_block=<font color=#ff0000>Bloquer</font>
 action_skip=Sauter
@@ -57,6 +59,7 @@ action_map=Cartographie
 action_rdr=Réorienter
 action_bimap=Cartographie bidirectionnelle
 action_map-block=Cartographie des blocs
+
 laction_pass=<font color=#00aa00>Passe le paquet</font>
 laction_block=<font color=#ff0000>Bloquer le paquet, avec le code ICMP</font>
 laction_log=Paquet de journal, au niveau
@@ -65,6 +68,7 @@ laction_skip=Ignorer les règles suivantes
 laction_auth=Autorisation de l'espace utilisateur
 laction_preauth=Vérifier l'autorisation précédente
 laction_call=Fonction du noyau d'appel
+
 edit_title1=Créer une règle
 edit_title2=Modifier la règle
 edit_header1=Action de règle
@@ -130,6 +134,7 @@ edit_icmp=Type ICMP
 edit_icmpany=&lt;Tout type&gt;
 edit_icmpcode=et code
 edit_codeany=&lt;N'importe quel code&gt;
+
 save_err=Impossible d'enregistrer la règle
 save_ehostfrom=Nom d'hôte source manquant ou non valide
 save_ehostto=Nom d'hôte de destination manquant ou non valide
@@ -158,11 +163,13 @@ save_eto=Interface manquante ou invalide pour envoyer sur
 save_etoip=Adresse IP non valide pour l'envoi
 save_ereplyto=Interface manquante ou non valide pour répondre
 save_ereplytoip=Adresse IP non valide pour répondre
+
 apply_err=Impossible d'appliquer la configuration
 apply_remote=Erreur de $1 : $2 
 unapply_err=Impossible de rétablir la configuration
 unapply_ein=Échec d'obtention des règles d'entrée
 unapply_eout=Impossible d'obtenir les règles de sortie
+
 desc_if=Si $1 
 desc_and=et
 desc_always=Toujours
@@ -196,6 +203,7 @@ desc_rdr=Adresses IP $1 port $2
 desc_dport1=le port est $1 
 desc_dport2=le port est entre $1 et $2 
 desc_nattoiface=adresse d'interface
+
 log_create_rule=Règle $1 créée
 log_delete_rule=Règle $1 supprimée
 log_modify_rule=Règle $1 modifiée
@@ -224,6 +232,7 @@ log_add_host=Serveur de cluster ajouté $1
 log_add_group=Serveurs de cluster ajoutés du groupe $1 
 log_delete_host=Serveur de cluster supprimé $1 
 log_delete_group=Suppression des serveurs de cluster $1 
+
 cluster_title=Serveurs de pare-feu en cluster
 cluster_none=Aucun serveur n'a encore été ajouté au cluster de pare-feu.
 cluster_host=Nom d'hôte
@@ -234,6 +243,7 @@ cluster_gadd=Ajouter des serveurs dans le groupe
 cluster_need=Vous devez ajouter des serveurs avec un identifiant et un mot de passe dans le module Webmin Servers Index avant de pouvoir les gérer ici.
 cluster_return=serveurs de cluster
 cluster_delete=Enlever la sélection
+
 add_title=Ajouter des serveurs
 add_msg=Ajout de $1 ..
 add_gmsg=Ajout de serveurs dans le groupe $1 ..
@@ -242,6 +252,7 @@ add_gerr=Échec de l'ajout du groupe
 add_echeck=Le serveur $1 ne dispose pas du module de pare-feu IPFilter
 add_emissing=Le serveur $1 ne contient pas la commande de pare-feu $2 
 add_ok=$1 ajouté, avec $2 règles de pare-feu actives.
+
 nat_title1=Créer une règle NAT
 nat_title2=Modifier la règle NAT
 nat_action=Mode NAT
@@ -300,4 +311,5 @@ nat_edport2=Port d'origine de fin manquant ou invalide
 net_erdrip='$1' n'est pas une adresse IP de destination valide
 nat_erdrips=Aucune adresse IP de destination saisie
 nat_erdrport=Port de destination manquant ou non valide
+
 boot_esmf=Le service SMF $1 n'existe pas ou n'est pas dans un état connu

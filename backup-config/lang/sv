@@ -19,6 +19,7 @@ index_nostrftime=Varning - några backup jobb använder % på deras filnamn, men
 index_tabsched=Schemalagda backups
 index_tabbackup=Backup nu
 index_tabrestore=Återställ nu
+
 edit_title1=Skapa Schemalagd backup
 edit_title2=Ändra Schemalagd Backup
 edit_header=Schemalagd backup val
@@ -38,9 +39,11 @@ edit_nofiles=Server konfigurations filer
 edit_run=Spara och Backa upp Nu
 edit_return=Backup formulär
 edit_other=Andra listade filer ..
+
 save_err=Misslyckades att spara backup
 save_emods=Inga moduler valda
 save_ewebmin=Varken webmin server eller server konfigurations filerna blev vald
+
 backup_mode0=Lokal fil
 backup_mode1=FTP server
 backup_mode2=SSH server
@@ -57,6 +60,7 @@ backup_egunzip=Backup är komprimerad, men <tt>gunzip</tt> är inte installerad
 backup_euntar=Un-TAR misslyckades : $1
 backup_enone2=Ingen av filerna för vald modul är i backup'en
 backup_epre2=Modul $1 avslog återställning : $2
+
 backup_err=Backup misslyckad
 backup_edest=Saknad eller felaktig absolut lokal fil
 backup_eserver1=Saknad eller felaktig FTP server
@@ -72,27 +76,32 @@ backup_title=Backup Konfiguration
 backup_doing=Startar backup på modul konfigurations fil till $1 ..
 backup_failed=.. misslyckades! $1
 backup_done=.. Färdig. Slutlig backup storlek blev $1, innehållande $2 filer.
+
 restore_err=Återställning misslyckades
 restore_title=Återställ Konfiguration
 restore_doing=Startar återställning av modul konfigurations filer från $1 ..
 restore_failed=.. misslyckad! $1
 restore_done=.. färdig. $1 filer blev återställd.
+
 nice_ftp=$2 på $1 via FTP
 nice_ftpp=$2 på $1 port $3 via FTP
 nice_ssh=$2 å $1 via SSH
 nice_sshp=$2 på $1 port $3 via SSH
 nice_upload=Laddat upp fil
 nice_download=webbläsare
+
 log_backup=Backat upp $1 moduler till $2
 log_restore=Återställt $1 moduler från $2
 log_create_backup=Skapat backup av $1 moduler till $2
 log_modify_backup=Modifierad backup av $1 moduler till $2
 log_delete_backup=Tagit bort backup av $1 moduler till $2
 log_run_backup=Exekverat backup av $1 moduler till $2
+
 run_title=Backup Konfigurationer
 run_doing=Startar backup av $1 moduler till $2
 run_ok=.. backup färdigställd lyckat.
 run_failed=.. backup misslyckades! Se fel meddelandet ovan för anledning varför.
+
 email_mods=Backup av moduler :
 email_failed=till $1 misslyckades :
 email_ok=till $1 lyckades.

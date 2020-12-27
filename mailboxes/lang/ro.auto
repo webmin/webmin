@@ -2,6 +2,7 @@ index_title=Citiți e-mailul utilizatorului
 index_none=Nu aveți voie să citiți e-mailuri pentru niciun utilizator din acest sistem.
 index_header=Cutiile poștale ale utilizatorului
 index_empty=Fără mail
+index_return=lista de utilizatori
 index_esystem=Niciunul dintre serverele de e-mail acceptate (Exim, Qmail, Postfix și Sendmail) nu a fost detectat pe sistemul dvs. Va trebui să ajustați configurația modulului <a href='$1'></a> pentru a seta serverul de poștă și, eventual, căile de e-mail.
 index_esystem2=Serverul de e-mail setat în configurația modulului <a href='$1'></a> nu a fost găsit în sistemul tău. Va trebui să ajustați configurația pentru a utiliza serverul corect.
 index_esystem3=A apărut o eroare la contactarea sistemului de e-mail setat în configurația modulului <a href='$1'></a>: $2.
@@ -19,6 +20,7 @@ index_eperl=Modulul Perl $1 necesar pentru modul de autentificare SMTP selectat 
 index_file=Citiți e-mail în fișier sau Maildir:
 index_nousers=Nu a fost găsit niciun utilizator!
 index_nousersmail=Nu a fost găsit niciun utilizator cu e-mail.
+
 mail_title=E-mail utilizator
 mail_from=Din
 mail_date=Data
@@ -75,6 +77,7 @@ mail_fromfilter=Creați filtru după expeditor
 mail_tofilter=Creați filtru în funcție de destinatar
 mail_subfilter=Creați filtru după subiect
 mail_unknown=Necunoscut
+
 mail_sign=Semnează cu cheia
 mail_nosign=&lt;Nu semnați&gt;
 mail_crypt=Criptați pentru
@@ -109,6 +112,7 @@ mail_selread=Selectați citit.
 mail_selunread=Selectați necitit.
 mail_selspecial=Selectați special.
 mail_specialsync=Sincronizare specială
+
 view_title=Citiți e-mail
 view_desc=Mesaj $1 în $2
 view_desc2=Mesaj $1 pentru utilizator $2
@@ -150,6 +154,7 @@ view_sub=E-mail atașat
 view_sub2=E-mail atașat de la $1
 view_egone=Acest mesaj nu mai există
 view_eugone=Acest utilizator nu exista
+
 view_gnupg=Verificarea semnăturii GnuPG
 view_gnupg_0=Semnarea cu $1 este valabilă.
 view_gnupg_1=Semnarea cu $1 este valabilă, dar nu a putut fi stabilită un lanț de încredere.
@@ -186,7 +191,9 @@ view_images=Afișați imagini
 view_raw=Vizualizați mesajul brut
 view_aall=Salvați toate fișierele atașate ca ZIP.
 view_aslideshow=Afișați toate imaginile.
+
 compose_title=Scrie un email
+
 reply_title=Răspundeți la e-mail
 forward_title=Redirecționare email
 enew_title=Editează e-mail
@@ -216,9 +223,11 @@ reply_addattach=Adăugați câmpul de atașare.
 reply_addssattach=Adăugați câmpul de atașare din partea serverului.
 reply_html0=Compuneți textul
 reply_html1=Compuneți HTML
+
 reply_spell=Verificați erori de ortografie?
 reply_draft=Salvează ca ciornă
 reply_save=Salvați și editați
+
 send_err=Eroare la trimiterea e-mailului
 send_eto=Lipsește adresa
 send_efrom=Lipsește de la adresa
@@ -235,6 +244,7 @@ send_eperms2=Nu aveți voie să trimiteți fișierul $1
 send_epath=Sendmail executabil $1 nu există.
 send_efile=Nu a putut citi fișierul atașat $1 : $2 
 send_done=.. Terminat.
+
 send_epass=Nu puteți semna un mesaj deoarece fraza de acces nu a fost încă configurată în modulul GnuPG.
 send_esign=Eroare la semnarea mesajului : $1
 send_ekey=Nu s-a putut găsi cheia pentru adresa de e-mail $1
@@ -246,6 +256,7 @@ send_espell=Următoarele erori de ortografie au fost găsite în mesajul dvs. ..
 send_draft=E-mail către $1 salvat în folderul drafts.
 send_drafting=Salvarea e-mailului în $1 în folderul drafts
 send_eattachsize=Fișierul atașat pe mail a depășit dimensiunea maximă permisă de $1 octeți
+
 delete_title=Ștergeți e-mail
 delete_rusure=Sigur doriți să ștergeți mesajele selectate $1 din $2? Este posibil să dureze ceva timp pentru un fișier de mail mare. Până la terminarea ștergerii, nu trebuie efectuată nicio altă acțiune.
 delete_rusure2=Sigur doriți să ștergeți acest mesaj din $1? Este posibil să dureze ceva timp pentru un fișier de mail mare. Până la terminarea ștergerii, nu trebuie efectuată nicio altă acțiune.
@@ -268,6 +279,7 @@ delete_nobutton=Nu a apăsat niciun buton
 delete_ereport=Raportul nu a reușit să fie raportat ca spam
 delete_errc=Eroare la copierea e-mailului
 delete_errm=Nu a reușit să mute poșta
+
 confirm_title=Confirmă ștergerea
 confirm_warn=Sigur doriți să ștergeți mesajele selectate $1 din acest folder?
 confirm_warnf=Sigur doriți să ștergeți mesajele selectate $1 din folderul <b>$2</b>?
@@ -277,6 +289,7 @@ confirm_warn4=Până la terminarea ștergerii, nu trebuie efectuată nicio altă
 confirm_ok=Șterge acum
 confirm_warnall=Sigur doriți să ștergeți toate mesajele din acest folder?
 confirm_warnallf=Sigur doriți să ștergeți toate mesajele din folderul <b>$1</b>?
+
 search_title=rezultatele cautarii
 search_ecannot=Nu aveți voie să căutați pe e-mailul acestui utilizator
 search_ematch=Trebuie să introduceți text pentru a se potrivi cu.
@@ -305,16 +318,19 @@ search_nolatest=Toate în folder
 search_latestnum=Doar cel mai recent
 search_elatest=Număr de mesaje lipsă sau nevalide de căutat
 search_withstatus=, cu statut $1
+
 folder_inbox=Inbox
 folder_sent=E-mail trimis
 folder_drafts=Schițe
 folder_trash=Gunoi
+
 detach_err=Nu a reușit să detașeze fișierul
 detach_edir=Niciun fișier sau director de salvat pentru a fi introdus
 detach_eopen=Nu a putut deschide $1 : $2 
 detach_ewrite=Nu a reușit să scrie la $1 : $2 
 detach_title=Detașați fișierul
 detach_ok=Scrieți atașamentul la fișierul din server $1 ($2).
+
 sform_title=Cautare Avansata
 sform_header=Opțiuni avansate de căutare prin e-mail
 sform_andmode=Modul criterii
@@ -339,6 +355,7 @@ sform_headers=orice antet
 sform_allmsg=mesaj întreg
 sform_size=dimensiunea mesajului
 sform_return=Formular de căutare avansat
+
 find_enone=Nu a fost găsit niciun utilizator care să se potrivească cu căutarea dvs.
 find_title=rezultatele cautarii
 find_results=Utilizatori care se potrivesc căutării pentru $1 ..
@@ -351,6 +368,7 @@ find_incount=E-mailuri
 find_sentcount=Trimis
 find_fcount=Dosare
 find_in=$1 în $2
+
 acl_none=Nici unul
 acl_same=Utilizator cu același nume
 acl_all=Toate
@@ -376,12 +394,15 @@ acl_usersu=Cu UID în rază de acțiune
 acl_sec=Includeți grupuri secundare?
 acl_dir=Poate citi fișiere de e-mail în director
 acl_dirauto=Decideți automat (oriunde dacă toți utilizatorii sunt vizibili, nicăieri altfel)
+
 log_delmail=Mesaje șterse $1 de la $2
 log_movemail=Mutat mesaje $1 de la $2 la $3
 log_copymail=Copiate $1 mesaje de la $2 la $3
 log_send=Trimis un e-mail către $1
 log_read=Citiți e-mail pentru $1
+
 emodified=Acest folder a fost modificat de la ultima vizualizare! Reveniți la <a href='$1'>lista de mail</a> și încercați din nou.
+
 razor_title=Raportarea ca spam
 razor_title2=Raportarea ca sunca
 razor_report=Raportând acest mesaj către Razor și alte baze de date SpamAssassin care blochează spam-ul.
@@ -391,14 +412,18 @@ razor_done=.. Terminat
 razor_err=.. a eșuat! Consultați mesajul de eroare de mai sus pentru motivul pentru care.
 razor_moved=.. terminat și mutat în folderul $1.
 razor_deleted=.. terminat și șters mesajul.
+
 ham_title=Raportarea ca sunca
 ham_report=Raportarea acestui mesaj ca non-spam către bazele de date Razor și alte baze de date SpamAssassin.
+
 black_title=Negarea expeditorului
 black_done=A adăugat adresa de e-mail $1 la lista de adrese refuzate de SpamAssassin.
 black_already=Adresa de e-mail $1 este deja pe lista de adrese refuzate de SpamAssassin.
+
 white_title=Permiterea expeditorului
 white_done=Adăugați adresa de e-mail $1 la lista de adrese permise SpamAssassin.
 white_already=Adresa de e-mail $1 este deja pe lista de adrese permise de SpamAssassin.
+
 ldap_emod=Modulul Perl lipsă $1 necesar pentru conectarea la LDAP
 ldap_econn=Eroare la conectarea la serverul LDAP $1 port $2
 ldap_elogin=Eroare la conectarea la serverul LDAP $1 ca $2 : $3 
@@ -406,12 +431,15 @@ ldap_ehost=Niciun server LDAP setat în configurația modulului
 ldap_eport=Niciun port de server LDAP valabil în configurația modulului
 ldap_euser=Nici o setare de conectare LDAP setată în configurația modulului
 ldap_ebase=Niciun DN de bază LDAP setat în configurația modulului
+
 delall_title=Ștergeți toate e-mailurile
 delall_rusure=Sigur doriți să ștergeți toate e-mailurile de la $1? $2 mesajele în total $3 vor fi șterse pentru totdeauna.
 delall_ok=Șterge acum
+
 slide_title=Imagini atașate
 slide_prev=Anterior
 slide_next=Următor →
+
 left_mail=Poștă
 left_search=Căutare:
 left_folders=Gestionează dosare

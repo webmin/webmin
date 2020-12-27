@@ -11,6 +11,7 @@ index_version2=Sendmail versão $1, configuração $2
 index_xversion=Sendmail versão $1
 index_version=Sendmail configuração $1
 index_sendmail=Sendmail
+
 opts_title=Opções do Sendmail
 opts_ecannot=Você não está autorizado a editar as opções do sendmail
 opts_ds=Enviar e-mail de saída via host
@@ -57,6 +58,7 @@ opts_qso=Ordenar requisição de e-mail por
 opts_priority=Prioridade
 opts_host=Nome do Computador
 opts_time=Tempo de recebido
+
 aliases_title=Alias do e-mail
 aliases_ecannot=Você não está autorizado a editar alias
 aliases_enofile=Nenhum alias de arquivo está definido na sua configuração do Sendmail
@@ -73,6 +75,7 @@ aliases_return=lista de alias
 aliases_toomany=Há muitos alias de e-mail no seu sistema para exibir nesta página.
 aliases_go=Encontrar correspondência de alias
 aliases_delete=Apagar Alias Selecionados
+
 aform_ecannot=Você não está autorizado a editar este alias
 aform_type0=Nenhum
 aform_type1=Endereço de E-mail
@@ -90,11 +93,13 @@ aform_val=Alias para
 aform_afile=Editar..
 aform_return=alias
 aform_cmt=Descrição
+
 afile_title=Editar Arquivo de Endereço
 afile_desc=Usar a área de texto abaixo para editar o endereço no arquivo $1
 afile_efile=Você não está autorizado a editar $1
 afile_undo=Desfazer Alterações
 afile_ewrite=Falhou ao gravar no arquivo de endereços : $1
+
 ffile_title=Editar Arquivo de Filtro
 ffile_desc=Usar este formulário abaixo para definir regras de filtros no arquivo $1.
 ffile_efile=Você não está autorizado a editar $1.
@@ -108,8 +113,10 @@ ffile_what0=não corresponde
 ffile_what1=corresponde
 ffile_other=Caso contrário, encaminhar para $1
 ffile_err=Falhou ao salvar arquivo de filtro
+
 ffile_ematch=Correspondência faltando
 ffile_eaction=Endereços de encaminhamento faltando
+
 rfile_title=Editar Arquivo de Resposta Automática
 rfile_desc=Usar a área de texto abaixo para editar a mensagem de resposta automática em $1. A mensagem pode conter as macros $SUBJECT, $FROM, $TO, $DATE e $BODY que irá ser expandida quando a resposta automática estiver ativada.
 rfile_desc2=Você pode também definir os cabeçalhos dos e-mail para adicionar ou substituir os padrões utilizados:<br><tt>De: foo@bar.com</tt><br><tt>Assunt: No feriado</tt><br>no tpo da mensagem, separado do corpo por uma simples linha em branco.
@@ -129,6 +136,7 @@ rfile_from=De: endereço para resposta
 rfile_auto=Automático (baseado em endereços de recipientes)
 rfile_efrom=De: endereço faltando
 rfile_fromdesc=De: endereço deve sempre ser especificado onde possível, como um método automático deve ser confiável
+
 asave_err=Falhou ao salvar alias
 asave_ecannot2=Você não está autorizado a editar alias
 asave_ecannot=Você não está autorizado a editar este alias
@@ -145,9 +153,11 @@ asave_etype5=Arquivo de resposta automática '$1' não é válido
 asave_etype4none=Nenhum programa fornecido
 asave_etype6=Arquivo de filtro '$1' não é válido
 asave_esame=Você não está autorizado a criar um alias com o mesmo nome que o de login do webmin
+
 adelete_err=Falhou ao apagar alias
 adelete_enone=Nenhum selecionado
 adelete_ecannot=Você não está autorizado a apagar o alias $1
+
 cws_title=Domínios Locais
 cws_ecannot=Você não está autorizado a editar domínios locais
 cws_domains=Domínios manipulados por este servidor
@@ -156,6 +166,7 @@ cws_desc2=Note que incluindo meramente o domínio na lista não é o suficiente.
 cws_err=Falhou ao salvar domínios locais
 cws_ehost='$1' não é um host válido ou nome de domínio
 cws_eip='$1' não é um endereço IP ou um domínio
+
 masq_title=Mascaramento de Domínio
 masq_ecannot=Você não está autorizado a configurar o mascaramento
 masq_domain=Máscara como domínio
@@ -167,12 +178,14 @@ masq_err=Falhou ao salvar mascaramento de e-mail
 masq_edomain='$1' não é um domínio válido para ser mascarado como
 masq_ehost='$1' não é um host válido ou nome de domínio
 masq_eip='$1' não é um endereço IP e não um domínio
+
 trusts_title=Usuários Confiáveis
 trusts_ecannot=Você não está autorizado a editar os usuários confiáveis
 trusts_users=Usuários locais confiáveis do sendmail
 trusts_desc=Se um usuário local tentar enviar e-mail, o sendmail irá somente permitir o usuário de prover um endereço <tt>De:</tt> diferente se o usuário estiver na lista abaixo. Esta restrição existe para prevenir usuários de forjar um e-mail com um endereço de origem <tt>De:</tt> falso do seu sistema.
 trusts_err=Falhou ao salvar usuários confiáveis
 trusts_euser='$1' não é um usuário válido
+
 virtusers_title=Mapeamento de Endereços
 virtusers_ecannot=Você não está autorizado a editar os mapeamentos de endereços
 virtusers_efeature=Sua configuração do sendmail não possui o recurso de mapeamento de endereço (<tt>virtuser</tt>) habilitado. <a href='$1'>Clique aqui</a> para instalar o recurso do sendmail.
@@ -190,6 +203,7 @@ virtusers_return=lista de mapeamento de endereço
 virtusers_toomany=Há muitos mapeamentos de endereços no seu sistema para exibir nesta página.
 virtusers_go=Localizar correspondência de mapeamentos de endereço:
 virtusers_delete=Apagar Mapeamentos de Endereços Selecionados
+
 vform_edit=Editar Mapeamento de Endereço
 vform_create=Criar Mapeamento de Endereço
 vform_for=E-mail para
@@ -206,6 +220,7 @@ vform_err_tempfail=Falha temporária
 vform_err_protocol=Erro de protocolo
 vform_end=Mover para fim
 vform_ecannot=Você não está autorizado a editar este mapeamento de endereço
+
 vsave_ecannot=Você não está autorizado a editar mapeamentos de endereço
 vsave_ecannot2=Você não está autorizado a editar este mapeamento de endereço
 vsave_emax=Você não está autorizado a criar mais que $1 mapeamentos de endereço
@@ -221,8 +236,10 @@ vsave_eaddr='$1' não é um endereço válido
 vsave_ecannot4=Você não está autorizado a criar mapeamentos para domínios
 vsave_edomdom=Somente um domínio pode ser mapeado para outro domínio
 vsave_ecannot5=Você não está autorizado a criar mapeamentos que retornem um erro.
+
 vdelete_err=Falhou ao apagar mapeamentos de endereço
 vdelete_ecannot=Você não está autorizado a apagar o mapeamento para $1
+
 mailers_title=Roteamento de Domínio
 mailers_cannot=Você não está autorizado a editar o roteamento de domínio
 mailers_edirective=Sua configuração do sendmail não possui a diretiva necessária para roteamento de domínio.
@@ -236,6 +253,7 @@ mailers_delivery=Entrega
 mailers_to=Enviar para..
 mailers_return=lista de roteamento de domínio
 mailers_delete=Apagar as Rotas de Domínios Selecionadas
+
 mform_edit=Editar Roteamento
 mform_create=Criar Roteamento
 mform_for=E-mail para
@@ -259,12 +277,15 @@ mform_procmail=Procmail
 mform_mail11=DECnet mail11
 mform_error=Erro $1
 mform_ecannot=Você não está autorizado a editar roteamento de domínios
+
 msave_ecannot=Você não está autorizado a editar roteamento de domínios
 msave_err=Falhou ao salvar roteamento de domínio
 msave_edomain='$1' não é um host válido ou domínio
 msave_edup=O roteamento de domínio para '$1' já está definido
+
 mdelete_err=Falhou ao apagar roteador de domínio
 mdelete_ecannot=Você não está autorizado a apagar o roteador para $1
+
 generics_title=Endereços de Saída
 generics_cannot=Você não está autorizado a editar endereços de saída
 generics_econfig=Seu arquivo de configuração do sendmail não possui a diretiva necessária para mapeamento de endereços se saída
@@ -278,11 +299,13 @@ generics_return=lista de mapeamento de endereço
 generics_toomany=Há muitos endereços de saída no seu sistema para exibir nesta página.
 generics_go=Localizar correspondência de endereços de saída:
 generics_delete=Apagar Endereços De Saída Selecionados
+
 gform_edit=Editar Mapeamento
 gform_create=Criar Mapeamento
 gform_from=E-mail para
 gform_to=Alterar para
 gform_ecannot=Você não está autorizado a editar este endereço de saída
+
 gsave_ecannot=Você não está autorizado a editar endereços de saída
 gsave_ecannot2=Você não está autorizado a editar este endereço de saída
 gsave_ecannot3=Você não está autorizado a salvar este endereço de saída
@@ -291,8 +314,10 @@ gsave_efrom='$1' não é um endereço de saída válido
 gsave_ematch=O endereço de não corresponde '$1'
 gsave_eto='$1' não é um novo endereço válido
 gsave_ealready=Um mapeamento de endereço de saída para '$1' já existe
+
 gdelete_err=Falhou ao apagar mapeamentos de endereço de saída
 gdelete_ecannot=Você não está autorizado a apagar o mapeamento para $1
+
 cgs_title=Domínios de saída
 cgs_ecannot=Você não está autorizado a editar domínios de saída
 cgs_header=Domínios de endereço de saída
@@ -300,6 +325,7 @@ cgs_desc=Separados dos e-mails enviados por usuários locais, o sendmail irá so
 cgs_err=Falhou ao salvar domínios de saída
 cgs_ehost='$1' não é um host ou nome de domínio válido
 cgs_eip='$1' é um endereço IP, não um domínio
+
 domains_title=Mapeamento de domínio
 domains_ecannot=Você não está autorizado a editar mapeamentos de domínio
 domains_econfig=Seu arquivo de configuração do sendmail não possui a diretiva necessária para roteamento de domínio.
@@ -310,17 +336,21 @@ domains_from=De domínio..
 domains_to=Para domínio..
 domains_return=Lista de mapeamento de domínio
 domains_delete=Apagar Mapeamentos de Domínio Selecionados
+
 dform_edit=Editar Mapeamento
 dform_create=Criar Mapeamento
 dform_from=De domínio
 dform_to=Para domínio
 dform_ecannot=Você não está autorizado a editar mapeamentos de domínio
+
 dsave_ecannot=Você não está autorizado a editar mapeamentos de domínio
 dsave_err=Falhou ao salvar mapeamentos de domínio
 dsave_edomain='$1' não é um nome de domínio válido
 dsave_ealready=Um mapeamentos de domínio para '$1' já existe
+
 ddelete_err=Falhou ao apagar mapeamentos de domínio
 ddelete_ecannot=Você não está autorizado a apagar o mapeamento para $1
+
 access_title=Controle de Spam
 access_ecannot=Você não está autorizado a configurar o controle de spam
 access_efeature=Sua configuração do sendmail não possui o recurso de controle de spam (<tt>acess_db</tt>) habilitado. <a href='$1'>Clique aqui</a> para instalar o recurso do sendmail.
@@ -333,6 +363,7 @@ access_return=lista de controle de spam
 access_toomany=Há muitas regras de controle de spam no seu sistema para exibir nesta página.
 access_go=Localizar correspondência de regras de controle de spam:
 access_delete=Apagar Regras de Spam Selecionadas
+
 sform_edit=Editar Regra de Controle de Spam
 sform_create=Criar Regra de Controle de Spam
 sform_source=Fonte do e-mail
@@ -354,6 +385,7 @@ sform_discard=Descartar silenciosamente
 sform_err=Código de erro
 sform_msg=Mensagem
 sform_ecannot=Você não está autorizado a editar esta regra de controle de spam
+
 ssave_err=Falhou ao salvar regra de controle de spam
 ssave_etype0='$1' não é um endereço válido
 ssave_etype1='$1' não é um endereço de rede válido
@@ -362,8 +394,10 @@ ssave_etype3='$1' não é um domínio válido
 ssave_ecode='$1' não é um código de erro SMTP válido
 ssave_ealready=Uma regra de controle de spam para '$1' já existe
 ssave_ecannot2=Você não está autorizado a salvar esta regra de controle de spam
+
 sdelete_err=Falhou ao apagar regras de controle de spam
 sdelete_ecannot=Você não está autorizado a apagar a regra para $1
+
 relay_title=Transmissão de Domínios
 relay_ecannot=Você não está autorizado a editar a transmissão de domínios
 relay_eversion=Somente o sendmail versões 8.9 ou superior suporta o recurso de transmissão de domínio.
@@ -372,6 +406,7 @@ relay_desc1=Exceto os permitidos pelas regras de <a href='$1'>controle de spam</
 relay_desc2=Se o seu sistema está servindo de gateway para domínios que não estão diretamente acessíveis do lado de fora da sua rede (usando o recurso de <a href='$1'>controle de spam</a>), então todos estes domínios devem ser listados aqui.
 relay_err=Falhou ao salvar transmissão de domínios
 relay_edomain='$1' não é um nome de domínio válido
+
 mailq_title=Fila de E-mail
 mailq_count='$1' mensagens
 mailq_ecannot=Você não está autorizado a ver a fila de e-mail
@@ -399,12 +434,15 @@ mailq_flushquar=Descarregar Fila de Quarentena
 mailq_flushquardesc=Clique neste botão para forçar a entrega imediata de todas as mensagens na fila e exibir os resultados.
 mailq_search=Encontrar fila de mensagens aqui
 mailq_quar=Quarentena
+
 flushq_title=Descarregar Fila
 flushq_desc=Forçando a tentativa de entrega de todas as mensagens com o comando $1 ..
 flushq_desc2=Forçando a tentativa de entrega de $1 mensagens selecionadas ..
 flushq_ecannot=Você não está autorizado a descarregar a fila de e-mail
+
 searchq_title=Resultado da Busca de Fila
 searchq_none=Nenhuma mensagem na fila encontrada.
+
 delq_err=Falhou ao apagar mensagem
 delq_ecannot=Você não está autorizado a desenfileirar mensagens
 delq_locked=O arquivo está atualmente travado para envio
@@ -420,6 +458,7 @@ delq_force=Forçar exclusão de toda forma
 delq_ecannot2=você não pode apagar esta mensagem
 delq_rusure=Você tem certeza que deseja apagar $1 mensagens selecionadas na fila?
 delq_confirm=Apagar Mensagens
+
 boxes_title=Caixas de correio do Usuário
 boxes_user=Usuário
 boxes_size=Tamanho da caixa de correio
@@ -429,6 +468,7 @@ boxes_sent=Enviar e-mail
 boxes_ecannot=Você não está autorizado a ler e-mail
 boxes_toomany=Há muitos usuários no seu sistema para listar todas as suas caixas de correiro.
 boxes_go=Visualizar e-mail do usuário:
+
 mail_title=E-mail do Usuário
 mail_from=De
 mail_date=Data
@@ -469,6 +509,7 @@ mail_move=Mover para:
 mail_copy=Copiar para:
 mail_rfc=Para linha
 mail_eexists=A mensagem não existe mais!
+
 view_title=Ler E-mail
 view_desc=Mensagem $1 em $2
 view_desc2=Mensagem $1 para usuário $2
@@ -496,6 +537,7 @@ view_mark2=Especial
 view_return=E-mail original
 view_sub=E-mail Anexado
 view_egone=Este e-mail não existe mais
+
 compose_title=Compor E-mail
 reply_title=Responder para E-mail
 forward_title=Encaminhar E-mail
@@ -507,6 +549,7 @@ reply_attach2=Anexos do cliente e do server-side
 reply_send=Enviar E-mail
 reply_ecannot=Você não está autorizado a enviar e-mail como este usuário
 reply_body=Mensagem de texto
+
 send_err=Falhou ao enviar e-mail
 send_eto=Faltando endereço Para
 send_efrom=Faltando endereço De
@@ -519,6 +562,7 @@ send_eattach=Os anexos não podem possuir mais que $1 kB de tamanho.
 send_eperms=O usuário $1 não pode ler $2
 send_eperms2=Você não está autorizado a enviar arquivo $2
 send_epath=O executável do Sendmail não existe.
+
 delete_title=Apagar E-mail
 delete_rusure=Você tem certeza que deseja apagar $1 mensagens selecionadas de $2? Isto pode demorar algum tempo para arquivos de e-mail grande. Até que tenha terminado, nenhuma outra ação deve ser realizada.
 delete_rusure2=Você tem certeza que deseja apagar a mensagem $1? Isto pode demorar algum tempo para arquivo de e-mail grande. Até que tenha terminado, nenhuma outra ação deve ser realizada.
@@ -531,6 +575,7 @@ delete_emoveuser=O usuário para mover e-mail não existe
 delete_emovecannot=Você não está autorizado a mover e-mail para um usuário especificado
 delete_emovenone=Nenhum e-mail selecionado para mover
 delete_nobutton=Nenhum botão clicado
+
 search_title=Resultados da Busca
 search_ecannot=Você não está autorizado a buscar e-mails deste usuário
 search_ematch=Você deve inserir texto para encontrar correspondência.
@@ -544,6 +589,7 @@ search_results4=$1 mensagens de e-mail correspondentes com a sua busca ..
 search_local=Nas pastas locais
 search_all=Em todas as pastas
 search_eboolean=Buscas boleanas usando ambos 'and' e 'or' não são suportados
+
 file_title=Editar Arquivo do Sendmail
 file_desc=Usar a área de texto abaixo para editar a manualmente o arquivo do Sendmail $1.
 file_undo=Desfazer Alterações
@@ -623,6 +669,7 @@ acl_usersm=Correspondência de usuários
 acl_asame=Assim omo nome de usuário
 acl_usersu=Com um UID no intervalo
 acl_spam=Endereço de controle de Spam que este usuário pode editar
+
 log_opts=Opções do sendmail enviadas
 log_ports=Portas da rede alteradas
 log_alias_create=Alias $1 criado
@@ -673,6 +720,7 @@ log_delete_domains=Mapeamento de domínios $1 apagado
 log_delete_accesses=Entradas de controle de spam $1 apagados
 log_delete_generics=Endereços de saída $1 apagados
 log_delete_mailers=Rotas de domínio $1 apagados
+
 match_from=De: corresponde
 match_subject=Assunto: corresponde
 match_to=Para: corresponde
@@ -692,6 +740,7 @@ match_!status=Status não corresponde
 match_!body=Corpo não corresponde
 match_!size=Tamanho é menor que
 match_!headers=O cabeçalho não corresponde
+
 features_title=Configuração M4 do Sendmail
 features_desc=Esta página lista as entradas relevantes do arquivo de configuração $1 do Sendmail M4, para a qual o arquivo de configuração atual $2 é construído.
 features_type=Tipo de entrada
@@ -711,6 +760,7 @@ features_efeatures=O diretório de configuração base do M4 do Sendmail $2 não
 features_econfig=A localização do diretório base do M4 do Sendmail e o arquivo de configuração M4 não foram definidos ainda na sua <a href='$1'>configuração do módulo</a>. Se você instalou o Sendmail a partir do fonte, este pode estar no diretório raiz original.
 features_move=Mover
 features_manual=Editar arquivo manualmente
+
 feature_add=Adicionar Entrada de Configuração
 feature_edit=Editar Entrada de Configuração
 feature_header=Detalhes da entrada de configuração M4
@@ -731,12 +781,15 @@ feature_emailer=O mensageiro $1 já existe
 feature_eostype=O tipo de sistema operacional já está definido como $1
 feature_manual=Editar Arquivo M4
 feature_mdesc=A página permite editar manualmente o arquivo de configuração M4 do Sendmail $1. Seja cuidadoso, nenhuma verificação de sintaxe será realizada em sua edição.
+
 feat_access_db=Arquivo de controle de spam
 feat_virtusertable=Mapeamento de endereço
 feat_mailertable=Roteamento de domínio
 feat_genericstable=Endereço de saída
 feat_domaintable=Mapeamento de domínio
+
 mailer_local=Entrega Local do Unix
+
 build_title=Reconstruir Configuração do Sendmail
 build_em4=O comando $1 necessário para reconstruir o seu arquivo de configuração do Sendmail não foi encontrado no seu sistema.
 build_ebuild=Falhou ao reconstruir configuração : $1
@@ -745,13 +798,16 @@ build_rusure2=Esteja alerta para o fato que se você fizer alterações no Sendm
 build_ok=Sim, substituir agora
 build_diff=As seguintes alterações irão ser realizadas no seu arquivo de configuração do Sendmail ..
 build_nodiff=Seu arquivo de configuração do sendmail já está atualizado.
+
 stop_err=Falhou ao parar o sendmail
 stop_ecannot=Você não está autorizado a parar o sendmail
 stop_epid=O sendmail não parece estar em execução
 restart_epids=Não foi possível encontrar os processos do sendmail
 restart_ekill=Falhou ao enviar sinal para processos do sendmail : $1
+
 start_err=Falhou ao iniciar o sendmail
 start_ecannot=Você não está autorizado a iniciar o sendmail
+
 ports_title=Portas da Rede
 ports_name=Nome da porta
 ports_addr=Ouvir no endereço

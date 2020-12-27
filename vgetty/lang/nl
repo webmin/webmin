@@ -2,6 +2,7 @@ index_title=Voicemail Server
 index_ecmd=De Vgetty opdracht $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of uw <a href='$2'>module configuratie</a> is niet correct.
 index_econfig=De Vgetty config file $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of uw <a href='$2'>module configuratie</a> is niet correct.
 index_return=voicemail index
+
 vgetty_title=Seriele Poort Configuratie
 vgetty_desc=Als uw server telefoon moet beantwoorden via een modem wat aangesloten is op een serieele poort, moet die in de lijst hieronder staan. Wanneer u een poort toevoegt aan deze lijst, het $1 programma zal worden geconfigureerd om te antwoorden en een bericht af te spelen.
 vgetty_add=Toevoegen nieuwe serieele poort
@@ -32,6 +33,7 @@ vgetty_erings=Ontbrekende of ongeldige aantal keren overgaan
 vgetty_erings2=Aantal keren overgaan moet minimaal 2 zijn
 vgetty_eans=Geen antwoord modes geselecteerd
 vgetty_eclash=De seriele poort $1 is reeds in gebruik
+
 options_title=Voicemail Server Opties
 options_header=Opties voor alle serieele poorten
 options_maxlen=Maximum lengte bericht
@@ -68,6 +70,7 @@ options_eprog=Ontbrekend of niet bestaand programma om te laten werken
 options_eowner=Ontbrekende of ongeldig Unix gebruiker voor berichten files
 options_egroup=Ontbrekende of ongeldige Unix groep voor berichten files
 options_emode=Ontbrekende of ongeldig getal permissies voor berichten files
+
 received_title=Ontvangen Berichten
 recieved_desc=Voicemail berichten die door uw server zijn ontvangen staan in de lijst hieronder. Om een bericht te beluisten klikt u op de datum/tijd in de eerste kolom.
 received_none=Er is geen ontvangen voicemail bericht gevonden.
@@ -79,9 +82,12 @@ received_delete=Verwijder geselecteerde berichten
 received_move=Converteer geselecteerde naar begroetingen
 received_all=Selecteer alles
 received_invert=Omkeren selectie
+
 listen_efile=Ongeldige berichten filenaam!
 listen_epath=Voicemail bericht bestaat niet meer
+
 delete_efile=Ongeldige berichten filenaam!
+
 messages_title=Begroeting Berichten
 messages_desc=Op deze pagina staat alle begroeting berichten die worden afgespeeld indien een beller met uw voicemail server verbind. Als u er meer dan 1 heeft zal willekeurig een bericht worden gekozen en afgespeeld.
 messages_file=Filenaam
@@ -89,12 +95,15 @@ messages_none=Geen begroeting berichten zijn beschikbaar.
 messages_updesc=Met dit formulier kunt u een begroeting berichten uploaden in WAF formaat, Wat geconverteerd zal worden naar het gekozen formaat voor gebruik met uw modem. De sample rate van de geuploaden WAF zal hetzelfde zijn als de sample rate van de ontvangen berichten, net zoals het geselecteerde formaat.
 messages_upload=Upload bericht
 messages_fmt=converteer naar
+
 pvfdesc=$1, $2 bits
+
 upload_err=Mislukt om bericht toe te voegen
 upload_emessage=Geen WAV file geselecteerd
 upload_ewav=Mislukt converteren van WAV file : $1
 upload_epvf=Mislukt maken van RDM file : $1
 upload_esame=De berichten file $1 bestaat reeds
+
 log_apply=Toegevoegde configuratie
 log_upload=Geuploade begroeting bericht $1
 log_move=$1 ontvangen berichten geconverteerd
@@ -104,5 +113,6 @@ log_options=Gewijzigde voicemail opties
 log_vgetty_create=Toegevoegde serieele poort $1
 log_vgetty_modify=Gemodificeerde serieele poort $1
 log_vgetty_delete=Verwijderde serieele poort $1
+
 email_subject=Voicemail berichten
 email_body=Voicemail berichten ontvangen op $1 bij $2

@@ -10,6 +10,7 @@ index_range=Tarih aralığı için rapor oluşturma
 index_view=Oluşturulan Raporu Görüntüle
 index_viewdesc=$1 dizininde en son oluşturulan raporu görüntüleyin.
 index_return=modül dizini
+
 log_title=Günlük Kaynağı ve Rapor Hedefi
 log_header=Kaynak Kalamar günlük dosyası ve oluşturulan rapor seçenekleri
 log_access_log=Kaynak Kalamar günlük dosyası
@@ -30,6 +31,7 @@ log_elastlog=Bir sayı eksik veya değil
 log_eemail=Eksik veya geçersiz görünen e-posta adresi
 log_emailx=Eksik veya var olmayan posta programı
 log_squidguard_log_path=SquidGuard günlük dosyası
+
 style_title=Rapor Stili
 style_header=HTML rapor stili ve renk seçenekleri
 style_title2=Rapor başlığı
@@ -54,6 +56,7 @@ style_efont=Eksik veya geçersiz yazı tipi adı
 style_esize=Eksik veya geçersiz resim genişliği ve yüksekliği
 style_language=Rapor dili
 style_charset=Rapor karakter kümesi
+
 report_title=Rapor Seçenekleri
 report_header=Rapor içeriği ve oluşturma seçenekleri
 report_resolve_ip=IP adresleri çözülsün mü?
@@ -134,6 +137,7 @@ report_echar=Boşluklara izin verilmiyor
 report_estring=Eksik veya geçersiz yedek metin
 report_eselect=Hiçbir şey seçilmedi
 report_eenter=Hiçbir şey girilmedi
+
 sched_title=Zamanlanmış Rapor Üretimi
 sched_header=Zamanlanmış raporlama seçenekleri
 sched_sched=Planlanmış rapor etkin mi?
@@ -148,9 +152,11 @@ sched_rsel=$1 - $2 gün önce olanlar
 sched_err=Planlanmış rapor oluşturma işlemi kaydedilemedi
 sched_erfrom=Gün önce eksik veya geçersiz başlangıç sayısı
 sched_erto=Günler önce eksik veya geçersiz bitiş sayısı
+
 view_title=Sarg Raporu
 view_efile=Geçersiz dosya adı!
 view_eopen=Rapor dosyası açılamadı
+
 gen_title=Rapor oluştur
 gen_header=Şimdi Squid günlük dosyasından $1 ve tüm döndürülmüş sürümlerden Sarg raporu üretiliyor.
 gen_done=.. bitti
@@ -160,6 +166,7 @@ gen_view=Tamamlanan raporu görüntüle.
 gen_err=Rapor oluşturulamadı
 gen_efrom=Gün içinde eksik veya geçersiz
 gen_eto=Gün için eksik veya geçersiz
+
 webmin_log_log=Güncellenmiş günlük kaynağı ve rapor hedefi seçenekleri
 webmin_log_report=Güncellenmiş rapor seçenekleri
 webmin_log_style=Güncellenmiş rapor stili seçenekleri

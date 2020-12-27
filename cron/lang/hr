@@ -19,6 +19,7 @@ index_esingle=Dokument $1 koji izlistava Cron ne postoji. Moguće da Cron niije 
 index_delete=Izbriši Odabrane Cronove
 index_disable=Onemogući Odabrane Cronove
 index_enable=Omogući Odabrane Cronove
+
 edit_title=Uredi Cron
 create_title=Kreiraj Cron
 edit_ecannot=Nije Vam dozvoljeno uređivati cron za ovog korisnika
@@ -56,6 +57,7 @@ lcedit_special_weekly=tjedno (nedjeljom)
 lcedit_special_monthly=Mjesečno (svakog prvog u mjesecu)
 lcedit_special_yearly=godidišnje (prvoj siječnja)
 lcedit_special_reboot=kada se sustav podigne
+
 save_err=Neuspjelo spremanje crona
 save_ecmd=Niste unijeli naredbu za koju treba izvršiti
 save_euser=Morate odabrati korisnika
@@ -64,6 +66,7 @@ save_eallow=Korisniku '$1' nije dopušteno pokretanje crona
 save_ecannot=Nije Vam dopušteno kreiranje i uređivanje crona za '$1'
 save_enone=Niste odabrali ni jedan $1 koji se treba izvršiti 
 save_ecannot2=Nije Vam dopušteno kreiranje cronova
+
 allow_title=Kontroliraj Cron Pristup
 allow_desc=Ova forma dopušta Vam da kontrolirate koji korisnici mogu kreirati i pokrenuti cron.
 allow_ecannot=Ne možete kontrolirati pristup korisnika cronu
@@ -72,6 +75,7 @@ allow_all2=Negiraj sve korisničke prihvaćene izvore
 allow_all3=Dopusi sve korisnike
 allow_allow=Dopusti samo izlistane korisnike
 allow_deny=Negiraj samo izlistane korisnike
+
 env_title1=Uredi Varijable Okruženja
 env_title2=Kreiraj Varijablu Okruženja
 env_name=Naziv varijable
@@ -87,11 +91,13 @@ env_where2=Ukloni varijabliu okruženja
 env_top=Prije svih Cronova za korisnike
 env_bot=Nakon Crona
 env_leave=Trenutni položaj
+
 exec_title=Izvrši Cron
 exec_ecannot=Nije Vam dopušteno izvršavati cron za ovog korisnika
 exec_cmd=Izlaz naredbe $1 ..
 exec_cmdbg=Izvršavam sve naredbe $1 kao proces u pozadini.
 exec_none=Nije garantiran izlaz
+
 acl_users=Ne možete urediti Cron za
 acl_all=Svi korisnici
 acl_this=Trenutni Webmin korisnik
@@ -105,6 +111,7 @@ acl_create=Ne možete krerati Cron?
 acl_delete=Ne možete izbrisati Cron?
 acl_move=Ne možtete premjestiti Cron?
 acl_kill=Ne možete prekinuti Cron?
+
 log_modify=Promijeni Cron za $1
 log_modify_l=Promijeni Cron "$2" kao $1
 log_create=Kreiraj Cron za $1
@@ -122,21 +129,26 @@ log_move=Premješteni Cronovi zs $1
 log_crons_delete=Izbriši $1 Cron
 log_crons_disable=Onemogući $1 Cron
 log_crons_enable=Omogući $1 Cron
+
 ecopy=Pronađena je pogreška u novim Cron postavkama : $1 $2
+
 when_min=svake minute
 when_hour=svaki sat u $1 nakon sata¸
 when_day=svaki dan u $2:$1
 when_month=na dan $3 svakog mjeseca u $2:$1
 when_weekday=svakog $3 u $2:$1
 when_cron=u cron vrijeme $1
+
 ucwhen_min=Svake minute
 ucwhen_hour=Svaki sat u $1 nakon sata
 ucwhen_day=Svaki dan u $2:$1
 ucwhen_month=Dana $3 svakog mjeseca u $2:$1
 ucwhen_weekday=Svakog $3 u $2:$1
 ucwhen_cron=u cron vrijeme $1
+
 move_err=Neuspjelo premještanje Crona
 move_etype=Ovaj cron ne može biti pomaknut
+
 kill_err=Neuspjelo prekidanje Crona
 kill_ecannot=Nije Vam dopušteno prekinuti ovaj cron
 kill_egone=Više se ne izvršava
@@ -145,10 +157,12 @@ kill_title=Prekini Cron
 kill_rusure=Jeste li sigurni da želite prekinuti proces $1 sa PID $2?
 kill_rusure2=Jeste li sigurni da želite prekinuti proces $1 sa PID $2 i svim njegovim podprocesima?
 kill_ok=Da, Prelini Ga
+
 range_all=Pokreni na bilo koji datum
 range_start=Pokreni samo iz $1
 range_end=u $1
 range_estart=Nedostaje ili je neispravnan datum početka u dometu za pokretanje
 range_eend=Nedostaje ili je neispravan datum kraja u dometu za pokretanje
+
 delete_err=Neuspjelo kreiranje Crona
 delete_enone=Ništa nije odabrano

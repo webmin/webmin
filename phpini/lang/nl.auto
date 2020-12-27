@@ -1,4 +1,6 @@
 list_format_ini=INI-formaat
 list_format_fpm=FPM-indeling
+
 session_eredis=Redis-extensie ontbreekt of is uitgeschakeld
+
 misc_charset=Standaard tekenset

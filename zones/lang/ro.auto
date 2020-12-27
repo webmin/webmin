@@ -4,6 +4,7 @@ index_none=Nu au fost definite încă zone.
 index_add=Adăugați o nouă zonă.
 index_return=lista zonelor
 index_zones=Zonele existente
+
 edit_title=Editează Zona
 edit_common=Configurația generală a zonei
 edit_name=Numele zonei
@@ -57,20 +58,26 @@ edit_attrnone=Nu s-au definit încă atribute generice.
 edit_attradd=Adăugați un nou atribut generic.
 edit_webmin=Deschideți Webmin
 edit_brand=Marca
+
 ui_cancel=Anulare
+
 save_err=Nu a reușit să salveze zona
 save_epool=Grupul lipsește sau este nevalid
 save_ewebmin=Webmin nu rulează în această zonă
+
 reboot_title=Reboot Zone
 reboot_rusure=Sigur doriți să reporniți zona $1 ? Toate procesele care se execută în cadrul acestuia vor fi repornite.
 reboot_err=Nu a reușit să reporniți zona
 reboot_doing=Acum reporniți zona ..
+
 reboot_failed=.. a eșuat  :
 reboot_ok=.. complet.
+
 halt_title=Zona de închidere
 halt_rusure=Sigur doriți să închideți zona $1 ? Toate procesele care se execută în cadrul acestuia vor fi oprite.
 halt_err=Nu a reușit să închidă zona
 halt_doing=Acum închiderea zonei ..
+
 boot_title=Zona de bootare
 boot_err=Nu a reușit zona de bootare
 boot_doing=Acum porniți zona ..
@@ -78,10 +85,12 @@ delete_title=Ștergeți Zona
 delete_rusure=Sigur doriți să ștergeți zona $1 ? Toate fișierele din sistemele sale de fișiere private vor fi pierdute.
 delete_err=Nu a reușit ștergerea zonei
 delete_doing=Șterge acum zona ..
+
 uninstall_title=Dezinstalați sistemul
 uninstall_rusure=Sigur doriți să dezinstalați software-ul sistemului din zona $1 ? Toate fișierele din sistemele sale de fișiere private vor fi pierdute.
 uninstall_err=Eroare la dezinstalarea software-ului de sistem din zonă
 uninstall_doing=Acum dezinstalăm sistemul din zonă ..
+
 install_title=Instalați sistemul
 install_doing=Acum instalați sistemul în zonă ..
 net_title1=Creați interfață de rețea
@@ -96,6 +105,7 @@ net_enetmask=Mască netă nevalidă
 net_eaddress=Adresa IP nevalidă
 net_egone=Interfața nu mai există!
 net_eclash=În această zonă există deja o interfață de rețea cu aceeași adresă IP
+
 pkg_title1=Adăugați pachet director
 pkg_title2=Modificați directorul de pachete
 pkg_header=Detalii despre directorul pachetelor moștenite
@@ -107,6 +117,7 @@ pkg_eclash=Directorul de pachete există deja în această zonă
 pkg_inherit=Moștenire pachete din zona globală
 pkg_inherit_yes=Da (zona rădăcină mică)
 pkg_inherit_no=Nu (întreaga zonă rădăcină)
+
 fs_title1=Creați sistem de fișiere
 fs_title2=Editează Sistemul de fișiere
 fs_header=Detalii suplimentare ale sistemului de fișiere
@@ -128,6 +139,7 @@ fs_eoptions=Opțiuni de montare nevalide (trebuie să fie o listă separată de 
 fs_egone=Sistemul de fișiere nu mai există!
 fs_mount=Se montează după creare?
 fs_eclash=În această zonă există deja un sistem de fișiere care utilizează același director
+
 rctl_title1=Creați controlul resurselor
 rctl_title2=Editează controlul resurselor
 rctl_header=Tipul și limitele controlului resurselor
@@ -148,6 +160,7 @@ rctl_elimit=Nu un număr
 rctl_eaction=Nu a fost selectat niciun semnal în rândul $1 
 rctl_evalues=Nu au fost introduse limite
 rctl_eclash=Există deja un control pentru aceeași resursă în această zonă
+
 attr_title1=Creați un atribut generic
 attr_title2=Editați atributul generic
 attr_header=Detalii despre atributul zonei generice
@@ -165,6 +178,7 @@ attr_euint=Valoarea nu este un număr întreg pozitiv
 attr_eboolean=Valoarea nu este „adevărată” sau „falsă”
 attr_egone=Atributul nu mai există!
 attr_eclash=Un atribut cu același nume există deja în această zonă
+
 status_running=Alergare
 status_installed=oprit
 status_configured=Nu este instalat
@@ -172,13 +186,16 @@ status_incomplete=Fiind instalat
 status_ready=Gata
 status_down=Jos
 status_shutting_down=Oprirea
+
 list_name=Numele zonei
 list_id=Nu stiu.
 list_path=Director de zone
 list_status=stare
 list_actions=acţiuni
+
 zone_in=În zona $1 
 pool_none=Nici unul
+
 create_title=Creați zona
 create_header=Detalii despre zonele noi
 create_path=Director de fișiere de zonă
@@ -239,6 +256,7 @@ create_erouter=Adresa IP a routerului implicit lipsă sau nevalidă
 create_removingpkgs=eliminarea directoarelor de pachete moștenite. ..
 create_brand=Marca
 create_brandmsg=Zona de branding
+
 log_create_zone=Zona creată $1 
 log_delete_zone=Zona ștersă $1 
 log_save_zone=Configurație modificată pentru zona $1 
@@ -262,6 +280,7 @@ log_delete_rctl=S-a șters controlul resurselor pentru $1 în zona $2
 log_create_attr=Creat atribut generic $1 în zona $2 
 log_modify_attr=Atribut generic modificat $1 în zona $2 
 log_delete_attr=S-a șters atributul generic $1 în zona $2 
+
 webmin_eperl=Perl nu este instalat la $1 
 webmin_eroot=Directorul $1 nu există sau nu conține Webmin.
 webmin_title=Instalați Webmin

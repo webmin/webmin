@@ -2,6 +2,7 @@ check_econfigset=ISCSI TGTd -määritystiedostoa ei ole asetettu!
 check_econfig=ISCSI TGTd -määritystiedostoa $1 ei löydy järjestelmästäsi.
 check_etgtadm=ISCSI TGTd -hallintakomentoa $1 ei löydy järjestelmästäsi.
 check_einit=Käynnistystoimintoa $1 ei ole
+
 index_title=iSCSI TGTd
 index_clink=Ehkä sitä ei ole asennettu, tai <a href='$1'>moduulin määritykset</a> ovat vääriä.
 index_stop=Lopeta iSCSI TGTd
@@ -24,8 +25,10 @@ index_users=Sallitut käyttäjät
 index_size=Kokonaiskoko
 index_noluns=Ei mitään
 index_nousers=Minkä tahansa
+
 dtargets_err=Kohteiden poistaminen epäonnistui
 dtargets_enone=Mitään ei ole valittu!
+
 target_title1=Luo iSCSI-kohde
 target_title2=Muokkaa iSCSI-kohdetta
 target_header=iSCSI-jaetut laitevaihtoehdot
@@ -74,11 +77,13 @@ target_direct=Suora pääsy laitteeseen
 target_cache=Välimuisti kirjoittaa laitteelle?
 target_eaddr=Virheellinen sallittu IP-osoite
 target_eaname=Virheellinen sallittu aloittajan nimi
+
 start_err=ISCSI TGTd: n käynnistäminen epäonnistui
 stop_err=ISCSI TGTd: n pysäyttäminen epäonnistui
 restart_err=ISCSI TGTd: n käynnistäminen epäonnistui
 atboot_err=Käynnistäminen epäonnistui
 atboot_einit=Init-skriptiä $1 ei ole
+
 log_create_target=Luotu tavoite $1 
 log_delete_target=Poistettu tavoite $1 
 log_modify_target=Muokattu tavoite $1 
@@ -89,6 +94,7 @@ log_restart=Käynnistettiin iSCSI-palvelin uudelleen
 log_atboot=Käytössä iSCSI-palvelin käynnistyksen aikana
 log_delboot=Poistettu käytöstä iSCSI-palvelin käynnistyksen aikana
 log_manual=Manuaalisesti muokattu asetustiedosto
+
 manual_title=Muokkaa asetustiedostoa
 manual_file=Valitse muokattava tiedosto:
 manual_ok=Avata

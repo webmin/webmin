@@ -9,6 +9,7 @@ index_start=Syslog-NG 시작
 index_startdesc=현재 구성을 사용하여 Syslog-NG 데몬을 시작하려면이 버튼을 클릭하십시오.
 index_return=모듈 색인
 index_version=Syslog-NG $1 
+
 options_title=로깅 옵션
 options_header=모든 로그 파일에 대한 옵션
 options_secs=초
@@ -55,6 +56,7 @@ options_esync=쓰기 전에 버퍼에 누락되거나 잘못된 메시지 수
 options_estats=통계 메시지 간 대기 시간이 없거나 숫자가 아님
 options_elog_fifo_size=버퍼링 할 메시지 수가 없거나 잘못되었습니다.
 options_elog_msg_size=최대 로그 메시지 크기가 없거나 숫자가 아님
+
 destinations_title=로그 대상
 destinations_name=목적지 이름
 destinations_type=쓰기
@@ -77,6 +79,7 @@ destinations_add=새 로그 대상을 추가하십시오.
 destinations_return=로그 목적지
 destinations_desc=다른 모듈의 로그
 destinations_cmd=$1 의 출력
+
 destination_header=로그 대상 옵션
 destination_title1=로그 대상 생성
 destination_title2=로그 대상 편집
@@ -117,17 +120,22 @@ destination_enet_localip=로컬 IP 주소가 없거나 유효하지 않습니다
 destination_enet_localport=로컬 포트 번호가 없거나 유효하지 않습니다
 destination_enet_host=Syslog 서버 호스트 또는 주소가 없거나 유효하지 않습니다
 destination_eunix=유닉스 소켓 이름이 없습니다.
+
 ddelete_err=목적지를 삭제하지 못했습니다.
 ddelete_enone=선택된 사항 없음
 ddelete_eused=대상 $1 은 (는) 로그 대상에서 사용되므로 삭제할 수 없습니다.
+
 sdelete_err=소스를 삭제하지 못했습니다
 sdelete_enone=선택된 사항 없음
 sdelete_eused=로그 소스 $1 이 (가) 로그 대상에서 사용되므로 삭제할 수 없습니다.
+
 fdelete_err=필터를 삭제하지 못했습니다
 fdelete_enone=선택된 사항 없음
 fdelete_eused=로그 필터 $1 이 (가) 로그 대상에서 사용되므로 삭제할 수 없습니다.
+
 ldelete_err=로그 대상을 삭제하지 못했습니다.
 ldelete_enone=선택된 사항 없음
+
 filters_title=로그 필터
 filters_name=필터 이름
 filters_desc=정황
@@ -144,6 +152,7 @@ filters_program=<tt>$1</tt> 프로그램
 filters_match="$1"와 일치
 filters_host=호스트 이름 <tt>$1</tt>
 filters_netmask=발신자 <tt>$1</tt>
+
 filter_title1=로그 필터 생성
 filter_title2=로그 필터 편집
 filter_header=로그 필터 사양 세부 사항
@@ -169,6 +178,7 @@ filter_enet=네트워크 IP 주소가 없거나 유효하지 않습니다
 filter_emask=넷 마스크가 없거나 유효하지 않습니다
 filter_ebool=복잡한 표현의 오류
 filter_egone=필터가 더 이상 존재하지 않습니다!
+
 logs_title=로그 대상
 logs_source=출처
 logs_filter=필터
@@ -177,6 +187,7 @@ logs_add=새 로그 대상을 추가하십시오.
 logs_delete=선택된 로그 대상 삭제
 logs_return=로그 대상
 logs_none=없음
+
 log_title1=로그 대상 생성
 log_title2=로그 대상 편집
 log_header=로그 소스, 필터 및 대상 선택
@@ -190,6 +201,7 @@ log_flags=대상 옵션
 log_egone=로그 대상이 더 이상 존재하지 않습니다!
 log_err=로그 대상을 저장하지 못했습니다
 log_esource=선택된 소스가 없습니다
+
 sources_title=로그 소스
 sources_none=아직 소스가 정의되지 않았습니다!
 sources_add=새 로그 소스를 추가하십시오.
@@ -207,6 +219,7 @@ sources_typen=선 스트림
 sources_typenw=Syslog 서버
 sources_return=로그 소스
 sources_none2=없음
+
 source_title1=로그 소스 생성
 source_title2=로그 소스 편집
 source_header=로그 소스 옵션
@@ -243,15 +256,20 @@ source_door=문 파일 이름
 source_esun_streams_name=누락되거나 잘못된 Sun 스트림 파일 이름
 source_edoor=Sun 스트림 도어 파일 이름이 없거나 잘못되었습니다.
 source_transport=네트워크 프로토콜
+
 view_title=로그 파일보기
 view_header=$2 의 마지막 $1 줄
 view_empty=로그 파일이 비어 있습니다
 view_refresh=새롭게 하다
 view_filter=텍스트가 $1 인 줄만 표시
+
 apply_err=구성을 적용하지 못했습니다
 apply_egone=달리 지마!
+
 start_err=Syslog-NG 서버를 시작하지 못했습니다
+
 stop_err=Syslog-NG 서버를 중지하지 못했습니다
+
 log_create_destination=생성 된 로그 대상 $1 
 log_modify_destination=수정 된 로그 대상 $1 
 log_delete_destination=삭제 된 로그 대상 $1 

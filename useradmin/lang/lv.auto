@@ -51,11 +51,13 @@ index_mass=Dzēst atlasītos lietotājus
 index_mass2=Atspējot atlasīto
 index_mass3=Iespējot atlasīto
 index_gmass=Dzēst atlasītās grupas
+
 search_title=Meklēšanas rezultāti
 search_notfound=Netika atrasts neviens atbilstošs lietotājs
 search_found=Atrasti $1 atbilstoši lietotāji.
 search_gnotfound=Nav atrasta neviena atbilstoša grupa
 search_gfound=Atrasts $1 atbilstošās grupas.
+
 uedit_title=Rediģēt lietotāju
 uedit_title2=Izveidot lietotāju
 uedit_details=Informācija par lietotāju
@@ -133,6 +135,7 @@ uedit_uid_calc=Aprēķināts
 uedit_disabled=Pieteikšanās uz laiku ir atspējota
 uedit_sys=Sistēmas noklusējums
 uedit_clone=Klona lietotājs
+
 usave_err=Neizdevās saglabāt lietotāju
 usave_eedit=Šo lietotāju nevar rediģēt
 usave_ecreate=Jūs nevarat izveidot jaunus lietotājus
@@ -186,6 +189,7 @@ usave_epasswd_same=Parole satur vai ir tāda pati kā lietotājvārds
 usave_epasswd_mindays=Parole tika mainīta mazāk nekā pirms $1 dienām
 usave_epasswd_cmd=Paroles apstiprināšanas komanda neizdevās
 usave_eothers=Lietotājs tika veiksmīgi saglabāts, taču citā modulī radās kļūda : $1
+
 gedit_title=Rediģēt grupu
 gedit_title2=Izveidot grupu
 gedit_details=Sīkāka informācija par grupu
@@ -208,6 +212,7 @@ gedit_selu=Lietotāji grupā
 gedit_pri=Sākumskolas grupas dalībnieki
 gedit_prinone=Nevienam lietotājam šī grupa nav galvenā
 gedit_clone=Klonu grupa
+
 gsave_err=Neizdevās saglabāt grupu
 gsave_eedit=Jūs nevarat rediģēt šo grupu
 gsave_ecreate=Jūs nevarat izveidot jaunas grupas
@@ -224,6 +229,7 @@ usave_egidused=Grupa $1 jau izmanto GID $2
 gsave_egidused2=GID jau tiek izmantots
 usave_efromroot=Mājas direktoriju nevar pārvietot no /
 usave_etoroot=Mājas direktoriju nevar pārvietot uz /
+
 logins_title=Reģistrētie pieteikšanās
 logins_head=Reģistrēti pieteikumi $1
 logins_from=Pieteikšanās no plkst
@@ -236,6 +242,7 @@ logins_none=Nav reģistrēti pieteikumi
 logins_elist=Jums nav atļauts uzskaitīt pieteikšanās
 logins_elistu=Jums nav atļauts uzskaitīt pieteikšanās par “$1”
 logins_local=Vietējie
+
 udel_title=Dzēst lietotāju
 udel_err=Neizdevās izdzēst lietotāju
 udel_enum=Nederīgs lietotāja numurs
@@ -258,6 +265,7 @@ udel_del2=Dzēst Lietotāju un mājas direktoriju
 udel_others=BRĪDINĀJUMS! Mājas direktorijā $1 ir $2 faili, kas pieder citiem lietotājiem.
 udel_dothers=Vai izdzēst lietotāju citos moduļos?
 udel_root=Brīdinājums! Ja saknes lietotājs tiek izdzēsts, iespējams, nākotnē jūs nevarēsit administrēt savu sistēmu.
+
 gdel_title=Dzēst grupu
 gdel_err=Neizdevās izdzēst grupu
 gdel_eroot=Jums nav atļauts izdzēst sistēmas grupas (tās, kuru GID ir mazāks vai vienāds ar 10).
@@ -271,6 +279,7 @@ gdel_sure=Vai tiešām vēlaties izdzēst grupu $1?
 gdel_del=Dzēst grupu
 gdel_dothers=Vai izdzēst grupu citos moduļos?
 gdel_other=Notiek dzēšana no citiem moduļiem ..
+
 many_title=Izveidojiet vairākus lietotājus
 many_desc=Šī forma ļauj vienlaikus izveidot daudzus lietotājus no augšupielādēta vai vietēja teksta faila. Katrā faila rindā norādīts viens lietotājs šādā formātā:
 many_desc2=username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire
@@ -294,6 +303,7 @@ many_eshell=Nederīgs apvalks rindā $1 : $2
 many_emkdir=Neizdevās izveidot mājas direktoriju $1 : $2 
 many_egtaken=Grupas nosaukums, kas jau tiek izmantots rindā $1 : $2 
 many_ok=Izveidots lietotājs $1
+
 acl_uedit=Unix lietotāji, kurus var rediģēt
 acl_uedit_all=Visi lietotāji
 acl_uedit_none=Nav lietotāju
@@ -353,6 +363,7 @@ acl_udelete=Vai var izdzēst lietotājus?
 acl_gdelete=Vai var izdzēst grupas?
 acl_urename=Vai lietotājus var pārdēvēt?
 acl_grename=Vai grupas var pārdēvēt?
+
 log_urename=Pārdēvēts lietotājs $1 uz $2
 log_umodify=Pārveidots lietotājs $1
 log_ucreate=Izveidots lietotājs $1
@@ -371,6 +382,7 @@ log_ugbatch=Izpildīts augšupielādēts grupas pakešfails
 log_ugbatch_l=Izpildīts augšupielādēts grupas pakešfails ($1 izveidots, $2 modificēts, $3 izdzēsts)
 log_delete_users=Svītroti $1 lietotāji
 log_delete_groups=Dzēstas $1 grupas
+
 batch_title=Izpildīt pakešdatni
 batch_ecannot=Pakešfaila formu nevar izmantot
 batch_desc=Šī forma ļauj augšupielādētā vai lokālā teksta failā vienlaikus izveidot, modificēt vai izdzēst daudzus lietotājus. Katra faila rinda norāda vienu veicamo darbību atkarībā no tā pirmā lauka. Līnijas formāti ir :
@@ -429,12 +441,14 @@ batch_eexpire=Nederīga derīguma termiņa diena rindā $1 : $2
 batch_echange=Nederīga paroles maiņas diena tiešsaistē $1 : $2 
 batch_instr=Instrukcijas un paketes formāts
 batch_header=Sērijveida lietotāju izveides, atjaunināšanas un dzēšanas opcijas
+
 who_title=Pierakstījušies lietotāji
 who_user=Unix lietotājs
 who_tty=TTY
 who_when=Pieteicies plkst
 who_from=Pieteicies no plkst
 who_none=Pašlaik nav pieteicies neviens lietotājs.
+
 export_title=Eksportēt pakešdatni
 export_desc=Šī forma ļauj jums izveidot sērijveida failu, kurā ir daži vai visi sistēmā pieejamie lietotāji. Failu var izmantot citas sistēmas lapā Izpildīt pakešdatni, lai atkārtoti izveidotu eksportētos lietotājus, pieņemot, ka tas izmanto atlasīto sērijveida formātu.
 export_header=Sērijveida lietotāju eksporta iespējas
@@ -455,6 +469,7 @@ export_done=$1 lietotāji ir veiksmīgi eksportēti uz failu $2 ($3).
 export_pft=Sērijveida formāts
 export_who=Eksportējamie lietotāji
 export_ecannot=Jums nav atļauts eksportēt lietotājus
+
 gexport_title=Eksportēt grupu pakešdatni
 gexport_desc=Šī forma ļauj jums izveidot sērijveida failu, kas satur dažas vai visas sistēmā pieejamās grupas. Failu var izmantot citas sistēmas lapā Izpildīt grupas pakešfailu, lai atkārtoti izveidotu eksportētās grupas.
 gexport_header=Partiju grupas eksporta iespējas
@@ -463,6 +478,7 @@ gexport_ecannot=Jums nav atļauts eksportēt grupas
 gexport_err=Neizdevās eksportēt grupas pakešdatni
 gexport_egid=Pirmajā diapazonā nederīgs pirmais GID
 gexport_egid2=Diapazonā nav derīgs otrais GID
+
 pft_0=Tikai klasisks <tt>passwd</tt> fails
 pft_1=BSD <tt>master.passwd</tt> fails
 pft_2=Standarta faili <tt>passwd</tt> un <tt>ēnu</tt>
@@ -470,6 +486,7 @@ pft_3=Unixware <tt>passwd</tt> fails
 pft_4=AIX <tt>passwd</tt> un <tt>security</tt> faili
 pft_5=OpenServer <tt>passwd</tt> un īsie <tt>ēnu</tt> faili
 pft_6=MacOS NetInfo datu bāze
+
 umass_title=Dzēst lietotājus
 umass_err=Neizdevās izdzēst lietotājus
 umass_sure=Vai tiešām vēlaties dzēst $1 atlasītos lietotājus? Viņu mājas direktorijos ir $2 faili.
@@ -481,6 +498,7 @@ umass_del1=Dzēst lietotājus
 umass_del2=Dzēsiet lietotājus un mājas direktorijus
 umass_eroot=Jums nav atļauts izdzēst sistēmas lietotājus (lietotājus, kuru UID ir mazāks vai vienāds ar 10).
 umass_doing=Lietotāja $1 dzēšana.
+
 gmass_title=Dzēst grupas
 gmass_err=Neizdevās izdzēst grupas
 gmass_sure=Vai tiešām vēlaties izdzēst $1 atlasītās grupas?
@@ -490,16 +508,19 @@ gmass_del=Dzēst grupas
 gmass_eroot=Jums nav atļauts izdzēst sistēmas grupas (tās, kuru GID ir mazāks vai vienāds ar 10).
 gmass_doing=Tiek dzēsta grupa $1.
 gmass_eprimary=Grupu $1 nevar izdzēst, jo tā ir galvenā lietotāja $2 grupa.
+
 dmass_title=Lietotāju atspējošana
 dmass_sure=Vai tiešām vēlaties atspējot $1 atlasītos lietotājus? Tos vēlāk var atkārtoti iespējot, nezaudējot paroles vai datus.
 dmass_dis=Lietotāju atspējošana
 dmass_pass=Uz laiku bloķē paroli ..
 dmass_doing=Lietotāja $1 atspējošana ..
 dmass_already=.. jau invalīds!
+
 emass_title=Iespējot lietotājus
 emass_pass=Paroles atbloķēšana ..
 emass_doing=Iespējojot lietotāju $1.
 emass_already=.. jau iespējots!
+
 gbatch_title=Izpildīt grupas sērijveida failu
 gbatch_ecannot=Jūs nevarat izmantot grupas pakešdatnes formu
 gbatch_desc=Šī forma ļauj augšupielādētā vai lokālā teksta failā vienlaikus izveidot, modificēt vai izdzēst daudzas grupas. Katra faila rinda norāda vienu veicamo darbību atkarībā no tā pirmā lauka. Līnijas formāti ir :

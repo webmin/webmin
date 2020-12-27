@@ -9,9 +9,12 @@ index_apply=Aplica schimbarile
 index_applydesc=Faceți clic pe acest buton pentru a aplica configurația actuală a exporturilor de fișiere. Acest lucru va face ca toate directoarele enumerate mai sus să fie disponibile cu opțiunile specificate.
 index_return=lista exporturilor
 index_echeck=Serverul NFS nu poate fi utilizat pe acest sistem : $1 
+
 check_ecmd=Comanda serverului NFS $1 nu este instalată
+
 delete_err=Nu a reușit ștergerea exporturilor
 delete_enone=Nimic selectat
+
 edit_title1=Editați Export
 edit_title2=Creați Export
 edit_header1=Opțiuni de export
@@ -31,6 +34,7 @@ edit_clients=Clienți
 edit_hosts=Gazde / grupuri de Internet
 edit_network=Reţea
 edit_mask=Masca
+
 save_err=Nu a reușit să salveze exportul
 save_edir=„$1” nu este un director sau nu există
 save_enone=Pentru a exporta trebuie să introduceți cel puțin un director
@@ -44,4 +48,5 @@ save_enetwork=„$1” nu este o rețea validă
 save_enetmask=„$1” nu este o mască netă validă
 save_esame1=Directorul <tt>$1</tt> este deja exportat în <tt>$2</tt>. Sistemul de operare nu permite exportarea directoarelor din același sistem de fișiere <i>local</i> către aceeași gazdă separat
 save_esame2=Directorul <tt>$1</tt> este deja exportat în <tt>$2</tt>. Sistemul dvs. de operare nu permite exportul directoarelor din același sistem de fișiere <i>local</i> în aceeași rețea separat
+
 restart_err=Eroare la aplicarea modificărilor

@@ -19,6 +19,7 @@ index_refsel=Atsvaidzināt atlasīts
 index_group=$1 dalībnieki
 index_tmpls=Rediģēt e-pasta veidnes
 index_tmplsdesc=Skatiet un rediģējiet veidnes, kuras izmanto e-pasta ziņojumu izveidošanai, kas nosūtīti, kad uzraudzīto pakalpojumu darbība samazinās.
+
 type_apache=Apache tīmekļa serveris
 type_inetd=Internets un RPC serveris
 type_xinetd=Paplašināts interneta serveris
@@ -73,8 +74,10 @@ type_alive=Dzīvā sistēma
 type_rssh=Attālā SSH
 type_slapd=LDAP serveris
 type_ldap=LDAP savienojums
+
 mon_create=Izveidot monitoru
 mon_edit=Rediģēt monitoru
+mon_virtualmin=Brīdinājums! Šis monitors ir saistīts ar Virtualmin domēnu $1, tāpēc to šeit nevajadzētu rediģēt vai dzēst.
 mon_header=Monitoru informācija
 mon_header2=Komandas palaist
 mon_header3=Uzraudzītas pakalpojumu iespējas
@@ -138,6 +141,7 @@ mon_changes0=Rādīt katru notikuma veidu
 mon_changes1=Rādīt tikai izmaiņas
 mon_all=Rādīt visus vēsturiskos notikumus
 mon_nochanges=Pēdējos $1 vēsturiskajos notikumos statusa izmaiņas nav notikušas.
+
 sched_title=Plānotais monitorings
 sched_header=Plānotas fona uzraudzības iespējas
 sched_mode=Plānotā pārbaude ir iespējota?
@@ -184,16 +188,19 @@ sched_subject0=Nav (trauksme ir ķermenī)
 sched_subject1=Brīdinājuma teksts (atstājiet korpusu tukšu)
 sched_subject2=Pielāgots teksts
 sched_esubject=Trūkst īsziņas tēmas
+
 up_since=Augšup kopš $1 
 depends_mod=Modulis $1 nav instalēts jūsu sistēmā
 depends_os=Jūsu sistēmā netiek atbalstīts modulis $1 
 depends_remote=$1 modulis netiek atbalstīts serverī $2 
+
 tcp_host=Saimnieks, ar kuru izveidot savienojumu
 tcp_port=Ports, ar kuru izveidot savienojumu
 tcp_alarm=Savienojuma noildze
 tcp_ehost=Trūkst vai nav derīgs resursdatora nosaukums
 tcp_eport=Trūkst vai nav derīgs porta numurs
 tcp_ealarm=Trūkst vai nav derīga savienojuma noildze
+
 http_url=URL pieprasīšanai
 http_alarm=Savienojuma noildze
 http_eurl=Trūkst vai nav derīgs URL
@@ -208,11 +215,13 @@ http_regexp=Lapai jāatbilst regexp
 http_eregexp=Ievadītajai lapai nav regulāras izteiksmes
 http_none2=Neatbilst
 http_ehead=HEAD pieprasījuma metodi nevar izmantot, pārbaudot regulāro izteiksmi
+
 ping_host=Saimnieks ping
 ping_wait=Laiks gaidīt atbildi
 ping_ehost=Trūkst vai nav derīgs resursdatora nosaukums
 ping_ewait=Trūkst vai nav derīgs gaidīšanas laiks
 ping_econfig=Modulī Config nav iestatīta ping komanda
+
 proc_pid=Darbojas ar PID $1 
 proc_cmd=Komanda pārbaudīt
 proc_not=Neveiksme, ja process ir
@@ -224,6 +233,7 @@ proc_ethresh=Trūkst vai nav derīgs procesu skaits
 proc_asuser=Darbojas kā lietotājs
 proc_anyuser=Jebkurš lietotājs
 proc_easuser=Lietotājs, lai process darbotos, kā neeksistē
+
 exec_cmd=Komanda palaist
 exec_mode=Izejas stāvokļa pārbaude
 exec_mode0=Neizdodas novērot, ja komanda neizdodas
@@ -235,6 +245,7 @@ exec_noregexp=Nepārbaudi
 exec_remode=Regexp pārbaude
 exec_remode0=Neizdodas, ja izvade neatbilst
 exec_remode1=Neizdodas, ja izvade sakrīt
+
 file_file=Pārbaudāmais fails, direktorijs vai paraugs
 file_test=Pārbaude, lai izpildītu
 file_test_0=Jābūt eksistējošam
@@ -253,6 +264,7 @@ file_group=Failu grupai jābūt
 file_nocheck=Jebkas
 file_perms=Oktālajām atļaujām jābūt
 file_eperm=Faili ar nepareizām atļaujām : $1 
+
 traffic_iface=Monitoringa saskarne
 traffic_bytes=Maksimālais baitu sekundē
 traffic_dir=Virziens monitorēšanai
@@ -262,6 +274,7 @@ traffic_dir2=Tikai izejošie
 traffic_desc=Šis monitors seko tīkla trafikam izvēlētajā interfeisā un parāda monitoru uz leju, ja trafiks pārsniedz zemāk ievadīto baitu skaitu sekundē. Tas darbojas patiešām labi tikai tad, ja plānotā uzraudzība ir iespējota ar nelielu intervālu, piemēram, ik pēc 5 minūtēm.
 traffic_eifaces=Jūsu operētājsistēmai nav/proc/net/dev faila
 traffic_ebytes=Trūkst vai nav derīgs baitu skaits sekundē
+
 space_fs=Pārbaudāmā failu sistēma
 space_min2=Minimālā brīvā vieta
 space_mode0=Absolūtais lielums
@@ -277,6 +290,7 @@ space_ierr=Tikai $1 inodes ir bezmaksas
 space_merr=Tikai $1 vietas nav
 space_perr=Tikai $1% bez maksas
 space_dferr=Neizdevās iegūt failu sistēmas lielumu
+
 load_time=Ielādējiet vidējo, lai pārbaudītu
 load_1=1 minūte
 load_5=5 minūtes
@@ -285,6 +299,7 @@ load_max=Vidējā maksimālā slodze
 load_emax=Trūkst vai nav derīga vidējā maksimālā slodze
 load_ecmd=Komanda <tt>uptime</tt> jūsu sistēmā netika atrasta
 load_efmt=Komandas <tt>uptime</tt> izvadi nevarēja parsēt
+
 log_create=Izveidots monitors $1 
 log_modify=Pārveidots monitors $1 
 log_delete=Izdzēsts monitors $1 
@@ -295,10 +310,14 @@ log_tmpl_modify=Pārveidota e-pasta veidne $1
 log_tmpl_delete=Izdzēsta e-pasta veidne $1 
 log_tmpl_deletes=Izdzēstas $1 e-pasta veidnes
 log_refresh=Atjaunoti monitora statusi
+
 acl_edit=Vai var rediģēt un izveidot monitorus?
 acl_sched=Vai var mainīt plānoto uzraudzību?
+
 change_file=Pārraudzāmais fails vai direktorijs (neizdodas, ja tiek mainīts)
+
 jabber_eparser=Perl modulis $1 nav instalēts jūsu sistēmā.
+
 memory_min2=Minimālā brīvā reālā atmiņa
 memory_emin=Trūkst vai nav derīgs bezmaksas reālās atmiņas daudzums
 memory_eproc=Webmin nezina, kā pārbaudīt operētājsistēmas brīvo atmiņu
@@ -308,7 +327,9 @@ memory_freelow=Tikai $1 reālā atmiņa nav pieejama
 memory_freelowswap=Tikai $1 virtuālā atmiņa nav pieejama
 memory_minswap=Minimālā bezmaksas virtuālā atmiņa
 memory_eminswap=Trūkst vai nav derīgs bezmaksas virtuālās atmiņas daudzums
+
 proftpd_etype=Šo monitoru nevar izmantot, ja ProFTPD darbojas patstāvīgi
+
 mailserver_to=Sūtīt e-pastu uz adresi
 mailserver_timeout=Taimauts un intervāls
 mailserver_units_0=Sekundēs
@@ -316,22 +337,28 @@ mailserver_units_1=Minūtes
 mailserver_units_2=Stundas
 mailserver_units_3=Dienas
 mailserver_desc=Zemāk norādītajai adresei ir jābūt automātiskajam atbildētājam, kas uz avota adresi atbild ar to pašu rindu Tēma:.
+
 oldfile_file=Pārraugāmais fails (neizdodas, ja netiek mainīts)
 oldfile_diff=Neveiksme, ja netiek mainīts uz
 oldfile_secs=sekundes
+
 raid_device=RAID ierīce
 raid_edevice=Neviena RAID ierīce nav atlasīta
 raid_bad=Atrasts slikts disks
 raid_resync=Pašlaik notiek atkārtota meklēšana
 raid_notfound=RAID ierīce $1 nav atrasta
 raid_other=Cits ..
+
 iface_iface=Saskarne, lai pārbaudītu
+
 init_action=Darbība, lai pārbaudītu
 init_eaction=Nav atlasīta neviena darbība
+
 refresh_title=Atsvaidzināšanas statuss
 refresh_doing=Visu monitoru statusa atjaunošana ..
 refresh_doing2=Tiek atjaunināts atlasīto monitoru $1 statuss.
 refresh_done=.. darīts.
+
 sensors_name=Sensors, lai pārbaudītu
 sensors_value=Neizdevās, kad
 sensors_value0=Sistēma norāda brīdinājumu
@@ -342,6 +369,7 @@ sensors_none=Jūsu sistēmā netika atrasti sensori. Jums var būt nepieciešams
 sensors_cur=$1 (šobrīd $2 $3)
 sensors_emin=Trūkst vai nav derīga minimālā vērtība
 sensors_emax=Trūkst vai nav derīga maksimālā vērtība
+
 nut_ups=NUT UPS, lai pārbaudītu
 nut_name=Atribūts pārbaudīt
 nut_value=Neizdevās, kad
@@ -352,6 +380,7 @@ nut_eups=Nav ievadīts USP, lai pārbaudītu
 nut_cur=$1 (šobrīd $2)
 nut_emin=Trūkst vai nav derīga minimālā vērtība
 nut_emax=Trūkst vai nav derīga maksimālā vērtība
+
 mailq_system=Pasta serveris
 mailq_qmailadmin=Qmail
 mailq_postfix=Pasta indekss
@@ -360,6 +389,7 @@ mailq_size=Maksimālais pasta rindas lielums
 mailq_esize=Trūkst vai nav derīgs maksimālais rindas lielums
 mailq_toomany=Uz leju - $1 ziņojumi ir rindā
 mailq_ok=Augšup - rindā $1 ziņojumi
+
 dns_server=DNS serveris
 dns_host=Uzmeklēšanas resursdators
 dns_address=Paredzētā IP adrese
@@ -367,6 +397,7 @@ dns_eserver=Trūkst vai nav derīgs DNS serveris
 dns_ehost=Trūkst meklējamā resursdatora vai tas nav derīgs
 dns_eaddress=Trūkst vai nav derīga paredzētā IP adrese
 dns_ecmds=Ne <tt>nslookup</tt> vai <tt>rakt</tt> komandas nav instalētas jūsu sistēmā
+
 monitor_sub_down=$1 uz leju $2 
 monitor_pager_down=$1 : “$2” ir nolaists $3 
 monitor_snmp_down= $1:$2 
@@ -398,8 +429,10 @@ monitor_run1=Notiek $1 braukšana uz $2.
 monitor_run2=Darbojas $1 ..
 monitor_runerr=Neizdevās palaist $1 uz $2 : $3 
 monitor_email_stat=Pašreizējais statuss: $1 
+
 deletes_egone=Viens no atlasītajiem monitoriem vairs nepastāv
 deletes_enone=Nav atlasīts neviens monitors
+
 ftp_host=FTP servera resursdators
 ftp_port=FTP ports
 ftp_user=Piesakieties kā lietotājs
@@ -416,6 +449,7 @@ ftp_econn=Neizdevās izveidot TLS FTP savienojumu
 ftp_econn2=Neizdevās izveidot TLS FTP savienojumu : $1 
 ftp_elogin=TLS FTP pieteikšanās neizdevās : $1 
 ftp_etlsfile=TLS FTP lejupielāde neizdevās : $1 
+
 query_driver=SQL datu bāzes tips
 query_db=Datu bāzes nosaukums
 query_host=Datu bāzes servera resursdators
@@ -436,9 +470,12 @@ query_elogin=Pieteikšanās neizdevās : $1
 query_eprepare=SQL kļūda : $1 
 query_eexecute=SQL neizdevās : $1 
 query_ewrong=Nepareizs rezultāts : $1 
+
 consume_rate=Maksimālais patēriņa ātrums (sekundē)
 consume_high=Patēriņa likme ir $1 / sekundē
+
 alive_up=Augšup $1 
+
 rssh_host=SSH servera resursdators
 rssh_ruser=Piesakieties kā lietotājs
 rssh_rpass=Pieteikšanās ar paroli
@@ -454,6 +491,7 @@ rssh_error=SSH kļūda
 rssh_haspass=Parole
 rssh_port=SSH servera ports
 rssh_eport=Trūkst vai nav derīgs porta numurs
+
 tmpls_title=E-pasta veidnes
 tmpls_ecannot=Jums nav atļauts rediģēt e-pasta veidnes
 tmpls_none=Pagaidām nav definētas e-pasta veidnes. Visi brīdinājumi tiks nosūtīti, izmantojot Webmin noklusējuma ziņojumus.
@@ -462,6 +500,7 @@ tmpls_email=E-pasta ziņa
 tmpls_add=Pievienojiet jaunu e-pasta veidni.
 tmpls_return=veidņu saraksts
 tmpls_delete=Dzēst atlasītās veidnes
+
 tmpl_title1=Izveidot e-pasta veidni
 tmpl_title2=Rediģēt e-pasta veidni
 tmpl_header=Brīdinājuma e-pasta veidnes ziņas
@@ -486,9 +525,11 @@ tmpl_esms=Trūkst īsziņas
 tmpl_esnmp=Trūkst SNMP ziņojuma
 tmpl_err2=Neizdevās izdzēst e-pasta veidni
 tmpl_eusers=To lieto šādi monitori : $1 
+
 dtmpls_err=Neizdevās izdzēst veidnes
 dtmpls_enone=Nav atlasīts
 dtmpls_eusers=$1 izmanto šādi monitori : $2 
+
 sslcert_src=Sertifikāta atrašanās vieta
 sslcert_url=No HTTPS URL
 sslcert_file=No faila uz servera
@@ -506,18 +547,21 @@ sslcert_eend=Nav derīgs pēc $1
 sslcert_left=Uz augšu - $1 dienas līdz derīguma termiņa beigām
 sslcert_ematch=Resursdatora nosaukums $1 neatbilst sertifikātam $2 
 sslcert_emismatch=Sertifikāta resursdatora pārbaudi var izmantot tikai URL pārbaudei
+
 du_dir=Uzraudzības direktorijs
 du_max=Maksimālais izmērs
 du_edir=Trūkst direktorijas ceļa vai tas nav absolūts
 du_emax=Trūkst vai nav skaitliska maksimālā lieluma
 du_over=Izmērs ir $1 
 du_under=Izmērs ir tikai $1 
+
 ldap_edriver=Perl modulis $1 nav instalēts
 ldap_host=LDAP servera resursdators
 ldap_port=LDAP servera ports
 ldap_ssl=Vai izmantot SSL savienojumu?
 ldap_user=LDAP servera pieteikšanās
 ldap_pass=LDAP servera parole
+
 info_desc=Sistēmas monitors
 info_last=Pašreizējais statuss
 info_title=Sistēmas un servera statuss

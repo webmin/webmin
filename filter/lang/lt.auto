@@ -45,6 +45,7 @@ index_ondate=Data
 index_charset=Automatinis pranešimo simbolių rinkinys
 index_subject=Automatiškai atsakyti pranešimo tema
 index_nowebmin=Šis modulis skirtas tik „Usermin“. Jei ji matoma „Webmin“, jūsų naudojama tema yra neišsami.
+
 edit_title1=Sukurti filtrą
 edit_title2=Redaguoti filtrą
 edit_header1=Sąlyga filtrui
@@ -71,6 +72,7 @@ edit_amode7=Išsaugoti naujame aplanke pavadinimu
 edit_nobounce=Neleisti peradresavimo pranešimų persiuntimo
 edit_apply=Rodyti atitikimo el. Laišką aplanke:
 edit_move=Taikyti el. Paštu aplanke:
+
 save_err=Nepavyko išsaugoti filtro
 save_egone=Filtro nebeegzistuoja!
 save_econdheader=Trūksta arba netinkama el. Pašto antraštė
@@ -89,8 +91,10 @@ save_enewfolder3=Aplankas tuo pačiu pavadinimu jau yra
 save_estart=Netinkama automatinio atsakymo pradžios data
 save_eend=Netinkama automatinio atsakymo pabaigos data
 save_echarset=Trūksta arba netinkamas automatinio atsakymo simbolių rinkinys
+
 delete_err=Nepavyko ištrinti filtrų
 delete_enone=Nepasirinkta
+
 aliases_type1=1 Adresas
 aliases_type2=Adresai faile $1 
 aliases_type3=Failas $1 
@@ -101,6 +105,7 @@ aliases_your=Jūsų pašto dėžutė
 aliases_delete=Ištrinti paštą
 aliases_other=$1 pašto dėžutė
 aliases_auto=Automatinis atsakiklis su pranešimu $1 
+
 auto_title=El. Pašto automatinis atsakymas
 auto_header=Automatinės el. Pašto atsakymo parinktys
 auto_enabled=Automatinis atsakymas įjungtas?
@@ -111,12 +116,14 @@ auto_charsetdef=Iš dabartinės kalbos
 auto_charsetother=Kitas simbolių rinkinys
 auto_period=Mažiausias intervalas tarp atsakymų
 auto_err=Nepavyko išsaugoti automatinio atsakymo
+
 forward_title=Persiųsti el. Laišką
 forward_header=El. Pašto peradresavimo parinktys
 forward_enabled=El. Pašto peradresavimas įgalintas?
 forward_to=Persiųsti į adresus
 forward_cont=Taip pat pristatyti paprastai?
 forward_err=Nepavyko išsaugoti el. Pašto persiuntimo
+
 move_err=Nepavyko pritaikyti filtro
 move_esrc=Šaltinio aplanko $1 nėra!
 move_edest=Paskirties aplanko $1 nėra!

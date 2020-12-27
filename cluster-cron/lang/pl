@@ -6,18 +6,22 @@ index_return=Lista zadań klastra
 index_more=$1 więcej ..
 index_run=Uruchom teraz..
 index_actions=Akcje
+
 edit_title=Edycja zadań klastra
 create_title=Utwórz zadanie klastra
 edit_servers=Uruchom na serwerach
 edit_group=Użytkownicy z $1
 edit_this=ten serwer
 edit_all=&lt;Wszystkie hosty&gt;
+
 save_err=Błąd zapisu zadania klastra
+
 exec_title=Wykonaj zadanie klastra
 exec_cmd=Uruchomiono $1 na wybranych serwerach ..
 exec_failed=Na $1 nie powiodło się uruchomienie : $2
 exec_success=Wyjście z $1 ..
 exec_nohosts=Brak wybranych hostów do uruchomienia lub wybrane grupy nie zawierają żadnych użytecznych hostów.
+
 log_run=Uruchomiono $1 na serwerach $2
 log_run_l=Uruchomiono $1 na $2
 log_create=Utworzono zadanie klastra dla $1
@@ -27,5 +31,6 @@ log_modify_l=Zmodyfikowano zadanie klastra $2 dla $1
 log_delete=Usunięto zadanie klastra dla $1
 log_delete_l=Usunięto zadanie klastra $2 dla $1
 log_deletes=Usunięto $1 zadań klastra
+
 delete_err=Usuwanie zadania klastra nie powiodło się
 delete_enone=Nic nie wybrano

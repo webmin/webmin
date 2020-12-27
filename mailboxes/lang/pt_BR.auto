@@ -2,6 +2,7 @@ index_title=Ler correio do usuário
 index_none=Você não tem permissão para ler e-mails para nenhum usuário neste sistema.
 index_header=Caixas de correio do usuário
 index_empty=Sem correio
+index_return=Lista de usuários
 index_esystem=Nenhum dos servidores de correio suportados (Exim, Qmail, Postfix e Sendmail) foi detectado no seu sistema. Você precisará ajustar a <a href='$1'>configuração do módulo</a> para definir o servidor de correio e possivelmente os caminhos de correio manualmente.
 index_esystem2=O servidor de correio definido na <a href='$1'>configuração do módulo</a> não foi encontrado no seu sistema. Você precisará ajustar a configuração para usar o servidor correto.
 index_esystem3=Ocorreu um erro ao entrar em contato com o sistema de correio definido na <a href='$1'>configuração do módulo</a>: $2.
@@ -19,6 +20,7 @@ index_eperl=O módulo Perl $1 necessário para o modo de autenticação SMTP sel
 index_file=Leia o Mail no arquivo ou no Maildir:
 index_nousers=Nenhum usuário foi encontrado!
 index_nousersmail=Nenhum usuário com email foi encontrado.
+
 mail_title=Email do Usuário
 mail_from=A partir de
 mail_date=Encontro
@@ -75,6 +77,7 @@ mail_fromfilter=Criar filtro por remetente
 mail_tofilter=Criar filtro por destinatário
 mail_subfilter=Criar filtro por assunto
 mail_unknown=Desconhecido
+
 mail_sign=Cadastre-se com chave
 mail_nosign=&lt;Não assine&gt;
 mail_crypt=Criptografar para
@@ -109,6 +112,7 @@ mail_selread=Selecione ler.
 mail_selunread=Selecione não lida.
 mail_selspecial=Selecione especial.
 mail_specialsync=Sync Special
+
 view_title=Ler email
 view_desc=Mensagem $1 em $2
 view_desc2=Mensagem $1 para o usuário $2
@@ -150,6 +154,7 @@ view_sub=E-mail anexo
 view_sub2=E-mail anexado de $1
 view_egone=Esta mensagem não existe mais
 view_eugone=Esse usuário não existe
+
 view_gnupg=Verificação de assinatura do GnuPG
 view_gnupg_0=A assinatura por $1 é válida.
 view_gnupg_1=A assinatura por $1 é válida, mas a cadeia de confiança não pôde ser estabelecida.
@@ -186,7 +191,9 @@ view_images=Mostrar imagens
 view_raw=Ver mensagem não processada
 view_aall=Salve todos os anexos como ZIP.
 view_aslideshow=Mostrar todas as imagens.
+
 compose_title=Escrever um email
+
 reply_title=Responder ao email
 forward_title=Encaminhar email
 enew_title=Editar email
@@ -216,9 +223,11 @@ reply_addattach=Adicionar campo de anexo.
 reply_addssattach=Adicionar campo de anexo do lado do servidor.
 reply_html0=Escrever texto
 reply_html1=Escrever HTML
+
 reply_spell=Verificar erros de ortografia?
 reply_draft=Salvar como rascunho
 reply_save=Salvar e editar
+
 send_err=Falha ao enviar e-mail
 send_eto=Endereço ausente
 send_efrom=Endereço ausente de
@@ -235,6 +244,7 @@ send_eperms2=Você não tem permissão para enviar o arquivo $1
 send_epath=O executável Sendmail $1 não existe.
 send_efile=Falha ao ler o anexo $1 : $2 
 send_done=.. feito.
+
 send_epass=Você não pode assinar uma mensagem porque sua senha ainda não foi configurada no módulo GnuPG.
 send_esign=Falha ao assinar a mensagem : $1
 send_ekey=Não foi possível encontrar a chave do endereço de e-mail $1
@@ -246,6 +256,7 @@ send_espell=Os seguintes erros de ortografia foram encontrados na sua mensagem .
 send_draft=Envie para $1 salvo na pasta Rascunhos.
 send_drafting=Salvando email em $1 na pasta Rascunhos.
 send_eattachsize=O anexo do correio excedeu o tamanho máximo permitido de $1 bytes
+
 delete_title=Excluir email
 delete_rusure=Tem certeza de que deseja excluir as mensagens selecionadas $1 de $2? Isso pode levar algum tempo para um arquivo de mensagens grande. Até a exclusão terminar, nenhuma outra ação deve ser executada.
 delete_rusure2=Tem certeza de que deseja excluir esta mensagem de $1? Isso pode levar algum tempo para um arquivo de mensagens grande. Até a exclusão terminar, nenhuma outra ação deve ser executada.
@@ -268,6 +279,7 @@ delete_nobutton=Nenhum botão clicado
 delete_ereport=Falha ao denunciar como spam : $1
 delete_errc=Falha ao copiar e-mail
 delete_errm=Falha ao mover o correio
+
 confirm_title=Confirmar exclusão
 confirm_warn=Tem certeza de que deseja excluir as mensagens selecionadas $1 desta pasta?
 confirm_warnf=Tem certeza de que deseja excluir as mensagens selecionadas $1 da pasta <b>$2</b>?
@@ -277,6 +289,7 @@ confirm_warn4=Até a exclusão terminar, nenhuma outra ação deve ser executada
 confirm_ok=Excluir agora
 confirm_warnall=Tem certeza de que deseja excluir todas as mensagens nesta pasta?
 confirm_warnallf=Tem certeza de que deseja excluir todas as mensagens na pasta <b>$1</b>?
+
 search_title=Procurar Resultados
 search_ecannot=Você não tem permissão para pesquisar o email deste usuário
 search_ematch=Você deve digitar o texto para comparar.
@@ -305,13 +318,16 @@ search_nolatest=Tudo na pasta
 search_latestnum=Apenas os mais recentes
 search_elatest=Número de mensagens ausente ou inválido para pesquisa
 search_withstatus=, com status $1
+
 folder_drafts=Rascunhos
+
 detach_err=Falha ao desanexar arquivo
 detach_edir=Nenhum arquivo ou diretório para salvar na entrada
 detach_eopen=Falha ao abrir $1 : $2 
 detach_ewrite=Falha ao gravar em $1 : $2 
 detach_title=Desanexar arquivo
 detach_ok=Gravou o anexo no arquivo do lado do servidor $1 ($2).
+
 sform_title=Busca Avançada
 sform_header=Opções avançadas de pesquisa de e-mail
 sform_andmode=Modo de critérios
@@ -336,6 +352,7 @@ sform_headers=qualquer cabeçalho
 sform_allmsg=mensagem inteira
 sform_size=tamanho da mensagem
 sform_return=formulário de pesquisa avançada
+
 find_enone=Nenhum usuário correspondente à sua pesquisa foi encontrado
 find_title=Procurar Resultados
 find_results=Usuários correspondentes à pesquisa por $1 ..
@@ -348,6 +365,7 @@ find_incount=Emails
 find_sentcount=Enviei
 find_fcount=Pastas
 find_in=$1 em $2
+
 acl_none=Nenhum
 acl_same=Usuário com o mesmo nome
 acl_all=Todos
@@ -373,12 +391,15 @@ acl_usersu=Com UID na faixa
 acl_sec=Incluir grupos secundários?
 acl_dir=Pode ler arquivos de mensagens no diretório
 acl_dirauto=Decida automaticamente (em qualquer lugar se todos os usuários estiverem visíveis, em nenhum outro lugar)
+
 log_delmail=$2
 log_movemail=Movidas $1 mensagens de $2 para $3
 log_copymail=Copiou $1 mensagens de $2 para $3
 log_send=Correio enviado para $1
 log_read=Leia o correio para $1
+
 emodified=Esta pasta foi modificada desde a última vez que foi visualizada! Volte à <a href='$1'>lista de emails</a> e tente novamente.
+
 razor_title=Relatórios como spam
 razor_title2=Relatando como presunto
 razor_report=Relatar esta mensagem ao Razor e outros bancos de dados de bloqueio de spam do SpamAssassin.
@@ -388,14 +409,18 @@ razor_done=.. feito
 razor_err=.. falhou! Veja a mensagem de erro acima pelo motivo.
 razor_moved=.. feito e movido para a pasta $1.
 razor_deleted=.. pronto, e mensagem excluída também.
+
 ham_title=Relatando como presunto
 ham_report=Relatar esta mensagem como não spam ao Razor e outros bancos de dados SpamAssassin.
+
 black_title=Negando Remetente
 black_done=Adicionado o endereço de email $1 à lista de endereços negados do SpamAssassin.
 black_already=O endereço de email $1 já está na lista de endereços negados do SpamAssassin.
+
 white_title=Permitindo Remetente
 white_done=Adicionado o endereço de email $1 à lista de endereços permitidos do SpamAssassin.
 white_already=O endereço de email $1 já está na lista de endereços permitidos do SpamAssassin.
+
 ldap_emod=Módulo Perl ausente $1 necessário para conectar-se ao LDAP
 ldap_econn=Falha ao conectar ao servidor LDAP $1 porta $2
 ldap_elogin=Falha ao ligar ao servidor LDAP $1 como $2 : $3 
@@ -403,12 +428,15 @@ ldap_ehost=Nenhum servidor LDAP definido na configuração do módulo
 ldap_eport=Nenhuma porta do servidor LDAP válida definida na configuração do módulo
 ldap_euser=Nenhum login LDAP definido na configuração do módulo
 ldap_ebase=Nenhum DN base LDAP definido na configuração do módulo
+
 delall_title=Excluir todo o correio
 delall_rusure=Tem certeza de que deseja excluir todos os emails de $1? $2 mensagens totalizando $3 serão excluídas para sempre.
 delall_ok=Excluir agora
+
 slide_title=Imagens anexadas
 slide_prev=Anterior
 slide_next=Próximo
+
 left_mail=Enviar
 left_search=Procurar:
 left_folders=Gerenciar pastas

@@ -26,6 +26,7 @@ index_when=Ja, $1
 index_webalizer=Webalizer
 index_enable=Ausführung aktivieren
 index_disable=Ausführung deaktivieren
+
 edit_title1=Logfile hinzufügen
 edit_title2=Logfile bearbeiten
 edit_header=Logfile Report-Optionen
@@ -49,12 +50,14 @@ edit_cmode0=Benutze Globale Optionen
 edit_cmode1=Benutze benutzerdefinierte Optionen
 edit_cmode2=Benutze andere Konfigurationsdatei ...
 edit_clear=Lösche Logdatei nach geplantem Report?
+
 gen_title=Report generieren
 gen_header=Starte Webalizer für einen Report von $1 ...
 gen_done=... fertig
 gen_failed=... Webalizer-Fehler! Beachten Sie die Hinweise oberhalb.
 gen_nothing=.. Webalizer ist fertig, es wurde jedoch kein Report ausgegeben. Weiter oben können Sie den wahrscheinlichen Fehler einsehen.
 gen_view=Report anschauen
+
 save_err=Konnte Logfile Report-Optionen nicht speichern.
 save_efile=Sie haben kein Logfile angegeben oder dieses existiert nicht
 save_ecfile=Fehlende oder nicht vorhandene andere Konfigurationsdatei
@@ -64,12 +67,14 @@ save_ewuser=Es existiert kein Unix-Benutzer mit dem Namen $1
 save_ehost=Fehlender oder ungültiger Hostname
 save_etitle=Fehlender Report-Titel
 save_ecannot=Sie dürfen nur Reports generieren, deren Logfiles in $1 liegen.
+
 view_epath=Ungültige Pfadangabe
 view_efile=Ungültiger Reportdateiname
 view_elog=Ungültiges Logfile
 view_ecannot=Sie dürfen sich diesen Report nicht ansehen
 view_eopen=Fehler beim Öffnen des Reports
 view_title=Report anschauen
+
 global_title=Globale Webalizer Optionen
 global_title2=Webalizer Report Optionen
 global_for=Für das Logfile $1
@@ -130,6 +135,7 @@ global_includesite=Diese Clients nicht ignorieren
 global_includereferrer=Diese Referrer nicht ignorieren
 global_includeuser=Diese Benutzer nicht ignorieren
 global_includeagent=Diese Browser nicht ignorieren
+
 global_err=Konnte Webalizer-Optionen nicht speichern
 global_ereport=Fehlender Report-Titel-Präfix
 global_ehost=Fehlender oder ungültiger Hostname
@@ -139,6 +145,7 @@ global_etable=Fehlende oder ungültige Grö&szlige für die Tabelle '$1'
 global_ehistory=Fehlende oder ungültige Historien-Datei
 global_ecurrent=Fehlende oder ungültige Datei für inkrementelle Reports
 global_ecache=Fehlende oder ungültige DNS-Cache-Datei
+
 log_create_log=Reporting für $1 gespeichert
 log_modify_log=Reporting für $1 geändert
 log_delete_log=Reporting für $1 gelöscht
@@ -147,6 +154,7 @@ log_global=Globale Webalizer Optionen geändert
 log_global2=Webalizer Optionen geändert für $1
 log_enable_logs=Geplante Berichte in $1 Logs
 log_disable_logs=Nicht geplante Berichte in $1 Logs
+
 acl_view=Darf nur existierende Reports anschauen?
 acl_global=Darf Globale Webalizer Optionen ändern?
 acl_dir=Erlaube lediglich das Betrachten und Editieren für Logfiles im Verzeichnis

@@ -27,7 +27,9 @@ index_global=Globaali kokoonpano
 index_create=Luo virtuaalipalvelin
 index_version=ProFTPd-versio $1 
 index_proftpd=proftpd
+
 efailed=$1 tallennus epäonnistui
+
 type_0=Verkkovaihtoehdot
 type_1=Kirjausasetukset
 type_2=Tiedostot ja hakemistot
@@ -35,6 +37,7 @@ type_3=Kulunvalvonta
 type_4=sekalainen
 type_5=Käyttäjä ja ryhmä
 type_6=Authentication
+
 virt_title=Virtuaalipalvelimen asetukset
 virt_header1=$1 : lle
 virt_header2=Oletuspalvelin
@@ -50,6 +53,7 @@ virt_cmds=FTP-komennot
 virt_return=virtuaalinen palvelin
 virt_virt=Määritä virtuaalipalvelin
 virt_edit=Muokkaa direktiivejä
+
 vserv_title=Määritä virtuaalipalvelin
 vserv_addr=Osoite
 vserv_name=Palvelimen nimi
@@ -58,6 +62,7 @@ vserv_delete=Poista virtuaalinen palvelin
 vserv_eaddr=Puuttuva tai virheellinen osoite
 vserv_eport=Puuttuva tai virheellinen porttinumero
 vserv_ename=Puuttuva palvelimen nimi
+
 anon_title=Anonyymi FTP-asetukset
 anon_header1=Virtuaalipalvelimella $1 
 anon_header2=Oletuspalvelin
@@ -65,6 +70,7 @@ anon_anon=Määritä nimetön FTP
 anon_return=anonyymit FTP-asetukset
 anon_header3=Tuntematon FTP virtuaalipalvelimella $1 
 anon_header4=Tuntematon FTP oletuspalvelimessa
+
 aserv_title=Määritä nimetön FTP
 aserv_create=Asenna nimetön FTP
 aserv_root=Rajoita hakemistoon
@@ -75,6 +81,7 @@ aserv_eroot=Puuttuva tai virheellinen chroot-hakemisto
 aserv_euser=Puuttuva tai virheellinen Unix-käyttäjä
 aserv_egroup=Puuttuva tai virheellinen Unix-ryhmä
 aserv_desc=Nimetöntä FTP: tä ei ole vielä määritetty tälle virtuaalipalvelimelle. Käytä tätä lomaketta asettaaksesi alkuperäiset kokoonpanoasetukset.
+
 dir_title=Hakemistokohtaiset asetukset
 dir_header2=Hakemistolle $1 oletuspalvelimessa
 dir_header1=Hakemistolle $1 virtuaalipalvelimessa $2 
@@ -85,6 +92,7 @@ dir_header=Komentikohtaiset vaihtoehdot
 dir_dir=Määritä hakemisto
 dir_header4=Hakemistolle $1 nimettömässä FTP: ssä
 dir_header5=Hakemistolle $1 maailmanlaajuisesti
+
 manual_title=Muokkaa direktiivejä
 manual_header=Käytä alla olevaa tekstikenttää muokataksesi manuaalisesti $1 : n ProFTPD-direktiivejä, jotka koskevat tätä virtuaalipalvelinta, hakemistoa tai komentoja.
 manual_configs=Muokkaa asetustiedostoja
@@ -92,6 +100,7 @@ manual_ecannot=Et voi muokata direktiivejä manuaalisesti
 manual_file=Muokkaa tiedostoja koskevia direktiivejä:
 manual_efile=Virheellinen ProFTPd-määritystiedosto
 manual_etest=Konfigurointitiedoston virhe havaittu : $1 
+
 limit_title=Komento-asetukset
 limit_header4=Komentoille $1 hakemistossa $2 
 limit_header2=Komentoille $1 oletuspalvelimessa
@@ -103,17 +112,20 @@ limit_return=komentoa kohti
 limit_header5=Komentoille $1 nimettömässä FTP: ssä
 limit_header6=Komentoille $1 tiedostossa $2 
 limit_header7=Komennoille $1 globaalisti
+
 lserv_title=Määritä komennot
 lserv_cmd=FTP-komennot
 lserv_delete=Poista komennot config
 lserv_err=Komentojen tallentaminen epäonnistui
 lserv_ecmd=Ei komentoja valittu
+
 dserv_title=Määritä hakemisto
 dserv_dir=Hakemistopolku
 dserv_err=Hakemiston tallentaminen epäonnistui
 dserv_edir=Puuttuu hakemistopolku
 dserv_delete=Poista hakemistoasetukset
 dserv_eanondir=Hakemiston on oltava nimettömän FTP-hakemiston alla
+
 mod_core_type=Palvelintyyppi
 mod_core_inetd=Suorita Inetdistä
 mod_core_stand=Itsenäinen demoni
@@ -301,6 +313,7 @@ mod_core_duser=Estä käyttäjät
 mod_core_eip='$1' ei ole kelvollinen IP-osoite
 mod_core_enet='$1' ei ole kelvollinen verkko-osoite
 mod_core_ehost='$1' ei ole kelvollinen isäntänimi
+
 mod_ls_fakegroup=Väärä ryhmä hakemistoluetteloissa?
 mod_ls_fakeuser=Väärä käyttäjä hakemistoluetteloissa?
 mod_ls_fakemode=Väärennetyt luvat hakemistoluetteloissa
@@ -317,6 +330,7 @@ mod_ls_efakeuser=Puuttuva tai virheellinen väärennetty käyttäjä
 mod_ls_efakegroup=Puuttuva tai virheellinen väärennösryhmä
 mod_ls_options=Hakemistoluettelon vaihtoehdot
 mod_ls_strict=Ohittaako käyttäjän asetukset?
+
 mod_auth_chdir=Alkuperäinen kirjautumishakemisto
 mod_auth_echdir=Alkuhakemisto puuttuu tai on virheellinen
 mod_auth_chroot=Rajoita käyttäjät hakemistoihin
@@ -330,7 +344,9 @@ mod_auth_egroups=Chroot-ryhmän Unix-ryhmiä ei annettu
 mod_auth_echroot=Puuttuva tai virheellinen chroot-hakemisto
 mod_auth_login=Älä kysy salasanaa, jos sisäänkirjautuminen evätään?
 mod_auth_root=Sallivatko kirjautumisen pääkäyttäjä?
+
 mod_site_chmod=Sallitaanko chmod-komento?
+
 mod_unixpw_ufile=Vaihtoehtoinen Unix-salasanatiedosto
 mod_unixpw_eufile=Puuttuva tai virheellinen Unix-salasanatiedosto
 mod_unixpw_gfile=Vaihtoehtoinen Unix-ryhmätiedosto
@@ -338,6 +354,7 @@ mod_unixpw_egfile=Puuttuva tai virheellinen Unix-ryhmätiedosto
 mod_unixpw_none=Ei mitään
 mod_unixpw_pam=Pidäkö PAM: ta aina tekijänä?
 mod_unixpw_persist=Pidätkö salasanatiedoston auki jatkuvasti?
+
 mod_log_syslog=Loki virheet tiedostoon
 mod_log_sysdef=Järjestelmäloki
 mod_log_esyslog=Puuttuva tai virheellinen lokitiedosto
@@ -354,19 +371,25 @@ mod_log_fmt=Alusta merkkijono
 mod_log_format=Mukautetut lokimuodot
 mod_log_enickname=Puuttuva tai virheellinen muotoilun nimi
 mod_log_efmt=Puuttuu muotojono
+
 mod_pam_pam=Käytätkö PAM-todennusta?
 mod_pam_config=Todenna PAM-palvelun avulla
 mod_pam_econfig=Puuttuva tai virheellinen PAM-palvelu
+
 mod_readme_display=Ilmoita käyttäjälle readme-tiedostojen vastaavuudesta
 mod_readme_none=Ei mitään
 mod_readme_edisplay=Puuttuu readme-tiedostokuvio
+
 start_err=FTP-palvelimen käynnistäminen epäonnistui
 start_einetd=Et voi käynnistää palvelindeemonia inetd-tilassa.
+
 stop_err=FTP-palvelimen pysäyttäminen epäonnistui
 stop_einetd=Et voi pysäyttää palvelindeemonia inetd-tilassa.
 stop_erun=Ei käynnissä
+
 apply_err=FTP-määrityksen asettaminen epäonnistui
 apply_egone=Ei enää juokse
+
 ftpaccess_title=Hakemistokohtaiset asetukset-tiedostot
 ftpaccess_desc=Lisähakemistokohtaiset asetukset voidaan määrittää tiedostossa (kutsutaan yleensä <tt>.ftpaccess</tt>) jokaisessa hakemistossa. Valinnat koskevat kaikkia kyseisen hakemiston tiedostoja ja kaikkia alihakemistoja, ellei toinen vaihtoehtoinen tiedosto korvaa niitä.
 ftpaccess_create=Luo asetusten tiedosto
@@ -374,8 +397,10 @@ ftpaccess_find=Etsi Asetukset-tiedostot
 ftpaccess_auto=Alle nimettömiä
 ftpaccess_from=Hakemistosta
 ftpaccess_return=vaihtoehtojen tiedostoluettelo
+
 ftpusers_title=Estetyt FTP-käyttäjät
 ftpusers_desc=Jos se on käytössä <tt>todennus</tt> -kuvakkeen alla, tiedostoon $1 alla luetelluilta käyttäjiltä evätään sisäänkirjautumisoikeus FTP-käyttäjään.
+
 ftpindex_title=Hakemistokohtaiset asetukset-tiedosto
 ftpindex_delete=Poista tiedosto
 ftpindex_opts=Hakemistokohtaiset asetukset
@@ -385,8 +410,10 @@ ftpindex_addlimit=Lisää komentokohtaisia vaihtoehtoja ..
 ftpindex_header2=$1 $2 : ssa
 ftpindex_return=hakemistokohtaisten asetusten tiedosto
 ftpindex_header=$1 : lle
+
 find_err=Asetustiedostojen löytäminen epäonnistui
 find_eanon=Anonyymiä FTP: tä ei ole määritetty missään virtuaalipalvelimessa
+
 log_global=Muutettiin globaalit $1 -vaihtoehdot
 log_ftpusers=Muutettu kielletty FTP-käyttäjä
 log_virtc=Luotu palvelin $1 
@@ -420,6 +447,7 @@ log_anonm=Editoinut nimettömän FTP-palvelimen manuaalisesti manuaalisesti palv
 log_anon=Muutettu $1 palvelimen $2 nimettömässä FTP: ssä
 log_start=Aloitti proftpd
 log_apply=Sovelletut muutokset
+
 eafter=Kokoonpanon varmennus epäonnistui: $1 Muutoksia ei ole tallennettu.
 proftpd_apply=Ota muutokset käyttöön
 proftpd_stop=Pysäytä ProFTPd

@@ -39,7 +39,9 @@ index_thost=Ім'я хоста
 index_tdesc=Опис
 index_tver=Версія
 index_ttype=Тип ОС
+
 this_server=цей сервер
+
 add_title=Додати сервери
 add_msg=Додавання $1.
 add_gmsg=Додавання серверів у групу $1 ..
@@ -49,6 +51,7 @@ add_echeck=Сервер $1 не має модуля налаштування Use
 add_echeck2=Сервер $1 не має модуля Usermin User
 add_eversion=Сервер $1 не працює Usermin версії $2 або вище.
 add_ok=Додано $1 з $2 модулями та $3 темами.
+
 refresh_title=Оновити списки модулів та тем
 refresh_header=Повторний запит модулів та списків тем з усіх серверів ..
 refresh_header4=Повторне запитування модулів та списків тем від членів $2.
@@ -64,6 +67,7 @@ refresh_g2=Видалено $1 групи.
 refresh_done=.. зроблено
 refresh_del=Видалено $1 зі списку серверів
 refresh_failed=Не вдалося оновити $1 : $2 
+
 host_title=Керований сервер
 host_header=Інформація про керований Usermin сервер
 host_name=Ім'я хоста
@@ -81,6 +85,7 @@ host_header_u=Користувачі Usermin
 host_header_g=Групи користувачів
 host_return=реквізити сервера
 host_version2=Версія
+
 edit_title_mod=Редагувати модуль
 edit_title_theme=Редагувати тему
 edit_header_mod=Деталі модуля Usermin від $1 
@@ -103,6 +108,7 @@ edit_codes=З тесту $1
 edit_acl=Відредагуйте ACL для
 edit_uacl=Користувач $1 на $2 
 edit_gacl=Групуйте $1 на $2 
+
 install_err=Не вдалося встановити модуль
 install_title=Встановити модуль
 install_elocal=Не вказано локальний файл
@@ -123,6 +129,7 @@ do_failed=Не вдалося встановити на $1 : $2
 do_success_mod=Встановлений модуль $2 на $1 
 do_success_theme=Встановлена тема $2 на $1 
 do_done=.. зроблено
+
 delete_err=Не вдалося видалити модуль $1 
 delete_epack=Модуль $1 не існує
 delete_title=Видалити модуль
@@ -140,6 +147,7 @@ delete_edepends=Модуль (и) $1 залежать від нього.
 delete_egone=Модуль більше не існує
 delete_esuccess=Видалено з $1 : $2 
 delete_acls=Видалити з користувачів та скинути налаштування контролю доступу?
+
 user_title1=Створіть Usermin User
 user_header1=Нові дані користувача Usermin
 user_name=Ім'я користувача
@@ -198,11 +206,13 @@ user_all=&lt;всі хости&gt;
 user_donthave=&lt;хости, у яких цього немає&gt;
 user_have=&lt;господарі, у яких є&gt;
 user_ofgroup=Члени $1 
+
 udelete_title=Видалити користувача
 udelete_doing=Видалення користувача $1 з усіх хостів ..
 udelete_success=Видалено з $1 
 udelete_failed=Не вдалося видалити з $1 : $2 
 udelete_done=.. зроблено
+
 group_title1=Створити групу
 group_header1=Нові дані групи користувачів
 group_name=Назва групи
@@ -230,6 +240,7 @@ group_failed2=Не вдалося оновити групу на $1 : $2
 group_return=деталі групи
 group_nomems=Немає членів
 group_servers=Сервер (и) для створення
+
 gdelete_title=Видалити групу
 gdelete_desc=Ви впевнені, що хочете видалити групу $1 та її користувачів-учасників $2 з усіх хостів?
 gdelete_ok=Видалити групу
@@ -238,6 +249,7 @@ gdelete_success=Видалено з $1
 gdelete_failed=Не вдалося видалити з $1 : $2 
 gdelete_done=.. зроблено
 gdelete_esub=У цій групі є підгрупи $1, тому їх неможливо видалити.
+
 acl_title=Модуль контролю доступу
 acl_title2=Для користувача $1 у $2 на $3 
 acl_title3=Для групи $1 у $2 на $3 
@@ -256,6 +268,7 @@ acl_doing2=Встановлення контролю доступу для $1 н
 acl_success=Контроль доступу встановлено на $1 
 acl_failed=Не вдалося встановити контроль доступу на $1 : $2 
 acl_done=.. зроблено
+
 sync_title=Синхронізувати сервери
 sync_desc=Ця форма дозволяє створювати користувачів Usermin та групи на серверах, які їх зараз не мають, щоб привести облікові записи синхронізуватись на всіх серверах кластеру.
 sync_hosts=Сервери для синхронізації
@@ -279,6 +292,7 @@ sync_gcreate=Додавання групи Usermin $1 ..
 sync_acl=Копіювання файлів ACL для $1.
 sync_test=Тільки покажіть, що б було зроблено?
 sync_restart=Перезапуск Usermin ..
+
 upgrade_title=Оновити Usermin
 upgrade_header=Оновлення Usermin на всіх хостах ..
 upgrade_header2=Оновлення Usermin на $1 ..
@@ -297,6 +311,7 @@ upgrade_failed=Не вдалося встановити на $1 : $2
 upgrade_done=.. зроблено
 upgrade_efast=Можуть бути оновлені лише сервери, що використовують швидкий режим RPC
 upgrade_ereconn=Помилка повторного підключення до Usermin після оновлення!  : $1 
+
 update_title=Оновлення модулів
 update_header=Оновлення модулів усіх хостів ..
 update_header5=Оновлення модулів на $2.

@@ -11,11 +11,13 @@ index_boot=Önyüklemeden başla?
 index_bootdesc=Dovecot sunucusunu sistem önyükleme zamanında başlatmayı etkinleştirmek veya devre dışı bırakmak için bu ayarı değiştirin.
 index_return=modül dizini
 index_version=Sürüm $1
+
 stop_err=Dovecot durdurulamadı
 stop_erunning=Artık koşmuyor
 start_err=Dovecot başlatılamadı
 start_eprotos=<b>Ağ ve Protokoller</b> sayfasında hiçbir protokol seçilmedi
 apply_err=Yapılandırma uygulanamadı
+
 net_title=Ağ ve Protokoller
 net_header=Dovecot ağ iletişimi ve posta protokolü seçenekleri
 net_protocols=Posta protokolleri sunma
@@ -42,8 +44,11 @@ net_eimaps_listen=IMAP SSL bağlantıları için geçersiz IP adresi
 net_epop3s_listen=POP3 SSL bağlantıları için geçersiz IP adresi
 net_elisten=SSL olmayan bağlantılar için geçersiz IP adresi
 net_essl_listen=SSL bağlantıları için geçersiz IP adresi
+
 imap_title=IMAP Seçenekleri
+
 pop3_title=POP3 Seçenekleri
+
 ssl_title=SSL Yapılandırması
 ssl_header=IMAP ve POP3 SSL modu seçenekleri
 ssl_key=SSL özel anahtar dosyası
@@ -61,7 +66,9 @@ ssl_ecert=Eksik veya var olmayan sertifika dosyası
 ssl_eca=Eksik veya var olmayan istemci CA sertifika dosyası
 ssl_eregen=Eksik veya sayısal olmayan parametre yenileme aralığı
 ssl_epass=SSL anahtar dosyası şifresi girilmedi
+
 misc_title=Diğer seçenekler
+
 login_title=Kullanıcı ve Giriş Seçenekleri
 login_header=Kullanıcı kimlik doğrulama ve giriş seçenekleri
 login_fuid=Minimum geçerli UID
@@ -117,6 +124,7 @@ login_procs=Maksimum giriş işlemleri
 login_count=İlk giriş işlemleri
 login_eprocs=Eksik veya geçersiz maksimum giriş işlemi sayısı
 login_ecount=Eksik veya geçersiz başlangıç giriş işlemi sayısı
+
 mail_title=Posta Dosyaları
 mail_header=Posta konumu ve okuma seçenekleri
 mail_env=Posta dosyasının konumu
@@ -169,6 +177,7 @@ mail_eindexmode=Dizin dosyaları konumu, posta dosyası konumu otomatik olarak a
 mail_econtrolmode=Posta dosyalarının konumu otomatik olarak algılandığında kontrol dosyalarının konumu ayarlanamaz
 mail_eindex=Dizin dosyaları için eksik veya geçersiz mutlak yol
 mail_econtrol=Kontrol dosyaları için eksik veya geçersiz mutlak yol
+
 log_net=Değişen Ağ ve Protokoller
 log_login=Değişen Kullanıcı ve Giriş Seçenekleri
 log_mail=Değişen Posta Dosyaları
@@ -179,6 +188,7 @@ log_stop=Durdurulmuş Dovecot Sunucusu
 log_bootup=Önyükleme sırasında Etkin Dovecot
 log_bootdown=Önyükleme zamanında Engelli Dovecot
 log_manual=El ile düzenlenmiş yapılandırma dosyası $1
+
 manual_title=Yapılandırma Dosyalarını Düzenle
 manual_editsel=Dovecot yapılandırma dosyasını düzenle
 manual_err=Yapılandırma dosyası kaydedilemedi

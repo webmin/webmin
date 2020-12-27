@@ -2,6 +2,7 @@ index_title=Máy chủ thư thoại
 index_ecmd=Lệnh Vgetty $1 không được tìm thấy trên hệ thống của bạn. Có thể nó chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
 index_econfig=Không tìm thấy tệp cấu hình Vgetty $1 trên hệ thống của bạn. Có thể nó chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
 index_return=chỉ số thư thoại
+
 vgetty_title=Cấu hình cổng nối tiếp
 vgetty_desc=Để máy chủ của bạn trả lời các cuộc gọi thoại với modem được kết nối với cổng nối tiếp, nó phải được liệt kê bên dưới. Khi bạn thêm một cổng vào danh sách này, chương trình $1 sẽ được cấu hình để trả lời các cuộc gọi và phát một tin nhắn.
 vgetty_add=Thêm một cổng nối tiếp mới
@@ -32,6 +33,7 @@ vgetty_erings=Số nhẫn bị thiếu hoặc không hợp lệ
 vgetty_erings2=Số vòng phải có ít nhất 2
 vgetty_eans=Không có chế độ trả lời nào được chọn
 vgetty_eclash=Cổng nối tiếp $1 đã được sử dụng
+
 options_title=Tùy chọn máy chủ thư thoại
 options_header=Tùy chọn cho tất cả các cổng nối tiếp
 options_maxlen=Độ dài tin nhắn tối đa
@@ -68,6 +70,7 @@ options_eprog=Chương trình bị thiếu hoặc không tồn tại để chạ
 options_eowner=Người dùng Unix bị thiếu hoặc không hợp lệ cho các tệp tin
 options_egroup=Nhóm Unix bị thiếu hoặc không hợp lệ cho các tệp tin
 options_emode=Quyền bát phân bị thiếu hoặc không hợp lệ cho các tệp tin
+
 received_title=Tin nhắn đã nhận
 recieved_desc=Tin nhắn thư thoại đã được nhận bởi máy chủ của bạn được liệt kê bên dưới. Để nghe một tin nhắn, bấm vào ngày/giờ trong cột đầu tiên.
 received_none=Không có tin nhắn thư thoại nhận được đã được tìm thấy.
@@ -79,9 +82,12 @@ received_delete=Xóa tin nhắn đã chọn
 received_move=Chuyển đổi được chọn thành lời chào
 received_all=Chọn tất cả
 received_invert=Lựa chọn đối nghịch
+
 listen_efile=Tên tin nhắn không hợp lệ!
 listen_epath=Tin nhắn thư thoại không còn tồn tại
+
 delete_efile=Tên tin nhắn không hợp lệ!
+
 messages_title=Tin nhắn chúc mừng
 messages_desc=Trang này liệt kê các tin nhắn chào mừng sẽ được phát khi người gọi kết nối với máy chủ thư thoại của bạn. Nếu bạn có nhiều hơn thế, một tin nhắn được chọn ngẫu nhiên sẽ được sử dụng.
 messages_file=Tên tệp
@@ -89,12 +95,15 @@ messages_none=Không có tin nhắn chúc mừng có sẵn.
 messages_updesc=Biểu mẫu này cho phép bạn tải lên tệp WAV tin nhắn chào mừng bổ sung, tệp này sẽ được chuyển đổi sang định dạng đã chọn để sử dụng bởi modem của bạn. Tốc độ mẫu của WAV được tải lên phải giống với tốc độ mẫu của các tin nhắn nhận được, cũng như định dạng đã chọn.
 messages_upload=Tải lên tin nhắn
 messages_fmt=chuyển đổi sang
+
 pvfdesc=$1, $2 bit
+
 upload_err=Không thể thêm tin nhắn
 upload_emessage=Không có tệp WAV nào được chọn
 upload_ewav=Không thể chuyển đổi tệp WAV : $1 
 upload_epvf=Không thể tạo tệp RMD : $1 
 upload_esame=Tệp tin nhắn $1 đã tồn tại
+
 log_apply=Cấu hình ứng dụng
 log_upload=Tin nhắn chúc mừng đã tải lên $1 
 log_move=Đã chuyển đổi $1 tin nhắn nhận được
@@ -104,5 +113,6 @@ log_options=Tùy chọn thư thoại đã thay đổi
 log_vgetty_create=Đã thêm cổng nối tiếp $1 
 log_vgetty_modify=Cổng nối tiếp được sửa đổi $1 
 log_vgetty_delete=Đã xóa cổng nối tiếp $1 
+
 email_subject=Tin nhắn thoại
 email_body=Tin nhắn thư thoại nhận được ở $1 theo $2.

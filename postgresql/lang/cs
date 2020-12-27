@@ -13,6 +13,7 @@ index_add=Vytvořit novou databázi
 index_users=Nastavení uživatele
 index_return=seznam databází
 index_esql=PostgreSQL klientský program $1 nebyl ve vašem systému nalezen. Možná není PostgreSQL nainstalována, nebo vaše <a href='$2'>konfigurace modulu</a> není správná.
+
 index_ehba=PostgreSQL konfigurační soubor hostů $1 nebyl ve vašem systému nalezen. Možná není PostgreSQL nainstalována, nebo vaše <a href='$2'>konfigurace modulu</a> není správná.
 index_superuser=PostgreSQL klientský program psql nemůže být vaším systémem spuštěn. Možná není PostgreSQL nainstalována, nebo vaše <a href='$1'>konfigurace modulu</a> není správná.
 index_eversion=PostgreSQL databáze ve vašem systému je ve verzi $1, avšak Webmin podporuje pouze verze $2 a vyšší.
@@ -21,10 +22,12 @@ index_ldpath=Vaše cesta ke sdíleným knihovnám je nastavena na $1 a výstup z
 index_version=PostgreSQL verze $1
 index_setup=PostgreSQL  konfigurační soubor hostů $1 nebyl ve vašem systému nalezen,což znamená, že dposud nebyly databáze inicializovány. Klepnutím na níže uvedené tlačítko nastaví PostgreSQL pomocí příkazu $2.
 index_setupok=Inicializovat databázi
+
 login_err=Chyba při přihlášení
 login_ecannot=Nemáte oprávnění konfigurovat databázové přihlášení
 login_elogin=Chybějící přihlášení administrátora
 login_epass=Nesprávné přihlašovací jméno nebo heslo administrátora
+
 dbase_title=Editace databáze
 dbase_noconn=Tato databáze momentálně neumožňuje přípojení, proto nemohou být v ní vykonány žádné úkony.
 dbase_tables=Tabulky databáze
@@ -35,6 +38,7 @@ dbase_none=Tato databáze nemá žádné tabulky.
 dbase_fields=Sloupce:
 dbase_return=seznam tabulek
 dbase_ecannot=Nemáte oprávnění editovat tuto databázi
+
 table_title=Editace tabulky
 table_title2=Vytvoření tabulky
 table_opts=Nastavení sloupce
@@ -74,27 +78,32 @@ field_esize='$1' není platná velikost sloupce
 field_eenum=Nejsou vloženy žádné číselné hodnoty
 field_efield='$1' není platný název sloupce
 field_ekey=Sloupce, které mohou mít prázdnou hodnotu nesmí být součástí primárního klíče
+
 exec_title=Spuštění SQL
 exec_header=Vložte SQL příkaz, který se použije na databázi $1 ..
 exec_exec=Spustit
 exec_err=Chyba při spuštění SQL
 exec_out=Výstup z SQL příkazu $1 ..
 exec_none=Nebyla vrácena žádná data
+
 stop_err=Chyba při ukončení databázového serveru
 stop_epidfile=Chyba při otevření PID souboru $1
 stop_ekill=Chyba při zabití procesu $1 : $2
 stop_ecannot=Nemáte oprávnění ukončit dattabázový server
 start_err=Chyba při spušteění databázového serveru
 start_ecannot=Nemáte oprávnění spustit databázový server
+
 ddrop_err=Chyba při smazání databáze
 ddrop_title=Smazání databáze
 ddrop_rusure=Skutečně chcete smazat databázi $1 ? $2 tabulky obsahující $3 řádky s daty budou smazány.
 ddrop_mysql=Jelikož se jedná o hlavní databázi, její smazání pravděpodobně zapříčiní, ža váš PostgreSQL server bude nepoužitelný!
 ddrop_ok=Smazat databázi
+
 tdrop_err=Chyba při mazání tabulky
 tdrop_title=Smazání tabulky
 tdrop_rusure=ASkutečně chcete smazat tabulku $1 v databázi $2 ? $3 řádky s daty budou smazány.
 tdrop_ok=Smazat tabulku
+
 view_title=Data tabulky
 view_pos=Řádky $1 až $2 z $3
 view_none=Tato tabulka neobsahuje žádná data
@@ -104,6 +113,7 @@ view_delete=Smazat vybrané řádky
 view_nokey=Data v této tabulce nemohou být editovány, protože se v ní nenachází žádný primární klíč.
 view_all=Vybrat vše
 view_invert=Invertovat výběr
+
 newdb_title=Vytvoření databáze
 newdb_header=Nastavení nové databáze
 newdb_db=Název databáze
@@ -112,6 +122,7 @@ newdb_err=Chyba při vytvoření databáze
 newdb_edb=Chybějící nebo nesprávný název databáze
 newdb_ecannot=Nemáte oprávnění vytvářet databáze
 newdb_epath=Chybějící cesta k databázi
+
 user_title=PostgreSQL uživatelé
 user_ecannot=Nemáte oprávnění editovat uživatele
 user_name=Uživatelské jméno
@@ -134,6 +145,7 @@ user_sync=Níže uvedná nastavení konfigurují synchronizaci mezi Unix uživat
 user_sync_create=Přidat nového PostgreSQL uživatele v momentě, kdy je přidán Unix uživatel.
 user_sync_modify=Aktualizovat PostgreSQL uživatele v momentě, kdy je modifikován Unix uživatel.
 user_sync_delete=Smazat PostgreSQL uživatele v momentě, kdy je odpovídající Unix uživatel smazán.
+
 host_ecannot=Nemáte oprávnění editovat povolené hosty
 host_title=Povolení hosté
 host_desc=Jakmile se klient připojí k databázi, projdou se níže uvedení hosté v daném pořadí, dokud jeden z nich nevyhovuje povolenému nebo zakázanému klientovi.
@@ -166,6 +178,7 @@ host_enetmask=Chybějící nebo nesprávná síťová maska
 host_enetwork=Chybějící nebo nesprávná síť
 host_ehost=Chybějící nebo nesprávná IP adresa hosta
 host_move=Přesunout
+
 grant_title=Oprávněná privilegia
 grant_tvi=Objekt
 grant_type=Typ
@@ -189,6 +202,7 @@ grant_v=Zobrazení
 grant_i=Index
 grant_S=Sekvence
 grant_none=Nejsou přidělena privilegia žádným tabulkám, zobrazením, sekvencím nebo indexům.
+
 group_title=PostgreSQL skupiny
 group_ecannot=Nemáte oprávnění editovat skupiny
 group_name=Jméno skupiny
@@ -204,6 +218,7 @@ group_ename=Chybějící nebo nesprávné jméno skupiny
 group_egid=Chybějící nebo nesprávné ID skupiny
 group_etaken=Jméno skupiny je již používáno
 group_none=Prozatím neexistují žádné PostgreSQL skupiny
+
 esql=SQL $1 je chybný : $2
 log_start=Spuštěn PostgreSQL server
 log_stop=Ukončen PostgreSQL server
@@ -211,6 +226,7 @@ log_db_create=Vytvořena databáze $1
 log_db_delete=Smazána databáze $1
 log_table_create=Vytvořena tabulka $1 v databázi $2
 log_table_delete=Smazána tabulka $1 z databáze $2
+
 log_field_create=Přidán sloupec $1 $4 do $2 v databázi $3
 log_field_modify=Modifikován sloupec $1 $4 v $2 v databázi $3
 log_field_delete=Smazán sloupec $1 z $2 v databázi $3
@@ -239,6 +255,7 @@ log_delete_hba=Smazán povolený host $1
 log_move_hba=Přeesunut povolený host $1
 log_grant=Přidělena privilegia na $1 v databázi $2
 log_setup=Inicialiozována databáze
+
 acl_dbs=Databáze, které může tento uživatel spravovat
 acl_dbscannot=Tato kontrola přístupu se stane účinou, jakmile se spustí PostgreSQL databázový server.
 acl_dall=Všechny databáze
@@ -247,6 +264,8 @@ acl_create=Může vytvořit nové databáze?
 acl_delete=Může smazat databáze?
 acl_stop=Může ukončit a spustit PostgreSQL server?
 acl_users=Může editovat uživatele, skupiny a práva?
+
 fdrop_err=Chyba během mazání sloupce
+
 setup_err=Chyba při inicializaci databáze
 setup_ecannot=Nemáte oprávnění inicializovat databázi

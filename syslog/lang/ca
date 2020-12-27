@@ -24,8 +24,10 @@ all=Tots
 index_view=Visualitza...
 index_viewfile=Visualitza el fitxer de registre:
 index_viewok=Visualitza
+
 restart_ekill=No s'ha pogut enviar el senyal al procés syslog $1: $2
 restart_ecannot=No tens permès per reiniciar syslog
+
 start_ecannot=NO tens permís per iniciar syslog
 edit_title=Edició de Registre
 create_title=Addició de Registre
@@ -56,11 +58,13 @@ edit_tag=Només pel programa
 edit_return=als detalls del registre
 edit_ecannot=No tens permís per editar la configuració dels registres
 edit_ecannot2=No tens permís per editar aquests registres
+
 view_title=Visualització de Registre
 view_header=Darreres $1 línies de $2
 view_empty=El fitxer de registre està buit
 view_refresh=Refresca
 view_filter=Mostra només les línies amb el text $1
+
 save_err=No s'ha pogut desar el registre
 save_efile='$1' no és un nom de fitxer vàlid: $2
 save_epipe='$1' no és un <i>pipe</i> amb nom vàlid
@@ -80,11 +84,13 @@ save_ecannot5=No tens permís per modificar aquest registre
 save_ecannot6=No tens permís per visualitzar registres arbitraris
 save_ecannot7=No tens permís per visualitzar aquest registre extra
 save_emissing=Hi falta el fitxer de registre a visualitzar
+
 log_modify=S'ha modificat el registre a $1
 log_create=S'ha afegit el registre a $1
 log_delete=S'ha suprimit el registre a $1
 log_apply=S'han aplicat els canvis
 log_start=S'ha iniciat el servidor de registres
+
 desc_sysmesg=Missatges del Sistema
 desc_mail=Registre de Correu
 desc_auth=Registre d'Autenticació
@@ -93,6 +99,7 @@ desc_news=Registre de Notícies NNTP
 desc_uucp=Registre UUCP
 desc_debug=Missatges de Depuració
 desc_cron=Registre de treballs Cron
+
 acl_noedit=Només pot veure els registres
 acl_any=Pot veure qualsevol fitxer com un registre
 acl_logs=Pot veure i configurar els fitxers de registre

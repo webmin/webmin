@@ -17,6 +17,7 @@ index_tdesc=apibūdinimas
 index_tucount=Vartotojai
 index_tgcount=Grupės
 index_ttype=OS tipas
+
 add_title=Pridėti serverius
 add_msg=Pridedama $1 ..
 add_gmsg=Serverių pridėjimas grupėje $1 ..
@@ -26,6 +27,7 @@ add_echeck=Serveris $1 neturi vartotojų ir grupių modulio
 add_epft=Serveris $1 nenaudoja to paties vartotojo failų formato kaip šis pagrindinis kompiuteris
 add_egft=Serveris $1 nenaudoja to paties grupės failo formato kaip šis pagrindinis kompiuteris
 add_ok=Pridėta $1 su $2 vartotojais ir $3 grupėmis.
+
 host_title=Tvarko serveris
 host_header=Programinės įrangos valdomo serverio informacija
 host_name=Pagrindinio kompiuterio vardas
@@ -34,8 +36,7 @@ host_delete=Pašalinti iš valdomų sąrašų
 host_refresh=Atnaujinkite vartotojus ir grupes
 host_users=Vartotojų skaičius
 host_groups=Grupių skaičius
-host_ulist=Vartotojai serveryje
-host_glist=Grupės serveryje
+
 host_return=serverio duomenys
 refresh_title=Atnaujinkite vartotojus ir grupes
 refresh_header=Iš visų serverių iš naujo pateikiamos vartotojų ir grupių sąrašų užklausos.
@@ -49,6 +50,7 @@ refresh_gdel=pašalinti $1 grupes
 refresh_done=.. padaryta
 refresh_del=$1 pašalintas iš serverių sąrašo
 refresh_failed=Nepavyko atnaujinti $1 : $2 
+
 uedit_host=Informacija iš $1 
 uedit_leave=Nekeisk
 uedit_set=Nustatytas į
@@ -66,6 +68,7 @@ uedit_servers=Kuriamas serveris (-iai)
 uedit_all=&lt;visi šeimininkai&gt;
 uedit_donthave=&lt;šeimininkai, kurie jo neturi&gt;
 uedit_group=$1 nariai
+
 usave_einuse=Vartotojas tuo pačiu vardu jau egzistuoja $1 
 usave_esecgid=Antrinė grupė $1 neegzistuoja
 usave_con=Kuriama $1 ..
@@ -88,16 +91,20 @@ usave_header=Kuriamas $1 vartotojas visuose kompiuteriuose.
 usave_header5=Kuriamas $1 $2 vartotojas.
 usave_header4=Kuriamas $1 vartotojas $2 grupės nariams.
 usave_header3=Kuriamas vartotojas $1 prieglobose, kurie jo neturi.
+
 search_hosts=Šeimininkai
+
 udel_on=Ištrinama iš $1 ..
 udel_servs=Ištrinkite namų katalogą, jei jo yra
 udel_others=Ištrinti vartotoją kituose moduliuose?
 udel_dothers=Ištrinama kituose moduliuose ..
 udel_gone=Vartotojo nebeegzistuoja.
 udel_failed=Nepavyko ištrinti vartotojo : $1 
+
 gdel_on=Ištrinama iš $1 ..
 gdel_gone=Vartotojo nebeegzistuoja.
 gdel_failed=Nepavyko ištrinti grupės : $1 
+
 gsave_create=Pridedamas grupės failo įrašas.
 gsave_con=Kuriama $1 ..
 gsave_euser=$1 vartotojo nėra
@@ -110,10 +117,12 @@ gsave_header=Kuriama grupė $1 visuose kompiuteriuose.
 gsave_header5=Kuriama grupė $1 $2.
 gsave_header4=Kuriama $1 grupė $2 nariams.
 gsave_header3=Kuriama grupė $1 priegloboje, kurios jos nėra.
+
 gedit_host=Informacija iš $1 
 gedit_add=Pridėti vartotojus
 gedit_del=Pašalinkite vartotojus
 gedit_donthave=&lt;šeimininkai, kurie to neturi&gt;
+
 sync_title=Sinchronizuoti serverius
 sync_desc=Ši forma leidžia jums sukurti vartotojus ir grupes serveriuose, kurie jų šiuo metu neturi, kad būtų galima sinchronizuoti paskyras visuose jūsų grupės serveriuose.
 sync_hosts=Sinchronizuojami serveriai
@@ -141,6 +150,7 @@ sync_test=Tik parodyk, kas bus padaryta?
 sync_makehome=Sukurti namų katalogus?
 sync_copy=Nukopijuoti failus į pagrindinį katalogą?
 sync_others=Sukurti vartotoją kituose moduliuose?
+
 log_create_user=Sukurtas vartotojas $1 
 log_delete_user=Ištrintas vartotojas $1 
 log_modify_user=Modifikuotas vartotojas $1 

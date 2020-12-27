@@ -16,11 +16,14 @@ index_esame=<a href='$2'>modül yapılandırması</a> sayfasında ayarlanan $1 U
 index_eroot=$1 Usermin yapılandırma dizini var, ancak başvurduğu $2 program kök dizini yok! Usermin'i manuel olarak indirmeli ve yeniden yüklemelisiniz.
 index_restart=Usermin'i yeniden başlat
 index_restartmsg=Usermin sunucusu işlemini yeniden başlatmak için bu düğmeyi tıklatın. Yakın zamanda Perl'i yükselttiyseniz bu gerekli olabilir.
+
 access_title=IP Erişim Kontrolü
 access_desc=Usermin sunucusu, bu formu kullanarak yalnızca belirli IP adreslerinden erişime izin vermeyecek veya erişime izin verecek şekilde yapılandırılabilir. Ana bilgisayar adları (foo.bar.com gibi) ve IP ağları (10.254.3.0 veya 10.254.1.0/255.255.255.128 veya 10.254.1.0/25 veya 10.254.1.5-10.254.97.127 gibi) de girilebilir. Sunucunuza erişimi, özellikle de İnternet'ten erişilebiliyorsa, güvenilir adreslerle sınırlamalısınız. Aksi takdirde, şifrenizi tahmin eden herkes sisteminizde tam denetime sahip olacaktır.
+
 bind_title=Bağlantı Noktaları ve Adresler
 bind_desc2=Bu form, Usermin'in dinlediği bağlantı noktası numarasını değiştirmek veya sisteminizdeki tek bir IP adresini dinletmek için kullanılabilir. Ayrıca, birden çok bağlantı noktasındaki bağlantıları kabul edecek veya birkaç IP adresini dinleyecek şekilde yapılandırabilirsiniz. Not - web tarayıcınız, bağlantı noktasını veya bağlantı adresini değiştirdikten sonra tekrar giriş yapmanızı isteyebilir.
 bind_erestart=Usermin'i yeni adres ve bağlantı noktası ayarlarıyla başlatırken bir hata oluştu : $1 
+
 mods_title=Usermin Modülleri
 umods_title=Usermin Modülleri
 mods_desc1=Usermin modülleri kurulumdan sonra sağdaki form kullanılarak eklenebilir. Modüller genellikle her biri bir veya daha fazla modül içerebilen <tt>.wbm</tt> dosyalarına dağıtılır. İşletim sisteminiz tarafından destekleniyorsa modüller RPM dosyalarından da yüklenebilir.
@@ -41,15 +44,18 @@ mods_desc3=Mevcut modüller aşağıdaki form kullanılarak silinebilir. Bir mod
 mods_delete=Modülleri Sil
 mods_deleteok=Seçilen Modülleri Sil
 mods_desc4=Kurulu modüller aşağıdaki form kullanılarak wbm.gz dosyası olarak dışa aktarılabilir. Bir modül dosyası daha sonra Usermin çalıştıran başka bir sisteme kurulabilir.
+
 os_title=İşletim Sistemi ve Çevre
 os_desc3=Bu sayfa, yükleme sırasında Usermin tarafından algılanan işletim sistemini ve o anda algılanan sistemi görüntüler. Farklıysa, Usermin'in işletim sistemi bilgilerinin güncellenmesini seçebilirsiniz; bu, yakın zamanda yeni sürüme geçmeniz durumunda gerekli olabilir.
 os_desc2=Programları çalıştırırken Usermin tarafından kullanılan arama yolunu ve herhangi bir programa iletilen paylaşılan kitaplık yolunu da değiştirebilirsiniz.
 os_usermin=Usermin'e göre işletim sistemi
 os_iusermin=Usermin tarafından kullanılan dahili işletim sistemi kodu
 os_update=Usermin'i algılanan işletim sistemini kullanacak şekilde güncelleyin
+
 lang_title=Dil
 lang_title2=Usermin Dili
 lang_intro=Bu sayfa, Usermin'in başlıkları, bilgi istemlerini ve mesajları görüntülemek için hangi dili kullanacağını seçmenize izin verir
+
 session_title=Kimlik Doğrulama
 session_desc1=Etkinleştirildiğinde, parola zaman aşımları, aynı kullanıcı için başarısız olan her oturum açma girişimi arasında sürekli genişleyen bir gecikme ekleyerek Usermin sunucunuzu kaba kuvvetli parola kırma saldırılarına karşı korur.
 session_desc2=Oturum kimlik doğrulaması etkinleştirildiğinde, oturum açmış olan her kullanıcının oturumu Usermin tarafından izlenir ve bu da boştaki kullanıcıların otomatik olarak oturumlarının kapatılmasını sağlar. Oturum kimlik doğrulamasını etkinleştirmenin veya devre dışı bırakmanın tüm kullanıcıları yeniden giriş yapmaya zorlayabileceğini unutmayın.
@@ -73,6 +79,7 @@ session_blank=Boş giriş yapan kullanıcılardan ilk girişte bir tane seçmele
 session_homedir=Giriş yaptıktan sonra eksik ev dizinleri oluşturulsun mu?
 session_homedir_perms=Yeni dizin izinleri
 session_ehomedir_perms=Eksik veya geçersiz sekizli giriş dizini izinleri
+
 themes_title=Usermin Temaları
 themes_desc=Temalar, simgeler, renkler, arka planlar ve muhtemelen sayfa düzeni dahil Usermin kullanıcı arayüzünün görünümünü kontrol eder. Aşağıdaki seçim kutusu, sisteminizde kurulu Usermin kullanıcıları için varsayılan temalardan birini seçmek için kullanılabilir.
 themes_sel=Geçerli tema :
@@ -101,7 +108,9 @@ themes_eirpm=RPM yüklemesi başarısız oldu : $1
 themes_ok=Tema başarıyla değişti.. Webmin dizin sayfasına yönlendiriliyor.
 themes_delete=Bu form, sisteminizde yüklü olan ve şu anda kullanımda olmayan temalardan birini silmek için kullanılabilir.
 themes_delok=Silinecek tema :
+
 themes_desc4=Yüklü temalar aşağıdaki formu kullanarak bir wbt.gz dosyası olarak dışa aktarılabilir. Bir tema dosyası Usermin çalıştıran başka bir sisteme kurulabilir.
+
 configs_ecannot=Bu modülü yapılandırmanıza izin verilmiyor
 configs_title=Usermin Modül Yapılandırması
 configs_header=Yapılandırılabilir modüller
@@ -115,8 +124,10 @@ configs_global=Global modül yapılandırması
 configs_globaldesc=Bu formdaki ayarlar modülün tüm kullanıcıları için geçerlidir ve genellikle kullandığı program ve dosyalarla ilgili seçenekleri belirler.
 configs_user=Varsayılan kullanıcı tercihleri
 configs_userdesc=Bu formdaki ayarlar, bu modülün kullanıcı tarafından düzenlenebilir tercihleri için varsayılanları tanımlar. Aksi belirtilmedikçe, bireysel kullanıcılar tarafından geçersiz kılınabilir.
+
 acl_title=Mevcut Modüller
 acl_desc=Hangi kurulu Usermin modüllerinin kullanıcılar tarafından görülebileceğini seçmek için bu sayfayı kullanın.
+
 ssl_title=SSL Şifrelemesi
 ssl_desc1=Usermin'in çalıştığı ana bilgisayarda SSLeay Perl modülünün yüklü olduğu görülüyor. Usermin bunu kullanarak tarayıcınız ve sunucu arasında SSL şifreli iletişimi destekler. Kullanıcılar Usermin sunucunuza İnternet üzerinden erişiyorsa, bir saldırganın şifrelerini yakalamasını önlemek için kesinlikle SSL kullanmayı düşünmelisiniz.
 ssl_desc2=Uyarı - SSL desteğini yalnızca SSL'yi destekleyen bir tarayıcınız varsa ve tarayıcınız ile Usermin ana bilgisayarı arasında <tt>https</tt> engelleme isteği yoksa güvenlik duvarını açın.
@@ -125,18 +136,23 @@ ssl_hole=Şu anda herkesin erişebileceği varsayılan Usermin SSL anahtarını 
 ssl_savekey=Bu form, Usermin sunucunuzun kullanması için mevcut bir PEM biçimindeki SSL özel anahtarını ve sertifikasını yüklemenizi sağlar.
 ssl_copycert=Webmin'den Sertifikayı Kopyala
 ssl_copycertdesc=SSL sertifikasını, özel anahtarı, CA sertifikasını ve Webmin'in kullandığı diğer ayarları kopyalayın.
+
 ca_email=E
 ca_ou=Bölüm
 ca_o=organizasyon
 ca_sp=Durum
 ca_c=Ülke kodu
+
 newkey_ok=Usermin için aşağıdaki SSL anahtarı başarıyla oluşturuldu.
+
 stop_err=Usermin durdurulamadı
 stop_ekill=İşlem öldürülemedi : $1 
 stop_efile=Zaten durdu
 stop_ecannot=Usermin'i durdurmanıza izin verilmiyor
+
 start_err=Usermin başlatılamadı
 start_ecannot=Usermin'i başlatmanıza izin verilmiyor
+
 users_title=İzin Verilen Kullanıcılar ve Gruplar
 users_desc=Usermin, bu formu kullanarak hangi unix kullanıcılarının ve gruplarının oturum açmasına izin verileceğini sınırlayacak şekilde yapılandırılabilir. Bir unix grubunun tüm birincil üyelerini belirtmek için listeye <tt>@groupname</tt> girin.
 users_desc2=Bir dizi UID'yi eşleştirmek için listeye <tt>başlangıç sonu</tt>, <tt>başlangıç-</tt> veya <tt>-end</tt> girin.
@@ -150,10 +166,12 @@ users_euser='$1' geçerli bir kullanıcı adı değil
 users_egroup='$1' geçerli bir grup adı değil
 users_shells=Kabukları dosyada olmayan kullanıcıları reddet
 users_eshells=Eksik veya var olmayan mermiler dosyası
+
 defacl_title=Erişim Kontrol Seçenekleri
 defacl_desc=Bu sayfa, Usermin modülleri ve kullanıcıları için geçerli olan çeşitli erişim kontrolü seçeneklerini yapılandırmanıza olanak tanır. Bu seçenekler, Webmin Users modülündeki her kullanıcı için Global ACL'deki seçeneklere benzer.
 defacl_header=Usermin kullanıcıları için erişim kontrol seçenekleri
 defacl_err=Erişim kontrolü seçenekleri kaydedilemedi
+
 install_err1=$1 konumundan modül yüklenemedi
 install_efile=Dosya bulunmuyor
 install_err2=Yüklenen modül yüklenemedi
@@ -180,6 +198,7 @@ install_erpm=Usermin modülü veya tema RPM'si değil
 install_eirpm=RPM yüklemesi başarısız oldu : $1 
 install_cat=$1 kategorisi altında.
 install_eneither=RPM bir usermin modülü veya teması içermiyor
+
 delete_err=Modüller silinemedi
 delete_edep=$1 modülü, $2 modülü ona bağlı olduğundan silinemiyor
 delete_desc1=$1 ($2 'nin klonu)
@@ -189,6 +208,7 @@ delete_msg=Aşağıdaki modüller Usermin kurulumunuzdan başarıyla silindi :
 delete_rusure=$2 modüllerini silmek istediğinizden emin misiniz? $1 kB dosya sonsuza kadar silinecek.
 delete_rusure2=$2 temasını silmek istediğinizden emin misiniz? $1 kB dosya sonsuza kadar silinecek.
 delete_enone=Hiçbir modül seçilmedi
+
 ui_title=Kullanıcı arayüzü
 ui_desc=Bu form, tüm Usermin modülleri tarafından kullanılan kullanıcı arabirimi seçeneklerini düzenlemenizi sağlar.
 ui_header=Kullanıcı arayüzü seçenekleri
@@ -230,6 +250,7 @@ ui_hnm1=URL'den ana bilgisayar adı
 ui_hnm2=URL'den alan adı
 ui_hnm3=Diğer isim ..
 ui_tabs=Modüller kategorize edilsin mi?
+
 upgrade_title=Usermin'i Yükselt
 upgrade_title2=Usermin'i yükle
 upgrade_desc=Bu form, Usermin kurulumunuzun tamamını yeni bir sürüme yükseltmenizi sağlar. Yerel bir dosyadan, yüklenen bir dosyadan veya <a href=http://www.usermin.com/>www.usermin.com</a> adresindeki en son sürümden yükleme yapabilirsiniz. Manuel yükseltmede olduğu gibi, tüm yapılandırma ayarlarınız ve üçüncü taraf modüller korunacaktır.
@@ -263,6 +284,7 @@ upgrade_done=.. yükseltme tamamlandı.
 upgrade_failed=.. yükseltme başarısız!
 upgrade_updates=Usermin'in bu yeni sürümü için $1 güncelleme var. Şimdi otomatik olarak indirmek ve yüklemek için <a href='$2'>burayı tıklayın</a>.
 upgrade_eupdates=Güncelleme listesi indirilemedi : $1 
+
 update_desc1=Bu form, <a href=http://www.usermin.com/uupdates.html>Usermin Güncellemeleri</a> sayfasından veya başka bir kaynaktan hata veya güvenlik deliği içerdiği tespit edilen Usermin modüllerini yükseltmenizi sağlar. Bu, kurulu olan modülleri güncelleme için mevcut olanlarla karşılaştıracak ve isteğe bağlı olarak güncel olmayan modülleri otomatik olarak indirip kuracaktır.
 update_header1=Modülleri şimdi güncelle
 update_header2=Modülleri zamanında güncelleme
@@ -279,10 +301,12 @@ update_sched=Modülleri $2 günde bir $1 : 00 oranında güncelleyin
 update_none=Bu sürüm için Usermin güncellemesi yok.
 update_failed=Modül yüklenemedi : $1 
 update_desc2=Bu form, <a href=http://www.usermin.com/uupdates.html>Usermin Güncellemeleri</a> sayfasından veya başka bir kaynaktan hata veya güvenlik delikleri içeren Usermin modüllerinin otomatik olarak güncellenmesini planlamak içindir. Bu hizmet yararlı olsa da, güncelleme sunucusunun güvenliği ihlal edilmişse saldırganların sisteminizi ele geçirmesine izin verebileceğinden bu hizmeti kullanmaya dikkat etmelisiniz.
+
 assignment_title=Modülleri Yeniden Ata
 assignment_header=Modül kategorisi atamaları
 assignment_ok=Kategorileri Değiştir
 assignment_desc=Bu form, Usermin dizin sayfasında her bir modülün hangi kategoride görüntüleneceğini yapılandırmanıza olanak tanır.
+
 categories_title=Kategorileri Düzenle
 categories_header=Kategori kimliği ve açıklamaları
 categories_desc=Bu form, mevcut Usermin kategorilerini yeniden adlandırmanıza ve modül atamak için yeni kategoriler oluşturmanıza olanak tanır. Tablonun üst kısmı yerleşik kategorilerin açıklamalarını değiştirmek için, alt kısmı ise yeni kategori kimlikleri ve açıklamaları eklemek içindir.
@@ -292,6 +316,7 @@ categories_edesc=$1 için eksik açıklama
 categories_ecat=$1 kategori kimliği zaten alınmış
 categories_code=İD
 categories_name=Görüntülenen açıklama
+
 log_access=IP erişim kontrolü değiştirildi
 log_bind=Bağlantı noktası ve adres değiştirildi
 log_log=Günlüğe kaydetme seçenekleri değiştirildi
@@ -327,6 +352,7 @@ log_restrict_create=$1 için kısıtlama oluşturuldu
 log_restrict_modify=$1 için değiştirilmiş kısıtlama
 log_restrict_delete=$1 için kısıtlama silindi
 log_restrict_move=$1 için kısıtlama taşındı
+
 log_all=tüm kullanıcılar
 log_group=grup 1
 log_switch=$1 Usermin kullanıcısına geçildi
@@ -334,6 +360,7 @@ log_logout=Otomatik oturum kapatma süreleri değişti
 log_dav=DAV sunucusu ayarlarını değiştirme
 log_advanced=Gelişmiş seçenekler değişti
 log_mobile=Değiştirilmiş mobil cihaz seçenekleri
+
 update_err=Modüller güncellenemedi
 update_eurl=Eksik veya geçersiz güncelleme URL'si
 update_title=Modülleri Güncelle
@@ -352,6 +379,7 @@ update_rv=$1 'den güncellenmiş Usermin modüllerini kontrol etme
 update_eemail=Yalnızca nelerin güncelleneceğini gösteriyorsa bir e-posta adresi girmelisiniz.
 update_subject=Usermin modülleri güncelleme raporu
 update_version=Usermin'in yeni bir sürümü ($1 sürümü) artık indirilebilir. Gelecekteki güncellemeler yalnızca en son sürüm için yayınlanacak.
+
 restrict_title=Modül Kısıtlamaları
 restrict_desc=Bu sayfa, farklı kullanıcılar ve gruplar için hangi Usermin modüllerinin kullanılabileceğini kontrol etmenizi sağlar. Listedeki tüm modül ekleme ve çıkarma işlemleri, yalnızca her kullanıcıyla eşleşen ilk modül değil, geçerlidir. <br><a href='$1'> kullanılabilir modüller </a> sayfasında seçilmeyen modüller hiçbir zaman kullanılamaz kullanıcılar, burada seçilse bile.
 restrict_who=Usermin kullanıcısı
@@ -384,6 +412,7 @@ restrict_egroup=Eksik veya geçersiz grup adı
 restrict_efile=Eksik, var olmayan veya mutlak olmayan kullanıcılar ve gruplar dosyası
 restrict_move=Hareket
 bootup_ecannot=Önyüklemeyi yapılandırma izniniz yok
+
 acl_icons=İzin verilen yapılandırma sayfaları
 acl_mods=Modülleri yapılandırabilir
 acl_all=Tüm modüller
@@ -391,10 +420,12 @@ acl_sel=Aşağıda seçildi ..
 acl_stop=Usermin'i durdurabilir ve başlatabilir misiniz?
 acl_bootup=Önyükleme zamanında başlamayı yapılandırabilir mi?
 acl_ecannot=Bu sayfayı kullanma izniniz yok
+
 clone_err=Modül klonlanamadı
 clone_elink=symlink başarısız oldu : $1 
 clone_ecopy=yapılandırma kopyalanamadı : $1 
 clone_desc=$1 klonu
+
 sessions_title=Mevcut Giriş Oturumları
 sessions_desc=Geçerli Usermin oturum girişleri aşağıda listelenmiştir. Mevcut bir oturumu iptal etmek ve kullanıcıyı tekrar oturum açmaya zorlamak için oturum kimliğini tıklayın.
 sessions_id=Oturum kimliği
@@ -404,12 +435,15 @@ sessions_login=Adresinde oturum açıldı
 sessions_none=Şu anda Usermin kullanıcısına giriş yok.
 sessions_switch=Usermin kullanıcısına geç:
 sessions_ok=Değiştirmek
+
 referers_title=Güvenilir Yönlendirenler
 referers_desc=Bu sayfa, kullanıcılarınızın tarayıcılarını Usermin ile tehlikeli şeyler yapmak için kandırmaya çalışan diğer web sitelerinden gelen kötü amaçlı bağlantıları önlemek için kullanılan Usermin yönlendiren kontrol desteğini yapılandırmanıza olanak tanır. Ancak, uyarılmak istemediğiniz kendi web sitelerinizden Usermin'e bağlantılarınız varsa, bu siteleri aşağıdaki listeye eklemelisiniz.
+
 anon_title=Anonim Modül Erişimi
 anon_desc=Bu sayfa, istemcilerin oturum açması gerekmeden seçilen Usermin modüllerine ve yollarına erişim izni vermenizi sağlar. Aşağıya girdiğiniz her modül yolu için (/ command veya / changepass gibi), izinleri modüle erişim için kullanılacak bir Unix kullanıcısının adını da girmeniz gerekir.
 anon_user=Unix kullanıcısı
 anon_euser='$1' URL yolu için eksik veya geçersiz Unix kullanıcısı
+
 logout_title=Otomatik Oturum Kapatma Süreleri
 logout_desc=Bu sayfa, farklı Usermin kullanıcıları için farklı hareketsizlik oturum kapatma sürelerini yapılandırmak için kullanılabilir. Zaman aşımı birkaç dakika içinde girilmelidir ve sıfır zaman aşımı, eşleşen kullanıcılar için oturumların hiçbir zaman otomatik olarak oturumu kapatmayacağı anlamına gelir.
 logout_type=tip
@@ -424,6 +458,7 @@ logout_egroup=$1 satırında eksik veya geçersiz grup
 logout_efile=$1 satırında eksik veya var olmayan dosya
 logout_etime=$1 satırında eksik veya geçersiz zaman aşımı
 logout_ecannot=Oturum kapatma sürelerini yapılandırmanıza izin verilmiyor
+
 dav_title=DAV Sunucusu
 dav_header=DAV sunucusu seçenekleri
 dav_path=DAV etkin mi?
@@ -444,16 +479,22 @@ dav_users=DAV kullanabilen kullanıcılar
 dav_users1=Tüm kullanıcılar
 dav_users0=Aşağıda listelenen kullanıcılar ve gruplar ..
 dav_eusers=Kullanıcı girmedi
+
 syslog_errorlog=Usermin hata günlüğü
+
 descs_title=Modül Başlıkları
 descs_info=Bu sayfa, standart açıklamalarını geçersiz kılmak için Usermin modülleri için alternatif başlıklar belirtmenize olanak tanır.
+
 advanced_title=Gelişmiş seçenekler
 advanced_pass=Usermin programları için şifre kullanılabilir hale getirilsin mi? <br><font size=-1> (Oturum kimlik doğrulaması etkinleştirildiğinde çalışmaz) </font>
+
 blocked_title=Engellenen Ana Bilgisayarlar ve Kullanıcılar
 blocked_none=Şu anda Usermin tarafından hiçbir ana bilgisayar veya kullanıcı engellenmemiştir.
 blocked_user=Usermin kullanıcısı
 blocked_cleardesc=Usermin sunucusu işlemini yeniden başlatarak mevcut tüm ana bilgisayar ve kullanıcı bloklarını temizlemek için bu düğmeyi tıklatın.
+
 mobile_title=Mobil Cihaz Seçenekleri
+
 copycert_err=SSL ayarları Webmin'den kopyalanamadı
 copycert_essl=SSL etkin değil
 copycert_ekeyfile=Webmin'de özel anahtar dosyası ayarlanmadı

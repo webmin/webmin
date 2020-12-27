@@ -30,6 +30,7 @@ index_return=senarai zon
 index_ezones=Tiada Zon FirewallD dijumpai!
 index_none=Zon ini tidak mempunyai sebarang pelabuhan atau perkhidmatan yang dibenarkan.
 index_ifaces=Memohon peraturan untuk antara muka:
+
 port_edit=Edit Port
 port_create=Tambah Pelabuhan
 port_header=Pilihan pelabuhan yang dibenarkan
@@ -45,11 +46,13 @@ port_eport=Nombor atau nama port yang hilang atau tidak sah
 port_eportlow=Port rendah mestilah nombor
 port_eporthigh=Pelabuhan tinggi mestilah nombor
 port_eportrange=Pelabuhan rendah mestilah di bawah pelabuhan yang tinggi
+
 serv_edit=Edit Perkhidmatan
 serv_create=Tambah Perkhidmatan
 serv_header=Pilihan perkhidmatan yang dibenarkan
 serv_name=Perkhidmatan untuk membenarkan
 serv_err=Gagal menyimpan perkhidmatan
+
 forward_edit=Edit Forward
 forward_create=Buat Hadapan
 forward_header=Pilihan pemajuan pelabuhan
@@ -61,10 +64,13 @@ forward_dstaddr=Alamat destinasi
 forward_dstlocal=Sistem ini
 forward_edstaddr=Alamat destinasi IPv4 tidak sah
 forward_eneither=Sama ada alamat atau port destinasi atau kedua-duanya mesti dimasukkan
+
 check_ecmd=Perintah kawalan FirewallD $1 tidak dijumpai pada sistem anda
+
 delete_err=Gagal memadamkan peraturan
 delete_enone=Tiada pilihan!
 delete_edel=Pembuangan fail $1 : $2 
+
 zone_title=Buat Zon
 zone_header=Pilihan zon baru
 zone_name=Nama zon
@@ -77,12 +83,16 @@ zone_mode4=Pelabuhan yang digunakan untuk hosting maya
 zone_err=Gagal mencipta zon
 zone_ename=Nama zon kosong atau tidak sah
 zone_eclash=Zon dengan nama yang sama sudah wujud
+
 delzone_title=Padamkan Zon
 delzone_err=Gagal memadam zon
 delzone_edefault=Zon lalai tidak boleh dialih keluar
 delzone_rusure=Adakah anda pasti mahu memadamkan zon $1, yang mengandungi $2 port dan perkhidmatan $3 ?
+
 defzone_err=Gagal menjadikan zon lalai
+
 restart_err=Gagal menggunakan konfigurasi
+
 stop_err=Gagal menghentikan FirewallD
 start_err=Gagal memulakan FirewallD
 log_stop=Berhenti FirewallD

@@ -45,12 +45,15 @@ index_showing=מציג מסדי נתונים התואמים $1 ..
 index_emsg=הודעת השגיאה המלאה של MySQL הייתה : $1 
 index_jump=או ערוך מסד נתונים:
 index_jumpok=פתוח
+
 login_err=ההתחברות נכשלה
 login_ecannot=אינך רשאי לקבוע את תצורת כניסה למסד הנתונים
 login_elogin=חסר כניסה למנהל
 login_epass=שם משתמש או סיסמא שגויים של ניהול
+
 stop_err=עצירת מסד הנתונים נכשלה
 start_err=הפעלת מסד הנתונים נכשלה
+
 dbase_title=ערוך מסד נתונים
 dbase_header=טבלאות מסדי נתונים, אינדקסים ותצוגות
 dbase_tables=טבלאות מסדי נתונים
@@ -81,6 +84,7 @@ dbase_type=סוג
 dbase_typetable=שולחן 1)
 dbase_typeindex=אינדקס
 dbase_typeview=נוף
+
 ddrop_err=ירידת מסד הנתונים נכשלה
 ddrop_title=זרוק מסד נתונים
 ddrop_rusure=האם אתה בטוח שברצונך להוריד את מסד הנתונים $1 ? $2 טבלאות המכילות $3 שורות נתונים יימחקו.
@@ -89,6 +93,7 @@ ddrop_mysql=מכיוון שמדובר בבסיס הנתונים הראשי, יר
 ddrop_ok=זרוק מסד נתונים
 ddrop_empty=פשוט מחק את כל הטבלאות
 ddrop_empty2=מחק את כל הטבלאות
+
 ddrops_err=ירידת מסדי נתונים נכשלה
 ddrops_title=זרוק מאגרי מידע
 ddrops_rusure=האם אתה בטוח שברצונך להפיל את מסדי הנתונים $1 שנבחרו? $2 טבלאות המכילות $3 שורות נתונים יימחקו.
@@ -97,6 +102,7 @@ ddrops_mysql=מכיוון שמסד הנתונים הראשי נבחר, יריד�
 ddrops_ok=זרוק מאגרי מידע
 ddrops_enone=לא נבחרו מסדי נתונים
 ddrops_ecannotdb=אינך מורשה להשמיט את מסד הנתונים $1 
+
 table_title=ערוך טבלה
 table_title2=צור טבלה
 table_header=טבלה $1 בבסיס הנתונים $2 
@@ -142,16 +148,19 @@ table_nextra=מיוחס במיוחד
 table_eautokey=השדה התופעה האוטומטי חייב להיות גם מפתח ראשוני
 table_eauto=רק שדה אחד יכול להיות מצטבר באופן אוטומטי
 table_delete=מחק שדות שנבחרו
+
 tdrop_err=ירידת הטבלה נכשלה
 tdrop_title=זרוק טבלה
 tdrop_rusure=האם אתה בטוח שברצונך להפיל את הטבלה $1 במסד הנתונים $2 ? $3 שורות נתונים יימחקו.
 tdrop_ok=זרוק טבלה
+
 tdrops_enone=לא נבחרו טבלה (ים) לירידה
 tdrops_err=ירידת הטבלאות נכשלה
 tdrops_ok=טיפה
 tdrops_title=טיפה נבחרה
 tdrops_rusure=האם אתה בטוח שברצונך להפיל $1 טבלה / ים שנבחרו בבסיס הנתונים $2 ? $3 שורות נתונים יימחקו.
 tdrops_rusure2=האם אתה בטוח שברצונך להפיל $1 טבלה / ים שנבחרו בבסיס הנתונים $2 ?
+
 field_title1=הוסף שדה
 field_title2=שנה שדה
 field_in=בטבלה $1 בבסיס הנתונים $2 
@@ -185,6 +194,7 @@ field_esize='$1' אינו גודל שדה תקף
 field_eenum=לא הוזנו ערכים ספורים
 field_efield='$1' אינו שם שדה חוקי
 field_ekey=שדות המאפשרים בטלות אינם יכולים להיות חלק מהמפתח הראשי
+
 view_title=נתוני טבלה
 view_pos=שורות $1 עד $2 מתוך $3 
 view_none=בטבלה זו אין נתונים.
@@ -219,6 +229,7 @@ view_keep=השאר ללא שינוי
 view_set=הגדר לתוכן הקובץ ..
 view_adv=חיפוש מתקדם
 view_sqlrun=תוצאות שנוצרו על ידי שאילתת SQL : $1 
+
 users_title=הרשאות משתמש
 users_user=משתמש
 users_host=מארחים
@@ -245,6 +256,7 @@ users_ssl=תעודה
 users_dtitle=מחק הרשאות משתמש
 users_drusure=האם אתה בטוח שברצונך למחוק את הרשאות המשתמש של MySQL שנבחרו $1 ?
 users_dok=מחק משתמשים
+
 user_title1=צור משתמש
 user_title2=ערוך משתמש
 user_header=פרטי המשתמש של MySQL
@@ -308,6 +320,7 @@ user_emax_user_connections=כניסות מקסימאליות במקביל חיי
 user_emax_connections=חיבורים מקסימליים לשעה חייבים להיות מספר
 user_emax_updates=העדכונים המרביים לשעה חייבים להיות מספר
 user_emax_questions=השאילתות המרבית לשעה חייבות להיות מספר
+
 dbs_title=הרשאות בסיסי נתונים
 dbs_db=מאגרי מידע
 dbs_user=משתמש
@@ -326,6 +339,7 @@ dbs_enone=לא נבחרו מסדי נתונים
 dbs_dtitle=מחק הרשאות מסד נתונים
 dbs_drusure=האם אתה בטוח שברצונך למחוק את הרשאות מסד הנתונים MySQL שנבחרו $1 ?
 dbs_dok=מחק הרשאות
+
 db_title1=צור הרשאות מסד נתונים
 db_title2=ערוך הרשאות מסד נתונים
 db_header=אפשרויות הרשאת מסד נתונים
@@ -340,6 +354,7 @@ db_err=שמירת הרשאות בסיס הנתונים נכשלה
 db_euser=שם משתמש חסר או לא חוקי
 db_ehost=שם מארח חסר או לא חוקי
 db_edb=שם בסיס נתונים חסר או לא חוקי
+
 hosts_title=הרשאות מארח
 hosts_db=מאגרי מידע
 hosts_host=מארחים
@@ -355,6 +370,7 @@ hosts_dtitle=מחק הרשאות מארח
 hosts_drusure=האם אתה בטוח שברצונך למחוק את הרשאות מארח MySQL שנבחרו $1 ?
 hosts_dok=מחק הרשאות
 hosts_return=הרשאות מארח
+
 host_title1=צור הרשאות מארח
 host_title2=ערוך הרשאות מארח
 host_header=אפשרויות הרשאות מארח
@@ -364,6 +380,7 @@ host_sel=נבחר
 host_otherdb=דפוס תואם
 host_host=מארחים
 host_perms=הרשאות
+
 newdb_title=צור מסד נתונים
 newdb_header=אפשרויות מסד נתונים חדשות
 newdb_db=שם בסיס הנתונים
@@ -377,6 +394,7 @@ newdb_err=יצירת מסד הנתונים נכשלה
 newdb_edb=שם בסיס נתונים חסר או לא חוקי
 newdb_ecannot=אינך מורשה ליצור בסיסי נתונים
 newdb_ecannot2=אינך מורשה ליצור מאגרי מידע נוספים
+
 exec_title=בצע SQL
 exec_header=הזן פקודת SQL לביצוע במסד נתונים $1.
 exec_old=או בחר פקודת SQL קודמת :
@@ -413,6 +431,7 @@ exec_iheader=אפשרויות ייבוא קובץ טקסט
 exec_created=נוצרו טבלאות $1.
 exec_inserted=$1 רשומות הוכנסו.
 exec_cs=סט תווים לנתונים
+
 tprivs_title=הרשאות טבלה
 tprivs_table=שולחן
 tprivs_db=מאגר מידע
@@ -431,6 +450,7 @@ tprivs_enone=לא נבחרו טבלאות
 tprivs_dtitle=מחק הרשאות טבלה
 tprivs_drusure=האם אתה בטוח שברצונך למחוק את הרשאות הטבלה של MySQL עבור $1 שנבחרו?
 tprivs_dok=מחק הרשאות
+
 tpriv_title1=צור הרשאות טבלה
 tpriv_title2=ערוך הרשאות טבלה
 tpriv_header=אפשרויות הרשאת טבלה
@@ -447,6 +467,7 @@ tpriv_etable=לא נבחר טבלה
 tpriv_euser=שם משתמש חסר או לא חוקי
 tpriv_ehost=מארח חסר או לא חוקי
 tpriv_edb=שם בסיס נתונים חסר או לא חוקי
+
 cprivs_title=הרשאות שדה
 cprivs_field=שדה
 cprivs_table=שולחן
@@ -466,6 +487,7 @@ cprivs_enone=לא נבחרו שדות
 cprivs_dtitle=מחק הרשאות עמודה
 cprivs_drusure=האם אתה בטוח שברצונך למחוק את הרשאות העמודה $1 שנבחרו ב- MySQL?
 cprivs_dok=מחק הרשאות
+
 cpriv_title1=צור הרשאות שדה
 cpriv_title2=ערוך הרשאות שדה
 cpriv_header=אפשרויות הרשאת שדה
@@ -482,11 +504,13 @@ cpriv_etable=לא נבחר טבלה
 cpriv_euser=שם משתמש חסר או לא חוקי
 cpriv_ehost=מארח חסר או לא חוקי
 cpriv_edb=שם בסיס נתונים חסר או לא חוקי
+
 esql=SQL $1 נכשל : $2 
 eparse=Webmin לא יכול לנתח את הפלט מהפקודה $1 בגלל אופי הנתונים במסד הנתונים. יהיה עליך להתקין את המודולים $2 ו- $3 Perl כדי לפתור את הבעיה.
 edenied=אין לך גישה למסד נתונים MySQL זה
 perms_ecannot=אינך מורשה לערוך הרשאות
 perms_edb=אתה רשאי לערוך הרשאות רק עבור מסדי נתונים משלך
+
 acl_dbs=מאגרי מידע שמשתמש זה יכול לנהל
 acl_dall=כל מאגרי המידע
 acl_dsel=נבחר ..
@@ -507,6 +531,7 @@ acl_bnone=בטל גיבויים
 acl_indexes=האם ניתן להציג ולנהל אינדקסים ולנהל אותם?
 acl_views=האם ניתן להציג ולנהל תצוגות?
 acl_files=האם ניתן לבצע SQL מקבצים מקומיים?
+
 log_start=הפעל שרת MySQL
 log_stop=עצר את שרת MySQL
 log_cnf=שינוי תצורת שרת MySQL
@@ -571,6 +596,7 @@ log_importfile=מיובא נתונים מהקובץ $1
 log_set=השתנו $1 משתני MySQL
 log_root=סיסמת ניהול שינתה
 log_manual=קובץ תצורה נערך ידנית
+
 backup_title=מאגר גיבוי
 backup_title2=גיבוי כל מאגרי המידע
 backup_edump=תוכנית הגיבוי של MySQL $1 לא נמצאה במערכת שלך. אולי <a href='$2'>תצורת המודול</a> שלך שגויה.
@@ -649,15 +675,18 @@ backup_bodyspace=גודל מערכת קבצים: $1 שטח פנוי : $2
 backup_bodyall=את כל
 backup_edownloadall=ניתן להוריד רק גיבוי מסד נתונים יחיד
 backup_edownloadsave=לא ניתן להשתמש במצב ההורדה לגיבויים מתוזמנים
+
 import_title=ייבא נתונים
 import_uploadout=מייבא נתונים מקובץ שהועלה.
 import_fileout=מייבא נתונים מקובץ $1.
 import_eupload=חסר קובץ ייבוא שהועלה
 import_efile=שם קובץ הייבוא חסר
+
 adv_title=חיפוש מתקדם
 adv_and=מצא רשומות התואמות את כל הקריטריונים ..
 adv_or=מצא רשומות התואמות כל קריטריון ..
 adv_ok=חפש כעת
+
 csv_title=ייצא קובץ CSV
 csv_header=אפשרויות ייצוא של CSV
 csv_dest=ייצוא יעד
@@ -678,6 +707,7 @@ csv_done=ייצוא ה- CSV ל- $1 הושלם. גודל הקובץ שהתקבל 
 csv_headers=לכלול שמות עמודות ב- CSV?
 csv_cols=עמודות לכלול ב- CSV
 csv_ecols=לא נבחרו עמודות
+
 cnf_title=תצורת שרת MySQL
 cnf_efile=קובץ התצורה של MySQL $1 לא נמצא במערכת שלך. יתכן שתצטרך להתאים את <a href='$2'>תצורת המודול</a> כדי להשתמש בנתיב הנכון.
 cnf_header=אפשרויות שרת MySQL
@@ -719,11 +749,13 @@ cnf_restart=שמור והפעל מחדש את MySQL
 cnf_fpt=קובץ נפרד לכל שולחן InnoDB?
 cnf_ilt=פסק זמן למנעול InnoDB (תוך שניות)
 cnf_eilt=פסק זמן לנעילת InnoDB חייב להיות מספר שלם
+
 manual_title=ערוך קבצי תצורה
 manual_file=ערוך קובץ תצורה:
 manual_ok=בסדר
 manual_efile=קובץ תצורה לא חוקי!
 manual_err=שמירת קובץ התצורה נכשלה
+
 index_title1=צור אינדקס
 index_header1=אפשרויות אינדקס
 index_name=שם אינדקס
@@ -739,12 +771,15 @@ index_ecols=לא נבחרו שדות
 index_title2=ערוך אינדקס
 index_header=אינדקס $1 במאגר נתונים 2
 index_ecannot=אינך מורשה לנהל אינדקסים
+
 syslog_desc=הודעות שגיאה ב- MySQL
 syslog_desc2=הודעת שגיאה ב- MySQL
 syslog_logdesc=שאילתות MySQL
+
 fdrop_err=מחיקת שדות נכשלה
 fdrop_enone=לא נבחר
 fdrop_eall=אינך יכול למחוק את כל השדות מטבלה!
+
 view_title1=צור תצוגה
 view_title2=ערוך תצוגה
 view_header1=הצג פרטים
@@ -770,6 +805,7 @@ view_cascaded=השקפות ביסוד
 view_local=השקפה זו בלבד
 view_nocheck=אף אחד
 view_ecannot=אינך רשאי לנהל תצוגות
+
 procs_title=חיבורי מסד נתונים
 procs_id=תעודת זהות
 procs_user=שם משתמש
@@ -781,9 +817,11 @@ procs_query=הפעלת שאילתה
 procs_kill=הרוג חיבורים נבחרים
 procs_ecannot=אינך רשאי להציג חיבורי מסד נתונים
 procs_none=אין כרגע חיבורים אחרים של לקוח מסדי נתונים.
+
 kill_err=נכשל הרצת חיבורי מסד נתונים
 kill_ecannot=אינך מורשה לנהל חיבורי מסד נתונים
 kill_enone=לא נבחר
+
 vars_title=משתני מערכת MySQL
 vars_desc=אזהרה - משתנים שהוגדרו בדף זה יאופסו לערכי ברירת המחדל שלהם לאחר הפעלה מחדש של MySQL. יש לבצע הגדרות קבועות בדף <a href='$1'>תצורת שרת MySQL</a>.
 vars_ecannot=אינך רשאי לערוך משתני מערכת
@@ -794,6 +832,7 @@ vars_search=הצג משתנים תואמים:
 vars_ok=לחפש
 vars_none2=אין משתני מערכת התואמים לחיפוש שלך.
 vars_none=לא נמצאו משתני מערכת!
+
 compat_ansi=ANSI
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQL 4.0
@@ -805,7 +844,9 @@ compat_maxdb=MaxDB
 compat_no_key_options=אפשרויות מפתח
 compat_no_table_options=אפשרויות טבלה
 compat_no_field_options=אפשרויות שדה
+
 config_echarset=מערך תווים חסר או לא חוקי למראה
+
 root_title=שנה סיסמת ניהול
 root_header=סיסמת ניהול חדשה
 root_user=כניסה למנהל
@@ -818,6 +859,7 @@ root_epass1=לא הוזנה סיסמה חדשה
 root_epass2=סיסמאות לא תואמות
 root_none=אין סיסמא!
 root_auto=אוטומטית (בדרך כלל <tt>שורש</strong>)
+
 mysqlpass_err=מצב בטוח של MySQL
 mysqlpass_esafecmd=הפקודה $1 הדרושה להפעלת MySQL עם אימות מושבת לא נמצאה
 mysqlpass_eshutdown=הכיבוי נכשל : $1 

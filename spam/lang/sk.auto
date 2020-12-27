@@ -13,6 +13,7 @@ index_applydesc=Kliknutím na toto tlačidlo použijete aktuálnu konfiguráciu 
 index_cpan=Pretože SpamAssassin je modul Perl, môžete ho tiež nainštalovať automaticky pomocou modulu <a href='$2'>Perl Moduly</a> od správcu Webmin na stiahnutie $1 z CPAN.
 index_spamassassin=SpamAssassin
 index_ecannot=Nemáte povolenie spravovať konfiguračný súbor SpamAssassin $1 
+
 white_title=Povolené a zamietnuté adresy
 white_desc=Tabuľky na tejto stránke vám umožňujú zadať adresy od: a do: pre e-mail, ktorý je vždy alebo nikdy klasifikovaný ako spam. Akýkoľvek iný e-mail bude spracovaný obvyklým spôsobom podľa pravidiel SpamAssassin. Všetky e-mailové adresy môžu obsahovať zástupné znaky, napríklad *@foo.com alebo *.foo.com, aby sa zhodovali s celými doménami.
 white_from=Odosielateľom, ktorý nikdy nebude klasifikovaný ako spam
@@ -44,6 +45,7 @@ white_tabham=Povolené adresy
 white_tabspam=Odmietnuté adresy
 white_tabsome=Cieľové adresy
 white_tabimport=Importovať adresy
+
 score_title=Klasifikácia spamu
 score_desc=SpamAssassin priraďuje každej správe skóre na základe jej obsahu a hlavičiek. Možnosti na tejto stránke určujú skóre, nad ktorým sa správa považuje za spam, a niektoré metódy, pomocou ktorých sa skóre vypočítava.
 score_header=Možnosti klasifikácie spamových správ
@@ -77,6 +79,7 @@ score_emxdelay=Chýbajúce alebo neplatné sekundy na čakanie medzi kontrolami 
 score_etimeout=Chýbajúce alebo neplatné sekundy na čakanie na dotazy RBL
 score_ereceived=Chýbajúci alebo neplatný počet prijatých: hlavičky na kontrolu s RBL
 score_bayes=Používate Bayesovský učiaci sa klasifikátor?
+
 report_title=Úprava správy
 report_desc=Možnosti na tejto stránke riadia zmeny, ktoré SpamAssassin robí v hlavičkách a telách všetkých správ, ktoré analyzuje, a zmeny, ktoré vykoná v prípade tých, ktoré sú klasifikované ako spam.
 report_header=Analyzované a možnosti úpravy spamových správ
@@ -109,6 +112,7 @@ report_addspam=Nevyžiadaná pošta
 report_addham=šunka
 report_addall=všetko
 report_eaddheader=Chýba alebo neplatná ďalšia hlavička na pridanie $1 
+
 user_title=Rôzne možnosti používateľa
 user_desc=Možnosti na tejto stránke väčšinou súvisia s cestami a nastaveniami, ktoré používa program SpamAssassin pre externé balíky na identifikáciu spamu Razor, DCC a Pyzor. Môžete tiež povedať SpamAssassin, či bude schopný vyhľadávať DNS alebo nie.
 user_header=Rôzne možnosti na úrovni používateľa
@@ -131,6 +135,7 @@ user_err=Nepodarilo sa uložiť možnosti používateľa
 user_etimeout=$1 nie je platný časový limit
 user_epath=$1 nie je platná cesta k programu klienta
 user_emax='$1' nie je platný počet kontrolných súčtov
+
 header_title=Skúšky záhlavia a tela
 header_desc=Táto stránka vám umožňuje definovať ďalšie testy, ktoré SpamAssassin použije na e-mail, na základe hlavičiek správ, obsahu tela, adries URL nájdených v tele alebo kombinácií iných testov. Meno priradené ku každému testu je len na vás, ale zvyčajne je to niečo ako CONTAINS_FOO. Skutočné skóre, ktoré SpamAssassin pridáva do správ zodpovedajúcich testu, možno nastaviť zadaním vlastných alebo zabudovaných názvov testov do tabuliek v dolnej časti stránky.
 header_switch=Prepnite do jednoduchého režimu ..
@@ -164,6 +169,7 @@ header_eeval='$1' nie je platná vyhodnocovacia funkcia
 header_eheader=$1 nie je platná hlavička e-mailu
 header_eregexp='$1' nie je platný regulárny výraz (musí byť ako / výraz /)
 header_emeta=Chýba testovací výraz pre test „$1“
+
 priv_title=Rôzne privilegované možnosti
 priv_desc=Možnosti v tejto možnosti je možné nastaviť iba globálne, a nie v konfiguračných súboroch jednotlivých používateľov. Ovládajú cesty k rôznym konfiguračným a protokolovaným súborom.
 priv_header=Rôzne nastavenia úrovne oprávnení
@@ -183,6 +189,7 @@ priv_eargs='$1' nie je platný zoznam argumentov
 priv_emscore='$1' nie je platné najvyššie skóre frázy
 priv_ephrase='$1' nie je platná dvojslovná fráza o spamu
 priv_escore=Chýbajúce alebo neplatné skóre pre frázu „$1“
+
 usually=Zvyčajne $1 
 ecannot=Túto stránku nemôžete používať
 setup_title=Nastavenie programu Procmail pre SpamAssassin
@@ -202,11 +209,13 @@ setup_drop1=Príjemca Unixu
 setup_drop0=<tt>root</tt>
 setup_ok=Nastavte program Procmail pre SpamAssassin
 setup_email=Poslať ďalej na e-mailovú adresu
+
 setup_err=Nepodarilo sa nastaviť program SpamAssassin
 setup_efile=Chýba alebo je neplatný súbor vo formáte mbox
 setup_emaildir=Chýbajúci alebo neplatný poštový adresár Qmail
 setup_emhdir=Chýbajúci alebo neplatný adresár pošty MH
 setup_eemail=Chýbajúca alebo neplatná e-mailová adresa
+
 log_white=Upravené povolené a zamietnuté adresy
 log_score=Upravená klasifikácia spamu
 log_report=Upravená modifikácia správy
@@ -217,12 +226,14 @@ log_setup=Nastavte program Procmail pre SpamAssassin
 log_procmail=Zmenená konfigurácia programu Procmail
 log_import=Importované $1 povolené adresy
 log_manual=Ručne upravený konfiguračný súbor
+
 import_title=Importovať adresy
 import_err=Nepodarilo sa importovať adresy
 import_efile=Z vybratého súboru nebol importovaný žiadny súbor
 import_enone=V súbore sa nenašli žiadne e-mailové adresy
 import_ok1=V súbore sa našli e-mailové adresy $2, z ktorých $1 bolo nových a bolo pridané do zoznamu povolených adries.
 import_ok2=V súbore sa našlo e-mailové adresy $1, všetky sa však už nachádzali v zozname povolených adries.
+
 mail_title=Spam Mail
 mail_desc=Na tejto stránke sú uvedené správy, ktoré boli klasifikované ako spam a čakajú na nejakú akciu. Správy, ktoré boli nesprávne označené, je možné presunúť do priečinka Doručená pošta, zatiaľ čo správy, ktoré sú skutočne spamom, sa dajú odstrániť.
 mail_level=skóre
@@ -240,10 +251,13 @@ mail_will=Automatické obnovenie o $1 minúty
 mail_wills=Automatické obnovenie o $1 s
 mail_delall=Odstrániť všetok spam
 mail_search3=Vyhľadajte skóre vyššie:
+
 process_eclean=Pri odstraňovaní hlavičiek SpamAssassinu z tohto e-mailu sa vyskytla chyba
 process_ereport=Nepodarilo sa nahlásiť e-mail na adresu SpamAssassin : $1 
+
 apply_err=Nepodarilo sa uplatniť zmeny
 apply_none=Nenašli sa žiadne démonické procesy SpamAssassin!
+
 acl_avail=Ikony dostupné pre používateľa
 acl_file=Konfiguračný súbor SpamAssassin na úpravu
 acl_filedef=Globálny konfiguračný súbor
@@ -251,8 +265,10 @@ acl_awl=Povolené používateľom na úpravy na bielej listine
 acl_awl0=Všetci používatelia
 acl_awl1=Iba uvedení používatelia $1 
 acl_awl2=Iba členovia skupín $1 
+
 search_escore=Chýbajúce alebo neplatné skóre spamu
 search_results5=E-mailové správy $1 s skóre nevyžiadanej pošty najmenej $2 ..
+
 razor_title=Nastavte detektor spamu Razor
 razor_desc=Vipul's Razor je kolaboratívny systém detekcie a hlásenia nevyžiadanej pošty, ktorý môže vylepšiť klasifikáciu spamu zasielaného na vašu adresu. Pred použitím sa však musíte zaregistrovať na účet Razor pomocou formulára nižšie.
 razor_user=Používateľské meno holiaceho strojčeka
@@ -267,6 +283,7 @@ razor_epass=Chýbajúce heslo
 razor_doing=Teraz sa pokúša zaregistrovať a nastaviť Razor ..
 razor_done=.. hotový.
 razor_failed=.. zlyhalo! Pozrite sa na výstup chyby uvedený vyššie, prečo.
+
 amavisd_title=Amavisd Spam Delivery
 amavisd_desc=Formulár je možné použiť na zmenu konfigurácie Amavisd, ktorá určuje, čo sa stane so správami klasifikovanými ako spam.
 amavis_ok=Zmeniť dodávku Amavisd
@@ -304,9 +321,11 @@ amavis_quarantine_today=Spamové e-maily v karanténe dnes (24 hodín)
 amavis_quarantine_week=Spamové správy v karanténe tento týždeň (7 dní)
 amavis_quarantine_month=Tento spam (30 dní) v karanténe sa spamuje
 amavis_quarantine_total=Celkový počet nevyžiadaných e-mailov v karanténe
+
 procmail_title=Doručenie nevyžiadanej pošty v programe Procmail
 procmail_ok=Zmeniť doručovanie v Procmailu
 procmail_desc=Formulár je možné použiť na zmenu konfigurácie programu Procmail, ktorá určuje, čo sa stane so správami klasifikovanými ako spam.
+
 simple_title=Skúšky záhlavia a tela
 simple_desc=Táto stránka vám umožňuje definovať ďalšie testy, ktoré SpamAssassin použije na e-mail, na základe hlavičiek správ, obsahu tela a adries URL nájdených v tele. Meno priradené ku každému testu je len na vás, ale zvyčajne je to niečo ako CONTAINS_FOO.
 simple_switch=Prepnúť do rozšíreného režimu ..
@@ -317,8 +336,10 @@ simple_regexp=Zápasový výraz
 simple_score=Skóre sa použije
 simple_describe=popis
 simple_err=Nepodarilo sa uložiť testy správ
+
 before_ecmd=Príkaz pred uložením zlyhal : $1 
 after_ecmd=Príkaz dodatočného uloženia zlyhal : $1 
+
 connect_emysql=Načítanie ovládača databázy $1 zlyhalo
 connect_elogin=Nepodarilo sa prihlásiť do databázy $1:$2.
 connect_equery=Databáza $1 neobsahuje tabuľku preferencií $2 
@@ -326,9 +347,11 @@ connect_eldapmod=Perl modul $1 potrebný na komunikáciu s LDAP nie je nainštal
 connect_eldap=Nepodarilo sa pripojiť k serveru LDAP $1 na porte $2 
 connect_eldaplogin=Nepodarilo sa prihlásiť na server LDAP $1 ako $2 : $3 
 connect_ebase=LDAP báza DN $1 nie je platná : $2 
+
 eldap=Operácia LDAP zlyhala : $1 
 esql=SQL zlyhalo : $1 
 ldap_euser=Nepodarilo sa nájsť objekt používateľa LDAP pre $1 
+
 db_title=Databázy SQL a LDAP
 db_header=Možnosti databázy konfiguračného úložiska
 db_dsn=Uložte používateľské konfigurácie do systému Windows
@@ -364,6 +387,7 @@ db_eldapport=Chýba alebo je neplatné číslo portu servera LDAP
 db_eldapdn=Chýbajúca alebo neplatná základná hodnota DN - nie sú povolené žiadne medzery
 db_eldapattr=Chýbajúci alebo neplatný atribút SpamAssassin
 db_eldapuid=Chýbajúci alebo neplatný atribút používateľského mena
+
 awl_title=Spravujte automatické zoznamy povolených položiek
 awl_search=Vyhľadať bielu listinu pre:
 awl_ok=Vyhľadávanie
@@ -389,6 +413,7 @@ awl_deleteone=Vymazať automatický zoznam povolených položiek
 awl_deleteonedesc=Odstráňte všetky položky automatického zoznamu povolených položiek pre používateľa $1.
 awl_deleteall=Vymazať všetky automatické zoznamy povolených položiek
 awl_deletealldesc=Odstráňte všetky položky automatického zoznamu povolených položiek pre všetkých používateľov v systéme.
+
 dawl_err=Nepodarilo sa odstrániť z automatického zoznamu povolených
 dawl_eopen=Nepodarilo sa otvoriť bielu listinu
 dawl_enone=Nie sú vybrané žiadne adresy na odstránenie
@@ -396,6 +421,7 @@ dawl_ecannot=Nemáte povolenie spravovať automatický zoznam povolených polož
 dawl_doing=Odstraňujú sa automatické zoznamy povolených položiek pre všetkých používateľov.
 dawl_done=.. odstránil $2 záznamov od používateľov $1.
 dawl_title=Odstrániť všetky automatické zoznamy povolených položiek
+
 manual_title=Upraviť konfiguračné súbory
 manual_file=Upraviť konfiguračný súbor:
 manual_ok=OK

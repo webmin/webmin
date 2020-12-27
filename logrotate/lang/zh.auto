@@ -19,11 +19,13 @@ index_force=强制日志旋转
 index_forcedesc=强制立即轮换所有日志文件，即使尚未到时。
 index_logrotate=对数旋转
 index_delete=删除选定的日志轮换
+
 period_daily=日常
 period_weekly=每周
 period_monthly=每月一次
 period_never=决不
 period_bytes=个字节
+
 edit_title1=编辑日志文件
 edit_title2=创建日志文件
 edit_header=轮换的日志文件详细信息
@@ -62,8 +64,10 @@ edit_pre=旋转前要运行的命令
 edit_default=默认值（$1）
 edit_sharedscripts=所有文件只运行一次脚本？
 edit_now=现在旋转
+
 global_title=全局选项
 global_header=所有日志文件的默认选项
+
 save_err=保存日志失败
 save_efile=缺少或无效的日志文件名
 save_esize=最大大小缺失或无效
@@ -81,6 +85,7 @@ save_eerrors=缺少错误消息的电子邮件地址
 save_epre=旋转前脚本不能包含<tt>endscript</tt>或<tt>endrotate</tt>行
 save_epost=旋转后脚本不能包含<tt>endscript</tt>或<tt>endrotate</tt>行
 save_enofiles=没有输入要旋转的文件
+
 log_modify_sched=更改了日志轮换Cron作业
 log_create_sched=创建日志轮换Cron作业
 log_delete_sched=删除日志轮换Cron作业
@@ -89,6 +94,7 @@ log_create=为日志文件 $1添加了轮换
 log_modify=日志文件 $1的修改后的轮换
 log_delete=日志文件 $1的已删除轮换
 log_delete_logs=已删除 $1日志文件的轮换
+
 sched_title=日志轮换时间表
 sched_desc=为了执行使用此模块配置的日志轮换，命令 $1必须由Cron定期执行（通常每天）。
 sched_runparts=当前，正在从脚本 $1 $2运行日志轮换命令，并且无法对其进行调整。
@@ -98,10 +104,12 @@ sched_enabled=已启用，有时低于 ..
 sched_save=更新Cron作业
 sched_err=保存轮换时间表失败
 sched_when=运行时间
+
 force_title=强制日志旋转
 force_doing=强制立即轮换所有日志文件 ..
 force_doingone=强制立即轮换一个日志文件 ..
 force_done=..完成。
 force_failed=..失败了！请参阅上面的输出以了解原因。
+
 delete_err=删除日志失败
 delete_enone=未选择

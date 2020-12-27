@@ -3,11 +3,14 @@ index_return=OpenSLP yapılandırması
 index_eslpd=$1 OpenSLP arka plan programı sisteminizde bulunamadı. Belki yüklü değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.
 index_econf=$1 OpenSLP yapılandırma dosyası sisteminizde bulunamadı. Belki yüklü değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.
 index_version=OpenSLP sürüm $1 
+
 slp_apply=Değişiklikleri uygula
 slp_stop=OpenSLP'yi Durdur
+
 snda_title=Statik Kapsam ve DA
 snda_useScopes=Statik Kapsam listesi
 snda_DAAddresses=Dizin Aracılarının statik listesi (DA)
+
 netcfg_title=Ağ Yapılandırması
 netcfg_isBroadcastOnly=Yayınları çok noktaya yayın yerine kullanılmaya zorlayın
 netcfg_passiveDADetection=Pasif DA tespiti kullanma
@@ -23,20 +26,25 @@ netcfg_unicastMaximumWait=Tek noktaya yayın istekleri arasındaki maksimum sür
 netcfg_randomWaitBound=Tüm rastgele bekleme parametreleri için maksimum değer (milisaniye cinsinden)
 netcfg_MTU=MTU paket boyutu (bayt cinsinden)
 netcfg_interfaces=DA/SA'nın dinlemesi gereken arabirimlerin IP adresleri
+
 dacfg_title=DA Yapılandırması
 dacfg_isDA=Yalnızca DA işlevi (bunu değiştirmeden önce kullanım kılavuzunu okuyun)
+
 log_title=İzleme ve Günlüğe Kaydetme
 log_traceDATraffic=DA trafik mesajlarını yazdırma
 log_traceMsg=SLP ayrıntı mesajlarını yazdırma
 log_traceDrop=SLP bırakılan mesaj bilgilerini yazdır
 log_traceReg=DA ve SA kayıt ve kayıt silme bilgilerini yazdırın
+
 error_open=Dosya açılırken hata oluştu
 error_flock_on=Dosya kilidi oluşturulurken hata meydana geldi
 error_flock_off=Dosya kilidini yok etme hatası
 error_hup=PID ile OpenSLP yeniden başlatılırken hata oluştu
+
 index_start=OpenSLP'yi başlat
 index_startmsg=Sisteminizde OpenSLP arka plan programını başlatmak için bu düğmeyi tıklatın.
 index_stop=OpenSLP'yi Durdur
 index_stopmsg=Sisteminizdeki OpenSLP arka plan programını durdurmak için bu düğmeyi tıklatın.
+
 stop_err=OpenSLP durdurulamadı
 start_err=OpenSLP başlatılamadı

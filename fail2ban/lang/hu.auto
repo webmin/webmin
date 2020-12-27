@@ -12,10 +12,12 @@ index_restart=Indítsa újra a Fail2Ban szervert
 index_restartdesc=Kattintson erre a gombra az aktuális konfiguráció alkalmazásához a Fail2Ban szerver újraindításával.
 index_return=modul index
 index_header=Fail2Ban modul
+
 check_edir=A (z) $1 konfigurációs könyvtár nem létezik
 check_econf=A (z) $1 konfigurációs fájl nem létezik
 check_eclient=A (z) $1 kliensparancs nem található
 check_eserver=A (z) $1 kiszolgálóparancs nem található
+
 filters_title=Naplószűrők
 filters_name=Név szűrése
 filters_re=Reguláris kifejezés
@@ -25,6 +27,7 @@ filters_return=szűrők listája
 filters_derr=A szűrők törlése nem sikerült
 filters_enone=Egy sincs kiválasztva
 filters_einuse=A $1 szűrőt nem lehet törölni, mivel a börtönök használják : $2 
+
 filter_title1=Szűrő létrehozása
 filter_title2=Szűrő szerkesztése
 filter_desc=Használja a <i>&lt;HOST&gt;</i> rendszeres kifejezéseket, ahol a gazdagépnévnek vagy az IP-címnek meg kell jelennie.
@@ -39,6 +42,7 @@ filter_ename=Hiányzó vagy érvénytelen szűrőnév
 filter_eclash=A szűrő neve már használatban van
 filter_efail=Nincs megadva megegyező szabályos kifejezés
 filter_einuse=Ezt a szűrőt nem lehet törölni, mivel a börtönök használják : $1 
+
 actions_title=Mérkőzés műveletek
 actions_name=Művelet neve
 actions_ban=Ban parancs
@@ -48,6 +52,7 @@ actions_return=a tevékenységek listája
 actions_derr=Nem sikerült törölni a műveleteket
 actions_enone=Egy sincs kiválasztva
 actions_einuse=A (z) $1 műveletet nem lehet törölni, mivel a (2) börtönök használják
+
 action_title1=Hozzon létre egyezési akciót
 action_title2=A mérkőzés művelet szerkesztése
 action_header=Egyeztesse a művelet részleteit
@@ -64,6 +69,7 @@ action_ban=Parancs az IP letiltására
 action_unban=Parancs az IP betiltására
 action_desc=A <i>&lt;ip&gt;</i> helyébe a tiltott IP-cím lép.
 action_einuse=Ezt a műveletet nem lehet törölni, mivel a börtönök használják : $1 
+
 jails_title=Szűrje az akcióberendezéseket
 jails_add=Adjon hozzá egy új börtönt.
 jails_name=A börtön neve
@@ -76,6 +82,7 @@ jails_defdesc=Szerkessze az alapértelmezett beállításokat és korlátozások
 jails_return=börtönök listája
 jails_derr=Nem sikerült törölni a börtönöket
 jails_enone=Egy sincs kiválasztva
+
 jail_title1=Létrehozása börtön
 jail_title2=Jail szerkesztése
 jail_header=Az akció börtön részleteinek szűrése
@@ -115,13 +122,16 @@ jail_banaction=Alapértelmezés szerint alkalmazandó művelet
 jail_defprotocol=Alapértelmezett műveleti protokoll
 jail_edestemail=Hiányzik vagy érvénytelen az alapértelmezett értesítési e-mail cím
 jail_eignoreip=Érvénytelen IP-cím a figyelmen kívül hagyáshoz
+
 jaildef_title=Alapértelmezett börtönbeállítások
 jaildef_header=Alapértelmezések minden börtönnél
 jaildef_err=Az alapértelmezett börtönbeállítások mentése nem sikerült
 jaildef_egone=Nem található DEFAULT börtön!
+
 start_err=Nem sikerült elindítani a szervert
 stop_err=Nem sikerült leállítani a szervert
 restart_err=Nem sikerült a szerver újraindítása
+
 log_create_filter=Létrehozta a (z) $1 szűrőt
 log_update_filter=Módosított $1 szűrő
 log_delete_filter=Törölve a (z) $1 szűrő
@@ -139,6 +149,7 @@ log_atboot=Engedélyezve a Fail2Ban indításkor
 log_delboot=Letiltva a Fail2Ban a rendszerindításkor
 log_manual=Szerkesztett konfigurációs fájl $1 
 log_jaildef=Módosított alapértelmezett börtönbeállítási lehetőségek
+
 config_title=Globális konfiguráció
 config_edef=Nem található a Definition szakasz a konfigurációs fájlban!
 config_header=A Fail2Ban konfigurációs beállításai
@@ -151,10 +162,12 @@ config_socket=Aljzat a szerverrel való kommunikációhoz
 config_err=Nem sikerült menteni a globális konfigurációt
 config_elogtarget=A naplók írására szolgáló fájlnak abszolút útvonalnak kell lennie
 config_esocket=A socket fájlnak abszolút útvonalnak kell lennie
+
 manual_title=A Config Files szerkesztése
 manual_desc=Szerkeszthető fájl:
 manual_ok=rendben
 manual_efile=A kiválasztott fájl nem része a Fail2Ban konfigurációnak!
 manual_err=A konfigurációs fájl szerkesztése nem sikerült
 manual_edata=Nincs megadva konfigurációs fájl tartalma
+
 syslog_logtarget=Fail2Ban cselekvési napló

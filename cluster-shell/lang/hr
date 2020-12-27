@@ -8,12 +8,14 @@ index_this=ovaj poslužitelj
 index_all=&lt;Svi hostovi&gt;
 index_group=Članovi iz $1
 index_clear=Izriši Povijest
+
 run_title=Pokreni Naredbu
 run_err=Neuspjelo pokretanje naredbe
 run_ecmd=Nije unešena naredba
 run_failed=Neuspjelo pokretanje na $1 : $2
 run_success=Izlaz iz $1 ..
 run_enone=Nema poslužitelja za pokretanje na odabranom
+
 log_clear=Izbriši povijest naredbi
 log_run=Pokreni $1 na $2 poslužiteljima
 log_run_l=Pokreni $1 na $2

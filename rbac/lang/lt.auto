@@ -1,5 +1,6 @@
 index_euser=RBAC konfigūracijos failas $1 nerastas jūsų sistemoje. Galbūt RBAC neįdiegtas, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
 index_return=modulio rodyklė
+
 users_title=Vartotojo atributai
 users_user=Vartotojo vardas
 users_profiles=Suteikti profiliai
@@ -10,6 +11,7 @@ users_return=vartotojo atributų sąrašas
 users_type=Tipas
 users_role=Vaidmuo
 users_project=Projektas
+
 user_title1=Sukurkite vartotojo atributus
 user_title2=Redaguoti vartotojo atributus
 user_header=Atributai, suteikti „Unix“ vartotojui
@@ -35,6 +37,7 @@ user_eauth=„$1“ nėra galiojantis įgaliojimas
 user_ecannot=Jums neleidžiama redaguoti šio vartotojo
 user_erole=Jums neleidžiama priskirti „$1“ vaidmens
 user_eprof=Jums neleidžiama priskirti profilio „$1“
+
 auths_title=Leidimai
 auths_name=Autorizacijos pavadinimas
 auths_desc=apibūdinimas
@@ -42,8 +45,10 @@ auths_none=Dar nėra apibrėžti leidimai.
 auths_add=Pridėkite naują autorizaciją.
 auths_return=leidimų sąrašas
 auths_ecannot=Jums neleidžiama redaguoti autorizacijos
+
 authc_name=Leidimas
 authc_desc=apibūdinimas
+
 auth_title1=Sukurti autorizaciją
 auth_title2=Redaguoti autorizaciją
 auth_header=Išsami informacija apie autorizacijos privilegijas
@@ -57,6 +62,7 @@ auth_edesc=Netinkamas ilgas aprašymas
 auth_eclash=To paties pavadinimo autorizacija jau egzistuoja
 auth_einuseu=Šią prieigą naudoja vartotojas $1, todėl jos negalima ištrinti
 auth_einusep=Šią prieigą naudoja profilyje $1, todėl jos negalima ištrinti
+
 profs_title=Profiliai
 profs_name=Profilio vardas
 profs_desc=apibūdinimas
@@ -65,6 +71,7 @@ profs_none=Dar nėra apibrėžta profilių.
 profs_add=Pridėkite naują profilį.
 profs_return=profilių sąrašas
 profs_ecannot=Jums neleidžiama redaguoti profilių
+
 prof_title1=Sukurti profilį
 prof_title2=Redaguoti profilį
 prof_header=Išsami autorizacijos profilio informacija
@@ -81,6 +88,7 @@ prof_einuseu=Šį profilį naudoja vartotojas $1, todėl jo negalima ištrinti
 prof_einusep=Šį profilį naudoja profilis $1, todėl jo negalima ištrinti
 prof_einusee=Šiame profilyje yra $1 vykdymo profilių, todėl jo negalima ištrinti
 prof_none=Nėra galimų profilių
+
 execs_title=Vykdymo profiliai
 execs_name=Profilis
 execs_policy=Saugumo politika
@@ -92,6 +100,7 @@ execs_none=Dar nebuvo apibrėžti vykdymo profiliai.
 execs_add=Pridėkite naują vykdymo profilį.
 execs_return=vykdymo profilių sąrašas
 execs_ecannot=Jums neleidžiama redaguoti vykdymo profilių
+
 exec_title1=Sukurti vykdymo profilį
 exec_title2=Redaguoti vykdymo profilį
 exec_header=Išsami vykdymo profilio informacija
@@ -113,6 +122,7 @@ exec_erruid=Trūksta arba netinkamas vartotojas veikia kaip
 exec_errgid=Trūksta arba netinkama grupė veikia kaip
 exec_erreuid=Trūksta arba netinkamas efektyvus vartotojas, kuris galėtų veikti kaip
 exec_erregid=Trūksta arba netinkama efektyvi grupė, kuri veikia kaip
+
 policy_title=Sistemos politika
 policy_header=Visuotinės sistemos politikos parametrai
 policy_auths=Visų vartotojų autorizacijos
@@ -126,16 +136,20 @@ policy_err=Nepavyko išsaugoti sistemos strategijų
 policy_eallow=Nėra pasirinktų algoritmų
 policy_eclash=Algoritmas, leidžiantis ir nebenaudojamas, negali būti pasirenkamas vienu metu
 policy_ecannot=Jums neleidžiama redaguoti sistemos strategijų
+
 attr_none=Neapibrėžta jokių vartotojo atributų
 attr_nonenormal=Neapibrėžta jokių „Unix“ vartotojų
 attr_nonerole=Nėra apibrėžtų vaidmenų
+
 help_epath=Netinkamas pagalbos failo kelias!
 help_link=(Pagalba..)
+
 crypt___unix__=„Unix“ kripta
 crypt_1=BSD MD5
 crypt_2a=BSD sraigė
 crypt_md5=„Sun MD5“
 crypt_rot13=ROT13
+
 log_create_user=Sukurti $1 vartotojo atributai
 log_modify_user=Pakeisti $1 vartotojo atributai
 log_delete_user=Ištrinti $1 vartotojo atributai
@@ -152,6 +166,7 @@ log_create_project=Sukurtas projektas $1
 log_modify_project=Modifikuotas projektas $1 
 log_delete_project=Ištrintas projektas $1 
 log_policy=Pakeista sistemos politika
+
 acl_roles=Ar gali redaguoti vaidmenis?
 acl_users=Ar galite redaguoti vartotojo atributus?
 acl_roleassign=Gali priskirti vaidmenis
@@ -166,6 +181,7 @@ acl_profs=Ar galima redaguoti profilius?
 acl_ro=Tik peržiūra
 acl_execs=Ar galima redaguoti vykdymo profilius?
 acl_projects=Ar galite redaguoti projektus?
+
 projects_title=Projektai
 projects_name=vardas
 projects_id=ID
@@ -184,6 +200,7 @@ projects_exceptusers=Visi vartotojai, išskyrus $1
 projects_exceptgroups=Visos grupės, išskyrus $1 
 projects_onlyusers=Tik $1 
 projects_onlygroups=Tik $1 
+
 project_title1=Sukurti projektą
 project_title2=Redaguoti projektą
 project_header=Informacija apie projektą ir nariai
@@ -219,6 +236,7 @@ project_egroupscannot=Nėra pasirinktų grupių
 project_elimit=Trūksta arba netinkama riba $1 eilutėje
 project_epool=Trūksta arba netinkamas projekto grupės pavadinimas
 project_erss=Trūksta arba netinkama maksimali atmintis
+
 prctl_title=Išteklių kontrolė
 prctl_ok=Rodyti apribojimus:
 prctl_mode0=Procesas su ID

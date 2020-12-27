@@ -7,6 +7,7 @@ index_delete2=מחק ממשקים שנבחרו
 index_delete3=מחק והחל ממשקים שנבחרו
 index_apply2=החל ממשקים נבחרים
 index_vmin=Virtualmin
+
 ifcs_title=ממשקי רשת
 ifcs_now=פעיל כעת
 ifcs_activedesc=הממשקים הרשומים בטבלה זו פעילים כעת במערכת. ברוב המקרים, עליך לערוך אותם בכרטיסייה <b>מופעל באמצעות אתחול</b>.
@@ -55,6 +56,7 @@ ifcs_linkyes=מחובר
 ifcs_linkno=לא מחובר
 ifcs_speed=מהירות ממשק
 ifcs_duplex=, $1 דופלקס
+
 aifc_create=צור ממשק פעיל
 aifc_edit=ערוך ממשק פעיל
 aifc_desc1=פרמטרים ממשקים פעילים
@@ -79,6 +81,7 @@ aifc_eaddress6=כתובת IPv6 בשורה $1 אינה תקפה
 aifc_enetmask6=מסכת רשת IPv6 בשורה $1 חייבת להיות מספר שלם בין 1 ל- 128
 aifc_eclash6=כתובת IPv6 בשורה $1 כבר בשימוש על ידי ממשק $2 
 aifc_eaddresses6=לא הוזנו כתובות IPv6
+
 bifc_create=צור ממשק אתחול
 bifc_act=להפעיל אתחול?
 bifc_edit=ערוך ממשק אתחול
@@ -110,6 +113,7 @@ bifc_bridgestp=פרוטוקול עץ פורש
 bifc_bridgefd=עיכוב קדימה
 bifc_bridgewait=השהה כדי להיות זמין
 bifc_ebond=ממשק האג"ח חייב להיות מספר
+
 bonding_add=הוסף ממשק מליטה חדש.
 bonding_create=צור ממשק מליטה
 bonding_teamparts=שותפים לצוות
@@ -121,11 +125,14 @@ bonding_miimon=מרווח ניטור Mii
 bonding_miimondesc=(השאר ריק כדי להשבית ניטור קישורים)
 bonding_updelay=עד השהייה
 bonding_downdelay=השהיה לאחור
+
 vlan_add=הוסף ממשק מתויג Vlan
 vlan_physical=מכשיר פיזי
 vlan_id=מזהה Vlan
 vlan_create=צור ממשק VLAN
+
 bridge_create=צור ממשק גשר
+
 routes_title=ניתוב ושערים
 routes_boot=תצורת הניתוב מופעלת ב <i>זמן אתחול</i>
 routes_now=תצורת הניתוב מופעלת כעת
@@ -194,6 +201,7 @@ routes_tabboot=תצורת זמן אתחול
 routes_tabactive=תצורה פעילה
 routes_descactive=סעיף זה מציג נתיבים שהמערכת הגדירה כעת ומאפשרת להוסיף או להסיר נתיבים פעילים במערכות מסוימות. הקפד לעשות זאת, מכיוון ששינויים שגויים עשויים לנתק את המערכת שמפעילה את Webmin משאר הרשת.
 routes_descboot=סעיף זה מאפשר לך לקבוע את התצורה של המסלולים המופעלים כאשר המערכת מאתחלת, או כאשר הגדרות הרשת מוחלות מחדש באופן מלא.
+
 dns_title=שם מארח ולקוח DNS
 dns_options=אפשרויות לקוח DNS
 dns_hostname=שם מארח
@@ -211,6 +219,7 @@ dns_edomain='$1' אינו שם תחום תקף
 dns_esearch=לא ניתן דומיינים לחיפוש
 dns_hoststoo=עדכן שם מארח בכתובות מארח אם השתנה?
 dns_dhcp=שם המארח מוגדר על ידי שרת DHCP?
+
 hosts_title=כתובות מארח
 hosts_active=מופעל?
 hosts_ip=כתובת ה - IP
@@ -222,6 +231,7 @@ hosts_detail=מארח וכתובות
 hosts_return=רשימת כתובות מארח
 hosts_ecannot=אינך רשאי לערוך כתובות מארח
 hosts_delete=מחק כתובות מארחות שנבחרו
+
 ipnodes_title=כתובות מארח IPv6
 ipnodes_ip=כתובת IPv6
 ipnodes_host=שמות מארחים
@@ -233,6 +243,7 @@ ipnodes_return=רשימת כתובות מארח IPv6
 ipnodes_ecannot=אינך רשאי לערוך כתובות מארח של IPv6
 ipnodes_none=טרם הוגדרו כתובות מארח IPv6.
 ipnodes_delete=מחק כתובות מארח IPv6 שנבחרו
+
 log_create_host=נוצר כתובת מארח $1 
 log_delete_host=כתובת המארח $1 נמחקה
 log_modify_host=כתובת מארח שונה $1 
@@ -256,6 +267,7 @@ log_apply_bfics=הפעל ממשקים של $1 בזמן האתחול
 log_create_route=יצר מסלול פעיל עבור $1 
 log_create_defroute=יצר מסלול ברירת מחדל פעיל
 log_delete_routes=$1 מסלולים פעילים נמחקו
+
 acl_ifcs=האם ניתן לערוך ממשקי רשת?
 acl_routes=האם ניתן לערוך ניתוב ושערים?
 acl_dns=האם ניתן לערוך הגדרות לקוח DNS?
@@ -273,6 +285,7 @@ acl_virt=האם ניתן להוסיף ממשקים וירטואליים?
 acl_delete=האם ניתן למחוק ממשקים?
 acl_hide=להסתיר ממשקים לא ניתנים לעריכה?
 acl_sysinfo=הצג ממשקי רשת זמינים בלוח המחוונים
+
 interfaces_title1=בחר ממשקים. ..
 interfaces_all=כל הממשקים. ..
 interfaces_sel=ממשקים נבחרים
@@ -280,7 +293,9 @@ interfaces_ok=בסדר
 interfaces_cancel=בטל
 interfaces_clear=ברור
 interfaces_title2=בחר משתמש. ..
+
 apply_ecannot=אינך מורשה להחיל את התצורה
+
 mod_egone=הממשק אינו פעיל יותר!
 mod_title=ממשק פעיל
 mod_desc=ממשק $1 משמש ל- $2 ולכן לא ניתן לנהל אותו באמצעות מודול זה.
@@ -292,6 +307,7 @@ mod_pptpc=חיבור ה- PPTP $1
 mod_zones=ממשק וירטואלי לאזור <tt>$1</tt>
 mod_virtualmin=שרת Virtualmin <tt>$1</tt>
 mod_reseller=המשווק של Virtualmin <tt>$1</tt>
+
 range_edit=ערוך טווח כתובות
 range_create=צור טווח כתובות
 range_header=אפשרויות ממשק טווח כתובות
@@ -307,13 +323,17 @@ range_eend=כתובת IP חסומה או לא תקפה
 range_enum=מספר ממשק וירטואלי ראשון חסר או לא מספרי
 range_eclass=כתובות התחלה וסיום חייבות להיות באותה רשת Class C
 range_ebefore=כתובת הסיום חייבת להיות גבוהה יותר מכתובת ההתחלה
+
 chooser_any=&lt;כל&gt;
 chooser_other=אחר ..
+
 dafics_err=הפעלת הממשקים נכשלה
 daifcs_enone=לא נבחר
 daifcs_egone=הממשק כבר לא קיים!
+
 dbifcs_err=מחיקת הממשקים נכשלה
 dbifcs_err2=הפעלת הממשקים נכשלה
+
 hdelete_err=מחיקת כתובות מארח נכשלה
 hdelete_enone=לא נבחר
 idelete_err=מחיקת כתובות מארח IPv6 נכשלה

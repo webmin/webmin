@@ -23,6 +23,7 @@ index_econf=Xinetd 구성 파일 $1이(가) 없습니다. 설치되어 있지 �
 index_noport=알 수 없음
 index_enable=선택 사항 활성
 index_disable=선택 사항 비활성
+
 serv_create=인터넷 서비스 작성
 serv_edit=인터넷 서비스 편집
 serv_header1=서비스 네트워크 옵션
@@ -76,19 +77,24 @@ serv_enice=없거나 잘못된 양호한 수준
 serv_ecps0=없거나 잘못된 초 당 연결 수
 serv_ecps1=없거나 잘못된 지연
 serv_etimes=접근 시간의 형식은 HH:MM-HH:MM이어야 합니다
+
 sock_stream=스트림
 sock_dgram=데이터그램
 sock_raw=원시
 sock_seqpacket=순차 데이터그램
+
 proto_=기본값
 proto_ip=IP(Internet Protocol)
 proto_tcp=TCP(Transmission Control Protocol)
 proto_udp=UDP(User Datagram Protocol)
+
 restart_err=변경 내용을 적용하지 못했습니다
 restart_ekill=PID $1에 HUP 신호를 보내지 못했습니다: $2
 restart_epid=더이상 작동중이지 않습니다.
+
 start_err=xinetd를 시작하지 못했습니다
 start_estart=$1 실패: $2
+
 defs_title=기본 옵션
 defs_header=서비스의 기본 옵션
 defs_log=Xinetd 로그 모드
@@ -113,6 +119,7 @@ defs_err=기본 옵션을 저장하지 못했습니다
 defs_efile=없거나 잘못된 로그 파일 이름
 defs_esoft=없거나 잘못된 소프트 제한
 defs_ehard=없거나 잘못된 하드 제한
+
 log_create_serv=$2 서비스 $1 변경됨
 log_modify_serv=$2 서비스 $1 수정됨
 log_delete_serv=$2 서비스 $1 삭제됨
@@ -123,5 +130,6 @@ log_enable=$1 서비스 활성
 log_disable=$1 서비스 비활성
 log_enable_l=$1 서비스 활성
 log_disable_l=$1 서비스 비활성
+
 config_dirdef=Xinetd 설정 파일
 config_dirto=다음 디렉토리에 생성:

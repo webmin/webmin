@@ -19,11 +19,13 @@ index_force=強制日誌旋轉
 index_forcedesc=強制立即輪換所有日誌文件，即使還沒有時間。
 index_logrotate=對數旋轉
 index_delete=刪除選定的日誌輪換
+
 period_daily=日常
 period_weekly=每週
 period_monthly=每月一次
 period_never=決不
 period_bytes=個字節
+
 edit_title1=編輯日誌文件
 edit_title2=創建日誌文件
 edit_header=輪換的日誌文件詳細信息
@@ -62,8 +64,10 @@ edit_pre=旋轉前要運行的命令
 edit_default=默認值（$1）
 edit_sharedscripts=所有文件只運行一次腳本？
 edit_now=現在旋轉
+
 global_title=全局選項
 global_header=所有日誌文件的默認選項
+
 save_err=保存日誌失敗
 save_efile=缺少或無效的日誌文件名
 save_esize=最大大小缺失或無效
@@ -81,6 +85,7 @@ save_eerrors=缺少錯誤消息的電子郵件地址
 save_epre=旋轉前腳本不能包含<tt>endscript</tt>或<tt>endrotate</tt>行
 save_epost=旋轉後腳本不能包含<tt>endscript</tt>或<tt>endrotate</tt>行
 save_enofiles=沒有輸入要旋轉的文件
+
 log_modify_sched=更改了日誌輪換Cron作業
 log_create_sched=創建日誌輪換Cron作業
 log_delete_sched=刪除日誌輪換Cron作業
@@ -89,6 +94,7 @@ log_create=為日誌文件 $1添加了輪換
 log_modify=日誌文件 $1的修改後的輪換
 log_delete=日誌文件 $1的已刪除輪換
 log_delete_logs=已刪除 $1日誌文件的輪換
+
 sched_title=日誌輪換時間表
 sched_desc=為了執行使用此模塊配置的日誌輪換，命令 $1必須由Cron定期執行（通常每天）。
 sched_runparts=當前，正在從腳本 $1 $2運行日誌輪換命令，並且無法對其進行調整。
@@ -98,10 +104,12 @@ sched_enabled=已啟用，有時低於 ..
 sched_save=更新Cron作業
 sched_err=保存輪換時間表失敗
 sched_when=運行時間
+
 force_title=強制日誌旋轉
 force_doing=強制立即循環所有日誌文件 ..
 force_doingone=強制立即輪換一個日誌文件 ..
 force_done=..完成。
 force_failed=..失敗了！請參閱上面的輸出以了解原因。
+
 delete_err=刪除日誌失敗
 delete_enone=未選擇

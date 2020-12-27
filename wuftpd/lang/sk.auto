@@ -9,6 +9,7 @@ index_startmsg=Kliknutím na toto tlačidlo spustíte server FTP s aktuálnou ko
 index_startmsg2=Kliknutím na toto tlačidlo spustíte server FTP s aktuálnou konfiguráciou. Môžete tiež nakonfigurovať server tak, aby sa v prípade potreby spustil automaticky pomocou inetd alebo nejakého ekvivalentného programu.
 index_return=Možnosti servera FTP
 index_version=Verzia WU-FTPd $1 
+
 class_title=Používatelia a triedy
 class_header=Triedy používateľov a možnosti používateľa
 class_class=Triedy používateľov
@@ -31,6 +32,7 @@ class_err=Uloženie tried používateľov zlyhalo
 class_eclass='$1' nie je platný názov triedy
 class_etypes=Pre triedu $1 neboli vybrané žiadne typy
 class_eaddrs=Pre triedu $1 neboli zadané žiadne adresy
+
 message_title=Správy a bannery
 message_header=Správy, bannery a súbory README
 message_message=Súbory správ
@@ -59,6 +61,7 @@ message_eclass=Trieda '$1' neexistuje
 message_ebanner='$1' nie je platný prihlasovací banner
 message_ehostname=Chýba alebo je neplatný názov hostiteľa
 message_eemail=Chýbajúca alebo neplatná e-mailová adresa
+
 acl_title=Limity a riadenie prístupu
 acl_header=Limity a možnosti riadenia prístupu
 acl_deny=Odmietnuť prístup od
@@ -105,6 +108,7 @@ acl_elmsg=$1 nie je platný súbor chybových správ
 acl_efbcount='$1' nie je platný počet súborov alebo bajtov
 acl_elimit=$1 nie je platný časový limit
 acl_efails=$1 nie je platný počet zlyhaní prihlásenia
+
 net_title=Networking
 net_header=Možnosti siete
 net_tcp=Veľkosti okna TCP
@@ -122,6 +126,7 @@ net_eip=$1 nie je platná adresa IP
 net_enet=$1 nie je platná sieťová adresa
 net_ecidr='$1' nie je platný počet sieťových bitov
 net_eport='$1' nie je platné číslo portu
+
 log_title=protokolovanie
 log_header=Možnosti protokolovania
 log_commands=Zaznamenajte všetky príkazy pre
@@ -139,6 +144,7 @@ log_syslog=Systémový denník
 log_xferlog=Súbor protokolu XFER
 log_sysxfer=Oba ciele
 log_err=Možnosti protokolovania sa nepodarilo uložiť
+
 alias_title=Aliasy a cesty
 alias_header=Alias a možnosti cesty
 alias_alias=Aliasy adresárov CD
@@ -149,6 +155,7 @@ alias_err=Nepodarilo sa uložiť aliasy a cesty
 alias_efrom='$1' nie je platný názov aliasu
 alias_eto='$1' nie je platný adresár aliasov
 alias_ecdpath='$1' nie je platný adresár na vyhľadávanie CD
+
 anon_title=Anonymný FTP
 anon_eftp=Varovanie - váš systém nemá používateľa <tt>ftp</tt>, a preto pravdepodobne nie je nakonfigurovaný anonymný FTP.
 anon_header=Anonymné možnosti FTP
@@ -171,6 +178,7 @@ anon_uids=Pre používateľov Unixu
 anon_err=Nepodarilo sa uložiť anonymné možnosti FTP
 anon_edir=$1 nie je platný adresár
 anon_egroup=$1 nie je platná skupina
+
 perm_title=oprávnenie
 perm_header=Možnosti povolenia
 perm_perms=Obmedzenia príkazov
@@ -192,7 +200,9 @@ perm_err=Nepodarilo sa uložiť povolenia
 perm_echar='$1' nie je platný regulárny výraz pre znakovú sadu
 perm_etypes=Nie sú vybraté žiadne typy používateľov
 perm_emesg=$1 nie je platný súbor chybových správ
+
 host_title=Riadenie prístupu hostiteľa
+
 misc_title=Rôzne možnosti
 misc_header=Rôzne možnosti
 misc_lslong=Príkaz s dlhým výpisom
@@ -213,6 +223,7 @@ misc_elsplain=Chýba príkaz na jednoduchý výpis
 misc_eshutdown=Chýba súbor s upozornením na vypnutie
 misc_enice='$1' nie je platná pekná úroveň
 misc_eumask='$1' nie je platné umask
+
 log_class=Zmenení používatelia a triedy
 log_message=Zmenené správy a nápisy
 log_acl=Zmenené limity a kontrola prístupu

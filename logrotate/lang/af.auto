@@ -19,11 +19,13 @@ index_force=Dwing log-rotasie
 index_forcedesc=Dwing die onmiddellike rotasie van alle loglêers, selfs al is dit nog nie tyd nie.
 index_logrotate=Logrotate
 index_delete=Vee geselekteerde log-rotasies uit
+
 period_daily=daaglikse
 period_weekly=weeklikse
 period_monthly=maandelikse
 period_never=nooit
 period_bytes=grepe
+
 edit_title1=Redigeer loglêer
 edit_title2=Skep loglêer
 edit_header=Geroteerde loglêerbesonderhede
@@ -62,8 +64,10 @@ edit_pre=Opdragte om te draai voor rotasie
 edit_default=Standaard ($1)
 edit_sharedscripts=Voer slegs skripte een keer vir alle lêers uit?
 edit_now=Draai nou
+
 global_title=Wêreldwye opsies
 global_header=Standaardopsies vir alle loglêers
+
 save_err=Kon nie die log stoor nie
 save_efile=Ontbrekende of ongeldige loglêernaam
 save_esize=Die maksimum grootte ontbreek of ongeldig
@@ -81,6 +85,7 @@ save_eerrors=E-posadres ontbreek vir foutboodskappe
 save_epre=Voor-rotasieskript kan nie 'n <tt>eindskrif</tt> of <tt>endrotaat</tt> -reël bevat nie
 save_epost=Na-rotasie-skrif kan nie 'n <tt>eindskrif</tt> of <tt>endrotaat</tt> -reël bevat nie
 save_enofiles=Geen lêers om te draai is ingevoer nie
+
 log_modify_sched=Verander log-rotasie Cron-baan
 log_create_sched=Log rotasie Cron werk geskep
 log_delete_sched=Log-rotasie Cron-baan is uitgevee
@@ -89,6 +94,7 @@ log_create=Rotasie bygevoeg vir loglêer $1
 log_modify=Gewysigde rotasie vir loglêer $1 
 log_delete=Rotasie vir loglêer $1 is uitgevee
 log_delete_logs=Rotasie is verwyder vir $1 loglêers
+
 sched_title=Teken rotasie skedule
 sched_desc=Vir die log-rotasie wat met hierdie module gekonfigureer word om uit te voer, moet die opdrag $1 op 'n gewone skema (gewoonlik daagliks) uitgevoer word deur Cron.
 sched_runparts=Tans word die log-rotasie-opdrag vanaf die script $1 $2 uitgevoer en kan nie aangepas word nie.
@@ -98,10 +104,12 @@ sched_enabled=Geaktiveer, soms hieronder.
 sched_save=Dateer Cron Job op
 sched_err=Kon nie die rotasieskedule stoor nie
 sched_when=Tyd om te hardloop
+
 force_title=Dwing log-rotasie
 force_doing=Dwing die onmiddellike rotasie van alle loglêers ..
 force_doingone=Dwing die onmiddellike rotasie van een loglêer ..
 force_done=.. klaar.
 force_failed=.. misluk! Kyk na die afvoer hierbo vir die rede waarom.
+
 delete_err=Kon nie logboeke uitvee nie
 delete_enone=Geen gekies nie

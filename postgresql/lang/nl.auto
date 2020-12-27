@@ -1,8 +1,12 @@
 view_refresh=Vernieuwen
 view_go=Gaan
+
 user_vwarning=WAARSCHUWING: deze PostgreSQL-gebruiker is de beheerdersaanmelding voor Virtualmin-domein $1. Het wijzigen van instellingen hier kan fouten in Virtualmin veroorzaken.
+
 host_manual=Configuratiebestand bewerken
 host_manualdesc=Klik op deze knop om het configuratiebestand van toegestane hosts handmatig te bewerken.
+
 manual_title=Configuratiebestand bewerken
 manual_err=Kan configuratiebestand niet opslaan
+
 log_manual=Handmatig bewerkte configuratiebestand voor toegestane hosts

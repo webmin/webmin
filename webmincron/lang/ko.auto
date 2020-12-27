@@ -15,5 +15,6 @@ edit_special_daily=매일 (자정)
 edit_special_weekly=매주 (일요일)
 edit_special_monthly=월간 (1 일)
 edit_special_yearly=매년 (1 월 1 일)
+
 log_success=<tt>$1</tt>에서 <tt>$2</tt>를 성공적으로 실행했습니다.
 log_failure=<tt>$1</tt>에서 <tt>$2</tt>을 (를) 실행하지 못했습니다  : $3 

@@ -25,6 +25,7 @@ index_header=Người dùng có cấu hình Fetchmail
 index_search=Hiển thị cấu hình Fetchmail cho:
 index_show=Chỉ
 index_toomany=Có quá nhiều người dùng trên hệ thống của bạn để hiển thị.
+
 poll_create=Thêm máy chủ
 poll_edit=Chỉnh sửa máy chủ
 poll_header=Tùy chọn máy chủ thư
@@ -64,18 +65,22 @@ poll_ecannot=Bạn không được phép chỉnh sửa cấu hình tìm nạp c�
 poll_efile=Chỉ có thể chỉnh sửa các tệp cấu hình tìm nạp của người dùng
 poll_eusername=Người dùng không tồn tại!
 poll_foruser=Dành cho người dùng $1 
+
 stop_err=Không thể dừng tìm nạp
 stop_ecannot=Bạn không được phép dừng tìm nạp
 start_err=Không thể bắt đầu tìm nạp
 start_einterval=Khoảng thời gian kiểm tra thiếu hoặc không hợp lệ
 start_ecannot=Bạn không được phép bắt đầu tìm nạp
+
 check_title=Kiểm tra máy chủ
 check_exec=Kiểm tra thư trên máy chủ bằng lệnh $1 ..
 check_ok=.. kiểm tra hoàn tất.
 check_failed=.. kiểm tra thất bại!
+
 global_title=Thiết lập mặc định
 global_header=Cài đặt mặc định cho tất cả các máy chủ
 global_err=Không thể lưu cài đặt mặc định
+
 log_create_poll_file=Đã thêm máy chủ $1 trong tệp $2 
 log_modify_poll_file=Máy chủ đã sửa đổi $1 trong tệp $2 
 log_delete_poll_file=Đã xóa máy chủ $1 trong tệp $2 
@@ -94,6 +99,7 @@ log_stop=Trình nền fetchmail đã dừng
 log_create_cron=Đã bật kiểm tra theo lịch trình
 log_update_cron=Kiểm tra lịch trình sửa đổi
 log_delete_cron=Vô hiệu hóa kiểm tra theo lịch trình
+
 acl_users=Có thể chỉnh sửa cấu hình tìm nạp cho
 acl_all=Tất cả người dùng
 acl_this=Người dùng webmin hiện tại
@@ -101,6 +107,7 @@ acl_only=Chỉ người dùng
 acl_except=Tất cả ngoại trừ người dùng
 acl_cron=Có thể cấu hình kiểm tra theo lịch trình?
 acl_daemon=Có thể cấu hình Fetchmail daemon?
+
 cron_title=Kiểm tra theo lịch trình
 cron_desc=Trang này có thể được sử dụng để bật hoặc tắt công việc Cron để kiểm tra các máy chủ thư trong cấu hình Fetchmail của bạn theo lịch trình thông thường. Sử dụng một công việc Cron vượt trội hơn để chạy trình nền Fetchmail, vì nó không cần phải bắt đầu lại khi khởi động.
 cron_header=Cài đặt tìm nạp theo lịch trình
@@ -119,8 +126,10 @@ cron_email=Địa chỉ email bị thiếu hoặc không hợp lệ
 cron_euser=Người dùng Unix bị thiếu hoặc không hợp lệ
 cron_errors=Chỉ xuất nếu có lỗi xảy ra?
 cron_ecannot2=Bạn không được phép cấu hình kiểm tra theo lịch trình
+
 user_title=Cấu hình tìm nạp
 user_header=Dành cho người dùng $1 
 user_return=cấu hình người dùng
+
 email_ok=Đầu ra tìm nạp
 email_failed=Lỗi tìm nạp

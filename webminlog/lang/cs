@@ -26,6 +26,7 @@ index_dall=Nějaká změna
 index_diff=Změny obsahující
 index_stimes=Akce v období
 index_shost=Server, obsahující Webmin
+
 search_title=Výsledky hledání
 search_date=Datum
 search_time=Čas
@@ -47,6 +48,7 @@ search_critt2=v $1
 search_config=Změněna konfigurace modulu
 search_etime=Neplatný počáteční a koncový čas
 search_err=Chyba při hledání
+
 view_title=Detaily akce
 view_header=Detaily loggované akce $1
 view_action=Popis
@@ -75,11 +77,13 @@ view_rollback2=Vrátit zpět vybrané soubory
 view_return=detaily akce
 view_input=Vstup pro příkaz
 view_anno=Logovat vstupní anotace
+
 acl_mods=Může vidět záznamy v modulech
 acl_all=Všechny
 acl_sel=Vybrané...
 acl_users=Mohu vidět akce uživatelů
 acl_rollback=Může vrátit zpět uskutečněné akce?
+
 rollback_title=N8vrat akce
 rollback_rusure=Jste si jistý, že se mají zobrazené soubory nahradit původními soubory? Všechny možné data, které tyto soubory nyní obsahují budou nahrazené následujícími změnami:
 rollback_isdir=Adresář - beze změn
@@ -102,4 +106,5 @@ rollback_modfile=Vrácený obsah souboru k $1.
 rollback_deleted=Vymazaný soubor $1.
 rollback_nodeleted=Přeskočený neexistující soubor $1.
 rollback_enone=Nejsou vybrané žádné soubory
+
 log_rollback=Návrat akce $1 v modulu $2

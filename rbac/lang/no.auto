@@ -1,5 +1,6 @@
 index_euser=RBAC-konfigurasjonsfilen $1 ble ikke funnet på systemet ditt. Kanskje RBAC ikke er installert, eller <a href='$2'>modulkonfigurasjonen</a> er feil.
 index_return=modulindeks
+
 users_title=Brukerattributter
 users_user=Brukernavn
 users_profiles=Tildelte profiler
@@ -10,6 +11,7 @@ users_return=liste over brukerattributter
 users_type=Type
 users_role=rolle
 users_project=Prosjekt
+
 user_title1=Lag brukerattributter
 user_title2=Rediger brukerattributter
 user_header=Attributter gitt til Unix-bruker
@@ -35,6 +37,7 @@ user_eauth='$1' er ikke en gyldig autorisasjon
 user_ecannot=Du har ikke lov til å redigere denne brukeren
 user_erole=Du har ikke lov til å tildele rollen '$1'
 user_eprof=Du har ikke lov til å tildele profilen '$1'
+
 auths_title=fullmakter
 auths_name=Autorisasjonsnavn
 auths_desc=Beskrivelse
@@ -42,8 +45,10 @@ auths_none=Ingen autorisasjoner er definert ennå.
 auths_add=Legg til en ny autorisasjon.
 auths_return=autorisasjonsliste
 auths_ecannot=Du har ikke lov til å redigere autorisasjoner
+
 authc_name=Autorisasjon
 authc_desc=Beskrivelse
+
 auth_title1=Opprett autorisasjon
 auth_title2=Rediger autorisasjon
 auth_header=Detaljer om autorisasjonsrettigheter
@@ -57,6 +62,7 @@ auth_edesc=Ugyldig lang beskrivelse
 auth_eclash=En autorisasjon med samme navn eksisterer allerede
 auth_einuseu=Denne autorisasjonen er i bruk av bruker $1, og kan derfor ikke slettes
 auth_einusep=Denne autorisasjonen er i bruk av profilen $1, og kan derfor ikke slettes
+
 profs_title=profiler
 profs_name=Profil navn
 profs_desc=Beskrivelse
@@ -65,6 +71,7 @@ profs_none=Ingen profiler er definert ennå.
 profs_add=Legg til en ny profil.
 profs_return=profiler liste
 profs_ecannot=Du har ikke lov til å redigere profiler
+
 prof_title1=Lag profil
 prof_title2=Rediger profil
 prof_header=Detaljer om autorisasjonsprofil
@@ -81,6 +88,7 @@ prof_einuseu=Denne profilen er i bruk av bruker $1, og kan derfor ikke slettes
 prof_einusep=Denne profilen er i bruk av profilen $1, og kan derfor ikke slettes
 prof_einusee=Denne profilen har $1 relaterte utførelsesprofiler, og kan derfor ikke slettes
 prof_none=Ingen tilgjengelige profiler
+
 execs_title=Utførelsesprofiler
 execs_name=Profil
 execs_policy=Sikkerhetspolitikk
@@ -92,6 +100,7 @@ execs_none=Ingen utførelsesprofiler er definert ennå.
 execs_add=Legg til en ny utførelsesprofil.
 execs_return=utførelsesprofiler liste
 execs_ecannot=Du har ikke lov til å redigere utførelsesprofiler
+
 exec_title1=Lag eksekveringsprofil
 exec_title2=Rediger utførelsesprofil
 exec_header=Utførelsesprofildetaljer
@@ -113,6 +122,7 @@ exec_erruid=Manglende eller ugyldig bruker til å kjøre som
 exec_errgid=Manglende eller ugyldig gruppe som skal kjøres som
 exec_erreuid=Manglende eller ugyldig effektiv bruker for å kjøre som
 exec_erregid=Manglende eller ugyldig effektiv gruppe som skal kjøres som
+
 policy_title=Systempolitikk
 policy_header=Globale systempolitiske innstillinger
 policy_auths=Autorisasjoner for alle brukere
@@ -126,16 +136,20 @@ policy_err=Kunne ikke lagre systempolicyer
 policy_eallow=Ingen algoritmer å tillate valgt
 policy_eclash=Algoritme for å tillate og avskrives kan ikke begge velges samtidig
 policy_ecannot=Du har ikke lov til å redigere systempolicyer
+
 attr_none=Ingen brukerattributter er definert
 attr_nonenormal=Ingen Unix-brukere definert
 attr_nonerole=Ingen tilgjengelige roller er definert
+
 help_epath=Ugyldig bane for hjelpefil!
 help_link=(Hjelp..)
+
 crypt___unix__=Unix kryptering
 crypt_1=BSD MD5
 crypt_2a=BSD Flowfish
 crypt_md5=Sol MD5
 crypt_rot13=ROT13
+
 log_create_user=Opprettet brukerattributter for $1 
 log_modify_user=Endrede brukerattributter for $1 
 log_delete_user=Slettede brukerattributter for $1 
@@ -152,6 +166,7 @@ log_create_project=Opprettet prosjekt $1
 log_modify_project=Endret prosjekt $1 
 log_delete_project=Slettede prosjekt $1 
 log_policy=Endrede systempolitikk
+
 acl_roles=Kan redigere roller?
 acl_users=Kan du redigere brukerattributter?
 acl_roleassign=Kan tildele roller
@@ -166,6 +181,7 @@ acl_profs=Kan du redigere profiler?
 acl_ro=Vis bare
 acl_execs=Kan du redigere utførelsesprofiler?
 acl_projects=Kan du redigere prosjekter?
+
 projects_title=prosjekter
 projects_name=Navn
 projects_id=ID
@@ -184,6 +200,7 @@ projects_exceptusers=Alle brukere unntatt $1
 projects_exceptgroups=Alle grupper unntatt $1 
 projects_onlyusers=Bare 1
 projects_onlygroups=Bare 1
+
 project_title1=Lag prosjekt
 project_title2=Rediger prosjekt
 project_header=Prosjektdetaljer og medlemmer
@@ -219,6 +236,7 @@ project_egroupscannot=Ingen grupper å ekskludere valgte
 project_elimit=Manglende eller ugyldig grense i rad $1 
 project_epool=Manglende eller ugyldig prosjektbassengnavn
 project_erss=Manglende eller ugyldig maksimalt minne
+
 prctl_title=Ressurskontroller
 prctl_ok=Vis grenser for:
 prctl_mode0=Prosess med ID

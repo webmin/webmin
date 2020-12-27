@@ -9,6 +9,7 @@ index_start=Start Syslog-NG
 index_startdesc=Click this button to start the Syslog-NG daemon, using the current configuration.
 index_return=module index
 index_version=Syslog-NG $1
+
 options_title=Logging Options
 options_header=Options for all log files
 options_secs=seconds
@@ -55,6 +56,7 @@ options_esync=Missing or invalid number of messages to buffer before writing
 options_estats=Missing or non-numeric time to wait between statistics messages
 options_elog_fifo_size=Missing or invalid number of messages to buffer
 options_elog_msg_size=issing or non-numeric maximum log message size
+
 destinations_title=Log Destinations
 destinations_name=Destination name
 destinations_type=Write to
@@ -77,6 +79,7 @@ destinations_add=Add a new log destination.
 destinations_return=log destinations
 destinations_desc=Other module's log
 destinations_cmd=Output from $1
+
 destination_header=Log destination options
 destination_title1=Create Log Destination
 destination_title2=Edit Log Destination
@@ -117,17 +120,22 @@ destination_enet_localip=Missing or invalid local IP address
 destination_enet_localport=Missing or invalid local port number
 destination_enet_host=Missing or invalid Syslog server host or address
 destination_eunix=Missing Unix socket name
+
 ddelete_err=Failed to delete destinations
 ddelete_enone=None selected
 ddelete_eused=The destination $1 cannot be deleted, as it is used by a log target
+
 sdelete_err=Failed to delete sources
 sdelete_enone=None selected
 sdelete_eused=The log source $1 cannot be deleted, as it is used by a log target
+
 fdelete_err=Failed to delete filters
 fdelete_enone=None selected
 fdelete_eused=The log filter $1 cannot be deleted, as it is used by a log target
+
 ldelete_err=Failed to delete log targets
 ldelete_enone=None selected
+
 filters_title=Log Filters
 filters_name=Filter name
 filters_desc=Conditions
@@ -144,6 +152,7 @@ filters_program=program <tt>$1</tt>
 filters_match=matches "$1"
 filters_host=from hostname <tt>$1</tt>
 filters_netmask=from sender <tt>$1</tt>
+
 filter_title1=Create Log Filter
 filter_title2=Edit Log Filter
 filter_header=Log filter specification details
@@ -169,6 +178,7 @@ filter_enet=Missing or invalid network IP address
 filter_emask=Missing or invalid netmask
 filter_ebool=Error in complex expression
 filter_egone=Filter no longer exists!
+
 logs_title=Log Targets
 logs_source=Sources
 logs_filter=Filters
@@ -177,6 +187,7 @@ logs_add=Add a new log target.
 logs_delete=Delete Selected Log Targets
 logs_return=log targets
 logs_none=None
+
 log_title1=Create Log Target
 log_title2=Edit Log Target
 log_header=Log source, filter and destination selections
@@ -190,6 +201,7 @@ log_flags=Target options
 log_egone=Log target no longer exists!
 log_err=Failed to save log target
 log_esource=No sources selected
+
 sources_title=Log Sources
 sources_none=No sources have been defined yet!
 sources_add=Add a new log source.
@@ -206,6 +218,7 @@ sources_typep=Named pipe
 sources_typen=Sun stream
 sources_return=log sources
 sources_none2=None
+
 source_title1=Create Log Source
 source_title2=Edit Log Source
 source_header=Log source options
@@ -241,15 +254,20 @@ source_epipe_name=Missing or invalid named pipe file name
 source_door=Door filename
 source_esun_streams_name=Missing or invalid Sun streams file name
 source_edoor=Missing or invalid Sun streams door file name
+
 view_title=View Logfile
 view_header=Last $1 lines of $2
 view_empty=Log file is empty
 view_refresh=Refresh
 view_filter=Only show lines with text $1
+
 apply_err=Failed to apply configuration
 apply_egone=Not running!
+
 start_err=Failed to start Syslog-NG server
+
 stop_err=Failed to stop Syslog-NG server
+
 log_create_destination=Created log destination $1
 log_modify_destination=Modified log destination $1
 log_delete_destination=Deleted log destination $1

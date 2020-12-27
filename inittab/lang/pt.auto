@@ -26,22 +26,28 @@ inittab_apply=Aplicar configuração inicial
 inittab_applymsg=Clique neste botão para aplicar a configuração inicial do SysV atual executando o comando <tt>telinit q</tt>. Esteja ciente de que quaisquer erros na sua configuração podem tornar o sistema inutilizável quando esse comando é executado.
 index_delete=Excluir processos selecionados
 inittab_none2=Nenhum processo de inicialização foi encontrado no seu sistema. Provavelmente, isso indica que ele não usa o arquivo de configuração init do SysV.
+
 edit_inittab_err=Você não tem permissão para editar um processo
 edit_inittab_title=Processo de edição $1 
 edit_inittab_details=Detalhes do processo
 edit_inittab_del=Excluir
 edit_inittab_save=Salve 
+
 new_inittab_err=Você não tem permissão para criar um novo processo
 new_inittab_title=Novo processo
+
 save_inittab_err=Você não tem permissão para salvar um processo
 save_inittab_noid=Erro, nenhum processo de nome digitado
 save_inittab_already=Erro, o processo de nome já existe
+
 log_modify=Processo de inicialização modificado $1 
 log_rename=Processo de inicialização renomeado $1 a $2 
 log_create=Processo de inicialização criado $1 
 log_delete=Processo de inicialização excluído $1 
 log_apply=Configuração aplicada
 log_deletes=$1 processos de inicialização excluídos
+
 apply_err=Falha ao aplicar a configuração
+
 delete_err=Falha ao excluir processos
 delete_enone=Nenhum selecionado

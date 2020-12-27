@@ -14,6 +14,7 @@ index_restart=Käynnistä LDAP Client Daemon uudelleen
 index_restartdesc=Käytä nykyistä kokoonpanoa käynnistämällä uusi LDAP-asiakasdeemoni uudelleen.
 index_atboot=Käynnistä LDAP-asiakas käynnistyksen yhteydessä
 index_atbootdesc=Vaihtaa, käynnistetäänkö LDAP-asiakasdeemoni järjestelmän käynnistyessä vai ei.
+
 server_title=LDAP-palvelimen kokoonpano
 server_header=LDAP-palvelin ja kirjautumisasetukset
 server_host=LDAP-palvelimen isäntänimet
@@ -51,6 +52,7 @@ server_etimelimit=Puuttuva tai virheellinen yhteysaikaraja
 server_ecacert=Puuttuva tai virheellinen CA-varmennetiedosto
 server_euport=Puuttuva tai virheellinen portti palvelimelle $1 
 server_euri=LDAP-palvelimia ei ole annettu
+
 base_title=LDAP-hakuperusteet
 base_header=LDAP-hakemistojen hakupaikat
 base_base=Globaali hakupohja
@@ -86,6 +88,7 @@ base_enetmasks=Puuttuva pohja verkkomaskin nimille
 base_ealiases=Puuttuva perusta sähköpostialiaseille
 base_enetgroup=Puuttuva perusta verkkoryhmille
 base_etimelimit=Puuttuva tai virheellinen hakuaikaraja
+
 pam_title=Todennusasetukset
 pam_header=PAM-todennus ja salasana-asetukset
 pam_filter=Lisä LDAP-suodatin
@@ -106,10 +109,12 @@ pam_efilter=Puuttuu ylimääräinen LDAP-suodatin
 pam_elogin=Puuttuva tai virheellinen LDAP-ominaisuus käyttäjänimelle
 pam_egroupdn=Puuttuva LDAP-ryhmä pakottaa jäsenyyttä
 pam_emember=Puuttuva tai virheellinen LDAP-määrite ryhmän jäsenille
+
 switch_title=LDAP: ää käyttävät palvelut
 switch_service=palvelu
 switch_srcs=Tietolähteet
 switch_return=palvelut, jotka käyttävät LDAP: tä
+
 ldap_emodule=$1 Perl -moduulia, jota tarvitaan puhumaan LDAP-palvelimen kanssa, ei ole asennettu. <a href='$2'>Napsauta tätä</a>, niin Webmin lataa ja asentaa sen nyt.
 ldap_emodule2=$1 Perl -moduulia, jota tarvitaan puhumaan LDAP-palvelimen kanssa, ei ole asennettu.
 ldap_econf=LDAP-asiakasmääritystiedostoa $1 ei löydy järjestelmästäsi
@@ -119,6 +124,7 @@ ldap_elogin=Sidonta LDAP-palvelimeen $1 epäonnistui muodossa $2 : $3
 ldap_anon=anonyymi
 ldap_eparse=LDAP-palvelimen URI $1 jäsentäminen epäonnistui
 ldap_etls=TLS-tilaan vaihtaminen epäonnistui : $1 
+
 browser_title=LDAP-selain
 browser_econn=LDAP-selainta ei voi käyttää : $1 
 browser_base=lukemassa:
@@ -129,6 +135,7 @@ browser_attrs=Objektimääritteet
 browser_parent=Selaa vanhempaa
 browser_none=Ei mitään
 browser_sel=kunnossa
+
 order_nisplus=NIS +
 order_nis=NIS
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=Käyttäjätulostimet
 order_xfn=XFN
 order_mdns4=Multicast DNS
 order_mdns4_minimal=Multicast DNS (minimaalinen)
+
 desc_aliases=Sendmail-aliakset
 desc_mail=Sendmail-aliakset
 desc_hosts=Isäntäosoitteet
@@ -177,6 +185,7 @@ desc_printers=Tulostimet
 desc_ipnodes=IP-solmut
 desc_timezone=Aikavyöhykkeet
 desc_locale=locales
+
 eswitch_title=Muokkaa palvelua
 eswitch_egone=Palvelua ei ole!
 eswitch_header=Palvelun yksityiskohdat
@@ -196,6 +205,7 @@ eswitch_continue=Jatka hakua
 eswitch_none=Ei mitään
 eswitch_err=Palvelun tallentaminen epäonnistui
 eswitch_enone=Ei lähteitä valittu!
+
 log_server=Muutettu LDAP-palvelimen kokoonpano
 log_base=Muokatut LDAP-hakuperusteet
 log_pam=Muokatut todennusasetukset
@@ -205,6 +215,7 @@ log_delboot=Poistettu käytöstä LDAP-asiakasdeemoni käynnistyksen aikana
 log_start=Käynnistettiin LDAP-asiakasdeemoni
 log_stop=Pysäytetty LDAP-asiakasdeemoni
 log_restart=Käynnistettiin LDAP-asiakasdeemoni uudelleen
+
 check_title=LDAP-kokoonpanon validointi
 check_base=LDAP-kannan löytäminen käyttäjille ..
 check_ebase=.. ei perustu asiakkaan kokoonpanoon!

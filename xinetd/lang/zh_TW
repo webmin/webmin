@@ -20,6 +20,7 @@ index_applymsg=按下按鈕來傳送一個SIGHUP訊號到正在執行<tt>xinetd<
 index_start=啟動Xinetd
 index_startmsg=按下按鈕來啟動目前組態的Xinetd伺服器
 index_econf=Xinetd組態檔案$1不存在，也許還沒有安裝或您的<a href='$2'>模組組態</a>不正確。
+
 serv_create=新增網際網路服務
 serv_edit=編輯網際網路服務
 serv_header1=伺服器網路選項
@@ -73,18 +74,23 @@ serv_enice=沒有輸入或錯誤的最佳層級
 serv_ecps0=沒有輸入或錯誤的每秒最大連接數
 serv_ecps1=沒有輸入或錯誤的拒絕
 serv_etimes=進入時間格式必須是 HH:MM-HH:MM
+
 sock_stream=流(Stream)
 sock_dgram=資料報(Datagram)
 sock_raw=原資料報(Raw)
 sock_seqpacket=連續的資料報(Sequential datagram)
+
 proto_=預設
 proto_ip=IP(網際網路協定)
 proto_tcp=TCP (傳輸控制協定協定)
 proto_udp=UDP (用戶資料訊息協定)
+
 restart_err=套用變更失敗
 restart_ekill=傳送HUP信號到 PID $1失敗 : $2
+
 start_err=啟動xinetd失敗
 start_estart=$1 失敗 : $2
+
 defs_title=預設選項
 defs_header=服務預設選項
 defs_log=Xinetd日誌模式
@@ -109,6 +115,7 @@ defs_err=儲存預設選項失敗
 defs_efile=沒有輸入或錯誤的日誌檔案名稱
 defs_esoft=沒有輸入或錯誤的軟性限制
 defs_ehard=沒有輸入或錯誤的硬性限制
+
 log_create_serv=新增 $2 伺服器$1
 log_modify_serv=修改 $2 伺服器$1
 log_delete_serv=刪除 $2 伺服器$1

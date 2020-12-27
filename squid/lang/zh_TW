@@ -19,6 +19,7 @@ index_miscopt=其他選項
 index_cms=快取管理者統計
 index_rebuild=清除並重新建立快取
 index_return=索引
+
 buttsave=儲存
 buttdel=刪除
 buttcreat=建立
@@ -28,6 +29,7 @@ default=預設
 none=無
 on=開
 off=關
+
 acl_header1=建立存取控制列表
 acl_header2=編輯存取控制列表
 acl_name=存取控制列表名稱
@@ -64,6 +66,7 @@ acl_failurl=錯誤的 URL
 acl_buttsave=儲存
 acl_buttdel=刪除
 acl_return=存取控制列表
+
 aclsave_failsave=無法儲存存取控制列表
 aclsave_faildel=無法刪除存取控制列表
 aclsave_epr=這個存取控制列表已經被代理伺服器限制所使用
@@ -80,15 +83,18 @@ aclsave_eshour=錯誤的開始時
 aclsave_eehour=錯誤的結束時
 aclsave_esmin=錯誤的開始分
 aclsave_eemin=錯誤的結束分
+
 cach_err=錯誤
 cach_nfound=Squid 快取管理程式 <tt>$1</tt> 在您的系統上找不到. 可能是您的<a href=/config.cgi?$2 >模組組態</a>有錯誤.
 cach_return=Squid 索引
+
 chown_header=變更擁有權
 chown_stop=停止 Squid 中...
 chown_done=...完成
 chown_chown=變更擁有權中...
 chown_restart=重新啟動 Squid 中...
 chown_failrestart=無法重新啟動 Squid...
+
 clear_header=清除並重新建立快取
 clear_msgclear=您是否確定要清除並重新建立您的 Squid 快取? 者將會刪除您快取到的<b>全部</b>檔案並重新啟動您的 Squid 伺服器.
 clear_msgclear2=您應該要確定您沒有使用者個快取以和 Webmin 通訊, 否則您將會在快取停止時與 Webmin 中斷連線.
@@ -99,6 +105,7 @@ clear_del=刪除舊的快取檔案中...
 clear_init=以命令 <tt>$1</tt> 初始化 Squid 快取中...
 clear_failrestart=無法重新啟動 Squid...
 clear_return=squid 索引
+
 eacl_header=存取控制
 eacl_acls=存取控制列表
 eacl_name=名稱
@@ -112,10 +119,12 @@ eacl_acls1=存取控制列表
 eacl_move=移動
 eacl_nopr=沒有定義代理伺服器限制
 eacl_addpr=增加代理伺服器限制
+
 eacl_icpr=ICP 限制
 eacl_noicpr=沒有定義 ICP 限制
 eacl_addicpr=增加 ICP 限制
 eacl_return=squid 索引
+
 eadm_header=管理選項
 eadm_aao=管理與公告選項
 eadm_runasuu=以 Unix 使用者執行
@@ -140,6 +149,7 @@ eadm_caf=快取公告檔案
 eadm_annp=公告時間
 eadm_buttsave=儲存
 eadm_return=squid 索引
+
 eauth_header=代理伺服器認證
 eauth_aopt=認證選項
 eauth_puf=代理伺服器使用者檔案
@@ -151,6 +161,7 @@ eauth_pusers=代理伺服器使用者
 eauth_nopusers=目前沒有定義任何代理伺服器使用者.
 eauth_addpuser=增加新的代理伺服器使用者
 eauth_return=squid 索引
+
 ec_header=快取選項
 ec_cro=快取與要求選項
 ec_cdirs=快取目錄
@@ -197,6 +208,7 @@ ec_wrh=WAIS 中繼主機
 ec_wrp=WAIS 中繼通訊埠
 ec_buttsave=儲存
 ec_return=squid 索引
+
 ech_header=建立快取主機
 ech_header1=編輯快取主機
 ech_cho=快取主機選項
@@ -229,6 +241,7 @@ ech_dqfd=不要查詢在網域
 ech_buttsave=儲存
 ech_buttdel=刪除
 ech_return=快取列表
+
 eicp_header=其他快取
 eicp_opcs=其他代理伺服快取伺服器
 eicp_nocd=沒有定義其他的快取
@@ -253,6 +266,7 @@ eicp_t=類別
 eicp_pp=代理通訊埠
 eicp_ip=ICP 通訊埠
 eicp_return=squid 索引
+
 elogs_header=紀錄
 elogs_lalo=紀錄與紀錄檔案選項
 elogs_alf=存取紀錄檔
@@ -271,6 +285,7 @@ elogs_ln=是否使用子網路遮罩紀錄
 elogs_do=除錯選項
 elogs_mht=MIME 標頭表
 elogs_return=squid 索引
+
 emem_header=記憶體使用量
 emem_maduo=記憶體與磁碟使用量選項
 emem_mul=記憶體使用量上限
@@ -288,6 +303,7 @@ emem_e=項目數
 emem_ichwm=IP 快取高用量標記
 emem_iclwm=IP 快取低用量標記
 emem_return=squid 索引
+
 emisc_header=其他選項
 emisc_mo=其他選項
 emisc_sdta=起始 DNS 測試位址
@@ -317,6 +333,7 @@ emisc_hauhh=HTTP 加速使用主機標頭
 emisc_hah=HTTP 加速主機
 emisc_hap=HTTP 加速通訊埠
 emisc_hawp=HTTP 加速與代理伺服器
+
 eports_header=通訊埠與網路
 eports_pano=通訊埠與網路選項
 eports_paap=代理伺服器位址與通訊埠
@@ -333,6 +350,7 @@ eports_mg=多點傳輸群組
 eports_trb=TCP 接收緩衝區
 eports_od=預設作業系統
 eports_return=squid 索引
+
 eprogs_header=輔助程式
 eprogs_chpo=快取輔助程式選項
 eprogs_sfp=Squid FTP 程式
@@ -352,6 +370,7 @@ eprogs_norp=重導向程式數量
 eprogs_cap=自訂認證程式
 eprogs_noap=認證程式數量
 eprogs_return=squid 索引
+
 euser_header=建立代理伺服器使用者
 euser_header1=編輯代理伺服器使用者
 euser_pud=代理伺服器使用者詳細資料
@@ -359,6 +378,7 @@ euser_u=使用者名稱
 euser_p=密碼
 euser_u1=不改變
 euser_return=使用者列表
+
 ahttp_header=建立代理伺服器限制
 ahttp_header1=編輯代理伺服器限制
 ahttp_pr=代理伺服器限制
@@ -368,7 +388,9 @@ ahttp_d=拒絕
 ahttp_ma=符合存取控制列表
 ahttp_dma=不要符合存取控制列表
 ahttp_return=存取控制列表
+
 sahttp_ftspr=無法儲存代理伺服器限制
+
 aicp_header=建立 ICP 限制
 aicp_header1=編輯 ICP 限制
 aicp_ir=ICP 限制
@@ -378,12 +400,16 @@ aicp_d=拒絕
 aicp_ma=符合存取控制列表
 aicp_dma=不要符合存取控制列表
 aicp_return=存取控制列表ACL list
+
 saicp_ftsir=無法儲存 ICP 限制
+
 icache_ftic=無法初始化快取
 icache_ymcautrsa=您必須選擇一個 Squid 的執行使用者
 icache_itscwtc=以命令 <tt>$1</tt> 初始化 Squid 快取中...
 icache_return=squid 索引
+
 restart_ftrs=無法重新組態 Squid
+
 sadmin_ftsao=無法儲存管理選項
 sadmin_header=變更擁有權
 sadmin_msg1=您變更了 Squid 的運作使用者或群組. 為了確保能正確的作用, 所有快取與紀錄檔案的擁有權限必須被更新, 而且 Squid 必須重新啟動.
@@ -393,10 +419,12 @@ sadmin_inavea='$1' 不是一個有效的電子郵件位址
 sadmin_inavh='$1' 不是一個有效的主機名稱
 sadmin_inavap='$1' 不是一個有效的公告時間
 sadmin_inavp='$1' 不是一個有效的通訊埠
+
 sauth_ftsao=無法儲存認證選項
 sauth_iomuf=錯誤或遺失使用者檔案名稱
 sauth_iomd=錯誤或遺失網域
 sauth_msg1=您的 Squid 版本沒有將代理伺服器認證功能編譯進去
+
 scache_ftsco=無法儲存快取選項
 scache_emsg0=您必須輸入至少一個快取目錄
 scache_emsg1=快取目錄 '$1' 不存在
@@ -413,34 +441,41 @@ scache_emsg11='$1' 不是一個有效的物件數目
 scache_emsg12='$1' 不是一個有效的目錄大小
 scache_emsg13='$1' 不是一個有效的主機
 scache_emsg14='$1' 不是一個有效的通訊埠
+
 schost_ftsc=無法儲存快取
 schost_emsg1='$1' 不是一個有效的快取主機名稱
 schost_emsg2='$1' 不是一個有效的代理伺服通訊埠
 schost_emsg3='$1' 不是一個有效的 ICP 通訊埠
 schost_emsg4='$1' 不是一個有效的存活時間
 schost_emsg5='$1' 不是一個有效的偏好度
+
 sicp_ftsco=無法儲存快取選項
 sicp_emsg1='$1' 不是一個有效的逾時
+
 slogs_ftslo=無法儲存紀錄選項
 slogs_emsg1='$1' 不是一個有效的絕對檔名
 slogs_emsg2='$1' 不是一個有效的檔名
 slogs_emsg3=目錄 '$1' 不存在
 slogs_emsg4='$1' 不是一個有效的子網路遮罩
 slogs_emsg5='$1' 不是一個有效的除錯選項列表
+
 smem_ftsmo=無法儲存記憶體選項
 smem_emsg1='$1' 不是一個有效的快取大小
 smem_emsg2='$1' 不是一個有效的高用量標記
 smem_emsg3='$1' 不是一個有效的低用量標記
 smem_emsg4='$1' 不是一個有效的物件大小
+
 smisc_ftso=無法儲存選項
 smisc_emsg1='$1' 不是一個有效的紀錄檔輪轉
 smisc_emsg2='$1' 不是一個有效的網域
 smisc_emsg3='$1' 不是一個有效的代理伺服器
 smisc_emsg4='$1' 不是一個有效的跳躍數目
+
 sport_ftspo=無法儲存通訊埠選項
 sport_emsg1='$1' 不是一個有效的通訊埠編號
 sport_emsg2='$1' 不是一個有效的位址
 sport_emsg3='$1' 不是一個有效的緩衝區大小
+
 sprog_ftshpo=無法儲存輔助程式選項
 sprog_emsg1=遺失 FTP 選項
 sprog_emsg2='$1' 不是一個有效的程式
@@ -450,10 +485,13 @@ sprog_emsg5='$1' 不是一個有效的程式數目
 sprog_emsg6='$1' 不是一個有效的欄位寬度
 sprog_emsg7=沒有輸入 DNS 伺服器
 sprog_emsg8='$1' 不是一個有效的 IP 位址
+
 suser_ftsu=無法儲存使用者
 suser_emsg1=錯誤或遺失使用者名稱
+
 start_ftsq=無法啟動 Squid
 stop_ftsq=無法停止 Squid
+
 lib_emsg1='$1' 不是一個有效的 IP 位址
 lib_seconds=秒
 lib_minutes=分

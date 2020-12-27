@@ -21,6 +21,7 @@ index_thost=Ime gostitelja
 index_tdesc=Opis
 index_tcount=Paketi
 index_ttype=Vrsta OS-a
+
 install_err=Paketa ni bilo mogoče namestiti
 install_elocal=Lokalna datoteka ni dana
 install_elocal2='$1' ne obstaja
@@ -37,6 +38,7 @@ install_ok=Namestite
 install_erus=Ta strežnik uporablja drugačni sistem za posodobitev glavnega strežnika ($1 v primerjavi z $2)
 install_eupdate=Pri nameščanju določenih posodobitev je prišlo do napake
 install_ealready=Različica $1 je že nameščena
+
 add_title=Dodaj strežnike
 add_msg=Dodajanje $1.
 add_gmsg=Dodajanje strežnikov v skupino $1.
@@ -45,6 +47,7 @@ add_gerr=Skupine ni bilo mogoče dodati
 add_echeck=Server $1 nima modula programskih paketov
 add_esystem=Server $1 ne uporablja istega sistema paketov kot ta stroj
 add_ok=Dodano $1 s paketi $2.
+
 search_title=Iskanje paketov
 search_nomatch=Noben paket se ne ujema z $1 
 search_none=Noben
@@ -56,6 +59,7 @@ search_return=Rezultati iskanja
 search_delete=Odstranite izbrane pakete pri:
 search_selall=Izberi vse
 search_invert=Obrni izbor
+
 host_title=Upravljavec strežnika
 host_header=Podrobnosti o strežniku, ki jih upravlja programska oprema
 host_name=Ime gostitelja
@@ -70,6 +74,7 @@ host_count=Nameščeni paketi
 host_os=OS iz Webmin-a
 host_return=podrobnosti o strežniku
 host_system=Paketni sistem
+
 edit_title=Uredi paket
 edit_details=Podrobnosti o paketu od $1 
 edit_desc=Opis
@@ -88,6 +93,7 @@ edit_all=&lt;vsi gostitelji&gt;
 edit_donthave=&lt;gostitelji, ki ga nimajo&gt;
 edit_have=&lt;gostitelji, ki jih imajo&gt;
 edit_group=Člani $1 
+
 list_title=Paketne datoteke
 list_files=Datoteke za paket $1 na $2 
 list_path=Pot
@@ -97,6 +103,7 @@ list_type=Vtipkajte
 list_size=Velikost
 list_status=Stanje
 list_ok=v redu
+
 refresh_title=Osvežite sezname paketov
 refresh_header=Ponovna zahteva po seznamih paketov z vseh strežnikov ..
 refresh_header4=Ponovna zahteva za sezname paketov od članov $2.
@@ -108,6 +115,7 @@ refresh_4=Osvežen $1 (brez sprememb)
 refresh_done=.. Končano
 refresh_del=Odstranjen je $1 s seznama strežnikov
 refresh_failed= $1 : $2 ni bilo mogoče osvežiti
+
 delete_err=Paketa $1 ni bilo mogoče izbrisati
 delete_epack=Paket $1 ne obstaja
 delete_title=Izbriši paket
@@ -120,6 +128,7 @@ delete_error=Brisanje ni bilo mogoče iz $1 : $2
 delete_success=Izbrisano iz $1.
 delete_done=.. Končano
 delete_header=Brisanje paketa $1 ..
+
 do_title=Namestite paket
 do_header=Namestitev $1 na vse gostitelje ..
 do_header3=Namestitev $1 na gostitelje, ki ga še nimajo.
@@ -140,6 +149,7 @@ do_arch=Arhitektura
 do_inst=Nameščeno
 do_none=Noben
 do_edeleted=Namestitvena datoteka je izbrisana - vrnite se na kazalo modula in poskusite znova.
+
 compare_title=Primerjajte pakete
 compare_desc=Ta obrazec lahko uporabite za primerjavo paketov, nameščenih na dveh ali več strežnikih, in za iskanje morebitnih odstopanj med različicami ali paketi, ki so na voljo.
 compare_hosts=Strežniki za primerjavo
@@ -154,6 +164,7 @@ compare_showall=Paketi za prikaz
 compare_showall1=Vse
 compare_showall0=Samo neskladja
 compare_got=v redu
+
 deletes_err=Paket ni bilo mogoče izbrisati
 deletes_enone=Izbran ni noben paket
 deletes_title=Brisanje paketov

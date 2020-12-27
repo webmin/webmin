@@ -25,6 +25,7 @@ index_resetdesc=Spustelėkite šį mygtuką, jei norite išvalyti visas esamas u
 index_cluster=Klasterių serveriai
 index_clusterdesc=Spustelėkite šį mygtuką norėdami nustatyti papildomus „Webmin“ serverius, į kuriuos ugniasienės konfigūracija bus automatiškai nukopijuota.
 index_return=ugniasienės taisyklės
+
 index_num=Skaičius
 index_action=Veiksmas
 index_desc=Būklė
@@ -37,6 +38,7 @@ index_delete=Išštrinti pasirinktus
 index_existing=„Webmin“ aptiko šiuo metu naudojamas $1 IPFW ugniasienės taisykles, kurios nėra įrašytos į failą $2. Šios taisyklės tikriausiai buvo sukurtos iš scenarijaus, kurio šis modulis nežino, kaip skaityti ir redaguoti. <p> Jei norite naudoti šį modulį savo IPFW užkardos valdymui, spustelėkite žemiau esantį mygtuką, norėdami konvertuoti esamas taisykles į išsaugojimo failą., tada išjunkite esamą užkardos scenarijų.
 index_saveex=Įrašykite ugniasienės taisykles
 index_headerex=Esamos ugniasienės konfigūracija
+
 action_allow=<font color=#00aa00>Leisti</font>
 action_deny=<font color=#ff0000>Drop</font>
 action_reject=<font color=#ff4400>Atmesti</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>Atmesti paketą</font>
 laction_reject=<font color=#ff4400>Grąžinti ICMP atmetimą</font>
 laction_reset=<font color=#ff4400>Atkurti TCP ryšį</font>
 laction_skipto=Pereiti į taisyklą
+
 edit_title1=Sukurti taisyklę
 edit_title2=Redaguoti $1 taisyklę
 edit_header1=Taisyklių veiksmas
@@ -114,6 +117,7 @@ edit_src-addr=Iš šaltinio adreso ..
 edit_src-port=Iš šaltinio uosto ..
 edit_dst-addr=Į paskirties adresą ..
 edit_dst-port=Į paskirties uostą ..
+
 save_err=Nepavyko išsaugoti taisyklės
 save_enum=Trūksta arba netinkamas taisyklės numeris
 save_eskipto=Trūksta arba netinkamas taisyklės numeris, į kurį reikia pereiti
@@ -144,7 +148,9 @@ save_etcpflags=TCP vėliavas galima nurodyti tik tuo atveju, jei protokolas yra 
 save_elimit=Trūksta arba netinkama didžiausia riba
 save_edstport=Trūksta arba netinkamas paskirties prievadas
 save_esrcport=Trūksta arba netinkamas šaltinio prievadas
+
 apply_err=Nepavyko pritaikyti konfigūracijos
+
 desc_if=Jei $1 
 desc_and=ir
 desc_always=Visada
@@ -191,6 +197,7 @@ desc_where=kur $1
 desc_all=už visus paketus
 desc_in=paketas gaunamas
 desc_out=paketas išeina
+
 log_create_rule=Sukurta $1 taisyklė
 log_delete_rule=Ištrinta $1 taisyklė
 log_modify_rule=Modifikuota $1 taisyklė
@@ -206,6 +213,7 @@ log_convert=Konvertuotos aktyvios ugniasienės taisyklės
 log_setup=Atlikta pradinė ugniasienės sąranka
 log_unapply=Grąžinta užkardos konfigūracija
 log_delsel=Ištrintos $1 taisyklės
+
 cluster_title=Klasterio ugniasienės serveriai
 cluster_none=Prie ugniasienės klasterio dar nebuvo pridėta jokių serverių.
 cluster_host=Pagrindinio kompiuterio vardas
@@ -216,6 +224,7 @@ cluster_gadd=Įtraukite serverius į grupę
 cluster_need=„Webmin“ serverių rodyklės modulyje turite pridėti serverius su prisijungimo vardu ir slaptažodžiu, kad juos būtų galima valdyti čia.
 cluster_return=klasterių serveriai
 cluster_delete=Pašalinti pasirinktą
+
 add_title=Pridėti serverius
 add_msg=Pridedama $1 ..
 add_gmsg=Serverių pridėjimas grupėje $1 ..

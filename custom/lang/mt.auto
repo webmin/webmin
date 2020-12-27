@@ -15,6 +15,7 @@ index_actform=Formola
 index_actrun=Mexxi
 index_actsql=Formola
 index_acted=Miftuħ
+
 edit_title=Editja Kmand
 create_title=Oħloq Kmand
 edit_ecannot=M'għandekx permess teditja l-kmandi
@@ -66,6 +67,7 @@ edit_format4=Niżżel meta jkun possibbli
 edit_servers=Ħaddem fuq servers ta 'Webmin
 edit_this=dan is-server
 edit_clone=Klonu
+
 save_err=Ma rnexxielux isalva kmand
 save_ecannot=M'għandekx permess teditja l-kmandi
 save_ecmd=Ma ddaħħal l-ebda kmand
@@ -78,6 +80,7 @@ save_eusermin=Kmandi li jimxu fuq servers oħra ma jistgħux jiġu esegwiti minn
 save_eformat=Ħruġ mhux validu tat-tip MIME
 save_eopts=Fajl tal-għażliet nieqes għall-parametru $1 
 save_eopts2=L-għażliet tal-fajl jew il-valur awtomatiku għall-parametru $1 ma jistax ikun fihom :
+
 run_err=Ma rnexxielux iwettaq kmand
 run_ecannot=M'għandekx permess tmexxi dan il-kmand
 run_euser=Utent nieqes jew invalidu
@@ -94,6 +97,7 @@ run_eupload=Ma ntgħażel l-ebda fajl
 run_emust=Valur nieqes għall-parametru "$1"
 run_timeout=Il-kmand ma rnexxilux jitlesta qabel $1 it-tieni darba.
 run_failed=Il-kmand ma rnexxiex bl-istatus tal-ħruġ $1 
+
 log_modify=Kmand modifikat $1 
 log_create=Il-kmand maħluq $1 
 log_delete=Kmand imħassar $1 
@@ -102,11 +106,13 @@ log_modify_edit=Editur tal-fajl modifikat $1
 log_create_edit=Editur ta 'fajl maħluq $1 
 log_delete_edit=Editur tal-fajl imħassar $1 
 log_save_edit=Fajl salvat $1 
+
 acl_cmds=Kmandi li dan l-utent jista 'jimxi
 acl_call=Il-kmandi kollha
 acl_csel=Magħżula ..
 acl_cexcept=Kollha għajr magħżula ..
 acl_edit=Tista 'toħloq u teditja l-kmandi?
+
 file_ecannot=M'għandekx permess teditja l-fajls
 fcreate_title=Oħloq Editur tal-File
 fedit_title=Editja l-Editur tal-Fajl
@@ -130,6 +136,7 @@ file_egroup=Isem tal-grupp nieqes jew invalidu
 file_eperms=Permessi nieqsa jew invalidi ta 'octal
 file_envs=Issostitwixxi l-varjabbli tal-ambjent fil-isem tal-fajl?
 file_id=Editur ID
+
 view_err=Ma rnexxielux jeditja l-fajl
 view_ecannot=M'għandekx permess teditja dan il-fajl
 view_title=Editja Fajl
@@ -138,10 +145,12 @@ view_header=Editjar tal-fajl $1
 view_ebeforeedit=Il-kmand ta 'qabel l-editjar falla : $1 
 view_ebefore=Ma rnexxiex qabel il-kmand tal-iffrankar : $1 
 view_eafter=Il-kmand ta 'wara l-iffrankar falla : $1 
+
 form_ecannot=M'għandekx permess tmexxi dan il-kmand
 form_title=Eżegwixxi Kmand
 form_exec=Teżegwixxi
 form_edit=Editja
+
 sql_title1=Oħloq kmand SQL
 sql_title2=Editja kmand SQL
 sql_header=Dettalji tal-kmand SQL
@@ -157,6 +166,7 @@ sql_err=Ma rnexxielux isalva kmand SQL
 sql_esql=Ma daħal l-ebda SQL
 sql_ehost=Server li jieqaf jew server invalidu tad-database
 sql_edb=Isem tad-database nieqes jew invalidu
+
 srun_title=Eżegwixxi kmand SQL
 srun_err=Ma rnexxiex tesegwixxi kmand SQL
 srun_edriver=Ma setgħetx tagħbija sewwieq DBI

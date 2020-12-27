@@ -24,6 +24,7 @@ index_family=Família del model
 index_serial=Número de sèrie
 index_capacity=Capacitat
 index_norm=Normalitzat:
+
 monitor_type=Comprovació d'Unitat SMART Drive Check
 monitor_type2=Desgast SSD
 monitor_drive=Unitat a comprovar
@@ -39,14 +40,17 @@ monitor_wearlevel=Falla si el nivell de desgast cau per sota de
 monitor_ewearlevel=El percentatge de nivell de desgast és invàlid
 monitor_nowearout=La unitat no reconeix cap indicador de desgast SSD
 monitor_wornout=El nivell de desgast ha caigut a $1
+
 short_title=Auto Test Breu
 short_doing=S'està iniciant l'auto test breu del $1...
 short_failed=...ha fallat!
 short_ok=...el test s'ha executat bé. Mira l'estat de la unitat a la pàgina principal del mòdul per veure'n els resultats.
+
 ext_title=Auto Test Estès
 ext_doing=S'està iniciant l'auto test estès del $1...
 ext_failed=...ha fallat!
 ext_ok=...el test s'ha executat bé. Mira l'estat de la unitat a la pàgina principal del mòdul per veure'n els resultats.
+
 data_title=Test de Recopilació de Dades
 data_doing=S'està iniciant la recopilació de dades fora de línia a $1...
 data_failed=...ha fallat!

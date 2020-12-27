@@ -15,6 +15,7 @@ index_add=Criar nova base de dados
 index_users=Preferências do Utilizador
 index_return=lista de bases de dados
 index_esql=O cliente de PostgreSQL $1 encontra-se inacessível no sistema. Há a possibilidade do PostgreSQL não se encontrar instalado, ou a sua <a href='$2'>configuração do módulo</a> é incorrecta.
+
 index_ehba=O ficheiro de configuração de anfitrião do PostgreSQL $1 encontra-se inacessível no sistema. Há a possibilidade do PostgreSQL não se encontrar inicializado, ou a sua <a href='$2'>configuração do módulo</a> é incorrecta.
 index_superuser=Não foi possível executar o cliente de PostgreSQL no sistema. Há a possibilidade do PostgreSQL não se encontrar instalado, ou a sua <a href='$1'>configuração do módulo</a> é incorrecta.
 index_eversion=A versão da base de dados PostgreSQL no sistema é $1, mas o Webmin só suporta versão $2 ou superiores.
@@ -28,10 +29,12 @@ index_nomods=Aviso: Os módulos de Perl $1 e $2 não se encontram instalados no 
 index_nodbs=Não possui acesso a quaisquer bases de dados.
 index_backup=Efectuar Cópia de segurança das Bases de Dados
 index_backupmsg=Prima este botão para configurar a cópia de segurança de todas as bases de dados PostgreSQL, quer para operação imediata ou operação agendada.
+
 login_err=Falha na autenticação
 login_ecannot=Não lhe é permitido configurar o identificador de acesso à base de dados
 login_elogin=Autenticação administrativa em falta
 login_epass=Falha na autenticação administrativa
+
 dbase_title=Editar Base de Dados
 dbase_noconn=Esta base de dados não aceita ligações de momento. Não é possível efectuar qualquer acção sobre ela.
 dbase_tables=Tabelas da Base de Dados
@@ -42,6 +45,7 @@ dbase_none=Esta base de dados não tem tabelas.
 dbase_fields=Campos:
 dbase_return=lista de tabelas
 dbase_ecannot=Não lhe é permitida a edição desta base de dados
+
 table_title=Editar Tabela
 table_title2=Criar Tabela
 table_opts=Opções dos campos
@@ -84,6 +88,7 @@ field_esize='$1' não é um tamanho válido para um campo
 field_eenum=Não foram introduzidos valores de enumeração
 field_efield='$1' não é um nome válido para um campo
 field_ekey=Campos que permitem nulls não podem ser chaves primárias
+
 exec_title=Executar SQL
 exec_header=Introduza um comando SQL para ser executado na base de dados $1 ..
 exec_exec=Executar
@@ -98,21 +103,25 @@ exec_efile=O ficheiro local não existe ou tem permissões de leitura
 exec_uploadout=Resultado dos comandos SQL carregados ..
 exec_fileout=Resultado dos comandos SQL no ficheiro $1 ..
 exec_noout=Não houve retorno de resultados
+
 stop_err=Falha ao parar o servidor de base de dados
 stop_epidfile=Falha ao abrir o ficheiro de PID $1
 stop_ekill=Falha ao terminar o processo $1 : $2
 stop_ecannot=Não lhe é permitido parar o servidor da base de dados
 start_err=Falha ao iniciar o servidor da base de dados
 start_ecannot=Não lhe é permitido iniciar o servidor da base de dados
+
 ddrop_err=Falha na remoção da base de dados
 ddrop_title=Remover Base de Dados
 ddrop_rusure=Tem a certeza de que quer remover a base de dados $1 ? serão também removidas $2 tabelas contendo $3 registos de dados.
 ddrop_mysql=Tratando-se da base de dados principal, ao removê-la irá provavelmente inutilizar o seu servidor de base de dados PostgreSQL!
 ddrop_ok=Remover Base de Dados
+
 tdrop_err=Falha na remoção da tabela
 tdrop_title=Remover Tabela
 tdrop_rusure=Tem a certeza de que quer remover a tabela $1 da base de dados $2 ? serão também removidos $3 registos de dados.
 tdrop_ok=Remover Tabela
+
 view_title=Dados da Tabela
 view_pos=Registos $1 a $2 de $3
 view_none=Esta tabela não contém dados
@@ -139,6 +148,7 @@ view_keep=Deixar inalterado
 view_set=Configurar para os conteúdos de ficheiro..
 view_warn=Aviso - carregar ficheiros e visualisar os conteúdos de campos dos tipos <tt>text</tt> ou <tt>bytea</tt> dificilmente será possível a menos que os módulos de Perl $1 e $2 estejam instalados e configurados.
 view_adv=Pesquisa avançada
+
 newdb_title=Criar Base de Dados
 newdb_header=Preferências para a nova base de dados
 newdb_db=Nome da Base de Dados
@@ -149,6 +159,7 @@ newdb_ecannot=Não lhe é permitida a criação de bases de dados
 newdb_ecannot2=Não lhe é permitida a criação de mais bases de dados
 newdb_epath=Caminho para a base de dados em falta
 newdb_user=Propriedade do utilizador
+
 user_title=Utilizadores PostgreSQL
 user_ecannot=Não lhe é permitida a edição de utilizadores
 user_name=Identificador
@@ -173,6 +184,7 @@ user_sync=As opções abaixo configuram a sincronização entre utilizadores Uni
 user_sync_create=Adicionar um novo utilizador PostgreSQL aquando da criação de um novo utilizador Unix.
 user_sync_modify=Sincronizar utilizador PostgreSQL quando a conta do utilizador correspondente é alterada.
 user_sync_delete=Remover utilizador PostgreSQL quando a conta do utilizador correspondente é apagada.
+
 host_ecannot=Não lhe permitida a edição do controlo de acessos de anfitriões cliente
 host_title=Anfitriões Autorizados
 host_desc=Aquando da ligação de um cliente à base de dados, a lista de anfitriões abaixo é processada pela ordem apresentada até que o cliente seja dado como autorizado ou não autorizado.
@@ -219,6 +231,7 @@ host_edb=Não foram fornecidos nomes de bases de dados
 host_euser=Não foram fornecidos identificadores
 host_ssl=Exigir ligação SSL?
 host_viassl=Via SSL
+
 grant_title=Privilégios atribuidos
 grant_tvi=Objecto
 grant_type=Tipo
@@ -242,6 +255,7 @@ grant_v=Vista
 grant_i=Índice
 grant_S=Sequência
 grant_none=Não existem quaisquer tabelas, vistas, sequências ou índices para atribuir privilégios.
+
 group_title=Grupos PostgreSQL
 group_ecannot=Não lhe é permitido editar grupos
 group_name=Nome do Grupo
@@ -257,6 +271,7 @@ group_ename=Nome de grupo inválido ou inexistente
 group_egid=ID de grupo inválido ou inexistente
 group_etaken=O nome de grupo escolhido já se encontra atribuido
 group_none=Não existem grupos PostgreSQL actualmente
+
 esql=SQL $1 falhou com : $2
 log_start=Servidor PostgreSQL iniciado
 log_stop=Servidor PostgreSQL parado
@@ -264,6 +279,7 @@ log_db_create=Base de Dados $1 criada
 log_db_delete=Base de Dados $1 removida
 log_table_create=Tabela $1 criada na base de dados $2
 log_table_delete=Tabela $1 removida da base de dados $2
+
 log_field_create=Campo $1 $4 adicionado a $2 na base de dados $3
 log_field_modify=Campo $1 $4 alterado em $2 na base de dados $3
 log_field_delete=Campo $1 apagado de $2 na base de dados $3
@@ -296,6 +312,7 @@ log_backup=Cópia de segurança da base de dados $1 efectuada
 log_backup_l=Cópia de segurança da base de dados $1 efectuada para o ficheiro $2
 log_backup_all=Cópia de segurança de todas as bases de dados efectuada
 log_backup_all_l=Cópia de segurança de todas as bases de dados efectuada para o ficheiro $2
+
 acl_dbs=Bases de dados que o utilizador pode gerir
 acl_dbscannot=Este controlo de acessos tornar-se-á efectivo após re-iniciar o servidor de base de dados PostgreSQL.
 acl_dall=Todas as bases de dados
@@ -312,11 +329,15 @@ acl_user_def=Identificador do Configurador de Módulos
 acl_user=Identificador
 acl_pass=Senha
 acl_sameunix=Ligar e efectuar cópias de segurança usando o mesmo identificador do Unix?
+
 fdrop_err=Falha na remoção do campo
+
 setup_err=Falha na inicialização da base de dados
 setup_ecannot=Não lhe é permitida a inicialização da base de dados
+
 dbase_bkup=Cópia Segurança
 dbase_rstr=Repôr Cópia Segurança
+
 restore_title=Repôr Bases de Dados
 restore_header=Repôr opções das bases de dados
 restore_db=Nome da Base de Dados
@@ -332,6 +353,7 @@ restore_ecmd=O comando de reposição $1 não foi encontrado no sistema
 restore_ecannot=Não lhe é permitido repôr cópias de segurança
 restore_only=Repôr apenas dados e não tabelas?
 restore_clean=Remover tabelas antes de repôr a cópia?
+
 backup_title=Repôr Base de Dados
 backup_title2=Efectuar cópia de seguranla de todas as bases de dados
 backup_db=Nome da Base de Dados
@@ -370,7 +392,9 @@ backup_after=Instrução a executar após a cópia de segurança
 backup_tables=Tabela a incluir na cópia de segurança
 backup_alltables=Todas as tabelas
 backup_seltables=Apenas a tabela
+
 r_command=Instrução não suportada
+
 adv_title=Pesquisa Avançada
 adv_and=Encontrar registos que satisfaçam todos os critérios ..
 adv_or=Encontrar registos que satisfaçam qualquer dos critérios ..

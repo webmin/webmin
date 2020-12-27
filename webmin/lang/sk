@@ -7,6 +7,7 @@ index_inetd=Webmin beží pod inetd serverom, tak asi nechcete povoliť túto mo
 index_apache=Webmin beží pod Apache serverom, tak asi nechcete povoliť túto možnosť.
 index_restart=Reštartovať Webmin
 index_restartmsg=Stlačte toto tlačidlo pre zreštartovanie Webminu. Toto môže byť potrebné ak ste aktualizovali Perl.
+
 access_title=Riadenie prístupu cez IP
 access_desc=Webmin môže byť nastavený tak, aby akceptoval požiadavky alebo zakazoval požiadavky z rôznych IP adries uvedených v tomto zozname. Formát IP adries a mien môže byť: foo.bar.com, alebo 10.254.3.0, alebo 10.254.1.0/255.255.255.128.
 access_ip=Povolené IP adresy
@@ -24,6 +25,7 @@ access_eip='$1' nie je platná IP alebo sieťová adresa
 access_ehost=Nebolo možné nájsť IP adresu pre '$1'
 access_eself=Vaa súčasná IP adresa ($1) bude zamietnutá
 access_always=Vyhľadávaj meno pri každej požiadavke
+
 bind_title=Porty a adresy
 bind_desc2=Tento formulár Vám umožňuje zadať IP adresu alebo adresy a port alebo porty na ktorých má pracovať Webmin. Po zmene týchto nastavení môžete byť vyzvaní na prihlásenie sa do Webminu.
 bind_header=IP adresy a porty
@@ -45,6 +47,7 @@ bind_eport2='$1' nie je platný port
 bind_erestart=Vyskytol sa problém pri spúšťaní Webminu s použitím nových nastavení adresy a portu: $1
 bind_elisten=Chýbajúci alebo chybný port na počúvanie pre UDP broadcasty na
 bind_ehostname=Chýbajúci alebo chybný názov servra
+
 log_title=Záznamy
 log_desc=Webmin môže zapisovať záznamy webového servera v štandardnom CLF formáte do súboru $1
 log_desc2=Ak je zaznamenávanie povolené, Webmin bude ukladať aj detailné záznamy užívateľských akcií do súboru $1, ktorý je možné prezrieť si vo Webmin záznamoch akcií.
@@ -69,6 +72,7 @@ log_ehours='$1' nie je platný počet hodín
 log_ediff=Váš systém nemá príkaz $1 potrebný pre sledovanie zmien súborov
 log_perms=Oprávnenia pre záznamové súbory
 log_eperms=Chybné alebo chýbajúce osmičkové oprávnenia (napríklad 755)
+
 proxy_title=Proxy servre
 proxy_desc=Ak je počítač na ktorom beží Webmin za firewallom, môže byť nutné nastavenie proxy servera pre prístup k webovým a FTP službám. Viaceré moduly využívajú tieto nastavenia proxy serverov pri sťahovaní súborov alebo programov.
 proxy_header=Proxy servre
@@ -96,6 +100,7 @@ proxy_emods=Žiadne moduly nie sú označené
 proxy_clear=Vymazať vyrovnávaciu pamäť
 proxy_return=proxy servery a stiahnutia
 proxy_tabdown=Sťahujem
+
 ui_title=Užívateľské rozhranie
 ui_desc=Tento formulár slúži na zmenu užívateľského rozhrania. Ked zadávate farby, každá musí byť uvedená v štandarde RGB použítim hexadecimálnych hodnôt od 00 po ff.
 ui_header=Možnosti užívateľského rozhrania
@@ -138,6 +143,7 @@ ui_dateformat_dd/mon/yyyy=dd/mesiac/rrrr (napríklad 16/Sep/2001)
 ui_dateformat_dd/mm/yyyy=dd/mm/rrrr (napríklad 16/09/2001)
 ui_dateformat_mm/dd/yyyy=mm/dd/rrrr (napríklad 09/16/2001)
 ui_dateformat_yyyy/mm/dd=rrrr/mm/dd (napríklad 2001/09/16)
+
 mods_title=Moduly Webminu
 mods_desc1=Moduly Webminu môžu byť pridané po inštalácii v nasledujúcom formulári. Moduly sú väčšinou distribuované ako <tt>.wbm</tt> súbory. Moduly taktiež môžu byť inštalované z RPM súborov.
 mods_installsource=Inštalovať z
@@ -177,6 +183,7 @@ mods_tabinstall=Nainštalovať
 mods_tabclone=Klonovať
 mods_tabdelete=Vymazať
 mods_tabexport=Exportovať
+
 install_err1=Zlyhala inštalácia modulu z $1
 install_efile=Súbor neexistuje
 install_err2=Zlyhala inštalácia nahraného modulu
@@ -210,10 +217,12 @@ install_cat=V kategórii $1.
 install_eneither=RPM súbor neobsahuje webmin modul alebo tému
 install_err4=Zlyhala inštalácia štandardného modulu
 install_emissing=Zadaný modul neexistuje
+
 clone_err=Zlyhalo skopírovanie modulu
 clone_elink=symbolická väzba : $1 neuspela
 clone_ecopy=zlyhalo kopírovanie konfigurácie­ : $1
 clone_desc=Kópia $1
+
 delete_err=Zlyhalo zmazanie modulov
 delete_edep=Modul $1 nemôže byť zmazaný, pretože je na ňom závislý modul $2
 delete_desc1=$1 (Kópia $2)
@@ -225,6 +234,7 @@ delete_rusure2=Ste si istý, že chcete zmazať tému(y) $2 ? $1 kB súborov bud
 delete_rusure3=Ste si istý, že chcete zmazať kópie modulu(ov) $2 ?
 delete_acls=Odobrať z užívateľov a zrušiť prístupové práva?
 delete_enone=Neboli vybrané žiadne moduly
+
 os_title=Operačný systém a premenné
 os_desc2=Môžete zmeniť cestu pre vyhľadávanie programov a knižníc potrebných pre programy bežiace z Webminu.
 os_header=Operačný systém
@@ -239,6 +249,7 @@ os_name=Meno premennej
 os_value=Hodnota
 os_eversion=Chýbajúca verzia operačného systému
 os_eiversion=Chýbajúca interná verzia operačného systému
+
 lang_title=Jazyk
 lang_title2=Jazyk používaný Webminom
 lang_lang=Zobrazuj v jazyku
@@ -250,6 +261,7 @@ lang_chardef=Získané z jazyka
 lang_charover=Nastaviť znakovú sadu
 lang_err=Zlyhalo uloženie jazyka
 lang_echarset=Chýbajúca alebo chybná kódová stránka
+
 ssl_title=SSL Kódovanie
 ssl_essl=Perlovský modul Net:SSLeay nie je pravdepodobne nainštalovaný na Vašom systéme. Pre inštaláciu knižnice OpenSSL a Net::SSLeay postupujte počľa <a href='$1'>týchto pokynov</a> zo stránky Webminu.
 ssl_cpan=Webmin môže <a href='$1'>stiahnuť a nainštalovať</a> potrebný Net::SSLeay Perl modul.
@@ -303,6 +315,7 @@ ssl_download=Stiahni certifikát
 ssl_pem=PEM formát
 ssl_pkcs12=PKCS12 formát
 ssl_edownload=Chyba pri výťahu PEM dát z certifikátu
+
 newkey_err=Zlyhalo vytvorenie SSL kľúča
 newkey_ecn=Chýbajúci alebo nesprávny názov servera
 newkey_efile=Chýbajúce meno súboru kľúčov
@@ -314,6 +327,7 @@ newkey_ok=Úspešne bol vytvorený nasledujúci SSL kľúč.
 newkey_esize=Chybná alebo chýbajúca veľkosť kľúča
 newkey_edays=Chybný alebo chýbajúci počet dní pred expiráciou
 newkey_ecountry=Kód krajiny musia byť dva znaky
+
 startpage_title=Možnosti úvodnej stránky
 startpage_intro2=Táto stránka Vám dovoľuje nastaviť vzhľad hlavného menu Webminu. Niektoré možnosti sú platné len pre štandardný vzhľad.
 startpage_tabs=Kategorizovať moduly?
@@ -325,6 +339,7 @@ startpage_deftab=Základná kategória
 startpage_nohost=Ukázať verziu, meno servera a OS?
 startpage_gotonone=&lt;Žiadny&gt;
 startpage_gotomodule=Po prihlásení choď vždy do modulu
+
 upgrade_title=Aktualizácia Webminu
 upgrade_desc=Tento formulár slúži na aktualizáciu celej inštalácie Webminu. Všetky nastavenia modulov budú zachované.
 upgrade_descrpm=Tento formulár slúži na aktualizáciu celej inštalácie Webminu z RPM. Všetky nastavenia modulov budú zachované.
@@ -382,10 +397,12 @@ upgrade_tabupgrade=Aktualizácia Webminu
 upgrade_tabgrants=Práva nových modulov
 upgrade_tabupdate=Aktualizovať moduly
 upgrade_tabsched=Naplánované aktualizácie
+
 newmod_desc=Keď sa Webmin aktualizuje, tak všetky oprávnenia k novým modulom v novej verzii získa jeden alebo viacerí užívatelia, ktorých tu zadáte.
 newmod_header=Oprávnenia pre nové moduly
 newmod_def=Štandardné nastavenie - pridať oprávnenia pre nové moduly pre užívateľov <tt>root</tt> alebo <tt>admin</tt>
 newmod_users=Oprávnenia pre nové moduly pre :
+
 update_desc1=Tento formulár umožňuje upgrade Webmin modulov z <a href=http://www.webmin.com/updates.html>Webmin Updates</a> alebo z iného zdroja. Automaticky budú nainštalované novšie verzie modulov.
 update_header1=Aktualizuj moduly teraz
 update_header2=Aktualizuj moduly podľa plánu
@@ -405,6 +422,7 @@ update_sched2=Aktualizuje moduly $1:$2 každý $3 deň
 update_none=Nie sú aktualizácie pre túto verziu Webminu.
 update_failed=Zlyhala inštalácia modulu : $1
 update_desc2=Tento formulár umožňuje plánovanie upgradu Webmin modulov z <a href=http://www.webmin.com/updates.html>Webmin Updates</a> alebo z iného zdroja.
+
 ca_title=Certifikačná autorita
 ca_old=Existujúci certifikát
 ca_header1=Vytvor nový certifikát Certifikačnej Autority
@@ -435,6 +453,7 @@ ca_eminiserv=SSL certifikáty klientov sú platné len v miniserv.
 ca_eversion=Verzia Perlového modulu Net::SSLeay nepodporuje SSL klientské certifikáty.
 ca_essleay=SSL príkaz $1 nebol nájdený na Vašom systéme. Môžno bude treba zmeniť cestu uvedenú v konfigurácii Webminu.
 ca_essl=SSL certifikácia môže byť nastavená len cez webserver bežiaci v SSL móde.
+
 session_title=Overovanie
 session_desc1=Ak je táto možnosť povolená, po každom zlom prihlásení sa zvýši čas nemožnosti prihlásenia sa. Toto je vhodné použiť ako ochranu pred tzv. útokom hrubou silou na Vaše heslo.
 session_header=Nastavenie overovania spojenia
@@ -471,10 +490,12 @@ session_pmode1=Vždy povoliť užívateľov s expirovanými heslami
 session_pmode2=Požiadať užívateľov s expirovanými heslami o zadanie nového hesla
 session_md5off=Použiť štandardnú Unixovú funkciu <tt>crypt</tt> pre šifrovanie Webminovský hesiel
 session_md5on=Použiť MD5 pre šifrovanie Webminovských hesiel (povoľuje dlhé heslá)
+
 assignment_title=Zmeniť organizáciu modulov
 assignment_header=Priradenie kategórii modulom
 assignment_ok=Zmeniť kategórie
 assignment_desc=Tento formulár Vám dovoľuje určiť v akých kategóriách budú zobrazované jednotlivé moduly na hlavnej stránke.
+
 categories_title=Edituj kategórie
 categories_header=ID kategórie a popis
 categories_desc=Tento formulár umožňuje premenovať a vytvoriť nové kategórie Webmin modulov. Vrchná časť tabuľky slúži na zmenu existujúcich kategórií, zatiaľčo dolná časť slúži na pridávanie nových kategórií.
@@ -486,6 +507,7 @@ categories_code=ID
 categories_name=Popis
 categories_lang=Upraviť kategórie v jazyku:
 categories_langok=Zmeniť
+
 log_access=Zmenená politika prístupových práv IP
 log_bind=Zmenený port a adresa
 log_log=Zmenené nastavenia záznamov
@@ -517,6 +539,7 @@ log_osdnclear=Vymazaná vyrovnávacia pamäť
 log_savekey=Nahrať existujúci SSL kľúč
 log_deletecache=Vymazaných $1 URL adries z vyrovnávacej pamäti
 log_clearcache=Vymaž všetky URL adresy vo vyrovnávacej pamäti
+
 themes_title=Vzhľady Webminu
 themes_desc=Vzhľady určujú ako bude vyzerať užívateľské rozhranie Webminu. Môžete si vybrať z viacerých vzhľadov nainštalovaných vo Vašom systéme.
 themes_sel=Súčasný vzhľad:
@@ -524,6 +547,7 @@ themes_default=Základná téma Webminu
 themes_change=Zmeniť
 themes_installdesc=Tento formulár slúži na inštaláciu nových vzhľadov pre Váš Webmin. Vzhľady sú väčšinou distribuované v súboroch <tt>.wbt</tt>, ale môžu byť inštalované aj z RPM balíkov.
 themes_installok=Inštalovať vzhľad
+
 themes_err1=Zlyhala inštalácia vzhľadu z $1
 themes_efile=Súbor neexistuje
 themes_err2=Zlyhala inštalácia nahraného vzhľadu
@@ -546,13 +570,16 @@ themes_ok=Vzhľad bol úspešne zmenený...otváram úvodnú stránku Webminu.
 themes_delete=Tento formulár slúži na odstránenie niektorého vzhľadu nainštalovaného vo Vašom systéme, ktorý nie je používaný.
 themes_delok=Vzhľad na vymazanie :
 themes_return=zoznam motívov vzhľadu
+
 themes_exportmods=Štýly na export
 themes_exportok=Exportovať vyznačené štýly
+
 referers_title=Dôveryhodné referentské spojenia
 referers_desc=Táto stránka Vám umožní nastaviť kontrolu referrer hodnoty pri prechode napríklad z Vašich stránok. Odporúčam nepoužívať.
 referers_list=Dôveryhodné stránky a lokality
 referers_none=Dôveruj aj spojeniam z neznámych referentov
 referers_referer=Povoliť kontrolu referrer?
+
 update_err=Zlyhala aktualizácia modulov
 update_eurl=Chybná alebo chýbajúca URL aktualizácií
 update_title=Aktualizuj moduly
@@ -572,6 +599,7 @@ update_rv=Kontrolujem aktualizované Webmin moduly z $1
 update_eemail=Musíte zadať e-mailovú adresu
 update_subject=Zpráva o aktualizácii modulov Webminu
 update_version=Nová Webmin verzia $1 je dostupná pre stiahnutie. Nové aktualizácie budú vydávané len pre najnovšiu verziu.
+
 anon_title=Anonymný prístup k modulom
 anon_desc=Táto stránka umožňuje sprístupniť vybrané Webmin moduly pre klientov bez nutnosti prihlásenia sa. Ku každému takémuto modulu je potrebné určiť aj Webmin užívateľa, ktorého práva budú použité pri prístupe do tohoto modulu.
 anon_desc2=Mali by ste byť veľmi opatrní pri sprístupňovaní anonymného prístupu, pretože v prípade nedostatočnej prístupovej kontroly IP adries je možné získať aj kontrolu nad Vaším systémom.
@@ -580,14 +608,18 @@ anon_user=Meno užívateľa Webminu
 anon_err=Zlyhalo uloženie anonymného prístupu
 anon_eurl='$1' je neplatná URL
 anon_euser=Chybný alebo chýbajúci Webmin užívateľ pre URL '$1'
+
 enogpg=GnuPG nie je nainštalovaný
+
 standard_failed=Zlyhalo stiahnutie zoznamu modulov : $1
 standard_header=Štandardné moduly Webminu
 standard_warn=Upozornenie - nemáte najnovšiu Webmin verziu $1, takže inštalácia týchto modulov pravdepodobne zlyhá.
 standard_eurl=Chybná URL štandardných modulov
+
 third_failed=Zlyhalo stiahnutie zoznamu modulov : $1
 third_header=Moduly tretích strán
 third_eurl=Chybná URL modulov tretích strán
+
 lock_title=Uzamykanie súborov
 lock_desc=Štandardne Webmin nastaví zámok na súbor, ktorý práve modifikuje. Táto stránka dovoľuje úplne alebo čiastočne zablokovať uzamykanie súborov ak máte s týmto problémy.
 lock_header=Nastavenia uzamykania
@@ -598,19 +630,23 @@ lock_except=Uzamykať všetky súbory a adresáre okrem..
 lock_err=Zlyhalo uloženie nastavení uzamykania
 lock_edir='$1' nie je úplná cesta
 lock_edirs=Neboli zadané žiadne súbory alebo adresáre
+
 ipkey_title1=Vytvoriť SSL kľúč
 ipkey_title2=Upraviť SSL kľúč
 ipkey_header=IP-špecificky SSL kľúč detaily
 ipkey_err=Nie je možné uložiť SSL kľúč
 ipkey_eips=Nie je zadaná žiadna IP adresa
+
 descs_title=Názvy modulov
 descs_mod=Modul
 descs_desc=Nový názov
 descs_err=Nie je možné uložiť názvy modulov
 descs_edesc=Chýba názov pre modul '$1'
+
 export_err=Chyba pri exporte modulov
 export_efile=Chýba alebo nie je platný súbor exportu
 export_title=Exportovanie modulov
+
 advanced_title=Rozšírené Nastavenia
 advanced_header=Rozšírené a experimentálne voľby
 advanced_temp=Dočasný súborový adresár
@@ -635,12 +671,15 @@ advanced_nice=CPU priority pre naplánované úlohy
 advanced_pri=Prioritná úroveň 
 advanced_sclass=IO triedy pre plánované miesta 
 advanced_sprio=IO priority pre plánované miesta 
+
 clear_title=Vymazať vyrovnávaciu pamäť
+
 savekey_err=Nie je možné uložiť nový kľúč
 savekey_ekey=Chýbajúci alebo neplatný formát PEM kľúča
 savekey_ecert=Chýbajúci alebo neplatný formát PEM certifikátu
 savekey_ecert2=Chýbajúci alebo neplatný formát PEM kľúča a certifikátu
 savekey_title=Nahraj existujúci kľúč
+
 cache_title=URL adresy vo vyrovnávacej pamäti
 cache_search=Hľadaj URL adresu obsahujúcu:
 cache_ok=Hľadanie
@@ -653,9 +692,12 @@ cache_delete=Vyprázdniť označené z pamäte cache
 cache_err=Nie je možné vymazanie pamäte cache s URL adresami
 cache_enone=Nič nie je označené
 cache_efile=Neplatný názov súboru
+
 restart_title=Reštartujem Webmina
+
 mobile_header=Nastavenia pre mobilné prehliadače
 mobile_theme=Štýl pre mobilné prehliadače
+
 blocked_title=Blokované Hosty a Užívatelia
 blocked_who=Meno hostu alebo užívateľské meno
 blocked_fails=Prihlásenie zlyhalo

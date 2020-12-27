@@ -20,6 +20,7 @@ index_nostrftime=Twissija - uħud mill-impjiegi ta 'backup jużaw % fl-ismijiet 
 index_tabsched=Backups skedati
 index_tabbackup=Backup issa
 index_tabrestore=Irrestawra issa
+
 edit_title1=Oħloq Backup Skedata
 edit_title2=Editja l-Backup Skedat
 edit_header=Għażliet ta 'backup skedati
@@ -44,9 +45,11 @@ edit_return=Formola ta 'backup
 edit_other=Fajls oħra elenkati ..
 edit_pre=Kmand ta 'qabel il-backup
 edit_post=Kmand ta 'wara l-backup
+
 save_err=Ma rnexxielux isalva backup
 save_emods=L-ebda moduli magħżula
 save_ewebmin=La l-webmin u lanqas il-fajls tal-konfigurazzjoni tas-server ma ntgħażlu
+
 backup_mode0=Fajl lokali
 backup_mode1=Server FTP
 backup_mode2=Server SSH
@@ -63,6 +66,7 @@ backup_egunzip=Il-backup huwa kompressat, iżda <tt>gunzip</tt> mhux installat
 backup_euntar=Un-TAR falla : $1 
 backup_enone2=L-ebda wieħed mill-fajls għall-moduli magħżula ma huwa fil-backup
 backup_epre2=Il-modulu $1 irrifjuta restawr : $2 
+
 backup_err=Il-backup falla
 backup_edest=Fajl lokali assolut nieqes jew invalidu
 backup_eserver1=Server FTP nieqes jew invalidu
@@ -78,6 +82,7 @@ backup_title=Konfigurazzjoni tal-Backup
 backup_doing=Bidu tal-backup tal-fajls tal-konfigurazzjoni tal-modulu sa $1 ..
 backup_failed=.. naqas! $1 
 backup_done=.. kompluta. Id-daqs tal-backup finali kien $1, li kien fih $2 fajls.
+
 restore_err=Ir-restawr falla
 restore_emods=L-ebda moduli jew fajls oħra magħżula
 restore_title=Irrestawra l-Konfigurazzjoni
@@ -86,22 +91,26 @@ restore_testing=Estrazzjoni tal-kontenut tal-backup minn $1 ..
 restore_failed=.. naqas! $1 
 restore_done=.. kompluta. Il-fajls $1 ġew restawrati.
 restore_done2=.. fajls fil-backup huma :
+
 nice_ftp=$2 fuq $1 permezz ta 'FTP
 nice_ftpp=$2 fuq $1 port $3 permezz FTP
 nice_ssh=$2 fuq $1 permezz ta 'SSH
 nice_sshp=$2 fuq $1 port $3 permezz ta 'SSH
 nice_upload=fajl imtella '
 nice_download=browser
+
 log_backup=Appoġġja moduli $1 għal $2 
 log_restore=Restawrati $1 moduli minn $2 
 log_create_backup=Ħoloq backup ta 'moduli $1 sa $2 
 log_modify_backup=Backup modifikat ta 'moduli $1 għal $2 
 log_delete_backup=Backup imħassar ta 'moduli $1 sa $2 
 log_run_backup=Backup eżegwit ta 'moduli $1 sa $2 
+
 run_title=Konfigurazzjonijiet ta 'Backup
 run_doing=Ibda backup ta 'moduli $1 sa $2 ..
 run_ok=.. il-backup tlesta b'suċċess.
 run_failed=.. backup naqas! Ara l-messaġġ ta 'żball ta' hawn fuq għar-raġuni għaliex.
+
 email_mods=Backup ta 'moduli :
 email_failed=sa $1 fallew :
 email_ok=sa $1 irnexxielu.

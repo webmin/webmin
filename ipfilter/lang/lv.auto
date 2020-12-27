@@ -43,8 +43,10 @@ index_natnone=Tīkla adreses tulkošanas noteikumi vēl nav definēti.
 index_nataction=NAT režīms
 index_natfrom=Saskaņotas paciņas
 index_natto=Tulkošana
+
 dir_in=Ienākošie
 dir_out=Izejošais
+
 action_pass=<font color=#00aa00>Pass</font>
 action_block=<font color=#ff0000>Bloķēt</font>
 action_skip=Izlaist
@@ -57,6 +59,7 @@ action_map=Kartēšana
 action_rdr=Novirzīt
 action_bimap=Divvirzienu kartēšana
 action_map-block=Bloķēt kartēšanu
+
 laction_pass=<font color=#00aa00>Pāriet paciņu</font>
 laction_block=<font color=#ff0000>Bloķēt paketi ar ICMP kodu</font>
 laction_log=Žurnāla pakete līmenī
@@ -65,6 +68,7 @@ laction_skip=Izlaist nākamos noteikumus
 laction_auth=Lietotāja vietas autorizācija
 laction_preauth=Pārbaudiet iepriekšējo atļauju
 laction_call=Zvana kodola funkcija
+
 edit_title1=Izveidot kārtulu
 edit_title2=Rediģēt kārtulu
 edit_header1=Noteikumu darbība
@@ -130,6 +134,7 @@ edit_icmp=ICMP tips
 edit_icmpany=&lt;Jebkurš tips&gt;
 edit_icmpcode=un kods
 edit_codeany=&lt;Jebkurš kods&gt;
+
 save_err=Neizdevās saglabāt kārtulu
 save_ehostfrom=Trūkst vai nav derīgs avota resursdatora nosaukums
 save_ehostto=Trūkst vai nav derīgs mērķa resursdatora nosaukums
@@ -158,11 +163,13 @@ save_eto=Trūkst vai nav derīga saskarne, kuru izmantot
 save_etoip=Nederīga IP adrese, kuru izsūtīt
 save_ereplyto=Trūkst vai nav derīga saskarne, uz kuru atbildēt
 save_ereplytoip=Nederīga IP adrese, uz kuru atbildēt
+
 apply_err=Neizdevās piemērot konfigurāciju
 apply_remote=Kļūda no $1 : $2 
 unapply_err=Neizdevās atjaunot konfigurāciju
 unapply_ein=Neizdevās iegūt ievades kārtulas
 unapply_eout=Neizdevās iegūt izvades noteikumus
+
 desc_if=Ja $1 
 desc_and=un
 desc_always=Vienmēr
@@ -196,6 +203,7 @@ desc_rdr=IP adreses $1 ports $2
 desc_dport1=osta ir $1 
 desc_dport2=osta ir no $1 līdz $2 
 desc_nattoiface=interfeisa adrese
+
 log_create_rule=Izveidots $1 noteikums
 log_delete_rule=Izdzēsts $1 noteikums
 log_modify_rule=Modificēts $1 noteikums
@@ -224,6 +232,7 @@ log_add_host=Pievienots klastera serveris $1
 log_add_group=Pievienoti klastera serveri no grupas $1 
 log_delete_host=Noņemts klastera serveris $1 
 log_delete_group=Noņemti $1 klasteru serveri
+
 cluster_title=Klasteru ugunsmūra serveri
 cluster_none=Ugunsmūra klasterim vēl nav pievienoti serveri.
 cluster_host=Resursdatora nosaukums
@@ -234,6 +243,7 @@ cluster_gadd=Pievienojiet serverus grupai
 cluster_need=Webmin serveru indeksa modulī jāpievieno serveri ar pieteikumvārdu un paroli, pirms tos šeit var pārvaldīt.
 cluster_return=klasteru serveri
 cluster_delete=Noņemt atlasīto
+
 add_title=Pievienot serverus
 add_msg=Notiek $1 pievienošana.
 add_gmsg=Serveru pievienošana grupā $1.
@@ -242,6 +252,7 @@ add_gerr=Neizdevās pievienot grupu
 add_echeck=Serverim $1 nav IPFilter ugunsmūra moduļa
 add_emissing=Serverim $1 trūkst ugunsmūra komandas $2 
 add_ok=Pievienots $1 ar $2 aktīviem ugunsmūra noteikumiem.
+
 nat_title1=Izveidot NAT kārtulu
 nat_title2=Rediģēt NAT kārtulu
 nat_action=NAT režīms
@@ -300,4 +311,5 @@ nat_edport2=Trūkst vai nav derīga oriģinālā osta
 net_erdrip=“$1” nav derīga mērķa IP adrese
 nat_erdrips=Nav ievadīts neviens mērķa IP
 nat_erdrport=Trūkst vai nav derīgs mērķa ports
+
 boot_esmf=SMF pakalpojums $1 neeksistē vai nav zināmā stāvoklī

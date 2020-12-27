@@ -10,6 +10,7 @@ index_range=Ustvari poročilo za časovno obdobje
 index_view=Oglejte si ustvarjeno poročilo
 index_viewdesc=Oglejte si zadnje ustvarjeno poročilo v imeniku $1.
 index_return=kazalo modula
+
 log_title=Vir dnevnika in cilj poročila
 log_header=Izvorna datoteka dnevnika lignjev in ustvarjene možnosti poročila
 log_access_log=Izvorna datoteka dnevnika lignjev
@@ -30,6 +31,7 @@ log_elastlog=Manjka ali ni številka
 log_eemail=Manjkajoči ali neveljaven e-poštni naslov
 log_emailx=Manjkajoči ali neobstoječi program za pošto
 log_squidguard_log_path=Datoteka dnevnika SquidGuard
+
 style_title=Slog poročila
 style_header=Slog poročila in možnosti barv HTML
 style_title2=Naslov poročila
@@ -54,6 +56,7 @@ style_efont=Manjkajoče ali neveljavno ime pisave
 style_esize=Manjkajoča ali neveljavna širina in višina slike
 style_language=Jezik poročila
 style_charset=Poročilo o naboru znakov
+
 report_title=Možnosti poročila
 report_header=Prijavite vsebino in možnosti ustvarjanja
 report_resolve_ip=Rešite IP naslove?
@@ -134,6 +137,7 @@ report_echar=Razmiki niso dovoljeni
 report_estring=Manjkajoče ali neveljavno nadomestno besedilo
 report_eselect=Nič izbranega
 report_eenter=Nič ni vneseno
+
 sched_title=Načrtovano generiranje poročil
 sched_header=Načrtovane možnosti poročanja
 sched_sched=Ali je načrtovano poročilo omogočeno?
@@ -148,9 +152,11 @@ sched_rsel=Tisti od $1 do $2 dni nazaj
 sched_err=Ni bilo mogoče shraniti načrtovane generacije poročil
 sched_erfrom=Manjkajoče ali neveljavno začetno število dni nazaj
 sched_erto=Pred manjkajočim ali neveljavnim končnim številom dni
+
 view_title=Sarg Poročilo
 view_efile=Neveljavno ime datoteke!
 view_eopen=Ni bilo mogoče odpreti datoteke s poročilom
+
 gen_title=Ustvari poročilo
 gen_header=Zdaj ustvarjam poročilo Sarg iz datoteke dnevnika lignjev $1 in vseh zasukanih različic ..
 gen_done=.. Končano
@@ -160,6 +166,7 @@ gen_view=Oglejte si dokončano poročilo.
 gen_err=Poročila ni bilo mogoče ustvariti
 gen_efrom=Manjkajoči ali neveljavni od dneva
 gen_eto=Danes manjkajo ali so neveljavni
+
 webmin_log_log=Posodobljen vir dnevnika in ciljne možnosti poročila
 webmin_log_report=Posodobljene možnosti poročil
 webmin_log_style=Posodobljene možnosti sloga poročila

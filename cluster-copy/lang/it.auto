@@ -11,6 +11,7 @@ index_when=Sì, $1
 index_act=Azione
 index_exec=Eseguire
 index_delete=Elimina le copie selezionate
+
 edit_title=Modifica copia cluster
 create_title=Crea copia cluster
 edit_header=Dettagli copia cluster
@@ -31,12 +32,14 @@ edit_run=Copia ora
 edit_return=copia cluster
 edit_email=Invia email a
 edit_none=Nessuno
+
 save_err=Impossibile salvare il processo cron del cluster
 save_efiles=Nessun file da copiare inserito
 save_edest=Directory di destinazione mancante
 save_eservers=Nessun server da copiare per entrare
 save_efile=Il file da copiare '$1' non è un percorso assoluto
 save_eemail=Indirizzo email mancante o non valido
+
 exec_title=Copia dei file
 exec_files1=Copia di $1 file sui server selezionati $2 ..
 exec_files2=Copia $1 nei server selezionati $2 ..
@@ -50,12 +53,15 @@ exec_not=Impossibile copiare i seguenti file su $1  :
 exec_cmd=Output del comando post-copia su $1  :
 exec_before=Output del comando prima della copia su $1  :
 exec_on=Impossibile eseguire $1 : $2 
+
 log_create=Copia creata per i server da $1 a $2 
 log_modify=Copia modificata per i server da $1 a $2 
 log_delete=Copia eliminata per i server da $1 a $2 
 log_exec=Server da $1 a $2 copiati
 log_deletes=$1 copie cancellate
+
 email_subject_succeeded=Copia del cluster di $1 riuscita
 email_subject_failed=Copia del cluster di $1 non riuscita
+
 delete_err=Impossibile eliminare le copie
 delete_enone=Nessuno selezionato

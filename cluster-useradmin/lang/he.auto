@@ -17,6 +17,7 @@ index_tdesc=תיאור
 index_tucount=משתמשים
 index_tgcount=קבוצות
 index_ttype=סוג מערכת הפעלה
+
 add_title=הוסף שרתים
 add_msg=מוסיף $1 ..
 add_gmsg=הוספת שרתים בקבוצה $1 ..
@@ -26,6 +27,7 @@ add_echeck=לשרת $1 אין את מודול המשתמשים והקבוצות
 add_epft=שרת $1 אינו משתמש באותו פורמט של קבצי משתמש כמו מארח זה
 add_egft=שרת $1 אינו משתמש באותה תבנית קובץ קבוצתית של מארח זה
 add_ok=נוספו $1 עם $2 משתמשים ו- $3 קבוצות.
+
 host_title=שרת מנוהל
 host_header=פרטי שרת מנוהלים בתוכנה
 host_name=שם מארח
@@ -34,8 +36,7 @@ host_delete=הסר מהרשימה המנוהלת
 host_refresh=רענן משתמשים וקבוצות
 host_users=מספר משתמשים
 host_groups=מספר הקבוצות
-host_ulist=משתמשים בשרת
-host_glist=קבוצות בשרת
+
 host_return=פרטי שרת
 refresh_title=רענן משתמשים וקבוצות
 refresh_header=מבקש מחדש רשימות משתמשים וקבוצות מכל השרתים ..
@@ -49,6 +50,7 @@ refresh_gdel=הסר קבוצות $1
 refresh_done=.. בוצע
 refresh_del=$1 הוסר מרשימת השרתים
 refresh_failed=רענון $1 : $2 נכשל
+
 uedit_host=פרטים מ- $1 
 uedit_leave=אל תשתנה
 uedit_set=מכוון ל
@@ -66,6 +68,7 @@ uedit_servers=שרתים ליצור
 uedit_all=&lt;כל המארחים&gt;
 uedit_donthave=&lt;מארחים שאין לו&gt;
 uedit_group=חברים ב- $1 
+
 usave_einuse=משתמש עם אותו שם כבר קיים ב- $1 
 usave_esecgid=הקבוצה המשנית $1 אינה קיימת
 usave_con=יוצר ב- $1 ..
@@ -88,16 +91,20 @@ usave_header=יוצר משתמש $1 בכל המארחים ..
 usave_header5=יוצר משתמש $1 על $2.
 usave_header4=יוצר משתמש $1 על חברי הקבוצה $2.
 usave_header3=יוצר משתמש $1 על מארחים שאין לו ..
+
 search_hosts=מארחים
+
 udel_on=מוחק מ- $1 ..
 udel_servs=מחק את ספריית הבית אם קיימת ב-
 udel_others=למחוק משתמש במודולים אחרים?
 udel_dothers=מוחק במודולים אחרים ..
 udel_gone=המשתמש כבר לא קיים.
 udel_failed=מחיקת המשתמש נכשלה : $1 
+
 gdel_on=מוחק מ- $1 ..
 gdel_gone=המשתמש כבר לא קיים.
 gdel_failed=מחיקת הקבוצה נכשלה : $1 
+
 gsave_create=מוסיף רשומת קבצים בקבוצה ..
 gsave_con=יוצר ב- $1 ..
 gsave_euser=המשתמש $1 אינו קיים
@@ -110,10 +117,12 @@ gsave_header=יוצר קבוצה $1 בכל המארחים ..
 gsave_header5=יוצר קבוצה $1 על $2.
 gsave_header4=יוצר קבוצה $1 על חברי קבוצה $2.
 gsave_header3=יוצר קבוצה $1 על מארחים שאין להם את זה ..
+
 gedit_host=פרטים מ- $1 
 gedit_add=הוסף משתמשים
 gedit_del=הסר משתמשים
 gedit_donthave=&lt;מארחים שאין להם את זה&gt;
+
 sync_title=סנכרן שרתים
 sync_desc=טופס זה מאפשר לך ליצור משתמשים וקבוצות בשרתים שאין להם כרגע, על מנת להכניס חשבונות לסנכרון בין כל השרתים באשכול שלך.
 sync_hosts=שרתים לסנכרון
@@ -141,6 +150,7 @@ sync_test=רק הראו מה ייעשה?
 sync_makehome=ליצור ספריות ביתיות?
 sync_copy=להעתיק קבצים לספרייה הביתית?
 sync_others=ליצור משתמש במודולים אחרים?
+
 log_create_user=יצר משתמש $1 
 log_delete_user=המשתמש $1 נמחק
 log_modify_user=משתמש שונה $1 

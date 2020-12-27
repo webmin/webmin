@@ -12,6 +12,7 @@ index_sdesc=İşlem açıklaması şunları içerir
 index_shost=Kaynak Webmin sunucusu
 index_long=Tüm eylem açıklamaları gösterilsin mi?
 index_global=&lt;Hiçbir modülde yok&gt;
+
 search_none2=İşlem aramanızla eşleşen işlem yok
 search_critd=burada açıklama <tt>$1</tt>
 search_global=Yok
@@ -25,6 +26,7 @@ search_global_baduser=Kötü kullanıcı adı
 search_global_badpass=Hatalı parola
 search_global_twofactor=Geçersiz iki faktörlü simge
 search_csv=CSV olarak dışa aktarın.
+
 view_rollback2=Seçilen Dosyaları Geri Al
 view_return=eylem ayrıntıları
 view_input=Komuta giriş
@@ -34,8 +36,10 @@ view_files=Dosyalar değişti ve komutlar çalıştırıldı
 view_raw=Ham günlük verileri
 view_rawname=Parametre adı
 view_rawvalue=Parametre değeri
+
 acl_self=Sadece benlik
 acl_rollback=Eylemleri geri alabilir mi?
+
 rollback_title=Geri Alma İşlemi
 rollback_rusure=Bu işlem gerçekleştirilmeden önce, aşağıda listelenen tüm dosyaları içeriklerine geri döndürmek istediğinizden emin misiniz? Şu anda içerdikleri tüm verilerin üzerine aşağıdaki değişiklikler yazılır :
 rollback_isdir=Bir dizin - değişiklik yapılmayacak.
@@ -58,4 +62,5 @@ rollback_modfile=$1 dosyasının içeriği geri alındı.
 rollback_deleted=$1 dosyası silindi.
 rollback_nodeleted=Var olmayan dosya $1 atlandı.
 rollback_enone=Hiçbir dosya seçilmedi
+
 log_rollback=$2 modülünde $1 geri alma işlemi

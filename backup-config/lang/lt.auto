@@ -20,6 +20,7 @@ index_nostrftime=Įspėjimas - kai kurie atsarginės užduotys failų pavadinimu
 index_tabsched=Suplanuotos atsarginės kopijos
 index_tabbackup=Atsarginė kopija dabar
 index_tabrestore=Atkurti dabar
+
 edit_title1=Kurti suplanuotą atsarginę kopiją
 edit_title2=Redaguoti suplanuotą atsarginę kopiją
 edit_header=Suplanuotos atsarginės kopijos parinktys
@@ -44,9 +45,11 @@ edit_return=atsarginė forma
 edit_other=Kiti išvardyti failai ..
 edit_pre=Išankstinė atsarginė komanda
 edit_post=Po atsarginės komandos
+
 save_err=Nepavyko išsaugoti atsarginės kopijos
 save_emods=Nepasirinktas modulis
 save_ewebmin=Nei Webmin, nei serverio konfigūracijos failai nebuvo pasirinkti
+
 backup_mode0=Vietinė byla
 backup_mode1=FTP serveris
 backup_mode2=SSH serveris
@@ -63,6 +66,7 @@ backup_egunzip=Atsarginė kopija yra suglaudinta, tačiau <tt>gunzip</tt> neįdi
 backup_euntar=Pašalinti TAR nepavyko : $1 
 backup_enone2=Nė vienas iš pasirinktų modulių failų nėra atsarginėje kopijoje
 backup_epre2=$1 modulis atmestas atkurti : $2 
+
 backup_err=Nepavyko sukurti atsarginės kopijos
 backup_edest=Trūksta arba netinkamas absoliutus vietinis failas
 backup_eserver1=Trūksta arba netinkamas FTP serveris
@@ -78,6 +82,7 @@ backup_title=Atsarginė konfigūracija
 backup_doing=Pradėti kurti modulio konfigūracijos failų atsarginę kopiją į $1.
 backup_failed=.. nepavyko! $1 
 backup_done=.. baigta. Galutinis atsarginės kopijos dydis buvo $1, kuriame buvo $2 failai.
+
 restore_err=Atkurti nepavyko
 restore_emods=Nepasirinktas modulis ar kiti failai
 restore_title=Atkurti konfigūraciją
@@ -86,22 +91,26 @@ restore_testing=Išgaunamas atsarginės kopijos turinys iš $1.
 restore_failed=.. nepavyko! $1 
 restore_done=.. baigta. $1 failai buvo atkurti.
 restore_done2=.. failai atsarginėje kopijoje yra :
+
 nice_ftp=$2 $1 per FTP
 nice_ftpp=$2 prie $1 prievado $3 per FTP
 nice_ssh=$2 $1 per SSH
 nice_sshp=$2 prie $1 prievado $3 per SSH
 nice_upload=įkeltas failas
 nice_download=naršyklė
+
 log_backup=Sukurtos $1 modulių atsarginės kopijos į $2 
 log_restore=Atkurti $1 moduliai iš $2 
 log_create_backup=Sukurtos $1 modulių atsarginės kopijos į $2 
 log_modify_backup=Modifikuota $1 modulių atsarginė kopija į $2 
 log_delete_backup=Ištrinta $1 modulių atsarginė kopija į $2 
 log_run_backup=Vykdyta $1 modulių atsarginė kopija į $2 
+
 run_title=Atsarginės konfigūracijos
 run_doing=Paleidžiama $1 modulių atsarginė kopija į $2.
 run_ok=.. atsarginė kopija sėkmingai baigta.
 run_failed=.. atsarginė kopija nepavyko! Norėdami sužinoti priežastį, skaitykite aukščiau pateiktą klaidos pranešimą.
+
 email_mods=Modulių atsarginės kopijos :
 email_failed=į $1 nepavyko :
 email_ok=į $1 pavyko.

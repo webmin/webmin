@@ -51,11 +51,13 @@ index_mass=Lösche ausgewählte Benutzer
 index_mass2=Auswahl sperren
 index_mass3=Auswahl aktivieren
 index_gmass=Lösche ausgewählte Gruppen
+
 search_title=Suchergebnis
 search_notfound=Keine passenden Benutzer gefunden
 search_found=$1 passende Benutzer gefunden ..
 search_gnotfound=Keine passenden Gruppen gefunden
 search_gfound=$1 passende Gruppen gefunden ..
+
 uedit_title=Benutzer bearbeiten
 uedit_title2=Benutzer anlegen
 uedit_details=Benutzerdetails
@@ -133,6 +135,7 @@ uedit_uid_calc=Errechnet
 uedit_disabled=Login temporär deaktiviert
 uedit_sys=Systemstandard
 uedit_clone=Klone Benutzer
+
 usave_err=Fehler beim Speichern des Benutzers
 usave_eedit=Sie haben keine Berechtigung, diesen Benutzer zu bearbeiten
 usave_ecreate=Sie haben keine Berechtigung, einen neuen Benutzer anzulegen
@@ -186,6 +189,7 @@ usave_epasswd_same=Das Passwort beinhaltet oder ist gleich dem Benutzernamen und
 usave_epasswd_mindays=Passwort wurde vor weniger als $1 Tagen geändert
 usave_epasswd_cmd=Passwort Validierungsbefehl fehlgeschlagen
 usave_eothers=Der Benutzer wurde erfolgreich gesichert, aber ein Fehler ist in einem anderen Modul aufgetreten : $1
+
 gedit_title=Bearbeite Gruppe
 gedit_title2=Gruppe anlegen
 gedit_details=Gruppendetails
@@ -208,6 +212,7 @@ gedit_selu=Benutzer in Gruppe
 gedit_pri=Primäre Gruppenmitglieder
 gedit_prinone=Keine Benutzer haben diese Gruppe als ihre Primäre
 gedit_clone=Klone Gruppe
+
 gsave_err=Fehler beim Speichern der Gruppe
 gsave_eedit=Sie haben keine Berechtigung, diese Gruppe zu bearbeiten
 gsave_ecreate=Sie haben keine Berechtigung, neue Gruppen zu erstellen
@@ -224,6 +229,7 @@ usave_egidused=Gruppe $1 benutzt bereits Gruppen-ID $2
 gsave_egidused2=GID bereits in Benutzung
 usave_efromroot=Sie können das Stammverzeichnis nicht von / verschieben
 usave_etoroot=Sie können das Stammverzeichnis nicht nach / verschieben
+
 logins_title=Aufgezeichnete Anmeldungen
 logins_head=Aufgezeichnete Anmeldungen für $1
 logins_from=Anmeldung von
@@ -236,6 +242,7 @@ logins_none=Keine Anmeldungen aufgezeichnet
 logins_elist=Sie dürfen die Liste der Anmeldungen nicht einsehen
 logins_elistu=Sie dürfen die Liste der Anmeldungen für '$1' nicht einsehen
 logins_local=Lokal
+
 udel_title=Benutzer löschen
 udel_err=Fehler beim Löschen des Benutzers
 udel_enum=Ungültige Benutzernummer
@@ -258,6 +265,7 @@ udel_del2=Benutzer und Stammverzeichnis löschen
 udel_others=WARNUNG! Das Home-Verzeichnis $1 enthält $2 Dateien, die im Besitz von anderen Benutzern sind!
 udel_dothers=Benutzer in anderen Modulen löschen?
 udel_root=WARNUNG! Wenn Sie den Benutzer "ROOT" löschen, dann können Sie sich eventuell nicht mehr am System anmelden und keinerlei Administration ausüben.
+
 gdel_title=Gruppe löschen
 gdel_err=Das Löschen der Gruppe schlug fehl
 gdel_eroot=Sie dürfen <tt>Systemgruppen mit einer Gruppen-ID kleinergleich 10</tt> nicht löschen.
@@ -271,6 +279,7 @@ gdel_sure=Sind Sie sicher, dass Sie die Gruppe $1 löschen wollen?
 gdel_del=Gruppe löschen
 gdel_dothers=Gruppen in anderen Modulen löschen?
 gdel_other=Gruppe in anderen Modulen löschen ...
+
 many_title=Mehrere Benutzer erstellen
 many_desc=Dieses Formular gestattet es Ihnen, mehrere Benutzer auf einmal zu erstellen, entweder mit einer hochgeladenen oder mit einer lokalen Datei. Jede Zeile in der Datei spezifiziert einen Benutzer im folgenden Format :
 many_desc2=username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire
@@ -294,6 +303,7 @@ many_eshell=Ungültige Shell in Zeile $1 : $2
 many_emkdir=Fehler beim Anlegen des Stammverzeichnisses $1: $2
 many_egtaken=Der Gruppenname wird bereits benutzt in Zeile $1 : $2
 many_ok=Erstellter Benutzer $1
+
 acl_uedit=Unix-Benutzer, die bearbeitet werden können
 acl_uedit_all=Alle Benutzer
 acl_uedit_none=Keine Benutzer
@@ -353,6 +363,7 @@ acl_udelete=Kann Benutzer löschen?
 acl_gdelete=Kann Gruppen löschen?
 acl_urename=Kann Benutzer umbenennen?
 acl_grename=Kann Gruppen umbenennen?
+
 log_urename=Benenne Benutzer $1 in $2 um
 log_umodify=Geänderter Benutzer $1
 log_ucreate=Erzeugter Benutzer $1
@@ -371,6 +382,7 @@ log_ugbatch=Hochgeladene Gruppen-Stapelverarbeitungsdatei ausgeführt
 log_ugbatch_l=Hochgeladene Gruppe Batch-Datei ($1 erstellt, $2 geändert, $3 gelöscht) ausgeführt
 log_delete_users=Gelöschte $1 Benutzer
 log_delete_groups=Gelöschte $1 Gruppen
+
 batch_title=Benutzerverwaltung über Skript
 batch_ecannot=Sie dürfen keine Benutzer über ein Skript bearbeiten
 batch_desc=Auf dieser Seite können Sie mehrere Benutzer auf einmal durch ein Skript anlegen, ändern oder löschen. Jede Zeile in dieser Datei spezifiziert eine durchzuführende Aktion. <u>Um Missverständnissen vorzubeugen ist die folgende Zeile/sind die folgenden Zeilen <b>nicht übersetzt</b></u>. Die möglichen Formate sind:
@@ -429,12 +441,14 @@ batch_eexpire=Ungültiger Verfallstag in Zeile $1 : $2
 batch_echange=Ungültiger Passwort ändern Tag in Zeile $1 : $2
 batch_instr=Instruktionen und Batch-Format
 batch_header=Batch Benutzer Erstellung, Update und Lösch-Optionen
+
 who_title=Angemeldete Benutzer
 who_user=Unix-Benutzername
 who_tty=Benutztes Terminal (TTY)
 who_when=Datum und Uhrzeit der Anmeldung
 who_from=Angemeldet von
 who_none=Derzeit sind keine Benutzer angemeldet.
+
 export_title=Stapelverarbeitungsdatei exportieren
 export_desc=Dieses Formular ermöglicht es Ihnen, eine Stapelverarbeitungsdatei zu erzeugen, die einige oder alle verfügbaren Benutzer Ihres Systems beinhaltet. Diese können diese Datei in der Sektion <tt>Stapelverarbeitungsdatei exportieren</tt> anderer Webmin-Server benutzen, um die gleichen Benutzer automatisiert zu erzeugen, wenn die andere Webmin-Version identisch ist.
 export_header=Stapelverarbeitungs-Benutzer Export-Optionen
@@ -455,6 +469,7 @@ export_done=Erfolgreicher Export von $1 Benutzern zur Datei $2 ($3 bytes).
 export_pft=Stapelverarbeitungsdateiformat
 export_who=Benutzer zum Exportieren
 export_ecannot=Es ist Ihnen nicht erlaubt Benutzer zu exportieren
+
 gexport_title=Exportiere Gruppen-Batch-Datei
 gexport_desc=Diese Formular ermöglicht es Ihnen, eine Stapelverarbeitungsdatei zu erstellen, die einige oder alle der verfügbaren Gruppen auf dem System enthalten kann. Die Datei kann benutzt werden um die Ausführungs-Gruppen-Stapelverarbeitungs-Datei-Seite auf einem anderen System zu verwenden, um die exportieren Gruppen neu zu erstellen.
 gexport_header=Gruppen-Batch-Datei Export Optionen
@@ -463,6 +478,7 @@ gexport_ecannot=Es ist Ihnen nicht erlaubt Gruppen zu exportieren
 gexport_err=Fehlgeschlagen Gruppen-Batch-Datei zu exportieren
 gexport_egid=Ungültige erste GID im Bereich
 gexport_egid2=Ungültige zweite GID im Bereich
+
 pft_0=Nur Klassische <tt>passwd</tt>-Datei
 pft_1=BSD <tt>master.passwd</tt>-Datei
 pft_2=Standard- <tt>passwd</tt>- und <tt>shadow</tt>-Dateien
@@ -470,6 +486,7 @@ pft_3=Unixware <tt>passwd</tt>-Datei
 pft_4=AIX- <tt>passwd</tt>- und <tt>security</tt>-Dateien
 pft_5=OpenServer- <tt>passwd</tt>- und kurze <tt>shadow</tt>-Dateien
 pft_6=MacOS NetInfo Datenbank
+
 umass_title=Benutzer löschen
 umass_err=Fehler beim Löschen von Benutzern
 umass_sure=Sind Sie sicher, daß Sie die $1 ausgewählten Benutzer löschen möchten? Deren Heimatverzeichnisse beinhalten $2 Dateien.
@@ -481,6 +498,7 @@ umass_del1=Lösche Benutzer
 umass_del2=Lösche Benutzer und Heimatverzeichnisse
 umass_eroot=Sie dürfen keine Systembenutzer löschen (solche mit einer User-ID kleinergleich 10).
 umass_doing=Lösche Benutzer $1 ..
+
 gmass_title=Lösche Gruppen
 gmass_err=Fehler beim Löschen von Gruppen
 gmass_sure=Sind Sie sicher, daß Sie die $1 ausgewählten Gruppen löschen möchten?
@@ -490,16 +508,19 @@ gmass_del=Lösche Gruppen
 gmass_eroot=Sie dürfen keine Systemgruppen löschen (solche mit einer Gruppen-ID kleinergleich 10).
 gmass_doing=Lösche Gruppe $1 ..
 gmass_eprimary=Die Gruppe $1 kann nicht gelöscht werden, weil sie die primäre Gruppe des Benutzers $2 ist.
+
 dmass_title=Deaktiviere Benutzer
 dmass_sure=Sind Sie sich sicher, dass Sie die $1 ausgewählten Benutzer deaktivieren wollen? Sie können später, ohne Verlust von Daten oder Passwörter, wieder aktiviert werden.
 dmass_dis=Deaktiviere Benutzer
 dmass_pass=Temporär gesperrtes Passwort ..
 dmass_doing=Deaktiviere Benutzer $1...
 dmass_already=...bereits deaktiviert!
+
 emass_title=Aktiviere Benutzer
 emass_pass=Entsperre Passwort ..
 emass_doing=Aktiviere Benutzer $1 ..
 emass_already=.. bereits aktiviert!
+
 gbatch_title=Gruppe Stapelverarbeitungsdatei ausführen
 gbatch_ecannot=Sie können nicht die Gruppe Batch-Datei Formular benutzen
 gbatch_desc=Dieses Formular ermöglicht Ihnen das Erstellen, Ändern oder Löschen mehrerer Gruppen auf einmal aus einer hochgeladenen oder lokale Textdatei. Jede Zeile in der Datei gibt ein Aktion an, je nach ihrer ersten Feld. Das Zeilenformat ist:

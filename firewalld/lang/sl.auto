@@ -30,6 +30,7 @@ index_return=seznam območij
 index_ezones=Ni najdenih con FirewallD!
 index_none=To območje še nima dovoljenih vrat ali storitev.
 index_ifaces=Uporabi pravila za vmesnike:
+
 port_edit=Uredi vrata
 port_create=Dodaj vrata
 port_header=Dovoljene možnosti vrat
@@ -45,11 +46,13 @@ port_eport=Manjkajoča ali neveljavna številka ali ime vrat
 port_eportlow=Nizka vrata morajo biti številka
 port_eporthigh=Visoka vrata morajo biti številka
 port_eportrange=Nizka vrata morajo biti pod visokimi vrati
+
 serv_edit=Storitev urejanja
 serv_create=Dodaj storitev
 serv_header=Dovoljene možnosti storitve
 serv_name=Storitev dovoljena
 serv_err=Storitve ni bilo mogoče shraniti
+
 forward_edit=Uredi posredovanje
 forward_create=Ustvari naprej
 forward_header=Možnosti posredovanja vrat
@@ -61,10 +64,13 @@ forward_dstaddr=Namembni naslov
 forward_dstlocal=Ta sistem
 forward_edstaddr=Neveljaven ciljni naslov IPv4
 forward_eneither=Vnesti je treba ciljni naslov ali vrata ali oboje
+
 check_ecmd=Nadzor požarnega zidu $1 v vašem sistemu ni bil najden
+
 delete_err=Pravila ni bilo mogoče izbrisati
 delete_enone=Izbran ni noben!
 delete_edel=Odstranjevanje $1 ni uspelo : $2 
+
 zone_title=Ustvari cono
 zone_header=Nove možnosti cone
 zone_name=Ime cone
@@ -77,12 +83,16 @@ zone_mode4=Pristanišča, ki se uporabljajo za virtualno gostovanje
 zone_err=Območja ni bilo mogoče ustvariti
 zone_ename=Manjkajoče ali neveljavno ime območja
 zone_eclash=Območje z istim imenom že obstaja
+
 delzone_title=Zbriši cono
 delzone_err=Območja ni bilo mogoče izbrisati
 delzone_edefault=Privzetega območja ni mogoče odstraniti
 delzone_rusure=Ali ste prepričani, da želite izbrisati cono $1, ki vsebuje $2 vrata in $3 storitve?
+
 defzone_err=Območje ni postalo privzeto
+
 restart_err=Konfiguracije ni bilo mogoče uporabiti
+
 stop_err=Zaustavitve FirewallD ni uspel
 start_err=Zagon FirewallD ni uspel
 log_stop=Ustavljen požarni zidD

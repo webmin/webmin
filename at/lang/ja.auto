@@ -26,6 +26,7 @@ index_start=スケジュールされたコマンドサーバーを起動しま�
 index_startdesc=スケジュールされたコマンドを実行する<tt>atd</tt>バックグラウンドサーバープロセスを起動します。これは、コマンドを指定された時間に実行するために必要です。
 index_boot=起動時にサーバーを起動しますか？
 index_bootdesc=この設定を変更して、システムの起動時にスケジュールされたコマンドサーバーの起動を有効または無効にします。
+
 edit_title=スケジュールされたコマンド
 edit_cmd=実行する完全なスクリプト
 edit_shortcmd=実行するコマンド
@@ -35,6 +36,7 @@ edit_run=今すぐ実行
 edit_ejob=スケジュールされたコマンドはもう存在しません！
 edit_ecannot=このスケジュールされたコマンドを編集することはできません
 edit_showfull=完全なスクリプトを表示します。
+
 create_err=スケジュールコマンドの作成に失敗しました
 create_euser=ユーザー名がないか無効です
 create_edate=日付または時刻が欠落しているか無効です
@@ -43,22 +45,28 @@ create_efuture=日時は過去です
 create_edir=ディレクトリが見つからないか無効です
 create_ecannot=このユーザーのスケジュールされたコマンドを作成することはできません
 create_eallow=指定されたユーザーは、スケジュールされたコマンドの実行を許可されていません
+
 delete_err=コマンドをキャンセルできませんでした
 delete_egone=コマンドはすでに実行または削除されています
+
 acl_users=スケジュールされたコマンドを編集できます
 acl_all=すべてのユーザー
 acl_this=現在のWebminユーザー
 acl_only=ユーザーのみ
 acl_except=ユーザーを除くすべて
 acl_allow=許可されたAtユーザーを編集できますか？
+
 run_title=実行中のコマンド
 run_output=スケジュールされたコマンドからの出力 ..
 run_none=出力は生成されません
+
 allow_err=許可されたユーザーを保存できませんでした
 allow_ecannot=許可されたユーザーを管理することはできません
 allow_eusers=ユーザーが入力されていません
+
 deletes_err=コマンドをキャンセルできませんでした
 deletes_enone=何も選択されていません
+
 log_allow=許可されたユーザーの変更
 log_create_job=$1のスケジュールされたコマンドを作成しました
 log_delete_job=$1のスケジュールされたコマンドをキャンセルしました
@@ -68,5 +76,6 @@ log_stop=スケジュールされたコマンドサーバーを停止しまし�
 log_start=スケジュールされたコマンドサーバーを開始しました
 log_bootup=起動時にスケジュールされたコマンドサーバーを有効にする
 log_bootdown=起動時にスケジュールされたコマンドサーバーを無効にする
+
 stop_err=サーバーの停止に失敗しました
 start_err=サーバーの起動に失敗しました

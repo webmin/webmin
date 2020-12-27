@@ -42,6 +42,7 @@ index_lvused=Erabilitako espazioa
 index_lvuse=Erabiltzen da
 index_snapof=($1 argazkia)
 index_thin=LVM igerileku mehea $1 LV-rako
+
 lv_edit=Editatu bolumen logikoa
 lv_edit_snap=Editatu argazkia
 lv_create=Sortu bolumen logikoa
@@ -128,6 +129,7 @@ lv_pvfrom=Mugitu blokeak bolumen fisikotik
 lv_pvto=Bolumen fisikoari
 lv_moveok=Mugitu blokeak
 lv_return=bolumen logikoa
+
 mkfs_title=Sortu fitxategi sistema
 mkfs_desc=Inprimaki honek $2 ($1) fitxategi sistema berria eraikitzeko aukera ematen du $3 bolumen logikoan. Dauden datu guztiak ezabatuko dira.
 mkfs_header=Fitxategi sistemaren aukera berriak
@@ -135,6 +137,7 @@ mkfs_err=Huts egin du fitxategi sistema sortzerakoan
 mkfs_exec=$1 komandoa exekutatzen.
 mkfs_failed=.. Komandoak huts egin du!
 mkfs_ok=.. agindua bukatuta.
+
 resize_title=Tamaina aldatu bolumen logikoa
 resize_mesg=Bolumen logiko honetako $1 fitxategi sistema ezin da tamaina aldatu. Bolumen logikoa tamainaz aldatu ezkero, berriro sortu behar duzu fitxategi sistema, bertan dauden datu guztiak ezabatuko dituzu.
 resize_mesg2=Webminek ez daki zer fitxategi-sistema dagoen bolumen logiko horretan, halakorik badago. Bolumen logikoa tamainaz aldatu ezkero, berriro sortu behar duzu fitxategi sistema, bertan dauden datu guztiak ezabatuko dituzu.
@@ -142,8 +145,10 @@ resize_fs=Bolumen logiko horretan $1 fitxategi sistemaren tamaina berdintzean ak
 resize_ok=Tamaina aldatu bolumen logikoa
 resize_emounted=Bolumen logiko honetako fitxategi-sistema ezin da tamaina aldatu
 resize_emounted2=Bolumen logiko honetako fitxategi sistema ezin da txikitu muntatu bitartean
+
 init_title=Aktibatu LVM
 init_cmd=$1 komandoa exekutatzen ari da.
+
 pv_edit=Editatu bolumen fisikoa
 pv_create=Gehitu bolumen fisikoa
 pv_vg=$1 bolumen-taldean
@@ -170,6 +175,7 @@ pv_eother=Disko gailua falta edo baliogabea da
 pv_raid=$1 RAID gailua
 pv_lvs=Esleipena bolumen logikoen arabera
 pv_egone=Bolumen fisikoa jada ez da!
+
 vg_edit=Editatu Bolumen Taldea
 vg_create=Sortu Bolumen Taldea
 vg_name=Bolumen taldearen izena
@@ -188,11 +194,13 @@ vg_deleteok=Ezabatu orain
 vg_ename=Baliogabea edo baliogabea den talde-izena
 vg_epesize=Esleipen blokeoaren tamaina falta edo baliogabea
 vg_egone=Bolumen taldea ez dago jada!
+
 pvmove_err=Ezin izan da bolumen logikoa mugitu
 pvmove_title=Mugitu bolumen logikoa
 pvmove_start=$1 bolumen logikoa $2 tik $3 ra mugitzen da.
 pvmove_failed=.. mugitu huts egin du!
 pvmove_done=.. mugitu osoa
+
 thin_title=Sortu Igerileku Mehea
 thin_desc=Igerileku mehea LVak osatzeko erabil daitezkeen hedadurak baino handiagoak izan daitezkeen LV osagarriak sortzeko erabil daiteke. Beharrezkoa denean soilik kontsumitzen da espazioa, igerilekuaren barruko LVak sortzen direnean baino. KONTUZ: hautatutako LVen inguruko edozein datu galduko dira!
 thin_header=Igerileku mehearen xehetasun berriak
@@ -204,6 +212,7 @@ thin_err=Huts egin du igerileku mehea sortzerakoan
 thin_esame=Aukeratutako LV biak berdinak dira
 thin_edata=Hautatutako LV datuak dagoeneko erabiltzen ari dira
 thin_emetadata=Hautatutako metadatuen LV dagoeneko erabiltzen ari da
+
 log_create_vg=$1 bolumen taldea sortu da
 log_modify_vg=Aldatutako bolumen taldea $1 
 log_delete_vg=$1 bolumen taldea ezabatu da
@@ -216,4 +225,5 @@ log_create_pv=$1 bolumen fisikoa gehitu da VG $1 -era
 log_modify_pv=Aldatutako bolumen fisikoa $1 VG $2 n
 log_delete_pv=$1 bolumen fisikoa Kendu da VG $2 -tik
 log_resize_pv=Neurriaren tamaina fisikoa $1 VG $2 n
+
 blocks=bloke

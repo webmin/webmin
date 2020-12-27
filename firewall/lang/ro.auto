@@ -16,6 +16,7 @@ index_chain=Lanț $1
 index_action=Acțiune
 index_desc=Condiție
 index_comm=cometariu
+index_no_comment=
 index_move=Mișcare
 index_none=Nu există reguli definite pentru acest lanț.
 index_policy=Setați acțiunea implicită la:
@@ -88,6 +89,7 @@ index_ipset_size=mărimea
 index_ipvxmode=Schimbă versiunea protocolului IP:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
 desc_p=protocolul este $1 
 desc_p!=protocolul nu este $1 
 desc_s=sursa este $1 
@@ -114,6 +116,8 @@ desc_tcp-option=pachetul utilizează opțiunea TCP $1
 desc_tcp-option!=pachetul nu utilizează opțiunea TCP $1 
 desc_icmp-type=Tipul ICMP este $1 
 desc_icmp-type!=Tipul ICMP nu este $1 
+desc_icmpv6-type=Tipul ICMP este $1 
+desc_icmpv6-type!=Tipul ICMP nu este $1 
 desc_mac-source=adresa ethernet este $1 
 desc_mac-source!=adresa ethernet nu este $1 
 desc_limit=rata este mai mică decât $1 
@@ -146,10 +150,15 @@ desc_always=Mereu
 desc_args--match-set=$2 este conținut în setul IP $1 
 desc_src=sursă
 desc_dest=destinaţie
+
 redhat_einstalled=Nu a fost găsită nicio <tt>iptables (6)</tt> acțiune de pornire, care indică faptul că pachetul IPtables nu este instalat pe sistemul dvs.
 redhat_eoutput=A apărut o eroare la obținerea stării IPtables de la comanda $1. Acest lucru indică probabil că sistemul dvs. a fost configurat pentru a utiliza IPchains în loc de tabele IP.
+
 gentoo_escript=Scriptul de pornire Gentoo IPtables $1 nu a fost găsit în sistemul dvs.
+
 eiptables=Tabele IP necunoscute salvează linia fișierului : $1 
+eip6tables=Mesaje necunoscute pentru a salva linia fișierului : $1 
+
 edit_title1=Adăugați regula
 edit_title2=Editează regula
 edit_title3=Regula clonelor
@@ -218,6 +227,7 @@ edit_physdevout=Interfață fizică de ieșire
 edit_physdevisin=Pachetul care intră pe interfața bridge
 edit_physdevisout=Pachet care iese pe interfața bridge
 edit_physdevisbridged=Pachetul este călcat
+
 save_err=Reglarea nu a reușit să salveze
 save_echain=Lanțul care lipsește sau este invalid pentru a fi rulat
 save_esource=Adresa sau rețeaua sursă lipsă sau nevalidă
@@ -262,23 +272,28 @@ save_estates=Nu au fost selectate stări de conexiune
 save_ecanjump=Nu aveți voie să utilizați această acțiune
 save_ephysdevin=Interfață fizică de intrare lipsă sau nevalidă
 save_ephysdevout=Interfață fizică care lipsește sau este nevalidă
+
 delete_title=Ștergeți lanțul
 delete_rusure=Sigur doriți să ștergeți lanțul $1 ? Normele $2 din acesta vor fi șterse.
 delete_ok=Șterge acum
 delete_ecannot=Nu aveți voie să ștergeți lanțuri
+
 clear_title=Lanț limpede
 clear_rusure=Sigur doriți să ștergeți toate regulile $2 din lanțul $1 ?
 clear_ecannot=Nu aveți voie să ștergeți lanțurile
+
 new_err=Crearea lanțului nu a reușit
 new_ename=Numele lanțului lipsă sau nevalid
 new_etaken=Un lanț cu acest nume există deja
 new_ecannot=Nu aveți voie să creați lanțuri
+
 apply_err=Eroare la aplicarea configurației
 apply_ecannot=Nu aveți voie să aplicați configurația
 apply_remote=Eroare de la $1 : $2 
 unapply_err=Nu a putut reveni configurația
 unapply_ecannot=Nu aveți voie să reveniți la configurație
 bootup_ecannot=Nu aveți voie să activați sau să dezactivați firewallul la pornire
+
 log_create_rule=Se adaugă regula la lanțul $1 din tabelul $2 
 log_modify_rule=Reguli modificate în lanțul $1 în tabelul $2 
 log_delete_rule=Regula ștersă în lanțul $1 din tabelul $2 
@@ -301,8 +316,10 @@ log_add_group=S-au adăugat servere de cluster din grupul $1
 log_delete_host=Serverul de cluster a fost eliminat $1 
 log_delete_group=Șters serverele de cluster $1 
 log_openports=Porturi de firewall deschise $1 
+
 setup_eiface=Nu a fost introdusă nicio interfață de rețea externă
 setup_ecannot=Nu aveți voie să configurați firewallul
+
 acl_tables=Tabele IP permise
 acl_apply=Poate aplica configurația?
 acl_unapply=Se poate anula configurația?
@@ -314,9 +331,11 @@ acl_jall=Toate
 acl_newchain=Poate crea noi lanțuri?
 acl_delchain=Poate șterge sau șterge lanțuri?
 acl_policy=Poate modifica politica implicită?
+
 etable=Nu aveți voie să editați acest tabel IP
 ejump=Nu aveți voie să editați această regulă
 ecluster=Nu aveți voie să gestionați clusterul de firewall
+
 cluster_title=Cluster Firewall Servers
 cluster_none=Încă nu au fost adăugate servere la clusterul firewall.
 cluster_host=Numele gazdei
@@ -327,6 +346,7 @@ cluster_gadd=Adăugați servere în grup
 cluster_need=Pentru a putea fi gestionate aici, trebuie să adăugați servere cu o autentificare și parolă în modulul Index Web Servers.
 cluster_return=serverele de cluster
 cluster_delete=Sterge selectia
+
 add_title=Adăugați servere
 add_msg=Se adaugă $1 ..
 add_gmsg=Adăugarea serverelor în grupul $1 ..
@@ -336,13 +356,16 @@ add_echeck=Serverul $1 nu are modulul Firewall Linux
 add_emissing=Serverul $1 lipsește comanda firewallului $2 
 add_ok=S-a adăugat $1, cu $2 reguli de firewall active.
 add_enone=Nu există servere selectate!
+
 policy_ecannot=Nu aveți voie să modificați politica standard pentru acest lanț
+
 move_title=Reguli de mișcare
 move_count=Reguli selectate
 move_chain=Schimbare curentă
 move_dest=Lanț de destinație
 move_ok=Mută acum
 move_header=Opțiuni de mutare a regulilor
+
 rename_title=Redenumiți lanț
 rename_count=Reguli în lanț
 rename_chain=Nume curent
@@ -352,6 +375,3 @@ rename_header=Opțiuni pentru redenumirea lanțului
 rename_adjust=Modificați alte reguli care sar la acest lanț?
 rename_none=Nici unul
 rename_ecannot=Nu aveți voie să redenumiți lanțuri
-desc_icmpv6-type=Tipul ICMP este $1 
-desc_icmpv6-type!=Tipul ICMP nu este $1 
-eip6tables=Mesaje necunoscute pentru a salva linia fișierului : $1 

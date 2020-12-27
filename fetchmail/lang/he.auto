@@ -25,6 +25,7 @@ index_header=משתמשים עם תצורות Fetchmail
 index_search=הצג תצורת Fetchmail עבור:
 index_show=הופעה
 index_toomany=יש יותר מדי משתמשים במערכת שלך להצגה.
+
 poll_create=הוסף שרת
 poll_edit=ערוך שרת
 poll_header=אפשרויות שרת דואר
@@ -64,18 +65,22 @@ poll_ecannot=אינך רשאי לערוך את תצורת ה- fetchmail של מ�
 poll_efile=ניתן לערוך רק את קבצי התצורה של ה- fetchmail של המשתמשים
 poll_eusername=משתמש לא קיים!
 poll_foruser=למשתמש $1 
+
 stop_err=עצירת הדואר האלקטרוני נכשלה
 stop_ecannot=אינך רשאי להפסיק להביא את הדואר האלקטרוני
 start_err=התחלת הדואר האלקטרוני נכשלה
 start_einterval=מרווח בדיקה חסר או לא תקף
 start_ecannot=אינך מורשה להתחיל להביא דוא"ל
+
 check_title=בודק שרתים
 check_exec=בודק דואר בשרת (ים) עם הפקודה $1.
 check_ok=.. הבדיקה הושלמה.
 check_failed=.. הבדיקה נכשלה!
+
 global_title=הגדרות ברירת מחדל
 global_header=הגדרות ברירת מחדל עבור כל השרתים
 global_err=שמירת הגדרות ברירת המחדל נכשלה
+
 log_create_poll_file=הוסיף שרת $1 בקובץ $2 
 log_modify_poll_file=שרת $1 שונה בקובץ $2 
 log_delete_poll_file=השרת $1 נמחק בקובץ $2 
@@ -94,6 +99,7 @@ log_stop=דמון של פטיש-מייל הפסיק
 log_create_cron=הפעלת בדיקה מתוזמנת
 log_update_cron=בדיקה מתוזמנת שונה
 log_delete_cron=השבתת בדיקה מתוזמנת
+
 acl_users=יכול לערוך את תצורת fetchmail עבור
 acl_all=כל המשתמשים
 acl_this=משתמש מנהל אתר נוכחי
@@ -101,6 +107,7 @@ acl_only=רק משתמשים
 acl_except=כולם למעט משתמשים
 acl_cron=האם ניתן לקבוע את התצורה של בדיקה מתוזמנת?
 acl_daemon=האם ניתן לקבוע את התצורה של הדמון Fetchmail?
+
 cron_title=בדיקה מתוזמנת
 cron_desc=ניתן להשתמש בדף זה כדי להפעיל או להשבית משימת Cron כדי לבדוק את שרתי הדואר בתצורת ה- Fetchmail שלך בלוח זמנים קבוע. שימוש במשרה מעולה של Cron להפעלת הדמון Fetchmail, מכיוון שהוא לא צריך להתחיל מחדש בזמן האתחול.
 cron_header=הגדרות Fetchmail מתוזמנות
@@ -119,8 +126,10 @@ cron_email=כתובת דוא"ל חסרה או לא חוקית
 cron_euser=משתמש Unix חסר או לא חוקי
 cron_errors=פלט רק אם מתרחשת שגיאה?
 cron_ecannot2=אינך רשאי להגדיר בדיקה מתוזמנת
+
 user_title=תצורת Fetchmail
 user_header=למשתמש $1 
 user_return=תצורת המשתמש
+
 email_ok=פלט Fetchmail
 email_failed=שגיאת Fetchmail

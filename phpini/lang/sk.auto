@@ -9,17 +9,21 @@ index_edit=Spravovať
 index_manual=Upraviť ručne
 index_anyfile=Upraviť ďalší konfiguračný súbor PHP:
 index_return=konfiguračné súbory
+
 file_global=Globálna konfigurácia PHP
 file_eread=Nepodarilo sa prečítať $1 : $2 
+
 manual_title=Manuálne upraviť konfiguráciu
 manual_desc=Táto stránka sa dá použiť na manuálnu úpravu konfiguračného súboru PHP. Toto by sa malo robiť opatrne, pretože pri vašich zmenách sa nevykonáva žiadna syntax alebo iná kontrola platnosti.
 manual_err=Nepodarilo sa upraviť konfiguračný súbor
 manual_edata=Nebol zadaný žiadny nový obsah
+
 list_title=Spravujte konfiguráciu PHP
 list_ecannot=Nemáte povolenie spravovať tento konfiguračný súbor PHP
 list_return=PHP konfigurácia
 list_format_ini=Formát INI
 list_format_fpm=Formát FPM
+
 vars_title=Premenné PHP
 vars_header=Možnosti vytvárania a citovania PHP premenných
 vars_magic=Citujte všetky vstupné premenné?
@@ -28,6 +32,7 @@ vars_register=Premeníte všetky vstupy na globálne premenné?
 vars_args=Premeňte parametre príkazového riadku na globálne premenné?
 vars_long=Vytvoriť polia v starom štýle, napríklad <tt>HTTP_GET_VARS</tt>?
 vars_err=Uloženie nastavení premennej PHP zlyhalo
+
 dirs_title=Nastavenia adresára
 dirs_header=Nastavenia skriptu a adresára rozšírenia PHP
 dirs_include=Vyhľadávať v adresároch obsahuje
@@ -39,6 +44,7 @@ dirs_err=Uloženie nastavení adresára zlyhalo
 dirs_eincs=Neboli zadané žiadne adresáre vyhľadávania
 dirs_eutmp=Chýbajúci alebo neplatný adresár dočasných súborov
 dirs_eext=Chýba adresár rozšírení
+
 db_title=Nastavenia databázy
 db_header1=Nastavenia pripojenia MySQL k databáze
 db_persist=Povoliť trvalé pripojenia k databáze?
@@ -57,6 +63,7 @@ db_emaxlinks=Chýba alebo je neplatný maximálny počet všetkých spojení
 db_etimeout=Chýbajúci alebo neplatný časový limit pripojenia
 db_ehost=Chýbajúci alebo neplatný predvolený hostiteľ servera MySQL
 db_eport=Chýba alebo je neplatný predvolený port servera MySQL
+
 session_title=Možnosti relácie
 session_header=Možnosti sledovania relácie PHP
 session_handler=Mechanizmus ukladania relácií
@@ -73,6 +80,7 @@ session_epath=Chýbajúci alebo neplatný adresár pre súbory relácie
 session_elife=Chýbajúca alebo neplatná životnosť súborov cookie
 session_emaxlife=Chýbajúca alebo neplatná maximálna životnosť relácie
 session_eredis=Chýbajúce alebo deaktivované rozšírenie Redis
+
 safe_title=Možnosti núdzového režimu
 safe_header=Možnosti režimu bezpečného prístupu k súboru
 safe_on=Povoliť bezpečný režim?
@@ -85,6 +93,7 @@ safe_err=Možnosti núdzového režimu sa nepodarilo uložiť
 safe_einclude=Chýbajúci alebo neplatný povolený adresár pre zahrnuté súbory
 safe_eexec=Chýbajúci alebo neplatný povolený adresár pre spustené programy
 safe_ebasedir=Chýbajúci alebo neplatný adresár pre operácie so súbormi
+
 limits_title=Limity zdrojov
 limits_header=Možnosti obmedzenia pamäte a prenosu
 limits_mem=Maximálna alokácia pamäte
@@ -98,6 +107,7 @@ limits_epost=Chýbajúca alebo neplatná maximálna veľkosť HTTP POST
 limits_eupload=Chýbajúca alebo neplatná maximálna veľkosť odovzdaného súboru
 limits_eexec=Chýbajúci alebo neplatný maximálny čas vykonávania
 limits_einput=Chýba alebo je neplatný maximálny čas na analýzu vstupu
+
 errors_title=Chyba pri protokolovaní
 errors_header=Možnosti zobrazenia chybových správ a protokolovania
 errors_display=Zobraziť chybové správy?
@@ -128,6 +138,7 @@ errors_err=Uloženie protokolovania chýb zlyhalo
 errors_ereporting=Nebol zadaný žiadny výraz typu chyby
 errors_emaxlen=Chýbajúca alebo neplatná maximálna veľkosť zaznamenaných chýb
 errors_efile=Chýba súbor denníka chýb
+
 misc_title=Ďalšie nastavenia
 misc_header=Rôzne ďalšie nastavenia PHP
 misc_short=Povoliť skripty PHP začínajúce na &lt;? ?
@@ -148,6 +159,7 @@ misc_include=Povoliť otvorenie vzdialeného Zahŕňa?
 misc_path=Informácie o ceste CGI?
 misc_timezone=Časové pásmo PHP
 misc_charset=Predvolená sada znakov
+
 log_manual=Ručne upravte súbor $1 
 log_vars=Zmenené premenné PHP v $1 
 log_dirs=Zmenené nastavenia adresára v $1 
@@ -157,6 +169,7 @@ log_safe=Zmenené možnosti núdzového režimu v $1
 log_limits=Zmenené limity zdrojov v $1 
 log_errors=Zmenené protokolovanie chýb v $1 
 log_misc=Ostatné nastavenia boli zmenené v $1 
+
 acl_global=Môžete upraviť globálnu konfiguráciu PHP?
 acl_anyfile=Môžete upravovať ľubovoľný súbor ako konfiguráciu PHP?
 acl_manual=Môžete manuálne upravovať konfiguračné súbory?

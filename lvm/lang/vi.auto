@@ -42,6 +42,7 @@ index_lvused=Không gian sử dụng
 index_lvuse=Được dùng cho
 index_snapof=(Ảnh chụp của $1)
 index_thin=Hồ bơi mỏng LVM cho $1 LVs
+
 lv_edit=Chỉnh sửa khối lượng logic
 lv_edit_snap=Chỉnh sửa ảnh chụp
 lv_create=Tạo khối lượng logic
@@ -128,6 +129,7 @@ lv_pvfrom=Di chuyển các khối từ khối lượng vật lý
 lv_pvto=Để khối lượng vật lý
 lv_moveok=Di chuyển khối
 lv_return=khối lượng logic
+
 mkfs_title=Tạo hệ thống tập tin
 mkfs_desc=Biểu mẫu này cho phép bạn xây dựng hệ thống tệp $2 ($1) mới trên khối lượng logic $3. Tất cả dữ liệu hiện có sẽ bị xóa.
 mkfs_header=Tùy chọn hệ thống tập tin mới
@@ -135,6 +137,7 @@ mkfs_err=Không thể tạo hệ thống tập tin
 mkfs_exec=Thực hiện lệnh $1 ..
 mkfs_failed=.. Lệnh không thành công!
 mkfs_ok=.. lệnh hoàn thành.
+
 resize_title=Thay đổi kích thước khối lượng logic
 resize_mesg=Hệ thống tập tin $1 trên khối lượng logic này không thể thay đổi kích thước. Nếu bạn thay đổi kích thước ổ đĩa logic, bạn phải tạo lại hệ thống tập tin, nó sẽ xóa tất cả dữ liệu trong đó.
 resize_mesg2=Webmin không biết loại hệ thống tập tin nào trên khối lượng logic này, nếu có. Nếu bạn thay đổi kích thước ổ đĩa logic, bạn phải tạo lại hệ thống tập tin, nó sẽ xóa tất cả dữ liệu trong đó.
@@ -142,8 +145,10 @@ resize_fs=Có lỗi khi thay đổi kích thước hệ thống tệp $1 trên �
 resize_ok=Thay đổi kích thước khối lượng logic
 resize_emounted=Hệ thống tập tin trên khối lượng logic này không thể thay đổi kích thước trong khi nó được gắn kết
 resize_emounted2=Hệ thống tập tin trên khối lượng logic này không thể được thu hẹp trong khi nó được gắn kết
+
 init_title=Kích hoạt LVM
 init_cmd=Chạy lệnh $1 ..
+
 pv_edit=Chỉnh sửa âm lượng vật lý
 pv_create=Thêm khối lượng vật lý
 pv_vg=Trong nhóm âm lượng $1 
@@ -170,6 +175,7 @@ pv_eother=Thiết bị đĩa bị thiếu hoặc không hợp lệ
 pv_raid=Thiết bị RAID $1 
 pv_lvs=Phân bổ theo khối lượng logic
 pv_egone=Khối lượng vật lý không còn tồn tại!
+
 vg_edit=Chỉnh sửa nhóm âm lượng
 vg_create=Tạo nhóm âm lượng
 vg_name=Tên nhóm âm lượng
@@ -188,11 +194,13 @@ vg_deleteok=Xóa ngay bây giờ
 vg_ename=Tên nhóm âm lượng bị thiếu hoặc không hợp lệ
 vg_epesize=Kích thước khối phân bổ bị thiếu hoặc không hợp lệ
 vg_egone=Nhóm khối không còn tồn tại!
+
 pvmove_err=Không thể di chuyển âm lượng hợp lý
 pvmove_title=Di chuyển khối lượng hợp lý
 pvmove_start=Di chuyển khối lượng logic $1 từ $2 sang $3 ..
 pvmove_failed=.. di chuyển thất bại!
 pvmove_done=.. di chuyển hoàn thành
+
 thin_title=Tạo hồ bơi mỏng
 thin_desc=Một nhóm mỏng là một cặp LV có thể được sử dụng để tạo các LV bổ sung có thể lớn hơn phạm vi có sẵn. Không gian chỉ được tiêu thụ khi cần thiết, thay vì khi LV bên trong hồ bơi được tạo. CẢNH BÁO - Mọi dữ liệu về LV đã chọn sẽ bị mất!
 thin_header=Chi tiết hồ bơi mỏng mới
@@ -204,6 +212,7 @@ thin_err=Không thể tạo hồ bơi mỏng
 thin_esame=Cả hai LV được chọn đều giống nhau
 thin_edata=Dữ liệu đã chọn LV đã được sử dụng
 thin_emetadata=Siêu dữ liệu đã chọn LV đã được sử dụng
+
 log_create_vg=Tạo nhóm khối lượng $1 
 log_modify_vg=Nhóm âm lượng đã sửa đổi $1 
 log_delete_vg=Nhóm âm lượng đã xóa $1 
@@ -216,4 +225,5 @@ log_create_pv=Đã thêm khối lượng vật lý $1 vào VG $1
 log_modify_pv=Khối lượng vật lý đã sửa đổi $1 trong VG $2 
 log_delete_pv=Đã xóa khối lượng vật lý $1 khỏi VG $2 
 log_resize_pv=Khối lượng vật lý đã thay đổi kích thước $1 trong VG $2 
+
 blocks=khối

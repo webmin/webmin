@@ -30,6 +30,7 @@ index_sdesc=شرح عمل شامل
 index_shost=منبع سرور وبمین
 index_long=نمایش توضیحات کامل عمل؟
 index_global=&lt;در هر ماژول&gt;
+
 search_title=نتایج جستجو
 search_date=تاریخ
 search_time=زمان
@@ -63,6 +64,7 @@ search_global_baduser=نام کاربری بد
 search_global_badpass=رمز عبور بد
 search_global_twofactor=نشان دوقلوی نامعتبر است
 search_csv=صادرات به عنوان CSV.
+
 view_title=جزئیات عمل
 view_header=جزئیات عملکرد ثبت شده$1
 view_action=شرح
@@ -96,12 +98,14 @@ view_files=پرونده ها تغییر کرده و دستورات اجرا می
 view_raw=اطلاعات ورود به سیستم خام
 view_rawname=نام پارامتر
 view_rawvalue=مقدار پارامتر
+
 acl_mods=می توانید سیاهههای مربوط به ماژول ها را مشاهده کنید
 acl_all=همه
 acl_sel=انتخاب شده در زیر ..
 acl_self=فقط خود
 acl_users=می تواند اقدامات کاربران را مشاهده کند
 acl_rollback=آیا می توان اقدامات را عقب انداخت؟
+
 rollback_title=عملکرد برگشتی
 rollback_rusure=آیا مطمئن هستید که قبل از این اقدام می توانید کلیه پرونده های ذکر شده در زیر را به محتوای آنها برگردانید؟ هرگونه اطلاعاتی که در حال حاضر در آنها وجود دارد با تغییرات زیر رونویسی می شود :
 rollback_isdir=دایرکتوری - تغییری ایجاد نمی شود.
@@ -124,4 +128,5 @@ rollback_modfile=برگرداندن محتویات پرونده$1.
 rollback_deleted=پرونده$1 حذف شد.
 rollback_nodeleted=پرونده غیر موجود$1 رد شد.
 rollback_enone=هیچ پرونده ای انتخاب نشده است
+
 log_rollback=عملکرد برگشت $1 در ماژول$2

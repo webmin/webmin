@@ -15,7 +15,9 @@ index_equals=igual a
 index_matches=coincide com
 index_nequals=não igual a
 index_nmatches=não coincide com
+
 search_title=Resultados da Procura
+
 uedit_title=Editar Utilizador
 uedit_title2=Criar Utilizador
 uedit_details=Detalhes do Utilizador
@@ -59,6 +61,7 @@ uedit_copy=Copiar ficheiros para o directório inicial?
 uedit_logins=Mostrar Logins
 uedit_ecreate=Você não pode criar novos utilizadores
 uedit_eedit=Você não pode editar este utilizador
+
 usave_err=Erro ao guardar utilizador
 usave_eedit=Você não pode editar este utilizador
 usave_ecreate=Você não pode criar novos utilizadores
@@ -90,6 +93,7 @@ usave_emove=erro ao mover directório inicial : $1
 usave_emkdir=não se conseguiu criar o directório inicial : $1
 usave_echown=não se conseguiu alterar o proprietário do directório inicial : $1
 usave_echmod=não se conseguiu alterar as permissões do directório inicial : $1
+
 gedit_title=Editar Grupo
 gedit_title2=Criar Grupo
 gedit_details=Detalhes do Grupo
@@ -98,6 +102,7 @@ gedit_gid=ID do grupo
 gedit_members=Membros
 gedit_homedirs=Directórios iniciais
 gedit_allfiles=Todos os ficheiros
+
 gsave_err=Erro ao guardar grupo
 gsave_eedit=Você não pode editar este grupo
 gsave_ecreate=Você não pode criar novos grupos
@@ -107,6 +112,7 @@ gsave_egid='$1' não é um GID válido
 usave_elowgid=O GID tem de ser maior ou igual a $1
 usave_ehigid=O GID tem de ser menor ou igual a $1
 usave_egidused=O grupo $1 já está a usar o GID $2
+
 logins_title=Logins Gravados
 logins_head=Logins gravados de $1
 logins_from=Login De
@@ -116,6 +122,7 @@ logins_out=Logout Às
 logins_for=Dentro Durante
 logins_still=Ainda está dentro
 logins_none=Não há logins gravados
+
 udel_title=Apagar Utilizador
 udel_err=Erro ao apagar utilizador
 udel_euser=Você não pode apagar este utilizador
@@ -130,6 +137,7 @@ udel_sure=Tem a certeza que quer apagar o utilizador $1 ? O directório inicial 
 udel_sure2=Tem a certeza que quer apagar o utilizador $1 ?
 udel_del1=Apagar Utilizador
 udel_del2=Apagar Utilizador e Directório Inicial
+
 gdel_title=Apagar Grupo
 gdel_err=Erro ao apagar grupo
 gdel_egroup=Você não pode apagar este grupo
@@ -139,6 +147,7 @@ gdel_done=.. Feito
 gdel_eprimary=Este é o grupo primário do utilizador $1
 gdel_sure=Tem a certeza que quer apagar o grupo $1 ?
 gdel_del=Apagar Grupo
+
 acl_uedit=Utilizadores do Unix que podem ser editados
 acl_uedit_all=Todos os utilizadores
 acl_uedit_none=Nenhuns utilizadores

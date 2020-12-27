@@ -1,11 +1,14 @@
 connect_emysql=無法加載數據庫驅動程序$1
 connect_elogin=無法登錄數據庫$1:$2。
 index_postfix=後綴
+
 index_esuper=Postfix主管命令$1不存在。也許您的<a href='$2'>模塊配置</a>不正確。
 index_reload=重新加載配置
 index_reloadmsg=單擊此按鈕以使Postfix重新讀取其所有配置文件。如果Postfix配置文件已被手動修改，這將很有用。
 index_version=Postfix版本$1
+
 check_manual=手動編輯Postfix配置文件。
+
 aliases_addr=別名來自
 aliases_to=別名到 ..
 aliases_type1=地址$1
@@ -16,9 +19,11 @@ aliases_type5=自動回复文件$1
 aliases_type6=應用過濾器文件$1
 aliases_none=沒有
 aliases_delete=刪除所選別名
+
 postfinger_title=配置檢查
 postfinger_show=節目
 postfinger_ecannot=您無權檢查Postfix配置
+
 mailclean_title=清理MailQueue
 mailclean_ecannot=沒有權限清理MailQueues
 mailclean_active=活動隊列
@@ -27,6 +32,7 @@ mailclean_deferred=延遲隊列
 mailclean_defer=延遲隊列
 mailclean_all=所有隊列
 mailclean_search=搜索字符串
+
 aform_type0=沒有
 aform_type1=電子郵件地址
 aform_type2=文件中的地址
@@ -42,6 +48,7 @@ aform_val=別名
 aform_afile=編輯 ..
 aform_return=別名
 aform_cmt=描述
+
 asave_err=保存別名失敗
 asave_eaddr=“$1”不是有效地址
 asave_ealready=“$1”的別名已存在
@@ -52,11 +59,13 @@ asave_etype4='$1'不是有效程序或不存在
 asave_etype5=自動回复文件“$1”無效
 asave_etype4none=沒有提供程序
 asave_etype6=過濾文件'$1'無效
+
 afile_title=編輯地址文件
 afile_desc=使用下面的文本區域編輯文件$1中的地址。
 afile_efile=您不允許編輯$1。
 afile_undo=取消更改
 afile_ewrite=無法寫入地址文件：$1
+
 ffile_title=編輯過濾文件
 ffile_desc=使用下面的表格在文件$1中設置過濾規則。
 ffile_efile=您不允許編輯$1。
@@ -72,6 +81,7 @@ ffile_other=否則轉發到$1
 ffile_err=無法保存過濾器文件
 ffile_ematch=缺少比賽
 ffile_eaction=缺少轉寄地址
+
 rfile_title=編輯自動回复文件
 rfile_desc=使用下面的文本區域編輯$1中的自動回复消息。該消息可能包含宏$ SUBJECT，$ FROM，$ TO，$ DATE和$ BODY，這些宏將在激活自動回復後擴展。
 rfile_desc2=您還可以通過添加如下行來設置添加或替換自動回復中使用的默認郵件標題：<br><tt>發件人：foo@bar.com </tt><br> <tt>主題：節假日<消息頂部的/tt>，<br>與正文之間用一個空白行隔開。
@@ -90,28 +100,37 @@ rfile_from=發件人：答复地址
 rfile_auto=自動（根據收件人的地址）
 rfile_efrom=缺少發件人：地址
 rfile_fromdesc=盡可能始終指定發件人：地址，因為自動方法可能不可靠。
+
 opts_nomap=未設置地圖
 opts_setmap=地圖規格
 opts_notify_classes_sel=在下面選擇
+
 opts_edir=只允許在$1下指定地圖文件。
+
 opts_mailbox_size_limit=郵箱的最大大小
+
 opts_mynetworks_style=自動局域網
 opts_mynetworks_subnet=相同的IP子網
 opts_mynetworks_class=同一網絡類
 opts_mynetworks_host=僅本地機器
 opts_delay_warning_time_default2=後綴默認
 opts_content_filter_default=沒有
+
 opts_relay_recipient_maps=映射允許中繼的地址
 smtpd_nomap=尚未輸入允許中繼的地址的映射。
 smtpd_nomap2=尚未輸入限制發件人地址的地圖。
 smtpd_map=允許中繼的地址
 smtpd_map2=發件人地址限制
+
 opts_smtp_use_tls=使用TLS進行SMTP連接
 opts_smtp_sasl_security_options=SASL安全選項
+
 opts_edebug=詳細記錄級別缺失或無效-必須是大於零的數字
+
 canonical_return_sender=發件人規範地圖
 canonical_return_recipient=收件人規範圖
 canonical_return=規範地圖
+
 mapping_delete=刪除所選
 mapping_cmt=描述
 mapping_ecannot=只允許您在$1下編輯地圖
@@ -125,15 +144,28 @@ mapping_toomany=有$1映射條目，超過了$2的顯示限制。
 mapping_find=顯示匹配的映射：
 mapping_search=搜索
 mapping_match=匹配<tt>$1</tt>的映射文件條目。
+
 opts_virtual_alias_maps=域映射查找表
 opts_virtual_alias_domains=要為其執行虛擬映射的域
 virtual_same=來自域映射表
 virtual_return=虛擬域
+
 transport_return=運輸地圖
+
+sni_title=證書映射
+sni_ecannot=不允許編輯證書映射配置
+opts_sni_maps=證書映射查找表
+sni_return=證書圖
+sni_dom=主機名
+sni_certs=證書文件
+
 relocated_return=搬遷的地圖
 opts_content_filter=電子郵件內容過濾器
+
 start_efailed=無法啟動Postfix
 start_ecannot=您無權啟動Postfix
+
+acl_sni=可以編輯證書嗎？
 acl_header=可以編輯標題檢查嗎？
 acl_sasl=可以編輯SMTP身份驗證嗎？
 acl_client=可以編輯SMTP客戶端限制嗎？
@@ -144,17 +176,22 @@ acl_postfinger=可以檢查後綴配置嗎？
 acl_manual=可以編輯配置文件嗎？
 acl_dir=地圖文件的允許目錄
 acl_bcc=可以編輯密件抄送映射嗎？
+
 mail_move=搬去：
 mail_eexists=訊息已不存在！
+
 view_flush=沖洗
 view_body=訊息文字
 view_afile=附件名稱
 view_atype=附件類型
 view_asize=文件大小
+
 search_efield=您必須選擇搜索類型。
+
 match_headers=標頭匹配
 match_=-----------------
 match_!headers=標頭不匹配
+
 mailq_title=郵件隊列
 mailq_count=$1消息
 mailq_none=當前沒有任何郵件要排隊傳遞
@@ -183,15 +220,20 @@ mailq_active=活性
 mailq_deferred=遞延
 mailq_hold=保留選定
 mailq_unhold=取消選擇
+
 flushq_title=沖洗隊列
 flushq_desc=使用命令$1強制嘗試發送郵件。
+
 qview_title=排隊的消息
 qview_desc=來自文件$1
 qview_headers=郵件標題
 qview_attach=附件
+
 after_err=Postfix配置錯誤：$1
+
 searchq_title=隊列搜索結果
 searchq_none=找不到排隊的消息。
+
 header_title=標頭檢查
 header_ecannot=您無權編輯標題檢查
 header_eregexp=標頭檢查映射必須採用<tt>regexp：</tt> <i>filename</i>格式
@@ -210,15 +252,18 @@ header_reject=拒絕（帶有錯誤消息..）
 header_warn=記錄警告（帶有消息..）
 header_ename=無效的正則表達式-必須類似於/ something /
 header_return=標頭檢查
+
 body_title=身體檢查
 body_ecannot=您無權編輯身體檢查
 body_eregexp=正文檢查映射必須採用<tt>regexp：</tt> <i>filename</i>格式
 opts_body_checks=郵件正文檢查表
 body_return=身體檢查
+
 dependent_title=發件人相關的傳輸映射
 dependent_ecannot=您不允許編輯依賴於發件人的傳輸映射
 dependent_eregexp=發件人相關的傳輸映射必須採用<tt>regexp：</tt> <i>文件名</i>格式
 dependent_return=發件人相關的傳輸映射
+
 manual_title=編輯地圖文件
 manual_file=選擇要編輯的地圖文件：
 manual_change=更改
@@ -226,9 +271,11 @@ manual_editing=使用下面的文本框手動編輯$1中的映射。請注意，
 manual_err=保存地圖文件失敗
 manual_efile=無效的地圖文件名！
 manual_ecannot=您無權手動編輯地圖文件
+
 delq_titles=刪除訊息
 delq_rusure=您確定要刪除$1選定的排隊消息嗎？
 delq_confirm=刪除訊息
+
 master_title=服務器進程
 master_name=工藝名稱
 master_enabled=已啟用？
@@ -269,7 +316,9 @@ master_einet=只能為Internet進程指定要監聽的主機地址
 master_ecommand=缺少服務器進程命令
 master_ewakeup=缺少或無效的喚醒時間
 master_emaxprocs=最大進程數缺失或無效
+
 delete_err=刪除映射失敗
+
 cmanual_title=編輯配置文件
 cmanual_ecannot=您無權編輯Postfix配置文件
 cmanual_ok=編輯
@@ -277,10 +326,12 @@ cmanual_efile=所選文件不屬於Postfix配置
 cmanual_file=編輯配置文件：
 cmanual_edata=什麼都沒輸入！
 cmanual_err=保存配置文件失敗
+
 access_return=訪問地圖表
 edit_map_file=編輯地圖文件
 opts_reject_rbl_client=實時黑名單（RBL）查找
 opts_check_sender_access=檢查發件人訪問映射表
+
 log_misc=更改的常規選項
 log_opts=更改地址重寫和偽裝
 log_aliases=別名更改
@@ -288,6 +339,7 @@ log_canonical=更改規範映射選項
 log_virtual=更改的虛擬域選項
 log_bcc=更改的密件抄送地圖選項
 log_transport=更改了傳輸映射選項
+log_sni=更改證書映射選項
 log_dependent=更改了發件人相關的地址選項
 log_relocated=更改了重定位映射選項
 log_header=更改標題檢查選項
@@ -365,6 +417,7 @@ log_sender_dependent_default_transport_maps_modify=修改的發件人相關地�
 log_sender_dependent_default_transport_maps_delete=已刪除依賴於發件人的地址$1
 log_delete_sender_dependent_default_transport_mapss=刪除的$1發送者相關地址
 log_manual_sender_dependent_default_transport_mapss=在$1中手動編輯的依賴於發件人的地址
+
 sasl_title=SMTP身份驗證和加密
 opts_smtpd_sasl_auth_enable=需要SASL SMTP認證？
 opts_smtp_sasl_auth_enable=使用SASL SMTP身份驗證？
@@ -411,6 +464,7 @@ sasl_nologin=不需要
 sasl_userpass=使用密碼$2以$1登錄
 sasl_elogin=SMTP登錄丟失或無效（不允許使用空格或冒號）
 sasl_epass=無效的SMTP密碼（不允許使用空格）
+
 client_title=SMTP客戶端限制
 client_ecannot=您無權編輯SMTP客戶端限制
 client_restrict=客戶限制
@@ -420,6 +474,7 @@ client_other=其他限制：
 client_err=無法保存客戶端限制
 client_evalue=缺少限制值$1
 client_return=SMTP客戶端限制
+
 chooser_title=選擇地圖來源
 chooser_header=映射源$1
 chooser_none=沒有
@@ -475,6 +530,7 @@ chooser_elquery_filter=映射$1的查詢過濾器丟失
 chooser_elresult_attribute=映射$1的結果屬性名稱丟失或無效
 chooser_elbind_dn=映射$1的LDAP服務器缺少登錄名
 chooser_elbind_pw=映射$1的LDAP服務器缺少密碼
+
 mysql_ecfile=找不到MySQL配置文件$1
 mysql_ecfile2=在MySQL配置文件$1中找不到表
 mysql_edriver=無法加載數據庫驅動程序$1
@@ -486,6 +542,7 @@ mysql_eupdate=SQL更新失敗：$1
 mysql_elist=SQL查詢失敗：$1
 mysql_esource=找不到名為$1的MySQL源
 mysql_eneed=找不到MySQL配置參數$1。 Webmin需要它來確定要查詢的表和字段。
+
 ldap_ecfile=找不到LDAP配置文件$1
 ldap_eldapmod=與LDAP通信所需的Perl模塊$1未安裝或不可加載
 ldap_eldap=無法在端口$2上連接到LDAP服務器$1
@@ -496,6 +553,7 @@ ldap_edelete=LDAP刪除$1失敗：$2
 ldap_equery=LDAP搜索$1失敗：$2
 ldap_erename=LDAP重命名$1到$2失敗：$3
 ldap_emodify=LDAP修改$1失敗：$2
+
 bcc_title=密件抄送映射
 bcc_ecannot=您無權編輯BCC映射
 opts_sender_bcc_maps=發件人BCC映射查找表

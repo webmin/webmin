@@ -9,6 +9,7 @@ index_restart=Reinicia Webmin
 index_restartmsg=Fes clic sobre aquest botó per reiniciar el procés servidor de Webmin. Això pot ser necessari si has actualitzat Perl fa poc.
 index_refresh=Refresca els Mòduls
 index_refreshmsg=Recomprova tots els mòduls Webmin dels servidors instal·lats, i actualitza aquells que apareixen a la categoria de 'Mòduls no utilitzats'
+
 access_title=Control d'Accés IP
 access_desc=Amb aquest formulari, es pot configurar el servidor Webmin per a denegar o permetre l'accés només des de certes adreces. També s'hi poden introduir noms de hosts (com ara foo.bar.com) i xarxes IP (com ara  10.254.3.0 o 10.254.1.0/255.255.255.128 o 10.254.1.0/25 o 10.254.1.5-10.254.97.127). Hauries de limitar l'accés al servidor a adreces fiables, sobretot si és accessible des d'Internet. Altrament, qualsevol que endevini la teva contrasenya tindrà el control absolut del sistema.
 access_ip=Adreces IP permeses
@@ -33,6 +34,7 @@ access_ehost=No s'ha pogut trobar cap adreça per a '$1'
 access_eself=La teva adreça IP actual ($1) serà rebutjada
 access_always=Resol els noms de host a cada petició
 access_trust=Confia en les adreces IP remotes proporcionades per les proxys
+
 bind_title=Ports i Adreces
 bind_desc2=Aquest formulari es pot utilitzar per canviar el número de port que escolta Webmin, o fer que escolti només una adreça IP del sistema. També pots configurar-lo per acceptar connexions a múltiples ports, o escoltar diverses adreces IP. Nota - pot ser que el navegador t'obligui a registrar-te cada vegada que canviïs el port o l'adreça.
 bind_header=Adreces IP i ports
@@ -61,6 +63,7 @@ bind_eipv6=No es pot activar IPv6 a menys que s'instal·li el mòdul Perl $1
 bind_redirecting=S'està redireccionant al nou URL...
 bind_elsof=El nou port $1 ja està en ús per part d'un altre procés
 bind_eonsystem=L'adreça IP $1 no està activa en aquest sistema, així que no es pot utilitzar
+
 log_title=Registres
 log_desc=Webmin es pot configurar per escriure un registre d'impactes del servidor web, en el format estàndard CLF de fitxers de registre. Si el registre està activat, també pots triar si s'enregistren els noms de host o les adreces IP, i amb quina freqüència es neteja el fitxer de registre. Quan està activat, els registres s'escriuen al fitxer $1.
 log_desc2=Quan el registre està activat, Webmin també escriu un registre més detallat de les accions dels usuaris al fitxer $1. Aquest registre es pot visualitzar i analitzar amb el mòdul de Registre d'Accions per veure exactament què ha estat fent cada usuari de Webmin.
@@ -92,6 +95,7 @@ log_login=Inclou les entrades i sortides de Webmin al registre d'accions
 log_email=Envia les accions registrades via correu electrònic a
 log_emailnone=No ho enviïs
 log_inmodsemail=Envia un correu amb les accions de
+
 proxy_title=Servidors Proxy i Descàrregues
 proxy_desc=Si el host on s'està executant el Webmin està darrere d'alguna mena de tallafoc, pot ser necessari configurar l'ús del servidor proxy per accedir a llocs Web i FTP. Alguns mòduls, com ara els <tt>Paquets de Programari</tt>, utilitzaran aquestes proxys per descarregar fitxers o programes.
 proxy_header=Servidors proxy
@@ -134,6 +138,7 @@ proxy_return=als servidors de proxy i descàrregues
 proxy_tabproxy=Proxies
 proxy_tabdown=Descàrregues
 proxy_fallback=Prova a fer una petició directa si la proxy no va
+
 ui_title=Interfície d'Usuari
 ui_desc=Aquest formulari permet editar les opcions de la interfície d'usuari utilitzada per tots els mòduls. En introduir els colors, s'ha d'especificar cadascun amb el sistema estàndard RGB, on cada valor és un número hexadecimal entre 00 i ff.
 ui_header=Opcions d'interfície d'usuari
@@ -182,6 +187,7 @@ ui_dateformat_dd/mm/yyyy=dd/mm/aaaa (p. ex. 16/09/2001)
 ui_dateformat_mm/dd/yyyy=mm/dd/aaaa (p. ex. 09/16/2001)
 ui_dateformat_yyyy/mm/dd=aaaa/mm/dd (p. ex. 2001/09/16)
 ui_ehostnamedisplay=Hi falta el nom de host a mostrar o bé és invàlid
+
 mods_title=Mòduls Webmin
 mods_desc1=Es poden afegir mòduls de Webmin després de la instal·lació utilitzant el formulari de la dreta. Els mòduls es distribueixen típicament en fitxers <tt>.wbm</tt>, cadascun dels quals pot contenir un o més mòduls. Els mòduls es poden instal·lar també a partir de fitxers RPM, si el sistema operatiu ho suporta.
 mods_installsource=Instal·la a partir de
@@ -225,6 +231,7 @@ mods_tabinstall=Instal·la
 mods_tabclone=Clona
 mods_tabdelete=Suprimeix
 mods_tabexport=Exporta
+
 install_err1=No s'ha pogut instal·lar el mòdul des de $1
 install_efile=El fitxer no existeix
 install_err2=No s'ha pogut instal·lar el mòdul pujat
@@ -258,10 +265,12 @@ install_cat=Sota la categoria $1.
 install_eneither=El RPM no conté cap mòdul ni tema Webmin
 install_err4=No s'ha pogut instal·lar el mòdul estàndard
 install_emissing=El mòdul especificat no existeix
+
 clone_err=No s'ha pogut clonar el mòdul
 clone_elink=Ha fallat l'enllaç simbòlic: $1
 clone_ecopy=No s'ha pogut copiar la configuració: $1
 clone_desc=Clon de $1
+
 delete_err=No s'han pogut suprimir els mòduls
 delete_edep=No es pot suprimir el mòdul $1, ja que el mòdul $2 en depèn
 delete_desc1=$1 (Clon de $2)
@@ -272,6 +281,7 @@ delete_rusure2=Segur que vols suprimir el tema $2? S'esborraran $1 Kb de fitxers
 delete_rusure3=Segur que vols suprimir el(s) clon(s) del mòdul $2?
 delete_acls=Treu dels usuaris i reinicia els calors del control d'accés
 delete_enone=No has seleccionat cap mòdul
+
 os_title=Sistema Operatiu i Entorn
 os_desc3=Aquesta pàgina mostra el sistema operatiu detectat per Webmin en instal·lar-lo i els sistema detectat actualment. Si són diferents, pots triar d'actualitzar la informació del SO de Webmin, cosa que pot ser necessària si has fet una actualització recentment.
 os_desc2=També pots canviar el camí de recerca utilitzat per Webmin en executar programes, i el camí de les llibreries compartides que es passa a qualsevol programa.
@@ -294,6 +304,7 @@ os_eiversion=Hi falta la versió interna del sistema operatiu
 os_incorrect=Atenció - Actualment el sistema està executant $1 versió $2.
 os_fix=Actualitza el Sistema Operatiu Detectat
 os_usermin=Actualitza també el SO d'Usermin
+
 lang_title=Idioma
 lang_title2=Idioma de Webmin
 lang_lang=Mostra-ho en l'idioma
@@ -305,6 +316,7 @@ lang_chardef=Determinat per l'idioma
 lang_charover=Força el joc de caràcters
 lang_err=No s'ha pogut desar l'idioma
 lang_echarset=Hi falta el joc de caràcters o bé sembla invàlid
+
 ssl_title=Xifratge SSL
 ssl_essl=Sembla que el mòdul Net::SSLeay de Perl no està instal·lat al sistema. Per instal·lar la llibreria OpenSSL i Net::SSLeay, segueix <a href='$1'>aquestes instruccions</a> del lloc web de Webmin.
 ssl_cpan=Alternativament, pots fer que Webmin <a href='$1'>descarregui i instal·li</a> el mòdul Perl Net::SSLeay necessari per tu.
@@ -409,6 +421,7 @@ ssl_letsnotrenew=Només renovació automàtica
 ssl_staging=Servidor Let's Encrypt
 ssl_staging0=Real
 ssl_staging1=Staging (només proves)
+
 newkey_err=No s'ha pogut crear la clau SSL
 newkey_ecn=Hi falta el nom del servidor o bé és invàlid
 newkey_ecns=No has introduït cap nom de servidor
@@ -421,11 +434,13 @@ newkey_ok=La següent clau SSL d'Usermin s'ha generat amb èxit:
 newkey_esize=Hi falta la mida de la clau o bé és invàlida
 newkey_edays=Hi falta el nombre de dies abans de caducar o bé és incorrecte
 newkey_ecountry=El codi de país ha de tenir dues lletres
+
 newcsr_err=No s'ha pogut crear la CSR SSL
 newcsr_efile=Hi falta el nom del fitxer de CSR
 newcsr_title=Genera CSR
 newcsr_ok=S'ha generat correctament la següent petició de certificat SSL:
 newcsr_ok2=Aquesta CSR s'ha d'enviar a una autoritat signant, que retornarà un certificat signat. Aquest es pot instal·lar llavors amb la clau de més amunt utilitzant la pestanya <b>Puja de Certificat</b>.
+
 startpage_title=Opcions d'Indexació de Pàgina
 startpage_intro2=Aquesta pàgina permet controlar l'aparença del menú principal de Webmin. Pot ser que algunes opcions no siguin efectives quan s'utilitza el tema per defecte.
 startpage_tabs=Categoritza els mòduls
@@ -439,6 +454,7 @@ startpage_gotonone=&lt;Cap&gt;
 startpage_gotomodule=Després de l'entrada, ves sempre al mòdul
 startpage_webminup=Mostra les actualitzacions de Webmin a la pàgina d'Informació del Sistema
 startpage_moduleup=Mostra les actualitzacions de mòduls a la pàgina d'Informació del Sistema
+
 upgrade_title=Actualització de Webmin
 upgrade_desc=Aquest formulari permet actualitzar tota la instal·lació Webmin a una nova versió. Pots instal·lar-la des d'un fitxer local, un fitxer pujat, o des de la versió més recent de <a href=http://www.webmin.com/>www.webmin.com</a>. Igual que amb una actualització manual, es conservaran tots els valors de configuració i tots els mòduls de terceres parts.
 upgrade_descrpm=Aquest formulari permet actualitzar tota la instal·lació Webmin a una nova versió utilitzant l'opció d'actualització RPM. Pots instal·lar-la des d'un fitxer RPM local, un fitxer pujat, o des de la versió més recent de <a href=http://www.webmin.com/>www.webmin.com</a>. Igual que amb una actualització manual, es conservaran tots els valors de configuració i tots els mòduls de terceres parts.
@@ -503,10 +519,12 @@ upgrade_tabupdate=Actualitza els mòduls
 upgrade_tabsched=Actualització planificada
 upgrade_src=Actualitza Webmin a partir de
 upgrade_opts=Opcions d'actualització
+
 newmod_desc=Quan s'actualitza Webmin, tots els mòduls de la versió nova es posaran a disposició d'un o més usuaris. Aquest formulari permet establir els usuaris que podran accedir als nous mòduls. Aquesta configuració s'aplicarà quan s'actualitzi des de la línia d'ordres o des del formulari superior.
 newmod_header=Accessos del Nou Mòdul
 newmod_def=Comportament per defecte - dóna els nous mòduls a <tt>root</tt> o <tt>admin</tt>
 newmod_users=Dóna els nous mòduls a:
+
 update_desc1=Aquest formulari et permet actualitzar els mòduls de Webmin quer contenen errors o forats de seguretat des de la pàgina d'<a href=http://www.webmin.com/updates.html>Actualitzacions de Webmin</a> des d'una altra font. Això compararà els mòduls actualment instal·lats amb aquells disponibles per a actualització, i opcionalment descarregarà i instal·larà tots els mòduls desfasats.
 update_header1=Actualitza ara els mòduls
 update_header2=Actualitza els mòduls de forma planificada
@@ -532,6 +550,7 @@ update_enomodsig=No s'ha pogut descarregar el fitxer de signatura per al mòdul:
 update_ebadmodsig=La comprovació de la signatura del mòdul ha fallat: $1
 update_src=Actualitza els mòduls a partir de
 update_opts=Opcions d'actualització de mòduls
+
 ca_title=Autoritat Certificadora
 ca_old=Certificats existents
 ca_header1=Creació de nou certificat CA
@@ -563,6 +582,7 @@ ca_eminiserv=Els certificats client SSL estan suportats només amb miniserv.
 ca_eversion=La versió del mòdul Perl Net::SSLeay instal·lada al sistema no suporta certificats client SSL.
 ca_essleay=No s'ha trobat al sistema l'ordre d'administració SSL $1. Pot ser que hagis de canviar el camí a la configuració del mòdul d'Usuaris Webmin.
 ca_essl=La certificació SSL només es pot configurar quan el servidor web s'està executant en mode SSL.
+
 session_title=Autenticació
 session_desc1=Quan està activat, el temps límit de contrasenya protegeix el servidor Webmin d'atacs d'endevinació sistemàtica de contrasenyes, bo i afegint un retard entre intents fallits de connexió del mateix usuari, que augmenta progressivament.
 session_header=Opcions d'autenticació i sessió
@@ -625,10 +645,12 @@ session_sha512=Utilitza el xifratge SHA512
 session_emd5mod=No es pot utilitzar el xifratge MD5 perquè el mòdul Perl $1 no està instal·lat.
 session_esha512mod=No es pot utilitzar el xifratge SHA512 perquè el mòdul $1 de Perl no està instal·lat.
 session_blocklock=Bloqueja també els usuaris amb entrades fallides
+
 assignment_title=Reassignació de Mòduls
 assignment_header=Assignacions de categories de mòduls
 assignment_ok=Canvia les Categories
 assignment_desc=Aquest formulari permet configurar sota quina categoria es mostra cada mòdul a la pàgina índex de Webmin.
+
 categories_title=Edició de Categories
 categories_header=ID de categoria i descripcions
 categories_desc=Aquest formulari permet reanomenar les categories Webmin actuals i crear-ne de noves per assignar-hi mòduls. La part de dalt de la taula és per canviar les descripcions de les categories integrades, mentre que la part de baix és per afegir nous IDs i descripcions de categories.
@@ -641,6 +663,7 @@ categories_name=Descripció mostrada
 categories_lang=Edita les categories en l'idioma:
 categories_langok=Canvia
 categories_custom=Personalització
+
 log_access=S'ha canviat el control d'accés IP
 log_bind=S'ha canviat el port i l'adreça
 log_log=S'han canviat les opcions de registre
@@ -686,6 +709,7 @@ log_onedelete_webmincron=S'ha suprimit la funció planificada del mòdul $1
 log_letsencrypt=S'ha demanat un nou certificat SSL per part de Let's Encrypt
 log_letsencryptdns=S'ha creat el registre DNS Let's Encrypt DNS de $1
 log_letsencryptcleanup=S'ha eliminat el registre DNS Let's Encrypt de $1
+
 themes_title=Temes Webmin
 themes_desc=Temes controla l'aparença de la interfície d'usuari de Webmin, incloent-hi les icones, els colors, els fons i la disposició de les pàgines. La caixa de selecció de sota es pot utilitzar per triar un dels temes instal·lats al sistema.
 themes_sel=Tema actual:
@@ -701,6 +725,7 @@ themes_taboverlay=Canvia la capa
 themes_tabinstall=Instal·la un tema
 themes_tabdelete=Suprimeix temes
 themes_tabexport=Exporta temes
+
 themes_err1=No s'ha pogut instal·lar el tema de $1
 themes_efile=El fitxer no existeix
 themes_err2=No s'ha pogut instal·lar el tema pujat
@@ -726,9 +751,11 @@ themes_delok=Tema per suprimir:
 themes_return=a la llista de temes
 themes_err4=No s'ha pogut canviar la capa del tema
 themes_eoverlay=La cap seleccionada no és compatible amb el tema global actual
+
 themes_desc4=Els temes instal·lats es poden exportar com un fitxer wbt.gz utilitzant el formulari de sota. Llavors, el fitxer de tema es pot instal·lar en un altre sistema que executi Webmin.
 themes_exportmods=Temes a exportar
 themes_exportok=Exporta els Temes Seleccionats
+
 referers_title=Referenciadors Fiables
 referers_desc=Aquesta pàgina permet configurar el suport de comprovació del referenciador de Webmin, que s'utilitza per evitar enllaços malintencionats des d'altres llocs web per induir el navegador a fer coses perilloses amb Webmin. No obstant, si tens enllaços a Webmin des dels propis llocs web i no vols que te n'avisi, hauries d'afegir aquests llocs a la llista de sota.
 referers_list=Llocs Web fiables
@@ -737,6 +764,7 @@ referers_none2=ATENCIÓ: Això deixa el teu sistema obert a atacs XSS!
 referers_referer=Activa la verificació del referenciador
 referers_err=No s'han pogut desar els referenciadors
 referers_ehost='$1' no és un nom de host fiable vàlid
+
 update_err=No s'han pogut actualitzar els mòduls
 update_eurl=Hi falta l'URL d'actualització o bé no és vàlid
 update_title=Actualització de Mòduls
@@ -757,6 +785,7 @@ update_rv=S'estan comprovant els mòduls Webmin actualitzats des de $1
 update_eemail=Has d'introduir una adreça de correu si només vols veure que quedaria actualitzat.
 update_subject=Informe d'actualització de mòduls Webmin
 update_version=Hi ha disponible una nova versió de Webmin (la $1) per a descarregar. Les actualitzacions futures només apareixeran per a la darrera versió.
+
 anon_title=Accés Anònim a Mòdul
 anon_desc=Aquesta pàgina permet concedir accés a mòduls Webmin seleccionats sense que els clients es registrin. Per al camí de cada mòdul que introdueixis a sota (com ara <tt>/custom</tt> o <tt>/passwd</tt>), també has d'introduir el nom d'un usuari Webmin els permisos del qual s'utilitzaran per accedir al mòdul.
 anon_desc2=Has de tenir MOLT de compte donant accés anònim, ja que els controls insuficients d'IP o el donar accés a un mòdul equivocat pot permetre un atacant de prendre el teu sistema.
@@ -765,15 +794,19 @@ anon_user=Usuari Webmin
 anon_err=No s'ha pogut desar l'accés anònim
 anon_eurl='$1' no és un camí URL vàlid
 anon_euser=Hi falta l'usuari Webmin per al camí URL '$1' o bé és invàlid
+
 enogpg=GnuPG no està instal·lat
+
 standard_failed=No s'ha pogut descarregar la llista de mòduls: $1
 standard_header=Mòduls estàndard de Webmin
 standard_warn=Atenció - no estàs executant la darrera versió de Webmin $1, així que pot ser que aquests mòduls no es puguin instal·lar.
 standard_eurl=URL de mòduls estàndard invàlid
+
 third_failed=No s'ha pogut descarregar la llista de mòduls: $1
 third_header=Mòduls Webmin de Tercers
 third_eurl=URL de mòduls de tercers invàlid
 third_title=Selecció de Mòdul de Tercers
+
 lock_title=Bloqueig de Fitxers
 lock_desc=Per defecte, Webmin obtindrà un bloqueig sobre qualsevol fitxer que modifiqui per tal d'evitar la modificació concurrent per part de múltiples processos, cosa que podria dur a la corrupció del fitxer. Aquesta pàgina permet desactivar el bloqueig de fitxers de forma selectiva o total si això causa problemes.
 lock_header=Configuració del bloqueig de fitxers
@@ -784,6 +817,7 @@ lock_except=Bloqueja tots els fitxers i directoris excepte...
 lock_err=No s'ha pogut desar el bloqueig de fitxers
 lock_edir='$1' no és un camí absolut
 lock_edirs=No has introduït cap fitxer ni directori
+
 ipkey_title1=Creació de Clau SSL
 ipkey_title2=Edició de Clau SSL
 ipkey_header=Detalls de la clau SSL específica d'IP
@@ -792,6 +826,7 @@ ipkey_err=No s'ha pogut desar la clau SSL
 ipkey_eips=No has introduït cap adreça IP
 ipkey_eextracas=No has introduït cap fitxer de certificat addicional
 ipkey_eextraca=El fitxer de certificat addicional $1 no existeix
+
 descs_title=Títols de Mòduls
 descs_info=Aquesta pàgina permet especificar títols alternatius per als mòduls de Webmin per obviar les seves descripcions estàndard.
 descs_mod=Mòdul
@@ -801,11 +836,13 @@ descs_cdesc=Clona el títol
 descs_err=No s'han pogut desar els títols dels mòduls
 descs_edesc=Hi falta el títol del mòdul '$1'
 descs_etitle=Hi falta el títol del clon '$1'
+
 export_err=No s'han pogut exportar els mòduls
 export_ecmd=Hi falta l'ordre necessària $1
 export_efile=Hi falta el fitxer d'exportació o bé és invàlid
 export_done=S'ha exportat correctament els mòduls a $1.
 export_title=Exportació de Mòduls
+
 advanced_title=Opcions Avançades
 advanced_header=Opcions avançades i experimentals
 advanced_temp=Directori de fitxers temporals
@@ -848,10 +885,13 @@ advanced_redir0=Protocol, host, port i camí
 advanced_listdir=Llista els directoris sense fitxer índex
 advanced_headers=Capçaleres HTTP extra
 advanced_eheader=Les capçaleres han d'estar formatades com a <tt>Header: Valor</tt>
+
 syslog_errorlog=Registre d'errors de Webmin
+
 clear_title=Buida el Cau de Descàrregues
 clear_done=El cau de Webmin que cont $1 fitxers de $2 URLs s'ha buidat amb èxit.
 clear_none=Actualment no hi ha cap URL al cau de descàrregues de Webmin.
+
 savekey_err=No s'ha pogut desar la nova clau
 savekey_ekey=Hi falta la clau en format PEM o bé és invàlida
 savekey_ecert=Hi falta el certificat en format PEM o bé és invàlid
@@ -861,6 +901,7 @@ savekey_title=Càrrega de Clau Existent
 savekey_done2=La clau SSL proporcionada s'ha desat a $1, i el certificat a $2.
 savekey_done=La clau i el certificat proporcionats s'han desat al fitxer $1.
 savekey_done3=El certificat encadenat SSL proporcionat s'ha desat al fitxer $1.
+
 cache_title=URLs en el Cau
 cache_search=Busca URLs que continguin:
 cache_ok=Busca
@@ -873,8 +914,10 @@ cache_delete=Elimina els seleccionats del cau
 cache_err=No s'han pogut eliminar els URLs del cau
 cache_enone=No n'has seleccionat cap
 cache_efile=Nom de fitxer invàlid
+
 restart_title=Reinici de Webmin
 restart_done=El procés servidor de Webmin s'està reiniciant ara - si et plau, espera uns segons abans de continuar.
+
 mobile_title=Opcions de Dispositius Mòbils
 mobile_header=Opcions de navegadors mòbils
 mobile_theme=Tema dels navegadors mòbils
@@ -883,6 +926,7 @@ mobile_nosession=Força l'ús d'autenticació HTTP
 mobile_agents=Agents d'usuari addicionals per a navegadors mòbils
 mobile_err=No s'han pogut desar les opcions de dispositius mòbils
 mobile_prefixes=Prefixos de noms de host d'URLs per a navegadors mòbils
+
 blocked_title=Hosts i Usuaris Bloquejats
 blocked_type=Tipus
 blocked_who=Nom de host o usuari
@@ -894,9 +938,11 @@ blocked_host=Host client
 blocked_clear=Esborra Tots els Bloqueigs
 blocked_cleardesc=Fes clic sobre aquest botó per esborrar tots els bloqueigs actuals de hosts i usuaris, reiniciant el procés servidor de Webmin.
 blocked_restarting=El procés servidor de Webmin s'està reiniciant per esborrar els bloqueigs de hosts i usuaris - espera uns segons abans de continuar, si et plau.
+
 refreshmods_title=Refresc de Mòduls
 refreshmods_installed=S'estan comprovant els mòduls de Webmin utilitzables...
 refeshmods_counts=...se n'han trobat $2 amb aplicacions instal·lades, $1 no instal·lats.
+
 debug_title=Fitxer de Registre de Depuració
 debug_header=Opcions del fitxer de registre de depuració de Webmin
 debug_enabled=Registre de depuració activat
@@ -924,6 +970,7 @@ debug_cmd=Línia d'ordres
 debug_cron=Treballs en segon pla
 debug_inmods=Mòduls per als quals s'han d'escriure registres de depuració
 debug_emodules=No has seleccionat cap mòdul per depurar
+
 notif_passexpired=La teva contrasenya de Webmin ha caducat! Se t'obligarà a canviar-la a la propera connexió.
 notif_passchange=La teva contrasenya de Webmin es va canviar per darrer cop el $1, i cal tornar-la a canviar abans de $2 dies.
 notif_passlock=La teva contrasenya de Webmin es va canviar per darrer cop el $1, i el teu compte quedarà bloquejat d'aquí a $2 dies si no la canvies.
@@ -939,6 +986,7 @@ notify_updatedesc=Arranja el problema
 notif_updateok=Instal·la Ara les Actualitzacions
 notif_reboot=Les actualitzacions recents de paquets (com ara una nova versió del kernel) requereixen reengegar per a aplicar-se completament.
 notif_rebootok=Reengega Ara
+
 status_title=Recol·lecció d'Estats en Segon Pla
 status_header=Configuració del treball de recol·lecció d'estats
 status_interval=Recol·lecta l'estat del sistema en segon pla
@@ -950,6 +998,7 @@ status_temp=Recol·lecta les temperatures de les unitats
 status_units=Unitats de les temperatures
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
+
 sendmail_title=Enviament de Correu
 sendmail_desc=Aquesta pàgina controla la forma d'enviar correus de Webmin, com ara quan es fan còpies planificades o monitorització en segon pla. També afecta el correu enviat utilitzant el mòdul Lectura del Correu d'Usuaris
 sendmail_header=Opcions d'enviament de correu
@@ -982,12 +1031,14 @@ sendmail_subject=Assumpte del missatge
 sendmail_body=Contingut del missatge
 sendmail_desc2=Aquest formulari es pot utilitzar per enviar un missatge de prova amb els paràmetres de sobre, per assegurar-se que el correu s'està lliurant correctament.
 sendmail_send=Envia el Missatge
+
 testmail_title=Tramesa de Missatge de Prova
 testmail_err=No s'ha pogut enviar el missatge
 testmail_eto=No has introduït cap adreça de destí
 testmail_sending=S'està enviant el missatge de $1 a $2...
 testmail_done=...s'ha enviat el missatge. Comprova la bústia de destí per assegurar que el missatge ha estat realment rebut.
 testmail_failed=...la tramesa ha fallat: $1
+
 web_title=Opcions del Servidor Web
 web_header=Opcions del servidor web integrat de Webmin
 web_expires=Temps de cau de la part de client per a fitxers estàtics
@@ -999,6 +1050,7 @@ web_expirespaths=Temps de cau de la part de client basat en el camí de l'URL
 web_expirespath=Expressió regular del camí
 web_expirestime=Temps de cau en segons
 web_eexpires2=Hi falta el temps de cau de la part de client a la fila $1 o bé no és numèric
+
 webmincron_title=Funcions Planificades Webmin
 webmincron_emodule=El mòdul de Treballs Cron de Webmin no està instal·lat!
 webmincron_module=Mòdul Webmin
@@ -1022,6 +1074,7 @@ webmincron_when1=Hores específiques
 webmincron_secs=segons
 webmincron_err=No s'ha pogut desar la funció planificada
 webmincron_einterval=L'interval ha de ser un nombre de segons més gran que zero
+
 twofactor_title=Autenticació de Dos Factors
 twofactor_header=Opcions de l'autenticació de dos factors
 twofactor_provider=Proveïdor de l'autenticació
@@ -1060,6 +1113,7 @@ twofactor_secret1=Generada aleatòriament
 twofactor_secret0=Utilitza una clau de 16 caràcters
 twofactor_esecret=La clau secreta ha de tenir exactament 16 caràcters de llarg i ha de contenir només lletres i números
 twofactor_esession=L'autenticació de dos factors no es pot utilitzar si l'autenticació basada en sessió no està activa
+
 letsencrypt_title=Petició de Certificat Let's Encrypt
 letsencrypt_err=No s'ha pogut demanar el certificat
 letsencrypt_ecmds=No s'ha trobat al sistema l'ordre client de Let's Encrypt <tt>letsencrypt-auto</tt> ni l'ordre <tt>python</tt>
@@ -1091,4 +1145,5 @@ letsencrypt_echain2=El certificat encadenat descarregat des de $1 està buit
 letsencrypt_ecsr=No s'ha pogut generar la petició CSR: $1
 letsencrypt_ekeygen=No s'ha pogut generar la clau privada: $1
 letsencrypt_enative=S'ha utilitzat anteriorment el client nadiu de Let's Encrypt (certbot) en aquest sistema, i s'ha de seguir utilitzant per a totes les peticions futures de certificats
+
 announce_hide=Amaga Aquest Anunci

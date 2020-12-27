@@ -17,6 +17,7 @@ index_tdesc=Description
 index_tucount=Utilisateurs
 index_tgcount=Groupes
 index_ttype=Type d'OS
+
 add_title=Ajout de serveurs
 add_msg=Ajout de $1 en cours...
 add_gmsg=Ajout de serveurs dans le groupe $1 en cours...
@@ -26,6 +27,7 @@ add_echeck=Le serveur $1 n'a pas le module Utilisateurs et groupes
 add_epft=Le serveur $1 n'utilise pas le même format de fichiers utilisateur que cet hôte.
 add_egft=Le serveur $1 n'utilise pas le même format de fichiers groupe que cet hôte.
 add_ok=Ajouté $1 avec $2 utilisateurs et $3 groupes.
+
 host_title=Serveur géré
 host_header=Détails du serveur de logiciels géré
 host_name=Nom de l'hôte
@@ -34,8 +36,7 @@ host_delete=Supprimer de la liste gérée
 host_refresh=Rafraîchir les utilisateurs et les groupes
 host_users=Nombre d'utilisateurs
 host_groups=Nombre de groupes
-host_ulist=Utilisateurs sur le serveur
-host_glist=Groupes sur le  serveur
+
 host_return=aux détails du serveur
 refresh_title=Rafraîchissement des utilisateurs et des groupes
 refresh_header=Nouvelle demande des listes des utilisateurs et des groupes pour tous les serveurs en cours...
@@ -47,6 +48,7 @@ refresh_gdel=supprimer $1 groupes
 refresh_done=... Effectué
 refresh_del=Supprimé $1 de la liste des serveurs
 refresh_failed=Impossible de rafraîchir $1 : $2
+
 uedit_host=Détails de $1
 uedit_leave=Ne pas changer
 uedit_set=Définir à
@@ -64,6 +66,7 @@ uedit_servers=Serveur(s) à créer sur
 uedit_all=&lt;Tous les hôtes&gt;
 uedit_donthave=&lt;Hôtes qui ne l'ont pas&gt;
 uedit_group=Membres de $1
+
 usave_einuse=Un utilisateur du même nom existe déjà sur $1
 usave_esecgid=Le groupe secondaire $1 n'existe pas
 usave_con=Création sur $1 en cours...
@@ -86,16 +89,20 @@ usave_header=Création de l'utilisateur $1 sur tous les hôtes en cours...
 usave_header5=Création de l'utilisateur $1 sur $2 ...
 usave_header4=Création de l'utilisateur $1 sur les membres du groupe $2 en cours...
 usave_header3=Création de l'utilisateur $1 sur les hôtes qui ne l'ont pas en cours...
+
 search_hosts=Hôtes
+
 udel_on=Suppression de $1 en cours...
 udel_servs=Supprimer le répertoire personnel s'il existe sur
 udel_others=Supprimer l'utilisateur dans les autres modules ?
 udel_dothers=Suppression dans les autres modules en cours...
 udel_gone=L'utilisateur n'existe plus.
 udel_failed=Impossible de supprimer l'utilisateur : $1
+
 gdel_on=Suppression de $1 en cours...
 gdel_gone=L'utilisateur n'existe plus.
 gdel_failed=Impossible de supprimer le groupe : $1
+
 gsave_create=Ajout d'un élément du fichier de groupes en cours...
 gsave_con=Création sur $1 en cours...
 gsave_euser=L'utilisateur $1 n'existe plus
@@ -107,10 +114,12 @@ gsave_nosync=La synchronisation du groupe de l'autre module n'est pas prise en c
 gsave_header=Création du groupe $1 sur tous les hôtes en cours...
 gsave_header4=Création du groupe $1 sur les membres du groupe $2 en cours...
 gsave_header3=Création du groupe $1 sur les hôtes qui ne l'ont pas en cours...
+
 gedit_host=Détails de $1
 gedit_add=Ajouter des utilisateurs
 gedit_del=Supprimer des utilisateurs
 gedit_donthave=&lt;Hôtes qui ne l'ont pas&gt;
+
 sync_title=Synchronisation des serveurs
 sync_desc=Ce formulaire vous permet de créer des utilisateurs et des groupes sur les serveurs qui ne les ont pas actuellement, de façon à synchroniser leurs comptes sur tous les serveurs de votre cluster.
 sync_hosts=Serveurs à synchroniser
@@ -138,6 +147,7 @@ sync_test=Afficher seulement ce qui devrait être effectué ?
 sync_makehome=Créer les répertoires personnels ?
 sync_copy=Copier les fichiers dans le répertoire personnel ?
 sync_others=Créer l'utilisateur dans les autres modules ?
+
 log_create_user=Créé l'utilisateur $1
 log_delete_user=Supprimé l'utilisateur $1
 log_modify_user=Modifié l'utilisateur $1

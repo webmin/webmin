@@ -25,12 +25,15 @@ index_nomod=警告:您的系統上沒有安裝Perl模組 $1，所以Webmin無法
 index_nomods=警告:您的系統上沒有安裝Perl模組 $1和$2，所以Webmin無法順利的連線到您的MySQL資料庫，<a href='$3'>按這兒</a>來安裝。
 index_mysqlver=指令 <tt>$1</tt> 傳回 :
 index_nodbs=您無法連線到任何的MySQL資料庫
+
 login_err=登入失敗
 login_ecannot=您不被允許組態這個資料庫登入
 login_elogin=遺失的管理者登入
 login_epass=錯誤的管理者名稱或密碼
+
 stop_err=無法停止資料庫
 start_err=無法啟動資料庫
+
 dbase_title=編輯資料庫
 dbase_tables=資料表
 dbase_add=建立新資料表
@@ -43,12 +46,14 @@ dbase_return=資料表列表
 dbase_ecannot=您不被允許編輯這個資料庫
 dbase_rows=Rows
 dbase_cols=欄位
+
 ddrop_err=無法丟棄資料庫
 ddrop_title=丟棄資料庫
 ddrop_rusure=您確定要丟棄資料庫 $1 嗎? $2 個資料表包含 $3 筆資料都會被刪除.
 ddrop_mysql=因為這是管理資料庫, 丟棄它將會使 MySQL 伺服器無法使用!
 ddrop_ok=確定丟棄資料庫
 ddrop_empty=刪除所有表格
+
 table_title=編輯資料表
 table_title2=建立資料表
 table_header=資料表 $1 在資料庫 $2
@@ -93,6 +98,7 @@ tdrop_err=丟棄資料表失敗
 tdrop_title=丟棄資料表
 tdrop_rusure=您確定要丟棄在資料庫 $2 中的資料表 $1 嗎? $3 筆資料將會被刪除.
 tdrop_ok=確定丟棄資料表
+
 field_title1=增加欄位
 field_title2=變更欄位
 field_in=在資料表 $1 與資料庫 $2
@@ -120,6 +126,7 @@ field_esize='$1' 不是一個有效的欄位大小
 field_eenum=沒有輸入列舉的數值
 field_efield='$1' 不是一個有效的欄位名稱
 field_ekey=允許空欄位不能為主鍵
+
 view_title=資料表資料
 view_pos=列 $1 到 $2 共 $3
 view_none=這個資料表沒有包含資料
@@ -143,6 +150,7 @@ view_jump=跳至列 :
 view_download=下載中..
 view_keep=不更變
 view_set=設定檔案內容..
+
 users_title=使用者權限
 users_user=使用者名稱
 users_host=主機
@@ -161,6 +169,7 @@ users_sync_privs=同意新使用者
 users_sync_host=隨主機建立新使用者
 users_sync_def=所有主機
 users_sync_sel=特定主機
+
 user_title1=建立使用者
 user_title2=編輯使用者
 user_header=MySQL 使用者詳細資料
@@ -176,6 +185,7 @@ user_perms=權限
 user_err=無法儲存使用者
 user_euser=遺失或錯誤的使用者
 user_ehost=遺失或錯誤的允許主機
+
 dbs_title=資料庫權限
 dbs_db=資料庫
 dbs_user=使用者名稱
@@ -189,6 +199,7 @@ dbs_add=建立新資料庫權限
 dbs_all=全部
 dbs_none=無
 dbs_return=資料庫權限
+
 db_title1=建立資料庫權限
 db_title2=編輯資料庫權限
 db_header=資料庫權限選項
@@ -203,6 +214,7 @@ db_err=無法儲存資料庫權限
 db_euser=遺失或錯誤的使用者
 db_ehost=遺失或錯誤的主機名稱
 db_edb=遺失或錯誤的資料庫名稱
+
 hosts_title=主機權限
 hosts_db=資料庫
 hosts_host=主機
@@ -212,6 +224,7 @@ hosts_all=全部
 hosts_none=無
 hosts_add=建立主機權限
 hosts_empty=沒有定義主機權限
+
 host_title1=建立主機權限
 host_title2=編輯主機權限
 host_header=主機權限選項
@@ -219,6 +232,7 @@ host_db=資料庫
 host_any=任何
 host_host=主機
 host_perms=權限
+
 newdb_title=建立資料庫
 newdb_header=新資料庫選項
 newdb_db=資料庫名稱
@@ -229,6 +243,7 @@ newdb_str=與下列欄位
 newdb_err=無法建立資料庫
 newdb_edb=遺失或錯誤的資料庫名稱
 newdb_ecannot=您不被允許建立資料庫
+
 exec_title=執行 SQL 查詢
 exec_header=輸入 SQL 指令以執行在資料庫 $1 上...
 exec_old=或選擇先前的SQL指令:
@@ -252,6 +267,7 @@ exec_header4=此檔案必須包含一個資料庫每行紀錄,和用Tab分隔的
 exec_delete=先刪除表格資料?
 exec_filename=從檔案名稱
 exec_ignore=忽略重複列?
+
 tprivs_title=資料表權限
 tprivs_table=資料表
 tprivs_db=資料庫
@@ -265,6 +281,7 @@ tprivs_add=增加新的權限到資料庫:
 tprivs_norows=沒有定義資料表權限
 tprivs_return=資料表權限
 tprivs_none=無
+
 tpriv_title1=建立資料表權限
 tpriv_title2=編輯資料表權限
 tpriv_header=資料表權限選項
@@ -280,6 +297,7 @@ tpriv_err=無法儲存資料表權限
 tpriv_etable=沒有選擇資料表
 tpriv_euser=遺失或錯誤的使用者名稱
 tpriv_ehost=遺失或錯誤的主機
+
 cprivs_title=欄位權限
 cprivs_field=欄位
 cprivs_table=資料表
@@ -293,6 +311,7 @@ cprivs_add=增加新的權限到資料庫與資料表:
 cprivs_norows=沒有定義欄位權限
 cprivs_return=欄位權限
 cprivs_none=無
+
 cpriv_title1=建立欄位權限
 cpriv_title2=編輯欄位權限
 cpriv_header=欄位權限選項
@@ -308,11 +327,13 @@ cpriv_err=無法儲存欄位權限
 cpriv_etable=沒有選擇欄位
 cpriv_euser=遺失或錯誤的使用者名稱
 cpriv_ehost=遺失或錯誤的主機
+
 esql=SQL $1 失敗: $2
 eparse=因為資料庫原本資料，Webmin無法了解指令$1匯出語法，您必須安裝 $2 和 $3 Perl 模組來解決此問題。
 edenied=您無法連結此MySQL資料庫
 perms_ecannot=您不被允許編輯權限
 perms_edb=您只允許編輯您自己的資料庫
+
 acl_dbs=這個使用者可以管理的資料庫
 acl_dall=所有資料庫
 acl_dsel=選取..
@@ -329,12 +350,14 @@ acl_user=使用者名稱
 acl_pass=密碼
 acl_edonly=只可以編輯表格資料?
 acl_bnone=不允許備份
+
 log_start=啟動MySQL伺服器
 log_stop=停出MySQL伺服器
 log_db_create=建立資料庫$1
 log_db_delete=丟棄資料庫$1
 log_table_create=在資料庫$2建立表格 $1
 log_table_delete=資料庫$2丟棄表格 $1
+
 log_field_create=在資料庫$3新增欄位$1 $4 到 $2
 log_field_modify=在資料庫$3內 $2修改欄位$1 $4
 log_field_delete=在資料庫$3從$2刪除欄位$1
@@ -372,6 +395,7 @@ log_execupload=從上傳檔案執行SQL指令
 log_execfile=從檔案$1執行SQL指令
 log_importupload=從上傳檔案匯入資料
 log_importfile=從檔案$1匯入資料
+
 backup_title=備份資料庫
 backup_edump=在您的系統上找不到MySQL備份程式 $1 ，也許您的<a href='$2'>模組組態</a>不正確。
 backup_desc=此表單可以讓您備份資料庫$1成SQL格式檔案， 要回存備份，您可以使用此檔案內的指令來執行SQL指令。
@@ -398,6 +422,7 @@ backup_ucron=資料庫更新排定時間備份路徑、選項和時間
 backup_ncron=備份後執行指令
 backup_before=備份前執行指令
 backup_after=備份後執行指令
+
 import_title=匯入資料
 import_uploadout=從上傳檔案匯入資料中..
 import_fileout=從檔案$1匯入資料中..

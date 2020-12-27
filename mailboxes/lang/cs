@@ -16,6 +16,7 @@ index_eperl=Perlový podul $1 potřebný pro vybraný mód ověření SMTP není
 index_file=Čtení pošty ze souboru:
 index_nousers=Žádní uživatelé nenalezeni!
 index_nousersmail=V e-mailu nebyli nalezeni žádní uživatelé.
+
 mail_title=Email uživatele
 mail_from=Od
 mail_date=Datum
@@ -69,6 +70,7 @@ mail_fromsrch=Stejný odesilatel ..
 mail_subsrch=Stejný předmět..
 mail_tosrch=Stejný říjemce..
 mail_unknown=Neznámí
+
 mail_sign=Označit pomocí GnuPG klíče:
 mail_nosign=&lt;Neoznačit&gt;
 mail_crypt=GnuPG zašifrovat pro:
@@ -102,6 +104,7 @@ mail_esystem=Vyskytla se chyba dotykající se poštovního systému  : $1. Tato
 mail_selread=Označit jako přečtené.
 mail_selunread=Označit jako nepřečtené.
 mail_selspecial=Označit jako speciální.
+
 view_title=Čtení mailu
 view_desc=Zpráva $1 v $2
 view_desc2=Zpráva $1 pro uživatele $2
@@ -142,6 +145,7 @@ view_sub=Přiložený mail
 view_sub2=Přiložit e-mail z <i>$1</i>
 view_egone=Tato zpráva již neexistuje
 view_eugone=Tento uzivatel neexistuje
+
 view_gnupg=Ověření GnuPG podpisu
 view_gnupg_0=Podpis od $1 je platný.
 view_gnupg_1=Podpis od $1 je platný, ale důvěryhodný řetězec nemůže být použit.
@@ -178,7 +182,9 @@ view_images=Zobrazit obrázky
 view_raw=Zobrazit zdrojový kód zprávy
 view_aall=Uložit všechny přílohy jako ZIP.
 view_aslideshow=Zobryzit všechny obrázky.
+
 compose_title=Sepsání zprávy
+
 reply_title=Odpověď na zprávu
 forward_title=Přeposlání zprávy
 enew_title=Úprava zprávy
@@ -194,9 +200,11 @@ reply_errc=Chyba při kopírování pošty
 reply_errm=Chyba při přesouvání pošty
 reply_return=tvorba pošty
 reply_efwdnone=Zádná z přeposlaných zpráv neexistuje
+
 reply_spell=Zkontrolovat pravopis?
 reply_draft=Uložit jako Koncept
 reply_save=Uložit a upravit
+
 send_err=Chyba při odeslání pošty
 send_eto=Chybějící Komu adresa
 send_efrom=Chybějící Od adresa
@@ -213,6 +221,7 @@ send_eperms2=Nemáte oprávnění odesílat soubor $1
 send_epath=Sendmail spouštěč $1 neexistuje.
 send_efile=Chyba při čtení přílohy $1 : $2
 send_done=.. hotovo
+
 send_epass=Nemůžete podepsat zprávu, protože váš podpis není doposud nastaven v GnuPG modulu.
 send_esign=Chyba při podpisu zprávy : $1
 send_ekey=Nelze nalézt klíč pro email adresu $1
@@ -224,6 +233,7 @@ send_espell=Ve zprávě byly nalezeny následující překlepy ..
 send_draft=Mail adresátu $1 byl uložen do Konceptů.
 send_drafting=Ukládám poštu pro $1 do složky koncepty
 send_eattachsize=Příloha mailu přesahuje maximální povolenou velikost $1 bytů
+
 delete_title=Mazání pošty
 delete_rusure=Skutečně chcete smazat $1 označených(é) zpráv(y) z $2? Tato činnost vyžaduje delší čas v případě, že se jedná o rozsáhlejší maily. Dokud nebude mazání ukončeno, nelze provádět další operace.
 delete_rusure2=Skutečně chcete smazat tuto zprávu z $1? Tato činnost vyžaduje delší čas v případě, že se jedná o rozsáhlejší maily. Dokud nebude mazání ukončeno, nelze provádět další operace.
@@ -246,6 +256,7 @@ delete_nobutton=Nebylo klepnuto na žádné tlačítko
 delete_ereport=Chyba v nahlášení Spemu : $1
 delete_errc=Chyba při kopírování pošty
 delete_errm=Chyba při přesouvání pošty
+
 confirm_title=Potvrzení smazání
 confirm_warn=Skutečně chcete smazat $1 označených(é) zpráv(y)?
 confirm_warnf=Jste si jití vymazáním všech $1 označených zpráv ze složky <b>$2</b>?
@@ -255,6 +266,7 @@ confirm_warn4=Dokud nebude mazání ukončeno, nelze provádět další operace.
 confirm_ok=Vymazat
 confirm_warnall=Skutečně chcete smazat všechny zprávy z této složky?
 confirm_warnallf=Jste si jití vymazáním všech zpráv ze složky <b>$1</b>?
+
 search_title=Výsledky hledání
 search_ecannot=Nemáte oprávnění prohledávat email tohoto uživatele
 search_ematch=Musíte zapsat text, který se má nalézt.
@@ -281,16 +293,19 @@ search_nolatest=Vše ve složce
 search_latestnum=Pouze poslední
 search_elatest=Chybějící nebo nevhodný počet zpráv k prohledání
 search_withstatus=, se stavem $1
+
 folder_inbox=Doručená pošta
 folder_sent=Odesláné pošta
 folder_drafts=Koncepty
 folder_trash=Koš
+
 detach_err=Chyba při uložení souboru
 detach_edir=Nebyl vložen žádný soubor nebo adresář pro uložení
 detach_eopen=Chyba při otevřená $1 : $2
 detach_ewrite=Chyba při zápisu do $1 : $2
 detach_title=Uložit soubor
 detach_ok=Zapsat přílohu do server-side souboru $1 ($2).
+
 sform_title=Rozšířené hledání
 sform_header=Sozšířené požnosti prohledání e-mailu
 sform_andmode=Mód kritérií
@@ -315,6 +330,7 @@ sform_headers=jakákoliv hlavička
 sform_allmsg=celá zpráva
 sform_size=velikost zprávy
 sform_return=formulář rozšířeného hledání
+
 find_enone=Vašemu hledání neodpovídají žádní uživatelé
 find_title=Výsledky hledání
 find_results=Uživatelé, kteří odpovídají hledání pro $1 ..
@@ -327,6 +343,7 @@ find_incount=E-maily
 find_sentcount=Odeslat
 find_fcount=Složky
 find_in=$1 v $2
+
 acl_none=Nic
 acl_same=Uživatel se stejným jménem
 acl_all=Všichni
@@ -352,12 +369,15 @@ acl_usersu=S UID v rozsahu
 acl_sec=Přidat vedlejší skupinu?
 acl_dir=V adresáři nelze přečíst soubor s poštou
 acl_dirauto=Rozhodnuto automaticky (kdykoliv jsou všichni uživatelé zřejmí, nikdy jinak)
+
 log_delmail=Smazáno(y) $1 zpráv(y) z $2
 log_movemail=Přesunuto(y) $1 zpráv(y) z $2 do $3
 log_copymail=Zkopírováno(y) $1 zpráv(y) z $2 do $3
 log_send=Odeslán mail adresátu $1
 log_read=Číst zprávu pro $1
+
 emodified=Tato složka byla změněna od poslední prohlídky! Vraďte se na <a href='$1'>seznam pošty</a> a zkuste znovu.
+
 razor_title=Ohlašuji jako Spem
 razor_title2=Ohlašuji jako Ham
 razor_report=Ohlašuji tuto zprávu do Razoru a ostatních SpamAssassin (spem-blokujících) databází ..
@@ -367,14 +387,18 @@ razor_done=.. hotovo
 razor_err=.. selhal! Podívejte se na chybovou zprávu pro zjištění důvodu selhání.
 razor_moved=.. hotovo, a přesunuto do složky $1.
 razor_deleted=.. dokončeno, zprávy byly také smazány.
+
 ham_title=Ohlašuji jako Ham
 ham_report=Ohlašuji tuto zprávu jako nespemovou do Razoru a ostatních SpamAssassin databází ..
+
 black_title=Popřený uživatel
 black_done=Přidat e-mail adresu $1 do seznamu zakázaných adres SpamAssassinu
 black_already=E-mailové adresa $1 je již v seznamu zakázaných adres SpamAssassinu
+
 white_title=Povolení odesílatelé
 white_done=Přidat e-mailovou adresu $1 do seznamu povolených adres SpamAssassinu
 white_already=E-mailová adresa $1 již existuje v seznamu povolených adres SpamAssassinu
+
 ldap_emod=Chybějící Perl modul $1 potřebný pro připojení k LDAP
 ldap_econn=Chyba při připojení k LDAP serveru $1 na portu $2
 ldap_elogin=Chyba propojení k LDAP serveru  $1 jako $2 : $3
@@ -382,9 +406,11 @@ ldap_ehost=LDAP server není nastaven v configuraci modulu
 ldap_eport=Chybný port LDAP serveru nastavený v configuraci modulu
 ldap_euser=LDAP přihlášení není nastaveno v configuraci modulu
 ldap_ebase=Základní DN pro LDAP není nastaven v configuraci modulu
+
 delall_title=Vymazat všechnu poštu
 delall_rusure=Jste si jití vymazáním všech e-mailú z $1? $2 zpráv celkem $3 bude nenávratně smazáno.
 delall_ok=Vymazat
+
 slide_title=Přiložit obrázek
 slide_prev=Předchozí
 slide_next=Další

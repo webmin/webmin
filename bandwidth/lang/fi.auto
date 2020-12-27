@@ -57,20 +57,27 @@ index_rotate=Päivitä tilastot
 index_rotatedesc=Napsauta tätä painiketta, kun haluat käsitellä kaiken kirjautuneen verkkoliikenteen nykyiseen aikaan saakka, jolloin se on heti käytettävissä raportointia varten.
 index_eiptables=Varoitus - IPtables -määrityksessäsi on virhe: $1. Kaistanleveyden valvonnan asettaminen tyhjentää kaikki palomuurisäännöt.
 index_return=raporttilomake
+
 log_setup=Asenna kaistanleveyden valvonta käyttöliittymässä $1 
 log_turnoff=Kaistanleveyden valvonta poistettu käytöstä
 log_rotate=Päivitetyt tilastotiedot
+
 acl_setup=Voiko seurannan asentaa ja poistaa sen käytöstä?
+
 turnoff_ecannot=Et voi poistaa valvontaa käytöstä
+
 setup_ecannot=Et voi ottaa valvontaa käyttöön
 setup_eiface=Puuttuva tai virheellinen käyttöliittymän nimi
 setup_ezone=Shorewall-vyöhykettä ei löytynyt valitulle käyttöliittymälle
+
 system_firewall=iptables
 system_ipfw=IPFW
 system_ipfilter=ipfilter
 system_shorewall=Shorewallia
+
 syslog_syslog=syslog
 syslog_syslog-ng=Syslog-NG
+
 rotate_title=Päivitetään tilastoja
 rotate_doing=Lokitun verkkoliikenteen käsittely.
 rotate_done=.. valmis.

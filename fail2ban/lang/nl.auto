@@ -12,10 +12,12 @@ index_restart=Start Fail2Ban Server opnieuw
 index_restartdesc=Klik op deze knop om de huidige configuratie toe te passen door de Fail2Ban-server opnieuw te starten.
 index_return=module-index
 index_header=Fail2Ban-module
+
 check_edir=De configuratiemap $1 bestaat niet
 check_econf=Het configuratiebestand $2 in $1 bestaat niet
 check_eclient=De clientopdracht $1 is niet gevonden
 check_eserver=De serveropdracht $1 is niet gevonden
+
 filters_title=Logfilters
 filters_name=Filternaam
 filters_re=Reguliere expressie
@@ -25,6 +27,7 @@ filters_return=lijst met filters
 filters_derr=Verwijderen van filters is mislukt
 filters_enone=Geen geselecteerd
 filters_einuse=Het filter $1 kan niet worden verwijderd, omdat het door de jails wordt gebruikt : $2 
+
 filter_title1=Maak filter
 filter_title2=Filter bewerken
 filter_desc=Gebruik <i>&lt;HOST&gt;</i> in reguliere expressies waar een hostnaam of IP-adres moet verschijnen.
@@ -39,6 +42,7 @@ filter_ename=Ontbrekende of ongeldige filternaam
 filter_eclash=Filternaam is al in gebruik
 filter_efail=Geen reguliere expressie ingevoerd
 filter_einuse=Dit filter kan niet worden verwijderd, omdat het door de jails wordt gebruikt : $1 
+
 actions_title=Match acties
 actions_name=Actienaam
 actions_ban=Verbod commando
@@ -48,6 +52,7 @@ actions_return=lijst met acties
 actions_derr=Kan acties niet verwijderen
 actions_enone=Geen geselecteerd
 actions_einuse=De actie $1 kan niet worden verwijderd, omdat deze wordt gebruikt door de jails : $2 
+
 action_title1=Maak Matchactie
 action_title2=Matchactie bewerken
 action_header=Match actiedetails
@@ -64,6 +69,7 @@ action_ban=Commando om een IP te verbieden
 action_unban=Commando om een IP te verbieden
 action_desc=<i>&lt;ip&gt;</i> wordt vervangen door het IP-adres dat wordt verbannen.
 action_einuse=Deze actie kan niet worden verwijderd, omdat deze wordt gebruikt door de jails : $1 
+
 jails_title=Filteractie Jails
 jails_add=Voeg een nieuwe gevangenis toe.
 jails_name=Gevangenisnaam
@@ -76,6 +82,7 @@ jails_defdesc=Bewerk standaardinstellingen en limieten die van toepassing zijn o
 jails_return=lijst met gevangenissen
 jails_derr=Verwijderen van jails is mislukt
 jails_enone=Geen geselecteerd
+
 jail_title1=Maak een gevangenis
 jail_title2=Jail bewerken
 jail_header=Filter actie details
@@ -115,13 +122,16 @@ jail_banaction=Standaard actie die moet worden toegepast
 jail_defprotocol=Standaardprotocol voor acties
 jail_edestemail=Ontbrekend of ongeldig standaard e-mailadres voor kennisgeving
 jail_eignoreip=Ongeldig IP-adres om te negeren
+
 jaildef_title=Standaard gevangenisopties
 jaildef_header=Standaard voor alle gevangenissen
 jaildef_err=Kan standaard gevangenisopties niet opslaan
 jaildef_egone=Geen DEFAULT-gevangenis gevonden!
+
 start_err=Kan server niet starten
 stop_err=Kan server niet stoppen
 restart_err=Kan server niet opnieuw opstarten
+
 log_create_filter=Filter $1 gemaakt
 log_update_filter=Gewijzigd filter $1 
 log_delete_filter=Filter $1 verwijderd
@@ -139,6 +149,7 @@ log_atboot=Fail2Ban ingeschakeld tijdens het opstarten
 log_delboot=Fail2Ban uitgeschakeld tijdens het opstarten
 log_manual=Configuratiebestand $1 bewerkt
 log_jaildef=Gewijzigde standaard gevangenisopties
+
 config_title=Globale configuratie
 config_edef=Geen definitie sectie gevonden in het configuratiebestand!
 config_header=Config instellingen voor Fail2Ban
@@ -151,10 +162,12 @@ config_socket=Aansluiting voor communicatie met server
 config_err=Kan globale configuratie niet opslaan
 config_elogtarget=Bestand om logboeken naar te schrijven moet een absoluut pad zijn
 config_esocket=Socket-bestand moet een absoluut pad zijn
+
 manual_title=Configuratiebestanden bewerken
 manual_desc=Te bewerken bestand:
 manual_ok=OK
 manual_efile=Geselecteerd bestand maakt geen deel uit van de Fail2Ban-configuratie!
 manual_err=Kan configuratiebestand niet bewerken
 manual_edata=Geen inhoud configuratiebestand ingevoerd
+
 syslog_logtarget=Fail2Ban-actielogboek

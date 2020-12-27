@@ -12,6 +12,7 @@ index_return=senarai fail sistem
 index_none=Anda tidak mempunyai akses kepada mana-mana sistem fail yang dipasang.
 index_mount2=Gunung dengan kata laluan:
 index_root=Sistem fail akar
+
 edit_title=Edit Gunung
 create_title=Buat Gunung
 edit_err=Gagal mengedit gunung
@@ -58,6 +59,7 @@ edit_ecannot=Anda tidak dibenarkan mengedit sistem fail ini
 edit_ecannot2=Anda tidak dibenarkan menambah sistem fail baru
 edit_3_or_lower=3 (atau lebih rendah)
 edit_advanced=Mod Lanjutan
+
 save_err=Gagal menyimpan gunung
 save_edir='$1' bukan direktori
 save_edirname='$1' bukan nama direktori yang sah
@@ -74,8 +76,10 @@ save_apply=Memohon Senarai Tetap
 save_fapply=Tentera Un-Mount
 save_eremount=Remount gagal : $1
 save_enone=Anda tidak memilih untuk menyimpan atau melancarkan
+
 swap_err=Gagal membuat fail swap
 swap_esize='$1' bukan saiz yang sah
+
 nfs_server=Pilih Server NFS ..
 nfs_select=Pilih pelayan NFS untuk dilancarkan dari ..
 nfs_ip=Alamat IP
@@ -87,6 +91,7 @@ nfs_seldir=Pilih direktori NFS untuk dilancarkan ..
 nfs_seldirv4=Untuk mount NFSv4, anda perlu memilih '/'
 nfs_dir=Direktori
 nfs_clients=Pelanggan
+
 smb_choose=Pilih Pelayan CIFS ..
 smb_elist=Gagal mendapatkan senarai pelayan daripada $1. Mungkin pelayan tidak membenarkan menyemak imbas
 smb_eworkgroup=Tiada kumpulan kerja yang ditetapkan pada halaman Modul Config
@@ -103,6 +108,7 @@ smb_sel2=Pilih bahagian untuk dilampirkan ..
 smb_share=Kongsi
 smb_comment=Komen
 smb_noshares=Tiada fail fail yang tersedia pada pelayan $1
+
 solaris_scsidev=Pengawal SCSI $1 target $2 unit $3
 solaris_idedev=Pengatur IDE $1 drive $2 partition $3
 solaris_mddev=Peranti RAID $1
@@ -240,6 +246,7 @@ solaris_efstyp2=Gagal menyemak jenis fail sistematik : $1
 solaris_ecachedir='$1' bukan direktori cache yang sah
 solaris_efmode='$1' bukan mod fail oktaf yang sah
 solaris_edmode='$1' bukan mod direktori oktal yang sah
+
 linux_eamd=AMD gagal
 linux_eauto=Automount gagal : $1
 linux_esmbconn=Gagal menyambung ke pelayan
@@ -361,6 +368,7 @@ linux_noenforce=Ya, tapi jangan paksa
 linux_df=Sertakan blok simpanan dalam saiz sistem fail?
 linux_noatime=Elakkan mengemas kini masa akses yang terakhir?
 linux_netdev=Tunggu sehingga antaramuka rangkaian terserah?
+linux_nofail=Teruskan boot walaupun pemasangan gagal?
 linux_ecname=Nama netbios klien yang hilang atau tidak sah
 linux_emname=Nama hos pelayan atau alamat IP yang hilang atau tidak sah
 linux_bind=Direktori asal
@@ -386,6 +394,7 @@ linux_nounix=Lumpuhkan sambungan CIFS Unix?
 linux_noserverino=Menghasilkan nombor inode di sisi pelanggan?
 linux_cvers=Versi CIFS
 linux_ecvers=Versi CIFS mestilah nombor
+
 log_mount=Dipasang $3
 log_mount_l=Dilampirkan $2 $1 pada $3
 log_umount=Dihapuskan $3
@@ -399,7 +408,9 @@ log_modify_l=Diperbuat $2 mount $1 pada $3
 log_delete=Dipasang gunung $3
 log_delete_l=Dipadam $2 mount $1 pada $3
 log_swap=Fail swap yang dibuat $1
+
 unmount_err=Gagal menyahpasang $1
+
 mount_err=Gagal memasang $1
 irix_nhost=Nama Host NFS
 irix_ndir=Direktori NFS
@@ -430,6 +441,7 @@ irix_rock=Gunakan sambungan Rock Ridge?
 irix_nofsck=Periksa sistem fail pada boot?
 irix_auto=Sumber automator
 irix_automap=Fail peta
+
 irix_ehost=Hos '$1' tidak wujud
 irix_eloss=Hos '$1' telah turun
 irix_eshowmount=Hos '$1' tidak menyokong NFS
@@ -447,9 +459,11 @@ irix_efstyp2=Gagal mendapatkan jenis fail sistem $1 : $2
 irix_efstyp=Jenis sistem fail pada $1 adalah $2, bukan $3
 irix_eautomap=Fail peta automounter '$1' tidak wujud
 irix_eauthmap2=Fail peta automounter yang hilang atau tidak sah
+
 irix_devroot=Partition root
 irix_devswap=Partition swap
 irix_autohosts=Semua eksport NFS
+
 acl_only=Hanya membenarkan pemasangan dan penyahpepijatan?
 acl_fs=Filesystem yang boleh diedit
 acl_types=Jenis filesystem yang boleh digunakan
@@ -462,8 +476,10 @@ acl_hide=Sembunyikan sistem fail yang tidak boleh diedit?
 acl_simple=Tunjukkan bentuk gunung mudah?
 acl_simopts=Tunjukkan pilihan sistem fail yang mudah?
 acl_browse=Tunjukkan fail dan kongsi butang pelayaran?
+
 egcc=Kompilator GCC atau CC yang diperlukan untuk membina program untuk menyenaraikan fail sistem yang dipasang pada sistem anda tidak tersedia.
 ecompile=Ralat telah berlaku membina program untuk menyenaraikan fail sistem yang dipasang pada sistem anda : $1
+
 freebsd_eaddr=Alamat pelayan yang hilang atau tidak sah
 freebsd_eworkgroup=Kumpulan kerja yang hilang atau tidak sah
 freebsd_ide=Cakera keras IDE
@@ -477,8 +493,10 @@ freebsd_idedev=Peranti IDE $1, slice $2, partition $3
 freebsd_scsidev=</Tt></tt> </tt></tt> </tt></tt>
 freebsd_edevpath=Peranti lain mestilah jalan mutlak, seperti <tt>/dev/cdrom</tt>
 freebsd_edevfile=Fail peranti '$1' tidak wujud
+
 cswap_file=Fail swap $1 tidak wujud.
 cswap_size=Buat dan pasang fail swap dengan saiz
+
 acl_sysinfo=Paparkan data cakera yang tersedia di Papan Pemuka?
 sysinfo_total=Jumlah
 sysinfo_dev=ID peranti

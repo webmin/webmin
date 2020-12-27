@@ -1,9 +1,11 @@
 index_title=Kerberos5 Configuratie
 index_econf=De Kerberos5 configuratie file $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of de <a href='$2'>module configuratie</a> is niet correct.
+
 logging=Log files
 default_log=Standaard log file
 kdc_log=KDC log file
 admin_log=Admin server log file
+
 libdefaults=Standaard Configuratie
 dns_kdc=Gebruik DNS om KDC op te zoeken
 default_realm=Realm
@@ -11,4 +13,5 @@ domain=Domein naam
 default_kdc=KDC
 default_admin=Admin server
 default_domain=Standaard domein naam
+
 save=Update Configuratie

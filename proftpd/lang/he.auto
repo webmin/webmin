@@ -27,7 +27,9 @@ index_global=תצורה גלובלית
 index_create=צור שרת וירטואלי
 index_version=גרסת ProFTPd $1 
 index_proftpd=ProFTPd
+
 efailed=שמירת $1 נכשלה
+
 type_0=אפשרויות רשת
 type_1=אפשרויות רישום
 type_2=קבצים וספריות
@@ -35,6 +37,7 @@ type_3=בקרת גישה
 type_4=שונות
 type_5=משתמש וקבוצה
 type_6=אימות
+
 virt_title=אפשרויות שרת וירטואלי
 virt_header1=בשביל 1
 virt_header2=עבור שרת ברירת מחדל
@@ -50,6 +53,7 @@ virt_cmds=פקודות FTP
 virt_return=שרת וירטואלי
 virt_virt=קבע את התצורה של שרת וירטואלי
 virt_edit=ערוך הוראות
+
 vserv_title=קבע את התצורה של שרת וירטואלי
 vserv_addr=כתובת
 vserv_name=שם שרת
@@ -58,6 +62,7 @@ vserv_delete=מחק שרת וירטואלי
 vserv_eaddr=כתובת חסרה או לא חוקית
 vserv_eport=מספר יציאה חסר או לא חוקי
 vserv_ename=שם השרת חסר
+
 anon_title=אפשרויות FTP אנונימיות
 anon_header1=בשרת הווירטואלי $1 
 anon_header2=בשרת ברירת מחדל
@@ -65,6 +70,7 @@ anon_anon=הגדר תצורת FTP אנונימית
 anon_return=אפשרויות FTP אנונימיות
 anon_header3=עבור FTP אנונימי בשרת וירטואלי $1 
 anon_header4=עבור FTP אנונימי בשרת ברירת המחדל
+
 aserv_title=הגדר תצורת FTP אנונימית
 aserv_create=הגדרת FTP אנונימי
 aserv_root=הגבל לספרייה
@@ -75,6 +81,7 @@ aserv_eroot=תיקיית ערמות חסרה או לא חוקית
 aserv_euser=משתמש Unix חסר או לא חוקי
 aserv_egroup=קבוצת יוניקס חסרה או לא תקפה
 aserv_desc=טרם הוגדר FTP אנונימי לשרת וירטואלי זה. השתמש בטופס זה כדי להגדיר את אפשרויות התצורה הראשוניות.
+
 dir_title=אפשרויות לפי מדריך
 dir_header2=עבור ספרייה $1 בשרת ברירת המחדל
 dir_header1=לספריה $1 בשרת וירטואלי $2 
@@ -85,6 +92,7 @@ dir_header=אפשרויות לפקודה
 dir_dir=הגדר את התצורה של מדריך
 dir_header4=עבור מדריך $1 ב- FTP אנונימי
 dir_header5=עבור מדריך $1 באופן גלובלי
+
 manual_title=ערוך הוראות
 manual_header=השתמש בתיבת הטקסט שלמטה כדי לערוך ידנית את הוראות ProFTPD ב- $1 החלות על שרת, תיקיה או פקודות וירטואליות זו.
 manual_configs=ערוך קבצי תצורה
@@ -92,6 +100,7 @@ manual_ecannot=אינך רשאי לערוך הוראות באופן ידני
 manual_file=ערוך הוראות בקובץ:
 manual_efile=קובץ תצורת ProFTPd לא חוקי
 manual_etest=זוהתה שגיאת קובץ תצורה : $1 
+
 limit_title=אפשרויות לפיקוד
 limit_header4=לפקודות $1 בספריה $2 
 limit_header2=לפקודות $1 בשרת ברירת המחדל
@@ -103,17 +112,20 @@ limit_return=אפשרויות לפקודה
 limit_header5=לפקודות $1 ב- FTP אנונימי
 limit_header6=לפקודות $1 בקובץ $2 
 limit_header7=לפקודות $1 באופן גלובלי
+
 lserv_title=הגדר פקודות
 lserv_cmd=פקודות FTP
 lserv_delete=מחק את תצורת הפקודות
 lserv_err=שמירת הפקודות נכשלה
 lserv_ecmd=לא נבחרו פקודות
+
 dserv_title=הגדר את התצורה של מדריך
 dserv_dir=נתיב ספרייה
 dserv_err=שמירת הספריה נכשלה
 dserv_edir=נתיב ספרייה חסר
 dserv_delete=מחק את תצורת הספריה
 dserv_eanondir=הספרייה חייבת להיות תחת ספריית FTP אנונימית
+
 mod_core_type=סוג השרת
 mod_core_inetd=רוץ מאינסטד
 mod_core_stand=דמון עצמאי
@@ -301,6 +313,7 @@ mod_core_duser=דחה משתמשים
 mod_core_eip='$1' אינה כתובת IP חוקית
 mod_core_enet='$1' אינה כתובת רשת חוקית
 mod_core_ehost='$1' אינו שם מארח חוקי
+
 mod_ls_fakegroup=קבוצה מזויפת ברשימות ספריות?
 mod_ls_fakeuser=משתמש מזויף ברשימות ספריות?
 mod_ls_fakemode=הרשאות מזויפות ברישומי ספריות
@@ -317,6 +330,7 @@ mod_ls_efakeuser=משתמש מזויף חסר או לא תקף
 mod_ls_efakegroup=קבוצה מזויפת חסרה או לא תקפה
 mod_ls_options=אפשרויות רשימת ספריות
 mod_ls_strict=לדרוס את אפשרויות המשתמש?
+
 mod_auth_chdir=מדריך התחברות ראשוני
 mod_auth_echdir=ספרייה ראשונית חסרה או לא חוקית
 mod_auth_chroot=הגבל משתמשים לספריות
@@ -330,7 +344,9 @@ mod_auth_egroups=לא נכנסו קבוצות של יוניקס עבור עופ�
 mod_auth_echroot=תיקיית ערמות חסרה או לא חוקית
 mod_auth_login=אל תבקש סיסמה אם הכניסה נדחית?
 mod_auth_root=לאפשר כניסה לפי שורש?
+
 mod_site_chmod=אפשר פיקוד chmod?
+
 mod_unixpw_ufile=קובץ סיסמה חלופי של יוניקס
 mod_unixpw_eufile=קובץ סיסמת יוניקס חסר או לא חוקי
 mod_unixpw_gfile=קובץ קבוצתי חלופי של יוניקס
@@ -338,6 +354,7 @@ mod_unixpw_egfile=קובץ קבוצת יוניקס חסר או לא חוקי
 mod_unixpw_none=אף אחד
 mod_unixpw_pam=תמיד מתייחסים ל- PAM כאל סמכותי?
 mod_unixpw_persist=לשמור על קובץ סיסמא פתוח בהתמדה?
+
 mod_log_syslog=רישום שגיאות לתיק
 mod_log_sysdef=יומן מערכת
 mod_log_esyslog=קובץ יומן חסר או לא חוקי
@@ -354,19 +371,25 @@ mod_log_fmt=מחרוזת עיצוב
 mod_log_format=פורמטים של יומן מותאם אישית
 mod_log_enickname=שם פורמט חסר או לא חוקי
 mod_log_efmt=מחרוזת פורמט חסרה
+
 mod_pam_pam=האם להשתמש ב- PAM לצורך אימות?
 mod_pam_config=אימות באמצעות שירות PAM
 mod_pam_econfig=שירות PAM חסר או לא חוקי
+
 mod_readme_display=הודע למשתמש על התאמת קבצי readme
 mod_readme_none=אף אחד
 mod_readme_edisplay=דפוס קבצי readme חסר
+
 start_err=הפעלת שרת FTP נכשלה
 start_einetd=אינך יכול להפעיל את דמון השרת במצב כניסה.
+
 stop_err=עצירת שרת ה- FTP נכשלה
 stop_einetd=אינך יכול לעצור את דמון השרת במצב כניסה.
 stop_erun=לא רץ
+
 apply_err=החלת תצורת FTP נכשלה
 apply_egone=כבר לא רץ
+
 ftpaccess_title=קבצי אפשרויות לפי ספריה
 ftpaccess_desc=ניתן לציין אפשרויות נוספות לספריה בקובץ (נקרא בדרך כלל <tt>.ftpaccess</tt>) בכל ספרייה. האפשרויות חלות על כל הקבצים בספרייה זו ועל כל ספריות המשנה, אלא אם כן מחוסלים על ידי קובץ אפשרויות אחר.
 ftpaccess_create=צור קובץ אפשרויות
@@ -374,8 +397,10 @@ ftpaccess_find=מצא קבצי אפשרויות
 ftpaccess_auto=תחת אנונימי
 ftpaccess_from=מהספריה
 ftpaccess_return=רשימת קבצי אפשרויות
+
 ftpusers_title=משתמשי FTP נדחו
 ftpusers_desc=אם זה מופעל תחת הסמל <tt>אימות</tt>, המשתמשים הרשומים למטה מהקובץ $1 יימנעו מגישה להתחברות למשתמש FTP.
+
 ftpindex_title=קובץ אפשרויות לפי מדריך
 ftpindex_delete=מחק קובץ
 ftpindex_opts=אפשרויות לפי מדריך
@@ -385,8 +410,10 @@ ftpindex_addlimit=הוסף אפשרויות לפקודה עבור ..
 ftpindex_header2=$1 ב- $2 
 ftpindex_return=קובץ אפשרויות לספריה
 ftpindex_header=בשביל 1
+
 find_err=לא נמצא קבצי אפשרויות
 find_eanon=FTP אנונימי אינו מוגדר בשום שרת וירטואלי
+
 log_global=אפשרויות גלובליות של $1 השתנו
 log_ftpusers=משתמשי FTP שנדחו
 log_virtc=יצר שרת $1 
@@ -420,6 +447,7 @@ log_anonm=ערוך ידני FTP אנונימי לשרת $1
 log_anon=שינה את $1 ב- FTP אנונימי לשרת $2 
 log_start=התחיל proftpd
 log_apply=שינויים שהוחלו
+
 eafter=אימות התצורה נכשל: $1 השינויים לא נשמרו.
 proftpd_apply=החל שינויים
 proftpd_stop=עצור את ProFTPd

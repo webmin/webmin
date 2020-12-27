@@ -38,6 +38,7 @@ index_restartdesc=Egin klik botoi honetan Squid egungo konfigurazioa aktibatzeko
 index_iptables=Portuen birbanaketaren konfigurazioa
 index_squid=Squid proxy zerbitzaria
 index_manual=Editatu Konfigurazio fitxategiak
+
 manual_title=Editatu Konfigurazio fitxategiak
 manual_file=Aukeratu editatzeko konfigurazio fitxategi bat:
 manual_change=Aldaketa
@@ -45,6 +46,7 @@ manual_editing=Erabili beheko testu-koadroa $1 konfigurazioak eskuz editatzeko. 
 manual_err=Ezin izan da konfiguratu fitxategia gordetzean
 manual_efile=Konfiguratutako fitxategi-izena baliogabea!
 manual_ecannot=Ezin duzu konfigurazio fitxategiak eskuz editatu
+
 buttsave=Save
 buttdel=Ezabatu
 buttcreat=Sortu
@@ -54,6 +56,7 @@ default=Default
 none=Bat ere ez
 on=on
 off=Off
+
 acl_header1=Sortu ACL
 acl_header2=Editatu ACL
 acl_name=ACL Izena
@@ -109,6 +112,7 @@ acl_file=Gorde ACL balioak fitxategian
 acl_nofile=Txipiroien konfigurazioa
 acl_infile=Bereizitako fitxategia
 acl_keep=Besterik ez duzu erabili fitxategiaren edukia?
+
 aclsave_failsave=Huts egin du ACL gordetzean
 aclsave_faildel=Ezin izan da ACL ezabatu
 aclsave_epr=Proklamazio murrizketa bat erabiltzen ari da ACL hau
@@ -128,11 +132,13 @@ aclsave_eemin=Amaiera baliogabea min
 aclsave_efile=Ezin duzu '$1' ACL fitxategian idatzi.
 aclsave_enofile=Ez da ACL fitxategi-izenik sartu
 aclsave_ealready=ACL fitxategia lehendik dago
+
 cach_ecannot=Ezin duzu cache kudeatzaileen estatistiketara sartu
 cach_err=Akatsa
 cach_nfound=Squid cache kudeatzailearen programa <tt>$1</tt> ez da zure sisteman aurkitu. Agian zure <a href=/config.cgi?$2>moduluaren konfigurazioa</a> okerra da.
 cach_return=txipiroien aurkibidea
 cach_esame=<b>Squid cachemgr.cgi exekutagarria</b> Webmin-en cachemgr.cgi programa gisa ezarrita dago, ez da Squid-ek hornitzen duena.
+
 chown_header=Aldatu Jabetza
 chown_stop=Txipiroiak gelditzea. ..
 chown_done=.. Egina
@@ -140,6 +146,7 @@ chown_chown=Jabetza aldatzea. ..
 chown_restart=Txipiroiak berriro martxan. ..
 chown_failrestart=Huts egin du Squid-ek berriro hasterakoan.
 chown_return=txipiroien aurkibidea
+
 clear_ecannot=Ezin duzu cachea garbitu eta berreraikitzea
 clear_header=Garbitu eta berregin Cache
 clear_msgclear=Ziur al da zure Squid cachea garbitu eta berreraiki nahi duzula? Honek <b>guztiak</b> ezabatu dituzun fitxategiak ezabatuko ditu eta Squid zerbitzaria berriro hasiko da.
@@ -153,6 +160,7 @@ clear_failrestart=Huts egin du Squid-ek berriro hasterakoan.
 clear_return=txipiroien aurkibidea
 clear_url=Kendu URL bat cache-tik:
 clear_ok=Kendu
+
 eacl_ecannot=Ezin duzu sarbide kontrola editatu
 eacl_header=Sarbide-kontrola
 eacl_acls=Sarbide kontrol zerrendak
@@ -169,8 +177,10 @@ eacl_nopr=Ez da proxy-murrizketarik zehaztu.
 eacl_addpr=Gehitu proxy-murrizketa.
 eacl_noprr=Ez da proxy-erantzunen murrizketarik zehaztu
 eacl_addprr=Gehitu proxy-erantzunen murrizketa.
+
 eacl_replypr=Erantzun proxy-mugak
 eacl_replynopr=Ez da erantzun proxy-murrizketarik zehaztu
+
 eacl_icpr=ICP murrizketak
 eacl_noicpr=Ez da ICP murrizketarik zehaztu
 eacl_addicpr=Gehitu ICP murriztapena.
@@ -187,6 +197,7 @@ eacl_eclass=Ez da programa-klaserik hautatu
 eacl_cname=Idatzi izena
 eacl_file=$1 fitxategitik
 eacl_hdelete=Ezabatu hautatutako mugak
+
 eadm_ecannot=Ezin duzu administrazio aukerak editatu
 eadm_header=Aukera administratiboak
 eadm_aao=Administrazio eta Iragarkien Aukerak
@@ -213,6 +224,7 @@ eadm_caf=Cache iragartzeko fitxategia
 eadm_annp=Deialdia egiteko epea
 eadm_buttsave=Save
 eadm_return=txipiroien aurkibidea
+
 eauth_ecannot=Ezin duzu proxy autentikazioa editatu
 eauth_header=Proxy autentifikazioa
 eauth_aopt=Autentifikazio aukerak
@@ -226,6 +238,7 @@ eauth_pusers=Proxy erabiltzaileak
 eauth_nopusers=Proxy erabiltzaileak ez daude definituta.
 eauth_addpuser=Gehitu proxy erabiltzaile berri bat.
 eauth_return=txipiroien aurkibidea
+
 ec_ecannot=Ez duzu baimenik cachearen aukerak editatzeko
 ec_header=Cache aukerak
 ec_cro=Cache eta Eskaera Aukerak
@@ -280,6 +293,7 @@ ec_return=txipiroien aurkibidea
 ec_maxreplies=Gehieneko erantzunen gorputzaren neurriak
 ec_maxrn=Tamaina (kB)
 ec_maxracls=ACLekin bat datozen eskaerei (hutsik utzi guztientzat)
+
 ech_header=Sortu Cache ostalaria
 ech_header1=Editatu Cache ostalaria
 ech_cho=Cache ostalariaren aukerak
@@ -324,6 +338,7 @@ ech_origin=Tratatu ostalaria jatorri zerbitzari gisa?
 ech_force=Force Host: goiburua
 ech_same=Aldaketarik
 ech_ssl=Konektatu SSL erabiliz?
+
 eicp_ecannot=Ezin duzu beste cacheak editatu
 eicp_header=Beste Cache batzuk
 eicp_opcs=Beste proxy cache zerbitzari batzuk
@@ -361,6 +376,7 @@ eicp_ttype=Mota
 eicp_tpport=Proxy portua
 eicp_tiport=ICP portua
 eicp_delete=Ezabatu hautatutako katxeak
+
 elogs_ecannot=Ezin duzu erregistroa editatu
 elogs_header=Saio
 elogs_lalo=Logging eta Logfile Aukerak
@@ -394,6 +410,7 @@ elogs_notset=Ez dago ezarri
 elogs_dont=Ez egin saioa
 elogs_file=$1 fitxategia
 elogs_squid=Txipiroien estandarra
+
 emem_ecannot=Ezin duzu memoriaren erabilera editatu
 emem_dheader=Memoria eta diskoaren erabilera
 emem_header=Memoriaren erabilera
@@ -419,6 +436,7 @@ emem_lfuda=Gutxien erabiltzen den dinamikoa
 emem_hlru=Gutxien erabiltzen direnak
 emem_return=txipiroien aurkibidea
 emem_mrp=Memoria ordezkatzeko politika
+
 emisc_ecannot=Ezin duzu askotariko aukerak editatu
 emisc_header=Askotariko aukerak
 emisc_mo=Askotariko aukerak
@@ -455,6 +473,7 @@ emisc_wccpin=WCCP sarrerako helbidea
 emisc_wccpout=WCCP irteerako helbidea
 emisc_none=Bat ere ez
 emisc_virtual=Virtual
+
 eports_ecannot=Ezin duzu portuak eta sareak editatu
 eports_header=Portuak eta Sareak
 eports_pano=Portuak eta Sareko aukerak
@@ -480,6 +499,7 @@ eports_unc=SSL itzalketak ez dira garbitzen?
 eports_checkhost=Balidatu ostalariaren izenak URLetan?
 eports_underscore=Azpimarratu ostalarien izenean?
 eports_all=guztiak
+
 eprogs_ecannot=Ezin duzu laguntza programak editatu
 eprogs_header=Laguntzaileen programak
 eprogs_chpo=Cache Helper Programaren aukerak
@@ -508,6 +528,7 @@ eprogs_ttl=Autentifikazioen cache-denbora
 eprogs_aittl=IP autentifikatu cache denbora
 eprogs_realm=Autentifikazioen eremua
 eprogs_return=txipiroien aurkibidea
+
 euser_header=Sortu Proxy erabiltzailea
 euser_header1=Editatu Proxy erabiltzailea
 euser_pud=Proxy erabiltzailearen xehetasunak
@@ -516,6 +537,7 @@ euser_p=Pasahitza
 euser_u1=Aldaketarik
 euser_e=Gaituta?
 euser_return=erabiltzaileen zerrenda
+
 ahttp_header=Sortu proxy-murrizketa
 ahttp_header1=Editatu proxy murrizketa
 ahttp_pr=Proxy mugaketa
@@ -525,10 +547,13 @@ ahttp_d=Ukatu
 ahttp_ma=Lotu ACL-ak
 ahttp_dma=Ez datoz bat ACLekin
 ahttp_return=ACL zerrenda
+
 ahttp_replyheader=Sortu Proxy Erantzunen Murrizketa
 ahttp_replyheader1=Editatu Proxy Erantzunen Murrizketa
 ahttp_replypr=Proxy-erantzunaren murrizketa
+
 sahttp_ftspr=Huts egin du proxy-erantzunen murrizketa gordetzean
+
 aicp_header=Sortu ICP murrizketa
 aicp_header1=Editatu ICP murrizketa
 aicp_ir=ICP Murrizketa
@@ -538,7 +563,9 @@ aicp_d=Ukatu
 aicp_ma=Lotu ACL-ak
 aicp_dma=Ez datoz bat ACLekin
 aicp_return=ACL zerrenda
+
 saicp_ftsir=Ezin izan da ICP murriztapena gorde
+
 icache_ecannot=Ezin da cachea hasieran baimendu
 icache_ftic=Ezin izan da cachea hasieratzean
 icache_ymcautrsa=Erabiltzaile bat aukeratu behar duzu Squid gisa
@@ -546,7 +573,9 @@ icache_euser=Erabiltzailea Squid exekutatzeko ez dagoenez
 icache_itscwtc=Squid cachea hasieran <tt>$1</tt>.. aginduarekin
 icache_return=txipiroien aurkibidea
 icache_title=Hasieratu Cache
+
 restart_ftrs=Ezin izan da txipiroiak berriro konfiguratu
+
 sadmin_ftsao=Ezin izan da administrazio aukerak gorde
 sadmin_header=Aldatu Jabetza
 sadmin_msg1=Squid-ek erabiltzen duen erabiltzailea edo taldea aldatu duzu. Hori ondo egiteko, cache- eta erregistro-fitxategi guztien jabetza eguneratu behar da eta Squid berriro hasi.
@@ -556,10 +585,12 @@ sadmin_inavea='$1' ez da baliozko helbide elektronikoa
 sadmin_inavh='$1' ez da baliozko ostalari izena
 sadmin_inavap='$1' ez da baliozko iragarpen-aldia
 sadmin_inavp='$1' ez da baliozko ataka
+
 sauth_ftsao=Ezin izan da autentikazio aukerak gordetzea
 sauth_iomuf=Erabiltzaileen izen baliogabea edo falta da
 sauth_iomd=Domeinu baliogabea edo falta da
 sauth_msg1=Squid-en zure bertsioa ez da konpilatu proxy autentikaziorako laguntzarekin
+
 scache_ftsco=Ezin izan da gordetako aukerak gordetzea
 scache_emsg0=Gutxienez cache direktorio bat sartu behar duzu
 scache_emsg1="$1" cache direktorioan ez dago
@@ -577,14 +608,17 @@ scache_emsg12='$1' ez da baliozko direktorioaren tamaina
 scache_emsg13='$1' ez da baliozko ostalaria
 scache_emsg14='$1' ez da baliozko ataka
 scache_emaxrs=Gehienezko gorputzaren tamaina baliogabea $1 errenkadan
+
 schost_ftsc=Huts egin du cachea gordetzean
 schost_emsg1='$1' ez da baliozko cache ostalariaren izena
 schost_emsg2='$1' ez da baliozko proxy ataka
 schost_emsg3='$1' ez da baliozko ICP ataka
 schost_emsg4='$1' ez da denbora bizitzeko balio
 schost_emsg5='$1' ez da baliozko haztapena
+
 sicp_ftsco=Ezin izan da gordetako aukerak gordetzea
 sicp_emsg1='$1' ez da baliozko denbora-muga
+
 slogs_ftslo=Huts egin du erregistratzeko aukerak gordetzean
 slogs_emsg1='$1' ez da fitxategi-izen absolutua
 slogs_emsg2='$1' ez da baliozko fitxategi-izena
@@ -594,20 +628,24 @@ slogs_emsg5='$1' ez da baliozko arazketa-zerrenda
 slogs_efname=Formularen izena baliogabea $1 errenkadan
 slogs_effmt=Erregistroaren formatua falta da $1 errenkadan
 slogs_eafile=Erregistroko fitxategi falta edo baliogabea $1
+
 smem_ftsmo=Ezin izan da memoria aukerak gorde
 smem_emsg1='$1' ez da baliozko cache-tamaina
 smem_emsg2='$1' ez da ur handiko marka
 smem_emsg3='$1' ez da ur baxuko marka baliozkoa
 smem_emsg4='$1' ez da baliozko objektuen tamaina
+
 smisc_ftso=Ezin izan da aukerak gordetzea
 smisc_emsg1='$1' ez da baliozko biraketa kopurua
 smisc_emsg2='$1' ez da baliozko domeinua
 smisc_emsg3='$1' ez da baliozko proxy bat
 smisc_emsg4='$1' ez da baliozko saltokiak
+
 sport_ftspo=Huts egin du portuko aukerak gordetzean
 sport_emsg1='$1' ez da baliozko ataka-zenbakia
 sport_emsg2='$1' ez da baliozko helbide bat
 sport_emsg3='$1' ez da baliozko bufferraren tamaina
+
 sprog_ftshpo=Huts egin du laguntzailearen programako aukerak gordetzean
 sprog_emsg1=FTP aukerak falta dira
 sprog_emsg2='$1' ez da baliozko programa
@@ -620,19 +658,23 @@ sprog_emsg8='$1' ez da baliozko IP helbide bat
 sprog_emsg9='$1' ez da baliozko cache-denbora
 sprog_emsg10='$1' ez da baliozko TTL
 sprog_echildren=Programa kopurua zero baino handiagoa izan behar da
+
 suser_ftsu=Huts egin du erabiltzailea gordetzean
 suser_emsg1=Erabiltzaile-izena baliogabea edo falta da
 suser_etaken=Erabiltzaile izena dagoeneko erabiltzen ari da
+
 start_ftsq=Huts egin du Squid-ek abiaraztean
 start_ecannot=Ezin duzu Squid hasi
 stop_ftsq=Ezin izan da Txipiroia gelditu
 stop_ecannot=Ez duzu baimendu Squid gelditzea
+
 calamaris_ecannot=Ezin duzu Calamaris erregistroaren analisira sartu
 calamaris_title=Calamaris-en analisia
 calamaris_last=Azterketa $1 erregistro lerroetara mugatzea.
 calamaris_eprog=Ez da aurkitu $1 kalamariak exekutagarria. Agian ez dago zure sisteman instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
 calamaris_elogs=$1 direktorioko erregistroak ez du <tt>access.log</tt> fitxategirik. Beharbada, txipiroiak oraindik ez dira exekutatu edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
 calamaris_gen=$1 n sortutako txostena
+
 lib_emsg1='$1' ez da baliozko IP helbide bat
 lib_seconds=segundutan
 lib_minutes=minutu
@@ -680,6 +722,7 @@ lib_aclmuip=Erabiltzaile IP maximoa
 lib_buttac=Aplikatu aldaketak
 lib_buttss=Gelditu Txipiroiak
 lib_buttss1=Txipiroiak hasi
+
 log_ports=Aldatutako portuak eta sareko aukerak
 log_icp=Beste cache-aukera batzuk aldatu dira
 log_mem=Aldatu memoria erabiltzeko aukerak
@@ -734,25 +777,31 @@ log_pools_delete=$1 atzerapen-multzoak ezabatu dira
 log_delay_create=ACL gehitu da $1 atzerapen-poolrako
 log_delay_modify=ACL aldatua atzerapen-poolrako $1
 log_delay_delete=ACL ezabatu da atzerapen-pool $1
+
 log_delay_move=ACL mugitua atzerapen-poolrako $1
 log_refresh_create=Freskatzeko araua sortu da $1
 log_refresh_modify=$1 ren freskatze araua aldatu da
 log_refresh_delete=Freskatu araua ezabatu da $1
+
 log_refresh_move=Mugitu freskatze araua $1
 log_refreshes_delete=$1 freskatzeko arauak ezabatu dira
 log_iptables=Eguneratutako ataka birbideratzeko konfigurazioa
 log_purge=Kendu egin da $1 URL cache-tik
 log_cachemgr=Aldatu cache kudeatzailearen pasahitzak
+
 acl_root=ACL fitxategientzako erro-direktorioa
 acl_sections=Baimendutako konfigurazio orriak
 acl_start=Squid hasi eta gelditu al daiteke?
 acl_restart=Txipiroien konfigurazioa aplika al dezakezu?
+
 always_create=Sortu zuzeneko bilaketa
 always_edit=Editatu zuzeneko bilaketa
 always_header=Zuzenean eskuratu ACLekin bat datozen eskaerak
+
 never_create=Sortu zeharkako bilaketa
 never_edit=Editatu zeharkako ekintza
 never_header=Inoiz ez sartu zuzenean ACLekin bat datozen eskaerak
+
 delay_title=Atzerapen Igerilekuak
 delay_add=Gehitu atzerapen-talde berria.
 delay_num=zenbakia
@@ -802,11 +851,14 @@ pool_unit2=kb
 pool_unit3=kB
 pool_unit4=Mb
 pool_unit5=MB
+
 dpool_err=Ezin izan da atzerapen-multzoak ezabatu
 dpool_enone=Ez da hautatu
+
 apool_header=Gehitu Atzerapen Pool ACL
 apool_header1=Editatu Atzerapen Pool ACL
 apool_pr=Atzerapena igerilekua ACL
+
 authparam_title=Autentifikazio programak
 authparam_header=Kanpoko autentikazio programaren aukerak
 authparam_ttl=Pasahitzak gordetzeko denbora
@@ -849,6 +901,7 @@ ext_ecache=Cache tamaina falta edo baliogabea da
 ext_eprogram=Programaren bide baliogabea sartu da
 ext_eclash=Izen bera duen kanpoko programa mota bat dagoeneko
 ext_eused=Kanpoko programa hau ACL batek erabiltzen du
+
 header_title=Goiburuko sarbide-kontrola
 header_none=Oraindik ez da goiburuko sarbide kontrolerako arauak zehaztu.
 header_name=HTTP goiburua
@@ -868,6 +921,7 @@ header_err=Ezin izan da goiburuko sarbidea kontrolatzeko araua gorde
 header_ename=Izenburuaren izen falta edo baliogabea
 header_request_header_access=Eskatu goiburuak
 header_reply_header_access=Erantzun goiburuak
+
 refresh_title=Eguneratu arauak
 refresh_none=Oraindik ez dira freskatzeko arauak zehaztu.
 refresh_re=Adierazpen erregularra
@@ -894,6 +948,7 @@ refresh_epc=Adin-ehuneko falta edo baliogabea
 refresh_delete=Ezabatu hautatutako berritze arauak
 drefresh_err=Ezin izan da freskatze-arauak ezabatu
 drefesh_enone=Ez da hautatu
+
 iptables_title=Portuen birbanaketaren konfigurazioa
 iptables_inst0=Ez dirudi zure sisteman instalatuta egongo den IPtables suebakiaren komandoak. Ikusi <a href='$1'>Linux Firewall</a> modulua xehetasun gehiago lortzeko.
 iptables_inst1=Ez dirudi <a href='$1'>Linux Firewall</a> modulua zure sisteman guztiz konfiguratuta dagoela. Modulu honek Frox portuaren birbideratzea konfiguratzeko balio du.
@@ -908,18 +963,23 @@ iptables_enet=Sareko helbide falta edo baliogabea (192.168.1.0/24 bezalakoa izan
 iptables_eiface=Sareko interfaze falta edo baliogabea
 iptables_eapply=Aplikatu suebakia huts egin du : $1
 iptables_eapply2=Aplikatu Txipiroiak huts egin du : $1
+
 syslog_access=Txipiroiak sartzeko erregistroa
 syslog_cache=Txipiroiak katxeatzeko erregistroa
 syslog_store=Txipiroiak objektuen denda erregistroa
+
 purge_err=Ezin izan da URL cachea ezabatu
 purge_title=Garbitu Cache URLa
 purge_doing=URL garbitzea $1 ..
 purge_done=.. egin.
 purge_failed=.. huts egin du! Ikusi goiko errore mezua zergatik dagoen.
+
 dhttp_err=Ezin izan da proxy-murrizketak ezabatu
 dhttp_enone=Ez da hautatu
+
 dicp_err=Ezin izan da ICP murrizketak ezabatu
 dicp_enone=Ez da hautatu
+
 cachemgr_title=Cache kudeatzailearen pasahitzak
 cachemgr_ecannot=Ezin duzu cache kudeatzailearen pasahitzak editatu
 cachemgr_def1=Ez da pasahitzik behar

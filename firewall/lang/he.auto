@@ -16,6 +16,7 @@ index_chain=שרשרת $1
 index_action=פעולה
 index_desc=מצב
 index_comm=תגובה
+index_no_comment=
 index_move=מהלך \ לזוז \ לעבור
 index_none=אין כללים המוגדרים לשרשרת זו.
 index_policy=הגדר את פעולת ברירת המחדל ל:
@@ -88,6 +89,7 @@ index_ipset_size=גודל
 index_ipvxmode=שנה גרסת פרוטוקול IP:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
 desc_p=הפרוטוקול הוא $1 
 desc_p!=פרוטוקול אינו $1 
 desc_s=המקור הוא $1 
@@ -114,6 +116,8 @@ desc_tcp-option=המנה משתמשת באפשרות TCP $1
 desc_tcp-option!=המנה אינה משתמשת באפשרות TCP $1 
 desc_icmp-type=סוג ICMP הוא $1 
 desc_icmp-type!=סוג ICMP אינו $1 
+desc_icmpv6-type=סוג ICMP הוא $1 
+desc_icmpv6-type!=סוג ICMP אינו $1 
 desc_mac-source=כתובת ה- Ethernet היא $1 
 desc_mac-source!=כתובת האתר אינה $1 
 desc_limit=שיעור נמוך מ- $1 
@@ -146,10 +150,15 @@ desc_always=תמיד
 desc_args--match-set=$2 כלול בערכת ה- IP $1 
 desc_src=מקור
 desc_dest=יעד
+
 redhat_einstalled=לא נמצאו פעולות <tt>iptables (6)</tt> אתחול, מה שמצביע על כך שחבילת ה- IPtables אינה מותקנת במערכת שלך
 redhat_eoutput=אירעה שגיאה בהשגת סטטוס ה- IPtables מהפקודה $1. זה כנראה מצביע על כך שהמערכת שלך הוגדרה לשימוש ברשתות IP במקום בטבלאות IP.
+
 gentoo_escript=סקריפט ההפעלה של Gentoo IPtables $1 לא נמצא במערכת שלך.
+
 eiptables=טבלאות IP לא ידועות שומרות את שורת הקבצים : $1 
+eip6tables=טבלאות ip6 לא ידועות שומרות את שורת הקבצים : $1 
+
 edit_title1=הוסף כלל
 edit_title2=ערוך כלל
 edit_title3=כלל המשובטים
@@ -218,6 +227,7 @@ edit_physdevout=ממשק פיזי יוצא
 edit_physdevisin=מנות נכנסות בממשק הגשר
 edit_physdevisout=מנות יוצאות בממשק הגשר
 edit_physdevisbridged=מנות מגשרים
+
 save_err=שמירת הכלל נכשלה
 save_echain=שרשרת חסרה או לא תקפה להפעלה
 save_esource=כתובת המקור או הרשת חסרים או לא חוקיים
@@ -262,23 +272,28 @@ save_estates=לא נבחרו מצבי חיבור
 save_ecanjump=אינך רשאי להשתמש בפעולה זו
 save_ephysdevin=ממשק פיזי נכנס חסר או לא תקף
 save_ephysdevout=ממשק פיזי יוצא או חסר
+
 delete_title=מחק שרשרת
 delete_rusure=האם אתה בטוח שברצונך למחוק את השרשרת $1 ? $2 כללים בתוכו יימחקו.
 delete_ok=תמחק עכשיו
 delete_ecannot=אינך מורשה למחוק שרשראות
+
 clear_title=שרשרת ברורה
 clear_rusure=האם אתה בטוח שברצונך למחוק את כל $2 הכללים משרשרת $1 ?
 clear_ecannot=אסור לך לפנות שרשראות
+
 new_err=יצירת שרשרת נכשלה
 new_ename=שם שרשרת חסר או לא חוקי
 new_etaken=שרשרת עם שם זה כבר קיימת
 new_ecannot=אינך מורשה ליצור שרשראות
+
 apply_err=החלת התצורה נכשלה
 apply_ecannot=אינך מורשה להחיל את התצורה
 apply_remote=שגיאה מ- $1 : $2 
 unapply_err=ביטול התצורה נכשל
 unapply_ecannot=אינך רשאי להחזיר את התצורה
 bootup_ecannot=אינך רשאי להפעיל או להשבית את חומת האש בעת האתחול
+
 log_create_rule=כלל נוסף לשרשרת $1 בטבלה $2 
 log_modify_rule=כלל שונה בשרשרת $1 בטבלה $2 
 log_delete_rule=כלל נמחק בשרשרת $1 בטבלה $2 
@@ -301,8 +316,10 @@ log_add_group=הוסיפו שרתי אשכולות מקבוצה $1
 log_delete_host=שרת האשכולות הוסרו $1 
 log_delete_group=שרתי אשכול $1 הוסרו
 log_openports=יציאות חומת אש שנפתחו $1 
+
 setup_eiface=לא נכנס לממשק רשת חיצוני
 setup_ecannot=אינך מורשה להתקין את חומת האש
+
 acl_tables=טבלאות IP מותרות
 acl_apply=האם ניתן להחיל תצורה?
 acl_unapply=האם ניתן לבטל את החלת התצורה?
@@ -314,9 +331,11 @@ acl_jall=את כל
 acl_newchain=האם ניתן ליצור שרשראות חדשות?
 acl_delchain=האם ניתן למחוק או לנקות שרשראות?
 acl_policy=האם ניתן לשנות את מדיניות ברירת המחדל?
+
 etable=אינך רשאי לערוך את טבלת ה- IP הזו
 ejump=אינך רשאי לערוך כלל זה
 ecluster=אינך רשאי לנהל את אשכול חומת האש
+
 cluster_title=שרתי חומת אש של אשכול
 cluster_none=עדיין לא נוספו שרתים לאשכול חומת האש.
 cluster_host=שם מארח
@@ -327,6 +346,7 @@ cluster_gadd=הוסף שרתים בקבוצה
 cluster_need=עליך להוסיף שרתים עם כניסה וסיסמה במודול אינדקס שרתי Webmin לפני שניתן יהיה לנהל אותם כאן.
 cluster_return=שרתי אשכול
 cluster_delete=הסר פריטים שנבחרו
+
 add_title=הוסף שרתים
 add_msg=מוסיף $1 ..
 add_gmsg=הוספת שרתים בקבוצה $1 ..
@@ -336,13 +356,16 @@ add_echeck=לשרת $1 אין מודול חומת האש של Linux
 add_emissing=בשרת $1 חסר פקודת חומת האש $2 
 add_ok=נוסף $1, עם $2 כללי חומת אש פעילים.
 add_enone=אין שרתים להוסיף שנבחרו!
+
 policy_ecannot=אינך רשאי לשנות את מדיניות ברירת המחדל של שרשרת זו
+
 move_title=העבר חוקים
 move_count=כללים שנבחרו
 move_chain=שינוי נוכחי
 move_dest=שרשרת יעד
 move_ok=זוז עכשיו
 move_header=אפשרויות העברת כללים
+
 rename_title=שינוי שם שרשרת
 rename_count=חוקים בשרשרת
 rename_chain=שם נוכחי
@@ -352,6 +375,3 @@ rename_header=אפשרויות שינוי שם שרשרת
 rename_adjust=לשנות כללים אחרים שקופצים לשרשרת זו?
 rename_none=אף אחד
 rename_ecannot=אינך רשאי לשנות שם של רשתות
-desc_icmpv6-type=סוג ICMP הוא $1 
-desc_icmpv6-type!=סוג ICMP אינו $1 
-eip6tables=טבלאות ip6 לא ידועות שומרות את שורת הקבצים : $1 

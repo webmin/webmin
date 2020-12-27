@@ -19,10 +19,13 @@ index_samba=Samba?
 index_cyrus=IMAP?
 index_users=LDAP vartotojai
 index_groups=LDAP grupės
+
 imap_econn=Nepavyko prisijungti prie IMAP serverio $1 
 imap_elogin=Nepavyko prisijungti prie IMAP serverio $1 kaip $2 : $3 
 conn_eldap_host=Jūsų sistemoje nerastas nė vienas LDAP kliento konfigūracijos failas, todėl LDAP serveris turi būti nustatytas „Module Config“ puslapyje
 conn_elogin=Jūsų sistemoje nerastas nė vienas LDAP kliento konfigūracijos failas, todėl LDAP prisijungimas turi būti nustatytas „Module Config“ puslapyje
+conn_efile_open=Nepavyko atidaryti LDAP įrišimo kredencialų failo:
+
 uedit_cap=Vartotojo galimybės
 uedit_samba=Samba prisijungimas?
 uedit_cyrus=IMAP serverio prisijungimas?
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=Paskutinis slaptažodžio atnaujinimas
 uedit_sambapwdcanchange=Slaptažodis gali keistis
 uedit_sambabadpasswordcount=Netinkamas slaptažodžio skaičius
 uedit_sambaacctflags=Sąskaitų vėliavos
+
 usave_eadd=Nepavyko pridėti vartotojo į LDAP duomenų bazę : $1 
 usave_emod=Nepavyko modifikuoti vartotojo LDAP duomenų bazėje : $1 
 usave_emoddn=Nepavyko pervardyti vartotojo LDAP duomenų bazėje : $1 
@@ -66,26 +70,33 @@ usave_eattrdupu=Vartotojas $1 jau naudoja $2 $3
 usave_eattrdupg=Grupė $1 jau naudoja $2 $3 
 usave_ereal=Trūksta tikrojo vardo
 usave_equota=Trūksta arba netinkama IMAP kvota
+
 search_err=$1 ieškoti $2 nepavyko : $3 
+
 gedit_dn=Grupės LDAP DN
 gedit_return=grupės duomenys
 gedit_cap=Grupės galimybės
 gedit_samba=„Samba“ grupė?
+
 gsave_egone=Grupės nebeegzistuoja!
 gsave_edelete=Nepavyko ištrinti grupės iš LDAP duomenų bazės : $1 
 gsave_eadd=Nepavyko pridėti grupės prie LDAP duomenų bazės : $1 
 gsave_emod=Nepavyko modifikuoti grupės LDAP duomenų bazėje : $1 
 gsave_emoddn=Nepavyko pervardyti grupės LDAP duomenų bazėje : $1 
+
 gdel_group=Ištrinamas LDAP grupės įrašas
+
 udel_pass=Ištrinamas LDAP vartotojo įrašas
 udel_book=Ištrinama iš adresų knygos ..
 udel_imap=Trinamas IMAP aplankas.
 udel_warnimap=Ištrynus namų katalogą, esamas pašto dėžutė bus ištrinta!
 udel_failed=.. nepavyko!  : $1 
+
 raw_title=LDAP atributai
 raw_name=Atributo vardas
 raw_value=Vertybės
 raw_for=$1 
+
 batch_samba=Sukurti „Samba“ paskyrą naujiems vartotojams?
 batch_imap=Sukurti IMAP paskyrą naujiems vartotojams?
 batch_descafter3=Eilutėse <b>kurti</b> ir <b>modifikuoti</b> galite pasirinktinai pridėti papildomų laukų, kuriuose yra LDAP atributai <i>vardas</i> = <i>reikšmė</i> formatu, prie būti priskirtas naujiems ar modifikuotiems vartotojams.

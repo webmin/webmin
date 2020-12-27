@@ -7,6 +7,7 @@ index_dsize=Całkowity rozmiar
 index_dmodel=Robić i modelować
 index_dparts=Plastry
 index_return=lista dysków
+
 disk_title=Edytuj dysk
 disk_egone=Dysk już nie istnieje!
 disk_no=Plasterek
@@ -31,9 +32,11 @@ disk_return=szczegóły dysku i listę plasterków
 disk_add=Utwórz nowy plasterek.
 disk_smart=Pokaż status SMART
 disk_smartdesc=Pokaż bieżący stan tego dysku wykryty przez SMART i sprawdź, czy nie ma błędów dysku.
+
 select_device=$1 urządzenie $2 
 select_slice=$1 urządzenie $2 plasterek $3 
 select_part=$1 urządzenie $2 plasterek $3 partycja $4 
+
 slice_title=Edytuj plasterek
 slice_egone=Wybrany plasterek nie istnieje!
 slice_ssize=Rozmiar plasterka
@@ -58,6 +61,7 @@ slice_return=wyciąć szczegóły i listę partycji
 slice_err=Nie udało się zmodyfikować wycinka
 slice_header=Szczegóły plasterka
 slice_suse=Bezpośrednio używany przez
+
 dslice_title=Usuń plasterek
 dslice_rusure=Czy na pewno chcesz usunąć wycinek $1 ? Wszelkie partycje i systemy plików w nim również zostaną usunięte.
 dslice_warn=Ostrzeżenie - ten plasterek jest obecnie używany przez : $1 
@@ -65,6 +69,7 @@ dslice_confirm=Usuń teraz
 dslice_deleting=Usuwanie plasterka $1 ..
 dslice_failed=.. usunięcie nie powiodło się : $1 
 dslice_done=.. gotowy
+
 nslice_title=Utwórz plasterek
 nslice_header=Nowe szczegóły plastra
 nslice_number=Numer plastra
@@ -86,6 +91,7 @@ nslice_done=.. plasterek dodany
 nslice_parting=Utwórz domyślne partycje w plasterku $1 na $2 ..
 nslice_pfailed=.. tworzenie partycji nie powiodło się : $1 
 nslice_pdone=.. dodano partycję
+
 npart_title=Utwórz partycję
 npart_header=Nowe szczegóły partycji
 npart_letter=List do partycji
@@ -98,6 +104,7 @@ npart_emax=Blok końcowy nie może być większy niż rozmiar plasterka $1 blok�
 npart_creating=Tworzenie partycji $1 na $2 ..
 npart_failed=.. tworzenie partycji nie powiodło się : $1 
 npart_done=.. dodano partycję
+
 part_title=Edytuj partycję
 part_egone=Partycja już nie istnieje!
 part_header=Szczegóły partycji
@@ -124,6 +131,7 @@ part_newmount2=Mount Partition
 part_mountmsg=Podłącz to urządzenie do nowego katalogu w systemie, aby można go było używać do przechowywania plików. System plików musi być już utworzony na urządzeniu.
 part_mountmsg2=Zainstaluj to urządzenie jako pamięć wirtualną w systemie, aby zwiększyć ilość dostępnej pamięci.
 part_cannotedit=Tej partycji nie można modyfikować, ponieważ jest obecnie używana.
+
 dpart_title=Usuń partycję
 dpart_rusure=Czy na pewno chcesz usunąć partycję $1 ? Wszelkie zawarte w nim systemy plików również zostaną usunięte.
 dpart_warn=Ostrzeżenie - ta partycja jest obecnie używana przez $1 
@@ -131,6 +139,7 @@ dpart_confirm=Usuń teraz
 dpart_deleting=Usuwanie partycji $1 ..
 dpart_failed=.. usunięcie nie powiodło się : $1 
 dpart_done=.. gotowy
+
 newfs_title=Utwórz system plików
 newfs_header=Szczegóły nowego systemu plików
 newfs_free=Miejsce do zarezerwowania dla katalogu głównego
@@ -145,11 +154,13 @@ newfs_elabel=Brakująca lub nieprawidłowa etykieta
 newfs_creating=Tworzenie systemu plików na $1 ..
 newfs_failed=.. tworzenie nie powiodło się!
 newfs_done=.. utworzone pomyślnie
+
 fsck_title=Sprawdź system plików
 fsck_err=Nie udało się sprawdzić systemu plików
 fsck_checking=Sprawdzanie systemu plików na $1 ..
 fsck_failed=.. sprawdzenie nie powiodło się!
 fsck_done=.. kontrola zakończona bez błędów
+
 log_create_slice=Utworzono plasterek $1 
 log_delete_slice=Usunięto wycinek $1 
 log_modify_slice=Zmodyfikowany plasterek $1 

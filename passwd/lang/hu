@@ -5,6 +5,7 @@ index_user=A következő felhsználó jelszavának megváltoztatása:
 index_euseradmin=Ez a modul nem használható mert a Felhasználók és Csoportok modul nincs telepítve vagy a rendszer nem támogatja.
 index_toomany=Túl sok felhasználó van a rendszerben ahhoz, hogy listázni lehessen. Adja meg az a felhasználót akinek a jelszavát megkívánja változtatni..
 index_none=Ön nem férhet hozzá a felhasználó jelszavának módosításához. 
+
 passwd_title=Jelszó megváltoztatása
 passwd_header=Unix jelszó megváltoztatása
 passwd_for=Felhasználó
@@ -23,7 +24,9 @@ passwd_erepeat=Az új jelszavak nem egyeznek
 passwd_ecmd=$1 hiba: $2
 passwd_ok=A $1 nevű felhasználó jelszavának megváltoztatása megtörtént. Ha jelenleg evvel a felhasználónévvel jelentkezett be, akkor esetleg a Webmin újra kérheti a bejelentkezését.
 passwd_ok2=A $1 felhasnáló jelszava sikeresen meg lett változtatva.
+
 log_passwd=A $1 nevű felhasználó jelszavának megváltoztatása
+
 acl_repeat=Új jelszó kétszer?
 acl_old=Kérjem a régi jelszót is?
 acl_old_this=Csak egyéb felhasználóknak

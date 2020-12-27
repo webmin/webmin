@@ -44,6 +44,7 @@ index_dscsi=SCSI-enhed $1 controller $2
 index_draid=RAID-niveau $1 
 index_dparts=Skillevægge
 index_none2=Der blev ikke fundet nogen diske på dette system.
+
 bytes=bytes
 megabytes=megabyte
 extended=Udvidet
@@ -67,6 +68,7 @@ select_promise=Lover RAID-drev $1
 select_ppart=Lover RAID-drev $1 partition $2 
 select_nvme=NVME SSD $1 drev $2 
 select_nvmepart=NVME SSD $1 drev $2 partition $3 
+
 edit_title=Rediger partition
 create_title=Opret partition
 edit_ecannot=Du har ikke tilladelse til at redigere denne disk
@@ -110,6 +112,7 @@ edit_newmount2=Mount partition
 edit_mountas=som
 edit_mountmsg=Monter denne partition på et nyt bibliotek på dit system, så den kan bruges til at gemme filer. Et filsystem skal allerede være oprettet på partitionen.
 edit_mountmsg2=Monter denne partition som en virtuel hukommelse på dit system for at øge den tilgængelige hukommelse.
+
 mkfs_title=Nyt filsystem
 mkfs_ecannot=Det er ikke tilladt at opbygge et nyt filsystem på denne disk
 mkfs_desc1=Ved at klikke på knappen i bunden af denne formular opbygges et nyt $1 -filsystem på enheden $2. Alle data på denne partition slettes permanent.
@@ -120,6 +123,7 @@ mkfs_err=Kunne ikke oprette filsystem
 mkfs_exec=Udfører kommando $1 ..
 mkfs_failed=.. kommandoen mislykkedes!
 mkfs_ok=.. kommandoen fuldført.
+
 fsck_title=Reparer filsystem
 fsck_ecannot=Du har ikke tilladelse til at fsck denne disk
 fsck_desc1=Klik på knappen <tt>Reparer filsystem</tt> vil forsøge at reparere det beskadigede $1 filsystem på $2 til montering på $3. Hvis filsystemet ikke er beskadiget, foretages der ingen ændringer.
@@ -132,6 +136,7 @@ fsck_err3=fundne og korrigerede fejl - genstart nødvendigt
 fsck_err4=fundne fejl, men IKKE korrigeret
 fsck_err16=kommandolinjefejl
 fsck_unknown=ukendt returkode $1 
+
 tunefs_title=Indstil filsystem
 tunefs_ecannot=Du har ikke tilladelse til at indstille dette filsystem
 tunefs_desc=Denne formular giver dig mulighed for at justere forskellige parametre for filsystemet $1 på $2 til montering på $3. Eksisterende filer på dette filsystem påvirkes ikke.
@@ -153,10 +158,12 @@ tunefs_err=Kunne ikke indstille filsystemet
 tunefs_exec=Udfører kommando $1 ..
 tunefs_failed=.. kommandoen mislykkedes!
 tunefs_ok=.. kommandoen fuldført.
+
 reboot_title=reboot
 reboot_msg=Genstarter nu ..
 reboot_ok=Genstart nu
 reboot_why=Du har ændret partitionstabellen på $1. For at denne ændring skal træde i kraft korrekt, skal dit system genstartes.
+
 save_err=Kunne ikke gemme partitionen
 save_ecannot=Du har ikke tilladelse til at redigere denne disk
 save_estart='$1' er ikke en gyldig startcylinder
@@ -165,6 +172,7 @@ save_emin=Startcylinderen skal være> = $1
 save_emax=Sluttecylinderen skal være <= $1 
 save_eminmax=Startcylinderen skal være mindre end enden
 save_eoverlap=Overlap detekteret med partition $1 ($2 til $3)
+
 ext2_b=Blokstørrelse
 ext2_f=Fragmentstørrelse
 ext2_i=Bytes per inode
@@ -172,6 +180,7 @@ ext2_m=Reserverede blokke
 ext2_g=Blokke pr. Gruppe
 ext2_c=Kontroller for dårlige blokke?
 ext3_j=Journalfilstørrelse
+
 msdos_ff=Antal FAT'er
 msdos_F=FAT størrelse
 msdos_F_other=Andet ..
@@ -180,24 +189,32 @@ msdos_n=Volumenavn
 msdos_r=Rootindgange
 msdos_s=Klyngestørrelse
 msdos_c=Kontroller for dårlige blokke?
+
 minix_n=Filnavnens længde
 minix_i=Antal inoder
 minix_b=Antal blokke
 minix_c=Kontroller for dårlige blokke?
+
 reiserfs_force=Tving filsystemoprettelse
 reiserfs_hash=Hash-funktion
+
 xfs_force=Tving filsystemoprettelse
 xfs_b=Blokstørrelse
+
 jfs_s=Logstørrelse
 jfs_c=Kontroller for dårlige blokke?
+
 btrfs_l=Bladstørrelse
 btrfs_n=Knudestørrelse
 btrfs_s=Sektorstørrelse
+
 fatx_none=Der er ingen muligheder til rådighed for FATX-filsystemer.
+
 acl_disks=Disker, som denne bruger kan partitionere og formatere
 acl_dall=Alle diske
 acl_dsel=Valgte ..
 acl_view=Kan du se ikke-redigerbare diske?
+
 hdparm_title=Rediger IDE-parametre
 hdparm_on=På
 hdparm_off=Af
@@ -226,9 +243,11 @@ hdparm_performing=Udførelse
 hdparm_buf1=Buffer-cache:
 hdparm_buf2=buffered:
 hdparm_speedres=Resultater af hastighedstest
+
 blink_title=Identificer Drive
 blink_desc=Drevets aktivitets-LED lyser nu tres gange
 blink_back=Gå tilbage
+
 log_modify=Ændret $1 
 log_create=Oprettet $1 
 log_delete=Slettet $1 
@@ -236,6 +255,7 @@ log_mkfs=Oprettet $1 filsystem på $2
 log_tunefs=Indstillet $1 filsystem på $2 
 log_fsck=Repareret $1 filsystem på $2 
 log_hdparm=Ændrede IDE-parametre for $1 
+
 fs_ext2=Gamle Linux Native
 fs_minix=Minix
 fs_msdos=MS-DOS
@@ -246,9 +266,11 @@ fs_ext4=Nyt Linux-indfødt
 fs_xfs=SGI
 fs_jfs=IBM Journalling
 fs_btrfs=BTR
+
 delete_title=Slet partition
 delete_rusure=Er du sikker på, at du vil slette $1 ($2)? Data om denne partition kan gå tabt for evigt.
 delete_ok=Slet nu
+
 disk_title=Rediger diskpartitioner
 disk_egone=Disk findes ikke længere!
 disk_no=Nummer
@@ -269,11 +291,13 @@ disk_table=<b>Partitionstabelformat:</b> $1
 disk_notable=<b>Partitionstabelformat:</b> Ingen oprettet
 disk_needtable=Ingen partitioner kan oprettes uden en partitionstabel.
 disk_return=liste over partitioner
+
 relabel_title=Tør partitioner
 relabel_warn=Er du sikker på, at du vil udslette alle partitioner på $1 ($2) ved at skrive disketiketten på ny? Alle eksisterende data og filsystemer vil gå tabt!
 relabel_parts=Eksisterende partitioner
 relabel_noparts=Ingen oprettet endnu
 relabel_table=Partitionstabelformat
 relabel_ok=Aftør og mærk igen
+
 table_msdos=MS-DOS (Standard partitionsformat)
 table_gpt=GPT (For 2T eller større diske)

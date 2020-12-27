@@ -17,6 +17,7 @@ index_tdesc=Penerangan
 index_tucount=Pengguna
 index_tgcount=Kumpulan
 index_ttype=Jenis OS
+
 add_title=Tambah Pelayan
 add_msg=Menambah $1 ..
 add_gmsg=Menambah pelayan dalam kumpulan $1 ..
@@ -26,6 +27,7 @@ add_echeck=Server $1 tidak mempunyai modul pengguna dan kumpulan
 add_epft=Server $1 tidak menggunakan format fail pengguna yang sama sebagai tuan rumah ini
 add_egft=Server $1 tidak menggunakan format fail kumpulan yang sama seperti host ini
 add_ok=Ditambah $1 dengan $2 pengguna dan $3 kumpulan.
+
 host_title=Pelayan Terurus
 host_header=Perincian pelayan dikelola perisian
 host_name=Nama hos
@@ -34,8 +36,7 @@ host_delete=Keluarkan Daripada Senarai Terurus
 host_refresh=Muat semula Pengguna dan Kumpulan
 host_users=Bilangan pengguna
 host_groups=Bilangan kumpulan
-host_ulist=Pengguna di Pelayan
-host_glist=Kumpulan pada Pelayan
+
 host_return=butiran pelayan
 refresh_title=Muat semula Pengguna dan Kumpulan
 refresh_header=Minta permintaan pengguna dan senarai kumpulan dari semua pelayan ..
@@ -49,6 +50,7 @@ refresh_gdel=keluarkan $1 kumpulan
 refresh_done=.. selesai
 refresh_del=Dihapus $1 dari senarai pelayan
 refresh_failed=Gagal menyegarkan $1 : $2 
+
 uedit_host=Butiran dari $1 
 uedit_leave=Jangan ubah
 uedit_set=Ditetapkan untuk
@@ -66,6 +68,7 @@ uedit_servers=Pelayan (s) untuk membuat
 uedit_all=&lt;semua tuan rumah&gt;
 uedit_donthave=&lt;host yang tidak memilikinya&gt;
 uedit_group=Ahli $1 
+
 usave_einuse=Seorang pengguna dengan nama yang sama sudah ada pada $1 
 usave_esecgid=Kumpulan sekunder $1 tidak wujud
 usave_con=Mencipta pada $1 ..
@@ -88,16 +91,20 @@ usave_header=Mewujudkan pengguna $1 pada semua tuan rumah ..
 usave_header5=Mencipta pengguna $1 pada $2 ..
 usave_header4=Membuat pengguna $1 pada ahli kumpulan $2 ..
 usave_header3=Mewujudkan pengguna $1 pada hos yang tidak memilikinya ..
+
 search_hosts=Hos
+
 udel_on=Menghapus dari $1 ..
 udel_servs=Padam direktori rumah jika ada
 udel_others=Padamkan pengguna dalam modul lain?
 udel_dothers=Memadam dalam modul lain ..
 udel_gone=Pengguna tidak lagi wujud.
 udel_failed=Gagal memadamkan pengguna : $1 
+
 gdel_on=Menghapus dari $1 ..
 gdel_gone=Pengguna tidak lagi wujud.
 gdel_failed=Gagal memadam kumpulan : $1 
+
 gsave_create=Menambah kemasukan fail kumpulan ..
 gsave_con=Mencipta pada $1 ..
 gsave_euser=Pengguna $1 tidak wujud
@@ -110,10 +117,12 @@ gsave_header=Mewujudkan kumpulan $1 pada semua tuan rumah ..
 gsave_header5=Mewujudkan kumpulan $1 pada $2 ..
 gsave_header4=Mewujudkan kumpulan $1 pada ahli kumpulan $2 ..
 gsave_header3=Membuat kumpulan $1 pada hos yang tidak memilikinya ..
+
 gedit_host=Butiran dari $1 
 gedit_add=Tambah pengguna
 gedit_del=Keluarkan pengguna
 gedit_donthave=&lt;host yang tidak memilikinya&gt;
+
 sync_title=Menyegerakkan Pelayan
 sync_desc=Borang ini membolehkan anda membuat pengguna dan kumpulan pada pelayan yang saat ini tidak mempunyainya, untuk membawa penyegerakan akaun ke semua pelayan dalam kelompok anda.
 sync_hosts=Pelayan untuk menyegerakkan
@@ -141,6 +150,7 @@ sync_test=Hanya tunjukkan apa yang akan dilakukan?
 sync_makehome=Buat direktori rumah?
 sync_copy=Salin fail ke direktori rumah?
 sync_others=Buat pengguna dalam modul lain?
+
 log_create_user=Pengguna yang dibuat $1 
 log_delete_user=Pengguna dipadam $1 
 log_modify_user=Pengguna diubah suai $1 

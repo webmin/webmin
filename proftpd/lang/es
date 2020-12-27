@@ -23,7 +23,9 @@ index_eip=&lt;Desconocido&gt;
 index_global=Configuración Global
 index_create=Crear servidor virtual
 index_version=Versión $1 de ProFTPd
+
 efailed=No pude salvar $1
+
 type_0=Opciones de Red
 type_1=Opciones de Diario
 type_2=Archivos y Directorios
@@ -31,6 +33,7 @@ type_3=Control de Acceso
 type_4=Varios
 type_5=Usuario y Grupo
 type_6=Autenticación
+
 virt_title=Opciones de Servidor Virtual
 virt_header1=Para $1
 virt_header2=Para servidor por defecto
@@ -46,6 +49,7 @@ virt_cmds=Comandos FTP
 virt_return=servidor virtual
 virt_virt=Configurar Servidor Virtual
 virt_edit=Editar Directivas
+
 vserv_title=Configurar Servidor Virtual
 vserv_addr=Dirección
 vserv_name=Nombre de servidor
@@ -54,6 +58,7 @@ vserv_delete=Borrar servidor virtual
 vserv_eaddr=Dirección falta o es inválida
 vserv_eport=Número de puerto falta o es inválido
 vserv_ename=Nombre de servidor falta
+
 anon_title=Opciones de FTP anónimo
 anon_header1=En servidor virtual $1
 anon_header2=En servidor por defecto
@@ -61,6 +66,7 @@ anon_anon=Configurar FTP anónimo
 anon_return=opciones de FTP anónimo
 anon_header3=Para FTP anónimo en servidor virtual $1
 anon_header4=Para FTP anónimo en servidor por defecto
+
 aserv_title=Configurar FTP anónimo
 aserv_create=Configurar FTP Anónimo
 aserv_root=Directorio para Chroot
@@ -71,6 +77,7 @@ aserv_eroot=Directorio chroot falta o es inválido
 aserv_euser=Usuario unix falta o es inválido
 aserv_egroup=Grupo unix falta o es inválido
 aserv_desc=El FTP anónimo aún no ha sido configurado para este servidor virtual. Usa este formulario para poner las opciones de configuración inicial.
+
 dir_title=Opciones de Por-Directorio
 dir_header2=Para directorio $1 en servidor por defecto
 dir_header1=Para directorio $1 en servidor virtual $2
@@ -80,12 +87,14 @@ dir_header3=opciones $1 en $2
 dir_header=Opciones de por-comando
 dir_dir=Configurar Directorio
 dir_header4=Para directorio $1 en FTP anónimo
+
 manual_title=Editar Directivas
 manual_header=Usa la caja de edición inferior para editar manuálmente las directivas de Apache en $1 que se aplicarán a este servidor virtual, directorio o archivos.
 manual_configs=Editar Archivos de Configuración
 manual_ecannot=No estás autorizado a editar manuálmente las directivas
 manual_file=Editar Directivas en Archivo:
 manual_efile=Archivo de configuración de Apache inválido
+
 limit_title=Opciones de Por-Comando
 limit_header4=Para comandos $1 en directorio $2
 limit_header2=Para comandos $1 en servidor por defecto
@@ -96,16 +105,19 @@ limit_header3=opciones $1 para comandos $2
 limit_return=opciones de por-comando
 limit_header5=Para comandos $1 en FTP anónimo
 limit_header6=Para comandos $1 en archivo $2
+
 lserv_title=Configurar Comandos
 lserv_cmd=Comandos FTP
 lserv_delete=Borrar configuración de comandos
 lserv_err=No pude salvar comandos
 lserv_ecmd=No se han seleccionado comandos
+
 dserv_title=Configurar Directorio
 dserv_dir=Trayectoria de directorio
 dserv_err=No pude salvar directorio
 dserv_edir=Trayectoria de directorio falta
 dserv_delete=Borrar configuración de directorio
+
 mod_core_type=Tipo de servidor
 mod_core_inetd=Ejecutar desde Inetd
 mod_core_stand=Demonio solitario
@@ -287,6 +299,7 @@ mod_core_duser=Denegar usuarios
 mod_core_eip='$1' no es una dirección IP válida
 mod_core_enet='$1' no es una dirección de red válida
 mod_core_ehost='$1' no es un nombre de máquina válido
+
 mod_ls_fakegroup=¿Grupo falso en listados de directorio?
 mod_ls_fakeuser=¿Usuario falso en listados de directorio?
 mod_ls_fakemode=¿Permisos falsos en listados de directorio?
@@ -295,6 +308,7 @@ mod_ls_efakemode=Los permisos falsos deben de estar en octal
 mod_ls_dotfiles=¿Muestro archivos que empiecen por . en listados?
 mod_ls_ls=Opciones adicionales de ls
 mod_ls_els=Opciones adicionales de ls falta
+
 mod_auth_chdir=Directorio inicial de login
 mod_auth_echdir=Directorio inicial falta o es inválido
 mod_auth_chroot=Directorios de Chroot
@@ -306,7 +320,9 @@ mod_auth_egroups=No se han digitado grupos de unix para chroot
 mod_auth_echroot=Directorio de chroot falta o es inválido
 mod_auth_login=¿No pregunto por clave de acceso si se deniega el login?
 mod_auth_root=¿Permito hacer login a root?
+
 mod_site_chmod=¿Permito comando chroot?
+
 mod_unixpw_ufile=Archivo alternativo de clave de acceso de Unix
 mod_unixpw_eufile=Archivo de clave de acceso de Unix falta o es inválido
 mod_unixpw_gfile=Archivo alternativo de grupo de Unix
@@ -314,6 +330,7 @@ mod_unixpw_egfile=Archivo de grupo de Unix falta o es inválido
 mod_unixpw_none=Ninguno
 mod_unixpw_pam=¿Trato siempre a PAM como autoritativo?
 mod_unixpw_persist=¿Mantengo archivo de clave de acceso abierto de forma persistente?
+
 mod_log_syslog=Llevar diario de errores en archivo
 mod_log_sysdef=Diario de sistema
 mod_log_esyslog=Archivo de diario falta o es inválido
@@ -330,14 +347,18 @@ mod_log_fmt=Cadena de formato
 mod_log_format=Formatos de diario de cliente
 mod_log_enickname=Nombre de formato falta o es inválido
 mod_log_efmt=Cadena de formato falta
+
 mod_pam_pam=¿Uso PAM para autenticación?
 mod_pam_config=Autenticar mediante servicio PAM
 mod_pam_econfig=Servicio PAM falta o es inválido
+
 mod_readme_display=Notificar al usuario del los archivos leeme que coincidan
 mod_readme_none=Ninguno
 mod_readme_edisplay=Modelo de archivos leeme falta
+
 start_err=No pude arrancar servidor FTP
 start_einetd=No puedes arrancar el demonio del servidor en modo inetd.
+
 ftpaccess_title=Archivos de Opciones de Por-Directorio
 ftpaccess_desc=Se pueden especificar opciones adicionales de por-directory en un archivo (normálmente llamado <tt>.ftpaccess</tt>) en cada directorio. Las opciones se aplican a todos los archivos de ese directorio y de sus subdirectorios, a menos que sean sobrepasadas por otro archivo de opciones.
 ftpaccess_create=Crear Archivo de Opciones
@@ -345,8 +366,10 @@ ftpaccess_find=Hallar Archivos de Opciones
 ftpaccess_auto=Bajo anónimo
 ftpaccess_from=Desde directorio
 ftpaccess_return=lista de archivo de opciones
+
 ftpusers_title=Usuarios de FTP denegados
 ftpusers_desc=Si activado bajo el icono de <tt>Autenticación</tt>, a los usuarios listados debajo desde el archivo $1 se les denegará el acceso por login al usuario FTP.
+
 ftpindex_title=Archivo de Opciones de Por-Directorio
 ftpindex_delete=Borrar Archivo
 ftpindex_opts=Opciones de Por-Directorio
@@ -356,8 +379,10 @@ ftpindex_addlimit=Añadir opciones de por-comando para...
 ftpindex_header2=$1 en $2
 ftpindex_return=archivo de opciones de por-directorio
 ftpindex_header=Para $1
+
 find_err=No pude hallar archivos de opciones
 find_eanon=FTP anónimo no está configurado en los servidores virtuales
+
 log_global=Cambiadas opciones $1 globales
 log_ftpusers=Cambiados usuarios de FTP denegados
 log_virtc=Creado servidor $1

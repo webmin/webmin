@@ -58,6 +58,7 @@ cvirt_eroot2=無法建立目錄 '$1' : $2
 cvirt_eroot3=您不被允許編輯和使用根目錄目錄 '$1'
 cvirt_etaken=一個相同名稱的虛擬伺服器和連接埠已經存在
 cvirt_efile=寫入到$1失敗 : $2
+
 etype=您不被允許編輯這個類型的選項
 efailed=無法儲存 $1
 apache_apply=套用變更
@@ -67,6 +68,7 @@ auth_return=存取控制
 default_serv=預設伺服器
 bytes=位元組
 eafter=組態確認失敗 : $1 改變並沒有儲存
+
 global_ecannot=您不被允許編輯通用選項
 global_mime=通用 MIME 類型清單
 global_mimedesc=按一下下列的 MIME 類型以編輯之，或使用本頁底端的連結來增加新的類型到清單中。
@@ -74,6 +76,7 @@ global_type=類型
 global_ext=副檔名
 global_add=增加新的 MIME 類型
 global_return=MIME 類型
+
 mime_ecannot=您不被允許編輯 MIME 類型
 mime_edit=編輯 MIME 類型
 mime_add=新增MIME 類型
@@ -82,6 +85,7 @@ mime_type=MIME 類型
 mime_ext=副檔名
 mime_err=無法儲存 MIME 類型
 mime_etype='$1' 不是有效的 MIME 類型
+
 virt_ecannot=您不能編輯這個虛擬伺服器
 virt_title=虛擬伺服器選項
 virt_header=給$1
@@ -102,6 +106,7 @@ virt_path=路徑
 virt_return=伺服器索引
 virt_euser=您不被允許變更這個虛擬伺服器的使用者或群組。
 virt_header2=$1 給$2
+
 vserv_title=虛擬伺服器設定
 vserv_ecannot=您不能編輯這個虛擬伺服器的位址
 vserv_addr=位址
@@ -120,10 +125,12 @@ vserv_eport='$1' 不是有效的連接埠
 vserv_eroot='$1' 不是有效的文件根目錄
 vserv_ename='$1' 不是以個有效的伺服器名稱
 vserv_eaddrs=位輸入虛擬伺服器位置
+
 show_title=指示
 show_edit=編輯 Apache 指示:
 show_these=手動編輯指示
 show_ok=編輯
+
 manual_configs=編輯設定檔
 manual_title=編輯導向
 manual_header=使用以下的文字方塊來手動編輯 $1 中，套用在這個虛擬伺服器、目錄或檔案的 Apache 指示。
@@ -131,6 +138,7 @@ manual_ecannot=您不被允許手動編輯指示
 manual_file=編輯導向在檔案:
 manual_efile=錯誤的Apache config檔案
 manual_etest=發現組態檔案錯誤 : $1
+
 dir_title=個別路徑選項
 dir_header=給$1在 $2
 dir_show=顯示指示
@@ -146,6 +154,7 @@ dir_re=符合正規表示式
 dir_path=路徑
 dir_return=目錄索引
 dir_header2=$1 給$2
+
 type_0=程序與限制
 type_1=網路與位址
 type_2=Apache 模組
@@ -167,6 +176,7 @@ type_17=自動虛擬主機
 type_18=篩選
 type_19=語言
 type_20=影像地圖
+
 htaccess_title=個別路徑選項檔案
 htaccess_ecannot=您不能編輯 htaccess檔案
 htaccess_desc=額外的個別路徑選項可以被指定在每個路徑下的檔案中（通常是叫做 <tt>.htaccess</tt>）。除非被其它選項檔覆寫，否則這些選項會套用在該目錄與其子目錄中的所有檔案。
@@ -178,9 +188,11 @@ htaccess_return=選項檔案清單
 htaccess_edir='$1' 不是有效的目錄
 htaccess_ecreate=您不被允許建立選項檔案
 htaccess_edelete=您不被允許刪除選項檔案
+
 htindex_ecannot=您不被允許編輯這個選項檔案
 htindex_title=個別路徑選項檔案
 htindex_delete=刪除檔案
+
 htindex_show=顯示指示
 htindex_edit=編輯指示
 htindex_opts=個別目錄選項
@@ -193,12 +205,14 @@ htindex_path=路徑
 htindex_header=給$1
 htindex_header2=$1 給選項檔案 $2
 htindex_return=選項檔案索引
+
 htfile_title=個別檔案選項
 htfile_header=給$1在 $2
 htfile_show=顯示指示
 htfile_edit=編輯指示
 htfile_apply=選項套用到…
 htfile_header2=$1 給$2
+
 reconfig_title=重新設定已知模組
 reconfig_ecannot=您不被允許重新設定 Apache
 reconfig_ever=無法取得 Apache伺服器可執行檔 $1 版本。請檢查您的<a href='$2'>模組設定</a>以確認您指定了正確的路徑。
@@ -206,10 +220,12 @@ reconfig_desc1=您的 Apache 設定已經變更，或者是尚未經過 Webmin �
 reconfig_desc2=下面是 Webmin 支援的所有 Apache 模組清單，目前有安裝的模組已經被選取。如果您使用動態載入模組，您必須選取那些動態載入的模組。
 reconfig_desc3=如果您不確定何種模組能支援您系統上的Apache，只要把Webmin設成一般的執行就可以自動支援可用的模組了
 reconfig_ok=設定
+
 defines_title=編輯定義的參數
 defines_ecannot=您不被允許編輯 httpd 的定義
 defines_desc=當 Apache 啟用後，可以使用<tt>-D</tt> 指令選項來傳遞參數，因為此參數可以直接改片您使用的組態檔案，Webmin 需要知道哪個是 Apache 啟動時需要傳遞的，用右方文字欄位輸入參數到您的系統
 defines_config=注意此定義的變數是已知的: $1
+
 authu_ecannot='$1' 不是被允許的使用者文字檔案
 authu_title=使用者清單
 authu_header=在檔案 $1
@@ -231,6 +247,7 @@ authu_sync=下面的選項允許您設定 Webmin 以自動在您經由<tt>使用
 authu_screate=新增Unix 使用者時，會新增使用者
 authu_sdelete=刪除 Unix 使用者時，會刪除使用者
 authu_smodify=變更Unix 使用者時，會變更使用者
+
 authg_ecannot='$1' 不是一個被允許的群組文字檔案
 authg_title=群組清單
 authg_header=在檔案 $1
@@ -248,21 +265,25 @@ authg_err=儲存群組失敗
 authg_euser=未輸入群組名稱
 authg_euser2=群組名稱不能包含 ':' 字元
 authg_edup=群組名稱 '$1' 已經存在
+
 stop_err=停止 Apache 失敗
 stop_ecannot=您不被允許停止 Apache
 stop_epid=開啟 PID檔案 $1 失敗
 stop_epid2=無效的 PID檔案 $1
 stop_esig=送出 SIGTERM 給程序 $1 失敗
+
 start_err=啟動 Apache 失敗
 start_ecannot=您不被允許啟動 Apache
 start_ecmd=$1 失敗 : $2
 start_eunknown=未知的原因
+
 restart_err=套用變更失敗
 restart_epid=開啟 PID檔案 $1 失敗
 restart_epid2=無效的 PID檔案 $1
 restart_esig=送出 SIGHUP 給程序 $1 失敗
 restart_eunknown=未知的原因
 restart_ecannot=您不被允予套用變更
+
 acl_virts=這個使用者可以編輯的虛擬伺服器
 acl_vall=所有服務
 acl_vsel=選取..
@@ -279,6 +300,7 @@ acl_dir=目錄的限制檔案
 acl_types=可使用的指示類型
 acl_all=全部
 acl_sel=已選取...
+
 core_maxconc=最大連線數目
 core_maxkeep=最大保持連線
 core_maxreq=最大子程序能處理要求數量
@@ -457,10 +479,12 @@ core_infilter=套用所有檔案的過濾輸入
 core_outfilter=用所有檔案的過濾輸出
 core_defchar=文件的編碼
 core_edefchar=無效或未輸入文件的編碼
+
 mod_negotiation_cache=快取記憶體內容協商的文件？
 mod_negotiation_pri=多視圖的語言優先順序
 mod_negotiation_def=預設
 mod_negotiation_epri=沒有輸入語言內容
+
 mod_cgi_logname=CGI 腳本紀錄
 mod_cgi_none=無
 mod_cgi_elogname=錯誤的CGI腳本日誌檔案
@@ -470,6 +494,7 @@ mod_cgi_elogsize=CGI日誌大小必須是完整的
 mod_cgi_post=記錄的最大紀錄資料大小
 mod_cgi_epost=Post data大小必須是完整的
 mod_cgi_eunder=CGI腳本日誌沒有在允許的目錄下
+
 mod_alias_from=從
 mod_alias_to=到
 mod_alias_status=狀態
@@ -492,6 +517,7 @@ mod_alias_cgi2=CGI 目錄別名
 mod_alias_rcgi=正規表示式CGI 目錄別名
 mod_alias_rcgi2=正規表示式CGI 目錄別名
 mod_alias_estatus='$1' 不是一個有效的狀態
+
 mod_proxy_proxy=是否充當代理伺服器？
 mod_proxy_req=請求
 mod_proxy_forw=轉送到
@@ -560,11 +586,13 @@ mod_proxy_preserve=保留原始主機: 檔頭
 mod_proxy_timeout=Proxy回應逾時秒數
 mod_proxy_etimeout=Proxy回應逾時秒數必須是個秒數數字
 mod_proxy_via=設定經由: 檔頭
+
 mod_log_agent_default=預設
 mod_log_agent_file=檔案..
 mod_log_agent_program=程式..
 mod_log_agent_log=瀏覽日誌檔案
 mod_log_agent_efile=$1 不是一個有效的代理日誌檔案名稱
+
 mod_log_config_common=普通日誌格式
 mod_log_config_named=通用名稱伺服器日誌格式
 mod_log_config_nick=名稱
@@ -581,6 +609,7 @@ mod_log_config_eformat=沒有給予 $1 日誌格式
 mod_log_config_enofilprog=沒有輸入檔案名稱程式
 mod_log_config_efilprog='$1' 不是一個被允許日誌檔案名稱或程式
 mod_log_config_eifset='If set'選項不能被使用在預設日誌格式
+
 mod_log_referer_default=預設
 mod_log_referer_file=檔案..
 mod_log_referer_program=程式..
@@ -588,7 +617,9 @@ mod_log_referer_log=Referer日誌檔案
 mod_log_referer_nolog=不紀錄參照從
 mod_log_referer_elog=$1 不是一個有效的參照日誌檔案名稱
 mod_log_referer_edir=參照日誌不是在被允許的目錄下
+
 mod_status_msg=顯示延伸狀態資訊
+
 mod_mime_ext=延伸
 mod_mime_xtype=延伸的MIME類型
 mod_mime_mtype=MIME類型
@@ -620,6 +651,7 @@ mod_mime_outfilter=過濾輸出
 mod_mime_infilter=過濾輸入
 mod_mime_filters=套用過濾
 mod_mime_efext=沒有其他條件給此篩選項目 $1
+
 mod_setenvif_header=檔頭
 mod_setenvif_match=符合
 mod_setenvif_case=符合方式
@@ -630,10 +662,12 @@ mod_setenvif_eheader=錯誤的要求檔頭 '$1'
 mod_setenvif_eregex=錯誤的正規表示式 '$1'
 mod_setenvif_evar=錯誤的變數名稱 '$1'
 mod_setenvif_clear=清除
+
 mod_userdir_default=預設
 mod_userdir_all=全部使用者都允許
 mod_userdir_except=全部使用者除了
 mod_userdir_dir=使用者WWW目錄
+
 mod_imap_action=不正確使用影像地圖動作
 mod_imap_default=預設
 mod_imap_godefurl=前往預設網址
@@ -653,8 +687,10 @@ mod_imap_refurl=來源網址
 mod_imap_url=網址...
 mod_imap_defbase=預設影像地圖
 mod_imap_eurl='$1' 不是一個有效的網址
+
 mod_speling_autocorr=是否自動校正拼寫錯誤的網址？
 mod_speling_default=預設
+
 mod_actions_mime=檔頭 / MIME類型
 mod_actions_cgiurl=CGI腳本網址
 mod_actions_mimecgi=檔頭或MIME類型CGI動作
@@ -664,10 +700,13 @@ mod_actions_httpcgi=HTTP 方式 CGI 動作
 mod_actions_emime='$1' 不是一個有效的檔頭或MIME類型
 mod_actions_ecgi='$1' 不是一個有效的 CGI腳本
 mod_actions_enometh=無CGI腳本 '$1'方式
+
 mod_include_incl=程序包含帶執行位元的檔案嗎？
 mod_include_set=是，並設置最後修改日期
 mod_include_default=預設
+
 mod_dir_txt=目錄索引檔案
+
 mod_autoindex_default=預設
 mod_autoindex_asc=向上
 mod_autoindex_descend=向下
@@ -676,6 +715,7 @@ mod_autoindex_date=日期
 mod_autoindex_size=大小
 mod_autoindex_desc=描述
 mod_autoindex_sort=排序目錄索引用...
+
 browsermatch_regexp=瀏覽正規表示式
 browsermatch_case=符合方式?
 browsermatch_var=設定變數
@@ -683,6 +723,7 @@ browsermatch_value=數值
 browsermatch_txt=變數設定基於瀏覽類型
 browsermatch_evar=錯誤的變數名稱 '$1'
 browsermatch_clear=清除
+
 autoindex_fname=檔案名稱
 autoindex_mime=MIME類型
 autoindex_enc=編碼
@@ -736,9 +777,11 @@ autoindex_sicon=顯示檔案圖示
 autoindex_srules=顯示 &lt;hr&gt; 行數
 autoindex_track=包含 ETags 在檔頭
 autoindex_version=由版本排序
+
 mod_mime_magic_file=MIME魔法數字檔案
 mod_mime_magic_none=無
 mod_mime_magic_efile=錯誤的 MIME魔法數字檔案名稱
+
 mod_env_var=變數
 mod_env_value=數值
 mod_env_pass=跳過
@@ -749,6 +792,7 @@ mod_env_passall=將所有環境變數傳送至 CGI
 mod_env_default=預設
 mod_env_evar='$1' 不是一個有效的變數名稱
 mod_env_evalue='$1' 不是一個有效的變數值
+
 mod_access_order=進入檢查順序:
 mod_access_denyallow=拒絕然後允許
 mod_access_allowdeny=允許然後拒絕
@@ -771,6 +815,7 @@ mod_access_epip='$1' 不是一個有效的部份IP位址
 mod_access_emask='$1' 不是一個有效的network/netmask pair
 mod_access_ecidr='$1' 不是一個有效的network/CIDR pair
 mod_access_evar='$1' 不是一個有效的變數名稱
+
 mod_auth_ufile=使用者文字檔案
 mod_auth_uedit=編輯使用者
 mod_auth_gfile=群組文字檔案
@@ -781,6 +826,7 @@ mod_auth_eudir=使用者文字檔案不是在被允許的目錄下目錄
 mod_auth_egdir=群組文字檔案不是在被允許的目錄下目錄
 mod_auth_eufile=錯誤的使用者文字檔案名稱
 mod_auth_egfile=錯誤的群組文字檔案名稱
+
 mod_auth_dbm_ufile=使用者 DBM檔案
 mod_auth_dbm_gfile=群組 DBM檔案
 mod_auth_dbm_pass=略過錯誤到下個模組?
@@ -789,6 +835,7 @@ mod_auth_dbm_eufile=無效的使用者DBM檔案名稱
 mod_auth_dbm_egfile=無效的群組DBM檔案名稱
 mod_auth_dbm_type=DBM檔案類型
 mod_auth_dbm_default=預設DBM格式
+
 mod_cern_meta_process=程序檔頭 meta檔案
 mod_cern_meta_dir=檔頭 meta檔案的子目錄
 mod_cern_meta_default=預設
@@ -796,6 +843,7 @@ mod_cern_meta_edir=錯誤的 meta檔案子目錄名稱
 mod_cern_meta_suffix=檔頭 meta檔案的檔案字尾
 mod_cern_meta_default2=預設
 mod_cern_meta_esuffix=錯誤的meta檔案字尾
+
 mod_ssl_enable=啟用SSL?
 mod_ssl_proto=SSL協定
 mod_ssl_cfile=認證/私人金鑰檔案
@@ -813,6 +861,7 @@ mod_ssl_ecdepth=認證深度必須是完整的
 mod_ssl_log=SSL紀錄檔
 mod_ssl_elog=未輸入SSL紀錄檔
 mod_ssl_onlyssl=只允許 SSL 登入
+
 mod_apachessl_notssl=拒絕SSL進入
 mod_apachessl_nocalist=停用目前的憑證機構CA清單
 mod_apachessl_cachepaht=可執行整體快取伺服器路徑與gcache
@@ -822,6 +871,7 @@ mod_apachessl_esesstimeout=秒必須整數
 mod_apachessl_ramdomfilef=檔案
 mod_apachessl_eramdomfileb=位元組必須整數
 mod_apachessl_nov2=停用SSL版本2
+
 log_global=變更通用 $1 選項
 log_virtc=新增伺服器 $1
 log_virts=重新設定伺服器 $1
@@ -860,26 +910,31 @@ log_start=啟動網頁伺服器
 log_stop=停止網頁伺服器
 log_apply=套用更變
 log_manual=已手動編輯過的組態檔 $1
+
 search_title=搜尋伺服器
 search_notfound=沒有符合的虛擬主機
+
 mod_php_value=PHP 組態設定數值
 mod_php_flag=PHP組態設定旗標
 mod_php_name_header=設定
 mod_php_value_header=數值
 mod_php_ename='$1' 是一個錯誤的名稱
 mod_php_evalue='$1' 對$2是一個錯誤的數值
+
 mod_vhost_alias_root=自動虛擬主機 root
 mod_vhost_alias_ip=使用 IP位址而非主機名稱?
 mod_vhost_alias_none=無
 mod_vhost_alias_script=自動虛擬主機 cgi-bin
 mod_vhost_alias_eroot=沒有輸入或錯誤的虛擬主機 root
 mod_vhost_alias_escript=沒有輸入或錯誤的虛擬主機 cgi-bin
+
 worker_minspare=最小的閒置串列
 worker_maxspare=最大的閒置串列
 worker_eminspare=最小的閒置串列必須是整數
 worker_emaxspare=最大的閒置串列必須是一個整數
 worker_threads=每一子程序的串列
 worker_ethreads=每一子程序的串列數必須是整數
+
 perchild_sthreads=每個子程序的初始串列
 perchild_numservers=子程序數
 perchild_enumservers=子程序數必須是整數
@@ -893,6 +948,7 @@ perchild_gid=GID
 perchild_enum=程序編號必須是一個非零整數
 perchild_euid=UID必須完整
 perchild_egid=GID必須完整
+
 cache_enable=啟用?
 cache_type=儲存快取
 cache_disk=磁碟
@@ -913,12 +969,14 @@ cache_eminos=最小的快取物件大小必須是個位元數字
 cache_emaxos=最大的快取物件大小必須是個位元數字
 cache_maxoc=在記憶體中的最大的快取物件
 cache_emaxoc=在記憶體中的最大的快取物件數字必須完整
+
 suexec_su=執行 CGI 程式在
 suexec_none=從全域組態的使用者
 suexec_user=Unix使用者
 suexec_group=和群組
 suexec_euser=無效或未輸入使用者來執行CGI程式於
 suexec_egroup=無效或未輸入群組來執行CGI程式於
+
 filter_name=名稱
 filter_intype=輸入MIME類型
 filter_outtype=輸出MIME類型
@@ -928,10 +986,12 @@ filter_in=輸入過濾定義
 filter_out=輸出過濾定義
 filter_ename=無效的過濾名稱 '$1'
 filter_ecmd=未輸入過濾指令 '$1'
+
 cdir_err=建立每個目錄選項失敗
 cdir_err2=儲存每個目錄選項失敗
 cdir_epath=未輸入路徑
 cdir_eproxy=無法建立啟用符合正規表示式選項的Proxy選項
+
 mod_band_enable=啟用頻寬限制?
 mod_band_bw=限制(位元組/秒)
 mod_band_client=用於客戶端
@@ -942,4 +1002,5 @@ mod_band_ebw='$1'不是一個有效的頻寬限制
 mod_band_size=最小檔案大小
 mod_band_sizelimit=檔案大小頻寬限制
 mod_band_dir=資料頻寬限制檔案目錄
+
 mod_dav_active=啟用WebDAV?

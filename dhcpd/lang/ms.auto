@@ -64,12 +64,14 @@ index_match1=mengandungi
 index_match2=perlawanan
 index_dhcpd=ISC DHCPd
 index_delete=Padam Dipilih
+
 butt_save=Simpan
 butt_eco=Edit Pilihan Pelanggan
 butt_vco=Lihat Pilihan Pelanggan
 butt_del=Padam
 butt_create=Buat
 butt_leases=Senarai Pajakan
+
 esub_crheader=Buat Subnet
 esub_edheader=Edit Subnet
 esub_tabhdr=Butiran Subnet
@@ -83,12 +85,14 @@ esub_groups=Kumpulan secara langsung dalam subnet ini
 esub_pools=Alamat Kolam untuk Subnet
 esub_pool=Kolam $1 
 esub_poolnone=Tiada alamat alamat ditakrifkan
+
 esub_pooladd=Tambah kolam alamat.
 esub_none=Tiada
 esub_return=senarai subnet
 esub_retshar=rangkaian dikongsi
 esub_desc=Penerangan subnet
 esub_fopeer=Failover Peer
+
 esh_crheader=Buat Rangkaian Bersama
 esh_eheader=Edit Rangkaian Bersama
 esh_tabhdr=Butiran Rangkaian Dikongsi
@@ -99,6 +103,7 @@ esh_subn=Subnet dalam rangkaian kongsi ini
 esh_return=senarai subnet
 esh_pools=Alamat Kolam untuk Rangkaian Dikongsi
 esh_desc=Penerangan rangkaian dikongsi
+
 ehost_crheader=Buat Host
 ehost_eheader=Edit Host
 ehost_tabhdr=Butiran Hos
@@ -119,6 +124,7 @@ ehost_retgroup=kumpulan
 ehost_retsubn=subnet
 ehost_retshar=rangkaian dikongsi
 ehost_desc=Penerangan hos
+
 egroup_crheader=Buat Kumpulan Hos
 egroup_eheader=Edit Kumpulan Hos
 egroup_tblhdr=Butiran Kumpulan
@@ -129,6 +135,7 @@ egroup_return=senarai tuan rumah
 egroup_retsubn=subnet
 egroup_retshar=rangkaian dikongsi
 egroup_desc=Penerangan kumpulan
+
 default=Lalai
 secs=secs
 none=Tiada
@@ -157,20 +164,24 @@ listl_pc=Peratusan
 listl_err=Gagal memotong pajakan
 listl_enone=Tiada yang dipilih
 listl_refresh=Senarai semak semula
+
 restart_errmsg1=Gagal memulakan semula dhcpd
 restart_errmsg2=Gagal menandakan proses
 start_failstart=Gagal memulakan dhcpd
 restart_conftext=Talian sekitar $1 dalam $2  :
+
 sgroup_faildel=Gagal memadam kumpulan
 sgroup_failsave=Gagal menyimpan kumpulan
 sgroup_invassign=kumpulan ditugaskan ke seksyen yang tidak betul
 sgroup_echanged=Kandungan fail konfigurasi telah ditukar. Cuba lagi.
+
 shost_faildel=Gagal memadamkan hos
 shost_failsave=Gagal menyimpan hos
 shost_invalidhn=bukan nama tuan rumah yang sah
 shost_invalidhwa='$1' bukan alamat $2 yang sah
 shost_invalidaddr='$1' mengandungi nama hos yang tidak sah atau alamat IP
 shost_invassign=tuan rumah yang diberikan kepada seksyen yang salah
+
 sopt_failsave=Gagal menyimpan pilihan klien
 sopt_invalidip=bukan alamat IP yang sah
 sopt_invalidint=bukan integer
@@ -180,10 +191,12 @@ sopt_ednum='$1' bukan nombor pilihan yang sah
 sopt_edtype='$1' bukan jenis pilihan yang sah
 sopt_ecval=Nilai hilang untuk pilihan peribadi '$1'
 sopt_ecip=Nilai untuk pilihan tersuai '$1' mestilah alamat IP
+
 sshared_faildel=Gagal memadamkan rangkaian kongsi
 sshared_failsave=Gagal menyimpan rangkaian kongsi
 sshared_invalidsname=Nama rangkaian dikongsi atau tidak sah.
 sshared_nosubnet=Rangkaian yang dikongsi '$1' tidak mengandungi sebarang subnet.
+
 ssub_faildel=Gagal memadam subnet
 ssub_failsave=Gagal menyimpan subnet
 ssub_invalidsubaddr=bukan alamat subnet yang sah
@@ -191,6 +204,7 @@ ssub_invalidnmask=bukan netmask yang sah
 ssub_invalidipr=bukan alamat IP jarak yang sah
 ssub_nosubnet=Rangkaian yang dikongsi '$1' tidak mengandungi sebarang subnet.
 ssub_invalidfopeer=bukan rekod Failover yang sah
+
 plib_deflt=Masa pajakan lalai
 plib_bfname=Nama fail boot
 plib_maxlt=Masa pajakan maksimum
@@ -244,6 +258,7 @@ plib_eexpr=Bahagian konfigurasi DHCP ini mengandungi arahan ekspresi $1, yang ti
 plib_auth_subnet=Server berwibawa untuk subnet ini?
 plib_auth_shared-network=Server berwibawa untuk rangkaian yang dikongsi ini?
 plib_auth_global=Server adalah berwibawa untuk semua subnet?
+
 eopt_header=Pilihan Pelanggan
 eopt_subtitle=Untuk subnet $1 
 eopt_returnsub=subnet
@@ -289,6 +304,7 @@ eopt_slpa=Agen direktori SLP IP
 eopt_slpaips=IP ini sahaja?
 eopt_slps=Skop perkhidmatan SLP
 eopt_slpsonly=Skop ini sahaja?
+
 log_apply=Perubahan yang digunakan
 log_start=Memulakan pelayan DHCP
 log_stop=Menghentikan pelayan DHCP
@@ -311,6 +327,7 @@ log_options_group=Pilihan yang diubah suai untuk kumpulan $1 host
 log_delete_lease=Sewa dipadamkan untuk $1 
 log_delete_subnets=Dihapus $1 subnet dan rangkaian kongsi
 log_delete_hosts=Dipadamkan $1 tuan rumah dan kumpulan tuan rumah
+
 keys_edit=Edit kunci TSIG
 keys_create=Mencipta kunci TSIG
 keys_title=Kunci DNS
@@ -321,12 +338,14 @@ keys_ecannot=Anda tidak dibenarkan mengedit kekunci DNS
 keys_err=Gagal menyimpan kunci DNS
 keys_ekey='$1' bukan ID kunci yang sah
 keys_esecret=Rahsia terkod-64 dasar yang hilang atau tidak sah untuk kekunci $1 
+
 pool_edit=Edit Kolam Alamat
 pool_create=Dibuat Alamat Kolam
 pool_header=Alamat pilihan kolam
 pool_allow=Pelanggan untuk membenarkan
 pool_deny=Pelanggan untuk menafikan
 pool_return=subnet
+
 cdel_header=Amaran
 cdel_shared1=rangkaian dikongsi
 cdel_shared2=rangkaian dikongsi
@@ -344,6 +363,7 @@ cdel_txt=Memadamkan $1 '$2' juga akan memadam kandungannya:
 cdel_confirm=Adakah anda benar-benar mahu memadamkan ini $1 ?
 cdel_eunknown=Ralat tidak diketahui
 cdel_return=senarai hos dan rangkaian
+
 eacl_aviol=Pelanggaran kawalan akses
 eacl_np=Anda tidak mempunyai keizinan
 eacl_pdh=hapus hos
@@ -369,6 +389,7 @@ eacl_pdl=hapus pajakan
 eacl_psl=melihat pajakan
 eacl_pglob=edit pilihan global
 eacl_papply=mulakan semula perkhidmatan ini
+
 acl_apply=Boleh memohon perubahan?
 acl_r_leases=Boleh melihat pajakan?
 acl_w_leases=Bolehkah menghapuskan pajakan?
@@ -398,9 +419,11 @@ acl_err=Ralat menyimpan senarai ACL
 acl_ernow=Jika anda ingin mendayakan akses tulis dalam ACL global untuk sesetengah jenis objek, anda juga harus mendayakan akses baca untuk jenis objek ini.
 acl_normal=normal
 acl_paranoic=paranoik
+
 iface_title=Antara Muka Rangkaian
 iface_desc=Server DHCP hanya boleh menetapkan alamat IP pada rangkaian yang disambungkan ke salah satu antara muka yang dipilih di bawah. Antara muka rangkaian untuk semua subnet yang ditetapkan mesti dimasukkan. Jika tiada yang dipilih, pelayan DHCP akan cuba mencari satu secara automatik.
 iface_listen=Dengar di antara muka
+
 lookup_ehost=Tiada hos dengan nama, alamat IP atau alamat MAC $1 ada
 lookup_ehostname=Tiada nama hos, alamat IP atau alamat MAC yang dimasukkan
 lookup_egroup=Tiada kumpulan dengan nama atau nama domain $1 ada
@@ -409,6 +432,7 @@ lookup_esubnet=Tiada subnet dengan alamat atau alamat/netmask $1 wujud
 lookup_esubnetname=Tiada alamat subnet atau alamat/netmask yang dimasukkan
 lookup_eshared=Tiada rangkaian kongsi dengan nama $1 wujud
 lookup_esharedname=Tiada nama rangkaian kongsi yang dimasukkan
+
 zone_key=Zon DNS
 index_addzone=Tambah zon DNS baharu.
 index_zone=Kawasan
@@ -424,16 +448,21 @@ zone_faildel=Gagal memadam zon
 zone_failsave=Gagal menyimpan zon
 zone_tsigkey=Kunci TSIG
 zone_ecannot=Anda tidak dibenarkan mengedit zon DNS
+
 plib_clientupdates=Bolehkah pelanggan mengemas kini rekod mereka sendiri?
+
 text_title=dhcpd.conf
 text_editor=Editor teks
 text_return=menu utama
 text_undo=undo
 text_ecannot=Anda tidak dibenarkan mengedit fail konfigurasi
+
 index_buttetext=Secara automatik Edit Konfigurasi
 index_text=Edit fail konfigurasi secara manual
+
 stop_err=Gagal menghentikan pelayan DHCP
 stop_ekill=Tidak berlari!
+
 sdelete_err=Gagal memadam subnet dan rangkaian kongsi
 sdelete_enone=Tiada yang dipilih
 sdelete_title=Padamkan Subnet dan Rangkaian Dikongsi
@@ -441,6 +470,7 @@ sdelete_rusure1=Adakah anda pasti mahu memadam subnet $1 dan $2 rangkaian kongsi
 sdelete_rusure2=Adakah anda pasti mahu memadamkan subnets $1 yang dipilih? Sebarang objek lain dalam subnet juga akan hilang.
 sdelete_rusure3=Adakah anda pasti mahu memadamkan $2 rangkaian kongsi yang dipilih? Mana-mana subnet atau objek lain dalam rangkaian juga akan hilang.
 sdelete_ok=Padamkan Sekarang
+
 hdelete_err=Gagal memadamkan hos dan kumpulan
 hdelete_enone=Tiada yang dipilih
 hdelete_title=Padam Hos dan Kumpulan

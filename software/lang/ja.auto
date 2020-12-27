@@ -9,22 +9,28 @@ index_echeckupdate=更新システムが検出されませんでした！
 index_filter=フィルターパッケージ
 index_filterclear=フィルターをクリア
 index_filtered=<tt>$2</tt>から<tt>$1</tt>パッケージを表示
+
 search_esearch=検索するものを入力しませんでした！
 search_delete=選択したパッケージをアンインストールします
 search_selall=すべて選択
 search_invert=選択を反転
+
 edit_listdesc=このパッケージ内のすべてのファイルと、現在の検証状態を表示します。
 edit_uninstdesc=このパッケージをシステムから削除します。
 edit_egone=パッケージはインストールされなくなりました
+
 list_view=（見る）
 list_eview=$1を開けませんでした： $2
+
 delete_rusure2=パッケージ $1を削除してもよろしいですか？
 delete_nodeps=依存関係を無視しますか？
 delete_noscripts=アンインストールスクリプトをスキップしますか？
 delete_efile=削除する一時ファイルが無効です
 delete_purge=構成ファイルを削除しますか？
 delete_depstoo=未使用の依存関係も削除しましたか？
+
 install_eupdate=インストールするパッケージが入力されていません
+
 rpm_notriggers=トリガーされたスクリプトを実行しますか？
 rpm_ignoresize=ファイルシステムのサイズを確認しますか？
 rpm_search=以下についてrpmfind.netを検索：
@@ -33,7 +39,9 @@ rpm_find=検索rpmfind.net ..
 rpm_findrpm=パッケージファイル名
 rpm_finddistro=分布
 rpm_finddesc=説明
+
 slack_edir=Slackwareパッケージディレクトリが見つかりません $1
+
 log_install_yum_l=YUMからインストールされたパッケージ $1
 log_install_yum=YUMから $2パッケージをインストールしました
 log_install_rhn_l=Redhat Networkからインストールされたパッケージ $1
@@ -46,10 +54,12 @@ log_upgrade_yum_l=YUMからパッケージ $1をアップグレードしまし�
 log_upgrade_yum=YUMから $2パッケージをアップグレードしました
 log_check_rhn_l=Redhat Networkからアップグレードされたパッケージ $1
 log_check_rhn=Redhat Networkから $2パッケージをアップグレードしました
+
 rhn_find=検索RHN ..
 rhn_header=自動パッケージアップグレードオプション
 rhn_nonefound=更新可能なパッケージはありません。
 rhn_name=Redhat Network
+
 apt_header=APTパッケージのアップグレードオプション
 apt_search=一致するパッケージを検索：
 apt_find=検索APT ..
@@ -59,6 +69,7 @@ apt_repo_url=リポジトリのベースURL
 apt_repo_path=配布パスのコンポーネント
 apt_repo_eurl=ベースURLが見つからないか無効です
 apt_repo_epath=配布パスがありません
+
 yum_input=YUMからのパッケージ
 yum_install=コマンド $1でパッケージをインストールしています ..
 yum_ok=..インストールが完了しました。
@@ -89,6 +100,7 @@ yum_repo_ename=リポジトリ名がありません
 yum_repo_eurl=リポジトリのURLが見つからないか無効です
 yum_repo_egpg=GPG証明書ファイルが見つからないか、存在しません
 yum_repo_efile=リポジトリファイルは既に存在します！
+
 urpmi_name=URPMI
 urpmi_input=URPMIからのパッケージ
 urpmi_find=ブラウズURPMI ..
@@ -103,6 +115,7 @@ urpmi_upgradeok=..完了。
 urpmi_install=コマンド $1でパッケージをインストールしています ..
 urpmi_ok=..インストールが完了しました。
 urpmi_failed=..インストールに失敗しました！
+
 aix_unknown=わからない
 aix_device=入力デバイス/ソフトウェアのディレクトリ
 aix_software=インストールするソフトウェア
@@ -120,6 +133,7 @@ aix_accept=新しいライセンス契約に同意しますか？
 aix_license=新しいライセンス契約をプレビューしますか？
 aix_clean=クリーンアップインストールの失敗？
 aix_manager=AIXパッケージマネージャー
+
 emerge_input=Portageリポジトリから
 emerge_find=探す ..
 emerge_install=コマンド $1を使用したパッケージのインストール ..
@@ -135,6 +149,7 @@ emerge_noreplace=既存のパッケージを置き換えますか？
 emerge_onlydeps=依存関係のみをインストールしますか？
 emerge_title=Portageを検索
 emerge_name=ポーテージ
+
 cygwin_fmissing=ファイルがありません
 cygwin_lmissing=リンクが指すファイルがありません
 cygwin_estat=ファイルの統計に失敗しました： $1
@@ -144,6 +159,7 @@ cygwin_badpostscript=警告：このスクリプトは実行されていない�
 cygwin_pkgexists=パッケージ $1は既に存在します。
 cygwin_warnuse=警告：これはCygwinソフトウェアを管理するための公式インターフェースではありません。自己責任。
 cygwin_edb=Cygwinパッケージデータベース $1がありません
+
 deletes_err=パッケージを削除できませんでした
 deletes_enone=パッケージが選択されていません
 deletes_title=パッケージを削除する
@@ -154,6 +170,7 @@ deletes_failed2=アンインストールに失敗しました： $1
 deletes_success2=..アンインストールが完了しました。
 deletes_rusure=パッケージ $1をアンインストールしてもよろしいですか？
 deletes_ok=それらをすべて削除する
+
 csw_input=CSWからのパッケージ
 csw_install=コマンド $1でパッケージをインストールしています ..
 csw_ok=..インストールが完了しました。
@@ -168,20 +185,24 @@ csw_name=CSW
 csw_form=パッケージのアップグレード
 csw_upgrade=インストールされているすべてのパッケージをアップグレードする
 csw_updatedesc=コマンド $1..を使用して、インストールされているすべてのパッケージをアップグレードしています
+
 missing_msg=$1パッケージは、 $2を使用してWebminによって自動的にインストールできます。
 missing_now=今すぐインストール
+
 find_title=パッケージを検索
 find_search=一致するパッケージを検索：
 find_name=名前
 find_version=バージョン
 find_desc=説明
 find_none=検索に一致するパッケージは見つかりませんでした。
+
 msi_users=新しいアプリケーションを利用可能にする
 msi_users0=誰も
 msi_users1=現在の使用者
 msi_users2=すべてのユーザー
 msi_missing=存在しない
 msi_size=間違ったサイズ
+
 hpux_create_target_path=ターゲットパスを作成しますか？
 hpux_mount_all_filesystems=すべてのファイルシステムをマウントしますか？
 hpux_reinstall=再インストールしますか？
@@ -197,6 +218,7 @@ hpux_enforce_dependencies=依存関係を強制しますか？
 hpux_enforce_scripts=スクリプトを実施しますか？
 hpux_enforce_dsa=ディスク容量分析を実施しますか？
 hpux_root=ルートディレクトリ
+
 ports_install=FreeBSDポートのインストール $1 ..
 ports_failed=..一部のポートが失敗しました
 ports_ok=..インストール完了
@@ -207,18 +229,22 @@ ports_form=ポートデータベースの更新
 ports_apply=最新のスナップショットをダウンロード
 ports_upgrade=ポートのスナップショットのダウンロード
 ports_running=コマンド $1..を実行しています
+
 pkg_install=FreeBSDパッケージのインストール $1 ..
 pkg_failed=..一部のパッケージが失敗しました
 pkg_ok=..インストール完了
 pkg_find=pkgngを検索
 pkg_input=pkgngからのパッケージ
+
 pkgsrc_install=pkgsrcパッケージのインストール $1 ..
 pkgsrc_failed=..一部のパッケージが失敗しました
 pkgsrc_ok=..インストール完了
 pkgsrc_find=pkgngを検索
 pkgsrc_input=pkgsrcからのパッケージ
+
 log_IPKG_update=更新されたIPKGデータベース
 log_IPKG_upgrade=アップグレードされたインストール済みIPKGパッケージ
+
 IPKG_name=IPKG
 IPKG_input=IPKGからのパッケージ
 IPKG_find=IPKGを閲覧する ..

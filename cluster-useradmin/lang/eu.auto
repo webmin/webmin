@@ -17,6 +17,7 @@ index_tdesc=deskribapena
 index_tucount=erabiltzaileak
 index_tgcount=Taldeak
 index_ttype=OS motakoa
+
 add_title=Gehitu zerbitzariak
 add_msg=$1 gehitzen ..
 add_gmsg=Zerbitzariak gehitzen $1 taldean.
@@ -26,6 +27,7 @@ add_echeck=$1 zerbitzariak ez ditu erabiltzaile eta talde moduluak
 add_epft=$1 zerbitzariak ez du ostalari honen erabiltzaile fitxategi formatu bera erabiltzen
 add_egft=$1 zerbitzariak ez du ostalari honen taldeko fitxategi formatu bera erabiltzen
 add_ok=$1 gehitu da $2 erabiltzaileekin eta $3 taldeekin.
+
 host_title=Kudeatutako zerbitzaria
 host_header=Softwarearen kudeatutako zerbitzariaren xehetasunak
 host_name=Ostalariaren izena
@@ -34,8 +36,7 @@ host_delete=Kendu kudeatutako zerrendatik
 host_refresh=Erabiltzaileak eta taldeak freskatu
 host_users=Erabiltzaile kopurua
 host_groups=Talde kopurua
-host_ulist=Erabiltzaileak Zerbitzari
-host_glist=Zerbitzari taldeak
+
 host_return=zerbitzariaren xehetasunak
 refresh_title=Erabiltzaileak eta taldeak freskatu
 refresh_header=Zerbitzari guztietatik erabiltzaile eta talde zerrendak berriro eskatzea ..
@@ -49,6 +50,7 @@ refresh_gdel=kendu $1 taldeak
 refresh_done=.. egin
 refresh_del=$1 kendu da zerbitzariaren zerrendatik
 refresh_failed=Ezin izan da $1 : $2 freskatu
+
 uedit_host=Xehetasunak $1 etik aurrera
 uedit_leave=Ez aldatu
 uedit_set=Ezarrita
@@ -66,6 +68,7 @@ uedit_servers=Sortzeko zerbitzaria (k)
 uedit_all=&lt;ostalari guztiak&gt;
 uedit_donthave=&lt;ez duten ostalariak&gt;
 uedit_group=$1 eko kideak
+
 usave_einuse=Izen bera duen erabiltzailea $1 dago dagoeneko
 usave_esecgid=$1 bigarren taldea ez dago
 usave_con=$1 -n sortzen.
@@ -88,16 +91,20 @@ usave_header=Erabiltzaile guztietan $1 erabiltzailea sortzen ..
 usave_header5=Erabiltzailea $1 sortzen $2 an.
 usave_header4=$1 erabiltzailea sortzen $2 taldeko kideetan.
 usave_header3=$1 erabiltzailea sortzen ari ez duten ostalarietan ..
+
 search_hosts=ostalariak
+
 udel_on=$1 etik ezabatzen da.
 udel_servs=Ezabatu etxeko direktoriorik baldin badago
 udel_others=Erabiltzailea beste moduluetan ezabatu nahi duzu?
 udel_dothers=Beste modulu batzuetan ezabatzen ..
 udel_gone=Erabiltzailea ez da existitzen.
 udel_failed=Ezin izan da erabiltzailea ezabatu : $1 
+
 gdel_on=$1 etik ezabatzen da.
 gdel_gone=Erabiltzailea ez da existitzen.
 gdel_failed=Ezin izan da taldea ezabatu : $1 
+
 gsave_create=Taldearen fitxategiaren sarrera gehitzen ..
 gsave_con=$1 -n sortzen.
 gsave_euser=$1 erabiltzailea ez da existitzen
@@ -110,10 +117,12 @@ gsave_header=$1 taldea sortzen ari da ostalari guztietan ..
 gsave_header5=$1 taldean $2 sortzen.
 gsave_header4=$1 taldea sortzen $2 taldeko kideei ..
 gsave_header3=$1 taldea sortzen ez duten ostalarietan ..
+
 gedit_host=Xehetasunak $1 etik aurrera
 gedit_add=Erabiltzaileak gehitu
 gedit_del=Kendu erabiltzaileak
 gedit_donthave=&lt;ez duten ostalariak&gt;
+
 sync_title=Sinkronizatu Zerbitzariak
 sync_desc=Inprimaki honek erabiltzaileak eta taldeak sortzeko aukerarik ez daukan zerbitzarietan sortu ahal izango dituzu, kontuak zure klusterreko zerbitzari guztietan sinkronizatzeko.
 sync_hosts=Zerbitzariak sinkronizatzeko
@@ -141,6 +150,7 @@ sync_test=Erakutsi besterik ez dago zer egingo zenuke?
 sync_makehome=Sortu etxeko direktorioak?
 sync_copy=Fitxategiak kopiatu etxeko direktoriora?
 sync_others=Erabiltzailea beste modulu batzuetan sortu?
+
 log_create_user=$1 erabiltzailea sortu da
 log_delete_user=$1 erabiltzailea ezabatu da
 log_modify_user=Erabiltzailearen aldaketa $1 

@@ -57,20 +57,27 @@ index_rotate=Cập nhật số liệu thống kê
 index_rotatedesc=Nhấp vào nút này để xử lý tất cả lưu lượng truy cập mạng đã đăng nhập cho đến thời điểm hiện tại, làm cho nó có sẵn để báo cáo ngay lập tức.
 index_eiptables=Cảnh báo - Cấu hình IPtables của bạn có lỗi: $1. Thiết lập giám sát băng thông sẽ xóa tất cả các quy tắc tường lửa.
 index_return=mẫu báo cáo
+
 log_setup=Thiết lập giám sát băng thông trên giao diện $1 
 log_turnoff=Giám sát băng thông bị vô hiệu hóa
 log_rotate=Thống kê cập nhật
+
 acl_setup=Có thể thiết lập và vô hiệu hóa giám sát?
+
 turnoff_ecannot=Bạn không được phép vô hiệu hóa giám sát
+
 setup_ecannot=Bạn không được phép kích hoạt giám sát
 setup_eiface=Tên giao diện bị thiếu hoặc không hợp lệ
 setup_ezone=Không thể tìm thấy vùng Shorewall cho giao diện đã chọn
+
 system_firewall=IPtables
 system_ipfw=IPFW
 system_ipfilter=Bộ lọc IP
 system_shorewall=Bờ biển
+
 syslog_syslog=Nhật ký hệ thống
 syslog_syslog-ng=Syslog-NG
+
 rotate_title=Cập nhật số liệu thống kê
 rotate_doing=Xử lý lưu lượng mạng đã đăng nhập ..
 rotate_done=.. làm xong.

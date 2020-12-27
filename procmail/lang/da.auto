@@ -32,6 +32,7 @@ index_man=Rediger konfiguration manuelt
 index_mandesc=Rediger direkte den primære Procmail-konfigurationsfil for at oprette dine egne regler, variabler og blokke.
 index_ecmd=Procmail-programmet $1 blev ikke fundet på dit system. Enten er den ikke installeret, eller <a href='$2'>modulkonfiguration</a> er forkert.
 index_delete=Slet valgte handlinger
+
 edit_title2=Rediger handling
 edit_title1=Opret handling
 edit_header1=Detaljer om leveringshandlingen
@@ -67,6 +68,7 @@ edit_none=Ingen
 edit_lock=Specifik fil
 edit_ctype=Tilstandstype
 edit_cvalue=Regelmæssig udtryk eller kommando
+
 save_err=Gemt handling ikke
 save_eaction_0=Manglende fil, der skal tilføjes
 save_eaction_1=MH-mappen mangler at skrive til
@@ -79,6 +81,7 @@ save_elockfile=Manglende navn på låsefil
 save_esize=Manglende eller ugyldig poststørrelse for tilstand $1 
 save_ere=Manglende regelmæssigt udtryk for tilstand $1 
 save_eshell=Manglende kommando til betingelse $1 
+
 env_title1=Opret variabel
 env_title2=Rediger variabel
 env_header=Procmail-miljøvariabel
@@ -86,15 +89,19 @@ env_name=Variabel navn
 env_value=Værdi
 env_err=Kunne ikke gemme variablen
 env_ename=Manglende eller ugyldigt variabelnavn
+
 inc_title1=Tilføj inkluder fil
 inc_title2=Rediger Inkluder fil
 inc_header=Inkluderet procmail-regler fil
 inc_inc=Inkluderet fil
 inc_einc=Ingen inkluderet fil indtastet
+
 config_eline=Ukendt linje $1 i $2 : $3 
+
 manual_title=Rediger konfiguration
 manual_desc=Denne side kan bruges til manuelt at redigere Procmail-konfigurationsfilen $1. Vær forsigtig, da der ikke foretages nogen syntaksekontrol.
 manual_edata=Der blev ikke leveret nogen data fra din browser!
+
 log_create_rec=Oprettet opskrift til $1 
 log_delete_rec=Slettet opskrift til $1 
 log_modify_rec=Ændret opskrift til $1 
@@ -114,7 +121,9 @@ log_delete_inc=Slettet inkluderer fil $1
 log_manual=Manuel redigeret konfiguration
 log_up=Flyttede en post op
 log_down=Flyttede en post nede
+
 delete_err=Kunne ikke slette handlinger
 delete_enone=Ingen valgt
+
 check_epostfix=Procmail er ikke aktiveret i din Postfix-konfiguration. Konfigurationsfilen <tt>$2</tt> skal have indstillingen <tt>$1</tt> indstillet til <tt>$3</tt>.
 check_esendmail=Sendmail er ikke opsat til at bruge Procmail til lokal levering. Dette kan konfigureres i Webmins <a href='$1'>Sendmail Mail Server</a> modul.

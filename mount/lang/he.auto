@@ -12,6 +12,7 @@ index_return=רשימת מערכות הקבצים
 index_none=אין לך גישה למערכות קבצים מורכבות.
 index_mount2=הר עם סיסמא:
 index_root=מערכת קבצים שורש
+
 edit_title=ערוך הר
 create_title=צור הר
 edit_err=עריכת הר נכשלה
@@ -58,6 +59,7 @@ edit_ecannot=אינך רשאי לערוך את מערכת הקבצים הזו
 edit_ecannot2=אינך מורשה להוסיף מערכות קבצים חדשות
 edit_3_or_lower=3 (או נמוך יותר)
 edit_advanced=מצב מתקדם
+
 save_err=שמירת הר נכשלה
 save_edir='$1' is not a directory
 save_edirname='$1' is not a valid directory name
@@ -74,8 +76,10 @@ save_apply=החל לרשימה קבועה
 save_fapply=הכח את ההר
 save_eremount=Remount failed : $1
 save_enone=לא בחרת לשמור או לטפס
+
 swap_err=יצירת קובץ החלפה נכשלה
 swap_esize='$1' is not a valid size
+
 nfs_server=בחר שרת NFS ..
 nfs_select=בחר שרת NFS שאליו ניתן לעלות ..
 nfs_ip=כתובת ה - IP
@@ -87,6 +91,7 @@ nfs_seldir=בחר במדריך NFS להרכבה ..
 nfs_seldirv4=עבור הר NFSv4, עליך לבחור '/'
 nfs_dir=מדריך
 nfs_clients=לקוחות
+
 smb_choose=בחר שרת CIFS ..
 smb_elist=Failed to retrieve server list from $1. Maybe the server does not allow browsing
 smb_eworkgroup=לא הוגדרה קבוצת עבודה בדף תצורת המודול
@@ -103,6 +108,7 @@ smb_sel2=בחר שיתוף לעלות ..
 smb_share=שתף
 smb_comment=תגובה
 smb_noshares=There are no available file shares on the server $1
+
 solaris_scsidev=SCSI controller $1 target $2 unit $3 partition $4
 solaris_idedev=IDE controller $1 drive $2 partition $3
 solaris_mddev=RAID device $1
@@ -240,6 +246,7 @@ solaris_efstyp2=Failed to check filesystem type : $1
 solaris_ecachedir='$1' is not a valid cache directory
 solaris_efmode='$1' is not a valid octal file mode
 solaris_edmode='$1' is not a valid octal directory mode
+
 linux_eamd=AMD נכשל
 linux_eauto=Automount failed : $1
 linux_esmbconn=נכשל נסיון להתחבר לשרת
@@ -361,6 +368,7 @@ linux_noenforce=כן, אבל אל אכוף
 linux_df=לכלול חסימות שמורות בגודל מערכת הקבצים?
 linux_noatime=להימנע מעדכון זמני הגישה האחרונים?
 linux_netdev=לחכות עד שממשקי הרשת יעלו?
+linux_nofail=להמשיך באתחול גם אם ההרכב נכשל?
 linux_ecname=שם נטביוס לקוח חסר או לא חוקי
 linux_emname=שם מארח או כתובת IP חסרים או לא חוקיים
 linux_bind=מדריך מקורי
@@ -386,6 +394,7 @@ linux_nounix=האם להשבית תוספי יוניקס של CIFS?
 linux_noserverino=לייצר מספרי כניסה בצד הלקוח?
 linux_cvers=גרסת CIFS
 linux_ecvers=גרסת CIFS חייבת להיות מספר
+
 log_mount=Mounted $3
 log_mount_l=Mounted $2 $1 on $3
 log_umount=Unmounted $3
@@ -399,7 +408,9 @@ log_modify_l=Modified $2 mount $1 on $3
 log_delete=Deleted mount $3
 log_delete_l=Deleted $2 mount $1 on $3
 log_swap=Created swap file $1
+
 unmount_err=Failed to unmount $1
+
 mount_err=Failed to mount $1
 irix_nhost=שם מארח של NFS
 irix_ndir=מדריך NFS
@@ -430,6 +441,7 @@ irix_rock=האם להשתמש בתוספי רוק רידג '?
 irix_nofsck=לבדוק את מערכת הקבצים בזמן האתחול?
 irix_auto=מקור רכב אוטומטי
 irix_automap=קובץ מפה
+
 irix_ehost=The host '$1' does not exist
 irix_eloss=The host '$1' is down
 irix_eshowmount=The host '$1' does not support NFS
@@ -447,9 +459,11 @@ irix_efstyp2=Failed to get filesystem type $1 : $2
 irix_efstyp=The type of filesystem on $1 is $2, not $3
 irix_eautomap=Automounter map file '$1' does not exist
 irix_eauthmap2=קובץ מפת אוטומטי של מפגשים אוטומטיים חסר או לא חוקי
+
 irix_devroot=מחיצת שורש
 irix_devswap=החלף מחיצה
 irix_autohosts=כל היצוא של NFS
+
 acl_only=רק לאפשר הרכבה והסרה?
 acl_fs=מערכות קבצים שניתן לערוך
 acl_types=סוגי מערכות קבצים שניתן להשתמש בהם
@@ -462,8 +476,10 @@ acl_hide=להסתיר מערכות קבצים בלתי ניתנות לעריכה
 acl_simple=להציג טופס הרכבה פשוט?
 acl_simopts=הצגת אפשרויות מערכת קבצים מפושטות?
 acl_browse=להראות כפתורי עיון לקובץ ולשתף?
+
 egcc=מהדר ה- GCC או CC הדרוש לבניית תוכנית לרישום מערכות קבצים מותקנות במערכת שלך אינו זמין.
 ecompile=An error has occurred building a program for listing mounted filesystems on your system : $1
+
 freebsd_eaddr=כתובת שרת חסרה או לא חוקית
 freebsd_eworkgroup=קבוצת עבודה חסרה או לא תקפה
 freebsd_ide=IDE דיסק קשיח
@@ -477,8 +493,10 @@ freebsd_idedev=IDE device $1, slice $2, partition $3
 freebsd_scsidev=SCSI device $1, slice $2, partition $3
 freebsd_edevpath=Other device must be an absolute path, like <tt>/dev/cdrom</tt>
 freebsd_edevfile=The device file '$1' does not exist
+
 cswap_file=The swap file $1 does not exist.
 cswap_size=צור וקבע קובץ החלפה בגודל
+
 acl_sysinfo=להציג נתוני דיסק זמינים בלוח המחוונים?
 sysinfo_total=סה"כ
 sysinfo_dev=מזהה מכשיר

@@ -25,6 +25,7 @@ index_family=Mudell tal-familja
 index_serial=Numru tas-serje
 index_capacity=Kapaċità
 index_norm=Normalizzat:
+
 monitor_type=SMART Drive Iċċekkja
 monitor_type2=Wearout SSD
 monitor_drive=Sewqan biex tivverifika
@@ -40,14 +41,17 @@ monitor_wearlevel=Ma tgħaddix jekk il-livell ta ’xedd jaqa’ taħt
 monitor_ewearlevel=Perċentwali tal-livell ta 'xedd mhux validu
 monitor_nowearout=Is-sewqan ma jirrapportax indikatur ta 'użu ta' SSD
 monitor_wornout=Il-livell ta 'xedd naqas għal $1 
+
 short_title=Test Awto Qasir
 short_doing=Bidu awto-test qasir ta ' $1 ..
 short_failed=.. naqas!
 short_ok=.. it-test beda OK. Ara l-istat tas-sewqan fuq il-paġna ewlenija tal-modulu għar-riżultati.
+
 ext_title=Test Awt Estendut
 ext_doing=Bidu test awtonomu estiż ta ' $1 ..
 ext_failed=.. naqas!
 ext_ok=.. it-test beda OK. Ara l-istat tas-sewqan fuq il-paġna ewlenija tal-modulu għar-riżultati.
+
 data_title=Test tal-Ġbir tad-Dejta
 data_doing=Bidu tal-ġbir tad-dejta offlajn fuq $1 ..
 data_failed=.. naqas!

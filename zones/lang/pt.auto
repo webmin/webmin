@@ -4,6 +4,7 @@ index_none=Nenhuma zona foi definida ainda.
 index_add=Adicione uma nova zona.
 index_return=lista de zonas
 index_zones=Zonas existentes
+
 edit_title=Editar zona
 edit_common=Configuração geral da zona
 edit_name=Nome da zona
@@ -57,20 +58,26 @@ edit_attrnone=Nenhum atributo genérico foi definido ainda.
 edit_attradd=Adicione um novo atributo genérico.
 edit_webmin=Abra o Webmin
 edit_brand=Marca
+
 ui_cancel=Cancelar
+
 save_err=Falha ao salvar a zona
 save_epool=Pool ausente ou inválido
 save_ewebmin=O Webmin não está sendo executado nesta zona
+
 reboot_title=Zona de reinicialização
 reboot_rusure=Tem certeza de que deseja reiniciar a zona $1 ? Todos os processos em execução nele serão reiniciados.
 reboot_err=Falha ao reiniciar a zona
 reboot_doing=Agora zona de reinicialização ..
+
 reboot_failed=.. falhou :
 reboot_ok=.. completo.
+
 halt_title=Zona de desligamento
 halt_rusure=Tem certeza de que deseja desligar a zona $1 ? Todos os processos em execução nele serão interrompidos.
 halt_err=Falha ao desligar a zona
 halt_doing=Agora desligando a zona ..
+
 boot_title=Zona de Inicialização
 boot_err=Falha na zona de inicialização
 boot_doing=Agora inicializando a zona ..
@@ -78,10 +85,12 @@ delete_title=Excluir zona
 delete_rusure=Tem certeza de que deseja excluir a zona $1 ? Todos os arquivos em seus sistemas de arquivos privados serão perdidos.
 delete_err=Falha ao excluir a zona
 delete_doing=Agora excluindo zona ..
+
 uninstall_title=Desinstalar sistema
 uninstall_rusure=Tem certeza de que deseja desinstalar o software do sistema da zona $1 ? Todos os arquivos em seus sistemas de arquivos privados serão perdidos.
 uninstall_err=Falha ao desinstalar o software do sistema da zona
 uninstall_doing=Agora desinstalando o sistema da zona ..
+
 install_title=Instalar sistema
 install_doing=Agora instalando o sistema na zona ..
 net_title1=Criar interface de rede
@@ -96,6 +105,7 @@ net_enetmask=Máscara de rede inválida
 net_eaddress=Endereço IP inválido
 net_egone=A interface não existe mais!
 net_eclash=Já existe uma interface de rede com o mesmo endereço IP nesta zona
+
 pkg_title1=Adicionar diretório de pacotes
 pkg_title2=Editar diretório de pacotes
 pkg_header=Detalhes do diretório herdado do pacote
@@ -107,6 +117,7 @@ pkg_eclash=O diretório do pacote já existe nesta zona
 pkg_inherit=Herdar pacotes da região global
 pkg_inherit_yes=Sim (zona raiz esparsa)
 pkg_inherit_no=Não (zona raiz inteira)
+
 fs_title1=Criar sistema de arquivos
 fs_title2=Editar sistema de arquivos
 fs_header=Detalhes adicionais do Sistema de Arquivos
@@ -128,6 +139,7 @@ fs_eoptions=Opções de montagem inválidas (deve ser uma lista separada por ví
 fs_egone=O sistema de arquivos não existe mais!
 fs_mount=Montar depois de criar?
 fs_eclash=Já existe um sistema de arquivos usando o mesmo diretório nesta zona
+
 rctl_title1=Criar controle de recursos
 rctl_title2=Editar controle de recursos
 rctl_header=Tipo de controle de recursos e limites
@@ -148,6 +160,7 @@ rctl_elimit=Não é um número
 rctl_eaction=Nenhum sinal selecionado na linha $1 
 rctl_evalues=Nenhum limite inserido
 rctl_eclash=Um controle para o mesmo recurso já existe nesta zona
+
 attr_title1=Criar atributo genérico
 attr_title2=Editar atributo genérico
 attr_header=Detalhes do atributo da zona genérica
@@ -165,6 +178,7 @@ attr_euint=O valor não é um número inteiro positivo
 attr_eboolean=O valor não é 'verdadeiro' ou 'falso'
 attr_egone=O atributo não existe mais!
 attr_eclash=Um atributo com o mesmo nome já existe nesta zona
+
 status_running=Corrida
 status_installed=Interrompido
 status_configured=Não instalado
@@ -172,13 +186,16 @@ status_incomplete=Sendo Instalado
 status_ready=pronto
 status_down=Baixa
 status_shutting_down=Desligando
+
 list_name=Nome da zona
 list_id=Nº de identificação
 list_path=Diretório de zonas
 list_status=Status
 list_actions=Ações
+
 zone_in=Na zona $1 
 pool_none=Nenhum
+
 create_title=Criar zona
 create_header=Novos detalhes da zona
 create_path=Diretório de arquivos da zona
@@ -239,6 +256,7 @@ create_erouter=Endereço IP do roteador padrão ausente ou inválido
 create_removingpkgs=removendo diretórios de pacotes herdados. ..
 create_brand=Marca
 create_brandmsg=Zona da marca
+
 log_create_zone=Zona criada $1 
 log_delete_zone=Zona excluída $1 
 log_save_zone=Configuração modificada para a zona $1 
@@ -262,6 +280,7 @@ log_delete_rctl=Controle de recurso excluído para $1 na zona $2
 log_create_attr=Atributo genérico criado $1 na zona $2 
 log_modify_attr=Atributo genérico modificado $1 na zona $2 
 log_delete_attr=Atributo genérico excluído $1 na zona $2 
+
 webmin_eperl=Perl não está instalado em $1 
 webmin_eroot=O diretório $1 não existe ou não contém Webmin.
 webmin_title=Instale o Webmin

@@ -21,6 +21,7 @@ index_mailfromnone=Lehenespenez (<tt>root</tt>)
 index_program=Arazoak hautematen direnean exekutatzeko agindua
 index_programnone=Ez exekutatu
 index_monitor=Jarraipena gaituta dago?
+
 linear=Lineala (Concatenated)
 raid0=RAID0 (marraduna)
 raid1=RAID1 (ispilua)
@@ -29,6 +30,7 @@ raid5=RAID5 (Banatutako paritatea)
 raid6=RAID6 (Banatutako parekidetasun bikoitza)
 raid10=RAID10 (Marradura eta ispilua)
 blocks=bloke
+
 create_title=Sortu RAID gailua
 create_header=RAID gailuaren aukerak
 create_device=Gailuaren fitxategia
@@ -62,6 +64,7 @@ create_o2_layout=2 konpentsatutako kopiak
 create_n3_layout=3 Kopiak gertu
 create_f3_layout=3 ale luze
 create_o3_layout=3 konpentsatutako kopiak
+
 view_title=RAID gailua
 view_header=RAID gailuaren aukerak
 view_device=Gailuaren fitxategia
@@ -117,6 +120,7 @@ view_mountmsg=Sartu direktorio bat eta egin klik botoi honetan RAID gailua munta
 view_mountmsg2=Egin klik botoi honetan RAID gailua zure sisteman memoria birtuala erabiltzeko.
 view_blocks=$1 bloke
 view_sparegroup=Ordezko taldea
+
 mkfs_title=Sortu fitxategi sistema
 mkfs_header2=Inprimaki honek $2 fitxategi sistema berria $1 eraikitzeko aukera ematen du. <b> Dauden datu guztiak ezabatuko dira!
 mkfs_options=Linux fitxategi-sistemaren aukera berriak
@@ -124,6 +128,7 @@ mkfs_err=Huts egin du fitxategi sistema sortzerakoan
 mkfs_exec=$1 komandoa exekutatzen.
 mkfs_failed=.. Komandoak huts egin du!
 mkfs_ok=.. agindua bukatuta.
+
 emkraid=<tt>mkraid</tt> huts egin du : $1 
 eraidstop=<tt>raidstop</tt> huts egin du : $1 
 eraidstart=<tt>raidstart</tt> huts egin du : $1 
@@ -135,6 +140,7 @@ emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
 log_create=$1 RAID gailua sortu da $2
 log_stop=$1 RAID gailua desaktibatuta
 log_start=$1 gaitutako RAID gailua
@@ -147,14 +153,17 @@ log_grow=Grown RAID gailua $1 disko guztietatik $2 ra
 log_convert_to_raid6=$1 RAID5 gailu bihurtu da RAID6 gailu batera
 log_convert_to_raid5=$1 RAID6 gailu bihurtu da RAID5 gailu batera
 log_notif=Eguneratutako RAID arazoa jakinarazteko aukera
+
 notif_err=Huts egin du RAID arazoen jakinarazpen aukerak gordetzean
 notif_emailaddr=Falta edo jakinarazpen helbide baliogabea
 notif_emailfrom=Falta edo baliogabea helbidetik
 notif_eprogram=Programa falta da edo ez dago exekutatzeko
+
 delete_title=Ezabatu RAID array
 delete_rusure=Ziur zaude $1 RAID matrizea ezabatu nahi duzula, $2 diskoko espazioa erabiltzen duena?
 delete_ok=Bai, Ezabatu
 delete_eidx=Ez da RAID arrayrik aukeratu!
+
 remove_title=Kendu partizioa RAID Array-tik
 remove_rusure=Ziur zaude $1 zatiaren RAID $2 partizioa kendu nahi duzula?
 remove_ok=Bai, kendu

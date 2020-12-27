@@ -12,6 +12,7 @@ index_ereq_resource_cmd=הסקריפט לבקשת משאבים מהצומת הא
 index_version=גרסת פעימות הלב $1 
 index_noversion=אזהרה - לא ניתן היה לאתר אוטומטית את גרסת Heartbeat המותקנת במערכת שלך. עליך להגדיר אותו בדף <a href='$1'>תצורת המודול</a>.
 index_status=מצב פעימות לב
+
 conf_title=אפשרויות תצורה
 conf_header=אפשרויות תצורה של פעימות לב
 conf_serials=יציאות דופק סידורי
@@ -54,6 +55,7 @@ conf_auto_on=$ {conf_enabled}
 conf_auto_off=$ {conf_disabled}
 conf_auto_legacy=מצב מדור קודם
 conf_auto_=$ {default}
+
 res_title=משאבי אשכול
 res_node=צומת ראשוני
 res_ips=כתובות IP
@@ -67,6 +69,7 @@ res_getserv=קבל משאבים
 res_hbdown=פעימות לב למטה
 res_up=UP
 res_down=מטה
+
 node_create=הוסף משאב אשכול
 node_edit=ערוך משאב אשכול
 node_header=פרטי משאב אשכול
@@ -83,6 +86,7 @@ node_enone=הצומת הראשי חסר או לא חוקי
 node_eip='$1' אינה כתובת IP חוקית
 node_ecidr='$1' אינו CIDR תקף
 node_ebroad='$1' אינה כתובת שידור חוקית
+
 auth_title=מפתחות אימות
 auth_header=אימות צומת אשכול
 auth_mode=מצב אימות
@@ -92,6 +96,8 @@ auth_md5=MD5 עם סיסמא
 auth_err=שמירת מפתחות האימות נכשלה
 auth_emd5=סיסמת MD5 חסרה או לא חוקית
 auth_esha1=סיסמת SHA1 חסרה או לא חוקית
+
 start_err=ההתחלה של פעימות לב נכשלה
+
 apply_err=החלת השינויים נכשלה
 apply_epid=התהליך אינו פועל עוד

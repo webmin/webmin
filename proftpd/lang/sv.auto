@@ -27,7 +27,9 @@ index_global=Global konfiguration
 index_create=Skapa virtuell server
 index_version=ProFTPd-version $1 
 index_proftpd=proftpd
+
 efailed=Det gick inte att spara $1 
+
 type_0=Nätverksalternativ
 type_1=Loggningsalternativ
 type_2=Filer och kataloger
@@ -35,6 +37,7 @@ type_3=Åtkomstkontroll
 type_4=Diverse
 type_5=Användare och grupp
 type_6=autentisering
+
 virt_title=Virtuella serveralternativ
 virt_header1=För $1 
 virt_header2=För standardserver
@@ -50,6 +53,7 @@ virt_cmds=FTP-kommandon
 virt_return=virtuell server
 virt_virt=Konfigurera virtuell server
 virt_edit=Redigera direktiv
+
 vserv_title=Konfigurera virtuell server
 vserv_addr=Adress
 vserv_name=Server namn
@@ -58,6 +62,7 @@ vserv_delete=Radera virtuell server
 vserv_eaddr=Saknad eller ogiltig adress
 vserv_eport=Portnummer saknas eller ogiltigt
 vserv_ename=Servernamn saknas
+
 anon_title=Anonyma FTP-alternativ
 anon_header1=I virtuell server $1 
 anon_header2=I standardserver
@@ -65,6 +70,7 @@ anon_anon=Konfigurera anonym FTP
 anon_return=anonyma FTP-alternativ
 anon_header3=För anonym FTP i virtuell server $1 
 anon_header4=För anonym FTP i standardserver
+
 aserv_title=Konfigurera anonym FTP
 aserv_create=Installera anonym FTP
 aserv_root=Begränsa till katalogen
@@ -75,6 +81,7 @@ aserv_eroot=Saknad eller ogiltig chrootkatalog
 aserv_euser=Unix-användare saknas eller ogiltig
 aserv_egroup=Unix-grupp saknas eller ogiltig
 aserv_desc=Anonym FTP har ännu inte konfigurerats för den virtuella servern. Använd detta formulär för att ställa in de initiala konfigurationsalternativen.
+
 dir_title=Alternativ per katalog
 dir_header2=För katalog $1 i standardserver
 dir_header1=För katalog $1 i virtuell server $2 
@@ -85,6 +92,7 @@ dir_header=Alternativ per kommando
 dir_dir=Konfigurera katalog
 dir_header4=För katalog $1 i anonym FTP
 dir_header5=För katalog $1 globalt
+
 manual_title=Redigera direktiv
 manual_header=Använd textrutan nedan för att manuellt redigera ProFTPD-direktiven i $1 som gäller för den virtuella servern, katalogen eller kommandona.
 manual_configs=Redigera konfigurationsfiler
@@ -92,6 +100,7 @@ manual_ecannot=Du får inte redigera direkt manuellt
 manual_file=Redigera direktiv i fil:
 manual_efile=Ogiltig ProFTPd-konfigurationsfil
 manual_etest=Konfigurationsfilfel upptäckt : $1 
+
 limit_title=Alternativ per kommando
 limit_header4=För kommandon $1 i katalogen $2 
 limit_header2=För kommandon $1 i standardserver
@@ -103,17 +112,20 @@ limit_return=per kommando-alternativ
 limit_header5=För kommandon $1 i anonym FTP
 limit_header6=För kommandon $1 i fil $2 
 limit_header7=För kommandon $1 globalt
+
 lserv_title=Konfigurera kommandon
 lserv_cmd=FTP-kommandon
 lserv_delete=Radera kommandokonfigur
 lserv_err=Det gick inte att spara kommandon
 lserv_ecmd=Inga kommandon har valts
+
 dserv_title=Konfigurera katalog
 dserv_dir=Katalogväg
 dserv_err=Det gick inte att spara katalogen
 dserv_edir=Katalogväg saknas
 dserv_delete=Radera katalogkonfiguration
 dserv_eanondir=Katalogen måste vara under den anonyma FTP-katalogen
+
 mod_core_type=Servertyp
 mod_core_inetd=Kör från Inetd
 mod_core_stand=Fristående demon
@@ -301,6 +313,7 @@ mod_core_duser=Neka användare
 mod_core_eip='$1' är inte en giltig IP-adress
 mod_core_enet='$1' är inte en giltig nätverksadress
 mod_core_ehost='$1' är inte ett giltigt värdnamn
+
 mod_ls_fakegroup=Falska grupper i kataloglistor?
 mod_ls_fakeuser=Fake user i kataloglistor?
 mod_ls_fakemode=Falsa behörigheter i kataloglistor
@@ -317,6 +330,7 @@ mod_ls_efakeuser=Saknad eller ogiltig falsk användare
 mod_ls_efakegroup=Saknad eller ogiltig falsk grupp
 mod_ls_options=Alternativ i kataloglistan
 mod_ls_strict=Åsidosätta användaralternativ?
+
 mod_auth_chdir=Inledande inloggningskatalog
 mod_auth_echdir=Saknad eller ogiltig initial katalog
 mod_auth_chroot=Begränsa användare till kataloger
@@ -330,7 +344,9 @@ mod_auth_egroups=Inga Unix-grupper för chroot har angetts
 mod_auth_echroot=Saknad eller ogiltig chrootkatalog
 mod_auth_login=Be inte om lösenord om inloggning nekas?
 mod_auth_root=Tillåt inloggning via root?
+
 mod_site_chmod=Tillåt chmod-kommando?
+
 mod_unixpw_ufile=Alternativt Unix-lösenordsfil
 mod_unixpw_eufile=Saknad eller ogiltig Unix-lösenordsfil
 mod_unixpw_gfile=Alternativ Unix-gruppfil
@@ -338,6 +354,7 @@ mod_unixpw_egfile=Saknad eller ogiltig Unix-gruppfil
 mod_unixpw_none=Ingen
 mod_unixpw_pam=Behandla du alltid PAM som auktoritativ?
 mod_unixpw_persist=Håll lösenordsfilen öppen hela tiden?
+
 mod_log_syslog=Logga in fel till filen
 mod_log_sysdef=System-logg
 mod_log_esyslog=Saknad eller ogiltig loggfil
@@ -354,19 +371,25 @@ mod_log_fmt=Formatera sträng
 mod_log_format=Anpassade loggformat
 mod_log_enickname=Namnet på formatet saknas eller ogiltigt
 mod_log_efmt=Formatsträng saknas
+
 mod_pam_pam=Använd PAM för autentisering?
 mod_pam_config=Autentisera med PAM-tjänsten
 mod_pam_econfig=PAM-tjänst saknas eller ogiltig
+
 mod_readme_display=Meddela användaren om readme-filer som matchar
 mod_readme_none=Ingen
 mod_readme_edisplay=Mönster av readme-filer saknas
+
 start_err=Det gick inte att starta FTP-servern
 start_einetd=Du kan inte starta serverdemonen i inetd-läge.
+
 stop_err=Det gick inte att stoppa FTP-servern
 stop_einetd=Du kan inte stoppa serverdemonen i inetd-läge.
 stop_erun=Springer inte
+
 apply_err=Det gick inte att tillämpa FTP-konfiguration
 apply_egone=Kör inte längre
+
 ftpaccess_title=Filer per katalogalternativ
 ftpaccess_desc=Ytterligare per katalogalternativ kan anges i en fil (vanligtvis kallad <tt>.ftpaccess</tt>) i varje katalog. Alternativen gäller alla filer i den katalogen och alla underkataloger, såvida de inte åsidosätts av en annan alternativfil.
 ftpaccess_create=Skapa alternativfil
@@ -374,8 +397,10 @@ ftpaccess_find=Hitta alternativfiler
 ftpaccess_auto=Under anonym
 ftpaccess_from=Från katalogen
 ftpaccess_return=lista över alternativ
+
 ftpusers_title=Nektade FTP-användare
 ftpusers_desc=Om den är aktiverad under <tt>Autentisering</tt> -ikonen, kommer användarna som listas nedan från filen $1 att nekas inloggning till FTP-användaren.
+
 ftpindex_title=Alternativkatalog per katalog
 ftpindex_delete=Radera fil
 ftpindex_opts=Alternativ per katalog
@@ -385,8 +410,10 @@ ftpindex_addlimit=Lägg till alternativ per kommando för ..
 ftpindex_header2=$1 i $2 
 ftpindex_return=per katalogalternativfil
 ftpindex_header=För $1 
+
 find_err=Det gick inte att hitta alternativfiler
 find_eanon=Anonym FTP är inte inställd på någon virtuell server
+
 log_global=Ändrade globala $1 -alternativ
 log_ftpusers=Ändrade avvisade FTP-användare
 log_virtc=Skapad server $1 
@@ -420,6 +447,7 @@ log_anonm=Manuell redigerad anonym FTP för server $1
 log_anon=Ändrade $1 i anonym FTP för server $2 
 log_start=Startade proftpd
 log_apply=Tillämpade ändringar
+
 eafter=Konfigurationsverifiering misslyckades: $1 Ändringar har inte sparats.
 proftpd_apply=Applicera förändringar
 proftpd_stop=Stoppa ProFTPd

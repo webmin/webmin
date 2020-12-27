@@ -24,6 +24,7 @@ index_calamaris=Calamaris 日志分析
 index_return=索引
 index_squidver=本命令<tt>$1</tt>返回：
 index_version=Squid 版本$1
+
 buttsave=保存
 buttdel=删除
 buttcreat=创建
@@ -33,6 +34,7 @@ default=默认
 none=无
 on=开
 off=关
+
 acl_header1=创建 ACL
 acl_header2=编辑 ACL
 acl_name=ACL 名称
@@ -75,6 +77,7 @@ acl_failurl=错误的 URL
 acl_buttsave=保存
 acl_buttdel=删除
 acl_return=ACL 列表
+
 aclsave_failsave=无法保存 ACL
 aclsave_faildel=无法删除 ACL 
 aclsave_epr=代理约束正在使用此ACL
@@ -92,10 +95,12 @@ aclsave_eehour=无效的结束时间（以小时为单位）
 aclsave_esmin=无效的开始时间（以分钟为单位）
 aclsave_eemin=无效的结束时间（以分钟为单位）
 aclsave_efile=您没有写入 ACL 文件‘$1’的权限
+
 cach_ecannot=您没有访问高速缓存管理员统计的权限
 cach_err=错误
 cach_nfound=在您的系统中没有找到Squid高速缓存管理程序<tt>$1</tt>。可能您的<a href=/config.cgi?$2 >模块配置</a>有误。
 cach_return=squid 索引
+
 chown_header=更改所有者
 chown_stop=停止 squid ...
 chown_done=.. 完成
@@ -103,6 +108,7 @@ chown_chown=更改所有者 ...
 chown_restart=重新启动 Squid...
 chown_failrestart=重新启动 Squid 失败 ..
 chown_return=squid 索引
+
 clear_ecannot=您没有清除并重新创建高速缓冲的权限
 clear_header=清除和重建高速缓存
 clear_msgclear=您确定要清除和重建Squid的高速缓存? 这样做将会删除<b>所有的保存在</b>高速缓存中的文件，并且会重新启动Squid服务器。
@@ -114,6 +120,7 @@ clear_del=删除旧的高速缓存文件 ..
 clear_init=以命令 <tt>$1</tt> 初始化 Squid 高速缓存
 clear_failrestart=重启 Squid 失败 ..
 clear_return=squid 索引
+
 eacl_ecannot=您没有编辑访问控制的权限
 eacl_header=访问控制
 eacl_acls=访问控制列表
@@ -128,12 +135,14 @@ eacl_acls1=ACL
 eacl_move=移动
 eacl_nopr=没有定义代理约束规则
 eacl_addpr=添加代理约束规则
+
 eacl_icpr=ICP 约束
 eacl_noicpr=没有定义 ICP 约束
 eacl_addicpr=添加 ICP 约束
 eacl_return=squid 索引
 eacl_allow=允许
 eacl_deny=拒绝
+
 eadm_ecannot=您没有编辑管理选项的权限
 eadm_header=管理选项
 eadm_aao=管理和通报选项
@@ -160,6 +169,7 @@ eadm_caf=高速缓存通报文件
 eadm_annp=通报周期
 eadm_buttsave=保存
 eadm_return=squid索引
+
 eauth_ecannot=您没有编辑代理验证的权限
 eauth_header=Proxy 验证
 eauth_aopt=验证选项
@@ -173,6 +183,7 @@ eauth_pusers=代理用户
 eauth_nopusers=当前没有定义的代理用户。
 eauth_addpuser=新增新的代理用户
 eauth_return=squid 索引
+
 ec_ecannot=您没有编辑高速缓冲选项的权限
 ec_header=高速缓存选项
 ec_cro=高速缓存和请求选项
@@ -222,6 +233,7 @@ ec_wrh=WAIS 转发主机
 ec_wrp=WAIS 转发端口
 ec_buttsave=保存
 ec_return=squid 索引
+
 ech_header=创建高速缓存主机
 ech_header1=编辑高速缓存主机
 ech_cho=高速缓存主机选项
@@ -256,6 +268,7 @@ ech_dqfd=不询问域
 ech_buttsave=保存
 ech_buttdel=删除
 ech_return=高速缓存列表
+
 eicp_ecannot=您没有编辑其他高速缓存的权限
 eicp_header=其它高速缓存
 eicp_opcs=其它代理高速缓存服务器
@@ -288,6 +301,7 @@ eicp_addalways=增加直接获取的 ACL
 eicp_never=永远不直接获取的 ACL
 eicp_nonever=未定义永远直接获取的 ACL
 eicp_addnever=增加永远直接获取的 ACL
+
 elogs_ecannot=您没有编辑登录的权限
 elogs_header=登录
 elogs_lalo=登录和登录文件选项
@@ -307,6 +321,7 @@ elogs_ln=登录网络掩码
 elogs_do=调试选项
 elogs_mht=MIME 头表
 elogs_return=squid 索引
+
 emem_ecannot=您没有编辑内存使用的权限
 emem_dheader=内存和磁盘的使用
 emem_header=内存使用
@@ -332,6 +347,7 @@ emem_lfuda=动态使用频率最少
 emem_hlru=累积使用频率最少
 emem_return=squid 索引
 emem_mrp=内存替换策略
+
 emisc_ecannot=您没有编辑杂项的权限
 emisc_header=杂类选项
 emisc_mo=杂类选项
@@ -366,6 +382,7 @@ emisc_hawp=HTTP 带代理加速
 emisc_wccprtr=WCCP 路由地址
 emisc_wccpin=WCCP 进入地址
 emisc_wccpout=WCCP 外发地址
+
 eports_ecannot=您没有编辑端口和网络的权限
 eports_header=端口和联网
 eports_pano=端口和联网选项
@@ -383,6 +400,7 @@ eports_mg=多点传送组
 eports_trb=TCP接收缓冲区
 eports_od=OS 默认
 eports_return=squid 索引
+
 eprogs_ecannot=您没有编辑帮助程序的权限
 eprogs_header=帮助程序
 eprogs_chpo=高速缓存辅助程序选项
@@ -403,6 +421,7 @@ eprogs_norp=重定向程序数目
 eprogs_cap=客户验证程序
 eprogs_noap=客户验证程序数目
 eprogs_return=squid 索引
+
 euser_header=创建代理用户
 euser_header1=编辑代理用户
 euser_pud=代理用户详细
@@ -411,6 +430,7 @@ euser_p=口令
 euser_u1=未改变
 euser_e=启动？
 euser_return=用户列表
+
 ahttp_header=创建代理约束
 ahttp_header1=编辑代理约束
 ahttp_pr=代理约束
@@ -420,7 +440,9 @@ ahttp_d=拒绝
 ahttp_ma=匹配 ACL
 ahttp_dma=不匹配 ACL
 ahttp_return=ACL 列表
+
 sahttp_ftspr=保存代理约束失败
+
 aicp_header=创建 ICP 约束
 aicp_header1=编辑 ICP 约束
 aicp_ir=ICP 约束
@@ -430,14 +452,18 @@ aicp_d=禁止
 aicp_ma=匹配 ACL
 aicp_dma=不匹配ACL
 aicp_return=ACL 列表
+
 saicp_ftsir=保存ICP约束失败
+
 icache_ecannot=您没有初始化高速缓存的权限
 icache_ftic=初始化高速缓存失败
 icache_ymcautrsa=您必须选择运行Squid的用户
 icache_itscwtc=使用命令<tt>$1</tt>初始化Squid高速缓存
 icache_return=squid 索引
 icache_title=初始化 Cache
+
 restart_ftrs=重新配置squid失败
+
 sadmin_ftsao=保存管理选项失败
 sadmin_header=改变所有者
 sadmin_msg1=您已经改变了squid运行的用户和组。为使更改生效, 您应更新所有高速缓存和登录文件的所有者，并重新启动squid。
@@ -447,10 +473,12 @@ sadmin_inavea='$1' 不是一个有效的邮件地址
 sadmin_inavh='$1' 不是一个有效的主机名
 sadmin_inavap='$1' 不是一个有效的通报时期
 sadmin_inavp='$1' 不是一个有效的端口号
+
 sauth_ftsao=保存验证选项失败
 sauth_iomuf=无效或未输入用户文件名
 sauth_iomd=无效或未输入域名
 sauth_msg1=您的Squid版本不支持代理验证
+
 scache_ftsco=保存高速缓存选项失败
 scache_emsg0=您必须输入至少一个高速缓存目录
 scache_emsg1=高速缓存目录'$1'不存在
@@ -467,34 +495,41 @@ scache_emsg11=‘$1’不是一个有效的目标数
 scache_emsg12=‘$1’不是一个有效的目录大小
 scache_emsg13=‘$1’不是一个有效的主机
 scache_emsg14=‘$1’不是一个有效的端口
+
 schost_ftsc=保存高速缓存失败
 schost_emsg1=‘$1’不是一个有效的高速缓存主机名
 schost_emsg2=‘$1’不是一个有效的代理端口
 schost_emsg3=‘$1’不是一个有效的ICP端口
 schost_emsg4=‘$1’不是一个有效的生存时间
 schost_emsg5=‘$1’不是一个有效的均衡
+
 sicp_ftsco=保存高速缓存选项失败
 sicp_emsg1=‘$1’不是一个有效的超时
+
 slogs_ftslo=保存日志选项失败
 slogs_emsg1=‘$1’不是一个有效的绝对文件名
 slogs_emsg2=‘$1’不是一个有效的文件名
 slogs_emsg3=目录'$1'不存在
 slogs_emsg4=‘$1’不是一个有效的网络掩码
 slogs_emsg5=‘$1’不是一个有效的调试选项列表
+
 smem_ftsmo=保存内存选项失败
 smem_emsg1=‘$1’不是一个有效的高速缓存大小
 smem_emsg2=‘$1’不是一个有效的高水印
 smem_emsg3=‘$1’不是一个有效的低水印
 smem_emsg4=‘$1’不是一个有效的目标大小
+
 smisc_ftso=保存选项失败
 smisc_emsg1=‘$1’不是一个有效的旋转数
 smisc_emsg2=‘$1’不是一个有效的域
 smisc_emsg3=‘$1’不是一个有效的代理'$1'
 smisc_emsg4=‘$1’不是一个有效的跳转数
+
 sport_ftspo=保存端口选项失败
 sport_emsg1=‘$1’不是一个有效的端口号
 sport_emsg2=‘$1’不是一个有效的地址
 sport_emsg3=‘$1’不是一个有效的高速缓存大小
+
 sprog_ftshpo=保存帮助程序选项失败
 sprog_emsg1=丢失 FTP 选项
 sprog_emsg2=‘$1’不是一个有效的程序
@@ -504,19 +539,23 @@ sprog_emsg5=‘$1’不是一个有效的程序数
 sprog_emsg6=‘$1’不是一个有效的列宽
 sprog_emsg7=没有输入DNS服务器
 sprog_emsg8=错误IP地址'$1'
+
 suser_ftsu=保存用户失败
 suser_emsg1=错误或丢失用户名
 suser_etaken=用户名已存在
+
 start_ftsq=启动squid失败
 start_ecannot=您没有启动Squid的权限
 stop_ftsq=保存squid失败
 stop_ecannot=您没有关闭Squid的权限
+
 calamaris_ecannot=您没有存取Calamaris日志分析的权限
 calamaris_title=Calamaris 日志分析
 calamaris_last=限制分析到日志的最后 $1 行..
 calamaris_eprog=未找到可执行的 Calamaris。可能您的系统中没有安装，或者您的<a href='$2'>模块配置</a> 有误。
 calamaris_elogs=日志目录 $1 中未包括任何<tt>access.log</tt>文件。可能还没有运行 squid，或者您的<a href='$2'>模块配置</a>不正确。
 calamaris_gen=在 $1 上生成的报告
+
 lib_emsg1=错误的IP地址'$1'
 lib_seconds=秒
 lib_minutes=分
@@ -561,6 +600,7 @@ lib_aclrur=RFC931 用户正则表达式
 lib_buttac=应用更改
 lib_buttss=停止 Squid
 lib_buttss1=启动 Squid
+
 log_ports=改变端口和联网选项
 log_icp=改变其它高速缓存选项
 log_mem=改变内存使用选项
@@ -599,12 +639,15 @@ log_never_create=创建永远不能直接得到的 ACL
 log_never_modify=更改永远不能直接得到的 ACL
 log_never_delete=删除永远不能直接得到的 ACL
 log_never_move=移动永远不能直接得到的 ACL
+
 acl_root=ACL 文件的 Root 目录
 acl_sections=已允许的配置页
 acl_start=可以启动、关闭squid吗？
+
 always_create=创建直接获取
 always_edit=编辑直接获取
 always_header=匹配 ACL 的直接获取请求
+
 never_create=创建间接获取
 never_edit=编辑间接获取
 never_header=匹配 ACL 的间接获取请求

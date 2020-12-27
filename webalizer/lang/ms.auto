@@ -26,6 +26,7 @@ index_when=Ya, $1
 index_webalizer=Webalizer
 index_enable=Jadual Terpilih
 index_disable=De-Jadual Dipilih
+
 edit_title1=Tambah Fail Log
 edit_title2=Edit Fail Log
 edit_header=Pilihan laporan fail log
@@ -49,12 +50,14 @@ edit_cmode0=Gunakan pilihan global
 edit_cmode1=Pilihan tersuai
 edit_cmode2=Fail konfigurasi yang lain ..
 edit_clear=Padam fail log selepas laporan yang dijadualkan?
+
 gen_title=Hasilkan Laporan
 gen_header=Running Webalizer untuk menjana laporan dari $1 ..
 gen_done=.. selesai
 gen_failed=.. Webalizer gagal! Lihat output di atas untuk maklumat lanjut.
 gen_nothing=.. Webalizer selesai, tetapi tiada laporan dihasilkan. Lihat output di atas untuk maklumat lanjut.
 gen_view=Lihat laporan yang lengkap.
+
 save_err=Gagal menyimpan fail log
 save_efile=Fail log tidak dimasukkan atau tidak wujud
 save_ecfile=Fail config lain yang hilang atau tidak wujud
@@ -64,7 +67,9 @@ save_ewuser=Tiada pengguna Unix yang dipanggil $1 wujud
 save_ehost=Nama hos laman web yang hilang atau tidak sah
 save_etitle=Tajuk laporan yang tiada
 save_ecannot=Anda hanya dibenarkan membuat laporan untuk log di bawah $1 
+
 view_ecannot=Anda tidak dibenarkan melihat laporan ini
+
 global_title=Pilihan Webalisasi Global
 global_title2=Pilihan Laporan Webalizer
 global_for=Untuk logfile $1 
@@ -125,6 +130,7 @@ global_includesite=Pelanggan tidak perlu diabaikan
 global_includereferrer=Rujukan tidak perlu diabaikan
 global_includeuser=Pengguna tidak perlu diabaikan
 global_includeagent=Pelayar tidak perlu diabaikan
+
 global_err=Gagal menyimpan pilihan Webalizer
 global_ereport=Tiada awalan tajuk laporan
 global_ehost=Nama tuan rumah yang tiada atau tidak sah
@@ -134,6 +140,7 @@ global_etable=Saiz yang tiada atau tidak sah untuk jadual '$1'
 global_ehistory=Nama fail sejarah yang hilang atau tidak sah
 global_ecurrent=Nama fail incremental yang hilang atau tidak sah
 global_ecache=Nama fail cache DNS yang hilang atau tidak sah
+
 log_create_log=Pelaporan yang dibuat untuk $1 
 log_modify_log=Pelaporan yang diubahsuai untuk $1 
 log_delete_log=Pelaporan yang dihapus untuk $1 
@@ -142,6 +149,7 @@ log_global=Pilihan Webalisasi global yang diubahsuai
 log_global2=Pilihan Webalisasi yang dimodifikasi untuk $1 
 log_enable_logs=Pelaporan berjadual pada log $1 
 log_disable_logs=Pelaporan yang tidak dijadualkan pada $1 log
+
 acl_view=Bolehkah hanya melihat laporan sedia ada?
 acl_global=Bolehkah mengedit pilihan webalizer global?
 acl_dir=Hanya membenarkan melihat dan mengedit laporan untuk log di bawah

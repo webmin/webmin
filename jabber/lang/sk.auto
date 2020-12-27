@@ -17,6 +17,7 @@ index_restartmsg=Kliknutím na toto tlačidlo použijete aktuálnu konfiguráciu
 index_comments=Upozornenie - váš konfiguračný súbor Jabber $1 obsahuje komentáre, ktoré sa odstránia, ak sa pomocou tohto modulu vykonajú akékoľvek zmeny konfigurácie.
 index_return=Jabber menu
 index_version=Jabber verzia $1 
+
 general_title=Všeobecné možnosti
 general_header=Možnosti globálneho servera Jabber
 general_host=Názov hostiteľa vášho servera
@@ -32,6 +33,7 @@ general_eelogfmt=Chýba formát denníka chýb
 general_erlog=Chýba alebo je neplatný súbor denníka premávky
 general_erlogfmt=Chýba formát denníka prevádzky
 general_epidfile=Chýba alebo je neplatný súbor ID procesu
+
 messages_title=správy
 messages_header=Správa servera Jabber pre klientov
 messages_wsubject=Predmet uvítacej správy
@@ -44,6 +46,7 @@ messages_vcard2jud=Chcete odoslať vizitku vCard do adresára používateľa Jab
 messages_err=Uloženie správ zlyhalo
 messages_evcard=Neplatný formát XML vCard : $1 
 messages_etag=Server vCard XML sa nezačína s kartou &lt;vCard&gt;
+
 modules_title=Jabber moduly
 modules_desc=Nižšie uvedené moduly sa používajú na spracovanie správ prijatých správcom relácií Jabber. Tento zoznam by ste mali zmeniť iba vtedy, ak viete, čo robíte.
 modules_header=Moduly manažéra relácie servera Jabber
@@ -52,6 +55,7 @@ modules_so=Zdieľaná knižnica
 modules_err=Nepodarilo sa uložiť moduly Jabber
 modules_emod='$1' nie je platný názov modulu
 modules_eso=Zdieľaná knižnica „$1“ neexistuje
+
 karma_title=Karma Traffic Control
 karma_header=Možnosti riadenia rýchlosti premávky
 karma_rate=Nadmerná manipulácia s pripojením
@@ -80,6 +84,7 @@ karma_epenalty=Chýbajúce alebo neplatné trestné obdobia
 karma_erestore=Chýbajúce alebo neplatné obdobia obnovenia
 karma_epoints=Chýba alebo je neplatný počet spojení
 karma_etime=Chýbajúci alebo neplatný čas na zablokovanie
+
 ips_title=Kontrola prístupu IP
 ips_header=Kontrola prístupu IP servera Jabber
 ips_allow=Povolené adresy IP klientov
@@ -89,10 +94,12 @@ ips_none=nikto
 ips_sel=Zoznam adries/sieťových masiek ..
 ips_err=Uloženie riadenia prístupu IP zlyhalo
 ips_eaddr='$1' nie je platná IP adresa alebo IP adresa/maska siete
+
 file_title=Upraviť konfiguračný súbor
 file_desc=Použite nasledujúci formulár na priamu úpravu konfiguračného súboru Jabber. Toto by sa malo vykonať iba vtedy, ak rozumiete konfiguračnému formátu XML.
 file_header=Upravte konfiguračný súbor Jabber
 file_err=Nepodarilo sa uložiť konfiguračný súbor
+
 admin_title=Administratívni používatelia
 admin_header=Používatelia správy servera
 admin_read=Správcovia prístupu na čítanie
@@ -100,11 +107,13 @@ admin_write=Správcovia prístupu na zápis
 admin_reply=Automaticky na správu správ?
 admin_rsubject=Autoreply predmet
 admin_rbody=Autoreply message
+
 filter_title=Používateľské filtre
 filter_header=Povolenia filtra používateľa
 filter_max=Maximálne pravidlá filtrovania
 filter_conds=Povolené podmienky filtra
 filter_acts=Povolené akcie filtra
+
 restart_err=Nepodarilo sa uplatniť zmeny
 stop_err=Nepodarilo sa zastaviť Jabbera
 stop_epid=Nepodarilo sa nájsť proces Jabber

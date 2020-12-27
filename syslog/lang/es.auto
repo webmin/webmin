@@ -1,9 +1,11 @@
 index_cmd=Salida de $1 
 index_viewfile=Ver archivo de registro:
 index_viewok=Ver
+
 save_ecannot6=No tiene permiso para ver registros arbitrarios
 save_ecannot7=No tiene permiso para ver este registro adicional
 save_emissing=Falta el archivo de registro para ver
+
 acl_any=¿Puede ver cualquier archivo como un registro?
 acl_extra=Archivos de registro adicionales para este usuario
 acl_syslog=¿Puede ver los registros de syslog?

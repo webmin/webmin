@@ -9,9 +9,12 @@ index_apply=Applica i cambiamenti
 index_applydesc=Fare clic su questo pulsante per applicare la configurazione di esportazione del file corrente. Ciò renderà tutte le directory sopra elencate disponibili con le opzioni specificate.
 index_return=lista delle esportazioni
 index_echeck=Il server NFS non può essere utilizzato su questo sistema : $1 
+
 check_ecmd=Il comando server NFS $1 non è installato
+
 delete_err=Impossibile eliminare le esportazioni
 delete_enone=Nessuno selezionato
+
 edit_title1=Modifica esportazione
 edit_title2=Crea esportazione
 edit_header1=Opzioni di esportazione
@@ -31,6 +34,7 @@ edit_clients=clienti
 edit_hosts=Host / netgroup
 edit_network=Rete
 edit_mask=Maschera
+
 save_err=Impossibile salvare l'esportazione
 save_edir='$1' non è una directory o non esiste
 save_enone=È necessario inserire almeno una directory per esportare
@@ -44,4 +48,5 @@ save_enetwork='$1' non è una rete valida
 save_enetmask='$1' non è una maschera di rete valida
 save_esame1=La directory <tt>$1</tt> è già stata esportata in <tt>$2</tt>. Il tuo sistema operativo non consente alle directory sullo stesso filesystem <i>locale</i> di essere esportate separatamente sullo stesso host
 save_esame2=La directory <tt>$1</tt> è già stata esportata in <tt>$2</tt>. Il tuo sistema operativo non consente alle directory sullo stesso filesystem <i>locale</i> di essere esportate separatamente sulla stessa rete
+
 restart_err=Impossibile applicare le modifiche

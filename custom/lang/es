@@ -10,6 +10,7 @@ index_return=comandos
 index_cmd=Comando
 index_desc=Descripción
 index_ed=Editar...
+
 edit_title=Editar Comando
 create_title=Crear Comando
 edit_ecannot=No está autorizado a editar comandos
@@ -47,6 +48,7 @@ edit_secs=segundos
 edit_clear=¿Limpiar variables de entorno?
 edit_servers=Ejecutar en servidores Webmin
 edit_this=este servidor
+
 save_err=Error al salvar comando
 save_ecannot=No está autorizado a editar comandos
 save_ecmd=No se ha introducido ningún comando
@@ -56,6 +58,7 @@ save_euser=Usuario no válido o sin poner
 save_eorder=La ordenación en la página principal ha de ser un número
 save_etimeout=Máximo tiempo de espera no válido o inexistente
 save_eusermin=Los comandos que se ejecutan en otros servidores no pueden ejecutarse desde Usermin
+
 run_err=Error al ejecutar comando
 run_ecannot=No está autorizado a ejecutar este comando
 run_euser=Usuario no válido o sin poner
@@ -69,6 +72,7 @@ run_noout=No se ha generado salida
 run_ecmduser=El usuario '$1' que se eligió para ejecutar el comando en su nombre, no existe
 run_eopt=Opción seleccionada no válida
 run_timeout=Comando terminado tras un timeout de $1 segundos.
+
 log_modify=Modificado comando $1
 log_create=Creado comando $1
 log_delete=Borrado comando $1
@@ -77,11 +81,13 @@ log_modify_edit=Modificado editor de archivo $1
 log_create_edit=Creado editor de archivo $1
 log_delete_edit=Borrado editor de archivo $1
 log_save_edit=Salvado archivo $1
+
 acl_cmds=Comandos que este usuario puede ejecutar
 acl_call=Todos los comandos
 acl_csel=Los seleccionados...
 acl_cexcept=Todos excepto los seleccionados...
 acl_edit=¿Puede crear y editar comandos?
+
 file_ecannot=No está autorizado a editar archivos
 fcreate_title=Editor para Crear Archivo
 fedit_title=Editor para Editar Archivo
@@ -104,13 +110,16 @@ file_egroup=Nombre de grupo falta o no es válido
 file_eperms=Permisos en octal faltan o no son válidos
 file_envs=¿Sustituir variables de entorno en el nombre de archivo?
 file_id=ID de editor
+
 view_err=No se pudo editar archivo
 view_ecannot=No está autorizado a editar este archivo
 view_title=Editar Archivo
 view_efile=Falló la escritura en $1: $2
+
 form_ecannot=No está autorizado a ejecutar este comando
 form_title=Ejecutar Comando
 form_exec=Ejecutar
+
 sql_title1=Crear Comando SQL
 sql_title2=Editar Comando SQL
 sql_header=Detalles de comando SQL
@@ -126,6 +135,7 @@ sql_err=Fallo al salvar comando SQL
 sql_esql=No se introdujo SQL
 sql_ehost=Host servidor de BBDD falta o no válido
 sql_edb=Nombre de base de datos falta o no válido
+
 srun_title=Ejecutar Comando SQL
 srun_err=Fallo al ejecutar comando SQL
 srun_edriver=No se pudo cargar driver DBI

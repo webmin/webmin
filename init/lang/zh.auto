@@ -30,19 +30,24 @@ index_sadd=创建一个新的systemd服务。
 index_always=总是
 index_ladd=创建一个新启动的代理。
 index_lname=代理名称
+
 edit_egone=动作已不存在
 edit_startcmd=开机指令
 edit_stopcmd=关机命令
 edit_statuscmd=状态指令
 edit_reloadnow2=重新读取配置文件
+
 save_ename=动作名称缺失或无效
 save_eclash=具有相同名称的动作已存在
 save_escript=没有输入动作脚本
 save_estartcmd=缺少启动命令
+
 ss_doingstart=开始动作 $1 ..
 ss_doingstop=停止动作 $1 ..
 ss_doingstatus=正在请求操作 $1..的状态
+
 acl_runonly=只运行
+
 log_restart=重新启动操作 $1
 log_condrestart=有条件重新启动的操作 $1
 log_reload=重新加载的动作 $1
@@ -53,6 +58,7 @@ log_massrestart=重新启动的动作 $1
 log_massenable=启用的操作 $1
 log_massdisable=禁用的动作 $1
 log_telinit=切换到运行级别 $1
+
 mass_enone2=未选择服务
 mass_restart=重新启动动作
 mass_ebroken=引导时无法启用或禁用损坏的操作 $1
@@ -70,6 +76,7 @@ mass_udisable=在引导时禁用服务 $1。
 mass_ustarting=正在启动服务 $1 ..
 mass_ustopping=正在停止服务 $1 ..
 mass_urestarting=正在重新启动服务 $1 ..
+
 mode_init=SysV初始化
 mode_osx=苹果系统
 mode_local=单启动脚本
@@ -78,6 +85,7 @@ mode_rc=FreeBSD RC脚本
 mode_upstart=暴发户
 mode_systemd=系统化
 mode_launchd=启动D
+
 upstart_title1=创建新贵服务
 upstart_title2=编辑新贵服务
 upstart_egone=服务不再存在！
@@ -102,6 +110,7 @@ upstart_eserver=没有输入服务器命令
 upstart_eserver2=服务器命令不存在
 upstart_eserver3=只能输入一个服务器命令
 upstart_return=新贵服务
+
 systemd_title1=创建系统服务
 systemd_title2=编辑系统服务
 systemd_egone=服务不再存在！
@@ -125,6 +134,7 @@ systemd_edesc=缺少服务说明
 systemd_return=系统服务
 systemd_econf=未输入系统配置
 systemd_estart=缺少在启动时运行的命令
+
 launchd_title1=创建启动的代理
 launchd_title2=编辑已启动的代理
 launchd_egone=代理不再存在！
@@ -145,4 +155,5 @@ launchd_eclash=具有相同名称的座席已经存在
 launchd_return=发射代理
 launchd_econf=没有输入启动的配置
 launchd_estart=缺少服务器命令
+
 syslog_journalctl=SystemD日志

@@ -6,12 +6,14 @@ index_emdstat=El archivo de estado de RAID del kernel $1 no existe en su sistema
 index_eprogs=Ni las herramientas RAID ni los paquetes MDADM están instalados en su sistema.
 index_mdadm=Utilizando MDADM
 index_raidtools=Utilizando RaidTools
+
 linear=Concatenado (Tangencial)
 raid0=A franjas (RAID0)
 raid1=Espejo (RAID1)
 raid4=Paridad (RAID4)
 raid5=Redundante (RAID5)
 blocks=bloques
+
 create_title=Crear Dispositivo de RAID
 create_header=Opciones de dispositivo de RAID
 create_device=Archivo de dispositivo
@@ -32,6 +34,7 @@ create_edisks=No se han seleccionado particiones
 create_edisks2=Se deben de seleccionar al menos 2 particiones para hacer el espejo
 create_espare=La partición de reserva $1 no puede ser también una partición de RAID
 create_epdisk=La partición de paridad no puede ser también una particición de RAID
+
 view_title=Dispositivo de RAID
 view_header=Opciones de dispositivo de RAID
 view_device=Archivo de dispositivo
@@ -72,6 +75,7 @@ view_newmount=Montar RAID en:
 view_newmount2=Montar RAID como Memoria Virtual
 view_mountmsg=Introduzca un directorio y pulse este botón para ir a un formulario para montar el dispositivo RAID, el cual debe contener ya un sistema de archivos.
 view_mountmsg2=Pulse este botón para utilizar este dispositivo RAID para memoria virtual en su sistema.
+
 mkfs_title=Crear Sistema de Archivos
 mkfs_header2=Este formulario le permite construir un nuevo sistema de archivos $2 en $1. ¡<b>Todos</b> los datos que ya existan serán borrados!
 mkfs_options=Opciones de nuevo sistema de archivos de Linux
@@ -79,6 +83,7 @@ mkfs_err=No pude crear sistema de archivos
 mkfs_exec=Ejecutando comando $1...
 mkfs_failed=... ¡falló el comando!
 mkfs_ok=... comando completado.
+
 emkraid=<tt>mkraid</tt> falló: $1
 eraidstop=<tt>raidstop</tt> falló: $1
 eraidstart=<tt>raidstart</tt> falló: $1
@@ -88,6 +93,7 @@ emdadmcreate=<tt>mdadm</tt> en modo <tt>--create</tt> falló : $1
 emdadmadd=<tt>mdadm</tt> en modo <tt>--manage --add</tt> falló :$1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
 log_create=Creados $1 dispositivos RAID $2
 log_stop=Desactivado dispositivo RAID $1
 log_start=Activado dispositivo RAID $1

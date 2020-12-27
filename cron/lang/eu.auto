@@ -31,6 +31,7 @@ index_ok=Search
 index_searchres=$1 datozen Cron lanak.
 index_reset=Bilaketa berrezarri.
 index_econfigcheck=Cron lanak ezin dira zure sisteman kudeatu, moduluaren konfigurazioa ez baita baliozkoa : $1 
+
 edit_title=Editatu Cron lana
 create_title=Sortu Cron lana
 edit_ecannot=Ezin duzu erabiltzaile honentzako cron lanak editatu
@@ -70,6 +71,7 @@ lcedit_special_weekly=astero (igandean)
 lcedit_special_monthly=hilero (hilaren 1ean)
 lcedit_special_yearly=urtero (urtarrilaren 1ean)
 lcedit_special_reboot=sistema abiatzen denean
+
 save_err=Huts egin du cron lana gordetzean
 save_ecmd=Ez duzu exekutatzeko komando bat sartu
 save_euser=Erabiltzailea aukeratu behar duzu
@@ -79,6 +81,7 @@ save_ecannot=Ezin duzu '$1' lanetarako cron lanik sortu edo editatu.
 save_enone=Ez duzu $1 exekutatzeko aukeratu
 save_ecannot2=Ezin duzu cron lanik sortu
 save_eidx=Cron lana ongi gorde da, baina ezin da exekutatu aurkitu ez denez!
+
 allow_title=Kontrol Cron Sarbidea
 allow_desc=Inprimaki honek erabiltzaileek zer lanpostu sortu eta exekutatu ahal izango dituzte kontrolatzeko.
 allow_ecannot=Ezin duzu erabiltzaile sarbidea kontrolatu cron-era
@@ -87,6 +90,7 @@ allow_all2=Erabiltzaile guztiei uko egin root izan ezik
 allow_all3=Erabiltzaile guztiei baimendu
 allow_allow=Baimendu zerrendatutako erabiltzaileak soilik
 allow_deny=Zerrendatu erabiltzaileei soilik ukatu
+
 env_title1=Editatu Ingurumenaren aldagaia
 env_title2=Sortu Ingurune Aldagaia
 env_name=Izaera aldakorra
@@ -102,11 +106,13 @@ env_where2=Mugitu inguruaren aldagaia
 env_top=Erabiltzaileentzako Cron lan guztiak baino lehen
 env_bot=Cron lan guztiak egin ondoren
 env_leave=Egungo posizioa
+
 exec_title=Cron lana gauzatzea
 exec_ecannot=Ez duzu baimenik erabiltzaile honentzako cron lanak egitea
 exec_cmd=$1 komandoaren irteera.
 exec_cmdbg=$1 komandoa atzeko planoko prozesu gisa exekutatzea.
 exec_none=Ez da irteerarik sortu
+
 acl_users=Ezin da cron lanetarako editatu
 acl_all=Erabiltzaile guztiak
 acl_this=Uneko webmin erabiltzailea
@@ -122,6 +128,7 @@ acl_move=Cron lanpostuak mugi ditzake?
 acl_kill=Cron lanak amaitu al ditzake?
 acl_hourly=Lanpostuak ordu gehienez mugatu?
 acl_hourlydef=Moduluen konfigurazioan ezartzen den bezala
+
 log_modify=$1 erako Cron lana aldatu da
 log_modify_l=Cron lana "$2" aldatua $1 erako
 log_create=$1 erako Cron lana sortu da
@@ -139,7 +146,9 @@ log_move=Cron lana $1 mugitu da
 log_crons_delete=$1 Cron lanak ezabatu dira
 log_crons_disable=$1 Cron lan ezgaitu
 log_crons_enable=$1 Cron lan gaituta daude
+
 ecopy=Errore bat antzeman da Cron konfigurazio berrian: $1 $2 
+
 when_min=minuturo
 when_hour=ordu bakoitzeko $1 ordu lehenago
 when_day=egunero $2:$1 
@@ -148,6 +157,7 @@ when_weekday=$3 bakoitzean $2:$1
 when_cron=cron momentuan $1
 when_interval=$1 segundo bakoitzean
 when_boot=hasierako unean
+
 ucwhen_min=Minutu guztietan
 ucwhen_hour=Ordubete lehenago $1 ean
 ucwhen_day=Egunero $2:$1 
@@ -156,8 +166,10 @@ ucwhen_weekday=$3 guztietan $2:$1
 ucwhen_cron=$1 garai
 ucwhen_interval=$1 segundo bakoitzean
 ucwhen_boot=Abiapuntuan
+
 move_err=Ezin izan da Cron lana mugitu
 move_etype=Lan hau ezin da mugitu
+
 kill_err=Ezin izan da Cron lana amaitu
 kill_ecannot=Ez duzu baimenik lan hau amaitzeko
 kill_egone=Jada ez da martxan
@@ -166,13 +178,16 @@ kill_title=Amaitu Cron lana
 kill_rusure=Ziur al zaude $1 prozesua PID $2 arekin amaitu nahi duzula?
 kill_rusure2=Ziur al zaude $1 prozesua PID $2 eta haren azpiprozesu guztiekin amaitu nahi duzula?
 kill_ok=Bai, amaitu
+
 range_all=Exekutatu edozein datatan
 range_start=$1 etik exekutatu bakarrik
 range_end=$1 era
 range_estart=Falta edo hasierako data baliogabea exekutatuko den barrutian
 range_eend=Amaitutako data amaieran edo baliogabea exekutatuko den barrutian
+
 delete_err=Ezin izan da Cron lanak ezabatu
 delete_enone=Ez da hautatu
+
 manual_title=Cron lanak eskuz editatu
 manual_edit=Editatzeko Cron fitxategia:
 manual_ok=Editatu

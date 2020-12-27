@@ -8,10 +8,13 @@ index_start=Indítsa el az Ütemezett parancsok kiszolgálót
 index_startdesc=Indítsa el az ütemezett parancsokat futtató <tt>atd</tt> háttérszerver folyamatot. Erre a parancsok megadott időpontban történő végrehajtásához van szükség.
 index_boot=Indítsa el a szervert indításkor?
 index_bootdesc=Módosítsa ezt a beállítást, hogy engedélyezze vagy letiltsa az ütemezett parancskiszolgáló indítását a rendszer indításakor.
+
 edit_shortcmd=Végrehajtási parancs
 edit_showfull=A teljes szkript megjelenítése.
+
 deletes_err=A parancsok megszakítása nem sikerült
 deletes_enone=Egy sincs kiválasztva
+
 log_allow=Megváltozott az engedélyezett felhasználók
 log_create_job=Létrehozott ütemezett parancsot a (z) $1 számára
 log_delete_job=A (z) $1 ütemezett parancsát törölték
@@ -21,5 +24,6 @@ log_stop=Az ütemezett parancskiszolgáló leállt
 log_start=Elindította az ütemezett parancskiszolgálót
 log_bootup=Engedélyezte az ütemezett parancsok szerverét indításkor
 log_bootdown=Az ütemezett parancskiszolgáló letiltva indításkor
+
 stop_err=Nem sikerült leállítani a szervert
 start_err=Nem sikerült elindítani a szervert

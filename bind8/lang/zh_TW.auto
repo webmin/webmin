@@ -40,6 +40,7 @@ index_checkconfig=確保在<a href='$1'>模塊配置</a>頁面上正確設置了
 index_eexpired=警告：以下區域的DNSSEC簽名已過期：$1
 index_eexpired_conf=自動簽名應在$1頁面上重新啟用。
 index_eexpired_mod=使用$1模塊為這些域禁用DNSSEC，或檢查為什麼簽名失敗。
+
 master_inview=視圖 $2中的 $1
 master_egone=在任何視圖中都不存在區域$1
 master_egone2=區域$1不存在！
@@ -76,6 +77,7 @@ master_defttl=記錄的默認生存時間
 master_edefttl='$1'不是記錄的有效默認生存時間
 master_esoagone=找不到SOA記錄！
 master_einclude=附加模板文件不存在
+
 delete_mesg2=您確定要刪除根區域嗎？您的DNS服務器可能不再能夠在Internet上查找地址。
 delete_mesg3=您確定要刪除區域$1嗎？
 delete_onslave=還要從從服務器刪除嗎？
@@ -83,10 +85,12 @@ delete_errslave=主區域刪除確定，但在從屬服務器上發生以下錯�
 delete_ezone=在從屬服務器上找不到區域
 delete_vwarn=該區域與Virtualmin域 $1相關聯，因此不應在此處刪除！
 delete_vwarn2=此區域與Virtualmin域 $1和其他 $2相關聯，因此不應在此處刪除！
+
 mcreate_dnssec_tools_enable=使用DNSSEC工具啟用DNSSEC
 mcreate_view=在視圖中創建
 mcreate_ednssecsize=無法計算密鑰大小：$1
 mcreate_ednssec=記錄創建成功，但是DNSSEC失敗：$1
+
 slave_masterport=服務器端口
 slave_mins=分鐘
 slave_master_port=港口
@@ -99,6 +103,7 @@ slave_applymsg2=單擊此按鈕可以強制從主服務器重新傳輸區域，�
 slave_last=上次傳輸時間：$1
 slave_never=決不
 slave_xfer=測試區轉移
+
 recs_ecannottype=您無權編輯此類型的記錄
 recs_comment=評論
 recs_type=類型
@@ -109,6 +114,7 @@ recs_drev=也要刪除反向鏈接嗎？
 recs_none=該域還沒有任何$1記錄。
 recs_nosearch=沒有記錄與您的搜索匹配。
 recs_needsearch=輸入搜索以找到匹配的記錄。
+
 edit_canon=完整的規範名稱
 edit_zonename=區域名稱
 edit_comment=評論
@@ -159,12 +165,14 @@ edit_edmarcpct=郵件百分比必須為0到100之間的整數
 edit_edmarcrua=缺少匯總反饋地址
 edit_edmarcruf=缺少法證信息地址
 edit_ecaavalue2=域名缺失或外觀無效
+
 text_title2=查看記錄文件
 text_desc3=此表單使您可以手動編輯DNS記錄文件$1。 Webmin不會進行語法檢查。
 text_desc2=本頁顯示DNS記錄文件$1，該文件是在從主服務器傳輸區域時由BIND創建的。
 text_none=但是，該文件當前為空，可能是因為尚未從主服務器傳輸該區域。
 text_soa=自動增加序列號
 text_rawformat=該區域為原始二進制格式，因此無法顯示為文本。
+
 restart_err=無法應用更改
 restart_epidfile=在$1中找不到BIND PID
 restart_errslave=這台服務器已重新啟動，但是在從屬服務器上發生了以下錯誤：$1
@@ -172,19 +180,24 @@ restart_erunning2=BIND似乎未在從屬服務器上運行$1
 restart_endc=NDC命令失敗：$1
 restart_ecmd=重新啟動命令失敗：$1
 restart_eversion=從服務器$1沒有運行Webmin版本$2或更高版本。
+
 stop_epid=BIND未運行
 stop_ecannot=您無權停止BIND
+
 fwd_delmsg=單擊此按鈕可從DNS服務器刪除此區域。然後將使用常規解析過程查找其中的記錄。
+
 delegation_title=編輯授權區域
 delegation_ecannot=您無權編輯此區域
 delegation_opts=區域選項
 delegation_err=保存選項失敗
 delegation_noopts=委託區域沒有任何可配置的選項。
 delegation_delmsg=單擊此按鈕可從DNS服務器刪除此區域。 BIND將識別其中非NS的記錄類型。
+
 dcreate_title=創建僅委派區域
 dcreate_ecannot=您無權創建委派區域
 dcreate_opts=新的委派區域選項
 dcreate_err=創建委派區域失敗
+
 create_enet=“$1”不是有效的網絡
 create_edom=“$1”不是有效的域名
 create_edom2=“$1”必須是域，而不是網絡
@@ -194,8 +207,10 @@ create_efile3=創建'$1'失敗：$2
 create_efile4=文件$1已存在
 create_emaster='$1'不是有效的主服務器地址
 create_enone=您必須至少輸入一台主服務器
+
 boot_egzip=根區域文件已壓縮，但是您的系統上未安裝<tt>gzip</tt>命令！
 boot_egzip2=根區域文件的解壓縮失敗：$1
+
 type_AAAA=IPv6地址
 type_NSEC3PARAM=DNSSEC參數
 type_SPF=發件人允許來自
@@ -207,6 +222,7 @@ type_SRV=服務地址
 type_ALL=所有記錄類型
 type_KEY=公鑰
 type_CAA=證書頒發機構
+
 edit_A=地址
 edit_AAAA=IPv6地址
 edit_NS=名稱伺服器
@@ -226,6 +242,7 @@ edit_NSEC3PARAM=DNSSEC參數
 edit_TLSA=SSL證書
 edit_SSHFP=SSH公鑰
 edit_CAA=證書頒發機構
+
 recs_defttl=默認TTL
 recs_A=地址
 recs_AAAA=IPv6地址
@@ -248,6 +265,7 @@ recs_TLSA=SSL證書
 recs_SSHFP=SSH公鑰
 recs_CAA=證書頒發機構
 recs_delete=刪除所選
+
 value_AAAA1=IPv6地址
 value_LOC1=緯度和經度
 value_SRV1=優先
@@ -310,6 +328,7 @@ value_CAA3=CA域名
 value_caa_issue=單域證書
 value_caa_issuewild=通配符證書
 value_caa_iodef=違反政策的網址
+
 tlsa_usage0=證書頒發機構
 tlsa_usage1=最終實體
 tlsa_usage2=信任錨
@@ -319,12 +338,14 @@ tlsa_selector1=公鑰信息
 tlsa_match0=未隱藏的內容
 tlsa_match1=SHA-256散列
 tlsa_match2=SHA-512散列
+
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDSA
 sshfp_alg4=編號25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 minutes=分鐘
 seconds=秒
 hours=小時
@@ -332,6 +353,7 @@ days=天
 weeks=週
 eport='$1'不是有效的端口號
 eipacl='$1'不是有效的IP地址或ACL名稱
+
 acl_zall=所有區域
 acl_zsel=選定區域
 acl_znsel=除了選定的所有。
@@ -362,7 +384,9 @@ acl_ztypes_master=主
 acl_ztypes_slave=從/存根
 acl_ztypes_delegation=代表團
 acl_ztypes_forward=向前
+
 servers_keys=使用DNS密鑰
+
 logging_catsdesc=該表控制在另一個選項卡上定義的哪些消息類別寫入哪個日誌記錄通道。
 logging_chansdesc=下表列出了日誌記錄通道，這些通道是可以將消息記錄到的文件或其他目標。前四個是BIND內置的默認值，無法更改。
 logging_stderr=標準錯誤輸出
@@ -370,12 +394,15 @@ logging_pcat2=日誌類別？
 logging_psev2=日誌嚴重性？
 logging_ptime2=記錄時間？
 logging_efile2=日誌文件名必須是絕對路徑
+
 acls_eline=必須在ACL'$1'的單獨行中輸入每個IP地址
+
 forwarding_out=最大並發傳出區域傳輸
 forwarding_per_ns=每台服務器的最大並發傳入傳輸
 forwarding_minutes=分鐘
 forwarding_ip=IP地址
 forwarding_port=港口
+
 net_ip=IP地址
 net_recur=允許來自的遞歸查詢
 net_eusedport=端口$1只允許一行地址
@@ -389,6 +416,7 @@ net_taddrdef=最近的IP
 net_etport=沒有地址就無法指定傳輸源端口
 net_eaddr='$1'不是有效的IPv4地址
 net_eaddr6='$1'不是有效的IPv6地址
+
 controls_title=控制界面選項
 controls_ecannot=您無權編輯控制選項
 controls_header=控制選項
@@ -410,6 +438,7 @@ controls_eunixpath=缺少或無效的FIFO文件路徑
 controls_eunixperm=八進製文件權限丟失或無效
 controls_eunixowner=丟失或無效的文件所有者
 controls_eunixgroup=文件組丟失或無效
+
 controls_inet=互聯網端口訪問
 controls_unix=Unix FIFO訪問
 controls_port=港口
@@ -423,6 +452,7 @@ controls_efile=FIFO文件名缺失或無效
 controls_eperms=缺少或無效的FIFO權限
 controls_eowner=缺少或無效的FIFO所有者UID
 controls_egroup=缺少或無效的FIFO所有者GID
+
 keys_title=DNS密鑰
 keys_id=密鑰ID
 keys_alg=算法
@@ -431,7 +461,9 @@ keys_ecannot=您無權編輯DNS密鑰
 keys_err=無法保存DNS密鑰
 keys_ekey='$1'不是有效的密鑰ID
 keys_esecret=密鑰$1的丟失或無效的base-64編碼機密
+
 misc_mins=分鐘
+
 zonedef_email=默認電子郵件地址
 zonedef_prins=主域的默認名稱服務器
 zonedef_this=系統主機名（$1）
@@ -444,9 +476,11 @@ zonedef_size=初始金鑰大小
 zonedef_single=要創建的密鑰數
 zonedef_two=區域密鑰和密鑰簽名密鑰
 zonedef_one=僅區域鍵
+
 find_title=查找區域
 find_match=匹配$1的區域。
 find_none=找不到區域。
+
 findfree_title=查找免費IP
 findfree_desc=查找免費IP
 findfree_nofind=您不能尋找免費的IP
@@ -458,8 +492,10 @@ findfree_cf=將<em>freeXXX</em>主機名視為免費IP？
 findfree_search=搜索
 findfree_msg=找到了$1個免費IP地址
 findfree_msg2=（其中$1如<i>freeXXX</i>，$2如<i>freemac</i>）
+
 free_title=免費IP地址
 free_ip=IP地址
+
 log_servers=更改了其他DNS服務器
 log_logging=更改日誌記錄和錯誤
 log_acls=更改訪問控制列表
@@ -516,14 +552,17 @@ log_sign=為區域$1更新了DNSSEC簽名
 log_resign=為區域$1重新簽名的DNSSEC密鑰
 log_trusted=更改DNSSEC驗證
 log_dnssec=更改DNSSEC密鑰重新簽名
+
 convert_err=轉換區域失敗
 convert_efile=必須先指定記錄文件，然後才能將從屬區域轉換為主區域。
 convert_efilesize=記錄文件$1不存在或為空
 convert_ebinary=未安裝從二進制從屬區域轉換為文本格式主文件所需的命令
 convert_ecompile=二進製到文本格式的轉換失敗：$1
+
 whois_title=WHOIS信息
 whois_header=命令$1的輸出。
 whois_ecannot=您無權查詢WHOIS信息
+
 view_title=編輯客戶端視圖
 view_opts=客戶視圖詳細信息
 view_opts2=視圖區域的選項
@@ -534,6 +573,7 @@ view_recursion=是否為客戶進行完整的遞歸查找？
 view_ecannot=您無權編輯此視圖
 view_delete=刪除檢視
 view_deletemsg=單擊此按鈕刪除視圖。您可以選擇將其包含的區域移動到另一個視圖，也可以將其刪除。
+
 vcreate_title=創建客戶端視圖
 vcreate_match_all=所有客戶
 vcreate_match_sel=列出的地址，網絡和ACL。
@@ -542,6 +582,7 @@ vcreate_ename=視圖名稱缺失或無效
 vcreate_etaken=視圖名稱已被使用
 vcreate_eclass=班級名稱缺失或無效
 vcreate_ecannot=您無權創建視圖
+
 hint_title=編輯根區
 hint_desc=DNS服務器使用根區域來聯繫Internet上的根服務器，以便它可以解析DNS服務器無法處理的域中的名稱，例如<tt>.com</tt>或<tt>.net。 au</tt>。除非您的DNS服務器用於內部網絡，或者將所有查詢轉發到另一台服務器，否則您不應刪除此根區域。
 hint_move=移至查看：
@@ -550,6 +591,7 @@ hint_refetch=重新下載根名稱服務器
 hint_refetchdesc=單擊此按鈕可使Webmin從Internic FTP服務器上的源重新下載根區域文件。
 hint_delete=刪除根區
 hint_deletedesc=單擊此按鈕刪除此根區域。如果沒有它，您的域名服務器將無法解析Internet上除其作為輔助域名的域名以外的其他域名。
+
 hcreate_title=創建根區域
 hcreate_desc=DNS服務器使用根區域來聯繫Internet上的根服務器，以便它可以解析DNS服務器無法處理的域中的名稱，例如<tt>.com</tt>或<tt>.net。 au</tt>。如果使用多個視圖，則每個視圖中可能需要有一個單獨的根區域，以便所有客戶端都能正確解析Internet域。
 hcreate_header=根區詳細信息
@@ -563,6 +605,7 @@ hcreate_efile='$1'不是允許的根文件
 hcreate_efile2=根文件丟失或無效
 mcreate_erecs=不是有效的現有根區域文件
 hcreate_err=創建根區域失敗
+
 vdelete_title=刪除檢視
 vdelete_mesg=您確定要刪除客戶端視圖$1嗎？根據以下選擇，此視圖中的所有區域將被刪除（及其區域文件）或移至另一個視圖。
 vdelete_mesg2=您確定要刪除客戶端視圖$1嗎？
@@ -570,6 +613,7 @@ vdelete_newview=此視圖內的區域
 vdelete_root=移出視圖
 vdelete_delete=完全刪除
 vdelete_move=移至查看
+
 gen_title=記錄生成器
 gen_desc=該頁面允許您定義生成器，每個生成器將使用遞增計數器在該區域中創建多個記錄。這對於將反向區域的一部分委派給另一台服務器很有用。
 gen_range=範圍
@@ -589,7 +633,9 @@ gen_evalue=生成器$1的主機名模式丟失或無效
 gen_title2=生成的記錄
 gen_raw=配置文件行
 gen_ecannot=您無權編輯記錄生成器
+
 refetch_err=重新下載根區域失敗
+
 slaves_title=集群從服務器
 slaves_none=尚未將任何服務器添加到DNS群集。
 slaves_host=主機名
@@ -617,6 +663,7 @@ slaves_sec=在本地創建時在從屬服務器上創建輔助服務器？
 slaves_name=NS記錄的名稱
 slaves_same=與主機名相同
 slaves_header=集群從屬服務器選項
+
 add_title=添加服務器
 add_msg=添加$1 ..
 add_gmsg=將服務器添加到組$1中。
@@ -634,6 +681,7 @@ add_createok=使用$2新的從屬區域設置$1。
 add_ename=NS記錄名稱缺失或無效
 add_egname=添加組時無法指定NS記錄名稱
 add_emyip=無法計算出該系統的IP地址。您應該在“模塊配置”頁面上設置<b>遠程從屬區域的默認主服務器IP</b>。
+
 mass_title=從批處理文件創建區域
 mass_desc=該頁面允許您從上載的或服務器端的文本文件中一次創建多個區域。文件中的每一行都必須具有以下格式： <p></p> <tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt> <p></p>該<i>類型</i>必須是<tt>master</tt> ， <tt>slave</tt> ， <tt>stub</tt>或<tt>forward</tt> 。 <i>文件名</i>是可選的，如果丟失，將自動計算。只需為從屬區域提供<i>主IP</i> 。
 mass_local=本地批處理文件
@@ -665,6 +713,7 @@ mass_emips=缺少主IP地址
 mass_addedslaves=將$1添加到從屬服務器中，確定。
 mass_eonslave=在從屬服務器上創建時發生錯誤：$1
 mass_eviewcannot=您無權向此視圖添加區域
+
 massdelete_title=刪除區域
 massdelete_rusure=您確定要刪除$1選定區域嗎？ （$2）
 massdelete_ok=立即刪除
@@ -674,6 +723,7 @@ massdelete_slaves=從從服務器中刪除區域$1。
 massdelete_failed=..一些奴隸失敗了：
 massdelete_vwarn=某些區域與Virtualmin域 $1相關聯，因此不應在此處刪除！
 massdelete_vwarn2=某些區域與Virtualmin域 $1和 $2相關聯，因此不應在此處刪除！
+
 rndc_title=設置RNDC
 rndc_desc=此頁面可用於設置BIND以由RNDC程序進行控制，因此無需執行完整的BIND重新啟動即可刷新各個區域。
 rndc_desc2=RNDC似乎已經正確設置，因此您可能不需要使用此表格。
@@ -684,11 +734,13 @@ rndc_ok=是的，設置RNDC
 rndc_err=無法設置RNDC
 rndc_ekey=在rndc.conf中找不到密鑰
 rndc_esecret=在rndc.conf中找不到機密
+
 drecs_err=刪除記錄失敗
 drecs_enone=未選擇
 drecs_title=刪除記錄
 drecs_rusure=您確定要從$2刪除$1選定記錄嗎？
 drecs_ok=立即刪除
+
 manual_title=編輯配置文件
 manual_ecannot=您無權編輯BIND配置文件
 manual_ok=編輯
@@ -696,7 +748,9 @@ manual_efile=所選文件不屬於BIND配置
 manual_file=編輯配置文件：
 manual_edata=什麼都沒輸入！
 manual_err=保存配置文件失敗
+
 syslog_desc=綁定DNS服務器消息
+
 umass_err=無法更新區域
 umass_enone=未選擇
 umass_title=更新區域中的記錄
@@ -715,6 +769,7 @@ umass_done=..更新了$1匹配的記錄，這些記錄來自$2。
 umass_none=..沒有匹配的記錄從$1中更新。
 umass_egone=區域不存在
 emass_emx='$1'不是郵件服務器優先級數字，後跟有效的主機名
+
 rdmass_err=無法刪除區域中的記錄
 rdmass_enone=未選擇
 rdmass_title=刪除區域中的記錄
@@ -731,6 +786,7 @@ rdmass_done=..從$2中刪除匹配的$1記錄。
 rdmass_none=..沒有匹配的記錄從$1中刪除。
 rdmass_ok=刪除記錄
 rdmass_sel=記錄名為
+
 rmass_err=添加記錄失敗
 rmass_enone=未選擇
 rmass_title=將記錄添加到區域
@@ -750,18 +806,22 @@ rmass_esign=..完成，但簽名失敗：$1
 rmass_eclash=..具有相同名稱和值$1的記錄已存在。
 rmass_eclash2=..具有相同名稱和相同值$1的記錄已存在。
 rmass_clash=即使記錄已經存在也創建嗎？
+
 check_title=檢查記錄
 check_ecannot=您無權檢查記錄
 check_errs=在記錄文件$1中發現以下錯誤。
 check_allok=在記錄文件$1中未找到錯誤。
+
 ncheck_title=檢查BIND配置
 ncheck_ecannot=您無權檢查BIND配置
 ncheck_errs=在BIND配置文件$1或引用的區域文件中發現以下錯誤。
 ncheck_allok=在BIND配置文件$1或引用的區域文件中未找到錯誤。
+
 links_restart=應用配置
 links_stop=停止綁定
 links_start=開始綁定
 links_apply=申請專區
+
 dnssec_title=DNSSEC密鑰重新簽名
 dnssec_ecannot=您無權配置DNSSEC
 dnssec_header=密鑰重新簽名選項
@@ -772,6 +832,7 @@ dnssec_secs=秒
 dnssec_desc=使用DNSSEC簽名的區域通常具有兩個密鑰-必須定期重新生成和簽名的區域密鑰，以及保持不變的密鑰簽名密鑰。該頁面允許您配置Webmin以自動執行此重新簽名。
 dnssec_err=保存DNSSEC密鑰重新簽名失敗
 dnssec_eperiod=兩次重新簽名之間缺少或無效的天數
+
 dnssectools_title=DNSSEC-工具自動化
 dt_conf_title=DNSSEC-工具自動化
 dt_enable_title=DNSSEC-工具自動化
@@ -836,6 +897,7 @@ dt_status_inKSKroll=在KSK Roll
 dt_status_inZSKroll=在ZSK Roll中
 dt_status_signed=簽
 dt_status_unsigned=無符號
+
 zonekey_title=設置DNSSEC密鑰
 zonekey_desc=該區域還沒有DNSSEC簽名密鑰。您可以使用此表單讓Webmin創建一個表單，以便保護解決此區域的客戶端免受DNS欺騙攻擊。
 zonekey_header=新的DNSSEC密鑰選項
@@ -869,9 +931,12 @@ zonekey_sign=標誌區
 zonekey_signdesc=立即對該區域進行重新簽名，以便對手動進行的記錄所做的任何更改都將包括在簽名記錄中。
 zonekey_resign=重簽區
 zonekey_resigndesc=生成一個新的區域簽名密鑰，用該區域的主密鑰對其進行簽名，然後重新簽署所有記錄。
+
 sign_err=無法簽名區域
 sign_emsg=記錄更改失敗後進行DNSSEC簽名：$1
+
 resign_err=無法重新簽名區域
+
 trusted_title=DNSSEC驗證
 trusted_ecannot=您無權配置DNSSEC驗證
 trusted_esupport=您的BIND版本不支持DNSSEC驗證
@@ -906,6 +971,7 @@ trusted_setup=為了使DNSSEC對驗證Internet上大多數已簽名區域有用�
 trusted_ok=設置DLV並啟用DNSSEC驗證
 trusted_warning=警告！您的BIND DNSSEC客戶端配置包含過期的密鑰，這些密鑰將在2017年10月停止工作。使用<a href='$1'>BIND DNSSEC驗證頁面</a>調整配置，或單擊下面的按鈕。
 trusted_fix=修復DNSSEC配置
+
 xfer_title=測試區轉移
 xfer_doing=測試從$1的從屬區域的傳輸。
 xfer_failed=.. from $1：失敗：$2

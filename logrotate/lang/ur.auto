@@ -19,11 +19,13 @@ index_force=زبردستی لاگ گھماؤ
 index_forcedesc=تمام لاگ فائلوں کو فوری طور پر گھماؤ پر مجبور کریں ، چاہے ابھی وقت نہ آیا ہو۔
 index_logrotate=لوگوٹریٹ
 index_delete=منتخب کردہ لاگ گردشیں حذف کریں
+
 period_daily=روزانہ
 period_weekly=ہفتہ وار
 period_monthly=ماہانہ
 period_never=کبھی نہیں
 period_bytes=بائٹس
+
 edit_title1=لاگ فائل میں ترمیم کریں
 edit_title2=لاگ فائل بنائیں
 edit_header=گھماؤ لاگ فائل کی تفصیلات
@@ -62,8 +64,10 @@ edit_pre=گردش سے پہلے چلانے کے احکامات
 edit_default=پہلے سے طے شدہ ($1)
 edit_sharedscripts=صرف تمام فائلوں کے لئے ایک بار اسکرپٹ چلائیں؟
 edit_now=اب گھمائیں
+
 global_title=عالمی اختیارات
 global_header=تمام لاگ فائلوں کیلئے پہلے سے طے شدہ اختیارات
+
 save_err=لاگ محفوظ کرنے میں ناکام
 save_efile=گم شدہ یا غلط لاگ فائل نام
 save_esize=لاپتہ یا غلط زیادہ سے زیادہ سائز
@@ -81,6 +85,7 @@ save_eerrors=گمشدہ پیغامات کیلئے ای میل پتہ غائب ہ
 save_epre=Pre-rotation script cannot contain an <tt>endscript</tt> or <tt>endrotate</tt> line
 save_epost=Post-rotation script cannot contain an <tt>endscript</tt> or <tt>endrotate</tt> line
 save_enofiles=گھومنے کے لئے کوئی فائلیں داخل نہیں کی گئیں
+
 log_modify_sched=کروٹ کا نوکری تبدیل کر دیا گیا
 log_create_sched=لاگ گردش کرون جاب بنائی گئی
 log_delete_sched=حذف شدہ لاگ گردانی کرون کی نوکری
@@ -89,6 +94,7 @@ log_create=لاگ فائل$1 کے لئے گھماؤ شامل کیا گیا
 log_modify=لاگ فائل$1 کیلئے تبدیل شدہ گھماؤ
 log_delete=لاگ فائل$1 کیلئے حذف شدہ گردش
 log_delete_logs=$1 لاگ فائلوں کی گردش حذف ہوگئی
+
 sched_title=لاگ گردش کا نظام الاوقات
 sched_desc=انجام دینے کیلئے اس ماڈیول کا استعمال کرتے ہوئے تشکیل شدہ لاگ گردانی کے لئے ،$1 کمانڈ کو باقاعدگی سے شیڈول (عام طور پر روزانہ) پر چلنا چاہئے۔
 sched_runparts=فی الحال ، لاگ ان روٹیشن کمانڈ اسکرپٹ$1 $2 سے چلایا جارہا ہے ، اور اسے ایڈجسٹ نہیں کیا جاسکتا ہے۔
@@ -98,10 +104,12 @@ sched_enabled=فعال ، نیچے اوقات میں ..
 sched_save=کرون جاب کو اپ ڈیٹ کریں
 sched_err=گردش کا نظام الاوقات بچانے میں ناکام
 sched_when=چلانے کے اوقات
+
 force_title=زبردستی لاگ گھماؤ
 force_doing=تمام لاگ فائلوں کو فوری گھومنے پر مجبور کرنا ..
 force_doingone=ایک لاگ فائل کی فوری گھومنے پر مجبور کرنا ..
 force_done=.. ہو گیا۔
 force_failed=.. ناکام! اس کی وجہ کے لئے اوپر کی پیداوار دیکھیں۔
+
 delete_err=لاگ کو حذف کرنے میں ناکام
 delete_enone=کوئی بھی منتخب نہیں ہوا

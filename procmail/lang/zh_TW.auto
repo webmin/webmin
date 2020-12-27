@@ -32,6 +32,7 @@ index_man=手動編輯配置
 index_mandesc=直接編輯Procmail主配置文件，以創建自己的規則，變量和塊。
 index_ecmd=在您的系統上找不到Procmail程序 $1。要么未安裝，要么<a href='$2'>模塊配置</a>不正確。
 index_delete=刪除所選動作
+
 edit_title2=編輯動作
 edit_title1=建立動作
 edit_header1=交貨動作詳細信息
@@ -67,6 +68,7 @@ edit_none=沒有
 edit_lock=特定檔案
 edit_ctype=條件類型
 edit_cvalue=正則表達式或命令
+
 save_err=無法保存動作
 save_eaction_0=缺少要追加的文件
 save_eaction_1=缺少要寫入的MH文件夾
@@ -79,6 +81,7 @@ save_elockfile=缺少鎖定文件名
 save_esize=條件 $1的郵件大小丟失或無效
 save_ere=條件 $1缺少正則表達式
 save_eshell=條件 $1缺少命令
+
 env_title1=創建變量
 env_title2=編輯變量
 env_header=Procmail環境變量
@@ -86,15 +89,19 @@ env_name=變量名
 env_value=值
 env_err=保存變量失敗
 env_ename=變量名缺失或無效
+
 inc_title1=添加包含文件
 inc_title2=編輯包含文件
 inc_header=隨附的procmail規則文件
 inc_inc=包含文件
 inc_einc=沒有輸入包含文件
+
 config_eline=$2中的未知行 $1 : $3
+
 manual_title=編輯配置
 manual_desc=此頁面可用於手動編輯Procmail配置文件 $1。請注意，因為不會進行語法檢查。
 manual_edata=您的瀏覽器未提供任何數據！
+
 log_create_rec=已創建配方到 $1
 log_delete_rec=已將配方刪除到 $1
 log_modify_rec=將配方修改為 $1
@@ -114,7 +121,9 @@ log_delete_inc=刪除的包含文件 $1
 log_manual=手動編輯的配置
 log_up=將條目上移
 log_down=下移條目
+
 delete_err=刪除動作失敗
 delete_enone=未選擇
+
 check_epostfix=在您的Postfix配置中未啟用Procmail。配置文件<tt>$2</tt>必須將<tt>$1</tt>選項設置為<tt>$3</tt>。
 check_esendmail=未將Sendmail設置為使用Procmail進行本地傳遞。可以在Webmin的<a href='$1'>Sendmail郵件服務器</a>模塊中進行配置。

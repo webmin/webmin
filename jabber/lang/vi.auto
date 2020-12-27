@@ -17,6 +17,7 @@ index_restartmsg=Nhấp vào nút này để áp dụng cấu hình hiện tại
 index_comments=Cảnh báo - tệp cấu hình Jabber của bạn $1 chứa các nhận xét, sẽ bị xóa nếu có bất kỳ thay đổi cấu hình nào được thực hiện bằng mô-đun này.
 index_return=Thực đơn Jabber
 index_version=Phiên bản Jabber $1 
+
 general_title=Tùy chọn chung
 general_header=Tùy chọn máy chủ Jabber toàn cầu
 general_host=Tên máy chủ của máy chủ của bạn
@@ -32,6 +33,7 @@ general_eelogfmt=Thiếu định dạng nhật ký lỗi
 general_erlog=Tệp nhật ký giao thông bị thiếu hoặc không hợp lệ
 general_erlogfmt=Thiếu định dạng nhật ký giao thông
 general_epidfile=Tập tin ID quá trình bị thiếu hoặc không hợp lệ
+
 messages_title=Tin nhắn
 messages_header=Tin nhắn máy chủ Jabber cho khách hàng
 messages_wsubject=Chủ đề tin nhắn chào mừng
@@ -44,6 +46,7 @@ messages_vcard2jud=Gửi vCard đến thư mục người dùng Jabber?
 messages_err=Không thể lưu tin nhắn
 messages_evcard=VCard XML không hợp lệ : $1 
 messages_etag=Máy chủ vCard XML không bắt đầu bằng &lt;vCard&gt;
+
 modules_title=Mô-đun Jabber
 modules_desc=Các mô-đun được liệt kê dưới đây được sử dụng để xử lý các tin nhắn mà trình quản lý phiên Jabber nhận được. Bạn chỉ nên thay đổi danh sách này nếu bạn biết bạn đang làm gì.
 modules_header=Mô-đun quản lý phiên máy chủ Jabber
@@ -52,6 +55,7 @@ modules_so=Thư viện dùng chung
 modules_err=Không thể lưu mô-đun Jabber
 modules_emod='$1' không phải là tên mô-đun hợp lệ
 modules_eso=Thư viện chia sẻ '$1' không tồn tại
+
 karma_title=Kiểm soát giao thông Karma
 karma_header=Tùy chọn kiểm soát lưu lượng
 karma_rate=Xử lý kết nối quá mức
@@ -80,6 +84,7 @@ karma_epenalty=Thiếu thời gian phạt hoặc không hợp lệ
 karma_erestore=Thời gian khôi phục bị thiếu hoặc không hợp lệ
 karma_epoints=Số kết nối bị thiếu hoặc không hợp lệ
 karma_etime=Thiếu hoặc không hợp lệ thời gian để chặn cho
+
 ips_title=Kiểm soát truy cập IP
 ips_header=Kiểm soát truy cập IP của máy chủ Jabber
 ips_allow=IP khách hàng được phép
@@ -89,10 +94,12 @@ ips_none=không ai
 ips_sel=Địa chỉ được liệt kê/netmasks ..
 ips_err=Không thể lưu điều khiển truy cập IP
 ips_eaddr='$1' không phải là địa chỉ IP hợp lệ hoặc địa chỉ IP/netmask
+
 file_title=Chỉnh sửa tập tin cấu hình
 file_desc=Sử dụng mẫu dưới đây để chỉnh sửa trực tiếp tệp cấu hình Jabber. Điều này chỉ nên được thực hiện nếu bạn hiểu định dạng cấu hình XML.
 file_header=Chỉnh sửa tập tin cấu hình Jabber
 file_err=Không thể lưu tập tin cấu hình
+
 admin_title=Người dùng quản trị
 admin_header=Người dùng quản trị máy chủ
 admin_read=Đọc quản trị viên truy cập
@@ -100,11 +107,13 @@ admin_write=Viết quản trị viên truy cập
 admin_reply=Tự động gửi tin nhắn quản trị?
 admin_rsubject=Chủ đề tự động
 admin_rbody=Tin nhắn tự động
+
 filter_title=Bộ lọc người dùng
 filter_header=Quyền bộ lọc người dùng
 filter_max=Quy tắc lọc tối đa
 filter_conds=Điều kiện lọc được phép
 filter_acts=Hành động lọc được phép
+
 restart_err=Không thể áp dụng thay đổi
 stop_err=Không thể ngăn chặn Jabber
 stop_epid=Không thể tìm thấy quy trình Jabber

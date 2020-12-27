@@ -9,9 +9,12 @@ index_apply=Taikyti pakeitimus
 index_applydesc=Spustelėkite šį mygtuką, kad pritaikytumėte dabartinę failų eksporto konfigūraciją. Tai leis visus aukščiau išvardytus katalogus pasiekti su nurodytomis parinktimis.
 index_return=eksporto sąrašas
 index_echeck=NFS serverio negalima naudoti šioje sistemoje : $1 
+
 check_ecmd=NFS serverio komanda $1 neįdiegta
+
 delete_err=Nepavyko ištrinti eksporto
 delete_enone=Nepasirinkta
+
 edit_title1=Redaguoti eksportą
 edit_title2=Sukurti eksportą
 edit_header1=Eksporto parinktys
@@ -31,6 +34,7 @@ edit_clients=Klientai
 edit_hosts=Šeimininkai / tinklo grupės
 edit_network=Tinklas
 edit_mask=Kaukė
+
 save_err=Nepavyko išsaugoti eksporto
 save_edir=„$1“ nėra katalogas arba jo nėra
 save_enone=Norėdami eksportuoti, turite įvesti bent vieną katalogą
@@ -44,4 +48,5 @@ save_enetwork=„$1“ nėra tinkamas tinklas
 save_enetmask=„$1“ nėra tinkamas tinklo maskavimas
 save_esame1=Katalogas <tt>$1</tt> jau eksportuojamas į <tt>$2</tt>. Jūsų operacinė sistema neleidžia eksportuoti katalogų toje pačioje <i>vietinėje</i> failų sistemoje į tą patį pagrindinį kompiuterį atskirai
 save_esame2=Katalogas <tt>$1</tt> jau eksportuojamas į <tt>$2</tt>. Jūsų operacinė sistema neleidžia eksportuoti katalogų toje pačioje <i>vietinėje</i> failų sistemoje į tą patį tinklą atskirai
+
 restart_err=Nepavyko pritaikyti pakeitimų

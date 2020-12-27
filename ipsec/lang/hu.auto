@@ -25,12 +25,15 @@ index_up=Kapcsolat indítása:
 index_updesc=Válasszon egy kapcsolatot a gomb melletti listából, és kattintson rá, hogy megkísérelje annak közvetlen létrehozását.
 index_nopol=Nem található hálózati irányelv - talán a <a href='$1'>hálózati konfigurációja</a> helytelen.
 index_import=Importálja a kapcsolatot a fájlból.
+
 stop_err=Nem sikerült leállítani az IPsec szervert
 start_err=Az IPsec szerver indítása nem sikerült
 restart_err=Az IPsec szerver újraindítása nem sikerült
 start_elog=A következő hibákat naplózta : $1 
+
 newkey_err=A kulcs generálása nem sikerült
 newkey_ehost=Hiányzó vagy érvénytelen gazdagépnév
+
 edit_title1=Hozzon létre kapcsolatot
 edit_title2=A kapcsolat szerkesztése
 edit_header=IPsec VPN kapcsolat részletei
@@ -101,6 +104,7 @@ edit_unit_s=másodperc
 edit_unit_m=mins
 edit_unit_h=órák
 edit_unit_d=napok
+
 config_title=Szerverkonfiguráció
 config_header=Globális VPN-kiszolgáló-beállítások
 config_ifaces=Hálózati interfészek az IPsec-hez
@@ -118,6 +122,7 @@ config_nat=Engedélyezi a NAT átjárást?
 config_err=Nem sikerült menteni a szerver konfigurációját
 config_eri=A '$1' valódi felület többször szerepel a listán
 config_enone=Nincs megadva hálózati interfész
+
 showkey_title=Nyilvános kulcs megjelenítése
 showkey_desc1=Az alább bemutatott nyilvános RSA-kulcsot át kell másolni az ehhez csatlakozó többi rendszer konfigurációjába, a gazdagépre vonatkozó szakaszban.
 showkey_desc2=Az alább bemutatott értékek felhasználhatók egy DNS KEY rekord létrehozásához ehhez a gazdagéphez, hogy más hozzá csatlakozó rendszerek megkeressék a nyilvános kulcsát.
@@ -125,6 +130,7 @@ showkey_flags=Zászlók
 showkey_proto=Jegyzőkönyv
 showkey_alg=Algoritmus
 showkey_key=Kulcsfontosságú adatok
+
 policy_desc_block=Blokkolt hálózatok
 policy_desc_clear=Tiszta forgalmi hálózatok
 policy_desc_private=Titkosított hálózatok
@@ -145,6 +151,7 @@ policy_mask=előtagja
 policy_err=Nem sikerült menteni a hálózatokat
 policy_enet=Érvénytelen hálózati IP-cím a (z) $1 sorban
 policy_emask=Érvénytelen előtaghossz a (z) $2 sorban
+
 save_err=Nem sikerült menteni a kapcsolatot
 save_ename=Hiányzó vagy érvénytelen kapcsolatnév
 save_ekeying=Hiányzó vagy érvénytelen számú kulcskísérlet
@@ -164,6 +171,7 @@ save_eleftcert=Hiányzó vagy érvénytelen helyi szerver tanúsítvány
 save_erightcert=Hiányzó vagy érvénytelen távoli szerver tanúsítvány
 save_ekeylife=Hiányzó vagy érvénytelen kapcsolatkulcs-élettartam
 save_eikelifetime=Hiányzik vagy érvénytelen a kulcscsatorna élettartama
+
 log_create_conn=Létrehozva a (z) $1 kapcsolat
 log_delete_conn=Törölt kapcsolat $1 
 log_modify_conn=Módosított kapcsolat $1 
@@ -182,8 +190,10 @@ log_delete_secret=Törölve a (z) $1 titkos kulcsát
 log_create_secret_nn=Titkos kulcsot hozott létre minden gazdagép számára
 log_modify_secret_nn=Módosított titkos kulcs bármely gazdagép számára
 log_delete_secret_nn=Törölt titkos kulcs bármely gazdagép számára
+
 up_title=Indítsa el a kapcsolatot
 up_cmd=A kapcsolat indítása a $1 paranccsal.
+
 export_title=Konfiguráció exportálása
 export_desc=Ez az űrlap felhasználható a $1 kapcsolat konfigurációs fájl szakaszának exportálására, így könnyen importálható a kiszolgálón a másik végén.
 export_print=Megjeleníti a konfigurációt a böngészőben
@@ -193,11 +203,13 @@ export_err=A konfiguráció exportálása nem sikerült
 export_efile=Hiányzik a fájlnév
 export_esave=Nem sikerült írni a fájlba : $1 
 export_done=Exportált konfiguráció a $1 és $2 kapcsolathoz ($3 bájt).
+
 import_title=Konfiguráció importálása
 import_desc=Ez az űrlap felhasználható egy kapcsolat konfigurációs fájljának szakaszának importálására, például az, amelyet a modul exportálási funkciója hozott létre egy másik rendszeren.
 import_upload=Importálás a feltöltési fájlból ..
 import_file=Importálás szerveroldali fájlból ..
 import_ok=Importálás most
+
 import_err=A konfiguráció importálása nem sikerült
 import_eupload=Nincs feltöltve fájl
 import_efile=Nincs megadva szerveroldali fájl
@@ -207,6 +219,7 @@ import_eclash=A $1 nevű kapcsolat már létezik.
 import_done1=Az új IPsec kapcsolat sikeresen hozzáadva: $1.
 import_done2=A (z) $1 IPsec kapcsolat sikeresen frissült.
 import_over=Felülírja a létező kapcsolatot ugyanazon a néven?
+
 secrets_title=Titkos kulcsok
 secrets_none=Nem található titkos kulcs!
 secrets_name=Titkos
@@ -220,6 +233,7 @@ secrets_mod=$1 modulus
 secrets_newpsk=Hozzon létre új megosztott titkos kulcsot.
 secrets_newrsa=Hozzon létre új RSA kulcsot.
 secrets_return=titkos kulcslista
+
 secret_title1=Hozzon létre titkos kulcsot
 secret_title2=Titkos kulcs szerkesztése
 secret_header=Titkos kulcsfontosságú részletek

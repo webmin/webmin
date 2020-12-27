@@ -16,6 +16,7 @@ index_startmsg=Klepnutím na toto tlačítko se spustí na tomto serveru démon 
 index_stopmsg=Klepnutím na toto tlačítko se ukončí démon Fetchmail, který momentálně běží pod uživatelem $1. Od tohoto momentu nebude se nebudou maily automaticky stahovat každých $2 vteřin.
 index_efetchmail=Program Fetchmailu $1 nemůže být nalezen. Možná nemáte Fetchmail ve vašem systému nainstalován, nebo vaše <a href='$2'>konfigurace modulu</a> není správná.
 index_none=Neexistují žádní Unix uživatelé vlastnící <tt>.fetchmailrc</tt> soubory.
+
 poll_create=Přidat server
 poll_edit=Editovat server
 poll_header=Nastavení mail serveru
@@ -50,18 +51,22 @@ poll_preconnect=Příkaz, který se spustí před připojením
 poll_postconnect=Příkaz, který se spustí po odpojení
 poll_ecannot=Nemáte oprávnění editovat konfiguraci Fetchmail u tohoto uživatele
 poll_efile=Mohou být editovány pouze konfigurační soubory Fetchmail uživatele
+
 stop_err=Chyba při ukončení Fetchmailu
 stop_ecannot=Nemáte oprávnění ukončit Fetchmail
 start_err=Chyba při spuštění Fetchmailu
 start_einterval=Chybějící nebo nesprávný interval kontroly
 start_ecannot=Nemáte oprávnění spustit Fetchmail
+
 check_title=Kontrola serverů
 check_exec=Kontrola mailů na serveru(ech) pomocí příkazu $1 ..
 check_ok=.. kontrola je ukončena.
 check_failed=.. kontrola nebyla úspěšná!
+
 global_title=Výchozí nastavení
 global_header=Výchozí nastavení pro všechny servery
 global_err=Chyba při ukládání výchozích nastavení
+
 log_create_poll_file=Přidán server $1 v souboru $2
 log_modify_poll_file=Modifikován server $1 v souboru $2
 log_delete_poll_file=Smazán server $1 v souboru $2
@@ -77,6 +82,7 @@ log_global_user=Změněna globální nastavení pro uživatele $1
 log_global_file=Změněna globální nastavení v souboru $1
 log_start=Spuštěn démon Fetchmailu
 log_stop=SUkončen démon Fetchmailu
+
 acl_users=Může editovat konfiguraci Fetchmailu pro
 acl_all=Všichni uživatelé
 acl_this=Aktuální Webmin uživatel

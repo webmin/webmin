@@ -45,12 +45,15 @@ index_showing=Rodomos duomenų bazes atitinkančios $1 ..
 index_emsg=Visas MySQL klaidos pranešimas buvo : $1 
 index_jump=Arba redaguoti duomenų bazę:
 index_jumpok=Atviras
+
 login_err=Prisijungimas nepavyko
 login_ecannot=Jums neleidžiama konfigūruoti duomenų bazės prisijungimo
 login_elogin=Trūksta administracijos prisijungimo duomenų
 login_epass=Neteisingas administravimo vardas ar slaptažodis
+
 stop_err=Nepavyko sustabdyti duomenų bazės
 start_err=Nepavyko paleisti duomenų bazės
+
 dbase_title=Redaguoti duomenų bazę
 dbase_header=Duomenų bazių lentelės, rodyklės ir rodiniai
 dbase_tables=Duomenų bazių lentelės
@@ -81,6 +84,7 @@ dbase_type=Tipas
 dbase_typetable=Lentelė ($1)
 dbase_typeindex=Indeksas
 dbase_typeview=Vaizdas
+
 ddrop_err=Nepavyko išmesti duomenų bazės
 ddrop_title=Drop Database
 ddrop_rusure=Ar tikrai norite išmesti $1 duomenų bazę? Bus ištrintos $2 lentelės, kuriose yra $3 eilučių.
@@ -89,6 +93,7 @@ ddrop_mysql=Kadangi tai yra pagrindinė duomenų bazė, ją numetę jūsų „My
 ddrop_ok=Drop Database
 ddrop_empty=Tiesiog ištrinkite visas lenteles
 ddrop_empty2=Ištrinti visas lenteles
+
 ddrops_err=Nepavyko išmesti duomenų bazių
 ddrops_title=Drop Databases
 ddrops_rusure=Ar tikrai norite mesti $1 pasirinktas duomenų bazes? Bus ištrintos $2 lentelės, kuriose yra $3 eilučių.
@@ -97,6 +102,7 @@ ddrops_mysql=Kadangi pasirinkta pagrindinė duomenų bazė, ją numetus, jūsų 
 ddrops_ok=Drop Databases
 ddrops_enone=Nepasirinkta nė viena duomenų bazė
 ddrops_ecannotdb=Jums neleidžiama mesti duomenų bazės $1 
+
 table_title=Redaguoti lentelę
 table_title2=Kurti lentelę
 table_header=$1 lentelė duomenų bazėje $2 
@@ -142,16 +148,19 @@ table_nextra=Papildomai priskiriama
 table_eautokey=Automatiškai didėjantis laukas taip pat turi būti pagrindinis raktas
 table_eauto=Tik vienas laukas gali būti automatiškai didinamas
 table_delete=Ištrinti pažymėtus laukus
+
 tdrop_err=Nepavyko numesti stalo
 tdrop_title=Drop lentelė
 tdrop_rusure=Ar tikrai norite mesti lentelę $1 duomenų bazėje $2 ? $3 eilučių duomenys bus ištrinti.
 tdrop_ok=Drop lentelė
+
 tdrops_enone=Nepasirinkta nė viena lentelė (-ės)
 tdrops_err=Nepavyko išmesti lentelės (-ių)
 tdrops_ok=Lašas
 tdrops_title=Lašas pasirinktas
 tdrops_rusure=Ar tikrai norite mesti $1 pasirinktą lentelę (-es) duomenų bazėje $2 ? $3 eilučių duomenys bus ištrinti.
 tdrops_rusure2=Ar tikrai norite mesti $1 pasirinktą lentelę (-es) duomenų bazėje $2 ?
+
 field_title1=Pridėti lauką
 field_title2=Modifikuoti lauką
 field_in=$1 lentelėje $2 duomenų bazėje
@@ -185,6 +194,7 @@ field_esize=„$1“ nėra tinkamas lauko dydis
 field_eenum=Neįvestos išvardytos vertės
 field_efield=„$1“ nėra teisingas lauko pavadinimas
 field_ekey=Laukai, kuriuose leidžiama įrašyti nulius, negali būti pagrindinio rakto dalis
+
 view_title=Lentelės duomenys
 view_pos=$1 - $2 eilutės iš $3 
 view_none=Šioje lentelėje nėra duomenų.
@@ -219,6 +229,7 @@ view_keep=Palikite nepakeistą
 view_set=Nustatyti į failo turinį ..
 view_adv=Išplėstinė paieška
 view_sqlrun=Rezultatai, sugeneruoti pagal SQL užklausą : $1 
+
 users_title=Vartotojo leidimai
 users_user=Vartotojas
 users_host=Šeimininkai
@@ -245,6 +256,7 @@ users_ssl=Pažyma
 users_dtitle=Ištrinti vartotojo leidimus
 users_drusure=Ar tikrai norite ištrinti $1 pasirinktus MySQL vartotojo leidimus?
 users_dok=Ištrinti vartotojus
+
 user_title1=Sukurti vartotoją
 user_title2=Redaguoti vartotoją
 user_header=„MySQL“ vartotojo informacija
@@ -308,6 +320,7 @@ user_emax_user_connections=Didžiausias lygiagretus prisijungimas turi būti ska
 user_emax_connections=Maksimalus jungčių skaičius per valandą turi būti skaičius
 user_emax_updates=Maksimalus atnaujinimas per valandą turi būti skaičius
 user_emax_questions=Maksimalus užklausų skaičius per valandą turi būti skaičius
+
 dbs_title=Duomenų bazės leidimai
 dbs_db=Duomenų bazės
 dbs_user=Vartotojas
@@ -326,6 +339,7 @@ dbs_enone=Nepasirinkta nė viena duomenų bazė
 dbs_dtitle=Ištrinti duomenų bazės leidimus
 dbs_drusure=Ar tikrai norite ištrinti $1 pasirinktus MySQL duomenų bazės leidimus?
 dbs_dok=Ištrinti leidimus
+
 db_title1=Kurti duomenų bazės leidimus
 db_title2=Redaguoti duomenų bazės leidimus
 db_header=Duomenų bazės leidimo parinktys
@@ -340,6 +354,7 @@ db_err=Nepavyko išsaugoti duomenų bazės leidimų
 db_euser=Trūksta arba netinkamas vartotojo vardas
 db_ehost=Trūksta arba netinkamas pagrindinio kompiuterio vardas
 db_edb=Trūksta arba netinkamas duomenų bazės pavadinimas
+
 hosts_title=Pagrindinio kompiuterio leidimai
 hosts_db=Duomenų bazės
 hosts_host=Šeimininkai
@@ -355,6 +370,7 @@ hosts_dtitle=Ištrinti pagrindinio kompiuterio leidimus
 hosts_drusure=Ar tikrai norite ištrinti $1 pasirinktus „MySQL“ pagrindinio kompiuterio leidimus?
 hosts_dok=Ištrinti leidimus
 hosts_return=prieglobos leidimai
+
 host_title1=Sukurti pagrindinio kompiuterio leidimus
 host_title2=Redaguoti pagrindinio kompiuterio leidimus
 host_header=Pagrindinio kompiuterio leidimų parinktys
@@ -364,6 +380,7 @@ host_sel=Pasirinkta
 host_otherdb=Sutampantis modelis
 host_host=Šeimininkai
 host_perms=Leidimai
+
 newdb_title=Sukurti duomenų bazę
 newdb_header=Naujos duomenų bazės parinktys
 newdb_db=Duomenų bazės pavadinimas
@@ -377,6 +394,7 @@ newdb_err=Nepavyko sukurti duomenų bazės
 newdb_edb=Trūksta arba netinkamas duomenų bazės pavadinimas
 newdb_ecannot=Jums neleidžiama kurti duomenų bazių
 newdb_ecannot2=Jums neleidžiama kurti daugiau duomenų bazių
+
 exec_title=Vykdykite SQL
 exec_header=Įveskite SQL komandą, kurią norite vykdyti $1 duomenų bazėje.
 exec_old=Arba pasirinkite ankstesnę SQL komandą :
@@ -413,6 +431,7 @@ exec_iheader=Teksto failo importavimo parinktys
 exec_created=Buvo sukurtos $1 lentelės.
 exec_inserted=Įterpta $1 įrašų.
 exec_cs=Duomenų ženklų rinkinys
+
 tprivs_title=Lentelės leidimai
 tprivs_table=Lentelė
 tprivs_db=Duomenų bazė
@@ -431,6 +450,7 @@ tprivs_enone=Nepasirinkta nė viena lentelė
 tprivs_dtitle=Ištrinti lentelės leidimus
 tprivs_drusure=Ar tikrai norite ištrinti $1 pasirinktus „MySQL“ lentelės leidimus?
 tprivs_dok=Ištrinti leidimus
+
 tpriv_title1=Kurti lentelės leidimus
 tpriv_title2=Redaguoti lentelės leidimus
 tpriv_header=Lentelės leidimo parinktys
@@ -447,6 +467,7 @@ tpriv_etable=Nepasirinkta lentelė
 tpriv_euser=Trūksta arba netinkamas vartotojo vardas
 tpriv_ehost=Trūksta arba netinkamas pagrindinis kompiuteris
 tpriv_edb=Trūksta arba netinkamas duomenų bazės pavadinimas
+
 cprivs_title=Lauko leidimai
 cprivs_field=Laukas
 cprivs_table=Lentelė
@@ -466,6 +487,7 @@ cprivs_enone=Nepasirinktas nė vienas laukas
 cprivs_dtitle=Ištrinti stulpelio leidimus
 cprivs_drusure=Ar tikrai norite ištrinti $1 pasirinktus MySQL stulpelio leidimus?
 cprivs_dok=Ištrinti leidimus
+
 cpriv_title1=Kurti lauko leidimus
 cpriv_title2=Redaguoti lauko leidimus
 cpriv_header=Lauko leidimo parinktys
@@ -482,11 +504,13 @@ cpriv_etable=Nepasirinkta lentelė
 cpriv_euser=Trūksta arba netinkamas vartotojo vardas
 cpriv_ehost=Trūksta arba netinkamas pagrindinis kompiuteris
 cpriv_edb=Trūksta arba netinkamas duomenų bazės pavadinimas
+
 esql=SQL $1 nepavyko : $2 
 eparse=„Webmin“ negali išanalizuoti komandos $1 išvesties dėl duomenų bazės pobūdžio. Norėdami išspręsti šią problemą, turėsite įdiegti $2 ir $3 Perl modulius.
 edenied=Jūs neturite prieigos prie šios MySQL duomenų bazės
 perms_ecannot=Jums neleidžiama redaguoti leidimų
 perms_edb=Redaguoti galite tik savo duomenų bazių leidimus
+
 acl_dbs=Duomenų bazės, kurias šis vartotojas gali valdyti
 acl_dall=Visos duomenų bazės
 acl_dsel=Pasirinkta ..
@@ -507,6 +531,7 @@ acl_bnone=Neleisti kurti atsarginių kopijų
 acl_indexes=Ar gali peržiūrėti ir tvarkyti indeksus?
 acl_views=Ar gali peržiūrėti ir tvarkyti rodinius?
 acl_files=Ar galima vykdyti SQL iš vietinių failų?
+
 log_start=Paleistas „MySQL“ serveris
 log_stop=Sustabdytas „MySQL“ serveris
 log_cnf=Pakeista „MySQL“ serverio konfigūracija
@@ -571,6 +596,7 @@ log_importfile=Importuoti duomenys iš failo $1
 log_set=Pakeisti $1 „MySQL“ kintamieji
 log_root=Pakeistas administravimo slaptažodis
 log_manual=Rankiniu būdu redaguojamas konfigūracijos failas
+
 backup_title=Atsarginė duomenų bazė
 backup_title2=Sukurti visų duomenų bazių atsarginę kopiją
 backup_edump=„MySQL“ atsarginės kopijos programa $1 jūsų sistemoje nerasta. Galbūt jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga.
@@ -649,15 +675,18 @@ backup_bodyspace=Failo sistemos dydis: $1 Laisva vieta : $2
 backup_bodyall=visi
 backup_edownloadall=Atsisiųsti galima tik vienos duomenų bazės atsarginę kopiją
 backup_edownloadsave=Atsisiuntimo režimo negalima naudoti planuojamoms atsarginėms kopijoms kurti
+
 import_title=Importuoti duomenis
 import_uploadout=Duomenų importavimas iš įkelto failo ..
 import_fileout=Duomenų importavimas iš failo $1.
 import_eupload=Trūksta įkelto importo failo
 import_efile=Trūksta importavimo failo vardo
+
 adv_title=Išplėstinė paieška
 adv_and=Rasti visus kriterijus atitinkančius įrašus ..
 adv_or=Rasti bet kokius kriterijus atitinkančius įrašus ..
 adv_ok=Ieškokite dabar
+
 csv_title=Eksportuoti CSV failą
 csv_header=CSV eksporto parinktys
 csv_dest=Eksporto paskirties vieta
@@ -678,6 +707,7 @@ csv_done=CSV eksportas į $1 baigtas. Gauto failo dydis yra $2.
 csv_headers=Įtraukti stulpelių pavadinimus į CSV?
 csv_cols=Stulpeliai, kuriuos reikia įtraukti į CSV
 csv_ecols=Nepasirinktas nė vienas stulpelis
+
 cnf_title=„MySQL“ serverio konfigūracija
 cnf_efile=Jūsų sistemoje nerastas „MySQL“ konfigūracijos failas $1. Jei norite naudoti teisingą kelią, gali tekti pakoreguoti <a href='$2'>modulio konfigūraciją</a>.
 cnf_header=„MySQL“ serverio parinktys
@@ -719,11 +749,13 @@ cnf_restart=Įrašykite ir paleiskite „MySQL“ iš naujo
 cnf_fpt=Atskira kiekvienos „InnoDB“ lentelės byla?
 cnf_ilt=„InnoDB“ užrakto laikas (sekundėmis)
 cnf_eilt=„InnoDB“ užrakto laikas turi būti sveikasis skaičius
+
 manual_title=Redaguoti konfigūravimo failus
 manual_file=Redaguoti konfigūracijos failą:
 manual_ok=Gerai
 manual_efile=Netinkamas konfigūracijos failas!
 manual_err=Nepavyko išsaugoti konfigūracijos failo
+
 index_title1=Sukurti rodyklę
 index_header1=Rodyklės parinktys
 index_name=Rodyklės pavadinimas
@@ -739,12 +771,15 @@ index_ecols=Nepasirinktas nė vienas laukas
 index_title2=Redaguoti rodyklę
 index_header=Rodyklė $1 duomenų bazėje $2 
 index_ecannot=Jums neleidžiama tvarkyti rodyklių
+
 syslog_desc=„MySQL“ klaidų pranešimai
 syslog_desc2=„MySQL“ klaidos pranešimas
 syslog_logdesc=„MySQL“ užklausos
+
 fdrop_err=Nepavyko ištrinti laukų
 fdrop_enone=Nepasirinkta
 fdrop_eall=Negalite ištrinti visų laukų iš lentelės!
+
 view_title1=Kurti rodinį
 view_title2=Redaguoti rodinį
 view_header1=Išsamiau
@@ -770,6 +805,7 @@ view_cascaded=Pagrindiniai vaizdai
 view_local=Tik šis vaizdas
 view_nocheck=Nė vienas
 view_ecannot=Jums neleidžiama tvarkyti rodinių
+
 procs_title=Duomenų bazių jungtys
 procs_id=ID
 procs_user=Vartotojo vardas
@@ -781,9 +817,11 @@ procs_query=Vykdoma užklausa
 procs_kill=Užmušk pasirinktus ryšius
 procs_ecannot=Jums neleidžiama žiūrėti duomenų bazių jungčių
 procs_none=Šiuo metu nėra jokių kitų duomenų bazės kliento jungčių.
+
 kill_err=Nepavyko sunaikinti duomenų bazių jungčių
 kill_ecannot=Jums neleidžiama tvarkyti duomenų bazių jungčių
 kill_enone=Nepasirinkta
+
 vars_title=„MySQL“ sistemos kintamieji
 vars_desc=Įspėjimas - šiame puslapyje nustatyti kintamieji bus atkurti į numatytąsias reikšmes, kai iš naujo paleisite „MySQL“. Nuolatiniai nustatymai turi būti atlikti puslapyje <a href='$1'>MySQL serverio konfigūracija</a>.
 vars_ecannot=Jums neleidžiama redaguoti sistemos kintamųjų
@@ -794,6 +832,7 @@ vars_search=Rodyti kintamuosius, atitinkančius:
 vars_ok=Paieška
 vars_none2=Jokie sistemos kintamieji neatitiko jūsų paieškos.
 vars_none=Nerasta jokių sistemos kintamųjų!
+
 compat_ansi=ANSI
 compat_mysql323=„MySQL 3.2.3“
 compat_mysql40=„MySQL 4.0“
@@ -805,7 +844,9 @@ compat_maxdb=„MaxDB“
 compat_no_key_options=Pagrindinės galimybės
 compat_no_table_options=Lentelės parinktys
 compat_no_field_options=Lauko parinktys
+
 config_echarset=Trūksta arba netinkamai atrodo simbolių rinkinys
+
 root_title=Pakeiskite administravimo slaptažodį
 root_header=Naujas administravimo slaptažodis
 root_user=Administracijos prisijungimas
@@ -818,6 +859,7 @@ root_epass1=Neįvestas naujas slaptažodis
 root_epass2=Slaptažodžiai nesutampa
 root_none=Nėra slaptažodžio!
 root_auto=Automatinis (paprastai <tt>šaknis</tt>)
+
 mysqlpass_err=„MySQL“ saugus režimas
 mysqlpass_esafecmd=Komanda $1, reikalinga MySQL paleisti išjungus autentifikavimą, nerasta
 mysqlpass_eshutdown=Nepavyko išjungti : $1 

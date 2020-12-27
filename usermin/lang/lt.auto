@@ -16,11 +16,14 @@ index_esame=Puslapio <a href='$2'>modulio konfigūracija</a> nustatytas „Userm
 index_eroot=„Usermin“ konfigūracijos katalogas $1 egzistuoja, bet jo nurodytas programos šakninis katalogas $2 netaikomas! Turėtumėte rankiniu būdu atsisiųsti ir iš naujo įdiegti „Usermin“.
 index_restart=Paleiskite „Usermin“ iš naujo
 index_restartmsg=Spustelėkite šį mygtuką, kad iš naujo paleistumėte „Usermin“ serverio procesą. To gali prireikti, jei neseniai atnaujinote „Perl“.
+
 access_title=IP prieigos kontrolė
 access_desc=„Usermin“ serverį galima sukonfigūruoti taip, kad naudojant šią formą būtų galima uždrausti ar leisti prieigą tik iš tam tikrų IP adresų. Taip pat galima įvesti pagrindinius kompiuterių pavadinimus (pvz., Foo.bar.com) ir IP tinklus (pvz., 10.254.3.0 arba 10.254.1.0/255.255.255.128 arba 10.254.1.0/25 arba 10.254.1.5-10.254.97.127). Turėtumėte apriboti prieigą prie savo serverio tik patikimais adresais, ypač jei jis prieinamas iš interneto. Priešingu atveju visi, atspėję jūsų slaptažodį, turės visišką jūsų sistemos valdymą.
+
 bind_title=Uostai ir adresai
 bind_desc2=Ši forma gali būti naudojama norint pakeisti prievado numerį, kurio „Usermin“ klausosi, arba leisti, kad jis klausytųsi tik vienu jūsų sistemos IP adresu. Taip pat galite sukonfigūruoti jį priimti ryšius keliuose prievaduose arba klausytis keliais IP adresais. Pastaba - pakeitus prievadą ar įrišimo adresą, jūsų interneto naršyklė gali paraginti jus prisijungti dar kartą.
 bind_erestart=Klaida įvykus paleidus „Usermin“ naudojant naują adresą ir prievado nustatymus : $1 
+
 mods_title=„Usermin“ moduliai
 umods_title=„Usermin“ moduliai
 mods_desc1=„Usermin“ modulius galite pridėti įdiegę naudodami formą dešinėje. Moduliai paprastai yra paskirstomi <tt>.wbm</tt> failuose, kiekviename iš jų gali būti vienas ar keli moduliai. Modulius taip pat galima įdiegti iš RPM failų, jei juos palaiko jūsų operacinė sistema.
@@ -41,15 +44,18 @@ mods_desc3=Esamus modulius galima ištrinti naudojant žemiau esančią formą. 
 mods_delete=Ištrinkite modulius
 mods_deleteok=Ištrinti pasirinktus modulius
 mods_desc4=Įdiegtus modulius galima eksportuoti kaip wbm.gz failą, naudojant žemiau pateiktą formą. Tada modulio failą galima įdiegti į kitą sistemą, kurioje veikia „Usermin“.
+
 os_title=Operacinė sistema ir aplinka
 os_desc3=Šiame puslapyje rodoma operacinė sistema, kurią įdiegė „Usermin“, ir sistema, kuri šiuo metu yra aptinkama. Jei jie skiriasi, galite pasirinkti atnaujinti „Usermin“ OS informaciją, kurios gali prireikti, jei neseniai atnaujinote.
 os_desc2=Taip pat galite pakeisti paieškos kelią, kurį naudoja „Usermin“ vykdydami programas, o bendrai naudojamos bibliotekos kelias perduodamas bet kuriai programai.
 os_usermin=Operacinė sistema pagal „Usermin“
 os_iusermin=Vidinis OS kodas, kurį naudoja „Usermin“
 os_update=Atnaujinkite „Usermin“, kad naudotumėte aptiktą OS
+
 lang_title=Kalba
 lang_title2=„Usermin“ kalba
 lang_intro=Šiame puslapyje galite pasirinkti, kurią kalbą „Usermin“ naudos antraštėms, raginimams ir pranešimams rodyti
+
 session_title=Autentifikavimas
 session_desc1=Kai įjungta, slaptažodžio skirtumai apsaugo jūsų „Usermin“ serverį nuo slaptų slaptažodžių nulaužimo atakų, pridedant nuolat didėjantį vėlavimą tarp kiekvieno to paties vartotojo nepavykusio prisijungimo bandymo.
 session_desc2=Įjungus seanso autentifikavimą, kiekvienas prisijungęs vartotojo seansas bus stebimas „Usermin“, kad nenaudojantys vartotojai galėtų automatiškai atsijungti. Atminkite, kad įjungę arba išjungę sesijos autentifikavimą visi vartotojai gali būti priversti iš naujo prisijungti.
@@ -73,6 +79,7 @@ session_blank=Raginti vartotojus su tuščiu slaptažodžiu pasirinkti jį pirm�
 session_homedir=Sukurti trūkstamus namų katalogus prisijungus?
 session_homedir_perms=Naujo katalogo leidimai
 session_ehomedir_perms=Trūksta arba netinkami aštuonių katalogų leidimai
+
 themes_title=„Usermin“ temos
 themes_desc=Temos kontroliuoja „Usermin“ vartotojo sąsajos išvaizdą, įskaitant piktogramas, spalvas, foną ir galbūt puslapių išdėstymą. Žemiau esantį pasirinkimo laukelį galima naudoti norint pasirinkti vieną iš jūsų sistemoje įdiegtų temų, kurios bus numatytosios „Usermin“ vartotojams.
 themes_sel=Dabartinė tema :
@@ -101,7 +108,9 @@ themes_eirpm=RPM diegti nepavyko : $1
 themes_ok=Tema sėkmingai pakeista.. nukreipiant į „Webmin“ rodyklės puslapį.
 themes_delete=Ši forma gali būti naudojama vienai iš jūsų sistemoje įdiegtų temų, kurios šiuo metu nenaudojate, ištrinti.
 themes_delok=Ištrinama tema :
+
 themes_desc4=Įdiegtas temas galima eksportuoti kaip wbt.gz failą, naudojant žemiau pateiktą formą. Tada temos failą galima įdiegti kitoje sistemoje, kurioje veikia „Usermin“.
+
 configs_ecannot=Jums neleidžiama konfigūruoti šio modulio
 configs_title=„Usermin“ modulio konfigūracija
 configs_header=Konfigūruojami moduliai
@@ -115,8 +124,10 @@ configs_global=Visuotinė modulio konfigūracija
 configs_globaldesc=Šios formos parametrai taikomi visiems modulio vartotojams ir paprastai nustato su jo naudojamomis programomis ir failais susijusias parinktis.
 configs_user=Numatytosios vartotojo nuostatos
 configs_userdesc=Šios formos parametrai nustato numatytuosius parametrus, kuriuos vartotojas gali redaguoti šio modulio nuostatose. Jei nenurodysite kitaip, pavieniai vartotojai gali jais pernelyg daug naudotis.
+
 acl_title=Galimi moduliai
 acl_desc=Šiame puslapyje pasirinkite, kurie įdiegti „Usermin“ moduliai yra matomi vartotojams.
+
 ssl_title=SSL šifravimas
 ssl_desc1=Pagrindiniame kompiuteryje, kuriame veikia „Usermin“, atrodo, kad įdiegtas „SSLeay Perl“ modulis. Tuo naudodamasis „Usermin“ palaiko užšifruotą SSL ryšį tarp jūsų naršyklės ir serverio. Jei vartotojai prisijungia prie jūsų „Usermin“ serverio internetu, tuomet tikrai turėtumėte apsvarstyti galimybę naudoti SSL, kad užpuolikas neužfiksuotų savo slaptažodžių.
 ssl_desc2=Įspėjimas - įjunkite SSL palaikymą tik tuo atveju, jei turite naršyklę, palaikančią SSL, ir nėra ugniasienės, blokuojančios <tt>https</tt> užklausas tarp jūsų naršyklės ir „Usermin“ pagrindinio kompiuterio.
@@ -125,18 +136,23 @@ ssl_hole=Kadangi šiuo metu naudojate numatytąjį „Usermin SSL“ raktą, kur
 ssl_savekey=Ši forma leidžia įkelti esamą PEM formato SSL privatų raktą ir sertifikatą, kurį norite naudoti „Usermin“ serveriui.
 ssl_copycert=Nukopijuokite pažymėjimą iš „Webmin“
 ssl_copycertdesc=Nukopijuokite SSL sertifikatą, asmeninį raktą, CA pažymėjimą ir kitus parametrus, kuriuos naudoja „Webmin“.
+
 ca_email=Elektroninio pašto adresas
 ca_ou=Katedra
 ca_o=Organizacija
 ca_sp=Valstybė
 ca_c=Šalies kodas
+
 newkey_ok=Sėkmingai sugeneruotas šis „Usermin“ SSL raktas.
+
 stop_err=Nepavyko sustabdyti „Usermin“
 stop_ekill=Nepavyko nužudyti proceso : $1 
 stop_efile=Jau sustojo
 stop_ecannot=Jums neleidžiama sustoti „Usermin“
+
 start_err=Nepavyko paleisti „Usermin“
 start_ecannot=Jums neleidžiama paleisti „Usermin“
+
 users_title=Leidžiami vartotojai ir grupės
 users_desc=Naudodamiesi šia forma, „Usermin“ gali būti sukonfigūruotas apriboti, kuriems „Unix“ vartotojams ir grupėms leidžiama prisijungti. Norėdami nurodyti visus pirminius unix grupės narius, įveskite <tt>@grupės vardas</tt> į sąrašą.
 users_desc2=Norėdami suderinti UID diapazoną, įveskite <tt>pradžios – pabaigos</tt>, <tt>pradžios</tt> arba <tt>pabaigos</tt> į sąrašą.
@@ -150,10 +166,12 @@ users_euser=„$1“ nėra teisingas vartotojo vardas
 users_egroup=„$1“ nėra teisingas grupės pavadinimas
 users_shells=Atmeskite vartotojus, kurių apvalkalų nėra
 users_eshells=Nėra arba neegzistuoja apvalkalų failas
+
 defacl_title=Prieigos kontrolės parinktys
 defacl_desc=Šis puslapis leidžia jums sukonfigūruoti įvairias prieigos kontrolės parinktis, taikomas „Usermin“ moduliams ir vartotojams. Šios parinktys yra panašios į tas, kurios pateikiamos kiekvieno „Webmin“ modulio vartotojo visuotiniame ACL.
 defacl_header=Prieigos kontrolės parinktys „Usermin“ vartotojams
 defacl_err=Nepavyko išsaugoti prieigos kontrolės parinkčių
+
 install_err1=Nepavyko įdiegti modulio iš $1 
 install_efile=Failas neegzistuoja
 install_err2=Nepavyko įdiegti įkelto modulio
@@ -180,6 +198,7 @@ install_erpm=Ne „Usermin“ modulis ar temos RPM
 install_eirpm=RPM diegti nepavyko : $1 
 install_cat=Pagal kategoriją $1.
 install_eneither=RPM nėra vartotojo modulio ar temos
+
 delete_err=Nepavyko ištrinti modulių
 delete_edep=Modulio $1 negalima ištrinti, nes modulis $2 priklauso nuo jo
 delete_desc1=$1 ($2 klonas)
@@ -189,6 +208,7 @@ delete_msg=Šie moduliai buvo sėkmingai ištrinti iš jūsų „Usermin“ dieg
 delete_rusure=Ar tikrai norite ištrinti modulį (-ius) $2 ? $1 KB failų bus ištrinti visam laikui.
 delete_rusure2=Ar tikrai norite ištrinti $2 temą? $1 KB failų bus ištrinti visam laikui.
 delete_enone=Nepasirinktas modulis
+
 ui_title=Vartotojo sąsaja
 ui_desc=Ši forma leidžia jums redaguoti vartotojo sąsajos parinktis, kurias naudoja visi „Usermin“ moduliai.
 ui_header=Vartotojo sąsajos parinktys
@@ -230,6 +250,7 @@ ui_hnm1=Pagrindinio kompiuterio vardas iš URL
 ui_hnm2=Domeno vardas iš URL
 ui_hnm3=Kitas vardas ..
 ui_tabs=Klasifikuokite modulius?
+
 upgrade_title=Atnaujinkite „Usermin“
 upgrade_title2=Įdiekite „Usermin“
 upgrade_desc=Ši forma leidžia atnaujinti visą „Usermin“ diegimą į naują versiją. Galite įdiegti iš vietinio failo, įkelto failo arba iš naujausios versijos apsilankę <a href=http://www.usermin.com/>www.usermin.com</a>. Kaip ir rankiniu būdu atnaujinant, visi jūsų konfigūracijos nustatymai ir trečiųjų šalių moduliai bus saugomi.
@@ -263,6 +284,7 @@ upgrade_done=.. atnaujinimas baigtas.
 upgrade_failed=.. atnaujinti nepavyko!
 upgrade_updates=Yra $1 naujinimai šiai naujai „Usermin“ versijai. <a href='$2'>Spustelėkite čia</a>, kad juos dabar galėtumėte automatiškai atsisiųsti ir įdiegti.
 upgrade_eupdates=Nepavyko atsisiųsti atnaujinimų sąrašo : $1 
+
 update_desc1=Ši forma leidžia atnaujinti „Usermin“ modulius, kuriuose rasta klaidų ar saugos spragų iš puslapio <a href=http://www.usermin.com/uupdates.html>„Usermin“ naujinimų</a> arba iš kito šaltinio. Tai leis palyginti dabartinius įdiegtus modulius su tais, kuriuos galima atnaujinti, ir pasirinktinai automatiškai atsisiųsti ir įdiegti pasenusius modulius.
 update_header1=Atnaujinkite modulius dabar
 update_header2=Atnaujinkite modulius pagal tvarkaraštį
@@ -279,10 +301,12 @@ update_sched=Atnaujinkite modulius $1 : 00 kas $2 dienas
 update_none=Nėra šios versijos „Usermin“ naujinių.
 update_failed=Nepavyko įdiegti modulio : $1 
 update_desc2=Ši forma skirta automatiniam „Usermin“ modulių, kuriuose yra klaidų ar saugos spragų, atnaujinimui iš <a href=http://www.usermin.com/uupdates.html>„Usermin“ atnaujinimų</a> puslapio arba iš kito šaltinio. Nors ši paslauga yra naudinga, turėtumėte būti atsargūs ja naudodamiesi, nes tai gali leisti užpuolikams perimti jūsų sistemą, jei kada nors buvo sugadintas naujinimo serveris.
+
 assignment_title=Perskirskite modulius
 assignment_header=Modulio kategorijų priskyrimai
 assignment_ok=Keisti kategorijas
 assignment_desc=Ši forma leidžia jums sukonfigūruoti, kuri kategorija kiekvienas modulis rodomas „Usermin“ rodyklės puslapyje.
+
 categories_title=Redaguoti kategorijas
 categories_header=Kategorijos ID ir aprašymai
 categories_desc=Ši forma leidžia pervardyti esamas „Usermin“ kategorijas ir sukurti naujas, kurioms priskirti modulius. Viršutinė lentelės dalis skirta įmontuotų kategorijų aprašų pakeitimui, o apatinė - naujų kategorijų ID ir aprašų pridėjimui.
@@ -292,6 +316,7 @@ categories_edesc=Trūksta $1 aprašymo
 categories_ecat=$1 kategorijos ID jau paimtas
 categories_code=ID
 categories_name=Rodomas aprašymas
+
 log_access=Pakeista IP prieigos kontrolė
 log_bind=Pakeistas uostas ir adresas
 log_log=Pakeistos registravimo parinktys
@@ -327,6 +352,7 @@ log_restrict_create=Sukurtas $1 apribojimas
 log_restrict_modify=Pakeistas $1 apribojimas
 log_restrict_delete=Panaikintas $1 apribojimas
 log_restrict_move=Perkeltas $1 apribojimas
+
 log_all=Visi vartotojai
 log_group=grupė $1 
 log_switch=Perjungtas į „Usermin“ vartotoją $1 
@@ -334,6 +360,7 @@ log_logout=Pakeisti automatinio atsijungimo laikai
 log_dav=Pakeisti DAV serverio nustatymai
 log_advanced=Pakeistos išplėstinės parinktys
 log_mobile=Pakeistos mobiliojo įrenginio parinktys
+
 update_err=Nepavyko atnaujinti modulių
 update_eurl=Trūksta arba netinkamas atnaujinimo URL
 update_title=Atnaujinkite modulius
@@ -352,6 +379,7 @@ update_rv=Tikrinimas, ar atnaujinti „Usermin“ moduliai nuo $1
 update_eemail=Turite įvesti el. Pašto adresą, jei tik nurodote, kas būtų atnaujinta.
 update_subject=„Usermin“ modulių atnaujinimo ataskaita
 update_version=Dabar galima atsisiųsti naują „Usermin“ versiją ($1 versija). Būsimi atnaujinimai bus išleisti tik naujausiai versijai.
+
 restrict_title=Modulio apribojimai
 restrict_desc=Šis puslapis leidžia jums valdyti, kurie „Usermin“ moduliai yra prieinami skirtingiems vartotojams ir grupėms. Taikomi visi sąrašo modulių papildymai ir atėmimai, o ne tik pirmasis, atitinkantis kiekvieną vartotoją. <br>Moduliai, kurie nėra pasirinkti<a href='$1'> prieinamų modulių </a> puslapyje, niekada nebus pasiekiami vartotojų, net jei jie čia ir yra atrinkti.
 restrict_who=„Usermin“ vartotojas
@@ -384,6 +412,7 @@ restrict_egroup=Trūksta arba netinkamas grupės pavadinimas
 restrict_efile=Trūksta, nėra arba nėra absoliučių vartotojų ir grupių failų
 restrict_move=Judėk
 bootup_ecannot=Jums neleidžiama konfigūruoti įkrovos
+
 acl_icons=Leidžiami konfigūracijos puslapiai
 acl_mods=Gali sukonfigūruoti modulius
 acl_all=Visi moduliai
@@ -391,10 +420,12 @@ acl_sel=Pasirinkta žemiau ..
 acl_stop=Ar galima sustoti ir paleisti „Usermin“?
 acl_bootup=Ar galima sukonfigūruoti pradžią įkrovos metu?
 acl_ecannot=Jums neleidžiama naudotis šiuo puslapiu
+
 clone_err=Nepavyko klonuoti modulio
 clone_elink=nuoroda nepavyko : $1 
 clone_ecopy=nepavyko nukopijuoti konfigūracijos : $1 
 clone_desc=$1 klonas
+
 sessions_title=Dabartinės prisijungimo sesijos
 sessions_desc=Žemiau pateikiami dabartiniai „Usermin“ seanso prisijungimai. Norėdami atšaukti esamą seansą ir priversti vartotoją vėl prisijungti, spustelėkite jo seanso ID.
 sessions_id=Sesijos ID
@@ -404,12 +435,15 @@ sessions_login=Prisijungta
 sessions_none=Šiuo metu į „Usermin“ nėra prisijungę vartotojai.
 sessions_switch=Perjungti į „Usermin“ vartotoją:
 sessions_ok=Perjungti
+
 referers_title=Patikimi persiuntėjai
 referers_desc=Šis puslapis leidžia jums sukonfigūruoti „Usermin“ persiuntimo tikrinimo palaikymą, kuris yra naudojamas siekiant užkirsti kelią kenkėjiškoms nuorodoms iš kitų svetainių, kurios apgauna jūsų vartotojų naršykles, kad jos darytų pavojingus dalykus su „Usermin“. Tačiau jei turite nuorodų į „Usermin“ iš savo svetainių, apie kurias nenorite įspėti, turėtumėte įtraukti šias svetaines į žemiau esantį sąrašą.
+
 anon_title=Anoniminė modulio prieiga
 anon_desc=Šis puslapis leidžia suteikti prieigą prie pasirinktų „Usermin“ modulių ir kelių be klientų prisijungimo. Kiekvieną žemiau įvestą modulio kelią (pvz., / Komandos ar / changepass) taip pat turite įvesti Unix vartotojo vardą, kurio leidimai bus naudojami prieigai prie modulio.
 anon_user=„Unix“ vartotojas
 anon_euser=Trūksta arba netinkamas „Unix“ naudotojas URL keliui „$1“
+
 logout_title=Automatinio atsijungimo laikai
 logout_desc=Šis puslapis gali būti naudojamas norint sukonfigūruoti skirtingus neaktyvumo atsijungimo laikus skirtingiems „Usermin“ vartotojams. Laikas turi būti įvestas minutėmis, o nulinis laikas reiškia, kad suderinamų vartotojų sesijos niekada nebus automatiškai atsijungiamos.
 logout_type=Tipas
@@ -424,6 +458,7 @@ logout_egroup=Trūksta arba netinkama grupė $1 eilutėje
 logout_efile=Trūksta arba neegzistuoja failas $1 eilutėje
 logout_etime=Trūksta arba netinkamas laiko tarpas $1 eilutėje
 logout_ecannot=Jums neleidžiama konfigūruoti atsijungimo laiko
+
 dav_title=„DAV Server“
 dav_header=DAV serverio parinktys
 dav_path=DAV įgalinta?
@@ -444,16 +479,22 @@ dav_users=Vartotojai, kurie gali naudoti DAV
 dav_users1=Visi vartotojai
 dav_users0=Žemiau išvardyti vartotojai ir grupės ..
 dav_eusers=Neįvestas joks vartotojas
+
 syslog_errorlog=„Usermin“ klaidų žurnalas
+
 descs_title=Modulio pavadinimai
 descs_info=Šis puslapis leidžia nurodyti alternatyvius „Usermin“ modulių pavadinimus, nepaisyti jų standartinių aprašų.
+
 advanced_title=Išplėstiniai nustatymai
 advanced_pass=Padaryti slaptažodį prieinamą „Usermin“ programoms? <br><font size=-1> (neveikia, kai įjungta seanso autentifikacija) </font>
+
 blocked_title=Užblokuoti prieglobos ir vartotojai
 blocked_none=Šiuo metu „Usermin“ neužblokavo jokių kompiuterių ar vartotojų.
 blocked_user=„Usermin“ vartotojas
 blocked_cleardesc=Spustelėkite šį mygtuką, kad išvalytumėte visus dabartinius pagrindinio kompiuterio ir vartotojo blokus, paleisdami „Usermin“ serverio procesą.
+
 mobile_title=Mobiliojo įrenginio parinktys
+
 copycert_err=Nepavyko nukopijuoti SSL nustatymų iš „Webmin“
 copycert_essl=SSL neįgalintas
 copycert_ekeyfile=„Webmin“ nėra nustatytas joks asmeninio rakto failas

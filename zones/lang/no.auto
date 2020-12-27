@@ -4,6 +4,7 @@ index_none=Ingen soner er definert ennå.
 index_add=Legg til en ny sone.
 index_return=soneliste
 index_zones=Eksisterende soner
+
 edit_title=Rediger sone
 edit_common=Generell sonekonfigurasjon
 edit_name=Sonenavn
@@ -57,20 +58,26 @@ edit_attrnone=Ingen generiske attributter er definert ennå.
 edit_attradd=Legg til et nytt generisk attributt.
 edit_webmin=Åpne Webmin
 edit_brand=Merke
+
 ui_cancel=Avbryt
+
 save_err=Kunne ikke lagre sonen
 save_epool=Manglende eller ugyldig pool
 save_ewebmin=Webmin kjører ikke i denne sonen
+
 reboot_title=Start sonen på nytt
 reboot_rusure=Er du sikker på at du vil starte sonen $1 på nytt? Alle prosesser som kjører i den vil bli startet på nytt.
 reboot_err=Kunne ikke starte sonen på nytt
 reboot_doing=Nå starter sonen på nytt ..
+
 reboot_failed=.. mislyktes :
 reboot_ok=.. komplett.
+
 halt_title=Avstengningssone
 halt_rusure=Er du sikker på at du vil slå av sonen $1 ? Alle prosesser som kjører i den, vil bli stoppet.
 halt_err=Kunne ikke slå av sonen
 halt_doing=Nå stenger sonen ..
+
 boot_title=Oppstartsone
 boot_err=Kunne ikke oppstartssonen
 boot_doing=Nå starter opp sonen ..
@@ -78,10 +85,12 @@ delete_title=Slett sone
 delete_rusure=Er du sikker på at du vil slette sonen $1 ? Alle filer i de private filsystemene vil gå tapt.
 delete_err=Kunne ikke slette sonen
 delete_doing=Slette nå sone ..
+
 uninstall_title=Avinstaller systemet
 uninstall_rusure=Er du sikker på at du vil avinstallere systemprogramvaren fra sone $1 ? Alle filer i de private filsystemene vil gå tapt.
 uninstall_err=Kunne ikke avinstallere systemprogramvare fra sonen
 uninstall_doing=Avinstaller nå systemet fra sone ..
+
 install_title=Installer system
 install_doing=Nå installerer systemet i sone ..
 net_title1=Lag nettverksgrensesnitt
@@ -96,6 +105,7 @@ net_enetmask=Ugyldig nettmaske
 net_eaddress=Ugyldig IP-adresse
 net_egone=Grensesnitt eksisterer ikke lenger!
 net_eclash=Et nettverksgrensesnitt med samme IP-adresse eksisterer allerede i denne sonen
+
 pkg_title1=Legg til pakkekatalog
 pkg_title2=Rediger pakken katalog
 pkg_header=Arvede pakker katalogdetaljer
@@ -107,6 +117,7 @@ pkg_eclash=Pakkekatalogen finnes allerede i denne sonen
 pkg_inherit=Arv pakker fra global sone
 pkg_inherit_yes=Ja (sparsom rotsone)
 pkg_inherit_no=Nei (hele rotsonen)
+
 fs_title1=Lag filsystem
 fs_title2=Rediger filsystem
 fs_header=Ytterligere filsystemdetaljer
@@ -128,6 +139,7 @@ fs_eoptions=Ugyldige monteringsalternativer (må være en kommaseparert liste so
 fs_egone=Filesystem eksisterer ikke lenger!
 fs_mount=Montere etter oppretting?
 fs_eclash=Et filsystem som bruker samme katalog eksisterer allerede i denne sonen
+
 rctl_title1=Lag ressurskontroll
 rctl_title2=Rediger ressurskontroll
 rctl_header=Ressursstyringstype og -grenser
@@ -148,6 +160,7 @@ rctl_elimit=Ikke et tall
 rctl_eaction=Ingen signal valgt i rad $1 
 rctl_evalues=Ingen angitte grenser
 rctl_eclash=En kontroll for den samme ressursen eksisterer allerede i denne sonen
+
 attr_title1=Lag generisk attributt
 attr_title2=Rediger generisk attributt
 attr_header=Generiske soneattributtdetaljer
@@ -165,6 +178,7 @@ attr_euint=Verdi er ikke et positivt heltall
 attr_eboolean=Verdien er ikke 'sann' eller 'usann'
 attr_egone=Attributtet eksisterer ikke lenger!
 attr_eclash=Et attributt med samme navn finnes allerede i denne sonen
+
 status_running=Løping
 status_installed=Stanset
 status_configured=Ikke installert
@@ -172,13 +186,16 @@ status_incomplete=Å bli installert
 status_ready=Klar
 status_down=Ned
 status_shutting_down=Slår av
+
 list_name=Sonenavn
 list_id=ID-nr.
 list_path=Sonkatalog
 list_status=Status
 list_actions=handlinger
+
 zone_in=I sone $1 
 pool_none=Ingen
+
 create_title=Opprett sone
 create_header=Nye sonedetaljer
 create_path=Sone filer katalog
@@ -239,6 +256,7 @@ create_erouter=Manglende eller ugyldig standardruter-IP-adresse
 create_removingpkgs=fjerner arvelige pakkekataloger. ..
 create_brand=Merke
 create_brandmsg=Merkevaresone
+
 log_create_zone=Opprettet sone $1 
 log_delete_zone=Slettet sone $1 
 log_save_zone=Endret konfigurasjon for sone $1 
@@ -262,6 +280,7 @@ log_delete_rctl=Slettet ressurskontroll for $1 i sone $2
 log_create_attr=Opprettet generisk attributt $1 i sone $2 
 log_modify_attr=Endret generisk attributt $1 i sone $2 
 log_delete_attr=Slettet generisk attributt $1 i sone $2 
+
 webmin_eperl=Perl er ikke installert på $1 
 webmin_eroot=Katalogen $1 eksisterer ikke eller inneholder ikke Webmin.
 webmin_title=Installer Webmin

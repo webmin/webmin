@@ -13,6 +13,7 @@ index_applydesc=Faceți clic pe acest buton pentru a aplica configurația curent
 index_cpan=Deoarece SpamAssassin este un modul Perl, îl puteți instala automat utilizând modulul Weba <a href='$2'>Perl Modules</a> pentru a descărca $1 din CPAN.
 index_spamassassin=SpamAssassin
 index_ecannot=Nu aveți voie să gestionați fișierul de configurare SpamAssassin $1 
+
 white_title=Adresele permise și refuzate
 white_desc=Tabelele de pe această pagină vă permit să specificați de la: și la: adrese pentru e-mail care sunt întotdeauna sau niciodată clasificate ca spam. Orice alt e-mail va fi procesat normal după regulile SpamAssassin. Toate adresele de e-mail pot conține wildcards, cum ar fi *@foo.com sau *.foo.com pentru a se potrivi cu domenii întregi.
 white_from=Expeditorii să nu se clasifice niciodată ca spam
@@ -44,6 +45,7 @@ white_tabham=Adrese admise
 white_tabspam=Adresele refuzate
 white_tabsome=Adrese de destinație
 white_tabimport=Import adrese
+
 score_title=Clasificare spam
 score_desc=SpamAssassin atribuie un punctaj fiecărui mesaj în funcție de conținutul și anteturile acestuia. Opțiunile de pe această pagină determină scorul deasupra căruia un mesaj este considerat spam și unele dintre metodele prin care se calculează acel scor.
 score_header=Opțiuni de clasificare a mesajelor spam
@@ -77,6 +79,7 @@ score_emxdelay=Secunde lipsă sau invalide pentru a aștepta între verificăril
 score_etimeout=Secunde lipsă sau nevalide pentru a aștepta interogări RBL
 score_ereceived=Număr lipsit sau nevalid de Primite: anteturi pentru a verifica cu RBL
 score_bayes=Folosiți clasificatorul de învățare Bayesian?
+
 report_title=Modificarea mesajului
 report_desc=Opțiunile de pe această pagină controlează modificările pe care SpamAssassin le aduce în anteturile și corpul tuturor mesajelor pe care le analizează și modificările pe care le face celor clasificate drept spam.
 report_header=Opțiuni de modificare a mesajelor analizate și spam
@@ -109,6 +112,7 @@ report_addspam=Spam
 report_addham=șuncă
 report_addall=Toate
 report_eaddheader=Lipsesc sau nevalide antetul suplimentar pentru a adăuga $1 
+
 user_title=Opțiuni diverse pentru utilizatori
 user_desc=Opțiunile de pe această pagină sunt în mare parte legate de căile și setările pe care SpamAssassin le folosește pentru pachetele externe de identificare a spam-ului Razor, DCC și Pyzor. Puteți spune, de asemenea, SpamAssassin dacă va putea efectua căutări DNS sau nu.
 user_header=Opțiuni diverse la nivel de utilizator
@@ -131,6 +135,7 @@ user_err=Nu a reușit să salvați opțiunile utilizatorului
 user_etimeout=„$1” nu este un interval de timp valid
 user_epath=„$1” nu este o cale de program de client validă
 user_emax=„$1” nu este un număr de verificare valabil
+
 header_title=Teste de antet și corp
 header_desc=Această pagină vă permite să definiți teste suplimentare pe care SpamAssassin le va aplica la e-mail, pe baza anteturilor de mesaje, a conținutului corpului, a adreselor URL găsite în corp sau pe combinații de alte teste. Numele atribuit fiecărui test depinde de dvs., dar este de obicei ceva de genul CONTAINS_FOO. Scorul real pe care SpamAssassin îl adaugă la mesajele care se potrivesc unui test poate fi setat prin introducerea numelor de teste proprii sau încorporate în tabelele din partea de jos a paginii.
 header_switch=Treceți la modul simplu ..
@@ -164,6 +169,7 @@ header_eeval=„$1” nu este o funcție de evaluare validă
 header_eheader=„$1” nu este un antet de e-mail valid
 header_eregexp=„$1” nu este o expresie regulată validă (trebuie să fie ca / expresie /)
 header_emeta=Lipsește expresia testului pentru testul „$1”
+
 priv_title=Opțiuni privilegiate diverse
 priv_desc=Opțiunile pentru aceasta pot fi setate doar la nivel global, mai degrabă decât în fișierele de configurare ale utilizatorilor individuali. Ei controlează cu căi către diverse fișiere de configurare și de logare.
 priv_header=Setări diverse la nivel de privilegi
@@ -183,6 +189,7 @@ priv_eargs=„$1” nu este o listă validă de argumente
 priv_emscore=„$1” nu este un scor valid cu fraza cea mai mare
 priv_ephrase=„$1” nu este o expresie spam de două cuvinte valabilă
 priv_escore=Scor lipsă sau nevalid pentru expresia spam „$1”
+
 usually=De obicei $1 
 ecannot=Nu aveți voie să utilizați această pagină
 setup_title=Configurare Procmail pentru SpamAssassin
@@ -202,11 +209,13 @@ setup_drop1=Utilizator destinatar Unix
 setup_drop0=<tt>root</tt> utilizator
 setup_ok=Configurați Procmail pentru SpamAssassin
 setup_email=Transmite adresa de e-mail
+
 setup_err=A eșuat la instalarea SpamAssassin
 setup_efile=Fișierul format mbox lipsit sau nevalid
 setup_emaildir=Directorul de e-mail Qmail lipsit sau nevalid
 setup_emhdir=Directorul de e-mail MH lipsă sau nevalid
 setup_eemail=Adresa de e-mail lipsă sau nevalidă
+
 log_white=Adresele modificate permise și refuzate
 log_score=Clasificare spam modificată
 log_report=Modificare modificată a mesajului
@@ -217,12 +226,14 @@ log_setup=Configurați Procmail pentru SpamAssassin
 log_procmail=Configurație Procmail modificată
 log_import=Adrese permise $1 admise
 log_manual=Fișier de configurare editat manual
+
 import_title=Importați adrese
 import_err=Eșecul la importarea adreselor
 import_efile=Niciun fișier de importat din selectat
 import_enone=Nu s-au găsit adrese de e-mail în fișier
 import_ok1=Adrese de e-mail $2 au fost găsite în fișier, dintre care $1 erau noi și au fost adăugate în lista de adrese permise.
 import_ok2=Adrese de e-mail $1 au fost găsite în fișier, dar toate erau deja în lista de adrese permise.
+
 mail_title=Corespondență nesolicitată
 mail_desc=Această pagină listează mesajele care au fost clasificate drept spam și așteaptă unele acțiuni. Mesajele care au fost indentificate incorect pot fi mutate în Inbox, în timp ce cele care sunt cu adevărat spam pot fi șterse.
 mail_level=Scor
@@ -240,10 +251,13 @@ mail_will=Actualizare automată în $1 minute
 mail_wills=Actualizare automată în $1 secunde
 mail_delall=Ștergeți tot spamul
 mail_search3=Caută scorul de mai sus:
+
 process_eclean=A apărut o eroare la eliminarea anteturilor SpamAssassin din acest e-mail
 process_ereport=Nu a putut raporta e-mailul către SpamAssassin : $1 
+
 apply_err=Eroare la aplicarea modificărilor
 apply_none=Nu a fost găsit niciun proces de demoni SpamAssassin!
+
 acl_avail=Icoane disponibile pentru utilizator
 acl_file=Fișier de configurare SpamAssassin pentru editare
 acl_filedef=Fișier de configurare global
@@ -251,8 +265,10 @@ acl_awl=Permis utilizatorilor pentru editare automată cu lista albă
 acl_awl0=Toți utilizatorii
 acl_awl1=Numai utilizatorii enumerați $1 
 acl_awl2=Numai membrii grupurilor $1 
+
 search_escore=Scor de spam lipsă sau nevalid
 search_results5=$1 mesaje de poștă cu scor spam sau peste $2.
+
 razor_title=Configurarea detectorului de spam Razor
 razor_desc=Vipul's Razor este un sistem colaborativ de detectare și raportare a spamului care poate îmbunătăți clasificarea spam-ului trimis la adresa dvs. Cu toate acestea, înainte de a putea fi folosit, trebuie să vă înregistrați pentru un cont Razor, folosind formularul de mai jos.
 razor_user=Nume utilizator Razor
@@ -267,6 +283,7 @@ razor_epass=Parcă lipsește
 razor_doing=Încercați să înregistrați și să configurați Razor ..
 razor_done=.. Terminat.
 razor_failed=.. a eșuat! Consultați eroarea de mai sus pentru motivul pentru care.
+
 amavisd_title=Livrare spam Amavisd
 amavisd_desc=Formularul poate fi utilizat pentru a modifica configurația Amavisd care determină ce se întâmplă cu mesajele clasificate ca spam.
 amavis_ok=Schimbă livrarea Amavisd
@@ -304,9 +321,11 @@ amavis_quarantine_today=Mesaje spam în carantină astăzi (24 ore)
 amavis_quarantine_week=Mesaje spam în carantină săptămâna aceasta (7 zile)
 amavis_quarantine_month=Mesaje spam în carantină luna aceasta (30 de zile)
 amavis_quarantine_total=Numărul total de mailuri spam în carantină
+
 procmail_title=Procmail Spam Delivery
 procmail_ok=Schimbați livrarea Procmail
 procmail_desc=Formularul poate fi utilizat pentru a modifica configurația Procmail care determină ce se întâmplă cu mesajele clasificate ca spam.
+
 simple_title=Teste de antet și corp
 simple_desc=Această pagină vă permite să definiți teste suplimentare pe care SpamAssassin le va aplica la e-mail, pe baza anteturilor de mesaj, a conținutului corpului, a adreselor URL găsite în corp. Numele atribuit fiecărui test depinde de dvs., dar este de obicei ceva de genul CONTAINS_FOO.
 simple_switch=Treceți la modul avansat ..
@@ -317,8 +336,10 @@ simple_regexp=Expresie potrivită
 simple_score=Scorul de aplicat
 simple_describe=Descriere
 simple_err=Nu a reușit salvarea testelor de mesaje
+
 before_ecmd=Comanda înainte de salvare a eșuat : $1 
 after_ecmd=Comanda după salvare a eșuat : $1 
+
 connect_emysql=Nu a putut încărca driverul bazei de date $1 
 connect_elogin=Eroare la autentificarea la baza de date $1:$2.
 connect_equery=Baza de date $1 nu conține tabelul de preferințe $2 
@@ -326,9 +347,11 @@ connect_eldapmod=Modulul Perl $1 necesar pentru a comunica cu LDAP nu este insta
 connect_eldap=Eroare la conectarea la serverul LDAP $1 pe portul $2 
 connect_eldaplogin=Eroare la autentificarea pe serverul LDAP $1 ca $2 : $3 
 connect_ebase=Baza LDAP DN $1 nu este valabilă : $2 
+
 eldap=Operația LDAP a eșuat : $1 
 esql=SQL a eșuat : $1 
 ldap_euser=Nu s-a putut găsi obiectul utilizator LDAP pentru $1 
+
 db_title=Baze de date SQL și LDAP
 db_header=Opțiuni ale bazei de date de stocare de configurare
 db_dsn=Stocați configurațiile utilizatorului în
@@ -364,6 +387,7 @@ db_eldapport=Numărul portului serverului LDAP lipsă sau nevalid
 db_eldapdn=DN de bază lipsă sau nevalidă - nu sunt permise spații
 db_eldapattr=Atributul SpamAssassin lipsă sau nevalid
 db_eldapuid=Atributul utilizatorului lipsă sau nevalid este
+
 awl_title=Gestionați auto-whitelists
 awl_search=Căutați pe lista albă pentru:
 awl_ok=Căutare
@@ -389,6 +413,7 @@ awl_deleteone=Ștergeți lista albă automată
 awl_deleteonedesc=Eliminați toate intrările auto-whitelist pentru utilizator $1.
 awl_deleteall=Ștergeți toate listele automate
 awl_deletealldesc=Eliminați toate intrările auto-whitelist pentru toți utilizatorii din sistem.
+
 dawl_err=Nu a reușit să se șteargă din lista albă automată
 dawl_eopen=Nu s-a putut deschide lista albă
 dawl_enone=Nici o adresă de șters selectată
@@ -396,6 +421,7 @@ dawl_ecannot=Nu aveți voie să gestionați lista albă automată pentru acest u
 dawl_doing=Ștergerea listelor automate pentru toți utilizatorii ..
 dawl_done=.. șters $2 intrări de la utilizatorii $1.
 dawl_title=Ștergeți toate listele automate
+
 manual_title=Editați fișierele de configurare
 manual_file=Editați fișierul de configurare:
 manual_ok=O.K

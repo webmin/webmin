@@ -45,12 +45,15 @@ index_showing=Rāda datu bāzes, kas atbilst $1.
 index_emsg=Pilns MySQL kļūdas ziņojums bija : $1 
 index_jump=Vai arī rediģēt datu bāzi:
 index_jumpok=Atvērt
+
 login_err=Pieslēgšanās neizdevās
 login_ecannot=Jums nav atļauts konfigurēt pieteikšanos datu bāzē
 login_elogin=Trūkst administrācijas pieteikšanās
 login_epass=Nepareizs administrācijas lietotājvārds vai parole
+
 stop_err=Neizdevās apturēt datu bāzi
 start_err=Neizdevās sākt datu bāzi
+
 dbase_title=Rediģēt datu bāzi
 dbase_header=Datu bāzes tabulas, indeksi un skati
 dbase_tables=Datu bāzes tabulas
@@ -81,6 +84,7 @@ dbase_type=Veids
 dbase_typetable=Tabula ($1)
 dbase_typeindex=Indekss
 dbase_typeview=Skats
+
 ddrop_err=Neizdevās nomest datu bāzi
 ddrop_title=Pilienu datu bāze
 ddrop_rusure=Vai tiešām vēlaties nomest datu bāzi $1 ? Tiks izdzēstas $2 tabulas, kurās ir $3 datu rindas.
@@ -89,6 +93,7 @@ ddrop_mysql=Tā kā šī ir galvenā datu bāze, tās nomešana, iespējams, pad
 ddrop_ok=Pilienu datu bāze
 ddrop_empty=Vienkārši izdzēsiet visas tabulas
 ddrop_empty2=Dzēst visas tabulas
+
 ddrops_err=Neizdevās nomest datu bāzes
 ddrops_title=Pilienu datu bāzes
 ddrops_rusure=Vai tiešām vēlaties nomest atlasītās datu bāzes $1 ? Tiks izdzēstas $2 tabulas, kurās ir $3 datu rindas.
@@ -97,6 +102,7 @@ ddrops_mysql=Tā kā galvenā datu bāze ir atlasīta, nometot to, iespējams, j
 ddrops_ok=Pilienu datu bāzes
 ddrops_enone=Neviena datu bāze nav atlasīta
 ddrops_ecannotdb=Jums nav atļauts nomest datu bāzi $1 
+
 table_title=Rediģēt tabulu
 table_title2=Izveidot tabulu
 table_header=$1 tabula datu bāzē $2 
@@ -142,16 +148,19 @@ table_nextra=Papildu attiecina
 table_eautokey=Automātiski pieaugošajam laukam jābūt arī primārajam taustiņam
 table_eauto=Tikai viens lauks var tikt automātiski palielināts
 table_delete=Dzēst atlasītos laukus
+
 tdrop_err=Neizdevās nomest galdu
 tdrop_title=Drop Table
 tdrop_rusure=Vai tiešām vēlaties nometiet tabulu $1 datu bāzē $2 ? Tiks izdzēstas $3 datu rindas.
 tdrop_ok=Drop Table
+
 tdrops_enone=Nav atlasīta neviena tabula (s)
 tdrops_err=Neizdevās nomest tabulu (-as)
 tdrops_ok=Piliens
 tdrops_title=Piliens atlasīts
 tdrops_rusure=Vai tiešām vēlaties nomest $1 atlasīto tabulu (-as) datu bāzē $2 ? Tiks izdzēstas $3 datu rindas.
 tdrops_rusure2=Vai tiešām vēlaties nomest $1 atlasīto tabulu (-as) datu bāzē $2 ?
+
 field_title1=Pievienot lauku
 field_title2=Modificēt lauku
 field_in=$1 tabulā datu bāzē $2 
@@ -185,6 +194,7 @@ field_esize=Lauks “$1” nav derīgs
 field_eenum=Neviena uzskaitītā vērtība nav ievadīta
 field_efield=Lauks “$1” nav derīgs
 field_ekey=Lauki, kas atļauj nulles, nevar būt primārās atslēgas daļa
+
 view_title=Tabulas dati
 view_pos=$1 līdz $2 rinda no $3 
 view_none=Šajā tabulā nav datu.
@@ -219,6 +229,7 @@ view_keep=Atstājiet nemainītu
 view_set=Iestatīt faila saturam ..
 view_adv=Izvērstā meklēšana
 view_sqlrun=SQL vaicājuma radītie rezultāti : $1 
+
 users_title=Lietotāja atļaujas
 users_user=Lietotājs
 users_host=Saimnieki
@@ -245,6 +256,7 @@ users_ssl=Sertifikāts
 users_dtitle=Dzēst lietotāja atļaujas
 users_drusure=Vai tiešām vēlaties dzēst atlasītās MySQL lietotāja atļaujas $1 ?
 users_dok=Dzēst lietotājus
+
 user_title1=Izveidot lietotāju
 user_title2=Rediģēt lietotāju
 user_header=MySQL lietotāja informācija
@@ -308,6 +320,7 @@ user_emax_user_connections=Maksimālajam vienlaicīgajam pieteikuminformācijai 
 user_emax_connections=Maksimālajam savienojumam stundā jābūt skaitlim
 user_emax_updates=Maksimālajam atjauninājumam stundā jābūt skaitlim
 user_emax_questions=Maksimālajam vaicājumam stundā jābūt skaitlim
+
 dbs_title=Datu bāzes atļaujas
 dbs_db=Datu bāzes
 dbs_user=Lietotājs
@@ -326,6 +339,7 @@ dbs_enone=Neviena datu bāze nav atlasīta
 dbs_dtitle=Dzēst datu bāzes atļaujas
 dbs_drusure=Vai tiešām vēlaties dzēst atlasītās MySQL datu bāzes atļaujas $1 ?
 dbs_dok=Dzēst atļaujas
+
 db_title1=Izveidot datu bāzes atļaujas
 db_title2=Rediģēt datu bāzes atļaujas
 db_header=Datu bāzes atļauju opcijas
@@ -340,6 +354,7 @@ db_err=Neizdevās saglabāt datu bāzes atļaujas
 db_euser=Trūkst vai nav derīgs lietotājvārds
 db_ehost=Trūkst vai nav derīgs resursdatora nosaukums
 db_edb=Trūkst vai nav derīgs datu bāzes nosaukums
+
 hosts_title=Saimnieka atļaujas
 hosts_db=Datu bāzes
 hosts_host=Saimnieki
@@ -355,6 +370,7 @@ hosts_dtitle=Dzēst resursdatora atļaujas
 hosts_drusure=Vai tiešām vēlaties dzēst atlasītās MySQL resursdatora atļaujas $1 ?
 hosts_dok=Dzēst atļaujas
 hosts_return=resursdatora atļaujas
+
 host_title1=Izveidot resursdatora atļaujas
 host_title2=Rediģēt resursdatora atļaujas
 host_header=Resursdatora atļauju iespējas
@@ -364,6 +380,7 @@ host_sel=Atlasīts
 host_otherdb=Atbilstošs raksts
 host_host=Saimnieki
 host_perms=Atļaujas
+
 newdb_title=Izveidot datu bāzi
 newdb_header=Jaunas datu bāzes iespējas
 newdb_db=Datu bāzes nosaukums
@@ -377,6 +394,7 @@ newdb_err=Neizdevās izveidot datu bāzi
 newdb_edb=Trūkst vai nav derīgs datu bāzes nosaukums
 newdb_ecannot=Jums nav atļauts izveidot datu bāzes
 newdb_ecannot2=Jums nav atļauts izveidot vairāk datu bāzu
+
 exec_title=Izpildiet SQL
 exec_header=Ievadiet SQL komandu, lai izpildītu datu bāzē $1.
 exec_old=Vai arī atlasiet iepriekšējo SQL komandu :
@@ -413,6 +431,7 @@ exec_iheader=Teksta faila importēšanas opcijas
 exec_created=Tika izveidotas $1 tabulas.
 exec_inserted=Ievietoti $1 ieraksti.
 exec_cs=Rakstzīmju kopa datiem
+
 tprivs_title=Tabulas atļaujas
 tprivs_table=Tabula
 tprivs_db=Datu bāze
@@ -431,6 +450,7 @@ tprivs_enone=Nav atlasīta neviena tabula
 tprivs_dtitle=Dzēst tabulas atļaujas
 tprivs_drusure=Vai tiešām vēlaties dzēst atlasītās MySQL tabulas atļaujas $1 ?
 tprivs_dok=Dzēst atļaujas
+
 tpriv_title1=Izveidot tabulas atļaujas
 tpriv_title2=Rediģēt tabulas atļaujas
 tpriv_header=Tabulas atļauju opcijas
@@ -447,6 +467,7 @@ tpriv_etable=Nav atlasīta neviena tabula
 tpriv_euser=Trūkst vai nav derīgs lietotājvārds
 tpriv_ehost=Trūkst vai nav derīgs resursdators
 tpriv_edb=Trūkst vai nav derīgs datu bāzes nosaukums
+
 cprivs_title=Lauka atļaujas
 cprivs_field=Lauks
 cprivs_table=Tabula
@@ -466,6 +487,7 @@ cprivs_enone=Nav atlasīts neviens lauks
 cprivs_dtitle=Dzēst kolonnu atļaujas
 cprivs_drusure=Vai tiešām vēlaties izdzēst atlasītās MySQL kolonnas atļaujas $1 ?
 cprivs_dok=Dzēst atļaujas
+
 cpriv_title1=Izveidot lauka atļaujas
 cpriv_title2=Rediģēt lauka atļaujas
 cpriv_header=Lauka atļauju iespējas
@@ -482,11 +504,13 @@ cpriv_etable=Nav atlasīta neviena tabula
 cpriv_euser=Trūkst vai nav derīgs lietotājvārds
 cpriv_ehost=Trūkst vai nav derīgs resursdators
 cpriv_edb=Trūkst vai nav derīgs datu bāzes nosaukums
+
 esql=SQL $1 neizdevās : $2 
 eparse=Webmin nevar parsēt komandas $1 izvadi datu rakstura datu dēļ. Lai atrisinātu šo problēmu, jums būs jāinstalē moduļi $2 un $3 Perl.
 edenied=Jums nav piekļuves šai MySQL datu bāzei
 perms_ecannot=Jums nav atļauts rediģēt atļaujas
 perms_edb=Jums ir atļauts rediģēt atļaujas tikai savām datu bāzēm
+
 acl_dbs=Datu bāzes, kuras šis lietotājs var pārvaldīt
 acl_dall=Visas datu bāzes
 acl_dsel=Atlasīts ..
@@ -507,6 +531,7 @@ acl_bnone=Neatļaut dublēšanu
 acl_indexes=Vai var apskatīt un pārvaldīt indeksus?
 acl_views=Vai var skatīt un pārvaldīt skatus?
 acl_files=Vai var izpildīt SQL no vietējiem failiem?
+
 log_start=Startēja MySQL serveris
 log_stop=Apturēts MySQL serveris
 log_cnf=Mainīta MySQL servera konfigurācija
@@ -571,6 +596,7 @@ log_importfile=Importētie dati no faila $1
 log_set=Mainīti $1 MySQL mainīgie
 log_root=Mainīta administrēšanas parole
 log_manual=Manuāli rediģēts konfigurācijas fails
+
 backup_title=Rezerves datu bāze
 backup_title2=Dublēt visas datu bāzes
 backup_edump=MySQL dublējuma programma $1 jūsu sistēmā netika atrasta. Varbūt jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
@@ -649,15 +675,18 @@ backup_bodyspace=Faila sistēmas lielums: $1 Brīva vieta : $2
 backup_bodyall=visiem
 backup_edownloadall=Var lejupielādēt tikai vienas datu bāzes dublējumu
 backup_edownloadsave=Lejupielādes režīmu nevar izmantot plānotajām dublēšanām
+
 import_title=Importēt datus
 import_uploadout=Datu importēšana no augšupielādēta faila.
 import_fileout=Datu importēšana no faila $1.
 import_eupload=Trūkst augšupielādēta importēšanas faila
 import_efile=Trūkst importēšanas faila nosaukuma
+
 adv_title=Izvērstā meklēšana
 adv_and=Atrodiet ierakstus, kas atbilst visiem kritērijiem.
 adv_or=Atrodiet ierakstus, kas atbilst visiem kritērijiem ..
 adv_ok=Meklēt tagad
+
 csv_title=Eksportēt CSV failu
 csv_header=CSV eksporta iespējas
 csv_dest=Eksporta galamērķis
@@ -678,6 +707,7 @@ csv_done=CSV eksportēšana uz $1 ir pabeigta. Iegūtais faila lielums ir $2.
 csv_headers=Vai CSV iekļaut kolonnu nosaukumus?
 csv_cols=Kolonnas, kas jāiekļauj CSV
 csv_ecols=Neviena kolonna nav atlasīta
+
 cnf_title=MySQL servera konfigurācija
 cnf_efile=MySQL konfigurācijas fails $1 jūsu sistēmā netika atrasts. Jums, iespējams, būs jāpielāgo <a href='$2'>moduļa konfigurācija</a>, lai izmantotu pareizo ceļu.
 cnf_header=MySQL servera opcijas
@@ -719,11 +749,13 @@ cnf_restart=Saglabājiet un restartējiet MySQL
 cnf_fpt=Katrai InnoDB tabulai ir atsevišķs fails?
 cnf_ilt=InnoDB bloķēšanas taimauts (sekundēs)
 cnf_eilt=InnoDB bloķēšanas noildzei jābūt skaitlim
+
 manual_title=Rediģēt konfigurācijas failus
 manual_file=Rediģēt konfigurācijas failu:
 manual_ok=labi
 manual_efile=Nederīgs konfigurācijas fails!
 manual_err=Neizdevās saglabāt konfigurācijas failu
+
 index_title1=Izveidot indeksu
 index_header1=Indeksa opcijas
 index_name=Indeksa nosaukums
@@ -739,12 +771,15 @@ index_ecols=Nav atlasīts neviens lauks
 index_title2=Rediģēt indeksu
 index_header=Indekss $1 datu bāzē $2 
 index_ecannot=Jums nav atļauts pārvaldīt indeksus
+
 syslog_desc=MySQL kļūdu ziņojumi
 syslog_desc2=MySQL kļūdas ziņojums
 syslog_logdesc=MySQL vaicājumi
+
 fdrop_err=Neizdevās izdzēst laukus
 fdrop_enone=Nav atlasīts
 fdrop_eall=No tabulas nevar izdzēst visus laukus!
+
 view_title1=Izveidot skatu
 view_title2=Rediģēt skatu
 view_header1=Skatīt detaļas
@@ -770,6 +805,7 @@ view_cascaded=Pamatojošie skati
 view_local=Tikai šis skats
 view_nocheck=Nav
 view_ecannot=Jums nav atļauts pārvaldīt skatus
+
 procs_title=Datu bāzu savienojumi
 procs_id=ID
 procs_user=Lietotājvārds
@@ -781,9 +817,11 @@ procs_query=Darbojas vaicājums
 procs_kill=Nogalināt atlasītos savienojumus
 procs_ecannot=Jums nav atļauts skatīt datu bāzes savienojumus
 procs_none=Pašlaik nav citu datu bāzes klientu savienojumu.
+
 kill_err=Neizdevās iznīcināt datu bāzes savienojumus
 kill_ecannot=Jums nav atļauts pārvaldīt datu bāzes savienojumus
 kill_enone=Nav atlasīts
+
 vars_title=MySQL sistēmas mainīgie
 vars_desc=Brīdinājums - šajā lapā iestatītie mainīgie tiks atiestatīti uz noklusējuma vērtībām, kad MySQL tiks restartēts. Pastāvīgie iestatījumi jāveic lapā <a href='$1'>MySQL servera konfigurācija</a>.
 vars_ecannot=Jums nav atļauts rediģēt sistēmas mainīgos
@@ -794,6 +832,7 @@ vars_search=Rādīt atbilstošos mainīgos:
 vars_ok=Meklēt
 vars_none2=Neviens sistēmas mainīgais neatbilda jūsu meklēšanai.
 vars_none=Netika atrasti sistēmas mainīgie!
+
 compat_ansi=ANSI
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQL 4.0
@@ -805,7 +844,9 @@ compat_maxdb=MaxDB
 compat_no_key_options=Galvenās iespējas
 compat_no_table_options=Tabulas iespējas
 compat_no_field_options=Lauka iespējas
+
 config_echarset=Trūkst vai nederīga izskata rakstzīmju kopa
+
 root_title=Mainīt administrācijas paroli
 root_header=Jauna administrēšanas parole
 root_user=Administrācijas pieteikšanās
@@ -818,6 +859,7 @@ root_epass1=Nav ievadīta jauna parole
 root_epass2=Paroles nesakrīt
 root_none=Nav paroles!
 root_auto=Automātiska (parasti <tt>sakne</tt>)
+
 mysqlpass_err=MySQL drošais režīms
 mysqlpass_esafecmd=Komanda $1, kas nepieciešama, lai sāktu MySQL ar atspējotu autentifikāciju, netika atrasta
 mysqlpass_eshutdown=Izslēgšana neizdevās : $1 

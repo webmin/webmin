@@ -26,6 +26,7 @@ index_dall=모든 변경 사항
 index_diff=다음이 포함된 변경
 index_stimes=동작 기간
 index_shost=Webmin 서버 소스
+
 search_title=검색 결과
 search_date=날짜
 search_time=시간
@@ -47,6 +48,7 @@ search_critt2=$1에서
 search_config=모듈 구성 변경됨
 search_etime=유효하지 않은 시작 또는 종료 시간
 search_err=검색 실패
+
 view_title=동작 정보
 view_header=로깅된 동작 $1의 정보
 view_action=설명
@@ -78,11 +80,13 @@ view_anno=로그 엔트리 주석
 view_raw=원본 로그 데이터
 view_rawname=파라미터 이름
 view_rawvalue=파라미터 값
+
 acl_mods=다음 모듈의 로그를 보겠습니까?
 acl_all=모두
 acl_sel=다음 선택된 것들 ..
 acl_users=사용자별 실행을 보겠습니까?
 acl_rollback=실행을 롤백 하겠습니까?
+
 rollback_title=롤백 실행
 rollback_rusure=이 작업을 수행하기 전에 다음 리스트된 모든 파일을 그들의 콘텐츠로 복구하겠습니까? 다음의 변경에 의하여 현재 포함하고 있는 모든 데이터가 덮어씌어집니다.
 rollback_isdir=디렉토리 - 변경 사항 없음
@@ -105,4 +109,5 @@ rollback_modfile=파일 $1 의 컨텐츠가 롤백 되었습니다.
 rollback_deleted=파일 $1 이 삭제 되었습니다.
 rollback_nodeleted=존재하지 않는 파일 $1 건너띔
 rollback_enone=선택된 파일 없음
+
 log_rollback=$2 모듈의 $1 동작 복구

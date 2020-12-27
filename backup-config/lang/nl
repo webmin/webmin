@@ -20,6 +20,7 @@ index_nostrftime=Waarschuwing - sommige backup jobs gebruiken % in hun filenaam,
 index_tabsched=Geplande backup's
 index_tabbackup=Backup nu
 index_tabrestore=Herstel nu
+
 edit_title1=Maak geplande Backup
 edit_title2=Bewerk Geplande Backup
 edit_header=Vooropgezette backup opties
@@ -43,9 +44,11 @@ edit_return=backup van
 edit_other=Andere vermelde files ..
 edit_pre=Opdracht voor de backup
 edit_post=Opdracht na de backup
+
 save_err=Mislukt om backup op te slaan
 save_emods=Geen modules selecteert
 save_ewebmin=Noch Webmin noch de server configuratie files zijn geselecteerd
+
 backup_mode0=Locale file
 backup_mode1=FTP server
 backup_mode2=SSH server
@@ -62,6 +65,7 @@ backup_egunzip=Backup is gecomprimeerd, maar <tt>gunzip</tt> is niet geinstallee
 backup_euntar=TAR uitpakken mislukt : $1
 backup_enone2=Geen van de geselecteerde files zitten in de backup
 backup_epre2=Module $1 weigerde te herstellen : $2
+
 backup_err=Backup mislukt
 backup_edest=Ontbrekende of verkeerde absolute locale file
 backup_eserver1=Ontbrekende of ongeldige FTP server
@@ -77,6 +81,7 @@ backup_title=Backup Configuratie
 backup_doing=Start backup van module configuratie files naar $1 ..
 backup_failed=.. mislukt! $1
 backup_done=.. compleet. Uiteindelijk backup grote van $1, en bevat $2 files.
+
 restore_err=Herstellen is mislukt
 restore_title=Herstel Configuratie
 restore_doing=Herstel starten van module configuratie files van $1 ..
@@ -84,22 +89,26 @@ restore_testing=Backup inhoud uitpakken van $1 ..
 restore_failed=.. mislukt! $1
 restore_done=.. compleet. $1 files zijn hersteld.
 restore_done2=.. files in de backup zijn :
+
 nice_ftp=$2 op $1 via FTP
 nice_ftpp=$2 op $1 poort $3 via FTP
 nice_ssh=$2 op $1 via SSH
 nice_sshp=$2 op $1 poort $3 via SSH
 nice_upload=ge-uploade file
 nice_download=browser
+
 log_backup=Ge-backupt $1 modules naar $2
 log_restore=Herstelde $1 modules van $2
 log_create_backup=Gemaakte backup van $1 modules naar $2
 log_modify_backup=Gemodificeerde backup van $1 modules naar $2
 log_delete_backup=Verwijderde backup van $1 modules naar $2
 log_run_backup=Uitgevoerde backup van $1 modules naar $2
+
 run_title=Backup Configuraties
 run_doing=Start backup van $1 modules naar $2 ..
 run_ok=.. backup werd succesvol afgerond.
 run_failed=.. backup mislukt! Bekijk de foutmelding hierboven waarom.
+
 email_mods=Backup van modules :
 email_failed=naar $1 mislukt :
 email_ok=naar $1 succesvol.

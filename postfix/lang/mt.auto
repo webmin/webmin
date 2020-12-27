@@ -3,6 +3,7 @@ connect_elogin=Naqas milli jidħol fid-database $1:$2.
 index_title=Postfix Mail Server
 index_epath=Il-kmand tal-kontroll Postfix $1 mhux installat fis-sistema tiegħek. Forsi l-konfigurazzjoni tal-modulu <a href='$2'></a> tiegħek mhix korretta, jew Postfix mhuwiex installat.
 index_postfix=Postfix
+
 internal_error=Żball Intern
 index_econfig=Il-kmand tal-konfigurazzjoni Postfix $1 ma jeżistix. Forsi l-konfigurazzjoni tal-modulu <a href='$2'></a> mhix korretta.
 index_esuper=Il-kmand tas-superviżur Postfix $1 ma jeżistix. Forsi l-konfigurazzjoni tal-modulu <a href='$2'></a> mhix korretta.
@@ -14,8 +15,10 @@ index_startmsg=Ikklikkja din il-buttuna biex tibda s-server tal-posta Postfix. S
 index_reloadmsg=Ikklikkja din il-buttuna biex Postfix terġa 'taqra l-fajls kollha tal-konfigurazzjoni tagħha. Dan jista 'jkun utli jekk il-fajls ta' konfigurazzjoni Postfix ġew modifikati manwalment.
 index_version=Verżjoni wara l-iffissar $1
 opts_err=Ma rnexxielux isalva l-għażliet
+
 check_error=Żball waqt li kkontrolla l-konfigurazzjoni attwali tal-Postfix. Jekk jogħġbok tiffissa manwalment il-konfigurazzjoni Postfix.
 check_manual=Editja manwalment il-fajl tal-konfigurazzjoni Postfix.
+
 address_rewriting_title=Indirizz mill-Ġdid u Masquerading
 address_rewriting_ecannot=M'għandekx permess teditja kitba mill-ġdid u masquerading tal-indirizz
 aliases_title=Aliases tal-Mail
@@ -42,9 +45,11 @@ aliases_type5=Fajl awtomatikament $1
 aliases_type6=Applika l-fajl tal-filtru $1
 aliases_none=Xejn
 aliases_delete=Ħassar Aliases Magħżula
+
 postfinger_title=Iċċekkja l-Konfigurazzjoni
 postfinger_show=Uri
 postfinger_ecannot=M'għandekx permess tiċċekkja l-konfigurazzjoni Postfix
+
 mailclean_title=Naddaf MailQueue
 mailclean_ecannot=L-ebda privileġġ biex tnaddaf MailQueues
 mailclean_active=Kju attiv
@@ -53,6 +58,7 @@ mailclean_deferred=Kju differit
 mailclean_defer=Iddifferixxi l-kju
 mailclean_all=Kjuwijiet kollha
 mailclean_search=Fittex fis-sekwenza
+
 aform_type0=Xejn
 aform_type1=Indirizz tal-Email
 aform_type2=Indirizzi fil-fajl
@@ -68,6 +74,7 @@ aform_val=Psewdonimu
 aform_afile=Editja ..
 aform_return=psewdonimu
 aform_cmt=Deskrizzjoni
+
 asave_err=Naqset milli ssalva alias
 asave_eaddr="$1" mhuwiex indirizz validu
 asave_ealready=Diġà jeżisti alias għal '$1'
@@ -78,11 +85,13 @@ asave_etype4="$1" mhux programm validu jew ma jeżistix
 asave_etype5=Fajl awtomatikament "$1" mhux validu
 asave_etype4none=L-ebda programm mogħti
 asave_etype6=Fajl tal-filtru "$1" mhux validu
+
 afile_title=Editja l-Fajl tal-Indirizz
 afile_desc=Uża ż-żona tat-test hawn taħt biex teditja l-indirizzi fil-fajl $1.
 afile_efile=M’intix permess li teditja $1.
 afile_undo=Ħassar il-Bidliet
 afile_ewrite=Naqset milli tikteb fil-fajl tal-indirizzi : $1
+
 ffile_title=Editja l-File File
 ffile_desc=Uża l-formola t'hawn taħt biex tissettja r-regoli tal-filtru fil-fajl $1.
 ffile_efile=M’intix permess li teditja $1.
@@ -98,6 +107,7 @@ ffile_other=Inkella jgħaddi għal $1
 ffile_err=Ma rnexxielux isalva fajl tal-filtru
 ffile_ematch=Partita nieqsa
 ffile_eaction=Indirizz tat-trasmissjoni nieqsa
+
 rfile_title=Editja l-Fajl Autoreply
 rfile_desc=Uża ż-żona tat-test hawn taħt biex teditja l-messaġġ awtomatiku f '$1. Il-messaġġ jista 'jkun fih il-makros $ SUBJETT, $ MINN, $ TO, $ DATA u $ BODY li se jitwessgħu meta l-autoreply jiġi attivat.
 rfile_desc2=Tista 'wkoll tissettja intestaturi tal-posta li jżidu ma' jew jibdlu n-nuqqasijiet użati fl-autoreply billi tpoġġi linji bħal: <br><tt> Minn: foo@bar.com </tt><br> <tt>Suġġett: Fil-vaganza</tt> <br> fil-quċċata tal-messaġġ, separat mill-ġisem b'linja vojta waħda.
@@ -116,11 +126,13 @@ rfile_from=Minn: indirizz għat-tweġiba
 rfile_auto=Awtomatika (ibbażata fuq l-indirizz tar-riċevitur)
 rfile_efrom=Nieqes Minn: indirizz
 rfile_fromdesc=A Minn: l-indirizz għandu dejjem ikun speċifikat fejn possibbli, billi l-metodu awtomatiku jista 'ma jkunx ta' min joqgħod fuqu.
+
 general_title=Għażliet Ġenerali
 general_title_sensible=Għażliet Ġenerali Utli Ħafna
 general_title_others=Għażliet Ġenerali oħra
 general_ecannot=M’intix permess li teditja l-Għażliet Ġenerali
 what_is_it=X'inhu?
+
 opts_default=Default
 opts_none=Xejn
 opts_nomap=Ebda mappa stabbilita
@@ -140,10 +152,12 @@ opts_mail_owner=Sid il-posta
 opts_default_privs=Drittijiet ta 'inadempjenza tal-aġent tal-kunsinna
 opts_inet_interfaces=Interfaces tan-netwerk biex jirċievu posta
 opts_all_interfaces=Kollha
+
 opts_local_recipient_maps=Irrifjuta utenti lokali mhux magħrufa
 opts_no=Le
 opts_save=Issejvja u Applika
 opts_edir=Int permess biss li tispeċifika fajls tal-mappa taħt $1
+
 opts_allow_percent_hack=Ikteb "user%domain" għal "user@domain"
 opts_append_at_myorigin=Ikteb "utent" lil "utent@$mydomain"
 opts_append_dot_mydomain=Ikteb "utent @ ospitanti" għal "user@host.$mydomain"
@@ -153,13 +167,17 @@ opts_swap_bangpath=Ikteb "sit! Utent" għal "utent @ sit"
 opts_masquerade_domains=Indirizz ta 'masquerading
 opts_masquerade_exceptions=Eċċezzjonijiet għall-maskerading
 index_return=Konfigurazzjoni ta 'wara l-iffissar
+
 opts_alias_maps=Datiass tal-alias użati mill-aġent tal-kunsinna lokali
 opts_alias_database=Datiass tal-alias mibnija mill-kmand "newaliases"
 aliases_warning=Twissija: <ul><li> meta l-ewwel qasam ma jkunx vojt, il-kmand tal-ġenerazzjoni tal-aliases Postfix huwa użat biex jibni l-bażijiet tad-dejta korrispondenti; <li>inkella jintuża l-kmand ta 'kompatibbiltà ta' Sendmail "newaliases", dan se juża l-bażijiet tad-dejta tat-tieni qasam.</ul>
+
 aliases_name=Isem
 aliases_value=Alias biex. ..
+
 new_alias=Oħloq alias ġdid
 new_aliasmsg=Ikklikkja din il-buttuna biex toħloq alias ġdid
+
 local_delivery_ecannot=M'għandekx permess teditja l-għażliet tal-kunsinna lokali
 local_delivery_title=Kunsinna Lokali
 opts_local_transport=Isem tat-trasport għal kunsinni lokali
@@ -185,6 +203,7 @@ opts_local_destination_recipient_limit=Numru massimu ta 'riċevituri għal kull 
 opts_local_destination_recipient_limit_default=Default
 opts_prepend_delivered_header=Ipprepara a <tt>Mogħtija-Lil:</tt> meta. ..
 opts_prepend_delivered_header_default=Default
+
 resource_title=Kontroll tar-Riżorsi Ġenerali
 resource_ecannot=M'għandekx permess teditja l-parametri tal-kontroll tar-riżorsi
 opts_bounce_size_limit=Daqs massimu ta ’messaġġ irkupra
@@ -204,6 +223,7 @@ opts_qmgr_message_recipient_limit=Numru massimu ta 'riċevituri fil-memorja
 opts_queue_minfree=Spazju ħieles fis-sistema tal-fajls tal-kju
 opts_stale_lock_time=Ħin massimu wara li l-illokkjar ma jintilqux
 opts_transport_retry_time=Ħin f'sekondi bejn tentattivi biex tikkuntattja MDT miksur
+
 opts_always_bcc=Indirizz li jirċievi bcc ta 'kull messaġġ
 opts_always_bcc_none=Xejn
 opts_daemon_timeout=Ħin ta 'żmien dwar it-trattament tat-talbiet
@@ -242,6 +262,7 @@ opts_trigger_timeout=Ħin massimu biex tibgħat grillu lil daemon
 opts_delay_warning_time=Ħin fi ftit sigħat qabel ma tibgħat twissija għal ebda kunsinna
 opts_delay_warning_time_default2=Postfix default
 opts_content_filter_default=Xejn
+
 smtpd_title=Għażliet SMTP Server
 smtpd_ecannot=M'għandekx permess teditja l-għażliet tas-server SMTP
 opts_disable_vrfy_command=Itfi l-kmand SMTP VRFY
@@ -273,6 +294,7 @@ smtpd_nomap=Ma ġiet imdaħħla l-ebda mappa għall-indirizzi permessi għar-rad
 smtpd_nomap2=Ma ġiet imdaħħla l-ebda mappa għal restrizzjonijiet fuq l-indirizzi tal-mittent.
 smtpd_map=Indirizzi permessi għar-radjazzjoni
 smtpd_map2=Restrizzjonijiet fuq l-indirizzi tal-mittent
+
 smtp_title=Għażliet ta 'Klijent SMTP
 smtp_ecannot=M'għandekx permess teditja l-għażliet tal-klijent SMTP
 opts_best_mx_transport=Azzjoni meta elenkat bħala l-aħjar host MX
@@ -293,6 +315,7 @@ opts_smtp_data_done_timeout=It-timeout meta tistenna risposta biex jintemm "."
 opts_smtp_quit_timeout=It-timeout meta tistenna tweġiba għal Nieqaf
 opts_smtp_use_tls=Uża TLS għal konnessjonijiet SMTP
 opts_smtp_sasl_security_options=Għażliet ta 'sigurtà SASL
+
 rate_title=Rati ta 'kunsinna
 rate_ecannot=M'għandekx permess tibdel l-għażliet tar-rati tal-kunsinna
 opts_default_destination_concurrency_limit=Numru massimu ta 'kunsinni paralleli għall-istess destinazzjoni
@@ -303,18 +326,21 @@ opts_maximal_queue_lifetime=Ħin massimu (jiem) fil-kju qabel ma l-messaġġ ma 
 opts_minimal_backoff_time=Ħin minimu (sek) bejn tentattivi biex iwassal messaġġ differit
 opts_queue_run_delay=Ħin (sek) bejn l-iskannjar tal-kju differit
 opts_defer_transports=Trasporti li m'għandhomx jitwasslu
+
 debug_title=Karatteristiċi ta 'debugging
 debug_ecannot=M'għandekx permess teditja l-karatteristiċi tal-debugging
 opts_debug_peer_list=Lista ta 'mudelli ta' dominju / netwerk li għalihom il-log tal-verbose huwa attivat
 opts_debug_peer_level=Verbose livell ta ’qtugħ meta taqbel mal-lista ta’ hawn fuq
 debug_version=Modulu ta 'Postfix għal Webmin - Verżjoni $1
 opts_edebug=Livell ta 'reġistrazzjoni ta' verbose nieqes jew invalidu - għandu jkun numru ikbar minn żero
+
 ldap_title=Tiftix LDAP
 ldap_ecannot=M'għandekx permess teditja l-għażliet ta 'tfittxija LDAP
 ldap_non_existent=Jidher li LDAP ma jeżistix fis-sistema Postfix tiegħek
 opts_ldap_lookup_timeout=Ħin ta 'żmien għall-inkjesti tad-database LDAP
 opts_ldap_search_base=Database LDAP biex tfittex
 opts_ldap_server_host=Isem tas-server LDAP
+
 canonical_title=Immappjar Kanoniku
 canonical_ecannot=M'għandekx permess teditja l-konfigurazzjoni tal-immappjar kanoniku
 opts_canonical_maps=Indirettar ta 'tfassil ta' tabelli ta 'tiftix
@@ -328,6 +354,7 @@ canonical_edit_title=Editja Mappa Kanonika
 canonical_return_sender=mittenti ta ’mapep kanoniċi
 canonical_return_recipient=mapep kanoniċi tar-riċevitur
 canonical_return=mapep kanoniċi
+
 mapping_name=Isem
 mapping_value=Mapep biex. ..
 mapping_delete=Ħassar Magħżul
@@ -355,6 +382,7 @@ mapping_toomany=Hemm $1 iskrizzjonijiet ta 'mappa, li hija' l fuq mil-limitu tal
 mapping_find=Uri mapep li jaqblu:
 mapping_search=Fittex
 mapping_match=Iskrizzjonijiet tal-fajl tal-mappa li jaqblu <tt>$1</tt> ..
+
 virtual_title=Dominji Virtwali
 virtual_ecannot=M'għandekx permess teditja l-konfigurazzjoni tal-immappjar tad-dominji virtwali
 opts_virtual_maps=Tabelli ta 'tfittxija għall-immappjar tad-dominju
@@ -362,29 +390,44 @@ opts_virtual_alias_maps=Tabelli ta 'tfittxija għall-immappjar tad-dominju
 opts_virtual_alias_domains=Dominji li jwettqu mapping virtwali għal
 virtual_same=Mit-tabelli tal-immappjar tad-dominju
 virtual_return=oqsma virtwali
+
 transport_title=Immappjar tat-Trasport
 transport_ecannot=M'għandekx permess teditja l-konfigurazzjoni tal-immappjar tat-trasport
 opts_transport_maps=It-tabelli tat-tfittxija għall-immappjar tat-trasport
 transport_return=mapep tat-trasport
+
+sni_title=Immappjar taċ-Ċertifikat
+sni_ecannot=M'intix permess li teditja l-konfigurazzjoni tal-immappjar taċ-ċertifikat
+opts_sni_maps=Tabelli ta 'tfittxija għall-immappjar taċ-ċertifikati
+sni_return=mapep taċ-ċertifikat
+sni_dom=L-isem tal-ospitant
+sni_certs=Fajls taċ-ċertifikati
+
 relocated_title=Immappjar Relokat
 relocated_ecannot=M'għandekx permess teditja l-konfigurazzjoni tal-immappjar rilokata
 relocated_return=mapep rilokati
 opts_relocated_maps=Tabelli ta 'tfassil ta' mapping rilokati
 opts_content_filter=Filtru tal-kontenut tal-email
+
 map_click=Ikklikkja fuq kwalunkwe mapping biex tibdel il-proprjetajiet tagħha:
 no_map=(L-ebda mappa mhi definita bħalissa. Iddefinixxi mappa l-ewwel, allura tista 'teditjaha)
 no_map2=L-ebda mappa mhi definita bħalissa. Iddefinixxi l-ewwel mappa, allura tista 'teditjaha.
+
 stop_efailed=Naqset milli tieqaf Postfix
 stop_ecannot=M'għandekx permess tieqaf Postfix
+
 start_efailed=Naqset milli tibda Postfix
 start_ecannot=M'għandekx permess tibda Postfix
+
 reload_efailed=Ma rnexxielux jerġa 'jgħaddi Postfix
 reload_ecannot=M'għandekx permess terġa 'tagħbija mill-ġdid Postfix
+
 query_get_efailed=Naqset milli tirrikjedi l-kmand tal-konfigurazzjoni Postfix biex jinkiseb il-valur kurrenti tal-parametru $1: <tt>$2</tt>
 query_set_efailed=Naqset milli titlob il-kmand tal-konfigurazzjoni Postfix biex tissettja l-valur attwali tal-parametru $1 għal $2: <tt>$3</tt>
 regenerate_ecannot=M'għandekx permess tirriġenera l-Aliases
 regenerate_alias_efailed=Ma rnexxilux jirriġenera psewdonimu: <tt>$1</tt>
 regenerate_table_efailed=Ma rnexxielux jirriġenera tabella $1: <tt>$2</tt>
+
 acl_resource=Tista 'teditja r-riżorsi?
 acl_aliases=Tista 'teditja l-psewdonimi?
 acl_aliases_options=Tista 'teditja għażliet ta' psewdonimi?
@@ -393,6 +436,7 @@ acl_address_rewriting=Tista 'teditja l-kitba mill-ġdid tal-indirizz?
 acl_canonical=Jista 'jeditja kanoniku?
 acl_virtual=Tista 'teditja virtwali?
 acl_transport=Tista 'teditja t-trasport?
+acl_sni=Tista 'teditja ċertifikati?
 acl_relocated=Tista 'teditja rilokata?
 acl_header=Jista 'jeditja l-kontrolli tal-intestatura?
 acl_local_delivery=Tista 'teditja l-kunsinna lokali?
@@ -411,6 +455,7 @@ acl_postfinger=Tista 'tiċċekkja l-konfigurazzjoni ta' wara l-iffissar?
 acl_manual=Tista 'teditja l-fajl tal-konfigurazzjoni?
 acl_dir=Direttorju permess għall-fajls tal-mappa
 acl_bcc=Tista 'teditja l-immappjar BCC?
+
 boxes_title=Kaxxi tal-posta tal-utenti
 boxes_user=Utent
 boxes_size=Daqs tal-kaxxa tal-posta
@@ -420,6 +465,7 @@ boxes_sent=Intbagħat il-posta
 boxes_ecannot=M'għandekx permess taqra email
 boxes_toomany=Hemm wisq utenti fis-sistema tiegħek biex jelenka l-kaxxi tal-posta kollha tagħhom.
 boxes_go=Ara l-posta elettronika għall-utent:
+
 mail_title=Email tal-Utent
 mail_from=Minn
 mail_date=Data
@@ -458,6 +504,7 @@ mail_forward=’Il quddiem
 mail_rfc=Mil-linja
 mail_move=Nimxu lejn:
 mail_eexists=Messaġġ m'għadux jeżisti!
+
 view_title=Aqra l-Email
 view_desc=Messaġġ $1 f '$2
 view_desc2=Messaġġ $1 għall-utent $2
@@ -486,6 +533,7 @@ view_body=Test tal-messaġġ
 view_afile=Isem Mehmuż
 view_atype=Tip ta 'żjieda
 view_asize=Daqs tal-fajl
+
 compose_title=Ikteb Email
 reply_title=Irrispondi għall-Email
 forward_title=Ibgħat Email
@@ -496,6 +544,7 @@ reply_mailforward=Messaġġi mibgħuta
 reply_attach2=Mehmużin min-naħa tal-Klijent u tas-server
 reply_send=Ibgħat Mail
 reply_ecannot=M'għandekx permess tibgħat posta bħala dan l-utent
+
 send_err=Naqset milli tibgħat il-posta
 send_eto=Nieqes Biex tindirizza
 send_efrom=Nieqes mill-indirizz
@@ -509,6 +558,7 @@ send_eperms=L-utent $1 ma jistax jaqra $2
 send_eperms2=M'għandekx permess tibgħat fajl $1
 send_epath=Sendmail eżegwibbli $1 ma jeżistix.
 send_ewrapper=Il-programm ta 'interface ta' sendmail postfix ma jeżistix
+
 search_title=Riżultati tat-Tiftix
 search_ecannot=M'għandekx permess tfittex l-email ta 'dan l-utent
 search_ematch=Trid tidħol test biex taqbel magħhom.
@@ -516,6 +566,7 @@ search_efield=Trid tagħżel tip ta ’tfittxija.
 search_none=Ma nstab l-ebda messaġġ.
 search_results2=$1 messaġġi bil-posta li jaqblu $2 ..
 search_results3=$1 messaġġi tal-posta li ma jaqblux $2 ..
+
 match_from=Minn: logħbiet
 match_subject=Suġġett: taqbiliet
 match_to=Għal: taqbiliet
@@ -533,6 +584,7 @@ match_!date=Data: ma taqbilx
 match_!body=Korp ma jaqbilx
 match_!size=Id-daqs huwa inqas minn
 match_!headers=Intestaturi ma jaqblux
+
 mailq_title=Kju tal-Mail
 mailq_count=$1 messaġġi
 mailq_none=Bħalissa m'hemm l-ebda messaġġ bil-posta għall-kunsinna
@@ -561,15 +613,20 @@ mailq_active=Attiva
 mailq_deferred=Differit
 mailq_hold=Żomm magħżul
 mailq_unhold=Mhux Żomm magħżul
+
 flushq_title=Kju tal-flus
 flushq_desc=Ġiegħel l-attentat tal-konsenja tal-posta bil-kmand $1 ..
+
 qview_title=Messaġġ fil-kju
 qview_desc=Mill-fajl $1
 qview_headers=Intestaturi tal-posta
 qview_attach=Mehmużin
+
 after_err=Żball ta 'konfigurazzjoni ta' wara l-iffissar : $1
+
 searchq_title=Riżultati tat-Tiftix tal-Kju
 searchq_none=Ma nstab l-ebda messaġġ fil-kju.
+
 header_title=Kontrolli tal-Intestatura
 header_ecannot=M'għandekx permess tibdel il-kontrolli tal-intestatura
 header_eregexp=Il-mappa tal-kontrolli tal-intestatura trid tkun fil-format <tt>regexp:</tt> <i>filename</i>
@@ -588,15 +645,18 @@ header_reject=Tiċħadh (bil-messaġġ ta 'żball..)
 header_warn=Log twissija (bil-messaġġ..)
 header_ename=Espressjoni regolari mhux valida - trid tkun bħal / xi ħaġa /
 header_return=kontrolli tal-intestatura
+
 body_title=Kontrolli tal-Korp
 body_ecannot=M'għandekx permess teditja l-kontrolli tal-korp
 body_eregexp=Il-mappa tal-verifiki tal-korp trid tkun fil-format <tt>regexp:</tt> <i>filename</i>
 opts_body_checks=Tabelli għall-iċċekkjar ta 'korp ta' messaġġ
 body_return=kontrolli tal-ġisem
+
 dependent_title=Immappjar tat-Trasport Dipendenti Mittenti
 dependent_ecannot=M'għandekx permess teditja mappings tat-trasport dipendenti fuq min jibgħat
 dependent_eregexp=Il-mappa tat-trasport dipendenti fuq min jibgħat għandu jkun fil-format <tt>regexp:</tt> <i>filename</i>
 dependent_return=mappings tat-trasport dipendenti fuq min jibgħat
+
 manual_title=Editja Fajl ta 'Mappa
 manual_file=Agħżel fajl tal-mappa biex teditja:
 manual_change=Ibdel
@@ -604,9 +664,11 @@ manual_editing=Uża l-kaxxa tat-test hawn taħt biex teditja manwalment il-mappi
 manual_err=Ma rnexxielux isalva fajl tal-mappa
 manual_efile=Mappa tal-isem tal-fajl mhux valida!
 manual_ecannot=M'għandekx permess teditja manwalment fajls tal-mappa
+
 delq_titles=Tħassir ta 'Messaġġi
 delq_rusure=Int żgur li trid tħassar il- $1 messaġġi fil-kju magħżula?
 delq_confirm=Ħassar Messaġġi
+
 master_title=Proċessi Server
 master_name=Isem il-proċess
 master_enabled=Abilitata?
@@ -647,8 +709,10 @@ master_einet=Indirizz ospitanti biex tisma 'fuq jista' jiġi speċifikat biss g�
 master_ecommand=Nieqes il-kmand tal-proċess tas-server
 master_ewakeup=Tmiem il-ħin tal-istartjar nieqes jew invalidu
 master_emaxprocs=Numru massimu nieqes jew invalidu ta 'proċessi
+
 delete_err=Naqset milli tħassar il-mappings
 delete_enone=L-ebda magħżul
+
 cmanual_title=Editja l-Iskedi tal-Konfigurazzjoni
 cmanual_ecannot=M'għandekx permess teditja l-fajl tal-konfigurazzjoni Postfix
 cmanual_ok=Editja
@@ -656,10 +720,12 @@ cmanual_efile=Fajl magħżul mhuwiex parti mill-konfigurazzjoni Postfix
 cmanual_file=Editja l-fajl konfigurazzjoni:
 cmanual_edata=Ma daħal xejn!
 cmanual_err=Ma rnexxielux isalva fajl konfigurativ
+
 access_return=aċċess għat-tabella tal-mappa
 edit_map_file=Editja Fajl ta 'Mappa
 opts_reject_rbl_client=Listi tal-Iswed fil-ħin reali (RBL)
 opts_check_sender_access=Iċċekkja t-tabella tal-mappa tal-aċċess tal-mittent
+
 log_misc=Opzjonijiet ġenerali mibdula
 log_opts=Inbidel l-kitba mill-ġdid u l-masquerading
 log_aliases=Bidliet ta 'aliases
@@ -667,6 +733,7 @@ log_canonical=Nibdlu għażliet ta 'mmappjar kanoniku
 log_virtual=Inbidlu dominju virtwali għażliet
 log_bcc=Inbidlet il-mappa BCC
 log_transport=Bidliet fl-għażliet tal-immappjar tat-trasport
+log_sni=Ibdel l-għażliet tal-immappjar taċ-ċertifikati
 log_dependent=Inbidel l-indirizz li jiddependi mill-mittent
 log_relocated=Inbidlet rilokazzjoni għażliet ta 'mmappjar
 log_header=Bidlu l-għażliet ta 'verifika ta' l-intestatura
@@ -744,6 +811,7 @@ log_sender_dependent_default_transport_maps_modify=Indirett mibdul indirizz dipe
 log_sender_dependent_default_transport_maps_delete=Indirett imħassar indirizz li jiddependi $1
 log_delete_sender_dependent_default_transport_mapss=Imħassar $1 Indirizzi dipendenti tal-mittent
 log_manual_sender_dependent_default_transport_mapss=Indirizzi dipendenti mittenti editjati manwalment f '$1
+
 sasl_title=Awtentikazzjoni u Encryption SMTP
 opts_smtpd_sasl_auth_enable=Jeħtieġu l-awtentikazzjoni SASL SMTP?
 opts_smtp_sasl_auth_enable=Uża awtentikazzjoni SASL SMTP?
@@ -790,6 +858,7 @@ sasl_nologin=L-ebda bżonn
 sasl_userpass=Idħol bħala $1 bil-password $2
 sasl_elogin=Login SMTP nieqes jew invalidu (l-ebda spazji jew kolonji permessi)
 sasl_epass=Password SMTP valida (l-ebda spazji permessi)
+
 client_title=Restrizzjonijiet tal-Klijent SMTP
 client_ecannot=M'intix permess li teditja r-restrizzjonijiet tal-klijent SMTP
 client_restrict=Restrizzjonijiet tal-Klijent
@@ -799,6 +868,7 @@ client_other=Restrizzjonijiet oħra :
 client_err=Ma rnexxielux isalva r-restrizzjonijiet tal-klijent
 client_evalue=Valur nieqes għar-restrizzjoni $1
 client_return=Restrizzjonijiet tal-klijent SMTP
+
 chooser_title=Agħżel Sors tal-Mappa
 chooser_header=Sors tal-mappa $1
 chooser_none=Xejn
@@ -854,6 +924,7 @@ chooser_elquery_filter=Nieqes filtru tal-mistoqsija għal mappa $1
 chooser_elresult_attribute=Isem tal-attribut tar-riżultat nieqes jew invalidu għal map $1
 chooser_elbind_dn=Nieqes l-login għas-server LDAP għal mappa $1
 chooser_elbind_pw=Password nieqsa għas-server LDAP għal mappa $1
+
 mysql_ecfile=Fajl ta ’konfigurazzjoni tal-MySQL $1 ma nstabx
 mysql_ecfile2=Ma setgħetx issib tabella fil-fajl ta 'konfigurazzjoni ta' MySQL $1
 mysql_edriver=Naqset milli tgħabbi s-sewwieq tad-database $1
@@ -865,6 +936,7 @@ mysql_eupdate=Aġġornament SQL falla : $1
 mysql_elist=Mistoqsija SQL fallew : $1
 mysql_esource=L-ebda sors MySQL bl-isem $1 ma nstab
 mysql_eneed=Il-parametru tal-konfigurazzjoni MySQL $1 ma nstabx. Webmin għandu bżonn dan biex insemmu liema tabella u liema oqsma trid issir mistoqsija.
+
 ldap_ecfile=Fajl ta 'konfigurazzjoni LDAP $1 ma nstabx
 ldap_eldapmod=Modulu Perl $1 meħtieġ biex jikkomunika ma 'LDAP mhux installat jew mhux mgħobbi
 ldap_eldap=Naqset milli tikkonnettja mas-server LDAP $1 fuq il-port $2
@@ -875,6 +947,7 @@ ldap_edelete=Ħassir LDAP ta '$1 falla : $2
 ldap_equery=It-tfittxija LDAP ta '$1 falla : $2
 ldap_erename=Semmi mill-ġdid LDAP ta '$1 għal $2 falla : $3
 ldap_emodify=Modifika LDAP ta '$1 falla : $2
+
 bcc_title=Immappjar BCC
 bcc_ecannot=M'għandekx permess teditja mappings BCC
 opts_sender_bcc_maps=Ibgħat it-tabelli tal-immappjar BCC Ibgħat

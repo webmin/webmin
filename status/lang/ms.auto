@@ -19,6 +19,7 @@ index_refsel=Refresh Selected
 index_group=Ahli $1 
 index_tmpls=Edit Templat E-mel
 index_tmplsdesc=Lihat dan edit templat yang digunakan untuk membina mesej e-mel yang dihantar apabila perkhidmatan dipantau turun.
+
 type_apache=Apache Webserver
 type_inetd=Internet dan RPC Server
 type_bind8=BIND DNS Server
@@ -45,8 +46,10 @@ type_dns=Lookup DNS
 type_alive=Hidupkan Sistem
 type_slapd=Pelayan LDAP
 type_ldap=Sambungan LDAP
+
 mon_create=Buat Monitor
 mon_edit=Edit Monitor
+mon_virtualmin=Amaran! Monitor ini dikaitkan dengan domain Virtualmin $1, jadi tidak boleh diedit atau dihapuskan di sini.
 mon_header=Perincian monitor
 mon_header2=Perintah untuk dijalankan
 mon_header3=Pilihan perkhidmatan yang dipantau
@@ -110,6 +113,7 @@ mon_changes0=Tunjukkan setiap jenis acara
 mon_changes1=Tunjukkan perubahan sahaja
 mon_all=Tunjukkan semua peristiwa sejarah
 mon_nochanges=Tiada perubahan status berlaku dalam peristiwa sejarah $1 yang terakhir.
+
 sched_title=Pemantauan Berjadual
 sched_header=Pilihan pemantauan latar belakang yang dijadwalkan
 sched_mode=Pemeriksaan berjadual diaktifkan?
@@ -156,15 +160,18 @@ sched_subject0=Tiada (berjaga-jaga di dalam badan)
 sched_subject1=Teks peringatan (meninggalkan badan kosong)
 sched_subject2=Teks tersuai
 sched_esubject=Subjek mesej SMS yang tiada
+
 depends_mod=Modul $1 tidak dipasang pada sistem anda
 depends_os=Modul $1 tidak disokong pada sistem anda
 depends_remote=Modul $1 tidak disokong pada pelayan $2 
+
 tcp_host=Hos untuk menyambung ke
 tcp_port=Pelabuhan untuk menyambung ke
 tcp_alarm=Masa sambungan telah tamat
 tcp_ehost=Nama tuan rumah yang hilang atau tidak sah
 tcp_eport=Nombor port hilang atau tidak sah
 tcp_ealarm=Masa tunggu sambungan yang tiada atau tidak sah
+
 http_url=URL untuk meminta
 http_alarm=Masa sambungan telah tamat
 http_eurl=URL hilang atau tidak sah
@@ -179,11 +186,13 @@ http_regexp=Halaman mestilah sepadan dengan regexp
 http_eregexp=Tiada ungkapan biasa untuk halaman yang sepadan dengan yang dimasukkan
 http_none2=Jangan sepadan
 http_ehead=Kaedah permintaan HEAD tidak boleh digunakan semasa menyemak ungkapan biasa
+
 ping_host=Hos untuk ping
 ping_wait=Masa untuk menunggu maklum balas
 ping_ehost=Nama tuan rumah yang hilang atau tidak sah
 ping_ewait=Masa tunggu atau tidak sah
 ping_econfig=Tiada arahan ping telah ditetapkan dalam Modul Config
+
 proc_pid=Berjalan dengan PIDs $1 
 proc_cmd=Perintah untuk memeriksa
 proc_not=Gagal jika proses itu
@@ -195,6 +204,7 @@ proc_ethresh=Bilangan proses yang hilang atau tidak sah
 proc_asuser=Berjalan sebagai pengguna
 proc_anyuser=Mana-mana pengguna
 proc_easuser=Pengguna untuk proses berjalan seperti tidak wujud
+
 exec_cmd=Perintah untuk lari
 exec_mode=Periksa status keluar
 exec_mode0=Gagal memantau jika arahan gagal
@@ -206,6 +216,7 @@ exec_noregexp=Jangan semak
 exec_remode=Cek regexp
 exec_remode0=Gagal jika output tidak sepadan
 exec_remode1=Gagal jika output tidak sepadan
+
 file_file=Fail, direktori atau corak untuk diperiksa
 file_test=Uji untuk melaksanakan
 file_test_0=Mesti wujud
@@ -224,6 +235,7 @@ file_group=Kumpulan fail mestilah
 file_nocheck=Apa sahaja
 file_perms=Kebenaran octal mestilah
 file_eperm=Fail dengan keizinan yang salah : $1 
+
 traffic_iface=Antara muka untuk memantau
 traffic_bytes=Maksud bait/saat
 traffic_dir=Arah untuk memantau
@@ -233,6 +245,7 @@ traffic_dir2=Keluar sahaja
 traffic_desc=Monitor ini menjejaki trafik rangkaian pada antara muka yang dipilih, dan memaparkan monitor sebagai turun jika lalu lintas melebihi bilangan bait sesaat yang dimasukkan di bawah. Ini hanya berfungsi dengan baik jika pemantauan berjadual diaktifkan pada jarak yang ditetapkan, seperti setiap 5 minit.
 traffic_eifaces=Sistem pengendalian anda tidak mempunyai file/proc/net/dev
 traffic_ebytes=Nombor bait/kedua yang hilang atau tidak sah
+
 space_fs=Filesystem untuk memeriksa
 space_min2=Ruang kosong minimum
 space_mode0=Saiz mutlak
@@ -248,6 +261,7 @@ space_ierr=Hanya $1 inod percuma
 space_merr=Hanya ruang $1 percuma
 space_perr=Hanya $1% percuma
 space_dferr=Gagal untuk mendapatkan saiz sistem fail
+
 load_time=Muatkan purata untuk memeriksa
 load_1=1 minit
 load_5=5 minit
@@ -256,6 +270,7 @@ load_max=Purata beban maksimum
 load_emax=Purata beban maksimum yang hilang atau tidak sah
 load_ecmd=Perintah <tt>uptime</tt> tidak dijumpai pada sistem anda
 load_efmt=Output perintah <tt>uptime</tt> tidak dapat dihuraikan
+
 log_create=Pemantau yang dibuat $1 
 log_modify=Pemodulatan yang diubahsuai $1 
 log_delete=Pemantau dipadam $1 
@@ -266,8 +281,11 @@ log_tmpl_modify=Templat e-mel yang diubah suai $1
 log_tmpl_delete=Templat e-mel yang dipadam $1 
 log_tmpl_deletes=Templat $1 e-mel yang dipadam
 log_refresh=Status monitor yang disegarkan
+
 change_file=Fail atau direktori untuk memantau (gagal jika diubah)
+
 jabber_eparser=Mod Perl $1 tidak dipasang pada sistem anda.
+
 memory_min2=Memori sebenar percuma minimum
 memory_emin=Jumlah memori sebenar yang hilang atau tidak sah
 memory_eproc=Webmin tidak tahu bagaimana untuk memeriksa memori percuma pada sistem operasi anda
@@ -277,7 +295,9 @@ memory_freelow=Hanya $1 memori sebenar percuma
 memory_freelowswap=Hanya $1 memori maya percuma
 memory_minswap=Memori maya percuma minimum
 memory_eminswap=Jumlah memori maya percuma yang hilang atau tidak sah
+
 proftpd_etype=Pemantauan ini tidak boleh digunakan apabila ProFTPD dijalankan secara bersendirian
+
 mailserver_to=Hantar e-mel ke alamat
 mailserver_timeout=Masa dan selang waktu
 mailserver_units_0=Minit
@@ -285,22 +305,28 @@ mailserver_units_1=Minit
 mailserver_units_2=Jam
 mailserver_units_3=Hari
 mailserver_desc=Alamat di bawah mestilah autoresponder yang menjawab alamat sumber dengan baris Subjek yang sama.
+
 oldfile_file=Fail untuk memantau (gagal jika tidak diubah)
 oldfile_diff=Gagal jika tidak berubah
 oldfile_secs=secs
+
 raid_device=Peranti RAID
 raid_edevice=Tiada peranti RAID dipilih
 raid_bad=Cakera keras dikesan
 raid_resync=Pada masa ini resyncing
 raid_notfound=Peranti RAID $1 tidak dijumpai
 raid_other=Lain ..
+
 iface_iface=Antara muka untuk memeriksa
+
 init_action=Tindakan untuk memeriksa
 init_eaction=Tiada tindakan yang dipilih
+
 refresh_title=Muat semula Status
 refresh_doing=Menyegarkan status semua monitor ..
 refresh_doing2=Menyegarkan status $1 monitor terpilih ..
 refresh_done=.. selesai.
+
 sensors_name=Sensor untuk memeriksa
 sensors_value=Gagal ketika
 sensors_value0=Sistem menunjukkan amaran
@@ -311,6 +337,7 @@ sensors_none=Tiada sensor dikesan pada sistem anda. Anda mungkin perlu menjalank
 sensors_cur=$1 (saat ini $2 $3)
 sensors_emin=Nilai minima atau tidak sah
 sensors_emax=Nilai maksima yang hilang atau tidak sah
+
 nut_ups=NUT UPS untuk memeriksa
 nut_name=Atribut untuk memeriksa
 nut_value=Gagal ketika
@@ -321,6 +348,7 @@ nut_eups=Tiada USP untuk memeriksa masuk
 nut_cur=$1 (saat ini $2)
 nut_emin=Nilai minima atau tidak sah
 nut_emax=Nilai maksima yang hilang atau tidak sah
+
 mailq_system=Pelayan mel
 mailq_qmailadmin=Qmail
 mailq_postfix=Postfix
@@ -329,6 +357,7 @@ mailq_size=Saiz beratur mel maksimum
 mailq_esize=Saiz beratur maksimum yang hilang atau tidak sah
 mailq_toomany=Down - $1 mesej beratur
 mailq_ok=Up - $1 mesej beratur
+
 dns_server=Pelayan DNS
 dns_host=Nama hos untuk mencari
 dns_address=Alamat IP yang dijangkakan
@@ -336,6 +365,7 @@ dns_eserver=Pelayan DNS yang hilang atau tidak sah
 dns_ehost=Nama tuan rumah yang hilang atau tidak sah untuk mencari
 dns_eaddress=Alamat IP yang tidak dijangka atau tidak sah
 dns_ecmds=Sama ada arahan <tt>nslookup</tt> atau <tt>dig</tt> tidak dipasang pada sistem anda
+
 monitor_sub_down=$1 turun pada $2 
 monitor_pager_down=$1 : "$2" turun $3 
 monitor_snmp_down= $1:$2 
@@ -367,8 +397,10 @@ monitor_run1=Running $1 on $2 ..
 monitor_run2=Running $1 ..
 monitor_runerr=Gagal untuk menjalankan $1 pada $2 : $3 
 monitor_email_stat=Status semasa: $1 
+
 deletes_egone=Salah satu monitor yang dipilih tidak lagi wujud
 deletes_enone=Tiada pemantau yang dipilih
+
 ftp_host=Hos pelayan FTP
 ftp_port=Pelabuhan FTP
 ftp_user=Masuk sebagai pengguna
@@ -385,6 +417,7 @@ ftp_econn=Sambungan FTP TLS gagal
 ftp_econn2=Sambungan FTP TLS gagal : $1 
 ftp_elogin=Log masuk FTP TLS gagal : $1 
 ftp_etlsfile=Muat turun FTP TLS gagal : $1 
+
 query_driver=Jenis pangkalan data SQL
 query_db=Nama pangkalan data
 query_host=Hos pelayan pangkalan data
@@ -405,8 +438,10 @@ query_elogin=Log masuk gagal : $1
 query_eprepare=Ralat SQL : $1 
 query_eexecute=SQL gagal : $1 
 query_ewrong=Hasil tidak betul : $1 
+
 consume_rate=Kadar penggunaan maksimum (sesaat)
 consume_high=Kadar penggunaan ialah $1 / saat
+
 rssh_host=Hos pelayan SSH
 rssh_ruser=Masuk sebagai pengguna
 rssh_rpass=Masuk dengan kata laluan
@@ -422,6 +457,7 @@ rssh_error=Kesalahan SSH
 rssh_haspass=Kata laluan
 rssh_port=Port pelayan SSH
 rssh_eport=Nombor port hilang atau tidak sah
+
 tmpls_title=Templat E-mel
 tmpls_ecannot=Anda tidak dibenarkan mengedit templat e-mel
 tmpls_none=Tiada templat e-mel telah ditakrifkan lagi. Semua makluman akan dihantar menggunakan mesej lalai Webmin.
@@ -430,6 +466,7 @@ tmpls_email=Mesej e-mel
 tmpls_add=Tambah template e-mel baru.
 tmpls_return=senarai templat
 tmpls_delete=Padamkan Templat Terpilih
+
 tmpl_title1=Buat Templat E-mel
 tmpl_title2=Edit Templat E-mel
 tmpl_header=Mesej templat e-mel amaran
@@ -454,9 +491,11 @@ tmpl_esms=Mesej SMS yang tiada
 tmpl_esnmp=Mesej SNMP yang tiada
 tmpl_err2=Gagal memadam templat e-mel
 tmpl_eusers=Ia digunakan oleh monitor berikut : $1 
+
 dtmpls_err=Gagal memadam templat
 dtmpls_enone=Tiada yang dipilih
 dtmpls_eusers=$1 digunakan oleh monitor berikut : $2 
+
 sslcert_src=Lokasi sijil
 sslcert_url=Dari URL HTTPS
 sslcert_file=Dari fail pada pelayan
@@ -474,18 +513,21 @@ sslcert_eend=Tidak sah selepas $1
 sslcert_left=Sehingga - $1 hari sehingga habis tempoh
 sslcert_ematch=Nama hos $1 tidak sepadan dengan sijil $2 
 sslcert_emismatch=Pemeriksaan nama hos Sijil hanya boleh digunakan semasa menyemak URL
+
 du_dir=Direktori untuk memantau
 du_max=Saiz maksima
 du_edir=Laluan direktori hilang atau tidak mutlak
 du_emax=Saiz maksimum yang hilang atau bukan angka
 du_over=Saiz ialah $1 
 du_under=Saiz hanya $1 
+
 ldap_edriver=Mod Perl $1 tidak dipasang
 ldap_host=Nama hos pelayan LDAP
 ldap_port=Port pelayan LDAP
 ldap_ssl=Gunakan sambungan SSL?
 ldap_user=Log masuk pelayan LDAP
 ldap_pass=Kata laluan pelayan LDAP
+
 info_desc=Pemantauan sistem
 info_last=Status semasa
 info_title=Sistem dan Status Pelayan

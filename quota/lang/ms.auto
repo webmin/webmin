@@ -1,4 +1,5 @@
 quota_unlimited=Tidak terhad
+
 acl_ro=Hanya boleh melihat kuota, tidak boleh diedit?
 acl_quotaon=Bolehkah mengaktifkan dan melumpuhkan kuota?
 acl_quotanew=Bolehkah mengkonfigurasi kuota untuk pengguna baru?
@@ -6,7 +7,9 @@ acl_ugrace=Bolehkah mengedit masa rahmat pengguna?
 acl_uquota=Pengguna pengguna ini boleh mengedit kuota untuk
 acl_maxblocks=Kuota blok maksimum yang dibenarkan
 acl_maxfiles=Kuota fail maksimum yang dibenarkan
+
 check_running=Perintah <tt>quotacheck</tt> kini dijalankan untuk memeriksa penggunaan blok dan fail pada <tt>$1</tt>. Ini mungkin mengambil masa yang lama untuk sistem fail yang sangat besar. ..
+
 egroup_title=Edit Kuota Kumpulan
 egroup_freturn=senarai fail sistem
 egroup_greturn=senarai kumpulan
@@ -24,6 +27,7 @@ egroup_hflimit=Batas fail keras
 egroup_update=Kemas kini
 egroup_listall=Senaraikan Semua Kuota
 egroup_listalldesc=Klik butang ini untuk memaparkan senarai semua sistem fail di mana kumpulan ini mempunyai kuota disk, dengan pautan untuk mengeditnya.
+
 euser_title=Edit Kuota Pengguna
 euser_freturn=senarai fail sistem
 euser_ureturn=senarai pengguna
@@ -46,6 +50,7 @@ euser_hflimit=Had fail keras
 euser_update=Kemas kini
 euser_listall=Senaraikan Semua Kuota
 euser_listalldesc=Klik butang ini untuk memaparkan senarai semua sistem fail di mana pengguna ini mempunyai kuota disk, dengan pautan untuk mengeditnya.
+
 gfilesys_title=Kuota Kumpulan
 gfilesys_return=senarai fail sistem
 gfilesys_ecannot=Anda tidak boleh mengedit kuota untuk '$1'
@@ -64,6 +69,7 @@ gfilesys_copy=Salin Quotas
 gfilesys_editdesc=Lihat dan edit kuota untuk kumpulan ini pada beberapa sistem fail lain yang pada masa ini tidak mempunyai kuota.
 gfilesys_copydesc=Salin had kuota untuk kumpulan ini pada semua sistem fail kepada beberapa atau semua kumpulan lain.
 gfilesys_enone=Tiada nama kumpulan yang dimasukkan
+
 ggracef_title=Grace Times
 ggracef_return=senarai kumpulan
 ggracef_ecannot=Anda tidak boleh mengedit masa tanggapan pada sistem fail ini
@@ -72,9 +78,11 @@ ggracef_graces=Group Grace Times untuk <tt>$1</tt>
 ggracef_block=Untuk kuota blok
 ggracef_file=Untuk kuota fail
 ggracef_update=Kemas kini
+
 ggraces_esave=Gagal menyimpan rahmat kali
 ggraces_eedit=Anda tidak boleh mengedit masa tanggapan pada sistem fail ini
 ggraces_enumber='$1' bukan nombor
+
 index_quser=Kuota pengguna
 index_qgroup=Kuota kumpulan
 index_qboth=Kuota pengguna dan kumpulan
@@ -98,6 +106,7 @@ index_egroup=Edit Kuota Kumpulan:
 index_egroupdesc=Masukkan atau pilih kumpulan, dan klik butang ini untuk melihat kuota pada semua sistem fail.
 index_nosupport=Tiada sistem fail tempatan boleh menyokong kuota.
 index_mountmod=Anda boleh mengaktifkan kuota untuk sistem fail dalam modul <a href='$1'>Disk dan Rangkaian Filesystems</a>.
+
 lgroups_failed=Gagal menyenaraikan kumpulan
 lgroups_tablist=Senarai kumpulan
 lgroups_eallow=Anda tidak dibenarkan mengedit kuota pada sistem fail ini
@@ -126,13 +135,17 @@ lgroups_tofixed=Alamat 1
 lgroups_emailheader=E-mel kepada kumpulan yang menghampiri kuota
 lgroups_email=Hantar e-mel kepada kumpulan?
 lgroups_tovirt=Pemilik domain Virtualmin
+
 sgroup_egroup=Anda tidak dibenarkan menyunting kuota untuk kumpulan ini
 sgroup_efs=Anda tidak dibenarkan mengedit kuota pada sistem fail ini
+
 ssync_ecannot=Anda tidak boleh menetapkan kuota lalai untuk sistem fail ini
+
 suser_euser=Anda tidak dibenarkan mengedit kuota untuk pengguna ini
 suser_efs=Anda tidak dibenarkan mengedit kuota pada sistem fail ini
 suser_emaxblocks=Anda tidak dibenarkan memberikan had blok di atas $1 
 suser_emaxfiles=Anda tidak dibenarkan memberikan had fail melebihi $1 
+
 ufilesys_title=Kuota pengguna
 ufilesys_return=senarai fail sistem
 ufilesys_ecannot=Anda tidak boleh mengedit kuota untuk '$1'
@@ -152,6 +165,7 @@ ufilesys_copydesc=Salin had kuota untuk pengguna ini pada semua sistem fail kepa
 ufilesys_copy=Salin Quotas
 ufilesys_grace=Grace
 ufilesys_enone=Tiada nama pengguna yang dimasukkan
+
 ugracef_title=Grace Times
 ugracef_return=senarai pengguna
 ugracef_ecannot=Anda tidak boleh mengedit masa tanggapan pada sistem fail ini
@@ -160,9 +174,11 @@ ugracef_graces=Times Grace Pengguna untuk <tt>$1</tt>
 ugracef_block=Untuk kuota blok
 ugracef_file=Untuk kuota fail
 ugracef_update=Kemas kini
+
 ugraces_esave=Gagal menyimpan rahmat kali
 ugraces_eedit=Anda tidak boleh mengedit masa tanggapan pada sistem fail ini
 ugraces_enumber='$1' bukan nombor
+
 lusers_failed=Gagal menyenaraikan pengguna
 lusers_tablist=Senarai pengguna
 lusers_tabdefault=Kuota lalai
@@ -208,12 +224,14 @@ lusers_from=Daripada: alamat untuk e-mel
 lusers_mass=Kemas kini Pengguna Terpilih
 lusers_cc=Juga hantar e-mel ke
 lusers_nocc=Tiada siapa
+
 grace_seconds=Minit
 grace_minutes=Minit
 grace_hours=Jam
 grace_days=Hari
 grace_weeks=Minggu
 grace_months=Bulan
+
 log_activate_u=Kuota pengguna yang diaktifkan pada $1 
 log_activate_g=Kuota kumpulan diaktifkan pada $1 
 log_activate_ug=Didayakan kuota pengguna dan kumpulan pada $1 
@@ -231,6 +249,7 @@ log_check=Kuota yang diperiksa pada $1
 log_copy_u=Kuota pengguna $1 disalin
 log_copy_g=Kuota $1 disalin kumpulan
 log_support=Sokongan kuota diaktifkan untuk $1 
+
 email_err=Gagal menyimpan pilihan e-mel
 email_ecannot=Anda tidak dibenarkan memodifikasi pilihan e-mel
 email_einterval=Rentang yang hilang atau tidak sah
@@ -243,7 +262,9 @@ gemail_msg=Penggunaan cakera untuk kumpulan $1 pada filesystem $2 telah mencapai
 email_subject=Kuota kuota melebihi
 gemail_subject=Kuota kuota melebihi
 email_eto=Alamat e-mel destinasi yang tiada
+
 umass_count=Perubahan di bawah akan dikenakan kepada $1 pengguna terpilih ..
+
 gmass_title=Kemas kini Kumpulan Quotas
 gmass_header=Perubahan kuota untuk memohon kepada kumpulan yang dipilih
 gmass_count=Perubahan di bawah akan dikenakan ke $1 kumpulan terpilih ..

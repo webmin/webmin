@@ -2,6 +2,7 @@ index_title=Preberite uporabniško pošto
 index_none=V tem sistemu ne smete brati e-pošte nobenim uporabnikom.
 index_header=Uporabniški nabiralniki
 index_empty=Brez pošte
+index_return=seznam uporabnikov
 index_esystem=V vašem sistemu ni bilo zaznanega nobenega od podprtih poštnih strežnikov (Exim, Qmail, Postfix in Sendmail). Za nastavitev poštnega strežnika in morda poštnih poti ročno nastavite konfiguracijo <a href='$1'>modula</a>.
 index_esystem2=Poštnega strežnika, nastavljenega v konfiguraciji modula <a href='$1'></a>, ni bilo mogoče najti v vašem sistemu. Za uporabo pravilnega strežnika boste morali prilagoditi konfiguracijo.
 index_esystem3=Pri stiku s poštnim sistemom, nastavljenim v konfiguraciji modula <a href='$1'>, je prišlo do napake</a>: $2.
@@ -19,6 +20,7 @@ index_eperl=Modul Perl $1, potreben za izbrani način preverjanja pristnosti SMT
 index_file=Preberite pošto v datoteki ali Maildirju:
 index_nousers=Uporabnikov ni bilo mogoče najti!
 index_nousersmail=Uporabnikov z e-pošto ni bilo mogoče najti.
+
 mail_title=Uporabniški e-poštni naslov
 mail_from=Od
 mail_date=Datum
@@ -75,6 +77,7 @@ mail_fromfilter=Ustvari filter po pošiljatelju
 mail_tofilter=Ustvari filter po prejemniku
 mail_subfilter=Ustvari filter glede na zadevo
 mail_unknown=Neznano
+
 mail_sign=Prijavite se s ključem
 mail_nosign=&lt;Ne podpiši&gt;
 mail_crypt=Šifriraj za
@@ -109,6 +112,7 @@ mail_selread=Izberite prebrano.
 mail_selunread=Izberite neprebrano.
 mail_selspecial=Izberite posebno.
 mail_specialsync=Sinhronizacija posebna
+
 view_title=Preberite e-pošto
 view_desc=Sporočilo $1 v $2
 view_desc2=Sporočilo $1 za uporabnika $2
@@ -150,6 +154,7 @@ view_sub=Priložena e-pošta
 view_sub2=Priložena e-pošta od $1
 view_egone=To sporočilo ne obstaja več
 view_eugone=Ta uporabnik ne obstaja
+
 view_gnupg=Preverjanje podpisa GnuPG
 view_gnupg_0=Podpis s strani $1 je veljaven.
 view_gnupg_1=Podpis s strani $1 je veljaven, vendar verige zaupanja ni bilo mogoče vzpostaviti.
@@ -186,7 +191,9 @@ view_images=Prikaži slike
 view_raw=Ogled neobdelanega sporočila
 view_aall=Vse priloge shranite kot ZIP.
 view_aslideshow=Prikaži vse slike
+
 compose_title=Sestavi e-pošto
+
 reply_title=Odgovori na e-pošto
 forward_title=Posreduj e-pošto
 enew_title=Urejanje e-pošte
@@ -216,9 +223,11 @@ reply_addattach=Dodajte prilogo.
 reply_addssattach=Dodajte polje za prilogo na strani strežnika.
 reply_html0=Sestavi besedilo
 reply_html1=Sestavi HTML
+
 reply_spell=Preverite črkovalne napake?
 reply_draft=Shranite kot osnutek
 reply_save=Shranite in uredite
+
 send_err=Pošiljanje pošte ni bilo mogoče
 send_eto=Manjka naslov
 send_efrom=Manjka naslov
@@ -235,6 +244,7 @@ send_eperms2=Ni vam dovoljeno pošiljati datoteke $1
 send_epath=Sendmail izvršljiv $1 ne obstaja.
 send_efile=Priloge ni bilo mogoče prebrati $1 : $2 
 send_done=.. Končano.
+
 send_epass=Ne morete podpisati sporočila, ker vaša gesla še ni bila nastavljena v modulu GnuPG.
 send_esign=Sporočila ni bilo mogoče podpisati : $1
 send_ekey=Ključa za e-poštni naslov $1 ni bilo mogoče najti
@@ -246,6 +256,7 @@ send_espell=V sporočilu so bile najdene naslednje črkovalne napake.
 send_draft=Pošta na $1, shranjena v mapi osnutkov.
 send_drafting=Shranjevanje pošte v $1 v mapo Osnutki ..
 send_eattachsize=Priloga e-pošte je presegla največjo dovoljeno velikost $1 bajtov
+
 delete_title=Izbriši pošto
 delete_rusure=Ali ste prepričani, da želite izbrisati izbrana sporočila $1 iz $2? Za veliko poštno datoteko lahko traja nekaj časa. Dokler se izbris ne konča, nobenega drugega dejanja ne bi smeli izvajati.
 delete_rusure2=Ali ste prepričani, da želite izbrisati to sporočilo z $1? Za veliko poštno datoteko lahko traja nekaj časa. Dokler se izbris ne konča, nobenega drugega dejanja ne bi smeli izvajati.
@@ -268,6 +279,7 @@ delete_nobutton=Noben kliknjen gumb
 delete_ereport=Prijava kot neželena pošta ni uspela : $1
 delete_errc=Kopiranje pošte ni uspelo
 delete_errm=Premika pošte ni bilo mogoče
+
 confirm_title=Potrdite Delete
 confirm_warn=Ali ste prepričani, da želite izbrisati izbrana sporočila $1 iz te mape?
 confirm_warnf=Ali ste prepričani, da želite izbrisati izbrana sporočila $1 iz mape <b>$2</b>?
@@ -277,6 +289,7 @@ confirm_warn4=Dokler se izbris ne konča, nobenega drugega dejanja ne bi smeli i
 confirm_ok=Izbriši zdaj
 confirm_warnall=Ali ste prepričani, da želite izbrisati vsa sporočila v tej mapi?
 confirm_warnallf=Ali ste prepričani, da želite izbrisati vsa sporočila v mapi <b>$1</b>?
+
 search_title=Rezultati iskanja
 search_ecannot=Ne morete iskati po e-pošti tega uporabnika
 search_ematch=Vnesti morate besedilo, da se boste ujemali z.
@@ -305,16 +318,19 @@ search_nolatest=Vse v mapi
 search_latestnum=Samo najnovejše
 search_elatest=Manjkajoče ali neveljavno število sporočil za iskanje
 search_withstatus=, s statusom $1
+
 folder_inbox=Prejeto
 folder_sent=Poslana pošta
 folder_drafts=Osnutki
 folder_trash=Smeti
+
 detach_err=Datoteke ni bilo mogoče odstraniti
 detach_edir=Nobene datoteke ali imenika, ki bi ga shranili
 detach_eopen=Ni mogoče odpreti $1 : $2 
 detach_ewrite=Pisanje v $1 : $2 ni uspelo.
 detach_title=Odstranite datoteko
 detach_ok=Napisal je prilogo na datoteko na strani strežnika $1 ($2).
+
 sform_title=napredno iskanje
 sform_header=Napredne možnosti iskanja po e-pošti
 sform_andmode=Način meril
@@ -339,6 +355,7 @@ sform_headers=poljubno glavo
 sform_allmsg=celotno sporočilo
 sform_size=velikost sporočila
 sform_return=napredni obrazec za iskanje
+
 find_enone=Uporabnikov, ki bi ustrezali iskanju, ni bilo mogoče najti
 find_title=Rezultati iskanja
 find_results=Uporabniki, ki ustrezajo iskanju $1 ..
@@ -351,6 +368,7 @@ find_incount=E-poštna sporočila
 find_sentcount=Poslano
 find_fcount=Mape
 find_in=$1 v $2
+
 acl_none=Noben
 acl_same=Uporabnik z istim imenom
 acl_all=Vse
@@ -376,12 +394,15 @@ acl_usersu=Z UID v dosegu
 acl_sec=Vključite sekundarne skupine?
 acl_dir=Lahko bere poštne datoteke v imeniku
 acl_dirauto=Odločite se samodejno (kjer koli so vidni vsi uporabniki, nikjer drugače)
+
 log_delmail=Izbrisana so sporočila $1 iz $2
 log_movemail=Sporočila $1 so premaknjena iz $2 v $3
 log_copymail=Kopirana sporočila $1 iz $2 v $3
 log_send=Poslano pošto na $1
 log_read=Branje pošte za $1
+
 emodified=Ta mapa je bila spremenjena od zadnjega ogleda! Vrnite se na <a href='$1'>seznam e-poštnih sporočil</a> in poskusite znova.
+
 razor_title=Poročanje kot neželena pošta
 razor_title2=Poročanje kot Ham
 razor_report=Prijava tega sporočila Razorju in drugim zbirkam podatkov o preprečevanju neželene pošte SpamAssassin ..
@@ -391,14 +412,18 @@ razor_done=.. Končano
 razor_err=.. ni uspelo! Glej zgornje sporočilo o napaki za razlog.
 razor_moved=.. končano in premaknjeno v mapo $1.
 razor_deleted=.. končano in tudi izbrisano sporočilo.
+
 ham_title=Poročanje kot Ham
 ham_report=To sporočilo prijavite kot neželeno pošto Razorju in drugim zbirkam podatkov SpamAssassin ..
+
 black_title=Zavračanje pošiljatelja
 black_done=Na seznam zavrnjenih naslovov SpamAssassin je dodal e-poštni naslov $1.
 black_already=E-poštni naslov $1 je že na seznamu zavrnjenih naslovov SpamAssassin.
+
 white_title=Dovoljenje pošiljatelju
 white_done=Na seznam dovoljenih naslovov SpamAssassin je bil dodan e-poštni naslov $1.
 white_already=E-poštni naslov $1 je že na seznamu dovoljenih naslovov SpamAssassin.
+
 ldap_emod=Manjka Perl modul $1, potreben za povezavo z LDAP
 ldap_econn=Povezave s strežnikom LDAP ni bilo mogoče $2
 ldap_elogin=Ni bilo mogoče povezati na LDAP strežnik $1 kot $2 : $3 
@@ -406,12 +431,15 @@ ldap_ehost=V konfiguraciji modula ni nastavljen strežnik LDAP
 ldap_eport=V konfiguraciji modula ni nastavljenih veljavnih vrat strežnika LDAP
 ldap_euser=V konfiguraciji modula ni nastavljena prijava LDAP
 ldap_ebase=V konfiguraciji modula ni nastavljen DN LDAP osnovne
+
 delall_title=Izbriši vso pošto
 delall_rusure=Ali ste prepričani, da želite izbrisati vso e-pošto z $1? $2 sporočila v skupni vrednosti $3 bodo za vedno izbrisana.
 delall_ok=Izbriši zdaj
+
 slide_title=Priložene slike
 slide_prev=Prejšnja
 slide_next=Naslednji
+
 left_mail=Pošta
 left_search=Iskanje:
 left_folders=Upravljanje map

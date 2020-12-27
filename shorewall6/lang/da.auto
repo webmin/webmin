@@ -19,6 +19,7 @@ index_dump=Vis dump
 index_dumpdesc=Klik på denne knap for at se Shorewall-sporingsinformation fra kommandoen <tt>shorewall6</tt>.
 index_check=Kontroller firewall
 index_checkdesc=Klik på denne knap for at få Shorewall til at validere din firewall-konfiguration med kommandoen <tt>shorewall6</tt>.
+
 list_move=Bevæge sig
 list_add=Tilføje
 list_auto=Automatisk
@@ -30,6 +31,7 @@ list_manual=Rediger fil manuelt
 list_manualdesc=Klik på denne knap for manuelt at redigere Shorewall-filen $1, hvor ovenstående poster er gemt.
 list_ecannot=Du har ikke tilladelse til at redigere denne Shorewall-tabel.
 list_delete=Slet valgt
+
 restart_err=Kunne ikke anvende konfiguration
 refresh_err=Kunne ikke opdatere konfigurationen
 start_err=Kunne ikke starte firewall
@@ -41,6 +43,7 @@ check_title=Kontroller firewall
 check_ok=.. din firewall-konfiguration ser OK ud.
 check_failed=.. der blev fundet en fejl i din firewall-konfiguration!
 check_cmd=Kontrollerer konfiguration ..
+
 zones_title=Netværkszoner
 zones_desc=De zoner, der er anført på denne side, repræsenterer forskellige netværk, der kan nås fra dit system. Imidlertid har posterne her faktisk ingen indflydelse på firewall - i stedet definerer de blot zonenavne og beskrivelser.
 zones_add=Tilføj en ny netværkszone.
@@ -72,6 +75,7 @@ zones_firewall=Firewall-system
 zones_eopts=Ugyldige zoneindstillinger
 zones_eopts_in=Ugyldige indgående indstillinger for zone
 zones_eopts_out=Ugyldige udgående indstillinger for zone
+
 policy_title=Standardpolitikker
 policy_desc=Denne side giver dig mulighed for at konfigurere standardhandlingerne for trafik mellem forskellige firewallzoner. De kan tilsidesættes for bestemte værter eller typer trafik på siden Firewall-regler.
 policy_add=Tilføj en ny standardpolitik.
@@ -92,6 +96,7 @@ policy_ulog=Log på ULOG
 policy_efw=&lt;Firewall&gt; kan vælges til både kilde- og destinationszoner
 policy_elimit=Manglende eller ugyldigt antal trafikgrænser
 policy_eburst=Manglende eller ugyldigt nummer i trafikudbruddet
+
 rules_title=Firewall-regler
 rules_desc=Denne tabel viser undtagelser fra standardpolitikkerne for bestemte typer trafik, kilder eller destinationer. Den valgte handling vil blive anvendt på pakker, der matcher de valgte kriterier i stedet for standard.
 rules_add=Tilføj en ny firewall-regel.
@@ -138,6 +143,7 @@ rules_eaction=Ingen handling valgt
 rules_macro=Makrohandlingsparameter
 rules_none2=Ingen
 rules_emacro=Manglende eller ugyldig makroparameter
+
 tos_title=Typer af service
 tos_desc=Denne side definerer IP-servicetyper for bestemte typer trafik, som kan bruges til at hæve eller sænke deres prioriteter.
 tos_add=Tilføj en ny type service.
@@ -156,6 +162,7 @@ tos_edit=Rediger type tjeneste
 tos_create=Opret tjenestetype
 tos_header=Type serviceoplysninger
 tos_err=Kunne ikke gemme tjenestetypen
+
 interfaces_title=Netværksgrænseflader
 interfaces_desc=Hver af de netværksgrænseflader på dit system, som du ønsker, at Shorewall skal administrere, skal vises på denne side og være knyttet til den zone, det er forbundet til. Loopback-grænsefladen <tt>lo</tt> må aldrig vises på listen.
 interfaces_add=Tilføj en ny netværksgrænseflade.
@@ -171,6 +178,7 @@ interfaces_header=Detaljer om netværksgrænseflade
 interfaces_err=Kunne ikke gemme netværksgrænsefladen
 interfaces_eiface=Manglende eller ugyldigt interfacenavn
 interfaces_ebroad=Manglende eller ugyldig udsendelsesadresse
+
 masq_title=masquerading
 masq_desc=Indlæg på denne side opsætter oversættelse af netværksadresse for trafik, der er dirigeret mellem et netværk og en bestemt grænseflade.
 masq_add=Tilføj en ny maskeringsregel.
@@ -201,6 +209,7 @@ masq_emnete=Liste over tomme undtagelsesnetværk
 masq_esnat=Ugyldig SNAT IP-adresse
 masq_eports=Manglende eller ugyldig komma-separat liste over porte
 masq_eipsec=Manglende IPsec-indstillinger
+
 nat_title=Statisk NAT
 nat_desc=De statiske oversættelsesposter for netværksadresse i denne tabel kan bruges til at konfigurere en 1-1-korrespondance mellem en ekstern adresse på din firewall og en RFC1918-adresse på en maskine bag din firewall. Statisk NAT bruges ofte til at tillade forbindelser til en intern server uden for dit netværk.
 nat_add=Tilføj en ny statisk NAT-post.
@@ -219,6 +228,7 @@ nat_local=Aktiv til firewall-system?
 nat_eext=Ugyldig ekstern IP-adresse
 nat_eint=Ugyldig intern IP-adresse
 nat_evirt=Ugyldigt virtuelt interfacenummer
+
 proxyndp_title=Proxy NDP
 proxyndp_desc=Denne side giver dig mulighed for at konfigurere dit system til at besvare NDP-anmodninger om andre IP-adresser end dets egne, så det kan videresende pakker til disse adresser til deres rigtige destinationer.
 proxyndp_add=Tilføj en ny proxy-NDP-adresse.
@@ -235,6 +245,7 @@ proxyndp_err=Kunne ikke gemme proxy-NDP
 proxyndp_have=Vej til vært findes?
 proxyndp_eaddr=Manglende eller ugyldig adresse til NDP
 proxyndp_pers=Forlade ruten, selv når firewall stoppede?
+
 routestopped_title=Når stoppet
 routestopped_desc=Når Shorewall stoppes som standard, nægter den adgang fra alle værter. Denne side giver dig mulighed for at definere værter eller netværk, der stadig er tilgængelige.
 routestopped_add=Tilføj en ny stoppet adresse.
@@ -250,6 +261,7 @@ routestopped_err=Kunne ikke gemme den stoppede adresse
 routestopped_eaddr=Ingen adresser indtastet
 routestopped_all=Alle adresser
 routestopped_list=Listede adresser og netværk ..
+
 tunnels_title=VPN-tunneler
 tunnels_desc=Denne side viser VPN-tunneler, der passerer gennem din firewall, og det skal derfor være tilladt af Shorewall-konfigurationen.
 tunnels_add=Tilføj en ny VPN-tunnel.
@@ -282,6 +294,7 @@ tunnels_generic_l=Generisk til protokol ..
 tunnels_gsel=Listede zoner
 tunnels_eopenvpn=Ugyldigt portnummer for OpenVPN-tunnelen
 tunnels_egeneric=Manglende protokol eller protokol: port til generisk tunnel
+
 hosts_title=Zoneværter
 hosts_desc=Denne side viser værter og netværk, der er en del af bestemte zoner. Du behøver generelt ikke foretage nogen ændringer på denne liste.
 hosts_add=Tilføj en ny zone vært.
@@ -301,8 +314,10 @@ hosts_ip=Adresse eller netværk $1
 hosts_mac=MAC-adresse $1 
 hosts_ipset=IP sæt $1 
 hosts_any=Enhver vært
+
 edit_before=Før post $1 
 edit_after=Efter post $1 
+
 blacklist_title=Sortliste-værter
 blacklist_desc=Denne side viser værter og tjenester, der vil blive blokeret, hvis trafik fra dem ankommer på en grænseflade med indstillingen <b>sortliste</b>.
 blacklist_add=Tilføj en ny sortlistehost.
@@ -325,6 +340,7 @@ blacklist_eproto=Manglende eller ugyldig protokol
 blacklist_eports=Ugyldigt portnummer eller kommasepareret liste over porte
 blacklist_eports2=Porte kan kun specificeres til TCP- og UDP-protokoller
 blacklist_return=sortliste vært
+
 providers_title=Yderligere routingudbydere
 providers_desc=Denne side definerer yderligere rutetabeller. Disse er nødvendige, hvis du har forbindelser til mere end en ISP eller flere forbindelser til den samme ISP, eller kører Squid som en gennemsigtig proxy på en anden vært end firewall.
 providers_add=Tilføj en ny routingudbyder.
@@ -359,17 +375,21 @@ providers_enumber=Manglende eller ugyldigt udbydernummer
 providers_emark=Manglende eller ugyldigt udbyderens mærkenummer
 providers_edup=Manglende udbyder til duplikat
 providers_egateway=Manglende eller ugyldig gateway
+
 manual_desc=Denne formular kan bruges til manuelt at redigere Shorewall-filen $1. Vær forsigtig, da der ikke foretages nogen syntaksekontrol af ændringerne.
 manual_reset=Fortryd
 manual_err=Kunne ikke gemme tabelfilen
 manual_efile=Ugyldigt tabelnavn!
 manual_edata=Intet indhold af tabelfil indtastet.
+
 acl_nochange=Kan anvende, stoppe og starte Shorewall-konfiguration?
 acl_files=Tilgængelige Shorewall borde
 acl_all=Alle
 acl_sel=Valgt nedenfor ..
+
 delete_err=Kunne ikke slette rækker
 delete_enone=Ingen rækker valgt
+
 opts_routeback=Accepter trafik tilbage til vært
 opts_source=Tillad fra vært til enhver destination
 opts_dest=Tillad at være vært fra enhver kilde
@@ -386,12 +406,14 @@ opts_proxyndp=Aktivér proxy-NDP
 opts_ndp_filter=Besvar kun NDP-anmodninger om IP-interface
 opts_detectnets=Taylorzone til kun at omfatte dirigerede værter
 opts_upnp=Remap pakker via UPNP
+
 opts_dhcp=Interface bruger DHCP
 opts_forward=Indstil videresendelse
 opts_ignore=Ignorer op/ned-begivenheder
 opts_optional=Interface er valgfri
 opts_required=Interface kræves
 opts_bridge=Interface er en bro
+
 comment_add=Tilføj en ny kommentar.
 comment_edit=Rediger kommentar
 comment_create=Opret kommentar
@@ -399,6 +421,7 @@ comment_header=Detaljer om tabelkommentarer
 comment_msg=Besked
 comment_err=Kunne ikke gemme kommentaren
 comment_enone=Der er ikke indtastet nogen meddelelse
+
 log_create_table=Føjet indgang til tabellen $1 
 log_modify_table=Ændret post i tabellen $1 
 log_delete_table=Slettet post fra $1 -tabellen
@@ -414,6 +437,7 @@ log_start=Startet firewall
 log_refresh=Opfrisket firewall
 log_restart=Genstartet firewall
 log_clear=Ryddet firewall
+
 shorewall_conf_title=Master konfigurationsfil
 shorewall_conf_desc=Denne side giver dig mulighed for at konfigurere de globale konfigurationsvariabler. BEMÆRK: Ændring af rækkefølgen af variabler her anbefales ikke, hvis du ønsker at bevare den relative placering af kommentarer i konfigurationsfilen.
 shorewall_conf_add=Tilføj en ny konfigurationsvariabel.
@@ -427,6 +451,7 @@ shorewall_conf_create=Opret konfigurationsvariabel
 shorewall_conf_header=Detaljer om konfigurationsvariabel
 shorewall_conf_err=Kunne ikke gemme konfigurationsvariablen
 shorewall_conf_varname=Ugyldigt variabelnavn (skal være et gyldigt shellvariabelnavn)
+
 params_title=Tilpassede parametre
 params_desc=På denne side kan du konfigurere Shorewalls tilpassede parametre. BEMÆRK: Ændring af rækkefølgen af parametre her anbefales ikke, hvis du ønsker at bevare den relative placering af kommentarer i konfigurationsfilen.
 params_add=Tilføj en ny brugerdefineret parameter.

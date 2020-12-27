@@ -227,5 +227,3 @@ log_delete_pv=Volume physique $1 supprimé du groupe $2
 log_resize_pv=Volume physique redimensionné $1 dans VG $2
 
 blocks=blocs
-
-__norefs=1

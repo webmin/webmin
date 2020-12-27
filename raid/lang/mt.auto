@@ -21,6 +21,7 @@ index_mailfromnone=Default (<tt>root</tt>)
 index_program=Kmand biex titmexxa meta jinstabu problemi
 index_programnone=M'għandekx tħaddem
 index_monitor=Il-monitoraġġ ippermetta?
+
 linear=Lineari (Konċatenat)
 raid0=RAID0 (Strixxa)
 raid1=RAID1 (rifless)
@@ -29,6 +30,7 @@ raid5=RAID5 (Parità Distribwita)
 raid6=RAID6 (Parità Distribwita Dual)
 raid10=RAID10 (Striped and Mirrored)
 blocks=blokki
+
 create_title=Oħloq Apparat RAID
 create_header=Għażliet ta 'apparat RAID
 create_device=Fajl apparat
@@ -62,6 +64,7 @@ create_o2_layout=2 Kopji Offset
 create_n3_layout=3 Kopji Qarib
 create_f3_layout=3 Kopji Far
 create_o3_layout=3 Kopji Offset
+
 view_title=Apparat RAID
 view_header=Għażliet ta 'apparat RAID
 view_device=Fajl apparat
@@ -117,6 +120,7 @@ view_mountmsg=Daħħal direttorju u kklikkja din il-buttuna biex tmur f'forma g�
 view_mountmsg2=Ikklikkja din il-buttuna biex tuża dan it-tagħmir RAID għall-memorja virtwali fis-sistema tiegħek.
 view_blocks=$1 blokki
 view_sparegroup=Spare group
+
 mkfs_title=Oħloq Sistema tal-Files
 mkfs_header2=Din il-formola jippermettilek tibni sistema ta 'fajls $2 ġdida fuq $1. <b>Id-dejta eżistenti kollha</b> titħassar!
 mkfs_options=Għażliet ġodda tas-sistema ta 'fajls Linux
@@ -124,6 +128,7 @@ mkfs_err=Ma rnexxielux joħloq sistema ta 'fajls
 mkfs_exec=Twettiq kmand $1 ..
 mkfs_failed=.. kmand falla!
 mkfs_ok=.. kmand komplut.
+
 emkraid=<tt>mkraid</tt> falla : $1 
 eraidstop=<tt>Raidstop</tt> falla : $1 
 eraidstart=<tt>raidstart</tt> falla : $1 
@@ -135,6 +140,7 @@ emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
 log_create=Ħoloq $1 apparat RAID $2 
 log_stop=Apparat iddedikat RAID $1 
 log_start=Mezz RAID attivat $1 
@@ -147,14 +153,17 @@ log_grow=Apparat imkabbar RAID $1 għal total ta ' $2 diski
 log_convert_to_raid6=Ikkonverta l-apparat RAID5 $1 għal apparat RAID6
 log_convert_to_raid5=Ikkonverta l-apparat RAID6 $1 għal apparat RAID5
 log_notif=L-għażliet aġġornati għan-notifika tal-problema RAID
+
 notif_err=Ma rnexxielux isalva l-għażliet tan-notifika tal-problema RAID
 notif_emailaddr=Indirizz ta 'notifika nieqes jew invalidu
 notif_emailfrom=Nieqes jew invalidu Mill-indirizz
 notif_eprogram=Programm nieqes jew ineżistenti biex jitħaddem
+
 delete_title=Ħassar RAID RAID
 delete_rusure=Int żgur li trid tħassar il-firxa RAID $1, li tuża $2 tal-ispazju tad-diska?
 delete_ok=Iva, Ħassarha
 delete_eidx=L-ebda firxa RAID magħżula!
+
 remove_title=Neħħi Diviżjoni minn RAID Array
 remove_rusure=Int żgur li trid tneħħi l-partizzjoni $2 tal-firxa RAID $1 ?
 remove_ok=Iva, Neħħiha

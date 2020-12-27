@@ -42,6 +42,7 @@ index_lvused=Prostor koji se koristi
 index_lvuse=Koristi za
 index_snapof=(Snimak $1)
 index_thin=LVM tanak bazen za $1 LV
+
 lv_edit=Uređivanje logičkog volumena
 lv_edit_snap=Uređivanje snimke
 lv_create=Stvorite logički volumen
@@ -128,6 +129,7 @@ lv_pvfrom=Pomaknite blokove od fizičke glasnoće
 lv_pvto=Do fizičkog volumena
 lv_moveok=Premjesti blokove
 lv_return=logički volumen
+
 mkfs_title=Stvorite datotečni sustav
 mkfs_desc=Ovaj obrazac omogućuje vam izgradnju novog $2 ($1) datotečnog sustava na logičkom volumenu $3. Svi postojeći podaci bit će izbrisani.
 mkfs_header=Nove opcije datotečnog sustava
@@ -135,6 +137,7 @@ mkfs_err=Izrada datotečnog sustava nije uspjela
 mkfs_exec=Izvršavanje naredbe $1 ..
 mkfs_failed=.. naredba nije uspjela!
 mkfs_ok=.. naredba dovršena.
+
 resize_title=Promjena veličine logičkog volumena
 resize_mesg=Ne može se promijeniti veličina datotečnog sustava $1 na ovom logičkom volumenu. Ako promijenite veličinu logičkog volumena, morate ponovno stvoriti datotečni sustav koji će izbrisati sve podatke u njemu.
 resize_mesg2=Webmin ne zna kakav je datotečni sustav na ovom logičkom volumenu, ako ga ima. Ako promijenite veličinu logičkog volumena, morate ponovno stvoriti datotečni sustav koji će izbrisati sve podatke u njemu.
@@ -142,8 +145,10 @@ resize_fs=Došlo je do pogreške prilikom promjene veličine datotečnog sustava
 resize_ok=Promjena veličine logičkog volumena
 resize_emounted=Dok je instaliran, datotečni sustav ovog logičkog volumena ne može se promijeniti
 resize_emounted2=Dok je instaliran, datotečni sustav ovog logičkog volumena ne može se smanjiti
+
 init_title=Aktivirajte LVM
 init_cmd=Izvođenje naredbe $1 ..
+
 pv_edit=Uredite fizički volumen
 pv_create=Dodajte fizički volumen
 pv_vg=U grupi volumena $1 
@@ -170,6 +175,7 @@ pv_eother=Nedostaje ili nije važeći disk disk
 pv_raid=RAID uređaj $1 
 pv_lvs=Raspodjela po logičkim količinama
 pv_egone=Fizički volumen više ne postoji!
+
 vg_edit=Uređivanje grupe volumena
 vg_create=Stvorite grupu volumena
 vg_name=Naziv grupe svezaka
@@ -188,11 +194,13 @@ vg_deleteok=Izbriši sada
 vg_ename=Nedostaje ili nevažeće ime grupe volumena
 vg_epesize=Nedostaje ili nije važeća veličina bloka za dodjelu
 vg_egone=Skupina volumena više ne postoji!
+
 pvmove_err=Pomicanje logičkog volumena nije uspjelo
 pvmove_title=Premjesti logički volumen
 pvmove_start=Pomicanje logičkog volumena $1 od $2 do $3 ..
 pvmove_failed=.. potez nije uspio!
 pvmove_done=.. pomak dovršen
+
 thin_title=Stvorite tanak bazen
 thin_desc=Tanki bazen je par LV-ova koji se mogu koristiti za stvaranje dodatnih LV-ova koji mogu biti veći od raspoloživih ekstenzija. Prostor se troši samo kad je to potrebno, a ne kada se stvaraju niski naponi unutar bazena. UPOZORENJE - Svi podaci o odabranim LV izgubit će se!
 thin_header=Novi tanki detalji bazena
@@ -204,6 +212,7 @@ thin_err=Nije uspjelo stvaranje tankog bazena
 thin_esame=Oba odabrana LV-a su ista
 thin_edata=Odabrani LV podataka već se koristi
 thin_emetadata=Odabrani metapodatci su već u upotrebi
+
 log_create_vg=Stvorena grupa volumena $1 
 log_modify_vg=Izmijenjena grupa volumena $1 
 log_delete_vg=Izbrisana grupa volumena $1 
@@ -216,4 +225,5 @@ log_create_pv=Dodan je fizički volumen $1 do VG $1
 log_modify_pv=Izmijenjeni fizički volumen $1 u VG $2 
 log_delete_pv=Uklonjen je fizički volumen $1 iz VG $2 
 log_resize_pv=Smanjeni fizički volumen $1 u VG $2 
+
 blocks=blokovi

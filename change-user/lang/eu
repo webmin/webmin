@@ -13,6 +13,7 @@ index_themedef=Webminen gai zaharrak
 index_d3=$1, $2 eta $3
 index_d2=$1 eta $2
 index_d1=$1
+
 change_title=Konfigurazio aldaketa
 change_user=Webminera sartzeko aldaketak
 change_done=.. egina
@@ -20,6 +21,7 @@ change_restart=Webmin kargatu ..
 change_redirect=Haserako menura joan ..
 change_ecolon=Zure pasahitzak ezin du ondorengo hau eduki: karakterea
 change_epass=Pasahitz berria ez du balio: $1
+
 acl_lang=Hizkuntza aldatu dezakezu?
 acl_theme=Gaia aldatu dezakezu?
 acl_pass=Pasahitza aldatu dezakezu (Webmin aukeratzean)?

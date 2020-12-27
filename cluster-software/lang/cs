@@ -21,6 +21,7 @@ index_thost=Hostitelské jméno
 index_tdesc=Poznámka
 index_tcount=Balíčky
 index_ttype=Typ OS
+
 install_err=Instalace balíčku selhala
 install_elocal=Lokální soubor neexistuje
 install_elocal2='$1" neexistuje
@@ -36,6 +37,7 @@ install_servers=Server(y) instalovat na
 install_ok=Nainstalovat
 install_erus=Tento server používá odlišný způsob aktualizace oproti řídícímu serveru ($1 proti $2)
 install_eupdate=Při instalaci aktualizace se oběvila specifická chyba.
+
 add_title=Přidat servery
 add_msg=Přidávám $1 ..
 add_gmsg=Přidávám servery do skupiny $1 ..
@@ -44,6 +46,7 @@ add_gerr=Přidání do skupiny selhalo
 add_echeck=Server $1 nemá modul - Softwérové balíčky
 add_esystem=Server $1 nepoužívá stejný systém balíčků jako tento stroj
 add_ok=Přidal $1 z $2 balíčků.
+
 search_title=Hledání balíčku
 search_nomatch=Žádné balíčky si neodpovídaly $1
 search_none=Žádný
@@ -55,6 +58,7 @@ search_return=výsledky hledání
 search_delete=Odinstalovat vybrané balíčky z:
 search_selall=Vybrat vše
 search_invert=Obrátit výběr
+
 host_title=Spravovaný server
 host_header=Daily softwaru řízeného serveru
 host_name=Jméno hostitele
@@ -69,6 +73,7 @@ host_count=Balíčky nainstalovány
 host_os=OS dle Webminu
 host_return=detaily serveru
 host_system=Systém balíčků
+
 edit_title=Upravit balíček
 edit_details=Detaily balíčku z $1
 edit_desc=Poznámka
@@ -87,6 +92,7 @@ edit_all=&lt;Všichni hostitelé&gt;
 edit_donthave=&lt;hostitelé, kteří to nemají&gt;
 edit_have=&lt;hostitelé, kteří to mají&gt;
 edit_group=Členové z $1
+
 list_title=Soubory balíčku
 list_files=Soubory pro balíček $1 na $2
 list_path=Cesta
@@ -96,6 +102,7 @@ list_type=Typ
 list_size=Velikost
 list_status=Stav
 list_ok=OK
+
 refresh_title=Obnovit seznamy balíčků
 refresh_header=Požádat znovu o seznam balíčků ode všech serverů ..
 refresh_header4=Požádat znovu o seznam balíčků od členů z $2 ..
@@ -107,6 +114,7 @@ refresh_4=Obnoveno $1 (žádné změny)
 refresh_done=.. hotovo
 refresh_del=Odstranil $1 ze seznamu serveru
 refresh_failed=Obnovení $1 : $2 selhalo
+
 delete_err=Vymazání balíčku $1 selhalo
 delete_epack=Balíček $1 neexistuje
 delete_title=Vymazat balíček
@@ -119,6 +127,7 @@ delete_error=Vymazání z $1 : $1 selhalo
 delete_success=Vymazáno z $1.
 delete_done=.. hotovo
 delete_header=Mažu balíček $1 ..
+
 do_title=Instalovat balíček
 do_header=Instaluji $1 na všechny hostitele ..
 do_header3=Instaluji $1 na hostitelích, kteří jej ještě nemají ..
@@ -138,6 +147,7 @@ do_arch=Architektura
 do_inst=Instalováno
 do_none=Žádný
 do_edeleted=Instalační soubor byl vymazán - vraťte se na index modulu a zkuste to znovu.
+
 compare_title=Porovnat balíčky
 compare_desc=Tento formulář se používá k porovnání nainstalovaných balíčků na dvou nebo více servrech a k nalezení rozdílů mezi verzemi nebo dostupnosti balíčků.
 compare_hosts=Servery k porovnání
@@ -152,6 +162,7 @@ compare_showall=Balíčky k prohlížení
 compare_showall1=Vše
 compare_showall0=Pouze rozdílné
 compare_got=OK
+
 deletes_err=Vymazání balíčku selhalo
 deletes_enone=Žádný balíček nebyl vybrán
 deletes_title=Smazány balíčky

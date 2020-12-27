@@ -9,6 +9,7 @@ index_restart=Iš naujo paleiskite „Webmin“
 index_restartmsg=Spustelėkite šį mygtuką, kad iš naujo paleistumėte „Webmin“ serverio procesą. To gali prireikti, jei neseniai atnaujinote „Perl“.
 index_refresh=Atnaujinkite modulius
 index_refreshmsg=Dar kartą patikrinkite visus įdiegtus „Webmin“ modulius ir atnaujinkite tuos, kurie pateikiami kategorijoje „Nenaudojami moduliai“.
+
 access_title=IP prieigos kontrolė
 access_desc=„Webmin“ serverį galima sukonfigūruoti taip, kad naudojant šią formą būtų uždrausta arba leidžiama prieiga tik iš tam tikrų IP adresų. Taip pat galima įvesti pagrindinius kompiuterių pavadinimus (pvz., Foo.bar.com) ir IP tinklus (pvz., 10.254.3.0 arba 10.254.1.0/255.255.255.128 arba 10.254.1.0/25 arba 10.254.1.5-10.254.97.127). Turėtumėte apriboti prieigą prie savo serverio tik patikimais adresais, ypač jei jis pasiekiamas iš interneto. Priešingu atveju visi, atspėję jūsų slaptažodį, turės visišką jūsų sistemos valdymą.
 access_ip=Leidžiami IP adresai
@@ -33,6 +34,7 @@ access_ehost=Nepavyko rasti „$1“ IP adreso
 access_eself=Jūsų dabartinis IP adresas ($1) būtų atmestas
 access_always=Išspręsti pagrindinio kompiuterio pavadinimus kiekvienoje užklausoje?
 access_trust=Ar patikimas tarpinis IP adresas?
+
 bind_title=Uostai ir adresai
 bind_desc2=Ši forma gali būti naudojama norint pakeisti prievado numerį, kurio „Webmin“ klausosi, arba leisti, kad jis klausytųsi tik vienu jūsų sistemos IP adresu. Taip pat galite sukonfigūruoti jį priimti ryšius keliuose prievaduose arba klausytis keliais IP adresais. Pastaba - pakeitus prievadą ar įrišimo adresą, jūsų interneto naršyklė gali paraginti jus prisijungti dar kartą.
 bind_header=IP adresai ir prievadai
@@ -61,6 +63,7 @@ bind_eipv6=IPv6 negalima įgalinti, jei neįdiegtas $1 „Perl“ modulis
 bind_redirecting=Peradresuojama į naują URL ..
 bind_elsof=Naujas prievadas $1 jau naudojamas kituose procesuose
 bind_eonsystem=IP adresas $1 šioje sistemoje neaktyvus, todėl jo negalima naudoti
+
 log_title=Medienos ruoša
 log_desc=„Webmin“ gali būti sukonfigūruotas rašyti žiniatinklio serverio įvykių žurnalą standartiniu CLF žurnalo failo formatu. Jei įgalinta registracija, taip pat galite pasirinkti, ar įrašomi IP adresai, ar pagrindiniai vardai, ir kaip dažnai žurnalas yra išvalomas. Kai įjungta, žurnalai įrašomi į failą $1.
 log_desc2=Kai įjungiama registracija, „Webmin“ taip pat įrašys išsamesnį vartotojo veiksmų žurnalą į failą $1. Šį žurnalą galima peržiūrėti ir analizuoti naudojant „Webmin“ veiksmų žurnalo modulį, kad būtų galima tiksliai pamatyti, ką padarė kiekvienas „Webmin“ vartotojas.
@@ -92,6 +95,7 @@ log_login=Įtraukti „Webmin“ prisijungimus ir atsijungimus į veiksmų žurn
 log_email=Siųsti prisijungusius veiksmus el. Paštu el. Paštu
 log_emailnone=Nesiųsti
 log_inmodsemail=Siųsti el. Laišką apie veiksmus
+
 proxy_title=Tarpiniai serveriai ir atsisiuntimai
 proxy_desc=Jei pagrindinis kompiuteris, kuriame veikia „Webmin“, yra už kažkokio tipo ugniasienės, gali reikėti nustatyti tarpinį serverį, kuris bus naudojamas norint pasiekti interneto ir FTP svetaines. Kai kurie moduliai, tokie kaip <tt>programinės įrangos paketai</tt>, naudos šias tarpines, atsiųsdami failus ar programas.
 proxy_header=Tarpiniai serveriai
@@ -134,6 +138,7 @@ proxy_return=tarpiniai serveriai ir parsisiuntimai
 proxy_tabproxy=Įgaliotinis
 proxy_tabdown=Atsisiuntimas
 proxy_fallback=Išbandykite tiesioginę užklausą, jei tarpinis serveris neveikia?
+
 ui_title=Vartotojo sąsaja
 ui_desc=Ši forma leidžia jums redaguoti vartotojo sąsajos parinktis, kurias naudoja visi moduliai. Įvedant spalvas, kiekvienas turi būti nurodytas naudojant standartinę RGB sistemą, kur kiekviena reikšmė yra šešioliktainis skaičius nuo 00 iki ff.
 ui_header=Vartotojo sąsajos parinktys
@@ -183,6 +188,7 @@ ui_dateformat_dd/mm/yyyy=diena/mėnuo/metai (ty 2001 09 16)
 ui_dateformat_mm/dd/yyyy=mėnuo/diena/diena (ty 2001 09 16)
 ui_dateformat_yyyy/mm/dd=yyyy/mm/dd (ty 2001/09/16)
 ui_ehostnamedisplay=Trūksta arba netinkamas rodomas pagrindinio kompiuterio vardas
+
 mods_title=„Webmin“ moduliai
 mods_desc1=Įdiegę „Webmin“ modulius, naudokite dešinėje esančią formą. Moduliai paprastai yra paskirstomi <tt>.wbm</tt> failuose, kiekviename iš jų gali būti vienas ar keli moduliai. Modulius taip pat galima įdiegti iš RPM failų, jei juos palaiko jūsų operacinė sistema.
 mods_installsource=Įdiekite iš
@@ -226,6 +232,7 @@ mods_tabinstall=Diegti
 mods_tabclone=Klonas
 mods_tabdelete=Ištrinti
 mods_tabexport=Eksportuoti
+
 install_err1=Nepavyko įdiegti modulio iš $1
 install_efile=Failas neegzistuoja
 install_err2=Nepavyko įdiegti įkelto modulio
@@ -259,10 +266,12 @@ install_cat=Kategorijoje $1.
 install_eneither=RPM nėra „Webmin“ modulio ar temos
 install_err4=Nepavyko įdiegti standartinio modulio
 install_emissing=Nurodytas modulis neegzistuoja
+
 clone_err=Nepavyko klonuoti modulio
 clone_elink=symlink nepavyko : $1
 clone_ecopy=nepavyko nukopijuoti konfigūracijos : $1
 clone_desc=$1 klonas
+
 delete_err=Nepavyko ištrinti modulių
 delete_edep=Modulio $1 negalima ištrinti, nes nuo jo priklauso modulis $2
 delete_desc1=$1 ($2 klonas)
@@ -274,6 +283,7 @@ delete_rusure2=Ar tikrai norite ištrinti temą $2? $1 kB failai bus ištrinti v
 delete_rusure3=Ar tikrai norite ištrinti modulio klonus $2?
 delete_acls=Pašalinti iš vartotojų ir iš naujo nustatyti prieigos kontrolės nustatymus?
 delete_enone=Nepasirinktas modulis
+
 os_title=Operacinė sistema ir aplinka
 os_desc3=Šiame puslapyje rodoma operacinė sistema, kurią įdiegimo metu aptiko „Webmin“, ir sistema, kuri šiuo metu yra aptinkama. Jei jie skiriasi, galite pasirinkti atnaujinti „Webmin“ OS informaciją, kurios gali prireikti, jei neseniai atnaujinote.
 os_desc2=Taip pat galite pakeisti paieškos kelią, kurį naudoja „Webmin“ vykdydami programas, o bendrinamos bibliotekos kelias perduodamas bet kuriai programai.
@@ -296,6 +306,7 @@ os_eiversion=Trūksta vidinės operacinės sistemos versijos
 os_incorrect=Įspėjimas - jūsų sistemoje iš tikrųjų veikia $1 versija $2.
 os_fix=Atnaujinkite aptiktą operacinę sistemą
 os_usermin=Taip pat atnaujinkite „Usermin“ OS
+
 lang_title=Kalba
 lang_title2=Webmin kalba
 lang_lang=Ekranas kalba
@@ -307,6 +318,7 @@ lang_chardef=Nustatoma pagal kalbą
 lang_charover=Priverstinis simbolių rinkinys
 lang_err=Nepavyko išsaugoti kalbos
 lang_echarset=Trūksta arba netinkamai atrodo simbolių rinkinys
+
 ssl_title=SSL šifravimas
 ssl_essl=Panašu, kad „Net::SSLeay perl“ modulis nėra įdiegtas jūsų sistemoje. Norėdami įdiegti „OpenSSL“ biblioteką ir „Net::SSLeay“, vykdykite <a href='$1'>šias instrukcijas</a> iš „Webmin“ svetainės.
 ssl_cpan=Taip pat galite paprašyti „Webmin“ <a href='$1'>atsisiųsti ir įdiegti</a> jums reikalingą „Net::SSLeay Perl“ modulį.
@@ -412,6 +424,7 @@ ssl_letsnotrenew=Atnaujinkite tik rankiniu būdu
 ssl_staging=Užšifruokime serverį
 ssl_staging0=Tikras
 ssl_staging1=Laipsnis (tik bandymas)
+
 newkey_err=Nepavyko sukurti SSL rakto
 newkey_ecn=Trūksta arba netinkamas serverio vardas
 newkey_ecns=Neįvestas serverio vardas
@@ -424,11 +437,13 @@ newkey_ok=Sėkmingai sugeneruotas šis SSL raktas :
 newkey_esize=Trūksta arba netinkamas rakto dydis
 newkey_edays=Trūksta arba netinkamas dienų skaičius iki galiojimo pabaigos
 newkey_ecountry=Šalies kodas turi būti dviejų raidžių
+
 newcsr_err=Nepavyko sukurti SSL CSR
 newcsr_efile=Trūksta CSR failo pavadinimo
 newcsr_title=Sudaryti CSR
 newcsr_ok=Sėkmingai sugeneruota ši SSL sertifikato užklausa :
 newcsr_ok2=Ši CSR turi būti išsiųsta pasirašiusiai institucijai, kuri grąžins pasirašytą sertifikatą. Tai galima įdiegti naudojant aukščiau esantį raktą, naudojant skirtuką <b>Įkelti sertifikatą</b>.
+
 startpage_title=Rodyklės puslapio parinktys
 startpage_intro2=Šis puslapis leidžia jums valdyti pagrindinio „Webmin“ meniu išvaizdą. Kai kurios parinktys gali būti veiksmingos tik naudojant numatytąją temą.
 startpage_tabs=Klasifikuokite modulius?
@@ -442,6 +457,7 @@ startpage_gotonone=&lt;Nėra&gt;
 startpage_gotomodule=Prisijungę visada eikite į modulį
 startpage_webminup=Rodyti „Webmin“ naujinius sistemos informacijos puslapyje?
 startpage_moduleup=Rodyti modulio naujinius sistemos informacijos puslapyje?
+
 upgrade_title=Atnaujinkite „Webmin“
 upgrade_desc=Ši forma leidžia atnaujinti visą „Webmin“ diegimą į naują versiją. Galite įdiegti iš vietinio failo, įkelto failo arba iš naujausios versijos apsilankę <a href=http://www.webmin.com/>www.webmin.com</a>. Kaip ir rankiniu būdu atnaujinant, visi jūsų konfigūracijos nustatymai ir trečiųjų šalių moduliai bus saugomi.
 upgrade_descrpm=Ši forma leidžia atnaujinti visą „Webmin“ diegimą į naują versiją naudojant RPM atnaujinimo parinktį. Galite įdiegti iš vietinio RPM failo, įkelto failo arba iš naujausios versijos apsilankę <a href=http://www.webmin.com/>www.webmin.com</a>. Kaip ir rankiniu būdu atnaujinant, visi jūsų konfigūracijos nustatymai ir trečiųjų šalių moduliai bus saugomi.
@@ -506,10 +522,12 @@ upgrade_tabupdate=Atnaujinkite modulius
 upgrade_tabsched=Suplanuotas atnaujinimas
 upgrade_src=Atnaujinkite „Webmin“ iš
 upgrade_opts=Naujovinimo parinktys
+
 newmod_desc=Atnaujinus „Webmin“, visi nauji naujos versijos moduliai bus suteikti vienam ar daugiau vartotojų. Ši forma leidžia nustatyti vartotojus, kurie gauna naujus modulius. Šis nustatymas bus taikomas atnaujinant komandinę eilutę arba naudojant aukščiau esančią formą.
 newmod_header=Naujų modulių stipendijos
 newmod_def=Numatytasis elgesys - suteikite naujus modulius <tt>šaknims</tt> arba <tt>administratoriui</tt>
 newmod_users=Suteikite naujus modulius :
+
 update_desc1=Ši forma leidžia atnaujinti „Webmin“ modulius, kuriuose rasta klaidų ar saugos spragų iš puslapio <a href=http://www.webmin.com/updates.html>„Webmin“ naujinimai</a> arba iš kito šaltinio. Tai leis palyginti dabartinius įdiegtus modulius su tais, kuriuos galima atnaujinti, ir pasirinktinai automatiškai atsisiųsti ir įdiegti pasenusius modulius.
 update_header1=Atnaujinkite modulius dabar
 update_header2=Atnaujinkite modulius pagal tvarkaraštį
@@ -536,6 +554,7 @@ update_enomodsig=Nepavyko atsisiųsti modulio parašo failo : $1
 update_ebadmodsig=Modulio parašo patikra nepavyko : $1
 update_src=Atnaujinkite modulius iš
 update_opts=Modulio atnaujinimo parinktys
+
 ca_title=Sertifikatų institucija
 ca_old=Esamas pažymėjimas
 ca_header1=Sukurkite naują CA sertifikatą
@@ -567,6 +586,7 @@ ca_eminiserv=SSL kliento sertifikatai palaikomi tik naudojant miniserv.
 ca_eversion=Jūsų sistemoje įdiegta „Perl Net::SSLeay“ modulio versija nepalaiko SSL kliento sertifikatų.
 ca_essleay=SSL administravimo komanda $1 jūsų sistemoje nerasta. Gali reikėti pakeisti „Webmin“ vartotojų modulio konfigūracijos kelią.
 ca_essl=SSL sertifikavimą galima nustatyti tik tada, kai žiniatinklio serveris veikia SSL režimu.
+
 session_title=Autentifikavimas
 session_desc1=Kai įjungta, slaptažodžio skirtumai apsaugo jūsų „Webmin“ serverį nuo slaptažodžių nulaužimo išpuolių, pridedant nuolat didėjantį vėlavimą tarp kiekvieno to paties vartotojo nepavykusio prisijungimo bandymo.
 session_header=Autentifikavimo ir sesijos parinktys
@@ -630,10 +650,12 @@ session_sha512=Naudokite SHA512 šifravimą
 session_emd5mod=MD5 šifravimo naudoti negalima, nes „Perl $1 modulis neįdiegtas.
 session_esha512mod=SHA512 šifravimo negalima naudoti, nes „Perl $1 modulis neįdiegtas.
 session_blocklock=Taip pat užrakinkite vartotojus, kuriems nepavyko prisijungti
+
 assignment_title=Perskirskite modulius
 assignment_header=Modulio kategorijų priskyrimai
 assignment_ok=Keisti kategorijas
 assignment_desc=Ši forma leidžia jums sukonfigūruoti, kuri kategorija kiekvienas modulis rodomas „Webmin“ rodyklės puslapyje.
+
 categories_title=Redaguoti kategorijas
 categories_header=Kategorijos ID ir aprašymai
 categories_desc=Ši forma leidžia pervardyti esamas „Webmin“ kategorijas ir sukurti naujas, kurioms priskirti modulius. Viršutinė lentelės dalis skirta įmontuotų kategorijų aprašų pakeitimui, o apatinė - naujų kategorijų ID ir aprašų pridėjimui.
@@ -646,6 +668,7 @@ categories_name=Rodomas aprašymas
 categories_lang=Redaguoti kategorijas kalba:
 categories_langok=Keisti
 categories_custom=Paprotys
+
 log_access=Pakeista IP prieigos kontrolė
 log_bind=Pakeistas uostas ir adresas
 log_log=Pakeistos registravimo parinktys
@@ -691,6 +714,7 @@ log_onedelete_webmincron=Ištrinta suplanuota funkcija modulyje $1
 log_letsencrypt=Prašėme naujo SSL sertifikato iš „Encrypt“
 log_letsencryptdns=Sukurtas „Encrypt“ DNS įrašas, skirtas $1
 log_letsencryptcleanup=Pašalintas šifruotas $1 DNS įrašas
+
 themes_title=„Webmin“ temos
 themes_desc=Temos kontroliuoja „Webmin“ vartotojo sąsajos išvaizdą, įskaitant piktogramas, spalvas, foną ir puslapių išdėstymą. Žemiau esantį pasirinkimo laukelį galima naudoti norint pasirinkti vieną iš jūsų sistemoje įdiegtų temų.
 themes_sel=Dabartinė tema :
@@ -706,6 +730,7 @@ themes_taboverlay=Pakeisti perdangą
 themes_tabinstall=Įdiekite temą
 themes_tabdelete=Ištrinkite temas
 themes_tabexport=Eksportuoti temas
+
 themes_err1=Nepavyko įdiegti temos iš $1
 themes_efile=Failas neegzistuoja
 themes_err2=Nepavyko įdiegti įkeltos temos
@@ -731,9 +756,11 @@ themes_delok=Ištrinama tema :
 themes_return=temų sąrašas
 themes_err4=Nepavyko pakeisti perdangos temos
 themes_eoverlay=Pasirinkta perdanga nesuderinama su dabartine pasauline tema
+
 themes_desc4=Įdiegtas temas galima eksportuoti kaip wbt.gz failą, naudojant žemiau pateiktą formą. Tada temos failą galima įdiegti kitoje sistemoje, kurioje veikia „Webmin“.
 themes_exportmods=Temos, kurias reikia eksportuoti
 themes_exportok=Eksportuoti pasirinktas temas
+
 referers_title=Patikimi persiuntėjai
 referers_desc=Šis puslapis leidžia jums sukonfigūruoti „Webmin“ persiuntimo tikrinimo palaikymą, kuris naudojamas siekiant užkirsti kelią kenkėjiškoms nuorodoms iš kitų svetainių, kurios verčia jūsų naršyklę daryti pavojingus dalykus su „Webmin“. Tačiau jei turite nuorodų į „Webmin“ iš savo svetainių, apie kurias nenorite įspėti, turėtumėte įtraukti šias svetaines į žemiau esantį sąrašą.
 referers_list=Patikimos svetainės
@@ -742,6 +769,7 @@ referers_none2=ĮSPĖJIMAS: Tai atveria jūsų sistemą iki XSS atakų!
 referers_referer=Persiuntėjo tikrinimas įjungtas?
 referers_err=Nepavyko išsaugoti teisėjų
 referers_ehost=„$1“ nėra teisingas patikimas pagrindinio kompiuterio vardas
+
 update_err=Nepavyko atnaujinti modulių
 update_eurl=Trūksta arba netinkamas atnaujinimo URL
 update_title=Atnaujinkite modulius
@@ -762,6 +790,7 @@ update_rv=Tikrinami atnaujinti „Webmin“ moduliai iš $1
 update_eemail=Turite įvesti el. Pašto adresą, jei tik nurodote, kas būtų atnaujinta.
 update_subject=„Webmin“ modulių atnaujinimo ataskaita
 update_version=Dabar galima atsisiųsti naują „Webmin“ versiją ($1 versija). Būsimi atnaujinimai bus išleisti tik naujausiai versijai.
+
 anon_title=Anoniminė modulio prieiga
 anon_desc=Šis puslapis leidžia suteikti prieigą prie pasirinktų „Webmin“ modulių ir kelių, klientams nereikalaujant prisijungti. Kiekvienam žemiau įvestam modulio keliui (pvz., <tt>/custom</tt> arba <tt>/passwd</tt>) taip pat turite įvesti „Webmin“ vartotojo vardą, kurio leidimai bus naudojami prieigai prie modulis.
 anon_desc2=Suteikdami anoniminę prieigą, turėtumėte būti labai atsargūs, nes nepakankami IP prieigos valdikliai arba suteikiant prieigą prie neteisingo modulio gali leisti užpuolikams perimti jūsų sistemą.
@@ -770,15 +799,19 @@ anon_user=„Webmin“ vartotojas
 anon_err=Nepavyko išsaugoti anoniminės prieigos
 anon_eurl=„$1“ nėra tinkamas URL kelias
 anon_euser=Trūksta arba netinkamas „Webmin“ vartotojas URL kelio '$1'
+
 enogpg=„GnuPG“ neįdiegta
+
 standard_failed=Nepavyko atsisiųsti modulių sąrašo : $1
 standard_header=Standartiniai „Webmin“ moduliai
 standard_warn=Įspėjimas - jūs nenaudojate naujausios „Webmin“ versijos $1, todėl tikriausiai šių modulių nepavyks įdiegti.
 standard_eurl=Netinkamas standartinių modulių URL
+
 third_failed=Nepavyko atsisiųsti modulių sąrašo : $1
 third_header=Trečiųjų šalių „Webmin“ moduliai
 third_eurl=Netinkamas trečiųjų šalių modulių URL
 third_title=Pasirinkite trečiosios šalies modulį
+
 lock_title=Failų užraktas
 lock_desc=Pagal numatytuosius nustatymus „Webmin“ užrakins bet kurį pakeistą failą, kad būtų išvengta vienu metu vykstančių modifikacijų keliais procesais, o tai gali sukelti failų sugadinimą. Šis puslapis leidžia pasirinktinai arba visiškai išjungti užrakinimą, jei tai sukelia problemų.
 lock_header=Failų užrakinimo nustatymai
@@ -789,6 +822,7 @@ lock_except=Užrakinkite visus failus ir katalogus, išskyrus ..
 lock_err=Nepavyko išsaugoti failo užrakto
 lock_edir=„$1“ nėra absoliutus kelias
 lock_edirs=Neįvestų failų ar katalogų
+
 ipkey_title1=Sukurkite SSL raktą
 ipkey_title2=Redaguoti SSL raktą
 ipkey_header=IP specifinių SSL raktų informacija
@@ -798,6 +832,7 @@ ipkey_eip2=„$1“ nėra teisingas IP adresas arba pagrindinio kompiuterio vard
 ipkey_eips=Neįvestas IP adresas
 ipkey_eextracas=Neįvesta jokių papildomų sertifikatų failų
 ipkey_eextraca=Papildomo sertifikato failo $1 neegzistuoja
+
 descs_title=Modulio pavadinimai
 descs_info=Šis puslapis leidžia jums nurodyti alternatyvius „Webmin“ modulių pavadinimus, nepaisyti jų standartinių aprašų.
 descs_mod=Modulis
@@ -807,11 +842,13 @@ descs_cdesc=Klono pavadinimas
 descs_err=Nepavyko išsaugoti modulio pavadinimų
 descs_edesc=Trūksta modulio „$1“ pavadinimo
 descs_etitle=Trūksta klono „$1“ pavadinimo
+
 export_err=Nepavyko eksportuoti modulių
 export_ecmd=Trūksta reikalingos komandos $1
 export_efile=Trūksta arba netinkamas eksporto failas
 export_done=Sėkmingai eksportuoti pasirinktus modulius į $1.
 export_title=Eksporto moduliai
+
 advanced_title=Išplėstiniai nustatymai
 advanced_header=Pažangios ir eksperimentinės galimybės
 advanced_temp=Laikinų failų katalogas
@@ -855,10 +892,13 @@ advanced_listdir=Pateikti katalogus be rodyklės failo?
 advanced_headers=Papildomos HTTP antraštės
 advanced_eheader=Antraštės turi būti suformatuotos taip, kaip <tt>Antraštė: vertė</tt>
 advanced_sortconfigs=Išsaugoti konfigūracijos failus, surūšiuotus pagal raktus?
+
 syslog_errorlog=„Webmin“ klaidų žurnalas
+
 clear_title=Išvalyti atsisiųsti talpyklą
 clear_done=„Webmin“ talpykla, kurioje yra $1 failų iš $2 URL, buvo sėkmingai išvalyta.
 clear_none=Šiuo metu „Webmin“ atsisiuntimo talpykloje nėra URL.
+
 savekey_err=Nepavyko išsaugoti naujo rakto
 savekey_ekey=Trūksta arba netinkamas PEM formato raktas
 savekey_ecert=Trūksta arba netinkamas PEM formato sertifikatas
@@ -868,6 +908,7 @@ savekey_title=Įkelkite esamą raktą
 savekey_done2=Pateiktas SSL raktas buvo išsaugotas $1, o sertifikatas - $2.
 savekey_done=Pateiktas SSL raktas ir sertifikatas buvo išsaugoti faile $1.
 savekey_done3=Pateiktas grandininis SSL sertifikatas buvo išsaugotas faile $1.
+
 cache_title=Talpykloje esantys URL
 cache_search=Rasti URL, kuriuose yra:
 cache_ok=Paieška
@@ -880,8 +921,10 @@ cache_delete=Plotis pasirinktas iš talpyklos
 cache_err=Nepavyko užpildyti talpyklų URL
 cache_enone=Nepasirinkta
 cache_efile=Neteisingas failo pavadinimas
+
 restart_title=Iš naujo paleiskite „Webmin“
 restart_done=Dabar „Webmin“ serverio procesas paleidžiamas iš naujo - palaukite kelias sekundes prieš tęsdami.
+
 mobile_title=Mobiliojo įrenginio parinktys
 mobile_header=Mobiliųjų naršyklių parinktys
 mobile_theme=Tema mobiliesiems naršyklėms
@@ -890,6 +933,7 @@ mobile_nosession=Priversti naudoti HTTP autentifikavimą?
 mobile_agents=Papildomi mobiliųjų naršyklių vartotojų agentai
 mobile_err=Nepavyko išsaugoti mobiliojo įrenginio parinkčių
 mobile_prefixes=URL pagrindinio kompiuterio naršyklės prefiksai
+
 blocked_title=Užblokuoti prieglobos ir vartotojai
 blocked_type=Tipas
 blocked_who=Pagrindinio kompiuterio vardas arba vartotojo vardas
@@ -901,9 +945,11 @@ blocked_host=Kliento pagrindinis kompiuteris
 blocked_clear=Išvalyti visus blokus
 blocked_cleardesc=Spustelėkite šį mygtuką, jei norite išvalyti visus dabartinius pagrindinio kompiuterio ir vartotojo blokus, iš naujo paleisdami „Webmin“ serverio procesą.
 blocked_restarting=Dabar atnaujinamas „Webmin“ serverio procesas, kad būtų galima pašalinti blokuotus pagrindinius kompiuterius ir vartotojus - prieš tęsdami, palaukite kelias sekundes.
+
 refreshmods_title=Atnaujinkite modulius
 refreshmods_installed=Tikriname tinkamus „Webmin“ modulius.
 refeshmods_counts=.. rasta $2 su įdiegtomis programomis, $1 neįdiegta.
+
 debug_title=Derinti žurnalo failą
 debug_header=„Webmin“ derinimo žurnalo failo parinktys
 debug_enabled=Derinimo žurnalas įjungtas?
@@ -931,6 +977,7 @@ debug_cmd=Komandinė eilutė
 debug_cron=Pagrindiniai darbai
 debug_inmods=Moduliai, skirti rašyti derinimo žurnalus
 debug_emodules=Nėra pasirinktų modifikuoti modulių
+
 notif_passexpired=Jūsų „Webmin“ slaptažodis nebegalioja! Būsite priversti jį pakeisti kito prisijungimo metu.
 notif_passchange=Paskutinį kartą jūsų „Webmin“ slaptažodis buvo pakeistas $1 ir turi būti pakeistas po $2 dienų.
 notif_passlock=Paskutinį kartą jūsų „Webmin“ slaptažodis buvo pakeistas $1, o jūsų paskyra bus užrakinta po $2 dienų, jei ji nebus pakeista.
@@ -946,6 +993,7 @@ notify_updatedesc=Ištaiso problemą
 notif_updateok=Įdiekite naujinius dabar
 notif_reboot=Naujausiems paketo atnaujinimams (pvz., Naujai branduolio versijai) reikalingas perkrovimas, kad jis būtų visiškai pritaikytas.
 notif_rebootok=Perkrauti dabar
+
 status_title=Fono būsenos kolekcija
 status_header=Būsenos rinkimo užduoties nustatymai
 status_interval=Surinkti sistemos būseną fone?
@@ -957,6 +1005,7 @@ status_temp=Surinkite važiavimo temperatūrą?
 status_units=Temperatūros vienetai
 status_celsius=Celsijaus
 status_fahrenheit=Farenheitas
+
 sendmail_title=Siunčiamas el. Paštas
 sendmail_desc=Šis puslapis kontroliuoja, kaip „Webmin“ siunčia el. Laiškus, pavyzdžiui, iš suplanuotų atsarginių kopijų ar foninio stebėjimo. Tai taip pat daro įtaką el. Laiškų, išsiųstų naudojant „Skaityti vartotojo el.
 sendmail_header=Pašto siuntimo parinktys
@@ -997,12 +1046,14 @@ sendmail_url=„Webmin“ URL, skirtas naudoti el. Paštu
 sendmail_url_def=Numatytasis ($1)
 sendmail_url_custom=Tinkintas URL
 sendmail_eurl=Trūksta arba neteisingas tinkintas URL
+
 testmail_title=Siųsti bandymo el. Laišką
 testmail_err=Nepavyko nusiųsti bandymo pranešimo
 testmail_eto=Neįvestas paskirties adresas
 testmail_sending=Siunčiamas pranešimas iš $1 į $2 ..
 testmail_done=.. žinutė išsiųsta. Patikrinkite paskirties adreso pašto dėžutę, kad įsitikintumėte, jog ji tikrai buvo pristatyta.
 testmail_failed=.. išsiųsti nepavyko : $1
+
 web_title=Žiniatinklio serverio parinktys
 web_header=„Webmin“ įmontuoto žiniatinklio serverio parinktys
 web_expires=Statinių failų talpyklos laikas kliento pusėje
@@ -1014,6 +1065,7 @@ web_expirespaths=Kliento talpyklos laikai, pagrįsti URL keliu
 web_expirespath=Kelio taisyklinga išraiška
 web_expirestime=Talpyklos laikas sekundėmis
 web_eexpires2=Trūksta arba neskaitinė kliento talpyklos talpyklos laikas eilutėje $1
+
 webmincron_title=„Webmin“ suplanuotos funkcijos
 webmincron_emodule=„Webmin Cron Jobs“ modulis neįdiegtas!
 webmincron_module=„Webmin“ modulis
@@ -1037,6 +1089,7 @@ webmincron_when1=Konkretus laikas
 webmincron_secs=sekundžių
 webmincron_err=Nepavyko išsaugoti suplanuotos funkcijos
 webmincron_einterval=Intervalas turi būti didesnis nei nulis sekundžių
+
 twofactor_title=Dviejų faktorių autentifikavimas
 twofactor_header=Dviejų faktorių autentifikavimo parinktys
 twofactor_provider=Autentifikavimo teikėjas
@@ -1075,6 +1128,7 @@ twofactor_secret1=Sukurtas atsitiktinai
 twofactor_secret0=Naudokite 16 ženklų klavišą
 twofactor_esecret=Slaptasis raktas turi būti lygiai 16 simbolių ir sudarytas tik iš raidžių ir skaičių
 twofactor_esession=Dviejų veiksnių autentifikavimas negali būti naudojamas, nebent aktyvus seansų autentifikavimas
+
 letsencrypt_title=Užšifruokime sertifikato užklausą
 letsencrypt_err=Nepavyko paprašyti pažymėjimo
 letsencrypt_ecmds=Nei komanda „Encrypt client“ <tt>certbot</tt>, nei komanda <tt>python</tt> nerasta jūsų sistemoje.
@@ -1108,5 +1162,6 @@ letsencrypt_ecsr=Nepavyko sukurti CSR : $1
 letsencrypt_ekeygen=Nepavyko sugeneruoti privataus rakto : $1
 letsencrypt_enative=Gimtasis „Encrypt“ klientas (certbot) anksčiau buvo naudojamas šioje sistemoje ir turi būti naudojamas visoms būsimoms sertifikatų užklausoms
 letsencrypt_eacmedns=Tik oficialus „Encrypt“ klientas palaiko DNS pagrįstą patvirtinimą
+
 announce_hide=Slėpti šį skelbimą
 alert_hide=Slėpti perspėjimą

@@ -31,6 +31,7 @@ index_ok=Keresés
 index_searchres=Egyező Cron munkák: $1 ..
 index_reset=Keresés visszaállítása.
 index_econfigcheck=A Cron munkákat nem tudjuk kezelni az ön rendszerén, mivel a modul beállítások nem megfelelőek: $1
+
 edit_title=Cron munka szerkesztése
 create_title=Cron munka készítése
 edit_ecannot=Önnek nincs jogosultsága szerkeszteni ennek a felhasználónak a cron munkáit.
@@ -70,6 +71,7 @@ lcedit_special_weekly=hetente (vasárnap)
 lcedit_special_monthly=havi (elsején)
 lcedit_special_yearly=évente (január elsején)
 lcedit_special_reboot=amikor a rendszer boot -ol
+
 save_err=A cron munka elmentése nem sikerült.
 save_ecmd=Ön nem adott meg futtatandó parancsot.
 save_euser=Egy felhasználót muszáj kiválasztani.
@@ -79,6 +81,7 @@ save_ecannot=Önnek nincs jogosultsága létrehozni '$1' cron munkáit.
 save_enone=Semmilyen $1 nem lett kiválasztva végrehajtáshoz.
 save_ecannot2=Önnek nincs joga cron munkákat létrehozni
 save_eidx=A Cron állomány sikeresen mentésre került, azonban nem került futtatásra mivel nem találta meg a rendszer!
+
 allow_title=Cron hozzáférés-szabályzás
 allow_desc=Ezzel az űrlappal megadhatja, hogy mely felhasználók hozhatnak létre és futtathatnak cron munkákat.
 allow_ecannot=Ön nem szabályozhatja a felhasználók hozzáférését a cron-hoz.
@@ -87,6 +90,7 @@ allow_all2=Az összes felhasználó tiltása a root-ot kivéve
 allow_all3=Az összes felhasználó engedélyezése
 allow_allow=Csak a listában szereplő felhasználók engedélyezése
 allow_deny=Csak a listában szereplő fehasználók tiltása
+
 env_title1=Környezeti változó szerkesztése
 env_title2=Környezeti változó létrehozása
 env_name=Változó neve
@@ -102,11 +106,13 @@ env_where2=Környezeti változó mozgatása
 env_top=Minden Cron munka előtt a felhasználónak
 env_bot=Minden Cron munka után
 env_leave=Aktuális pozíció
+
 exec_title=Cron munka végrehajtása
 exec_ecannot=Önnek nincs jogosultsága ennek a felhasználónak a nevében cron munkát végrehajtani.
 exec_cmd=A $1 parancs kimenete...
 exec_cmdbg=A $1 parancs futtatása háttérben futó parancsként.
 exec_none=Nincs kimenet.
+
 acl_users=Tudja szerkeszteni a cron munkáit
 acl_all=Az összes felhasználónak
 acl_this=Aktuális webmin felhasználó
@@ -122,6 +128,7 @@ acl_move=Mozgatható a Cron munka?
 acl_kill=Megszakítható a Cron munka?
 acl_hourly=Korlátozza a feladatokat a legtöbb óránként?
 acl_hourlydef=A modul konfigurálása
+
 log_modify=Cron munka módosítása $1 -nek
 log_modify_l="$2" Cron munka módosítása $1-nek
 log_create=Cron umnka létrehozása a $1
@@ -139,7 +146,9 @@ log_move=Cron munka mozgatása $1 -nak
 log_crons_delete=$1 Cron munka törlése
 log_crons_disable=$1 Cron munka letiltása
 log_crons_enable=$1 Cron munka engedélyezése
+
 ecopy=Hibát észleltem az új Cron konfigurációban: $1 $2
+
 when_min=minden percben
 when_hour=minden órában $1 után óránként
 when_day=minden nap $2:$1 időben
@@ -148,6 +157,7 @@ when_weekday=minden $3 a $2:$1
 when_cron=a cron időben $1
 when_interval=minden $1 másodpercben
 when_boot=rendszerindításkor
+
 ucwhen_min=Minden percben
 ucwhen_hour=Minden órában $1 óra után
 ucwhen_day=Minden nap $2:$1 időben
@@ -156,8 +166,10 @@ ucwhen_weekday=Minden $3 -ban $2:$1 időben
 ucwhen_cron=A cron időben $1
 ucwhen_interval=Minden $1 másodpercben
 ucwhen_boot=Rendszerindításkor
+
 move_err=Nem lehet mozgatni a Cron munkát
 move_etype=Ezt a munkát nem lehet mozgatni
+
 kill_err=Nem sikerült a Cron munkát megszakítani
 kill_ecannot=Önnek nincs joga megszakítani ezt a munkát
 kill_egone=Már nem fut
@@ -166,13 +178,16 @@ kill_title=Cron munka megszakítása
 kill_rusure=Biztos Ön abban, hogy a $1 proceszt $2 PID -el meg akarja szakítani?
 kill_rusure2=Biztos Ön abban, hogy megszakítja a $1 proceszt $2PID -el, és minden kapcsolódó alprocesszét?
 kill_ok=Igen, szakítsa meg
+
 range_all=Fussán bármilyen dátumnál
 range_start=Csak $1 -től fusson
 range_end=$1 -ig
 range_estart=Hiányzó vagy hibás indító dátum a határok közötti futtatásnál
 range_eend=Hiányzó vagy hibás záró dátum a határok között a futtatásnál
+
 delete_err=Nem lehet törölni a Cron munkát
 delete_enone=Nincs kiválasztva
+
 manual_title=Cron munkák kézi szerkesztése
 manual_edit=Szerkesztendő Cron állomány:
 manual_ok=Szerkesztés

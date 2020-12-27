@@ -57,20 +57,27 @@ index_rotate=Actualitza les Estadístiques
 index_rotatedesc=Fes clic sobre aquest botó per processar tot el trànsit de xarxa registrat fins ara, fent-lo immediatament disponible per a l'informe.
 index_eiptables=Atenció - La teva configuració d'IPtables té un error: $1. Establir la monitorització d'amplada de banda esborrarà totes les regles del tallafoc.
 index_return=al formulari d'informe
+
 log_setup=S'ha configurat la monitorització de l'amplada de banda sobre la interfície $1
 log_turnoff=S'ha desactivat la monitorització de l'amplada de banda
 log_rotate=Estadístiques actualitzades
+
 acl_setup=Pot configurar i desactivar la monitorització
+
 turnoff_ecannot=No tens permís per desactivar la monitorització
+
 setup_ecannot=No tens permís per activar la monitorització
 setup_eiface=Hi falta el nom de la interfície o bé és invàlid
 setup_ezone=No s'ha pogut trobar cap zona Shorewall per a la interfícies seleccionada
+
 system_firewall=IPtables
 system_ipfw=IPFW
 system_ipfilter=IPFilter
 system_shorewall=Shorewall
+
 syslog_syslog=Syslog
 syslog_syslog-ng=Syslog-NG
+
 rotate_title=Actualització d'Estadístiques
 rotate_doing=S'està processant el trànsit de xarxa registrat...
 rotate_done=...fet.

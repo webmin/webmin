@@ -2,6 +2,7 @@ index_title=網路組態
 index_return=網路組態
 index_apply=套用組態
 index_applydesc=按此按鈕來啟動目前開機狀態的網路介面與路由設定，通常會再重新開機後生效。<b>警告</b>這樣讓您的系統無法由網路進入和中斷與Webmin的連線
+
 ifcs_title=網路介面
 ifcs_now=目前運作中的網路介面
 ifcs_name=名稱
@@ -29,6 +30,7 @@ ifcs_all=所有介面
 ifcs_ecannot=您不被允許編輯網路介面
 ifcs_ecannot_this=您不被允許編輯網路介面
 ifcs_range=範圍$1
+
 aifc_create=建立運作中的網路介面
 aifc_edit=編輯運作中的網路介面
 aifc_desc1=運作中網路介面的參數
@@ -48,6 +50,7 @@ aifc_ebroad='$1' 不是一個有效的廣播位址
 aifc_emtu='$1' 不是一個有效的 MTU
 aifc_ehard='$1' 不是一個有效的硬體位址
 aifc_eexist=網路介面 '$1' 不存在
+
 bifc_create=建立 Bootup 網路介面
 bifc_edit=編輯 Bootup 網路介面
 bifc_desc1=啟動時期的網路介面參數
@@ -69,6 +72,7 @@ bifc_err4=停止介面錯誤
 bifc_capply=建立與套用
 bifc_eapply=您不能用DHCP或BOOTP的方式此啟動介面
 bifc_edhcpmain=DHCP只能啟用於主要網路介面
+
 routes_title=路由與閘道器
 routes_boot=在<i>啟動時期</i>的啟動的路由組態
 routes_now=現在路由組態啟動
@@ -104,6 +108,7 @@ routes_eclash2=只有一個預設的路由從$1可以被定義
 routes_none2=無
 routes_auto=自動
 routes_gwmetric=介面路由值
+
 dns_title=DNS 客戶端
 dns_options=DNS 客戶端選項
 dns_hostname=主機名稱
@@ -120,6 +125,7 @@ dns_ens='$1'不是有效的網域名稱伺服器IP位置
 dns_edomain='$1'不是有效的網域名稱
 dns_esearch=未給予搜尋網域
 dns_hoststoo=當主機位置改變時更新主機名稱?
+
 hosts_title=主機位址
 hosts_ip=IP 位址
 hosts_host=主機名稱
@@ -129,6 +135,7 @@ hosts_create=建立主機位址
 hosts_detail=主機與位址
 hosts_return=主機位址列表
 hosts_ecannot=您不被允許編輯主機位置
+
 log_create_host=新增主機位置$1
 log_delete_host=刪除主機位置$1
 log_modify_host=修改主機位置$1
@@ -141,6 +148,7 @@ log_create_bifc=新增介面$1位置$2
 log_modify_bifc=修改介面$1位置$2
 log_delete_bifc=刪除介面$1位置$2
 log_dyn=動態的
+
 acl_ifcs=可以編輯網路介面?
 acl_routes=可以編輯路由與閘道器?
 acl_dns=可以編輯DNS客戶端設定?
@@ -148,6 +156,7 @@ acl_hosts=可以編輯主機位置?
 acl_view=只能檢視
 acl_ifcs_only=只有介面
 acl_apply=可以套用組態?
+
 interfaces_title1=選擇介面...
 interfaces_all=所有介面...
 interfaces_sel=選取介面
@@ -155,7 +164,9 @@ interfaces_ok=確定
 interfaces_cancel=取消
 interfaces_clear=清除
 interfaces_title2=選取使用者
+
 apply_ecannot=您不被允許套用組態
+
 mod_egone=介面不再啟動!
 mod_title=啟動介面
 mod_desc=$1介面已經給$2使用了，所以無法用此模組管理
@@ -164,6 +175,7 @@ mod_ppp=PPP撥號連線到$1
 mod_adsl=一個ADSL PPP連線
 mod_pptps=從客戶端$1 PTP連線
 mod_pptpc=PPTP連線$1
+
 range_edit=編輯位置範圍
 range_create=新增位置範圍
 range_header=位置範圍界面選項

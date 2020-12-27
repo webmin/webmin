@@ -25,6 +25,7 @@ index_estart=Ukaza za zagon Xinetd $1 ne obstaja. Mogoče ni nameščen ali pa j
 index_noport=Neznano
 index_enable=Omogoči izbrano
 index_disable=Onemogoči izbrano
+
 serv_create=Ustvari internetno storitev
 serv_edit=Urejanje internetne storitve
 serv_header1=Možnosti storitvenega omrežja
@@ -78,19 +79,24 @@ serv_enice=Manjkajoča ali neveljavna lepa raven
 serv_ecps0=Manjkajoče ali neveljavno število povezav na sekundo
 serv_ecps1=Manjkajoča ali neveljavna zamuda
 serv_etimes=Časi dostopa morajo biti v obliki HH: MM-HH: MM
+
 sock_stream=Tok
 sock_dgram=Datagram
 sock_raw=Surov
 sock_seqpacket=Zaporedni datagram
+
 proto_=Privzeto
 proto_ip=IP (internetni protokol)
 proto_tcp=TCP (protokol za nadzor prenosa)
 proto_udp=UDP (User Datagram Protocol)
+
 restart_err=Spremembe ni bilo mogoče uporabiti
 restart_ekill=USL2 signala ni bilo mogoče poslati PID $1 : $2 
 restart_epid=Ne teče več
+
 start_err=Zagon xinetd ni uspel
 start_estart=$1 ni uspelo : $2 
+
 defs_title=Privzete možnosti
 defs_header=Privzete možnosti za storitve
 defs_log=Način zapisovanja Xinetd
@@ -115,6 +121,7 @@ defs_err=Privzetih možnosti ni bilo mogoče shraniti
 defs_efile=Manjkajoče ali neveljavno ime datoteke dnevnika
 defs_esoft=Manjkajoča ali neveljavna mejna meja
 defs_ehard=Manjkajoča ali neveljavna trdna meja
+
 log_create_serv=Ustvarjena storitev $2 storitev $1 
 log_modify_serv=Spremenjena $2 storitev $1 
 log_delete_serv=Izbrisana $2 storitev $1 
@@ -125,5 +132,6 @@ log_enable=Omogočene $1 storitve
 log_disable=Onemogočene storitve $1 
 log_enable_l=Omogočene storitve $1 
 log_disable_l=Invalidske storitve $1 
+
 config_dirdef=Konfiguracijska datoteka Xinetd
 config_dirto=Nova datoteka v imeniku

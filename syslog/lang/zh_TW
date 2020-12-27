@@ -10,6 +10,7 @@ index_pipe=命名的管線 $1
 index_pipe2=管線到指令 $1
 index_host=系統紀錄伺服器在 $1
 index_all=所有使用者
+
 index_users=使用者 $1
 index_add=增加一個新的系統紀錄
 index_return=系統紀錄
@@ -19,6 +20,7 @@ index_start=啟動系統紀錄伺服器
 index_startmsg=按下這個按鈕以啟動系統紀錄伺服器 $1. 在它被啟動前, 不會記錄任何事件.
 all=全部
 restart_ekill=無法送出控制訊號給系統紀錄程序 $1: $2
+
 edit_title=編輯系統紀錄
 create_title=增加系統紀錄
 edit_header1=紀錄目標
@@ -44,10 +46,12 @@ edit_pdir3=全部, 除了...
 edit_none=無
 edit_view=檢視紀錄檔
 edit_tag=只給程式
+
 view_title=檢視紀錄檔
 view_header=最後 $1 行, 在 $2
 view_empty=紀錄檔是空的
 view_refresh=重新讀取
+
 save_err=無法儲存紀錄
 save_efile='$1' 不是一個有效的檔名: $2
 save_epipe='$1' 不是個有效的命名的管線

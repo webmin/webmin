@@ -8,6 +8,7 @@ main_title2=Webmin
 main_none=U het nie toegang tot enige Webmin modules nie.
 main_skill=Ervarenheid
 main_return=Terug na $1
+
 category_servers=Bedieners
 category_hardware=Hardeware
 category_system=Stelsel
@@ -16,11 +17,13 @@ category_net=Netwerk
 category_syslet=Syslets
 category_cluster=Groepe
 category_info=Inligting
+
 header_webmin=Webmin Indeks
 header_module=Module Indeks
 header_help=Hulp..
 header_config=Module Konfigurasie
 header_servers=Webmin Bedieners
+
 index=indeks
 yes=Ja
 no=Nee
@@ -38,10 +41,12 @@ cancel=Kanselleer
 helpsearch=Soek dokumente..
 switch_remote_euser=Die Unixgebruiker $1 bestaan nie.
 programname=Webmin
+
 chooser_title1=Kies lêer..
 chooser_title2=Kies gids (directory)..
 chooser_dir=Gids vir $1
 chooser_ok=Reg
+
 users_title1=Kies Gebruikers..
 users_title2=Kies Gebruiker..
 users_sel=Gekose gebruikers
@@ -49,6 +54,7 @@ users_all=Alle Gebruikers
 users_ok=Reg
 users_cancel=Kanselleer
 users_clear=Clear
+
 groups_title1=Kies Groepe..
 groups_title2=Kies Groep..
 groups_all=Alle Groepe
@@ -56,6 +62,7 @@ groups_sel=Gekose Groepe
 groups_ok=Reg
 groups_cancel=Kanselleer
 groups_clear=Clear
+
 config_ecannot=U het nie die outoriteit om die module te verstel nie
 config_title=Verstellings
 config_dir=Vir module $1
@@ -63,6 +70,7 @@ config_header=Verstelbare opsies vir $1
 config_none=Geen
 config_eaccess=U het nie toegang tot hierdie module nie
 config_err=Stoor van verstellings het gefaal
+
 help_err=Kan nie hulp vertoon nie
 help_epath=Ontbrekende of ongeldige hulpgids
 help_efile=Kon hulplêer $1 nie lees nie
@@ -70,9 +78,11 @@ help_eheader=Ontbrekende &lt;header&gt; gedeelte
 help_einclude=Kon $1 nie insluit nie
 help_eif=$1 het gefaal : $2
 help_eexec=$1 het gefaal : $2
+
 referer_title=Sekuriteitswaarskuwing
 referer_warn=<b>Warning!</b> Webmin het bevind dat die program $2 vanaf die URL $1 geroep is, wat buite die Webminbediener is. Dit kan 'n aanduiding wees dat 'n poging aangewend is om u bediener te flous om 'n skadelike opdrag uit te voer.
 referer_warn_unknown=<b>Waarskuwing!</b> Webmin het bevind Webmin dat die program $1 vanaf 'n onbekende URL geroep is, wat buite die Webminbediener is. Dit kan 'n aanduiding wees dat 'n poging aangewend word om u bediener te flous om 'n skadelike opdrag uit te voer.
+
 session_header=Webmin aanteken
 session_mesg=U moet a gebruikersnaam en wagwoord invul om aan te teken by die Webminbediener op $1.
 session_mesg2=U moet 'n gebruikersnaam en wagwoord invul om aan te teken.
@@ -84,6 +94,7 @@ session_failed=Aantekening het gefaal. Probeer asseblief weer.
 session_logout=Aftekening suksesvol. Gebruik asb die onderstaande vorm om weer aan te teken.
 session_timed_out=Die sessie word outomaties afgeteken na $1 minute van geen aktiwiteit.
 session_save=Stoor aantekeninligting permanent?
+
 acl_root=Root-gids vir lêerselekteerder
 acl_home=Gebruiker se tuisgids (home directory)
 acl_uedit=Gebruikers sigbaar in gebruikerslys
@@ -107,6 +118,7 @@ acl_rpc=Kan RPC-oproepe aanvaar?
 acl_rpc2=Slegs vir <tt>root</tt> of <tt>admin</tt>
 acl_rpc1=Ja
 acl_rpc0=Nee
+
 month_1=January
 month_2=Februarie
 month_3=Maart
@@ -119,6 +131,7 @@ month_9=September
 month_10=Oktober
 month_11=November
 month_12=Desember
+
 day_0=Sondag
 day_1=Maandag
 day_2=Dinsdag
@@ -126,6 +139,7 @@ day_3=Woensdag
 day_4=Donderdag
 day_5=Vrydag
 day_6=Saterdag
+
 smonth_1=Jan
 smonth_2=Feb
 smonth_3=Mar
@@ -138,6 +152,7 @@ smonth_9=Sep
 smonth_10=Okt
 smonth_11=Nov
 smonth_12=Des
+
 sday_0=So
 sday_1=Mo
 sday_2=Di
@@ -145,10 +160,13 @@ sday_3=Wo
 sday_4=Do
 sday_5=Vr
 sday_6=Sa
+
 emodule=Toegang geweier: Gebruiker $1 het nie toestemming om module $2 te gebruik nie.
+
 skill_high=Ekspert
 skill_medium=Intermediêr
 skill_low=Beginner
+
 feedback_title=Webmin Terugvoering
 feedback_desc=Hierdie vorm laat u toe om foute aan te meld of voorstelle aan die Webminontwikkellaars te stuur. Wanneer u die Stuurknoppie kliek sal die inligting wat u ingevul het aan $1 ge-epos word.
 feedback_desc2=Hierdie terugvoering sal aan die onwikkellaar van Usermin gestuur word en nie aan u stelseladministrateur, ISP of gaheerbediener nie. Stuur asseblief u terugvoering in Engels, self al vertoon Webmin tans in 'n ander taal.
@@ -177,5 +195,6 @@ feedback_to=Stuur terugvoering aan adres
 feedback_enoto=Geen adresse was aangedui die terugvoering aan te stuur nie
 feedback_ecannot=U is nie toegelaat om terugvoering te stuur nie
 feedback_ecannot2=U is nie toegelaat om terugvoering te stuur wat konfigurasielêers bevat nie
+
 progress_nosize=Laai $1 af..
 progress_done=.. Aflaai voltooi.

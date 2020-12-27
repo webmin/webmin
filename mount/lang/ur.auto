@@ -12,6 +12,7 @@ index_return=فائل سسٹم کی فہرست
 index_none=آپ کو کسی بھی نصب فائل سسٹم تک رسائی حاصل نہیں ہے۔
 index_mount2=پاس ورڈ کے ساتھ ماؤنٹ:
 index_root=روٹ فائل سسٹم
+
 edit_title=ترمیم ماؤنٹ
 create_title=ماؤنٹ بنائیں
 edit_err=ماؤنٹ میں ترمیم کرنے میں ناکام
@@ -58,6 +59,7 @@ edit_ecannot=آپ کو اس فائل سسٹم میں ترمیم کرنے کی ا
 edit_ecannot2=آپ کو نیا فائل سسٹم شامل کرنے کی اجازت نہیں ہے
 edit_3_or_lower=3 (یا کم)
 edit_advanced=اعلی درجہ
+
 save_err=ماؤنٹ کو بچانے میں ناکام
 save_edir='$1' is not a directory
 save_edirname='$1' is not a valid directory name
@@ -74,8 +76,10 @@ save_apply=مستقل فہرست میں درخواست دیں
 save_fapply=فورس غیر ماؤنٹ کریں
 save_eremount=Remount failed : $1
 save_enone=آپ نے بچت یا ماؤنٹ کرنے کا انتخاب نہیں کیا
+
 swap_err=سویپ فائل بنانے میں ناکام
 swap_esize='$1' is not a valid size
+
 nfs_server=این ایف ایس سرور کا انتخاب کریں ..
 nfs_select=سے ماؤنٹ کرنے کے لئے ایک NFS سرور منتخب کریں ..
 nfs_ip=IP پتہ
@@ -87,6 +91,7 @@ nfs_seldir=ماؤنٹ کرنے کے لئے ایک این ایف ایس ڈائر�
 nfs_seldirv4=این ایف ایس وی 4 ماؤنٹ کے ل you ، آپ کو '/' منتخب کرنا چاہئے
 nfs_dir=ڈائرکٹری
 nfs_clients=مؤکل
+
 smb_choose=CIFS سرور کا انتخاب کریں ..
 smb_elist=Failed to retrieve server list from $1. Maybe the server does not allow browsing
 smb_eworkgroup=ماڈیول تشکیل والے صفحے پر کوئی ورک گروپ مقرر نہیں کیا گیا ہے
@@ -103,6 +108,7 @@ smb_sel2=پہاڑ کے لئے ایک حصہ منتخب کریں ..
 smb_share=بانٹیں
 smb_comment=تبصرہ
 smb_noshares=There are no available file shares on the server $1
+
 solaris_scsidev=SCSI controller $1 target $2 unit $3 partition $4
 solaris_idedev=IDE controller $1 drive $2 partition $3
 solaris_mddev=RAID device $1
@@ -240,6 +246,7 @@ solaris_efstyp2=Failed to check filesystem type : $1
 solaris_ecachedir='$1' is not a valid cache directory
 solaris_efmode='$1' is not a valid octal file mode
 solaris_edmode='$1' is not a valid octal directory mode
+
 linux_eamd=اے ایم ڈی ناکام ہوگیا
 linux_eauto=Automount failed : $1
 linux_esmbconn=سرور سے رابطہ کرنے میں ناکام
@@ -361,6 +368,7 @@ linux_noenforce=ہاں ، لیکن نافذ نہ کریں
 linux_df=فائل سسٹم سائز میں مخصوص بلاکس شامل کریں؟
 linux_noatime=آخری رسائی کے اوقات کو اپ ڈیٹ کرنے سے گریز کریں؟
 linux_netdev=نیٹ ورک انٹرفیس ختم ہونے تک انتظار کریں؟
+linux_nofail=بوٹ جاری رکھیں چاہے ماؤنٹ ناکام ہوجائے؟
 linux_ecname=نیٹ ورک نامی صارف کا نام غائب یا غلط ہے
 linux_emname=گمشدہ یا غلط سرور میزبان نام یا IP پتہ
 linux_bind=اصل ڈائرکٹری
@@ -386,6 +394,7 @@ linux_nounix=CIFS یونکس ملانے کو غیر فعال کریں؟
 linux_noserverino=کلائنٹ کی طرف سے انوڈ نمبر بنائیں؟
 linux_cvers=CIFS ورژن
 linux_ecvers=CIFS ورژن لازمی طور پر ایک عدد ہونا چاہئے
+
 log_mount=Mounted $3
 log_mount_l=Mounted $2 $1 on $3
 log_umount=Unmounted $3
@@ -399,7 +408,9 @@ log_modify_l=Modified $2 mount $1 on $3
 log_delete=Deleted mount $3
 log_delete_l=Deleted $2 mount $1 on $3
 log_swap=Created swap file $1
+
 unmount_err=Failed to unmount $1
+
 mount_err=Failed to mount $1
 irix_nhost=این ایف ایس میزبان نام
 irix_ndir=این ایف ایس ڈائرکٹری
@@ -430,6 +441,7 @@ irix_rock=راک رج کی توسیع کا استعمال کریں؟
 irix_nofsck=بوٹ پر فائل سسٹم چیک کریں؟
 irix_auto=خودکار ذریعہ
 irix_automap=نقشہ کی فائل
+
 irix_ehost=The host '$1' does not exist
 irix_eloss=The host '$1' is down
 irix_eshowmount=The host '$1' does not support NFS
@@ -447,9 +459,11 @@ irix_efstyp2=Failed to get filesystem type $1 : $2
 irix_efstyp=The type of filesystem on $1 is $2, not $3
 irix_eautomap=Automounter map file '$1' does not exist
 irix_eauthmap2=گمشدہ یا غلط خودکار نقشہ کی فائل
+
 irix_devroot=جڑ تقسیم
 irix_devswap=تبادلہ تقسیم
 irix_autohosts=تمام این ایف ایس برآمدات
+
 acl_only=صرف بڑھتے ہوئے اور غیر ماؤنٹ کرنے کی اجازت دیں؟
 acl_fs=فائل سسٹم جن میں ترمیم کی جاسکتی ہے
 acl_types=فائل سسٹم کی اقسام جو استعمال کی جاسکتی ہیں
@@ -462,8 +476,10 @@ acl_hide=غیر قابل تدوین فائل سسٹمز کو چھپائیں؟
 acl_simple=آسان ماؤنٹ فارم دکھائیں؟
 acl_simopts=فائل سسٹم کے آسان اختیارات دکھائیں؟
 acl_browse=فائل دکھائیں اور براؤز کے بٹن شئیر کریں؟
+
 egcc=آپ کے سسٹم پر ماونٹڈ فائل سسٹم کی فہرست کے لئے پروگرام بنانے کے لئے درکار جی سی سی یا سی سی کمپلر دستیاب نہیں ہے۔
 ecompile=An error has occurred building a program for listing mounted filesystems on your system : $1
+
 freebsd_eaddr=گمشدہ یا سرور کا غلط پتہ
 freebsd_eworkgroup=ورک گروپ یا گمشدہ
 freebsd_ide=IDE ہارڈ ڈسک
@@ -477,8 +493,10 @@ freebsd_idedev=IDE device $1, slice $2, partition $3
 freebsd_scsidev=SCSI device $1, slice $2, partition $3
 freebsd_edevpath=Other device must be an absolute path, like <tt>/dev/cdrom</tt>
 freebsd_edevfile=The device file '$1' does not exist
+
 cswap_file=The swap file $1 does not exist.
 cswap_size=سائز کے ساتھ ایک سویپ فائل بنائیں اور انھیں ماؤنٹ کریں
+
 acl_sysinfo=ڈیش بورڈ پر دستیاب ڈسک کا ڈیٹا دکھائیں؟
 sysinfo_total=کل
 sysinfo_dev=ڈیوائس کی شناخت

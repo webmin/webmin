@@ -31,6 +31,7 @@ index_ok=Paieška
 index_searchres=„Cron“ darbai, atitinkantys $1 ..
 index_reset=Iš naujo nustatyti paiešką.
 index_econfigcheck=„Cron“ užduočių negalima valdyti jūsų sistemoje, nes modulio konfigūracija negalioja : $1 
+
 edit_title=Redaguoti Cron Job
 create_title=Sukurkite „Cron Job“
 edit_ecannot=Jums neleidžiama redaguoti šio vartotojo „cron“ darbų
@@ -70,6 +71,7 @@ lcedit_special_weekly=kas savaitę (sekmadienį)
 lcedit_special_monthly=kas mėnesį (pirmą dieną)
 lcedit_special_yearly=kasmet (sausio 1 d.)
 lcedit_special_reboot=kai sistema batus
+
 save_err=Nepavyko išsaugoti cron darbo
 save_ecmd=Neįvedėte komandos vykdyti
 save_euser=Turite pasirinkti vartotoją
@@ -79,6 +81,7 @@ save_ecannot=Jums neleidžiama kurti ar redaguoti „cron“ darbų už „$1“
 save_enone=Nepasirinkote jokio $1 vykdyti
 save_ecannot2=Jums neleidžiama kurti „cron“ darbo vietų
 save_eidx=„Cron“ darbas sėkmingai išsaugotas, tačiau jo negalima paleisti, nes jo nerasta!
+
 allow_title=Valdykite „Cron“ prieigą
 allow_desc=Ši forma leidžia jums valdyti, kurie vartotojai gali kurti ir vykdyti „cron“ darbus.
 allow_ecannot=Jūs negalite valdyti vartotojo prieigos prie cron
@@ -87,6 +90,7 @@ allow_all2=Atmeskite visus vartotojus, išskyrus „root“
 allow_all3=Leisti visiems vartotojams
 allow_allow=Leisti tik išvardytiems vartotojams
 allow_deny=Neigti tik išvardytų vartotojų
+
 env_title1=Redaguoti aplinkos kintamąjį
 env_title2=Sukurti aplinkos kintamąjį
 env_name=Kintamasis vardas
@@ -102,11 +106,13 @@ env_where2=Perkelti aplinkos kintamąjį
 env_top=Prieš visus „Cron“ darbus vartotojui
 env_bot=Po visų „Cron“ darbų
 env_leave=Dabartinė padėtis
+
 exec_title=Vykdyk Cron Job
 exec_ecannot=Jums neleidžiama atlikti „cron“ darbų šiam vartotojui
 exec_cmd=Išvestis iš komandos $1.
 exec_cmdbg=Komandos $1 vykdymas kaip foninis procesas.
 exec_none=Negaunama išvestis
+
 acl_users=Gali redaguoti „cron“ darbus
 acl_all=Visi vartotojai
 acl_this=Dabartinis „Webmin“ vartotojas
@@ -122,6 +128,7 @@ acl_move=Ar gali perkelti „Cron“ darbus?
 acl_kill=Ar gali nutraukti „Cron“ darbus?
 acl_hourly=Apriboti darbus ne daugiau kaip per valandą?
 acl_hourlydef=Kaip nustatyta modulio konfigūracijoje
+
 log_modify=Modifikuotas $1 „Cron“ darbas
 log_modify_l=Modifikuotas Cron darbas „$2“ $1 
 log_create=Sukurtas „Cron“ darbas $1 
@@ -139,7 +146,9 @@ log_move=Perkeltas „Cron“ darbas $1
 log_crons_delete=Ištrinta $1 „Cron“ darbo vietų
 log_crons_disable=Neįgalūs $1 „Cron“ darbai
 log_crons_enable=Įgalinti $1 „Cron“ darbai
+
 ecopy=Aptikta klaida naujoje „Cron“ konfigūracijoje: $1 $2 
+
 when_min=kiekviena minutė
 when_hour=kas valandą $1 per valandą
 when_day=kiekvieną dieną $2:$1 
@@ -148,6 +157,7 @@ when_weekday=kas $3 prie $2:$1
 when_cron=crono metu $1 
 when_interval=kas $1 sekundes
 when_boot=paleidimo metu
+
 ucwhen_min=Kiekviena minutė
 ucwhen_hour=Kiekvieną valandą $1 praėjo valanda
 ucwhen_day=Kiekvieną dieną $2:$1 
@@ -156,8 +166,10 @@ ucwhen_weekday=Kiekvienas $3 $2:$1
 ucwhen_cron=Cron metu $1 
 ucwhen_interval=Kas $1 sekundes
 ucwhen_boot=Paleidimo metu
+
 move_err=Nepavyko perkelti Crono darbo
 move_etype=Šio darbo negalima perkelti
+
 kill_err=Nepavyko nutraukti Crono darbo
 kill_ecannot=Jums neleidžiama nutraukti šio darbo
 kill_egone=Daugiau nebėga
@@ -166,13 +178,16 @@ kill_title=Nutraukite „Cron Job“
 kill_rusure=Ar tikrai norite nutraukti procesą $1 naudodamiesi PID $2 ?
 kill_rusure2=Ar tikrai norite nutraukti procesą $1 naudodamiesi PID $2 ir visais jo subprocesais?
 kill_ok=Taip, nutraukite tai
+
 range_all=Bėk bet kurią dieną
 range_start=Paleisti tik iš $1 
 range_end=į $1 
 range_estart=Trūksta arba netinkama pradžios data diapazone
 range_eend=Trūksta arba netinkama galiojimo pabaigos data
+
 delete_err=Nepavyko ištrinti „Cron“ darbų
 delete_enone=Nepasirinkta
+
 manual_title=Rankiniu būdu redaguokite „Cron Jobs“
 manual_edit=„Cron“ failas, kurį norite redaguoti:
 manual_ok=Redaguoti

@@ -28,6 +28,7 @@ index_tabinstall=Modulul de instalare
 index_tabsuggest=Module sugerate
 index_allmods2=Modulele lipsă utilizate de Webmin
 index_wantmods=Module de instalat
+
 download_err=Instalarea modulului nu a reușit
 download_elocal=Nu a fost furnizat niciun fișier local
 download_elocal2=„$1” nu există
@@ -65,6 +66,7 @@ download_ebuild=Unul sau mai multe dintre modulele Perl au nevoie de $1 pentru a
 download_yum=Instalarea modulului Perl $1 din pachetul $2 ..
 download_missingok=Module lipsă din CPAN
 download_fallback=Unele module nu au reușit să instaleze din pachete, încercând instalarea de la sursă.
+
 install_title=Instalați modulul
 install_untar=Fișier modul de neatârnare
 install_make=Modul de compilare
@@ -84,11 +86,13 @@ install_err2=De asemenea, puteți instala modulul de la CPAN cu comanda $1.
 install_exec=Se execută $1 ..
 install_efile=Fișierul modulului 1 nu mai există
 install_needunlink=Puteți încerca să instalați din nou revenind la pagina anterioară și selectând diferite opțiuni. În caz contrar, <a href='$1'>faceți clic aici pentru a șterge fișierele de pachete temporare</a> pentru a economisi spațiu pe disc.
+
 cpan_sel=Module sub $1 ..
 cpan_title=Selectați modulul Perl
 cpan_search=Găsiți module numite
 cpan_match=Module care corespund $1 ..
 cpan_none=Nu s-a gasit nici o potrivire.
+
 edit_title=Detalii modul
 edit_header=Informații modul
 edit_mod=Numele modulului
@@ -105,6 +109,7 @@ edit_method=Instalat din
 edit_rpm=Pachet RPM $1 
 edit_debian=Pachetul Debian $1 
 edit_manual=Instalarea manuală a modulului Perl
+
 uninstall_title=Dezinstalați modulul
 uninstall_rusure=Sigur doriți să dezinstalați modulul Perl $1 ? Următoarele fișiere vor fi șterse :
 uninstall_rusure2=Sigur doriți să dezinstalați modulul Perl $1 și submodulul (ele) $2 ? <br> Următoarele fișiere vor fi șterse :
@@ -112,7 +117,9 @@ uninstall_ok=Dezinstalați acum
 uninstall_rpm=Modulul va fi eliminat prin dezinstalarea pachetului $1 RPM.
 uninstall_debian=Modulul va fi eliminat prin dezinstalarea pachetului Debian $1.
 uninstall_err=Dezinstalarea modulului nu a reușit
+
 delete_efile=Fișier pachet nevalid!
+
 uninstalls_title=Dezinstalați modulele
 uninstalls_err=Dezinstalarea modulelor nu a reușit
 uninstalls_enone=Nimic selectat

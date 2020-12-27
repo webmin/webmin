@@ -25,12 +25,15 @@ index_up=Konexio hasiera:
 index_updesc=Hautatu konexio bat botoi honen ondoko zerrendatik, eta egin klik bere berehala ezartzen saiatzeko.
 index_nopol=Ez da sare politikarik aurkitu. Agian zure <a href='$1'>sare konfigurazioa</a> okerra da.
 index_import=Inportatu konexioa fitxategitik.
+
 stop_err=Ezin izan da IPsec zerbitzaria gelditu
 start_err=Huts egin du IPsec zerbitzaria abiaraztean
 restart_err=Huts egin du IPsec zerbitzaria berriro abiaraztean
 start_elog=Hurrengo akatsak erregistratu dira : $1 
+
 newkey_err=Huts egin du gakoa sortzerakoan
 newkey_ehost=Ostalari-izen falta edo baliogabea
+
 edit_title1=Sortu konexioa
 edit_title2=Editatu konexioa
 edit_header=IPsec VPN konexioaren xehetasunak
@@ -101,6 +104,7 @@ edit_unit_s=secs
 edit_unit_m=mins
 edit_unit_h=ordu
 edit_unit_d=egun
+
 config_title=Zerbitzariaren konfigurazioa
 config_header=VPN zerbitzariaren ezarpen globalak
 config_ifaces=IPsec sareko interfazeak
@@ -118,6 +122,7 @@ config_nat=Gaitu NAT zeharkaldia?
 config_err=Ezin izan da zerbitzariaren konfigurazioa gorde
 config_eri=Benetako interfazea "$1" behin baino gehiagotan agertzen da
 config_enone=Ez da sareko interfazerik zehaztu
+
 showkey_title=Erakutsi gako publikoa
 showkey_desc1=Jarraian agertzen den RSA gako publikoa kopiatu behar da hau konektatzen duten beste sistema batzuen konfigurazioan, ostalari honi dagokion atalean.
 showkey_desc2=Jarraian agertzen diren balioak ostalari honentzako DNS KEY erregistroa sortzeko erabil daitezke, harekin konektatzen diren beste sistemek bere gako publikoa bilatzeko aukera izan dezaten.
@@ -125,6 +130,7 @@ showkey_flags=Banderak
 showkey_proto=protokoloa
 showkey_alg=Algorithm
 showkey_key=Funtsezko datuak
+
 policy_desc_block=Blokeatutako sareak
 policy_desc_clear=Trafiko sareak garbitu
 policy_desc_private=Zifratutako Sareak
@@ -145,6 +151,7 @@ policy_mask=aurrizkia
 policy_err=Huts egin du sareak gordetzean
 policy_enet=Sareko IP helbide baliogabea $1 errenkadan
 policy_emask=Aurrezko luzera baliogabea $2 errenkadan
+
 save_err=Huts egin du konexioa gordetzean
 save_ename=Konexioaren izena edo falta da
 save_ekeying=Kessaiak saiatzeko saiakera kopurua edo baliogabea da
@@ -164,6 +171,7 @@ save_eleftcert=Tokiko zerbitzariaren ziurtagiri falta edo baliogabea
 save_erightcert=Urruneko zerbitzariaren ziurtagiri falta edo baliogabea
 save_ekeylife=Konexioaren gako iraunkorra edo falta da
 save_eikelifetime=Ez dago gaizki edo baliogabea keying kanalaren bizitza osoan
+
 log_create_conn=$1 konexioa sortu da
 log_delete_conn=$1 konexioa ezabatu da
 log_modify_conn=$1 konexio aldatua
@@ -182,8 +190,10 @@ log_delete_secret=$1 -eko gako sekretua ezabatu da
 log_create_secret_nn=Edozein ostalarientzako gako sekretua sortu da
 log_modify_secret_nn=Edozein ostalariren gako sekretua aldatu
 log_delete_secret_nn=Edozein ostalariren gako sekretua ezabatu da
+
 up_title=Hasi konexioa
 up_cmd=Konexioa abiarazten $1 komandoarekin.
+
 export_title=Esportazioen konfigurazioa
 export_desc=Inprimaki hau $1 konexiorako konfigurazio fitxategiaren atala esportatzeko erabil daiteke, beste muturrean zerbitzarian inportatu ahal izateko.
 export_print=Bistaratu konfigurazioa arakatzailean
@@ -193,11 +203,13 @@ export_err=Ezin izan da esportatu konfigurazioa
 export_efile=Fitxategi izena falta da
 export_esave=Ezin izan da fitxategian idatzi : $1 
 export_done=Konexiorako esportatutako konfigurazioa $1 eta $2 ($3 byte).
+
 import_title=Inportatu konfigurazioa
 import_desc=Inprimaki hau konfigurazio fitxategi atal bat konexio bat inportatzeko erabil daiteke, moduluaren esportazio funtzioak beste sistema batean sortutakoak adibidez.
 import_upload=Kargatu fitxategitik inportatu ..
 import_file=Inportatu zerbitzariaren alboko fitxategitik ..
 import_ok=Inportatu orain
+
 import_err=Ezin izan da konfigurazioa inportatu
 import_eupload=Ez da fitxategia aukeratu
 import_efile=Ez da zerbitzariaren alboko fitxategirik sartu
@@ -207,6 +219,7 @@ import_eclash=$1 izeneko konexioa lehendik dago.
 import_done1=$1 puntuko IPsec konexio berria gehitu da.
 import_done2=$1 IPsec konexioa $1 eguneratu da.
 import_over=Idatzi izen bera duen lehendik dagoen konexioa?
+
 secrets_title=Gako sekretuak
 secrets_none=Ez da sekretuen gakoak aurkitu!
 secrets_name=Sekretua
@@ -220,6 +233,7 @@ secrets_mod=$1 modulua
 secrets_newpsk=Sortu partekatutako sekretu gako berria.
 secrets_newrsa=Sortu RSA gako berria.
 secrets_return=sekretu-gakoen zerrenda
+
 secret_title1=Sortu gako sekretua
 secret_title2=Editatu gako sekretua
 secret_header=Gako sekretuen xehetasunak

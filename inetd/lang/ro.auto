@@ -14,6 +14,7 @@ index_search=Servicii de afișare potrivite:
 index_sok=Căutare
 index_toomany=Există prea multe servicii internet pentru a fi afișate pe această pagină.
 index_none=Niciun serviciu de internet nu s-a potrivit cu căutarea dvs.
+
 error_restart=Nu a putut reporni Inetd
 error_saverpc=Nu a reușit să salveze programul RPC
 error_invalidprgname=„$1” nu este un nume de program valid
@@ -43,6 +44,7 @@ error_nameexist=Există deja un serviciu cu numele $1 și protocolul $2
 error_inetservice=Există deja un serviciu de internet cu numele $1 și protocolul $2 
 error_smfservice=Actualizarea serviciului smf cu cmd '$1', codul de eroare $2 
 error_smf_cmdfield=Pentru smf, numele fișierului programului „$1” trebuie să corespundă primului argument al câmpului de comandă, adică să fie „$2”
+
 editrpc_title1=Creați program RPC
 editrpc_title2=Editează programul RPC
 editrpc_detail=Detalii despre program RPC
@@ -69,6 +71,7 @@ editrpc_execasuser=Executați ca utilizator
 editrpc_max=Max pe minut
 editrpc_default=Mod implicit
 editrpc_execasgrp=Execută ca grup
+
 editserv_title1=Creați servicii Internet
 editserv_title2=Editați Serviciul Internet
 editserv_detail=Detalii despre serviciul internet
@@ -82,6 +85,7 @@ editserv_wrapper=TCP-Wrapper
 editserv_inetd=Intern la <tt>inetd</tt>
 editserv_qm=Comanda poate să nu existe?
 editserv_ename=Nu există niciun serviciu cu acest nume și protocol
+
 log_apply=Modificări aplicate
 log_create_serv=Serviciu creat $1 
 log_modify_serv=Serviciu modificat $1 
@@ -95,6 +99,7 @@ log_delete_serv_l=Serviciu șters $1 pe portul $2
 log_create_prog_l=Serviciul creat $1 pe portul $2 pentru programul $3 
 log_modify_prog_l=Serviciu modificat $1 pe portul $2 pentru programul $3 
 log_delete_prog_l=Serviciu șters $1 pe portul $2 pentru programul $3 
+
 log_create_rpc=RPC creat $1
 log_modify_rpc=RPC modificat $1 
 log_delete_rpc=RPC eliminat $1 

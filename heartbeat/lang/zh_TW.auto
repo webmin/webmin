@@ -12,6 +12,7 @@ index_ereq_resource_cmd=在系統上找不到用於從其他節點（$1）請求
 index_version=心跳版本 $1
 index_noversion=警告-無法自動檢測系統上安裝的Heartbeat版本。您應該在<a href='$1'>模塊配置</a>頁面上進行設置。
 index_status=心跳狀態
+
 conf_title=配置選項
 conf_header=心跳配置選項
 conf_serials=串行心跳端口
@@ -54,6 +55,7 @@ conf_auto_on=$ {conf_enabled}
 conf_auto_off=$ {conf_disabled}
 conf_auto_legacy=舊版模式
 conf_auto_=$ {默認}
+
 res_title=集群資源
 res_node=主節點
 res_ips=IP地址
@@ -67,6 +69,7 @@ res_getserv=獲取資源
 res_hbdown=心跳加快
 res_up=上
 res_down=下
+
 node_create=添加集群資源
 node_edit=編輯集群資源
 node_header=群集資源詳細信息
@@ -83,6 +86,7 @@ node_enone=主節點缺失或無效
 node_eip=“$1”不是有效的IP地址
 node_ecidr='$1'不是有效的CIDR
 node_ebroad=“$1”不是有效的廣播地址
+
 auth_title=驗證碼
 auth_header=集群節點認證
 auth_mode=認證方式
@@ -92,6 +96,8 @@ auth_md5=帶密碼的MD5
 auth_err=保存認證密鑰失敗
 auth_emd5=丟失或無效的MD5密碼
 auth_esha1=SHA1密碼丟失或無效
+
 start_err=無法啟動心跳
+
 apply_err=無法應用更改
 apply_epid=進程不再運行

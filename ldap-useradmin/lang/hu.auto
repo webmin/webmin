@@ -19,10 +19,13 @@ index_samba=Samba?
 index_cyrus=IMAP?
 index_users=LDAP felhasználók
 index_groups=LDAP csoportok
+
 imap_econn=Nem sikerült csatlakozni a (z) $1 IMAP szerverhez
 imap_elogin=Nem sikerült bejelentkezni a (z) $1 IMAP szerverre mint $2 : $3 
 conn_eldap_host=Nem található az LDAP kliens konfigurációs fájlja a rendszeren, ezért az LDAP szervert be kell állítani a Module Config oldalon
 conn_elogin=Nem található az LDAP kliens konfigurációs fájlja a rendszeren, ezért az LDAP bejelentkezést be kell állítani a Module Config oldalon
+conn_efile_open=Nem sikerült megnyitni az LDAP-összerendelési hitelesítő adatok fájlt:
+
 uedit_cap=Felhasználói képességek
 uedit_samba=Samba bejelentkezés?
 uedit_cyrus=IMAP szerver bejelentkezés?
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=Utolsó jelszó frissítés
 uedit_sambapwdcanchange=A jelszó megváltozhat
 uedit_sambabadpasswordcount=Rossz a jelszó
 uedit_sambaacctflags=Fiók zászlók
+
 usave_eadd=Nem sikerült felvenni a felhasználót az LDAP adatbázisba : $1 
 usave_emod=Nem sikerült a felhasználót módosítani az LDAP adatbázisban : $1 
 usave_emoddn=Nem sikerült átnevezni a felhasználót az LDAP adatbázisban : $1 
@@ -66,26 +70,33 @@ usave_eattrdupu=A $1 felhasználó már használja a $2 $3 felhasználót
 usave_eattrdupg=A $1 csoport már használja a $2 $3 felhasználót
 usave_ereal=Hiányzik a valódi név
 usave_equota=Hiányzó vagy érvénytelen IMAP kvóta
+
 search_err=$1 keresése a $2 alatt sikertelen : $3 
+
 gedit_dn=A csoport LDAP DN
 gedit_return=csoport részletei
 gedit_cap=Csoport képességek
 gedit_samba=Samba csoport?
+
 gsave_egone=A csoport már nem létezik!
 gsave_edelete=A csoport törlése az LDAP adatbázisból nem sikerült : $1 
 gsave_eadd=Nem sikerült hozzáadni a csoportot az LDAP adatbázishoz : $1 
 gsave_emod=A csoport módosítása az LDAP adatbázisban nem sikerült : $1 
 gsave_emoddn=Nem sikerült átnevezni a csoportot az LDAP adatbázisban : $1 
+
 gdel_group=Az LDAP csoport bejegyzésének törlése ..
+
 udel_pass=Az LDAP felhasználói bejegyzés törlése ..
 udel_book=Törlés a címjegyzékből ..
 udel_imap=IMAP mappa törlése ..
 udel_warnimap=A meglévő postafiók törlődik, ha törli az otthoni könyvtárat!
 udel_failed=.. nem sikerült!  : $1 
+
 raw_title=LDAP attribútumok
 raw_name=Attribútum neve
 raw_value=értékek
 raw_for=$1 esetében
+
 batch_samba=Hozzon létre Samba-fiókot az új felhasználók számára?
 batch_imap=Hozzon létre IMAP-fiókot az új felhasználók számára?
 batch_descafter3=A <b>létrehozás</b> és a <b>módosítás</b> sorokban opcionálisan az LDAP attribútumokat tartalmazó további mezőket csatolhat <i>név</i> = <i>érték</i> formátumban a következőhöz: hozzá kell rendelni az új vagy módosított felhasználókhoz.

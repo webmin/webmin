@@ -64,12 +64,14 @@ index_match1=satur
 index_match2=sērkociņi
 index_dhcpd=ISC DHCPd
 index_delete=Dzēst atlasīto
+
 butt_save=Saglabāt
 butt_eco=Rediģēt klienta opcijas
 butt_vco=Skatīt klienta opcijas
 butt_del=Dzēst
 butt_create=Izveidot
 butt_leases=Sarakstu nomas līgumi
+
 esub_crheader=Izveidot apakštīklu
 esub_edheader=Rediģēt apakštīklu
 esub_tabhdr=Apakštīkla informācija
@@ -83,12 +85,14 @@ esub_groups=Grupē tieši šajā apakštīklā
 esub_pools=Apakštīkla adrešu kopas
 esub_pool=Baseins $1 
 esub_poolnone=Nav definēts adrešu kopums
+
 esub_pooladd=Pievienojiet adrešu kopu.
 esub_none=Nav
 esub_return=apakštīkla saraksts
 esub_retshar=dalīts tīkls
 esub_desc=Apakštīkla apraksts
 esub_fopeer=Failover Peer
+
 esh_crheader=Izveidot koplietojamo tīklu
 esh_eheader=Rediģēt koplietojamo tīklu
 esh_tabhdr=Kopīgota tīkla informācija
@@ -99,6 +103,7 @@ esh_subn=Šajā koplietojamajā tīklā esošie apakštīkli
 esh_return=apakštīkla saraksts
 esh_pools=Kopīgotā tīkla adrešu kopas
 esh_desc=Koplietots tīkla apraksts
+
 ehost_crheader=Izveidot resursdatoru
 ehost_eheader=Rediģēt resursdatoru
 ehost_tabhdr=Informācija par resursdatoru
@@ -119,6 +124,7 @@ ehost_retgroup=grupa
 ehost_retsubn=apakštīkls
 ehost_retshar=dalīts tīkls
 ehost_desc=Saimnieka apraksts
+
 egroup_crheader=Izveidot resursdatoru grupu
 egroup_eheader=Rediģēt resursdatoru grupu
 egroup_tblhdr=Sīkāka informācija par grupu
@@ -129,6 +135,7 @@ egroup_return=saimnieku saraksts
 egroup_retsubn=apakštīkls
 egroup_retshar=dalīts tīkls
 egroup_desc=Grupas apraksts
+
 default=Noklusējums
 secs=sekundes
 none=Nav
@@ -157,20 +164,24 @@ listl_pc=Procenti
 listl_err=Neizdevās izdzēst nomu
 listl_enone=Nav atlasīts
 listl_refresh=Atsvaidzināt sarakstu
+
 restart_errmsg1=Neizdevās restartēt dhcpd
 restart_errmsg2=Neizdevās signalizēt procesu
 start_failstart=Neizdevās startēt dhcpd
 restart_conftext=Līnijas ap $1 $2  :
+
 sgroup_faildel=Neizdevās izdzēst grupu
 sgroup_failsave=Neizdevās saglabāt grupu
 sgroup_invassign=grupai piešķirta nepareiza sadaļa
 sgroup_echanged=Konfigurācijas faila saturs ir mainīts. Mēģini vēlreiz.
+
 shost_faildel=Neizdevās izdzēst resursdatoru
 shost_failsave=Neizdevās saglabāt resursdatoru
 shost_invalidhn=nav derīgs resursdatora nosaukums
 shost_invalidhwa='$1' nav derīga $2 adrese
 shost_invalidaddr='$1' satur nederīgu resursdatora nosaukumu vai IP adresi
 shost_invassign=resursdators piešķirts nepareizai sadaļai
+
 sopt_failsave=Neizdevās saglabāt klienta iespējas
 sopt_invalidip=nav derīga IP adrese
 sopt_invalidint=nav vesels skaitlis
@@ -180,10 +191,12 @@ sopt_ednum='$1' nav derīgs opcijas numurs
 sopt_edtype='$1' nav derīgs opcijas tips
 sopt_ecval=Trūkst vērtības pielāgotajai opcijai '$1'
 sopt_ecip=Pielāgotās opcijas '$1' vērtībai jābūt IP adresei
+
 sshared_faildel=Neizdevās izdzēst koplietoto tīklu
 sshared_failsave=Neizdevās saglabāt koplietoto tīklu
 sshared_invalidsname=Trūkst vai nav derīgs koplietotā tīkla nosaukums.
 sshared_nosubnet=Koplietotajā tīklā '$1' nav neviena apakštīkla.
+
 ssub_faildel=Neizdevās izdzēst apakštīklu
 ssub_failsave=Neizdevās saglabāt apakštīklu
 ssub_invalidsubaddr=nav derīga apakštīkla adrese
@@ -191,6 +204,7 @@ ssub_invalidnmask=nav derīgs tīkla masks
 ssub_invalidipr=nav derīga diapazona IP adrese
 ssub_nosubnet=Koplietotajā tīklā '$1' nav neviena apakštīkla.
 ssub_invalidfopeer=nav derīgs failover peer
+
 plib_deflt=Noklusētais nomas laiks
 plib_bfname=Sāknēšanas faila nosaukums
 plib_maxlt=Maksimālais nomas laiks
@@ -244,6 +258,7 @@ plib_eexpr=Šajā DHCP konfigurācijas sadaļā ir izteiciena direktīva $1, kur
 plib_auth_subnet=Serveris ir autoritatīvs šai apakštīklam?
 plib_auth_shared-network=Serveris ir autoritatīvs šim kopīgotajam tīklam?
 plib_auth_global=Serveris ir autoritatīvs visiem apakštīkliem?
+
 eopt_header=Klienta iespējas
 eopt_subtitle=Apakštīklam $1 
 eopt_returnsub=apakštīkls
@@ -289,6 +304,7 @@ eopt_slpa=SLP direktoriju aģenta IP
 eopt_slpaips=Tikai šie IP?
 eopt_slps=SLP pakalpojumu joma
 eopt_slpsonly=Tikai šī darbības joma?
+
 log_apply=Lietotās izmaiņas
 log_start=Startēja DHCP serveris
 log_stop=Apturēts DHCP serveris
@@ -311,6 +327,7 @@ log_options_group=Pārveidotas opcijas $1 saimnieku grupai
 log_delete_lease=Svītrota nomas maksa $1 
 log_delete_subnets=Izdzēsti $1 apakštīkli un koplietoti tīkli
 log_delete_hosts=Dzēsti $1 mitinātāji un saimnieku grupas
+
 keys_edit=Rediģēt TSIG taustiņu
 keys_create=Izveidotas TSIG atslēgas
 keys_title=DNS atslēgas
@@ -321,12 +338,14 @@ keys_ecannot=Jums nav atļauts rediģēt DNS atslēgas
 keys_err=Neizdevās saglabāt DNS atslēgas
 keys_ekey=“$1” nav derīgs atslēgas ID
 keys_esecret=Trūkst vai nav derīgs atslēgas $1 kodēts noslēpums
+
 pool_edit=Rediģēt adrešu kopu
 pool_create=Izveidots adrešu fonds
 pool_header=Adrešu kopas iespējas
 pool_allow=Klienti atļauties
 pool_deny=Klienti noliegt
 pool_return=apakštīkls
+
 cdel_header=Brīdinājums
 cdel_shared1=dalīts tīkls
 cdel_shared2=dalīts tīkls
@@ -344,6 +363,7 @@ cdel_txt=Dzēšot $1 “$2”, tiks izdzēsts arī tā saturs:
 cdel_confirm=Vai tiešām vēlaties izdzēst šo $1 ?
 cdel_eunknown=Nezināma kļūda
 cdel_return=resursdatora un tīkla saraksts
+
 eacl_aviol=Piekļuves kontroles pārkāpums
 eacl_np=Jums nav atļauju
 eacl_pdh=izdzēst resursdatoru
@@ -369,6 +389,7 @@ eacl_pdl=dzēst nomu
 eacl_psl=skata nomu
 eacl_pglob=rediģēt globālās iespējas
 eacl_papply=restartējiet šo pakalpojumu
+
 acl_apply=Vai var piemērot izmaiņas?
 acl_r_leases=Vai var apskatīt nomu?
 acl_w_leases=Vai var noņemt nomu?
@@ -398,9 +419,11 @@ acl_err=Saglabājot ACL sarakstu, radās kļūda
 acl_ernow=Ja kādam objekta veidam vēlaties iespējot rakstīšanas piekļuvi globālajos ACL, jums jāiespējo arī lasīšanas piekļuve šim objekta tipam.
 acl_normal=normāli
 acl_paranoic=paranoja
+
 iface_title=Tīkla saskarne
 iface_desc=DHCP serveris var piešķirt IP adreses tikai tīkliem, kas savienoti ar kādu no zemāk atlasītajām saskarnēm. Tīkla saskarne jāiekļauj visiem definētajiem apakštīkliem. Ja neviens nav izvēlēts, DHCP serveris mēģinās to automātiski atrast.
 iface_listen=Klausieties interfeisos
+
 lookup_ehost=Nav resursdatora ar vārdu, IP adresi vai MAC adresi $1 
 lookup_ehostname=Nav ievadīts resursdatora nosaukums, IP adrese vai MAC adrese
 lookup_egroup=Neviena grupa ar vārdu vai domēna vārdu $1 nepastāv
@@ -409,6 +432,7 @@ lookup_esubnet=Nav apakštīkla ar adresi vai adresi/netmask $1
 lookup_esubnetname=Netika ievadīta apakštīkla adrese vai adrese/netmasks
 lookup_eshared=Nav koplietojama tīkla ar nosaukumu $1 
 lookup_esharedname=Nav ievadīts koplietojama tīkla nosaukums
+
 zone_key=DNS zonas
 index_addzone=Pievienojiet jaunu DNS zonu.
 index_zone=Zona
@@ -424,16 +448,21 @@ zone_faildel=Neizdevās izdzēst zonu
 zone_failsave=Neizdevās saglabāt zonu
 zone_tsigkey=TSIG atslēga
 zone_ecannot=Jums nav atļauts rediģēt DNS zonas
+
 plib_clientupdates=Vai klienti var atjaunināt savus ierakstus?
+
 text_title=dhcpd.conf
 text_editor=Teksta redaktors
 text_return=galvenā izvēlne
 text_undo=atsaukt
 text_ecannot=Jums nav atļauts rediģēt konfigurācijas failu
+
 index_buttetext=Manuāli rediģēt konfigurāciju
 index_text=Rediģēt konfigurācijas failu manuāli
+
 stop_err=Neizdevās apturēt DHCP serveri
 stop_ekill=Neskrien!
+
 sdelete_err=Neizdevās izdzēst apakštīklus un koplietotos tīklus
 sdelete_enone=Nav atlasīts
 sdelete_title=Dzēst apakštīklus un kopīgotos tīklus
@@ -441,6 +470,7 @@ sdelete_rusure1=Vai tiešām vēlaties dzēst $1 atlasītos apakštīklus un $2 
 sdelete_rusure2=Vai tiešām vēlaties dzēst atlasītos $1 apakštīklus? Tiks zaudēti arī visi citi objekti apakštīklos.
 sdelete_rusure3=Vai tiešām vēlaties dzēst $2 atlasītos koplietotos tīklus? Tiks zaudēti arī visi tīkla apakštīkli vai citi objekti.
 sdelete_ok=Dzēst tūlīt
+
 hdelete_err=Neizdevās izdzēst resursdatorus un grupas
 hdelete_enone=Nav atlasīts
 hdelete_title=Dzēst resursdatorus un grupas

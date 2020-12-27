@@ -40,6 +40,7 @@ index_descfetch=该页面用于从运行Webmin的系统下载文件以在浏览�
 index_email=完成下载后发送电子邮件？
 index_emailto=是的，解决
 index_email2=上传完成后发送电子邮件吗？
+
 upload_title=上传文件
 upload_err=上传文件失败
 upload_edir=上载目录丢失
@@ -63,6 +64,7 @@ upload_saving=正在保存文件 $1 ..
 upload_saved=..写了 $1
 upload_unzipping=提取文件 $1 ..
 upload_unzipdone=.. $1
+
 download_err=保存下载失败
 download_enone=没有输入要下载的网址
 download_eurl=“$1”不是有效的网址
@@ -74,9 +76,11 @@ download_failed=下载失败： $1
 download_eaccess=您无权将文件下载到 $1
 download_eucannot=不允许以用户 $1的身份下载文件
 download_egcannot=所选组不包含所选用户
+
 cancel_err=无法取消下载
 cancel_enone=未选择
 cancel_ecannot=您不允许取消用户 $1的下载
+
 log_cancel=已取消 $1个下载
 log_upload_l=上传的文件 $1
 log_upload=上传了 $1个文件
@@ -84,6 +88,7 @@ log_download_l=下载的URL $1
 log_download=已下载 $1 URL
 log_sdownload_l=计划下载URL $1
 log_sdownload=计划下载 $1 URL
+
 acl_users=可以作为用户上传和下载文件
 acl_all=所有用户
 acl_this=Webmin当前用户
@@ -98,6 +103,7 @@ acl_max=最大上传大小
 acl_unlim=无限
 acl_b=个字节
 acl_fetch=可以将文件下载到PC吗？
+
 fetch_err=下载文件失败
 fetch_ecannot=不允许将文件下载到PC
 fetch_efile=没有输入文件名
@@ -106,6 +112,7 @@ fetch_eopen=无法打开文件： $1
 fetch_eaccess=您不允许从 $1下载文件
 fetch_ezip=除非安装了<tt>zip</tt>命令，否则无法下载目录
 fetch_eroot=根目录无法下载！
+
 email_downmsg=以下下载已完成：
 email_downurl=网址： $1
 email_downerr=错误消息： $1

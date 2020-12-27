@@ -16,8 +16,10 @@ index_type=Loại khóa SSH:
 index_rsa1=RSA (cho SSH v1)
 index_rsa=RSA (cho SSH v2)
 index_dsa=DSA (cho SSH v2)
+
 bits=chút ít
 secs=giây
+
 users_title=Xác thực
 users_header=Tùy chọn đăng nhập và xác thực
 users_expire=Ngày trước khi hết hạn tài khoản để cảnh báo người dùng
@@ -54,6 +56,7 @@ users_eauthkeys=Tập tin khóa ủy quyền bị thiếu hoặc không hợp l�
 users_maxauthtries=Số lần đăng nhập tối đa trên mỗi kết nối
 users_emaxauthtries=Số lần đăng nhập bị thiếu hoặc không phải là số
 users_chal=Sử dụng xác thực phản ứng thách thức?
+
 net_title=Mạng
 net_header=Tùy chọn kết nối mạng
 net_port=Nghe trên cổng
@@ -91,6 +94,7 @@ net_eprots=Bạn phải chọn ít nhất một giao thức
 net_eladdress='$1' không phải là địa chỉ hợp lệ để nghe
 net_elport='$1' không phải là một cổng hợp lệ để lắng nghe
 net_elisten2=Không có địa chỉ để nghe
+
 access_title=Kiểm soát truy cập
 access_header=Tùy chọn kiểm soát truy cập mạng và đăng nhập
 access_allowu=Chỉ cho phép người dùng
@@ -108,6 +112,7 @@ access_eallowg=Không có nhóm nào cho phép nhập
 access_edenyg=Không có nhóm để từ chối nhập
 access_eallowh=Không có máy chủ nào cho phép nhập
 access_edenyh=Không có máy chủ để từ chối nhập
+
 misc_title=sự lựa chọn hỗn hợp
 misc_header=Các tùy chọn máy chủ SSH linh tinh khác
 misc_x11=Cho phép chuyển tiếp kết nối X11?
@@ -131,14 +136,17 @@ misc_eumask=Thiếu ô chữ số 4 chữ số bị thiếu hoặc không hợp 
 misc_ebits=Kích thước khóa máy chủ bị thiếu hoặc không hợp lệ
 misc_eregen=Khoảng thời gian phục hồi khóa bị thiếu hoặc không hợp lệ
 misc_epid=Thiếu đường dẫn tệp PID
+
 start_err=Không thể khởi động máy chủ SSH
 apply_epid=Không chạy
+
 hosts_title=Tùy chọn máy chủ của khách hàng
 hosts_header=Máy chủ SSH Client
 hosts_none=Không có tùy chọn máy chủ đã được xác định. Tất cả thông tin đăng nhập máy khách SSH sẽ sử dụng các cài đặt mặc định.
 hosts_all=Tất cả các máy chủ
 hosts_add=Thêm tùy chọn cho máy chủ của khách hàng.
 hosts_return=danh sách máy chủ
+
 host_create=Thêm tùy chọn máy chủ
 host_edit=Chỉnh sửa tùy chọn máy chủ
 host_header=Tùy chọn máy khách cho máy chủ SSH
@@ -194,6 +202,7 @@ host_eprots=Bạn phải chọn ít nhất một giao thức
 host_proxy=Lệnh proxy kết nối
 host_proxy_def=không ai
 host_eproxy=Lệnh proxy kết nối bị thiếu hoặc không hợp lệ
+
 log_users=Thay đổi tùy chọn xác thực
 log_net=Thay đổi tùy chọn mạng
 log_access=Thay đổi kiểm soát truy cập
@@ -208,6 +217,7 @@ log_stop=Máy chủ SSH đã dừng
 log_start=Bắt đầu máy chủ SSH
 log_apply=Cấu hình ứng dụng
 log_manual=Chỉnh sửa tập tin cấu hình thủ công $1
+
 sync_title=Cài đặt khóa người dùng SSH
 sync_desc=Trang này cho phép bạn định cấu hình thiết lập tự động SSH cho người dùng Unix mới được tạo trên hệ thống của bạn. Nếu được định cấu hình, người dùng mới sẽ không phải chạy <tt>ssh-keygen</tt> trước khi sử dụng SSH.
 sync_create=Thiết lập khóa SSH cho người dùng Unix mới?
@@ -216,9 +226,11 @@ sync_pass=Sử dụng mật khẩu làm mật khẩu chính?
 sync_gnupg=Thiết lập khóa GNUPG cho người dùng Unix mới.
 sync_type=Loại chính
 sync_auto=&lt;Tự động&gt;
+
 keys_title=Lưu trữ khóa SSH
 keys_desc=Trang này cho phép bạn xem các khóa SSH cho máy chủ này.
 keys_none=Không thể tìm thấy bất kỳ mục HostKey nào trong cấu hình SSHD của bạn.
+
 manual_title=Chỉnh sửa tập tin cấu hình
 manual_ecannot=Bạn không được phép chỉnh sửa tệp cấu hình máy chủ SSH
 manual_ok=Biên tập
@@ -226,5 +238,6 @@ manual_efile=Tệp đã chọn không phải là một phần của cấu hình 
 manual_file=Chỉnh sửa tập tin cấu hình:
 manual_edata=Không có gì vào!
 manual_err=Không thể lưu tập tin cấu hình
+
 dknown_err=Không thể xóa các máy chủ đã biết
 dknown_enone=Không được chọn

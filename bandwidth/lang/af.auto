@@ -57,20 +57,27 @@ index_rotate=Opdatering van statistieke
 index_rotatedesc=Klik op hierdie knoppie om alle aangemelde netwerkverkeer tot op die huidige tydstip te verwerk, sodat dit onmiddellik beskikbaar is vir verslaggewing.
 index_eiptables=Waarskuwing - u IPtables-opstelling het 'n fout: $1. As u bandwydte-monitering instel, word alle firewall-reëls verwyder.
 index_return=verslagvorm
+
 log_setup=Stel bandwydte-monitering op die koppelvlak $1 op
 log_turnoff=Bandwydte-monitering is gedeaktiveer
 log_rotate=Opgedateerde statistiek
+
 acl_setup=Kan monitering opgestel en gedeaktiveer word?
+
 turnoff_ecannot=U mag nie monitering deaktiveer nie
+
 setup_ecannot=U mag nie monitering inskakel nie
 setup_eiface=Ontbrekende of ongeldige koppelvlaknaam
 setup_ezone=Kon nie Shorewall-sone vir die geselekteerde koppelvlak vind nie
+
 system_firewall=iptables
 system_ipfw=IPFW
 system_ipfilter=IPFilter
 system_shorewall=Shore Wall
+
 syslog_syslog=syslog
 syslog_syslog-ng=Syslog-ng
+
 rotate_title=Opdatering van statistieke
 rotate_doing=Verwerk aangetekende netwerkverkeer ..
 rotate_done=.. klaar.

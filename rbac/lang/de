@@ -1,5 +1,6 @@
 index_euser=Die RBAC Konfigurationsdatei $1 wurde nicht auf Ihrem System gefunden. Möglicherweise ist RBAC nicht installiert oder die <a href='$2'>Modul Konfiguration</a> is ungültig.
 index_return=Modulindex
+
 users_title=Benutzer Attribute
 users_user=Benutzername
 users_profiles=Gewährte Profile
@@ -10,6 +11,7 @@ users_return=user attributes list
 users_type=Typ
 users_role=Role
 users_project=Projekt
+
 user_title1=Erstelle Benutzer Attribute
 user_title2=Editiere Benutzer Attribute
 user_header=Attributes granted to Unix user
@@ -35,6 +37,7 @@ user_eauth='$1' is not a valid authorization
 user_ecannot=You are not allowed to edit this user
 user_erole=You are not allowed to assign the '$1' role
 user_eprof=You are not allowed to assign the profile '$1'
+
 auths_title=Authorizations
 auths_name=Authorization name
 auths_desc=Beschreibung
@@ -42,8 +45,10 @@ auths_none=No authorizations have been defined yet.
 auths_add=Füge neue Berechtigung hinzu.
 auths_return=authorizations list
 auths_ecannot=You are not allowed to edit authorizations
+
 authc_name=Berechtigung
 authc_desc=Beschreibung
+
 auth_title1=Erstelle Berechtigung
 auth_title2=Editiere Berechtigung
 auth_header=Authorization privilege details
@@ -57,6 +62,7 @@ auth_edesc=Invalid long description
 auth_eclash=An authorization with the same name already exists
 auth_einuseu=This authorization is in use by user $1, and so cannot be deleted
 auth_einusep=This authorization is in use by profile $1, and so cannot be deleted
+
 profs_title=Profile
 profs_name=Profilname
 profs_desc=Beschreibung
@@ -65,6 +71,7 @@ profs_none=Keine Profile wurden bisher definiert.
 profs_add=Füge neues Profil hinzu.
 profs_return=Profilliste
 profs_ecannot=Es ist Ihnenn nicht erlubt Profile zu editieren
+
 prof_title1=Erstelle Profile
 prof_title2=Editiere Profile
 prof_header=Authorization profile details
@@ -81,6 +88,7 @@ prof_einuseu=This profile is in use by user $1, and so cannot be deleted
 prof_einusep=This profile is in use by profile $1, and so cannot be deleted
 prof_einusee=This profile has $1 related execution profiles, and so cannot be deleted
 prof_none=Keine verfügbaren Profile
+
 execs_title=Execution Profiles
 execs_name=Profil
 execs_policy=Security policy
@@ -92,6 +100,7 @@ execs_none=No execution profiles have been defined yet.
 execs_add=Add a new execution profile.
 execs_return=execution profiles list
 execs_ecannot=You are not allowed to edit execution profiles
+
 exec_title1=Create Execution Profile
 exec_title2=Edit Execution Profile
 exec_header=Execution profile details
@@ -113,6 +122,7 @@ exec_erruid=Missing or invalid user to run as
 exec_errgid=Missing or invalid group to run as
 exec_erreuid=Missing or invalid effective user to run as
 exec_erregid=Missing or invalid effective group to run as
+
 policy_title=System Richtlinien
 policy_header=Global system policy settings
 policy_auths=Authorizations for all users
@@ -126,19 +136,24 @@ policy_err=Failed to save system policies
 policy_eallow=No algorithms to allow selected
 policy_eclash=Algorithsm to allow and deprecate cannot both be selected at the same time
 policy_ecannot=You are not allowed to edit system policies
+
 attr_none=Keine Benutzer Attribute definiert
 attr_nonenormal=Keine Unix Benutzer definiert
 attr_nonerole=No available roles defined
+
 help_epath=Ungültiger Hilfe-Datei-Pfad!
 help_link=(Hilfe..)
+
 crypt___unix__=Unix crypt
 crypt_1=BSD MD5
 crypt_2a=BSD Flowfish
 crypt_md5=Sun MD5
 crypt_rot13=ROT13
+
 log_delete_user=Gelöschte Benutzer Attribute für $1
 log_delete_prof=Gelöschtes Profil $1
 log_delete_project=Gelöschtes Projekt $1
+
 acl_roles=Can edit roles?
 acl_users=Can edit user attributes?
 acl_roleassign=Can assign roles
@@ -153,6 +168,7 @@ acl_profs=Kann Profile editieren?
 acl_ro=View only
 acl_execs=Can edit execution profiles?
 acl_projects=Kann Projekte editieren?
+
 projects_title=Projekte
 projects_name=Name
 projects_id=ID
@@ -171,6 +187,7 @@ projects_exceptusers=Alle Benutzer ausgenommen $1
 projects_exceptgroups=Alle Gruppen ausgenommen $1
 projects_onlyusers=Nur $1
 projects_onlygroups=Nur $1
+
 project_title1=Erstelle Projekt
 project_title2=Editiere Projekt
 project_header=Profildetaild und Mitglieder
@@ -206,6 +223,7 @@ project_egroupscannot=Keine Gruppen zum ausschließen selektiert
 project_elimit=Missing or invalid limit in row $1
 project_epool=Missing or invalid project pool name
 project_erss=Fehlender oder ungültiger maximaler Speicher
+
 prctl_title=Resource Controls
 prctl_ok=Zeige Limits für:
 prctl_mode0=Prozess mit ID

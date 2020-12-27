@@ -2,29 +2,38 @@ index_unknown=inconnue
 index_edb=Impossible de se connecter à la base de données de configuration SpamAssassin: $1. Vérifiez la <a href='$2'>configuration du module</a> pour vous assurer que vous utilisez les bons paramètres.
 index_spamassassin=SpamAssassin
 index_ecannot=Vous n'êtes pas autorisé à gérer le fichier de configuration de SpamAssassin $1 
+
 white_addr2=Adresse du destinataire
 white_rcvd2=L'expéditeur ne doit jamais être classé comme spam
 white_tabham=Adresses autorisées
 white_tabspam=Adresses refusées
 white_tabsome=Adresses de destination
 white_tabimport=Importer des adresses
+
 score_trusted=Réseaux et hôtes de confiance
 score_bayes=Utiliser le classificateur d'apprentissage bayésien?
+
 report_safe2=Oui, en texte brut
+
 header_switch=Passez en mode simple ..
 header_eclash=Le nom du test '$1' apparaît plusieurs fois
 header_eregexp2=Expression manquante pour le test '$1'
 header_eflags='$1' ne sont pas des indicateurs d'expression régulière valides
+
 setup_email=Transférer à l'adresse e-mail
+
 setup_eemail=Adresse e-mail manquante ou invalide
+
 log_procmail=Configuration Procmail modifiée
 log_manual=Fichier de configuration modifié manuellement
+
 acl_file=Fichier de configuration de SpamAssassin à modifier
 acl_filedef=Fichier de configuration globale
 acl_awl=Utilisateurs autorisés pour la modification de la liste blanche automatique
 acl_awl0=Tous les utilisateurs
 acl_awl1=Uniquement les utilisateurs répertoriés $1 
 acl_awl2=Uniquement les membres des groupes $1 
+
 amavisd_title=Amavisd Spam Delivery
 amavisd_desc=Le formulaire peut être utilisé pour modifier la configuration d'Amavisd qui détermine ce qui arrive aux messages classés comme spam.
 amavis_ok=Modifier la livraison d'Amavisd
@@ -62,9 +71,11 @@ amavis_quarantine_today=Spam mails en quarantaine aujourd'hui (24h)
 amavis_quarantine_week=Spam mails en quarantaine cette semaine (7 jours)
 amavis_quarantine_month=Spam mails en quarantaine ce mois-ci (30 jours)
 amavis_quarantine_total=Nombre total de spams en quarantaine
+
 procmail_title=Procmail Spam Delivery
 procmail_ok=Modifier la livraison Procmail
 procmail_desc=Le formulaire peut être utilisé pour modifier la configuration de Procmail qui détermine ce qui arrive aux messages classés comme spam.
+
 simple_title=Tests d'en-tête et de corps
 simple_desc=Cette page vous permet de définir des tests supplémentaires que SpamAssassin appliquera aux e-mails, en fonction des en-têtes de message, du contenu du corps et des URL trouvées dans le corps. Le nom attribué à chaque test dépend de vous, mais est généralement quelque chose comme CONTAINS_FOO.
 simple_switch=Passer en mode avancé ..
@@ -75,8 +86,10 @@ simple_regexp=Expression de correspondance
 simple_score=Score à appliquer
 simple_describe=La description
 simple_err=Échec de l'enregistrement des tests de message
+
 before_ecmd=Échec de la commande avant l'enregistrement : $1 
 after_ecmd=Échec de la commande après l'enregistrement : $1 
+
 connect_emysql=Impossible de charger le pilote de base de données $1 
 connect_elogin=Impossible de se connecter à la base de données $1:$2.
 connect_equery=La base de données $1 ne contient pas la table de préférences $2 
@@ -84,9 +97,11 @@ connect_eldapmod=Le module Perl $1 nécessaire pour communiquer avec LDAP n'est 
 connect_eldap=Impossible de se connecter au serveur LDAP $1 sur le port $2 
 connect_eldaplogin=Impossible de se connecter au serveur LDAP $1 en tant que $2 : $3 
 connect_ebase=Le DN de base LDAP $1 n'est pas valide : $2 
+
 eldap=Échec de l'opération LDAP : $1 
 esql=Échec de SQL : $1 
 ldap_euser=Impossible de trouver l'objet utilisateur LDAP pour $1 
+
 db_title=Bases de données SQL et LDAP
 db_header=Options de base de données de stockage de configuration
 db_dsn=Stocker les configurations utilisateur dans
@@ -122,6 +137,7 @@ db_eldapport=Numéro de port du serveur LDAP manquant ou non valide
 db_eldapdn=DN de base manquant ou invalide - aucun espace n'est autorisé
 db_eldapattr=Attribut SpamAssassin manquant ou non valide
 db_eldapuid=Attribut de nom d'utilisateur manquant ou non valide
+
 awl_title=Gérer les listes blanches automatiques
 awl_search=Rechercher dans la liste blanche:
 awl_ok=Chercher
@@ -147,6 +163,7 @@ awl_deleteone=Effacer la liste blanche automatique
 awl_deleteonedesc=Supprimez toutes les entrées de liste blanche automatique pour l'utilisateur $1.
 awl_deleteall=Effacer toutes les listes blanches automatiques
 awl_deletealldesc=Supprimez toutes les entrées de la liste blanche automatique pour tous les utilisateurs du système.
+
 dawl_err=Échec de la suppression de la liste blanche automatique
 dawl_eopen=Impossible d'ouvrir la liste blanche
 dawl_enone=Aucune adresse à supprimer sélectionnée
@@ -154,6 +171,7 @@ dawl_ecannot=Vous n'êtes pas autorisé à gérer la liste blanche automatique p
 dawl_doing=Suppression des listes blanches automatiques pour tous les utilisateurs.
 dawl_done=.. supprimé $2 entrées de $1 utilisateurs.
 dawl_title=Supprimer toutes les listes blanches automatiques
+
 manual_title=Modifier les fichiers de configuration
 manual_file=Modifier le fichier de configuration:
 manual_ok=D'accord

@@ -29,12 +29,14 @@ index_fd=فائل ڈیمون تشکیل
 index_groups=بیکولا گروپ کنفیگریشن
 index_actions=بیک اپ اور افعال کو بحال کریں
 index_ocmin=Contributed by <a href=$2 target=_new>Linmin <img align=middle border=0 src='$1'></a>
+
 connect_emysql=ڈیٹا بیس DBI ڈرائیور$1 لوڈ کرنے میں ناکام
 connect_elogin=ڈیٹا بیس $1:$2 میں لاگ ان ہونے میں ناکام۔
 connect_equery=ڈیٹا بیس$1 میں بیکولا ٹیبلز پر مشتمل دکھائی نہیں دیتا ہے۔
 connect_equery2=اس کی وجہ یہ ہو سکتی ہے کہ نصب کردہ SQLite پرل ماڈیول بہت نیا ہے ، اور وہ بیکولا کے ذریعہ استعمال ہونے والے پرانے SQLite ڈیٹا بیس فارمیٹ کی حمایت نہیں کرتا ہے۔
 connect_equery3=ڈیٹا بیس$1 میں OC بیکولا گروپ ٹیبلز موجود نہیں ہیں۔
 esql=SQL کی خرابی :$1
+
 check_edir=آپ کے سسٹم میں باکولا کنفیگریشن ڈائریکٹری$1 نہیں مل سکی۔
 check_ebacula=باکولا کنٹرول کمانڈ$1 نہیں ملا۔
 check_econsole=باکولا کنسول کمانڈ$1 نہیں ملا۔
@@ -43,12 +45,14 @@ check_eclient=This system appears to be a <a href='$2'>Bacula client</a> rather 
 check_econfigs=$1 میں بیکولا کی کوئی تشکیل والی فائلیں نہیں ملیں
 check_eservers=کسی ویبمین سرور گروپ کی تعریف نہیں کی گئی ہے
 check_engmod=اوپن کاونٹری بیکولا گروپس ماڈیول انسٹال نہیں ہے
+
 proc_bacula-sd=اسٹوریج ڈیمان
 proc_bacula-fd=فائل ڈیمون
 proc_bacula-dir=بیکولا ڈائریکٹر ڈیمون
 proc_bareos-sd=اسٹوریج ڈیمان
 proc_bareos-fd=فائل ڈیمون
 proc_bareos-dir=بیکولا ڈائریکٹر ڈیمون
+
 stop_err=بیکولا کو روکنے میں ناکام
 start_err=بیکولا شروع کرنے میں ناکام
 start_einit=$1 کے لئے کوئی init اسکرپٹ نہیں ملا
@@ -57,6 +61,7 @@ restart_err=بیکولا کو دوبارہ شروع کرنے میں ناکام
 apply_err=تشکیل دینے میں ناکام
 apply_failed=ترتیب میں خرابی کا پتہ چلا
 apply_problem=تشکیل دینے میں ناکام :$1
+
 jobs_title=بیک اپ نوکریاں
 jobs_none=ابھی تک بیک اپ کی کوئی ملازمت کی تعریف نہیں کی گئی ہے۔
 jobs_name=نوکری کا نام
@@ -69,6 +74,7 @@ jobs_add=ایک نیا بیک اپ نوکری شامل کریں۔
 jobs_delete=منتخب نوکریاں حذف کریں
 jobs_return=نوکریوں کی فہرست
 jobs_derr=ملازمتیں حذف کرنے میں ناکام
+
 filesets_title=فائل سیٹ
 filesets_none=ابھی تک کوئی بیک اپ فائل سیٹ متعین نہیں ہوا ہے۔
 filesets_name=فائل سیٹ کا نام
@@ -78,6 +84,7 @@ filesets_delete=منتخب فائل سیٹ کو حذف کریں
 filesets_return=فائل سیٹ کی فہرست
 filesets_derr=فائل سیٹ کو حذف کرنے میں ناکام
 filesets_ednone=کوئی بھی منتخب نہیں ہوا
+
 fileset_title1=فائل سیٹ بنائیں
 fileset_title2=فائل سیٹ میں ترمیم کریں
 fileset_header=بیک اپ فائل سیٹ تفصیلات
@@ -97,6 +104,7 @@ fileset_gzipdef=&lt;ڈیفالٹ کمپریشن لیول&gt;
 fileset_lzo=LZO کمپریشن
 fileset_gzip=جیزپ لیول$1
 fileset_onefs=کسی فائل سسٹم میں بیک اپ محدود رکھیں؟
+
 clients_title=بیک اپ کلائنٹ
 clients_none=ابھی تک کسی بیک اپ کلائنٹ کی تعریف نہیں کی گئی ہے۔
 clients_name=مؤکل کا نام
@@ -106,6 +114,7 @@ clients_add=نیا بیک اپ کلائنٹ شامل کریں۔
 clients_delete=منتخب کلائنٹ کو حذف کریں
 clients_return=مؤکلوں کی فہرست
 clients_derr=مؤکلوں کو حذف کرنے میں ناکام
+
 client_title1=بیک اپ کلائنٹ بنائیں
 client_title2=بیک اپ کلائنٹ میں ترمیم کریں
 client_header=حمایت کرنے والے مؤکل کی تفصیلات
@@ -128,6 +137,7 @@ client_efileret=فائل کی برقراری کی مدت غائب یا غلط ہ
 client_ejobret=نوکری برقرار رکھنے کی مدت یا گمشدہ
 client_echild=اس مؤکل کو حذف نہیں کیا جاسکتا ہے کیونکہ اسے$1 استعمال کرتا ہے
 client_status=حیثیت دکھائیں
+
 job_title1=بیک اپ نوکری بنائیں
 job_title2=بیک اپ جاب میں ترمیم کریں
 job_header=بیک اپ کام کی تفصیلات
@@ -156,6 +166,7 @@ job_before=نوکری سے پہلے کمانڈ کریں
 job_after=نوکری کے بعد کمانڈ کریں
 job_cbefore=نوکری سے پہلے حکم دیں (مؤکل پر)
 job_cafter=نوکری کے بعد کمانڈ کریں (مؤکل پر)
+
 schedules_title=بیک اپ کی شیڈولیاں
 schedules_none=ابھی تک بیک اپ کے نظام الاوقات کی کوئی وضاحت نہیں کی گئی ہے۔
 schedules_name=نظام الاوقات
@@ -164,6 +175,7 @@ schedules_add=ایک نیا بیک اپ شیڈول شامل کریں۔
 schedules_delete=منتخب کردہ شیڈولز کو حذف کریں
 schedules_return=نظام الاوقات کی فہرست
 schedules_derr=نظام الاوقات کو حذف کرنے میں ناکام
+
 schedule_title1=بیک اپ شیڈول بنائیں
 schedule_title2=بیک اپ شیڈول میں ترمیم کریں
 schedule_header=بیک اپ شیڈول کی تفصیلات
@@ -177,6 +189,7 @@ schedule_ename=شیڈول کا نام غائب یا غلط
 schedule_eclash=اسی نام کا شیڈول پہلے سے موجود ہے
 schedule_etimes=قطار$1 میں بیک اپ کے اوقات گم ہیں
 schedule_echild=اس شیڈول کو حذف نہیں کیا جاسکتا ہے کیونکہ اسے$1 استعمال کرتا ہے
+
 backup_title=بیک اپ نوکری چلائیں
 backup_header=بیک اپ کام کی تفصیلات
 backup_job=نوکری چلانے کے لئے
@@ -191,11 +204,13 @@ backup_running=.. بیک اپ کام چل رہا ہے۔ مکمل ہونے پر �
 backup_running2=.. بیک اپ کام بیک گراونڈ میں شروع کیا گیا ہے۔
 backup_done=.. بیک اپ مکمل۔
 backup_failed=.. بیک اپ کامیابی کے ساتھ مکمل نہیں ہوا۔ تفصیلات کے لئے اوپر غلطی کے پیغام کو چیک کریں۔
+
 gbackup_title=باکولا گروپ بیک اپ جاب چلائیں
 gbackup_run=بیک اپ نوکری$1 کو$2 صارفین پر شروع کرنا ..
 gbackup_on=کلائنٹ$1 پر بیک اپ کام چل رہا ہے :
 gbackup_header=بیکولا گروپ بیک اپ ملازمت کی تفصیلات
 gbackup_jd=$1 (فائل$2 پر گروپ$3)
+
 dirstatus_title=ڈائریکٹر کا درجہ
 dirstatus_sched=شیڈول بیک اپ نوکریاں
 dirstatus_name=نوکری کا نام
@@ -216,12 +231,14 @@ dirstatus_status2=حالت
 dirstatus_donenone=بیک اپ نوکریاں نہیں چلائی گئیں۔
 dirstatus_cancel=منتخب نوکریاں منسوخ کریں
 dirstatus_refresh=فہرست کو تازہ کریں
+
 clientstatus_title=مؤکل کی حیثیت
 clientstatus_err= $1 : $2 سے اسٹیٹس لانے میں ناکام
 clientstatus_msg=$1 کی حیثیت :$2
 clientstatus_show=مؤکل کی حیثیت دکھائیں:
 clientstatus_ok=ٹھیک ہے
 clientstatus_on=$1 ($2 پر)
+
 storages_title=اسٹوریج ڈیمنس
 storages_none=ابھی تک کوئی اسٹوریج ڈیمان کی وضاحت نہیں کی گئی ہے۔
 storages_name=اسٹوریج کا نام
@@ -232,6 +249,7 @@ storages_add=ایک نیا اسٹوریج ڈیمان شامل کریں۔
 storages_delete=منتخب کردہ اسٹوریج ڈیمنز کو حذف کریں
 storages_return=اسٹوریج ڈیمان کی فہرست
 storages_derr=اسٹوریج ڈیمانز کو حذف کرنے میں ناکام
+
 storage_title1=اسٹوریج ڈیمون بنائیں
 storage_title2=اسٹوریج ڈیمون میں ترمیم کریں
 storage_header=ریموٹ اسٹوریج ڈیمان کی تفصیلات
@@ -255,6 +273,7 @@ storage_emedia=میڈیا قسم کا نام غائب ہے
 storage_emaxjobs=ایک ساتھ میں زیادہ سے زیادہ نوکریاں غائب
 storage_echild=اس مؤکل کو حذف نہیں کیا جاسکتا ہے کیونکہ اسے$1 استعمال کرتا ہے
 storage_status=حیثیت دکھائیں
+
 devices_title=سٹوریج آلات
 devices_none=ابھی تک ذخیرہ کرنے والے آلات کی وضاحت نہیں کی گئی ہے۔
 devices_name=ڈیوائس کا نام
@@ -264,6 +283,7 @@ devices_add=ایک نیا اسٹوریج ڈیوائس شامل کریں۔
 devices_delete=منتخب کردہ اسٹوریج ڈیوائسز کو حذف کریں
 devices_return=اسٹوریج ڈیوائسز کی فہرست
 devices_derr=اسٹوریج آلات کو حذف کرنے میں ناکام
+
 device_title1=اسٹوریج ڈیوائس بنائیں
 device_title2=اسٹوریج ڈیوائس میں ترمیم کریں
 device_header=فائل اسٹوریج ڈیوائس کی تفصیلات
@@ -282,11 +302,13 @@ device_eclash=اسی نام کے ساتھ اسٹوریج ڈیوائس پہلے �
 device_emedia=میڈیا قسم کا نام غائب ہے
 device_edevice=غائب یا غلط آرکائو ڈیوائس یا ڈائریکٹری
 device_echild=اس مؤکل کو حذف نہیں کیا جاسکتا ہے کیونکہ اسے$1 استعمال کرتا ہے
+
 storagestatus_title=اسٹوریج ڈیمان کی حیثیت
 storagestatus_err= $1 : $2 سے اسٹیٹس لانے میں ناکام
 storagestatus_msg=$1 کی حیثیت :$2
 storagestatus_show=اسٹوریج ڈیمان کی حیثیت دکھائیں:
 storagestatus_ok=ٹھیک ہے
+
 label_title=لیبل والیوم
 label_header=حجم کی لیبل سے متعلق تفصیلات
 label_storage=لیبل کرنے کے لئے اسٹوریج ڈیمان
@@ -302,6 +324,7 @@ label_done=.. لیبلنگ کامیاب۔
 label_epool=.. پول نہیں مل سکا!
 label_err=لیبل ناکام ہوگیا
 label_elabel=کوئی لیبل داخل نہیں ہوا
+
 pools_title=حجم کے تالاب
 pools_none=ابھی تک کسی حجم پول کی تعریف نہیں کی گئی ہے۔
 pools_name=تالاب کا نام
@@ -311,6 +334,7 @@ pools_add=ایک نیا حجم پول شامل کریں۔
 pools_delete=منتخب کردہ حجم پول کو حذف کریں
 pools_return=حجم پول کی فہرست
 pools_derr=حجم پول کو حذف کرنے میں ناکام
+
 pool_title1=والیوم پول بنائیں
 pool_title2=حجم پول میں ترمیم کریں
 pool_header=بیک اپ والیوم پول کی تفصیلات
@@ -332,6 +356,7 @@ pool_ereten=لاپتہ یا غیرقانونی برقرار رکھنے کی مد
 pool_status=جلدیں دکھائیں
 pool_autolabel=خود بخود حجم کے سابقے کا لیبل لگائیں
 pool_maxvolsize=زیادہ سے زیادہ حجم کا سائز (جیسے 5 گیگا بائٹس کے لئے 5 جی)
+
 poolstatus_title=پول میں جلدیں
 poolstatus_show=پول میں حجم دکھائیں:
 poolstatus_ok=ٹھیک ہے
@@ -345,9 +370,11 @@ poolstatus_status=بیک اپ وضع
 poolstatus_none=اس بیک اپ پول میں فی الحال کوئی حجم موجود نہیں ہے۔
 poolstatus_never=کبھی نہیں
 poolstatus_delete=منتخب شدہ جلدیں حذف کریں
+
 dvolumes_err=جلدیں حذف کرنے میں ناکام
 dvolumes_enone=کوئی بھی منتخب نہیں ہوا
 dvolumes_ebacula=بیکولا کی خرابی :$1
+
 mount_title=ماؤنٹ یا غیر ماؤنٹ
 mount_header=اسٹوریج ماؤنٹ یا غیر ماؤنٹ اختیارات
 mount_storage=اسٹوریج ڈیوائس
@@ -365,8 +392,10 @@ unmount_failed=.. غیر ماؤنٹ ناکام! اس کی وجہ کے لئے ا�
 mount_return=ماؤنٹ فارم
 mount_err=اسٹوریج ڈیوائس کو ماؤنٹ کرنے میں ناکام
 mount_eslot=غائب یا غلط سلاٹ نمبر
+
 cancel_err=ملازمتیں منسوخ کرنے میں ناکام
 cancel_enone=کوئی بھی منتخب نہیں ہوا
+
 gjobs_title=بیکولا گروپ بیک اپ نوکریاں
 gjobs_none=ابھی تک کوئی بیکولا گروپ بیک اپ نوکریوں کی تعریف نہیں کی گئی ہے۔
 gjobs_add=نیا بیکولا گروپ بیک اپ نوکری شامل کریں۔
@@ -374,10 +403,12 @@ gjobs_delete=منتخب نوکریاں حذف کریں
 gjobs_return=بیکولا گروپ کی ملازمتوں کی فہرست
 gjobs_derr=بیکولا گروپ کی نوکریوں کو حذف کرنے میں ناکام
 gjobs_client=بیک اپ گروپ میں بیکولا
+
 gjob_title1=بیکولا گروپ بیک اپ نوکری بنائیں
 gjob_title2=بیکولا گروپ بیک اپ جاب میں ترمیم کریں
 gjob_header=بیکولا گروپ بیک اپ ملازمت کی تفصیلات
 gjob_client=بیک اپ گروپ میں بیکولا
+
 groups_title=بیکولا گروپس
 groups_none=بیکولا کے ذریعہ ابھی تک بیکولا گروپس کا کوئی انتخاب نہیں کیا گیا ہے۔
 groups_name=گروہ کا نام
@@ -391,6 +422,7 @@ groups_derr=گروپس کو حذف کرنے میں ناکام
 groups_noadd=بیک اپ کے ل No منتخب کرنے کے لئے کوئی بیکولا گروپ موجود نہیں ہے۔
 groups_info=$1 ($2 ممبر)
 groups_already=تمام بیکولا گروپ پہلے ہی شامل کردیئے گئے ہیں۔
+
 group_title1=بیکولا گروپ بنائیں
 group_title2=باکولا گروپ میں ترمیم کریں
 group_header=بیکولا گروپ کی تفصیلات کا بیک اپ لیا جائے
@@ -401,11 +433,13 @@ group_port=بیکولا ایف ڈی پورٹ
 group_err=بیکولا گروپ کو بچانے میں ناکام
 group_eclash=ایک ہی نام والا گروپ پہلے ہی موجود ہے
 group_members=بیکولا گروپ میں میزبان
+
 sync_title=بیکولا گروپ کی ہم آہنگی
 sync_header=خودکار بیکولا گروپ کلائنٹ کی ہم آہنگی کے اختیارات
 sync_sched=شیڈول پر ہم وقت سازی کریں؟
 sync_schedyes=ہاں ، ذیل میں منتخب کردہ اوقات ..
 sync_err=بیکولا گروپ کی ہم آہنگی کو بچانے میں ناکام
+
 log_create_client=بیک اپ کلائنٹ$1 بنایا گیا
 log_modify_client=ترمیم شدہ بیک اپ کلائنٹ$1
 log_delete_client=حذف شدہ بیک اپ کلائنٹ$1
@@ -464,6 +498,7 @@ log_director=محفوظ کردہ عالمی باکولا ڈائریکٹر کی �
 log_file=محفوظ شدہ بکیولا فائل ڈیمون ترتیب
 log_storagec=محفوظ کردہ بکیولا اسٹوریج ڈیمون ترتیب
 log_fixpass=فکسڈ بیکولا کنسول پروگرام کا پاس ورڈ
+
 director_title=ڈائریکٹر کنفیگریشن
 director_header=گلوبل بیکولا ڈائریکٹر کے اختیارات
 director_name=ڈائریکٹر کا نام
@@ -477,6 +512,7 @@ director_ename=ڈائریکٹر کا نام غائب یا غلط
 director_eport=گمشدہ یا غلط پورٹ نمبر
 director_ejobs=ایک ساتھ ہونے والی ملازمتوں کی گمشدگی یا غلط تعداد
 director_edir=ورکنگ ڈائرکٹری غائب ہے
+
 tls_enable=TLS خفیہ کاری کو قابل بنائیں؟
 tls_require=صرف TLS کنکشن قبول کریں؟
 tls_verify=TLS مؤکلوں کی تصدیق کریں؟
@@ -488,6 +524,7 @@ tls_ecert=TLS سند فائل یا گم شدہ
 tls_ekey=TLS کلیدی فائل گم یا غائب ہے
 tls_ecacert=TLS CA سرٹیفکیٹ فائل غائب یا غیر موجود ہے
 tls_ecerts=ٹی ایل ایس کو قابل بنائے جانے کے ل certificate ، سرٹیفکیٹ ، کلیدی اور سی اے فائلوں کو بیان کرنا ضروری ہے
+
 file_title=فائل ڈیمون تشکیل
 file_header=بیکولا فائل ڈیمون کے اختیارات
 file_name=فائل ڈیمون کا نام
@@ -500,6 +537,7 @@ file_ename=فائل ڈیمون کا نام غائب یا غلط ہے
 file_eport=گمشدہ یا غلط پورٹ نمبر
 file_ejobs=ایک ساتھ ہونے والی ملازمتوں کی گمشدگی یا غلط تعداد
 file_edir=ورکنگ ڈائرکٹری غائب ہے
+
 fdirectors_title=ڈیمون ڈائریکٹرز کو فائل کریں
 fdirectors_none=ابھی تک کسی ڈائریکٹر کی تعریف نہیں کی گئی ہے۔
 fdirectors_name=ڈائریکٹر کا نام
@@ -508,6 +546,7 @@ fdirectors_add=ایک نیا ڈائریکٹر شامل کریں۔
 fdirectors_delete=منتخب ڈائریکٹرز کو حذف کریں
 fdirectors_return=ڈائریکٹرز کی فہرست
 fdirectors_derr=ڈائریکٹرز کو حذف کرنے میں ناکام
+
 fdirector_title1=فائل ڈیمون ڈائریکٹر بنائیں
 fdirector_title2=فائل ڈیمون ڈائریکٹر میں ترمیم کریں
 fdirector_header=ریموٹ ڈائریکٹر کو کنٹرول کرنے کی تفصیلات
@@ -519,6 +558,7 @@ fdirector_err=فائل ڈیمون ڈائریکٹر کو بچانے میں ناک
 fdirector_ename=ڈائریکٹر کا نام غائب ہے
 fdirector_eclash=اسی نام کے ساتھ ایک ہدایتکار پہلے سے موجود ہے
 fdirector_epass=غائب پاس ورڈ
+
 sdirectors_title=اسٹوریج ڈیمن ڈائریکٹرز
 sdirectors_none=ابھی تک کسی ڈائریکٹر کی تعریف نہیں کی گئی ہے۔
 sdirectors_name=ڈائریکٹر کا نام
@@ -527,6 +567,7 @@ sdirectors_add=ایک نیا ڈائریکٹر شامل کریں۔
 sdirectors_delete=منتخب ڈائریکٹرز کو حذف کریں
 sdirectors_return=ڈائریکٹرز کی فہرست
 sdirectors_derr=ڈائریکٹرز کو حذف کرنے میں ناکام
+
 sdirector_title1=اسٹوریج ڈیمن ڈائریکٹر بنائیں
 sdirector_title2=اسٹوریج ڈیمن ڈائریکٹر میں ترمیم کریں
 sdirector_header=ریموٹ ڈائریکٹر کو کنٹرول کرنے کی تفصیلات
@@ -538,6 +579,7 @@ sdirector_err=اسٹوریج ڈیمین ڈائریکٹر کو بچانے میں 
 sdirector_ename=ڈائریکٹر کا نام غائب ہے
 sdirector_eclash=اسی نام کے ساتھ ایک ہدایتکار پہلے سے موجود ہے
 sdirector_epass=غائب پاس ورڈ
+
 storagec_title=اسٹوریج ڈیمون تشکیل
 storagec_header=بیکولا اسٹوریج ڈیمون کے اختیارات
 storagec_name=ڈیمون کا نام
@@ -550,6 +592,7 @@ storagec_ename=غائب یا غلط اسٹوریج ڈیمون کا نام
 storagec_eport=گمشدہ یا غلط پورٹ نمبر
 storagec_ejobs=ایک ساتھ ہونے والی ملازمتوں کی گمشدگی یا غلط تعداد
 storagec_edir=ورکنگ ڈائرکٹری غائب ہے
+
 chooser_title=نظام الاوقات منتخب کریں
 chooser_monthsh=پھانسی کے لئے مہینوں
 chooser_months=سال کے مہینوں
@@ -574,11 +617,13 @@ chooser_emonthsrange=منتخب کردہ مہینوں کو لازمی طور پ�
 chooser_eweekdaysrange=منتخب ہفتہ کے دن لازمی ہونا چاہئے
 chooser_eweekdaynumsrange=ہفتے کے دن منتخب کردہ تعداد لازمی طور پر ہونی چاہ.
 chooser_edaysrange=مہینے کے منتخب دن لازمی طور پر ہونے چاہیں
+
 weekdaynum_1=پہلا
 weekdaynum_2=دوسرا
 weekdaynum_3=تیسرے
 weekdaynum_4=چوتھا
 weekdaynum_5=پانچویں
+
 restore_title=بیک اپ بحال کریں
 restore_title2=بیکولا گروپ میں بیک اپ بحال کریں
 restore_title3=بیکولا گروپ کا بیک اپ بحال کریں

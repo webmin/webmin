@@ -8,6 +8,7 @@ index_add=Agregar montaje
 index_auto=Tipo Desconocido
 index_swap=Memoria Virtual
 index_return=lista de sistemas de archivos
+
 edit_title=Editar Montaje
 create_title=Crear Montaje
 edit_err=Fallo al editar montaje
@@ -38,6 +39,7 @@ edit_perm=Hacer Permanente
 edit_del_umount=Desmontar y Borrar
 edit_ecannot=No está autorizado a editar este sistema de archivos
 edit_ecannot2=No está autorizado a agregar nuevos sistemas de archivos
+
 save_err=Fallo al salvar montaje
 save_edir='$1' no es un directorio
 save_edirname='$1' no es un nombre de directorio válido
@@ -52,8 +54,10 @@ save_perm=Los cambios al montaje de $1 no pudieron ser aplicados, ya que el mont
 save_apply=Aplicar a la lista de permanentes
 save_eremount=Fallo al remontar : $1
 save_enone=No seleccionó salvar o montar
+
 swap_err=Fallo al crear archivo de intercambio
 swap_esize='$1' no es un tamaño válido
+
 nfs_server=Choose Servidor NFS..
 nfs_select=Seleccione un servidor NFS para montar desde..
 nfs_ip=Dirección IP
@@ -64,6 +68,7 @@ nfs_failed=Fallo al recuperar la exportación de NFS desde $1 : $2  Quizás no h
 nfs_seldir=Seleccione un directorio NFS para montar..
 nfs_dir=Directorio
 nfs_clients=Clientes
+
 smb_choose=Seleccione Servidor SMB..
 smb_elist=Fallo al recuperar lista de servidores desde $1. Quizás el servidor no autoriza la recuperación
 smb_ehost=El servidor $1 no existe
@@ -78,6 +83,7 @@ smb_sel2=Seleccione un recurso compartido para montar..
 smb_share=Recurso compartido
 smb_comment=Comentario
 smb_noshares=No hay recursos compartidos disponibles en el servidor $1
+
 solaris_scsidev=Controlador SCSI $1 destino $2 unidad $3 partición $4
 solaris_mddev=Dispositivo RAID $1
 solaris_ecacheexists=El directorio $1 ya existe.  Bórrelo.
@@ -209,6 +215,7 @@ solaris_efstyp2=Fallo al verificar tipo de sistema de archivos : $1
 solaris_ecachedir='$1' no es un directorio de cache válido
 solaris_efmode='$1' no es un modo octal de archivo válido
 solaris_edmode='$1' no es un modo octal de directorio válido
+
 linux_eamd=Fallo AMD 
 linux_eauto=Fallo automontaje : $1
 linux_esmbconn=Fallo al conectar al servidor
@@ -323,6 +330,7 @@ linux_bind=Directorio original
 linux_ebind=Directorio original no ingresado o no válido
 linux_eserver=Nombre de servidor no ingresado
 linux_eshare=Nombre de recurso compartido no ingresado
+
 log_mount=Montado $3
 log_mount_l=Montado $2 $1 en $3
 log_umount=Desmontado $3
@@ -335,7 +343,9 @@ log_modify=Modificado montaje $3
 log_modify_l=Modificado $2 montaje $1 en $3
 log_delete=Borrado montaje $3
 log_delete_l=Borrado $2 montaje $1 en $3
+
 unmount_err=Fallo al desmontar $1
+
 mount_err=Fallo al montar $1
 irix_nhost=Nombre de máquina NFS
 irix_ndir=Directorio NFS
@@ -366,6 +376,7 @@ irix_rock=¿Usar extensiones Rock Ridge?
 irix_nofsck=¿Verificar sistema de archivos al iniciar?
 irix_auto=Fuente de automontaje
 irix_automap=Archivo de mapeo
+
 irix_ehost=La máquina '$1' no existe
 irix_eloss=La máquina '$1' está baja
 irix_eshowmount=La máquina '$1' no soporta NFS
@@ -383,13 +394,16 @@ irix_efstyp2=Fallo al obtener tipo de sistema de archivo $1 : $2
 irix_efstyp=El tipo de sistema de archivo de $1 es $2, no $3
 irix_eautomap=Archivo de mapeo de automontaje '$1' no existe
 irix_eauthmap2=Archivo de mapeo de automontaje no ingresado o no válido
+
 irix_devroot=Partición raíz
 irix_devswap=Partición de intercambio
 irix_autohosts=Todas las exportaciones de NFS
+
 acl_only=¿Solo permitir montar y desmontar?
 acl_fs=Sistemas de archivos que pueden ser editados
 acl_all=Todo
 acl_list=Bajo directorios listados
 acl_create=¿Poder agregar nuevos sistemas de archivos?
+
 egcc=El compilador GCC o CC necesitado para construir un programa para listar los sistemas de archivos montados en su sistema no está disponible.
 ecompile=Ha ocurrido un error al constuir un programa para listar los sistemas de archivo montados en su sistema : $1

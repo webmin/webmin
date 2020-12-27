@@ -12,6 +12,7 @@ index_eprog=Το εκτελέσιμο αρχείο διακομιστή NFS δε
 index_delete=Διαγραφή επιλεγμένων εξαγωγών
 index_disable=Απενεργοποίηση επιλεγμένων
 index_enable=Ενεργοποίηση επιλεγμένων
+
 edit_title=Επεξεργασία εξαγωγής
 create_title=Δημιουργία εξαγωγής
 edit_details=Εξαγωγή στοιχείων
@@ -65,6 +66,7 @@ edit_sec_krb5i=Ακεραιότητα του Kerberos
 edit_sec_krb5p=Kerberos privacy
 edit_sec_lipkey=LIPKEY
 edit_sec_spkm=SPKM
+
 save_err=Αποτυχία αποθήκευσης της εξαγωγής
 save_edir=Ο κατάλογος '$1' δεν υπάρχει
 save_epfs=Η διαδρομή του αρχείου συστήματος αρχείων pseudo '$1' δεν μοιάζει με απόλυτη διαδρομή
@@ -78,6 +80,7 @@ save_pfs=Το '$1' εξάγεται ήδη ως κατάλογος
 save_create_dir=Δεν είναι δυνατή η δημιουργία του καταλόγου '$1'
 save_eanonuid=Μη έγκυρο όνομα χρήστη για ανώνυμη πρόσβαση
 save_eanongid=Μη έγκυρο όνομα ανώνυμης ομάδας πρόσβασης
+
 exports_webnfs=WebNFS πελάτες
 exports_ngroup=Netgroup $1 
 exports_net=Δίκτυο $1 
@@ -85,6 +88,7 @@ exports_all=Ολοι
 exports_hosts=Υποστηρίζει $1 
 exports_host=Υποδοχή $1 
 exports_gss=Δικτυωμένο δίκτυο: $1 
+
 log_modify=Τροποποιημένη εξαγωγή NFS $1 
 log_modify_l=Τροποποιημένη εξαγωγή NFS $1 σε $2 
 log_delete=Διαγράφηκε εξαγωγή NFS $1 

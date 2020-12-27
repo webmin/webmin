@@ -1,6 +1,7 @@
 check_econfig=Il-fajl tal-konfigurazzjoni tal-mira iSCSI $1 ma nstabx fis-sistema tiegħek.
 check_eietadm=Il-kmand ta 'l-amministrazzjoni tal-mira iSCSI $1 ma nstabx fis-sistema tiegħek.
 check_einit=Azzjoni tal-bidu $1 ma teżistix
+
 index_title=iSCSI Target
 index_clink=Forsi mhuwiex installat, jew il-<a href='$1'>konfigurazzjoni tal-modulu</a> tiegħek mhix korretta.
 index_stop=Waqqaf il-Mira iSCSI
@@ -22,8 +23,10 @@ index_noluns=Xejn
 index_nousers=Kull
 index_nullio=Diska RAM tas-setturi $1 
 index_size=Daqs totali
+
 dtargets_err=Naqset milli tħassar il-miri
 dtargets_enone=Xejn magħżula!
+
 target_title1=Oħloq ISCSI Target
 target_title2=Editja l-iSCSI Target
 target_header=għażliet ta 'apparat iSCSI maqsuma
@@ -68,11 +71,13 @@ target_noalias=Xejn
 target_hdigest=Stim tal-kontroll tal-intestatura
 target_ddigest=Sommarju tad-dejta
 target_nodigest=Xejn
+
 auth_title=Issettjar tal-Awtentikazzjoni
 auth_header=Għażliet ta 'awtentikazzjoni Default għall-miri kollha
 auth_iuser=Awtentikazzjoni mill-klijenti
 auth_ouser=Awtentikazzjoni lill-klijenti
 auth_err=Ma rnexxielux isalva s-settings tal-awtentikazzjoni
+
 conn_title=Issettjar tal-Konnessjoni
 conn_header=Għażliet ta 'konnessjoni awtomatika għall-miri kollha
 conn_sessions=Massimu sessjonijiet paralleli
@@ -91,6 +96,7 @@ conn_emaxrecv=It-tul tas-segment massimu nieqes jew mhux numeriku
 conn_emaxxmit=It-tul massimu tas-segment trasmess nieqes jew mhux numeriku
 conn_emaxburst=Id-daqs massimu tat-tifqigħ tal-klijent nieqes jew mhux numeriku
 conn_efirstburst=Id-daqs massimu ta 'dejta mhux mitlub tal-klijent nieqes jew mhux numeriku
+
 timeout_title=Issettjar tal-Ħin tal-Ħin
 timeout_header=Għażliet ta 'skadenza tal-klijent
 timeout_nopi=Intervall bejn pings meta jkun wieqaf
@@ -98,6 +104,7 @@ timeout_nopinone=Qatt ma ping
 timeout_secs=sekondi
 timeout_nopt=Ħin biex tistenna reazzjoni tal-ping
 timeout_noptnone=L-istess bħall-ħin tal-ping
+
 addr_title=Indirizz u Port tas-Server
 addr_header=għażliet ta 'netwerking ta' server iSCSI
 addr_addr=Isma 'l-indirizz IP
@@ -110,18 +117,21 @@ addr_err=Ma rnexxielux isalva l-indirizz tas-server
 addr_eaddr=Indirizz biex tisma 'fuq għandu jkun indirizz IP
 addr_eport=Il-port biex tisma 'fuq għandu jkun numru
 addr_edebug=Il-livell ta 'debug għandu jkun numru
+
 initiators_title=Indirizzi tal-Klijent Permessi
 initiators_none=L-ebda indirizz tal-klijent permess ma ġie definit s'issa. L-ebda klijenti ma jkunu jistgħu jgħaqqdu.
 initiators_ips=Klijenti permessi
 initiators_title1=Żid l-Indirizzi tal-Klijent Permessi
 initiators_title2=Editja l-Indirizzi tal-Klijent Permessi
 initiators_header=Ippermettew lill-klijenti iSCSI għall-mira
+
 targets_title=Indirizzi tas-Server Permessi
 targets_none=L-ebda indirizz tas-server permess ma ġie definit s'issa. L-ebda klijenti ma jkunu jistgħu jgħaqqdu.
 targets_ips=Interfażijiet tas-server permessi
 targets_title1=Żid l-Indirizzi tas-Server Permessi
 targets_title2=Edit Indirizzi tas-Server Permessi
 targets_header=Ippermettiet interface tas-server iSCSI għall-mira
+
 allow_target=Isem fil-mira
 allow_move=Tmexxi
 allow_delete=Ħassar Magħżul
@@ -133,17 +143,21 @@ allow_return=miri u indirizzi permessi
 allow_err=Ma rnexxielux isalva l-indirizzi permessi
 allow_eaddr=L-indirizz $1 mhux validu. Għandu jkun jew indirizz IPv4, netwerk/maskra IPv4, jew indirizz IPv6 bejn parentesi.
 allow_eaddrs=L-ebda indirizzi ma jippermettu li jiddaħħlu
+
 dallow_err=Naqset milli tħassar l-indirizzi permessi
 dallow_enone=L-ebda magħżul
+
 manual_title=Editja l-Fajl tal-Konfigurazzjoni
 manual_desc=Uża l-kaxxa tat-test hawn taħt biex teditja l-fajl tal-konfigurazzjoni tas-server iSCSI $1. Oqgħod attent, għax ma ssir l-ebda validazzjoni fuq l-input tiegħek!
 manual_err=Ma rnexxielux isalva l-fajl tal-konfigurazzjoni
 manual_edata=L-ebda kontenut ma daħal!
+
 start_err=Naqset milli tibda server iSCSI
 stop_err=Ma rnexxielux iwaqqaf server iSCSI
 restart_err=Naqset milli terġa 'tibda s-server iSCSI
 atboot_err=Ma rnexxielhiex tkun attivata waqt l-istartjar
 atboot_einit=L-iskritt inizjali $1 ma jeżistix
+
 log_create_target=Il-mira maħluqa $1 
 log_delete_target=Mira mħassra $1 
 log_modify_target=Mira modifikata $1 

@@ -41,6 +41,7 @@ index_sadd=Yeni bir systemd hizmeti oluşturun.
 index_always=Her zaman
 index_ladd=Yeni bir launchd aracısı oluşturun.
 index_lname=Ajan adı
+
 edit_egone=İşlem artık mevcut değil
 edit_startcmd=Önyükleme komutu
 edit_stopcmd=Kapatma komutu
@@ -52,17 +53,21 @@ edit_reloadnow=Şimdi Yeniden Yükle
 edit_statusnow=Durumu Göster
 edit_status=Şimdi başladınız mı?
 edit_unknown=Bilinmeyen
+
 save_ename=Eksik veya geçersiz işlem adı
 save_eclash=Aynı ada sahip bir işlem zaten var
 save_escript=Hiçbir eylem komut dosyası girilmedi
 save_estartcmd=Önyükleme komutu eksik
+
 ss_restart=Eylemi Yeniden Başlat
 ss_reload=Yeniden Yükleme İşlemi
 ss_status=Eylem Durumu
 ss_doingstart=İşlem başlatılıyor $1 ..
 ss_doingstop=İşlem durduruluyor $1 ..
 ss_doingstatus=İşlem durumu isteniyor $1 ..
+
 acl_runonly=Sadece koş
+
 log_restart=İşlem yeniden başlatıldı $1 
 log_condrestart=Şartlı olarak yeniden başlatılan işlem $1 
 log_reload=Yeniden yüklenen eylem $1 
@@ -74,6 +79,7 @@ log_massrestart=Yeniden başlatılan işlemler $1
 log_massenable=Etkin eylemler $1 
 log_massdisable=Devre dışı bırakılmış eylemler $1 
 log_telinit=$1 çalışma seviyesine geçti
+
 edit_hostconfig_startup=Bu eylem etkinse $1 betiği sistem önyükleme zamanında çalıştırılır. Aşağıdan düzenleyebilirsiniz
 edit_hostconfig_plist=$1 dosyası, önyükleme komut dosyasına göre belirli parametreleri ayarlar. Aşağıdan düzenleyebilirsiniz
 edit_hostconfig_new=Yeni Eylem Oluştur
@@ -85,6 +91,7 @@ edit_hostconfig_array=$1, $2 ve $3 alanları dizi alanlarıdır ve birden fazla 
 edit_hostconfig_further=Yeni başlangıç eylemini oluşturduktan sonra, gerekirse başlangıç komut dosyasını ve parametre listesini değiştirebileceğiniz bir sayfaya yönlendirileceksiniz.
 edit_hostconfig_hostconfig=$1 dosyası, sistem önyüklemesinde başlatılan sistem genelindeki hizmetleri ve arka plan sunucularını denetler. Aşağıdan düzenleyebilirsiniz
 edit_hostconfig_title=Hostconfig'i Düzenle
+
 mass_enone=Hiçbir eylem seçilmedi
 mass_enone2=Hiçbir hizmet seçilmedi
 mass_start=İşlemleri Başlatma
@@ -105,9 +112,11 @@ mass_udisable=$1 hizmetini önyükleme zamanında devre dışı bırakma.
 mass_ustarting=Hizmet başlatılıyor $1 ..
 mass_ustopping=Hizmet durduruluyor $1 ..
 mass_urestarting=Hizmet yeniden başlatılıyor $1 ..
+
 change_err=Çalışma seviyelerini değiştirmenize izin verilmiyor
 change_title=Anahtar Çalışma Seviyesi
 change_cmd=$2 komutuyla $1 çalışma seviyesine geçiliyor. Bu biraz zaman alabilir ve geçiş yaptıktan sonra Webmin artık kullanılamayabilir.
+
 mode_init=SysV başlangıcı
 mode_osx=Mac os işletim sistemi
 mode_local=Tek önyükleme komut dosyası
@@ -116,6 +125,7 @@ mode_rc=FreeBSD RC komut dosyaları
 mode_upstart=sonradan görme
 mode_systemd=systemd
 mode_launchd=launchd
+
 upstart_title1=Upstart Hizmeti Oluştur
 upstart_title2=Başlatma Hizmetini Düzenle
 upstart_egone=Hizmet artık mevcut değil!
@@ -140,6 +150,7 @@ upstart_eserver=Sunucu komutu girilmedi
 upstart_eserver2=Sunucu komutu mevcut değil
 upstart_eserver3=Yalnızca bir sunucu komutu girilebilir
 upstart_return=sonradan hizmet
+
 systemd_title1=Systemd Hizmeti Oluştur
 systemd_title2=Systemd Hizmetini Düzenle
 systemd_egone=Hizmet artık mevcut değil!
@@ -163,6 +174,7 @@ systemd_edesc=Eksik hizmet açıklaması
 systemd_return=systemd hizmeti
 systemd_econf=Hiçbir systemd yapılandırması girilmedi
 systemd_estart=Başlangıçta çalıştırmak için eksik komutlar
+
 launchd_title1=Launchd Aracısı Oluştur
 launchd_title2=Launchd Agent'ı Düzenle
 launchd_egone=Ajan artık mevcut değil!
@@ -183,4 +195,5 @@ launchd_eclash=Aynı ada sahip bir aracı zaten var
 launchd_return=fırlatma ajanı
 launchd_econf=Hiçbir başlatma yapılandırması girilmedi
 launchd_estart=Eksik sunucu komutu
+
 syslog_journalctl=SystemD günlükleri

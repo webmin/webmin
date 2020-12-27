@@ -30,6 +30,7 @@ index_other_google=Motorul de căutare Google
 index_other_kde=Documentația KDE
 index_and=Potriviți toate
 index_or=Potriviți oricare
+
 search_efor=Nicio pagină manuală pentru căutarea sa introdus
 search_title=rezultatele cautarii
 search_desc=Descriere
@@ -47,24 +48,32 @@ search_none=Nu s-a găsit documentație care să corespundă $1.
 search_for=Pentru $1 
 search_google=Rezultatul căutării Google
 search_doxfer=Documentare online Webmin
+
 howto_title=Documentul HOWTO
 howto_header=Fișier document HOWTO $1 
 howto_epath=Calea de document HOWTO nevalidă
+
 doc_title=Documentarea pachetului
 doc_header=Fișier document pachet $1 
 doc_epath=Calea de documentare a pachetului este nevalidă
+
 man_title=Pagina manuală
 man_header=Pagina manuală pentru $1 ($2)
 man_noentry=Pagina manuală pentru $1 nu există!
 man_epath=Pagina manuală nu poate fi calea!
+
 kernel_title=Document Kernel
 kernel_header=Fișier de document Kernel $1 
 kernel_epath=Calea documentului de nucleu este nevalidă
+
 kde_title=Documentația KDE
 kde_header=Fișier document KDE $1 
 kde_epath=Calea de documentare KDE nevalidă
+
 perl_title=Modul Perl
 perl_header=Documentația pentru modulul Perl $1 
 perl_emod=Numele modulului Perl nevalid
+
 acl_allow=Se pot edita tipurile de căutare permise?
+
 check_ecannot=Nu aveți voie să editați tipurile de căutare permise

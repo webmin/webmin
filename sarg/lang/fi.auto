@@ -10,6 +10,7 @@ index_range=Luo raportti ajanjaksolle
 index_view=Näytä luotu raportti
 index_viewdesc=Näytä viimeisin luotu raportti hakemistossa $1.
 index_return=moduulihakemisto
+
 log_title=Lokilähde ja raportin kohde
 log_header=Source Squid -lokitiedosto ja luodut raporttivaihtoehdot
 log_access_log=Lähdekalmarin lokitiedosto
@@ -30,6 +31,7 @@ log_elastlog=Puuttuuko numero tai ei
 log_eemail=Puuttuva tai virheellisen näköinen sähköpostiosoite
 log_emailx=Puuttuva tai puuttuva postiohjelma
 log_squidguard_log_path=SquidGuard-lokitiedosto
+
 style_title=Raportin tyyli
 style_header=HTML-raportin tyyli- ja värivaihtoehdot
 style_title2=Raportin otsikko
@@ -54,6 +56,7 @@ style_efont=Puuttuva tai virheellinen fontinimi
 style_esize=Puuttuva tai virheellinen kuvan leveys ja korkeus
 style_language=Raportin kieli
 style_charset=Raportoi merkistö
+
 report_title=Raporttivaihtoehdot
 report_header=Raportoi sisältö ja luontivaihtoehdot
 report_resolve_ip=Ratkaise IP-osoitteet?
@@ -134,6 +137,7 @@ report_echar=Välilyönnit eivät ole sallittuja
 report_estring=Puuttuva tai virheellinen korvaava teksti
 report_eselect=Mitään ei valittu
 report_eenter=Mitään ei tullut
+
 sched_title=Ajoitettu raportin luominen
 sched_header=Ajoitetut raportointivaihtoehdot
 sched_sched=Ajoitettu raportti käytössä?
@@ -148,9 +152,11 @@ sched_rsel=Ne, jotka ovat välillä $1 - $2 päivää sitten
 sched_err=Aikataulun mukaisen raportin luomisen tallentaminen epäonnistui
 sched_erfrom=Puuttuva tai virheellinen aloitusmäärä päiviä sitten
 sched_erto=Puuttuva tai kelpaamaton loppumäärä päiviä sitten
+
 view_title=Sargin raportti
 view_efile=Virheellinen tiedostonimi!
 view_eopen=Raporttitiedoston avaaminen epäonnistui
+
 gen_title=Luo raportti
 gen_header=Luodaan nyt Sarg-raporttia Kalmari-lokitiedostosta $1 ja kaikista kierretyistä versioista ..
 gen_done=.. valmis
@@ -160,6 +166,7 @@ gen_view=Näytä valmis raportti.
 gen_err=Raportin luonti epäonnistui
 gen_efrom=Puuttuva tai kelpaa päivästä
 gen_eto=Puuttuva tai kelpaa päivästä
+
 webmin_log_log=Päivitetyt lokilähteen ja raportin kohdeasetukset
 webmin_log_report=Päivitetyt raporttivaihtoehdot
 webmin_log_style=Päivitetyt raporttityylivaihtoehdot

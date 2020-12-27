@@ -14,6 +14,7 @@ index_ro_rw=todos os hosts têm acesso de leitura, hosts selecionados têm acess
 index_sel_rw=hosts selecionados acesso de gravação
 index_all_rw=todos os hosts têm acesso de gravação
 index_sel_root=hosts selecionados acesso root
+
 edit_title=Editar exportação
 create_title=Criar exportação
 edit_details=Detalhes da exportação
@@ -56,6 +57,7 @@ edit_anon_access=Usuário anônimo
 edit_anon_notset=Não configurado
 edit_anon_noaccess=Sem acesso
 edit_async=Gravações assíncronas
+
 save_err=Falha ao salvar a exportação
 save_edir=O diretório '$1' não existe
 save_enetgroup=Grupo de rede inválido ou ausente
@@ -65,6 +67,7 @@ save_ehost='$2' - '$1' não é um nome de host válido
 save_enohost='$1' - você não listou nenhum host
 save_euids=Os UIDs não confiáveis devem ser uma lista de números ou intervalos separados por vírgula
 save_egids=Os GIDs não confiáveis devem ser uma lista de números ou intervalos separados por vírgula
+
 log_modify=Exportação NFS modificada $1 
 log_modify_l=Exportação NFS modificada $1 para $2 
 log_delete=Exportação NFS excluída $1 

@@ -9,15 +9,19 @@ index_edit=Beheer
 index_manual=Bewerk Handmatig
 index_anyfile=Bewerk andere PHP configuratie file :
 index_return=configuratie files
+
 file_global=Globale PHP configuratie
 file_eread=Lezen mislukt van $1 : $2
+
 manual_title=Bewerk Configuratie Handmatig
 manual_desc=Deze pagina kan gebruikt worden om handmatig de PHP configuratie file te bewerken. Dit moet voorzichtig gedaan worden, omdat er geen syntax of andere validatie controle gedaan word op uw wijzigingen.
 manual_err=Mislukt om de configuratie file te bewerken
 manual_edata=Geen nieuwe inhoud ingevuld
+
 list_title=Beheer PHP Configuratie
 list_ecannot=U bent niet bevoegd om deze PHP configuratie file te beheren
 list_return=PHP configuratie
+
 vars_title=PHP Variabelen
 vars_header=PHP variabele maak en quote opties
 vars_magic=Quote alle invoer variabelen?
@@ -26,6 +30,7 @@ vars_register=Omdraaien van alle invoer naar globale variabelen?
 vars_args=Verander de opdracht-regel parameters naar globale variabelen?
 vars_long=Maak oude-stijl arrays zoals <tt>HTTP_GET_VARS</tt>?
 vars_err=Mislukt om PHP variabele instellingen op te slaan
+
 dirs_title=Directory Instellingen
 dirs_header=PHP script en extensie directory instellingen
 dirs_include=Zoek directory's om bij te voegen
@@ -37,6 +42,7 @@ dirs_err=Mislukt om directory instellingen op te slaan
 dirs_eincs=Nee inclusief ingevulde zoek directory's
 dirs_eutmp=Ontbrekende of ongeldige tijdelijke files directory
 dirs_eext=Ontbrekende extensie directory
+
 db_title=Database Instellingen
 db_header1=MySQL database verbinding instellingen
 db_persist=Blijvende database verbindingen toestaan?
@@ -55,6 +61,7 @@ db_emaxlinks=Ontbrekende of ongeldig maximum aantal totale verbindingen
 db_etimeout=Ontbrekende of ongeldige verbinding timeout
 db_ehost=Ontbrekende of ongeldige standaard MySQL server host
 db_eport=Ontbrekende of ongeldige standaard MySQL server poort
+
 session_title=Sessie Opties
 session_header=Opties voor PHP sessie tracking
 session_handler=Sessie opslag mechanisme
@@ -70,6 +77,7 @@ session_maxlife=Maximum sessie levensduur
 session_epath=Ontbrekende of ongeldige directory voor sessie files
 session_elife=Ontbrekende of ongeldige cookie levensduur
 session_emaxlife=Ontbrekende of ongeldige maximum sessie levensduur
+
 safe_title=Veilige Mode Opties
 safe_header=Opslaan van file toegang mode opties
 safe_on=Veilige mode aanzetten?
@@ -82,6 +90,7 @@ safe_err=Mislukt om veilige mode opties op te slaan
 safe_einclude=Ontbrekende of ongeldige toegestane directory voor inbegrepen files
 safe_eexec=Ontbrekende of ongeldige toegestane directory voor uitgevoerde programma's
 safe_ebasedir=Ontbrekende of ongeldige directory voor file operaties
+
 limits_title=Bron Limieten
 limits_header=Geheugen en verzend limiet opties
 limits_mem=Maximale geheugen toewijzing
@@ -95,6 +104,7 @@ limits_epost=Ontbrekende of ongeldige maximale HTTP POST grote
 limits_eupload=Ontbrekende of ongeldige maximale file upload grote
 limits_eexec=Ontbrekende of ongeldige maximale uitvoer tijd
 limits_einput=Ontbrekende of ongeldige invoer parsing tijd
+
 errors_title=Fouten Loggen
 errors_header=Fout meldingen laten zien en log opties
 errors_display=Laat fout berichten zien?
@@ -125,6 +135,7 @@ errors_err=Mislukt om fout loggen op te slaan
 errors_ereporting=Geen fout soort expressie ingevuld
 errors_emaxlen=Ontbrekende of ongeldige maximum grote van gelogde fouten
 errors_efile=Ontbrekende fouten log file
+
 misc_title=Andere Instellingen
 misc_header=Extra andere PHP instellingen
 misc_short=PHP scripts toestaan om te starten met &lt;? ?
@@ -144,6 +155,7 @@ misc_esendmail2=Ontbrekende opdracht voor verzenden van email
 misc_include=Inclusief het mogen openen op afstand?
 misc_path=CGI Reparatie Info Pad?
 misc_timezone=PHP Tijdzone
+
 log_manual=Bewerk handmatig file $1
 log_vars=Gewijzigde PHP variabelen in $1
 log_dirs=Gewijzigde directory instellingen in $1
@@ -153,6 +165,7 @@ log_safe=Gewijzigde veilige mode opties in $1
 log_limits=Gewijzigde bron limieten in $1
 log_errors=Gewijzigd fout loggen in $1
 log_misc=Andere instellingen gewijzigd in $1
+
 acl_global=Mag globale PHP configuratie bewerken?
 acl_anyfile=Mag iedere file bewerken als een PHP configuratie?
 acl_manual=Mag handmatig configuratie files bewerken?

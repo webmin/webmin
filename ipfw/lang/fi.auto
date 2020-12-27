@@ -25,6 +25,7 @@ index_resetdesc=Napsauta tätä painiketta, jos haluat tyhjentää kaikki olemas
 index_cluster=Klusteripalvelimet
 index_clusterdesc=Napsauta tätä painiketta, jos haluat asettaa muita Webmin-palvelimia, joihin palomuurin määritykset kopioidaan automaattisesti.
 index_return=palomuurisäännöt
+
 index_num=Num
 index_action=Toiminta
 index_desc=Kunto
@@ -37,6 +38,7 @@ index_delete=Poista valitut
 index_existing=Webmin on havainnut tällä hetkellä käytössä olevat $1 IPFW-palomuurisäännöt, joita ei tallenneta tiedostoon $2. Nämä säännöt asetettiin todennäköisesti komentosarjasta, jota tämä moduuli ei osaa lukea ja muokata. <p> Jos haluat käyttää tätä moduulia IPFW-palomuurin hallintaan, napsauta alla olevaa painiketta muuntaaksesi olemassa olevat säännöt tallennetiedostoksi. ja poista sitten olemassa oleva palomuurikomentosarja.
 index_saveex=Tallenna palomuurisäännöt
 index_headerex=Olemassa olevat palomuurin kokoonpanot
+
 action_allow=<font color=#00aa00>Salli</font>
 action_deny=<font color=#ff0000>Pudota</font>
 action_reject=<font color=#ff4400>Hylkää</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>Pudota paketti</font>
 laction_reject=<font color=#ff4400>Palauta ICMP-hylkääminen</font>
 laction_reset=<font color=#ff4400>Palauta TCP-yhteys</font>
 laction_skipto=Hyppää hallitsemaan
+
 edit_title1=Luo sääntö
 edit_title2=Muokkaa sääntöä $1 
 edit_header1=Sääntötoiminta
@@ -114,6 +117,7 @@ edit_src-addr=Lähdeosoitteesta ..
 edit_src-port=Lähdesatamasta ..
 edit_dst-addr=Kohdeosoitteeseen ..
 edit_dst-port=Määräsatamaan ..
+
 save_err=Säännön tallentaminen epäonnistui
 save_enum=Puuttuva tai virheellinen sääntönumero
 save_eskipto=Puuttuva tai virheellinen sääntönumero, johon hyppää
@@ -144,7 +148,9 @@ save_etcpflags=TCP-liput voidaan määrittää vain, jos protokolla on TCP
 save_elimit=Puuttuva tai virheellinen enimmäisraja
 save_edstport=Puuttuva tai virheellinen kohdeportti
 save_esrcport=Puuttuva tai virheellinen lähdeportti
+
 apply_err=Asetusten määrittäminen epäonnistui
+
 desc_if=Jos $1 
 desc_and=ja
 desc_always=Aina
@@ -191,6 +197,7 @@ desc_where=missä $1
 desc_all=kaikille paketeille
 desc_in=paketti on saapuva
 desc_out=paketti lähtee
+
 log_create_rule=Luotu $1 -sääntö
 log_delete_rule=Poistettu $1 -sääntö
 log_modify_rule=Muokattu $1 -sääntö
@@ -206,6 +213,7 @@ log_convert=Muunnetut aktiiviset palomuurisäännöt
 log_setup=Palomuurin alkuasetukset suoritettiin
 log_unapply=Palautettu palomuurin kokoonpano
 log_delsel=Poistettu $1 säännöt
+
 cluster_title=Klusteripalomuuripalvelimet
 cluster_none=Palomuuriklusteriin ei ole vielä lisätty palvelimia.
 cluster_host=hostname
@@ -216,6 +224,7 @@ cluster_gadd=Lisää palvelimia ryhmään
 cluster_need=Sinun on lisättävä palvelimet, joilla on kirjautuminen ja salasana, Webmin Servers Index -moduuliin, ennen kuin niitä voidaan hallita täällä.
 cluster_return=klusteripalvelimet
 cluster_delete=Poista valitut
+
 add_title=Lisää palvelimia
 add_msg=Lisätään $1 ..
 add_gmsg=Palvelimien lisääminen ryhmään $1 ..

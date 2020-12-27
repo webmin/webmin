@@ -20,6 +20,7 @@ index_d1=$1
 index_dlang=język, w którym wyświetlane są moduły
 index_dtheme=motyw, który kontroluje wygląd Webmina
 index_dpass=hasło używane do logowania w Webminie
+
 change_title=Zmian Ustawień
 change_user=Zmian logowania Webmina ..
 change_done=.. gotowe
@@ -30,6 +31,7 @@ change_epass2=Nowe hasła nie pasują do siebie
 change_epass=Nowe hasło jest nieprawidłowe : $1
 change_eoverlay=Nie można wybrać nakładki motywu jeśli nie wybrano motywu.
 change_eoverlay2=Wybrana nakładka motywu jest niekompatybilna z wybranym motywem.
+
 acl_lang=Może zmienić język?
 acl_theme=Może zmienić motyw?
 acl_pass=Może zmienić hasło (jeżeli zostało ustawione w Webmin) ?

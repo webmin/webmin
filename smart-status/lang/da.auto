@@ -25,6 +25,7 @@ index_family=Model familie
 index_serial=Serienummer
 index_capacity=Kapacitet
 index_norm=normaliseret:
+
 monitor_type=SMART Drive Check
 monitor_type2=SSD Wearout
 monitor_drive=Kør for at tjekke
@@ -40,14 +41,17 @@ monitor_wearlevel=Mislykkes, hvis slidniveauet falder under
 monitor_ewearlevel=Ugyldig procentdel af slidniveau
 monitor_nowearout=Drev rapporterer ikke en SSD-væroutindikator
 monitor_wornout=Slidniveauet er faldet til $1 
+
 short_title=Kort selvtest
 short_doing=Start kort selvtest på $1 ..
 short_failed=.. mislykkedes!
 short_ok=.. test startede OK. Se drevstatus på modulets hovedside for resultaterne.
+
 ext_title=Udvidet selvtest
 ext_doing=Start af udvidet selvtest på $1.
 ext_failed=.. mislykkedes!
 ext_ok=.. test startede OK. Se drevstatus på modulets hovedside for resultaterne.
+
 data_title=Dataindsamlingstest
 data_doing=Starter offline dataindsamling på $1 ..
 data_failed=.. mislykkedes!

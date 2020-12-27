@@ -3,8 +3,10 @@ index_clink=Miskien is dit nie geïnstalleer nie, of is u <a href='$1'>module-op
 index_return=module-indeks
 index_atboot=Begin met die boot?
 index_atbootdesc=Verander hierdie opsie om te bepaal of die iSCSI-kliënt teen die tydstip begin word of nie. Dit is nodig dat lêerstelsels wat van iSCSI-bedieners gemonteer word, outomaties gemonteer word.
+
 check_econfig=Die iSCSI-kliënt-opstellinglêer $1 is nie op u stelsel gevind nie.
 check_eiscsiadm=Die iSCSI-kliëntadministrasieprogram $1 is nie op u stelsel gevind nie.
+
 auth_title=Verifikasie-opsies
 auth_header=iSCSI-kliënt en bedienerverifikasie
 auth_name=Plaaslike stelselinisieerder se naam
@@ -29,6 +31,7 @@ auth_edpassword=Ontdekkingswagwoord vir bediener ontbreek
 auth_edusername_in=Ontbrekende gebruikersnaam vir kliënt ontbreek
 auth_edpassword_in=Ontdekkingswagwoord vir kliënt ontbreek
 auth_egen=Kon nie 'n nuwe naam genereer nie!
+
 timeout_title=iSCSI-time-outs
 timeout_header=Timeout-opsies vir iSCSI-klante
 timeout_timeout=Tyd om te wag voordat u SCSI-opdragte misluk
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=Tyd of nie-numeriese tyd om te wag vir ping voordat di
 timeout_eabort_timeout=Tyd of nie-numeriese tyd om te wag vir die reaksie op aborsie voordat dit misluk
 timeout_elu_reset_timeout=Tyd of nie-numeriese tyd om te wag vir die logiese eenheidsreaksie voordat dit misluk
 timeout_etgt_reset_timeout=Tyd of nie-numeriese tyd om te wag vir die teikenrespons voordat dit misluk
+
 iscsi_title=iSCSI-opsies
 iscsi_header=Ander iSCSI-opsies
 iscsi_startup=Koppel sessies tydens oplaaityd?
@@ -62,6 +66,7 @@ iscsi_err=Kon nie iSCSI-opsies stoor nie
 iscsi_eretry=Ontbrekende of nie-numeriese aantal kere om weer aan te meld
 iscsi_ecmds=Maksimum of nie-numeriese maksimum opdragte per sessie in die ry
 iscsi_equeue=Maksimum of nie-numeriese maksimum opdragte per toestel in die ry
+
 ifaces_title=iSCSI-koppelvlakke
 ifaces_elist=Kon nie koppelvlakke lys nie : $1 
 ifaces_name=Koppelvlaknaam
@@ -78,11 +83,13 @@ ifaces_hwaddress=MAC-adres
 ifaces_ifacename=Bron koppelvlak
 ifaces_ipaddressdef=outomatiese
 ifaces_notset=outomatiese
+
 iadd_err=Kon nie die koppelvlak byvoeg nie
 iadd_eclash=Daar bestaan reeds 'n koppelvlak met die naam $1 
 iadd_eipaddress=IP-adres met ontbrekende of ongeldige bron
 iadd_ehwaddress=MAC-adres ontbreek of ongeldig
 iadd_ename=Die naam van die koppelvlak ontbreek of bevat ongeldige karakters
+
 difaces_err=Kon nie koppelvlakke verwyder nie
 difaces_enone=Geen gekies nie
 difaces_edelete=Die verwydering van koppelvlak $1 het misluk : $2 
@@ -93,6 +100,7 @@ difaces_confirm=Verwyder koppelvlakke
 difaces_target=iSCSI-teiken
 difaces_ip=iSCSI-bediener
 difaces_users=Sommige verbindings met behulp van hierdie koppelvlakke is tans aktief en kan nie werk as die koppelvlakke verwyder word nie :
+
 conns_title=iSCSI-verbindings
 conns_elist=Kon nie verbindings lys nie : $1 
 conns_ip=Bediener IP
@@ -113,6 +121,7 @@ conns_return=lys van verbindings
 conns_iface=iSCSI-koppelvlak
 conns_ifacedef=Kies outomaties
 conns_ifaceerr=Kon nie koppelvlakke ophaal nie : $1 
+
 add_title=Voeg iSCSI-verbinding by
 add_err=Kon nie iSCSI-verbinding byvoeg nie
 add_ehost=Ontbrekende of onoplosbare gasheernaam ontbreek
@@ -129,6 +138,7 @@ add_on=$1 op $2
 add_auth=Teken in op bediener
 add_auth1=Gebruik standaard-verifikasiemetode
 add_auth0=Teken in as $2 met wagwoord $3 met behulp van metode $1 
+
 dconns_err=Kon nie verbindings ontkoppel nie
 dconns_enone=Geen gekies nie
 dconns_edelete=Die verwydering van teiken $2 van gasheer $1 het misluk : $3 
@@ -142,6 +152,7 @@ dconns_use=Gebruik deur
 dconns_size=Partisie grootte
 dconns_confirm=Verwyder verbindings
 dconns_unused=ongebruikte
+
 vconn_title=iSCSI-verbinding
 vconn_egone=Geselekteerde verbinding bestaan nie meer nie!
 vconn_header=iSCSI-verbindingbesonderhede
@@ -160,8 +171,10 @@ vconn_device3=Konstante toestelnaam
 vconn_delete=Ontkoppel verbinding
 vconn_users=Huidige gebruikers
 vconn_size=Skyfgrootte
+
 atboot_err=Kon nie tydens opstart inskakel nie
 atboot_einit=Daar is geen selflaaier met die naam $1 nie
+
 log_auth=Opgebergde verifikasie-opsies
 log_timeout=Opgeskort time-out opsies
 log_iscsi=Gestoorde iSCSI-opsies

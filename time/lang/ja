@@ -7,6 +7,7 @@ index_schedyes=はい、以下の時刻で..
 index_sync=同期し適用する
 index_hardware2=ハードウェア時刻も設定する
 index_tz=現在の場所
+
 action_save=保存
 action_apply=適用
 action_sync=システム時間をハードウェア時間と同期
@@ -14,6 +15,7 @@ action_sync_s=ハードウェア時間をシステム時間と同期
 action_timeserver_sys=システム時間を同期
 action_timeserver_hw=ハードウェア時間を同期
 action_savezone=タイムゾーンを変更
+
 acl_sys=ユーザがシステム時間を編集可能
 acl_hw=ユーザがハードウェア時間を編集可能
 acl_yes=はい
@@ -21,16 +23,20 @@ acl_no=いいえ
 acl_error=システム時間のモジュールにアクセスできますが、システム時間またはハード
 acl_nosys=システム時間は編集できません
 acl_nohw=ハードウェア時間は編集できません
+
 sys_title=システム時間
 hw_title=ハードウェア時間
+
 day=曜日
 month=月
 date=日付
 hour=時間
 year=年
+
 error_cnf=エラー:$1 コマンドがありません
 error_hw=ハードウェア時間を設定できません: $1
 error_sync=システム時間と同期できません: $1
+
 log_set_date=$1 にシステム時間を設定
 log_set_hwclock=$1 にハードウェア時間を設定
 log_remote_date=$2 からシステム時間を取り出しました

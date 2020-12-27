@@ -3,13 +3,17 @@ index_socket=Unix socket-fil $1
 index_cmd=Utgång från $1 
 index_viewfile=Visa loggfil:
 index_viewok=Se
+
 restart_ecannot=Du får inte starta om syslog
+
 start_ecannot=Du får inte starta syslog
 edit_socket=Unix-domänfack
 edit_return=logga detaljer
 edit_ecannot=Du får inte redigera logginställningar
 edit_ecannot2=Du får inte redigera den här loggen
+
 view_filter=Visa bara rader med text $1 
+
 save_esocket=Saknad eller ogiltig unix-domänuttag
 save_ecannot1=Du får inte ta bort den här loggen
 save_ecannot2=Du får inte se denna logg
@@ -19,7 +23,9 @@ save_ecannot5=Du får inte ändra denna logg
 save_ecannot6=Du får inte se godtyckliga loggar
 save_ecannot7=Du får inte se den här extra loggen
 save_emissing=Saknad loggfil för att visa
+
 log_start=Startade loggningsserver
+
 acl_noedit=Kan bara visa loggar?
 acl_any=Kan du se vilken fil som helst som en logg?
 acl_logs=Kan visa och konfigurera loggfiler

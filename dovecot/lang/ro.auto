@@ -11,11 +11,13 @@ index_boot=Începeți la pornire?
 index_bootdesc=Modificați această setare pentru a activa sau dezactiva pornirea serverului Dovecot la momentul de pornire a sistemului.
 index_return=indexul modulului
 index_version=Versiunea $1
+
 stop_err=Nu a reușit să oprească Dovecot
 stop_erunning=Nu mai alerga
 start_err=Nu a reușit să pornească Dovecot
 start_eprotos=Nu au fost selectate protocoale pe pagina <b>Rețea și protocoale</b>
 apply_err=Eroare la aplicarea configurației
+
 net_title=Networking și protocoale
 net_header=Opțiuni de protocol de rețea și poștă Dovecot
 net_protocols=Serviți protocoale de e-mail
@@ -42,8 +44,11 @@ net_eimaps_listen=Adresa IP nevalidă pentru conexiunile SSL IMAP
 net_epop3s_listen=Adresa IP nevalidă pentru conexiunile SSL POP3
 net_elisten=Adresa IP nevalidă pentru conexiunile non SSL
 net_essl_listen=Adresa IP nevalidă pentru conexiunile SSL
+
 imap_title=Opțiuni IMAP
+
 pop3_title=Opțiuni POP3
+
 ssl_title=Configurare SSL
 ssl_header=Opțiuni mod IMAP și POP3 SSL
 ssl_key=Fișier cu cheie privată SSL
@@ -61,7 +66,9 @@ ssl_ecert=Fișier de certificat lipsă sau inexistent
 ssl_eca=Fișierul de certificare CA al clientului lipsă sau inexistent
 ssl_eregen=Interval de regenerare a parametrilor lipsă sau nenumerică
 ssl_epass=Nu a fost introdusă nicio parolă pentru fișierul cheie SSL
+
 misc_title=Alte optiuni
+
 login_title=Opțiuni utilizator și autentificare
 login_header=Opțiuni de autentificare și autentificare a utilizatorului
 login_fuid=UID minim valabil
@@ -117,6 +124,7 @@ login_procs=Procesele maxime de autentificare
 login_count=Procesele inițiale de autentificare
 login_eprocs=Numărul maxim lipsit sau nevalid al proceselor de autentificare
 login_ecount=Număr inițial lipsă sau nevalid al proceselor de autentificare
+
 mail_title=Fișiere de e-mail
 mail_header=Opțiuni de locație și citire a e-mailului
 mail_env=Locația fișierului prin poștă
@@ -169,6 +177,7 @@ mail_eindexmode=Locația fișierelor index nu poate fi setată atunci când loca
 mail_econtrolmode=Locația fișierelor de control nu poate fi setată atunci când locația fișierului poștal este detectată automat
 mail_eindex=Lipsă sau nevalidă calea absolută pentru fișierele index
 mail_econtrol=Lipsă sau nevalidă calea absolută pentru fișierele de control
+
 log_net=Schimbări de rețea și protocoale
 log_login=Opțiuni de utilizator și autentificare modificate
 log_mail=Fișiere de e-mail modificate
@@ -179,6 +188,7 @@ log_stop=Serverul Dovecot oprit
 log_bootup=Activat Dovecot la momentul de pornire
 log_bootdown=Dezactivat Dovecot la momentul pornirii
 log_manual=Fișierul de configurare editat manual $1
+
 manual_title=Editați fișierele de configurare
 manual_editsel=Editați fișierul de configurare Dovecot
 manual_err=Nu a reușit să salvați fișierul de configurare

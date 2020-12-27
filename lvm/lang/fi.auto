@@ -42,6 +42,7 @@ index_lvused=Käytetty tila
 index_lvuse=Käytetään
 index_snapof=(Tilannekuva $1)
 index_thin=LVM-ohut uima-allas $1 LV: lle
+
 lv_edit=Muokkaa loogista määrää
 lv_edit_snap=Muokkaa tilannekuvaa
 lv_create=Luo looginen määrä
@@ -128,6 +129,7 @@ lv_pvfrom=Siirrä lohkot fyysisestä äänenvoimakkuudesta
 lv_pvto=Fyysiseen tilavuuteen
 lv_moveok=Siirrä kortteja
 lv_return=looginen äänenvoimakkuus
+
 mkfs_title=Luo tiedostojärjestelmä
 mkfs_desc=Tämä muoto antaa sinun rakentaa uuden $2 ($1) tiedostojärjestelmän loogiseen taltioon $3. Kaikki nykyiset tiedot poistetaan.
 mkfs_header=Uudet tiedostojärjestelmän asetukset
@@ -135,6 +137,7 @@ mkfs_err=Tiedostojärjestelmän luominen epäonnistui
 mkfs_exec=Suoritetaan komento $1 ..
 mkfs_failed=.. komento epäonnistui!
 mkfs_ok=.. komento valmis.
+
 resize_title=Muuta loogisen volyymin kokoa
 resize_mesg=Tämän loogisen levyn $1 -tiedostojärjestelmän kokoa ei voi muuttaa. Jos muutat loogisen taltion kokoa, sinun on luotava tiedostojärjestelmä uudelleen, mikä poistaa kaikki siinä olevat tiedot.
 resize_mesg2=Webmin ei tiedä, millainen tiedostojärjestelmä tällä loogisella levyllä on, jos sellainen on. Jos muutat loogisen taltion kokoa, sinun on luotava tiedostojärjestelmä uudelleen, mikä poistaa kaikki siinä olevat tiedot.
@@ -142,8 +145,10 @@ resize_fs=$1 -tiedostojärjestelmän koon muuttamisessa tässä loogisessa levys
 resize_ok=Muuta loogisen volyymin kokoa
 resize_emounted=Tämän loogisen levyn tiedostojärjestelmän kokoa ei voi muuttaa, kun se on asennettu
 resize_emounted2=Tämän loogisen levyn tiedostojärjestelmää ei voida kutistaa, kun se on asennettu
+
 init_title=Aktivoi LVM
 init_cmd=Käynnissä komento $1 ..
+
 pv_edit=Muokkaa fyysistä tilavuutta
 pv_create=Lisää fyysinen tilavuus
 pv_vg=Tilavuusryhmässä $1 
@@ -170,6 +175,7 @@ pv_eother=Puuttuva tai virheellinen levylaite
 pv_raid=RAID-laite $1 
 pv_lvs=Jako loogisten volyymien mukaan
 pv_egone=Fyysistä tilavuutta ei enää ole!
+
 vg_edit=Muokkaa tilavuusryhmää
 vg_create=Luo tilavuusryhmä
 vg_name=Levyryhmän nimi
@@ -188,11 +194,13 @@ vg_deleteok=Poista nyt
 vg_ename=Puuttuva tai virheellinen volyymiryhmän nimi
 vg_epesize=Puuttuva tai virheellinen allokointilohkon koko
 vg_egone=Tilaryhmää ei enää ole!
+
 pvmove_err=Loogisen taltion siirtäminen epäonnistui
 pvmove_title=Siirrä looginen äänenvoimakkuus
 pvmove_start=Loogisen äänenvoimakkuuden $1 siirtäminen $2 : sta $3. ..
 pvmove_failed=.. siirto epäonnistui!
 pvmove_done=.. siirrä loppuun
+
 thin_title=Luo ohut allas
 thin_desc=Ohut uima-allas on pari LV: tä, joita voidaan käyttää luomaan lisää LV: itä, jotka voivat olla suurempia kuin käytettävissä olevat raja-arvot. Tila kulutetaan vain tarvittaessa, eikä silloin, kun uima-altaan sisällä olevat LV-alueet luodaan. VAROITUS - Kaikki valittujen LV-laitteiden tiedot menetetään!
 thin_header=Uudet uima-altaan yksityiskohdat
@@ -204,6 +212,7 @@ thin_err=Ohut altaan luominen epäonnistui
 thin_esame=Molemmat valitut LV: t ovat samat
 thin_edata=Valittu data LV on jo käytössä
 thin_emetadata=Valittu metatieto LV on jo käytössä
+
 log_create_vg=Luotu ryhmä $1 
 log_modify_vg=Muokattu tilavuusryhmä $1 
 log_delete_vg=Poistettu ääniryhmä $1 
@@ -216,4 +225,5 @@ log_create_pv=Lisätty fyysinen tilavuus $1 VG $1 : een
 log_modify_pv=Muokattu fyysinen tilavuus $1 VG $2 : ssa
 log_delete_pv=Poistettu fyysinen tilavuus $1 VG $2 : sta
 log_resize_pv=Koko muutettu fyysisen tilavuuden $1 suhteessa VG $2 
+
 blocks=lohkot

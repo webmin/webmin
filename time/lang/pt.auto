@@ -17,6 +17,7 @@ index_tabsync=Sincronização do servidor de horário
 index_desctime=Este formulário é para alterar a hora atual do sistema, que é usada por todos os processos em execução. Em sistemas operacionais que possuem um relógio de hardware separado, também pode ser usado para definir isso.
 index_desczone=Este formulário permite definir o fuso horário padrão do sistema, usado para converter a hora do sistema em um formato e deslocamento legível por humanos.
 index_descsync=Este formulário é para configurar o sistema para sincronizar automaticamente a hora com um servidor remoto. A sincronização será feita usando o protocolo <tt>time</tt> ou NTP do Unix, dependendo de quais comandos estão instalados e de que suporte o sistema remoto.
+
 action_save=Salve 
 action_apply=Aplique
 action_sync=Defina a hora do sistema de acordo com a hora do hardware
@@ -24,6 +25,7 @@ action_sync_s=Defina a hora do hardware de acordo com a hora do sistema
 action_timeserver_sys=Sincronizar hora do sistema
 action_timeserver_hw=Sincronizar o tempo do hardware
 action_savezone=Alterar fuso horário
+
 acl_sys=O usuário pode editar a hora do sistema?
 acl_hw=O usuário pode editar o tempo do hardware?
 acl_timezone=O usuário pode definir o fuso horário?
@@ -34,8 +36,10 @@ acl_error=Você tem acesso ao módulo de hora do sistema, mas não pode editar n
 acl_nosys=Você não tem permissão para editar a hora do sistema
 acl_nohw=Você não tem permissão para editar o tempo do hardware
 acl_nontp=Você não tem permissão para sincronizar com um servidor de horário
+
 sys_title=Hora do sistema
 hw_title=Tempo de hardware
+
 day=Dia
 month=Mês
 date=Encontro
@@ -43,12 +47,14 @@ hour=Hora
 year=Ano
 minute=Minuto
 second=Segundo
+
 error_cnf=Erro: comando $1 não encontrado
 error_hw=Não é possível definir o tempo do hardware : $1 
 error_sync=Não é possível sincronizar com a hora do sistema : $1 
 error_ediff=O servidor de horário diferente do horário local é muito grande: $1 dias
 error_entp=Falha na sincronização do horário NTP : $1 
 error_etimeserver=Não há servidores de horário para sincronizar com os inseridos
+
 log_set_date=Defina a hora do sistema para $1 
 log_set_hwclock=Defina o relógio do hardware para $1 
 log_remote_date=Hora do sistema buscada de $2 
@@ -58,6 +64,7 @@ log_remote_hwclock_l=Tempo de hardware buscado $1 de $2
 log_sync=Hora do sistema sincronizado com a hora do hardware
 log_sync_s=Hora do hardware sincronizada com a hora do sistema
 log_timezone=Fuso horário alterado para $1 
+
 timezone_err=Falha ao salvar o fuso horário
 timezone_ecannot=Você não tem permissão para alterar o fuso horário
 timezone_enone=Nenhuma zona selecionada

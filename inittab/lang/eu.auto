@@ -26,22 +26,28 @@ inittab_apply=Aplikatu Init konfigurazioa
 inittab_applymsg=Egin klik botoi honetan uneko SysV Init Konfigurazioa aplikatzeko <tt>telinit q</tt> komandoa exekutatzeko. Jakin ezazu zure konfigurazioan akatsek sistema erabili ez dezaketela komando hau exekutatzen denean.
 index_delete=Ezabatu hautatutako prozesuak
 inittab_none2=Ez da abioketarako prozesurik aurkitu zure sisteman. Horrek seguruenik adierazten du SysV init konfigurazio fitxategia ez duela erabiltzen.
+
 edit_inittab_err=Ez duzu baimenik prozesua editatzeko
 edit_inittab_title=Editatu prozesua $1 
 edit_inittab_details=Prozesuaren xehetasunak
 edit_inittab_del=Ezabatu
 edit_inittab_save=Save
+
 new_inittab_err=Ez zaizu baimendu prozesu berri bat sortzea
 new_inittab_title=Prozesu Berria
+
 save_inittab_err=Ezin duzu prozesua gordetzea baimendu
 save_inittab_noid=Errorea ez da izen-prozesurik sartu
 save_inittab_already=Errorea, izenaren prozesua lehendik dago
+
 log_modify=$1 eko aldaketa prozesua
 log_rename=Init prozesua berrizendatu da $1 etik $2 ra
 log_create=$1 hast prozesua sortu da
 log_delete=$1 hasierako prozesua ezabatu da
 log_apply=Aplikatutako konfigurazioa
 log_deletes=$1 hasierako prozesuak ezabatu dira
+
 apply_err=Ezin izan da konfigurazioa aplikatu
+
 delete_err=Ezin izan dira prozesuak ezabatu
 delete_enone=Ez da hautatu

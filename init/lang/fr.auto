@@ -17,19 +17,24 @@ index_sadd=Créez un nouveau service systemd.
 index_always=Toujours
 index_ladd=Créez un nouvel agent launchd.
 index_lname=Nom d'agent
+
 edit_egone=L'action n'existe plus
 edit_startcmd=Commande de démarrage
 edit_stopcmd=Commande d'arrêt
 edit_statuscmd=Commande d'état
 edit_reloadnow2=Relire le fichier de configuration
+
 save_ename=Nom d'action manquant ou non valide
 save_eclash=Une action du même nom existe déjà
 save_escript=Aucun script d'action entré
 save_estartcmd=Commande de démarrage manquante
+
 ss_doingstart=Démarrage de l'action $1 ..
 ss_doingstop=Arrêt de l'action $1 ..
 ss_doingstatus=Demande d'état de l'action $1 ..
+
 acl_runonly=Exécuter uniquement
+
 log_restart=Action redémarrée $1 
 log_condrestart=Action redémarrée conditionnellement $1 
 log_reload=Action rechargée $1 
@@ -38,6 +43,7 @@ log_massstart=Actions démarrées $1
 log_massstop=Actions arrêtées $1 
 log_massrestart=Actions redémarrées $1 
 log_telinit=Passé au niveau d'exécution $1 
+
 edit_hostconfig_startup=Le script $1 est exécuté au démarrage du système si cette action est active. Vous pouvez le modifier ci-dessous
 edit_hostconfig_plist=Le fichier $1 définit certains paramètres en respectant le script de démarrage. Vous pouvez le modifier ci-dessous
 edit_hostconfig_noquotes=N'utilisez de guillemets dans aucun champ à l'exception du champ $1.
@@ -46,6 +52,7 @@ edit_hostconfig_array=Les champs $1, $2 et $3 sont des champs de tableau et peuv
 edit_hostconfig_further=Après avoir créé la nouvelle action de démarrage, vous serez redirigé vers une page où vous pourrez modifier le script de démarrage et la liste des paramètres si nécessaire.
 edit_hostconfig_hostconfig=Le fichier $1 contrôle les services et les démons à l'échelle du système qui sont démarrés au démarrage du système. Vous pouvez le modifier ci-dessous
 edit_hostconfig_title=Modifier Hostconfig
+
 mass_enone=Aucune action sélectionnée
 mass_enone2=Aucun service sélectionné
 mass_restart=Redémarrage des actions
@@ -62,9 +69,11 @@ mass_udisable=Désactivation du service $1 au démarrage.
 mass_ustarting=Démarrage du service $1 ..
 mass_ustopping=Arrêt du service $1 ..
 mass_urestarting=Redémarrage du service $1 ..
+
 change_err=Vous n'êtes pas autorisé à changer de niveau d'exécution
 change_title=Switch Runlevel
 change_cmd=Passage au niveau d'exécution $1 avec la commande $2. Cela peut prendre un certain temps et Webmin peut ne plus être disponible après le changement.
+
 mode_init=Init SysV
 mode_osx=MacOS
 mode_local=Script de démarrage unique
@@ -73,6 +82,7 @@ mode_rc=Scripts FreeBSD RC
 mode_upstart=Parvenu
 mode_systemd=Systemd
 mode_launchd=LaunchD
+
 upstart_title1=Créer un service Upstart
 upstart_title2=Modifier le service Upstart
 upstart_egone=Le service n'existe plus!
@@ -97,6 +107,7 @@ upstart_eserver=Aucune commande serveur entrée
 upstart_eserver2=La commande serveur n'existe pas
 upstart_eserver3=Une seule commande serveur peut être entrée
 upstart_return=service parvenu
+
 systemd_title1=Créer un service Systemd
 systemd_title2=Modifier le service Systemd
 systemd_egone=Le service n'existe plus!
@@ -120,6 +131,7 @@ systemd_edesc=Description du service manquante
 systemd_return=service systemd
 systemd_econf=Aucune configuration systemd entrée
 systemd_estart=Commandes manquantes à exécuter au démarrage
+
 launchd_title1=Créer l'agent Launchd
 launchd_title2=Modifier l'agent Launchd
 launchd_egone=L'agent n'existe plus!
@@ -140,4 +152,5 @@ launchd_eclash=Un agent du même nom existe déjà
 launchd_return=agent launchd
 launchd_econf=Aucune configuration launchd entrée
 launchd_estart=Commande serveur manquante
+
 syslog_journalctl=Journaux SystemD

@@ -24,13 +24,16 @@ index_out=Đầu ra từ $1 là
 index_boot=Kết nối khi khởi động với:
 index_noboot=&lt;Không kết nối&gt;
 index_bootdesc=Thay đổi tùy chọn này để kiểm soát xem kết nối PPP đã chọn có được khởi động khi khởi động hay không.
+
 init_title=Phát hiện cấu hình
 init_cmd=Phát hiện modem được kết nối bằng lệnh $1 ..
 init_done=.. làm xong
 init_modems=Các modem được cấu hình trên $1 và $2.
 init_modem=Một modem đã được phát hiện trên $1.
 init_none=Không có modem nào được phát hiện!
+
 device_serial=cổng nối tiếp $1 
+
 connect_title=Thiết lập kết nối
 connect_cmd=Đang cố gắng thiết lập kết nối với lệnh $1 ..
 connect_failed=.. Kết nối thất bại! Xem đầu ra ở trên cho lý do tại sao.
@@ -40,12 +43,14 @@ connect_dns=Sử dụng cấu hình DNS được gán bởi PPP.
 connect_dns2=Cấu hình DNS được gán theo PPP đã được đặt.
 connect_dnsto=Hết thời gian chờ cấu hình DNS được gán bởi PPP.
 connect_dnsdown=Kết nối dường như đã thất bại trong khi chờ cấu hình DNS được gán bởi PPP.
+
 disc_title=Tắt PPP
 disc_err=Không thể tắt kết nối PPP
 disc_edown=Đã ngắt kết nối
 disc_ok1=Kết nối PPP của bạn được thực hiện bằng $2 đã được tắt thành công.
 disc_ok2=Kết nối PPP của bạn đã được tắt thành công.
 disc_dns=Đã khôi phục cấu hình DNS cũ.
+
 edit_title1=Thêm trình quay số ISP
 edit_title2=Chỉnh sửa Trình quay số ISP
 edit_ddesc=Các cài đặt mặc định này sẽ áp dụng cho các kết nối được thực hiện bằng bất kỳ trình quay số nào khác.
@@ -76,6 +81,7 @@ edit_idle=Hết giờ nhàn rỗi (tính bằng giây)
 edit_def=Từ cài đặt mặc định
 edit_inherits=Kế thừa cài đặt
 edit_from=Từ trình quay số ..
+
 save_err=Không thể lưu trình quay số
 save_err2=Không thể xóa trình quay số
 save_ename=Tên trình quay số bị thiếu hoặc không hợp lệ
@@ -88,6 +94,7 @@ save_edial=Số lần quay số bị thiếu hoặc không hợp lệ
 save_eidle=Hết giờ nhàn rỗi hoặc không hợp lệ
 save_einherits=Trình quay số này không thể bị xóa vì '$1' kế thừa các cài đặt từ nó.
 save_eclash=Trình quay số có cùng tên đã tồn tại
+
 log_create=Đã tạo $1 
 log_update=Đã cập nhật $1 
 log_delete=Đã xóa $1 

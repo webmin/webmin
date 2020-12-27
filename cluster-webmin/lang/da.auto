@@ -39,7 +39,9 @@ index_thost=Værtsnavn
 index_tdesc=Beskrivelse
 index_tver=Version
 index_ttype=OS-type
+
 this_server=denne server
+
 add_title=Tilføj servere
 add_msg=Tilføjer $1 ..
 add_gmsg=Tilføjelse af servere i gruppe $1 ..
@@ -49,6 +51,7 @@ add_echeck=Server $1 har ikke Webmin-konfigurationsmodulet
 add_echeck2=Server $1 har ikke Webmin-brugermodulet
 add_eversion=Server $1 kører ikke Webmin version $2 eller nyere.
 add_ok=Tilføjet $1 med $2 moduler, $3 temaer, $4 brugere og $5 grupper.
+
 refresh_title=Opdater modul og brugerlister
 refresh_header=Genanmodning om modul-, bruger- og gruppelister fra alle servere ..
 refresh_header4=Genanmodning om modul-, bruger- og gruppelister fra medlemmer af $2.
@@ -64,6 +67,7 @@ refresh_g2=$1 grupper blev fjernet.
 refresh_done=.. Færdig
 refresh_del=$1 blev fjernet fra serverlisten
 refresh_failed=Opdatering af $1 : $2 kunne ikke opdateres
+
 host_title=Administreret server
 host_header=Administrerede webmin-serveroplysninger
 host_name=Værtsnavn
@@ -81,6 +85,7 @@ host_header_u=Webmin-brugere
 host_header_g=Webmin-grupper
 host_return=serverdetaljer
 host_version2=Version
+
 edit_title_mod=Rediger modul
 edit_title_theme=Rediger tema
 edit_header_mod=Webmin-moduldetaljer fra $1 
@@ -104,6 +109,7 @@ edit_acl=Rediger ACL for
 edit_uacl=Bruger $1 på $2 
 edit_gacl=Gruppe $1 på $2 
 edit_config=Rediger konfiguration på
+
 install_err=Kunne ikke installere modulet
 install_title=Installer modul
 install_elocal=Ingen lokal fil angivet
@@ -124,6 +130,7 @@ do_failed=Kunne ikke installere på $1 : $2
 do_success_mod=Installeret modul $2 på $1 
 do_success_theme=Installeret tema $2 på $1 
 do_done=.. Færdig
+
 delete_err=Kunne ikke slette modul $1 
 delete_epack=Modulet $1 findes ikke
 delete_title=Slet modul
@@ -141,6 +148,7 @@ delete_edepends=Modul (er) $1 afhænger af det.
 delete_egone=Modulet eksisterer ikke længere
 delete_esuccess=Slettet fra $1 : $2 
 delete_acls=Vil du fjerne brugerne og nulstille adgangskontrolindstillingerne?
+
 user_title1=Opret Webmin-bruger
 user_header1=Nye Webmin-brugeroplysninger
 user_name=Brugernavn
@@ -200,11 +208,13 @@ user_all=&lt;alle værter&gt;
 user_donthave=&lt;værter der ikke har det&gt;
 user_have=&lt;værter der har det&gt;
 user_ofgroup=Medlemmer af $1 
+
 udelete_title=Slet bruger
 udelete_doing=Sleter bruger $1 fra alle værter ..
 udelete_success=Slettet fra $1 
 udelete_failed=Kunne ikke slette fra $1 : $2 
 udelete_done=.. Færdig
+
 group_title1=Opret gruppe
 group_header1=Nye Webmin-gruppedetaljer
 group_name=Gruppe navn
@@ -232,6 +242,7 @@ group_failed2=Kunne ikke opdatere gruppen på $1 : $2
 group_return=gruppeoplysninger
 group_nomems=Ingen medlemmer
 group_servers=Server (e), der skal oprettes på
+
 gdelete_title=Slet gruppe
 gdelete_desc=Er du sikker på, at du vil slette gruppen $1 og dens medlemsbrugere $2 fra alle værter?
 gdelete_ok=Slet gruppe
@@ -240,6 +251,7 @@ gdelete_success=Slettet fra $1
 gdelete_failed=Kunne ikke slette fra $1 : $2 
 gdelete_done=.. Færdig
 gdelete_esub=Denne gruppe har undergrupper $1, og kan derfor ikke slettes.
+
 acl_title=Modul adgangskontrol
 acl_title2=For bruger $1 i $2 på $3 
 acl_title3=For gruppe $1 i $2 på $3 
@@ -258,6 +270,7 @@ acl_doing2=Indstiller adgangskontrol for $1 på $2 ..
 acl_success=Indstil adgangskontrol til $1 
 acl_failed=Kunne ikke indstille adgangskontrol på $1 : $2 
 acl_done=.. Færdig
+
 sync_title=Synkroniser servere
 sync_desc=Denne formular giver dig mulighed for at oprette Webmin-brugere og -grupper på servere, der ikke i øjeblikket har dem, for at bringe konti til synkronisering på tværs af alle servere i din klynge.
 sync_hosts=Servere, der skal synkroniseres
@@ -281,6 +294,7 @@ sync_gcreate=Tilføjelse af Webmin-gruppe $1 ..
 sync_acl=Kopiering af ACL-filer til $1 ..
 sync_test=Vis kun, hvad der ville blive gjort?
 sync_restart=Genstart Webmin ..
+
 upgrade_title=Opgrader Webmin
 upgrade_header=Opgradering af Webmin på alle værter ..
 upgrade_header2=Opgradering af Webmin på $1 ..
@@ -299,6 +313,7 @@ upgrade_failed=Kunne ikke installere på $1 : $2
 upgrade_done=.. Færdig
 upgrade_efast=Kun servere, der bruger hurtig RPC-tilstand, kan opgraderes
 upgrade_ereconn=Kunne ikke genoprette forbindelse til Webmin efter opgradering!  : $1 
+
 update_title=Opdater moduler
 update_header=Opdaterer moduler alle værter ..
 update_header5=Opdatering af moduler på $2 ..
@@ -306,6 +321,7 @@ update_header4=Opdatering af moduler på medlemmer af $2 ..
 update_onhost=Resultater af opdatering på $1.
 update_failed=.. opdatering mislykkedes : $1 
 update_none=.. ingen opdateringer blev fundet.
+
 config_title=Rediger modulkonfiguration
 config_enone=Ingen værter med det installerede modul blev valgt
 config_ethis=Modulet er ikke installeret på denne server

@@ -12,7 +12,9 @@ main_readonly=(Nur-lesen Modus)
 main_return=Zurück zu $1
 main_unused=Nicht benutzte Module
 main_refreshmods=Aktualisiere Module
+
 link_essl=Das Perl-Modul Net::SSLeay, welches für HTTPS-Verbindungen benötigt wird, ist auf Ihrem System nicht installiert.
+
 category_servers=Server
 category_hardware=Hardware
 category_system=System
@@ -21,6 +23,7 @@ category_net=Netzwerk
 category_syslet=Syslets
 category_cluster=Cluster
 category_info=Information
+
 longcategory_servers=Module für Web-, E-Mail-, FTP- und andere Server
 longcategory_hardware=Module für Drucker-, Festplatten- und andere Hardware-Konfigurationen
 longcategory_system=Module für Benutzer, Dateisysteme, Cron-Aufträge und andere Systemeinstellungen
@@ -28,11 +31,13 @@ longcategory_webmin=Module, um Webmin selbst zu konfigurieren.
 longcategory_net=Module, die Netzwerk und Netzwerk-Dienste konfigurieren
 longcategory_cluster=Module, die verschiedene Server von einem Interface aus steuern
 longcategory_info=Module, die Informationen über Ihr System darstellen
+
 header_webmin=Webmin-Index
 header_module=Modulindex
 header_help=Hilfe..
 header_config=Modulkonfiguration
 header_servers=Webmin-Server
+
 index=Startseite
 yes=Ja
 no=Nein
@@ -63,12 +68,14 @@ euserdbacl=Konnte ACL Benutzer nicht laden : $1
 euserdbacl2=Konnte ACL Benutzer nicht aktualisieren : $1
 egroupdbacl=Konnte ACL Gruppe nicht laden : $1
 egroupdbacl2=Konnte ACL Gruppe nicht aktualisieren : $1
+
 chooser_title1=Wähle Datei..
 chooser_title2=Wähle Verzeichnis..
 chooser_dir=Verzeichnis von $1
 chooser_ok=OK
 chooser_date=Datum wählen
 chooser_eopen=Auflistung fehlgeschlagen : $1
+
 users_title1=Wähle Benutzer..
 users_title2=Wähle Benutzer..
 users_sel=Gewählte Benutzer
@@ -76,6 +83,7 @@ users_all=Alle Benutzer
 users_ok=OK
 users_cancel=Abbrechen
 users_clear=Löschen
+
 groups_title1=Wähle Gruppen..
 groups_title2=Wähle Gruppe..
 groups_all=Alle Gruppen
@@ -83,6 +91,7 @@ groups_sel=Gewählte Gruppen
 groups_ok=OK
 groups_cancel=Abbrechen
 groups_clear=Löschen
+
 modules_title1=Module auswählen ..
 modules_title2=Modul auswählen ..
 modules_sel=Ausgewählte Module
@@ -90,6 +99,7 @@ modules_all=Alle Module
 modules_ok=OK
 modules_cancel=Abbrechen
 modules_clear=Löschen
+
 config_ecannot=Sie haben nicht die Berechtigung die Konfiguration dieses Moduls zu ändern
 config_title=Konfiguration
 config_dir=Für Modul $1
@@ -101,6 +111,7 @@ config_err=Speichern der Konfiguration gescheitert
 config_nochange=Nicht ändern
 config_setto=Einstellen auf
 config_ewebmin=Parametertyp 14 funktioniert nur in Webmin
+
 help_err=Fehler beim Anzeigen der Hilfe
 help_epath=Fehlender Hilfe-Pfad
 help_efile=Fehler beim Lesen der Hilfe-Datei $1
@@ -108,6 +119,7 @@ help_eheader=Fehlender &lt;header&gt; Teil
 help_einclude=Fehler beim Einbinden von $1
 help_eif=$1 schlug fehl : $2
 help_eexec=$1 schlug fehl : $2
+
 referer_title=Sicherheits-Warnung
 referer_warn=<b>Warnung!</b> Webmin hat entdeckt, dass auf das Programm $2 von der URL $1 verwiesen wurde, welche scheinbar außerhalb des Webmin-Servers liegt. Dies kann ein Versuch sein, ihren Server auszutricksen, um ein gefährliches Kommando auszuführen oder einzuschleusen.
 referer_warn_unknown=<b>Warnung!</b> Webmin hat entdeckt, dass das Programm $1 mit einer unbekannten URL verknüpft wurde, welche außerhalb des Webmin-Servers zu liegen scheint. Dies kann ein Versuch sein, ihren Server auszutricksen, um ein gefährliches Kommando auszuführen oder einzuschleusen.
@@ -115,6 +127,7 @@ referer_fix1=Wenn dies ein legitimer Link ist, können Sie Links von dieser URL 
 referer_fix2=Alternativ können Sie Webmin konfigurieren, um diesen Link aus der Befehlszeile zu ermöglichen :<ul><li>Login als<tt>root</tt> und bearbeiten Sie die <tt>/etc/webmin/config</tt>-Datei.<li>Fügen Sie die Zeile <tt>referers=$1</tt> am Ende ein, oder wenn eine <tt>referers</tt> Zeile bereits vorhanden ist, fügen Sie <tt>$1</tt> hinzu. <li>Speichern Sie die Datei.</ul>
 referer_fix3u=Stellen Sie sicher, Ihrem Browser so konfiguriert ist, dass Referrer Informationen gesendet werden, damit diese von Webmin überprüft werden können.
 referer_fix2u=Alternativ können Sie Webmin konfigurieren, um Links von unbekannten Referern zuzulassen :<ul><li>Login als <tt>root</tt> und bearbeiten Sie die <tt>/etc/webmin/config</tt> Datei. <li>Suchen Sie die Zeile <tt>referers_none=1</tt> und ändern Sie es in <tt>referers_none=0</tt> ab.<li>Speichern Sie die Datei.</ul>
+
 session_header=Anmelden bei Webmin
 session_mesg=Sie müssen einen Benutzernamen und ein Passwort zur Anmeldung am Webmin Server auf $1 eingeben.
 session_mesg2=Sie müssen einen Benutzernamen und ein Passwort zur Anmeldung eingeben.
@@ -128,11 +141,13 @@ session_twofailed=2-Faktor-Authentifizierung fehlgeschlagen : $1
 session_logout=Abmeldung erfolgreich. Benutzen Sie das nachfolgende Formular, um sich erneut anzumelden.
 session_timed_out=Sitzung abgebrochen nach $1 Minuten ohne Aktivität.
 session_save=Anmeldung dauerhaft speichern?
+
 pam_header=Anmelden an Webmin
 pam_mesg=Sie müssen auf die Frage unten antworten um sich am Webmin-Server $1 anmelden zu können.
 pam_mesg2=Sie müssen auf die Frage unten antworten um sich anmelden zu können.
 pam_login=Fortsetzen
 pam_restart=Neustart
+
 acl_root=Hauptverzeichnis für Dateiauswahlfenster
 acl_otherdirs=Andere sichtbare Verzeichnisse in Dateiauswahl
 acl_nodot=Verstecke Dateien mit führendem Punkt in der Dateiauswahl?
@@ -165,6 +180,7 @@ acl_negative=Gewähre neue Modul Berechtigungen für Benutzer?
 acl_fileunix=Durchsuche Dateien als Unix-Benutzer
 acl_sameunix=Gleiche wie Webmin Login
 acl_webminsearch=Zeige Webmin Suchfeld?
+
 month_1=Januar 
 month_2=Februar 
 month_3=März 
@@ -177,6 +193,7 @@ month_9=September 
 month_10=Oktober 
 month_11=November 
 month_12=Dezember 
+
 day_0=Sonntag
 day_1=Montag
 day_2=Dienstag
@@ -184,6 +201,7 @@ day_3=Mittwoch
 day_4=Donnerstag
 day_5=Freitag
 day_6=Samstag
+
 smonth_1=Jan.
 smonth_2=Feb.
 smonth_3=Mrz.
@@ -196,6 +214,7 @@ smonth_9=Sep.
 smonth_10=Okt.
 smonth_11=Nov.
 smonth_12=Dez.
+
 sday_0=So.
 sday_1=Mo.
 sday_2=Di.
@@ -203,12 +222,15 @@ sday_3=Mi.
 sday_4=Do.
 sday_5=Fr.
 sday_6=Sa.
+
 emodule=Zugriff verweigert: Benutzer $1 ist nicht berechtigt, das $2 Modul zu benutzen
 emodulecheck=Das $1 Modul ist auf Ihrem System nicht verfügbar
 elock_tries2=Konnte die Datei $1 nach $2 Minuten nicht sperren. Letzter Fehler war : $3
+
 skill_high=Experte
 skill_medium=Fortgeschritten
 skill_low=Neuling
+
 feedback_title=Webmin-Rückmeldung
 feedback_desc=Dieses Formular erlaubt Ihnen, den Webmin-Entwicklern Fehler zu melden oder Vorschläge zu machen bezüglich eines Fehlers oder einer fehlenden Eigenschaft, die Sie gefunden haben oder vermissen. Wenn die Senden-Schaltfläche gedrückt wird, werden die eingegebenen Details an $1 gesendet.
 feedback_desc2=Diese Rückmeldung wird zu den <b>Webmin-Entwicklern</b> gesendet, <u>nicht</u> zu Ihrem <i>System-Administrator</i>, <i>Internet Service Provider</i> oder Ihrer <i>Hosting-Firma</i>. Bitte schreiben Sie Ihre Rückmeldung in <u>Englisch</u>, auch wenn Sie für Webmin gerade eine andere Sprache eingestellt haben.
@@ -237,15 +259,18 @@ feedback_to=Sende Rückmeldung zu Adresse(n)
 feedback_enoto=Keine Adressen zum Senden der Rückmeldung eingegeben
 feedback_ecannot=Sie sind nicht berechtigt eine Rückmeldung zu senden.
 feedback_ecannot2=Sie sind nicht berechtigt eine Rückmeldung mit enthaltenen Konfigurationsdateien zu senden.
+
 progress_size2=Herunterladen $1 ($2) ..
 progress_nosize=Lade $1 herunter ..
 progress_datan=Erhalten $1 ($2 %)
 progress_data2n=Erhalten $1
 progress_done=.. Herunterladen komplett.
 progress_incache=$1 gefunden in Cache ..
+
 readparse_cdheader=Fehlender Content-Disposition Header
 readparse_enc=Form-Data-Encoding erwartet, jedoch normales Encoding erhalten
 readparse_max=Die Daten überschreiten die maximale Größe von $1 bytes
+
 password_expired=Ihr Passwort ist abgelaufen und Sie müssen nun ein neues angeben.
 password_temp=Sie müssen ein neues Passwort wählen um Ihren temporären Login zu ersetzen.
 password_header=Neues Passwort auswählen
@@ -264,6 +289,7 @@ password_enew2=Ihre Passworte stimmen nicht überein
 password_epam=PAM-Fehler : $1
 password_emodpam=Das Authen::PAM-Perlmodul, welches für das Ändern von Passworten benutzt wird, ist nicht installiert!
 password_enewpass=Neues Passwort ist nicht erlaubt : $1
+
 ui_mandatory=Dieses Feld ist ein Pflichfeld
 ui_checkmandatory=Es wurde nichts ausgewählt
 ui_errors=Mehrere Fehler sind aufgetreten :
@@ -278,7 +304,9 @@ ui_etime=Ungültige Zeit
 ui_paging=Anzeige der Reihen $1 bis $2 von $3
 ui_rowlabel=$2 in Reihe $1 :
 ui_filterbox=Filter eingeben..
+
 header_statusmsg=$1 eingeloggt in $2 $3 auf $4 ($5)
+
 uptracker_title=Lade Datei hoch
 uptracker_file=Dateiname
 uptracker_size=Größe
@@ -286,6 +314,7 @@ uptracker_pc=Fortschritt
 uptracker_eid=Keine Upload ID angegeben
 uptracker_eid2=Upload ID ist ungültig!
 uptracker_of=$1 von $2
+
 wsearch_title=Suche $1
 wsearch_modt=Modul
 wsearch_mtitle=Modulname
@@ -313,6 +342,7 @@ wsearch_hmod=Modul
 wsearch_moddir=URL Pfad /$1/
 wsearch_searching=Suche nach $1 . .
 wsearch_found=$1 Resultat gefunden :
+
 sql_emysqldriver=Fehler beim Laden des MySQL DBI Treiber
 sql_emysqlconnect=Fehler beim Verbinden zur MySQL Datenbank : $1
 sql_epostgresqldriver=Fehler beim PostgreSQL DBI Treiber laden
@@ -321,6 +351,7 @@ sql_eldapdriver=Fehler beim Lades des LDAP perl Modul
 sql_eldapconnect=Fehlgeschlagen Verbindung zum LDAP-Server herzustellen $1
 sql_eldaptls=Fehler beim Starten der TLS-Verschlüsselung für LDAP : $1
 sql_eldaplogin=Fehler beim Login auf dem LDAP-Server als $1 : $2
+
 log_email_subject=Webmin Aktion in $1
 log_email_global=Webmin globale Aktion
 log_email_desc=Diese E-Mail wurde von Webmin verschickt als Antwort einer Benutzeraktion.
@@ -332,6 +363,7 @@ log_email_user=Aufgeführt von Benutzer: $1
 log_email_script=Webmin Script: $1
 log_email_session=Session-ID: $1
 log_email_remote=Client-Adresse: $1
+
 nice_size_PB=PB
 nice_size_PiB=PiB
 nice_size_TB=TB

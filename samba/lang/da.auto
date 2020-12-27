@@ -6,6 +6,7 @@ index_printershare=printer dele
 index_shareconf=del konfiguration
 index_version=Samba version $1 
 index_samba=Samba
+
 index_sharename=Del navn
 index_path=Sti
 index_security=Sikkerhed
@@ -42,6 +43,7 @@ index_stopmsg=Klik på denne knap for at lukke de kørende Samba-servere på dit
 index_stopmsg_wb=Klik på denne knap for at lukke de kørende Winbind-servere på dit system.
 index_einclude=Advarsel - Din Samba-konfigurationsfil $1 indeholder $2 eller $3 -direktivet. Dette kan få Webmin til at ændre filen forkert.
 index_delete=Slet valgte dele
+
 global_title=Global konfiguration
 global_unixnetwork=Unix Networking
 global_winnetwork=Windows-netværk
@@ -54,12 +56,14 @@ global_password=Krypterede adgangskoder
 global_users=Samba-brugere
 global_group=Samba Groups
 global_bind=Winbind-indstillinger
+
 error_nosamba=Samba-serverens eksekverbare <tt>$1</tt> blev ikke fundet. Enten er Samba ikke installeret på dit system, eller din <a href="$2">modulkonfiguration</a> er forkert.
 error_version=Webmin kunne ikke få versionen af din Samba-server eksekverbar <tt>$1</tt>. Kontroller din <a href="$2">modulkonfiguration</a> for at sikre dig, at dette er den rigtige sti.
 error_config=Konfigurationsfilen $1 blev ikke fundet. Samba er sandsynligvis ikke installeret på dit system, eller din <a href="$2">modulkonfiguration</a> er forkert.
 error_include=Webmin kan ikke håndtere Samba-konfigurationsfiler, der bruger <tt>config</tt> eller <tt>inkluderer</tt> -direktiverne.
 error_delcopy=Aktien '$1' kopierer fra denne deling
 error_savename=Filnavn blev ikke gemt
+
 convert_title=Konverter brugere
 convert_msg=Denne formular giver dig mulighed for at synkronisere Unix- og Samba-brugerlisten. Når Samba bruger <a href=$1>krypterede adgangskoder</a>, bruges en separat liste over brugere og adgangskoder i stedet for systembrugerlisten.
 convert_noconv=Konverter ikke eller fjern disse brugere:
@@ -72,6 +76,7 @@ convert_cannot=Unix-brugere kan ikke konverteres til Samba-brugere
 convert_who=Unix brugere, der skal konverteres
 convert_who0=Kun listede brugere eller UID-intervaller
 convert_who1=Alle undtagen listede brugere og UID-intervaller
+
 misc_title=Diverse muligheder
 misc_debug=Debug-niveau
 misc_cachecall=Cache <tt>getwd ()</tt> opkald?
@@ -85,6 +90,7 @@ misc_chroot=<tt>chroot ()</tt> katalog
 misc_smbrun=Sti til <tt>smbrun</tt>
 misc_clienttime=Klienttidsforskydning
 misc_readprediction=Læs forudsigelse?
+
 net_title=Unix netværksindstillinger
 net_idle=Tomgangstid før afbrydelse
 net_trustlist=Pålidelige værter/brugere fil
@@ -100,6 +106,7 @@ net_maxpacket=Maksimal pakkestørrelse
 net_listen=Lyt på adresse
 net_ip=IP-adresse
 net_socket=Socket-indstillinger
+
 passwd_title=Adgangskodeindstillinger
 passwd_encrypt=Brug krypterede adgangskoder?
 passwd_allownull=Vil du tillade nul-adgangskoder?
@@ -113,11 +120,13 @@ passwd_send=Sende
 passwd_map=Kort over brugernavn
 passwd_unixuser=Unix-brugere
 passwd_winuser=Windows-brugere
+
 print_title=Udskrivningsmuligheder
 print_style=Unix udskrivningstil
 print_show=Vis alle printere?
 print_printcap=Printcap-fil
 print_cachetime=Cache-tid for printerstatus
+
 smb_title=Windows netværksindstillinger
 smb_workgroup=arbejdsgruppe
 smb_wins=WINS-tilstand
@@ -148,12 +157,15 @@ smb_nowhere=Ingen steder
 smb_fromlist=Fra listen. ..
 smb_ip=IP-adresse
 smb_asworkgroup=<b>Som arbejdsgruppe</b> (valgfrit)
+
 create_msg=En kopieandelning arver alle dens standardværdier fra den deling, du vælger. Hvis kildedelen ændres, bliver kopien også.
 create_from=Del for at kopiere fra:
+
 smbuser_title=Samba-brugere
 smbuser_list=Samba brugerliste
 smbuser_nouser=Ingen Samba-brugere er defineret.
 smbuser_cannot=Samba-brugere kan ikke vises på listen
+
 euser_title=Rediger Samba-bruger
 euser_uid=Unix UID
 euser_passwd=Adgangskode
@@ -166,6 +178,7 @@ euser_normal=Normal bruger
 euser_noexpire=Adgangskode udløber aldrig
 euser_nopwrequired=Ingen adgangskode kræves
 euser_trust=Arbejdsstations tillidskonto
+
 fmisc_title=Diverse filstandarder
 fmisc_for=For deling <tt>$1</tt>
 fmisc_lockfile=Gør fillåsning?
@@ -183,6 +196,7 @@ fmisc_conncmd=Kommando til at køre ved forbindelse
 fmisc_disconncmd=Kommando til at køre ved afbrydelse
 fmisc_rootconn=Kommando til at køre på connect <i>som root</i>
 fmisc_rootdisconn=Kommando til at køre ved afbrydelse af <i>som root</i>
+
 fname_title1=Standarder for navngivning af fil
 fname_title2=Rediger filnavn
 fname_option=Valg af filnavn
@@ -197,6 +211,7 @@ fname_hide=Skjul prikfiler?
 fname_archive=Gem DOS arkivflag?
 fname_hidden=Gem DOS skjult flag?
 fname_system=Gem DOS-systemflag?
+
 fperm_title1=Standard tilladelser for filtilladelser
 fperm_title2=Rediger filtilladelser
 fperm_option=Valg af filtilladelse
@@ -209,6 +224,7 @@ fperm_link=Tillad symlink uden for deling?
 fperm_delro=Kan du slette readonly-filer?
 fperm_forcefile=Tving Unix-filtilstand
 fperm_forcedir=Tving Unix-katalogtilstand
+
 share_title1=Standarder for fildeling
 share_title2=Rediger File Share
 share_title3=Opret File Share
@@ -232,6 +248,7 @@ share_naming=Filnavngivning
 share_misc=Diverse muligheder
 share_samedesc1=Bemærk - disse indstillinger påvirker også standardindstillingerne for alle fildelinger.
 share_samedesc2=Bemærk - disse indstillinger påvirker også standardindstillingerne for alle printerandele.
+
 print_title1=Standardindstillinger for printerindstillinger
 print_title2=Rediger printerindstillinger
 print_option=Printerindstillinger
@@ -243,6 +260,7 @@ print_delete=Slet jobkommando
 print_pause=Pause jobkommando
 print_unresume=Unresume job kommando
 print_driver=Printerdriver
+
 pshare_title1=Standardindstillinger for printerdeling
 pshare_title2=Rediger printerdeling
 pshare_title3=Opret printer Share
@@ -251,6 +269,7 @@ pshare_name=Del navn
 pshare_all=Alle printere deler
 pshare_unixprn=Unix printer
 pshare_spool=Spool katalog
+
 sec_index1=Sikkerhedsstandarder
 sec_index2=Rediger sikkerhed
 sec_writable=Skrivbar?
@@ -273,6 +292,7 @@ sec_rouser=Læs kun brugere
 sec_rogroup=Læs kun grupper
 sec_rwuser=Læs/skriv brugere
 sec_rwgroup=Læs/skriv grupper
+
 esync_title=Brugersynkronisering
 esync_msg=Webmin kan konfigureres, så ændringer af Unix-brugerlisten automatisk anvendes til Samba-brugerlisten. Dette fungerer kun, når <b>Brugere og grupper</b> Webmin-modulet bruges til at tilføje, slette eller ændre brugere.
 esync_add=Tilføj en Samba-bruger, når en Unix-bruger tilføjes
@@ -283,6 +303,7 @@ esync_chg_profile=Omdøb roamingprofilen, når en Unix-bruger omdøbes
 esync_gid=Grupp SID eller RID for nye brugere
 esync_cannot=Brugersynkronisering kan ikke konfigureres
 esync_egid=Manglende gruppe SID eller RID
+
 mkpass_title=Konverter brugere
 mkpass_convfail=Kunne ikke konvertere bruger
 mkpass_msg=Konverterer Unix-brugere. ..
@@ -295,10 +316,12 @@ mkpass_passfail=Kunne ikke indstille adgangskode
 mkpass_user=Brugernavn
 mkpass_action=Handling truffet
 mkpass_skipcount=$1 brugere blev sprunget over til konvertering.
+
 savecopy_fail=Kunne ikke oprette kopi
 savecopy_global=Navnet 'global' kan ikke bruges til en deling
 savecopy_exist=En andel kaldet '$1' findes allerede
 savecopy_ename=Intet aktienavn indtastet
+
 saveuser_fail=Kunne ikke gemme brugeren
 saveuser_uid='$1' er ikke et gyldigt Unix UID
 saveuser_colon=Rigtigt navn kan ikke indeholde tegnet :
@@ -306,10 +329,13 @@ saveuser_home=Hjemmekatalogen '$1' findes ikke
 saveuser_shell=$1 er ikke et gyldigt shell
 saveuser_pass=Kunne ikke ændre adgangskode ved hjælp af smbpasswd : $1 
 saveuser_ews=Indstillingen 'Workstation trust account' kan ikke aktiveres for eksisterende brugere
+
 savefmisc_fail=Kunne ikke gemme diverse indstillinger
 savefmisc_number='$1' er ikke et gyldigt antal forbindelser
+
 savefperm_fail=Kunne ikke gemme filtilladelser
 savefperm_mode='$1' er ikke en gyldig Unix-filtilstand
+
 savefshare_fail=Kunne ikke gemme delingen
 savefshare_nopath=Ingen vej givet
 savefshare_exist=En andel kaldet '$1' findes allerede
@@ -319,6 +345,7 @@ savefshare_owner=Manglende eller ugyldig ejer til nyt bibliotek
 savefshare_group=Manglende eller ugyldig gruppe til nyt bibliotek
 savefshare_perms=Manglende eller ugyldige tilladelser til nyt bibliotek
 savefshare_emkdir=Kunne ikke oprette katalog : $1 
+
 savemisc_fail=Kunne ikke gemme indstillinger
 savemisc_lockdir=Kataloget, der indeholder låsekataloget, findes ikke
 savemisc_logdir=Kataloget, der indeholder logfilen, findes ikke
@@ -327,37 +354,48 @@ savemisc_overlap='$1' er ikke en gyldig overlappende læsestørrelse
 savemisc_chroot=Chroot-biblioteket '$1' findes ikke
 savemisc_smbrun=Smbrun-programmet '$1' findes ikke eller kan ikke eksekveres
 savemisc_time='$1' er ikke en gyldig tidsforskydning
+
 savenet_fail=Kunne ikke gemme indstillinger
 savenet_timeout='$1' er ikke en gyldig timeout for frakobling
 savenet_ip='$1' er ikke en gyldig IP-byte
 savenet_keep='$1' er ikke et gyldigt keepalive interval
 savenet_maxxmit='$1' er ikke en gyldig maksimal pakkestørrelse
+
 savepass_fail=Kunne ikke gemme indstillinger
 savepass_nopass=Din version af Samba understøtter ikke krypterede adgangskoder
 savepass_passwd=Intet program skifter kodeord
 savepass_level='$1' er ikke en gyldig adgangskodsforskel
 savepass_chat=Ændring af adgangskodchatsekvens er tom
+
 savepopts_fail=Kunne ikke gemme printerindstillinger
 savepopts_number=Minimum ledig plads skal være et nummer
+
 saveprint_fail=Kunne ikke gemme indstillinger
 saveprint_printcap=Printcap-filen '$1' findes ikke
 saveprint_cache='$1' er ikke en gyldig cache-tid
+
 savepshare_fail=Kunne ikke gemme printerdelingen
 savepshare_exist=En andel kaldet '$1' findes allerede
 savepshare_name='$1' er ikke et gyldigt delingsnavn
 savepshare_global=Navnet 'global' kan ikke bruges til en deling
+
 savesec_fail=Kunne ikke gemme sikkerheden
+
 savesmb_fail=Kunne ikke gemme indstillinger
 savesmb_size='$1' er ikke en gyldig diskstørrelse
 savesmb_oslevel='$1' er ikke en gyldig hovedbrowserprioritet
 savesmb_server=Du skal indtaste en adgangskodeserver
+
 start_err=Kunne ikke starte Samba-servere
 start_fail=$1 mislykkedes
 start_err_wb=Kunne ikke starte Winbind-servere
+
 restart_err=Kunne ikke genstarte Samba-servere
 restart_err_wb=Kunne ikke genstarte Winbind-servere
+
 swats_fail=Kunne ikke gemme brugernavnet
 swats_user=Manglende SWAT-brugernavn
+
 viewu_index=Nuværende brugere
 viewu_list=Nuværende brugere af $1 
 viewu_share=Del
@@ -374,6 +412,7 @@ viewu_ecmd=Samba-statusprogrammet $1 ser ikke ud til at være installeret på di
 viewu_kill=Frakobl valgte brugere
 viewu_enone=Ingen brugere er valgt
 viewu_refresh=Opdater side.
+
 log_apply=Genstartede Samba-servere
 log_apply_wb=Genstartede Winbind-servere
 log_stop=Stoppede Samba-servere
@@ -415,6 +454,7 @@ log_modify_group=Ændret Samba-gruppe $1
 log_delete_group=Samba-gruppe $1 er slettet
 log_gsync=Konfigureret Unix-gruppesynkronisering
 log_manual=Manuel redigeret konfigurationsfil $1 
+
 swat_title=SWAT-login
 swat_list=SWAT-login
 swat_msg1=Dit nuværende SWAT-brugernavn og din adgangskode er forkerte. Brug formularen nedenfor til at logge ind igen.
@@ -426,6 +466,7 @@ swat_password=Adgangskode
 swat_login=Log på
 swat_clear=Klar
 swat_logout=Log af SWAT
+
 eacl_aviol=Overtrædelse af adgangskontrol
 eacl_pcn=rediger unix netværksindstillinger
 eacl_pcs=rediger smb-netværksindstillinger
@@ -454,6 +495,7 @@ eacl_pvsec=adgangssikkerhed og adgangskontrolindstillinger for denne deling
 eacl_pvpopt=få adgang til printerindstillinger for denne deling
 eacl_pafs=få adgang til denne fildeling
 eacl_paps=få adgang til denne printerandel
+
 acl_view_all_con=Kan du se alle forbindelser?
 acl_kill_con=Kan fjerne forbindelser?
 acl_conf_net=Kan konfigurere Unix netværksindstillinger?
@@ -488,6 +530,7 @@ acl_maint_groups=Kan du se, redigere og tilføje grupper?
 acl_maint_gsync=Kan opretholde synkronisering af automatisk Unix til Samba-grupper?
 acl_winbind=Kan bindes til domæner?
 acl_bind=Kan du få adgang til winbind-indstillinger?
+
 groups_title=Samba Groups
 groups_name=Gruppe navn
 groups_unix=Unix-gruppe
@@ -503,6 +546,7 @@ groups_return=grupper liste
 groups_add=Tilføj en ny Samba-gruppe.
 groups_ecannot=Du har ikke tilladelse til at se eller redigere Samba-grupper
 groups_cannot=Samba-grupper kan ikke vises på listen
+
 gedit_title2=Rediger Samba Group
 gedit_title1=Opret Samba Group
 gedit_header=Samba gruppe detaljer
@@ -515,11 +559,13 @@ gedit_unix=Unix-gruppe
 gedit_unixgr=Gruppe ..
 gedit_none=Ingen
 gedit_set=Noteret ..
+
 gsave_err=Gruppen blev ikke gemt
 gsave_eunix=Manglende eller ugyldig Unix-gruppenavn eller GID
 gsave_ename=Manglende gruppens navn
 gsave_epriv=Manglende gruppeprivilegier
 gsave_elocal=Privilegier kan kun indstilles til lokale grupper
+
 gsync_title=Gruppesynkronisering
 gsync_msg=Webmin kan konfigureres, så ændringer af Unix-gruppelisten automatisk anvendes på Samba-gruppelisten. Dette fungerer kun, når <b>Brugere og grupper</b> Webmin-modulet bruges til at tilføje, slette eller ændre grupper.
 gsync_add=Tilføj en Samba-gruppe, når en Unix-gruppe tilføjes
@@ -530,10 +576,12 @@ gsync_type=Type af nye grupper
 gsync_priv=Privilegier til nye grupper (hvis lokale)
 gsync_ecannot=Du har ikke tilladelse til at konfigurere gruppesynkronisering
 gsync_cannot=Gruppesynkronisering kan ikke konfigureres
+
 check_user1=$1 : Krypterede adgangskoder er ikke aktiveret på siden <a href='$2'>Autentificering</a>.
 check_user2=$1 : Hverken Samba-adgangskodefilen eller stien til pdbedit er indstillet på siden <a href='$2'>Modulkonfiguration</a>.
 check_group1=$1 : Grupper understøttes kun i Samba version 3.
 check_group2=$1 : Hverken stien til smbgroupedit eller netkommandoer er indstillet på siden <a href='$2'>Modulkonfiguration</a>.
+
 winbind_title=Bind til domæne
 winbind_ecannot=Du har ikke tilladelse til at binde til domæner
 winbind_msg=Denne formular kan bruges til at binde din Samba-server til et Windows-domæne, som typisk administreres af en anden server.
@@ -549,6 +597,7 @@ winbind_edom=Manglende domænenavn
 winbind_cmd=Binding til domæne med kommando $1 ..
 winbind_failed=.. mislykkedes! Se output ovenfor for grunden til.
 winbind_ok=.. komplet.
+
 bind_title=Winbind-indstillinger
 bind_ecannot=Du har ikke tilladelse til at redigere winbind-indstillinger
 bind_header=Indstillinger for binding til Windows-domæne
@@ -567,6 +616,7 @@ bind_erealm=Ugyldigt Kerberos-rige
 bind_ecache=Manglende eller ugyldig cache-tid
 bind_euid=Ugyldigt UID-interval - skal være som 20000-30000
 bind_egid=Ugyldigt GID-interval - skal være som 20000-30000
+
 manual_title=Rediger konfigurationsfil
 manual_desc=Redigering af Samba-konfigurationsfil $1 ..
 manual_err=Kunne ikke gemme konfigurationsfilen

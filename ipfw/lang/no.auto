@@ -25,6 +25,7 @@ index_resetdesc=Klikk på denne knappen for å fjerne alle eksisterende brannmur
 index_cluster=Cluster-servere
 index_clusterdesc=Klikk på denne knappen for å sette opp flere Webmin-servere som brannmurkonfigurasjonen automatisk blir kopiert til.
 index_return=brannmur regler
+
 index_num=Num
 index_action=Handling
 index_desc=Betingelse
@@ -37,6 +38,7 @@ index_delete=Slett valgte
 index_existing=Webmin har oppdaget $1 IPFW-brannmurregler som for øyeblikket er i bruk, og som ikke er registrert i filen $2. Disse reglene ble sannsynligvis satt opp fra et skript, som denne modulen ikke vet hvordan de skal lese og redigere. <p> Hvis du vil bruke denne modulen til å administrere IPFW-brannmuren din, klikker du på knappen nedenfor for å konvertere de eksisterende reglene til en lagringsfil, og deaktiver deretter det eksisterende brannmurskriptet.
 index_saveex=Lagre brannmurregler
 index_headerex=Eksisterende brannmurkonfigurasjon
+
 action_allow=<font color=#00aa00>Tillat</font>
 action_deny=<font color=#ff0000>Slipp</font>
 action_reject=<font color=#ff4400>Avvis</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>Slipp pakke</font>
 laction_reject=<font color=#ff4400>Returner ICMP-avslag</font>
 laction_reset=<font color=#ff4400>Tilbakestill TCP-tilkobling</font>
 laction_skipto=Hopp til å styre
+
 edit_title1=Lag regel
 edit_title2=Rediger regel $1 
 edit_header1=Regelhandling
@@ -114,6 +117,7 @@ edit_src-addr=Fra kildeadresse ..
 edit_src-port=Fra kildeport ..
 edit_dst-addr=Til destinasjonsadresse ..
 edit_dst-port=Til destinasjonshavn ..
+
 save_err=Kunne ikke lagre regelen
 save_enum=Manglende eller ugyldig regelnummer
 save_eskipto=Manglende eller ugyldig regelnummer å hoppe til
@@ -144,7 +148,9 @@ save_etcpflags=TCP-flagg kan bare spesifiseres hvis protokollen er TCP
 save_elimit=Manglende eller ugyldig maksimalgrense
 save_edstport=Manglende eller ugyldig destinasjonsport
 save_esrcport=Manglende eller ugyldig kildeport
+
 apply_err=Kunne ikke bruke konfigurasjonen
+
 desc_if=Hvis $1 
 desc_and=og
 desc_always=Bestandig
@@ -191,6 +197,7 @@ desc_where=der $1
 desc_all=for alle pakker
 desc_in=pakken er innkommende
 desc_out=pakken er utgående
+
 log_create_rule=Opprettet $1 -regel
 log_delete_rule=Slettet $1 -regel
 log_modify_rule=Endret $1 -regel
@@ -206,6 +213,7 @@ log_convert=Konverterte aktive brannmurregler
 log_setup=Utførte innledende brannmuroppsett
 log_unapply=Konfigurert brannmurkonstruksjon
 log_delsel=$1 -regler er slettet
+
 cluster_title=Cluster Firewall-servere
 cluster_none=Ingen servere er lagt til i brannmurklyngen ennå.
 cluster_host=vertsnavn
@@ -216,6 +224,7 @@ cluster_gadd=Legg til servere i gruppe
 cluster_need=Du må legge til servere med innlogging og passord i Webmin Servers Index-modulen før de kan administreres her.
 cluster_return=klyngeservere
 cluster_delete=Fjern valgte
+
 add_title=Legg til servere
 add_msg=Legger til $1 ..
 add_gmsg=Legger til servere i gruppe $1 ..

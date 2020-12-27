@@ -2,6 +2,7 @@ index_version2=Wersja Sendmail $1, konfiguracja $2
 index_xversion=Wersja Sendmail $1 
 index_version=Konfiguracja Sendmail $1 
 index_sendmail=Wyślij maila
+
 opts_daemon=Opcje portu SMTP
 opts_maxbad=Maksymalna liczba złych odbiorców
 opts_maxrcpt=Maksymalna liczba adresatów na wiadomość
@@ -10,14 +11,18 @@ opts_qso=Sortuj kolejkę pocztową według
 opts_priority=Priorytet
 opts_host=Nazwa hosta
 opts_time=Otrzymany czas
+
 aliases_enofile=W konfiguracji Sendmail nie zdefiniowano pliku aliasu
 aliases_toomany=W systemie jest zbyt wiele aliasów poczty, aby można je było wyświetlić na tej stronie.
 aliases_go=Znajdź pasujące aliasy:
 aliases_delete=Usuń wybrane aliasy
+
 aform_ecannot=Nie możesz edytować tego aliasu
 aform_file=Dodaj do pliku aliasów
 aform_cmt=Opis
+
 afile_ewrite=Nie udało się zapisać do pliku adresów : $1 
+
 rfile_desc2=Możesz także ustawić nagłówki wiadomości, które dodają lub zastępują wartości domyślne używane w odpowiedzi automatycznej, wstawiając wiersze takie jak: <br><tt> Od: foo@bar.com </tt><br> <tt>Temat: W wakacje</tt> <br> u góry wiadomości, oddzielone od treści pojedynczym pustym wierszem.
 rfile_replies=Śledzić odpowiedzi, aby uniknąć pętli poczty?
 rfile_none=Nie
@@ -33,59 +38,80 @@ rfile_from=Od: adres do odpowiedzi
 rfile_auto=Automatyczny (na podstawie adresu odbiorcy)
 rfile_efrom=Brakuje od: adres
 rfile_fromdesc=Adres Od: należy zawsze podawać w miarę możliwości, ponieważ metoda automatyczna może nie być wiarygodna.
+
 asave_esame=Możesz utworzyć tylko alias o tej samej nazwie co login do webmina
+
 adelete_err=Nie udało się usunąć aliasów
 adelete_enone=Nie wybrano
 adelete_ecannot=Nie możesz usunąć aliasu $1 
+
 masq_ndomains=Domeny nie do maskarady
+
 virtusers_efeature=Twoja konfiguracja sendmaila nie ma włączonej funkcji mapowania adresów (<tt>virtuser</tt>). <a href='$1'>Kliknij tutaj</a>, aby skonfigurować funkcje sendmaila.
 virtusers_createfile=Lub jeśli ta funkcja została właśnie włączona, <a href='$1'>kliknij tutaj</a>, aby utworzyć plik.
 virtusers_cmt=Opis
 virtusers_toomany=W systemie jest zbyt wiele mapowań adresów, aby można je było wyświetlić na tej stronie.
 virtusers_go=Znajdź pasujące odwzorowania adresów:
 virtusers_delete=Usuń wybrane mapowania adresów
+
 vform_cmt=Opis
 vform_err_unavailable=Niedostępne
 vform_err_tempfail=Tymczasowa awaria
 vform_err_protocol=Błąd protokołu
+
 vsave_esame=Możesz tworzyć mapowania adresów tylko dla swojej nazwy użytkownika
+
 vdelete_err=Nie udało się usunąć mapowań adresów
 vdelete_ecannot=Nie możesz usunąć mapowania dla $1 
+
 mailers_efeature=Twoja konfiguracja sendmaila nie ma włączonej funkcji routingu domen (<tt>mailertable</tt>). <a href='$1'>Kliknij tutaj</a>, aby skonfigurować funkcje sendmaila.
 mailers_desc3=Powinieneś także mieć wpis na liście <a href='$1'>domen przekazywania</a> dla każdej domeny.
 mailers_delete=Usuń wybrane trasy domen
+
 mform_host2=Host lub domena
 mform_domain2=Wszystkie hosty w domenie
 mform_domain3=Domena i wszystkie jej hosty
+
 mdelete_err=Nie udało się usunąć routera domeny
 mdelete_ecannot=Nie możesz usunąć trasy dla $1 
+
 generics_efeature=Twoja konfiguracja sendmaila nie ma włączonej funkcji mapowania adresów wychodzących (<tt>generics</tt>). <a href='$1'>Kliknij tutaj</a>, aby skonfigurować funkcje sendmaila.
 generics_toomany=W systemie jest zbyt wiele adresów wychodzących, aby można je było wyświetlić na tej stronie.
 generics_go=Znajdź pasujące adresy wychodzące:
 generics_delete=Usuń wybrane adresy wychodzące
+
 gsave_ecannot3=Nie możesz zapisać tego adresu wychodzącego
 gsave_ealready=Mapowanie adresu wychodzącego dla „$1” już istnieje
+
 gdelete_err=Nie udało się usunąć mapowań adresów wychodzących
 gdelete_ecannot=Nie możesz usunąć mapowania dla $1 
+
 domains_efeature=Twoja konfiguracja sendmaila nie ma włączonej funkcji mapowania domen (<tt>domaintable</tt>). <a href='$1'>Kliknij tutaj</a>, aby skonfigurować funkcje sendmaila.
 domains_delete=Usuń wybrane mapowania domen
+
 dsave_ealready=Mapowanie domen dla „$1” już istnieje
+
 ddelete_err=Nie udało się usunąć mapowań domen
 ddelete_ecannot=Nie możesz usunąć mapowania dla $1 
+
 access_efeature=Twoja konfiguracja sendmaila nie ma włączonej funkcji kontroli spamu (<tt>access_db</tt>). <a href='$1'>Kliknij tutaj</a>, aby skonfigurować funkcje sendmaila.
 access_toomany=W twoim systemie jest zbyt wiele reguł kontroli spamu, aby można je było wyświetlić na tej stronie.
 access_go=Znajdź pasujące reguły kontroli spamu:
 access_delete=Usuń wybrane reguły kontroli spamu
+
 sform_tag=Mecz przeciwko
 sform_tag_=Wszystko
 sform_tag_from=Z adresu
 sform_tag_to=Adresować
 sform_tag_connect=Informacje o połączeniu
 sform_tag_spam=Informacje o spamie
+
 ssave_ealready=Reguła kontroli spamu dla „$1” już istnieje
 ssave_ecannot2=Nie możesz zapisać tej reguły kontroli spamu
+
 sdelete_err=Nie udało się usunąć reguł kontroli spamu
 sdelete_ecannot=Nie możesz usunąć reguły dla $1 
+
 mailq_count=$1 wiadomości
 mailq_cc=DW
 mailq_subject=Przedmiot
@@ -100,23 +126,29 @@ mailq_search=Znajdź w kolejce wiadomości gdzie
 mailq_quar=Poddany kwarantannie
 mailq_refresh=Odśwież kolejkę poczty
 mailq_refreshdesc=Załaduj ponownie tę stronę, aby wyświetlić bieżący stan kolejki pocztowej.
+
 flushq_desc2=Wymuszanie próby dostarczenia $1 wybranych wiadomości.
 flushq_ecannot=Nie możesz opróżniać kolejki poczty
+
 searchq_title=Wyniki wyszukiwania w kolejce
 searchq_none=Nie znaleziono wiadomości w kolejce.
+
 delq_titles=Usuwanie wiadomości
 delq_force=Mimo to wymuś usunięcie
 delq_ecannot2=nie możesz usunąć tej wiadomości
 delq_rusure=Czy na pewno chcesz usunąć $1 wybranych wiadomości w kolejce?
 delq_confirm=Usuń wiadomości
+
 boxes_toomany=W systemie jest zbyt wielu użytkowników, aby wyświetlić wszystkie ich skrzynki pocztowe.
 boxes_go=Wyświetl pocztę dla użytkownika:
+
 mail_euserexists=Ten użytkownik systemu Unix nie istnieje
 mail_forward=Naprzód
 mail_move=Przenieś do:
 mail_copy=Kopiuj do:
 mail_rfc=Z linii
 mail_eexists=Wiadomość już nie istnieje!
+
 view_body=Wiadomość tekstowa
 view_allheaders=Zobacz wszystkie nagłówki
 view_noheaders=Wyświetl podstawowe nagłówki
@@ -127,10 +159,13 @@ view_egone=Ta wiadomość już nie istnieje
 view_afile=Nazwa załącznika
 view_atype=Typ załącznika
 view_asize=Rozmiar pliku
+
 enew_title=Edytuj adres e-mail
 reply_mailforward=Przekazywane wiadomości
 reply_body=Wiadomość tekstowa
+
 send_epath=Plik wykonywalny Sendmail $1 nie istnieje.
+
 delete_title=Usuń pocztę
 delete_rusure=Czy na pewno chcesz usunąć $1 wybranych wiadomości z $2 ? W przypadku dużego pliku poczty może to zająć trochę czasu. Do czasu zakończenia usuwania nie należy wykonywać żadnych innych czynności.
 delete_rusure2=Czy na pewno chcesz usunąć tę wiadomość z $1 ? W przypadku dużego pliku poczty może to zająć trochę czasu. Do czasu zakończenia usuwania nie należy wykonywać żadnych innych czynności.
@@ -140,6 +175,7 @@ delete_emoveuser=Użytkownik do przeniesienia poczty nie istnieje
 delete_emovecannot=Nie możesz przenosić poczty do określonego użytkownika
 delete_emovenone=Nie wybrano poczty do przeniesienia
 delete_nobutton=Nie kliknięto żadnego przycisku
+
 search_efield=Musisz wybrać typ wyszukiwania.
 search_ewhat=Brak tekstu do dopasowania z wprowadzonym dla wiersza $1 
 search_enone=Nie wprowadzono kryteriów wyszukiwania
@@ -149,9 +185,11 @@ search_results4=$1 wiadomości e-mail pasujących do wyszukiwania.
 search_local=W lokalnych folderach
 search_all=We wszystkich folderach
 search_eboolean=Wyszukiwanie boolowskie przy użyciu „i” oraz „lub” nie są obsługiwane
+
 file_ecannot=Nie możesz edytować tego pliku
 file_ealias=Nieprawidłowy format linii pliku aliasów : $1 
 file_etab=Nieprawidłowy format wiersza pliku mapy : $1 
+
 acl_ports=Czy można edytować porty sieciowe?
 acl_manual=Czy można ręcznie edytować pliki?
 acl_flushq=Czy można opróżnić kolejkę poczty?
@@ -166,6 +204,7 @@ acl_usersm=Użytkownicy pasujący
 acl_asame=Taki sam jak nazwa użytkownika
 acl_usersu=Z UID w zasięgu
 acl_spam=Adresy kontroli spamu, które ten użytkownik może edytować
+
 log_ports=Zmień porty sieciowe
 log_movemail=Przeniesiono wiadomości $1 z $2 do $3 
 log_feature_create=Dodano pozycję M4 $1 
@@ -179,6 +218,7 @@ log_delete_domains=Usunięto mapowania domen $1
 log_delete_accesses=Usunięte wpisy kontroli spamu $1 
 log_delete_generics=Usunięto $1 adresów wychodzących
 log_delete_mailers=Usunięto trasy $1 domeny
+
 match_status=Statusy pasują
 match_headers=Nagłówki pasują
 match_=-----------------
@@ -191,6 +231,7 @@ match_!status=Status nie pasuje
 match_!body=Ciało nie pasuje
 match_!size=Rozmiar jest mniejszy niż
 match_!headers=Nagłówki się nie zgadzają
+
 features_title=Konfiguracja Sendmail M4
 features_desc=Ta strona zawiera odpowiednie wpisy z pliku konfiguracyjnego Sendmail M4 $1, z którego zbudowany jest rzeczywisty plik konfiguracyjny $2.
 features_type=Rodzaj wpisu
@@ -210,6 +251,7 @@ features_efeatures=Katalog podstawowy konfiguracji Sendmail M4 $2 nie został zn
 features_econfig=Lokalizacje katalogu podstawowego Sendmail M4 i pliku konfiguracyjnego M4 nie zostały jeszcze ustawione w <a href='$1'>konfiguracji modułu</a>. Jeśli zainstalowałeś Sendmaila ze źródła, powinny one znajdować się w oryginalnym katalogu źródłowym.
 features_move=Ruszaj się
 features_manual=Edytuj plik ręcznie
+
 feature_add=Dodaj wpis konfiguracji
 feature_edit=Edytuj wpis konfiguracji
 feature_header=Szczegóły wpisu konfiguracji M4
@@ -230,12 +272,15 @@ feature_emailer=Mailer $1 już istnieje
 feature_eostype=Typ systemu operacyjnego jest już zdefiniowany jako $1 
 feature_manual=Edytuj plik M4
 feature_mdesc=Strona umożliwia ręczną edycję pliku konfiguracyjnego Sendmail M4 $1. Bądź ostrożny, ponieważ nie będziesz sprawdzać składni twoich edycji.
+
 feat_access_db=Plik kontrolny spamu
 feat_virtusertable=Mapowanie adresów
 feat_mailertable=Routing domen
 feat_genericstable=Adresy wychodzące
 feat_domaintable=Mapowanie domen
+
 mailer_local=Lokalny Unix
+
 build_title=Odbuduj konfigurację Sendmaila
 build_em4=W systemie nie znaleziono polecenia $1 potrzebnego do odbudowania pliku konfiguracyjnego Sendmail.
 build_ebuild=Nie udało się zbudować konfiguracji : $1 
@@ -244,13 +289,16 @@ build_rusure2=Pamiętaj, że jeśli dokonałeś zmian w Sendmail na stronie Opcj
 build_ok=Tak, wymień go teraz
 build_diff=W pliku konfiguracyjnym Sendmail zostaną wprowadzone następujące zmiany ..
 build_nodiff=Twój plik konfiguracyjny sendmaila jest już aktualny.
+
 stop_err=Nie udało się zatrzymać sendmaila
 stop_ecannot=Nie możesz zatrzymać sendmaila
 stop_epid=Wygląda na to, że Sendmail nie działa
 restart_epids=Nie można znaleźć procesów sendmaila
 restart_ekill=Nie udało się zasygnalizować procesów sendmaila : $1 
+
 start_err=Nie udało się uruchomić sendmaila
 start_ecannot=Nie możesz rozpocząć sendmaila
+
 ports_title=Porty sieciowe
 ports_name=Nazwa portu
 ports_addr=Słuchaj na adres

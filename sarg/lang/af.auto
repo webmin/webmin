@@ -10,6 +10,7 @@ index_range=Genereer verslag vir die datumreeks
 index_view=Kyk na gegenereerde verslag
 index_viewdesc=Kyk na die mees onlangse verslag in die gids $1.
 index_return=module-indeks
+
 log_title=Logbron en verslagbestemming
 log_header=Bron inkvis log-lêer en gegenereerde verslagopsies
 log_access_log=Bron inkvis log-lêer
@@ -30,6 +31,7 @@ log_elastlog=Geen nommer ontbreek nie
 log_eemail=E-posadres ontbreek of ongeldig
 log_emailx=Ontbrekende of nie-bestaande e-posprogram
 log_squidguard_log_path=SquidGuard-loglêer
+
 style_title=Verslagstyl
 style_header=HTML-verslagstyl en kleuropsies
 style_title2=Verslag titel
@@ -54,6 +56,7 @@ style_efont=Naam of ongeldige lettertipe ontbreek
 style_esize=Ontbrekende of ongeldige beeldwydte en hoogte
 style_language=Rapporteer taal
 style_charset=Rapporteer karakterset
+
 report_title=Verslagopsies
 report_header=Rapporteer die inhoud en generasie-opsies
 report_resolve_ip=IP-adresse op te los?
@@ -134,6 +137,7 @@ report_echar=Spasies word nie toegelaat nie
 report_estring=Vervangende of ontbrekende teks ontbreek
 report_eselect=Niks gekies nie
 report_eenter=Niks het ingekom nie
+
 sched_title=Gegenereerde verslag
 sched_header=Geskeduleerde verslagdoeningsopsies
 sched_sched=Geplande verslag geaktiveer?
@@ -148,9 +152,11 @@ sched_rsel=Diegene van $1 tot $2 dae gelede
 sched_err=Kon nie geskeduleerde verslaggenerering stoor nie
 sched_erfrom=Begin aantal dae gelede ontbreek of ongeldig
 sched_erto=Einde aantal dae gelede ontbreek of ongeldig
+
 view_title=Sarg-verslag
 view_efile=Ongeldige lêernaam!
 view_eopen=Kon nie die lêer oopmaak nie
+
 gen_title=Genereer verslag
 gen_header=Genereer nou Sarg-verslag uit die inkvis-loglêer $1 en alle geroteerde weergawes.
 gen_done=.. klaar
@@ -160,6 +166,7 @@ gen_view=Kyk na voltooide verslag.
 gen_err=Verslag kon nie genereer nie
 gen_efrom=Ontbreek of ongeldig vanaf die dag
 gen_eto=Ontbreek of ongeldig tot vandag toe
+
 webmin_log_log=Opgedateer logbron en verslag bestemmingsopsies
 webmin_log_report=Opgedateerde verslagopsies
 webmin_log_style=Opgedateerde verslagstylopsies

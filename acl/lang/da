@@ -26,6 +26,7 @@ index_delete=Slet valgte
 index_joingroup=Tilføj til gruppe:
 index_eulist=Kunne ikke liste brugere : $1
 index_eglist=Kunne ikke liste grupper : $1
+
 edit_title=Rediger Webmin bruger
 edit_title2=Opret Webmin bruger
 edit_readonly=Denne webminbruger burde ikke redigeres da denne er administreret af modulet $1. <a href='$2'>Klik her</a> for at ignorer denne advarsel og redigere brugeren alligevl - men vær klar over at enhver manuel ændring måske bliver overskrevet!
@@ -109,6 +110,7 @@ edit_proto_mysql=MySQL database
 edit_proto_postgresql=PostgreSQL database
 edit_proto_ldap=LDAP server
 edit_proto_=Lokale filer
+
 save_err=Kunne ikke gemme bruger
 save_ename='$1' er ikke et gyldigt brugernavn
 save_enamewebmin=Brugernavnet 'webmin' er reserveret for intern brug
@@ -138,11 +140,13 @@ save_edays=Ingen tilladte dage er valgt
 save_ehours=Manglende eller ugyldige tilladte tidspunkter
 save_ehours2=Tilladt starttid skal være før sluttid
 save_etemp=Muligheden for at tvinge en adgangskodeændring ved næste login kan ikke bruges, medmindre <a href='$1'> opfordrer brugerne til at indtaste nye adgangskoder </a> er aktiveret
+
 delete_err=Kunne ikke slette bruger
 delete_eself=Du kan ikke slette dig selv
 delete_ecannot=Du har ikke tilladelse til at slette brugere
 delete_euser=Du har ikke tilladelse til at slette denne bruger
 delete_eanonuser=Denne bruger bruges til anonym moduladgang
+
 cert_title=Efterspørg certifikat
 cert_issue=Tildele certifikat
 cert_header=Nye certifikat detaljer
@@ -162,6 +166,7 @@ cert_ekey=Der blev ikke tilføjet en ny SSL nøgle fra din browser - måske unde
 cert_eca=Kunne ikke opsætte certifikatsfuldmagt : $1
 cert_already=Advarsel - Du brugere allerede certifikatet $1.
 cert_etempdir=Ugyldig certifikatfil
+
 acl_title=Modul Adgangs Kontrol
 acl_title2=For $1 i $2
 acl_title3=For gruppe $1 i $2
@@ -170,6 +175,7 @@ acl_config=Kan ændre modul konfiguration
 acl_reset=Reset til fuld adgang
 acl_rbac=Få adgangskontrol indstillinger fra RBAC?
 acl_rbacyes=Ja (overskriv indstillinger nedenunder)
+
 acl_uall=Alle brugere
 acl_uthis=Denne bruger
 acl_usel=Valgte brugere ..
@@ -209,6 +215,7 @@ acl_switch=Kan skifte til andre brugere?
 acl_times=Kan ændre tilladte log ind tider?
 acl_pass=Kan du ændre adgangskodebegrænsninger?
 acl_sql=Kan du konfigurere bruger- og gruppedatabase?
+
 log_modify=Redigerede Webmin bruger $1
 log_rename=Omdøbte Webmin bruger $1 til $2
 log_create=Opretede Webmin bruger $1
@@ -231,6 +238,7 @@ log_sync=Ændret unix-brugersynkronisering
 log_sql=Ændret bruger- og gruppedatabase
 log_twofactor=Tilmeldt bruger $1 med To-faktor udbyder $2
 log_onefactor=Dis-indskrevet bruger $1 til To-faktor godkendelse
+
 gedit_ecannot=Du har ikke tilladelse til at redigere grupper
 gedit_title=Rediger Webmin gruppe
 gedit_title2=Opret Webmin gruppe
@@ -240,6 +248,7 @@ gedit_modules=Medlemmers moduler
 gedit_members=Medlemmer brugere og grupper
 gedit_desc=Gruppebeskrivelse
 gedit_egone=Valgte grupper eksisterer ikke længere!
+
 gdelete_err=Kunne ikke slette gruppe
 gdelete_ecannot=Du har ikke tilladelse til at slette grupper
 gdelete_euser=Du kan ikke slette din egen gruppe
@@ -247,11 +256,13 @@ gdelete_esub=Grupper med undergrupper kan ikke slettes
 gdelete_title=Slet gruppe
 gdelete_desc=Er du sikker på at du vil slette gruppen $1 og dens medlemmer $2 ?
 gdelete_ok=Slet gruppe
+
 gsave_err=Kunne ikke gemme gruppe
 gsave_ename=Manglende eller ugyldigt gruppenavn
 gsave_enamewebmin=Gruppenavnet 'webmin' er reserveret for intern brug
 gsave_edup=Gruppenavn er allerede i brug
 gsave_edesc=Ugyldig beskrivelse - Karakteren er ikke tilladt
+
 convert_title=Konverter brugere
 convert_ecannot=Du har ikke tilladelse til at konvertere Unixbrugere
 convert_nogroups=Der er ikke difineret nogen webmingrupper på dit system. Mindst en gruppe skal oprettes inden konvertering for at kunne definere rettighederne for de konverterede brugere.
@@ -280,6 +291,7 @@ convert_user=Unix bruger
 convert_action=Handling taget
 convert_done=$1 brugere konverteret, $2 ugyldige, $3 eksisterer allerede, $4 ekskluderet.
 convert_users=Brugere til konvertere
+
 sync_title=Unix brugersynkronisation
 sync_desc=Denne form giver dig mulighed for at konfigurere den automatiske synkronisation af Unix brugere oprettet gennem Webmin og brugere i dette modul.
 sync_nogroups=Ingen Webmin grupper er definerede på dit system. Mindst en gruppe skal oprettes for at sætte adgangen for oprettede brugere.
@@ -290,6 +302,7 @@ sync_delete=Slet den matchende Webmin bruger når en Unix bruger bliver slettet.
 sync_group=Tildel nye brugere til Webmin gruppe
 sync_unix=Sæt adgangskode for ny bruger til Unix godkendelse.
 sync_ecannot=Du har ikke tilladelse til at konfigurere brugersynkronisation.
+
 unix_title=Unix bruger godkendelse
 unix_err=Kunne ikke gemme Unix-godkendelse
 unix_desc=Denne side giver dig mulighed for at konfigurere Webmin til at godkende log ind forsøg imod system brugerlisten og PAM. Dette kan være nyttigt hvis du har et stort antal eksiterende Unix brugere som du vil give adgang til Webmin.
@@ -322,6 +335,7 @@ unix_esudo=Kommandoen $1 er ikke installeret
 unix_esudomod=Perl-modulet $1, der kræves til <tt>sudo</tt> autentificering, er ikke installeret
 unix_header=Unix-bruger godkendelses indstillinger
 unix_utable=Tilladte Unix-brugere
+
 sessions_title=Nuværende Log ind sessioner
 sessions_id=Sessions ID
 sessions_user=Webmin bruger
@@ -335,21 +349,26 @@ sessions_this=Dette login
 sessions_in=Logget ind
 sessions_out=Logget ud
 sessions_kill=Afbryd..
+
 logins_title=Seneste Webmin logins
+
 hide_title=Gem ubrugte moduler
 hide_desc=Følgende moduler vil blive fjernet fra modul adgangslisten for $1 da deres tilsvarende servere ikke er installeret på systemet ..
 hide_ok=Gem moduler nu
 hide_none=Intet at skjule - $1 har ikke adgang til moduler hvis tilsvarende servere ikke er installerede på dit systemet.
 hide_desc2=Vær opmærksom på at disse moduler ikke vil genopstå automatisk hvis de tilsvarende server bliver installeret. Du er nødt til at give adgang manuelt vedhjælp af dette modul.
 hide_clone=(Klon $1)
+
 switch_euser=Du har ikke tilladelse til at skifte til denne bruger
 switch_eold=Eksiterende session ikke fundet!
+
 rbac_title=Opsæt RBAC
 rbac_desc=Webmin's RBAC integration giver mulighed for at brugermoduler og ACL tilladelser bliver bestemt ud fra en RBAC(Rolle Baseret Adgangs Kontrol) database, istedet for Webmin's egne konfigurationsfiler. Når RBAC support er slået til, vil alle brugere for hvem <b>$edit_rbacdenyl</b> indstillingen er aktivieret, få dersmuligheder bestemt af RBAC istedet for Webmin's egne adgangskontrol indstillinger.
 rbac_esolaris=RBAC er kun understøttet af Solaris for øjeblikket, og kan derfor ikke bruges på dette $1 system.
 rbac_eperl=Perl modulet $1 der skal bruges til RBAC integration er ikke installeret. <a href='$2'>Klik her</a> for at installere det nu.
 rbac_ecpan=Du har ikke adgang til Webmin's Perl modul side for at kunne installere det nødvendige $1 modul for RBAC integration.
 rbac_ok=RBAC integration er tilgængelig på dette system, og kan aktiveres på en pr-bruger basis på Rediger Webmin bruger siden.
+
 udeletes_err=Kunne ikke slette brugere
 udeletes_jerr=Kunne ikke tilføje brugere til gruppe
 udeletes_enone=Ingen valgt
@@ -358,11 +377,13 @@ udeletes_rusure=Er du sikker på at du vil slette de $1 valgte brugere? Alle der
 udeletes_users=Valgte brugere: $1
 udeletes_ok=Slet brugere
 udeletes_ereadonly=En af de valgte brugere er markeret som ikke-redigerbar
+
 gdeletes_err=Kunne ikke slette grupper
 gdeletes_title=Slet grupper
 gdeletes_rusure=Er du sikker på at du vil slette de $1 valgte grupper, og de $2 bruger som de indeholder? Alle deres adgangskontrol indstillinger og brugerdetaljer vil være tabte.
 gdeletes_users=Valgte grupper: $1
 gdeletes_ok=Slet grupper
+
 pass_title=Adgangskodebegrænsninger
 pass_ecannot=Du har ikke lov til at redigere adgangskodebegrænsninger
 pass_header=Webmin adgangskode håndhævelse muligheder
@@ -385,6 +406,7 @@ pass_eminsize=Manglende eller ikke-numerisk mindste adgangskode længde
 pass_emaxdays=Manglende eller ikke-numerisk antal dage før ændring
 pass_elockdays=Manglende eller ikke-numerisk antal dage før kontoen er låst
 pass_eoldblock=Manglende eller ikke-numerisk antal gamle adgangskoder til afvisning
+
 cpass_minsize=Skal være mindst $1 bogstaver langt
 cpass_notre=Matcher et uautoriseret mønster
 cpass_re=Stemmer ikke overens med et ønsket mønster
@@ -392,6 +414,7 @@ cpass_name=Indeholder brugernavnet
 cpass_dict=Er et ordbog ord
 cpass_spellcmd=Hverken kommandoen $1 eller $2, der skal bruges til at kontrollere ordbogsord, er installeret
 cpass_old=Gamle adgangskoder kan ikke genbruges
+
 sql_title=Bruger- og gruppedatabase
 sql_ecannot=Det er ikke tilladt at konfigurere bruger- og gruppedatabasen
 sql_header=Valg til database backend for brugere og grupper
@@ -434,21 +457,25 @@ sql_dnerr=Bruger- og gruppe database indstillinger er gyldige, men LDAP DN, der 
 sql_dnerr2=Klik på knappen <b> Opret DN </b> nedenfor for at få den til at oprette automatisk, eller tilføj den til din LDAP-server manuelt.
 sql_makedn=Opret DN
 sql_schema=Hent LDAP Schema
+
 make_title=Opret bruger- og gruppetabeller
 make_err=Kunne ikke oprette bruger- og gruppetabeller
 make_exec=Udfører SQL $1 ..
 make_failed=.. oprettelsen mislykkedes: $1
 make_done=.. Færdig
 make_still=Nogle problemer blev fundet selv efter tabellen oprettelse : $1
+
 makedn_title=Opret LDAP DN
 makedn_eoc=Ingen strukturelle objektklasser fundet!
 makedn_exec=Oprettelse af forælder DN $1 ..
 makedn_failed=.. oprettelsen mislykkedes : $1
 makedn_done=.. Færdig
 makedn_still=Nogle problemer blev fundet selv efter DN-oprettelsen: $1
+
 schema_title=Hent LDAP Schema
 schema_desc=Før Webmin kan bruge en LDAP-server til at gemme brugere og grupper, skal den konfigureres til at bruge skemaet nedenfor. Dette kan typisk gøres ved at gemme skemadefinitionen i <tt> /etc/ldap/schema </tt> eller <tt> /etc/openldap/ schema </tt> som <tt> webmin.schema </tt> Derefter konfigureres serveren for at indlæse den skematiske fil.
 schema_download=Hent skemafil : <a href=$1>$1</a>
+
 twofactor_err=Det lykkedes ikke at konfigurere to-faktor-godkendelse
 twofactor_euser=Din Webmin-bruger blev ikke fundet!
 twofactor_title=To-factor-godkendelse

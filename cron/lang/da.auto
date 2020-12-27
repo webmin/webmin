@@ -31,6 +31,7 @@ index_ok=Søg
 index_searchres=Cron job matchende $1 ..
 index_reset=Nulstil søgning.
 index_econfigcheck=Cron-job kan ikke administreres på dit system, da modulkonfigurationen ikke er gyldig : $1 
+
 edit_title=Rediger Cron Job
 create_title=Opret Cron Job
 edit_ecannot=Du har ikke tilladelse til at redigere cron-job for denne bruger
@@ -70,6 +71,7 @@ lcedit_special_weekly=ugentligt (på søndag)
 lcedit_special_monthly=månedligt (den 1.)
 lcedit_special_yearly=årligt (den 1. januar)
 lcedit_special_reboot=når systemet starter
+
 save_err=Kunne ikke gemme cron-job
 save_ecmd=Du har ikke indtastet en kommando til at udføre
 save_euser=Du skal vælge en bruger
@@ -79,6 +81,7 @@ save_ecannot=Du har ikke tilladelse til at oprette eller redigere cron-job til '
 save_enone=Du valgte ikke $1 at udføre
 save_ecannot2=Du har ikke lov til at oprette cron-job
 save_eidx=Cron-job blev gemt med succes, men kan ikke køres, da det ikke blev fundet!
+
 allow_title=Styr Cron Access
 allow_desc=Denne formular giver dig mulighed for at kontrollere, hvilke brugere der kan oprette og køre cron-job.
 allow_ecannot=Du kan ikke kontrollere brugeradgang til cron
@@ -87,6 +90,7 @@ allow_all2=Nægt alle brugere undtagen rod
 allow_all3=Tillad alle brugere
 allow_allow=Tillad kun listede brugere
 allow_deny=Afvis kun listede brugere
+
 env_title1=Rediger miljøvariabel
 env_title2=Opret miljøvariabel
 env_name=Variabel navn
@@ -102,11 +106,13 @@ env_where2=Flyt miljøvariabel
 env_top=Før alle Cron-job til bruger
 env_bot=Efter alt Cron job
 env_leave=Aktuelle position
+
 exec_title=Udfør Cron Job
 exec_ecannot=Du har ikke tilladelse til at udføre cron-job for denne bruger
 exec_cmd=Output fra kommando $1 ..
 exec_cmdbg=Kører kommando $1 som baggrundsproces.
 exec_none=Ingen output genereret
+
 acl_users=Kan redigere cron-job til
 acl_all=Alle brugere
 acl_this=Nuværende webmin-bruger
@@ -122,6 +128,7 @@ acl_move=Kan flytte Cron job?
 acl_kill=Kan opsige Cron-job?
 acl_hourly=Begrænse job til højst hver time?
 acl_hourlydef=Som angivet i modulkonfig
+
 log_modify=Ændret Cron-job for $1 
 log_modify_l=Ændret Cron-job "$2" for $1 
 log_create=Oprettet Cron-job for $1 
@@ -139,7 +146,9 @@ log_move=Flyttede Cron-job for $1
 log_crons_delete=Slet $1 Cron-job
 log_crons_disable=Deaktiveret $1 Cron-job
 log_crons_enable=Aktiveret $1 Cron-job
+
 ecopy=Der blev fundet en fejl i den nye Cron-konfiguration: $1 $2 
+
 when_min=hvert minut
 when_hour=hver time ved $1 efter timen
 when_day=hver dag ved $2:$1 
@@ -148,6 +157,7 @@ when_weekday=hver $3 ved $2:$1
 when_cron=ved cron-tid $1 
 when_interval=hvert $1 sekund
 when_boot=ved opstartstidspunktet
+
 ucwhen_min=Hvert minut
 ucwhen_hour=Hver time på $1 efter timen
 ucwhen_day=Hver dag på $2:$1 
@@ -156,8 +166,10 @@ ucwhen_weekday=Hver $3 ved $2:$1
 ucwhen_cron=Ved cron-tid $1 
 ucwhen_interval=Hvert $1 sekund
 ucwhen_boot=Ved opstartstid
+
 move_err=Kunne ikke flytte Cron-job
 move_etype=Dette job kan ikke flyttes
+
 kill_err=Kunne ikke afslutte Cron-job
 kill_ecannot=Du har ikke lov til at opsige dette job
 kill_egone=Kører ikke længere
@@ -166,13 +178,16 @@ kill_title=Afslut Cron Job
 kill_rusure=Er du sikker på, at du vil afslutte processen $1 med PID $2 ?
 kill_rusure2=Er du sikker på, at du vil afslutte processen $1 med PID $2 og alle dens underprocesser?
 kill_ok=Ja, afslutt det
+
 range_all=Kør på enhver dato
 range_start=Kør kun fra $1 
 range_end=til $1 
 range_estart=Manglende eller ugyldig startdato inden for rækkevidde, der skal køres
 range_eend=Manglende eller ugyldig slutdato i det interval, der skal køres
+
 delete_err=Kunne ikke slette Cron-job
 delete_enone=Ingen valgt
+
 manual_title=Rediger manuelt Cron Jobs
 manual_edit=Cron-fil til redigering:
 manual_ok=Redigere

@@ -64,12 +64,14 @@ index_match1=מכיל
 index_match2=התאמות
 index_dhcpd=ISC DHCPd
 index_delete=מחק את הנבחר
+
 butt_save=להציל
 butt_eco=ערוך אפשרויות לקוח
 butt_vco=הצג אפשרויות לקוח
 butt_del=מחק
 butt_create=צור
 butt_leases=שכירות רשימה
+
 esub_crheader=צור רשת משנה
 esub_edheader=ערוך רשת משנה
 esub_tabhdr=פרטי רשת משנה
@@ -83,12 +85,14 @@ esub_groups=מקבץ ישירות ברשת משנה זו
 esub_pools=בריכות כתובות עבור רשת משנה
 esub_pool=בריכה $1 
 esub_poolnone=לא הוגדרו מאגרי כתובות
+
 esub_pooladd=הוסף מאגר כתובות.
 esub_none=אף אחד
 esub_return=רשימת רשת משנה
 esub_retshar=רשת משותפת
 esub_desc=תיאור רשת משנה
 esub_fopeer=פאר כישלונות
+
 esh_crheader=צור רשת משותפת
 esh_eheader=ערוך רשת משותפת
 esh_tabhdr=פרטי רשת משותפים
@@ -99,6 +103,7 @@ esh_subn=רשתות משנה ברשת משותפת זו
 esh_return=רשימת רשת משנה
 esh_pools=בריכות כתובות לרשת משותפת
 esh_desc=תיאור רשת משותף
+
 ehost_crheader=צור מארח
 ehost_eheader=ערוך מארח
 ehost_tabhdr=פרטי מארח
@@ -119,6 +124,7 @@ ehost_retgroup=קבוצה
 ehost_retsubn=רשת משנה
 ehost_retshar=רשת משותפת
 ehost_desc=תיאור מארח
+
 egroup_crheader=צור קבוצת מארחים
 egroup_eheader=ערוך את קבוצת המארחים
 egroup_tblhdr=פרטי הקבוצה
@@ -129,6 +135,7 @@ egroup_return=רשימת מארחים
 egroup_retsubn=רשת משנה
 egroup_retshar=רשת משותפת
 egroup_desc=תיאור קבוצה
+
 default=ברירת מחדל
 secs=שניות
 none=אף אחד
@@ -157,20 +164,24 @@ listl_pc=אחוז
 listl_err=נכשל בהשכרות שנמחקו
 listl_enone=לא נבחר
 listl_refresh=רשימת רענון
+
 restart_errmsg1=ההפעלה מחדש של dhcpd נכשלה
 restart_errmsg2=איתור התהליך נכשל
 start_failstart=הפעלת dhcpd נכשלה
 restart_conftext=קווים סביב $1 ב- $2  :
+
 sgroup_faildel=מחיקת הקבוצה נכשלה
 sgroup_failsave=שמירת הקבוצה נכשלה
 sgroup_invassign=קבוצה שהוקצתה לקטע שגוי
 sgroup_echanged=תוכן קובץ התצורה שונה. נסה שוב.
+
 shost_faildel=מחיקת המארח נכשלה
 shost_failsave=שמירת המארח נכשלה
 shost_invalidhn=אינו שם מארח חוקי
 shost_invalidhwa='$1' אינה כתובת $2 תקפה
 shost_invalidaddr='$1' מכיל שם מארח או כתובת IP לא חוקיים
 shost_invassign=המארח שהוקצה לקטע שגוי
+
 sopt_failsave=שמירת אפשרויות הלקוח נכשלה
 sopt_invalidip=אינה כתובת IP חוקית
 sopt_invalidint=אינו מספר שלם
@@ -180,10 +191,12 @@ sopt_ednum='$1' אינו מספר אופציות תקף
 sopt_edtype='$1' אינו סוג אופציה תקף
 sopt_ecval=ערך חסר עבור אפשרות מותאמת אישית '$1'
 sopt_ecip=הערך עבור אפשרות מותאמת אישית '$1' חייב להיות כתובת IP
+
 sshared_faildel=מחיקת הרשת המשותפת נכשלה
 sshared_failsave=שמירת הרשת המשותפת נכשלה
 sshared_invalidsname=שם רשת משותף חסר או לא חוקי.
 sshared_nosubnet=הרשת המשותפת '$1' אינה מכילה רשת משנה כלשהי.
+
 ssub_faildel=מחיקת רשת המשנה נכשלה
 ssub_failsave=שמירת רשת המשנה נכשלה
 ssub_invalidsubaddr=אינה כתובת רשת משנה חוקית
@@ -191,6 +204,7 @@ ssub_invalidnmask=אינה מסכת רשת תקפה
 ssub_invalidipr=אינה כתובת IP תקפה לטווח
 ssub_nosubnet=הרשת המשותפת '$1' אינה מכילה רשת משנה כלשהי.
 ssub_invalidfopeer=אינו עמית כושל תקף
+
 plib_deflt=זמן ברירת מחדל לחכירה
 plib_bfname=אתחול שם הקובץ
 plib_maxlt=זמן חכירה מקסימאלי
@@ -244,6 +258,7 @@ plib_eexpr=קטע זה בתצורת DHCP מכיל את הנחיית הביטוי
 plib_auth_subnet=השרת הוא סמכותי עבור רשת משנה זו?
 plib_auth_shared-network=השרת מוסמך לרשת משותפת זו?
 plib_auth_global=השרת הוא סמכותי לכל רשתות המשנה?
+
 eopt_header=אפשרויות לקוח
 eopt_subtitle=עבור רשת משנה $1
 eopt_returnsub=רשת משנה
@@ -289,6 +304,7 @@ eopt_slpa=כתובות IP של סוכן ספרייה
 eopt_slpaips=מכשירי IP אלה בלבד?
 eopt_slps=היקף שירות SLP
 eopt_slpsonly=היקף זה בלבד?
+
 log_apply=שינויים שהוחלו
 log_start=שרת DHCP התחיל
 log_stop=שרת DHCP הופסק
@@ -311,6 +327,7 @@ log_options_group=אפשרויות ששונו לקבוצה של מארחים $1
 log_delete_lease=חוזה השכירות עבור $1 
 log_delete_subnets=$1 תת-רשתות ורשתות משותפות נמחקו
 log_delete_hosts=$1 מארחים וקבוצות מארחים נמחקו
+
 keys_edit=ערוך את מפתח TSIG
 keys_create=יצרו מפתחות TSIG
 keys_title=מפתחות DNS
@@ -321,12 +338,14 @@ keys_ecannot=אינך מורשה לערוך מפתחות DNS
 keys_err=שמירת מפתחות DNS נכשלה
 keys_ekey='$1' אינו מזהה מפתח תקף
 keys_esecret=סוד מקודד בסיס -64 חסר או לא חוקי עבור מפתח $1 
+
 pool_edit=ערוך את מאגר הכתובות
 pool_create=נוצר בריכת כתובות
 pool_header=אפשרויות בריכת כתובות
 pool_allow=לקוחות לאפשר
 pool_deny=לקוחות להכחיש
 pool_return=רשת משנה
+
 cdel_header=אזהרה
 cdel_shared1=רשת משותפת
 cdel_shared2=רשת משותפת
@@ -344,6 +363,7 @@ cdel_txt=מחיקת $1 '$2' תמחק גם את תוכנו:
 cdel_confirm=האם אתה באמת רוצה למחוק $1 זה?
 cdel_eunknown=שגיאה לא ידועה
 cdel_return=רשימת מארחים ורשתות
+
 eacl_aviol=הפרת בקרת גישה
 eacl_np=אין לך הרשאות ל
 eacl_pdh=מחק מארח
@@ -369,6 +389,7 @@ eacl_pdl=למחוק שכירות
 eacl_psl=חוזים להשכרה
 eacl_pglob=ערוך אפשרויות גלובליות
 eacl_papply=הפעל מחדש את השירות הזה
+
 acl_apply=האם ניתן להחיל שינויים?
 acl_r_leases=האם ניתן לראות חכירה?
 acl_w_leases=האם ניתן להסיר חכירה?
@@ -398,9 +419,11 @@ acl_err=שגיאה בשמירת רשימת ACL
 acl_ernow=אם ברצונך לאפשר גישה לכתיבה ב- ACLs גלובלי עבור סוג אובייקט כלשהו, עליך לאפשר גם גישה לקריאה עבור סוג אובייקט זה.
 acl_normal=רגיל
 acl_paranoic=פרנואי
+
 iface_title=ממשק רשת
 iface_desc=שרת DHCP יכול להקצות כתובות IP רק ברשתות המחוברות לאחד הממשקים שנבחרו להלן. יש לכלול את ממשק הרשת לכל רשתות המשנה שהוגדרו. אם לא נבחרים אף אחד מהם, שרת DHCP ינסה למצוא אחד באופן אוטומטי.
 iface_listen=האזן בממשקים
+
 lookup_ehost=אין מארח עם השם, כתובת ה- IP או כתובת ה- MAC $1 
 lookup_ehostname=לא הוזנו שם מארח, כתובת IP או כתובת MAC
 lookup_egroup=אין קבוצה עם השם או שם הדומיין $1 
@@ -409,6 +432,7 @@ lookup_esubnet=אין רשת משנה עם הכתובת או הכתובת/מסי
 lookup_esubnetname=לא הוזנה כתובת רשת או כתובת/מסכת רשת
 lookup_eshared=אין רשת משותפת עם השם $1 
 lookup_esharedname=לא הוזן שם רשת משותפת
+
 zone_key=אזורי DNS
 index_addzone=הוסף אזור DNS חדש.
 index_zone=אזור
@@ -424,16 +448,21 @@ zone_faildel=מחיקת האזור נכשלה
 zone_failsave=שמירת אזור נכשלה
 zone_tsigkey=מפתח TSIG
 zone_ecannot=אינך מורשה לערוך אזורי DNS
+
 plib_clientupdates=האם לקוחות יכולים לעדכן את הרשומות שלהם?
+
 text_title=dhcpd.conf
 text_editor=עורך טקסט
 text_return=תפריט ראשי
 text_undo=לבטל
 text_ecannot=אינך רשאי לערוך את קובץ התצורה
+
 index_buttetext=ערוך ידנית את התצורה
 index_text=ערוך טקסט קובץ תצורה ידני
+
 stop_err=עצירת שרת DHCP נכשלה
 stop_ekill=לא רץ!
+
 sdelete_err=מחיקת רשתות משנה ורשתות משותפות נכשלה
 sdelete_enone=לא נבחר
 sdelete_title=מחק תת-רשתות ורשתות משותפות
@@ -441,6 +470,7 @@ sdelete_rusure1=האם אתה בטוח שברצונך למחוק את התת-ק�
 sdelete_rusure2=האם אתה בטוח שברצונך למחוק את התת-קבוצות המשנה שנבחרו? כל אובייקט אחר בתוך רשתות המשנה יאבד גם הוא.
 sdelete_rusure3=האם אתה בטוח שברצונך למחוק את $2 הרשתות המשותפות שנבחרו? כל תת-רשתות או אובייקטים אחרים ברשתות יאבדו גם הם.
 sdelete_ok=תמחק עכשיו
+
 hdelete_err=מחיקת המארחים והקבוצות נכשלה
 hdelete_enone=לא נבחר
 hdelete_title=מחק מארחים וקבוצות

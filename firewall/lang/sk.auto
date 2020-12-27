@@ -1,6 +1,7 @@
 index_title_v=Firewall IPv4
 index_title_v6=Firewall IPv6
 index_evalid=VÝSTRAHA! Vaša aktuálna konfigurácia IPtables je neplatná : $1 
+index_no_comment=
 index_crename=Premenovať reťazec
 index_cmovesel=Presunúť vybraté
 index_unapply2=Uložiť konfiguráciu
@@ -19,6 +20,9 @@ index_ipset_size=veľkosť
 index_ipvxmode=Zmeniť verziu protokolu IP:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
+desc_icmpv6-type=Typ ICMP je $1 
+desc_icmpv6-type!=Typ ICMP nie je $1 
 desc_ctstate=stav pripojenia je $1 
 desc_ctstate!=stav pripojenia nie je $1 
 desc_physdev-in=vstupné fyzické rozhranie je $1 
@@ -28,7 +32,9 @@ desc_physdev-out!=výstupné fyzické rozhranie nie je $1
 desc_args--match-set=$2 je obsiahnutý v IP-súbore $1 
 desc_src=zdroj
 desc_dest=destinácia
+
 redhat_einstalled=Nebola nájdená žiadna bootovacia akcia <tt>iptables (6)</tt>, čo naznačuje, že balík IPtables nie je nainštalovaný vo vašom systéme
+
 edit_state_snat=Zdroj NATd
 edit_state_dnat=Cieľový NATd
 edit_physdevin=Prichádzajúce fyzické rozhranie
@@ -36,18 +42,23 @@ edit_physdevout=Odchádzajúce fyzické rozhranie
 edit_physdevisin=Prichádzajúci paket na rozhraní mosta
 edit_physdevisout=Odchádzajúce pakety na mostovom rozhraní
 edit_physdevisbridged=Paket je premosťovaný
+
 save_ephysdevin=Chýbajúce alebo neplatné prichádzajúce fyzické rozhranie
 save_ephysdevout=Chýbajúce alebo neplatné odchádzajúce fyzické rozhranie
+
 log_rename_chain=Premenovaný reťazec $1 v tabuľke $2 
 log_movesel_chain=Presunuli sa pravidlá $3 z reťazca $1 v tabuľke $2 
 log_openports=Otvorené porty brány firewall $1 
+
 add_enone=Nie sú vybrané žiadne servery na pridanie!
+
 move_title=Presunúť pravidlá
 move_count=Vybraté pravidlá
 move_chain=Aktuálna zmena
 move_dest=Cieľový reťazec
 move_ok=Presunúť teraz
 move_header=Možnosti presunu pravidla
+
 rename_title=Premenovať reťazec
 rename_count=Pravidlá v reťazci
 rename_chain=Aktuálne meno
@@ -57,5 +68,3 @@ rename_header=Možnosti reťazového premenovania
 rename_adjust=Upraviť ďalšie pravidlá, ktoré presahujú tento reťazec?
 rename_none=nikto
 rename_ecannot=Nemáte povolené premenovať reťazce
-desc_icmpv6-type=Typ ICMP je $1 
-desc_icmpv6-type!=Typ ICMP nie je $1 

@@ -11,11 +11,13 @@ index_boot=Starten beim booten?
 index_bootdesc=Ändert diese Einstellung um den Dovecot-Server beim Systemstart zu aktivieren oder zu deaktivieren.
 index_return=Modulindex
 index_version=Version $1
+
 stop_err=Stoppen von Dovecot fehlgeschlagen
 stop_erunning=Läuft nicht länger
 start_err=Starten von Dovecot fehlgeschlagen
 start_eprotos=Keine Protokolle auf der <b>Netzwerke und Protokolle</b> Seite ausgewählt
 apply_err=Fehlgeschlagen die Konfiguration anzuwenden
+
 net_title=Netzwerke und Protokolle
 net_header=Dovecot Netzwerk- und Mail Protokolloptionen
 net_protocols=Bediene Mail-Protokolle
@@ -42,8 +44,11 @@ net_eimaps_listen=Ungültige IP-Adresse für IMAP SSL Verbindungen
 net_epop3s_listen=Ungültige IP-Adresse für POP3 SSL Verbindungen
 net_elisten=Ungültige IP-Adresse für Nicht-SSL-Verbindungen
 net_essl_listen=Ungültige IP-Adresse für SSL Verbindungen
+
 imap_title=IMAP Optionen
+
 pop3_title=POP3 Optionen
+
 ssl_title=SSL Konfiguration
 ssl_header=IMAP und POP3 SSL Modus Optionen
 ssl_key=SSL private Schlüsseldatei
@@ -61,7 +66,9 @@ ssl_ecert=Fehlende oder nicht vorhandene Zertifikatsdatei
 ssl_eca=Fehlende oder nicht-vorhandene CA-Zertifikatsdatei
 ssl_eregen=Fehlender oder nicht-numerischer Parameter für Regenerationsintervall
 ssl_epass=Kein SSL Schlüsseldatei Passwort eingegeben
+
 misc_title=Andere Optionen
+
 login_title=Benutzer und Login Optionen
 login_header=Benutzer Authentifizierung und Login Optionen
 login_fuid=Minimal gültige UID
@@ -117,6 +124,7 @@ login_procs=Maximale Login Prozesse
 login_count=Initialer Loginprozess
 login_eprocs=Fehlende oder ungültige maximale Anzahl von Login-Prozesse
 login_ecount=Fehlender oder ungültige initialer Anzahl an Login Prozessen
+
 mail_title=Mail Dateien
 mail_header=Mail Lokation und Lesen-Optionen
 mail_env=Ort der Mail-Datei
@@ -169,6 +177,7 @@ mail_eindexmode=Die Index-Dateien Lokation kann nicht eingestellt werden, wenn d
 mail_econtrolmode=Die Control-Dateien Lokation kann nicht eingestellt werden, wenn die Mail-Datei Standort automatisch erkannt wird
 mail_eindex=Fehlendr oder ungültiger absoluter Pfad für die Index-Dateien
 mail_econtrol=Fehlender oder ungültiger absoluter Pfad für Control-Dateien
+
 log_net=Geänderte Netzwerke und Protokolle
 log_login=Geänderte Benutzer- und Login Optionen
 log_mail=Gewänderte Mail-Dateien
@@ -179,6 +188,7 @@ log_stop=Gestoppter Dovecot Server
 log_bootup=Aktiviere Dovecot beim Booten
 log_bootdown=Deaktiviere Dovecot beim Booten
 log_manual=Manuell editierte Konfigurationsdatei $1
+
 manual_title=Editiere Konfigurationsdatei
 manual_editsel=Editiere Dovecot Konfigurationsdatei
 manual_err=Fehlgeschlagen Konfigurationsdatei zu speichern

@@ -1,4 +1,5 @@
 index_sendmail=Envoyer un mail
+
 opts_maxbad=Nombre maximal de mauvais destinataires
 opts_maxrcpt=Nombre maximum de destinataires par message
 opts_below=Entré ci-dessous ..
@@ -6,55 +7,82 @@ opts_qso=Trier la file d'attente de messagerie par
 opts_priority=Priorité
 opts_host=Nom d'hôte
 opts_time=Heure reçue
+
 aliases_delete=Supprimer les alias sélectionnés
+
 aform_file=Ajouter au fichier d'alias
 aform_cmt=La description
+
 rfile_no_regexp=N'envoyez pas de réponses automatiques aux messages correspondant aux expressions rationnelles
+
 adelete_err=Impossible de supprimer les alias
 adelete_enone=Aucune sélection
+
 adelete_ecannot=Vous n'êtes pas autorisé à supprimer l'alias $1 
+
 virtusers_cmt=La description
 virtusers_delete=Supprimer les mappages d'adresses sélectionnés
+
 vform_cmt=La description
 vform_err_unavailable=Indisponible
 vform_err_tempfail=Échec temporaire
 vform_err_protocol=Erreur de protocole
+
 vdelete_err=Impossible de supprimer les mappages d'adresses
 vdelete_ecannot=Vous n'êtes pas autorisé à supprimer le mappage pour $1 
+
 mailers_delete=Supprimer les itinéraires de domaine sélectionnés
+
 mdelete_err=Impossible de supprimer le routeur de domaine
 mdelete_ecannot=Vous n'êtes pas autorisé à supprimer l'itinéraire pour $1 
+
 generics_delete=Supprimer les adresses sortantes sélectionnées
+
 gsave_ecannot3=Vous n'êtes pas autorisé à enregistrer cette adresse sortante
 gsave_ealready=Un mappage d'adresses sortantes pour «$1» existe déjà
+
 gdelete_err=Impossible de supprimer les mappages d'adresses sortants
 gdelete_ecannot=Vous n'êtes pas autorisé à supprimer le mappage pour $1 
+
 domains_delete=Supprimer les mappages de domaine sélectionnés
+
 dsave_ealready=Un mappage de domaine pour «$1» existe déjà
+
 ddelete_err=Impossible de supprimer les mappages de domaine
 ddelete_ecannot=Vous n'êtes pas autorisé à supprimer le mappage pour $1 
+
 access_ecannot=Vous n'êtes pas autorisé à configurer le contrôle du spam
 access_delete=Supprimer les règles de contrôle du spam sélectionnées
+
 sform_ecannot=Vous n'êtes pas autorisé à modifier cette règle de contrôle du spam
+
 ssave_ecannot2=Vous n'êtes pas autorisé à enregistrer cette règle de contrôle du spam
+
 sdelete_err=Impossible de supprimer les règles de contrôle du spam
 sdelete_ecannot=Vous n'êtes pas autorisé à supprimer la règle pour $1 
+
 mailq_dir=Annuaire
 mailq_flushsel=Vider les messages sélectionnés
 mailq_refresh=Actualiser la file d'attente de messagerie
 mailq_refreshdesc=Rechargez cette page pour afficher l'état actuel de la file d'attente de messagerie.
+
 flushq_desc2=Forcer la tentative de remise de $1 messages sélectionnés.
+
 delq_rusure=Êtes-vous sûr de vouloir supprimer les $1 messages en file d'attente sélectionnés?
 delq_confirm=Supprimer les messages
+
 view_flush=Affleurer
 view_afile=Nom de la pièce jointe
 view_atype=Type de pièce jointe
 view_asize=Taille du fichier
+
 file_ealias=Format non valide pour la ligne du fichier d'alias : $1 
 file_etab=Format non valide pour la ligne du fichier de mappage : $1 
+
 acl_ports=Peut modifier les ports réseau?
 acl_vcatchall=Peut créer des mappages de fourre-tout?
 acl_spam=Adresses de contrôle du spam que cet utilisateur peut modifier
+
 log_ports=Modifier les ports réseau
 log_delete_aliases=$1 alias supprimés
 log_delete_virtusers=Mappages d'adresse $1 supprimés
@@ -62,13 +90,16 @@ log_delete_domains=Mappages de domaine $1 supprimés
 log_delete_accesses=$1 entrées de contrôle de spam supprimées
 log_delete_generics=$1 adresses sortantes supprimées
 log_delete_mailers=Itinéraires de domaine $1 supprimés
+
 stop_err=Impossible d'arrêter sendmail
 stop_ecannot=Vous n'êtes pas autorisé à arrêter sendmail
 stop_epid=Sendmail ne semble pas être en cours d'exécution
 restart_epids=Impossible de trouver les processus sendmail
 restart_ekill=Impossible de signaler les processus sendmail : $1 
+
 start_err=Impossible de démarrer sendmail
 start_ecannot=Vous n'êtes pas autorisé à démarrer sendmail
+
 ports_title=Ports réseau
 ports_name=Nom du port
 ports_addr=Écoutez à l'adresse

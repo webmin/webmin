@@ -19,11 +19,13 @@ index_force=Rotire jurnal forță
 index_forcedesc=Forțați rotirea imediată a tuturor fișierelor de jurnal, chiar dacă nu este încă timpul.
 index_logrotate=logrotate
 index_delete=Ștergeți rotațiile de jurnal selectate
+
 period_daily=Zilnic
 period_weekly=Săptămânal
 period_monthly=Lunar
 period_never=Nu
 period_bytes=bytes
+
 edit_title1=Editează fișierul jurnal
 edit_title2=Creați fișier jurnal
 edit_header=Detalii despre fișierul jurnal rotit
@@ -62,8 +64,10 @@ edit_pre=Comenzile de executat înainte de rotație
 edit_default=Implicit ($1)
 edit_sharedscripts=Rulează scripturi doar o dată pentru toate fișierele?
 edit_now=Rotiți acum
+
 global_title=Opțiuni globale
 global_header=Opțiuni implicite pentru toate fișierele jurnal
+
 save_err=Nu a reușit salvarea jurnalului
 save_efile=Numele de fișier de jurnal lipsă sau nevalide
 save_esize=Dimensiunea maximă lipsă sau nevalidă
@@ -81,6 +85,7 @@ save_eerrors=Lipsește adresa de e-mail pentru mesajele de eroare
 save_epre=Scriptul pre-rotire nu poate conține o linie <tt>endscript</tt> sau <tt>endrotate</tt>
 save_epost=Scriptul post-rotație nu poate conține o linie <tt>endscript</tt> sau <tt>endrotate</tt>
 save_enofiles=Nu au fost introduse fișiere de rotație
+
 log_modify_sched=Schimbare de rotație a jurnalului Lucrare Cron
 log_create_sched=Creare rotire jurnal de lucru Cron
 log_delete_sched=Ștergere rotire jurnal jurnal Cron
@@ -89,6 +94,7 @@ log_create=Se adaugă rotirea pentru fișierul jurnal $1
 log_modify=Rotire modificată pentru fișierul jurnal $1 
 log_delete=Rotire ștersă pentru fișierul jurnal $1 
 log_delete_logs=Rotire ștersă pentru fișierele jurnal $1 
+
 sched_title=Program de rotație a jurnalului
 sched_desc=Pentru ca rotirea jurnalului configurată folosind acest modul să fie executată, comanda $1 trebuie executată de Cron într-un program regulat (de obicei zilnic).
 sched_runparts=În prezent, comanda de rotire a jurnalului este rulată din scriptul $1 $2 și nu poate fi ajustată.
@@ -98,10 +104,12 @@ sched_enabled=Activat, la orele de mai jos ..
 sched_save=Actualizați jobul Cron
 sched_err=Nu a reușit să salvați programul de rotație
 sched_when=Timpurile de a rula
+
 force_title=Rotire jurnal forță
 force_doing=Forțând rotația imediată a tuturor fișierelor de jurnal ..
 force_doingone=Forțând rotația imediată a unui fișier jurnal.
 force_done=.. Terminat.
 force_failed=.. a eșuat! Vedeți ieșirea de mai sus pentru motivul pentru care.
+
 delete_err=Nu a reușit să ștergeți jurnalele
 delete_enone=Nimic selectat

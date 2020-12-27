@@ -24,13 +24,16 @@ index_out=התפוקה מ- $1 הייתה
 index_boot=התחבר לאתחול עם:
 index_noboot=&lt;אל תתחבר&gt;
 index_bootdesc=שנה אפשרות זו כדי לקבוע אם חיבור ה- PPP שנבחר מופעל בזמן האתחול או לא.
+
 init_title=זיהוי תצורה
 init_cmd=איתור מודם מחובר עם הפקודה $1.
 init_done=.. בוצע
 init_modems=המודמים מוגדרים ב- $1 ו- $2.
 init_modem=זוהה מודם ב- $1.
 init_none=לא אותרו מודמים!
+
 device_serial=יציאה טורית $1 
+
 connect_title=ליצור חיבור
 connect_cmd=ניסיון ליצור קשר עם הפקודה $1.
 connect_failed=.. חיבור נכשל! ראה את הפלט למעלה מהסיבה שבגללה.
@@ -40,12 +43,14 @@ connect_dns=באמצעות תצורת DNS שהוקצתה PPP.
 connect_dns2=תצורת DNS שהוקצתה PPP הוגדרה.
 connect_dnsto=פסק זמן הממתין לתצורת ה- DNS שהוקצתה PPP.
 connect_dnsdown=נראה כי החיבור נכשל בזמן ההמתנה לתצורת DNS שהוקצתה ל- PPP.
+
 disc_title=כבה PPP
 disc_err=כיבוי חיבור PPP נכשל
 disc_edown=מנותק כבר
 disc_ok1=חיבור PPP שביצעת באמצעות $2 הושבת בהצלחה.
 disc_ok2=חיבור PPP שלך הושבת בהצלחה.
 disc_dns=שוחזר תצורת DNS ישנה.
+
 edit_title1=הוסף חייגן ISP
 edit_title2=ערוך חייגן ספק שירותי אינטרנט
 edit_ddesc=הגדרות ברירת מחדל אלה יחולו על חיבורים שנעשו באמצעות חיוג אחר.
@@ -76,6 +81,7 @@ edit_idle=פסק זמן לא פעיל (בשניות)
 edit_def=מהגדרות ברירת המחדל
 edit_inherits=הגדר בירושה
 edit_from=מהחייגן ..
+
 save_err=שמירת חייגן נכשלה
 save_err2=מחיקת חייגן נכשלה
 save_ename=שם החייגן חסר או לא תקף
@@ -88,6 +94,7 @@ save_edial=מספר חסר או לא חוקי של ניסיונות חיוג
 save_eidle=פסק זמן חסר סרק או לא תקף
 save_einherits=לא ניתן למחוק את החייגן הזה מכיוון ש'$1'יורש ממנו הגדרות.
 save_eclash=חייגן עם אותו שם כבר קיים
+
 log_create=נוצר $1 
 log_update=עודכן $1 
 log_delete=נמחק $1 

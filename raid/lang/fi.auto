@@ -21,6 +21,7 @@ index_mailfromnone=Oletus (<tt>juuri</tt>)
 index_program=Komento suorittaa, kun ongelmat havaitaan
 index_programnone=Älä aja mitään
 index_monitor=Valvonta käytössä?
+
 linear=Lineaarinen (ketjutettu)
 raid0=RAID0 (raidallinen)
 raid1=RAID1 (peilattu)
@@ -29,6 +30,7 @@ raid5=RAID5 (hajautettu pariteetti)
 raid6=RAID6 (kaksoishajautettu pariteetti)
 raid10=RAID10 (raidallinen ja peilattu)
 blocks=lohkot
+
 create_title=Luo RAID-laite
 create_header=RAID-laitteen vaihtoehdot
 create_device=Laitetiedosto
@@ -62,6 +64,7 @@ create_o2_layout=2 Offset-kopiot
 create_n3_layout=3 Lähellä kopioita
 create_f3_layout=3 kaukaa kopiota
 create_o3_layout=3 Offset-kopiot
+
 view_title=RAID-laite
 view_header=RAID-laitteen vaihtoehdot
 view_device=Laitetiedosto
@@ -117,6 +120,7 @@ view_mountmsg=Kirjoita hakemisto ja napsauta tätä painiketta, jos haluat siirt
 view_mountmsg2=Napsauta tätä painiketta, jos haluat käyttää tätä RAID-laitetta järjestelmän virtuaalimuistiin.
 view_blocks=$1 estää
 view_sparegroup=Vararyhmä
+
 mkfs_title=Luo tiedostojärjestelmä
 mkfs_header2=Tämän lomakkeen avulla voit rakentaa uuden $2 -tiedostojärjestelmän tiedostoon $1. <b>Kaikki</b> olemassa olevat tiedot poistetaan!
 mkfs_options=Uudet Linux-tiedostojärjestelmän vaihtoehdot
@@ -124,6 +128,7 @@ mkfs_err=Tiedostojärjestelmän luominen epäonnistui
 mkfs_exec=Suoritetaan komento $1 ..
 mkfs_failed=.. komento epäonnistui!
 mkfs_ok=.. komento valmis.
+
 emkraid=<tt>mkraid</tt> epäonnistui : $1 
 eraidstop=<tt>raidstop</tt> epäonnistui : $1 
 eraidstart=<tt>raidstart</tt> epäonnistui : $1 
@@ -135,6 +140,7 @@ emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
 log_create=Luotu $1 RAID-laite $2 
 log_stop=Deaktivoitu RAID-laite $1 
 log_start=Aktivoitu RAID-laite $1 
@@ -147,14 +153,17 @@ log_grow=Kasvatettu RAID-laite $1 yhteensä $2 levyksi
 log_convert_to_raid6=Muunnettu RAID5-laite $1 RAID6-laitteeksi
 log_convert_to_raid5=Muunnettu RAID6-laite $1 RAID5-laitteeksi
 log_notif=Päivitetyt RAID-ongelman ilmoitusasetukset
+
 notif_err=RAID-ongelman ilmoitusvaihtoehtojen tallentaminen epäonnistui
 notif_emailaddr=Puuttuva tai virheellinen ilmoitusosoite
 notif_emailfrom=Puuttuu tai on virheellinen osoitteesta
 notif_eprogram=Puuttuva tai puuttuva ohjelma suoritettavaksi
+
 delete_title=Poista RAID-taulukko
 delete_rusure=Haluatko varmasti poistaa RAID-taulukon $1, joka käyttää $2 levytilaa?
 delete_ok=Kyllä, poista se
 delete_eidx=RAID-taulukkoa ei ole valittu!
+
 remove_title=Poista osio RAID-ryhmästä
 remove_rusure=Haluatko varmasti poistaa osion $2 RAID-taulukosta $1 ?
 remove_ok=Kyllä, poista se

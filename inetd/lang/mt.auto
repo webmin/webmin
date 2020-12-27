@@ -14,6 +14,7 @@ index_search=Servizzi ta 'wiri li jaqblu:
 index_sok=Fittex
 index_toomany=Hemm wisq servizzi tal-internet biex jintwerew f'din il-paġna.
 index_none=Ebda servizzi tal-internet ma jaqblu mat-tfittxija tiegħek.
+
 error_restart=Naqset milli terġa 'tibda Inetd
 error_saverpc=Ma rnexxielux isalva l-programm RPC
 error_invalidprgname="$1" mhux isem tal-programm validu
@@ -43,6 +44,7 @@ error_nameexist=Diġà jeżisti servizz bl-isem $1 u protokoll $2
 error_inetservice=Servizz tal-internet bl-isem $1 u l-protokoll $2 diġà jeżisti
 error_smfservice=Ma rnexxielhiex taġġorna s-servizz smf b'cmd '$1', codecode ta 'żball $2 
 error_smf_cmdfield=Għal smf, l-isem tal-fajl tal-programm "$1" għandu jaqbel mal-ewwel argument tal-qasam tal-kmand, i.e. għandu jkun "$2"
+
 editrpc_title1=Oħloq Programm RPC
 editrpc_title2=Editja l-Programm RPC
 editrpc_detail=Dettalji tal-Programm RPC
@@ -69,6 +71,7 @@ editrpc_execasuser=Eżegwixxi bħala Utent
 editrpc_max=Max kull Minuta
 editrpc_default=Default
 editrpc_execasgrp=Eżegwixxi bħala Grupp
+
 editserv_title1=Oħloq Servizz tal-Internet
 editserv_title2=Editja Servizz tal-Internet
 editserv_detail=Dettalji tas-Servizz tal-Internet
@@ -82,6 +85,7 @@ editserv_wrapper=TCP-Wrapper
 editserv_inetd=Intern għal <tt>inetd</tt>
 editserv_qm=Jista 'ma jeżistix kmand?
 editserv_ename=Ma jeżisti l-ebda servizz b'dak l-isem u l-protokoll
+
 log_apply=Bidliet applikati
 log_create_serv=Servizz maħluq $1 
 log_modify_serv=Servizz modifikat $1 
@@ -95,6 +99,7 @@ log_delete_serv_l=Servizz imħassar $1 fuq il-port $2
 log_create_prog_l=Inħoloq servizz $1 fuq port $2 għall-programm $3 
 log_modify_prog_l=Servizz immodifikat $1 fuq port $2 għall-programm $3 
 log_delete_prog_l=Servizz imħassar $1 fuq il-port $2 għall-programm $3 
+
 log_create_rpc=RPC maħluq $1 
 log_modify_rpc=RPC immodifikat $1 
 log_delete_rpc=RPC imħassar $1 

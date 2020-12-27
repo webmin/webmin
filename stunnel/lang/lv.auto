@@ -21,6 +21,7 @@ index_eversion=Jūsu sistēmā instalētās STunnel versija ir $1, taču šis mo
 index_conf=No konfigurācijas faila $1 
 index_noconf=Nav konfigurācijas faila!
 index_delete=Dzēst atlasītos tuneļus
+
 edit_title=Rediģēt SSL tuneli
 create_title=Izveidot SSL tuneli
 edit_header1=Tuneļa avota iespējas
@@ -47,6 +48,7 @@ edit_tcpw=TCP iesaiņojuma nosaukums
 edit_auto=Automātiska
 edit_iface=Izejošā avota adrese
 edit_type=Skriet no plkst
+
 save_err=Neizdevās saglabāt SSL tuneli
 save_enclash=Pakalpojuma nosaukums $2 jau tiek izmantots portā $1.
 save_einetd=Jau ir inetd pakalpojums ar nosaukumu $1.
@@ -61,6 +63,7 @@ save_etcpw=Trūkst vai nav derīgs TCP iesaiņojuma nosaukums
 save_eiface=Trūkst vai nav derīga izejošā avota adrese
 save_exinetd=Jau pastāv xinetd pakalpojums ar nosaukumu $1 
 save_export=Portu $1 jau izmanto xinetd serviss $2 
+
 log_apply=Lietotās izmaiņas
 log_create=Izveidots SSL tunelis $1 
 log_delete=Izdzēsts SSL tunelis $1 

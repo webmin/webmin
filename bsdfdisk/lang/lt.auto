@@ -7,6 +7,7 @@ index_dsize=Visas dydis
 index_dmodel=Markė ir modelis
 index_dparts=Griežinėliai
 index_return=diskų sąrašas
+
 disk_title=Redaguoti diską
 disk_egone=Disko nebeegzistuoja!
 disk_no=Gabalas
@@ -31,9 +32,11 @@ disk_return=informacija apie diską ir pjūvių sąrašas
 disk_add=Sukurkite naują gabaliuką.
 disk_smart=Rodyti SMART būseną
 disk_smartdesc=Parodykite dabartinę šio disko būseną, kurią aptiko „SMART“, ir patikrinkite, ar joje nėra disko klaidų.
+
 select_device=$1 įrenginys $2 
 select_slice=$1 įrenginys $2 skiltis $3 
 select_part=$1 įrenginys $2 pjūvis $3 skaidinys $4 
+
 slice_title=Redaguoti pjūvį
 slice_egone=Pasirinkta gabalas neegzistuoja!
 slice_ssize=Skiltelės dydis
@@ -58,6 +61,7 @@ slice_return=detalės pjūvyje ir skaidinių sąrašas
 slice_err=Nepavyko modifikuoti gabaliuko
 slice_header=Skiltelės detalės
 slice_suse=Tiesiogiai naudoja
+
 dslice_title=Ištrinti Slice
 dslice_rusure=Ar tikrai norite ištrinti $1 dalį? Taip pat bus ištrinti visi joje esantys skaidiniai ir failų sistemos.
 dslice_warn=Įspėjimas - šį pjūvį šiuo metu naudoja : $1 
@@ -65,6 +69,7 @@ dslice_confirm=Ištrinti dabar
 dslice_deleting=Šalinama $1 dalis.
 dslice_failed=.. ištrinti nepavyko : $1 
 dslice_done=.. padaryta
+
 nslice_title=Sukurkite pjūvį
 nslice_header=Nauja gabaliuko informacija
 nslice_number=Gabalas numeris
@@ -86,6 +91,7 @@ nslice_done=.. gabalas pridėtas
 nslice_parting=Sukurkite numatytuosius skaidinius $2 skiltyje $1 ..
 nslice_pfailed=.. skaidinio sukurti nepavyko : $1 
 nslice_pdone=.. pridėtas skaidinys
+
 npart_title=Sukurti skaidinį
 npart_header=Nauja skaidinių informacija
 npart_letter=Skirstomoji raidė
@@ -98,6 +104,7 @@ npart_emax=Pabaigos blokas negali būti didesnis už $1 blokų dydį
 npart_creating=Kuriamas skaidinys $1 $2.
 npart_failed=.. skaidinio sukurti nepavyko : $1 
 npart_done=.. pridėtas skaidinys
+
 part_title=Redaguoti skaidinį
 part_egone=Skirsnio nebeegzistuoja!
 part_header=Informacija apie skaidinius
@@ -124,6 +131,7 @@ part_newmount2=Mount pertvara
 part_mountmsg=Prijunkite šį įrenginį naujame savo sistemos kataloge, kad jį būtų galima naudoti failams saugoti. Įrenginyje turi būti jau sukurta failų sistema.
 part_mountmsg2=Norėdami padidinti laisvos atminties kiekį, pritvirtinkite šį įrenginį kaip virtualiąją atmintį savo sistemoje.
 part_cannotedit=Šio skaidinio negalima modifikuoti, nes jis šiuo metu naudojamas.
+
 dpart_title=Ištrinti skaidinį
 dpart_rusure=Ar tikrai norite ištrinti skaidinį $1 ? Visos jame esančios failų sistemos taip pat bus ištrintos.
 dpart_warn=Įspėjimas - šį skaidinį šiuo metu naudoja $1 
@@ -131,6 +139,7 @@ dpart_confirm=Ištrinti dabar
 dpart_deleting=Šalinamas $1 skaidinys.
 dpart_failed=.. ištrinti nepavyko : $1 
 dpart_done=.. padaryta
+
 newfs_title=Sukurkite failų sistemą
 newfs_header=Nauja failų sistemos informacija
 newfs_free=Vietos šaknims rezervuoti
@@ -145,11 +154,13 @@ newfs_elabel=Trūksta arba netinkama etiketė
 newfs_creating=Kuriama failų sistema $1 ..
 newfs_failed=.. sukūrimas nepavyko!
 newfs_done=.. sukurta sėkmingai
+
 fsck_title=Patikrinkite failų sistemą
 fsck_err=Nepavyko patikrinti failų sistemos
 fsck_checking=Tikrinama failų sistema $1.
 fsck_failed=.. patikrinti nepavyko!
 fsck_done=.. patikrinimas baigtas, nerasta klaidų
+
 log_create_slice=Sukurta $1 dalis
 log_delete_slice=Ištrinta $1 dalis
 log_modify_slice=Modifikuota $1 dalis

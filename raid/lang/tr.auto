@@ -21,6 +21,7 @@ index_mailfromnone=Varsayılan (<tt>kök</tt>)
 index_program=Sorun tespit edildiğinde çalıştırılacak komut
 index_programnone=Hiç koşma
 index_monitor=İzleme etkin mi?
+
 linear=Doğrusal (Birleştirilmiş)
 raid0=RAID0 (Çizgili)
 raid1=RAID1 (Aynalı)
@@ -29,6 +30,7 @@ raid5=RAID5 (Dağıtılmış Eşlik)
 raid6=RAID6 (Çift Dağıtılmış Eşlik)
 raid10=RAID10 (Çizgili ve Aynalı)
 blocks=bloklar
+
 create_title=RAID Aygıtı Oluştur
 create_header=RAID cihaz seçenekleri
 create_device=Cihaz dosyası
@@ -62,6 +64,7 @@ create_o2_layout=2 Ofset Kopya
 create_n3_layout=3 Copies yakınında
 create_f3_layout=3 Uzak Kopya
 create_o3_layout=3 Ofset Kopya
+
 view_title=RAID Aygıtı
 view_header=RAID cihaz seçenekleri
 view_device=Cihaz dosyası
@@ -117,6 +120,7 @@ view_mountmsg=Bir dizin girin ve halihazırda bir dosya sistemi içermesi gereke
 view_mountmsg2=Bu RAID aygıtını sisteminizde sanal bellek için kullanmak üzere bu düğmeyi tıklatın.
 view_blocks=$1 blok
 view_sparegroup=Yedek grup
+
 mkfs_title=Dosya Sistemi Oluştur
 mkfs_header2=Bu form, $1 üzerinde yeni bir $2 dosya sistemi oluşturmanıza olanak tanır. <b>Mevcut tüm</b> veriler silinecek!
 mkfs_options=Yeni Linux dosya sistemi seçenekleri
@@ -124,6 +128,7 @@ mkfs_err=Dosya sistemi oluşturulamadı
 mkfs_exec=$1 komutu çalıştırılıyor.
 mkfs_failed=.. komut başarısız!
 mkfs_ok=.. komut tamamlandı.
+
 emkraid=<tt>mkraid</tt> başarısız oldu : $1 
 eraidstop=<tt>raidstop</tt> başarısız oldu : $1 
 eraidstart=<tt>raidstart</tt> başarısız oldu : $1 
@@ -135,6 +140,7 @@ emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
 log_create=$1 RAID cihazı $2 oluşturuldu
 log_stop=Devre dışı bırakılmış RAID cihazı $1 
 log_start=Etkinleştirilmiş RAID cihazı $1 
@@ -147,14 +153,17 @@ log_grow=$1 büyümüş RAID aygıtı toplam $2 diske
 log_convert_to_raid6=$1 RAID5 aygıtı bir RAID6 aygıtına dönüştürüldü
 log_convert_to_raid5=$1 RAID6 aygıtı bir RAID5 aygıtına dönüştürüldü
 log_notif=Güncellenmiş RAID sorunu bildirim seçenekleri
+
 notif_err=RAID sorunu bildirim seçenekleri kaydedilemedi
 notif_emailaddr=Eksik veya geçersiz bildirim adresi
 notif_emailfrom=Gönderen adresi eksik veya geçersiz
 notif_eprogram=Çalıştırılacak eksik veya var olmayan program
+
 delete_title=RAID Dizisini Sil
 delete_rusure=$2 disk alanı kullanan $1 RAID dizisini silmek istediğinizden emin misiniz?
 delete_ok=Evet, Sil
 delete_eidx=RAID dizisi seçilmedi!
+
 remove_title=Bölümü RAID Dizisinden Kaldır
 remove_rusure=$1 RAID dizisinin $2 bölümünü kaldırmak istediğinizden emin misiniz?
 remove_ok=Evet, Kaldır

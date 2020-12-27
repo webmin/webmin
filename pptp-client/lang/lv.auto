@@ -18,10 +18,12 @@ index_version=PPPd versija $1
 index_boot=Pievienojiet sāknēšanas laikā:
 index_noboot=&lt;Nepievienot&gt;
 index_bootdesc=Mainiet šo opciju, lai kontrolētu, vai atlasītais PPTP VPN savienojums tiek sākts sāknēšanas laikā vai nē.
+
 disc_err=Neizdevās atvienot tuneli
 disc_egone=Vairs nav aktīvs
 disc_ekill=Neizdevās nogalināt pppd procesu
 disc_done=Tunelis $1 tika veiksmīgi atvienots.
+
 conn_err=Neizdevās savienot tuneli
 conn_egone=Tunelis vairs nepastāv
 cone_ealready=Jau savienots
@@ -32,6 +34,7 @@ conn_ok=.. savienojums veiksmīgi aktivizēts, izmantojot interfeisu $1. Jūsu v
 conn_timeout=.. savienojums neizdevās! Pārbaudiet zemāk esošos žurnāla ziņojumus, lai uzzinātu, kāpēc.
 conn_routes=Maršrutu pievienošana ar komandām ..
 conn_mppe=MPPE protokols VPN šifrēšanai prasa PPP dēmonu un kodola atbalstu. Tomēr iepriekšminētās kļūdas liecina, ka viens vai abi jūsu sistēmā nav pieejami. Ja PPTP serverim nav nepieciešama MPPE, mēģiniet izslēgt visas ar to saistītās iespējas <a href='$1'>globālo PPP opciju lapā</a>.
+
 edit_title1=Pievienojiet PPTP tuneli
 edit_title2=Rediģēt PPTP tuneli
 edit_header=PPTP VPN tuneļa iespējas
@@ -60,6 +63,7 @@ edit_file=PPP opciju fails
 edit_none=Nav
 edit_global=Standarta globālais fails
 edit_ofile=Cits fails ..
+
 save_err=Neizdevās saglabāt tuneli
 save_ename=Trūkst tuneļa nosaukuma
 save_eserver=Trūkst vai nav derīgs serveris, ar kuru izveidot savienojumu
@@ -75,6 +79,7 @@ save_egw2=Nederīga resursdatora vārteja maršrutā $1
 save_erename=Neizdevās pārdēvēt tuneļa failu
 save_eclash=Tunelis vai PPP līdzinieks ar tādu pašu nosaukumu jau pastāv
 save_efile=Trūkst vai nav derīgs PPP opciju fails
+
 opts_title=Globālās PPP iespējas
 opts_desc=Tālāk norādītie iestatījumi ir ņemti no $1, un tie attieksies uz visiem tuneļiem, kas iestatīti, lai izmantotu standarta globālo PPP opciju failu.
 opts_header=PPP iespējas visiem tuneļiem
@@ -84,6 +89,7 @@ opts_err=Neizdevās saglabāt globālās PPP iespējas
 opts_emtu=Trūkst vai nav derīgs maksimālais sūtīšanas paketes lielums
 opts_emru=Trūkst vai nav derīgs maksimālais saņemošās paketes lielums
 opts_msdesc=Tālāk esošās iespējas ļauj MPPE šifrēšanu, ko izmanto Windows VPN serveri. Tomēr MPPE ir nepieciešams atbalsts gan PPP dēmonā, gan operētājsistēmas kodolā.
+
 mppe_mppe-40=Vai izmantot 40 bitu MPPE šifrēšanu?
 mppe_mppe-128=Vai izmantot 128 bitu MPPE šifrēšanu?
 mppe_mppe-stateless=Vai iespējot bezvalstnieku MPPE režīmu?
@@ -95,6 +101,7 @@ mppe_d1=Atļauts
 mppe_mppe-stateful=Vai iespējot valstisko MPPE režīmu?
 mppe_old=Brīdinājums - vecā stila MPPE direktīvas $1 tika atrastas jūsu konfigurācijas failā, kaut arī jūsu PPP dēmons atbalsta jaunā stila direktīvas.
 mppe_new=Brīdinājums - jaunā stila MPPE direktīvas $1 tika atrastas jūsu konfigurācijas failā, kaut arī jūsu PPP dēmons atbalsta tikai vecā stila direktīvas.
+
 log_create=Izveidots PPTP tunelis $1 
 log_update=Modificēts PPTP tunelis $1 
 log_delete=Izdzēsts PPTP tunelis $1 

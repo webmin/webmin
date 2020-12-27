@@ -38,6 +38,7 @@ index_restartdesc=موجودہ اسکویڈ ترتیب کو چالو کرنے ک
 index_iptables=پورٹ ری ڈائریکشن سیٹ اپ
 index_squid=سکویڈ پراکسی سرور
 index_manual=کنفگریشن فائلوں میں ترمیم کریں
+
 manual_title=کنفگریشن فائلوں میں ترمیم کریں
 manual_file=ترمیم کرنے کے لئے کنفگ فائل منتخب کریں:
 manual_change=بدلیں
@@ -45,6 +46,7 @@ manual_editing=Use the text box below to manually edit the configs in $1. Be car
 manual_err=کنفگ فائل کو محفوظ کرنے میں ناکام
 manual_efile=غلط تشکیل فائل نام!
 manual_ecannot=آپ کو دستی طور پر کنفگ فائلوں میں ترمیم کرنے کی اجازت نہیں ہے
+
 buttsave=محفوظ کریں
 buttdel=حذف کریں
 buttcreat=بنانا
@@ -54,6 +56,7 @@ default=پہلے سے طے شدہ
 none=کوئی نہیں
 on=پر
 off=بند
+
 acl_header1=ACL بنائیں
 acl_header2=ACL میں ترمیم کریں
 acl_name=ACL نام
@@ -109,6 +112,7 @@ acl_file=فائل میں ACL قدریں اسٹور کریں
 acl_nofile=سکویڈ ترتیب
 acl_infile=علیحدہ فائل
 acl_keep=صرف فائل کے موجود مواد کو استعمال کریں؟
+
 aclsave_failsave=ACL کو بچانے میں ناکام
 aclsave_faildel=ACL کو حذف کرنے میں ناکام
 aclsave_epr=یہ ACL ایک پراکسی پابندی کے ذریعہ استعمال کیا جارہا ہے
@@ -128,11 +132,13 @@ aclsave_eemin=غلط ختم ہونے کا منٹ
 aclsave_efile=You are not allowed to write to the ACL file '$1'
 aclsave_enofile=کوئی ACL فائل کا نام داخل نہیں ہوا
 aclsave_ealready=ACL فائل پہلے سے موجود ہے
+
 cach_ecannot=آپ کو کیشے مینیجر کے اعداد و شمار تک رسائی کی اجازت نہیں ہے
 cach_err=خرابی
 cach_nfound=The Squid cache manager program <tt>$1</tt> was not found on your system. Maybe your <a href=/config.cgi?$2 >module configuration</a> is incorrect.
 cach_return=سکویڈ انڈیکس
 cach_esame=The <b>Squid cachemgr.cgi executable</b> is set to Webmin's cachemgr.cgi program, not the one supplied by Squid.
+
 chown_header=ملکیت تبدیل کریں
 chown_stop=اسکویڈ روکنا…
 chown_done=.. ہو گیا
@@ -140,6 +146,7 @@ chown_chown=ملکیت بدل رہی ہے. ..
 chown_restart=سکویڈ کو دوبارہ شروع کرنا…
 chown_failrestart=اسکویڈ کو دوبارہ شروع کرنے میں ناکام۔
 chown_return=سکویڈ انڈیکس
+
 clear_ecannot=آپ کو کیشے کو صاف کرنے اور دوبارہ بنانے کی اجازت نہیں ہے
 clear_header=کیچ صاف اور دوبارہ بنائیں
 clear_msgclear=Are you sure you want to clear and rebuild your Squid cache? This will delete <b>all</b> the files you have cached and re-start your Squid server.
@@ -153,6 +160,7 @@ clear_failrestart=اسکویڈ کو دوبارہ شروع کرنے میں ناک
 clear_return=سکویڈ انڈیکس
 clear_url=ایک URL کو کیشے سے ہٹا دیں:
 clear_ok=دور
+
 eacl_ecannot=آپ کو رسائی کنٹرول میں ترمیم کرنے کی اجازت نہیں ہے
 eacl_header=رسائی کنٹرول
 eacl_acls=کنٹرول فہرستوں تک رسائی حاصل کریں
@@ -169,8 +177,10 @@ eacl_nopr=کسی پراکسی پابندی کی تعریف نہیں کی گئی 
 eacl_addpr=پراکسی پابندی شامل کریں۔
 eacl_noprr=پراکسی جواب کی کوئی پابندی نہیں
 eacl_addprr=پراکسی جواب کی پابندی شامل کریں۔
+
 eacl_replypr=پراکسی پابندیوں کا جواب دیں
 eacl_replynopr=جواب پراکسی پابندیوں کی کوئی وضاحت نہیں کی گئی ہے
+
 eacl_icpr=ICP پابندیاں
 eacl_noicpr=آئی سی پی کی کوئی پابندی نہیں
 eacl_addicpr=ICP پابندی شامل کریں۔
@@ -187,6 +197,7 @@ eacl_eclass=کوئی پروگرام کلاس منتخب نہیں کیا گیا �
 eacl_cname=ٹائپ کا نام
 eacl_file=From file $1
 eacl_hdelete=منتخب کردہ پابندیاں حذف کریں
+
 eadm_ecannot=آپ کو انتظامی اختیارات میں ترمیم کرنے کی اجازت نہیں ہے
 eadm_header=انتظامی اختیارات
 eadm_aao=انتظامی اور اعلان کے اختیارات
@@ -213,6 +224,7 @@ eadm_caf=کیشے کا اعلان فائل
 eadm_annp=اعلان کا دورانیہ
 eadm_buttsave=محفوظ کریں
 eadm_return=سکویڈ انڈیکس
+
 eauth_ecannot=آپ کو پراکسی توثیق میں ترمیم کرنے کی اجازت نہیں ہے
 eauth_header=پراکسی تصدیق
 eauth_aopt=توثیق کے اختیارات
@@ -226,6 +238,7 @@ eauth_pusers=پراکسی صارفین
 eauth_nopusers=فی الحال کسی پراکسی صارفین کی تعریف نہیں کی گئی ہے۔
 eauth_addpuser=نیا پراکسی صارف شامل کریں۔
 eauth_return=سکویڈ انڈیکس
+
 ec_ecannot=آپ کو کیشے کے اختیارات میں ترمیم کرنے کی اجازت نہیں ہے
 ec_header=کیشے کے اختیارات
 ec_cro=کیچنگ اور درخواست کے اختیارات
@@ -280,6 +293,7 @@ ec_return=سکویڈ انڈیکس
 ec_maxreplies=زیادہ سے زیادہ جوابی جسم کے سائز
 ec_maxrn=سائز (کے بی)
 ec_maxracls=ACLs سے ملنے والی درخواستوں کے لئے (سب کے لئے خالی چھوڑیں)
+
 ech_header=کیشے ہوسٹ بنائیں
 ech_header1=کیشے ہوسٹ میں ترمیم کریں
 ech_cho=کیشے میزبان کے اختیارات
@@ -324,6 +338,7 @@ ech_origin=میزبان کو بطور اصل سرور سلوک کریں؟
 ech_force=فورس میزبان: ہیڈر ٹو
 ech_same=بدلاؤ
 ech_ssl=SSL کا استعمال کرتے ہوئے رابطہ قائم کریں؟
+
 eicp_ecannot=آپ کو دوسرے کیشوں میں ترمیم کرنے کی اجازت نہیں ہے
 eicp_header=دوسرے کیچز
 eicp_opcs=دوسرے پراکسی کیشے سرورز
@@ -361,6 +376,7 @@ eicp_ttype=ٹائپ کریں
 eicp_tpport=پراکسی پورٹ
 eicp_tiport=آئی سی پی پورٹ
 eicp_delete=منتخب کردہ کیچز کو حذف کریں
+
 elogs_ecannot=آپ کو لاگنگ میں ترمیم کرنے کی اجازت نہیں ہے
 elogs_header=لاگنگ
 elogs_lalo=لاگنگ اور لاگ فائل کے اختیارات
@@ -394,6 +410,7 @@ elogs_notset=سیٹ نہیں ہے
 elogs_dont=لاگ ان نہ کریں
 elogs_file=File $1
 elogs_squid=اسکویڈ کا معیار
+
 emem_ecannot=آپ کو میموری استعمال میں ترمیم کرنے کی اجازت نہیں ہے
 emem_dheader=میموری اور ڈسک کا استعمال
 emem_header=استعمال یاد داشت
@@ -419,6 +436,7 @@ emem_lfuda=متحرک کم سے کم کثرت سے استعمال کیا جات�
 emem_hlru=ڈھیر کم سے کم کثرت سے استعمال ہوتا ہے
 emem_return=سکویڈ انڈیکس
 emem_mrp=میموری متبادل کی پالیسی
+
 emisc_ecannot=آپ کو متفرق اختیارات میں ترمیم کرنے کی اجازت نہیں ہے
 emisc_header=متفرق اختیارات
 emisc_mo=متفرق اختیارات
@@ -455,6 +473,7 @@ emisc_wccpin=ڈبلیو سی سی پی کا آنے والا پتہ
 emisc_wccpout=WCCP سبکدوش ہونے والا پتہ
 emisc_none=کوئی نہیں
 emisc_virtual=مجازی
+
 eports_ecannot=آپ کو بندرگاہوں اور نیٹ ورکنگ میں ترمیم کرنے کی اجازت نہیں ہے
 eports_header=بندرگاہوں اور نیٹ ورکنگ
 eports_pano=بندرگاہوں اور نیٹ ورکنگ کے اختیارات
@@ -480,6 +499,7 @@ eports_unc=کیا ایس ایس ایل ناپاک بند ہیں؟
 eports_checkhost=یو آر ایل میں میزبان ناموں کی توثیق کریں؟
 eports_underscore=میزبان ناموں میں انڈر سکور کی اجازت دیں؟
 eports_all=سب
+
 eprogs_ecannot=آپ کو مددگار پروگراموں میں ترمیم کرنے کی اجازت نہیں ہے
 eprogs_header=مددگار پروگرام
 eprogs_chpo=کیشے مددگار پروگرام کے اختیارات
@@ -508,6 +528,7 @@ eprogs_ttl=توثیق کیش کا وقت
 eprogs_aittl=آئی پی کیش ٹائم کی تصدیق کریں
 eprogs_realm=توثیق کا دائرہ
 eprogs_return=سکویڈ انڈیکس
+
 euser_header=پراکسی صارف بنائیں
 euser_header1=پراکسی صارف میں ترمیم کریں
 euser_pud=پراکسی صارف کی تفصیلات
@@ -516,6 +537,7 @@ euser_p=پاس ورڈ
 euser_u1=بدلاؤ
 euser_e=قابل کیا گیا؟
 euser_return=صارفین کی فہرست
+
 ahttp_header=پراکسی پابندی بنائیں
 ahttp_header1=پراکسی پابندی میں ترمیم کریں
 ahttp_pr=پراکسی پابندی
@@ -525,10 +547,13 @@ ahttp_d=انکار کریں
 ahttp_ma=ACLs میچ
 ahttp_dma=ACLs سے میل نہیں کھاتے ہیں
 ahttp_return=ACL فہرست
+
 ahttp_replyheader=پراکسی جوابی پابندی بنائیں
 ahttp_replyheader1=پراکسی جوابی پابندی میں ترمیم کریں
 ahttp_replypr=پراکسی جوابی پابندی
+
 sahttp_ftspr=پراکسی جواب کی پابندی کو بچانے میں ناکام
+
 aicp_header=ICP پابندی بنائیں
 aicp_header1=ICP پابندی میں ترمیم کریں
 aicp_ir=ICP پابندی
@@ -538,7 +563,9 @@ aicp_d=انکار کریں
 aicp_ma=ACLs میچ
 aicp_dma=ACLs سے میل نہیں کھاتے ہیں
 aicp_return=ACL فہرست
+
 saicp_ftsir=ICP پابندی کو بچانے میں ناکام
+
 icache_ecannot=آپ کو کیشے کو شروع کرنے کی اجازت نہیں ہے
 icache_ftic=کیشے کو شروع کرنے میں ناکام
 icache_ymcautrsa=اسکویڈ کو چلانے کے ل You آپ کو صارف کا انتخاب کرنا ہوگا
@@ -546,7 +573,9 @@ icache_euser=اسکویڈ کو چلانے کے لئے استعمال کنندہ 
 icache_itscwtc=Initializing the Squid cache with the command <tt>$1</tt> ..
 icache_return=سکویڈ انڈیکس
 icache_title=کیشے کو شروع کریں
+
 restart_ftrs=اسکویڈ کو دوبارہ تشکیل دینے میں ناکام
+
 sadmin_ftsao=انتظامی اختیارات کو بچانے میں ناکام
 sadmin_header=ملکیت تبدیل کریں
 sadmin_msg1=آپ نے اس صارف یا گروپ کو تبدیل کر دیا ہے جو سکویڈ چل رہا ہے۔ اس کے صحیح طریقے سے اثر انداز ہونے کے ل all ، سبھی کیشے اور لاگ فائلوں کی ملکیت کو اپ ڈیٹ کیا جائے اور اسکویڈ کو دوبارہ شروع کرنا چاہئے۔
@@ -556,10 +585,12 @@ sadmin_inavea='$1' is not a valid email address
 sadmin_inavh='$1' is not a valid hostname
 sadmin_inavap='$1' is not a valid announcement period
 sadmin_inavp='$1' is not a valid port
+
 sauth_ftsao=توثیق کے اختیارات کو بچانے میں ناکام
 sauth_iomuf=غلط یا گمشدہ صارفین کا فائل نام
 sauth_iomd=غلط یا گمشدہ ڈومین
 sauth_msg1=آپ کا اسکویڈ کا ورژن پراکسی توثیق کیلئے تعاون کے ساتھ مرتب نہیں کیا گیا ہے
+
 scache_ftsco=کیشے کے اختیارات کو بچانے میں ناکام
 scache_emsg0=آپ کو کم از کم ایک کیش ڈائرکٹری درج کرنا ہوگی
 scache_emsg1=The cache directory '$1' does not exist
@@ -577,14 +608,17 @@ scache_emsg12='$1' is not a valid directory size
 scache_emsg13='$1' is not a valid host
 scache_emsg14='$1' is not a valid port
 scache_emaxrs=Invalid maximum body size in row $1
+
 schost_ftsc=کیشے کو محفوظ کرنے میں ناکام
 schost_emsg1='$1' is not a valid cache hostname
 schost_emsg2='$1' is not a valid proxy port
 schost_emsg3='$1' is not a valid ICP port
 schost_emsg4='$1' is not a valid time-to-live
 schost_emsg5='$1' is not a valid weighting
+
 sicp_ftsco=کیشے کے اختیارات کو بچانے میں ناکام
 sicp_emsg1='$1' is not a valid timeout
+
 slogs_ftslo=لاگنگ کے اختیارات کو بچانے میں ناکام
 slogs_emsg1='$1' is not an absolute filename
 slogs_emsg2='$1' is not a valid filename
@@ -594,20 +628,24 @@ slogs_emsg5='$1' is not a valid debug options list
 slogs_efname=Invalid format name in row $1
 slogs_effmt=Missing log format in row $1
 slogs_eafile=Missing or invalid log file in row $1
+
 smem_ftsmo=میموری کے اختیارات کو بچانے میں ناکام
 smem_emsg1='$1' is not a valid cache size
 smem_emsg2='$1' is not a valid high-water mark
 smem_emsg3='$1' is not a valid low-water mark
 smem_emsg4='$1' is not a valid object size
+
 smisc_ftso=اختیارات کو بچانے میں ناکام
 smisc_emsg1='$1' is not a valid number of rotations
 smisc_emsg2='$1' is not a valid domain
 smisc_emsg3='$1' is not a valid proxy
 smisc_emsg4='$1' is not a valid number of hops
+
 sport_ftspo=بندرگاہ کے اختیارات کو بچانے میں ناکام
 sport_emsg1='$1' is not a valid port number
 sport_emsg2='$1' is not a valid address
 sport_emsg3='$1' is not a valid buffer size
+
 sprog_ftshpo=مددگار پروگرام کے اختیارات کو بچانے میں ناکام
 sprog_emsg1=گمشدہ ایف ٹی پی آپشنز
 sprog_emsg2='$1' is not a valid program
@@ -620,19 +658,23 @@ sprog_emsg8='$1' is not a valid IP address
 sprog_emsg9='$1' is not a valid cache time
 sprog_emsg10='$1' is not a valid TTL
 sprog_echildren=پروگراموں کی تعداد صفر سے زیادہ ہونی چاہئے
+
 suser_ftsu=صارف کو بچانے میں ناکام
 suser_emsg1=غلط یا گمشدہ صارف نام
 suser_etaken=صارف نام پہلے ہی استعمال میں ہے
+
 start_ftsq=سکویڈ شروع کرنے میں ناکام
 start_ecannot=آپ کو سکویڈ شروع کرنے کی اجازت نہیں ہے
 stop_ftsq=اسکویڈ کو روکنے میں ناکام
 stop_ecannot=آپ کو سکویڈ روکنے کی اجازت نہیں ہے
+
 calamaris_ecannot=آپ کو کیلامارس لاگ تجزیہ تک رسائی کی اجازت نہیں ہے
 calamaris_title=کالامارس لاگ انیلیسس
 calamaris_last=Limiting analysis to last $1 lines of logs ..
 calamaris_eprog=The calamaris executable $1 was not found. Maybe it is not installed on your system, or your <a href='$2'>module configuration</a> is incorrect.
 calamaris_elogs=The log directory $1 does not contain any <tt>access.log</tt> files. Maybe squid has not been run yet, or your <a href='$2'>module configuration</a> is incorrect.
 calamaris_gen=Report generated on $1
+
 lib_emsg1='$1' is not a valid IP address
 lib_seconds=سیکنڈ
 lib_minutes=منٹ
@@ -680,6 +722,7 @@ lib_aclmuip=زیادہ سے زیادہ صارف IP
 lib_buttac=تبدیلیوں کا اطلاق کریں
 lib_buttss=اسکویڈ روکیں
 lib_buttss1=سکویڈ شروع کریں
+
 log_ports=بدلی ہوئی بندرگاہوں اور نیٹ ورکنگ کے اختیارات
 log_icp=کیشے کے دوسرے اختیارات تبدیل کردیئے گئے
 log_mem=میموری کے استعمال کے اختیارات تبدیل ہوگئے
@@ -734,25 +777,31 @@ log_pools_delete=Deleted $1 delay pools
 log_delay_create=Added ACL for delay pool $1
 log_delay_modify=Modified ACL for delay pool $1
 log_delay_delete=Deleted ACL for delay pool $1
+
 log_delay_move=Moved ACL for delay pool $1
 log_refresh_create=Created refresh rule for $1
 log_refresh_modify=Modified refresh rule for $1
 log_refresh_delete=Deleted refresh rule for $1
+
 log_refresh_move=Moved refresh rule for $1
 log_refreshes_delete=Deleted $1 refresh rules
 log_iptables=پورٹ ری ڈائریکشن سیٹ اپ کو اپ ڈیٹ کیا گیا
 log_purge=Removed URL $1 from cache
 log_cachemgr=تبدیل شدہ کیشے مینیجر پاس ورڈ
+
 acl_root=ACL فائلوں کے لئے روٹ ڈائرکٹری
 acl_sections=اجازت والے ترتیب والے صفحات
 acl_start=سکویڈ شروع اور روک سکتا ہے؟
 acl_restart=سکویڈ ترتیب دے سکتے ہیں؟
+
 always_create=براہ راست بازیافت بنائیں
 always_edit=براہ راست بازیافت کریں
 always_header=ACLs سے مماثل درخواستوں کی براہ راست بازیافت کریں
+
 never_create=بالواسطہ بازیافت بنائیں
 never_edit=بالواسطہ بازیافت میں ترمیم کریں
 never_header=کبھی بھی براہ راست ACL سے ملنے والی درخواستوں کی بازیافت نہ کریں
+
 delay_title=تاخیر کے تالاب
 delay_add=ایک نیا تاخیر کا پول شامل کریں۔
 delay_num=نمبر
@@ -802,11 +851,14 @@ pool_unit2=kb
 pool_unit3=kB
 pool_unit4=ایم بی
 pool_unit5=ایم بی
+
 dpool_err=تاخیر کے تالابوں کو ختم کرنے میں ناکام
 dpool_enone=کوئی بھی منتخب نہیں ہوا
+
 apool_header=تاخیر کا پول ACL شامل کریں
 apool_header1=تاخیر کا پول ACL میں ترمیم کریں
 apool_pr=تاخیر کا پول ACL
+
 authparam_title=توثیقی پروگرام
 authparam_header=بیرونی تصدیق پروگرام کے اختیارات
 authparam_ttl=پاس ورڈ کو کیش کرنے کا وقت
@@ -849,6 +901,7 @@ ext_ecache=کیچ کا سائز غائب یا غلط
 ext_eprogram=پروگرام کا ایک غلط راستہ داخل ہوا تھا
 ext_eclash=ایک ہی نام کے ساتھ بیرونی پروگرام کی قسم پہلے سے موجود ہے
 ext_eused=یہ بیرونی پروگرام ACL کے زیر استعمال ہے
+
 header_title=ہیڈر تک رسائی کنٹرول
 header_none=ابھی تک ہیڈر تک رسائی کے قواعد کی کوئی تعریف نہیں کی گئی ہے۔
 header_name=HTTP ہیڈر
@@ -868,6 +921,7 @@ header_err=ہیڈر تک رسائی کے قاعدے کو بچانے میں نا�
 header_ename=لاپتہ یا غلط ہیڈر نام
 header_request_header_access=ہیڈروں سے درخواست کریں
 header_reply_header_access=جوابات ہیڈر
+
 refresh_title=ریفریش رولز
 refresh_none=ابھی تک ریفریش قوانین کی تعریف نہیں کی گئی ہے۔
 refresh_re=باقاعدہ اظہار
@@ -894,6 +948,7 @@ refresh_epc=غائب یا عمر کا غلط فیصد
 refresh_delete=منتخب شدہ ریفریش رولز کو حذف کریں
 drefresh_err=ریفریش رولز کو حذف کرنے میں ناکام
 drefesh_enone=کوئی بھی منتخب نہیں ہوا
+
 iptables_title=پورٹ ری ڈائریکشن سیٹ اپ
 iptables_inst0=The IPtables firewall commands needed to setup port redirection do not appear to be installed on your system. See the <a href='$1'>Linux Firewall</a> module for more details.
 iptables_inst1=The <a href='$1'>Linux Firewall</a> module does not appear to have been fully setup on your system. This module makes use of that one to setup Frox port redirection.
@@ -908,18 +963,23 @@ iptables_enet=لاپتہ یا ناجائز نیٹ ورک پتہ (192.168.1.0/24 
 iptables_eiface=لاپتہ یا غلط نیٹ ورک انٹرفیس
 iptables_eapply=Apply firewall failed : $1
 iptables_eapply2=Apply Squid failed : $1
+
 syslog_access=اسکویڈ تک رسائی لاگ
 syslog_cache=اسکویڈ کیچنگ لاگ
 syslog_store=سکویڈ آبجیکٹ اسٹور لاگ
+
 purge_err=کیشے سے URL صاف کرنے میں ناکام
 purge_title=کیچڈ یو آر ایل کو صاف کریں
 purge_doing=Clearing URL $1 ..
 purge_done=.. ہو گیا۔
 purge_failed=.. ناکام! اس کی وجہ کے لئے اوپر غلطی کا پیغام ملاحظہ کریں۔
+
 dhttp_err=پراکسی پابندیوں کو ختم کرنے میں ناکام
 dhttp_enone=کوئی بھی منتخب نہیں ہوا
+
 dicp_err=ICP پابندیاں ختم کرنے میں ناکام
 dicp_enone=کوئی بھی منتخب نہیں ہوا
+
 cachemgr_title=کیشے مینیجر پاس ورڈز
 cachemgr_ecannot=آپ کو کیشے مینیجر کے پاس ورڈ میں ترمیم کرنے کی اجازت نہیں ہے
 cachemgr_def1=پاس ورڈ کی ضرورت نہیں ہے

@@ -29,12 +29,14 @@ index_fd=Faila dēmona konfigurācija
 index_groups=Bacula grupas konfigurācija
 index_actions=Dublēšanas un atjaunošanas darbības
 index_ocmin=Ieguldījis <a href=$2 target=_new>Linmin</a> </a>
+
 connect_emysql=Neizdevās ielādēt datu bāzes DBI draiveri $1 
 connect_elogin=Neizdevās pieteikties datu bāzē $1:$2.
 connect_equery=Šķiet, ka datu bāzē $1 nav Bacula tabulas.
 connect_equery2=Iespējams, tas ir tāpēc, ka uzstādītais SQLite Perl modulis ir pārāk jauns, un tas neatbalsta vecāku SQLite datu bāzes formātu, ko izmantoja Bacula.
 connect_equery3=Šķiet, ka datu bāzē $1 nav OC Bacula grupas tabulas.
 esql=SQL kļūda : $1 
+
 check_edir=Bacula konfigurācijas direktorijs $1 jūsu sistēmā netika atrasts.
 check_ebacula=Bakulas vadības komanda $1 netika atrasta.
 check_econsole=Bakulas konsoles komanda $1 netika atrasta.
@@ -43,12 +45,14 @@ check_eclient=Šķiet, ka šī sistēma ir <a href='$2'>Bacula klients</a>, nevi
 check_econfigs=$1 netika atrasti Bacula konfigurācijas faili
 check_eservers=Webmin serveru grupas nav definētas
 check_engmod=OpenCountry Bacula grupas modulis nav instalēts
+
 proc_bacula-sd=Uzglabāšanas dēmons
 proc_bacula-fd=Failu dēmons
 proc_bacula-dir=Bacula direktora dēmons
 proc_bareos-sd=Uzglabāšanas dēmons
 proc_bareos-fd=Failu dēmons
 proc_bareos-dir=Bacula direktora dēmons
+
 stop_err=Neizdevās apturēt Bakulu
 start_err=Neizdevās sākt Bacula
 start_einit=$1 skripts nav atrasts
@@ -57,6 +61,7 @@ restart_err=Neizdevās atsākt Bacula
 apply_err=Neizdevās piemērot konfigurāciju
 apply_failed=Tika atklāta konfigurācijas kļūda
 apply_problem=Neizdevās piemērot konfigurāciju : $1 
+
 jobs_title=Rezerves darbi
 jobs_none=Pagaidām nav definēts neviens rezerves darbs.
 jobs_name=Darba nosaukums
@@ -69,6 +74,7 @@ jobs_add=Pievienojiet jaunu rezerves darbu.
 jobs_delete=Dzēst atlasītos darbus
 jobs_return=darba vietu saraksts
 jobs_derr=Neizdevās izdzēst darbus
+
 filesets_title=Failu kopas
 filesets_none=Pagaidām nav definētas rezerves failu kopas.
 filesets_name=Faila kopas nosaukums
@@ -78,6 +84,7 @@ filesets_delete=Dzēst atlasītās failu kopas
 filesets_return=failu kopu saraksts
 filesets_derr=Neizdevās izdzēst failu kopas
 filesets_ednone=Nav atlasīts
+
 fileset_title1=Izveidot failu kopu
 fileset_title2=Rediģēt failu kopu
 fileset_header=Dublējuma faila kopas informācija
@@ -97,6 +104,7 @@ fileset_gzipdef=&lt;Noklusētais saspiešanas līmenis&gt;
 fileset_lzo=LZO saspiešana
 fileset_gzip=Gzip līmenis $1 
 fileset_onefs=Ierobežot dublējumu tikai vienai failu sistēmai?
+
 clients_title=Rezerves klienti
 clients_none=Pagaidām nav definēti rezerves klienti.
 clients_name=Klienta vārds
@@ -106,6 +114,7 @@ clients_add=Pievienojiet jaunu rezerves klientu.
 clients_delete=Dzēst atlasītos klientus
 clients_return=klientu saraksts
 clients_derr=Neizdevās izdzēst klientus
+
 client_title1=Izveidot rezerves klientu
 client_title2=Rediģēt rezerves klientu
 client_header=Sīkāka informācija par klientu, kurš jāpapildina
@@ -128,6 +137,7 @@ client_efileret=Trūkst vai nav derīgs faila saglabāšanas periods
 client_ejobret=Trūkst vai nav derīgs darba saglabāšanas periods
 client_echild=Šo klientu nevar izdzēst, jo to izmanto $1 
 client_status=Rādīt statusu
+
 job_title1=Izveidot rezerves darbu
 job_title2=Rediģēt rezerves darbu
 job_header=Rezerves darba informācija
@@ -156,6 +166,7 @@ job_before=Komanda pirms darba
 job_after=Komanda pēc darba
 job_cbefore=Komanda pirms darba (uz klienta)
 job_cafter=Komanda pēc darba (uz klienta)
+
 schedules_title=Rezerves grafiki
 schedules_none=Pagaidām nav definēti rezerves grafiki.
 schedules_name=Grafika nosaukums
@@ -164,6 +175,7 @@ schedules_add=Pievienojiet jaunu rezerves grafiku.
 schedules_delete=Dzēst atlasītos grafikus
 schedules_return=grafiku saraksts
 schedules_derr=Neizdevās izdzēst grafikus
+
 schedule_title1=Izveidojiet dublēšanas grafiku
 schedule_title2=Rediģēt dublēšanas grafiku
 schedule_header=Rezerves grafika informācija
@@ -177,6 +189,7 @@ schedule_ename=Trūkst vai nav derīgs grafika nosaukums
 schedule_eclash=Grafiks ar tādu pašu nosaukumu jau pastāv
 schedule_etimes=Trūkst rezerves reizes $1 rindā
 schedule_echild=Šo grafiku nevar izdzēst, jo to izmanto $1 
+
 backup_title=Palaist dublējuma darbu
 backup_header=Rezerves darba informācija
 backup_job=Darbs jāskrien
@@ -191,11 +204,13 @@ backup_running=.. tagad darbojas rezerves darbs. Kad rezultāti būs pabeigti, r
 backup_running2=.. fonā ir sākts dublēšanas darbs.
 backup_done=.. dublējums pabeigts.
 backup_failed=.. dublēšana netika pabeigta veiksmīgi. Sīkāku informāciju skatiet iepriekš redzamajā kļūdas ziņojumā.
+
 gbackup_title=Palaist Bacula grupas rezerves darbu
 gbackup_run=$2 klientu rezerves darba sākšana ..
 gbackup_on=Rezerves darba veikšana klientam $1  :
 gbackup_header=Bacula grupas rezerves darba informācija
 gbackup_jd=$1 (failu kopa $2 grupā $3)
+
 dirstatus_title=Režisora statuss
 dirstatus_sched=Plānotais rezerves kopēšanas darbs
 dirstatus_name=Darba nosaukums
@@ -216,12 +231,14 @@ dirstatus_status2=Statuss
 dirstatus_donenone=Neviens rezerves darbs nav palaists.
 dirstatus_cancel=Atcelt atlasītos darbus
 dirstatus_refresh=Atsvaidzināt sarakstu
+
 clientstatus_title=Klienta statuss
 clientstatus_err=Neizdevās iegūt statusu no $1 : $2 
 clientstatus_msg=Statuss no $1 : $2 
 clientstatus_show=Rādīt klienta statusu:
 clientstatus_ok=labi
 clientstatus_on=$1 (uz $2)
+
 storages_title=Uzglabāšanas dēmoni
 storages_none=Pagaidām nav definēti uzglabāšanas dēmoni.
 storages_name=Krātuves nosaukums
@@ -232,6 +249,7 @@ storages_add=Pievienojiet jaunu glabāšanas dēmonu.
 storages_delete=Dzēst atlasītos krātuves dēmonus
 storages_return=glabāšanas dēmonu saraksts
 storages_derr=Neizdevās izdzēst uzglabāšanas dēmonus
+
 storage_title1=Izveidot glabāšanas dēmonu
 storage_title2=Rediģēt glabāšanas dēmonu
 storage_header=Sīkāka informācija par attālās glabāšanas dēmonu
@@ -255,6 +273,7 @@ storage_emedia=Trūkst multivides veida nosaukuma
 storage_emaxjobs=Trūkst maksimāli vienlaicīgu darbu
 storage_echild=Šo klientu nevar izdzēst, jo to izmanto $1 
 storage_status=Rādīt statusu
+
 devices_title=Glabāšanas ierīces
 devices_none=Pagaidām nav definētas nevienas atmiņas ierīces.
 devices_name=Ierīces nosaukums
@@ -264,6 +283,7 @@ devices_add=Pievienojiet jaunu atmiņas ierīci.
 devices_delete=Dzēsiet atlasītās atmiņas ierīces
 devices_return=glabāšanas ierīču saraksts
 devices_derr=Neizdevās izdzēst atmiņas ierīces
+
 device_title1=Izveidot atmiņas ierīci
 device_title2=Rediģēt atmiņas ierīci
 device_header=Sīkāka informācija par failu glabāšanas ierīci
@@ -282,11 +302,13 @@ device_eclash=Krātuves ierīce ar tādu pašu nosaukumu jau pastāv
 device_emedia=Trūkst multivides veida nosaukuma
 device_edevice=Trūkst vai nav derīga arhīva ierīce vai direktorijs
 device_echild=Šo klientu nevar izdzēst, jo to izmanto $1 
+
 storagestatus_title=Uzglabāšanas dēmona statuss
 storagestatus_err=Neizdevās iegūt statusu no $1 : $2 
 storagestatus_msg=Statuss no $1 : $2 
 storagestatus_show=Rādīt glabāšanas dēmona statusu:
 storagestatus_ok=labi
+
 label_title=Etiķetes apjoms
 label_header=Sīkāka informācija par marķējamo tilpumu
 label_storage=Uzglabāšanas dēmonu marķēt
@@ -302,6 +324,7 @@ label_done=.. veiksmīga marķēšana.
 label_epool=.. nevarēju atrast baseinu!
 label_err=Iezīme neizdevās
 label_elabel=Iezīme nav ievadīta
+
 pools_title=Apjoma baseini
 pools_none=Pagaidām nav definēti apjoma portfeļi.
 pools_name=Baseina nosaukums
@@ -311,6 +334,7 @@ pools_add=Pievienojiet jaunu tilpuma baseinu.
 pools_delete=Dzēst atlasītos apjoma portfeļus
 pools_return=tilpuma baseinu saraksts
 pools_derr=Neizdevās izdzēst apjoma krājumus
+
 pool_title1=Izveidot lielapjoma baseinu
 pool_title2=Rediģēt apjoma baseinu
 pool_header=Sīkāka informācija par rezerves apjoma rezervi
@@ -332,6 +356,7 @@ pool_ereten=Trūkst vai nav derīgs saglabāšanas periods
 pool_status=Rādīt apjomus
 pool_autolabel=Automātiski iezīmēt apjoma prefiksu
 pool_maxvolsize=Maksimālais skaļuma lielums (piemēram, 5 G uz 5 gigabaitiem)
+
 poolstatus_title=Apjomi baseinā
 poolstatus_show=Rādīt apjomus baseinā:
 poolstatus_ok=labi
@@ -345,9 +370,11 @@ poolstatus_status=Rezerves režīms
 poolstatus_none=Šajā dublējuma baseinā pašlaik nav apjoma.
 poolstatus_never=Nekad
 poolstatus_delete=Dzēst atlasītos apjomus
+
 dvolumes_err=Neizdevās izdzēst sējumus
 dvolumes_enone=Nav atlasīts
 dvolumes_ebacula=Bacula kļūda : $1 
+
 mount_title=Uzstādīt vai noņemt
 mount_header=Uzstādīšanas iespējas krātuvē vai noņemšana
 mount_storage=Uzglabāšanas ierīce
@@ -365,8 +392,10 @@ unmount_failed=.. noņemt neizdevās! Iemeslu, kāpēc to darīt, skatiet ieprie
 mount_return=stiprinājuma forma
 mount_err=Neizdevās uzstādīt atmiņas ierīci
 mount_eslot=Trūkst vai nav derīgs laika nišas numurs
+
 cancel_err=Neizdevās atcelt darbus
 cancel_enone=Nav atlasīts
+
 gjobs_title=Bacula grupas rezerves darbavietas
 gjobs_none=Pagaidām nav definēts neviens Bacula grupas rezerves darbs.
 gjobs_add=Pievienojiet jaunu Bacula grupas rezerves darbu.
@@ -374,10 +403,12 @@ gjobs_delete=Dzēst atlasītos darbus
 gjobs_return=Bacula grupas darbu saraksts
 gjobs_derr=Neizdevās izdzēst Bacula grupas darbus
 gjobs_client=Bacula grupas dublējums
+
 gjob_title1=Izveidojiet Bacula grupas rezerves darbu
 gjob_title2=Rediģēt Bacula grupas rezerves darbu
 gjob_header=Bacula grupas rezerves darba informācija
 gjob_client=Bacula grupas dublējums
+
 groups_title=Bacula grupas
 groups_none=Bacula vēl nav izvēlējusies nevienu Bacula grupu dublēšanai.
 groups_name=Grupas nosaukums
@@ -391,6 +422,7 @@ groups_derr=Neizdevās izdzēst grupas
 groups_noadd=Nav Bacula grupas, kuras varētu atlasīt dublēšanai.
 groups_info=$1 ($2 dalībnieki)
 groups_already=Visas Bacula grupas jau ir pievienotas.
+
 group_title1=Izveidot Bacula grupu
 group_title2=Rediģēt Bacula grupu
 group_header=Sīkāka informācija par Bacula grupu, kas jāpapildina
@@ -401,11 +433,13 @@ group_port=Bacula FD osta
 group_err=Neizdevās saglabāt Bacula grupu
 group_eclash=Grupa ar tādu pašu nosaukumu jau pastāv
 group_members=Saimnieki Bacula grupā
+
 sync_title=Bacula grupas sinhronizācija
 sync_header=Automātiskas Bacula grupas klientu sinhronizācijas iespējas
 sync_sched=Sinhronizēt pēc grafika?
 sync_schedyes=Jā, reizēm, kas atlasītas zemāk.
 sync_err=Neizdevās saglabāt Bacula grupas sinhronizāciju
+
 log_create_client=Izveidots rezerves klients $1 
 log_modify_client=Pārveidots rezerves klients $1 
 log_delete_client=Izdzēsts rezerves klients $1 
@@ -464,6 +498,7 @@ log_director=Saglabāta Bacula režisora globālā konfigurācija
 log_file=Saglabāta Bacula failu dēmona konfigurācija
 log_storagec=Saglabāta Bacula uzglabāšanas dēmona konfigurācija
 log_fixpass=Fiksēta Bacula konsoles programmas parole
+
 director_title=Direktora konfigurācija
 director_header=Globālās Bacula režisora iespējas
 director_name=Režisora vārds
@@ -477,6 +512,7 @@ director_ename=Trūkst vai nav derīgs režisora vārds
 director_eport=Trūkst vai nav derīgs porta numurs
 director_ejobs=Trūkst vai nav derīgs vienlaikus esošo darbu skaits
 director_edir=Trūkst vai vispār nav darba direktorija
+
 tls_enable=Vai iespējot TLS šifrēšanu?
 tls_require=Vai pieņemt tikai TLS savienojumus?
 tls_verify=Vai pārbaudāt TLS klientus?
@@ -488,6 +524,7 @@ tls_ecert=Trūkst vai nav TLS sertifikāta faila
 tls_ekey=Trūkst vai nav TLS atslēgas faila
 tls_ecacert=Trūkst vai nav TLS SI sertifikāta faila
 tls_ecerts=Lai TLS būtu iespējots, ir jāprecizē sertifikātu, atslēgu un CA faili
+
 file_title=Faila dēmona konfigurācija
 file_header=Bacula failu dēmonu opcijas
 file_name=Faila dēmona nosaukums
@@ -500,6 +537,7 @@ file_ename=Trūkst vai nav derīgs faila dēmona nosaukums
 file_eport=Trūkst vai nav derīgs porta numurs
 file_ejobs=Trūkst vai nav derīgs vienlaikus esošo darbu skaits
 file_edir=Trūkst vai vispār nav darba direktorija
+
 fdirectors_title=File Daemon direktori
 fdirectors_none=Direktori vēl nav definēti.
 fdirectors_name=Režisora vārds
@@ -508,6 +546,7 @@ fdirectors_add=Pievienojiet jaunu direktoru.
 fdirectors_delete=Dzēst atlasītos direktorus
 fdirectors_return=direktoru saraksts
 fdirectors_derr=Neizdevās izdzēst direktorus
+
 fdirector_title1=Izveidot File Daemon Director
 fdirector_title2=Rediģēt File Daemon Director
 fdirector_header=Sīkāka informācija par tālvadības direktora vadību
@@ -519,6 +558,7 @@ fdirector_err=Neizdevās saglabāt faila dēmona direktoru
 fdirector_ename=Trūkst režisora vārda
 fdirector_eclash=Režisors ar tādu pašu vārdu jau pastāv
 fdirector_epass=Trūkst paroles
+
 sdirectors_title=Storage Daemon direktori
 sdirectors_none=Direktori vēl nav definēti.
 sdirectors_name=Režisora vārds
@@ -527,6 +567,7 @@ sdirectors_add=Pievienojiet jaunu direktoru.
 sdirectors_delete=Dzēst atlasītos direktorus
 sdirectors_return=direktoru saraksts
 sdirectors_derr=Neizdevās izdzēst direktorus
+
 sdirector_title1=Izveidot Storage Daemon Director
 sdirector_title2=Rediģēt Storage Daemon Director
 sdirector_header=Sīkāka informācija par tālvadības direktora vadību
@@ -538,6 +579,7 @@ sdirector_err=Neizdevās saglabāt krātuves dēmona direktoru
 sdirector_ename=Trūkst režisora vārda
 sdirector_eclash=Režisors ar tādu pašu vārdu jau pastāv
 sdirector_epass=Trūkst paroles
+
 storagec_title=Krātuves dēmona konfigurācija
 storagec_header=Bacula uzglabāšanas dēmona iespējas
 storagec_name=Dēmona vārds
@@ -550,6 +592,7 @@ storagec_ename=Trūkst vai nav derīgs krātuves dēmona nosaukums
 storagec_eport=Trūkst vai nav derīgs porta numurs
 storagec_ejobs=Trūkst vai nav derīgs vienlaikus esošo darbu skaits
 storagec_edir=Trūkst vai vispār nav darba direktorija
+
 chooser_title=Atlasiet Kalendārs
 chooser_monthsh=Izpildes mēneši
 chooser_months=Gada mēneši
@@ -574,11 +617,13 @@ chooser_emonthsrange=Izvēlētajiem mēnešiem jābūt blakus
 chooser_eweekdaysrange=Atlasītajām darba dienām jābūt blakus
 chooser_eweekdaynumsrange=Atlasītajiem darba dienu numuriem jābūt blakus
 chooser_edaysrange=Atlasītajām mēneša dienām jābūt blakus
+
 weekdaynum_1=Pirmkārt
 weekdaynum_2=Otrkārt
 weekdaynum_3=Trešais
 weekdaynum_4=Ceturtais
 weekdaynum_5=Piektais
+
 restore_title=Atjaunot dublējumu
 restore_title2=Atjaunot Bacula grupas dublējumu
 restore_title3=Atjaunot Bacula grupas dublējumu

@@ -9,17 +9,21 @@ index_edit=לנהל
 index_manual=ערוך ידנית
 index_anyfile=ערוך קובץ תצורת PHP אחר:
 index_return=קבצי תצורה
+
 file_global=תצורת PHP גלובלית
 file_eread=קריאת $1 : $2 נכשלה
+
 manual_title=ערוך ידנית את התצורה
 manual_desc=ניתן להשתמש בדף זה לעריכה ידנית של קובץ תצורת PHP. יש לעשות זאת בזהירות, מכיוון שלא יבוצע שום תחביר או בדיקת תוקף אחרת על השינויים שלך.
 manual_err=עריכת קובץ התצורה נכשלה
 manual_edata=לא הוזן תוכן חדש
+
 list_title=נהל את תצורת PHP
 list_ecannot=אינך רשאי לנהל קובץ תצורת PHP זה
 list_return=תצורת PHP
 list_format_ini=פורמט INI
 list_format_fpm=פורמט FPM
+
 vars_title=משתני PHP
 vars_header=אפשרויות יצירה וציטוט של משתנה PHP
 vars_magic=לצטט את כל משתני הקלט?
@@ -28,6 +32,7 @@ vars_register=להפוך את כל הקלט למשתנים גלובליים?
 vars_args=להפוך פרמטרים של שורת הפקודה למשתנים גלובליים?
 vars_long=ליצור מערכים בסגנון ישן כמו <tt>HTTP_GET_VARS</tt>?
 vars_err=שמירת הגדרות המשתנה של PHP נכשלה
+
 dirs_title=הגדרות מדריך
 dirs_header=הגדרות סקריפט PHP ותיקיות סיומת
 dirs_include=חפש ספריות עבור כולל
@@ -39,6 +44,7 @@ dirs_err=שמירת הגדרות הספריה נכשלה
 dirs_eincs=לא כלול ספריות חיפוש שהוזנו
 dirs_eutmp=ספריית קבצים זמנית חסרה או לא חוקית
 dirs_eext=ספריית תוספים חסרה
+
 db_title=הגדרות מסד נתונים
 db_header1=הגדרות חיבור מסד נתונים MySQL
 db_persist=האם מאפשרים חיבורי בסיס קבועים?
@@ -57,6 +63,7 @@ db_emaxlinks=מספר מקסימלי של חיבורים חסרים או לא ח
 db_etimeout=פסק זמן לחיבור חסר או לא תקף
 db_ehost=מארח שרת MySQL של ברירת מחדל חסר או לא חוקי
 db_eport=יציאת ברירת מחדל של MySQL חסרה או לא תקינה
+
 session_title=אפשרויות הפעלה
 session_header=אפשרויות למעקב אחר פעילויות PHP
 session_handler=מנגנון אחסון הפעלה
@@ -73,6 +80,7 @@ session_epath=מדריך חסר או לא חוקי עבור קבצי הפעלה
 session_elife=חיי קובץ cookie חסרים או לא תקפים
 session_emaxlife=אורך החיים המקסימלי חסר או לא תקף
 session_eredis=הרחבה חוזרת חסרה או מושבתת
+
 safe_title=אפשרויות מצב בטוח
 safe_header=אפשרויות מצב גישה בטוחה לקובץ
 safe_on=אפשר מצב בטוח?
@@ -85,6 +93,7 @@ safe_err=שמירת אפשרויות מצב בטוח נכשלה
 safe_einclude=ספריה מותרת חסרה או לא חוקית עבור קבצים כלולים
 safe_eexec=ספרייה מותרת חסרה או לא חוקית לתוכניות שהוצאו להורג
 safe_ebasedir=מדריך חסר או לא חוקי לפעולות קבצים
+
 limits_title=מגבלות משאבים
 limits_header=אפשרויות גבול זיכרון והעברה
 limits_mem=הקצאת זיכרון מקסימאלית
@@ -98,6 +107,7 @@ limits_epost=גודל HTTP POST מקסימלי חסר או לא חוקי
 limits_eupload=גודל העלאת הקובץ המרבי חסר או לא חוקי
 limits_eexec=זמן ביצוע מקסימאלי חסר או לא חוקי
 limits_einput=זמן ניתוח הקלט המרבי חסר או לא חוקי
+
 errors_title=שגיאת רישום
 errors_header=אפשרויות תצוגה ורישום של הודעות שגיאה
 errors_display=להציג הודעות שגיאה?
@@ -128,6 +138,7 @@ errors_err=שמירת רישום השגיאה נכשלה
 errors_ereporting=לא הוזנה ביטוי מסוג שגיאה
 errors_emaxlen=גודל מקסימלי חסר או לא חוקי של שגיאות שנרשמו
 errors_efile=קובץ יומן שגיאות חסר
+
 misc_title=הגדרות אחרות
 misc_header=הגדרות PHP שונות
 misc_short=אפשר סקריפטים של PHP החל מ &lt;? ?
@@ -148,6 +159,7 @@ misc_include=לאפשר פתיחה של מרחוק כולל?
 misc_path=מידע על נתיב CGI לתיקון?
 misc_timezone=אזור זמן PHP
 misc_charset=הגדרת תו ברירת מחדל
+
 log_manual=ערוך ידני את הקובץ $1 
 log_vars=משתני PHP השתנו ב- $1 
 log_dirs=שינו את הגדרות הספריה ב- $1 
@@ -157,6 +169,7 @@ log_safe=אפשרויות מצב בטוח השתנו ב- $1
 log_limits=מגבלות המשאבים השתנו ב- $1 
 log_errors=רישום השגיאה השתנה ב- $1 
 log_misc=שינו הגדרות אחרות ב- $1 
+
 acl_global=האם ניתן לערוך תצורת PHP גלובלית?
 acl_anyfile=האם ניתן לערוך כל קובץ כתצורת PHP?
 acl_manual=האם ניתן לערוך ידנית קבצי תצורה?

@@ -8,6 +8,7 @@ index_none=No momento, nenhum diretório está sendo exportado para este sistema
 index_apply=Aplicar mudanças
 index_applydesc=Clique neste botão para aplicar a configuração atual de compartilhamento de arquivos. Isso tornará todos os diretórios listados acima disponíveis com as opções especificadas.
 index_return=lista de ações
+
 edit_title1=Editar compartilhamento
 edit_title2=Criar compartilhamento
 edit_header1=Compartilhar detalhes
@@ -30,6 +31,7 @@ edit_anon1=Sem acesso
 edit_aclok=Permitir ACLs?
 edit_public=Compartilhamento WebNFS?
 edit_index=Arquivo de índice WebNFS
+
 save_err=Falha ao salvar o compartilhamento
 save_edirectory='$1' não é um nome de diretório válido
 save_edirectory2=O diretório '$1' não existe
@@ -38,13 +40,18 @@ save_ero=Você não listou nenhum host para compartilhar somente leitura com
 save_eroot=Você não listou nenhum host para compartilhar root
 save_ealready=O diretório '$1' já está sendo compartilhado
 save_ehost=O host '$1' não existe
+
 log_modify=Compartilhamento NFS modificado $1 
 log_rename=Compartilhamento NFS alterado $1 para $2 
 log_create=Compartilhamento NFS criado $1 
 log_delete=Compartilhamento NFS excluído $1 
 log_apply=Alterações aplicadas
+
 acl_view=Pode editar compartilhamentos NFS?
+
 ecannot=Você não tem permissão para gerenciar compartilhamentos NFS
+
 delete_err=Falha ao excluir compartilhamentos
 delete_enone=Nenhum selecionado
+
 restart_err=Falha ao aplicar as alterações

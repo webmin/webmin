@@ -155,8 +155,10 @@ menu_bookmarks=Marcadores
 notallowed=No tiene permiso para acceder a $1. Los directorios permitidos son : $2 
 error_upload_emax=El archivo cargado es mayor que el límite de $1 
 extract_etype=Tipo de archivo comprimido no admitido
+
 info_total1=Total: archivo $1 y directorio $2 
 info_total2=Total: $1 archivos y $2 directorio
 info_total3=Total: $1 archivo y $2 directorios
 info_total4=Total: $1 archivos y $2 directorios
+
 ownership=Propietario

@@ -8,6 +8,7 @@ index_none=Ingen kataloger blir nå eksportert for dette systemet.
 index_apply=Bruk endringer
 index_applydesc=Klikk på denne knappen for å bruke gjeldende konfigurasjon av fildeling. Dette vil gjøre alle katalogene oppført ovenfor med de spesifiserte alternativene.
 index_return=liste over aksjer
+
 edit_title1=Rediger deling
 edit_title2=Lag deling
 edit_header1=Del detaljer
@@ -30,6 +31,7 @@ edit_anon1=Ingen adgang
 edit_aclok=Tillat ACL-er?
 edit_public=WebNFS-andel?
 edit_index=WebNFS indeksfil
+
 save_err=Kunne ikke lagre delingen
 save_edirectory='$1' er ikke et gyldig katalognavn
 save_edirectory2=Katalogen '$1' eksisterer ikke
@@ -38,13 +40,18 @@ save_ero=Du har ikke vist noen verter å dele skrivebeskyttet med
 save_eroot=Du har ikke vist noen verter å dele rot med
 save_ealready=Katalogen '$1' er allerede delt
 save_ehost=Verten '$1' eksisterer ikke
+
 log_modify=Endret NFS-andel $1 
 log_rename=Endret NFS-andel $1 til $2 
 log_create=Opprettet NFS-andel $1 
 log_delete=Slettet NFS-andel $1 
 log_apply=Brukte endringer
+
 acl_view=Kan du redigere NFS-aksjer?
+
 ecannot=Du har ikke lov til å administrere NFS-aksjer
+
 delete_err=Kunne ikke slette delinger
 delete_enone=Ingen valgt
+
 restart_err=Kunne ikke bruke endringene

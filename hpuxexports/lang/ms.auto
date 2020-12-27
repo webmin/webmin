@@ -14,6 +14,7 @@ index_ro_rw=semua hos membaca akses, akses tulis tuan rumah yang dipilih
 index_sel_rw=tuan rumah memilih akses tulis
 index_all_rw=semua tuan rumah menulis akses
 index_sel_root=akses root tuan rumah yang dipilih
+
 edit_title=Edit Eksport
 create_title=Buat Eksport
 edit_details=Butiran eksport
@@ -56,6 +57,7 @@ edit_anon_access=Pengguna tanpa nama
 edit_anon_notset=Tidak ditetapkan
 edit_anon_noaccess=Tiada akses
 edit_async=Menulis tidak segerak
+
 save_err=Gagal menyimpan eksport
 save_edir=Direktori '$1' tidak wujud
 save_enetgroup=Netgroup tidak sah atau hilang
@@ -65,6 +67,7 @@ save_ehost='$2' - '$1' bukan nama hos yang sah
 save_enohost='$1' - Anda tidak menyenaraikan mana-mana tuan rumah
 save_euids=UID tidak boleh dipercayai mestilah senarai atau rentang yang dipisahkan koma
 save_egids=GID tidak boleh dipercayai mestilah senarai atau rentang yang dipisahkan koma
+
 log_modify=Mengubah eksport NFS $1 
 log_modify_l=Mengubah eksport NFS $1 hingga $2 
 log_delete=Eksport NFS yang dipotong $1 

@@ -1,11 +1,14 @@
 connect_emysql=데이터베이스 드라이버 $1을로드하지 못했습니다.
 connect_elogin=$1 데이터베이스에 로그인하지 못했습니다 : $2.
 index_postfix=접미사
+
 index_esuper=Postfix 감독자 명령 $1이 없습니다. <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
 index_reload=구성 재로드
 index_reloadmsg=Postfix가 모든 구성 파일을 다시 읽도록하려면이 버튼을 클릭하십시오. Postfix 구성 파일을 수동으로 수정 한 경우에 유용합니다.
 index_version=접미사 버전 $1
+
 check_manual=Postfix 구성 파일을 수동으로 편집하십시오.
+
 aliases_addr=별명
 aliases_to=에일 리 어스
 aliases_type1=주소 $1
@@ -16,9 +19,11 @@ aliases_type5=자동 응답 파일 $1
 aliases_type6=필터 파일 적용 $1
 aliases_none=없음
 aliases_delete=선택된 별칭 삭제
+
 postfinger_title=구성 확인
 postfinger_show=보여 주다
 postfinger_ecannot=Postfix 구성을 확인할 수 없습니다
+
 mailclean_title=Clean MailQueue
 mailclean_ecannot=MailQueues를 정리할 권한이 없습니다.
 mailclean_active=활성 대기열
@@ -27,6 +32,7 @@ mailclean_deferred=지연 큐
 mailclean_defer=지연 큐
 mailclean_all=모든 대기열
 mailclean_search=검색 문자열
+
 aform_type0=없음
 aform_type1=이메일 주소
 aform_type2=파일의 주소
@@ -42,6 +48,7 @@ aform_val=별칭
 aform_afile=편집하다 ..
 aform_return=별명
 aform_cmt=기술
+
 asave_err=별칭을 저장하지 못했습니다
 asave_eaddr='$1'은 (는) 유효한 주소가 아닙니다
 asave_ealready='$1'의 별칭이 이미 존재합니다
@@ -52,11 +59,13 @@ asave_etype4='$1'은 (는) 유효한 프로그램이 아니거나 존재하지 �
 asave_etype5=자동 회신 파일 '$1'이 (가) 유효하지 않습니다
 asave_etype4none=주어진 프로그램이 없습니다
 asave_etype6=필터 파일 '$1'이 (가) 유효하지 않습니다
+
 afile_title=주소 파일 편집
 afile_desc=아래 텍스트 영역을 사용하여 $1 파일의 주소를 편집하십시오.
 afile_efile=$1을 (를) 편집 할 수 없습니다.
 afile_undo=변경 사항 취소
 afile_ewrite=주소 파일에 쓰지 못했습니다  : $1
+
 ffile_title=필터 파일 편집
 ffile_desc=$1 파일에서 필터 규칙을 설정하려면 아래 양식을 사용하십시오.
 ffile_efile=$1을 (를) 편집 할 수 없습니다.
@@ -72,6 +81,7 @@ ffile_other=그렇지 않으면 $1으로 전달하십시오.
 ffile_err=필터 파일을 저장하지 못했습니다
 ffile_ematch=일치하지 않는 항목
 ffile_eaction=전달 주소가 없습니다.
+
 rfile_title=자동 회신 파일 편집
 rfile_desc=아래 텍스트 영역을 사용하여 $1에서 자동 회신 메시지를 편집하십시오. 메시지에는 $SUBJECT, $FROM, $TO, $DATE 및 $BODY 매크로가 포함될 수 있으며 자동 회신이 활성화 될 때 확장됩니다.
 rfile_desc2=<br><tt> 보낸 사람 : foo@bar.com </tt><tt> 제목 : 휴일에 </tt><br> 메시지 상단에 단일 빈 줄로 본문과 구분됩니다.
@@ -90,28 +100,37 @@ rfile_from=보낸 사람 : 회신 주소
 rfile_auto=자동 (수신자 주소 기준)
 rfile_efrom=발신인 : 주소
 rfile_fromdesc=자동 방법이 신뢰할 수 없으므로 From : 주소는 가능한 한 항상 지정해야합니다.
+
 opts_nomap=지도 세트가 없습니다
 opts_setmap=지도 사양
 opts_notify_classes_sel=아래에서 선택
+
 opts_edir=$1 아래에만 맵 파일을 지정할 수 있습니다.
+
 opts_mailbox_size_limit=사서함의 최대 크기
+
 opts_mynetworks_style=자동 로컬 네트워크
 opts_mynetworks_subnet=동일한 IP 서브넷
 opts_mynetworks_class=동일한 네트워크 클래스
 opts_mynetworks_host=로컬 머신 만
 opts_delay_warning_time_default2=접미사 기본값
 opts_content_filter_default=없음
+
 opts_relay_recipient_maps=릴레이 허용 주소 맵
 smtpd_nomap=릴레이 허용 주소에 대한 맵이 아직 입력되지 않았습니다.
 smtpd_nomap2=발신자 주소 제한에 대한 맵이 아직 입력되지 않았습니다.
 smtpd_map=릴레이를 위해 허용 된 주소
 smtpd_map2=발신자 주소에 대한 제한
+
 opts_smtp_use_tls=SMTP 연결에 TLS 사용
 opts_smtp_sasl_security_options=SASL 보안 옵션
+
 opts_edebug=상세하지 않은 상세 로깅 레벨-0보다 큰 숫자 여야합니다.
+
 canonical_return_sender=발신자 정식지도
 canonical_return_recipient=수신자 정식지도
 canonical_return=정식지도
+
 mapping_delete=선택된 것을 지워 라
 mapping_cmt=기술
 mapping_ecannot=$1 아래에서만지도를 편집 할 수 있습니다.
@@ -125,15 +144,27 @@ mapping_toomany=$1 맵 항목이 있으며 이는 $2의 표시 제한보다 큽�
 mapping_find=일치하는 매핑 표시 :
 mapping_search=검색
 mapping_match=<tt>$1</tt>과 일치하는 파일 항목을 매핑하십시오.
+
 opts_virtual_alias_maps=도메인 매핑 조회 테이블
 opts_virtual_alias_domains=가상 매핑을 수행 할 도메인
 virtual_same=도메인 매핑 테이블에서
 virtual_return=가상 도메인
+
 transport_return=교통지도
+
+sni_title=인증서 매핑
+sni_ecannot=인증서 매핑 구성을 편집 할 수 없습니다.
+opts_sni_maps=인증서 매핑 조회 테이블
+sni_return=인증서 맵
+sni_dom=호스트 이름
+sni_certs=인증서 파일
+
 relocated_return=재배치 된지도
 opts_content_filter=이메일 컨텐츠 필터
+
 start_efailed=Postfix를 시작하지 못했습니다
 start_ecannot=Postfix를 시작할 수 없습니다
+
 acl_resource=자원을 편집 할 수 있습니까?
 acl_aliases=별칭을 편집 할 수 있습니까?
 acl_aliases_options=별칭 옵션을 편집 할 수 있습니까?
@@ -142,6 +173,7 @@ acl_address_rewriting=주소 다시 쓰기를 편집 할 수 있습니까?
 acl_canonical=정식을 편집 할 수 있습니까?
 acl_virtual=가상 편집이 가능합니까?
 acl_transport=전송을 편집 할 수 있습니까?
+acl_sni=인증서를 편집 할 수 있습니까?
 acl_relocated=재배치 된 편집이 가능합니까?
 acl_header=헤더 확인을 편집 할 수 있습니까?
 acl_local_delivery=지역 배송을 편집 할 수 있습니까?
@@ -160,6 +192,7 @@ acl_postfinger=접미사 구성을 확인할 수 있습니까?
 acl_manual=구성 파일을 편집 할 수 있습니까?
 acl_dir=맵 파일의 허용 디렉토리
 acl_bcc=BCC 매핑을 편집 할 수 있습니까?
+
 boxes_title=사용자 사서함
 boxes_user=사용자
 boxes_size=사서함 크기
@@ -169,6 +202,7 @@ boxes_sent=보낸 편지함
 boxes_ecannot=이메일을 읽을 수 없습니다
 boxes_toomany=시스템에 모든 사서함을 나열하기에는 사용자가 너무 많습니다.
 boxes_go=사용자 메일보기 :
+
 mail_title=사용자 이메일
 mail_from=에서
 mail_date=데이트
@@ -207,6 +241,7 @@ mail_forward=앞으로
 mail_rfc=라인에서
 mail_move=이동 :
 mail_eexists=더 이상 메시지가 없습니다!
+
 view_title=이메일 읽기
 view_desc=$2의 메시지 $1
 view_desc2=사용자 $2에 대한 메시지 $1
@@ -235,6 +270,7 @@ view_body=메시지 텍스트
 view_afile=첨부 파일 이름
 view_atype=첨부 파일 유형
 view_asize=파일 크기
+
 compose_title=이메일을 쓰다
 reply_title=이메일에 회신
 forward_title=이메일 전달
@@ -245,6 +281,7 @@ reply_mailforward=전달 된 메시지
 reply_attach2=클라이언트 및 서버 측 첨부
 reply_send=메일을 보내다
 reply_ecannot=이 사용자로 메일을 보낼 수 없습니다
+
 send_err=메일을 보내지 못했습니다
 send_eto=누락 된 주소
 send_efrom=발신자 주소
@@ -258,6 +295,7 @@ send_eperms=$1 사용자가 $2를 읽을 수 없습니다.
 send_eperms2=$1 파일을 보낼 수 없습니다
 send_epath=Sendmail 실행 파일 $1이 없습니다.
 send_ewrapper=Postfix sendmail 인터페이스 프로그램이 존재하지 않습니다
+
 search_title=검색 결과
 search_ecannot=이 사용자의 이메일을 검색 할 수 없습니다
 search_ematch=일치시킬 텍스트를 입력해야합니다.
@@ -265,6 +303,7 @@ search_efield=검색 유형을 선택해야합니다.
 search_none=메시지가 없습니다.
 search_results2=$1 $2와 일치하는 메일 메시지 ..
 search_results3=$1 메일 메시지가 $2와 일치하지 않습니다 ..
+
 match_from=보낸 사람 : 일치
 match_subject=제목 : 성냥
 match_to=받는 사람 : 일치
@@ -282,6 +321,7 @@ match_!date=날짜 : 일치하지 않습니다
 match_!body=본문이 일치하지 않습니다
 match_!size=크기가
 match_!headers=헤더가 일치하지 않습니다
+
 mailq_title=메일 대기열
 mailq_count=$1 메시지
 mailq_none=현재 대기중인 메일 메시지가 없습니다
@@ -310,15 +350,20 @@ mailq_active=유효한
 mailq_deferred=연기 됨
 mailq_hold=선택된 홀드
 mailq_unhold=보류되지 않은 선택
+
 flushq_title=플러시 큐
 flushq_desc=$1 명령으로 메일 배달을 강제로 시도했습니다.
+
 qview_title=대기중인 메시지
 qview_desc=$1 파일에서
 qview_headers=메일 헤더
 qview_attach=첨부
+
 after_err=접미사 구성 오류  : $1
+
 searchq_title=대기열 검색 결과
 searchq_none=대기중인 메시지가 없습니다.
+
 header_title=헤더 확인
 header_ecannot=헤더 확인을 편집 할 수 없습니다
 header_eregexp=헤더 검사 맵은 <tt>regexp :</tt> <i>파일 이름</i> 형식이어야합니다.
@@ -337,15 +382,18 @@ header_reject=거부 (오류 메시지..)
 header_warn=로그 경고 (메시지..)
 header_ename=잘못된 정규식-/ something /과 같아야합니다.
 header_return=헤더 확인
+
 body_title=신체 검사
 body_ecannot=신체 검사를 편집 할 수 없습니다
 body_eregexp=본문 검사 맵은 <tt>regexp :</tt> <i>파일 이름</i> 형식이어야합니다.
 opts_body_checks=메시지 본문 검사 테이블
 body_return=신체 검사
+
 dependent_title=발신자 종속 전송 매핑
 dependent_ecannot=발신자 종속 전송 매핑을 편집 할 수 없습니다
 dependent_eregexp=발신자 종속 전송 맵은 <tt>regexp :</tt> <i>파일 이름</i> 형식이어야합니다.
 dependent_return=발신자 의존 전송 매핑
+
 manual_title=지도 파일 편집
 manual_file=편집 할 맵 파일을 선택하십시오.
 manual_change=변화
@@ -353,9 +401,11 @@ manual_editing=$1에서 매핑을 수동으로 편집하려면 아래 텍스트 
 manual_err=지도 파일을 저장하지 못했습니다
 manual_efile=잘못된지도 파일 이름!
 manual_ecannot=맵 파일을 수동으로 편집 할 수 없습니다
+
 delq_titles=메시지 삭제
 delq_rusure=선택한 큐 메시지 $1을 삭제 하시겠습니까?
 delq_confirm=메시지 삭제
+
 master_title=서버 프로세스
 master_name=프로세스 이름
 master_enabled=활성화 되었습니까?
@@ -396,8 +446,10 @@ master_einet=수신 대기 할 호스트 주소는 인터넷 프로세스에만 
 master_ecommand=누락 된 서버 프로세스 명령
 master_ewakeup=깨우거나 잘못된 깨우기 시간
 master_emaxprocs=최대 프로세스 수 누락 또는 유효하지 않음
+
 delete_err=매핑을 삭제하지 못했습니다.
 delete_enone=선택된 사항 없음
+
 cmanual_title=구성 파일 편집
 cmanual_ecannot=Postfix 구성 파일을 편집 할 수 없습니다
 cmanual_ok=편집하다
@@ -405,10 +457,12 @@ cmanual_efile=선택한 파일이 Postfix 구성의 일부가 아닙니다
 cmanual_file=구성 파일 편집 :
 cmanual_edata=아무것도 입력되지 않았습니다!
 cmanual_err=구성 파일을 저장하지 못했습니다
+
 access_return=액세스 맵 테이블
 edit_map_file=지도 파일 편집
 opts_reject_rbl_client=실시간 블랙리스트 (RBL) 조회
 opts_check_sender_access=발신자 액세스 맵 테이블 확인
+
 log_misc=변경된 일반 옵션
 log_opts=변경된 주소 재 작성 및 가장 무도회
 log_aliases=변경된 별칭 옵션
@@ -416,6 +470,7 @@ log_canonical=정식 매핑 옵션 변경
 log_virtual=변경된 가상 도메인 옵션
 log_bcc=BCC 맵 옵션 변경
 log_transport=변경된 전송 매핑 옵션
+log_sni=인증서 매핑 옵션 변경
 log_dependent=발신자 의존 주소 옵션 변경
 log_relocated=재배치 매핑 옵션 변경
 log_header=변경된 헤더 확인 옵션
@@ -493,6 +548,7 @@ log_sender_dependent_default_transport_maps_modify=수정 된 발신자 종속 �
 log_sender_dependent_default_transport_maps_delete=발신자 종속 주소 $1 삭제
 log_delete_sender_dependent_default_transport_mapss=$1 발신자 종속 주소가 삭제되었습니다.
 log_manual_sender_dependent_default_transport_mapss=$1에서 수동으로 보낸 발신자 종속 주소
+
 sasl_title=SMTP 인증 및 암호화
 opts_smtpd_sasl_auth_enable=SASL SMTP 인증이 필요합니까?
 opts_smtp_sasl_auth_enable=SASL SMTP 인증을 사용 하시겠습니까?
@@ -539,6 +595,7 @@ sasl_nologin=필요 없음
 sasl_userpass=$2 비밀번호로 $1으로 로그인
 sasl_elogin=SMTP 로그인이 없거나 잘못되었습니다 (공백 또는 콜론이 허용되지 않음)
 sasl_epass=유효하지 않은 SMTP 비밀번호 (공백 없음)
+
 client_title=SMTP 클라이언트 제한
 client_ecannot=SMTP 클라이언트 제한을 편집 할 수 없습니다
 client_restrict=고객 제한
@@ -548,6 +605,7 @@ client_other=기타 제한 사항  :
 client_err=클라이언트 제한 사항을 저장하지 못했습니다.
 client_evalue=$1 제한에 대한 값이 없습니다.
 client_return=SMTP 클라이언트 제한
+
 chooser_title=지도 소스 선택
 chooser_header=지도 소스 $1
 chooser_none=없음
@@ -603,6 +661,7 @@ chooser_elquery_filter=지도 $1에 대한 쿼리 필터가 없습니다.
 chooser_elresult_attribute=$1 맵의 결과 속성 이름이 없거나 잘못되었습니다.
 chooser_elbind_dn=$1 맵에 대한 LDAP 서버 로그인이 누락되었습니다.
 chooser_elbind_pw=$1 맵에 대한 LDAP 서버의 비밀번호가 누락되었습니다.
+
 mysql_ecfile=MySQL 구성 파일 $1를 찾을 수 없습니다
 mysql_ecfile2=MySQL 구성 파일 $1에서 테이블을 찾을 수 없습니다
 mysql_edriver=데이터베이스 드라이버 $1을로드하지 못했습니다.
@@ -614,6 +673,7 @@ mysql_eupdate=SQL 업데이트 실패  : $1
 mysql_elist=SQL 쿼리 실패  : $1
 mysql_esource=이름이 $1 인 MySQL 소스가 없습니다.
 mysql_eneed=MySQL 구성 매개 변수 $1를 찾을 수 없습니다. Webmin은 쿼리 할 테이블과 필드를 파악하기 위해 이것이 필요합니다.
+
 ldap_ecfile=LDAP 구성 파일 $1를 찾을 수 없습니다
 ldap_eldapmod=LDAP와 통신하는 데 필요한 Perl 모듈 $1이 설치되지 않았거나로드 할 수 없습니다
 ldap_eldap=$2 포트에서 LDAP 서버 $1에 연결하지 못했습니다.
@@ -624,6 +684,7 @@ ldap_edelete=$1의 LDAP 삭제 실패  : $2
 ldap_equery=$1의 LDAP 검색에 실패했습니다  : $2
 ldap_erename=$1에서 $2 로의 LDAP 이름 바꾸기 실패  : $3
 ldap_emodify=$1의 LDAP 수정에 실패했습니다  : $2
+
 bcc_title=BCC 매핑
 bcc_ecannot=BCC 매핑을 편집 할 수 없습니다
 opts_sender_bcc_maps=발신자 BCC 매핑 조회 테이블

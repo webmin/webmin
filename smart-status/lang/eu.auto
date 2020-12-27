@@ -25,6 +25,7 @@ index_family=Familia eredua
 index_serial=Serie zenbakia
 index_capacity=aforoa
 index_norm=normalizatu:
+
 monitor_type=SMART Drive egiaztapena
 monitor_type2=SSD higadura
 monitor_drive=Unitatea egiaztatzeko
@@ -40,14 +41,17 @@ monitor_wearlevel=Huts egin, higadura maila azpitik jaisten bada
 monitor_ewearlevel=Higaduraren ehuneko baliogabea
 monitor_nowearout=Drive-k ez du SSD higaduraren adierazleren berri ematen
 monitor_wornout=Higadura maila $1 era jaitsi da
+
 short_title=Auto-proba laburra
 short_doing=$1. auto proba laburra hastea.
 short_failed=.. huts egin du!
 short_ok=.. proba hasi da ondo. Ikus unitatearen egoera moduluaren orrialde nagusian, emaitzak lortzeko.
+
 ext_title=Auto-proba luzatua
 ext_doing=$1 eko proba luzatua abiaraztean.
 ext_failed=.. huts egin du!
 ext_ok=.. proba hasi da ondo. Ikus unitatearen egoera moduluaren orrialde nagusian, emaitzak lortzeko.
+
 data_title=Datuak biltzeko proba
 data_doing=Lineaz kanpoko datu bilketa $1 abiaraztean.
 data_failed=.. huts egin du!

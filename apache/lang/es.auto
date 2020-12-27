@@ -6,28 +6,38 @@ index_desclist=La lista a continuación muestra todos los hosts virtuales de Apa
 index_desccreate=Este formulario se puede utilizar para agregar un nuevo host virtual de Apache, que sirve contenido de un directorio específico en respuesta a solicitudes de una dirección IP o nombre de host en particular.
 index_return2=configuración global
 index_delete=Eliminar servidores seleccionados
+
 cvirt_eroot4=Ningún usuario definido en la configuración de Apache
+
 enewline=Carácter inválido en valor
+
 virt_eprotocol=Debe seleccionar al menos una versión de protocolo SSL/TLS utilizable
 virt_opts2=Opciones de servidor virtual
 virt_DirectoryMatch=Regexp de directorio
 virt_FilesMatch=Regexp de archivos
 virt_LocationMatch=Ubicación regexp
 virt_ProxyMatch=Regexp proxy
+
 vserv_virtualmin=Este host virtual de Apache pertenece al servidor Virtualmin <tt>$1</tt>, por lo que la dirección, el puerto, el directorio base y el nombre de host no se pueden cambiar aquí.
+
 manual_editfile=Editar archivo de configuración:
 manual_switch=Editar
+
 dir_proxyall=Todas las solicitudes de poder
+
 htaccess_file=Archivos de opciones existentes
 htaccess_eempty=No se ingresó el directorio de archivos de opciones
 htaccess_eabsolute=El directorio del archivo de opciones debe ser una ruta absoluta
 htaccess_err=Error al crear el archivo de opciones
+
 defines_list=Parámetros definidos
+
 acl_aliasdir=Limite los alias al directorio
 acl_dirs=Directivas de Apache disponibles <br><font size=-1> (Sujeto al límite de tipos anterior) </font>
 acl_dirs0=Todos
 acl_dirs1=Solo listado ..
 acl_dirs2=Todos excepto los enumerados.
+
 core_portname=Protocolo
 core_protoany=&lt;Cualquier&gt;
 core_eduplisten=La dirección de escucha $1 aparece dos veces
@@ -35,12 +45,18 @@ core_ecandoc=No tiene permiso para usar la raíz del documento '$1'
 core_minor=Solo versión menor
 core_fileowner=Propietario de archivo coincide
 core_filegroup=Partidos del propietario del grupo
+
 mod_alias_edest2=No tiene permiso para usar el destino $2 '$1'
+
 mod_proxy_seconds=segundos
+
 mod_log_config_ifset=Si está configurado
+
 mod_userdir_edir=No tiene permiso para usar el directorio WWW del usuario especificado
+
 mod_auth_dbm_gpass=¿Pasar fallas grupales al siguiente módulo?
 mod_auth_dbm_gtype=Tipo de base de datos del grupo DBM
+
 mod_ssl_cafile=Archivo de autoridades de certificación
 mod_ssl_ecafile=Falta el archivo de clave de las autoridades de certificación
 mod_ssl_pass=Contraseñas para claves SSL
@@ -51,24 +67,32 @@ mod_ssl_passsc=Ejecutar script $1
 mod_ssl_epassph=No se ingresó una contraseña SSL
 mod_ssl_epasssc=Script de contraseña SSL faltante o no válido
 mod_ssl_ecerton=Cuando SSL está habilitado, se debe seleccionar un archivo de certificado
+
 log_mods=Modificado los módulos de Apache configurados
 log_virts_delete=Servidores virtuales $1 eliminados
+
 mod_vhost_alias_eroot2=El directorio raíz del host virtual no está permitido
+
 cdir_ecannot=No está permitido crear opciones por directorio para la ruta dada
+
 delete_err=Error al eliminar servidores virtuales
 delete_enone=Ninguna seleccionada
 delete_ecannot=No tienes permiso para eliminar servidores
 delete_ecannot2=No tiene permiso para editar el servidor $1
+
 syslog_desc=Registro de errores de Apache
+
 mod_auth_basic_pass=¿Pasar fallas de inicio de sesión básicas al siguiente módulo?
 mod_auth_basic_prov=Tipos básicos de archivos de usuario de inicio de sesión
 mod_auth_basic_file=Archivo de texto
 mod_auth_basic_dbm=Base de datos DBM
+
 mod_auth_digest_pass=¿Pasar fallas de inicio de sesión de resumen al siguiente módulo?
 mod_auth_digest_prov=Tipos de archivos de usuario de inicio de sesión resumidos
 mod_auth_digest_al=Algoritmo de hash
 mod_auth_digest_domain=URL y rutas en el mismo dominio
 mod_auth_digest_edomain=Faltan URL y rutas en el mismo dominio
+
 mods_title=Configurar módulos de Apache
 mods_mod=Módulo
 mods_state=Estado actual

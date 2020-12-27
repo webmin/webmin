@@ -8,6 +8,7 @@ index_none=כרגע לא מיוצאים ספריות במערכת זו.
 index_apply=החל שינויים
 index_applydesc=לחץ על כפתור זה כדי להחיל את התצורה הנוכחית של שיתוף קבצים. זה יהפוך את כל הספריות המפורטות לעיל עם האפשרויות שצוינו.
 index_return=רשימת המניות
+
 edit_title1=ערוך שתף
 edit_title2=צור שיתוף
 edit_header1=שתף פרטים
@@ -30,6 +31,7 @@ edit_anon1=אין גישה
 edit_aclok=אפשר ACLs?
 edit_public=לשתף WebNFS?
 edit_index=קובץ אינדקס של WebNFS
+
 save_err=שמירת השיתוף נכשלה
 save_edirectory='$1' אינו שם תיקיה חוקי
 save_edirectory2=הספרייה '$1' אינה קיימת
@@ -38,13 +40,18 @@ save_ero=לא רשמת אף מארח שאיתו ניתן לשתף קריאה ב�
 save_eroot=לא רשמת אף מארח שאיתו תוכל לשתף שורש
 save_ealready=הספריה '$1' כבר משותפת
 save_ehost=המארח '$1' אינו קיים
+
 log_modify=נתח NFS שונה $1 
 log_rename=נתח NFS שינה $1 ל- $2 
 log_create=יצר את נתח NFS $1 
 log_delete=נתח NFS נמחק $1 
 log_apply=שינויים שהוחלו
+
 acl_view=האם ניתן לערוך שיתופי NFS?
+
 ecannot=אינך מורשה לנהל מניות NFS
+
 delete_err=מחיקת השיתופים נכשלה
 delete_enone=לא נבחר
+
 restart_err=החלת השינויים נכשלה

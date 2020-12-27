@@ -10,6 +10,7 @@ index_range=기간에 대한 보고서 생성
 index_view=생성 된 보고서보기
 index_viewdesc=$1 디렉토리에서 가장 최근에 생성 된 보고서를보십시오.
 index_return=모듈 색인
+
 log_title=로그 소스 및 보고서 대상
 log_header=소스 오징어 로그 파일 및 생성 된 보고서 옵션
 log_access_log=소스 오징어 로그 파일
@@ -30,6 +31,7 @@ log_elastlog=숫자가 없거나없는
 log_eemail=이메일 주소가 없거나 잘못 보임
 log_emailx=없거나 존재하지 않는 메일 프로그램
 log_squidguard_log_path=SquidGuard 로그 파일
+
 style_title=보고서 스타일
 style_header=HTML 보고서 스타일 및 색상 옵션
 style_title2=보고서 제목
@@ -54,6 +56,7 @@ style_efont=글꼴 이름이 없거나 유효하지 않습니다
 style_esize=이미지 너비와 높이가 없거나 잘못되었습니다
 style_language=언어 신고
 style_charset=보고서 문자 세트
+
 report_title=보고서 옵션
 report_header=보고서 내용 및 생성 옵션
 report_resolve_ip=IP 주소를 해결 하시겠습니까?
@@ -134,6 +137,7 @@ report_echar=공백은 허용되지 않습니다
 report_estring=대체 텍스트가 없거나 잘못되었습니다
 report_eselect=선택된 것이 없습니다
 report_eenter=아무것도 입력하지 않았습니다
+
 sched_title=예약 된 보고서 생성
 sched_header=예약 된보고 옵션
 sched_sched=예약 된 보고서가 활성화 되었습니까?
@@ -148,9 +152,11 @@ sched_rsel=$1 ~ $2 일 전
 sched_err=예약 된 보고서 생성을 저장하지 못했습니다.
 sched_erfrom=시작 일수가 없거나 잘못되었습니다.
 sched_erto=결말 일이 없거나 잘못되었습니다.
+
 view_title=사그 보고서
 view_efile=잘못된 파일 이름!
 view_eopen=보고서 파일을 열지 못했습니다
+
 gen_title=보고서 생성
 gen_header=이제 Squid 로그 파일 $1 및 모든 회전 된 버전에서 Sarg 보고서를 생성합니다.
 gen_done=.. 완료
@@ -160,6 +166,7 @@ gen_view=완성 된 보고서를 봅니다.
 gen_err=보고서를 생성하지 못했습니다
 gen_efrom=하루가 없거나 잘못되었습니다
 gen_eto=날짜가 없거나 잘못되었습니다
+
 webmin_log_log=업데이트 된 로그 소스 및 보고서 대상 옵션
 webmin_log_report=업데이트 된 보고서 옵션
 webmin_log_style=업데이트 된 보고서 스타일 옵션

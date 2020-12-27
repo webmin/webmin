@@ -1,5 +1,6 @@
 check_etargets=Die iSCSI-Server-Konfigurationsdatei $1 wurde nicht auf Ihrem System gefunden.
 check_eserver=Das iSCSI-Server-Programm $1 wurde nicht auf Ihrem System gefunden.
+
 index_title=iSCSI-Server
 index_clink=Vielleicht ist es nicht installiert, oder Ihre <a href='$1'>Modulkonfiguration</a> ist falsch.
 index_stop=iSCSI-Server stoppen
@@ -11,6 +12,7 @@ index_restartdesc=Klicke auf diese Schaltfläche, um die aktuelle Konfiguration 
 index_atboot=Beim Booten starten?
 index_atbootdesc=Ändern diese Option, um zu kontrollieren, ob die iSCSI-Server beim Systemstart gestartet wird oder nicht. Wenn es aktuelle nicht beim Booten gestartet und "Ja" gewählt wird, wird ein neues Init-Skript erstellt werden.
 index_return=Modulindex
+
 extents_title=Gerät zum Teilen
 extents_none=Keine Geräte zum Teilen wurden bisher erstellt.
 extents_name=Gerätename
@@ -25,6 +27,7 @@ extents_denone=Nichts ausgewählt
 extents_einuse=Gerät $1 kann nicht gelöscht werden, da es durch $2 im Gebrauch ist
 extents_drusure=Sind Sie sicher, dass Sie die folgenden Geräte entfernen möchten: $1? Der Inhalt bleibt erhalten, aber sie werden nicht mehr für iSCSI Clients zugänglich sein.
 extents_sure=Lösche Geräte
+
 extent_create=Erstelle Gerät zum teilen
 extent_edit=Editiere Gerät zum teilen
 extent_egone=Gerät zum teilen $1 existiert nicht!
@@ -50,6 +53,7 @@ extent_estart=Start des extent muss eine Zahl sein
 extent_esize=Größe des extent muss eine Zahl sein
 extent_esizemax=Ende der extent darf nicht größer als der Gerätegröße von $1 sein
 extent_einuse=Dieses Gerät kann nicht gelöscht werden, da es durch $1 im Gebrauch ist
+
 devices_title=Geräte-Kombinationen
 devices_none=Keine Gerätekombinationen wurden erstellt.
 devices_name=Kombinationsname
@@ -65,6 +69,7 @@ devices_denone=Nicht ausgewählt
 devices_einuse=Kombination $1 kann nicht gelöscht werden, da es durch $2 im Gebrauch ist
 devices_drusure=Sind Sie sicher, dass Sie die folgenden Gerätekombinationen entfernen möchten : $1? Der Inhalt bleibt erhalten, aber es wird nicht mehr für iSCSI Clients zugänglich sein.
 devices_sure=Lösche Geräte-Kombinationen
+
 device_create=Erstelle Geräte-Kombination
 device_edit=Editiere Geräte-Kombination
 device_egone=Geräte-Kombination $1 existiert nicht!
@@ -81,6 +86,7 @@ device_sure=Lösche Gerät-Kombination
 device_einuse=Diese Gerätekombination kann nicht gelöscht werden, da es durch $1 im Gebrauch ist
 device_eextents=Keine Mitglieder-Geräte ausgewählt
 device_eself=Eines der Mitgliedsgeräte, welches ausgewählt wurde, enthält dieses Gerät!
+
 targets_title=Freigabe Targets
 targets_none=Keine Freigabe targets wurden bisher erstellt.
 targets_name=Target Name
@@ -96,6 +102,7 @@ targets_derr=Fehlgeschlagen Freigabe targets zu löschen
 targets_denone=Keine ausgewählt
 targets_drusure=Sind Sie sicher, dass Sie die folgenden Freigabe targets zu entfernen : $1? Es werden keine Daten verloren, aber sie werden nicht mehr zugänglich mit iSCSI-Clients zuzugreifen.
 targets_sure=Lösche Freigabe Targets
+
 target_create=Erstelle Freigabe Targets
 target_edit=Editiere Freigabe Targets
 target_egone=Freigabe target $1 existiert nicht!
@@ -112,6 +119,7 @@ target_rusure=Sind Sie sicher, dass Sie das Freigabe target $1 löschen möchte?
 target_sure=Lösche Target
 target_enetwork=Fehlendes oder ungültiges Netzwerk zum Teilen mit
 target_emask=Fehlende oder ungültige Netzmaske zum Teilen mit
+
 opts_title=iSCSI Server Optionen
 opts_header=Optionen für alle iSCSI targets
 opts_ip4=Akzeptiere IPv4 Verbindungen
@@ -124,10 +132,12 @@ opts_err=Fehlgeschlagen Optionen zu speichern
 opts_ename=Fehlender oder ungültiger Namen - nur Buchstaben, Zahlen, Bindestrich, Punkt und Unterstrich sind erlaubt
 opts_eport=Fehlende oder nicht-numerische Portnummer
 opts_esess=Fehlende oder nicht-numerische maximale Anzahl an Sessions
+
 manual_title=Editiere Konfigurationsdatei
 manual_desc=Verwenden das Textfeld unten, um die iSCSI-Server-Konfigurationsdatei $1 zu bearbeiten. Seien Sie vorsichtig, da keine Validierung Ihrer Eingabe durchgeführt wird!
 manual_err=Fehlgeschlaten Konfigurationsdatei zu speichern
 manual_edata=Kein Inhalt eingegeben!
+
 users_title=iSCSI-Authentifizierung
 users_none=Keine iSCSI Benutzer wurden bisher erstellt. Clients werden in der Lage sein auf freigegebene Geräte ohne Authentifizierung zuzugreifen.
 users_add=Einen neuen iSCSI Benutzer hinzufügen.
@@ -135,6 +145,7 @@ users_delete=Ausgewählte Benutzer löschen
 users_name=Benutzername
 users_mode=Authentifizierungsmethode
 users_return=Liste an Benutzer
+
 user_create=Erstelle iSCSI Benutzer
 user_edit=Editiere iSCSI Benutzer
 user_header=iSCSI Benutzerdetails
@@ -145,13 +156,16 @@ user_egone=Benutzer existiert nicht länger!
 user_err=Fehlgeschlagen iSCSI Benutzer zu speichern
 user_euser=Fehlender oder ungültiger Benutzername - Leerzeichen und Doppelpunkte sind nicht erlaubt
 user_epass=Fehlendes oder ungültiges Passwort - Leerzeichen und Doppelpunkte sind nicht erlaubt
+
 desc_extent=Gerät zu freigeben $1
 desc_device=Gerätekombination $1
 desc_target=Freigabe target $1
+
 start_err=Fehlgeschlagen iSCSI-Server zu starten
 stop_err=Fehlgeschlagen iSCSI-Server zu stoppen
 restart_err=Fehlgeschlagen iSCSI-Server neuzustarten
 atboot_err=Fehlgeschlagen beim Booten zu aktivieren
+
 log_create_extent=Gerät zum Teilen $1 erstellt
 log_modify_extent=Gerät zum teilen $1 aktualisiert
 log_delete_extent=Gerät zum Teilen $1 gelöscht

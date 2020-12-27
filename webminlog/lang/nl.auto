@@ -5,4 +5,5 @@ search_global_wrongpass=Ongeldig wachtwoord
 search_global_baduser=Slechte gebruikersnaam
 search_global_badpass=Slecht wachtwoord
 search_global_twofactor=Ongeldig token voor twee factoren
+
 acl_self=Alleen ik

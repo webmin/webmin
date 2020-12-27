@@ -57,6 +57,7 @@ index_reposdisable=Deshabilitar repositorios
 index_reposenable=Habilitar repositorios
 index_reposdelete=Eliminar repositorios
 index_repoheader=Nuevas opciones de repositorio de paquetes
+
 update_title=Paquetes de actualización
 update_title2=Instalar paquetes
 update_enone=No hay paquetes seleccionados
@@ -94,9 +95,11 @@ update_none=Ninguna
 update_ops=Creación de una lista completa de paquetes.
 update_rebootdesc=Uno de los paquetes instalados requiere un reinicio para aplicarse completamente.
 update_reboot=Reinicie ahora
+
 sched_title=Actualización programada
 sched_yes=La búsqueda programada de actualizaciones ahora está activa.
 sched_no=La comprobación programada de actualizaciones ha sido deshabilitada.
+
 log_update=Se instalaron $1 paquetes actualizados
 log_sched=Actualizaciones programadas habilitadas
 log_unsched=Actualizaciones programadas deshabilitadas
@@ -108,11 +111,13 @@ log_enable_repo=Repositorio de paquetes habilitado $1
 log_disable_repo=Repositorio de paquetes deshabilitado $1 
 log_delete_repo=Depósito del paquete eliminado $1 
 log_create_repo=Se creó el repositorio de paquetes $1 
+
 refresh_title=Paquetes refrescantes
 refresh_clearing=Borrar cachés de paquetes.
 refresh_done=.. hecho
 refresh_available=Volver a buscar los paquetes disponibles.
 refresh_done3=.. encontró $1 posibles actualizaciones
+
 view_title=Detalles del paquete
 view_header=Información de paquete actualizable
 view_name=Nombre del paquete
@@ -126,12 +131,14 @@ view_changelog=Registro de cambios para la versión disponible
 view_software=Administrar paquete
 view_update=Paquete de actualización
 view_install=Paquete de instalación
+
 system_yum=Ñam
 system_apt=APTO
 system_csw=CSW (onda expansiva)
 system_webmin=Módulo Webmin
 system_usermin=Módulo de usuario
 system_tgz=Webmin o Usermin tar.gz
+
 repos_err_disable=Error al deshabilitar repositorios
 repos_err_enable=Error al habilitar repositorios
 repos_err_delete=Error al eliminar repositorios

@@ -16,11 +16,14 @@ index_esame=Usermin-konfigurationsbiblioteket $1, der er angivet på <a href='$2
 index_eroot=Usermin-konfigurationsbiblioteket $1 findes, men programrot-mappen $2, som det refererer til, gør det ikke! Du skal manuelt downloade og geninstallere Usermin.
 index_restart=Genstart Usermin
 index_restartmsg=Klik på denne knap for at genstarte Usermin-serverprocessen. Dette kan være nødvendigt, hvis du for nylig har opgraderet Perl.
+
 access_title=IP-adgangskontrol
 access_desc=Usermin-serveren kan konfigureres til at afvise eller kun give adgang fra bestemte IP-adresser ved hjælp af denne formular. Værtsnavne (som foo.bar.com) og IP-netværk (som 10.254.3.0 eller 10.254.1.0/255.255.255.128 eller 10.254.1.0/25 eller 10.254.1.5-10.254.97.127) kan også indtastes. Du skal begrænse adgangen til din server til betroede adresser, især hvis den er tilgængelig fra Internettet. Ellers har enhver, der gætter din adgangskode, fuldstændig kontrol over dit system.
+
 bind_title=Porte og adresser
 bind_desc2=Denne formular kan bruges til at ændre det portnummer, som Usermin lytter til, eller hvis det kun skal lytte til en enkelt IP-adresse på dit system. Du kan også konfigurere det til at acceptere forbindelser på flere porte, eller til at lytte på flere IP-adresser. Bemærk - din webbrowser vil muligvis bede dig om at logge ind igen efter at du har ændret port eller bindende adresse.
 bind_erestart=Der opstod en fejl ved start af Usermin med den nye adresse- og portindstillinger : $1 
+
 mods_title=Usermin-moduler
 umods_title=Usermin-moduler
 mods_desc1=Usermin-moduler kan tilføjes efter installationen ved hjælp af formularen til højre. Moduler distribueres typisk i <tt>.wbm</tt> filer, som hver kan indeholde et eller flere moduler. Moduler kan også installeres fra RPM-filer, hvis de understøttes af dit operativsystem.
@@ -41,15 +44,18 @@ mods_desc3=Eksisterende moduler kan slettes ved hjælp af nedenstående formular
 mods_delete=Slet moduler
 mods_deleteok=Slet valgte moduler
 mods_desc4=Installerede moduler kan eksporteres som en wbm.gz-fil ved hjælp af nedenstående formular. En modulfil kan derefter installeres på et andet system, der kører Usermin.
+
 os_title=Operativsystem og miljø
 os_desc3=Denne side viser operativsystemet, der er registreret af Usermin på installationstidspunktet, og det system, der i øjeblikket er detekteret. Hvis de er forskellige, kan du vælge at få Usermins OS-oplysninger opdateret, hvilket kan være nødvendigt, hvis du for nylig har opgraderet.
 os_desc2=Du kan også ændre den søgesti, der bruges af Usermin, når du kører programmer, og den delte bibliotekssti sendes til alle programmer.
 os_usermin=Operativsystem ifølge Usermin
 os_iusermin=Intern OS-kode brugt af Usermin
 os_update=Opdater Usermin for at bruge detekterede OS
+
 lang_title=Sprog
 lang_title2=Usermin sprog
 lang_intro=På denne side kan du vælge hvilket sprog Usermin vil bruge til visning af titler, prompts og meddelelser
+
 session_title=Godkendelse
 session_desc1=Når dette er aktiveret, beskytter timeout-adgangskoder din Usermin-server mod angreb fra brute-force-adgangskode ved at tilføje en kontinuerlig ekspanderende forsinkelse mellem hvert mislykket loginforsøg for den samme bruger.
 session_desc2=Når sessiongodkendelse er aktiveret, spores hver logget brugersession af Usermin, hvilket gør det muligt for inaktive brugere automatisk at blive logget ud. Vær opmærksom på, at aktivering eller deaktivering af godkendelse af session kan tvinge alle brugere til at logge ind igen.
@@ -73,6 +79,7 @@ session_blank=Bed brugere med tom adgangskode til at vælge en ved første login
 session_homedir=Opret manglende hjemmekataloger efter login?
 session_homedir_perms=Tilladelser til nyt bibliotek
 session_ehomedir_perms=Manglende eller ugyldige oktale tilladelser til hjemmekatalog
+
 themes_title=Usermin-temaer
 themes_desc=Temaer kontrollerer udseendet af Usermin-brugergrænsefladen, herunder ikoner, farver, baggrunde og muligvis layout af sider. Markeringsfeltet nedenfor kan bruges til at vælge et af de temaer, der er installeret på dit system, som vil være standard for Usermin-brugere.
 themes_sel=Aktuelt tema :
@@ -101,7 +108,9 @@ themes_eirpm=RPM-installation mislykkedes : $1
 themes_ok=Temaet blev ændret med succes.. omdirigering til Webmin indekssiden.
 themes_delete=Denne formular kan bruges til at slette et af de temaer, der er installeret på dit system, der ikke i øjeblikket er i brug.
 themes_delok=Tema, der skal slettes :
+
 themes_desc4=Installerede temaer kan eksporteres som en wbt.gz-fil ved hjælp af nedenstående formular. En temafil kan derefter installeres på et andet system, der kører Usermin.
+
 configs_ecannot=Du har ikke tilladelse til at konfigurere dette modul
 configs_title=Usermin-modulkonfiguration
 configs_header=Konfigurerbare moduler
@@ -115,8 +124,10 @@ configs_global=Global modulkonfiguration
 configs_globaldesc=Indstillingerne i denne formular gælder for alle brugere af modulet og indstiller generelt indstillinger relateret til de programmer og filer, det bruger.
 configs_user=Standard brugerpræferencer
 configs_userdesc=Indstillingerne i denne form definerer standardindstillingerne for brugerredigerbare præferencer for dette modul. Medmindre du angiver andet, kan de blive overkørt af individuelle brugere.
+
 acl_title=Tilgængelige moduler
 acl_desc=Brug denne side til at vælge, hvilke installerede Usermin-moduler der er synlige for brugerne.
+
 ssl_title=SSL-kryptering
 ssl_desc1=Værten, som Usermin kører til, ser ud til at have SSLeay Perl-modulet installeret. Ved hjælp af dette understøtter Usermin SSL-krypteret kommunikation mellem din browser og serveren. Hvis brugere får adgang til din Usermin-server over internettet, skal du bestemt overveje at bruge SSL til at forhindre, at en angriber fanger deres adgangskoder.
 ssl_desc2=Advarsel - tænd kun for SSL-support, hvis du har en browser, der understøtter SSL, og der ikke er nogen firewall, der blokerer <tt>https</tt> anmodninger mellem din browser og Usermin-værten.
@@ -125,18 +136,23 @@ ssl_hole=Da du i øjeblikket bruger den standard Usermin SSL-nøgle, som alle ha
 ssl_savekey=Denne formular giver dig mulighed for at uploade en eksisterende SSL-privat nøgle og certifikat fra PEM-format, som din Usermin-server kan bruge.
 ssl_copycert=Kopier certifikat fra Webmin
 ssl_copycertdesc=Kopier SSL-certifikatet, privat nøgle, CA-certifikat og andre indstillinger, som Webmin bruger.
+
 ca_email=Email adresse
 ca_ou=Afdeling
 ca_o=Organisation
 ca_sp=Stat
 ca_c=Landekode
+
 newkey_ok=Genereret følgende SSL-nøgle til Usermin.
+
 stop_err=Kunne ikke stoppe Usermin
 stop_ekill=Kunne ikke dræbe processen : $1 
 stop_efile=Allerede stoppet
 stop_ecannot=Du må ikke stoppe Usermin
+
 start_err=Kunne ikke starte Usermin
 start_ecannot=Du har ikke tilladelse til at starte Usermin
+
 users_title=Tilladte brugere og grupper
 users_desc=Usermin kan konfigureres til at begrænse, hvilke unix brugere og grupper, der har tilladelse til at logge ind ved hjælp af denne formular. For at specificere alle primære medlemmer af en unix-gruppe skal du indtaste <tt>@gruppenavn</tt> på listen.
 users_desc2=For at matche en række UID'er skal du indtaste <tt>start-end</tt>, <tt>start-</tt> eller <tt>-end</tt> på listen.
@@ -150,10 +166,12 @@ users_euser='$1' er ikke et gyldigt brugernavn
 users_egroup='$1' er ikke et gyldigt gruppenavn
 users_shells=Afvis brugere, hvis skaller ikke findes i filen
 users_eshells=Manglende eller ikke-eksisterende skaldefil
+
 defacl_title=Indstillinger for adgangskontrol
 defacl_desc=Denne side giver dig mulighed for at konfigurere forskellige adgangskontrolindstillinger, der gælder for Usermin-moduler og brugere. Disse indstillinger ligner dem i Global ACL for hver bruger i Webmin-brugermodulet.
 defacl_header=Adgangskontrolindstillinger for Usermin-brugere
 defacl_err=Kunne ikke gemme adgangskontrolindstillinger
+
 install_err1=Kunne ikke installere modulet fra $1 
 install_efile=Filen eksisterer ikke
 install_err2=Kunne ikke installere uploadet modul
@@ -180,6 +198,7 @@ install_erpm=Ikke et Usermin-modul eller tema-RPM
 install_eirpm=RPM-installation mislykkedes : $1 
 install_cat=Under kategori $1.
 install_eneither=RPM indeholder ikke et usermin-modul eller -tema
+
 delete_err=Kunne ikke slette moduler
 delete_edep=Modul $1 kan ikke slettes, da modulet $2 afhænger af det
 delete_desc1=$1 (klon af $2)
@@ -189,6 +208,7 @@ delete_msg=Følgende moduler er blevet slettet fra din Usermin-installation :
 delete_rusure=Er du sikker på, at du vil slette modulet (e) $2 ? $1 kB filer vil blive slettet for evigt.
 delete_rusure2=Er du sikker på, at du vil slette temaet $2 ? $1 kB filer vil blive slettet for evigt.
 delete_enone=Ingen moduler valgt
+
 ui_title=Brugergrænseflade
 ui_desc=Denne formular giver dig mulighed for at redigere brugergrænseflademuligheder, der bruges af alle Usermin-moduler.
 ui_header=Indstillinger for brugergrænseflade
@@ -230,6 +250,7 @@ ui_hnm1=Værtsnavn fra URL
 ui_hnm2=Domænenavn fra URL
 ui_hnm3=Andet navn ..
 ui_tabs=Kategoriser moduler?
+
 upgrade_title=Opgrader Usermin
 upgrade_title2=Installer Usermin
 upgrade_desc=Denne formular giver dig mulighed for at opgradere hele Usermin-installationen til en ny version. Du kan installere fra en lokal fil, en uploadet fil eller fra den nyeste version på <a href=http://www.usermin.com/>www.usermin.com</a>. Ligesom med en manuel opgradering vil alle dine konfigurationsindstillinger og tredjepartsmoduler blive bevaret.
@@ -263,6 +284,7 @@ upgrade_done=.. opgradering fuldført.
 upgrade_failed=.. opgradering mislykkedes!
 upgrade_updates=Der er $1 opdateringer til denne nye version af Usermin. <a href='$2'>Klik her</a> for automatisk at downloade og installere dem nu.
 upgrade_eupdates=Kunne ikke downloade listen over opdateringer : $1 
+
 update_desc1=Denne formular giver dig mulighed for at opgradere Usermin-moduler, der har vist sig at indeholde fejl eller sikkerhedshuller fra siden <a href=http://www.usermin.com/uupdates.html>Usermin Updates</a> eller fra en anden kilde. Dette vil sammenligne de aktuelt installerede moduler med dem, der er tilgængelige til opdatering, og eventuelt automatisk downloade og installere alle moduler, der er forældede.
 update_header1=Opdater moduler nu
 update_header2=Opdater moduler efter planen
@@ -279,10 +301,12 @@ update_sched=Opdater moduler på $1 : 00 hver $2 dage
 update_none=Ingen Usermin-opdateringer til denne version.
 update_failed=Kunne ikke installere modulet : $1 
 update_desc2=Denne formular er til planlægning af den automatiske opdatering af Usermin-moduler, der indeholder fejl eller sikkerhedshuller fra siden <a href=http://www.usermin.com/uupdates.html>Usermin Updates</a> eller fra en anden kilde. Selvom denne service er nyttig, skal du være forsigtig med at bruge den, da den kan give angribere mulighed for at overtage dit system, hvis opdateringsserveren nogensinde blev kompromitteret.
+
 assignment_title=Tildel moduler igen
 assignment_header=Modulkategoriopgaver
 assignment_ok=Skift kategorier
 assignment_desc=Denne formular giver dig mulighed for at konfigurere, hvilken kategori hvert modul vises under på Usermin indekssiden.
+
 categories_title=Rediger kategorier
 categories_header=Kategori-ID og beskrivelser
 categories_desc=Denne formular giver dig mulighed for at omdøbe de eksisterende Usermin-kategorier og oprette nye til tildeling af moduler til. Den øverste del af tabellen er til at ændre beskrivelserne af de indbyggede kategorier, mens den nederste del er til at tilføje nye kategori-id'er og beskrivelser.
@@ -292,6 +316,7 @@ categories_edesc=Manglende beskrivelse for $1
 categories_ecat=Kategori ID $1 er allerede taget
 categories_code=ID
 categories_name=Viset beskrivelse
+
 log_access=Ændret IP-adgangskontrol
 log_bind=Ændret port og adresse
 log_log=Ændrede loggingsindstillinger
@@ -327,6 +352,7 @@ log_restrict_create=Oprettet begrænsning for $1
 log_restrict_modify=Ændret begrænsning for $1 
 log_restrict_delete=Begrænset slettet for $1 
 log_restrict_move=Flyttede begrænsning for $1 
+
 log_all=alle brugere
 log_group=gruppe $1 
 log_switch=Skiftet til Usermin-bruger $1 
@@ -334,6 +360,7 @@ log_logout=Ændrede automatisk logout-tider
 log_dav=Ændrede DAV-serverindstillinger
 log_advanced=Ændrede avancerede indstillinger
 log_mobile=Ændrede indstillinger for mobilenhed
+
 update_err=Kunne ikke opdatere moduler
 update_eurl=Manglende eller ugyldig opdaterings-URL
 update_title=Opdater moduler
@@ -352,6 +379,7 @@ update_rv=Kontroller for opdaterede Usermin-moduler fra $1
 update_eemail=Du skal indtaste en e-mail-adresse, hvis du kun viser, hvad der ville blive opdateret.
 update_subject=Usermin-modulers opdateringsrapport
 update_version=En ny udgave af Usermin (version $1) er nu tilgængelig til download. Fremtidige opdateringer frigives kun til den nyeste version.
+
 restrict_title=Modulbegrænsninger
 restrict_desc=Denne side giver dig mulighed for at kontrollere, hvilke Usermin-moduler der er tilgængelige for forskellige brugere og grupper. Alle modultilsætninger og subtraktioner på listen gælder, ikke kun den første, der matcher hver bruger. <br>Moduler, der ikke er valgt på siden<a href='$1'> tilgængelige moduler </a>, vil aldrig være tilgængelige for brugere, selvom de er valgt her.
 restrict_who=Usermin bruger
@@ -384,6 +412,7 @@ restrict_egroup=Manglende eller ugyldigt gruppenavn
 restrict_efile=Manglende, ikke-eksisterende eller ikke-absolutte brugere og gruppefiler
 restrict_move=Bevæge sig
 bootup_ecannot=Du har ikke tilladelse til at konfigurere opstart
+
 acl_icons=Tilladte konfigurationssider
 acl_mods=Kan konfigurere moduler
 acl_all=Alle moduler
@@ -391,10 +420,12 @@ acl_sel=Valgt nedenfor ..
 acl_stop=Kan stoppe og starte Usermin?
 acl_bootup=Kan konfiguration starte ved starttidspunktet?
 acl_ecannot=Du har ikke tilladelse til at bruge denne side
+
 clone_err=Kunne ikke klone modulet
 clone_elink=symlink mislykkedes : $1 
 clone_ecopy=kunne ikke kopiere config : $1 
 clone_desc=Klon på $1 
+
 sessions_title=Aktuelle login sessioner
 sessions_desc=De aktuelle Usermin-session-logins er vist nedenfor. Klik på sit session-id for at annullere en eksisterende session og tvinge brugeren til at logge ind igen.
 sessions_id=Sessions ID
@@ -404,12 +435,15 @@ sessions_login=Logget ind kl
 sessions_none=Ingen brugere er i øjeblikket logget på Usermin.
 sessions_switch=Skift til Usermin-bruger:
 sessions_ok=Kontakt
+
 referers_title=Pålidelige henvisere
 referers_desc=Denne side giver dig mulighed for at konfigurere Usermin's support til henvisningskontrol, som bruges til at forhindre ondsindede links fra andre websteder, der narrer dine brugers browsere til at gøre farlige ting med Usermin. Men hvis du har links til Usermin fra dine egne websteder, som du ikke ønsker at blive advaret om, skal du tilføje disse websteder til listen nedenfor.
+
 anon_title=Anonym moduladgang
 anon_desc=Denne side giver dig mulighed for at give adgang til udvalgte Usermin-moduler og stier uden at klienter har brug for at logge ind. For hver modulsti, som du indtaster nedenfor (f.eks. / Kommandoer eller / changepass), skal du også indtaste navnet på en Unix-bruger, hvis tilladelser vil blive brugt til adgang til modulet.
 anon_user=Unix bruger
 anon_euser=Manglende eller ugyldig Unix-bruger til URL-sti '$1'
+
 logout_title=Auto-Logout Times
 logout_desc=Denne side kan bruges til at konfigurere forskellige inaktivitetsudlogningstider for forskellige Usermin-brugere. Timeout skal indtastes i minutter, og en timeout på nul betyder, at sessioner til matchende brugere aldrig automatisk logges ud.
 logout_type=Type
@@ -424,6 +458,7 @@ logout_egroup=Manglende eller ugyldig gruppe i række $1
 logout_efile=Manglende eller ikke-eksisterende fil i række $1 
 logout_etime=Manglende eller ugyldig timeout i række $1 
 logout_ecannot=Du har ikke tilladelse til at konfigurere logout-tider
+
 dav_title=DAV-server
 dav_header=DAV-serverindstillinger
 dav_path=DAV aktiveret?
@@ -444,16 +479,22 @@ dav_users=Brugere, der kan bruge DAV
 dav_users1=Alle brugere
 dav_users0=Brugere og grupper nedenfor.
 dav_eusers=Der er ikke angivet nogen brugere
+
 syslog_errorlog=Usermin fejllogg
+
 descs_title=Modul titler
 descs_info=Denne side giver dig mulighed for at specificere alternative titler til Usermin-moduler for at tilsidesætte deres standardbeskrivelser.
+
 advanced_title=Avancerede indstillinger
 advanced_pass=Gør adgangskode tilgængeligt for Usermin-programmer? <br><font size=-1> (Virker ikke, når sessiongodkendelse er aktiveret) </font>
+
 blocked_title=Blokerede værter og brugere
 blocked_none=Ingen værter eller brugere er i øjeblikket blokeret af Usermin.
 blocked_user=Usermin bruger
 blocked_cleardesc=Klik på denne knap for at rydde alle aktuelle host- og brugerblokke ved at genstarte Usermin-serverprocessen.
+
 mobile_title=Indstillinger for mobilenhed
+
 copycert_err=Kunne ikke kopiere SSL-indstillinger fra Webmin
 copycert_essl=SSL er ikke aktiveret
 copycert_ekeyfile=Ingen privat nøglefil er indstillet i Webmin

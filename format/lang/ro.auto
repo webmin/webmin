@@ -15,6 +15,7 @@ index_use=Utilizare
 index_free=Liber
 index_format=Acest disc nu este formatat
 index_return=lista discurilor
+
 edit_ecannot=Nu aveți voie să editați acest disc
 edit_title=Editați partiția
 edit_header=Detalii despre partiție
@@ -56,6 +57,7 @@ edit_tunedesc2=Nu puteți regla sistemul de fișiere pe această partiție, deoa
 edit_tunedesc3=Nu puteți regla sistemul de fișiere pe această partiție, deoarece este montat în prezent. Utilizați <a href=/mount/>modulul sistemelor de fișiere</a> pentru a demonta mai întâi.
 edit_tunedesc4=Nu puteți regla sistemul de fișiere pe această partiție, deoarece nu are un sistem de fișiere.
 edit_tunedesc5=Nu puteți regla sistemul de fișiere din această partiție, deoarece doar <tt>UFS</tt> sisteme de fișiere pot fi reglate.
+
 save_ecannot=Nu aveți voie să editați acest disc
 save_edelete=Nu a reușit să ștergeți partiția
 save_esave=Salvarea partiției nu a reușit
@@ -64,6 +66,7 @@ save_eend=„$1” nu este un cilindru final
 save_estartmin=Cilindrul de pornire trebuie să fie> 0
 save_eendmax=Cilindrul final trebuie să fie < $1 
 save_estartend=Cilindrul de pornire trebuie să fie mai mic decât capătul
+
 newfs_title=Creați sistem de fișiere
 newfs_ecannot=Nu aveți voie să formatați acest disc
 newfs_desc=Făcând clic pe butonul din partea de jos a acestui formular, se va crea un nou $1 pe dispozitivul $2. Toate datele din această partiție vor fi șterse definitiv.
@@ -89,6 +92,7 @@ newfs_err=Crearea sistemului de fișiere nu a reușit
 newfs_exec=Executarea comenzii $1 ..
 newfs_failed=.. comanda nu a reușit!
 newfs_ok=.. comanda finalizată.
+
 fsck_title=Reparați sistemul de fișiere
 fsck_ecannot=Nu aveți voie să reparați acest disc
 fsck_desc=Făcând clic pe butonul <b>Reparație</b> se va verifica și opțional reparația $1 pe $2. Nivelul de verificare și reparație este determinat de alegerea dvs. de mai jos.
@@ -106,6 +110,7 @@ fsck_37=proces ucis în timpul verificării
 fsck_39=au fost detectate erori necorectabile!
 fsck_40=nu au fost detectate erori
 fsck_unknown=eroare necunoscută
+
 tunefs_title=Tune Filesystem
 tunefs_ecannot=Nu aveți voie să acordați acest disc
 tunefs_desc=Acest formular vă permite să ajustați diverși parametri din $1 pe $2. Fișierele existente pe acest sistem de fișiere nu vor fi afectate.
@@ -122,6 +127,7 @@ tunefs_err=Nu a reușit să ajusteze sistemul de fișiere
 tunefs_exec=Executarea comenzii $1 ..
 tunefs_failed=.. comanda nu a reușit!
 tunefs_ok=.. comanda finalizată.
+
 select_device=Controler SCSI $1 țintă $2 unitate $3 
 select_idedevice=Dispozitiv IDE $1 
 select_part=Controler SCSI $1 țintă $2 unitate $3 partiție $4 
@@ -131,10 +137,13 @@ esun=Partițiile pot fi modificate doar pe hardware-ul Sun
 emounted=Discul are partiții montate
 elast=Ultima partiție nu poate fi eliminată
 eformat=<tt>format</tt> nu a găsit niciun disc!
+
 fstype_ufs=Solaris Unix Filesystem
 fstype_unknown=Sistem de fișiere necunoscut
+
 acl_disks=Discurile pe care acest utilizator le poate partiționa și forma
 acl_dall=Toate discurile
 acl_dsel=Selectat ..
 acl_view=Se pot edita discuri și partiții?
+
 ecannot=Nu aveți voie să editați partiții

@@ -8,7 +8,9 @@ index_sadd=Vytvořte novou službu systemd.
 index_always=Vždy
 index_ladd=Vytvořte nového agenta launchd.
 index_lname=Jméno agenta
+
 edit_reloadnow2=Znovu načtěte konfigurační soubor
+
 mass_ustart=Spouštění služeb
 mass_urestart=Restartování služeb
 mass_ustop=Zastavení služeb
@@ -17,6 +19,7 @@ mass_udisable=Zakázání služby $1 v době spuštění.
 mass_ustarting=Zahájení služby $1 ..
 mass_ustopping=Zastavení služby $1 ..
 mass_urestarting=Restartování služby $1 ..
+
 mode_init=SysV init
 mode_osx=Operační Systém Mac
 mode_local=Jeden spouštěcí skript
@@ -25,6 +28,7 @@ mode_rc=FreeBSD RC skripty
 mode_upstart=Povýšenec
 mode_systemd=Systemd
 mode_launchd=SpustitD
+
 upstart_title1=Vytvořte službu Upstart
 upstart_title2=Upravit upstart službu
 upstart_egone=Služba již neexistuje!
@@ -49,6 +53,7 @@ upstart_eserver=Nebyl zadán žádný příkaz serveru
 upstart_eserver2=Příkaz serveru neexistuje
 upstart_eserver3=Lze zadat pouze jeden příkaz serveru
 upstart_return=upgrade služby
+
 systemd_title1=Vytvořit Systemd Service
 systemd_title2=Upravit Systemd Service
 systemd_egone=Služba již neexistuje!
@@ -72,6 +77,7 @@ systemd_edesc=Chybí popis služby
 systemd_return=systemd service
 systemd_econf=Nebyla zadána žádná konfigurace systému
 systemd_estart=Chybějící příkazy pro spuštění při spuštění
+
 launchd_title1=Vytvořte Launchd Agent
 launchd_title2=Upravit Launchd Agent
 launchd_egone=Agent již neexistuje!
@@ -92,4 +98,5 @@ launchd_eclash=Agent se stejným názvem již existuje
 launchd_return=launchd agent
 launchd_econf=Nebyla zadána žádná spouštěcí konfigurace
 launchd_estart=Chybí příkaz serveru
+
 syslog_journalctl=Protokoly SystemD

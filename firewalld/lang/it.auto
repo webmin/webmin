@@ -30,6 +30,7 @@ index_return=elenco di zone
 index_ezones=Nessuna zona FirewallD trovata!
 index_none=Questa zona non ha ancora porte o servizi consentiti.
 index_ifaces=Applica regole alle interfacce:
+
 port_edit=Modifica porta
 port_create=Aggiungi porta
 port_header=Opzioni di porta consentite
@@ -45,11 +46,13 @@ port_eport=Numero o nome della porta mancante o non valido
 port_eportlow=La porta bassa deve essere un numero
 port_eporthigh=La porta alta deve essere un numero
 port_eportrange=La porta bassa deve essere sotto la porta alta
+
 serv_edit=Modifica servizio
 serv_create=Aggiungi servizio
 serv_header=Opzioni di servizio consentite
 serv_name=Servizio da consentire
 serv_err=Impossibile salvare il servizio
+
 forward_edit=Modifica in avanti
 forward_create=Crea avanti
 forward_header=Opzioni di port forwarding
@@ -61,10 +64,13 @@ forward_dstaddr=Indirizzo di destinazione
 forward_dstlocal=Questo sistema
 forward_edstaddr=Indirizzo di destinazione IPv4 non valido
 forward_eneither=È necessario immettere un indirizzo o una porta di destinazione o entrambi
+
 check_ecmd=Il comando di controllo FirewallD $1 non è stato trovato sul tuo sistema
+
 delete_err=Impossibile eliminare le regole
 delete_enone=Nessuno selezionato!
 delete_edel=Rimozione di $1 non riuscita : $2 
+
 zone_title=Crea zona
 zone_header=Nuove opzioni di zona
 zone_name=Nome della zona
@@ -77,12 +83,16 @@ zone_mode4=Porte utilizzate per l'hosting virtuale
 zone_err=Impossibile creare la zona
 zone_ename=Nome zona mancante o non valido
 zone_eclash=Una zona con lo stesso nome esiste già
+
 delzone_title=Elimina zona
 delzone_err=Impossibile eliminare la zona
 delzone_edefault=La zona predefinita non può essere rimossa
 delzone_rusure=Sei sicuro di voler eliminare la zona $1, che contiene $2 porte e $3 servizi?
+
 defzone_err=Impossibile rendere la zona predefinita
+
 restart_err=Impossibile applicare la configurazione
+
 stop_err=Impossibile arrestare FirewallD
 start_err=Impossibile avviare FirewallD
 log_stop=Firewall arrestatoD

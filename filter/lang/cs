@@ -33,6 +33,7 @@ index_mins=minuty
 index_astart=Neodeslat automatickou odpověď před
 index_aend=Neodeslat automatickou odpověď po
 index_nowebmin=Tento modul je jen pro použití v Userminu. Jestliže jej vidíte ve Webminu, téma, které požíváte je neúplné.
+
 edit_title1=Vytvořit filtr
 edit_title2=Upravit filtr
 edit_header1=Podmínka pro filtr
@@ -54,6 +55,7 @@ edit_file=Jiný soubor...
 edit_continue=Pokračovat jivým filtrovým pravidlem, po aplikování této akce.
 edit_amode6=Odeslat automatickou odpověď
 edit_amode7=Uložit nové jméno adresáře
+
 save_err=Chyba při uložení filtru
 save_econdheader=Chybějící nebo špatná hlavička emailu
 save_esmall=Chybějící nebo špatná maximální velikost mailu
@@ -69,8 +71,10 @@ save_enewfolder2=Špatné jméno nového adresáře
 save_enewfolder3=Složka stejného jména již existuje
 save_estart=Špatný datum startu automatických odpovědí
 save_eend=Špatné datum ukončení automatické odpovědi
+
 delete_err=Chyba při mazání filtrů
 delete_enone=Není vybráno
+
 aliases_type1=Adresy $1
 aliases_type2=Adresy ze souboru $1
 aliases_type3=Soubor $1
@@ -81,12 +85,14 @@ aliases_your=Váš mailbox
 aliases_delete=Vymazat mail
 aliases_other=Mailbox uživatele $1
 aliases_auto=Automatická odpověď pro zprávu $1
+
 auto_title=Automatická odpověď na email
 auto_header=Možnosti automatické odpovědi na email
 auto_enabled=Povolit automatické odpovědi?
 auto_reply=Odpověď
 auto_period=Minimální interval mezi odpověďmi
 auto_err=Chyba při uložení automatické odpovědi
+
 forward_title=Přeposlat email
 forward_header=Možnosti přeposlání emailu
 forward_enabled=Povolit předávání emailu?

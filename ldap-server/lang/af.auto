@@ -16,6 +16,7 @@ index_setupdesc=Die databasis van u LDAP-bediener bevat nog nie die wortel DN $1
 index_setup=Skep wortel DN
 index_permsdesc=Die LDAP-bedienergids $1 bevat lêers wat nie deur die regte gebruiker $2 besit word nie, wat beteken dat dit onwaarskynlik is dat dit behoorlik sal begin. Webmin kan dit egter regstel deur op die onderstaande knoppie te klik.
 index_perms=Besit eienaarskap
+
 connect_eserver=Die LDAP-bediener $1 bestaan nie
 connect_euser=Geen gebruiker om aan te meld soos gekonfigureer nie
 connect_epass=Geen wagwoord om mee aan te meld is gekonfigureer nie
@@ -28,6 +29,7 @@ connect_eldap=Kon nie aan LDAP-bediener $1 op poort $2 koppel nie
 connect_essl=Kon nie TLS-kodering met LDAP-bediener $1 : $2 begin nie
 connect_elogin=Kon nie by LDAP-bediener $1 aanmeld as $2 : $3 nie
 connect_cpan=U kan die <tt>$1</tt> Perl-module <a href='$2'>outomaties laat installeer</a> vanaf CPAN.
+
 slapd_title=OpenLDAP-bedienerkonfigurasie
 ldif_title=OpenLDAP-bedienerkonfigurasie
 slapd_header=Wêreldwye LDAP-bedieneropsies
@@ -76,6 +78,7 @@ slapd_protos=LDAP-verbindings om te aanvaar
 slapd_ldap=LDAP oor netwerk
 slapd_ldaps=LDAP oor SSL
 slapd_ldapi=Unix-socket-lêer
+
 schema_title=Bestuur skema
 schema_file=naam
 schema_desc=beskrywing
@@ -93,6 +96,7 @@ schema_edesc=Op hierdie bladsy kan u 'n LDAP-skemabestand met die hand wysig. Di
 schema_return=skema lys
 schema_emove=Kon nie die skemalêer vind om te skuif nie!
 schema_ecannot=U mag nie die LDAP-skema bestuur nie
+
 acl_title=LDAP-toegangsbeheer
 acl_ecannot=U mag nie LDAP-toegangsbeheer instel nie
 acl_what=voorwerpe
@@ -103,6 +107,7 @@ acl_none=Geen toegangsbeheerreëls is nog gedefinieër nie. Alle voorwerpe in di
 acl_delete=Vee geselekteerde reëls uit
 acl_add=Voeg 'n nuwe reël vir toegangsbeheer by.
 acl_return=reëls vir toegangsbeheer
+
 browser_title=Blaai deur die databasis
 browser_econn=Die LDAP-blaaier kan nie gebruik word nie : $1 
 browser_ecannot=U mag nie in die LDAP-databasis blaai nie
@@ -136,24 +141,30 @@ browser_nomatch=Geen voorwerpe het ooreenstem met u soektog na $1 nie.
 browser_search=Soek voorwerpe wat ooreenstem :
 browser_search2=Wys voorwerpe wat ooreenstem :
 browser_sok=Soek
+
 save_err=Kon nie kenmerk verander nie
 save_ebase=Kon nie objek $1 uit die databasis haal nie
 save_emodify=LDAP-modifikasie van $2 in $1 het misluk : $3 
 save_enone=Geen waardes ingevoer nie
+
 add_err=Kon nie attribuut byvoeg nie
 add_eadd=Ontbrekende of ongeldige kenmerknaam
 add_evalue=Waarde ontbreek
 add_emodify=LDAP-byvoeging van $2 tot $1 het misluk : $3 
+
 delete_err=Kon nie eienskappe verwyder nie
 delete_enone=Geen gekies nie
 delete_emodify=LDAP-verwydering van $2 van $1 het misluk : $3 
+
 sdelete_err=Kon nie voorwerpe uitvee nie
 sdelete_edn=Voorwerp $1 is nie gevind nie
 sdelete_edel=LDAP-skrap van $1 het misluk : $2 
+
 rename_err=Kon nie die naam van voorwerp hernoem nie
 rename_eget=Kon geen voorwerp met DN $1 vind nie
 rename_enew=Dit lyk nie of die nuwe naam geldig is nie
 rename_erename=LDAP nuut na $2 vanaf $1 misluk : $3 
+
 oadd_title=Skep voorwerp
 oadd_header=Nuwe LDAP-objekbesonderhede
 oadd_base=Ouervoorwerp DN
@@ -170,6 +181,7 @@ oadd_eget2=Kon nie na botsing met $1 : $2 kyk nie
 oadd_eclash='N Voorwerp met die DN $1 bestaan reeds
 oadd_eadd=LDAP-byvoeging van $1 het misluk : $2 
 oadd_err=Kon nie nuwe voorwerp skep nie
+
 create_title=Skep boom
 create_ecannot=U mag nie 'n nuwe boom skep nie
 create_desc=Hierdie bladsy bied 'n maklike manier om DN te skep wat die basis van 'n nuwe boom in die databasis sal wees. Dit kan ook 'n voorbeeld gebruiker of e-pos alias onder die boom skep, as 'n sjabloon vir u eie voorwerpe.
@@ -191,18 +203,23 @@ create_done=.. klaar
 create_doingex=Skep voorbeeldvoorwerp met DN $1.
 create_edoingex=.. misluk: $1. Die boom kan egter steeds gebruik word.
 create_eoc=Kon nie 'n geskikte objekklas vir die nuwe DN vind nie
+
 eunknown=Onbekende fout
+
 apply_err=Kon nie konfigurasie toepas nie
 apply_ecmd=$1 het misluk : $2 
 apply_ecannot=U mag nie die konfigurasie toepas nie
+
 stop_err=Kon nie LDAP-bediener stop nie
 stop_ecmd=$1 het misluk : $2 
 stop_egone=Nie meer hardloop nie!
 stop_ekill=Doodsproses het misluk : $1 
 stop_ecannot=U mag nie die LDAP-bediener stop nie
+
 start_err=Kon nie LDAP-bediener begin nie
 start_ecmd=$1 het misluk : $2 
 start_ecannot=U mag nie die LDAP-bediener begin nie
+
 log_create_dn=Voorwerp $1 geskep
 log_delete_dn=Voorwerp $1 is uitgevee
 log_rename_dn=Voorwerp $1 hernoem
@@ -234,6 +251,7 @@ log_up_access=Reël vir toegangsbeheer vir $1 opgeskuif
 log_down_access=Reël vir toegangsbeheer is verwyder vir $1 
 log_delete_accesses=$1 toegangsbeheerreëls is uitgevee
 log_all=alle voorwerpe
+
 gencert_title=Genereer SSL-sertifikaat
 gencert_header=Nuwe SSL-sertifikaatbesonderhede
 gencert_create=Skep sertifikaat
@@ -245,7 +263,9 @@ gencert_dir=Gids
 gencert_err=Kon nie sertifikaat genereer nie
 gencert_edest=Bestemmingsgids bestaan nie
 gencert_epath=Sertifikaat- en sleutellêers in die konfigurasie van die LDAP-bediener moet absolute paaie wees
+
 perms_err=Kon nie lêerbesit oplos nie
+
 acl_slapd=Kan LDAP-bediener opgestel word?
 acl_ldif=Kan LDAP-bediener opgestel word?
 acl_schema=Kan skemas bestuur word?
@@ -254,6 +274,7 @@ acl_browser=Kan databasis blaai en redigeer?
 acl_create=Kan u nuwe boom skep?
 acl_start=Kan LDAP-bediener begin en stop?
 acl_apply=Kan konfigurasieveranderings toegepas word?
+
 access_desc=$2 by $1 
 access_self=self
 access_users=geverifieerde gebruikers
@@ -273,6 +294,7 @@ access_lcompare=vergelyk
 access_lsearch=Soek
 access_lread=Lees
 access_lwrite=Skryf
+
 eacl_title1=Skep toegangsbeheerreël
 eacl_title2=Wysig toegangsbeheerreël
 eacl_header=LDAP-databasis-toegangsbeheerreëlbesonderhede

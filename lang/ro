@@ -9,7 +9,9 @@ main_none=Nu aveti acces la toate modulele Webmin.
 main_skill=Nivel de pricepere
 main_readonly=(Doar in mod citire)
 main_return=Inapoi la $1
+
 link_essl=Modulul perl The Net::SSLeay necesar pentru a face conexiuni HTTPS nu este instalat pe sistemul dumneavoastra.
+
 category_servers=Servere
 category_hardware=Hardware
 category_system=Sistem
@@ -18,6 +20,7 @@ category_net=Retea
 category_syslet=Syslets
 category_cluster=Cluster
 category_info=Informatii
+
 longcategory_servers=Module pentru configurare web, email, FTP si alte servere
 longcategory_hardware=Module pentru imprimanta, disc si alte configuratii hardware
 longcategory_system=Module pentru utilizatori, fisiere sistem, Cron jobs si alte setari
@@ -25,11 +28,13 @@ longcategory_webmin=Module pentru configurarea Webmin
 longcategory_net=Module pentru configurare retea si servicii de retea
 longcategory_cluster=Module pentru managamentul mai multor servere dintr-o singura interfata
 longcategory_info=Module care afiseaza informatii despre propriul sistem
+
 header_webmin=Webmin Index
 header_module=Module Index
 header_help=Ajutor..
 header_config=Modul Configurare
 header_servers=Webmin Servere
+
 index=index
 yes=Da
 no=Nu
@@ -55,11 +60,13 @@ cancel=Renunta
 helpsearch=Cauta Documentatie..
 switch_remote_euser=Utilizatorul Unix $1 nu exista.
 programname=Webmin
+
 chooser_title1=Alege fisier..
 chooser_title2=Alege director..
 chooser_dir=Directoare $1
 chooser_ok=Ok
 chooser_date=Alege data
+
 users_title1=Selecteaza utilizatori..
 users_title2=Selecteaza utilizator..
 users_sel=Utilizatori selectati
@@ -67,6 +74,7 @@ users_all=Toti utilizatorii
 users_ok=Ok
 users_cancel=Renunta
 users_clear=Goleste
+
 groups_title1=Selecteaza grupuri..
 groups_title2=Selecteaza grup..
 groups_all=Toate grupurile
@@ -74,6 +82,7 @@ groups_sel=Grupurile selectate
 groups_ok=Ok
 groups_cancel=Renunta
 groups_clear=Goleste
+
 modules_title1=Selecteaza Module..
 modules_title2=Selecteaza Modul..
 modules_sel=Modul selectat
@@ -81,6 +90,7 @@ modules_all=Toate Modulele
 modules_ok=Ok
 modules_cancel=Renunta
 modules_clear=Goleste
+
 config_ecannot=Nu aveti permisiunea sa configurati acest modul
 config_title=Configurare
 config_dir=Pentru modulul $1
@@ -91,6 +101,7 @@ config_err=Incercare esuata de salvare a configurarii
 config_nochange=Nu schimbati
 config_setto=Setare la
 config_ewebmin=Parametrul de tip 14 functioneaza doar in Webmin
+
 help_err=Afisare ajutor esuata
 help_epath=Calea catre ajutor: lipsa sau invalida
 help_efile=Citire fisier ajutor $1 esuata
@@ -98,9 +109,11 @@ help_eheader=Lipsa sectiune &lt;header&gt;
 help_einclude=Esec in includerea $1
 help_eif=$1 esuat : $2
 help_eexec=$1 esuat : $2
+
 referer_title=Avertisment de securitate
 referer_warn=<b>Atentie!</b> Webmin a detectat ca programul $2 a fost atasat de la URL $1, care pare sa fie in afara serverului Webmin. Aceasta poate fi o incercare de a pacali serverul in a executa o comanda periculoasa.
 referer_warn_unknown=<b>Atentie!</b> Webmin a detectat ca programul $1 a fost atasat de la un URL necunoscut, care pare sa fie in afara serverului Webmin. Aceasta poate fi o incercare de a pacali serverul in a executa o comanda periculoasa.
+
 session_header=Login la Webmin
 session_mesg=Trebuie sa introduceti nume de utilizator si parola pentru a va loga serverul Webmin pe $1.
 session_mesg2=Trebuie sa introduceti utilizator si parola pentru login.
@@ -112,11 +125,13 @@ session_failed=Login esuat. Varugam incercati din nou.
 session_logout=Logout efectuat cu succes. Utilizati formularul de mai jos pentru a va loga din nou.
 session_timed_out=Sesiunea expira dupa $1 minute de inactivitate.
 session_save=Tine minte login permanent?
+
 pam_header=Login la Webmin
 pam_mesg=Trebuie sa raspundeti la intrebarea de mai jos pentru a va loga la serverul Webmin pe $1.
 pam_mesg2=Trebuie sa raspundeti la intrebarea de mai jos pentru a va loga.
 pam_login=Continua
 pam_restart=Restart
+
 acl_root=Directorul de Root pentru alegerea fisierului
 acl_nodot=Ascunde fisiere tip punct la alegerea fisierului?
 acl_home=Directorul Home al utilizatorului
@@ -142,6 +157,7 @@ acl_rpc=Poate accepta apeluri RPC?
 acl_rpc2=Doar pentru <tt>root</tt> sau <tt>admin</tt>
 acl_rpc1=Da
 acl_rpc0=Nu
+
 month_1=Ianuarie
 month_2=Februarie
 month_3=Martie
@@ -154,6 +170,7 @@ month_9=Septembrie
 month_10=Octombrie
 month_11=Noiembrie
 month_12=Decembrie
+
 day_0=Duminica
 day_1=Luni
 day_2=Marti
@@ -161,6 +178,7 @@ day_3=Miercuri
 day_4=Joi
 day_5=Vineri
 day_6=Sambata
+
 smonth_1=Ian
 smonth_2=Feb
 smonth_3=Mar
@@ -173,6 +191,7 @@ smonth_9=Sep
 smonth_10=Oct
 smonth_11=Noi
 smonth_12=Dec
+
 sday_0=Du
 sday_1=Lu
 sday_2=Ma
@@ -180,10 +199,13 @@ sday_3=Mi
 sday_4=Jo
 sday_5=Vi
 sday_6=Sa
+
 emodule=Acces interzis : Utilizatorul $1 nu este autorizat sa utilizeze modulul $2
+
 skill_high=Expert
 skill_medium=Intermediar
 skill_low=Incepator
+
 feedback_title=Webmin Feedback
 feedback_desc=Acest formular permite raportarea deficientelor sau a sugestiilor la dezvoltatorii Webmin, referitor la orice probleme sau detalii lipsa pe care le-ati descoperit. Cand este apasat butonul Send, detaliile introduse in formular vor fi trimise prin email la $1.
 feedback_desc2=Acest feedback va fi trimis la dezvoltatorul Webmin, nu la administratorul de sistem, ISP sau compania de gazduire. Va rugam scrieti feedback-ul dumneavoastra in engleaza, chiar daca actualmente rulati Webmin in alta limba.
@@ -212,12 +234,15 @@ feedback_to=Trimite feedback la adresele
 feedback_enoto=Nicio adresa nu a fost introdusa pentru trimitere feedback la
 feedback_ecannot=Nu aveti dreptul sa trimiteti feedback
 feedback_ecannot2=Nu aveti dreptul sa trimiteti feedback care sa contina fisiere de configurare
+
 progress_nosize=Descarca $1 ..
 progress_done=.. descarcare completa.
 progress_incache=Gasit $1 in cache ..
+
 readparse_cdheader=Lipsa Content-Disposition header
 readparse_enc=Asteapta form-data encoding, dar schimba in normal encoding
 readparse_max=Datele depasesc dimensiunea maxima de $1 bytes
+
 password_expired=Parola dumneavoastra a expirat, alegeti una noua.
 password_header=Selectati parola noua
 password_user=Utilizator
@@ -234,6 +259,7 @@ password_enew1=Nu ati introdus noua parola
 password_enew2=Noua parola nu corespunde
 password_epam=Eroare PAM : $1
 password_emodpam=Modulul perl Authen::PAM necesar pentru schimbarea parolei nu este instalat!
+
 ui_mandatory=Acest camp este obligatoriu
 ui_checkmandatory=Nu ati selectat nimic
 ui_errors=Au fost gasite mai multe erori :
@@ -247,4 +273,5 @@ ui_edate=Data invalida
 ui_etime=Ora invalida
 ui_paging=Arata liniile $1 la $2 din $3
 ui_rowlabel=$2 in linia $1 :
+
 header_statusmsg=$1 logat in $2 $3 pe $4 ($5)

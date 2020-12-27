@@ -67,6 +67,7 @@ index_reset=Resetovat firewall
 index_resetdesc=Klepnutím na toto tlačítko vyčistíte všechna existující pravidla firewallu a nastavíte nová pravidla se základní inicializační konfigurací.
 index_cluster=Cluster serverů
 index_clusterdesc=Klepnutím na toto tlačítko nastavíte přídavné Webmin servery, na které budou konfigurace firewallu automaticky kopírovány.
+
 desc_p=protokol je $1
 desc_p!=protokol není $1
 desc_s=zdroj je $1
@@ -116,9 +117,14 @@ desc_tos!=typ pole služeb není $1
 desc_conds=Jestliže $1
 desc_and=a
 desc_always=Vždy
+
 redhat_eoutput=Chyba zapříčiněná hláškou o stavu IP tabulek z příkazu $1. To pravděpodobně znamená, že váš systém je nakonfigurován pro používání IP řetězců místo IP tabulek.
+
 gentoo_escript=Gentoo startovecí skript IP tabulek $1 nebyl ve vašem systému nalezen.
+
 eiptables=Neznámý řádek v úložném souboru IP tabulek : $1
+eip6tables=Neznámý řádek v úložném souboru IP tabulek : $1
+
 edit_title1=Přidat pravidlo
 edit_title2=Editovat pravidlo
 edit_title3=Klonovat pravidlo
@@ -179,6 +185,7 @@ edit_args=Přídavné parametry
 edit_mods=Přídavné moduly IP tabulek
 edit_rwith=Odmítnout s typem ICMP
 edit_rwithtype=Typ $1
+
 save_err=Chyba při ukládání pravidla
 save_echain=Chybějící nebo nesprávný řetězec pro spuštění
 save_esource=Chybějící nebo nesprávná zdrojová adresa nebo síť
@@ -221,23 +228,28 @@ save_espfrom=Neplatná počáteční IP adresa pro SNAT
 save_espto=Chybějící nebo nesprávná koncová IP adresa pro SNAT
 save_estates=Nebyl vybrán žádný stav připojení
 save_ecanjump=Nemáte oprávnění použít tuto akci
+
 delete_title=Smazat řetězec
 delete_rusure=Skutečně chcete smazat řetězec $1 ? $2 pravidla uvnitř něj budou smazána.
 delete_ok=Smazat
 delete_ecannot=Nemáte oprávnění mazat řetězy
+
 clear_title=Vyčisti řetězec
 clear_rusure=Skutečně chcete smazat všechna $2 pravidla z řetězce $1 ?
 clear_ecannot=Nemáte oprávnění vyčistit řetězy
+
 new_err=Chyba při vytváření řetězce
 new_ename=Chybějící nebo nesprávný název řetězce
 new_etaken=Řetězec se stejným názvem již existuje
 new_ecannot=Nemáte oprávnění vytvářet řetězy
+
 apply_err=Chyba při aplikaci konfigurace
 apply_ecannot=Nemáte oprávnění uplatňovat konfiguraci
 apply_remote=Chyba z $1 : $2
 unapply_err=Chyba při zpětné obnově konfigurace
 unapply_ecannot=Nemáte oprávnění navrátit konfiguraci
 bootup_ecannot=Nemáte oprávnění povolit nebo nepovolit firewall při bootování
+
 log_create_rule=Přidáno pravidlo v řetězci $1 v tabulce $2
 log_modify_rule=Modifikováno pravidlo v řetězci $1 v tabulce $2
 log_delete_rule=Smazáno pravidlo v řetězci $1 v tabulce $2
@@ -257,8 +269,10 @@ log_add_host=Přidán do clusteru server $1
 log_add_group=Přidány do clusteru servery ze skupiny $1
 log_delete_host=Odstraněn z clusteru server $1
 log_delete_group=Odstraněno z clusteru $1 serverů
+
 setup_eiface=Nebylo vloženo žádné externí síťové rozhraní
 setup_ecannot=Nemáte oprávnění nastavit firewall
+
 acl_tables=Povolené IP tabulky
 acl_apply=Může použít konfiguraci?
 acl_unapply=Může zrušit použití konfigurace?
@@ -270,9 +284,11 @@ acl_jall=Vše
 acl_newchain=Může vytvořit nové řetězy?
 acl_delchain=Může smazat nebo vyčistit řetězy?
 acl_policy=Může změnit výchozí ochranu?
+
 etable=Nemáte oprávnění upravovat tuto IP tabulku
 ejump=Nemáte oprávnění upravovat toto pravidlo
 ecluster=Nemáte oprávnění spravovat cluster firewallů
+
 cluster_title=Cluster firewall serverů
 cluster_none=Doposud nebyly do clusteru firewallů přidány žádné servery.
 cluster_host=Název hosta
@@ -283,6 +299,7 @@ cluster_gadd=Přidat servery do skupiny
 cluster_need=Než budete chtít spravovat servery, musíte je přidat do modulu Seznam Webmin serverů, a to i s přihlášením a heslem.
 cluster_return=cluster serverů
 cluster_delete=Odstranit vybrané
+
 add_title=Přidat servery
 add_msg=Přidává se $1 ..
 add_gmsg=Přidávají se servery ve skupině $1 ..
@@ -291,5 +308,5 @@ add_gerr=Chyba při přidání skupiny
 add_echeck=Server $1 neobsahuje modul pro firewall Linuxu
 add_emissing=Server $1 neobsahuje příkaz firewallu $2
 add_ok=Přidán $1, s $2 aktivními pravidly firewallu.
+
 policy_ecannot=Nemáte pro tento řetěz oprávnění změnit výchozí ochranu
-eip6tables=Neznámý řádek v úložném souboru IP tabulek : $1

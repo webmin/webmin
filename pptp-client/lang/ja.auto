@@ -18,10 +18,12 @@ index_version=PPPdバージョン $1
 index_boot=起動時に接続します。
 index_noboot=&lt;接続しない&gt;
 index_bootdesc=このオプションを変更して、選択したPPTP VPN接続を起動時に開始するかどうかを制御します。
+
 disc_err=トンネルの切断に失敗しました
 disc_egone=もはやアクティブではありません
 disc_ekill=pppdプロセスを強制終了できませんでした
 disc_done=トンネル $1は正常に切断されました。
+
 conn_err=トンネルの接続に失敗しました
 conn_egone=トンネルはもう存在しません
 cone_ealready=接続済み
@@ -32,6 +34,7 @@ conn_ok=..インターフェイス $1を使用して接続が正常にアクテ�
 conn_timeout=.. 接続に失敗しました！理由については、以下のログメッセージを確認してください。
 conn_routes=コマンドによるルートの追加 ..
 conn_mppe=VPN暗号化のMPPEプロトコルには、PPPデーモンとカーネルのサポートが必要です。ただし、上記のエラーは、システムで一方または両方が使用できないことを示しています。 PPTPサーバーがMPPEを必要としない場合、<a href='$1'>グローバルPPPオプション</a>ページでそれに関連するすべてのオプションをオフにしてみてください。
+
 edit_title1=PPTPトンネルを追加
 edit_title2=PPTPトンネルを編集
 edit_header=PPTP VPNトンネルオプション
@@ -60,6 +63,7 @@ edit_file=PPPオプションファイル
 edit_none=なし
 edit_global=標準グローバルファイル
 edit_ofile=その他のファイル ..
+
 save_err=トンネルを保存できませんでした
 save_ename=トンネル名がありません
 save_eserver=接続するサーバーが見つからないか無効です
@@ -75,6 +79,7 @@ save_egw2=ルート $1のホストの無効なゲートウェイ
 save_erename=トンネルファイルの名前変更に失敗しました
 save_eclash=同じ名前のトンネルまたはPPPピアが既に存在します
 save_efile=PPPオプションファイルが見つからないか無効です
+
 opts_title=グローバルPPPオプション
 opts_desc=以下の設定は $1から取得され、標準のグローバルPPPオプションファイルを使用するように設定されているすべてのトンネルに適用されます。
 opts_header=すべてのトンネルのPPPオプション
@@ -84,6 +89,7 @@ opts_err=グローバルPPPオプションを保存できませんでした
 opts_emtu=最大送信パケットサイズがないか、無効です
 opts_emru=最大受信パケットサイズがないか、無効です
 opts_msdesc=以下のオプションは、Windows VPNサーバーで使用されるMPPE暗号化を有効にします。ただし、MPPEでは、PPPデーモンとオペレーティングシステムカーネルの両方でのサポートが必要です。
+
 mppe_mppe-40=40ビットMPPE暗号化を使用しますか？
 mppe_mppe-128=128ビットMPPE暗号化を使用しますか？
 mppe_mppe-stateless=ステートレスMPPEモードを有効にしますか？
@@ -95,6 +101,7 @@ mppe_d1=許可された
 mppe_mppe-stateful=ステートフルMPPEモードを有効にしますか？
 mppe_old=警告-PPPデーモンが新しいスタイルのディレクティブをサポートしているにもかかわらず、構成ファイルに古いスタイルのMPPEディレクティブ $1が見つかりました。
 mppe_new=警告-PPPデーモンが古いスタイルのディレクティブのみをサポートしている場合でも、新しいスタイルのMPPEディレクティブ $1が構成ファイルに見つかりました。
+
 log_create=PPTPトンネル $1を作成しました
 log_update=変更されたPPTPトンネル $1
 log_delete=削除されたPPTPトンネル $1

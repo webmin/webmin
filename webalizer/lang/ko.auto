@@ -26,6 +26,7 @@ index_when=예, $1
 index_webalizer=웹 라이저
 index_enable=선택된 일정
 index_disable=스케줄 취소 선택
+
 edit_title1=로그 파일 추가
 edit_title2=로그 파일 편집
 edit_header=로그 파일 보고서 옵션
@@ -49,12 +50,14 @@ edit_cmode0=글로벌 옵션 사용
 edit_cmode1=맞춤 옵션
 edit_cmode2=다른 설정 파일 ..
 edit_clear=예약 된 보고서 후에 로그 파일을 지우시겠습니까?
+
 gen_title=보고서 생성
 gen_header=$1 에서 보고서를 생성하기 위해 Webalizer를 실행 중입니다.
 gen_done=.. 완료
 gen_failed=.. Webalizer가 실패했습니다! 자세한 내용은 위 출력을 참조하십시오.
 gen_nothing=.. Webalizer가 완료되었지만 보고서가 생성되지 않았습니다. 자세한 내용은 위 출력을 참조하십시오.
 gen_view=완성 된 보고서를 봅니다.
+
 save_err=로그 파일을 저장하지 못했습니다
 save_efile=로그 파일이 입력되지 않았거나 존재하지 않습니다
 save_ecfile=누락되었거나 존재하지 않는 다른 구성 파일
@@ -64,12 +67,14 @@ save_ewuser=$1 (이)라는 Unix 사용자가 없습니다
 save_ehost=웹 사이트 호스트 이름이 없거나 잘못되었습니다
 save_etitle=보고서 제목이 없습니다.
 save_ecannot=$1 미만의 로그에 대해서만 보고서를 생성 할 수 있습니다.
+
 view_epath=잘못된 PATH_INFO
 view_efile=잘못된 보고서 파일 이름
 view_elog=잘못된 로그 파일
 view_ecannot=이 보고서를 볼 수 없습니다
 view_eopen=보고서 파일을 열지 못했습니다
 view_title=보고서보기
+
 global_title=글로벌 Webalizer 옵션
 global_title2=Webalizer 보고서 옵션
 global_for=로그 파일 $1 의 경우
@@ -130,6 +135,7 @@ global_includesite=무시하지 않는 고객
 global_includereferrer=무시하지 않는 추천자
 global_includeuser=무시하지 않는 사용자
 global_includeagent=무시하지 않는 브라우저
+
 global_err=Webalizer 옵션을 저장하지 못했습니다
 global_ereport=누락 된 보고서 제목 접두사
 global_ehost=호스트 이름이 없거나 유효하지 않습니다
@@ -139,6 +145,7 @@ global_etable='$1'테이블의 크기가 없거나 잘못되었습니다
 global_ehistory=히스토리 파일 이름이 없거나 유효하지 않습니다
 global_ecurrent=증분 파일 이름이 없거나 잘못되었습니다
 global_ecache=DNS 캐시 파일 이름이 없거나 잘못되었습니다
+
 log_create_log=$1 에 대한보고 작성
 log_modify_log=$1 에 대한 수정 된보고
 log_delete_log=$1 에 대한보고 삭제
@@ -147,6 +154,7 @@ log_global=수정 된 글로벌 Webalizer 옵션
 log_global2=$1 에 대한 수정 된 Webalizer 옵션
 log_enable_logs=$1 로그에 대한 예약 된보고
 log_disable_logs=$1 로그에 대한 예약 해제보고
+
 acl_view=기존 보고서 만 볼 수 있습니까?
 acl_global=글로벌 웨블 라이저 옵션을 편집 할 수 있습니까?
 acl_dir=아래의 로그에 대한 보고서보기 및 편집 만 허용

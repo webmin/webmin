@@ -9,6 +9,7 @@ index_disable=ปิดใช้งานรายการที่เลือ
 index_enable=เปิดใช้งานที่เลือก
 index_enabled=เปิดการใช้งาน?
 index_return=รายการโปรแกรม
+
 edit_title1=สร้างโปรแกรมประเภท MIME
 edit_title2=แก้ไขโปรแกรมประเภท MIME
 edit_header=รายละเอียดโปรแกรมตัวจัดการประเภท MIME
@@ -22,18 +23,21 @@ edit_none=ไม่มี (ใช้โปรแกรมเสมอ)
 edit_term=แสดงเอาต์พุตในเทอร์มินัลหรือไม่
 edit_copious=ผลิตออกจำนวนมาก?
 edit_desc=คำอธิบายประเภท MIME
+
 save_err=ไม่สามารถบันทึกโปรแกรมประเภท MIME
 save_etype=ประเภท MIME ที่ขาดหายไปหรือไม่ถูกต้อง
 save_eprogram=โปรแกรมตัวจัดการหายไป
 save_eclash=โปรแกรมที่เปิดใช้งานสำหรับประเภท MIME ที่ป้อนมีอยู่แล้ว
 save_etest=คำสั่งทดสอบที่ขาดหายไปหรือไม่ถูกต้อง
 save_edesc=คำอธิบายประเภท MIME ไม่ถูกต้อง
+
 delete_err=ไม่สามารถลบโปรแกรมประเภท MIME
 disable_err=ไม่สามารถปิดการใช้งานโปรแกรมประเภท MIME
 disable_eclash=โปรแกรมประเภท MIME ที่ถูกปิดใช้งานสำหรับ $1 มีอยู่แล้ว
 enable_err=ไม่สามารถเปิดใช้งานโปรแกรมประเภท MIME
 enable_eclash=มีโปรแกรมประเภท MIME สำหรับ $1 อยู่แล้ว
 delete_enone=ไม่ได้เลือก
+
 log_delete_mailcap=ลบโปรแกรมประเภท MIME สำหรับ $1 
 log_create_mailcap=สร้างโปรแกรมประเภท MIME สำหรับ $1 
 log_modify_mailcap=โปรแกรมประเภท MIME ดัดแปลงสำหรับ $1 

@@ -45,6 +45,7 @@ index_ondate=Date
 index_charset=Jeu de caractères de message à réponse automatique
 index_subject=Sujet du message à réponse automatique
 index_nowebmin=Ce module est uniquement destiné à être utilisé dans Usermin. S'il est visible dans Webmin, le thème que vous utilisez est incomplet.
+
 edit_title1=Créer un filtre
 edit_title2=Modifier le filtre
 edit_header1=Condition pour le filtre
@@ -71,6 +72,7 @@ edit_amode7=Enregistrer dans un nouveau dossier nommé
 edit_nobounce=Supprimer le transfert des messages de rebond
 edit_apply=Afficher l'e-mail correspondant dans le dossier:
 edit_move=Appliquer au courrier électronique dans le dossier:
+
 save_err=Échec de l'enregistrement du filtre
 save_egone=Le filtre n'existe plus!
 save_econdheader=En-tête d'email manquant ou invalide
@@ -89,8 +91,10 @@ save_enewfolder3=Un dossier du même nom existe déjà
 save_estart=Date de début de réponse automatique non valide
 save_eend=Date de fin de réponse automatique non valide
 save_echarset=Jeu de caractères à réponse automatique manquant ou invalide
+
 delete_err=Impossible de supprimer les filtres
 delete_enone=Aucune sélection
+
 aliases_type1=Adresse 1
 aliases_type2=Adresses dans le fichier $1 
 aliases_type3=Fichier $1 
@@ -101,6 +105,7 @@ aliases_your=Votre boite mail
 aliases_delete=Supprimer le courrier
 aliases_other=Boîte aux lettres de l'utilisateur $1 
 aliases_auto=Répondeur automatique avec le message $1 
+
 auto_title=Réponse automatique par e-mail
 auto_header=Options de réponse automatique aux e-mails
 auto_enabled=Réponse automatique activée?
@@ -111,12 +116,14 @@ auto_charsetdef=De la langue actuelle
 auto_charsetother=Autre jeu de caractères
 auto_period=Intervalle minimum entre les réponses
 auto_err=Impossible d'enregistrer la réponse automatique
+
 forward_title=Un courriel transféré
 forward_header=Options de transfert des e-mails
 forward_enabled=Transfert de courriel activé?
 forward_to=Transférer aux adresses
 forward_cont=Livrer également normalement?
 forward_err=Échec de l'enregistrement du transfert des e-mails
+
 move_err=Impossible d'appliquer le filtre
 move_esrc=Le dossier source $1 n'existe pas!
 move_edest=Le dossier de destination $1 n'existe pas!

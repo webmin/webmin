@@ -21,6 +21,7 @@ index_eversion=Wersja STunnel zainstalowana w twoim systemie to $1, ale ten modu
 index_conf=Z pliku konfiguracyjnego $1 
 index_noconf=Brak pliku konfiguracyjnego!
 index_delete=Usuń wybrane tunele
+
 edit_title=Edytuj tunel SSL
 create_title=Utwórz tunel SSL
 edit_header1=Opcje źródła tunelu
@@ -47,6 +48,7 @@ edit_tcpw=Nazwa opakowania TCP
 edit_auto=Automatyczny
 edit_iface=Wychodzący adres źródłowy
 edit_type=Uciekać przed
+
 save_err=Nie udało się zapisać tunelu SSL
 save_enclash=Nazwa usługi $2 jest już używana na porcie $1.
 save_einetd=Istnieje już usługa inetd o nazwie $1.
@@ -61,6 +63,7 @@ save_etcpw=Brakująca lub niepoprawna nazwa opakowania TCP
 save_eiface=Brakujący lub nieprawidłowy wychodzący adres źródłowy
 save_exinetd=Istnieje już usługa xinetd o nazwie $1 
 save_export=Port $1 jest już używany przez usługę xinetd $2 
+
 log_apply=Zastosowane zmiany
 log_create=Utworzono tunel SSL $1 
 log_delete=Usunięto tunel SSL $1 

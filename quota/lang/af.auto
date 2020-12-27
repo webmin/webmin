@@ -1,4 +1,5 @@
 quota_unlimited=Unlimited
+
 acl_fss=Lêersisteme wat hierdie gebruiker kan wysig
 acl_fall=Alle lêerstelsels
 acl_fsel=Gekies ..
@@ -24,9 +25,11 @@ acl_maxblocks=Maksimum toekenbare blokkwota
 acl_maxfiles=Maksimum toekenbare lêerkwota
 acl_unlimited=Unlimited
 acl_email=Kan kennisgewings per e-pos opgestel word?
+
 activate_eallow=U mag nie kwotas op hierdie lêerstelsel inskakel of deaktiveer nie
 activate_eon=Kon nie kwotas aanskakel nie
 activate_eoff=Kon nie kwotas afskakel nie
+
 check_title=Gaan kwotas na
 check_return=$1 lys
 check_ecannot=U kan nie kwotas op hierdie lêerstelsel nagaan nie
@@ -34,11 +37,13 @@ check_running=Die <tt>aanhalingstekort</tt> word nou uitgevoer om die blok- en l
 check_done=... Klaar.
 check_rgroup=groep
 check_ruser=gebruiker
+
 cgroup_efail=Kon nie kwotas kopieer nie
 cgroup_ecannot=U kan nie kwotas kopieer nie
 cgroup_egallow=U mag nie die kwotas van hierdie groep kopieer nie
 cgroup_enogroup=Geen groepe om na te kopieër nie
 cgroup_eallowto=U mag nie kwotas na '$1' kopieer nie.
+
 cgform_title=Kopieer kwotas
 cgform_return=groep kwota
 cgform_ecannot=U kan nie kwotas kopieer nie
@@ -48,11 +53,13 @@ cgform_all=Alle groepe op u stelsel
 cgform_select=Geselekteerde groepe
 cgform_contain=Groepe wat gebruikers bevat
 cgform_doit=kopie
+
 cuser_efail=Kon nie kwotas kopieer nie
 cuser_ecannot=U kan nie kwotas kopieer nie
 cuser_euallow=U mag nie die kwotas van hierdie gebruiker kopieer nie
 cuser_enouser=Geen gebruikers om na te kopieër nie
 cuser_eallowto=U mag nie kwotas na '$1' kopieer nie.
+
 cuform_title=Kopieer kwotas
 cuform_return=gebruikerskwota
 cuform_ecannot=U kan nie kwotas kopieer nie
@@ -62,6 +69,7 @@ cuform_all=Alle gebruikers op u stelsel
 cuform_select=Geselekteerde gebruikers
 cuform_members=Lede van geselekteerde groepe
 cuform_doit=kopie
+
 egroup_title=Wysig groepkwota
 egroup_freturn=lêerstelsel lys
 egroup_greturn=groeplys
@@ -80,6 +88,7 @@ egroup_hflimit=Harde lêerbeperking
 egroup_update=Opdateer
 egroup_listall=Lys alle kwotas
 egroup_listalldesc=Klik op hierdie knoppie om 'n lys van alle lêersisteme te wys waarop hierdie groep skyfkwotas bevat, met skakels om dit te wysig.
+
 euser_title=Wysig gebruikerskwota
 euser_freturn=lêerstelsel lys
 euser_ureturn=gebruikerslys
@@ -102,6 +111,7 @@ euser_hflimit=Limiet van harde lêers
 euser_update=Opdateer
 euser_listall=Lys alle kwotas
 euser_listalldesc=Klik op hierdie knoppie om 'n lys van alle lêersisteme te wys waarop hierdie gebruiker skyfkwotas het, met skakels om dit te wysig.
+
 gfilesys_title=Groepskwotas
 gfilesys_return=lêersisteme lys
 gfilesys_ecannot=U kan nie kwotas vir '$1' wysig nie
@@ -120,6 +130,7 @@ gfilesys_copy=Kopieer kwotas
 gfilesys_editdesc=Kyk en wysig die kwotas vir hierdie groep op 'n ander lêersisteem waarop dit tans nie kwotas het nie.
 gfilesys_copydesc=Kopieer kwotabeperkings vir hierdie groep op alle lêerstelsels na sommige of alle ander groepe.
 gfilesys_enone=Geen groepnaam ingevoer nie
+
 ggracef_title=Grace Times
 ggracef_return=groeplys
 ggracef_ecannot=U kan nie grasietye op hierdie lêerstelsel wysig nie
@@ -128,9 +139,11 @@ ggracef_graces=Groep Grace Times vir <tt>$1</tt>
 ggracef_block=Vir blokkwota
 ggracef_file=Vir lêerkwota
 ggracef_update=Opdateer
+
 ggraces_esave=Kon nie genadetye red nie
 ggraces_eedit=U kan nie grasietye op hierdie lêerstelsel wysig nie
 ggraces_enumber='$1' is nie 'n nommer nie
+
 index_quser=Gebruikerskwotas
 index_qgroup=Groepkwotas
 index_qboth=Gebruikers- en groepkwotas
@@ -154,6 +167,7 @@ index_egroup=Wysig groepkwotas:
 index_egroupdesc=Gaan in of kies 'n groep en klik op hierdie knoppie om die kwotas op alle lêerstelsels te besigtig.
 index_nosupport=Geen plaaslike lêerstelsels kan kwotas ondersteun nie.
 index_mountmod=U kan kwotas vir 'n lêerstelsel inskakel in die module <a href='$1'>Disk and Network Filesystems</a>.
+
 lgroups_failed=Kon nie groepe lys nie
 lgroups_tablist=Groeplys
 lgroups_eallow=U mag nie kwotas op hierdie lêerstelsel wysig nie
@@ -182,13 +196,17 @@ lgroups_tofixed=Adres 1
 lgroups_emailheader=Stuur 'n e-pos aan groepe wat kwota nader
 lgroups_email=Stuur e-pos aan groepe?
 lgroups_tovirt=Virtuele domeineienaar
+
 sgroup_egroup=U mag nie kwotas vir hierdie groep wysig nie
 sgroup_efs=U mag nie kwotas op hierdie lêerstelsel wysig nie
+
 ssync_ecannot=U kan nie die standaardkwota vir hierdie lêerstelsel instel nie
+
 suser_euser=U mag nie kwotas vir hierdie gebruiker wysig nie
 suser_efs=U mag nie kwotas op hierdie lêerstelsel wysig nie
 suser_emaxblocks=U mag nie bloklimiete bo $1 toestaan nie
 suser_emaxfiles=U mag nie lêerlimiete bo $1 toestaan nie
+
 ufilesys_title=Gebruikerskwotas
 ufilesys_return=lêersisteme lys
 ufilesys_ecannot=U kan nie kwotas vir '$1' wysig nie
@@ -208,6 +226,7 @@ ufilesys_copydesc=Kopieer kwotabeperkings vir hierdie gebruiker op alle lêerste
 ufilesys_copy=Kopieer kwotas
 ufilesys_grace=Grace
 ufilesys_enone=Geen gebruikersnaam ingevoer nie
+
 ugracef_title=Grace Times
 ugracef_return=gebruikerslys
 ugracef_ecannot=U kan nie grasietye op hierdie lêerstelsel wysig nie
@@ -216,9 +235,11 @@ ugracef_graces=Gebruiker Grace Times vir <tt>$1</tt>
 ugracef_block=Vir blokkwota
 ugracef_file=Vir lêerkwota
 ugracef_update=Opdateer
+
 ugraces_esave=Kon nie genadetye red nie
 ugraces_eedit=U kan nie grasietye op hierdie lêerstelsel wysig nie
 ugraces_enumber='$1' is nie 'n nommer nie
+
 lusers_failed=Kon nie gebruikers lys nie
 lusers_tablist=Gebruikerslys
 lusers_tabdefault=Standaard kwotas
@@ -264,12 +285,14 @@ lusers_from=Van: adres vir e-pos
 lusers_mass=Opgedateer gebruikers op te dateer
 lusers_cc=Stuur ook e-pos aan
 lusers_nocc=niemand
+
 grace_seconds=sekondes
 grace_minutes=Minute
 grace_hours=Ure
 grace_days=dae
 grace_weeks=weke
 grace_months=maande
+
 log_activate_u=Gebruikerskwotas op $1 geaktiveer
 log_activate_g=Groepkwotas op $1 geaktiveer
 log_activate_ug=Gebruiker- en groepkwotas op $1 geaktiveer
@@ -287,6 +310,7 @@ log_check=Gekontroleerde kwotas op $1
 log_copy_u=Gekopieerde gebruiker $1 se kwotas
 log_copy_g=Gekopieerde groep $1 se kwotas
 log_support=Kwota-ondersteuning vir $1 geaktiveer
+
 email_err=Kon nie e-posopsies stoor nie
 email_ecannot=U mag nie e-posopsies verander nie
 email_einterval=Ontbrekende of ongeldige interval
@@ -299,6 +323,7 @@ gemail_msg=Skyfgebruik vir groep $1 op lêersisteem $2 het $3% van die toegelate
 email_subject=Skyfkwota is oorskry
 gemail_subject=Skyfkwota is oorskry
 email_eto=Ontbrekende e-posadres ontbreek
+
 umass_title=Gebruikerskwotas opdateer
 umass_header=Kwota verander om van toepassing te wees op geselekteerde gebruikers
 umass_sblocks=Sagte blok limiet
@@ -315,6 +340,7 @@ umass_esfiles=Ontbrekende of ongeldige sagte lêerbeperking
 umass_ehfiles=Ontbrekende of ongeldige limiet vir harde lêers
 umass_count=Die veranderinge hieronder sal van toepassing wees op $1 geselekteerde gebruikers ..
 umass_err=Kon nie gebruikerskwotas opdateer nie
+
 gmass_title=Dateer groepkwotas op
 gmass_header=Kwota verander om van toepassing te wees op geselekteerde groepe
 gmass_count=Die veranderinge hieronder sal van toepassing wees op $1 geselekteerde groepe.

@@ -9,6 +9,7 @@ index_restart=Webminの再起動
 index_restartmsg=このボタンをクリックするとWebminを再起動します。最近Perlをアップグレードしたなら必要であるかもしれません。
 index_refresh=モジュールのリフレッシュ
 index_refreshmsg=インストールされたサーバに関するすべてのWebminモジュールを再確認します。そして'未使用のモジュール'カテゴリに現れるものをアップデートしてください。
+
 access_title=IP アドレスのアクセス制御
 access_desc=特定の IP アドレスからのみアクセスを拒否または許可するように Webmin サーバを設定できます。ホスト名 (例:foo.bar.com) と IP ネットワーク (例:10.254.3.0 または 10.254.1.0/255.255.255.128) も入力できます。ご使用のサーバへのアクセスは信任 アドレスに限定してください。特に、インターネットからアクセスできる場合にはアクセスできる相手を限定してください。そうしないと、ご使用のパスワードを他人が推測して使用し、システムをコントロールされてしまう危険があります。
 access_ip=許可された IP アドレス
@@ -28,6 +29,7 @@ access_ecidr6='$1'  は不正な IPv6 ネットワークサイズです
 access_ehost='$1' の IP アドレスが見つかりませんでした
 access_eself=現在の IP アドレス ($1) は拒否されます
 access_always=全ての要求について名前解決をする
+
 bind_title=ポートとアドレス
 bind_desc2=このフォームではWebminが待機するポート番号又はIPアドレスの変更が行えます。複数のポートやIPアドレスでの待機をさせることも可能です。 注意 - 設定の変更後には再度ログインする必要があります。
 bind_header=IP アドレスとポート
@@ -51,6 +53,7 @@ bind_elisten=UDPブロードキャストの待ち受けポートが無効です
 bind_ehostname=ウェブサーバのホスト名が指定されていないか不正です。
 bind_resolv_myname=Reverse-resolve 接続済 IP アドレス?
 bind_ipv6=IPv6 接続を受け入れますか？
+
 log_title=ログ
 log_desc=Web サーバがヒットするログを標準 CLF ログ ファイル形式で書き込むように Webmin を設定できます。ログが有効な場合は、IP アドレスまたはホスト名のどちらかを記録するかということと、ログ ファイルがクリアされる頻度を選択できます。有効な場合に、ログはファイル $1 に書き込まれます。
 log_desc2=ログが有効な場合、Webmin はより詳細なユーザ アクションのログをファイル $1 に書き込みます。このログは、Webmin アクションログモジュールで表示でき、各 Webmin ユーザが行った操作を見て分析できます。
@@ -76,6 +79,7 @@ log_ediff=ログ ファイルの変更に必要なコマンド $1 がシステ�
 log_perms=ログファイルのパーミッション
 log_eperms=パーミッションの指定がされていないか、不正です(755のように)
 log_syslog=Also log to syslog?
+
 proxy_title=プロキシ サーバ
 proxy_desc=Webmin を実行しているホストがファイアウォールの後ろ側にある場合は、Web と FTP サイトにアクセスするために使用するプロキシ サーバを設定する必要があります。特定のモジュール、たとえば<tt>ソフトウェア パッケージ</tt>はファイルまたはプログラムをダウンロードするときにこれらのプロキシ サーバを使用します。
 proxy_header=プロキシ サーバ
@@ -118,6 +122,7 @@ proxy_return=プロキシサーバとダウンロード
 proxy_tabproxy=プロキシ
 proxy_tabdown=ダウンロード
 proxy_fallback=プロキシがダウンしているときは直接接続を試みますか?
+
 ui_title=ユーザ インターフェイス
 ui_desc=ここでは、すべてのモジュールで使用するユーザ インターフェイス オプションを編集できます。カラーを入力する場合は、各値が00 から ff の 16 進数である標準 RGB システムを使用して指定する必要があります。
 ui_header=ユーザ インターフェイス オプション
@@ -165,6 +170,7 @@ ui_dateformat_dd/mm/yyyy=dd/mm/yyyy (ie. 16/09/2001)
 ui_dateformat_mm/dd/yyyy=mm/dd/yyyy (ie. 09/16/2001)
 ui_dateformat_yyyy/mm/dd=yyyy/mm/dd (ie. 2001/09/16)
 ui_ehostnamedisplay=表示ホスト名が指定されていないか不正です。
+
 mods_title=Webmin モジュール
 mods_desc1=右のボックスを使用すると、インストール後に Webmin モジュールを追加することができます。通常、モジュールは<tt>.wbm</tt> ファイルで配布され、各ファイルに 1 つ以上のモジュールを含むことができます。ご使用のオペレーティング システムが RPM をサポートしている場合は、RPM ファイルからモジュールをインストールすることもできます。
 mods_installsource=以下からインストール
@@ -207,6 +213,7 @@ mods_tabinstall=インストール
 mods_tabclone=複製
 mods_tabdelete=削除
 mods_tabexport=エキスポート
+
 install_err1=$1 からモジュールをインストールできませんでした
 install_efile=ファイルがありません
 install_err2=アップロードされたモジュールをインストールできませんでした
@@ -240,10 +247,12 @@ install_cat=カテゴリー $1 において
 install_eneither=RPMファイルは Webmin モジュールまたはテーマを含んでいません
 install_err4=標準モジュールのインストールに失敗しました
 install_emissing=モジュールが存在しません
+
 clone_err=モジュールをクローンできませんでした
 clone_elink=symlink が失敗しました: $1
 clone_ecopy=config をコピーできませんでした: $1
 clone_desc=$1 のクローン
+
 delete_err=モジュールを削除できませんでした
 delete_edep=モジュール $1 は $2 が依存しているため削除できません。
 delete_desc1=$1 ($2 のクローン)
@@ -255,6 +264,7 @@ delete_rusure2=$1 kBのファイルが完全に削除されます。テーマ $1
 delete_rusure3=複製されたモジュール $2 を削除してもよろしいですか?
 delete_acls=ユーザから取り除きアクセス制御設定をリセットしますか?
 delete_enone=モジュールが選択されていません
+
 os_title=オペレーティング システム
 os_desc3=このページはインストール時にWebminによって検出されたオペレーティングシステムおよび現在検出されたシステムを表示します。If they are different, you can choose to have Webmin's OS information updated, which may be necessary if you have recently upgraded.
 os_desc2=プログラムを実行中は Webmin が使用する検索パスと任意のプログラムへの共有ライブラリ パスを変更することができます。
@@ -277,6 +287,7 @@ os_eiversion=内部OSバージョンが指定されていません
 os_incorrect=Warning - Your system is actually running $1 version $2.
 os_fix=検出されたオペレーティングシステムを更新します
 os_usermin=Usermin OS も更新
+
 lang_title=言語
 lang_title2=Webmin 言語
 lang_lang=言語で表示
@@ -288,6 +299,7 @@ lang_chardef=言語に決定
 lang_charover=キャラクタセットを強制する
 lang_err=言語の保存に失敗しました
 lang_echarset=無効な可能性があるキャラクタセットです
+
 ssl_title=SSL 暗号化
 ssl_essl=Perlモジュール NET::SSLeayがシステム上にインストールされていません。OpenSSLライブラリ及びNET::SSLeayをインストールするにはWebmin Webサイトからの<a href='$1'>these instructions</a> from the Webmin website.
 ssl_cpan=別の選択肢として、Webminに必要なNet::SSLeay Perlモジュールを<a href='$1'>download and install</a> the required Net::SSLeay Perl module for you.
@@ -358,6 +370,7 @@ ssl_pkcs12=PKCS12 フォーマット
 ssl_current=This section shows the details of the current Webmin SSL certificate, and allows it to be downloaded so that it can be accepted by your browser.
 ssl_edownload=Failed to extract PEM data from certificate
 ssl_already1=前回生成された個人鍵 ：
+
 newkey_err=SSL鍵の作成に失敗しました
 newkey_ecn=無効なサーバ名です
 newkey_efile=鍵ファイル名が見付かりません
@@ -369,9 +382,11 @@ newkey_ok=以下の SSL鍵の生成が成功しました
 newkey_esize=鍵ファイルのサイズが無効です
 newkey_edays=失効までの日数が無効です
 newkey_ecountry=国コードは２文字でなければいけません
+
 newcsr_err=SSL CSR の作成に失敗しました
 newcsr_efile=CSR ファイル名が指定されていません
 newcsr_title=CSR 生成
+
 startpage_title=インデックス ページ オプション
 startpage_intro2=このページではメインのWebminメニューの表示を制御することができます。いくつかのオプションはデフォルトテーマでのみ効果があります。
 startpage_tabs=モジュールを分類しますか？
@@ -385,6 +400,7 @@ startpage_gotonone=&lt;無し&gt;
 startpage_gotomodule=ログイン後に常に誘導するモジュール
 startpage_webminup=システム情報ページに Webmin の更新情報を表示しますか？
 startpage_moduleup=システム情報ページにモジュールの更新情報を表示しますか？
+
 upgrade_title=Webmin のアップグレード
 upgrade_desc=この画面では、ご使用の Webmin インストール全体を新規のバージョンにアップグレードできます。ローカル ファイル、アップロードされたファイルから、または最新バージョンを <a href=http://www.webmin.com/>www.webmin.com</a>. Just as with a manual upgrade, all your config settings and third-party modules will be kept.
 upgrade_descrpm=これは、ご使用の Webmin インストール全体を RPM アップグレード オプションを使用した新規のバージョンにアップグレードできるようにします。ローカル ファイル、アップロードされたファイルから、または最新バージョンを <a href=http://www.webmin.com/>www.webmin.com</a>. Just as with a manual upgrade, all your config settings and third-party modules will be kept.
@@ -448,10 +464,12 @@ upgrade_tabupdate=モジュール更新
 upgrade_tabsched=Scheduled update
 upgrade_src=以下から Webmin を更新
 upgrade_opts=更新オプション
+
 newmod_desc=Webminがアップグレードされると全ての新しいバージョンのモジュールは１つ以上のユーザにアクセス権があたえられます。このフォームでは新しいモジュールへのアクセス権を与えられるユーザの設定が行えます。この設定はコマンドによるアップグレード時及びフォームによるアップグレード時に適用されます
 newmod_header=新しいモジュールの権限
 newmod_def=デフォルトの動作 - 新しいモジュールに <tt>root</tt>または<tt>admin</tt>の権限を与える
 newmod_users=新しいモジュールを認可する :
+
 update_desc1=このフォームではWebminモジュールのセキュリティホールやバグに対するアップデート/アップグレードが行えます。最新の更新情報は<a href=http://www.webmin.com/updates.html>Webmin Updates</a> page or from another source. This will compare the currently installed modules with those available for update, and optionally automatically download and install any modules that are out of date.
 update_header1=モジュールをアップデートする
 update_header2=スケジュールに従いアップデートする
@@ -477,6 +495,7 @@ update_enomodsig=モジュールの署名ファイルのダウンロードがで
 update_ebadmodsig=モジュールの署名の確認に失敗しました ： $１
 update_src=モジュール更新元
 update_opts=モジュール更新オプション
+
 ca_title=認証局
 ca_old=既存の認証
 ca_header1=新規の CA 認証
@@ -507,6 +526,7 @@ ca_eminiserv=SSL クライアント認証は miniserv の元でのみサポー�
 ca_eversion=システムにインストールされている Perl Net::SSLeay モジュールは SSL クライアント認証をサポートしません。
 ca_essleay=SSL 管理コマンド $1がシステムにありませんでした。Webmin ユーザ モジュール設定でパスを変更する必要があります。
 ca_essl=Web サーバが SSL モードで実行されている場合にのみ SSL 認証を設定できます。
+
 session_title=認証
 session_desc1=有効にすると、同一ユーザが失敗したログインを再試行する間隔に連続して拡張した遅延を追加してパスワードをタイムアウトさせます。これにより、パスワードが他人に解読されて Webmin サーバが不正に使用されるのを防ぎます。
 session_header=認証とセッション オプション
@@ -565,10 +585,12 @@ session_md5off=Use standard Unix <tt>crypt</tt> encryption for Webmin passwords
 session_md5on=Use MD5 encryption for Webmin passwords (allows long passwords)
 session_emd5mod=MD5 encryption cannot be used, as Perl $1 module is not installed.
 session_blocklock=また、ログイン失敗でユーザをロックします。
+
 assignment_title=モジュールの再割り当て
 assignment_header=モジュール カテゴリーの割当て
 assignment_ok=カテゴリーの変更
 assignment_desc=この画面では Webmin インデックス ページに表示する各モジュールのカテゴリーを設定できます。
+
 categories_title=カテゴリーの編集
 categories_header=カテゴリー ID と説明
 categories_desc=この画面では既存の Webmin カテゴリー名の変更とモジュールに割り当てる新規のカテゴリーを作成できます。表の上の部分は組込みカテゴリーの説明を変更するために、下の部分は新規のカテゴリー ID と説明を追加するために使用します。
@@ -580,6 +602,7 @@ categories_code=ID
 categories_name=表示された説明
 categories_lang=Edit categories in language:
 categories_langok=変更
+
 log_access=IP アクセス制御を変更しました
 log_bind=ポートとアドレスを変更しました
 log_log=ログ オプションを変更しました
@@ -617,6 +640,7 @@ log_deletecache=Deleted $1 URLs from cache
 log_clearcache=Cleared all URLs from cache
 log_lock=ファイルロッキング設定を変更しました
 log_sendmail=電子メール送信オプションが変更されました
+
 themes_title=Webmin テーマ
 themes_desc=テーマはアイコン、色、背景、さらにページ レイアウトを含む Webmin ユーザ インターフェイスの外観を制御します。下の選択ボックスは、ご使用のシステムにインストールされたテーマの 1 つを選択するのに使用できます。
 themes_sel=現在のテーマ:
@@ -631,6 +655,7 @@ themes_taboverlay=オーバレイの変更
 themes_tabinstall=テーマのインストール
 themes_tabdelete=テーマ削除
 themes_tabexport=テーマのエクスポート
+
 themes_err1=$1 からテーマをインストールできませんでした
 themes_efile=ファイルがありません
 themes_err2=アップロードされたテーマをインストールできませんでした
@@ -654,9 +679,11 @@ themes_delete=このフォームではインストールされていて現在使
 themes_delok=削除するテーマ :
 themes_return=テーマ一覧
 themes_err4=オーバレイテーマの変更に失敗しました
+
 themes_desc4=Installed themes can be exported as a wbt.gz file using the form below. A theme file can then be installed onto another system running Webmin.
 themes_exportmods=エクスポートするテーマ
 themes_exportok=選択されたテーマをエクスポート
+
 referers_title=信任照会
 referers_desc=このページは、他の Web サイトからの悪意を持ったリンクをたどって Webmin に危険を与えるのを防ぐために Webmin の照会検査サポートを設定できるようにします。ただし、自分自身の Web サイトから Webmin にリンクがあり警告されたくない場合は、それらのサイトを下のリストに追加してください。
 referers_list=信任 Web サイト
@@ -665,6 +692,7 @@ referers_none2=警告： これはあなたのシステムを XSS 攻撃に対�
 referers_referer=照会検査を有効にしますか？
 referers_err=参照元の保存に失敗しました
 referers_ehost='$1' は、正規の新任されたホスト名ではありません
+
 update_err=モジュールのアップデートに失敗しました
 update_eurl=無効なアップデートURLです
 update_title=モジュールの更新
@@ -685,6 +713,7 @@ update_rv=$1 の更新されたWebminモジュールをチェック中
 update_eemail=アップデートの表示のみの場合でもemailアドレスを入力する必要があります
 update_subject=Webminモジュールアップデート報告
 update_version=Webminの新リリース(バージョン $1)がダウンロード可能です。今後のアップデートは最新バージョンにのみ提供されます。
+
 anon_title=匿名モジュールアクセス
 anon_desc=このページでは特定のモジュール及びパスへの匿名アクセスを設定できます。以下に入力されたそれぞれのモジュールパス(<tt>/custom</tt>や<tt>passwd</tt>等)において使用されるWebminユーザ名を入力する必要があります。
 anon_desc2=匿名アクセスを設定する際には 【細 心 の】注意を払ってください。不適当なIPアクセス制御または権限設定は攻撃者にシステムの乗っ取りを許すことになります。
@@ -693,15 +722,19 @@ anon_user=Webminユーザ
 anon_err=匿名アクセス設定の保存に失敗しました
 anon_eurl='$1'は有効なURLパスではありません
 anon_euser=URLパス '$1'用のWebminユーザは無効です
+
 enogpg=GnuPGがインストールされていません
+
 standard_failed=モジュールリストのダウンロードに失敗しました
 standard_header=標準Webminモジュール
 standard_warn=警告 - 最新のWebmin バージョン $1 以外が動作しています。そのため、モジュールのインストールに失敗している可能性があります
 standard_eurl=無効な標準モジュールのURLです
+
 third_failed=モジュールリストのダウンロードに失敗しました : $1
 third_header=サードパーティーWebminモジュール
 third_eurl=無効なサードパーティーモジュールのURLです
 third_title=Select Third Party Module
+
 lock_title=ファイルのロック
 lock_desc=By default, Webmin will obtain a lock on any file that it modifies in order to prevent concurrent modification by multiple processes, which could lead to file corruption. This page allows you to selectively or totally disable locking if it is causing problems.
 lock_header=ファイルロッキング設定
@@ -712,12 +745,14 @@ lock_except=Lock all files and directories except ..
 lock_err=ファイルロッキングの保存に失敗しました
 lock_edir='$1' は絶対パスではありません
 lock_edirs=ファイルまたはディレクトリが入力されていません
+
 ipkey_title1=SSL 鍵の生成
 ipkey_title2=SSL 鍵の編集
 ipkey_header=IP 固有 SSL 鍵の詳細
 ipkey_err=SSL 鍵の保存に失敗しました
 ipkey_eips=IP アドレスが入力されていません
 ipkey_eextracas=追加の認証ファイルが入力されていません
+
 descs_title=モジュールのタイトル
 descs_info=This page allows you to specify alternate titles for Webmin modules, to override their standard descriptions.
 descs_mod=モジュール
@@ -726,11 +761,13 @@ descs_desc=新規表題
 descs_cdesc=タイトルを複製
 descs_err=Failed to save module titles
 descs_edesc=Missing title for module '$1'
+
 export_err=モジュールのエクスポートに失敗しました
 export_ecmd=必要なコマンド $1 が指定されていません
 export_efile=エキスポートファイルが指定されていないか不正です
 export_done=Successfully exported the selected modules to $1.
 export_title=モジュールのエクスポート
+
 advanced_title=拡張オプション
 advanced_header=拡張、実験的なオプション
 advanced_temp=一時ファイルディレクトリ
@@ -760,10 +797,13 @@ advanced_sclass=予定ジョブの IO クラス
 advanced_sprio=予定ジョブの IO 優先度
 advanced_redir=リダイレクトする URL 書式
 advanced_redir1=パスのみ
+
 syslog_errorlog=Webmin エラーログ
+
 clear_title=Clear Download Cache
 clear_done=The Webmin cache containing $1 of files from $2 URLs has been successfully cleared.
 clear_none=There are no URLs currently in the Webmin download cache.
+
 savekey_err=新規鍵の保存に失敗しました
 savekey_ekey=Missing or invalid PEM format key
 savekey_ecert=Missing or invalid PEM format certificate
@@ -771,6 +811,7 @@ savekey_ecert2=Missing or invalid PEM format key and certificate
 savekey_title=既存の鍵を更新
 savekey_done2=The supplied SSL key has been saved in $1, and the certificate in $2.
 savekey_done=The supplied SSL key and certitifcate have been saved in the file $1.
+
 cache_title=Cached URLs
 cache_search=Find URLs containing:
 cache_ok=検索
@@ -783,8 +824,10 @@ cache_delete=Flush Selected From Cache
 cache_err=Failed to flush cached URLs
 cache_enone=未選択
 cache_efile=不正なファイル名
+
 restart_title=Webmin の再起動中です
 restart_done=The Webmin server process is now restarting - please wait for a few seconds before continuing.
+
 mobile_title=モバイルデバイスオプション
 mobile_header=モバイルブラウザ用オプション
 mobile_theme=モバイルブラウザ用テーマ
@@ -793,6 +836,7 @@ mobile_nosession=強制的にHTTP認証を使用しますか?
 mobile_agents=モバイルブラウザのUser Agentの追加
 mobile_err=モバイルデバイスオプションの保存に失敗しました
 mobile_prefixes=モバイルブラウザ用のURLホスト名接頭辞
+
 blocked_title=ブロックしたホストとユーザ
 blocked_type=Type
 blocked_who=ホスト名またはユーザ名
@@ -804,9 +848,11 @@ blocked_host=クライアントホスト
 blocked_clear=Clear All Blocks
 blocked_cleardesc=Click this button to clear all current host and user blocks, by restarting the Webmin server process.
 blocked_restarting=The Webmin server process is now restarting to clear blocked hosts and users - please wait for a few seconds before continuing.
+
 refreshmods_title=モジュールのリフレッシュ
 refreshmods_installed=使用できるWebminモジュールをチェックしています ..
 refeshmods_counts=.. $2 モジュールがインストールされたアプリケーションで見つかりました。$1 モジュールはインストールされていません。
+
 debug_title=デバグ用ログファイル
 debug_header=Webmin デバッグログファイルオプション
 debug_enabled=デバッグログを有効にしますか?
@@ -831,6 +877,7 @@ debug_procs=Script types to debug
 debug_web=Web interface CGIs
 debug_cmd=コマンドライン
 debug_cron=バックグラウンドジョブ
+
 notif_passexpired=Your Webmin password has expired! You will be forced to change it at the next login.
 notif_passchange=Your Webmin password was last changed on $1, and must be changed in $2 days.
 notif_passlock=Your Webmin password was last changed on $1, and your account will be locked in $2 days if it is not changed.
@@ -843,6 +890,7 @@ notify_updatever=バージョン
 notify_updatedesc=問題を解決
 notif_updateok=直ちに更新をインストール
 notif_rebootok=直ちに再起動
+
 status_title=バックグラウンド情報収集
 status_header=情報収集ジョブ設定
 status_interval=バックグラウンドでシステム状況を収集しますか？
@@ -854,6 +902,7 @@ status_temp=ディスク温度を収集しますか？
 status_units=温度の単位
 status_celsius=摂氏
 status_fahrenheit=華氏
+
 sendmail_title=電子メール送信
 sendmail_header=電子メール送信オプション
 sendmail_system=ローカルメールサーバー
@@ -881,11 +930,13 @@ sendmail_to=宛先
 sendmail_subject=メッセージ題名
 sendmail_body=メッセージの内容
 sendmail_send=電子メール送信
+
 testmail_title=電子メール送信試験
 testmail_err=テストメッセージの送信に失敗しました
 testmail_eto=宛先アドレスが入力されていません
 testmail_sending=$１ から、$２ にメッセージ送信中...
 testmail_failed=... 送信失敗 ： $１
+
 web_title=ウェブサーバオプション
 web_header=Webmin の組み込みウェブサーバーのオプション
 web_expires=静的ファイルのクライアント側キャッシュ時間
@@ -897,6 +948,7 @@ web_expirespaths=URL パスベースのクライアント側キャッシュ時�
 web_expirespath=パスの正規表現
 web_expirestime=秒数でキャッシュ時間を指定
 web_eexpires2=列 $１ のクライアント側キャッシュ時間が指定されていないか数字ではありません
+
 webmincron_title=Webmin 予定機能
 webmincron_emodule=Webmin Cron ジョブモジュールがインストールされていません！
 webmincron_module=Webmin モジュール
@@ -918,6 +970,7 @@ webmincron_when0=通常の間隔
 webmincron_when1=指定された時刻
 webmincron_secs=秒
 webmincron_err=予定機能の保存に失敗しました
+
 twofactor_title=２段階認証
 twofactor_header=２段階認証オプション
 twofactor_provider=認証プロバイダ

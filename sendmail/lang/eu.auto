@@ -11,6 +11,7 @@ index_version2=Sendmail $1 bertsioa, $2 konfiguratu
 index_xversion=Sendmail $1 bertsioa
 index_version=Sendmail konfigurazioa $1 
 index_sendmail=Sendmail
+
 opts_title=Sendmail aukerak
 opts_ecannot=Ezin duzu bidali mezuen aukerak editatu
 opts_ds=Bidali irteerako posta ostalariaren bidez
@@ -57,6 +58,7 @@ opts_qso=Ordenatu posta ilararen arabera
 opts_priority=Lehentasuna
 opts_host=hostname
 opts_time=Jasotako denbora
+
 aliases_title=Posta ezizenak
 aliases_ecannot=Ezin duzu ezizenik editatu
 aliases_enofile=Ez da aliasen fitxategia definitu zure Sendmail konfigurazioan
@@ -73,6 +75,7 @@ aliases_return=ezizenen zerrenda
 aliases_toomany=Zure sisteman posta ezizen gehiegi daude orrialde honetan bistaratzeko.
 aliases_go=Aurkitu ezarpenak bat datozenak:
 aliases_delete=Ezabatu hautatutako ezizenak
+
 aform_ecannot=Ezin duzu ezizenik editatu
 aform_type0=Bat ere ez
 aform_type1=Posta elektroniko helbidea
@@ -90,11 +93,13 @@ aform_val=Alias to
 aform_afile=Editatu ..
 aform_return=alias
 aform_cmt=deskribapena
+
 afile_title=Editatu helbide-fitxategia
 afile_desc=Erabili beheko testu-eremua $1 fitxategiaren helbideak editatzeko.
 afile_efile=Ezin duzu $1 editatu.
 afile_undo=Aldaketak desegin
 afile_ewrite=Huts egin du helbideen fitxategian idazteak : $1 
+
 ffile_title=Editatu iragazkiaren fitxategia
 ffile_desc=Erabili beheko formularioa $1 fitxategiaren arauak konfiguratzeko.
 ffile_efile=Ezin duzu $1 editatu.
@@ -110,6 +115,7 @@ ffile_other=Bestela $1 birbidali
 ffile_err=Ezin izan da iragazkiaren fitxategia gorde
 ffile_ematch=Partida falta da
 ffile_eaction=Birbidaltze helbidea falta da
+
 rfile_title=Editatu automatikoki fitxategia
 rfile_desc=Erabili beheko test eremua automatikoki bidaltzeko mezua $1 editatzeko. Mezuak $SUBJECT, $FROM, $TO, $DATE eta $BODY makroak izan ditzake, automatikoki hornitzen denean aktibatuko direnak.
 rfile_desc2=Autoreplantean erabilitako lehenetsiak gehitu edo ordezkatzen dituzten posta-goiburuak ere ezar ditzakezu, honela lerroak jarriz: <br><tt> From: foo@bar.com </tt><br> <tt>Asunto: Oporretan</tt> <br> mezuaren goiko aldean, gorputzetik marra zuri bakar batez bereizita.
@@ -129,6 +135,7 @@ rfile_from=Noiz: erantzuteko helbidea
 rfile_auto=Automatikoa (hartzailearen helbidean oinarrituta)
 rfile_efrom=Falta da: helbidea
 rfile_fromdesc=A From: helbidea beti zehaztu behar da posible den moduan, baliteke metodo automatikoa ez dela fidagarria.
+
 asave_err=Huts egin du ezizena gordetzean
 asave_ecannot2=Ezin duzu ezizenik editatu
 asave_ecannot=Ezin duzu ezizenik editatu
@@ -145,9 +152,11 @@ asave_etype5=Ez da baliozko autoreply '$1' fitxategia
 asave_etype4none=Ez da programarik eman
 asave_etype6="$1" iragazkiaren fitxategia ez da baliozkoa
 asave_esame=Webmin saioa hasteko izen bera duen alias bat sortu besterik ez duzu onartzen
+
 adelete_err=Ezin izan da ezizena ezabatu
 adelete_enone=Ez da hautatu
 adelete_ecannot=Ezin duzu $1 ezizena ezabatu
+
 cws_title=Tokiko domeinuak
 cws_ecannot=Ezin duzu tokiko domeinurik editatu
 cws_domains=Zerbitzari honek kudeatzen dituen domeinuak
@@ -156,6 +165,7 @@ cws_desc2=Kontuan izan zerrendan domeinua sartzea soilik ez dela nahikoa. Gainer
 cws_err=Huts egin du domeinu lokalak gordetzean
 cws_ehost='$1' ez da baliozko ostalari edo domeinu izena
 cws_eip='$1' IP helbidea da, ez domeinua
+
 masq_title=Domeinuaren maskaratzea
 masq_ecannot=Ezingo duzu maskaraderik konfiguratu
 masq_domain=Maskarada domeinu gisa
@@ -167,12 +177,14 @@ masq_err=Huts egin du domeinuaren maskaratzea gordetzean
 masq_edomain="$1" ez da baliozko domeinu gisa maskaratzeko
 masq_ehost='$1' ez da baliozko ostalari edo domeinu izena
 masq_eip='$1' IP helbidea da, ez domeinua
+
 trusts_title=Erabiltzaile fidagarriak
 trusts_ecannot=Ezin duzu fidatu erabiltzaileak editatu
 trusts_users=Tokiko erabiltzaileek konfiantza sendmail bidez
 trusts_desc=Tokiko erabiltzailea mezu elektronikoa bidaltzen saiatzen bada, sendmail-ek erabiltzaileari <tt>From:</tt> beste helbide bat ematea baino ez dio emango erabiltzailea beheko zerrendan badago. Murrizketa hau dago erabiltzaileek posta elektronikoa falsifikatzea <tt>From:</tt> iruzurrezko sistematik helbidera zuzentzeko.
 trusts_err=Ezin izan da konfiantzazko erabiltzaileak gorde
 trusts_euser='$1' ez da baliozko erabiltzailea
+
 virtusers_title=Helbideen mapak
 virtusers_ecannot=Ezin duzu helbideen mapak editatu
 virtusers_efeature=Zure sendmail konfigurazioak ez du gaitutako helbideen mapak (<tt>virtuser</tt>) gaituta. <a href='$1'>Egin klik hemen</a> sendmail funtzioak konfiguratzeko.
@@ -190,6 +202,7 @@ virtusers_return=helbideen mapa zerrenda
 virtusers_toomany=Zure sisteman helbide-mapen gehiegi daude orrialde honetan bistaratzeko.
 virtusers_go=Aurkitu helbide-mapak datozenak:
 virtusers_delete=Ezabatu hautatutako helbide-mapak
+
 vform_edit=Editatu helbideen mapaketa
 vform_create=Sortu helbide-mapak
 vform_for=Posta
@@ -206,6 +219,7 @@ vform_err_tempfail=Aldi baterako hutsegitea
 vform_err_protocol=Protokoloaren akatsa
 vform_end=Mugitu amaierara
 vform_ecannot=Ezin duzu helbideen mapak editatu
+
 vsave_ecannot=Ezin duzu helbideen mapak editatu
 vsave_ecannot2=Ezin duzu helbideen mapak editatu
 vsave_emax=Ezin duzu $1 helbide-mapeketa baino gehiago sortu
@@ -221,8 +235,10 @@ vsave_eaddr='$1' ez da baliozko helbide bat
 vsave_ecannot4=Ez duzu baimenik domeinuei mapak egitea
 vsave_edomdom=Domeinu bat beste domeinu batera mapeatu daiteke
 vsave_ecannot5=Ez duzu baimenik akats bat itzultzen duten mapak sortzeko
+
 vdelete_err=Ezin izan da helbideen mapak ezabatu
 vdelete_ecannot=Ezin duzu $1 mapak ezabatu
+
 mailers_title=Domeinu bideratzea
 mailers_cannot=Ezin duzu domeinuaren bideratzea editatu
 mailers_edirective=Sendmail-en konfigurazio fitxategiak ez du domeinuen bideratzeetarako beharrezko zuzentaraurik.
@@ -236,6 +252,7 @@ mailers_delivery=Delivery
 mailers_to=Bidali ..
 mailers_return=domeinu bideratzeen zerrenda
 mailers_delete=Ezabatu hautatutako domeinu bideak
+
 mform_edit=Editatu ibilbidea
 mform_create=Sortu Routing
 mform_for=Posta
@@ -259,12 +276,15 @@ mform_procmail=Procmail
 mform_mail11=DECnet posta11
 mform_error=Akatsa
 mform_ecannot=Ezin duzu domeinuaren bideratzea editatu
+
 msave_ecannot=Ezin duzu domeinuaren bideratzea editatu
 msave_err=Huts egin du domeinuaren bideratzea gordetzean
 msave_edomain='$1' ez da baliozko ostalari edo domeinu bat
 msave_edup='$1' domeinuaren bideratzea dagoeneko definituta dago
+
 mdelete_err=Ezin izan da domeinuaren bideratzailea ezabatu
 mdelete_ecannot=Ezin duzu $1 erako ibilbidea ezabatu
+
 generics_title=Irteerako helbideak
 generics_cannot=Ezin duzu irteerako helbideak editatu
 generics_econfig=Sendmail-en konfigurazio fitxategiak ez du helbide-mapen irteerako beharrezko zuzentaraurik.
@@ -278,11 +298,13 @@ generics_return=helbideen mapa zerrenda
 generics_toomany=Zure sisteman irteerako helbide gehiegi daude orrialde honetan bistaratzeko.
 generics_go=Aurkitu datozen helbideekin bat datozenak:
 generics_delete=Ezabatu hautatutako irteerako helbideak
+
 gform_edit=Editatu mapaketa
 gform_create=Sortu mapeketa
 gform_from=Posta bidez
 gform_to=Aldatu
 gform_ecannot=Ezin duzu irteerako helbide hau editatu
+
 gsave_ecannot=Ezin duzu irteerako helbideak editatu
 gsave_ecannot2=Ezin duzu irteerako helbide hau editatu
 gsave_ecannot3=Ezin duzu irteerako helbide hau gorde
@@ -291,8 +313,10 @@ gsave_efrom='$1' ez da baliozko helbide batetik
 gsave_ematch=Helbide elektronikoa ez dator bat '$1'
 gsave_eto='$1' ez da baliozko helbide berria
 gsave_ealready="$1" helbidearen irteera-helmuga dagoeneko
+
 gdelete_err=Ezin izan da irteerako helbideen mapak ezabatu
 gdelete_ecannot=Ezin duzu $1 mapak ezabatu
+
 cgs_title=Irteerako domeinuak
 cgs_ecannot=Ezin duzu irteerako domeinuak editatu
 cgs_header=Irteerako helbide domeinuak
@@ -300,6 +324,7 @@ cgs_desc=Tokiko erabiltzaileek bidalitako mezuaz gain, sendmailak <a href='$1'>i
 cgs_err=Huts egin du irteerako domeinuak gordetzean
 cgs_ehost='$1' ez da baliozko ostalari edo domeinu izena
 cgs_eip='$1' IP helbidea da, ez domeinua
+
 domains_title=Domeinu-mapak
 domains_ecannot=Ezin duzu domeinuaren maparik editatu
 domains_econfig=Sendmail-en konfigurazio fitxategiak ez du domeinuen mapaketarako beharrezko zuzentaraurik.
@@ -310,17 +335,21 @@ domains_from=Domeinutik ..
 domains_to=Domeinura ..
 domains_return=domeinu-mapen zerrenda
 domains_delete=Ezabatu hautatutako domeinuaren mapak
+
 dform_edit=Editatu mapaketa
 dform_create=Sortu mapeketa
 dform_from=Domeinutik
 dform_to=Domeinura
 dform_ecannot=Ezin duzu domeinuaren maparik editatu
+
 dsave_ecannot=Ezin duzu domeinuaren maparik editatu
 dsave_err=Ezin izan da domeinuaren mapa gordetzean
 dsave_edomain='$1' ez da baliozko domeinu izena
 dsave_ealready="$1" domeinuaren mapaketa badago
+
 ddelete_err=Ezin izan da domeinuaren mapak ezabatu
 ddelete_ecannot=Ezin duzu $1 mapak ezabatu
+
 access_title=Spamaren kontrola
 access_ecannot=Ezin duzu spam kontrolik konfiguratu
 access_efeature=Zure sendmail konfigurazioak ez du gaituta dagoen spam kontrolaren (<tt>access_db</tt>) funtzioa gaituta. <a href='$1'>Egin klik hemen</a> sendmail funtzioak konfiguratzeko.
@@ -333,6 +362,7 @@ access_return=spam kontrol zerrenda
 access_toomany=Zure sisteman spam kontrol arauak gehiegi daude orri honetan bistaratzeko.
 access_go=Aurkitu spam-arauak bat datozenak:
 access_delete=Ezabatu hautatutako Spama kontrolatzeko arauak
+
 sform_edit=Editatu Spam Kontrolatzeko Araua
 sform_create=Sortu Spam Kontrolerako Araua
 sform_source=Posta iturria
@@ -354,6 +384,7 @@ sform_discard=Baztertu isilean
 sform_err=Errorea kodea
 sform_msg=Mezua
 sform_ecannot=Ezin duzu spama kontrolatzeko arau hau editatu
+
 ssave_err=Huts egin du spam kontrolaren araua gordetzean
 ssave_etype0='$1' ez da baliozko helbide bat
 ssave_etype1='$1' ez da baliozko sareko helbidea
@@ -362,8 +393,10 @@ ssave_etype3='$1' ez da baliozko domeinua
 ssave_ecode='$1' ez da baliozko SMTP errore kodea
 ssave_ealready=Lehendik dago $1 'spam kontrolerako araua
 ssave_ecannot2=Ezin duzu spam kontrol araua gorde
+
 sdelete_err=Ezin izan da spam kontroleko arauak ezabatu
 sdelete_ecannot=Ezin duzu $1 araua ezabatu
+
 relay_title=Errele domeinuak
 relay_ecannot=Ezin duzu errele domeinuak editatu
 relay_eversion=Sendmail domeinuen funtzioa onartzen dute bakarrik 8.9 eta aurreko bertsioek.
@@ -372,6 +405,7 @@ relay_desc1=<a href='$1'>spam kontrola</a> arauak onartzen ez badu, sendmailak b
 relay_desc2=Zure sistema zuzenean sarera kanpoko sarbide zuzena ez duen hainbat domeinutarako erabiltzen bada (<a href='$1'>domeinuaren bideratze</a> funtzioa erabiliz), orduan domeinu guztiak hemen zerrendatu beharko lirateke.
 relay_err=Huts egin du errelebo-domeinuak gordetzean
 relay_edomain='$1' ez da baliozko domeinu izena
+
 mailq_title=Posta ilara
 mailq_count=$1 mezuak
 mailq_ecannot=Ezin duzu posta-ilaran ikusi
@@ -401,12 +435,15 @@ mailq_search=Bilatu ilaran dauden mezuak non
 mailq_quar=Berrogeialdian
 mailq_refresh=Eguneratu posta ilara
 mailq_refreshdesc=Kargatu orri hau posta-ilarako uneko egoera erakusteko.
+
 flushq_title=Erraza ilara
 flushq_desc=Mezu guztiak bidaltzeko saiakera behartuta $1 ..
 flushq_desc2=Hautatutako $1 mezuen bidalketa behartuta ..
 flushq_ecannot=Ezin duzu posta-ilaran hustu
+
 searchq_title=Ilaren bilaketaren emaitzak
 searchq_none=Ez da ilaran mezurik aurkitu.
+
 delq_err=Ezin izan da mezua ezabatu
 delq_ecannot=Ezin duzu mezuak kendu
 delq_locked=Une honetan fitxategia blokeatuta dago bidaltzeko
@@ -422,6 +459,7 @@ delq_force=Indargabetzea ere hala ere
 delq_ecannot2=Ezin duzu mezu hau ezabatu
 delq_rusure=Ziur zaude $1 hautatutako ilarako mezuak ezabatu nahi dituzula?
 delq_confirm=Ezabatu mezuak
+
 boxes_title=Erabiltzaileen postontziak
 boxes_user=Erabiltzaileak
 boxes_size=Postontzien tamaina
@@ -431,6 +469,7 @@ boxes_sent=Bidalitako mezuak
 boxes_ecannot=Ezin duzu mezu elektronikoa irakurri
 boxes_toomany=Erabiltzaile gehiegi daude zure sisteman postontzi guztiak zerrendatzeko.
 boxes_go=Ikusi mezua erabiltzailearentzat:
+
 mail_title=Erabiltzailearen helbide elektronikoa
 mail_from=aurrera
 mail_date=data
@@ -471,6 +510,7 @@ mail_move=Mugitu:
 mail_copy=Kopiatu:
 mail_rfc=Lerrotik
 mail_eexists=Mezua ez da jada!
+
 view_title=Irakurri posta elektronikoa
 view_desc=$1 mezua $2 an
 view_desc2=$1 mezua $2 erabiltzailearentzat
@@ -501,6 +541,7 @@ view_egone=Mezu hau ez dago jada
 view_afile=Eranskinaren izena
 view_atype=Eranskin mota
 view_asize=Fitxategiaren tamaina
+
 compose_title=Idatzi posta elektronikoa
 reply_title=Erantzun Posta elektronikora
 forward_title=Birbidali posta elektronikoa
@@ -512,6 +553,7 @@ reply_attach2=Bezeroaren eta zerbitzariaren alboko eranskinak
 reply_send=Bidali Posta
 reply_ecannot=Erabiltzaile gisa ezin duzu posta elektronikoz bidali
 reply_body=Mezuaren testua
+
 send_err=Ezin izan da posta bidaltzean huts egin
 send_eto=Falta helbidean
 send_efrom=Helbidea ez da falta
@@ -524,6 +566,7 @@ send_eattach=Eranskinetan ezin dira $1 kB-ko neurria baino gehiago izan.
 send_eperms=$1 erabiltzaileak ezin du $2 irakurri
 send_eperms2=Ezin duzu $1 fitxategia bidali
 send_epath=Sendmail $1 exekutagarria ez da existitzen.
+
 delete_title=Ezabatu Posta
 delete_rusure=Ziur $1 hautatutako mezuak $2 ezabatu nahi duzula? Baliteke denbora pixka bat igortzea posta elektronikoko fitxategi handi baterako. Ezabatzea amaitu arte, ez da beste ekintzarik egin behar.
 delete_rusure2=Ziur mezu hau $1 etik ezabatu nahi duzula? Baliteke denbora pixka bat igortzea posta elektronikoko fitxategi handi baterako. Ezabatzea amaitu arte, ez da beste ekintzarik egin behar.
@@ -536,6 +579,7 @@ delete_emoveuser=Erabiltzailea ez dago posta elektronikora eramateko
 delete_emovecannot=Ezin duzu mezuak zehaztutako erabiltzailera eraman
 delete_emovenone=Ez da posta aukeratu hautatuta mugitzeko
 delete_nobutton=Ez da botoia sakatu
+
 search_title=Bilaketaren emaitzak
 search_ecannot=Ez duzu baimenik erabiltzaile honen mezu elektronikoa bilatzeko
 search_ematch=Testua sartu behar duzu aurka egiteko.
@@ -549,6 +593,7 @@ search_results4=Zure $1 mezu elektronikoen mezuak.
 search_local=Tokiko karpetetan
 search_all=Karpeta guztietan
 search_eboolean=Ez dira onartzen boolear bilaketak 'eta' eta 'edo' erabiliz
+
 file_title=Editatu Sendmail fitxategia
 file_desc=Erabili beheko testu koadroa $1 Sendmail fitxategia eskuz editatzeko.
 file_undo=Aldaketak desegin
@@ -564,6 +609,7 @@ file_emode=Modu ezezaguna!
 file_err=Ezin izan da fitxategia editatu
 file_ealias=Formatu baliogabea aliases fitxategi-lerroarentzat : $1 
 file_etab=Formatu baliogabea maparen fitxategiaren lerroarentzat : $1 
+
 acl_opts=Sendmail aukerak editatu al ditzakezu?
 acl_ports=Sareko portuak editatu ditzakezu?
 acl_cws=Tokiko domeinuak edita ditzakezu?
@@ -630,6 +676,7 @@ acl_usersm=Erabiltzaileak bat datozenak
 acl_asame=Erabiltzaile-izen bera
 acl_usersu=UID barrutian
 acl_spam=Erabiltzaile honek editatu dezakeen spam kontrol helbideak
+
 log_opts=Sendmail aukerak aldatu dira
 log_ports=Aldatu sareko portuak
 log_alias_create=$1 ezizena sortu da
@@ -680,6 +727,7 @@ log_delete_domains=$1 domeinuaren mapak ezabatu dira
 log_delete_accesses=$1 spam kontrol sarrerak ezabatu dira
 log_delete_generics=$1 irteerako helbideak ezabatu dira
 log_delete_mailers=$1 domeinu bideak ezabatu dira
+
 match_from=Noiztik: partiduak
 match_subject=Gaia: partiduak
 match_to=Nori: partiduak
@@ -699,6 +747,7 @@ match_!status=Egoera ez dator bat
 match_!body=Gorputza ez dator
 match_!size=Neurria baino txikiagoa da
 match_!headers=Goiburuak ez datoz bat
+
 features_title=Sendmail M4 konfigurazioa
 features_desc=Orrialde honetan $1 Sendmail M4 konfigurazio fitxategiaren sarrera garrantzitsuak agertzen dira. Bertan $2 konfigurazio fitxategia eraiki da.
 features_type=Sarrera mota
@@ -718,6 +767,7 @@ features_efeatures=Sendmail M4 konfigurazio-oinarriaren $2 direktorioa ez da zur
 features_econfig=Sendmail M4 oinarri direktorioaren eta M4 konfigurazio fitxategiaren kokapenak ez dira oraindik ezarri zure <a href='$1'>moduluaren konfigurazioan</a>. Sendmail iturritik instalatu baduzu, jatorrizko iturburu direktorioaren azpian egon beharko lukete.
 features_move=Mugitu
 features_manual=Editatu fitxategia eskuz
+
 feature_add=Gehitu Konfigurazio Sarrera
 feature_edit=Editatu Configuración sarrera
 feature_header=M4 konfiguraziorako sarreren xehetasunak
@@ -738,12 +788,15 @@ feature_emailer=$1 posta-zerbitzua dagoeneko badago
 feature_eostype=OS mota dagoeneko $1 gisa definitu da
 feature_manual=Editatu M4 fitxategia
 feature_mdesc=Orriak Sendmail M4 konfigurazio fitxategia $1 eskuz editatzeko aukera ematen du. Kontuz ibili, ez baita sinadura egiaztapenik egingo zure aldaketetan.
+
 feat_access_db=Spama kontrolatzeko fitxategia
 feat_virtusertable=Helbideen mapaketa
 feat_mailertable=Domeinu bideratzea
 feat_genericstable=Irteerako helbideak
 feat_domaintable=Domeinu-mapak
+
 mailer_local=Tokiko Unix entrega
+
 build_title=Eraiki Sendmail-en konfigurazioa
 build_em4=Sendmail konfigurazio fitxategia berreraikitzeko behar duzun $1 komandoa ez da zure sisteman aurkitu.
 build_ebuild=Huts egin du konfigurazioa eraikitzerakoan : $1 
@@ -752,13 +805,16 @@ build_rusure2=Kontuan izan Sendmail-en aldaketak egin badituzu Sendmail Aukerak 
 build_ok=Bai, ordezkatu orain
 build_diff=Ondorengo aldaketak zure Sendmail konfigurazio fitxategian egingo dira.
 build_nodiff=Zure sendmail konfigurazio fitxategia eguneratuta dago dagoeneko.
+
 stop_err=Ezin izan da sendagunea gelditu
 stop_ecannot=Ezin duzu sendmail-a gelditzea
 stop_epid=Sendmailak ez dirudi exekutatzen ari denik
 restart_epids=Ezin izan da bidali mezu elektronikorik
 restart_ekill=Huts egin du sendatze-prozesuak seinaleztatzerakoan : $1 
+
 start_err=Huts egin du sendmail-a abiaraztean
 start_ecannot=Ezin duzu bidali mezu elektronikoa hastea
+
 ports_title=Sareko portuak
 ports_name=Portuaren izena
 ports_addr=Helbidea entzun

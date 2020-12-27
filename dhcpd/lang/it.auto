@@ -64,12 +64,14 @@ index_match1=contiene
 index_match2=fiammiferi
 index_dhcpd=ISC DHCPd
 index_delete=Elimina selezionato
+
 butt_save=Salva
 butt_eco=Modifica opzioni client
 butt_vco=Visualizza le opzioni client
 butt_del=Elimina
 butt_create=Creare
 butt_leases=Elenco dei contratti di locazione
+
 esub_crheader=Crea sottorete
 esub_edheader=Modifica sottorete
 esub_tabhdr=Dettagli sottorete
@@ -83,12 +85,14 @@ esub_groups=Gruppi direttamente in questa sottorete
 esub_pools=Pool di indirizzi per sottorete
 esub_pool=Pool $1 
 esub_poolnone=Nessun pool di indirizzi definito
+
 esub_pooladd=Aggiungi un pool di indirizzi.
 esub_none=Nessuna
 esub_return=elenco subnet
 esub_retshar=rete condivisa
 esub_desc=Descrizione della sottorete
 esub_fopeer=Peer di failover
+
 esh_crheader=Crea rete condivisa
 esh_eheader=Modifica rete condivisa
 esh_tabhdr=Dettagli della rete condivisa
@@ -99,6 +103,7 @@ esh_subn=Sottoreti in questa rete condivisa
 esh_return=elenco subnet
 esh_pools=Pool di indirizzi per la rete condivisa
 esh_desc=Descrizione della rete condivisa
+
 ehost_crheader=Crea host
 ehost_eheader=Modifica host
 ehost_tabhdr=Dettagli host
@@ -119,6 +124,7 @@ ehost_retgroup=gruppo
 ehost_retsubn=sottorete
 ehost_retshar=rete condivisa
 ehost_desc=Descrizione dell'host
+
 egroup_crheader=Crea gruppo host
 egroup_eheader=Modifica gruppo host
 egroup_tblhdr=Dettagli del gruppo
@@ -129,6 +135,7 @@ egroup_return=elenco di host
 egroup_retsubn=sottorete
 egroup_retshar=rete condivisa
 egroup_desc=Descrizione del gruppo
+
 default=Predefinito
 secs=secondi
 none=Nessuna
@@ -157,20 +164,24 @@ listl_pc=Percentuale
 listl_err=Impossibile eliminare i contratti di locazione
 listl_enone=Nessuno selezionato
 listl_refresh=Aggiorna la lista
+
 restart_errmsg1=Impossibile riavviare dhcpd
 restart_errmsg2=Impossibile segnalare il processo
 start_failstart=Impossibile avviare dhcpd
 restart_conftext=Righe intorno a $1 in $2  :
+
 sgroup_faildel=Impossibile eliminare il gruppo
 sgroup_failsave=Impossibile salvare il gruppo
 sgroup_invassign=gruppo assegnato a una sezione errata
 sgroup_echanged=Il contenuto del file di configurazione è stato modificato. Riprova.
+
 shost_faildel=Impossibile eliminare l'host
 shost_failsave=Impossibile salvare l'host
 shost_invalidhn=non è un nome host valido
 shost_invalidhwa='$1' non è un indirizzo $2 valido
 shost_invalidaddr='$1' contiene un nome host o un indirizzo IP non valido
 shost_invassign=host assegnato a una sezione errata
+
 sopt_failsave=Impossibile salvare le opzioni client
 sopt_invalidip=non è un indirizzo IP valido
 sopt_invalidint=non è un numero intero
@@ -180,10 +191,12 @@ sopt_ednum='$1' non è un numero di opzione valido
 sopt_edtype='$1' non è un tipo di opzione valido
 sopt_ecval=Valore mancante per l'opzione personalizzata '$1'
 sopt_ecip=Il valore per l'opzione personalizzata '$1' deve essere un indirizzo IP
+
 sshared_faildel=Impossibile eliminare la rete condivisa
 sshared_failsave=Impossibile salvare la rete condivisa
 sshared_invalidsname=Nome della rete condivisa mancante o non valido.
 sshared_nosubnet=La rete condivisa '$1' non contiene alcuna sottorete.
+
 ssub_faildel=Impossibile eliminare la sottorete
 ssub_failsave=Impossibile salvare la sottorete
 ssub_invalidsubaddr=non è un indirizzo di sottorete valido
@@ -191,6 +204,7 @@ ssub_invalidnmask=non è una maschera di rete valida
 ssub_invalidipr=non è un indirizzo IP valido dell'intervallo
 ssub_nosubnet=La rete condivisa '$1' non contiene alcuna sottorete.
 ssub_invalidfopeer=non è un peer di failover valido
+
 plib_deflt=Tempo di noleggio predefinito
 plib_bfname=Nome file di avvio
 plib_maxlt=Tempo massimo di noleggio
@@ -244,6 +258,7 @@ plib_eexpr=Questa sezione della configurazione DHCP contiene l'espressione diret
 plib_auth_subnet=Il server è autorevole per questa sottorete?
 plib_auth_shared-network=Il server è autorevole per questa rete condivisa?
 plib_auth_global=Il server è autorevole per tutte le sottoreti?
+
 eopt_header=Opzioni client
 eopt_subtitle=Per sottorete $1 
 eopt_returnsub=sottorete
@@ -289,6 +304,7 @@ eopt_slpa=IP agente directory SLP
 eopt_slpaips=Solo questi IP?
 eopt_slps=Ambito del servizio SLP
 eopt_slpsonly=Solo questo scopo?
+
 log_apply=Modifiche applicate
 log_start=Server DHCP avviato
 log_stop=Server DHCP arrestato
@@ -311,6 +327,7 @@ log_options_group=Opzioni modificate per il gruppo di $1 host
 log_delete_lease=Leasing eliminato per $1 
 log_delete_subnets=Eliminate $1 subnet e reti condivise
 log_delete_hosts=$1 host e gruppi host eliminati
+
 keys_edit=Modifica chiave TSIG
 keys_create=Chiavi TSIG create
 keys_title=Chiavi DNS
@@ -321,12 +338,14 @@ keys_ecannot=Non puoi modificare le chiavi DNS
 keys_err=Impossibile salvare le chiavi DNS
 keys_ekey='$1' non è un ID chiave valido
 keys_esecret=Segreto codificato base-64 mancante o non valido per la chiave $1 
+
 pool_edit=Modifica pool di indirizzi
 pool_create=Pool di indirizzi creato
 pool_header=Opzioni del pool di indirizzi
 pool_allow=Clienti da consentire
 pool_deny=Clienti da negare
 pool_return=sottorete
+
 cdel_header=avvertimento
 cdel_shared1=rete condivisa
 cdel_shared2=rete condivisa
@@ -344,6 +363,7 @@ cdel_txt=L'eliminazione di $1 '$2' eliminerà anche i suoi contenuti:
 cdel_confirm=Vuoi veramente cancellare questo $1 ?
 cdel_eunknown=Errore sconosciuto
 cdel_return=elenco di host e rete
+
 eacl_aviol=Violazione del controllo di accesso
 eacl_np=Non hai i permessi per
 eacl_pdh=elimina host
@@ -369,6 +389,7 @@ eacl_pdl=cancellare i contratti di locazione
 eacl_psl=visualizzare i contratti di locazione
 eacl_pglob=modifica opzioni globali
 eacl_papply=riavvia questo servizio
+
 acl_apply=È possibile applicare le modifiche?
 acl_r_leases=È possibile visualizzare i contratti di locazione?
 acl_w_leases=È possibile rimuovere i contratti di locazione?
@@ -398,9 +419,11 @@ acl_err=Errore durante il salvataggio dell'elenco ACL
 acl_ernow=Se si desidera abilitare l'accesso in scrittura negli ACL globali per alcuni tipi di oggetti, è necessario abilitare anche l'accesso in lettura per questo tipo di oggetto.
 acl_normal=normale
 acl_paranoic=paranoico
+
 iface_title=Interfaccia di rete
 iface_desc=Il server DHCP può assegnare indirizzi IP solo su reti connesse a una delle interfacce selezionate di seguito. L'interfaccia di rete per tutte le subnet definite deve essere inclusa. Se non ne viene selezionato nessuno, il server DHCP tenterà di trovarne uno automaticamente.
 iface_listen=Ascolta su interfacce
+
 lookup_ehost=Non esiste un host con nome, indirizzo IP o indirizzo MAC $1 
 lookup_ehostname=Nessun nome host, indirizzo IP o indirizzo MAC immessi
 lookup_egroup=Non esiste alcun gruppo con il nome o il nome di dominio $1 
@@ -409,6 +432,7 @@ lookup_esubnet=Non esiste alcuna sottorete con l'indirizzo o l'indirizzo/mascher
 lookup_esubnetname=Nessun indirizzo di sottorete o indirizzo/maschera di rete immessi
 lookup_eshared=Non esiste una rete condivisa con il nome $1 
 lookup_esharedname=Nessun nome di rete condiviso inserito
+
 zone_key=Zone DNS
 index_addzone=Aggiungi una nuova zona DNS.
 index_zone=Zona
@@ -424,16 +448,21 @@ zone_faildel=Impossibile eliminare la zona
 zone_failsave=Impossibile salvare la zona
 zone_tsigkey=Chiave TSIG
 zone_ecannot=Non puoi modificare le zone DNS
+
 plib_clientupdates=I clienti possono aggiornare i propri record?
+
 text_title=dhcpd.conf
 text_editor=Editor di testo
 text_return=menu principale
 text_undo=disfare
 text_ecannot=Non è consentito modificare il file di configurazione
+
 index_buttetext=Modifica manualmente la configurazione
 index_text=Modifica manualmente il file di configurazione
+
 stop_err=Impossibile arrestare il server DHCP
 stop_ekill=Non correndo!
+
 sdelete_err=Impossibile eliminare subnet e reti condivise
 sdelete_enone=Nessuno selezionato
 sdelete_title=Elimina sottoreti e reti condivise
@@ -441,6 +470,7 @@ sdelete_rusure1=Vuoi eliminare le sottoreti $1 selezionate e le reti condivise $
 sdelete_rusure2=Sei sicuro di voler eliminare le $1 sottoreti selezionate? Anche qualsiasi altro oggetto all'interno delle sottoreti andrà perso.
 sdelete_rusure3=Sei sicuro di voler eliminare le $2 reti condivise selezionate? Anche eventuali subnet o altri oggetti all'interno delle reti andranno persi.
 sdelete_ok=Cancella ora
+
 hdelete_err=Impossibile eliminare host e gruppi
 hdelete_enone=Nessuno selezionato
 hdelete_title=Elimina host e gruppi

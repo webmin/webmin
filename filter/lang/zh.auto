@@ -45,6 +45,7 @@ index_ondate=日期
 index_charset=自动回复消息字符集
 index_subject=自动回复邮件主题
 index_nowebmin=该模块仅在Usermin中使用。如果在Webmin中可见，则说明您使用的主题不完整。
+
 edit_title1=创建过滤器
 edit_title2=编辑过滤器
 edit_header1=过滤条件
@@ -71,6 +72,7 @@ edit_amode7=保存到名为的新文件夹
 edit_nobounce=禁止转发退回邮件
 edit_apply=在文件夹中显示匹配的电子邮件：
 edit_move=应用于文件夹中的电子邮件：
+
 save_err=保存过滤器失败
 save_egone=过滤器不再存在！
 save_econdheader=电子邮件标题缺失或无效
@@ -89,8 +91,10 @@ save_enewfolder3=具有相同名称的文件夹已存在
 save_estart=自动回复开始日期无效
 save_eend=自动回复结束日期无效
 save_echarset=自动回复字符集缺失或无效
+
 delete_err=删除过滤器失败
 delete_enone=未选择
+
 aliases_type1=地址1
 aliases_type2=文件 $1中的地址
 aliases_type3=文件 $1
@@ -101,6 +105,7 @@ aliases_your=您的邮箱
 aliases_delete=删除邮件
 aliases_other=用户 $1的邮箱
 aliases_auto=具有消息 $1的自动回复
+
 auto_title=电子邮件自动回复
 auto_header=自动电子邮件回复选项
 auto_enabled=启用自动回复？
@@ -111,12 +116,14 @@ auto_charsetdef=从当前语言
 auto_charsetother=其他字符集
 auto_period=最小回复间隔
 auto_err=保存自动回复失败
+
 forward_title=转发邮件
 forward_header=电子邮件转发选项
 forward_enabled=启用电子邮件转发？
 forward_to=转发到地址
 forward_cont=还正常发货吗？
 forward_err=保存电子邮件转发失败
+
 move_err=无法套用筛选器
 move_esrc=源文件夹 $1不存在！
 move_edest=目标文件夹 $1不存在！

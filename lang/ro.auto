@@ -1,21 +1,29 @@
 main_title3=Webmin $1 ($2)
 main_unused=Module neutilizate
 main_refreshmods=Module de actualizare
+
 category_=Instrumente
+
 longcategory_=Module care efectuează alte sarcini diverse
+
 fail=A eșuat
 euserdbacl=Nu a reușit să preia ACL-ul utilizatorului : $1
 euserdbacl2=Actualizarea ACL a utilizatorului nu a reușit : $1
 egroupdbacl=A eșuat în preluarea grupului ACL : $1
 egroupdbacl2=Actualizarea ACL a grupului nu a reușit : $1
+
 chooser_eopen=Listarea a eșuat : $1
+
 config_emodule=Modulul nu există
+
 referer_fix1=If this is a legitimate link, you can allow links from this URL as follows :<ul><li>Login to Webmin normally.</li><li>Go to the <b>Webmin Configuration</b> module.</li><li>Click on the Trusted Referrers icon.</li><li>Enter the hostname $1 into the <b>Trusted websites</b> field, and click <b>Save</b></li>.</ul>
 referer_fix2=Alternately, you can configure Webmin to allow this link from the command line by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Add the line <tt>referers=$1</tt> at the end, or if a <tt>referers</tt> line already exists add <tt>$1</tt> to it.</li><li>Save the file.</li></ul>
 referer_fix3u=Asigurați-vă că browserul dvs. este configurat pentru a trimite informații referrer, astfel încât acestea să poată fi verificate de Webmin.
 referer_fix2u=Alternately, you can configure Webmin to allow links from unknown referers by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Find the line <tt>referers_none=1</tt> and change it to <tt>referers_none=0</tt>.</li><li>Save the file.</li></ul><p></p>WARNING - this has the side effect of opening your system up to reflected XSS attacks and so is not recommended!
+
 session_twofactor=Jeton cu doi factori
 session_twofailed=Autentificarea cu doi factori a eșuat : $1
+
 acl_otherdirs=Alte directoare vizibile în selectorul de fișiere
 acl_readonly2=Utilizatorul este în modul demo?
 acl_readonlyyes=Da (Este posibil ca unele module să nu fie disponibile)
@@ -23,14 +31,19 @@ acl_negative=Acordă permisiuni de module noi utilizatorului?
 acl_fileunix=Căutați fișiere ca utilizator Unix
 acl_sameunix=La fel ca autentificarea Webmin
 acl_webminsearch=Afișați câmpul de căutare Webmin?
+
 emodulecheck=Modulul $1 nu este disponibil pe sistemul dvs.
 elock_tries2=Nu a reușit să blocheze fișierul $1 după $2 minute. Ultima eroare a fost : $3
+
 progress_size2=Descărcarea $1 ($2) ..
 progress_datan=Primite $1 ($2 %)
 progress_data2n=Primit $1
+
 password_temp=Trebuie să selectați o nouă parolă pentru a înlocui autentificarea dvs. temporară.
 password_enewpass=Parola nouă nu este permisă : $1
+
 ui_filterbox=Tastați filtrul ..
+
 uptracker_title=Încărcarea fișierului
 uptracker_file=Nume de fișier
 uptracker_size=mărimea
@@ -38,6 +51,7 @@ uptracker_pc=progres
 uptracker_eid=Nu a fost specificat ID-ul de încărcare
 uptracker_eid2=ID-ul de încărcare nu este valid!
 uptracker_of=$1 din $2
+
 wsearch_title=Căutați $1
 wsearch_modt=Modul
 wsearch_mtitle=Numele modulului
@@ -65,6 +79,7 @@ wsearch_hmod=Modul
 wsearch_moddir=Calea URL /$1/
 wsearch_searching=Căutând $1 ..
 wsearch_found=găsite $1 rezultate :
+
 sql_emysqldriver=Nu a putut încărca driverul DBI MySQL
 sql_emysqlconnect=Eroare la conectarea la baza de date MySQL : $1
 sql_epostgresqldriver=Nu s-a putut încărca driverul DBI PostgreSQL
@@ -73,6 +88,7 @@ sql_eldapdriver=Nu a putut încărca modulul perl LDAP
 sql_eldapconnect=Nu a reușit conectarea la serverul LDAP $1
 sql_eldaptls=Nu a reușit să înceapă criptarea TLS pentru LDAP : $1
 sql_eldaplogin=Eroare la autentificarea pe serverul LDAP ca $1 : $2 
+
 log_email_subject=Acțiune Webmin în $1
 log_email_global=Webmin acțiune globală
 log_email_desc=Acest e-mail a fost trimis de Webmin ca răspuns la o acțiune a utilizatorului.
@@ -84,6 +100,7 @@ log_email_user=Realizat de utilizator: $1
 log_email_script=Script Webmin: $1
 log_email_session=ID-ul sesiunii: $1
 log_email_remote=Adresa clientului: $1
+
 nice_size_PB=PB
 nice_size_PiB=Pib
 nice_size_TB=TB
@@ -95,7 +112,9 @@ nice_size_MiB=MiB
 nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=bytes
+
 langauto_include=Includeți traduceri automate
+
 file_truncated_message=a preluat $1 din date, a trunchiat $2 din $3 
 file_truncated_message_head=preluat începutul $1 din date, trunchiat $2 din $3 
 file_truncated_message_tail=a fost preluat sfârșitul $1 din date, trunchiat $2 din $3 

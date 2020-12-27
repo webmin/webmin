@@ -19,6 +19,7 @@ index_applymsg=点击此按钮发送一个 SIGHUP 信号到正在运行的 <tt>x
 index_start=启动 Xinetd
 index_startmsg=点击此按钮以当前的配置来启动 Xinetd 服务器
 index_econf=Xinetd 配置文件 $1 不存在。可能尚未安装或者您的<a href='$2'>模块配置</a>有误。
+
 serv_create=创建 Internet 服务
 serv_edit=编辑 Internet 服务
 serv_header1=服务网络选项
@@ -71,18 +72,23 @@ serv_enice=未输入或无效的优先级(nice level)
 serv_ecps0=未输入或无效的每秒连接数
 serv_ecps1=未输入或无效的延迟
 serv_etimes=访问时间的格式必须是 HH:MM-HH:MM
+
 sock_stream=流
 sock_dgram=数据报
 sock_raw=原数据报
 sock_seqpacket=连续的数据报
+
 proto_=默认
 proto_ip=IP (Internet 协议)
 proto_tcp=TCP (传输控制协议)
 proto_udp=UDP (用户数据报协议)
+
 restart_err=应用改变值失败
 restart_ekill=向 PID $1 发送 HUP 信号失败 : $2
+
 start_err=启动 xinetd 失败
 start_estart=$1 失败 : $2
+
 defs_title=默认选项
 defs_header=默认服务选项
 defs_log=Xinetd 日志模式
@@ -107,6 +113,7 @@ defs_err=保存默认选项失败
 defs_efile=未输入或无效的日志文件名
 defs_esoft=未输入或无效的软性限制
 defs_ehard=未输入或无效的硬性限制
+
 log_create_serv=创建了 $2 服务 $1
 log_modify_serv=修改了 $2 服务 $1
 log_delete_serv=删除了 $2 服务 $1

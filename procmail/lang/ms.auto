@@ -32,6 +32,7 @@ index_man=Secara automatik Edit Konfigurasi
 index_mandesc=Terus mengedit fail konfigurasi Procmail secara langsung, untuk membuat peraturan, pemboleh ubah dan blok anda sendiri.
 index_ecmd=Program Procmail $1 tidak dijumpai pada sistem anda. Sama ada ia tidak dipasang, atau konfigurasi modul <a href='$2'></a> tidak betul.
 index_delete=Padam Tindakan Terpilih
+
 edit_title2=Edit Tindakan
 edit_title1=Buat Tindakan
 edit_header1=Butiran tindakan penghantaran
@@ -67,6 +68,7 @@ edit_none=Tiada
 edit_lock=Fail spesifik
 edit_ctype=Jenis keadaan
 edit_cvalue=Ungkapan atau arahan yang kerap
+
 save_err=Gagal menyimpan tindakan
 save_eaction_0=Fail yang hilang untuk dilampirkan
 save_eaction_1=Folder MH hilang untuk menulis ke
@@ -79,6 +81,7 @@ save_elockfile=Nama fail kunci hilang
 save_esize=Saiz e-mel yang hilang atau tidak sah untuk keadaan $1 
 save_ere=Ungkapan biasa yang hilang untuk keadaan $1 
 save_eshell=Perintah hilang untuk keadaan $1 
+
 env_title1=Buat Pembolehubah
 env_title2=Edit Variabel
 env_header=Pembolehubah persekitaran Procmail
@@ -86,15 +89,19 @@ env_name=Nama berubah
 env_value=Nilai
 env_err=Gagal menyimpan pembolehubah
 env_ename=Nama pembolehubah hilang atau tidak sah
+
 inc_title1=Tambah Sertakan Fail
 inc_title2=Edit Sertakan Fail
 inc_header=Termasuk fail peraturan procmail
 inc_inc=Fail termasuk
 inc_einc=Tidak termasuk fail yang dimasukkan
+
 config_eline=Baris tidak diketahui $1 dalam $2 : $3 
+
 manual_title=Edit Konfigurasi
 manual_desc=Halaman ini boleh digunakan untuk mengedit fail konfigurasi Procmail secara manual $1. Berhati-hati, kerana tiada pemeriksaan sintaks akan dilakukan.
 manual_edata=Tiada data yang dibekalkan oleh penyemak imbas anda!
+
 log_create_rec=Resipi yang dicipta kepada $1 
 log_delete_rec=Resipi dipadamkan ke $1 
 log_modify_rec=Resipi diubahsuai ke $1 
@@ -114,7 +121,9 @@ log_delete_inc=Dihapus termasuk fail $1
 log_manual=Konfigurasi disunting secara manual
 log_up=Memindahkan kemasukan ke atas
 log_down=Memindahkan entri ke bawah
+
 delete_err=Gagal memadamkan tindakan
 delete_enone=Tiada yang dipilih
+
 check_epostfix=Procmail tidak didayakan dalam konfigurasi Postfix anda. Fail konfigurasi <tt>$2</tt> mestilah mempunyai set <tt>$1</tt> kepada <tt>$3</tt>.
 check_esendmail=Sendmail bukan persediaan untuk menggunakan Procmail untuk penghantaran tempatan. Ini boleh dikonfigurasikan dalam modul <a href='$1'>Pelayan Mel Sendmail</a> Webmin.

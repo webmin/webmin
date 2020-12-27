@@ -4,6 +4,7 @@ index_ro_rw=所有主機都具有讀取權限，所選主機具有寫入權限
 index_sel_rw=選定主機寫訪問權限
 index_all_rw=所有主機寫訪問
 index_sel_root=選定主機的根訪問權限
+
 edit_security=出口安全
 edit_sel_ro=列出主機的讀取權限
 edit_all_ro=所有主機讀取訪問
@@ -18,7 +19,9 @@ edit_anon_access=匿名用戶
 edit_anon_notset=沒有設置
 edit_anon_noaccess=無法進入
 edit_async=異步寫入
+
 save_enohost='$1'-您未列出任何主機
+
 log_modify=修改後的NFS導出 $1
 log_modify_l=已將NFS導出 $1更改為 $2
 log_delete=已刪除NFS導出 $1

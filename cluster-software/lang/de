@@ -21,6 +21,7 @@ index_thost=Hostname
 index_tdesc=Beschreibung
 index_tcount=Pakete
 index_ttype=Betriebssystemtyp
+
 install_err=Konnte Paket nicht installieren
 install_elocal=Es wurde keine lokale Datei angegeben
 install_elocal2='$1' existiert nicht
@@ -37,6 +38,7 @@ install_ok=Installiere
 install_erus=Dieser Server benutzt einen anderen Update-Mechanismus als der Masterserver ($1 im Gegensatz zu $2)
 install_eupdate=Ein Fehler ist beim Installieren der spezifizierten Updates aufgetreten
 install_ealready=Bereits installiert
+
 add_title=Server hinzufügen
 add_msg=Füge $1 hinzu ..
 add_gmsg=Füge Server in die Gruppe $1 ein ...
@@ -45,6 +47,7 @@ add_gerr=Konnte Gruppe nicht hinzufügen
 add_echeck=Auf dem Server $1 ist das Webmin-Software-Modul nicht installiert.
 add_esystem=Der Server $1 benutzt nicht das gleiche Paketsystem wie dieser Rechner
 add_ok=$1 mit $2 Paketen inventarisiert und hinzugefügt
+
 search_title=Paketsuche
 search_nomatch=Keine Pakete gefunden für $1
 search_none=Kein(es)
@@ -56,6 +59,7 @@ search_return=Suchergebnisse
 search_delete=Deinstalliere ausgewählte Pakete von:
 search_selall=Alle auswählen
 search_invert=Auswahl umkehren
+
 host_title=Server im Software-Management
 host_header=Details zu den Servern im Software-Management
 host_name=Hostname
@@ -70,6 +74,7 @@ host_count=Installierte Pakete
 host_os=Betriebssystem von Webmin übermittelt
 host_return=Serverdetails
 host_system=Paketsystem
+
 edit_title=Bearbeite Paket
 edit_details=Paket-Details von $1
 edit_desc=Beschreibung
@@ -88,6 +93,7 @@ edit_all=&lt;Alle Server&gt;
 edit_donthave=&lt;Server, die es noch nicht haben&gt;
 edit_have=&lt;Rechner haben es bereits&gt;
 edit_group=Mitglieder von $1
+
 list_title=Paketdateien
 list_files=Dateien für Paket $1 auf $2
 list_path=Pfad
@@ -97,6 +103,7 @@ list_type=Typ
 list_size=Größe
 list_status=Status
 list_ok=OK
+
 refresh_title=Erneuere Paketliste
 refresh_header=Frage die Paketliste von allen Servern neu ab ...
 refresh_header4=Neuabfrage der Paketliste von Mitgliedern von $2 ..
@@ -108,6 +115,7 @@ refresh_4=Erneuere $1 (keine Änderungen)
 refresh_done=.. erledigt
 refresh_del=Lösche $1 von der Serverliste
 refresh_failed=Konnte nicht erneuern $1 : $2
+
 delete_err=Konnte Paket $1 nicht löschen
 delete_epack=Das Paket $1 existiert nicht
 delete_title=Paket löschen
@@ -120,6 +128,7 @@ delete_error=Fehler beim Löschen von $1 : $2
 delete_success=Gelöscht von $1.
 delete_done=.. erledigt
 delete_header=Lösche Paket $1 ..
+
 do_title=Installiere Paket
 do_header=Installiere $1 auf allen Rechnern ...
 do_header3=Installiere $1 auf Servern, wo es noch nicht installiert ist ...
@@ -140,6 +149,7 @@ do_arch=Architektur
 do_inst=Installiert
 do_none=Kein(es)
 do_edeleted=Die Installationsdatei wurde gelöscht - kehren Sie zum Modulindex zurück und versuchen Sie es erneut.
+
 compare_title=Pakete vergleichen
 compare_desc=Hier können Sie die Software-Pakete ermitteln, die auf den verschiedenen Servern installiert sind. Damit können Sie unterschiedliche Software-Version einfach erkennen, um diese vielleicht auf den gleichen Stand zu bringen.
 compare_hosts=Server zum Vergleichen
@@ -154,6 +164,7 @@ compare_showall=Pakete zum Anzeigen
 compare_showall1=Alle
 compare_showall0=Nur Unterschiede
 compare_got=OK
+
 deletes_err=Fehlgeschlagen Pakete zu löschen
 deletes_enone=Keine Pakete ausgewählt
 deletes_title=Lösche Pakete

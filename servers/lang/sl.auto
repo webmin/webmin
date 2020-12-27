@@ -22,6 +22,7 @@ index_auto=Samodejno iskanje strežnikov
 index_automsg=Kliknite ta gumb, da nastavite samodejno občasno odkrivanje novih strežnikov Webmin v vašem omrežju.
 index_search=Prikaži strežnike, ki se ujemajo:
 index_ok=Iskanje
+
 edit_title=Uredi strežnik
 create_title=Registrirajte strežnik
 edit_details=Podrobnosti o strežniku
@@ -57,6 +58,7 @@ edit_baduser=Prijava je zavrnjena
 edit_invalid=Uporabnik ne more izvajati RPC-ja
 edit_version=Zaženi Webmin $1 
 edit_same=Na voljo samo v načinu avtentifikacije seje in ko je geslo dostopno programom Webmin.
+
 save_err=Strežnika ni bilo mogoče shraniti
 save_ehost=Manjkajoče ali neveljavno ime gostitelja
 save_ehost2=Gostitelj ne obstaja
@@ -67,6 +69,7 @@ save_epass=Manjka geslo
 save_egroup=Manjka ime skupine
 save_elogin=Neveljavna prijava ali geslo za gostitelja
 save_egroup2=Novo ime skupine ni veljavno
+
 find_title=Poišči strežnike
 find_new=Najden je nov strežnik pri $1 
 find_but=Najden je nov strežnik pri $1, vendar preverjanje pristnosti ni uspelo : $2 
@@ -81,16 +84,20 @@ find_ecannot=Ni vam dovoljeno najti strežnikov
 find_scanning=Optično branje strežnikov v omrežju $1.
 find_broading=Oddajanje strežnikov na naslovih $1 ..
 find_eport=Manjkajoča ali neveljavna številka vrat
+
 log_modify=Spremenjen strežnik $1 
 log_create=Registrirani strežnik $1 
 log_delete=Izbrisan strežnik $1 
 log_find=Najden strežnik $1 
 log_deletes=Izbrisani $1 strežniki
+
 link_elogin=Za $1 kot $2 ni bilo mogoče prijaviti
 link_ecannot=Tega strežnika ne smete uporabljati
 link_essl=Nimate nameščene knjižnice perl Net::SSLeay
 link_eautologin=Neveljavna prijava ali geslo za $1. <a href='$2'>Kliknite tukaj</a>, da poskusite znova.
+
 lib_other=Drugo
+
 acl_edit=Ali lahko urejate strežnike?
 acl_find=Ali lahko najdete strežnike?
 acl_servers=Lahko uporablja strežnike
@@ -102,6 +109,7 @@ acl_forcefast=Prisiliti hitri način RPC na privzeto?
 acl_forcetype=Prisiliti vrsto OS na privzeto?
 acl_forcelink=Prisiliti vrsto prijave za privzeto?
 acl_links=Ali se lahko povežete s strežniki?
+
 login_title=Prijava v strežnik
 login_desc=Za prijavo na strežnik Webmin $1 morate navesti uporabniško ime in geslo.
 login_header=Preverjanje pristnosti spletnih strani
@@ -109,13 +117,16 @@ login_user=Uporabniško ime
 login_pass=Geslo
 login_login=Vpiši se
 login_esame=Možnost uporabe iste prijave kot ta strežnik je mogoče uporabiti le, kadar ni v načinu overjanja seje in ko je geslo dostopno programom Webmin.
+
 this_server=ta strežnik
+
 delete_err=Brisanje strežnikov ni uspelo
 delete_enone=Izbrana ni nobena
 delete_ecannot=Nimate dovoljenja za brisanje strežnikov
 delete_title=Izbriši strežnike
 delete_rusure=Ali ste prepričani, da želite odstraniti $1 izbrane strežnike?
 delete_confirm=Izbriši zdaj
+
 auto_title=Samodejno iskanje strežnikov
 auto_header=Možnosti samodejne registracije strežnika
 auto_sched=Preverite nove strežnike?
@@ -141,8 +152,10 @@ auto_smtp=Pošlji preko SMTP strežnika
 auto_self=Ta sistem
 auto_esmtp=Manjkajoči ali neveljavni strežnik SMTP
 auto_findself=Registrirate tudi ta sistem?
+
 config_deftype=Privzeta vrsta sistema
 config_typeauto=Samodejno
+
 email_regsubject=Sistem $1 je registriran
 email_reg=Sistem $1 je bil samodejno registriran.
 email_unregsubject=Sistem $1 neregistriran

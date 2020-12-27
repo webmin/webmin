@@ -12,6 +12,7 @@ index_sdesc=Popis akcie obsahuje
 index_shost=Zdrojový webový server
 index_long=Zobraziť úplné popisy akcií?
 index_global=&lt;Nie v žiadnom module&gt;
+
 search_none2=Vyhľadávaniu akcií nezodpovedajú žiadne akcie
 search_critd=kde popis obsahuje <tt>$1</tt>
 search_global=nikto
@@ -25,6 +26,7 @@ search_global_baduser=Zlé používateľské meno
 search_global_badpass=Zlé heslo
 search_global_twofactor=Neplatný token dvojfaktora
 search_csv=Exportovať ako súbor CSV.
+
 view_rollback2=Vrátiť späť vybrané súbory
 view_anno=Anotácia záznamu v denníku
 view_output=Obsah webovej stránky
@@ -32,6 +34,9 @@ view_files=Súbory sa zmenili a spustili sa príkazy
 view_raw=Nespracované údaje denníka
 view_rawname=Názov parametra
 view_rawvalue=Hodnota parametra
+
 acl_self=Iba ja
+
 rollback_enone=Neboli vybrané žiadne súbory
+
 log_rollback=Vrátenie akcie $1 v module $2 

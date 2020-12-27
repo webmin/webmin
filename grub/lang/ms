@@ -8,6 +8,7 @@ index_none=Tiada pilihan boot yang dinyatakan. Pastikan anda menambah sekurangny
 index_efile=Fail menu GRUB $1 tidak dijumpai pada sistem anda. Mungkin GRUB tidak dipasang, atau <a href='$2'>modul konfigurasi</a> tidak betul.
 index_epath=Pelaksana GRUB $1 tidak ditemui pada sistem anda. Mungkin GRUB tidak dipasang, atau <a href='$2'>modul konfigurasi</a> tidak betul.
 index_return=senarai pilihan
+
 title_add=Tambah Pilihan Boot
 title_edit=Sunting Pilihan Boot
 title_header=Butiran pilihan menu boot
@@ -36,6 +37,7 @@ title_echain=Fail chainloader hilang atau tidak sah
 title_edev=Pemetakan root pada peranti $1 tidak disokong
 title_einitrd=Hilang nama fail awalan ramdisk
 title_lock=Kata laluan dikunci?
+
 global_title=Pilihan Global
 global_header=Pilihan menu boot global
 global_default=Pilihan boot lalai
@@ -56,12 +58,14 @@ global_edev=Pemasangan disk/pemetakan $1 tidak disokong
 global_eother=Disk/pemetakan hilang atau tidak sah
 global_epassword=Kata laluan boot  hilang atau tidak sah
 global_epasswordfile=Nama fail menu alternatif hilang
+
 install_title=Pasang GRUB
 install_err=Gagal untuk memasang GRUB
 install_efind=Tidak dapat mencari fail menu
 install_desc=Memasang GRUB pada $1 dengan arahan $2 dan $3 ..
 install_ok=.. pemasangan selesai.
 install_failed=.. pemasangan gagal!
+
 log_create_title=Mencipta pilihan boot $1
 log_delete_title=Memadam pilihan boot $1
 log_modify_title=Mengubahsuai pilihan boot $1

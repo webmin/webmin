@@ -10,6 +10,7 @@ index_actform=形成
 index_actrun=跑
 index_actsql=形成
 index_acted=打开
+
 edit_desc2=HTML说明
 edit_id=命令ID
 edit_dir=在目录中运行
@@ -39,6 +40,7 @@ edit_format4=尽可能下载
 edit_servers=在Webmin服务器上运行
 edit_this=这个服务器
 edit_clone=克隆
+
 save_edir=目录丢失或无效
 save_eorder=主页上的订单必须为数字
 save_etimeout=最长等待时间缺失或无效
@@ -46,6 +48,7 @@ save_eusermin=无法在Usermin上运行在其他服务器上运行的命令
 save_eformat=无效的输出MIME类型
 save_eopts=参数 $1缺少选项文件
 save_eopts2=选项文件或参数 $1的默认值不能包含：
+
 run_out2=命令..的输出
 run_outon=在 $2上从 $1输出。
 run_out2on=$2..上命令的输出
@@ -55,11 +58,14 @@ run_eupload=没有选择要上传的文件
 run_emust=参数“$1”的值缺失
 run_timeout=$1秒超时之前命令未能完成。
 run_failed=命令失败，退出状态为 $1
+
 log_modify_edit=修改后的文件编辑器 $1
 log_create_edit=已创建文件编辑器 $1
 log_delete_edit=删除文件编辑器 $1
 log_save_edit=保存的文件 $1
+
 acl_cexcept=除了选定的所有。
+
 file_ecannot=您无权编辑文件
 fcreate_title=创建文件编辑器
 fedit_title=编辑文件编辑器
@@ -83,6 +89,7 @@ file_egroup=群组名称缺失或无效
 file_eperms=八进制权限缺失或无效
 file_envs=用文件名代替环境变量？
 file_id=编辑者编号
+
 view_err=无法编辑文件
 view_ecannot=您无权编辑此文件
 view_title=编辑档案
@@ -91,10 +98,12 @@ view_header=编辑文件 $1
 view_ebeforeedit=编辑前命令失败： $1
 view_ebefore=保存前命令失败： $1
 view_eafter=后保存命令失败： $1
+
 form_ecannot=您不允许运行此命令
 form_title=执行命令
 form_exec=执行
 form_edit=编辑
+
 sql_title1=创建SQL命令
 sql_title2=编辑SQL命令
 sql_header=SQL命令详细信息
@@ -110,6 +119,7 @@ sql_err=无法保存SQL命令
 sql_esql=没有输入SQL
 sql_ehost=数据库服务器主机丢失或无效
 sql_edb=缺少或无效的数据库名称
+
 srun_title=执行SQL命令
 srun_err=无法执行SQL命令
 srun_edriver=无法加载DBI驱动程序

@@ -25,6 +25,7 @@ index_resetdesc=Egin klik botoi honetan lehendik dagoen suebakiaren arau guztiak
 index_cluster=Kluster zerbitzariak
 index_clusterdesc=Egin klik botoi honetan Webmin zerbitzari osagarriak konfiguratzeko zein suebakiaren konfigurazioa automatikoki kopiatuko den.
 index_return=suebakiaren arauak
+
 index_num=Num
 index_action=Ekintza
 index_desc=baldintza
@@ -37,6 +38,7 @@ index_delete=Ezabatu Hautatuta
 index_existing=Webminek $1 IPFW suebakiaren arauak hauteman ditu erabiltzen ari direnak, $2 fitxategian erregistratuta ez daudenak. Arau hauek seguruenik script batetatik konfiguratu ziren, modulu honek ez daki irakurtzen eta editatzen. <p> Modulu hau zure IPFW suebakia kudeatzeko erabili nahi baduzu, egin klik beheko botoian lehendik dauden arauak gordetzeko fitxategi bihurtzeko. eta, ondoren, desgaitu zure firewall gidoia.
 index_saveex=Gorde suebakiaren arauak
 index_headerex=Existitzen den suebakiaren konfigurazioa
+
 action_allow=<font color=#00aa00>Baimendu</font>
 action_deny=<font color=#ff0000>Drop</font>
 action_reject=<font color=#ff4400>Ezetsi</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>Paketea botatzea</font>
 laction_reject=<font color=#ff4400>ICMP arbuiatzea</font>
 laction_reset=<font color=#ff4400>TCP konexioa berrezarri</font>
 laction_skipto=Saltatu arautzera
+
 edit_title1=Sortu araua
 edit_title2=Editatu $1 araua
 edit_header1=Arauaren ekintza
@@ -114,6 +117,7 @@ edit_src-addr=Iturriaren helbidetik ..
 edit_src-port=Iturburu portutik
 edit_dst-addr=Helmuga helbidera ..
 edit_dst-port=Helmugara ..
+
 save_err=Huts egin du araua gordetzean
 save_enum=Arau zenbaki falta edo baliogabea
 save_eskipto=Arau kopurua falta da edo baliogabea da
@@ -144,7 +148,9 @@ save_etcpflags=TCP banderak protokoloa TCP bada bakarrik zehaztu daiteke
 save_elimit=Gehieneko muga falta edo baliogabea
 save_edstport=Helmugako ataka falta edo baliogabea
 save_esrcport=Iturri edo portu baliogabea falta da
+
 apply_err=Ezin izan da konfigurazioa aplikatu
+
 desc_if=$1 bada
 desc_and=eta
 desc_always=beti
@@ -191,6 +197,7 @@ desc_where=$1 non
 desc_all=pakete guztientzat
 desc_in=paketeak sarrerakoak dira
 desc_out=pakete irteera dago
+
 log_create_rule=$1 araua sortu da
 log_delete_rule=$1 araua ezabatu da
 log_modify_rule=$1 araua aldatu da
@@ -206,6 +213,7 @@ log_convert=Bihurketa firewall aktiboko arauak
 log_setup=Egin da suebakiaren hasierako konfigurazioa
 log_unapply=Firewall-en konfigurazioa berreskuratu da
 log_delsel=$1 arauak ezabatu dira
+
 cluster_title=Firewall Zerbitzari klusterrak
 cluster_none=Ez da oraindik zerbitzaririk gehitu firewall klusterra.
 cluster_host=hostname
@@ -216,6 +224,7 @@ cluster_gadd=Gehitu zerbitzariak taldean
 cluster_need=Saioa hasi eta pasahitza duten zerbitzariak gehitu behar dituzu Webmin Servers Index moduluan hemen kudeatu aurretik.
 cluster_return=kluster zerbitzariak
 cluster_delete=Kendu Hautatuta
+
 add_title=Gehitu zerbitzariak
 add_msg=$1 gehitzen ..
 add_gmsg=Zerbitzariak gehitzen $1 taldean.

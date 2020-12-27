@@ -21,6 +21,7 @@ index_thost=نام میزبان
 index_tdesc=شرح
 index_tcount=بسته ها
 index_ttype=نوع سیستم عامل
+
 install_err=نصب بسته انجام نشد
 install_elocal=هیچ پرونده محلی داده نشده است
 install_elocal2="$1" وجود ندارد
@@ -37,6 +38,7 @@ install_ok=نصب
 install_erus=این سرور از یک سیستم بروزرسانی متفاوت برای سرور اصلی استفاده می کند ($1 در مقابل$2)
 install_eupdate=هنگام نصب به روزرسانی های مشخص شده خطایی روی داد
 install_ealready=نسخه$1 قبلاً نصب شده است
+
 add_title=اضافه کردن سرورها
 add_msg=افزودن$1 ..
 add_gmsg=افزودن سرورها به گروه$1 ..
@@ -45,6 +47,7 @@ add_gerr=افزودن گروه انجام نشد
 add_echeck=سرور$1 ماژول بسته های نرم افزاری را ندارد
 add_esystem=سرور$1 از همان سیستم بسته بندی مشابه این دستگاه استفاده نمی کند
 add_ok=$1 با بسته های$2 اضافه شد.
+
 search_title=جستجوی بسته
 search_nomatch=هیچ بسته ای با$1 مطابقت ندارد
 search_none=هیچ یک
@@ -56,6 +59,7 @@ search_return=نتایج جستجو
 search_delete=پاک کردن بسته های منتخب از:
 search_selall=انتخاب همه
 search_invert=انتخاب معکوس
+
 host_title=سرور مدیریت شده
 host_header=جزئیات سرور نرم افزار را مدیریت می کند
 host_name=نام میزبان
@@ -70,6 +74,7 @@ host_count=بسته های نصب شده
 host_os=سیستم عامل از Webmin
 host_return=جزئیات سرور
 host_system=سیستم بسته بندی
+
 edit_title=ویرایش بسته
 edit_details=جزئیات بسته بندی از$1
 edit_desc=شرح
@@ -88,6 +93,7 @@ edit_all=&lt;همه میزبانها&gt;
 edit_donthave=&lt;میزبان هایی که آن را ندارند&gt;
 edit_have=&lt;میزبان هایی که دارای آن هستند&gt;
 edit_group=اعضای$1
+
 list_title=پرونده های بسته بندی
 list_files=پرونده ها برای بسته بندی$1 از$2
 list_path=مسیر
@@ -97,6 +103,7 @@ list_type=تایپ کنید
 list_size=اندازه
 list_status=وضعیت
 list_ok=خوب
+
 refresh_title=لیست های بسته بندی را تازه کنید
 refresh_header=درخواست مجدد لیست های بسته از همه سرورها ..
 refresh_header4=درخواست مجدد لیست های بسته از اعضای$2 ..
@@ -108,6 +115,7 @@ refresh_4=تجدید$1 (بدون تغییر)
 refresh_done=.. انجام شده
 refresh_del=$1 از لیست سرور حذف شد
 refresh_failed=به روزرسانی $1 : $2 انجام نشد
+
 delete_err=پاک کردن بسته$1 انجام نشد
 delete_epack=بسته$1 وجود ندارد
 delete_title=پاک کردن بسته
@@ -120,6 +128,7 @@ delete_error=حذف از $1 : $2 انجام نشد
 delete_success=از$1 حذف شد
 delete_done=.. انجام شده
 delete_header=حذف بسته$1 ..
+
 do_title=بسته را نصب کنید
 do_header=نصب$1 در همه میزبان ها ..
 do_header3=نصب$1 روی میزبانهایی که هنوز آن را ندارند ..
@@ -140,6 +149,7 @@ do_arch=معماری
 do_inst=نصب شده است
 do_none=هیچ یک
 do_edeleted=پرونده نصب حذف شده است - به فهرست ماژول برگردید و دوباره امتحان کنید.
+
 compare_title=بسته ها را مقایسه کنید
 compare_desc=از این فرم می توان برای مقایسه بسته های نصب شده روی دو یا چند سرویس دهنده استفاده کرد و هرگونه اختلاف بین نسخه ها یا بسته های موجود را پیدا کرد.
 compare_hosts=سرورها برای مقایسه
@@ -154,6 +164,7 @@ compare_showall=بسته هایی برای نشان دادن
 compare_showall1=همه
 compare_showall0=فقط ناسازگار است
 compare_got=خوب
+
 deletes_err=پاک کردن بسته ها انجام نشد
 deletes_enone=هیچ بسته انتخاب نشده است
 deletes_title=بسته ها را حذف کنید

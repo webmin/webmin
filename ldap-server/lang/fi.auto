@@ -16,6 +16,7 @@ index_setupdesc=LDAP-palvelimen tietokannassasi ei vielä ole juurihakemistoa DN
 index_setup=Luo Root DN
 index_permsdesc=LDAP-palvelimen tietohakemisto $1 sisältää tiedostoja, joita ei omista oikea käyttäjä $2, mikä tarkoittaa, että se ei todennäköisesti käynnisty kunnolla. Webmin voi kuitenkin korjata tämän sinulle napsauttamalla alla olevaa painiketta.
 index_perms=Korjaa omistajuus
+
 connect_eserver=LDAP-palvelinta $1 ei ole olemassa
 connect_euser=Kukaan käyttäjä ei kirjaudu sisään, koska se on määritetty
 connect_epass=Sisäänkirjautumisen salasanaa ei ole määritetty
@@ -28,6 +29,7 @@ connect_eldap=Yhteyttä portin $2 LDAP-palvelimeen $1 epäonnistui
 connect_essl=TLS-salauksen aloittaminen epäonnistui LDAP-palvelimella $1 : $2 
 connect_elogin=Kirjautuminen LDAP-palvelimeen $1 epäonnistui muodossa $2 : $3 
 connect_cpan=Voit saada <tt>$1</tt> Perl-moduulin <a href='$2'>automaattisesti asennettuna</a> CPANista.
+
 slapd_title=OpenLDAP-palvelimen kokoonpano
 ldif_title=OpenLDAP-palvelimen kokoonpano
 slapd_header=Globaalit LDAP-palvelinasetukset
@@ -76,6 +78,7 @@ slapd_protos=Hyväksyttävät LDAP-yhteydet
 slapd_ldap=LDAP verkon kautta
 slapd_ldaps=LDAP yli SSL
 slapd_ldapi=Unix-kannetiedosto
+
 schema_title=Hallitse kaavaa
 schema_file=Nimi
 schema_desc=Kuvaus
@@ -93,6 +96,7 @@ schema_edesc=Tällä sivulla voit muokata LDAP-mallitiedostoa manuaalisesti. Tä
 schema_return=skeemaluettelo
 schema_emove=Ei löytynyt siirrettävää mallitiedostoa!
 schema_ecannot=Sinulla ei ole lupaa hallita LDAP-mallia
+
 acl_title=LDAP-käyttöoikeudet
 acl_ecannot=Et voi määrittää LDAP-pääsynhallintaa
 acl_what=esineet
@@ -103,6 +107,7 @@ acl_none=Kulunvalvontasääntöjä ei ole vielä määritelty. Kaikki LDAP-tieto
 acl_delete=Poista valitut säännöt
 acl_add=Lisää uusi kulunvalvontasääntö.
 acl_return=kulunvalvonnan säännöt
+
 browser_title=Selaa tietokantaa
 browser_econn=LDAP-selainta ei voi käyttää : $1 
 browser_ecannot=Et voi selata LDAP-tietokantaa
@@ -136,24 +141,30 @@ browser_nomatch=Yksikään objekti ei vastannut hakuasi $1.
 browser_search=Etsi vastaavia esineitä :
 browser_search2=Näytetään objektit, jotka vastaavat :
 browser_sok=Hae
+
 save_err=Määritteen muuttaminen epäonnistui
 save_ebase=Objektia $1 ei voitu hakea tietokannasta
 save_emodify=$2 : n LDAP-muokkaus $1 : ssä epäonnistui : $3 
 save_enone=Arvoja ei annettu
+
 add_err=Määritteen lisääminen epäonnistui
 add_eadd=Puuttuva tai virheellinen määritteen nimi
 add_evalue=Puuttuva arvo
 add_emodify=$2 : n LDAP-lisäys $1 : een epäonnistui : $3 
+
 delete_err=Määritteiden poistaminen epäonnistui
 delete_enone=Mitään ei ole valittu
 delete_emodify=$2 : n LDAP-poisto kohdasta $1 epäonnistui : $3 
+
 sdelete_err=Objektien poistaminen epäonnistui
 sdelete_edn=Kohteta $1 ei löytynyt
 sdelete_edel=$1 LDAP-poisto epäonnistui : $2 
+
 rename_err=Objektin nimeäminen epäonnistui
 rename_eget=Objektia, jonka DN $1 ei löytynyt
 rename_enew=Uusi nimi ei vaikuta olevan kelvollinen
 rename_erename=$1 LDAP newdn $2 : een epäonnistui : $3 
+
 oadd_title=Luo objekti
 oadd_header=Uudet LDAP-objektitiedot
 oadd_base=Vanhempi esine DN
@@ -170,6 +181,7 @@ oadd_eget2=Kohdan $1 : $2 virheiden tarkistaminen epäonnistui
 oadd_eclash=Objekti, jolla on DN $1, on jo olemassa
 oadd_eadd=$1 : n LDAP-lisäys epäonnistui : $2 
 oadd_err=Uuden objektin luominen epäonnistui
+
 create_title=Luo puu
 create_ecannot=Et voi luoda uutta puuta
 create_desc=Tämä sivu tarjoaa kätevän tavan luoda DN, josta tulee uuden puun perusta tietokantaan. Se voi myös luoda esimerkkikäyttäjän tai sähköpostin aliaksen puun alle mallina omille objekteillesi.
@@ -191,18 +203,23 @@ create_done=.. valmis
 create_doingex=Esimerkkiobjektin luominen DN $1 : llä.
 create_edoingex=.. epäonnistui: $1. Puua voidaan kuitenkin käyttää.
 create_eoc=Uudelle DN: lle ei löytynyt sopivaa kohdeluokkaa
+
 eunknown=Tuntematon virhe
+
 apply_err=Asetusten määrittäminen epäonnistui
 apply_ecmd=$1 epäonnistui : $2 
 apply_ecannot=Et voi käyttää kokoonpanoa
+
 stop_err=LDAP-palvelimen pysäyttäminen epäonnistui
 stop_ecmd=$1 epäonnistui : $2 
 stop_egone=Ei enää juokse!
 stop_ekill=Tappoprosessi epäonnistui : $1 
 stop_ecannot=Et voi pysäyttää LDAP-palvelinta
+
 start_err=LDAP-palvelimen käynnistäminen epäonnistui
 start_ecmd=$1 epäonnistui : $2 
 start_ecannot=Et voi käynnistää LDAP-palvelinta
+
 log_create_dn=Luotu objekti $1 
 log_delete_dn=Poistettu objekti $1 
 log_rename_dn=Nimeä uusi objekti $1 
@@ -234,6 +251,7 @@ log_up_access=Siirretty $1 käyttöoikeussääntö ylös
 log_down_access=Siirtynyt käyttöoikeussääntö $1 : lle alaspäin
 log_delete_accesses=Poistettu $1 kulunvalvontasäännöt
 log_all=kaikki esineet
+
 gencert_title=Luo SSL-varmenne
 gencert_header=Uusia SSL-varmennetietoja
 gencert_create=Luo varmenne
@@ -245,7 +263,9 @@ gencert_dir=hakemisto
 gencert_err=Varmenteen luonti epäonnistui
 gencert_edest=Kohdehakemistoa ei ole
 gencert_epath=Varmenne- ja avaintiedostojen LDAP-palvelimen kokoonpanossa on oltava absoluuttiset polut
+
 perms_err=Tiedoston omistajuuden korjaaminen epäonnistui
+
 acl_slapd=Voiko LDAP-palvelin määrittää?
 acl_ldif=Voiko LDAP-palvelin määrittää?
 acl_schema=Pystyykö hallitsemaan kaavaa?
@@ -254,6 +274,7 @@ acl_browser=Voiko selata ja muokata tietokantaa?
 acl_create=Voiko luoda uuden puun?
 acl_start=Voiko LDAP-palvelimen käynnistää ja pysäyttää?
 acl_apply=Voiko asetusehdotuksia muuttaa?
+
 access_desc=$2, $1 
 access_self=itse
 access_users=todennetut käyttäjät
@@ -273,6 +294,7 @@ access_lcompare=Vertailla
 access_lsearch=Hae
 access_lread=Lukea
 access_lwrite=Kirjoittaa
+
 eacl_title1=Luo käyttöoikeussääntö
 eacl_title2=Muokkaa käyttöoikeussääntöä
 eacl_header=LDAP-tietokannan käyttöoikeussääntöjen yksityiskohdat

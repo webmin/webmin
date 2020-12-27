@@ -1,6 +1,7 @@
 check_econfig=iSCSI-mål konfigurasjonsfilen $1 ble ikke funnet på systemet ditt.
 check_eietadm=iSCSI-mål administrasjonskommandoen $1 ble ikke funnet på systemet ditt.
 check_einit=Oppstartshandling $1 finnes ikke
+
 index_title=iSCSI-mål
 index_clink=Kanskje den ikke er installert eller så er <a href='$1'>modul-konfigurasjonen</a> feil.
 index_stop=Stopp iSCSI-mål
@@ -22,8 +23,10 @@ index_noluns=Ingen
 index_nousers=Alle
 index_nullio=RAM disk på $1 sektorer
 index_size=Total størrelse
+
 dtargets_err=Kunne ikke slette mål
 dtargets_enone=Ingen valgt!
+
 target_title1=Opprett iSCSI-mål
 target_title2=Rediger iSCSI-mål
 target_header=Innstillinger for iSCSI delt enhet
@@ -68,11 +71,13 @@ target_noalias=Ingen
 target_hdigest=Header-sjekksum
 target_ddigest=Data-sjekksum
 target_nodigest=Ingen
+
 auth_title=Autentiserings-innstillinger
 auth_header=Standard autentiserings-innstillinger for alle mål
 auth_iuser=Autentisering fra klienter
 auth_ouser=Autentisering til klienter
 auth_err=Kunne ikke lagre autentiserings-innstillinger
+
 conn_title=Tilkoblings-innstillinger
 conn_header=Standard tilkoblingsinnstillinger for alle mål
 conn_sessions=Maks. samtidige sesjoner
@@ -91,6 +96,7 @@ conn_emaxrecv=Manglende eller ikke-numerisk maks lengde på mottatt segment
 conn_emaxxmit=Manglende eller ikke-numerisk maks lengde på sendt segment
 conn_emaxburst=Manglende eller ikke-numerisk maks klient burst-størrelse
 conn_efirstburst=Manglende eller ikke-numerisk maks klient uønsket data-størrelse
+
 timeout_title=Innstillinger for tidsavbrudd
 timeout_header=Innstillinger for klient tidsavbrudd
 timeout_nopi=Intervall mellom ping når ledig
@@ -98,6 +104,7 @@ timeout_nopinone=Aldri ping
 timeout_secs=sekunder
 timeout_nopt=Ventetid for svar på ping
 timeout_noptnone=Samme som ping tid
+
 addr_title=Tjener-adresse og -port
 addr_header=Innstillinger for iSCSI-tjener nettverk
 addr_addr=Lytt på IP adresse
@@ -110,18 +117,21 @@ addr_err=Kunne ikke lagre tjener adresse
 addr_eaddr=Adressen å lytte på må være en IP-adresse
 addr_eport=Port som skal lyttes på må være et tall
 addr_edebug=Debugnivå må være et tall
+
 initiators_title=Tillatte klient-adresser
 initiators_none=Ingen tillatte klient-adresser er definert enda. Ingen klienter vil kunne koble seg til.
 initiators_ips=Tillatte klienter
 initiators_title1=Legg til tillatte klient-adresser
 initiators_title2=Rediger tillatte klient-adresser
 initiators_header=Tillatte iSCSI-klienter for mål
+
 targets_title=Tillatte tjener adresser
 targets_none=Ingen tillatte tjener-adresser er definert enda. Ingen klienter vil kunne koble seg til.
 targets_ips=Tillatte tjener-grensesnitt
 targets_title1=Legg til tillatte tjener-adresser
 targets_title2=Rediger tillatte tjener-adresser
 targets_header=Tillatt iSCSI tjener-grensesnitt for mål
+
 allow_target=Mål-navn
 allow_move=Flytt
 allow_delete=Slett valgte
@@ -133,17 +143,21 @@ allow_return=tillatte mål og adresser
 allow_err=Kunne ikke lagre tillatte adresser
 allow_eaddr=Adresse $1 er ikke gyldig. Den må enten være IPv4 adresse, IPv4 nettverk/maske, eller IPv6 adresse i klammer.
 allow_eaddrs=Ingen adresse som skal tillates ble angitt
+
 dallow_err=Kunne ikke slette tillatte adresser
 dallow_enone=Ingen valgt
+
 manual_title=Rediger konfigurasjonsfil
 manual_desc=Bruk tekstboksen nedenfor til å redigere iSCSI-tjener konfigurasjonsfilen $1. Vært forsiktig, siden det ikke utføres noe syntaks- eller gyldighetssjekk på endringene dine!
 manual_err=Kunne ikke lagre konfigurasjonsfil
 manual_edata=Ikke noe innhold angitt!
+
 start_err=Kunne ikke starte iSCSI-tjener
 stop_err=Kunne ikke stoppe iSCSI-tjener
 restart_err=Kunne ikke omstarte iSCSI-tjener
 atboot_err=Kunne ikke aktiveres ved oppstart
 atboot_einit=Init-script $1 finnes ikke
+
 log_create_target=Opprettet mål $1
 log_delete_target=Slettet mål $1
 log_modify_target=Endret mål $1

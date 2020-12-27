@@ -25,6 +25,7 @@ index_resetdesc=Klik på denne knap for at rydde alle eksisterende firewall-regl
 index_cluster=Cluster-servere
 index_clusterdesc=Klik på denne knap for at konfigurere yderligere Webmin-servere, som firewallkonfigurationen automatisk kopieres til.
 index_return=firewall regler
+
 index_num=Num
 index_action=Handling
 index_desc=Tilstand
@@ -37,6 +38,7 @@ index_delete=Slet valgt
 index_existing=Webmin har registreret $1 IPFW-firewallregler, der i øjeblikket er i brug, og som ikke er optaget i filen $2. Disse regler blev sandsynligvis opsat fra et script, som dette modul ikke ved, hvordan man læser og redigerer. <p> Hvis du vil bruge dette modul til at administrere din IPFW-firewall, skal du klikke på knappen nedenfor for at konvertere de eksisterende regler til en gemt fil, og deaktiver derefter dit eksisterende firewall-script.
 index_saveex=Gem firewall-regler
 index_headerex=Eksisterende firewall-konfiguration
+
 action_allow=<font color=#00aa00>Tillad</font>
 action_deny=<font color=#ff0000>Drop</font>
 action_reject=<font color=#ff4400>Afvis</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>Drop packet</font>
 laction_reject=<font color=#ff4400>Returner ICMP-afvisning</font>
 laction_reset=<font color=#ff4400>Nulstil TCP-forbindelse</font>
 laction_skipto=Spring til reglen
+
 edit_title1=Opret regel
 edit_title2=Rediger regel $1 
 edit_header1=Regelhandling
@@ -114,6 +117,7 @@ edit_src-addr=Fra kildeadresse ..
 edit_src-port=Fra kildehavn ..
 edit_dst-addr=Til destinationsadresse ..
 edit_dst-port=Til destinationshavn ..
+
 save_err=Kunne ikke gemme reglen
 save_enum=Manglende eller ugyldigt regelnummer
 save_eskipto=Manglende eller ugyldigt regelnummer at springe til
@@ -144,7 +148,9 @@ save_etcpflags=TCP-flag kan kun specificeres, hvis protokollen er TCP
 save_elimit=Manglende eller ugyldig maksimalgrænse
 save_edstport=Manglende eller ugyldig destinationsport
 save_esrcport=Manglende eller ugyldig kildeport
+
 apply_err=Kunne ikke anvende konfiguration
+
 desc_if=Hvis $1 
 desc_and=og
 desc_always=Altid
@@ -191,6 +197,7 @@ desc_where=hvor $1
 desc_all=til alle pakker
 desc_in=pakken er indkommende
 desc_out=pakken er udgående
+
 log_create_rule=Oprettet $1 -regel
 log_delete_rule=Slet $1 -regel
 log_modify_rule=Ændret $1 -regel
@@ -206,6 +213,7 @@ log_convert=Konverterede aktive firewall-regler
 log_setup=Udførte første firewall-opsætning
 log_unapply=Gendannet firewall-konfiguration
 log_delsel=$1 -regler er slettet
+
 cluster_title=Cluster Firewall-servere
 cluster_none=Der er endnu ikke tilføjet nogen servere til firewall-klyngen.
 cluster_host=Værtsnavn
@@ -216,6 +224,7 @@ cluster_gadd=Tilføj servere i gruppe
 cluster_need=Du skal tilføje servere med et login og password i Webmin Servers Index-modulet, før de kan styres her.
 cluster_return=klyngeservere
 cluster_delete=Fjern valgte
+
 add_title=Tilføj servere
 add_msg=Tilføjer $1 ..
 add_gmsg=Tilføjelse af servere i gruppe $1 ..

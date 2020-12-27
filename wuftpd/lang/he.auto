@@ -9,6 +9,7 @@ index_startmsg=לחץ על כפתור זה כדי להפעיל את שרת ה- F
 index_startmsg2=לחץ על כפתור זה כדי להפעיל את שרת ה- FTP עם התצורה הנוכחית. באפשרותך גם להגדיר את תצורת השרת באופן אוטומטי בעת הצורך באמצעות inetd או תוכנית כלשהי.
 index_return=אפשרויות שרת FTP
 index_version=גרסת WU-FTPd $1 
+
 class_title=משתמשים ושיעורים
 class_header=שיעורי משתמשים ואפשרויות משתמש
 class_class=שיעורי משתמשים
@@ -31,6 +32,7 @@ class_err=שמירת כיתות משתמשים נכשלה
 class_eclass='$1' אינו שם כיתה תקף
 class_etypes=לא נבחרו סוגים למחלקה '$1'
 class_eaddrs=לא הוזנו כתובות למחלקה '$1'
+
 message_title=הודעות ובאנרים
 message_header=הודעות, באנרים וקבצי README
 message_message=קבצי הודעה
@@ -59,6 +61,7 @@ message_eclass=המחלקה '$1' אינה קיימת
 message_ebanner='$1' אינו קובץ באנר כניסה חוקי
 message_ehostname=שם מארח חסר או לא חוקי
 message_eemail=כתובת דוא"ל חסרה או לא חוקית
+
 acl_title=מגבלות ובקרת גישה
 acl_header=מגבלות ואפשרויות בקרת גישה
 acl_deny=דחה את הגישה מ-
@@ -105,6 +108,7 @@ acl_elmsg='$1' אינו קובץ הודעת שגיאה תקף
 acl_efbcount='$1' אינו מספר חוקי של קבצים או בתים
 acl_elimit='$1' אינו מגבלת זמן תקפה
 acl_efails='$1' אינו מספר תקף של כשלי כניסה
+
 net_title=עבודה ברשת
 net_header=אפשרויות רשת
 net_tcp=גדלי חלונות TCP
@@ -122,6 +126,7 @@ net_eip='$1' אינה כתובת IP חוקית
 net_enet='$1' אינה כתובת רשת חוקית
 net_ecidr='$1' אינו מספר חוקי של ביטים ברשת
 net_eport='$1' אינו מספר יציאה חוקי
+
 log_title=רישום
 log_header=אפשרויות רישום
 log_commands=התחבר עבור כל הפקודות
@@ -139,6 +144,7 @@ log_syslog=יומן מערכת
 log_xferlog=קובץ יומן XFER
 log_sysxfer=שני היעדים
 log_err=שמירת אפשרויות רישום נכשלה
+
 alias_title=כינויים ונתיבים
 alias_header=אפשרויות כינוי ונתיב
 alias_alias=כינויים לספריות CD
@@ -149,6 +155,7 @@ alias_err=שמירת כינויים ונתיבים נכשלה
 alias_efrom='$1' אינו שם כינוי תקף
 alias_eto='$1' אינו ספריית כינוי תקפה
 alias_ecdpath='$1' אינו ספריית חיפוש תקליטורים תקפה
+
 anon_title=FTP אנונימי
 anon_eftp=אזהרה - למערכת שלך אין משתמש <tt>ftp</tt>, ולכן FTP אנונימי ככל הנראה לא מוגדר.
 anon_header=אפשרויות FTP אנונימיות
@@ -171,6 +178,7 @@ anon_uids=למשתמשי יוניקס
 anon_err=שמירת אפשרויות FTP אנונימיות נכשלה
 anon_edir='$1' אינו ספריה חוקית
 anon_egroup='$1' אינה קבוצה חוקית
+
 perm_title=הרשאות
 perm_header=אפשרויות הרשאה
 perm_perms=מגבלות פיקוד
@@ -192,7 +200,9 @@ perm_err=שמירת הרשאות נכשלה
 perm_echar='$1' אינו ביטוי רגיל להגדרת תווים
 perm_etypes=לא נבחרו סוגי משתמשים
 perm_emesg='$1' אינו קובץ הודעת שגיאה תקף
+
 host_title=בקרת גישה לארח
+
 misc_title=אפשרויות שונות
 misc_header=אפשרויות שונות
 misc_lslong=פקודה לרישום ארוך
@@ -213,6 +223,7 @@ misc_elsplain=חסרה פקודת רישום רגילה
 misc_eshutdown=חסר קובץ התראת כיבוי
 misc_enice='$1' אינו ברמה נחמדה
 misc_eumask='$1' אינו אמסק חוקי
+
 log_class=משתמשים ושיעורים השתנו
 log_message=הודעות וכרזות שונו
 log_acl=הגבלות ושינוי בקרת גישה השתנו

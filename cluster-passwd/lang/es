@@ -1,6 +1,7 @@
 index_title=Cluster-Cambio de Contraseñas
 index_noservers=No se han definido servidores en los que controlar usuarios en el módulo <a href=$1>Cluster-Usuarios y Grupos</a>
 index_hosts=Todos los cambios de contraseña realizados utilizando este módulo se realizarán en todos los $1 hosts controlados por el módulo Cluster-Usuarios y Grupos
+
 passwd_err=Fallo al cambiar contraseña
 passwd_title=Cambiando Contraseña
 passwd_on=Cambiando contraseña en $1 ..

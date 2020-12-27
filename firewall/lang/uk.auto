@@ -3,6 +3,7 @@ index_title_v6=IPv6 брандмауер
 index_editing=Файл правил $1 
 index_evalid=УВАГА! Ваша поточна конфігурація IPtables недійсна : $1 
 index_comm=Прокоментуйте
+index_no_comment=
 index_jump_reject=<font color=#ff4400>Відхилити</font>
 index_jump_log=Журнальний пакет
 index_crename=Перейменуйте ланцюжок
@@ -34,8 +35,11 @@ index_ipset_size=Розмір
 index_ipvxmode=Змінити версію протоколу IP:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
 desc_i=вхідний інтерфейс $1 
 desc_i!=інтерфейс вводу не $1 
+desc_icmpv6-type=Тип ICMP - $1 
+desc_icmpv6-type!=Тип ICMP не $1 
 desc_mac-source=адреса ethernet - $1 
 desc_mac-source!=Ethernet-адреса не $1 
 desc_ctstate=стан з'єднання - $1 
@@ -47,7 +51,9 @@ desc_physdev-out!=фізичний інтерфейс виводу не $1
 desc_args--match-set=$2 міститься в IP-наборі $1 
 desc_src=джерело
 desc_dest=пункт призначення
+
 redhat_einstalled=Не знайдено <tt>iptables (6)</tt> завантажувальної дії, що вказує на те, що пакет IPtables не встановлений у вашій системі
+
 edit_state_untracked=Не відслідковується
 edit_state_snat=Джерело NATd
 edit_state_dnat=Призначення NATd
@@ -60,17 +66,23 @@ edit_physdevout=Вихідний фізичний інтерфейс
 edit_physdevisin=Пакет, що надходить на інтерфейс моста
 edit_physdevisout=Пакет, що виходить на мостовий інтерфейс
 edit_physdevisbridged=Пакет моститься
+
 save_etcpflags2=Ви повинні вибрати принаймні один прапор TCP з другого ряду
 save_ecanjump=Вам заборонено використовувати цю дію
 save_ephysdevin=Відсутній або недійсний фізичний інтерфейс, що входить
 save_ephysdevout=Відсутній або недійсний вихідний фізичний інтерфейс
+
 delete_ecannot=Вам заборонено видаляти ланцюги
+
 clear_ecannot=Вам не дозволяється очищати ланцюги
+
 new_ecannot=Вам не дозволяється створювати ланцюги
+
 apply_ecannot=Вам заборонено застосовувати конфігурацію
 apply_remote=Помилка від $1 : $2 
 unapply_ecannot=Вам не дозволяється відновити конфігурацію
 bootup_ecannot=Вам не дозволяється вмикати або вимикати брандмауер під час завантаження
+
 log_rename_chain=Перейменований ланцюг $1 у таблиці $2 
 log_delsel_chain=Видалено $3 правила з ланцюга $1 у таблиці $2 
 log_movesel_chain=Переміщено $3 правила з ланцюга $1 у таблиці $2 
@@ -79,7 +91,9 @@ log_add_group=Додано кластерні сервери з групи $1
 log_delete_host=Видалений сервер кластерів $1 
 log_delete_group=Видалено $1 сервери кластерів
 log_openports=Відкриті порти брандмауера $1 
+
 setup_ecannot=Вам заборонено встановлювати брандмауер
+
 acl_tables=Дозволені IPtables
 acl_apply=Можна застосувати конфігурацію?
 acl_unapply=Чи можна скасувати конфігурацію?
@@ -91,9 +105,11 @@ acl_jall=Усі
 acl_newchain=Чи можете створити нові ланцюги?
 acl_delchain=Чи можна видалити або очистити ланцюги?
 acl_policy=Чи можна змінити політику за замовчуванням?
+
 etable=Вам заборонено редагувати цей IPtable
 ejump=Вам заборонено редагувати це правило
 ecluster=Вам не дозволяється керувати кластером брандмауера
+
 cluster_title=Сервери брандмауера кластерів
 cluster_none=У кластер брандмауера ще не додано жодних серверів.
 cluster_host=Ім'я хоста
@@ -104,6 +120,7 @@ cluster_gadd=Додавання серверів у групу
 cluster_need=Ви повинні додати сервери з логіном та паролем у модулі індексу серверів Webmin перед тим, як ними тут можна керувати.
 cluster_return=кластерні сервери
 cluster_delete=Видалити вибране
+
 add_title=Додати сервери
 add_msg=Додавання $1.
 add_gmsg=Додавання серверів у групу $1 ..
@@ -113,13 +130,16 @@ add_echeck=Сервер $1 не має модуля брандмауера Linux
 add_emissing=Сервер $1 не містить команди брандмауера $2 
 add_ok=Додано $1 із правилами активного брандмауера $2.
 add_enone=Немає серверів для додавання вибраних!
+
 policy_ecannot=Вам заборонено змінювати політику за замовчуванням для цього ланцюжка
+
 move_title=Правила переміщення
 move_count=Вибрані правила
 move_chain=Поточні зміни
 move_dest=Призначення ланцюга
 move_ok=Перемістіть зараз
 move_header=Параметри переміщення правила
+
 rename_title=Перейменуйте ланцюжок
 rename_count=Правила в ланцюзі
 rename_chain=Поточна назва
@@ -129,5 +149,3 @@ rename_header=Параметри перейменування ланцюга
 rename_adjust=Змінити інші правила, що переходять до цього ланцюга?
 rename_none=Жоден
 rename_ecannot=Вам не дозволяється перейменовувати ланцюги
-desc_icmpv6-type=Тип ICMP - $1 
-desc_icmpv6-type!=Тип ICMP не $1 

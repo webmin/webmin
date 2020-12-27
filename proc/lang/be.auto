@@ -16,6 +16,7 @@ index_loadname=Сярэдняя нагрузка на працэсар:
 index_loadnums=$1 (1 мін), $2 (5 хвілін), $3 (15 хвілін)
 index_cpuname=Тып працэсара:
 index_inzone=У зоне $1 
+
 pid=Пасведчанне асобы
 owner=Уладальнік
 command=Камандаванне
@@ -27,6 +28,7 @@ nice=Добры ўзровень
 stime=Пачалі
 sclass=Клас планавання вываду
 sprio=Прыярытэт IO
+
 search_user=Належыць
 search_match=Супадзенне
 search_cpupc=Выкарыстанне больш чым $1% працэсара
@@ -43,6 +45,7 @@ search_sigkill=Забіце працэсы
 search_port=Выкарыстанне порта
 search_protocol=пратакол
 search_ip=Выкарыстанне IP-адраса
+
 run_command=Каманд для запуску
 run_submit=Бяжы
 run_mode=Рэжым запуску
@@ -56,6 +59,7 @@ run_ecannot=Вы не маеце права выконваць каманды
 run_as=Выканаць як карыстальнік
 run_euser=Адсутнічае альбо недапушчальнае імя карыстальніка
 run_euser2=Вам нельга выконваць каманды ў якасці абранага карыстальніка
+
 edit_title=Апрацоўваць інфармацыю
 edit_gone=Гэты працэс больш не запускаецца
 edit_sub=Падпрацэсы
@@ -75,12 +79,15 @@ edit_sigcont=Рэзюмэ
 edit_open=Файлы і злучэнні
 edit_trace=Працэс след
 edit_return=апрацоўваць дэталі
+
 kill_err=Не атрымалася адправіць сігнал $1 для апрацоўкі $2 
 kill_title=Адправіць сігнал
 kill_sent=прысл
 kill_ecannot=Вам забаронена забіваць працэсы
+
 renice_err=Не атрымалася аднавіць працэс $1 
 renice_ecannot=Вам не дазволена аднавіць працэсы
+
 linux_pri=Прыярытэт
 linux_tty=TTY
 linux_status=Статус
@@ -91,25 +98,30 @@ linux_ruser=Рэальны карыстальнік
 linux_rgroup=Сапраўдная група
 linux_pgid=Ідэнтыфікатар групы апрацоўкі
 linux_stime=Пачалі
+
 linuxstat_R=Бег
 linuxstat_S=Спіць
 linuxstat_D=Глыбокі сон
 linuxstat_T=Спыніўся
 linuxstat_Z=Зомбі
+
 linux_real=Рэальны час
 linux_be=Найлепшыя намаганні
 linux_idle=Прастойваць
+
 freebsd_ruser=Рэальны карыстальнік
 freebsd_rgroup=Сапраўдная група
 freebsd_tty=TTY
 freebsd_pgid=Працэс групы
 freebsd_stime=Пачалі
 freebsd_lim=Абмежаванне памяці
+
 hpux_pri=Прыярытэт
 hpux_tty=TTY
 hpux_status=Статус
 hpux_wchan=Чакаць
 hpux_stime=Пачалі
+
 hpuxstat_0=Неіснуючае
 hpuxstat_S=Спіць
 hpuxstat_W=Чакаю
@@ -118,7 +130,9 @@ hpuxstat_I=Прамежкавы
 hpuxstat_Z=Зомбі
 hpuxstat_T=Спыніўся
 hpuxstat_G=Расце
+
 macos_tty=TTY
+
 sysv_group=Група
 sysv_ruser=Рэальны карыстальнік
 sysv_rgroup=Сапраўдная група
@@ -127,12 +141,14 @@ sysv_tty=TTY
 sysv_stime=Пачалі
 sysv_task=ID задачы
 sysv_zone=Назва зоны
+
 log_run=Прабегла каманда "$1"
 log_kill=Дасланы сігнал $1 для апрацоўкі $2 
 log_kills=Адправіць сігнал працэсаў ад $1 да $2 
 log_kill_l=Дасланы сігнал $1 для апрацоўкі $2 
 log_kills_l=Пасланы сігнал $1 да працэсаў <br> $2 
 log_renice=Зменены прыярытэт працэсу $2 да $1 
+
 acl_manage=Кіруйце працэсамі як карыстальнік
 acl_manage_def=Бягучы карыстальнік Webmin
 acl_edit=Ці могуць забіваць і адмяняць працэсы?
@@ -142,11 +158,13 @@ acl_who=Можа кіраваць працэсамі для карыстальн
 acl_who0=Усе карыстальнікі
 acl_who1=Бягучы карыстальнік Webmin
 acl_who2=Карыстальнікі ў спісе ..
+
 kill_kill=Забіваць працэс
 kill_term=Скасаваць
 kill_hup=Перазапуск
 kill_stop=Спыніцеся
 kill_cont=Працягвайце
+
 open_title=Адкрыйце файлы і злучэнні
 open_proc=Для працэсу $1 (PID $2)
 open_header1=Адкрыйце файлы
@@ -170,6 +188,7 @@ open_blk=Блок спецыяльны
 open_size=Памер файла
 open_inode=Inode
 open_file=Шлях
+
 trace_title=Працэс след
 trace_start=Запуск сістэмнага трасы выкліку для $1.
 trace_doing=Трэк сістэмнага выкліку для $1  :
@@ -180,5 +199,7 @@ trace_syscalls=Сістэма трасіроўкі выклікаў:
 trace_all=Усе
 trace_sel=Спіс ..
 trace_change=Змена
+
 windows_threads=Тэмы ў працэсе
+
 syslog_dmesg=Ядра паведамлення

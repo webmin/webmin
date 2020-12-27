@@ -8,6 +8,7 @@ index_none=Er zijn geen opstart opties gedefiniëerd. Zorg ervoor dat u er minim
 index_efile=Het GRUB menu bestand $1 kon niet worden gevonden op uw system. Wellicht is GRUB niet geinstalleerd, of de <a href='$2'>module configuratie</a> is niet juist.
 index_epath=Het GRUB programma $1 kon niet worden gevonden op uw system. Wellicht is GRUB niet geinstalleerd, of de <a href='$2'>module configuratie</a> is niet juist.
 index_return=optielijst
+
 title_add=Opstartmenu Optie Toevoegen
 title_edit=Bewerk Opstartmenu Opties
 title_header=Opstartmenu optie details
@@ -36,6 +37,7 @@ title_echain=Ontbrekend of ongeldig chainloader bestand
 title_edev=Niet ondersteunend root partitie apparaat $1
 title_einitrd=Ontbrekende initiele ramdisk bestandsnaam
 title_lock=Wachtwoord op slot?
+
 global_title=Globale Opties
 global_header=Globale opstartmenu opties
 global_default=Standaard opstart optie
@@ -56,12 +58,14 @@ global_edev=Niet ondersteunde installatie schijf/partitie $1
 global_eother=Ontbrekende of ongeldige schijf/partitie
 global_epassword=Ontbrekende of ongeldige opstart partitie
 global_epasswordfile=Ontbrekend alternatief menu bestandsnaam
+
 install_title=Installeer GRUB
 install_err=Fout bij het installeren van GRUB
 install_efind=Kon het menu bestand niet vinden
 install_desc=Installeer GRUB op $1 met de opdrachten $2 en $3 ..
 install_ok=.. installatie voltooid.
 install_failed=.. installatie mislukt!
+
 log_create_title=Aangemaakte boot optie $1
 log_delete_title=Verwijderde boot optie $1
 log_modify_title=Gemodificeerde boot optie $1

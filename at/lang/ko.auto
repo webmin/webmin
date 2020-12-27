@@ -26,6 +26,7 @@ index_start=예약 된 명령 서버 시작
 index_startdesc=예약 된 명령을 실행하는 <tt>atd</tt> 백그라운드 서버 프로세스를 시작합니다. 이는 명령이 지정된 시간에 실행되는 데 필요합니다.
 index_boot=부팅시 서버를 시작 하시겠습니까?
 index_bootdesc=시스템 부팅시 예약 된 명령 서버 시작을 활성화 또는 비활성화하려면이 설정을 변경합니다.
+
 edit_title=예약 된 명령
 edit_cmd=실행할 전체 스크립트
 edit_shortcmd=실행할 명령
@@ -35,6 +36,7 @@ edit_run=지금 실행
 edit_ejob=예약 된 명령이 더 이상 존재하지 않습니다!
 edit_ecannot=이 예약 된 명령을 편집 할 수 없습니다
 edit_showfull=전체 스크립트를 표시하십시오.
+
 create_err=스케줄 명령을 작성하지 못했습니다
 create_euser=사용자 이름이 없거나 잘못되었습니다
 create_edate=날짜 또는 시간이 없거나 잘못되었습니다
@@ -43,22 +45,28 @@ create_efuture=날짜와 시간이 과거입니다
 create_edir=디렉토리가 없거나 유효하지 않습니다
 create_ecannot=이 사용자에 대해 예약 된 명령을 만들 수 없습니다
 create_eallow=지정된 사용자는 예약 된 명령을 실행할 수 없습니다
+
 delete_err=명령을 취소하지 못했습니다
 delete_egone=명령이 이미 실행 또는 삭제되었습니다
+
 acl_users=에 대한 예약 명령을 편집 할 수 있습니다
 acl_all=모든 사용자들
 acl_this=현재 Webmin 사용자
 acl_only=사용자 만
 acl_except=사용자를 제외한 모두
 acl_allow=허용 된 사용자를 편집 할 수 있습니까?
+
 run_title=명령 실행
 run_output=스케줄 된 명령의 출력 ..
 run_none=출력이 생성되지 않습니다
+
 allow_err=허용 된 사용자를 저장하지 못했습니다.
 allow_ecannot=허용 된 사용자를 관리 할 수 없습니다
 allow_eusers=입력 한 사용자가 없습니다
+
 deletes_err=명령을 취소하지 못했습니다
 deletes_enone=선택된 사항 없음
+
 log_allow=허용 된 사용자 변경
 log_create_job=$1 에 대한 예약 된 명령 생성
 log_delete_job=$1 에 대한 예약 된 명령이 취소되었습니다.
@@ -68,5 +76,6 @@ log_stop=예약 된 명령 서버를 중지했습니다.
 log_start=예약 된 명령 서버 시작
 log_bootup=부팅시 예약 된 명령 서버 활성화
 log_bootdown=부팅시 예약 된 명령 서버 비활성화
+
 stop_err=서버를 중지하지 못했습니다.
 start_err=서버를 시작하지 못했습니다.

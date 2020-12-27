@@ -2,6 +2,7 @@ index_title=Klijent u Server NIS
 index_return=Menu NIS
 index_enis=Il-magna tiegħek ma tidhirx li għandha l-appoġġ tal-klijent jew tas-server NIS installat.
 index_enis2=Il-karatteristika tas-servizzi tal-klijenti biss f'dan il-modulu tista 'tintuża.
+
 client_title=Klijent NIS
 client_header=Konfigurazzjoni tal-klijent NIS
 client_domain=Dominju NIS
@@ -17,10 +18,12 @@ client_eserver="$1" mhuwiex isem tas-server validu
 client_eypwhich=naqset milli torbot mad-dominju NIS
 client_ehosts="$1" mhux fil-fajl tal-ospiti
 client_enis=Il-magna tiegħek ma tidhirx li għandha l-appoġġ tal-klijent NIS installat.
+
 switch_title=Servizzi għall-Klijent
 switch_service=Servizz
 switch_srcs=Sorsi tad-dejta
 switch_return=servizzi tal-klijent
+
 order_=&nbsp;
 order_nisplus=NIS +
 order_nis=NIS
@@ -32,6 +35,7 @@ order_hesiod=Eżjodu
 order_ldap=LDAP
 order_user=Utenti li jistampaw
 order_xfn=XFN
+
 server_title=Server NIS
 server_header=Għażliet ta 'server NIS
 server_boot=Tippermetti server NIS?
@@ -65,6 +69,7 @@ server_solaris=Nota - fuq Solaris, id-dominji NIS tal-klijent u tas-server huma 
 server_edir=Direttorju tal-fajls sors mhux validi
 server_epwdir=Direttorju tal-fajls tas-sors tal-password mhux validu
 server_enis=Il-magna tiegħek ma tidhirx li għandha l-appoġġ server NIS installat.
+
 tables_title=Tabelli NIS
 tables_switch=Editja tabella NIS :
 tables_header=$1 tabella NIS minn $2 
@@ -81,6 +86,7 @@ tables_search=Fittex
 tables_nomatch=L-ebda rekord ma jaqbel mat-tfittxija tiegħek
 tables_build=Ibni mill-ġdid it-tabelli NIS
 tables_buildmsg=Ikklikkja din il-buttuna biex tibni mill-ġdid il-bażijiet tad-dejta NIS mid-dejta tat-tabella. Jekk għamilt xi tibdil, ser ikollok bżonn tagħmel dan biex tagħmilhom disponibbli għall-klijenti NIS.
+
 desc_aliases=Sendias psewdonimu
 desc_mail=Sendias psewdonimu
 desc_hosts=Indirizzi ospitanti
@@ -116,6 +122,7 @@ desc_printers=Printers
 desc_ipnodes=Nodi IP
 desc_timezone=Ħinijiet tal-ħin
 desc_locale=Lokal
+
 hosts_title=Indirizz tal-Ospitanti
 hosts_ip=Indirizz IP
 hosts_name=L-isem tal-host
@@ -124,6 +131,7 @@ hosts_err=Ma rnexxielux isalva host
 hosts_eip=Indirizz IP nieqes jew invalidu
 hosts_ename=Name host nieqes jew invalidu
 hosts_aliases=Aliases
+
 group_name=Isem tal-grupp
 group_gid=ID tal-grupp
 group_members=Membri tal-grupp
@@ -134,6 +142,7 @@ group_none=Ebda password meħtieġa
 group_encrypted=Password pre-kriptata
 group_clear=Password normali
 group_err=Ma rnexxielux isalva grupp
+
 passwd_name=Username
 passwd_uid=ID tal-Utent
 passwd_real=Isem reali
@@ -171,6 +180,7 @@ passwd_emax=In-numru massimu ta 'jiem mhux validu
 passwd_emin=Numru minimu ta 'jiem mhux validu
 passwd_einactive=Numru mhux validu ta 'jiem inattivi
 passwd_eexpiry=Data ta 'skadenza mhux valida
+
 services_name=Isem tas-servizz
 services_proto=Protokoll
 services_port=Port
@@ -179,6 +189,7 @@ services_header=Inetd għażliet tas-servizz tan-netwerk
 services_err=Ma rnexxielux isalva s-servizz
 services_ename=Isem tas-servizz nieqes jew invalidu
 services_eport=Port nieqes jew invalidu
+
 protocols_name=Isem tal-Protokoll
 protocols_number=Numru
 protocols_aliases=Aliases
@@ -187,6 +198,7 @@ protocols_header=Għażliet ta 'protokoll tan-netwerk
 protocols_err=Ma rnexxielux isalva protokoll
 protocols_ename=Isem nieqes jew invalidu
 protocols_enumber=Numru nieqes jew invalidu
+
 netgroup_name=L-isem Netgroup
 netgroup_members=Membri
 netgroup_title=Grupp tan-Netwerk
@@ -201,6 +213,7 @@ netgroup_ename=Nieqes jew isem invalidu tal-grupp nett
 netgroup_ehost=Ospitanti nieqsa jew invalidi fir-ringiela $1 
 netgroup_euser=Utent nieqes jew invalidu fir-ringiela $1 
 netgroup_edom=Dominju NIS nieqes jew invalidu fir-ringiela $1 
+
 ethers_mac=Indirizz Ethernet
 ethers_ip=Indirizz IP
 ethers_title=Indirizz Ethernet
@@ -208,6 +221,7 @@ ethers_header=Għażliet ta 'mmappjar Ethernet
 ethers_err=Ma rnexxielux isalva l-indirizz Ethernet
 ethers_emac=Indirizz ethernet invalidu
 ethers_eip=Indirizz IP mhux validu
+
 rpc_name=Isem il-programm
 rpc_number=Numru
 rpc_aliases=Aliases
@@ -216,6 +230,7 @@ rpc_header=Dettalji tal-programm RPC
 rpc_err=Ma rnexxielux isalva l-programm RPC
 rpc_ename=Isem il-programm nieqes jew invalidu
 rpc_enumber=Numru nieqes jew invalidu
+
 networks_title=Indirizz tan-Netwerk
 networks_ip=Indirizz IP
 networks_name=Isem tan-netwerk
@@ -224,6 +239,7 @@ networks_err=Ma rnexxielux isalva n-netwerk
 networks_eip=Indirizz IP nieqes jew invalidu
 networks_ename=Isem nieqes jew invalidu
 networks_aliases=Aliases
+
 netmasks_net=Indirizz tan-netwerk
 netmasks_mask=Netmask
 netmasks_title=Netmask
@@ -231,6 +247,7 @@ netmasks_header=Dettalji tal-maskra tan-netwerk
 netmasks_err=Naqset milli ssalva netmask
 netmasks_enet=Indirizz tan-netwerk nieqes jew invalidu
 netmasks_emask=Netmask nieqes jew invalidu
+
 aliases_from=Indirizz
 aliases_to=Psewdonimu
 aliases_title=Sendmail Alias
@@ -238,6 +255,7 @@ aliases_header=Dettalji dwar alias Sendmail
 aliases_err=Naqset milli ssalva alias
 aliases_efrom=Indirizz nieqes jew invalidu
 aliases_eto=Nieqes mill-indirizzi
+
 security_title=Sigurtà tas-Server
 security_header=Għażliet ta 'sigurtà tas-server NIS
 security_ok=Issejvja u Applika
@@ -266,6 +284,7 @@ security_sec_des=Jeħtieġu DES
 security_ehost="$1" mhuwiex isem tal-host validu
 security_emap="$1" mhix tabella NIS valida
 security_efield="$1" mhux numru ta 'qasam validu
+
 eswitch_title=Servizz Editja
 eswitch_egone=Servizz ma jeżistix!
 eswitch_header=Dettalji tas-servizz

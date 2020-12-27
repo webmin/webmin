@@ -1,6 +1,7 @@
 index_title=Klaster - Zmiana haseł
 index_noservers=Brak serwerów zdefiniowanych w <a href=$1>Klaster - Użytkownicy i grupy</a>
 index_hosts=Wszystkie hasła zmienione za pomocą tego modułu zostaną zastosowane dla wszystkich $1 hostów zarządzanych przez moduł Klaster - Użytkownicy i grupy
+
 passwd_err=Zmiana hasła nie powiodła się
 passwd_title=Zmiana hasła
 passwd_on=Zmienianie hasła na $1 ..

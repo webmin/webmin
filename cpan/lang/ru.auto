@@ -13,6 +13,7 @@ index_tabinstall=Установить модуль
 index_tabsuggest=Предлагаемые модули
 index_allmods2=Недостающие модули, используемые Webmin
 index_wantmods=Модули для установки
+
 download_mods=Имена модулей
 download_pres=Предпосылки
 download_ecpangz=URL $1 не является списком модулей CPAN. Проверьте конфигурацию модуля.
@@ -23,20 +24,25 @@ download_ebuild=Для одного или нескольких модулей P
 download_yum=Установка модуля Perl $1 из пакета $2 ..
 download_missingok=Модули отсутствуют в CPAN
 download_fallback=Не удалось установить некоторые модули из пакетов, вместо этого попытайтесь выполнить установку из источника.
+
 install_doing_0=Делая $1 ..
 install_doing_1=Создание и тестирование $1 ..
 install_doing_2=Создание и установка $1 ..
 install_doing_3=Создание, тестирование и установка $1 ..
 install_needunlink=Вы можете попытаться установить снова, вернувшись на предыдущую страницу и выбрав другие параметры. В противном случае <a href='$1'>нажмите здесь, чтобы удалить временные файлы пакета</a>, чтобы сэкономить место на диске.
+
 edit_upgrade=Обновление модуля из CPAN
 edit_method=Установлено с
 edit_rpm=RPM пакет $1 
 edit_debian=Пакет Debian $1 
 edit_manual=Ручная установка Perl-модуля
+
 uninstall_rpm=Модуль будет удален путем удаления пакета RPM $1.
 uninstall_debian=Модуль будет удален путем удаления пакета $1 Debian.
 uninstall_err=Не удалось удалить модуль
+
 delete_efile=Неверный файл пакета!
+
 uninstalls_title=Удалить модули
 uninstalls_err=Не удалось удалить модули
 uninstalls_enone=Не выбрано, ничего не выбрано

@@ -7,19 +7,23 @@ index_loadname=CPU-medelvärden:
 index_loadnums=$1 (1 min), $2 (5 min), $3 (15 minuter)
 index_cpuname=CPU-typ:
 index_inzone=I zon $1 
+
 stime=Satte igång
 sclass=IO schemaläggningsklass
 sprio=IO-prioritet
+
 search_cpupc2=Med mer CPU än
 search_sigterm=Avsluta processer
 search_sigkill=Döda processer
 search_port=Med port
 search_protocol=protokoll
 search_ip=Använda IP-adress
+
 run_ecannot=Du får inte köra kommandon
 run_as=Kör som användare
 run_euser=Saknat eller ogiltigt användarnamn
 run_euser2=Du får inte köra kommandon som vald användare
+
 edit_subid=ID
 edit_subcmd=Delprocesskommando
 edit_ecannot=Du får inte redigera processer
@@ -30,18 +34,27 @@ edit_sigcont=Återuppta
 edit_open=Filer och anslutningar
 edit_trace=Spårningsprocess
 edit_return=processinformation
+
 kill_ecannot=Du får inte döda processer
+
 renice_ecannot=Du får inte byta om processer
+
 linux_stime=Satte igång
+
 linux_real=Realtid
 linux_be=Bästa insats
 linux_idle=På tomgång
+
 freebsd_stime=Satte igång
+
 hpux_stime=Satte igång
+
 sysv_stime=Satte igång
 sysv_task=Uppgifts-ID
 sysv_zone=Zonnamn
+
 log_renice=Ändrad prioritet för process $2 till $1 
+
 acl_manage_def=Nuvarande Webmin-användare
 acl_edit=Kan döda och renisera processer?
 acl_run=Kan köra kommandon?
@@ -50,6 +63,7 @@ acl_who=Kan hantera processer för användare
 acl_who0=Alla användare
 acl_who1=Nuvarande Webmin-användare
 acl_who2=Listade användare ..
+
 open_title=Öppna filer och anslutningar
 open_proc=För process $1 (PID $2)
 open_header1=Öppna filer
@@ -73,6 +87,7 @@ open_blk=Blockera special
 open_size=Filstorlek
 open_inode=inode
 open_file=Väg
+
 trace_title=Spårningsprocess
 trace_start=Starta systemsamtal för $1 ..
 trace_doing=Spårning av systemsamtal för $1  :
@@ -83,5 +98,7 @@ trace_syscalls=Spårningssystem samtal:
 trace_all=Allt
 trace_sel=Noterade ..
 trace_change=Förändra
+
 windows_threads=Trådar i process
+
 syslog_dmesg=Kärnmeddelanden

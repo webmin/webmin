@@ -31,6 +31,7 @@ index_ok=Fittex
 index_searchres=Impjiegi Cron li jaqblu ma ' $1 ..
 index_reset=Irrisettja t-tfittxija.
 index_econfigcheck=L-impjiegi Cron ma jistgħux jiġu amministrati fis-sistema tiegħek billi l-konfigurazzjoni tal-modulu mhix valida : $1 
+
 edit_title=Editja Cron Job
 create_title=Oħloq Cron Job
 edit_ecannot=M'għandekx permess teditja l-impjiegi cron għal dan l-utent
@@ -70,6 +71,7 @@ lcedit_special_weekly=kull ġimgħa (il-Ħadd)
 lcedit_special_monthly=kull xahar (l-1)
 lcedit_special_yearly=kull sena (fl-1 ta 'Jan)
 lcedit_special_reboot=meta l-istivali tas-sistema
+
 save_err=Ma rnexxielux isalva xogħol ta 'cron
 save_ecmd=Inti ma daħħalx kmand biex tesegwixxi
 save_euser=Int trid tagħżel utent
@@ -79,6 +81,7 @@ save_ecannot=M'għandekx permess toħloq jew teditja l-impjiegi cron għal '$1'.
 save_enone=Ma għażilt l-ebda $1 biex tesegwixxi
 save_ecannot2=M'għandekx permess toħloq impjiegi cron
 save_eidx=Ix-xogħol Cron ġie ffrankat b'suċċess, iżda ma jistax jitħaddem għax ma nstabx!
+
 allow_title=Kontroll tal-Aċċess Cron
 allow_desc=Din il-formola jippermettilek tikkontrolla liema utenti jistgħu joħolqu u jmexxu l-impjiegi cron.
 allow_ecannot=Ma tistax tikkontrolla l-aċċess tal-utent għal cron
@@ -87,6 +90,7 @@ allow_all2=Iċħad l-utenti kollha ħlief għerq
 allow_all3=Ħalli l-utenti kollha
 allow_allow=Ħalli biss utenti elenkati
 allow_deny=Iċħad l-utenti elenkati biss
+
 env_title1=Editja l-Ambjent Varjabbli
 env_title2=Oħloq Ambjent Varjabbli
 env_name=Isem varjabbli
@@ -102,11 +106,13 @@ env_where2=Iċċaqlaq il-varjabbli tal-ambjent
 env_top=Qabel l-impjiegi Cron kollha għall-utent
 env_bot=Wara l-impjiegi kollha ta ’Cron
 env_leave=Pożizzjoni kurrenti
+
 exec_title=Teżegwixxi xogħol Cron
 exec_ecannot=M'għandekx permess tesegwixxi impjiegi ta 'cron għal dan l-utent
 exec_cmd=Ħruġ mill-kmand $1 ..
 exec_cmdbg=Tmexxi kmand $1 bħala proċess ta 'sfond.
 exec_none=L-ebda output iġġenerat
+
 acl_users=Jista 'jeditja l-impjiegi cron
 acl_all=L-utenti kollha
 acl_this=Utent tal-webmin attwali
@@ -122,6 +128,7 @@ acl_move=Tista 'tiċċaqlaq impjieg Cron?
 acl_kill=Tista 'ttemm l-impjiegi ta' Cron?
 acl_hourly=Tillimita l-impjiegi għal mhux aktar minn siegħa?
 acl_hourlydef=Kif issettjat fil-Modulu Config
+
 log_modify=Impjieg Cron modifikat għal $1 
 log_modify_l=Xogħol Cron modifikat "$2" għal $1 
 log_create=Impjieg Cron maħluqa għal $1 
@@ -139,7 +146,9 @@ log_move=Xogħol Cron imċaqlaq għal $1
 log_crons_delete=Impjiegi imħassra $1 Cron
 log_crons_disable=Impjiegi b'diżabilità $1 Cron
 log_crons_enable=Impjegat impjiegi $1 Cron
+
 ecopy=Ġie skopert żball fil-konfigurazzjoni Cron il-ġdida: $1 $2 
+
 when_min=kull minuta
 when_hour=kull siegħa f ' $1 l-aħħar siegħa
 when_day=kuljum f' $2:$1 
@@ -148,6 +157,7 @@ when_weekday=kull $3 f' $2:$1
 when_cron=fil-ħin cron $1 
 when_interval=kull $1 sekonda
 when_boot=fil-ħin tal-istartjar
+
 ucwhen_min=Kull minuta
 ucwhen_hour=Kull siegħa f ' $1 għaddiet is-siegħa
 ucwhen_day=Kuljum f ' $2:$1 
@@ -156,8 +166,10 @@ ucwhen_weekday=Kull $3 f' $2:$1
 ucwhen_cron=Fi żmien cron $1 
 ucwhen_interval=Kull $1 sekonda
 ucwhen_boot=Fil-ħin tal-istartjar
+
 move_err=Naqas milli jiċċaqlaq xogħol Cron
 move_etype=Dan ix-xogħol ma jistax jiċċaqlaq
+
 kill_err=Ma rnexxilhiex ittemm ix-xogħol ta ’Cron
 kill_ecannot=M’intix permess li ttemm dan ix-xogħol
 kill_egone=Ma għadux għaddej
@@ -166,13 +178,16 @@ kill_title=Temm l-impjieg Cron
 kill_rusure=Int żgur li trid ittemm il-proċess $1 bi PID $2 ?
 kill_rusure2=Int żgur li trid ittemm il-proċess $1 bil-PID $2, u s-sotto-proċessi kollha tiegħu?
 kill_ok=Iva, Itemmha
+
 range_all=Ħaddem f’kull data
 range_start=Ħaddem biss minn $1 
 range_end=sa $1 
 range_estart=Data tal-bidu nieqsa jew invalida fil-medda li għandha titħaddem
 range_eend=Data mitlufa jew invalida fil-medda li għandha titħaddem
+
 delete_err=Naqset milli tħassar l-impjiegi ta 'Cron
 delete_enone=L-ebda magħżul
+
 manual_title=Editja Manwalment Cron Jobs
 manual_edit=Fajl Cron biex teditja:
 manual_ok=Editja

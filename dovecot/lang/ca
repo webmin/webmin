@@ -11,11 +11,13 @@ index_boot=Inicia'l en engegar el sistema
 index_bootdesc=Canvia aquest valor per activar o desactivar el servidor Dovecot  en engegar el sistema.
 index_return=a l'índex de mòduls
 index_version=Versió $1
+
 stop_err=No s'ha pogut aturar Dovecot
 stop_erunning=Ja no està en execució
 start_err=No s'ha pogut iniciar Dovecot
 start_eprotos=No has seleccionat cap protocol a la pàgina de <b>Xarxa i Protocols</b>
 apply_err=No s'ha pogut aplicar la configuració
+
 net_title=Xarxa i Protocols
 net_header=Opcions de xarxa i protocols de correu de Dovecot
 net_protocols=Protocols del servidor de correu
@@ -42,8 +44,11 @@ net_eimaps_listen=Adreça IP invàlida per a connexions IMAP SSL
 net_epop3s_listen=Adreça IP invàlida per a connexions POP3 SSL
 net_elisten=Adreça invàlida per a les connexions no SSL
 net_essl_listen=Adreça invàlida per a les connexions SSL
+
 imap_title=Opcions IMAP
+
 pop3_title=Opcions POP3
+
 ssl_title=Configuració SSL
 ssl_header=Opcions d'IMAP i POP3 en mode SSL
 ssl_key=Fitxer de claus privades SSL
@@ -61,7 +66,9 @@ ssl_ecert=Hi falta el fitxer de certificats o bé no existeix
 ssl_eca=Hi falta el fitxer de certificat CA client o bé no existeix
 ssl_eregen=Hi falta l'interval de regeneració de paràmetres o bé no és numèric
 ssl_epass=No has introduït la contrasenya del fitxer de claus SSL
+
 misc_title=Altres Opcions
+
 login_title=Opcions d'Usuaris i Entrada
 login_header=Opcions d'autenticació d'usuaris i entrades
 login_fuid=UID mínim vàlid
@@ -117,6 +124,7 @@ login_procs=Nombre màxim de processos d'entrada
 login_count=Nombre inicial de processos d'entrada
 login_eprocs=Hi falta el nombre màxim de processos d'entrada o bé és invàlid
 login_ecount=Hi falta el nombre inicial de processos d'entrada o bé és invàlid
+
 mail_title=Fitxers de Correu
 mail_header=Ubicació del correu i opcions de lectura
 mail_env=Ubicació dels fitxers de correu
@@ -169,6 +177,7 @@ mail_eindexmode=No es pot establir la ubicació dels fitxers d'índex quan la ub
 mail_econtrolmode=No es pot establir la ubicació dels fitxers de control quan la ubicació del fitxer de correu es detecta automàticament
 mail_eindex=Hi falta el camí absolut dels fitxers d'índex o bé és invàlid
 mail_econtrol=Hi falta el camí absolut dels fitxers de control o bé és invàlid
+
 log_net=S'ha canviat la Xarxa i els Protocols
 log_login=S'han canviat les Opcions d'Usuaris i Entrades
 log_mail=S'han canviat els Fitxers de Correu
@@ -179,6 +188,7 @@ log_stop=S'ha aturat el Servidor Dovecot
 log_bootup=S'ha activat Dovecot en engegar el sistema
 log_bootdown=S'ha desactivat Dovecot en engegar el sistema
 log_manual=S'ha editat manualment el fitxer de configuració $1
+
 manual_title=Edició dels Fitxers de Configuració
 manual_editsel=Edita el fitxer de configuració de Dovecot
 manual_err=No s'ha pogut desar el fitxer de configuració

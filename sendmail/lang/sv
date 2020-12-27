@@ -7,6 +7,7 @@ index_stop=Stanna sendmail
 index_stopmsg=Tryck på denna knapp för att stanna den körande sendmail-processen. Detta gör så att ingen e-post från andra system delas ut till lokala användare och hindrar klienter som använder detta system som e-postserver att skicka e-post.
 index_start=Starta sendmail
 index_startmsg=Tryck på denna knapp för att starta sendmail med kommando $1. Innan sendmail startats delas ingen e-post från andra system ut till lokala användare, och e-postklienter kan inte använda detta system som e-postserver.
+
 opts_title=Inställningar för sendmail
 opts_ecannot=Du får inte ändra sendmail-inställningarna
 opts_ds=Skicka utgående e-post via dator
@@ -43,6 +44,7 @@ opts_background=Bakgrunden
 opts_queue-only=köa endast
 opts_interactive=Interaktiva
 opts_deferred=Försenade
+
 aliases_title=E-postalias
 aliases_ecannot=Du får inte ändra alias
 aliases_addr=Adress
@@ -54,6 +56,7 @@ aliases_type4=Program $1
 aliases_type5=Automatsvarsfil $1
 aliases_none=Inga
 aliases_return=aliaslista
+
 aform_type0=Inget
 aform_type1=E-postadress
 aform_type2=Adresser i fil
@@ -67,14 +70,17 @@ aform_enabled=Aktiverat?
 aform_val=Alias för
 aform_afile=Ändra ...
 aform_return=alias
+
 afile_title=Ändra adressfil
 afile_desc=Använd inmatningsrutan nedan för att ändra adresserna i filen $1
 afile_efile=Du får inte ändra $1
 afile_undo=Ångra ändringar
+
 rfile_title=Ändra filen för automatsvar
 rfile_desc=Använd inmatningsrutan nedan för att ändra automatsvarsmeddelandet i $1. Meddelandet får innehålla följande makron: $SUBJECT, $FROM, $TO, $DATE och $BODY. Dessa kommer att expanderas då automatsvaret aktiveras.
 rfile_efile=Du får inte ändra $1.
 rfile_undo=Ångra ändringar
+
 asave_err=Det gick inte att spara alias
 asave_ecannot2=Du får inte ändra alias
 asave_ecannot=Du får inte ändra detta alias
@@ -89,6 +95,7 @@ asave_etype3='$1' är inte ett giltigt filnamn
 asave_etype4='$1' är inte ett giltigt program eller finns inte
 asave_etype5=Automatsvarsfilen '$1' är inte giltig eller finns inte
 asave_etype4none=Du har inte angivit något program
+
 cws_title=Lokala domäner
 cws_ecannot=Du får inte ändra lokala domäner
 cws_domains=Domäner som administreras av denna server
@@ -97,6 +104,7 @@ cws_desc2=Observera att det normalt inte räcker med att ta med en domän i list
 cws_err=Det gick inte att spara lokala domäner
 cws_ehost='$1' är inte ett giltigt dator- eller domännamn
 cws_eip='$1' är en IP-adress, inte en domän
+
 masq_title=Maskering av domäner
 masq_ecannot=Du får inte konfigurera maskeringen
 masq_domain=Maskera som domän
@@ -107,12 +115,14 @@ masq_err=Det gick inte att spara maskering av domäner
 masq_edomain='$1' är inte en giltig domän att maskera som
 masq_ehost='$1' är inte ett giltigt dator- eller domännamn
 masq_eip='$1' är en IP-adress, inte en domän
+
 trusts_title=Betrodda användare
 trusts_ecannot=Du får inte ändra betrodda användare
 trusts_users=Lokala användare som sendmail litar på
 trusts_desc=Om en lokal användare försöker skicka e-post, kommer sendmail endast att tillåta användaren att ändra <tt>From:</tt>-adressen om han/hon finns på listan till vänster. Denna restriktion finns för att förhindra att användare skickar e-post med falska avsändaradresser från ditt system.
 trusts_err=Det gick inte att spara betrodda användare
 trusts_euser='$1' är inte en giltig användare
+
 virtusers_title=Adressomskrivningar
 virtusers_ecannot=Du får inte ändra adressomskrivningar
 virtusers_efile=Textfilen $1 som adressomskrivningsdatabasen $2 byggs upp från finns inte. Du kanske behöver ändra i <a href='$3'>modulinställningarna</a> så att rätt sökväg används.
@@ -124,6 +134,7 @@ virtusers_error=Fel $1
 virtusers_domain=Domän $1
 virtusers_address=Adress $1
 virtusers_return=adressomskrivningslista
+
 vform_edit=Ändra adressomskrivning
 vform_create=Lägg till adressomskrivning
 vform_for=E-post till
@@ -136,6 +147,7 @@ vform_err_nouser=ingen användare
 vform_err_nohost=ingen dator
 vform_end=Gå till slutet
 vform_ecannot=Du får inte ändra denna adressomskrivning
+
 vsave_ecannot=Du får inte ändra adressomskrivningar
 vsave_ecannot2=Du får inte ändra denna adressomskrivning
 vsave_emax=Du får inte lägga upp mer än $1 adressomskrivningar
@@ -150,6 +162,7 @@ vsave_eaddr='$1' är inte en giltig adress
 vsave_ecannot4=Du får inte lägga upp omskrivningar till domäner
 vsave_edomdom=Du kan bara skriva om en domän till en annan domän
 vsave_ecannot5=Du får inte lägga upp omskrivningar som ger fel
+
 mailers_title=Domänrouting
 mailers_cannot=Du får inte ändra domänroutingen
 mailers_edirective=Din inställningsfil för sendmail innehåller inte nödvändigt direktiv för domänrouting.
@@ -160,6 +173,7 @@ mailers_for=E-post till ...
 mailers_delivery=Befordran
 mailers_to=Skicka till ...
 mailers_return=domänroutinglista
+
 mform_edit=Ändra routing
 mform_create=Lägg till routing
 mform_for=E-post till
@@ -180,10 +194,12 @@ mform_procmail=Procmail
 mform_mail11=DECnet mail11
 mform_error=Fel
 mform_ecannot=Du får inte ändra domänrouting
+
 msave_ecannot=Du får inte ändra domänrouting
 msave_err=Det gick inte att spara domänrouting
 msave_edomain='$1' är inte en giltig dator eller domän
 msave_edup=Det finns redan en domänrouting för '$1'
+
 generics_title=Utgående adresser
 generics_cannot=Du får inte ändra utgående adresser
 generics_econfig=Din inställningsfil för sendmail innehåller inte nödvändigt direktiv för omskrivning av utgående adresser.
@@ -193,17 +209,20 @@ generics_desc2=Observera att det måste finnas en post i tabellen för<a href='$
 generics_from=E-post från ...
 generics_to=Ändra till ...
 generics_return=adressomskrivningslista
+
 gform_edit=Ändra adressomskrivning
 gform_create=Lägg till adressomskrivning
 gform_from=E-post från
 gform_to=Ändra till
 gform_ecannot=Du får inte ändra denna utgående adress
+
 gsave_ecannot=Du får inte ändra utgående adresser
 gsave_ecannot2=Du får inte ändra denna utgående adress
 gsave_err=Det gick inte att spara utgående adresser
 gsave_efrom='$1' är inte en giltig avsändaradress
 gsave_ematch=Avsändaradressen stämmer inte med '$1'
 gsave_eto='$1' är inte en giltig ny adress
+
 cgs_title=Utgående domäner
 cgs_ecannot=Du får inte ändra utgående domäner
 cgs_header=Utgående adressdomäner
@@ -211,6 +230,7 @@ cgs_desc=Bortsett från e-post som skickas av lokala användare kommer sendmail 
 cgs_err=Det gick inte att spara utgående domäner
 cgs_ehost='$1' är inte ett giltigt dator- eller domännamn
 cgs_eip='$1' är en IP-adress, inte en domän
+
 domains_title=Domänomskrivning
 domains_ecannot=Du får inte ändra domänomskrivningar
 domains_econfig=Din inställningsfil för sendmail innehåller inte nödvändigt direktiv för domänomskrivning.
@@ -219,14 +239,17 @@ domains_desc=Domänomskrivningar ändrar <tt>To:</tt>-adressen för e-post skick
 domains_from=Från domän ...
 domains_to=Till domän ...
 domains_return=domänomskrivningslista
+
 dform_edit=Ändra omskrivning
 dform_create=Lägg till omskrivning
 dform_from=Från domän
 dform_to=Till domän
 dform_ecannot=Du får inte ändra domänomskrivningar
+
 dsave_ecannot=Du får inte ändra domänomskrivningar
 dsave_err=Det gick inte att spara domänomskrivningar
 dsave_edomain='$1' är inte ett giltigt domännamn
+
 access_title=Spam-kontroll
 access_ecannot=Du får inte konfigurera spam-kontrollen
 access_efile=Textfilen $1 som databasen $2 för spam-kontroll byggs upp från finns inte. Du kanske behöver ändra dina <a href='$3'>modulinställningar</a> så att rätt sökväg används.
@@ -250,12 +273,14 @@ sform_discard=Kasta utan felmeddelande
 sform_err=Felkod
 sform_msg=Meddelande
 sform_ecannot=Du får inte ändra spam-kontrollen
+
 ssave_err=Det gick inte att spara spam-regeln
 ssave_etype0='$1' är inte en giltig adress
 ssave_etype1='$1' är inte en giltig nätverksadress
 ssave_etype2='$1' är inte ett giltigt användarnamn
 ssave_etype3='$1' är inte en giltig domän
 ssave_ecode='$1' är inte en giltig SMTP-felkod
+
 relay_title=Reläa domäner
 relay_ecannot=Du får inte ändra reläade domäner
 relay_eversion=Endast sendmail version 8.9 och högre stödjer reläade domäner.
@@ -264,6 +289,7 @@ relay_desc1=Sendmail reläar endast till domäner som tillåts via <a href='$1'>
 relay_desc2=Om ditt system agerar gateway för andra domäner som inte är direkt tillgängliga från utsidan av ditt nätverk (med hjälp av <a href='$1'>domänrouting</a>), måste alla dessa domäner anges här.
 relay_err=Det gick inte att spara reläade domäner
 relay_edomain='$1' är inte ett giltigt domännamn
+
 mailq_title=E-postkö
 mailq_ecannot=Du får inte titta på e-postkön
 mailq_id=E-post-ID
@@ -279,8 +305,10 @@ mailq_force=<a href='$1'>Tryck här</a> för att omedelbart skicka köad e-post.
 mailq_none=E-postkön är tom.
 mailq_delete=Ta bort de valda meddelandena
 mailq_return=e-postkö
+
 flushq_title=Skicka köade brev
 flushq_desc=Försöker skicka köad e-post nu med kommando $1 ...
+
 delq_err=Det gick inte att ta bort brevet
 delq_ecannot=Du får inte ta bort brevet
 delq_locked=Filen är för tillfället låst eftersom brev skickas
@@ -291,12 +319,14 @@ delq_egone=redan borttaget eller skickat
 delq_elocked=låst eftersom brev skickas
 delq_ok=klart
 delq_title=Tar bort brev
+
 boxes_title=Användarnas brevlådor
 boxes_user=Användare
 boxes_size=Storlek på brevlåda
 boxes_none=Inga brev
 boxes_return=brevlådor
 boxes_ecannot=Du får inte läsa e-post
+
 mail_title=Användar-e-post
 mail_from=Från
 mail_date=Datum
@@ -325,6 +355,7 @@ mail_body=Brevkroppen
 mail_match=innehåller
 mail_ok=Sök
 mail_nonefrom=Ingen
+
 view_title=Läs e-post
 view_desc=Brev $1 i $2
 view_qdesc=Köad e-post $1
@@ -335,6 +366,7 @@ view_reply2=Svara till alla
 view_forward=Skicka vidare
 view_delete=Radera
 view_ecannot=Du får inte läsa e-post till denna användare
+
 compose_title=Skriv brev
 reply_title=Svara på brev
 forward_title=Skicka vidare brev
@@ -343,6 +375,7 @@ reply_attach=Vidaresända bilagor
 reply_attach2=Bilagor
 reply_send=Skicka
 reply_ecannot=Du får inte skicka e-post som denna användare
+
 send_err=Det gick inte att skicka brevet
 send_eto=Mottagaradress saknas
 send_efrom=Avsändaradress saknas
@@ -354,12 +387,15 @@ send_efile=Den bifogade filen $1 finns inte
 send_eattach=Den sammanlagda storleken på bilagorna får inte vara större än $1 kB
 send_eperms=Användare $1 kan inte läsa $2
 send_eperms2=Du får inte skicka filen $1
+
 delete_ecannot=Du får inte radera e-post från denna användare
 delete_enone=Du har inte angivit vilket meddelande som ska tas bort
+
 search_title=Sökresultat
 search_ecannot=Du får inte söka i denna användares e-post
 search_ematch=Du måste ange en text som brevet ska innehålla
 search_none=Inget brev passade in på angivna villkor
+
 file_title=Ändra Sendmail-filen
 file_desc=Använd inmatningsrutan nedan för att manuellt ändra i Sendmail-filen $1
 file_undo=Ångra ändringar
@@ -372,6 +408,7 @@ file_edomains=Du får inte ändra domänöversättningsfilen.
 file_eaccess=Du får inte ändra spam-kontrollfilen. 
 file_emode=Okänd mode!
 file_err=Det gick inte att ändra filen
+
 acl_opts=Kunna ändra sendmail-inställningar?
 acl_cws=Kunna ändra lokala domäner?
 acl_masq=Kunna konfigurera maskering av domäner?
@@ -416,6 +453,7 @@ acl_faddrs=Angivna adresser
 acl_fdom=valfri adress@domän
 acl_apath=Begränsa filer och program till katalog
 acl_attach=Maximal sammanlagd storlek på bilagor 
+
 log_opts=Ändrade sendmail-inställningar
 log_alias_create=Lade till alias $1
 log_alias_modify=Modifierade alias $1
@@ -444,6 +482,7 @@ log_domain_manual=Ändrade domänomskrivningsfilen $1 för hand
 log_access_create=Lade till spam-kontroll för $1
 log_access_modify=Modifierade spam-kontroll för $1
 log_access_delete=Tog bort spam-kontroll för $1
+
 log_access_manual=Ändrade spam-kontrollfilen $1 för hand
 log_relay=Ändrade reläade domäner
 log_flushq=Skickade köade brev
@@ -453,6 +492,7 @@ log_stop=Stannade sendmail-demonen
 log_start=Startade sendmail-demonen
 log_delmail=Tog bort $1 brev från $2
 log_send=Skickade e-post till $1
+
 match_from=From: matchar
 match_subject=Subject: matchar
 match_to=To: matchar

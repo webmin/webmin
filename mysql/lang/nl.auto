@@ -3,17 +3,21 @@ index_estart=Het MySQL-opstartscript $1 is niet gevonden op uw systeem. Misschie
 index_version2=$3 versie $1 op $2 
 index_ecnf=Het MySQL-configuratiebestand $1 is niet gevonden op uw systeem. Gebruik de <a href='$2'>module configuratie</a> pagina om het juiste pad in te stellen.
 index_mysqlstatus=MySQL-opstartscript
+
 dbase_empty=Lege database
 dbase_name=Naam
 dbase_type=Type
 dbase_typetable=Tafel 1)
 dbase_typeindex=Inhoudsopgave
 dbase_typeview=Visie
+
 ddrop_rusure2=Weet u zeker dat u de database $1 wilt legen? $2 tabellen met $3 rijen met gegevens worden verwijderd.
 ddrop_empty2=Verwijder alle tabellen
+
 view_refresh=Vernieuwen
 view_searchheadnot=Zoekresultaten voor niet $1 in veld $2 ..
 view_go=Gaan
+
 user_vwarning=WAARSCHUWING: Deze MySQL-gebruiker is de beheerdersaanmelding voor Virtualmin-domein $1. Het wijzigen van instellingen hier kan fouten in Virtualmin veroorzaken.
 user_locked=Op slot
 user_priv_select=Selecteer tabelgegevens
@@ -48,8 +52,11 @@ user_priv_trigger=Maak trigger
 user_priv_create_tablespace=Maak een tabelruimte
 user_eslash=MySQL ondersteunt geen wachtwoord dat een backslash bevat
 user_cipher=SSL-cijfer
+
 hosts_return=hostrechten
+
 log_manual=Handmatig bewerkt configuratiebestand
+
 backup_prefix=Voorvoegsel bestandsnaam
 backup_eprefix=Het voorvoegsel van de bestandsnaam mag geen / bevatten
 backup_noprefix=Geen
@@ -58,6 +65,7 @@ backup_path=Pad op server
 backup_eisdir=Back-upbestemming $1 is een directory
 backup_edownloadall=Er kan slechts één databaseback-up worden gedownload
 backup_edownloadsave=De downloadmodus kan niet worden gebruikt voor geplande back-ups
+
 cnf_key_buffer_size=Grootte van sleutelbuffer
 cnf_table_open_cache=Tabellen om te cachen
 cnf_sort_buffer_size=Buffergrootte sorteren
@@ -65,12 +73,15 @@ cnf_ekey_buffer_size=Ontbrekende of ongeldige sleutelbuffergrootte
 cnf_esort_buffer_size=Ontbrekende of ongeldige sorteerbuffergrootte
 cnf_ilt=Time-out InnoDB-vergrendeling (in seconden)
 cnf_eilt=De time-out voor InnoDB-vergrendeling moet een geheel getal zijn
+
 manual_title=Configuratiebestanden bewerken
 manual_file=Configuratiebestand bewerken:
 manual_ok=OK
 manual_efile=Ongeldig configuratiebestand!
 manual_err=Kan configuratiebestand niet opslaan
+
 syslog_desc2=MySQL-foutmelding
+
 mysqlpass_err=MySQL veilige modus
 mysqlpass_esafecmd=De opdracht $1 die nodig is om MySQL te starten met uitgeschakelde authenticatie, is niet gevonden
 mysqlpass_eshutdown=Afsluiten mislukt : $1 

@@ -43,6 +43,7 @@ index_aend=Nie wysyłaj automatycznej odpowiedzi po
 index_charset=Zestaw znaków dla wiadomości auto odpowiedzi
 index_subject=Temat wiadomości dla automatycznych odpowiedzi
 index_nowebmin=Ten moduł jest przeznaczony do używania tylko w Userminie. Jeżeli jest widoczny w Webminie, oznacza to że szablon jest nie skończony.
+
 edit_title1=Utwórz filtr
 edit_title2=Edytuj filtr
 edit_header1=Warunek dla filtra
@@ -69,6 +70,7 @@ edit_amode7=Zapisz do nowego folderu o nazwie
 edit_nobounce=Wyłącza przekazywanie odrzuconych wiadomości
 edit_apply=Wyświetl pasujące e-maile w folderze:
 edit_move=Zastosuj do e-maili w folderze:
+
 save_err=Nie udało się zapisać filtra
 save_egone=Filtr już nie istnieje!
 save_econdheader=Brakujący lub nieprawidłowy nagłówek e-mail
@@ -87,8 +89,10 @@ save_enewfolder3=Folder o tej samej nazwie już istnieje
 save_estart=Nieprawidłowa data rozpoczęcia auto odpowiedzi
 save_eend=Nieprawidłowa data zakończenia auto odpowiedzi
 save_echarset=Brak lub nieprawidłowy zestaw znaków auto odpowiedzi
+
 delete_err=Kasowanie filtrów nie powiodło się
 delete_enone=Nic nie wybrano
+
 aliases_type1=Adres $1
 aliases_type2=Adresy w pliku $1
 aliases_type3=Plik $!
@@ -99,6 +103,7 @@ aliases_your=Twoja skrzynka e-mail
 aliases_delete=Usuń e-maila
 aliases_other=Skrzynka e-mail użytkownika $1
 aliases_auto=Auto odpowiedź z wiadomością $1
+
 auto_title=Automatyczna odpowiedź
 auto_header=Opcje automatycznego odpowiadania
 auto_enabled=Włączyć automatyczną odpowiedź?
@@ -109,12 +114,14 @@ auto_charsetdef=Z aktualnego języka
 auto_charsetother=Inny zestaw znaków
 auto_period=Minimalna przerwa między odpowiedziami
 auto_err=Zapisywanie automatycznej odpowiedzi nie powiodło się
+
 forward_title=Przekazywanie e-maili
 forward_header=Opcje przekazywania wiadomości
 forward_enabled=Włączyć przekazywanie e-maili?
 forward_to=Przekaż na adres
 forward_cont=Dostarczać także normalnie?
 forward_err=Zapisywanie przekazywania wiadomości e-mail nie powiodło się
+
 move_err=Błąd zastosowania filtra
 move_esrc=Folder Źródłowy $1 nie istnieje!
 move_edest=Folder docelowy $1 nie istnieje!

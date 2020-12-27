@@ -3,8 +3,10 @@ index_clink=Có thể nó chưa được cài đặt hoặc cấu hình mô-đun
 index_return=chỉ số mô-đun
 index_atboot=Bắt đầu lúc khởi động?
 index_atbootdesc=Thay đổi tùy chọn này để kiểm soát xem máy khách iSCSI có được khởi động khi khởi động hay không. Điều này là bắt buộc để các hệ thống tập tin được gắn kết từ các máy chủ iSCSI được tự động gắn kết.
+
 check_econfig=Không tìm thấy tệp cấu hình máy khách iSCSI $1 trên hệ thống của bạn.
 check_eiscsiadm=Không tìm thấy chương trình quản trị khách hàng iSCSI $1 trên hệ thống của bạn.
+
 auth_title=Tùy chọn xác thực
 auth_header=Xác thực máy khách và máy chủ iSCSI
 auth_name=Tên người khởi tạo hệ thống cục bộ
@@ -29,6 +31,7 @@ auth_edpassword=Thiếu mật khẩu khám phá cho máy chủ
 auth_edusername_in=Thiếu tên người dùng khám phá cho khách hàng
 auth_edpassword_in=Thiếu mật khẩu khám phá cho khách hàng
 auth_egen=Không thể tạo tên mới!
+
 timeout_title=Hết giờ iSCSI
 timeout_header=tùy chọn hết thời gian máy khách iSCSI
 timeout_timeout=Thời gian chờ đợi trước khi thất bại các lệnh SCSI
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=Thiếu thời gian hoặc không phải là số đ�
 timeout_eabort_timeout=Thiếu thời gian hoặc không phải là số để chờ phản hồi hủy bỏ trước khi thất bại
 timeout_elu_reset_timeout=Thiếu thời gian hoặc không phải là số để chờ phản hồi đơn vị logic trước khi thất bại
 timeout_etgt_reset_timeout=Thiếu thời gian hoặc không phải là số để chờ phản hồi mục tiêu trước khi thất bại
+
 iscsi_title=Tùy chọn iSCSI
 iscsi_header=Các tùy chọn iSCSI khác
 iscsi_startup=Kết nối phiên lúc khởi động?
@@ -62,6 +66,7 @@ iscsi_err=Không thể lưu các tùy chọn iSCSI
 iscsi_eretry=Thiếu hoặc không có số lần để thử lại đăng nhập
 iscsi_ecmds=Các lệnh tối đa bị thiếu hoặc không có số được xếp hàng mỗi phiên
 iscsi_equeue=Các lệnh tối đa bị thiếu hoặc không có số được xếp hàng trên mỗi thiết bị
+
 ifaces_title=Giao diện iSCSI
 ifaces_elist=Không thể liệt kê các giao diện : $1 
 ifaces_name=Tên giao diện
@@ -78,11 +83,13 @@ ifaces_hwaddress=Địa chỉ MAC
 ifaces_ifacename=Giao diện nguồn
 ifaces_ipaddressdef=Tự động
 ifaces_notset=Tự động
+
 iadd_err=Không thể thêm giao diện
 iadd_eclash=Giao diện có tên $1 đã tồn tại
 iadd_eipaddress=Địa chỉ IP nguồn bị thiếu hoặc không hợp lệ
 iadd_ehwaddress=Địa chỉ MAC bị thiếu hoặc không hợp lệ
 iadd_ename=Tên giao diện bị thiếu hoặc chứa các ký tự không hợp lệ
+
 difaces_err=Không thể xóa giao diện
 difaces_enone=Không được chọn
 difaces_edelete=Xóa giao diện $1 không thành công : $2 
@@ -93,6 +100,7 @@ difaces_confirm=Xóa giao diện
 difaces_target=mục tiêu iSCSI
 difaces_ip=máy chủ iSCSI
 difaces_users=Một số kết nối sử dụng các giao diện này hiện đang hoạt động và sẽ không hoạt động khi các giao diện bị xóa :
+
 conns_title=Kết nối iSCSI
 conns_elist=Không thể liệt kê các kết nối : $1 
 conns_ip=IP máy chủ
@@ -113,6 +121,7 @@ conns_return=danh sách các kết nối
 conns_iface=giao diện iSCSI
 conns_ifacedef=Chọn tự động
 conns_ifaceerr=Không thể tìm nạp giao diện : $1 
+
 add_title=Thêm kết nối iSCSI
 add_err=Không thể thêm kết nối iSCSI
 add_ehost=Tên máy chủ bị thiếu hoặc không thể giải quyết
@@ -129,6 +138,7 @@ add_on=$1 trên $2
 add_auth=Đăng nhập vào máy chủ
 add_auth1=Sử dụng phương thức xác thực mặc định
 add_auth0=Đăng nhập dưới dạng $2 bằng mật khẩu $3 bằng phương thức $1 
+
 dconns_err=Không thể ngắt kết nối
 dconns_enone=Không được chọn
 dconns_edelete=Xóa mục tiêu $2 khỏi máy chủ $1 không thành công : $3 
@@ -142,6 +152,7 @@ dconns_use=Được sử dụng bởi
 dconns_size=Kích thước phân vùng
 dconns_confirm=Xóa kết nối
 dconns_unused=Không sử dụng
+
 vconn_title=Kết nối iSCSI
 vconn_egone=Kết nối được chọn không còn tồn tại!
 vconn_header=chi tiết kết nối iSCSI
@@ -160,8 +171,10 @@ vconn_device3=Tên thiết bị không đổi
 vconn_delete=Ngắt kết nối
 vconn_users=Những người dùng hiện tại
 vconn_size=Kích thước đĩa
+
 atboot_err=Không thể bật khi khởi động
 atboot_einit=Không có hành động khởi động có tên $1 tồn tại
+
 log_auth=Tùy chọn xác thực đã lưu
 log_timeout=Tùy chọn thời gian chờ đã lưu
 log_iscsi=Các tùy chọn iSCSI đã lưu

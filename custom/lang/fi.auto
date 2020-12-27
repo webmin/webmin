@@ -15,6 +15,7 @@ index_actform=muoto
 index_actrun=Juosta
 index_actsql=muoto
 index_acted=Avata
+
 edit_title=Muokkaa komentoa
 create_title=Luo komento
 edit_ecannot=Et voi muokata komentoja
@@ -66,6 +67,7 @@ edit_format4=Lataa, kun mahdollista
 edit_servers=Suorita Webmin-palvelimilla
 edit_this=tämä palvelin
 edit_clone=Klooni
+
 save_err=Komenton tallennus epäonnistui
 save_ecannot=Et voi muokata komentoja
 save_ecmd=Komentoa ei annettu
@@ -78,6 +80,7 @@ save_eusermin=Muilla palvelimilla toimivia komentoja ei voi suorittaa Userminist
 save_eformat=Virheellinen lähtö MIME-tyyppi
 save_eopts=Puuttuvat parametrit $1 -asetustiedosto
 save_eopts2=Asetustiedosto tai parametrin $1 oletusarvo ei voi sisältää :
+
 run_err=Komenton suorittaminen epäonnistui
 run_ecannot=Sinulla ei ole oikeutta suorittaa tätä komentoa
 run_euser=Puuttuva tai virheellinen käyttäjä
@@ -94,6 +97,7 @@ run_eupload=Ei ladattavaa tiedostoa valittu
 run_emust=Puuttuu arvo parametrille '$1'
 run_timeout=Komento epäonnistui ennen $1 sekunnin aikakatkaisua.
 run_failed=Komento epäonnistui poistumistilassa $1 
+
 log_modify=Muokattu komento $1 
 log_create=Luotu komento $1 
 log_delete=Poistettu komento $1 
@@ -102,11 +106,13 @@ log_modify_edit=Muokattu tiedostoeditori $1
 log_create_edit=Luotu tiedostoeditori $1 
 log_delete_edit=Poistettu tiedostoeditori $1 
 log_save_edit=Tallennettu tiedosto $1 
+
 acl_cmds=Komennot, joita tämä käyttäjä voi suorittaa
 acl_call=Kaikki komennot
 acl_csel=Valitut ..
 acl_cexcept=Kaikki paitsi valitut ..
 acl_edit=Voiko luoda ja muokata komentoja?
+
 file_ecannot=Sinulla ei ole oikeutta muokata tiedostoja
 fcreate_title=Luo tiedostoeditori
 fedit_title=Muokkaa tiedostoeditoria
@@ -130,6 +136,7 @@ file_egroup=Puuttuva tai virheellinen ryhmän nimi
 file_eperms=Puuttuvat tai virheelliset oktaalilupat
 file_envs=Korvaavat ympäristömuuttujat tiedostonimessä?
 file_id=Toimittajan tunnus
+
 view_err=Tiedoston muokkaaminen epäonnistui
 view_ecannot=Sinulla ei ole oikeutta muokata tätä tiedostoa
 view_title=Muokkaa tiedostoa
@@ -138,10 +145,12 @@ view_header=Muokata tiedostoa $1
 view_ebeforeedit=Ennen muokkaamista komento epäonnistui : $1 
 view_ebefore=Ennen tallennusta -komento epäonnistui : $1 
 view_eafter=Jälkitallennuskomento epäonnistui : $1 
+
 form_ecannot=Sinulla ei ole oikeutta suorittaa tätä komentoa
 form_title=Suorita komento
 form_exec=Suorittaa
 form_edit=Muokata
+
 sql_title1=Luo SQL-komento
 sql_title2=Muokkaa SQL-komentoa
 sql_header=SQL-komennon yksityiskohdat
@@ -157,6 +166,7 @@ sql_err=SQL-komennon tallentaminen epäonnistui
 sql_esql=SQL: tä ei syötetty
 sql_ehost=Puuttuva tai virheellinen tietokantapalvelimen isäntä
 sql_edb=Puuttuva tai virheellinen tietokannan nimi
+
 srun_title=Suorita SQL-komento
 srun_err=SQL-komennon suorittaminen epäonnistui
 srun_edriver=DBI-ohjainta ei voitu ladata

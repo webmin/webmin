@@ -44,6 +44,7 @@ index_count=Znaleziono $1 pasujących pakietów ..
 index_search=Znajdź pakiety:
 index_searchok=Szukaj
 index_clear=Pokaż wszystko
+
 update_title=Aktualizacja pakietów
 update_pkg=Aktualizacja $1 ..
 update_pkg2=Instalacja $1 ..
@@ -79,18 +80,22 @@ update_none=Brak
 update_ops=Budowanie kompletnej listy aktualizacji ..
 update_rebootdesc=Jedna z aktualizacji wymaga restartu, aby mogła zostać zastosowana.
 update_reboot=Restartuj
+
 sched_title=Zaplanowana aktualizacja
 sched_yes=Harmonogram aktualizacji jest teraz aktywny.
 sched_no=Harmonogram aktualizacji jest teraz wyłączony.
+
 log_update=Zainstalowano $1 aktualizacji pakietów
 log_sched=Włączono harmonogram aktualizacji
 log_unsched=Wyłączono harmonogram aktualiacji
 log_refresh=Odświeżono  dostępne pakiety
+
 refresh_title=Odświeżanie pakietów
 refresh_clearing=Czyszczenie pamięci podręcznej ..
 refresh_done=.. gotowe
 refresh_available=Ponowne pobieranie dostępnych pakietów ..
 refresh_done3=.. znaleziono $1 możliwych aktualizacji
+
 view_title=Szczegóły pakietu
 view_header=Informacje o pakiecie
 view_name=Nazwa pakietu
@@ -104,6 +109,7 @@ view_changelog=Dostępna jest lista zmian
 view_software=Zarządzanie pakietem
 view_update=Aktualizacja pakietu
 view_install=Instalacja pakietu
+
 system_yum=YUM
 system_apt=APT
 system_csw=CSW (Blastwave)

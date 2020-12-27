@@ -10,6 +10,7 @@ index_apply=구성 적용
 index_applydesc=PPTP 서버 프로세스를 중지했다가 다시 시작하여 현재 PPTP 서버 옵션을 적용하려면이 단추를 클릭하십시오. PPP 옵션 및 PPP 계정에 대한 변경 사항은 항상 모든 새로운 연결에 적용됩니다
 index_return=모듈 색인
 index_epppd=PPP 서버 프로그램 $1 이 (가) 시스템에 설치되어 있지 않습니다. PPTP는 작동에 의존합니다.
+
 conf_title=PPTP 서버 옵션
 conf_ecannot=PPTP 서버 옵션을 편집 할 수 없습니다
 conf_header=PPTP 서버 구성
@@ -35,6 +36,7 @@ conf_elocalip='$1'은 (는) 유효한 로컬 IP 주소 또는 범위가 아닙�
 conf_eremoteip='$1'은 (는) 유효한 원격 IP 주소 또는 범위가 아닙니다
 conf_efrom=주소에서 IPX 네트워크가 없거나 잘못되었습니다
 conf_eto=주소를 지정할 IPX 네트워크가 없거나 유효하지 않습니다
+
 options_title=PPP 옵션
 options_ecannot=PPP 옵션을 편집 할 수 없습니다
 options_desc0=$1 아래의 PPP 옵션은 전화 접속 모뎀 연결을 포함하여 시스템이 수신하는 모든 수신 연결에 적용됩니다.
@@ -67,6 +69,7 @@ options_mschap=MS-CHAP 인증
 options_mschap-v2=MS-CHAP 버전 2 인증
 options_chapms=MS-CHAP 인증
 options_chapms-v2=MS-CHAP 버전 2 인증
+
 secrets_title=PPP 계정
 secrets_ecannot=PPP 계정을 편집 할 수 없습니다
 secrets_return=인덱스
@@ -80,6 +83,7 @@ secrets_sany=어떤
 secrets_create=새 PPP 계정을 만듭니다.
 secrets_desc=이 페이지에 나열된 PPP 계정은 $3 파일에 사용되며 $3 인증에 사용됩니다. 나가는 연결을 만드는 계정이 아닌 서버 $2 의 서버 만 표시됩니다.
 secrets_delete=선택된 PPP 계정 삭제
+
 edit_secret_etitle=PPP 계정 편집
 edit_secret_ctitle=PPP 계정 만들기
 edit_secret_acc=PPP 계정
@@ -99,15 +103,20 @@ edit_secret_alist=허용 된 목록 ..
 edit_secret_save=저장
 edit_secret_del=지우다
 edit_secret_return=계정 목록
+
 save_secret_esave=계정을 저장하지 못했습니다
 save_secret_enoip='$1'은 (는) 유효한 주소가 아닙니다
+
 stop_err=PPTP 서버를 중지하지 못했습니다
 stop_egone=더 이상 달리지 않는다
 stop_ecannot=PPTP 서버를 중지 할 수 없습니다
+
 start_err=PPTP 서버를 시작하지 못했습니다
 start_ecannot=PPTP 서버를 시작할 수 없습니다
+
 apply_err=PPTP 서버를 다시 시작하지 못했습니다
 apply_ecannot=PPTP 서버를 다시 시작할 수 없습니다
+
 conns_title=활성 연결
 conns_ecannot=활성 연결을 관리 할 수 없습니다
 conns_desc=이 페이지에는 서버에 대한 현재 활성화 된 PPTP 연결이 나열됩니다. 강제로 연결을 끊으려면 인터페이스 이름을 클릭하십시오.
@@ -119,9 +128,11 @@ conns_remote=클라이언트 VPN 주소
 conns_none=현재 PPTP 연결이 활성화되어 있지 않습니다.
 conns_unknown=알 수 없는
 conns_user=사용자 이름
+
 disc_err=연결을 끊지 못했습니다
 disc_egone=연결이 더 이상 활성화되지 않습니다
 disc_ekill=프로세스가 더 이상 실행되지 않습니다
+
 log_secret_create=PPP 계정 $1 생성
 log_secret_modify=수정 된 PPP 계정 $1 
 log_secret_delete=PPP 계정 $1 을 (를) 삭제했습니다.
@@ -132,6 +143,7 @@ log_disc=연결이 끊어진 클라이언트 $1
 log_start=PPTP 서버 시작
 log_stop=PPTP 서버 중지
 log_apply=적용된 PPTP 서버 구성
+
 acl_conf=구성을 편집 할 수 있습니까?
 acl_options=옵션을 편집 할 수 있습니까?
 acl_secrets=PPTP 계정을 관리 할 수 있습니까?

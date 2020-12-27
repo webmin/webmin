@@ -2,6 +2,7 @@ index_title=Ahots-postako zerbitzaria
 index_ecmd=Vgetty $1 komandoa ez da zure sisteman aurkitu. Agian ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
 index_econfig=Vgetty konfigurazio fitxategia $1 ez da zure sisteman aurkitu. Agian ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
 index_return=ahots-postaren aurkibidea
+
 vgetty_title=Serial Port-en konfigurazioa
 vgetty_desc=Zerbitzariak serieko portu batera konektatutako modem batekin ahots-deiei erantzuteko, jarraian zerrendatu behar da. Zerrenda honi portu bat gehitzen duzunean, $1 programa konfiguratuko da deiei erantzuteko eta mezuak erreproduzitzeko.
 vgetty_add=Gehitu serieko portu berria
@@ -32,6 +33,7 @@ vgetty_erings=Eraztun kopuru falta edo baliogabea
 vgetty_erings2=Eraztun kopurua 2 gutxienez izan behar da
 vgetty_eans=Ez da erantzun moduik hautatzen
 vgetty_eclash=$1 ataka seriea dagoeneko erabiltzen ari da
+
 options_title=Ahots-postako zerbitzariaren aukerak
 options_header=Serieko portu guztientzako aukerak
 options_maxlen=Gehieneko mezuen luzera
@@ -68,6 +70,7 @@ options_eprog=Programa falta da edo ez dago exekutatzeko
 options_eowner=Falta da edo baliogabea Unix erabiltzailea mezu fitxategietarako
 options_egroup=Falta da edo baliogabea Unix talde bat mezu fitxategiak
 options_emode=Falta diren edo zortzi baimen baliogabeak mezuen fitxategietarako
+
 received_title=Jasotako mezuak
 recieved_desc=Zerbitzariak jaso dituen ahots-postako mezuak jarraian agertzen dira. Mezu bat entzuteko, klikatu data/ordua lehen zutabean.
 received_none=Ez da erantzun mezurik jaso.
@@ -79,9 +82,12 @@ received_delete=Ezabatu hautatutako mezuak
 received_move=Bihur zaitez hautatuta agurra
 received_all=Hautatu guztiak
 received_invert=Alderantzizko hautapena
+
 listen_efile=Baliogabeko mezuaren fitxategi-izena!
 listen_epath=Ahots-postako mezua ez dago jada
+
 delete_efile=Baliogabeko mezuaren fitxategi-izena!
+
 messages_title=Agur Mezuak
 messages_desc=Orrialde honetan deitzaileak zure ahots-postako zerbitzariarekin konektatzean erreproduzituko diren agur-mezuak agertzen dira. Hori baino gehiago baduzu, ausaz aukeratutako mezu bakarra erabiliko da.
 messages_file=Fitxategi izena
@@ -89,12 +95,15 @@ messages_none=Ez dago agurrik.
 messages_updesc=Inprimaki honek WAV fitxategiko zorion mezu gehigarria kargatzeko aukera izango du, modemak aukeratutako formatura bihurtuko dena. Igotako WAVaren lagin-mailaren tasak jasotako mezuen lagin-tasaren berdina izan behar du, hautatutako formatua bezala.
 messages_upload=Kargatu mezua
 messages_fmt=bihurtu
+
 pvfdesc=$1, $2 bit
+
 upload_err=Ezin izan da mezua gehitzean
 upload_emessage=Ez da WAV fitxategia hautatu
 upload_ewav=Huts egin du WAV fitxategia bihurtzean : $1 
 upload_epvf=Huts egin du RMD fitxategia sortzean : $1 
 upload_esame=$1 mezu fitxategia lehendik dago
+
 log_apply=Aplikatutako konfigurazioa
 log_upload=Kargatutako $1 agur mezua
 log_move=Bihuritako $1 mezuak jaso dira
@@ -104,5 +113,6 @@ log_options=Ahots-postako aukerak aldatu dira
 log_vgetty_create=$1 serieko portua gehitu da
 log_vgetty_modify=$1 serieko ataka aldatua
 log_vgetty_delete=$1 serieko ataka ezabatu da
+
 email_subject=Ahots-postako mezua
 email_body=Ahots-postako mezua $1 -en jaso du $2 -k.

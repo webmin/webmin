@@ -28,6 +28,7 @@ index_tabinstall=Modülü yükle
 index_tabsuggest=Önerilen modüller
 index_allmods2=Webmin tarafından kullanılan eksik modüller
 index_wantmods=Kurulacak modüller
+
 download_err=Modül yüklenemedi
 download_elocal=Yerel dosya verilmedi
 download_elocal2='$1' mevcut değil
@@ -65,6 +66,7 @@ download_ebuild=Bir veya daha fazla Perl modülünün oluşturulması için $1 g
 download_yum=$1 paketinden $1 Perl modülünün kurulması.
 download_missingok=CPAN'da eksik modüller
 download_fallback=Bazı modüller paketlerden yüklenemedi, bunun yerine kaynaktan yüklemeye çalışıldı.
+
 install_title=Kurulum Modülü
 install_untar=Yıldız dosyasını açma modülü
 install_make=Derleme modülü
@@ -84,11 +86,13 @@ install_err2=Modülü CPAN'dan $1 komutuyla da yükleyebilirsiniz.
 install_exec=$1 yürütülüyor ..
 install_efile=$1 modül dosyası artık mevcut değil
 install_needunlink=Bir önceki sayfaya dönüp farklı seçenekler seçerek tekrar yüklemeyi deneyebilirsiniz. Aksi takdirde, disk alanından tasarruf etmek için <a href='$1'>geçici paket dosyalarını silmek için burayı tıklayın</a>.
+
 cpan_sel=$1 'in altındaki modüller ..
 cpan_title=Perl modülünü seçin
 cpan_search=Adlı modülleri bulun
 cpan_match=$1 ile eşleşen modüller ..
 cpan_none=Hiçbir sonuç bulunamadı.
+
 edit_title=Modül Detayları
 edit_header=Modül bilgisi
 edit_mod=Modül Adı
@@ -105,6 +109,7 @@ edit_method=Yüklendi
 edit_rpm=RPM paketi $1 
 edit_debian=Debian paketi $1 
 edit_manual=Manuel Perl modülü kurulumu
+
 uninstall_title=Kaldırma Modülü
 uninstall_rusure=$1 Perl modülünü kaldırmak istediğinizden emin misiniz? Aşağıdaki dosyalar silinecek :
 uninstall_rusure2=$1 Perl modülünü ve $2 alt modülünü kaldırmak istediğinizden emin misiniz? <br> Aşağıdaki dosyalar silinecek :
@@ -112,7 +117,9 @@ uninstall_ok=Şimdi Kaldır
 uninstall_rpm=Modül, $1 RPM paketinin kaldırılmasıyla kaldırılacak.
 uninstall_debian=Modül, $1 Debian paketinin kaldırılmasıyla kaldırılacak.
 uninstall_err=Modül kaldırılamadı
+
 delete_efile=Geçersiz paket dosyası!
+
 uninstalls_title=Modülleri Kaldır
 uninstalls_err=Modüller kaldırılamadı
 uninstalls_enone=Hiçbiri seçilmedi

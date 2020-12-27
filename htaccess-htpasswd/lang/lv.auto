@@ -16,6 +16,7 @@ index_digest2=Digest šifrēšana ir iespējota moduļa konfigurācijā, bet tai
 index_cpan=<a href='$1'>Noklikšķiniet šeit</a>, lai lejupielādētu un instalētu tūlīt.
 index_delete=Neaizsargājiet atlasītos direktorijus
 index_remove=Atsauciet un neaizsargājiet failus
+
 dir_title1=Pievienojiet aizsargāto direktoriju
 dir_title2=Rediģēt aizsargāto direktoriju
 dir_header=Aizsargātas direktoriju iespējas
@@ -60,6 +61,7 @@ dir_delete3=Nodrošiniet faila aizsardzību un noņemšanu
 dir_apache=Rediģēt Apache opcijas
 dir_efiledir='$1' ir direktorijs, tāpēc to nevar izmantot kā lietotāju failu
 dir_egfiledir='$1' ir direktorijs, tāpēc to nevar izmantot kā grupu failu
+
 edit_title1=Izveidot lietotāju
 edit_title2=Rediģēt lietotāju
 edit_header=Tīmekļa autentifikācijas lietotāja informācija
@@ -71,11 +73,13 @@ edit_pass0=Iestatīts uz
 edit_passfrom=Mainīt no
 edit_passto=uz jauno paroli
 edit_dom=Digest valstība
+
 gedit_title1=Izveidot grupu
 gedit_title2=Rediģēt grupu
 gedit_header=Tīmekļa autentifikācijas grupas informācija
 gedit_group=Grupas nosaukums
 gedit_members=Grupas dalībnieki
+
 save_err=Neizdevās saglabāt lietotāju
 save_euser1=Trūkst lietotājvārda
 save_euser2=Lietotājvārds nedrīkst saturēt: rakstzīmi
@@ -84,16 +88,19 @@ save_eclash=Lietotājs ar tādu pašu vārdu jau pastāv
 save_eoldpass=Vecā parole nav pareiza
 save_title=Lietotājs ir saglabāts
 save_edom=Trūkst vai nav derīga īssavilkuma valstība
+
 gsave_err=Neizdevās saglabāt grupu
 gsave_egroup1=Trūkst grupas nosaukuma
 gsave_egroup2=Grupas nosaukumā nedrīkst būt: rakstzīme vai atstarpes
 gsave_eclash=Grupa ar tādu pašu nosaukumu jau pastāv
+
 acl_dirs=Atļautie direktoriji
 acl_user=Kā Unix lietotājs izveidojiet.htaccess un htusers failus
 acl_same=Tas pats, kas Webmin pieteikšanās
 acl_home=Vai iekļaut Unix lietotāja mājas direktoriju?
 acl_sync=Vai var iestatīt Unix lietotāja sinhronizāciju?
 acl_uonly=Vai var pievienot un mainīt aizsargātus direktorijus?
+
 log_create_dir=Pievienots direktorijs $1 
 log_modify_dir=Pārveidots direktorijs $1 
 log_delete_dir=Izdzēsts direktorijs $1 
@@ -104,6 +111,7 @@ log_create_group=Izveidota grupa $1
 log_modify_group=Pārveidota grupa $1 
 log_delete_group=Dzēsta grupa $1 
 log_delete_dirs=Izdzēsti $1 direktoriji
+
 search_title=Meklēšanas rezultāti
 search_err=Meklēšana neizdevās
 search_edir=Trūkst vai nav derīgs meklējamais absolūtais direktorijs

@@ -10,6 +10,7 @@ index_range=Genereer rapport voor datum reeks
 index_view=Bekijk Gegenereerd Rapport
 index_viewdesc=Bekijk meest recente gegenereerde rapport in de directory $1.
 index_return=module index
+
 log_title=Log Source en Rapport Bestemming
 log_header=Source Squid log file en gegenereerde rapport opties
 log_access_log=Source Squid log file
@@ -30,6 +31,7 @@ log_elastlog=Ontbrekend of is geen getal
 log_eemail=Ontbrekende of ongeldig lijkend email adres
 log_emailx=Ontbrekend of niet bestaand email programma
 log_squidguard_log_path=SquidGuard log file
+
 style_title=Rapport stijl
 style_header=HTML rapport stijl en kleur opties
 style_title2=Rapport titel
@@ -54,6 +56,7 @@ style_efont=Ontbrekende of ongeldige letter type
 style_esize=Ontbrekende of ongeldig hoogte en breedte van plaatje
 style_language=Rapport taal
 style_charset=Rapport karakterset
+
 report_title=Rapport Opties
 report_header=Rapporteer inhoud en gegenereerde opties
 report_resolve_ip=Ophalen IP adressen?
@@ -132,6 +135,7 @@ report_echar=Spaties zijn niet toegestaan
 report_estring=Ontbrekende of ongeldige vervangende tekst
 report_eselect=Niets geselecteerd
 report_eenter=Niets ingevuld
+
 sched_title=Gepland Gegenereerd Rapport
 sched_header=Geplande rapportage opties
 sched_sched=Geplande rapportage aangezet?
@@ -146,9 +150,11 @@ sched_rsel=Die van $1 naar $2 dagen geleden
 sched_err=Mislukt om geplande gegenereerde rapport op te slaan
 sched_erfrom=Ontbrekende of ongeldige start getal van de afgelopen dagen
 sched_erto=Ontbrekende of ongeldige eind getal van de afgelopen dagen
+
 view_title=Sarg Rapport
 view_efile=Ongeldige filenaam!
 view_eopen=Mislukt om rapport file te openen
+
 gen_title=Genereerd Rapport
 gen_header=Nu een Sarg rapport genereren van de Squid log file $1 en alle geroteerde versies ..
 gen_done=.. klaar
@@ -158,6 +164,7 @@ gen_view=Bekijk het complete rapport
 gen_err=Mislukt om rapport te genereren
 gen_efrom=Ontbrekende of ongeldige vanaf dag
 gen_eto=Ontbrekende of ongeldige naar dag
+
 webmin_log_log=Ge-update log bron en rapport bestemming opties
 webmin_log_report=Ge-update rapport opties
 webmin_log_style=Ge-update rapport stijl opties

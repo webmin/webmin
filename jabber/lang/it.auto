@@ -17,6 +17,7 @@ index_restartmsg=Fare clic su questo pulsante per applicare la configurazione co
 index_comments=Avvertenza: il file di configurazione Jabber $1 contiene commenti, che verranno rimossi se vengono apportate modifiche alla configurazione utilizzando questo modulo.
 index_return=Menu Jabber
 index_version=Versione Jabber $1 
+
 general_title=Opzioni generali
 general_header=Opzioni del server Jabber globale
 general_host=Nome host del tuo server
@@ -32,6 +33,7 @@ general_eelogfmt=Formato del registro errori mancante
 general_erlog=File di registro del traffico mancante o non valido
 general_erlogfmt=Formato del registro del traffico mancante
 general_epidfile=File ID processo mancante o non valido
+
 messages_title=messaggi
 messages_header=Messaggio del server Jabber per i client
 messages_wsubject=Oggetto del messaggio di benvenuto
@@ -44,6 +46,7 @@ messages_vcard2jud=Invia vCard alla directory utente di Jabber?
 messages_err=Impossibile salvare i messaggi
 messages_evcard=XML vCard non valido : $1 
 messages_etag=Server vCard XML non inizia con &lt;vCard&gt;
+
 modules_title=Moduli Jabber
 modules_desc=I moduli elencati di seguito vengono utilizzati per elaborare i messaggi ricevuti dal gestore sessioni Jabber. Dovresti cambiare questo elenco solo se sai cosa stai facendo.
 modules_header=Moduli gestore sessioni server Jabber
@@ -52,6 +55,7 @@ modules_so=Libreria condivisa
 modules_err=Impossibile salvare i moduli Jabber
 modules_emod='$1' non è un nome di modulo valido
 modules_eso=La libreria condivisa '$1' non esiste
+
 karma_title=Karma Traffic Control
 karma_header=Opzioni di controllo della velocità del traffico
 karma_rate=Gestione della connessione eccessiva
@@ -80,6 +84,7 @@ karma_epenalty=Periodi di penalità mancanti o non validi
 karma_erestore=Periodi di ripristino mancanti o non validi
 karma_epoints=Numero di connessioni mancante o non valido
 karma_etime=Tempo mancante o non valido per il blocco
+
 ips_title=Controllo dell'accesso IP
 ips_header=Controllo dell'accesso IP del server Jabber
 ips_allow=IP client consentiti
@@ -89,10 +94,12 @@ ips_none=Nessuna
 ips_sel=Indirizzi/maschere di rete elencati.
 ips_err=Impossibile salvare il controllo di accesso IP
 ips_eaddr='$1' non è un indirizzo IP valido o un indirizzo IP/maschera di rete
+
 file_title=Modifica file di configurazione
 file_desc=Utilizzare il modulo seguente per modificare direttamente il file di configurazione di Jabber. Questo dovrebbe essere fatto solo se si comprende il formato di configurazione XML.
 file_header=Modifica il file di configurazione di Jabber
 file_err=Impossibile salvare il file di configurazione
+
 admin_title=Utenti amministrativi
 admin_header=Utenti di amministrazione del server
 admin_read=Amministratori con accesso in lettura
@@ -100,11 +107,13 @@ admin_write=Amministratori con accesso in scrittura
 admin_reply=Risposta automatica ai messaggi di amministrazione?
 admin_rsubject=Soggetto autoreply
 admin_rbody=Messaggio di risposta automatica
+
 filter_title=Filtri utente
 filter_header=Autorizzazioni filtro utente
 filter_max=Regole di filtro massime
 filter_conds=Condizioni del filtro consentite
 filter_acts=Azioni di filtro consentite
+
 restart_err=Impossibile applicare le modifiche
 stop_err=Impossibile arrestare Jabber
 stop_epid=Impossibile trovare il processo Jabber

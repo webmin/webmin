@@ -15,5 +15,6 @@ edit_special_daily=毎日（深夜）
 edit_special_weekly=毎週（日曜日）
 edit_special_monthly=毎月（1日）
 edit_special_yearly=毎年（1月1日）
+
 log_success=<tt>$1</tt>で<tt>$2</tt>を正常に実行しました
 log_failure=<tt>$1</tt>で<tt>$2</tt>を実行できませんでした： $3

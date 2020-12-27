@@ -16,6 +16,7 @@ index_all=Todos los Paquetes
 index_return=índice de módulo
 index_treturn=árbol de paquetes
 index_tree=Árbol de Paquetes
+
 search_title=Búsqueda de Paquetes
 search_nomatch=No hay paquetes que coincidan con $1
 search_none=Ninguno
@@ -28,6 +29,7 @@ search_esearch=¡No introdujo nada que buscar!
 search_delete=Desinstalar paquetes seleccionados
 search_selall=Seleccionar todo
 search_invert=Invertir selección
+
 edit_title=Editar Paquete
 edit_details=Detalles del Paquete
 edit_desc=Descripción
@@ -42,6 +44,7 @@ edit_list=Listar Archivos
 edit_uninst=Desinstalar
 edit_return=detalles del paquete
 edit_egone=El paquete ya no está instalado
+
 list_title=Archivos del Paquete
 list_files=Archivos para el paquete $1
 list_path=Trayectoria
@@ -53,6 +56,7 @@ list_status=Estado
 list_ok=Ok
 list_view=(Vista)
 list_eview=No pude abrir $1: $2
+
 delete_err=Error en borrado del paquete $1
 delete_epack=El paquete $1 no existe
 delete_title=Borrar Paquete
@@ -61,6 +65,7 @@ delete_ok=Borrar
 delete_nodeps=¿Ignorar dependencias?
 delete_noscripts=¿Saltar scripts de desinstalación?
 delete_efile=Archivo temporal a borrar inválido
+
 file_title=Información de Archivo
 file_notfound=No hay información disponible para $1
 file_path=Trayectoria
@@ -74,6 +79,7 @@ file_pack=Paquete
 file_class=Clase
 file_desc=Descripción
 file_none=Ninguna
+
 install_err=Error al instalar paquete
 install_elocal=No se ha suministrado el archivo local
 install_elocal2='$1' no existe
@@ -86,6 +92,7 @@ install_title=Instalar Paquete
 install_header=Instalar paquete
 install_packs=Paquete(s) a instalar
 install_ok=Instalar
+
 do_err=Error al instalar paquete $1
 do_title=Instalar Paquete
 do_efailed=Instalación fallida: $1
@@ -102,10 +109,12 @@ do_arch=Arquitectura
 do_inst=Instalado
 do_none=Ninguno
 do_files=Archivos del Paquete
+
 pkgadd_root=Directorio Raiz
 pkgadd_eroot=El directorio raiz '$1' no existe
 pkgadd_unknown=Desconocido
 pkgadd_manager=Gestor de Paquetes System V
+
 rpm_upgrade=¿Mejorar el paquete?
 rpm_replacepkgs=¿Sobreescribir el paquete?
 rpm_nodeps=¿Ignorar las dependencias?
@@ -120,22 +129,26 @@ rpm_eroot=El directorio raiz '$1' no existe
 rpm_search=Buscar rpmfind.net por:
 rpm_none=No se han hallado paquetes que coincidan con su búsqueda.
 rpm_find=Buscar rpmfind.net...
+
 bsd_unknown=Desconocido
 bsd_scripts=¿Ejecutar los guiones de pre y post instalación?
 bsd_force=¿Forzar la instalación si hay prerequistos que no están?
 bsd_manager=Gestor de Paquetes $1
+
 slack_unclass=Otro
 slack_unknown=Desconocido
 slack_missing=Perdido
 slack_root=Directorio raiz
 slack_eroot=Directorio Raiz perdido o inválido
 slack_manager=Gestor de Paquetes de Slackware
+
 debian_unknown=Desconocido
 debian_depends=¿Ignorar problemas de dependencias?
 debian_conflicts=¿Ignorar conflictos de paquetes?
 debian_overwrite=¿Sobreescribir archivos de otros paquetes?
 debian_downgrade=¿Reemplazar el paquete más reciente con el anterior?
 debian_manager=DPKG de Debian
+
 log_install_package=Instalado paquete $1
 log_install_apt_l=Instalado(s) paquete(s) $1 desde APT
 log_install_apt=Instalado(s) $2 paquete(s) desde APT
@@ -150,6 +163,7 @@ log_upgrade_yum_l=Se aumentaron de versión los paquete(s) $1 desde YUM
 log_upgrade_yum=Se aumentaron de versión $2 paquete(s) desde YUM
 log_check_rhn_l=Se aumentó la versión al paquete(s) $1 desde la Red Redhat
 log_check_rhn=$2 paquete(s) fueron aumentados de versión desde la Red Redhat
+
 rhn_input=Paquetes desde Red de Redhat
 rhn_find=Buscar RHN...
 rhn_install=Instalando paquete(s) mediante comando $1...
@@ -176,6 +190,7 @@ rhn_eproxy=Servidor proxy falta o es inválido
 rhn_skip=Saltar paquetes que coincidan
 rhn_nonefound=No hay paquetes disponibles para actualizar.
 rhn_name=Red Redhat
+
 apt_input=Paquete desde APT
 apt_install=Instalando paquete(s) mediante comando $1...
 apt_ok=... instalación completa.
@@ -200,6 +215,7 @@ apt_search=Buscar paquetes que coincidan con:
 apt_find=Buscar APT...
 apt_title=Buscar en APT
 apt_name=APT
+
 yum_input=Paquete desde YUM
 yum_install=Instalando paquete(s) con el comando $1 ..
 yum_ok=.. instalación completa.
@@ -219,6 +235,7 @@ yum_title=Navegar YUM
 yum_name=YUM
 yum_enable=Habilitar repositorio:
 yum_none=&lt;Ninguno&gt;
+
 urpmi_name=URPMI
 urpmi_input=Paquete desde URPMI
 urpmi_find=Navegar URPMI ..
@@ -233,6 +250,7 @@ urpmi_upgradeok=.. completo.
 urpmi_install=Instalando paquete(s) con el comando $1 ..
 urpmi_ok=.. instalación completa.
 urpmi_failed=.. ¡falló instalación!
+
 rpm_missing=Falta
 rpm_checkfail=Falló chequeo $1
 rpm_md5=MD5
@@ -244,6 +262,7 @@ rpm_user=propiedad de usuario
 rpm_perm=permisos
 rpm_group=propiedad de grupo
 rpm_erpm=RPM $1 no hallado: $2
+
 soft_reg=Archivo Regular
 soft_dir=Directorio
 soft_spec=Archivo Especial
@@ -255,6 +274,7 @@ soft_euncompress=El archivo está comprimido pero el comando <tt>uncompress</tt>
 soft_euncmsg=No pude descomprimir el archivo: $1
 soft_egzip=El archivo está comprimido mediante gzip per el comando gzip no ha sido hallado en su sistema.
 soft_egzmsg=No pude descomprimir mediante gunzip el archivo: $1
+
 aix_unknown=Desconocido
 aix_device=Dispositivo de ENTRADA / directorio para software
 aix_software=SOFTWARE a instalar
@@ -272,6 +292,7 @@ aix_accept=¿ACEPTAR nuevos acuerdos de licencia?
 aix_license=¿Hacer vista previa de de nuevos acuerdos de LICENCIA?
 aix_clean=¿Limpiar fallo de instalación?
 aix_manager=Gestor de Paquetes de AIX
+
 emerge_input=Desde repositorio de transporte
 emerge_find=Buscar...
 emerge_install=Instalando paquete mediante comando $1...
@@ -287,6 +308,7 @@ emerge_noreplace=¿Reemplazar paquetes que ya existan?
 emerge_onlydeps=¿Sólo instalar dependencias?
 emerge_title=Buscar en Portage
 emerge_name=Portage
+
 cygwin_fmissing=El archivo falta
 cygwin_lmissing=El archivo al cual apunta el enlace falta
 cygwin_estat=Fallo al establecer archivo: $1
@@ -295,6 +317,7 @@ cygwin_elstat=Fallo al establecer enlace simbólico: $1
 cygwin_badpostscript=Aviso: Este script no parece haber sido ejecutado
 cygwin_pkgexists=El paquete $1 ya existe.
 cygwin_warnuse=Aviso: Este no es un interfaz oficial para gestionar el software Cygwin. Úselo bajo su responsabilidad.
+
 deletes_err=Fallo al borrar paquetes
 deletes_enone=No se seleccionaron paquetes
 deletes_title=Borrar Paquetes
@@ -305,6 +328,7 @@ deletes_failed2=Desinstalación fallida : $1
 deletes_success2=.. desinstalación completa.
 deletes_rusure=¿Seguro que desea desinstalar los paquetes $1?
 deletes_ok=Borrarlos todos
+
 csw_input=Paquete de CSW
 csw_install=Instalando paquete(s) con el comando $1 ..
 csw_ok=.. instalación completa
@@ -314,6 +338,7 @@ csw_package=Paquete
 csw_version=Versión
 csw_title=Navegar CSW
 csw_name=CSW
+
 find_title=Buscar Paquete
 find_search=Buscar paquetes que coincidan:
 find_name=Nombre

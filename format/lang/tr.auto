@@ -15,6 +15,7 @@ index_use=kullanım
 index_free=Bedava
 index_format=Bu disk biçimlendirilmemiş
 index_return=disk listesi
+
 edit_ecannot=Bu diski düzenlemenize izin verilmiyor
 edit_title=Bölümü Düzenle
 edit_header=Bölüm Ayrıntıları
@@ -56,6 +57,7 @@ edit_tunedesc2=Henüz kurulmadığı için bu bölümde dosya sistemini ayarlaya
 edit_tunedesc3=Şu anda bağlı olduğu için bu bölümdeki dosya sistemini ayarlayamazsınız. Önce bağlantısını kesmek için <a href=/mount/>dosya sistemleri modülünü</a> kullanın.
 edit_tunedesc4=Bir dosya sistemi olmadığından bu bölümdeki dosya sistemini ayarlayamazsınız.
 edit_tunedesc5=Yalnızca <tt>UFS</tt> dosya sistemleri ayarlanabildiğinden, dosya bölümünü bu bölümde ayarlayamazsınız.
+
 save_ecannot=Bu diski düzenlemenize izin verilmiyor
 save_edelete=Bölüm silinemedi
 save_esave=Bölüm kaydedilemedi
@@ -64,6 +66,7 @@ save_eend='$1' geçerli bir bitiş silindiri değil
 save_estartmin=Başlangıç silindiri> 0 olmalıdır
 save_eendmax=Bitiş silindiri < $1 olmalıdır
 save_estartend=Başlangıç silindiri bitişten daha az olmalıdır
+
 newfs_title=Dosya Sistemi Oluştur
 newfs_ecannot=Bu diski biçimlendirmenize izin verilmiyor
 newfs_desc=Bu formun altındaki düğmeyi tıkladığınızda, $2 cihazında yeni bir $1 oluşturulur. Bu bölümdeki tüm veriler kalıcı olarak silinecek.
@@ -89,6 +92,7 @@ newfs_err=Dosya sistemi oluşturulamadı
 newfs_exec=$1 komutu çalıştırılıyor.
 newfs_failed=.. komut başarısız!
 newfs_ok=.. komut tamamlandı.
+
 fsck_title=Dosya Sistemini Onar
 fsck_ecannot=Bu diski onaramazsınız
 fsck_desc=<b>Onar</b> düğmesini tıkladığınızda $2 üzerindeki $1 öğesini kontrol eder ve isteğe bağlı olarak onarır. Kontrol ve onarım seviyesi aşağıdaki seçiminize göre belirlenir.
@@ -106,6 +110,7 @@ fsck_37=kontrol sırasında öldürülen süreç
 fsck_39=düzeltilemez hatalar algılandı!
 fsck_40=hata tespit edilmedi
 fsck_unknown=bilinmeyen hata
+
 tunefs_title=Dosya Sistemini Ayarla
 tunefs_ecannot=Bu diski ayarlamanıza izin verilmiyor
 tunefs_desc=Bu form, $2 üzerindeki $1 'in çeşitli parametrelerini ayarlamanıza olanak tanır. Bu dosya sistemindeki mevcut dosyalar zarar görmez.
@@ -122,6 +127,7 @@ tunefs_err=Dosya sistemi ayarlanamadı
 tunefs_exec=$1 komutu çalıştırılıyor.
 tunefs_failed=.. komut başarısız!
 tunefs_ok=.. komut tamamlandı.
+
 select_idedevice=IDE cihazı $1 
 select_idepart=IDE aygıtı $1 bölüm $2 
 opt_error='$1' geçerli bir $2 değil
@@ -129,10 +135,13 @@ esun=Bölümler yalnızca Sun donanımında değiştirilebilir
 emounted=Disk bölümleri monte etti
 elast=Son bölüm kaldırılamaz
 eformat=<tt>format</tt> disk bulamadı!
+
 fstype_ufs=Solaris Unix Dosya Sistemi
 fstype_unknown=Bilinmeyen Dosya Sistemi
+
 acl_disks=Bu kullanıcının bölümleyip biçimlendirebileceği diskler
 acl_dall=Tüm diskler
 acl_dsel=Seçilen ..
 acl_view=Diskleri ve bölümleri düzenleyebilir mi?
+
 ecannot=Bölümleri düzenleme izniniz yok

@@ -16,6 +16,7 @@ index_chain=Ketting $1
 index_action=aksie
 index_desc=toestand
 index_comm=kommentaar
+index_no_comment=
 index_move=skuif
 index_none=Daar is geen reëls vir hierdie ketting gedefinieer nie.
 index_policy=Stel verstekaksie op:
@@ -88,6 +89,7 @@ index_ipset_size=grootte
 index_ipvxmode=Verander IP-protokolweergawe:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
 desc_p=protokol is $1 
 desc_p!=protokol is nie $1 nie
 desc_s=bron is $1 
@@ -114,6 +116,8 @@ desc_tcp-option=pakket gebruik TCP-opsie $1
 desc_tcp-option!=pakket gebruik nie TCP-opsie $1 nie
 desc_icmp-type=ICMP-tipe is $1 
 desc_icmp-type!=ICMP-tipe is nie $1 nie
+desc_icmpv6-type=ICMP-tipe is $1 
+desc_icmpv6-type!=ICMP-tipe is nie $1 nie
 desc_mac-source=ethernet-adres is $1 
 desc_mac-source!=ethernet-adres is nie $1 nie
 desc_limit=koers is minder as $1 
@@ -146,10 +150,15 @@ desc_always=altyd
 desc_args--match-set=$2 is vervat in IP-stel $1 
 desc_src=bron
 desc_dest=bestemming
+
 redhat_einstalled=Geen <tt>iptables (6)</tt> opstartaksie is gevind nie, wat aandui dat die IPtables-pakket nie op u stelsel geïnstalleer is nie
 redhat_eoutput=Kon nie IPtables status kry van die opdrag $1 nie. Dit dui waarskynlik daarop dat u stelsel opgestel is om IP-kettings te gebruik in plaas van IP-tabelle.
+
 gentoo_escript=Die Gentoo IPtables-opstartskrif $1 is nie op u stelsel gevind nie.
+
 eiptables=Onbekende IPtables stoor lêerlyn : $1 
+eip6tables=Onbekende ip6-tafels stoor lêerlyn : $1 
+
 edit_title1=Voeg reël by
 edit_title2=Wysig reël
 edit_title3=Kloonreël
@@ -218,6 +227,7 @@ edit_physdevout=Uitgaande fisiese koppelvlak
 edit_physdevisin=Pakkie inkomend op die brug-koppelvlak
 edit_physdevisout=Pakket wat op die brugvlak koppel
 edit_physdevisbridged=Pakkie word oorbrug
+
 save_err=Kon nie reël stoor nie
 save_echain=Ontbrekende of ongeldige ketting om te loop
 save_esource=Ontbrekende of ongeldige bronadres of netwerk
@@ -262,23 +272,28 @@ save_estates=Geen verbindingstate is gekies nie
 save_ecanjump=U mag nie hierdie aksie gebruik nie
 save_ephysdevin=Inkomende fisiese koppelvlak ontbreek of ongeldig
 save_ephysdevout=Ontbrekende of ongeldige fisiese koppelvlak ontbreek
+
 delete_title=Verwyder ketting
 delete_rusure=Is u seker dat u die ketting $1 wil uitvee? $2 -reëls daarin sal verwyder word.
 delete_ok=Vee nou uit
 delete_ecannot=U mag nie kettings uitvee nie
+
 clear_title=Duidelike ketting
 clear_rusure=Is u seker dat u alle $2 -reëls uit ketting $1 wil verwyder?
 clear_ecannot=U mag nie kettings skoonmaak nie
+
 new_err=Kon nie ketting skep nie
 new_ename=Ontbrekende of ongeldige kettingnaam
 new_etaken=Daar bestaan reeds 'n ketting met hierdie naam
 new_ecannot=U mag nie kettings skep nie
+
 apply_err=Kon nie konfigurasie toepas nie
 apply_ecannot=U mag nie die konfigurasie toepas nie
 apply_remote=Fout van $1 : $2 
 unapply_err=Kon nie die konfigurasie terugkeer nie
 unapply_ecannot=U mag nie die konfigurasie terugkeer nie
 bootup_ecannot=U mag nie die firewall tydens opstart inskakel of deaktiveer nie
+
 log_create_rule=Reël bygevoeg tot ketting $1 in tabel $2 
 log_modify_rule=Gewysigde reël in ketting $1 in tabel $2 
 log_delete_rule=Reël in ketting $1 in tabel $2 is uitgevee
@@ -301,8 +316,10 @@ log_add_group=Klusterbedieners van groep $1 bygevoeg
 log_delete_host=Klusterbediener $1 is verwyder
 log_delete_group=$1 groepbedieners verwyder
 log_openports=Geopende firewall-poorte $1 
+
 setup_eiface=Geen eksterne netwerk koppelvlak is ingevoer nie
 setup_ecannot=U mag nie die firewall instel nie
+
 acl_tables=Toegestane IP-tabelle
 acl_apply=Kan konfigurasie toepas?
 acl_unapply=Kan die konfigurasie verwyder word?
@@ -314,9 +331,11 @@ acl_jall=Almal
 acl_newchain=Kan nuwe kettings geskep word?
 acl_delchain=Kan kettings uitvee of uitvee?
 acl_policy=Kan standaardbeleid verander word?
+
 etable=U mag nie hierdie IP-tabel wysig nie
 ejump=U mag nie hierdie reël wysig nie
 ecluster=U mag nie die firewall-groepering bestuur nie
+
 cluster_title=Cluster Firewall Servers
 cluster_none=Daar is nog geen bedieners by die firewall-groep gevoeg nie.
 cluster_host=gasheernaam
@@ -327,6 +346,7 @@ cluster_gadd=Voeg bedieners in groep by
 cluster_need=U moet bedieners met 'n aanmelding en wagwoord in die Webmin Servers Index-module voeg voordat dit hier bestuur kan word.
 cluster_return=groep bedieners
 cluster_delete=Verwyder geselekteerde
+
 add_title=Voeg bedieners by
 add_msg=Voeg $1 by.
 add_gmsg=Voeg bedieners in groep $1 by.
@@ -336,13 +356,16 @@ add_echeck=Bediener $1 het nie die Linux Firewall-module nie
 add_emissing=Bediener $1 ontbreek die firewall-opdrag $2 
 add_ok=$1 bygevoeg, met $2 aktiewe firewall-reëls.
 add_enone=Geen bedieners om gekies by te voeg nie!
+
 policy_ecannot=U mag nie die standaardbeleid vir hierdie ketting verander nie
+
 move_title=Beweeg reëls
 move_count=Reëls gekies
 move_chain=Huidige verandering
 move_dest=Bestemmingsketting
 move_ok=Skuif nou
 move_header=Reël skuif opsies
+
 rename_title=Hernoem ketting
 rename_count=Reëls in ketting
 rename_chain=Huidige naam
@@ -352,6 +375,3 @@ rename_header=Opsies vir die herbenaming van kettings
 rename_adjust=Wysig ander reëls wat na hierdie ketting spring?
 rename_none=Geen
 rename_ecannot=U mag nie kettings hernoem nie
-desc_icmpv6-type=ICMP-tipe is $1 
-desc_icmpv6-type!=ICMP-tipe is nie $1 nie
-eip6tables=Onbekende ip6-tafels stoor lêerlyn : $1 

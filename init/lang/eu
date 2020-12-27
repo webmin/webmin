@@ -41,6 +41,7 @@ index_rdesc=Deskribapena
 index_rboot=Kargatzeko unean hasi?
 index_radd=Sortu ekintza berria.
 index_unknown=Ezezaguna
+
 edit_title=Editatu ekintza
 create_title=Sortu ekintza
 edit_ecannot=Ez zaude kargako ekintzak editatzeko baimendua
@@ -73,6 +74,7 @@ edit_statusnow=Erakutsi egoera
 edit_return=ekintza
 edit_status=Orain hasia?
 edit_unknown=Ezezaguna
+
 save_err=Akatsa ekintza gordetzean
 save_ecannot=Ez zaude karga uneko ekintzak editatzeko baimendua
 save_ealready=Dagoeneko existitzen da '$1' izeneko ekintza
@@ -81,6 +83,7 @@ save_ename=Ekintza izena falta da edo ez da baliozkoa
 save_eclash=Izen bereko ekintza dagoeneko existitzen da
 save_escript=Ez da ekintza script-ik sartu
 save_estartcmd=Karga uneko komandoa falta da
+
 ss_ecannot=Ez zaude karga uneko ekintzak martxan jarri edo gelditzeko baimendua
 ss_start=Hasi ekintza
 ss_stop=Gelditu ekintza
@@ -91,21 +94,25 @@ ss_exec=$1 exekutatzen ..
 ss_doingstart= $1 ekintza martxan jartzen ..
 ss_doingstop= $1 ekintza gelditzen ..
 ss_doingstatus=$1 ekintzaren egoera eskatzen ..
+
 shutdown_ecannot=Ez zaude sistema itzaltzeko baimendua
 shutdown_title=Itzali
 shutdown_rusure=Ziur zaude $1 komandoarekin itzali nahi duzula sistema?
 shutdown_ok=Itzali Sistema
 shutdown_exec= Itzaltzen $1 komandoarekin  ..
+
 reboot_ecannot=Ez zaude sistema berrabiarazteko baimendua
 reboot_title=Berrabiatu
 reboot_rusure=Ziur zaude $1 komandoarekin berrabiarazi nahi duzula sistema?
 reboot_ok=Berrabiarazi Sistema
 reboot_exec= Berrabiarazten $1 komandoarekin ..
+
 acl_script=Karga uneko scripta edita dezake?
 acl_actions=Ekintzak martxan jarri, editatu, sortu eta ezabatzea posible?
 acl_runonly=Soilik martxan jarri
 acl_reboot=Sistema berrabiarazteko gai?
 acl_shutdown=Sistema itzaltzeko gai?
+
 log_rename=Berrizendatua $1 ekintza $2 ra
 log_modify=Aldatua $1 ekintza
 log_create=Sortua $1 ekintza
@@ -126,6 +133,7 @@ log_massrestart=Ekintza berrasieratuak $1
 log_massenable=Gaitutako ekintzak $1
 log_massdisable=Desgaitutako ekintzak $1
 log_telinit=Aldatua $1 exekuzio-mailara
+
 edit_hostconfig_startup=$1 scripta sistemaren kargan exekutatuko da ekintza aktibatuta badago. Posible duzu behean editatzea.
 edit_hostconfig_plist=$1 fitxategiak parametro zehatz batzuk konfiguratzen ditu kargarako scriptarekiko. Posible duzu behean editatzea.
 edit_hostconfig_new=Sortu ekintza berria
@@ -137,6 +145,7 @@ edit_hostconfig_array=$1, $2 eta $3 bektore eremuak dira eta balio bat baino geh
 edit_hostconfig_further=Behin abiarazte ekintza berria sortuta, orri batera berbideratua izango zara non behar izan ezkero, abiarazte scripta aldatzea posible izango duzun eta baita parametro zerrenda ere.
 edit_hostconfig_hostconfig=$1 fitxategiak sistemaren karga unean martxan jartzen diren  zerbitzu eta deabruak kontrolatzen ditu. Posible duzu behean editatzea
 edit_hostconfig_title=Makinaren konfigurazioa editatu
+
 mass_enone=Ez da ekintzarik aukeratu
 mass_enone2=Ez da zerbitzurik aukeratu
 mass_start=Ekintzak martxan jartzen
@@ -149,6 +158,7 @@ mass_starting=$1 ekintza martxan jartzen ..
 mass_stopping=$1 ekintza gelditzen ..
 mass_failed=.. Akatsa!
 mass_ok=.. Egina.
+
 change_err=Ez zaude exekuzio-mailak aldatzera baimendua
 change_title=Aldatu exekuzio-maila
 change_cmd=$1 exekuzio-mailara aldatzen $2 komandoarekin. Honek denbora bat har dezake, posible da aldaketa egin ondoren Webmin ez eskuragarri izatea.

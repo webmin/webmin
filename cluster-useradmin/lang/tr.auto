@@ -17,6 +17,7 @@ index_tdesc=Açıklama
 index_tucount=Kullanıcılar
 index_tgcount=Gruplar
 index_ttype=İşletim sistemi türü
+
 add_title=Sunucu Ekle
 add_msg=$1 ekleniyor ..
 add_gmsg=$1 grubuna sunucu ekleniyor.
@@ -26,6 +27,7 @@ add_echeck=$1 sunucusunda kullanıcı ve grup modülü yok
 add_epft=$1 sunucusu bu ana bilgisayarla aynı kullanıcı dosyaları biçimini kullanmıyor
 add_egft=$1 sunucusu bu ana bilgisayarla aynı grup dosya biçimini kullanmıyor
 add_ok=$2 kullanıcı ve $3 grupla $1 eklendi.
+
 host_title=Yönetilen Sunucu
 host_header=Yazılım tarafından yönetilen sunucu ayrıntıları
 host_name=Ana bilgisayar adı
@@ -34,8 +36,7 @@ host_delete=Yönetilenler Listesinden Kaldır
 host_refresh=Kullanıcıları ve Grupları Yenile
 host_users=kullanıcı sayısı
 host_groups=Grup sayısı
-host_ulist=Sunucudaki Kullanıcılar
-host_glist=Sunucudaki Gruplar
+
 host_return=sunucu ayrıntıları
 refresh_title=Kullanıcıları ve Grupları Yenile
 refresh_header=Tüm sunuculardan kullanıcı ve grup listelerini yeniden isteme ..
@@ -49,6 +50,7 @@ refresh_gdel=$1 grubu kaldır
 refresh_done=.. bitti
 refresh_del=$1 sunucu listesinden kaldırıldı
 refresh_failed= $1 : $2 yenilenemedi
+
 uedit_host=$1 ile ilgili ayrıntılar
 uedit_leave=Değişme
 uedit_set=Ayarlanır
@@ -66,6 +68,7 @@ uedit_servers=Üzerinde oluşturulacak sunucular
 uedit_all=&lt;tüm ana makineler&gt;
 uedit_donthave=&lt;onu olmayan ev sahipleri&gt;
 uedit_group=$1 üyeleri
+
 usave_einuse=$1 'de aynı ada sahip bir kullanıcı zaten var
 usave_esecgid=$1 ikincil grubu mevcut değil
 usave_con=$1 üzerinde oluşturuluyor ..
@@ -88,16 +91,20 @@ usave_header=Tüm ana bilgisayarlarda $1 kullanıcı oluşturuluyor ..
 usave_header5=$2 üzerinde $1 kullanıcısı oluşturuluyor ..
 usave_header4=$2 grubunun üyelerinde $1 kullanıcısı oluşturuluyor ..
 usave_header3=Kendisine sahip olmayan sunucularda $1 kullanıcısı oluşturuluyor ..
+
 search_hosts=Sunucular
+
 udel_on=$1 'den siliniyor ..
 udel_servs=Varsa ana dizini sil
 udel_others=Diğer modüllerdeki kullanıcı silinsin mi?
 udel_dothers=Diğer modüllerde siliniyor ..
 udel_gone=Kullanıcı artık mevcut değil.
 udel_failed=Kullanıcı silinemedi : $1 
+
 gdel_on=$1 'den siliniyor ..
 gdel_gone=Kullanıcı artık mevcut değil.
 gdel_failed=Grup silinemedi : $1 
+
 gsave_create=Grup dosyası girişi ekleniyor ..
 gsave_con=$1 üzerinde oluşturuluyor ..
 gsave_euser=$1 kullanıcısı mevcut değil
@@ -110,10 +117,12 @@ gsave_header=Tüm ana bilgisayarlarda $1 grubu oluşturuluyor ..
 gsave_header5=$2 üzerinde $1 grubu oluşturuluyor ..
 gsave_header4=$2 grubunun üyelerine $1 grubu oluşturuluyor ..
 gsave_header3=İçinde bulunmayan ana bilgisayarlarda $1 grubu oluşturuluyor ..
+
 gedit_host=$1 ile ilgili ayrıntılar
 gedit_add=Kullanıcı ekle
 gedit_del=Kullanıcıları kaldır
 gedit_donthave=&lt;sahip olmayan sunucular&gt;
+
 sync_title=Sunucuları Senkronize Et
 sync_desc=Bu form, hesapları kümenizdeki tüm sunucular arasında senkronize etmek için şu anda sahip olmayan sunucularda kullanıcılar ve gruplar oluşturmanıza olanak tanır.
 sync_hosts=Senkronize edilecek sunucular
@@ -141,6 +150,7 @@ sync_test=Sadece ne yapılacağını göster?
 sync_makehome=Giriş dizinleri mi oluşturuyorsunuz?
 sync_copy=Dosyalar ana dizine kopyalansın mı?
 sync_others=Diğer modüllerde kullanıcı oluşturulsun mu?
+
 log_create_user=$1 kullanıcı oluşturuldu
 log_delete_user=$1 kullanıcı silindi
 log_modify_user=Değiştirilmiş kullanıcı $1 

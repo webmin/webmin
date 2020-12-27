@@ -45,6 +45,7 @@ index_ondate=datum
 index_charset=Stel die boodskapkarakters outomaties in
 index_subject=Boodskap onderwerp outomaties
 index_nowebmin=Hierdie module is slegs vir gebruik in Usermin. As dit sigbaar is in Webmin, is die tema wat u gebruik onvolledig.
+
 edit_title1=Skep filter
 edit_title2=Wysig filter
 edit_header1=Toestand vir filter
@@ -71,6 +72,7 @@ edit_amode7=Stoor in die nuwe gids met die naam
 edit_nobounce=Onderdruk die deurstuur van weieringboodskappe
 edit_apply=Wys passende e-posadres in die vouer:
 edit_move=Pas op e-posadres toe:
+
 save_err=Kon nie die filter stoor nie
 save_egone=Filter bestaan nie meer nie!
 save_econdheader=E-poskop ontbreek of ongeldig
@@ -89,8 +91,10 @@ save_enewfolder3=Daar bestaan reeds 'n lêergids met dieselfde naam
 save_estart=Ongeldige outo-aanvanklike datum
 save_eend=Ongeldige outo-einddatum
 save_echarset=Karakterset ontbreek of ongeldig
+
 delete_err=Kon nie filters uitvee nie
 delete_enone=Geen gekies nie
+
 aliases_type1=Adres 1
 aliases_type2=Adresse in lêer $1 
 aliases_type3=Lêer $1 
@@ -101,6 +105,7 @@ aliases_your=U posbus
 aliases_delete=Vee pos uit
 aliases_other=Posbus van gebruiker $1 
 aliases_auto=Autoresponder met boodskap $1 
+
 auto_title=E-pos outomatiese antwoord
 auto_header=Outomatiese e-pos antwoordopsies
 auto_enabled=Outomatiese antwoord geaktiveer?
@@ -111,12 +116,14 @@ auto_charsetdef=Van die huidige taal
 auto_charsetother=Ander karakterset
 auto_period=Minimum interval tussen antwoorde
 auto_err=Kon nie outomatiese antwoord stoor nie
+
 forward_title=Stuur e-pos
 forward_header=E-pos aanstuuropsies
 forward_enabled=E-posstuur aangeskakel?
 forward_to=Stuur na adresse
 forward_cont=Lewer u ook normaal?
 forward_err=Kon nie die aanstuur van e-pos stoor nie
+
 move_err=Kon nie filter toepas nie
 move_esrc=Bronmap $1 bestaan nie!
 move_edest=Bestemmingsmap $1 bestaan nie!

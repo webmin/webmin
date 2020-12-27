@@ -11,11 +11,13 @@ index_boot=Bắt đầu lúc khởi động?
 index_bootdesc=Thay đổi cài đặt này để bật hoặc tắt khởi động máy chủ Dovecot khi khởi động hệ thống.
 index_return=chỉ số mô-đun
 index_version=Phiên bản $1
+
 stop_err=Không thể ngăn chặn Dovecot
 stop_erunning=Không còn chạy
 start_err=Không thể khởi động Dovecot
 start_eprotos=Không có giao thức nào được chọn trên trang <b>Mạng và Giao thức</b>
 apply_err=Không thể áp dụng cấu hình
+
 net_title=Mạng và giao thức
 net_header=Tùy chọn giao thức mạng và thư của Dovecot
 net_protocols=Phục vụ giao thức thư
@@ -42,8 +44,11 @@ net_eimaps_listen=Địa chỉ IP không hợp lệ cho các kết nối SSL IMA
 net_epop3s_listen=Địa chỉ IP không hợp lệ cho các kết nối SSL POP3
 net_elisten=Địa chỉ IP không hợp lệ cho các kết nối không SSL
 net_essl_listen=Địa chỉ IP không hợp lệ cho các kết nối SSL
+
 imap_title=Tùy chọn IMAP
+
 pop3_title=Tùy chọn POP3
+
 ssl_title=Cấu hình SSL
 ssl_header=Tùy chọn chế độ SSL IMAP và POP3
 ssl_key=Tệp khóa riêng SSL
@@ -61,7 +66,9 @@ ssl_ecert=Tệp chứng chỉ bị thiếu hoặc không tồn tại
 ssl_eca=Tệp chứng chỉ CA của máy khách bị thiếu hoặc không tồn tại
 ssl_eregen=Khoảng thời gian phục hồi tham số thiếu hoặc không số
 ssl_epass=Không nhập mật khẩu tệp khóa SSL
+
 misc_title=Sự lựa chọn khác
+
 login_title=Tùy chọn người dùng và đăng nhập
 login_header=Tùy chọn đăng nhập và xác thực người dùng
 login_fuid=UID hợp lệ tối thiểu
@@ -117,6 +124,7 @@ login_procs=Quá trình đăng nhập tối đa
 login_count=Quá trình đăng nhập ban đầu
 login_eprocs=Thiếu hoặc không hợp lệ số lượng quá trình đăng nhập
 login_ecount=Số lượng quá trình đăng nhập ban đầu bị thiếu hoặc không hợp lệ
+
 mail_title=Tập tin thư
 mail_header=Vị trí thư và tùy chọn đọc
 mail_env=Vị trí tệp thư
@@ -169,6 +177,7 @@ mail_eindexmode=Vị trí tệp chỉ mục không thể được đặt khi v�
 mail_econtrolmode=Vị trí tệp điều khiển không thể được đặt khi vị trí tệp thư được tự động phát hiện
 mail_eindex=Đường dẫn tuyệt đối bị thiếu hoặc không hợp lệ cho các tệp chỉ mục
 mail_econtrol=Đường dẫn tuyệt đối bị thiếu hoặc không hợp lệ cho các tệp điều khiển
+
 log_net=Thay đổi mạng và giao thức
 log_login=Thay đổi tùy chọn người dùng và đăng nhập
 log_mail=Thay đổi tập tin thư
@@ -179,6 +188,7 @@ log_stop=Máy chủ Dovecot đã dừng
 log_bootup=Đã bật Dovecot khi khởi động
 log_bootdown=Vô hiệu hóa Dovecot khi khởi động
 log_manual=Tệp cấu hình được chỉnh sửa thủ công $1
+
 manual_title=Chỉnh sửa tập tin cấu hình
 manual_editsel=Chỉnh sửa tập tin cấu hình Dovecot
 manual_err=Không thể lưu tập tin cấu hình

@@ -16,6 +16,7 @@ index_all=모든 패키지
 index_return=패키지 목록
 index_treturn=패키지 트리
 index_tree=패키지 트리
+
 search_title=패키지 검색
 search_nomatch=$1과(와) 일치하는 패키지가 없습니다
 search_none=없음
@@ -28,6 +29,7 @@ search_esearch=검색을 위한 검색어를 입력하지 않았습니다!
 search_delete=선택한 패키지 제거
 search_selall=모두 선택
 search_invert=선택 반전
+
 edit_title=패키지 편집
 edit_details=패키지 세부 정보
 edit_desc=설명
@@ -42,6 +44,7 @@ edit_list=파일 리스트
 edit_uninst=설치 제거
 edit_return=패키지 세부 정보
 edit_egone=패키지가 설치되어 있지 않습니다.
+
 list_title=패키지 파일
 list_files=패키지 $1의 파일
 list_path=경로
@@ -53,6 +56,7 @@ list_status=상태
 list_ok=확인
 list_view=(보기)
 list_eview=$1 열기 실패 : $2
+
 delete_err=패키지 $1을(를) 삭제하지 못했습니다
 delete_epack=패키지 $1이(가) 존재하지 않습니다
 delete_title=패키지 삭제
@@ -61,6 +65,7 @@ delete_rusure2=$1 패키지를 제거하겠습니까?
 delete_ok=삭제
 delete_nodeps=의존성 무시
 delete_noscripts=제거 스크립트 건너띄기
+
 file_title=파일 정보
 file_notfound=$1에 대한 정보가 없습니다
 file_path=경로
@@ -74,6 +79,7 @@ file_pack=패키지
 file_class=클래스
 file_desc=설명
 file_none=없음
+
 install_err=패키지를 설치하지 못했습니다
 install_elocal=로컬 파일을 지정하지 않았습니다
 install_elocal2='$1'이(가) 존재하지 않습니다
@@ -86,6 +92,7 @@ install_title=패키지 설치
 install_header=패키지 설치
 install_packs=설치할 패키지
 install_ok=설치
+
 do_err=패키지 $1을(를) 설치하지 못했습니다
 do_title=패키지 설치
 do_efailed=설치 실패: $1
@@ -102,10 +109,12 @@ do_arch=아키텍처
 do_inst=설치한 날짜
 do_none=없음
 do_files=패키지 파일
+
 pkgadd_root=루트 디렉토리
 pkgadd_eroot=루트 디렉토리 '$1'이(가) 존재하지 않습니다
 pkgadd_unknown=알 수 없음
 pkgadd_manager=시스템 V 패키지 관리자
+
 rpm_upgrade=패키지를 업그레이드합니까?
 rpm_replacepkgs=패키지를 덮어씁니까?
 rpm_nodeps=의존성을 무시합니까?
@@ -123,22 +132,26 @@ rpm_find=rpmfind.net 검색 ..
 rpm_findrpm=패키지 이름
 rpm_finddistro=배포본
 rpm_finddesc=설명
+
 bsd_unknown=알 수 없음
 bsd_scripts=사전 및 사후 설치 스크립트를 실행합니까?
 bsd_force=전제 조건이 없을 경우 강제로 설치합니까?
 bsd_manager=$1 패키지 관리자
+
 slack_unclass=그 외
 slack_unknown=알 수 없음
 slack_missing=없음
 slack_root=루트 디렉토리
 slack_eroot=없거나 잘못된 루트 디렉토리
 slack_manager=Slackware 패키지 관리자
+
 debian_unknown=알 수 없음
 debian_depends=의존성 문제를 무시합니까?
 debian_conflicts=패키지 충돌을 무시합니까?
 debian_overwrite=다른 패키지의 파일을 덮어씁니까?
 debian_downgrade=기존 패키지를 새 패키지로 교체합니까?
 debian_manager=Debian DPKG
+
 log_install_package=패키지 $1 설치됨
 log_install_apt_l=APT로부터 패키지 $1 설치됨
 log_install_apt=APT로부터 패키지 $2 설치됨
@@ -153,6 +166,7 @@ log_upgrade_yum_l=YUM으로 $1 패키지 업그레이드
 log_upgrade_yum=YUM으로 $2 패키지 업그레이드
 log_check_rhn_l=레드햇 네트워크에서 $1 패키지를 업그레이드 했습니다.
 log_check_rhn=레드햇 네트워크에서 $2 패키지를 업그레이트 했습니다.
+
 rhn_input=Redhat 네트워크의 패키지
 rhn_find=RHN 검색 ..
 rhn_install=$1 명령을 사용하여 패키지 설치 중..
@@ -180,6 +194,7 @@ rhn_eproxy=없거나 잘못된 프록시 서버
 rhn_skip=일치하는 패키지 건너뜀
 rhn_nonefound=업데이트할 패키지가 없습니다.
 rhn_name=레드햇 네트워크
+
 apt_input=APT의 패키지
 apt_install=$1 명령을 사용하여 패키지 설치 중..
 apt_ok=.. 설치가 완료되었습니다.
@@ -205,6 +220,7 @@ apt_search=일치하는 패키지 찾기 :
 apt_find=APT 검색 ..
 apt_title=APT 검색
 apt_name=APT
+
 yum_input=YUM 패키지
 yum_install=$1 명령으로 패키지 설치
 yum_ok=.. 설치 완료
@@ -222,6 +238,7 @@ yum_upgradeok=.. 업그레이트 완료
 yum_name=YUM
 yum_enable=사용 가능한 저장소:
 yum_none=&lt;없음&gt;
+
 urpmi_name=URPMI
 urpmi_input=URPMI 패키지
 urpmi_form=모든 패키지 업그레이드
@@ -235,6 +252,7 @@ urpmi_upgradeok=.. 완료
 urpmi_install=$1 명령으로  패키지 설치
 urpmi_ok=.. 설치 완료
 urpmi_failed=.. 설치 실패!
+
 rpm_missing=없음
 rpm_checkfail=$1을(를) 검사하지 못했습니다
 rpm_md5=MD5
@@ -246,6 +264,7 @@ rpm_user=사용자 소유권
 rpm_perm=사용 권한
 rpm_group=그룹 소유권
 rpm_erpm=RPM $1이(가) 없습니다: $2
+
 soft_reg=일반 파일
 soft_dir=디렉토리
 soft_spec=특수 파일
@@ -257,6 +276,7 @@ soft_euncompress=파일이 압축되었지만 시스템에 <tt>uncompress</tt> �
 soft_euncmsg=파일의 압축을 풀지 못했습니다: $1
 soft_egzip=파일이 gzip 형식으로 압축되었지만 시스템에 gzip 명령이 없습니다.
 soft_egzmsg=gzip 파일의 압축을 풀지 못했습니다: $
+
 aix_software=설치할 소프트웨어
 aix_preview=미리보기만 (실제 설치 안함)
 aix_overwrite=동일 또는 새 버전 덮어씌우기
@@ -264,6 +284,7 @@ aix_accept=새 라인센스에 동의하겠습니까?
 aix_license=새 라이센스 동의 미리보기
 aix_clean=설치 실패시에 설치 파일을 제거
 aix_manager=AIX 패키지 관리자
+
 emerge_input=Portage 저장소
 emerge_find=검색 ..
 emerge_install=$1 명령으로 패키지 설치 ..
@@ -277,6 +298,7 @@ emerge_none=검색과 일치하는 패키지가 없습니다.
 emerge_onlydeps=의존성 패키지만 설치하겠습니까?
 emerge_title=Portage 검색
 emerge_name=Portage
+
 cygwin_fmissing=파일이 존재하지 않음
 cygwin_estat=파일 상태 확인 실패: $1
 cygwin_elread=심볼릭 링크 읽기 실패: $1
@@ -284,6 +306,7 @@ cygwin_elstat=심볼릭 링크 상태 확인 실패: $1
 cygwin_badpostscript=경고: 이 스크립트는 실행할 수 없습니다.
 cygwin_pkgexists=$1 패키지는 이미 존재합니다.
 cygwin_warnuse=경고: 이것은 Cygwin 소프트웨어를 관리하기 위한 공식 인터페이스가 아닙니다. 사용하기 위해서는 위험을 감수해야 합니다.
+
 deletes_err=패키지 제거 실패
 deletes_enone=선택한 패키지가 없습니다.
 deletes_title=패키지 제거
@@ -294,6 +317,7 @@ deletes_failed2=제거 실패 : $1
 deletes_success2=.. 제거 완료
 deletes_rusure=$1 패키지를 제거하겠습니까?
 deletes_ok=모두 제거
+
 csw_input=CSW 패키지
 csw_install=$1 명령으로 패키지 설치 ..
 csw_ok=.. 설치 완료
@@ -306,16 +330,19 @@ csw_name=CSW
 csw_form=업그레이드 패키지
 csw_upgrade=설치된 모든 패키지 업그레이드
 csw_updatedesc=$1 명령으로 설치된 모든 패키지 업그레이드 ..
+
 find_title=패키지 검색
 find_search=일치하는 패키지 찾기:
 find_name=이름
 find_version=버전
 find_desc=설명
 find_none=검색과 일치하는 패키지를 찾지 못했습니다.
+
 msi_users1=현재 사용자
 msi_users2=모든 사용자
 msi_missing=존재하지 않음
 msi_size=잘못된 크기
+
 hpux_mount_all_filesystems=모든 파일시스템 마운트
 hpux_reinstall=재설치?
 hpux_reinstall_files=파일 재설치

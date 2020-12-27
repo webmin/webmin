@@ -12,7 +12,9 @@ main_readonly=(صرف پڑھنے کا طریقہ)
 main_return=Return to $1
 main_unused=غیر استعمال شدہ ماڈیولز
 main_refreshmods=ماڈیول ریفریش کریں
+
 link_essl=آپ کے سسٹم پر HTTPS کنکشن بنانے کے لئے درکار نیٹ :: SSLeay Perl ماڈیول انسٹال نہیں ہے۔
+
 category_servers=سرورز
 category_hardware=ہارڈ ویئر
 category_system=سسٹم
@@ -22,6 +24,7 @@ category_syslet=سائلٹس
 category_cluster=جھرمٹ
 category_info=معلومات
 category_=اوزار
+
 longcategory_servers=کنفگریشن ویب ، ای میل ، ایف ٹی پی اور دوسرے سرورز کے ماڈیولز
 longcategory_hardware=پرنٹر ، ڈسک اور دیگر ہارڈویئر ترتیب کے ماڈیولز
 longcategory_system=صارفین ، فائل سسٹمز ، کرون ملازمتوں اور دیگر سسٹم کی ترتیبات کے ل Mod ماڈیول
@@ -30,11 +33,13 @@ longcategory_net=نیٹ ورکنگ اور نیٹ ورک کی خدمات کی ت�
 longcategory_cluster=ماڈیولز جو ایک ہی انٹرفیس سے ایک سے زیادہ سرورز کا نظم کرسکتے ہیں
 longcategory_info=آپ کے سسٹم کے بارے میں معلومات ظاہر کرنے والے ماڈیولز
 longcategory_=وہ ماڈیول جو دوسرے متفرق کام انجام دیتے ہیں
+
 header_webmin=ویبمین انڈیکس
 header_module=ماڈیول انڈیکس
 header_help=مدد ..
 header_config=ماڈیول تشکیل
 header_servers=ویبمین سرورز
+
 index=انڈیکس
 yes=جی ہاں
 no=نہیں
@@ -65,12 +70,14 @@ euserdbacl=Failed to fetch user ACL : $1
 euserdbacl2=Failed to update user ACL : $1
 egroupdbacl=Failed to fetch group ACL : $1
 egroupdbacl2=Failed to update group ACL : $1
+
 chooser_title1=فائل منتخب کریں ..
 chooser_title2=ڈائرکٹری کا انتخاب کریں ..
 chooser_dir=Directory of $1
 chooser_ok=ٹھیک ہے
 chooser_date=تاریخ کا انتخاب کریں
 chooser_eopen=Listing failed : $1
+
 users_title1=صارفین کو منتخب کریں ..
 users_title2=صارف منتخب کریں ..
 users_sel=منتخب صارفین
@@ -78,6 +85,7 @@ users_all=تمام صارفین
 users_ok=ٹھیک ہے
 users_cancel=منسوخ کریں
 users_clear=صاف
+
 groups_title1=گروپس کو منتخب کریں ..
 groups_title2=منتخب گروپ ..
 groups_all=تمام گروپس
@@ -85,6 +93,7 @@ groups_sel=منتخب گروپس
 groups_ok=ٹھیک ہے
 groups_cancel=منسوخ کریں
 groups_clear=صاف
+
 modules_title1=ماڈیولز کو منتخب کریں ..
 modules_title2=ماڈیول منتخب کریں ..
 modules_sel=منتخب کردہ ماڈیولز
@@ -92,6 +101,7 @@ modules_all=تمام ماڈیولز
 modules_ok=ٹھیک ہے
 modules_cancel=منسوخ کریں
 modules_clear=صاف
+
 config_ecannot=آپ کو اس ماڈیول کی تشکیل کی اجازت نہیں ہے
 config_title=تشکیل
 config_dir=For module $1
@@ -103,6 +113,7 @@ config_err=کنفگ کو محفوظ کرنے میں ناکام
 config_nochange=مت بدلاؤ
 config_setto=تیار
 config_ewebmin=پیرامیٹر کی قسم 14 صرف ویبمین میں کام کرتی ہے
+
 help_err=مدد ظاہر کرنے میں ناکام
 help_epath=لاپتہ یا غیر معاون راہ
 help_efile=Failed to read help file $1
@@ -110,6 +121,7 @@ help_eheader=&lt;ہیڈر&gt; سیکشن غائب ہے
 help_einclude=Failed to include $1
 help_eif=$1 failed : $2
 help_eexec=$1 failed : $2
+
 referer_title=حفاظتی انتباہ
 referer_warn=<b>Warning!</b> Webmin has detected that the program $2 was linked to from the URL $1, which appears to be outside the Webmin server. This may be an attempt to trick your server into executing a dangerous command.
 referer_warn_unknown=<b>Warning!</b> Webmin has detected that the program $1 was linked to from an unknown URL, which appears to be outside the Webmin server. This may be an attempt to trick your server into executing a dangerous command.
@@ -117,6 +129,7 @@ referer_fix1=If this is a legitimate link, you can allow links from this URL as 
 referer_fix2=Alternately, you can configure Webmin to allow this link from the command line by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Add the line <tt>referers=$1</tt> at the end, or if a <tt>referers</tt> line already exists add <tt>$1</tt> to it.</li><li>Save the file.</li></ul>
 referer_fix3u=یقینی بنائیں کہ آپ کے براؤزر کو حوالہ دہندہ کی معلومات بھیجنے کے لئے ترتیب دیا گیا ہے تاکہ اس کی تصدیق ویبمین کے ذریعہ کی جاسکے۔
 referer_fix2u=Alternately, you can configure Webmin to allow links from unknown referers by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Find the line <tt>referers_none=1</tt> and change it to <tt>referers_none=0</tt>.</li><li>Save the file.</li></ul><p></p>WARNING - this has the side effect of opening your system up to reflected XSS attacks and so is not recommended!
+
 session_header=ویبمین میں لاگ ان کریں
 session_mesg=You must enter a username and password to login to the Webmin server on $1.
 session_mesg2=لاگ ان کے ل You آپ کو صارف نام اور پاس ورڈ درج کرنا ہوگا۔
@@ -130,11 +143,13 @@ session_twofailed=Two-factor authentication failed : $1
 session_logout=لاگ آؤٹ کامیاب۔ دوبارہ لاگ ان کرنے کے لئے نیچے دیئے گئے فارم کا استعمال کریں۔
 session_timed_out=Session timed out after $1 minutes of inactivity.
 session_save=لاگ ان کو مستقل طور پر یاد رکھیں؟
+
 pam_header=ویبمین میں لاگ ان کریں
 pam_mesg=You must respond to the question below to login to Webmin server on $1.
 pam_mesg2=لاگ ان کرنے کے لئے آپ کو نیچے دیئے گئے سوال کا جواب دینا ہوگا۔
 pam_login=جاری رہے
 pam_restart=دوبارہ شروع کریں
+
 acl_root=فائل انتخاب کرنے والے کے لئے روٹ ڈائرکٹری
 acl_otherdirs=فائل انتخاب کنندہ میں دیگر مرئی ڈائریکٹریاں
 acl_nodot=فائل انتخاب کنندہ میں ڈاٹ فائلیں چھپائیں؟
@@ -167,6 +182,7 @@ acl_negative=صارف کو نئے ماڈیول اجازت دیں؟
 acl_fileunix=یونکس صارف کی حیثیت سے فائلوں کو براؤز کریں
 acl_sameunix=ویب مین لاگ ان کی طرح
 acl_webminsearch=ویب مین سرچ فیلڈ دکھائیں؟
+
 month_1=جنوری
 month_2=فروری
 month_3=مارچ
@@ -179,6 +195,7 @@ month_9=ستمبر
 month_10=اکتوبر
 month_11=نومبر
 month_12=دسمبر
+
 day_0=اتوار
 day_1=پیر
 day_2=منگل
@@ -186,6 +203,7 @@ day_3=بدھ
 day_4=جمعرات
 day_5=جمعہ
 day_6=ہفتہ
+
 smonth_1=جان
 smonth_2=فروری
 smonth_3=مار
@@ -198,6 +216,7 @@ smonth_9=ستمبر
 smonth_10=اکتوبر
 smonth_11=نومبر
 smonth_12=دسمبر
+
 sday_0=ایس یو
 sday_1=مو
 sday_2=ٹو
@@ -205,12 +224,15 @@ sday_3=ہم
 sday_4=ویں
 sday_5=فر
 sday_6=سا
+
 emodule=Access denied : User $1 is not allowed to use the $2 module
 emodulecheck=The $1 module is not available on your system
 elock_tries2=Failed to lock file $1 after $2 minutes. Last error was : $3
+
 skill_high=ماہر
 skill_medium=انٹرمیڈیٹ
 skill_low=نووایس
+
 feedback_title=ویبمین آراء
 feedback_desc=This form allows you to report bugs on make suggestions to the Webmin developers regarding any problems or missing features that you have found. When the Send button is clicked, the details entered into the form will be emailed to $1.
 feedback_desc2=یہ تاثرات آپ کے سسٹم کے منتظم ، آئی ایس پی یا ہوسٹنگ کمپنی کو نہیں ، ویبین کے ڈویلپر کو بھیجی جائیں گی۔ براہ کرم اپنی رائے انگریزی میں لکھیں ، یہاں تک کہ اگر آپ فی الحال کسی دوسری زبان میں ویبمین چلا رہے ہیں۔
@@ -239,15 +261,18 @@ feedback_to=پتوں پر آراء بھیجیں
 feedback_enoto=تاثرات بھیجنے کے لئے کوئی پتہ درج نہیں کیا گیا تھا
 feedback_ecannot=آپ کو رائے بھیجنے کی اجازت نہیں ہے
 feedback_ecannot2=آپ کو تشکیل فائلوں پر مشتمل رائے بھیجنے کی اجازت نہیں ہے
+
 progress_size2=Downloading $1 ($2) ..
 progress_nosize=Downloading $1 ..
 progress_datan=Received $1 ($2 %)
 progress_data2n=Received $1
 progress_done=.. ڈاؤن لوڈ مکمل.
 progress_incache=Found $1 in cache ..
+
 readparse_cdheader=غائب مواد-ڈسپوزیشن ہیڈر
 readparse_enc=فارم ڈیٹا کی انکوڈنگ کی توقع ہے ، لیکن عام انکوڈنگ مل گئی
 readparse_max=Data exceeded maximum size of $1 bytes
+
 password_expired=آپ کے پاس ورڈ کی میعاد ختم ہوگئی ہے ، اور ایک نیا انتخاب لازمی ہے۔
 password_temp=اپنے عارضی لاگ ان کو تبدیل کرنے کے ل a آپ کو نیا پاس ورڈ منتخب کرنا ہوگا۔
 password_header=نیا پاس ورڈ منتخب کریں
@@ -266,6 +291,7 @@ password_enew2=آپ کے نئے پاس ورڈ مماثل نہیں ہیں
 password_epam=PAM error : $1
 password_emodpam=پاس ورڈ میں تبدیلیاں کرنے کے لئے درکار Authen::PAM perl ماڈیول انسٹال نہیں ہوا ہے!
 password_enewpass=New password is not allowed : $1
+
 ui_mandatory=یہ فیلڈ لازمی ہے
 ui_checkmandatory=کچھ بھی منتخب نہیں کیا گیا تھا
 ui_errors=متعدد غلطیاں پائی گئیں :
@@ -280,7 +306,9 @@ ui_etime=غلط وقت
 ui_paging=Showing rows $1 to $2 of $3
 ui_rowlabel=$2 in row $1 :
 ui_filterbox=فلٹر کرنے کے لئے ٹائپ کریں ..
+
 header_statusmsg=$1 logged into $2 $3 on $4 ($5)
+
 uptracker_title=فائل اپ لوڈ ہو رہی ہے
 uptracker_file=فائل کا نام
 uptracker_size=سائز
@@ -288,6 +316,7 @@ uptracker_pc=ترقی
 uptracker_eid=کوئی اپ لوڈ ID متعین نہیں ہوا ہے
 uptracker_eid2=اپ لوڈ کی شناخت غلط ہے!
 uptracker_of=$1 of $2
+
 wsearch_title=Search $1
 wsearch_modt=ماڈیول
 wsearch_mtitle=ماڈیول کا نام
@@ -315,6 +344,7 @@ wsearch_hmod=ماڈیول
 wsearch_moddir=URL path /$1/
 wsearch_searching=Searching for $1 . .
 wsearch_found=found $1 results :
+
 sql_emysqldriver=ایس کیو ایل DBI ڈرائیور لوڈ کرنے میں ناکام
 sql_emysqlconnect=Failed to connect to MySQL database : $1
 sql_epostgresqldriver=PostgreSQL DBI ڈرائیور لوڈ کرنے میں ناکام
@@ -323,6 +353,7 @@ sql_eldapdriver=ایل ڈی اے پی پرل ماڈیول لوڈ کرنے میں
 sql_eldapconnect=Failed to connect to LDAP server $1
 sql_eldaptls=Failed to start TLS encryption for LDAP : $1
 sql_eldaplogin=Failed to login to LDAP server as $1 : $2
+
 log_email_subject=Webmin action in $1
 log_email_global=ویبمین عالمی کارروائی
 log_email_desc=یہ ای میل صارف کے ایک عمل کے جواب میں ویبمین کے ذریعہ بھیجی گئی ہے۔
@@ -334,6 +365,7 @@ log_email_user=Performed by user: $1
 log_email_script=Webmin script: $1
 log_email_session=Session ID: $1
 log_email_remote=Client address: $1
+
 nice_size_PB=پی بی
 nice_size_PiB=پِی بی
 nice_size_TB=ٹی بی
@@ -345,7 +377,9 @@ nice_size_MiB=ایم بی
 nice_size_kB=kB
 nice_size_kiB=کیی بی
 nice_size_b=بائٹس
+
 langauto_include=مشین ترجمہ شامل کریں
+
 file_truncated_message=ڈیٹا کا$1 حاصل کیا ،$3 میں سے$2 چھوٹا
 file_truncated_message_head=ڈیٹا کا آغاز$1 کیا گیا ،$3 میں سے$2 کو چھوٹا گیا
 file_truncated_message_tail=ڈیٹا کا$1 ختم ہونے والا نتیجہ ،$3 میں سے$2 کو چھوٹا

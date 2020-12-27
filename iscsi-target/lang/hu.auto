@@ -1,6 +1,7 @@
 check_econfig=A (z) $1 iSCSI célkonfigurációs fájl nem található a rendszerén.
 check_eietadm=A (z) $1 iSCSI cél adminisztrációs parancs nem található meg a rendszerén.
 check_einit=$1 indító művelet nem létezik
+
 index_title=iSCSI Target
 index_clink=Lehet, hogy nincs telepítve, vagy a <a href='$1'>modul konfigurációja</a> helytelen.
 index_stop=Állítsa le az iSCSI Target alkalmazást
@@ -22,8 +23,10 @@ index_noluns=Egyik sem
 index_nousers=Bármi
 index_nullio=$1 szektor RAM lemeze
 index_size=Teljes méret
+
 dtargets_err=Nem sikerült a célok törlése
 dtargets_enone=Egy sincs kiválasztva!
+
 target_title1=Hozzon létre iSCSI célt
 target_title2=Az iSCSI Target szerkesztése
 target_header=iSCSI megosztott eszközbeállítások
@@ -68,11 +71,13 @@ target_noalias=Egyik sem
 target_hdigest=Fejléc ellenőrző összeg
 target_ddigest=Adatok ellenőrző összege
 target_nodigest=Egyik sem
+
 auth_title=Hitelesítési beállítások
 auth_header=Alapértelmezett hitelesítési lehetőségek minden célhoz
 auth_iuser=Az ügyfelek hitelesítése
 auth_ouser=Hitelesítés az ügyfelek számára
 auth_err=Nem sikerült menteni a hitelesítési beállításokat
+
 conn_title=Csatlakozás beállításai
 conn_header=Alapértelmezett csatlakozási lehetőségek minden célhoz
 conn_sessions=Maximális párhuzamos ülések
@@ -91,6 +96,7 @@ conn_emaxrecv=Hiányzó vagy nem numerikus maximális vételi szegmenshossz
 conn_emaxxmit=Hiányzik vagy nem numerikus az átviteli szegmens hossza
 conn_emaxburst=Hiányzó vagy nem numerikus maximális kliens sorozatméret
 conn_efirstburst=Hiányzó vagy nem numerikus maximális kliens kéretlen adatméret
+
 timeout_title=Időtúllépési beállítások
 timeout_header=Ügyfél időtúllépési lehetőségei
 timeout_nopi=Intervallum a pingok között alapjáraton
@@ -98,6 +104,7 @@ timeout_nopinone=Soha nem pingolj
 timeout_secs=másodperc
 timeout_nopt=Ideje megvárni a ping választ
 timeout_noptnone=Ugyanaz, mint a ping idő
+
 addr_title=Szerver címe és portja
 addr_header=iSCSI szerver hálózati lehetőségek
 addr_addr=Figyeljen az IP-címre
@@ -110,18 +117,21 @@ addr_err=A kiszolgáló címének mentése nem sikerült
 addr_eaddr=A hallgatni kívánt címnek IP-címnek kell lennie
 addr_eport=A hallgatandó portnak számnak kell lennie
 addr_edebug=A hibakeresési szintnek számnak kell lennie
+
 initiators_title=Megengedett ügyfélcímek
 initiators_none=Még nincs megadva az engedélyezett ügyfélcím. Egyetlen ügyfél sem tud csatlakozni.
 initiators_ips=Engedélyezett ügyfelek
 initiators_title1=Adjon hozzá megengedett ügyfélcímeket
 initiators_title2=Szerkessze az engedélyezett ügyfélcímeket
 initiators_header=Megengedett iSCSI kliensek a célhoz
+
 targets_title=Megengedett szerver címek
 targets_none=Még nem határoztak meg megengedett szerver címet. Egyetlen ügyfél sem tud csatlakozni.
 targets_ips=Megengedett szerver interfészek
 targets_title1=Adjon hozzá megengedett szervercímeket
 targets_title2=Szerkessze az engedélyezett szervercímeket
 targets_header=Megengedett iSCSI szerver felület a célhoz
+
 allow_target=Cél név
 allow_move=Mozog
 allow_delete=Kijelöltek eltávolítása
@@ -133,17 +143,21 @@ allow_return=megengedett célok és címek
 allow_err=Nem sikerült menteni az engedélyezett címeket
 allow_eaddr=A (z) $1 cím nem érvényes. IPv4 címnek, IPv4 hálózatnak/maszknak vagy szögletes zárójelben lévő IPv6 címnek kell lennie.
 allow_eaddrs=Nincs megadva megadható cím
+
 dallow_err=Nem sikerült törölni az engedélyezett címeket
 dallow_enone=Egy sincs kiválasztva
+
 manual_title=A konfigurációs fájl szerkesztése
 manual_desc=Az alábbi szövegmező segítségével szerkesztheti a (z) $1 iSCSI szerver konfigurációs fájlt. Legyen óvatos, mivel a bemenetre nem kerül sor érvényesítésre!
 manual_err=A konfigurációs fájl mentése nem sikerült
 manual_edata=Nincs megadva tartalom!
+
 start_err=Nem sikerült indítani az iSCSI szervert
 stop_err=Az iSCSI szerver megállítása nem sikerült
 restart_err=Nem sikerült újraindítani az iSCSI szervert
 atboot_err=Az indításkor nem sikerült engedélyezni
 atboot_einit=A (z) $1 Init szkript nem létezik
+
 log_create_target=Létrehozta a (z) $1 célt
 log_delete_target=Törölve a (z) $1 célt
 log_modify_target=Módosított $1 cél

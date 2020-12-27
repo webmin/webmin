@@ -25,6 +25,7 @@ index_resetdesc=Klicke auf diese Schaltfläche, um alle bestehenden Firewall-Reg
 index_cluster=Cluster Server
 index_clusterdesc=Klicken Sie auf diese Schaltfläche, um zusätzliche Webmin Server, mit denen die Firewall-Konfiguration wird automatisch kopiert werden, hinzuzufügen.
 index_return=Firewall Regeln
+
 index_num=Num
 index_action=Aktion
 index_desc=Bedingung
@@ -37,6 +38,7 @@ index_delete=Lösche ausgewähltes
 index_existing=Webmin hat erkannt, dass $1 IPFW Firewall-Regeln derzeit in Benutzung sind, die nicht in der Datei $2 aufgezeichnet sind. Diese Regeln waren wahrscheinlich von einem Skript erstellt worden, das dieses Modul nicht kennt und weiß, wie zu lesen und zu bearbeiten ist.<p>Wenn Sie dieses Modul benutzen, um Ihre IPFW Firewall verwalten zu lassen, klicken Sie auf die Schaltfläche unten, um die bestehenden Regeln zu konvertieren und in einer Sicherungsdatei zu speichern, und deaktivieren Sie dann Ihr bestehende Firewall-Skript.
 index_saveex=Speichere Firewall Regeln
 index_headerex=Bestehende Firewall Konfiguration
+
 action_allow=<font color=#00aa00>Erlauben</font>
 action_deny=<font color=#ff0000>Verwerfen</font>
 action_reject=<font color=#ff4400>Ablehnen</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>Verwerfe Paket</font>
 laction_reject=<font color=#ff4400>Zurück zur ICMP Verwerfung</font>
 laction_reset=<font color=#ff4400>Zurücksetzen der TCP-Verbindung</font>
 laction_skipto=Weiter zu Regel
+
 edit_title1=Erstelle Regel
 edit_title2=Editiere Regel $1
 edit_header1=Regel Aktion
@@ -114,6 +117,7 @@ edit_src-addr=Von Quell Adresse..
 edit_src-port=Von Quell Port..
 edit_dst-addr=Zu Ziel Adresse..
 edit_dst-port=Zu Ziel Port..
+
 save_err=Fehlgeschlagen Regel zu speichern
 save_enum=Fehlende oder ungültige Regelnummer
 save_eskipto=Fehlende oder ungültige Regelnummer zu überspringen
@@ -144,7 +148,9 @@ save_etcpflags=TCP-Flags kann nur angegeben werden, wenn das Protokoll TCP ist
 save_elimit=Fehlendes oder ungültiges Maximumlimit
 save_edstport=Fehlender oder ungültiger Ziel-Port
 save_esrcport=Fehlender oder ungültiger Quellport
+
 apply_err=Fehlgeschlagen Konfiguration anzuwenden
+
 desc_if=Wenn $1
 desc_and=und
 desc_always=Immer
@@ -191,6 +197,7 @@ desc_where=wo $1
 desc_all=für alle Pakete
 desc_in=Einkommendes Paket
 desc_out=Ausgehendes Paket
+
 log_create_rule=$1 Regel erstellt
 log_delete_rule=$1 Regel gelöscht
 log_modify_rule=$1 Regeln modififiert
@@ -206,6 +213,7 @@ log_convert=Aktive Firewallregeln konvertiert
 log_setup=Initiales Firewall Setup durchgeführt
 log_unapply=Firewall-Konfiguration rückgängig gemacht
 log_delsel=$1 Regeln gelöscht
+
 cluster_title=Cluster Firewall Server
 cluster_none=Keine Server wurden bisher in dem Firewall-Cluster hinzugefügt.
 cluster_host=Hostname
@@ -216,6 +224,7 @@ cluster_gadd=Füge Server in Gruppe zu
 cluster_need=Sie müssen Server mit einem Benutzernamen und Kennwort in dem Webmin-Server Indexmodul hinzufügen, bevor sie hier verwaltet werden können.
 cluster_return=Cluster Server
 cluster_delete=Ausgewählte löschen
+
 add_title=Server hinzufügen
 add_msg=HInzufügen $1 ..
 add_gmsg=Hinzufügen von Servern in Gruppe $1 ..

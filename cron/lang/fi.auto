@@ -31,6 +31,7 @@ index_ok=Hae
 index_searchres=Cron-työt, jotka vastaavat $1 ..
 index_reset=Nollaa haku.
 index_econfigcheck=Cron-töitä ei voida hallita järjestelmässäsi, koska moduulin kokoonpano ei ole kelvollinen : $1 
+
 edit_title=Muokkaa Cron Job
 create_title=Luo Cron Job
 edit_ecannot=Et voi muokata tämän käyttäjän cron-töitä
@@ -70,6 +71,7 @@ lcedit_special_weekly=viikoittain (sunnuntaina)
 lcedit_special_monthly=kuukausittain (1. päivä)
 lcedit_special_yearly=vuosittain (1. tammikuuta)
 lcedit_special_reboot=kun järjestelmä käynnistyy
+
 save_err=Cron-työn tallentaminen epäonnistui
 save_ecmd=Et ole antanut komentoa suorittaaksesi
 save_euser=Sinun on valittava käyttäjä
@@ -79,6 +81,7 @@ save_ecannot=Et voi luoda tai muokata cron-töitä kohteelle '$1'
 save_enone=Et valinnut suoritettavaksi $1 
 save_ecannot2=Et voi luoda cron-töitä
 save_eidx=Cron-työ tallennettiin onnistuneesti, mutta sitä ei voi suorittaa, koska sitä ei löytynyt!
+
 allow_title=Hallitse Cron-pääsyä
 allow_desc=Tämän lomakkeen avulla voit hallita, mitkä käyttäjät voivat luoda ja suorittaa cron-töitä.
 allow_ecannot=Et voi hallita käyttäjän pääsyä croniin
@@ -87,6 +90,7 @@ allow_all2=Estä kaikki käyttäjät paitsi root
 allow_all3=Salli kaikki käyttäjät
 allow_allow=Salli vain luetellut käyttäjät
 allow_deny=Estä vain luetellut käyttäjät
+
 env_title1=Muokkaa ympäristömuuttujaa
 env_title2=Luo ympäristömuuttuja
 env_name=Muuttujan nimi
@@ -102,11 +106,13 @@ env_where2=Siirrä ympäristömuuttuja
 env_top=Ennen kaikkia Cron-töitä käyttäjälle
 env_bot=Loppujen lopuksi Cron työpaikkoja
 env_leave=Nykyinen sijainti
+
 exec_title=Suorita Cron Job
 exec_ecannot=Sinulla ei ole oikeutta suorittaa cron-töitä tälle käyttäjälle
 exec_cmd=Tulos komennosta $1 ..
 exec_cmdbg=Suoritetaan komento $1 taustaprosessina.
 exec_none=Tulostusta ei generoitu
+
 acl_users=Voi muokata cron-töitä
 acl_all=Kaikki käyttäjät
 acl_this=Nykyinen webmin-käyttäjä
@@ -122,6 +128,7 @@ acl_move=Voiko Cron siirtää työpaikkoja?
 acl_kill=Voiko lopettaa Cronin työpaikat?
 acl_hourly=Rajoita työpaikkoja korkeintaan tunti?
 acl_hourlydef=Kuten moduulin kokoonpanossa asetettu
+
 log_modify=Muokattu Cron-työ $1 : lle
 log_modify_l=Muokattu Cron-työ "$2" $1 : lle
 log_create=Luonut Cron-työn $1 : lle
@@ -139,7 +146,9 @@ log_move=Siirrettiin Cron-työpaikka $1 : lle
 log_crons_delete=Poistettu $1 Cron työpaikat
 log_crons_disable=Vammaiset $1 Cron -työt
 log_crons_enable=Käytössä $1 Cron -työt
+
 ecopy=Uudessa Cron-kokoonpanossa havaittiin virhe: $1 $2 
+
 when_min=joka minuutti
 when_hour=joka tunti kohdalla $1 tunnin jälkeen
 when_day=joka päivä pisteellä $2:$1 
@@ -148,6 +157,7 @@ when_weekday=jokainen $3 kohdasta $2:$1
 when_cron=cron-hetkellä $1 
 when_interval=välein $1 sekuntia
 when_boot=käynnistyksen yhteydessä
+
 ucwhen_min=Joka minuutti
 ucwhen_hour=Joka tunti kohdalla $1 tunnin jälkeen
 ucwhen_day=Joka päivä pisteellä $2:$1 
@@ -156,8 +166,10 @@ ucwhen_weekday=Jokainen $3 kohdasta $2:$1
 ucwhen_cron=Cron-hetkellä $1 
 ucwhen_interval=Jokaisen $1 sekunnin välein
 ucwhen_boot=Käynnistyksen yhteydessä
+
 move_err=Cron-työn siirtäminen epäonnistui
 move_etype=Tätä työtä ei voi siirtää
+
 kill_err=Cron-työn lopettaminen epäonnistui
 kill_ecannot=Sinulla ei ole oikeutta irtisanoa tätä työtä
 kill_egone=Ei enää juokse
@@ -166,13 +178,16 @@ kill_title=Lopeta Cron Job
 kill_rusure=Haluatko varmasti lopettaa prosessin $1 PID $2 : lla?
 kill_rusure2=Haluatko varmasti lopettaa prosessin $1 PID $2 : lla, ja kaikki sen aliprosessit?
 kill_ok=Kyllä, lopeta se
+
 range_all=Suorita milloin tahansa
 range_start=Aja vain $1 : ltä
 range_end=kohteeseen $1 
 range_estart=Puuttuva tai virheellinen aloituspäivämäärä ajoalueella
 range_eend=Puuttuva tai virheellinen päättymispäivä aikavälillä
+
 delete_err=Cron-töiden poistaminen epäonnistui
 delete_enone=Mitään ei ole valittu
+
 manual_title=Muokkaa Cron-töitä manuaalisesti
 manual_edit=Muokattava Cron-tiedosto:
 manual_ok=Muokata

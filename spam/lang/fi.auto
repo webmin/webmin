@@ -13,6 +13,7 @@ index_applydesc=Napsauta tätä painiketta, kun haluat käyttää nykyistä Spam
 index_cpan=Koska SpamAssassin on Perl-moduuli, voit myös asentaa sen automaattisesti Webminin <a href='$2'>Perl-moduulit</a> -moduulilla ja ladata $1 CPANista.
 index_spamassassin=SpamAssassin
 index_ecannot=Sinulla ei ole oikeutta hallita SpamAssassin -määritystiedostoa $1 
+
 white_title=Sallitut ja evätyt osoitteet
 white_desc=Tämän sivun taulukot antavat sinun määrittää Lähettäjä: ja Vastaanottaja: osoitteet sähköposteille, jotka on aina tai koskaan luokiteltu roskapostiksi. Kaikkia muita sähköposteja käsitellään normaalisti SpamAssassinin sääntöjen mukaisesti. Kaikki sähköpostiosoitteet voivat sisältää yleismerkkejä, kuten *@foo.com tai *.foo.com, jotta ne vastaavat kokonaisia verkkotunnuksia.
 white_from=Lähettäjät eivät koskaan luokittele roskapostiksi
@@ -44,6 +45,7 @@ white_tabham=Sallitut osoitteet
 white_tabspam=Estetyt osoitteet
 white_tabsome=Kohdeosoitteet
 white_tabimport=Tuo osoitteita
+
 score_title=Roskapostin luokittelu
 score_desc=SpamAssassin antaa pisteet jokaiselle viestille sen sisällön ja otsikoiden perusteella. Tämän sivun vaihtoehdot määrittävät pistemäärän, jonka yläpuolella viestiä pidetään roskapostina, ja eräitä menetelmiä, joiden avulla kyseinen pistemäärä lasketaan.
 score_header=Roskapostin luokitteluvaihtoehdot
@@ -77,6 +79,7 @@ score_emxdelay=Puuttuvat tai virheelliset sekunnit odottamaan MX-tarkistusten v�
 score_etimeout=Puuttuvat tai virheelliset sekunnit RBL-kyselyjen odottamiseen
 score_ereceived=Puuttuva tai virheellinen vastaanotettujen lukumäärä: otsikot tarkistettava RBL: llä
 score_bayes=Käytäkö Bayesin oppimisluokittelijaa?
+
 report_title=Viestin muokkaus
 report_desc=Tämän sivun vaihtoehdot hallitsevat muutoksia, jotka SpamAssassin tekee kaikkien analysoimiensa viestien otsikoihin ja runkoon, sekä muutoksia, jotka se tekee roskapostiksi luokiteltuihin viesteihin.
 report_header=Analysoidut ja roskapostin muutosvaihtoehdot
@@ -109,6 +112,7 @@ report_addspam=roskapostin
 report_addham=Kinkku
 report_addall=Kaikki
 report_eaddheader=Puuttuva tai virheellinen ylimääräinen otsikko $1 lisäämiseksi
+
 user_title=Sekalaiset käyttäjän asetukset
 user_desc=Tämän sivun vaihtoehdot liittyvät enimmäkseen polkuihin ja asetuksiin, joita SpamAssassin käyttää ulkoisissa roskapostitunnistuspaketeissa Razor, DCC ja Pyzor. Voit myös kertoa SpamAssassinille, pystyykö se suorittamaan DNS-hakuja vai ei.
 user_header=Erilaiset käyttäjätason vaihtoehdot
@@ -131,6 +135,7 @@ user_err=Käyttäjäasetusten tallentaminen epäonnistui
 user_etimeout='$1' ei ole kelvollinen aikakatkaisu
 user_epath='$1' ei ole kelvollinen asiakasohjelmapolku
 user_emax='$1' ei ole kelvollinen tarkistussumma
+
 header_title=Pää- ja kehotestit
 header_desc=Tällä sivulla voit määrittää lisätestejä, joita SpamAssassin soveltaa sähköpostiin, viestien otsikoiden, kehon sisällön, rungosta löytyvien URL-osoitteiden tai muiden testien yhdistelmien perusteella. Jokaiselle testille määritetty nimi kuuluu sinulle, mutta se on yleensä jotain CONTAINS_FOO. Todellinen pistemäärä, jonka SpamAssassin lisää testiä vastaaviin viesteihin, voidaan asettaa syöttämällä omat tai sisäänrakennetut testinimet sivun alareunaan oleviin taulukoihin.
 header_switch=Vaihda yksinkertaiseen tilaan ..
@@ -164,6 +169,7 @@ header_eeval='$1' ei ole kelvollinen arviointitoiminto
 header_eheader='$1' ei ole kelvollinen sähköpostin otsikko
 header_eregexp='$1' ei ole kelvollinen säännöllinen lauseke (sen on oltava kuin / lauseke /)
 header_emeta=Puuttuu testilauseke testille '$1'
+
 priv_title=Sekalaiset etuoikeutetut vaihtoehdot
 priv_desc=Tämän vaihtoehdot voidaan asettaa vain globaalisti, ei yksittäisten käyttäjien määritystiedostoihin. He hallitsevat polkuja eri kokoonpano- ja lokitiedostoihin.
 priv_header=Sekalaiset käyttöoikeustasoasetukset
@@ -183,6 +189,7 @@ priv_eargs='$1' ei ole kelvollinen argumenttiluettelo
 priv_emscore='$1' ei ole kelvollinen korkein lauseke
 priv_ephrase='$1' ei ole kelvollinen kaksisanainen spamlause
 priv_escore=Puuttuva tai virheellinen pisteet roskapostiehdotukselle '$1'
+
 usually=Yleensä $1 
 ecannot=Sinulla ei ole oikeutta käyttää tätä sivua
 setup_title=Asenna Procmail SpamAssassinille
@@ -202,11 +209,13 @@ setup_drop1=Vastaanottaja Unix-käyttäjä
 setup_drop0=<tt>root</tt> käyttäjä
 setup_ok=Asenna Procmail SpamAssassinille
 setup_email=Lähetä edelleen sähköpostiosoitteeseen
+
 setup_err=SpamAssassinin määrittäminen epäonnistui
 setup_efile=Mbox-muodossa oleva tiedosto puuttuu tai on virheellinen
 setup_emaildir=Puuttuva tai virheellinen Qmail-postihakemisto
 setup_emhdir=Puuttuva tai virheellinen MH-postihakemisto
 setup_eemail=Puuttuva tai virheellinen sähköpostiosoite
+
 log_white=Muokattuja sallittuja ja evättyjä osoitteita
 log_score=Muunnettu roskapostin luokittelu
 log_report=Muokattu viestin muokkaus
@@ -217,12 +226,14 @@ log_setup=Asenna Procmail SpamAssassinille
 log_procmail=Muutettu Procmail-määritys
 log_import=Tuodut $1 sallitut osoitteet
 log_manual=Manuaalisesti muokattu asetustiedosto
+
 import_title=Tuo osoitteita
 import_err=Osoitteiden tuonti epäonnistui
 import_efile=Ei valittavasta tiedostosta
 import_enone=Tiedostosta ei löytynyt sähköpostiosoitteita
 import_ok1=Tiedostosta löytyi $2 sähköpostiosoitetta, joista $1 oli uusia ja on lisätty alllowed address listan.
 import_ok2=$1 sähköpostiosoitetta löytyi tiedostosta, mutta ne kaikki olivat jo sallittujen osoitteiden luettelossa.
+
 mail_title=Roskaposti
 mail_desc=Tällä sivulla on luettelo roskapostiksi luokitelluista viesteistä, jotka odottavat toimenpiteitä. Virheellisesti tunnistetut viestit voidaan siirtää Saapuneet-kansioon, kun taas roskapostit voidaan poistaa.
 mail_level=Pisteet
@@ -240,10 +251,13 @@ mail_will=Automaattinen päivitys $1 minuutissa
 mail_wills=Automaattinen päivitys $1 sekunnissa
 mail_delall=Poista kaikki roskapostit
 mail_search3=Etsi pisteet yllä:
+
 process_eclean=SpamAssassin-otsikoiden poistamisessa tästä sähköpostista tapahtui virhe
 process_ereport=Sähköpostin ilmoittaminen SpamAssassinille epäonnistui : $1 
+
 apply_err=Muutosten asettaminen epäonnistui
 apply_none=SpamAssassin-daemon-prosesseja ei löytynyt!
+
 acl_avail=Käyttäjän käytettävissä olevat kuvakkeet
 acl_file=SpamAssassin -määritystiedosto muokattavaksi
 acl_filedef=Globaali konfigurointitiedosto
@@ -251,8 +265,10 @@ acl_awl=Sallittu käyttäjille automaattinen sallittujen luetteloiden muokkaamin
 acl_awl0=Kaikki käyttäjät
 acl_awl1=Vain luetellut käyttäjät $1 
 acl_awl2=Vain ryhmien $1 jäsenet
+
 search_escore=Puuttuva tai virheellinen roskapostitulos
 search_results5=$1 sähköpostiviestiä, joiden roskapostitulos on $2 tai enemmän.
+
 razor_title=Asenna partakoneen roskapostintunnistin
 razor_desc=Vipulin Razor on yhteistyössä toimiva roskapostin tunnistus- ja raportointijärjestelmä, joka voi parantaa osoitteeseesi lähetetyn roskapostin luokittelua. Ennen kuin sitä voidaan käyttää, sinun on kuitenkin rekisteröityä Razor-tilille alla olevan lomakkeen avulla.
 razor_user=Partakoneen käyttäjänimi
@@ -267,6 +283,7 @@ razor_epass=Puuttuu salasana
 razor_doing=Yritetään nyt rekisteröidä ja asentaa Razor ..
 razor_done=.. valmis.
 razor_failed=.. epäonnistui! Katso syyn syy yllä olevasta virheilmoituksesta.
+
 amavisd_title=Amavisd Roskapostitoimitus
 amavisd_desc=Lomaketta voidaan käyttää muuttamaan Amavisd-kokoonpanoa, joka määrittää, mitä tapahtuu roskapostiksi luokitelluille viesteille.
 amavis_ok=Vaihda Amavisd-toimitus
@@ -304,9 +321,11 @@ amavis_quarantine_today=Roskapostit karanteenissa tänään (24h)
 amavis_quarantine_week=Roskapostit karanteenissa tällä viikolla (7 päivää)
 amavis_quarantine_month=Roskapostit karanteenissa tässä kuussa (30 päivää)
 amavis_quarantine_total=Roskapostien kokonaismäärä karanteenissa
+
 procmail_title=Procmail-roskapostin toimitus
 procmail_ok=Vaihda Procmail-toimitus
 procmail_desc=Lomaketta voidaan käyttää muuttamaan Procmail-määritystä, joka määrittää, mitä tapahtuu roskapostiksi luokitelluille viesteille.
+
 simple_title=Pää- ja kehotestit
 simple_desc=Tällä sivulla voit määrittää lisätestejä, joita SpamAssassin soveltaa sähköpostiin, viestien otsikoiden, tekstin sisällön ja rungosta löytyvien URL-osoitteiden perusteella. Jokaiselle testille määritetty nimi kuuluu sinulle, mutta se on yleensä jotain CONTAINS_FOO.
 simple_switch=Vaihda edistyneeseen tilaan ..
@@ -317,8 +336,10 @@ simple_regexp=Vastaa ilmaisua
 simple_score=Sovellettava pisteet
 simple_describe=Kuvaus
 simple_err=Viestitestien tallentaminen epäonnistui
+
 before_ecmd=Ennen tallennusta -komento epäonnistui : $1 
 after_ecmd=Jälkitallennuskomento epäonnistui : $1 
+
 connect_emysql=Tietokanta-ohjaimen $1 lataus epäonnistui
 connect_elogin=Kirjautuminen tietokantaan $1 epäonnistui: $2.
 connect_equery=Tietokanta $1 ei sisällä asetustaulua $2 
@@ -326,9 +347,11 @@ connect_eldapmod=LDAP: n kanssa kommunikointiin tarvittavaa Perl-moduulia $1 ei 
 connect_eldap=Yhdistäminen LDAP-palvelimeen $1 portissa $2 epäonnistui
 connect_eldaplogin=Kirjautuminen LDAP-palvelimeen $1 epäonnistui muodossa $2 : $3 
 connect_ebase=LDAP-pohja DN $1 ei kelpaa : $2 
+
 eldap=LDAP-toiminta epäonnistui : $1 
 esql=SQL epäonnistui : $1 
 ldap_euser=LDAP-käyttäjäobjektia ei löytynyt kohdasta $1
+
 db_title=SQL- ja LDAP-tietokannat
 db_header=Konfiguraatiotietokannan asetukset
 db_dsn=Tallenna käyttäjän kokoonpanot
@@ -364,6 +387,7 @@ db_eldapport=Puuttuva tai virheellinen LDAP-palvelimen porttinumero
 db_eldapdn=Puuttuva tai virheellinen perus-DN - välilyöntejä ei sallita
 db_eldapattr=Puuttuva tai virheellinen SpamAssassin -attribuutti
 db_eldapuid=Puuttuva tai virheellinen käyttäjätunnus
+
 awl_title=Hallinnoi automaattisia sallittuja luetteloita
 awl_search=Etsi valkoiseen luetteloon:
 awl_ok=Hae
@@ -389,6 +413,7 @@ awl_deleteone=Tyhjennä automaattinen sallittujen luettelo
 awl_deleteonedesc=Poista käyttäjän $1 kaikki automaattisen sallitun listan merkinnät.
 awl_deleteall=Poista kaikki automaattiset sallitut luettelot
 awl_deletealldesc=Poista kaikkien järjestelmän käyttäjien kaikki automaattisen sallitun listan merkinnät.
+
 dawl_err=Poisto epäonnistui automaattisesta sallitusta luettelosta
 dawl_eopen=Valkoista luetteloa ei voitu avata
 dawl_enone=Ei valittavia poistettavia osoitteita
@@ -396,6 +421,7 @@ dawl_ecannot=Et voi hallita tämän käyttäjän automaattista sallittujen luett
 dawl_doing=Poistetaan kaikkien käyttäjien automaattiset sallitut luettelot.
 dawl_done=.. poisti $2 merkintää $1 käyttäjältä.
 dawl_title=Poista kaikki automaattiset sallitut luettelot
+
 manual_title=Muokkaa asetustiedostoja
 manual_file=Muokkaa asetustiedostoa:
 manual_ok=kunnossa

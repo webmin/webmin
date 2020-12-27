@@ -65,6 +65,7 @@ index_checkconfig=Įsitikinkite, kad „chroot“ katalogas yra tinkamai nustaty
 index_eexpired=Įspėjimas: šių zonų galiojimo laikas baigėsi DNSSEC parašais : $1
 index_eexpired_conf=Automatinis pasirašymas turėtų būti vėl įjungtas $1 puslapyje.
 index_eexpired_mod=Norėdami išjungti DNSSEC šiuose domenuose arba patikrinti, kodėl nepavyksta pasirašyti, naudokite modulį $1.
+
 master_title=Redaguoti pagrindinę zoną
 master_inview=$1, žiūrint $2 
 master_ecannot=Jums neleidžiama redaguoti šios zonos
@@ -146,6 +147,7 @@ master_defttl=Numatytasis įrašų gyvavimo laikas
 master_edefttl=„$1“ nėra tinkamas numatytasis įrašų gyvavimo laikas
 master_esoagone=Nerastas SOA įrašas.
 master_einclude=Papildomo šablono failo nėra
+
 delete_title=Ištrinti zoną
 delete_mesg=Ar tikrai norite ištrinti $1 zoną? Visi įrašai ir zonos failai bus ištrinti.
 delete_mesg2=Ar tikrai norite ištrinti šakninę zoną? Jūsų DNS serveris gali nebegalėti ieškoti adresų internete.
@@ -157,6 +159,7 @@ delete_errslave=Pagrindinė zona ištrinta gerai, tačiau vergams įvyko šios k
 delete_ezone=Zona nerasta vergo serveryje
 delete_vwarn=Ši zona yra susieta su „Virtualmin“ domenu $1, todėl jo čia nereikėtų ištrinti!
 delete_vwarn2=Ši zona yra susieta su „Virtualmin“ domenu $1 ir $2 kitais, todėl jo čia nereikėtų ištrinti!
+
 mcreate_title=Sukurti pagrindinę zoną
 mcreate_ecannot=Negalite sukurti pagrindinių zonų
 mcreate_opts=Naujos pagrindinės zonos parinktys
@@ -171,6 +174,7 @@ mcreate_auto=Automatinis
 mcreate_err=Nepavyko sukurti pagrindinės zonos
 mcreate_ednssecsize=Nepavyko apskaičiuoti rakto dydžio : $1
 mcreate_ednssec=Įrašą sukurti pavyko, tačiau DNSSEC nepavyko : $1
+
 slave_title=Redaguoti vergų zoną
 stub_title=Redaguoti „Stub“ zoną
 slave_ecannot=Jums neleidžiama redaguoti šios zonos
@@ -202,6 +206,7 @@ slave_applymsg2=Spustelėkite šį mygtuką, kad priverstumėte iš naujo perduo
 slave_last=Paskutinį kartą perduota : $1
 slave_never=Niekada
 slave_xfer=Bandomosios zonos perkėlimas
+
 screate_title1=Sukurti vergų zoną
 screate_title2=Sukurkite Stub zoną
 screate_ecannot1=Jums neleidžiama kurti vergų zonas
@@ -214,6 +219,7 @@ screate_rev=Reverse (adresai vardams)
 screate_dom=Domeno vardas / tinklas
 screate_err1=Nepavyko sukurti vergo zonos
 screate_err2=Nepavyko sukurti vietinės zonos
+
 recs_ecannot=Jums neleidžiama redaguoti įrašų šioje zonoje
 recs_ecannottype=Jums neleidžiama redaguoti tokio tipo įrašų
 recs_title=$1 įrašai
@@ -231,6 +237,7 @@ recs_drev=Ištrinti atšaukimus taip pat?
 recs_none=Domenas dar neturi $1 įrašų.
 recs_nosearch=Nerasta įrašų, atitinkančių jūsų paiešką.
 recs_needsearch=Įveskite paiešką, norėdami rasti atitinkančius įrašus.
+
 edit_title=Redaguoti $1
 edit_header=$1
 edit_edit=Redaguoti $1 įrašą
@@ -306,6 +313,7 @@ edit_edmarcpct=Žinučių procentas turi būti sveikas skaičius nuo 0 iki 100
 edit_edmarcrua=Trūksta bendro atsiliepimų adreso
 edit_edmarcruf=Trūksta teismo medicinos informacijos adreso
 edit_ecaavalue2=Trūksta arba netinkamo domeno vardo
+
 text_title=Redaguoti įrašų failą
 text_title2=Peržiūrėti įrašų failą
 text_desc3=Ši forma leidžia rankiniu būdu redaguoti DNS įrašų failą $1. „Webmin“ neatliks sintaksės tikrinimo.
@@ -315,6 +323,7 @@ text_ecannot=Jums neleidžiama redaguoti įrašų failų
 text_none=Tačiau failas šiuo metu tuščias, tikriausiai todėl, kad zona dar nebuvo perkelta iš pagrindinio serverio.
 text_soa=Padidinkite serijos numerį automatiškai
 text_rawformat=Ši zona yra neapdoroto dvejetainio formato, todėl jos negalima parodyti kaip teksto.
+
 restart_err=Nepavyko pritaikyti pakeitimų
 restart_ecannot=Jums neleidžiama iš naujo paleisti BIND
 restart_epidfile=Nepavyko rasti BIND PID $1
@@ -323,10 +332,12 @@ restart_erunning2=Panašu, kad BIND neveikia vergų serveryje $1
 restart_endc=NDC komanda nepavyko : $1
 restart_ecmd=Paleisti komandą iš naujo nepavyko : $1
 restart_eversion=Vergų serveris $1 neveikia „Webmin“ versijos $2 ar naujesnė versija.
+
 start_ecannot=Jums neleidžiama pradėti BIND
 start_error=Nepavyko paleisti BIND : $1
 stop_epid=BIND neveikia
 stop_ecannot=Jums neleidžiama sustabdyti BIND
+
 fwd_title=Redaguoti pirmyn zoną
 fwd_ecannot=Jums neleidžiama redaguoti šios zonos
 fwd_opts=Zonos parinktys
@@ -335,12 +346,14 @@ fwd_forward=Išbandykite kitus serverius?
 fwd_check=Patikrinti vardus?
 fwd_err=Nepavyko išsaugoti parinkčių
 fwd_delmsg=Spustelėkite šį mygtuką, norėdami ištrinti šią zoną iš savo DNS serverio. Tada įrašai bus ieškomi naudojant įprastą skyros procesą.
+
 delegation_title=Redaguoti delegacijos zoną
 delegation_ecannot=Jums neleidžiama redaguoti šios zonos
 delegation_opts=Zonos parinktys
 delegation_err=Nepavyko išsaugoti parinkčių
 delegation_noopts=Delegavimo zonos neturi jokių konfigūruojamų parinkčių.
 delegation_delmsg=Spustelėkite šį mygtuką, norėdami ištrinti šią zoną iš savo DNS serverio. Įrašų tipus, išskyrus NS, tada atpažins BIND.
+
 fcreate_title=Sukurti pirmyn zoną
 fcreate_ecannot=Jums neleidžiama kurti priekinių zonų
 fcreate_opts=Naujos priekinės zonos parinktys
@@ -350,10 +363,12 @@ fcreate_rev=Reverse (adresai vardams)
 fcreate_dom=Domeno vardas / tinklas
 fcreate_masters=Pagrindiniai serveriai
 fcreate_err=Nepavyko sukurti priekinės zonos
+
 dcreate_title=Sukurti zoną, skirtą tik delegavimui
 dcreate_ecannot=Jums neleidžiama kurti delegacijų zonų
 dcreate_opts=Nauji delegacijų zonų variantai
 dcreate_err=Nepavyko sukurti delegavimo zonos
+
 create_enet=„$1“ nėra tinkamas tinklas
 create_edom=„$1“ nėra teisingas domeno vardas
 create_edom2=„$1“ turi būti domenas, o ne tinklas
@@ -363,9 +378,11 @@ create_efile3=Nepavyko sukurti „$1“ : $2
 create_efile4=Failas $1 jau yra
 create_emaster=„$1“ nėra teisingas pagrindinio serverio adresas
 create_enone=Turite įvesti bent vieną pagrindinį serverį
+
 boot_err=Atsisiuntimas nepavyko
 boot_egzip=Šaknies zonos failas yra suglaudintas, tačiau komanda <tt>gzip</tt> jūsų sistemoje neįdiegta!
 boot_egzip2=Nepavyko suspausti šaknies zonos failo : $1
+
 type_A=Adresas
 type_AAAA=IPv6 adresas
 type_NS=Vardų serveris
@@ -386,6 +403,7 @@ type_SRV=Aptarnavimo adresas
 type_ALL=Visi įrašų tipai
 type_KEY=Viešasis raktas
 type_CAA=Sertifikatų institucija
+
 edit_A=Adresas
 edit_AAAA=IPv6 adresas
 edit_NS=Vardų serveris
@@ -405,6 +423,7 @@ edit_NSEC3PARAM=DNSSEC parametrai
 edit_TLSA=SSL sertifikatas
 edit_SSHFP=SSH viešasis raktas
 edit_CAA=Sertifikatų institucija
+
 recs_defttl=Numatytasis TTL
 recs_A=Adresas
 recs_AAAA=IPv6 adresas
@@ -427,6 +446,7 @@ recs_TLSA=SSL sertifikatas
 recs_SSHFP=SSH viešasis raktas
 recs_CAA=Sertifikatų institucija
 recs_delete=Išštrinti pasirinktus
+
 value_A1=Adresas
 value_AAAA1=IPv6 adresas
 value_NS1=Vardų serveris
@@ -503,6 +523,7 @@ value_CAA3=CA domeno vardas
 value_caa_issue=Vieno domeno sertifikatas
 value_caa_issuewild=Pakaitos sertifikatas
 value_caa_iodef=Politikos pažeidimo URL
+
 tlsa_usage0=Sertifikato institucija
 tlsa_usage1=Pabaigos subjektas
 tlsa_usage2=Pasitikėjimo inkaras
@@ -512,12 +533,14 @@ tlsa_selector1=Informacija apie viešą raktą
 tlsa_match0=Nesuderintas turinys
 tlsa_match1=Maišytas SHA-256
 tlsa_match2=Maišytas SHA-512
+
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDSA
 sshfp_alg4=Ed25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 warn=Įspėti
 fail=Nesėkmė
 ignore=Ignoruoti
@@ -531,6 +554,7 @@ listed=Išvardytos ..
 eip=„$1“ nėra galiojantis IP adresas
 eport=„$1“ nėra galiojantis prievado numeris
 eipacl=„$1“ nėra teisingas IP adresas arba ACL vardas
+
 acl_zones=Domenai, kuriuos šis vartotojas gali redaguoti
 acl_zall=Visos zonos
 acl_zsel=Pasirinktos zonos ..
@@ -575,6 +599,7 @@ acl_ztypes_master=Meistras
 acl_ztypes_slave=Vergas / stubas
 acl_ztypes_delegation=Delegacija
 acl_ztypes_forward=Persiųsti
+
 servers_title=Kiti DNS serveriai
 servers_ip=IP adresas
 servers_bogus=Ignoruoti netikrą serverį?
@@ -586,6 +611,7 @@ servers_keys=Naudokite DNS raktus
 servers_err=Nepavyko išsaugoti kitų DNS serverių
 servers_eip=„$1“ nėra galiojantis IP adresas
 servers_etrans=„$1“ nėra galiojantis maksimalių pervedimų skaičius
+
 logging_title=Registravimas ir klaidos
 logging_ecannot=Jums neleidžiama konfigūruoti registravimo
 logging_header=Visuotinės registravimo ir klaidų parinktys
@@ -624,6 +650,7 @@ logging_efile=Trūksta žurnalo failo pavadinimo
 logging_efile2=Žurnalo failo vardas turi būti absoliutus kelias
 logging_ever=„$1“ nėra tinkamas versijų skaičius
 logging_esize=„$1“ nėra tinkamas žurnalo dydis
+
 acls_title=Prieigos kontrolės sąrašai
 acls_ecannot=Jums neleidžiama redaguoti pasaulinių įrašų
 acls_name=ACL vardas
@@ -631,6 +658,7 @@ acls_values=Sutampa adresai, tinklai ir ACL
 acls_err=Nepavyko išsaugoti prieigos kontrolės sąrašų
 acls_ename=„$1“ nėra teisingas ACL vardas
 acls_eline=Kiekvienas IP adresas turi būti įvestas atskiroje eilutėje, skirtoje ACL '$1'.
+
 files_title=Failai ir katalogai
 files_ecannot=Jums neleidžiama konfigūruoti failų
 files_header=Visuotinės failų ir katalogų parinktys
@@ -640,6 +668,7 @@ files_pid=Proceso ID failas
 files_xfer=Kelio į zoną perkėlimo programa
 files_err=Nepavyko išsaugoti failų ir katalogų parinkčių
 files_efile=Trūksta arba netinkamas failo vardas
+
 forwarding_title=Ekspedijavimas ir pervedimai
 forwarding_ecannot=Jums neleidžiama redaguoti persiuntimo ir perkėlimo parinkčių
 forwarding_header=Visuotinės ekspedijavimo ir zonų perdavimo galimybės
@@ -658,6 +687,7 @@ forwarding_etrans=Trūksta arba netinkami daugiausiai vienu metu perduodami duom
 forwarding_minutes=minučių
 forwarding_ip=IP adresas
 forwarding_port=Uostas
+
 net_title=Adresai ir topologija
 net_ecannot=Jums neleidžiama redaguoti adreso ir topologijos parinkčių
 net_header=Visuotinis adresas ir topologijos parinktys
@@ -683,6 +713,7 @@ net_taddrdef=Artimiausias IP
 net_etport=Perdavimo šaltinio prievado negalima nurodyti be adreso
 net_eaddr=„$1“ nėra galiojantis IPv4 adresas
 net_eaddr6=„$1“ nėra galiojantis IPv6 adresas
+
 controls_title=Valdymo sąsajos parinktys
 controls_ecannot=Jums neleidžiama redaguoti valdymo parinkčių
 controls_header=Kontrolės galimybės
@@ -704,6 +735,7 @@ controls_eunixpath=Trūksta arba netinkamas FIFO failo kelias
 controls_eunixperm=Trūksta arba netinkami aštuonkojo failo leidimai
 controls_eunixowner=Trūksta arba netinkamas failo savininkas
 controls_eunixgroup=Trūksta arba netinkama failų grupė
+
 controls_inet=Prieiga per internetą
 controls_unix=„Unix FIFO“ prieiga
 controls_port=uostas
@@ -717,6 +749,7 @@ controls_efile=Trūksta arba netinkamas FIFO failo vardas
 controls_eperms=Trūksta arba netinkami FIFO leidimai
 controls_eowner=Nėra arba netinkamas FIFO savininko UID
 controls_egroup=Trūksta arba netinkamas FIFO savininko GID
+
 keys_title=DNS raktai
 keys_id=Rakto ID
 keys_alg=Algoritmas
@@ -725,6 +758,7 @@ keys_ecannot=Jums neleidžiama redaguoti DNS raktų
 keys_err=Nepavyko išsaugoti DNS raktų
 keys_ekey=„$1“ nėra galiojantis rakto ID
 keys_esecret=Trūksta arba netinkama „64 pagrindinės kodo paslaptis“, esanti $1
+
 misc_title=Įvairūs variantai
 misc_ecannot=Jums neleidžiama redaguoti įvairių variantų
 misc_header=Įvairios globalios galimybės
@@ -744,6 +778,7 @@ misc_esize=„$1“ yra netinkamas dydis
 misc_efiles=„$1“ nėra galiojantis maksimalus atidarytų failų skaičius
 misc_emins=„$1“ nėra tinkamas minučių skaičius
 misc_mins=min
+
 zonedef_title=Zonos numatytosios reikšmės
 zonedef_msg=Naujų pagrindinių zonų numatytieji nustatymai
 zonedef_err=Nepavyko išsaugoti numatytųjų zonų
@@ -767,10 +802,13 @@ zonedef_size=Pradinis rakto dydis
 zonedef_single=Kuriamų klavišų skaičius
 zonedef_two=Zonos raktas ir raktų pasirašymo raktas
 zonedef_one=Tik zoninis raktas
+
 find_title=Rasti zonas
 find_match=Zonos, atitinkančios $1 ..
 find_none=Nerasta zonų.
+
 efirst=Bloga pirmoji direktyva eilutėje $1 $2
+
 findfree_title=Raskite nemokamus IP
 findfree_desc=Raskite nemokamus IP
 findfree_nofind=Jūs negalite ieškoti nemokamų IP
@@ -782,8 +820,10 @@ findfree_cf=Apsvarstykite <em>freeXXX</em> pagrindinius vardus kaip nemokamus IP
 findfree_search=Paieška
 findfree_msg=Rasta $1 nemokamų IP adresų
 findfree_msg2=(iš jų $1 yra kaip <i>freeXXX</i>, $2 kaip <i>freemac</i>)
+
 free_title=Nemokami IP adresai
 free_ip=IP adresas
+
 log_servers=Pakeitė kitus DNS serverius
 log_logging=Pakeistas registravimas ir klaidos
 log_acls=Pakeisti prieigos kontrolės sąrašai
@@ -840,14 +880,17 @@ log_sign=Atnaujinti $1 zonos DNSSEC parašai
 log_resign=Iš naujo pasirašytas zonos $1 DNSSEC raktas
 log_trusted=Pakeistas DNSSEC patvirtinimas
 log_dnssec=Pakeiskite DNSSEC rakto pakartotinį pasirašymą
+
 convert_err=Nepavyko konvertuoti zonos
 convert_efile=Prieš paverčiant zoną, kurią galima paversti pagrindine, reikia nurodyti įrašų failą.
 convert_efilesize=Įrašų failas $1 neegzistuoja arba yra tuščias
 convert_ebinary=Komanda, reikalinga konvertuoti iš dvejetainės vergės zonos į teksto formato pagrindinę, neįdiegta
 convert_ecompile=Nepavyko pakeisti dvejetainio į teksto formato : $1
+
 whois_title=WHOIS informacija
 whois_header=Išvestis iš komandos $1 ..
 whois_ecannot=Jums neleidžiama ieškoti WHOIS informacijos
+
 view_title=Redaguoti kliento rodinį
 view_opts=Kliento peržiūros informacija
 view_opts2=Peržiūrimų zonų parinktys
@@ -858,6 +901,7 @@ view_recursion=Ar visiškai rekursyvi klientų paieška?
 view_ecannot=Jums neleidžiama redaguoti šio rodinio
 view_delete=Ištrinti rodinį
 view_deletemsg=Spustelėkite šį mygtuką norėdami ištrinti rodinį. Turėsite galimybę perkelti joje esančias zonas į kitą rodinį arba ištrinti ir jas.
+
 vcreate_title=Sukurti kliento rodinį
 vcreate_match_all=Visi klientai
 vcreate_match_sel=Išvardyti adresai, tinklai ir ACL ..
@@ -866,6 +910,7 @@ vcreate_ename=Trūksta arba netinkamas rodinio pavadinimas
 vcreate_etaken=Rodinio vardas jau paimtas
 vcreate_eclass=Trūksta arba netinkamas klasės pavadinimas
 vcreate_ecannot=Jums neleidžiama kurti rodinių
+
 hint_title=Redaguoti šaknies zoną
 hint_desc=Šakninę zoną jūsų DNS serveris naudoja susisiekti su šakniniais serveriais internete, kad galėtų išspręsti vardus domenuose, kurių netvarko jūsų DNS serveris, pvz., <tt>.com</tt> arba <tt>.net. au</tt>. Šios šaknies zonos neturėtumėte ištrinti, nebent jūsų DNS serveris būtų naudojamas vidiniame tinkle arba neperduodate visų užklausų į kitą serverį.
 hint_move=Perkelti į peržiūrą:
@@ -874,6 +919,7 @@ hint_refetch=Iš naujo atsisiųskite šakninius vardų serverius
 hint_refetchdesc=Spustelėkite šį mygtuką, jei norite, kad „Webmin“ iš vidaus, iš FTP serverio, atsisiųstų šaknies zonos failą iš naujo.
 hint_delete=Ištrinti šaknies zoną
 hint_deletedesc=Spustelėkite šį mygtuką, norėdami pašalinti šią šakninę zoną. Be jo jūsų vardų serveris negalės išspręsti domenų internete, išskyrus tuos, kuriems jis yra antraeilis.
+
 hcreate_title=Sukurkite šaknies zoną
 hcreate_desc=Šakninę zoną jūsų DNS serveris naudoja susisiekti su šakniniais serveriais internete, kad galėtų išspręsti vardus domenuose, kurių netvarko jūsų DNS serveris, pvz., <tt>.com</tt> arba <tt>.net. au</tt>. Jei naudojate kelis rodinius, kiekviename rodinyje gali tekti turėti atskirą šaknies zoną, kad visi klientai galėtų tinkamai išspręsti interneto domenus.
 hcreate_header=Šaknies zonos informacija
@@ -887,6 +933,7 @@ hcreate_efile=„$1“ nėra leidžiamas šakninis failas
 hcreate_efile2=Trūksta arba netinkamas šakninis failas
 mcreate_erecs=Netinkamas esamas šaknies zonos failas
 hcreate_err=Nepavyko sukurti šaknies zonos
+
 vdelete_title=Ištrinti rodinį
 vdelete_mesg=Ar tikrai norite ištrinti kliento rodinį $1? Visos šio rodinio zonos bus ištrintos (kartu su jų zonų failais) arba perkeltos į kitą rodinį, atsižvelgiant į žemiau pateiktą pasirinkimą.
 vdelete_mesg2=Ar tikrai norite ištrinti kliento rodinį $1?
@@ -894,6 +941,7 @@ vdelete_newview=Šiame vaizde esančios zonos
 vdelete_root=Pasitraukite iš vaizdų
 vdelete_delete=Ištrinti visiškai
 vdelete_move=Pereikite prie peržiūros
+
 gen_title=Įrašų generatoriai
 gen_desc=Šis puslapis leidžia apibrėžti generatorius, kurių kiekviena sukurs kelis įrašus šioje zonoje, naudojant didėjantį skaitiklį. Tai gali būti naudinga perduodant atvirkštinės zonos dalis kitam serveriui.
 gen_range=diapazonas
@@ -913,7 +961,9 @@ gen_evalue=Trūksta arba netinkamas pagrindinio kompiuterio pavadinimo šablonas
 gen_title2=Sukurti įrašai
 gen_raw=Konfigūruoti failo eilutę
 gen_ecannot=Jums neleidžiama redaguoti įrašų generatorių
+
 refetch_err=Nepavyko iš naujo atsisiųsti šaknies zonos
+
 slaves_title=„Cluster Slave“ serveriai
 slaves_none=Prie DNS klasterio dar nepridėta jokių serverių.
 slaves_host=Pagrindinio kompiuterio vardas
@@ -941,6 +991,7 @@ slaves_sec=Sukurti antrinį vergą kuriant vietoje?
 slaves_name=NS įrašo pavadinimas
 slaves_same=Tas pats, kaip pagrindinio kompiuterio vardas
 slaves_header=„Claster slave“ serverio parinktys
+
 add_title=Pridėti serverius
 add_msg=Pridėjus $1 ..
 add_gmsg=Serverių pridėjimas grupėje $1 ..
@@ -958,6 +1009,7 @@ add_createok=Nustatykite $1 su $2 naujomis vergų zonomis.
 add_ename=Trūksta arba netinkamas NS įrašo pavadinimas
 add_egname=Pridedant grupę, NS įrašo pavadinimo nurodyti negalima
 add_emyip=Nepavyko nustatyti šios sistemos IP adreso. Puslapyje „Modulio konfigūracija“ turėtumėte nustatyti <b>Numatytasis pagrindinio serverio IP nuotolinėms vergų zonoms</b>.
+
 mass_title=Sukurkite zonas iš paketinio failo
 mass_desc=Šis puslapis leidžia iš įkeltos ar serverio pusės teksto failo vienu metu sukurti kelias zonas. Kiekviena failo eilutė turi būti tokio formato: <p></p> <tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt> <p></p> <i>Tipas</i> turi būti <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> arba <tt>forward</tt>. <i>Failo vardas</i> yra neprivalomas ir, jei jo nėra, bus apskaičiuojamas automatiškai. Pagrindinius <i>IP</i> reikia duoti tik pagalbinėms zonoms.
 mass_local=Vietinis paketinis failas
@@ -989,6 +1041,7 @@ mass_emips=Trūksta pagrindinių IP adresų
 mass_addedslaves=Pridėta $1 į vergų serverius. Gerai.
 mass_eonslave=Vergų serveriuose sukurtos klaidos : $1
 mass_eviewcannot=Jums neleidžiama pridėti zonų prie šio rodinio
+
 massdelete_title=Ištrinti zonas
 massdelete_rusure=Ar tikrai norite ištrinti $1 pasirinktas zonas? ($2)
 massdelete_ok=Ištrinti dabar
@@ -998,6 +1051,7 @@ massdelete_slaves=Panaikinama zona $1 iš vergų serverių.
 massdelete_failed=.. kai kurie vergai nepavyko :
 massdelete_vwarn=Kai kurios zonos yra susijusios su „Virtualmin“ domenu $1, todėl jų čia nereikėtų ištrinti!
 massdelete_vwarn2=Kai kurios zonos yra susijusios su „Virtualmin“ domenu $1 ir $2 kitomis, todėl jų čia nereikėtų ištrinti!
+
 rndc_title=RNDC nustatymas
 rndc_desc=Šis puslapis gali būti naudojamas norint nustatyti BIND, kad jį kontroliuotų RNDC programa, kad atskiras zonas būtų galima atnaujinti nereikia visiškai iš naujo paleisti BIND.
 rndc_desc2=Atrodo, kad RNDC jau tinkamai sukonfigūruotas, todėl jums tikriausiai nereikia naudoti šios formos.
@@ -1008,11 +1062,13 @@ rndc_ok=Taip, nustatykite RNDC
 rndc_err=Nepavyko nustatyti RNDC
 rndc_ekey=Nepavyko rasti rakto rndc.conf
 rndc_esecret=Nepavyko rasti paslapties rndc.conf
+
 drecs_err=Nepavyko ištrinti įrašų
 drecs_enone=Nepasirinkta
 drecs_title=Ištrinti įrašus
 drecs_rusure=Ar tikrai norite ištrinti $1 pasirinktus įrašus iš $2?
 drecs_ok=Ištrinti dabar
+
 manual_title=Redaguoti konfigūracijos failą
 manual_ecannot=Jums neleidžiama redaguoti BIND konfigūracijos failo
 manual_ok=Redaguoti
@@ -1020,7 +1076,9 @@ manual_efile=Pasirinktas failas nėra BIND konfigūracijos dalis
 manual_file=Redaguoti konfigūracijos failą:
 manual_edata=Niekas neįėjo!
 manual_err=Nepavyko išsaugoti konfigūracijos failo
+
 syslog_desc=BIND DNS serverio pranešimai
+
 umass_err=Nepavyko atnaujinti zonų
 umass_enone=Nepasirinkta
 umass_title=Atnaujinkite įrašus zonose
@@ -1039,6 +1097,7 @@ umass_done=.. atnaujinti $1 atitikimo įrašai iš $2.
 umass_none=Nerasta atitinkančių įrašų iš $1.
 umass_egone=Zona neegzistuoja
 emass_emx=„$1“ nėra pašto serverio prioriteto numeris, po kurio nurodytas galiojantis pagrindinio kompiuterio vardas
+
 rdmass_err=Nepavyko ištrinti įrašų zonose
 rdmass_enone=Nepasirinkta
 rdmass_title=Ištrinti įrašus zonose
@@ -1055,6 +1114,7 @@ rdmass_done=.. ištrinti $1 atitikimo įrašai iš $2.
 rdmass_none=Nerasta atitinkančių įrašų iš $1.
 rdmass_ok=Ištrinti įrašus
 rdmass_sel=Įrašai pavadinti
+
 rmass_err=Nepavyko pridėti įrašų
 rmass_enone=Nepasirinkta
 rmass_title=Pridėti įrašą į zonas
@@ -1074,18 +1134,22 @@ rmass_esign=.. padaryta, bet pasirašyti nepavyko : $1
 rmass_eclash=.. Įrašas tuo pačiu pavadinimu ir reikšme $1 jau yra.
 rmass_eclash2=.. Įrašas tuo pačiu pavadinimu ir ta pačia verte $1 jau yra.
 rmass_clash=Sukurti, net jei įrašas jau yra?
+
 check_title=Patikrinkite įrašus
 check_ecannot=Jums neleidžiama tikrinti įrašų
 check_errs=Įrašų faile $1 buvo rastos šios klaidos.
 check_allok=Įrašų faile $1 klaidų nerasta.
+
 ncheck_title=Patikrinkite BIND Config
 ncheck_ecannot=Jums neleidžiama patikrinti BIND konfigūracijos
 ncheck_errs=Šios klaidos buvo rastos BIND konfigūracijos faile $1 arba nurodytų zonų failuose.
 ncheck_allok=Nebuvo rasta klaidų BIND konfigūracijos faile $1 arba nurodytų zonų failuose.
+
 links_restart=Taikyti konfigūraciją
 links_stop=Sustabdyk BIND
 links_start=Pradėti BIND
 links_apply=Taikyti zoną
+
 dnssec_title=DNSSEC rakto pakartotinis pasirašymas
 dnssec_ecannot=Jums neleidžiama konfigūruoti DNSSEC
 dnssec_header=Pagrindinės pakartotinio pasirašymo parinktys
@@ -1096,6 +1160,7 @@ dnssec_secs=sekundžių
 dnssec_desc=Zonos, pasirašytos DNSSEC, paprastai turi du raktus - zoninį raktą, kuris turi būti iš naujo sugeneruotas ir pasirašytas reguliariai, ir rakto pasirašymo raktą, kuris išlieka pastovus. Šis puslapis leidžia sukonfigūruoti „Webmin“ atlikti šį pakartotinį pasirašymą automatiškai.
 dnssec_err=Nepavyko išsaugoti DNSSEC rakto pakartotinio pasirašymo
 dnssec_eperiod=Trūksta arba netinkamas dienų skaičius tarp pakartotinių ženklų
+
 dnssectools_title=DNSSEC-Tools automatizavimas
 dt_conf_title=DNSSEC-Tools automatizavimas
 dt_enable_title=DNSSEC-Tools automatizavimas
@@ -1160,6 +1225,7 @@ dt_status_inKSKroll=KSK ritinyje
 dt_status_inZSKroll=„ZSK Roll“
 dt_status_signed=Pasirašė
 dt_status_unsigned=Nepasirašytas
+
 zonekey_title=Nustatykite DNSSEC raktą
 zonekey_desc=Šioje zonoje dar nėra DNSSEC pasirašymo rakto. Galite naudoti šią formą, jei norite, kad „Webmin“ sukurtų tokią, kad šią zoną išsprendžiantys klientai būtų apsaugoti nuo DNS klastojimo atakų.
 zonekey_header=Naujos DNSSEC raktų parinktys
@@ -1193,9 +1259,12 @@ zonekey_sign=Ženklų zona
 zonekey_signdesc=Iškart pasirašykite iš naujo šią zoną, kad visi rankiniu būdu atlikti įrašų pakeitimai būtų įtraukti į pasirašymo įrašus.
 zonekey_resign=Iš naujo pasirašyti zona
 zonekey_resigndesc=Sugeneruokite naują zonos pasirašymo raktą, pasirašykite jį pagrindiniu zonos raktu ir dar kartą pasirašykite visus įrašus.
+
 sign_err=Nepavyko pasirašyti zonos
 sign_emsg=Nepavyko pasirašyti DNSSEC po įrašų pakeitimo : $1
+
 resign_err=Nepavyko iš naujo pasirašyti zonos
+
 trusted_title=DNSSEC patikrinimas
 trusted_ecannot=Jums neleidžiama konfigūruoti DNSSEC patikrinimo
 trusted_esupport=Jūsų BIND versija nepalaiko DNSSEC patvirtinimo
@@ -1230,6 +1299,7 @@ trusted_setup=Kad DNSSEC būtų naudinga patikrinti daugumą pasirašytų zonų 
 trusted_ok=Nustatykite DLV ir įgalinkite DNSSEC patikrą
 trusted_warning=Įspėjimas! Jūsų BIND DNSSEC kliento konfigūracijoje yra pasenę raktai, kurie nustos veikti 2017 m. Spalio mėn. Jei norite pakoreguoti konfigūraciją, naudokite <a href='$1'>BIND DNSSEC patikrinimo puslapį</a> arba spustelėkite žemiau esantį mygtuką.
 trusted_fix=Pataisykite DNSSEC konfigūraciją
+
 xfer_title=Bandomosios zonos perkėlimas
 xfer_doing=Vergių zonos perkėlimo iš $1 testavimas.
 xfer_failed=.. iš $1: Nepavyko : $2

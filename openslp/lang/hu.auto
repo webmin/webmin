@@ -3,11 +3,14 @@ index_return=OpenSLP konfiguráció
 index_eslpd=A (z) $1 OpenSLP démon nem található meg a rendszerén. Lehet, hogy nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
 index_econf=A (z) $1 OpenSLP konfigurációs fájl nem található a rendszerén. Lehet, hogy nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
 index_version=OpenSLP verzió $1
+
 slp_apply=Módosítások elfogadása
 slp_stop=Állítsa le az OpenSLP-t
+
 snda_title=Statikus hatókör és DA
 snda_useScopes=Hatályok statikus listája
 snda_DAAddresses=A Directory Agents (DA) statikus listája
+
 netcfg_title=Hálózati konfiguráció
 netcfg_isBroadcastOnly=Az adások kényszerítése a multicast helyett
 netcfg_passiveDADetection=Használjon passzív DA észlelést
@@ -23,20 +26,25 @@ netcfg_unicastMaximumWait=Az unicast kérések közötti maximális időtartam (
 netcfg_randomWaitBound=Az összes véletlenszerű várakozási paraméter maximális értéke (ezredmásodpercben)
 netcfg_MTU=MTU csomagméret (byte-ban)
 netcfg_interfaces=Az interfészek IP-címei, amelyeket a DA/SA-nak meg kell hallgatnia
+
 dacfg_title=DA konfiguráció
 dacfg_isDA=Csak DAként működik (ennek megváltoztatása előtt olvassa el a felhasználói útmutatót)
+
 log_title=Követés és naplózás
 log_traceDATraffic=DA forgalmi üzenetek nyomtatása
 log_traceMsg=Az SLP részletes üzeneteinek kinyomtatása
 log_traceDrop=Az SLP nyomtatása elhagyta az üzenet adatait
 log_traceReg=Nyomtasson ki DA és SA regisztrációs és regisztrációs adatokat
+
 error_open=Hiba a fájl megnyitásakor
 error_flock_on=Hiba a fájlzár létrehozásakor
 error_flock_off=Hiba a fájlzár megsemmisítésében
 error_hup=Hiba történt az OpenSLP újraindításakor a PID-vel
+
 index_start=Indítsa el az OpenSLP-t
 index_startmsg=Kattintson erre a gombra az OpenSLP démon elindításához a rendszeren.
 index_stop=Állítsa le az OpenSLP-t
 index_stopmsg=Kattintson erre a gombra az OpenSLP démon leállításához a rendszeren.
+
 stop_err=Nem sikerült leállítani az OpenSLP-t
 start_err=Nem sikerült elindítani az OpenSLP-t

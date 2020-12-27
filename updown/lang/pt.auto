@@ -40,6 +40,7 @@ index_descfetch=Esta página é para baixar um arquivo do sistema executando o W
 index_email=Enviar email quando os downloads forem concluídos?
 index_emailto=Sim, para endereçar
 index_email2=Enviar email quando os uploads forem concluídos?
+
 upload_title=Fazer upload de arquivos
 upload_err=Falha ao fazer upload de arquivos
 upload_edir=Diretório ausente para upload
@@ -63,6 +64,7 @@ upload_saving=Salvando o arquivo $1 ..
 upload_saved=.. escreveu $1 
 upload_unzipping=Extraindo arquivo $1 ..
 upload_unzipdone=.. $1 
+
 download_err=Falha ao salvar o download
 download_enone=Nenhum URL para download inserido
 download_eurl='$1' não é um URL válido
@@ -74,9 +76,11 @@ download_failed=Falha no download : $1
 download_eaccess=Você não tem permissão para baixar arquivos para $1 
 download_eucannot=Você não tem permissão para baixar arquivos como usuário $1 
 download_egcannot=O grupo selecionado não contém o usuário selecionado
+
 cancel_err=Falha ao cancelar downloads
 cancel_enone=Nenhum selecionado
 cancel_ecannot=Você não tem permissão para cancelar downloads do usuário $1 
+
 log_cancel=$1 download (s) cancelado (s)
 log_upload_l=Arquivo (s) enviado (s) $1 
 log_upload=$1 arquivo (s) carregado (s)
@@ -84,6 +88,7 @@ log_download_l=URL (s) baixados $1
 log_download=$1 URL (s) baixado (s)
 log_sdownload_l=Programado o download do (s) URL (s) $1 
 log_sdownload=Programado o download de $1 URL (s)
+
 acl_users=Pode carregar e baixar arquivos como usuários
 acl_all=Todos os usuários
 acl_this=Usuário atual do Webmin
@@ -98,6 +103,7 @@ acl_max=Tamanho máximo de upload
 acl_unlim=Ilimitado
 acl_b=bytes
 acl_fetch=Pode baixar arquivos para o PC?
+
 fetch_err=Falha ao baixar o arquivo
 fetch_ecannot=Você não tem permissão para baixar arquivos para um PC
 fetch_efile=Nenhum nome de arquivo digitado
@@ -106,6 +112,7 @@ fetch_eopen=Falha ao abrir o arquivo : $1
 fetch_eaccess=Você não tem permissão para baixar arquivos de $1 
 fetch_ezip=Um diretório não pode ser baixado, a menos que o comando <tt>zip</tt> esteja instalado
 fetch_eroot=O diretório raiz não pode ser baixado!
+
 email_downmsg=O seguinte download foi concluído :
 email_downurl=URL: $1 
 email_downerr=Mensagem de erro: $1 

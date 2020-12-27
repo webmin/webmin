@@ -13,10 +13,12 @@ index_ondelete=Smazat PPP účet, pokud je na serveru smazán Unix uživatel
 index_apply=Použít
 index_return=Ůvodní stránka PPP
 index_none=Nemáte přístup k žádné části tohoto modulu.
+
 secrets_title=PPP účty
 secrets_return=Úvodní stránka
 secrets_none=Doposud nebyly vytvořeny žádné PPP účty.
 secrets_ecannot=Nemáte oprávnění editovat PPP účty
+
 edit_secret_etitle=Editace PPP účtu
 edit_secret_ctitle=Vytvoření PPP účtu
 edit_secret_acc=PPP účet
@@ -36,8 +38,10 @@ edit_secret_alist=Povolit uvedeným v seznamu..
 edit_secret_save=Uložit
 edit_secret_del=Smazat
 edit_secret_return=seznam účtů
+
 save_secret_esave=Chyba při ukládání účtu
 save_secret_enoip='$1' není platná adresa
+
 log_create=Vytvořen PPP uživatel $1
 log_modify=Modifikován PPP uživatel $1
 log_delete=Smazán PPP uživatel $1
@@ -52,6 +56,7 @@ log_dialin_move=Přesunuto číslo volajícího $1
 log_mgetty_create=Vytvořen seriový port $1
 log_mgetty_modify=Modifikován seriový port $1
 log_mgetty_delete=Smazán seriový port $1
+
 options_title=PPP nastavení
 options_serial=Pro seriový port $1
 options_dev=Pro zařízení $1
@@ -82,6 +87,7 @@ options_idle=Časová prodleva nečinnosti před odpojením
 options_idle_def=Nikdy
 options_eidle=Chybějící nebo nesprávná časová prodleva nečinosti
 options_ecannot=Nemáte oprávnění editovat PPP nastavení
+
 mgetty_title=Konfigurace seriového portu
 mgetty_ecmd=Příkaz $1 nebyl ve vašem systému nalezen. Tento program je potřeba pro údržbu přihlášování přes seriový port pomocí modemu nebo přímého spojení.
 mgetty_desc=Váš server, který povoluje přihlášování přes seriový port pomocí modemu nebo přímého spojení, musí být uveden níže. Potom, přidáním portu z tohoto seznamu, je program $1 nakonfigurován pro odpovědi modemovým připojením a bude zobrazován prompt pro přihlášení.
@@ -123,6 +129,7 @@ mgetty_apply=Použít konfiguraci
 mgetty_applydesc=Klepnutím na toto tlačítko se použije aktuální konfigurace seriového portu spuštěním příkazu $1 a zabití všech Mgetty procesů.
 mgetty_applyerr=Chyba při použití konfigurace
 mgetty_ecannot=Nemáte oprávnění editovat konfigurace seriového portu
+
 dialin_title=Přístup ID volajícího
 dialin_desc=Tato stránka umožňuje konfigurovat Mgetty pro povolení nebo zakázání dialin přístupu, jež je založeno telefonního čísla volajícího. Jekmile je přijato volání, nejprve se porovná telefonní číslo se zápisy v seznamu, a poté se přístup buď povolí nebo nikoliv.
 dialin_efile=Mgetty soubor kontroly přístupu ID volajícího nebyl ve vašem sysstému nalezen. Možná není Mgetty nainstalován, nebo vaše <a href='$2'>konfigurace modulu</a> není správná.
@@ -143,5 +150,6 @@ dialin_move=Přesunout
 dialin_err=Chyba při ukládání ID volajícího čísla
 dialin_enumber=Chybějící nebo nesprávné telefonní číslo
 dialin_ecannot=Nemáte oprávnění editovat přístup ID volajících
+
 acl_pages=Stránky k pouřití
 acl_direct=Jít přímo na stránku?

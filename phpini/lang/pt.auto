@@ -9,17 +9,21 @@ index_edit=Gerir
 index_manual=Editar manualmente
 index_anyfile=Edite outro arquivo de configuração do PHP:
 index_return=arquivos de configuração
+
 file_global=Configuração global do PHP
 file_eread=Falha ao ler $1 : $2 
+
 manual_title=Editar configuração manualmente
 manual_desc=Esta página pode ser usada para editar manualmente um arquivo de configuração do PHP. Isso deve ser feito com cuidado, pois nenhuma sintaxe ou outra verificação de validade será realizada em suas alterações.
 manual_err=Falha ao editar o arquivo de configuração
 manual_edata=Nenhum conteúdo novo foi inserido
+
 list_title=Gerenciar configuração do PHP
 list_ecannot=Você não tem permissão para gerenciar este arquivo de configuração PHP
 list_return=Configuração PHP
 list_format_ini=Formato INI
 list_format_fpm=Formato FPM
+
 vars_title=Variáveis PHP
 vars_header=Opções de criação e citação de variáveis PHP
 vars_magic=Cite todas as variáveis de entrada?
@@ -28,6 +32,7 @@ vars_register=Transformar toda entrada em variáveis globais?
 vars_args=Transformar parâmetros de linha de comando em variáveis globais?
 vars_long=Criar matrizes de estilo antigo como <tt>HTTP_GET_VARS</tt>?
 vars_err=Falha ao salvar as configurações de variáveis do PHP
+
 dirs_title=Configurações de Diretório
 dirs_header=Configurações de script e extensão de diretório PHP
 dirs_include=Diretórios de pesquisa para inclui
@@ -39,6 +44,7 @@ dirs_err=Falha ao salvar as configurações do diretório
 dirs_eincs=Diretórios de pesquisa de inclusão não inseridos
 dirs_eutmp=Diretório de arquivos temporários ausente ou inválido
 dirs_eext=Diretório de extensões ausentes
+
 db_title=Configurações do banco de dados
 db_header1=Configurações de conexão com o banco de dados MySQL
 db_persist=Permitir conexões de banco de dados persistentes?
@@ -57,6 +63,7 @@ db_emaxlinks=Número máximo ausente ou inválido do total de conexões
 db_etimeout=Tempo limite de conexão ausente ou inválido
 db_ehost=Host do servidor MySQL padrão ausente ou inválido
 db_eport=Porta do servidor MySQL padrão ausente ou inválida
+
 session_title=Opções de sessão
 session_header=Opções para rastreamento de sessão PHP
 session_handler=Mecanismo de armazenamento de sessão
@@ -73,6 +80,7 @@ session_epath=Diretório ausente ou inválido para arquivos de sessão
 session_elife=Duração do cookie ausente ou inválida
 session_emaxlife=Duração máxima da sessão ausente ou inválida
 session_eredis=Extensão redis ausente ou desativada
+
 safe_title=Opções do modo de segurança
 safe_header=Opções do modo de acesso seguro a arquivos
 safe_on=Ativar modo de segurança?
@@ -85,6 +93,7 @@ safe_err=Falha ao salvar as opções do modo de segurança
 safe_einclude=Diretório permitido ausente ou inválido para os arquivos incluídos
 safe_eexec=Diretório permitido ausente ou inválido para programas executados
 safe_ebasedir=Diretório ausente ou inválido para operações de arquivo
+
 limits_title=Limites de recursos
 limits_header=Opções de limite de memória e transferência
 limits_mem=Alocação máxima de memória
@@ -98,6 +107,7 @@ limits_epost=Tamanho máximo de HTTP POST ausente ou inválido
 limits_eupload=Tamanho máximo de upload de arquivo ausente ou inválido
 limits_eexec=Tempo máximo de execução ausente ou inválido
 limits_einput=Tempo máximo de análise de entrada máximo ausente ou inválido
+
 errors_title=Registro de erro
 errors_header=Opções de exibição e registro de mensagens de erro
 errors_display=Exibir mensagens de erro?
@@ -128,6 +138,7 @@ errors_err=Falha ao salvar o log de erros
 errors_ereporting=Nenhuma expressão de tipo de erro inserida
 errors_emaxlen=Tamanho máximo ausente ou inválido de erros registrados
 errors_efile=Arquivo de log de erros ausente
+
 misc_title=Outros ajustes
 misc_header=Outras configurações PHP diversas
 misc_short=Permitir scripts PHP iniciando com &lt;? ?
@@ -148,6 +159,7 @@ misc_include=Permitir a abertura do controle remoto Inclui?
 misc_path=Informações sobre o caminho de correção CGI?
 misc_timezone=Fuso Horário do PHP
 misc_charset=Conjunto de caracteres padrão
+
 log_manual=Editar manualmente o arquivo $1 
 log_vars=Variáveis PHP alteradas em $1 
 log_dirs=Configurações de diretório alteradas em $1 
@@ -157,6 +169,7 @@ log_safe=Opções de modo de segurança alteradas em $1
 log_limits=Limites de recursos alterados em $1 
 log_errors=Erro no log de $1 
 log_misc=Outras configurações alteradas em $1 
+
 acl_global=Pode editar a configuração global do PHP?
 acl_anyfile=Pode editar qualquer arquivo como uma configuração PHP?
 acl_manual=Pode editar manualmente os arquivos de configuração?

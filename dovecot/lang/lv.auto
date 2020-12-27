@@ -11,11 +11,13 @@ index_boot=Sākt no sāknēšanas?
 index_bootdesc=Mainiet šo iestatījumu, lai iespējotu vai atspējotu Dovecot servera palaišanu sistēmas sāknēšanas laikā.
 index_return=moduļa indekss
 index_version=Versija $1
+
 stop_err=Neizdevās apturēt Dovecot
 stop_erunning=Vairs neskrienu
 start_err=Neizdevās palaist Dovecot
 start_eprotos=Lapā <b>Tīklošana un protokoli</b> nav atlasīts neviens protokols
 apply_err=Neizdevās piemērot konfigurāciju
+
 net_title=Tīklošana un protokoli
 net_header=Dovecot tīkla un pasta protokola iespējas
 net_protocols=Apkalpojiet pasta protokolus
@@ -42,8 +44,11 @@ net_eimaps_listen=Nederīga IP adrese IMAP SSL savienojumiem
 net_epop3s_listen=Nederīga IP adrese POP3 SSL savienojumiem
 net_elisten=Nederīga IP adrese savienojumiem, kas nav SSL
 net_essl_listen=Nederīga SSL savienojumu IP adrese
+
 imap_title=IMAP opcijas
+
 pop3_title=POP3 opcijas
+
 ssl_title=SSL konfigurācija
 ssl_header=IMAP un POP3 SSL režīma iespējas
 ssl_key=SSL privātās atslēgas fails
@@ -61,7 +66,9 @@ ssl_ecert=Trūkst vai nav sertifikāta faila
 ssl_eca=Trūkst vai nav klienta SI sertifikāta faila
 ssl_eregen=Trūkst vai nav skaitlisku parametru atjaunošanas intervālu
 ssl_epass=Nav ievadīta SSL atslēgas faila parole
+
 misc_title=Citas iespējas
+
 login_title=Lietotāja un pieteikšanās iespējas
 login_header=Lietotāju autentifikācijas un pieteikšanās iespējas
 login_fuid=Minimālais derīgais UID
@@ -117,6 +124,7 @@ login_procs=Maksimāli pieteikšanās procesi
 login_count=Sākotnējie pieteikšanās procesi
 login_eprocs=Trūkst vai nav derīgs pieteikšanās procesu maksimālais skaits
 login_ecount=Trūkst vai nav derīgs pieteikšanās procesu sākotnējais skaits
+
 mail_title=Pasta faili
 mail_header=Pasta atrašanās vieta un lasīšanas iespējas
 mail_env=Pasta faila atrašanās vieta
@@ -169,6 +177,7 @@ mail_eindexmode=Indeksa failu atrašanās vietu nevar iestatīt, kad pasta faila
 mail_econtrolmode=Kontroles failu atrašanās vietu nevar iestatīt, kad pasta faila atrašanās vieta tiek noteikta automātiski
 mail_eindex=Trūkst vai nav derīgs indeksa failu absolūtais ceļš
 mail_econtrol=Trūkst vai nav derīgs vadības failu absolūtais ceļš
+
 log_net=Mainīts tīkls un protokoli
 log_login=Mainītas lietotāja un pieteikšanās iespējas
 log_mail=Mainīti pasta faili
@@ -179,6 +188,7 @@ log_stop=Apturēts Dovecot serveris
 log_bootup=Iespējot Dovecot sāknēšanas laikā
 log_bootdown=Atspējots Dovecot sāknēšanas laikā
 log_manual=Manuāli rediģēts konfigurācijas fails $1
+
 manual_title=Rediģēt konfigurācijas failus
 manual_editsel=Rediģēt Dovecot konfigurācijas failu
 manual_err=Neizdevās saglabāt konfigurācijas failu

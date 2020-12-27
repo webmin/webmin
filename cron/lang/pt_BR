@@ -27,6 +27,7 @@ index_ok=Procurar
 index_searchres=Tarefas Cron com a expressão $1 ..
 index_reset=Limpar busca.
 index_econfigcheck=Não é possível gerenciar tarefas Cron no seu sistema, pois a configuração de módulo não é válida: $1
+
 edit_title=Editar Tarefa Cron
 create_title=Criar Tarefa Cron
 edit_ecannot=Você não tem permissão para editar tarefas cron para este usuário.
@@ -64,6 +65,7 @@ lcedit_special_weekly=semanalmente (aos domingos)
 lcedit_special_monthly=mensalmente (no dia 1°)
 lcedit_special_yearly=anualmente (no dia 1° de janeiro)
 lcedit_special_reboot=quando o sistema inicia
+
 save_err=Erro ao salvar tarefa cron
 save_ecmd=Você não inseriu um comando para executar
 save_euser=Você deve escolher um usuário
@@ -72,6 +74,7 @@ save_eallow=O usuário '$1' não tem permissão para acessar o cron
 save_ecannot=Você não tem permissão para criar ou editar tarefas cron para '$1'
 save_enone=Você não escolheu nenhum $1 para executar
 save_ecannot2=Você não tem permissão para criar tarefas cron
+
 allow_title=Controlar Acesso Cron
 allow_desc=Esta página permite controlar quais usuários podem criar e executar tarefas cron.
 allow_ecannot=Você não pode controlar o acesso de usuários ao cron
@@ -80,6 +83,7 @@ allow_all2=Recusar todos os usuários exceto o root
 allow_all3=Permitir para todos os usuários
 allow_allow=Permitir somente usuários listados
 allow_deny=Recusar somente usuários listados
+
 env_title1=Editar Variável de Ambiente
 env_title2=Criar Variável de Ambiente
 env_name=Nome da variável
@@ -95,11 +99,13 @@ env_where2=Mover variável de ambiente
 env_top=Antes de todas as tarefas Cron para o usuário
 env_bot=Após todas as tarefas Cron
 env_leave=Posição atual
+
 exec_title=Executar Tarefa Cron
 exec_ecannot=Você não tem permissão para executar tarefas cron para este usuário
 exec_cmd=Saída do comando $1 ..
 exec_cmdbg=Executando o comando $1 como um processo de plano de fundo.
 exec_none=Nenhuma saída gerada
+
 acl_users=Pode editar tarefas cron para
 acl_all=Todos os usuários
 acl_this=Usuário webmin atual
@@ -115,6 +121,7 @@ acl_move=Pode mover tarefas Cron?
 acl_kill=Pode interromper tarefas Cron?
 acl_hourly=Limitar tarefas a uma por hora, no máximo?
 acl_hourlydef=Como definido na Configuração de Módulo
+
 log_modify=Tarefa Cron modificada para $1
 log_modify_l=Tarefa Cron '$2' modificada para $1
 log_create=Criada tarefa Cron para $1
@@ -132,21 +139,26 @@ log_move=Tarefa Cron para $1 movida
 log_crons_delete=Foram removidas $1 tarefas Cron
 log_crons_disable=Foram desabilitadas $1 tarefas Cron
 log_crons_enable=Foram habilitadas $1 tarefas Cron
+
 ecopy=Um erro foi detectado na nova configuração Cron: $1 $2
+
 when_min=a cada minuto
 when_hour=a cada hora, a $1 minutos
 when_day=todo dia, às $2:$1
 when_month=todo dia $3 do mês, às $2:$1
 when_weekday=a cada $3, às $2:$1
 when_cron=na hora do cron $1
+
 ucwhen_min=A cada minuto
 ucwhen_hour=A cada hora, a $1 minutos
 ucwhen_day=Todo dia, às $2:$1
 ucwhen_month=Todo dia $3 do mês, às $2:$1
 ucwhen_weekday=A cada $3, às $2:$1
 ucwhen_cron=Na hora cron $1
+
 move_err=Erro ao mover tarefa Cron
 move_etype=Esta tarefa não pode ser movida
+
 kill_err=Falha ao interromper tarefa Cron
 kill_ecannot=Você não tem permissão para interromper esta tarefa
 kill_egone=Inativo
@@ -155,10 +167,12 @@ kill_title=Interromper Tarefa Cron
 kill_rusure=Você tem certeza de que quer interromper o processo $1, cujo PID é $2?
 kill_rusure2=Você tem certeza de que quer interromper o processo $1, cujo PID é $2, e todos os seus subprocessos?
 kill_ok=Sim, interromper o processo
+
 range_all=Executar em qualquer data
 range_start=Só executar de $1
 range_end=até $1
 range_estart=Data de início de execução inválida ou não preenchida
 range_eend=Data de término de execução inválida ou não preenchida
+
 delete_err=Erro ao remover tarefas Cron
 delete_enone=Nenhuma opção selecionada

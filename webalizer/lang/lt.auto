@@ -26,6 +26,7 @@ index_when=Taip, $1
 index_webalizer=Webalizer
 index_enable=Tvarkaraštis pasirinktas
 index_disable=Pasirinktas ne tvarkaraštis
+
 edit_title1=Pridėti žurnalo failą
 edit_title2=Redaguoti žurnalo failą
 edit_header=Žurnalo failo ataskaitos parinktys
@@ -49,12 +50,14 @@ edit_cmode0=Naudokite visuotines parinktis
 edit_cmode1=Pasirinktinės parinktys
 edit_cmode2=Kitas konfigūracijos failas ..
 edit_clear=Išvalyti žurnalo failą (-us) po suplanuotos ataskaitos?
+
 gen_title=Sukurti ataskaitą
 gen_header=Veikia „Webalizer“ ataskaitai generuoti iš $1.
 gen_done=.. padaryta
 gen_failed=.. Webalizer nepavyko! Norėdami gauti daugiau informacijos, žiūrėkite aukščiau pateiktą išvestį.
 gen_nothing=.. „Webalizer“ baigta, tačiau ataskaita nesudaryta. Norėdami gauti daugiau informacijos, žiūrėkite aukščiau pateiktą išvestį.
 gen_view=Žiūrėti užpildytą ataskaitą.
+
 save_err=Nepavyko išsaugoti žurnalo failo
 save_efile=Žurnalo failas neįvestas arba jo nėra
 save_ecfile=Nėra kito konfigūracijos failo arba jo nėra
@@ -64,12 +67,14 @@ save_ewuser=Neegzistuoja joks „Unix“ vartotojas, vadinamas $1
 save_ehost=Trūksta arba netinkamas svetainės pagrindinio kompiuterio vardas
 save_etitle=Trūksta ataskaitos pavadinimo
 save_ecannot=Jums leidžiama generuoti ataskaitas tik žurnalams, esantiems $1 
+
 view_epath=Netinkamas PATH_INFO
 view_efile=Netinkamas ataskaitos failo vardas
 view_elog=Netinkamas žurnalo failas
 view_ecannot=Jums neleidžiama žiūrėti šios ataskaitos
 view_eopen=Nepavyko atidaryti ataskaitos failo
 view_title=Peržiūrėti ataskaitą
+
 global_title=„Global Webalizer“ parinktys
 global_title2=„Webalizer“ ataskaitos parinktys
 global_for=Dėl logfile $1 
@@ -130,6 +135,7 @@ global_includesite=Klientai neignoruoti
 global_includereferrer=Referarai neignoruoti
 global_includeuser=Vartotojai neignoruoti
 global_includeagent=Naršyklės neignoruoti
+
 global_err=Nepavyko išsaugoti „Webalizer“ parinkčių
 global_ereport=Trūksta ataskaitos pavadinimo priešdėlio
 global_ehost=Trūksta arba netinkamas pagrindinio kompiuterio vardas
@@ -139,6 +145,7 @@ global_etable=Trūksta arba netinkamas „$1“ lentelės dydis
 global_ehistory=Trūksta arba netinkamas istorijos failo vardas
 global_ecurrent=Trūksta arba netinkamas prieinamas failo vardas
 global_ecache=Trūksta arba netinkamas DNS talpyklos failo vardas
+
 log_create_log=Sukurtos ataskaitos apie $1 
 log_modify_log=Modifikuota $1 ataskaita
 log_delete_log=Panaikinta $1 ataskaitos
@@ -147,6 +154,7 @@ log_global=Modifikuotos visuotinės „Webalizer“ parinktys
 log_global2=Modifikuotos $1 „Webalizer“ parinktys
 log_enable_logs=Suplanuotos ataskaitos apie $1 žurnalus
 log_disable_logs=Iš anksto suplanuotos ataskaitos apie $1 žurnalus
+
 acl_view=Ar gali peržiūrėti tik esamas ataskaitas?
 acl_global=Ar galite redaguoti visuotines „webalizer“ parinktis?
 acl_dir=Žiūrėti ir redaguoti tik žurnale esančias ataskaitas

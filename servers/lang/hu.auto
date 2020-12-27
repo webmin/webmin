@@ -14,6 +14,7 @@ index_auto=Automatikus kiszolgálók keresése
 index_automsg=Kattintson erre a gombra a hálózaton belüli új Webmin kiszolgálók automatikus időszakos felfedezésének beállításához.
 index_search=Megjelenítő kiszolgálók megjelenítése:
 index_ok=Keresés
+
 edit_realhost=Valódi hostnév
 edit_portnone=Nincs beállítva
 edit_checkssl=Ellenőrizze a távoli SSL tanúsítványt?
@@ -37,11 +38,13 @@ edit_baduser=A bejelentkezés elutasítva
 edit_invalid=A felhasználó nem tudja megtenni az RPC-t
 edit_version=$1 Webmin futtatása
 edit_same=Csak munkamenet-hitelesítési módban használható, és ha a jelszót a Webmin programok rendelkezésére bocsátják.
+
 save_ehost2=A gazdagép nem létezik
 save_eport2=Portot kell megadni, ha a bejelentkezési kapcsolat típusa van kiválasztva
 save_egroup=Hiányzik a csoport neve
 save_elogin=Érvénytelen bejelentkezési név vagy jelszó a hosthoz
 save_egroup2=Érvénytelen az új csoportnév
+
 find_but=Új szervert talált a következő helyen: $1, de a hitelesítés sikertelen : $2 
 find_already2=Az ismert szerver gazdagépet találta a (z) $1 oldalon
 find_skip=A kiszolgáló figyelmen kívül hagyása $1 -en
@@ -50,11 +53,15 @@ find_ecannot=Nem szabad kiszolgálókat keresni
 find_scanning=A (z) $1 hálózatban lévő szerverek keresése.
 find_broading=Broadcasting a (z) $1 címen lévő szerverek számára.
 find_eport=Hiányzó vagy érvénytelen portszám
+
 log_deletes=Törölt $1 szerver
+
 link_ecannot=Ez a szerver nem használható
 link_essl=Nincs telepítve a perl Net::SSLeay könyvtár
 link_eautologin=Érvénytelen bejelentkezési név vagy jelszó a (z) $1 számára. <a href='$2'>Kattintson ide</a> újbóli próbálkozáshoz.
+
 lib_other=Egyéb
+
 acl_edit=Szerkeszthetjük a szervereket?
 acl_find=Megtalálhat szervereket?
 acl_servers=Használhat szervereket
@@ -66,6 +73,7 @@ acl_forcefast=Kényszeríti a gyors RPC módot alapértelmezettre?
 acl_forcetype=Kényszeríti az operációs rendszer típusát alapértelmezésként?
 acl_forcelink=A bejelentkezés típusát kényszeríti alapértelmezésre?
 acl_links=Csatlakozhat a szerverekhez?
+
 login_title=Bejelentkezés a szerverre
 login_desc=A $1 Webmin szerverre történő bejelentkezéshez megadnia kell egy felhasználónevet és jelszót.
 login_header=Webmin hitelesítés
@@ -73,13 +81,16 @@ login_user=Felhasználónév
 login_pass=Jelszó
 login_login=Belépés
 login_esame=A kiszolgálóval azonos bejelentkezés használatát csak akkor lehet használni, ha nincs munkamenet-hitelesítési módban, és ha a jelszót elérhetővé teszik a Webmin programok.
+
 this_server=ezt a szervert
+
 delete_err=A kiszolgálók törlése nem sikerült
 delete_enone=Egy sincs kiválasztva
 delete_ecannot=Nem szabad kiszolgálókat törölni
 delete_title=Szerverek törlése
 delete_rusure=Biztos benne, hogy el akarja távolítani a kiválasztott $1 kiszolgálót?
 delete_confirm=Törlés most
+
 auto_title=Automatikus kiszolgálók keresése
 auto_header=Automatikus szerver regisztrációs lehetőségek
 auto_sched=Új szervereket keres?
@@ -105,8 +116,10 @@ auto_smtp=Küldés SMTP szerveren keresztül
 auto_self=Ez a rendszer
 auto_esmtp=Hiányzó vagy érvénytelen SMTP szerver
 auto_findself=Regisztrálja ezt a rendszert is?
+
 config_deftype=Alapértelmezett rendszer típusa
 config_typeauto=Automatikus
+
 email_regsubject=$1 rendszer regisztrálva
 email_reg=A $1 rendszert automatikusan regisztrálták.
 email_unregsubject=$1 rendszer nincs regisztrálva

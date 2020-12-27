@@ -43,8 +43,10 @@ index_natnone=尚未定义网络地址转换规则。
 index_nataction=NAT模式
 index_natfrom=匹配的数据包
 index_natto=翻译
+
 dir_in=传入
 dir_out=外向
+
 action_pass=<font color=＃00aa00>通过</font>
 action_block=<font color=＃ff0000>阻止</font>
 action_skip=跳跃
@@ -57,6 +59,7 @@ action_map=制图
 action_rdr=重新导向
 action_bimap=双向映射
 action_map-block=块映射
+
 laction_pass=<font color=＃00aa00>通行证包</font>
 laction_block=<font color=＃ff0000>带有ICMP代码的封包</font>
 laction_log=日志包，级别
@@ -65,6 +68,7 @@ laction_skip=跳过下一个规则
 laction_auth=用户空间授权
 laction_preauth=检查以前的授权
 laction_call=调用内核函数
+
 edit_title1=建立规则
 edit_title2=编辑规则
 edit_header1=规则动作
@@ -130,6 +134,7 @@ edit_icmp=ICMP类型
 edit_icmpany=&lt;任何类型&gt;
 edit_icmpcode=和代码
 edit_codeany=&lt;任何代码&gt;
+
 save_err=保存规则失败
 save_ehostfrom=源主机名缺失或无效
 save_ehostto=目标主机名缺失或无效
@@ -158,11 +163,13 @@ save_eto=缺少或无效的接口继续发送
 save_etoip=要发送的IP地址无效
 save_ereplyto=缺少或无效的界面以进行回复
 save_ereplytoip=无效的IP位址回覆
+
 apply_err=应用配置失败
 apply_remote=来自 $1的错误： $2
 unapply_err=还原配置失败
 unapply_ein=无法获取输入规则
 unapply_eout=无法获取输出规则
+
 desc_if=如果是 $1
 desc_and=和
 desc_always=总是
@@ -196,6 +203,7 @@ desc_rdr=IP地址 $1端口 $2
 desc_dport1=端口为 $1
 desc_dport2=端口在 $1和 $2之间
 desc_nattoiface=接口地址
+
 log_create_rule=已创建 $1规则
 log_delete_rule=已删除 $1规则
 log_modify_rule=修改的 $1规则
@@ -224,6 +232,7 @@ log_add_host=添加了群集服务器 $1
 log_add_group=从组 $1添加了群集服务器
 log_delete_host=删除了群集服务器 $1
 log_delete_group=删除了 $1个群集服务器
+
 cluster_title=群集防火墙服务器
 cluster_none=尚未将任何服务器添加到防火墙群集。
 cluster_host=主机名
@@ -234,6 +243,7 @@ cluster_gadd=在组中添加服务器
 cluster_need=您必须先在Webmin服务器索引模块中添加具有登录名和密码的服务器，然后才能在此处对其进行管理。
 cluster_return=集群服务器
 cluster_delete=删除选定
+
 add_title=添加服务器
 add_msg=正在添加 $1 ..
 add_gmsg=在组 $1中添加服务器 ..
@@ -242,6 +252,7 @@ add_gerr=添加群组失败
 add_echeck=服务器 $1没有IPFilter防火墙模块
 add_emissing=服务器 $1缺少防火墙命令 $2
 add_ok=添加了 $1，其中有 $2有效的防火墙规则。
+
 nat_title1=创建NAT规则
 nat_title2=编辑NAT规则
 nat_action=NAT模式
@@ -300,4 +311,5 @@ nat_edport2=末尾原始端口丢失或无效
 net_erdrip=“$1”不是有效的目标IP地址
 nat_erdrips=没有输入目标IP
 nat_erdrport=目标端口丢失或无效
+
 boot_esmf=SMF服务 $1不存在或处于未知状态

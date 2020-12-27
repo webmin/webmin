@@ -25,6 +25,7 @@ index_echeckupdate=Sistem za posodobitev ni bil zaznan!
 index_filter=Filtriranje paketov
 index_filterclear=Počisti filter
 index_filtered=Prikaz <tt>$1</tt> paketov iz <tt>$2</tt>
+
 search_title=Iskanje paketov
 search_nomatch=Noben paket se ne ujema z $1 
 search_none=Noben
@@ -37,6 +38,7 @@ search_esearch=Niste vnesli ničesar za iskanje!
 search_delete=Odstranite izbrane pakete
 search_selall=Izberi vse
 search_invert=Obrni izbor
+
 edit_title=Uredi paket
 edit_details=Podrobnosti o paketu
 edit_desc=Opis
@@ -53,6 +55,7 @@ edit_uninst=Odstrani
 edit_uninstdesc=Odstranite ta paket iz svojega sistema.
 edit_return=podrobnosti o paketu
 edit_egone=Paket ni več nameščen
+
 list_title=Paketne datoteke
 list_files=Datoteke za paket $1 
 list_path=Pot
@@ -64,6 +67,7 @@ list_status=Stanje
 list_ok=v redu
 list_view=(Pogled)
 list_eview= $1 : $2 ni bilo mogoče odpreti
+
 delete_err=Paketa $1 ni bilo mogoče izbrisati
 delete_epack=Paket $1 ne obstaja
 delete_title=Izbriši paket
@@ -75,6 +79,7 @@ delete_noscripts=Ali želite preskočiti skripte za odstranitev?
 delete_efile=Neveljavna temp datoteka za brisanje
 delete_purge=Očistite konfiguracijske datoteke?
 delete_depstoo=Odstranjene tudi neuporabljene odvisnosti?
+
 file_title=Podatki o datoteki
 file_notfound=Podatki o $1 niso na voljo
 file_path=Pot
@@ -88,6 +93,7 @@ file_pack=Paket
 file_class=Razred
 file_desc=Opis
 file_none=Noben
+
 install_err=Paketa ni bilo mogoče namestiti
 install_elocal=Lokalna datoteka ni dana
 install_elocal2='$1' ne obstaja
@@ -101,6 +107,7 @@ install_title=Namestite paket
 install_header=Namestite paket
 install_packs=Paketi, ki jih je treba namestiti
 install_ok=Namestite
+
 do_err=Namestitve paketa $1 ni bilo mogoče
 do_title=Namestite paket
 do_efailed=Namestitev ni uspela : $1 
@@ -117,10 +124,12 @@ do_arch=Arhitektura
 do_inst=Nameščeno
 do_none=Noben
 do_files=Paketne datoteke
+
 pkgadd_root=Korenski imenik
 pkgadd_eroot=Korenski imenik '$1' ne obstaja
 pkgadd_unknown=Neznano
 pkgadd_manager=Sistem V Upravitelj paketov
+
 rpm_upgrade=Nadgraditi paket?
 rpm_replacepkgs=Prepisati paket?
 rpm_nodeps=Prezreti odvisnosti?
@@ -138,10 +147,12 @@ rpm_find=Iskanje rpmfind.net ..
 rpm_findrpm=Ime datoteke paketa
 rpm_finddistro=Distribucija
 rpm_finddesc=Opis
+
 bsd_unknown=Neznano
 bsd_scripts=Izvajate skripte pred in po namestitvi?
 bsd_force=Prisiliti namestitev, če manjkajo predpogoji?
 bsd_manager=$1 Upravitelj paketov
+
 slack_unclass=Drugo
 slack_unknown=Neznano
 slack_missing=Manjka
@@ -149,12 +160,14 @@ slack_root=Korenski imenik
 slack_eroot=Manjkajoči ali neveljavni korenski imenik
 slack_manager=Upravitelj paketov slackware
 slack_edir=Manjka imenik paketov Slackware $1 
+
 debian_unknown=Neznano
 debian_depends=Prezreti težave z odvisnostjo?
 debian_conflicts=Prezreti konfliktne pakete?
 debian_overwrite=Ali želite prepisati datoteke iz drugih paketov?
 debian_downgrade=Zamenjati novejši paket s starim?
 debian_manager=Debian DPKG
+
 log_install_package=Nameščen paket $1 
 log_install_apt_l=Nameščeni paketi $1 od APT
 log_install_apt=Nameščeni paketi $2 iz APT
@@ -173,6 +186,7 @@ log_upgrade_yum_l=Nadgrajeni paketi $1 od YUM
 log_upgrade_yum=Nadgrajeni paketi $2 iz YUM
 log_check_rhn_l=Nadgrajeni paketi $1 iz mreže Redhat
 log_check_rhn=Nadgrajeni paketi $2 iz omrežja Redhat
+
 rhn_input=Paket iz mreže Redhat
 rhn_find=Iskanje RHN ..
 rhn_install=Namestitev paketov z ukazom $1 ..
@@ -200,6 +214,7 @@ rhn_eproxy=Manjkajoči ali neveljavni proxy strežnik
 rhn_skip=Preskočite ujemanje paketov
 rhn_nonefound=Paket za posodobitev ni na voljo.
 rhn_name=Redhat Network
+
 apt_input=Paket od APT
 apt_install=Namestitev paketov z ukazom $1 ..
 apt_ok=.. namestite dokončano.
@@ -229,6 +244,7 @@ apt_repo_url=Osnovni URL skladišča
 apt_repo_path=Komponente distribucijske poti
 apt_repo_eurl=Manjkajoči ali neveljaven osnovni URL
 apt_repo_epath=Manjka pot distribucije
+
 yum_input=Paket od YUM
 yum_install=Namestitev paketov z ukazom $1 ..
 yum_ok=.. namestite dokončano.
@@ -259,6 +275,7 @@ yum_repo_ename=Manjka ime skladišča
 yum_repo_eurl=Manjkajoči ali neveljaven URL skladišča
 yum_repo_egpg=Datoteka cert GPG manjka ali ne obstaja
 yum_repo_efile=Datoteka skladišča že obstaja!
+
 urpmi_name=URPMI
 urpmi_input=Paket iz URPMI
 urpmi_find=Prebrskaj URPMI ..
@@ -273,6 +290,7 @@ urpmi_upgradeok=.. dokončana.
 urpmi_install=Namestitev paketov z ukazom $1 ..
 urpmi_ok=.. namestite dokončano.
 urpmi_failed=.. namestitev ni uspela!
+
 rpm_missing=Manjka
 rpm_checkfail=$1 check ni uspel
 rpm_md5=MD5
@@ -284,6 +302,7 @@ rpm_user=lastništvo uporabnika
 rpm_perm=dovoljenja
 rpm_group=lastništvo skupine
 rpm_erpm=RPM $1 ni bilo mogoče najti : $2 
+
 soft_reg=Navadna datoteka
 soft_dir=Imenik
 soft_spec=Posebna datoteka
@@ -295,6 +314,7 @@ soft_euncompress=Datoteka je stisnjena, toda ukaza <tt>unpress</tt> v vašem sis
 soft_euncmsg=Kompresije datoteke ni bilo mogoče : $1 
 soft_egzip=Datoteka je gziped, vendar ukaza gzip v vašem sistemu ni bilo mogoče najti.
 soft_egzmsg=Datoteke gunzip ni bilo mogoče : $1 
+
 aix_unknown=Neznano
 aix_device=INPUT naprava / imenik programske opreme
 aix_software=PROGRAMSKA OPREMA za namestitev
@@ -312,6 +332,7 @@ aix_accept=SPREJETE nove licenčne pogodbe?
 aix_license=Predogled novih LICENSE sporazumov?
 aix_clean=Napaka namestitve čiščenja?
 aix_manager=AIX Package Manager
+
 emerge_input=Iz Portage skladišča
 emerge_find=Iskanje ..
 emerge_install=Namestitev paketa z ukazom $1 ..
@@ -327,6 +348,7 @@ emerge_noreplace=Zamenjati obstoječe pakete?
 emerge_onlydeps=Namestite samo odvisnosti?
 emerge_title=Portage za iskanje
 emerge_name=Portage
+
 cygwin_fmissing=Datoteka manjka
 cygwin_lmissing=Datoteka, do katere točke povezave manjkajo
 cygwin_estat=Ni uspelo stat datoteke: $1 
@@ -336,6 +358,7 @@ cygwin_badpostscript=Opozorilo: zdi se, da ta skript ni bil zagnan
 cygwin_pkgexists=Paket $1 že obstaja.
 cygwin_warnuse=Opozorilo: To ni uradni vmesnik za upravljanje programske opreme Cygwin. Uporabljajte na lastno odgovornost.
 cygwin_edb=Manjka baza podatkov paketov Cygwin $1 
+
 deletes_err=Paket ni bilo mogoče izbrisati
 deletes_enone=Izbran ni noben paket
 deletes_title=Brisanje paketov
@@ -346,6 +369,7 @@ deletes_failed2=Odstranjevanje ni uspelo : $1
 deletes_success2=.. deinstalacija dokončana.
 deletes_rusure=Ali ste prepričani, da želite odstraniti pakete $1 ?
 deletes_ok=Izbrišite jih vse
+
 csw_input=Paket od CSW
 csw_install=Namestitev paketov z ukazom $1 ..
 csw_ok=.. namestite dokončano.
@@ -360,20 +384,24 @@ csw_name=CSW
 csw_form=Nadgradite pakete
 csw_upgrade=Nadgradite vse nameščene pakete
 csw_updatedesc=Nadgradnja vseh nameščenih paketov z ukazom $1 ..
+
 missing_msg=Paket $1 lahko Webmin samodejno namesti s pomočjo $2.
 missing_now=Namestiti zdaj
+
 find_title=Poiščite paket
 find_search=Poiščite pakete, ki se ujemajo:
 find_name=Ime
 find_version=Različica
 find_desc=Opis
 find_none=Paketov, ki bi ustrezali iskanju, ni bilo mogoče najti.
+
 msi_users=Naj bo nova aplikacija na voljo
 msi_users0=Nihče
 msi_users1=Trenutni uporabnik
 msi_users2=Vsi uporabniki
 msi_missing=Ne obstaja
 msi_size=Napačna velikost
+
 hpux_create_target_path=Ustvari ciljno pot?
 hpux_mount_all_filesystems=Priklopite vse datotečne sisteme?
 hpux_reinstall=Znova namestite?
@@ -389,6 +417,7 @@ hpux_enforce_dependencies=Izboljšati odvisnosti?
 hpux_enforce_scripts=Izvajati skripte?
 hpux_enforce_dsa=Izvajati analizo prostora na disku?
 hpux_root=Korenski imenik
+
 ports_install=Namestitev vrat FreeBSD $1 ..
 ports_failed=.. nekatera vrata niso uspela
 ports_ok=.. namestite dokončano
@@ -399,18 +428,22 @@ ports_form=Posodobite bazo portov
 ports_apply=Prenesite najnovejši posnetek
 ports_upgrade=Nalaganje posnetkov posnetek
 ports_running=Teče ukaz $1 ..
+
 pkg_install=Namestitev paketov FreeBSD $1 ..
 pkg_failed=.. nekaj paketov ni uspelo
 pkg_ok=.. namestite dokončano
 pkg_find=Išči pkgng
 pkg_input=Paket iz pkgng
+
 pkgsrc_install=Namestitev paketov pkgsrc $1 ..
 pkgsrc_failed=.. nekaj paketov ni uspelo
 pkgsrc_ok=.. namestite dokončano
 pkgsrc_find=Išči pkgng
 pkgsrc_input=Paket iz pkgsrc-a
+
 log_IPKG_update=Posodobljena baza podatkov IPKG
 log_IPKG_upgrade=Nadgrajeni nameščeni paketi IPKG
+
 IPKG_name=IPKG
 IPKG_input=Paket iz IPKG
 IPKG_find=Brskaj po IPKG ..

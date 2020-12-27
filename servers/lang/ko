@@ -19,6 +19,7 @@ index_defport=Webmin 포트
 index_delete=선택된 서버 삭제
 index_auto=자동으로 서버 찾기
 index_automsg=네트워크에서 새로운 Webmin 서버를 자동으로 주기적으로 탐지하는 것을 설정 하려면 이 버튼을 클릭 하십시오.
+
 edit_title=서버 편집
 create_title=서버 등록
 edit_details=서버 세부 정보
@@ -52,6 +53,7 @@ edit_baduser=로그인 거부
 edit_invalid=유저가 RPC 를 할 수 없습니다.
 edit_version=Webmin $1 이 실행중입니다.
 edit_same=Webmin 프로그램에서 가능한 암호를 만들었을 경우에는 세션 인증 모드가 가능하지 않습니다.
+
 save_err=서버를 저장하지 못했습니다
 save_ehost=없거나 잘못된 호스트 이름
 save_ehost2=호스트가 존재하지 않습니다.
@@ -61,6 +63,7 @@ save_epass=없는 암호
 save_egroup=그룹이름 없음
 save_elogin=호스트에 유효하지 않은 로그인 또는 암호
 save_egroup2=유효하지 않은 새 그룹 이름
+
 find_title=서버 찾기
 find_new=$1에서 새 서버를 찾았습니다
 find_but=$1 에서 새 서버를 발견했습니다만 인증에 실패했습니다: $2
@@ -74,16 +77,20 @@ find_ecannot=서버를 찾을 수 없습니다
 find_scanning=$1 네트워크에서 Webmin 서버들을 탐지 합니다 ..
 find_broading=$1 주소들에 대한 브로드 캐스트 탐지 ..
 find_eport=포트 숫자가 없거나 유효하지 않습니다.
+
 log_modify=서버 $1 수정됨
 log_create=서버 $1 등록됨
 log_delete=서버 $1 삭제됨
 log_find=서버 $1 검색됨
 log_deletes=$1 서버 삭제
+
 link_elogin=$2(으)로서 $1에 로그인하지 못했습니다
 link_ecannot=이 서버를 사용할 수 없습니다
 link_essl=perl Net::SSLeay 라이브러리가 설치되어 있지 않습니다
 link_eautologin=$1 에 대한 유효하지 않은 로그인 또는 암호. 다시 시도하려면 <a href='$2'>여기를 클릭</a> 하십시오
+
 lib_other=그 외
+
 acl_edit=서버를 편집할 수 있습니다
 acl_find=서버를 찾을 수 있습니다
 acl_servers=서버를 사용할 수 있습니다
@@ -95,6 +102,7 @@ acl_forcefast=기본으로 빠른 RPC 모드를 사용하겠습니까?
 acl_forcetype=기본으로 OS 타입을
 acl_forcelink=기본으로 로그인을 사용하겠습니까?
 acl_links=서버에 연결을 하겠습니까?
+
 login_title=서버에 로그인
 login_desc=Webmin 서버 $1 에 로그인을 하기 위해서는 유저 이름과 암호를 제공해야 합니다.
 login_header=Webmin 인증
@@ -102,10 +110,13 @@ login_user=유저이름
 login_pass=암호
 login_login=로그인
 login_esame=이 서버에 같은 로그인으로 사용하기 위한 옵션은 세션 인증 모드가 아니고, Webmin 프로그램에 암호가 가능하도록 설정이 되어 있을때 사용 되어진다.
+
 this_server=이 서버
+
 delete_err=서버 삭제 실패
 delete_enone=선택된 것이 없음
 delete_ecannot=서버 삭제가 허가되지 않습니다.
+
 auto_title=자동으로 서버 찾기
 auto_header=자동 서버 등록 옵션
 auto_sched=새 서버 검사
@@ -131,8 +142,10 @@ auto_smtp=SMTP 서버를 통해 전송
 auto_self=이 시스템
 auto_esmtp=SMTP 서버가 지정되지 않았거나 유효하지 않습니다.
 auto_findself=이 시스템도 등록하겠습니까?
+
 config_deftype=기본 시스템 타입
 config_typeauto=자동
+
 email_regsubject=시스템 $1 등록
 email_reg=시스템 $1 이 자동으로 등록이 되었습니다.
 email_unregsubject=시스템 $1 등록 제거

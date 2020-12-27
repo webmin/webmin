@@ -16,6 +16,7 @@ index_cancel=בטל חיבור
 index_canceldesc=לקוח ADSL מנסה כעת ליצור חיבור. לחץ על כפתור זה כדי לבטל את הניסיון עם הפקודה $1.
 index_cdemand=בטל לפי דרישה
 index_cdemanddesc=לקוח ADSL ממתין כעת לבקשת חיבור לפי דרישה. לחץ על כפתור זה כדי לעצור אותו באמצעות הסימן $1.
+
 index_header=אפשרויות תצורת לקוח ADSL
 index_desc=ההגדרות שלהלן חלות על כל חיבור ADSL חדש שהמערכת שלך התחילה. אם תשנה אותם, יש לכבות את החיבור ולהתחיל מחדש כדי שהשינויים ייכנסו לתוקף.
 index_eth=ממשק אתרנט
@@ -36,11 +37,13 @@ index_fw_standalone=למארח יחיד
 index_fw_masquerade=לשער NAT
 index_connect=זמן לנסות להתחבר
 index_forever=לנצח
+
 start_err=הפעלת חיבור ADSL נכשלה
 start_title=הפעלת ADSL
 start_ip=נוצר חיבור ADSL עם כתובת IP $1.
 start_demand=מכיוון שמצב חיבור לפי דרישה מופעל, חיבור ה- ADSL שלך יופעל רק בעת הצורך.
 start_bg=חיבור ADSL לא הופעל תוך 20 שניות. לקוח ADSL ימשיך לנסות להתחבר ברקע עד להצליח.
+
 save_err=שמירת תצורת ADSL נכשלה
 save_eeth=ממשק אתרנט חסר או לא חוקי
 save_etimeout=פסק זמן חסר או לא תקף לפי דרישה
@@ -49,10 +52,12 @@ save_econnect=פסק זמן לחיבור חסר או לא תקף
 save_emss=גודל מנות מקסימלי חסר או לא חוקי
 save_title=שמור תצורה
 save_desc=תצורת לקוח ADSL שלך נשמרה בהצלחה, אך לא תשמש אותה לפני שתתחבר מחדש.
+
 stop_err=כיבוי חיבור ADSL
 stop_title=כבה את ADSL
 stop_ok=חיבור ADSL שלך הושבת בהצלחה.
 stop_failed=חיבור ADSL שלך עדיין פעיל מסיבה כלשהי!
+
 log_save=תצורת לקוח שמורה
 log_stop=כבה את ADSL
 log_start=הפעל את ADSL

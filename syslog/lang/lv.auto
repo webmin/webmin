@@ -24,8 +24,10 @@ all=Visi
 index_view=Skatīt ..
 index_viewfile=Skatīt žurnālfailu:
 index_viewok=Skats
+
 restart_ekill=Neizdevās signalizēt par sistēmas žurnāla procesu $1 : $2 
 restart_ecannot=Jums nav atļauts restartēt syslog
+
 start_ecannot=Jums nav atļauts sākt syslog
 edit_title=Rediģēt sistēmas žurnālu
 create_title=Pievienot sistēmas žurnālu
@@ -56,11 +58,13 @@ edit_tag=Tikai programmai
 edit_return=žurnāla informācija
 edit_ecannot=Jums nav atļauts rediģēt žurnāla iestatījumus
 edit_ecannot2=Jums nav atļauts rediģēt šo žurnālu
+
 view_title=Skatīt žurnālfailu
 view_header=$2 pēdējās $1 rindas
 view_empty=Žurnāla fails ir tukšs
 view_refresh=atjaunot
 view_filter=Rādīt tikai tās līnijas ar tekstu $1 
+
 save_err=Neizdevās saglabāt žurnālu
 save_efile='$1' nav derīgs faila nosaukums : $2 
 save_epipe='$1' nav derīgs nosauktais pīpiņš
@@ -80,11 +84,13 @@ save_ecannot5=Jums nav atļauts modificēt šo žurnālu
 save_ecannot6=Jums nav atļauts skatīt patvaļīgus žurnālus
 save_ecannot7=Jums nav atļauts skatīt šo papildu žurnālu
 save_emissing=Trūkst apskatāma žurnālfaila
+
 log_modify=Modificēts žurnāls uz $1 
 log_create=Pievienots žurnāls $1 
 log_delete=Izdzēsts žurnāls uz $1 
 log_apply=Lietotās izmaiņas
 log_start=Sākts reģistrēšanas serveris
+
 desc_sysmesg=Sistēmas ziņojumi
 desc_mail=Pasta žurnāls
 desc_auth=Autentifikācijas žurnāls
@@ -93,6 +99,7 @@ desc_news=NNTP ziņu žurnāls
 desc_uucp=UUCP žurnāls
 desc_debug=Ziņojumu atkļūdošana
 desc_cron=Krona darba žurnāls
+
 acl_noedit=Vai var apskatīt tikai žurnālus?
 acl_any=Vai jebkuru failu var skatīt kā žurnālu?
 acl_logs=Var apskatīt un konfigurēt žurnālfailus

@@ -16,6 +16,7 @@ index_setupdesc=Cơ sở dữ liệu của máy chủ LDAP của bạn chưa ch�
 index_setup=Tạo Root DN
 index_permsdesc=Thư mục dữ liệu máy chủ LDAP $1 chứa các tệp không thuộc quyền sở hữu của người dùng chính xác $2, điều đó có nghĩa là không có khả năng khởi động đúng cách. Tuy nhiên, Webmin có thể khắc phục điều này cho bạn bằng cách nhấp vào nút bên dưới.
 index_perms=Sửa quyền sở hữu
+
 connect_eserver=Máy chủ LDAP $1 không tồn tại
 connect_euser=Không có người dùng để đăng nhập như đã được cấu hình
 connect_epass=Không có mật khẩu để đăng nhập đã được cấu hình
@@ -28,6 +29,7 @@ connect_eldap=Không thể kết nối với máy chủ LDAP $1 trên cổng $2
 connect_essl=Không thể bắt đầu mã hóa TLS với máy chủ LDAP $1 : $2 
 connect_elogin=Không thể đăng nhập vào máy chủ LDAP $1 dưới dạng $2 : $3 
 connect_cpan=Bạn có thể cài đặt <tt>$1</tt> Perl mô-đun <a href='$2'>tự động</a> từ CPAN.
+
 slapd_title=Cấu hình máy chủ OpenLDAP
 ldif_title=Cấu hình máy chủ OpenLDAP
 slapd_header=Tùy chọn máy chủ LDAP toàn cầu
@@ -76,6 +78,7 @@ slapd_protos=Kết nối LDAP để chấp nhận
 slapd_ldap=LDAP qua mạng
 slapd_ldaps=LDAP qua SSL
 slapd_ldapi=Tệp ổ cắm Unix
+
 schema_title=Quản lý lược đồ
 schema_file=Tên
 schema_desc=Sự miêu tả
@@ -93,6 +96,7 @@ schema_edesc=Trang này cho phép bạn chỉnh sửa thủ công tệp lược 
 schema_return=danh sách lược đồ
 schema_emove=Không thể tìm thấy tệp lược đồ để di chuyển!
 schema_ecannot=Bạn không được phép quản lý lược đồ LDAP
+
 acl_title=Kiểm soát truy cập LDAP
 acl_ecannot=Bạn không được phép định cấu hình kiểm soát truy cập LDAP
 acl_what=Các đối tượng
@@ -103,6 +107,7 @@ acl_none=Không có quy tắc kiểm soát truy cập đã được xác định
 acl_delete=Xóa các quy tắc được chọn
 acl_add=Thêm một quy tắc kiểm soát truy cập mới.
 acl_return=quy tắc kiểm soát truy cập
+
 browser_title=Duyệt cơ sở dữ liệu
 browser_econn=Trình duyệt LDAP không thể được sử dụng : $1 
 browser_ecannot=Bạn không được phép duyệt cơ sở dữ liệu LDAP
@@ -136,24 +141,30 @@ browser_nomatch=Không có đối tượng phù hợp với tìm kiếm của b�
 browser_search=Tìm đối tượng phù hợp :
 browser_search2=Hiển thị các đối tượng phù hợp :
 browser_sok=Tìm kiếm
+
 save_err=Không thể thay đổi thuộc tính
 save_ebase=Không thể tìm nạp đối tượng $1 từ cơ sở dữ liệu
 save_emodify=Sửa đổi LDAP của $2 trong $1 không thành công : $3 
 save_enone=Không có giá trị nào được nhập
+
 add_err=Không thể thêm thuộc tính
 add_eadd=Tên thuộc tính bị thiếu hoặc không hợp lệ
 add_evalue=Thiếu giá trị
 add_emodify=LDAP thêm $2 vào $1 không thành công : $3 
+
 delete_err=Không thể xóa thuộc tính
 delete_enone=Không được chọn
 delete_emodify=Xóa LDAP của $2 từ $1 không thành công : $3 
+
 sdelete_err=Không thể xóa các đối tượng
 sdelete_edn=Không tìm thấy đối tượng $1 
 sdelete_edel=Xóa LDAP của $1 không thành công : $2 
+
 rename_err=Không thể đổi tên đối tượng
 rename_eget=Không thể tìm thấy đối tượng có DN $1 
 rename_enew=Tên mới dường như không hợp lệ
 rename_erename=LDAP mới đến $2 từ $1 không thành công : $3 
+
 oadd_title=Tạo đối tượng
 oadd_header=Chi tiết đối tượng LDAP mới
 oadd_base=Đối tượng phụ huynh DN
@@ -170,6 +181,7 @@ oadd_eget2=Không thể kiểm tra xung đột với $1 : $2
 oadd_eclash=Một đối tượng có DN $1 đã tồn tại
 oadd_eadd=Thêm LDAP của $1 không thành công : $2 
 oadd_err=Không thể tạo đối tượng mới
+
 create_title=Tạo cây
 create_ecannot=Bạn không được phép tạo một cây mới
 create_desc=Trang này cung cấp một cách thuận tiện để tạo DN sẽ là cơ sở của một cây mới trong cơ sở dữ liệu. Nó cũng có thể tạo một ví dụ người dùng hoặc email bí danh dưới gốc cây, làm mẫu cho các đối tượng của riêng bạn.
@@ -191,18 +203,23 @@ create_done=.. làm xong
 create_doingex=Tạo đối tượng ví dụ với DN $1 ..
 create_edoingex=.. thất bại: $1. Tuy nhiên, cây vẫn có thể được sử dụng.
 create_eoc=Không thể tìm thấy lớp đối tượng phù hợp cho DN mới
+
 eunknown=Lỗi không thể nhận biết
+
 apply_err=Không thể áp dụng cấu hình
 apply_ecmd=$1 thất bại : $2 
 apply_ecannot=Bạn không được phép áp dụng cấu hình
+
 stop_err=Không thể dừng máy chủ LDAP
 stop_ecmd=$1 thất bại : $2 
 stop_egone=Không còn chạy!
 stop_ekill=Quá trình tiêu diệt không thành công : $1 
 stop_ecannot=Bạn không được phép dừng máy chủ LDAP
+
 start_err=Không thể khởi động máy chủ LDAP
 start_ecmd=$1 thất bại : $2 
 start_ecannot=Bạn không được phép khởi động máy chủ LDAP
+
 log_create_dn=Đã tạo đối tượng $1 
 log_delete_dn=Đã xóa đối tượng $1 
 log_rename_dn=Đổi tên đối tượng $1 
@@ -234,6 +251,7 @@ log_up_access=Đã chuyển lên quy tắc kiểm soát truy cập cho $1
 log_down_access=Đã chuyển xuống quy tắc kiểm soát truy cập cho $1 
 log_delete_accesses=Đã xóa quy tắc kiểm soát truy cập $1 
 log_all=tất cả các đối tượng
+
 gencert_title=Tạo chứng chỉ SSL
 gencert_header=Chi tiết chứng chỉ SSL mới
 gencert_create=Tạo chứng chỉ
@@ -245,7 +263,9 @@ gencert_dir=Danh mục
 gencert_err=Không thể tạo chứng chỉ
 gencert_edest=Thư mục đích không tồn tại
 gencert_epath=Các tệp chứng chỉ và khóa trong cấu hình máy chủ LDAP phải là đường dẫn tuyệt đối
+
 perms_err=Không thể sửa quyền sở hữu tệp
+
 acl_slapd=Có thể cấu hình máy chủ LDAP?
 acl_ldif=Có thể cấu hình máy chủ LDAP?
 acl_schema=Có thể quản lý lược đồ?
@@ -254,6 +274,7 @@ acl_browser=Có thể duyệt và chỉnh sửa cơ sở dữ liệu?
 acl_create=Có thể tạo cây mới?
 acl_start=Có thể bắt đầu và dừng máy chủ LDAP không?
 acl_apply=Có thể áp dụng thay đổi cấu hình?
+
 access_desc=$2 bằng $1 
 access_self=tự
 access_users=người dùng xác thực
@@ -273,6 +294,7 @@ access_lcompare=Đối chiếu
 access_lsearch=Tìm kiếm
 access_lread=Đọc
 access_lwrite=Viết
+
 eacl_title1=Tạo quy tắc kiểm soát truy cập
 eacl_title2=Chỉnh sửa quy tắc kiểm soát truy cập
 eacl_header=Chi tiết quy tắc kiểm soát truy cập cơ sở dữ liệu LDAP

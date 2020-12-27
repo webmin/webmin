@@ -26,22 +26,28 @@ inittab_apply=Anvend Init-konfiguration
 inittab_applymsg=Klik på denne knap for at anvende den aktuelle SysV Init-konfiguration ved at køre kommandoen <tt>telinit q</tt>. Vær opmærksom på, at eventuelle fejl i din konfiguration kan gøre systemet ubrugeligt, når denne kommando køres.
 index_delete=Slet valgte processer
 inittab_none2=Der blev ikke fundet nogen opstartsprocesser på dit system. Dette indikerer sandsynligvis, at det ikke bruger SysV init-konfigurationsfilen.
+
 edit_inittab_err=Du har ikke tilladelse til at redigere en proces
 edit_inittab_title=Rediger proces $1 
 edit_inittab_details=Process detaljer
 edit_inittab_del=Slet
 edit_inittab_save=Gemme
+
 new_inittab_err=Det er ikke tilladt at oprette en ny proces
 new_inittab_title=Ny proces
+
 save_inittab_err=Det er ikke tilladt at gemme en proces
 save_inittab_noid=Fejl, ingen navneprocesser indtastet
 save_inittab_already=Fejl, navneprocessen findes allerede
+
 log_modify=Ændret init-proces $1 
 log_rename=Omdøbt init-proces $1 til $2 
 log_create=Oprettet init-proces $1 
 log_delete=Slettet init-proces $1 
 log_apply=Anvendt konfiguration
 log_deletes=Slet $1 init processer
+
 apply_err=Kunne ikke anvende konfiguration
+
 delete_err=Kunne ikke slette processer
 delete_enone=Ingen valgt

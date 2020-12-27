@@ -11,6 +11,7 @@ index_eprog=Il server NFS non è stato trovato sul tuo sistema. Il pacchetto non
 index_delete=Elimina le condivisioni selezionate
 index_disable=Disabilita le condivisioni selezionate
 index_enable=Abilita le condivisioni selezionate
+
 edit_title=Modifica la condivisione
 create_title=Creazione di una condivisione NFS
 edit_details=Dettagli della condivisione
@@ -55,6 +56,7 @@ edit_sync1=Si
 edit_sync2=$no
 edit_sync0=$default
 edit_in=in
+
 save_err=Fallito salvataggio delle condivisioni
 save_edir=La cartella '$1' non esiste
 save_enetgroup=Netgroup inesistente o non valido
@@ -65,6 +67,7 @@ save_euids=UIDs not to trust must be a comma-separated list of numbers or ranges
 save_egids=GIDs not to trust must be a comma-separated list of numbers or ranges
 save_pfs='$1' è già condivisa come directory
 save_create_dir=Non è possibile creare la directory '$1'
+
 exports_webnfs=WebNFS clients
 exports_ngroup=Netgroup $1
 exports_net=Rete $1
@@ -72,6 +75,7 @@ exports_all=Tutti
 exports_hosts=Hosts $1
 exports_host=Host $1
 exports_gss=Rete autenticata: $1
+
 log_modify=Modificata la condivisione NFS $1
 log_modify_l=Modificata la condivisione NFS da $1 a $2
 log_delete=Cancellata la condivisione NFS $1

@@ -19,11 +19,13 @@ index_force=Indarraren egunkariaren biraketa
 index_forcedesc=Behartu erregistro fitxategi guztien berehalako biraketa, oraindik denbora ez bada ere.
 index_logrotate=Logrotate
 index_delete=Ezabatu hautatutako egunkariaren biraketak
+
 period_daily=Daily
 period_weekly=Asteroko
 period_monthly=Hileroko
 period_never=Inoiz ez
 period_bytes=byte
+
 edit_title1=Editatu log fitxategia
 edit_title2=Sortu erregistro fitxategia
 edit_header=Biratu erregistro fitxategiaren xehetasunak
@@ -62,8 +64,10 @@ edit_pre=Biraketa aurretik exekutatzeko komandoak
 edit_default=Lehenespenez ($1)
 edit_sharedscripts=Gidoiak bakarrik exekutatu fitxategi guztientzako?
 edit_now=Biratu Orain
+
 global_title=Aukera Globala
 global_header=Lehenetsitako erregistro-fitxategi guztien aukera
+
 save_err=Ezin izan da erregistroa gorde
 save_efile=Falta fitxategiaren izena edo falta da
 save_esize=Gehieneko tamaina falta edo baliogabea
@@ -81,6 +85,7 @@ save_eerrors=Helbide elektronikoa falta da akats mezuetarako
 save_epre=Biratze aurreko gidoiak ezin du <tt>endscript</tt> edo <tt>endrotate</tt> lerro bat eduki
 save_epost=Biraketa osteko scriptak ezin du <tt>endscript</tt> edo <tt>endrotate</tt> lerro bat eduki
 save_enofiles=Ez da biratzeko birik fitxategirik sartu
+
 log_modify_sched=Aldatu egin da egunkariaren biraketa Cron lana
 log_create_sched=Kronen biraketa erregistroa sortu da
 log_delete_sched=Logen biraketa ezabatu da Cron lana
@@ -89,6 +94,7 @@ log_create=Biraketa gehitu da $1 erregistrorako
 log_modify=Biraketa aldatua $1 erregistrorako
 log_delete=Biraketa ezabatu da $1 erregistrorako
 log_delete_logs=Biraketa ezabatu da $1 erregistro fitxategietarako
+
 sched_title=Erregistroaren Biraketa Egutegia
 sched_desc=Modulu hau erabiltzeko konfiguratutako biraketa erregistroa, Cron-ek $1 komandoak ordutegi arrunt batean (normalean egunero) Cron-ek exekutatu behar du.
 sched_runparts=Gaur egun, erregistroaren biraketa komandoa $1 $2 scriptetik exekutatzen ari da eta ezin da doitu.
@@ -98,10 +104,12 @@ sched_enabled=Gaituta, beheko une batzuetan ..
 sched_save=Eguneratu Cron lana
 sched_err=Huts egin du biraketa egutegia gordetzean
 sched_when=Korrika egiteko garaiak
+
 force_title=Indarraren egunkariaren biraketa
 force_doing=Erregistroko fitxategi guztien berehalako biraketa behartuta ..
 force_doingone=Eguneroko fitxategi baten berehalako biraketa behartuta ..
 force_done=.. egin.
 force_failed=.. huts egin du! Ikusi goiko irteera zergatik dagoen.
+
 delete_err=Ezin izan da erregistroak ezabatu
 delete_enone=Ez da hautatu

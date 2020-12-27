@@ -30,6 +30,7 @@ index_other_google=Google bilatzailea
 index_other_kde=KDE dokumentazioa
 index_and=Lotu guztiak
 index_or=Bat etorri
+
 search_efor=Ez da eskuzko orrialderik sartu
 search_title=Bilaketaren emaitzak
 search_desc=deskribapena
@@ -47,24 +48,32 @@ search_none=Ez da $1 bat datorren dokumentaziorik aurkitu.
 search_for=$1 erako
 search_google=Google bilaketaren emaitza
 search_doxfer=Webmin lineako dokumentazioa
+
 howto_title=HOWTO dokumentua
 howto_header=HOWTO $1 dokumentuaren fitxategia
 howto_epath=HOWTO dokumentuaren bide baliogabea
+
 doc_title=Paketearen dokumentazioa
 doc_header=$1 paketearen dokumentuaren fitxategia
 doc_epath=Paketeen dokumentazio bide baliogabea
+
 man_title=Eskuliburua
 man_header=$1 ($2) orrialdeko eskuliburua
 man_noentry=$1 eskuliburuko orria ez da existitzen!
 man_epath=Eskuzko orria ezin da bidea izan!
+
 kernel_title=Nukleoaren dokumentua
 kernel_header=Kernel dokumentuaren $1 fitxategia
 kernel_epath=Nukleoaren dokumentu bide baliogabea
+
 kde_title=KDEren dokumentazioa
 kde_header=$1 KDE dokumentua
 kde_epath=KDE dokumentazio bide baliogabea
+
 perl_title=Perl modulua
 perl_header=$1 Perl modulurako dokumentazioa
 perl_emod=Perl moduluaren izen baliogabea
+
 acl_allow=Baimendu daitezke bilaketa mota baimenduak?
+
 check_ecannot=Ezin duzu baimendu bilaketa mota editatzea

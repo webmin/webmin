@@ -3,8 +3,10 @@ index_clink=インストールされていないか、<a href='$1'>モジュー�
 index_return=モジュールインデックス
 index_atboot=起動時に開始しますか？
 index_atbootdesc=このオプションを変更して、iSCSIクライアントをブート時に起動するかどうかを制御します。これは、iSCSIサーバーからマウントされたファイルシステムが自動的にマウントされるために必要です。
+
 check_econfig=iSCSIクライアント構成ファイル $1がシステムで見つかりませんでした。
 check_eiscsiadm=iSCSIクライアント管理プログラム $1がシステムで見つかりませんでした。
+
 auth_title=認証オプション
 auth_header=iSCSIクライアントおよびサーバー認証
 auth_name=ローカルシステムのイニシエーター名
@@ -29,6 +31,7 @@ auth_edpassword=サーバーの検出パスワードがありません
 auth_edusername_in=クライアントの検出ユーザー名がありません
 auth_edpassword_in=クライアントの検出パスワードがありません
 auth_egen=新しい名前を生成できませんでした！
+
 timeout_title=iSCSIタイムアウト
 timeout_header=iSCSIクライアントのタイムアウトオプション
 timeout_timeout=SCSIコマンドが失敗するまで待機する時間
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=失敗する前にpingを待機する時間がない�
 timeout_eabort_timeout=失敗する前に中止応答を待機するための、欠落した時間または非数値の時間
 timeout_elu_reset_timeout=失敗する前に論理ユニットの応答を待つ時間がないか、数値ではない
 timeout_etgt_reset_timeout=失敗する前にターゲットの応答を待機するための、欠落した時間または非数値の時間
+
 iscsi_title=iSCSIオプション
 iscsi_header=その他のiSCSIオプション
 iscsi_startup=起動時にセッションを接続しますか？
@@ -62,6 +66,7 @@ iscsi_err=iSCSIオプションを保存できませんでした
 iscsi_eretry=ログインを再試行するための欠落または非数値の回数
 iscsi_ecmds=セッションごとにキューに入れられていない、または最大でない数値の最大コマンド
 iscsi_equeue=デバイスごとにキューに入れられていない、または数値以外の最大コマンド
+
 ifaces_title=iSCSIインターフェース
 ifaces_elist=インターフェイスのリストに失敗しました： $1
 ifaces_name=インターフェース名
@@ -78,11 +83,13 @@ ifaces_hwaddress=Macアドレス
 ifaces_ifacename=ソースインターフェース
 ifaces_ipaddressdef=自動
 ifaces_notset=自動
+
 iadd_err=インターフェイスを追加できませんでした
 iadd_eclash=$1という名前のインターフェイスは既に存在します
 iadd_eipaddress=ソースIPアドレスが欠落しているか無効です
 iadd_ehwaddress=MACアドレスが欠落しているか無効です
 iadd_ename=インターフェイス名がないか、無効な文字が含まれています
+
 difaces_err=インターフェイスを削除できませんでした
 difaces_enone=何も選択されていません
 difaces_edelete=インターフェイス $1の削除に失敗しました： $2
@@ -93,6 +100,7 @@ difaces_confirm=インターフェイスを削除する
 difaces_target=iSCSIターゲット
 difaces_ip=iSCSIサーバー
 difaces_users=これらのインターフェイスを使用する一部の接続は現在アクティブであり、インターフェイスが削除されると動作に失敗します。
+
 conns_title=iSCSI接続
 conns_elist=接続のリストに失敗しました： $1
 conns_ip=サーバーIP
@@ -113,6 +121,7 @@ conns_return=接続のリスト
 conns_iface=iSCSIインターフェース
 conns_ifacedef=自動的に選択する
 conns_ifaceerr=インターフェイスを取得できませんでした： $1
+
 add_title=iSCSI接続を追加
 add_err=iSCSI接続を追加できませんでした
 add_ehost=ホスト名がないか、解決できない
@@ -129,6 +138,7 @@ add_on=$2の $1
 add_auth=サーバーにログイン
 add_auth1=デフォルトの認証方法を使用する
 add_auth0=メソッド $1を使用して、パスワード $3で $2としてログインします
+
 dconns_err=接続を切断できませんでした
 dconns_enone=何も選択されていません
 dconns_edelete=ホスト $1からのターゲット $2の削除に失敗しました： $3
@@ -142,6 +152,7 @@ dconns_use=によって使われた
 dconns_size=パーティションサイズ
 dconns_confirm=接続を削除する
 dconns_unused=未使用
+
 vconn_title=iSCSI接続
 vconn_egone=選択した接続はもう存在しません！
 vconn_header=iSCSI接続の詳細
@@ -160,8 +171,10 @@ vconn_device3=定数デバイス名
 vconn_delete=接続を切断
 vconn_users=現在のユーザー
 vconn_size=ディスクサイズ
+
 atboot_err=起動時に有効にできませんでした
 atboot_einit=$1という名前のブートアクションは存在しません
+
 log_auth=保存された認証オプション
 log_timeout=保存されたタイムアウトオプション
 log_iscsi=保存されたiSCSIオプション

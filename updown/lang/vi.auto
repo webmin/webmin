@@ -40,6 +40,7 @@ index_descfetch=Trang này để tải xuống một tệp từ hệ thống đa
 index_email=Gửi email khi tải xuống xong?
 index_emailto=Vâng, đến địa chỉ
 index_email2=Gửi email khi tải lên xong?
+
 upload_title=Tải lên tập tin
 upload_err=Không thể tải lên tập tin
 upload_edir=Thiếu thư mục để tải lên
@@ -63,6 +64,7 @@ upload_saving=Lưu tệp $1 ..
 upload_saved=.. đã viết $1 
 upload_unzipping=Trích xuất tệp $1 ..
 upload_unzipdone=.. $1 
+
 download_err=Không thể lưu tải xuống
 download_enone=Không có URL để tải xuống
 download_eurl='$1' không phải là một URL hợp lệ
@@ -74,9 +76,11 @@ download_failed=Tải xuống thất bại : $1
 download_eaccess=Bạn không được phép tải tệp xuống $1 
 download_eucannot=Bạn không được phép tải xuống các tệp như người dùng $1 
 download_egcannot=Nhóm được chọn không chứa người dùng đã chọn
+
 cancel_err=Không thể hủy tải xuống
 cancel_enone=Không được chọn
 cancel_ecannot=Bạn không được phép hủy tải xuống cho người dùng $1 
+
 log_cancel=Đã hủy $1 lượt tải xuống
 log_upload_l=Tệp đã tải lên $1 
 log_upload=Đã tải lên $1 tệp
@@ -84,6 +88,7 @@ log_download_l=URL đã tải xuống $1
 log_download=Đã tải xuống $1 URL
 log_sdownload_l=Lên lịch tải xuống URL (s) $1 
 log_sdownload=Lên lịch tải xuống $1 URL (s)
+
 acl_users=Có thể tải lên và tải xuống các tệp như người dùng
 acl_all=Tất cả người dùng
 acl_this=Người dùng Webmin hiện tại
@@ -98,6 +103,7 @@ acl_max=Kích thước tải lên tối đa
 acl_unlim=Vô hạn
 acl_b=byte
 acl_fetch=Có thể tải tập tin xuống PC không?
+
 fetch_err=Không thể tải xuống tệp
 fetch_ecannot=Bạn không được phép tải tập tin xuống PC
 fetch_efile=Không có tên tệp được nhập
@@ -106,6 +112,7 @@ fetch_eopen=Không thể mở tệp : $1
 fetch_eaccess=Bạn không được phép tải xuống các tệp từ $1 
 fetch_ezip=Không thể tải xuống thư mục trừ khi lệnh <tt>zip</tt> được cài đặt
 fetch_eroot=Thư mục gốc không thể tải xuống!
+
 email_downmsg=Quá trình tải xuống sau đây đã hoàn tất :
 email_downurl=URL: $1 
 email_downerr=Thông báo lỗi: $1 

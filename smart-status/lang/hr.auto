@@ -25,6 +25,7 @@ index_family=Obitelj modela
 index_serial=Serijski broj
 index_capacity=Kapacitet
 index_norm=normalizirani:
+
 monitor_type=SMART Drive Check
 monitor_type2=SSD Wearout
 monitor_drive=Vozite na provjeru
@@ -40,14 +41,17 @@ monitor_wearlevel=Ne uspijeva ako razina habanja padne ispod
 monitor_ewearlevel=Nevažeći postotak istrošenosti
 monitor_nowearout=Pogon ne izvještava o SSD indikatoru kretanja
 monitor_wornout=Razina trošenja pala je na $1 
+
 short_title=Kratki test
 short_doing=Počevši s kratkim samoprovjerom od $1 ..
 short_failed=.. neuspjeh!
 short_ok=.. test je započeo u redu. Za rezultate pogledajte status pogona na glavnoj stranici modula.
+
 ext_title=Prošireni samotestiranje
 ext_doing=Početak produženog samoprovjere od $1 ..
 ext_failed=.. neuspjeh!
 ext_ok=.. test je započeo u redu. Za rezultate pogledajte status pogona na glavnoj stranici modula.
+
 data_title=Test prikupljanja podataka
 data_doing=Pokretanje izvanmrežne zbirke podataka na $1 ..
 data_failed=.. neuspjeh!

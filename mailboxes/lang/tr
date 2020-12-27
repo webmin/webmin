@@ -19,6 +19,7 @@ index_eperl=Seçilen STMP doğrulama modu için $1 Perl modülüne ihtiyaç. <a 
 index_file=Dosyadaki postayı oku:
 index_nousers=Hiçbir kullanıcı bulunamadı'
 index_nousersmail=E-posta'sı olan hiçbir kullanıcı bulunamadı.
+
 mail_title=Kullanıcı E-Posta
 mail_from=Nereden
 mail_date=Tarih
@@ -73,6 +74,7 @@ mail_tosrch=Aynı alıcı..
 mail_fromfilter=GÃ¶nderene gÃ¶re filtre oluÅtur
 mail_subfilter=Konuya gÃ¶re filtre oluÅtur
 mail_unknown=Bilinmeyen
+
 mail_sign=Anahtarla işaretle:
 mail_nosign=&lt;İmzalama&gt;
 mail_crypt=Şifrele:
@@ -104,6 +106,7 @@ mail_advanced=Gelişmiş Arama
 mail_return2=Kullanıcı E-postası
 mail_esystem=$1 posta sistemine bağlanırken hata oluştu. Bu hata sistem yöneticisi tarafından düzeltilmelidir.
 mail_selread=SeÃ§in okuyun.
+
 view_title=E-posta oku
 view_desc=Mesaj $1, $2'de
 view_desc2=$2 kullanıcısı için $1 mesajı
@@ -131,6 +134,7 @@ view_return=orjinal eposta
 view_sub=Bağlı E-posta
 view_egone=Bu mesaj artık mevcut değil
 view_eugone=Bu kullanıcı mevcut değildir
+
 view_gnupg=GnuPG imza doğrulaması
 view_gnupg_0=$1'in imzası geçerli.
 view_gnupg_1=$1'in imzası geçerlidir, fakat güven ilişkisi kurulamadı.
@@ -161,7 +165,9 @@ view_reporting-mta=Raporlanan posta sunucusu
 view_astext=Metin olarak görüntüle
 view_ashtml=HTML olarak görüntüle
 view_raw=Okunmamış mesaja gözat
+
 compose_title=E-posta Gönder
+
 reply_title=E-postayı Geri Gönder
 forward_title=E-postayı Döndür
 enew_title=E-Postayı Düzenle
@@ -176,8 +182,10 @@ reply_errc=Posta kopyalama hatası
 reply_errm=Posta taşıma hatası
 reply_return=posta oluştur
 reply_efwdnone=Yönlendirilmiş postaların hiçbiri mevcut değil
+
 reply_spell=Heceleme hatalarını kontrol et?
 reply_draft=Taslak olarak Kaydet
+
 send_err=Postanın gönderilmesinde hata oluştu
 send_eto=Nereye adresini girmelisiniz
 send_efrom=Nereden adresini girmelisiniz
@@ -193,6 +201,7 @@ send_eperms2=$1 dosyasını göndermeniz için izin verilmedi
 send_epath=Sendmail çalıştırılabilir dosyası $1 mevcut değildir.
 send_efile=Eklentiyi okurken hata oluştu $1 : $2
 send_done=.. yapıldı.
+
 send_epass=Bu mesajı imzalayamazsınız cünkü geçerli parolanız GnuPG modülünde tanımlanmamıştır.
 send_esign=Mesajı imzalarken hata oluştu : $1
 send_ekey=$1 e-posta için anahtar bulunamamıştır
@@ -204,6 +213,7 @@ send_espell=Mesajınızda heceleme hataları bulundu ..
 send_draft=$1'e gönderilecek mesaj taslak dizinine kaydedildi.
 send_drafting=$1'e gönderilecek postayı taslak dizinine kaydediyor ..
 send_eattachsize=Mail eklentisi maksimum boyut olan $1'i aştı
+
 delete_title=Postayı  Sil
 delete_rusure=$2'nin seçilmiş $1 mesajını silmek istediğinizden emin misiniz? Dosya büyük bir dosya olduğu için silme işlemi biraz zaman alabilir. Silme işlemi bitinceye kadar, baska bir program caliştırmayın.
 delete_rusure2=$1'den gelen mesajı silmek istediğinizden emin misiniz? Dosya boyutunun büyüklüğü yüzünden silme işlemi uzun sürebilir. Silme işlemi bitene kadar başka bir program caliştırmayın.
@@ -226,6 +236,7 @@ delete_nobutton=Hiçbir tuşa basılmadı
 delete_ereport=Spam olarak raporlanamadı : $1
 delete_errc=Posta kopyalama başarısız
 delete_errm=Posta taşıma başarısız
+
 confirm_title=Silmeyi Onayla
 confirm_warn=$1 seçilmiş mesajı silmeyi istiyor musun?
 confirm_warnf=<b>$1</b> klasÃ¶rÃ¼nden seÃ§ilmiÅ $1 adet mesajÄ± silmek istediÄinizden emin misiniz?
@@ -235,6 +246,7 @@ confirm_warn4=Silme bitene kadar, diger uygulamalar calıştırılmamalıdır.
 confirm_ok=Şimdi Sil
 confirm_warnall=Bu dosyadaki tüm e-postaları silmek istediğinizden emin misiniz?
 confirm_warnallf=<b>$1</b> klasÃ¶rÃ¼ndeki tÃ¼m mesajlarÄ± silmek istediÄinizden emin misiniz?
+
 search_title=Arama sonuçları
 search_ecannot=Bu kullanıcı e-postalarını aramak için izininiz yoktur
 search_ematch=Takip eden kutuya bir yazı girmelisiniz
@@ -261,16 +273,19 @@ search_nolatest=Klasördekilerin hepsi
 search_latestnum=Sadece en son
 search_elatest=Arama için hatalı veya gecersiz sayıda mesaj
 search_withstatus=, durum kodu $1 olan
+
 folder_inbox=Gelen Kutusu
 folder_sent=Gönderilen postalar
 folder_drafts=Taslaklar
 folder_trash=Çop Kutusu
+
 detach_err=Dosyayı çıkartırken hata oluştu
 detach_edir=Saklamak için dosya veya dizin girilmedi
 detach_eopen=$1 : $2 yi açmak başarısız oldu
 detach_ewrite=$1'e yazarken hata oluştu : $2
 detach_title=Dosyayı Çıkar
 detach_ok=Sunucu taraflı $1 dosyasına eklenti yaz ($2).
+
 sform_title=Gelişmiş Arama
 sform_and=Aşağıdaki tüm kriterleri karşılayan mesajları bul ..
 sform_or=Aşağıdaki bazı kriterleri karşılayan mesajları bul ..
@@ -290,6 +305,7 @@ sform_body=mesaj gövdesi
 sform_headers=herhangi başlık
 sform_size=mesaj boyutu
 sform_return=gelişmiş arama formu
+
 find_enone=Aramanıza uyan kullanıcı bulunamadı
 find_title=Arama Sonuçları
 find_results=$1 için yapılan aramaya uyan kullanıcılar ..
@@ -302,6 +318,7 @@ find_incount=E-postalar
 find_sentcount=Gönderildi
 find_fcount=Dizinler
 find_in=$1 içinde $2
+
 acl_none=Hiçbiri
 acl_same=Aynı isimli kullanıcı
 acl_all=Hepsi
@@ -327,12 +344,15 @@ acl_usersu=Aralıkta UID'le beraber
 acl_sec=İkincil grupları içer?
 acl_dir=Dizindeki posta dosyalarını okuyabilir mi
 acl_dirauto=Otomatik olarak karar ver (bütün kullanıcıları burda veya başka yerde görmek istemiyorsanız)
+
 log_delmail=$2'den $1 mesajı silindi
 log_movemail=$1 adet mesaj $2' den $3' e taşındı
 log_copymail=$1 adet mesaj $2' den $3' e kopyalandı
 log_send=$1'e posta gönderildi
 log_read=$1 için postaları oku
+
 emodified=Bu dizin son gözden geçirildiğinden beri değiştirildi! <a href='$1'>posta liste</a>'ye geri dön ve tekrar dene.
+
 razor_title=Spam Olarak Raporla
 razor_title2=Seçilmiş Rapor
 razor_report=Bu mesajı Razor ve diğer SpamAssassin spam-bloklama veritabanlarına raporla ..
@@ -341,14 +361,18 @@ razor_report3=Seçili mesajları Razor ve diğer SpamAssassin spam-bloklama veri
 razor_done=.. yapıldı
 razor_err=.. hata oluştu! Hata mesajının nedenini yukarıda görebilirsiniz.
 razor_deleted=.. yapıldı, ve mesaj silindi.
+
 ham_title=İstenen Raporlama
 ham_report=Bu mesajı Razor ve SpamAssassin veritabanlarına "spam değil" olarak raporla ..
+
 black_title=Göndereni Yasaklama
 black_done=SpamAssassin tarafından yasaklanan adresler listesine $1 e-posta adresi eklendi.
 black_already=$1 e-posta adresi SpamAssassin'in yasaklı listesindedir.
+
 white_title=İzinli Gönderici
 white_done=$1 e-posta adresi SpamAssassin'in izinli adres listelerine eklendi.
 white_already=$1 e-posta adresi SpamAssassin'in izinli adres listelerindedir.
+
 ldap_emod=LDAP'a bağlanmak için gerekli Perl modülü $1 kayıp
 ldap_econn=$2 portundaki LDAP sunucusu $1'e bağlanırken hata oluştu
 ldap_elogin=LDAP sunucusu $1'e $2 olarak bağlanırken hata oluştu : $3
@@ -356,9 +380,11 @@ ldap_ehost=Modül yapılandırılmasında LDAP sunucu ayarı yoktur
 ldap_eport=Modül yapılandırılmasında geçerli LDAP sunucu portu yok
 ldap_euser=Modül yapılandırılmasında LDAP giriş ayarı yoktur
 ldap_ebase=LDAP tabanlı DN ayarı modül yapılandırılmasında yoktur
+
 delall_title=Tüm E-posta'yı Sil
 delall_rusure=$1'dan gelen $2 adet, toplamı $3 olan postaları silmek istediğinizden emin misiniz.
 delall_ok=Şimdi Sil
+
 left_search=Ara:
 left_folders=KlasÃ¶rleri YÃ¶net
 left_addresses=Adres defteri

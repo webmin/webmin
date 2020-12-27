@@ -17,6 +17,7 @@ index_tdesc=Beskrivelse
 index_tucount=Brugere
 index_tgcount=grupper
 index_ttype=OS-type
+
 add_title=Tilføj servere
 add_msg=Tilføjer $1 ..
 add_gmsg=Tilføjelse af servere i gruppe $1 ..
@@ -26,6 +27,7 @@ add_echeck=Server $1 har ikke brugere og gruppemodulet
 add_epft=Server $1 bruger ikke det samme brugerfilsformat som denne vært
 add_egft=Server $1 bruger ikke det samme gruppeformat som denne vært
 add_ok=Tilføjet $1 med $2 brugere og $3 grupper.
+
 host_title=Administreret server
 host_header=Softwareadministreret serverdetaljer
 host_name=Værtsnavn
@@ -34,8 +36,7 @@ host_delete=Fjern fra administreret liste
 host_refresh=Opdater brugere og grupper
 host_users=Antal brugere
 host_groups=Antal grupper
-host_ulist=Brugere på server
-host_glist=Grupper på server
+
 host_return=serverdetaljer
 refresh_title=Opdater brugere og grupper
 refresh_header=Genanmodning om bruger- og gruppelister fra alle servere ..
@@ -49,6 +50,7 @@ refresh_gdel=fjern $1 grupper
 refresh_done=.. Færdig
 refresh_del=$1 blev fjernet fra serverlisten
 refresh_failed=Opdatering af $1 : $2 kunne ikke opdateres
+
 uedit_host=Detaljer fra $1 
 uedit_leave=Skift ikke
 uedit_set=Indstillet til
@@ -66,6 +68,7 @@ uedit_servers=Server (e), der skal oprettes på
 uedit_all=&lt;alle værter&gt;
 uedit_donthave=&lt;værter der ikke har ham&gt;
 uedit_group=Medlemmer af $1 
+
 usave_einuse=En bruger med samme navn findes allerede på $1 
 usave_esecgid=Sekundær gruppe $1 findes ikke
 usave_con=Oprettelse på $1 ..
@@ -88,16 +91,20 @@ usave_header=Opretter bruger $1 på alle værter ..
 usave_header5=Opretter bruger $1 på $2.
 usave_header4=Opretter bruger $1 på medlemmer af gruppe $2.
 usave_header3=Opretter bruger $1 på værter, der ikke har ham ..
+
 search_hosts=værter
+
 udel_on=Sletning fra $1 ..
 udel_servs=Slet hjemmekatalog, hvis der findes på
 udel_others=Slet bruger i andre moduler?
 udel_dothers=Sletning i andre moduler ..
 udel_gone=Brugeren findes ikke længere.
 udel_failed=Kunne ikke slette bruger : $1 
+
 gdel_on=Sletning fra $1 ..
 gdel_gone=Brugeren findes ikke længere.
 gdel_failed=Kunne ikke slette gruppen : $1 
+
 gsave_create=Tilføjer post til gruppefil ..
 gsave_con=Oprettelse på $1 ..
 gsave_euser=Bruger $1 findes ikke
@@ -110,10 +117,12 @@ gsave_header=Opretter gruppe $1 på alle værter ..
 gsave_header5=Opretter gruppe $1 på $2.
 gsave_header4=Oprettelse af gruppe $1 på medlemmer af gruppe $2.
 gsave_header3=Opretter gruppe $1 på værter, der ikke har den ..
+
 gedit_host=Detaljer fra $1 
 gedit_add=Tilføj brugere
 gedit_del=Fjern brugere
 gedit_donthave=&lt;værter der ikke har det&gt;
+
 sync_title=Synkroniser servere
 sync_desc=Denne formular giver dig mulighed for at oprette brugere og grupper på servere, der ikke i øjeblikket har dem, for at bringe konti synkroniseret på tværs af alle servere i din klynge.
 sync_hosts=Servere, der skal synkroniseres
@@ -141,6 +150,7 @@ sync_test=Vis kun, hvad der ville blive gjort?
 sync_makehome=Opret hjemmekataloger?
 sync_copy=Kopiere filer til hjemmekatalog?
 sync_others=Opret bruger i andre moduler?
+
 log_create_user=Oprettet bruger $1 
 log_delete_user=Slet bruger $1 
 log_modify_user=Ændret bruger $1 

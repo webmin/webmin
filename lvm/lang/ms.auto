@@ -42,6 +42,7 @@ index_lvused=Ruang digunakan
 index_lvuse=Digunakan untuk
 index_snapof=(Gambar daripada $1)
 index_thin=Kolam nipis LVM untuk $1 LVs
+
 lv_edit=Edit Jumlah Logik
 lv_edit_snap=Edit Syot Kilat
 lv_create=Buat Jumlah Logik
@@ -128,6 +129,7 @@ lv_pvfrom=Pindahkan blok dari jumlah fizikal
 lv_pvto=Untuk jumlah fizikal
 lv_moveok=Pindah Blok
 lv_return=jumlah logik
+
 mkfs_title=Buat Filesystem
 mkfs_desc=Borang ini membolehkan anda membina $2 ($1) sistem fail baru pada jumlah logik $3. Semua data sedia ada akan dipadamkan.
 mkfs_header=Pilihan sistem fail baru
@@ -135,6 +137,7 @@ mkfs_err=Gagal mencipta sistem fail
 mkfs_exec=Pelaksanaan perintah $1 ..
 mkfs_failed=.. arahan gagal!
 mkfs_ok=.. arahan lengkap.
+
 resize_title=Tukar Saiz Logik
 resize_mesg=Sistem fail $1 pada volum logik ini tidak boleh diubah saiznya. Jika anda mengubah saiz kelantangan logik, anda mesti membuat semula sistem fail, yang akan memadamkan semua data di dalamnya.
 resize_mesg2=Webmin tidak tahu apa jenis sistem fail pada kelantangan logik ini, jika ada. Jika anda mengubah saiz kelantangan logik, anda mesti membuat semula sistem fail, yang akan memadamkan semua data di dalamnya.
@@ -142,8 +145,10 @@ resize_fs=Terdapat ralat mengubah saiz sistem fail $1 pada kelantangan logik ini
 resize_ok=Tukar Saiz Logik
 resize_emounted=Sistem fail pada kelantangan logik ini tidak dapat diubah saiz semasa dipasang
 resize_emounted2=Sistem fail pada kelantangan logik ini tidak boleh dikurangkan semasa dipasang
+
 init_title=Aktifkan LVM
 init_cmd=Arahan berjalan $1 ..
+
 pv_edit=Edit Volum Fizikal
 pv_create=Tambah isipadu fizikal
 pv_vg=Dalam kumpulan kelantangan $1 
@@ -170,6 +175,7 @@ pv_eother=Peranti cakera yang hilang atau tidak sah
 pv_raid=Peranti RAID $1 
 pv_lvs=Peruntukan oleh jumlah logik
 pv_egone=Jumlah fizikal tidak lagi wujud!
+
 vg_edit=Edit Kumpulan Kelantangan
 vg_create=Buat Kumpulan Kelantangan
 vg_name=Nama kumpulan volum
@@ -188,11 +194,13 @@ vg_deleteok=Padamkan Sekarang
 vg_ename=Nama kumpulan volum yang hilang atau tidak sah
 vg_epesize=Saiz blok peruntukan hilang atau tidak sah
 vg_egone=Kumpulan volum tidak lagi wujud!
+
 pvmove_err=Gagal memindahkan jumlah logik
 pvmove_title=Pindahkan Jumlah Logik
 pvmove_start=Menukar jumlah logik $1 dari $2 hingga $3 ..
 pvmove_failed=.. bergerak gagal!
 pvmove_done=.. bergerak lengkap
+
 thin_title=Buat Kolam Nipis
 thin_desc=Kolam nipis adalah sepasang LV yang boleh digunakan untuk membuat LV tambahan yang boleh lebih besar daripada luas yang tersedia. Ruang hanya dimakan apabila diperlukan, dan bukannya apabila LV di dalam kolam dibuat. AMARAN - Sebarang data pada LV yang dipilih akan hilang!
 thin_header=Butiran kolam nipis yang baru
@@ -204,6 +212,7 @@ thin_err=Gagal mencipta kolam nipis
 thin_esame=Kedua-dua LV yang dipilih adalah sama
 thin_edata=LV data yang dipilih telah digunakan
 thin_emetadata=LV metadata yang dipilih telah digunakan
+
 log_create_vg=Kumpulan kelantangan yang dibuat $1 
 log_modify_vg=Kumpulan volum diubah suai $1 
 log_delete_vg=Kelompok kelantangan dipadamkan $1 
@@ -216,4 +225,5 @@ log_create_pv=Menambah jumlah fizikal $1 hingga VG $1
 log_modify_pv=Jumlah fizikal diubahsuai $1 dalam VG $2 
 log_delete_pv=Jumlah fizikal yang dikeluarkan $1 dari VG $2 
 log_resize_pv=Menukar saiz fizikal $1 dalam VG $2 
+
 blocks=blok

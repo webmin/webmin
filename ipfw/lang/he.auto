@@ -25,6 +25,7 @@ index_resetdesc=לחץ על כפתור זה כדי לנקות את כל כללי
 index_cluster=שרתי אשכול
 index_clusterdesc=לחץ על לחצן זה כדי להגדיר שרתי Webmin נוספים אליהם יועתקו תצורת חומת האש אוטומטית.
 index_return=חוקים על חומת האש
+
 index_num=מספר
 index_action=פעולה
 index_desc=מצב
@@ -37,6 +38,7 @@ index_delete=מחק את הנבחר
 index_existing=Webmin איתרה $1 כללי חומת אש של IPFW הנמצאים כעת בשימוש, ואינם רשומים בקובץ $2. כללים אלה הוגדרו ככל הנראה מתוך סקריפט, שמודול זה אינו יודע לקרוא ולערוך. <p> אם ברצונך להשתמש במודול זה לניהול חומת האש של IPFW שלך, לחץ על הכפתור למטה כדי להמיר את הכללים הקיימים לקובץ שמור. ואז השבת את סקריפט חומת האש הקיים שלך.
 index_saveex=שמור כללי חומת אש
 index_headerex=תצורה קיימת של חומת אש
+
 action_allow=<font color=#00aa00>אפשר</font>
 action_deny=<font color=#ff0000>טיפה</font>
 action_reject=<font color=#ff4400>דחה</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>זרוק מנות</font>
 laction_reject=<font color=#ff4400>החזר דחיית ICMP</font>
 laction_reset=<font color=#ff4400>אפס את חיבור TCP</font>
 laction_skipto=דלג לשלטון
+
 edit_title1=צור כלל
 edit_title2=ערוך כלל $1 
 edit_header1=פעולה שלטונית
@@ -114,6 +117,7 @@ edit_src-addr=מכתובת המקור ..
 edit_src-port=מיציאת המקור ..
 edit_dst-addr=לכתובת היעד ..
 edit_dst-port=לנמל היעד ..
+
 save_err=שמירת הכלל נכשלה
 save_enum=מספר כלל חסר או לא חוקי
 save_eskipto=מספר כלל חסר או לא חוקי שאליו ניתן לדלג אליו
@@ -144,7 +148,9 @@ save_etcpflags=ניתן לציין דגלי TCP רק אם הפרוטוקול ה�
 save_elimit=גבול מקסימאלי חסר או לא חוקי
 save_edstport=יציאת יעד חסרה או לא תקפה
 save_esrcport=יציאת מקור חסרה או לא חוקית
+
 apply_err=החלת התצורה נכשלה
+
 desc_if=אם $1 
 desc_and=ו
 desc_always=תמיד
@@ -191,6 +197,7 @@ desc_where=שם $1
 desc_all=לכל המנות
 desc_in=המנה נכנסת
 desc_out=המנה יוצאת
+
 log_create_rule=יצר כלל $1 
 log_delete_rule=כלל $1 נמחק
 log_modify_rule=כלל $1 השתנה
@@ -206,6 +213,7 @@ log_convert=כללי חומת אש פעילים שהומרו
 log_setup=ביצע את הגדרת חומת האש הראשונית
 log_unapply=תצורת חומת אש הושבה
 log_delsel=כללים של $1 נמחקו
+
 cluster_title=שרתי חומת אש של אשכול
 cluster_none=עדיין לא נוספו שרתים לאשכול חומת האש.
 cluster_host=שם מארח
@@ -216,6 +224,7 @@ cluster_gadd=הוסף שרתים בקבוצה
 cluster_need=עליך להוסיף שרתים עם כניסה וסיסמה במודול אינדקס שרתי Webmin לפני שניתן יהיה לנהל אותם כאן.
 cluster_return=שרתי אשכול
 cluster_delete=הסר פריטים שנבחרו
+
 add_title=הוסף שרתים
 add_msg=מוסיף $1 ..
 add_gmsg=הוספת שרתים בקבוצה $1 ..

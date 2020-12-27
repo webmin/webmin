@@ -6,6 +6,7 @@ index_printershare=bahagian pencetak
 index_shareconf=konfigurasi saham
 index_version=Versi Samba $1 
 index_samba=Samba
+
 index_sharename=Nama Kongsi
 index_path=Jalan
 index_security=Keselamatan
@@ -42,12 +43,14 @@ index_stopmsg=Klik butang ini untuk menutup pelayan Samba yang sedang berjalan p
 index_stopmsg_wb=Klik butang ini untuk menutup pelayan Winbind yang sedang berjalan pada sistem anda.
 index_einclude=Amaran - Fail konfigurasi Samba anda $1 mengandungi arahan $2 atau $3. Ini mungkin menyebabkan Webmin mengubah suai fail secara salah.
 index_delete=Padamkan Saham Terpilih
+
 config_mins=Mins
 config_secs=Secs
 config_bytes=Bytes
 config_never=Tidak pernah
 config_all=Semua
 config_neither=Tidak
+
 global_title=Konfigurasi Global
 global_unixnetwork=Rangkaian Unix
 global_winnetwork=Rangkaian Windows
@@ -60,6 +63,7 @@ global_password=Kata laluan yang disulitkan
 global_users=Pengguna Samba
 global_group=Kumpulan Samba
 global_bind=Pilihan Winbind
+
 error_nosamba=Pelayan Samba yang boleh dilaksanakan <tt>$1</tt> tidak dijumpai. Sama ada Samba tidak dipasang pada sistem anda atau <a href="$2">konfigurasi modul</a> anda tidak betul.
 error_version=Webmin gagal mendapatkan versi pelayan Samba yang boleh dieksekusi <tt>$1</tt>. Semak <a href="$2">konfigurasi modul</a> anda untuk memastikan ini adalah jalan yang betul.
 error_config=Fail konfigurasi $1 tidak dijumpai. Kemungkinan besar Samba tidak dipasang pada sistem anda, atau <a href="$2">konfigurasi modul</a> anda tidak betul.
@@ -67,6 +71,7 @@ error_include=Webmin tidak dapat mengendalikan fail konfigurasi Samba yang mengg
 error_delshare=Gagal memotong bahagian
 error_delcopy=Bahagian '$1' salinan dari bahagian ini
 error_savename=Gagal menyimpan nama fail
+
 convert_title=Tukar Pengguna
 convert_msg=Borang ini membolehkan anda menyegerakkan senarai pengguna Unix dan Samba. Apabila Samba menggunakan <a href=$1>kata laluan yang disulitkan</a>, senarai pengguna dan kata laluan yang berasingan digunakan dan bukannya senarai pengguna sistem.
 convert_noconv=Jangan menukar atau mengalih keluar pengguna ini:
@@ -83,6 +88,7 @@ convert_cannot=Pengguna Unix tidak boleh ditukar kepada pengguna Samba
 convert_who=Pengguna Unix untuk menukar
 convert_who0=Hanya pengguna yang disenaraikan atau julat UID
 convert_who1=Semua kecuali pengguna yang disenaraikan dan julat UID
+
 misc_title=Pilihan Pelbagai
 misc_debug=Tahap Debug
 misc_cachecall=Cache <tt>getwd ()</tt> panggilan?
@@ -96,6 +102,7 @@ misc_chroot=<tt>chroot ()</tt> direktori
 misc_smbrun=Jalan ke <tt>smbrun</tt>
 misc_clienttime=Masa mengimbangi pelanggan
 misc_readprediction=Baca ramalan?
+
 net_title=Pilihan Rangkaian Unix
 net_idle=Masa maag sebelum putuskan sambungan
 net_trustlist=Fail tuan rumah/pengguna yang dipercayai
@@ -111,6 +118,7 @@ net_maxpacket=Saiz paket maksima
 net_listen=Dengar di alamat
 net_ip=alamat IP
 net_socket=Pilihan soket
+
 passwd_title=Pilihan Kata Laluan
 passwd_encrypt=Gunakan kata laluan yang disulitkan?
 passwd_allownull=Benarkan kata laluan yang tidak sah?
@@ -124,11 +132,13 @@ passwd_send=Hantar
 passwd_map=Pemetaan nama pengguna
 passwd_unixuser=Pengguna Unix
 passwd_winuser=Pengguna Windows
+
 print_title=Pilihan Percetakan
 print_style=Gaya cetak Unix
 print_show=Tunjukkan semua pencetak?
 print_printcap=Fail fail
 print_cachetime=Masa cache status pencetak
+
 smb_title=Pilihan Rangkaian Windows
 smb_workgroup=Kumpulan kerja
 smb_wins=Mod MENANG
@@ -159,14 +169,17 @@ smb_nowhere=Tiada tempat
 smb_fromlist=Daripada senarai. ..
 smb_ip=Alamat IP
 smb_asworkgroup=<b>Sebagai Workgroup</b> (pilihan)
+
 create_title=Buat Salin
 create_msg=Sumbangan salinan akan mewarisi semua nilai lalai dari bahagian yang anda pilih. Sekiranya saham sumber ditukar, begitu juga salinannya.
 create_from=Berkongsi untuk menyalin dari:
 create_name=Nama saham baru:
+
 smbuser_title=Pengguna Samba
 smbuser_list=Senarai Pengguna Samba
 smbuser_nouser=Tiada pengguna Samba ditakrifkan.
 smbuser_cannot=Pengguna Samba tidak boleh disenaraikan
+
 euser_title=Edit Pengguna Samba
 euser_name=Nama pengguna
 euser_uid=Unix UID
@@ -185,6 +198,7 @@ euser_locked=Akaun dikunci
 euser_nopwrequired=Tiada kata laluan yang diperlukan
 euser_disable=Akaun dilumpuhkan
 euser_trust=Akaun amanah stesen
+
 fmisc_title=Lalai Fail Pelbagai
 fmisc_for=Untuk berkongsi <tt>$1</tt>
 fmisc_lockfile=Adakah penguncian fail?
@@ -202,6 +216,7 @@ fmisc_conncmd=Perintah untuk disambungkan
 fmisc_disconncmd=Perintah untuk berjalan di putuskan sambungan
 fmisc_rootconn=Perintah untuk menyambungkan <i>sebagai root</i>
 fmisc_rootdisconn=Perintah untuk berjalan pada putuskan <i>sebagai root</i>
+
 fname_title1=Default Penamaan Fail
 fname_title2=Edit Penamaan Fail
 fname_option=Pilihan Penamaan Fail
@@ -216,6 +231,7 @@ fname_hide=Sembunyikan fail dot?
 fname_archive=Simpan bendera arkib DOS?
 fname_hidden=Simpan bendera DOS yang tersembunyi?
 fname_system=Simpan bendera sistem DOS?
+
 fperm_title1=Lalai Kebenaran Fail
 fperm_title2=Edit Kebenaran Fail
 fperm_option=Pilihan Kebenaran Fail
@@ -228,6 +244,7 @@ fperm_link=Benarkan symlink di luar bahagian?
 fperm_delro=Boleh memadam fail baca?
 fperm_forcefile=Mod fail Force Unix
 fperm_forcedir=Mod direktori Force Unix
+
 share_title1=Fail Kongsi Default
 share_title2=Edit Kongsi Fail
 share_title3=Buat Fail Saham
@@ -251,6 +268,7 @@ share_naming=Penamaan Fail
 share_misc=Pilihan Pelbagai
 share_samedesc1=Nota - tetapan ini juga memberi kesan kepada kegagalan semua saham fail.
 share_samedesc2=Nota - tetapan ini juga memberi kesan kepada lalai untuk semua saham pencetak.
+
 print_title1=Default Pilihan Pencetak
 print_title2=Edit Pilihan Pencetak
 print_option=Pilihan Pencetak
@@ -262,6 +280,7 @@ print_delete=Padam arahan kerja
 print_pause=Jeda arahan kerja
 print_unresume=Berikan arahan kerja
 print_driver=Pemacu pencetak
+
 pshare_title1=Default Kongsi Pencetak
 pshare_title2=Edit Saham Pencetak
 pshare_title3=Buat Pencetak Kongsi
@@ -270,6 +289,7 @@ pshare_name=Nama saham
 pshare_all=Semua Printers Share
 pshare_unixprn=Pencetak Unix
 pshare_spool=Direktori jet
+
 sec_index1=Lalai Keselamatan
 sec_index2=Edit Keselamatan
 sec_writable=Writable?
@@ -292,6 +312,7 @@ sec_rouser=Baca pengguna sahaja
 sec_rogroup=Baca kumpulan sahaja
 sec_rwuser=Baca/tulis pengguna
 sec_rwgroup=Membaca/menulis kumpulan
+
 esync_title=Penyegerakan Pengguna
 esync_msg=Webmin boleh dikonfigurasikan supaya perubahan kepada senarai pengguna Unix secara automatik akan digunakan pada senarai pengguna Samba. Ini hanya akan berfungsi apabila modul Webmin <b>Pengguna dan Kumpulan</b> digunakan untuk menambah, memadam atau menukar pengguna.
 esync_add=Tambah pengguna Samba apabila pengguna Unix ditambah
@@ -303,6 +324,7 @@ esync_gid=Kumpulan SID atau RID untuk pengguna baru
 esync_apply=Sapukan
 esync_cannot=Penyegerakan pengguna tidak boleh dikonfigurasikan
 esync_egid=Kumpulan hilang SID atau RID
+
 mkpass_title=Tukar Pengguna
 mkpass_convfail=Gagal menukar pengguna
 mkpass_msg=Menukar pengguna Unix. ..
@@ -315,10 +337,12 @@ mkpass_passfail=Gagal menetapkan kata laluan
 mkpass_user=Nama pengguna
 mkpass_action=Tindakan diambil
 mkpass_skipcount=$1 pengguna dilangkau untuk penukaran.
+
 savecopy_fail=Gagal membuat salinan
 savecopy_global=Nama 'global' tidak boleh digunakan untuk berkongsi
 savecopy_exist=Satu bahagian yang dipanggil '$1' sudah wujud
 savecopy_ename=Tiada nama saham yang dimasukkan
+
 saveuser_fail=Gagal menyimpan pengguna
 saveuser_uid='$1' bukan UID Unix yang sah
 saveuser_colon=Nama sebenar tidak boleh mengandungi aksara :
@@ -326,10 +350,13 @@ saveuser_home=Direktori rumah '$1' tidak wujud
 saveuser_shell=$1 bukan shell yang sah
 saveuser_pass=Gagal menukar kata laluan menggunakan smbpasswd : $1 
 saveuser_ews=Pilihan 'Akaun kepercayaan stok' tidak boleh didayakan untuk pengguna sedia ada
+
 savefmisc_fail=Gagal menyimpan pilihan pelbagai
 savefmisc_number='$1' bukan nombor sambungan yang sah
+
 savefperm_fail=Gagal menyimpan kebenaran fail
 savefperm_mode='$1' bukan mod fail Unix yang sah
+
 savefshare_fail=Gagal menyimpan bahagian
 savefshare_nopath=Tiada jalan yang diberikan
 savefshare_exist=Satu bahagian yang dipanggil '$1' sudah wujud
@@ -339,6 +366,7 @@ savefshare_owner=Pemilik yang hilang atau tidak sah untuk direktori baru
 savefshare_group=Kumpulan hilang atau tidak sah untuk direktori baru
 savefshare_perms=Permit hilang atau tidak sah untuk direktori baru
 savefshare_emkdir=Gagal membuat direktori : $1 
+
 savemisc_fail=Gagal menyimpan pilihan
 savemisc_lockdir=Direktori yang mengandungi direktori kunci tidak wujud
 savemisc_logdir=Direktori yang mengandungi fail log tidak wujud
@@ -347,37 +375,48 @@ savemisc_overlap='$1' bukan ukuran baca bertindih yang sah
 savemisc_chroot=Direktori chroot '$1' tidak wujud
 savemisc_smbrun=Program smbrun '$1' tidak wujud atau tidak dapat dieksekusi
 savemisc_time='$1' bukanlah masa yang sah
+
 savenet_fail=Gagal menyimpan pilihan
 savenet_timeout='$1' bukan masa tunda putus yang sah
 savenet_ip='$1' bukan merupakan bait IP yang sah
 savenet_keep='$1' bukanlah selang bawaan yang sah
 savenet_maxxmit='$1' bukan saiz paket maksimum yang sah
+
 savepass_fail=Gagal menyimpan pilihan
 savepass_nopass=Versi Samba anda tidak menyokong kata laluan yang disulitkan
 savepass_passwd=Tiada kata laluan menukar program yang diberikan
 savepass_level='$1' bukan perbezaan kata laluan yang sah
 savepass_chat=Urutan perbualan kata laluan perubahan kosong
+
 savepopts_fail=Gagal menyimpan pilihan pencetak
 savepopts_number=Ruang bebas minimum mestilah nombor
+
 saveprint_fail=Gagal menyimpan pilihan
 saveprint_printcap=Fail printcap '$1' tidak wujud
 saveprint_cache='$1' bukan masa cache yang sah
+
 savepshare_fail=Gagal menyimpan bahagian cetak
 savepshare_exist=Satu bahagian yang dipanggil '$1' sudah wujud
 savepshare_name='$1' bukan nama kongsi yang sah
 savepshare_global=Nama 'global' tidak boleh digunakan untuk berkongsi
+
 savesec_fail=Gagal menyimpan keselamatan
+
 savesmb_fail=Gagal menyimpan pilihan
 savesmb_size='$1' bukan saiz cakera yang sah
 savesmb_oslevel='$1' bukan keutamaan pelayar induk yang sah
 savesmb_server=Anda mesti memasukkan pelayan kata laluan
+
 start_err=Gagal memulakan pelayan Samba
 start_fail=$1 gagal
 start_err_wb=Gagal memulakan pelayan Winbind
+
 restart_err=Gagal memulakan semula pelayan Samba
 restart_err_wb=Gagal memulakan semula pelayan Winbind
+
 swats_fail=Gagal menyimpan nama pengguna
 swats_user=Nama pengguna SWAT yang tiada
+
 viewu_index=Pengguna Semasa
 viewu_list=Pengguna semasa $1 
 viewu_share=Kongsi
@@ -394,6 +433,7 @@ viewu_ecmd=Program status Samba $1 tampaknya tidak dipasang pada sistem anda. Mu
 viewu_kill=Putuskan sambungan Pengguna Terpilih
 viewu_enone=Tiada pengguna yang dipilih
 viewu_refresh=Muat semula halaman.
+
 log_apply=Restart pelayan Samba
 log_apply_wb=Dihidupkan semula pelayan Winbind
 log_stop=Berhenti pelayan Samba
@@ -435,6 +475,7 @@ log_modify_group=Kumpulan Samba yang diubah suai $1
 log_delete_group=Kumpulan Samba yang dipotong $1 
 log_gsync=Penyegerakan kumpulan Unix dikonfigurasikan
 log_manual=Fail konfigurasi disunting secara manual $1 
+
 swat_title=Masuk SWAT
 swat_list=Masuk SWAT
 swat_msg1=Nama pengguna dan kata laluan SWAT anda tidak betul. Gunakan borang di bawah untuk log masuk sekali lagi.
@@ -446,6 +487,7 @@ swat_password=Kata laluan
 swat_login=Log masuk
 swat_clear=Jelas
 swat_logout=Keluar dari SWAT
+
 eacl_aviol=Pelanggaran kawalan akses
 eacl_np=Anda tidak mempunyai keizinan
 eacl_papply=mulakan semula perkhidmatan ini
@@ -481,6 +523,7 @@ eacl_pafs=akses bahagian fail ini
 eacl_paps=akses bahagian pencetak ini
 eacl_pcps=mencipta bahagian pencetak
 eacl_pcfs=buat bahagian fail
+
 acl_apply=Boleh memohon perubahan dan menghentikan Samba?
 acl_view_all_con=Boleh melihat semua sambungan?
 acl_kill_con=Boleh mengeluarkan sambungan?
@@ -527,6 +570,7 @@ acl_maint_groups=Boleh melihat, mengedit dan menambah kumpulan?
 acl_maint_gsync=Bolehkah mengekalkan auto Unix untuk menyegerakkan kumpulan Samba?
 acl_winbind=Bolehkah mengikat domain?
 acl_bind=Bolehkah mengakses pilihan winbind?
+
 groups_title=Kumpulan Samba
 groups_name=Nama kumpulan
 groups_unix=Kumpulan Unix
@@ -542,6 +586,7 @@ groups_return=senarai kumpulan
 groups_add=Tambah kumpulan Samba baharu.
 groups_ecannot=Anda tidak dibenarkan untuk melihat atau mengedit kumpulan Samba
 groups_cannot=Kumpulan Samba tidak boleh disenaraikan
+
 gedit_title2=Edit Kumpulan Samba
 gedit_title1=Buat Kumpulan Samba
 gedit_header=Butiran kumpulan Samba
@@ -554,11 +599,13 @@ gedit_unix=Kumpulan Unix
 gedit_unixgr=Kumpulan ..
 gedit_none=Tiada
 gedit_set=Disenaraikan ..
+
 gsave_err=Gagal menyimpan kumpulan
 gsave_eunix=Nama kumpulan UNIX atau GID yang tiada atau tidak sah
 gsave_ename=Nama kumpulan yang hilang
 gsave_epriv=Keistimewaan kumpulan yang hilang
 gsave_elocal=Keistimewaan hanya boleh ditetapkan untuk kumpulan tempatan
+
 gsync_title=Penyegerakan Kumpulan
 gsync_msg=Webmin boleh dikonfigurasikan supaya perubahan pada senarai kumpulan Unix secara automatik akan digunakan pada senarai kumpulan Samba. Ini hanya akan berfungsi apabila modul Webmin <b>Pengguna dan Kumpulan</b> digunakan untuk menambah, memadam atau menukar kumpulan.
 gsync_add=Tambah kumpulan Samba apabila kumpulan Unix ditambah
@@ -569,10 +616,12 @@ gsync_type=Jenis kumpulan baru
 gsync_priv=Keistimewaan untuk kumpulan baru (jika setempat)
 gsync_ecannot=Anda tidak dibenarkan untuk mengkonfigurasi penyegerakan kumpulan
 gsync_cannot=Penyegerakan kumpulan tidak boleh dikonfigurasikan
+
 check_user1=$1 : Kata laluan yang disulitkan tidak didayakan pada halaman <a href='$2'>Authentication</a>.
 check_user2=$1 : Fail kata laluan Samba atau laluan ke pdbedit tidak ditetapkan pada halaman <a href='$2'>Modul Konfigurasi</a>.
 check_group1=$1 : Kumpulan hanya disokong dalam versi Samba 3.
 check_group2=$1 : Laluan untuk smbgroupedit atau arahan bersih ditetapkan pada halaman <a href='$2'>Konfigurasi Module</a>.
+
 winbind_title=Bind ke Domain
 winbind_ecannot=Anda tidak dibenarkan mengikat domain
 winbind_msg=Borang ini boleh digunakan untuk mengikat pelayan Samba anda ke domain Windows, biasanya diuruskan oleh pelayan yang berbeza.
@@ -588,6 +637,7 @@ winbind_edom=Nama domain yang tiada
 winbind_cmd=Mengikat ke domain dengan arahan $1 ..
 winbind_failed=.. gagal! Lihat output di atas atas alasan mengapa.
 winbind_ok=.. lengkap.
+
 bind_title=Pilihan Winbind
 bind_ecannot=Anda tidak dibenarkan mengedit pilihan winbind
 bind_header=Pilihan mengikat domain Windows
@@ -606,9 +656,11 @@ bind_erealm=Alam Kerberos tidak sah
 bind_ecache=Masa cache yang hilang atau tidak sah
 bind_euid=Pelbagai UID tidak sah - mestilah seperti 20000-30000
 bind_egid=Julat GID tidak sah - mesti seperti 20000-30000
+
 manual_title=Edit Fail Config
 manual_desc=Mengedit fail konfigurasi Samba $1 ..
 manual_err=Gagal menyimpan fail konfigurasi
 manual_edata=Tiada apa-apa yang masuk!
+
 delete_err=Gagal memadamkan saham
 delete_enone=Tiada yang dipilih

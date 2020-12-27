@@ -1,4 +1,1 @@
-linux_noserverino=Generere inodenummer på klientsiden?
-acl_sysinfo=Vis tilgjengelige diskdata på dashbordet?
-sysinfo_total=Total
-sysinfo_dev=Enhets-ID
+linux_nofail=Fortsette oppstart selv om monteringen mislykkes?

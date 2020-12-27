@@ -5,18 +5,22 @@ index_servers=Run on servers
 index_return=cluster cron jobs list
 index_more=$1 more ..
 index_run=Run now..
+
 edit_title=Edit Cluster Cron Job
 create_title=Create Cluster Cron Job
 edit_servers=Run on servers
 edit_group=Members of $1
 edit_this=this server
 edit_all=&lt;All hosts&gt;
+
 save_err=Failed to save cluster cron job
+
 exec_title=Execute Cluster Cron Job
 exec_cmd=Running $1 on selected servers ..
 exec_failed=Failed to run on $1 : $2
 exec_success=Output from $1 ..
 exec_nohosts=No hosts selected to run on, or selected groups do not contain any usable hosts.
+
 log_run=Ran $1 on $2 servers
 log_run_l=Ran $1 on $2
 log_create=Created cluster cron job for $1
@@ -26,5 +30,6 @@ log_modify_l=Modified cluster cron job $2 for $1
 log_delete=Deleted cluster cron job for $1
 log_delete_l=Deleted cluster cron job $2 for $1
 log_deletes=Deleted $1 cluster cron jobs
+
 delete_err=Failed to delete cluster cron jobs
 delete_enone=None selected

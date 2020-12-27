@@ -2,8 +2,10 @@ index_title=PPPダイヤルインサーバー
 index_return=PPPインデックス
 index_none=このモジュールの機能にはアクセスできません。
 index_delete=選択したアカウントを削除
+
 secrets_none=PPPアカウントはまだ作成されていません。
 secrets_ecannot=PPPアカウントの編集は許可されていません
+
 log_deletes=$1 PPPアカウントを削除しました
 log_apply=適用されたMgetty構成
 log_options=保存されたPPPオプション
@@ -15,6 +17,7 @@ log_dialin_move=発信者ID番号 $1を移動しました
 log_mgetty_create=シリアルポート $1を作成しました
 log_mgetty_modify=変更されたシリアルポート $1
 log_mgetty_delete=シリアルポート $1を削除しました
+
 options_title=PPPオプション
 options_serial=シリアルポート $1
 options_dev=デバイス $1の場合
@@ -45,6 +48,7 @@ options_idle=切断前のアイドル時間
 options_idle_def=決して
 options_eidle=アイドル時間が欠落しているか無効です
 options_ecannot=PPPオプションを編集することはできません
+
 mgetty_title=シリアルポート構成
 mgetty_ecmd=コマンド $1がシステムで見つかりませんでした。このプログラムは、モデムまたは直接接続を介したシリアルポートログインを処理するために必要です。
 mgetty_desc=サーバーがモデムまたは直接接続を介してシリアルポートにログインできるようにするには、以下にリストされている必要があります。このリストにポートを追加すると、 $1プログラムはモデム接続に応答してログインプロンプトを表示するように構成されます。
@@ -86,6 +90,7 @@ mgetty_apply=設定を適用
 mgetty_applydesc=このボタンをクリックして、コマンド $1を実行し、すべてのMgettyプロセスを強制終了して、現在のシリアルポート構成を適用します。
 mgetty_applyerr=構成を適用できませんでした
 mgetty_ecannot=シリアルポート構成を編集することはできません
+
 dialin_title=発信者IDアクセス
 dialin_desc=このページでは、発信者の電話番号に基づいてダイヤルインアクセスを許可または拒否するようにMgettyを構成できます。通話が着信すると、電話番号と一致するリストの最初のエントリによって、通話が受け入れられるかどうかが決まります。
 dialin_efile=Mgetty発信者IDアクセス制御ファイル $1がシステムに見つかりませんでした。 Mgettyがインストールされていないか、<a href='$2'>モジュール設定</a>が間違っている可能性があります。
@@ -106,9 +111,12 @@ dialin_move=移動する
 dialin_err=発信者番号を保存できませんでした
 dialin_enumber=電話番号がないか無効です
 dialin_ecannot=発信者IDアクセスを編集することはできません
+
 acl_pages=利用可能なページ
 acl_direct=1ページに直接移動しますか？
+
 sync_ecannot=unix-ppp同期オプションを編集することはできません
 sync_title=ユーザー同期
+
 delete_err=アカウントを削除できませんでした
 delete_enone=何も選択されていません

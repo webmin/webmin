@@ -16,6 +16,7 @@ index_loadname=Medii de încărcare pentru procesor:
 index_loadnums=$1 (1 minute), $2 (5 minute), $3 (15 minute)
 index_cpuname=Tip CPU:
 index_inzone=În zona $1 
+
 pid=ID-ul
 owner=Proprietar
 command=Comanda
@@ -27,6 +28,7 @@ nice=Nivel frumos
 stime=A început
 sclass=Clasa de programare IO
 sprio=Prioritatea IO
+
 search_user=Detinut de
 search_match=potrivire
 search_cpupc=Folosind mai mult de $1 procesor
@@ -43,6 +45,7 @@ search_sigkill=Procesele ucide
 search_port=Folosind port
 search_protocol=protocol
 search_ip=Utilizarea adresei IP
+
 run_command=Porunca de a rula
 run_submit=Alerga
 run_mode=Mod de rulare
@@ -56,6 +59,7 @@ run_ecannot=Nu aveți voie să rulați comenzi
 run_as=Rulați ca utilizator
 run_euser=Nume de utilizator lipsă sau nevalid
 run_euser2=Nu aveți voie să rulați comenzi ca utilizator selectat
+
 edit_title=Informații despre proces
 edit_gone=Acest proces nu se mai execută
 edit_sub=subprocese
@@ -75,12 +79,15 @@ edit_sigcont=Relua
 edit_open=Fișiere și conexiuni
 edit_trace=Procesul de urmărire
 edit_return=detalii proces
+
 kill_err=Eroare la trimiterea semnalului $1 pentru procesarea $2 
 kill_title=Trimite semnal
 kill_sent=trimis
 kill_ecannot=Nu ai voie să omori procesele
+
 renice_err=Eroare la renunțarea procesului $1 
 renice_ecannot=Nu aveți voie să renunțați la procese
+
 linux_pri=Prioritate
 linux_tty=TTY
 linux_status=stare
@@ -91,25 +98,30 @@ linux_ruser=Utilizator real
 linux_rgroup=Grup real
 linux_pgid=ID-ul grupului de proces
 linux_stime=A început
+
 linuxstat_R=Alergare
 linuxstat_S=Dormit
 linuxstat_D=Somn adinc
 linuxstat_T=Oprit
 linuxstat_Z=zombie
+
 linux_real=Timp real
 linux_be=Cel mai bun efort
 linux_idle=Inactiv
+
 freebsd_ruser=Utilizator real
 freebsd_rgroup=Grup real
 freebsd_tty=TTY
 freebsd_pgid=Grup de proces
 freebsd_stime=A început
 freebsd_lim=Limită de memorie
+
 hpux_pri=Prioritate
 hpux_tty=TTY
 hpux_status=stare
 hpux_wchan=Așteptând
 hpux_stime=A început
+
 hpuxstat_0=Inexistent
 hpuxstat_S=Dormit
 hpuxstat_W=Aşteptare
@@ -118,7 +130,9 @@ hpuxstat_I=Intermediar
 hpuxstat_Z=zombie
 hpuxstat_T=Oprit
 hpuxstat_G=Creştere
+
 macos_tty=TTY
+
 sysv_group=grup
 sysv_ruser=Utilizator real
 sysv_rgroup=Grup real
@@ -127,12 +141,14 @@ sysv_tty=TTY
 sysv_stime=A început
 sysv_task=ID-ul sarcinii
 sysv_zone=Numele zonei
+
 log_run=Comanda Ran "$1"
 log_kill=Semnal trimis $1 pentru procesarea $2 
 log_kills=Trimiteți semnal $1 la $2 procese
 log_kill_l=Semnal trimis $1 pentru procesarea $2 
 log_kills_l=A fost trimis semnalul $1 la procesele <br> $2 
 log_renice=Modificarea priorității procesului $2 la $1 
+
 acl_manage=Gestionează procesele ca utilizator
 acl_manage_def=Utilizator curent Webmin
 acl_edit=Poate ucide și reneca procesele?
@@ -142,11 +158,13 @@ acl_who=Poate gestiona procesele pentru utilizatori
 acl_who0=Toți utilizatorii
 acl_who1=Utilizator curent Webmin
 acl_who2=Utilizatori enumerați ..
+
 kill_kill=Procesul de ucidere
 kill_term=termina
 kill_hup=Repornire
 kill_stop=Stop
 kill_cont=Continua
+
 open_title=Deschideți fișiere și conexiuni
 open_proc=Pentru procesul $1 (PID $2)
 open_header1=Deschide fișiere
@@ -170,6 +188,7 @@ open_blk=Blocare specială
 open_size=Mărime fișier
 open_inode=inod
 open_file=cale
+
 trace_title=Procesul de urmărire
 trace_start=Pornirea urmăririi apelului de sistem pentru $1 ..
 trace_doing=Urmărirea apelului de sistem pentru $1  :
@@ -180,5 +199,7 @@ trace_syscalls=Apelurile de sistem de urmărire:
 trace_all=Toate
 trace_sel=Listat ..
 trace_change=Schimbare
+
 windows_threads=Firele în proces
+
 syslog_dmesg=Mesaje ale kernel-ului

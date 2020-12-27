@@ -16,6 +16,7 @@ index_chain=Kæde $1
 index_action=Handling
 index_desc=Tilstand
 index_comm=Kommentar
+index_no_comment=
 index_move=Bevæge sig
 index_none=Der er ingen regler defineret for denne kæde.
 index_policy=Sæt standardhandling til:
@@ -88,6 +89,7 @@ index_ipset_size=Størrelse
 index_ipvxmode=Skift IP-protokolversion:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
 desc_p=protokollen er $1 
 desc_p!=protokollen er ikke $1 
 desc_s=kilde er $1 
@@ -114,6 +116,8 @@ desc_tcp-option=pakken bruger TCP-indstilling $1
 desc_tcp-option!=pakke bruger ikke TCP-indstilling $1 
 desc_icmp-type=ICMP-typen er $1 
 desc_icmp-type!=ICMP-typen er ikke $1 
+desc_icmpv6-type=ICMP-typen er $1 
+desc_icmpv6-type!=ICMP-typen er ikke $1 
 desc_mac-source=Ethernet-adresse er $1 
 desc_mac-source!=Ethernet-adresse er ikke $1 
 desc_limit=sats er mindre end $1 
@@ -146,10 +150,15 @@ desc_always=Altid
 desc_args--match-set=$2 er indeholdt i IP-sæt $1 
 desc_src=kilde
 desc_dest=bestemmelsessted
+
 redhat_einstalled=Ingen <tt>iptables (6)</tt> startup-handling blev fundet, hvilket indikerer, at IPtables-pakken ikke er installeret på dit system
 redhat_eoutput=Der opstod en fejl ved at få IPtables-status fra kommandoen $1. Dette indikerer sandsynligvis, at dit system er konfigureret til at bruge IPchains i stedet for IPtables.
+
 gentoo_escript=Gentoo IPtables opstart script $1 blev ikke fundet på dit system.
+
 eiptables=Ukendte IPtables gemmer fillinjen : $1 
+eip6tables=Ukendte ip6-tabeller gemmer fillinjen : $1 
+
 edit_title1=Tilføj regel
 edit_title2=Rediger regel
 edit_title3=Klonregel
@@ -218,6 +227,7 @@ edit_physdevout=Udgående fysisk grænseflade
 edit_physdevisin=Pakke indkommende på bridge-interface
 edit_physdevisout=Pakke udgående på bridge-interface
 edit_physdevisbridged=Pakken bruges
+
 save_err=Kunne ikke gemme reglen
 save_echain=Manglende eller ugyldig kæde til at køre
 save_esource=Manglende eller ugyldig kildeadresse eller netværk
@@ -262,23 +272,28 @@ save_estates=Ingen forbindelsestilstander valgt
 save_ecanjump=Du har ikke tilladelse til at bruge denne handling
 save_ephysdevin=Manglende eller ugyldig indkommende fysisk grænseflade
 save_ephysdevout=Manglende eller ugyldig udgående fysisk grænseflade
+
 delete_title=Slet kæde
 delete_rusure=Er du sikker på, at du vil slette kæden $1 ? $2 -regler inden for det vil blive slettet.
 delete_ok=Slet nu
 delete_ecannot=Det er ikke tilladt at slette kæder
+
 clear_title=Ryd kæde
 clear_rusure=Er du sikker på, at du vil slette alle $2 -regler fra kæde $1 ?
 clear_ecannot=Du må ikke rydde kæder
+
 new_err=Kunne ikke oprette kæde
 new_ename=Manglende eller ugyldigt kædenavn
 new_etaken=En kæde med dette navn findes allerede
 new_ecannot=Du må ikke oprette kæder
+
 apply_err=Kunne ikke anvende konfiguration
 apply_ecannot=Du har ikke tilladelse til at anvende konfigurationen
 apply_remote=Fejl fra $1 : $2 
 unapply_err=Kunne ikke vende konfigurationen tilbage
 unapply_ecannot=Du har ikke tilladelse til at vende tilbage til konfigurationen
 bootup_ecannot=Du har ikke tilladelse til at aktivere eller deaktivere firewall ved opstart
+
 log_create_rule=Tilføjet regel til kæde $1 i tabel $2 
 log_modify_rule=Ændret regel i kæde $1 i tabel $2 
 log_delete_rule=Slettet regel i kæde $1 i tabel $2 
@@ -301,8 +316,10 @@ log_add_group=Tilføjet klyngeservere fra gruppe $1
 log_delete_host=Fjernet klyngeserver $1 
 log_delete_group=$1 klyngeservere blev fjernet
 log_openports=Åbnede firewall-porte $1 
+
 setup_eiface=Der er ikke indtastet nogen ekstern netværksgrænseflade
 setup_ecannot=Du har ikke tilladelse til at konfigurere firewall
+
 acl_tables=Tilladte IPtables
 acl_apply=Kan anvende konfiguration?
 acl_unapply=Kan afinstallere konfiguration?
@@ -314,9 +331,11 @@ acl_jall=Alle
 acl_newchain=Kan oprette nye kæder?
 acl_delchain=Kan slette eller rydde kæder?
 acl_policy=Kan ændre standardpolitik?
+
 etable=Du har ikke tilladelse til at redigere denne IPtable
 ejump=Du har ikke tilladelse til at redigere denne regel
 ecluster=Du har ikke tilladelse til at administrere firewall-klyngen
+
 cluster_title=Cluster Firewall-servere
 cluster_none=Der er endnu ikke tilføjet nogen servere til firewall-klyngen.
 cluster_host=Værtsnavn
@@ -327,6 +346,7 @@ cluster_gadd=Tilføj servere i gruppe
 cluster_need=Du skal tilføje servere med et login og password i Webmin Servers Index-modulet, før de kan styres her.
 cluster_return=klyngeservere
 cluster_delete=Fjern valgte
+
 add_title=Tilføj servere
 add_msg=Tilføjer $1 ..
 add_gmsg=Tilføjelse af servere i gruppe $1 ..
@@ -336,13 +356,16 @@ add_echeck=Server $1 har ikke Linux Firewall-modulet
 add_emissing=Server $1 mangler firewall-kommandoen $2 
 add_ok=Tilføjet $1 med $2 aktive firewall-regler.
 add_enone=Ingen servere at tilføje valgt!
+
 policy_ecannot=Du har ikke tilladelse til at ændre standardpolitikken for denne kæde
+
 move_title=Flyt regler
 move_count=Regler valgt
 move_chain=Nuværende ændring
 move_dest=Destinationskæde
 move_ok=Flyt nu
 move_header=Regler flytte indstillinger
+
 rename_title=Omdøb kæde
 rename_count=Regler i kæde
 rename_chain=Nuværende navn
@@ -352,6 +375,3 @@ rename_header=Valg af kædenavn
 rename_adjust=Vil du ændre andre regler, der springer til denne kæde?
 rename_none=Ingen
 rename_ecannot=Du må ikke omdøbe kæder
-desc_icmpv6-type=ICMP-typen er $1 
-desc_icmpv6-type!=ICMP-typen er ikke $1 
-eip6tables=Ukendte ip6-tabeller gemmer fillinjen : $1 

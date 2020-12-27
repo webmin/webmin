@@ -15,5 +15,6 @@ edit_special_daily=روزانه (نیمه شب)
 edit_special_weekly=هفتگی (یکشنبه)
 edit_special_monthly=ماهانه (در تاریخ اول)
 edit_special_yearly=سالانه (اول ژانویه)
+
 log_success=با موفقیت <tt>$2</tt> در <tt>$1</tt> اجرا شد
 log_failure=اجرای <tt>$2</tt> در <tt>$1</tt> :$3 انجام نشد

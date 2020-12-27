@@ -7,6 +7,7 @@ index_delete2=Delete Selected Interfaces
 index_delete3=Delete and Apply Selected Interfaces
 index_apply2=Apply Selected Interfaces
 index_vmin=Virtualmin
+
 ifcs_title=Network Interfaces
 ifcs_now=Active Now
 ifcs_activedesc=Interfaces listed in this table are currently active on the system. In most cases, you should edit them under the <b>Activated at Boot</b> tab.
@@ -55,6 +56,7 @@ ifcs_linkyes=Connected
 ifcs_linkno=Dis-connected
 ifcs_speed=Interface speed
 ifcs_duplex=, $1 duplex
+
 aifc_create=Create Active Interface
 aifc_edit=Edit Active Interface
 aifc_desc1=Active Interface Parameters
@@ -79,6 +81,7 @@ aifc_eaddress6=IPv6 address in row $1 is not valid
 aifc_enetmask6=IPv6 netmask in row $1 must be an integer between 1 and 128
 aifc_eclash6=IPv6 address in row $1 is already in use by interface $2
 aifc_eaddresses6=No IPv6 addresses entered
+
 bifc_create=Create Bootup Interface
 bifc_act=Activate at boot?
 bifc_edit=Edit Bootup Interface
@@ -104,6 +107,7 @@ bifc_edhcpmain=DHCP can only be enabled on the primary network interface
 bifc_bridgeto=Connect bridge to interface
 bifc_ebridgeto=An existing Ethernet interface must be selected for this bridge to use
 bifc_ebridgeto2=The selected interface for the bridge must not have any address assigned
+
 bonding_add=Add a new bonding Interface.
 bonding_create=Create Bonding Interface
 bonding_teamparts=Teaming Partner
@@ -111,11 +115,14 @@ bonding_teammode=Teaming Mode
 bonding_miimon=Mii-Monitoring Interval
 bonding_updelay=Updelay
 bonding_downdelay=Downdelay
+
 vlan_add=Add Vlan Tagged Interface
 vlan_physical=Physical Device
 vlan_id=Vlan ID
 vlan_create=Create VLAN Interface
+
 bridge_create=Create Bridge Interface
+
 routes_title=Routing and Gateways
 routes_boot=Routing configuration activated at <i>boot time</i>
 routes_now=Routing configuration activated now
@@ -184,6 +191,7 @@ routes_tabboot=Boot time configuration
 routes_tabactive=Active configuration
 routes_descactive=This section lists routes that the system currently has configured, and allows you to add or remove active routes on some systems. Be careful doing this, as incorrect changes may cut the system running Webmin off from the rest of the network.
 routes_descboot=This section allows you to configure the routes that are activated when the system boots up, or when network settings are fully re-applied.
+
 dns_title=Hostname and DNS Client
 dns_options=DNS Client Options
 dns_hostname=Hostname
@@ -201,6 +209,7 @@ dns_edomain='$1' is not a valid domain name
 dns_esearch=No domains to search given
 dns_hoststoo=Update hostname in host addresses if changed?
 dns_dhcp=Hostname is set by DHCP server?
+
 hosts_title=Host Addresses
 hosts_ip=IP Address
 hosts_host=Hostnames
@@ -211,6 +220,7 @@ hosts_detail=Host and Addresses
 hosts_return=host addresses list
 hosts_ecannot=You are not allowed to edit host addresses
 hosts_delete=Delete Selected Host Addresses
+
 ipnodes_title=IPv6 Host Addresses
 ipnodes_ip=IPv6 Address
 ipnodes_host=Hostnames
@@ -222,6 +232,7 @@ ipnodes_return=IPv6 host addresses list
 ipnodes_ecannot=You are not allowed to edit IPv6 host addresses
 ipnodes_none=No IPv6 host addresses have been defined yet.
 ipnodes_delete=Delete Selected IPv6 Host Addresses
+
 log_create_host=Created host address $1
 log_delete_host=Deleted host address $1
 log_modify_host=Modified host address $1
@@ -245,6 +256,7 @@ log_apply_bfics=Activated $1 boot-time interfaces
 log_create_route=Created active route for $1
 log_create_defroute=Created active default route
 log_delete_routes=Deleted $1 active routes
+
 acl_ifcs=Can edit network interfaces?
 acl_routes=Can edit routing and gateways?
 acl_dns=Can edit DNS client settings?
@@ -261,6 +273,7 @@ acl_up=Can edit active state?
 acl_virt=Can add virtual interfaces?
 acl_delete=Can delete interfaces?
 acl_hide=Hide non-editable interfaces?
+
 interfaces_title1=Choose Interfaces...
 interfaces_all=All Interfaces...
 interfaces_sel=Selected Interfaces
@@ -268,7 +281,9 @@ interfaces_ok=OK
 interfaces_cancel=Cancel
 interfaces_clear=Clear
 interfaces_title2=Select User...
+
 apply_ecannot=You are not allowed to apply the configuration
+
 mod_egone=Interface is no longer active!
 mod_title=Active Interface
 mod_desc=The $1 interface is being used for $2, and so cannot be managed using this module.
@@ -280,6 +295,7 @@ mod_pptpc=the PPTP connection $1
 mod_zones=a virtual interface for zone <tt>$1</tt>
 mod_virtualmin=the Virtualmin server <tt>$1</tt>
 mod_reseller=the Virtualmin reseller <tt>$1</tt>
+
 range_edit=Edit Address Range
 range_create=Create Address Range
 range_header=Address range interface options
@@ -295,13 +311,17 @@ range_eend=Missing or invalid ending IP address
 range_enum=Missing or non-numeric first virtual interface number
 range_eclass=Starting and ending addresses must be within the same class C network
 range_ebefore=The ending address must be higher than the starting address
+
 chooser_any=&lt;Any&gt;
 chooser_other=Other..
+
 dafics_err=Failed to de-activate interfaces
 daifcs_enone=None selected
 daifcs_egone=Interface no longer exists!
+
 dbifcs_err=Failed to delete interfaces
 dbifcs_err2=Failed to activate interfaces
+
 hdelete_err=Failed to delete host addresses
 hdelete_enone=None selected
 idelete_err=Failed to delete IPv6 host addresses

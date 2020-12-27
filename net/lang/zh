@@ -1,5 +1,6 @@
 index_title=网络配置
 index_return=网络配置
+
 ifcs_title=网络接口
 ifcs_now=接口当前活动
 ifcs_name=名称
@@ -21,6 +22,7 @@ ifcs_mtu=最大传输单元
 ifcs_virts=虚拟接口
 ifcs_addvirt=增加虚拟接口
 ifcs_return=网络接口
+
 aifc_create=创建活动接口
 aifc_edit=编辑活动接口
 aifc_desc1=活动接口参数
@@ -39,6 +41,7 @@ aifc_ebroad='$1' 错误的广播地址
 aifc_emtu='$1' 错误的最大传输单元
 aifc_ehard='$1' 错误的硬件地址
 aifc_eexist=接口 '$1' 不存在
+
 bifc_create=创建引导时接口
 bifc_edit=编辑引导时接口
 bifc_desc1=引导时接口参数
@@ -55,6 +58,7 @@ bifc_emask='$1' 错误的网络掩码
 bifc_ebroad='$1' 错误的广播地址
 bifc_emtu='$1' 错误的最大传输单元
 bifc_err3=启用接口失败
+
 routes_title=路由和网关
 routes_boot=<i>引导时</i>启用的路由配置
 routes_default=缺省路由器
@@ -77,6 +81,7 @@ routes_defaults=缺省路由器
 routes_possible=如果可能
 routes_local=本地路由
 routes_err=存储路由失败
+
 dns_title=DNS 客户
 dns_options=DNS 客户选项
 dns_hostname=主机名
@@ -86,6 +91,7 @@ dns_search=搜索域
 dns_none=无
 dns_listed=列表 ..
 dns_eorder=丢失解析次序
+
 hosts_title=主机地址
 hosts_ip=IP 地址
 hosts_host=主机名
@@ -94,6 +100,7 @@ hosts_edit=编辑主机地址
 hosts_create=创建主机地址
 hosts_detail=主机和地址
 hosts_return=主机地址列表
+
 log_create_host=已创建客户地址 $1
 log_delete_host=已删除客户地址 $1
 log_modify_host=已更新客户地址 $1

@@ -12,6 +12,7 @@ index_ereq_resource_cmd=Скриптът за изискване на ресур
 index_version=Heartbeat версия $1
 index_noversion=Внимание - Версията на Heartbeat, инсталирана на вашата система, не можа да бъде определена автоматично. Трябва да я настроите на страницата с <a href='$2'>конфигурацията на модула</a>.
 index_status=Статус на heartbeat
+
 conf_title=Опции на конфигурацията
 conf_header=Опции за конфигуриране на heartbeat
 conf_serials=Серийни портове за heartbeat
@@ -54,6 +55,7 @@ conf_auto_on=${conf_enabled}
 conf_auto_off=${conf_disabled}
 conf_auto_legacy=Режим, съвместим с предишни версии
 conf_auto_=${default}
+
 res_title=Клъстерни ресурси
 res_node=Първичен възел
 res_ips=IP адреси
@@ -67,6 +69,7 @@ res_getserv=Получаване на ресурс
 res_hbdown=Heartbeat е изключен
 res_up=ВКЛЮЧЕН
 res_down=ИЗКЛЮЧЕН
+
 node_create=Добавяне на клъстерен ресурс
 node_edit=Редактиране на клъстерен ресурс
 node_header=Подробности за клъстерен ресурс
@@ -83,6 +86,7 @@ node_enone=Липсващ или невалиден първичен възел
 node_eip='$1' не е валиден IP адрес
 node_ecidr='$1' не е валиден CIDR
 node_ebroad='$1' не е валиден адрес за broadcast
+
 auth_title=Ключове за идентификация
 auth_header=Идентификация на клъстерен възел
 auth_mode=Режим на идентификация
@@ -92,6 +96,8 @@ auth_md5=MD5 с парола
 auth_err=Грешка при запис на ключовете за идентификация
 auth_emd5=Липсваща или невалидна MD5 парола
 auth_esha1=Липсваща или невалидна SHA1 парола
+
 start_err=Грешка при стартиране на heartbeat
+
 apply_err=Грешка при прилагане на промените
 apply_epid=Процесът не работи вече

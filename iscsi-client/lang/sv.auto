@@ -3,8 +3,10 @@ index_clink=Kanske är den inte installerad, eller är din <a href='$1'>modulkon
 index_return=modulindex
 index_atboot=Börja vid start?
 index_atbootdesc=Ändra det här alternativet för att kontrollera om iSCSI-klienten startas vid starttid eller inte. Detta krävs för att filsystem som är monterade från iSCSI-servrar automatiskt ska monteras.
+
 check_econfig=ISCSI-klientkonfigurationsfilen $1 hittades inte på ditt system.
 check_eiscsiadm=ISCSI-klientadministrationsprogrammet $1 hittades inte på ditt system.
+
 auth_title=Autentiseringsalternativ
 auth_header=iSCSI-klient- och serververifiering
 auth_name=Lokalt systeminitiativnamn
@@ -29,6 +31,7 @@ auth_edpassword=Saknar lösenord för upptäckt för server
 auth_edusername_in=Saknad användarnamn för klienten
 auth_edpassword_in=Saknar lösenord för upptäckten för klienten
 auth_egen=Det gick inte att skapa ett nytt namn!
+
 timeout_title=iSCSI Timeouts
 timeout_header=iSCSI-klient timeoutalternativ
 timeout_timeout=Dags att vänta innan SCSI-kommandon misslyckas
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=Saknas eller inte-numerisk tid att vänta på ping inn
 timeout_eabort_timeout=Saknas eller inte-numerisk tid att vänta på abortsvar innan det misslyckas
 timeout_elu_reset_timeout=Saknas eller inte-numerisk tid för att vänta på logiskt enhetssvar innan det misslyckas
 timeout_etgt_reset_timeout=Saknas eller inte-numerisk tid att vänta på målsvar innan du misslyckas
+
 iscsi_title=iSCSI-alternativ
 iscsi_header=Andra iSCSI-alternativ
 iscsi_startup=Ansluta sessioner vid starttid?
@@ -62,6 +66,7 @@ iscsi_err=Det gick inte att spara iSCSI-alternativ
 iscsi_eretry=Saknas eller icke-numeriskt antal gånger för att försöka igen inloggning
 iscsi_ecmds=Saknade eller icke-numeriska maxkommandon i kö per session
 iscsi_equeue=Saknade eller icke-numeriska maxkommandon i kö per enhet
+
 ifaces_title=iSCSI-gränssnitt
 ifaces_elist=Det gick inte att lista gränssnitt : $1 
 ifaces_name=Gränssnittsnamn
@@ -78,11 +83,13 @@ ifaces_hwaddress=MAC-adress
 ifaces_ifacename=Källgränssnitt
 ifaces_ipaddressdef=Automatisk
 ifaces_notset=Automatisk
+
 iadd_err=Det gick inte att lägga till gränssnittet
 iadd_eclash=Ett gränssnitt med namnet $1 finns redan
 iadd_eipaddress=IP-adress saknas eller ogiltig
 iadd_ehwaddress=Saknad eller ogiltig MAC-adress
 iadd_ename=Gränssnittsnamn saknas eller innehåller ogiltiga tecken
+
 difaces_err=Det gick inte att ta bort gränssnitten
 difaces_enone=Ingen vald
 difaces_edelete=Borttagning av gränssnitt $1 misslyckades : $2 
@@ -93,6 +100,7 @@ difaces_confirm=Ta bort gränssnitt
 difaces_target=iSCSI-mål
 difaces_ip=iSCSI-server
 difaces_users=Vissa anslutningar med dessa gränssnitt är för närvarande aktiva och fungerar inte när gränssnitten tas bort :
+
 conns_title=iSCSI-anslutningar
 conns_elist=Det gick inte att lista anslutningar : $1 
 conns_ip=Server-IP
@@ -113,6 +121,7 @@ conns_return=lista över anslutningar
 conns_iface=iSCSI-gränssnitt
 conns_ifacedef=Välj automatiskt
 conns_ifaceerr=Det gick inte att hämta gränssnitt : $1 
+
 add_title=Lägg till iSCSI-anslutning
 add_err=Det gick inte att lägga till iSCSI-anslutning
 add_ehost=Värdnamn saknas eller inte kan lösas
@@ -129,6 +138,7 @@ add_on=$1 på $2
 add_auth=Logga in på servern
 add_auth1=Använd standardverifieringsmetod
 add_auth0=Logga in som $2 med lösenord $3 med metod $1 
+
 dconns_err=Det gick inte att koppla bort anslutningarna
 dconns_enone=Ingen vald
 dconns_edelete=Avlägsnande av mål $2 från värd $1 misslyckades : $3 
@@ -142,6 +152,7 @@ dconns_use=Använd av
 dconns_size=Partitionsstorlek
 dconns_confirm=Ta bort anslutningar
 dconns_unused=Oanvänd
+
 vconn_title=iSCSI-anslutning
 vconn_egone=Den valda anslutningen finns inte längre!
 vconn_header=iSCSI-anslutningsinformation
@@ -160,8 +171,10 @@ vconn_device3=Konstant enhetsnamn
 vconn_delete=Koppla bort anslutningen
 vconn_users=Aktuella användare
 vconn_size=Diskstorlek
+
 atboot_err=Det gick inte att aktivera vid starttid
 atboot_einit=Det finns ingen startåtgärd med namnet $1 
+
 log_auth=Sparade autentiseringsalternativ
 log_timeout=Sparade timeoutalternativ
 log_iscsi=Sparade iSCSI-alternativ

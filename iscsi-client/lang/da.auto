@@ -3,8 +3,10 @@ index_clink=Måske er det ikke installeret, eller din <a href='$1'>modulkonfigur
 index_return=modul indeks
 index_atboot=Start ved opstart?
 index_atbootdesc=Skift denne mulighed for at kontrollere, om iSCSI-klienten startes ved starttidspunktet eller ej. Dette er nødvendigt for, at filsystemer, der er monteret fra iSCSI-servere, automatisk monteres.
+
 check_econfig=ISCSI-klientkonfigurationsfilen $1 blev ikke fundet på dit system.
 check_eiscsiadm=ISCSI-klientadministrationsprogrammet $1 blev ikke fundet på dit system.
+
 auth_title=Autentificeringsindstillinger
 auth_header=iSCSI klient og servergodkendelse
 auth_name=Lokalt systeminitiatornavn
@@ -29,6 +31,7 @@ auth_edpassword=Manglende opdagelsesadgangskode til server
 auth_edusername_in=Manglende brugernavn til opdagelse for klient
 auth_edpassword_in=Manglende opdagelsesadgangskode til klient
 auth_egen=Kunne ikke generere et nyt navn!
+
 timeout_title=iSCSI Timeouts
 timeout_header=iSCSI klient timeout muligheder
 timeout_timeout=Tid til at vente, før SCSI-kommandoer mislykkes
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=Manglende eller ikke-numerisk tid til at vente på pin
 timeout_eabort_timeout=Manglende eller ikke-numerisk tid til at vente på abort-respons, før det mislykkes
 timeout_elu_reset_timeout=Manglende eller ikke-numerisk tid til at vente på et logisk enhedssvar, før det mislykkes
 timeout_etgt_reset_timeout=Manglende eller ikke-numerisk tid til at vente på målsvar, før det mislykkes
+
 iscsi_title=iSCSI-indstillinger
 iscsi_header=Andre iSCSI-indstillinger
 iscsi_startup=Forbind sessioner ved starttidspunktet?
@@ -62,6 +66,7 @@ iscsi_err=Kunne ikke gemme iSCSI-indstillinger
 iscsi_eretry=Manglende eller ikke-numerisk antal gange for at prøve at logge ind igen
 iscsi_ecmds=Manglende eller ikke-numeriske maksimale kommandoer i kø pr. Session
 iscsi_equeue=Manglende eller ikke-numeriske maksimale kommandoer i kø pr. Enhed
+
 ifaces_title=iSCSI-grænseflader
 ifaces_elist=Kunne ikke liste grænseflader : $1 
 ifaces_name=Grænsefladens navn
@@ -78,11 +83,13 @@ ifaces_hwaddress=Mac-adresse
 ifaces_ifacename=Kilde interface
 ifaces_ipaddressdef=Automatisk
 ifaces_notset=Automatisk
+
 iadd_err=Kunne ikke tilføje interface
 iadd_eclash=En grænseflade navngivet $1 findes allerede
 iadd_eipaddress=Manglende eller ugyldig IP-adresse på kilden
 iadd_ehwaddress=Manglende eller ugyldig MAC-adresse
 iadd_ename=Interfacenavn mangler eller indeholder ugyldige tegn
+
 difaces_err=Grænseflader kunne ikke fjernes
 difaces_enone=Ingen valgt
 difaces_edelete=Fjernelse af interface $1 mislykkedes : $2 
@@ -93,6 +100,7 @@ difaces_confirm=Fjern grænseflader
 difaces_target=iSCSI-mål
 difaces_ip=iSCSI-server
 difaces_users=Nogle forbindelser ved hjælp af disse grænseflader er i øjeblikket aktive og fungerer ikke, når grænsefladerne fjernes :
+
 conns_title=iSCSI-forbindelser
 conns_elist=Kunne ikke liste forbindelser : $1 
 conns_ip=Server IP
@@ -113,6 +121,7 @@ conns_return=liste over forbindelser
 conns_iface=iSCSI-interface
 conns_ifacedef=Vælg automatisk
 conns_ifaceerr=Kunne ikke hente grænseflader : $1 
+
 add_title=Tilføj iSCSI-forbindelse
 add_err=Kunne ikke tilføje iSCSI-forbindelse
 add_ehost=Manglende eller ikke-opløselig værtsnavn
@@ -129,6 +138,7 @@ add_on=$1 på $2
 add_auth=Login til server
 add_auth1=Brug standardgodkendelsesmetode
 add_auth0=Login som $2 med kodeord $3 ved hjælp af metode $1 
+
 dconns_err=Kunne ikke afbryde forbindelserne
 dconns_enone=Ingen valgt
 dconns_edelete=Fjernelse af mål $2 fra vært $1 mislykkedes : $3 
@@ -142,6 +152,7 @@ dconns_use=Brugt af
 dconns_size=Partitionsstørrelse
 dconns_confirm=Fjern forbindelser
 dconns_unused=Ubrugt
+
 vconn_title=iSCSI-forbindelse
 vconn_egone=Den valgte forbindelse findes ikke længere!
 vconn_header=iSCSI-forbindelsesdetaljer
@@ -160,8 +171,10 @@ vconn_device3=Konstant enhedsnavn
 vconn_delete=Frakobl forbindelsen
 vconn_users=Nuværende brugere
 vconn_size=Diskstørrelse
+
 atboot_err=Kunne ikke aktivere ved starttidspunktet
 atboot_einit=Der findes ingen boot handling med navnet $1 
+
 log_auth=Gemte godkendelsesindstillinger
 log_timeout=Gemte timeout-indstillinger
 log_iscsi=Gemte iSCSI-indstillinger

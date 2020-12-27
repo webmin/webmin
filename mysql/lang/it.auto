@@ -9,6 +9,7 @@ index_mysql=Programma client MySQL
 index_mysqlshow=Programma di stato MySQL
 index_mysqlstatus=Script di avvio di MySQL
 index_toomany=Ci sono troppi database da visualizzare. Trova database corrispondenti:
+
 dbase_header=Tabelle, indici e viste del database
 dbase_empty=Database vuoto
 dbase_name=Nome
@@ -19,10 +20,13 @@ dbase_type=genere
 dbase_typetable=Tabella 1)
 dbase_typeindex=Indice
 dbase_typeview=Visualizza
+
 ddrop_rusure2=Sei sicuro di voler svuotare il database $1 ? $2 tabelle contenenti $3 righe di dati verranno eliminate.
 ddrop_empty2=Elimina tutte le tabelle
+
 table_copy2=Copia i campi dal database
 table_copy2t=e tavolo
+
 field_current=Ora attuale
 field_defval=Valore
 field_defdef=MySQL predefinito
@@ -30,17 +34,20 @@ field_defnone=Nessun valore predefinito
 field_defempty=Stringa vuota
 field_defleave=Non cambiare
 field_dmode1=Nullo
+
 view_refresh=ricaricare
 view_match4=più grande di
 view_match5=meno di
 view_searchheadnot=Risultati della ricerca per non $1 nel campo $2 ..
 view_go=Partire
 view_sqlrun=Risultati generati dalla query SQL : $1 
+
 users_syncwhen=Quando sincronizzare
 users_ssl=Certificato
 users_dtitle=Elimina autorizzazioni utente
 users_drusure=Sei sicuro di voler eliminare le autorizzazioni utente MySQL $1 selezionate?
 users_dok=Elimina utenti
+
 user_vwarning=ATTENZIONE: questo utente MySQL è il login di amministrazione per il dominio Virtualmin $1. La modifica di qualsiasi impostazione qui può causare errori in Virtualmin.
 user_locked=Bloccato
 user_priv_select=Seleziona i dati della tabella
@@ -89,17 +96,22 @@ user_emax_user_connections=Il numero massimo di accessi simultanei deve essere u
 user_emax_connections=Il numero massimo di connessioni all'ora deve essere un numero
 user_emax_updates=Gli aggiornamenti massimi all'ora devono essere un numero
 user_emax_questions=Il numero massimo di query all'ora deve essere un numero
+
 dbs_dtitle=Elimina autorizzazioni database
 dbs_drusure=Sei sicuro di voler eliminare le autorizzazioni del database MySQL $1 selezionato?
 dbs_dok=Elimina autorizzazioni
+
 hosts_dtitle=Elimina autorizzazioni host
 hosts_drusure=Sei sicuro di voler eliminare le autorizzazioni host MySQL $1 selezionate?
 hosts_dok=Elimina autorizzazioni
 hosts_return=autorizzazioni host
+
 host_sel=Selezionato
 host_otherdb=Modello di corrispondenza
+
 newdb_tname=Di nome
 newdb_collation=Ordine di confronto
+
 exec_header2a=Questo può anche essere usato per ripristinare un backup MySQL, che è solo un file di comandi SQL.
 exec_tabexec=Esegui SQL
 exec_tabfile=Esegui SQL dal file
@@ -109,19 +121,26 @@ exec_iheader=Opzioni di importazione dei file di testo
 exec_created=$1 tabelle sono state create.
 exec_inserted=Sono stati inseriti $1 record.
 exec_cs=Set di caratteri per i dati
+
 tprivs_dtitle=Elimina autorizzazioni tabella
 tprivs_drusure=Sei sicuro di voler eliminare le autorizzazioni della tabella MySQL $1 selezionate?
 tprivs_dok=Elimina autorizzazioni
+
 tpriv_edb=Nome del database mancante o non valido
+
 cprivs_add2=Aggiungi nuove autorizzazioni :
 cprivs_dtitle=Elimina autorizzazioni colonna
 cprivs_drusure=Sei sicuro di voler eliminare le autorizzazioni di colonna MySQL $1 selezionate?
 cprivs_dok=Elimina autorizzazioni
+
 cpriv_edb=Nome del database mancante o non valido
+
 acl_files=È possibile eseguire SQL da file locali?
+
 log_set=Variabili $1 di MySQL modificate
 log_root=Password di amministrazione modificata
 log_manual=File di configurazione modificato manualmente
+
 backup_prefix=Prefisso nome file
 backup_eprefix=Il prefisso del nome file non può contenere /
 backup_noprefix=Nessuna
@@ -150,8 +169,10 @@ backup_bodyspace=Dimensione del filesystem: $1 Spazio libero : $2
 backup_bodyall=tutti
 backup_edownloadall=È possibile scaricare un solo backup del database
 backup_edownloadsave=La modalità di download non può essere utilizzata per i backup pianificati
+
 csv_format0=CSV con virgolette
 csv_format1=CSV senza virgolette
+
 cnf_socket=Presa Unix MySQL
 cnf_stor=Motore di archiviazione tabella predefinito
 cnf_esocket=Nome file socket Unix mancante
@@ -169,34 +190,44 @@ cnf_restart=Salva e riavvia MySQL
 cnf_fpt=File separato per ogni tabella InnoDB?
 cnf_ilt=Timeout blocco InnoDB (in secondi)
 cnf_eilt=Il timeout del blocco InnoDB deve essere un numero intero
+
 manual_title=Modifica file di configurazione
 manual_file=Modifica file di configurazione:
 manual_ok=ok
 manual_efile=File di configurazione non valido!
 manual_err=Impossibile salvare il file di configurazione
+
 index_unique=Unico
 index_fulltext=Testo intero
+
 syslog_desc2=Messaggio di errore di MySQL
+
 view_merge=Unisci SQL
 view_check=Inserisci controllo
 view_cascaded=Viste sottostanti
+
 procs_id=ID
 procs_db=Banca dati
 procs_cmd=Modalità
+
 vars_desc=Avvertenza: le variabili impostate in questa pagina verranno ripristinate ai valori predefiniti al riavvio di MySQL. Le impostazioni permanenti devono essere effettuate nella pagina <a href='$1'>Configurazione del server MySQL</a>.
 vars_search=Mostra le variabili corrispondenti:
 vars_ok=Ricerca
 vars_none2=Nessuna variabile di sistema corrisponde alla tua ricerca.
 vars_none=Nessuna variabile di sistema trovata!
+
 compat_ansi=ANSI
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQL 4.0
 compat_postgresql=PostgreSQL
+
 compat_oracle=Oracolo
 compat_mssql=Microsoft SQL
 compat_db2=DB2
 compat_maxdb=MaxDB
+
 config_echarset=Set di caratteri mancanti o non validi
+
 root_title=Cambia password di amministrazione
 root_header=Nuova password di amministrazione
 root_user=Accesso amministrativo
@@ -209,6 +240,7 @@ root_epass1=Nessuna nuova password inserita
 root_epass2=le passwords non corrispondono
 root_none=No Password!
 root_auto=Automatico (in genere <tt>root</tt>)
+
 mysqlpass_err=Modalità sicura di MySQL
 mysqlpass_esafecmd=Il comando $1 necessario per avviare MySQL con l'autenticazione disabilitata non è stato trovato
 mysqlpass_eshutdown=Arresto non riuscito : $1 

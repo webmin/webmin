@@ -15,6 +15,7 @@ index_use=erabilera-
 index_free=Free
 index_format=Disko hau ez da formateatu
 index_return=diskoen zerrenda
+
 edit_ecannot=Ezin duzu disko hau editatu
 edit_title=Editatu partizioa
 edit_header=Partizioaren xehetasunak
@@ -56,6 +57,7 @@ edit_tunedesc2=Ezin duzu fitxategi sistema partizio honetan sintonizatu oraindik
 edit_tunedesc3=Ezin duzu fitxategi sistema partizio honetan sintonizatu, muntatuta dagoelako. Erabili <a href=/mount/>fitxategi sistemen modulua</a> lehenengo desmuntatzeko.
 edit_tunedesc4=Ezin duzu fitxategi sistema partizio honetan sintonizatu fitxategi sistemarik ez duelako.
 edit_tunedesc5=Ezin duzu fitxategi sistema partizio honetan sintonizatu, soilik <tt>UFS</tt> fitxategi sistemak sintonizatu daitezkeelako.
+
 save_ecannot=Ezin duzu disko hau editatu
 save_edelete=Ezin izan da partizioa ezabatu
 save_esave=Ezin izan da partizioa gorde
@@ -64,6 +66,7 @@ save_eend='$1' ez da baliozko zilindro amaierakoa
 save_estartmin=Hasierako zilindroak> 0 izan behar du
 save_eendmax=Amaierako zilindroa < $1 izan behar du
 save_estartend=Hasierako zilindroak amaiera baino txikiagoa izan behar du
+
 newfs_title=Sortu fitxategi sistema
 newfs_ecannot=Ezin duzu disko hau formatu
 newfs_desc=Inprimaki honen behealdean dagoen botoian klik egitean $1 berri bat garatuko da $2 gailuan. Partizio honetako datu guztiak betiko ezabatuko dira.
@@ -89,6 +92,7 @@ newfs_err=Huts egin du fitxategi sistema sortzerakoan
 newfs_exec=$1 komandoa exekutatzen.
 newfs_failed=.. Komandoak huts egin du!
 newfs_ok=.. agindua bukatuta.
+
 fsck_title=Konponketa fitxategi sistema
 fsck_ecannot=Ezin duzu disko hau konpontzea
 fsck_desc=<b>Konponketa</b> botoian klik egitean $1 $2 ko $1 egiaztatuko da. Azterketa eta konponketa maila beheko aukeran zehazten da.
@@ -106,6 +110,7 @@ fsck_37=egiaztatzean hil den prozesua
 fsck_39=akats okerrak hauteman dira!
 fsck_40=ez da akatsik atzeman
 fsck_unknown=errore ezezaguna
+
 tunefs_title=Doinua fitxategi sistema
 tunefs_ecannot=Ezin duzu disko hau sintonizatu
 tunefs_desc=Inprimaki honek $1 aren% parametroak $2 an doitzeko aukera ematen du. Fitxategi-sistema honetan dauden fitxategiek ez diete kalterik egingo.
@@ -122,6 +127,7 @@ tunefs_err=Ezin izan da fitxategi-sistema sintonizatu
 tunefs_exec=$1 komandoa exekutatzen.
 tunefs_failed=.. Komandoak huts egin du!
 tunefs_ok=.. agindua bukatuta.
+
 select_device=SCSI kontrola $1 xede $2 unitate $3 
 select_idedevice=IDE gailua $1 
 select_part=SCSI kontrola $1 xede $2 unitate $3 partizio $4 
@@ -131,10 +137,13 @@ esun=Partizioak Sun hardwarean soilik alda daitezke
 emounted=Diskoak partizioak muntatu ditu
 elast=Ezin da azken partizioa kendu
 eformat=<tt>format</tt> ez duzu diskorik aurkitu!
+
 fstype_ufs=Solaris Unix fitxategi sistema
 fstype_unknown=Fitxategi sistema ezezaguna
+
 acl_disks=Erabiltzaile honek partitu eta formatu dezake diskoak
 acl_dall=Disko guztiak
 acl_dsel=Hautatutako ..
 acl_view=Editatu al ditzakezu diskoak eta partizioak?
+
 ecannot=Ezin duzu partizioak editatu

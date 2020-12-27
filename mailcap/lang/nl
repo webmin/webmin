@@ -9,6 +9,7 @@ index_disable=Geselecteerde Uitschakelen
 index_enable=Geselecteerde Aanzetten
 index_enabled=Aangezet?
 index_return=Lijst van programma's
+
 edit_title1=Maak MIME Type Programma
 edit_title2=Bewerk MIME Type Programma
 edit_header=MIME type handler programma details
@@ -22,18 +23,21 @@ edit_none=Niet één (altijd programma gebruiken)
 edit_term=Output in terminal laten zien?
 edit_copious=Produceerd veel output?
 edit_desc=MIME type omschrijving
+
 save_err=Mislukt om MIME type programma op te slaan
 save_etype=Ontbrekende of ongeldige MIME type
 save_eprogram=Ontbrekend afhandel programma
 save_eclash=Een aangezet programma voor het ingevulde MIME type bestaat reeds
 save_etest=Ontbrekende of ongeldig test opdracht
 save_edesc=Ongeldige MIME type omschrijving
+
 delete_err=Mislukt om MIME type programma's te verwijderen
 disable_err=Mislukt om MIME type programma's uit te schakelen
 disable_eclash=Een uitgeschakeld MIME type programma voor $1 bestaat reeds
 enable_err=Mislukt om MIME type programma's aan te zetten
 enable_eclash=Een aangezet MIME type programma voor $1 bestaat reeds
 delete_enone=Niets geselecteerd
+
 log_delete_mailcap=Verwijderde MIME type programma voor $1
 log_create_mailcap=Gemaakte MIME type programma voor $1
 log_modify_mailcap=Gemodificeerde MIME type programma voor $1

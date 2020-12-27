@@ -7,6 +7,7 @@ index_dsize=Tamaina osoa
 index_dmodel=Egin eta modelatu
 index_dparts=xerra
 index_return=diskoen zerrenda
+
 disk_title=Editatu Diskoa
 disk_egone=Diskoa jada ez dago!
 disk_no=Slice
@@ -31,9 +32,11 @@ disk_return=diskoaren xehetasunak eta xerren zerrenda
 disk_add=Sortu xerra berri bat.
 disk_smart=Erakutsi SMART egoera
 disk_smartdesc=Erakutsi disko honen uneko egoera SMART-ek hauteman duen moduan, eta egiaztatu diskoko akatsak.
+
 select_device=$1 gailua $2 
 select_slice=$1 gailua $2 xerra $3 
 select_part=$1 gailua $2 zati $3 partizio $4 
+
 slice_title=Editatu xerra
 slice_egone=Hautatutako xerra ez da existitzen!
 slice_ssize=Xerra tamaina
@@ -58,6 +61,7 @@ slice_return=xerraren xehetasunak eta partizioen zerrenda
 slice_err=Ezin izan da xerra aldatu
 slice_header=Xerra xehetasunak
 slice_suse=Zuzenean erabiltzen du
+
 dslice_title=Ezabatu xerra
 dslice_rusure=Ziur $1 xerra ezabatu nahi duzula? Bere barruan dauden partizioak eta fitxategi-sistemak ere ezabatu egingo dira.
 dslice_warn=Abisua: xerra hau erabiltzen du : $1 
@@ -65,6 +69,7 @@ dslice_confirm=Ezabatu orain
 dslice_deleting=$1 xerra ezabatzen ..
 dslice_failed=.. ezabatzeak huts egin du : $1 
 dslice_done=.. egin
+
 nslice_title=Sortu Xerra
 nslice_header=Xerra xehetasun berriak
 nslice_number=Xerra kopurua
@@ -86,6 +91,7 @@ nslice_done=.. xerra gehitu da
 nslice_parting=Sortu partizio lehenetsiak $1 -ko $1 zatian.
 nslice_pfailed=.. partizioaren sorrerak huts egin du : $1 
 nslice_pdone=.. partizioa gehitu da
+
 npart_title=Sortu partizioa
 npart_header=Partizioaren xehetasun berriak
 npart_letter=Zatiketaren gutuna
@@ -98,6 +104,7 @@ npart_emax=Amaiera-blokea ezin da $1 blokeen xerra tamaina baino handiagoa izan
 npart_creating=$1 partizioa sortzen $2 an.
 npart_failed=.. partizioaren sorrerak huts egin du : $1 
 npart_done=.. partizioa gehitu da
+
 part_title=Editatu partizioa
 part_egone=Partizioa ez dago jada!
 part_header=Partizioaren xehetasunak
@@ -124,6 +131,7 @@ part_newmount2=Mendiaren partizioa
 part_mountmsg=Muntatu gailua zure sisteman direktorio berrietan, fitxategiak gordetzeko erabil dezan. Fitxategi-sistema sortu behar da gailuan.
 part_mountmsg2=Muntatu gailua memoria birtual gisa zure sisteman, eskuragarri dagoen memoria kopurua handitzeko.
 part_cannotedit=Partizio hau ezin da aldatu gaur egun erabiltzen den moduan.
+
 dpart_title=Ezabatu partizioa
 dpart_rusure=Ziur zaude $1 partizioa ezabatu nahi duzula? Bertan dauden fitxategi-sistema guztiak ere ezabatuko dira.
 dpart_warn=Abisua: partizio hau $1 ek erabiltzen du gaur egun
@@ -131,6 +139,7 @@ dpart_confirm=Ezabatu orain
 dpart_deleting=$1 partizioa ezabatzen ..
 dpart_failed=.. ezabatzeak huts egin du : $1 
 dpart_done=.. egin
+
 newfs_title=Sortu fitxategi sistema
 newfs_header=Fitxategi-sistema berriaren xehetasunak
 newfs_free=Sustraia erreserbatzeko espazioa
@@ -145,11 +154,13 @@ newfs_elabel=Etiketa falta edo baliogabea
 newfs_creating=$1 fitxategi-sistema sortzen.
 newfs_failed=sorrerak huts egin du.
 newfs_done=.. arrakastaz sortu da
+
 fsck_title=Egiaztatu fitxategi-sistema
 fsck_err=Ezin izan da fitxategi-sistema egiaztatu
 fsck_checking=Fitxategi-sistema $1 egiaztatzen da.
 fsck_failed=.. huts egin du!
 fsck_done=.. egiaztatu da akatsik aurkitu gabe
+
 log_create_slice=$1 xerra sortu da
 log_delete_slice=$1 xerra ezabatu da
 log_modify_slice=$1 xerra aldatu da

@@ -22,6 +22,7 @@ index_eversion=El comando Webalizer $1 de su sistema tiene versión $2, pero est
 index_egetversion=Fallo al obtener la versión de Webalizer con el comando $1 : $2
 index_when=Sí, $1
 index_webalizer=Webalizer
+
 edit_title1=Añadir Archivo Log
 edit_title2=Editar Archivo Log
 edit_header=Opciones de informe de archivo log
@@ -45,12 +46,14 @@ edit_cmode0=Utilizar opciones globales
 edit_cmode1=Opciones Personalizadas
 edit_cmode2=Otro archivo de configuración
 edit_clear=¿Limpiar archivo(s) de log tras el informe planificado?
+
 gen_title=Generar Informe
 gen_header=Ejecutando Webalizer para generar informe desde $1 ..
 gen_done=.. hecho
 gen_failed=.. ¡Webalizer falló! Vea la salida arriba para los detalles.
 gen_nothing=.. Webalizer terminó, pero no se generó informe. Vea la salida superior para detalles.
 gen_view=Ver informe completado.
+
 save_err=Fallo al salvar archivo log
 save_efile=El archivo log no se introdujo o no existe
 save_ecfile=Archivo configuración falta o no existe
@@ -60,12 +63,14 @@ save_ewuser=No existe un usuario Unix llamado $1
 save_ehost=Nombre de host de website falta o no válido
 save_etitle=Falta título informe
 save_ecannot=Sólo está autorizado a generar informes para logs en $1
+
 view_epath=PATH_INFO no válido
 view_efile=Nombre de archivo de informe no válido
 view_elog=Archivo log no válido
 view_ecannot=No está autorizado a ver este informe
 view_eopen=Fallo al abrir archifo de informe
 view_title=Ver Informe
+
 global_title=Opciones Globales de Webalizer
 global_title2=Opciones de Informe de Webalizer
 global_for=Para archivo log $1
@@ -126,6 +131,7 @@ global_includesite=Clientes que no se ignoran
 global_includereferrer=Referenciadores que no se ignoran
 global_includeuser=Usuarios que no se ignoran
 global_includeagent=Navegadores que no se ignoran
+
 global_err=Fallo al salvar opciones Webalizer
 global_ereport=Prefijo del título del informe falta
 global_ehost=Nombre de host falta o no es válido
@@ -135,12 +141,14 @@ global_etable=Tamaño de tabla '$1' falta o no es válido
 global_ehistory=Nombre de archivo de historial falta o no es válido
 global_ecurrent=Nombre de archivo incremental falta o no es válido
 global_ecache=Nombre de archivo de caché DNS falta o no es válido
+
 log_create_log=Creado informe para $1
 log_modify_log=Se modificó informe para $1
 log_delete_log=Borrado informe para $1
 log_generate_log=Generado informe para $1
 log_global=Se modificaron las opciones globales de Webalizer
 log_global2=Se modificaron las opciones de Webalizer para $1
+
 acl_view=¿Sólo puede ver informes existentes?
 acl_global=¿Puede editar opciones globales de webalizer?
 acl_dir=Sólo autorizar ver y editar informes para logs en

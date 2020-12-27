@@ -12,6 +12,7 @@ index_ereq_resource_cmd=Het script om van de resources een aanvraag te doen van 
 index_version=Hartslag versie $1
 index_noversion=Waarschuwing - De versie van Harslag die geinstalleer is op uw systeem kon niet automatisch gedetecteerd worden. U moet dit goed zetten op de <a href='$1'>module confguratie</a> pagina.
 index_status=Hartslag status
+
 conf_title=Configuratie Opties
 conf_header=Hartslag configuratie opties
 conf_serials=Seriële hartslag poorten
@@ -54,6 +55,7 @@ conf_auto_on=${conf_enabled}
 conf_auto_off=${conf_disabled}
 conf_auto_legacy=Legacy mode
 conf_auto_=${default}
+
 res_title=Cluster Resources
 res_node=Primaire Node
 res_ips=IP Adressen
@@ -67,6 +69,7 @@ res_getserv=Pak Resource
 res_hbdown=Hartslag staat uit
 res_up=AAN
 res_down=UIT
+
 node_create=Toevoegen Cluster Resource
 node_edit=Bewerk Cluster Resource
 node_header=Cluster resource details
@@ -83,6 +86,7 @@ node_enone=Ontbrekende of ongeldige primaire node
 node_eip='$1' is geen geldig IP adres
 node_ecidr='$1' is geen geldig CIDR
 node_ebroad='$1' is geen geldig broadcast adres
+
 auth_title=Authenticatie Sleutels
 auth_header=Cluster node authenticatie
 auth_mode=Authenticatie mode
@@ -92,6 +96,8 @@ auth_md5=MD5 met wachtwoord
 auth_err=Mislukt om authenticatie sleutels op te slaan
 auth_emd5=Ontbrekende of ongeldige MD5 Wachtwoord
 auth_esha1=Ontbrekende of ongeldige SHA1 wachtwoord
+
 start_err=Mislukt om de hartslag monitor te starten
+
 apply_err=Mislukt om veranderingen toe te voegen
 apply_epid=Proces werkt niet langer

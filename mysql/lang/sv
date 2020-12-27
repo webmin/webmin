@@ -19,12 +19,15 @@ index_ever=Du verkar ha fel version av klientprogrammet $1 för MySQL. Webmin st
 index_nouser=Ditt Webmin-konto är inställt för att koppla upp sig mot MySQL-server som användare $1, men denna användare får inte komma åt servern.
 index_db=Databasnamn
 index_tables=Tabeller
+
 login_err=Det gick inte att logga in
 login_ecannot=Du får inte ändra inställningarna för inloggning på databasen
 login_elogin=Administratörskontot finns inte
 login_epass=Namnet eller lösenordet för administratören var felaktigt.
+
 stop_err=Det gick inte att stanna databasen
 start_err=Det gick inte att starta databasen
+
 dbase_title=Ändra databas
 dbase_tables=Databastabell
 dbase_add=Skapa ny tabell
@@ -37,11 +40,13 @@ dbase_return=tabellista
 dbase_ecannot=Du får inte ändra denna databas
 dbase_rows=Rader
 dbase_cols=Fält
+
 ddrop_err=Det gick inte att ta bort databasen
 ddrop_title=Ta bort databas
 ddrop_rusure=Vill du verkligen ta bort databas $1? $2 tabeller med $3 rader kommer att raderas.
 ddrop_mysql=Detta är master-databasen. Om du tar bort den kommer din MySQL-server förmodligen inte att gå att använda.
 ddrop_ok=Ta bort databasen
+
 table_title=Ändra tabell
 table_title2=Skapa ny tabell
 table_header=Tabell $1 i databas $2
@@ -74,6 +79,7 @@ tdrop_err=Det gick inte att ta bort tabellen
 tdrop_title=Ta bort tabellen
 tdrop_rusure=Vill du verkligen ta bort tabell $1 i databas $2? $3 datarader kommer att raderas.
 tdrop_ok=Ta bort tabellen
+
 field_title1=Lägg till fält
 field_title2=Ändra fält
 field_in=I tabell $1 i databas $2
@@ -98,6 +104,7 @@ field_esize='$1' är inte en giltig fältstorlek
 field_eenum=Du har inte angivit något numrerat värde
 field_efield='$1' är inte ett giltigt fältnamn
 field_ekey=Fält som tillåts vara tomma kan inte vara en del av primär nyckel 
+
 view_title=Tabellinformation
 view_pos=Raderna $1 - $2 ur $3
 view_none=Denna tabell innehåller inga data
@@ -112,6 +119,7 @@ view_searchhead=Sökresultat för $1 i fält $2 ...
 view_searchreset=Återställ sökningen
 view_field=Fältnamn
 view_data=Nya data
+
 users_title=Användarrättigheter
 users_user=Användare
 users_host=Dator
@@ -122,6 +130,7 @@ users_all=Alla
 users_anon=Anonym
 users_none=Ingen
 users_return=användarlista
+
 user_title1=Lägg till användare
 user_title2=Ändra användare
 user_header=Uppgifter om MySQL-användare
@@ -137,6 +146,7 @@ user_perms=Rättigheter
 user_err=Det gick inte att spara användare
 user_euser=Användarnamn saknas eller är felaktigt
 user_ehost=Tillåtna datorer saknas eller är felaktigt angivna
+
 dbs_title=Databasrättigheter
 dbs_db=Databaser
 dbs_user=Användare
@@ -150,6 +160,7 @@ dbs_add=Lägg till databasrättigheter
 dbs_all=Alla
 dbs_none=Ingen
 dbs_return=databasrättigheter
+
 db_title1=Lägg till databasrättigheter
 db_title2=Ändra databasrättigheter
 db_header=Inställningar för databasrättigheter
@@ -164,6 +175,7 @@ db_err=Det gick inte att spara databasrättigheter
 db_euser=Användarnamn saknas eller är felaktigt angivet
 db_ehost=Datornamn saknas eller är felaktigt angivet
 db_edb=Databasnamn saknas eller är felaktigt angivet
+
 hosts_title=Datorrättigheter
 hosts_db=Databaser
 hosts_host=Datorer
@@ -173,6 +185,7 @@ hosts_all=Alla
 hosts_none=Ingen
 hosts_add=Lägg till datorrättigheter
 hosts_empty=Du har inte definierat några datorrättigheter
+
 host_title1=Lägg till datorrättigheter
 host_title2=Ändra datorrättigheter
 host_header=Inställningar för datorrättigheter
@@ -180,6 +193,7 @@ host_db=Databaser
 host_any=Vilken som helst
 host_host=Datorer
 host_perms=Rättigheter
+
 newdb_title=Skapa databas
 newdb_header=Inställningar för ny databas
 newdb_db=Databasnamn
@@ -188,6 +202,7 @@ newdb_none=Ingen
 newdb_err=Det gick inte att skapa databasen
 newdb_edb=Databasnamn saknas eller är felaktigt angivet
 newdb_ecannot=Du får inte lägga till databaser
+
 exec_title=Utför SQL
 exec_header=Ange SQL-kommando som ska utföras på databas $1 ...
 exec_exec=Utför
@@ -202,6 +217,7 @@ exec_efile=Det finns ingen sådan lokal fil
 exec_uploadout=Utmatning från nedladdade SQL-kommandon ...
 exec_fileout=Utmatning från SQL-kommandon i filen $1 ..
 exec_noout=Det blev ingen utmatning.
+
 tprivs_title=Tabellrättigheter
 tprivs_table=Tabell
 tprivs_db=Databas
@@ -215,6 +231,7 @@ tprivs_add=Lägg till rättigheter i databas:
 tprivs_norows=Du har inte definierat några tabellrättigheter
 tprivs_return=tabellrättigheter
 tprivs_none=Inga
+
 tpriv_title1=Lägg till tabellrättigheter
 tpriv_title2=Ändra tabellrättigheter
 tpriv_header=Inställningar för tabellrättigheter
@@ -230,6 +247,7 @@ tpriv_err=Det gick inte att spara tabellrättigheterna
 tpriv_etable=Du har inte angivit någon tabell
 tpriv_euser=Användarnamn saknas eller är felaktigt angivet
 tpriv_ehost=Datornamn saknas eller är felaktigt angivet
+
 cprivs_title=Fälträttigheter
 cprivs_field=Fält
 cprivs_table=Tabell
@@ -243,6 +261,7 @@ cprivs_add=Lägg till rättigheter i databas och tabell:
 cprivs_norows=Du har inte definierat några fälträttigheter
 cprivs_return=fälträttigheter
 cprivs_none=Inga
+
 cpriv_title1=Lägg till fälträttigheter
 cpriv_title2=Ändra fälträttigheter
 cpriv_header=Inställningar för fälträttigheter
@@ -258,9 +277,11 @@ cpriv_err=Det gick inte att spara fälträttigheterna
 cpriv_etable=Du har inte angivit något fält
 cpriv_euser=Användarnamn saknas eller är felaktigt angivet
 cpriv_ehost=Datornamn saknas eller är felaktigt angivet
+
 esql=SQL $1 misslyckades: $2
 perms_ecannot=Du får inte ändra rättigheter
 perms_edb=Du får bara ändra rättigheter för dina egna databaser
+
 acl_dbs=Databaser som denna användare får hantera
 acl_dall=Alla databaser
 acl_dsel=Angivna ...
@@ -273,12 +294,14 @@ acl_login=Logga in på MySQL som
 acl_user_def=Användarnamn från modulinställningarna
 acl_user=Användarnamn
 acl_pass=lösenord
+
 log_start=Startade MySQL-server
 log_stop=Stannade MySQL-server
 log_db_create=Lade till databas $1
 log_db_delete=Tog bort databas $1
 log_table_create=Lade till tabell $1 i databas $2
 log_table_delete=Tog bort tabell $1 från databas $2
+
 log_field_create=Lade till fält $1 $4 till $2 i databas $3
 log_field_modify=Modifierade fält $1 $4 i $2 i databas $3
 log_field_delete=Tog bort fält $1 från $2 i databas $3
@@ -314,6 +337,7 @@ log_backup=Säkerhetskopierade databas $1
 log_backup_l=Säkerhetskopierade databas $1 till fil $2
 log_execupload=Utförde SQL-kommandon från nedladdad fil
 log_execfile=Utförde SQL-kommandon från fil $1
+
 backup_title=Säkerhetskopiering av databas
 backup_edump=MySQL-backupprogrammet $1 går inte att hitta på systemet. Dina <a href='$2'>modulinställningar</a> kanske är felaktiga.
 backup_desc=Med hjälp av detta formulär kan du göra en säkerhetskopia av databasen $1 i form av en fil med SQL-uttryck. Använd formuläret Utför SQL för att köra kommandona i filen om du vill läsa tillbaka data från säkerhetskopian.

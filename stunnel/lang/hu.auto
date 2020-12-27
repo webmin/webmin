@@ -21,6 +21,7 @@ index_eversion=A rendszerre telepített STunnel verziója $1, de ez a modul nem 
 index_conf=A $1 konfigurációs fájlból
 index_noconf=Nincs konfigurációs fájl!
 index_delete=Törölje a kijelölt alagutakat
+
 edit_title=Az SSL-alagút szerkesztése
 create_title=Hozzon létre SSL alagutat
 edit_header1=Az alagút forrás lehetőségei
@@ -47,6 +48,7 @@ edit_tcpw=TCP-wrappers név
 edit_auto=Automatikus
 edit_iface=Kimenő forrás címe
 edit_type=Elől futni
+
 save_err=Az SSL-alagút mentése nem sikerült
 save_enclash=A $2 szolgáltatásnevet már használják a $1 porton.
 save_einetd=Már létezik a (z) $1 nevű inetd szolgáltatás.
@@ -61,6 +63,7 @@ save_etcpw=Hiányzó vagy érvénytelen TCP-csomagolók neve
 save_eiface=Hiányzó vagy érvénytelen kimenő forráscím
 save_exinetd=Van már egy xinetd szolgáltatás, az úgynevezett $1 
 save_export=A $1 portot a xinetd $2 szolgáltatás már használja
+
 log_apply=Alkalmazott változások
 log_create=Létrehozta a (z) $1 SSL alagutat
 log_delete=Törölt $1 SSL alagút

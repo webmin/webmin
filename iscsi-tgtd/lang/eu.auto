@@ -2,6 +2,7 @@ check_econfigset=Ez da iSCSI TGTd konfigurazio fitxategirik ezarri!
 check_econfig=$1 iSCSI TGTd konfigurazio fitxategia ez da zure sisteman aurkitu.
 check_etgtadm=ISCSI TGTd administrazio komandoa $1 ez da zure sisteman aurkitu.
 check_einit=$1 abiatzeko ekintza ez da existitzen
+
 index_title=iSCSI TGTd
 index_clink=Agian ez dago instalatuta edo zure <a href='$1'>moduluaren konfigurazioa</a> okerra da.
 index_stop=Gelditu iSCSI TGTd
@@ -24,8 +25,10 @@ index_users=Onartutako erabiltzaileak
 index_size=Tamaina osoa
 index_noluns=Bat ere ez
 index_nousers=Edozein
+
 dtargets_err=Ezin izan dira helburuak ezabatu
 dtargets_enone=Ez da hautatu!
+
 target_title1=Sortu iSCSI Target
 target_title2=Editatu iSCSI Target
 target_header=iSCSI partekatutako gailuaren aukerak
@@ -74,11 +77,13 @@ target_direct=Gailurako sarbide zuzena
 target_cache=Cache gailuari idazten dio?
 target_eaddr=IP helbide baliogabea
 target_eaname=Baliogabea da hasiberriaren izena
+
 start_err=Huts egin du iSCSI TGTd abiaraztean
 stop_err=Ezin izan da iSCSI TGTd gelditu
 restart_err=Ezin izan da iSCSI TGTd berrabiarazi
 atboot_err=Huts egin du abiaraztean
 atboot_einit=$1 hasierako scripta ez da existitzen
+
 log_create_target=$1 helburu sortua
 log_delete_target=$1 xede ezabatu da
 log_modify_target=$1 helburu aldatua
@@ -89,6 +94,7 @@ log_restart=ISCSI zerbitzaria berrabiarazi da
 log_atboot=ISCSI zerbitzaria gaituta dago abiaraztean
 log_delboot=Desgaituta dago iSCSI zerbitzaria abioan
 log_manual=Eskuz editatu den konfigurazio fitxategia
+
 manual_title=Editatu Konfigurazio fitxategia
 manual_file=Aukeratu fitxategia editatzeko:
 manual_ok=Open

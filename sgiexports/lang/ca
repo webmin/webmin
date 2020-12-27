@@ -7,6 +7,7 @@ index_none=Encara no s'ha definit cap exportació NFS.
 index_apply=Aplica la Configuració
 index_applydesc=Fes clic sobre aquest botó per activar totes les exportacions llistades a sobre amb les opcions configurades.
 index_return=a la llista d'exportacions
+
 edit_title1=Creació d'Exportació
 edit_title2=Edició d'Exportació
 edit_header=Detalls de l'exportació
@@ -24,12 +25,14 @@ edit_access=Accés al muntatge
 edit_all=Tots els hosts
 edit_sel=Els hosts llistats...
 edit_none=Cap host
+
 save_err=No s'ha pogut desar l'exportació
 save_edir=Hi falta el directori per exportar o bé no existeix
 save_eanon=Hi falta l'usuari per a root o bé no existeix
 save_erw=No has introduït cap host per a lectura/escriptura
 save_eroot=No has introduït cap host per accés root
 save_eaccess=No has introduït cap host per a l'accés al muntatge
+
 log_create_export=S'ha creat l'exportació de $1
 log_delete_export=S'ha suprimit l'exportació de $1
 log_modify_export=S'ha modificat l'exportació de $1

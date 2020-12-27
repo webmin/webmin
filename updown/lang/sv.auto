@@ -40,6 +40,7 @@ index_descfetch=Den här sidan är för att ladda ner en fil från systemet som 
 index_email=Skicka e-post när nedladdningarna är gjorda?
 index_emailto=Ja, att adressera
 index_email2=Skicka e-post när uppladdningarna är gjorda?
+
 upload_title=Ladda upp filer
 upload_err=Det gick inte att ladda upp filer
 upload_edir=Saknas katalog att ladda upp till
@@ -63,6 +64,7 @@ upload_saving=Sparar fil $1 ..
 upload_saved=.. skrev $1 
 upload_unzipping=Extrahera fil $1 ..
 upload_unzipdone=.. $1 
+
 download_err=Det gick inte att spara nedladdningen
 download_enone=Inga URL: er att ladda ner angav
 download_eurl='$1' är inte en giltig URL
@@ -74,9 +76,11 @@ download_failed=Nedladdningen misslyckades : $1
 download_eaccess=Du får inte ladda ner filer till $1 
 download_eucannot=Du får inte ladda ner filer som användare $1 
 download_egcannot=Den valda gruppen innehåller inte den valda användaren
+
 cancel_err=Det gick inte att avbryta nedladdningar
 cancel_enone=Ingen vald
 cancel_ecannot=Du får inte avbryta nedladdningar för användare $1 
+
 log_cancel=Avbruten $1 nedladdning (er)
 log_upload_l=Uppladdad fil (er) $1 
 log_upload=Uppladdad $1 fil (er)
@@ -84,6 +88,7 @@ log_download_l=Nedladdade URL: er $1
 log_download=Nedladdade $1 URL (er)
 log_sdownload_l=Planerade nedladdningen av URL (er) $1 
 log_sdownload=Planerade nedladdningen av $1 URL (er)
+
 acl_users=Kan ladda upp och ladda ner filer som användare
 acl_all=Alla användare
 acl_this=Nuvarande Webmin-användare
@@ -98,6 +103,7 @@ acl_max=Maximal överföringsstorlek
 acl_unlim=Obegränsat
 acl_b=bitgrupper
 acl_fetch=Kan ladda ner filer till PC?
+
 fetch_err=Det gick inte att ladda ner filen
 fetch_ecannot=Du får inte ladda ner filer till en dator
 fetch_efile=Inget filnamn har angetts
@@ -106,6 +112,7 @@ fetch_eopen=Det gick inte att öppna filen : $1
 fetch_eaccess=Du får inte ladda ner filer från $1 
 fetch_ezip=En katalog kan inte laddas ner om kommandot <tt>zip</tt> är installerat
 fetch_eroot=Rotkatalogen kan inte laddas ner!
+
 email_downmsg=Följande nedladdning har slutförts :
 email_downurl=URL: $1 
 email_downerr=Felmeddelande: $1 

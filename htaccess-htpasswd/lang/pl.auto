@@ -16,6 +16,7 @@ index_digest2=Szyfrowanie szyfrowane jest włączone w konfiguracji modułu, ale
 index_cpan=<a href='$1'>Kliknij tutaj</a>, aby pobrać i zainstalować teraz.
 index_delete=Odblokuj wybrane katalogi
 index_remove=Usuń ochronę i usuń pliki
+
 dir_title1=Dodaj chroniony katalog
 dir_title2=Edytuj chroniony katalog
 dir_header=Opcje chronionego katalogu
@@ -60,6 +61,7 @@ dir_delete3=Usuń ochronę i usuń plik
 dir_apache=Edytuj opcje Apache
 dir_efiledir=„$1” to katalog, dlatego nie można go używać jako pliku użytkownika
 dir_egfiledir=„$1” jest katalogiem, dlatego nie można go używać jako pliku grup
+
 edit_title1=Stwórz użytkownika
 edit_title2=Edytuj użytkownika
 edit_header=Dane użytkownika do uwierzytelnienia w sieci
@@ -71,11 +73,13 @@ edit_pass0=Ustawić
 edit_passfrom=Zmień z
 edit_passto=na nowe hasło
 edit_dom=Strefa trawienia
+
 gedit_title1=Stworzyć grupę
 gedit_title2=Edytuj grupę
 gedit_header=Szczegóły grupy uwierzytelniania internetowego
 gedit_group=Nazwa grupy
 gedit_members=Członkowie grupy
+
 save_err=Nie udało się zapisać użytkownika
 save_euser1=Brak nazwy użytkownika
 save_euser2=Nazwa użytkownika nie może zawierać znaku:
@@ -84,16 +88,19 @@ save_eclash=Użytkownik o tej samej nazwie już istnieje
 save_eoldpass=Stare hasło jest nieprawidłowe
 save_title=Zapisano użytkownika
 save_edom=Brakująca lub nieprawidłowa dziedzina skrótu
+
 gsave_err=Nie udało się zapisać grupy
 gsave_egroup1=Brak nazwy grupy
 gsave_egroup2=Nazwa grupy nie może zawierać: znaku ani spacji
 gsave_eclash=Grupa o tej samej nazwie już istnieje
+
 acl_dirs=Dozwolone katalogi
 acl_user=Twórz pliki.htaccess i htusers jako użytkownik Unix
 acl_same=Taki sam jak login Webmin
 acl_home=Czy dołączyć katalog domowy użytkownika Uniksa?
 acl_sync=Czy można skonfigurować synchronizację użytkownika w systemie Unix?
 acl_uonly=Czy mogę dodawać i zmieniać chronione katalogi?
+
 log_create_dir=Dodano katalog $1 
 log_modify_dir=Zmodyfikowany katalog $1 
 log_delete_dir=Usunięty katalog $1 
@@ -104,6 +111,7 @@ log_create_group=Utworzono grupę $1
 log_modify_group=Zmodyfikowana grupa $1 
 log_delete_group=Usunięta grupa $1 
 log_delete_dirs=Usunięto katalogi $1 
+
 search_title=Wyniki wyszukiwania
 search_err=Wyszukiwanie nie powiodło się
 search_edir=Brakujący lub niepoprawny katalog bezwzględny do przeszukania

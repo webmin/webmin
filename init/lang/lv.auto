@@ -52,6 +52,7 @@ index_sadd=Izveidojiet jaunu systemd pakalpojumu.
 index_always=Vienmēr
 index_ladd=Izveidojiet jaunu palaisto aģentu.
 index_lname=Aģenta vārds
+
 edit_title=Rediģēt darbību
 create_title=Izveidot darbību
 edit_ecannot=Jums nav atļauts rediģēt sāknēšanas darbības
@@ -85,6 +86,7 @@ edit_statusnow=Rādīt statusu
 edit_return=darbība
 edit_status=Vai esat sācis tagad?
 edit_unknown=Nezināms
+
 save_err=Neizdevās saglabāt darbību
 save_ecannot=Jums nav atļauts rediģēt sāknēšanas darbības
 save_ealready=Darbība ar nosaukumu “$1” jau pastāv
@@ -93,6 +95,7 @@ save_ename=Trūkst vai nav derīgs darbības nosaukums
 save_eclash=Darbība ar tādu pašu nosaukumu jau pastāv
 save_escript=Nav ievadīts darbības skripts
 save_estartcmd=Trūkst sāknēšanas komandas
+
 ss_ecannot=Jums nav atļauts sākt vai pārtraukt sāknēšanas darbības
 ss_start=Sāciet darbību
 ss_stop=Apturēt darbību
@@ -103,21 +106,25 @@ ss_exec=Tiek izpildīts $1.
 ss_doingstart=Sākot darbību $1 ..
 ss_doingstop=Darbības apturēšana $1 ..
 ss_doingstatus=Tiek pieprasīts darbības statuss $1.
+
 shutdown_ecannot=Jums nav atļauts izslēgt sistēmu
 shutdown_title=Izslēgt
 shutdown_rusure=Vai tiešām vēlaties izslēgt sistēmu ar komandu $1 ?
 shutdown_ok=Izslēgšanas sistēma
 shutdown_exec=Izslēgšana ar komandu $1.
+
 reboot_ecannot=Jums nav atļauts atsāknēt sistēmu
 reboot_title=Atsāknēšana
 reboot_rusure=Vai tiešām vēlaties atsāknēt sistēmu ar komandu $1 ?
 reboot_ok=Atsāknēšanas sistēma
 reboot_exec=Atsāknēšana ar komandu $1.
+
 acl_script=Vai var rediģēt sāknēšanas skriptu?
 acl_actions=Vai var palaist, rediģēt, izveidot un dzēst darbības?
 acl_runonly=Tikai skrien
 acl_reboot=Vai var pārstartēt sistēmu?
 acl_shutdown=Vai sistēmu var izslēgt?
+
 log_rename=Pārdēvēta darbība no $1 līdz $2 
 log_modify=Pārveidota darbība $1 
 log_create=Izveidota darbība $1 
@@ -138,6 +145,7 @@ log_massrestart=Atsāktās darbības $1
 log_massenable=Iespējotās darbības $1 
 log_massdisable=Atspējotas darbības $1 
 log_telinit=Pārslēgts uz $1 līmeni
+
 edit_hostconfig_startup=Skripts $1 tiek palaists sistēmas sāknēšanas laikā, ja šī darbība ir aktīva. Jūs to varat rediģēt zemāk
 edit_hostconfig_plist=Fails $1 nosaka noteiktus parametrus attiecībā uz sāknēšanas skriptu. Jūs to varat rediģēt zemāk
 edit_hostconfig_new=Izveidot jaunu darbību
@@ -149,6 +157,7 @@ edit_hostconfig_array=Lauki $1, $2 un $3 ir masīva lauki un var saturēt vairā
 edit_hostconfig_further=Pēc jaunās startēšanas darbības izveidošanas jūs tiksit pārsūtīts uz lapu, kur vajadzības gadījumā varēsiet uzlabot startēšanas skriptu un parametru sarakstu.
 edit_hostconfig_hostconfig=Fails $1 kontrolē sistēmas mēroga pakalpojumus un dēmonus, kas tiek sākti sistēmas sāknēšanas laikā. Jūs to varat rediģēt zemāk
 edit_hostconfig_title=Rediģēt Hostconfig
+
 mass_enone=Nav atlasīta neviena darbība
 mass_enone2=Nav izvēlēts neviens pakalpojums
 mass_start=Darbības sākšana
@@ -169,9 +178,11 @@ mass_udisable=Pakalpojuma $1 atspējošana sāknēšanas laikā.
 mass_ustarting=Pakalpojuma sākšana $1.
 mass_ustopping=Pakalpojuma pārtraukšana $1 ..
 mass_urestarting=Pakalpojuma $1 restartēšana ..
+
 change_err=Jums nav atļauts mainīt līmeņus
 change_title=Pārslēdziet Runlevel
 change_cmd=Pārslēgšanās uz $1 līmeni ar komandu $2. Tas var aizņemt kādu laiku, un pēc pārslēgšanas Webmin, iespējams, vairs nebūs pieejams.
+
 mode_init=SysV init
 mode_osx=MacOS
 mode_local=Viena sāknēšanas skripts
@@ -180,6 +191,7 @@ mode_rc=FreeBSD RC skripti
 mode_upstart=Sākums
 mode_systemd=Sistēmiski
 mode_launchd=PalaistD
+
 upstart_title1=Izveidojiet sākuma pakalpojumu
 upstart_title2=Rediģēt sākumposma pakalpojumu
 upstart_egone=Pakalpojums vairs nepastāv!
@@ -204,6 +216,7 @@ upstart_eserver=Nav ievadīta servera komanda
 upstart_eserver2=Servera komanda neeksistē
 upstart_eserver3=Var ievadīt tikai vienu servera komandu
 upstart_return=augšupejošs pakalpojums
+
 systemd_title1=Izveidot Sistēmas pakalpojumu
 systemd_title2=Sistēmas pakalpojuma rediģēšana
 systemd_egone=Pakalpojums vairs nepastāv!
@@ -227,6 +240,7 @@ systemd_edesc=Trūkst pakalpojuma apraksta
 systemd_return=systemd pakalpojums
 systemd_econf=Nav ievadīta sistēmas konfigurācija
 systemd_estart=Trūkst komandu startēšanai
+
 launchd_title1=Izveidot palaisto aģentu
 launchd_title2=Rediģēt palaisto aģentu
 launchd_egone=Aģenta vairs nav!
@@ -247,4 +261,5 @@ launchd_eclash=Aģents ar tādu pašu vārdu jau pastāv
 launchd_return=palaistais aģents
 launchd_econf=Nav ievadīta palaišanas konfigurācija
 launchd_estart=Trūkst servera komandas
+
 syslog_journalctl=SystemD žurnāli

@@ -25,12 +25,15 @@ index_up=Start forbindelse:
 index_updesc=Vælg en forbindelse fra listen ud for denne knap, og klik på den for at forsøge dens øjeblikkelige etablering.
 index_nopol=Der blev ikke fundet nogen netværkspolitikker - måske er din <a href='$1'>netværkskonfiguration</a> forkert.
 index_import=Importer forbindelse fra fil.
+
 stop_err=Kunne ikke stoppe IPsec-serveren
 start_err=Kunne ikke starte IPsec-server
 restart_err=Kunne ikke genstarte IPsec-serveren
 start_elog=Følgende fejl blev logget : $1 
+
 newkey_err=Kunne ikke generere nøglen
 newkey_ehost=Manglende eller ugyldigt værtsnavn
+
 edit_title1=Opret forbindelse
 edit_title2=Rediger forbindelse
 edit_header=Detaljer om IPsec VPN-forbindelse
@@ -101,6 +104,7 @@ edit_unit_s=sek
 edit_unit_m=mins
 edit_unit_h=timer
 edit_unit_d=dage
+
 config_title=Serverkonfiguration
 config_header=Globale VPN-serverindstillinger
 config_ifaces=Netværksgrænseflader til IPsec
@@ -118,6 +122,7 @@ config_nat=Vil du aktivere NAT-gennemgang?
 config_err=Kunne ikke gemme serverkonfigurationen
 config_eri=Den rigtige grænseflade '$1' vises mere end én gang
 config_enone=Ingen netværksgrænseflader blev specificeret
+
 showkey_title=Vis offentlig nøgle
 showkey_desc1=Den offentlige RSA-nøgle vist nedenfor skal kopieres til konfigurationen af andre systemer, der forbinder til denne, i det afsnit, der er relateret til denne vært.
 showkey_desc2=Værdierne nedenfor kan bruges til at oprette en DNS KEY-post til denne vært, så andre systemer, der forbinder til den, kan slå sin offentlige nøgle op.
@@ -125,6 +130,7 @@ showkey_flags=Flag
 showkey_proto=protokol
 showkey_alg=Algoritme
 showkey_key=Nøgledata
+
 policy_desc_block=Blokerede netværk
 policy_desc_clear=Ryd trafiknetværk
 policy_desc_private=Krypterede netværk
@@ -145,6 +151,7 @@ policy_mask=Præfiks
 policy_err=Kunne ikke gemme netværk
 policy_enet=Ugyldig netværks IP-adresse på række $1 
 policy_emask=Ugyldig præfikslængde på række $2 
+
 save_err=Kunne ikke gemme forbindelsen
 save_ename=Manglende eller ugyldigt forbindelsesnavn
 save_ekeying=Manglende eller ugyldigt antal nøglerforsøg
@@ -164,6 +171,7 @@ save_eleftcert=Manglende eller ugyldig lokal serversertifikat
 save_erightcert=Manglende eller ugyldig fjernservercertifikat
 save_ekeylife=Manglende eller ugyldig forbindelsesnøglens levetid
 save_eikelifetime=Manglende eller ugyldig nøglekanals levetid
+
 log_create_conn=Oprettet forbindelse $1 
 log_delete_conn=Slet forbindelse $1 
 log_modify_conn=Ændret forbindelse $1 
@@ -182,8 +190,10 @@ log_delete_secret=Slettet hemmelig nøgle for $1
 log_create_secret_nn=Oprettet hemmelig nøgle til enhver vært
 log_modify_secret_nn=Ændret hemmelig nøgle til enhver vært
 log_delete_secret_nn=Slettet hemmelig nøgle til enhver vært
+
 up_title=Start forbindelse
 up_cmd=Starter forbindelse med kommando $1 ..
+
 export_title=Eksportkonfiguration
 export_desc=Denne formular kan bruges til at eksportere konfigurationsfilsektionen til forbindelse $1, så den let kan importeres på serveren i den anden ende.
 export_print=Vis konfiguration i browser
@@ -193,11 +203,13 @@ export_err=Eksportering af konfiguration mislykkedes
 export_efile=Manglende filnavn
 export_esave=Kunne ikke skrive til filen : $1 
 export_done=Eksporteret konfiguration for forbindelse $1 til $2 ($3 bytes).
+
 import_title=Importkonfiguration
 import_desc=Denne formular kan bruges til at importere en konfigurationsfilsektion til en forbindelse, f.eks. En oprettet af modulets eksportfunktion på et andet system.
 import_upload=Importer fra upload-fil ..
 import_file=Importer fra fil på serversiden ..
 import_ok=Importer nu
+
 import_err=Importkonfigurationen kunne ikke importeres
 import_eupload=Ingen fil valgt at uploade
 import_efile=Ingen fil på serversiden er indtastet
@@ -207,6 +219,7 @@ import_eclash=En forbindelse kaldet $1 findes allerede.
 import_done1=Tilføjet den nye IPsec-forbindelse $1.
 import_done2=IPsec-forbindelsen $1 blev opdateret.
 import_over=Overskrive eksisterende forbindelse med samme navn?
+
 secrets_title=Hemmelige nøgler
 secrets_none=Ingen hemmelighedsnøgler blev fundet!
 secrets_name=Hemmelighed for
@@ -220,6 +233,7 @@ secrets_mod=Modul $1
 secrets_newpsk=Opret ny delt hemmelig nøgle.
 secrets_newrsa=Opret ny RSA-nøgle.
 secrets_return=liste over hemmelige nøgler
+
 secret_title1=Opret hemmelig nøgle
 secret_title2=Rediger hemmelig nøgle
 secret_header=Hemmelige nøgledetaljer

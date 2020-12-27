@@ -7,6 +7,7 @@ index_dsize=اندازه کل
 index_dmodel=ساخت و مدل
 index_dparts=برش
 index_return=لیست دیسک ها
+
 disk_title=دیسک را ویرایش کنید
 disk_egone=دیسک دیگر وجود ندارد!
 disk_no=تکه
@@ -31,9 +32,11 @@ disk_return=جزئیات دیسک و لیست برش ها
 disk_add=یک برش جدید ایجاد کنید.
 disk_smart=نمایش وضعیت SMART
 disk_smartdesc=وضعیت فعلی این درایو را که توسط SMART تشخیص داده شده است نشان داده و آن را برای خطاهای دیسک بررسی کنید.
+
 select_device=$1 دستگاه $2
 select_slice=$1 دستگاه $2 قطعه $3
 select_part=$1 دستگاه $2 قطعه $3 پارتیشن $4
+
 slice_title=ویرایش برش
 slice_egone=برش انتخابی وجود ندارد!
 slice_ssize=اندازه برش
@@ -58,6 +61,7 @@ slice_return=جزئیات برش و لیست پارتیشن ها
 slice_err=اصلاح برش انجام نشد
 slice_header=جزئیات برش
 slice_suse=به طور مستقیم توسط
+
 dslice_title=برش را حذف کنید
 dslice_rusure=آیا مطمئن هستید که می خواهید برش$1 را حذف کنید؟ هر پارتیشن و سیستم فایل در داخل آن نیز حذف می شود.
 dslice_warn=هشدار - این برش در حال حاضر توسط :$1 استفاده می شود
@@ -65,6 +69,7 @@ dslice_confirm=اکنون حذف کنید
 dslice_deleting=حذف قطعه$1 ..
 dslice_failed=.. حذف انجام نشد :$1
 dslice_done=.. انجام شده
+
 nslice_title=ایجاد برش
 nslice_header=جزئیات برش جدید
 nslice_number=تعداد برش
@@ -86,6 +91,7 @@ nslice_done=.. برش اضافه شد
 nslice_parting=پارتیشن های پیش فرض را به صورت برش$1 در$2 ایجاد کنید.
 nslice_pfailed=.. ایجاد پارتیشن انجام نشد :$1
 nslice_pdone=.. پارتیشن اضافه شده است
+
 npart_title=پارتیشن ایجاد کنید
 npart_header=جزئیات پارتیشن جدید
 npart_letter=نامه پارتیشن
@@ -98,6 +104,7 @@ npart_emax=بلوک پایان نمی تواند بزرگتر از اندازه 
 npart_creating=ایجاد پارتیشن$1 از$2 ..
 npart_failed=.. ایجاد پارتیشن انجام نشد :$1
 npart_done=.. پارتیشن اضافه شده است
+
 part_title=ویرایش پارتیشن
 part_egone=پارتیشن دیگر وجود ندارد!
 part_header=جزئیات پارتیشن
@@ -124,6 +131,7 @@ part_newmount2=پارتیشن کوه
 part_mountmsg=این دستگاه را روی دایرکتوری جدید بر روی سیستم خود سوار کنید تا از آن برای ذخیره فایل ها استفاده شود. سیستم فایل باید قبلاً روی دستگاه ایجاد شده باشد.
 part_mountmsg2=این وسیله را به عنوان حافظه مجازی بر روی سیستم خود سوار کنید تا میزان حافظه موجود افزایش یابد.
 part_cannotedit=این پارتیشن نمی تواند اصلاح شود زیرا در حال حاضر در حال استفاده است.
+
 dpart_title=پارتیشن را حذف کنید
 dpart_rusure=آیا مطمئن هستید که می خواهید پارتیشن$1 را حذف کنید؟ هر سیستم فایل موجود در آن نیز حذف می شود.
 dpart_warn=هشدار - این پارتیشن در حال حاضر$1 استفاده می شود
@@ -131,6 +139,7 @@ dpart_confirm=اکنون حذف کنید
 dpart_deleting=حذف پارتیشن$1 ..
 dpart_failed=.. حذف انجام نشد :$1
 dpart_done=.. انجام شده
+
 newfs_title=Filesystem را ایجاد کنید
 newfs_header=جزئیات سیستم جدید فایل
 newfs_free=فضای ذخیره ریشه
@@ -145,11 +154,13 @@ newfs_elabel=برچسب نامعتبر یا نامعتبر است
 newfs_creating=ایجاد سیستم فایل در$1 ..
 newfs_failed=.. ایجاد نشد!
 newfs_done=.. با موفقیت ایجاد شد
+
 fsck_title=Filesystem را بررسی کنید
 fsck_err=بررسی سیستم فایل انجام نشد
 fsck_checking=در حال بررسی سیستم فایل روی$1 ..
 fsck_failed=.. چک انجام نشد!
 fsck_done=.. بررسی انجام شد و خطایی در آن یافت نشد
+
 log_create_slice=برش ایجاد شده$1
 log_delete_slice=برش$1 حذف شد
 log_modify_slice=برش اصلاح شده$1

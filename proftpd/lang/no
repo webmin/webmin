@@ -27,7 +27,9 @@ index_global=Global konfigurasjon
 index_create=Opprett virtuell tjener
 index_version=ProFTPd versjon $1
 index_proftpd=ProFTPd
+
 efailed=Kune ikke lagre $1
+
 type_0=Innstillinger for nettverk
 type_1=Innstillinger for logging
 type_2=Filer og kataloger
@@ -35,6 +37,7 @@ type_3=Tilgangskontroll
 type_4=Forskjellig
 type_5=Bruker og gruppe
 type_6=Autentisering
+
 virt_title=Innstillinger for virtuell tjener
 virt_header1=For $1
 virt_header2=For standard tjener
@@ -50,6 +53,7 @@ virt_cmds=FTP kommandoer
 virt_return=virtuell tjener
 virt_virt=Konfigurer virtuell tjener
 virt_edit=Rediger direktiver
+
 vserv_title=Konfigurer virtuell tjener
 vserv_addr=Adresse
 vserv_name=Tjener navn
@@ -58,6 +62,7 @@ vserv_delete=Slett virtuell tjener
 vserv_eaddr=Manglende eller ugyldig adresse
 vserv_eport=Manglende eller ugyldig portnummer
 vserv_ename=Manglende tjener-navn
+
 anon_title=Innstillinger for anonym FTP
 anon_header1=I virtuell tjener $1
 anon_header2=I standard tjener
@@ -65,6 +70,7 @@ anon_anon=Konfigurer anonym FTP
 anon_return=innstillinger for anonym FTP
 anon_header3=For anonym FTP i virtuell tjener $1
 anon_header4=For anonym FTP i standard tjener
+
 aserv_title=Konfigurer anonym FTP
 aserv_create=Sett opp anonym FTP
 aserv_root=Begrens til katalog
@@ -75,6 +81,7 @@ aserv_eroot=Manglende eller ugyldig chrott katalog
 aserv_euser=Manglende eller ugyldig Unix bruker
 aserv_egroup=Manglende eller ugyldig Unix gruppe
 aserv_desc=Anonym FTP er ikke satt opp enda for denne virtuelle tjeneren. Bruk dette skjemaet for å sette de innledende konfigurasjonsinnstillingene.
+
 dir_title=Per-katalog innstillinger
 dir_header2=For katalog $1 i standard tjener
 dir_header1=For katalog $1 i virtuell tjener $2
@@ -85,6 +92,7 @@ dir_header=Per-kommando innstillinger
 dir_dir=Konfigurer katalog
 dir_header4=For katalog $1 i anonym FTP
 dir_header5=For katalog $1 globalt
+
 manual_title=Rediger direktiver
 manual_header=Bruk teksteditoren nedenfor til å manuelt redigere ProFTPD direktivene i $1 som gjelder for denne virtuelle tjeneren, katalogen eller kommandoene.
 manual_configs=Rediger konfig filer
@@ -92,6 +100,7 @@ manual_ecannot=Du har ikke tilgang til å redigere direktiver manuelt
 manual_file=Rediger direktiver i fil:
 manual_efile=Ugyldig ProFTPd konfigfil
 manual_etest=Oppdaget feil i konfigurasjonsfil : $1
+
 limit_title=Per-kommando innstillinger
 limit_header4=For kommandoene $1 i katalogen $2
 limit_header2=For kommandoene $1 i standard tjener
@@ -103,17 +112,20 @@ limit_return=per-kommando innstillinger
 limit_header5=For kommandoene $1 i anonym FTP
 limit_header6=For kommandoene $1 i filen $2
 limit_header7=For kommandoene $1 globalt
+
 lserv_title=Konfigurer kommandoer
 lserv_cmd=FTP kommandoer
 lserv_delete=Slett kommandoer konfig
 lserv_err=Kunne ikke lagre kommandoer
 lserv_ecmd=Ingen kommandoer valgt
+
 dserv_title=Konfigurer katalog
 dserv_dir=Katalog-sti
 dserv_err=Kunne ikke lagre katalog
 dserv_edir=Manglende katalog-sti
 dserv_delete=Slett katalog konfig
 dserv_eanondir=Katalogen må være under katalogen for anonym FTP
+
 mod_core_type=Tjenertype
 mod_core_inetd=Kjør fra Inetd
 mod_core_stand=Frittstående tjener
@@ -301,6 +313,7 @@ mod_core_duser=Nekt brukerne
 mod_core_eip='$1' er ikke en gyldig IP adresse
 mod_core_enet='$1' er ikke en gyldig nettverksadresse
 mod_core_ehost='$1' er ikke et gyldig vertsnavn
+
 mod_ls_fakegroup=Forfalsk gruppe i kataloglistinger?
 mod_ls_fakeuser=Forfalsk bruker i kataloglistinger?
 mod_ls_fakemode=Forfalsk tillatelser i kataloglistinger
@@ -317,6 +330,7 @@ mod_ls_efakeuser=Manglende eller ugyldig falsk bruker
 mod_ls_efakegroup=Manglende eller ugyldig falsk gruppe
 mod_ls_options=Innstillinger for katalogliste
 mod_ls_strict=Overstyr brukerinnstillinger?
+
 mod_auth_chdir=Initiell innloggings-karalog
 mod_auth_echdir=Manglende eller ugyldig initiell katalog
 mod_auth_chroot=Begrens brukere til katalogene
@@ -330,7 +344,9 @@ mod_auth_egroups=Ungen Unix grupper for chroot angitt
 mod_auth_echroot=Manglende eller ugyldig chroot katalog
 mod_auth_login=Ikke spør om passord dersom innlogging nektes?
 mod_auth_root=Tillat innlogging for root?
+
 mod_site_chmod=Tillat chmod kommando?
+
 mod_unixpw_ufile=Alternativ Unix passordfil
 mod_unixpw_eufile=Manglende eller ugyldig Unix passordfil
 mod_unixpw_gfile=Alternativ Unix gruppefil
@@ -338,6 +354,7 @@ mod_unixpw_egfile=Manglende eller ugyldig Unix gruppefil
 mod_unixpw_none=Ingen
 mod_unixpw_pam=Behandle alltid PAM som autoritativ?
 mod_unixpw_persist=Hold passordfil åpen vedvarende?
+
 mod_log_syslog=Logg feilmeldinger til filen
 mod_log_sysdef=Systemlogg
 mod_log_esyslog=Manglende eller ugyldig loggfil
@@ -354,19 +371,25 @@ mod_log_fmt=Formatstreng
 mod_log_format=Egendefinerte loggformater
 mod_log_enickname=Manglende eller ugyldig formatnavn
 mod_log_efmt=Manglende formatstreng
+
 mod_pam_pam=Bruk PAM til autentisering?
 mod_pam_config=Autentiser vha. PAM tjeneste
 mod_pam_econfig=Manglende eller ugyldig PAM tjeneste
+
 mod_readme_display=Fortell bruker om readme filer som matcher
 mod_readme_none=Ingen
 mod_readme_edisplay=Manglende mønster for readme filer
+
 start_err=Kunne ikke starte FTP tjener
 start_einetd=Du kan ikke starte tjener-demonen når den er i inetd modus.
+
 stop_err=Kunne ikke stoppe FTP tjener
 stop_einetd=Du kan ikke stoppe tjener-demonen når den er i inetd modus.
 stop_erun=Kjører ikke
+
 apply_err=Kunne ikke ta i bruk FTP konfigurasjon
 apply_egone=Kjører ikke lenger
+
 ftpaccess_title=Per-katalog innstillingsfiler
 ftpaccess_desc=Ekstra per-katalog innstillinger kan angis i en egen fil (vanligvis <tt>.ftpaccess</tt>) i hver katalog. Innstillingene vil gjelde for alle filer i den katalogen og dens underkataloger, med mindre disse overstyres av en annen innstillingsfil.
 ftpaccess_create=Opprett innstillingsfil
@@ -374,8 +397,10 @@ ftpaccess_find=Finn innstillingsfiler
 ftpaccess_auto=Under anonym
 ftpaccess_from=Fra katalog
 ftpaccess_return=liste med innstillingsfiler
+
 ftpusers_title=Nektede FTP brukere
 ftpusers_desc=Dersom aktivert under <tt>Autentisering</tt> ikonet, vil brukerene nedenfor fra filen $1 bli nektet innlogging til FTP brukeren.
+
 ftpindex_title=Per-katalog innstillingsfil
 ftpindex_delete=Slett fil
 ftpindex_opts=Per-katalog innstillinger
@@ -385,8 +410,10 @@ ftpindex_addlimit=Legg til per-kommando innstillinger for ..
 ftpindex_header2=$1 i $2
 ftpindex_return=per-katalog innstillingsfil
 ftpindex_header=For $1
+
 find_err=Kunne ikke finne innstillingsfiler
 find_eanon=Anonym FTP er ikke satt op i noen virtuell tjener
+
 log_global=Endret globale $1 innstillinger
 log_ftpusers=Endret nektede FTP brukere
 log_virtc=Opprettet tjener $1
@@ -420,6 +447,7 @@ log_anonm=Redigerte anonym FTP for tjener $1 manuelt
 log_anon=Endret $1 i anonym FTP for tjener $2
 log_start=Startet proftpd
 log_apply=Tok i bruk endringer
+
 eafter=Konfigurasjonsverifisering feilet : $1 endringer er ikke blitt lagret
 proftpd_apply=Bruk endringer
 proftpd_stop=Stopp ProFTPd

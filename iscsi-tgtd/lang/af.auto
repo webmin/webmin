@@ -2,6 +2,7 @@ check_econfigset=Geen iSCSI TGTd-konfigurasielêer is opgestel nie!
 check_econfig=Die iSCSI TGTd-konfigurasielêer $1 is nie op u stelsel gevind nie.
 check_etgtadm=Die iSCSI TGTd-administrasieopdrag $1 is nie op u stelsel gevind nie.
 check_einit=Opstartaksie $1 bestaan nie
+
 index_title=iSCSI TGTd
 index_clink=Miskien is dit nie geïnstalleer nie, of is u <a href='$1'>module-opstelling</a> verkeerd.
 index_stop=Stop iSCSI TGTd
@@ -24,8 +25,10 @@ index_users=Toegestane gebruikers
 index_size=Totale grootte
 index_noluns=Geen
 index_nousers=Enige
+
 dtargets_err=Kon nie teikens uitvee nie
 dtargets_enone=Geen gekies nie!
+
 target_title1=Skep iSCSI-teiken
 target_title2=Redigeer iSCSI-teiken
 target_header=iSCSI-opsies vir gedeelde toestelle
@@ -74,11 +77,13 @@ target_direct=Direkte toegang tot toestelle
 target_cache=Cache skryf op toestel?
 target_eaddr=Ongeldige toegelate IP-adres
 target_eaname=Ongeldige naam vir die inisieerder toegelaat
+
 start_err=Kon nie iSCSI TGTd begin nie
 stop_err=Kon nie iSCSI TGTd stop nie
 restart_err=Kon nie iSCSI TGTd herbegin nie
 atboot_err=Kon nie tydens opstart inskakel nie
 atboot_einit=Init script $1 bestaan nie
+
 log_create_target=Teiken $1 geskep
 log_delete_target=Teiken $1 is uitgevee
 log_modify_target=Gewysigde teiken $1 
@@ -89,6 +94,7 @@ log_restart=ISCSI-bediener herbegin
 log_atboot=ISCSI-bediener is tydens opstartyd geaktiveer
 log_delboot=ISCSI-bediener is tydens die laaityd afgeskakel
 log_manual=Handmatig gewysigde konfigurasie lêer
+
 manual_title=Wysig die konfigurasielêer
 manual_file=Kies lêer om te wysig:
 manual_ok=oop

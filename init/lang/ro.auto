@@ -52,6 +52,7 @@ index_sadd=Creați un nou serviciu de sistem.
 index_always=Mereu
 index_ladd=Creați un nou agent de lansare.
 index_lname=Numele agentului
+
 edit_title=Modificați acțiunea
 create_title=Creați acțiune
 edit_ecannot=Nu aveți voie să editați acțiunile de pornire
@@ -85,6 +86,7 @@ edit_statusnow=Afișează starea
 edit_return=acțiune
 edit_status=A început acum?
 edit_unknown=Necunoscut
+
 save_err=Nu a reușit să salveze acțiunea
 save_ecannot=Nu aveți voie să editați acțiunile de pornire
 save_ealready=O acțiune numită „$1” există deja
@@ -93,6 +95,7 @@ save_ename=Numele de acțiune lipsă sau nevalid
 save_eclash=O acțiune cu același nume există deja
 save_escript=Nu a fost introdus niciun script de acțiune
 save_estartcmd=Lipsește comanda de pornire
+
 ss_ecannot=Nu aveți voie să porniți sau să opriți acțiunile de pornire
 ss_start=Începeți acțiunea
 ss_stop=Opriți acțiunea
@@ -103,21 +106,25 @@ ss_exec=Se execută $1 ..
 ss_doingstart=Acțiunea de pornire $1 ..
 ss_doingstop=Acțiunea de oprire $1 ..
 ss_doingstatus=Solicitarea statutului de acțiune $1 ..
+
 shutdown_ecannot=Nu aveți voie să opriți sistemul
 shutdown_title=Închide
 shutdown_rusure=Sunteți sigur că doriți să opriți sistemul cu comanda $1 ?
 shutdown_ok=Sistem de închidere
 shutdown_exec=Oprirea cu comanda $1 ..
+
 reboot_ecannot=Nu aveți voie să reporniți sistemul
 reboot_title=reboot
 reboot_rusure=Sigur doriți să reporniți sistemul cu comanda $1 ?
 reboot_ok=Sistem de repornire
 reboot_exec=Rebooting cu comanda $1 ..
+
 acl_script=Poate edita scriptul de pornire?
 acl_actions=Poate rula, edita, crea și șterge acțiuni?
 acl_runonly=Alegeți numai
 acl_reboot=Poate reporni sistemul?
 acl_shutdown=Poate opri sistemul?
+
 log_rename=Redenumită acțiunea $1 la $2 
 log_modify=Acțiune modificată $1 
 log_create=Acțiune creată $1 
@@ -138,6 +145,7 @@ log_massrestart=Acțiuni repornite $1
 log_massenable=Acțiuni activate $1 
 log_massdisable=Acțiuni dezactivate $1 
 log_telinit=Comutată la nivel de nivel $1 
+
 edit_hostconfig_startup=Scriptul $1 este rulat la momentul de pornire a sistemului dacă această acțiune este activă. Puteți edita mai jos
 edit_hostconfig_plist=Fișierul $1 stabilește anumiți parametri cu privire la scriptul de pornire. Puteți edita mai jos
 edit_hostconfig_new=Creați acțiune nouă
@@ -149,6 +157,7 @@ edit_hostconfig_array=Câmpurile $1, $2 și $3 sunt câmpuri matrice și pot con
 edit_hostconfig_further=După crearea noii acțiuni de pornire, veți fi redirecționat către o pagină unde puteți regla scriptul de pornire și lista de parametri, dacă este necesar.
 edit_hostconfig_hostconfig=Fișierul $1 controlează serviciile și demoni de pe întregul sistem care sunt pornite de la pornirea sistemului. Puteți edita mai jos
 edit_hostconfig_title=Editați Hostconfig
+
 mass_enone=Nu au fost selectate acțiuni
 mass_enone2=Nu au fost selectate servicii
 mass_start=Acțiuni de pornire
@@ -169,9 +178,11 @@ mass_udisable=Dezactivarea serviciului $1 la momentul de pornire.
 mass_ustarting=Serviciul de pornire $1 ..
 mass_ustopping=Serviciul de oprire $1 ..
 mass_urestarting=Repornește serviciul $1 ..
+
 change_err=Nu aveți voie să comutați nivelurile de rulare
 change_title=Comutați Runlevel
 change_cmd=Trecerea la nivelul de execuție $1 cu comanda $2. Este posibil să dureze ceva timp și este posibil ca Webmin să nu mai fie disponibil după comutare.
+
 mode_init=SysV init
 mode_osx=MacOS
 mode_local=Script de boot unic
@@ -180,6 +191,7 @@ mode_rc=Scripturi FreeBSD RC
 mode_upstart=Parvenit
 mode_systemd=systemd
 mode_launchd=launchd
+
 upstart_title1=Creați serviciul de pornire
 upstart_title2=Editează Serviciul de pornire
 upstart_egone=Serviciul nu mai există!
@@ -204,6 +216,7 @@ upstart_eserver=Nu a fost introdusă nicio comandă de server
 upstart_eserver2=Comanda serverului nu există
 upstart_eserver3=Se poate introduce o singură comandă server
 upstart_return=service upart
+
 systemd_title1=Creați Serviciul Systemd
 systemd_title2=Editează Serviciul Systemd
 systemd_egone=Serviciul nu mai există!
@@ -227,6 +240,7 @@ systemd_edesc=Descrierea serviciului lipsă
 systemd_return=service systemd
 systemd_econf=Nu a fost introdusă nicio configurație de sistem
 systemd_estart=Lipsesc comenzile pentru a rula la pornire
+
 launchd_title1=Creați Launchd Agent
 launchd_title2=Editează Launchd Agent
 launchd_egone=Agentul nu mai există!
@@ -247,4 +261,5 @@ launchd_eclash=Există deja un agent cu același nume
 launchd_return=agent de lansare
 launchd_econf=Nu a fost introdusă nicio configurație de lansare
 launchd_estart=Lipsește comanda serverului
+
 syslog_journalctl=Jurnalele SystemD

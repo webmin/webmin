@@ -11,8 +11,10 @@ index_reposdisable=Désactiver les référentiels
 index_reposenable=Activer les référentiels
 index_reposdelete=Supprimer les référentiels
 index_repoheader=Nouvelles options de référentiel de packages
+
 update_title2=Installer des packages
 update_enone=Aucun forfait sélectionné
+
 log_enable_repos=Référentiels de packages $1 activés
 log_disable_repos=Référentiels de packages $1 désactivés
 log_delete_repos=Référentiels de packages $1 supprimés
@@ -20,6 +22,7 @@ log_enable_repo=Référentiel de packages activé $1
 log_disable_repo=Référentiel de packages désactivé $1 
 log_delete_repo=Référentiel de packages supprimé $1 
 log_create_repo=Référentiel de packages créé $1 
+
 repos_err_disable=Impossible de désactiver les référentiels
 repos_err_enable=Impossible d'activer les référentiels
 repos_err_delete=Impossible de supprimer les référentiels

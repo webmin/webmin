@@ -21,6 +21,7 @@ index_eversion=Versi STunnel yang terpasang pada sistem anda ialah $1, tetapi mo
 index_conf=Dari fail config $1
 index_noconf=Tiada fail konfigurasi!
 index_delete=Padam terowong terpilih
+
 edit_title=Sunting Terowong SSL
 create_title=Cipta Terowong SSL
 edit_header1=Pilihan sumber terowong
@@ -47,6 +48,7 @@ edit_tcpw=Nama TCP-wrapper
 edit_auto=Automatik
 edit_iface=Alamat sumber keluar
 edit_type=Larikan dari
+
 save_err=Gagal untuk menyimpan terowong SSL
 save_enclash=Nama pelayan $2 telah diguna pada port $1.
 save_einetd=Sudah ada servis inetd dipanggil $1.
@@ -61,6 +63,7 @@ save_etcpw=Nama TCP-wrapper hilang atau tidak sah
 save_eiface=Alamat keluar sumber hilang atau tidak sah
 save_exinetd=Sudah ada servis xinetd dipanggil $1
 save_export=Port $1 telah diguna oleh servis xinetd $2.
+
 log_apply=Terapkan Perubahan
 log_create=Terowong SSL $1 dicipta
 log_delete=Terowong SSL $1 dipadam

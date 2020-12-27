@@ -24,13 +24,16 @@ index_out=Výstup z $1 bol
 index_boot=Pripojiť pri štarte pomocou:
 index_noboot=&lt;Nepripájať sa&gt;
 index_bootdesc=Zmeňte túto voľbu, aby ste určili, či sa zvolené pripojenie PPP spustí alebo nie.
+
 init_title=Zistiť konfiguráciu
 init_cmd=Detekcia pripojeného modemu pomocou príkazu $1 ..
 init_done=.. hotový
 init_modems=Modemy sú nakonfigurované na $1 a $2.
 init_modem=Na $1 bol zistený modem.
 init_none=Nezistili sa žiadne modemy!
+
 device_serial=sériový port $1 
+
 connect_title=Nadviazanie spojenia
 connect_cmd=Pokúšam sa nadviazať spojenie s príkazom $1 ..
 connect_failed=.. pripojenie zlyhalo! Dôvod prečo je uvedený vyššie.
@@ -40,12 +43,14 @@ connect_dns=Použitie konfigurácie DNS s priradeným PPP.
 connect_dns2=Bola nastavená konfigurácia DNS priradená PPP.
 connect_dnsto=Čakanie na konfiguráciu DNS s priradeným PPP.
 connect_dnsdown=Zdá sa, že pripojenie zlyhalo pri čakaní na konfiguráciu DNS priradenú PPP.
+
 disc_title=Vypnite PPP
 disc_err=Vypnutie pripojenia PPP zlyhalo
 disc_edown=Už bolo odpojené
 disc_ok1=Vaše pripojenie PPP vytvorené pomocou $2 bolo úspešne ukončené.
 disc_ok2=Vaše pripojenie PPP bolo úspešne ukončené.
 disc_dns=Obnovená stará konfigurácia DNS.
+
 edit_title1=Pridať ISP Dialer
 edit_title2=Upraviť vytáčanie ISP
 edit_ddesc=Tieto predvolené nastavenia sa použijú na pripojenia uskutočnené pomocou iného dialera.
@@ -76,6 +81,7 @@ edit_idle=Časový limit nečinnosti (v sekundách)
 edit_def=Z predvolených nastavení
 edit_inherits=Zdediť nastavenia
 edit_from=Z dialera ..
+
 save_err=Dialer sa nepodarilo uložiť
 save_err2=Dialer sa nepodarilo odstrániť
 save_ename=Chýbajúce alebo neplatné meno vytáčacieho čísla
@@ -88,6 +94,7 @@ save_edial=Chýbajúci alebo neplatný počet pokusov o vytáčanie
 save_eidle=Chýbajúci alebo neplatný časový limit nečinnosti
 save_einherits=Tento číselník nie je možné odstrániť, pretože z neho zdedí nastavenie „$1“.
 save_eclash=Vytáčací modul s rovnakým menom už existuje
+
 log_create=Vytvorené $1 
 log_update=Aktualizované $1 
 log_delete=Odstránené $1 

@@ -16,16 +16,19 @@ index_loginsall=すべてのユーザー
 index_loginsuser=ユーザーのみ
 index_loginsdesc=SSHまたはUsermin経由で接続した一部またはすべてのUnixユーザーの最近のログインを表示します。
 index_whodesc=現在SSHまたはUsermin経由でログインしているユーザーを表示します。
+
 uedit_manual=ディレクトリ
 uedit_allg=すべてのグループ
 uedit_ing=グループで
 uedit_egone=選択したユーザーは存在しません！
 uedit_sys=システムのデフォルト
 uedit_clone=ユーザーのクローン
+
 usave_edigestblowfish=システムではBlowfishパスワードが有効になっていますが、Perl <tt>$3</tt>モジュールはインストールされていません。<p>通常の暗号化されたパスワードの使用を強制するには、<a href='$1'>モジュール設定</a>。<p>またはWebminに<tt>$3</tt>ダウンロードしてインストール</a>させるtt>モジュール。
 usave_edigestsha512=システムではBlowfishパスワードが有効になっていますが、<tt>crypt</tt>関数はこの形式をサポートしていません。
 usave_epasswd_mindays=パスワードが$1日前に変更された
 usave_epasswd_cmd=パスワード検証コマンドが失敗しました
+
 gedit_desc=説明
 gedit_oneperline=（1行に1つ）
 gedit_egone=選択したグループはもう存在しません！
@@ -34,15 +37,19 @@ gedit_selu=グループのユーザー
 gedit_pri=プライマリグループメンバー
 gedit_prinone=このグループをプライマリとして持っているユーザーはいません
 gedit_clone=クローングループ
+
 udel_ugroupother=他のモジュールでこのユーザーのグループを削除します ..
+
 log_gbatch=実行されたグループバッチファイル$1
 log_gbatch_l=実行されたグループバッチファイル$1（$2が作成され、$3が変更され、$4 deleted）
 log_ugbatch=アップロードされたグループバッチファイルを実行しました
 log_ugbatch_l=アップロードされたグループバッチファイルを実行しました（$1が作成され、$2が変更され、$3が削除されました）
 log_delete_users=削除された$1ユーザー
 log_delete_groups=$1グループを削除しました
+
 export_header=バッチユーザーエクスポートオプション
 export_ecannot=ユーザーをエクスポートすることはできません
+
 gexport_title=グループバッチファイルのエクスポート
 gexport_desc=このフォームを使用すると、システムで使用可能なグループの一部またはすべてを含むバッチファイルを作成できます。このファイルを別のシステムの[グループバッチファイルの実行]ページで使用して、エクスポートされたグループを再作成できます。
 gexport_header=バッチグループのエクスポートオプション
@@ -51,8 +58,10 @@ gexport_ecannot=グループをエクスポートすることはできません
 gexport_err=グループバッチファイルをエクスポートできませんでした
 gexport_egid=範囲内の最初のGIDが無効です
 gexport_egid2=範囲内の無効な2番目のGID
+
 umass_others=警告！一部のホームディレクトリには、他のユーザーが所有する$1ファイルが含まれています。
 umass_sure2=選択した$1のユーザーを削除してもよろしいですか？
+
 gbatch_title=グループバッチファイルの実行
 gbatch_ecannot=グループバッチファイルフォームは使用できません
 gbatch_desc=このフォームを使用すると、アップロードされたテキストファイルまたはローカルテキストファイルから多数のグループを一度に作成、変更、または削除できます。ファイルの各行は、最初のフィールドに応じて、実行するアクションを1つ指定します。行形式は次のとおりです。
@@ -60,6 +69,7 @@ gbatch_desc2=<b>create</b>:groupname:passwd:gid:member,member,...<p><b>modify</b
 gbatch_descafter=<b>create</b>行で、<tt>gid</tt>フィールドが空のままの場合、Webminは自動的にGIDを割り当てます。
 gbatch_descafter2=<b>modify</b>行では、空のフィールドは、対応するグループ属性が変更されないことを意味します。
 gbatch_header=バッチグループの作成、更新、削除オプション
+
 gbatch_others=他のモジュールでグループを作成、変更、または削除しますか？
 gbatch_batch=バッチが完了したときにのみグループファイルを更新しますか？
 gbatch_chgid=変更されたグループのファイルのGIDを変更しますか？

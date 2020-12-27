@@ -16,6 +16,7 @@ index_fall=Que modificó cualquier archivo
 index_file=Que modificó archivo
 index_wall=De cualquier servidor Webmin
 index_whost=Del servidor
+
 search_title=Resultados de la Búsqueda
 search_date=Fecha
 search_time=Hora
@@ -36,6 +37,7 @@ search_critt2=en $1
 search_config=Cambiada configuración del módulo
 search_etime=Inicio o fin de tiempo no válido
 search_err=Falló la búsqueda
+
 view_title=Detalles de Acción
 view_header=Detalles de acción grabada en histórico $1
 view_action=Descripción
@@ -62,11 +64,13 @@ view_type_rename=Renombrado $1 a $2
 view_ecannot=No está autorizado a ver esta entrada en histórico
 view_return=detalles de acción
 view_input=Entrada a comando
+
 acl_mods=Puede ver históricos en módulos
 acl_all=Todos
 acl_sel=Seleccionados abajo ..
 acl_users=Puede ver acciones de usuarios
 acl_rollback=¿Puede deshacer acciones?
+
 rollback_title=Deshacer Acción
 rollback_rusure=¿Está seguro de que quiere revertir todos los archivos listados abajo a sus contenidos anteriores a que se realizase esta acción? Cualquier dato que contengan actualmente será sobreescrito con los siguientes cambios :
 rollback_isdir=Un directorio - no se realizarán cambios.

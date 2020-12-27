@@ -7,14 +7,17 @@ index_descfetch=Táto stránka slúži na stiahnutie súboru zo systému, na kto
 index_email=Poslať e-mail po dokončení sťahovania?
 index_emailto=Áno, na adresu
 index_email2=Poslať e-mail po dokončení nahrávania?
+
 upload_eemail=Chýba e-mailová adresa na upozornenie
 upload_saving=Ukladá sa súbor $1 ..
 upload_saved=.. napísal $1 
 upload_unzipping=Extrahuje sa súbor $1 ..
 upload_unzipdone=.. $1 
+
 fetch_eexists2=Súbor alebo adresár neexistuje
 fetch_ezip=Adresár nie je možné stiahnuť, pokiaľ nie je nainštalovaný príkaz <tt>zip</tt>
 fetch_eroot=Koreňový adresár nie je možné stiahnuť!
+
 email_downmsg=Ukončenie nasledujúceho sťahovania :
 email_downurl=URL: $1 
 email_downerr=Chybové hlásenie: $1 

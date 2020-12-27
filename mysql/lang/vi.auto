@@ -45,12 +45,15 @@ index_showing=Hiển thị cơ sở dữ liệu khớp với $1 ..
 index_emsg=Thông báo lỗi đầy đủ của MySQL là : $1 
 index_jump=Hoặc chỉnh sửa cơ sở dữ liệu:
 index_jumpok=Mở
+
 login_err=Đăng nhập thất bại
 login_ecannot=Bạn không được phép cấu hình đăng nhập cơ sở dữ liệu
 login_elogin=Thiếu đăng nhập quản trị
 login_epass=Tên người dùng hoặc mật khẩu quản trị không chính xác
+
 stop_err=Không thể dừng cơ sở dữ liệu
 start_err=Không thể khởi động cơ sở dữ liệu
+
 dbase_title=Chỉnh sửa cơ sở dữ liệu
 dbase_header=Bảng cơ sở dữ liệu, chỉ mục và khung nhìn
 dbase_tables=Bảng cơ sở dữ liệu
@@ -81,6 +84,7 @@ dbase_type=Kiểu
 dbase_typetable=Bảng 1)
 dbase_typeindex=Mục lục
 dbase_typeview=Lượt xem
+
 ddrop_err=Không thể hủy cơ sở dữ liệu
 ddrop_title=Thả cơ sở dữ liệu
 ddrop_rusure=Bạn có chắc chắn muốn bỏ cơ sở dữ liệu $1 không? $2 bảng chứa $3 hàng dữ liệu sẽ bị xóa.
@@ -89,6 +93,7 @@ ddrop_mysql=Bởi vì đây là cơ sở dữ liệu chủ, việc bỏ nó có 
 ddrop_ok=Thả cơ sở dữ liệu
 ddrop_empty=Chỉ cần xóa tất cả các bảng
 ddrop_empty2=Xóa tất cả các bảng
+
 ddrops_err=Không thể bỏ cơ sở dữ liệu
 ddrops_title=Bỏ cơ sở dữ liệu
 ddrops_rusure=Bạn có chắc chắn muốn bỏ $1 cơ sở dữ liệu đã chọn không? $2 bảng chứa $3 hàng dữ liệu sẽ bị xóa.
@@ -97,6 +102,7 @@ ddrops_mysql=Bởi vì cơ sở dữ liệu chủ được chọn, việc bỏ n
 ddrops_ok=Bỏ cơ sở dữ liệu
 ddrops_enone=Không có cơ sở dữ liệu nào được chọn
 ddrops_ecannotdb=Bạn không được phép bỏ cơ sở dữ liệu $1 
+
 table_title=Chỉnh sửa bảng
 table_title2=Tạo bảng
 table_header=Bảng $1 trong cơ sở dữ liệu $2 
@@ -142,16 +148,19 @@ table_nextra=Thêm quy
 table_eautokey=Trường tăng tự động cũng phải là khóa chính
 table_eauto=Chỉ có một trường có thể tự động tăng
 table_delete=Xóa các trường đã chọn
+
 tdrop_err=Không thể đánh rơi bàn
 tdrop_title=Bàn thả
 tdrop_rusure=Bạn có chắc chắn muốn bỏ bảng $1 trong cơ sở dữ liệu $2 không? $3 hàng dữ liệu sẽ bị xóa.
 tdrop_ok=Bàn thả
+
 tdrops_enone=Không có bảng nào để thả
 tdrops_err=Không thể thả (các) bảng
 tdrops_ok=Rơi vãi
 tdrops_title=Thả chọn
 tdrops_rusure=Bạn có chắc chắn muốn thả $1 bảng đã chọn vào cơ sở dữ liệu $2 không? $3 hàng dữ liệu sẽ bị xóa.
 tdrops_rusure2=Bạn có chắc chắn muốn thả $1 bảng đã chọn vào cơ sở dữ liệu $2 không?
+
 field_title1=Thêm các lĩnh vực
 field_title2=Sửa đổi trường
 field_in=Trong bảng $1 trong cơ sở dữ liệu $2 
@@ -185,6 +194,7 @@ field_esize='$1' không phải là kích thước trường hợp lệ
 field_eenum=Không có giá trị liệt kê được nhập
 field_efield='$1' không phải là tên trường hợp lệ
 field_ekey=Các trường cho phép null không thể là một phần của khóa chính
+
 view_title=Bảng dữ liệu
 view_pos=Chuyển $1 đến $2 của $3 
 view_none=Bảng này không chứa dữ liệu.
@@ -219,6 +229,7 @@ view_keep=Không thay đổi
 view_set=Đặt thành nội dung của tệp ..
 view_adv=tìm kiếm nâng cao
 view_sqlrun=Kết quả được tạo bởi truy vấn SQL : $1 
+
 users_title=Quyền Người dùng
 users_user=Người sử dụng
 users_host=Chủ nhà
@@ -245,6 +256,7 @@ users_ssl=Chứng chỉ
 users_dtitle=Xóa quyền người dùng
 users_drusure=Bạn có chắc chắn muốn xóa quyền của người dùng MySQL đã chọn $1 không?
 users_dok=Xóa người dùng
+
 user_title1=Tạo người dùng
 user_title2=Người dùng biên tập
 user_header=Chi tiết người dùng MySQL
@@ -308,6 +320,7 @@ user_emax_user_connections=Đăng nhập đồng thời tối đa phải là m�
 user_emax_connections=Kết nối tối đa mỗi giờ phải là một số
 user_emax_updates=Cập nhật tối đa mỗi giờ phải là một số
 user_emax_questions=Truy vấn tối đa mỗi giờ phải là một số
+
 dbs_title=Quyền cơ sở dữ liệu
 dbs_db=Cơ sở dữ liệu
 dbs_user=Người sử dụng
@@ -326,6 +339,7 @@ dbs_enone=Không có cơ sở dữ liệu nào được chọn
 dbs_dtitle=Xóa quyền cơ sở dữ liệu
 dbs_drusure=Bạn có chắc chắn muốn xóa các quyền cơ sở dữ liệu MySQL đã chọn $1 không?
 dbs_dok=Xóa quyền
+
 db_title1=Tạo quyền cơ sở dữ liệu
 db_title2=Chỉnh sửa quyền cơ sở dữ liệu
 db_header=Tùy chọn quyền cơ sở dữ liệu
@@ -340,6 +354,7 @@ db_err=Không thể lưu quyền cơ sở dữ liệu
 db_euser=Tên người dùng bị thiếu hoặc không hợp lệ
 db_ehost=Tên máy chủ bị thiếu hoặc không hợp lệ
 db_edb=Tên cơ sở dữ liệu bị thiếu hoặc không hợp lệ
+
 hosts_title=Quyền lưu trữ
 hosts_db=Cơ sở dữ liệu
 hosts_host=Chủ nhà
@@ -355,6 +370,7 @@ hosts_dtitle=Xóa quyền của máy chủ
 hosts_drusure=Bạn có chắc chắn muốn xóa quyền truy cập máy chủ MySQL đã chọn $1 không?
 hosts_dok=Xóa quyền
 hosts_return=quyền lưu trữ
+
 host_title1=Tạo quyền lưu trữ
 host_title2=Chỉnh sửa quyền của máy chủ
 host_header=Tùy chọn quyền máy chủ
@@ -364,6 +380,7 @@ host_sel=Đã chọn
 host_otherdb=Mẫu phù hợp
 host_host=Chủ nhà
 host_perms=Quyền
+
 newdb_title=Tạo nên cơ sở dữ liệu
 newdb_header=Tùy chọn cơ sở dữ liệu mới
 newdb_db=Tên cơ sở dữ liệu
@@ -377,6 +394,7 @@ newdb_err=Không thể tạo cơ sở dữ liệu
 newdb_edb=Tên cơ sở dữ liệu bị thiếu hoặc không hợp lệ
 newdb_ecannot=Bạn không được phép tạo cơ sở dữ liệu
 newdb_ecannot2=Bạn không được phép tạo thêm bất kỳ cơ sở dữ liệu nào
+
 exec_title=Thực thi SQL
 exec_header=Nhập lệnh SQL để thực thi trên cơ sở dữ liệu $1 ..
 exec_old=Hoặc chọn một lệnh SQL trước đó :
@@ -413,6 +431,7 @@ exec_iheader=Tùy chọn nhập tệp văn bản
 exec_created=$1 bảng đã được tạo.
 exec_inserted=$1 hồ sơ đã được chèn.
 exec_cs=Bộ ký tự cho dữ liệu
+
 tprivs_title=Bảng quyền
 tprivs_table=Bàn
 tprivs_db=Cơ sở dữ liệu
@@ -431,6 +450,7 @@ tprivs_enone=Không có bảng nào được chọn
 tprivs_dtitle=Xóa quyền
 tprivs_drusure=Bạn có chắc chắn muốn xóa các quyền của bảng MySQL đã chọn $1 không?
 tprivs_dok=Xóa quyền
+
 tpriv_title1=Tạo quyền bảng
 tpriv_title2=Chỉnh sửa quyền
 tpriv_header=Tùy chọn cho phép bảng
@@ -447,6 +467,7 @@ tpriv_etable=Không có bảng nào được chọn
 tpriv_euser=Tên người dùng bị thiếu hoặc không hợp lệ
 tpriv_ehost=Máy chủ bị thiếu hoặc không hợp lệ
 tpriv_edb=Tên cơ sở dữ liệu bị thiếu hoặc không hợp lệ
+
 cprivs_title=Quyền trường
 cprivs_field=Cánh đồng
 cprivs_table=Bàn
@@ -466,6 +487,7 @@ cprivs_enone=Không có trường nào được chọn
 cprivs_dtitle=Xóa quyền cột
 cprivs_drusure=Bạn có chắc chắn muốn xóa quyền truy cập cột $1 đã chọn của MySQL không?
 cprivs_dok=Xóa quyền
+
 cpriv_title1=Tạo quyền trường
 cpriv_title2=Chỉnh sửa quyền trường
 cpriv_header=Tùy chọn cho phép trường
@@ -482,11 +504,13 @@ cpriv_etable=Không có bảng nào được chọn
 cpriv_euser=Tên người dùng bị thiếu hoặc không hợp lệ
 cpriv_ehost=Máy chủ bị thiếu hoặc không hợp lệ
 cpriv_edb=Tên cơ sở dữ liệu bị thiếu hoặc không hợp lệ
+
 esql=SQL $1 không thành công : $2 
 eparse=Webmin không thể phân tích cú pháp đầu ra từ lệnh $1 do tính chất của dữ liệu trong cơ sở dữ liệu của bạn. Bạn sẽ cần cài đặt các mô-đun $2 và $3 Perl để giải quyết vấn đề này.
 edenied=Bạn không có quyền truy cập vào cơ sở dữ liệu MySQL này
 perms_ecannot=Bạn không được phép chỉnh sửa quyền
 perms_edb=Bạn chỉ được phép chỉnh sửa quyền cho cơ sở dữ liệu của riêng bạn
+
 acl_dbs=Cơ sở dữ liệu người dùng này có thể quản lý
 acl_dall=Tất cả các cơ sở dữ liệu
 acl_dsel=Đã chọn ..
@@ -507,6 +531,7 @@ acl_bnone=Không cho phép sao lưu
 acl_indexes=Có thể xem và quản lý chỉ mục?
 acl_views=Có thể xem và quản lý quan điểm?
 acl_files=Có thể thực thi SQL từ các tệp cục bộ?
+
 log_start=Bắt đầu máy chủ MySQL
 log_stop=Máy chủ MySQL đã dừng
 log_cnf=Thay đổi cấu hình máy chủ MySQL
@@ -571,6 +596,7 @@ log_importfile=Dữ liệu được nhập từ tệp $1
 log_set=Đã thay đổi $1 biến MySQL
 log_root=Thay đổi mật khẩu quản trị
 log_manual=Chỉnh sửa tập tin cấu hình bằng tay
+
 backup_title=Cơ sở dữ liệu sao lưu
 backup_title2=Sao lưu tất cả cơ sở dữ liệu
 backup_edump=Không tìm thấy chương trình sao lưu MySQL $1 trên hệ thống của bạn. Có thể <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
@@ -649,15 +675,18 @@ backup_bodyspace=Kích thước hệ thống tệp: $1 Dung lượng trống : $
 backup_bodyall=tất cả
 backup_edownloadall=Chỉ có thể tải xuống một bản sao lưu cơ sở dữ liệu
 backup_edownloadsave=Chế độ tải xuống không thể được sử dụng để sao lưu theo lịch trình
+
 import_title=Nhập dữ liệu
 import_uploadout=Nhập dữ liệu từ tệp đã tải lên ..
 import_fileout=Nhập dữ liệu từ tệp $1 ..
 import_eupload=Thiếu tệp nhập đã tải lên
 import_efile=Thiếu tên tệp nhập
+
 adv_title=tìm kiếm nâng cao
 adv_and=Tìm hồ sơ phù hợp với tất cả các tiêu chí ..
 adv_or=Tìm hồ sơ phù hợp với bất kỳ tiêu chí ..
 adv_ok=Tìm kiếm ngay bây giờ
+
 csv_title=Xuất tệp CSV
 csv_header=Tùy chọn xuất CSV
 csv_dest=Điểm đến xuất khẩu
@@ -678,6 +707,7 @@ csv_done=Xuất CSV sang $1 đã hoàn tất. Kích thước tệp kết quả l
 csv_headers=Bao gồm tên cột trong CSV?
 csv_cols=Các cột để đưa vào CSV
 csv_ecols=Không có cột nào được chọn
+
 cnf_title=Cấu hình máy chủ MySQL
 cnf_efile=Không tìm thấy tệp cấu hình MySQL $1 trên hệ thống của bạn. Bạn có thể cần điều chỉnh cấu hình mô-đun <a href='$2'></a> để sử dụng đúng đường dẫn.
 cnf_header=Tùy chọn máy chủ MySQL
@@ -719,11 +749,13 @@ cnf_restart=Lưu và khởi động lại MySQL
 cnf_fpt=Tập tin riêng cho mỗi bảng InnoDB?
 cnf_ilt=Hết thời gian khóa InnoDB (tính bằng giây)
 cnf_eilt=Thời gian chờ khóa InnoDB phải là số nguyên
+
 manual_title=Chỉnh sửa tập tin cấu hình
 manual_file=Chỉnh sửa tập tin cấu hình:
 manual_ok=đồng ý
 manual_efile=Tập tin cấu hình không hợp lệ!
 manual_err=Không thể lưu tệp cấu hình
+
 index_title1=Tạo chỉ mục
 index_header1=Tùy chọn chỉ mục
 index_name=Tên chỉ mục
@@ -739,12 +771,15 @@ index_ecols=Không có trường nào được chọn
 index_title2=Chỉnh sửa chỉ mục
 index_header=Chỉ mục $1 trong cơ sở dữ liệu $2 
 index_ecannot=Bạn không được phép quản lý chỉ mục
+
 syslog_desc=Thông báo lỗi MySQL
 syslog_desc2=Thông báo lỗi MySQL
 syslog_logdesc=Truy vấn MySQL
+
 fdrop_err=Không thể xóa các trường
 fdrop_enone=Không được chọn
 fdrop_eall=Bạn không thể xóa tất cả các trường từ một bảng!
+
 view_title1=Tạo chế độ xem
 view_title2=Chỉnh sửa chế độ xem
 view_header1=Xem chi tiết
@@ -770,6 +805,7 @@ view_cascaded=Quan điểm ngầm
 view_local=Chỉ xem này
 view_nocheck=không ai
 view_ecannot=Bạn không được phép quản lý lượt xem
+
 procs_title=Kết nối cơ sở dữ liệu
 procs_id=TÔI
 procs_user=tên tài khoản
@@ -781,9 +817,11 @@ procs_query=Chạy truy vấn
 procs_kill=Giết các kết nối được chọn
 procs_ecannot=Bạn không được phép xem kết nối cơ sở dữ liệu
 procs_none=Không có kết nối máy khách cơ sở dữ liệu khác tại thời điểm này.
+
 kill_err=Không thể hủy kết nối cơ sở dữ liệu
 kill_ecannot=Bạn không được phép quản lý các kết nối cơ sở dữ liệu
 kill_enone=Không được chọn
+
 vars_title=Biến hệ thống MySQL
 vars_desc=Cảnh báo - Các biến được đặt trên trang này sẽ được đặt lại về giá trị mặc định của chúng khi MySQL được khởi động lại. Cài đặt cố định phải được thực hiện trên trang <a href='$1'>Cấu hình máy chủ MySQL</a>.
 vars_ecannot=Bạn không được phép chỉnh sửa các biến hệ thống
@@ -794,6 +832,7 @@ vars_search=Hiển thị các biến khớp:
 vars_ok=Tìm kiếm
 vars_none2=Không có biến hệ thống phù hợp với tìm kiếm của bạn.
 vars_none=Không tìm thấy biến hệ thống!
+
 compat_ansi=ANSI
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQL 4.0
@@ -805,7 +844,9 @@ compat_maxdb=MaxDB
 compat_no_key_options=Tùy chọn chính
 compat_no_table_options=Tùy chọn bảng
 compat_no_field_options=Tùy chọn trường
+
 config_echarset=Bộ ký tự bị thiếu hoặc không hợp lệ
+
 root_title=Thay đổi mật khẩu quản trị
 root_header=Mật khẩu quản trị mới
 root_user=Quản trị đăng nhập
@@ -818,6 +859,7 @@ root_epass1=Không nhập mật khẩu mới
 root_epass2=Mật khẩu không phù hợp
 root_none=Không mật khẩu!
 root_auto=Tự động (thường là <tt>root</tt>)
+
 mysqlpass_err=Chế độ an toàn MySQL
 mysqlpass_esafecmd=Không tìm thấy lệnh $1 cần thiết để khởi động MySQL với xác thực bị tắt
 mysqlpass_eshutdown=Không tắt được : $1 

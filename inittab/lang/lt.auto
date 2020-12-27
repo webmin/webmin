@@ -26,22 +26,28 @@ inittab_apply=Taikyti Init Configuration
 inittab_applymsg=Spustelėkite šį mygtuką, kad pritaikytumėte dabartinę „SysV Init“ konfigūraciją, vykdydami komandą <tt>telinit q</tt>. Atminkite, kad bet kurios konfigūracijos klaidos gali paversti sistemą nenaudojama vykdant šią komandą.
 index_delete=Ištrinti pasirinktus procesus
 inittab_none2=Jūsų sistemoje nerasta įkrovos procesų. Tai tikriausiai rodo, kad jis nenaudoja „SysV init“ konfigūracijos failo.
+
 edit_inittab_err=Jums neleidžiama redaguoti proceso
 edit_inittab_title=Redaguoti procesą $1 
 edit_inittab_details=Informacija apie procesą
 edit_inittab_del=Ištrinti
 edit_inittab_save=Sutaupyti
+
 new_inittab_err=Jums neleidžiama kurti naujo proceso
 new_inittab_title=Naujas procesas
+
 save_inittab_err=Jums neleidžiama išsaugoti proceso
 save_inittab_noid=Klaida, neįvestas vardo procesas
 save_inittab_already=Klaida, pavadinimo procesas jau egzistuoja
+
 log_modify=Modifikuotas pradinis procesas $1 
 log_rename=Pervadintas iniciacijos procesas nuo $1 iki $2 
 log_create=Sukurtas pradinis procesas $1 
 log_delete=Ištrintas pradinis procesas $1 
 log_apply=Taikoma konfigūracija
 log_deletes=Ištrinti $1 pradiniai procesai
+
 apply_err=Nepavyko pritaikyti konfigūracijos
+
 delete_err=Nepavyko ištrinti procesų
 delete_enone=Nepasirinkta

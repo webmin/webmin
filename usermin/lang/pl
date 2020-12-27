@@ -16,11 +16,14 @@ index_esame=Katalog konfiguracji Usermina $1 ustawiony w <a href='$2'> module ko
 index_eroot=Katalog konfiguracyjny Usermina $1 istnieje, ale program  katalogu głównego $2 sygnalizuje, że nie istnieje! Należy ręcznie pobrać i zainstalować ponownie Usermina.
 index_restart=Uruchom ponownie Usermina
 index_restartmsg=Kliknij aby uruchomić ponownie Usermina . Może to być konieczne jeśli ostatnio aktualizowałeś Perla.
+
 access_title=Kontrola dostępu IP
 access_desc=Za pomocą tej strony Usermin może być skonfigurowany tak, by zakazać lub zezwolić na dostęp spod określonych adresów IP. Można wprowadzać nazwy komputerów (jak foo.bar.com) i sieci IP (jak 10.254.3.0 czy 10.254.1.0/255.255.255.128). Powinieneś ograniczyć dostęp jedynie do "zaufanych" adresów, szczególnie jeżeli sieć jest dostępna z Internetu. W przeciwnym wypadku ktoś kto zgadnie lub podsłucha hasło będzie w stanie przejąć kontrolę nad komputerem.
+
 bind_title=Porty i adresy
 bind_desc2=Ten formularz może być użyty do zmiany portu, na którym nasłuchuje Usermin albo ustawienia go tak, aby nasłuchiwał tylko na jednym adresie IP. Możesz także skonfigurować go tak, aby akceptował połączenia na wielu portach lub nasłuchiwał na wybranych adresach IP.
 bind_erestart=Błąd podczas uruchamiania Usermina z ustawionym nowym adresem i portem : $1
+
 mods_title=Moduły Usermina
 umods_title=Moduły Usermina
 mods_desc1=Moduły Usermina mogą być dodane po instalacji przy użyciu formularza po prawej. Moduły są zazwyczaj rozprowadzane jako pliki <tt>.wbm</tt>, z których każdy zawiera jeden lub więcej modułów. Moduły można również zainstalować z plików RPM, jeśli system operacyjny je obsługuje.
@@ -41,15 +44,18 @@ mods_desc3=Istniejący moduł może być usunięty przy użyciu poniższego form
 mods_delete=Skasuj moduły
 mods_deleteok=Usuń zaznaczone moduły
 mods_desc4=Poniższy formularz umożliwia eksport zainstalowanych modułów do pliku wbm.gz. Wyeksportowany moduł może zostać zainstalowany na innym systemie, na którym działa Usermin.
+
 os_title=OS i zmienne systemowe
 os_desc3=Ta strona pokazuje informacje o systemie operacyjnym wykrytym przez Webmina podczas instalacji oraz system, wykrywany w chwili obecnej. Jeśli te systemy się różnią, możesz zdecydować o aktualizacji informacji, co może być konieczne jeśli ostatnio aktualizowałeś swój system.
 os_desc2=Możesz również zmienić ścieżkę przeszukiwania używaną przez Usermina przy uruchamianiu programów oraz ścieżkę do bibliotek współdzielonych przekazywaną do każdego programu.
 os_usermin=System operacyjny zgodny z Usermin
 os_iusermin=Kod wewnętrznego systemu operacyjnego używany przez Usermina
 os_update=Aktualizuj Usermina aby mógł używać wykrytego systemu operacyjnego
+
 lang_title=Język
 lang_title2=Język Usermina
 lang_intro=Ta strona umożliwia Ci wybór języka w którym Usermin będzie wypisywał komunikaty
+
 session_title=Autoryzacja
 session_desc1=Włączenie chroni przed atakami metodą "prób i błędów" poprzez zwiększanie odstępu czasu pomiędzy kolejnymi nieudanymi próbami zalogowania tego samego użytkownika.
 session_desc2=Włączenie spowoduje automatyczne wylogowywanie nieaktywnych użytkowników po upływie dozwolonego czasu. Bądź przygotowany na to, że włączenie lub wyłączenia autoryzacji sesji może zmusić wszystkich użytkowników do ponownego zalogowania.
@@ -72,6 +78,7 @@ session_blank=Namawiać użytkowników z pustym hasłem do wybrania jakiegoś pr
 session_homedir=Tworzyć brakujące katalogi domowe po zalogowaniu?
 session_homedir_perms=Uprawnienia dla nowego katalogu
 session_ehomedir_perms=Brakujące lub błędne uprawnienia ósemkowe katalogu domowego
+
 themes_title=Motywy Usermina
 themes_desc=Motywy określają wygląd interfejsu użytkownika Usermina włączając w to ikony, kolory, tła i być może strony opcji. Za pomocą poniższego pola wyboru można wybrać jeden z zainstalowanych w systemie motywów.
 themes_sel=Bieżący motyw :
@@ -100,7 +107,9 @@ themes_eirpm=Instalacja RPM nie powiodła się : $1
 themes_ok=Motyw pomyślnie zmieniony .. przekierowuję na główną stronę indeksową Webmina.
 themes_delete=Ta strona może być użyta do usunięcia jednego z motywów zainstalowanych w Twoim systemie. Aktualnie używany motyw nie może zostać usunięty.
 themes_delok=Motyw do usunięcia :
+
 themes_desc4=Zainstalowane motywy mogą być eksportowane jako plik wbt.gz. Plik motywu może być na innym systemie używającym Usermina.
+
 configs_ecannot=Nie masz uprawnień, aby skonfigurować ten moduł
 configs_title=Konfiguracja modułów Usermina
 configs_header=Konfigurowalne moduły
@@ -114,8 +123,10 @@ configs_global=Globalna konfiguracja modułu
 configs_globaldesc=Ustawienia w tym formularzu dotyczą wszystkich użytkowników modułu i zwykle ustawia opcje związane z programami i plikami, których używa.
 configs_user=Domyślne ustawienia użytkownika
 configs_userdesc=Ustawienia na tej stronie definiują domyślne ustawienia dla użytkowników tego modułu. Jeżeli określono inaczej może być ona nadpisana przez indywidualnych użytkowników
+
 acl_title=Dostępne moduły
 acl_desc=Użyj tej strony, aby wybrać, które zainstalowane moduły Usermina są widoczne dla użytkowników.
+
 ssl_title=Szyfrowanie SSL
 ssl_desc1=Komputer, na którym działa Usermin posiada zainstalowany moduł SSLeay Perl-a. Usermin potrafi przy jego pomocy ustanowić zaszyfrowane SSL połączenia pomiędzy Twoją przeglądarką a serwerem. Jeśli łączysz się z serwerem Usermina poprzez Internet, zdecydowanie powinieneś rozważyć użycie SSL, aby zapobiec przechwyceniu przez napastnika Twojego hasła do Usermina.
 ssl_desc2=Uwaga - włącz obsługę SSL tylko jeśli Twoja przeglądarka ma obsługę SSL i nie ma pomiędzy Twoją przeglądarką a komputerem z Userminem firewalla blokującego zapytania <b>https</b>
@@ -124,18 +135,23 @@ ssl_hole=Używasz domyślnego klucza SSL Usermina, do którego każdy ma dostęp
 ssl_savekey=Ten formularz pozwala na dodanie istniejącego klucza prywatnego SSL w formacie PEM oraz certyfikatu do Twojego serwera Usermina.
 ssl_copycert=Kopiuj certyfikat z Webmin
 ssl_copycertdesc=Skopiuj certyfikat SSL, klucz prywatny, CA cert i inne ustawienia, których używa Webmin.
+
 ca_email=Adres e-mail
 ca_ou=Wydział
 ca_o=Organizacja
 ca_sp=Kraj
 ca_c=Kod kraju
+
 newkey_ok=Pomyślnie wygenerowano poniższy klucz SSL.
+
 stop_err=Zatrzymanie Usermina nie powiodło się
 stop_ekill=Nie powiodło się zamykanie procesów : $1
 stop_efile=Już jest zatrzymany
 stop_ecannot=Nie masz uprawnień, aby zatrzymać Usermina
+
 start_err=Uruchamianie Usermina nie powiodło się
 start_ecannot=Nie masz uprawnień, aby uruchomić Usermina
+
 users_title=Dozwolone grupy i użytkownicy
 users_desc=W Usermin można skonfigurować ograniczenia dla użytkowników unixa i grup, które mogą się logować, używając tego formularza. Aby określić wszystkich podstawowych członków gruoy unix, wpisz <tt>@groupname</tt> na liście.
 users_desc2=Aby dopasować zakres UID wpisz <tt>start-end</tt>, <tt>start-</tt> lub <tt>-end</tt> na liście.
@@ -149,10 +165,12 @@ users_euser='$1' nie jest prawidłową nazwą użytkownika
 users_egroup='$1' nie jest prawidłową nazwą grupy
 users_shells=Odmawiaj użytkownikom, których shell nie jest w pliku
 users_eshells=Brak lub nieistniejący plik shell
+
 defacl_title=Opcje kontroli dostępu
 defacl_desc=Ta strona umożliwia skonfigurowanie różnych opcji kontroli dostępu, które mają zastosowanie do modułów Usermina i użytkowników. Opcje te są podobne do tych w Global ACL dla każdego użytkownika w module Użytkownicy webmina.
 defacl_header=Opcje kontroli dostępu dla użytkownika Usermina
 defacl_err=Zapisywanie konfiguracji kontroli dostępu nie powiodło się
+
 install_err1=Nie udało się zainstalować modułu z $1
 install_efile=Plik nie istnieje
 install_err2=Nie udało się zainstalować dołączonego modułu
@@ -179,6 +197,7 @@ install_erpm=To nie jest RPM modułu Usermina
 install_eirpm=Instalacja RPM-a nie powiodła się : $1
 install_cat=W kategorii $1.
 install_eneither=Plik RPM nie zawiera modułu ani skórki Usermina
+
 delete_err=Nie udało się usunąć modułów
 delete_edep=Moduł $1 nie może być skasowany, bo moduł $2 jest od niego zależny.
 delete_desc1=$1 (Kopia $2)
@@ -188,6 +207,7 @@ delete_msg=Następujące moduły zostały z powodzeniem usunięte z Twojej ins
 delete_rusure=Czy jesteś pewien, że chcesz usunąć moduł(-y) $2?  $1 kB plików zostanie nieodwracalnie skasowanych.
 delete_rusure2=Czy jesteś pewien, że chcesz usunąć skórkę $2 ? $1 kB plików zostanie usunięte na zawsze.
 delete_enone=Nie wybrano żadnego modułu
+
 ui_title=Interfejs użytkownika
 ui_desc=This form allows you to edit user interface options used by all Usermin modules.
 ui_header=Opcje interfejsu użytkownika
@@ -229,6 +249,7 @@ ui_hnm1=Nazwa komputera z URL
 ui_hnm2=Nazwa domeny z URL
 ui_hnm3=Inna nazwa..
 ui_tabs=Klasyfikować moduły?
+
 upgrade_title=Aktualizuj Usermina
 upgrade_title2=Zainstaluj Usermina
 upgrade_desc=Ta strona pozwala na aktualizację Usermina do nowej wersji. Możesz zainstalować z pliku lokalnego, z pliku dołączonego lub najnowszą wersję z <a href=http://www.usermin.com/>www.usermin.com</a>. Podobnie jak przy ręcznej aktualizacji, wszystkie Twoje ustawienia i obce moduły zostaną zachowane.
@@ -262,6 +283,7 @@ upgrade_done=.. zaktualizowano.
 upgrade_failed=.. aktualizacja nie powiodła się!
 upgrade_updates=Jest dostępnych $1 aktualizacji dla tej wersji Usermina. <a href='$2'>Kliknij tutaj</a> aby automatycznie pobrać i zainstalować aktualizacje.
 upgrade_eupdates=Pobieranie listy aktualizacji : $1 nie powiodło się
+
 update_desc1=Za pomocą tego formularza możesz zaktualizować ze strony <a href=http://www.usermin.com/updates.html>Usermin Updates</a> lub z innego źródła te moduły Usermina, o których wiadomo, że zawierają błędy lub dziury związane z bezpieczeństwem. Wykonane zostanie porównanie obecnie zainstalowanych modułów z dostępnymi dla aktualizacji oraz, opcjonalnie, automatyczne pobranie i instalacja wszelkich nieaktualnych modułów.
 update_header1=Aktualizuj moduły teraz
 update_header2=Aktualizuj moduły regularnie
@@ -278,10 +300,12 @@ update_sched=Aktualizuj moduły o $1:00 co $2 dni
 update_none=Brak aktualizacji Usermina dla tej wersji.
 update_failed=Instalacja modułu : $1 nie powiodła się
 update_desc2=Ten formularz służy do konfiguracji regularnej, automatycznej aktualizacji modułów Usermina zawierających błędy lub dziury związane z bezpieczeństwem ze strony <a href=http://www.usermin.com/updates.html>UserminUpdates</a> lub z innego źródła. O ile ta usługa jest wygodna, należy zachować ostrożność, gdyż może ona umożliwić napastnikom przejęcie Twojego systemu, jeśli serwer aktualizacji zostanie kiedykolwiek narażony na szwank.
+
 assignment_title=Przeklasyfikowanie modułów
 assignment_header=Kategoryzacja modułów
 assignment_ok=Zmień kategorie
 assignment_desc=Za pomocą tego formularza możesz określić, wśród modułów jakiej kategorii będzie dany moduł wyświetlany na stronie indeksowej Usermina.
+
 categories_title=Edytuj kategorie
 categories_header=Identyfikator i opis kategorii
 categories_desc=Za pomocą tego formularza możesz zmienić nazwy istniejących kategorii Usermina oraz utworzyć nowe, aby przypisać do nich moduły. Górna część tabeli służy do zmiany opisu wbudowanych kategorii, podczas gdy dolna służy do dodawania nowych identyfikatorów i opisów kategorii.
@@ -291,6 +315,7 @@ categories_edesc=Brak opisu dla $1
 categories_ecat=Ten identyfikator kategorii $1 już jest używany
 categories_code=ID
 categories_name=Wyświetlany opis
+
 log_access=Zmieniono kontrolę dostępu wg IP
 log_bind=Zmieniono port adres
 log_log=Zmieniono opcje logowania
@@ -326,6 +351,7 @@ log_restrict_create=Utworzono ograniczenie dla $1
 log_restrict_modify=Zmodyfikowano ograniczenie dla $1
 log_restrict_delete=Usunięto ograniczenie dla $1
 log_restrict_move=Przeniesiono ograniczenie dla $1
+
 log_all=wszyscy użytkownicy
 log_group=grupa $1
 log_switch=Przełączono użytkownika Usermina $1
@@ -333,6 +359,7 @@ log_logout=Zmieniono opcje automatycznego wylogowania
 log_dav=Zmieniono ustawienia serwera DAV
 log_advanced=Zmieniono opcje zaawansowane
 log_mobile=Zmieniono ustawienia urządzeń mobilnych
+
 update_err=Nie udało się zaktualizować modułów
 update_eurl=Nie podany lub niepoprawny URL aktualizacji
 update_title=Aktualizacja modułów
@@ -351,6 +378,7 @@ update_rv=Sprawdzanie, czy pod $1 nie ma zaktualizowanych modułów Usermina
 update_eemail=Jeśli chcesz jedynie zobaczyć co powinno być zaktualizowane, musisz podać adres e-mail.
 update_subject=Zawiadomienie o aktualizacji modułów Webmina
 update_version=Nowa wersja Usermina ($1) jest dostępna do pobrania. Przyszłe aktualizacje będą wydawane wyłącznie dla ostatniej wersji.
+
 restrict_title=Ograniczenia modułu
 restrict_desc=Ta strona pozwala na kontrolowanie, które moduły Usermin'a są dostępne dla różnych użytkowników i grup. Wszystkie dodatkowe moduły mają zastosowanie nie tylko do pierwszego pasującego użytkownika. <br>Moduły, które nie zostały wybrane na stronie <a href='$1'>dostępne moduły</a> nigdy nie będą dostępne dla użytkowników, nawet gdy zostaną tutaj wybrane.
 restrict_who=Użytkownik Usermina
@@ -383,6 +411,7 @@ restrict_egroup=Brakująca lub nieprawidłowa nazwa grupy
 restrict_efile=Brakujący, nieistniejący lub względny plik użytkowników i grup
 restrict_move=Przenieś
 bootup_ecannot=Nie masz uprawnień do konfiguracji bootowania
+
 acl_icons=Dozwolone strony konfiguracyjne
 acl_mods=Może konfigurować moduły
 acl_all=Wszystkie moduły
@@ -390,10 +419,12 @@ acl_sel=Zaznaczone poniżej ..
 acl_stop=Może zatrzymywać i uruchamiać Usermin?
 acl_bootup=Może konfigurować uruchamianie przy starcie systemu?
 acl_ecannot=Nie masz uprawnień, aby skorzystać z tej strony
+
 clone_err=Nie udało się skopiować modułu
 clone_elink=dowiązanie się nie powiodło : $1
 clone_ecopy=nie udało się skopiować konfiguracji : $1
 clone_desc=Kopia $1
+
 sessions_title=Aktualne sesje logowania
 sessions_desc=Aktualne sesje są wyświetlone poniżej. Aby anulować istniejącą sesję i zmusić użytkownika do ponownego logowania, kliknij na ID sesji.
 sessions_id=ID sesji
@@ -403,12 +434,15 @@ sessions_login=Zalogowany w
 sessions_none=Aktualnie brak użytkowników zalogowanych w Userminie.
 sessions_switch=Przełącz do użytkownika Usermina:
 sessions_ok=Przełącz
+
 referers_title=Zaufane odsyłacze
 referers_desc=Za pomocą tej strony możesz skonfigurować sprawdzanie odsyłaczy do Usermina w celu uniknięcia złośliwych odwołań z innych witryn oszukujących Twoją przeglądarkę i wykorzystujących Usermina do niebezpiecznych działań. Jednakże, jeśli posiadasz odwołania do Usermina na swoich własnych witrynach, o których nie chcesz być ostrzegany, powinieneś dodać te witryny do poniższej listy.
+
 anon_title=Dostęp anonimowy do modułu
 anon_desc=Ta strona pozwala przydzielać dostęp do wybranych modułów i ścieżek Usermina bez konieczności logowania się klientów. Dla każdej ścieżki modułu, którą wprowadzisz poniżej (na przykład <tt>/custom</tt> or <tt>/passwd</tt>) musisz też wprowadzić nazwę użytkownika Unixa, którego uprawnienia będą używane do dostępu do modułu.
 anon_user=Użytkownik Unix
 anon_euser=Brakujący lub niewłaściwy użytkownik Unixa dla adresu URL '$1'
+
 logout_title=Automatyczne wylogowanie
 logout_desc=Ta strona umożliwia skonfigurowanie różnych aktywnych czasów sesji dla różnych użytkowników Usermin'a. Limit czasu (timeout) musi zostać wpisany w minutach, wpisanie zera oznacza, że sesja dla użytkownika nigdy ni zostanie zakończona i nie zostanie on wylogowany
 logout_type=Typ
@@ -423,6 +457,7 @@ logout_egroup=Brakująca lub błędna grupa w wierszu $1
 logout_efile=Brakujący lub nie istniejący plik w wierszu $1
 logout_etime=Brakujący lub nieprawidłowy czas oczekiwania w wierszu $1
 logout_ecannot=Nie masz uprawnień, aby skonfigurować czas wylogowania
+
 dav_title=Serwer DAV
 dav_header=Opcje serwera DAV
 dav_path=DAV włączony?
@@ -443,16 +478,22 @@ dav_users=Użytkownicy, którzy mogą używać DAV
 dav_users1=Wszyscy użytkownicy
 dav_users0=Użytkownicy i grypy z poniższej listy ..
 dav_eusers=Nie wprowadzono użytkowników
+
 syslog_errorlog=Log błędów Usermina
+
 descs_title=Tytuły modułów
 descs_info=Ta strona pozwala na określenie własnych tytułów dla modułów Usermina , które zastąpią ich standardowe tytuły.
+
 advanced_title=Opcje zaawansowane
 advanced_pass=Udostępnić hasło dla programów Usermina? <br><font size=-1>(Nie działa, gdy włączone jest uwierzytelnianie sesji)</font>
+
 blocked_title=Zablokowane komputery i użytkownicy
 blocked_none=Żaden komputer i użytkownik nie jest obecnie blokowany przez Usermina
 blocked_user=Użytkownik Usermina
 blocked_cleardesc=Kliknij ten przycisk aby wyczyścić blokowania komputerów i użytkowników, przez ponowne uruchomienie serwera Usermina.
+
 mobile_title=Opcje urządzenia mobilnego
+
 copycert_err=Kopiowanie ustawień SSL z Webmina nie powiodło się
 copycert_essl=SSL jest wyłączone
 copycert_ekeyfile=Brak ustawionego klucza prywatnego w Webminie

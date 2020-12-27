@@ -6,6 +6,7 @@ index_printershare=sdílení tiskáren
 index_shareconf=konfigurace sdílení
 index_version=Samba verze $1
 index_samba=Samba
+
 index_sharename=Název sdílení
 index_path=Cesta
 index_security=Zabezpečení
@@ -36,12 +37,14 @@ index_stop=Zastavit Samba servery
 index_stopmsg=Klepnutím na toto tlačítko shodíte na vašem systému běžící Samba servery. Všichni aktuálně připojení uživatelé budou bez varování odpojeni.
 index_einclude=Pozor - váš konfigurační soubor Samby obsahuje $2 nebo $3 direktivu. Může se stát, že Webmin provede změny nekorektně.
 index_delete=Smazat vybraná sdílení
+
 config_mins=Minuty
 config_secs=Vteřiny
 config_bytes=Byty
 config_never=Nikdy
 config_all=Všechny
 config_neither=Ani jeden
+
 global_title=Globální konfigurace
 global_unixnetwork=Unix sítě
 global_winnetwork=Windows sítě
@@ -54,6 +57,7 @@ global_password=Kryptovaná hesla
 global_users=Uživatelé Samby
 global_group=Skupiny v Sambě
 global_bind=Volby pro Windbind
+
 error_nosamba=Spouštěč Samba serveru <tt>$1</tt> nebyl nalezen. Buď není Samba ve vašem systému nainstalována nebo vaše <a href="$2">konfigurace modulu</a> není správná.
 error_version=Webmin ohlásil chybu při získávání verze vašeho spouštěného Samba serveru <tt>$1</tt>. zkontrolujte vaši <a href="$2">konfiguraci modulu</a> a ujistěte se, zda jste vyplnili správně cestu.
 error_config=Konfigurační soubor $1 nebyl nalezen. Je velmi pravděpodobné, že Samba není ve vašem systému nainstalována, nebo není vaše <a href="$2">konfigurace modulu</a> správná.
@@ -61,6 +65,7 @@ error_include=Webmin nemůže zjistit konfigurační soubory Samby, protože jso
 error_delshare=Chyba při mazání sdílení
 error_delcopy=Sdílení '$1' bylo zkopírováno z tohoto sdílení
 error_savename=Chyba při ukládání jména souboru
+
 convert_title=Konverovat uživatele
 convert_msg=Tento formulář umožňuje synchronizovat seznam Unix a Samba uživatelů. Pokud Samba používá <a href=$1>kryptování hesel</a>, bude používán oddělený seznam uživatelů a hesel namísto systémového seznamu uživatelů.
 convert_noconv=Nekonvertovat nebo odstranit tyto uživatele:
@@ -74,6 +79,7 @@ convert_lock=Účet zablokovat
 convert_passwd=Použít toto heslo
 convert_convert=Konverovat uživatele
 convert_cannot=Unix uživatelé nemohou být převedeni jako uživatelé Samby.
+
 misc_title=Ostatní nastavení
 misc_debug=Debug úroveň
 misc_cachecall=Cacheovat <tt>getwd()</tt> volání?
@@ -87,6 +93,7 @@ misc_chroot=<tt>chroot()</tt> adresář
 misc_smbrun=Cesta k <tt>smbrun</tt>
 misc_clienttime=Offset čas klienta
 misc_readprediction=Číst předpověď?
+
 net_title=Nastavení Unix sítě
 net_idle=Časová prodleva nečinnosti před odpojením
 net_trustlist=Soubor  důvěryhodných hostů/uživatelů
@@ -101,6 +108,7 @@ net_every=Poslat každých
 net_maxpacket=Maximumální velikost packetu
 net_listen=Naslouchat na adrese
 net_socket=Možnosti socketu
+
 passwd_title=Nastavení hesel
 passwd_encrypt=Používat kryptovaná hesla?
 passwd_allownull=Povolit null hesla?
@@ -114,11 +122,13 @@ passwd_send=Poslat
 passwd_map=Mapování uživatelských jmen
 passwd_unixuser=Unix uživatelé
 passwd_winuser=Windows uživatelé
+
 print_title=Nastavení tisku
 print_style=Styl Unix tisku
 print_show=Zobrazit všechny tiskárny?
 print_printcap=Printcap soubor
 print_cachetime=Doba stavu cache u tiskárny
+
 smb_title=Nastavení Windows sítě
 smb_workgroup=Skupina
 smb_wins=WINS mód
@@ -146,14 +156,17 @@ smb_nowhere=Nikomu
 smb_fromlist=Ze seznamu...
 smb_ip=IP Adresa
 smb_asworkgroup=<b>Jako skupina</b> (volitelně)
+
 create_title=Vytvoření kopie
 create_msg=Kopie sdílení dědí všechny výchozí hodnoty z původního sdílení. Pokud zdrojové sdílení je změněno, provede se tak i v kopii.
 create_from=Sdílení zkopírovat z:
 create_name=Nový název sdílení:
+
 smbuser_title=Uživatelé Samby
 smbuser_list=Seznam uživatelů Samby
 smbuser_nouser=Nebyly definováni žádní uživatelé Samby
 smbuser_cannot=Uživatelé Samby nemohou být zobrazeny
+
 euser_title=Editace uživatele Samby
 euser_name=Uživatelské jméno
 euser_uid=Unix UID
@@ -170,6 +183,7 @@ euser_normal=Normální uživatel
 euser_nopwrequired=Nebude vyžadováno heslo
 euser_disable=Zablokovat účet
 euser_trust=Důvěryhodný účet pracovní stanice
+
 fmisc_title=Ostatní výchozí nastavení pro soubor
 fmisc_for=Pro sdílení <tt>$1</tt>
 fmisc_lockfile=Uzamykat soubor?
@@ -187,6 +201,7 @@ fmisc_conncmd=Příkaz pro spuštění připojení
 fmisc_disconncmd=Příkaz pro spuštění odpojení
 fmisc_rootconn=Příkaz pro spuštění připojení <i>jako root</i>
 fmisc_rootdisconn=Příkaz pro spuštění odpojení <i>jako root</i>
+
 fname_title1=Výchozí nastavení pro vytváření jména souboru
 fname_title2=Editace metody vytváření jména souboru
 fname_option=Nastavení pro vytváření jména souboru
@@ -201,6 +216,7 @@ fname_hide=Skrýt dot soubory?
 fname_archive=Ukládat DOS archivační atribut?
 fname_hidden=Ukládat DOS skrytý atribut?
 fname_system=Ukládat DOS systémový atribut?
+
 fperm_title1=Výchozí nastavení souborových práv
 fperm_title2=Editace souborových práv
 fperm_option=Nastavení souborových práv
@@ -213,6 +229,7 @@ fperm_link=Povolit sdílení vnějších symbolických linků?
 fperm_delro=Mohou se mazat readonly soubory?
 fperm_forcefile=Přidělit Unix souborový mód
 fperm_forcedir=Přidělit Unix adresářový mód
+
 share_title1=Výchozí nastavení sdílení souborů
 share_title2=Editace sdílení souborů
 share_title3=Vytvořit sdílení souborů
@@ -234,6 +251,7 @@ share_naming=Vytváření názvů souborů
 share_misc=Ostatní nastavení
 share_samedesc1=Připomínáme - tato nastavení mají také efekt na výchozí nastavení pro všechna sdílení souborů.
 share_samedesc2=Připomínáme - tato nastavení mají také efekt na výchozí nastavení pro všechna sdílení tiskáren.
+
 print_title1=Výchozí nastavení tiskáren
 print_title2=Editace nastavení tiskáren
 print_option=Nastavení tiskáren
@@ -245,6 +263,7 @@ print_delete=Příkaz pro smazání úlohy
 print_pause=PPříkaz pro pozastavení úlohy
 print_unresume=Příkaz pro obnovení úlohy
 print_driver=Ovladač tiskárny
+
 pshare_title1=Výchozí nastavení pro sdílení tiskáren
 pshare_title2=Editace sdílení tiskáren
 pshare_title3=Vytvoření sdílení tiskáren
@@ -253,6 +272,7 @@ pshare_name=Název sdílení
 pshare_all=Sdílet všechny tiskárny
 pshare_unixprn=Unix tiskárna
 pshare_spool=Spool adresář
+
 sec_index1=Výchozí nastavení zabezpečení
 sec_index2=Editace zabezpečení
 sec_writable=Zapisovatelné?
@@ -275,6 +295,7 @@ sec_rouser=Uživatelé, kteří mají povoleno pouze čtení
 sec_rogroup=Skupiny, které mají povoleno pouze čtení
 sec_rwuser=Uživatelé, kteří mají povoleno čtení i zápis
 sec_rwgroup=Skupiny, které mají povoleno čtení i zápis
+
 esync_title=Synchronizace uživatelů
 esync_msg=Webmin může být nakonfigurován tak, aby se změna v seznamu Unix uživatelů automaticky promítla do seznamu uživatelů Samby. Toto však bude funkční pouze v případě,  kdy je Webmin modul <tt>Uživatelé a skupiny</tt> používán pro přidávání, mazání a změny uživatelů.
 esync_add=Přidat uživatele Samby v momentě, kdy je přidán Unix uživatel
@@ -286,6 +307,7 @@ esync_gid=Skupina SID nebo RID pro nové uživatele
 esync_apply=Použít
 esync_cannot=Synchronizace uživatelů nemůže být nastavena
 esync_egid=Chybějící skupina SID nebo RID
+
 mkpass_title=Konverze uživatelů
 mkpass_convfail=Chyba při konverzi uživatele
 mkpass_msg=Konvertování Unix uživatelů...
@@ -294,10 +316,12 @@ mkpass_same=již je ten samý
 mkpass_update=je aktualizován
 mkpass_del=je smazán
 mkpass_passfail=Chyba při nastavení hesla
+
 savecopy_fail=Chyba při vytváření kopie
 savecopy_global=Název 'global' nemůže být použito pro sdílení
 savecopy_exist=Sdílení nazvané '$1' již existuje
 savecopy_ename=Nebyl vložen žádný název sdílení
+
 saveuser_fail=Chyba při ukládání uživatele
 saveuser_uid='$1' není platné Unix UID
 saveuser_colon=Skutečné jméno nemůže obsahovat znak :
@@ -305,16 +329,20 @@ saveuser_home=Domovský adresář '$1' neexistuje
 saveuser_shell=$1 není platný shell
 saveuser_pass=Chyba při změně hesla v rámci použití smbpasswd : $1
 saveuser_ews=Volba 'Důvěryhodný účet pro stanice' nemůže být povolen stávajícím uživatelům
+
 savefmisc_fail=Chyba při ukládání ostatních nastavení
 savefmisc_number='$1' není platný počet připojení
+
 savefperm_fail=Chyba při ukládání souborových práv
 savefperm_mode='$1' není platný Unix souborový mód
+
 savefshare_fail=Chyba při ukládání sdílení
 savefshare_nopath=Nebyla uvedena žádná cesta
 savefshare_exist=Sdílení nazvané '$1' již existuje
 savefshare_mode='$1' není platný název sdílení
 savefshare_global=Název 'global' nemůže být použit pro sdílení
 savefshare_owner=Chybějící nebo neplatný vlastník nového adresáře
+
 savemisc_fail=Chyba při ukládání nastavení
 savemisc_lockdir=Adresář obsahující uzamčený adresář neexistuje
 savemisc_logdir=Adresář obsahující log soubor neexistuje
@@ -323,34 +351,44 @@ savemisc_overlap='$1' není platná velikost pro přepisování čtení
 savemisc_chroot=Chroot adresář '$1' neexistuje
 savemisc_smbrun=Smbrun program '$1' neexistje nebo není spustitelný
 savemisc_time='$1' není platný offset čas
+
 savenet_fail=Chyba při ukládání nastavení
 savenet_timeout='$1' není platná časové prodleva odpojení
 savenet_ip='$1' není platný IP byte
 savenet_keep='$1' není platný oživovací interval
 savenet_maxxmit='$1' není platná maximální velikost packetu
+
 savepass_fail=Chyba při ukládání nastavení
 savepass_nopass=Vaše verze Samby nepodporuje kryptovaná hesla
 savepass_passwd=Nebyl nalezen program pro změnu hesel
 savepass_level='$1' není platné rozlišení velikosti písmen pro hesla
 savepass_chat=Sekvence pro změnu chat hesla je prázdný
+
 savepopts_fail=Chyba při ukládání nastavení tiskáren
 savepopts_number=Minimální velikost prázdného místa musí být číslo
+
 saveprint_fail=Chyba při ukládání nastavení
 saveprint_printcap=Printcap soubor '$1' neexistuje
 saveprint_cache='$1' není platný čas cachování
+
 savepshare_fail=Chyba při ukládání sdílení tiskáren
 savepshare_exist=Sdílení nazvané '$1' již existuje
 savepshare_name='$1' není platný název sdílení
 savepshare_global=Název 'global' nemůže být použit pro sdílení
+
 savesec_fail=Chyba při ukládání zabezpečení
+
 savesmb_fail=Chyba při ukládání nastavení
 savesmb_size='$1' není paltná velikost disku
 savesmb_oslevel='$1' není platná priorita hlavního prohlížeče
 savesmb_server=Musíte vložit heslo serveru
+
 start_err=Chyba při spuštění Samba serverů
 start_fail=$1 chyba
+
 swats_fail=Chyba při ukládání jména uživatele
 swats_user=Chybějící jméno uživatele SWATu
+
 viewu_index=Současní uživatelé
 viewu_list=Současní uživatelé $1
 viewu_share=Sdílení
@@ -366,6 +404,7 @@ viewu_none=Nic
 viewu_ecmd=Status programu Samba $1 neodpovídá tomu nainstalovanému ve vašem systému. Je možné, že <a href='$2'>konfigurace modulu</a> není v pořádku.
 viewu_kill=Odpojit vybrané uživatele
 viewu_enone=Žádní uživatelé nebyli vybrání
+
 log_apply=Restartovány Samba servery
 log_stop=Zastaveny Samba servery
 log_start=Spuštěny Samba servery
@@ -404,6 +443,7 @@ log_modify_group=Změněna skupina Samby $1
 log_delete_group=Smazána skupina v Sambě $1
 log_gsync=Nastavena synchronizace Unix skupin
 log_manual=Ručně upraven konfigurační soubor $1
+
 swat_title=SWAT přihlášení
 swat_list=SWAT přihlášení
 swat_msg1=Vaše stávající SWAT přihlašovací jméno a heslo nejsou správná. Použijte níže uvedený formulář pro další pokus příhlášení.
@@ -415,6 +455,7 @@ swat_password=Heslo
 swat_login=Přihlásit
 swat_clear=Vyčistit
 swat_logout=Odhlásit ze SWATu
+
 eacl_aviol=Zamezení zneužití kontroly přístupu
 eacl_np=Nemáta práva pro
 eacl_papply=restartovat tuto službu
@@ -450,6 +491,7 @@ eacl_pafs=nastavit přístupy pro toto sdílení souborů
 eacl_paps=nastavit přístupy pro tot sdílení tiskáren
 eacl_pcps=vytvořit sdílení tiskáren
 eacl_pcfs=vytvořit sdílení souborů
+
 acl_apply=Může použít změny?
 acl_view_all_con=Může zobrazit všechna připojení?
 acl_kill_con=Může odstranit připojení?
@@ -495,6 +537,7 @@ acl_group_opts=Volby pro skupiny v Sambě
 acl_maint_groups=Může zobrazit, upravit a přidávat skupiny?
 acl_maint_gsync=Může provádět automatickou synchronizaci UNIX skupin do SAMBY?
 acl_winbind=Může připojovat k doménám?
+
 groups_title=Skupiny v Sambě
 groups_name=Název skupiny
 groups_unix=Unix skupina
@@ -510,6 +553,7 @@ groups_return=seznam skupin
 groups_add=Přidat novou skupinu v Sambě.
 groups_ecannot=Nemáte oprávnění zobrazit a upravit skupiny v Sambě.
 groups_cannot=Seznam skupin v Sambě nemůže být zobrazen.
+
 gedit_title2=Upravit skupinu v Sambě
 gedit_title1=Vytvořit skupinu v Sambě
 gedit_header=Detaily skupiny Samby
@@ -522,11 +566,13 @@ gedit_unix=Unix skupina
 gedit_unixgr=Skupina ..
 gedit_none=Nic
 gedit_set=Zobrazené ..
+
 gsave_err=Chyba při ukládání skupiny
 gsave_eunix=Chybějící nebo neplatné jméno Unix skupiny nebo GID
 gsave_ename=Chybějící název skupiny
 gsave_epriv=Chybějící práva skupiny
 gsave_elocal=Práva mohou být nastavena pouze pro lokální skupiny
+
 gsync_title=Synchronizace skupin
 gsync_msg=Webmin může být nastaven tak, že veškeré změny v seznamu Unix skupin se automaticky přenesou do skupin v Sambě. Tato možnost je funkční pouze v případě, že je používán modul <b>Uživatelé a skupiny</b> a zároveň je umožněno přidávat, mazat a měnit skupiny.
 gsync_add=Přidat skupiny v Sambě současně s přidáním Unix skupiny
@@ -537,10 +583,12 @@ gsync_type=Typ pro nové skupiny
 gsync_priv=Práva pro nové skupiny (jsou-li lokální)
 gsync_ecannot=Nemáte oprávněné konfigurovat synchronizaci skupin
 gsync_cannot=Synchronizace skupin nemůže být nastavena
+
 check_user1=$1 : Kódovaná hesla nejsou povolena, jděte na stránku <a href='$2'>Autentikace</a>.
 check_user2=$1 : Soubor s hesly Samby ani cesta k pdbedit není nastavena v <a href='$2'>konfigurační stránce modulu</a>.
 check_group1=$1 : Skupiny jsou podporovány pouze v Sambě od verze 3.
 check_group2=$1 : Není zapsána cesta k smbgroupedit ani síťové příkazy v <a href='$2'>konfigurační stránce modulu</a>.
+
 winbind_title=Navázat se k doméně
 winbind_ecannot=Nemáte oprávnění navázat se k doménám
 winbind_msg=Tento formuláře může být využit pro navázání vašeho Samba serveru k vybrané Windows doméně, většinou spravované na jiném serveru.
@@ -556,6 +604,7 @@ winbind_edom=Chybějící jméno domény
 winbind_cmd=Probíhá navázání k doméně pomocí příkazu $1 ..
 winbind_failed=.. chyba! Projděte si výše uvedený výstup, abyste zjistili důvod.
 winbind_ok=.. je v pořádku.
+
 bind_title=Volby Winbind
 bind_ecannot=Nemáte oprávnění k úpravě voleb pro winbind
 bind_header=Volby pro propojení s doménami Windows
@@ -573,9 +622,11 @@ bind_erealm=Neplatný oblast Kerberos
 bind_ecache=Chybějící nebo neplatný čas pro cache
 bind_euid=Neplatný rozsah UID - musí vypadat jako 20000-30000
 bind_egid=Neplatný rozsah GID - musí vypadat jako 20000-30000
+
 manual_title=Upravit konfigurační soubor
 manual_desc=Upravuje se konfigurační soubor Samby $1 ..
 manual_err=Chyba při ukládání konfiguračního souboru
 manual_edata=Nic není vloženo!
+
 delete_err=Chyba při mazání sdílení
 delete_enone=Nic není vybráno

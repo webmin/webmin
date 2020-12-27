@@ -2,6 +2,7 @@ check_econfigset=Ni konfiguracijske datoteke iSCSI TGTd!
 check_econfig=Konfiguracijske datoteke iSCSI TGTd $1 v vašem sistemu ni bilo mogoče najti.
 check_etgtadm=V vašem sistemu ni bilo najdenega ukaza upravljanja iSCSI TGTd $1.
 check_einit=Ukrep za zagon $1 ne obstaja
+
 index_title=iSCSI TGTd
 index_clink=Mogoče ni nameščen ali pa je vaša <a href='$1'>konfiguracija modula</a> napačna.
 index_stop=Ustavite iSCSI TGTd
@@ -24,8 +25,10 @@ index_users=Dovoljeni uporabniki
 index_size=Skupna velikost
 index_noluns=Noben
 index_nousers=Kaj
+
 dtargets_err=Brisanje ciljev ni uspelo
 dtargets_enone=Izbran ni noben!
+
 target_title1=Ustvari cilj iSCSI
 target_title2=Uredi cilj iSCSI
 target_header=Možnosti naprave v skupni rabi iSCSI
@@ -74,11 +77,13 @@ target_direct=Neposreden dostop do naprave
 target_cache=Predpomnilnik zapiše v napravo?
 target_eaddr=Neveljaven dovoljeni naslov IP
 target_eaname=Neveljavno dovoljeno ime pobudnika
+
 start_err=Zagon iSCSI TGTd ni uspel
 stop_err=ISCSI TGTd ni bilo mogoče ustaviti
 restart_err=Ponovnega zagona iSCSI TGTd ni bilo mogoče
 atboot_err=Ni mogoče omogočiti ob zagonu
 atboot_einit=Init skripta $1 ne obstaja
+
 log_create_target=Ustvarjen cilj $1 
 log_delete_target=Izbrisan cilj $1 
 log_modify_target=Spremenjen cilj $1 
@@ -89,6 +94,7 @@ log_restart=Ponovni strežnik iSCSI
 log_atboot=Omogočen strežnik iSCSI ob zagonu
 log_delboot=Onemogočen strežnik iSCSI ob zagonu
 log_manual=Konfiguracijska datoteka ročno urejena
+
 manual_title=Uredi konfiguracijsko datoteko
 manual_file=Izberite datoteko za urejanje:
 manual_ok=Odprto

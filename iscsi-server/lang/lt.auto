@@ -1,5 +1,6 @@
 check_etargets=Jūsų sistemoje nerastas „iSCSI“ serverio konfigūracijos failas $1.
 check_eserver=„ISCSI“ serverio programa $1 jūsų sistemoje nerasta.
+
 index_title=„iSCSI Server“
 index_clink=Galbūt jis neįdiegtas, arba <a href='$1'>modulio konfigūracija</a> yra neteisinga.
 index_stop=Sustabdykite „iSCSI Server“
@@ -11,6 +12,7 @@ index_restartdesc=Spustelėkite šį mygtuką, norėdami pritaikyti dabartinę k
 index_atboot=Pradėti nuo įkrovos?
 index_atbootdesc=Pakeiskite šią parinktį norėdami valdyti, ar „iSCSI“ serveris paleistas įkrovos metu, ar ne. Jei jis dar nėra paleistas įkrovos metu ir pasirinktas Taip, bus sukurtas naujas init scenarijus.
 index_return=modulio rodyklė
+
 extents_title=Prietaisai, kuriuos galima bendrinti
 extents_none=Kol kas nebuvo sukurta jokių bendrinamų įrenginių.
 extents_name=Įrenginio pavadinimas
@@ -25,6 +27,7 @@ extents_denone=Nepasirinkta
 extents_einuse=Įrenginio $1 negalima ištrinti, nes jį naudoja : $2 
 extents_drusure=Ar tikrai norite pašalinti šiuos įrenginius: $1 ? Jų turinys bus išsaugotas, tačiau jie nebebus prieinami „iSCSI“ klientams.
 extents_sure=Ištrinti įrenginius
+
 extent_create=Sukurkite bendrinamą įrenginį
 extent_edit=Redaguoti įrenginį, kurį norite bendrinti
 extent_egone=Įrenginys, skirtas bendrinti $1, neegzistuoja!
@@ -50,6 +53,7 @@ extent_estart=Apimties pradžia turi būti skaičius
 extent_esize=Apimties dydis turi būti skaičius
 extent_esizemax=Apimties pabaiga negali būti didesnė už $1 įrenginio dydį
 extent_einuse=Šio įrenginio negalima ištrinti, nes juo naudojasi : $1 
+
 devices_title=Įrenginių deriniai
 devices_none=Dar nesukurta jokių įrenginių derinių.
 devices_name=Derinio pavadinimas
@@ -65,6 +69,7 @@ devices_denone=Nepasirinkta
 devices_einuse=Derinio $1 negalima ištrinti, nes jį naudoja : $2 
 devices_drusure=Ar tikrai norite pašalinti šiuos įrenginių derinius: $1 ? Jų turinys bus išsaugotas, tačiau jie nebebus prieinami „iSCSI“ klientams.
 devices_sure=Ištrinkite įrenginių derinius
+
 device_create=Sukurti įrenginių derinį
 device_edit=Redaguoti įrenginio derinį
 device_egone=Įrenginio derinio $1 nėra!
@@ -81,6 +86,7 @@ device_sure=Ištrinti įrenginio derinį
 device_einuse=Šio įrenginio derinio negalima ištrinti, nes jį naudoja : $1 
 device_eextents=Nepasirinktas joks įrenginys
 device_eself=Viename iš pasirinktų narių įrenginių yra šis įrenginys!
+
 targets_title=Dalijimasis tikslais
 targets_none=Kol kas nebuvo sukurta jokių bendro naudojimo tikslų.
 targets_name=Tikslinis vardas
@@ -96,6 +102,7 @@ targets_derr=Nepavyko ištrinti bendro naudojimo tikslų
 targets_denone=Nepasirinkta
 targets_drusure=Ar tikrai norite pašalinti šiuos bendrinimo tikslus: $1 ? Nebus prarasti jokie duomenys, tačiau jie nebebus prieinami „iSCSI“ klientams.
 targets_sure=Ištrinkite bendrinimo tikslus
+
 target_create=Sukurkite bendrinimo tikslus
 target_edit=Redaguoti bendrinimo tikslus
 target_egone=Bendrinimo tikslas $1 neegzistuoja!
@@ -112,6 +119,7 @@ target_rusure=Ar tikrai norite ištrinti bendrinimo tikslą $1 ? Nebus prarasti 
 target_sure=Ištrinti tikslą
 target_enetwork=Trūksta arba netinkamas tinklas, su kuriuo galima bendrinti
 target_emask=Trūksta arba netinkamas tinklo maskuoklis, su kuriuo norite bendrinti
+
 opts_title=iSCSI serverio parinktys
 opts_header=Visų „iSCSI“ taikinių parinktys
 opts_ip4=Priimkite IPv4 jungtis
@@ -124,10 +132,12 @@ opts_err=Nepavyko išsaugoti parinkčių
 opts_ename=Trūksta arba netinkamas vardas - leidžiamos tik raidės, skaičiai, brūkšnys, taškas ir pabraukimas
 opts_eport=Trūksta arba neskaitinis prievado numeris
 opts_esess=Trūksta arba nėra skaitinių maksimalių seansų
+
 manual_title=Redaguoti konfigūracijos failą
 manual_desc=Norėdami redaguoti „iSCSI“ serverio konfigūracijos failą $1, naudokite žemiau esantį teksto lauką. Būkite atsargūs, nes jūsų įvestis nebus patvirtinta!
 manual_err=Nepavyko išsaugoti konfigūracijos failo
 manual_edata=Neįvestas turinys!
+
 users_title=iSCSI autentifikavimas
 users_none=Dar nesukurti jokie „iSCSI“ vartotojai. Klientai galės prieiti prie bendrai naudojamų įrenginių net neįsisavindami.
 users_add=Pridėkite naują „iSCSI“ vartotoją.
@@ -135,6 +145,7 @@ users_delete=Ištrinti pasirinktus vartotojus
 users_name=Vartotojo vardas
 users_mode=Autentifikacijos metodas
 users_return=vartotojų sąrašas
+
 user_create=Sukurti „iSCSI“ vartotoją
 user_edit=Redaguoti „iSCSI“ vartotoją
 user_header=„iSCSI“ vartotojo informacija
@@ -145,13 +156,16 @@ user_egone=Vartotojo nebeegzistuoja!
 user_err=Nepavyko išsaugoti „iSCSI“ vartotojo
 user_euser=Trūksta arba netinkamas vartotojo vardas - tarpai ir dvitaškiai neleidžiami
 user_epass=Trūksta arba netinkamas slaptažodis - tarpai ir dvitaškiai neleidžiami
+
 desc_extent=Prietaisas, skirtas bendrinti $1 
 desc_device=Įrenginio derinys $1 
 desc_target=Bendrinamas tikslas $1 
+
 start_err=Nepavyko paleisti iSCSI serverio
 stop_err=Nepavyko sustabdyti iSCSI serverio
 restart_err=Nepavyko iš naujo paleisti iSCSI serverio
 atboot_err=Nepavyko įgalinti įkrovos metu
+
 log_create_extent=Sukurtas įrenginys bendrai naudoti $1 
 log_modify_extent=Atnaujintas įrenginys, skirtas bendrinti $1 
 log_delete_extent=Ištrintas įrenginys, skirtas bendrinti $1 

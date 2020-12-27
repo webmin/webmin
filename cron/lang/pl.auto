@@ -2,9 +2,13 @@ index_manual=Ręcznie edytuj zadania crona.
 index_next=Następny bieg
 index_nunknown=Nieznany
 index_ecrondir_create=Spróbuj utworzyć katalog zadań $1 ?
+
 edit_next=Czas następnego uruchomienia
+
 when_boot=w czasie uruchamiania
+
 ucwhen_boot=W czasie uruchamiania
+
 manual_title=Ręcznie edytuj zadania Cron
 manual_edit=Plik Cron do edycji:
 manual_ok=Edytować

@@ -45,12 +45,15 @@ index_showing=Näytetään tietokannat, jotka vastaavat $1 ..
 index_emsg=Koko MySQL-virheviesti oli : $1 
 index_jump=Tai muokkaa tietokantaa:
 index_jumpok=Avata
+
 login_err=Kirjautuminen epäonnistui
 login_ecannot=Et voi määrittää tietokannan sisäänkirjautumista
 login_elogin=Puuttuu järjestelmänvalvojan sisäänkirjautuminen
 login_epass=Virheellinen järjestelmänvalvojan käyttäjänimi tai salasana
+
 stop_err=Tietokannan pysäyttäminen epäonnistui
 start_err=Tietokannan käynnistäminen epäonnistui
+
 dbase_title=Muokkaa tietokantaa
 dbase_header=Tietokantataulut, hakemistot ja näkymät
 dbase_tables=Tietokantataulukot
@@ -81,6 +84,7 @@ dbase_type=Tyyppi
 dbase_typetable=Pöytä 1)
 dbase_typeindex=Indeksi
 dbase_typeview=näkymä
+
 ddrop_err=Tietokannan pudottaminen epäonnistui
 ddrop_title=Pudota tietokanta
 ddrop_rusure=Haluatko varmasti pudottaa tietokannan $1 ? $2 taulukkoa, jotka sisältävät $3 riviä, poistetaan.
@@ -89,6 +93,7 @@ ddrop_mysql=Koska tämä on päätietokanta, sen pudottaminen tekee todennäköi
 ddrop_ok=Pudota tietokanta
 ddrop_empty=Poista kaikki taulukot
 ddrop_empty2=Poista kaikki taulukot
+
 ddrops_err=Tietokantojen pudottaminen epäonnistui
 ddrops_title=Pudota tietokannat
 ddrops_rusure=Haluatko varmasti pudottaa valitut $1 tietokannat? $2 taulukkoa, jotka sisältävät $3 riviä, poistetaan.
@@ -97,6 +102,7 @@ ddrops_mysql=Koska päätietokanta on valittu, sen pudottaminen tekee luultavast
 ddrops_ok=Pudota tietokannat
 ddrops_enone=Yhtään tietokantaa ei ole valittu
 ddrops_ecannotdb=Et voi pudottaa tietokantaa $1 
+
 table_title=Muokkaa taulukkoa
 table_title2=Luo taulukko
 table_header=Taulukko $1 tietokannassa $2 
@@ -140,16 +146,19 @@ table_nextra=Lisäominaisuus
 table_eautokey=Automaattisesti kasvavan kentän on oltava myös ensisijainen avain
 table_eauto=Vain yksi kenttä voi olla automaattinen lisäys
 table_delete=Poista valitut kentät
+
 tdrop_err=Pöydän pudottaminen epäonnistui
 tdrop_title=Pudota taulukko
 tdrop_rusure=Haluatko varmasti pudottaa taulukon $1 tietokantaan $2 ? $3 tietoriviä poistetaan.
 tdrop_ok=Pudota taulukko
+
 tdrops_enone=Ei yhtään taulukkoa valittaviksi
 tdrops_err=Taulukoiden pudottaminen epäonnistui
 tdrops_ok=Pudota
 tdrops_title=Pudota valittu
 tdrops_rusure=Haluatko varmasti pudottaa $1 valitut taulukot tietokantaan $2 ? $3 tietoriviä poistetaan.
 tdrops_rusure2=Haluatko varmasti pudottaa $1 valitut taulukot tietokantaan $2 ?
+
 field_title1=Lisää kenttä
 field_title2=Muokkaa kenttää
 field_in=Taulukossa $1 tietokannassa $2 
@@ -183,6 +192,7 @@ field_esize='$1' ei ole kelvollinen kentän koko
 field_eenum=Ei lueteltuja arvoja annettu
 field_efield='$1' ei ole kelvollinen kentän nimi
 field_ekey=Kentät, jotka sallivat tyhjät, eivät voi olla osa pääavainta
+
 view_pos=Rivit $1 - $2 $3 : sta
 view_none=Tämä taulukko ei sisällä tietoja.
 view_edit=Muokkaa valittuja rivejä
@@ -216,6 +226,7 @@ view_keep=Jätä muuttumattomaksi
 view_set=Aseta tiedoston sisältöön ..
 view_adv=Tarkennettu Haku
 view_sqlrun=SQL-kyselyn tuottamat tulokset : $1 
+
 users_title=Käyttäjän oikeudet
 users_user=käyttäjä
 users_host=isännät
@@ -242,6 +253,7 @@ users_ssl=Todistus
 users_dtitle=Poista käyttöoikeudet
 users_drusure=Haluatko varmasti poistaa valitut MySQL-käyttöoikeudet $1 ?
 users_dok=Poista käyttäjät
+
 user_title1=Luo käyttäjä
 user_title2=Muokkaa käyttäjää
 user_header=MySQL-käyttäjän tiedot
@@ -302,6 +314,7 @@ user_emax_user_connections=Suurimpien samanaikaisten kirjautumisten on oltava nu
 user_emax_connections=Enimmäisyhteyksien tunnissa on oltava numero
 user_emax_updates=Päivitysten enimmäismäärän tunnissa on oltava numero
 user_emax_questions=Enimmäiskyselyjen tunnissa on oltava numero
+
 dbs_title=Tietokannan käyttöoikeudet
 dbs_db=tietokannat
 dbs_user=käyttäjä
@@ -320,6 +333,7 @@ dbs_enone=Yhtään tietokantaa ei ole valittu
 dbs_dtitle=Poista tietokannan käyttöoikeudet
 dbs_drusure=Haluatko varmasti poistaa valitut MySQL-tietokannan käyttöoikeudet $1 ?
 dbs_dok=Poista käyttöoikeudet
+
 db_title1=Luo tietokannan käyttöoikeudet
 db_title2=Muokkaa tietokannan käyttöoikeuksia
 db_header=Tietokannan käyttöoikeusasetukset
@@ -334,6 +348,7 @@ db_err=Tietokannan käyttöoikeuksien tallentaminen epäonnistui
 db_euser=Puuttuva tai virheellinen käyttäjänimi
 db_ehost=Puuttuva tai virheellinen isäntänimi
 db_edb=Puuttuva tai virheellinen tietokannan nimi
+
 hosts_title=Isäntäoikeudet
 hosts_db=tietokannat
 hosts_host=isännät
@@ -349,6 +364,7 @@ hosts_dtitle=Poista isäntäoikeudet
 hosts_drusure=Haluatko varmasti poistaa valitut MySQL-isäntäoikeudet $1 ?
 hosts_dok=Poista käyttöoikeudet
 hosts_return=isäntäoikeudet
+
 host_title1=Luo isäntäoikeudet
 host_title2=Muokkaa isäntäoikeuksia
 host_header=Isäntäoikeuksien asetukset
@@ -358,6 +374,7 @@ host_sel=valittu
 host_otherdb=Vastaava malli
 host_host=isännät
 host_perms=käyttöoikeudet
+
 newdb_title=Luo tietokanta
 newdb_header=Uudet tietokantavaihtoehdot
 newdb_db=Tietokannan nimi
@@ -371,6 +388,7 @@ newdb_err=Tietokannan luominen epäonnistui
 newdb_edb=Puuttuva tai virheellinen tietokannan nimi
 newdb_ecannot=Et voi luoda tietokantoja
 newdb_ecannot2=Et voi luoda enempää tietokantoja
+
 exec_title=Suorita SQL
 exec_header=Kirjoita suoritettava SQL-komento tietokantaan $1.
 exec_old=Tai valitse edellinen SQL-komento :
@@ -407,6 +425,7 @@ exec_iheader=Tekstitiedostojen tuontiasetukset
 exec_created=$1 taulukkoa luotiin.
 exec_inserted=$1 tietuetta lisättiin.
 exec_cs=Tietojen merkistö
+
 tprivs_title=Taulukon käyttöoikeudet
 tprivs_table=Pöytä
 tprivs_db=Tietokanta
@@ -425,6 +444,7 @@ tprivs_enone=Taulukoita ei ole valittu
 tprivs_dtitle=Poista taulukon käyttöoikeudet
 tprivs_drusure=Haluatko varmasti poistaa valitut MySQL-taulukon käyttöoikeudet $1 ?
 tprivs_dok=Poista käyttöoikeudet
+
 tpriv_title1=Luo taulukon käyttöoikeudet
 tpriv_title2=Muokkaa taulukon käyttöoikeuksia
 tpriv_header=Taulukon lupavaihtoehdot
@@ -441,6 +461,7 @@ tpriv_etable=Taulua ei ole valittu
 tpriv_euser=Puuttuva tai virheellinen käyttäjänimi
 tpriv_ehost=Puuttuva tai virheellinen isäntä
 tpriv_edb=Puuttuva tai virheellinen tietokannan nimi
+
 cprivs_title=Kenttäoikeudet
 cprivs_field=Ala
 cprivs_table=Pöytä
@@ -460,6 +481,7 @@ cprivs_enone=Ei kenttiä valittu
 cprivs_dtitle=Poista sarakkeen käyttöoikeudet
 cprivs_drusure=Haluatko varmasti poistaa valitut MySQL-sarakkeen $1 oikeudet?
 cprivs_dok=Poista käyttöoikeudet
+
 cpriv_title1=Luo kenttäoikeudet
 cpriv_title2=Muokkaa kentän käyttöoikeuksia
 cpriv_header=Kenttäluvan vaihtoehdot
@@ -476,12 +498,15 @@ cpriv_etable=Taulua ei ole valittu
 cpriv_euser=Puuttuva tai virheellinen käyttäjänimi
 cpriv_ehost=Puuttuva tai virheellinen isäntä
 cpriv_edb=Puuttuva tai virheellinen tietokannan nimi
+
 esql=SQL $1 epäonnistui : $2 
 eparse=Webmin ei voi jäsentää $1 -komennon tulosta tietokannan tietojen luonteen vuoksi. Sinun on asennettava $2 ja $3 Perl-moduulit tämän ongelman ratkaisemiseksi.
 edenied=Sinulla ei ole pääsyä tähän MySQL-tietokantaan
 perms_ecannot=Et voi muokata käyttöoikeuksia
 perms_edb=Sinulla on oikeus muokata vain omien tietokantojen käyttöoikeuksia
+
 acl_files=Voiko SQL suorittaa paikallisista tiedostoista?
+
 log_start=Käynnistettiin MySQL-palvelin
 log_stop=MySQL-palvelin pysäytetty
 log_cnf=MySQL-palvelimen kokoonpano muutettu
@@ -546,6 +571,7 @@ log_importfile=Tuodut tiedot tiedostosta $1
 log_set=Muutettu $1 MySQL-muuttujia
 log_root=Vaihdettu järjestelmänvalvojan salasana
 log_manual=Manuaalisesti muokattu konfigurointitiedosto
+
 backup_title=Varmuuskopiotietokanta
 backup_title2=Varmuuskopioi kaikki tietokannat
 backup_edump=MySQL-varmuuskopio-ohjelmaa $1 ei löydy järjestelmästäsi. Ehkä <a href='$2'>moduulin kokoonpano</a> on väärä.
@@ -624,14 +650,17 @@ backup_bodyspace=Tiedostojärjestelmän koko: $1 Vapaa tila : $2
 backup_bodyall=kaikki
 backup_edownloadall=Vain yksi tietokannan varmuuskopio voidaan ladata
 backup_edownloadsave=Lataustilaa ei voi käyttää ajoitettuihin varmuuskopioihin
+
 import_title=Tuo tiedot
 import_uploadout=Tietojen tuominen ladatusta tiedostosta ..
 import_fileout=Tietojen tuominen tiedostosta $1 ..
 import_eupload=Ladattu tuontitiedosto puuttuu
 import_efile=Puuttuu tuontitiedostonimi
+
 adv_title=Tarkennettu Haku
 adv_and=Etsi tietueet, jotka vastaavat kaikkia ehtoja ..
 adv_or=Etsi tietueet, jotka vastaavat kaikkia kriteerejä ..
+
 csv_title=Vie CSV-tiedosto
 csv_header=CSV-vientivaihtoehdot
 csv_dest=Vie kohde
@@ -652,6 +681,7 @@ csv_done=CSV-vienti tiedostoon $1 on valmis. Tuloksena olevan tiedoston koko on 
 csv_headers=Sisällytetäänkö sarakkeiden nimet CSV: hen?
 csv_cols=CSV: hen sisällytettävät sarakkeet
 csv_ecols=Yhtään saraketta ei ole valittu
+
 cnf_title=MySQL-palvelimen kokoonpano
 cnf_efile=MySQL-määritystiedostoa $1 ei löydy järjestelmästäsi. Saatat joutua säätämään <a href='$2'>moduulin kokoonpanoa</a> oikean polun käyttämiseksi.
 cnf_header=MySQL-palvelimen asetukset
@@ -693,11 +723,13 @@ cnf_restart=Tallenna ja käynnistä MySQL
 cnf_fpt=Erillinen tiedosto jokaiselle InnoDB-taulukolle?
 cnf_ilt=InnoDB-lukituksen aikakatkaisu (sekunneissa)
 cnf_eilt=InnoDB-lukituksen aikakatkaisun on oltava kokonaisluku
+
 manual_title=Muokkaa asetustiedostoja
 manual_file=Muokkaa asetustiedostoa:
 manual_ok=kunnossa
 manual_efile=Virheellinen kokoonpanotiedosto!
 manual_err=Asetustiedoston tallentaminen epäonnistui
+
 index_title1=Luo hakemisto
 index_header1=Hakemistovaihtoehdot
 index_name=Hakemiston nimi
@@ -713,12 +745,15 @@ index_ecols=Ei kenttiä valittu
 index_title2=Muokkaa hakemistoa
 index_header=Hakemisto $1 tietokannassa $2 
 index_ecannot=Et voi hallita hakemistoja
+
 syslog_desc=MySQL -virheilmoitukset
 syslog_desc2=MySQL-virheilmoitus
 syslog_logdesc=MySQL-kyselyt
+
 fdrop_err=Kenttien poistaminen epäonnistui
 fdrop_enone=Mitään ei ole valittu
 fdrop_eall=Kaikkia kenttiä ei voi poistaa taulukosta!
+
 view_header1=Tarkemmat tiedot
 view_name=Näytä nimi
 view_query=SQL-valintakysely
@@ -741,6 +776,7 @@ view_cascaded=Perusnäkymät
 view_local=Vain tämä näkymä
 view_nocheck=Ei mitään
 view_ecannot=Et voi hallita näkymiä
+
 procs_title=Tietokantayhteydet
 procs_id=ID
 procs_user=Käyttäjätunnus
@@ -752,9 +788,11 @@ procs_query=Käynnissä kysely
 procs_kill=Tapa valitut yhteydet
 procs_ecannot=Et voi katsella tietokantayhteyksiä
 procs_none=Muita tietokantaasiakasyhteyksiä ei ole tällä hetkellä.
+
 kill_err=Tietokantayhteyksien tappaminen epäonnistui
 kill_ecannot=Et voi hallita tietokantayhteyksiä
 kill_enone=Mitään ei ole valittu
+
 vars_title=MySQL-järjestelmän muuttujat
 vars_desc=Varoitus - Tällä sivulla asetetut muuttujat palautetaan oletusarvoihinsa, kun MySQL käynnistetään uudelleen. Pysyvät asetukset on tehtävä <a href='$1'>MySQL-palvelimen asetukset</a> -sivulla.
 vars_ecannot=Järjestelmämuuttujia ei saa muokata
@@ -765,6 +803,7 @@ vars_search=Näytä muuttujat, jotka vastaavat:
 vars_ok=Hae
 vars_none2=Mikään järjestelmämuuttuja ei vastannut hakuasi.
 vars_none=Järjestelmämuuttujia ei löytynyt!
+
 compat_ansi=ANSI
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQL 4.0
@@ -776,7 +815,9 @@ compat_maxdb=MaxDB
 compat_no_key_options=Tärkeimmät vaihtoehdot
 compat_no_table_options=Taulukkovaihtoehdot
 compat_no_field_options=Kenttävaihtoehdot
+
 config_echarset=Puuttuva tai virheellisen näköinen merkistö
+
 root_title=Vaihda järjestelmänvalvojan salasana
 root_header=Uusi järjestelmänvalvojan salasana
 root_user=Hallinnon kirjautuminen
@@ -789,6 +830,7 @@ root_epass1=Uutta salasanaa ei ole annettu
 root_epass2=Salasanat eivät täsmää
 root_none=Ei salasanaa!
 root_auto=Automaattinen (yleensä <tt>juuri</tt>)
+
 mysqlpass_err=MySQL-vikasietotila
 mysqlpass_esafecmd=Komentoa $1, jota tarvitaan MySQL: n käynnistämiseen, kun todennus on poistettu käytöstä, ei löydy
 mysqlpass_eshutdown=Sammutus epäonnistui : $1 

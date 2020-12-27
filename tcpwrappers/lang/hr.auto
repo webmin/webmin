@@ -10,6 +10,7 @@ index_hosts=domaćini
 index_cmd=naredba
 index_delete=Obriši odabrano
 index_none=nijedan
+
 edit_title1allow=Stvori Dopusti pravilo
 edit_title2allow=Uredi Dopusti pravilo
 edit_title1deny=Stvorite pravilo zabrane
@@ -22,9 +23,11 @@ edit_hosts=Udaljeni domaćini
 edit_hostsexcept=Osim domaćina
 edit_cmd=Naredbe granata
 edit_efound=Daemon '$1' nije pronađen u xinetd konfiguraciji.
+
 save_errtitle=Pogreška kod pravila spremanja
 save_ehost=Unos domaćina sadrži loše znakove
 save_ecmd=Ulaz naredbe sadrži loše znakove
 save_eservice=Imena demona sadrže loše znakove
+
 del_errtitle=Pogreška pri brisanju pravila
 del_enone=Nema pravila označena za brisanje

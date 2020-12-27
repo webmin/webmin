@@ -12,10 +12,12 @@ index_restart=Reštartujte server Fail2Ban
 index_restartdesc=Kliknutím na toto tlačidlo použijete aktuálnu konfiguráciu reštartovaním servera Fail2Ban.
 index_return=index modulu
 index_header=Modul Fail2Ban
+
 check_edir=Konfiguračný adresár $1 neexistuje
 check_econf=Konfiguračný súbor $2 v $1 neexistuje
 check_eclient=Príkaz klienta $1 nebol nájdený
 check_eserver=Príkaz servera $1 nebol nájdený
+
 filters_title=Filtre denníka
 filters_name=Názov filtra
 filters_re=Regulárny výraz
@@ -25,6 +27,7 @@ filters_return=zoznam filtrov
 filters_derr=Filtre sa nepodarilo odstrániť
 filters_enone=Žiadne vybraté
 filters_einuse=Filter $1 nemožno odstrániť, pretože ho používajú väzenia : $2 
+
 filter_title1=Vytvorte filter
 filter_title2=Upraviť filter
 filter_desc=<i>&lt;HOST&gt;</i> používajte v regulárnych výrazoch, kde by sa mal zobrazovať názov hostiteľa alebo adresa IP.
@@ -39,6 +42,7 @@ filter_ename=Chýba alebo je neplatný názov filtra
 filter_eclash=Názov filtra sa už používa
 filter_efail=Nebol zadaný žiadny regulárny výraz
 filter_einuse=Tento filter nie je možné odstrániť, pretože ho používajú väzenia : $1 
+
 actions_title=Zápasové akcie
 actions_name=Názov akcie
 actions_ban=Príkaz zakázať
@@ -48,6 +52,7 @@ actions_return=zoznam akcií
 actions_derr=Akcie sa nepodarilo odstrániť
 actions_enone=Žiadne vybraté
 actions_einuse=Akciu $1 nemožno odstrániť, pretože ju používajú väzenia : $2 
+
 action_title1=Vytvorenie zápasu
 action_title2=Upraviť akciu zápasu
 action_header=Detaily zápasu
@@ -64,6 +69,7 @@ action_ban=Príkaz na zákaz IP
 action_unban=Príkaz na zrušenie zákazu adresy IP
 action_desc=<i>&lt;ip&gt;</i> bude nahradený zakázanou IP adresou.
 action_einuse=Túto akciu nemožno odstrániť, pretože ju používajú väzenia : $1 
+
 jails_title=Filtrovať akcie
 jails_add=Pridajte novú väznicu.
 jails_name=Názov väzenia
@@ -76,6 +82,7 @@ jails_defdesc=Upravte predvolené nastavenia a limity, ktoré sa vzťahujú na v
 jails_return=zoznam väzníc
 jails_derr=Odstránenie väzenia zlyhalo
 jails_enone=Žiadne vybraté
+
 jail_title1=Vytvorte väzenie
 jail_title2=Upraviť väzenie
 jail_header=Filtrujte podrobnosti väzenia
@@ -115,13 +122,16 @@ jail_banaction=Použiť predvolenú akciu
 jail_defprotocol=Predvolený protokol pre akcie
 jail_edestemail=Chýbajúca alebo neplatná predvolená e-mailová adresa pre oznámenie
 jail_eignoreip=Neplatná adresa IP, ktorú chcete ignorovať
+
 jaildef_title=Predvolené možnosti väzenia
 jaildef_header=Predvolené hodnoty pre všetky väzenia
 jaildef_err=Nepodarilo sa uložiť predvolené možnosti väzenia
 jaildef_egone=Nenašiel sa žiadny DEFAULT väzenie!
+
 start_err=Nepodarilo sa spustiť server
 stop_err=Zastavenie servera zlyhalo
 restart_err=Server sa nepodarilo reštartovať
+
 log_create_filter=Vytvorený filter $1 
 log_update_filter=Upravený filter $1 
 log_delete_filter=Odstránený filter $1 
@@ -139,6 +149,7 @@ log_atboot=Povolené Fail2Ban pri štarte systému
 log_delboot=Zakázané Fail2Ban pri štarte systému
 log_manual=Upravený konfiguračný súbor $1 
 log_jaildef=Upravené predvolené možnosti väzenia
+
 config_title=Globálna konfigurácia
 config_edef=V konfiguračnom súbore sa nenašla žiadna definičná sekcia!
 config_header=Konfigurácia nastavení pre Fail2Ban
@@ -151,10 +162,12 @@ config_socket=Socket pre komunikáciu so serverom
 config_err=Globálnu konfiguráciu sa nepodarilo uložiť
 config_elogtarget=Súbor, do ktorého sa zapisujú protokoly, musí byť absolútnou cestou
 config_esocket=Súbor soketu musí byť absolútnou cestou
+
 manual_title=Upraviť konfiguračné súbory
 manual_desc=Súbor na úpravu:
 manual_ok=OK
 manual_efile=Vybraný súbor nie je súčasťou konfigurácie Fail2Ban!
 manual_err=Nepodarilo sa upraviť konfiguračný súbor
 manual_edata=Nebol zadaný žiadny obsah konfiguračného súboru
+
 syslog_logtarget=Protokol akcie Fail2Ban

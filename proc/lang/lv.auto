@@ -16,6 +16,7 @@ index_loadname=CPU slodzes vidējie lielumi:
 index_loadnums=$1 (1 minūtes), $2 (5 minūtes), $3 (15 minūtes)
 index_cpuname=CPU tips:
 index_inzone=Zonā $1 
+
 pid=ID
 owner=Īpašnieks
 command=Pavēle
@@ -27,6 +28,7 @@ nice=Jauks līmenis
 stime=Sākās
 sclass=IO plānošanas klase
 sprio=IO prioritāte
+
 search_user=Pieder
 search_match=Saskaņošana
 search_cpupc=Izmantojot vairāk nekā $1% CPU
@@ -43,6 +45,7 @@ search_sigkill=Nogalināt procesus
 search_port=Izmantojot ostu
 search_protocol=protokols
 search_ip=Izmantojot IP adresi
+
 run_command=Komanda palaist
 run_submit=Skrien
 run_mode=Darbības režīms
@@ -56,6 +59,7 @@ run_ecannot=Jums nav atļauts palaist komandas
 run_as=Palaist kā lietotājam
 run_euser=Trūkst vai nav derīgs lietotājvārds
 run_euser2=Jums nav atļauts palaist komandas kā izvēlētajam lietotājam
+
 edit_title=Informācija par procesu
 edit_gone=Šis process vairs nedarbojas
 edit_sub=Apakšprocesi
@@ -75,12 +79,15 @@ edit_sigcont=Turpināt
 edit_open=Faili un savienojumi
 edit_trace=Izsekošanas process
 edit_return=procesa detaļas
+
 kill_err=Neizdevās nosūtīt signālu $1, lai apstrādātu $2 
 kill_title=Sūtīt signālu
 kill_sent=nosūtīts
 kill_ecannot=Jums nav atļauts nogalināt procesus
+
 renice_err=Neizdevās pārnest procesu $1 
 renice_ecannot=Jums nav atļauts nomāt procesus
+
 linux_pri=Prioritāte
 linux_tty=TTY
 linux_status=Statuss
@@ -91,25 +98,30 @@ linux_ruser=Īsts lietotājs
 linux_rgroup=Īsta grupa
 linux_pgid=Procesa grupas ID
 linux_stime=Sākās
+
 linuxstat_R=Skriešana
 linuxstat_S=Guļ
 linuxstat_D=Dziļš miegs
 linuxstat_T=Apstājās
 linuxstat_Z=Zombijs
+
 linux_real=Īsts laiks
 linux_be=Vislabākās pūles
 linux_idle=Dīkstāvē
+
 freebsd_ruser=Īsts lietotājs
 freebsd_rgroup=Īsta grupa
 freebsd_tty=TTY
 freebsd_pgid=Procesa grupa
 freebsd_stime=Sākās
 freebsd_lim=Atmiņas ierobežojums
+
 hpux_pri=Prioritāte
 hpux_tty=TTY
 hpux_status=Statuss
 hpux_wchan=Gaidu
 hpux_stime=Sākās
+
 hpuxstat_0=Neeksistējošs
 hpuxstat_S=Guļ
 hpuxstat_W=Gaida
@@ -118,7 +130,9 @@ hpuxstat_I=Starpposms
 hpuxstat_Z=Zombijs
 hpuxstat_T=Apstājās
 hpuxstat_G=Aug
+
 macos_tty=TTY
+
 sysv_group=Grupa
 sysv_ruser=Īsts lietotājs
 sysv_rgroup=Īsta grupa
@@ -127,12 +141,14 @@ sysv_tty=TTY
 sysv_stime=Sākās
 sysv_task=Uzdevuma ID
 sysv_zone=Zonas nosaukums
+
 log_run=Notika komanda "$1"
 log_kill=Nosūtīts signāls $1, lai apstrādātu $2 
 log_kills=Sūtīt signālu no $1 uz $2 procesiem
 log_kill_l=Nosūtīts signāls $1, lai apstrādātu $2 
 log_kills_l=Nosūtīts signāls $1 procesiem <br> $2 
 log_renice=Mainīta procesa $2 prioritāte uz $1 
+
 acl_manage=Pārvaldiet procesus kā lietotājs
 acl_manage_def=Pašreizējais Webmin lietotājs
 acl_edit=Vai var nogalināt un nomierināt procesus?
@@ -142,11 +158,13 @@ acl_who=Var pārvaldīt procesus lietotājiem
 acl_who0=Visi lietotāji
 acl_who1=Pašreizējais Webmin lietotājs
 acl_who2=Sarakstā iekļautie lietotāji ..
+
 kill_kill=Nogalināšanas process
 kill_term=Izbeigt
 kill_hup=Restartēt
 kill_stop=Pietura
 kill_cont=Turpināt
+
 open_title=Atveriet failus un savienojumus
 open_proc=Procesam $1 (PID $2)
 open_header1=Atveriet failus
@@ -170,6 +188,7 @@ open_blk=Bloķēt īpašu
 open_size=Faila lielums
 open_inode=Inode
 open_file=Ceļš
+
 trace_title=Izsekošanas process
 trace_start=Sākuma sistēmas zvana izsekošana $1.
 trace_doing=Sistēmas zvana izsekošana $1  :
@@ -180,5 +199,7 @@ trace_syscalls=Izsekošanas sistēmas zvani:
 trace_all=Visi
 trace_sel=Sarakstā ..
 trace_change=Pārmaiņas
+
 windows_threads=Pavedieni procesā
+
 syslog_dmesg=Kodola ziņas

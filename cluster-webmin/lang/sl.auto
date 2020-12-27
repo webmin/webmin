@@ -39,7 +39,9 @@ index_thost=Ime gostitelja
 index_tdesc=Opis
 index_tver=Različica
 index_ttype=Vrsta OS-a
+
 this_server=ta strežnik
+
 add_title=Dodaj strežnike
 add_msg=Dodajanje $1.
 add_gmsg=Dodajanje strežnikov v skupino $1.
@@ -49,6 +51,7 @@ add_echeck=Server $1 nima konfiguracijskega modula Webmin
 add_echeck2=Server $1 nima uporabniškega modula Webmin
 add_eversion=Strežnik $1 ne izvaja različice Webmin $2 ali višje.
 add_ok=Dodano $1 z $2 moduli, $3 teme, $4 uporabniki in $5 skupinami.
+
 refresh_title=Osveži modul in sezname uporabnikov
 refresh_header=Ponovna zahteva za sezname modulov, uporabnikov in skupin z vseh strežnikov ..
 refresh_header4=Ponovna zahteva za sezname modulov, uporabnikov in skupin od članov skupine $2 ..
@@ -64,6 +67,7 @@ refresh_g2=Odstranjenih $1 skupin.
 refresh_done=.. Končano
 refresh_del=Odstranjen je $1 s seznama strežnikov
 refresh_failed= $1 : $2 ni bilo mogoče osvežiti
+
 host_title=Upravljavec strežnika
 host_header=Podrobnosti o upravljanem spletnem strežniku
 host_name=Ime gostitelja
@@ -81,6 +85,7 @@ host_header_u=Uporabniki spletnihmin
 host_header_g=Skupine Webmin
 host_return=podrobnosti o strežniku
 host_version2=Različica
+
 edit_title_mod=Uredi modul
 edit_title_theme=Uredi temo
 edit_header_mod=Podrobnosti o modulu Webmin od $1 
@@ -104,6 +109,7 @@ edit_acl=Uredi ACL za
 edit_uacl=Uporabnik $1 na $2 
 edit_gacl=Skupina $1 na $2 
 edit_config=Uredi konfiguracijo vklopljeno
+
 install_err=Modula ni mogoče namestiti
 install_title=Namestite modul
 install_elocal=Lokalna datoteka ni dana
@@ -124,6 +130,7 @@ do_failed=Namestitve na $1 : $2 ni bilo mogoče namestiti
 do_success_mod=Nameščen modul $2 na $1 
 do_success_theme=Nameščena tema $2 na $1 
 do_done=.. Končano
+
 delete_err=Modula $1 ni bilo mogoče izbrisati
 delete_epack=Modul $1 ne obstaja
 delete_title=Izbriši modul
@@ -141,6 +148,7 @@ delete_edepends=Moduli (i) $1 so odvisni od tega.
 delete_egone=Modul ne obstaja več
 delete_esuccess=Izbrisano iz $1 : $2 
 delete_acls=Ali želite odstraniti uporabnike in ponastaviti nastavitve nadzora dostopa?
+
 user_title1=Ustvari uporabnika Webmin
 user_header1=Nove podrobnosti o uporabniku Webmin
 user_name=Uporabniško ime
@@ -200,11 +208,13 @@ user_all=&lt;vsi gostitelji&gt;
 user_donthave=&lt;gostitelji, ki ga nimajo&gt;
 user_have=&lt;gostitelji, ki jih imajo&gt;
 user_ofgroup=Člani $1 
+
 udelete_title=Izbriši uporabnika
 udelete_doing=Brisanje uporabnika $1 iz vseh gostiteljev ..
 udelete_success=Izbrisano iz $1 
 udelete_failed=Brisanje ni bilo mogoče iz $1 : $2 
 udelete_done=.. Končano
+
 group_title1=Ustvari skupino
 group_header1=Nove podrobnosti o skupini Webmin
 group_name=Ime skupine
@@ -232,6 +242,7 @@ group_failed2=Posodobitve skupine $1 : $2 ni bilo mogoče
 group_return=podrobnosti o skupini
 group_nomems=Brez članov
 group_servers=Strežniki, ki jih želite ustvariti
+
 gdelete_title=Izbriši skupino
 gdelete_desc=Ali ste prepričani, da želite izbrisati skupino $1 in njene člane uporabnike $2 iz vseh gostiteljev?
 gdelete_ok=Izbriši skupino
@@ -240,6 +251,7 @@ gdelete_success=Izbrisano iz $1
 gdelete_failed=Brisanje ni bilo mogoče iz $1 : $2 
 gdelete_done=.. Končano
 gdelete_esub=Ta skupina ima podskupine $1, zato je ni mogoče izbrisati.
+
 acl_title=Modul Nadzor dostopa
 acl_title2=Za uporabnika $1 v $2 na $3 
 acl_title3=Za skupino $1 v $2 na $3 
@@ -258,6 +270,7 @@ acl_doing2=Nastavitev nadzora dostopa za $1 na $2.
 acl_success=Nadzor dostopa je uspešno nastavljen na $1 
 acl_failed= $1 : $2 ni bilo mogoče nastaviti nadzora dostopa
 acl_done=.. Končano
+
 sync_title=Sinhronizirajte strežnike
 sync_desc=Ta obrazec omogoča ustvarjanje uporabnikov in skupin Webmin na strežnikih, ki jih trenutno nimajo, da bi omogočili sinhronizacijo računov na vseh strežnikih v vašem grozdu.
 sync_hosts=Strežniki za sinhronizacijo
@@ -281,6 +294,7 @@ sync_gcreate=Dodajanje Webmin skupine $1.
 sync_acl=Kopiranje datotek ACL za $1.
 sync_test=Pokažite le, kaj bi bilo storjeno?
 sync_restart=Ponovno zagon Webmin ..
+
 upgrade_title=Nadgradite Webmin
 upgrade_header=Nadgradnja Webmin na vse gostitelje ..
 upgrade_header2=Nadgradnja Webmin na $1.
@@ -299,6 +313,7 @@ upgrade_failed=Namestitve na $1 : $2 ni bilo mogoče namestiti
 upgrade_done=.. Končano
 upgrade_efast=Nadgraditi je mogoče le strežnike, ki uporabljajo hitri način RPC
 upgrade_ereconn=Po nadgradnji ni bilo mogoče ponovno povezati s Webminom!  : $1 
+
 update_title=Posodobiti module
 update_header=Posodabljanje modulov vseh gostiteljev ..
 update_header5=Posodabljanje modulov na $2 ..
@@ -306,6 +321,7 @@ update_header4=Posodabljanje modulov na članih $2 ..
 update_onhost=Rezultati posodobitve za $1.
 update_failed=.. posodobitev ni uspela : $1 
 update_none=.. nobene posodobitve ni bilo mogoče najti.
+
 config_title=Uredi konfiguracijo modula
 config_enone=Noben gostitelj z nameščenim modulom ni bil izbran
 config_ethis=Modul ni nameščen na tem strežniku

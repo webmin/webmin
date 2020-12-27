@@ -14,6 +14,7 @@ index_restart=LDAPクライアントデーモンを再起動する
 index_restartdesc=ローカルLDAPクライアントデーモンを再起動して、現在の構成を適用します。
 index_atboot=起動時にLDAPクライアントを起動
 index_atbootdesc=システムの起動時にLDAPクライアントデーモンを起動するかどうかを変更します。
+
 server_title=LDAPサーバーの構成
 server_header=LDAPサーバーとログインオプション
 server_host=LDAPサーバーのホスト名
@@ -51,6 +52,7 @@ server_etimelimit=接続時間制限がないか、無効です
 server_ecacert=CA証明書ファイルが欠落しているか無効です
 server_euport=サーバー $1のポートが欠落しているか無効です
 server_euri=LDAPサーバーが入力されていません
+
 base_title=LDAP検索ベース
 base_header=LDAPディレクトリの検索場所
 base_base=グローバル検索ベース
@@ -86,6 +88,7 @@ base_enetmasks=ネットマスク名のベースがありません
 base_ealiases=メールエイリアスのベースがありません
 base_enetgroup=ネットグループのベースがありません
 base_etimelimit=検索時間制限がないか、無効です
+
 pam_title=認証オプション
 pam_header=PAM認証およびパスワード設定
 pam_filter=追加のLDAPフィルター
@@ -106,10 +109,12 @@ pam_efilter=追加のLDAPフィルターがありません
 pam_elogin=ユーザー名のLDAP属性がないか無効です
 pam_egroupdn=のメンバーシップを強制するLDAPグループがありません
 pam_emember=グループメンバーのLDAP属性が見つからないか無効です
+
 switch_title=LDAPを使用するサービス
 switch_service=サービス
 switch_srcs=データソース
 switch_return=LDAPを使用するサービス
+
 ldap_emodule=LDAPサーバーとの通信に必要な $1 Perlモジュールがインストールされていません。 <a href='$2'>ここをクリック</a>して、Webminをダウンロードしてインストールします。
 ldap_emodule2=LDAPサーバーとの通信に必要な $1 Perlモジュールがインストールされていません。
 ldap_econf=LDAPクライアント構成ファイル $1がシステムに見つかりませんでした
@@ -119,6 +124,7 @@ ldap_elogin=LDAPサーバー $1に $2としてバインドできませんでし�
 ldap_anon=匿名
 ldap_eparse=LDAPサーバーURI $1を解析できませんでした
 ldap_etls=TLSモードへの切り替えに失敗しました： $1
+
 browser_title=LDAPブラウザ
 browser_econn=LDAPブラウザーを使用できません： $1
 browser_base=ブラウジング：
@@ -129,6 +135,7 @@ browser_attrs=オブジェクト属性
 browser_parent=親を参照
 browser_none=なし
 browser_sel=OK
+
 order_nisplus=NIS +
 order_nis=NIS
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=ユーザープリンター
 order_xfn=XFN
 order_mdns4=マルチキャストDNS
 order_mdns4_minimal=マルチキャストDNS（最小）
+
 desc_aliases=Sendmailエイリアス
 desc_mail=Sendmailエイリアス
 desc_hosts=ホストアドレス
@@ -177,6 +185,7 @@ desc_printers=プリンター
 desc_ipnodes=IPノード
 desc_timezone=時間帯
 desc_locale=ロケール
+
 eswitch_title=サービスを編集
 eswitch_egone=サービスは存在しません！
 eswitch_header=サービスの詳細
@@ -196,6 +205,7 @@ eswitch_continue=検索を続ける
 eswitch_none=なし
 eswitch_err=サービスを保存できませんでした
 eswitch_enone=ソースが選択されていません！
+
 log_server=変更されたLDAPサーバー構成
 log_base=変更されたLDAP検索ベース
 log_pam=変更された認証オプション
@@ -205,6 +215,7 @@ log_delboot=ブート時に無効なLDAPクライアントデーモン
 log_start=LDAPクライアントデーモンを起動しました
 log_stop=LDAPクライアントデーモンを停止しました
 log_restart=再起動されたLDAPクライアントデーモン
+
 check_title=LDAP構成の検証
 check_base=ユーザーのLDAPベースの検索 ..
 check_ebase=..クライアント構成にベースが見つかりません！

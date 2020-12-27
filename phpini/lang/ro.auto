@@ -9,17 +9,21 @@ index_edit=Administra
 index_manual=Editează manual
 index_anyfile=Editați alt fișier de configurare PHP:
 index_return=fișiere de configurare
+
 file_global=Configurația PHP globală
 file_eread=Nu a reușit să citească $1 : $2 
+
 manual_title=Editează configurația manual
 manual_desc=Această pagină poate fi utilizată pentru a edita manual un fișier de configurare PHP. Acest lucru trebuie făcut cu atenție, deoarece nu se efectuează nicio sintaxă sau altă verificare a validității asupra modificărilor dvs.
 manual_err=Eroare la editarea fișierului de configurare
 manual_edata=Nu a fost introdus conținut nou
+
 list_title=Gestionați configurația PHP
 list_ecannot=Nu aveți voie să gestionați acest fișier de configurare PHP
 list_return=Configurație PHP
 list_format_ini=Format INI
 list_format_fpm=Formatul FPM
+
 vars_title=Variabile PHP
 vars_header=Opțiuni de creare și cotare a variabilelor PHP
 vars_magic=Citați toate variabilele de intrare?
@@ -28,6 +32,7 @@ vars_register=Transformă intrarea în variabile globale?
 vars_args=Transformă parametrii liniei de comandă în variabile globale?
 vars_long=Creați tablouri în stil vechi, precum <tt>HTTP_GET_VARS</tt>?
 vars_err=Nu a reușit să salveze setările variabilei PHP
+
 dirs_title=Setări director
 dirs_header=Scripturi PHP și setări pentru directorul extensiei
 dirs_include=Căutare directoare pentru include
@@ -39,6 +44,7 @@ dirs_err=Nu a reușit să salvați setările directorului
 dirs_eincs=Nu include directoarele de căutare introduse
 dirs_eutmp=Directorul fișierelor temporare lipsă sau invalid
 dirs_eext=Lipsește directorul extensiilor
+
 db_title=Setări bază de date
 db_header1=Setări de conexiune la baza de date MySQL
 db_persist=Permiteți conexiuni persistente la baza de date?
@@ -57,6 +63,7 @@ db_emaxlinks=Numărul maxim de conexiuni totale lipsă sau nevalid
 db_etimeout=Lipsește sau nu este valabil timpul de conectare
 db_ehost=Lipsă sau incorectă gazda serverului implicit MySQL
 db_eport=Portul serverului MySQL implicit lipsă sau nevalid
+
 session_title=Opțiuni de sesiune
 session_header=Opțiuni pentru urmărirea sesiunii PHP
 session_handler=Mecanismul de stocare a sesiunii
@@ -73,6 +80,7 @@ session_epath=Director lipsă sau nevalid pentru fișierele de sesiune
 session_elife=Durata de viață a cookie-ului lipsă sau nevalidă
 session_emaxlife=Durata de viață maximă lipsă sau nevalidă
 session_eredis=Extensia de redisecție lipsă sau dezactivată
+
 safe_title=Opțiuni mod sigur
 safe_header=Opțiuni în modul de acces sigur la fișiere
 safe_on=Activați modul sigur?
@@ -85,6 +93,7 @@ safe_err=Nu a reușit să salvați opțiunile de mod sigur
 safe_einclude=Directorul permis sau nevalid este permis pentru fișierele incluse
 safe_eexec=Directorul permis sau nevalid este permis pentru programele executate
 safe_ebasedir=Director lipsă sau nevalid pentru operațiunile cu fișiere
+
 limits_title=Limitele resurselor
 limits_header=Opțiuni limită de memorie și transfer
 limits_mem=Alocare maximă a memoriei
@@ -98,6 +107,7 @@ limits_epost=Lipsește sau nu este valabilă dimensiunea maximă HTTP POST
 limits_eupload=Lipsește sau nu este valabilă dimensiunea maximă de încărcare a fișierului
 limits_eexec=Timpul maxim de execuție lipsește sau este nevalid
 limits_einput=Timpul maxim de analiză de intrare lipsă sau nevalid
+
 errors_title=Eroare la jurnal
 errors_header=Afișarea mesajelor de eroare și opțiunile de înregistrare
 errors_display=Afișați mesajele de eroare?
@@ -128,6 +138,7 @@ errors_err=Eroare la salvarea înregistrării erorilor
 errors_ereporting=Nu a fost introdusă nicio expresie de tip eroare
 errors_emaxlen=Dimensiunea maximă lipsă sau nevalidă a erorilor înregistrate
 errors_efile=Lipsește fișierul jurnal de eroare
+
 misc_title=Alte setari
 misc_header=Alte setări PHP
 misc_short=Permiteți scripturile PHP începând cu &lt;? ?
@@ -148,6 +159,7 @@ misc_include=Permite deschiderea de la distanță Include?
 misc_path=Informații despre calea CGI?
 misc_timezone=Fus orar PHP
 misc_charset=Set de caractere implicit
+
 log_manual=Editează manual fișierul $1 
 log_vars=Modificată variabilele PHP în $1 
 log_dirs=Setările directoarelor modificate în $1 
@@ -157,6 +169,7 @@ log_safe=Opțiunile modului sigur au fost schimbate în $1
 log_limits=Limitarea resurselor modificată în $1 
 log_errors=Schimbare de eroare modificată în $1 
 log_misc=S-au modificat alte setări în $1 
+
 acl_global=Poate edita configurația PHP globală?
 acl_anyfile=Poate edita orice fișier ca configurație PHP?
 acl_manual=Poate edita manual fișierele de configurare?

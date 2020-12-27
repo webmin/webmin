@@ -1,5 +1,6 @@
 index_euser=Fail konfigurasi RBAC $1 tidak dijumpai pada sistem anda. Mungkin RBAC tidak dipasang, atau konfigurasi modul <a href='$2'></a> tidak betul.
 index_return=indeks modul
+
 users_title=Atribut Pengguna
 users_user=Nama pengguna
 users_profiles=Diberikan profil
@@ -10,6 +11,7 @@ users_return=senarai atribut pengguna
 users_type=Taipkan
 users_role=Peranan
 users_project=Projek
+
 user_title1=Buat Sifat Pengguna
 user_title2=Edit Sifat Pengguna
 user_header=Atribut yang diberikan kepada pengguna Unix
@@ -35,6 +37,7 @@ user_eauth='$1' bukan merupakan kebenaran yang sah
 user_ecannot=Anda tidak dibenarkan mengedit pengguna ini
 user_erole=Anda tidak dibenarkan memberikan peranan '$1'
 user_eprof=Anda tidak dibenarkan memberikan profil '$1'
+
 auths_title=Kebenaran
 auths_name=Nama kebenaran
 auths_desc=Penerangan
@@ -42,8 +45,10 @@ auths_none=Tiada kebenaran telah ditakrifkan lagi.
 auths_add=Tambah kebenaran baharu.
 auths_return=senarai kebenaran
 auths_ecannot=Anda tidak dibenarkan mengedit kebenaran
+
 authc_name=Kebenaran
 authc_desc=Penerangan
+
 auth_title1=Buat Kebenaran
 auth_title2=Edit Kebenaran
 auth_header=Butiran keistimewaan kebenaran
@@ -57,6 +62,7 @@ auth_edesc=Keterangan lama tidak sah
 auth_eclash=Pengesahan dengan nama yang sama sudah wujud
 auth_einuseu=Kebenaran ini digunakan oleh pengguna $1, dan tidak boleh dipadamkan
 auth_einusep=Kebenaran ini digunakan oleh profil $1, dan oleh itu tidak boleh dipadamkan
+
 profs_title=Profil
 profs_name=Nama profil
 profs_desc=Penerangan
@@ -65,6 +71,7 @@ profs_none=Tiada profil telah ditakrifkan lagi.
 profs_add=Tambah profil baru.
 profs_return=senarai profil
 profs_ecannot=Anda tidak dibenarkan mengedit profil
+
 prof_title1=Buat Profil
 prof_title2=Sunting profil
 prof_header=Butiran profil kebenaran
@@ -81,6 +88,7 @@ prof_einuseu=Profil ini digunakan oleh pengguna $1, dan oleh itu tidak boleh dih
 prof_einusep=Profil ini digunakan oleh profil $1, dan oleh itu tidak dapat dipadamkan
 prof_einusee=Profil ini mempunyai $1 profil pelaksanaan berkaitan, dan oleh itu tidak dapat dihapuskan
 prof_none=Tiada profil yang tersedia
+
 execs_title=Profil Pelaksanaan
 execs_name=Profil
 execs_policy=Dasar keselamatan
@@ -92,6 +100,7 @@ execs_none=Tiada profil pelaksanaan telah ditakrifkan lagi.
 execs_add=Tambah profil pelaksanaan baru.
 execs_return=senarai profil pelaksanaan
 execs_ecannot=Anda tidak dibenarkan mengedit profil pelaksanaan
+
 exec_title1=Buat Profil Pelaksanaan
 exec_title2=Edit Profil Pelaksanaan
 exec_header=Butiran profil pelaksana
@@ -113,6 +122,7 @@ exec_erruid=Pengguna yang hilang atau tidak sah untuk dijalankan sebagai
 exec_errgid=Kumpulan hilang atau tidak sah untuk dijalankan sebagai
 exec_erreuid=Pengguna yang hilang atau tidak sah untuk dijalankan sebagai
 exec_erregid=Kelompok efektif yang hilang atau tidak sah untuk dijalankan sebagai
+
 policy_title=Dasar Sistem
 policy_header=Tetapan dasar sistem global
 policy_auths=Kebenaran untuk semua pengguna
@@ -126,16 +136,20 @@ policy_err=Gagal menyimpan dasar sistem
 policy_eallow=Tiada algoritma yang dibenarkan untuk dipilih
 policy_eclash=Algoritma untuk membenarkan dan menafikan tidak boleh dipilih pada masa yang sama
 policy_ecannot=Anda tidak dibenarkan mengedit dasar sistem
+
 attr_none=Tiada atribut pengguna yang ditakrifkan
 attr_nonenormal=Tiada pengguna Unix ditakrifkan
 attr_nonerole=Tiada peranan yang ada ditakrifkan
+
 help_epath=Laluan fail bantuan yang tidak sah!
 help_link=(Bantuan..)
+
 crypt___unix__=Unix crypt
 crypt_1=BSD MD5
 crypt_2a=BSD Flowfish
 crypt_md5=Sun MD5
 crypt_rot13=ROT13
+
 log_create_user=Atribut pengguna yang dibuat untuk $1 
 log_modify_user=Atribut pengguna diubah untuk $1 
 log_delete_user=Atribut pengguna yang dipadamkan untuk $1 
@@ -152,6 +166,7 @@ log_create_project=Projek yang dibuat $1
 log_modify_project=Projek diubahsuai $1 
 log_delete_project=Projek dibuang $1 
 log_policy=Dasar sistem yang diubah
+
 acl_roles=Boleh mengedit peranan?
 acl_users=Boleh mengedit atribut pengguna?
 acl_roleassign=Boleh memberikan peranan
@@ -166,6 +181,7 @@ acl_profs=Boleh edit profil?
 acl_ro=Lihat sahaja
 acl_execs=Boleh mengedit profil pelaksanaan?
 acl_projects=Boleh mengedit projek?
+
 projects_title=Projek-projek
 projects_name=Nama
 projects_id=ID
@@ -184,6 +200,7 @@ projects_exceptusers=Semua pengguna kecuali $1
 projects_exceptgroups=Semua kumpulan kecuali $1 
 projects_onlyusers=Hanya $1 
 projects_onlygroups=Hanya $1 
+
 project_title1=Buat Projek
 project_title2=Edit Projek
 project_header=Butiran projek dan ahli
@@ -219,6 +236,7 @@ project_egroupscannot=Tiada kumpulan untuk mengecualikan dipilih
 project_elimit=Had yang hilang atau tidak sah dalam baris $1 
 project_epool=Nama kumpulan projek hilang atau tidak sah
 project_erss=Memori maksimum yang hilang atau tidak sah
+
 prctl_title=Kawalan Sumber
 prctl_ok=Tunjukkan had untuk:
 prctl_mode0=Proses dengan ID

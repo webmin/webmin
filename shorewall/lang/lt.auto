@@ -19,6 +19,7 @@ index_dump=Rodyti demoną
 index_dumpdesc=Spustelėkite šį mygtuką, norėdami pamatyti „Shorewall“ sekimo informaciją iš komandos <tt>shorewall dump</tt>.
 index_check=Patikrinkite užkardą
 index_checkdesc=Spustelėkite šį mygtuką, kad „Shorewall“ patvirtintų ugniasienės konfigūraciją komanda <tt>shorewall check</tt>.
+
 list_move=Judėk
 list_add=Papildyti
 list_auto=Automatinis
@@ -30,6 +31,7 @@ list_manual=Rankiniu būdu redaguoti failą
 list_manualdesc=Spustelėkite šį mygtuką, norėdami rankiniu būdu redaguoti „Shorewall“ failą $1, kuriame saugomi aukščiau esantys įrašai.
 list_ecannot=Jums neleidžiama redaguoti šios „Shorewall“ lentelės.
 list_delete=Išštrinti pasirinktus
+
 restart_err=Nepavyko pritaikyti konfigūracijos
 refresh_err=Nepavyko atnaujinti konfigūracijos
 start_err=Nepavyko paleisti ugniasienės
@@ -41,6 +43,7 @@ check_title=Patikrinkite užkardą
 check_ok=.. ugniasienės konfigūracija atrodo gerai.
 check_failed=.. ugniasienės konfigūracijoje rasta klaida!
 check_cmd=Tikrinama konfigūracija ..
+
 zones_title=Tinklo zonos
 zones_desc=Šiame puslapyje išvardytos zonos žymi skirtingus tinklus, pasiekiamus iš jūsų sistemos. Tačiau čia esantys įrašai iš tikrųjų neturi jokios įtakos ugniasienei - jie tiesiog apibrėžia zonų pavadinimus ir aprašymus.
 zones_add=Pridėkite naują tinklo zoną.
@@ -69,6 +72,7 @@ zones_firewall=Užkardos sistema
 zones_eopts=Netinkamos zonos parinktys
 zones_eopts_in=Netinkamos zonų gaunamos parinktys
 zones_eopts_out=Netinkamos zonos išeinančios parinktys
+
 policy_title=Numatytoji politika
 policy_desc=Šis puslapis leidžia konfigūruoti numatytuosius srauto tarp skirtingų ugniasienės zonų veiksmus. Jie gali būti nepaisomi tam tikriems pagrindiniams kompiuteriams ar srauto tipams ugniasienės taisyklių puslapyje.
 policy_add=Pridėkite naują numatytąją politiką.
@@ -89,6 +93,7 @@ policy_ulog=Prisijunkite prie ULOG
 policy_efw=&lt;Firewall&gt; galima pasirinkti tiek šaltinio, tiek paskirties zonoms
 policy_elimit=Trūksta arba netinkamas eismo limito numeris
 policy_eburst=Trūksta arba netinkamas eismo srauto numeris
+
 rules_title=Užkardos taisyklės
 rules_desc=Šioje lentelėje pateikiamos numatytųjų tam tikrų tipų srauto, šaltinių ar paskirties vietų strategijų išimtys. Pasirinktas veiksmas bus taikomas paketams, atitinkantiems pasirinktus kriterijus, o ne numatytajam.
 rules_add=Pridėkite naują ugniasienės taisyklę.
@@ -135,6 +140,7 @@ rules_eaction=Nepasirinktas joks veiksmas
 rules_macro=Makro veiksmo parametras
 rules_none2=Nė vienas
 rules_emacro=Trūksta arba netinkamas makrokomandos parametras
+
 tos_title=Aptarnavimo tipai
 tos_desc=Šiame puslapyje apibrėžti tam tikrų tipų srauto IP paslaugų tipai, kurie gali būti naudojami norint padidinti arba sumažinti jų prioritetus.
 tos_add=Pridėkite naujo tipo paslaugas.
@@ -153,6 +159,7 @@ tos_edit=Redaguoti paslaugos tipą
 tos_create=Sukurti paslaugos tipą
 tos_header=Informacija apie paslaugos tipą
 tos_err=Nepavyko išsaugoti paslaugos tipo
+
 interfaces_title=Tinklo sąsajos
 interfaces_desc=Šiame tinkle turėtų būti išvardytos visos jūsų sistemos tinklo sąsajos, kurias norite valdyti „Shorewall“, ir susietos su zona, prie kurios jis yra prijungtas. Atgalinės sąsajos <tt>lo</tt> niekada neturėtų būti pateiktos.
 interfaces_add=Pridėkite naują tinklo sąsają.
@@ -169,6 +176,7 @@ interfaces_header=Tinklo sąsajos informacija
 interfaces_err=Nepavyko išsaugoti tinklo sąsajos
 interfaces_eiface=Trūksta arba netinkamas sąsajos pavadinimas
 interfaces_ebroad=Trūksta arba netinkamas transliacijos adresas
+
 masq_title=Maskuojamasis
 masq_desc=Šio puslapio įrašai nustato tinklo adreso vertimą srautui, nukreiptam tarp tam tikro tinklo ir tam tikros sąsajos.
 masq_add=Pridėkite naują maskavimo taisyklę.
@@ -199,6 +207,7 @@ masq_emnete=Tuščias išimčių tinklų sąrašas
 masq_esnat=Neteisingas SNAT IP adresas
 masq_eports=Trūksta arba netinkamas kableliais atskirtų prievadų sąrašas
 masq_eipsec=Trūksta „IPsec“ parinkčių
+
 nat_title=Statinė NAT
 nat_desc=Statiniai tinklo adresų vertimo įrašai šioje lentelėje gali būti naudojami 1-1 korespondencijai tarp išorinio ugniasienės adreso ir mašinos, esančios už ugniasienės, RFC1918 adreso. Statinis NAT dažnai naudojamas norint prisijungti prie vidinio serverio iš jūsų tinklo ribų.
 nat_add=Pridėkite naują statinį NAT įrašą.
@@ -217,6 +226,7 @@ nat_local=Aktyvus ugniasienės sistemai?
 nat_eext=Neteisingas išorinis IP adresas
 nat_eint=Neteisingas vidinis IP adresas
 nat_evirt=Neteisingas virtualios sąsajos numeris
+
 proxyarp_title=Proxy ARP
 proxyarp_desc=Šis puslapis leidžia jums sukonfigūruoti sistemą taip, kad ji atsakytų į ARP užklausas dėl kitų IP adresų, kad ji galėtų persiųsti paketus tais adresais į savo tikrąsias vietas.
 proxyarp_add=Pridėkite naują tarpinio serverio ARP adresą.
@@ -233,6 +243,7 @@ proxyarp_err=Nepavyko išsaugoti tarpinio serverio ARP
 proxyarp_have=Kelias į prieglobą egzistuoja?
 proxyarp_eaddr=Trūksta arba netinkamas adresas ARP
 proxyarp_pers=Palikti maršrutą net sustabdžius ugniasienę?
+
 routestopped_title=Sustojus
 routestopped_desc=Pagal nutylėjimą, sustabdžius „Shorewall“, jis uždraus prieigą iš visų kompiuterių. Šis puslapis leidžia jums apibrėžti prieglobas ar tinklus, kurie vis tiek bus pasiekiami.
 routestopped_add=Pridėkite naują sustabdytą adresą.
@@ -248,6 +259,7 @@ routestopped_err=Nepavyko išsaugoti sustabdyto adreso
 routestopped_eaddr=Neįvestas adresas
 routestopped_all=Visi adresai
 routestopped_list=Nurodyti adresai ir tinklai ..
+
 tunnels_title=VPN tuneliai
 tunnels_desc=Šiame puslapyje pateikiami VPN tuneliai, kertantys jūsų ugniasienę, todėl juos turi leisti „Shorewall“ konfigūracija.
 tunnels_add=Pridėkite naują VPN tunelį.
@@ -278,6 +290,7 @@ tunnels_generic_l=Bendras, skirtas protokolui ..
 tunnels_gsel=Išvardytos zonos
 tunnels_eopenvpn=Neteisingas „OpenVPN“ tunelio prievado numeris
 tunnels_egeneric=Trūksta protokolo ar protokolo: bendrojo tunelio prievadas
+
 hosts_title=Zonos šeimininkai
 hosts_desc=Šiame puslapyje pateikiami pagrindiniai kompiuteriai ir tinklai, priklausantys tam tikroms zonoms. Paprastai jums nereikia daryti jokių pakeitimų šiame sąraše.
 hosts_add=Pridėkite naują zonos pagrindinį kompiuterį.
@@ -297,8 +310,10 @@ hosts_ip=Adresas arba tinklas $1
 hosts_mac=MAC adresas $1 
 hosts_ipset=IP nustatytas $1 
 hosts_any=Bet kuris šeimininkas
+
 edit_before=Prieš įvažiavimą $1 
 edit_after=Po įėjimo $1 
+
 blacklist_title=Juodojo sąrašo šeimininkai
 blacklist_desc=Šiame puslapyje pateikiami prieglobos ir paslaugos, kurios bus blokuojamos, jei srautas iš jų pateks į sąsają su nustatytu <b>juodu sąrašu</b>.
 blacklist_add=Pridėkite naują juodojo sąrašo pagrindinį kompiuterį.
@@ -321,6 +336,7 @@ blacklist_eproto=Trūksta arba netinkamas protokolas
 blacklist_eports=Neteisingas prievado numeris arba kableliais atskirtas prievadų sąrašas
 blacklist_eports2=Uostus galima nurodyti tik TCP ir UDP protokolams
 blacklist_return=juodojo sąrašo šeimininkai
+
 providers_title=Papildomi maršruto teikėjai
 providers_desc=Šiame puslapyje pateikiamos papildomos maršruto lentelės. Tai reikalinga, jei turite ryšius su daugiau nei vienu IPT arba keliomis jungtimis su tuo pačiu IPT arba naudojate „Squid“ kaip skaidrų tarpinį serverį pagrindiniame kompiuteryje, išskyrus užkardą.
 providers_add=Pridėkite naują maršruto teikėją.
@@ -353,6 +369,7 @@ providers_emark=Trūksta arba netinkamas teikėjo ženklo numeris
 providers_edup=Trūksta teikėjo kopijavimo
 providers_egateway=Trūksta arba netinkami šliuzai
 providers_return=maršruto teikėjų sąrašas
+
 route_rules_title=Maršruto sudarymo taisyklės
 route_rules_desc=Puslapis kontroliuoja, kuris srautas nukreipiamas į teikėjus, nurodytus puslapyje Papildomi maršruto teikėjai.
 route_rules_ip=IP adresas, tinklas ar sąsaja
@@ -378,17 +395,21 @@ route_rules_emark=Paketų ženklas turi būti skaičiaus arba numerio/kaukės fo
 route_rules_return=maršruto sudarymo taisyklių sąrašas
 route_rules_edit=Redaguoti maršruto sudarymo taisyklę
 route_rules_create=Sukurti maršruto taisyklę
+
 manual_desc=Ši forma gali būti naudojama rankiniu būdu taisant „Shorewall“ failą $1. Būkite atsargūs, nes pakeitimai nebus tikrinami.
 manual_reset=Anuliuoti
 manual_err=Nepavyko išsaugoti lentelės failo
 manual_efile=Netinkamas lentelės pavadinimas!
 manual_edata=Neįvestas lentelės failo turinys.
+
 acl_nochange=Ar galite pritaikyti, sustabdyti ir paleisti „Shorewall“ konfigūraciją?
 acl_files=Galimi „Shorewall“ stalai
 acl_all=Visi
 acl_sel=Pasirinkta žemiau ..
+
 delete_err=Nepavyko ištrinti eilučių
 delete_enone=Nepasirinkta nė viena eilutė
+
 opts_routeback=Priimti srautą atgal į pagrindinį kompiuterį
 opts_source=Leisti iš pagrindinio kompiuterio į bet kurią paskirties vietą
 opts_dest=Leisti priglobti iš bet kurio šaltinio
@@ -406,6 +427,7 @@ opts_proxyarp=Įgalinti tarpinį ARP
 opts_arp_filter=Atsakykite tik į ARP užklausas dėl sąsajos IP
 opts_detectnets=Taylor zona apima tik nukreiptus šeimininkus
 opts_upnp=Pakeiskite paketus per UPNP
+
 comment_add=Pridėti naują komentarą.
 comment_edit=Redaguoti komentarą
 comment_create=Sukurti komentarą
@@ -413,6 +435,7 @@ comment_header=Informacija apie lentelės komentarus
 comment_msg=Žinutė
 comment_err=Nepavyko išsaugoti komentaro
 comment_enone=Neįvestas pranešimas
+
 log_create_table=Pridėtas įrašas prie $1 lentelės
 log_modify_table=Modifikuotas įrašas $1 lentelėje
 log_delete_table=Ištrintas įrašas iš $1 lentelės
@@ -428,6 +451,7 @@ log_start=Paleista užkarda
 log_refresh=Atnaujinta užkarda
 log_restart=Iš naujo paleista ugniasienė
 log_clear=Išvalyta užkarda
+
 shorewall_conf_title=Pagrindinis konfigūracijos failas
 shorewall_conf_desc=Šis puslapis leidžia konfigūruoti globalius konfigūracijos kintamuosius. PASTABA: čia nerekomenduojama keisti kintamųjų tvarkos, jei norite išsaugoti santykinę komentarų vietą konfigūracijos faile.
 shorewall_conf_add=Pridėkite naują konfigūracijos kintamąjį.
@@ -441,6 +465,7 @@ shorewall_conf_create=Sukurti konfigūracijos kintamąjį
 shorewall_conf_header=Informacija apie konfigūracijos kintamąjį
 shorewall_conf_err=Nepavyko išsaugoti konfigūracijos kintamojo
 shorewall_conf_varname=Netinkamas kintamojo vardas (turi būti teisingas apvalkalo kintamojo vardas)
+
 params_title=Individualūs parametrai
 params_desc=Šis puslapis leidžia konfigūruoti pasirinktinius „Shorewall“ parametrus. PASTABA: čia nerekomenduojama pakeisti parametrų tvarkos, jei norite išsaugoti santykinę komentarų vietą konfigūracijos faile.
 params_add=Pridėkite naują pasirinktinį parametrą.

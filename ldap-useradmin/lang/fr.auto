@@ -19,10 +19,13 @@ index_samba=Samba?
 index_cyrus=IMAP?
 index_users=Utilisateurs LDAP
 index_groups=Groupes LDAP
+
 imap_econn=Impossible de se connecter au serveur IMAP $1 
 imap_elogin=Impossible de se connecter au serveur IMAP $1 en tant que $2 : $3 
 conn_eldap_host=Aucun fichier de configuration du client LDAP n'a été trouvé sur votre système, le serveur LDAP doit donc être défini sur la page Configuration du module
 conn_elogin=Aucun fichier de configuration client LDAP n'a été trouvé sur votre système, la connexion LDAP doit donc être définie sur la page Configuration du module
+conn_efile_open=Impossible d'ouvrir le fichier d'informations d'identification de liaison LDAP:
+
 uedit_cap=Capacités utilisateur
 uedit_samba=Connexion Samba?
 uedit_cyrus=Connexion au serveur IMAP?
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=Dernière mise à jour du mot de passe
 uedit_sambapwdcanchange=Le mot de passe peut changer
 uedit_sambabadpasswordcount=Nombre de mots de passe incorrect
 uedit_sambaacctflags=Indicateurs de compte
+
 usave_eadd=Impossible d'ajouter l'utilisateur à la base de données LDAP : $1 
 usave_emod=Impossible de modifier l'utilisateur dans la base de données LDAP : $1 
 usave_emoddn=Impossible de renommer l'utilisateur dans la base de données LDAP : $1 
@@ -66,26 +70,33 @@ usave_eattrdupu=L'utilisateur $1 utilise déjà $2 $3
 usave_eattrdupg=Le groupe $1 utilise déjà le $2 $3 
 usave_ereal=Nom réel manquant
 usave_equota=Quota IMAP manquant ou non valide
+
 search_err=La recherche de $1 sous $2 a échoué : $3 
+
 gedit_dn=DN LDAP du groupe
 gedit_return=détails du groupe
 gedit_cap=Capacités de groupe
 gedit_samba=Groupe de samba?
+
 gsave_egone=Le groupe n'existe plus!
 gsave_edelete=Impossible de supprimer le groupe de la base de données LDAP : $1 
 gsave_eadd=Échec de l'ajout du groupe à la base de données LDAP : $1 
 gsave_emod=Impossible de modifier le groupe dans la base de données LDAP : $1 
 gsave_emoddn=Impossible de renommer le groupe dans la base de données LDAP : $1 
+
 gdel_group=Suppression d'une entrée de groupe LDAP.
+
 udel_pass=Suppression de l'entrée utilisateur LDAP.
 udel_book=Suppression du carnet d'adresses ..
 udel_imap=Suppression du dossier IMAP ..
 udel_warnimap=La boîte aux lettres existante sera supprimée lors de la suppression du répertoire personnel!
 udel_failed=.. échoué!  : $1
+
 raw_title=Attributs LDAP
 raw_name=Nom d'attribut
 raw_value=Valeurs
 raw_for=Pour 1
+
 batch_samba=Créer un compte Samba pour les nouveaux utilisateurs?
 batch_imap=Créer un compte IMAP pour les nouveaux utilisateurs?
 batch_descafter3=Dans les lignes <b>créer</b> et <b>modifier</b>, vous pouvez éventuellement ajouter des champs supplémentaires contenant des attributs LDAP au format <i>nom</i> = <i>valeur</i>, à être affecté aux utilisateurs nouveaux ou modifiés.

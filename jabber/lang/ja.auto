@@ -17,6 +17,7 @@ index_restartmsg=このボタンをクリックして、Jabberサーバーを停
 index_comments=警告-Jabber構成ファイル $1にはコメントが含まれています。このモジュールを使用して構成の変更が行われた場合、コメントは削除されます。
 index_return=Jabberメニュー
 index_version=Jabberバージョン $1
+
 general_title=一般的なオプション
 general_header=グローバルJabberサーバーオプション
 general_host=サーバーのホスト名
@@ -32,6 +33,7 @@ general_eelogfmt=エラーログ形式がありません
 general_erlog=トラフィックログファイルが見つからないか無効です
 general_erlogfmt=トラフィックログ形式がありません
 general_epidfile=プロセスIDファイルが見つからないか無効です
+
 messages_title=メッセージ
 messages_header=クライアント用のJabberサーバーメッセージ
 messages_wsubject=ウェルカムメッセージの件名
@@ -44,6 +46,7 @@ messages_vcard2jud=vCardをJabberユーザーディレクトリに送信しま�
 messages_err=メッセージを保存できませんでした
 messages_evcard=無効なvCard XML： $1
 messages_etag=サーバーvCard XMLが&lt;vCard&gt;で始まっていません
+
 modules_title=Jabberモジュール
 modules_desc=以下にリストされているモジュールは、Jabberセッションマネージャーが受信したメッセージを処理するために使用されます。このリストを変更するのは、何をしているのかわかっている場合のみにしてください。
 modules_header=Jabberサーバーセッションマネージャーモジュール
@@ -52,6 +55,7 @@ modules_so=共有ライブラリ
 modules_err=Jabberモジュールを保存できませんでした
 modules_emod=「$1」は有効なモジュール名ではありません
 modules_eso=共有ライブラリ「$1」は存在しません
+
 karma_title=カルマ交通管制
 karma_header=トラフィックレート制御オプション
 karma_rate=過剰な接続処理
@@ -80,6 +84,7 @@ karma_epenalty=不足または無効なペナルティ期間
 karma_erestore=復元期間の欠落または無効
 karma_epoints=接続の欠落または無効な数
 karma_etime=ブロックする時間がないか無効です
+
 ips_title=IPアクセス制御
 ips_header=JabberサーバーのIPアクセス制御
 ips_allow=許可されたクライアントIP
@@ -89,10 +94,12 @@ ips_none=なし
 ips_sel=リストされたアドレス/ネットマスク ..
 ips_err=IPアクセス制御を保存できませんでした
 ips_eaddr=「$1」は有効なIPアドレスまたはIPアドレス/ネットマスクではありません
+
 file_title=構成ファイルの編集
 file_desc=以下のフォームを使用して、Jabber設定ファイルを直接編集します。これは、XML構成形式を理解している場合にのみ行う必要があります。
 file_header=Jabber設定ファイルを編集する
 file_err=構成ファイルを保存できませんでした
+
 admin_title=管理ユーザー
 admin_header=サーバー管理ユーザー
 admin_read=読み取りアクセス管理者
@@ -100,11 +107,13 @@ admin_write=書き込みアクセス管理者
 admin_reply=管理者メッセージへの自動返信？
 admin_rsubject=自動返信の件名
 admin_rbody=自動返信メッセージ
+
 filter_title=ユーザーフィルター
 filter_header=ユーザーフィルター許可
 filter_max=最大フィルタールール
 filter_conds=許可されるフィルター条件
 filter_acts=許可されたフィルターアクション
+
 restart_err=変更を適用できませんでした
 stop_err=Jabberを停止できませんでした
 stop_epid=Jabberプロセスが見つかりませんでした

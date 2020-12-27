@@ -9,6 +9,7 @@ index_disable=Seçilenleri Devre Dışı Bırak
 index_enable=Seçilenleri Etkinleştir
 index_enabled=Etkin mi?
 index_return=programların listesi
+
 edit_title1=MIME Türü Programı Oluştur
 edit_title2=MIME Türü Programını Düzenle
 edit_header=MIME türü işleyici programı ayrıntıları
@@ -22,18 +23,21 @@ edit_none=Yok (her zaman programı kullan)
 edit_term=Terminalde ekran çıkışı?
 edit_copious=Çok fazla çıktı üretir mi?
 edit_desc=MIME türü açıklaması
+
 save_err=MIME türü program kaydedilemedi
 save_etype=Eksik veya geçersiz MIME türü
 save_eprogram=Eksik işleyici programı
 save_eclash=Girilen MIME türü için etkin bir program zaten var
 save_etest=Eksik veya geçersiz test komutu
 save_edesc=Geçersiz MIME türü açıklaması
+
 delete_err=MIME türü programlar silinemedi
 disable_err=MIME türü programlar devre dışı bırakılamadı
 disable_eclash=$1 için devre dışı bırakılmış bir MIME türü programı zaten var
 enable_err=MIME türü programlar etkinleştirilemedi
 enable_eclash=$1 için etkin bir MIME türü programı zaten var
 delete_enone=Hiçbiri seçilmedi
+
 log_delete_mailcap=$1 için MIME türü programını sil
 log_create_mailcap=$1 için MIME türü programı oluşturuldu
 log_modify_mailcap=$1 için değiştirilmiş MIME türü programı

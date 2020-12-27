@@ -16,6 +16,7 @@ index_chain=Lanac $1
 index_action=Radnja
 index_desc=Stanje
 index_comm=Komentar
+index_no_comment=
 index_move=Pomicati
 index_none=Za ovaj lanac nisu definirana pravila.
 index_policy=Postavi zadanu radnju na:
@@ -88,6 +89,7 @@ index_ipset_size=Veličina
 index_ipvxmode=Promjena verzije IP protokola:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
 desc_p=protokol je $1 
 desc_p!=protokol nije $1 
 desc_s=izvor je $1 
@@ -114,6 +116,8 @@ desc_tcp-option=paket koristi TCP opciju $1
 desc_tcp-option!=paket ne koristi TCP opciju $1 
 desc_icmp-type=ICMP vrsta je $1 
 desc_icmp-type!=ICMP vrsta nije $1 
+desc_icmpv6-type=ICMP vrsta je $1 
+desc_icmpv6-type!=ICMP vrsta nije $1 
 desc_mac-source=ethernet adresa je $1 
 desc_mac-source!=ethernet adresa nije $1 
 desc_limit=stopa manja od $1 
@@ -146,10 +150,15 @@ desc_always=Stalno
 desc_args--match-set=$2 je sadržan u IP skupu $1 
 desc_src=izvor
 desc_dest=odredište
+
 redhat_einstalled=Nije pronađena nijedna radnja pokretanja <tt>iptables (6)</tt>, što ukazuje da paket IPtables nije instaliran na vašem sustavu
 redhat_eoutput=Došlo je do pogreške pri dobivanju statusa IPtables iz naredbe $1. To vjerojatno ukazuje da je vaš sustav konfiguriran za upotrebu IPchaina umjesto IPtablesa.
+
 gentoo_escript=Skripta pokretanja Gentoo IPtables $1 nije pronađena u vašem sustavu.
+
 eiptables=Nepoznati IPtables spremaju liniju datoteka : $1 
+eip6tables=Nepoznati ip6tables spremaju liniju datoteka : $1 
+
 edit_title1=Dodajte pravilo
 edit_title2=Uredi pravilo
 edit_title3=Pravilo klona
@@ -218,6 +227,7 @@ edit_physdevout=Fizičko sučelje odlazno
 edit_physdevisin=Paket dolazni na sučelje mosta
 edit_physdevisout=Paket odlazni na sučelje mosta
 edit_physdevisbridged=Paket se premošćuje
+
 save_err=Spremanje pravila nije uspjelo
 save_echain=Nedostaje ili je nevaljan lanac za pokretanje
 save_esource=Nedostaje ili nije važeća izvorna adresa ili mreža
@@ -262,23 +272,28 @@ save_estates=Nije odabrano nijedno stanje veze
 save_ecanjump=Nije vam dopušteno koristiti ovu akciju
 save_ephysdevin=Nedostaje ili je nevažeće fizičko sučelje dolazno
 save_ephysdevout=Nedostaje ili je nevažeće fizičko sučelje odlazno
+
 delete_title=Izbriši lanac
 delete_rusure=Jeste li sigurni da želite izbrisati lanac $1 ? $2 pravila unutar nje izbrisat će se.
 delete_ok=Izbriši sada
 delete_ecannot=Ne možete brisati lance
+
 clear_title=Bistri lanac
 clear_rusure=Jeste li sigurni da želite izbrisati sva $2 pravila iz lanca $1 ?
 clear_ecannot=Ne smijete čistiti lance
+
 new_err=Nije uspjelo stvaranje lanca
 new_ename=Nedostaje ili nevaljano ime lanca
 new_etaken=Lanac s ovim imenom već postoji
 new_ecannot=Ne smijete stvarati lance
+
 apply_err=Konfiguracija nije primijenjena
 apply_ecannot=Nije vam dopušteno primijeniti konfiguraciju
 apply_remote=Pogreška od $1 : $2 
 unapply_err=Konfiguracija nije vraćena
 unapply_ecannot=Ne možete poništiti konfiguraciju
 bootup_ecannot=Prilikom pokretanja ne smijete omogućiti ili onemogućiti vatrozid
+
 log_create_rule=Dodano je pravilo za lanac $1 u tablici $2 
 log_modify_rule=Izmijenjeno pravilo u lancu $1 u tablici $2 
 log_delete_rule=Izbrisano je pravilo u lancu $1 u tablici $2 
@@ -301,8 +316,10 @@ log_add_group=Dodani su poslužitelji klastera iz grupe $1
 log_delete_host=Uklonjen je poslužitelj klastera $1 
 log_delete_group=Uklonjeni su $1 poslužitelji klastera
 log_openports=Otvoreni otvori vatrozida $1 
+
 setup_eiface=Nije unešeno vanjsko mrežno sučelje
 setup_ecannot=Nije vam dopušteno postavljanje vatrozida
+
 acl_tables=Dopušteni IPtables
 acl_apply=Može li primijeniti konfiguraciju?
 acl_unapply=Ne možete primijeniti konfiguraciju?
@@ -314,9 +331,11 @@ acl_jall=svi
 acl_newchain=Mogu li stvoriti nove lance?
 acl_delchain=Mogu li izbrisati ili očistiti lance?
 acl_policy=Mogu li promijeniti zadanu politiku?
+
 etable=Nije vam dopušteno uređivanje ovog IPtable-a
 ejump=Nije vam dopušteno uređivanje ovog pravila
 ecluster=Nije vam dopušteno upravljati grupom vatrozida
+
 cluster_title=Poslužitelji vatrozida klastera
 cluster_none=U grupu vatrozida još nije dodan nijedan poslužitelj.
 cluster_host=Ime računala
@@ -327,6 +346,7 @@ cluster_gadd=Dodajte poslužitelje u grupi
 cluster_need=Prije nego što se njima ovdje može upravljati, morate dodati servere s prijavom i zaporkom u modulu Webmin Servers Index.
 cluster_return=poslužitelji klastera
 cluster_delete=Ukloni odabrano
+
 add_title=Dodajte poslužitelje
 add_msg=Dodavanje $1.
 add_gmsg=Dodavanje poslužitelja u grupu $1 ..
@@ -336,13 +356,16 @@ add_echeck=Server $1 nema Linux zaštitni zid
 add_emissing=Poslužitelju $1 nedostaje naredba vatrozida $2 
 add_ok=Dodano je $1, s $2 pravilima aktivnog vatrozida.
 add_enone=Nema odabranih poslužitelja!
+
 policy_ecannot=Nije vam dopušteno mijenjati zadana pravila za ovaj lanac
+
 move_title=Pravila premještanja
 move_count=Izabrana pravila
 move_chain=Trenutna promjena
 move_dest=Odredišni lanac
 move_ok=Pomakni se sada
 move_header=Opcije premještanja pravila
+
 rename_title=Preimenuj lanac
 rename_count=Pravila u lancu
 rename_chain=Trenutni naziv
@@ -352,6 +375,3 @@ rename_header=Opcije lančanog preimenovanja
 rename_adjust=Izmijeniti druga pravila koja skaču na ovaj lanac?
 rename_none=nijedan
 rename_ecannot=Ne možete preimenovati lance
-desc_icmpv6-type=ICMP vrsta je $1 
-desc_icmpv6-type!=ICMP vrsta nije $1 
-eip6tables=Nepoznati ip6tables spremaju liniju datoteka : $1 

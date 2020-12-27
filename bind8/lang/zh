@@ -36,6 +36,7 @@ index_addhint=创建新的根区域
 index_version=BIND版本$1
 index_sapply=应用更改至：
 index_sapplymsg=点击此按钮已重新启动已选择的主机中正在运行的BIND服务器。这将会使您在该服务器上已创建的从区域变为活动区域。
+
 master_title=编辑主区域
 master_ecannot=您没有编辑本区域的权限
 master_manual=编辑记录文件
@@ -97,12 +98,14 @@ master_emip=无效的主IP '$1'
 master_eview=你未被允许在那个视图上创建区域
 master_eserial=序列号必须是一串数字
 master_apply=应用更改
+
 delete_title=删除区域
 delete_mesg=您确定要删除区域$1 ？ 所有的记录和区域文件都会被删除。
 delete_mesg2=您确定要删除根区域？ 它被删除后您的DNS服务器也许再不能在internet查找地址了。
 delete_rev=是否删除其它区域中的逆向记录 ？
 delete_fwd=删除其它区域中的正向记录？
 delete_ezone=没有在从服务器上找到区域
+
 mcreate_title=创建主区域
 mcreate_ecannot=您不能创建主区域
 mcreate_opts=新建主区域选项
@@ -114,6 +117,7 @@ mcreate_view=在视图中创建
 mcreate_file=记录文件
 mcreate_auto=自动
 mcreate_err=无法创建主区域
+
 slave_title=编辑从区域
 stub_title=编辑短区域
 slave_ecannot=您没有编辑该区域的权限
@@ -137,6 +141,7 @@ slave_efile2='$1'不是允许的记录文件
 slave_mins=分钟
 slave_master_port=端口
 slave_convert=转换至主区域
+
 screate_title1=创建从区域
 screate_title2=创建短区域
 screate_ecannot1=您没有创建从区域的权限
@@ -149,6 +154,7 @@ screate_rev=逆向解析 （地址至名称）
 screate_dom=区域名 / 网络
 screate_err1=无法创建从区域
 screate_err2=无法创建附带区域
+
 recs_ecannot=您没有编辑本区域中记录的权限
 recs_title=$1 个记录
 recs_header=在 $1 中
@@ -159,6 +165,7 @@ recs_comment=注释
 recs_return=记录类型
 recs_type=类型
 recs_vals=值
+
 edit_title=编辑 $1
 edit_header=在 $1 中
 edit_edit=编辑 $1 记录
@@ -195,6 +202,7 @@ edit_elabel='$1' 中的一个标签太长
 edit_eloc=未输入经度和纬度
 edit_eweight='$1' 不是有效的服务器重要性值
 edit_eport='$1' 不是有效的端口
+
 edit_etarget='$1'  不是有效的服务器名称或地址
 edit_return=记录
 edit_ecname1=您无法创建与现有的记录同名的别名记录。
@@ -209,14 +217,18 @@ edit_ekey=缺少64－位加密键值数据或数据无效
 edit_dtitle=删除记录
 edit_rusure=你确定要从域 $2 中删除记录 $1 以及所有可能匹配的正向记录和反向记录吗？
 edit_dok=是的，删除
+
 text_title=编辑记录文件
 text_undo=复原
 text_ecannot=您没有编辑记录文件的权限
+
 restart_ecannot=您没有重新启动 BIND的权限
 restart_endc=NDC命令失败：$1
 restart_ecmd=重启动命令失败：$1
+
 start_ecannot=您没有启动BIND的权限
 start_error=启动 BIND失败：$1
+
 fwd_title=编辑正向区域
 fwd_ecannot=您没有编辑该区域的权限
 fwd_opts=Zone 选项
@@ -224,6 +236,7 @@ fwd_masters=主服务器
 fwd_forward=是否试用其他服务器？
 fwd_check=是否检查名称？
 fwd_err=无法保存选项
+
 fcreate_title=创建正向区域
 fcreate_ecannot=您没有创建正向区域的权限
 fcreate_opts=新建正向区域选项
@@ -233,6 +246,7 @@ fcreate_rev=逆向（地址至名称）
 fcreate_dom=域名/网络
 fcreate_masters=主服务器
 fcreate_err=无法创建正向区域
+
 create_enet='$1'不是有效的网络
 create_edom='$1'不是有效的域名
 create_edom2='$1'必须是域而不是网络
@@ -242,7 +256,9 @@ create_efile3=无法创建'$1' ： $2
 create_efile4=文件'$1'已存在
 create_emaster='$1'不是有效的主服务器地址
 create_enone=您至少需输入一个主服务器
+
 boot_err=下载失败
+
 type_A=地址
 type_AAAA=IPv6 地址
 type_NS=命名服务器
@@ -257,6 +273,7 @@ type_LOC=位置
 type_SRV=服务地址
 type_ALL=所有记录类型
 type_KEY=公钥
+
 edit_A=地址
 edit_AAAA=IPv6 地址
 edit_NS=命名服务器
@@ -270,6 +287,7 @@ edit_PTR=逆向地址
 edit_LOC=位置
 edit_SRV=服务地址
 edit_KEY=公钥
+
 recs_A=地址
 recs_AAAA=IPv6 地址
 recs_NS=命名服务器
@@ -284,6 +302,7 @@ recs_LOC=位置
 recs_SRV=服务地址
 recs_ALL=所有
 recs_KEY=公钥
+
 value_A1=地址
 value_NS1=命名服务器
 value_CNAME1=真实名称
@@ -307,6 +326,7 @@ value_KEY1=标志
 value_KEY2=协议
 value_KEY3=算法
 value_KEY4=键值
+
 warn=警告
 fail=失败
 ignore=忽略
@@ -348,6 +368,7 @@ acl_vall=所有视图
 acl_vsel=选择的视图…
 acl_vnsel=所有，除了选择的…
 acl_inview=视图&lt;$1&gt;中的区域
+
 servers_title=其它 DNS 服务器
 servers_ip=IP 地址
 servers_bogus=忽略假服务器？
@@ -359,6 +380,7 @@ servers_keys=使用DNS键
 servers_err=无法保存其他DNS服务器
 servers_eip='$1' 不是一个有效的 IP 地址
 servers_etrans='$1' 不是一个有效的最大传输量
+
 logging_title=日志和错误
 logging_ecannot=您没有配置日志的权限
 logging_header=全部日志和错误选项
@@ -390,12 +412,14 @@ logging_ename='$1' 不是一个有效的通道名
 logging_efile=未输入日志文件名
 logging_ever='$1' 不是有效的版本号
 logging_esize='$1' 不是有效的记录大小
+
 acls_title=访问控制列表
 acls_ecannot=您没有编辑全局访问控制表的权限
 acls_name=访问控制表名称
 acls_values=匹配地址、网络及访问控制表
 acls_err=保存控制表失败
 acls_ename='$1' 不是有效的访问控制表名称
+
 files_title=文件和目录
 files_ecannot=您没有配置文件的权限
 files_header=全局文件和目录选项
@@ -405,6 +429,7 @@ files_pid=进程 ID 文件
 files_xfer=路径到区域的传输程序
 files_err=无法保存文件和目录选项
 files_efile=未输入或错误的文件名
+
 forwarding_title=转发和传输
 forwarding_ecannot=您没有编辑转发和传输选项的权限
 forwarding_header=全域转发和区域传输选项
@@ -419,6 +444,7 @@ forwarding_err=无法保存转发和传输选项
 forwarding_emins=未输入或无效的最大传输时间
 forwarding_etrans=未输入或无效的最大并发传输数
 forwarding_minutes=分钟
+
 net_title=地址和拓扑
 net_ecannot=您没有编辑地址和拓扑选项的权限
 net_header=全域地址和拓扑选项
@@ -432,10 +458,12 @@ net_topol=命名服务器选择拓扑
 net_err=无法保存地址和拓扑选项
 net_eport='$1'不是一个有效的端口号
 net_etopology=未输入拓扑地址
+
 controls_title=控制界面选项
 controls_ecannot=您没有编辑控制选项的权限
 controls_header=控制选项
 controls_err=保存接口选项失败
+
 controls_inet=Internet端口访问
 controls_unix=Unix FIFO访问
 controls_port=端口
@@ -449,6 +477,7 @@ controls_efile=缺少或无效的FIFO文件名
 controls_eperms=缺少或无效的FIFO许可
 controls_eowner=缺少或无效的FIFO所有者UID
 controls_egroup=缺少或无效的FIFO所有者GID
+
 keys_title=DNS 键
 keys_id=键ID
 keys_alg=算法
@@ -457,6 +486,7 @@ keys_ecannot=你未被允许编辑DNS键
 keys_err=保存DNS键失败
 keys_ekey='$1'不是有效的键ID
 keys_esecret=缺少或无效的64－位加密键 $1
+
 misc_title=杂类选项
 misc_ecannot=您没有编辑杂类选项的权限
 misc_header=杂类全局选项
@@ -476,6 +506,7 @@ misc_esize='$1' 不是一个有效的尺寸
 misc_efiles='$1' 不是一个有效的最多打开文件数字
 misc_emins='$1' 不是一个有效的分钟数
 misc_mins=分钟
+
 zonedef_title=默认区域
 zonedef_msg=新主区域的默认值
 zonedef_err=无法保存区域默认值
@@ -488,17 +519,22 @@ zonedef_cslave=是否检查从区域中的名称？
 zonedef_cresponse=是否检查回应中的名称？
 zonedef_notify=是否将更改通知从区域？
 zonedef_email=默认的邮件地址
+
 find_title=查找区域
 find_match=与$1匹配的区域…
 find_none=没找到区域。
+
 efirst=$2 中第 $1 行的第一条指令错误
+
 findfree_title=查找可用 IP
+
 findfree_desc=查找可用 IP
 findfree_nofind=您没有搜索可用 Ip的权限
 findfree_header=在 $1 中
 findfree_sopt=搜索选项
 findfree_cf=是否将 <em>freeXXX</em> 主机名看作可用可用IP？
 findfree_search=搜索
+
 log_servers=已改变的其它 DNS 服务器
 log_logging=已改变的日志和错误
 log_acls=已改变的访问控制列表
@@ -532,11 +568,14 @@ log_modify_record=在 $3 中更新记录 $2的$1
 log_boot=已创建的主配置文件
 log_move=已移动的区域$1
 log_review=已改变的$1的视图选项
+
 convert_err=无法转换区域
 convert_efile=在将从区域可以转换为主区域之前，必须指定记录文件。
+
 whois_title=WHOIS消息
 whois_header=从命令$1输出…
 whois_ecannot=您未被允许查找WHOIS信息
+
 view_title=编辑客户视图
 view_opts=客户视图详细信息
 view_name=视图名称
@@ -544,6 +583,7 @@ view_class=DNS记录类
 view_match=将本视图应用至客户
 view_recursion=是否为客户进行全面的、递归式的查找？
 view_ecannot=您未被允许编辑此视图
+
 vcreate_title=创建客户视图
 vcreate_match_all=所有客户
 vcreate_match_sel=已选择地址、网络和访问控制表
@@ -552,10 +592,12 @@ vcreate_ename=未输入或无效的视图名称
 vcreate_etaken=已为视图名称命名
 vcreate_eclass=未输入或无效的类名
 vcreate_ecannot=您未被允许创建视图
+
 hint_title=编辑根区域
 hint_desc=根区域被您的DNS服务器用来联络Internet上的根区域以使其可以解析不由您的DSN服务器处理的名称或地址，比如 <tt>。com</tt> 或 <tt>。net。au</tt>。您不应该删除它，除非您的DNS服务器是用于内部网或你正转发所有查询到另一台服务器。
 hint_move=移至视图：
 hint_ecannot=您无权编辑本根区域
+
 hcreate_title=创建根区域
 hcreate_desc=根区域被您的DNS服务器用来联络Internet上的根区域以使其可以解析不由您的DSN服务器处理的名称或地址，比如 <tt>。com</tt> 或 <tt>。net。au</tt>。如果您使用多视图，你可能需要在每一个视图中都有一个根区域以让所有客户都能正确解析Internet域名。
 hcreate_file=将根服务器保存至文件
@@ -567,6 +609,7 @@ hcreate_efile='$1'不是允许的根文件
 hcreate_efile2=未输入或无效的根文件
 mcreate_erecs=无效的现有根区域文件
 hcreate_err=无法创建根区域
+
 vdelete_title=删除视图
 vdelete_mesg=您确定要删除本客户视图$1？根据您的选择，本视图中所有的区域或者会与他们的区域文件一起被删除，或者会被移至另外的视图中。
 vdelete_mesg2=您确定要删除该客户视图$1吗？
@@ -574,6 +617,7 @@ vdelete_newview=本视图中的区域
 vdelete_root=从视图中移走
 vdelete_delete=全部删除
 vdelete_move=移至视图
+
 gen_title=记录生成器
 gen_desc=在本页面上，您可以定义生成器，每个生成器将会使用增加计数器在本区域中创建多个记录。在将逆向区域委派至另一台服务器时，本功能将非常有用。
 gen_range=范围

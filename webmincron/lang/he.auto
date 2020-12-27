@@ -15,5 +15,6 @@ edit_special_daily=מדי יום (בחצות)
 edit_special_weekly=שבועי (ביום ראשון)
 edit_special_monthly=חודשי (ב -1)
 edit_special_yearly=שנתי (ב -1 בינואר)
+
 log_success=רץ בהצלחה <tt>$2</tt> ב- <tt>$1</tt>
 log_failure=ההפעלה של <tt>$2</tt> נכשלה ב- <tt>$1</tt> : $3 

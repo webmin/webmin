@@ -3,8 +3,10 @@ index_clink=Pot ser que no estigui instal·lat, o bé que la <a href='$1'>config
 index_return=a l'índex de mòduls
 index_atboot=Inicia en engegar
 index_atbootdesc=Canvia aquesta opció per controlar si el client iSCSI s'inicia en engegar el sistema o no. Això és necessari per tal que els sistemes de fitxers muntats a partir de servidors iSCSI es muntin automàticament.
+
 check_econfig=No s'ha trobat al sistema el fitxer $1 de configuració del client iSCSI.
 check_eiscsiadm=No s'ha trobat al sistema el programa $1 d'administració del client iSCSI.
+
 auth_title=Opcions d'Autenticació
 auth_header=Autenticació del client i el servidor iSCSI
 auth_name=Nom de l'iniciador del sistema local
@@ -29,6 +31,7 @@ auth_edpassword=Hi falta la contrasenya de descoberta del servidor
 auth_edusername_in=Hi falta l'usuari de descoberta del client
 auth_edpassword_in=Hi falta la contrasenya de descoberta del client
 auth_egen=No s'ha pogut generar un nom nou!
+
 timeout_title=Temps d'espera iSCSI
 timeout_header=Opcions de temps d'espera del client iSCSI
 timeout_timeout=Temps d'espera abans de cancel·lar les ordres SCSI
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=Hi falta el temps d'espera fent <tt>ping</tt> abans de
 timeout_eabort_timeout=Hi falta el temps d'espera d'interrupció de resposta abans de cancel·lar o bé no és numèric
 timeout_elu_reset_timeout=Hi falta el temps d'espera de la resposta de la unitat lògica abans de cancel·lar o bé no és numèric
 timeout_etgt_reset_timeout=Hi falta el temps d'espera de la resposta de l'objectiu abans de cancel·lar o bé no és numèric
+
 iscsi_title=Opcions iSCSI
 iscsi_header=Altres opcions iSCSI
 iscsi_startup=Connecta les sessions en engegar
@@ -62,6 +66,7 @@ iscsi_err=No s'han pogut desar les opcions iSCSI
 iscsi_eretry=Hi falta el nombre de reintents d'entrada o bé no és numèric
 iscsi_ecmds=Hi falta el nombre màxim d'ordres en cua per sessió o bé no és numèric
 iscsi_equeue=Hi falta el nombre màxim d'ordres en cua per dispositiu o bé no és numèric
+
 ifaces_title=Interfícies iSCSI
 ifaces_elist=No s'han pogut llistar les interfícies: $1
 ifaces_name=Nom de la interfície
@@ -78,11 +83,13 @@ ifaces_hwaddress=Adreça MAC
 ifaces_ifacename=Interfície origen
 ifaces_ipaddressdef=Automàtic
 ifaces_notset=Automàtic
+
 iadd_err=No s'ha pogut afegir la interfície
 iadd_eclash=Ja existeix una interfície anomenada $1
 iadd_eipaddress=Hi falta l'adreça IP origen o bé és invàlida
 iadd_ehwaddress=Hi falta l'adreça MAC o bé és invàlida
 iadd_ename=Hi falta el nom de la interfície o bé conté caràcters invàlids
+
 difaces_err=No s'han pogut eliminar les interfícies
 difaces_enone=No n'hi ha cap de seleccionada
 difaces_edelete=L'eliminació de la interfície $1 ha fallat: $2
@@ -93,6 +100,7 @@ difaces_confirm=Elimina les Interfícies
 difaces_target=Objectiu iSCSI
 difaces_ip=Servidor iSCSI
 difaces_users=Hi ha alguna connexió activa que està utilitzant aquestes interfícies, i deixarà d'estar operativa quan s'eliminin:
+
 conns_title=Connexions iSCSI
 conns_elist=No s'han pogut llistar les connexions: $1
 conns_ip=IP del servidor
@@ -113,6 +121,7 @@ conns_return=a la llista de connexions
 conns_iface=Interfície iSCSI
 conns_ifacedef=Tria-la automàticament
 conns_ifaceerr=No s'han pogut obtenir les interfícies: $1
+
 add_title=Addició de Connexió iSCSI
 add_err=No s'ha pogut afegir la connexió iSCSI
 add_ehost=Hi falta el nom de host o bé no es pot resoldre
@@ -129,6 +138,7 @@ add_on=$1 a $2
 add_auth=Entrada al servidor
 add_auth1=Utilitza el mètode d'autenticació per defecte
 add_auth0=Entra com a $2 amb contrasenya $3 utilitzant el mètode $1
+
 dconns_err=No s'han pogut desconnectar les connexions
 dconns_enone=No n'hi ha cap de seleccionada
 dconns_edelete=L'eliminació de l'objectiu $2 del host $1 ha fallat: $3
@@ -142,6 +152,7 @@ dconns_use=Utilitzada per
 dconns_size=Mida de la partició
 dconns_confirm=Elimina les Connexions
 dconns_unused=No utilitzada
+
 vconn_title=Connexió iSCSI
 vconn_egone=La connexió seleccionada ja no existeix!
 vconn_header=Detalls de la connexió iSCSI
@@ -160,8 +171,10 @@ vconn_device3=Nom de dispositiu constant
 vconn_delete=Desconnecta la Connexió
 vconn_users=Usuaris actual
 vconn_size=Mida del disc
+
 atboot_err=No s'ha pogut activar en engegar el sistema
 atboot_einit=No existeix cap acció d'engegada anomenada $1
+
 log_auth=S'han desat les opcions d'autenticació
 log_timeout=S'han desat les opcions de temps d'espera
 log_iscsi=S'han desat les opcions iSCSI

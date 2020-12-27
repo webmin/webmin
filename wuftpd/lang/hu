@@ -8,6 +8,7 @@ index_start=Szerver indítása
 index_startmsg=Kattintson erre a gombra, hogy az FTP szerver az aktuális konfigurációval induljon. You can also configure the szerver to be started automatically when needed using the <a href='$1'>Internet Services</a> module.
 index_startmsg2=Kattintson erre a gombra to start the FTP szerver with the current configuration. You can also configure the szerver to be started automatically when needed using inetd or some equivalent program.
 index_return=FTP szerver beállítása
+
 class_title=Felhasználók és Osztályok
 class_header=Felhasználói osztályok és felhasználói beállítások
 class_class=Felhasználói osztályok
@@ -30,6 +31,7 @@ class_err=Nem lehet menteni a felhasználói osztályt
 class_eclass='$1' nem valós osztálynév
 class_etypes=Nincs típus kiválasztva a '$1' osztályhoz
 class_eaddrs=Nincs cím megadva a '$1' osztályhoz
+
 message_title=Üzenetek és Címfeliratok
 message_header=Üzenetek, Címfeliratok és README file-ok
 message_message=Üzenet file-ok
@@ -58,6 +60,7 @@ message_eclass=Class '$1' does not exist
 message_ebanner='$1' nem valós belépő címfelirat file
 message_ehostname=Hibás vagy érvénytelen hosztnév
 message_eemail=Hibás vagy érvénytelen email cím
+
 acl_title=Limit és hozzáférési szabályozás
 acl_header=Limit és hozzáférési szabályozás beállítása
 acl_deny=Tiltott hozzáférés
@@ -104,6 +107,7 @@ acl_elmsg='$1' nem valós hibaüzenet file
 acl_efbcount='$1' nem valós száma a file-oknak vagy byte -oknak
 acl_elimit='$1' nem valós időlimit
 acl_efails='$1' nem valós érvénytelen belépési szám
+
 net_title=Hálózat
 net_header=Hálózati beállítások
 net_tcp=TCP ablak mérete
@@ -121,6 +125,7 @@ net_eip='$1' nem valós IP cím
 net_enet='$1' nem valós hálózati cím
 net_ecidr='$1' nem valós háklózati bit szám
 net_eport='$1' nem valós port number
+
 log_title=Naplózás
 log_header=Naplózási beállítások
 log_commands=Naplózzon minden parancsot erről
@@ -137,6 +142,7 @@ log_to=Naplózza az átvitelt erről
 log_syslog=Rendszer naplózás
 log_xferlog=XFER naplózás file-ba
 log_err=Nem lehet menteni a naplózási beállításokat
+
 alias_title=Álnevek és útvonalak
 alias_header=Álnevek és útvonalak beállításai
 alias_alias=CD könyvtár álneve
@@ -147,6 +153,7 @@ alias_err=Nem lehet menteni az álnevek és útvonalakat
 alias_efrom='$1' nem valós álnáv név
 alias_eto='$1' nem valós álnév könyvtár
 alias_ecdpath='$1' nem valós CD keresési könyvtár
+
 anon_title=Névtelen FTP
 anon_eftp=Figyelem  - az Ön rendszere nem rendelkezik <tt>ftp</tt> felhasználóval, és ezért lehetséges, hogy nem lehet beállítani névtelen FTP bejelentkezést.
 anon_header=Névtelen FTP beállítások
@@ -169,6 +176,7 @@ anon_uids=A Unix felhasználóknak
 anon_err=Nem lehet menteni a névtelen FTP beállításait
 anon_edir='$1' nem valós könyvtár
 anon_egroup='$1' nem valós csoport
+
 perm_title=Jogosultság
 perm_header=Jogosultság beállítása
 perm_perms=Parancs korlátozás
@@ -190,7 +198,9 @@ perm_err=Nem lehet menteni a jogosultságot
 perm_echar='$1' nem valós karakter a szabályos kiterjesztésben
 perm_etypes=Nincs felhasználói típus kiválasztva
 perm_emesg='$1' nem valós hibaüzenet file
+
 host_title=Hoszt hozzáférési szabályozás
+
 misc_title=Vegyes beállítások
 misc_header=Vegyes beállítások
 misc_lslong=Hosszú listázási parancs
@@ -211,6 +221,7 @@ misc_elsplain=Hibás sima listázási parancs
 misc_eshutdown=Hibás leállítási értesítő file
 misc_enice='$1' nem valós nice szint
 misc_eumask='$1' nem valós umask
+
 log_class=Módosult felhasználók és osztályok
 log_message=Módosult üzenetek és címfelirat
 log_acl=Módosult limitálási és hozzáférési vezérlés

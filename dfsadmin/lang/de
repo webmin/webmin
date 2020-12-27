@@ -8,6 +8,7 @@ index_none=Keine Verzeichnisse sind derzeit auf diesem System exportiert.
 index_apply=Wende Änderung an
 index_applydesc=Klicken Sie auf diese Schaltfläche, um die aktuelle Dateifreigabe-Konfiguration anzuwenden. Das stellt alle oben aufgelisteten Verzeichnisse mit den angegebenen Optionen zur Verfügung.
 index_return=Liste an Freigaben
+
 edit_title1=Editiere Freigabe
 edit_title2=Erstelle Freigabe
 edit_header1=Freigabendetails
@@ -30,6 +31,7 @@ edit_anon1=Kein Zugriff
 edit_aclok=Erlaube ACLs?
 edit_public=WebNFS Freigabe?
 edit_index=WebNFS Indexdatei
+
 save_err=Fehlgeschlagen Freigabe zu speichern
 save_edirectory='$1' ist kein gültiger Verzeichnisname
 save_edirectory2=Das Verzeichnis '$1' existiert nicht
@@ -38,13 +40,18 @@ save_ero=Sie haben keine Hosts gelistet, um Nur-Lese freizugeben mit
 save_eroot=Sie haben keine Hosts aufgelistet, um root freizugegeben mit
 save_ealready=Das Verzeichnis '$1' wird bereits freigegeben
 save_ehost=Der Host '$1' existiert nicht
+
 log_modify=NFS-Freigabe $1 geändert
 log_rename=NFS-Freigabe $1 zu $2 umbenannt
 log_create=NFS-Freigabe $1 erstellt
 log_delete=NFS-Freigabe $1 gelöscht
 log_apply=Änderungen angewandt
+
 acl_view=Kann NFS Freigaben editieren?
+
 ecannot=Es ist Ihnen nicht erlaubt NFS Freigaben zu verwalten
+
 delete_err=Fehlgeschlagen Freigaben zu löschen
 delete_enone=Keine ausgewählt
+
 restart_err=Fehlgeschlagen Änderungen anzuwenden

@@ -1,6 +1,7 @@
 index_refsel=Obnovit vybrané
 index_tmpls=Upravit e-mailové šablony
 index_tmplsdesc=Zobrazení a úpravy šablon používaných k vytváření e-mailových zpráv odeslaných, když sledované služby klesnou.
+
 type_sslcert=SSL certifikát
 type_fail2ban=Server Fail2Ban
 type_du=Velikost adresáře
@@ -8,6 +9,8 @@ type_dovecot=Server Dovecot IMAP/POP3
 type_init=Bootup Action
 type_slapd=LDAP Server
 type_ldap=Připojení LDAP
+
+mon_virtualmin=Varování! Tento monitor je přidružen k doméně Virtualmin $1, a proto by zde neměl být upravován ani mazán.
 mon_remotes2=Běží na hostitelích a skupinách
 mon_ontimeout=Pokud monitor vyprší, spusťte příkaz
 mon_eremote2=Webmin server $1 nelze kontaktovat : $2 
@@ -23,15 +26,18 @@ mon_changes0=Zobrazit každý typ události
 mon_changes1=Zobrazit pouze změny
 mon_all=Zobrazit všechny historické události
 mon_nochanges=V posledních historických událostech $1 nedošlo k žádným změnám stavu.
+
 sched_esmsname=Chybějící nebo neplatně vypadající číslo SMS
 sched_subject=Řádek předmětu pro zprávy SMS
 sched_subject0=Žádné (upozornění je v těle)
 sched_subject1=Varovný text (nechte tělo prázdné)
 sched_subject2=Vlastní text
 sched_esubject=Chybí předmět zprávy SMS
+
 proc_asuser=Běží jako uživatel
 proc_anyuser=Každý uživatel
 proc_easuser=Uživatel pro proces spustit jako neexistuje
+
 exec_mode=Ukončete kontrolu stavu
 exec_mode0=Selhání sledování, pokud příkaz selže
 exec_mode1=Selhání sledování, pokud je příkaz úspěšný
@@ -41,6 +47,7 @@ exec_noregexp=Nekontroluj
 exec_remode=Regexp kontrola
 exec_remode0=Selhání, pokud se výstup neshoduje
 exec_remode1=Selhání, pokud výstup neodpovídá
+
 file_elarge=Příliš velké soubory : $1 
 file_esmall=Soubory příliš malé : $1 
 file_eowner=Soubory se špatným vlastníkem : $1 
@@ -50,36 +57,46 @@ file_group=Skupina souborů musí být
 file_nocheck=Cokoliv
 file_perms=Osmová oprávnění musí být
 file_eperm=Soubory s nesprávnými oprávněními : $1 
+
 space_mode0=Absolutní velikost
 space_mode1=Procento z celkového počtu
 space_epc=Chybějící nebo neplatné procento volného místa
 space_merr=Pouze $1 volného místa
 space_perr=Pouze $1% volného
 space_dferr=Velikost souborového systému se nepodařilo získat
+
 log_tmpl_create=Vytvořená šablona e-mailu $1 
 log_tmpl_modify=Upravená šablona e-mailu $1 
 log_tmpl_delete=Smazaná e-mailová šablona $1 
 log_tmpl_deletes=Smazané e-mailové šablony $1 
 log_refresh=Aktualizované stavy monitoru
+
 memory_freeswap=$1 virtuální paměti zdarma
 memory_freelow=Pouze $1 skutečné paměti zdarma
 memory_freelowswap=Zdarma pouze $1 virtuální paměti
 memory_minswap=Minimální volná virtuální paměť
 memory_eminswap=Chybějící nebo neplatné množství volné virtuální paměti
+
 init_action=Akce ke kontrole
 init_eaction=Nebyla vybrána žádná akce
+
 refresh_doing2=Aktualizace stavu vybraných monitorů $1.
+
 monitor_email_stat=Aktuální stav: $1 
+
 deletes_enone=Nebyly vybrány žádné monitory
+
 ftp_tls=Použít šifrování TLS?
 ftp_etls=TLS nelze povolit, pokud není nainstalován modul $1 Perl
 ftp_econn=FTP připojení TLS se nezdařilo
 ftp_econn2=Připojení FTP k TLS se nezdařilo : $1 
 ftp_elogin=Přihlášení TLS FTP se nezdařilo : $1 
 ftp_etlsfile=Stahování TLS FTP se nezdařilo : $1 
+
 rssh_haspass=Heslo
 rssh_port=Port serveru SSH
 rssh_eport=Chybějící nebo neplatné číslo portu
+
 tmpls_title=E-mailové šablony
 tmpls_ecannot=Není dovoleno upravovat e-mailové šablony
 tmpls_none=Zatím nebyly definovány žádné e-mailové šablony. Všechna upozornění budou odeslána pomocí výchozích zpráv Webmin.
@@ -88,6 +105,7 @@ tmpls_email=E-mailová zpráva
 tmpls_add=Přidejte novou e-mailovou šablonu.
 tmpls_return=seznam šablon
 tmpls_delete=Odstranit vybrané šablony
+
 tmpl_title1=Vytvořit e-mailovou šablonu
 tmpl_title2=Upravit šablonu e-mailu
 tmpl_header=Upozornit e-mailové šablony zprávy
@@ -112,9 +130,11 @@ tmpl_esms=Chybí SMS zpráva
 tmpl_esnmp=Chybí zpráva SNMP
 tmpl_err2=Smazání e-mailové šablony se nezdařilo
 tmpl_eusers=Používají ho následující monitory : $1 
+
 dtmpls_err=Šablony se nepodařilo smazat
 dtmpls_enone=Nebyl vybrán žádný
 dtmpls_eusers=$1 je používán následujícími monitory : $2 
+
 sslcert_src=Umístění certifikátu
 sslcert_url=Z adresy HTTPS
 sslcert_file=Ze souboru na serveru
@@ -132,18 +152,21 @@ sslcert_eend=Neplatí po $1
 sslcert_left=Up - $1 dní do vypršení platnosti
 sslcert_ematch=Název hostitele $1 neodpovídá certifikátu $2 
 sslcert_emismatch=Kontrola názvu hostitele certifikátu lze použít pouze při kontrole adresy URL
+
 du_dir=Adresář ke sledování
 du_max=Maximální velikost
 du_edir=Chybí nebo není absolutní cesta k adresáři
 du_emax=Chybějící nebo nečíselná maximální velikost
 du_over=Velikost je $1 
 du_under=Velikost je pouze $1 
+
 ldap_edriver=Modul Perl $1 není nainstalován
 ldap_host=Název hostitele serveru LDAP
 ldap_port=Port serveru LDAP
 ldap_ssl=Používáte připojení SSL?
 ldap_user=Přihlášení k serveru LDAP
 ldap_pass=Heslo serveru LDAP
+
 info_desc=Sledování systému
 info_last=Aktuální stav
 info_title=Stav systému a serveru

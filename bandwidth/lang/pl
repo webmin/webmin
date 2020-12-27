@@ -57,20 +57,27 @@ index_rotate=Uaktualnij statystyki
 index_rotatedesc=Kliknij ten przycisk, aby przetworzyć cały zalogowany ruch sieciowy do chwili obecnej, dzięki temu natychmiast utworzony zostanie raport wykorzystania pasma.
 index_eiptables=Ostrzeżenie - Twoja konfiguracja IPtables ma błąd: $1. Ustawienie monitorowania pasma wyczyści wszystkie reguły firewalla.
 index_return=formularza raportu
+
 log_setup=Ustawiono monitorowanie pasma na interfejsie $1
 log_turnoff=Wyłączono monitorowanie pasma
 log_rotate=Uaktualniono statystyki
+
 acl_setup=Może ustawiać i wyłączać monitorowanie?
+
 turnoff_ecannot=Nie masz uprawnień do wyłączenia monitorowania
+
 setup_ecannot=Nie masz uprawnień do włączenia monitorowania
 setup_eiface=Brakująca lub nieprawidłowa nazwa interfejsu
 setup_ezone=Błąd rozpoznawania strefy Shorewalla dla wybranego interfejsu
+
 system_firewall=IPtables
 system_ipfw=IPFW
 system_ipfilter=IPFilter
 system_shorewall=Shorewall
+
 syslog_syslog=Syslog
 syslog_syslog-ng=Syslog-NG
+
 rotate_title=Uaktualnianie statystyk
 rotate_doing=Przetwarzanie zalogowanego ruchu sieciowego...
 rotate_done=.. zakończono.

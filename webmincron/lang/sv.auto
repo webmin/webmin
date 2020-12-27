@@ -15,5 +15,6 @@ edit_special_daily=Dagligen (vid midnatt)
 edit_special_weekly=Veckovis (på söndag)
 edit_special_monthly=Månadsvis (den 1: a)
 edit_special_yearly=Årligen (den 1 januari)
+
 log_success=<Text>$2</tt> lyckades i <tt>$1</tt>
 log_failure=Det gick inte att köra <tt>$2</tt> i <tt>$1</tt> : $3 

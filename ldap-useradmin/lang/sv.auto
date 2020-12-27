@@ -19,10 +19,13 @@ index_samba=Samba?
 index_cyrus=IMAP?
 index_users=LDAP-användare
 index_groups=LDAP-grupper
+
 imap_econn=Det gick inte att ansluta till IMAP-servern $1 
 imap_elogin=Det gick inte att logga in på IMAP-servern $1 som $2 : $3 
 conn_eldap_host=Ingen LDAP-klientkonfigurationsfil hittades på ditt system, så LDAP-servern måste ställas in på sidan Modulkonfigurering
 conn_elogin=Ingen LDAP-klientkonfigurationsfil hittades på ditt system, så LDAP-inloggningen måste ställas in på sidan Modulkonfigurering
+conn_efile_open=Det gick inte att öppna LDAP-bindningsuppgifterna:
+
 uedit_cap=Användarfunktioner
 uedit_samba=Samba inloggning?
 uedit_cyrus=IMAP-serverinloggning?
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=Senaste lösenordsuppdatering
 uedit_sambapwdcanchange=Lösenord kan ändras
 uedit_sambabadpasswordcount=Dåligt lösenord räknas
 uedit_sambaacctflags=Kontoflaggor
+
 usave_eadd=Det gick inte att lägga till användare i LDAP-databasen : $1 
 usave_emod=Det gick inte att ändra användaren i LDAP-databasen : $1 
 usave_emoddn=Det gick inte att byta namn på användare i LDAP-databasen : $1 
@@ -66,26 +70,33 @@ usave_eattrdupu=Användaren $1 använder redan $2 $3
 usave_eattrdupg=Gruppen $1 använder redan $2 $3 
 usave_ereal=Saknar riktigt namn
 usave_equota=IMAP-kvot saknas eller ogiltig
+
 search_err=Sökning efter $1 under $2 misslyckades : $3 
+
 gedit_dn=Gruppens LDAP DN
 gedit_return=gruppinformation
 gedit_cap=Gruppfunktioner
 gedit_samba=Samba grupp?
+
 gsave_egone=Grupp finns inte längre!
 gsave_edelete=Det gick inte att ta bort gruppen från LDAP-databasen : $1 
 gsave_eadd=Det gick inte att lägga till grupp i LDAP-databasen : $1 
 gsave_emod=Det gick inte att ändra gruppen i LDAP-databasen : $1 
 gsave_emoddn=Det gick inte att byta namn på grupp i LDAP-databas : $1 
+
 gdel_group=Ta bort post i LDAP-grupp ..
+
 udel_pass=Ta bort LDAP-användarpost. ..
 udel_book=Ta bort från adressboken ..
 udel_imap=Tar bort IMAP-mapp ..
 udel_warnimap=Den befintliga postlådan raderas när du tar bort hemmakatalogen!
 udel_failed=.. misslyckades!  : $1 
+
 raw_title=LDAP-attribut
 raw_name=Attributnamn
 raw_value=värden
 raw_for=För $1 
+
 batch_samba=Skapa Samba-konto för nya användare?
 batch_imap=Skapa IMAP-konto för nya användare?
 batch_descafter3=I <b>skapa</b> och <b>modifiera</b> rader kan du eventuellt lägga till extra fält som innehåller LDAP-attribut i <i>namn</i> = <i>värde</i> -format, till tilldelas de nya eller modifierade användarna.

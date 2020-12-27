@@ -6,6 +6,7 @@ mon_conf_title=Basis Configuratie
 mon_status_title=Operationele Status
 hostgroups_title=MON Configuratie-Hostgroepen
 services_title=Groepen-Service Definities
+
 head_hostgroups=Hostgroepen en Services
 head_groups=Hostgroep Naam
 head_members=Hostgroep Leden
@@ -17,6 +18,7 @@ head_monauth=Geef Authenticatie voor MONCMD
 head_usr=Gebruikersnaam
 head_pass=Wachtwoord
 head_mand=( Parameters in "RODE KLEUR" zijn Verplicht )
+
 err_nomon=Het "mon" pakket is niet geinstalleerd op uw systeem
 err_nomonconf=De MON configuratie file $1 is niet gevonden op uw systeem. Misschien is MON niet geinstalleerd of uw <a href='$2'>module configuratie</a> is niet correct.
 err_nowatch=Geen groep geselecteerd. Selecteer minimaal 1 groep die bekeken moet worden om te kunnen doorgaan.
@@ -28,6 +30,7 @@ stop_epid=Niet langer werkend
 start_err=Mislukt om MON te starten
 restart_err=Mislukt om MON te herstarten
 restart_epid=Mislukt om PID te verkrijgen
+
 other=Ander (met spatie gescheiden)
 next=Volgende
 mon_stat=MON Status
@@ -43,6 +46,7 @@ save_apply=Opslaan en Toevoegen
 watch=Groep
 members=Leden
 def_perargs=wd {Zat-Zon}
+
 def_desc=omschrijving
 def_inter=interval
 def_mon=monitor
@@ -58,9 +62,11 @@ def_trapdur=valstrik tijd
 def_rand=randskew
 def_exclhost=uitgezonderde_hosts
 def_exclper=uitgezonderde_periode
+
 groups_title=Host Groepen
 groups_group=Groep naam
 groups_members=Leden hosts
+
 watches_title=Bekijk Lijst
 watches_group=Bekijk groep
 watches_services=Services die bekeken worden
@@ -68,6 +74,7 @@ watches_sadd=Toevoegen service..
 watches_add=Toevoegen overzicht lijst voor groep :
 watches_return=bekijk lijst
 watches_none=Er is nog geen overzichtslijst gedefinieerd.
+
 global_title=Globale Opties
 global_header=Globale MON configuratie opties
 global_maxprocs=Maximum MON processen
@@ -85,6 +92,7 @@ global_ehistlength=Ontbrekende of ongeldige gebeurtenis historie lengte
 global_ealertdir=Ontbrekende of ongeldige waarschuwings programma directory
 global_emondir=Ontbrekende of ongeldige monitor programma directory
 global_euserfile=Ontbrekende MON gebruikers file
+
 watch_title=Bewerk Overzicht Lijst
 watch_header=Host groep details om te bekijken
 watch_group=Host groep om te bekijken
@@ -93,6 +101,7 @@ watch_service=Service naam
 watch_monitor=Monitor om te gebruiken
 watch_interval=Controleer iedere
 watch_periods=Monitor periodes
+
 service_title=Toevoegen Service
 service_title2=Bewerk Service
 service_header=Bekeken service details
@@ -145,16 +154,19 @@ service_epstr=Ontbrekende periode specificatie
 service_known0=<tt>Tijd::Periode</tt> string
 service_known1=Gespecificeerde dagen en uren
 service_known2=Gedefinieerde periode
+
 status_title=MON Status
 status_ecgi=Het MON status CGI programma $1 bestaat niet. Misschien is het niet geinstalleerd of uw <a href='$2'>module configuratie</a> is niet correct.
 status_eperl=Het MON status CGI programma heeft de $1 perl module nodig. <a href='$2'>Klik hier</a> om het direct te installeren van CPAN
 status_esame=Het MON status CGI programma $1 is ingesteld naar de <tt>mon.cgi</tt> script in deze Webmin module, dus niet het CGI programma wat gekomen is met MON. Bewerk de <a href='$2'>module configuratie</a> om het juiste pad te gebruiken.
+
 users_title=MON Gebruikers
 users_etype=De MON gebruikers lijst kan niet worden bewerkt omdat MON op dit moment niet geconfigureerd is om het te gebruiken voor authenticatie op de <a href='$1'>Globale Opties</a> pagina.
 users_header=Toegestane MON gebruikers in $1
 users_nousers=Er zijn nog geen MON gebruikers gedefinieerd in $1
 users_add=Maak nieuwe gebruiker.
 users_return=MON gebruiker lijst
+
 user_create=Maak MON gebruiker
 user_edit=Bewerk MON gebruiker
 user_header=MON gebruikers details
@@ -164,6 +176,7 @@ user_leave=Laat onveranderd
 user_err=Mislukt om gebruiker op te slaan
 user_euser=Ontbrekende of ongeldige gebruikersnaam
 user_esame=Een gebruiker met dezelfde naam bestaat reeds
+
 auth_title=Client Opdrachten
 auth_desc=Met deze pagina bepaald u welke MON opdrachten kunnen worden uitgevoerd door welke gebruikers wanneer zij de client programma's gebruiken.
 auth_cmd=MON opdracht
@@ -173,6 +186,7 @@ auth_all=Iedereen
 auth_sel=Alleen gebruikers
 auth_err=Mislukt om client opdracht op te slaan
 auth_eusers=Geen gebruikers ingevuld voor de opdracht $1
+
 periods_title=Gedefinieerde Periodes
 periods_period=Periode naam
 periods_times=Dagen en tijden
@@ -181,5 +195,6 @@ periods_allhours=Alle uren
 periods_err=Mislukt om gedefinieerde periodes op te slaan
 periods_ename='$1' is geen geldige periode naam
 periods_ehour=Ontbrekende of ongeldig uur voor de periode $1 (dit moet lijken op 9am of 5pm)
+
 show_title=Operationele Status
 show_ecgi=Het MON status programma $1 bestaat niet. Misschien is het niet geinstalleerd of uw <a href='$2'>module configuratie</a> is niet correct.

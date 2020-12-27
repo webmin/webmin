@@ -9,6 +9,7 @@ index_startmsg=Napsauta tätä painiketta, jos haluat käynnistää FTP-palvelim
 index_startmsg2=Napsauta tätä painiketta, jos haluat käynnistää FTP-palvelimen nykyisellä kokoonpanolla. Voit myös määrittää palvelimen käynnistyvän automaattisesti tarvittaessa käyttämällä inetd: tä tai jotain vastaavaa ohjelmaa.
 index_return=FTP-palvelimen asetukset
 index_version=WU-FTPd-versio $1 
+
 class_title=Käyttäjät ja luokat
 class_header=Käyttäjäluokat ja käyttäjän vaihtoehdot
 class_class=Käyttäjäluokat
@@ -31,6 +32,7 @@ class_err=Käyttäjäluokkien tallentaminen epäonnistui
 class_eclass='$1' ei ole kelvollinen luokan nimi
 class_etypes=Luokkaan '$1' ei ole valittu tyyppejä
 class_eaddrs=Luokkaan '$1' ei ole annettu osoitteita
+
 message_title=Viestit ja bannerit
 message_header=Viestit, bannerit ja README-tiedostot
 message_message=Viestitiedostot
@@ -59,6 +61,7 @@ message_eclass=Luokkaa '$1' ei ole olemassa
 message_ebanner='$1' ei ole kelvollinen kirjautumispalkki-tiedosto
 message_ehostname=Puuttuva tai virheellinen isäntänimi
 message_eemail=Puuttuva tai virheellinen sähköpostiosoite
+
 acl_title=Rajoitukset ja kulunvalvonta
 acl_header=Rajoitukset ja kulunvalvontavaihtoehdot
 acl_deny=Estä pääsy sivustolta
@@ -105,6 +108,7 @@ acl_elmsg='$1' ei ole kelvollinen virheviestitiedosto
 acl_efbcount='$1' ei ole kelvollinen määrä tiedostoja tai tavuja
 acl_elimit='$1' ei ole kelvollinen aikaraja
 acl_efails='$1' ei ole kelvollinen määrä kirjautumisvirheitä
+
 net_title=verkostoituminen
 net_header=Verkkovaihtoehdot
 net_tcp=TCP-ikkunoiden koot
@@ -122,6 +126,7 @@ net_eip='$1' ei ole kelvollinen IP-osoite
 net_enet='$1' ei ole kelvollinen verkko-osoite
 net_ecidr='$1' ei ole kelvollinen määrä verkkobittejä
 net_eport='$1' ei ole kelvollinen porttinumero
+
 log_title=hakkuu
 log_header=Kirjausvaihtoehdot
 log_commands=Loki kaikki komennot
@@ -139,6 +144,7 @@ log_syslog=Järjestelmäloki
 log_xferlog=XFER-lokitiedosto
 log_sysxfer=Molemmat kohteet
 log_err=Kirjausasetuksien tallentaminen epäonnistui
+
 alias_title=Aliakset ja polut
 alias_header=Alias ja polkuvaihtoehdot
 alias_alias=CD-hakemiston aliakset
@@ -149,6 +155,7 @@ alias_err=Aliasten ja polkujen tallentaminen epäonnistui
 alias_efrom='$1' ei ole kelvollinen aliaksen nimi
 alias_eto='$1' ei ole kelvollinen alias-hakemisto
 alias_ecdpath='$1' ei ole kelvollinen CD-hakuhakemisto
+
 anon_title=Anonyymi FTP
 anon_eftp=Varoitus - järjestelmässäsi ei ole <tt>ftp</tt> -käyttäjää, joten tuntematonta FTP: tä ei todennäköisesti ole määritetty.
 anon_header=Anonyymi FTP-asetukset
@@ -171,6 +178,7 @@ anon_uids=Unix-käyttäjille
 anon_err=Nimettömien FTP-asetusten tallentaminen epäonnistui
 anon_edir='$1' ei ole kelvollinen hakemisto
 anon_egroup='$1' ei ole kelvollinen ryhmä
+
 perm_title=käyttöoikeudet
 perm_header=Lupavaihtoehdot
 perm_perms=Komentorajoitukset
@@ -192,7 +200,9 @@ perm_err=Käyttöoikeuksien tallentaminen epäonnistui
 perm_echar='$1' ei ole kelvollinen merkistöjoukko-lauseke
 perm_etypes=Yhtään käyttäjätyyppiä ei ole valittu
 perm_emesg='$1' ei ole kelvollinen virheviestitiedosto
+
 host_title=Isäntäoikeuksien hallinta
+
 misc_title=Sekalaiset vaihtoehdot
 misc_header=Sekalaiset vaihtoehdot
 misc_lslong=Pitkä listauskomento
@@ -213,6 +223,7 @@ misc_elsplain=Puuttuva selkeä listauskomento
 misc_eshutdown=Puuttuu sammutusilmoitustiedosto
 misc_enice='$1' ei ole kelvollinen mukava taso
 misc_eumask='$1' ei ole kelvollinen umask
+
 log_class=Vaihdetut käyttäjät ja luokat
 log_message=Vaihdetut viestit ja bannerit
 log_acl=Muutetut rajoitukset ja kulunvalvonta

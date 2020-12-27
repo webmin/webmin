@@ -23,6 +23,7 @@ index_econf=Xinetd yapılandırma dosyası $1 mevcut değil. Kurulmamış ya da 
 index_noport=Bilinmeyen
 index_enable=Seçilileri Aktive Et
 index_disable=Seçilileri Kapat
+
 serv_create=İnternet Servisi Oluştur
 serv_edit=İnternet Servisini Düzenle
 serv_header1=Servis ağ seçenekleri
@@ -76,19 +77,24 @@ serv_enice=Öncelik seviyesi girilmemiş ya da yanlış girilmiş
 serv_ecps0=Saniyedeki bağlantı sayısı girilmemiş ya da yanlış girilmiş
 serv_ecps1=Gecikme süresi girilmemiş ya da yanlış girilmiş
 serv_etimes=Erişim zamanları SS:DD-SS:DD biçiminde olmalıdır
+
 sock_stream=Stream
 sock_dgram=Datagram
 sock_raw=Raw
 sock_seqpacket=Sequential datagram
+
 proto_=Öntanımlı
 proto_ip=IP (İnternet Protokol)
 proto_tcp=TCP (Transmission Control Protocol)
 proto_udp=UDP (User Datagram Protocol)
+
 restart_err=Değişikliklerin uygulanmasında hata oluştu
 restart_ekill=PID $1 'e USR2 sinyali gönderilirken hata oluştu : $2
 restart_epid=Artık çalışmıyor
+
 start_err=Xinetd'nin başlatılmasında hata oluştu
 start_estart=$1 'de hata oluştu : $2
+
 defs_title=Öntanımlı Seçenekler
 defs_header=Servisler için öntanımlı seçenekler
 defs_log=Xinetd kayıt tutma biçimi
@@ -113,6 +119,7 @@ defs_err=Öntanımlı seçeneklerin kaydedilmesinde hata oluştu
 defs_efile=Kayıt dosyası adı yok ya da yanlış girilmiş
 defs_esoft=Soft limit yok ya da yanlış girilmiş
 defs_ehard=Hard limit yok ya da yanlış girilmiş
+
 log_create_serv=$2 servisi $1 oluşturuldu
 log_modify_serv=$2 servisi $1 değiştirildi
 log_delete_serv=$2 servisi $1 silindi
@@ -123,5 +130,6 @@ log_enable=$1 servisleri aktive edildi
 log_disable=$1 servisleri kapatıldı
 log_enable_l=$1 servisleri aktive edildi
 log_disable_l=$1 servisleri kapatıldı
+
 config_dirdef=Xinetd yapılandırma dosyası
 config_dirto=Bu dizindeki yeni dosyaya

@@ -1,5 +1,6 @@
 check_etargets=Fail konfigurasi server iSCSI $1 tidak dijumpai pada sistem anda.
 check_eserver=Program pelayan iSCSI $1 tidak dijumpai pada sistem anda.
+
 index_title=iSCSI Server
 index_clink=Mungkin ia tidak dipasang, atau konfigurasi modul <a href='$1'>anda</a> tidak betul.
 index_stop=Hentikan Server iSCSI
@@ -11,6 +12,7 @@ index_restartdesc=Klik butang ini untuk menerapkan konfigurasi semasa dengan mem
 index_atboot=Mula boot?
 index_atbootdesc=Tukar opsyen ini untuk mengawal sama ada pelayan iSCSI dimulakan pada masa boot atau tidak. Sekiranya ia tidak bermula pada but semula dan Ya dipilih, skrip init baru akan diwujudkan.
 index_return=indeks modul
+
 extents_title=Peranti untuk Perkongsian
 extents_none=Tiada peranti untuk dikongsi telah dibuat lagi.
 extents_name=Nama peranti
@@ -25,6 +27,7 @@ extents_denone=Tiada yang dipilih
 extents_einuse=Peranti $1 tidak dapat dipadamkan, kerana ia digunakan oleh : $2 
 extents_drusure=Adakah anda pasti mahu mengeluarkan peranti berikut: $1 ? Kandungan mereka akan dipelihara, tetapi mereka tidak lagi boleh diakses oleh pelanggan iSCSI.
 extents_sure=Padamkan Peranti
+
 extent_create=Buat Peranti untuk Kongsi
 extent_edit=Edit Peranti Kongsi
 extent_egone=Peranti untuk berkongsi $1 tidak wujud!
@@ -50,6 +53,7 @@ extent_estart=Bermula dari tahap mestilah nombor
 extent_esize=Ukuran sejauh mestilah angka
 extent_esizemax=Akhir hujung tidak boleh lebih besar daripada saiz peranti $1 
 extent_einuse=Peranti ini tidak boleh dipadamkan, kerana ia digunakan oleh : $1 
+
 devices_title=Kombinasi Peranti
 devices_none=Tiada kombinasi peranti telah dibuat lagi.
 devices_name=Nama gabungan
@@ -65,6 +69,7 @@ devices_denone=Tiada yang dipilih
 devices_einuse=Gabungan $1 tidak dapat dipadamkan, kerana ia digunakan oleh : $2 
 devices_drusure=Adakah anda pasti mahu mengalih keluar kombinasi peranti berikut: $1 ? Kandungan mereka akan dipelihara, tetapi mereka tidak lagi boleh diakses oleh pelanggan iSCSI.
 devices_sure=Padamkan Kombinasi Peranti
+
 device_create=Buat Gabungan Peranti
 device_edit=Edit Gabungan Peranti
 device_egone=Gabungan peranti $1 tidak wujud!
@@ -81,6 +86,7 @@ device_sure=Padam Gabungan Peranti
 device_einuse=Gabungan peranti ini tidak dapat dipadamkan, kerana ia digunakan oleh : $1 
 device_eextents=Tiada peranti ahli dipilih
 device_eself=Salah satu peranti ahli yang dipilih mengandungi peranti ini!
+
 targets_title=Sasaran Perkongsian
 targets_none=Tiada sasaran perkongsian telah dibuat lagi.
 targets_name=Nama sasaran
@@ -96,6 +102,7 @@ targets_derr=Gagal memadamkan sasaran perkongsian
 targets_denone=Tiada yang dipilih
 targets_drusure=Adakah anda pasti mahu mengalih keluar sasaran perkongsian berikut: $1 ? Tiada data akan hilang, tetapi mereka tidak lagi dapat diakses oleh pelanggan iSCSI.
 targets_sure=Padamkan Sasaran Perkongsian
+
 target_create=Buat Sasaran Perkongsian
 target_edit=Edit Sasaran Perkongsian
 target_egone=Sharing sasaran $1 tidak wujud!
@@ -112,6 +119,7 @@ target_rusure=Adakah anda pasti mahu memadamkan sasaran perkongsian $1 ? Tiada d
 target_sure=Padamkan Sasaran
 target_enetwork=Rangkaian hilang atau tidak sah untuk dikongsi dengan
 target_emask=Netmask hilang atau tidak sah untuk dikongsi dengan
+
 opts_title=Pilihan Pelayan iSCSI
 opts_header=Pilihan untuk semua sasaran iSCSI
 opts_ip4=Terima sambungan IPv4
@@ -124,10 +132,12 @@ opts_err=Gagal menyimpan pilihan
 opts_ename=Nama yang hilang atau tidak sah - hanya huruf, nombor, dash, titik dan garis bawah dibenarkan
 opts_eport=Nombor port hilang atau bukan nombor
 opts_esess=Sesi maksimum yang hilang atau bukan angka
+
 manual_title=Edit Fail Konfigurasi
 manual_desc=Gunakan kotak teks di bawah untuk mengedit fail konfigurasi pelayan iSCSI $1. Berhati-hati, kerana tiada pengesahan akan dilakukan pada input anda!
 manual_err=Gagal menyimpan fail konfigurasi
 manual_edata=Tiada kandungan yang dimasukkan!
+
 users_title=Pengesahan iSCSI
 users_none=Tiada pengguna iSCSI yang telah dibuat lagi. Pelanggan akan dapat mengakses peranti yang dikongsi tanpa mengesahkannya.
 users_add=Tambah pengguna iSCSI baru.
@@ -135,6 +145,7 @@ users_delete=Padam Pengguna Terpilih
 users_name=Nama pengguna
 users_mode=Kaedah pengesahan
 users_return=senarai pengguna
+
 user_create=Buat Pengguna iSCSI
 user_edit=Edit Pengguna iSCSI
 user_header=butiran pengguna iSCSI
@@ -145,13 +156,16 @@ user_egone=Pengguna tidak lagi wujud!
 user_err=Gagal menyimpan pengguna iSCSI
 user_euser=Nama pengguna yang hilang atau tidak sah - ruang dan titik tidak dibenarkan
 user_epass=Kata laluan yang hilang atau tidak sah - ruang dan titik tidak dibenarkan
+
 desc_extent=Peranti untuk berkongsi $1 
 desc_device=Gabungan peranti $1 
 desc_target=Berkongsi sasaran $1 
+
 start_err=Gagal memulakan pelayan iSCSI
 stop_err=Gagal menghentikan pelayan iSCSI
 restart_err=Gagal memulakan semula pelayan iSCSI
 atboot_err=Gagal membolehkan pada boot
+
 log_create_extent=Peranti yang dibuat untuk berkongsi $1 
 log_modify_extent=Peranti yang dikemas kini untuk berkongsi $1 
 log_delete_extent=Peranti yang dibuang untuk berkongsi $1 

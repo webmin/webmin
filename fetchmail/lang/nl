@@ -25,6 +25,7 @@ index_header=Gebruikers met Fetchmail configuraties
 index_search=Laat Fetchmail configuratie zien voor :
 index_show=Laat zien
 index_toomany=Er zijn teveel gebruikers op uw systeem om te laten zien.
+
 poll_create=Server Toevoegen
 poll_edit=Bewerk Server
 poll_header=Email server opties
@@ -64,18 +65,22 @@ poll_ecannot=U bent niet bevoegt om de Fetchmail config van deze gebruiker te be
 poll_efile=Alleen gebruikers Fetchmail config files kunnen worden bewerkt
 poll_eusername=Gebruiker bestaat niet!
 poll_foruser=Voor gebruiker $1
+
 stop_err=Mislukt om Fetchmail te stoppen
 stop_ecannot=U bent niet bevoegd om Fetchmail te stoppen
 start_err=Mislukt om Fetchmail te starten
 start_einterval=Ontbrekende of ongeldige controle interval
 start_ecannot=U bent niet bevoegd om Fetchmail te starten
+
 check_title=Controleer Servers
 check_exec=Email controleren op server(s) met de opdracht $1 ..
 check_ok=.. controle kompleet.
 check_failed=.. controle mislukt!
+
 global_title=Standaard Instellingen
 global_header=Standaard instellingen voor alle servers
 global_err=Mislukt om standaard instellingen op te slaan
+
 log_create_poll_file=Toegevoegde server $1 in file $2
 log_modify_poll_file=Gemodificeerde server $1 in file $2
 log_delete_poll_file=Verwijderde server $1 in file $2
@@ -94,6 +99,7 @@ log_stop=Gestopte fetchmail daemon
 log_create_cron=Aanzetten geplande controle
 log_update_cron=Gemodificeerde geplande controle
 log_delete_cron=Uitgeschakelde geplande controle
+
 acl_users=Mag fetchmail configuratie bewerken voor
 acl_all=Alle gebruikers
 acl_this=Huidige Webmin gebruiker
@@ -101,6 +107,7 @@ acl_only=Alleen gebruikers
 acl_except=Iedereen behalve gebruikers
 acl_cron=Mag geplande controle configureren?
 acl_daemon=Mag Fetchmail daemon configureren?
+
 cron_title=Geplande Controle
 cron_desc=Deze pagina kan gebruikt worden voor het aan-/uitzetten van een Cron taak om de email servers regelmatig te controleren die in uw Fetchmail configuratie staan. Het gebruik van een cron taak om de Fetchmail daemon uit te voeren is aan te bevelen, omdat hij dan niet herstart hoeft te worden tijdens het booten van het systeem.
 cron_header=Geplande Fetchmail instellingen
@@ -119,8 +126,10 @@ cron_email=Ontbrekende of ongeldig email adres
 cron_euser=Ontbrekende of ongeldig Unix gebruiker
 cron_errors=Alleen een resultaat geven wanneer er een fout ontstaat?
 cron_ecannot2=U bent niet bevoegd om een geplande controle te configureren
+
 user_title=Fetchmail Configuratie
 user_header=Voor gebruiker $1
 user_return=gebruikers configuratie
+
 email_ok=Fetchmail resultaat
 email_failed=Fetchmail fout

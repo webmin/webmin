@@ -14,6 +14,7 @@ index_restart=إعادة تشغيل البرنامج الخفي لبرنامج L
 index_restartdesc=قم بتطبيق التكوين الحالي عن طريق إعادة تشغيل البرنامج الخفي لبرنامج LDAP المحلي.
 index_atboot=ابدأ تشغيل برنامج LDAP عند التمهيد
 index_atbootdesc=تغيير ما إذا كان البرنامج الخفي لعميل LDAP يبدأ عند تشغيل النظام أم لا.
+
 server_title=تكوين خادم LDAP
 server_header=خادم LDAP وخيارات تسجيل الدخول
 server_host=أسماء مضيف خادم LDAP
@@ -51,6 +52,7 @@ server_etimelimit=حد وقت الاتصال مفقود أو غير صالح
 server_ecacert=ملف شهادة CA مفقود أو غير صالح
 server_euport=منفذ مفقود أو غير صالح للملقم$1
 server_euri=لم يتم إدخال خوادم LDAP
+
 base_title=قواعد بحث LDAP
 base_header=مواقع بحث دليل LDAP
 base_base=قاعدة البحث العالمية
@@ -86,6 +88,7 @@ base_enetmasks=قاعدة مفقودة لأسماء قناع الشبكة
 base_ealiases=قاعدة مفقودة للأسماء المستعارة للبريد الإلكتروني
 base_enetgroup=قاعدة مفقودة لمجموعات netgroups
 base_etimelimit=حد وقت البحث مفقود أو غير صالح
+
 pam_title=خيارات المصادقة
 pam_header=مصادقة PAM وإعدادات كلمة المرور
 pam_filter=مرشح LDAP إضافي
@@ -106,10 +109,12 @@ pam_efilter=عامل تصفية LDAP إضافي مفقود
 pam_elogin=سمة LDAP مفقودة أو غير صالحة لاسم المستخدم
 pam_egroupdn=مجموعة LDAP مفقودة لفرض عضوية
 pam_emember=سمة LDAP مفقودة أو غير صالحة لأعضاء المجموعة
+
 switch_title=الخدمات باستخدام LDAP
 switch_service=الخدمات
 switch_srcs=مصادر البيانات
 switch_return=الخدمات باستخدام LDAP
+
 ldap_emodule=لم يتم تثبيت الوحدة النمطية$1 Perl اللازمة للتحدث إلى خادم LDAP. <a href='$2'>انقر هنا</a> لتنزيل Webmin وتثبيته الآن.
 ldap_emodule2=لم يتم تثبيت الوحدة النمطية$1 Perl اللازمة للتحدث إلى خادم LDAP.
 ldap_econf=لم يتم العثور على ملف تكوين عميل LDAP $1 على نظامك
@@ -119,6 +124,7 @@ ldap_elogin=فشل الارتباط بخادم LDAP $1 كـ $2 : $3
 ldap_anon=مجهول
 ldap_eparse=تعذر تحليل URI لملقم LDAP$1
 ldap_etls=فشل التبديل إلى وضع TLS :$1
+
 browser_title=متصفح LDAP
 browser_econn=لا يمكن استخدام مستعرض LDAP :$1
 browser_base=التصفح:
@@ -129,6 +135,7 @@ browser_attrs=سمات الكائن
 browser_parent=تصفح الوالد
 browser_none=لا يوجد
 browser_sel=حسنا
+
 order_nisplus=شيكل +
 order_nis=شيكل
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=طابعات المستخدم
 order_xfn=XFN
 order_mdns4=DNS الإرسال المتعدد
 order_mdns4_minimal=DNS الإرسال المتعدد (الحد الأدنى)
+
 desc_aliases=الأسماء المستعارة لـ Sendmail
 desc_mail=الأسماء المستعارة لـ Sendmail
 desc_hosts=عناوين المضيف
@@ -177,6 +185,7 @@ desc_printers=طابعات
 desc_ipnodes=عقد IP
 desc_timezone=المناطق الزمنية
 desc_locale=لغات
+
 eswitch_title=تحرير الخدمة
 eswitch_egone=الخدمة غير موجودة!
 eswitch_header=تفاصيل الخدمة
@@ -196,6 +205,7 @@ eswitch_continue=تابع البحث
 eswitch_none=لا يوجد
 eswitch_err=فشل في حفظ الخدمة
 eswitch_enone=لم يتم تحديد مصادر!
+
 log_server=تعديل تكوين خادم LDAP
 log_base=تعديل قواعد بحث LDAP
 log_pam=خيارات المصادقة المعدلة
@@ -205,6 +215,7 @@ log_delboot=البرنامج الخفي لبرنامج LDAP معطل في وقت
 log_start=بدأ البرنامج الخفي لبرنامج LDAP
 log_stop=توقف البرنامج الخفي لبرنامج LDAP
 log_restart=البرنامج الخفي لبرنامج LDAP المعاد تشغيله
+
 check_title=التحقق من تكوين LDAP
 check_base=جارٍ البحث عن قاعدة LDAP للمستخدمين ..
 check_ebase=.. لا يوجد أساس في تكوين العميل!

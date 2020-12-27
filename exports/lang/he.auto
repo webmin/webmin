@@ -12,6 +12,7 @@ index_eprog=הפעלת שרת NFS לא נמצאה במערכת שלך. נראה 
 index_delete=מחק יצוא שנבחר
 index_disable=השבת נבחר
 index_enable=אפשר נבחרים
+
 edit_title=ערוך ייצוא
 create_title=צור ייצוא
 edit_details=ייצא פרטים
@@ -65,6 +66,7 @@ edit_sec_krb5i=שלמות קרברוס
 edit_sec_krb5p=פרטיות קרברוס
 edit_sec_lipkey=LIPKEY
 edit_sec_spkm=SPKM
+
 save_err=שמירת הייצוא נכשלה
 save_edir=הספרייה '$1' אינה קיימת
 save_epfs=נתיב מערכת קבצי פסאודו '$1' אינו נראה כנתיב מוחלט
@@ -78,6 +80,7 @@ save_pfs='$1' כבר מיוצא כספרייה
 save_create_dir=לא ניתן ליצור את הספרייה '$1'
 save_eanonuid=שם משתמש לא חוקי בגישה אנונימית
 save_eanongid=שם לא חוקי של קבוצת גישה אנונימית
+
 exports_webnfs=לקוחות WebNFS
 exports_ngroup=Netgroup $1 
 exports_net=רשת $1 
@@ -85,6 +88,7 @@ exports_all=כל אחד
 exports_hosts=מארחים $1 
 exports_host=מארח $1 
 exports_gss=רשת מאומתת: $1 
+
 log_modify=ייצוא NFS שונה $1 
 log_modify_l=ייצוא NFS שונה $1 ל- $2 
 log_delete=ייצוא NFS $1 נמחק

@@ -25,6 +25,7 @@ index_header=Utenti b'figurazzjonijiet Fetchmail
 index_search=Uri l-konfigurazzjoni Fetchmail għal:
 index_show=Uri
 index_toomany=Hemm wisq utenti fis-sistema tiegħek biex juru.
+
 poll_create=Żid Server
 poll_edit=Editja Server
 poll_header=Għażliet ta 'server tal-posta
@@ -64,18 +65,22 @@ poll_ecannot=M'għandekx permess teditja l-konfigurazzjoni fetchmail ta 'dan l-u
 poll_efile=Il-fajls ta 'konfigurazzjoni fetchmail tal-utenti biss jistgħu jiġu editjati
 poll_eusername=Utent ma jeżistix!
 poll_foruser=Għall-utent $1 
+
 stop_err=Ma rnexxielux iwaqqaf il-fetchmail
 stop_ecannot=M'għandekx permess twaqqaf il-fetchmail
 start_err=Naqset milli tibda fetchmail
 start_einterval=Intervall ta ’verifika nieqes jew invalidu
 start_ecannot=M'għandekx permess tibda fetchmail
+
 check_title=Iċċekkjar tas-Servers
 check_exec=Iċċekkjar għal posta fuq server (i) bil-kmand $1 ..
 check_ok=.. kontroll komplut.
 check_failed=.. naqas mill-iċċekkjar!
+
 global_title=Issettjar Default
 global_header=L-issettjar awtomatiku għas-servers kollha
 global_err=Ma rnexxielux isalva s-settings tal-inadempjenza
+
 log_create_poll_file=Miżjud server $1 fil-fajl $2 
 log_modify_poll_file=Server immodifikat $1 fil-fajl $2 
 log_delete_poll_file=Server imħassar $1 fil-fajl $2 
@@ -94,6 +99,7 @@ log_stop=Waqqaf id-daemon tal-fetchmail
 log_create_cron=Attiva l-iċċekkjar skedat
 log_update_cron=Iċċekkjar skedat modifikat
 log_delete_cron=B'diżabilità tal-iċċekkjar skedat
+
 acl_users=Tista 'teditja l-fetchmail config għal
 acl_all=L-utenti kollha
 acl_this=Utent tal-webmin attwali
@@ -101,6 +107,7 @@ acl_only=Utenti biss
 acl_except=Kollha minbarra l-utenti
 acl_cron=Tista 'tikkonfigura l-iċċekkjar skedat?
 acl_daemon=Tista 'tikkonfigura daemon Fetchmail?
+
 cron_title=Iċċekkjar skedat
 cron_desc=Din il-paġna tista 'tintuża biex tippermetti jew tiddiżattiva xogħol Cron biex tikkontrolla s-servers tal-posta fil-konfigurazzjoni Fetchmail tiegħek fuq skeda regolari. L-użu ta 'xogħol Cron superjuri għall-eżekuzzjoni tad-daemon Fetchmail, peress li m'għandux għalfejn jinbeda mill-ġdid fil-mument tal-bidu.
 cron_header=Skedi Fetchmail Skedati
@@ -119,8 +126,10 @@ cron_email=Indirizz tal-email nieqes jew invalidu
 cron_euser=Utent Unix nieqes jew invalidu
 cron_errors=Ħjiel biss jekk iseħħ żball?
 cron_ecannot2=M'għandekx permess tikkonfigura l-iċċekkjar skedat
+
 user_title=Konfigurazzjoni Fetchmail
 user_header=Għall-utent $1 
 user_return=konfigurazzjoni tal-utent
+
 email_ok=Produzzjoni Fetchmail
 email_failed=Żball fil-Fetchmail

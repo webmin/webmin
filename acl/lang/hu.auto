@@ -3,6 +3,7 @@ index_twofactor=Két tényezős hitelesítés
 index_joingroup=Hozzáadás a csoporthoz:
 index_eulist=Nem sikerült felsorolni a felhasználókat: $1 
 index_eglist=A csoportok felsorolása nem sikerült: $1 
+
 edit_title3=Hozzon létre biztonságos Webmin felhasználót
 edit_cloneof=A Webmin felhasználó klónozása
 edit_passlocked=A jelszó nem változott $1 napig - a fiók zárolva van!
@@ -37,6 +38,7 @@ edit_safe=Kiváltsági szint
 edit_safe0=Korlátlan
 edit_safe1=Csak biztonságos modulok
 edit_unsafe=Állítsa vissza korlátozás nélkül
+
 save_eunixname=Az '$1' felhasználónév nem Unix felhasználó, ezért biztonságos módban nem használható
 save_eoverlay=A téma átfedés csak akkor választható ki, ha egy téma van
 save_epass=A jelszó nem érvényes: $1 
@@ -45,11 +47,15 @@ save_edays=Nincs nap kiválasztva
 save_ehours=Hiányzó vagy érvénytelen idő megengedhető
 save_ehours2=A megengedett kezdési időnek vége előtt kell lennie
 save_etemp=A jelszó megváltoztatásának kényszerítését a következő bejelentkezéskor csak akkor lehet használni, ha a <a href='$1'>felszólítja a felhasználókat új jelszavak megadására</a>.
+
 delete_eanonuser=Ezt a felhasználót anonim modul-hozzáféréshez használják
+
 cert_etempdir=Érvénytelen tanúsítványfájl
+
 acl_times=Megváltoztathatja az engedélyezett bejelentkezési időket?
 acl_pass=Meg lehet változtatni a jelszó korlátozásait?
 acl_sql=Konfigurálhatunk felhasználói és csoportos adatbázist?
+
 log_joingroup=Hozzáadtuk a $2 csoporthoz
 log_pass=Megváltoztak a jelszó korlátozások
 log_unix=Megváltozott az unix felhasználói hitelesítés
@@ -57,15 +63,20 @@ log_sync=Megváltozott az unix felhasználói szinkronizálás
 log_sql=Megváltozott felhasználói és csoport adatbázis
 log_twofactor=Regisztrált felhasználó $2
 log_onefactor=Nem regisztrált felhasználó $1 két tényezős hitelesítéshez
+
 gedit_desc=Csoport leírás
 gedit_egone=A kiválasztott csoport már nem létezik!
+
 gsave_edesc=Érvénytelen leírás - a: karakter nem engedélyezett
+
 convert_sync2=A jelszó szinkronizálása a Unix felhasználóval a jövőben?
 convert_user=Unix felhasználó
 convert_action=Intézkedés
 convert_done=$2 érvénytelen, $3 már léteznek, $4 kizárt.
 convert_users=A felhasználók konvertálni
+
 sync_when=Mikor kell szinkronizálni
+
 unix_err=Nem sikerült menteni az Unix hitelesítést
 unix_restrict2=További korlátozások
 unix_sudo=Engedélyezze, hogy azok a felhasználók, akik az összes parancsot a <tt>sudo</tt> segítségével futtatják, <tt>gyökér</tt> néven jelentkezzenek be
@@ -74,6 +85,7 @@ unix_esudo=A $1 parancs nincs telepítve
 unix_esudomod=A <tt>sudo</tt> hitelesítéshez szükséges Perl modul $1 nincs telepítve
 unix_header=Unix felhasználói hitelesítési beállítások
 unix_utable=Engedélyezett Unix felhasználók
+
 sessions_actions=Hozzászólások..
 sessions_logouts=A kijelentkezett munkamenetek megjelenítése is
 sessions_state=Állapot
@@ -81,8 +93,11 @@ sessions_this=Ez a bejelentkezés
 sessions_in=Bejelentkezve
 sessions_out=Kilépett
 sessions_kill=Bontása..
+
 logins_title=Legutóbbi Webmin bejelentkezések
+
 udeletes_jerr=Nem sikerült felvenni a felhasználókat a csoportba
+
 pass_title=Jelszó korlátozások
 pass_ecannot=A jelszó korlátozása nem módosítható
 pass_header=Webmin jelszó-érvényesítési lehetőségek
@@ -104,6 +119,7 @@ pass_eminsize=Hiányzik vagy nem numerikus minimális jelszóhossz
 pass_emaxdays=Hiányzó vagy nem numerikus napok száma a változtatás előtt
 pass_elockdays=A számla zárolása előtti napok hiányzó vagy nem numerikus száma
 pass_eoldblock=Hiányzik vagy nem numerikus számú elutasítandó jelszó
+
 cpass_minsize=Legalább $1 betű hosszúnak kell lennie
 cpass_notre=Megfelel egy tiltott mintának
 cpass_re=Nem felel meg a kívánt mintának
@@ -111,6 +127,7 @@ cpass_name=Tartalmazza a felhasználónevet
 cpass_dict=Szótár szó
 cpass_spellcmd=Sem a $1 , sem a $2 parancsokat nem telepítették
 cpass_old=A régi jelszavak nem használhatók újra
+
 sql_title=Felhasználói és csoport adatbázis
 sql_ecannot=Nem konfigurálhatja a felhasználói és csoport adatbázist
 sql_header=Opciók az adatbázis-háttérképhez felhasználók és csoportok számára
@@ -152,19 +169,23 @@ sql_dnerr=A felhasználói és a csoport adatbázis beállításai érvényesek,
 sql_dnerr2=Kattintson az alábbi <b>DN létrehozása</b> gombra, hogy automatikusan létrehozza, vagy kézzel adja hozzá az LDAP szerverhez.
 sql_makedn=Hozzon létre DN
 sql_schema=Töltse le az LDAP sémát
+
 make_title=Hozzon létre felhasználói és csoporttáblákat
 make_err=Nem sikerült létrehozni felhasználói és csoport táblákat
 make_exec=SQL $1 végrehajtása..
 make_failed=.. a létrehozás sikertelen: $1 
 make_still=Néhány problémát találtak még a tábla létrehozása után: $1 
+
 makedn_title=Hozzon létre LDAP DN-t
 makedn_eoc=Nem található szerkezeti objektum osztály!
 makedn_exec=Szülő DN létrehozása $1..
 makedn_failed=.. a létrehozás sikertelen: $1 
 makedn_still=Néhány problémát találtak még a DN létrehozása után: $1 
+
 schema_title=Töltse le az LDAP sémát
 schema_desc=Mielőtt a Webmin LDAP szervert használhat a felhasználók és csoportok tárolására, be kell állítania az alábbi sémát. Ezt általában úgy lehet megtenni, ha a sémadefiníciót <tt>/etc/ldap/schema</tt> vagy <tt>/etc/openldap/schema</tt> fájlba menti <tt>webmin.schema</tt> majd a kiszolgáló konfigurálása a sémafájl betöltésére.
 schema_download=Töltse le a sémafájlt: <a href=$1>$1</a>
+
 twofactor_err=A kétfaktoros hitelesítés beállítása nem sikerült
 twofactor_euser=Nem található a Webmin felhasználója!
 twofactor_title=Két tényezős hitelesítés

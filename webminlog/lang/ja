@@ -12,6 +12,7 @@ index_search=検索
 index_return=検索形式
 index_nolog=<b>注意</b> - <a href='$1'>Webmin へのログ</a> は現在無効なため、アクション ログでの検索結果が表示されません。
 index_nologfiles=<b>注意<b> - <a href='$1'>ファイル変更のログ</a> は現在無効なため、ログのアクションの詳細は変更したファイルまたは実行されたコマンドを含みません。
+
 search_title=検索結果
 search_date=日時
 search_time=時間
@@ -31,6 +32,7 @@ search_critt2=$1
 search_config=モジュール設定を変更しました
 search_etime=開始時間または終了時間が無効です
 search_err=検索に失敗しました
+
 view_title=アクションの詳細
 view_header=ログに記録されたアクション $1 の詳細
 view_action=説明

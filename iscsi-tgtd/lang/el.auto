@@ -2,6 +2,7 @@ check_econfigset=Δεν έχει οριστεί αρχείο ρύθμισης iS
 check_econfig=Το αρχείο ρυθμίσεων iSCSI TGTd $1 δεν βρέθηκε στο σύστημά σας.
 check_etgtadm=Η εντολή $1 διαχείρισης iSCSI TGTd δεν βρέθηκε στο σύστημά σας.
 check_einit=Η ενέργεια εκκίνησης $1 δεν υπάρχει
+
 index_title=iSCSI TGTd
 index_clink=Ίσως να μην έχει εγκατασταθεί ή η διαμόρφωση της μονάδας σας <a href='$1'></a> είναι εσφαλμένη.
 index_stop=Διακοπή iSCSI TGTd
@@ -24,8 +25,10 @@ index_users=Επιτρέπονται χρήστες
 index_size=Συνολικό μέγεθος
 index_noluns=Κανένας
 index_nousers=Οποιος
+
 dtargets_err=Αποτυχία κατάργησης στόχων
 dtargets_enone=Κανένα επιλεγμένο!
+
 target_title1=Δημιουργία στόχου iSCSI
 target_title2=Επεξεργασία στόχου iSCSI
 target_header=Επιλογές κοινής συσκευής iSCSI
@@ -74,11 +77,13 @@ target_direct=Άμεση πρόσβαση συσκευής
 target_cache=Η κρυφή μνήμη γράφει στη συσκευή;
 target_eaddr=Μη έγκυρη επιτρεπόμενη διεύθυνση IP
 target_eaname=Μη έγκυρο όνομα επιτρεπόμενου εκκινητή
+
 start_err=Αποτυχία εκκίνησης του iSCSI TGTd
 stop_err=Αποτυχία διακοπής του iSCSI TGTd
 restart_err=Αποτυχία επανεκκίνησης του iSCSI TGTd
 atboot_err=Αποτυχία ενεργοποίησης κατά την εκκίνηση
 atboot_einit=Το σενάριο init $1 δεν υπάρχει
+
 log_create_target=Δημιουργήθηκε στόχος $1 
 log_delete_target=Ο στόχος $1 διαγράφηκε
 log_modify_target=Τροποποιημένος στόχος $1 
@@ -89,6 +94,7 @@ log_restart=Επανεκκίνηση του διακομιστή iSCSI
 log_atboot=Ενεργοποιήθηκε διακομιστής iSCSI κατά την εκκίνηση
 log_delboot=Απενεργοποιημένος διακομιστής iSCSI κατά την εκκίνηση
 log_manual=Χειροκίνητο αρχείο ρυθμίσεων
+
 manual_title=Επεξεργασία αρχείου ρυθμίσεων
 manual_file=Επιλέξτε αρχείο για επεξεργασία:
 manual_ok=Ανοιξε

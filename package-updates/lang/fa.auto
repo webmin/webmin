@@ -57,6 +57,7 @@ index_reposdisable=غیرفعال کردن مخازن
 index_reposenable=مخازن را فعال کنید
 index_reposdelete=مخازن را حذف کنید
 index_repoheader=گزینه های جدید مخزن بسته
+
 update_title=به روزرسانی بسته ها
 update_title2=بسته ها را نصب کنید
 update_enone=هیچ بسته انتخاب نشده است
@@ -94,9 +95,11 @@ update_none=هیچ یک
 update_ops=ساخت لیست کامل بسته ها ..
 update_rebootdesc=یکی از بسته های نصب شده نیاز به راه اندازی مجدد برای استفاده کامل دارد.
 update_reboot=اکنون راه اندازی مجدد شود
+
 sched_title=به روزرسانی برنامه ریزی شده
 sched_yes=بررسی برنامه ریزی شده برای به روزرسانی ها اکنون فعال است.
 sched_no=بررسی برنامه ریزی شده برای به روزرسانی ها غیرفعال شده است.
+
 log_update=بسته های به روز شده$1 را نصب کرد
 log_sched=به روزرسانی های برنامه ریزی شده را فعال کنید
 log_unsched=به روزرسانی های برنامه ریزی شده را غیرفعال کنید
@@ -108,11 +111,13 @@ log_enable_repo=مخزن بسته$1 فعال شد
 log_disable_repo=مخزن بسته غیرفعال$1
 log_delete_repo=مخزن بسته$1 حذف شد
 log_create_repo=مخزن بسته$1 ایجاد شد
+
 refresh_title=بسته های طراوت
 refresh_clearing=پاکسازی حافظه پنهان بسته ..
 refresh_done=.. انجام شده
 refresh_available=بارگیری مجدد بسته های موجود ..
 refresh_done3=..$1 به روزرسانی های ممکن یافت شد
+
 view_title=جزئیات بسته
 view_header=اطلاعات بسته به روزرسانی شده
 view_name=نام بسته
@@ -126,12 +131,14 @@ view_changelog=تغییرات برای نسخه موجود
 view_software=مدیریت بسته بندی
 view_update=بسته بندی را به روز کنید
 view_install=بسته را نصب کنید
+
 system_yum=یوم
 system_apt=APT
 system_csw=CSW (Blastwave)
 system_webmin=ماژول وبمین
 system_usermin=ماژول Usermin
 system_tgz=وبمین یا Usermin tar.gz
+
 repos_err_disable=غیرفعال کردن مخازن انجام نشد
 repos_err_enable=ذخیره مخازن انجام نشد
 repos_err_delete=ذخیره مخازن انجام نشد

@@ -3,6 +3,7 @@ index_refsel=Seçilenleri Yenile
 index_group=$1 üyeleri
 index_tmpls=E-posta Şablonlarını Düzenle
 index_tmplsdesc=İzlenen hizmetler düştüğünde gönderilen e-posta mesajlarını oluşturmak için kullanılan şablonları görüntüleyin ve düzenleyin.
+
 type_sslcert=SSL Sertifikası
 type_ftp=Uzak FTP Hizmeti
 type_fail2ban=Fail2Ban Sunucusu
@@ -19,6 +20,8 @@ type_alive=Canlı Sistem
 type_rssh=Uzak SSH
 type_slapd=LDAP Sunucusu
 type_ldap=LDAP Bağlantısı
+
+mon_virtualmin=Uyarı! Bu monitör $1 Virtualmin etki alanıyla ilişkilidir ve bu nedenle burada düzenlenmemeli veya silinmemelidir.
 mon_header2=Çalıştırılacak komutlar
 mon_header3=İzlenen hizmet seçenekleri
 mon_remotes2=Ana bilgisayarlarda ve gruplarda çalıştır
@@ -50,6 +53,7 @@ mon_changes0=Her etkinlik türünü göster
 mon_changes1=Yalnızca değişiklikleri göster
 mon_all=Tüm geçmiş olayları göster
 mon_nochanges=Son $1 geçmiş etkinlikte durum değişikliği olmadı.
+
 sched_pnone=Sayfa gönderme
 sched_offset=ofset ile
 sched_eoffset=Eksik veya geçersiz ofset
@@ -65,13 +69,16 @@ sched_subject0=Yok (uyarı gövdede)
 sched_subject1=Uyarı metni (gövdeyi boş bırakın)
 sched_subject2=Özel metin
 sched_esubject=SMS mesajı konusu eksik
+
 http_regexp=Sayfa normal ifadeyle eşleşmelidir
 http_eregexp=Sayfanın eşleşmesi için normal ifade girilmedi
 http_none2=Eşleşmiyor
 http_ehead=HEAD istek yöntemi, normal bir ifade kontrol edilirken kullanılamaz
+
 proc_asuser=Kullanıcı olarak çalışıyor
 proc_anyuser=Herhangi bir kullanıcı
 proc_easuser=İşlemin gerçekleştirileceği kullanıcı yok
+
 exec_mode=Durum kontrolünden çık
 exec_mode0=Komut başarısız olursa monitör başarısız
 exec_mode1=Komut başarılı olursa monitör başarısız
@@ -81,6 +88,7 @@ exec_noregexp=Kontrol etme
 exec_remode=Normal ifade kontrolü
 exec_remode0=Çıktı eşleşmezse başarısız olur
 exec_remode1=Çıktı eşleşirse başarısız olur
+
 file_elarge=Çok büyük dosyalar : $1 
 file_esmall=Çok küçük dosyalar : $1 
 file_eowner=Yanlış sahibi olan dosyalar : $1 
@@ -90,6 +98,7 @@ file_group=Dosya grubu
 file_nocheck=Herhangi bir şey
 file_perms=Sekizlik izinler
 file_eperm=Yanlış izinlere sahip dosyalar : $1 
+
 space_min2=Minimum boş alan
 space_mode0=Mutlak boyut
 space_mode1=Toplam yüzdesi
@@ -99,12 +108,14 @@ space_ierr=Yalnızca $1 inode ücretsiz
 space_merr=Yalnızca $1 alan boş
 space_perr=Sadece $1% ücretsiz
 space_dferr=Dosya sistemi boyutu alınamadı
+
 log_deletes=$1 monitör silindi
 log_tmpl_create=$1 oluşturulan e-posta şablonu
 log_tmpl_modify=Değiştirilmiş e-posta şablonu $1 
 log_tmpl_delete=$1 silinen e-posta şablonu
 log_tmpl_deletes=$1 e-posta şablonu silindi
 log_refresh=Yenilenen monitör durumları
+
 memory_min2=Minimum boş gerçek bellek
 memory_free2=$1 gerçek bellek boş
 memory_freeswap=$1 sanal bellek boş
@@ -112,9 +123,12 @@ memory_freelow=Yalnızca $1 gerçek bellek boş
 memory_freelowswap=Yalnızca $1 sanal bellek boş
 memory_minswap=Minimum boş sanal bellek
 memory_eminswap=Eksik veya geçersiz miktarda boş sanal bellek
+
 init_action=Kontrol edilecek eylem
 init_eaction=Hiçbir eylem seçilmedi
+
 refresh_doing2=Seçilen $1 monitörün durumu yenileniyor ..
+
 sensors_name=Kontrol edilecek sensör
 sensors_value=Ne zaman başarısız oldu
 sensors_value0=Sistem uyarıyı gösterir
@@ -122,6 +136,7 @@ sensors_value1=Değer $1 'in altında
 sensors_value2=Değer $1 'in üzerinde
 sensors_none=Sisteminizde sensör algılanmadı. <tt>sensörler-algılama</tt> başlatma komutunu çalıştırmanız gerekebilir.
 sensors_cur=$1 (şu anda $2 $3)
+
 nut_ups=Kontrol etmek için NUT UPS
 nut_name=Kontrol etme özelliği
 nut_value=Ne zaman başarısız oldu
@@ -132,6 +147,7 @@ nut_eups=Kontrol edilecek USP yok
 nut_cur=$1 (şu anda $2)
 nut_emin=Eksik veya geçersiz minimum değer
 nut_emax=Eksik veya geçersiz maksimum değer
+
 mailq_system=Posta sunucusu
 mailq_qmailadmin=qmail
 mailq_postfix=Postfix
@@ -140,6 +156,7 @@ mailq_size=Maksimum posta kuyruğu boyutu
 mailq_esize=Eksik veya geçersiz maksimum kuyruk boyutu
 mailq_toomany=Aşağı - $1 mesaj sıraya alındı
 mailq_ok=Yukarı - $1 mesaj sıraya alındı
+
 dns_server=Dns sunucusu
 dns_host=Aranacak ana bilgisayar adı
 dns_address=Beklenen IP adresi
@@ -147,6 +164,7 @@ dns_eserver=Eksik veya geçersiz DNS sunucusu
 dns_ehost=Arama için eksik veya geçersiz görünümlü ana bilgisayar adı
 dns_eaddress=Eksik veya geçersiz beklenen IP adresi
 dns_ecmds=Sisteminizde <tt>nslookup</tt> veya <tt>dig</tt> komutları yüklü değil
+
 monitor_sub_down=$2 üzerinde $1 indirim
 monitor_pager_down=$1 : "$2" $3 azaldı
 monitor_snmp_down= $1:$2 
@@ -178,8 +196,10 @@ monitor_run1=$2 üzerinde $1 çalıştırılıyor ..
 monitor_run2=$1 çalıştırılıyor ..
 monitor_runerr= $2 : $3 üzerinde $1 çalıştırılamadı
 monitor_email_stat=Şu anki durum: $1 
+
 deletes_egone=Seçilen monitörlerden biri artık mevcut değil
 deletes_enone=Hiçbir monitör seçilmedi
+
 ftp_host=FTP sunucusu ana bilgisayarı
 ftp_port=FTP bağlantı noktası
 ftp_user=Kullanıcı olarak giriş yap
@@ -196,6 +216,7 @@ ftp_econn=TLS FTP bağlantısı başarısız oldu
 ftp_econn2=TLS FTP bağlantısı başarısız oldu : $1 
 ftp_elogin=TLS FTP girişi başarısız oldu : $1 
 ftp_etlsfile=TLS FTP indirilemedi : $1 
+
 query_driver=SQL veritabanı türü
 query_db=Veri tabanı ismi
 query_host=Veritabanı sunucusu ana bilgisayarı
@@ -216,9 +237,12 @@ query_elogin=Giriş başarısız oldu : $1
 query_eprepare=SQL hatası : $1 
 query_eexecute=SQL başarısız oldu : $1 
 query_ewrong=Yanlış sonuç : $1 
+
 consume_rate=Maksimum tüketim oranı (saniye başına)
 consume_high=Tüketim oranı $1 / saniye
+
 alive_up=$1 için
+
 rssh_host=SSH sunucu ana bilgisayarı
 rssh_ruser=Kullanıcı olarak giriş yap
 rssh_rpass=Şifre ile giriş
@@ -234,6 +258,7 @@ rssh_error=SSH hatası
 rssh_haspass=Parola
 rssh_port=SSH sunucu bağlantı noktası
 rssh_eport=Eksik veya geçersiz bağlantı noktası numarası
+
 tmpls_title=E-posta Şablonları
 tmpls_ecannot=E-posta şablonlarını düzenleme izniniz yok
 tmpls_none=Henüz hiçbir e-posta şablonu tanımlanmadı. Tüm uyarılar Webmin varsayılan mesajları kullanılarak gönderilir.
@@ -242,6 +267,7 @@ tmpls_email=E-posta mesajı
 tmpls_add=Yeni bir e-posta şablonu ekleyin.
 tmpls_return=şablon listesi
 tmpls_delete=Seçilen Şablonları Sil
+
 tmpl_title1=E-posta Şablonu Oluştur
 tmpl_title2=E-posta Şablonunu Düzenle
 tmpl_header=Uyarı e-posta şablonu mesajları
@@ -266,9 +292,11 @@ tmpl_esms=SMS mesajı eksik
 tmpl_esnmp=SNMP mesajı eksik
 tmpl_err2=E-posta şablonu silinemedi
 tmpl_eusers=Aşağıdaki monitörler tarafından kullanılıyor : $1 
+
 dtmpls_err=Şablonlar silinemedi
 dtmpls_enone=Hiçbiri seçilmedi
 dtmpls_eusers=$1 şu monitörler tarafından kullanılıyor : $2 
+
 sslcert_src=Sertifika yeri
 sslcert_url=HTTPS URL'sinden
 sslcert_file=Sunucudaki dosyadan
@@ -286,18 +314,21 @@ sslcert_eend=$1 'den sonra geçerli değil
 sslcert_left=Kalan süre - sona erene kadar $1 gün
 sslcert_ematch=$1 ana bilgisayar adı, $2 sertifikasıyla eşleşmiyor
 sslcert_emismatch=Sertifika ana makine adı denetimi yalnızca bir URL kontrol edilirken kullanılabilir
+
 du_dir=İzlenecek dizin
 du_max=En büyük boy
 du_edir=Eksik veya mutlak olmayan dizin yolu
 du_emax=Eksik veya sayısal olmayan maksimum boyut
 du_over=Boyut $1 
 du_under=Boyut sadece $1 
+
 ldap_edriver=$1 Perl modülü kurulu değil
 ldap_host=LDAP sunucusu ana bilgisayar adı
 ldap_port=LDAP sunucusu bağlantı noktası
 ldap_ssl=SSL bağlantısı kullanılsın mı?
 ldap_user=LDAP sunucusu girişi
 ldap_pass=LDAP sunucusu şifresi
+
 info_desc=Sistem monitörü
 info_last=Şu anki durum
 info_title=Sistem ve Sunucu Durumu

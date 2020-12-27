@@ -18,10 +18,12 @@ index_version=PPPd版本 $1
 index_boot=在启动时连接：
 index_noboot=&lt;不连接&gt;
 index_bootdesc=更改此选项以控制是否在引导时启动所选的PPTP VPN连接。
+
 disc_err=无法断开隧道
 disc_egone=不再活跃
 disc_ekill=无法杀死pppd进程
 disc_done=隧道 $1已成功断开连接。
+
 conn_err=连接隧道失败
 conn_egone=隧道不再存在
 cone_ealready=已经连接
@@ -32,6 +34,7 @@ conn_ok=..使用接口 $1成功激活连接。您的本地地址为 $2，远程�
 conn_timeout=.. 连接失败！检查下面的日志消息以获取原因。
 conn_routes=用命令添加路由 ..
 conn_mppe=用于VPN加密的MPPE协议需要PPP守护程序和内核支持。但是，上面的错误表明您的系统上没有一个或两个都不可用。如果PPTP服务器不需要MPPE，请尝试在<a href='$1'>全局PPP选项</a>页上关闭与之相关的所有选项。
+
 edit_title1=添加PPTP隧道
 edit_title2=编辑PPTP隧道
 edit_header=PPTP VPN隧道选项
@@ -60,6 +63,7 @@ edit_file=PPP选项文件
 edit_none=没有
 edit_global=标准全局文件
 edit_ofile=其他文件 ..
+
 save_err=保存隧道失败
 save_ename=缺少隧道名称
 save_eserver=连接到的服务器丢失或无效
@@ -75,6 +79,7 @@ save_egw2=路由 $1中主机的无效网关
 save_erename=重命名隧道文件失败
 save_eclash=具有相同名称的隧道或PPP对等体已经存在
 save_efile=缺少或无效的PPP选项文件
+
 opts_title=全球PPP选项
 opts_desc=以下设置取自 $1，将应用于设置为使用标准全局PPP选项文件的所有隧道。
 opts_header=所有隧道的PPP选项
@@ -84,6 +89,7 @@ opts_err=保存全局PPP选项失败
 opts_emtu=最大发送数据包大小丢失或无效
 opts_emru=最大接收数据包大小丢失或无效
 opts_msdesc=下面的选项启用Windows VPN服务器使用的MPPE加密。但是，MPPE在PPP守护程序和操作系统内核中都需要支持。
+
 mppe_mppe-40=使用40位MPPE加密？
 mppe_mppe-128=使用128位MPPE加密？
 mppe_mppe-stateless=启用无状态MPPE模式？
@@ -95,6 +101,7 @@ mppe_d1=允许的
 mppe_mppe-stateful=启用有状态MPPE模式？
 mppe_old=警告-在您的配置文件中找到了旧式MPPE指令 $1，即使您的PPP守护程序支持新式指令。
 mppe_new=警告-即使您的PPP守护程序仅支持旧式指令，也可以在配置文件中找到新式MPPE指令 $1。
+
 log_create=已创建PPTP隧道 $1
 log_update=修改后的PPTP隧道 $1
 log_delete=已删除PPTP隧道 $1

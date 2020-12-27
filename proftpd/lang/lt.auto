@@ -27,7 +27,9 @@ index_global=Visuotinė konfigūracija
 index_create=Sukurkite virtualų serverį
 index_version=„ProFTPd“ versija $1 
 index_proftpd=„ProFTPd“
+
 efailed=Nepavyko išsaugoti $1 
+
 type_0=Tinklo parinktys
 type_1=Registravimo parinktys
 type_2=Failai ir katalogai
@@ -35,6 +37,7 @@ type_3=Prieigos kontrolė
 type_4=Įvairūs
 type_5=Vartotojas ir grupė
 type_6=Autentifikavimas
+
 virt_title=Virtualiojo serverio parinktys
 virt_header1=$1 
 virt_header2=Numatytasis serveris
@@ -50,6 +53,7 @@ virt_cmds=FTP komandos
 virt_return=virtualus serveris
 virt_virt=Konfigūruokite virtualųjį serverį
 virt_edit=Redaguoti direktyvas
+
 vserv_title=Konfigūruokite virtualųjį serverį
 vserv_addr=Adresas
 vserv_name=Serverio pavadinimas
@@ -58,6 +62,7 @@ vserv_delete=Ištrinkite virtualų serverį
 vserv_eaddr=Trūksta arba netinkamas adresas
 vserv_eport=Trūksta arba netinkamas prievado numeris
 vserv_ename=Trūksta serverio pavadinimo
+
 anon_title=Anoniminės FTP parinktys
 anon_header1=$1 virtualiame serveryje
 anon_header2=Numatytasis serveris
@@ -65,6 +70,7 @@ anon_anon=Konfigūruokite anoniminį FTP
 anon_return=anoniminės FTP parinktys
 anon_header3=Anoniminiam FTP virtualiajame serveryje $1 
 anon_header4=Anoniminiam FTP numatytajame serveryje
+
 aserv_title=Konfigūruokite anoniminį FTP
 aserv_create=Nustatyti anoniminį FTP
 aserv_root=Apriboti iki katalogo
@@ -75,6 +81,7 @@ aserv_eroot=Trūksta arba netinkamas „chroot“ katalogas
 aserv_euser=Trūksta arba netinkamas „Unix“ vartotojas
 aserv_egroup=Trūksta arba netinkama „Unix“ grupė
 aserv_desc=Anoniminis šio virtualiojo serverio FTP dar nebuvo nustatytas. Naudokite šią formą norėdami nustatyti pradines konfigūracijos parinktis.
+
 dir_title=„Katalogų parinktys“
 dir_header2=Katalogui $1 numatytajame serveryje
 dir_header1=Katalogui $1 virtualiame serveryje $2 
@@ -85,6 +92,7 @@ dir_header=Vieno komandos parinktys
 dir_dir=Konfigūruokite katalogą
 dir_header4=Katalogui $1 anoniminiame FTP
 dir_header5=$1 katalogui visame pasaulyje
+
 manual_title=Redaguoti direktyvas
 manual_header=Naudokite žemiau esantį teksto lauką, norėdami rankiniu būdu redaguoti ProFTPD direktyvas $1, kurios taikomos šiam virtualiam serveriui, aplankui ar komandoms.
 manual_configs=Redaguoti konfigūravimo failus
@@ -92,6 +100,7 @@ manual_ecannot=Jums neleidžiama rankiniu būdu redaguoti direktyvų
 manual_file=Redaguoti turimas direktyvas:
 manual_efile=Netinkamas „ProFTPd“ konfigūracijos failas
 manual_etest=Aptikta konfigūracijos failo klaida : $1 
+
 limit_title=Vieno komandos parinktys
 limit_header4=Komandoms $1, $2 kataloge
 limit_header2=Numatytojo serverio komandoms $1 
@@ -103,17 +112,20 @@ limit_return=už komandą parinktys
 limit_header5=Komandoms $1 anoniminiame FTP
 limit_header6=Komandoms $1 faile $2 
 limit_header7=Komandai $1 visame pasaulyje
+
 lserv_title=Konfigūruokite komandas
 lserv_cmd=FTP komandos
 lserv_delete=Ištrinti komandas konfig
 lserv_err=Nepavyko išsaugoti komandų
 lserv_ecmd=Nepasirinkta nė viena komanda
+
 dserv_title=Konfigūruokite katalogą
 dserv_dir=Katalogo kelias
 dserv_err=Nepavyko išsaugoti katalogo
 dserv_edir=Trūksta katalogo kelio
 dserv_delete=Ištrinti katalogo konfigūraciją
 dserv_eanondir=Katalogas turi būti anoniminiame FTP kataloge
+
 mod_core_type=Serverio tipas
 mod_core_inetd=Bėgti nuo „Inetd“
 mod_core_stand=Autonominis demonas
@@ -301,6 +313,7 @@ mod_core_duser=Neigti vartotojų
 mod_core_eip=„$1“ nėra galiojantis IP adresas
 mod_core_enet=„$1“ nėra tinkamas tinklo adresas
 mod_core_ehost=„$1“ nėra teisingas pagrindinio kompiuterio vardas
+
 mod_ls_fakegroup=Netikrą grupę katalogų sąrašuose?
 mod_ls_fakeuser=Netikras vartotojas katalogų sąrašuose?
 mod_ls_fakemode=Suklastoti leidimai katalogų sąrašuose
@@ -317,6 +330,7 @@ mod_ls_efakeuser=Dingęs arba netinkamas netikras vartotojas
 mod_ls_efakegroup=Trūksta arba netinkama klastočių grupė
 mod_ls_options=Katalogų sąrašo parinktys
 mod_ls_strict=Nepaisyti vartotojo parinkčių?
+
 mod_auth_chdir=Pradinis prisijungimo katalogas
 mod_auth_echdir=Trūksta arba netinkamas pradinis katalogas
 mod_auth_chroot=Ribokite vartotojus iki katalogų
@@ -330,7 +344,9 @@ mod_auth_egroups=Neįvestos „Unix“ grupės „chroot“
 mod_auth_echroot=Trūksta arba netinkamas „chroot“ katalogas
 mod_auth_login=Neklauskite slaptažodžio, jei atsisakoma prisijungti?
 mod_auth_root=Leisti prisijungti naudojant šaknį?
+
 mod_site_chmod=Leisti chmod komandą?
+
 mod_unixpw_ufile=Alternatyvus „Unix“ slaptažodžio failas
 mod_unixpw_eufile=Trūksta arba netinkamas „Unix“ slaptažodžio failas
 mod_unixpw_gfile=Alternatyvus „Unix“ grupės failas
@@ -338,6 +354,7 @@ mod_unixpw_egfile=Trūksta arba netinkamas „Unix“ grupės failas
 mod_unixpw_none=Nė vienas
 mod_unixpw_pam=Visada traktuoti PAM kaip autoritetingą?
 mod_unixpw_persist=Ar nuolat slaptažodžių failą atidaryti?
+
 mod_log_syslog=Įrašykite klaidas į failą
 mod_log_sysdef=Sistemos žurnalas
 mod_log_esyslog=Trūksta arba netinkamas žurnalo failas
@@ -354,19 +371,25 @@ mod_log_fmt=Formatuoti eilutę
 mod_log_format=Pasirinktiniai žurnalo formatai
 mod_log_enickname=Trūksta arba netinkamas formato vardas
 mod_log_efmt=Trūksta formato eilutės
+
 mod_pam_pam=Naudoti PAM autentifikavimui?
 mod_pam_config=Autentifikuokite naudodami PAM paslaugą
 mod_pam_econfig=Trūksta arba netinkama PAM paslauga
+
 mod_readme_display=Praneškite vartotojui apie „readme“ failų atitikimą
 mod_readme_none=Nė vienas
 mod_readme_edisplay=Trūksta „readme“ failų modelio
+
 start_err=Nepavyko paleisti FTP serverio
 start_einetd=Negalite paleisti serverio demono, kai įjungtas įvesties režimas.
+
 stop_err=Nepavyko sustabdyti FTP serverio
 stop_einetd=Negalite sustabdyti serverio demono, kai įjungtas integruotasis režimas.
 stop_erun=Nebėga
+
 apply_err=Nepavyko pritaikyti FTP konfigūracijos
 apply_egone=Daugiau nebėga
+
 ftpaccess_title=„Katalogų parinkčių failai“
 ftpaccess_desc=Kiekvieno katalogo faile (paprastai vadinama <tt>.ftpaccess</tt>) galima nurodyti papildomas katalogų parinktis. Parinktys taikomos visiems failams, esantiems tame kataloge, ir visiems pakatalogiams, nebent jie būtų pakeisti kitu parinkčių failu.
 ftpaccess_create=Sukurti parinkčių failą
@@ -374,8 +397,10 @@ ftpaccess_find=Rasti parinkčių failus
 ftpaccess_auto=Pagal anonimą
 ftpaccess_from=Iš katalogo
 ftpaccess_return=parinkčių failų sąrašas
+
 ftpusers_title=Atmesti FTP vartotojai
 ftpusers_desc=Jei įjungta po piktograma <tt>Autentifikacija</tt>, žemiau išvardytiems failams iš $1 vartotojams nebus leista prisijungti prie FTP vartotojo.
+
 ftpindex_title=„Katalogo parinkčių failas“
 ftpindex_delete=Ištrinti failą
 ftpindex_opts=„Katalogų parinktys“
@@ -385,8 +410,10 @@ ftpindex_addlimit=Pridėti kiekvienos komandos parinktis ..
 ftpindex_header2=$1 $2 
 ftpindex_return=katalogų parinkčių failas
 ftpindex_header=$1 
+
 find_err=Nepavyko rasti parinkčių failų
 find_eanon=Jokiame virtualiame serveryje nenustatyta anoniminė FTP
+
 log_global=Pakeistos visuotinės $1 parinktys
 log_ftpusers=Pakeisti atmesti FTP vartotojai
 log_virtc=Sukurtas serveris $1 
@@ -420,6 +447,7 @@ log_anonm=Rankiniu būdu redaguotas serverio $1 anoniminis FTP
 log_anon=Pakeistas $1 serverio $2 anoniminiame FTP
 log_start=Pradėjo proftpd
 log_apply=Taikomi pakeitimai
+
 eafter=Konfigūracijos patvirtinimas nepavyko: $1 pakeitimai neišsaugoti.
 proftpd_apply=Taikyti pakeitimus
 proftpd_stop=Sustabdykite „ProFTPd“

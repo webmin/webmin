@@ -6,5 +6,7 @@ sendmail_url=Webmin-URL zur Verwendung in E-Mails
 sendmail_url_def=Standard ($1)
 sendmail_url_custom=eigene URL
 sendmail_eurl=Fehlende oder ungültige benutzerdefinierte URL
+
 letsencrypt_eacmedns=Nur der offizielle Let's Encrypt-Client unterstützt die DNS-basierte Validierung
+
 alert_hide=Warnung ausblenden

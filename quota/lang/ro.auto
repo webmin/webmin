@@ -1,4 +1,5 @@
 quota_unlimited=Nelimitat
+
 acl_fss=Sistemele de fișiere pe care le poate edita acest utilizator
 acl_fall=Toate sistemele de fișiere
 acl_fsel=Selectat ..
@@ -24,9 +25,11 @@ acl_maxblocks=Cota maximă de bloc acordată
 acl_maxfiles=Cota maximă de fișier acordată
 acl_unlimited=Nelimitat
 acl_email=Se pot configura notificări prin e-mail?
+
 activate_eallow=Nu aveți voie să activați sau să dezactivați cote pe acest sistem de fișiere
 activate_eon=Nu a reușit să activeze cote
 activate_eoff=Nu a reușit să oprească contingentele
+
 check_title=Verificați cotele
 check_return=$1 Listă
 check_ecannot=Nu puteți verifica cote pe acest sistem de fișiere
@@ -34,11 +37,13 @@ check_running=Acum se execută comanda <tt>quotacheck</tt> pentru a verifica uti
 check_done=... Terminat.
 check_rgroup=grup
 check_ruser=utilizator
+
 cgroup_efail=Eroare la copierea cotelor
 cgroup_ecannot=Nu puteți copia cote
 cgroup_egallow=Nu aveți voie să copiați contingentele acestui grup
 cgroup_enogroup=Nu există grupuri la care să fie copiat
 cgroup_eallowto=Nu aveți voie să copiați cote pe „$1”
+
 cgform_title=Copiați cotele
 cgform_return=cota de grup
 cgform_ecannot=Nu puteți copia cote
@@ -48,11 +53,13 @@ cgform_all=Toate grupurile din sistemul dvs.
 cgform_select=Grupuri selectate
 cgform_contain=Grupuri care conțin utilizatori
 cgform_doit=Copie
+
 cuser_efail=Eroare la copierea cotelor
 cuser_ecannot=Nu puteți copia cote
 cuser_euallow=Nu aveți voie să copiați contingentele acestui utilizator
 cuser_enouser=Niciun utilizator să le copie
 cuser_eallowto=Nu aveți voie să copiați cote pe „$1”
+
 cuform_title=Copiați cotele
 cuform_return=cota de utilizator
 cuform_ecannot=Nu puteți copia cote
@@ -62,6 +69,7 @@ cuform_all=Toți utilizatorii din sistemul dvs.
 cuform_select=Utilizatori selectați
 cuform_members=Membrii grupurilor selectate
 cuform_doit=Copie
+
 egroup_title=Modificați cota de grup
 egroup_freturn=lista sistemelor de fișiere
 egroup_greturn=lista grupurilor
@@ -80,6 +88,7 @@ egroup_hflimit=Limită fișier dur
 egroup_update=Actualizați
 egroup_listall=Listează toate cotele
 egroup_listalldesc=Faceți clic pe acest buton pentru a afișa o listă cu toate sistemele de fișiere pe care acest grup are cote de disc, cu link-uri pentru a le edita.
+
 euser_title=Editați cota utilizatorului
 euser_freturn=lista sistemelor de fișiere
 euser_ureturn=lista de utilizatori
@@ -102,6 +111,7 @@ euser_hflimit=Limită de fișier greu
 euser_update=Actualizați
 euser_listall=Listează toate cotele
 euser_listalldesc=Faceți clic pe acest buton pentru a afișa o listă cu toate sistemele de fișiere pe care acest utilizator are cote de disc, cu link-uri pentru a le edita.
+
 gfilesys_title=Cotele de grup
 gfilesys_return=lista sistemelor de fișiere
 gfilesys_ecannot=Nu puteți modifica cote pentru „$1”
@@ -120,6 +130,7 @@ gfilesys_copy=Copiați cotele
 gfilesys_editdesc=Vizualizați și editați cotele pentru acest grup pe un alt sistem de fișiere pe care nu are în prezent cote.
 gfilesys_copydesc=Copiați limitele de cote pentru acest grup pe toate sistemele de fișiere pe unele sau toate celelalte grupuri.
 gfilesys_enone=Nu a fost introdus niciun nume de grup
+
 ggracef_title=Grace Times
 ggracef_return=lista grupurilor
 ggracef_ecannot=Nu puteți edita timpii de grație pe acest sistem de fișiere
@@ -128,9 +139,11 @@ ggracef_graces=Grup de timp de grație pentru <tt>$1</tt>
 ggracef_block=Pentru cota de bloc
 ggracef_file=Pentru cota de fișier
 ggracef_update=Actualizați
+
 ggraces_esave=Nu a reușit să salveze vremurile de har
 ggraces_eedit=Nu puteți edita timpii de grație pe acest sistem de fișiere
 ggraces_enumber=„$1” nu este un număr
+
 index_quser=Cotele utilizatorilor
 index_qgroup=Cotele de grup
 index_qboth=Cotele de utilizator și de grup
@@ -154,6 +167,7 @@ index_egroup=Modificați cota de grup:
 index_egroupdesc=Introduceți sau selectați un grup și faceți clic pe acest buton pentru a vizualiza cotele sale pe toate sistemele de fișiere.
 index_nosupport=Niciun sistem de fișiere locale nu poate suporta cote.
 index_mountmod=Puteți activa cote pentru un sistem de fișiere în <a href='$1'>Disk and Network Filesystems</a> modulul.
+
 lgroups_failed=Eroare la listarea grupurilor
 lgroups_tablist=Lista grupurilor
 lgroups_eallow=Nu aveți voie să editați cote pe acest sistem de fișiere
@@ -182,13 +196,17 @@ lgroups_tofixed=Adresa 1
 lgroups_emailheader=E-mail grupuri care se apropie de cota
 lgroups_email=Trimiteți e-mail grupuri?
 lgroups_tovirt=Proprietar de domeniu Virtualmin
+
 sgroup_egroup=Nu aveți voie să editați cote pentru acest grup
 sgroup_efs=Nu aveți voie să editați cote pe acest sistem de fișiere
+
 ssync_ecannot=Nu puteți seta cota implicită pentru acest sistem de fișiere
+
 suser_euser=Nu aveți voie să editați cote pentru acest utilizator
 suser_efs=Nu aveți voie să editați cote pe acest sistem de fișiere
 suser_emaxblocks=Nu aveți voie să acordați limite de blocare peste $1 
 suser_emaxfiles=Nu aveți voie să acordați limite de fișiere peste $1 
+
 ufilesys_title=Cota de utilizator
 ufilesys_return=lista sistemelor de fișiere
 ufilesys_ecannot=Nu puteți modifica cote pentru „$1”
@@ -208,6 +226,7 @@ ufilesys_copydesc=Copiați limitele de cote pentru acest utilizator pe toate sis
 ufilesys_copy=Copiați cotele
 ufilesys_grace=Graţie
 ufilesys_enone=Nu a fost introdus niciun nume de utilizator
+
 ugracef_title=Grace Times
 ugracef_return=lista de utilizatori
 ugracef_ecannot=Nu puteți edita timpii de grație pe acest sistem de fișiere
@@ -216,9 +235,11 @@ ugracef_graces=User Grace Times pentru <tt>$1</tt>
 ugracef_block=Pentru cota de bloc
 ugracef_file=Pentru cota de fișier
 ugracef_update=Actualizați
+
 ugraces_esave=Nu a reușit să salveze vremurile de har
 ugraces_eedit=Nu puteți edita timpii de grație pe acest sistem de fișiere
 ugraces_enumber=„$1” nu este un număr
+
 lusers_failed=Listarea utilizatorilor nu a reușit
 lusers_tablist=Lista de utilizatori
 lusers_tabdefault=Cotele implicite
@@ -264,12 +285,14 @@ lusers_from=De la: adresa pentru e-mail
 lusers_mass=Actualizați utilizatorii selectați
 lusers_cc=Trimiteți și un e-mail la
 lusers_nocc=Nimeni
+
 grace_seconds=secunde
 grace_minutes=Minute
 grace_hours=ore
 grace_days=zi
 grace_weeks=săptămâni
 grace_months=Luni
+
 log_activate_u=Cotele utilizatorilor activate pe $1 
 log_activate_g=Cotele de grup activate pe $1 
 log_activate_ug=Activarea cotelor de utilizator și de grup pe $1 
@@ -287,6 +310,7 @@ log_check=Cotele verificate la $1
 log_copy_u=Copiile cote ale utilizatorului $1 
 log_copy_g=Copiate cote ale grupului $1 
 log_support=Suport activat pentru cote pentru $1 
+
 email_err=Nu a reușit să salvați opțiunile de e-mail
 email_ecannot=Nu aveți voie să modificați opțiunile de e-mail
 email_einterval=Interval lipsă sau nevalid
@@ -299,6 +323,7 @@ gemail_msg=Utilizarea discului pentru grupul $1 pe sistemul de fișiere $2 a ati
 email_subject=Cota de disc depășită
 gemail_subject=Cota de disc depășită
 email_eto=Lipsește adresa de e-mail de destinație
+
 umass_title=Actualizați cota de utilizator
 umass_header=Modificările de cota se aplică utilizatorilor selectați
 umass_sblocks=Limita blocului moale
@@ -315,6 +340,7 @@ umass_esfiles=Lipsește sau nu este valabilă o limită de fișier soft
 umass_ehfiles=Lipsește sau nu este valabilă o limită de fișier dur
 umass_count=Modificările de mai jos se vor aplica pentru utilizatorii selectați $1.
 umass_err=Actualizarea cotelor de utilizator nu a reușit
+
 gmass_title=Actualizați cota de grup
 gmass_header=Modificările de cota se aplică grupurilor selectate
 gmass_count=Modificările de mai jos se vor aplica grupurilor selectate $1.

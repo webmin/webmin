@@ -19,11 +19,13 @@ index_force=Força la Rotació de Registres
 index_forcedesc=Força la rotació immediata de tots els fitxers de registre, encara que no sigui l'hora.
 index_logrotate=Rota els Registres
 index_delete=Suprimeix les Rotacions de registres Seleccionades
+
 period_daily=Diàriament
 period_weekly=Setmanalment
 period_monthly=Mensualment
 period_never=Mai
 period_bytes=bytes
+
 edit_title1=Creació de Fitxer de Registre
 edit_title2=Edició de Fitxer de Registre
 edit_header=Detalls del fitxer de registre rotat
@@ -62,8 +64,10 @@ edit_pre=Ordres a executar abans de la rotació
 edit_default=Per defecte ($1)
 edit_sharedscripts=Executa els scripts només una vegada per a tots els fitxers
 edit_now=Fes la Rotació Ara
+
 global_title=Opcions Globals
 global_header=Opcions per defecte de tots els fitxers de registre
+
 save_err=No s'ha pogut desar el registre
 save_efile=Hi falta el nom del fitxer de registre o bé és invàlid
 save_esize=Hi falta la mida màxima o bé és invàlida
@@ -81,6 +85,7 @@ save_eerrors=Hi falta l'adreça de correu per als missatges d'error
 save_epre=El script de pre-rotació no pot contenir cap línia <tt>endscript</tt> ni <tt>endrotate</tt>
 save_epost=El script de post-rotació no pot contenir cap línia <tt>endscript</tt> ni <tt>endrotate</tt>
 save_enofiles=No has introduït cap fitxer per rotar
+
 log_modify_sched=S'ha canviat el treball cron de rotació de registres
 log_create_sched=S'ha creat el treball cron de rotació de registres
 log_delete_sched=S'ha suprimit el treball cron de rotació de registres
@@ -89,6 +94,7 @@ log_create=S'ha afegit la rotació del fitxer de registre $1
 log_modify=S'ha modificat la rotació del fitxer de registre $1
 log_delete=S'ha suprimit la rotació del fitxer de registre $1
 log_delete_logs=S'ha suprimit la rotació de $1 fitxers de registre
+
 sched_title=Planificació de la Rotació de Registres
 sched_desc=Per tal que es dugui a terme la rotació de registres configurada utilitzant aquest mòdul, cal que cron executi l'ordre $1 a intervals regulars (normalment, a diari).
 sched_runparts=Actualment, l'ordre de rotació de registres s'executa des del script $1 $2, i no es pot adaptar.
@@ -98,10 +104,12 @@ sched_enabled=Activat, a les hores de sota...
 sched_save=Actualitza el Treball Cron
 sched_err=No s'ha pogut desar la planificació de la rotació
 sched_when=Hores d'execució
+
 force_title=Forçat de la Rotació de Registres
 force_doing=S'està forçant la rotació immediata de tots els registres...
 force_doingone=S'està forçant la rotació immediata d'un fitxer de registre...
 force_done=...fet.
 force_failed=...ha fallat! Vegeu la sortida de sobre per saber-ne el perquè.
+
 delete_err=No s'han pogut suprimir els registres
 delete_enone=No has seleccionar cap registre

@@ -9,6 +9,7 @@ index_restart=ویب مین دوبارہ شروع کریں
 index_restartmsg=ویب مین سرور کے عمل کو دوبارہ شروع کرنے کے لئے اس بٹن پر کلک کریں۔ اگر آپ نے حال ہی میں پرل کو اپ گریڈ کیا ہے تو یہ ضروری ہوسکتا ہے۔
 index_refresh=ماڈیول ریفریش کریں
 index_refreshmsg=انسٹال شدہ سرورز کے لئے تمام ویبمین ماڈیولز کی دوبارہ جانچ پڑتال کریں ، اور ان کو اپ ڈیٹ کریں جو 'غیر استعمال شدہ ماڈیول' زمرہ میں آتے ہیں۔
+
 access_title=IP رسائی کنٹرول
 access_desc=ویب فارم سرور کو اس فارم کا استعمال کرتے ہوئے صرف مخصوص IP پتوں سے انکار کرنے یا ان تک رسائی کی اجازت دینے کے لئے تشکیل کیا جاسکتا ہے۔ میزبان نام (جیسے foo.bar.com) اور IP نیٹ ورک (جیسے 10.254.3.0 یا 10.254.1.0/255.255.255.128 یا 10.254.1.0/25 یا 10.254.1.5-10.254.97.127) بھی درج کیا جاسکتا ہے۔ آپ کو اپنے سرور تک قابل اعتماد پتوں تک رسائی محدود رکھنی چاہئے ، خاص طور پر اگر یہ انٹرنیٹ سے قابل رسا ہے۔ بصورت دیگر ، جو بھی آپ کے پاس ورڈ کا اندازہ لگاتا ہے اس کے پاس آپ کے سسٹم کا مکمل کنٹرول ہوگا۔
 access_ip=اجازت دی گئی IP پتے
@@ -33,6 +34,7 @@ access_ehost=Failed to find IP address for '$1'
 access_eself=Your current IP address ($1) would be denied
 access_always=ہر درخواست پر میزبان ناموں کو حل کریں؟
 access_trust=پراکسیوں کے ذریعہ فراہم کردہ ریموٹ IP ایڈریس پر اعتماد کریں؟
+
 bind_title=بندرگاہیں اور پتے
 bind_desc2=اس فارم کا استعمال پورٹ نمبر کو تبدیل کرنے کے لئے کیا جاسکتا ہے جس پر ویبمین سنتا ہے ، یا آپ کے سسٹم میں صرف ایک ہی IP پتے پر سنتا ہے۔ آپ متعدد بندرگاہوں پر روابط قبول کرنے یا متعدد IP پتوں پر سننے کے ل it بھی اسے تشکیل دے سکتے ہیں۔ نوٹ - آپ کا ویب براؤزر پورٹ یا بائنڈنگ ایڈریس تبدیل کرنے کے بعد آپ کو دوبارہ لاگ ان کرنے کا اشارہ کرسکتا ہے۔
 bind_header=IP پتے اور بندرگاہیں
@@ -61,6 +63,7 @@ bind_eipv6=IPv6 cannot be enabled unless the $1 Perl module is installed
 bind_redirecting=نئے یو آر ایل پر ری ڈائریکٹ ہو رہا ہے ..
 bind_elsof=New port $1 is already in use by another process
 bind_eonsystem=The IP address $1 is not active on this system, and so cannot be used
+
 log_title=لاگنگ
 log_desc=Webmin can be configured to write a log of web server hits, in the standard CLF log file format. If logging is enabled, you can also choose whether IP addresses or hostnames are recorded, and how often the log file is cleared. When enabled, logs are written to the file $1.
 log_desc2=When logging is enabled, Webmin will also write a more detailed log of user actions to the file $1. This log can be viewed and analysed with the Webmin Actions Log module to see exactly what each Webmin user has been doing.
@@ -92,6 +95,7 @@ log_login=اعمال لاگ میں ویبمین لاگ ان اور لاگ آؤٹ
 log_email=ای میل کے ذریعے لاگ ان اعمال بھیجیں
 log_emailnone=مت بھیجیں
 log_inmodsemail=عمل میں ای میل بھیجیں
+
 proxy_title=پراکسی سرورز اور ڈاؤن لوڈز
 proxy_desc=If the host on which Webmin is running is behind a firewall of some kind, you may need to set the proxy server to use for accessing web and FTP sites. Certain modules, such as <tt>Software Packages</tt>, will use these proxies when downloading files or programs.
 proxy_header=پراکسی سرورز
@@ -134,6 +138,7 @@ proxy_return=پراکسی سرورز اور ڈاؤن لوڈز
 proxy_tabproxy=پراکسی کرنا
 proxy_tabdown=ڈاؤن لوڈ ہو رہا ہے
 proxy_fallback=اگر پراکسی بند ہو تو براہ راست درخواست کرنے کی کوشش کریں؟
+
 ui_title=یوزر انٹرفیس
 ui_desc=یہ فارم آپ کو تمام ماڈیولز کے ذریعہ استعمال کردہ صارف انٹرفیس کے اختیارات میں ترمیم کرنے کی اجازت دیتا ہے۔ رنگ داخل کرتے وقت ، ہر ایک کو معیاری آر جی بی سسٹم کا استعمال کرتے ہوئے بیان کرنا ضروری ہے ، جہاں ہر ایک کی قیمت 00 سے ایف ایف تک ایک ہیکس نمبر ہوتی ہے۔
 ui_header=یوزر انٹرفیس کے اختیارات
@@ -183,6 +188,7 @@ ui_dateformat_dd/mm/yyyy=دسمبر / ملی میٹر / یحیی (یعنی 16/09
 ui_dateformat_mm/dd/yyyy=ملی میٹر / ڈیڈی / یحیی (یعنی 09/16/2001)
 ui_dateformat_yyyy/mm/dd=یار / ملی میٹر / ڈیڈی (جیسے 2001/09/16)
 ui_ehostnamedisplay=لاپتہ یا غلط ڈسپلے ہوسٹ نام
+
 mods_title=ویبمین ماڈیولز
 mods_desc1=Webmin modules can be added after installation by using the form to the right. Modules are typically distributed in <tt>.wbm</tt> files, each of which can contain one or more modules. Modules can also be installed from RPM files if supported by your operating system.
 mods_installsource=سے انسٹال کریں
@@ -226,6 +232,7 @@ mods_tabinstall=انسٹال کریں
 mods_tabclone=کلون
 mods_tabdelete=حذف کریں
 mods_tabexport=برآمد کریں
+
 install_err1=Failed to install module from $1
 install_efile=فائل موجود نہیں ہے
 install_err2=اپ لوڈ کردہ ماڈیول انسٹال کرنے میں ناکام
@@ -259,10 +266,12 @@ install_cat=Under category $1.
 install_eneither=آر پی ایم میں ویب مین ماڈیول یا تھیم شامل نہیں ہے
 install_err4=معیاری ماڈیول انسٹال کرنے میں ناکام
 install_emissing=بیان کردہ ماڈیول موجود نہیں ہے
+
 clone_err=ماڈیول کلون کرنے میں ناکام
 clone_elink=symlink failed : $1
 clone_ecopy=failed to copy config : $1
 clone_desc=Clone of $1
+
 delete_err=ماڈیولز کو حذف کرنے میں ناکام
 delete_edep=Module $1 cannot be deleted, as the module $2 depends on it
 delete_desc1=$1 (Clone of $2)
@@ -274,6 +283,7 @@ delete_rusure2=Are you sure you want to delete the theme $2 ? $1 kB of files wil
 delete_rusure3=Are you sure you want to delete the module clones(s) $2 ?
 delete_acls=صارفین سے ہٹائیں اور رسائی کنٹرول کی ترتیبات کو دوبارہ ترتیب دیں؟
 delete_enone=کوئی ماڈیول منتخب نہیں ہوئے ہیں
+
 os_title=آپریٹنگ سسٹم اور ماحولیات
 os_desc3=یہ صفحہ انسٹال کے وقت ویبمین کے ذریعہ پائے جانے والے آپریٹنگ سسٹم اور موجودہ سسٹم کا پتہ چلتا ہے۔ اگر وہ مختلف ہیں تو ، آپ ویبمین کی OS معلومات کو اپ ڈیٹ کرنے کا انتخاب کرسکتے ہیں ، جو آپ کو حال ہی میں اپ گریڈ کرنے پر ضروری ہوسکتی ہے۔
 os_desc2=پروگرام چلاتے وقت آپ ویبیمن کے ذریعہ استعمال شدہ تلاش کے راستے کو بھی تبدیل کرسکتے ہیں ، اور لائبریری کا مشترکہ راستہ کسی بھی پروگرام میں گزرتا ہے۔
@@ -296,6 +306,7 @@ os_eiversion=اندرونی آپریٹنگ سسٹم کا ورژن غائب ہے
 os_incorrect=Warning - Your system is actually running $1 version $2.
 os_fix=آپریٹنگ سسٹم کا پتہ لگائیں
 os_usermin=یوزر مین OS کو بھی اپ ڈیٹ کریں
+
 lang_title=زبان
 lang_title2=ویبمین زبان
 lang_lang=زبان میں ڈسپلے کریں
@@ -307,6 +318,7 @@ lang_chardef=زبان سے طے شدہ
 lang_charover=زبردستی کیریکٹر سیٹ
 lang_err=زبان بچانے میں ناکام
 lang_echarset=لاپتہ یا غلط نظر آنے والا کردار کا سیٹ
+
 ssl_title=SSL خفیہ کاری
 ssl_essl=The Net::SSLeay perl module does not appear to be installed on your system. To install the OpenSSL library and Net::SSLeay, follow <a href='$1'>these instructions</a> from the Webmin website.
 ssl_cpan=Alternately, you can have Webmin <a href='$1'>download and install</a> the required Net::SSLeay Perl module for you.
@@ -412,6 +424,7 @@ ssl_letsnotrenew=صرف دستی طور پر تجدید کریں
 ssl_staging=آئیے سرور کو خفیہ کریں
 ssl_staging0=اصلی
 ssl_staging1=اسٹیجنگ (صرف ٹیسٹ)
+
 newkey_err=SSL کلید بنانے میں ناکام
 newkey_ecn=گمشدہ یا غلط سرور نام
 newkey_ecns=سرور کا کوئی نام داخل نہیں ہوا
@@ -424,11 +437,13 @@ newkey_ok=کامیابی کے ساتھ درج ذیل SSL کلید تیار کی 
 newkey_esize=کلیدی سائز غائب یا غلط ہے
 newkey_edays=ختم ہونے سے پہلے دن غائب یا غلط تعداد
 newkey_ecountry=ملک کا کوڈ دو حروف کا ہونا ضروری ہے
+
 newcsr_err=SSL CSR بنانے میں ناکام
 newcsr_efile=سی ایس آر فائل کا نام غائب ہے
 newcsr_title=سی ایس آر بنائیں
 newcsr_ok=درج ذیل SSL سرٹیفکیٹ درخواست کو کامیابی کے ساتھ تیار کیا گیا :
 newcsr_ok2=This CSR must be sent to a signing authority, who will return a signed certificate. This can be installed with the key above using the <b>Upload certificate</b> tab.
+
 startpage_title=انڈیکس صفحے کے اختیارات
 startpage_intro2=یہ صفحہ آپ کو مرکزی ویب مینیو مینو کی ظاہری شکل کو کنٹرول کرنے کی اجازت دیتا ہے۔ پہلے سے طے شدہ تھیم کا استعمال کرتے وقت صرف کچھ اختیارات کارآمد ہوسکتے ہیں۔
 startpage_tabs=ماڈیول کی درجہ بندی کریں؟
@@ -442,6 +457,7 @@ startpage_gotonone=&lt;نہیں&gt;
 startpage_gotomodule=لاگ ان کے بعد ، ہمیشہ ماڈیول پر جائیں
 startpage_webminup=سسٹم انفارمیشن پیج پر ویب مائن اپڈیٹس دکھائیں؟
 startpage_moduleup=سسٹم انفارمیشن پیج پر ماڈیول اپڈیٹس دکھائیں؟
+
 upgrade_title=ویبمین کو اپ گریڈ کریں
 upgrade_desc=This form allows you to upgrade your entire Webmin installation to a new version. You can install from a local file, an uploaded file or from the latest version at <a href=http://www.webmin.com/>www.webmin.com</a>. Just as with a manual upgrade, all your config settings and third-party modules will be kept.
 upgrade_descrpm=This form allows you to upgrade your entire webmin installation to a new version using RPM's upgrade option. You can install from a local RPM file, an uploaded file or from the latest version at <a href=http://www.webmin.com/>www.webmin.com</a>. Just as with a manual upgrade, all your config settings and third-party modules will be kept.
@@ -506,10 +522,12 @@ upgrade_tabupdate=ماڈیول اپ ڈیٹ کریں
 upgrade_tabsched=شیڈول اپ ڈیٹ
 upgrade_src=سے Webmin کو اپ گریڈ کریں
 upgrade_opts=اپ گریڈ کے اختیارات
+
 newmod_desc=جب ویبمین کو اپ گریڈ کیا جاتا ہے تو ، نئے ورژن میں کسی بھی نئے ماڈیول کو ایک یا زیادہ صارفین کو عطا کیا جائے گا۔ یہ فارم آپ کو ان صارفین کو متعین کرنے کی اجازت دیتا ہے جو نئے ماڈیول وصول کرتے ہیں۔ کمانڈ لائن میں اپ گریڈ کرنے یا مذکورہ فارم کو استعمال کرنے پر یہ ترتیب لاگو ہوگی۔
 newmod_header=نیا ماڈیول گرانٹ
 newmod_def=Default behavior - grant new modules to <tt>root</tt> or <tt>admin</tt>
 newmod_users=نئے ماڈیولز کو یہ دیں :
+
 update_desc1=This form allows you to upgrade Webmin modules that have been found to contain bugs or security holes from the <a href=http://www.webmin.com/updates.html>Webmin Updates</a> page or from another source. This will compare the currently installed modules with those available for update, and optionally automatically download and install any modules that are out of date.
 update_header1=ابھی ماڈیول اپ ڈیٹ کریں
 update_header2=شیڈول پر ماڈیول اپ ڈیٹ کریں
@@ -536,6 +554,7 @@ update_enomodsig=Could not download signature file for module : $1
 update_ebadmodsig=Module signature check failed : $1
 update_src=سے ماڈیول اپ گریڈ کریں
 update_opts=ماڈیول اپ ڈیٹ کے اختیارات
+
 ca_title=سرٹیفکیٹ اتھارٹی
 ca_old=موجودہ سرٹیفکیٹ
 ca_header1=نیا CA سرٹیفکیٹ بنائیں
@@ -567,6 +586,7 @@ ca_eminiserv=ایس ایس ایل کلائنٹ کے سرٹیفکیٹ صرف ما
 ca_eversion=آپ کے سسٹم پر نصب پرل نیٹ :: SSLeay ماڈیول کا ورژن SSL کلائنٹ سرٹیفکیٹ کی حمایت نہیں کرتا ہے۔
 ca_essleay=The SSL administration command $1 was not found on your system. You may need to change the path in the Webmin Users module configuration.
 ca_essl=SSL سرٹیفیکیشن صرف اس وقت سیٹ اپ کی جاسکتی ہے جب ویب سرور سرور کے موڈ میں چل رہا ہو۔
+
 session_title=توثیق
 session_desc1=جب فعال ہوجاتا ہے تو ، پاس ورڈ کے ٹائم آؤٹ آپ کے ویب مین سرور کو بروسٹ فورس کے پاس ورڈ کریکنگ حملوں سے بچاتا ہے اور اسی صارف کے لئے ہر ناکام لاگ ان کوشش کے مابین مسلسل توسیع کرنے میں تاخیر شامل کرتے ہیں۔
 session_header=توثیق اور سیشن کے اختیارات
@@ -630,10 +650,12 @@ session_sha512=SHA512 خفیہ کاری کا استعمال کریں
 session_emd5mod=MD5 encryption cannot be used, as Perl $1 module is not installed.
 session_esha512mod=SHA512 encryption cannot be used, as Perl $1 module is not installed.
 session_blocklock=ناکام لاگ ان والے صارفین کو بھی لاک کریں
+
 assignment_title=ماڈیول دوبارہ تفویض کریں
 assignment_header=ماڈیول زمرہ اسائنمنٹس
 assignment_ok=زمرہ جات تبدیل کریں
 assignment_desc=یہ فارم آپ کو یہ ترتیب دینے کی سہولت دیتا ہے کہ ویبمین انڈیکس صفحے پر ہر ماڈیول کو کس زمرے میں ظاہر کیا جاتا ہے۔
+
 categories_title=زمرہ جات میں ترمیم کریں
 categories_header=زمرہ ID اور تفصیل
 categories_desc=یہ فارم آپ کو موجودہ ویبمین زمرے کا نام تبدیل کرنے اور ماڈیول تفویض کرنے کے ل new نئے بنانے کی اجازت دیتا ہے۔ جدول کا اوپری حص theہ بلٹ میں زمرے کی وضاحت کو تبدیل کرنے کے لئے ہے ، جبکہ نیچے کا حصہ نئے زمرے کی شناخت اور تفصیل شامل کرنے کے لئے ہے۔
@@ -646,6 +668,7 @@ categories_name=ڈسپلے تفصیل
 categories_lang=زبان میں زمرے میں ترمیم کریں:
 categories_langok=بدلیں
 categories_custom=اپنی مرضی کے مطابق
+
 log_access=تبدیل شدہ IP رسائی کنٹرول
 log_bind=تبدیل شدہ بندرگاہ اور پتہ
 log_log=لاگ ان کرنے کے اختیارات تبدیل ہوگئے
@@ -691,6 +714,7 @@ log_onedelete_webmincron=Deleted scheduled function in module $1
 log_letsencrypt=آئیے اینکرپٹ سے نئے SSL سرٹیفکیٹ کی درخواست کی
 log_letsencryptdns=Created Let's Encrypt DNS record for $1
 log_letsencryptcleanup=Removed Let's Encrypt DNS record for $1
+
 themes_title=ویبمین تھیمز
 themes_desc=تھیمز ویب مین صارف انٹرفیس کی ظاہری شکل کو کنٹرول کرتی ہیں ، جس میں شبیہیں ، رنگ ، پس منظر اور صفحات کی ترتیب شامل ہیں۔ نیچے دیئے گئے سلیکشن باکس کو آپ کے سسٹم میں انسٹال کردہ تھیموں میں سے کسی ایک کو منتخب کرنے کے لئے استعمال کیا جاسکتا ہے۔
 themes_sel=موجودہ تھیم :
@@ -706,6 +730,7 @@ themes_taboverlay=اوورلی تبدیل کریں
 themes_tabinstall=تھیم انسٹال کریں
 themes_tabdelete=موضوعات کو حذف کریں
 themes_tabexport=تھیم برآمد کریں
+
 themes_err1=Failed to install theme from $1
 themes_efile=فائل موجود نہیں ہے
 themes_err2=اپ لوڈ کردہ تھیم انسٹال کرنے میں ناکام
@@ -731,9 +756,11 @@ themes_delok=حذف کرنے کا تھیم :
 themes_return=موضوعات کی فہرست
 themes_err4=اوورلے تھیم کو تبدیل کرنے میں ناکام
 themes_eoverlay=منتخب کردہ اوورلے موجودہ عالمی تھیم کے ساتھ مطابقت نہیں رکھتا ہے
+
 themes_desc4=انسٹال کردہ تھیمز کو نیچے دیئے گئے فارم کا استعمال کرتے ہوئے ایک wbt.gz فائل کے طور پر ایکسپورٹ کیا جاسکتا ہے۔ اس کے بعد تھیم فائل کو ویبمین چلانے والے دوسرے سسٹم پر انسٹال کیا جاسکتا ہے۔
 themes_exportmods=برآمد کرنے کے لئے تھیمز
 themes_exportok=منتخب کردہ تھیمز برآمد کریں
+
 referers_title=قابل اعتبار حوالہ دہندگان
 referers_desc=یہ صفحہ آپ کو ویبمین کے حوالہ دینے والے چیکنگ سپورٹ کو مرتب کرنے کی اجازت دیتا ہے ، جو آپ کے براؤزر کو ویبمین کے ساتھ خطرناک چیزیں کرنے میں دھوکہ دینے والی دوسری ویب سائٹوں سے بدنیتی والی روابط کو روکنے کے لئے استعمال ہوتا ہے۔ تاہم ، اگر آپ کی ویب سائٹ سے آپ کی اپنی ویب سائٹوں سے روابط موجود ہیں جن کے بارے میں آپ کو متنبہ نہیں کرنا چاہتا ہے تو آپ کو ان سائٹس کو نیچے کی فہرست میں شامل کرنا چاہئے۔
 referers_list=قابل اعتبار ویب سائٹیں
@@ -742,6 +769,7 @@ referers_none2=انتباہ: یہ آپ کے سسٹم کو XSS حملوں تک ک
 referers_referer=ریفرر چیکنگ اہل ہے؟
 referers_err=حوالہ دہندگان کو بچانے میں ناکام
 referers_ehost='$1' is not a valid trusted hostname
+
 update_err=ماڈیولز کو اپ ڈیٹ کرنے میں ناکام
 update_eurl=لاپتہ یا غلط اپ ڈیٹ یو آر ایل
 update_title=ماڈیول اپ ڈیٹ کریں
@@ -762,6 +790,7 @@ update_rv=Checking for updated Webmin modules from $1
 update_eemail=اگر آپ صرف یہ بتاتے ہیں کہ کیا تازہ کاری ہوگی۔
 update_subject=ویبمین ماڈیولز کی تازہ کاری کی اطلاع
 update_version=A new release of Webmin (version $1) is now available for download. Future updates will be released only for the latest version.
+
 anon_title=گمنام ماڈیول تک رسائی
 anon_desc=This page allows you to grant access to selected Webmin modules and paths without clients needing to login. For each module path that you enter below (such as <tt>/custom</tt> or <tt>/passwd</tt>) you must also enter the name of a Webmin user whose permissions will be used for access to the module.
 anon_desc2=گمنام رسائی دیتے وقت آپ کو بہت محتاط رہنا چاہئے ، کیونکہ آئی پی تک ناکافی کنٹرول یا غلط ماڈیول تک رسائی دینے سے حملہ آور آپ کے سسٹم کو اپنے قبضہ میں لے سکتے ہیں۔
@@ -770,15 +799,19 @@ anon_user=ویب مین صارف
 anon_err=گمنام رسائی کو بچانے میں ناکام
 anon_eurl='$1' is not a valid URL path
 anon_euser=Missing or invalid Webmin user for URL path '$1'
+
 enogpg=GnuPG انسٹال نہیں ہے
+
 standard_failed=Failed to download modules list : $1
 standard_header=معیاری ویبمین ماڈیولز
 standard_warn=Warning - you are not running the latest Webmin version $1, so these modules will probably fail to install.
 standard_eurl=غلط معیاری ماڈیول یو آر ایل
+
 third_failed=Failed to download modules list : $1
 third_header=تھرڈ پارٹی ویبمین ماڈیولز
 third_eurl=غلط تیسری پارٹی کے ماڈیولز
 third_title=تیسری پارٹی کے ماڈیول کو منتخب کریں
+
 lock_title=فائل لاکنگ
 lock_desc=طے شدہ طور پر ، ویبمین کسی بھی فائل پر ایک لاک حاصل کرے گا جس میں اس میں ترمیم ہوتی ہے تاکہ متعدد عملوں کے ذریعہ ایک ساتھ ہونے والی ترمیم کو روکا جاسکے ، جس سے فائل میں بدعنوانی پیدا ہوسکتی ہے۔ یہ صفحہ آپ کو انتخابی طور پر یا مکمل طور پر تالا لگا کو غیر فعال کرنے کی اجازت دیتا ہے اگر یہ پریشانیوں کا باعث ہے۔
 lock_header=فائل کو لاک کرنے کی ترتیبات
@@ -789,6 +822,7 @@ lock_except=تمام فائلوں اور ڈائریکٹریوں کو لاک کر
 lock_err=فائل لاکنگ کو بچانے میں ناکام
 lock_edir='$1' is not an absolute path
 lock_edirs=کوئی فائلیں یا ڈائریکٹریز داخل نہیں کی گئیں
+
 ipkey_title1=SSL کلید بنائیں
 ipkey_title2=SSL کلید میں ترمیم کریں
 ipkey_header=IP سے متعلقہ SSL کلیدی تفصیلات
@@ -798,6 +832,7 @@ ipkey_eip2='$1' is not a valid IP address or hostname
 ipkey_eips=کوئی IP ایڈریس داخل نہیں کیا گیا
 ipkey_eextracas=کوئی اضافی سرٹیفکیٹ فائلیں داخل نہیں کی گئیں
 ipkey_eextraca=Additional certificate file $1 does not exist
+
 descs_title=ماڈیول عنوان
 descs_info=یہ صفحہ آپ کو ویبمین ماڈیولز کے لئے متبادل عنوانات کی وضاحت کرنے ، ان کی معیاری تفصیلات کو اوور رائڈ کرنے کی اجازت دیتا ہے۔
 descs_mod=ماڈیول
@@ -807,11 +842,13 @@ descs_cdesc=کلون عنوان
 descs_err=ماڈیول عنوان محفوظ کرنے میں ناکام
 descs_edesc=Missing title for module '$1'
 descs_etitle=Missing title for clone '$1'
+
 export_err=ماڈیول برآمد کرنے میں ناکام
 export_ecmd=Missing needed command $1
 export_efile=گم شدہ یا غلط برآمد فائل
 export_done=Successfully exported the selected modules to $1.
 export_title=ماڈیول برآمد کریں
+
 advanced_title=اعلی درجے کے اختیارات
 advanced_header=جدید اور تجرباتی اختیارات
 advanced_temp=عارضی فائلوں کی ڈائرکٹری
@@ -855,10 +892,13 @@ advanced_listdir=انڈیکس فائل کے بغیر ڈائریکٹریوں کی
 advanced_headers=اضافی HTTP ہیڈر
 advanced_eheader=Headers must be formatted like <tt>Header: Value</tt>
 advanced_sortconfigs=کنفگ فائلوں کو اس کی چابیاں کے مطابق ترتیب سے محفوظ کریں؟
+
 syslog_errorlog=ویبمین کی خرابی لاگ
+
 clear_title=ڈاؤن لوڈ کیشے کو صاف کریں
 clear_done=The Webmin cache containing $1 of files from $2 URLs has been successfully cleared.
 clear_none=ویبمین ڈاؤن لوڈ کیش میں فی الحال کوئی URL نہیں ہے۔
+
 savekey_err=نئی کلید کو بچانے میں ناکام
 savekey_ekey=PEM فارمیٹ کی کلید غائب یا غلط ہے
 savekey_ecert=لاپتہ یا غلط PEM فارمیٹ سرٹیفکیٹ
@@ -868,6 +908,7 @@ savekey_title=موجودہ کلید کو اپ لوڈ کریں
 savekey_done2=The supplied SSL key has been saved in $1, and the certificate in $2.
 savekey_done=The supplied SSL key and certificate have been saved in the file $1.
 savekey_done3=The supplied chained SSL certificate has been saved in the file $1.
+
 cache_title=کیشڈ یو آر ایل
 cache_search=یو آر ایل پر مشتمل تلاش کریں:
 cache_ok=تلاش کریں
@@ -880,8 +921,10 @@ cache_delete=کیشے سے فلش سلیکٹڈ
 cache_err=کیشڈ یو آر ایل کو فلش کرنے میں ناکام
 cache_enone=کوئی بھی منتخب نہیں ہوا
 cache_efile=غلط فائل نام
+
 restart_title=ویبمین کو دوبارہ شروع کرنا
 restart_done=ویب مین سرور کا عمل اب دوبارہ شروع ہو رہا ہے - براہ کرم جاری رکھنے سے پہلے چند سیکنڈ تک انتظار کریں۔
+
 mobile_title=موبائل ڈیوائس کے اختیارات
 mobile_header=موبائل براؤزرز کے لئے اختیارات
 mobile_theme=موبائل براؤزرز کے لئے تھیم
@@ -890,6 +933,7 @@ mobile_nosession=HTTP توثیق کا زبردستی استعمال کریں؟
 mobile_agents=موبائل براؤزرز کیلئے اضافی صارف ایجنٹ
 mobile_err=موبائل آلہ کے اختیارات کو بچانے میں ناکام
 mobile_prefixes=موبائل براؤزرز کے لئے URL کے میزبان نام کے سابقے
+
 blocked_title=مسدود میزبان اور صارف
 blocked_type=ٹائپ کریں
 blocked_who=میزبان نام یا صارف نام
@@ -901,9 +945,11 @@ blocked_host=مؤکل کا میزبان
 blocked_clear=تمام بلاکس کو صاف کریں
 blocked_cleardesc=ویب مین سرور کے عمل کو دوبارہ شروع کرکے ، تمام موجودہ میزبان اور صارف کے بلاکس کو صاف کرنے کے لئے اس بٹن پر کلک کریں۔
 blocked_restarting=ویبمین سرور عمل اب مسدود میزبانوں اور صارفین کو صاف کرنے کے لئے دوبارہ شروع ہو رہا ہے - براہ کرم جاری رکھنے سے پہلے چند سیکنڈ انتظار کریں۔
+
 refreshmods_title=ماڈیول ریفریش کریں
 refreshmods_installed=قابل استعمال ویبمین ماڈیول کی جانچ پڑتال ..
 refeshmods_counts=.. found $2 with installed applications, $1 not installed.
+
 debug_title=لاگ فائل کو ٹھیک کرنا
 debug_header=ویبمین ڈیبگ لاگ فائل کے اختیارات
 debug_enabled=ڈیبگ لاگ قابل ہے؟
@@ -931,6 +977,7 @@ debug_cmd=کمانڈ لائن
 debug_cron=پس منظر کی نوکریاں
 debug_inmods=ڈیبگ لاگ لکھنے کیلئے ماڈیولز
 debug_emodules=منتخب کرنے کے لئے ڈیبگ کرنے کے لئے کوئی ماڈیول نہیں ہیں
+
 notif_passexpired=آپ کا ویبمین پاس ورڈ ختم ہوگیا ہے! اگلے لاگ ان پر آپ اسے تبدیل کرنے پر مجبور ہوجائیں گے۔
 notif_passchange=Your Webmin password was last changed on $1, and must be changed in $2 days.
 notif_passlock=Your Webmin password was last changed on $1, and your account will be locked in $2 days if it is not changed.
@@ -946,6 +993,7 @@ notify_updatedesc=فکس مسئلہ
 notif_updateok=ابھی اپ ڈیٹس انسٹال کریں
 notif_reboot=حالیہ پیکیج اپ ڈیٹس (جیسے ایک نیا دانا ورژن) کو مکمل طور پر لاگو کرنے کے لئے ریبوٹ کی ضرورت ہوتی ہے۔
 notif_rebootok=اب دوبارہ شروع
+
 status_title=پس منظر کی حیثیت کا مجموعہ
 status_header=حیثیت جمع کرنے کی ملازمت کی ترتیبات
 status_interval=پس منظر میں سسٹم کی حیثیت جمع کریں؟
@@ -957,6 +1005,7 @@ status_temp=ڈرائیو کا درجہ حرارت جمع کریں؟
 status_units=درجہ حرارت کے لئے اکائیوں
 status_celsius=سیلسیس
 status_fahrenheit=فارن ہائیٹ
+
 sendmail_title=ای میل بھیجنا
 sendmail_desc=یہ صفحہ کنٹرول کرتا ہے کہ کیسے ویبمین ای میل بھیجتا ہے ، جیسے شیڈول بیک اپ یا پس منظر کی نگرانی سے۔ یہ ریڈر یوزر میل ماڈیول کا استعمال کرتے ہوئے بھیجی گئی ای میل پر اثر انداز ہوتا ہے۔
 sendmail_header=میل بھیجنے کے اختیارات
@@ -997,12 +1046,14 @@ sendmail_url=ای میل میں استعمال کیلئے ویبمین یو آر
 sendmail_url_def=پہلے سے طے شدہ ($1)
 sendmail_url_custom=حسب ضرورت URL
 sendmail_eurl=گم شدہ یا غلط کسٹمر یو آر ایل
+
 testmail_title=ٹیسٹ ای میل بھیجیں
 testmail_err=ٹیسٹ پیغام بھیجنے میں ناکام
 testmail_eto=منزل کا کوئی پتہ درج نہیں کیا گیا
 testmail_sending=Sending message from $1 to $2 ..
 testmail_done=.. پیغام چلا گیا. منزل کے پتے کے میل باکس کو چیک کریں تاکہ یہ یقینی بنایا جاسکے کہ یہ اصل میں پہنچا ہے۔
 testmail_failed=.. sending failed : $1
+
 web_title=ویب سرور کے اختیارات
 web_header=ویبمین کے بلٹ ان ویب سرور کے لئے اختیارات
 web_expires=جامد فائلوں کے لئے کلائنٹ سائڈ کیچ کا وقت
@@ -1014,6 +1065,7 @@ web_expirespaths=URL کے راستے پر مبنی کلائنٹ سائیڈ کی�
 web_expirespath=راستہ باقاعدہ اظہار
 web_expirestime=سیکنڈ میں کیش وقت
 web_eexpires2=Missing or non-numeric client side cache time in row $1
+
 webmincron_title=ویبمین کے شیڈول کردہ افعال
 webmincron_emodule=ویبمین کرون جابس ماڈیول انسٹال نہیں ہوا ہے!
 webmincron_module=ویب مین ماڈیول
@@ -1037,6 +1089,7 @@ webmincron_when1=مخصوص اوقات
 webmincron_secs=سیکنڈ
 webmincron_err=شیڈول فنکشن کو بچانے میں ناکام
 webmincron_einterval=وقفہ صفر سے کئی سیکنڈ زیادہ ہونا چاہئے
+
 twofactor_title=دو عنصر کی تصدیق
 twofactor_header=دو عنصر کی توثیق کے اختیارات
 twofactor_provider=توثیق فراہم کرنے والا
@@ -1075,6 +1128,7 @@ twofactor_secret1=تصادفی طور پر تیار کیا گیا
 twofactor_secret0=16-حرف کی کلید استعمال کریں
 twofactor_esecret=خفیہ کلید بالکل 16 حروف کی لمبی ہونی چاہئے اور اس میں صرف حرف اور نمبر شامل ہوں گے
 twofactor_esession=دو عنصر کی توثیق اس وقت تک استعمال نہیں کی جاسکتی ہے جب تک کہ سیشن پر مبنی تصدیق فعال نہ ہو
+
 letsencrypt_title=آئیے انکرپٹ سرٹیفکیٹ کی درخواست
 letsencrypt_err=سند کی درخواست کرنے میں ناکام
 letsencrypt_ecmds=Neither the Let's Encrypt client command <tt>certbot</tt> or the <tt>python</tt> command were found on your system
@@ -1108,5 +1162,6 @@ letsencrypt_ecsr=Failed to generate CSR : $1
 letsencrypt_ekeygen=Failed to generate private key : $1
 letsencrypt_enative=مقامی لیٹ انکرپٹ کلائنٹ (سیرٹبوٹ) پہلے اس سسٹم میں استعمال ہوتا تھا ، اور آئندہ سرٹیفکیٹ کی تمام درخواستوں کے ل used اسے استعمال کیا جانا چاہئے
 letsencrypt_eacmedns=صرف آفیسیکل چلو انکرپٹ کلائنٹ DNS پر مبنی توثیق کی حمایت کرتا ہے
+
 announce_hide=اس اعلان کو چھپائیں
 alert_hide=الرٹ چھپائیں

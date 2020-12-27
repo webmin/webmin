@@ -9,6 +9,7 @@ index_restart=Reporniți Webmin
 index_restartmsg=Faceți clic pe acest buton pentru a relansa procesul serverului Webmin. Acest lucru poate fi necesar dacă ați actualizat recent Perl.
 index_refresh=Module de actualizare
 index_refreshmsg=Verificați din nou toate modulele Webmin pentru serverele instalate și actualizați cele care apar în categoria „Module neutilizate”.
+
 access_title=Control acces IP
 access_desc=Serverul Webmin poate fi configurat pentru a refuza sau permite accesul numai de la anumite adrese IP folosind acest formular. Numele de gazdă (cum ar fi foo.bar.com) și rețelele IP (cum ar fi 10.254.3.0 sau 10.254.1.0/255.255.255.128 sau 10.254.1.0/25 sau 10.254.1.5-10.254.97.127) pot fi de asemenea introduse. Ar trebui să vă limitați accesul la serverul dvs. la adrese de încredere, mai ales dacă este accesibil de pe Internet. În caz contrar, oricine ghicește parola dvs. va avea controlul complet asupra sistemului dvs.
 access_ip=Adrese IP permise
@@ -33,6 +34,7 @@ access_ehost=Nu a putut găsi adresa IP pentru „$1”
 access_eself=Adresa IP curentă ($1) ar fi refuzată
 access_always=Rezolvați numele de gazdă la fiecare cerere?
 access_trust=Aveți încredere în adresa IP de la distanță furnizată de proxy
+
 bind_title=Porturi și adrese
 bind_desc2=Acest formular poate fi utilizat pentru a schimba numărul de port pe care îl ascultă Webmin sau pentru a-l asculta doar pe o singură adresă IP din sistemul dumneavoastră. Puteți configura, de asemenea, pentru a accepta conexiuni pe mai multe porturi sau pentru a asculta mai multe adrese IP. Notă - browserul dvs. web vă poate solicita să vă conectați din nou după schimbarea portului sau a adresei de legare.
 bind_header=Adrese IP și porturi
@@ -61,6 +63,7 @@ bind_eipv6=IPv6 nu poate fi activat decât dacă este instalat modulul $1 Perl
 bind_redirecting=Redirecționarea către o adresă URL nouă ..
 bind_elsof=Portul nou $1 este deja folosit de un alt proces
 bind_eonsystem=Adresa IP $1 nu este activă pe acest sistem, deci nu poate fi utilizată
+
 log_title=Logare
 log_desc=Webmin poate fi configurat pentru a scrie un jurnal de accesări pe serverul web, în formatul standard al fișierului jurnal CLF. Dacă logarea este activată, puteți alege, de asemenea, dacă sunt înregistrate adrese IP sau nume de gazdă și cât de des este șters fișierul jurnal. Când este activat, jurnalele sunt scrise în fișierul $1.
 log_desc2=Când logarea este activată, Webmin va scrie și un jurnal mai detaliat al acțiunilor utilizatorului în fișierul $1. Acest jurnal poate fi vizualizat și analizat cu modulul Jurnal de acțiuni Webmin pentru a vedea exact ce a făcut fiecare utilizator Webmin.
@@ -92,6 +95,7 @@ log_login=Includeți conectările și logouturile Webmin în jurnalul de acțiun
 log_email=Trimiteți acțiuni conectate prin e-mail la
 log_emailnone=Nu trimite
 log_inmodsemail=Trimiteți e-mail pentru acțiuni în
+
 proxy_title=Servere și descărcări proxy
 proxy_desc=Dacă gazda pe care rulează Webmin se află în spatele unui firewall de un fel, poate fi necesar să setați serverul proxy pe care să-l folosească pentru accesarea site-urilor web și FTP. Anumite module, cum ar fi <tt>Pachetele de software</tt>, vor folosi aceste proxy la descărcarea fișierelor sau programelor.
 proxy_header=Servere proxy
@@ -134,6 +138,7 @@ proxy_return=servere proxy și descărcări
 proxy_tabproxy=proxy
 proxy_tabdown=Descărcarea
 proxy_fallback=Încercați o solicitare directă dacă proxy-ul este redus?
+
 ui_title=Interfața cu utilizatorul
 ui_desc=Acest formular vă permite să editați opțiunile de interfață de utilizator utilizate de toate modulele. La introducerea culorilor, fiecare trebuie specificat folosind sistemul RGB standard, unde fiecare valoare este un număr hexagonal de la 00 la ff.
 ui_header=Opțiuni de interfață utilizator
@@ -183,6 +188,7 @@ ui_dateformat_dd/mm/yyyy=dd/mm/aaaa (adică 16/09/2001)
 ui_dateformat_mm/dd/yyyy=mm/dd/aaaa (adică 16/09/2001)
 ui_dateformat_yyyy/mm/dd=aaaa/mm/dd (adica 2001/09/16)
 ui_ehostnamedisplay=Numele gazdă afișat lipsește sau este nevalid
+
 mods_title=Module Webmin
 mods_desc1=Modulele Webmin pot fi adăugate după instalare folosind formularul din dreapta. Modulele sunt de obicei distribuite în fișierele <tt>.wbm</tt>, fiecare dintre ele putând conține unul sau mai multe module. De asemenea, modulele pot fi instalate din fișiere RPM dacă sunt acceptate de sistemul dvs. de operare.
 mods_installsource=Instalați din
@@ -226,6 +232,7 @@ mods_tabinstall=Instalare
 mods_tabclone=Clone
 mods_tabdelete=Șterge
 mods_tabexport=Export
+
 install_err1=Instalarea modulului a eșuat din $1
 install_efile=Fisierul nu exista
 install_err2=Instalarea modulului încărcat nu a reușit
@@ -259,10 +266,12 @@ install_cat=La categoria $1.
 install_eneither=RPM nu conține un modul sau o temă webmin
 install_err4=Instalarea modulului standard nu a reușit
 install_emissing=Modulul specificat nu există
+
 clone_err=Modulul de clonare nu a reușit
 clone_elink=symlink a eșuat : $1
 clone_ecopy=nu a reușit să copieze configurația : $1
 clone_desc=Clonă din $1
+
 delete_err=Nu a reușit ștergerea modulelor
 delete_edep=Modulul $1 nu poate fi șters, deoarece modulul $2 depinde de acesta
 delete_desc1=$1 (Clona lui $2)
@@ -274,6 +283,7 @@ delete_rusure2=Sigur doriți să ștergeți tema $2? $1 kB de fișiere va fi șt
 delete_rusure3=Sigur doriți să ștergeți clonele (modulele) $2?
 delete_acls=Ștergeți de la utilizatori și resetați setările de control de acces?
 delete_enone=Nu au fost selectate module
+
 os_title=Sistem de operare și mediu
 os_desc3=Această pagină afișează sistemul de operare detectat de Webmin la momentul instalării și sistemul care este detectat în prezent. Dacă acestea sunt diferite, puteți alege să actualizați informațiile despre sistemul de operare Webmin, ceea ce poate fi necesar dacă ați actualizat recent.
 os_desc2=De asemenea, puteți schimba calea de căutare folosită de Webmin la rularea programelor, iar calea de bibliotecă partajată a trecut la orice programe.
@@ -296,6 +306,7 @@ os_eiversion=Lipsește versiunea sistemului de operare intern
 os_incorrect=Avertisment - sistemul tău rulează de fapt $1 versiunea $2.
 os_fix=Actualizați sistemul de operare detectat
 os_usermin=Actualizați, de asemenea, sistemul de operare Usermin
+
 lang_title=Limba
 lang_title2=Limba Webmin
 lang_lang=Afișare în limbă
@@ -307,6 +318,7 @@ lang_chardef=Determinat de limbaj
 lang_charover=Set de caractere forță
 lang_err=Nu a reușit să salvezi limba
 lang_echarset=Set de caractere lipsit sau cu aspect nevalid
+
 ssl_title=Criptare SSL
 ssl_essl=Modulul Net::SSLeay perl nu pare să fie instalat pe sistemul dvs. Pentru a instala biblioteca OpenSSL și Net::SSLeay, urmați <a href='$1'>aceste instrucțiuni</a> de pe site-ul Webmin.
 ssl_cpan=În mod alternativ, puteți descărca și instala Weba <a href='$1'>pentru a descărca și instala</a> modulul Net::SSLeay Perl necesar pentru dvs.
@@ -412,6 +424,7 @@ ssl_letsnotrenew=Reînnoiește manual numai
 ssl_staging=Să criptăm serverul
 ssl_staging0=Real
 ssl_staging1=Înscenare (doar test)
+
 newkey_err=Crearea cheii SSL nu a reușit
 newkey_ecn=Numele serverului lipsesc sau nevalide
 newkey_ecns=Nu au fost introduse nume de server
@@ -424,11 +437,13 @@ newkey_ok=Generați cu succes următoarea cheie SSL :
 newkey_esize=Dimensiunea cheii lipsă sau nevalidă
 newkey_edays=Lipsește sau este nevalid un număr de zile înainte de expirare
 newkey_ecountry=Codul țării trebuie să fie de două litere
+
 newcsr_err=Nu a reușit să creeze SSL CSR
 newcsr_efile=Lipsește numele fișierului CSR
 newcsr_title=Generați CSR
 newcsr_ok=A generat cu succes următoarea solicitare de certificare SSL :
 newcsr_ok2=Acest CSR trebuie trimis unei autorități semnatare, care va returna un certificat semnat. Aceasta poate fi instalată cu cheia de mai sus folosind fila <b>Încărcare certificat</b>.
+
 startpage_title=Opțiuni pe pagina indexului
 startpage_intro2=Această pagină vă permite să controlați aspectul meniului principal Webmin. Unele opțiuni pot fi eficiente numai atunci când utilizați tema implicită.
 startpage_tabs=Categorizați modulele?
@@ -442,6 +457,7 @@ startpage_gotonone=&lt;None&gt;
 startpage_gotomodule=După conectare, mergeți întotdeauna la modul
 startpage_webminup=Afișați actualizări Webmin pe pagina Informații despre sistem?
 startpage_moduleup=Afișați actualizări ale modulului pe pagina Informații despre sistem?
+
 upgrade_title=Actualizați Webmin
 upgrade_desc=Acest formular vă permite să actualizați întreaga dvs. instalare Webmin la o nouă versiune. Puteți instala dintr-un fișier local, un fișier încărcat sau din cea mai recentă versiune la <a href=http://www.webmin.com/>www.webmin.com</a>. La fel ca în cazul unui upgrade manual, toate setările de configurare și modulele terță parte vor fi păstrate.
 upgrade_descrpm=Acest formular vă permite să actualizați întreaga dvs. instalare webmin la o nouă versiune utilizând opțiunea de upgrade RPM. Puteți instala dintr-un fișier RPM local, un fișier încărcat sau din cea mai recentă versiune la <a href=http://www.webmin.com/>www.webmin.com</a>. La fel ca în cazul unui upgrade manual, toate setările de configurare și modulele terță parte vor fi păstrate.
@@ -506,10 +522,12 @@ upgrade_tabupdate=Module de actualizare
 upgrade_tabsched=Actualizare programată
 upgrade_src=Actualizați Webmin din
 upgrade_opts=Opțiuni de upgrade
+
 newmod_desc=Când Webmin este actualizat, orice module noi din noua versiune vor fi acordate unuia sau mai multor utilizatori. Acest formular vă permite să setați utilizatorii care primesc module noi. Această setare se va aplica la actualizarea la linia de comandă sau la utilizarea formularului de mai sus.
 newmod_header=Subvenții pentru modul nou
 newmod_def=Comportament implicit - acordați noi module <tt>root</tt> sau <tt>admin</tt>
 newmod_users=Acordă module noi pentru :
+
 update_desc1=Acest formular vă permite să actualizați module Webmin despre care s-a descoperit că conțin buguri sau găuri de securitate din <a href=http://www.webmin.com/updates.html>Actualizări Webmin</a> sau din altă sursă. Acest lucru va compara modulele instalate în prezent cu cele disponibile pentru actualizare și, în mod opțional, se vor descărca și instala automat orice module care nu sunt depășite.
 update_header1=Actualizați modulele acum
 update_header2=Actualizați modulele în grafic
@@ -536,6 +554,7 @@ update_enomodsig=Nu s-a putut descărca fișierul de semnătură pentru modul : 
 update_ebadmodsig=Verificarea semnăturii modulului a eșuat : $1
 update_src=Modificați module din
 update_opts=Opțiuni de actualizare a modulului
+
 ca_title=Autoritate certificată
 ca_old=Certificat existent
 ca_header1=Creați un nou certificat CA
@@ -567,6 +586,7 @@ ca_eminiserv=Certificatele de client SSL sunt acceptate numai în miniserv.
 ca_eversion=Versiunea modulului Perl Net::SSLeay instalat pe sistemul dvs. nu acceptă certificatele de client SSL.
 ca_essleay=Comanda de administrare SSL $1 nu a fost găsită în sistemul dvs. Este posibil să fie nevoie să schimbați calea în configurația modulului Utilizatori Webmin.
 ca_essl=Certificarea SSL poate fi configurată numai atunci când webserver-ul rulează în modul SSL.
+
 session_title=Autentificare
 session_desc1=Când este activat, intervalele de timp protejate de parolă protejează serverul Webmin de atacurile de fisurare a parolei cu forțe brute prin adăugarea unei întârzieri în continuă expansiune între fiecare încercare de conectare eșuată pentru același utilizator.
 session_header=Opțiuni de autentificare și sesiune
@@ -630,10 +650,12 @@ session_sha512=Utilizați criptarea SHA512
 session_emd5mod=Criptarea MD5 nu poate fi utilizată, deoarece modulul Perl $1 nu este instalat.
 session_esha512mod=Criptarea SHA512 nu poate fi utilizată, deoarece modulul Perl $1 nu este instalat.
 session_blocklock=De asemenea, blocați utilizatorii cu autentificări eșuate
+
 assignment_title=Reasignarea modulelor
 assignment_header=Alocări de categorii de module
 assignment_ok=Schimbați categoriile
 assignment_desc=Acest formular vă permite să configurați în ce categorie este afișat fiecare modul în pagina de index Webmin.
+
 categories_title=Modificați categoriile
 categories_header=ID de categorie și descrieri
 categories_desc=Acest formular vă permite să redenumiți categoriile Webmin existente și să le creați noi pentru a atribui module. Partea superioară a tabelului este pentru modificarea descrierilor categoriilor încorporate, în timp ce partea de jos este pentru adăugarea de ID-uri și descrieri de categorii noi.
@@ -646,6 +668,7 @@ categories_name=Descrierea afișată
 categories_lang=Editați categoriile în limbă:
 categories_langok=Schimbare
 categories_custom=Personalizat
+
 log_access=Schimbarea controlului de acces IP
 log_bind=Port și adresă schimbate
 log_log=Opțiuni de jurnal modificate
@@ -691,6 +714,7 @@ log_onedelete_webmincron=Funcția programată ștersă din modulul $1
 log_letsencrypt=A fost solicitat un nou certificat SSL de la Let's Encrypt
 log_letsencryptdns=Creat Hai să criptăm înregistrarea DNS pentru $1
 log_letsencryptcleanup=Eliminat Să criptăm înregistrarea DNS pentru $1
+
 themes_title=Teme Webmin
 themes_desc=Temele controlează aspectul interfeței de utilizator Webmin, inclusiv pictograme, culori, fundaluri și aspectul paginilor. Caseta de selectare de mai jos poate fi utilizată pentru a alege una dintre temele instalate pe sistemul dvs.
 themes_sel=Tema actuală :
@@ -706,6 +730,7 @@ themes_taboverlay=Schimbați suprapunerea
 themes_tabinstall=Instalați tema
 themes_tabdelete=Ștergeți teme
 themes_tabexport=Exportați teme
+
 themes_err1=Instalarea nu a reușit tema de la $1
 themes_efile=Fisierul nu exista
 themes_err2=Instalarea temei încărcate nu a reușit
@@ -731,9 +756,11 @@ themes_delok=Tema de șters :
 themes_return=lista temelor
 themes_err4=Nu a reușit să schimbe tema suprapunerii
 themes_eoverlay=Suprapunerea selectată nu este compatibilă cu tema globală actuală
+
 themes_desc4=Temele instalate pot fi exportate ca fișier wbt.gz folosind formularul de mai jos. Un fișier temă poate fi apoi instalat pe un alt sistem care rulează Webmin.
 themes_exportmods=Teme de export
 themes_exportok=Exportați teme selectate
+
 referers_title=Referitori de încredere
 referers_desc=Această pagină vă permite să configurați asistența de verificare a referitorului Webmin, care este folosită pentru a preveni link-urile dăunătoare de la alte site-uri web care păcălesc browserul să facă lucruri periculoase cu Webmin. Cu toate acestea, dacă aveți link-uri către Webmin de pe site-urile proprii despre care nu doriți să fiți avertizați, ar trebui să adăugați aceste site-uri în lista de mai jos.
 referers_list=Site-uri web de încredere
@@ -742,6 +769,7 @@ referers_none2=AVERTIZARE: Aceasta deschide sistemul dvs. la atacuri XSS!
 referers_referer=Verificarea referitorului este activată?
 referers_err=Nu a reușit să salveze arbitrii
 referers_ehost=„$1” nu este un nume de gazdă de încredere valid
+
 update_err=Actualizarea modulelor nu a reușit
 update_eurl=URL de actualizare lipsă sau nevalidă
 update_title=Module de actualizare
@@ -762,6 +790,7 @@ update_rv=Se verifică modulele Webmin actualizate de la $1
 update_eemail=Trebuie să introduceți o adresă de e-mail dacă arătați doar ce ar fi actualizat.
 update_subject=Raportul de actualizare a modulelor Webmin
 update_version=O nouă versiune de Webmin (versiunea $1) este acum disponibilă pentru descărcare. Actualizările viitoare vor fi lansate numai pentru cea mai recentă versiune.
+
 anon_title=Acces la modul anonim
 anon_desc=Această pagină vă permite să acordați acces la modulele și căile Webmin selectate fără ca clienții să fie nevoiți să se autentifice. Pentru fiecare cale de modul pe care o introduceți mai jos (cum ar fi <tt>/custom</tt> sau <tt>/passwd</tt>), trebuie să introduceți și numele unui utilizator Webmin ale cărui permisiuni vor fi utilizate pentru accesul la modul.
 anon_desc2=Ar trebui să fiți foarte atent atunci când acordați acces anonim, deoarece controale de acces IP insuficiente sau acordarea accesului la modulul greșit pot permite atacatorilor să preia sistemul dumneavoastră.
@@ -770,15 +799,19 @@ anon_user=Utilizator Webmin
 anon_err=Nu a reușit salvarea accesului anonim
 anon_eurl=„$1” nu este o cale URL validă
 anon_euser=Utilizator Webmin lipsă sau nevalid pentru calea URL „$1”
+
 enogpg=GnuPG nu este instalat
+
 standard_failed=Nu a reușit să descarce lista de module : $1
 standard_header=Module Webmin standard
 standard_warn=Avertisment - nu executați cea mai recentă versiune Webmin $1, deci aceste module nu vor fi probabil instalate.
 standard_eurl=URL-ul modulelor standard nevalide
+
 third_failed=Nu a reușit să descarce lista de module : $1
 third_header=Module Webmin pentru terți
 third_eurl=URL-ul modulelor terță parte nevalid
 third_title=Selectați modul terț
+
 lock_title=Blocarea fișierelor
 lock_desc=În mod implicit, Webmin va obține un blocaj pe orice fișier pe care îl modifică pentru a preveni modificarea simultană prin mai multe procese, ceea ce ar putea duce la corupția fișierului. Această pagină vă permite să dezactivați selectiv sau total blocarea, dacă cauzează probleme.
 lock_header=Setări de blocare a fișierelor
@@ -789,6 +822,7 @@ lock_except=Blocați toate fișierele și directoarele, cu excepția ..
 lock_err=Nu a reușit să salveze blocarea fișierului
 lock_edir=„$1” nu este o cale absolută
 lock_edirs=Nu au fost introduse fișiere sau directoare
+
 ipkey_title1=Creare cheie SSL
 ipkey_title2=Editează cheia SSL
 ipkey_header=Detalii despre cheia SSL specifică IP-ului
@@ -798,6 +832,7 @@ ipkey_eip2=„$1” nu este o adresă IP sau un nume gazdă valide
 ipkey_eips=Nu au fost introduse adrese IP
 ipkey_eextracas=Nu au fost introduse fișiere de certificat suplimentare
 ipkey_eextraca=Fișierul de certificat suplimentar $1 nu există
+
 descs_title=Titluri modul
 descs_info=Această pagină vă permite să specificați titluri alternative pentru module Webmin, pentru a trece peste descrierile lor standard.
 descs_mod=Modul
@@ -807,11 +842,13 @@ descs_cdesc=Titlu clonă
 descs_err=Nu a putut salva titlurile modulului
 descs_edesc=Titlul lipsește pentru modulul „$1”
 descs_etitle=Titlul lipsă pentru clona „$1”
+
 export_err=Nu a reușit să exporte module
 export_ecmd=Lipsește comanda necesară $1
 export_efile=Fișierul de export lipsă sau nevalid
 export_done=Exportul cu succes a modulelor selectate în $1.
 export_title=Module de export
+
 advanced_title=Opțiuni avansate
 advanced_header=Opțiuni avansate și experimentale
 advanced_temp=Director de fișiere temporare
@@ -855,10 +892,13 @@ advanced_listdir=Listă directoare fără fișier index?
 advanced_headers=Anteturi HTTP suplimentare
 advanced_eheader=Anteturile trebuie să fie formatate ca <tt>Antet: valoare</tt>
 advanced_sortconfigs=Salvați fișierele configurate sortate după cheile sale?
+
 syslog_errorlog=Jurnal de erori Webmin
+
 clear_title=Ștergeți Cache Descărcare
 clear_done=Cache-ul Webmin care conține $1 de fișiere din $2 URL-urile a fost șters cu succes.
 clear_none=În momentul de față nu există URL-uri în cache-ul de descărcare Webmin.
+
 savekey_err=Nu a reușit să salveze cheia nouă
 savekey_ekey=Cheia în format PEM lipsă sau nevalidă
 savekey_ecert=Certificat format PEM lips sau invalid
@@ -868,6 +908,7 @@ savekey_title=Încărcați cheia existentă
 savekey_done2=Cheia SSL furnizată a fost salvată în $1, iar certificatul în $2.
 savekey_done=Cheia și certificatul SSL furnizate au fost salvate în fișierul $1.
 savekey_done3=Certificatul SSL în lanț furnizat a fost salvat în fișierul $1.
+
 cache_title=Adrese URL în cache
 cache_search=Găsiți adrese URL care conțin:
 cache_ok=Căutare
@@ -880,8 +921,10 @@ cache_delete=Flush selectat din cache
 cache_err=Nu a reușit să curățați adresele URL din cache
 cache_enone=Nimic selectat
 cache_efile=Nume invalid
+
 restart_title=Repornește Webmin
 restart_done=Procesul serverului Webmin se repornește - așteptați câteva secunde înainte de a continua.
+
 mobile_title=Opțiuni dispozitiv mobil
 mobile_header=Opțiuni pentru browserele mobile
 mobile_theme=Tema pentru browserele mobile
@@ -890,6 +933,7 @@ mobile_nosession=Utilizați forța de autentificare HTTP?
 mobile_agents=Agenți de utilizator suplimentari pentru browsere mobile
 mobile_err=Nu a reușit să salvați opțiunile dispozitivului mobil
 mobile_prefixes=Prefixe nume URL gazdă pentru browsere mobile
+
 blocked_title=Gazde și Utilizatori Blocați
 blocked_type=Tip
 blocked_who=Nume gazdă sau nume utilizator
@@ -901,9 +945,11 @@ blocked_host=Gazda clientului
 blocked_clear=Ștergeți toate blocurile
 blocked_cleardesc=Faceți clic pe acest buton pentru a șterge toate blocurile de gazdă și utilizator curente, repornind procesul serverului Webmin.
 blocked_restarting=Procesul serverului Webmin se repornește acum pentru a șterge gazdele și utilizatorii blocați - așteptați câteva secunde înainte de a continua.
+
 refreshmods_title=Module de actualizare
 refreshmods_installed=Se verifică modulele utilizabile Webmin ..
 refeshmods_counts=.. găsit $2 cu aplicațiile instalate, $1 nu sunt instalate.
+
 debug_title=Debugging File File
 debug_header=Opțiuni de fișier jurnal de depanare Webmin
 debug_enabled=Jurnalul de depanare activat?
@@ -931,6 +977,7 @@ debug_cmd=Linie de comanda
 debug_cron=Joburi de fond
 debug_inmods=Module pentru a scrie jurnalele de depanare pentru
 debug_emodules=Nu există module de depanat pentru selectate
+
 notif_passexpired=Parola dvs. Webmin a expirat! Veți fi obligat să o schimbați la următoarea autentificare.
 notif_passchange=Parola dvs. Webmin a fost modificată ultima dată în $1 și trebuie schimbată în $2 zile.
 notif_passlock=Parola dvs. Webmin a fost modificată ultima dată în $1, iar contul dvs. va fi blocat în $2 zile dacă nu este modificat.
@@ -946,6 +993,7 @@ notify_updatedesc=Rezolvă problema
 notif_updateok=Instalați actualizări acum
 notif_reboot=Actualizările recente de pachete (cum ar fi o nouă versiune de kernel) necesită o repornire completă pentru a fi aplicată complet.
 notif_rebootok=Restarteaza acum
+
 status_title=Colecția de stare de fundal
 status_header=Setări de lucru pentru colecția de stare
 status_interval=Colectați starea sistemului în fundal?
@@ -957,6 +1005,7 @@ status_temp=Adunați temperaturile de acționare?
 status_units=Unități pentru temperaturi
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
+
 sendmail_title=Se trimite un e-mail
 sendmail_desc=Această pagină controlează modul în care Webmin trimite un e-mail, cum ar fi de la backup-uri programate sau monitorizare de fundal. De asemenea, afectează e-mailurile trimise utilizând modulul Citire poșta utilizator.
 sendmail_header=Opțiuni de trimitere prin poștă
@@ -997,12 +1046,14 @@ sendmail_url=Adresa URL Webmin pentru utilizare în e-mail
 sendmail_url_def=Implicit ($1)
 sendmail_url_custom=adresa URL personalizată
 sendmail_eurl=Adresă URL personalizată lipsă sau nevalidă
+
 testmail_title=Trimiteți e-mailul de testare
 testmail_err=Eroare la trimiterea mesajului de testare
 testmail_eto=Nu a fost introdusă nicio adresă de destinație
 testmail_sending=Se trimite mesaj de la $1 la $2 ..
 testmail_done=.. mesaj trimis. Verificați căsuța poștală a adresei de destinație pentru a vă asigura că a fost livrată efectiv.
 testmail_failed=.. trimiterea a eșuat : $1
+
 web_title=Opțiuni server web
 web_header=Opțiuni pentru serverul Web încorporat Webmin
 web_expires=Timpul de cache din partea clientului pentru fișierele statice
@@ -1014,6 +1065,7 @@ web_expirespaths=Timpurile de cache din partea clientului, bazate pe calea URL
 web_expirespath=Expresie regulată a căii
 web_expirestime=Timpul de cache în câteva secunde
 web_eexpires2=Timpul de cache al clientului care lipsește sau nu este numeric în rândul $1
+
 webmincron_title=Funcții programate pentru Webmin
 webmincron_emodule=Modulul Webmin Cron Jobs nu este instalat!
 webmincron_module=Modul Webmin
@@ -1037,6 +1089,7 @@ webmincron_when1=Ore specifice
 webmincron_secs=secunde
 webmincron_err=Nu a reușit salvarea funcției programate
 webmincron_einterval=Intervalul trebuie să fie un număr de secunde mai mare decât zero
+
 twofactor_title=Autentificare cu doi factori
 twofactor_header=Opțiuni de autentificare cu doi factori
 twofactor_provider=Furnizor de autentificare
@@ -1075,6 +1128,7 @@ twofactor_secret1=Generat la întâmplare
 twofactor_secret0=Utilizați cheia cu 16 caractere
 twofactor_esecret=Cheia secretă trebuie să aibă exact 16 caractere și să conțină doar litere și numere
 twofactor_esession=Autentificarea cu doi factori nu poate fi utilizată decât dacă este activă autentificarea bazată pe sesiune
+
 letsencrypt_title=Să cripțăm cererea de certificare
 letsencrypt_err=A eșuat solicitarea certificatului
 letsencrypt_ecmds=Nici comanda clientului „Encrypt <tt>certbot</tt> sau comanda <tt>python</tt> nu au fost găsite în sistemul dvs.
@@ -1108,5 +1162,6 @@ letsencrypt_ecsr=Generația CSR nu a reușit : $1
 letsencrypt_ekeygen=Eroare la generarea cheii private : $1
 letsencrypt_enative=Clientul Let's Encrypt (certificbot) nativ a fost folosit anterior pe acest sistem și trebuie utilizat pentru toate viitoarele solicitări de certificare
 letsencrypt_eacmedns=Doar clientul Offical Let's Encrypt acceptă validarea bazată pe DNS
+
 announce_hide=Ascundeți acest anunț
 alert_hide=Ascundeți alerta

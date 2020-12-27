@@ -11,6 +11,7 @@ index_when=Iva, $1
 index_act=Azzjoni
 index_exec=Teżegwixxi
 index_delete=Ħassar Kopji magħżula
+
 edit_title=Editja Kopja tal-Kluster
 create_title=Oħloq Kopja Cluster
 edit_header=Dettalji tal-kopja tal-grupp
@@ -31,12 +32,14 @@ edit_run=Ikkopja Issa
 edit_return=Kopja ta 'raggruppament
 edit_email=Produzzjoni tal - Email lil
 edit_none=Ħadd
+
 save_err=Ma rnexxielux isalva xogħol ta 'cron tal-cluster
 save_efiles=L-ebda fajl għall-kopja ma jiddaħħal
 save_edest=Direttorju tad-destinazzjoni nieqes
 save_eservers=L-ebda server li kopja ma jiddaħħal
 save_efile=Fajl li tikkopja "$1" mhix triq assoluta
 save_eemail=Indirizz tal-email nieqes jew invalidu
+
 exec_title=Kopja ta 'Fajls
 exec_files1=Ikkopja fajls $1 fuq servers magħżula $2 ..
 exec_files2=Ikkopja $1 fuq is-servers magħżula $2 ..
@@ -50,12 +53,15 @@ exec_not=Naqset milli tikkopja l-fajls li ġejjin għal $1  :
 exec_cmd=Produzzjoni tal-kmand ta 'wara l-kopja fuq $1  :
 exec_before=Output tal-kmand qabel il-kopja fuq $1  :
 exec_on=Ma rnexxielux jaħdem fuq $1 : $2 
+
 log_create=Kopja maħluqa għal servers ta ' $1 sa $2 
 log_modify=Kopja modifikata għas-servers $1 sa $2 
 log_delete=Kopja mħassra għas-servers $1 sa $2 
 log_exec=Ikkopja servers ta ' $1 sa $2 
 log_deletes=Kopji mħassra $1 
+
 email_subject_succeeded=Kopja ta 'cluster ta' $1 irnexxielha
 email_subject_failed=Kopja tal-kluster ta ' $1 falliet
+
 delete_err=Naqset milli tħassar il-kopji
 delete_enone=L-ebda magħżul

@@ -18,6 +18,7 @@ index_delete=선택된 것 삭제
 index_group=$1 구성원
 index_tmpls=메일 템플릿 편집
 index_tmplsdesc=모니터 하는 서비스가 다운되었을 때 보낼 사용하기 위한 메일 템플릿 보기 및 편집
+
 type_apache=Apache 웹 서버
 type_inetd=인터넷 및 RPC 서버
 type_xinetd=확장 인터넷 서버
@@ -65,6 +66,7 @@ type_dns=DNS 룩업
 type_query=SQL 질의
 type_alive=작동중인 시스템
 type_rssh=원격 SSH
+
 mon_create=모니터 작성
 mon_edit=모니터 편집
 mon_header=모니터 세부 정보
@@ -117,6 +119,7 @@ mon_members=$! 구성원
 mon_enoremote=선택된 것을 실행하기 위한 호스트나 그룹이 없습니다.
 mon_tmpl=메시지 템플릿
 mon_notmpl=없음 (Webmin 기본 사용)
+
 sched_title=예약된 모니터링
 sched_header=예약된 백그라운드 모니터링 옵션
 sched_mode=예약된 검사를 사용 가능
@@ -157,16 +160,19 @@ sched_smsno=안함
 sched_smscarrier=사용 회선
 sched_smsnumber=숫자로
 sched_esmsnumber=SMS 숫자가 지정되지 않았거나 숫자가 아닙니다.
+
 up_since=$1 이후 작동
 depends_mod=시스템에 $1 모듈이 설치되어 있지 않습니다.
 depends_os=시스템에 $1 모듈이 지원되지 않습니다.
 depends_remote=서버 $2에서 $1 모듈이 지원되지 않습니다
+
 tcp_host=연결할 호스트
 tcp_port=연결할 포트
 tcp_alarm=연결 시간 초과
 tcp_ehost=없거나 잘못된 호스트 이름
 tcp_eport=없거나 잘못된 포트 번호
 tcp_ealarm=없거나 잘못된 연결 시간 초과
+
 http_url=요청할 URL
 http_alarm=연결 시간 초과
 http_eurl=없거나 잘못된 URL
@@ -181,11 +187,13 @@ http_regexp=삐삐는 정규식과 일치해야 합니다.
 http_eregexp=입력된 정규 표현식과 일치하는 삐삐가 없습니다.
 http_none2=찾을 수 없음
 http_ehead=정규 표현식으로 검사시에 HEAD 요청 방식은 사용할 수 없습니다.
+
 ping_host=Ping할 호스트
 ping_wait=응답 대기 시간
 ping_ehost=없거나 잘못된 호스트 이름
 ping_ewait=대기 시간이 지정되지 않았거나 올바르지 않습니다.
 ping_econfig=모듈 구성에 설정된 Ping 명령이 없습니다
+
 proc_pid=PID $1을(를) 사용하여 실행 중
 proc_cmd=검사할 명령
 proc_not=프로세스가 다음의 상태일 경우 실패
@@ -193,8 +201,10 @@ proc_not0=실행 중 아님
 proc_not1=실행 중
 proc_ecmd=없는 명령
 proc_ethresh=프로세스 수가 지정되지 않았거나 올바르지 않습니다.
+
 exec_cmd=종료 상태를 검사할 명령
 exec_ecmd=존재하지 않는 명령
+
 file_file=검사할 파일
 file_test=수행할 테스트
 file_test_0=파일이 있습니다
@@ -204,6 +214,7 @@ file_test_3=파일이 다음보다 작습니다
 file_bytes=바이트
 file_efile=검사할 파일 이름이 없습니다
 file_esize=파일 크기가 잘못되었습니다
+
 traffic_iface=모니터 인터페이스
 traffic_bytes=최대 byte/초
 traffic_dir=직접 모티어
@@ -213,6 +224,7 @@ traffic_dir2=outgoing 만
 traffic_desc=이 모니터는 선택한 인터페이스의 네트워크 추적을 유지하고, 사용량이 초당 바이트 수가 아래에 입력된 값에 다다르면 다운으로 출력합니다. 모니터 스케줄이 짧은 기간(5분 간격 정도)으로 설정이 되어 있을 경우 실제 작업이 잘 작동합니다.
 traffic_eifaces=OS에 /proc/net/dev 파일이 없습니다.
 traffic_ebytes=bytes/second 의 수가 지정되지 않았거나 올바르지 않습니다.
+
 space_fs=검사할 파일시스템
 space_min2=최소 사용 가능 공간
 space_desc=$1 사용 가능
@@ -222,6 +234,7 @@ space_emin=사용 가능 공간이 지정되지 않았거나 올바르지 않습
 space_eother=파일시스템이 지정되지 않았거나 올바르지 않습니다.
 space_inode=최소 사용 가능 inode
 space_ierr=$1 inode 사용 가능
+
 load_time=체크하는 부하 평균
 load_1=1분
 load_5=5분
@@ -230,6 +243,7 @@ load_max=부하 평균의 최대값
 load_emax=부하 평균 최대값이 지정되지 않았거나 올바르지 않습니다.
 load_ecmd=<tt>uptime</tt>명령을 찾을 수 없습니다.
 load_efmt=<tt>uptime</tt>명령 출력을 분석할 수 없습니다
+
 log_create=$1 모니터 작성
 log_modify=$1 모니터 변경
 log_delete=$1 모니터 삭제
@@ -239,15 +253,21 @@ log_tmpl_create=$1 메일 템플릿 생성
 log_tmpl_modify=$1 메일 템플릿 수정
 log_tmpl_delete=$1 메일 템플릿 삭제
 log_tmpl_deletes=$1 메일 템플릿 삭제
+
 acl_edit=모니터의 작성과 편집을 허가합니까?
 acl_sched=예약된 모니터링의 변경을 허가합니까?
+
 change_file=감시할 파일 또는 디렉토리 (변경시 실패)
+
 jabber_eparser=$1 펄 모듈이 설치되어 있지 않습니다.
+
 memory_min2=최소 사용 가능  메모리
 memory_emin=사용 가능 메모리 양이 지정되지 않았거나 올바르지 않습니다.
 memory_eproc=Webmin이 이 시스템의 사용 가능 메모리를 체크할 수 없습니다.
 memory_free2=$1 남음
+
 proftpd_etype=ProFTPD가 독립 식행형으로 작동중일 경우 이 모니터는 사용되지 않습니다.
+
 mailserver_to=보내는 메일 주소
 mailserver_timeout=시간 초과와 간격
 mailserver_units_0=초
@@ -255,19 +275,24 @@ mailserver_units_1=분
 mailserver_units_2=시간
 mailserver_units_3=일
 mailserver_desc=다음의 주소는 Subject: 라인을 동일하게 하여 소스 주소로 답장 하는 것을 자동응답해야 합니다.
+
 oldfile_file=감시할 파일　(변경이 없으면 실패)
 oldfile_diff=변경사항이 없으면 실패
 oldfile_secs=초
+
 raid_device=RAID 디바이스
 raid_edevice=선택된 RAID 디바이스가 없습니다.
 raid_bad=손상된 디스크 검출
 raid_resync=현재 다시 동기화 중
 raid_notfound=$1 RAID 디바이스를 찾을 수 없습니다.
 raid_other=기타..
+
 iface_iface=검사 인터페이스
+
 refresh_title=상태 갱신
 refresh_doing=모든 모니터의 상태 갱신 ..
 refresh_done=.. 완료
+
 sensors_name=검사할 센서
 sensors_value=다음 경우 실패
 sensors_value0=시스템 경고
@@ -278,6 +303,7 @@ sensors_none=시스템에서 센서를 검출하지 못했습니다. <tt>sensors
 sensors_cur=$1 (현재 $2 $3)
 sensors_emin=최소값이 지정되지 않았거나 올바르지 않습니다.
 sensors_emax=최대값이 지정되지 않았거나 올바르지 않습니다.
+
 nut_ups=검사할 NUT UPS
 nut_name=검사할 속성
 nut_value=다음 경우 실패
@@ -288,6 +314,7 @@ nut_eups=검사할 USP가 입력되지 않았습니다.
 nut_cur=$1 (현재 $2)
 nut_emin=최소값이 지정되지 않았거나 올바르지 않습니다.
 nut_emax=최대값이 지정되지 않았거나 올바르지 않습니다.
+
 mailq_system=메일 서버
 mailq_qmailadmin=Qmail
 mailq_postfix=Postfix
@@ -296,6 +323,7 @@ mailq_size=최대 메일 큐 크기
 mailq_esize=최대 큐 크기가 지정되지 않았거나 유효하지 않습니다.
 mailq_toomany=다운 - $1 메시지 큐잉
 mailq_ok=동작 - $1 메시지 큐잉
+
 dns_server=DNS 서버
 dns_host=lookup 할 호스트 이름
 dns_address=예측 IP 주소
@@ -303,6 +331,7 @@ dns_eserver=DNS 서버가 지정되지 않았거나 올바르지 않습니다.
 dns_ehost=lookup 을 위한 호스트 이름이 지정되지 않았거나 올바르지 않습니다.
 dns_eaddress=예측 IP 주소가 지정되지 않았거나 올바르지 않습니다.
 dns_ecmds=시스템에 <tt>nslookup</tt> 또는 <tt>dig</tt> 명령이 설치되어 있지 않습니다.
+
 monitor_sub_down=$2의 $1 다운
 monitor_pager_down=$1: "$2" 다운 $3
 monitor_snmp_down=$1: $2
@@ -333,7 +362,9 @@ monitor_sub3=서비스 모니터 : $1 서비스
 monitor_run1=$2의 $1 실행 ..
 monitor_run2=$1 실행 ..
 monitor_runerr=$2의 $1 실행 실패 : $3
+
 deletes_egone=선택된 모니터중 하나가 더이상 존재하지 않습니다.
+
 ftp_host=FTP 서버 호스트
 ftp_port=FTP 포트
 ftp_user=다음 사용자로 로그인
@@ -344,6 +375,7 @@ ftp_none=없음 (로그인만)
 ftp_ehost=FTP 서버 호스트가 지정되지 않았거나 올바르지 않습니다.
 ftp_eport=FTP 서버 포트가 지정되지 않았거나 올바르지 않습니다.
 ftp_efile=다운로드할 파일이 지정되지 않았거나 올바르지 않습니다.
+
 query_driver=SQL 데이터베이스 형식
 query_db=데이터베이스 이름
 query_host=데이터베이스 서버
@@ -364,9 +396,12 @@ query_elogin=로그인 실패 : $1
 query_eprepare=SQL 에러 : $1
 query_eexecute=SQL 실패 : $1
 query_ewrong=잘못된 결과 : $1
+
 consume_rate=최대 사용량 (초당)
 consume_high=사용량 : $1 / 초
+
 alive_up=$1 실행
+
 rssh_host=SSH 서버
 rssh_ruser=다음 사용자로 로그인
 rssh_rpass=다음 암호로 로그인
@@ -379,6 +414,7 @@ rssh_eproc=이 시스템에 실행 중인 프로세스 모듈이 지원되지 �
 rssh_wrongpass=로그인 실패
 rssh_failed=연결 실패
 rssh_error=SSH 에러
+
 tmpls_title=메일 템플릿
 tmpls_ecannot=메일 템플릿을 편집할 권한이 없습니다.
 tmpls_none=아직 정의된 메일 템플릿이 없습니다. 모든 경고는 webmin 기본 메시지로 발송하는데 사용됩니다.
@@ -387,6 +423,7 @@ tmpls_email=메일 메시지
 tmpls_add=새 메일 템플릿 추가
 tmpls_return=템플릿 리스트
 tmpls_delete=선택한 템플릿 삭제
+
 tmpl_title1=메일 템플릿 생성
 tmpl_title2=메일 템플릿 편집
 tmpl_header=경고 메일 템플릿 메시지
@@ -411,6 +448,7 @@ tmpl_esms=SMS 메시지가 없습니다.
 tmpl_esnmp=SNMP 메시지가 없습니다.
 tmpl_err2=메일 템플릿 삭제 실패
 tmpl_eusers=다음 모니터에 의해 사용 : $1
+
 dtmpls_err=템플릿 삭제 실패
 dtmpls_enone=선택된 것 없음
 dtmpls_eusers=$1은 다음 모니터에 의해 사용중 : $2

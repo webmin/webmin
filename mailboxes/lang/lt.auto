@@ -2,6 +2,7 @@ index_title=Perskaitykite vartotojo paštą
 index_none=Negalite skaityti el. Laiškų jokiems šios sistemos vartotojams.
 index_header=Vartotojo pašto dėžutės
 index_empty=Nėra pašto
+index_return=vartotojų sąrašas
 index_esystem=Jūsų sistemoje neaptikta nė vieno palaikomo pašto serverio („Exim“, „Qmail“, „Postfix“ ir „Sendmail“). Norėdami nustatyti pašto serverį ir galbūt pašto kelius rankiniu būdu, turėsite pakoreguoti <a href='$1'>modulio konfigūraciją</a>.
 index_esystem2=Pašto sistemoje, nustatytoje <a href='$1'>modulio konfigūracijoje</a>, jūsų sistemoje nerasta. Norėdami naudoti teisingą serverį, turėsite pakoreguoti konfigūraciją.
 index_esystem3=Įvyko klaida susisiekiant su pašto sistema, nustatyta <a href='$1'>modulio konfigūracijoje</a>: $2.
@@ -19,6 +20,7 @@ index_eperl=„Perl“ modulis $1, reikalingas pasirinktam SMTP autentifikavimo 
 index_file=Skaityti paštą faile arba Maildirą:
 index_nousers=Nerasta jokių vartotojų!
 index_nousersmail=Nerasta nė vieno vartotojo, turinčio el. Pašto adresą.
+
 mail_title=Vartotojo el. Paštas
 mail_from=Iš
 mail_date=Data
@@ -75,6 +77,7 @@ mail_fromfilter=Sukurkite filtrą pagal siuntėją
 mail_tofilter=Sukurkite filtrą pagal gavėją
 mail_subfilter=Sukurkite filtrą pagal temą
 mail_unknown=Nežinoma
+
 mail_sign=Pasirašykite raktu
 mail_nosign=&lt;Neparašyti&gt;
 mail_crypt=Šifruoti
@@ -109,6 +112,7 @@ mail_selread=Pasirinkite perskaitytą.
 mail_selunread=Pasirinkite neskaitytą.
 mail_selspecial=Pasirinkite specialųjį.
 mail_specialsync=„Sync Special“
+
 view_title=Skaityti el. Laišką
 view_desc=Žinutė $1 $2
 view_desc2=Žinutė $1 vartotojui $2
@@ -150,6 +154,7 @@ view_sub=Pridedamas el. Paštas
 view_sub2=Pridėtas el. Laiškas iš $1
 view_egone=Ši žinutė nebeegzistuoja
 view_eugone=Šio vartotojo nėra
+
 view_gnupg=„GnuPG“ parašo tikrinimas
 view_gnupg_0=Galioja $1 parašas.
 view_gnupg_1=$1 parašas galioja, tačiau pasitikėjimo grandinės nustatyti nepavyko.
@@ -186,7 +191,9 @@ view_images=Rodyti vaizdus
 view_raw=Peržiūrėti neapdorotą pranešimą
 view_aall=Išsaugokite visus priedus kaip ZIP.
 view_aslideshow=Rodyti visus vaizdus.
+
 compose_title=Sukurti el. Laišką
+
 reply_title=Atsakyti el. Paštu
 forward_title=Persiųsti el. Laišką
 enew_title=Redaguoti el. Paštą
@@ -216,9 +223,11 @@ reply_addattach=Pridėti priedo lauką.
 reply_addssattach=Pridėti serverio pusės priedo lauką.
 reply_html0=Sukurkite tekstą
 reply_html1=Kurti HTML
+
 reply_spell=Patikrinti rašybos klaidas?
 reply_draft=Išsaugoti kaip juodraštį
 reply_save=Išsaugoti ir redaguoti
+
 send_err=Nepavyko išsiųsti laiškų
 send_eto=Nėra adreso
 send_efrom=Nėra adreso
@@ -235,6 +244,7 @@ send_eperms2=Jums neleidžiama siųsti failo $1
 send_epath=„Sendmail“ vykdomojo failo $1 nėra.
 send_efile=Nepavyko nuskaityti priedo $1 : $2 
 send_done=.. padaryta.
+
 send_epass=Negalite pasirašyti pranešimo, nes jūsų slaptafrazė dar nėra nustatyta „GnuPG“ modulyje.
 send_esign=Nepavyko pasirašyti pranešimo : $1
 send_ekey=Nepavyko rasti rakto el. Pašto adresui $1
@@ -246,6 +256,7 @@ send_espell=Jūsų pranešime buvo rastos šios rašybos klaidos ..
 send_draft=Laiškas į $1 išsaugotas juodraščių aplanke.
 send_drafting=Laiškų įrašymas į $1 juodraščių aplanke ..
 send_eattachsize=Pašto priedas viršijo maksimalų leidžiamą $1 baitų dydį
+
 delete_title=Ištrinti paštą
 delete_rusure=Ar tikrai norite ištrinti $1 pasirinktus pranešimus iš $2? Didelio pašto failo sukūrimas gali šiek tiek užtrukti. Kol naikinimas nebus baigtas, jokie kiti veiksmai neturėtų būti atliekami.
 delete_rusure2=Ar tikrai norite ištrinti šį pranešimą iš $1? Didelio pašto failo sukūrimas gali šiek tiek užtrukti. Kol naikinimas nebus baigtas, jokie kiti veiksmai neturėtų būti atliekami.
@@ -268,6 +279,7 @@ delete_nobutton=Nepaspaudė nė vieno mygtuko
 delete_ereport=Nepavyko pranešti apie šlamštą : $1
 delete_errc=Nepavyko nukopijuoti laiškų
 delete_errm=Nepavyko perkelti pašto
+
 confirm_title=Patvirtinkite ištrynimą
 confirm_warn=Ar tikrai norite ištrinti $1 pasirinktus pranešimus iš šio aplanko?
 confirm_warnf=Ar tikrai norite ištrinti $1 pasirinktus pranešimus iš aplanko <b>$2</b>?
@@ -277,6 +289,7 @@ confirm_warn4=Kol naikinimas nebus baigtas, jokie kiti veiksmai neturėtų būti
 confirm_ok=Ištrinti dabar
 confirm_warnall=Ar tikrai norite ištrinti visus šio aplanko pranešimus?
 confirm_warnallf=Ar tikrai norite ištrinti visus pranešimus, esančius aplanke <b>$1</b>?
+
 search_title=Paieškos rezultatai
 search_ecannot=Jums neleidžiama ieškoti šio vartotojo el. Pašto
 search_ematch=Turite įvesti tekstą, kad atitiktumėte.
@@ -305,16 +318,19 @@ search_nolatest=Viskas aplanke
 search_latestnum=Tik naujausias
 search_elatest=Trūksta arba netinkamas ieškomų pranešimų skaičius
 search_withstatus=, su būsena $1
+
 folder_inbox=Pašto dėžutę
 folder_sent=Išsiųsti laiškai
 folder_drafts=Juodraščiai
 folder_trash=Šiukšlių dėžė
+
 detach_err=Nepavyko atskirti failo
 detach_edir=Nėra failo ar katalogo, kurį būtų galima išsaugoti įvestame
 detach_eopen=Nepavyko atidaryti $1 : $2 
 detach_ewrite=Nepavyko parašyti į $1 : $2 
 detach_title=Nuimkite failą
 detach_ok=Parašė priedą prie serverio failo $1 ($2).
+
 sform_title=Išplėstinė paieška
 sform_header=Išplėstinės el. Pašto paieškos parinktys
 sform_andmode=Kriterijų režimas
@@ -339,6 +355,7 @@ sform_headers=bet kokia antraštė
 sform_allmsg=visa žinutė
 sform_size=pranešimo dydis
 sform_return=išplėstinės paieškos forma
+
 find_enone=Nerasta jūsų paiešką atitinkančių vartotojų
 find_title=Paieškos rezultatai
 find_results=Vartotojai atitinkantys paiešką $1 ..
@@ -351,6 +368,7 @@ find_incount=Laiškus
 find_sentcount=Išsiųsta
 find_fcount=Aplankai
 find_in=$1 in $2
+
 acl_none=Nė vienas
 acl_same=Vartotojas tuo pačiu vardu
 acl_all=Visi
@@ -376,12 +394,15 @@ acl_usersu=Su UID diapazone
 acl_sec=Įtraukite antrines grupes?
 acl_dir=Gali skaityti pašto failus kataloge
 acl_dirauto=Nuspręskite automatiškai (visur, kur visi vartotojai matomi, niekur kitaip)
+
 log_delmail=Ištrintos $1 žinutės iš $2
 log_movemail=$1 žinutės perkeltos iš $2 į $3
 log_copymail=Nukopijuotos $1 žinutės iš $2 į $3
 log_send=Išsiųstas laiškas $1
 log_read=Skaityti $1 paštą
+
 emodified=Šis aplankas buvo modifikuotas, nes jis paskutinį kartą buvo peržiūrėtas! Grįžkite į <a href='$1'>pašto sąrašą</a> ir bandykite dar kartą.
+
 razor_title=Pranešimas kaip šlamštas
 razor_title2=Pranešimas kaip kumpis
 razor_report=Pranešimas apie šį pranešimą „Razor“ ir kitoms „SpamAssassin“ šlamšto blokavimo duomenų bazėms.
@@ -391,14 +412,18 @@ razor_done=.. padaryta
 razor_err=.. nepavyko! Norėdami sužinoti priežastį, skaitykite aukščiau pateiktą klaidos pranešimą.
 razor_moved=.. padaryta ir perkelta į aplanką $1.
 razor_deleted=.. padaryta, taip pat ištrinta žinutė.
+
 ham_title=Pranešimas kaip kumpis
 ham_report=Pranešimas apie šį pranešimą kaip šlamštą „Razor“ ir kitoms „SpamAssassin“ duomenų bazėms.
+
 black_title=Siuntėjo neigimas
 black_done=Į „SpamAssassin“ atmestų adresų sąrašą įtrauktas el. Pašto adresas $1.
 black_already=El. Pašto adresas $1 jau yra „SpamAssassin“ atmestų adresų sąraše.
+
 white_title=Leidžia siuntėjui
 white_done=Pašto adresą $1 pridėjo prie „SpamAssassin“ leidžiamų adresų sąrašo.
 white_already=El. Pašto adresas $1 jau yra „SpamAssassin“ leidžiamų adresų sąraše.
+
 ldap_emod=Trūksta „Perl“ modulio $1, reikalingo prisijungimui prie LDAP
 ldap_econn=Nepavyko prisijungti prie LDAP serverio $1 prievado $2
 ldap_elogin=Nepavyko prisijungti prie LDAP serverio $1 kaip $2 : $3 
@@ -406,12 +431,15 @@ ldap_ehost=Modulio konfigūracijoje nenustatytas nė vienas LDAP serveris
 ldap_eport=Modulio konfigūracijoje nenustatytas tinkamas LDAP serverio prievadas
 ldap_euser=Modulio konfigūracijoje nenustatytas LDAP prisijungimas
 ldap_ebase=Modulio konfigūracijoje nenustatyta LDAP bazinė DN
+
 delall_title=Ištrinti visus laiškus
 delall_rusure=Ar tikrai norite ištrinti visus el. Laiškus iš $1? $2 žinutės, kurių bendra suma yra $3, bus ištrintos visam laikui.
 delall_ok=Ištrinti dabar
+
 slide_title=Pridedami vaizdai
 slide_prev=Ankstesnis
 slide_next=Kitas
+
 left_mail=Paštas
 left_search=Paieška:
 left_folders=Tvarkyti aplankus

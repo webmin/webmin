@@ -52,6 +52,7 @@ index_sadd=Opret en ny systemd-tjeneste.
 index_always=Altid
 index_ladd=Opret en ny lanceret agent.
 index_lname=Agent navn
+
 edit_title=Rediger handling
 create_title=Opret handling
 edit_ecannot=Du har ikke tilladelse til at redigere opstartshandlinger
@@ -85,6 +86,7 @@ edit_statusnow=Vis status
 edit_return=handling
 edit_status=Begyndt nu?
 edit_unknown=Ukendt
+
 save_err=Gemt handling ikke
 save_ecannot=Du har ikke tilladelse til at redigere opstartshandlinger
 save_ealready=En handling kaldet '$1' findes allerede
@@ -93,6 +95,7 @@ save_ename=Manglende eller ugyldigt handlingsnavn
 save_eclash=En handling med samme navn findes allerede
 save_escript=Intet handlingsskript indtastet
 save_estartcmd=Manglende opstartskommando
+
 ss_ecannot=Det er ikke tilladt at starte eller stoppe opstartshandlinger
 ss_start=Start handling
 ss_stop=Stop handling
@@ -103,21 +106,25 @@ ss_exec=Udfører $1 ..
 ss_doingstart=Starter handling $1 ..
 ss_doingstop=Stop handling $1 ..
 ss_doingstatus=Anmoder om status for handling $1 ..
+
 shutdown_ecannot=Du har ikke tilladelse til at lukke systemet
 shutdown_title=Lukke ned
 shutdown_rusure=Er du sikker på, at du vil lukke systemet med kommandoen $1 ?
 shutdown_ok=Luk system
 shutdown_exec=Lukker ned med kommando $1 ..
+
 reboot_ecannot=Du har ikke tilladelse til at genstarte systemet
 reboot_title=reboot
 reboot_rusure=Er du sikker på, at du vil genstarte systemet med kommandoen $1 ?
 reboot_ok=Genstart systemet
 reboot_exec=Genstart med kommando $1 ..
+
 acl_script=Kan redigere bootup-scriptet?
 acl_actions=Kan køre, redigere, oprette og slette handlinger?
 acl_runonly=Kør kun
 acl_reboot=Kan genstarte systemet?
 acl_shutdown=Kan lukke systemet?
+
 log_rename=Omdøbt handling $1 til $2 
 log_modify=Ændret handling $1 
 log_create=Oprettet handling $1 
@@ -138,6 +145,7 @@ log_massrestart=Genstartede handlinger $1
 log_massenable=Aktiverede handlinger $1 
 log_massdisable=Deaktiverede handlinger $1 
 log_telinit=Skiftet til runlevel $1 
+
 edit_hostconfig_startup=Skriptet $1 køres på systemstarttidspunktet, hvis denne handling er aktiv. Du kan redigere det nedenfor
 edit_hostconfig_plist=Filen $1 sætter visse parametre med hensyn til boot-scriptet. Du kan redigere det nedenfor
 edit_hostconfig_new=Opret ny handling
@@ -149,6 +157,7 @@ edit_hostconfig_array=Felterne $1, $2 og $3 er matrixfelter og kan indeholde mer
 edit_hostconfig_further=Når du har oprettet den nye opstarthandling, bliver du videresendt til en side, hvor du kan justere opstart-scriptet og parameterlisten, hvis det er nødvendigt.
 edit_hostconfig_hostconfig=Filen $1 kontrollerer systembrede tjenester og dæmoner, der startes ved systemstart. Du kan redigere det nedenfor
 edit_hostconfig_title=Rediger Hostconfig
+
 mass_enone=Ingen handlinger valgt
 mass_enone2=Ingen tjenester valgt
 mass_start=Start handlinger
@@ -169,9 +178,11 @@ mass_udisable=Deaktiverer service $1 ved starttidspunktet.
 mass_ustarting=Starter service $1 ..
 mass_ustopping=Stop service $1 ..
 mass_urestarting=Genstartstjeneste $1 ..
+
 change_err=Du har ikke tilladelse til at skifte runlevels
 change_title=Skift Runlevel
 change_cmd=Skift til runlevel $1 med kommando $2. Dette kan tage lidt tid, og Webmin er muligvis ikke tilgængelig mere efter skift.
+
 mode_init=SysV init
 mode_osx=MacOS
 mode_local=Enkelt boot script
@@ -180,6 +191,7 @@ mode_rc=FreeBSD RC-scripts
 mode_upstart=Upstart
 mode_systemd=systemd
 mode_launchd=launchd
+
 upstart_title1=Opret Upstart-service
 upstart_title2=Rediger Upstart-service
 upstart_egone=Service findes ikke længere!
@@ -204,6 +216,7 @@ upstart_eserver=Ingen serverkommando indtastet
 upstart_eserver2=Serverkommando findes ikke
 upstart_eserver3=Kun en serverkommando kan indtastes
 upstart_return=upstart-service
+
 systemd_title1=Opret Systemd Service
 systemd_title2=Rediger Systemd Service
 systemd_egone=Service findes ikke længere!
@@ -227,6 +240,7 @@ systemd_edesc=Manglende servicebeskrivelse
 systemd_return=systemd service
 systemd_econf=Ingen systemd konfiguration indtastet
 systemd_estart=Manglende kommandoer til at køre ved opstart
+
 launchd_title1=Opret Launchd Agent
 launchd_title2=Rediger Launchd Agent
 launchd_egone=Agent eksisterer ikke længere!
@@ -247,4 +261,5 @@ launchd_eclash=En agent med samme navn findes allerede
 launchd_return=lanceret agent
 launchd_econf=Ingen startd konfiguration indtastet
 launchd_estart=Manglende serverkommando
+
 syslog_journalctl=SystemD-logfiler

@@ -9,6 +9,7 @@ index_conf=Fetchmail 구성
 index_ok=사용자의 Fetchmail 구성 편집:
 index_file=$1의 Fetchmail 구성
 index_return=서버 목록
+
 poll_create=서버 추가
 poll_edit=서버 편집
 poll_header=메일 서버 옵션

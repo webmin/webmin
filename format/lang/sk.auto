@@ -15,6 +15,7 @@ index_use=použitie
 index_free=zadarmo
 index_format=Tento disk nie je naformátovaný
 index_return=zoznam diskov
+
 edit_ecannot=Nemáte oprávnenie upravovať tento disk
 edit_title=Upraviť oblasť
 edit_header=Podrobnosti oddielu
@@ -56,6 +57,7 @@ edit_tunedesc2=Systém súborov na tomto oddiele nemôžete naladiť, pretože e
 edit_tunedesc3=Systém súborov na tomto oddiele nemôžete naladiť, pretože je momentálne pripojený. Na odpojenie najskôr použite <a href=/mount/>modul súborových systémov</a>.
 edit_tunedesc4=Systém súborov na tomto oddiele nemôžete naladiť, pretože nemá systém súborov.
 edit_tunedesc5=Systém súborov na tomto oddiele nemôžete naladiť, pretože je možné naladiť iba súborové systémy <tt>UFS</tt>.
+
 save_ecannot=Nemáte oprávnenie upravovať tento disk
 save_edelete=Nepodarilo sa odstrániť oddiel
 save_esave=Nepodarilo sa uložiť oddiel
@@ -64,6 +66,7 @@ save_eend='$1' nie je platný koncový valec
 save_estartmin=Štartovací valec musí byť> 0
 save_eendmax=Koncový valec musí byť < $1 
 save_estartend=Počiatočný valec musí byť menší ako koniec
+
 newfs_title=Vytvorte súborový systém
 newfs_ecannot=Nemáte povolenie naformátovať tento disk
 newfs_desc=Kliknutím na tlačidlo v dolnej časti tohto formulára sa na zariadení $2 vytvorí nové $1. Všetky údaje v tomto oddiele sa natrvalo vymažú.
@@ -89,6 +92,7 @@ newfs_err=Nepodarilo sa vytvoriť súborový systém
 newfs_exec=Vykonáva sa príkaz $1 ..
 newfs_failed=.. príkaz zlyhal!
 newfs_ok=.. príkaz dokončený.
+
 fsck_title=Opravte súborový systém
 fsck_ecannot=Nemáte oprávnenie opravovať tento disk
 fsck_desc=Kliknutím na tlačidlo <b>Oprava</b> skontrolujete a prípadne opravíte $1 na $2. Úroveň kontroly a opráv je určená podľa vášho výberu nižšie.
@@ -106,6 +110,7 @@ fsck_37=proces zabitý počas kontroly
 fsck_39=zistené neopraviteľné chyby!
 fsck_40=nezistili sa žiadne chyby
 fsck_unknown=Neznáma chyba
+
 tunefs_title=Vyladiť súborový systém
 tunefs_ecannot=Nemáte povolenie naladiť tento disk
 tunefs_desc=Tento formulár vám umožňuje upraviť rôzne parametre $1 na $2. Existujúce súbory v tomto súborovom systéme nebudú poškodené.
@@ -122,6 +127,7 @@ tunefs_err=Nepodarilo sa vyladiť súborový systém
 tunefs_exec=Vykonáva sa príkaz $1 ..
 tunefs_failed=.. príkaz zlyhal!
 tunefs_ok=.. príkaz dokončený.
+
 select_device=Radič SCSI $1 cieľ $2 jednotka $3 
 select_idedevice=IDE zariadenie $1 
 select_part=Radič SCSI $1 cieľ $2 jednotka $3 oddiel $4 
@@ -131,10 +137,13 @@ esun=Oddiely je možné upravovať iba na hardvéri spoločnosti Sun.
 emounted=Disk má pripojené oddiely
 elast=Posledný oddiel nie je možné odstrániť
 eformat=<tt>format</tt> nenašiel žiadne disky!
+
 fstype_ufs=Súborový systém Solaris Unix
 fstype_unknown=Neznámy systém súborov
+
 acl_disks=Disky, ktoré môže tento užívateľ rozdeliť a formátovať
 acl_dall=Všetky disky
 acl_dsel=Vybraný ..
 acl_view=Môžete upravovať disky a oddiely?
+
 ecannot=Nemáte oprávnenie upravovať oddiely

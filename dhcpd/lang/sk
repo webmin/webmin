@@ -20,10 +20,12 @@ index_tosubnet=Subnet:
 index_toshared=Sieť:
 index_match1=obsahuje
 index_dhcpd=ISC DHCPd
+
 butt_save=Uložiť
 butt_del=Zmazať
 butt_create=Vytvoriť
 butt_leases=Zobraziť prenajaté adresy
+
 esub_crheader=Vytvoriť subnet
 esub_edheader=Upraviť subnet
 esub_naddr=Sieťová adresa
@@ -32,12 +34,14 @@ esub_shnet=Zdielaná sieť
 esub_return=zoznam subnetov
 esub_retshar=Zdielaná sieť
 esub_desc=Popis subnetu
+
 esh_crheader=Vytvoriť zdielanú sieť
 esh_eheader=Upraviť zdielanú sieť
 esh_tabhdr=Detaily zdielanej siete
 esh_netname=Sieťové meno
 esh_return=zoznam subnetov
 esh_desc=Popis zdielanej siete
+
 ehost_crheader=Vytvoriť hostiteľa
 ehost_eheader=Upraviť hostiteľa
 ehost_tabhdr=Detaily hostiteľa
@@ -53,17 +57,22 @@ ehost_retgroup=skupina
 ehost_retsubn=subnet
 ehost_retshar=Zdielaná sieť
 ehost_desc=Popis hostiteľa
+
 egroup_tblhdr=Detaily skupiny
 egroup_return=zoznam hostiteľov
 egroup_retsubn=subnet
 egroup_retshar=zdielaná sieť
 egroup_desc=Popis skupiny
+
 default=Štandardne
+
 listl_header=DHCP poskytnuté adresy
 listl_ipaddr=IP adresa
 listl_ether=Ethernet
 listl_host=Hostiteľ
+
 start_failstart=Štart dhcpd zlyhal
+
 ssub_faildel=Zmazanie subnetu zlyhalo
 ssub_failsave=Uloženie subnetu zlyhalo
 ssub_invalidsubaddr=nie je platná subnet adresa
@@ -71,6 +80,7 @@ ssub_invalidnmask=nie je platná sieťová maska
 ssub_invalidipr=nie je platný IP rozsah
 ssub_nosubnet=Zdieľaná sieť '$1' neobsahuje žiadnu subnet.
 ssub_invalidfopeer=nie je platný náhradný server
+
 plib_thisserv=Tento server
 plib_domname=Doménové meno
 plib_dnsserv=DNS servre
@@ -82,6 +92,7 @@ plib_nisserv=NIS servre
 plib_fontserv=Font servre
 plib_xdmserv=XDM servre
 plib_ntpserv=NTP servre
+
 eopt_returnsub=subnet
 eopt_returnshsub=zdielaná sieť
 eopt_returnhost=hostiteľ
@@ -104,13 +115,17 @@ eopt_cnum=Číslo
 eopt_cval=Hodnota
 eopt_dnum=Číslo
 eopt_dtype=Typ
+
 log_start=Spustený DHCP server
 log_stop=Zastavený DHCP server
+
 keys_edit=Upraviť TSIG kľúč
 keys_create=Vytvoriť TSIG kľúče
 keys_id=ID kľúča
 keys_alg=Algoritmus
+
 pool_return=subnet
+
 cdel_header=Upozornenie
 cdel_shared1=zdielaná sieť
 cdel_shared2=zdielaná sieť
@@ -125,6 +140,7 @@ cdel_groups=skupiny
 cdel_host=hostiteľ
 cdel_hosts=hostitelia
 cdel_eunknown=Neznáma chyba
+
 eacl_np=Nemáte oprávnenie na
 eacl_pdh=vymazanie hostiteľa
 eacl_pih=pridanie nových hostiteľov
@@ -147,6 +163,7 @@ eacl_pdl=vymazanie prenajatých adries
 eacl_psl=prezeranie prenajatých adries
 eacl_pglob=upravenie globálnych nastavení
 eacl_papply=reštartovanie tejto služby
+
 acl_apply=Môže uskutočniť zmeny?
 acl_r_leases=Môže zobraziť prenajaté adresy?
 acl_w_leases=Môže odstrániť prenajaté adresy?
@@ -165,8 +182,10 @@ acl_w=zapisovať
 acl_err=Uloženie prístupového zoznamu zlyhalo
 acl_normal=normálny
 acl_paranoic=paranoidný
+
 iface_title=Sieťové rozhranie
 iface_listen=Načúvať na rozhraní
+
 zone_key=DNS zóny
 index_addzone=Pridať novú DNS zónu.
 index_zone=Zóna
@@ -180,10 +199,12 @@ zone_return=hlavné menu
 zone_faildel=Zmazanie zóny zlyhalo
 zone_failsave=Uloženie zóny zlyhalo
 zone_tsigkey=TSIG kľúč
+
 text_title=dhcpd.conf
 text_editor=Textový editor
 text_return=hlavné menu
 text_undo=späť
 text_ecannot=Nemáte oprávnenie upraviť konfiguračný súbor
+
 stop_err=Ukončenie DHCP servera zlyhalo
 stop_ekill=Nebeží!

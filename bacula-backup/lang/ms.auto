@@ -29,12 +29,14 @@ index_fd=Konfigurasi Daemon Fail
 index_groups=Konfigurasi Kumpulan Bacula
 index_actions=Tindakan Sandaran dan Kembalikan
 index_ocmin=Disumbangkan oleh <a href=$2 target=_new>Linmin</a> </a>
+
 connect_emysql=Gagal memuat pangkalan data pemandu DBI $1 
 connect_elogin=Gagal masuk ke pangkalan data $1:$2.
 connect_equery=Pangkalan data $1 tidak kelihatan mengandungi jadual Bacula.
 connect_equery2=Ini mungkin kerana modul Perl SQLite dipasang terlalu baru, dan tidak menyokong format pangkalan data SQLite yang lebih lama yang digunakan oleh Bacula.
 connect_equery3=Pangkalan data $1 tidak kelihatan mengandungi jadual kumpulan OC Bacula.
 esql=Ralat SQL : $1 
+
 check_edir=Direktori konfigurasi Bacula $1 tidak dijumpai pada sistem anda.
 check_ebacula=Perintah kawalan Bacula $1 tidak dijumpai.
 check_econsole=Perintah konsol Bacula $1 tidak dijumpai.
@@ -43,12 +45,14 @@ check_eclient=Sistem ini nampaknya menjadi <a href='$2'>pelanggan Bacula</a> dan
 check_econfigs=Tiada fail konfigurasi Bacula ditemui dalam $1 
 check_eservers=Tiada kumpulan pelayan Webmin ditakrifkan
 check_engmod=Modul kumpulan OpenCountry Bacula tidak dipasang
+
 proc_bacula-sd=Daemon simpanan
 proc_bacula-fd=Daemon fail
 proc_bacula-dir=Daun Pengarah Bacula
 proc_bareos-sd=Daemon simpanan
 proc_bareos-fd=Daemon fail
 proc_bareos-dir=Daun Pengarah Bacula
+
 stop_err=Gagal menghentikan Bacula
 start_err=Gagal memulakan Bacula
 start_einit=Tiada skrip init dijumpai untuk $1 
@@ -56,6 +60,7 @@ start_erun=Gagal memulakan $1 : $2
 restart_err=Gagal memulakan semula Bacula
 apply_failed=Ralat konfigurasi telah dikesan
 apply_problem=Gagal untuk memohon konfigurasi : $1 
+
 jobs_title=Pekerjaan Cadangan
 jobs_none=Tiada pekerjaan sandaran telah ditakrifkan lagi.
 jobs_name=Nama kerja
@@ -68,6 +73,7 @@ jobs_add=Tambah kerja sandaran baharu.
 jobs_delete=Padam Pekerjaan Terpilih
 jobs_return=senarai pekerjaan
 jobs_derr=Gagal memadam kerja
+
 filesets_title=Set Fail
 filesets_none=Tiada set fail sandaran telah ditakrifkan lagi.
 filesets_name=Nama set fail
@@ -77,6 +83,7 @@ filesets_delete=Padam Set Fail Fail yang dipilih
 filesets_return=senarai set fail
 filesets_derr=Gagal memadam set fail
 filesets_ednone=Tiada yang dipilih
+
 fileset_title1=Buat Fail Set
 fileset_title2=Edit Set Fail
 fileset_header=Butiran menetapkan fail sandaran
@@ -96,6 +103,7 @@ fileset_gzipdef=&lt;Tingkat mampatan lalai&gt;
 fileset_lzo=Mampatan LZO
 fileset_gzip=Tahap Gzip $1 
 fileset_onefs=Hadkan sandaran ke satu sistem fail?
+
 clients_title=Pelanggan Sandaran
 clients_none=Tiada pelanggan sandaran telah ditakrifkan lagi.
 clients_name=Nama pelanggan
@@ -105,6 +113,7 @@ clients_add=Tambah pelanggan sandaran baharu.
 clients_delete=Padamkan Pelanggan Terpilih
 clients_return=senarai pelanggan
 clients_derr=Gagal memadamkan pelanggan
+
 client_title1=Buat Pelanggan Cadangan
 client_title2=Edit Pelanggan Cadangan
 client_header=Butiran pelanggan perlu disokong
@@ -127,6 +136,7 @@ client_efileret=Tempoh pengekalan fail yang hilang atau tidak sah
 client_ejobret=Tempoh pengekalan pekerjaan yang hilang atau tidak sah
 client_echild=Pelanggan ini tidak dapat dipadamkan kerana digunakan oleh $1 
 client_status=Tunjukkan Status
+
 job_title1=Buat Kerja Sandaran
 job_title2=Edit Kerja Backup
 job_header=Butiran kerja sandaran
@@ -155,6 +165,7 @@ job_before=Perintah sebelum kerja
 job_after=Perintah selepas kerja
 job_cbefore=Perintah sebelum kerja (pada pelanggan)
 job_cafter=Perintah selepas kerja (pada klien)
+
 schedules_title=Jadual Cadangan
 schedules_none=Tiada jadual sandaran telah ditakrifkan lagi.
 schedules_name=Nama jadual
@@ -163,6 +174,7 @@ schedules_add=Tambah jadual sandaran baharu.
 schedules_delete=Padam Jadual Terpilih
 schedules_return=senarai jadual
 schedules_derr=Gagal memadamkan jadual
+
 schedule_title1=Buat Jadual Cadangan
 schedule_title2=Edit Jadual Cadangan
 schedule_header=Butiran jadual cadangan
@@ -176,6 +188,7 @@ schedule_ename=Nama jadual yang hilang atau tidak sah
 schedule_eclash=Jadual dengan nama yang sama sudah wujud
 schedule_etimes=Masa sandaran hilang dalam baris $1 
 schedule_echild=Jadual ini tidak dapat dipadamkan seperti yang digunakan oleh $1 
+
 backup_title=Run Backup Job
 backup_header=Butiran kerja sandaran
 backup_job=Kerja berjalan
@@ -190,11 +203,13 @@ backup_running=.. kerja sandaran kini berjalan. Apabila selesai, hasilnya akan d
 backup_running2=.. kerja sandaran telah dimulakan di latar belakang.
 backup_done=.. sandaran selesai.
 backup_failed=.. sandaran tidak berjaya berjaya. Periksa mesej ralat di atas untuk maklumat lanjut.
+
 gbackup_title=Jalankan Pekerjaan Cadangan Kumpulan Bacula
 gbackup_run=Memulakan kerja sandaran $1 pada $2 pelanggan ..
 gbackup_on=Kerja sandaran berjalan pada klien $1  :
 gbackup_header=Butiran tugas sandaran kumpulan Bacula
 gbackup_jd=$1 (Fail set $2 pada kumpulan $3)
+
 dirstatus_title=Status Pengarah
 dirstatus_sched=Pekerjaan Cadangan Terjadual
 dirstatus_name=Nama kerja
@@ -215,12 +230,14 @@ dirstatus_status2=Status
 dirstatus_donenone=Tiada pekerjaan sandaran telah dijalankan.
 dirstatus_cancel=Batalkan Pekerjaan Terpilih
 dirstatus_refresh=Senarai Refresh
+
 clientstatus_title=Status Pelanggan
 clientstatus_err=Gagal mengambil status dari $1 : $2 
 clientstatus_msg=Status daripada $1 : $2 
 clientstatus_show=Tunjukkan status pelanggan:
 clientstatus_ok=okey
 clientstatus_on=$1 (di $2)
+
 storages_title=Daem Penyimpanan
 storages_none=Tiada lagi daemon penyimpanan telah ditakrifkan.
 storages_name=Nama storan
@@ -231,6 +248,7 @@ storages_add=Tambah daemon simpanan baru.
 storages_delete=Padamkan Daem Penyimpanan yang Dipilih
 storages_return=senarai daemon simpanan
 storages_derr=Gagal memadam daemon penyimpanan
+
 storage_title1=Buat Daemon Penyimpanan
 storage_title2=Edit Daemon Penyimpanan
 storage_header=Butiran daemon penyimpanan jarak jauh
@@ -254,6 +272,7 @@ storage_emedia=Nama jenis media yang tiada
 storage_emaxjobs=Pekerjaan serentak maksimum yang tiada
 storage_echild=Pelanggan ini tidak dapat dipadamkan kerana digunakan oleh $1 
 storage_status=Tunjukkan Status
+
 devices_title=Peranti Penyimpanan
 devices_none=Tiada peranti storan telah ditakrifkan lagi.
 devices_name=Nama peranti
@@ -263,6 +282,7 @@ devices_add=Tambah peranti storan baharu.
 devices_delete=Padamkan Peranti Penyimpanan yang Dipilih
 devices_return=senarai peranti storan
 devices_derr=Gagal memadam peranti storan
+
 device_title1=Buat Peranti Penyimpanan
 device_title2=Edit Alat Penyimpanan
 device_header=Butiran peranti simpanan fail
@@ -281,11 +301,13 @@ device_eclash=Peranti penyimpanan dengan nama yang sama sudah ada
 device_emedia=Nama jenis media yang tiada
 device_edevice=Peranti atau direktori arkib yang hilang atau tidak sah
 device_echild=Pelanggan ini tidak dapat dipadamkan kerana digunakan oleh $1 
+
 storagestatus_title=Status Daemon Penyimpanan
 storagestatus_err=Gagal mengambil status dari $1 : $2 
 storagestatus_msg=Status daripada $1 : $2 
 storagestatus_show=Tunjukkan status daemon penyimpanan:
 storagestatus_ok=okey
+
 label_title=Jilid Label
 label_header=Butir-butir jumlah untuk label
 label_storage=Menyimpan daemon untuk dilabel
@@ -301,6 +323,7 @@ label_done=.. pelabelan berjaya.
 label_epool=.. tidak dapat mencari kolam!
 label_err=Label gagal
 label_elabel=Tiada label yang dimasukkan
+
 pools_title=Kolam Jilid
 pools_none=Tiada pool volum telah ditakrifkan lagi.
 pools_name=Nama kolam
@@ -310,6 +333,7 @@ pools_add=Tambah kolam kelantangan baru.
 pools_delete=Padamkan Pool Volume terpilih
 pools_return=senarai kolam kelantangan
 pools_derr=Gagal memadamkan kolam kelantangan
+
 pool_title1=Buat Pool Volume
 pool_title2=Edit Pool Volume
 pool_header=Butiran pool volum sandaran
@@ -331,6 +355,7 @@ pool_ereten=Tempoh pengekalan atau tidak sah
 pool_status=Tunjukkan Volum
 pool_autolabel=Nyatakan awalan volum secara automatik
 pool_maxvolsize=Saiz kelantangan maksimum (mis. 5G untuk 5 gigabait)
+
 poolstatus_title=Volum Dalam Kolam
 poolstatus_show=Tunjukkan jumlah di kolam:
 poolstatus_ok=okey
@@ -344,9 +369,11 @@ poolstatus_status=Mod sandaran
 poolstatus_none=Tiada jumlah saat ini dalam kolam sandaran ini.
 poolstatus_never=Tidak pernah
 poolstatus_delete=Padamkan Volum Terpilih
+
 dvolumes_err=Gagal memadamkan jilid
 dvolumes_enone=Tiada yang dipilih
 dvolumes_ebacula=Kesalahan Bacula : $1 
+
 mount_title=Gunung atau Unmount
 mount_header=Penyimpanan gunung atau pilihan un-mount
 mount_storage=Peranti simpanan
@@ -364,8 +391,10 @@ unmount_failed=.. un-mount gagal! Lihat mesej ralat di atas untuk alasan mengapa
 mount_return=bentuk gunung
 mount_err=Gagal melekapkan peranti storan
 mount_eslot=Nombor slot yang hilang atau tidak sah
+
 cancel_err=Gagal membatalkan kerja
 cancel_enone=Tiada yang dipilih
+
 gjobs_title=Pekerjaan Cadangan Kumpulan Bacula
 gjobs_none=Tiada pekerjaan sandaran kumpulan Bacula telah ditakrifkan lagi.
 gjobs_add=Tambah kerja sandaran kumpulan Bacula baharu.
@@ -373,10 +402,12 @@ gjobs_delete=Padam Pekerjaan Terpilih
 gjobs_return=senarai pekerjaan kumpulan Bacula
 gjobs_derr=Gagal memadamkan kerja kumpulan Bacula
 gjobs_client=Kumpulan Bacula untuk membuat sandaran
+
 gjob_title1=Buat Kerja Cadangan Kumpulan Bacula
 gjob_title2=Edit Kerja Backup Kumpulan Bacula
 gjob_header=Butiran tugas sandaran kumpulan Bacula
 gjob_client=Kumpulan Bacula untuk membuat sandaran
+
 groups_title=Kumpulan Bacula
 groups_none=Tiada kumpulan Bacula dipilih untuk sandaran oleh Bacula lagi.
 groups_name=Nama kumpulan
@@ -390,6 +421,7 @@ groups_derr=Gagal memadam kumpulan
 groups_noadd=Tiada kumpulan Bacula yang ada untuk dipilih untuk sandaran.
 groups_info=$1 ($2 ahli)
 groups_already=Semua kumpulan Bacula telah pun ditambahkan.
+
 group_title1=Buat Kumpulan Bacula
 group_title2=Edit Kumpulan Bacula
 group_header=Butiran kumpulan Bacula akan disokong
@@ -400,11 +432,13 @@ group_port=Pelabuhan FB Bacula
 group_err=Gagal menyimpan kumpulan Bacula
 group_eclash=Satu kumpulan dengan nama yang sama sudah wujud
 group_members=Hos dalam kumpulan Bacula
+
 sync_title=Penyegerakan Kumpulan Bacula
 sync_header=Opsyen penyelarasan pelanggan kumpulan Automatik Bacula
 sync_sched=Segerakkan mengikut jadual?
 sync_schedyes=Ya, kadang-kadang dipilih di bawah ..
 sync_err=Gagal menyimpan penyelarasan kumpulan Bacula
+
 log_create_client=Pelanggan sandaran yang dibuat $1 
 log_modify_client=Pelanggan sandaran yang diubahsuai $1 
 log_delete_client=Pelanggan sandaran yang dipadam $1 
@@ -463,6 +497,7 @@ log_director=Konfigurasi pengarah Bacula global yang disimpan
 log_file=Menyimpan konfigurasi daemon fail Bacula
 log_storagec=Menyimpan konfigurasi daemon penyimpanan Bacula
 log_fixpass=Kata laluan program konsol Bacula yang telah ditetapkan
+
 director_title=Konfigurasi Pengarah
 director_header=Pilihan pengarah Global Bacula
 director_name=Nama Pengarah
@@ -476,6 +511,7 @@ director_ename=Nama pengarah yang hilang atau tidak sah
 director_eport=Nombor port hilang atau tidak sah
 director_ejobs=Bilangan pekerjaan yang serentak atau tidak sah
 director_edir=Direktori kerja yang hilang atau tidak wujud
+
 tls_enable=Membolehkan penyulitan TLS?
 tls_require=Hanya menerima sambungan TLS?
 tls_verify=Sahkan pelanggan TLS?
@@ -487,6 +523,7 @@ tls_ecert=Fail sijil TLS yang hilang atau tidak wujud
 tls_ekey=Fail utama TLS yang hilang atau tidak wujud
 tls_ecacert=Fail perakuan TLS yang hilang atau tidak wujud
 tls_ecerts=Untuk TLS yang dibolehkan, sijil, fail utama dan CA mesti ditentukan
+
 file_title=Konfigurasi Daemon Fail
 file_header=Pilihan daemon fail Bacula
 file_name=Nama daemon fail
@@ -499,6 +536,7 @@ file_ename=Nama daemon fail atau tidak sah
 file_eport=Nombor port hilang atau tidak sah
 file_ejobs=Bilangan pekerjaan yang serentak atau tidak sah
 file_edir=Direktori kerja yang hilang atau tidak wujud
+
 fdirectors_title=Pengarah Daemon Fail
 fdirectors_none=Tiada pengarah yang ditakrifkan lagi.
 fdirectors_name=Nama Pengarah
@@ -507,6 +545,7 @@ fdirectors_add=Tambah pengarah baru.
 fdirectors_delete=Padam Pengarah Terpilih
 fdirectors_return=senarai pengarah
 fdirectors_derr=Gagal memadamkan pengarah
+
 fdirector_title1=Buat Pengarah Daemon Fail
 fdirector_title2=Edit Pengarah Daemon Fail
 fdirector_header=Butiran mengendalikan pengarah jauh
@@ -518,6 +557,7 @@ fdirector_err=Gagal menyimpan pengarah daemon fail
 fdirector_ename=Nama pengarah yang hilang
 fdirector_eclash=Seorang pengarah dengan nama yang sama sudah wujud
 fdirector_epass=Kata laluan yang hilang
+
 sdirectors_title=Penyimpan Daemon Pengarah
 sdirectors_none=Tiada pengarah yang ditakrifkan lagi.
 sdirectors_name=Nama Pengarah
@@ -526,6 +566,7 @@ sdirectors_add=Tambah pengarah baru.
 sdirectors_delete=Padam Pengarah Terpilih
 sdirectors_return=senarai pengarah
 sdirectors_derr=Gagal memadamkan pengarah
+
 sdirector_title1=Buat Pengarah Daemon Penyimpanan
 sdirector_title2=Edit Pengarah Daemon Penyimpanan
 sdirector_header=Butiran mengendalikan pengarah jauh
@@ -537,6 +578,7 @@ sdirector_err=Gagal menyimpan pengarang daemon penyimpanan
 sdirector_ename=Nama pengarah yang hilang
 sdirector_eclash=Seorang pengarah dengan nama yang sama sudah wujud
 sdirector_epass=Kata laluan yang hilang
+
 storagec_title=Penyimpanan Daemon Konfigurasi
 storagec_header=Pilihan daemon penyimpanan Bacula
 storagec_name=Nama Daemon
@@ -549,6 +591,7 @@ storagec_ename=Nama daemon penyimpanan yang hilang atau tidak sah
 storagec_eport=Nombor port hilang atau tidak sah
 storagec_ejobs=Bilangan pekerjaan yang serentak atau tidak sah
 storagec_edir=Direktori kerja yang hilang atau tidak wujud
+
 chooser_title=Pilih Jadual
 chooser_monthsh=Bulan untuk dilaksanakan
 chooser_months=Bulan tahun
@@ -573,6 +616,7 @@ chooser_emonthsrange=Bulan terpilih mestilah bersebelahan
 chooser_eweekdaysrange=Hari kerja yang dipilih mestilah bersebelahan
 chooser_eweekdaynumsrange=Nombor hari kerja yang dipilih mestilah bersebelahan
 chooser_edaysrange=Hari-hari tertentu bulan itu mestilah bersebelahan
+
 restore_title=Pulihkan Backup
 restore_title2=Pulihkan Backup Ke Kumpulan Bacula
 restore_title3=Pulihkan Backup Kumpulan Bacula

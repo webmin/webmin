@@ -44,6 +44,7 @@ right_upsec=קיימים עדכוני חבילה של $1, מהם $2 הם עדכ�
 right_recollect=רענן מידע על המערכת
 right_vvirtualmin=גרסת Virtualmin
 right_vvm2=גרסת Cloudmin
+
 acl_show=מידע מערכת להצגה
 acl_showall=הכל
 acl_showsel=רק נבחר ..

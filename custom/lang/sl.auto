@@ -15,6 +15,7 @@ index_actform=Oblika
 index_actrun=Teči
 index_actsql=Oblika
 index_acted=Odprto
+
 edit_title=Uredi ukaz
 create_title=Ustvari ukaz
 edit_ecannot=Nimate dovoljenja za urejanje ukazov
@@ -66,6 +67,7 @@ edit_format4=Prenesite, kadar je to mogoče
 edit_servers=Zaženi na strežnikih Webmin
 edit_this=ta strežnik
 edit_clone=Klon
+
 save_err=Ukaza ni bilo mogoče shraniti
 save_ecannot=Nimate dovoljenja za urejanje ukazov
 save_ecmd=Noben ukaz ni bil vnesen
@@ -78,6 +80,7 @@ save_eusermin=Ukazov, ki se izvajajo na drugih strežnikih, ni mogoče zagnati i
 save_eformat=Neveljaven izhodni MIME tip
 save_eopts=Datoteka z možnostmi manjka za parameter $1 
 save_eopts2=Datoteka z možnostmi ali privzeta vrednost parametra $1 ne sme vsebovati :
+
 run_err=Ukaza ni bilo mogoče izvesti
 run_ecannot=Tega ukaza ne smete zagnati
 run_euser=Manjkajoči ali neveljaven uporabnik
@@ -94,6 +97,7 @@ run_eupload=Za prenos ni izbrana nobena datoteka
 run_emust=Manjka vrednost za parameter '$1'
 run_timeout=Ukaza ni bilo mogoče dokončati pred $1 sekundo časovne omejitve.
 run_failed=Ukaza ni uspelo z izhodnim statusom $1 
+
 log_modify=Spremenjen ukaz $1 
 log_create=Ustvarjen ukaz $1 
 log_delete=Izbrisan ukaz $1 
@@ -102,11 +106,13 @@ log_modify_edit=Spremenjen urejevalnik datotek $1
 log_create_edit=Ustvaril urejevalnik datotek $1 
 log_delete_edit=Izbrisan urejevalnik datotek $1 
 log_save_edit=Shranjena datoteka $1 
+
 acl_cmds=Ukaze, ki jih ta uporabnik lahko izvaja
 acl_call=Vsi ukazi
 acl_csel=Izbrano ..
 acl_cexcept=Vsi razen izbranih ..
 acl_edit=Ali lahko ukaze ustvarjate in urejate?
+
 file_ecannot=Nimate dovoljenja za urejanje datotek
 fcreate_title=Ustvari urejevalnik datotek
 fedit_title=Urejanje urejevalnika datotek
@@ -130,6 +136,7 @@ file_egroup=Manjkajoče ali neveljavno ime skupine
 file_eperms=Manjkajoča ali neveljavna oktalna dovoljenja
 file_envs=Ali lahko zamenjate spremenljivke okolja v imenu datoteke?
 file_id=ID urejevalnika
+
 view_err=Datoteke ni bilo mogoče urediti
 view_ecannot=Te datoteke ne smete urejati
 view_title=Uredi datoteko
@@ -138,10 +145,12 @@ view_header=Urejanje datoteke $1
 view_ebeforeedit=Ukaza pred urejanjem ni uspelo : $1 
 view_ebefore=Ukaza pred shranjevanjem ni uspelo : $1 
 view_eafter=Ukaza po varčevanju ni uspelo : $1 
+
 form_ecannot=Tega ukaza ne smete zagnati
 form_title=Izvedi ukaz
 form_exec=Izvedite
 form_edit=Uredi
+
 sql_title1=Ustvari ukaz SQL
 sql_title2=Uredi ukaz SQL
 sql_header=Podrobnosti ukaza SQL
@@ -157,6 +166,7 @@ sql_err=Shranjevanja ukaza SQL ni bilo mogoče
 sql_esql=Noben SQL ni vnesen
 sql_ehost=Manjkajoči ali neveljaven gostitelj strežnika baz podatkov
 sql_edb=Manjkajoče ali neveljavno ime baze podatkov
+
 srun_title=Izvedite ukaz SQL
 srun_err=Ni bilo mogoče izvesti ukaza SQL
 srun_edriver=Gonilnika DBI ni mogoče naložiti

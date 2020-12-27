@@ -15,5 +15,6 @@ edit_special_daily=روزانہ (آدھی رات کو)
 edit_special_weekly=ہفتہ وار (اتوار کے روز)
 edit_special_monthly=ماہانہ (یکم تاریخ)
 edit_special_yearly=سالانہ (یکم جنوری)
+
 log_success=Successfully ran <tt>$2</tt> in <tt>$1</tt>
 log_failure=Failed to run <tt>$2</tt> in <tt>$1</tt> : $3

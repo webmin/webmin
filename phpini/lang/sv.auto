@@ -9,17 +9,21 @@ index_edit=Klara av
 index_manual=Redigera manuellt
 index_anyfile=Redigera annan PHP-konfigurationsfil:
 index_return=konfigurationsfiler
+
 file_global=Global PHP-konfiguration
 file_eread=Det gick inte att läsa $1 : $2 
+
 manual_title=Redigera konfiguration manuellt
 manual_desc=Den här sidan kan användas för att manuellt redigera en PHP-konfigurationsfil. Detta bör göras noggrant, eftersom ingen syntax eller annan giltighetskontroll kommer att utföras på dina ändringar.
 manual_err=Det gick inte att redigera konfigurationsfilen
 manual_edata=Inget nytt innehåll anges
+
 list_title=Hantera PHP-konfiguration
 list_ecannot=Du får inte hantera den här PHP-konfigurationsfilen
 list_return=PHP-konfiguration
 list_format_ini=INI-format
 list_format_fpm=FPM-format
+
 vars_title=PHP-variabler
 vars_header=PHP-variabel skapande och citatalternativ
 vars_magic=Citera alla inmatningsvariabler?
@@ -28,6 +32,7 @@ vars_register=Förvandla alla input till globala variabler?
 vars_args=Gör kommandoradsparametrarna till globala variabler?
 vars_long=Skapa arrayer i gammal stil som <tt>HTTP_GET_VARS</tt>?
 vars_err=Det gick inte att spara PHP-variabla inställningar
+
 dirs_title=Kataloginställningar
 dirs_header=PHP-skript- och tilläggskataloginställningar
 dirs_include=Sök i kataloger för inkluderar
@@ -39,6 +44,7 @@ dirs_err=Det gick inte att spara kataloginställningar
 dirs_eincs=Inga inkluderade sökkataloger
 dirs_eutmp=Katalogen för tillfälliga filer saknas eller ogiltig
 dirs_eext=Katalogen för tillägg saknas
+
 db_title=Databasinställningar
 db_header1=MySQL-databasanslutningsinställningar
 db_persist=Tillåta ihållande databasanslutningar?
@@ -57,6 +63,7 @@ db_emaxlinks=Det maximala antalet totala anslutningar saknas eller ogiltig
 db_etimeout=Avbruten eller ogiltig timeout för anslutning
 db_ehost=MySQL-servervärd saknas eller ogiltig
 db_eport=MySQL-serverport saknas eller ogiltig
+
 session_title=Sessionalternativ
 session_header=Alternativ för PHP-sessionspårning
 session_handler=Session lagringsmekanism
@@ -73,6 +80,7 @@ session_epath=Saknad eller ogiltig katalog för sessionfiler
 session_elife=Saknad eller ogiltig cookie livstid
 session_emaxlife=Saknad eller ogiltig maximal sessionstid
 session_eredis=Saknas eller inaktiverad återförlängning
+
 safe_title=Säkerhetsalternativ
 safe_header=Alternativ för säker filåtkomstläge
 safe_on=Aktivera säkert läge?
@@ -85,6 +93,7 @@ safe_err=Det gick inte att spara alternativ för säkert läge
 safe_einclude=Saknad eller ogiltig tillåten katalog för inkluderade filer
 safe_eexec=Saknad eller ogiltig tillåten katalog för exekverade program
 safe_ebasedir=Saknad eller ogiltig katalog för filoperationer
+
 limits_title=Resursgränser
 limits_header=Alternativ för minne och överföringsgräns
 limits_mem=Maximal allokering av minnet
@@ -98,6 +107,7 @@ limits_epost=Saknas eller ogiltig maximal HTTP POST-storlek
 limits_eupload=Saknas eller ogiltig maximal filuppladdningsstorlek
 limits_eexec=Saknas eller ogiltig maximal körningstid
 limits_einput=Saknad eller ogiltig maximal ingångsfördelningstid
+
 errors_title=Felloggning
 errors_header=Felmeddelande och loggningsalternativ
 errors_display=Visa felmeddelanden?
@@ -128,6 +138,7 @@ errors_err=Det gick inte att spara felloggning
 errors_ereporting=Inget fel typ uttryckt in
 errors_emaxlen=Maximal storlek på loggade fel saknas eller ogiltig
 errors_efile=Fel loggfil saknas
+
 misc_title=Andra inställningar
 misc_header=Övriga andra PHP-inställningar
 misc_short=Tillåt PHP-skript som börjar med &lt;? ?
@@ -148,6 +159,7 @@ misc_include=Tillåt öppning av fjärrkontroll Inkluderar?
 misc_path=CGI Fix Path Info?
 misc_timezone=PHP-tidszon
 misc_charset=Standardteckenuppsättning
+
 log_manual=Redigera filen $1 manuellt
 log_vars=Ändrade PHP-variabler i $1 
 log_dirs=Ändrade kataloginställningar i $1 
@@ -157,6 +169,7 @@ log_safe=Ändrade alternativ för säkert läge i $1
 log_limits=Ändrade resursgränser i $1 
 log_errors=Ändrad felinloggning i $1 
 log_misc=Ändrade andra inställningar i $1 
+
 acl_global=Kan redigera global PHP-konfiguration?
 acl_anyfile=Kan redigera vilken fil som helst som en PHP-konfiguration?
 acl_manual=Kan manuellt redigera konfigurationsfiler?

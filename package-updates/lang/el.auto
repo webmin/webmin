@@ -57,6 +57,7 @@ index_reposdisable=Απενεργοποιήστε τα Αποθετήρια
 index_reposenable=Ενεργοποίηση αποθετηρίων
 index_reposdelete=Διαγραφή αποθετηρίων
 index_repoheader=Νέες επιλογές αποθετηρίων πακέτων
+
 update_title=Ενημέρωση πακέτων
 update_title2=Εγκατάσταση πακέτων
 update_enone=Δεν έχουν επιλεγεί πακέτα
@@ -94,9 +95,11 @@ update_none=Κανένας
 update_ops=Δημιουργία πλήρους λίστας πακέτων ..
 update_rebootdesc=Ένα από τα εγκατεστημένα πακέτα απαιτεί την πλήρη εφαρμογή της επανεκκίνησης.
 update_reboot=Επανεκκινήστε τώρα
+
 sched_title=Προγραμματισμένη ενημέρωση
 sched_yes=Ο προγραμματισμένος έλεγχος για ενημερώσεις είναι πλέον ενεργός.
 sched_no=Ο προγραμματισμένος έλεγχος για ενημερώσεις έχει απενεργοποιηθεί.
+
 log_update=Εγκατεστημένα $1 ενημερωμένα πακέτα
 log_sched=Ενεργοποιημένες προγραμματισμένες ενημερώσεις
 log_unsched=Απενεργοποιημένες προγραμματισμένες ενημερώσεις
@@ -108,11 +111,13 @@ log_enable_repo=Ενεργοποιημένη αποθήκη πακέτων $1
 log_disable_repo=Απενεργοποιημένη αποθήκη πακέτων $1 
 log_delete_repo=Διαγράφηκε το αποθετήριο πακέτων $1 
 log_create_repo=Δημιουργήθηκε αποθήκη πακέτων $1 
+
 refresh_title=Αναζωογονητικά πακέτα
 refresh_clearing=Εκκαθάριση πακέτων κρυφής μνήμης ..
 refresh_done=.. Ολοκληρώθηκε
 refresh_available=Επανασυλλογή διαθέσιμων πακέτων ..
 refresh_done3=.. βρέθηκαν $1 πιθανές ενημερώσεις
+
 view_title=Λεπτομέρειες πακέτου
 view_header=Ενημερώσιμες πληροφορίες πακέτου
 view_name=Ονομα πακέτου
@@ -126,12 +131,14 @@ view_changelog=Changelog για τη διαθέσιμη έκδοση
 view_software=Διαχείριση πακέτου
 view_update=Ενημέρωση πακέτου
 view_install=Εγκατάσταση πακέτου
+
 system_yum=YUM
 system_apt=ΚΑΤΑΛΛΗΛΟΣ
 system_csw=CSW (Blastwave)
 system_webmin=Webmin module
 system_usermin=Μονάδα Usermin
 system_tgz=Webmin ή Usermin tar.gz
+
 repos_err_disable=Αποτυχία απενεργοποίησης αποθετηρίων
 repos_err_enable=Αποτυχία ενεργοποίησης αποθετηρίων
 repos_err_delete=Αποτυχία κατάργησης αποθετηρίων

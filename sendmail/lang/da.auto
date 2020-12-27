@@ -11,6 +11,7 @@ index_version2=Sendmail version $1, config $2
 index_xversion=Sendmail version $1 
 index_version=Sendmailkonfiguration $1 
 index_sendmail=Send mail
+
 opts_title=Sendmail-indstillinger
 opts_ecannot=Du har ikke tilladelse til at redigere sendmail-indstillinger
 opts_ds=Send udgående mail via vært
@@ -57,6 +58,7 @@ opts_qso=Sorter postkø efter
 opts_priority=Prioritet
 opts_host=Værtsnavn
 opts_time=Modtaget tid
+
 aliases_title=Mail aliaser
 aliases_ecannot=Du har ikke tilladelse til at redigere aliaser
 aliases_enofile=Ingen aliasefiler er defineret i din Sendmail-konfiguration
@@ -73,6 +75,7 @@ aliases_return=alias liste
 aliases_toomany=Der er for mange mailaliaser på dit system til at blive vist på denne side.
 aliases_go=Find aliaser, der matcher:
 aliases_delete=Slet valgte aliaser
+
 aform_ecannot=Du har ikke tilladelse til at redigere dette alias
 aform_type0=Ingen
 aform_type1=Email adresse
@@ -90,11 +93,13 @@ aform_val=Alias til
 aform_afile=Redigere ..
 aform_return=alias
 aform_cmt=Beskrivelse
+
 afile_title=Rediger adressefil
 afile_desc=Brug tekstområdet nedenfor til at redigere adresserne i filen $1.
 afile_efile=Du har ikke tilladelse til at redigere $1.
 afile_undo=Fortryd ændringer
 afile_ewrite=Kunne ikke skrive til adressefilen : $1 
+
 ffile_title=Rediger filterfil
 ffile_desc=Brug formularen herunder til at indstille filterregler i filen $1.
 ffile_efile=Du har ikke tilladelse til at redigere $1.
@@ -110,6 +115,7 @@ ffile_other=Ellers videresendes til $1
 ffile_err=Kunne ikke gemme filterfilen
 ffile_ematch=Manglende kamp
 ffile_eaction=Manglende viderestillingsadresse
+
 rfile_title=Rediger fil automatisk
 rfile_desc=Brug tekstområdet nedenfor til at redigere autosvarmeddelelsen i $1. Meddelelsen kan indeholde makroerne $SUBJECT, $FROM, $TO, $DATE og $BODY, som udvides, når autoreply er aktiveret.
 rfile_desc2=Du kan også indstille mailoverskrifter, der tilføjer eller erstatter standardindstillingerne, der bruges i autoreplayet, ved at sætte linjer som: <br><tt> Fra: foo@bar.com </tt><br> <tt>Emne: På ferie</tt> <br> øverst i meddelelsen, adskilt fra kroppen med en enkelt tom linje.
@@ -129,6 +135,7 @@ rfile_from=Fra: adresse til svar
 rfile_auto=Automatisk (baseret på modtagerens adresse)
 rfile_efrom=Mangler fra: adresse
 rfile_fromdesc=A Fra: adresse skal altid specificeres, hvor det er muligt, da den automatiske metode muligvis ikke er pålidelig.
+
 asave_err=Kunne ikke gemme alias
 asave_ecannot2=Du har ikke tilladelse til at redigere aliaser
 asave_ecannot=Du har ikke tilladelse til at redigere dette alias
@@ -145,9 +152,11 @@ asave_etype5=Filen '$1' er automatisk gyldig
 asave_etype4none=Intet program givet
 asave_etype6=Filterfil '$1' er ikke gyldig
 asave_esame=Du har kun tilladelse til at oprette et alias med samme navn som dit webmin-login
+
 adelete_err=Kunne ikke slette aliaser
 adelete_enone=Ingen valgt
 adelete_ecannot=Du har ikke tilladelse til at slette aliaset $1 
+
 cws_title=Lokale domæner
 cws_ecannot=Du har ikke tilladelse til at redigere lokale domæner
 cws_domains=Domæner, der håndteres af denne server
@@ -156,6 +165,7 @@ cws_desc2=Bemærk, at det normalt ikke kun er at inkludere et domæne på listen
 cws_err=Kunne ikke gemme lokale domæner
 cws_ehost='$1' er ikke et gyldigt host- eller domænenavn
 cws_eip='$1' er en IP-adresse, ikke et domæne
+
 masq_title=Domæne Masquerading
 masq_ecannot=Du har ikke tilladelse til at konfigurere maskerad
 masq_domain=Maskerade som domæne
@@ -167,12 +177,14 @@ masq_err=Kunne ikke gemme domænenavnet
 masq_edomain='$1' er ikke et gyldigt domæne til maskerade som
 masq_ehost='$1' er ikke et gyldigt host- eller domænenavn
 masq_eip='$1' er en IP-adresse, ikke et domæne
+
 trusts_title=Pålidelige brugere
 trusts_ecannot=Du har ikke tilladelse til at redigere betroede brugere
 trusts_users=Lokale brugere har tillid til via sendmail
 trusts_desc=Hvis en lokal bruger forsøger at sende e-mail, giver sendmail kun brugeren mulighed for at angive en anden <tt>Fra:</tt> adresse, hvis brugeren er på listen nedenfor. Denne begrænsning findes for at forhindre brugere i at forfalde e-mail med forfalskede <tt>Fra:</tt> adresser oprindelse fra dit system.
 trusts_err=Kunne ikke gemme betroede brugere
 trusts_euser='$1' er ikke en gyldig bruger
+
 virtusers_title=Adressekortlægning
 virtusers_ecannot=Du har ikke tilladelse til at redigere adressekortlægninger
 virtusers_efeature=Din sendmail-konfiguration har ikke funktionen til adressekortlægning (<tt>virtuser</tt>) aktiveret. <a href='$1'>Klik her</a> for at opsætte sendmail-funktioner.
@@ -190,6 +202,7 @@ virtusers_return=adressekortliste
 virtusers_toomany=Der er for mange adressekortlægninger på dit system til at blive vist på denne side.
 virtusers_go=Find adressekartlægninger, der matcher:
 virtusers_delete=Slet valgte adressekortlægninger
+
 vform_edit=Rediger adressekortlægning
 vform_create=Opret adressekortlægning
 vform_for=Mail til
@@ -206,6 +219,7 @@ vform_err_tempfail=Midlertidig fiasko
 vform_err_protocol=Protokolfejl
 vform_end=Gå til slut
 vform_ecannot=Du har ikke tilladelse til at redigere denne adressekortlægning
+
 vsave_ecannot=Du har ikke tilladelse til at redigere adressekortlægninger
 vsave_ecannot2=Du har ikke tilladelse til at redigere denne adressekortlægning
 vsave_emax=Du har ikke tilladelse til at oprette mere end $1 adressekortlægninger
@@ -221,8 +235,10 @@ vsave_eaddr='$1' er ikke en gyldig adresse
 vsave_ecannot4=Det er ikke tilladt at oprette kortlægning til domæner
 vsave_edomdom=Kun et domæne kan kortlægges til et andet domæne
 vsave_ecannot5=Det er ikke tilladt at oprette kortlægning, der returnerer en fejl
+
 vdelete_err=Kunne ikke slette adressekortlægninger
 vdelete_ecannot=Du har ikke tilladelse til at slette kortlægningen for $1 
+
 mailers_title=Domænestyring
 mailers_cannot=Du har ikke tilladelse til at redigere domænestyring
 mailers_edirective=Din sendmail-konfigurationsfil har ikke det nødvendige direktiv til domænestyring.
@@ -236,6 +252,7 @@ mailers_delivery=Levering
 mailers_to=Send til ..
 mailers_return=domæne routing liste
 mailers_delete=Slet valgte domæneruter
+
 mform_edit=Rediger routing
 mform_create=Opret routing
 mform_for=Mail til
@@ -259,12 +276,15 @@ mform_procmail=procmail
 mform_mail11=DECnet mail11
 mform_error=Fejl
 mform_ecannot=Du har ikke tilladelse til at redigere domænestyring
+
 msave_ecannot=Du har ikke tilladelse til at redigere domænestyring
 msave_err=Kunne ikke gemme domænestyring
 msave_edomain='$1' er ikke en gyldig vært eller domæne
 msave_edup=Domænestyring for '$1' er allerede defineret
+
 mdelete_err=Kunne ikke slette domæneruter
 mdelete_ecannot=Du har ikke tilladelse til at slette ruten for $1 
+
 generics_title=Udgående adresser
 generics_cannot=Du har ikke tilladelse til at redigere udgående adresser
 generics_econfig=Din sendmail-konfigurationsfil har ikke det nødvendige direktiv til kort for udgående adresser.
@@ -278,11 +298,13 @@ generics_return=adressekortliste
 generics_toomany=Der er for mange udgående adresser på dit system til at blive vist på denne side.
 generics_go=Find udgående adresser, der matcher:
 generics_delete=Slet valgte udgående adresser
+
 gform_edit=Rediger kortlægning
 gform_create=Opret kortlægning
 gform_from=Mail fra
 gform_to=Skifte til
 gform_ecannot=Du har ikke tilladelse til at redigere denne udgående adresse
+
 gsave_ecannot=Du har ikke tilladelse til at redigere udgående adresser
 gsave_ecannot2=Du har ikke tilladelse til at redigere denne udgående adresse
 gsave_ecannot3=Du har ikke tilladelse til at gemme denne udgående adresse
@@ -291,8 +313,10 @@ gsave_efrom='$1' er ikke en gyldig adresse
 gsave_ematch=Fra-adressen stemmer ikke overens med '$1'
 gsave_eto='$1' er ikke en gyldig ny adresse
 gsave_ealready=En udgående adressekortlægning for '$1' findes allerede
+
 gdelete_err=Kunne ikke slette udgående adressekortlægninger
 gdelete_ecannot=Du har ikke tilladelse til at slette kortlægningen for $1 
+
 cgs_title=Udgående domæner
 cgs_ecannot=Du har ikke tilladelse til at redigere udgående domæner
 cgs_header=Udgående adressedomæner
@@ -300,6 +324,7 @@ cgs_desc=Bortset fra e-mail, der er sendt af lokale brugere, udfører sendmail k
 cgs_err=Kunne ikke gemme udgående domæner
 cgs_ehost='$1' er ikke et gyldigt host- eller domænenavn
 cgs_eip='$1' er en IP-adresse, ikke et domæne
+
 domains_title=Domænekortlægning
 domains_ecannot=Du har ikke tilladelse til at redigere domænekortlægning
 domains_econfig=Din sendmail-konfigurationsfil har ikke det nødvendige direktiv til domænekortlægning.
@@ -310,17 +335,21 @@ domains_from=Fra domæne ..
 domains_to=Til domæne ..
 domains_return=domænekortliste
 domains_delete=Slet valgte domænekortlægninger
+
 dform_edit=Rediger kortlægning
 dform_create=Opret kortlægning
 dform_from=Fra domæne
 dform_to=Til domæne
 dform_ecannot=Du har ikke tilladelse til at redigere domænekortlægning
+
 dsave_ecannot=Du har ikke tilladelse til at redigere domænekortlægning
 dsave_err=Kunne ikke gemme domænekortlægning
 dsave_edomain='$1' er ikke et gyldigt domænenavn
 dsave_ealready=En domænekortlægning til '$1' findes allerede
+
 ddelete_err=Kunne ikke slette domænekortlægninger
 ddelete_ecannot=Du har ikke tilladelse til at slette kortlægningen for $1 
+
 access_title=Spam-kontrol
 access_ecannot=Du har ikke tilladelse til at konfigurere spam-kontrol
 access_efeature=Din sendmail-konfiguration har ikke spam-kontrol (<tt>access_db</tt>) -funktionen aktiveret. <a href='$1'>Klik her</a> for at opsætte sendmail-funktioner.
@@ -333,6 +362,7 @@ access_return=spam kontrol liste
 access_toomany=Der er for mange regler for spamkontrol på dit system til at blive vist på denne side.
 access_go=Find matchende regler for spam:
 access_delete=Slet valgte regler for spamkontrol
+
 sform_edit=Rediger spamkontrolregel
 sform_create=Opret spam-kontrolregel
 sform_source=Mailkilde
@@ -354,6 +384,7 @@ sform_discard=Kasser lydløst
 sform_err=Fejlkode
 sform_msg=Besked
 sform_ecannot=Du har ikke tilladelse til at redigere denne spam-kontrolregel
+
 ssave_err=Gemningen af spam-kontrolreglen mislykkedes
 ssave_etype0='$1' er ikke en gyldig adresse
 ssave_etype1='$1' er ikke en gyldig netværksadresse
@@ -362,8 +393,10 @@ ssave_etype3='$1' er ikke et gyldigt domæne
 ssave_ecode='$1' er ikke en gyldig SMTP-fejlkode
 ssave_ealready=En spam-kontrolregel for '$1' findes allerede
 ssave_ecannot2=Du har ikke tilladelse til at gemme denne spam-kontrolregel
+
 sdelete_err=Kunne ikke slette reglerne for spamkontrol
 sdelete_ecannot=Du har ikke tilladelse til at slette reglen for $1 
+
 relay_title=Relæ-domæner
 relay_ecannot=Du har ikke tilladelse til at redigere relæ-domæner
 relay_eversion=Kun sendmail version 8.9 og nyere understøtter funktionen relæ-domæner.
@@ -372,6 +405,7 @@ relay_desc1=Medmindre det er tilladt i henhold til <a href='$1'>spamkontrol</a> 
 relay_desc2=Hvis dit system fungerer som en gateway for flere domæner, der ikke er direkte tilgængelige uden for dit netværk (ved hjælp af funktionen <a href='$1'>domæne-routing</a>), skal alle disse domæner vises her.
 relay_err=Kunne ikke gemme relæ-domæner
 relay_edomain='$1' er ikke et gyldigt domænenavn
+
 mailq_title=Mailkø
 mailq_count=$1 meddelelser
 mailq_ecannot=Du har ikke tilladelse til at se mailkøen
@@ -401,12 +435,15 @@ mailq_search=Find meddelelser i kø, hvor
 mailq_quar=karantæne
 mailq_refresh=Opdater postkø
 mailq_refreshdesc=Genindlæs denne side for at vise den aktuelle status for mailkøen.
+
 flushq_title=Flush Queue
 flushq_desc=Tvinger forsøgt levering af alle meddelelser med kommandoen $1 ..
 flushq_desc2=Tvinger forsøgt levering af $1 valgte meddelelser ..
 flushq_ecannot=Du har ikke tilladelse til at skylle mailkøen
+
 searchq_title=Resultater i køsøgning
 searchq_none=Der blev ikke fundet nogen beskeder i kø.
+
 delq_err=Kunne ikke slette beskeden
 delq_ecannot=Du må ikke fjerne meddelelser
 delq_locked=Filen er i øjeblikket låst til afsendelse
@@ -422,6 +459,7 @@ delq_force=Tving alligevel sletning
 delq_ecannot2=du kan ikke slette denne meddelelse
 delq_rusure=Er du sikker på, at du vil slette de $1 valgte købeskeder?
 delq_confirm=Slet meddelelser
+
 boxes_title=Brugerpostkasser
 boxes_user=Bruger
 boxes_size=Postkassestørrelse
@@ -431,6 +469,7 @@ boxes_sent=Sendt post
 boxes_ecannot=Du har ikke lov til at læse e-mail
 boxes_toomany=Der er for mange brugere på dit system til at liste alle deres postkasser.
 boxes_go=Se mail til bruger:
+
 mail_title=Bruger-e-mail
 mail_from=Fra
 mail_date=Dato
@@ -471,6 +510,7 @@ mail_move=Flytte til:
 mail_copy=Kopier til:
 mail_rfc=Fra linje
 mail_eexists=Beskeden findes ikke længere!
+
 view_title=Læs e-mail
 view_desc=Meddelelse $1 i $2 
 view_desc2=Meddelelse $1 for bruger $2 
@@ -501,6 +541,7 @@ view_egone=Denne meddelelse findes ikke længere
 view_afile=Navn på vedhæftet fil
 view_atype=Vedhæftetype
 view_asize=Filstørrelse
+
 compose_title=Skriv e-mail
 reply_title=Svar på e-mail
 forward_title=Videresend e-mail
@@ -512,6 +553,7 @@ reply_attach2=Klient- og serversiden vedhæftede filer
 reply_send=Send mail
 reply_ecannot=Du har ikke tilladelse til at sende mail som denne bruger
 reply_body=Meddelelsestekst
+
 send_err=Kunne ikke sende mail
 send_eto=Mangler til adresse
 send_efrom=Mangler fra adresse
@@ -524,6 +566,7 @@ send_eattach=Vedhæftede filer kan ikke være mere end $1 kB i størrelse.
 send_eperms=Bruger $1 kan ikke læse $2 
 send_eperms2=Du har ikke tilladelse til at sende fil $1 
 send_epath=Sendmail-eksekverbar $1 findes ikke.
+
 delete_title=Slet mail
 delete_rusure=Er du sikker på, at du vil slette de $1 valgte meddelelser fra $2 ? Det kan tage lidt tid for en stor postfil. Indtil sletningen er afsluttet, skal der ikke udføres nogen anden handling.
 delete_rusure2=Er du sikker på, at du vil slette denne meddelelse fra $1 ? Det kan tage lidt tid for en stor postfil. Indtil sletningen er afsluttet, skal der ikke udføres nogen anden handling.
@@ -536,6 +579,7 @@ delete_emoveuser=Bruger til at flytte e-mail til findes ikke
 delete_emovecannot=Du har ikke tilladelse til at flytte e-mail til den specificerede bruger
 delete_emovenone=Ingen mail valgt at flytte
 delete_nobutton=Der blev ikke klikket på nogen knap
+
 search_title=Søgeresultater
 search_ecannot=Du har ikke tilladelse til at søge på denne brugers e-mail
 search_ematch=Du skal indtaste tekst for at matche mod.
@@ -549,6 +593,7 @@ search_results4=$1 e-mail-meddelelser, der matcher din søgning ..
 search_local=I lokale mapper
 search_all=I alle mapper
 search_eboolean=Booleske søgninger, der bruger både 'og' og 'eller' understøttes ikke
+
 file_title=Rediger Sendmail-fil
 file_desc=Brug tekstboksen nedenfor til manuelt at redigere Sendmail-filen $1.
 file_undo=Fortryd ændringer
@@ -564,6 +609,7 @@ file_emode=Ukendt tilstand!
 file_err=Kunne ikke redigere filen
 file_ealias=Ugyldigt format til aliasefilelinje : $1 
 file_etab=Ugyldigt format til kortfillinje : $1 
+
 acl_opts=Kan redigere sendmail-indstillinger?
 acl_ports=Kan redigere netværksporte?
 acl_cws=Kan redigere lokale domæner?
@@ -630,6 +676,7 @@ acl_usersm=Brugere der matcher
 acl_asame=Samme som brugernavn
 acl_usersu=Med UID inden for rækkevidde
 acl_spam=Spam-kontroladresser, som denne bruger kan redigere
+
 log_opts=Ændrede sendmail-indstillinger
 log_ports=Skift netværksporte
 log_alias_create=Oprettet alias $1 
@@ -680,6 +727,7 @@ log_delete_domains=Slet $1 domænekortlægninger
 log_delete_accesses=Slet $1 spamkontrolposter
 log_delete_generics=Slet $1 udgående adresser
 log_delete_mailers=Slet $1 domæneruter
+
 match_from=Fra: kampe
 match_subject=Emne: kampe
 match_to=Til: kampe
@@ -699,6 +747,7 @@ match_!status=Status stemmer ikke overens
 match_!body=Krop stemmer ikke overens
 match_!size=Størrelsen er mindre end
 match_!headers=Overskrifter matcher ikke
+
 features_title=Sendmail M4-konfiguration
 features_desc=Denne side viser de relevante poster fra Sendmail M4-konfigurationsfilen $1, hvorfra den faktiske konfigurationsfil $2 er bygget.
 features_type=Indtastningstype
@@ -718,6 +767,7 @@ features_efeatures=Sendmail M4-konfigurationsbase-mappen $2 blev ikke fundet på
 features_econfig=Placeringerne af Sendmail M4-basismappen og M4-konfigurationsfilen er endnu ikke indstillet i din <a href='$1'>modulkonfiguration</a>. Hvis du har installeret Sendmail fra kilden, skal disse være under den originale kildekatalog.
 features_move=Bevæge sig
 features_manual=Rediger fil manuelt
+
 feature_add=Tilføj konfigurationsindlæg
 feature_edit=Rediger konfigurationsindtastning
 feature_header=Detaljer om M4-konfigurationsindgang
@@ -738,12 +788,15 @@ feature_emailer=Maileren $1 findes allerede
 feature_eostype=OS-typen er allerede defineret som $1 
 feature_manual=Rediger M4-fil
 feature_mdesc=På siden kan du manuelt redigere Sendmail M4-konfigurationsfilen $1. Vær forsigtig, da der ikke foretages nogen syntaksekontrol på dine redigeringer.
+
 feat_access_db=Spam-kontrolfil
 feat_virtusertable=Adressekortlægning
 feat_mailertable=Domænestyring
 feat_genericstable=Udgående adresser
 feat_domaintable=Domænekortlægning
+
 mailer_local=Lokal Unix levering
+
 build_title=Genopbyg Sendmail-konfiguration
 build_em4=Den nødvendige kommando $1 til genopbygning af Sendmail-konfigurationsfilen blev ikke fundet på dit system.
 build_ebuild=Kunne ikke bygge konfiguration : $1 
@@ -752,13 +805,16 @@ build_rusure2=Vær opmærksom på, at hvis du har foretaget ændringer i Sendmai
 build_ok=Ja, udskift det nu
 build_diff=Følgende ændringer foretages i din Sendmail-konfigurationsfil.
 build_nodiff=Din sendmail-konfigurationsfil er allerede opdateret.
+
 stop_err=Kunne ikke stoppe sendmail
 stop_ecannot=Du har ikke lov til at stoppe sendmail
 stop_epid=Sendmail ser ikke ud til at køre
 restart_epids=Kunne ikke finde sendmail-processer
 restart_ekill=Kunne ikke signalere sendmail-processer : $1 
+
 start_err=Kunne ikke starte sendmail
 start_ecannot=Du har ikke tilladelse til at starte sendmail
+
 ports_title=Netværksporte
 ports_name=Portnavn
 ports_addr=Lyt på adresse

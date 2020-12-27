@@ -25,6 +25,7 @@ index_echeckupdate=Nebol zistený žiadny aktualizačný systém!
 index_filter=Filtrovať balíky
 index_filterclear=Vymazať filter
 index_filtered=Zobrazujú sa <tt>$1</tt> balíčky z <tt>$2</tt>
+
 search_title=Vyhľadávanie balíkov
 search_nomatch=Žiadnym balíkom nezodpovedá $1 
 search_none=nikto
@@ -37,6 +38,7 @@ search_esearch=Zadali ste nič, čo hľadáte!
 search_delete=Odinštalujte vybrané balíky
 search_selall=Vybrať všetko
 search_invert=Obrátiť výber
+
 edit_title=Upraviť balík
 edit_details=Podrobnosti balíka
 edit_desc=popis
@@ -53,6 +55,7 @@ edit_uninst=Uninstall
 edit_uninstdesc=Odstráňte tento balík zo svojho systému.
 edit_return=podrobnosti o balíku
 edit_egone=Balík už nie je nainštalovaný
+
 list_title=Súbory súborov
 list_files=Súbory pre balík $1 
 list_path=cesta
@@ -64,6 +67,7 @@ list_status=Postavenie
 list_ok=OK
 list_view=(Vyhliadka)
 list_eview=Nepodarilo sa otvoriť $1 : $2 
+
 delete_err=Balíček $1 sa nepodarilo odstrániť
 delete_epack=Balík $1 neexistuje
 delete_title=Odstrániť balík
@@ -75,6 +79,7 @@ delete_noscripts=Preskočiť odinštalovanie skriptov?
 delete_efile=Neplatný dočasný súbor na odstránenie
 delete_purge=Vymazať konfiguračné súbory?
 delete_depstoo=Tiež ste odstránili nepoužité závislosti?
+
 file_title=Informácie o súbore
 file_notfound=Nie sú dostupné žiadne informácie o $1 
 file_path=cesta
@@ -88,6 +93,7 @@ file_pack=balíček
 file_class=Trieda
 file_desc=popis
 file_none=nikto
+
 install_err=Inštalácia balíka zlyhala
 install_elocal=Nebol zadaný žiadny miestny súbor
 install_elocal2=$1 neexistuje
@@ -101,6 +107,7 @@ install_title=Nainštalujte balík
 install_header=Nainštalujte balík
 install_packs=Balíky, ktoré sa majú nainštalovať
 install_ok=Inštalácia
+
 do_err=Inštalácia balíka $1 zlyhala
 do_title=Nainštalujte balík
 do_efailed=Inštalácia zlyhala : $1 
@@ -117,10 +124,12 @@ do_arch=architektúra
 do_inst=nainštalovaný
 do_none=nikto
 do_files=Súbory súborov
+
 pkgadd_root=Koreňový adresár
 pkgadd_eroot=Koreňový adresár „$1“ neexistuje
 pkgadd_unknown=nevedno
 pkgadd_manager=Správca balíkov systému V
+
 rpm_upgrade=Aktualizovať balík?
 rpm_replacepkgs=Prepísať balík?
 rpm_nodeps=Ignorovať závislosti?
@@ -138,10 +147,12 @@ rpm_find=Hľadanie rpmfind.net ..
 rpm_findrpm=Názov súboru balíka
 rpm_finddistro=distribúcia
 rpm_finddesc=popis
+
 bsd_unknown=nevedno
 bsd_scripts=Spúšťať skripty pred a po inštalácii?
 bsd_force=Vynútiť inštaláciu, ak chýbajú predpoklady?
 bsd_manager=Správca balíkov $1 
+
 slack_unclass=ostatné
 slack_unknown=nevedno
 slack_missing=chýbajúce
@@ -149,12 +160,14 @@ slack_root=Koreňový adresár
 slack_eroot=Chýbajúci alebo neplatný koreňový adresár
 slack_manager=Správca balíkov Slackware
 slack_edir=Chýba adresár balíkov Slackware $1 
+
 debian_unknown=nevedno
 debian_depends=Ignorovať problémy so závislosťou?
 debian_conflicts=Ignorovať konflikty balíkov?
 debian_overwrite=Prepísať súbory z iných balíkov?
 debian_downgrade=Nahradiť novší balík starým?
 debian_manager=Debian DPKG
+
 log_install_package=Nainštalovaný balík $1 
 log_install_apt_l=Nainštalované balíčky $1 od APT
 log_install_apt=Nainštalované balíčky ($2) z APT
@@ -173,6 +186,7 @@ log_upgrade_yum_l=Aktualizované balíky $1 od YUM
 log_upgrade_yum=Aktualizované balíky ($2) z YUM
 log_check_rhn_l=Aktualizované balíky $1 od Redhat Network
 log_check_rhn=Aktualizované balíky ($2) z Redhat Network
+
 rhn_input=Balík od Redhat Network
 rhn_find=Hľadať RHN ..
 rhn_install=Inštalácia balíkov s príkazom $1 ..
@@ -200,6 +214,7 @@ rhn_eproxy=Chýba alebo je neplatný proxy server
 rhn_skip=Preskočiť porovnávanie balíkov
 rhn_nonefound=Na aktualizáciu nie sú k dispozícii žiadne balíčky.
 rhn_name=Redhat Network
+
 apt_input=Balíček od APT
 apt_install=Inštalácia balíkov s príkazom $1 ..
 apt_ok=.. inštalácia je dokončená.
@@ -229,6 +244,7 @@ apt_repo_url=Základná adresa URL úložiska
 apt_repo_path=Komponenty distribučnej cesty
 apt_repo_eurl=Chýbajúca alebo neplatná základná adresa URL
 apt_repo_epath=Chýba distribučná cesta
+
 yum_input=Balíček od YUM
 yum_install=Inštalácia balíkov s príkazom $1 ..
 yum_ok=.. inštalácia je dokončená.
@@ -259,6 +275,7 @@ yum_repo_ename=Chýba názov úložiska
 yum_repo_eurl=Chýbajúca alebo neplatná adresa URL úložiska
 yum_repo_egpg=Certifikačný súbor GPG chýba alebo neexistuje
 yum_repo_efile=Súbor úložiska už existuje!
+
 urpmi_name=urpmi
 urpmi_input=Balík od URPMI
 urpmi_find=Prehliadať URPMI ..
@@ -273,6 +290,7 @@ urpmi_upgradeok=.. dokončené.
 urpmi_install=Inštalácia balíkov s príkazom $1 ..
 urpmi_ok=.. inštalácia je dokončená.
 urpmi_failed=.. inštalácia zlyhala!
+
 rpm_missing=chýbajúce
 rpm_checkfail=Nepodarilo sa skontrolovať $1 
 rpm_md5=MD5
@@ -284,6 +302,7 @@ rpm_user=vlastníctvo používateľa
 rpm_perm=oprávnenie
 rpm_group=skupinové vlastníctvo
 rpm_erpm=RPM $1 sa nenašiel : $2 
+
 soft_reg=Bežný súbor
 soft_dir=adresár
 soft_spec=Špeciálny spis
@@ -295,6 +314,7 @@ soft_euncompress=Súbor je komprimovaný, ale vo vašom systéme sa nenašiel pr
 soft_euncmsg=Rozbalenie súboru zlyhalo : $1 
 soft_egzip=Súbor je gzipped, ale vo vašom systéme nebol nájdený príkaz gzip.
 soft_egzmsg=Nepodarilo sa skomprimovať súbor : $1 
+
 aix_unknown=nevedno
 aix_device=INPUT zariadenie / adresár pre softvér
 aix_software=SOFTVÉR na inštaláciu
@@ -312,6 +332,7 @@ aix_accept=AKCEPTUJTE nové licenčné zmluvy?
 aix_license=Ukážka nových LICENČNÝCH dohôd?
 aix_clean=Zlyhanie inštalácie vyčistenia?
 aix_manager=Správca balíkov AIX
+
 emerge_input=Z úložiska portálov
 emerge_find=Vyhľadávanie ..
 emerge_install=Inštalácia balíka s príkazom $1 ..
@@ -327,6 +348,7 @@ emerge_noreplace=Nahradiť existujúce balíčky?
 emerge_onlydeps=Inštalovať iba závislosti?
 emerge_title=Vyhľadať portage
 emerge_name=dopravné
+
 cygwin_fmissing=Súbor chýba
 cygwin_lmissing=Súbor, na ktorý odkaz odkazuje, chýba
 cygwin_estat=Nepodarilo sa súbor stat: $1 
@@ -336,6 +358,7 @@ cygwin_badpostscript=Varovanie: Zdá sa, že tento skript nebol spustený
 cygwin_pkgexists=Balík $1 už existuje.
 cygwin_warnuse=Varovanie: Toto nie je oficiálne rozhranie pre správu softvéru Cygwin. Používajte na svoje vlastné riziko.
 cygwin_edb=Chýba databáza balíkov Cygwin $1 
+
 deletes_err=Balíčky sa nepodarilo odstrániť
 deletes_enone=Nie sú vybrané žiadne balíčky
 deletes_title=Odstráňte balíky
@@ -346,6 +369,7 @@ deletes_failed2=Odinštalovanie zlyhalo : $1
 deletes_success2=.. odinštalovanie bolo dokončené.
 deletes_rusure=Naozaj chcete odinštalovať balíčky $1 ?
 deletes_ok=Odstrániť všetky
+
 csw_input=Balík od CSW
 csw_install=Inštalácia balíkov s príkazom $1 ..
 csw_ok=.. inštalácia je dokončená.
@@ -360,20 +384,24 @@ csw_name=CSW
 csw_form=Aktualizujte balíčky
 csw_upgrade=Inovujte všetky nainštalované balíky
 csw_updatedesc=Aktualizácia všetkých nainštalovaných balíkov pomocou príkazu $1 ..
+
 missing_msg=Balík $1 môže automaticky nainštalovať Webmin pomocou $2.
 missing_now=Nainštalovať teraz
+
 find_title=Vyhľadajte balík
 find_search=Nájsť balíky zodpovedajúce:
 find_name=názov
 find_version=verzia
 find_desc=popis
 find_none=Nenašli sa žiadne balíčky zodpovedajúce vášmu vyhľadávaniu.
+
 msi_users=Sprístupniť novú aplikáciu pre
 msi_users0=nikto
 msi_users1=Súčasný užívateľ
 msi_users2=Všetci používatelia
 msi_missing=Neexistuje
 msi_size=Zlá veľkosť
+
 hpux_create_target_path=Vytvoriť cieľovú cestu?
 hpux_mount_all_filesystems=Pripojiť všetky súborové systémy?
 hpux_reinstall=Preinštalovanie?
@@ -389,6 +417,7 @@ hpux_enforce_dependencies=Presadzovať závislosti?
 hpux_enforce_scripts=Vynútiť skripty?
 hpux_enforce_dsa=Vynútiť analýzu miesta na disku?
 hpux_root=Koreňový adresár
+
 ports_install=Inštalácia portov FreeBSD $1 ..
 ports_failed=.. niektoré porty zlyhali
 ports_ok=.. inštalácia je dokončená
@@ -399,18 +428,22 @@ ports_form=Aktualizujte databázu portov
 ports_apply=Stiahnite si najnovšiu snímku
 ports_upgrade=Sťahovanie snímok portov
 ports_running=Spúšťa sa príkaz $1 ..
+
 pkg_install=Inštalácia balíkov FreeBSD $1 ..
 pkg_failed=.. niektoré balíčky zlyhali
 pkg_ok=.. inštalácia je dokončená
 pkg_find=Hľadať pkgng
 pkg_input=Balenie od pkgng
+
 pkgsrc_install=Inštalácia balíkov pkgsrc $1 ..
 pkgsrc_failed=.. niektoré balíčky zlyhali
 pkgsrc_ok=.. inštalácia je dokončená
 pkgsrc_find=Hľadať pkgng
 pkgsrc_input=Balenie od pkgsrc
+
 log_IPKG_update=Aktualizovaná databáza IPKG
 log_IPKG_upgrade=Aktualizované nainštalované balíky IPKG
+
 IPKG_name=Ipkg
 IPKG_input=Balíček od IPKG
 IPKG_find=Prehliadať IPKG ..

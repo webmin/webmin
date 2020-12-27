@@ -42,6 +42,7 @@ index_lvused=Spazio utilizzato
 index_lvuse=Usato per
 index_snapof=(Istantanea di $1)
 index_thin=Pool sottile LVM per $1 LV
+
 lv_edit=Modifica volume logico
 lv_edit_snap=Modifica istantanea
 lv_create=Crea volume logico
@@ -128,6 +129,7 @@ lv_pvfrom=Sposta i blocchi dal volume fisico
 lv_pvto=A volume fisico
 lv_moveok=Sposta blocchi
 lv_return=volume logico
+
 mkfs_title=Crea filesystem
 mkfs_desc=Questo modulo consente di creare un nuovo filesystem $2 ($1) sul volume logico $3. Tutti i dati esistenti verranno cancellati.
 mkfs_header=Nuove opzioni di filesystem
@@ -135,6 +137,7 @@ mkfs_err=Impossibile creare il file system
 mkfs_exec=Esecuzione del comando $1 ..
 mkfs_failed=.. comando fallito!
 mkfs_ok=.. comando completato.
+
 resize_title=Ridimensiona volume logico
 resize_mesg=Il file system $1 su questo volume logico non può essere ridimensionato. Se si ridimensiona il volume logico, è necessario ricreare il filesystem, che cancellerà tutti i dati in esso.
 resize_mesg2=Webmin non sa che tipo di filesystem si trova su questo volume logico, se presente. Se si ridimensiona il volume logico, è necessario ricreare il filesystem, che cancellerà tutti i dati in esso.
@@ -142,8 +145,10 @@ resize_fs=Si è verificato un errore durante il ridimensionamento del filesystem
 resize_ok=Ridimensiona volume logico
 resize_emounted=Il filesystem su questo volume logico non può essere ridimensionato mentre è montato
 resize_emounted2=Il filesystem su questo volume logico non può essere ridotto mentre è montato
+
 init_title=Attiva LVM
 init_cmd=Esecuzione del comando $1 ..
+
 pv_edit=Modifica volume fisico
 pv_create=Aggiungi volume fisico
 pv_vg=Nel gruppo di volumi $1 
@@ -170,6 +175,7 @@ pv_eother=Dispositivo disco mancante o non valido
 pv_raid=Dispositivo RAID $1 
 pv_lvs=Allocazione per volumi logici
 pv_egone=Il volume fisico non esiste più!
+
 vg_edit=Modifica gruppo di volumi
 vg_create=Crea gruppo di volumi
 vg_name=Nome del gruppo di volumi
@@ -188,11 +194,13 @@ vg_deleteok=Cancella ora
 vg_ename=Nome del gruppo di volumi mancante o non valido
 vg_epesize=Dimensione del blocco di allocazione mancante o non valida
 vg_egone=Il gruppo di volumi non esiste più!
+
 pvmove_err=Impossibile spostare il volume logico
 pvmove_title=Sposta volume logico
 pvmove_start=Spostamento del volume logico $1 da $2 a $3 ..
 pvmove_failed=.. mossa fallita!
 pvmove_done=.. spostamento completato
+
 thin_title=Crea thin pool
 thin_desc=Un pool sottile è una coppia di LV che può essere utilizzata per creare altri LV che possono essere più grandi delle estensioni disponibili. Lo spazio viene consumato solo quando necessario, anziché quando vengono creati i LV all'interno del pool. ATTENZIONE - Eventuali dati sui LV selezionati andranno persi!
 thin_header=Nuovi dettagli della piscina sottile
@@ -204,6 +212,7 @@ thin_err=Impossibile creare il thin pool
 thin_esame=Entrambi i LV selezionati sono uguali
 thin_edata=I dati selezionati LV sono già in uso
 thin_emetadata=I metadati LV selezionati sono già in uso
+
 log_create_vg=Gruppo di volumi creato $1 
 log_modify_vg=Gruppo di volumi modificato $1 
 log_delete_vg=Gruppo di volumi eliminato $1 
@@ -216,4 +225,5 @@ log_create_pv=Aggiunto volume fisico $1 a VG $1
 log_modify_pv=Volume fisico modificato $1 in VG $2 
 log_delete_pv=Volume fisico rimosso $1 da VG $2 
 log_resize_pv=Volume fisico ridimensionato $1 in VG $2 
+
 blocks=blocchi

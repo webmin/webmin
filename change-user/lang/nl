@@ -19,6 +19,7 @@ index_d1=$1
 index_dlang=de taal waarin de modules worden weergegeven
 index_dtheme=het thema wat Webmin's uiterlijk bepaald
 index_dpass=het wachtwoord om mee in te loggen
+
 change_title=Instellingen Wijzigen
 change_user=Webmin Inloggen wijzigen ..
 change_done=.. voltooid
@@ -29,6 +30,7 @@ change_epass2=Nieuwe wachtwoorden komen niet overeen
 change_epass=Nieuwe wachtwoord is niet geldig : $1
 change_eoverlay=U kunt niet een thema uiterlijk kiezen voordat u een ook een UI thema heeft gekozen
 change_eoverlay2=Het geselecteerde thema uiterlijk werkt niet samen met het gekozen UI thema
+
 acl_lang=Mag taal wijzigen?
 acl_theme=Mag thema wijzigen
 acl_pass=Mag wachtwoord wijzigen (indien ingesteld voor Webmin)?

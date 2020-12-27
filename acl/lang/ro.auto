@@ -27,6 +27,7 @@ index_delete=Sterge selectia
 index_joingroup=Adaugă în grup:
 index_eulist=Nu a reușit să enumere utilizatorii: $1 
 index_eglist=Eroare la listarea grupurilor: $1 
+
 edit_title=Editați Utilizatorul Webmin
 edit_title2=Creați un utilizator Webmin
 edit_title3=Creați un utilizator Webmin sigur
@@ -115,6 +116,7 @@ edit_safe=Nivelul privilegiilor
 edit_safe0=nerestricţionat
 edit_safe1=Doar module sigure
 edit_unsafe=Resetați la nelimitat
+
 save_err=Nu a reușit salvarea utilizatorului
 save_ename=„$1” nu este un nume de utilizator valid
 save_eunixname=Numele de utilizator „$1” nu este un utilizator Unix, deci nu poate fi utilizat în modul sigur
@@ -145,11 +147,13 @@ save_edays=Fără zile pentru a permite selectarea
 save_ehours=Timpurile lipsă sau invalide pentru a permite
 save_ehours2=Ora de începere pentru a permite trebuie să fie înainte de sfârșit
 save_etemp=Opțiunea de a forța o modificare a parolei la următoarea autentificare nu poate fi utilizată decât dacă <a href='$1'>solicită utilizatorilor să introducă parole noi</a>
+
 delete_err=Nu a reușit ștergerea utilizatorului
 delete_eself=Nu te poți șterge
 delete_ecannot=Nu aveți voie să ștergeți utilizatorii
 delete_euser=Nu aveți voie să ștergeți acest utilizator
 delete_eanonuser=Acest utilizator este utilizat pentru acces la modulul anonim
+
 cert_title=Cerere certificat
 cert_issue=Certificat de emitere
 cert_header=Detalii de certificat noi
@@ -169,6 +173,7 @@ cert_ekey=O nouă cheie SSL nu a fost trimisă de browser - poate că nu accept�
 cert_eca=Eroare la configurarea autorității de certificare: $1 
 cert_already=Avertisment - utilizați deja certificatul $1.
 cert_etempdir=Fișier certificat nevalid
+
 acl_title=Controlul accesului modulului
 acl_title2=Pentru $1 în $2 
 acl_title3=Pentru grupul $1 din $2 
@@ -177,6 +182,7 @@ acl_config=Poate edita configurația modulului?
 acl_reset=Resetați la acces complet
 acl_rbac=Obțineți setări de control de acces de la RBAC?
 acl_rbacyes=Da (înlocuiește setările de mai jos)
+
 acl_uall=Toți utilizatorii
 acl_uthis=Acest utilizator
 acl_usel=Utilizatori selectați..
@@ -216,6 +222,7 @@ acl_switch=Se poate trece la alți utilizatori?
 acl_times=Se pot schimba orele de conectare permise?
 acl_pass=Poți schimba restricțiile de parolă?
 acl_sql=Poate configura baza de date de utilizator și de grup?
+
 log_modify=Utilizator Webmin modificat $1 
 log_rename=Redenumit utilizator Webmin $1 la $2 
 log_create=Utilizator Webmin creat $1 
@@ -238,6 +245,7 @@ log_sync=S-a schimbat sincronizarea utilizatorului unix
 log_sql=S-a schimbat baza de date de utilizator și grup
 log_twofactor=Utilizator înscris $1 cu un furnizor cu doi factori $2 
 log_onefactor=Utilizator dezabonat $1 pentru autentificarea cu doi factori
+
 gedit_ecannot=Nu aveți voie să editați grupuri
 gedit_title=Editați Webmin Group
 gedit_title2=Creați grupul Webmin
@@ -247,6 +255,7 @@ gedit_modules=Modulele membrilor
 gedit_members=Utilizatori și grupuri de membri
 gedit_desc=Descrierea Grupului
 gedit_egone=Grupul selectat nu mai există!
+
 gdelete_err=Nu a reușit ștergerea grupului
 gdelete_ecannot=Nu aveți voie să ștergeți grupuri
 gdelete_euser=Nu puteți șterge propriul grup
@@ -254,11 +263,13 @@ gdelete_esub=Grupurile cu subgrupuri nu pot fi șterse
 gdelete_title=Ștergeți grupul
 gdelete_desc=Sigur doriți să ștergeți grupul $1 și utilizatorii membri $2 ?
 gdelete_ok=Ștergeți grupul
+
 gsave_err=Nu a reușit să salveze grupul
 gsave_ename=Numele grupului lipsă sau nevalid
 gsave_enamewebmin=Numele grupului „webmin” este rezervat pentru uz intern
 gsave_edup=Numele grupului este deja utilizat
 gsave_edesc=Descriere nevalidă - caracterul: nu este permis
+
 convert_title=Conversia utilizatorilor
 convert_ecannot=Nu aveți voie să convertiți utilizatorul Unix
 convert_nogroups=Nu s-au definit grupuri Webmin pe sistemul dvs. Înainte de conversie, trebuie să fie creat cel puțin un grup pentru a defini permisiunile pentru utilizatorii convertiți.
@@ -287,6 +298,7 @@ convert_user=Utilizator Unix
 convert_action=Acțiunile întreprinse
 convert_done= $1 utilizatori convertiți, $2 invalide, $3 există deja, $4 exclus.
 convert_users=Utilizatori pentru a converti
+
 sync_title=Sincronizare utilizator Unix
 sync_desc=Acest formular vă permite să configurați sincronizarea automată a utilizatorilor Unix creați prin Webmin și a utilizatorilor din acest modul.
 sync_nogroups=Nu s-au definit grupuri Webmin pe sistemul dvs. Cel puțin un grup trebuie creat pentru a seta accesul utilizatorilor creați.
@@ -297,6 +309,7 @@ sync_delete=Ștergeți utilizatorul Webmin potrivit atunci când un utilizator U
 sync_group=Alocați utilizatori noi la grupul Webmin
 sync_unix=Setați parola pentru utilizatorii noi la autentificarea Unix.
 sync_ecannot=Nu aveți voie să configurați sincronizarea utilizatorului.
+
 unix_title=Autentificare utilizator Unix
 unix_err=Nu a reușit să salveze autentificarea Unix
 unix_desc=Această pagină vă permite să configurați Webmin pentru a valida încercările de conectare împotriva listei de utilizatori a sistemului și PAM. Acest lucru poate fi util dacă aveți un număr mare de utilizatori Unix existenți care doriți să ofere acces la Webmin.
@@ -329,6 +342,7 @@ unix_esudo=Comanda $1 nu este instalată
 unix_esudomod=Modulul Perl $1 necesar pentru <tt>sudo</tt> autentificare nu este instalat
 unix_header=Setări de autentificare utilizator Unix
 unix_utable=Utilizatori Unix autorizați
+
 sessions_title=Sesiuni de autentificare curente
 sessions_id=Sesiune ID
 sessions_user=Utilizator Webmin
@@ -342,21 +356,26 @@ sessions_this=Această autentificare
 sessions_in=Conectat
 sessions_out=Delogat
 sessions_kill=Deconectat..
+
 logins_title=Conectări Webmin recente
+
 hide_title=Ascundeți modulele neutilizate
 hide_desc=Următoarele module vor fi eliminate din lista de acces a modulului pentru $1 deoarece serverele corespunzătoare nu sunt instalate pe sistemul dvs.
 hide_ok=Ascundeți modulele acum
 hide_none=Nimic de ascuns - $1 nu are acces la niciun modul al cărui servere corespunzătoare nu sunt instalate pe sistemul dvs.
 hide_desc2=Rețineți că aceste module nu vor mai apărea automat dacă sunt instalate serverele corespunzătoare. Va trebui să acordați accesul manual folosind acest modul.
 hide_clone=(Clonă $1 )
+
 switch_euser=Nu aveți voie să comutați la acest utilizator
 switch_eold=Sesiunea existentă nu a fost găsită!
+
 rbac_title=Configurare RBAC
 rbac_desc=Integrarea RBAC de Webmin oferă o modalitate de a determina modulul de utilizator și permisiunile ACL dintr-o bază de date RBAC (Role Based Access Control), mai degrabă decât fișierele de configurare proprii ale Webmin. După ce este activat suportul RBAC, orice utilizator pentru care este selectată opțiunea <b>RBAC controlează toate modulele și opțiunile ACL</b> va avea capacitățile sale determinate de RBAC, mai degrabă decât setările proprii de control de acces Webmin.
 rbac_esolaris=RBAC este acceptat doar pe Solaris în acest moment, deci nu poate fi folosit pe acest sistem $1.
 rbac_eperl=Modulul Perl $1 necesar pentru integrarea RBAC nu este instalat. <a href='$2'>Faceți clic aici</a> pentru a-l instala acum.
 rbac_ecpan=Nu aveți acces la pagina Modulelor Perl Webmin pentru a instala $1 modul necesar pentru integrarea RBAC.
 rbac_ok=Integrarea RBAC este disponibilă pe acest sistem și poate fi activată pe utilizator pe pagina Editare utilizator Webmin.
+
 udeletes_err=Nu a reușit să ștergeți utilizatorii
 udeletes_jerr=Nu a putut adăuga utilizatori la grup
 udeletes_enone=Nimic selectat
@@ -365,11 +384,13 @@ udeletes_rusure=Sigur doriți să ștergeți $1 utilizatorii selectați? Toate s
 udeletes_users=Utilizatori selectați: $1 
 udeletes_ok=Ștergeți utilizatorii
 udeletes_ereadonly=Unul dintre utilizatorii selectați este marcat ca ne-modificabil
+
 gdeletes_err=Nu a reușit ștergerea grupurilor
 gdeletes_title=Ștergeți grupuri
 gdeletes_rusure=Sigur doriți să ștergeți grupurile selectate $1 și $2 utilizatorii pe care îi conțin? Toate setările lor de control de acces și detaliile utilizatorului vor fi pierdute.
 gdeletes_users=Grupuri selectate: $1 
 gdeletes_ok=Ștergeți grupuri
+
 pass_title=Restricții de parolă
 pass_ecannot=Nu aveți voie să editați restricții de parolă
 pass_header=Opțiuni de aplicare a parolelor Webmin
@@ -392,6 +413,7 @@ pass_eminsize=Lipsă sau non-numerică lungimea minimă a parolei
 pass_emaxdays=Lipsește un număr sau un număr de zile înainte de schimbare
 pass_elockdays=Număr de zile lipsă sau nenumerotat înainte ca contul să fie blocat
 pass_eoldblock=Număr lipsit sau numeric de parole vechi de respins
+
 cpass_minsize=Trebuie să aibă cel puțin $1 litere lungi
 cpass_notre=Corespunde cu un model nepermis
 cpass_re=Nu se potrivește cu un model necesar
@@ -399,6 +421,7 @@ cpass_name=Conține numele de utilizator
 cpass_dict=Este un cuvânt de dicționar
 cpass_spellcmd=Nici comenzile $1 sau $2 necesare pentru verificarea cuvintelor din dicționar nu sunt instalate
 cpass_old=Parolele vechi nu pot fi reutilizate
+
 sql_title=Baza de date utilizator și grup
 sql_ecannot=Nu aveți voie să configurați baza de date de utilizator și de grup
 sql_header=Opțiuni pentru backendul bazei de date pentru utilizatori și grupuri
@@ -441,21 +464,25 @@ sql_dnerr=Setările bazei de date a utilizatorului și a grupului sunt valabile,
 sql_dnerr2=Faceți clic pe butonul <b>Creare DN</b> de mai jos pentru a-l crea automat, sau adăugați-l manual pe serverul dvs. LDAP.
 sql_makedn=Creați DN
 sql_schema=Descărcați schema LDAP
+
 make_title=Creați tabele de utilizator și de grup
 make_err=Nu a reușit să creeze tabele de utilizator și de grup
 make_exec=Executarea SQL $1..
 make_failed=.. crearea nu a reușit: $1 
 make_done=.. Terminat
 make_still=Unele probleme au fost găsite chiar și după crearea tabelului: $1 
+
 makedn_title=Creați LDAP DN
 makedn_eoc=Nu s-au găsit clase de obiecte structurale!
 makedn_exec=Crearea DN-ului părinte $1..
 makedn_failed=.. crearea nu a reușit: $1 
 makedn_done=.. Terminat
 makedn_still=Unele probleme au fost găsite chiar și după crearea DN: $1 
+
 schema_title=Descărcați schema LDAP
 schema_desc=Înainte ca Webmin să poată utiliza un server LDAP pentru a stoca utilizatori și grupuri, acesta trebuie configurat pentru a utiliza schema de mai jos. Acest lucru se poate realiza de obicei salvând definiția schemei în <tt>/etc/ldap/schema</tt> sau <tt>/etc/openldap/schema</tt> ca <tt>webmin.schema</tt>, apoi configurarea serverului pentru a încărca acel fișier de schemă.
 schema_download=Descărcați fișierul de schemă: <a href=$1>$1</a>
+
 twofactor_err=Eroare la configurarea autentificării în doi factori
 twofactor_euser=Utilizatorul dvs. Webmin nu a fost găsit!
 twofactor_title=Autentificare cu doi factori

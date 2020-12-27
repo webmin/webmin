@@ -11,6 +11,7 @@ index_when=はい、 $1
 index_act=アクション
 index_exec=実行する
 index_delete=選択したコピーを削除
+
 edit_title=クラスターコピーの編集
 create_title=クラスターコピーの作成
 edit_header=クラスターコピーの詳細
@@ -31,12 +32,14 @@ edit_run=今すぐコピー
 edit_return=クラスターコピー
 edit_email=出力をメールで送信
 edit_none=誰も
+
 save_err=クラスターcronジョブの保存に失敗しました
 save_efiles=コピーするファイルが入力されていません
 save_edest=宛先ディレクトリがありません
 save_eservers=入力したサーバーにコピーするサーバーはありません
 save_efile=「$1」をコピーするファイルは絶対パスではありません
 save_eemail=メールアドレスが見つからないか無効です
+
 exec_title=ファイルをコピーする
 exec_files1=$1ファイルを選択したサーバーにコピーしています $2 ..
 exec_files2=$1を選択したサーバー $2にコピーしています ..
@@ -50,12 +53,15 @@ exec_not=次のファイルを $1にコピーできませんでした：
 exec_cmd=$1でのコピー後のコマンド出力：
 exec_before=$1でのコピー前のコマンド出力：
 exec_on=$1での実行に失敗しました： $2
+
 log_create=$1から $2サーバーのコピーを作成しました
 log_modify=$1から $2サーバーの変更されたコピー
 log_delete=$1から $2サーバーのコピーを削除しました
 log_exec=$1から $2サーバーにコピーしました
 log_deletes=$1コピーを削除しました
+
 email_subject_succeeded=$1のクラスターコピーが成功しました
 email_subject_failed=$1のクラスターコピーに失敗しました
+
 delete_err=コピーを削除できませんでした
 delete_enone=何も選択されていません

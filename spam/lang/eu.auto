@@ -13,6 +13,7 @@ index_applydesc=Egin klik botoi honetan SpamAssassin uneko konfigurazioa aplikat
 index_cpan=SpamAssassin Perl modulua denez, automatikoki ere instala dezakezu Webmin-en <a href='$2'>Perl Modules</a> modulua CPAN-tik $1 deskargatzeko.
 index_spamassassin=SpamAssassin
 index_ecannot=Ezin duzu $1 SpamAssassin konfigurazio fitxategia kudeatu
+
 white_title=Helbideak baimendu eta ukatu
 white_desc=Orrialde honetako taulek aukera ematen dute From: eta Nori: spam edo inoiz sailkatuta ez dauden mezu elektronikoetarako helbideak. SpamAssassin-en arauei jarraiki prozesatuko da beste edozein e-posta. Helbide elektroniko guztiek komodinak izan ditzakete, hala nola *@foo.com edo *.foo.com domeinu osoekin bat egiteko.
 white_from=Igorleak ez dira inoiz spam gisa sailkatuko
@@ -44,6 +45,7 @@ white_tabham=Baimendutako helbideak
 white_tabspam=Ukatutako helbideak
 white_tabsome=Helmuga helbideak
 white_tabimport=Helbideak inportatu
+
 score_title=Spamaren sailkapena
 score_desc=SpamAssassin-ek mezu bakoitzari puntuazioa esleitzen dio bere edukiaren eta goiburuen arabera. Orrialde honetako aukerek mezu bat spam-aren gaineko puntuazioa zehazten dute eta puntuazio hori kalkulatzeko metodoen bidez.
 score_header=Spam mezuen sailkapen aukerak
@@ -77,6 +79,7 @@ score_emxdelay=MX egiaztapenen artean itxaroteko segundoak falta dira edo baliog
 score_etimeout=Segundoak falta dira edo baliogabeak RBL kontsulten zain egoteko
 score_ereceived=Jaso den kopuru falta edo baliogabea: goiburuak RBL-rekin egiaztatzeko
 score_bayes=Erabili Bayesian ikasteko sailkatzailea?
+
 report_title=Mezuen aldaketa
 report_desc=Orrialde honetako aukerek SpamAssassin-ek aztertzen dituen mezu guztien goiburu eta gorputzetan egiten dituen aldaketak kontrolatzen ditu eta spam gisa sailkatutakoekin egiten dituen aldaketak.
 report_header=Analizatu eta spam mezuak aldatzeko aukerak
@@ -109,6 +112,7 @@ report_addspam=Spam
 report_addham=Urdaiazpiko
 report_addall=guztiak
 report_eaddheader=Ez da goiburu gehigarri bat falta edo $1 gehitzeko
+
 user_title=Erabilera anitzeko aukerak
 user_desc=Orrialde honetako aukerak SpamAssassinek Razor, DCC eta Pyzor kanpoko spam identifikazio paketeetarako erabiltzen dituen bide eta ezarpenekin lotuta daude batez ere. SpamAssassin ere esan diezazuke DNS bilaketa egin ahal izango duen ala ez.
 user_header=Erabiltzaileen maila desberdinak
@@ -131,6 +135,7 @@ user_err=Huts egin du erabiltzailearen aukerak gordetzean
 user_etimeout='$1' ez da baliozko muga epea
 user_epath='$1' ez da baliozko bezeroaren programa bidea
 user_emax='$1' ez da baliozko balioespen kopurua
+
 header_title=Goiburu eta gorputz probak
 header_desc=Orrialde honek SpamAssassin posta elektronikoari aplikatuko dizkion proba osagarriak definitzeko aukera ematen du, mezuen goiburuetan, gorputzaren edukian, gorputzean aurkitutako URLetan edo beste proba batzuen konbinazioetan oinarrituta. Proba bakoitzari esleitutako izena zure esku dago, baina normalean CONTAINS_FOO bezalako zerbait da. SpamAssassin-ek proba bat datozen mezuei gehitzen dien puntuazio berdina ezar dezakezu zure testuaren izenak sartuta edo orriaren beheko tauletan sartuz.
 header_switch=Aldatu modu sinplera ..
@@ -164,6 +169,7 @@ header_eeval='$1' ez da baliozko ebaluazio funtzioa
 header_eheader='$1' ez da baliozko helbide elektronikoa
 header_eregexp='$1' ez da baliozko adierazpen erregularra (like / expression /) izan behar du
 header_emeta=Testaren adierazpena falta da '$1' probarako
+
 priv_title=Askotariko pribilegiozko aukerak
 priv_desc=Honi buruz aukerak orokorrean ezar daitezke, erabiltzaileen konfigurazio fitxategietan baino. Hainbat konfigurazio eta erregistroko fitxategietarako bideak kontrolatzen dituzte.
 priv_header=Hainbat pribilegio-maila ezarpen
@@ -183,6 +189,7 @@ priv_eargs='$1' ez da baliozko argumentuen zerrenda
 priv_emscore='$1' ez da esaldi gehien lortzen duen puntuazioa
 priv_ephrase='$1' ez da baliozko bi hitzen spam esaldia
 priv_escore='$1' esamoldearen puntuazio falta edo baliogabea
+
 usually=Normalean $1 
 ecannot=Ez duzu orrialde hau erabiltzeko baimenik
 setup_title=Ezarri Procmail SpamAssassin For
@@ -202,11 +209,13 @@ setup_drop1=Hartzaile Unix erabiltzailea
 setup_drop0=<tt>root</tt> erabiltzailea
 setup_ok=Ezarri Procmail SpamAssassin zerbitzurako
 setup_email=Birbidali helbide elektronikoa
+
 setup_err=Huts egin du SpamAssassin konfiguratzean
 setup_efile=Mbox-formatuko fitxategi falta edo baliogabea
 setup_emaildir=Falta da Qmail posta elektronikoa direktorio baliogabea
 setup_emhdir=MH posta elektronikoa falta edo baliogabea da
 setup_eemail=Helbide elektroniko falta edo baliogabea
+
 log_white=Aldatutako helbide baimenduak eta ukatuak
 log_score=Spam-aren sailkapena aldatua
 log_report=Aldatutako mezuen aldaketa
@@ -217,12 +226,14 @@ log_setup=Ezarri Procmail SpamAssassin zerbitzurako
 log_procmail=Procmail konfigurazioa aldatu da
 log_import=$1 inportatutako helbideak
 log_manual=Eskuz editatu den konfigurazio fitxategia
+
 import_title=Helbideak inportatu
 import_err=Ezin izan dira helbideak inportatu
 import_efile=Ez da fitxategirik inportatu hautatuta
 import_enone=Ez da helbide elektronikorik aurkitu fitxategian
 import_ok1=$2 helbide elektronikoak aurkitu dira fitxategian, horietatik $1 berriak eta onartutako helbideen zerrendara gehitu dira.
 import_ok2=$1 helbide elektronikoak aurkitu dira fitxategian, baina jada baimendutako helbideen zerrendan zeuden.
+
 mail_title=Spam posta
 mail_desc=Orrialde honetan spam gisa sailkatutako mezuak eta ekintzaren zain daude. Gaizki zehaztuta egon ez diren mezuak zure Sarrerako ontzira eraman ditzakete, eta benetan spam ez direnak ezabatu daitezke.
 mail_level=Puntuazioa
@@ -240,10 +251,13 @@ mail_will=Freskapen automatikoa $1 minututan
 mail_wills=Freskatze automatikoa $1 segundotan
 mail_delall=Ezabatu Spam guztiak
 mail_search3=Aurreko puntuazioa bilatu:
+
 process_eclean=Errore bat gertatu da SpamAssassin goiburuak mezu elektroniko hau kentzean
 process_ereport=Huts egin du SpamAssassin-ri mezu elektronikoa jakinaraztean : $1 
+
 apply_err=Ezin izan dira aldaketak aplikatu
 apply_none=Ez da SpamAssassin daemon prozesurik aurkitu!
+
 acl_avail=Erabiltzaileen eskura dauden ikonoak
 acl_file=SpamAssassin konfigurazio fitxategia editatzeko
 acl_filedef=Konfigurazio fitxategi globala
@@ -251,8 +265,10 @@ acl_awl=Erabiltzaileei auto-zerrenda zuriak editatzeko baimena ematen diete
 acl_awl0=Erabiltzaile guztiak
 acl_awl1=Zerrendatutako erabiltzaileak $1 bakarrik
 acl_awl2=$1 taldeetako kideak soilik
+
 search_escore=Spam puntuazio falta edo baliogabea
 search_results5=$1 posta-mezuak $2 tik gorako spam puntuazioarekin.
+
 razor_title=Razor Spam Detektagailua konfiguratu
 razor_desc=Vipul's Razor zure helbidera bidalitako spamaren sailkapena hobetu dezakeen spam kolaboratzailea detektatzeko eta jakinarazteko sistema da. Hala ere, erabili ahal izateko Razor kontu batean izena eman behar duzu, beheko formularioa erabilita.
 razor_user=Razor erabiltzaile izena
@@ -267,6 +283,7 @@ razor_epass=Pasahitz falta
 razor_doing=Orain Razor erregistratzen eta konfiguratzen saiatzen ari da.
 razor_done=.. egin.
 razor_failed=.. huts egin du! Ikusi goiko errorearen irteera zergatik dagoen.
+
 amavisd_title=Amavisd Spam Delivery
 amavisd_desc=Inprimakia spam gisa sailkatutako mezuekin zer gertatzen den zehazten duen Amavisd konfigurazioa aldatzeko erabil daiteke.
 amavis_ok=Aldatu Amavisd Bidalketa
@@ -304,9 +321,11 @@ amavis_quarantine_today=Spam-eko mezuak quarantinean gaur (24h)
 amavis_quarantine_week=Aste honetan (7 egun) eskaintzen diren spam mezuak Kareranten
 amavis_quarantine_month=Hilabete honetan (30 egun) egiten diren spam mezuak Kareranten
 amavis_quarantine_total=Berrogei posta elektronikoen spam kopurua
+
 procmail_title=Procmail Spam Bidalketa
 procmail_ok=Aldatu Procmail Bidalketa
 procmail_desc=Inprimakia spam gisa sailkatutako mezuekin zer gertatzen den zehazten duen Procmail konfigurazioa aldatzeko erabil daiteke.
+
 simple_title=Goiburu eta gorputz probak
 simple_desc=Orrialde honek SpamAssassin posta elektronikoari aplikatuko dizkion proba osagarriak definitzeko aukera ematen du, mezuen goiburuak, gorputzaren edukia, gorputzean aurkitutako URLak oinarritzat hartuta. Proba bakoitzari esleitutako izena zure esku dago, baina normalean CONTAINS_FOO bezalako zerbait da.
 simple_switch=Aldatu modu aurreratura ..
@@ -317,8 +336,10 @@ simple_regexp=Loturaren adierazpena
 simple_score=Aplikatu beharreko puntuazioa
 simple_describe=deskribapena
 simple_err=Ezin izan da mezuen probak gorde
+
 before_ecmd=Aurreztearen aginduak huts egin du : $1 
 after_ecmd=Gorde ondoren komandoak huts egin du : $1 
+
 connect_emysql=Ezin izan da $1 datu-basearen kontrolatzailea kargatu
 connect_elogin=Ezin izan da $1:$2 datu-basean saioa hasi.
 connect_equery=$1 datu-baseak ez du $2 hobespen taula
@@ -326,9 +347,11 @@ connect_eldapmod=LDAPekin komunikatzeko behar den $1 moduluko Perl ez dago insta
 connect_eldap=Ezin izan da $1 portuko $1 LDAP zerbitzariarekin konektatzean
 connect_eldaplogin=Ezin izan da $2 : $3 LDAP zerbitzarira saioa hasi
 connect_ebase=LDAP $1 DN oinarria ez da baliozkoa : $2 
+
 eldap=LDAP eragiketak huts egin du : $1 
 esql=SQL huts egin du : $1 
 ldap_euser=Ezin izan da LDAP erabiltzailearen objektua aurkitu
+
 db_title=SQL eta LDAP datu-baseak
 db_header=Konfigurazio-biltegiratze datu-basearen aukerak
 db_dsn=Gorde erabiltzaileen konfigurazioak hemen
@@ -364,6 +387,7 @@ db_eldapport=Falta edo LDAP zerbitzariaren portu zenbaki baliogabea
 db_eldapdn=Oinarriaren DN falta edo baliogabea - ez da espaziorik onartzen
 db_eldapattr=SpamAssassin atributua falta edo baliogabea da
 db_eldapuid=Erabiltzaile-izenaren falta edo baliogabea
+
 awl_title=Kudeatu auto-whitelistak
 awl_search=Bilatu zerrenda osorako:
 awl_ok=Search
@@ -389,6 +413,7 @@ awl_deleteone=Garbitu zerrenda automatikoa
 awl_deleteonedesc=Ezabatu $1 erabiltzailearen zerrenda automatikoko zerrenda guztiak.
 awl_deleteall=Garbitu auto-zerrenda guztiak
 awl_deletealldesc=Kendu sistemako erabiltzaile guztiei sarrera automatikoen zerrenda guztiak.
+
 dawl_err=Huts egin du zerrenda automatikoko zerrendatik ezabatzean
 dawl_eopen=Ezin izan da zerrenda whitelista ireki
 dawl_enone=Ez da helbiderik hautatuta ezabatzeko
@@ -396,6 +421,7 @@ dawl_ecannot=Ez duzu baimenik erabiltzaile honen zerrenda automatikoa kudeatzeko
 dawl_doing=Erabiltzaile guztientzako auto-whitel zerrendak ezabatzen ..
 dawl_done=.. $2 erabiltzaileen $2 sarrera ezabatu ditu.
 dawl_title=Ezabatu auto-zerrenda guztiak
+
 manual_title=Editatu Konfiguratu fitxategiak
 manual_file=Editatu konfigurazio fitxategia:
 manual_ok=Ados

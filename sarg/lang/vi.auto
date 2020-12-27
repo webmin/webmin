@@ -10,6 +10,7 @@ index_range=Tạo báo cáo cho phạm vi ngày
 index_view=Xem báo cáo được tạo
 index_viewdesc=Xem báo cáo được tạo gần đây nhất trong thư mục $1.
 index_return=chỉ số mô-đun
+
 log_title=Nhật ký nguồn và báo cáo đích
 log_header=Nguồn nhật ký Squid và các tùy chọn báo cáo được tạo
 log_access_log=Nguồn nhật ký mực
@@ -30,6 +31,7 @@ log_elastlog=Thiếu hay không một con số
 log_eemail=Địa chỉ email bị thiếu hoặc không hợp lệ
 log_emailx=Chương trình thư bị thiếu hoặc không tồn tại
 log_squidguard_log_path=Tệp nhật ký SquidGuard
+
 style_title=Kiểu báo cáo
 style_header=Tùy chọn màu và kiểu báo cáo HTML
 style_title2=Tiêu đề báo cáo
@@ -54,6 +56,7 @@ style_efont=Tên phông chữ bị thiếu hoặc không hợp lệ
 style_esize=Thiếu chiều rộng và chiều cao hình ảnh không hợp lệ
 style_language=Ngôn ngữ báo cáo
 style_charset=Bộ ký tự báo cáo
+
 report_title=Tùy chọn báo cáo
 report_header=Nội dung báo cáo và tùy chọn tạo
 report_resolve_ip=Giải quyết địa chỉ IP?
@@ -134,6 +137,7 @@ report_echar=Không gian không được phép
 report_estring=Văn bản thay thế bị thiếu hoặc không hợp lệ
 report_eselect=Không có gì được chọn
 report_eenter=Không có gì vào
+
 sched_title=Tạo báo cáo theo lịch trình
 sched_header=Tùy chọn báo cáo theo lịch trình
 sched_sched=Báo cáo theo lịch trình kích hoạt?
@@ -148,9 +152,11 @@ sched_rsel=Những người từ $1 đến $2 ngày trước
 sched_err=Không thể lưu báo cáo theo lịch trình
 sched_erfrom=Số bắt đầu bị thiếu hoặc không hợp lệ của ngày trước
 sched_erto=Số kết thúc bị thiếu hoặc không hợp lệ của ngày trước
+
 view_title=Báo cáo Sarg
 view_efile=Tên tệp không hợp lệ!
 view_eopen=Không thể mở tệp báo cáo
+
 gen_title=Tạo báo cáo
 gen_header=Hiện đang tạo báo cáo Sarg từ tệp nhật ký Squid $1 và tất cả các phiên bản được xoay ..
 gen_done=.. làm xong
@@ -160,6 +166,7 @@ gen_view=Xem báo cáo hoàn thành.
 gen_err=Không thể tạo báo cáo
 gen_efrom=Thiếu hoặc không hợp lệ từ ngày
 gen_eto=Thiếu hoặc không hợp lệ cho đến ngày
+
 webmin_log_log=Cập nhật nguồn nhật ký và tùy chọn đích báo cáo
 webmin_log_report=Tùy chọn báo cáo cập nhật
 webmin_log_style=Tùy chọn kiểu báo cáo được cập nhật

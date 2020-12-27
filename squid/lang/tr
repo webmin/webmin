@@ -19,6 +19,7 @@ index_miscopt=Çeşitli Seçenekler
 index_cms=Cache Yönetim İstatistikleri
 index_rebuild=Cache'yi Temizle ve Tekrar Oluştur
 index_return=indeks
+
 buttsave=Kaydet
 buttdel=Sil
 buttcreat=Oluştur
@@ -28,6 +29,7 @@ default=Öntanımlı
 none=Hiçbiri
 on=Açık
 off=Kapalı
+
 acl_header1=ACL Oluştur
 acl_header2=ACL Değiştir
 acl_name=ACL İsmi
@@ -64,6 +66,7 @@ acl_failurl=URL Hatası
 acl_buttsave=Kaydet
 acl_buttdel=Sil
 acl_return=ACL listesi
+
 aclsave_failsave=ACL'nin kaydedilmesinde hata oluştu
 aclsave_faildel=ACL'nin silinmesinde hata oluştu
 aclsave_epr=Bu ACL proxy sıralanması ile kullanılmış oldu
@@ -81,9 +84,11 @@ aclsave_eehour=Yanlış bitiş saati
 aclsave_esmin=Yanlış başlama dakikası
 aclsave_eemin=Yanlış bitiş dakikası
 aclsave_efile=ACL dosyası '$1'e yazmak için izininiz yoktur
+
 cach_err=Hata
 cach_nfound=Squid cache yönetim programı <tt>$1</tt> sisteminizde bulunamadı.<a href=/config.cgi?$2>modül yapılandırmanız</a> doğru olmayabilir
 cach_return=squid indeksi
+
 chown_header=Sahibini Değiştir
 chown_stop=Squid durduruluyoe ...
 chown_done=.. Bitti
@@ -91,6 +96,7 @@ chown_chown=Sahibi değiştiriliyor ...
 chown_restart=Squid Tekrar Başlatlıyor ...
 chown_failrestart=Squid'in tekrar başlatılmasında hata oluştu ..
 chown_return=squid indeksi
+
 clear_header=Cache'i Temizle ve Tekrar Oluştur
 clear_msgclear=Squid cache'sini silmek ve tekrar oluşturmak istediğinizden emin misiniz?Bunu yaptığınızda Squid'in cache'sindeki <tt>bütün</tt> dosyalar silinecek ve Squid yeniden başlatılacaktır. Bağlantınız geçici olarak kesilebilir.
 clear_buttclear=Squid Kayıtlarını Temizle ve Tekrar Oluştur
@@ -100,6 +106,7 @@ clear_del=Eski cache dosyalarını siliniyor ..
 clear_init=Squid cache'si <tt>$1</tt> komutu ile ilklendiriliyor..
 clear_failrestart=Squid'in yeniden başlatılmasında hata oluştu ..
 clear_return=squid indeksi
+
 eacl_header=Giriş Kontrol
 eacl_acls=giriş kontrol listesi
 eacl_name=İsimk
@@ -113,12 +120,14 @@ eacl_acls1=ACL'ler
 eacl_move=Taşı
 eacl_nopr=Proxy sınırlamaları tanımlanmadı
 eacl_addpr=Proxy sınırlaması ekle
+
 eacl_icpr=ICP sınırlamaları
 eacl_noicpr=ICP sınırlamalaları tanımlanmadı
 eacl_addicpr=ICP sınırlaması ekle
 eacl_return=squid indeksi
 eacl_allow=İzin verildi
 eacl_deny=İzin veilmedi
+
 eadm_header=Yönetim Seçenekleri
 eadm_aao=Yönetim ve Bildirim Seçenekleri
 eadm_runasuu=Unix kullanıcısı olarak çalıştır
@@ -143,6 +152,7 @@ eadm_caf=Cache bildirim dosyası
 eadm_annp=Bildirim Periyodu
 eadm_buttsave=Kaydet
 eadm_return=squid indeksi
+
 eauth_header=Proxy Onaylama
 eauth_aopt=Onaylama Seçenekleri
 eauth_puf=Proxy kullanıcı dosyası
@@ -154,6 +164,7 @@ eauth_pusers=Proxy Kullanıcıları
 eauth_nopusers=Mevcut, tanımlanmış proxy kullanıcısı yoktur
 eauth_addpuser=Yeni bir proxy kullanıcısı ekle
 eauth_return=squid indeksi
+
 ec_header=Cache Seçenekleri
 ec_cro=Caching ve İstek Seçenekleri
 ec_cdirs=Cache dizinleri
@@ -200,6 +211,7 @@ ec_wrh=WAIS altarım makinesi
 ec_wrp=WAIS relay portu
 ec_buttsave=Kaydet
 ec_return=squid indeksi
+
 ech_header=Cache Host'u Oluştur
 ech_header1=Cache Host'unu Değiştir
 ech_cho=Cache Host Seçenekleri
@@ -232,6 +244,7 @@ ech_dqfd=Alanlar için sorgulama yapma
 ech_buttsave=Kaydet
 ech_buttdel=Sil
 ech_return=cache listesi
+
 eicp_header=Diğer Cache'ler
 eicp_opcs=Diğer proxy cache sunucuları
 eicp_nocd=Diğer cache'ler tanımlanmadı
@@ -257,6 +270,7 @@ eicp_t=Tip
 eicp_pp=Proxy portu
 eicp_ip=ICP portu
 eicp_return=squid indeksi
+
 elogs_header=Kayıt
 elogs_lalo=Kayıt ve Kayıt Dosyası Seçenekleri
 elogs_alf=Giriş kayıt dosyası
@@ -275,6 +289,7 @@ elogs_ln=Ağ maskesi kayıtları
 elogs_do=Hatasızlaştırmak seçenekleri
 elogs_mht=MIME başlık tablosu
 elogs_return=squid indeksi
+
 emem_header=Bellek Kullanımı
 emem_maduo=Bellek ve Disk Kullanım Seçenekleri
 emem_mul=Bellek kullanım limiti
@@ -292,6 +307,7 @@ emem_e=girişler
 emem_ichwm=IP cache en yüksek akış yüzdesi
 emem_iclwm=IP cache en düşük akış yüzdesi
 emem_return=squid indeksi
+
 emisc_header=Çeşitli Seçenekler
 emisc_mo=Çeşitli Seçenekler
 emisc_sdta=Başlangıç DNS test adresi
@@ -321,6 +337,7 @@ emisc_hauhh=HTTP Hızlandırıcı Makine Adı Başlıklarını Kullansın
 emisc_hah=HTTP Hızlandırıcı Makine Adı
 emisc_hap=HTTP Hızlandırıcı Portu
 emisc_hawp=Proxy ile HTTP Hızlandır
+
 eports_header=Portlar ve Ağ
 eports_pano=Portlar ve Ağ Seçenekleri
 eports_paap=Proxy adresleri ve portlar
@@ -337,6 +354,7 @@ eports_mg=Multicast grupları
 eports_trb=TCP alım tamponu
 eports_od=Öntanımlı OS
 eports_return=squid indeksi
+
 eprogs_header=Yardım Programları
 eprogs_chpo=Cache Yardım Program Seçenekleri
 eprogs_sfp=Squid FTP programı
@@ -356,6 +374,7 @@ eprogs_norp=Yönlendirme programlarının Sayısı
 eprogs_cap=Özel onaylama programı
 eprogs_noap=Özel onaylama programlarının sayısı
 eprogs_return=squid indeksi
+
 euser_header=Proxy Kullanıcısı Oluştur
 euser_header1=Proxy Kullanıcısı Değiştir
 euser_pud=Proxy Kullanıcısı ayrıntıları
@@ -363,6 +382,7 @@ euser_u=Kullanıcı Adı
 euser_p=Şifre
 euser_u1=Değiştirilmedi
 euser_return=kullanıcı listesi
+
 ahttp_header=Proxy Sınırlaması Oluştur
 ahttp_header1=Proxy Sınırlamasını Değiştir
 ahttp_pr=Proxy Sınırlaması
@@ -372,7 +392,9 @@ ahttp_d=İzin verilmedi
 ahttp_ma=ACL'leri karşılaştır
 ahttp_dma=ACL'leri karşılaştırma
 ahttp_return=ACL listesi
+
 sahttp_ftspr=Proxy sınırlandırılmasının kaydedilmesinde hata oluştu
+
 aicp_header=ICP Sınırlaması Oluştur
 aicp_header1=ICP Sınırlamasını Değiştir
 aicp_ir=ICP Sınırlaması
@@ -382,12 +404,16 @@ aicp_d=İzin verilmedi
 aicp_ma=ACL'leri karşılaştır
 aicp_dma=ACL'leri karşılaştırma
 aicp_return=ACL listesi
+
 saicp_ftsir=ICP sınırlandırılmasının kaydedilmesinde hata oluştu
+
 icache_ftic=Cache'nin ilklendirilmesinde hata oluştu
 icache_ymcautrsa=Squid'i çalıştırmak için bir kullanıcı seçmelisiniz
 icache_itscwtc=Squid cache <tt>$1</tt> komutu ile ilklendiriliyor ..
 icache_return=squid indeksi
+
 restart_ftrs=Squid'in yeniden yapılandırılmasında hata oluştu
+
 sadmin_ftsao=Yönetim Seçeneklerinin kaydedilmesinde hata oluştu
 sadmin_header=Sahibini Değiştir
 sadmin_msg1=Squid'i çalıştırmak için kullanıcı ya da grubu değiştirmelisiniz.Bu işlemi yaptığınızda bütün cache ve kayıt dosyalarının sahibi değişecek ve Squid yeniden başltılacaktır.
@@ -397,10 +423,12 @@ sadmin_inavea='$1' geçerli bir e-posta adresi değildir
 sadmin_inavh='$1' geçerli bir makine adı değildir
 sadmin_inavap='$1' geçerli bir duyuru periyodu değildir
 sadmin_inavp='$1' geçerli bir port değildir
+
 sauth_ftsao=Onaylama seçeneklerinin değiştirilmesinde hata oluştu
 sauth_iomuf=Kayıp ya da yanlış kullanıcı dosyaları
 sauth_iomd=Kayıp ya da yanlış alan
 sauth_msg1=Kullandığınız Squid sürümü proxy onaylama seçeneği ile kurulmamış.
+
 scache_ftsco=Cache seçeneklerinin kaydedilmesinde hata oluştu
 scache_emsg0=Cache dizinlerinden en az birini girmelisiniz
 scache_emsg1='$1' cache dizini mevcut değil
@@ -417,34 +445,41 @@ scache_emsg11='$1' geçerli bir obje sayısı seğildir
 scache_emsg12='$1' geçerli bir dizin boyutu değildir
 scache_emsg13='$1' geçerli bir makine değildir
 scache_emsg14='$1' geçerli bir port değildir
+
 schost_ftsc=Cache'in kaydedilmesinde hata oluştu
 schost_emsg1='$1' geçerli bir cache makine adı değildir
 schost_emsg2='$1' geçerli bir proxy portu değildir
 schost_emsg3='$1' geçerli bir ICP portu değildir
 schost_emsg4='$1' geçerli bir yaşama süresi değildir
 schost_emsg5='$1' geçerli bir yükleme değildir
+
 sicp_ftsco=Cache seçeneklerinin kaydedilmesinde hata oluştu
 sicp_emsg1='$1' geçerli bir bekleme süresi değildir
+
 slogs_ftslo=Kayıt seçeneklerinin kaydedilmesinde hata oluştu
 slogs_emsg1='$1' geçerli bir mutlak dosya adı değildir
 slogs_emsg2='$1' geçerli bir dosya adı değildir
 slogs_emsg3='$1' dizini mevcut değildir
 slogs_emsg4='$1' geçerli bir ağ maskesi değildir
 slogs_emsg5='$1' geçerli bir hatasızlaştırma seçenek listesi değildir
+
 smem_ftsmo=Bellek seçeneklerinin kaydedilmesinde hata oluştu
 smem_emsg1='$1' geçerli bir cache boyutu değildir
 smem_emsg2='$1' geçerli bir en yüksek akış yüzdesi değildir
 smem_emsg3='$1' geçerli bir en düşük akış yüzdesi değildir
 smem_emsg4='$1' geçerli bir obje boyutu değildir
+
 smisc_ftso=Seçeneklerin kaydedilmesinde hata oluştu
 smisc_emsg1='$1' geçerli bir döndürme sayısı değildir
 smisc_emsg2='$1' geçerli bir alan değildir
 smisc_emsg3='$1' geçerli bir proxy değildir
 smisc_emsg4='$1' geçerli bir sıçrama sayısı seğildir
+
 sport_ftspo=Port seçeneklerinin kaydedilmesinde hata oluştu
 sport_emsg1='$1' geçerli bir port numarası değildir
 sport_emsg2='$1' geçerli bir adres değildir
 sport_emsg3='$1' geçerli bir tampon boyutu değildir
+
 sprog_ftshpo=Yardım program seçeneklerinin kaydedilmesinde hata oluştu
 sprog_emsg1=Kayıp FTP Seçenekleri
 sprog_emsg2='$1' geçerli bir program değildir
@@ -454,10 +489,13 @@ sprog_emsg5='$1' geçerli bir sayısı değildir
 sprog_emsg6='$1' geçerli bir kolon genişliği değildir
 sprog_emsg7=DNS Sunucu girilmedi
 sprog_emsg8='$1' geçerli bir IP adresi değildir
+
 suser_ftsu=Kullanıcının kaydedilmesinde hata oluştu
 suser_emsg1=Kayıp ya da yanlış kullanıcı adı
+
 start_ftsq=Squid'in başlatılmasında hata oluştu
 stop_ftsq=Squid'in bitirilmesinde hata oluştu
+
 lib_emsg1='$1' geçerli bir IP adresi değildir
 lib_seconds=saniye
 lib_minutes=dakika
@@ -498,6 +536,7 @@ lib_aclsc=SNMP Birliği
 lib_buttac=Değişiklikleri Uygula
 lib_buttss=Squid'i Durdur
 lib_buttss1=Squid'i Başlat
+
 log_ports=Portlar ve Ağ seçenekleri değiştirildi
 log_icp=Diğer cache seçenekleri değiştirildi
 log_mem=Bellek kullanım seçenekleri değiştirildi
@@ -528,4 +567,5 @@ log_init=Cache ilklendirildi
 log_user_create=Proxy kullanıcısı $1 oluşturuldu
 log_user_delete=Proxy kullanıcısı $1 silindi
 log_user_modify=Proxy kullanıcısı $1 değiştirildi
+
 acl_root=ACL dosyaları için kök dizini

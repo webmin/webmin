@@ -19,10 +19,13 @@ index_samba=سمبا۔
 index_cyrus=IMAP۔
 index_users=ایل ڈی اے پی صارفین
 index_groups=ایل ڈی اے پی گروپس
+
 imap_econn=IMAP سرور$1 سے رابطہ قائم کرنے میں ناکام
 imap_elogin=IMAP سرور$1 میں بطور $2 : $3 لاگ ان کرنے میں ناکام
 conn_eldap_host=آپ کے سسٹم پر کوئی ایل ڈی اے پی کلائنٹ کنفگریشن فائل نہیں ملا ، لہذا ایل ڈی اے پی سرور ماڈیول کنفیج صفحے پر سیٹ ہونا ضروری ہے
 conn_elogin=آپ کے سسٹم پر کوئی ایل ڈی اے پی کلائنٹ کنفگریشن فائل نہیں ملا ، لہذا ایل ڈی اے پی لاگ ان کو ماڈیول کنفیج صفحے پر سیٹ کرنا ضروری ہے
+conn_efile_open=LDAP بائنڈ اسناد کی فائل کو نہیں کھول سکا:
+
 uedit_cap=صارف کی صلاحیتیں
 uedit_samba=سمبا لاگ ان؟
 uedit_cyrus=IMAP سرور لاگ ان؟
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=آخری پاس ورڈ کی تازہ کاری
 uedit_sambapwdcanchange=پاس ورڈ تبدیل ہوسکتا ہے
 uedit_sambabadpasswordcount=غلط پاس ورڈ کی گنتی
 uedit_sambaacctflags=اکاؤنٹ کے جھنڈے
+
 usave_eadd=صارف LDAP ڈیٹا بیس میں شامل کرنے میں ناکام :$1
 usave_emod=ایل ڈی اے پی ڈیٹا بیس میں صارف کو تبدیل کرنے میں ناکام :$1
 usave_emoddn=LDAP ڈیٹا بیس میں صارف کا نام تبدیل کرنے میں ناکام :$1
@@ -66,26 +70,33 @@ usave_eattrdupu=صارف$1 پہلے ہی$2 $3 استعمال کر رہا ہے
 usave_eattrdupg=گروپ$1 پہلے ہی$2 $3 استعمال کر رہا ہے
 usave_ereal=اصلی نام چھوٹا ہوا ہے
 usave_equota=گم شدہ یا غلط IMAP کوٹہ
+
 search_err=$1 کے تحت $1 کی تلاش ناکام ہوگئی :$3
+
 gedit_dn=گروپ کا ایل ڈی اے پی ڈی این
 gedit_return=گروپ کی تفصیلات
 gedit_cap=گروپ کی صلاحیتیں
 gedit_samba=سمبا گروپ؟
+
 gsave_egone=گروپ اب موجود نہیں!
 gsave_edelete=LDAP ڈیٹا بیس سے گروپ کو حذف کرنے میں ناکام :$1
 gsave_eadd=LDAP ڈیٹا بیس میں گروپ شامل کرنے میں ناکام :$1
 gsave_emod=LDAP ڈیٹا بیس میں گروپ کو تبدیل کرنے میں ناکام :$1
 gsave_emoddn=LDAP ڈیٹا بیس میں گروپ کا نام تبدیل کرنے میں ناکام :$1
+
 gdel_group=ایل ڈی اے پی گروپ کے اندراج کو حذف کیا جارہا ہے ..
+
 udel_pass=ایل ڈی اے پی صارف کے اندراج کو حذف کیا جارہا ہے ..
 udel_book=ایڈریس بک سے حذف ہو رہا ہے ..
 udel_imap=IMAP فولڈر کو حذف کیا جارہا ہے ..
 udel_warnimap=ہوم ڈائرکٹری کو خارج کرتے وقت موجودہ میل پوسٹ باکس حذف ہوجائیں گے!
 udel_failed=.. ناکام!  :$1
+
 raw_title=ایل ڈی اے پی اوصاف
 raw_name=صفت نام
 raw_value=قدریں
 raw_for=$1 کے لئے
+
 batch_samba=نئے صارفین کے لئے سامبا اکاؤنٹ بنائیں؟
 batch_imap=نئے صارفین کے لئے IMAP اکاؤنٹ بنائیں؟
 batch_descafter3=In <b>create</b> and <b>modify</b> lines, you can optionally append extra fields containing LDAP attributes in <i>name</i>=<i>value</i> format, to be assigned to the new or modified users.

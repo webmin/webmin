@@ -24,13 +24,16 @@ index_out=Výstup z $1 byl
 index_boot=Připojte se při spuštění pomocí:
 index_noboot=&lt;Nepřipojovat&gt;
 index_bootdesc=Změňte tuto možnost, abyste určili, zda bude vybrané připojení PPP spuštěno v době spuštění nebo ne.
+
 init_title=Zjistit konfiguraci
 init_cmd=Detekce připojeného modemu pomocí příkazu $1 ..
 init_done=.. Hotovo
 init_modems=Modemy jsou nakonfigurovány na $1 a $2.
 init_modem=Na $1 byl detekován modem.
 init_none=Nebyly detekovány žádné modemy!
+
 device_serial=sériový port $1 
+
 connect_title=Navázat spojení
 connect_cmd=Pokus o navázání spojení s příkazem $1 ..
 connect_failed=.. připojení se nezdařilo! Viz výše uvedený výstup, proč.
@@ -40,12 +43,14 @@ connect_dns=Použití konfigurace DNS přiřazené PPP.
 connect_dns2=Byla nastavena konfigurace DNS přiřazená PPP.
 connect_dnsto=Čekání na konfiguraci DNS přiřazené PPP.
 connect_dnsdown=Zdá se, že připojení selhalo při čekání na konfiguraci DNS přiřazené PPP.
+
 disc_title=Vypněte PPP
 disc_err=Ukončení připojení PPP se nezdařilo
 disc_edown=Již odpojeno
 disc_ok1=Vaše připojení PPP vytvořené pomocí $2 bylo úspěšně ukončeno.
 disc_ok2=Vaše připojení PPP bylo úspěšně ukončeno.
 disc_dns=Obnovená stará konfigurace DNS.
+
 edit_title1=Přidat ISP Dialer
 edit_title2=Upravit ISP Dialer
 edit_ddesc=Tato výchozí nastavení budou platit pro připojení vytvořená pomocí jakéhokoli jiného vytáčecího programu.
@@ -76,6 +81,7 @@ edit_idle=Časový limit nečinnosti (v sekundách)
 edit_def=Z výchozího nastavení
 edit_inherits=Zdědí nastavení
 edit_from=Z vytáčeného ..
+
 save_err=Volič se nepodařilo uložit
 save_err2=Volič se nepodařilo smazat
 save_ename=Chybějící nebo neplatné jméno vytáčecího čísla
@@ -88,6 +94,7 @@ save_edial=Chybějící nebo neplatný počet pokusů o vytáčení
 save_eidle=Chybějící nebo neplatný časový limit nečinnosti
 save_einherits=Tento dialer nelze smazat, protože '$1' zdědí nastavení.
 save_eclash=Vytáčecí program se stejným názvem již existuje
+
 log_create=Vytvořeno $1 
 log_update=Aktualizováno $1 
 log_delete=Smazáno $1 

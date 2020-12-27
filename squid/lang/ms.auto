@@ -38,6 +38,7 @@ index_restartdesc=Klik butang ini untuk mengaktifkan konfigurasi Squid semasa.
 index_iptables=Persediaan Pengalihan Port
 index_squid=Pelayan Proksi Squid
 index_manual=Edit Fail Konfigurasi
+
 manual_title=Edit Fail Konfigurasi
 manual_file=Pilih fail konfigurasi untuk mengedit:
 manual_change=Ubah
@@ -45,6 +46,7 @@ manual_editing=Gunakan kotak teks di bawah untuk mengedit konfigurasi secara man
 manual_err=Gagal menyimpan fail konfigurasi
 manual_efile=Nama fail config tidak sah!
 manual_ecannot=Anda tidak dibenarkan mengedit fail konfigurasi secara manual
+
 buttsave=Simpan
 buttdel=Padam
 buttcreat=Buat
@@ -54,6 +56,7 @@ default=Lalai
 none=Tiada
 on=Pada
 off=Off
+
 acl_header1=Buat ACL
 acl_header2=Edit ACL
 acl_name=Nama ACL
@@ -109,6 +112,7 @@ acl_file=Simpan nilai ACL dalam fail
 acl_nofile=Konfigurasi cumi
 acl_infile=Fail berasingan
 acl_keep=Hanya gunakan kandungan fail sedia ada?
+
 aclsave_failsave=Gagal menyimpan ACL
 aclsave_faildel=Gagal memadamkan ACL
 aclsave_epr=ACL ini digunakan oleh sekatan proksi
@@ -128,11 +132,13 @@ aclsave_eemin=Min berakhir tidak sah
 aclsave_efile=Anda tidak dibenarkan menulis ke fail ACL '$1'
 aclsave_enofile=Tiada nama fail ACL dimasukkan
 aclsave_ealready=Fail ACL sudah wujud
+
 cach_ecannot=Anda tidak dibenarkan mengakses statistik pengurus cache
 cach_err=Ralat
 cach_nfound=Program pengurus cache Squid <tt>$1</tt> tidak dijumpai pada sistem anda. Mungkin konfigurasi <a href=/config.cgi?$2> konfigurasi> anda tidak betul.
 cach_return=indeks sotong
 cach_esame=<B>Squid cachemgr.cgi executable</b> ditetapkan kepada program cachemgr.cgi Webmin, bukan yang dibekalkan oleh Squid.
+
 chown_header=Tukar Pemilikan
 chown_stop=Menghentikan cumi. ..
 chown_done=.. Selesai
@@ -140,6 +146,7 @@ chown_chown=Mengubah pemilikan. ..
 chown_restart=Sambung semula sotong. ..
 chown_failrestart=Gagal memulakan semula sotong ..
 chown_return=indeks sotong
+
 clear_ecannot=Anda tidak dibenarkan untuk membersihkan dan membina semula cache
 clear_header=Kosongkan dan Kembalikan Cache
 clear_msgclear=Adakah anda pasti mahu membersihkan dan membina semula cache Squid anda? Ini akan memadamkan <b>semua</b> fail yang anda cache dan mulakan semula pelayan Squid anda.
@@ -153,6 +160,7 @@ clear_failrestart=Gagal memulakan semula sotong ..
 clear_return=indeks sotong
 clear_url=Keluarkan satu URL daripada cache:
 clear_ok=Keluarkan
+
 eacl_ecannot=Anda tidak dibenarkan untuk mengedit kawalan akses
 eacl_header=Kawalan Akses
 eacl_acls=Senarai kawalan akses
@@ -169,8 +177,10 @@ eacl_nopr=Tiada batasan proksi ditentukan.
 eacl_addpr=Tambah sekatan proksi.
 eacl_noprr=Sekatan balasan proksi tidak ditakrifkan
 eacl_addprr=Tambah sekatan balas proksi.
+
 eacl_replypr=Balas sekatan proksi
 eacl_replynopr=Tiada sekatan proksi balasan yang ditakrifkan
+
 eacl_icpr=Sekatan ICP
 eacl_noicpr=Tiada sekatan ICP ditakrifkan
 eacl_addicpr=Tambah sekatan ICP.
@@ -187,6 +197,7 @@ eacl_eclass=Tiada kelas program yang dipilih
 eacl_cname=Taip nama
 eacl_file=Dari fail $1
 eacl_hdelete=Padamkan Sekatan Terpilih
+
 eadm_ecannot=Anda tidak dibenarkan mengedit pilihan pentadbiran
 eadm_header=Pilihan Pentadbiran
 eadm_aao=Pentadbiran dan Umumkan Pilihan
@@ -213,6 +224,7 @@ eadm_caf=Cache mengumumkan fail
 eadm_annp=Tempoh pengumuman
 eadm_buttsave=Simpan
 eadm_return=indeks sotong
+
 eauth_ecannot=Anda tidak dibenarkan mengedit pengesahan proksi
 eauth_header=Pengesahan Proksi
 eauth_aopt=Pilihan Pengesahan
@@ -226,6 +238,7 @@ eauth_pusers=Pengguna Proksi
 eauth_nopusers=Tiada pengguna proksi yang ditakrifkan pada masa ini.
 eauth_addpuser=Tambah pengguna proksi baharu.
 eauth_return=indeks sotong
+
 ec_ecannot=Anda tidak dibenarkan mengedit pilihan cache
 ec_header=Pilihan Cache
 ec_cro=Pilihan Caching dan Permintaan
@@ -280,6 +293,7 @@ ec_return=indeks sotong
 ec_maxreplies=Saiz tubuh jawapan maksimum
 ec_maxrn=Saiz (kB)
 ec_maxracls=Untuk permintaan ACL sepadan (tinggalkan kosong untuk semua)
+
 ech_header=Buat Host Cache
 ech_header1=Edit Host Cache
 ech_cho=Pilihan Host Cache
@@ -324,6 +338,7 @@ ech_origin=Rawat hos sebagai pelayan asal?
 ech_force=Angkatan Tentera: pengepala ke
 ech_same=Tidak berubah
 ech_ssl=Sambung menggunakan SSL?
+
 eicp_ecannot=Anda tidak dibenarkan menyunting cache lain
 eicp_header=Cache lain
 eicp_opcs=Pelayan cache proksi lain
@@ -361,6 +376,7 @@ eicp_ttype=Taipkan
 eicp_tpport=Port proksi
 eicp_tiport=Pelabuhan ICP
 eicp_delete=Padamkan Cache yang Dipilih
+
 elogs_ecannot=Anda tidak dibenarkan menyunting pembalakan
 elogs_header=Pembalakan
 elogs_lalo=Pilihan Logging dan Logfile
@@ -394,6 +410,7 @@ elogs_notset=Tidak ditetapkan
 elogs_dont=Jangan log
 elogs_file=Fail $1
 elogs_squid=Standard sotong
+
 emem_ecannot=Anda tidak dibenarkan mengedit penggunaan memori
 emem_dheader=Penggunaan Memori dan Cakera
 emem_header=Penggunaan memori
@@ -419,6 +436,7 @@ emem_lfuda=Dinamik paling kerap digunakan
 emem_hlru=Heap paling tidak kerap digunakan
 emem_return=indeks sotong
 emem_mrp=Dasar penggantian memori
+
 emisc_ecannot=Anda tidak dibenarkan mengedit pilihan pelbagai
 emisc_header=Pilihan Pelbagai
 emisc_mo=Pilihan Pelbagai
@@ -455,6 +473,7 @@ emisc_wccpin=Alamat Masuk WCCP
 emisc_wccpout=Alamat Keluar WCCP
 emisc_none=Tiada
 emisc_virtual=Maya
+
 eports_ecannot=Anda tidak dibenarkan mengedit port dan rangkaian
 eports_header=Pelabuhan dan Rangkaian
 eports_pano=Pilihan Pelabuhan dan Rangkaian
@@ -480,6 +499,7 @@ eports_unc=Adakah penutupan SSL haram?
 eports_checkhost=Sahkan nama hos dalam URL?
 eports_underscore=Benarkan garis bawah dalam nama host?
 eports_all=Semua
+
 eprogs_ecannot=Anda tidak dibenarkan mengedit program penolong
 eprogs_header=Program Penolong
 eprogs_chpo=Pilihan Program Pembantu Cache
@@ -508,6 +528,7 @@ eprogs_ttl=Masa cache pengesahan
 eprogs_aittl=Sahkan waktu cache IP
 eprogs_realm=Alam pengesahan
 eprogs_return=indeks sotong
+
 euser_header=Buat Pengguna Proksi
 euser_header1=Edit Pengguna Proksi
 euser_pud=Butiran Pengguna Proksi
@@ -516,6 +537,7 @@ euser_p=Kata laluan
 euser_u1=Tidak berubah
 euser_e=Dihidupkan?
 euser_return=senarai pengguna
+
 ahttp_header=Buat Sekatan Proksi
 ahttp_header1=Edit Sekatan Proksi
 ahttp_pr=Sekatan Proksi
@@ -525,10 +547,13 @@ ahttp_d=Deny
 ahttp_ma=Padan ACL
 ahttp_dma=Jangan sepadan dengan ACLs
 ahttp_return=Senarai ACL
+
 ahttp_replyheader=Buat Sekatan Balas Proksi
 ahttp_replyheader1=Edit Sekatan Balas Proksi
 ahttp_replypr=Sekatan Balas Proksi
+
 sahttp_ftspr=Gagal menyimpan sekatan balas proksi
+
 aicp_header=Buat Sekatan ICP
 aicp_header1=Edit Sekatan ICP
 aicp_ir=Sekatan ICP
@@ -538,7 +563,9 @@ aicp_d=Deny
 aicp_ma=Padan ACL
 aicp_dma=Jangan sepadan dengan ACLs
 aicp_return=Senarai ACL
+
 saicp_ftsir=Gagal menyimpan sekatan ICP
+
 icache_ecannot=Anda tidak dibenarkan untuk memulakan cache
 icache_ftic=Gagal menginisialisasi cache
 icache_ymcautrsa=Anda mesti memilih pengguna untuk menjalankan Squid sebagai
@@ -546,7 +573,9 @@ icache_euser=Pengguna untuk menjalankan Squid tidak wujud
 icache_itscwtc=Inisialisasi cache Squid dengan perintah <tt>$1</tt> ..
 icache_return=indeks sotong
 icache_title=Inisialkan Cache
+
 restart_ftrs=Gagal menyusun semula cumi
+
 sadmin_ftsao=Gagal menyimpan pilihan pentadbiran
 sadmin_header=Tukar Pemilikan
 sadmin_msg1=Anda telah mengubah pengguna atau kumpulan yang dijalankan Squid sebagai. Untuk ini berlaku dengan berkesan, pemilikan semua cache dan fail log harus dikemas kini dan Squid semula.
@@ -556,10 +585,12 @@ sadmin_inavea='$1' bukan alamat e-mel yang sah
 sadmin_inavh='$1' bukan nama hos yang sah
 sadmin_inavap='$1' bukan tempoh pengumuman yang sah
 sadmin_inavp='$1' bukan port yang sah
+
 sauth_ftsao=Gagal menyimpan pilihan pengesahan
 sauth_iomuf=Nama fail pengguna tidak sah atau tidak
 sauth_iomd=Domain tidak sah atau hilang
 sauth_msg1=Versi Squid anda belum dikumpulkan dengan sokongan untuk pengesahan proksi
+
 scache_ftsco=Gagal menyimpan pilihan cache
 scache_emsg0=Anda mesti memasukkan sekurang-kurangnya satu direktori cache
 scache_emsg1=Direktori cache '$1' tidak wujud
@@ -577,14 +608,17 @@ scache_emsg12='$1' bukan saiz direktori yang sah
 scache_emsg13='$1' bukan tuan rumah yang sah
 scache_emsg14='$1' bukan port yang sah
 scache_emaxrs=Saiz badan maksimum tidak sah dalam baris $1
+
 schost_ftsc=Gagal menyimpan cache
 schost_emsg1='$1' bukan nama tuan rumah cache yang sah
 schost_emsg2='$1' bukan port proksi yang sah
 schost_emsg3='$1' bukan port ICP yang sah
 schost_emsg4='$1' bukan masa untuk hidup
 schost_emsg5='$1' bukan pemberat yang sah
+
 sicp_ftsco=Gagal menyimpan pilihan cache
 sicp_emsg1='$1' bukan masa tamat yang sah
+
 slogs_ftslo=Gagal menyimpan pilihan pembalakan
 slogs_emsg1='$1' bukan nama fail mutlak
 slogs_emsg2='$1' bukan nama fail yang sah
@@ -594,20 +628,24 @@ slogs_emsg5='$1' bukan senarai pilihan debug yang sah
 slogs_efname=Nama format tidak sah dalam baris $1
 slogs_effmt=Format log hilang dalam baris $1
 slogs_eafile=Fail log hilang atau tidak sah dalam baris $1
+
 smem_ftsmo=Gagal menyimpan pilihan ingatan
 smem_emsg1='$1' bukan saiz cache yang sah
 smem_emsg2='$1' bukan tanda air tinggi yang sah
 smem_emsg3='$1' bukan tanda bawah air yang sah
 smem_emsg4='$1' bukan saiz objek yang sah
+
 smisc_ftso=Gagal menyimpan pilihan
 smisc_emsg1='$1' bukan nombor rotasi yang sah
 smisc_emsg2='$1' bukan domain yang sah
 smisc_emsg3='$1' bukan proksi yang sah
 smisc_emsg4='$1' bukan nombor hop yang sah
+
 sport_ftspo=Gagal menyimpan pilihan pelabuhan
 sport_emsg1='$1' bukan nombor port yang sah
 sport_emsg2='$1' bukan alamat yang sah
 sport_emsg3='$1' bukan saiz penampan yang sah
+
 sprog_ftshpo=Gagal menyimpan pilihan program pembantu
 sprog_emsg1=Pilihan FTP yang tiada
 sprog_emsg2='$1' bukan program yang sah
@@ -620,19 +658,23 @@ sprog_emsg8='$1' bukan alamat IP yang sah
 sprog_emsg9='$1' bukan masa cache yang sah
 sprog_emsg10='$1' bukan TTL yang sah
 sprog_echildren=Bilangan program mestilah nombor yang lebih besar daripada sifar
+
 suser_ftsu=Gagal menyimpan pengguna
 suser_emsg1=Nama pengguna tidak sah atau hilang
 suser_etaken=Nama pengguna sudah digunakan
+
 start_ftsq=Gagal memulakan Squid
 start_ecannot=Anda tidak dibenarkan memulakan Squid
 stop_ftsq=Gagal menghentikan Sotong
 stop_ecannot=Anda tidak dibenarkan berhenti Sotong
+
 calamaris_ecannot=Anda tidak dibenarkan mengakses analisis log Calamaris
 calamaris_title=Analisis log Calamaris
 calamaris_last=Mengehadkan analisis ke baris terakhir $1.
 calamaris_eprog=Calamaris executable $1 tidak dijumpai. Mungkin ia tidak dipasang pada sistem anda, atau konfigurasi modul <a href='$2'>anda</a> tidak betul.
 calamaris_elogs=Direktori log $1 tidak mengandungi sebarang <tt>access.log</tt> fail. Mungkin sotong belum dijalankan, atau konfigurasi modul <a href='$2'>anda</a> tidak betul.
 calamaris_gen=Laporan yang dihasilkan pada $1
+
 lib_emsg1='$1' bukan alamat IP yang sah
 lib_seconds=detik
 lib_minutes=minit
@@ -680,6 +722,7 @@ lib_aclmuip=IP Pengguna Maks
 lib_buttac=Terapkan Perubahan
 lib_buttss=Berhenti Sotong
 lib_buttss1=Mula Sotong
+
 log_ports=Pilihan pelabuhan dan rangkaian yang berubah
 log_icp=Menukar pilihan cache lain
 log_mem=Pilihan penggunaan memori yang berubah
@@ -734,25 +777,31 @@ log_pools_delete=Dipadamkan $1 kolam penangguhan
 log_delay_create=Tambah ACL untuk kelewatan kolam $1
 log_delay_modify=Dikodkan ACL untuk kelewatan kolam $1
 log_delay_delete=ACL dipadamkan untuk kolam kelewatan $1
+
 log_delay_move=Pindahkan ACL untuk kelewatan kolam $1
 log_refresh_create=Peraturan penyegaran dibuat untuk $1
 log_refresh_modify=Peraturan penyegaran diubahsuai untuk $1
 log_refresh_delete=Peraturan penyegaran yang dipadamkan untuk $1
+
 log_refresh_move=Peraturan penyegaran yang dipindahkan untuk $1
 log_refreshes_delete=Dipadamkan peraturan $1
 log_iptables=Persediaan pengalihan semula port dikemas kini
 log_purge=URL yang dialih keluar $1 daripada cache
 log_cachemgr=Kata laluan pengurus cache yang diubah
+
 acl_root=Direktori akar untuk fail ACL
 acl_sections=Halaman konfigurasi yang dibenarkan
 acl_start=Boleh mula dan berhenti Sotong?
 acl_restart=Boleh memohon konfigurasi Squid?
+
 always_create=Buat Tangkap Langsung
 always_edit=Edit Ambil Langsung
 always_header=Langsung dapatkan permintaan yang sepadan dengan ACL
+
 never_create=Buat Tak Tak Langsung
 never_edit=Edit Tak Tak Langsung
 never_header=Jangan sekali-kali mendapatkan permintaan yang sepadan dengan ACL
+
 delay_title=Kelewatan Kolam
 delay_add=Tambah kolam penangguhan baru.
 delay_num=Nombor
@@ -802,11 +851,14 @@ pool_unit2=kb
 pool_unit3=kB
 pool_unit4=Mb
 pool_unit5=MB
+
 dpool_err=Gagal memadamkan kolam kelewatan
 dpool_enone=Tiada yang dipilih
+
 apool_header=Tambah ACL Pool Delay
 apool_header1=Edit Kelewatan Pool ACL
 apool_pr=Kolam kelewatan ACL
+
 authparam_title=Program Pengesahan
 authparam_header=Pilihan program pengesahan luaran
 authparam_ttl=Masa untuk kata laluan cache untuk
@@ -849,6 +901,7 @@ ext_ecache=Saiz cache yang hilang atau tidak sah
 ext_eprogram=Laluan program tidak sah telah dimasukkan
 ext_eclash=Jenis program luaran dengan nama yang sama sudah ada
 ext_eused=Program luaran ini digunakan oleh ACL
+
 header_title=Kawalan Akses Header
 header_none=Tiada peraturan kawalan akses header telah ditakrifkan lagi.
 header_name=Pengepala HTTP
@@ -868,6 +921,7 @@ header_err=Gagal menyimpan peraturan kawalan akses header
 header_ename=Nama tajuk yang hilang atau tidak sah
 header_request_header_access=Minta Pengepala
 header_reply_header_access=Balas Pengepala
+
 refresh_title=Peraturan Refresh
 refresh_none=Tiada peraturan penyegaran telah ditakrifkan lagi.
 refresh_re=Ekspresi biasa
@@ -894,6 +948,7 @@ refresh_epc=Peratusan usia hilang atau tidak sah
 refresh_delete=Padam Peraturan Refresh Terpilih
 drefresh_err=Gagal memadam peraturan penyegar semula
 drefesh_enone=Tiada yang dipilih
+
 iptables_title=Persediaan Pengalihan Port
 iptables_inst0=Perintah firewall IPtables yang diperlukan untuk memasang redirection port tidak kelihatan dipasang pada sistem anda. Lihat modul <a href='$1'>Linux Firewall</a> untuk maklumat lanjut.
 iptables_inst1=Modul <a href='$1'>Linux Firewall</a> tidak kelihatan telah disiapkan sepenuhnya pada sistem anda. Modul ini menggunakannya untuk memasang redirection port Frox.
@@ -908,18 +963,23 @@ iptables_enet=Alamat rangkaian yang hilang atau tidak sah (sepatutnya seperti 19
 iptables_eiface=Antara muka rangkaian yang tiada atau tidak sah
 iptables_eapply=Guna firewall gagal : $1
 iptables_eapply2=Memohon Squid gagal : $1
+
 syslog_access=Log masuk saringan
 syslog_cache=Log caching squid
 syslog_store=Log kedai kedai sotong
+
 purge_err=Gagal untuk mengosongkan URL dari cache
 purge_title=Kosongkan URL Cached
 purge_doing=Kelonggaran URL $1 ..
 purge_done=.. selesai.
 purge_failed=.. gagal! Lihat mesej ralat di atas untuk alasan mengapa.
+
 dhttp_err=Gagal memadamkan sekatan proksi
 dhttp_enone=Tiada yang dipilih
+
 dicp_err=Gagal memadamkan sekatan ICP
 dicp_enone=Tiada yang dipilih
+
 cachemgr_title=Kata laluan Pengurus Cache
 cachemgr_ecannot=Anda tidak dibenarkan mengedit kata laluan pengurus cache
 cachemgr_def1=Tiada kata laluan yang diperlukan

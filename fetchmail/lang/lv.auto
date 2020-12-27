@@ -25,6 +25,7 @@ index_header=Lietotāji ar Fetchmail konfigurācijām
 index_search=Rādīt Fetchmail konfigurāciju:
 index_show=Izrāde
 index_toomany=Jūsu sistēmā ir pārāk daudz lietotāju, lai tos parādītu.
+
 poll_create=Pievienot serveri
 poll_edit=Rediģēt serveri
 poll_header=Pasta servera opcijas
@@ -64,18 +65,22 @@ poll_ecannot=Jums nav atļauts rediģēt šī lietotāja fetchmail konfigurācij
 poll_efile=Var rediģēt tikai lietotāju fetchmail konfigurācijas failus
 poll_eusername=Lietotājs neeksistē!
 poll_foruser=Lietotājam $1 
+
 stop_err=Neizdevās apturēt fetchmail
 stop_ecannot=Jums nav atļauts pārtraukt fetchmail
 start_err=Neizdevās sākt fetchmail
 start_einterval=Trūkst vai nav derīgs pārbaudes intervāls
 start_ecannot=Jums nav atļauts sākt fetchmail
+
 check_title=Serveru pārbaude
 check_exec=Notiek pasta pārbaude serverī (-os) ar komandu $1.
 check_ok=.. pārbaude pabeigta.
 check_failed=.. pārbaude neizdevās!
+
 global_title=Noklusējuma iestatījumi
 global_header=Noklusējuma iestatījumi visiem serveriem
 global_err=Neizdevās saglabāt noklusējuma iestatījumus
+
 log_create_poll_file=Pievienots serveris $1 failā $2 
 log_modify_poll_file=Modificēts serveris $1 failā $2 
 log_delete_poll_file=Izdzēsts serveris $1 failā $2 
@@ -94,6 +99,7 @@ log_stop=Apturēts fetchmail dēmons
 log_create_cron=Iespējota plānotā pārbaude
 log_update_cron=Modificēta plānotā pārbaude
 log_delete_cron=Atspējota plānotā pārbaude
+
 acl_users=Var rediģēt fetchmail konfigurāciju
 acl_all=Visi lietotāji
 acl_this=Pašreizējais Webmin lietotājs
@@ -101,6 +107,7 @@ acl_only=Tikai lietotāji
 acl_except=Visi, izņemot lietotājus
 acl_cron=Vai var konfigurēt plānoto pārbaudi?
 acl_daemon=Vai var konfigurēt Fetchmail dēmonu?
+
 cron_title=Plānotā pārbaude
 cron_desc=Šo lapu var izmantot, lai iespējot vai atspējot Cron darbu, lai regulāri pārbaudītu pasta serverus Fetchmail konfigurācijā. Izmantojot Cron darbu, kas pārsniedz Fetchmail dēmona palaišanu, jo tas nav jārestartē sāknēšanas laikā.
 cron_header=Ieplānotie Fetchmail iestatījumi
@@ -119,8 +126,10 @@ cron_email=Trūkst vai nav derīga e-pasta adrese
 cron_euser=Trūkst vai nav derīgs Unix lietotājs
 cron_errors=Vai izvadīt tikai tad, ja rodas kļūda?
 cron_ecannot2=Jums nav atļauts konfigurēt plānoto pārbaudi
+
 user_title=Fetchmail konfigurācija
 user_header=Lietotājam $1 
 user_return=lietotāja konfigurācija
+
 email_ok=Fetchmail izvade
 email_failed=Fetchmail kļūda

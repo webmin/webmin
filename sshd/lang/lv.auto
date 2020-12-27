@@ -16,8 +16,10 @@ index_type=SSH atslēgas tips:
 index_rsa1=RSA (SSH v1)
 index_rsa=RSA (SSH v2)
 index_dsa=DSA (SSH v2)
+
 bits=biti
 secs=sekundes
+
 users_title=Autentifikācija
 users_header=Pieteikšanās un autentifikācijas iespējas
 users_expire=Dienas pirms konta termiņa beigām, lai brīdinātu lietotāju
@@ -54,6 +56,7 @@ users_eauthkeys=Trūkst vai nederīga izskata autorizētu atslēgu fails
 users_maxauthtries=Maksimāli pieteikšanās mēģinājumi vienā savienojumā
 users_emaxauthtries=Trūkst vai nav skaitlisku pieteikšanās mēģinājumu skaitu vienam savienojumam
 users_chal=Vai izmantot izaicinājuma un atbildes autentifikāciju?
+
 net_title=Tīklošana
 net_header=Tīkla izveides iespējas
 net_port=Klausieties ostā
@@ -91,6 +94,7 @@ net_eprots=Jums jāizvēlas vismaz viens protokols
 net_eladdress=“$1” nav derīga adrese, kurā klausīties
 net_elport='$1' nav derīgs ports, kuru klausīties
 net_elisten2=Ievadītajā adresē nav klausīšanās
+
 access_title=Piekļuves kontrole
 access_header=Tīkla un pieteikšanās piekļuves kontroles iespējas
 access_allowu=Atļaut tikai lietotājiem
@@ -108,6 +112,7 @@ access_eallowg=Nav atļauts iebraukt grupās
 access_edenyg=Neviena grupa, kuru noliegt, nav ievadīta
 access_eallowh=Nav atļauts ienākt saimniekiem
 access_edenyh=Nav ienācis neviens saimnieks, ko noliegt
+
 misc_title=Dažādas iespējas
 misc_header=Citas dažādas SSH servera iespējas
 misc_x11=Vai atļaut X11 savienojuma pārsūtīšanu?
@@ -131,14 +136,17 @@ misc_eumask=Trūkst vai nav derīgs četrciparu astoņkāja umask
 misc_ebits=Trūkst vai nav derīgs servera atslēgas lielums
 misc_eregen=Trūkst vai nav derīgs atslēgas atjaunošanas intervāls
 misc_epid=Trūkst PID faila ceļa
+
 start_err=Neizdevās palaist SSH serveri
 apply_epid=Neskrien
+
 hosts_title=Klienta resursdatora opcijas
 hosts_header=SSH klientu saimnieki
 hosts_none=Nav definētas klienta resursdatora iespējas. Visos SSH klientu pieteikšanās gadījumos tiks izmantoti noklusējuma iestatījumi.
 hosts_all=Visi saimnieki
 hosts_add=Pievienojiet klienta resursdatora opcijas.
 hosts_return=klientu saimnieku saraksts
+
 host_create=Pievienojiet resursdatora opcijas
 host_edit=Rediģēt resursdatora opcijas
 host_header=Klienta iespējas SSH resursdatoram
@@ -194,6 +202,7 @@ host_eprots=Jums jāizvēlas vismaz viens protokols
 host_proxy=Savienojuma starpniekservera komanda
 host_proxy_def=Nav
 host_eproxy=Trūkst vai nederīga izskata savienojuma starpniekservera komanda
+
 log_users=Mainītas autentifikācijas iespējas
 log_net=Mainītas tīkla iespējas
 log_access=Mainīta piekļuves kontrole
@@ -208,6 +217,7 @@ log_stop=Pārtraukts SSH serveris
 log_start=Startēja SSH serveris
 log_apply=Lietotā konfigurācija
 log_manual=Konfigurācijas faila $1 manuāla rediģēšana
+
 sync_title=Lietotāja SSH atslēgas iestatīšana
 sync_desc=Šī lapa ļauj jums konfigurēt automātisko SSH iestatīšanu jauniem Unix lietotājiem, kas izveidoti jūsu sistēmā. Ja tas ir konfigurēts, jauniem lietotājiem pirms SSH lietošanas nebūs jāpalaiž <tt>ssh-keygen</tt>.
 sync_create=Iestatīt SSH atslēgu jauniem Unix lietotājiem?
@@ -216,9 +226,11 @@ sync_pass=Vai izmantot paroli kā atslēgas ieejas frāzi?
 sync_gnupg=Iestatiet GNUPG atslēgu jauniem Unix lietotājiem.
 sync_type=Atslēgas tips
 sync_auto=&lt;Automātiski&gt;
+
 keys_title=Resursdatora SSH taustiņi
 keys_desc=Šī lapa ļauj jums apskatīt šīs resursdatora SSH atslēgas.
 keys_none=SSHD konfigurācijā nevarēja atrast HostKey ierakstus.
+
 manual_title=Rediģēt konfigurācijas failus
 manual_ecannot=Jums nav atļauts rediģēt SSH servera konfigurācijas failu
 manual_ok=Rediģēt
@@ -226,5 +238,6 @@ manual_efile=Atlasītais fails neietilpst SSH servera konfigurācijā
 manual_file=Rediģēt konfigurācijas failu:
 manual_edata=Nekas nav ienācis
 manual_err=Neizdevās saglabāt konfigurācijas failu
+
 dknown_err=Neizdevās izdzēst zināmos resursdatorus
 dknown_enone=Nav atlasīts

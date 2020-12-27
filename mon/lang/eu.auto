@@ -6,6 +6,7 @@ mon_conf_title=Oinarrizko konfigurazioa
 mon_status_title=Egoera Eragilea
 hostgroups_title=MON Konfigurazio-Ostalariak
 services_title=Watchgroups-Service Definitions
+
 head_hostgroups=Ostalari taldeak eta Zerbitzuak
 head_groups=Ostalariaren izena
 head_members=Ostalari taldeko kideak
@@ -17,6 +18,7 @@ head_monauth=Eman MONCMD autentikazioa
 head_usr=Erabiltzaile izena
 head_pass=Pasahitza
 head_mand=("ROSA KOLORE" parametroak derrigorrezkoak dira)
+
 err_nomon="mon" paketea ez dago sisteman instalatuta
 err_nomonconf=Ez da aurkitu zure sisteman MON konfigurazio fitxategia. Agian MON ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
 err_nowatch=Ez da Watchgroups aukeratu. Hautatu gutxienez Watchgroup bat jarraitzeko.
@@ -28,6 +30,7 @@ stop_epid=Jada ez da martxan
 start_err=Huts egin du MON abiarazteak
 restart_err=Huts egin du MON berrabiarazteak
 restart_epid=Ezin izan da PID eskuratu
+
 other=Bestelakoak (espazio bereizita)
 next=hurrengo
 mon_stat=MON Egoera
@@ -43,6 +46,7 @@ save_apply=Gorde eta aplikatu
 watch=Watchgroup
 members=Bazkideek
 def_perargs=wd {Sat-Sun}
+
 def_desc=azalpena
 def_inter=tarte
 def_mon=monitore
@@ -58,9 +62,11 @@ def_trapdur=trapduration
 def_rand=randskew
 def_exclhost=exclude_hosts
 def_exclper=exclude_period
+
 groups_title=Ostalari taldeak
 groups_group=Taldearen izena
 groups_members=Kideak ostalariak
+
 watches_title=Ikusi Zerrendak
 watches_group=Ikusteko taldea
 watches_services=Zerbitzuak ikusten ari dira
@@ -68,6 +74,7 @@ watches_sadd=Gehitu zerbitzua ..
 watches_add=Gehitu taldeko begirale zerrenda :
 watches_return=erloju zerrendak
 watches_none=Oraindik ez dira ikusi erloju zerrendak.
+
 global_title=Aukera Globala
 global_header=MON konfiguraziorako aukera globala
 global_maxprocs=Gehienezko MON prozesuak
@@ -85,6 +92,7 @@ global_ehistlength=Gertaeren historiaren luzera falta edo baliogabea
 global_ealertdir=Falta diren edo baliogabeak diren alerta programen direktorio
 global_emondir=Monitoreen programen direktorio falta edo baliogabea
 global_euserfile=MON erabiltzaileen fitxategia falta da
+
 watch_title=Editatu Watch zerrenda
 watch_header=Ostalari taldea ikusi xehetasunak
 watch_group=Ikusteko ostalari taldea
@@ -93,6 +101,7 @@ watch_service=Zerbitzuaren izena
 watch_monitor=Erabili beharreko monitorea
 watch_interval=Begiratu guztietan
 watch_periods=Jarraipen-aldiak
+
 service_title=Gehitu zerbitzua
 service_title2=Editatu Zerbitzua
 service_header=Ikusi zerbitzuaren xehetasunak
@@ -145,16 +154,19 @@ service_epstr=Falta den epearen zehaztapena
 service_known0=<tt>Denbora::Epea</tt> katea
 service_known1=Zehaztutako egunak eta orduak
 service_known2=Definitutako aldia
+
 status_title=MON Egoera
 status_ecgi=MON egoera CGI programa $1 ez da existitzen. Agian ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
 status_eperl=MON status CGI programak $1 perl modulua behar du. <a href='$2'>Egin klik hemen</a> zuzenean CPAN-tik instalatzeko.
 status_esame=MON egoera CGI programa $1 <min>mon.cgi</min> script-en ezarri da Webmin modulu honetan, eta ez MON-rekin datorren CGI programa. Doitu <a href='$2'>moduluaren konfigurazioa</a> bide egokia erabiltzeko.
+
 users_title=MON Erabiltzaileak
 users_etype=MON erabiltzaileen zerrenda ezin da editatu MON ez dagoelako konfiguratuta <a href='$1'>Aukera Globaleak</a> orrian autentikatzeko erabiltzeko.
 users_header=MON erabiltzaileak $1 ean onartzen dira
 users_nousers=Ez da MON erabiltzailerik zehaztu $1 -en.
 users_add=Sortu erabiltzaile berria.
 users_return=MON erabiltzaileen zerrenda
+
 user_create=Sortu MON erabiltzailea
 user_edit=Editatu MON erabiltzailea
 user_header=MON erabiltzailearen xehetasunak
@@ -164,6 +176,7 @@ user_leave=Utzi aldatu gabe
 user_err=Huts egin du erabiltzailea gordetzean
 user_euser=Erabiltzaile-izena falta edo baliogabea
 user_esame=Izen berdina duen erabiltzailea lehendik dago
+
 auth_title=Bezeroaren komandoak
 auth_desc=Orrialde honetan bezeroak zein programa erabiltzen dituzten erabiltzaileek exekutatu ditzakete MON komandoak.
 auth_cmd=MON agindua
@@ -173,6 +186,7 @@ auth_all=denek
 auth_sel=Erabiltzaileak bakarrik
 auth_err=Huts egin du bezeroaren komandoak gordetzean
 auth_eusers=Ez da erabiltzaileik sartu $1 komandorako
+
 periods_title=Definitutako aldiak
 periods_period=Epearen izena
 periods_times=Egunak eta orduak
@@ -181,5 +195,6 @@ periods_allhours=Ordu guztiak
 periods_err=Huts egin du zehaztutako epeak gordetzean
 periods_ename='$1' ez da baliozko epearen izena
 periods_ehour=$1 eko denbora falta edo baliogabea (goizeko 9: 00ak edo 17: 00ak izan behar da)
+
 show_title=Egoera Eragilea
 show_ecgi=$1 MON programa ez da existitzen. Agian ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.

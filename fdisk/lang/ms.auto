@@ -44,6 +44,7 @@ index_dscsi=Peranti SCSI $1 controller $2
 index_draid=Tahap RAID $1 
 index_dparts=Partition
 index_none2=Tiada cakera ditemui pada sistem ini.
+
 bytes=bait
 megabytes=megabait
 extended=Dilanjutkan
@@ -67,6 +68,7 @@ select_promise=Janji pemacu RAID $1
 select_ppart=Memacu pemacu RAID $1 partition $2 
 select_nvme=NVME SSD $1 drive $2 
 select_nvmepart=NVME SSD $1 drive $2 partition $3 
+
 edit_title=Edit Partition
 create_title=Buat Partition
 edit_ecannot=Anda tidak dibenarkan mengedit cakera ini
@@ -110,6 +112,7 @@ edit_newmount2=Pemisahan Gunung
 edit_mountas=sebagai
 edit_mountmsg=Pasang partition ini pada direktori baru pada sistem anda, supaya ia dapat digunakan untuk menyimpan fail. Sistem fail mestilah dibuat pada partition.
 edit_mountmsg2=Pasang partition ini sebagai memori maya pada sistem anda, untuk meningkatkan jumlah memori yang ada.
+
 mkfs_title=Filesystem baru
 mkfs_ecannot=Anda tidak dibenarkan membina sistem fail baru pada cakera ini
 mkfs_desc1=Mengklik butang di bahagian bawah borang ini akan membina fail sistem $1 baru pada peranti $2. Semua data pada partition ini akan dipadamkan secara kekal.
@@ -120,6 +123,7 @@ mkfs_err=Gagal mencipta sistem fail
 mkfs_exec=Pelaksanaan perintah $1 ..
 mkfs_failed=.. arahan gagal!
 mkfs_ok=.. arahan lengkap.
+
 fsck_title=Pembaikan Filesystem
 fsck_ecannot=Anda tidak dibenarkan untuk memasukkan cakera ini
 fsck_desc1=Mengklik butang <tt>Pembaikan Filesystem</tt> akan cuba membaiki sistem fail $1 yang rosak pada $2 untuk dipasang pada $3. Jika sistem fail tidak rosak, tiada perubahan akan dibuat.
@@ -132,6 +136,7 @@ fsck_err3=kesilapan yang ditemui dan diperbetulkan - reboot diperlukan
 fsck_err4=kesilapan dijumpai tetapi TIDAK diperbetulkan
 fsck_err16=ralat baris perintah
 fsck_unknown=kod pulangan tidak diketahui $1 
+
 tunefs_title=Tune Filesystem
 tunefs_ecannot=Anda tidak dibenarkan untuk menyesuaikan sistem fail ini
 tunefs_desc=Borang ini membolehkan anda melaraskan pelbagai parameter sistem $1 pada $2 untuk pemasangan pada $3. Fail sedia ada pada sistem fail ini tidak akan terjejas.
@@ -153,10 +158,12 @@ tunefs_err=Gagal menala sistem fail
 tunefs_exec=Pelaksanaan perintah $1 ..
 tunefs_failed=.. arahan gagal!
 tunefs_ok=.. arahan lengkap.
+
 reboot_title=Reboot
 reboot_msg=Reboot sekarang ..
 reboot_ok=Reboot Sekarang
 reboot_why=Anda telah menukar jadual partition pada $1. Untuk perubahan ini berkuat kuasa dengan betul, sistem anda mesti disambung semula.
+
 save_err=Gagal menyimpan partition
 save_ecannot=Anda tidak dibenarkan mengedit cakera ini
 save_estart='$1' bukan silinder permulaan yang sah
@@ -165,6 +172,7 @@ save_emin=Silinder permulaan mesti> = $1
 save_emax=Silinder yang terakhir mestilah <= $1 
 save_eminmax=Silinder permulaan mesti kurang dari akhir
 save_eoverlap=Tumpahan dikesan dengan partisi $1 ($2 hingga $3)
+
 ext2_b=Saiz blok
 ext2_f=Saiz pecahan
 ext2_i=Bytes setiap inode
@@ -172,6 +180,7 @@ ext2_m=Blok yang dikhaskan
 ext2_g=Blok setiap kumpulan
 ext2_c=Semak blok buruk?
 ext3_j=Saiz fail jurnal
+
 msdos_ff=Bilangan FAT
 msdos_F=Saiz FAT
 msdos_F_other=Lain ..
@@ -180,24 +189,32 @@ msdos_n=Nama volum
 msdos_r=Penyertaan akar
 msdos_s=Saiz kluster
 msdos_c=Semak blok buruk?
+
 minix_n=Nama fail panjang
 minix_i=Bilangan inode
 minix_b=Bilangan blok
 minix_c=Semak blok buruk?
+
 reiserfs_force=Paksakan penciptaan sistem fail
 reiserfs_hash=Fungsi Hash
+
 xfs_force=Paksakan penciptaan sistem fail
 xfs_b=Saiz blok
+
 jfs_s=Log saiz
 jfs_c=Semak blok buruk?
+
 btrfs_l=Saiz daun
 btrfs_n=Saiz nod
 btrfs_s=Saiz sektor
+
 fatx_none=Tiada pilihan yang tersedia untuk sistem fail FATX.
+
 acl_disks=Disks pengguna ini boleh partition dan format
 acl_dall=Semua cakera
 acl_dsel=Terpilih ..
 acl_view=Boleh melihat cakera tidak boleh diedit?
+
 hdparm_title=Edit Parameter IDE
 hdparm_on=Pada
 hdparm_off=Off
@@ -226,9 +243,11 @@ hdparm_performing=Mempersembahkan
 hdparm_buf1=Cache penimbal:
 hdparm_buf2=Buffered:
 hdparm_speedres=Keputusan ujian kelajuan
+
 blink_title=Kenal pasti Drive
 blink_desc=Aktiviti LED pemacu sekarang akan menyala enam puluh kali
 blink_back=Pergi balik
+
 log_modify=Diubah suai $1 
 log_create=Dicipta $1 
 log_delete=Dihapus $1 
@@ -236,6 +255,7 @@ log_mkfs=Dibuat fail $1 pada $2
 log_tunefs=Ditala $1 sistem fail pada $2 
 log_fsck=Membaikpulih $1 sistem fail pada $2 
 log_hdparm=Parameter IDE yang diubahsuai untuk $1 
+
 fs_ext2=Native Linux Lama
 fs_minix=Minix
 fs_msdos=MS-DOS
@@ -246,9 +266,11 @@ fs_ext4=Native Linux Baru
 fs_xfs=SGI
 fs_jfs=IBM Journalling
 fs_btrfs=BTR
+
 delete_title=Padamkan Partition
 delete_rusure=Adakah anda pasti mahu memadamkan $1 ($2)? Data pada partition ini mungkin hilang selama-lamanya.
 delete_ok=Padamkan Sekarang
+
 disk_title=Edit Partition Disk
 disk_egone=Cakera tidak lagi wujud!
 disk_no=Nombor
@@ -269,11 +291,13 @@ disk_table=<b>Format jadual pemisahan:</b> $1
 disk_notable=<b>Format jadual pemisahan:</b> Tiada dibuat
 disk_needtable=Tiada partition boleh dibuat tanpa jadual partition.
 disk_return=senarai partition
+
 relabel_title=Lap Partition
 relabel_warn=Adakah anda pasti mahu memadam semua partition pada $1 ($2) dengan menulis semula label cakera? Semua data dan sistem fail yang ada akan hilang!
 relabel_parts=Sekatan yang ada
 relabel_noparts=Tiada lagi dicipta
 relabel_table=Format jadual partition
 relabel_ok=Lap dan Label Semula
+
 table_msdos=MS-DOS (Format partition standard)
 table_gpt=GPT (Untuk cakera 2T atau lebih besar)

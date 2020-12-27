@@ -57,6 +57,7 @@ index_reposdisable=Деактивиране на хранилища
 index_reposenable=Активиране на хранилища
 index_reposdelete=Изтриване на хранилища
 index_repoheader=Нови опции за хранилище на пакети
+
 update_title=Актуализиране на пакети
 update_title2=Инсталиране на пакети
 update_enone=Не са избрани пакети
@@ -94,9 +95,11 @@ update_none=Нито един
 update_ops=Изграждане на пълен списък с пакети ..
 update_rebootdesc=Един от инсталираните пакети изисква рестартиране, за да се приложи изцяло.
 update_reboot=Рестартирай сега
+
 sched_title=Планирана актуализация
 sched_yes=Планираната проверка за актуализации е активна.
 sched_no=Планираната проверка за актуализации е деактивирана.
+
 log_update=Инсталирани $1 актуализирани пакети
 log_sched=Активирани планирани актуализации
 log_unsched=Деактивиране на планираните актуализации
@@ -108,11 +111,13 @@ log_enable_repo=Активирано хранилище на пакети $1
 log_disable_repo=Деактивирано хранилище на пакети $1 
 log_delete_repo=Изтрито хранилище на пакети $1 
 log_create_repo=Създадено хранилище на пакети $1 
+
 refresh_title=Освежаващи пакети
 refresh_clearing=Изчистване на кеш пакети ..
 refresh_done=.. Свършен
 refresh_available=Повторно извличане на наличните пакети ..
 refresh_done3=.. намерени $1 възможни актуализации
+
 view_title=Детайли за пакета
 view_header=Актуализирана информация за пакета
 view_name=Име на пакета
@@ -126,12 +131,14 @@ view_changelog=Журнал за промени за наличната верс
 view_software=Управление на пакета
 view_update=Актуализиране на пакета
 view_install=Инсталиране на пакет
+
 system_yum=YUM
 system_apt=APT
 system_csw=CSW (Blastwave)
 system_webmin=Webmin модул
 system_usermin=Usermin модул
 system_tgz=Webmin или Usermin tar.gz
+
 repos_err_disable=Деактивирането на хранилищата не бе успешно
 repos_err_enable=Активирането на хранилища не бе успешно
 repos_err_delete=Изтриването на хранилищата не бе успешно

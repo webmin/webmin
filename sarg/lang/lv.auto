@@ -10,6 +10,7 @@ index_range=Ģenerēt pārskatu par datumu diapazonu
 index_view=Skatīt ģenerēto pārskatu
 index_viewdesc=Skatiet nesen ģenerēto pārskatu direktorijā $1.
 index_return=moduļa indekss
+
 log_title=Žurnāla avots un ziņojuma mērķis
 log_header=Avota kalmāru žurnālfails un ģenerētās pārskata opcijas
 log_access_log=Avota kalmāru žurnālfails
@@ -30,6 +31,7 @@ log_elastlog=Trūkst vai nav numura
 log_eemail=Trūkst vai ir nederīga e-pasta adrese
 log_emailx=Trūkst vai vispār nav pasta programmas
 log_squidguard_log_path=SquidGuard žurnālfails
+
 style_title=Ziņojuma stils
 style_header=HTML atskaites stila un krāsu opcijas
 style_title2=Ziņojuma nosaukums
@@ -54,6 +56,7 @@ style_efont=Trūkst vai nav derīgs fonta nosaukums
 style_esize=Trūkst vai nav derīgs attēla platums un augstums
 style_language=Ziņojuma valoda
 style_charset=Ziņot par rakstzīmju kopu
+
 report_title=Pārskata iespējas
 report_header=Ziņot par saturu un ģenerēšanas iespējām
 report_resolve_ip=Atrisināt IP adreses?
@@ -134,6 +137,7 @@ report_echar=Atstarpes nav atļautas
 report_estring=Trūkst vai nav derīgs aizvietojošs teksts
 report_eselect=Nekas nav atlasīts
 report_eenter=Nekas neiebrauca
+
 sched_title=Plānota ziņojuma ģenerēšana
 sched_header=Plānotas ziņošanas iespējas
 sched_sched=Plānotais ziņojums ir iespējots?
@@ -148,9 +152,11 @@ sched_rsel=Tie, kas bija no $1 līdz $2 dienas atpakaļ
 sched_err=Neizdevās saglabāt plānoto pārskatu ģenerēšanu
 sched_erfrom=Trūkst vai nav derīgs sākuma dienu skaits
 sched_erto=Trūkst vai nav derīgs beigu dienu skaits
+
 view_title=Sarga ziņojums
 view_efile=Nederīgs faila nosaukums!
 view_eopen=Neizdevās atvērt pārskata failu
+
 gen_title=Ģenerēt pārskatu
 gen_header=Tagad tiek ģenerēts Sarg ziņojums no kalmāru žurnālfaila $1 un visām pagrieztajām versijām.
 gen_done=.. darīts
@@ -160,6 +166,7 @@ gen_view=Skatīt pabeigto ziņojumu.
 gen_err=Neizdevās ģenerēt pārskatu
 gen_efrom=Trūkst vai nav derīgs no dienas
 gen_eto=Trūkst vai nav derīgs
+
 webmin_log_log=Atjauninātas žurnāla avota un pārskata mērķa iespējas
 webmin_log_report=Atjauninātas pārskata iespējas
 webmin_log_style=Atjauninātas pārskata stila opcijas

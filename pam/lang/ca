@@ -4,6 +4,7 @@ index_desc=Descripció
 index_add=Afegeix un nou servei PAM.
 index_return=a la llista de serveis
 index_none=No s'han trobat els fitxers de configuració PAM al directori $1. O bé PAM no està suportat, o bé la <a href='$2'>configuració del mòdul</a> és incorrecta.
+
 desc_su=Canvia l'usuari
 desc_su-l=Canvia l'usuari (amb registre)
 desc_login=Connexió local o remota
@@ -87,6 +88,7 @@ desc_common-account=Verificació de comptes comuns
 desc_common-auth=Autenticació comuna
 desc_common-password=Canvi de contrasenya comuna
 desc_common-session=Configuració de sessió comuna
+
 edit_title=Edició de Servei PAM
 edit_header=Detalls del servei PAM
 edit_name=Nom del servei
@@ -107,6 +109,7 @@ edit_move=Desplaça
 edit_return=al servei PAM
 edit_inc=Inclou el servei $1
 edit_iheader=Serveis PAM inclosos
+
 pam_pwdb.so=Autenticació de contrasenyes Unix
 pam_securetty.so=Comprova TTY segura per a root
 pam_nologin.so=Comprova el fitxer <tt>/etc/nologin</tt>
@@ -149,6 +152,7 @@ pam_console.so=Comprova només la consola
 pam_xauth.so=Autenticació X
 pam_stack.so=Crida un altre servei PAM
 pam_foreground.so=Configuració de consola
+
 control_requisite=Requisit
 control_required=Exigit
 control_sufficient=Suficient
@@ -157,6 +161,7 @@ control_desc_requisite=Cancel·la l'autenticació immediatament en cas d'error
 control_desc_required=Cancel·la l'autenticació al final en cas d'error
 control_desc_sufficient=Aprova l'autenticació immediatament en cas d'èxit
 control_desc_optional=Ignora l'èxit o l'error
+
 create_title=Creació de Servei PAM
 create_header=Opcions del nou servei PAM
 create_name=Nom del servei
@@ -165,6 +170,7 @@ create_mods=Mòduls PAM inicials
 create_0=Cap
 create_1=Autenticació Unix
 create_2=Denega tots els accessos
+
 mod_edit=Edició de Mòdul PAM
 mod_create=Afegeix mòdul PAM
 mod_header=Opcions del mòdul PAM
@@ -178,10 +184,12 @@ mod_type_password=Canvi de contrasenya
 mod_control=Nivell d'error
 mod_args=Arguments del mòdul
 mod_err=No s'ha pogut desar el mòdul
+
 pwdb_shadow=Utilitza el fitxer de contrasenyes ocultes
 pwdb_nullok=Accepta contrasenyes nul·les
 pwdb_md5=Utilitza contrasenyes amb xifratge MD5
 pwdb_nodelay=Interval entre connexions fallides
+
 unix_nullok_secure=Accepta contrasenyes nul·les en TTYs segures
 unix_min=Llargària mínima de la contrasenya
 unix_nomin=Cap
@@ -190,6 +198,7 @@ unix_nomax=Sense límit
 unix_obscure=Evita l'ús de contrasenyes simples
 unix_emin=Hi falta la llargària mínima de la contrasenya o bé és invàlida
 unix_emax=Hi falta la llargària màxima de la contrasenya o bé és invàlida
+
 listfile_item=Busca al fitxer
 listfile_item_user=Usuari
 listfile_item_tty=TTY
@@ -206,51 +215,64 @@ listfile_apply=Limita la comprovació a
 listfile_all=Tots els usuaris
 listfile_user=Només l'usuari
 listfile_group=Només el grup
+
 cracklib_type=Tipus de contrasenya
 cracklib_retry=Nombre màxim d'intents abans de cancel·lar
 cracklib_eretry=Hi falta el nombre de reintents o bé no és correcte
 cracklib_etype=Hi falta el tipus de contrasenya o bé no és vàlid
+
 rhosts_equiv=Llegeix el fitxer <tt>/etc/hosts.equiv</tt>
 rhosts_rhosts=Llegeix els fitxers <tt>.rhosts</tt> dels usuaris
 rhosts_promiscuous=L'entrada <tt>+</tt> permet tots els hosts
 rhosts_suppress=Registra les autenticacions fallides
+
 env_var=Nom de variable
 env_def=Valor per defecte
 env_over=Omet el valor
 env_evar=El noms de variables no poden contenir espais
+
 securetty_ttys=TTYs Segures
+
 shells_shells=Shells d'usuari vàlides
+
 tally_deny=Intents fallits abans de denegar l'accés
 tally_reset=Reinicia el recompte d'intents fallits en reeixir
 tally_edeny=Hi falta el nombre d'intents fallits o bé no és correcte
 tally_magic=El nombre d'intents fallits s'aplica a <tt>root</tt>?
 tally_root=El compte de <tt>root</tt> pot ser denegat
+
 time_services=Serveis
 time_ttys=TTYs
 time_users=Usuaris
 time_times=Hores d'accés
 time_info=Tots els camps poden contenir valors múltiples separats per |, i els valors poden utilitzar * com a escarràs o ! com a negació.
+
 group_services=Serveis
 group_ttys=TTYs
 group_users=Usuaris
 group_times=Hores d'accés
 group_groups=Afegeix grups
 group_info=Tots els camps poden contenir valors múltiples separats per |, i els valors poden utilitzar * com a escarràs o ! com a negació.
+
 wheel_group=Comprova la pertinença del grup
 wheel_group_def=Defecte (<tt>wheel</tt> o GID 0)
 wheel_trust=Els membres del grup ometen autenticacions posteriors
 wheel_deny=Denega membres del grup en lloc d'autoritzar-los
 wheel_egroup=Hi falta el nom del grup o bé no és vàlid
+
 motd_file=Fitxer a mostrar
 motd_file_def=(<tt>/etc/motd</tt>) per defecte
 motd_efile=Hi falta el nom del fitxer o bé no és vàlid
+
 mail_nopen=Mostra la notificació de correu en connectar
 mail_close=Mostra la notificació de correu en desconnectar
 mail_empty=Notifica si el fitxer de correu està buit
 mail_noenv=Estableix la variable d'entorn MAIL
 mail_dir=Directori de spool de correu
 mail_edir=Hi falta el directori de spool de correu  o bé no és vàlid
+
 stack_service=Passa la comprovació al servei PAM
+
 log_pam_create=S'ha creat el servei PAM $1
 log_pam_delete=S'ha suprimit el servei PAM $1
 log_mod_create=S'ha afegit el mòdul PAM $1 al servei $2
@@ -262,6 +284,7 @@ log_inc_create=S'ha afegit la inclusió $1 per al servei $2
 log_inc_modify=S'ha modificat la inclusió $1 per al servei $2
 log_inc_delete=S'ha suprimit la inclusió $1 per al servei $2
 log_incs=S'ha actualitzat la inclusió per al servei $1
+
 inc_edit=Edició de Servei Inclòs
 inc_create=Creació de Servei Inclòs
 inc_header=Detalls del servei PAM inclòs

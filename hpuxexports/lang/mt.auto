@@ -14,6 +14,7 @@ index_ro_rw=l-ospiti kollha jaqraw l-aċċess, l-ospiti magħżula jkollhom aċ�
 index_sel_rw=Hosts magħżula jkollhom aċċess bil-miktub
 index_all_rw=l-ospiti kollha jkollhom aċċess bil-miktub
 index_sel_root=Hosts magħżula għall-aċċess tal-għeruq
+
 edit_title=Editja Esportazzjoni
 create_title=Oħloq Esportazzjoni
 edit_details=Dettalji tal-esportazzjoni
@@ -56,6 +57,7 @@ edit_anon_access=Utent anonimu
 edit_anon_notset=Mhux imwaqqaf
 edit_anon_noaccess=L-ebda aċċess
 edit_async=Jikteb Asinkronu
+
 save_err=Ma rnexxielux jiffranka l-esportazzjoni
 save_edir=Direttorju '$1' ma jeżistix
 save_enetgroup=Netgroup invalidu jew nieqes
@@ -65,6 +67,7 @@ save_ehost='$2' - '$1' mhuwiex isem validu
 save_enohost="$1" - Inti ma elenkat l-ebda host
 save_euids=L-UIDs li ma jafdawx għandhom ikunu lista separata mill-virgola ta 'numri jew meded
 save_egids=L-GIDs m'għandhomx fiduċja għandhom ikunu lista separata mill-virgoli ta 'numri jew meded
+
 log_modify=Esportazzjoni NFS modifikata $1 
 log_modify_l=Esportazzjoni NFS modifikata $1 sa $2 
 log_delete=Esportazzjoni NFS imħassra $1 

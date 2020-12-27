@@ -39,7 +39,9 @@ index_thost=Hostadı
 index_tdesc=Açıklama
 index_tver=versiyon
 index_ttype=İşletim sistemi türü
+
 this_server=bu sunucu
+
 add_title=Sunucu Ekle
 add_msg=$1 ekleniyor ..
 add_gmsg=$1 grubuna sunucu ekleniyor.
@@ -49,6 +51,7 @@ add_echeck=$1 sunucusunda Webmin yapılandırma modülü yok
 add_echeck2=$1 sunucusunda Webmin Users modülü yok
 add_eversion=$1 sunucusu $2 veya üzeri Webmin sürümünü çalıştırmıyor.
 add_ok=$2 modül, $3 tema, $4 kullanıcı ve $5 grup ile $1 eklendi.
+
 refresh_title=Modülü ve Kullanıcı Listelerini Yenile
 refresh_header=Tüm sunuculardan modül, kullanıcı ve grup listelerinin yeniden istenmesi.
 refresh_header4=$2 üyelerinden modül, kullanıcı ve grup listelerinin yeniden istenmesi.
@@ -64,6 +67,7 @@ refresh_g2=$1 grup kaldırıldı.
 refresh_done=.. bitti
 refresh_del=$1 sunucu listesinden kaldırıldı
 refresh_failed= $1 : $2 yenilenemedi
+
 host_title=Yönetilen Sunucu
 host_header=Yönetilen Webmin sunucusu ayrıntıları
 host_name=Ana bilgisayar adı
@@ -81,6 +85,7 @@ host_header_u=Webmin kullanıcıları
 host_header_g=Webmin grupları
 host_return=sunucu ayrıntıları
 host_version2=versiyon
+
 edit_title_mod=Modülü Düzenle
 edit_title_theme=Temayı Düzenle
 edit_header_mod=$1 webmin modülü ayrıntıları
@@ -104,6 +109,7 @@ edit_acl=İçin EKL'yi düzenle
 edit_uacl=$2 üzerinde $1 kullanıcısı
 edit_gacl=$2 üzerinde $1 grubu
 edit_config=Yapılandırmayı düzenle
+
 install_err=Modül yüklenemedi
 install_title=Kurulum Modülü
 install_elocal=Yerel dosya verilmedi
@@ -124,6 +130,7 @@ do_failed= $1 : $2 üzerine yüklenemedi
 do_success_mod=$1 üzerine $2 kurulu modülü
 do_success_theme=$1 üzerine $2 teması yüklendi
 do_done=.. bitti
+
 delete_err=$1 modülü silinemedi
 delete_epack=$1 modülü mevcut değil
 delete_title=Modülü Sil
@@ -141,6 +148,7 @@ delete_edepends=$1 modülleri buna bağlıdır.
 delete_egone=Modül artık mevcut değil
 delete_esuccess= $1 : $2 klasöründen başarıyla silindi
 delete_acls=Kullanıcılardan kaldırılsın ve erişim kontrolü ayarları sıfırlansın mı?
+
 user_title1=Webmin Kullanıcısı Oluşturun
 user_header1=Yeni Webmin kullanıcı ayrıntıları
 user_name=Kullanıcı adı
@@ -200,11 +208,13 @@ user_all=&lt;tüm ana makineler&gt;
 user_donthave=&lt;sahip olmayan sunucular&gt;
 user_have=&lt;sahip olduğu ana bilgisayarlar&gt;
 user_ofgroup=$1 üyeleri
+
 udelete_title=Kullanıcıyı sil
 udelete_doing=$1 kullanıcısı tüm ana bilgisayarlardan siliniyor ..
 udelete_success=$1 başarıyla silindi
 udelete_failed= $1 : $2 klasöründen silinemedi
 udelete_done=.. bitti
+
 group_title1=Grup oluştur
 group_header1=Yeni Webmin grubu ayrıntıları
 group_name=Grup ismi
@@ -232,6 +242,7 @@ group_failed2= $1 : $2 üzerindeki grup güncellenemedi
 group_return=grup detayları
 group_nomems=Üye yok
 group_servers=Üzerinde oluşturulacak sunucular
+
 gdelete_title=Grubu Sil
 gdelete_desc=$1 grubunu ve $2 üye kullanıcılarını tüm ana bilgisayarlardan silmek istediğinizden emin misiniz?
 gdelete_ok=Grubu Sil
@@ -240,6 +251,7 @@ gdelete_success=$1 başarıyla silindi
 gdelete_failed= $1 : $2 klasöründen silinemedi
 gdelete_done=.. bitti
 gdelete_esub=Bu grubun $1 alt grupları var, bu nedenle silinemez.
+
 acl_title=Modül Erişim Kontrolü
 acl_title2=$3 üzerinde $2 içinde $1 kullanıcısı için
 acl_title3=$3 üzerindeki $2 içindeki $1 grubu için
@@ -258,6 +270,7 @@ acl_doing2=$2 için $1 için erişim kontrolü ayarlanıyor.
 acl_success=$1 erişim kontrolünü başarıyla ayarlayın
 acl_failed= $1 : $2 üzerinde erişim kontrolü ayarlanamadı
 acl_done=.. bitti
+
 sync_title=Sunucuları Senkronize Et
 sync_desc=Bu form, hesapları kümenizdeki tüm sunucular arasında senkronize etmek için şu anda sahip olmayan sunucularda Webmin kullanıcıları ve grupları oluşturmanıza olanak tanır.
 sync_hosts=Senkronize edilecek sunucular
@@ -281,6 +294,7 @@ sync_gcreate=$1 Webmin grubu ekleniyor ..
 sync_acl=$1 için ACL dosyaları kopyalanıyor.
 sync_test=Sadece ne yapılacağını göster?
 sync_restart=Webmin yeniden başlatılıyor ..
+
 upgrade_title=Webmin'i yükseltin
 upgrade_header=Webmin'i tüm ana bilgisayarlarda yükseltme ..
 upgrade_header2=$1 'de Webmin yükseltiliyor.
@@ -299,6 +313,7 @@ upgrade_failed= $1 : $2 üzerine yüklenemedi
 upgrade_done=.. bitti
 upgrade_efast=Yalnızca hızlı RPC modunu kullanan sunucular yükseltilebilir
 upgrade_ereconn=Yükseltmeden sonra Webmin'e yeniden bağlanılamadı!  : $1 
+
 update_title=Modülleri Güncelle
 update_header=Tüm ana bilgisayarlar güncelleniyor ..
 update_header5=$2 üzerindeki modüller güncelleniyor.
@@ -306,6 +321,7 @@ update_header4=$2 üyelerindeki modüller güncelleniyor.
 update_onhost=$1 üzerindeki güncelleme sonuçları ..
 update_failed=.. güncelleme başarısız : $1 
 update_none=.. Güncelleme bulunamadı.
+
 config_title=Modül Yapılandırmasını Düzenle
 config_enone=Modül takılı hiçbir ana bilgisayar seçilmedi
 config_ethis=Modül bu sunucuya yüklü değil

@@ -19,6 +19,7 @@ index_dump=Zobrazit výpis
 index_dumpdesc=Klepnutím na toto tlačítko zobrazíte informace o trasování Shorewall z příkazu <tt>výpis výpisu Shorewall</tt>.
 index_check=Zkontrolujte Firewall
 index_checkdesc=Klepnutím na toto tlačítko bude Shorewall ověřovat konfiguraci brány firewall pomocí příkazu <tt>Shorewall check</tt>.
+
 list_move=Hýbat se
 list_add=Přidat
 list_auto=Automatický
@@ -30,6 +31,7 @@ list_manual=Ručně upravte soubor
 list_manualdesc=Klepnutím na toto tlačítko ručně upravíte soubor Shorewall $1, ve kterém jsou uloženy výše uvedené položky.
 list_ecannot=Nemáte oprávnění upravovat tuto tabulku Shorewall.
 list_delete=Smazat vybrané
+
 restart_err=Nepodařilo se použít konfiguraci
 refresh_err=Aktualizace konfigurace se nezdařila
 start_err=Spuštění brány firewall se nezdařilo
@@ -41,6 +43,7 @@ check_title=Zkontrolujte Firewall
 check_ok=.. vaše konfigurace brány firewall vypadá dobře.
 check_failed=.. v konfiguraci brány firewall byla nalezena chyba!
 check_cmd=Kontrola konfigurace ..
+
 zones_title=Síťové zóny
 zones_desc=Zóny uvedené na této stránce představují různé sítě dostupné z vašeho systému. Položky zde však ve skutečnosti nemají žádný vliv na firewall - místo toho pouze definují názvy a popisy zón.
 zones_add=Přidejte novou síťovou zónu.
@@ -69,6 +72,7 @@ zones_firewall=Firewallový systém
 zones_eopts=Neplatné možnosti zóny
 zones_eopts_in=Neplatné možnosti příchozí zóny
 zones_eopts_out=Neplatné možnosti odchozí zóny
+
 policy_title=Výchozí zásady
 policy_desc=Tato stránka umožňuje konfigurovat výchozí akce pro přenos mezi různými zónami brány firewall. Na stránce Pravidla Firewallu mohou být přepsána pro konkrétní hostitele nebo typy provozu.
 policy_add=Přidejte nové výchozí zásady.
@@ -89,6 +93,7 @@ policy_ulog=Přihlaste se k ULOG
 policy_efw=&lt;Firewall&gt; lze vybrat pro zdrojovou i cílovou zónu
 policy_elimit=Chybějící nebo neplatné číslo limitu provozu
 policy_eburst=Chybějící nebo neplatné číslo shluku provozu
+
 rules_title=Pravidla brány firewall
 rules_desc=Tato tabulka uvádí výjimky z výchozích zásad pro určité typy provozu, zdroje nebo cíle. Vybraná akce bude použita na pakety odpovídající vybraným kritériím místo výchozího.
 rules_add=Přidejte nové pravidlo brány firewall.
@@ -135,6 +140,7 @@ rules_eaction=Nebyla vybrána žádná akce
 rules_macro=Parametr akce makra
 rules_none2=Žádný
 rules_emacro=Chybějící nebo neplatný parametr makra
+
 tos_title=Druhy služeb
 tos_desc=Tato stránka definuje typy služeb IP pro konkrétní typy provozu, které lze použít ke zvýšení nebo snížení jejich priorit.
 tos_add=Přidejte nový typ služby.
@@ -153,6 +159,7 @@ tos_edit=Upravit typ služby
 tos_create=Vytvořit typ služby
 tos_header=Podrobnosti o typu služby
 tos_err=Uložení typu služby se nezdařilo
+
 interfaces_title=Síťová rozhraní
 interfaces_desc=Na této stránce by mělo být uvedeno každé síťové rozhraní ve vašem systému, které má Shorewall spravovat, a mělo by být spojeno s zónou, ke které je připojen. Rozhraní zpětné smyčky <tt>lo</tt> nesmí být nikdy uvedeno.
 interfaces_add=Přidejte nové síťové rozhraní.
@@ -169,6 +176,7 @@ interfaces_header=Podrobnosti o síťovém rozhraní
 interfaces_err=Uložení síťového rozhraní se nezdařilo
 interfaces_eiface=Chybí nebo je neplatný název rozhraní
 interfaces_ebroad=Chybí nebo je neplatná adresa vysílání
+
 masq_title=Maškaráda
 masq_desc=Položky na této stránce nastavují překlad síťových adres pro provoz směrovaný mezi nějakou sítí a konkrétním rozhraním.
 masq_add=Přidejte nové pravidlo maskování.
@@ -199,6 +207,7 @@ masq_emnete=Prázdný seznam sítí výjimek
 masq_esnat=Neplatná adresa IP protokolu SNAT
 masq_eports=Chybějící nebo neplatný seznam portů oddělených čárkami
 masq_eipsec=Chybějící možnosti IPsec
+
 nat_title=Statická NAT
 nat_desc=Položky překladu statické síťové adresy v této tabulce lze použít k nastavení 1-1 korespondence mezi externí adresou ve vašem firewallu a RFC1918 adresou počítače za vaším firewallem. Statický NAT se často používá k povolení připojení k internímu serveru mimo vaši síť.
 nat_add=Přidejte novou statickou položku NAT.
@@ -217,6 +226,7 @@ nat_local=Aktivní pro firewall?
 nat_eext=Neplatná externí adresa IP
 nat_eint=Neplatná interní adresa IP
 nat_evirt=Neplatné číslo virtuálního rozhraní
+
 proxyarp_title=Proxy ARP
 proxyarp_desc=Tato stránka umožňuje nakonfigurovat systém tak, aby odpovídal na požadavky ARP na jiné IP adresy, než je jeho vlastní, aby mohl pakety předávat paketům na jejich skutečné destinace.
 proxyarp_add=Přidejte novou proxy adresu ARP.
@@ -233,6 +243,7 @@ proxyarp_err=Uložení proxy ARP se nezdařilo
 proxyarp_have=Cesta k hostiteli existuje?
 proxyarp_eaddr=Chybí nebo neplatná adresa ARP
 proxyarp_pers=Opustit trasu, i když se firewall zastavil?
+
 routestopped_title=Po zastavení
 routestopped_desc=Ve výchozím nastavení, když je Shorewall zastaven, zakáže přístup ze všech hostitelů. Tato stránka umožňuje definovat hostitele nebo sítě, které budou stále přístupné.
 routestopped_add=Přidejte novou zastavenou adresu.
@@ -248,6 +259,7 @@ routestopped_err=Uložení zastavené adresy se nezdařilo
 routestopped_eaddr=Nebyly zadány žádné adresy
 routestopped_all=Všechny adresy
 routestopped_list=Uvedené adresy a sítě ..
+
 tunnels_title=Tunely VPN
 tunnels_desc=Tato stránka obsahuje seznam tunelů VPN, které procházejí bránou firewall, a proto musí být povolena konfigurací Shorewall.
 tunnels_add=Přidejte nový VPN tunel.
@@ -278,6 +290,7 @@ tunnels_generic_l=Obecný, pro protokol.
 tunnels_gsel=Uvedené zóny
 tunnels_eopenvpn=Neplatné číslo portu pro tunel OpenVPN
 tunnels_egeneric=Chybějící protokol nebo protokol: port pro obecný tunel
+
 hosts_title=Hostitelé zóny
 hosts_desc=Tato stránka obsahuje seznam hostitelů a sítí, které jsou součástí určitých zón. V tomto seznamu obvykle nemusíte provádět žádné změny.
 hosts_add=Přidejte nového hostitele zóny.
@@ -297,8 +310,10 @@ hosts_ip=Adresa nebo síť $1
 hosts_mac=Adresa MAC $1 
 hosts_ipset=Sada IP $1 
 hosts_any=Jakýkoli hostitel
+
 edit_before=Před vstupem $1 
 edit_after=Po zadání $1 
+
 blacklist_title=Hostitelé černé listiny
 blacklist_desc=Tato stránka obsahuje seznam hostitelů a služeb, které budou zablokovány, dojde-li k jejich přenosu na rozhraní se sadou možností <b>blacklist</b>.
 blacklist_add=Přidejte nového hostitele černé listiny.
@@ -321,6 +336,7 @@ blacklist_eproto=Chybějící nebo neplatný protokol
 blacklist_eports=Neplatné číslo portu nebo seznam portů oddělených čárkami
 blacklist_eports2=Porty lze zadat pouze pro protokoly TCP a UDP
 blacklist_return=hostitelé černé listiny
+
 providers_title=Další poskytovatelé směrování
 providers_desc=Tato stránka definuje další směrovací tabulky. To je nutné, pokud máte připojení k více než jednomu poskytovateli internetových služeb nebo více připojení ke stejnému poskytovateli služeb nebo spustíte Squid jako průhledný server proxy na hostiteli, který není firewallem.
 providers_add=Přidejte nového poskytovatele směrování.
@@ -353,6 +369,7 @@ providers_emark=Chybějící nebo neplatné číslo značky poskytovatele
 providers_edup=Chybějící poskytovatel duplikovat
 providers_egateway=Chybějící nebo neplatná brána
 providers_return=seznam poskytovatelů směrování
+
 route_rules_title=Pravidla pro směrování
 route_rules_desc=Stránka určuje, který provoz je směrován k poskytovatelům definovaným na stránce Další poskytovatelé směrování.
 route_rules_ip=IP adresa, síť nebo rozhraní
@@ -378,17 +395,21 @@ route_rules_emark=Značka paketu musí být ve formátu čísla nebo čísla/mas
 route_rules_return=seznam směrovacích pravidel
 route_rules_edit=Upravit směrovací pravidlo
 route_rules_create=Vytvořit směrovací pravidlo
+
 manual_desc=Tento formulář lze použít k ruční úpravě souboru Shorewall $1. Buďte opatrní, protože u změn nebude provedena žádná kontrola syntaxe.
 manual_reset=vrátit
 manual_err=Uložení souboru tabulky se nezdařilo
 manual_efile=Neplatný název tabulky!
 manual_edata=Nebyl zadán žádný obsah tabulkového souboru.
+
 acl_nochange=Lze použít, zastavit a spustit konfiguraci Shorewallu?
 acl_files=Dostupné tabulky Shorewall
 acl_all=Všechno
 acl_sel=Vybráno níže ..
+
 delete_err=Řádky se nepodařilo smazat
 delete_enone=Nebyly vybrány žádné řádky
+
 opts_routeback=Přijměte provoz zpět na hostitele
 opts_source=Povolit z hostitele do libovolného cíle
 opts_dest=Nechte hostit z jakéhokoli zdroje
@@ -406,6 +427,7 @@ opts_proxyarp=Povolit proxy ARP
 opts_arp_filter=Reagujte pouze na požadavky ARP na rozhraní IP
 opts_detectnets=Taylorská zóna zahrnuje pouze směrované hostitele
 opts_upnp=Remap pakety přes UPNP
+
 comment_add=Přidat nový komentář.
 comment_edit=Upravit komentář
 comment_create=Vytvořit komentář
@@ -413,6 +435,7 @@ comment_header=Podrobnosti komentáře k tabulce
 comment_msg=Zpráva
 comment_err=Uložení komentáře se nezdařilo
 comment_enone=Nebyla zadána žádná zpráva
+
 log_create_table=Přidán záznam do tabulky $1 
 log_modify_table=Upravený záznam v tabulce $1 
 log_delete_table=Odstraněná položka z tabulky $1 
@@ -428,6 +451,7 @@ log_start=Spuštěn firewall
 log_refresh=Aktualizovaný firewall
 log_restart=Restartovaný firewall
 log_clear=Vymazán firewall
+
 shorewall_conf_title=Hlavní konfigurační soubor
 shorewall_conf_desc=Tato stránka umožňuje konfigurovat globální konfigurační proměnné. POZNÁMKA: Změna pořadí proměnných se zde nedoporučuje, pokud si chcete zachovat relativní pozici komentářů v konfiguračním souboru.
 shorewall_conf_add=Přidejte novou konfigurační proměnnou.
@@ -441,6 +465,7 @@ shorewall_conf_create=Vytvořte konfigurační proměnnou
 shorewall_conf_header=Podrobnosti o konfigurační proměnné
 shorewall_conf_err=Uložení konfigurační proměnné se nezdařilo
 shorewall_conf_varname=Neplatný název proměnné (musí být platný název proměnné prostředí)
+
 params_title=Vlastní parametry
 params_desc=Tato stránka umožňuje konfigurovat vlastní parametry Shorewallu. POZNÁMKA: Změna pořadí parametrů se zde nedoporučuje, pokud si chcete zachovat relativní polohu komentářů v konfiguračním souboru.
 params_add=Přidejte nový vlastní parametr.

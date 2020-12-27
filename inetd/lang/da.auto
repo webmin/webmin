@@ -14,6 +14,7 @@ index_search=Matchning af displaytjenester:
 index_sok=Søg
 index_toomany=Der er for mange internettjenester til at vises på denne side.
 index_none=Ingen internettjenester matchede din søgning.
+
 error_restart=Kunne ikke genstarte Inetd
 error_saverpc=Kunne ikke gemme RPC-programmet
 error_invalidprgname='$1' er ikke et gyldigt programnavn
@@ -43,6 +44,7 @@ error_nameexist=En tjeneste med navn $1 og protokol $2 findes allerede
 error_inetservice=Der findes allerede en internettjeneste med navn $1 og protokol $2 
 error_smfservice=Kunne ikke opdatere smf-service med cmd '$1', fejlkode $2 
 error_smf_cmdfield=For smf skal filnavnet til programmet '$1' matche det første argument i kommandofeltet, dvs. være '$2'
+
 editrpc_title1=Opret RPC-program
 editrpc_title2=Rediger RPC-program
 editrpc_detail=RPC-programdetaljer
@@ -69,6 +71,7 @@ editrpc_execasuser=Udfør som bruger
 editrpc_max=Maks. Pr. Minut
 editrpc_default=Standard
 editrpc_execasgrp=Udfør som gruppe
+
 editserv_title1=Opret internet-service
 editserv_title2=Rediger Internet-service
 editserv_detail=Internet-servicedetaljer
@@ -82,6 +85,7 @@ editserv_wrapper=TCP-Wrapper
 editserv_inetd=Internt til <tt>inetd</tt>
 editserv_qm=Kommando findes måske ikke?
 editserv_ename=Der findes ingen service med dette navn og protokol
+
 log_apply=Anvendte ændringer
 log_create_serv=Oprettet service $1 
 log_modify_serv=Ændret service $1 
@@ -95,6 +99,7 @@ log_delete_serv_l=Slet service $1 på port $2
 log_create_prog_l=Oprettet service $1 på port $2 til program $3 
 log_modify_prog_l=Ændret service $1 på port $2 for program $3 
 log_delete_prog_l=Slet service $1 på port $2 for program $3 
+
 log_create_rpc=Oprettet RPC $1 
 log_modify_rpc=Ændret RPC $1 
 log_delete_rpc=RPC $1 slettet

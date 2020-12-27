@@ -7,6 +7,7 @@ index_dsize=Samlet størrelse
 index_dmodel=Mærke og model
 index_dparts=skiver
 index_return=liste over diske
+
 disk_title=Rediger disk
 disk_egone=Disk findes ikke længere!
 disk_no=Skive
@@ -31,9 +32,11 @@ disk_return=diskdetaljer og liste over skiver
 disk_add=Opret en ny skive.
 disk_smart=Vis SMART-status
 disk_smartdesc=Vis den aktuelle status på dette drev, som detekteres af SMART, og kontroller det for diskfejl.
+
 select_device=$1 enhed $2 
 select_slice=$1 enhed $2 skive $3 
 select_part=$1 enhed $2 skive $3 partition $4 
+
 slice_title=Rediger skive
 slice_egone=Valgt udsnit findes ikke!
 slice_ssize=Skive størrelse
@@ -58,6 +61,7 @@ slice_return=udsnit og liste over partitioner
 slice_err=Kunne ikke ændre udsnittet
 slice_header=Skive detaljer
 slice_suse=Direkte brugt af
+
 dslice_title=Slet skive
 dslice_rusure=Er du sikker på, at du vil slette udsnittet $1 ? Eventuelle partitioner og filsystemer i det vil også blive slettet.
 dslice_warn=Advarsel - denne skive bruges i øjeblikket af : $1 
@@ -65,6 +69,7 @@ dslice_confirm=Slet nu
 dslice_deleting=Sletning af udsnit $1 ..
 dslice_failed=.. sletning mislykkedes : $1 
 dslice_done=.. Færdig
+
 nslice_title=Opret skive
 nslice_header=Nye skivedetaljer
 nslice_number=Skive nummer
@@ -86,6 +91,7 @@ nslice_done=.. skive tilføjet
 nslice_parting=Opret standardpartitioner i skive $1 på $2.
 nslice_pfailed=.. oprettelse af partition mislykkedes : $1 
 nslice_pdone=..partition tilføjet
+
 npart_title=Opret partition
 npart_header=Nye partitionsoplysninger
 npart_letter=Opdelingsbrev
@@ -98,6 +104,7 @@ npart_emax=Afslutningsblok kan ikke være større end skivestørrelsen på $1 bl
 npart_creating=Opretter partition $1 på $2.
 npart_failed=.. oprettelse af partition mislykkedes : $1 
 npart_done=..partition tilføjet
+
 part_title=Rediger partition
 part_egone=Partition findes ikke længere!
 part_header=Opdelingsoplysninger
@@ -124,6 +131,7 @@ part_newmount2=Mount partition
 part_mountmsg=Monter denne enhed i et nyt bibliotek på dit system, så den kan bruges til at gemme filer. Et filsystem skal allerede være oprettet på enheden.
 part_mountmsg2=Monter denne enhed som virtuel hukommelse på dit system for at øge den tilgængelige hukommelse.
 part_cannotedit=Denne partition kan ikke ændres, da den i øjeblikket er i brug.
+
 dpart_title=Slet partition
 dpart_rusure=Er du sikker på, at du vil slette partitionen $1 ? Eventuelle filsystemer i det vil også blive slettet.
 dpart_warn=Advarsel - denne partition bruges i øjeblikket af $1 
@@ -131,6 +139,7 @@ dpart_confirm=Slet nu
 dpart_deleting=Sletning af partition $1 ..
 dpart_failed=.. sletning mislykkedes : $1 
 dpart_done=.. Færdig
+
 newfs_title=Opret filsystem
 newfs_header=Nye filsystemoplysninger
 newfs_free=Plads til at reservere til rod
@@ -145,11 +154,13 @@ newfs_elabel=Manglende eller ugyldig etiket
 newfs_creating=Oprettelse af filsystem på $1 ..
 newfs_failed=.. oprettelse mislykkedes!
 newfs_done=.. oprettet med succes
+
 fsck_title=Tjek filsystem
 fsck_err=Kunne ikke kontrollere filsystemet
 fsck_checking=Kontrollerer filsystemet på $1 ..
 fsck_failed=.. check mislykkedes!
 fsck_done=.. kontrollen afsluttet uden at der blev fundet nogen fejl
+
 log_create_slice=Oprettet skive $1 
 log_delete_slice=Slettet skive $1 
 log_modify_slice=Ændret skive $1 

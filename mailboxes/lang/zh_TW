@@ -11,6 +11,7 @@ index_toomany=在您的系統上有太多的使用者，所以無法同時顯示
 index_find=在使用者名稱中找尋使用者
 index_equals=等於
 index_contains=包含
+
 mail_title=使用者電子郵件
 mail_from=寄件人
 mail_date=日期
@@ -51,6 +52,7 @@ mail_copy=複製到:
 mail_rfc=寄件人
 mail_eexists=訊息不存在了!
 mail_fchange=變更
+
 mail_sign=GnuPG加密:
 mail_nosign=&lt;不簽證&gt;
 mail_crypt=GnuPG加密給:
@@ -78,6 +80,7 @@ mail_deltrash=空垃圾桶
 mail_search2=搜尋:
 mail_advanced=進階搜尋
 mail_return2=使用者郵件
+
 view_title=讀取電子郵件
 view_desc=郵件 $1 在 $2
 view_desc2=使用者$2的郵件$1
@@ -104,6 +107,7 @@ view_mark2=特別
 view_return=原始郵件
 view_sub=附帶的郵件
 view_egone=訊息不存在
+
 view_gnupg=GnuPG認證簽章
 view_gnupg_0=$1簽章確認
 view_gnupg_1=$1簽章有效，但無法建立垃圾桶
@@ -130,7 +134,9 @@ view_reporting-mta=回報郵件伺服器
 view_astext=檢視文字
 view_ashtml=檢視HTML
 view_raw=檢視原始訊息
+
 compose_title=寫作電子郵件
+
 reply_title=回覆到電子郵件
 forward_title=轉寄到電子郵件
 enew_title=編輯郵件
@@ -141,8 +147,10 @@ reply_attach2=附件夾帶
 reply_send=送出
 reply_ecannot=您不被允許以這個使用者名稱送出郵件
 reply_body=訊息文字
+
 reply_spell=拼字檢查?
 reply_draft=存至草稿
+
 send_err=郵件送出失敗
 send_eto=遺失收件人郵件位址
 send_efrom=遺失寄件人郵件位址
@@ -155,6 +163,7 @@ send_eperms=使用者 $1 不能閱讀 $2
 send_eperms2=您不被允許發送檔$1
 send_epath=Sendmail程式 $1不存在。
 send_efile=閱讀附帶檔$1失敗 : $2
+
 send_epass=您不能對訊息作數位簽章，因為您尚未設定GunPG模組裡的通行碼
 send_esign=數位簽章訊息失敗: $1
 send_ekey=在郵件$1找不到金鑰
@@ -165,6 +174,7 @@ send_eline=在線$1上:
 send_espell=在您的訊息中找到下列拼字錯誤 ..
 send_draft=寄給$1儲存到草稿資料夾
 send_eattachsize=郵件附加檔超過允許最大的大小$1 位元組
+
 delete_title=刪除郵件
 delete_rusure=您確定要從$2刪除 $1 封選取的訊息?大檔案的郵件需要一些時間，直到刪除完成，不會執行其他動作。
 delete_rusure2=您確定要刪除 $1 封選取的訊息?大檔案的郵件需要一些時間，直到刪除完成，不會執行其他動作。
@@ -180,6 +190,7 @@ delete_ecopycannot=您不被允許複製郵件到特定的使用者
 delete_emovenone=未選移動寄郵件
 delete_ecopynone=未選取複製郵件
 delete_nobutton=未按按鈕
+
 confirm_title=確認刪除
 confirm_warn=您確定要刪除 $1 封選取的訊息?
 confirm_warn2=因為您的信箱大小與格式，需要一點時間，直到刪除完成後，不會執行其他動作
@@ -187,6 +198,7 @@ confirm_warn3=您確定要刪除訊息
 confirm_warn4=直到刪除完成，不會執行其他動作。
 confirm_ok=現在刪除
 confirm_warnall=您確定要刪除資料夾中所有訊息?
+
 search_title=搜尋結果
 search_ecannot=您不被允許搜尋這個使用者的郵件
 search_ematch=您必須輸入搜尋的條件
@@ -199,16 +211,19 @@ search_results3=$1郵件不符合$2
 search_results4=$1封郵件訊息符合您的搜尋
 search_local=在本地資料夾
 search_all=在所有資料夾
+
 folder_inbox=收件夾
 folder_sent=傳送郵件
 folder_drafts=草稿
 folder_trash=垃圾桶
+
 detach_err=附加檔案失敗
 detach_edir=沒有輸入儲存的檔案或目錄
 detach_eopen=開始$1失敗:$2
 detach_ewrite=寫給$1失敗:$2
 detach_title=附加檔案
 detach_ok=從伺服端附加檔案$1($2)
+
 sform_title=進階搜尋
 sform_and=找到下列符合所有條件訊息 ..
 sform_or=找到下列符合任一條件訊息 ..
@@ -228,6 +243,7 @@ sform_body=訊息內容
 sform_headers=任何檔頭
 sform_size=訊息大小
 sform_return=進階搜尋
+
 find_enone=沒有您搜尋所符合的使用者
 find_title=搜尋結果
 find_results=搜尋$1符合的使用者..
@@ -236,6 +252,7 @@ find_real=真實名稱
 find_group=群組
 find_home=家目錄
 find_size=郵件大小
+
 acl_none=無
 acl_same=同名的使用者
 acl_all=全部
@@ -257,6 +274,7 @@ acl_candetach=可以附帶檔案到伺服器?
 acl_usersm=符合的使用者
 acl_asame=與使用者相同
 acl_usersu=在UID範圍內
+
 log_delmail=已從 $2 刪除 $1郵件
 log_movemail=從 $2 到 $3 移動$1封訊息
 log_copymail=從 $2 到 $3 複製$1封訊息

@@ -27,6 +27,7 @@ index_lvused=使用空间
 index_lvuse=用于
 index_snapof=（$1的快照）
 index_thin=用于 $1 LV的LVM精简池
+
 lv_thin=在池中创建为精简LV
 lv_thin2=精简配置在池中
 lv_nothin=无（创建为常规LV）
@@ -69,8 +70,10 @@ lv_pvfrom=从物理体积移动块
 lv_pvto=物理体积
 lv_moveok=移动块
 lv_return=逻辑卷
+
 resize_emounted=挂载时无法调整此逻辑卷上的文件系统大小
 resize_emounted2=挂载该逻辑卷上的文件系统时，不能将其收缩
+
 pv_force=强制添加音量？
 pv_petotal2=分配大小
 pv_create2=添加到卷组
@@ -79,13 +82,16 @@ pv_resize=调整大小以匹配设备
 pv_err3=无法调整物理卷大小
 pv_lvs=按逻辑卷分配
 pv_egone=物理体积不再存在！
+
 vg_petotal2=分配大小
 vg_egone=卷组不再存在！
+
 pvmove_err=无法移动逻辑卷
 pvmove_title=移动逻辑卷
 pvmove_start=将逻辑卷 $1从 $2移动到 $3 ..
 pvmove_failed=..移动失败！
 pvmove_done=..移动完成
+
 thin_title=创建精简池
 thin_desc=精简池是一对LV，可用于创建其他大于可用范围的LV。仅在需要时才消耗空间，而不是在创建池内的LV时才消耗空间。警告-所选LV上的任何数据都将丢失！
 thin_header=新的精简池详细信息
@@ -97,6 +103,8 @@ thin_err=创建精简池失败
 thin_esame=所选的两个LV相同
 thin_edata=所选数据LV已在使用中
 thin_emetadata=所选的元数据LV已在使用中
+
 log_rollback_lv=回滚快照 $1
 log_resize_pv=在VG $2中已调整大小的物理卷 $1
+
 blocks=块

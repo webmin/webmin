@@ -37,6 +37,7 @@ index_checkconfig=<a href='$1'>모듈 구성</a> 페이지에서 chroot 디렉�
 index_eexpired=경고  : 다음 영역은 DNSSEC 서명이 만료되었습니다. $1
 index_eexpired_conf=$1 페이지에서 자동 서명을 다시 활성화해야합니다.
 index_eexpired_mod=$1 모듈을 사용하여 이러한 도메인에 대해 DNSSEC를 비활성화하거나 서명이 실패한 이유를 확인하십시오.
+
 master_inview=뷰 $2 의 $1 
 master_egone=$1 영역이 뷰에 존재하지 않습니다
 master_egone2=영역 $1이 없습니다!
@@ -70,6 +71,7 @@ master_defttl=레코드의 기본 수명
 master_edefttl='$1'은 (는) 유효한 기본 유효 기간이 아닙니다.
 master_esoagone=SOA 레코드가 없습니다!
 master_einclude=추가 템플릿 파일이 없습니다
+
 delete_mesg2=루트 영역을 삭제 하시겠습니까? DNS 서버가 더 이상 인터넷에서 주소를 조회하지 못할 수 있습니다.
 delete_mesg3=영역 $1을 삭제 하시겠습니까?
 delete_onslave=슬레이브 서버에서도 삭제 하시겠습니까?
@@ -77,10 +79,12 @@ delete_errslave=마스터 영역이 삭제되었지만 슬레이브에서 다음
 delete_ezone=슬레이브 서버에서 영역을 찾을 수 없습니다
 delete_vwarn=이 영역은 Virtualmin 도메인 $1 과 (와) 연결되어 있으므로 여기서 삭제하면 안됩니다!
 delete_vwarn2=이 영역은 Virtualmin 도메인 $1 및 $2 기타와 연결되어 있으므로 여기서 삭제하면 안됩니다!
+
 mcreate_dnssec_tools_enable=DNSSEC 도구를 사용하여 DNSSEC 사용
 mcreate_view=보기에서 작성
 mcreate_ednssecsize=키 크기를 계산하지 못했습니다  : $1
 mcreate_ednssec=레코드 생성에 성공했지만 DNSSEC에 실패했습니다  : $1
+
 slave_masterport=서버 포트
 slave_master_port=포트
 slave_convert=마스터 존으로 전환
@@ -92,6 +96,7 @@ slave_applymsg2=이 버튼을 클릭하면 마스터 서버에서 영역을 강�
 slave_last=마지막 전송  : $1
 slave_never=못
 slave_xfer=테스트 영역 전송
+
 recs_ecannottype=이 유형의 레코드를 편집 할 수 없습니다
 recs_type=유형
 recs_vals=가치
@@ -101,6 +106,7 @@ recs_drev=삭제도 반대?
 recs_none=도메인에 아직 $1 레코드가 없습니다.
 recs_nosearch=검색어와 일치하는 기록이 없습니다.
 recs_needsearch=일치하는 레코드를 찾으려면 검색을 입력하십시오.
+
 edit_canon=정식 이름
 edit_over=예 (기존 교체)
 edit_egone=선택한 레코드가 더 이상 존재하지 않습니다!
@@ -143,12 +149,14 @@ edit_edmarcpct=메시지 백분율은 0에서 100 사이의 정수 여야합니�
 edit_edmarcrua=집계 피드백 주소가 없습니다.
 edit_edmarcruf=법의학 정보 주소 누락
 edit_ecaavalue2=도메인 이름이 없거나 잘못 보임
+
 text_title2=레코드 파일보기
 text_desc3=이 양식을 사용하면 DNS 레코드 파일 $1을 수동으로 편집 할 수 있습니다. Webmin은 구문 검사를 수행하지 않습니다.
 text_desc2=이 페이지는 영역이 마스터 서버에서 전송 될 때 BIND에 의해 생성 된 DNS 레코드 파일 $1을 보여줍니다.
 text_none=그러나 영역이 아직 마스터 서버에서 전송되지 않았기 때문에 파일이 현재 비어 있습니다.
 text_soa=일련 번호를 자동으로 증가
 text_rawformat=이 영역은 원시 이진 형식이므로 텍스트로 표시 할 수 없습니다.
+
 restart_err=변경 사항을 적용하지 못했습니다
 restart_epidfile=$1에서 BIND PID를 찾을 수 없습니다.
 restart_errslave=이 서버는 정상적으로 재시작되었지만 다음 오류가 슬레이브에서 발생했습니다  : $1
@@ -156,22 +164,29 @@ restart_erunning2=BIND가 슬레이브 서버 $1에서 실행되지 않는 것 �
 restart_endc=NDC 명령 실패  : $1
 restart_ecmd=재시작 명령 실패  : $1
 restart_eversion=슬레이브 서버 $1에서 Webmin 버전 $2 이상을 실행하지 않습니다.
+
 stop_epid=BIND가 실행되고 있지 않습니다
 stop_ecannot=BIND를 중지 할 수 없습니다
+
 fwd_delmsg=이 버튼을 클릭하면 DNS 서버에서이 영역이 삭제됩니다. 그런 다음 일반 해상도 프로세스를 사용하여 레코드를 찾습니다.
+
 delegation_title=위임 영역 편집
 delegation_ecannot=이 영역을 편집 할 수 없습니다
 delegation_opts=영역 옵션
 delegation_err=옵션을 저장하지 못했습니다
 delegation_noopts=위임 영역에는 구성 가능한 옵션이 없습니다.
 delegation_delmsg=이 버튼을 클릭하면 DNS 서버에서이 영역이 삭제됩니다. NS 이외의 레코드 유형은 BIND에 의해 인식됩니다.
+
 dcreate_title=위임 전용 영역 만들기
 dcreate_ecannot=위임 영역을 만들 수 없습니다
 dcreate_opts=새로운 위임 영역 옵션
 dcreate_err=위임 영역을 만들지 못했습니다.
+
 create_efile4=$1 파일이 이미 존재합니다
+
 boot_egzip=루트 영역 파일은 압축되었지만 <tt>gzip</tt> 명령이 시스템에 설치되어 있지 않습니다!
 boot_egzip2=루트 영역 파일 압축 해제에 실패했습니다  : $1
+
 type_NSEC3PARAM=DNSSEC 매개 변수
 type_SPF=발신자가 보낸 사람
 type_TLSA=SSL 인증서
@@ -181,6 +196,7 @@ type_SRV=서비스 주소
 type_ALL=모든 기록 유형
 type_KEY=공개 키
 type_CAA=인증 기관
+
 edit_SPF=발신자가 보낸 사람
 edit_DMARC=DMARC
 edit_SRV=서비스 주소
@@ -189,6 +205,7 @@ edit_NSEC3PARAM=DNSSEC 매개 변수
 edit_TLSA=SSL 인증서
 edit_SSHFP=SSH 공개 키
 edit_CAA=인증 기관
+
 recs_defttl=기본 TTL
 recs_SPF=발신자가 보낸 사람
 recs_DMARC=DMARC
@@ -200,6 +217,7 @@ recs_TLSA=SSL 인증서
 recs_SSHFP=SSH 공개 키
 recs_CAA=인증 기관
 recs_delete=선택된 것을 지워 라
+
 value_AAAA1=IPv6 주소
 value_SRV1=우선 순위
 value_SRV2=무게
@@ -261,6 +279,7 @@ value_CAA3=CA 도메인 이름
 value_caa_issue=단일 도메인 인증서
 value_caa_issuewild=와일드 카드 인증서
 value_caa_iodef=정책 위반 URL
+
 tlsa_usage0=인증 기관
 tlsa_usage1=엔드 엔터티
 tlsa_usage2=트러스트 앵커
@@ -270,14 +289,17 @@ tlsa_selector1=공개 키 정보
 tlsa_match0=해시되지 않은 내용
 tlsa_match1=SHA-256 해시
 tlsa_match2=SHA-512 해시
+
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDSA
 sshfp_alg4=ed25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 eport='$1'은 (는) 유효한 포트 번호가 아닙니다
 eipacl='$1'은 (는) 유효한 IP 주소 또는 ACL 이름이 아닙니다.
+
 acl_znsel=선택된 것을 제외한 모두 ..
 acl_inviews=이 사용자가 도메인을 수정할 수있는 조회수
 acl_toplevel=어떤 견해 밖에서도
@@ -305,7 +327,9 @@ acl_ztypes_master=석사
 acl_ztypes_slave=슬레이브 / 스텁
 acl_ztypes_delegation=대표단
 acl_ztypes_forward=앞으로
+
 servers_keys=DNS 키 사용
+
 logging_catsdesc=이 테이블은 다른 탭에 정의 된대로 어떤 메시지 채널이 어떤 로깅 채널에 기록되는지를 제어합니다.
 logging_chansdesc=이 표에는 메시지를 기록 할 수있는 파일 또는 기타 대상인 로깅 채널이 나열되어 있습니다. 처음 4 개는 BIND에 내장 된 기본값이며 변경할 수 없습니다.
 logging_stderr=표준 오류 출력
@@ -313,11 +337,14 @@ logging_pcat2=로그 카테고리?
 logging_psev2=로그 심각도?
 logging_ptime2=로그 시간?
 logging_efile2=로그 파일 이름은 절대 경로 여야합니다
+
 acls_eline=각 IP 주소는 ACL '$1'에 대해 별도의 줄에 입력해야합니다.
+
 forwarding_out=최대 동시 발신 영역 전송
 forwarding_per_ns=서버 당 최대 동시 수신 전송
 forwarding_ip=IP 주소
 forwarding_port=포트
+
 net_ip=IP 주소
 net_recur=에서 재귀 쿼리 허용
 net_eusedport=$1 포트에는 한 줄의 주소 만 허용됩니다.
@@ -330,6 +357,7 @@ net_taddrdef=가장 가까운 IP
 net_etport=주소없이 전송 소스 포트를 지정할 수 없습니다
 net_eaddr='$1'은 (는) 유효한 IPv4 주소가 아닙니다
 net_eaddr6='$1'은 (는) 유효한 IPv6 주소가 아닙니다
+
 controls_title=제어 인터페이스 옵션
 controls_ecannot=제어 옵션을 편집 할 수 없습니다
 controls_header=제어 옵션
@@ -351,6 +379,7 @@ controls_eunixpath=FIFO 파일 경로가 없거나 잘못되었습니다
 controls_eunixperm=8 진수 파일 권한이 없거나 잘못되었습니다
 controls_eunixowner=파일 소유자가 없거나 유효하지 않습니다
 controls_eunixgroup=파일 그룹이 없거나 유효하지 않습니다
+
 controls_inet=인터넷 포트 액세스
 controls_unix=유닉스 FIFO 접근
 controls_port=포트
@@ -364,6 +393,7 @@ controls_efile=FIFO 파일 이름이 없거나 잘못되었습니다
 controls_eperms=누락되거나 잘못된 FIFO 권한
 controls_eowner=FIFO 소유자 UID가 없거나 유효하지 않습니다
 controls_egroup=FIFO 소유자 GID가 없거나 잘못되었습니다
+
 keys_title=DNS 키
 keys_id=키 ID
 keys_alg=연산
@@ -372,6 +402,7 @@ keys_ecannot=DNS 키를 편집 할 수 없습니다
 keys_err=DNS 키를 저장하지 못했습니다
 keys_ekey='$1'은 (는) 유효한 키 ID가 아닙니다.
 keys_esecret=키 $1에 대한 base-64로 인코딩 된 비밀이 없거나 잘못되었습니다.
+
 zonedef_prins=마스터 도메인의 기본 네임 서버
 zonedef_this=시스템 호스트 이름 ($1)
 zonedef_eprins=마스터 도메인의 기본 이름 서버가 없거나 잘못되었습니다
@@ -383,12 +414,15 @@ zonedef_size=초기 키 크기
 zonedef_single=만들 키의 수
 zonedef_two=영역 키 및 키 서명 키
 zonedef_one=존 키만
+
 findfree_fromip=IP 주소에서
 findfree_toip=IP 주소로
 findfree_msg=발견 된 $1 무료 IP 주소
 findfree_msg2=(이 중 $1은 <i>freeXXX</i>, $2는 <i>freemac</i>과 같습니다)
+
 free_title=무료 IP 주소
 free_ip=IP 주소
+
 log_keys=변경된 DNS 키
 log_manual=수동으로 편집 한 구성 파일 $1
 log_apply2=$1에 적용된 변경 사항
@@ -420,14 +454,17 @@ log_sign=영역 $1에 대한 DNSSEC 서명이 업데이트되었습니다.
 log_resign=영역 $1에 대한 DNSSEC 키 재 서명
 log_trusted=DNSSEC 확인 변경
 log_dnssec=DNSSEC 키 재 서명 변경
+
 convert_err=영역을 변환하지 못했습니다
 convert_efile=슬레이브 영역을 마스터로 변환하려면 레코드 파일을 지정해야합니다.
 convert_efilesize=레코드 파일 $1이 존재하지 않거나 비어 있습니다
 convert_ebinary=이진 슬레이브 영역에서 텍스트 형식 마스터로 변환하는 데 필요한 명령이 설치되지 않았습니다
 convert_ecompile=이진에서 텍스트 형식으로 변환하지 못했습니다  : $1
+
 whois_title=WHOIS 정보
 whois_header=$1 명령의 출력
 whois_ecannot=WHOIS 정보를 조회 할 수 없습니다
+
 view_title=클라이언트보기 편집
 view_opts=클라이언트보기 세부 사항
 view_opts2=보기 영역에 대한 옵션
@@ -438,6 +475,7 @@ view_recursion=클라이언트를위한 전체 재귀 검색을 수행합니까?
 view_ecannot=이보기를 편집 할 수 없습니다
 view_delete=보기 삭제
 view_deletemsg=보기를 삭제하려면이 단추를 클릭하십시오. 포함 된 영역을 다른보기로 이동하거나 삭제할 수도 있습니다.
+
 vcreate_title=클라이언트 뷰 생성
 vcreate_match_all=모든 고객
 vcreate_match_sel=나열된 주소, 네트워크 및 ACL ..
@@ -446,6 +484,7 @@ vcreate_ename=보기 이름이 없거나 잘못되었습니다
 vcreate_etaken=뷰 이름이 이미 사용 중입니다
 vcreate_eclass=클래스 이름이 없거나 잘못되었습니다
 vcreate_ecannot=뷰를 만들 수 없습니다
+
 hint_title=루트 영역 편집
 hint_desc=루트 영역은 DNS 서버에서 인터넷의 루트 서버에 연결하는 데 사용되므로 <tt>.com</tt> 또는 <tt>.net과 같이 DNS 서버에서 처리하지 않는 도메인의 이름을 확인할 수 있습니다. au</tt>. DNS 서버가 내부 네트워크에서 사용되거나 모든 쿼리를 다른 서버로 전달하지 않는 한이 루트 영역을 삭제해서는 안됩니다.
 hint_move=보기로 이동 :
@@ -454,6 +493,7 @@ hint_refetch=루트 네임 서버 재 다운로드
 hint_refetchdesc=Webmin이 Internic FTP 서버의 소스에서 루트 영역 파일을 다시 다운로드하게하려면이 단추를 클릭하십시오.
 hint_delete=루트 존 삭제
 hint_deletedesc=이 루트 영역을 제거하려면이 단추를 클릭하십시오. 그렇지 않으면 네임 서버가 보조 도메인 이외의 인터넷 도메인을 확인할 수 없습니다.
+
 hcreate_title=루트 존 생성
 hcreate_desc=루트 영역은 DNS 서버에서 인터넷의 루트 서버에 연결하는 데 사용되므로 <tt>.com</tt> 또는 <tt>.net과 같이 DNS 서버에서 처리하지 않는 도메인의 이름을 확인할 수 있습니다. au</tt>. 여러보기를 사용하는 경우 모든 클라이언트가 인터넷 도메인을 올바르게 해석 할 수 있도록 각보기마다 별도의 루트 영역이 있어야합니다.
 hcreate_header=루트 영역 세부 사항
@@ -467,6 +507,7 @@ hcreate_efile='$1'은 (는) 허용 가능한 루트 파일이 아닙니다
 hcreate_efile2=누락되었거나 잘못된 루트 파일
 mcreate_erecs=유효한 기존 루트 영역 파일이 아닙니다
 hcreate_err=루트 영역을 만들지 못했습니다
+
 vdelete_title=보기 삭제
 vdelete_mesg=클라이언트보기 $1을 삭제 하시겠습니까? 이보기의 모든 영역은 아래의 선택에 따라 해당 영역 파일과 함께 삭제되거나 다른보기로 이동합니다.
 vdelete_mesg2=클라이언트보기 $1을 삭제 하시겠습니까?
@@ -474,6 +515,7 @@ vdelete_newview=이보기 내의 영역
 vdelete_root=보기에서 벗어나기
 vdelete_delete=완전히 삭제
 vdelete_move=보기로 이동
+
 gen_title=레코드 생성기
 gen_desc=이 페이지에서 생성기를 정의 할 수 있으며 각 생성기는 증분 카운터를 사용하여이 영역에 여러 레코드를 생성합니다. 리버스 영역의 일부를 다른 서버에 위임하는 데 유용 할 수 있습니다.
 gen_range=범위
@@ -493,7 +535,9 @@ gen_evalue=생성기 $1에 대한 호스트 이름 패턴이 없거나 잘못되
 gen_title2=생성 된 레코드
 gen_raw=구성 파일 라인
 gen_ecannot=레코드 생성기를 편집 할 수 없습니다
+
 refetch_err=루트 영역을 다시 다운로드하지 못했습니다
+
 slaves_title=클러스터 슬레이브 서버
 slaves_none=DNS 클러스터에 아직 서버가 추가되지 않았습니다.
 slaves_host=호스트 이름
@@ -521,6 +565,7 @@ slaves_sec=로컬로 생성 할 때 슬레이브에 보조를 생성 하시겠�
 slaves_name=NS 레코드의 이름
 slaves_same=호스트 이름과 동일
 slaves_header=클러스터 슬레이브 서버 옵션
+
 add_title=서버 추가
 add_msg=$1 추가하기 ..
 add_gmsg=$1 그룹에 서버 추가 ..
@@ -538,6 +583,7 @@ add_createok=$2 새 슬레이브 영역으로 $1을 설정하십시오.
 add_ename=NS 레코드 이름이 없거나 유효하지 않습니다
 add_egname=그룹을 추가 할 때 NS 레코드 이름을 지정할 수 없습니다
 add_emyip=이 시스템의 IP 주소를 해결할 수 없습니다. 모듈 구성 페이지에서 <b>원격 슬레이브 영역의 기본 마스터 서버 IP</b>를 설정해야합니다.
+
 mass_title=배치 파일에서 영역 생성
 mass_desc=이 페이지에서는 업로드 된 또는 서버 측 텍스트 파일에서 여러 영역을 한 번에 만들 수 있습니다. 파일의 각 줄은 다음 형식이어야합니다. <p></p> <tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt> <p></p> <i>유형</i> 은 <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> 또는 <tt>forward</tt> 중 하나 여야합니다. <i>파일 이름</i> 은 선택 사항이며 누락 된 경우 자동으로 계산됩니다. <i>마스터 IP</i> 는 슬레이브 영역에만 제공하면됩니다.
 mass_local=로컬 배치 파일
@@ -569,6 +615,7 @@ mass_emips=마스터 IP 주소가 없습니다
 mass_addedslaves=슬레이브 서버에 $1 추가 OK.
 mass_eonslave=슬레이브 서버에서 오류가 발생했습니다  : $1
 mass_eviewcannot=이보기에 영역을 추가 할 수 없습니다
+
 massdelete_title=영역 삭제
 massdelete_rusure=$1 선택한 영역을 삭제 하시겠습니까? ($2)
 massdelete_ok=지금 삭제
@@ -578,6 +625,7 @@ massdelete_slaves=슬레이브 서버에서 영역 $1 삭제 ..
 massdelete_failed=.. 일부 노예가 실패했습니다  :
 massdelete_vwarn=일부 영역은 Virtualmin 도메인 $1 과 (와) 연결되어 있으므로 여기서 삭제하면 안됩니다!
 massdelete_vwarn2=일부 영역은 Virtualmin 도메인 $1 및 $2 다른 영역과 연결되어 있으므로 여기서 삭제하면 안됩니다!
+
 rndc_title=RNDC 설정
 rndc_desc=이 페이지는 RNDC 프로그램이 제어 할 수 있도록 BIND를 설정하는 데 사용될 수 있으므로 전체 BIND 재시작을 수행하지 않고도 개별 영역을 새로 고칠 수 있습니다.
 rndc_desc2=RNDC가 이미 올바르게 설정되어있는 것 같으므로이 양식을 사용하지 않아도됩니다.
@@ -588,11 +636,13 @@ rndc_ok=예, RNDC 설정
 rndc_err=RNDC를 설정하지 못했습니다
 rndc_ekey=rndc.conf에서 키를 찾을 수 없습니다
 rndc_esecret=rndc.conf에서 비밀을 찾을 수 없습니다
+
 drecs_err=레코드를 삭제하지 못했습니다
 drecs_enone=선택된 사항 없음
 drecs_title=레코드 삭제
 drecs_rusure=$2에서 $1 선택한 레코드를 삭제 하시겠습니까?
 drecs_ok=지금 삭제
+
 manual_title=구성 파일 편집
 manual_ecannot=BIND 구성 파일을 편집 할 수 없습니다
 manual_ok=편집하다
@@ -600,7 +650,9 @@ manual_efile=선택된 파일이 BIND 구성의 일부가 아닙니다
 manual_file=구성 파일 편집 :
 manual_edata=아무것도 입력되지 않았습니다!
 manual_err=구성 파일을 저장하지 못했습니다
+
 syslog_desc=DNS 서버 메시지 바인딩
+
 umass_err=영역을 업데이트하지 못했습니다
 umass_enone=선택된 사항 없음
 umass_title=영역의 레코드 업데이트
@@ -619,6 +671,7 @@ umass_done=.. $2에서 일치하는 레코드와 $1이 업데이트되었습니�
 umass_none=.. 업데이트 할 $1에서 일치하는 레코드가 없습니다.
 umass_egone=존이 존재하지 않습니다
 emass_emx='$1'은 (는) 유효한 호스트 이름 뒤에 오는 메일 서버 우선 순위 번호가 아닙니다.
+
 rdmass_err=영역에서 레코드를 삭제하지 못했습니다.
 rdmass_enone=선택된 사항 없음
 rdmass_title=영역에서 레코드 삭제
@@ -635,6 +688,7 @@ rdmass_done=.. $2에서 $1 일치하는 레코드를 삭제했습니다.
 rdmass_none=.. 삭제할 $1에서 일치하는 레코드가 없습니다.
 rdmass_ok=레코드 삭제
 rdmass_sel=명명 된 레코드
+
 rmass_err=레코드를 추가하지 못했습니다
 rmass_enone=선택된 사항 없음
 rmass_title=영역에 레코드 추가
@@ -654,18 +708,22 @@ rmass_esign=.. 완료되었지만 서명에 실패했습니다  : $1
 rmass_eclash=.. 이름과 값이 $1 인 레코드가 이미 존재합니다.
 rmass_eclash2=.. 이름이 같고 값이 $1 인 레코드가 이미 존재합니다.
 rmass_clash=레코드가 이미 존재하더라도 작성 하시겠습니까?
+
 check_title=기록 확인
 check_ecannot=기록을 확인할 수 없습니다
 check_errs=레코드 파일 $1에서 다음 오류가 발견되었습니다.
 check_allok=레코드 파일 $1에서 오류가 발견되지 않았습니다.
+
 ncheck_title=BIND 구성 확인
 ncheck_ecannot=BIND 구성을 확인할 수 없습니다
 ncheck_errs=BIND 구성 파일 $1 또는 참조 영역 파일에서 다음 오류가 발견되었습니다.
 ncheck_allok=BIND 구성 파일 $1 또는 참조 영역 파일에서 오류가 발견되지 않았습니다.
+
 links_restart=구성 적용
 links_stop=바인딩 중지
 links_start=BIND 시작
 links_apply=영역 적용
+
 dnssec_title=DNSSEC 키 재 서명
 dnssec_ecannot=DNSSEC를 구성 할 수 없습니다
 dnssec_header=키 재 서명 옵션
@@ -676,6 +734,7 @@ dnssec_secs=초
 dnssec_desc=DNSSEC로 서명 된 영역에는 일반적으로 정기적으로 재생성 및 서명해야하는 영역 키와 일정하게 유지되는 키 서명 키가 있습니다. 이 페이지에서 Webmin이이 재 서명을 자동으로 수행하도록 구성 할 수 있습니다.
 dnssec_err=DNSSEC 키 재 서명을 저장하지 못했습니다.
 dnssec_eperiod=재 서명 간격이 없거나 잘못되었습니다.
+
 dnssectools_title=DNSSEC 도구 자동화
 dt_conf_title=DNSSEC 도구 자동화
 dt_enable_title=DNSSEC 도구 자동화
@@ -740,6 +799,7 @@ dt_status_inKSKroll=KSK 롤에서
 dt_status_inZSKroll=ZSK 롤에서
 dt_status_signed=서명
 dt_status_unsigned=서명되지 않은
+
 zonekey_title=DNSSEC 키 설정
 zonekey_desc=이 영역에는 아직 DNSSEC 서명 키가 없습니다. 이 양식을 사용하여 Webmin이 양식을 작성하여이 영역을 해결하는 클라이언트가 DNS 스푸핑 공격으로부터 보호되도록 할 수 있습니다.
 zonekey_header=새로운 DNSSEC 키 옵션
@@ -773,9 +833,12 @@ zonekey_sign=사인 존
 zonekey_signdesc=이 영역을 즉시 다시 서명하여 수동으로 수행 한 레코드의 변경 사항이 서명 레코드에 포함되도록합니다.
 zonekey_resign=재 서명 영역
 zonekey_resigndesc=새 영역 서명 키를 생성하고 영역의 마스터 키로 서명 한 다음 모든 레코드를 다시 서명하십시오.
+
 sign_err=영역에 서명하지 못했습니다
 sign_emsg=레코드 변경 실패 후 DNSSEC 서명  : $1
+
 resign_err=영역을 다시 서명하지 못했습니다
+
 trusted_title=DNSSEC 검증
 trusted_ecannot=DNSSEC 확인을 구성 할 수 없습니다
 trusted_esupport=BIND 버전이 DNSSEC 확인을 지원하지 않습니다
@@ -810,6 +873,7 @@ trusted_setup=인터넷에서 서명 된 영역의 대부분을 확인하는 데
 trusted_ok=DLV 설정 및 DNSSEC 확인 활성화
 trusted_warning=경고! BIND DNSSEC 클라이언트 구성에 2017 년 10 월부터 작동이 중단 된 오래된 키가 포함되어 있습니다. <a href='$1'>BIND DNSSEC 확인 페이지</a>를 사용하여 구성을 조정하거나 아래 버튼을 클릭하십시오.
 trusted_fix=DNSSEC 구성 수정
+
 xfer_title=테스트 영역 전송
 xfer_doing=$1에서 슬레이브 영역의 전송 테스트 ..
 xfer_failed=.. from $1 : 실패  : $2

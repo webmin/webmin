@@ -6,6 +6,7 @@ index_stop=Stop QMail Processen
 index_stopmsg=Klik op deze knop om in de achtergrond QMail processen te stoppen die verantwoordelijk zijn voor de aflevering van email in de wachtrij. Zonder deze processen zal de email niet weggestuurd worden of afgeleverd worden aan uw systeem.
 index_start=Start QMail Processen
 index_startmsg=Klik op deze knop om in de achtergrond QMail processen te starten die verantwoordelijk zijn voor de aflevering van mail in de wachtrij. Zonder deze processen zal de email niet weggestuurd worden of afgeleverd worden aan uw systeem.
+
 opts_title=QMail Opties
 opts_me=Locale hostnaam
 opts_helo=Hostnaam voor SMTP HELO
@@ -24,6 +25,7 @@ opts_etoremote=Ongeldige SMTP uitgaande reactie timeout
 opts_ebytes=Ongeldige maximum berichten grote
 opts_etimeout=Ongeldige SMTP binnenkomende data timeout
 opts_elocalip=Ongeldige locale IP adres hostnaam
+
 aliases_title=Mail Aliassen
 aliases_addr=Adres
 aliases_to=Alias naar..
@@ -38,6 +40,7 @@ aliases_return=alias lijst
 aliases_toomany=Er zijn teveel mail aliassen op uw systeem om op deze pagina te laten zien.
 aliases_go=Vind aliassen overeenkomend met :
 aliases_delete=Verwijder Geselecteerde Aliassen
+
 aform_type0=Niets
 aform_type1=Email adres
 aform_type2=Mail directory
@@ -52,6 +55,7 @@ aform_val=Alias naar
 aform_afile=Bewerk..
 aform_novirt=&lt;Alle domeinen&gt;
 aform_return=alias
+
 asave_err=Mislukt om alias op te slaan
 asave_eaddr='$1' is geen geldig adres
 asave_ealready=Een alias voor '$1' bestaat reeds
@@ -62,13 +66,16 @@ asave_etype4='$1' is geen geldig programma of bestaat niet
 asave_etype5=Autoreply file '$1' is niet geldig
 asave_etype4none=Geen programma opgegeven
 asave_etype6=Filter file '$1' is niet geldig
+
 adelete_err=Mislukt om aliassen te verwijderen
 adelete_enone=Niets geselecteerd
+
 locals_title=Local Domeinen
 locals_domains=Locale domeinen voor deze server
 locals_desc=Qmail zal email accepteren om af te leveren aan locale gebruikers van domeinen en hostnamen die in de lijst staan aan de linkerkant in de tekstbox. Als uw emailserver voor meerdere domeinen moet werken zullen die allemaal in deze lijst moeten staan.
 locals_only=Alleen locale hostnaam $1
 locals_sel=Domeinen in de lijst hieronder ..
+
 rcpts_title=Geaccepteerde Domeinen
 rcpts_domains=Geaccepteerde locale en relais domeinen
 rcpts_all=Ieder domein
@@ -76,9 +83,11 @@ rcpts_sel=Domeinen in de lijst hieronder ..
 rcpts_desc=QMail zal alleen email accepteren voor relais en locale aflevering aan domeinen en hostnamen die in de lijst van de tekstbox aan de linkerkant staat. U kunt zogenaamde wildcards geven die overeenkomen met alle hosts in een domein zoals <tt>.foo.com</tt>. Indien u wenst dat uw mail server de email voor clients doorstuurt, moet u mail accepteren van ieder domein.
 rcpts_domains2=Extra locale en relais domeinen
 rcpts_desc2=Als u een groot aantal geaccepteerde domeinen heeft kunt u de minst actieve domeinen in deze tekstbox zetten. Uw eerste 50 toegestane domeinen kunt u het best in de bovenste tekstbox zetten en de rest in deze.
+
 bads_title=Geweigerde Adressen
 bads_addresses=Geweigerde email adressen
 bads_desc=QMAIL zal alle mail weigeren om af te leveren om in relais door te sturen van de lijst van adressen die in de tekst box aan de linkerkant staan, Om een adres hier neer te zetten doet u dit bijv zo <tt>gebruikersnaam@domeinnaam</tt>. Indien u mail van een complete host wilt weigeren vult u dit in als  <tt>@domeinnaam</tt>.
+
 routes_title=Domein Routing
 routes_toomany=Er zijn teveel domein routes op uw systeem om te laten zien op deze pagina.
 routes_go=Vind domein routes overeenkomend :
@@ -88,19 +97,24 @@ routes_direct=Direct afleveren
 routes_defroute=Afleveren van alle uitgaande email via:
 routes_return=domein routes
 routes_delete=Verwijder Geselecteerde Domein Routes
+
 rform_edit=Bewerk Domein Route
 rform_create=Maak Domein Route
 rform_from=Email voor host of domein
 rform_to=Stuur via SMTP server
 rform_port=SMTP poort
+
 rsave_err=Mislukt om domein routes op te slaan
 rsave_efrom='$1' is geen geldige domein naam
 rsave_eto='$1' is geen geldige SMTP server
 rsave_eport='$1' is geen geldig poort nummer
+
 rdelete_err=Mislukt om domein routes te verwijderen
+
 percents_title=% Adres Domeinen
 percents_domains=Domeinen die % adressen ondersteunen
 percents_desc=QMail zal alleen email accepteren in het formaat <tt>gebruiker%eerstedomein@tweededomein</tt> als het <tt>tweededomein</tt>  in de lijst aan de linkerkant staat. Berichten in dit formaat worden doorgestuurd naar <tt>gebruiker@eerstedomein</tt> door deze email server.
+
 virts_title=Virtuele Mappings
 virts_toomany=Er zijn teveel virtuele mappings om te kunnen laten zien op deze pagina.
 virts_go=Vind virtuele mapping overeenkomend met :
@@ -111,6 +125,7 @@ virts_none=Niet virtueel
 virts_desc=Virtuele mappings word gebruikt door QMail om email af te handelen voor verschillende domeinen op uw server, door tekst toe te voegen aan het gebruikers gedeelte van het email adres voordat het verder verwerkt word. U kunt dit gebruiken om virtuele email domeinen op te zetten door het maken van een nieuwe virtuele mapping voor een domein, en dan de <a href='$1'>Email Aliassen</a> pagina gebruiken om aliassen te maken voor dat domein.
 virts_return=virtuele mappings
 virts_delete=Verwijder Geselecteerde Virtuele Mappings
+
 vform_edit=Bewerk Virtuele Mapping
 vform_create=Maak Virtuele Mapping
 vform_from=Email voor adres
@@ -121,13 +136,17 @@ vform_to=Voorafgegaan aan gebruikersnaam
 vform_none=Niets
 vform_prepend=Gespecificeerde voorkeuren
 vform_auto=Automatisch gekozen voorkeuren
+
 vsave_err=Mislukt om virtuele mapping op te slaan
 vsave_edomain='$1' is geen geldig email domein
 vsave_euser='$1' is geen geldige email gebruikersnaam
 vsave_eprepend='$1' is geen geldig mapping voorkeur
 vsave_eboth=U kunt niet 'Ieder adres niet overeenkomend met een andere virtuele mapping' en 'Niets' tegelijkertijd selecteren.
+
 vdelete_err=Mislukt om virtuele mappings te verwijderen
+
 stop_err=qmail-verstuur proces werkt niet meer
+
 log_stop=Gestopte QMail processen
 log_start=Gestarte QMail processen
 log_opts=Veranderd QMail opties
@@ -158,6 +177,7 @@ log_delete_assigns=Verwijderd $1 email gebruikers
 log_delmail=Verwijderd $1 berichten van $2
 log_movemail=Verplaatste $1 berichten van $2 naar $3
 log_send=Stuur email naar $1
+
 rfile_title=Bewerk auto-antwoord file
 rfile_desc=Gebruik het tekst gedeelte hieronder om het auto-antwoord bericht in $1 te bewerken. Het bericht mag bevatten $SUBJECT, $FROM, $TO, $DATE en $BODY wat zal worden uitgebreid indien auto-antwoord aanstaat.
 rfile_desc2=U kunt ook email kopteksten maken die worden toegevoegd of de standaard vervangen in de auto-antwoord berichten door regels in te voegen zoals::<br><tt>Van: foo@bar.com</tt><br><tt>Onderwerp: Op Vakantie</tt><br> aan de top van het bericht, dit word gescheiden van de body door een blanke regel.
@@ -176,6 +196,7 @@ rfile_from=Vanaf : adres voor antwoord
 rfile_auto=Automatisch (gebaseerd op ontvangers adres)
 rfile_efrom=Ontbrekend Vanaf: adres
 rfile_fromdesc=A Vanaf : adres moet indien mogelijk altijd worden gespecificeerd, omdat de automatische methoden niet betrouwbaar is.
+
 ffile_title=Bewerk Filter File
 ffile_desc=Gebruik het formulier hieronder om filter regels te maken in de file $1.
 ffile_efile=U bent niet bevoegd om $1 te bewerken.
@@ -191,6 +212,7 @@ ffile_other=Anders doorsturen naar $1
 ffile_err=Mislukt om filter file op te slaan
 ffile_ematch=Ontbrekende overeenkomsten
 ffile_eaction=Ontbrekend doorstuur adres
+
 queue_title=Email Wachtrij
 queue_count=$1 berichten
 queue_none=Er staan op dit moment geen berichten in de wachtrij voor aflevering
@@ -206,10 +228,12 @@ queue_all=Selecteer alles
 queue_invert=Omkeren selectie
 queue_refresh=Ververs Email Wachtrij
 queue_refreshdesc=Herlaad deze pagina om de huidige status van de email wachtrij te bekijken.
+
 qview_title=Wachtrij Berichten
 qview_desc=Van file $1
 qview_headers=Email headers
 qview_attach=Bijlagen
+
 assigns_title=Email Gebruikers Taken
 assigns_return=email gebruikers taken
 assigns_toomany=Er zijn teveel mail gebruikers op uw systeem om op deze pagina te laten zien.
@@ -221,6 +245,7 @@ assigns_gid=GID
 assigns_home=Home directory
 assigns_desc=Met email gebruikers taken kunt u mailboxen maken voor gebruikers die niet gedefinieerd zijn in de Unix gebruikers lijst. Iedere toewijzing zal mail afleveren voor de gekozen gebruikersnaam of gebruikers patroon, zoals het zou worden afgeleverd aan een echte Unix gebruikers mailbox.
 assigns_delete=Verwijder Geselecteerde Mail Gebruikers
+
 sform_edit=Bewerk email gebruiker
 sform_create=Maak email gebruiker
 sform_address=Adres gebruikersnaam
@@ -230,15 +255,19 @@ sform_user=Unix gebruiker
 sform_uid=UID
 sform_gid=GID
 sform_home=Home directory
+
 ssave_err=Opslaan van gebruikers email mislukt
 ssave_eaddress=Ontbrekende of ongeldig adres gebruikersnaam
 ssave_euser=Ontbrekende of ongeldige Unix gebruiker
 ssave_euid=Ontbrekende of ongeldige UID
 ssave_egid=Ontbrekende of ongeldige GID
 ssave_ehome=Ontbrekende of ongeldig home directory
+
 sdelete_err=Mislukt om email gebruikers te verwijderen
+
 delete_egone=Berichten in de rij bestaan niet langer
 delete_ebogus=Ongeldige filenaam rij
+
 boxes_title=Gebruiker Emailboxen
 boxes_user=Gebruiker
 boxes_size=Emailbox grote
@@ -248,6 +277,7 @@ boxes_sent=Stuur mail
 boxes_ecannot=U bent niet bevoegd om email te lezen
 boxes_toomany=Er zijn teveel gebruikers op uw systeem om al hun mailboxen in een lijst te zetten.
 boxes_go=Bekijk email van gebruiker:
+
 mail_title=Gebruikers Email
 mail_from=Van
 mail_date=Datum
@@ -286,6 +316,7 @@ mail_forward=Doorsturen
 mail_rfc=Van regel
 mail_move=Verplaats naar:
 mail_eexists=Bericht bestaat niet langer!
+
 view_title=Lees Email
 view_desc=Berichten $1 in $2
 view_desc2=Berichten $1 voor gebruiker $2
@@ -309,6 +340,7 @@ view_mark1=Lezen
 view_mark2=Speciaal
 view_return=originele email
 view_sub=Bijlagen Email
+
 compose_title=Samenstellen Email
 reply_title=Beantwoord Email
 forward_title=Doorsturen Email
@@ -319,6 +351,7 @@ reply_mailforward=Doorgestuurde berichten
 reply_attach2=Client en server-zijde Bijlagen
 reply_send=Verstuur Email
 reply_ecannot=U bent niet bevoegd email te versturen als deze gebruiker
+
 send_err=Versturen van email mislukt
 send_eto=Ontbrekend Aan adres
 send_efrom=Ontbrekend Vanaf adres
@@ -331,6 +364,7 @@ send_eattach=Bijlages kunnen niet groter zijn dan  $1 kB in grote.
 send_eperms=Gebruiker $1 kan $2 niet lezen
 send_eperms2=U bent niet bevoegd om de file $1 te versturen
 send_epath=Uitvoerbaar bestand Sendmail $1 bestaat niet.
+
 delete_title=Verwijder Email
 delete_rusure=Weet u zeker dat u de $1 geselecteerde berichten van $2 wilt verwijderen? Dit kan even duren voor een grote email file. Totdat de gehele verwijdering klaar is moet u geen andere acties uitvoeren, anders dan even wachten.
 delete_rusure2=Weet u zeker dat u dit bericht wilt verwijderen van $1? Dit kan even duren voor een grote mail file. Totdat de gehele verwijdering klaar is moet u geen andere acties uitvoeren, anders dan even wachten.
@@ -339,6 +373,7 @@ delete_ecannot=U bent niet bevoegd om email te verwijderen van deze gebruiker
 delete_enone=Geen email geselecteerd om te verwijderen
 delete_emnone=Geen email geselecteerd om te markeren
 delete_nobutton=Niet op een knop geklikt
+
 search_title=Zoek Resultaten
 search_ecannot=U bent niet bevoegd om te zoeken in deze gebruiker zijn email
 search_ematch=U moet tekst invullen om een overeenkomst voor te zoeken.
@@ -346,6 +381,7 @@ search_efield=U moet een zoek term selecteren.
 search_none=Geen berichten gevonden.
 search_results2=$1 email berichten overeenkomend met $2 ..
 search_results3=$1 email berichten niet overeenkomend met $2 ..
+
 match_from=Vanaf : komt overeen
 match_subject=Onderwerp : komt overeen
 match_to=Naar : komt overeen
@@ -363,6 +399,7 @@ match_!date=Datum : komt niet overeen
 match_!body=Body komt niet overeen
 match_!size=Afmeting is kleiner dan
 match_!headers=Kopteksten : komt niet overeen
+
 delq_titles=Verwijder Berichten
 delq_rusure=Weet u zeker dat u de $1 geselecteerde berichten die in de rij staan wilt verwijderen?
 delq_confirm=Verwijder Berichten

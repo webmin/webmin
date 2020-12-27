@@ -29,12 +29,14 @@ index_fd=תצורת Daemon קבצים
 index_groups=תצורת קבוצת Bacula
 index_actions=פעולות גיבוי ושחזור
 index_ocmin=תרם על ידי <a href=$2 target=_new>Linmin</a> </a>
+
 connect_emysql=טעינת מנהל התקן DBI של מסד הנתונים $1 נכשלה
 connect_elogin=כניסה למאגר $1:$2 נכשלה.
 connect_equery=נראה כי מסד הנתונים $1 אינו מכיל טבלאות Bacula.
 connect_equery2=ייתכן שהסיבה לכך היא שמודול SQLite Perl המותקן חדש מדי ואינו תומך בתבנית מסד הנתונים הישנה יותר של SQLite המשמשת את Bacula.
 connect_equery3=נראה כי מסד הנתונים $1 אינו מכיל טבלאות קבוצת OC Bacula.
 esql=שגיאת SQL : $1 
+
 check_edir=ספריית התצורה של Bacula $1 לא נמצאה במערכת שלך.
 check_ebacula=פקודת בקרת Bacula $1 לא נמצאה.
 check_econsole=הפקודה של מסוף Bacula $1 לא נמצאה.
@@ -43,12 +45,14 @@ check_eclient=נראה שמערכת זו היא <a href='$2'>לקוח Bacula</a>
 check_econfigs=לא נמצאו קבצי תצורה של Bacula ב- $1 
 check_eservers=לא הוגדרו קבוצות שרתי Webmin
 check_engmod=מודול הקבוצות של OpenCountry Bacula אינו מותקן
+
 proc_bacula-sd=דמון אחסון
 proc_bacula-fd=דמון קבצים
 proc_bacula-dir=מנהל דמון של בקולה
 proc_bareos-sd=דמון אחסון
 proc_bareos-fd=דמון קבצים
 proc_bareos-dir=מנהל דמון של בקולה
+
 stop_err=לא הצליח לעצור את בקולה
 start_err=ההתחלה של בקולה נכשלה
 start_einit=לא נמצא סקריפט init עבור $1 
@@ -57,6 +61,7 @@ restart_err=ההפעלה מחדש של Bacula נכשלה
 apply_err=החלת התצורה נכשלה
 apply_failed=זוהתה שגיאת תצורה
 apply_problem=יישום התצורה נכשל : $1 
+
 jobs_title=משרות גיבוי
 jobs_none=טרם הוגדרו עבודות גיבוי.
 jobs_name=שם העבודה
@@ -69,6 +74,7 @@ jobs_add=הוסף עבודת גיבוי חדשה.
 jobs_delete=מחק משרות שנבחרו
 jobs_return=רשימת משרות
 jobs_derr=מחיקת עבודות נכשלה
+
 filesets_title=ערכות קבצים
 filesets_none=טרם הוגדרו מערכי קבצי גיבוי.
 filesets_name=שם קובץ הקבצים
@@ -78,6 +84,7 @@ filesets_delete=מחק את ערכות הקבצים שנבחרו
 filesets_return=רשימת ערכות קבצים
 filesets_derr=מחיקת קבוצות הקבצים נכשלה
 filesets_ednone=לא נבחר
+
 fileset_title1=צור ערכת קבצים
 fileset_title2=ערוך את ערכת הקבצים
 fileset_header=פרטי קובץ הגיבוי
@@ -97,6 +104,7 @@ fileset_gzipdef=&lt;ברירת מחדל של דחיסה&gt;
 fileset_lzo=דחיסת LZO
 fileset_gzip=רמת Gzip $1 
 fileset_onefs=להגביל גיבוי למערכת קבצים אחת?
+
 clients_title=לקוחות גיבוי
 clients_none=טרם הוגדרו לקוחות גיבוי.
 clients_name=שם הלקוח
@@ -106,6 +114,7 @@ clients_add=הוסף לקוח גיבוי חדש.
 clients_delete=מחק לקוחות נבחרים
 clients_return=רשימת לקוחות
 clients_derr=מחיקת הלקוחות נכשלה
+
 client_title1=צור לקוח גיבוי
 client_title2=ערוך לקוח גיבוי
 client_header=פרטי הלקוח שיש לגבות
@@ -128,6 +137,7 @@ client_efileret=תקופת שמירת קבצים חסרה או לא חוקית
 client_ejobret=תקופת שמירת מקום חסרה או לא תקפה
 client_echild=לא ניתן למחוק לקוח זה כיוון שהוא משמש $1 
 client_status=הצג סטטוס
+
 job_title1=צור ג'וב גיבוי
 job_title2=ערוך משימת גיבוי
 job_header=פרטי עבודות גיבוי
@@ -156,6 +166,7 @@ job_before=פיקוד לפני העבודה
 job_after=פיקוד אחרי העבודה
 job_cbefore=פקודה לפני העבודה (על הלקוח)
 job_cafter=פקודה אחרי עבודה (על לקוח)
+
 schedules_title=לוחות זמנים לגיבוי
 schedules_none=טרם הוגדרו לוחות זמנים לגיבוי.
 schedules_name=שם לוח הזמנים
@@ -164,6 +175,7 @@ schedules_add=הוסף תזמון גיבוי חדש.
 schedules_delete=מחק לוחות זמנים שנבחרו
 schedules_return=רשימת לוחות הזמנים
 schedules_derr=מחיקת לוחות הזמנים נכשלה
+
 schedule_title1=צור לוח זמנים לגיבוי
 schedule_title2=ערוך את לוח הזמנים לגיבוי
 schedule_header=פרטי לוח הזמנים לגיבוי
@@ -177,6 +189,7 @@ schedule_ename=שם לוח הזמנים חסר או לא חוקי
 schedule_eclash=לוח זמנים עם אותו שם כבר קיים
 schedule_etimes=חסרים זמני גיבוי בשורה $1 
 schedule_echild=לא ניתן למחוק את לוח הזמנים הזה מכיוון שהוא משמש $1 
+
 backup_title=הפעל את עבודת הגיבוי
 backup_header=פרטי עבודות גיבוי
 backup_job=עבודה לרוץ
@@ -191,11 +204,13 @@ backup_running=.. עבודת הגיבוי פועלת כעת. בסיום התוצ
 backup_running2=.. עבודת הגיבוי התחילה ברקע.
 backup_done=גיבוי הושלם.
 backup_failed=.. הגיבוי לא הושלם בהצלחה. בדוק את הודעת השגיאה שלמעלה.
+
 gbackup_title=הפעל את משימת הגיבוי של קבוצת Bacula
 gbackup_run=מתחיל את עבודת הגיבוי $1 על $2 לקוחות ..
 gbackup_on=הפעלת עבודת גיבוי בלקוח $1  :
 gbackup_header=פרטי עבודות הגיבוי של קבוצת Bacula
 gbackup_jd=$1 (קבוצת הקבצים $2 בקבוצה $3)
+
 dirstatus_title=סטטוס במאי
 dirstatus_sched=משרות גיבוי מתוזמנות
 dirstatus_name=שם העבודה
@@ -216,12 +231,14 @@ dirstatus_status2=סטטוס
 dirstatus_donenone=לא בוצעו עבודות גיבוי.
 dirstatus_cancel=בטל משרות שנבחרו
 dirstatus_refresh=רשימת רענון
+
 clientstatus_title=סטטוס לקוח
 clientstatus_err=נכשל אחזור הסטטוס מ- $1 : $2 
 clientstatus_msg=סטטוס מ- $1 : $2 
 clientstatus_show=הצג סטטוס לקוח:
 clientstatus_ok=בסדר
 clientstatus_on=$1 (ב- $2)
+
 storages_title=דמונים לאחסון
 storages_none=טרם הוגדרו דמונים לאחסון.
 storages_name=שם האחסון
@@ -232,6 +249,7 @@ storages_add=הוסף דמון אחסון חדש.
 storages_delete=מחק דמוני אחסון שנבחרו
 storages_return=רשימת דמונים לאחסון
 storages_derr=מחיקת דמונים לאחסון נכשלה
+
 storage_title1=צור דיימון אחסון
 storage_title2=ערוך את Daemon Storage
 storage_header=פרטים על דמון אחסון מרוחק
@@ -255,6 +273,7 @@ storage_emedia=שם סוג המדיה חסר
 storage_emaxjobs=חסר עבודות מקסימאליות במקביל
 storage_echild=לא ניתן למחוק לקוח זה כיוון שהוא משמש $1 
 storage_status=הצג סטטוס
+
 devices_title=התקני אחסון
 devices_none=טרם הוגדרו התקני אחסון.
 devices_name=שם התקן
@@ -264,6 +283,7 @@ devices_add=הוסף מכשיר אחסון חדש.
 devices_delete=מחק התקני אחסון שנבחרו
 devices_return=רשימת התקני אחסון
 devices_derr=מחיקת התקני האחסון נכשלה
+
 device_title1=צור התקן אחסון
 device_title2=ערוך את מכשיר האחסון
 device_header=פרטים על התקן אחסון קבצים
@@ -282,11 +302,13 @@ device_eclash=קיים כבר התקן אחסון עם אותו שם
 device_emedia=שם סוג המדיה חסר
 device_edevice=מכשיר ארכיב או ספריה חסרים או לא חוקיים
 device_echild=לא ניתן למחוק לקוח זה כיוון שהוא משמש $1 
+
 storagestatus_title=מצב Daemon אחסון
 storagestatus_err=נכשל אחזור הסטטוס מ- $1 : $2 
 storagestatus_msg=סטטוס מ- $1 : $2 
 storagestatus_show=הצג סטטוס של דמון האחסון:
 storagestatus_ok=בסדר
+
 label_title=נפח תווית
 label_header=פרטי הנפח לתווית
 label_storage=דמון אחסון לתווית
@@ -302,6 +324,7 @@ label_done=.. תיוג מוצלח.
 label_epool=.. לא מצאתי בריכה!
 label_err=התווית נכשלה
 label_elabel=לא הוזנה שום תווית
+
 pools_title=בריכות נפח
 pools_none=טרם הוגדרו בריכות נפח.
 pools_name=שם הבריכה
@@ -311,6 +334,7 @@ pools_add=הוסף מאגר אמצעי אחסון חדש.
 pools_delete=מחק בריכות נפח שנבחרו
 pools_return=רשימת בריכות נפח
 pools_derr=מחיקת מאגרי הנפחים נכשלה
+
 pool_title1=צור בריכת עוצמת קול
 pool_title2=ערוך מאגר עוצמת הקול
 pool_header=פרטים על מאגר נפח הגיבוי
@@ -332,6 +356,7 @@ pool_ereten=תקופת שמירה חסרה או לא תקפה
 pool_status=הצגת כרכים
 pool_autolabel=תייג אוטומטית קידומת כרכים
 pool_maxvolsize=גודל נפח מרבי (למשל 5G עבור 5 ג'יגה בייט)
+
 poolstatus_title=כרכים בבריכה
 poolstatus_show=הצג כרכים בבריכה:
 poolstatus_ok=בסדר
@@ -345,9 +370,11 @@ poolstatus_status=מצב גיבוי
 poolstatus_none=כרגע אין כרך כרכים בבריכת הגיבוי הזו.
 poolstatus_never=לעולם לא
 poolstatus_delete=מחק כרכים שנבחרו
+
 dvolumes_err=מחיקת הכרכים נכשלה
 dvolumes_enone=לא נבחר
 dvolumes_ebacula=שגיאת Bacula : $1 
+
 mount_title=הר או הסר התקנה
 mount_header=אפשרויות אחסון או אפשרות לביטול הרכבה
 mount_storage=מכשיר אחסון
@@ -365,8 +392,10 @@ unmount_failed=.. ההרשמה נכשלה! עיין בהודעת השגיאה ל
 mount_return=טופס הר
 mount_err=הרכבת מכשיר האחסון נכשלה
 mount_eslot=מספר משבצת חסר או לא חוקי
+
 cancel_err=ביטול המשרות נכשל
 cancel_enone=לא נבחר
+
 gjobs_title=משרות גיבוי קבוצת Bacula
 gjobs_none=טרם הוגדרו משרות גיבוי קבוצתיות של Bacula.
 gjobs_add=הוסף משימת גיבוי קבוצתית חדשה של Bacula.
@@ -374,10 +403,12 @@ gjobs_delete=מחק משרות שנבחרו
 gjobs_return=רשימת משרות בקבוצת בקולה
 gjobs_derr=מחיקת העבודות בקבוצת Bacula נכשלה
 gjobs_client=קבוצת Bacula לגיבוי
+
 gjob_title1=צור משימת גיבוי לקבוצת Bacula
 gjob_title2=ערוך את משימת הגיבוי של קבוצת Bacula
 gjob_header=פרטי עבודות הגיבוי של קבוצת Bacula
 gjob_client=קבוצת Bacula לגיבוי
+
 groups_title=קבוצות בקולה
 groups_none=טרם נבחרו קבוצות Bacula לגיבוי.
 groups_name=שם קבוצה
@@ -391,6 +422,7 @@ groups_derr=מחיקת קבוצות נכשלה
 groups_noadd=לא קיימות קבוצות Bacula שנבחרות לגיבויים.
 groups_info=$1 ($2 חברים)
 groups_already=כל קבוצות Bacula כבר נוספו.
+
 group_title1=צור קבוצת Bacula
 group_title2=ערוך את קבוצת Bacula
 group_header=פרטים על קבוצת Bacula שתגבה
@@ -401,11 +433,13 @@ group_port=יציאת FD Bacula
 group_err=שמירת קבוצת Bacula נכשלה
 group_eclash=קבוצה עם אותו שם כבר קיימת
 group_members=מארחים בקבוצת בקולה
+
 sync_title=סנכרון קבוצת Bacula
 sync_header=אפשרויות סינכרון לקוח של קבוצת Bacula אוטומטיות
 sync_sched=לסנכרן לפי לוח הזמנים?
 sync_schedyes=כן, לפעמים נבחרים למטה ..
 sync_err=שמירת סינכרון הקבוצות של Bacula נכשלה
+
 log_create_client=יצר לקוח גיבוי $1 
 log_modify_client=לקוח הגיבוי השתנה $1 
 log_delete_client=לקוח הגיבוי $1 נמחק
@@ -464,6 +498,7 @@ log_director=תצורת מנהל Bacula העולמית נשמרה
 log_file=תצורת הדמון של קובץ Bacula השמורה
 log_storagec=תצורת דמון אחסון של Bacula נשמרה
 log_fixpass=סיסמת התוכנית לקונסולת Bacula קבועה
+
 director_title=תצורת מנהל
 director_header=אפשרויות דירקטור גלובליות של Bacula
 director_name=שם הבמאי
@@ -477,6 +512,7 @@ director_ename=שם מנהל דירקטור חסר או לא חוקי
 director_eport=מספר יציאה חסר או לא חוקי
 director_ejobs=מספר חסר או לא חוקי של עבודות במקביל
 director_edir=ספריית עבודה חסרה או לא קיימת
+
 tls_enable=אפשר הצפנת TLS?
 tls_require=מקבלים רק חיבורי TLS?
 tls_verify=האם לאמת לקוחות TLS?
@@ -488,6 +524,7 @@ tls_ecert=קובץ אישור TLS חסר או שאינו קיים
 tls_ekey=קובץ TLS חסר או שאינו קיים
 tls_ecacert=קובץ אישור TLS CA חסר או שאינו קיים
 tls_ecerts=כדי להפעיל TLS, יש לציין קובצי אישורים, מקשים ו- CA
+
 file_title=תצורת Daemon קבצים
 file_header=אפשרויות דמון לקובץ Bacula
 file_name=שם הדמון של הקבצים
@@ -500,6 +537,7 @@ file_ename=שם דמון קבצים חסר או לא חוקי
 file_eport=מספר יציאה חסר או לא חוקי
 file_ejobs=מספר חסר או לא חוקי של עבודות במקביל
 file_edir=ספריית עבודה חסרה או לא קיימת
+
 fdirectors_title=הגישו מנהלי דיימון
 fdirectors_none=טרם הוגדרו דירקטורים.
 fdirectors_name=שם הבמאי
@@ -508,6 +546,7 @@ fdirectors_add=הוסף במאי חדש.
 fdirectors_delete=מחק דירקטורים שנבחרו
 fdirectors_return=רשימת דירקטורים
 fdirectors_derr=מחיקת דירקטורים נכשלה
+
 fdirector_title1=צור מנהל Daemon קבצים
 fdirector_title2=ערוך את File Daemon Director
 fdirector_header=פרטי השליטה במנהל מרחוק
@@ -519,6 +558,7 @@ fdirector_err=שמירת מנהל הדמון של הקבצים נכשלה
 fdirector_ename=שם הבמאי חסר
 fdirector_eclash=במאי עם אותו שם כבר קיים
 fdirector_epass=סיסמא חסרה
+
 sdirectors_title=מנהלי דיימון אחסון
 sdirectors_none=טרם הוגדרו דירקטורים.
 sdirectors_name=שם הבמאי
@@ -527,6 +567,7 @@ sdirectors_add=הוסף במאי חדש.
 sdirectors_delete=מחק דירקטורים שנבחרו
 sdirectors_return=רשימת דירקטורים
 sdirectors_derr=מחיקת דירקטורים נכשלה
+
 sdirector_title1=צור מנהל Daemon Storage
 sdirector_title2=ערוך את מנהל Daemon Storage
 sdirector_header=פרטי השליטה במנהל מרחוק
@@ -538,6 +579,7 @@ sdirector_err=שמירת מנהל דמון האחסון נכשלה
 sdirector_ename=שם הבמאי חסר
 sdirector_eclash=במאי עם אותו שם כבר קיים
 sdirector_epass=סיסמא חסרה
+
 storagec_title=תצורת Daemon Storage
 storagec_header=אפשרויות דמון לאחסון Bacula
 storagec_name=שם הדמון
@@ -550,6 +592,7 @@ storagec_ename=שם דמון אחסון חסר או לא חוקי
 storagec_eport=מספר יציאה חסר או לא חוקי
 storagec_ejobs=מספר חסר או לא חוקי של עבודות במקביל
 storagec_edir=ספריית עבודה חסרה או לא קיימת
+
 chooser_title=בחר לוח זמנים
 chooser_monthsh=חודשים להורג
 chooser_months=חודשים בשנה
@@ -574,11 +617,13 @@ chooser_emonthsrange=חודשים שנבחרו חייבים להיות רצופ�
 chooser_eweekdaysrange=ימי השבוע שנבחרו חייבים להיות רצופים
 chooser_eweekdaynumsrange=המספרים שנבחרו בימי חול חייבים להיות רצופים
 chooser_edaysrange=הימים שנבחרו בחודש חייבים להיות רצופים
+
 weekdaynum_1=ראשון
 weekdaynum_2=שני
 weekdaynum_3=שלישית
 weekdaynum_4=רביעי
 weekdaynum_5=חמישי
+
 restore_title=שחזור גיבוי
 restore_title2=שחזר גיבוי לקבוצת Bacula
 restore_title3=שחזר את הגיבוי של קבוצת Bacula

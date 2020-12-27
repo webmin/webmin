@@ -25,6 +25,7 @@ index_estart=Comanda de pornire a lui Xinetd $1 nu există. Poate că nu este in
 index_noport=Necunoscut
 index_enable=Activați selectat
 index_disable=Dezactivare selectat
+
 serv_create=Creați servicii Internet
 serv_edit=Editați Serviciul Internet
 serv_header1=Opțiuni de rețea de servicii
@@ -78,19 +79,24 @@ serv_enice=Lipsește sau este nevalid un nivel frumos
 serv_ecps0=Număr de conexiuni lipsă sau nevalide pe secundă
 serv_ecps1=Întârzie lipsă sau nevalidă
 serv_etimes=Timpurile de acces trebuie să fie în formatul HH: MM-HH: MM
+
 sock_stream=Curent
 sock_dgram=Datagram
 sock_raw=Brut
 sock_seqpacket=Datagrama secvențială
+
 proto_=Mod implicit
 proto_ip=IP (Internet Protocol)
 proto_tcp=TCP (Protocol de control al transmisiei)
 proto_udp=UDP (User Datagram Protocol)
+
 restart_err=Eroare la aplicarea modificărilor
 restart_ekill=Eroare la trimiterea semnalului USR2 la PID $1 : $2 
 restart_epid=Nu mai alerga
+
 start_err=Nu a reușit să înceapă xinetd
 start_estart=$1 a eșuat : $2 
+
 defs_title=Opțiuni implicite
 defs_header=Opțiuni implicite pentru servicii
 defs_log=Mod de logare Xinetd
@@ -115,6 +121,7 @@ defs_err=Nu a reușit să salvați opțiunile implicite
 defs_efile=Numele de fișier de jurnal lipsă sau nevalid
 defs_esoft=Lipsește o limită soft nevalidă
 defs_ehard=Lipsește sau nu este o limită greșită
+
 log_create_serv=Creat serviciu $2 $1 
 log_modify_serv=Serviciu modificat $2 $1 
 log_delete_serv=Serviciul $2 a fost șters
@@ -125,5 +132,6 @@ log_enable=Activare $1 servicii
 log_disable=Servicii dezactivate $1 
 log_enable_l=Servicii activate $1 
 log_disable_l=Servicii dezactivate $1 
+
 config_dirdef=Fișier de configurare Xinetd
 config_dirto=Fișier nou în director

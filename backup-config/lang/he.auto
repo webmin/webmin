@@ -20,6 +20,7 @@ index_nostrftime=אזהרה - חלק ממשרות הגיבוי משתמשות ב
 index_tabsched=גיבויים מתוזמנים
 index_tabbackup=גיבוי עכשיו
 index_tabrestore=שחזר עכשיו
+
 edit_title1=צור גיבוי מתוזמן
 edit_title2=ערוך גיבוי מתוזמן
 edit_header=אפשרויות גיבוי מתוזמנות
@@ -44,9 +45,11 @@ edit_return=טופס גיבוי
 edit_other=קבצים רשומים אחרים ..
 edit_pre=פקודה לפני הגיבוי
 edit_post=פקודה לאחר הגיבוי
+
 save_err=שמירת הגיבוי נכשלה
 save_emods=לא נבחרו מודולים
 save_ewebmin=לא נבחרו קבצי תצורת webmin ולא קבצים
+
 backup_mode0=קובץ מקומי
 backup_mode1=שרת FTP
 backup_mode2=שרת SSH
@@ -63,6 +66,7 @@ backup_egunzip=הגיבוי דחוס, אך <tt>אקדח</strong> אינו מות
 backup_euntar=Un-TAR נכשלה : $1 
 backup_enone2=אף אחד מהקבצים עבור המודולים שנבחרו אינו נמצא בגיבוי
 backup_epre2=שחזור מודול $1 נדחה : $2 
+
 backup_err=הגיבוי נכשל
 backup_edest=קובץ מקומי מוחלט חסר או לא חוקי
 backup_eserver1=שרת FTP חסר או לא חוקי
@@ -78,6 +82,7 @@ backup_title=תצורת גיבוי
 backup_doing=החל גיבוי של קבצי תצורת מודול ל- $1.
 backup_failed=.. נכשל! $1 
 backup_done=.. שלם. גודל הגיבוי הסופי היה $1, מכיל $2 קבצים.
+
 restore_err=השחזור נכשל
 restore_emods=לא נבחרו מודולים או קבצים אחרים
 restore_title=שחזור תצורה
@@ -86,22 +91,26 @@ restore_testing=חילוץ תוכן הגיבוי מ- $1.
 restore_failed=.. נכשל! $1 
 restore_done=.. שלם. $1 קבצים שוחזרו.
 restore_done2=.. קבצים בגיבוי הם :
+
 nice_ftp=$2 על $1 דרך FTP
 nice_ftpp=$2 על $1 יציאה $3 באמצעות FTP
 nice_ssh=$2 על $1 באמצעות SSH
 nice_sshp=$2 על $1 יציאה $3 באמצעות SSH
 nice_upload=הקובץ שהועלה
 nice_download=דפדפן
+
 log_backup=גיבוי $1 מודולים ל- $2 
 log_restore=שוחזר $1 מודולים מ- $2 
 log_create_backup=יצר גיבוי של $1 מודולים ל- $2 
 log_modify_backup=גיבוי שונה של $1 מודולים ל- $2 
 log_delete_backup=גיבוי של $1 מודולים ל- $2 נמחק
 log_run_backup=גיבוי מופעל של $1 מודולים ל- $2 
+
 run_title=תצורות גיבוי
 run_doing=החל גיבוי של $1 מודולים ל- $2.
 run_ok=גיבוי הושלם בהצלחה.
 run_failed=.. הגיבוי נכשל! עיין בהודעת השגיאה למעלה מהסיבה לכך.
+
 email_mods=גיבוי מודולים :
 email_failed=ל- $1 נכשלו :
 email_ok=ל- $1 הצליח.

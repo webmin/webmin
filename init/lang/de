@@ -52,6 +52,7 @@ index_sadd=Erstelle einen neuen systemd Dienst.
 index_always=Immer
 index_ladd=Erstelle einen neuen launchd Agenten.
 index_lname=Agentname
+
 edit_title=Dienst bearbeiten
 create_title=Dienst erstellen
 edit_ecannot=Sie haben keine Berechtigung Startdienste zu bearbeiten
@@ -85,6 +86,7 @@ edit_statusnow=Zeige Status
 edit_return=Dienst
 edit_status=Momentan aktiv?
 edit_unknown=Unbekannt
+
 save_err=Fehler beim Speichern des Dienstes
 save_ecannot=Sie haben keine Berechtigung, Startdienste zu bearbeiten
 save_ealready=Es existiert bereits ein Dienst mit dem Namen '$1'
@@ -93,6 +95,7 @@ save_ename=Fehlender oder ungültiger Aktionsname
 save_eclash=Eine Aktion mit dem gleichen Namen existiert bereits
 save_escript=Keine Aktionsskript ist eingegeben
 save_estartcmd=Fehlender Bootup Befehl
+
 ss_ecannot=Sie haben keine Berechtigung, Startdienste zu starten/stoppen
 ss_start=Starte Dienst
 ss_stop=Stoppe Dienst
@@ -103,21 +106,25 @@ ss_exec=Führe $1 aus ...
 ss_doingstart=Starte Aktion $1
 ss_doingstop=Stoppe Aktion $1 ..
 ss_doingstatus=Anfordere Status der Aktion $1 ..
+
 shutdown_ecannot=Sie haben keine Berechtigung, das System herunterzufahren
 shutdown_title=Herunterfahren
 shutdown_rusure=Sind Sie sicher, daß Sie das System mit dem Kommando $1 herunterfahren wollen?
 shutdown_ok=System herunterfahren
 shutdown_exec=Fahre das System herunter mit dem Kommando $1 ...
+
 reboot_ecannot=Sie haben keine Berechtigung, das System neu zu starten
 reboot_title=Neustart
 reboot_rusure=Sind Sie sicher, daß Sie das System mit dem Kommando $1 neu starten wollen?
 reboot_ok=System neu starten
 reboot_exec=Starte System neu mit dem Kommando $1 ...
+
 acl_script=Darf das Boot-Skript selbst bearbeiten?
 acl_actions=Darf Dienste bearbeiten, anlegen und löschen?
 acl_runonly=Nur starten
 acl_reboot=Darf das System neu starten?
 acl_shutdown=Darf das System herunterfahren?
+
 log_rename=Aktion $1 nach $2 umbenannt
 log_modify=Aktion $1 verändert
 log_create=Aktion $1 erzeugt
@@ -138,6 +145,7 @@ log_massrestart=Aktionen $1 neu gestartet
 log_massenable=Eingeschaltete Aktionen $1
 log_massdisable=Abgeschaltete Aktionen $1
 log_telinit=Zu Runlevel $1 gewechselt
+
 edit_hostconfig_startup=Das Skript $1 wird ausgeführt beim System-Start, wenn dieser Dienst aktiviert ist. Sie können das Skript unten bearbeiten.
 edit_hostconfig_plist=Die Datei $1 setzt bestimmte Parameter unter Berücksichtigung des Boot-Skriptes. Sie können diese unten bearbeiten.
 edit_hostconfig_new=Erzeuge neuen Dienst
@@ -149,6 +157,7 @@ edit_hostconfig_array=Die Felder $1, $2, und $3 sind Array-Felder und können me
 edit_hostconfig_further=Nach dem Erstellen eines neuen Start-Dienstes werden Sie zu einer Seite weitergeleitet, wo Sie das Start-Skript und die Parameter bearbeiten können, falls es notwendig ist.
 edit_hostconfig_hostconfig=Die Datei $1 verwaltet systemweite Dienste und Daemons, die beim Systemstart gestartet werden. Sie können diese unten bearbeiten.
 edit_hostconfig_title=Editiere 'Hostconfig'
+
 mass_enone=Keine Aktionen ausgewählt
 mass_enone2=Keine Dienste ausgewählt
 mass_start=Starte Aktionen
@@ -169,9 +178,11 @@ mass_udisable=Deaktiviere Dienst $1 beim Booten.
 mass_ustarting=Starte Dienst $1 ..
 mass_ustopping=Stoppe Dienst $1 ..
 mass_urestarting=Starte Dienst $1 neu ..
+
 change_err=Sie sind nicht berechtigt in einen anderen Runlevel zu wechseln
 change_title=Wechsele Runlevel
 change_cmd=Wechsel zum Runlevel $1 mit Befehl $2. Dies kann einige Zeit dauern und Webmin könnte nach dem Wechsel nicht mehr verfügbar sein.
+
 mode_init=SysV init
 mode_osx=Mac OS X
 mode_local=Single Boot Skript
@@ -180,6 +191,7 @@ mode_rc=FreeBSD RC Skripte
 mode_upstart=Upstart
 mode_systemd=Systemd
 mode_launchd=LaunchD
+
 upstart_title1=Erstelle Upstart Dienst
 upstart_title2=Editiere Upstart Dienst
 upstart_egone=Dienst existiert nicht länger!
@@ -204,6 +216,7 @@ upstart_eserver=Kein Server Befehl eingegeben
 upstart_eserver2=Server Befehl existiert nicht
 upstart_eserver3=Nur ein Server-Befehl kann eingegeben werden
 upstart_return=upstart Dienst
+
 systemd_title1=Erstelle Systemd-Dienst
 systemd_title2=Editiere Systemd-Dienst
 systemd_egone=Dienst existiert nicht länger!
@@ -227,6 +240,7 @@ systemd_edesc=Fehlende Dienstbeschreibung
 systemd_return=Systemd-Dienst
 systemd_econf=Keine systemd Konfiguration eingegeben
 systemd_estart=Fehlender Befehl zum Ausführen beim Starten
+
 launchd_title1=Erstelle Launchd Agent
 launchd_title2=Editiere Launchd Agent
 launchd_egone=Agent existiert nicht länger!

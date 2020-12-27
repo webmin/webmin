@@ -17,6 +17,7 @@ index_auto=Localizar servidores automaticamente
 index_automsg=Clique neste botão para configurar a descoberta periódica automática de novos servidores Webmin na sua rede.
 index_search=Mostrar servidores correspondentes:
 index_ok=Procurar
+
 edit_realhost=Nome real do host
 edit_portnone=Nenhuma definida
 edit_checkssl=Verificar certificado SSL remoto?
@@ -40,11 +41,13 @@ edit_baduser=Login rejeitado
 edit_invalid=O usuário não pode fazer RPC
 edit_version=Executando o Webmin $1 
 edit_same=Disponível apenas não no modo de autenticação de sessão e quando a senha é disponibilizada para os programas Webmin.
+
 save_ehost2=O host não existe
 save_eport2=Uma porta deve ser fornecida se um tipo de link com um login for selecionado
 save_egroup=Nome do grupo ausente
 save_elogin=Login ou senha inválida para hospedar
 save_egroup2=Novo nome de grupo inválido
+
 find_but=Foi encontrado um novo servidor em $1, mas a autenticação falhou : $2 
 find_already2=Host de servidor conhecido encontrado em $1 
 find_skip=Ignorando o servidor em $1 
@@ -55,16 +58,20 @@ find_ecannot=Você não tem permissão para encontrar servidores
 find_scanning=Procurando servidores na rede $1 ..
 find_broading=Transmissão para servidores nos endereços $1 ..
 find_eport=Número de porta ausente ou inválido
+
 log_modify=Servidor modificado $1 
 log_create=Servidor registrado $1 
 log_delete=Servidor excluído $1 
 log_find=Servidor encontrado $1 
 log_deletes=$1 servidores excluídos
+
 link_elogin=Falha ao fazer login em $1 como $2 
 link_ecannot=Você não tem permissão para usar este servidor
 link_essl=Você não possui a biblioteca perl Net::SSLeay instalada
 link_eautologin=Login ou senha inválida para $1. <a href='$2'>Clique aqui</a> para tentar novamente.
+
 lib_other=De outros
+
 acl_edit=Pode editar servidores?
 acl_find=Pode encontrar servidores?
 acl_servers=Pode usar servidores
@@ -76,6 +83,7 @@ acl_forcefast=Forçar o modo RPC rápido para o padrão?
 acl_forcetype=Forçar o tipo de SO para o padrão?
 acl_forcelink=Forçar o tipo de login para o padrão?
 acl_links=Pode se conectar aos servidores?
+
 login_title=Entrar no servidor
 login_desc=Você deve fornecer um nome de usuário e senha para efetuar login no servidor Webmin $1.
 login_header=Autenticação Webmin
@@ -83,13 +91,16 @@ login_user=Nome do usuário
 login_pass=Senha
 login_login=Conecte-se
 login_esame=A opção de usar o mesmo login desse servidor pode ser usada apenas quando não estiver no modo de autenticação de sessão e quando a senha for disponibilizada para os programas Webmin.
+
 this_server=este servidor
+
 delete_err=Falha ao excluir servidores
 delete_enone=Nenhum selecionado
 delete_ecannot=Você não tem permissão para excluir servidores
 delete_title=Excluir servidores
 delete_rusure=Tem certeza de que deseja remover os $1 servidores selecionados?
 delete_confirm=Excluir agora
+
 auto_title=Localizar servidores automaticamente
 auto_header=Opções de registro automático de servidor
 auto_sched=Verificar novos servidores?
@@ -115,8 +126,10 @@ auto_smtp=Enviar via servidor SMTP
 auto_self=Este sistema
 auto_esmtp=Servidor SMTP inválido ou ausente
 auto_findself=Registrar este sistema também?
+
 config_deftype=Tipo de sistema padrão
 config_typeauto=Automático
+
 email_regsubject=Sistema $1 registrado
 email_reg=O sistema $1 foi registrado automaticamente.
 email_unregsubject=Sistema $1 não registrado

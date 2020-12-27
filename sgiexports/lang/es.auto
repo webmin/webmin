@@ -7,6 +7,7 @@ index_none=Aún no se han definido exportaciones NFS.
 index_apply=Aplicar configuración
 index_applydesc=Haga clic en este botón para activar todas las exportaciones enumeradas anteriormente, con sus opciones configuradas.
 index_return=lista de exportaciones
+
 edit_title1=Crear exportación
 edit_title2=Editar exportación
 edit_header=Detalles de exportación
@@ -24,12 +25,14 @@ edit_access=Acceso de montaje
 edit_all=Todos los anfitriones
 edit_sel=Anfitriones listados ..
 edit_none=Sin anfitriones
+
 save_err=Error al guardar la exportación
 save_edir=Directorio que falta o no existe para exportar
 save_eanon=Usuario root faltante o inválido
 save_erw=No se ingresaron hosts de lectura-escritura
 save_eroot=No se ingresaron hosts de acceso al archivo raíz
 save_eaccess=No se han ingresado hosts de acceso de montaje
+
 log_create_export=Exportación creada de $1 
 log_delete_export=Exportación eliminada de $1 
 log_modify_export=Exportación modificada de $1 

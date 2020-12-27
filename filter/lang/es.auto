@@ -45,6 +45,7 @@ index_ondate=Fecha
 index_charset=Juego de caracteres de mensaje de respuesta automática
 index_subject=Asunto del mensaje de respuesta automática
 index_nowebmin=Este módulo es solo para uso en Usermin. Si está visible en Webmin, el tema que está utilizando está incompleto.
+
 edit_title1=Crear filtro
 edit_title2=Editar filtro
 edit_header1=Condición para filtro
@@ -71,6 +72,7 @@ edit_amode7=Guardar en una nueva carpeta llamada
 edit_nobounce=Suprimir el reenvío de mensajes de rebote
 edit_apply=Mostrar correo electrónico coincidente en la carpeta:
 edit_move=Aplicar al correo electrónico en la carpeta:
+
 save_err=Error al guardar el filtro
 save_egone=¡El filtro ya no existe!
 save_econdheader=Encabezado de correo electrónico faltante o no válido
@@ -89,8 +91,10 @@ save_enewfolder3=Ya existe una carpeta con el mismo nombre
 save_estart=Fecha de inicio de respuesta automática no válida
 save_eend=Fecha de finalización de respuesta automática no válida
 save_echarset=Juego de caracteres de respuesta automática faltante o no válido
+
 delete_err=Error al eliminar filtros
 delete_enone=Ninguna seleccionada
+
 aliases_type1=Dirección 1
 aliases_type2=Direcciones en el archivo $1 
 aliases_type3=Archivo $1 
@@ -101,6 +105,7 @@ aliases_your=Su buzón
 aliases_delete=Eliminar correo
 aliases_other=Buzón del usuario $1 
 aliases_auto=Autoresponder con mensaje $1 
+
 auto_title=Correo electrónico de respuesta automática
 auto_header=Opciones de respuesta automática por correo electrónico
 auto_enabled=Respuesta automática habilitada?
@@ -111,12 +116,14 @@ auto_charsetdef=Del idioma actual
 auto_charsetother=Otro conjunto de caracteres
 auto_period=Intervalo mínimo entre respuestas
 auto_err=Error al guardar la respuesta automática
+
 forward_title=Redirigir correo
 forward_header=Opciones de reenvío de correo electrónico
 forward_enabled=¿Reenvío de correo electrónico habilitado?
 forward_to=Reenviar a direcciones
 forward_cont=También entregar normalmente?
 forward_err=Error al guardar el reenvío de correo electrónico
+
 move_err=Error al aplicar el filtro
 move_esrc=¡La carpeta fuente $1 no existe!
 move_edest=¡La carpeta de destino $1 no existe!

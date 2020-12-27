@@ -21,8 +21,10 @@ index_loginsdesc=ورود به سیستم اخیر را نشان می دهد ب�
 index_lower=کمتر است از
 index_higher=بزرگتر است از
 index_whodesc=کاربرانی که هم اکنون از طریق SSH یا Usermin وارد سیستم شده اند را نمایش دهید.
+
 search_found=Found $1 matching users ..
 search_gfound=Found $1 matching groups ..
+
 gidnum=شناسه گروه
 uedit_manual=فهرست راهنما
 uedit_allg=همه گروه ها
@@ -31,11 +33,13 @@ uedit_egone=کاربر انتخاب شده دیگر وجود ندارد!
 uedit_grename=در صورت تغییر نام کاربری ، گروه را تغییر نام دهید؟
 uedit_sys=پیش فرض سیستم
 uedit_clone=کاربر کلون
+
 usave_esgname='$1' is not a valid secondary group name
 usave_edigestblowfish=Your system has Blowfish passwords enabled, but the Perl <tt>$3</tt> module is not installed.<p>To force the use of normal encrypted passwords, adjust your <a href='$1'>module configuration</a>.<p>Or have Webmin <a href='$2'>download and install</a> the <tt>$3</tt> module for you.
 usave_edigestsha512=Your system has Blowfish passwords enabled, but the <tt>crypt</tt> function does not support this format.
 usave_epasswd_mindays=Password was changed less than $1 days ago
 usave_epasswd_cmd=فرمان تأیید رمز عبور انجام نشد
+
 gedit_desc=شرح
 gedit_oneperline=(یک در هر خط)
 gedit_egone=گروه منتخب دیگر وجود ندارد!
@@ -44,20 +48,25 @@ gedit_selu=کاربران گروهی
 gedit_pri=اعضای گروه اولیه
 gedit_prinone=هیچ کاربر این گروه را به عنوان اصلی خود ندارد
 gedit_clone=گروه کلون
+
 gsave_egidused2=GID در حال استفاده است
+
 udel_ugroupother=حذف این گروه کاربر در ماژول های دیگر ..
+
 acl_uedit_gid=کاربران دارای GID در محدوده
 acl_uedit_re=کاربران مطابق با regexp
 acl_udelete=آیا می توانید کاربران را حذف کنید؟
 acl_gdelete=آیا می توانید گروه ها را حذف کنید؟
 acl_urename=آیا می توان کاربران را تغییر نام داد؟
 acl_grename=آیا می توانید گروه ها را تغییر نام دهید؟
+
 log_gbatch=Executed group batch file $1
 log_gbatch_l=Executed group batch file $1 ($2 created, $3 modified, $4 deleted)
 log_ugbatch=پرونده دسته ای بارگذاری شده اجرا شد
 log_ugbatch_l=Executed uploaded group batch file ($1 created, $2 modified, $3 deleted)
 log_delete_users=Deleted $1 users
 log_delete_groups=Deleted $1 groups
+
 batch_erename=You are not allowed to rename users at line $1 : $2
 batch_emin=Invalid minimum days on line $1 : $2
 batch_emax=Invalid maximum days on line $1 : $2
@@ -67,6 +76,7 @@ batch_eexpire=Invalid expiry day on line $1 : $2
 batch_echange=Invalid password change day on line $1 : $2
 batch_instr=دستورالعمل ها و قالب دسته ای
 batch_header=گزینه های ایجاد ، بروزرسانی و حذف کاربر را دسته ای کنید
+
 export_header=گزینه های صادرات دسته ای کاربر
 export_egroup=Group $1 does not exist
 export_euid=محدوده اول UID نامعتبر است
@@ -74,6 +84,7 @@ export_euid2=محدوده UID دوم نامعتبر است
 export_egid=دامنه GID معتبر برای اولین بار
 export_egid2=دامنه GID دوم نامعتبر است
 export_ecannot=شما مجاز به صادرات کاربران نیستید
+
 gexport_title=صادرات پرونده دسته ای گروه ها
 gexport_desc=این فرم به شما امکان می دهد تا یک فایل دسته ای را که شامل برخی یا همه گروه های موجود در سیستم است ، ایجاد کنید. این پرونده را می توان در صفحه Execute Group Batch File در سیستم دیگری برای ایجاد مجدد گروه های صادر شده استفاده کرد.
 gexport_header=گزینه های صادرات گروه دسته ای
@@ -82,18 +93,22 @@ gexport_ecannot=شما مجاز به صادرات گروه نیستید
 gexport_err=صادرات پرونده دسته ای انجام نشد
 gexport_egid=دامنه GID معتبر برای اولین بار
 gexport_egid2=دامنه GID دوم نامعتبر است
+
 umass_others=WARNING! Some home directories contain $1 files owned by other users.
 umass_sure2=Are you sure you want to delete the $1 selected users?
+
 dmass_title=غیرفعال کردن کاربران
 dmass_sure=Are you sure you want to disable the $1 selected users? They can be re-enabled later with no loss of their passwords or data.
 dmass_dis=غیرفعال کردن کاربران
 dmass_pass=قفل موقتی رمز عبور ..
 dmass_doing=Disabling user $1 ..
 dmass_already=.. قبلاً غیرفعال شده!
+
 emass_title=کاربران را فعال کنید
 emass_pass=باز کردن رمز عبور ..
 emass_doing=Enabling user $1 ..
 emass_already=.. قبلاً فعال شده!
+
 gbatch_title=فایل دسته ای گروه را اجرا کنید
 gbatch_ecannot=شما نمی توانید از فرم پرونده دسته ای گروه استفاده کنید
 gbatch_desc=این فرم به شما امکان می دهد بسیاری از گروه ها را به طور هم زمان از یک فایل متنی بارگذاری شده یا محلی ایجاد ، اصلاح یا حذف کنید. هر خط در پرونده بسته به نوع اول خود ، یک عمل را انجام می دهد. قالب های خط عبارتند از :

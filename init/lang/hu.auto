@@ -2,9 +2,12 @@ index_sadd=Hozzon létre egy új rendszeres szolgáltatást.
 index_always=Mindig
 index_ladd=Hozzon létre egy új indított ügynököt.
 index_lname=Ügynök neve
+
 edit_reloadnow2=Olvassa újra a konfigurációs fájlt
+
 mode_systemd=systemd
 mode_launchd=LaunchD
+
 systemd_title1=Hozzon létre Systemd szolgáltatást
 systemd_title2=Rendszeres szolgáltatás szerkesztése
 systemd_egone=A szolgáltatás már nem létezik!
@@ -28,6 +31,7 @@ systemd_edesc=Hiányzik a szolgáltatásleírás
 systemd_return=rendszeres szolgáltatás
 systemd_econf=Nincs megadva rendszerszintű konfiguráció
 systemd_estart=Hiányzó parancsok az indításkor
+
 launchd_title1=Hozzon létre egy indított ügynököt
 launchd_title2=Indított ügynök szerkesztése
 launchd_egone=Az ügynök már nem létezik!
@@ -48,4 +52,5 @@ launchd_eclash=Az azonos nevű ügynök már létezik
 launchd_return=indított ügynök
 launchd_econf=Nincs megadva indított konfiguráció
 launchd_estart=Hiányzik a szerver parancs
+
 syslog_journalctl=SystemD naplók

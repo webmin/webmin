@@ -67,6 +67,7 @@ index_reset=Reiniciando Firewall
 index_resetdesc=Clique neste botão para limpar todas regras de firewall existentes e configurar uma nova regra com configurações iniciais básicas.
 index_cluster=Servidores Clusters
 index_clusterdesc=Clique neste botão para ativar um Servidor Webmin adicional no qual a configuração do Firewall será automaticamente copiada.
+
 desc_p=protocolo é $1
 desc_p!=protocolo não é $1
 desc_s=origem é $1
@@ -116,9 +117,14 @@ desc_tos!=campo tipo de serviço não é $1
 desc_conds=Se $1
 desc_and=e
 desc_always=Sempre
+
 redhat_eoutput=Um erro ocorreu obtendo o status do Iptables a partir do comando $1. Isto provavelmente indica que seu sistema está configurado para usar Ipchais ao invés de Iptables.
+
 gentoo_escript=O Script Iptables do Gentoo $1 não foi encontrado em seu sistema.
+
 eiptables=Linha do arquivo Iptables desconhecido : $1
+eip6tables=Linha do arquivo ip6tables desconhecido : $1
+
 edit_title1=Adiciona Regra
 edit_title2=Editar Regra
 edit_title3=Clonar Regra
@@ -180,6 +186,7 @@ edit_args=Parâmetros adicionais
 edit_mods=Módulos adicionais Iptables
 edit_rwith=Rejeitar com tipo ICMP
 edit_rwithtype=Tipo $1
+
 save_err=Falha ao salvar regra
 save_echain=Chain a ser executada faltando ou inválida
 save_esource=Perdido ou inválido endereço de origem ou rede
@@ -222,23 +229,28 @@ save_espfrom=Inválida porta inicial para SNAT
 save_espto=Perdido ou inválido porta final para SNAT
 save_estates=Nenhum status de conexão selecionado
 save_ecanjump=Você não possui permissão para usar esta ação
+
 delete_title=Deletar Chain
 delete_rusure=Você tem certeza que quer deletar esta chain $1 ? $2 regras como estas serão deletadas.
 delete_ok=Deletando Agora
 delete_ecannot=Você não está permitido deletar chains
+
 clear_title=Limpar Chain
 clear_rusure=Você tem certeza que quer deletar todas $2 regras da chain $1 ?
 clear_ecannot=Você não está permitido limpar chains
+
 new_err=Falha ao criar chain
 new_ename=Nome da chain faltando ou inválido
 new_etaken=Já existe uma chain com este nome
 new_ecannot=Você não possui permissão para criar chains
+
 apply_err=Falha ao aplicar configuração
 apply_ecannot=Você não está permitido aplicar as configurações
 apply_remote=Erro de $1 : $2
 unapply_err=Falha  ao reverter configuração
 unapply_ecannot=Você não está permitido reverter a configuração
 bootup_ecannot=Você não está permitido ativar ou desativar o firewall na inicialização
+
 log_create_rule=Adicionado regras na chain $1 na tabela $2
 log_modify_rule=Modificada regra na chain $1 na tabela $2
 log_delete_rule=Deletado regra na chain $1 na tabela $2
@@ -258,8 +270,10 @@ log_add_host=Adicionado servidor cluster $1
 log_add_group=Adicionando servidores clusters do grupo $1
 log_delete_host=Removido servidor cluster $1
 log_delete_group=Removido $1 servidores cluster
+
 setup_eiface=Nenhuma interface externa de rede entrado
 setup_ecannot=Você não está permitido a configurar o firewall
+
 acl_tables=Iptables Permitido
 acl_apply=Pode aplicar configuração ?
 acl_unapply=Pode desaplicar configuraçao ?
@@ -271,9 +285,11 @@ acl_jall=Todos
 acl_newchain=Pode criar novas chains ?
 acl_delchain=Pode apagar ou limpar chains?
 acl_policy=Pode mudar políticas padrão ?
+
 etable=Você não está permitido editar este Iptable
 ejump=Você não está permitido editar esta regra
 ecluster=Você não está permitido gerenciar cluster firewall
+
 cluster_title=Servidores Firewall Cluster
 cluster_none=Nenhum servidores cluster foi adicionado no firewall.
 cluster_host=Hostname
@@ -284,6 +300,7 @@ cluster_gadd=Adicionar os servidores no grupo
 cluster_need=Você deve adicionar servidores com um login e senha nos Servidores Webmin antes de gerenciarem eles aqui.
 cluster_return=Servidores Clusters
 cluster_delete=Removido Selecionado
+
 add_title=Adicionar Servidores
 add_msg=Adicionando $1 ..
 add_gmsg=Adicionando servidores no grupo $1 ..
@@ -292,5 +309,5 @@ add_gerr=Falha ao adicionar grupos
 add_echeck=Servidor $1 não pode estar no módulo Linux Firewall
 add_emissing=Servidor $1 está perdido no comando firewall $2
 add_ok=Adicionado $1, com $2 regras de firewall ativas.
+
 policy_ecannot=Você não possui permissão para alterar a política padrão para esta chain
-eip6tables=Linha do arquivo ip6tables desconhecido : $1

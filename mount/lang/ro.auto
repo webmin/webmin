@@ -12,6 +12,7 @@ index_return=lista sistemelor de fișiere
 index_none=Nu aveți acces la niciun sistem de fișiere montat.
 index_mount2=Montare cu parolă:
 index_root=Sistem de fișiere rădăcină
+
 edit_title=Editează Muntele
 create_title=Creați Mount
 edit_err=Nu a reușit să editeze montajul
@@ -58,6 +59,7 @@ edit_ecannot=Nu aveți voie să editați acest sistem de fișiere
 edit_ecannot2=Nu aveți voie să adăugați sisteme de fișiere noi
 edit_3_or_lower=3 (sau mai mic)
 edit_advanced=Mod avansat
+
 save_err=Nu a reușit să salvezi montura
 save_edir=„$1” nu este un director
 save_edirname=„$1” nu este un nume de director valid
@@ -74,8 +76,10 @@ save_apply=Aplicați pe lista permanentă
 save_fapply=Forța Un-Mount
 save_eremount=Remunerația eșuată : $1
 save_enone=Nu ați ales să salvați sau să montați
+
 swap_err=Nu a reușit să creeze fișierul swap
 swap_esize=„$1” nu are o dimensiune validă
+
 nfs_server=Alegeți NFS Server ..
 nfs_select=Selectați un server NFS din care să fie montat ..
 nfs_ip=Adresa IP
@@ -87,6 +91,7 @@ nfs_seldir=Selectați un director NFS pe care să îl montați ..
 nfs_seldirv4=Pentru o montare NFSv4, ar trebui să selectați '/'
 nfs_dir=Director
 nfs_clients=Clienți
+
 smb_choose=Alegeți serverul CIFS ..
 smb_elist=Eșuarea la preluarea listei de server din $1. Poate că serverul nu permite navigarea
 smb_eworkgroup=Nu există grup de lucru setat pe pagina Modul Config
@@ -103,6 +108,7 @@ smb_sel2=Selectați o porțiune pe care să o montați ..
 smb_share=Acțiune
 smb_comment=cometariu
 smb_noshares=Nu există distribuții de fișiere disponibile pe server $1
+
 solaris_scsidev=Controler SCSI $1 ținta $2 unitate $3 partiție $4
 solaris_idedev=Controler IDE $1 drive $2 partiție $3
 solaris_mddev=Dispozitiv RAID $1
@@ -240,6 +246,7 @@ solaris_efstyp2=Nu a reușit să verifice tipul de sistem de fișiere : $1
 solaris_ecachedir=„$1” nu este un director de memorie cache valid
 solaris_efmode=„$1” nu este un mod de fișier octal valid
 solaris_edmode=„$1” nu este un mod director direct octal
+
 linux_eamd=AMD a eșuat
 linux_eauto=Automount eșuat : $1
 linux_esmbconn=conectare eșuată la server
@@ -361,6 +368,7 @@ linux_noenforce=Da, dar nu se impune
 linux_df=Includeți blocuri rezervate în dimensiunea sistemului de fișiere?
 linux_noatime=Evitați actualizarea ultimelor ore de acces?
 linux_netdev=Așteptați până când interfețele de rețea sunt active?
+linux_nofail=Continuați să porniți chiar dacă montarea eșuează?
 linux_ecname=Numele netbios al clientului lipsește sau este nevalid
 linux_emname=Numele de gazdă sau adresa IP lipsă sau nevalidă a serverului
 linux_bind=Directorul original
@@ -386,6 +394,7 @@ linux_nounix=Dezactivați extensiile CIFS Unix?
 linux_noserverino=Generați numere inode pe partea clientului?
 linux_cvers=Versiunea CIFS
 linux_ecvers=Versiunea CIFS trebuie să fie un număr
+
 log_mount=Montat $3
 log_mount_l=Montat $2 $1 pe $3
 log_umount=$3
@@ -399,7 +408,9 @@ log_modify_l=$2 mount $1 pe $3
 log_delete=S-a șters montura $3
 log_delete_l=Șters $2 mount $1 pe $3
 log_swap=Fișier swap creat $1
+
 unmount_err=Nu a reușit să demonteze $1
+
 mount_err=Nu a reușit să monteze $1
 irix_nhost=NFS Nume gazdă
 irix_ndir=Director NFS
@@ -430,6 +441,7 @@ irix_rock=Folosiți extensiile Rock Ridge?
 irix_nofsck=Verificați sistemul de fișiere la pornire?
 irix_auto=Sursa automounter
 irix_automap=Fișier hartă
+
 irix_ehost=Gazda „$1” nu există
 irix_eloss=Gazda „$1” a scăzut
 irix_eshowmount=Gazda „$1” nu acceptă NFS
@@ -447,9 +459,11 @@ irix_efstyp2=Nu a reușit să obțină tipul de sistem de fișiere $1 : $2
 irix_efstyp=Tipul de sistem de fișiere de pe $1 este $2, nu $3
 irix_eautomap=Fișierul hartă automounter „$1” nu există
 irix_eauthmap2=Fișierul cu harta automontului lipsă sau nevalid
+
 irix_devroot=Partiție rădăcină
 irix_devswap=Schimbă partiția
 irix_autohosts=Toate exporturile NFS
+
 acl_only=Permiteți numai montarea și demontarea?
 acl_fs=Sisteme de fișiere care pot fi editate
 acl_types=Tipuri de sistem de fișiere care pot fi utilizate
@@ -462,8 +476,10 @@ acl_hide=Ascundeți sistemele de fișiere care nu pot fi modificate?
 acl_simple=Afișați o formă simplă de montare?
 acl_simopts=Afișați opțiuni simplificate ale sistemului de fișiere?
 acl_browse=Afișați butoanele de răsfoire a fișierelor și de partajare?
+
 egcc=Compilatorul GCC sau CC necesar construirii unui program pentru listarea sistemelor de fișiere montate pe sistemul dvs. nu este disponibil.
 ecompile=A apărut o eroare la crearea unui program pentru listarea sistemelor de fișiere montate pe sistemul tău : $1
+
 freebsd_eaddr=Adresa serverului lipsă sau nevalidă
 freebsd_eworkgroup=Grup de lucru lipsă sau nevalid
 freebsd_ide=Hard disk IDE
@@ -477,8 +493,10 @@ freebsd_idedev=Dispozitiv IDE $1, felie $2, partiție $3
 freebsd_scsidev=Dispozitiv SCSI $1, felie $2, partiție $3
 freebsd_edevpath=Un alt dispozitiv trebuie să fie o cale absolută, cum ar fi <tt>/dev/cdrom</tt>
 freebsd_edevfile=Fișierul dispozitivului „$1” nu există
+
 cswap_file=Fișierul swap $1 nu există.
 cswap_size=Creați și montați un fișier swap cu dimensiunea
+
 acl_sysinfo=Afișați datele disponibile pe disc pe Panoul de bord?
 sysinfo_total=Total
 sysinfo_dev=Identificatorul dispozitivului

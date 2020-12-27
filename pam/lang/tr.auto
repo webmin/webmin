@@ -4,6 +4,7 @@ index_desc=Açıklama
 index_add=Yeni bir PAM hizmeti ekleyin.
 index_return=servis listesi
 index_none=$1 dizininde sisteminizde PAM yapılandırma dosyası bulunamadı. Belki PAM desteklenmemektedir veya <a href='$2'>modül yapılandırmanız</a> yanlıştır.
+
 desc_su=Kullanıcı değiştir
 desc_su-l=Kullanıcı değiştir (giriş ile)
 desc_login=Yerel veya uzaktan giriş
@@ -87,6 +88,7 @@ desc_common-account=Ortak hesap doğrulaması
 desc_common-auth=Ortak kimlik doğrulama
 desc_common-password=Ortak şifre değişikliği
 desc_common-session=Ortak oturum kurulumu
+
 edit_title=PAM Hizmetini Düzenle
 edit_header=PAM hizmet ayrıntıları
 edit_name=Hizmet adı
@@ -107,6 +109,7 @@ edit_move=Hareket
 edit_return=PAM hizmeti
 edit_inc=$1 hizmetini dahil et
 edit_iheader=Dahil olan PAM hizmetleri
+
 pam_pwdb.so=Unix şifre kimlik doğrulaması
 pam_securetty.so=Kök için güvenli TTY kontrolü
 pam_nologin.so=<tt>/etc/nologin</tt> dosya kontrolü
@@ -149,6 +152,7 @@ pam_console.so=Yalnızca konsol kontrolü
 pam_xauth.so=X kimlik doğrulaması
 pam_stack.so=Diğer PAM servisini arayın
 pam_foreground.so=Konsol kurulumu
+
 control_requisite=gerekli
 control_required=gereklidir
 control_sufficient=Yeterli
@@ -157,6 +161,7 @@ control_desc_requisite=Hata anında kimlik doğrulaması başarısız
 control_desc_required=Hata sonunda kimlik doğrulaması başarısız
 control_desc_sufficient=Başarıyla hemen kimlik doğrulamayı başarın
 control_desc_optional=Başarı veya başarısızlık göz ardı edilir
+
 create_title=PAM Hizmeti Oluştur
 create_header=Yeni PAM hizmet seçenekleri
 create_name=Hizmet adı
@@ -165,6 +170,7 @@ create_mods=İlk PAM modülleri
 create_0=Yok
 create_1=Unix kimlik doğrulaması
 create_2=Tüm erişimi reddet
+
 mod_edit=PAM Modülünü Düzenle
 mod_create=PAM Modülü Ekle
 mod_header=PAM modülü seçenekleri
@@ -178,10 +184,12 @@ mod_type_password=Parola değişimi
 mod_control=Arıza seviyesi
 mod_args=Modül bağımsız değişkenleri
 mod_err=Modül kaydedilemedi
+
 pwdb_shadow=Gölge şifre dosyası kullanılsın mı?
 pwdb_nullok=Boş şifreleri kabul etmek istiyor musunuz?
 pwdb_md5=MD5 şifreli parolalar kullanılsın mı?
 pwdb_nodelay=Başarısız girişten sonraki gecikme?
+
 unix_nullok_secure=Güvenli TTY'lerde boş parolalar kabul edilsin mi?
 unix_min=Minimum şifre uzunluğu
 unix_nomin=Yok
@@ -190,6 +198,7 @@ unix_nomax=Limit yok
 unix_obscure=Kolay şifrelerin kullanılmasını engeller misiniz?
 unix_emin=Eksik veya geçersiz minimum şifre uzunluğu
 unix_emax=Eksik veya geçersiz maksimum şifre uzunluğu
+
 listfile_item=Dosyayı ara
 listfile_item_user=Kullanıcı adı
 listfile_item_tty=TTY
@@ -206,51 +215,64 @@ listfile_apply=Kontrolü sınırla
 listfile_all=Tüm kullanıcılar
 listfile_user=Sadece kullanıcı
 listfile_group=Sadece grup
+
 cracklib_type=Komut isteminde şifre türü
 cracklib_retry=Arızadan önce maksimum yeniden deneme
 cracklib_eretry=Eksik veya geçersiz tekrar deneme sayısı
 cracklib_etype=Eksik veya geçersiz şifre türü
+
 rhosts_equiv=<tt>/etc/hosts.equiv</tt> dosyası okunsun mu?
 rhosts_rhosts=Kullanıcıların <tt>.rhosts</tt> dosyaları okunsun mu?
 rhosts_promiscuous=<tt>+</tt> girişi tüm ana bilgisayarlara izin veriyor mu?
 rhosts_suppress=Günlük kimlik doğrulama hataları?
+
 env_var=Değişken ismi
 env_def=Varsayılan değer
 env_over=Değeri geçersiz kıl
 env_evar=Değişken adları boşluk içeremez
+
 securetty_ttys=Güvenli TTY'ler
+
 shells_shells=Geçerli kullanıcı kabukları
+
 tally_deny=Erişimi reddetmeden önce hata denemesi
 tally_reset=Başarı durumunda başarısızlık sayısını sıfırla
 tally_edeny=Eksik veya geçersiz sayıda başarısız deneme
 tally_magic=Hata sayısı <tt>kök</tt> için geçerli mi?
 tally_root=<tt>root</tt> hesabı reddedilebilir mi?
+
 time_services=Hizmetler
 time_ttys=ttys
 time_users=Kullanıcılar
 time_times=Erişim süreleri
 time_info=Tüm alanlar | ile ayrılmış birden çok değer içerebilir ve değerler * işaretini joker veya! negator olarak.
+
 group_services=Hizmetler
 group_ttys=ttys
 group_users=Kullanıcılar
 group_times=Erişim süreleri
 group_groups=Grup ekle
 group_info=Tüm alanlar | ile ayrılmış birden çok değer içerebilir ve değerler * işaretini joker veya! negator olarak.
+
 wheel_group=Grubun üyeliğini kontrol et
 wheel_group_def=Varsayılan (<tt>tekerlek</tt> veya GID 0)
 wheel_trust=Grup üyeleri daha fazla kimlik doğrulaması atlansın mı?
 wheel_deny=Grup üyelerine izin vermek yerine reddedilsin mi?
 wheel_egroup=Eksik veya geçersiz grup adı
+
 motd_file=Görüntülenecek dosya
 motd_file_def=Varsayılan (<tt>/etc/motd</tt>)
 motd_efile=Eksik veya geçersiz dosya adı
+
 mail_nopen=Girişte posta bildirimi gösterilsin mi?
 mail_close=Çıkışta posta bildirimi gösterilsin mi?
 mail_empty=Posta dosyası boşsa bildirilsin mi?
 mail_noenv=$ MAIL ortam değişkeni ayarlansın mı?
 mail_dir=Posta biriktirme dizini
 mail_edir=Eksik veya geçersiz posta biriktirme dizini
+
 stack_service=PAM servisine geçiş kontrolü
+
 log_pam_create=PAM hizmeti $1 oluşturuldu
 log_pam_delete=PAM hizmeti $1 silindi
 log_mod_create=$2 hizmetine $1 PAM modülü eklendi
@@ -262,6 +284,7 @@ log_inc_create=$2 hizmeti için $1 dahil edildi
 log_inc_modify=Değiştirildi $2 hizmeti için $1 dahil
 log_inc_delete=$2 hizmeti için $1 dahil silindi
 log_incs=Güncellenmiş hizmet $1 'i içerir
+
 inc_edit=Dahil Olan Hizmeti Düzenle
 inc_create=Dahil Olan Hizmet Yaratın
 inc_header=PAM hizmet ayrıntıları dahil

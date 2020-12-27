@@ -6,6 +6,7 @@ index_printershare=tulostimen osuus
 index_shareconf=jaa kokoonpano
 index_version=Samban versio $1 
 index_samba=Samba
+
 index_sharename=Jaa nimi
 index_path=polku
 index_security=turvallisuus
@@ -42,12 +43,14 @@ index_stopmsg=Napsauta tätä painiketta, kun haluat sammuttaa käynnissä oleva
 index_stopmsg_wb=Napsauta tätä painiketta sammuttaaksesi käynnissä olevat Winbind-palvelimet järjestelmässäsi.
 index_einclude=Varoitus - Samban kokoonpanotiedosto $1 sisältää $2 tai $3 -direktiivin. Tämä voi aiheuttaa Webminin muuttamaan tiedostoa väärin.
 index_delete=Poista valitut osakkeet
+
 config_mins=min
 config_secs=sekuntia
 config_bytes=tavua
 config_never=Ei koskaan
 config_all=Kaikki
 config_neither=Ei kumpikaan
+
 global_title=Globaali kokoonpano
 global_unixnetwork=Unix-verkottuminen
 global_winnetwork=Windows-verkottuminen
@@ -60,6 +63,7 @@ global_password=Salatut salasanat
 global_users=Samban käyttäjät
 global_group=Samba-ryhmät
 global_bind=Winbind-asetukset
+
 error_nosamba=Samba-palvelimen suoritettavaa <tt>$1</tt> ei löytynyt. Joko Sambaa ei ole asennettu järjestelmään tai <a href="$2">moduulin määritykset</a> ovat vääriä.
 error_version=Webmin epäonnistui saamaan versiota Samba-palvelimesta suoritettavalle <tt>$1</tt>. Tarkista <a href="$2">moduulin kokoonpano</a> ja varmista, että tämä on oikea polku.
 error_config=Konfiguraatiotiedostoa $1 ei löytynyt. Todennäköisesti Sambaa ei ole asennettu järjestelmään tai <a href="$2">moduulin määritykset</a> ovat vääriä.
@@ -67,6 +71,7 @@ error_include=Webmin ei voi käsitellä Samban konfigurointitiedostoja, jotka k�
 error_delshare=Jakamisen poistaminen epäonnistui
 error_delcopy=Osakkeen '$1' kopio tästä osakkeesta
 error_savename=Tiedostonimityksen tallentaminen epäonnistui
+
 convert_title=Muunna käyttäjät
 convert_msg=Tämä muoto antaa sinun synkronoida Unix- ja Samba-käyttäjäluettelot. Kun Samba käyttää <a href=$1>salattuja salasanoja</a>, järjestelmän käyttäjäluettelon sijasta käytetään erillistä käyttäjien ja salasanojen luetteloa.
 convert_noconv=Älä muunna tai poista näitä käyttäjiä:
@@ -83,6 +88,7 @@ convert_cannot=Unix-käyttäjiä ei voida muuntaa Samban käyttäjiksi
 convert_who=Unix-käyttäjät muuntamaan
 convert_who0=Vain luettelossa olevat käyttäjät tai UID-alueet
 convert_who1=Kaikki paitsi luetellut käyttäjät ja UID-alueet
+
 misc_title=Sekalaiset vaihtoehdot
 misc_debug=Debug-taso
 misc_cachecall=Välimuisti <tt>getwd ()</tt> vaatii?
@@ -96,6 +102,7 @@ misc_chroot=<tt>chroot ()</tt> -hakemisto
 misc_smbrun=Polku kohteeseen <tt>smbrun</tt>
 misc_clienttime=Asiakkaan aikaero
 misc_readprediction=Lueko ennuste?
+
 net_title=Unix-verkkovaihtoehdot
 net_idle=Joutoaika ennen irrottamista
 net_trustlist=Luotettavat isännät/käyttäjät-tiedosto
@@ -111,6 +118,7 @@ net_maxpacket=Paketin enimmäiskoko
 net_listen=Kuuntele osoitteessa
 net_ip=IP-osoite
 net_socket=Pistorasiavaihtoehdot
+
 passwd_title=Salasana-asetukset
 passwd_encrypt=Käytätkö salattuja salasanoja?
 passwd_allownull=Sallivat tyhjät salasanat?
@@ -124,11 +132,13 @@ passwd_send=Lähettää
 passwd_map=Käyttäjätunnuksen kartoitus
 passwd_unixuser=Unix-käyttäjät
 passwd_winuser=Windows-käyttäjät
+
 print_title=Tulostusasetukset
 print_style=Unix-tulostustyyli
 print_show=Näytä kaikki tulostimet?
 print_printcap=Tulostussuojatiedosto
 print_cachetime=Tulostimen tilan välimuistin aika
+
 smb_title=Windows-verkkoasetukset
 smb_workgroup=Workgroup
 smb_wins=WINS-tila
@@ -159,14 +169,17 @@ smb_nowhere=Ei missään
 smb_fromlist=Luettelosta. ..
 smb_ip=IP-osoite
 smb_asworkgroup=<b>Työryhmänä</b> (valinnainen)
+
 create_title=Luo kopio
 create_msg=Kopio-osuus perii kaikki oletusarvot valitsemastasi jaosta. Jos lähdekoodia vaihdetaan, niin myös kopio.
 create_from=Jaa kopioitavaksi:
 create_name=Uusi osakkeen nimi:
+
 smbuser_title=Samban käyttäjät
 smbuser_list=Samban käyttäjäluettelo
 smbuser_nouser=Ei Samban käyttäjiä määritelty.
 smbuser_cannot=Samban käyttäjiä ei voida luetteloida
+
 euser_title=Muokkaa Samban käyttäjää
 euser_name=Käyttäjätunnus
 euser_uid=Unix UID
@@ -185,6 +198,7 @@ euser_locked=Tili on lukittu
 euser_nopwrequired=Salasanaa ei vaadita
 euser_disable=Tili poistettu käytöstä
 euser_trust=Työaseman luottotili
+
 fmisc_title=Sekalaiset tiedoston oletusasetukset
 fmisc_for=Osakkeelle <tt>$1</tt>
 fmisc_lockfile=Lukitaanko tiedosto
@@ -202,6 +216,7 @@ fmisc_conncmd=Komento suorittaa yhteyden
 fmisc_disconncmd=Komento suorittaa katkaiseminen
 fmisc_rootconn=Komento suorittaa yhteyden <i>juurina</i>
 fmisc_rootdisconn=Komento suorittaa katkaisemalla <i>juurina</i>
+
 fname_title1=Tiedostonimityksen oletusasetukset
 fname_title2=Muokkaa tiedoston nimeämistä
 fname_option=Tiedostojen nimeämisasetukset
@@ -216,6 +231,7 @@ fname_hide=Piilota dot-tiedostot?
 fname_archive=Tallennetaanko DOS-arkiston lippu?
 fname_hidden=Tallennetaanko DOS-piilotettu lippu?
 fname_system=Tallennetaanko DOS-järjestelmän lippu?
+
 fperm_title1=Tiedoston käyttöoikeuksien oletusasetukset
 fperm_title2=Muokkaa tiedostooikeuksia
 fperm_option=Tiedostojen käyttöoikeudet
@@ -228,6 +244,7 @@ fperm_link=Sallitaanko linkit jaon ulkopuolelle?
 fperm_delro=Voinko poistaa vain luku-tiedostoja?
 fperm_forcefile=Pakota Unix-tiedostotila
 fperm_forcedir=Pakota Unix-hakemistotila
+
 share_title1=Tiedostojen jaon oletusasetukset
 share_title2=Muokkaa tiedostojakoa
 share_title3=Luo tiedostojako
@@ -251,6 +268,7 @@ share_naming=Tiedoston nimeäminen
 share_misc=Sekalaiset vaihtoehdot
 share_samedesc1=Huomaa - nämä asetukset vaikuttavat myös kaikkien tiedostojakojen oletusasetuksiin.
 share_samedesc2=Huomaa - nämä asetukset vaikuttavat myös kaikkien tulostimen jakojen oletusasetuksiin.
+
 print_title1=Tulostimen lisäasetukset
 print_title2=Muokkaa tulostimen asetuksia
 print_option=Tulostimen asetukset
@@ -262,6 +280,7 @@ print_delete=Poista työkomento
 print_pause=Keskeytä työn komento
 print_unresume=Luo työn komento
 print_driver=Tulostinohjain
+
 pshare_title1=Tulostimen jaon oletusasetukset
 pshare_title2=Muokkaa tulostimen jakoa
 pshare_title3=Luo tulostimen jako
@@ -270,6 +289,7 @@ pshare_name=Jaa nimi
 pshare_all=Kaikki tulostimet jakavat
 pshare_unixprn=Unix-tulostin
 pshare_spool=Kelahakemisto
+
 sec_index1=Turvallisuusasetukset
 sec_index2=Muokkaa suojausta
 sec_writable=Kirjoitettavissa?
@@ -292,6 +312,7 @@ sec_rouser=Vain luku -käyttäjät
 sec_rogroup=Lue vain ryhmät
 sec_rwuser=Lue/kirjoita käyttäjiä
 sec_rwgroup=Lue/kirjoita ryhmiä
+
 esync_title=Käyttäjän synkronointi
 esync_msg=Webmin voidaan määrittää siten, että muutokset Unix-käyttäjäluetteloon otetaan automaattisesti käyttöön Samban käyttäjäluettelossa. Tämä toimii vain, kun <b>Käyttäjät ja ryhmät</b> Webmin-moduulia käytetään käyttäjien lisäämiseen, poistamiseen tai muuttamiseen.
 esync_add=Lisää Samba-käyttäjä, kun Unix-käyttäjä lisätään
@@ -303,6 +324,7 @@ esync_gid=Ryhmä SID tai RID uusille käyttäjille
 esync_apply=Käytä
 esync_cannot=Käyttäjän synkronointia ei voi määrittää
 esync_egid=Puuttuu ryhmän SID tai RID
+
 mkpass_title=Muunna käyttäjät
 mkpass_convfail=Käyttäjän muuntaminen epäonnistui
 mkpass_msg=Muunnetaan Unix-käyttäjiä. ..
@@ -315,10 +337,12 @@ mkpass_passfail=Salasanan asettaminen epäonnistui
 mkpass_user=Käyttäjätunnus
 mkpass_action=Toimet
 mkpass_skipcount=$1 käyttäjää ohitettiin muuntamista varten.
+
 savecopy_fail=Kopion luominen epäonnistui
 savecopy_global=Nimiä 'globaali' ei voida käyttää osakkeeseen
 savecopy_exist='$1' -niminen osake on jo olemassa
 savecopy_ename=Osakkeen nimeä ei annettu
+
 saveuser_fail=Käyttäjän tallentaminen epäonnistui
 saveuser_uid='$1' ei ole kelvollinen Unix-UID
 saveuser_colon=Oikea nimi ei voi sisältää merkkiä :
@@ -326,10 +350,13 @@ saveuser_home=Kotihakemistoa '$1' ei ole
 saveuser_shell=$1 ei ole kelvollinen kuori
 saveuser_pass=Salasanan vaihtaminen epäonnistui smbpasswd: llä : $1 
 saveuser_ews='Työaseman luottotili' -asetusta ei voida ottaa käyttöön nykyisillä käyttäjillä
+
 savefmisc_fail=Sekalaisten asetusten tallentaminen epäonnistui
 savefmisc_number='$1' ei ole kelvollinen määrä yhteyksiä
+
 savefperm_fail=Tiedoston käyttöoikeuksien tallentaminen epäonnistui
 savefperm_mode='$1' ei ole kelvollinen Unix-tiedostotila
+
 savefshare_fail=Jaon tallentaminen epäonnistui
 savefshare_nopath=Ei polkua annettu
 savefshare_exist='$1' -niminen osake on jo olemassa
@@ -339,6 +366,7 @@ savefshare_owner=Puuttuva tai virheellinen uuden hakemiston omistaja
 savefshare_group=Puuttuva tai virheellinen ryhmä uudelle hakemistolle
 savefshare_perms=Puuttuvat tai virheelliset uuden hakemiston käyttöoikeudet
 savefshare_emkdir=Hakemiston luonti epäonnistui : $1 
+
 savemisc_fail=Asetusten tallentaminen epäonnistui
 savemisc_lockdir=Lukkohakemistoa sisältävää hakemistoa ei ole
 savemisc_logdir=Lokitiedostoa sisältävää hakemistoa ei ole
@@ -347,37 +375,48 @@ savemisc_overlap='$1' ei ole kelvollinen päällekkäinen lukukoko
 savemisc_chroot=Chroot-hakemistoa '$1' ei ole
 savemisc_smbrun=Smbrun-ohjelmaa '$1' ei ole tai sitä ei voi suorittaa
 savemisc_time='$1' ei ole kelvollinen aikaero
+
 savenet_fail=Asetusten tallentaminen epäonnistui
 savenet_timeout='$1' ei ole kelvollinen katkaisun aikakatkaisu
 savenet_ip='$1' ei ole kelvollinen IP-tavu
 savenet_keep='$1' ei ole kelvollinen säilyttämisväli
 savenet_maxxmit='$1' ei ole kelvollinen paketin enimmäiskoko
+
 savepass_fail=Asetusten tallentaminen epäonnistui
 savepass_nopass=Samban versiosi ei tue salattuja salasanoja
 savepass_passwd=Ohjelmaa ei ole vaihdettu salasanalla
 savepass_level='$1' ei ole kelvollinen salasanan tapausero
 savepass_chat=Vaihda salasanan chat-sekvenssi on tyhjä
+
 savepopts_fail=Tulostimen asetusten tallentaminen epäonnistui
 savepopts_number=Vähimmäisen vapaan tilan on oltava numero
+
 saveprint_fail=Asetusten tallentaminen epäonnistui
 saveprint_printcap=Tulostussuojatiedostoa '$1' ei ole
 saveprint_cache='$1' ei ole kelvollinen välimuistiaika
+
 savepshare_fail=Tulostimen osuuden tallentaminen epäonnistui
 savepshare_exist='$1' -niminen osake on jo olemassa
 savepshare_name='$1' ei ole kelvollinen jakonimi
 savepshare_global=Nimiä 'globaali' ei voida käyttää osakkeeseen
+
 savesec_fail=Suojauksen tallentaminen epäonnistui
+
 savesmb_fail=Asetusten tallentaminen epäonnistui
 savesmb_size='$1' ei ole kelvollinen levykoko
 savesmb_oslevel='$1' ei ole kelvollinen pääselaimen prioriteetti
 savesmb_server=Sinun on annettava salasanapalvelin
+
 start_err=Samba-palvelimien käynnistäminen epäonnistui
 start_fail=$1 epäonnistui
 start_err_wb=Winbind-palvelimien käynnistäminen epäonnistui
+
 restart_err=Samba-palvelimien käynnistäminen epäonnistui
 restart_err_wb=Winbind-palvelimien käynnistäminen epäonnistui
+
 swats_fail=Käyttäjätunnuksen tallentaminen epäonnistui
 swats_user=Puuttuu SWAT-käyttäjänimi
+
 viewu_index=Nykyiset käyttäjät
 viewu_list=$1 : n nykyiset käyttäjät
 viewu_share=Jaa
@@ -394,6 +433,7 @@ viewu_ecmd=Samban tilaohjelma $1 ei näytä olevan asennettuna järjestelmään.
 viewu_kill=Irrota valitut käyttäjät
 viewu_enone=Yhtään käyttäjää ei ole valittu
 viewu_refresh=Päivitä sivu.
+
 log_apply=Käynnisti Samba-palvelimet uudelleen
 log_apply_wb=Käynnisti Winbind-palvelimet uudelleen
 log_stop=Pysäytetty Samba-palvelimet
@@ -435,6 +475,7 @@ log_modify_group=Muokattu Samba-ryhmä $1
 log_delete_group=Poistettu Samba-ryhmä $1 
 log_gsync=Konfiguroitu Unix-ryhmien synkronointi
 log_manual=Konfigurointitiedosto $1 käsin muokattu
+
 swat_title=SWAT Kirjaudu sisään
 swat_list=SWAT Kirjaudu sisään
 swat_msg1=Nykyinen SWAT-käyttäjänimesi ja salasanasi ovat vääriä. Kirjaudu sisään uudelleen alla olevan lomakkeen avulla.
@@ -446,6 +487,7 @@ swat_password=Salasana
 swat_login=Kirjaudu sisään
 swat_clear=Asia selvä
 swat_logout=SWAT: n uloskirjautuminen
+
 eacl_aviol=Kulunvalvonnan rikkomus
 eacl_np=Sinulla ei ole käyttöoikeuksia
 eacl_papply=käynnistä tämä palvelu uudelleen
@@ -481,6 +523,7 @@ eacl_pafs=käyttää tätä tiedostojakoa
 eacl_paps=käyttää tätä tulostimen jakoa
 eacl_pcps=luo tulostimen osuus
 eacl_pcfs=luo tiedostojako
+
 acl_apply=Voiko muutokset ottaa käyttöön ja pysäyttää Samban?
 acl_view_all_con=Voivatko nähdä kaikki yhteydet?
 acl_kill_con=Voiko yhteyksiä poistaa?
@@ -527,6 +570,7 @@ acl_maint_groups=Voiko ryhmiä tarkastella, muokata ja lisätä?
 acl_maint_gsync=Pystyykö ylläpitämään automaattisen Unixin ja Samba-ryhmien synkronoinnin?
 acl_winbind=Voivatko sitoutua verkkotunnuksiin?
 acl_bind=Voiko Winbind-vaihtoehtoja käyttää?
+
 groups_title=Samba-ryhmät
 groups_name=Ryhmän nimi
 groups_unix=Unix-ryhmä
@@ -542,6 +586,7 @@ groups_return=ryhmäluettelo
 groups_add=Lisää uusi Samba-ryhmä.
 groups_ecannot=Et voi katsella tai muokata Samba-ryhmiä
 groups_cannot=Samba-ryhmiä ei voi luetella
+
 gedit_title2=Muokkaa Samba-ryhmää
 gedit_title1=Luo Samba-ryhmä
 gedit_header=Samba-ryhmän yksityiskohdat
@@ -554,11 +599,13 @@ gedit_unix=Unix-ryhmä
 gedit_unixgr=Ryhmä ..
 gedit_none=Ei mitään
 gedit_set=Listattu ..
+
 gsave_err=Ryhmän tallentaminen epäonnistui
 gsave_eunix=Puuttuu tai virheellinen Unix-ryhmän nimi tai GID
 gsave_ename=Puuttuu ryhmän nimi
 gsave_epriv=Puuttuvat ryhmäoikeudet
 gsave_elocal=Oikeudet voidaan asettaa vain paikallisille ryhmille
+
 gsync_title=Ryhmäsynkronointi
 gsync_msg=Webmin voidaan määrittää siten, että muutokset Unix-ryhmäluetteloon otetaan automaattisesti käyttöön Samba-ryhmäluettelossa. Tämä toimii vain, kun <b>Käyttäjät ja ryhmät</b> Webmin-moduulia käytetään ryhmien lisäämiseen, poistamiseen tai muuttamiseen.
 gsync_add=Lisää Samba-ryhmä, kun Unix-ryhmä lisätään
@@ -569,10 +616,12 @@ gsync_type=Uusien ryhmien tyyppi
 gsync_priv=Uusien ryhmien oikeudet (jos paikalliset)
 gsync_ecannot=Et voi määrittää ryhmäsynkronointia
 gsync_cannot=Ryhmän synkronointia ei voi määrittää
+
 check_user1=$1 : Salattuja salasanoja ei ole otettu käyttöön <a href='$2'>todennus</a> -sivulla.
 check_user2=$1 : Samban salasanatiedostoa tai polkua pdbeditiin ei ole asetettu <a href='$2'>moduulin määritys</a> -sivulla.
 check_group1=$1 : Ryhmiä tuetaan vain Samba-versiossa 3.
 check_group2=$1 : Polkua smbgroupedit- tai verkkokomentoihin ei ole määritetty <a href='$2'>moduulin kokoonpano</a> -sivulla.
+
 winbind_title=Sidota verkkotunnukseen
 winbind_ecannot=Et voi sitoutua verkkotunnuksiin
 winbind_msg=Tätä lomaketta voidaan käyttää sitomaan Samba-palvelimesi Windows-verkkotunnukseen, jota yleensä hoitaa eri palvelin.
@@ -588,6 +637,7 @@ winbind_edom=Puuttuu verkkotunnus
 winbind_cmd=Sidonta verkkotunnukseen komennolla $1 ..
 winbind_failed=.. epäonnistui! Katso syy miksi yllä olevassa tuotossa.
 winbind_ok=.. saattaa loppuun.
+
 bind_title=Winbind-asetukset
 bind_ecannot=Et voi muokata winbind-asetuksia
 bind_header=Windows-verkkotunnuksen sidontaasetukset
@@ -606,9 +656,11 @@ bind_erealm=Virheellinen Kerberos-alue
 bind_ecache=Välimuistin aika puuttuu tai on virheellinen
 bind_euid=Virheellinen UID-alue - sen on oltava kuin 20000-30000
 bind_egid=Virheellinen GID-alue - sen on oltava kuin 20000-30000
+
 manual_title=Muokkaa asetustiedostoa
 manual_desc=Muokkataan Samban asetustiedostoa $1.
 manual_err=Konfigurointitiedoston tallentaminen epäonnistui
 manual_edata=Mikään ei tullut sisään!
+
 delete_err=Osakkeiden poistaminen epäonnistui
 delete_enone=Mitään ei ole valittu

@@ -4,6 +4,7 @@ index_desc=説明
 index_add=新規の PAM サービスを追加
 index_return=サービス リスト
 index_none=システムのディレクトリ $1 には PAM 設定ファイルがありませんでした。PAM がサポートされていないか、 <a href='$2'>module configuration</a> is incorrect.
+
 desc_su=ユーザの切替
 desc_su-l=ユーザの切り替え (ログイン)
 desc_login=ローカルまたはリモート ログイン
@@ -87,6 +88,7 @@ desc_common-account=Common account verification
 desc_common-auth=Common authentication
 desc_common-password=Common password change
 desc_common-session=Common session setup
+
 edit_title=PAM サービスの編集
 edit_header=PAM サービスの詳細
 edit_name=サービス名
@@ -107,6 +109,7 @@ edit_move=移動
 edit_return=PAM サービス
 edit_inc=Include service $1
 edit_iheader=Included PAM services
+
 pam_pwdb.so=Unix パスワードの認証
 pam_securetty.so=root のセキュア TTY 検査
 pam_nologin.so=<tt>/etc/nologin</tt> ファイル チェック
@@ -149,6 +152,7 @@ pam_console.so=コンソールのみ検査
 pam_xauth.so=X 認証
 pam_stack.so=他の PAM サービスを呼び出し
 pam_foreground.so=Console setup
+
 control_requisite=要件
 control_required=必須
 control_sufficient=十分
@@ -157,6 +161,7 @@ control_desc_requisite=障害時に即座に認証を失敗させる
 control_desc_required=障害時に最後に認証を失敗させる
 control_desc_sufficient=成功時に即座に認証を完了する
 control_desc_optional=成功または失敗を無視する
+
 create_title=PAM サービスの作成
 create_header=新規の PAM サービスのオプション
 create_name=サービス名
@@ -165,6 +170,7 @@ create_mods=初期 PAM モジュール
 create_0=なし
 create_1=Unix 認証
 create_2=すべてのアクセスを拒否
+
 mod_edit=PAM モジュールを編集
 mod_create=PAM モジュールを追加
 mod_header=PAM モジュール オプション
@@ -178,10 +184,12 @@ mod_type_password=パスワードの変更
 mod_control=障害レベル
 mod_args=モジュールの引数
 mod_err=モジュールを保存できませんでした
+
 pwdb_shadow=シャドー パスワード ファイルを使用しますか？
 pwdb_nullok=NULL パスワードを許可しますか？
 pwdb_md5=MD5 暗号化パスワードを使用しますか？
 pwdb_nodelay=ログインに失敗後遅延しますか？
+
 unix_nullok_secure=Accept null passwords on secure TTYs?
 unix_min=Minimum password length
 unix_nomin=None
@@ -190,6 +198,7 @@ unix_nomax=No limit
 unix_obscure=Prevent use of easy passwords?
 unix_emin=Missing or invalid minimum password length
 unix_emax=Missing or invalid maximum password length
+
 listfile_item=ファイルを検索
 listfile_item_user=ユーザ名
 listfile_item_tty=TTY
@@ -206,51 +215,64 @@ listfile_apply=検査を制限
 listfile_all=すべてのユーザ
 listfile_user=次のユーザのみ
 listfile_group=グループのみ
+
 cracklib_type=プロンプトのパスワードの種類
 cracklib_retry=失敗までの最大試行数
 cracklib_eretry=試行数がないか無効です
 cracklib_etype=パスワードの種類がないか無効です
+
 rhosts_equiv=<tt>/etc/hosts.equiv</tt> ファイルを読み取りますか？
 rhosts_rhosts=ユーザの<tt>.rhosts</tt> ファイルを読み取りますか？
 rhosts_promiscuous=<tt>+</tt> エントリをすべてのホストに許可しますか？
 rhosts_suppress=認証の失敗をログに記録しますか？
+
 env_var=変数名
 env_def=デフォルト値
 env_over=上書き値
 env_evar=変数名にスペースを入れることはできません
+
 securetty_ttys=セキュア TTY
+
 shells_shells=有効なユーザ シェル
+
 tally_deny=アクセスを拒否するまでの試行回数
 tally_reset=成功時に失敗数をリセット
 tally_edeny=失敗の試行数がないか無効です
 tally_magic=失敗数の適用<tt>root</tt>?
 tally_root=<tt>root</tt> アカウントを拒否可能にしますか？
+
 time_services=サービス
 time_ttys=TTY
 time_users=ユーザ
 time_times=アクセス時間
 time_info=すべてのフィールドは  | で分離した複数の値を含むことができ、値はワイルド カードとして * または否定辞として ! を使用できます。
+
 group_services=サービス
 group_ttys=TTY
 group_users=ユーザ
 group_times=アクセス時間
 group_groups=グループを追加
 group_info=すべてのフィールドは  | で分離した複数の値を含むことができ、値はワイルド カードとして * または否定辞として ! を使用できます。
+
 wheel_group=グループのメンバーシップを検査
 wheel_group_def=デフォルト(<tt>wheel</tt> または GID 0)
 wheel_trust=グループ メンバーが詳細認証をバイパス可能にしますか？
 wheel_deny=グループ メンバーを許可するかわりに拒否しますか？
 wheel_egroup=グループ名がないか無効です
+
 motd_file=表示するファイル
 motd_file_def=デフォルト(<tt>/etc/motd</tt>)
 motd_efile=ファイル名がないか無効です
+
 mail_nopen=ログインでメールの通知を表示しますか？
 mail_close=ログ アウトでメールの通知を表示しますか？
 mail_empty=メール ファイルが空の場合は通知しますか？
 mail_noenv= $MAIL 環境変数を設定しますか？
 mail_dir=メール スプール ディレクトリ
 mail_edir=メール スプール ディレクトリがないか無効です
+
 stack_service=PAM サービスに検査を渡す
+
 log_pam_create=PAM サービス $1 を作成しました
 log_pam_delete=PAM サービス $1 を削除しました
 log_mod_create=PAM モジュール $1 をサービス $2 に追加しました
@@ -262,6 +284,7 @@ log_inc_create=Added include $1 for service $2
 log_inc_modify=Modified include $1 for service $2
 log_inc_delete=Deleted include $1 for service $2
 log_incs=Updated includes for service $1
+
 inc_edit=Edit Included Service
 inc_create=Create Included Service
 inc_header=Included PAM service details

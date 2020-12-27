@@ -17,6 +17,7 @@ index_restartmsg=点这个按钮应用当前的配置，Jabber服务器将被重
 index_comments=警告 - 你的Jabber配置文件 $1 包含注释, 在使用当前模块修改配置后这些注释将被移除.
 index_return=Jabber菜单
 index_version=Jabber 版本QL $1
+
 general_title=常规选项
 general_header=Jabber服务器全局选项
 general_host=服务器的主机名
@@ -32,6 +33,7 @@ general_eelogfmt=丢失错误日志格式
 general_erlog=丢失或错误的通信日志文件
 general_erlogfmt=丢失或错误的通信日志格式
 general_epidfile=丢失或错误的进程ID文件
+
 messages_title=消息
 messages_header=Jabber服务器消息
 messages_wsubject=欢迎消息主题
@@ -44,6 +46,7 @@ messages_vcard2jud=发送vCard到用户目录?
 messages_err=保存消息失败
 messages_evcard=错误的 vCard XML : $1
 messages_etag=服务器 vCard XML 不能使用 &lt;vCard&gt; 启动;
+
 modules_title=Jabber 模块
 modules_desc=显示的模块列表被Jabber消息管理器用来处理消息. 只有在你确实知道自己在做什么的情况下才能改动它们.
 modules_header=Jabber服务器消息管理器模块
@@ -52,6 +55,7 @@ modules_so=共享库
 modules_err=保存Jabber模块失败
 modules_emod='$1' 不是一个有效的模块名称
 modules_eso=共享库'$1' 不存在
+
 karma_title=Karma 通信控制
 karma_header=通信速率控制选项
 karma_rate=额外连接处理
@@ -80,6 +84,7 @@ karma_epenalty=丢失或错误的处罚周期
 karma_erestore=丢失或错误的爆发恢复周期
 karma_epoints=丢失或错误的连接数值
 karma_etime=丢失或错误的阻塞时间
+
 ips_title=IP 权限控制
 ips_header=Jabber服务器 IP 权限控制
 ips_allow=允许客户 IPs
@@ -89,10 +94,12 @@ ips_none=没有
 ips_sel=列表 地址/子网掩码 ..
 ips_err=保存IP 权限控制失败
 ips_eaddr='$1' 不是一个有效的IP地址或IP地址/子网掩码
+
 file_title=编辑配置文件
 file_desc=使用这个页面直接编辑Jabber配置文件. 只有在理解XML配置文件格式的情况下才可以这样做，否则注定完蛋.
 file_header=编辑Jabber配置文件
 file_err=保存配置文件失败
+
 admin_title=管理员用户
 admin_header=服务器管理员用户
 admin_read=只读权限管理员
@@ -100,11 +107,13 @@ admin_write=可写权限管理员
 admin_reply=自动转发到管理员消息?
 admin_rsubject=自动转发主题
 admin_rbody=自动转发内容
+
 filter_title=用户过滤
 filter_header=用户过滤许可
 filter_max=最大过滤规则
 filter_conds=允许过滤条件
 filter_acts=允许过滤动作
+
 restart_err=应用改变失败
 stop_err=停止Jabber失败
 stop_epid=查找Jabber进程失败

@@ -17,17 +17,21 @@ index_data=Zber údajov
 index_errors=Zaznamenané chyby
 index_ecount=bolo zistených $1 chýb
 index_return=index modulu
+
 monitor_type=SMART kontrola disku
 monitor_drive=Disk na kontrolu
 monitor_errors=Kontrolovať aj chybové záznamy?
+
 short_title=Krátky test
 short_doing=Spúšťam krátky test na $1 ..
 short_failed=.. zlyhalo!
 short_ok=.. test úspešne spustený. Pozrite si na úvodnej stránke modulu stav disku ako aj výsledky testu.
+
 ext_title=Podrobný test
 ext_doing=Spúšťam podrobný test na $1 ..
 ext_failed=$short_failed
 ext_ok=$short_ok
+
 data_title=Zber údajov
 data_doing=Začínam offline zber údajov na $1 ..
 data_failed=.. zlyhalo!

@@ -39,7 +39,9 @@ index_thost=gasheernaam
 index_tdesc=beskrywing
 index_tver=weergawe
 index_ttype=OS-tipe
+
 this_server=hierdie bediener
+
 add_title=Voeg bedieners by
 add_msg=Voeg $1 by.
 add_gmsg=Voeg bedieners in groep $1 by.
@@ -49,6 +51,7 @@ add_echeck=Bediener $1 het nie die Usermin-konfigurasiemodule nie
 add_echeck2=Bediener $1 het nie die Usermin gebruikers-module nie
 add_eversion=Bediener $1 gebruik nie Usermin weergawe $2 of hoër nie.
 add_ok=$1 met $2 modules en $3 temas bygevoeg.
+
 refresh_title=Verfris module- en temalyste
 refresh_header=Herbenoem die module- en temalys van alle bedieners.
 refresh_header4=Module- en temalys van lede van $2. versoek weer.
@@ -64,6 +67,7 @@ refresh_g2=$1 groepe verwyder.
 refresh_done=.. klaar
 refresh_del=$1 van die bedienerslys verwyder
 refresh_failed=Kon nie $1 : $2 verfris nie
+
 host_title=Bestuurde bediener
 host_header=Bestuurde Usermin-bedienerdetails
 host_name=Gasheernaam
@@ -81,6 +85,7 @@ host_header_u=Usermin gebruikers
 host_header_g=Pruimgroepe
 host_return=bediener besonderhede
 host_version2=weergawe
+
 edit_title_mod=Wysig Module
 edit_title_theme=Tema wysig
 edit_header_mod=Besonderhede oor die usermin-module vanaf $1 
@@ -103,6 +108,7 @@ edit_codes=Vanaf toets $1
 edit_acl=Wysig ACL vir
 edit_uacl=Gebruiker $1 op $2 
 edit_gacl=Groep $1 op $2 
+
 install_err=Kon nie die module installeer nie
 install_title=Installeer Module
 install_elocal=Geen plaaslike lêer gegee nie
@@ -123,6 +129,7 @@ do_failed=Kon nie installeer op $1 : $2 nie
 do_success_mod=Module $2 op $1 geïnstalleer
 do_success_theme=Tema $2 op $1 geïnstalleer
 do_done=.. klaar
+
 delete_err=Kon nie $1 uitvee nie
 delete_epack=Die module $1 bestaan nie
 delete_title=Verwyder module
@@ -140,6 +147,7 @@ delete_edepends=Module (s) $1 is daarvan afhanklik.
 delete_egone=Module bestaan nie meer nie
 delete_esuccess=Van $1 : $2 suksesvol verwyder
 delete_acls=Verwyder van gebruikers en stel toegangsbeheerinstellings weer in?
+
 user_title1=Skep Usermin-gebruiker
 user_header1=Nuwe gebruikersinligting vir Usermin
 user_name=Gebruikersnaam
@@ -198,11 +206,13 @@ user_all=&lt;alle leërskare&gt;
 user_donthave=&lt;leërskare wat dit nie het nie&gt;
 user_have=&lt;leërskare wat dit het&gt;
 user_ofgroup=Lede van $1 
+
 udelete_title=Verwyder gebruiker
 udelete_doing=Vee gebruiker $1 uit al die leërskare uit ..
 udelete_success=Van $1 af suksesvol verwyder
 udelete_failed=Kon nie van $1 : $2 verwyder nie
 udelete_done=.. klaar
+
 group_title1=Skep 'n groep
 group_header1=Nuwe Usermin-groepbesonderhede
 group_name=Groepnaam
@@ -230,6 +240,7 @@ group_failed2=Kon nie groep op $1 : $2 opdateer nie
 group_return=groepbesonderhede
 group_nomems=Geen lede nie
 group_servers=Bediener (s) om op te skep
+
 gdelete_title=Vee groep uit
 gdelete_desc=Is u seker dat u die groep $1 en die gebruikers se gebruikers $2 uit alle leërskare wil verwyder?
 gdelete_ok=Vee groep uit
@@ -238,6 +249,7 @@ gdelete_success=Van $1 af suksesvol verwyder
 gdelete_failed=Kon nie van $1 : $2 verwyder nie
 gdelete_done=.. klaar
 gdelete_esub=Hierdie groep het subgroepe $1, en kan dus nie uitgevee word nie.
+
 acl_title=Module-toegangsbeheer
 acl_title2=Vir gebruiker $1 in $2 op $3 
 acl_title3=Vir groep $1 in $2 op $3 
@@ -256,6 +268,7 @@ acl_doing2=Stel toegangsbeheer in vir $1 op $2.
 acl_success=Stel toegangsbeheer suksesvol op $1 in
 acl_failed=Kon nie toegangsbeheer op $1 : $2 instel nie
 acl_done=.. klaar
+
 sync_title=Sinkroniseer bedieners
 sync_desc=Met hierdie vorm kan u Usermin-gebruikers en -groepe op bedieners skep wat tans nie oor hulle is nie, om rekeninge op alle bedieners in u groep saam te stel.
 sync_hosts=Bedieners om te sinchroniseer
@@ -279,6 +292,7 @@ sync_gcreate=Voeg Usermin-groep $1 by.
 sync_acl=Kopieer ACL-lêers vir $1.
 sync_test=Wys net wat gedoen sou word?
 sync_restart=Usermin begin weer ..
+
 upgrade_title=Opgradeer Usermin
 upgrade_header=Opdatering van Usermin op alle leërskare ..
 upgrade_header2=Gradeer Usermin op $1 op.
@@ -297,6 +311,7 @@ upgrade_failed=Kon nie installeer op $1 : $2 nie
 upgrade_done=.. klaar
 upgrade_efast=Slegs bedieners wat vinnige RPC-modus gebruik, kan opgegradeer word
 upgrade_ereconn=Kon nie weer na opdatering aan Usermin koppel nie!  : $1 
+
 update_title=Modules opdateer
 update_header=Opdatering van alle gashere van modules ..
 update_header5=Modules opgedateer op $2.

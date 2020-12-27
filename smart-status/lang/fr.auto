@@ -25,6 +25,7 @@ index_family=Famille de modèles
 index_serial=Numéro de série
 index_capacity=Capacité
 index_norm=Normalisé:
+
 monitor_type=Vérification du lecteur SMART
 monitor_type2=Usure SSD
 monitor_drive=Conduisez pour vérifier
@@ -40,14 +41,17 @@ monitor_wearlevel=Échec si le niveau d'usure tombe en dessous
 monitor_ewearlevel=Pourcentage de niveau d'usure non valide
 monitor_nowearout=Le lecteur ne signale pas d'indicateur d'usure SSD
 monitor_wornout=Le niveau d'usure est tombé à $1 
+
 short_title=Autotest court
 short_doing=Démarrage d'un autotest court de $1 ..
 short_failed=.. échoué!
 short_ok=.. le test a commencé OK. Voir l'état du lecteur sur la page principale du module pour les résultats.
+
 ext_title=Autotest étendu
 ext_doing=Démarrage de l'autotest étendu de $1 ..
 ext_failed=.. échoué!
 ext_ok=.. le test a commencé OK. Voir l'état du lecteur sur la page principale du module pour les résultats.
+
 data_title=Test de collecte de données
 data_doing=Démarrage de la collecte de données hors ligne sur $1 ..
 data_failed=.. échoué!

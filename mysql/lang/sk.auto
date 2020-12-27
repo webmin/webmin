@@ -45,12 +45,15 @@ index_showing=Zobrazujú sa databázy zodpovedajúce $1 ..
 index_emsg=Úplná chybová správa MySQL bola : $1 
 index_jump=Alebo upraviť databázu:
 index_jumpok=Otvorené
+
 login_err=Prihlásenie zlyhalo
 login_ecannot=Nemáte povolenie konfigurovať prihlasovacie údaje do databázy
 login_elogin=Chýba prihlasovacie meno pre správu
 login_epass=Nesprávne používateľské meno alebo heslo pre správu
+
 stop_err=Zastavenie databázy zlyhalo
 start_err=Spustenie databázy zlyhalo
+
 dbase_title=Upraviť databázu
 dbase_header=Databázové tabuľky, indexy a zobrazenia
 dbase_tables=Databázové tabuľky
@@ -81,6 +84,7 @@ dbase_type=typ
 dbase_typetable=Stôl 1)
 dbase_typeindex=index
 dbase_typeview=vyhliadka
+
 ddrop_err=Vynechanie databázy zlyhalo
 ddrop_title=Drop Database
 ddrop_rusure=Naozaj chcete vyradiť databázu $1 ? Tabuľky $2 obsahujúce $3 riadky údajov budú odstránené.
@@ -89,6 +93,7 @@ ddrop_mysql=Pretože toto je hlavná databáza, jej zrušením bude pravdepodobn
 ddrop_ok=Drop Database
 ddrop_empty=Stačí odstrániť všetky tabuľky
 ddrop_empty2=Odstrániť všetky tabuľky
+
 ddrops_err=Vynechanie databázy zlyhalo
 ddrops_title=Presuňte databázy
 ddrops_rusure=Naozaj chcete vynechať vybrané databázy $1 ? Tabuľky $2 obsahujúce $3 riadky údajov budú odstránené.
@@ -97,6 +102,7 @@ ddrops_mysql=Pretože je vybraná hlavná databáza, jej vypustenie pravdepodobn
 ddrops_ok=Presuňte databázy
 ddrops_enone=Nie sú vybrané žiadne databázy
 ddrops_ecannotdb=Nemáte povolenie vyradiť databázu $1 
+
 table_title=Upraviť tabuľku
 table_title2=Vytvorenie tabuľky
 table_header=Tabuľka $1 v databáze $2 
@@ -142,16 +148,19 @@ table_nextra=Pridelené zvlášť
 table_eautokey=Pole s automatickým prírastkom musí byť tiež primárnym kľúčom
 table_eauto=Automatické zvyšovanie môže byť iba v jednom poli
 table_delete=Odstrániť vybrané polia
+
 tdrop_err=Nepodarilo sa zrušiť tabuľku
 tdrop_title=Drop table
 tdrop_rusure=Naozaj chcete vynechať tabuľku $1 v databáze $2 ? Odstráni sa $3 riadkov údajov.
 tdrop_ok=Drop table
+
 tdrops_enone=Nevybrali sa žiadne tabuľky na odstránenie
 tdrops_err=Tabuľky sa nepodarilo zrušiť
 tdrops_ok=Pokles
 tdrops_title=Drop Vybraté
 tdrops_rusure=Naozaj chcete zahodiť $1 vybrané tabuľky v databáze $2 ? Odstráni sa $3 riadkov údajov.
 tdrops_rusure2=Naozaj chcete zahodiť $1 vybrané tabuľky v databáze $2 ?
+
 field_title1=Pridať pole
 field_title2=Upraviť pole
 field_in=V tabuľke $1 v databáze $2 
@@ -185,6 +194,7 @@ field_esize='$1' nie je platná veľkosť poľa
 field_eenum=Neboli zadané žiadne vymenované hodnoty
 field_efield=$1 nie je platný názov poľa
 field_ekey=Polia, ktoré povoľujú nuly, nemôžu byť súčasťou primárneho kľúča
+
 view_title=Údaje tabuľky
 view_pos=Riadky $1 až $2 z $3 
 view_none=Táto tabuľka neobsahuje žiadne údaje.
@@ -219,6 +229,7 @@ view_keep=Nechajte bezo zmeny
 view_set=Nastaviť na obsah súboru.
 view_adv=pokročilé vyhľadávanie
 view_sqlrun=Výsledky generované dotazom SQL : $1 
+
 users_title=Povolenia používateľa
 users_user=užívateľ
 users_host=hostitelia
@@ -245,6 +256,7 @@ users_ssl=certifikát
 users_dtitle=Odstrániť oprávnenia používateľa
 users_drusure=Naozaj chcete odstrániť $1 vybrané užívateľské oprávnenia MySQL?
 users_dok=Odstrániť používateľov
+
 user_title1=Vytvorenie používateľa
 user_title2=Upraviť používateľa
 user_header=Detaily používateľa MySQL
@@ -308,6 +320,7 @@ user_emax_user_connections=Maximálne súčasné prihlásenie musí byť číslo
 user_emax_connections=Maximálne pripojenie za hodinu musí byť číslo
 user_emax_updates=Maximálny počet aktualizácií za hodinu musí byť číslo
 user_emax_questions=Maximálny počet dopytov za hodinu musí byť číslo
+
 dbs_title=Povolenia databázy
 dbs_db=databázy
 dbs_user=užívateľ
@@ -326,6 +339,7 @@ dbs_enone=Nie sú vybrané žiadne databázy
 dbs_dtitle=Odstrániť oprávnenia databázy
 dbs_drusure=Naozaj chcete odstrániť $1 vybrané povolenia databázy MySQL?
 dbs_dok=Odstrániť povolenia
+
 db_title1=Vytvorte oprávnenia databázy
 db_title2=Upraviť povolenia databázy
 db_header=Možnosti povolenia databázy
@@ -340,6 +354,7 @@ db_err=Nepodarilo sa uložiť povolenia databázy
 db_euser=Chýbajúce alebo neplatné používateľské meno
 db_ehost=Chýba alebo je neplatný názov hostiteľa
 db_edb=Chýba alebo je neplatný názov databázy
+
 hosts_title=Hostiteľské oprávnenia
 hosts_db=databázy
 hosts_host=hostitelia
@@ -355,6 +370,7 @@ hosts_dtitle=Odstrániť povolenia hostiteľa
 hosts_drusure=Naozaj chcete odstrániť $1 vybrané povolenia hostiteľa MySQL?
 hosts_dok=Odstrániť povolenia
 hosts_return=povolenia hostiteľa
+
 host_title1=Vytvorte povolenia hostiteľa
 host_title2=Upraviť povolenia hostiteľa
 host_header=Možnosti povolení hostiteľa
@@ -364,6 +380,7 @@ host_sel=Vybraný
 host_otherdb=Zodpovedajúci vzor
 host_host=hostitelia
 host_perms=oprávnenie
+
 newdb_title=Vytvorenie databázy
 newdb_header=Nové možnosti databázy
 newdb_db=Názov databázy
@@ -377,6 +394,7 @@ newdb_err=Nepodarilo sa vytvoriť databázu
 newdb_edb=Chýba alebo je neplatný názov databázy
 newdb_ecannot=Nemáte oprávnenie vytvárať databázy
 newdb_ecannot2=Nemáte oprávnenie vytvárať ďalšie databázy
+
 exec_title=Vykonajte SQL
 exec_header=Zadajte príkaz SQL, ktorý sa má vykonať v databáze $1 ..
 exec_old=Alebo vyberte predchádzajúci príkaz SQL :
@@ -413,6 +431,7 @@ exec_iheader=Možnosti importu textového súboru
 exec_created=Boli vytvorené $1 tabuľky.
 exec_inserted=Bolo vložených $1 záznamov.
 exec_cs=Znaková sada pre dáta
+
 tprivs_title=Tabuľkové povolenia
 tprivs_table=stôl
 tprivs_db=databázy
@@ -431,6 +450,7 @@ tprivs_enone=Nie sú vybrané žiadne tabuľky
 tprivs_dtitle=Odstrániť povolenia tabuľky
 tprivs_drusure=Naozaj chcete odstrániť povolenia tabuľky MySQL vybrané z $1 ?
 tprivs_dok=Odstrániť povolenia
+
 tpriv_title1=Vytvorenie oprávnení tabuľky
 tpriv_title2=Upraviť povolenia tabuľky
 tpriv_header=Možnosti povolenia tabuľky
@@ -447,6 +467,7 @@ tpriv_etable=Nie je vybratá žiadna tabuľka
 tpriv_euser=Chýbajúce alebo neplatné používateľské meno
 tpriv_ehost=Chýbajúci alebo neplatný hostiteľ
 tpriv_edb=Chýba alebo je neplatný názov databázy
+
 cprivs_title=Poľné povolenia
 cprivs_field=Lúka
 cprivs_table=stôl
@@ -466,6 +487,7 @@ cprivs_enone=Nie sú vybraté žiadne polia
 cprivs_dtitle=Odstrániť povolenia pre stĺpce
 cprivs_drusure=Naozaj chcete odstrániť povolenia stĺpca MySQL vybrané z $1 ?
 cprivs_dok=Odstrániť povolenia
+
 cpriv_title1=Vytvorte povolenia pre pole
 cpriv_title2=Upraviť povolenia pre polia
 cpriv_header=Možnosti povolenia pre pole
@@ -482,11 +504,13 @@ cpriv_etable=Nie je vybratá žiadna tabuľka
 cpriv_euser=Chýbajúce alebo neplatné používateľské meno
 cpriv_ehost=Chýbajúci alebo neplatný hostiteľ
 cpriv_edb=Chýba alebo je neplatný názov databázy
+
 esql=SQL $1 zlyhalo : $2 
 eparse=Webmin nemôže analyzovať výstup z príkazu $1 kvôli charakteru údajov v databáze. Na vyriešenie tohto problému budete musieť nainštalovať moduly $2 a $3 Perl.
 edenied=Nemáte prístup k tejto databáze MySQL
 perms_ecannot=Nemáte oprávnenie upravovať povolenia
 perms_edb=Môžete upravovať iba oprávnenia pre svoje vlastné databázy
+
 acl_dbs=Databázy, ktoré môže tento používateľ spravovať
 acl_dall=Všetky databázy
 acl_dsel=Vybraný ..
@@ -507,6 +531,7 @@ acl_bnone=Zakážte zálohy
 acl_indexes=Dokáže zobraziť a spravovať indexy?
 acl_views=Dokáže zobraziť a spravovať zobrazenia?
 acl_files=Môže SQL vykonávať lokálne súbory?
+
 log_start=Spustený server MySQL
 log_stop=Zastavený server MySQL
 log_cnf=Zmenená konfigurácia servera MySQL
@@ -571,6 +596,7 @@ log_importfile=Importované údaje zo súboru $1
 log_set=Zmenené premenné MySQL $1 
 log_root=Zmenené heslo pre správu
 log_manual=Ručne upravený konfiguračný súbor
+
 backup_title=Záložná databáza
 backup_title2=Zálohujte všetky databázy
 backup_edump=Zálohovací program MySQL $1 nebol vo vašom systéme nájdený. Možno je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
@@ -649,15 +675,18 @@ backup_bodyspace=Veľkosť súborového systému: $1 Voľné miesto : $2
 backup_bodyall=všetko
 backup_edownloadall=Môžete si stiahnuť iba jednu zálohu databázy
 backup_edownloadsave=Režim sťahovania nemožno použiť na naplánované zálohovanie
+
 import_title=Importovať údaje
 import_uploadout=Importujú sa údaje z nahraného súboru.
 import_fileout=Import údajov zo súboru $1 ..
 import_eupload=Chýba nahraný importovaný súbor
 import_efile=Chýba názov importovaného súboru
+
 adv_title=pokročilé vyhľadávanie
 adv_and=Nájsť záznamy zodpovedajúce všetkým kritériám ..
 adv_or=Nájsť záznamy zodpovedajúce všetkým kritériám ..
 adv_ok=Hľadať teraz
+
 csv_title=Export súboru CSV
 csv_header=Možnosti exportu vo formáte CSV
 csv_dest=Cieľ exportu
@@ -678,6 +707,7 @@ csv_done=Export súboru CSV do $1 je dokončený. Výsledná veľkosť súboru j
 csv_headers=Zahrnúť názvy stĺpcov do súboru CSV?
 csv_cols=Stĺpce, ktoré sa majú zahrnúť do súboru CSV
 csv_ecols=Nie sú vybrané žiadne stĺpce
+
 cnf_title=Konfigurácia servera MySQL
 cnf_efile=Vo vašom systéme sa nenašiel konfiguračný súbor MySQL $1. Možno budete musieť upraviť <a href='$2'>konfiguráciu modulu</a>, aby ste mohli používať správnu cestu.
 cnf_header=Možnosti servera MySQL
@@ -719,11 +749,13 @@ cnf_restart=Uložte a reštartujte MySQL
 cnf_fpt=Samostatný súbor pre každú tabuľku InnoDB?
 cnf_ilt=Časový limit blokovania InnoDB (v sekundách)
 cnf_eilt=Časový limit zámku InnoDB musí byť celé číslo
+
 manual_title=Upraviť konfiguračné súbory
 manual_file=Upraviť konfiguračný súbor:
 manual_ok=OK
 manual_efile=Neplatný konfiguračný súbor!
 manual_err=Uloženie konfiguračného súboru zlyhalo
+
 index_title1=Vytvoriť index
 index_header1=Možnosti indexu
 index_name=Názov indexu
@@ -739,12 +771,15 @@ index_ecols=Nie sú vybraté žiadne polia
 index_title2=Upraviť index
 index_header=Index $1 v databáze $2 
 index_ecannot=Nemáte oprávnenie spravovať indexy
+
 syslog_desc=Chybové správy MySQL
 syslog_desc2=Chybová správa MySQL
 syslog_logdesc=MySQL dotazy
+
 fdrop_err=Polia sa nepodarilo odstrániť
 fdrop_enone=Žiadne vybraté
 fdrop_eall=Nemôžete odstrániť všetky polia z tabuľky!
+
 view_title1=Vytvoriť zobrazenie
 view_title2=Upraviť zobrazenie
 view_header1=Zobraziť podrobnosti
@@ -770,6 +805,7 @@ view_cascaded=Základné názory
 view_local=Iba toto zobrazenie
 view_nocheck=nikto
 view_ecannot=Nemáte povolené spravovať zobrazenia
+
 procs_title=Pripojenia k databáze
 procs_id=ID
 procs_user=užívateľské meno
@@ -781,9 +817,11 @@ procs_query=Spustený dotaz
 procs_kill=Zabite vybrané pripojenia
 procs_ecannot=Nemáte oprávnenie prezerať pripojenia k databáze
 procs_none=Momentálne neexistujú žiadne ďalšie pripojenia databázového klienta.
+
 kill_err=Nepodarilo sa zabiť pripojenie k databáze
 kill_ecannot=Nemáte oprávnenie spravovať pripojenia k databáze
 kill_enone=Žiadne vybraté
+
 vars_title=Premenné systému MySQL
 vars_desc=Varovanie - Premenné nastavené na tejto stránke sa po reštarte MySQL obnovia na predvolené hodnoty. Trvalé nastavenia sa musia vykonať na stránke <a href='$1'>Konfigurácia servera MySQL</a>.
 vars_ecannot=Nemáte oprávnenie upravovať systémové premenné
@@ -794,6 +832,7 @@ vars_search=Zobraziť zodpovedajúce premenné:
 vars_ok=Vyhľadávanie
 vars_none2=Vášmu vyhľadávaniu nezodpovedajú žiadne systémové premenné.
 vars_none=Nenašli sa žiadne systémové premenné!
+
 compat_ansi=ANSI
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQL 4.0
@@ -805,7 +844,9 @@ compat_maxdb=MaxDB
 compat_no_key_options=Kľúčové možnosti
 compat_no_table_options=Možnosti tabuľky
 compat_no_field_options=Možnosti poľa
+
 config_echarset=Chýbajúca alebo zle vyzerajúca znaková sada
+
 root_title=Zmena administračného hesla
 root_header=Nové administračné heslo
 root_user=Prihlásenie do administrácie
@@ -818,6 +859,7 @@ root_epass1=Nebolo zadané žiadne nové heslo
 root_epass2=Heslá sa nezhodujú
 root_none=Žiadne heslo!
 root_auto=Automaticky (zvyčajne <tt>root</tt>)
+
 mysqlpass_err=Bezpečný režim MySQL
 mysqlpass_esafecmd=Príkaz $1 potrebný na spustenie MySQL so zakázanou autentifikáciou sa nenašiel
 mysqlpass_eshutdown=Vypnutie zlyhalo : $1 

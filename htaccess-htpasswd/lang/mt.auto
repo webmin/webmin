@@ -16,6 +16,7 @@ index_digest2=L-encryption diġest huwa attivat fil-konfigurazzjoni tal-modulu, 
 index_cpan=<a href='$1'>Ikklikkja hawn</a> biex tniżżel u tinstallaha issa.
 index_delete=Ipproteġi d-Direttorji magħżula
 index_remove=Ħares il-Protett u Neħħi l-Fajls
+
 dir_title1=Żid Direttorju Protett
 dir_title2=Editja Direttorju Protett
 dir_header=Għażliet ta 'direttorju protett
@@ -60,6 +61,7 @@ dir_delete3=Ipproteġi u neħħi l-fajl
 dir_apache=Editja l-Għażliet Apache
 dir_efiledir="$1" huwa direttorju, u għalhekk ma jistax jintuża bħala fajl ta 'utenti
 dir_egfiledir="$1" huwa direttorju, u għalhekk ma jistax jintuża bħala fajl ta 'gruppi
+
 edit_title1=Oħloq Utent
 edit_title2=Editja l-Utent
 edit_header=Dettalji tal-utent ta 'l-awtentikazzjoni tal-Web
@@ -71,11 +73,13 @@ edit_pass0=Issettja għal
 edit_passfrom=Ibdel minn
 edit_passto=għal password ġdida
 edit_dom=L-isfera diġest
+
 gedit_title1=Oħloq Grupp
 gedit_title2=Grupp Editja
 gedit_header=Dettalji ta 'grupp ta' awtentikazzjoni tal-Web
 gedit_group=Isem tal-grupp
 gedit_members=Membri tal-grupp
+
 save_err=Ma rnexxielux isalva l-utent
 save_euser1=Username nieqes
 save_euser2=Username ma jistax ikun fih il-karattru:
@@ -84,16 +88,19 @@ save_eclash=Utent bl-istess isem diġà jeżisti
 save_eoldpass=Password antika mhix korretta
 save_title=Salvat mill-Utent
 save_edom=L-isfera tad-diġestjoni nieqsa jew invalida
+
 gsave_err=Ma rnexxielux isalva grupp
 gsave_egroup1=Isem il-grupp nieqes
 gsave_egroup2=L-isem tal-grupp ma jistax ikun fih: karattru jew spazji
 gsave_eclash=Grupp bl-istess isem diġà jeżisti
+
 acl_dirs=Direttorji permessi
 acl_user=Oħloq fajls.htaccess u htusers bħala utent Unix
 acl_same=L-istess bħall-login tal-Webmin
 acl_home=Jinkludu direttorju tad-dar ta 'l-utent Unix?
 acl_sync=Tista 'tissettja s-sinkronizzazzjoni tal-utent Unix?
 acl_uonly=Tista 'żżid u tibdel direttorji protetti?
+
 log_create_dir=Direttorju miżjud $1 
 log_modify_dir=Direttorju modifikat $1 
 log_delete_dir=Direttorju imħassar $1 
@@ -104,6 +111,7 @@ log_create_group=Grupp maħluq $1
 log_modify_group=Grupp modifikat $1 
 log_delete_group=Grupp imħassar $1 
 log_delete_dirs=Direttorji mħassra $1 
+
 search_title=Riżultati tat-Tiftix
 search_err=It-tfittxija ma rnexxietx
 search_edir=Direttur assolut nieqes jew invalidu biex tfittex

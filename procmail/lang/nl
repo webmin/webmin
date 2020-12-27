@@ -32,6 +32,7 @@ index_man=Handmatig Configuratie Bewerken
 index_mandesc=Direct de primaire Procmail configuratie file bewerken, om uw eigen regels, variabelen en blokken te maken.
 index_ecmd=Het Procmail programma $1 is niet gevonden op uw systeem. Of het is niet geinstalleerd, of de <a href='$2'>module configuratie</a> is niet correct.
 index_delete=Verwijder Geselecteerde Acties
+
 edit_title2=Actie wijzigen
 edit_title1=Actie aanmaken
 edit_header1=Details van afleverings actie
@@ -67,6 +68,7 @@ edit_none=Geen
 edit_lock=Specifiek bestand
 edit_ctype=Conditie type
 edit_cvalue=Regulaire expressie of opdracht
+
 save_err=Opslaan van actie is mislukt
 save_eaction_0=Bestand om aan toe te voegen ontbreekt
 save_eaction_1=MH-folder om naar de schrijven ontbreekt
@@ -79,6 +81,7 @@ save_elockfile=Lock-bestand ontbreekt
 save_esize=Ontbrekende of ongeldige email grote voor voorwaarde $1
 save_ere=Ontbrekende of ongeldige reguliere expressie voor voorwaarde $1
 save_eshell=Ontbrekend opdracht voor voorwaarde $1
+
 env_title1=Variabele aanmaken
 env_title2=Variabele wijzigen
 env_header=Omgevingsvariabele voor procmail
@@ -86,15 +89,19 @@ env_name=Variabele naam
 env_value=Waarde
 env_err=Opslaan van variabele is mislukt
 env_ename=Ontbrekende of ongeldige variabele naam
+
 inc_title1=In te voegen bestand toevoegen
 inc_title2=Wijzig in te voegen bestand
 inc_header=Ingevoegd bestand met regels voor procmail
 inc_inc=Ingevoegd bestand
 inc_einc=Geen invoeg-bestand ingevoerd
+
 config_eline=Onbekende regel $1 in $2 : $3
+
 manual_title=Configuratie wijzigen
 manual_desc=Deze pagina kan gebruikt worden om met de hand het procmail-configuratiebestand $1 te wijzigen. Wees voorzichtig, want er wordt geen controle op de grammatica uitgevoerd.
 manual_edata=Er is geen data door uw browser doorgegeven!
+
 log_create_rec=Recept aangemaakt voor $1
 log_delete_rec=Recept voor $1 verwijderd
 log_modify_rec=Recept voor $1 verwijderd
@@ -114,7 +121,9 @@ log_delete_inc=Invoeg bestand $1 verwijderd
 log_manual=Configuratie met de hand wijzigen
 log_up=Een post omhoog verplaatsen
 log_down=Een post omlaag verplaatsen
+
 delete_err=Mislukt om acties te verwijderen
 delete_enone=Niets geselecteerd
+
 check_epostfix=Procmail is niet aangezet in uw Postfix configuratie. In de configuratie file <tt>$2</tt> moet de <tt>$1</tt> optie gezet worden naar <tt>$3</tt>.
 check_esendmail=Sendmail is niet opgezet om Procmail te gebruiken voor locale aflevering. Dit kan worden geconfigureerd in Webmin's <a href='$1'>Sendmail Mail Server</a> module.

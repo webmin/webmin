@@ -8,6 +8,7 @@ index_none=Ez da abioko aukerarik zehaztu. Ziurtatu grub instalatu aurretik gutx
 index_efile=$1 GRUB menuko fitxategia ez da zure sisteman aurkitu. Agian GRUB ez dago instalatuta edo <a href='$2'>moduluaren konfigurazioa</a> okerra da.
 index_epath=$1 exekutagarria GRUB ez da zure sisteman aurkitu. Agian GRUB ez dago instalatuta edo <a href='$2'>moduluaren konfigurazioa</a> okerra da.
 index_return=aukeren zerrenda
+
 title_add=Gehitu Boot aukera
 title_edit=Editatu abio aukera
 title_header=Abiarazi menuaren aukeraren xehetasunak
@@ -36,6 +37,7 @@ title_echain=Kate kargatzailearen fitxategi falta edo baliogabea
 title_edev=$1 onartzen ez den erroko partizio gailua
 title_einitrd=Hasierako ramdisk fitxategi izena falta da
 title_lock=Pasahitza blokeatuta dago?
+
 global_title=Aukera Globala
 global_header=Abiapuntuen menuko aukera globala
 global_default=Lehenespenez abiatzeko aukera
@@ -56,12 +58,14 @@ global_edev=$1 instalatu gabeko diskoa/partizioa
 global_eother=Disko/partizio falta edo baliogabea
 global_epassword=Abioko pasahitza falta da edo ez da baliozkoa
 global_epasswordfile=Menuko ordezko fitxategiaren izena falta da
+
 install_title=Instalatu GRUB
 install_err=Ezin izan da GRUB instalatu
 install_efind=Ezin izan da menuko fitxategia aurkitu
 install_desc=$1 eta $3 komandoekin GRUB instalatzea.
 install_ok=.. instalatu osoa.
 install_failed=.. instalazioa huts egin du!
+
 log_create_title=$1 abiarazteko aukera sortu da
 log_delete_title=$1 abioko aukera ezabatu da
 log_modify_title=$1 abioko aldaketa

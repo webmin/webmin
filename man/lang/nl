@@ -30,6 +30,7 @@ index_other_google=Google zoek machine
 index_other_kde=KDE documentatie
 index_and=Alle overeenkomsten
 index_or=Elke overeenkomst
+
 search_efor=Er is geen handleiding pagina om naar te zoeken ingevuld
 search_title=Zoek Resultaten
 search_desc=Omschrijving
@@ -46,21 +47,27 @@ search_custom=Custom documentatie
 search_none=Geen documentatie overeenkomt met $1 gevonden.
 search_for=Voor $1
 search_google=Google zoek resultaten
+
 howto_title=HOWTO Document
 howto_header=HOWTO document file $1
 howto_epath=Ongeldige HOWTO document pad
+
 doc_title=Pakketten Documentatie
 doc_header=Pakket document file $1
 doc_epath=Ongeldig pakket documentatie pad
+
 man_title=Handleiding Pagina
 man_header=Handleiding pagina voor $1($2)
 man_noentry=Handleiding pagina voor $1 bestaat niet!
+
 kernel_title=Kernel Document
 kernel_header=Kernel document file $1
 kernel_epath=Ongeldig kernel document pad
+
 kde_title=KDE Documentatie
 kde_header=KDE document file $1
 kde_epath=Ongeldig KDE documentatie pad
+
 perl_title=Perl Module
 perl_header=Documentatie voor Perl module $1
 perl_emod=Ongeldige Perl module naam

@@ -1,11 +1,13 @@
 index_elink=Non è stato ancora impostato alcun URL per il tunnel.
 index_url=Inserisci l'URL da aprire:
 index_open=Apri
+
 link_eurl=URL non valido: $1
 link_elogin=Connessione a $1 non riuscita come utente $2
 link_eautologin=Nome utente o password non validi per $1. <a href='$2'>Clicca qui</a> per connetterti.
 link_enouser=Per la connessione a $1 sono richiesti un nome utente e una password, ma non ne sono stati ancora configurati.
 link_ebadurl=Non hai i permessi per l'accesso all'URL $1
+
 login_title=Connettiti al sito
 login_desc=Devi fornire un nome utente e una password per connetterti a $1.
 login_header=Autenticazione al sito
@@ -13,5 +15,6 @@ login_user=Nome utente
 login_pass=Password
 login_login=Login
 login_clear=Pulisci
+
 seturl_err=Apertura URL non riuscita
 seturl_eurl=URL inserito non valido

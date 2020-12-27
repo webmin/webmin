@@ -57,6 +57,7 @@ index_reposdisable=Depoları Devre Dışı Bırak
 index_reposenable=Depoları Etkinleştir
 index_reposdelete=Depoları Sil
 index_repoheader=Yeni paket veri havuzu seçenekleri
+
 update_title=Güncelleme Paketleri
 update_title2=Paketleri Yükle
 update_enone=Hiçbir paket seçilmedi
@@ -94,9 +95,11 @@ update_none=Yok
 update_ops=Paketlerin tam listesini oluşturma ..
 update_rebootdesc=Yüklü paketlerden biri tam olarak uygulanabilmesi için yeniden başlatmayı gerektirir.
 update_reboot=Şimdi yeniden başlat
+
 sched_title=Zamanlanmış Güncelleme
 sched_yes=Güncellemelerin zamanlanmış kontrolü artık aktif.
 sched_no=Güncellemelerin zamanlanmış denetimi devre dışı bırakıldı.
+
 log_update=$1 güncellenmiş paket yüklendi
 log_sched=Etkinleştirilmiş zamanlanmış güncellemeler
 log_unsched=Devre dışı zamanlanmış güncellemeler
@@ -108,11 +111,13 @@ log_enable_repo=Etkin paket deposu $1
 log_disable_repo=Devre dışı bırakılmış paket deposu $1 
 log_delete_repo=Paket deposu $1 silindi
 log_create_repo=Paket deposu $1 oluşturuldu
+
 refresh_title=Paketleri Yenileme
 refresh_clearing=Paket önbelleklerini temizleme ..
 refresh_done=.. bitti
 refresh_available=Mevcut paketler tekrar getiriliyor ..
 refresh_done3=.. $1 olası güncelleme bulundu
+
 view_title=Paket ayrıntıları
 view_header=Güncellenebilir paket bilgileri
 view_name=Paket ismi
@@ -126,12 +131,14 @@ view_changelog=Kullanılabilir sürüm için değişiklik günlüğü
 view_software=Paketi Yönet
 view_update=Güncelleme Paketi
 view_install=Kurulum paketi
+
 system_yum=YUM
 system_apt=UYGUN
 system_csw=CSW (Blastwave)
 system_webmin=Webmin modülü
 system_usermin=Usermin modülü
 system_tgz=Webmin veya Usermin tar.gz
+
 repos_err_disable=Depolar devre dışı bırakılamadı
 repos_err_enable=Depolar etkinleştirilemedi
 repos_err_delete=Depolar silinemedi

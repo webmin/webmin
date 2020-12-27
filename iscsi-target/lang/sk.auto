@@ -1,6 +1,7 @@
 check_econfig=Vo vašom systéme sa nenašiel cieľový konfiguračný súbor iSCSI $1.
 check_eietadm=Príkaz cieľovej správy iSCSI $1 sa vo vašom systéme nenašiel.
 check_einit=Akcia bootovania $1 neexistuje
+
 index_title=Cieľ iSCSI
 index_clink=Možno nie je nainštalovaný alebo je vaša <a href='$1'>konfigurácia modulu</a> nesprávna.
 index_stop=Zastavte cieľ iSCSI
@@ -22,8 +23,10 @@ index_noluns=nikto
 index_nousers=akýkoľvek
 index_nullio=Disk RAM sektorov $1 
 index_size=Celková velkosť
+
 dtargets_err=Ciele sa nepodarilo odstrániť
 dtargets_enone=Žiadne vybraté!
+
 target_title1=Vytvorte cieľ iSCSI
 target_title2=Upravte cieľ iSCSI
 target_header=Možnosti zdieľaného zariadenia iSCSI
@@ -68,11 +71,13 @@ target_noalias=nikto
 target_hdigest=Kontrolný súčet záhlavia
 target_ddigest=Kontrolný súčet údajov
 target_nodigest=nikto
+
 auth_title=Nastavenia autentifikácie
 auth_header=Predvolené možnosti overenia totožnosti pre všetky ciele
 auth_iuser=Autentifikácia klientov
 auth_ouser=Overovanie totožnosti klientov
 auth_err=Uloženie nastavení overenia zlyhalo
+
 conn_title=Nastavenia pripojenia
 conn_header=Predvolené možnosti pripojenia pre všetky ciele
 conn_sessions=Maximálny počet súbežných relácií
@@ -91,6 +96,7 @@ conn_emaxrecv=Chýbajúca alebo nečíselná maximálna dĺžka segmentu príjmu
 conn_emaxxmit=Chýbajúca alebo nečíselná maximálna dĺžka prenosového segmentu
 conn_emaxburst=Chýbajúca alebo nečíselná maximálna veľkosť zhluku klienta
 conn_efirstburst=Chýbajúca alebo nečíselná maximálna veľkosť nevyžiadaných klientov
+
 timeout_title=Nastavenia časového limitu
 timeout_header=Možnosti časového limitu klienta
 timeout_nopi=Interval medzi pingmi pri nečinnosti
@@ -98,6 +104,7 @@ timeout_nopinone=Nikdy ping
 timeout_secs=sekundy
 timeout_nopt=Čas čakať na odpoveď ping
 timeout_noptnone=Rovnaké ako čas pingu
+
 addr_title=Adresa servera a port
 addr_header=Možnosti sieťového pripojenia servera iSCSI
 addr_addr=Vypočujte si IP adresu
@@ -110,18 +117,21 @@ addr_err=Nepodarilo sa uložiť adresu servera
 addr_eaddr=Adresa na počúvanie musí byť adresa IP
 addr_eport=Port, na ktorom sa má počúvať, musí byť číslo
 addr_edebug=Úroveň ladenia musí byť číslo
+
 initiators_title=Povolené adresy klientov
 initiators_none=Zatiaľ nebola definovaná žiadna povolená adresa klienta. Žiadni klienti sa nebudú môcť pripojiť.
 initiators_ips=Povolení klienti
 initiators_title1=Pridajte povolené klientske adresy
 initiators_title2=Upravte povolené adresy klientov
 initiators_header=Povolili klientom iSCSI cieľ
+
 targets_title=Povolené adresy servera
 targets_none=Zatiaľ nebola definovaná žiadna povolená adresa servera. Žiadni klienti sa nebudú môcť pripojiť.
 targets_ips=Povolené rozhrania servera
 targets_title1=Pridajte povolené adresy servera
 targets_title2=Upraviť povolené adresy servera
 targets_header=Povolené rozhranie servera iSCSI pre cieľ
+
 allow_target=Cieľový názov
 allow_move=sťahovať
 allow_delete=Zmaž označené
@@ -133,17 +143,21 @@ allow_return=povolené ciele a adresy
 allow_err=Nepodarilo sa uložiť povolené adresy
 allow_eaddr=Adresa $1 nie je platná. Musí to byť adresa IPv4, sieť/maska IPv4 alebo adresa IPv6 v hranatých zátvorkách.
 allow_eaddrs=Nezadali sa žiadne adresy na povolenie
+
 dallow_err=Nepodarilo sa odstrániť povolené adresy
 dallow_enone=Žiadne vybraté
+
 manual_title=Upraviť konfiguračný súbor
 manual_desc=Pomocou textového poľa nižšie upravte konfiguračný súbor servera iSCSI $1. Buďte opatrní, pretože pri vašom zadaní sa nevykonáva žiadna validácia!
 manual_err=Uloženie konfiguračného súboru zlyhalo
 manual_edata=Nebol zadaný žiaden obsah!
+
 start_err=Server iSCSI sa nepodarilo spustiť
 stop_err=Server iSCSI sa nepodarilo zastaviť
 restart_err=Server iSCSI sa nepodarilo reštartovať
 atboot_err=Nepodarilo sa povoliť pri štarte
 atboot_einit=Počiatočný skript $1 neexistuje
+
 log_create_target=Vytvorený cieľ $1 
 log_delete_target=Cieľ bol odstránený $1 
 log_modify_target=Upravený cieľ $1 

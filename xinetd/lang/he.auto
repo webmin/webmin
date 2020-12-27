@@ -25,6 +25,7 @@ index_estart=הפקודה להפעלת Xinetd $1 אינה קיימת. אולי �
 index_noport=לא ידוע
 index_enable=אפשר נבחרים
 index_disable=השבת נבחר
+
 serv_create=צור שירות אינטרנט
 serv_edit=ערוך את שירות האינטרנט
 serv_header1=אפשרויות רשת שירות
@@ -78,19 +79,24 @@ serv_enice=רמת נחמדה חסרה או לא תקפה
 serv_ecps0=מספר חיבורים חסר או לא חוקי בשנייה
 serv_ecps1=עיכוב חסר או לא חוקי
 serv_etimes=זמני הגישה חייבים להיות בפורמט HH: MM-HH: MM
+
 sock_stream=זרם
 sock_dgram=דאטגרם
 sock_raw=גלם
 sock_seqpacket=דאטגרמה רציפה
+
 proto_=ברירת מחדל
 proto_ip=IP (פרוטוקול אינטרנט)
 proto_tcp=TCP (פרוטוקול בקרת הולכה)
 proto_udp=UDP (פרוטוקול נתוני משתמש)
+
 restart_err=החלת השינויים נכשלה
 restart_ekill=שליחת האות USR2 נכשלה ל- PID $1 : $2 
 restart_epid=כבר לא רץ
+
 start_err=ההתחלה של xinet נכשלה
 start_estart=$1 נכשל : $2 
+
 defs_title=אפשרויות ברירת מחדל
 defs_header=אפשרויות ברירת מחדל לשירותים
 defs_log=מצב רישום Xinetd
@@ -115,6 +121,7 @@ defs_err=שמירת אפשרויות ברירת המחדל נכשלה
 defs_efile=שם קובץ יומן חסר או לא חוקי
 defs_esoft=מגבלה רכה חסרה או לא תקפה
 defs_ehard=מגבלה קשה חסרה או לא תקפה
+
 log_create_serv=נוצר שירות $2 $1 
 log_modify_serv=שינוי $2 שירות $1 
 log_delete_serv=נמחק $2 שירות $1 
@@ -125,5 +132,6 @@ log_enable=שירותי $1 מופעלים
 log_disable=מושבתים $1 שירותים
 log_enable_l=שירותים מופעלים $1 
 log_disable_l=שירותים נכים $1 
+
 config_dirdef=קובץ תצורה של Xinetd
 config_dirto=קובץ חדש בספרייה

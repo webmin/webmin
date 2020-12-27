@@ -7,6 +7,7 @@ index_dsize=Total størrelse
 index_dmodel=Lag og modell
 index_dparts=Slices
 index_return=liste over disker
+
 disk_title=Rediger disk
 disk_egone=Disk eksisterer ikke lenger!
 disk_no=Skjære
@@ -31,9 +32,11 @@ disk_return=diskdetaljer og liste over skiver
 disk_add=Lag en ny skive.
 disk_smart=Vis SMART-status
 disk_smartdesc=Vis gjeldende status for denne stasjonen som oppdaget av SMART, og sjekk den for diskfeil.
+
 select_device=$1 enhet $2 
 select_slice=$1 enhet $2 skive $3 
 select_part=$1 enhet $2 skive $3 partisjon $4 
+
 slice_title=Rediger skive
 slice_egone=Valgt skive finnes ikke!
 slice_ssize=Skivestørrelse
@@ -58,6 +61,7 @@ slice_return=skive detaljer og liste over partisjoner
 slice_err=Kunne ikke endre skive
 slice_header=Skive detaljer
 slice_suse=Direkte brukt av
+
 dslice_title=Slett skive
 dslice_rusure=Er du sikker på at du vil slette utsnittet $1 ? Eventuelle partisjoner og filsystemer i den vil også bli slettet.
 dslice_warn=Advarsel - denne delen brukes for øyeblikket av : $1 
@@ -65,6 +69,7 @@ dslice_confirm=Slett nå
 dslice_deleting=Sletter skive $1 ..
 dslice_failed=.. sletting mislyktes : $1 
 dslice_done=.. ferdig
+
 nslice_title=Lag skive
 nslice_header=Nye skivedetaljer
 nslice_number=Skive nummer
@@ -86,6 +91,7 @@ nslice_done=.. skive lagt til
 nslice_parting=Opprett standardpartisjoner i skive $1 på $2.
 nslice_pfailed=.. opprettelse av partisjon mislyktes : $1 
 nslice_pdone=.. partisjon lagt til
+
 npart_title=Lag partisjon
 npart_header=Nye partisjon detaljer
 npart_letter=Partisjonsbrev
@@ -98,6 +104,7 @@ npart_emax=Avslutningsblokken kan ikke være større enn skivestørrelsen på $1
 npart_creating=Oppretter partisjon $1 på $2.
 npart_failed=.. opprettelse av partisjon mislyktes : $1 
 npart_done=.. partisjon lagt til
+
 part_title=Rediger partisjon
 part_egone=Partisjon eksisterer ikke lenger!
 part_header=Partisjon detaljer
@@ -124,6 +131,7 @@ part_newmount2=Mount Partition
 part_mountmsg=Monter denne enheten på en ny katalog på systemet ditt, slik at den kan brukes til å lagre filer. Et filsystem må allerede være opprettet på enheten.
 part_mountmsg2=Monter denne enheten som virtuelt minne på systemet ditt for å øke mengden tilgjengelig minne.
 part_cannotedit=Denne partisjonen kan ikke endres slik den er i bruk.
+
 dpart_title=Slett partisjon
 dpart_rusure=Er du sikker på at du vil slette partisjonen $1 ? Eventuelle filsystemer i det vil også bli slettet.
 dpart_warn=Advarsel - denne partisjonen brukes for øyeblikket av $1 
@@ -131,6 +139,7 @@ dpart_confirm=Slett nå
 dpart_deleting=Slette partisjon $1 ..
 dpart_failed=.. sletting mislyktes : $1 
 dpart_done=.. ferdig
+
 newfs_title=Lag filsystem
 newfs_header=Nye filsystemdetaljer
 newfs_free=Plass å reservere for rot
@@ -145,11 +154,13 @@ newfs_elabel=Manglende eller ugyldig etikett
 newfs_creating=Oppretter filsystem på $1 ..
 newfs_failed=.. skapelsen mislyktes!
 newfs_done=.. opprettet vellykket
+
 fsck_title=Sjekk filsystem
 fsck_err=Kunne ikke sjekke filsystemet
 fsck_checking=Kontrollerer filsystemet på $1 ..
 fsck_failed=.. sjekk mislyktes!
 fsck_done=.. sjekk fullført uten at noen feil ble funnet
+
 log_create_slice=Opprettet skive $1 
 log_delete_slice=Slettet skive $1 
 log_modify_slice=Endret skive $1 

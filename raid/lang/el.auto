@@ -21,6 +21,7 @@ index_mailfromnone=Προεπιλογή (<tt>root</tt>)
 index_program=Εντολή για εκτέλεση όταν εντοπίζονται προβλήματα
 index_programnone=Μην τρέχετε κανένα
 index_monitor=Έχει ενεργοποιηθεί η παρακολούθηση;
+
 linear=Γραμμική (συγκολλημένη)
 raid0=RAID0 (Ριγέ)
 raid1=RAID1 (Mirrored)
@@ -29,6 +30,7 @@ raid5=RAID5 (Κατανεμημένη ισοτιμία)
 raid6=RAID6 (διπλή κατανεμημένη ισοτιμία)
 raid10=RAID10 (Ριγέ και Mirrored)
 blocks=μπλοκ
+
 create_title=Δημιουργία συσκευής RAID
 create_header=Επιλογές συσκευής RAID
 create_device=Αρχείο συσκευής
@@ -62,6 +64,7 @@ create_o2_layout=2 αντίγραφα αντιστάθμισης
 create_n3_layout=3 κοντά στα αντίγραφα
 create_f3_layout=3 Far Copies
 create_o3_layout=3 αντίγραφα αντιστάθμισης
+
 view_title=Συσκευή RAID
 view_header=Επιλογές συσκευής RAID
 view_device=Αρχείο συσκευής
@@ -117,6 +120,7 @@ view_mountmsg=Εισαγάγετε έναν κατάλογο και κάντε �
 view_mountmsg2=Κάντε κλικ σε αυτό το κουμπί για να χρησιμοποιήσετε αυτήν τη συσκευή RAID για εικονική μνήμη στο σύστημά σας.
 view_blocks=$1 μπλοκ
 view_sparegroup=Ανταλλακτική ομάδα
+
 mkfs_title=Δημιουργία συστήματος αρχείων
 mkfs_header2=Αυτή η φόρμα σάς επιτρέπει να δημιουργήσετε ένα νέο σύστημα αρχείων $2 στο $1. <b>Όλα τα</b> υπάρχοντα δεδομένα θα διαγραφούν!
 mkfs_options=Νέες επιλογές αρχείων συστήματος Linux
@@ -124,6 +128,7 @@ mkfs_err=Αποτυχία δημιουργίας συστήματος αρχεί
 mkfs_exec=Εκτέλεση εντολής $1 ..
 mkfs_failed=.. εντολή απέτυχε!
 mkfs_ok=... εντολή ολοκληρώθηκε.
+
 emkraid=<tt>mkraid</tt> απέτυχε : $1 
 eraidstop=<tt>raidstop</tt> απέτυχε : $1 
 eraidstart=<tt>raidstart</tt> απέτυχε : $1 
@@ -135,6 +140,7 @@ emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
 log_create=Δημιουργήθηκε $1 συσκευή RAID $2 
 log_stop=Απενεργοποιημένη συσκευή RAID $1 
 log_start=Ενεργοποιημένη συσκευή RAID $1 
@@ -147,14 +153,17 @@ log_grow=Αυξημένη συσκευή RAID $1 σε σύνολο $2 δίσκω
 log_convert_to_raid6=Μετατρεπόμενη συσκευή RAID5 $1 σε μια συσκευή RAID6
 log_convert_to_raid5=Μετατρεπόμενη συσκευή RAID6 $1 σε μια συσκευή RAID5
 log_notif=Ενημερώθηκαν επιλογές ειδοποίησης προβλημάτων RAID
+
 notif_err=Αποτυχία αποθήκευσης επιλογών ειδοποίησης προβλημάτων RAID
 notif_emailaddr=Διεύθυνση ειδοποίησης που λείπει ή είναι άκυρη
 notif_emailfrom=Λείπει ή δεν είναι έγκυρη από τη διεύθυνση
 notif_eprogram=Λείπει ή ανύπαρκτο πρόγραμμα για εκτέλεση
+
 delete_title=Διαγράψτε τον πίνακα RAID
 delete_rusure=Είστε βέβαιοι ότι θέλετε να διαγράψετε τη συστοιχία RAID $1, η οποία χρησιμοποιεί το $2 χώρου στο δίσκο;
 delete_ok=Ναι, Διαγράψτε το
 delete_eidx=Δεν έχει επιλεγεί πίνακας RAID!
+
 remove_title=Κατάργηση διαμερίσματος από τη συστοιχία RAID
 remove_rusure=Είστε βέβαιοι ότι θέλετε να καταργήσετε το διαμέρισμα $2 της συστοιχίας RAID $1 ;
 remove_ok=Ναι, αφαιρέστε το

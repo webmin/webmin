@@ -14,6 +14,7 @@ index_restart=Berrabiarazi LDAP bezeroa Daemon
 index_restartdesc=Aplikatu uneko konfigurazioa tokiko LDAP bezeroaren demonio berrabiarazten baduzu.
 index_atboot=Abiarazi LDAP bezeroa
 index_atbootdesc=Aldatzen da LDAP bezeroa daemon sistema abiarazi den ala ez.
+
 server_title=LDAP zerbitzariaren konfigurazioa
 server_header=LDAP zerbitzaria eta sartzeko aukerak
 server_host=LDAP zerbitzariaren ostalariaren izenak
@@ -51,6 +52,7 @@ server_etimelimit=Konexioaren denbora muga falta edo baliogabea da
 server_ecacert=CA ziurtagiri fitxategi falta edo baliogabea
 server_euport=$1 zerbitzariaren portu falta edo baliogabea
 server_euri=Ez da LDAP zerbitzaririk sartu
+
 base_title=LDAP bilaketa-oinarriak
 base_header=LDAP direktorioen bilaketa kokapenak
 base_base=Bilaketa orokorraren oinarria
@@ -86,6 +88,7 @@ base_enetmasks=Sare falta maskota izenei buruzko oinarria
 base_ealiases=Posta elektroniko ezizenen oinarria falta da
 base_enetgroup=Oinarri-taldeentzako base falta
 base_etimelimit=Bilaketa denbora muga falta edo baliogabea
+
 pam_title=Autentifikazio aukerak
 pam_header=PAM autentifikazioa eta pasahitzaren ezarpenak
 pam_filter=LDAP iragazkia osagarria
@@ -106,10 +109,12 @@ pam_efilter=LDAP iragazki gehigarria falta da
 pam_elogin=Erabiltzaile-izenaren LDAP atributu falta edo baliogabea
 pam_egroupdn=LDAP taldea falta da kide izateko
 pam_emember=Taldekideentzako LDAP atributu falta edo baliogabea
+
 switch_title=Zerbitzuak LDAP erabiliz
 switch_service=zerbitzua
 switch_srcs=Datu iturriak
 switch_return=zerbitzuak LDAP erabiliz
+
 ldap_emodule=LDAP zerbitzariarekin hitz egiteko beharrezkoa den $1 Perl modulua ez dago instalatuta. <a href='$2'>Egin klik hemen</a> Webmin deskargatzeko eta orain instalatzeko.
 ldap_emodule2=LDAP zerbitzariarekin hitz egiteko beharrezkoa den $1 Perl modulua ez dago instalatuta.
 ldap_econf=$1 LDAP bezeroaren konfigurazio fitxategia ez da zure sisteman aurkitu
@@ -119,6 +124,7 @@ ldap_elogin=Ezin izan da LDAP zerbitzariarekin lotu $1 gisa $2 : $3 gisa
 ldap_anon=anonimoak
 ldap_eparse=Ezin izan da LDAP zerbitzaria $1 URI analizatu
 ldap_etls=Huts egin du TLS modura aldatzerakoan : $1 
+
 browser_title=LDAP arakatzailea
 browser_econn=LDAP arakatzailea ezin da erabili : $1 
 browser_base=arakatzen:
@@ -129,6 +135,7 @@ browser_attrs=Objektuen atributuak
 browser_parent=Arakatu Guraso
 browser_none=Bat ere ez
 browser_sel=Ados
+
 order_nisplus=NIS +
 order_nis=NIS
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=Erabiltzaile inprimagailuak
 order_xfn=XFN
 order_mdns4=Multicast DNS
 order_mdns4_minimal=Multicast DNS (gutxienez)
+
 desc_aliases=Sendmail aliasak
 desc_mail=Sendmail aliasak
 desc_hosts=Ostalariaren helbideak
@@ -177,6 +185,7 @@ desc_printers=Inprimagailuak
 desc_ipnodes=IP nodoak
 desc_timezone=ordutegi-eremuen
 desc_locale=locales
+
 eswitch_title=Editatu Zerbitzua
 eswitch_egone=Zerbitzua ez da existitzen!
 eswitch_header=Zerbitzuaren xehetasunak
@@ -196,6 +205,7 @@ eswitch_continue=Jarraitu bilatzen
 eswitch_none=Bat ere ez
 eswitch_err=Huts egin du zerbitzua gordetzean
 eswitch_enone=Ez da iturririk aukeratu!
+
 log_server=LDAP zerbitzariaren konfigurazioa aldatua
 log_base=Aldatutako LDAP bilaketa oinarriak
 log_pam=Aldatutako autentifikazio aukerak
@@ -205,6 +215,7 @@ log_delboot=Desgaitu da LDAP bezeroaren demonio abiarazi den unean
 log_start=LDAP bezeroaren deabrua hasi zen
 log_stop=LDAP bezeroaren deabrua gelditu da
 log_restart=LDAP bezeroaren daemon berrabiarazi da
+
 check_title=LDAP konfigurazioa balioztatzea
 check_base=Erabiltzaileentzako LDAP oinarria aurkitzea ..
 check_ebase=.. ez da oinarritzat bezeroaren konfigurazioan topatu!

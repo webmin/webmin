@@ -7,6 +7,7 @@ index_digest2=在模塊配置中啟用了摘要加密，但是未安裝所需的
 index_cpan=<a href='$1'>單擊此處</a>立即下載並安裝。
 index_delete=取消保護所選目錄
 index_remove=取消保護和刪除文件
+
 dir_header2=用戶同步選項
 dir_gfile=文件包含組
 dir_none=沒有
@@ -31,19 +32,25 @@ dir_delete3=取消保護並刪除文件
 dir_apache=編輯Apache選項
 dir_efiledir='$1'是目錄，因此不能用作用戶文件
 dir_egfiledir='$1'是目錄，因此不能用作組文件
+
 edit_dom=摘要領域
+
 gedit_title1=創建組
 gedit_title2=編輯組
 gedit_header=Web驗證組詳細信息
 gedit_group=組的名字
 gedit_members=組成員
+
 save_edom=摘要域缺失或無效
+
 gsave_err=無法保存組
 gsave_egroup1=群組名稱缺失
 gsave_egroup2=組名不能包含：字符或空格
 gsave_eclash=具有相同名稱的組已存在
+
 acl_sync=可以設置Unix用戶同步嗎？
 acl_uonly=可以添加和更改受保護的目錄嗎？
+
 log_create_group=已創建組 $1
 log_modify_group=修改後的組 $1
 log_delete_group=已刪除組 $1

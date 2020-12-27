@@ -57,6 +57,7 @@ index_reposdisable=禁用存儲庫
 index_reposenable=啟用存儲庫
 index_reposdelete=刪除儲存庫
 index_repoheader=新軟件包存儲庫選項
+
 update_title=更新包
 update_title2=安裝套件
 update_enone=未選擇包
@@ -94,9 +95,11 @@ update_none=沒有
 update_ops=構建軟件包的完整列表 ..
 update_rebootdesc=已安裝的軟件包之一需要重新啟動才能完全應用。
 update_reboot=馬上重啟
+
 sched_title=預定更新
 sched_yes=計劃檢查更新現在處於活動狀態。
 sched_no=預定的更新檢查已被禁用。
+
 log_update=已安裝 $1個更新程序包
 log_sched=啟用的計劃更新
 log_unsched=禁用的計劃更新
@@ -108,11 +111,13 @@ log_enable_repo=啟用的軟件包存儲庫 $1
 log_disable_repo=禁用的軟件包存儲庫 $1
 log_delete_repo=軟件包存儲庫 $1已刪除
 log_create_repo=已創建軟件包存儲庫 $1
+
 refresh_title=刷新包裝
 refresh_clearing=清除程序包緩存 ..
 refresh_done=..完成
 refresh_available=重新獲取可用的軟件包 ..
 refresh_done3=..找到 $1個可能的更新
+
 view_title=包裝詳情
 view_header=可更新的包裝信息
 view_name=包裹名字
@@ -126,12 +131,14 @@ view_changelog=可用版本的變更日誌
 view_software=管理包裹
 view_update=更新包
 view_install=安裝套件
+
 system_yum=百勝
 system_apt=易於
 system_csw=CSW（Blastwave）
 system_webmin=Webmin模塊
 system_usermin=Usermin模塊
 system_tgz=Webmin或Usermin tar.gz
+
 repos_err_disable=無法禁用存儲庫
 repos_err_enable=無法啟用存儲庫
 repos_err_delete=刪除存儲庫失敗

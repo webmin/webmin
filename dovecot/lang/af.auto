@@ -11,11 +11,13 @@ index_boot=Begin met die boot?
 index_bootdesc=Verander hierdie instelling om die Dovecot-bediener te begin of deaktiveer tydens stelseltyd.
 index_return=module-indeks
 index_version=Weergawe $1
+
 stop_err=Kon nie Dovecot stop nie
 stop_erunning=Nie meer hardloop nie
 start_err=Kon nie Dovecot begin nie
 start_eprotos=Geen protokolle is gekies op die <b>Netwerk- en protokolle</b> -bladsy nie
 apply_err=Kon nie konfigurasie toepas nie
+
 net_title=Netwerk en protokolle
 net_header=Dovecot-netwerk- en posprotokolopsies
 net_protocols=Bedien e-posprotokolle
@@ -42,8 +44,11 @@ net_eimaps_listen=Ongeldige IP-adres vir IMAP SSL-verbindings
 net_epop3s_listen=Ongeldige IP-adres vir POP3 SSL-verbindings
 net_elisten=Ongeldige IP-adres vir nie-SSL-verbindings
 net_essl_listen=Ongeldige IP-adres vir SSL-verbindings
+
 imap_title=IMAP-opsies
+
 pop3_title=POP3-opsies
+
 ssl_title=SSL-konfigurasie
 ssl_header=IMAP- en POP3-SSL-modusopsies
 ssl_key=SSL-privaat sleutellêer
@@ -61,7 +66,9 @@ ssl_ecert=Sertifikaatlêer ontbreek of bestaan nie
 ssl_eca=Ontbrekende of nie-bestaande CA-sertifikaatlêer
 ssl_eregen=Ontbrekende of nie-numeriese parameter herlewingsinterval
 ssl_epass=Geen SSL-sleutellêer wagwoord ingevoer nie
+
 misc_title=Ander opsies
+
 login_title=Gebruiker- en aanmeldopsies
 login_header=Gebruikersverifikasie en aanmeldopsies
 login_fuid=Minimum geldige UID
@@ -117,6 +124,7 @@ login_procs=Maksimum aanmeldprosesse
 login_count=Aanvanklike aanmeldprosesse
 login_eprocs=Die maksimum aantal aanmeldproses ontbreek of is ongeldig
 login_ecount=Aanvanklike aantal aanmeldproses ontbreek of ongeldig
+
 mail_title=Poslêers
 mail_header=Poslys en leesopsies
 mail_env=Poslêer van e-poslêers
@@ -169,6 +177,7 @@ mail_eindexmode=Die ligging van die indekslêers kan nie ingestel word as die po
 mail_econtrolmode=Die plek van beheerlêers kan nie ingestel word as die poslêer se ligging outomaties opgespoor word nie
 mail_eindex=Absolute of ongeldige pad vir indekslêers ontbreek
 mail_econtrol=Absolute of ongeldige pad vir kontrolelêers ontbreek
+
 log_net=Veranderde netwerke en protokolle
 log_login=Veranderde gebruikers- en aanmeldopsies
 log_mail=E-poslêers verander
@@ -179,6 +188,7 @@ log_stop=Gestopte Dovecot-bediener
 log_bootup=Dovecot by die opstartyd geaktiveer
 log_bootdown=Dovecot gedeaktiveer tydens laaityd
 log_manual=Handig geredigeerde konfigurasielêer $1
+
 manual_title=Wysig konfiglêers
 manual_editsel=Redigeer Dovecot-konfigurasielêer
 manual_err=Kon nie die konfigurasielêer stoor nie

@@ -1,3 +1,4 @@
 index_mserr=Varování - nebudou použita žádná níže definovaná pravidla : $1 
+
 check_epostfix=Procmail není v konfiguraci Postfixu povolen. Konfigurační soubor <tt>$2</tt> musí mít možnost <tt>$1</tt> nastavenou na <tt>$3</tt>.
 check_esendmail=Sendmail není nastaven pro použití Procmailu pro lokální doručení. To lze nakonfigurovat v modulu <a href='$1'>Sendmail Mail Server</a> správce webu.

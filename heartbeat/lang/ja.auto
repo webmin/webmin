@@ -12,6 +12,7 @@ index_ereq_resource_cmd=他のノード（$1）からリソースを要求する
 index_version=ハートビートバージョン $1
 index_noversion=警告-システムにインストールされているハートビートのバージョンを自動的に検出できませんでした。 <a href='$1'>モジュール設定</a>ページで設定する必要があります。
 index_status=ハートビートステータス
+
 conf_title=構成オプション
 conf_header=ハートビート構成オプション
 conf_serials=シリアルハートビートポート
@@ -54,6 +55,7 @@ conf_auto_on=$ {conf_enabled}
 conf_auto_off=$ {conf_disabled}
 conf_auto_legacy=レガシーモード
 conf_auto_=$ {デフォルト}
+
 res_title=クラスターリソース
 res_node=プライマリノード
 res_ips=IPアドレス
@@ -67,6 +69,7 @@ res_getserv=リソースを取得
 res_hbdown=ハートビートダウン
 res_up=アップ
 res_down=ダウン
+
 node_create=クラスターリソースの追加
 node_edit=クラスターリソースの編集
 node_header=クラスターリソースの詳細
@@ -83,6 +86,7 @@ node_enone=プライマリノードが見つからないか無効です
 node_eip=「$1」は有効なIPアドレスではありません
 node_ecidr=「$1」は有効なCIDRではありません
 node_ebroad=「$1」は有効なブロードキャストアドレスではありません
+
 auth_title=認証キー
 auth_header=クラスターノード認証
 auth_mode=認証モード
@@ -92,6 +96,8 @@ auth_md5=パスワード付きのMD5
 auth_err=認証キーを保存できませんでした
 auth_emd5=MD5パスワードがないか無効です
 auth_esha1=SHA1パスワードがないか無効です
+
 start_err=ハートビートを開始できませんでした
+
 apply_err=変更を適用できませんでした
 apply_epid=プロセスはもう実行されていません

@@ -29,12 +29,14 @@ index_fd=Fitxategiaren Daemon Konfigurazioa
 index_groups=Bacula Taldearen konfigurazioa
 index_actions=Babeskopia eta leheneratze ekintzak
 index_ocmin=<a href=$2 target=_new>-ek ekarria: Linmin</a>> </a>
+
 connect_emysql=Ezin izan da datu basearen DBI kontrolatzailea $1 kargatu
 connect_elogin=Ezin izan da $1:$2 datu-basean saioa hasi.
 connect_equery=Ez dirudi $1 datu-basea Bacula taulak dituenik.
 connect_equery2=Hau izan daiteke, instalatutako SQLite Perl modulua berria delako, eta ez baitu onartzen Baculak erabilitako SQLite datu-basearen formatu zaharragoa.
 connect_equery3=Ez dirudi $1 datu-basea OC Bacula taldeko taulak dituenik.
 esql=SQL errorea : $1 
+
 check_edir=$1 Bacula konfigurazioaren direktorioa ez da zure sisteman aurkitu.
 check_ebacula=Ez da $1 Bacula kontrol komandoa aurkitu.
 check_econsole=Ez da $1 Bacula kontsolaren komandoa aurkitu.
@@ -43,12 +45,14 @@ check_eclient=Sistema hau <a href='$2'>Bacula bezero</a> dela dirudi zuzendaria 
 check_econfigs=Ez da Bacula konfigurazio fitxategirik aurkitu $1 -en
 check_eservers=Ez da Webmin zerbitzari talderik zehaztu
 check_engmod=Ez dago OpenCountry Bacula taldeen modulua instalatuta
+
 proc_bacula-sd=Biltegiratzeko demonea
 proc_bacula-fd=Fitxategiaren demonio
 proc_bacula-dir=Bacula zuzendaria daemon
 proc_bareos-sd=Biltegiratzeko demonea
 proc_bareos-fd=Fitxategiaren demonio
 proc_bareos-dir=Bacula zuzendaria daemon
+
 stop_err=Huts egin du Bacula gelditzeko
 start_err=Huts egin du Bacula abiaraztean
 start_einit=Ez da hasierako scriptrik aurkitu $1 erako
@@ -57,6 +61,7 @@ restart_err=Huts egin du Bacula berriro hasterakoan
 apply_err=Ezin izan da konfigurazioa aplikatu
 apply_failed=Konfigurazio errorea hauteman da
 apply_problem=Ezin izan da konfigurazioa aplikatu : $1 
+
 jobs_title=Babeskopia lanak
 jobs_none=Oraindik ez da babes-lanik zehaztu.
 jobs_name=Lanpostuaren izena
@@ -69,6 +74,7 @@ jobs_add=Gehitu babes-lan berria.
 jobs_delete=Ezabatu hautatutako lanak
 jobs_return=lanpostuen zerrenda
 jobs_derr=Ezin izan dira lanak ezabatu
+
 filesets_title=Fitxategi multzoak
 filesets_none=Oraindik ez da babes kopiarik ezarri.
 filesets_name=Fitxategiaren izena
@@ -78,6 +84,7 @@ filesets_delete=Ezabatu hautatutako fitxategi multzoak
 filesets_return=fitxategi multzoen zerrenda
 filesets_derr=Ezin izan da fitxategi-multzoak ezabatu
 filesets_ednone=Ez da hautatu
+
 fileset_title1=Sortu fitxategi multzoa
 fileset_title2=Editatu fitxategi multzoa
 fileset_header=Backup fitxategiaren xehetasunak
@@ -97,6 +104,7 @@ fileset_gzipdef=&lt;Konpresio maila lehenetsia&gt;
 fileset_lzo=LZO konpresioa
 fileset_gzip=$1 Gzip maila
 fileset_onefs=Mugatu babeskopia fitxategi-sistema batera?
+
 clients_title=Backup bezeroak
 clients_none=Oraindik ez dira segurtasun bezeroak zehaztu.
 clients_name=Bezeroaren izena
@@ -106,6 +114,7 @@ clients_add=Gehitu babes-bezero berria.
 clients_delete=Ezabatu hautatutako bezeroak
 clients_return=bezeroen zerrenda
 clients_derr=Ezin izan da bezeroak ezabatu
+
 client_title1=Sortu Backup Bezeroa
 client_title2=Editatu Backup Bezeroa
 client_header=Babeskopia egin beharreko bezeroaren xehetasunak
@@ -128,6 +137,7 @@ client_efileret=Fitxategien atxikipen epea falta edo baliogabea da
 client_ejobret=Lanpostua gordetzeko epea galdu edo baliogabea
 client_echild=Bezeroa ezin da ezabatu $1 -ek erabiltzen duen moduan
 client_status=Erakutsi egoera
+
 job_title1=Sortu Backup lana
 job_title2=Editatu Backup lana
 job_header=Babeskopia lanaren xehetasunak
@@ -156,6 +166,7 @@ job_before=Lanaren aurretik agindu
 job_after=Lanaren ondoren agindu
 job_cbefore=Lana baino lehen agindu (bezeroaren gainean)
 job_cafter=Lanaren ondoren agindu (bezeroan)
+
 schedules_title=Backup Egutegiak
 schedules_none=Oraindik ez dira babes-ordutegiak zehaztu.
 schedules_name=Ordutegiaren izena
@@ -164,6 +175,7 @@ schedules_add=Gehitu segurtasun kopia berria.
 schedules_delete=Ezabatu hautatutako programak
 schedules_return=ordutegien zerrenda
 schedules_derr=Ezin izan dira egutegiak ezabatu
+
 schedule_title1=Sortu Backup Egutegia
 schedule_title2=Editatu Backup Egutegia
 schedule_header=Backup egutegiaren xehetasunak
@@ -177,6 +189,7 @@ schedule_ename=Ordutegi falta edo baliogabearen izena
 schedule_eclash=Izen bera duen ordutegia dagoeneko
 schedule_etimes=$1 errenkaden babes-kopuruak falta dira
 schedule_echild=Ordutegi hau ezin da ezabatu $1 -ek erabiltzen duen moduan
+
 backup_title=Egin Backup lana
 backup_header=Babeskopia lanaren xehetasunak
 backup_job=Korrika egiteko lana
@@ -191,11 +204,13 @@ backup_running=.. backup lana exekutatzen ari da. Amaitutakoan, emaitzak azpian 
 backup_running2=.. babeskopia lana atzeko planoan hasi da.
 backup_done=.. babeskopia osatua.
 backup_failed=.. kopiak ez du behar bezala osatu. Egiaztatu goiko errore mezua xehetasunak lortzeko.
+
 gbackup_title=Exekutatu Bacula Group Backup lana
 gbackup_run=Backup lana $1 bezeroaren $2 bezeroei hasten ..
 gbackup_on=$1 bezeroaren babes kopia exekutatzen :
 gbackup_header=Bacula taldearen babesaren lanaren xehetasunak
 gbackup_jd=$1 ($2 fitxategia $3 taldean)
+
 dirstatus_title=Zuzendariaren egoera
 dirstatus_sched=Egindako segurtasun kopia lanak
 dirstatus_name=Lanpostuaren izena
@@ -216,12 +231,14 @@ dirstatus_status2=Egoera
 dirstatus_donenone=Ez da backuprako lanik exekutatu.
 dirstatus_cancel=Utzi hautatutako lanak
 dirstatus_refresh=Eguneratu zerrenda
+
 clientstatus_title=Bezeroaren egoera
 clientstatus_err=Ezin izan da $1 : $2 egoera eskuratu
 clientstatus_msg=Egoera $1 etik $2 : $2 
 clientstatus_show=Erakutsi bezeroaren egoera:
 clientstatus_ok=Ados
 clientstatus_on=$1 ($2 an)
+
 storages_title=Biltegirako demonioak
 storages_none=Oraindik ez daude biltegiratze demonik definituta.
 storages_name=Biltegiaren izena
@@ -232,6 +249,7 @@ storages_add=Gehitu biltegiratze demon berria.
 storages_delete=Ezabatu hautatutako biltegiratze-demonioak
 storages_return=biltegirako deabruen zerrenda
 storages_derr=Ezin izan da biltegiratze demoniak ezabatu
+
 storage_title1=Sortu Biltegiratze Demoia
 storage_title2=Editatu Biltegiratze Demonia
 storage_header=Urrutiko biltegiaren demonioaren xehetasunak
@@ -255,6 +273,7 @@ storage_emedia=Komunikabide mota izenaren falta
 storage_emaxjobs=Aldi baterako lan gehien falta dira
 storage_echild=Bezeroa ezin da ezabatu $1 -ek erabiltzen duen moduan
 storage_status=Erakutsi egoera
+
 devices_title=Biltegiratzeko gailuak
 devices_none=Oraindik ez dira biltegiratzeko gailuak zehaztu.
 devices_name=Gailuaren izena
@@ -264,6 +283,7 @@ devices_add=Gehitu biltegiratze gailu berria.
 devices_delete=Ezabatu hautatutako biltegiratze gailuak
 devices_return=biltegiratze gailuen zerrenda
 devices_derr=Ezin izan da biltegiratze gailuak ezabatu
+
 device_title1=Sortu Biltegiratze Gailua
 device_title2=Editatu Biltegiratze Gailua
 device_header=Fitxategiak gordetzeko gailuaren xehetasunak
@@ -282,11 +302,13 @@ device_eclash=Izen bera duen biltegiratze gailua badago
 device_emedia=Komunikabide mota izenaren falta
 device_edevice=Artxiboko gailua edo direktorio falta edo baliogabea
 device_echild=Bezeroa ezin da ezabatu $1 -ek erabiltzen duen moduan
+
 storagestatus_title=Biltegiratzeko demonioaren egoera
 storagestatus_err=Ezin izan da $1 : $2 egoera eskuratu
 storagestatus_msg=Egoera $1 etik $2 : $2 
 storagestatus_show=Erakutsi biltegiaren demonioaren egoera:
 storagestatus_ok=Ados
+
 label_title=Etiketaren bolumena
 label_header=Etiketaren bolumenaren xehetasunak
 label_storage=Biltegiratzeko demonea etiketatzeko
@@ -302,6 +324,7 @@ label_done=etiketa arrakastatsua
 label_epool=.. ezin aurkitu igerilekua!
 label_err=Etiketa huts egin da
 label_elabel=Ez da etiketarik sartu
+
 pools_title=Bolumen-igerilekuak
 pools_none=Oraindik ez dira bolumen-multzoak zehaztu.
 pools_name=Igerilekuaren izena
@@ -311,6 +334,7 @@ pools_add=Gehitu bolumen-multzo berria.
 pools_delete=Ezabatu hautatutako bolumen-multzoak
 pools_return=bolumen-multzoen zerrenda
 pools_derr=Ezin izan da bolumen-multzoak ezabatu
+
 pool_title1=Sortu bolumen-multzoa
 pool_title2=Editatu bolumen-multzoa
 pool_header=Babes-bolumenen poolen xehetasunak
@@ -332,6 +356,7 @@ pool_ereten=Falta edo atxikitzeko epea baliogabea
 pool_status=Erakutsi bolumenak
 pool_autolabel=Automatikoki etiketatu bolumen aurrizkia
 pool_maxvolsize=Gehieneko bolumenaren tamaina (adibidez, 5G gigabyteentzako 5G)
+
 poolstatus_title=Bolumenak Igerilekuan
 poolstatus_show=Erakutsi bolumenak igerilekuan:
 poolstatus_ok=Ados
@@ -345,9 +370,11 @@ poolstatus_status=Backup modua
 poolstatus_none=Ez dago bolumenik une honetan backup-multzo honetan.
 poolstatus_never=Inoiz ez
 poolstatus_delete=Ezabatu hautatutako bolumenak
+
 dvolumes_err=Ezin izan da bolumenak ezabatu
 dvolumes_enone=Ez da hautatu
 dvolumes_ebacula=Bacula errorea : $1 
+
 mount_title=Muntatu edo desmontatu
 mount_header=Biltegiratzeko muntaketa edo desmuntatzeko aukerak
 mount_storage=Biltegiratzeko gailua
@@ -365,8 +392,10 @@ unmount_failed=.. mendia huts egin du! Ikusi goiko errore mezua zergatik dagoen.
 mount_return=muntatzeko forma
 mount_err=Huts egin du biltegiratze gailua muntatzean
 mount_eslot=Eskuragarri den zirrikitu zenbakia edo falta da
+
 cancel_err=Ezin izan dira lanak bertan behera utzi
 cancel_enone=Ez da hautatu
+
 gjobs_title=Bacula Taldeko Backup Lanpostuak
 gjobs_none=Oraindik ez dira Bacula taldeko segurtasun kopiak zehaztu.
 gjobs_add=Gehitu Bacula taldeko babes-lan berria.
@@ -374,10 +403,12 @@ gjobs_delete=Ezabatu hautatutako lanak
 gjobs_return=Bacula taldeko lanpostuen zerrenda
 gjobs_derr=Ezin izan da Bacula taldeko lanak ezabatu
 gjobs_client=Bacula taldea babeskopia egiteko
+
 gjob_title1=Sortu Bacula Taldeko Backup lana
 gjob_title2=Editatu Bacula Group Backup lana
 gjob_header=Bacula taldearen babesaren lanaren xehetasunak
 gjob_client=Bacula taldea babeskopia egiteko
+
 groups_title=Bacula taldeak
 groups_none=Oraindik ez du Baculak talderik babestu segurtasun kopiak egiteko.
 groups_name=Taldearen izena
@@ -391,6 +422,7 @@ groups_derr=Ezin izan dira taldeak ezabatu
 groups_noadd=Ez dago Bacula taldeik segurtasun kopietarako hautatzeko.
 groups_info=$1 ($2 kide)
 groups_already=Dagoeneko Bacula talde guztiak gehitu dira.
+
 group_title1=Sortu Bacula taldea
 group_title2=Editatu Bacula taldea
 group_header=Babesteko Bacula taldearen xehetasunak
@@ -401,11 +433,13 @@ group_port=Bacula FD portua
 group_err=Huts egin du Bacula taldea gordetzean
 group_eclash=Izen bera duen taldea dagoeneko
 group_members=Ostalariak Bacula taldean
+
 sync_title=Bacula Taldearen sinkronizazioa
 sync_header=Bacula talde automatikoko bezeroen sinkronizazio aukerak
 sync_sched=Sinkronizatu egitarauan?
 sync_schedyes=Bai, behean hautatutako uneetan ..
 sync_err=Huts egin du Bacula taldearen sinkronizazioa gordetzean
+
 log_create_client=Backup bezeroaren $1 sortu da
 log_modify_client=$1 babes-bezero aldatua
 log_delete_client=$1 babes-bezero ezabatu da
@@ -464,6 +498,7 @@ log_director=Gorde Bacula zuzendariaren konfigurazio globala
 log_file=Gorde Bacula fitxategiaren daemon konfigurazioa
 log_storagec=Gorde Bacula biltegiratze daemon konfigurazioa
 log_fixpass=Konpondu Bacula kontsola programaren pasahitza
+
 director_title=Zuzendariaren konfigurazioa
 director_header=Global Bacula zuzendariaren aukerak
 director_name=Zuzendariaren izena
@@ -477,6 +512,7 @@ director_ename=Zuzendariaren izen falta edo baliogabea
 director_eport=Ataka-zenbaki falta edo baliogabea
 director_ejobs=Aldi baterako lan kopurua galdu edo baliogabea
 director_edir=Falta den edo ez dagoen lan direktorio
+
 tls_enable=Gaitu TLS enkriptazioa?
 tls_require=TLS konexioak bakarrik onartu?
 tls_verify=Egiaztatu TLS bezeroak?
@@ -488,6 +524,7 @@ tls_ecert=Falta den edo ez dago TLS ziurtagiri fitxategia
 tls_ekey=Falta da edo ez dago TLS gako fitxategia
 tls_ecacert=Falta edo ez dago TLS CA ziurtagiri fitxategia
 tls_ecerts=TLS gaituta egon dadin, ziurtagiria, gakoa eta CA fitxategiak zehaztu behar dira
+
 file_title=Fitxategiaren Daemon Konfigurazioa
 file_header=Bacula fitxategiaren daemon aukerak
 file_name=Fitxategiaren demonio izena
@@ -500,6 +537,7 @@ file_ename=Falta da edo ez da fitxategi demonioaren izena
 file_eport=Ataka-zenbaki falta edo baliogabea
 file_ejobs=Aldi baterako lan kopurua galdu edo baliogabea
 file_edir=Falta den edo ez dagoen lan direktorio
+
 fdirectors_title=Fitxategiaren Daemon Zuzendariak
 fdirectors_none=Oraindik ez dute zuzendaririk zehaztu.
 fdirectors_name=Zuzendariaren izena
@@ -508,6 +546,7 @@ fdirectors_add=Gehitu zuzendari berria.
 fdirectors_delete=Ezabatu hautatutako zuzendariak
 fdirectors_return=zuzendarien zerrenda
 fdirectors_derr=Ezin izan dira zuzendaritzak ezabatu
+
 fdirector_title1=Sortu Fitxategiaren Daemon zuzendaria
 fdirector_title2=Editatu Fitxategiaren Daemon zuzendaria
 fdirector_header=Urruneko zuzendaria kontrolatzeko xehetasunak
@@ -519,6 +558,7 @@ fdirector_err=Ezin izan da fitxategiaren daemon zuzendaria gorde
 fdirector_ename=Zuzendariaren izena falta da
 fdirector_eclash=Izen bera duen zuzendaria dagoeneko
 fdirector_epass=Pasahitz falta
+
 sdirectors_title=Biltegiratzeko Daemon Zuzendariak
 sdirectors_none=Oraindik ez dute zuzendaririk zehaztu.
 sdirectors_name=Zuzendariaren izena
@@ -527,6 +567,7 @@ sdirectors_add=Gehitu zuzendari berria.
 sdirectors_delete=Ezabatu hautatutako zuzendariak
 sdirectors_return=zuzendarien zerrenda
 sdirectors_derr=Ezin izan dira zuzendaritzak ezabatu
+
 sdirector_title1=Sortu Storage Daemon zuzendaria
 sdirector_title2=Editatu Storage Daemon zuzendaria
 sdirector_header=Urruneko zuzendaria kontrolatzeko xehetasunak
@@ -538,6 +579,7 @@ sdirector_err=Huts egin du biltegiaren daemonen zuzendaria gordetzean
 sdirector_ename=Zuzendariaren izena falta da
 sdirector_eclash=Izen bera duen zuzendaria dagoeneko
 sdirector_epass=Pasahitz falta
+
 storagec_title=Biltegian Daemon Konfigurazioa
 storagec_header=Bacula biltegiratzeko daemon aukerak
 storagec_name=Demonio izena
@@ -550,6 +592,7 @@ storagec_ename=Falta da edo ez dago baliozko biltegiaren demonioaren izena
 storagec_eport=Ataka-zenbaki falta edo baliogabea
 storagec_ejobs=Aldi baterako lan kopurua galdu edo baliogabea
 storagec_edir=Falta den edo ez dagoen lan direktorio
+
 chooser_title=Hautatu Egutegia
 chooser_monthsh=Hilabeteak exekutatzeko
 chooser_months=Urteko hilabeteak
@@ -574,11 +617,13 @@ chooser_emonthsrange=Hautatutako hilabeteek kontigu izan behar dute
 chooser_eweekdaysrange=Aukeratutako astegunek ondokoak izan behar dute
 chooser_eweekdaynumsrange=Aukeratutako astegunen zenbakiek kutsua izan behar dute
 chooser_edaysrange=Hautatutako hilabeteko egunak ondokoak izan behar du
+
 weekdaynum_1=Lehen
 weekdaynum_2=bigarren
 weekdaynum_3=Hirugarren
 weekdaynum_4=Laugarren
 weekdaynum_5=bosgarren
+
 restore_title=Berrezarri babeskopia
 restore_title2=Berrezarri babeskopia Bacula taldeari
 restore_title3=Berrezarri Bacula Taldearen Backup

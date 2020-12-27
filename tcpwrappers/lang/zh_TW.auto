@@ -10,6 +10,7 @@ index_hosts=主持人
 index_cmd=命令
 index_delete=刪除所選
 index_none=沒有
+
 edit_title1allow=創建允許規則
 edit_title2allow=編輯允許規則
 edit_title1deny=創建拒絕規則
@@ -22,9 +23,11 @@ edit_hosts=遠程主機
 edit_hostsexcept=主機除外
 edit_cmd=Shell命令
 edit_efound=在xinetd配置中找不到守護程序'$1'。
+
 save_errtitle=保存規則錯誤
 save_ehost=主機輸入包含錯誤字符
 save_ecmd=命令輸入包含錯誤字符
 save_eservice=守護程序名稱包含錯誤字符
+
 del_errtitle=刪除規則時出錯
 del_enone=沒有標記為刪除的規則

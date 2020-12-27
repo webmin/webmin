@@ -16,8 +16,10 @@ index_type=SSH sleutel type :
 index_rsa1=RSA (voor SSH v1)
 index_rsa=RSA (voor SSH v2)
 index_dsa=DSA (voor SSH v2)
+
 bits=bits
 secs=seconden
+
 users_title=Authenticatie
 users_header=Login en authenticatie opties
 users_expire=Dagen om gebruiker te waarschuwen dat account afloopt
@@ -53,6 +55,7 @@ users_authkeys_set=File onder de home
 users_eauthkeys=Ontbrekende of ongeldig lijkende autorisatie sleutel file
 users_maxauthtries=Maximum inlog pogingen per verbinding
 users_emaxauthtries=Ontbrekende of niet numerieke aantal inlog pogingen per verbinding
+
 net_title=Netwerken
 net_header=Netwerk opties
 net_port=Luister op poort
@@ -90,6 +93,7 @@ net_eprots=U moet minimaal één protocol selecteren
 net_eladdress='$1' is geen geldig adres om naar te luisteren
 net_elport='$1' is geen geldige poort om naar te luisteren
 net_elisten2=Geen adressen om naar te luisteren ingevuld
+
 access_title=Toegang Controle
 access_header=Netwerk en inlog toegang controle opties
 access_allowu=Alleen gebruikers toestaan
@@ -107,6 +111,7 @@ access_eallowg=Er zijn nog geen toegestane groepen ingevuld
 access_edenyg=Er zijn nog geen groepen om te weigeren ingevuld
 access_eallowh=Er zijn nog geen toegestane hosts ingevuld
 access_edenyh=Er zijn nog geen hosts om te weigeren ingevuld
+
 misc_title=Extra Opties
 misc_header=Andere extra SSH server opties
 misc_x11=Sta toe om X11 verbinding door te sturen?
@@ -130,14 +135,17 @@ misc_eumask=Ontbrekende of ongeldige 4-tallig getal umask
 misc_ebits=Ontbrekende of ongeldige server sleutel grote
 misc_eregen=Ontbrekende of ongeldige 'genereer opnieuw sleutel' interval
 misc_epid=Ontbrekende PID file pad
+
 start_err=Mislukt om SSH server te starten
 apply_epid=Niet werkend
+
 hosts_title=Client Host Opties
 hosts_header=SSH Client Hosts
 hosts_none=Er zijn geen client host opties gedefinieerd. Alle SSH inlog clients  zullen de standaard instellingen gebruiken.
 hosts_all=Alle Hosts
 hosts_add=Opties toevoegen voor client host.
 hosts_return=client hosts lijst
+
 host_create=Toevoegen Host Opties
 host_edit=Bewerk Host Opties
 host_header=Client opties voor SSH host
@@ -193,6 +201,7 @@ host_eprots=U moet minimaal één protocol selecteren
 host_proxy=Verbinding proxy opdracht
 host_proxy_def=Niets
 host_eproxy=Ontbrekende of ongeldig-lijkende verbinding proxy opdracht
+
 log_users=Veranderde authenticatie opties
 log_net=Veranderde netwerk opties
 log_access=Toegang controle veranderd
@@ -207,6 +216,7 @@ log_stop=Gestopte SSH server
 log_start=Gestarte SSH server
 log_apply=Toegevoegde configuratie
 log_manual=Handmatig bewerkte config file $1
+
 sync_title=Gebruiker SSH Sleutel Instelling
 sync_desc=Met deze pagina kunt u een configuratie maken voor de automatische instellingen van SSH voor nieuwe gebruikers die op uw systeem worden aangemaakt. Nieuwe gebruikers hoeven dus niet de <tt>ssh-sleutel generator</tt> te gebruiken voordat ze SSH gaan gebruiken.
 sync_create=SSH sleutel instellen voor nieuwe Unix gebruiker.
@@ -215,9 +225,11 @@ sync_pass=Gebruik wachtwoord als sleutel toegang
 sync_gnupg=GNUPG sleutel instellen voor nieuwe Unix gebruikers.
 sync_type=Sleutel  soort
 sync_auto=&lt;Automatisch&gt;
+
 keys_title=Host SSH Sleutels
 keys_desc=Deze pagina laat u de SSH sleutels zien van deze host.
 keys_none=Kon geen enkele Host-Sleutel  ingang vinden in uw SSHD  configuratie.
+
 manual_title=Bewerk Configuratie Files
 manual_ecannot=U bent niet bevoegd om de SSH server configuratie file te bewerken
 manual_ok=Bewerk
@@ -225,5 +237,6 @@ manual_efile=Geselecteerde file is geen onderdeel van de SSH server configuratie
 manual_file=Bewerk configuratie file :
 manual_edata=Niets ingevuld!
 manual_err=Mislukt om configuratie file op te slaan
+
 dknown_err=Mislukt om bekende hosts te verwijderen
 dknown_enone=Niets geselecteerd

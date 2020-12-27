@@ -18,10 +18,12 @@ index_version=Različica PPPd $1
 index_boot=Povežite se ob zagonu:
 index_noboot=&lt;Ne poveži&gt;
 index_bootdesc=Spremenite to možnost, če želite nadzirati, ali se izbrana povezava PPTP VPN zažene ob zagonu ali ne.
+
 disc_err=Tunela ni bilo mogoče izklopiti
 disc_egone=Ni več aktivna
 disc_ekill=Programa pppd ni bilo mogoče ubiti
 disc_done=Tunel $1 je bil uspešno prekinjen.
+
 conn_err=Ni bilo mogoče povezati predora
 conn_egone=Tunel ne obstaja več
 cone_ealready=Že povezano
@@ -32,6 +34,7 @@ conn_ok=.. povezava uspešno aktivirana z vmesnikom $1. Vaš lokalni naslov je $
 conn_timeout=.. Povezava ni uspela! Preverite spodnja sporočila dnevnika za informacije, zakaj.
 conn_routes=Dodajanje poti z ukazi ..
 conn_mppe=Protokol MPPE za šifriranje VPN zahteva podporo demona PPP in jedra. Vendar zgornje napake kažejo, da ena ali oboje ni na voljo v vašem sistemu. Če strežnik PPTP ne potrebuje MPPE, poskusite na strani <a href='$1'>globalne možnosti PPP</a> izklopiti vse možnosti, povezane z njim.
+
 edit_title1=Dodajte predor PPTP
 edit_title2=Urejanje predora PPTP
 edit_header=Možnosti tunela PPTP
@@ -60,6 +63,7 @@ edit_file=Datoteka z možnostmi PPP
 edit_none=Noben
 edit_global=Standardna globalna datoteka
 edit_ofile=Druga datoteka ..
+
 save_err=Predora ni bilo mogoče shraniti
 save_ename=Manjka ime tunela
 save_eserver=Manjkajoči ali neveljaven strežnik za povezavo
@@ -75,6 +79,7 @@ save_egw2=Neveljaven prehod za gostitelja v poti $1
 save_erename=Preimenovanja datoteke predora ni uspelo
 save_eclash=Tunel ali PPP vrstnik z istim imenom že obstaja
 save_efile=Manjkajoča ali neveljavna datoteka z možnostmi PPP
+
 opts_title=Možnosti globalnega javno-zasebnega partnerstva
 opts_desc=Spodnje nastavitve so vzete iz $1 in bodo veljale za vse predore, ki so nastavljeni na uporabo standardne datoteke z možnostmi PPP.
 opts_header=Možnosti PPP za vse predore
@@ -84,6 +89,7 @@ opts_err=Ni bilo mogoče shraniti globalnih možnosti PPP
 opts_emtu=Manjkajoča ali neveljavna največja velikost paketnega pošiljanja
 opts_emru=Manjkajoča ali neveljavna največja velikost prejemajočega paketa
 opts_msdesc=Spodnje možnosti omogočajo šifriranje MPPE, ki ga uporabljajo strežniki Windows VPN. MPPE pa potrebuje podporo tako v demonu PPP kot v jedru operacijskega sistema.
+
 mppe_mppe-40=Uporabljate 40-bitno MPPE šifriranje?
 mppe_mppe-128=Uporabljate 128-bitno MPPE šifriranje?
 mppe_mppe-stateless=Ali omogočite način MPPE brez državljanstva?
@@ -95,6 +101,7 @@ mppe_d1=Dovoljeno
 mppe_mppe-stateful=Ali želite omogočiti stanje v stanju MPPE?
 mppe_old=Opozorilo - V konfiguracijski datoteki so bile najdene stare MPPE direktive $1, čeprav vaš demon PPP podpira nove smernice.
 mppe_new=Opozorilo - Nove konfiguracijske MPPE direktive $1 so bile najdene v vaši konfiguracijski datoteki, čeprav vaš demon PPP podpira samo direktive starega sloga.
+
 log_create=Ustvarjen tunel PPTP $1 
 log_update=Spremenjen tunel PPTP $1 
 log_delete=Izbrisan predor PPTP $1 

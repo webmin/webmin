@@ -4,6 +4,7 @@ index_desc=ลักษณะ
 index_add=เพิ่มบริการ PAM ใหม่
 index_return=รายการบริการ
 index_none=ไม่พบไฟล์กำหนดค่า PAM ในระบบของคุณในไดเรกทอรี $1 อาจไม่รองรับ PAM หรือ <a href='$2'>การกำหนดค่าโมดูล</a> ของคุณไม่ถูกต้อง
+
 desc_su=เปลี่ยนผู้ใช้
 desc_su-l=สลับผู้ใช้ (ด้วยการเข้าสู่ระบบ)
 desc_login=เข้าสู่ระบบท้องถิ่นหรือระยะไกล
@@ -87,6 +88,7 @@ desc_common-account=การยืนยันบัญชีทั่วไป
 desc_common-auth=การรับรองความถูกต้องทั่วไป
 desc_common-password=เปลี่ยนรหัสผ่านทั่วไป
 desc_common-session=การตั้งค่าเซสชันทั่วไป
+
 edit_title=แก้ไขบริการ PAM
 edit_header=รายละเอียดบริการ PAM
 edit_name=ชื่อบริการ
@@ -107,6 +109,7 @@ edit_move=ย้าย
 edit_return=บริการ PAM
 edit_inc=รวมบริการ $1 
 edit_iheader=รวมบริการ PAM
+
 pam_pwdb.so=การพิสูจน์ตัวตนด้วยรหัสผ่าน Unix
 pam_securetty.so=ตรวจสอบ TTY ที่ปลอดภัยสำหรับรูท
 pam_nologin.so=<tt>/etc/nologin</tt> ตรวจสอบไฟล์
@@ -149,6 +152,7 @@ pam_console.so=ตรวจสอบคอนโซลเท่านั้น
 pam_xauth.so=การตรวจสอบ X
 pam_stack.so=โทรหาบริการ PAM อื่น ๆ
 pam_foreground.so=การตั้งค่าคอนโซล
+
 control_requisite=จำเป็น
 control_required=จำเป็นต้องใช้
 control_sufficient=เพียงพอ
@@ -157,6 +161,7 @@ control_desc_requisite=ตรวจสอบล้มเหลวทันที
 control_desc_required=รับรองความถูกต้องล้มเหลวเมื่อสิ้นสุดความล้มเหลว
 control_desc_sufficient=ประสบความสำเร็จในการตรวจสอบทันทีที่ประสบความสำเร็จ
 control_desc_optional=สำเร็จหรือล้มเหลว
+
 create_title=สร้างบริการ PAM
 create_header=ตัวเลือกบริการ PAM ใหม่
 create_name=ชื่อบริการ
@@ -165,6 +170,7 @@ create_mods=โมดูล PAM เริ่มต้น
 create_0=ไม่มี
 create_1=การพิสูจน์ตัวตน Unix
 create_2=ปฏิเสธการเข้าถึงทั้งหมด
+
 mod_edit=แก้ไขโมดูล PAM
 mod_create=เพิ่มโมดูล PAM
 mod_header=ตัวเลือกโมดูล PAM
@@ -178,10 +184,12 @@ mod_type_password=เปลี่ยนรหัสผ่าน
 mod_control=ระดับความล้มเหลว
 mod_args=อาร์กิวเมนต์โมดูล
 mod_err=ไม่สามารถบันทึกโมดูล
+
 pwdb_shadow=ใช้ไฟล์รหัสผ่านเงาหรือไม่
 pwdb_nullok=ยอมรับรหัสผ่านที่ไม่มีค่าใช่หรือไม่
 pwdb_md5=ใช้รหัสผ่านที่เข้ารหัสด้วย MD5 หรือไม่
 pwdb_nodelay=ล่าช้าหลังจากลงชื่อเข้าใช้ล้มเหลว
+
 unix_nullok_secure=ยอมรับรหัสผ่านแบบ null ใน TTY ที่ปลอดภัยหรือไม่
 unix_min=ความยาวรหัสผ่านขั้นต่ำ
 unix_nomin=ไม่มี
@@ -190,6 +198,7 @@ unix_nomax=ไม่มีขีด จำกัด
 unix_obscure=ป้องกันการใช้รหัสผ่านง่าย ๆ ?
 unix_emin=ความยาวรหัสผ่านขั้นต่ำที่ขาดหายไปหรือไม่ถูกต้อง
 unix_emax=ความยาวรหัสผ่านสูงสุดที่หายไปหรือไม่ถูกต้อง
+
 listfile_item=ค้นหาไฟล์สำหรับ
 listfile_item_user=ชื่อผู้ใช้
 listfile_item_tty=TTY
@@ -206,51 +215,64 @@ listfile_apply=จำกัด การตรวจสอบถึง
 listfile_all=ผู้ใช้ทั้งหมด
 listfile_user=ผู้ใช้เท่านั้น
 listfile_group=เฉพาะกลุ่ม
+
 cracklib_type=พิมพ์รหัสผ่านพร้อมต์
 cracklib_retry=ความพยายามสูงสุดก่อนที่จะล้มเหลว
 cracklib_eretry=จำนวนครั้งที่ลองหายไปหรือไม่ถูกต้อง
 cracklib_etype=ประเภทรหัสผ่านที่ขาดหายไปหรือไม่ถูกต้อง
+
 rhosts_equiv=อ่านไฟล์ <tt>/etc/hosts.equiv</tt> หรือไม่
 rhosts_rhosts=อ่านไฟล์ <tt>.rhosts</tt> ของผู้ใช้หรือไม่
 rhosts_promiscuous=รายการ <tt>+</tt> อนุญาตให้โฮสต์ทั้งหมดได้หรือไม่
 rhosts_suppress=บันทึกการตรวจสอบล้มเหลว?
+
 env_var=ชื่อตัวแปร
 env_def=ค่าเริ่มต้น
 env_over=แทนที่ค่า
 env_evar=ชื่อตัวแปรต้องไม่มีช่องว่าง
+
 securetty_ttys=ปลอดภัย TTY
+
 shells_shells=เชลล์ผู้ใช้ที่ถูกต้อง
+
 tally_deny=ความพยายามล้มเหลวก่อนที่จะปฏิเสธการเข้าถึง
 tally_reset=รีเซ็ตความล้มเหลวนับบนความสำเร็จ
 tally_edeny=จำนวนครั้งของความล้มเหลวที่ขาดหายไปหรือไม่ถูกต้อง
 tally_magic=การนับล้มเหลวมีผลกับ <tt>ราก</tt> หรือไม่
 tally_root=<tt>บัญชีราก</tt> สามารถปฏิเสธได้หรือไม่
+
 time_services=บริการ
 time_ttys=ทาง TTY
 time_users=ผู้ใช้
 time_times=เข้าถึงครั้ง
 time_info=ฟิลด์ทั้งหมดสามารถมีหลายค่าโดยคั่นด้วย | และค่าสามารถใช้ * เป็นอักขระตัวแทนหรือ! ในฐานะที่เป็นผู้ลบล้าง
+
 group_services=บริการ
 group_ttys=ทาง TTY
 group_users=ผู้ใช้
 group_times=เข้าถึงครั้ง
 group_groups=เพิ่มกลุ่ม
 group_info=ฟิลด์ทั้งหมดสามารถมีหลายค่าโดยคั่นด้วย | และค่าสามารถใช้ * เป็นอักขระตัวแทนหรือ! ในฐานะที่เป็นผู้ลบล้าง
+
 wheel_group=ตรวจสอบการเป็นสมาชิกของกลุ่ม
 wheel_group_def=ค่าเริ่มต้น (<tt>วงล้อ</tt> หรือ GID 0)
 wheel_trust=สมาชิกกลุ่มหลีกเลี่ยงการพิสูจน์ตัวตนเพิ่มเติมหรือไม่
 wheel_deny=ปฏิเสธแทนที่จะอนุญาตให้สมาชิกในกลุ่ม?
 wheel_egroup=ชื่อกลุ่มที่ขาดหายไปหรือไม่ถูกต้อง
+
 motd_file=ไฟล์ที่จะแสดง
 motd_file_def=ค่าเริ่มต้น (<tt>/etc/motd</tt>)
 motd_efile=ชื่อไฟล์หายไปหรือไม่ถูกต้อง
+
 mail_nopen=แสดงการแจ้งเตือนเมลเมื่อเข้าสู่ระบบ?
 mail_close=แสดงการแจ้งเตือนเมลเมื่อออกจากระบบ?
 mail_empty=แจ้งเตือนหากไฟล์เมลว่างเปล่า
 mail_noenv=ตั้งค่าตัวแปรสภาพแวดล้อม $ MAIL หรือไม่
 mail_dir=เมลสปูลไดเร็กทอรี
 mail_edir=ไดเรกทอรีสปูลเมลขาดหายไปหรือไม่ถูกต้อง
+
 stack_service=ผ่านการตรวจสอบเพื่อบริการ PAM
+
 log_pam_create=สร้างบริการ PAM $1 
 log_pam_delete=ลบบริการ PAM $1 แล้ว
 log_mod_create=เพิ่มโมดูล PAM $1 ไปยังบริการ $2 
@@ -262,6 +284,7 @@ log_inc_create=เพิ่มรวม $1 สำหรับบริการ 
 log_inc_modify=แก้ไขรวมถึง $1 สำหรับบริการ $2 
 log_inc_delete=ถูกลบรวมถึง $1 สำหรับบริการ $2 
 log_incs=อัปเดตรวมถึงบริการ $1 แล้ว
+
 inc_edit=แก้ไขบริการที่รวม
 inc_create=สร้างบริการที่รวม
 inc_header=รวมถึงรายละเอียดบริการ PAM

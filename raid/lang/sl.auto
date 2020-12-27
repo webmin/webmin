@@ -21,6 +21,7 @@ index_mailfromnone=Privzeto (<tt>root</tt>)
 index_program=Ukaz za zagon, ko so odkrite težave
 index_programnone=Ne zaženite nobenega
 index_monitor=Ali je spremljanje omogočeno?
+
 linear=Linearni (združeni)
 raid0=RAID0 (črtasto)
 raid1=RAID1 (zrcalno)
@@ -29,6 +30,7 @@ raid5=RAID5 (distribuirana pariteta)
 raid6=RAID6 (dvojna porazdeljena pariteta)
 raid10=RAID10 (črtasto in zrcalno)
 blocks=blokov
+
 create_title=Ustvari RAID napravo
 create_header=Možnosti naprav RAID
 create_device=Datoteka z napravo
@@ -62,6 +64,7 @@ create_o2_layout=2 izravnani izvodi
 create_n3_layout=3 V bližini izvodov
 create_f3_layout=3 Farne kopije
 create_o3_layout=3 izravnane kopije
+
 view_title=RAID naprava
 view_header=Možnosti naprav RAID
 view_device=Datoteka z napravo
@@ -117,6 +120,7 @@ view_mountmsg=Vnesite imenik in kliknite ta gumb, da odprete obrazec za namestit
 view_mountmsg2=Kliknite ta gumb, če želite uporabiti to napravo RAID za navidezni pomnilnik v vašem sistemu.
 view_blocks=$1 bloki
 view_sparegroup=Rezervna skupina
+
 mkfs_title=Ustvari datotečni sistem
 mkfs_header2=Ta obrazec vam omogoča, da zgradite nov $2 datotečni sistem na $1. <b>Vsi</b> obstoječi podatki bodo izbrisani!
 mkfs_options=Nove možnosti datotečnega sistema Linux
@@ -124,6 +128,7 @@ mkfs_err=Ustvarjanja datotečnega sistema ni uspelo
 mkfs_exec=Izvedba ukaza $1 ..
 mkfs_failed=.. ukaz ni uspel!
 mkfs_ok=.. ukaz končan.
+
 emkraid=<tt>mkraid</tt> ni uspel : $1 
 eraidstop=<tt>raidstop</tt> ni uspel : $1 
 eraidstart=<tt>raidstart</tt> ni uspel : $1 
@@ -135,6 +140,7 @@ emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
 log_create=Ustvarjeno $1 RAID naprava $2 
 log_stop=Deaktivirana RAID naprava $1 
 log_start=Aktivirana RAID naprava $1 
@@ -147,14 +153,17 @@ log_grow=Narasla RAID naprava $1 na skupno $2 diskov
 log_convert_to_raid6=Pretvorjena naprava RAID5 $1 v napravo RAID6
 log_convert_to_raid5=Pretvorjena naprava RAID6 $1 v napravo RAID5
 log_notif=Posodobljene možnosti obveščanja o težavah RAID
+
 notif_err=Ni bilo mogoče shraniti možnosti obveščanja o težavah RAID
 notif_emailaddr=Manjkajoči ali neveljaven naslov za obvestila
 notif_emailfrom=Manjka ali je neveljaven Iz naslova
 notif_eprogram=Manjkajoči ali neobstoječi program za zagon
+
 delete_title=Izbriši RAID matriko
 delete_rusure=Ali ste prepričani, da želite izbrisati matriko RAID $1, ki uporablja $2 prostora na disku?
 delete_ok=Da, izbriši
 delete_eidx=Izbran ni bil niz RAID!
+
 remove_title=Odstranite particijo iz RAID Array
 remove_rusure=Ali ste prepričani, da želite odstraniti particijo $2 iz matrike RAID $1 ?
 remove_ok=Da, Odstrani

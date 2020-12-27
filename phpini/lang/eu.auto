@@ -9,17 +9,21 @@ index_edit=kudeatu
 index_manual=Editatu eskuz
 index_anyfile=Editatu beste PHP konfigurazio fitxategia:
 index_return=konfigurazio fitxategiak
+
 file_global=PHP konfigurazio globala
 file_eread=Ezin izan da irakurri $1 : $2 
+
 manual_title=Editatu konfigurazioa eskuz
 manual_desc=Orrialde hau PHP konfigurazio fitxategia eskuz editatzeko erabil daiteke. Hori kontu handiz egin beharko da, ez baita sintaxirik edo beste baliozkotasun egiaztapenik egingo zure aldaketetan.
 manual_err=Ezin izan da konfigurazio fitxategia editatu
 manual_edata=Ez da eduki berririk sartu
+
 list_title=Kudeatu PHP konfigurazioa
 list_ecannot=Ezin duzu PHP konfigurazio fitxategi hau kudeatu
 list_return=PHP konfigurazioa
 list_format_ini=INI formatua
 list_format_fpm=FPM formatua
+
 vars_title=PHP aldagaiak
 vars_header=PHP aldagaien sorrera eta aurrekontu aukerak
 vars_magic=Aipatu sarrera aldagai guztiak?
@@ -28,6 +32,7 @@ vars_register=Sarrera guztia aldagai globaletan bihurtu?
 vars_args=Komando lerroko parametroak aldagai globaletan bihurtu?
 vars_long=Sortu estilo handiko matrizeak <tt>HTTP_GET_VARS</tt> bezalakoak?
 vars_err=Ezin izan da PHP aldagaiaren ezarpenak gorde
+
 dirs_title=Direktorioko ezarpenak
 dirs_header=PHP script eta hedapen direktorioen ezarpenak
 dirs_include=Bilaketa-direktorioetarako elementuak
@@ -39,6 +44,7 @@ dirs_err=Ezin izan da direktorioaren ezarpenak gorde
 dirs_eincs=Ez da sartu bilaketa direktoriorik sartu
 dirs_eutmp=Aldi baterako fitxategien direktorio falta edo baliogabea
 dirs_eext=Luzapenen direktorio falta da
+
 db_title=Datu-basearen ezarpenak
 db_header1=MySQL datu-basearen konexio-ezarpenak
 db_persist=Baimendu datu-basearen konexio iraunkorrak?
@@ -57,6 +63,7 @@ db_emaxlinks=Konexio osoaren gehienezko kopurua falta edo baliogabea da
 db_etimeout=Konexioaren iraungitze falta edo baliogabea da
 db_ehost=MySQL zerbitzari ostalari lehenetsi falta edo baliogabea
 db_eport=MySQL zerbitzari ataka lehenetsia edo falta da
+
 session_title=Saio Aukerak
 session_header=PHP saioen jarraipena egiteko aukerak
 session_handler=Saioak gordetzeko mekanismoa
@@ -73,6 +80,7 @@ session_epath=Saio fitxategien direktorio falta edo baliogabea
 session_elife=Cookieen bizitza osoa falta da edo baliogabea
 session_emaxlife=Gehienezko saioaren iraupena galdu edo baliogabea
 session_eredis=Falta edo desgaituta birbideratzeko luzapena
+
 safe_title=Modu seguruaren aukerak
 safe_header=Fitxategiak sartzeko modu seguruak
 safe_on=Gaitu modu segurua?
@@ -85,6 +93,7 @@ safe_err=Huts egin du modu seguruko aukerak gordetzean
 safe_einclude=Falta diren direktorio baimendu edo baliogabea da sartutako fitxategientzat
 safe_eexec=Falta diren edo baliogabeko baimendutako direktoriorako egitarau baimendua
 safe_ebasedir=Fitxategien eragiketetarako direktorio falta edo baliogabea
+
 limits_title=Baliabideen mugak
 limits_header=Memoria eta transferentziaren muga aukerak
 limits_mem=Gehieneko memoriaren esleipena
@@ -98,6 +107,7 @@ limits_epost=Gehieneko HTTP POST tamaina falta edo baliogabea da
 limits_eupload=Gehien edo gehienezko fitxategien igoera tamaina falta da
 limits_eexec=Gehieneko exekuzio denbora falta da edo baliogabea
 limits_einput=Falta edo gehienezko sarreraren azterketa denbora maximoa baliogabea da
+
 errors_title=Akatsen erregistroa
 errors_header=Errorea mezuen bistaratzea eta erregistratzeko aukerak
 errors_display=Bistaratu errore mezuak?
@@ -128,6 +138,7 @@ errors_err=Huts egin du akatsen erregistroa gordetzean
 errors_ereporting=Ez da errore motako adierazpenik sartu
 errors_emaxlen=Logatutako akatsen gehienezko tamaina falta edo baliogabea da
 errors_efile=Falta da akatsen erregistro fitxategia
+
 misc_title=Beste Ezarpenak
 misc_header=Hainbat PHP ezarpen
 misc_short=Onartu PHP script-ak &lt;? ?
@@ -148,6 +159,7 @@ misc_include=Baimendu urruneko sarbidea irekitzea?
 misc_path=CGI Konpondu bideen informazioa?
 misc_timezone=PHP Ordu-eremua
 misc_charset=Lehenetsitako karaktere-multzoa
+
 log_manual=$1 fitxategia eskuz editatu
 log_vars=$1 aldatutako PHP aldagaiak
 log_dirs=$1 ean direktorioko ezarpenak aldatu dira
@@ -157,6 +169,7 @@ log_safe=$1 modu seguruko aukerak aldatu dira
 log_limits=Baliabideen mugak aldatu dira $1 ean
 log_errors=Aldatu egin da errorea $1 erregistratzean
 log_misc=Beste ezarpen batzuk aldatu dira $1 ean
+
 acl_global=PHP konfigurazio globala editatu al dezakezu?
 acl_anyfile=PHP konfigurazio gisa edita daiteke edozein fitxategi?
 acl_manual=Eskuz editatu al ditzake konfigurazio fitxategiak?

@@ -23,19 +23,24 @@ inittab_kbdrequest=Özel klavye kombinasyonu
 inittab_return=inittab indeksi
 inittab_apply=Init Yapılandırmasını Uygula
 inittab_applymsg=Bu butonu tıklayarak mevcut SysV Init Yapılandırmasını <tt>telinit q</tt> komutu ile uygulayabilirsiniz. UYARI: Yapılandırmanızdaki herhangi bir hata sisteminizi kullanılamaz hale getirebilir.
+
 edit_inittab_err=Bir işlemi değiştirmek için izininiz yoktur
 edit_inittab_title=İşlem $1'i Değiştir
 edit_inittab_details=İşlem Ayrıntıları
 edit_inittab_del=Sil
 edit_inittab_save=Kaydet
+
 new_inittab_err=Yeni bir işlem oluşturmak için izininiz yoktur
 new_inittab_title=Yeni İşlem
+
 save_inittab_err=bir işlem kaydetmek için izininiz yoktur
 save_inittab_noid=Hata, işlem ismi girilmedi
 save_inittab_already=Hata, işlem ismi her zaman mevcut
+
 log_modify=Açılış işlemi $1 değiştirildi
 log_rename=Açılış işlemi $1, $1 olarak yeniden isimlendirildi
 log_create=Açılış işlemi $1 oluşturuldu
 log_delete=Açılış işlemi $1 silindi
 log_apply=Yapılandırma uygulandı
+
 apply_err=Yapılandırmanın uygulanmasında hata oluştu

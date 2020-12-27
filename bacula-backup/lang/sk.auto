@@ -29,12 +29,14 @@ index_fd=Konfigurácia súboru démona
 index_groups=Konfigurácia skupiny Bacula
 index_actions=Akcie zálohovania a obnovy
 index_ocmin=Prispel <a href=$2 target=_new>Linmin</a> </a>
+
 connect_emysql=Nepodarilo sa načítať ovládač databázy DBI $1 
 connect_elogin=Nepodarilo sa prihlásiť do databázy $1:$2.
 connect_equery=Zdá sa, že databáza $1 neobsahuje tabuľky Bacula.
 connect_equery2=Dôvodom môže byť skutočnosť, že nainštalovaný modul SQLite Perl je príliš nový a nepodporuje starší formát databázy SQLite používaný programom Bacula.
 connect_equery3=Zdá sa, že databáza $1 neobsahuje tabuľky skupín OC Bacula.
 esql=Chyba SQL : $1 
+
 check_edir=Vo vašom systéme sa nenašiel konfiguračný adresár Bacula $1.
 check_ebacula=Riadiaci príkaz Bacula $1 nebol nájdený.
 check_econsole=Príkaz konzoly Bacula $1 nebol nájdený.
@@ -43,12 +45,14 @@ check_eclient=Zdá sa, že tento systém je skôr <a href='$2'>Bacula klient</a>
 check_econfigs=V $1 sa nenašli žiadne konfiguračné súbory Bacula
 check_eservers=Nie sú definované žiadne skupiny serverov Webmin
 check_engmod=Modul skupín OpenCountry Bacula nie je nainštalovaný
+
 proc_bacula-sd=Úložný démon
 proc_bacula-fd=Súbor démona
 proc_bacula-dir=Bacula Riaditeľ démona
 proc_bareos-sd=Úložný démon
 proc_bareos-fd=Súbor démona
 proc_bareos-dir=Bacula Riaditeľ démona
+
 stop_err=Nepodarilo sa zastaviť Baculu
 start_err=Nepodarilo sa spustiť Baculu
 start_einit=Pre $1 sa nenašiel žiadny iniciačný skript
@@ -57,6 +61,7 @@ restart_err=Nepodarilo sa znova spustiť Baculu
 apply_err=Nepodarilo sa použiť konfiguráciu
 apply_failed=Bola zistená chyba konfigurácie
 apply_problem=Nepodarilo sa použiť konfiguráciu : $1 
+
 jobs_title=Zálohovacie úlohy
 jobs_none=Zatiaľ neboli definované žiadne úlohy zálohovania.
 jobs_name=Názov úlohy
@@ -69,6 +74,7 @@ jobs_add=Pridajte novú úlohu zálohovania.
 jobs_delete=Odstrániť vybrané úlohy
 jobs_return=zoznam pracovných miest
 jobs_derr=Úlohy sa nepodarilo odstrániť
+
 filesets_title=Súpravy súborov
 filesets_none=Zatiaľ neboli definované žiadne súbory záložných súborov.
 filesets_name=Názov súboru
@@ -78,6 +84,7 @@ filesets_delete=Vymazať vybrané sady súborov
 filesets_return=zoznam súborov
 filesets_derr=Súbory súborov sa nepodarilo odstrániť
 filesets_ednone=Žiadne vybraté
+
 fileset_title1=Vytvoriť súbor
 fileset_title2=Upraviť sadu súborov
 fileset_header=Podrobnosti o súbore záložného súboru
@@ -97,6 +104,7 @@ fileset_gzipdef=&lt;Predvolená úroveň kompresie&gt;
 fileset_lzo=LZO kompresia
 fileset_gzip=Úroveň gzipu $1 
 fileset_onefs=Obmedziť zálohu na jeden súborový systém?
+
 clients_title=Záložní klienti
 clients_none=Zatiaľ neboli definovaní žiadni záložní klienti.
 clients_name=Meno klienta
@@ -106,6 +114,7 @@ clients_add=Pridajte nového záložného klienta.
 clients_delete=Odstrániť vybratých klientov
 clients_return=zoznam klientov
 clients_derr=Nepodarilo sa odstrániť klientov
+
 client_title1=Vytvorte záložného klienta
 client_title2=Upraviť záložného klienta
 client_header=Podrobnosti o klientovi, ktorý sa má zálohovať
@@ -128,6 +137,7 @@ client_efileret=Chýbajúca alebo neplatná doba uchovávania súboru
 client_ejobret=Chýbajúca alebo neplatná doba uchovania úlohy
 client_echild=Tento klient nie je možné odstrániť, pretože ho používa $1 
 client_status=Zobraziť stav
+
 job_title1=Vytvorenie úlohy zálohovania
 job_title2=Upraviť úlohu zálohovania
 job_header=Podrobnosti o úlohe zálohovania
@@ -156,6 +166,7 @@ job_before=Príkaz pred úlohou
 job_after=Príkaz po práci
 job_cbefore=Príkaz pred úlohou (na klientovi)
 job_cafter=Príkaz po úlohe (na klientovi)
+
 schedules_title=Plány zálohovania
 schedules_none=Zatiaľ neboli definované žiadne plány zálohovania.
 schedules_name=Názov rozvrhu
@@ -164,6 +175,7 @@ schedules_add=Pridajte nový plán zálohovania.
 schedules_delete=Odstrániť vybrané plány
 schedules_return=zoznam plánov
 schedules_derr=Rozvrhy sa nepodarilo odstrániť
+
 schedule_title1=Vytvorte plán zálohovania
 schedule_title2=Upraviť plán zálohovania
 schedule_header=Podrobnosti plánu zálohovania
@@ -177,6 +189,7 @@ schedule_ename=Chýba alebo je neplatný názov plánu
 schedule_eclash=Plán s rovnakým názvom už existuje
 schedule_etimes=Chýbajúce časy zálohy v riadku $1 
 schedule_echild=Tento rozvrh nemožno odstrániť, pretože ho používa $1 
+
 backup_title=Spustiť zálohovaciu úlohu
 backup_header=Podrobnosti o úlohe zálohovania
 backup_job=Úloha sa spustí
@@ -191,11 +204,13 @@ backup_running=.. zálohovacia úloha je teraz spustená. Po dokončení sa výs
 backup_running2=.. záloha bola spustená na pozadí.
 backup_done=.. zálohovanie je dokončené.
 backup_failed=.. záloha nebola úspešne dokončená. Podrobnosti nájdete v chybovom hlásení vyššie.
+
 gbackup_title=Spustite úlohu zálohovania skupiny Bacula
 gbackup_run=Spúšťa sa úloha zálohovania $1 u klientov $2 ..
 gbackup_on=Spustenie úlohy zálohovania na klientovi $1  :
 gbackup_header=Podrobnosti o úlohe zálohovania skupiny Bacula
 gbackup_jd=$1 (Sada súborov $2 v skupine $3)
+
 dirstatus_title=Štatút riaditeľa
 dirstatus_sched=Naplánované úlohy zálohovania
 dirstatus_name=Názov úlohy
@@ -216,12 +231,14 @@ dirstatus_status2=Postavenie
 dirstatus_donenone=Neboli spustené žiadne úlohy zálohovania.
 dirstatus_cancel=Zrušiť vybraté úlohy
 dirstatus_refresh=Obnoviť zoznam
+
 clientstatus_title=Stav klienta
 clientstatus_err=Nepodarilo sa načítať stav z $1 : $2 
 clientstatus_msg=Stav od $1 : $2 
 clientstatus_show=Zobraziť stav klienta:
 clientstatus_ok=OK
 clientstatus_on=$1 (na $2)
+
 storages_title=Úložné démony
 storages_none=Zatiaľ neboli definované žiadne úložné démony.
 storages_name=Názov úložiska
@@ -232,6 +249,7 @@ storages_add=Pridajte nového démona úložiska.
 storages_delete=Odstránenie vybratých úložných démonov
 storages_return=zoznam úložných démonov
 storages_derr=Odstránenie démonov úložiska zlyhalo
+
 storage_title1=Vytvorenie úložného démona
 storage_title2=Upraviť démona úložiska
 storage_header=Podrobnosti o démonovi vzdialeného úložiska
@@ -255,6 +273,7 @@ storage_emedia=Chýba názov typu média
 storage_emaxjobs=Chýbajú maximálne súčasné úlohy
 storage_echild=Tento klient nie je možné odstrániť, pretože ho používa $1 
 storage_status=Zobraziť stav
+
 devices_title=Pamäťové zariadenia
 devices_none=Zatiaľ neboli definované žiadne úložné zariadenia.
 devices_name=Názov zariadenia
@@ -264,6 +283,7 @@ devices_add=Pridajte nové úložné zariadenie.
 devices_delete=Odstrániť vybraté úložné zariadenia
 devices_return=zoznam úložných zariadení
 devices_derr=Úložné zariadenia sa nepodarilo odstrániť
+
 device_title1=Vytvorte úložné zariadenie
 device_title2=Upravte úložné zariadenie
 device_header=Podrobnosti o zariadení na ukladanie súborov
@@ -282,11 +302,13 @@ device_eclash=Úložné zariadenie s rovnakým názvom už existuje
 device_emedia=Chýba názov typu média
 device_edevice=Chýbajúce alebo neplatné archívne zariadenie alebo adresár
 device_echild=Tento klient nie je možné odstrániť, pretože ho používa $1 
+
 storagestatus_title=Stav démona úložiska
 storagestatus_err=Nepodarilo sa načítať stav z $1 : $2 
 storagestatus_msg=Stav od $1 : $2 
 storagestatus_show=Zobraziť stav démona úložiska:
 storagestatus_ok=OK
+
 label_title=Objem štítkov
 label_header=Podrobnosti o objeme, ktorý sa má označiť
 label_storage=Ukladanie démona na označenie
@@ -302,6 +324,7 @@ label_done=.. označenie bolo úspešné.
 label_epool=.. nemohol nájsť bazén!
 label_err=Štítok zlyhal
 label_elabel=Nezadali ste žiadny štítok
+
 pools_title=Objemové bazény
 pools_none=Zatiaľ neboli definované žiadne objemové skupiny.
 pools_name=Názov fondu
@@ -311,6 +334,7 @@ pools_add=Pridajte novú oblasť zväzkov.
 pools_delete=Odstrániť vybraté objemy
 pools_return=zoznam objemových fondov
 pools_derr=Odstránenie fondov zväzkov zlyhalo
+
 pool_title1=Vytvoriť zväzok zväzkov
 pool_title2=Upraviť oblasť zväzkov
 pool_header=Podrobnosti o oblasti zväzku záloh
@@ -332,6 +356,7 @@ pool_ereten=Chýbajúca alebo neplatná doba uchovávania
 pool_status=Zobraziť zväzky
 pool_autolabel=Automaticky predpona zväzkov štítkov
 pool_maxvolsize=Maximálna veľkosť zväzku (napr. 5 G za 5 GB)
+
 poolstatus_title=Objemy v bazéne
 poolstatus_show=Zobraziť objemy v oblasti:
 poolstatus_ok=OK
@@ -345,9 +370,11 @@ poolstatus_status=Režim zálohovania
 poolstatus_none=V tejto oblasti zálohovania nie sú momentálne žiadne zväzky.
 poolstatus_never=nikdy
 poolstatus_delete=Odstrániť vybrané zväzky
+
 dvolumes_err=Nepodarilo sa odstrániť zväzky
 dvolumes_enone=Žiadne vybraté
 dvolumes_ebacula=Chyba Bacula : $1 
+
 mount_title=Namontujte alebo odpojte
 mount_header=Možnosti pripojenia alebo odpojenia úložného priestoru
 mount_storage=Úložné zariadenie
@@ -365,8 +392,10 @@ unmount_failed=.. odpojenie zlyhalo! Dôvod prečo je uvedený vyššie v chybov
 mount_return=pripojiť formulár
 mount_err=Nepodarilo sa pripojiť úložné zariadenie
 mount_eslot=Chýbajúce alebo neplatné číslo slotu
+
 cancel_err=Nepodarilo sa zrušiť úlohy
 cancel_enone=Žiadne vybraté
+
 gjobs_title=Bacula Group Backup Jobs
 gjobs_none=Zatiaľ neboli definované žiadne úlohy zálohovania skupiny Bacula.
 gjobs_add=Pridajte novú úlohu zálohovania skupiny Bacula.
@@ -374,10 +403,12 @@ gjobs_delete=Odstrániť vybrané úlohy
 gjobs_return=zoznam pracovných miest skupiny Bacula
 gjobs_derr=Odstránenie pracovných úloh skupiny Bacula zlyhalo
 gjobs_client=Skupina Bacula sa zálohuje
+
 gjob_title1=Vytvorte úlohu zálohovania skupiny Bacula
 gjob_title2=Upraviť úlohu zálohovania skupiny Bacula
 gjob_header=Podrobnosti o úlohe zálohovania skupiny Bacula
 gjob_client=Skupina Bacula sa zálohuje
+
 groups_title=Skupiny Bacula
 groups_none=Zatiaľ neboli vybraté žiadne skupiny Bacula na zálohovanie programom Bacula.
 groups_name=Názov skupiny
@@ -391,6 +422,7 @@ groups_derr=Skupiny sa nepodarilo odstrániť
 groups_noadd=Na zálohovanie neexistujú žiadne skupiny Bacula.
 groups_info=$1 ($2 členov)
 groups_already=Všetky skupiny Bacula už boli pridané.
+
 group_title1=Vytvorte skupinu Bacula
 group_title2=Upraviť skupinu Bacula
 group_header=Podrobnosti o skupine Bacula, ktorá sa má zálohovať
@@ -401,11 +433,13 @@ group_port=Port Bacula FD
 group_err=Uloženie skupiny Bacula zlyhalo
 group_eclash=Skupina s rovnakým názvom už existuje
 group_members=Hostitelia v skupine Bacula
+
 sync_title=Synchronizácia skupiny Bacula
 sync_header=Možnosti automatickej synchronizácie klienta skupiny Bacula
 sync_sched=Synchronizovať podľa plánu?
 sync_schedyes=Áno, v časoch vybraných nižšie.
 sync_err=Nepodarilo sa uložiť synchronizáciu skupiny Bacula
+
 log_create_client=Bol vytvorený záložný klient $1 
 log_modify_client=Upravený záložný klient $1 
 log_delete_client=Odstránený záložný klient $1 
@@ -464,6 +498,7 @@ log_director=Uložená globálna konfigurácia riaditeľa Bacula
 log_file=Uložená konfigurácia démona súboru Bacula
 log_storagec=Uložená konfigurácia démona úložiska Bacula
 log_fixpass=Opravené heslo programu konzoly Bacula
+
 director_title=Konfigurácia riaditeľa
 director_header=Možnosti režiséra Global Bacula
 director_name=Meno riaditeľa
@@ -477,6 +512,7 @@ director_ename=Chýbajúce alebo neplatné meno riaditeľa
 director_eport=Chýbajúce alebo neplatné číslo portu
 director_ejobs=Chýbajúci alebo neplatný počet súbežných úloh
 director_edir=Chýbajúci alebo neexistujúci pracovný adresár
+
 tls_enable=Povoliť šifrovanie TLS?
 tls_require=Prijímate iba pripojenia TLS?
 tls_verify=Overiť klientov TLS?
@@ -488,6 +524,7 @@ tls_ecert=Chýba alebo neexistuje súbor certifikátov TLS
 tls_ekey=Chýba alebo neexistuje súbor kľúčov TLS
 tls_ecacert=Chýba alebo neexistuje súbor certifikátov CA TLS
 tls_ecerts=Ak chcete povoliť TLS, musíte zadať súbory certifikátov, kľúčov a CA.
+
 file_title=Konfigurácia súboru démona
 file_header=Možnosti démona súboru Bacula
 file_name=Názov démona súboru
@@ -500,6 +537,7 @@ file_ename=Chýba alebo neplatný názov démona súboru
 file_eport=Chýbajúce alebo neplatné číslo portu
 file_ejobs=Chýbajúci alebo neplatný počet súbežných úloh
 file_edir=Chýbajúci alebo neexistujúci pracovný adresár
+
 fdirectors_title=Spíšte riaditeľa démona
 fdirectors_none=Zatiaľ neboli definovaní žiadni riaditelia.
 fdirectors_name=Meno riaditeľa
@@ -508,6 +546,7 @@ fdirectors_add=Pridajte nového riaditeľa.
 fdirectors_delete=Odstrániť vybratých riaditeľov
 fdirectors_return=zoznam riaditeľov
 fdirectors_derr=Odstránenie riaditeľov zlyhalo
+
 fdirector_title1=Vytvorte File Daemon Director
 fdirector_title2=Upraviť File Daemon Director
 fdirector_header=Podrobnosti o riadiacom diaľkovom riaditeľovi
@@ -519,6 +558,7 @@ fdirector_err=Nepodarilo sa uložiť režiséra démona súboru
 fdirector_ename=Chýbajúce meno riaditeľa
 fdirector_eclash=Režisér s rovnakým menom už existuje
 fdirector_epass=Chýbajúce heslo
+
 sdirectors_title=Riaditelia úložiska Daemon
 sdirectors_none=Zatiaľ neboli definovaní žiadni riaditelia.
 sdirectors_name=Meno riaditeľa
@@ -527,6 +567,7 @@ sdirectors_add=Pridajte nového riaditeľa.
 sdirectors_delete=Odstrániť vybratých riaditeľov
 sdirectors_return=zoznam riaditeľov
 sdirectors_derr=Odstránenie riaditeľov zlyhalo
+
 sdirector_title1=Vytvorte Director Daemon Director
 sdirector_title2=Upraviť Storage Daemon Director
 sdirector_header=Podrobnosti o riadiacom diaľkovom riaditeľovi
@@ -538,6 +579,7 @@ sdirector_err=Správcu démona úložiska sa nepodarilo uložiť
 sdirector_ename=Chýbajúce meno riaditeľa
 sdirector_eclash=Režisér s rovnakým menom už existuje
 sdirector_epass=Chýbajúce heslo
+
 storagec_title=Konfigurácia úložného démona
 storagec_header=Možnosti démona úložiska Bacula
 storagec_name=Meno démona
@@ -550,6 +592,7 @@ storagec_ename=Chýba alebo je neplatný názov démona úložiska
 storagec_eport=Chýbajúce alebo neplatné číslo portu
 storagec_ejobs=Chýbajúci alebo neplatný počet súbežných úloh
 storagec_edir=Chýbajúci alebo neexistujúci pracovný adresár
+
 chooser_title=Vyberte položku Plán
 chooser_monthsh=Mesiace na vykonanie
 chooser_months=Mesiace v roku
@@ -574,11 +617,13 @@ chooser_emonthsrange=Vybrané mesiace musia byť priľahlé
 chooser_eweekdaysrange=Vybrané pracovné dni musia byť priľahlé
 chooser_eweekdaynumsrange=Vybrané čísla pracovných dní musia byť priľahlé
 chooser_edaysrange=Vybrané dni v mesiaci musia byť priľahlé
+
 weekdaynum_1=najprv
 weekdaynum_2=druhý
 weekdaynum_3=tretina
 weekdaynum_4=štvrtý
 weekdaynum_5=piaty
+
 restore_title=Obnov zálohu
 restore_title2=Obnoviť zálohu do skupiny Bacula
 restore_title3=Obnovte zálohu skupiny Bacula

@@ -27,6 +27,7 @@ index_delete=Verwyder geselekteerde
 index_joingroup=Voeg by groep:
 index_eulist=Kon nie gebruikers lys nie: $1
 index_eglist=Kon nie groepe lys nie: $1
+
 edit_title=Webmin-gebruiker wysig
 edit_title2=Skep Webmin-gebruiker
 edit_title3=Skep veilige Webmin-gebruiker
@@ -115,6 +116,7 @@ edit_safe=Voorregsvlak
 edit_safe0=onbeperkte
 edit_safe1=Slegs veilige modules
 edit_unsafe=Stel terug na onbeperk
+
 save_err=Kon nie gebruiker stoor nie
 save_ename='$1' is nie 'n geldige gebruikersnaam nie
 save_eunixname=Die gebruikersnaam '$1' is nie 'n Unix-gebruiker nie en kan dus nie in die veilige modus gebruik word nie
@@ -145,11 +147,13 @@ save_edays=Geen dae om gekies toe te laat nie
 save_ehours=Ontbrekende of ongeldige tye om toe te laat
 save_ehours2=Die begintyd om toe te laat moet voor die einde wees
 save_etemp=Die opsie om 'n wagwoordverandering by die volgende aanmelding te dwing, kan nie gebruik word nie, tensy <a href='$1'>gebruikers gevra word om nuwe wagwoorde in te voer</a>.
+
 delete_err=Kon nie gebruiker uitvee nie
 delete_eself=U kan nie uself uitvee nie
 delete_ecannot=U mag nie gebruikers uitvee nie
 delete_euser=U mag nie hierdie gebruiker uitvee nie
 delete_eanonuser=Hierdie gebruiker word gebruik vir anonieme module-toegang
+
 cert_title=Versoek sertifikaat
 cert_issue=Uitreik sertifikaat
 cert_header=Nuwe sertifikaatbesonderhede
@@ -169,6 +173,7 @@ cert_ekey='N Nuwe SSL-sleutel is nie deur u blaaier ingedien nie - dit ondersteu
 cert_eca=Kon nie sertifikaatowerheid instel nie: $1
 cert_already=Waarskuwing - u gebruik reeds die sertifikaat $1.
 cert_etempdir=Ongeldige sertifikaatlêer
+
 acl_title=Module-toegangsbeheer
 acl_title2=Vir $1 in $2
 acl_title3=Vir groep $1 in $2
@@ -177,6 +182,7 @@ acl_config=Kan modulekonfigurasie gewysig word?
 acl_reset=Stel terug tot volledige toegang
 acl_rbac=Kry toegangsbeheerinstellings van RBAC?
 acl_rbacyes=Ja (ignoreer die instellings hieronder)
+
 acl_uall=Alle gebruikers
 acl_uthis=Hierdie gebruiker
 acl_usel=Geselekteerde gebruikers..
@@ -216,6 +222,7 @@ acl_switch=Kan oorskakel na ander gebruikers?
 acl_times=Kan toegelate aanmeldtye verander?
 acl_pass=Kan wagwoordbeperkings verander?
 acl_sql=Kan gebruikers- en groepdatabasis opgestel word?
+
 log_modify=Gewysigde Webmin-gebruiker $1
 log_rename=Webmin-gebruiker hernoem $1 tot $2
 log_create=Geskep Webmin-gebruiker $1
@@ -238,6 +245,7 @@ log_sync=Unix-gebruikersinkronisasie verander
 log_sql=Verander gebruikers- en groepdatabasis
 log_twofactor=Ingeskrewe gebruiker $1 met 'n tweefaktor-verskaffer $2
 log_onefactor=Gebruiker wat nie ingeskryf is nie, is $1 vir twee-faktor-verifikasie
+
 gedit_ecannot=U mag nie groepe redigeer nie
 gedit_title=Webmin-groep wysig
 gedit_title2=Skep Webmin Group
@@ -247,6 +255,7 @@ gedit_modules=Lede-modules
 gedit_members=Lede gebruikers en groepe
 gedit_desc=Groepbeskrywing
 gedit_egone=Geselekteerde groep bestaan nie meer nie!
+
 gdelete_err=Kon nie groep uitvee nie
 gdelete_ecannot=U mag nie groepe uitvee nie
 gdelete_euser=U kan nie u eie groep uitvee nie
@@ -254,11 +263,13 @@ gdelete_esub=Groepe met subgroepe kan nie uitgevee word nie
 gdelete_title=Vee groep uit
 gdelete_desc=Is u seker dat u die groep $1 en sy lidgebruikers $2 wil verwyder?
 gdelete_ok=Vee groep uit
+
 gsave_err=Kon nie groep stoor nie
 gsave_ename=Groepnaam ontbreek of ongeldig
 gsave_enamewebmin=Die groepnaam 'webmin' is gereserveer vir interne gebruik
 gsave_edup=Groepnaam is reeds in gebruik
 gsave_edesc=Ongeldige beskrywing - die: karakter word nie toegelaat nie
+
 convert_title=Skakel gebruikers om
 convert_ecannot=U mag nie Unix-gebruiker omskakel nie
 convert_nogroups=Geen Webmin-groepe is op u stelsel gedefinieer nie. Ten minste een groep moet geskep word voordat hulle omgeskakel word om toestemmings vir die omgeskakelde gebruikers te definieer.
@@ -287,6 +298,7 @@ convert_user=Unix-gebruiker
 convert_action=Aksie geneem
 convert_done=$1 gebruikers is omgeskakel, $2 ongeldig, $3 bestaan alreeds, $4 uitgesluit.
 convert_users=Gebruikers om te skakel
+
 sync_title=Unix Gebruikersinkronisasie
 sync_desc=Met hierdie vorm kan u die outomatiese sinchronisasie instel van Unix-gebruikers wat deur Webmin en gebruikers in hierdie module geskep is.
 sync_nogroups=Geen Webmin-groepe is op u stelsel gedefinieer nie. Ten minste een groep moet geskep word om die toegang vir geskepde gebruikers in te stel.
@@ -297,6 +309,7 @@ sync_delete=Verwyder die bypassende Webmin-gebruiker as 'n Unix-gebruiker uitgev
 sync_group=Ken nuwe gebruikers toe aan die Webmin-groep
 sync_unix=Stel wagwoord vir nuwe gebruikers vir Unix-verifikasie.
 sync_ecannot=U mag nie die gebruiker sinchroniseer nie.
+
 unix_title=Unix-gebruikersverifikasie
 unix_err=Kon nie Unix-verifikasie stoor nie
 unix_desc=Op hierdie bladsy kan u Webmin instel om aanmeldpogings teen die gebruikersgebruikerslys en PAM te bevestig. Dit kan nuttig wees as u 'n groot aantal bestaande Unix-gebruikers het wat u toegang tot Webmin wil gee.
@@ -329,6 +342,7 @@ unix_esudo=Die opdrag $1 is nie geïnstalleer nie
 unix_esudomod=Die Perl-module $1 wat nodig is vir <tt>sudo</tt> verifikasie is nie geïnstalleer nie
 unix_header=Unix instellings vir gebruikersverifikasie
 unix_utable=Toegestane Unix-gebruikers
+
 sessions_title=Huidige aanmeldingsessies
 sessions_id=Sessie ID
 sessions_user=Webmin-gebruiker
@@ -342,21 +356,26 @@ sessions_this=Hierdie aanmelding
 sessions_in=Aangemeld
 sessions_out=Uitgeteken
 sessions_kill=Ontkoppel..
+
 logins_title=Onlangse Webmin-aanmeldings
+
 hide_title=Versteek ongebruikte modules
 hide_desc=Die volgende modules sal uit die module-toegangslys vir $1 verwyder word, aangesien hul ooreenstemmende bedieners nie op u stelsel geïnstalleer is nie.
 hide_ok=Versteek modules nou
 hide_none=Niks om weg te steek nie - $1 het nie toegang tot enige modules waarvan die ooreenstemmende bedieners nie op u stelsel geïnstalleer is nie.
 hide_desc2=Let daarop dat hierdie modules nie outomaties weer sal verskyn as die ooreenstemmende bedieners geïnstalleer is nie. U moet handmatig toegang verleen met behulp van hierdie module.
 hide_clone=(Kloon $1)
+
 switch_euser=U mag nie na hierdie gebruiker oorskakel nie
 switch_eold=Bestaande sessie nie gevind nie!
+
 rbac_title=Stel RBAC op
 rbac_desc=Webmin se RBAC-integrasie bied 'n manier om gebruikersmodule en ACL-regte te bepaal vanuit 'n RBAC (Role Based Access Control) databasis, eerder as Webmin se eie konfigurasielêers. Sodra RBAC-ondersteuning geaktiveer is, sal enige gebruiker vir wie die <b>RBAC alle modules en ACL's</b> beheer gekies word, sy funksies bepaal deur RBAC eerder as deur Webmin se eie toegangsbeheerinstellings.
 rbac_esolaris=RBAC word tans net op Solaris ondersteun, en kan dus nie op hierdie $1 -stelsel gebruik word nie.
 rbac_eperl=Die Perl-module $1 wat nodig is vir RBAC-integrasie, is nie geïnstalleer nie. <a href='$2'>Klik hier</a> om dit nou te laat installeer.
 rbac_ecpan=U het nie toegang tot Webmin se Perl Modules-bladsy om die nodige $1 -module vir RBAC-integrasie te installeer nie.
 rbac_ok=RBAC-integrasie is op hierdie stelsel beskikbaar en kan per gebruikers gebruik word op die Edit Webmin User-bladsy.
+
 udeletes_err=Kon nie gebruikers uitvee nie
 udeletes_jerr=Kon nie gebruikers by die groep voeg nie
 udeletes_enone=Geen gekies nie
@@ -365,11 +384,13 @@ udeletes_rusure=Is u seker dat u die $1 geselekteerde gebruikers wil verwyder? A
 udeletes_users=Geselekteerde gebruikers: $1
 udeletes_ok=Verwyder gebruikers
 udeletes_ereadonly=Een van die geselekteerde gebruikers word gemerk as nie-bewerkbaar
+
 gdeletes_err=Kon nie groepe uitvee nie
 gdeletes_title=Vee groepe uit
 gdeletes_rusure=Is u seker dat u die $1 geselekteerde groepe wil verwyder, en die $2 gebruikers wat hulle bevat? Al hul toegangsbeheerinstellings en gebruikersdetails sal verlore gaan.
 gdeletes_users=Geselekteerde groepe: $1
 gdeletes_ok=Vee groepe uit
+
 pass_title=Wagwoordbeperkings
 pass_ecannot=U mag nie wagwoordbeperkings wysig nie
 pass_header=Opsies vir die handhawing van webmin's
@@ -392,6 +413,7 @@ pass_eminsize=Die minimum wagwoordlengte ontbreek of nie-numeries
 pass_emaxdays=Ontbrekende of nie-numeriese aantal dae voordat u verander
 pass_elockdays=Ontbrekende of nie-numeriese aantal dae voordat die rekening gesluit is
 pass_eoldblock=Ontbrekende of nie-numeriese aantal ou wagwoorde om te verwerp
+
 cpass_minsize=Moet ten minste $1 letters lank wees
 cpass_notre=Pas 'n patroon wat nie toegelaat word nie
 cpass_re=Pas nie by die vereiste patroon nie
@@ -399,6 +421,7 @@ cpass_name=Bevat die gebruikersnaam
 cpass_dict=Is 'n woordeboekwoord
 cpass_spellcmd=Nóg die $1 of $2 opdragte wat nodig is om na woordeboekwoorde te kyk, is nie geïnstalleer nie
 cpass_old=Ou wagwoorde kan nie weer gebruik word nie
+
 sql_title=Gebruikers- en groepdatabasis
 sql_ecannot=U mag nie die gebruikers- en groepdatabasis opstel nie
 sql_header=Opsies vir databasis backend vir gebruikers en groepe
@@ -441,21 +464,25 @@ sql_dnerr=Gebruiker- en groepdatabasisinstellings is geldig, maar die LDAP DN wa
 sql_dnerr2=Klik op die <b>Maak DN</b> -knoppie hieronder om dit outomaties te laat skep, of voeg dit handmatig by u LDAP-bediener.
 sql_makedn=Skep DN
 sql_schema=Laai LDAP-skema af
+
 make_title=Skep gebruiker- en groeptabelle
 make_err=Kon nie gebruikers- en groepstabelle skep nie
 make_exec=SQL uitvoer $1..
 make_failed=.. skepping misluk: $1
 make_done=.. klaar
 make_still=Sommige probleme is gevind selfs na die skepping van die tabel: $1
+
 makedn_title=Skep LDAP DN
 makedn_eoc=Geen strukturele objekklasse gevind nie!
 makedn_exec=Skep ouer DN $1..
 makedn_failed=.. skepping misluk: $1
 makedn_done=.. klaar
 makedn_still=Sommige probleme is gevind selfs na die skepping van DN: $1
+
 schema_title=Laai LDAP-skema af
 schema_desc=Voordat Webmin 'n LDAP-bediener kan gebruik om gebruikers en groepe te stoor, moet dit opgestel word om die onderstaande skema te gebruik. Dit kan gewoonlik gedoen word deur die skema-definisie in <tt>/etc/ldap/schema</tt> of <tt>/etc/openldap/schema</tt> op te slaan as <tt>webmin.schema</tt>, stel dan die bediener in om die skemalêer te laai.
 schema_download=Laai skemabestand af: <a href=$1>$1</a>
+
 twofactor_err=Kon nie tweefaktor-verifikasie instel nie
 twofactor_euser=U Webmin-gebruiker is nie gevind nie!
 twofactor_title=Tweefaktor-verifikasie

@@ -12,6 +12,7 @@ index_return=a la llista de sistemes de fitxers
 index_none=No tens accés a cap sistema de fitxers muntat
 index_mount2=Munta amb la contrasenya:
 index_root=Sistema de fitxers arrel
+
 edit_title=Edició de Muntatge
 create_title=Creació de Muntatge
 edit_err=No s'ha pogut editar el muntatge
@@ -58,6 +59,7 @@ edit_ecannot=No tens permís per editar aquest sistema de fitxers
 edit_ecannot2=No tens permís per afegir nous sistemes de fitxers
 edit_3_or_lower=3 (o més baixa)
 edit_advanced=Mode Avançat
+
 save_err=No s'ha pogut desar el muntatge
 save_edir='$1' no és un directori
 save_edirname='$1' no és un nom vàlid de directori
@@ -74,8 +76,10 @@ save_apply=Aplica a la Llista Permanent
 save_fapply=Força el Desmuntatge
 save_eremount=El remuntatge ha fallat: $1
 save_enone=No has triat de desar ni muntar
+
 swap_err=No s'ha pogut crear el fitxer d'intercanvi
 swap_esize='$1' no és una mida vàlida
+
 nfs_server=Tria el Servidor NFS...
 nfs_select=Selecciona un servidor NFS per muntar...
 nfs_ip=Adreça IP
@@ -87,6 +91,7 @@ nfs_seldir=Selecciona un directori NFS per muntar...
 nfs_seldirv4=Per a un muntatge NFSv4, has de seleccionar '/'
 nfs_dir=Directori
 nfs_clients=Clients
+
 smb_choose=Tria el Servidor CIFS...
 smb_elist=No s'ha pogut obtenir la llista de servidors de $1. Pot ser que el servidor no en permeti l'exploració
 smb_eworkgroup=No hi ha cap grup de treball configurat a la pàgina de Configuració del Mòdul
@@ -103,6 +108,7 @@ smb_sel2=Selecciona un recurs per muntar...
 smb_share=Recurs
 smb_comment=Comentari
 smb_noshares=No hi ha cap recurs disponible al servidor $1
+
 solaris_scsidev=Controladora SCSI $1 objectiu $2 unitat $3 partició $4
 solaris_idedev=Controladora IDE $1 unitat $2 partició $3
 solaris_mddev=Dispositiu RAID $1
@@ -240,6 +246,7 @@ solaris_efstyp2=No s'ha pogut verificar el tipus de sistema de fitxers: $1
 solaris_ecachedir='$1' no és un directori cau vàlid
 solaris_efmode='$1' no és un mode octal de fitxer vàlid
 solaris_edmode='$1' no és un mode octal de directori vàlid
+
 linux_eamd=L'AMD ha fallat
 linux_eauto=L'automuntatge ha fallat: $1
 linux_esmbconn=No s'ha pogut connectar amb el servidor
@@ -385,6 +392,7 @@ linux_eiocharset=Hi falta el joc de caràcters d'E/S o bé és invàlid
 linux_nounix=Desactiva les extensions CIFS Unix
 linux_cvers=Versió de CIFS
 linux_ecvers=La versió de CIFS ha de ser un número
+
 log_mount=$3 muntat
 log_mount_l=$2 $1 muntat a $3
 log_umount=$3 desmuntat
@@ -398,7 +406,9 @@ log_modify_l=Muntatge $2 $1 modificat a $3
 log_delete=Muntatge $3 suprimit
 log_delete_l=Muntatge $2 $1 suprimit a $3
 log_swap=S'ha creat el fitxer d'intercanvi $1
+
 unmount_err=No s'ha pogut desmuntar $1
+
 mount_err=No s'ha pogut muntar $1
 irix_nhost=Nom de host NFS
 irix_ndir=Directori NFS
@@ -429,6 +439,7 @@ irix_rock=Utilitza extensions Rock Ridge
 irix_nofsck=Verifica el sistema de fitxers en engegar
 irix_auto=Font de l'automuntador
 irix_automap=Fitxer de mapeig
+
 irix_ehost=El host '$1' no existeix
 irix_eloss=El host '$1' està apagat
 irix_eshowmount=El host '$1' no suporta NFS
@@ -446,9 +457,11 @@ irix_efstyp2=No s'ha pogut obtenir el tipus del sistema de fitxers $1: $2
 irix_efstyp=El tipus del sistema de fitxers a $1 és $2, no $3
 irix_eautomap=El fitxer de mapeig '$1' de l'automuntador no existeix
 irix_eauthmap2=Hi falta el fitxer de mapeig de l'automuntador o bé és invàlid
+
 irix_devroot=Partició arrel
 irix_devswap=Partició d'intercanvi
 irix_autohosts=Totes les exportacions NFS
+
 acl_only=Permet només muntar i desmuntar
 acl_fs=Sistemes de fitxers que es poden editar
 acl_types=Tipus de sistemes de fitxers que es poden utilitzar
@@ -461,8 +474,10 @@ acl_hide=Amaga els sistemes de fitxers no editables
 acl_simple=Mostra el formulari simple de muntatge
 acl_simopts=Mostra les opcions simplificades del sistema de fitxers
 acl_browse=Mostra els botons de compartició de fitxers i recursos
+
 egcc=El compilador CC o GCC necessari per construir un programa per llistar els sistemes de fitxers muntats no està disponible.
 ecompile=S'ha produït un error en construir un programa per a llistar els sistemes de fitxers muntats: $1
+
 freebsd_eaddr=Hi falta l'adreça del servidor o bé és invàlida
 freebsd_eworkgroup=Hi falta el grup de treball o bé és invàlid
 freebsd_ide=Disc Dur IDE
@@ -476,8 +491,10 @@ freebsd_idedev=Dispositiu IDE $1, llesca $2, partició $3
 freebsd_scsidev=Dispositiu SCSI $1, llesca $2, partició $3
 freebsd_edevpath=Altres dispositius han de ser un camí absolut, com ara /dev/cdrom
 freebsd_edevfile=El fitxer de dispositiu '$1' no existeix
+
 cswap_file=El fitxer d'intercanvi $1 no existeix.
 cswap_size=Crea i munta un fitxer d'intercanvi de mida
+
 acl_sysinfo=Mostra les dades disponibles en disc al Tauler
 sysinfo_total=Total
 sysinfo_dev=ID de dispositiu

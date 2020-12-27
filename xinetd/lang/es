@@ -20,6 +20,7 @@ index_applymsg=Haz click en este botón para aplicar la configuración en curso 
 index_start=Arrancar Xinetd
 index_startmsg=Hac click en este botón para arrancar el servidor Xinetd con la configuración en curso
 index_econf=El archivo de configuración de Xinetd $1 no existe. Quizás no está instalado o tu <a href='$2'>configuración del módulo</a> es incorrecta.
+
 serv_create=Crear Servicio de Internet
 serv_edit=Editar Servicio de Internet
 serv_header1=Opciones de red de servicio
@@ -73,18 +74,23 @@ serv_enice=Nivel de prioridad (Nice) inválido o sin poner
 serv_ecps0=Número de conexiones por segundo inválido o sin poner
 serv_ecps1=Retardo inválido o sin poner
 serv_etimes=Los tiempos de acceso deben de tener el formato HH:MM-HH:MM
+
 sock_stream=Flujo
 sock_dgram=Datagrama
 sock_raw=Sin búfer
 sock_seqpacket=Datagrama secuencial
+
 proto_=Por defecto
 proto_ip=IP (Protocolo de Internet)
 proto_tcp=TCP (Protocolo de Control de Transmisión)
 proto_udp=UDP (Protocolo de Datagrama de Usuario)
+
 restart_err=No pude aplicar los cambios
 restart_ekill=No pude enviar la señal HUP al PID $1 : $2
+
 start_err=No pude arrancar xinetd
 start_estart=$1 falló: $2
+
 defs_title=Opciones por Defecto
 defs_header=Opciones por defecto para los servicios
 defs_log=Modo de diario de Xinetd
@@ -109,6 +115,7 @@ defs_err=No pude salvar opciones por defecto
 defs_efile=Nombre de archivo de diario inválido o sin poner
 defs_esoft=Límite de soft inválido o sin poner
 defs_ehard=Límite de hard inválido o sin poner
+
 log_create_serv=Creado $2 servicio $1
 log_modify_serv=Modificado $2 servicio $1
 log_delete_serv=Borrado $2 servicio $1

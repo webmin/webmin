@@ -180,6 +180,7 @@ whats_this_NSTATE=The next state of the service, useful when the service is tran
 whats_this_SCOPE=The scope name of the service instance. See: smf(5). See: svcs(1).
 whats_this_STIME=The time (if today) or date the service entered the current state. See: smf(5). See: svcs(1).
 whats_this_Select=Check the list of services you want to enable/disable/refresh etc here.
+
 whats_this_service_detail=Specify/edit toplevel service information here: service name, version number, bundle name for manifest and stability. See: smf(5). See: svccfg(1M). See: service_bundle(4).
 whats_this_bundle_name=Name of service bundle in manifest. Multiple services can be bundled in the one manifest, but the name here isnt important. For already-existing services, it will be set to export as this is what svccfg does when it exports a manifest from the SMF repository. See: svccfg(1M). See: service_bundle(4).
 whats_this_service_name=Name of service. Convention is to use the format [general_service_category]/[name]. Categories already provided include application (higher-level applications), milestone (collections of other services, such as name services), platform (platform-specific services), system (Solaris system services), device (device-specific services), network (network/internet services) and site (site-sepecific descriptions). You can also specify your own category of course, but most services should fit comfortably in one of the above. See: smf(5).

@@ -12,6 +12,7 @@ index_search=搜尋
 index_return=搜尋方式
 index_nolog=<b>注意</b> - <a href='$1'>紀錄Webmin</a> 目前沒有啟用，所以在搜尋動作紀錄檔案中將不會有任何結果
 index_nologfiles=<b>注意</b> - <a href='$1'>紀錄檔案變更</a>目前沒有啟用，所以詳細紀錄動作將不會包含檔案變更和執行命令
+
 search_title=搜尋結果
 search_date=日期
 search_time=時間
@@ -31,6 +32,7 @@ search_critt2=在 $1 上
 search_config=改變模組配置
 search_etime=錯誤的開始或結束時間
 search_err=搜尋錯誤
+
 view_title=動作內容
 view_header=被記錄的動作 $1 內容
 view_action=描述

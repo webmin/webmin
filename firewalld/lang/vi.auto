@@ -30,6 +30,7 @@ index_return=danh sách các khu
 index_ezones=Không tìm thấy vùng FirewallD!
 index_none=Khu vực này chưa có bất kỳ cổng hoặc dịch vụ được phép nào.
 index_ifaces=Áp dụng quy tắc cho giao diện:
+
 port_edit=Chỉnh sửa cổng
 port_create=Thêm cổng
 port_header=Tùy chọn cổng được phép
@@ -45,11 +46,13 @@ port_eport=Số hoặc tên cổng bị thiếu hoặc không hợp lệ
 port_eportlow=Cổng thấp phải là một số
 port_eporthigh=Cổng cao phải là một số
 port_eportrange=Cổng thấp phải ở dưới cổng cao
+
 serv_edit=Chỉnh sửa dịch vụ
 serv_create=Thêm dịch vụ
 serv_header=Tùy chọn dịch vụ được phép
 serv_name=Dịch vụ cho phép
 serv_err=Không thể lưu dịch vụ
+
 forward_edit=Chỉnh sửa chuyển tiếp
 forward_create=Tạo chuyển tiếp
 forward_header=Tùy chọn chuyển tiếp cổng
@@ -61,10 +64,13 @@ forward_dstaddr=Địa chỉ đích
 forward_dstlocal=Hệ thống này
 forward_edstaddr=Địa chỉ đích IPv4 không hợp lệ
 forward_eneither=Địa chỉ đích hoặc cổng hoặc cả hai phải được nhập
+
 check_ecmd=Không tìm thấy lệnh điều khiển FirewallD $1 trên hệ thống của bạn
+
 delete_err=Không thể xóa quy tắc
 delete_enone=Không có lựa chọn!
 delete_edel=Xóa $1 không thành công : $2 
+
 zone_title=Tạo vùng
 zone_header=Tùy chọn vùng mới
 zone_name=Tên khu vực
@@ -77,12 +83,16 @@ zone_mode4=Các cổng được sử dụng cho lưu trữ ảo
 zone_err=Không thể tạo vùng
 zone_ename=Tên khu vực bị thiếu hoặc không hợp lệ
 zone_eclash=Một khu vực có cùng tên đã tồn tại
+
 delzone_title=Xóa vùng
 delzone_err=Không thể xóa vùng
 delzone_edefault=Vùng mặc định không thể xóa
 delzone_rusure=Bạn có chắc chắn muốn xóa vùng $1, chứa $2 cổng và $3 dịch vụ không?
+
 defzone_err=Không thể tạo vùng mặc định
+
 restart_err=Không thể áp dụng cấu hình
+
 stop_err=Không thể dừng Tường lửa
 start_err=Không thể khởi động FirewallD
 log_stop=Tường lửa đã dừng

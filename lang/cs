@@ -12,7 +12,9 @@ main_readonly=(Mód Pouze ke čtení)
 main_return=Zpět na $1
 main_unused=Nepoužité moduly
 main_refreshmods=Obnovit moduly
+
 link_essl=Pro HTTPS připojení je potřeba modul Perlu Net::SSLeay Perl, ten však není ve vašem systému nainstalován.
+
 category_servers=Servery
 category_hardware=Hardware
 category_system=Systém
@@ -21,6 +23,7 @@ category_net=Sítě
 category_syslet=Systémové hlášky
 category_cluster=Cluster
 category_info=Informace
+
 longcategory_servers=Moduly pro konfiguraci webu, emailu, FTP a podobných serverů
 longcategory_hardware=Moduly pro tiskárnu, disk a konfiguraci podobných zařízení
 longcategory_system=Moduly pro uživatele, souborové systémy, crony a podobná nastavení systému
@@ -28,11 +31,13 @@ longcategory_webmin=Moduly pro konfiguraci samotného Webminu
 longcategory_net=Moduly, které konfigurují sítě a síťová zařízení
 longcategory_cluster=Moduly, které umožňují správu více serverů pod jedním rozhraním
 longcategory_info=Moduly, které zobrazují informaci o vašem systému
+
 header_webmin=Úvodní stránka Webminu
 header_module=Úvodní stránka Modulu
 header_help=Nápověda..
 header_config=Konfigurace modulu
 header_servers=Servery Webminu
+
 index=seznam
 yes=Ano
 no=Ne
@@ -62,12 +67,14 @@ euserdbacl=Nepodařilo se získat ACL uživatele : $1
 euserdbacl2=Nepodařilo se aktualizovat ACL uživatele : $1
 egroupdbacl=Nepodařilo se získat ACL skupiny : $1
 egroupdbacl2=Nepodařilo se aktualizovat ACL pro skupinu : $1
+
 chooser_title1=Vybrat soubor..
 chooser_title2=Vybrat adresář..
 chooser_dir=Adresář $1
 chooser_ok=Ok
 chooser_date=Změnit datum
 chooser_eopen=Chyba výběru : $1
+
 users_title1=Vybrat více uživatelů..
 users_title2=Vybrat uživatele..
 users_sel=Vybraní uživatelé
@@ -75,6 +82,7 @@ users_all=Všichni uživatelé
 users_ok=Ok
 users_cancel=Storno
 users_clear=Vyčistit
+
 groups_title1=Vybrat skupiny..
 groups_title2=Vybrat skupinu..
 groups_all=Všechny skupiny
@@ -82,6 +90,7 @@ groups_sel=Vybrané skupiny
 groups_ok=Ok
 groups_cancel=Storno
 groups_clear=Vyčistit
+
 modules_title1=Vybrat moduly..
 modules_title2=Vybrat modul..
 modules_sel=Vybrané moduly
@@ -89,6 +98,7 @@ modules_all=Všechny moduly
 modules_ok=Ok
 modules_cancel=Opustit
 modules_clear=Vyčistit
+
 config_ecannot=Nemáte oprávnění pro konfiguraci tohoto modulu
 config_title=Konfigurace
 config_dir=Pro modul $1
@@ -99,6 +109,7 @@ config_err=Chyba při ukládání konfigurace
 config_nochange=Neměňte
 config_setto=Nastavit na
 config_ewebmin=Parametru typu 14 pracuje jen ve Webminu
+
 help_err=Nemohu zobrazit nápovědu
 help_epath=Chybějící/nesprávná cesta k souboru nápovědy
 help_efile=Chyba při čtení souboru nápovědy $1
@@ -106,6 +117,7 @@ help_eheader=Chybějící &lt;header&gt; section
 help_einclude=Nemohu vložit $1
 help_eif=$1 chyba : $2
 help_eexec=$1 chyba : $2
+
 referer_title=Bezpečnostní varování
 referer_warn=<b>Pozor!</b> Webmin zjistil, že program $2 byl nalinkován z URL $1 a tudíž mimo Webmin server. Tento postup může vést ke snaze spouštět nebezpečné příkazy.
 referer_warn_unknown=<b>Pozor!</b> Webmin zjistil, že program $2 byl nalinkován z neznámé URL a tudíž mimo Webmin server. Tento postup může vést ke snaze spouštět nebezpečné příkazy.
@@ -113,6 +125,7 @@ referer_fix1=Je-li to legitimní odkaz, můžete použít odkazy z tohoto URL n�
 referer_fix2=Alternativně, můžete nastavit Webmin, aby povolil tento odkaz z příkazové řádky a to následovně:<ul><li>Přihlaste pod <tt>rootem</tt> a upravte soubor <tt>/etc/webmin/config</tt>.<li>Přidejte řádek <tt>referers=$1</tt> na konec nebo existuje-li již řádek <tt>zdroje</tt> přidejte <tt>$1</tt> do něj.<li>Uložte soubor.</ul>
 referer_fix3u=Ujistěte se, že má váš prohlížeč nastavené odesílání hlavičky <tt>Referer</tt>, kterou může Webmin ověřit.
 referer_fix2u=Alternativně, můžete nastavit Webmin, aby povolil odkazy z neznámých zdrojů a to následovně:<ul><li>Přihlaste pod uživatelem <tt>root</tt> a upravte soubor <tt>/etc/webmin/config</tt>.<li>Najděte řádek <tt>referers_none=1</tt> a odstraňte jej.<li>Uložte soubor.</ul>
+
 session_header=Přihlášení do Webminu
 session_mesg=Pokud se chcete přihlásit k Webmin serveru na $1, musíte zadat jméno a heslo.
 session_mesg2=Pokud se chcete přihlásit, musíte zadat jméno a heslo.
@@ -126,11 +139,13 @@ session_twofailed=Dvou-faktorová autentizace selhala : $1
 session_logout=Odhlášení bylo úspěšné. Můžete použít níže uvedený formulář pro opětovné přihlášení.
 session_timed_out=Relace byla odpojena po $1 minutách nečinnosti.
 session_save=Trvale si zapamatovat přihlášení?
+
 pam_header=Přihlásit do Webminu
 pam_mesg=Chcete-li se přihlásit do Webminu na $1, musíte odpovědět na níže uvedenou otázku.
 pam_mesg2=Chcete-li se přihlásit, musíte odpovědět na níže uvedenou otázku.
 pam_login=Pokračovat
 pam_restart=Restartovat
+
 acl_root=Kořenový adresář pro souborový manažer
 acl_otherdirs=Jiné viditelné adresáře v souborovém prohlížeči
 acl_nodot=Skrýt tečkované soubory v souborovém prohlížeči?
@@ -163,6 +178,7 @@ acl_negative=Povolit uživateli práva k novým modulům?
 acl_fileunix=Prohlížet soubory pod Unix uživatelem
 acl_sameunix=Stejné přihlášení jako ve Webminu
 acl_webminsearch=Zobrazit vyhledávací pole?
+
 month_1=Leden
 month_2=Únor
 month_3=Březen
@@ -175,6 +191,7 @@ month_9=Září
 month_10=Říjen
 month_11=Listopad
 month_12=Prosinec
+
 day_0=Neděle
 day_1=Pondělí
 day_2=Úterý
@@ -182,6 +199,7 @@ day_3=Středa
 day_4=Čtvrtek
 day_5=Pátek
 day_6=Sobota
+
 smonth_1=Led
 smonth_2=Úno
 smonth_3=Bře
@@ -194,6 +212,7 @@ smonth_9=Zář
 smonth_10=Říj
 smonth_11=Lis
 smonth_12=Pro
+
 sday_0=Ne
 sday_1=Po
 sday_2=Út
@@ -201,12 +220,15 @@ sday_3=St
 sday_4=Čt
 sday_5=Pá
 sday_6=So
+
 emodule=Přístup zamítnut : Uživatel $1 nemá oprávnění použít $2 modul
 emodulecheck=Modul $1 není ve vašem systému k dispozici
 elock_tries2=Nepodařilo se uzamčít soubor $1 po $2 minutách. Poslední chyba: $3
+
 skill_high=Expert
 skill_medium=Pokročilý
 skill_low=Začátečník
+
 feedback_title=Webmin ohlášení
 feedback_desc=Tento formulář umožňuje oznamovat nesrovnalosti a tím přimět Webmin vývojáře zabývat se problémy či chybějícími rysy, které jste nalezli. V momentě, kdy klepnete na tlačítko Send, údaje z formuláře budou odeslány na email $1.
 feedback_desc2=Toto ohlášení bude odesláno vývojáři Userminu, nikoliv system administratorovi, ISP nepo společnosti poskytující webhosting. Pište prosím vaše ohlášení v angličtině, pokud Webmin běží v jiném jazyce.
@@ -235,15 +257,18 @@ feedback_to=Odeslat ohlášení na adresy
 feedback_enoto=Nebyly vloženy žádné adresy pro odeslání ohlášení na
 feedback_ecannot=Nemáte oprávnění odesílat ohlášení
 feedback_ecannot2=Nemáte oprávnění odesílat ohlášení s připojením konfiguračních souborů
+
 progress_size2=Stahování $1 ($2) ..
 progress_nosize=Stahování $1 ..
 progress_datan=Přijato $1 ($2 %)
 progress_data2n=Přijato $1
 progress_done=.. Stahování dokončeno.
 progress_incache=Nalezeno $1 v mezipaměti ..
+
 readparse_cdheader=Chybějící hlavička Content-Disposition
 readparse_enc=Očekává se kódování form-data, přičemž byla doručena data v normálním kódování
 readparse_max=Data překročila maximální velikost o $1 bytů
+
 password_expired=Vaše heslo vypršelo, takže jej budete muset změnit.
 password_temp=Musíte zadat nové heslo, abyste zrušil dočasné přihlášení.
 password_header=Vybrat nové heslo
@@ -262,6 +287,7 @@ password_enew2=Vámi zapsaná nová hesla se neshodují
 password_epam=PAM chyba : $1
 password_emodpam=Pro změnu hesla je nutné mít nainstalovaný modul Perlu Authen::PAM!
 password_enewpass=Nové heslo není povoleno : $1
+
 ui_mandatory=Toto pole je povinné
 ui_checkmandatory=Nebylo nic vybráno
 ui_errors=Bylo nalezeno více chyb :
@@ -276,7 +302,9 @@ ui_etime=Neplatný čas :
 ui_paging=Zobrazené řádky $1 do $2 z $3
 ui_rowlabel=$2 v řádku $1 :
 ui_filterbox=Typ k filtrování..
+
 header_statusmsg=$1 logováno do $2 $3 na $4 ($5)
+
 uptracker_title=Nahrávaný soubor
 uptracker_file=Název souboru
 uptracker_size=Velikost
@@ -284,6 +312,7 @@ uptracker_pc=Právě běží
 uptracker_eid=Nebylo uvedeno ID uploadu specifikované
 uptracker_eid2=ID uploadu je neplatné!
 uptracker_of=$1 z $2
+
 wsearch_title=Hledat $1
 wsearch_modt=Modul
 wsearch_mtitle=Název modulu
@@ -311,6 +340,7 @@ wsearch_hmod=Modul
 wsearch_moddir=URL cesta /$1/
 wsearch_searching=Hledám $1 . .
 wsearch_found=Nalezeno $1 výsledků:
+
 sql_emysqldriver=Nepodařilo se nahrát ovladač MySQL DBI
 sql_emysqlconnect=Nepodařilo se připojit k MySQL databázi : $1
 sql_epostgresqldriver=Nepodařilo se nahrát ovladač PostgreSQL DBI

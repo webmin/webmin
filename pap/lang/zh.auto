@@ -2,8 +2,10 @@ index_title=PPP拨入服务器
 index_return=PPP指数
 index_none=您无权访问此模块的任何功能。
 index_delete=删除所选帐户
+
 secrets_none=尚未创建PPP帐户。
 secrets_ecannot=您无权编辑PPP帐户
+
 log_deletes=已删除 $1个PPP帐户
 log_apply=应用的Mgetty配置
 log_options=保存的PPP选项
@@ -15,6 +17,7 @@ log_dialin_move=已移动的来电显示号码 $1
 log_mgetty_create=创建的串行端口 $1
 log_mgetty_modify=修改后的串口 $1
 log_mgetty_delete=删除的串行端口 $1
+
 options_title=PPP选项
 options_serial=对于串行端口 $1
 options_dev=对于设备 $1
@@ -45,6 +48,7 @@ options_idle=断开之前的空闲时间
 options_idle_def=决不
 options_eidle=缺少或无效的空闲时间
 options_ecannot=您无权编辑PPP选项
+
 mgetty_title=串口配置
 mgetty_ecmd=在系统上找不到命令 $1。需要此程序来处理通过调制解调器或直接连接的串行端口登录。
 mgetty_desc=为了使您的服务器允许通过调制解调器或直接连接在串行端口上登录，必须在下面列出。当您将端口添加到此列表时， $1程序将被配置为应答调制解调器连接并显示登录提示。
@@ -86,6 +90,7 @@ mgetty_apply=应用配置
 mgetty_applydesc=单击此按钮可通过运行命令 $1并终止所有Mgetty进程来应用当前的串行端口配置。
 mgetty_applyerr=应用配置失败
 mgetty_ecannot=您无权编辑串行端口配置
+
 dialin_title=来电显示访问
 dialin_desc=该页面允许您配置Mgetty以根据呼叫者的电话号码允许或拒绝拨入访问。当有电话打进来时，列表中与电话号码匹配的第一个条目将确定该电话是否被接受。
 dialin_efile=在系统上找不到Mgetty呼叫者ID访问控制文件 $1。也许未安装Mgetty，或者您的<a href='$2'>模块配置</a>不正确。
@@ -106,9 +111,12 @@ dialin_move=移动
 dialin_err=无法保存来电显示号码
 dialin_enumber=电话号码缺失或无效
 dialin_ecannot=您无权编辑来电显示权限
+
 acl_pages=可用页面
 acl_direct=直接转到一页？
+
 sync_ecannot=不允许您编辑unix-ppp同步选项
 sync_title=用户同步
+
 delete_err=删除帐号失败
 delete_enone=未选择

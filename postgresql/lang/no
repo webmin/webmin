@@ -16,6 +16,7 @@ index_add=Opprett en ny database.
 index_users=Bruker, grupper og tillatelser
 index_return=database liste
 index_esql=PostgreSQL klientprogrammet $1 ble ikke funnet på systemet ditt. Kanskje PostgreSQL ikke er installert, eller så er <a href='$2'>modulkonfigurasjonen</a> feil.
+
 index_ehba=PostgreSQLs konfigurasjonsfile $1 ble ikke funnet på systemet. Kanskje PostgreSQL ikke er initialisert, eller så er <a href='$2'>modulkonfigurasjonen</a> feil.
 index_superuser=PostgreSQL klientprogrammet psql kunne ikke utføres på systemet ditt. Kanskje PostgreSQL ikke er installert, eller så er <a href='$1'>modulkonfigurasjonen</a> feil.
 index_eversion=PostgreSQL databasen på systemet ditt er versjon $1, men Webmin støtter bare versjon $2 eller nyere.
@@ -48,10 +49,12 @@ index_gist=Generalisert Indeks søketre
 index_jump=Eller rediger database:
 index_jumpok=Åpne
 index_edithosts=Konfigurer tillatte vertssystemer
+
 login_err=Innlogging feilet
 login_ecannot=Du har ikke lov til å konfigurere database innlogging
 login_elogin=Mangler administrasjons login
 login_epass=Feil administrasjonsbrukernavn eller passord
+
 dbase_title=Rediger database
 dbase_noconn=Denne databasen godtar for øyeblikket ikke tilkoblinger, så ingen handlinger kan derfor utføres på den.
 dbase_header=Database tabeller, indekser, visninger og sekvenser
@@ -78,6 +81,7 @@ dbase_jump=Rediger tabell:
 dbase_vjump=Rediger visning:
 dbase_ijump=Rediger indeks:
 dbase_sjump=Rediger sekvens:
+
 table_title=Rediger tabell
 table_title2=Opprett tabell
 table_opts=Felt innstillinger
@@ -105,6 +109,7 @@ table_eblob=Ingen størrelse nødvendig for BLOB felt $1
 table_csv=Eksporter som CSV
 table_index=Opprett indeks
 table_delete=Slett valgte felt
+
 field_title1=Legg til felt
 field_title2=Endre felt
 field_in=I tabell $1 i database $2
@@ -123,6 +128,7 @@ field_esize='$1' er ikke en gyldig feltstørrelse
 field_eenum=Ingen enumererte verdier angitt
 field_efield='$1' er ikke et gyldig feltnavn
 field_ekey=Felter som tillater null kan ikke være del av primærnøkkelen
+
 exec_title=Utfør SQL
 exec_header=Angi SQL kommandoer som skal utføres på database $1 ..
 exec_old=Eller velg en tidligere SQL kommando :
@@ -152,21 +158,25 @@ exec_tabexec=Utfør SQL
 exec_tabfile=Kjør SQL fra fil
 exec_tabimport=Importer tekst fil
 exec_return=utfør SQL skjema
+
 stop_err=Kunne ikke stoppe database tjener
 stop_epidfile=Kunne ikke åpne PID filen $1
 stop_ekill=Kunne ikke stoppe prosessen $1 : $2
 stop_ecannot=Du har ikke lov til å stoppe database tjeneren
 start_err=Kunne ikke starte database tjener
 start_ecannot=Du har ikke lov til å starte database tjeneren
+
 ddrop_err=Kunne ikke droppe database
 ddrop_title=Dropp database
 ddrop_rusure=Er du sikker på at du ønsker å droppe databasen $1 ? $2 tabeller som inneholder $3 rader med data, vil bli slettet.
 ddrop_mysql=Siden dette er master databasen, vil PostgreSQL mest sannsynlig bli ubrukelig dersom du dropper den.
 ddrop_ok=Dropp database
+
 tdrop_err=Kunne ikke droppe tabell
 tdrop_title=Dropp tabell
 tdrop_rusure=Er du sikker på at du ønsker å droppe tabellen $1 i database $2 ? $3 rader med data vil bli slettet.
 tdrop_ok=Dropp tabell
+
 view_title=Tabelldata
 view_pos=Rader $1 til $2 av $3
 view_none=Denne tabellen inneholder ingen data
@@ -201,6 +211,7 @@ view_set=Satt til innhold av filen..
 view_warn=Advarsel - opplasting av filer inn i og visning av innhold av <tt>text</tt> eller <tt>bytea</tt> felt vil mest sannsynlig ikke virke med minre Perl modulene $1 og $2 er installert og i bruk.
 view_adv=Avansert søk
 view_sqlrun=Resultater generert av SQL spørring : $1
+
 newdb_title=Opprett database
 newdb_header=Innstillinger for ny database
 newdb_db=Database navn
@@ -215,6 +226,7 @@ newdb_encoding=Tegnsett koding
 newdb_eencoding=Mangler tegnsett koding
 newdb_template=Mal database
 newdb_notemplate=Ingen
+
 user_title=PostgreSQL brukere
 user_vwarning=ADVARSEL: Denne PostgreSQL brukeren er administrasjonsbruker for Virtualmin domene $1. Dersom du endrer noe her kan det forårsake feil i Virtualmin.
 user_ecannot=Du har ikke tilgang til å redigere brukere
@@ -244,6 +256,7 @@ user_sync_delete=Slett en PostgreSQL bruker når motsvarende Unix bruker slettes
 user_delete=Slett valgte
 user_derr=Kunne ikke slette brukere
 user_enone=Ingen brukere valgt
+
 host_ecannot=Du har ikke lov til å redigere tillatte verter
 host_title=Tillatte verter
 host_desc=Nåe en klient kobler til databasen vil vertene angitt nedenfor bli prosessert etter tur til en matcher og klienten tillates eller nektes tilgang.
@@ -299,8 +312,10 @@ host_derr=Kunne ikke slette tilatte verter
 host_enone=Ingen verter valgt
 host_manual=Rediger konfig fil
 host_manualdesc=Klikk på denne knappen for å manuelt redigere hosts konfigurasjonsfilen
+
 manual_title=Rediger konfig fil
 manual_err=Kunne ikke lagre konfig fil
+
 grant_title=Gitte privilegier
 grant_tvi=Objekt
 grant_type=Type
@@ -328,6 +343,7 @@ grant_none=Ingen tabeller, visninger, sekvenser eller indekser finnes som de kan
 grant_toomany=Det er for mange objekter å vise. Finn objekter som matcher:
 grant_showing=Viser objekter som matcher $1 ..
 grant_delete=Tilbakestill valgte grants
+
 group_title=PostgreSQL grupper
 group_ecannot=Du har ikke lov til å redigere grupper
 group_name=Gruppe navn
@@ -347,6 +363,7 @@ group_etaken=Gruppenavnet er allerede i bruk
 group_none=Det finnes for øyeblikket ingen PostgreSQL grupper.
 group_derr=Kunne ikke slette grupper
 group_enone=Ingen grupper valgt
+
 esql=SQL $1 feilet : $2
 log_start=Startet PostgreSQL tjener
 log_stop=Stoppet PostgreSQL tjener
@@ -403,6 +420,7 @@ log_backup_l=Sikkerhetskopierte database $1 til filen $2
 log_backup_all=Sikkerhetskopierte alle databaser
 log_backup_all_l=Sikkerhetskopierte alle databaser tilfilen $2
 log_manual=Manuelt redigerte hosts konfigfilen
+
 acl_dbs=Databaser denne brukeren kan administrere
 acl_dbscannot=Denne tilgangskontrollen vil få effekt etter at PostgreSQL databasetjener er startet.
 acl_dall=Alle databaser
@@ -423,13 +441,17 @@ acl_cmds=Kan rediger før- og etter-sikkerhetskopi kommandoer?
 acl_views=Kan se og administrere visninger?
 acl_indexes=Kan se på og administrere indekser?
 acl_seqs=Kan se på og administrere sekvenser?
+
 fdrop_err=Kunne ikke slette felt
 fdrop_enone=Ingen valgt
 fdrop_eall=Du kan ikke slette alle felt fra en tabell!
+
 setup_err=Kunne ikke initialisere database
 setup_ecannot=Du har ikke lov til å initialisere databasen
+
 dbase_bkup=Sikkerhetskopier
 dbase_rstr=Gjenopprett
+
 restore_title=Gjenopprett database
 restore_header=Innstillinger for gjenoppretting av database
 restore_db=Database navn
@@ -452,6 +474,7 @@ restore_tables=Tabeller å gjenopprette
 restore_tables1=Alle i backup fil
 restore_tables0=Listede tabeller
 restore_failed=Gjenoppretting feilet : $1
+
 backup_title=Sikkerhetskopier database
 backup_title2=Sikkerhetskopier alle databaser
 backup_header1=Destinasjon for sikkerhetskopi
@@ -500,17 +523,21 @@ backup_ebefore=Før-sikkerhetskopi kommando feilet!
 backup_cmode=Når kommandoer skal kjøres
 backup_cmode1=Før/etter alle databaser
 backup_cmode0=Før/etter hver database
+
 r_command=Kommando ikke støttet
+
 adv_title=Avansert søk
 adv_and=Finn poster som matcher alle kriterier ..
 adv_or=Finn poster som matcher hvilket som helst kritere ..
 adv_ok=Søk nå
+
 tdrops_enone=Ingen objekter å droppe var valgt
 tdrops_err=Kunne ikke droppe objekter
 tdrops_ok=Dropp objekter
 tdrops_title=Dropp objekter
 tdrops_rusure=Er du sikker på at du ønsker å droppe de $1 valgte objektene i database $2 ? $3 rader med data vil bli slettet.
 tdrops_rusure2=Er du sikker på at du ønsker å droppe de $1 valgte objektene i database $2 ?
+
 ddrops_err=Kunne ikke droppe databaser
 ddrops_title=Dropp databaser
 ddrops_rusure=Er du sikker på at du ønsker å droppe de $1 valgte databasene? $2 tabeller med $3 rader med data vil bli slettet.
@@ -518,6 +545,7 @@ ddrops_mysql=Siden master databasen er valgt, vil PostgreSQL mest sannsynlig bli
 ddrops_ok=Dropp databaser
 ddrops_enone=Ingen databaser valgt
 ddrops_ecannotdb=Du har ikke tilgang til å droppe databasen $1
+
 csv_title=Eksporter CSV fil
 csv_header=Innstillinger for CSV eksport
 csv_dest=Eksport destinasjon
@@ -538,6 +566,7 @@ csv_done=CSV eksport til $1 er fullført. Filstørrelsen på denne er $2.
 csv_headers=Ta med kolonnenavn i CSV?
 csv_cols=Kolonner som skal være med i CSV
 csv_ecols=Ingen kolonner valgt
+
 import_title=Importer data
 import_uploadout=Importerer data fra opplastet fil ..
 import_fileout=Importerer data fra filen $1 ..
@@ -545,6 +574,7 @@ import_eupload=Manglende opplastet importfil
 import_efile=Manglende import filnavn
 import_done=.. opprettet $1 rader, hoppet over $1 duplikater.
 import_erow=.. ingen felt funnet i rad $1
+
 index_title1=Opprett indeks
 index_header1=Indeks innstillinger
 index_name=Indeks navn
@@ -562,6 +592,7 @@ index_ecols=Ingen felt valgt
 index_title2=Rediger indeks
 index_header=Indeks $1 i database $2
 index_ecannot=Du har ikke tilgang til å administrere indekser
+
 view_title1=Opprett visning
 view_title2=Rediger visning
 view_header1=Visning detaljer
@@ -576,6 +607,7 @@ view_eclash=En visning med samme navn finnes allerede
 view_equery=Mangler SQL spørring
 view_ecols=Ingen kolonnenavn angitt
 view_ecannot=Du har ikke tilgang til å administrere visninger
+
 seq_title1=Opprett sekvens
 seq_title2=Rediger sekvens
 seq_header1=Innstillinger for inkrementerings sekvens
@@ -595,5 +627,6 @@ seq_emin=Manglende eller ugyldig minimumsverdi
 seq_emax=Manglende eller ugyldig maks. verdi
 seq_ecache=Manglende eller ugyldig antall verdier som skal caches
 seq_ecannot=DU har ikke lov til å administrere sekvenser
+
 dgrant_err=Kunne ikke tilbakestille grants
 dgrant_enone=Ingen objekter valgt

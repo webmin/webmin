@@ -14,10 +14,12 @@ index_apply=Sapukan
 index_return=Indeks PPP
 index_none=Anda tidak mempunyai akses kepada mana-mana ciri modul ini.
 index_delete=Padam Akaun Terpilih
+
 secrets_title=Akaun PPP
 secrets_return=indeks
 secrets_none=Tiada akaun PPP telah dibuat lagi.
 secrets_ecannot=Anda tidak dibenarkan mengedit akaun PPP
+
 edit_secret_etitle=Edit Akaun PPP
 edit_secret_ctitle=Buat Akaun PPP
 edit_secret_acc=Akaun PPP
@@ -37,8 +39,10 @@ edit_secret_alist=Izinkan disenaraikan ..
 edit_secret_save=Simpan
 edit_secret_del=Padam
 edit_secret_return=senarai akaun
+
 save_secret_esave=Gagal menyimpan akaun
 save_secret_enoip='$1' bukan alamat yang sah
+
 log_create=Dicipta akaun PPP $1 
 log_modify=Akaun PPP yang diubahsuai $1 
 log_delete=Akaun PPP yang dipadam $1 
@@ -54,6 +58,7 @@ log_dialin_move=Nombor ID pemanggil yang ditarik $1
 log_mgetty_create=Port siri yang dibuat $1 
 log_mgetty_modify=Port siri yang diubahsuai $1 
 log_mgetty_delete=Port siri terpadam $1 
+
 options_title=Pilihan PPP
 options_serial=Untuk port bersiri $1 
 options_dev=Untuk peranti $1 
@@ -84,6 +89,7 @@ options_idle=Masa maag sebelum putuskan sambungan
 options_idle_def=Tidak pernah
 options_eidle=Masa idle yang hilang atau tidak sah
 options_ecannot=Anda tidak dibenarkan mengedit pilihan PPP
+
 mgetty_title=Konfigurasi Port Serial
 mgetty_ecmd=Perintah $1 tidak dijumpai pada sistem anda. Program ini diperlukan untuk mengendalikan login port bersiri melalui modem atau sambungan langsung.
 mgetty_desc=Untuk pelayan anda membenarkan log masuk pada port siri melalui modem atau sambungan langsung, ia mesti disenaraikan di bawah. Apabila anda menambah pelabuhan ke senarai ini, program $1 akan dikonfigurasi untuk menjawab sambungan modem dan memaparkan permintaan log masuk.
@@ -125,6 +131,7 @@ mgetty_apply=Terapkan Konfigurasi
 mgetty_applydesc=Klik butang ini untuk menggunakan konfigurasi port bersiri semasa dengan menjalankan perintah $1 dan membunuh semua proses Mgetty.
 mgetty_applyerr=Gagal menggunakan konfigurasi
 mgetty_ecannot=Anda tidak dibenarkan mengedit konfigurasi port bersiri
+
 dialin_title=Akses ID Pemanggil
 dialin_desc=Halaman ini membolehkan anda mengkonfigurasi Mgetty untuk membenarkan atau menafikan akses dialin berdasarkan nombor telefon pemanggil. Apabila panggilan masuk, entri pertama dalam senarai yang sepadan dengan nombor telefon akan menentukan sama ada panggilan diterima atau tidak.
 dialin_efile=Fail kawalan akses ID pemanggil Mgetty $1 tidak ditemui pada sistem anda. Mungkin Mgetty tidak dipasang, atau konfigurasi modul <a href='$2'>anda</a> tidak betul.
@@ -145,9 +152,12 @@ dialin_move=Pindah
 dialin_err=Gagal menyimpan nombor ID pemanggil
 dialin_enumber=Nombor telefon yang hilang atau tidak sah
 dialin_ecannot=Anda tidak dibenarkan mengedit akses ID pemanggil
+
 acl_pages=Halaman yang tersedia
 acl_direct=Pergi terus ke satu halaman?
+
 sync_ecannot=Anda tidak dibenarkan mengedit pilihan penyegerakan unix-ppp
 sync_title=Penyegerakan Pengguna
+
 delete_err=Gagal memadamkan akaun
 delete_enone=Tiada yang dipilih

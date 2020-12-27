@@ -51,11 +51,13 @@ index_mass=Ezabatu hautatutako erabiltzaileak
 index_mass2=Desgaitu hautatua
 index_mass3=Gaitu hautatua
 index_gmass=Ezabatu hautatutako taldeak
+
 search_title=Bilaketaren emaitzak
 search_notfound=Ez da bat datorren erabiltzailerik aurkitu
 search_found=$1 bat datozen erabiltzaileekin topatu dugu.
 search_gnotfound=Ez da bat datorren talderik aurkitu
 search_gfound=Aurkitu $1 bat datozen taldeekin.
+
 uedit_title=Erabiltzailea editatu
 uedit_title2=Erabiltzailea Sortu
 uedit_details=Erabiltzailearen xehetasunak
@@ -133,6 +135,7 @@ uedit_uid_calc=Kalkulatutako
 uedit_disabled=Sartu aldi baterako desgaituta
 uedit_sys=Sistema lehenetsia
 uedit_clone=Erabiltzaile klonala
+
 usave_err=Huts egin du erabiltzailea gordetzean
 usave_eedit=Ezin duzu erabiltzaile hau editatu
 usave_ecreate=Ezin duzu erabiltzaile berririk sortu
@@ -186,6 +189,7 @@ usave_epasswd_same=Pasahitzak erabiltzaile izenaren berdina dauka
 usave_epasswd_mindays=Pasahitza duela $1 egun baino gutxiago aldatu zen
 usave_epasswd_cmd=Pasahitza balioztatzeko komandoak huts egin du
 usave_eothers=Erabiltzailea ondo gorde da, baina errore bat gertatu da beste modulu batean : $1
+
 gedit_title=Editatu Taldea
 gedit_title2=Sortu Taldea
 gedit_details=Taldearen xehetasunak
@@ -208,6 +212,7 @@ gedit_selu=Erabiltzaileak taldean
 gedit_pri=Lehen mailako taldekideak
 gedit_prinone=Erabiltzaileek ez dute talde hau lehen mailako gisa
 gedit_clone=Klon taldea
+
 gsave_err=Huts egin du taldea gordetzean
 gsave_eedit=Ezin duzu talde hau editatu
 gsave_ecreate=Ezin duzu talde berririk sortu
@@ -224,6 +229,7 @@ usave_egidused=$1 taldea dagoeneko GID $2 erabiltzen ari da
 gsave_egidused2=GID dagoeneko erabiltzen ari da
 usave_efromroot=Ezin duzu etxearen direktoriora /
 usave_etoroot=Ezin duzu etxeko direktoriora /
+
 logins_title=Grabatutako saioak
 logins_head=$1 -ren erregistratutako saioak
 logins_from=Saioa hasi
@@ -236,6 +242,7 @@ logins_none=Ez da saiorik grabatu
 logins_elist=Ezin duzu saioa hastea baimendu
 logins_elistu=Ezin duzu '$1' sarbide-zerrendarik zerrendatu
 logins_local=Tokiko
+
 udel_title=Erabiltzailea ezabatu
 udel_err=Ezin izan da erabiltzailea ezabatu
 udel_enum=Erabiltzaile kopurua baliogabea
@@ -258,6 +265,7 @@ udel_del2=Ezabatu Erabiltzaile eta Hasiera Direktorioa
 udel_others=KONTUZ! $1 direktorio nagusiak $2 fitxategiak ditu beste erabiltzaile batzuen jabetzakoak.
 udel_dothers=Erabiltzailea beste moduluetan ezabatu nahi duzu?
 udel_root=Kontuz! Erabiltzaile nagusia ezabatzen bada, agian ezingo duzu zure sistema administratu etorkizunean.
+
 gdel_title=Ezabatu Taldea
 gdel_err=Ezin izan da taldea ezabatu
 gdel_eroot=Ez duzu baimenik sistema-taldeak ezabatzeko (GID bat duten 10 edo gutxiago dutenak).
@@ -271,6 +279,7 @@ gdel_sure=Ziur $1 taldea ezabatu nahi duzula?
 gdel_del=Ezabatu Taldea
 gdel_dothers=Taldea beste modulu batzuetan ezabatu nahi duzu?
 gdel_other=Beste modulu batzuetatik ezabatzen ..
+
 many_title=Sortu erabiltzaile anitz
 many_desc=Inprimaki honek erabiltzaile asko aldi berean kargatu edo tokiko testu fitxategi batetik sor ditzakezu. Fitxategiaren lerro bakoitzak erabiltzaile bat hurrengo formatuan zehazten du:
 many_desc2=username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire
@@ -294,6 +303,7 @@ many_eshell=Shell baliogabea $1 : $2
 many_emkdir=Huts egin du $1 etxeko direktorio sortzean : $2
 many_egtaken=Taldearen izena dagoeneko erabiltzen ari da $1 : $2 
 many_ok=Erabiltzailea sortu da $1
+
 acl_uedit=Unix erabiltzaileak editatu daitezke
 acl_uedit_all=Erabiltzaile guztiak
 acl_uedit_none=Erabiltzailerik ez
@@ -353,6 +363,7 @@ acl_udelete=Erabiltzaileak ezabatu ditzakezu?
 acl_gdelete=Taldeak ezabatu ditzakezu?
 acl_urename=Erabiltzaileei berrizendatu diezaieke?
 acl_grename=Taldeak berrizendatu al ditzake?
+
 log_urename=Erabiltzaile izena $1 to $2
 log_umodify=Erabiltzailearen aldaketa $1
 log_ucreate=Erabiltzailea sortu da $1
@@ -371,6 +382,7 @@ log_ugbatch=Kargatutako talde-sortaren fitxategia exekutatu da
 log_ugbatch_l=Kargatutako talde-sortaren fitxategi exekutatua ($1 sortu da, $2 aldatu, $3 ezabatu)
 log_delete_users=$1 erabiltzaileak ezabatu dira
 log_delete_groups=$1 taldeak ezabatu dira
+
 batch_title=Sortu fitxategi sorta
 batch_ecannot=Ezin duzu batch fitxategiaren inprimakia erabili
 batch_desc=Inprimaki honek erabiltzaile asko aldi berean kargatu edo tokiko testu fitxategi batetik sortu, aldatu edo ezabatzeko aukera ematen du. Fitxategiko lerro bakoitzak ekintza bat zehazten du, bere lehenengo eremuaren arabera. Linearen formatuak hauek dira :
@@ -429,12 +441,14 @@ batch_eexpire=Iraungitze egun baliogabea linean $1 : $2
 batch_echange=Pasahitz aldaketa egun baliogabea linean $1 : $2 
 batch_instr=Argibideak eta lote formatua
 batch_header=Multzoko erabiltzaileak sortzeko, eguneratzeko eta ezabatzeko aukerak
+
 who_title=Erabiltzaileak saioa
 who_user=Unix erabiltzailea
 who_tty=TTY
 who_when=Saioa hasi da
 who_from=Saioa hasi da
 who_none=Ez dago erabiltzaile oraindik saioa hasi.
+
 export_title=Esportatu Batch fitxategia
 export_desc=Inprimaki honen bidez sisteman erabilgarri dauden erabiltzaile batzuk edo guztiak biltzen dituen sorta bat sortzea ahalbidetzen da. Fitxategia beste sistema bateko fitxategia exekutatu orrialdean erabil daiteke esportatutako erabiltzaileak berriro sortzeko, hartutako hautatutako fitxategi formatua erabiltzen duela suposatuz.
 export_header=Erabiltzaileen esportazio aukerak
@@ -455,6 +469,7 @@ export_done=$1 erabiltzaileak esportatu ditu $2 ($3).
 export_pft=Batch fitxategi formatua
 export_who=Erabiltzaileak esportatu
 export_ecannot=Ezin duzu erabiltzaileak esportatu
+
 gexport_title=Esportatu Taldeak Multzoko Fitxategia
 gexport_desc=Inprimaki honek sisteman eskuragarri dauden talde batzuk edo guztiak biltzen dituen sorta bat sortzea ahalbidetzen du. Fitxategia beste sistema bateko Execute Group Batch File orrian erabil daiteke esportatutako taldeak berriro sortzeko.
 gexport_header=Multzoak esportatzeko aukerak
@@ -463,6 +478,7 @@ gexport_ecannot=Ezin duzu talde esportatu
 gexport_err=Ezin izan da talde-sortaren fitxategia esportatu
 gexport_egid=Barruko lehen GID baliogabea
 gexport_egid2=Barruko bigarren GID baliogabea
+
 pft_0=<tt>passwd</tt> fitxategi klasikoa soilik
 pft_1=BSD <tt>master.passwd</tt> fitxategia
 pft_2=<tt>passwd</tt> eta <tt>itzal</tt> fitxategi estandarrak
@@ -470,6 +486,7 @@ pft_3=Unixware <tt>passwd</tt> fitxategia
 pft_4=AIX <tt>passwd</tt> eta <tt>security</tt> fitxategiak
 pft_5=OpenServer <tt>passwd</tt> eta <tt>itzal</tt> fitxategi laburrak
 pft_6=MacOS NetInfo datu-basea
+
 umass_title=Erabiltzaileak ezabatu
 umass_err=Ezin izan dira erabiltzaileak ezabatu
 umass_sure=Ziur $1 hautatutako erabiltzaileak ezabatu nahi dituzula? Beren etxeko direktorioek $2 dituzte fitxategiak.
@@ -481,6 +498,7 @@ umass_del1=Erabiltzaileak ezabatu
 umass_del2=Ezabatu Erabiltzaileak eta Hasierako Zuzendariak
 umass_eroot=Ezin duzu sistemako erabiltzaileak ezabatu (10 UID baino gutxiago edo berdina dutenak).
 umass_doing=Erabiltzailea ezabatu $1 ..
+
 gmass_title=Taldeak ezabatu
 gmass_err=Ezin izan dira taldeak ezabatu
 gmass_sure=Ziur hautatutako taldeak $1 ezabatu nahi duzula?
@@ -490,16 +508,19 @@ gmass_del=Taldeak ezabatu
 gmass_eroot=Ez duzu baimenik sistema-taldeak ezabatzeko (GID bat duten 10 edo gutxiago dutenak).
 gmass_doing=$1 taldea ezabatzen ..
 gmass_eprimary=$1 taldea ezin da ezabatu, $2 erabiltzailearen talde nagusia baita.
+
 dmass_title=Erabiltzaileak desgaitu
 dmass_sure=Ziur $1 hautatutako erabiltzaileak desgaitu nahi duzula? Gero berriro aktibatu daitezke, pasahitzak edo datuak galdu barik.
 dmass_dis=Erabiltzaileak desgaitu
 dmass_pass=Pasahitza aldi baterako blokeatzea ..
 dmass_doing=Erabiltzailea desgaitu $1 ..
 dmass_already=.. dagoeneko desgaituta!
+
 emass_title=Gaitu erabiltzaileak
 emass_pass=Pasahitza desblokeatzen ..
 emass_doing=Erabiltzailea gaitu $1 ..
 emass_already=.. dagoeneko gaituta!
+
 gbatch_title=Talde sorta fitxategia exekutatu
 gbatch_ecannot=Ezin duzu taldeko batch fitxategi inprimakia erabili
 gbatch_desc=Inprimaki honek talde asko sortu, aldatu edo ezabatu ditzakezu aldi berean igotako edo tokiko testu fitxategi batetik. Fitxategiko lerro bakoitzak ekintza bat zehazten du, bere lehenengo eremuaren arabera. Linearen formatuak hauek dira :

@@ -17,6 +17,7 @@ index_tdesc=Apraksts
 index_tucount=Lietotāji
 index_tgcount=Grupas
 index_ttype=OS tips
+
 add_title=Pievienot serverus
 add_msg=Notiek $1 pievienošana.
 add_gmsg=Serveru pievienošana grupā $1.
@@ -26,6 +27,7 @@ add_echeck=Serverim $1 nav lietotāju un grupu moduļa
 add_epft=Serveris $1 neizmanto tādu pašu lietotāja failu formātu kā šis resursdators
 add_egft=Serveris $1 neizmanto tādu pašu grupas faila formātu kā šis resursdators
 add_ok=Pievienots $1 ar $2 lietotājiem un $3 grupām.
+
 host_title=Pārvaldīts serveris
 host_header=Programmatūras pārvaldītā servera informācija
 host_name=Resursdatora nosaukums
@@ -34,8 +36,7 @@ host_delete=Noņemt no pārvaldīto saraksta
 host_refresh=Atsvaidziniet lietotājus un grupas
 host_users=Lietotāju skaits
 host_groups=Grupu skaits
-host_ulist=Lietotāji uz servera
-host_glist=Grupas serverī
+
 host_return=informācija par serveri
 refresh_title=Atsvaidziniet lietotājus un grupas
 refresh_header=Lietotāju un grupu sarakstu atkārtota pieprasīšana no visiem serveriem.
@@ -49,6 +50,7 @@ refresh_gdel=noņemt $1 grupas
 refresh_done=.. darīts
 refresh_del=$1 tika noņemts no serveru saraksta
 refresh_failed=Neizdevās atsvaidzināt $1 : $2 
+
 uedit_host=Sīkāka informācija no $1 
 uedit_leave=Nemaini
 uedit_set=Iestatīts uz
@@ -66,6 +68,7 @@ uedit_servers=Serveris (-i), ko izveidot
 uedit_all=&lt;visi saimnieki&gt;
 uedit_donthave=&lt;saimnieki, kuriem viņu nav&gt;
 uedit_group=$1 dalībnieki
+
 usave_einuse=Lietotājs ar tādu pašu vārdu jau pastāv vietnē $1 
 usave_esecgid=Vidējā grupa $1 neeksistē
 usave_con=Izveidojot uz $1.
@@ -88,16 +91,20 @@ usave_header=Lietotāja $1 izveidošana visos resursdatoros.
 usave_header5=Notiek lietotāja $1 izveidošana uz $2.
 usave_header4=Lietotāja $1 izveidošana grupas $2 dalībniekiem.
 usave_header3=Lietotāja $1 izveidošana resursdatoros, kur viņu nav.
+
 search_hosts=Saimnieki
+
 udel_on=Notiek dzēšana no $1.
 udel_servs=Dzēsiet mājas direktoriju, ja tāds pastāv
 udel_others=Vai izdzēst lietotāju citos moduļos?
 udel_dothers=Dzēšana citos moduļos ..
 udel_gone=Lietotājs vairs nepastāv.
 udel_failed=Neizdevās izdzēst lietotāju : $1 
+
 gdel_on=Notiek dzēšana no $1.
 gdel_gone=Lietotājs vairs nepastāv.
 gdel_failed=Neizdevās izdzēst grupu : $1 
+
 gsave_create=Notiek grupas faila ieraksta pievienošana.
 gsave_con=Izveidojot uz $1.
 gsave_euser=$1 lietotājs neeksistē
@@ -110,10 +117,12 @@ gsave_header=Grupas $1 izveidošana visos resursdatoros.
 gsave_header5=Notiek grupas $1 izveidošana uz $2.
 gsave_header4=Grupas $1 izveidošana grupas $2 dalībniekiem.
 gsave_header3=Grupas $1 izveidošana resursdatoros, kuriem tās nav.
+
 gedit_host=Sīkāka informācija no $1 
 gedit_add=Pievienojiet lietotājus
 gedit_del=Noņemt lietotājus
 gedit_donthave=&lt;saimniekiem, kuriem to nav&gt;
+
 sync_title=Sinhronizēt serverus
 sync_desc=Šī veidlapa ļauj jums izveidot lietotājus un grupas serveros, kuriem to pašlaik nav, lai sinhronizētu kontus visos jūsu klastera serveros.
 sync_hosts=Sinhronizējami serveri
@@ -141,6 +150,7 @@ sync_test=Tikai parādiet, kas tiktu darīts?
 sync_makehome=Izveidot mājas direktorijus?
 sync_copy=Vai kopēt failus mājas direktorijā?
 sync_others=Vai izveidot lietotāju citos moduļos?
+
 log_create_user=Izveidots lietotājs $1 
 log_delete_user=Dzēsts lietotājs $1 
 log_modify_user=Pārveidots lietotājs $1 

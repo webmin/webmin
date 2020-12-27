@@ -25,12 +25,15 @@ index_up=Starte Verbindung:
 index_updesc=Wähle eine Verbindung aus der Liste neben dieser Schaltfläche, und klicke darauf, um seine sofortige Aufbau zu versuchen.
 index_nopol=Keine Netzwerkrichtlinien wurden gefunden - möglicherweise ist Ihre <a href='$1'> Netzwerkkonfiguration</a> ist falsch.
 index_import=Importiere Verbindung von Datei.
+
 stop_err=Fehlgeschlagen IPsec Server zu stoppen
 start_err=Fehlgeschlagen IPsec Server zu starten
 restart_err=Fehlgeschlagen IPsec-Server neuzustarten
 start_elog=Die folgenden Fehler wurden geloggt : $1
+
 newkey_err=Fehlgeschlagen Schlüssel zu generieren
 newkey_ehost=Fehlender oder ungültiger Hostname
+
 edit_title1=Erstelle Verbindung
 edit_title2=Editiere Verbindung
 edit_header=IPsec VPN Verbindungsdetails
@@ -101,6 +104,7 @@ edit_unit_s=Sekunden
 edit_unit_m=Minuten
 edit_unit_h=Stunden
 edit_unit_d=Tage
+
 config_title=Serverkonfiguration
 config_header=Globale VPN Servereinstellungen
 config_ifaces=Netzwerkschnittstelle für IPsec
@@ -118,6 +122,7 @@ config_nat=Aktiviere NAT traversal?
 config_err=Fehlgeschlagen die Serverkonfiguration zu speichern
 config_eri=Die reale Schnittstelle '$1' ist mehr als einmal aufgelistet
 config_enone=Keine Netzwerkschnittstelle spezifiziert
+
 showkey_title=Zeige öffentlicher Schlüssel
 showkey_desc1=Die unten gezeigte öffentlichen RSA-Schlüssel sollte in die Konfiguration der anderen Systemen, die zu diesem System eine Verbindung herstellen wollen, in dem Abschnitt zu diesem Host bezogenen, kopiert werden.
 showkey_desc2=Die unten gezeigten Werte können verwendet werden, um einen DNS-KEY-Record für diesen Host zu erstellen, so dass andere Systeme in ihren öffentlichen Schlüssel nachschlagen können.
@@ -125,6 +130,7 @@ showkey_flags=Flags
 showkey_proto=Protokoll
 showkey_alg=Algorithmus
 showkey_key=Schlüsseldaten
+
 policy_desc_block=Blockierte Netzwerke
 policy_desc_clear=Lösche Traffic Netzwerke
 policy_desc_private=Verschüsselte Netzwerke
@@ -145,6 +151,7 @@ policy_mask=Präfix
 policy_err=Fehlgeschlagen Netzwerk zu speichern
 policy_enet=Ungültige Netzwerk IP-Adresse in Reihe $1
 policy_emask=Ungültige Präfixlänge auf Zeile $2
+
 save_err=Fehlgeschlagen Verbindung zu speichern
 save_ename=Fehlender oder ungültiger Verbindungsname
 save_ekeying=Missing or invalid number of keying re-tries
@@ -164,6 +171,7 @@ save_eleftcert=Fehlendes oder ungültiges lokale Server-Zertifikat
 save_erightcert=Fehlendes oder ungültiges Remote-Server-Zertifikat
 save_ekeylife=Missing or invalid connection key lifetime
 save_eikelifetime=Missing or invalid keying channel lifetime
+
 log_create_conn=Verbindung $1 erstellt
 log_delete_conn=Lösche Verbindung $1
 log_modify_conn=Verbindung $1 modifiziert
@@ -182,8 +190,10 @@ log_delete_secret=Geheimen Schlüssel für $1 gelöscht
 log_create_secret_nn=Geheimen Schlüssel für jeden Host erstellt
 log_modify_secret_nn=Geheimen Schlüssel für jeden Host modifiziert
 log_delete_secret_nn=Geheimen Schlüssel für jeden Host gelöscht
+
 up_title=Starte Verbindung
 up_cmd=Starte Verbindung mit Befehl $1 ..
+
 export_title=Exportiere KOnfiguration
 export_desc=Dieses Formular kann verwendet werden, um die Konfigurationsdatei für Verbindung $1 zu exportieren, so dass es leicht auf dem Server am anderen Ende importiert werden kann.
 export_print=Zeige Konfiguration im Browser
@@ -193,11 +203,13 @@ export_err=Fehlgeschlagen Konfiguration zu exportieren
 export_efile=Fehlender Dateiname
 export_esave=Fehlgeschlagen in Datei zu schreiben : $1
 export_done=Exportierte Konfiguration für die Verbindung $1 bis $2 ($3 Bytes).
+
 import_title=Importiere Konfiguration
 import_desc=Dieses Formular kann verwendet werden, um den Konfigurationsdatei-Abschnitt für eine Verbindung, wie die von dem Modul-Export-Funktion auf einem anderen System erstellt wurden.
 import_upload=Importiere von hochgeladene Datei...
 import_file=Importiere von serverseitiger Datei ..
 import_ok=Importiere jetzt
+
 import_err=Fehlgeschlagen Konfiguration zu importieren
 import_eupload=Keine Datei zum Hochladen ausgewählt
 import_efile=Keine Server-Seite Datei eingegeben
@@ -207,6 +219,7 @@ import_eclash=Eine Verbindung namens $1 existiert bereits.
 import_done1=Erfolgreich eine neue IPsec Verbindung $1 hinzugefügt.
 import_done2=Erfolgreich IPsec Verbindung $1 aktualisiert.
 import_over=Überschreiben vorhandene Verbindung mit dem gleichen Namen?
+
 secrets_title=Geheime Schlüssel
 secrets_none=Kein geheimer Schlüssel wurde gefunden!
 secrets_name=Secret for
@@ -220,6 +233,7 @@ secrets_mod=Modulus $1
 secrets_newpsk=Create new shared secret key.
 secrets_newrsa=Erstellen neuen RSA-Schlüssel.
 secrets_return=Gemeine Schlüssel Liste
+
 secret_title1=Erstelle geheimen Schlüssel
 secret_title2=Editiere geheimen Schlüssel
 secret_header=Secret key details

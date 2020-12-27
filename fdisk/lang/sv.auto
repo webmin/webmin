@@ -21,6 +21,7 @@ index_dscsi=SCSI-enhet $1 -kontrollenhet $2
 index_draid=RAID-nivå $1 
 index_dparts=partitioner
 index_none2=Inga diskar hittades i detta system.
+
 megabytes=megabyte
 select_cpq=Compaq RAID $1 enhet $2 
 select_cpart=Compaq RAID $1 enhet $2 partition $3 
@@ -34,6 +35,7 @@ select_promise=Löfte RAID-enhet $1
 select_ppart=Löfte RAID-enhet $1 partition $2 
 select_nvme=NVME SSD $1 enhet $2 
 select_nvmepart=NVME SSD $1 enhet $2 partition $3 
+
 edit_mountlvm=Del av LVM-volymgruppen $1 
 edit_mountiscsi=iSCSI delade enheten $1 
 edit_name=Partitionsnamn
@@ -45,21 +47,30 @@ edit_newmount2=Montera partition
 edit_mountas=som
 edit_mountmsg=Montera denna partition i en ny katalog på ditt system så att den kan användas för att lagra filer. Ett filsystem måste redan ha skapats på partitionen.
 edit_mountmsg2=Montera denna partition som virtuellt minne på ditt system för att öka mängden tillgängligt minne.
+
 ext3_j=Journalfilstorlek
+
 msdos_ff=Antal FAT
 msdos_F_other=Övrig ..
+
 xfs_force=Tvinga skapande av filsystem
 xfs_b=Block storlek
+
 jfs_s=Loggstorlek
 jfs_c=Leta efter dåliga block?
+
 btrfs_l=Bladstorlek
 btrfs_n=Nodstorlek
 btrfs_s=Sektorstorlek
+
 fatx_none=Inga alternativ är tillgängliga för FATX-filsystem.
+
 acl_view=Kan du visa icke-redigerbara diskar?
+
 blink_title=Identifiera Drive
 blink_desc=Aktivitets-LED på frekvensomriktaren tänds nu sextio gånger
 blink_back=Gå tillbaka
+
 fs_ext2=Gamla Linux Native
 fs_minix=minix
 fs_msdos=MS-DOS
@@ -70,9 +81,11 @@ fs_ext4=Nytt Linux Native
 fs_xfs=SGI
 fs_jfs=IBM Journalling
 fs_btrfs=BTR
+
 delete_title=Radera partition
 delete_rusure=Är du säker på att du vill ta bort $1 ($2)? Data om denna partition kan försvinna för alltid.
 delete_ok=Radera nu
+
 disk_title=Redigera diskpartitioner
 disk_egone=Disk finns inte längre!
 disk_no=siffra
@@ -93,11 +106,13 @@ disk_table=<b>Partitionstabellformat:</b> $1
 disk_notable=<b>Partitionstabellformat:</b> Inget skapat
 disk_needtable=Inga partitioner kan skapas utan en partitionstabell.
 disk_return=lista över partitioner
+
 relabel_title=Torka av partitioner
 relabel_warn=Är du säker på att du vill torka av alla partitioner på $1 ($2) genom att skriva om skivetiketten? All befintlig data och filsystem kommer att gå förlorad!
 relabel_parts=Befintliga partitioner
 relabel_noparts=Ingen har skapats än
 relabel_table=Partitionstabellformat
 relabel_ok=Torka och märka igen
+
 table_msdos=MS-DOS (standardpartitionsformat)
 table_gpt=GPT (för 2T eller större diskar)

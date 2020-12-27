@@ -40,6 +40,7 @@ index_descfetch=Cette page permet de télécharger un fichier à partir du syst�
 index_email=Envoyer un e-mail lorsque les téléchargements sont terminés?
 index_emailto=Oui, pour adresser
 index_email2=Envoyer un e-mail lorsque les téléchargements sont terminés?
+
 upload_title=Upload des fichiers
 upload_err=Impossible d'uploader les fichiers
 upload_edir=Répertoire de destination de l'upload manquant
@@ -63,6 +64,7 @@ upload_saving=Enregistrement du fichier $1 ..
 upload_saved=.. a écrit $1
 upload_unzipping=Extraction du fichier $1 ..
 upload_unzipdone=.. $1
+
 download_err=Impossible de sauvegarder le download
 download_enone=Aucune URL à télécharger saisie
 download_eurl='$1' n'est pas un URL valide
@@ -74,9 +76,11 @@ download_failed=Impossible de downloader : $1
 download_eaccess=Vous n'êtes pas autorisé à downloader les fichier vers $1
 download_eucannot=Vous n'êtes pas autorisé à downloader des fichiers avec l'utilisateur $1
 download_egcannot=Le group sélectionné ne contient pas l'utilisateur sélectionné
+
 cancel_err=Impossible d'annuler les downloads
 cancel_enone=Aucun sélectionné
 cancel_ecannot=Vous n'êtes pas autorisé à annuler les downloads de l'utilisateur $1
+
 log_cancel=$1 download(s) annulé(s)
 log_upload_l=fichier(s) $1 uploadé(s)
 log_upload=$1 fichier(s) uploadé(s)
@@ -84,6 +88,7 @@ log_download_l=URL(s) $1 downloadé(s)
 log_download=$1 URL(s) downloadé(s)
 log_sdownload_l=Planification du download de l'URL(s) $1
 log_sdownload=Planification du download de $1 URL(s)
+
 acl_users=Peut télécharger et télécharger des fichiers en tant qu'utilisateurs
 acl_all=Tous les utilisateurs
 acl_this=Utilisateur courant de Webmin
@@ -98,6 +103,7 @@ acl_max=Taille limite d'upload
 acl_unlim=Sans limite
 acl_b=bytes
 acl_fetch=Peut télécharger des fichiers sur PC?
+
 fetch_err=Échec du téléchargement du fichier
 fetch_ecannot=Vous n'êtes pas autorisé à télécharger des fichiers sur un PC
 fetch_efile=Aucun nom de fichier entré
@@ -106,6 +112,7 @@ fetch_eopen=Échec de l'ouverture du fichier : $1
 fetch_eaccess=Vous n'êtes pas autorisé à télécharger des fichiers à partir de $1
 fetch_ezip=Un répertoire ne peut être téléchargé que si la commande <tt>zip</tt> est installée
 fetch_eroot=Le répertoire racine ne peut pas être téléchargé!
+
 email_downmsg=Le téléchargement suivant est terminé :
 email_downurl=URL: $1
 email_downerr=Message d'erreur: $1

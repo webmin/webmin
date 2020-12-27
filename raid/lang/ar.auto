@@ -21,6 +21,7 @@ index_mailfromnone=افتراضي (<tt>root</tt>)
 index_program=أمر للتشغيل عند الكشف عن المشاكل
 index_programnone=لا تقم بتشغيل أي
 index_monitor=تم تمكين المراقبة؟
+
 linear=خطي (متسلسل)
 raid0=RAID0 (مخطط)
 raid1=RAID1 (معكوسة)
@@ -29,6 +30,7 @@ raid5=RAID5 (التكافؤ الموزع)
 raid6=RAID6 (التكافؤ الموزع المزدوج)
 raid10=RAID10 (مخطط ومرايا)
 blocks=الكتل
+
 create_title=إنشاء جهاز RAID
 create_header=خيارات جهاز RAID
 create_device=ملف الجهاز
@@ -62,6 +64,7 @@ create_o2_layout=2 نسخ أوفست
 create_n3_layout=3 النسخ القريبة
 create_f3_layout=3 نسخ بعيدة
 create_o3_layout=3 نسخ أوفست
+
 view_title=جهاز RAID
 view_header=خيارات جهاز RAID
 view_device=ملف الجهاز
@@ -117,6 +120,7 @@ view_mountmsg=أدخل دليلًا وانقر فوق هذا الزر للانت
 view_mountmsg2=انقر فوق هذا الزر لاستخدام جهاز RAID هذا للذاكرة الافتراضية على نظامك.
 view_blocks=$1 من الكتل
 view_sparegroup=مجموعة احتياطية
+
 mkfs_title=إنشاء نظام الملفات
 mkfs_header2=يسمح لك هذا النموذج بإنشاء نظام ملفات $2 جديد على$1. سيتم مسح <b>جميع</b> البيانات الموجودة!
 mkfs_options=خيارات جديدة لنظام الملفات Linux
@@ -124,6 +128,7 @@ mkfs_err=فشل إنشاء نظام الملفات
 mkfs_exec=تنفيذ الأمر$1 ..
 mkfs_failed=.. فشل الأمر!
 mkfs_ok=.. اكتمل الأمر.
+
 emkraid=فشل <tt>mkraid</tt> :$1
 eraidstop=فشل <tt>raidstop</tt> :$1
 eraidstart=فشل <tt>raidstart</tt> :$1
@@ -135,6 +140,7 @@ emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
 log_create=تم إنشاء جهاز$1 RAID$2
 log_stop=جهاز RAID المعطل$1
 log_start=جهاز RAID المنشط$1
@@ -147,14 +153,17 @@ log_grow=تم تطوير جهاز RAID $1 إلى إجمالي$2 من الأقر�
 log_convert_to_raid6=تم تحويل جهاز RAID5$1 إلى جهاز RAID6
 log_convert_to_raid5=تم تحويل جهاز RAID6$1 إلى جهاز RAID5
 log_notif=تم تحديث خيارات إعلام مشكلة RAID
+
 notif_err=فشل حفظ خيارات إعلام مشكلة RAID
 notif_emailaddr=عنوان إعلام مفقود أو غير صالح
 notif_emailfrom=عنوان مفقود أو غير صالح
 notif_eprogram=برنامج مفقود أو غير موجود للتشغيل
+
 delete_title=حذف صفيف RAID
 delete_rusure=هل تريد بالتأكيد حذف صفيف RAID $1 ، الذي يستخدم$2 من مساحة القرص؟
 delete_ok=نعم ، احذفها
 delete_eidx=لم يتم تحديد مجموعة RAID!
+
 remove_title=إزالة القسم من صفيف RAID
 remove_rusure=هل تريد بالتأكيد إزالة القسم$2 من صفيف RAID$1؟
 remove_ok=نعم ، قم بإزالتها

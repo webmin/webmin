@@ -3,8 +3,10 @@ index_clink=Talvez não esteja instalado ou sua <a href='$1'>configuração do m
 index_return=índice do módulo
 index_atboot=Iniciar na inicialização?
 index_atbootdesc=Altere esta opção para controlar se o cliente iSCSI é iniciado no momento da inicialização ou não. Isso é necessário para que os sistemas de arquivos montados nos servidores iSCSI sejam montados automaticamente.
+
 check_econfig=O arquivo de configuração do cliente iSCSI $1 não foi encontrado no seu sistema.
 check_eiscsiadm=O programa de administração do cliente iSCSI $1 não foi encontrado no seu sistema.
+
 auth_title=Opções de autenticação
 auth_header=Autenticação de cliente e servidor iSCSI
 auth_name=Nome do iniciador do sistema local
@@ -29,6 +31,7 @@ auth_edpassword=Senha de descoberta ausente para o servidor
 auth_edusername_in=Nome de usuário de descoberta ausente para o cliente
 auth_edpassword_in=Senha de descoberta ausente para o cliente
 auth_egen=Falha ao gerar um novo nome!
+
 timeout_title=Tempos limite de iSCSI
 timeout_header=Opções de tempo limite do cliente iSCSI
 timeout_timeout=Tempo para aguardar antes da falha dos comandos SCSI
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=Tempo ausente ou não numérico para aguardar o ping a
 timeout_eabort_timeout=Tempo ausente ou não numérico para aguardar a resposta de cancelamento antes de falhar
 timeout_elu_reset_timeout=Tempo ausente ou não numérico para aguardar a resposta da unidade lógica antes de falhar
 timeout_etgt_reset_timeout=Tempo ausente ou não numérico para aguardar a resposta do destino antes de falhar
+
 iscsi_title=Opções iSCSI
 iscsi_header=Outras opções iSCSI
 iscsi_startup=Conectar sessões no momento da inicialização?
@@ -62,6 +66,7 @@ iscsi_err=Falha ao salvar as opções iSCSI
 iscsi_eretry=Número de vezes ausente ou não numérico para tentar novamente o login
 iscsi_ecmds=Comandos máximos ausentes ou não numéricos na fila por sessão
 iscsi_equeue=Comandos máximos ausentes ou não numéricos na fila por dispositivo
+
 ifaces_title=Interfaces iSCSI
 ifaces_elist=Falha ao listar interfaces : $1 
 ifaces_name=Nome da interface
@@ -78,11 +83,13 @@ ifaces_hwaddress=Endereço MAC
 ifaces_ifacename=Interface de origem
 ifaces_ipaddressdef=Automático
 ifaces_notset=Automático
+
 iadd_err=Falha ao adicionar interface
 iadd_eclash=Uma interface chamada $1 já existe
 iadd_eipaddress=Endereço IP de origem ausente ou inválido
 iadd_ehwaddress=Endereço MAC ausente ou inválido
 iadd_ename=O nome da interface está ausente ou contém caracteres inválidos
+
 difaces_err=Falha ao remover interfaces
 difaces_enone=Nenhum selecionado
 difaces_edelete=Falha na remoção da interface $1 : $2 
@@ -93,6 +100,7 @@ difaces_confirm=Remover interfaces
 difaces_target=destino iSCSI
 difaces_ip=servidor iSCSI
 difaces_users=Alguma conexão usando essas interfaces está atualmente ativa e falhará ao operar quando as interfaces forem removidas :
+
 conns_title=Conexões iSCSI
 conns_elist=Falha ao listar conexões : $1 
 conns_ip=IP do servidor
@@ -113,6 +121,7 @@ conns_return=lista de conexões
 conns_iface=interface iSCSI
 conns_ifacedef=Escolha automaticamente
 conns_ifaceerr=Falha ao buscar interfaces : $1 
+
 add_title=Adicionar conexão iSCSI
 add_err=Falha ao adicionar conexão iSCSI
 add_ehost=Nome de host ausente ou não resolvível
@@ -129,6 +138,7 @@ add_on=$1 em $2
 add_auth=Faça login no servidor
 add_auth1=Use o método de autenticação padrão
 add_auth0=Faça logon como $2 com a senha $3 usando o método $1 
+
 dconns_err=Falha ao desconectar conexões
 dconns_enone=Nenhum selecionado
 dconns_edelete=A remoção do destino $2 do host $1 falhou : $3 
@@ -142,6 +152,7 @@ dconns_use=Usado por
 dconns_size=Tamanho da partição
 dconns_confirm=Remover conexões
 dconns_unused=Não utilizado
+
 vconn_title=Conexão iSCSI
 vconn_egone=A conexão selecionada não existe mais!
 vconn_header=Detalhes da conexão iSCSI
@@ -160,8 +171,10 @@ vconn_device3=Nome constante do dispositivo
 vconn_delete=Desconectar conexão
 vconn_users=Usuários atuais
 vconn_size=Tamanho do disco
+
 atboot_err=Falha ao ativar no momento da inicialização
 atboot_einit=Nenhuma ação de inicialização chamada $1 existe
+
 log_auth=Opções de autenticação salvas
 log_timeout=Opções de tempo limite salvas
 log_iscsi=Opções iSCSI salvas

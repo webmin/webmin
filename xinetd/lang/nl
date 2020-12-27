@@ -23,6 +23,7 @@ index_econf=De Xinetd configuratie file $1 bestaat niet. Misschien is het niet g
 index_noport=Onbekend
 index_enable=Geselecteerden Aanzetten
 index_disable=Geselecteerden Uitschakelen
+
 serv_create=Gemaakte Internet Service
 serv_edit=Bewerk Internet Service
 serv_header1=Service netwerk opties
@@ -76,19 +77,24 @@ serv_enice=Ontbrekende of ongeldig aardig level
 serv_ecps0=Ontbrekende of ongeldig aantal verbindingen per seconden
 serv_ecps1=Ontbrekende of ongeldige vertraging
 serv_etimes=Toegangs tijden moeten in het formaat UU:MM-UU:MM
+
 sock_stream=Stroom
 sock_dgram=Datagram
 sock_raw=Raw
 sock_seqpacket=Sequential datagram
+
 proto_=Standaard
 proto_ip=IP (Internet Protocol)
 proto_tcp=TCP (Transmission Control Protocol)
 proto_udp=TCP (Transmission Control Protocol)
+
 restart_err=Mislukt om veranderingen toe te voegen
 restart_ekill=Mislukt om een USR2 signaal te sturen naar PID $1 : $2
 restart_epid=Niet langer werkend
+
 start_err=Mislukt om xinetd te starten
 start_estart=$1 mislukt : $2
+
 defs_title=Standaard Opties
 defs_header=Standaard opties voor services
 defs_log=Xinetd log mode
@@ -113,6 +119,7 @@ defs_err=Mislukt om standaard opties op te slaan
 defs_efile=Ontbrekende of ongeldige log filenaam
 defs_esoft=Ontbrekende of ongeldige zachte limieten
 defs_ehard=Ontbrekende of ongeldige harde limieten
+
 log_create_serv=Gemaakt $2 service $1
 log_modify_serv=Gemodificeerd $2 service $1
 log_delete_serv=Verwijderd $2 service $1
@@ -123,5 +130,6 @@ log_enable=Gestarten $1 services
 log_disable=Uitgeschakelde $1 services
 log_enable_l=Gestarten services $1
 log_disable_l=Uitgeschakeld service $1
+
 config_dirdef=Xinetd configuratie file
 config_dirto=Nieuwe file in directory

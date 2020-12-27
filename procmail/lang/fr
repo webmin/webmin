@@ -24,6 +24,7 @@ index_none=Aucune action Procmail n'a encore été configurée.
 index_return=à la liste des actions
 index_env=Positionner la variable $1 à $2
 index_include=Traiter le fichier d'inclusion $1
+
 edit_title2=Édition d'une action
 edit_title1=Création d'une action
 edit_header1=Détails de l'action de remise
@@ -56,6 +57,7 @@ edit_cmode_gt=Le message est supérieur à
 edit_conddesc=Pour que l'action ci-dessus puisse être réalisée, toutes les conditions ci-dessous doivent correspondre. S'il n'y a aucune condition, l'action sera toujours exécutée.
 edit_none=Aucun
 edit_lock=Fichier spécifique
+
 save_err=Impossible d'enregistrer l'action
 save_eaction_0=Fichier à ajouter à la fin manquant
 save_eaction_1=Dossier MH dans lequel écrire manquant
@@ -66,6 +68,7 @@ save_elockfile=Nom de fichier de verrou manquant
 save_esize=Taille du fichier pour la condition $1 manquante ou invalide
 save_ere=Expression régulière pour la condition $1 manquante ou invalide
 save_eshell=Commande pour la condition $1 manquante
+
 env_title1=Création d'une variable
 env_title2=Édition d'une variable
 env_header=Variable d'environnement Procmail
@@ -73,15 +76,19 @@ env_name=Nom de la variable
 env_value=Valeur
 env_err=Impossible d'enregistrer la variable
 env_ename=Nom de variable manquant ou invalide
+
 inc_title1=Ajout d'un fichier d'inclusion
 inc_title2=Édition d'un fichier d'inclusion
 inc_header=Fichier des règles procmail incluses
 inc_inc=Fichier inclus
 inc_einc=Aucun fichier d'inclusion saisi
+
 config_eline=Ligne $1 inconnue dans $2 : $3
+
 manual_title=Édition de la configuration
 manual_desc=Cette page peut être utilisée pour modifier manuellement le fichier de configuration $1 de Procmail. Faites attention car aucune vérification de syntaxe ne sera effectuée.
 manual_edata=Aucune donnée n'a été fournie par votre navigateur !
+
 log_create_rec=Créé le destinataire dans $1
 log_delete_rec=Supprimé le destinataire dans $1
 log_modify_rec=Modifié le destinataire dans $1

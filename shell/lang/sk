@@ -6,7 +6,9 @@ index_clearcmds=Zmaž príkaz
 index_desc=Zadaj Unixový príkaz pre vykonanie do textové poľa nižšie. Príkaz <tt>cd</tt> môže byť použitý na zmenu adresára.
 index_pok=Vykonaj predchádzajúci príkaz
 index_edit=Uprav predchádzajúci
+
 acl_user=Vykonaj príkazy ako užívateľ
 acl_user_def=Súčasný Webmin užívateľ
+
 log_run=Spustený príkaz $1
 log_clear=Zmazaná história príkazov

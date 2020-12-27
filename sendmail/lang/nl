@@ -11,6 +11,7 @@ index_version2=Sendmail versie $1, config $2
 index_xversion=Sendmail versie $1
 index_version=Sendmail configuratie $1
 index_sendmail=Sendmail
+
 opts_title=Sendmail Opties
 opts_ecannot=Uw heeft geen rechten om de Sendmail opties te bewerken
 opts_ds=Verstuur uitgaande email via host
@@ -57,6 +58,7 @@ opts_qso=Sorteer email wachtrij met
 opts_priority=Prioriteit
 opts_host=Hostnaam
 opts_time=Ontvangst tijd
+
 aliases_title=Em ail Aliassen
 aliases_ecannot=U bent niet bevoegd om aliassen te bewerken
 aliases_enofile=Geen alias file is gedefinieerd in uw Sendmail configuratie
@@ -73,6 +75,7 @@ aliases_return=alias lijst
 aliases_toomany=Er zijn teveel email aliassen op uw systeem om te laten zien op deze pagina.
 aliases_go=Vind aliassen overeenkomend met :
 aliases_delete=Verwijder Geselecteerde Aliassen
+
 aform_ecannot=U bent niet bevoegd deze alias te bewerken
 aform_type0=Niets
 aform_type1=Email adres
@@ -90,11 +93,13 @@ aform_val=Alias naar
 aform_afile=Bewerk ..
 aform_return=alias
 aform_cmt=Omschrijving
+
 afile_title=Bewerk Adres File
 afile_desc=Gebruik het tekst veld hieronder om de adressen in de file $1 te bewerken.
 afile_efile=U bent niet bevoegd om $1 te bewerken.
 afile_undo=Veranderingen Ongedaan Maken
 afile_ewrite=Schrijven naar adressen file mislukte : $1
+
 ffile_title=Bewerk Filter File
 ffile_desc=Gebruik het formulier hieronder om de filter regels in de file $1 in te stellen.
 ffile_efile=U bent niet bevoegd om $1 te bewerken.
@@ -110,6 +115,7 @@ ffile_other=Anders doorsturen naar $1
 ffile_err=Mislukt om filter file op te slaan
 ffile_ematch=Ontbrekende overeenkomst
 ffile_eaction=Ontbrekend doorstuur adres
+
 rfile_title=Bewerk Auto-Antwoord File
 rfile_desc=Gebruik het tekstvak hieronder om het auto-antwoord bericht in $1 te bewerken. Het bericht mag de volgende macro's bevatten $SUBJECT, $FROM, $TO, $DATE en $BODY die automatisch worden aangevuld wanneer auto-antwoord is geactiveerd.
 rfile_desc2=U kunt ook vooraf de email kopteksten bepalen die worden toegevoegd bij een automatisch-antwoord door er regels in te zetten zoals: <br><tt>Van: foo@bar.com</tt><br><tt>Onderwerp: Op vakantie</tt><br> aan de bovenkant van het bericht, dit kunt u scheiden van de body door middel van een lege regel.
@@ -129,6 +135,7 @@ rfile_from=Van: adres voor antwoord
 rfile_auto=Automatisch (gebaseerd op ontvangers adres)
 rfile_efrom=Ontbrekend Van: adres
 rfile_fromdesc=Van: indien mogelijk altijd een adres specificeren, omdat de automatische methoden niet betrouwbaar is.
+
 asave_err=Mislukt om alias op te slaan
 asave_ecannot2=U bent niet bevoegd om deze aliassen te bewerken
 asave_ecannot=U bent niet bevoegd om deze alias te bewerken
@@ -145,9 +152,11 @@ asave_etype5=Auto-antwoord file '$1' is niet geldig
 asave_etype4none=Geen programma opgegeven
 asave_etype6=Filter file '$1' is niet geldig
 asave_esame=U bent alleen bevoegd om aliassen aan te maken met dezelfde naam als uw webmin login
+
 adelete_err=Mislukt om aliassen te verwijderen
 adelete_enone=Niets geselecteerd
 adelete_ecannot=U bent niet bevoegd de alias $1 te verwijderen
+
 cws_title=Locale Domeinen
 cws_ecannot=U bent niet bevoegd om locale domeinen te bewerken
 cws_domains=Domeinen afgehandeld door deze server
@@ -156,6 +165,7 @@ cws_desc2=Let op dat over het algemeen het niet voldoende is een domein in de li
 cws_err=Mislukt om locale domeinen op te slaan
 cws_ehost='$1' is geen geldige host of domein naam
 cws_eip='$1' is een IP adres, en niet een domein
+
 masq_title=Domein Maskerade
 masq_ecannot=U bent niet bevoegd om de maskerade te configureren
 masq_domain=Maskerade als domein
@@ -167,12 +177,14 @@ masq_err=Mislukt om domein maskerade op te slaan
 masq_edomain='$1' is geen geldig domein om te vermommen (maskerade) als
 masq_ehost='$1' is geen geldige host of domein naam
 masq_eip='$1' is een IP adres, en geen domein
+
 trusts_title=Vertrouwde Gebruikers
 trusts_ecannot=U bent niet bevoegd om vertrouwde gebruikers te bewerken
 trusts_users=Locale vertrouwde gebruikers bekend bij Sendmail
 trusts_desc=Wanneer een locale gebruiker probeert een email te versturen zal Sendmail alleen een ander <tt>Van:</tt> adres toestaan indien deze gebruiker hieronder in de lijst staat. Deze beperking is ervoor om te voorkomen dat gebruikers email versturen met een vals <tt>Van:</tt> adres.
 trusts_err=Mislukt om vertrouwde gebruikers op te slaan
 trusts_euser='$1' is geen geldige gebruiker
+
 virtusers_title=Adres Mappings
 virtusers_ecannot=U bent niet bevoegd om adres mappings te bewerken
 virtusers_efeature=Uw Sendmail configuratie heeft niet de adres mapping (<tt>virtuser</tt>) optie aanstaan. <a href='$1'>Klik hier</a> om deze Snadmail optie te bewerken.
@@ -190,6 +202,7 @@ virtusers_return=adres mapping lijst
 virtusers_toomany=Er zijn teveel adres mappings op uw systeem om te laten zien op deze pagina.
 virtusers_go=Vind adres mappings overeenkomend met :
 virtusers_delete=Verwijder Geselecteerde Adres Mappings
+
 vform_edit=Bewerk Adres Mapping
 vform_create=Maak Adres Mapping
 vform_for=Email voor
@@ -206,6 +219,7 @@ vform_err_tempfail=Tijdelijk mislukt
 vform_err_protocol=Protocol fout
 vform_end=Ga naar het einde
 vform_ecannot=U bent niet bevoegd om deze adres mapping te bewerken
+
 vsave_ecannot=U bent niet bevoegd om adres mappings te bewerken
 vsave_ecannot2=U bent niet bevoegd om deze adres mapping te bewerken
 vsave_emax=U bent niet bevoegd om meer dan $1 adres mappings te maken
@@ -221,8 +235,10 @@ vsave_eaddr='$1' is geen geldig adres
 vsave_ecannot4=U bent niet bevoegd om mappings naar domeinen te maken
 vsave_edomdom=Alleen een domein kan worden ge-mapped naar een ander domein
 vsave_ecannot5=U bent niet bevoegd om mappings te maken die een foutmelding geven
+
 vdelete_err=Mislukt om adres mappings te verwijderen
 vdelete_ecannot=U bent niet bevoegd om mapping voor $1 te verwijderen
+
 mailers_title=Domein Routing
 mailers_cannot=U bent niet bevoegd om domein routing te bewerken
 mailers_edirective=Uw Sendmail configuratie file heeft niet de noodzakelijke richtlijnen voor domein routing.
@@ -236,6 +252,7 @@ mailers_delivery=Aflevering
 mailers_to=Verstuur naar ..
 mailers_return=domein routing lijst
 mailers_delete=Verwijder Geselecteerde Domein Routes
+
 mform_edit=Bewerk Routing
 mform_create=Maak Routing
 mform_for=Email voor
@@ -259,12 +276,15 @@ mform_procmail=Procmail
 mform_mail11=DECnet email
 mform_error=Fout
 mform_ecannot=U bent niet bevoegd om domein routing te bewerken
+
 msave_ecannot=U bent niet bevoegd om domein routing te bewerken
 msave_err=Mislukt om domein routing op te slaan
 msave_edomain='$1' is geen geldige host of domein
 msave_edup=Domein routing voor '$1' is reeds gedefinieerd
+
 mdelete_err=Mislukt om domein route te verwijderen
 mdelete_ecannot=U bent niet bevoegd de route te verwijderen voor $1
+
 generics_title=Uitgaande Adressen
 generics_cannot=U bent niet bevoegd om uitgaande adressen te bewerken
 generics_econfig=Uw Sendmail configuratie file heeft niet de noodzakelijke richtlijn voor uitgaande adres mapping.
@@ -278,11 +298,13 @@ generics_return=adres mapping lijst
 generics_toomany=Er zijn teveel  uitgaande adressen op uw systeem om te laten zien op deze pagina.
 generics_go=Vind uitgaande adressen overeenkomend met :
 generics_delete=Verwijder Geselecteerde Uitgaande Adressen
+
 gform_edit=Bewerk Mapping
 gform_create=Mapping Aanmaken
 gform_from=Email van
 gform_to=Verander naar
 gform_ecannot=U bent niet bevoegd om dit uitgaande adres te bewerken
+
 gsave_ecannot=U bent niet bevoegd om uitgaande adressen te bewerken
 gsave_ecannot2=U bent niet bevoegd om dit uitgaande adres te bewerken
 gsave_ecannot3=U bent niet bevoegd om dit uitgaande adres op te slaan
@@ -291,8 +313,10 @@ gsave_efrom='$1' is geen geldig van adres
 gsave_ematch=Het van adres komt niet overeen met '$1'
 gsave_eto='$1' is geen geldig nieuw adres
 gsave_ealready=Een uitgaande adres mapping voor '$1' bestaat reeds
+
 gdelete_err=Mislukt om uitgaande adres mappings te verwijderen
 gdelete_ecannot=U bent niet bevoegd om de mapping voor $1 te verwijderen
+
 cgs_title=Uitgaande Domeinen
 cgs_ecannot=U bent niet bevoegd om uitgaande domeinen te bewerken
 cgs_header=Uitgaande adres domeinen
@@ -300,6 +324,7 @@ cgs_desc=Gescheiden van de email die verstuurd word door locale gebruikers, zal 
 cgs_err=Mislukt om uitgaande domeinen op te slaan
 cgs_ehost='$1' is geldige host of domein naam
 cgs_eip='$1' is een IP adres, en geen domein
+
 domains_title=Domein Mapping
 domains_ecannot=U bent niet bevoegd om domein mapping te bewerken
 domains_econfig=Uw Sendmail configuratie file heeft niet de noodzakelijk richtlijnen voor domein mapping.
@@ -310,17 +335,21 @@ domains_from=Van domein..
 domains_to=Naar domein..
 domains_return=domein mapping lijst
 domains_delete=Verwijder Geselecteerde Domein Mappings
+
 dform_edit=Bewerk Mapping
 dform_create=Maak een Mapping
 dform_from=Van domein
 dform_to=Naar domein
 dform_ecannot=U bent niet bevoegd om domein mapping te bewerken
+
 dsave_ecannot=U bent niet bevoegd om domein mapping te bewerken
 dsave_err=Mislukt om domein mapping op te slaan
 dsave_edomain='$1' is geen geldige domein naam
 dsave_ealready=Een domein mapping voor '$1' bestaat reeds
+
 ddelete_err=Mislukt om domein mappings te verwijderen
 ddelete_ecannot=U bent niet bevoegd om de mapping (afbeelding) te verwijderen voor $1
+
 access_title=Spam Controle
 access_ecannot=U bent niet bevoegd om spam controle te configureren.
 access_efeature=Uw Sendmail configuratie heeft niet de  spam controle (<tt>access_db</tt>) optie aanstaan. <a href='$1'>Klik hier</a> om de set-up van Sendmail opties te starten.
@@ -333,6 +362,7 @@ access_return=spam controle lijst
 access_toomany=Er zijn teveel spam controle regels op uw systeem om te laten zien op deze pagina.
 access_go=Vind spam controle regels overeenkomend met :
 access_delete=Verwijder Geselecteerde Spam Controle Regels
+
 sform_edit=Bewerk Spam Controle Regel
 sform_create=Spam Controle Regel Aanmaken
 sform_source=Email bron
@@ -354,6 +384,7 @@ sform_discard=Weiger in stilte
 sform_err=Fout code
 sform_msg=Bericht
 sform_ecannot=U bent niet bevoegd om deze spam controle regel te bewerken
+
 ssave_err=Mislukt om spam controle regel op te slaan
 ssave_etype0='$1' is geen geldig adres
 ssave_etype1='$1' is geen geldig netwerk adres
@@ -362,8 +393,10 @@ ssave_etype3='$1' is geen geldig domein
 ssave_ecode='$1' is geen geldige SMTP fout code
 ssave_ealready=Een spam controle regel voor '$1' bestaat reeds
 ssave_ecannot2=U bent niet bevoegd deze spam controle regel op te slaan
+
 sdelete_err=Mislukt om spam controle regels te verwijderen
 sdelete_ecannot=U bent niet bevoegd om de regel te verwijderen voor $1
+
 relay_title=Relais Domeinen
 relay_ecannot=U bent niet bevoegd om relais domeinen te bewerken
 relay_eversion=Alleen Sendmail versies 8.9 en hoger ondersteunen de relais domeinen optie.
@@ -372,6 +405,7 @@ relay_desc1=Buiten de uitzonderingen die in de <a href='$1'>spam controle</a> re
 relay_desc2=Indien uw systeem werkt als gateway voor diverse domeinen die niet direct bereikbaar zijn van buiten uw netwerk (met gebruik maken van de <a href='$1'>domein routing</a> optie), moeten deze domeinen allemaal hier in deze lijst staan.
 relay_err=Mislukt om relais domeinen op te slaan
 relay_edomain='$1' is geen geldige domein naam
+
 mailq_title=Email Wachtrij
 mailq_count=$1 berichten
 mailq_ecannot=U bent niet bevoegd om de email wachtrij te bekijken
@@ -401,12 +435,15 @@ mailq_search=Vind wachtrij berichten waar
 mailq_quar=Quarantaine
 mailq_refresh=Ververs Email Wachtrij
 mailq_refreshdesc=Herlaad deze pagina om de huidige status van de email wachtrij te tonen.
+
 flushq_title=Wachtrij Wissen
 flushq_desc=Forceer een vorige poging om email af te leveren met de opdracht $1 ..
 flushq_desc2=Forceer een vorige poging van de $1 geselecteerde berichten ..
 flushq_ecannot=U bent niet bevoegd om de email wachtrij te wissen
+
 searchq_title=Wachtrij Berichten Resultaten
 searchq_none=Geen wachtrij berichten gevonden.
+
 delq_err=Mislukt om bericht te verwijderen
 delq_ecannot=U bent niet bevoegd om de wachtrij te stoppen voor berichten
 delq_locked=File staat op dit moment op slot voor verzending
@@ -422,6 +459,7 @@ delq_force=Forceer verwijdering altijd
 delq_ecannot2=u kunt dit bericht niet verwijderen
 delq_rusure=Weet u zeker dat u de $1 geselecteerde berichten die in de wachtrij staan wilt verwijderen?
 delq_confirm=Verwijder Berichten
+
 boxes_title=Gebruiker's Mailboxen
 boxes_user=Gebruiker
 boxes_size=Mailbox Grote
@@ -431,6 +469,7 @@ boxes_sent=Verstuur email
 boxes_ecannot=U bent niet bevoegd om email te lezen
 boxes_toomany=Er zijn teveel gebruikers op uw systeem om al hun email boxen in een lijst te zetten.
 boxes_go=Bekijk email voor gebruiker :
+
 mail_title=Gebruiker Email
 mail_from=Van
 mail_date=Datum
@@ -471,6 +510,7 @@ mail_move=Verplaats naar :
 mail_copy=Kopieer naar :
 mail_rfc=Afzender regel
 mail_eexists=Bericht bestaat niet langer!
+
 view_title=Lees Email
 view_desc=Berichten $1 in $2
 view_desc2=Berichten $1 voor gebruiker $2
@@ -501,6 +541,7 @@ view_egone=Dit bericht bestaat niet langer
 view_afile=Bijlage naam
 view_atype=Bijlage type
 view_asize=File grote
+
 compose_title=Email samenstellen
 reply_title=Reageer op email
 forward_title=Email Doorsturen
@@ -512,6 +553,7 @@ reply_attach2=Client en server bijlagen
 reply_send=Verstuur Email
 reply_ecannot=U heeft geen rechten om email namens deze gebruiker te versturen
 reply_body=Berichten tekst
+
 send_err=Mislukt om email te versturen
 send_eto=Ontvanger adres ontbreekt
 send_efrom=Afzender adres ontbreekt
@@ -524,6 +566,7 @@ send_eattach=Bijlagen mogen maximaal $1 kB groot zijn.
 send_eperms=Gebruiker $1 heeft geen lees rechten voor $2
 send_eperms2=U heeft geen rechten om file $1 te versturen
 send_epath=Sendmail programma $1 niet gevonden.
+
 delete_title=Verwijder Email
 delete_rusure=Weet u zeker dat u de $1 geselecteerde berichten van $2 wilt verwijderen? Dit kan een tijdje duren voor een grote email file. Totdat de de verwijdering actie klaar is moet u niets doen.
 delete_rusure2=Weet u zeker dat u dit geselecteerde bericht van $2 wilt verwijderen? Dit kan een tijdje duren voor een grote email file. Totdat de de verwijdering actie klaar is moet u niets doen.
@@ -536,6 +579,7 @@ delete_emoveuser=Gebruiker om email voor te verplaatsen bestaat niet
 delete_emovecannot=U bent niet bevoegd de email te verplaatsen naar de gespecificeerde gebruiker
 delete_emovenone=Geen email geselecteerd om te verplaatsen
 delete_nobutton=Niet op de knop geklikt
+
 search_title=Zoek resultaten
 search_ecannot=U heeft geen rechten om de email van deze gebruiker te doorzoeken
 search_ematch=U moet een zoek tekst ingeven waarnaar gezocht moet worden.
@@ -549,6 +593,7 @@ search_results4=$1 email berichten komen overeen met uw zoeken ..
 search_local=In locale folders
 search_all=In alle folders
 search_eboolean=Willekeurig zoeken met gebruik van de woorden <tt>en</tt> en <tt>of</tt> worden niet ondersteund
+
 file_title=Bewerk Sendmail File
 file_desc=Gebruik de tekstbox hieronder om handmatig de Sendmail file $1 te bewerken.
 file_undo=Veranderingen Ongedaan Maken
@@ -564,6 +609,7 @@ file_emode=Onbekende mode!
 file_err=Mislukt om file te bewerken
 file_ealias=Ongeldig formaat voor aliassen file op regel : $1
 file_etab=Ongeldig formaat voor map file op regel : $1
+
 acl_opts=Mag Sendmail opties bewerken?
 acl_ports=Mag netwerk poorten bewerken?
 acl_cws=Mag locale domeinen bewerken?
@@ -630,6 +676,7 @@ acl_usersm=Gebruikers overeenkomend met
 acl_asame=Zelfde als gebruikersnaam
 acl_usersu=Met UID in reeks
 acl_spam=Spam controle adressen die deze gebruiker mag bewerken
+
 log_opts=Gewijzigde Sendmail opties
 log_ports=Gewijzigde netwerk poorten
 log_alias_create=Gemaakte alias $1
@@ -680,6 +727,7 @@ log_delete_domains=Verwijderd $1 domein mappings
 log_delete_accesses=Verwijderd $1 spam controle ingangen
 log_delete_generics=Verwijderd $1 uitgaande adressen
 log_delete_mailers=Verwijderd $1 domein routes
+
 match_from=Van: komt overeen
 match_subject=Onderwerp: komt overeen
 match_to=Naar: komt overeen
@@ -699,6 +747,7 @@ match_!status=Status komt niet overeen
 match_!body=Body komt niet overeen
 match_!size=Formaat is kleiner dan
 match_!headers=Kopteksten die niet overeenkomen
+
 features_title=Sendmail M4 Configuratie
 features_desc=Deze pagina geeft de lijst weer van alle relevante ingangen van de Sendmail M4 configuratie file $1, waarvan de actuele configuratie file $2 is opgebouwd.
 features_type=Soort ingang
@@ -718,6 +767,7 @@ features_efeatures=De Sendmail M4 configuratie basis directory $2 is niet gevond
 features_econfig=De locatie van de Sendmail M4 basis directory en M4 config file zijn nog niet gedefinieerd in uw <a href='$1'>module configuratie</a>. Indien u Sendmail heeft geinstalleerd vanuit de bron moet het zitten in de originele bron directory.
 features_move=Verplaats
 features_manual=Bewerk file handmatig
+
 feature_add=Configuratie Ingang Toevoegen
 feature_edit=Bewerk Configuratie Ingang
 feature_header=M4 configuratie ingang details
@@ -738,12 +788,15 @@ feature_emailer=De emailer $1 bestaat reeds
 feature_eostype=Het OS soort is reeds gedefinieerd als $1
 feature_manual=Bewerk M4 File
 feature_mdesc=Deze pagina staat u toe om handmatig de Sendmail M4 configuratie file $1 te bewerken. Wees voorzichtig omdat er geen syntaxis controle zal worden gedaan op uw bewerkingen.
+
 feat_access_db=Spam controle file
 feat_virtusertable=Adres Mapping
 feat_mailertable=Domein Doorsturing
 feat_genericstable=Uitgaande Adressen
 feat_domaintable=Domein Mapping
+
 mailer_local=Locale Unix aflevering
+
 build_title=Opnieuw Opbouwen Sendmail Configuratie
 build_em4=De opdracht $1 die nodig is om de Sendmail configuratie file op te bouwen is niet gevonden op uw systeem.
 build_ebuild=Opbouwen van volgende configuratie mislukte : $1
@@ -752,13 +805,16 @@ build_rusure2=Let erop dat wanneer u veranderingen heeft gemaakt in Sendmail in 
 build_ok=Ja, vervang het nu
 build_diff=De volgende veranderingen zullen gemaakt worden aan uw Sendmail configuratie file ..
 build_nodiff=Uw Sendmail configuratie file is reeds up to date.
+
 stop_err=Mislukt om Sendmail te stoppen
 stop_ecannot=U bent niet bevoegd om Sendmail te stoppen
 stop_epid=Sendmail lijkt niet te werken
 restart_epids=Kon geen Sendmail processen vinden
 restart_ekill=Mislukt signaal te sturen naar Sendmail proces : $1
+
 start_err=Mislukt om Sendmail te starten
 start_ecannot=U bent niet bevoegd om Sendmail te starten
+
 ports_title=Netwerk Poorten
 ports_name=Poort naam
 ports_addr=Luister op adres

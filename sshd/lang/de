@@ -16,8 +16,10 @@ index_type=SSH Schlüsseltyp:
 index_rsa1=RSA (für SSH v1)
 index_rsa=RSA (für SSH v2)
 index_dsa=DSA (für SSH v2)
+
 bits=Bits
 secs=Sekunden
+
 users_title=Echtheitsbestätigung
 users_header=Optionen für Anmelden und Echtheitsbestätigung
 users_expire=Warne Benutzer dass das Konto in x Tagen abläft
@@ -54,6 +56,7 @@ users_eauthkeys=Fehlende oder ungültig ausschauende authorized keys Datei
 users_maxauthtries=Maximale Login-Versuche pro Verbindung
 users_emaxauthtries=Fehlende oder keine numerische Zahl an Login Versuchen pro Verbindung
 users_chal=Verwende Challenge-Response-Authentifizierung?
+
 net_title=Netzwerk
 net_header=Netzwerk Optionen
 net_port=Verbindungen annehmen auf Port
@@ -91,6 +94,7 @@ net_eprots=Sie müssen mindestens ein Protokoll auswählen
 net_eladdress='$1' ist keine gültiger Adresse zum Lauschen auf
 net_elport='$1' ist kein gültiger Port zum Lauschen auf
 net_elisten2=Keine Adresse zum Lauschen eingegenen
+
 access_title=Zugriffssteuerung
 access_header=Zugriffssteuerungsoptionen für Netzwerk und Anmelden
 access_allowu=Erlaube nur Benutzern
@@ -108,6 +112,7 @@ access_eallowg=Keine erlaubten Gruppen eingegeben
 access_edenyg=Keine verbotenen Gruppen eingegeben
 access_eallowh=Keine erlaubten Rechner eingegeben
 access_edenyh=Keine verbotenen Rechner eingegeben
+
 misc_title=Sonstige Optionen
 misc_header=Sonstige Optionen für SSH Server
 misc_x11=Erlaube Weiterleitung von X11 Verbindungen?
@@ -131,14 +136,17 @@ misc_eumask=Fehlendes oder ungültiges 4-Ziffern Octal umask
 misc_ebits=Fehlende oder ungültige Grösse für Serverschlüssel
 misc_eregen=Fehlendes oder ungültiges Zeitinterval für Erneuerung des Serverschlüssels
 misc_epid=Fehlender Pfad zur PID Datei
+
 start_err=Der SSH Server konnte nicht gestartet werden
 apply_epid=Läuft nicht
+
 hosts_title=Client Rechner Optionen
 hosts_header=SSH Client Rechner
 hosts_none=Keine Client Rechner Optionen wurden festgelegt. Alle SSH Client Anmeldungen werden die Standardeinstellungen verwenden.
 hosts_all=Alle Rechner
 hosts_add=Optionen für Client Rechner hinzufügen.
 hosts_return=Liste der Client Rechner
+
 host_create=Host Optionen hinzufügen
 host_edit=Host Optionen bearbeiten
 host_header=Client Optionen für SSH Host
@@ -194,6 +202,7 @@ host_eprots=Sie müssen mindestens ein Protokoll auswählen
 host_proxy=Verbindung Proxy Befehl
 host_proxy_def=Nichts
 host_eproxy=Fehlender oder ungültig ausschauender Verbindungs-Proxy-Befehl
+
 log_users=Optionen für Echtheitsbestätigung geändert
 log_net=Netzwerk Optionen geändert
 log_access=Zugriffssteuerung geändert
@@ -208,6 +217,7 @@ log_stop=Gestoppter SSH Server
 log_start=Gestarteter SSH Server
 log_apply=Angewendete Konfiguration
 log_manual=Manuelles Editieren der Konfigurationsdatei $1
+
 sync_title=Einrichtung Benutzer SSH Schlüssel
 sync_desc=Diese Seite erlaubt Ihnen die automatische Einrichtung von SSH für neue Unix Benutzer auf Ihrem System. Nachdem es konfiguriert ist brauchen neue Benutzer nicht <tt>ssh-keygen</tt> auszuführen bevor diese SSH nutzen.
 sync_create=Einrichtung der SSH Schlüssel für neue Unix Benutzer?
@@ -216,9 +226,11 @@ sync_pass=Benutze Passwort oder Schlüssel Passphrase?
 sync_gnupg=Einrichtung der GNUPG Schlüssel für neue Unix Benutzer.
 sync_type=Schlüsseltyp
 sync_auto=&lt;Automatisch&gt;
+
 keys_title=Host SSH Schlüssel
 keys_desc=Diese Seite erlaubt die SSH Schlüssel für diesen Host anzuzeigen.
 keys_none=Konnte keine HostKey Einträge in Ihrer SSHD Konfiguration finden.
+
 manual_title=Editiere Konfigurationsdateien
 manual_ecannot=Es ist Ihnen nicht erlaubt die SSH Server Konfigurationsdatei zu editieren
 manual_ok=Editieren
@@ -226,5 +238,6 @@ manual_efile=Ausgewählte Datei ist nicht Teil der SSH Server konfiguration
 manual_file=Editiere Konfigurationsdatei:
 manual_edata=Nichts eingegeben!
 manual_err=Fehlgeschlagen die Konfigurationsdatei zu speichern.
+
 dknown_err=Fehlgeschlagen bekannten Host zu löschen
 dknown_enone=Nichts ausgewählt

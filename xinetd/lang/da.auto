@@ -25,6 +25,7 @@ index_estart=Kommandoen til at starte Xinetd $1 findes ikke. Måske er det ikke 
 index_noport=Ukendt
 index_enable=Aktivér valgt
 index_disable=Deaktiver valgt
+
 serv_create=Opret internet-service
 serv_edit=Rediger Internet-service
 serv_header1=Indstillinger for servicenetværk
@@ -78,19 +79,24 @@ serv_enice=Manglende eller ugyldigt flot niveau
 serv_ecps0=Manglende eller ugyldigt antal forbindelser pr. Sekund
 serv_ecps1=Manglende eller ugyldig forsinkelse
 serv_etimes=Adgangstider skal være i formatet HH: MM-HH: MM
+
 sock_stream=Strøm
 sock_dgram=datagram
 sock_raw=Rå
 sock_seqpacket=Sekventielt datagram
+
 proto_=Standard
 proto_ip=IP (Internet Protocol)
 proto_tcp=TCP (Transmission Control Protocol)
 proto_udp=UDP (User Datagram Protocol)
+
 restart_err=Kunne ikke anvende ændringer
 restart_ekill=Kunne ikke sende USR2-signal til PID $1 : $2 
 restart_epid=Kører ikke længere
+
 start_err=Kunne ikke starte xinetd
 start_estart=$1 mislykkedes : $2 
+
 defs_title=Standardindstillinger
 defs_header=Standardindstillinger for tjenester
 defs_log=Xinetd logningstilstand
@@ -115,6 +121,7 @@ defs_err=Kunne ikke gemme standardindstillinger
 defs_efile=Manglende eller ugyldig logfilnavn
 defs_esoft=Manglende eller ugyldig soft limit
 defs_ehard=Manglende eller ugyldig hard grænse
+
 log_create_serv=Oprettet $2 service $1 
 log_modify_serv=Ændret $2 service $1 
 log_delete_serv=Slet $2 service $1 
@@ -125,5 +132,6 @@ log_enable=Aktiveret $1 tjenester
 log_disable=Deaktiveret $1 tjenester
 log_enable_l=Aktiverede tjenester $1 
 log_disable_l=Handicappede tjenester $1 
+
 config_dirdef=Xinetd konfigurationsfil
 config_dirto=Ny fil i biblioteket

@@ -25,12 +25,15 @@ index_up=Avvia connessione:
 index_updesc=Seleziona una connessione dall'elenco accanto a questo pulsante e fai clic su di essa per tentare la sua istituzione immediata.
 index_nopol=Nessun criterio di rete trovato - forse la tua <a href='$1'>configurazione di rete</a> non è corretta.
 index_import=Importa connessione da file.
+
 stop_err=Impossibile arrestare il server IPsec
 start_err=Impossibile avviare il server IPsec
 restart_err=Impossibile riavviare il server IPsec
 start_elog=Sono stati registrati i seguenti errori : $1 
+
 newkey_err=Generazione chiave non riuscita
 newkey_ehost=Nome host mancante o non valido
+
 edit_title1=Crea connessione
 edit_title2=Modifica connessione
 edit_header=Dettagli sulla connessione VPN IPsec
@@ -101,6 +104,7 @@ edit_unit_s=secondi
 edit_unit_m=min
 edit_unit_h=ore
 edit_unit_d=giorni
+
 config_title=Configurazione del server
 config_header=Impostazioni del server VPN globale
 config_ifaces=Interfacce di rete per IPsec
@@ -118,6 +122,7 @@ config_nat=Abilitare l'attraversamento NAT?
 config_err=Impossibile salvare la configurazione del server
 config_eri=La vera interfaccia '$1' è elencata più di una volta
 config_enone=Non sono state specificate interfacce di rete
+
 showkey_title=Mostra chiave pubblica
 showkey_desc1=La chiave pubblica RSA mostrata di seguito deve essere copiata nella configurazione di altri sistemi che si collegano a questo, nella sezione relativa a questo host.
 showkey_desc2=I valori mostrati di seguito possono essere utilizzati per creare un record DNS KEY per questo host, in modo che altri sistemi che si connettono ad esso possano cercare la sua chiave pubblica.
@@ -125,6 +130,7 @@ showkey_flags=bandiere
 showkey_proto=Protocollo
 showkey_alg=Algoritmo
 showkey_key=Dati chiave
+
 policy_desc_block=Reti bloccate
 policy_desc_clear=Cancella reti di traffico
 policy_desc_private=Reti crittografate
@@ -145,6 +151,7 @@ policy_mask=Prefisso
 policy_err=Impossibile salvare le reti
 policy_enet=Indirizzo IP di rete non valido sulla riga $1 
 policy_emask=Lunghezza prefisso non valida sulla riga $2 
+
 save_err=Impossibile salvare la connessione
 save_ename=Nome connessione mancante o non valido
 save_ekeying=Numero mancante o non valido di tentativi di codifica
@@ -164,6 +171,7 @@ save_eleftcert=Certificato del server locale mancante o non valido
 save_erightcert=Certificato del server remoto mancante o non valido
 save_ekeylife=Durata della chiave di connessione mancante o non valida
 save_eikelifetime=Durata del canale di digitazione mancante o non valida
+
 log_create_conn=Connessione creata $1 
 log_delete_conn=Connessione eliminata $1 
 log_modify_conn=Connessione modificata $1 
@@ -182,8 +190,10 @@ log_delete_secret=Chiave segreta eliminata per $1
 log_create_secret_nn=Chiave segreta creata per qualsiasi host
 log_modify_secret_nn=Chiave segreta modificata per qualsiasi host
 log_delete_secret_nn=Chiave segreta eliminata per qualsiasi host
+
 up_title=Avvia connessione
 up_cmd=Avvio della connessione con il comando $1 ..
+
 export_title=Esporta configurazione
 export_desc=Questo modulo può essere utilizzato per esportare la sezione del file di configurazione per la connessione $1, in modo che possa essere facilmente importato sul server all'altra estremità.
 export_print=Visualizza la configurazione nel browser
@@ -193,11 +203,13 @@ export_err=Esportazione della configurazione non riuscita
 export_efile=Nome file mancante
 export_esave=Impossibile scrivere sul file : $1 
 export_done=Configurazione esportata per la connessione da $1 a $2 ($3 byte).
+
 import_title=Importa configurazione
 import_desc=Questo modulo può essere utilizzato per importare una sezione del file di configurazione per una connessione, ad esempio una creata dalla funzione di esportazione del modulo su un altro sistema.
 import_upload=Importa dal file di caricamento ..
 import_file=Importa da file lato server ..
 import_ok=Importa ora
+
 import_err=Impossibile importare la configurazione
 import_eupload=Nessun file selezionato per il caricamento
 import_efile=Nessun file sul lato server inserito
@@ -207,6 +219,7 @@ import_eclash=Una connessione chiamata $1 esiste già.
 import_done1=Aggiunta correttamente la nuova connessione IPsec $1.
 import_done2=Aggiornamento della connessione IPsec $1 aggiornata correttamente.
 import_over=Sovrascrivi la connessione esistente con lo stesso nome?
+
 secrets_title=Chiavi segrete
 secrets_none=Non sono state trovate chiavi segrete!
 secrets_name=Segreto per
@@ -220,6 +233,7 @@ secrets_mod=Modulo $1
 secrets_newpsk=Crea una nuova chiave segreta condivisa.
 secrets_newrsa=Crea una nuova chiave RSA.
 secrets_return=elenco di chiavi segrete
+
 secret_title1=Crea chiave segreta
 secret_title2=Modifica chiave segreta
 secret_header=Dettagli chiave segreta

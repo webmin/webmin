@@ -57,6 +57,7 @@ index_fmode1=Tệp máy chủ ảo $1
 index_fmode1d=Tệp mới trong thư mục máy chủ ảo $1
 index_fmode2=Tập tin được chọn ..
 index_delete=Xóa các máy chủ được chọn
+
 cvirt_ecannot=Bạn không được phép tạo một máy chủ ảo
 cvirt_err=Không thể tạo máy chủ ảo
 cvirt_eaddr1=Không có địa chỉ đã nhập
@@ -70,6 +71,7 @@ cvirt_eroot4=Không có người dùng nào được định nghĩa trong cấu 
 cvirt_etaken=Một máy chủ ảo có cùng tên và cổng đã tồn tại
 cvirt_efile=Không thể ghi vào $1 : $2 
 cvirt_emissing=Máy chủ ảo mới đã được thêm vào $1, nhưng tệp này không được Apache sử dụng. Kiểm tra <a href='$2'>cấu hình mô-đun</a> và đảm bảo 'Tệp hoặc thư mục để thêm máy chủ ảo vào' là chính xác.
+
 etype=Bạn không được phép chỉnh sửa các tùy chọn loại này
 efailed=Không thể lưu $1
 apache_apply=Áp dụng các thay đổi
@@ -80,6 +82,7 @@ default_serv=máy chủ mặc định
 bytes=byte
 eafter=Xác minh cấu hình không thành công: $1 Thay đổi chưa được lưu.
 enewline=Ký tự không hợp lệ trong giá trị
+
 global_ecannot=Bạn không được phép chỉnh sửa các tùy chọn toàn cầu
 global_mime=Danh sách các loại MIME toàn cầu
 global_mimedesc=Nhấp vào loại MIME từ danh sách bên dưới để chỉnh sửa hoặc sử dụng liên kết ở cuối trang để thêm loại mới vào danh sách.
@@ -87,6 +90,7 @@ global_type=Kiểu
 global_ext=Tiện ích mở rộng
 global_add=Thêm một loại MIME mới.
 global_return=Các loại MIME
+
 mime_ecannot=Bạn không được phép chỉnh sửa các loại mime
 mime_edit=Chỉnh sửa loại MIME
 mime_add=Thêm loại MIME
@@ -95,6 +99,7 @@ mime_type=Loại MIME
 mime_ext=Tiện ích mở rộng
 mime_err=Không thể lưu loại MIME
 mime_etype='$1' không phải là loại MIME hợp lệ
+
 virt_ecannot=Bạn không thể chỉnh sửa máy chủ ảo này
 virt_eprotocol=Bạn phải chọn ít nhất một phiên bản giao thức SSL/TLS có thể sử dụng
 virt_title=Tùy chọn máy chủ ảo
@@ -121,6 +126,7 @@ virt_path=Con đường
 virt_return=chỉ mục máy chủ
 virt_euser=Bạn không được phép thay đổi người dùng hoặc nhóm cho máy chủ ảo này.
 virt_header2=$1 cho $2
+
 vserv_title=Cấu hình máy chủ ảo
 vserv_virtualmin=Máy chủ ảo Apache này thuộc về máy chủ Virtualmin <tt>$1</tt>, vì vậy địa chỉ, cổng, thư mục cơ sở và tên máy chủ không thể thay đổi ở đây.
 vserv_ecannot=Bạn không thể chỉnh sửa địa chỉ máy chủ ảo này
@@ -140,10 +146,12 @@ vserv_eport='$1' không phải là một cổng hợp lệ
 vserv_eroot='$1' không phải là tài liệu gốc hợp lệ
 vserv_ename='$1' không phải là tên máy chủ hợp lệ
 vserv_eaddrs=Không có địa chỉ máy chủ ảo nào được nhập
+
 show_title=Chỉ thị
 show_edit=Chỉnh sửa chỉ thị Apache:
 show_these=Chỉnh sửa chỉ thị bằng tay
 show_ok=Biên tập
+
 manual_configs=Chỉnh sửa tập tin cấu hình
 manual_title=Chỉnh sửa chỉ thị
 manual_header=Sử dụng hộp văn bản bên dưới để chỉnh sửa thủ công các lệnh của Apache trong $1 áp dụng cho máy chủ, thư mục hoặc tệp ảo này.
@@ -153,6 +161,7 @@ manual_efile=Tệp cấu hình Apache không hợp lệ
 manual_etest=Đã phát hiện lỗi tệp cấu hình : $1
 manual_editfile=Chỉnh sửa tập tin cấu hình:
 manual_switch=Biên tập
+
 dir_title=Tùy chọn mỗi thư mục
 dir_proxyall=Tất cả các yêu cầu proxy
 dir_header=Đối với $1 trên $2
@@ -169,6 +178,7 @@ dir_re=Kết hợp regrec
 dir_path=Con đường
 dir_return=chỉ mục thư mục
 dir_header2=$1 cho $2
+
 type_0=Quy trình và giới hạn
 type_1=Mạng và địa chỉ
 type_2=Mô-đun Apache
@@ -190,6 +200,7 @@ type_17=Máy chủ ảo tự động
 type_18=Bộ lọc
 type_19=Ngôn ngữ
 type_20=Bản đồ hình ảnh
+
 htaccess_title=Tệp tùy chọn mỗi thư mục
 htaccess_ecannot=Bạn không thể chỉnh sửa tập tin htaccess
 htaccess_file=Các tập tin tùy chọn hiện có
@@ -205,6 +216,7 @@ htaccess_edelete=Bạn không được phép xóa tập tin tùy chọn này
 htaccess_eempty=Không có thư mục tập tin tùy chọn nào được nhập
 htaccess_eabsolute=Thư mục tệp tùy chọn phải là một đường dẫn tuyệt đối
 htaccess_err=Không thể tạo tệp tùy chọn
+
 htindex_ecannot=Bạn không được phép chỉnh sửa tập tin tùy chọn này
 htindex_title=Tệp tùy chọn mỗi thư mục
 htindex_delete=Xóa tài liệu
@@ -220,12 +232,14 @@ htindex_path=Con đường
 htindex_header=Đối với $1
 htindex_header2=$1 cho tệp tùy chọn $2
 htindex_return=chỉ mục tập tin tùy chọn
+
 htfile_title=Tùy chọn mỗi tệp
 htfile_header=Đối với $1 trong $2
 htfile_show=Hiển thị chỉ thị
 htfile_edit=Chỉnh sửa chỉ thị
 htfile_apply=Tùy chọn áp dụng cho ..
 htfile_header2=$1 cho $2
+
 reconfig_title=Cấu hình lại các mô-đun đã biết
 reconfig_ecannot=Bạn không được phép cấu hình lại apache
 reconfig_ever=Không thể tải phiên bản máy chủ Apache thực thi $1. Kiểm tra <a href='$2'>cấu hình mô-đun</a> của bạn để đảm bảo đây là đường dẫn chính xác.
@@ -233,11 +247,13 @@ reconfig_desc1=Cấu hình Apache của bạn đã thay đổi hoặc chưa đư
 reconfig_desc2=Dưới đây là danh sách tất cả các mô-đun Apache được Webmin hỗ trợ, với các mô-đun hiện được cài đặt đã chọn. Nếu bạn đang sử dụng các mô-đun được tải động thì bạn có thể cần phải chọn các mô-đun được tải động.
 reconfig_desc3=Nếu bạn không chắc chắn mô-đun nào được Apache hỗ trợ trên hệ thống của mình, chỉ cần Cấu hình vì Webmin thường có thể tự động xử lý các mô-đun được hỗ trợ.
 reconfig_ok=Cấu hình
+
 defines_title=Chỉnh sửa tham số xác định
 defines_ecannot=Bạn không được phép chỉnh sửa định nghĩa httpd
 defines_desc=Khi Apache được khởi động, các tham số có thể được truyền cho nó với tùy chọn dòng lệnh <tt>-D</tt>. Vì các tham số này có thể ảnh hưởng đến các lệnh được sử dụng trong các tệp cấu hình của bạn, Webmin cần biết những lệnh nào được truyền cho Apache khi khởi động. Nhập các tham số được sử dụng trên hệ thống của bạn vào trường văn bản bên phải.
 defines_config=Lưu ý rằng các tham số đã xác định sau đây đã được biết : $1
 defines_list=Các tham số xác định
+
 authu_ecannot='$1' không phải là tệp văn bản người dùng được phép
 authu_title=Danh sách người dùng
 authu_header=Trong tệp $1
@@ -259,6 +275,7 @@ authu_sync=Các tùy chọn bên dưới cho phép bạn định cấu hình Web
 authu_screate=Thêm người dùng khi người dùng Unix được thêm vào
 authu_sdelete=Xóa người dùng khi người dùng Unix bị xóa
 authu_smodify=Thay đổi người dùng khi người dùng Unix bị thay đổi
+
 authg_ecannot='$1' không phải là tệp văn bản nhóm được phép
 authg_title=Danh sách nhóm
 authg_header=Trong tệp $1
@@ -276,22 +293,26 @@ authg_err=Không thể lưu nhóm
 authg_euser=Không có tên nhóm được nhập
 authg_euser2=Tên nhóm không thể chứa a :
 authg_edup=Một nhóm có tên '$1' đã tồn tại
+
 stop_err=Không thể dừng apache
 stop_ecannot=Bạn không được phép dừng apache
 stop_epid=Không thể mở tệp PID $1
 stop_epid2=Tệp PID không hợp lệ $1
 stop_esig=Không thể gửi SIGTERM để xử lý $1
+
 start_err=Không thể bắt đầu apache
 start_ecannot=Bạn không được phép bắt đầu apache
 start_ecmd=$1 không thành công : $2
 start_eunknown=Lý do không rõ
 start_eafter=Apache dường như không chạy
+
 restart_err=Không thể áp dụng thay đổi
 restart_epid=Không thể mở tệp PID $1
 restart_epid2=Tệp PID không hợp lệ $1
 restart_esig=Không thể gửi SIGHUP để xử lý $1
 restart_eunknown=Lý do không rõ
 restart_ecannot=Bạn không được phép áp dụng các thay đổi
+
 acl_virts=Máy chủ ảo người dùng này có thể chỉnh sửa
 acl_vall=Tất cả các máy chủ
 acl_vsel=Đã chọn ..
@@ -314,6 +335,7 @@ acl_dirs=Chỉ thị Apache có sẵn <br><font size=-1> (Theo giới hạn lo�
 acl_dirs0=Tất cả
 acl_dirs1=Chỉ được liệt kê ..
 acl_dirs2=Tất cả ngoại trừ được liệt kê ..
+
 core_maxconc=Yêu cầu đồng thời tối đa
 core_maxkeep=Mức tối đa cho mỗi kết nối
 core_maxreq=Yêu cầu tối đa cho mỗi quy trình máy chủ
@@ -499,10 +521,12 @@ core_infilter=Áp dụng bộ lọc đầu vào cho tất cả các tệp
 core_outfilter=Áp dụng bộ lọc đầu ra cho tất cả các tệp
 core_defchar=Bộ ký tự cho tài liệu
 core_edefchar=Bộ ký tự bị thiếu hoặc không hợp lệ cho các tài liệu
+
 mod_negotiation_cache=Cache tài liệu đàm phán nội dung?
 mod_negotiation_pri=Ưu tiên ngôn ngữ cho nhiều lượt xem
 mod_negotiation_def=Mặc định
 mod_negotiation_epri=Thiếu ưu tiên ngôn ngữ
+
 mod_cgi_logname=Nhật ký CGI Script
 mod_cgi_none=không ai
 mod_cgi_elogname=Tệp nhật ký tập lệnh CGI không hợp lệ
@@ -512,6 +536,7 @@ mod_cgi_elogsize=Kích thước nhật ký CGI phải là số nguyên
 mod_cgi_post=Kích thước dữ liệu bài đăng nhập tối đa
 mod_cgi_epost=Kích thước dữ liệu bài phải là một số nguyên
 mod_cgi_eunder=Nhật ký tập lệnh CGI không thuộc thư mục được phép
+
 mod_alias_from=Từ
 mod_alias_to=Đến
 mod_alias_status=Trạng thái
@@ -535,6 +560,7 @@ mod_alias_cgi2=Bí danh thư mục CGI
 mod_alias_rcgi=Bí danh thư mục Regi CGI
 mod_alias_rcgi2=bí danh thư mục CGI regrec
 mod_alias_estatus='$1' không phải là trạng thái hợp lệ
+
 mod_proxy_proxy=Hoạt động như máy chủ proxy?
 mod_proxy_req=Yêu cầu
 mod_proxy_forw=Chuyển tiếp đến
@@ -605,11 +631,13 @@ mod_proxy_timeout=Hết thời gian yêu cầu proxy trong vài giây
 mod_proxy_etimeout=Thời gian chờ yêu cầu proxy phải là một vài giây
 mod_proxy_via=Đặt qua: tiêu đề
 mod_proxy_not=không ai
+
 mod_log_agent_default=Mặc định
 mod_log_agent_file=Tập tin ..
 mod_log_agent_program=Chương trình ..
 mod_log_agent_log=Tệp nhật ký trình duyệt
 mod_log_agent_efile=$1 không phải là tên tệp nhật ký tác nhân hợp lệ
+
 mod_log_config_common=Định dạng nhật ký chung
 mod_log_config_named=Định dạng nhật ký được đặt tên
 mod_log_config_nick=Tên nick
@@ -628,6 +656,7 @@ mod_log_config_enofilprog=Thiếu tên tệp nhật ký hoặc chương trình
 mod_log_config_efilprog='$1' không phải là tên tệp hoặc chương trình nhật ký được phép
 mod_log_config_eifset=Tùy chọn 'Nếu được đặt' không thể được sử dụng với định dạng nhật ký mặc định
 mod_log_config_edir=Thư mục cho tệp nhật ký '$1' không tồn tại
+
 mod_log_referer_default=Mặc định
 mod_log_referer_file=Tập tin ..
 mod_log_referer_program=Chương trình ..
@@ -635,7 +664,9 @@ mod_log_referer_log=Tệp nhật ký người giới thiệu
 mod_log_referer_nolog=Không đăng nhập tài liệu tham khảo từ
 mod_log_referer_elog=$1 không phải là tên tệp nhật ký của người giới thiệu hợp lệ
 mod_log_referer_edir=Nhật ký người giới thiệu không thuộc thư mục được phép
+
 mod_status_msg=Hiển thị thông tin trạng thái mở rộng
+
 mod_mime_ext=Tiện ích mở rộng
 mod_mime_xtype=Các loại MIME bổ sung
 mod_mime_mtype=Loại MIME
@@ -668,6 +699,7 @@ mod_mime_outfilter=Bộ lọc đầu ra
 mod_mime_infilter=Bộ lọc đầu vào
 mod_mime_filters=Bộ lọc để áp dụng
 mod_mime_efext=Không có tiện ích mở rộng nào được cung cấp cho (các) bộ lọc $1
+
 mod_setenvif_header=Tiêu đề
 mod_setenvif_match=Trận đấu
 mod_setenvif_case=Trường hợp phù hợp
@@ -678,11 +710,13 @@ mod_setenvif_eheader=Tiêu đề yêu cầu không hợp lệ '$1'
 mod_setenvif_eregex=Biểu thức chính quy không hợp lệ '$1'
 mod_setenvif_evar=Tên biến không hợp lệ '$1'
 mod_setenvif_clear=Thông thoáng
+
 mod_userdir_default=Mặc định
 mod_userdir_all=Tất cả người dùng có thể truy cập
 mod_userdir_except=Tất cả người dùng ngoại trừ
 mod_userdir_dir=Thư mục người dùng WWW
 mod_userdir_edir=Bạn không được phép sử dụng thư mục WWW người dùng được chỉ định
+
 mod_imap_action=Hành động sử dụng hình ảnh không chính xác
 mod_imap_default=Mặc định
 mod_imap_godefurl=Chuyển đến URL mặc định
@@ -702,8 +736,10 @@ mod_imap_refurl=URL giới thiệu
 mod_imap_url=URL. ..
 mod_imap_defbase=Cơ sở mặc định cho hình ảnh
 mod_imap_eurl='$1' không phải là một URL hợp lệ
+
 mod_speling_autocorr=Tự động sửa lỗi chính tả?
 mod_speling_default=Mặc định
+
 mod_actions_mime=Xử lý / loại MIME
 mod_actions_cgiurl=URL tập lệnh CGI
 mod_actions_mimecgi=Các hành động CGI xử lý hoặc MIME
@@ -713,10 +749,13 @@ mod_actions_httpcgi=Hành động CGI phương thức HTTP
 mod_actions_emime='$1' không phải là trình xử lý hợp lệ hoặc loại MIME
 mod_actions_ecgi='$1' không phải là tập lệnh CGI hợp lệ
 mod_actions_enometh=Không có phương pháp nào được chọn cho tập lệnh CGI '$1'
+
 mod_include_incl=Quá trình bao gồm trên các tập tin với bit thực hiện?
 mod_include_set=Có và đặt ngày sửa đổi lần cuối
 mod_include_default=Mặc định
+
 mod_dir_txt=Thư mục chỉ mục
+
 mod_autoindex_default=Mặc định
 mod_autoindex_asc=Tăng dần
 mod_autoindex_descend=Giảm dần
@@ -725,6 +764,7 @@ mod_autoindex_date=Ngày
 mod_autoindex_size=Kích thước
 mod_autoindex_desc=Sự miêu tả
 mod_autoindex_sort=Sắp xếp chỉ mục thư mục theo
+
 browsermatch_regexp=Trình duyệt regex
 browsermatch_case=Trường hợp phù hợp?
 browsermatch_var=Đặt biến
@@ -732,6 +772,7 @@ browsermatch_value=Giá trị
 browsermatch_txt=Các biến được đặt dựa trên loại trình duyệt
 browsermatch_evar=Tên biến không hợp lệ '$1'
 browsermatch_clear=Thông thoáng
+
 autoindex_fname=Tên tệp
 autoindex_mime=Loại MIME
 autoindex_enc=Mã hóa
@@ -785,9 +826,11 @@ autoindex_sicon=Hiển thị biểu tượng tập tin
 autoindex_srules=Hiển thị &lt;hr&gt; dòng
 autoindex_track=Bao gồm các ETags trong tiêu đề
 autoindex_version=Sắp xếp theo chuỗi phiên bản
+
 mod_mime_magic_file=Tập tin số ma thuật MIME
 mod_mime_magic_none=không ai
 mod_mime_magic_efile=Tên tệp ma thuật MIME không hợp lệ
+
 mod_env_var=Biến đổi
 mod_env_value=Giá trị
 mod_env_pass=Đi qua
@@ -798,6 +841,7 @@ mod_env_passall=Truyền tất cả các biến môi trường cho CGI
 mod_env_default=Mặc định
 mod_env_evar='$1' không phải là tên biến hợp lệ
 mod_env_evalue='$1' không phải là giá trị biến hợp lệ
+
 mod_access_order=Lệnh kiểm tra truy cập:
 mod_access_denyallow=Từ chối sau đó cho phép
 mod_access_allowdeny=Cho phép sau đó từ chối
@@ -820,6 +864,7 @@ mod_access_epip='$1' không phải là địa chỉ IP một phần hợp lệ
 mod_access_emask='$1' không phải là cặp mạng / netmask hợp lệ
 mod_access_ecidr='$1' không phải là cặp mạng / CIDR hợp lệ
 mod_access_evar='$1' không phải là tên biến hợp lệ
+
 mod_auth_ufile=Tệp văn bản người dùng
 mod_auth_uedit=Chỉnh sửa người dùng
 mod_auth_gfile=Tập tin văn bản nhóm
@@ -830,6 +875,7 @@ mod_auth_eudir=Tệp văn bản người dùng không thuộc thư mục đượ
 mod_auth_egdir=Tập tin văn bản nhóm không thuộc thư mục được phép
 mod_auth_eufile=Tên tệp văn bản người dùng không hợp lệ
 mod_auth_egfile=Tên tệp văn bản nhóm không hợp lệ
+
 mod_auth_dbm_ufile=Tệp DBM của người dùng
 mod_auth_dbm_gfile=Tập tin DBM nhóm
 mod_auth_dbm_pass=Thất bại cho mô-đun tiếp theo?
@@ -840,6 +886,7 @@ mod_auth_dbm_egfile=Tên tệp DBM nhóm không hợp lệ
 mod_auth_dbm_type=Kiểu cơ sở dữ liệu DBM
 mod_auth_dbm_gtype=Kiểu cơ sở dữ liệu nhóm DBM
 mod_auth_dbm_default=Định dạng DBM mặc định
+
 mod_cern_meta_process=Quá trình siêu dữ liệu tiêu đề
 mod_cern_meta_dir=Thư mục con cho các siêu tệp tiêu đề
 mod_cern_meta_default=Mặc định
@@ -847,6 +894,7 @@ mod_cern_meta_edir=Tên thư mục con metafile không hợp lệ
 mod_cern_meta_suffix=Hậu tố tệp cho siêu tệp tiêu đề
 mod_cern_meta_default2=Mặc định
 mod_cern_meta_esuffix=Hậu tố metafile không hợp lệ
+
 mod_ssl_enable=Kích hoạt SSL?
 mod_ssl_proto=Giao thức SSL
 mod_ssl_cfile=Chứng chỉ / tập tin khóa riêng
@@ -874,6 +922,7 @@ mod_ssl_passsc=Thực thi tập lệnh $1
 mod_ssl_epassph=Không nhập mật khẩu SSL
 mod_ssl_epasssc=Tập lệnh mật khẩu SSL bị thiếu hoặc không hợp lệ
 mod_ssl_ecerton=Khi SSL được bật, tệp chứng chỉ phải được chọn
+
 mod_apachessl_notssl=Từ chối truy cập SSL
 mod_apachessl_forcessl=Buộc truy cập SSL / notSSL?
 mod_apachessl_capath=Đường dẫn đến thư mục có chứng chỉ của Cơ quan chứng nhận trong
@@ -906,6 +955,7 @@ mod_apachessl_nov2=Vô hiệu hóa SSL phiên bản 2
 mod_apachessl_fake=Mô phỏng các đăng nhập xác thực cơ bản của người dùng, sử dụng tên chứng chỉ
 mod_apachessl_cdnfile=Tệp chống lại khách hàng DN được kiểm tra
 mod_apachessl_ecdnfile=Thiếu tệp đối với máy khách DN được kiểm tra
+
 log_global=Các tùy chọn $1 toàn cầu đã thay đổi
 log_virtc=Máy chủ đã tạo $1
 log_virts=Máy chủ được cấu hình lại $1
@@ -946,8 +996,10 @@ log_stop=Máy chủ web đã dừng
 log_apply=Áp dụng thay đổi
 log_manual=Tệp cấu hình được chỉnh sửa thủ công $1
 log_virts_delete=Đã xóa $1 máy chủ ảo
+
 search_title=Tìm máy chủ
 search_notfound=Không tìm thấy máy chủ ảo phù hợp
+
 mod_php_value=Giá trị cấu hình PHP
 mod_php_flag=Cờ cấu hình PHP
 mod_php_admin_value=Giá trị cấu hình quản trị PHP
@@ -956,6 +1008,7 @@ mod_php_name_header=Cài đặt
 mod_php_value_header=Giá trị
 mod_php_ename='$1' là tên không hợp lệ
 mod_php_evalue='$1' là giá trị không hợp lệ cho $2
+
 mod_vhost_alias_root=Root máy chủ ảo tự động
 mod_vhost_alias_ip=Sử dụng địa chỉ IP thay vì tên máy chủ?
 mod_vhost_alias_none=không ai
@@ -963,12 +1016,14 @@ mod_vhost_alias_script=Máy chủ ảo tự động cgi-bin
 mod_vhost_alias_eroot=Thiếu máy chủ ảo không hợp lệ hoặc không hợp lệ
 mod_vhost_alias_eroot2=Thư mục gốc của máy chủ ảo không được phép
 mod_vhost_alias_escript=Máy chủ ảo cgi-bin bị thiếu hoặc không hợp lệ
+
 worker_minspare=Chủ đề tối thiểu
 worker_maxspare=Chủ đề tối đa
 worker_eminspare=Chủ đề dự phòng tối thiểu phải là một số nguyên
 worker_emaxspare=Chủ đề dự phòng tối đa phải là một số nguyên
 worker_threads=Chủ đề cho mỗi quá trình con
 worker_ethreads=Số luồng trên mỗi tiến trình con phải là số nguyên
+
 perchild_sthreads=Chủ đề ban đầu cho mỗi quá trình con
 perchild_esthreads=Số luồng trên mỗi tiến trình con phải là số nguyên
 perchild_numservers=Số lượng quá trình con
@@ -984,6 +1039,7 @@ perchild_gid=GID
 perchild_enum=Số tiến trình phải là số nguyên khác không
 perchild_euid=UID phải là số nguyên
 perchild_egid=GID phải là số nguyên
+
 cache_enable=Chủ động?
 cache_type=Lưu trữ bộ nhớ cache
 cache_disk=Đĩa
@@ -1004,12 +1060,14 @@ cache_eminos=Kích thước đối tượng tối thiểu vào bộ đệm phả
 cache_emaxos=Kích thước đối tượng tối đa vào bộ đệm phải là một số byte
 cache_maxoc=Đối tượng tối đa để lưu trong bộ nhớ
 cache_emaxoc=Số lượng đối tượng cần lưu trong bộ nhớ phải là số nguyên
+
 suexec_su=Chạy các chương trình CGI như
 suexec_none=Người dùng từ cấu hình toàn cầu
 suexec_user=Người dùng Unix
 suexec_group=và nhóm
 suexec_euser=Người dùng bị thiếu hoặc không hợp lệ để chạy các chương trình CGI như
 suexec_egroup=Nhóm thiếu hoặc không hợp lệ để chạy các chương trình CGI như
+
 filter_name=Tên
 filter_intype=Kiểu MIME đầu vào
 filter_outtype=Loại MIME đầu ra
@@ -1019,11 +1077,13 @@ filter_in=Định nghĩa bộ lọc đầu vào
 filter_out=Định nghĩa bộ lọc đầu ra
 filter_ename=Tên bộ lọc không hợp lệ '$1'
 filter_ecmd=Lệnh thiếu cho bộ lọc '$1'
+
 cdir_err=Không thể tạo tùy chọn cho mỗi thư mục
 cdir_err2=Không thể lưu tùy chọn trên mỗi thư mục
 cdir_epath=Con đường thiếu
 cdir_eproxy=Tùy chọn proxy không thể được tạo khi bật tùy chọn regrec khớp
 cdir_ecannot=Bạn không được phép tạo tùy chọn cho mỗi thư mục cho đường dẫn đã cho
+
 mod_band_enable=Giới hạn băng thông được kích hoạt?
 mod_band_bw=Giới hạn (byte / giây)
 mod_band_client=Dành cho khách hàng
@@ -1042,24 +1102,30 @@ mod_band_epulse=Thiếu hoặc không hợp lệ khoảng cách giữa các gói
 mod_band_dir=Thư mục giới hạn băng thông tập tin dữ liệu
 mod_band_edir=Thư mục tệp dữ liệu băng thông bị thiếu hoặc không tồn tại
 mod_band_esubdir=Thiếu thư mục con yêu cầu <tt>$1</tt> trong thư mục tệp dữ liệu băng thông
+
 mod_dav_active=WebDAV được kích hoạt?
 mod_dav_inf=Cho phép độ sâu vô hạn DAV PROPFIND yêu cầu?
 mod_dav_timeout=Thời gian chờ tối thiểu DAV tính bằng giây
 mod_dav_etimeout=Hết thời gian chờ DAV bị thiếu hoặc không hợp lệ
+
 delete_err=Không thể xóa máy chủ ảo
 delete_enone=Không được chọn
 delete_ecannot=Bạn không được phép xóa máy chủ
 delete_ecannot2=Bạn không được phép chỉnh sửa máy chủ $1
+
 syslog_desc=Nhật ký lỗi Apache
+
 mod_auth_basic_pass=Vượt qua thất bại đăng nhập cơ bản cho mô-đun tiếp theo?
 mod_auth_basic_prov=Các loại tệp người dùng đăng nhập cơ bản
 mod_auth_basic_file=Tập tin văn bản
 mod_auth_basic_dbm=Cơ sở dữ liệu DBM
+
 mod_auth_digest_pass=Vượt qua thất bại đăng nhập digest để mô-đun tiếp theo?
 mod_auth_digest_prov=Thông báo loại tệp người dùng đăng nhập
 mod_auth_digest_al=Thuật toán băm
 mod_auth_digest_domain=URL và đường dẫn trong cùng một tên miền
 mod_auth_digest_edomain=Thiếu URL và đường dẫn trong cùng một tên miền
+
 mods_title=Cấu hình các mô-đun Apache
 mods_mod=Mô-đun
 mods_state=Tình trạng hiện tại

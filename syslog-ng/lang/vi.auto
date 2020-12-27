@@ -9,6 +9,7 @@ index_start=Bắt đầu Syslog-NG
 index_startdesc=Nhấp vào nút này để khởi động trình nền Syslog-NG, sử dụng cấu hình hiện tại.
 index_return=chỉ số mô-đun
 index_version=Syslog-NG $1 
+
 options_title=Tùy chọn đăng nhập
 options_header=Tùy chọn cho tất cả các tệp nhật ký
 options_secs=giây
@@ -55,6 +56,7 @@ options_esync=Thiếu hoặc không hợp lệ số lượng tin nhắn vào b�
 options_estats=Thiếu thời gian hoặc không phải là số để chờ giữa các tin nhắn thống kê
 options_elog_fifo_size=Thiếu hoặc không hợp lệ số lượng tin nhắn vào bộ đệm
 options_elog_msg_size=Kích thước thông điệp nhật ký tối đa thiếu hoặc không số
+
 destinations_title=Đăng nhập điểm đến
 destinations_name=Tên điểm đến
 destinations_type=Viết thư cho
@@ -77,6 +79,7 @@ destinations_add=Thêm một điểm đến đăng nhập mới.
 destinations_return=đăng nhập điểm đến
 destinations_desc=Nhật ký mô-đun khác
 destinations_cmd=Đầu ra từ $1 
+
 destination_header=Đăng nhập tùy chọn đích
 destination_title1=Tạo điểm đến đăng nhập
 destination_title2=Chỉnh sửa điểm đến
@@ -117,17 +120,22 @@ destination_enet_localip=Địa chỉ IP cục bộ bị thiếu hoặc không h
 destination_enet_localport=Số cổng cục bộ bị thiếu hoặc không hợp lệ
 destination_enet_host=Thiếu hoặc không hợp lệ máy chủ hoặc địa chỉ máy chủ Syslog
 destination_eunix=Thiếu tên ổ cắm Unix
+
 ddelete_err=Không thể xóa điểm đến
 ddelete_enone=Không được chọn
 ddelete_eused=Không thể xóa đích $1 vì mục tiêu nhật ký được sử dụng
+
 sdelete_err=Không thể xóa nguồn
 sdelete_enone=Không được chọn
 sdelete_eused=Nguồn nhật ký $1 không thể bị xóa, vì nó được sử dụng bởi mục tiêu nhật ký
+
 fdelete_err=Không thể xóa bộ lọc
 fdelete_enone=Không được chọn
 fdelete_eused=Bộ lọc nhật ký $1 không thể bị xóa, vì nó được sử dụng bởi mục tiêu nhật ký
+
 ldelete_err=Không thể xóa mục tiêu nhật ký
 ldelete_enone=Không được chọn
+
 filters_title=Nhật ký bộ lọc
 filters_name=Tên bộ lọc
 filters_desc=Điều kiện
@@ -144,6 +152,7 @@ filters_program=chương trình <tt>$1</tt>
 filters_match=khớp với "$1"
 filters_host=từ tên máy chủ <tt>$1</tt>
 filters_netmask=từ người gửi <tt>$1</tt>
+
 filter_title1=Tạo bộ lọc nhật ký
 filter_title2=Chỉnh sửa bộ lọc nhật ký
 filter_header=Nhật ký chi tiết đặc tả bộ lọc
@@ -169,6 +178,7 @@ filter_enet=Địa chỉ IP mạng bị thiếu hoặc không hợp lệ
 filter_emask=Netmask bị thiếu hoặc không hợp lệ
 filter_ebool=Lỗi trong biểu thức phức tạp
 filter_egone=Bộ lọc không còn tồn tại!
+
 logs_title=Đăng nhập mục tiêu
 logs_source=Nguồn
 logs_filter=Bộ lọc
@@ -177,6 +187,7 @@ logs_add=Thêm một mục tiêu đăng nhập mới.
 logs_delete=Xóa mục tiêu nhật ký đã chọn
 logs_return=mục tiêu đăng nhập
 logs_none=không ai
+
 log_title1=Tạo mục tiêu nhật ký
 log_title2=Chỉnh sửa mục tiêu nhật ký
 log_header=Đăng nhập nguồn, bộ lọc và lựa chọn đích
@@ -190,6 +201,7 @@ log_flags=Tùy chọn mục tiêu
 log_egone=Đăng nhập mục tiêu không còn tồn tại!
 log_err=Không thể lưu mục tiêu nhật ký
 log_esource=Không có nguồn nào được chọn
+
 sources_title=Đăng nhập nguồn
 sources_none=Chưa có nguồn nào được xác định!
 sources_add=Thêm một nguồn nhật ký mới.
@@ -207,6 +219,7 @@ sources_typen=Dòng mặt trời
 sources_typenw=Máy chủ nhật ký hệ thống
 sources_return=nguồn nhật ký
 sources_none2=không ai
+
 source_title1=Tạo nguồn đăng nhập
 source_title2=Chỉnh sửa nguồn đăng nhập
 source_header=Đăng nhập tùy chọn nguồn
@@ -243,15 +256,20 @@ source_door=Tên cửa
 source_esun_streams_name=Tên tệp Sun stream bị thiếu hoặc không hợp lệ
 source_edoor=Tên tập tin cửa suối bị thiếu hoặc không hợp lệ
 source_transport=Giao thức mạng
+
 view_title=Xem logfile
 view_header=$1 dòng cuối cùng của $2 
 view_empty=Tệp nhật ký trống
 view_refresh=Làm tươi
 view_filter=Chỉ hiển thị các dòng có văn bản $1 
+
 apply_err=Không thể áp dụng cấu hình
 apply_egone=Không chạy!
+
 start_err=Không thể khởi động máy chủ Syslog-NG
+
 stop_err=Không thể dừng máy chủ Syslog-NG
+
 log_create_destination=Đã tạo đích đăng nhập $1 
 log_modify_destination=Nhật ký đã sửa đổi $1 
 log_delete_destination=Đã xóa đích đăng nhập $1 

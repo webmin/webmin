@@ -12,7 +12,9 @@ main_readonly=(Modo de leitura)
 main_return=Voltar a $1
 main_unused=Módulos não utilizados
 main_refreshmods=Actualizar Módulos
+
 link_essl=O módulo Perl Net::SSLeay necessário para realizar conexões HTTPS não se encontra instalado no seu sistema.
+
 category_servers=Servidores
 category_hardware=Hardware
 category_system=Sistema
@@ -21,6 +23,7 @@ category_net=Rede
 category_syslet=Syslets
 category_cluster=Cluster
 category_info=Informação
+
 longcategory_servers=Módulos para configuração web, email, FTP e outros servidores
 longcategory_hardware=Módulos para configuração de impressora, disco e outro hardware
 longcategory_system=Módulos para utilizadores, sistemas de ficheiros, Cron jobs e outras definições de sistema
@@ -28,11 +31,13 @@ longcategory_webmin=Módulos para configuração do Webmin
 longcategory_net=Módulos para configuração de rede e outros serviços de rede
 longcategory_cluster=Módulos que podem gerir múltiplos servidores a partir de um único interface
 longcategory_info=Módulos que apresentam informação acerca do seu sistema
+
 header_webmin=Índice do Webmin
 header_module=Índice de Módulos
 header_help=Ajuda..
 header_config=Configuração de Módulos
 header_servers=Servidores Webmin
+
 index=Índice
 yes=Sim
 no=Não
@@ -58,12 +63,14 @@ cancel=Cancelar
 helpsearch=Pesquisar Docs..
 switch_remote_euser=O utilizador Unix $1 não existe.
 programname=Webmin
+
 chooser_title1=Escolher Ficheiro..
 chooser_title2=Escolher Directório..
 chooser_dir=Directório de $1
 chooser_ok=Ok
 chooser_date=Escolha Data
 chooser_eopen=Listagem falhou : $1
+
 users_title1=Seleccionar Utilizadores..
 users_title2=Seleccionar Utilizador..
 users_sel=Utilizadores Seleccionados
@@ -71,6 +78,7 @@ users_all=Todos os Utilizadores
 users_ok=Ok
 users_cancel=Cancelar
 users_clear=Limpar
+
 groups_title1=Seleccionar Grupos..
 groups_title2=Seleccionar Grupo..
 groups_all=Todos os Grupos
@@ -78,6 +86,7 @@ groups_sel=Grupos Seleccionados
 groups_ok=Ok
 groups_cancel=Cancelar
 groups_clear=Limpar
+
 modules_title1=Seleccione Módulos..
 modules_title2=Seleccione Módulo..
 modules_sel=Módulos Seleccionados
@@ -85,6 +94,7 @@ modules_all=Todos os Módulos
 modules_ok=Ok
 modules_cancel=Cancelar
 modules_clear=Limpar
+
 config_ecannot=Você não está autorizado para configurar este módulo
 config_title=Configuração
 config_dir=Para o módulo $1
@@ -95,6 +105,7 @@ config_err=Erro ao guardar configuração
 config_nochange=Não altere
 config_setto=Definir como
 config_ewebmin=Parâmetro tipo 14 apenas funciona em Webmin
+
 help_err=Erro ao apresentar ajuda
 help_epath=Caminho de ajuda inexistente ou inválido
 help_efile=Erro ao ler ficheiro de ajuda $1
@@ -102,12 +113,14 @@ help_eheader=Secção &lt;header&gt; em falta
 help_einclude=Erro ao incluir $1
 help_eif=$1 falhou : $2
 help_eexec=$1 falhou : $2
+
 referer_title=Aviso de Segurança
 referer_warn=<b>Atenção!</b> O Webmin detectou que o programa $2 foi acedido a partir do URL $1, o qual aparenta estar fora do servidor Webmin. Isto pode ser uma tentativa para enganar o seu servidor para executar um comando perigoso.
 referer_warn_unknown=<b>Atenção!</b> O Webmin detectou que o programa $1 foi acedido a partir de um URL desconhecido, o qual aparenta estar fora do servidor Webmin. Isto pode ser uma tentativa para enganar o seu servidor para executar um comando perigoso.
 referer_fix1=Se este é um link legítimo, você pode autorizar links oriundos deste URL do seguinte modo:<ul><li>Faça Login no Webmin normalmente.<li>Vá para o módulo <b>Configuração do Webmin</b>.<li>Click no icon "Trusted Referrers".<li>Escreva o $1 no campo de <b>Trusted websites</b>, e click <b>Guardar</b>.</ul>
 referer_fix2=Em alternativa, você pode configurar o Webmin para autorizar este link a partir da linha de comandos através de :<ul><li>Login como <tt>root</tt>, e edite o ficheiro <tt>/etc/webmin/config</tt>.<li>Adicione a linha <tt>referers=$1</tt> no final, ou se já existir uma linha de <tt>referers</tt>, adicione-lhe <tt>$1</tt>.<li>Guarde o ficheiro.</ul>
 referer_fix2u=Em alternativa, você pode configurar o Webmin para autorizar links de referers desconhecidos através de :<ul><li>Login como <tt>root</tt>, e edite o ficheiro <tt>/etc/webmin/config</tt>.<li>Encontre a linha <tt>referers_none=1</tt> e modifique-a para <tt>referers_none=0</tt>.<li>Guarde o ficheiro.</ul>
+
 session_header=Login no Webmin
 session_mesg=É necessário introduzir um username e password para efectuar login no servidor Webmin em $1.
 session_mesg2=É necessário introduzir um username e password para efectuar login.
@@ -119,11 +132,13 @@ session_failed=Login falhado. Por favor tente novamente.
 session_logout=Logout bem sucedido. Use o form abaixo para efectuar login novamente.
 session_timed_out=A Sessão expirou depois de $1 minutos de inactividade.
 session_save=Relembrar login permanentemente?
+
 pam_header=Login no Webmin
 pam_mesg=Você precisa de responder à pergunta abaixo para efectuar login no servidor Webmin em $1.
 pam_mesg2=Você precisa de responder à pergunta abaixo para efectuar login.
 pam_login=Continue
 pam_restart=Reiniciar
+
 acl_root=Directório Root para o seleccionador de ficheiros
 acl_otherdirs=Outros directórios visíveis no seleccionador de ficheiros
 acl_nodot=Esconder ficheiros ponto (.) no seleccionador de ficheiros?
@@ -156,6 +171,7 @@ acl_negative=Conceder permissões de novo módulo ao utilizador?
 acl_fileunix=Procurar ficheiros como utilizador Unix
 acl_sameunix=Mesmo que login de Webmin
 acl_webminsearch=Mostrar campo de pesquisa Webmin?
+
 month_1=Janeiro
 month_2=Fevereiro
 month_3=Março
@@ -168,6 +184,7 @@ month_9=Setembro
 month_10=Outubro
 month_11=Novembro
 month_12=Dezembro
+
 day_0=Domingo
 day_1=Segunda-Feira
 day_2=Terça-Feira
@@ -175,6 +192,7 @@ day_3=Quarta-Feira
 day_4=Quinta-Feira
 day_5=Sexta-Feira
 day_6=Sábado
+
 smonth_1=Jan
 smonth_2=Fev
 smonth_3=Mar
@@ -187,6 +205,7 @@ smonth_9=Set
 smonth_10=Out
 smonth_11=Nov
 smonth_12=Dez
+
 sday_0=Do
 sday_1=Sg
 sday_2=Tr
@@ -194,11 +213,14 @@ sday_3=Qa
 sday_4=Qi
 sday_5=Sx
 sday_6=Sa
+
 emodule=Acesso negado : Utilizador $1 não está autorizado a utilizar o módulo $2
 emodulecheck=O módulo $1 não se encontra disponível no seu sistema
+
 skill_high=Perito
 skill_medium=Intermédio
 skill_low=Principiante
+
 feedback_title=Webmin Feedback
 feedback_desc=Este form permite-lhe reportar bugs ou fazer sugestões aos developers do Webmin referentes a quaisquer problemas ou funcionalidades em falta que tenha encontrado. Quando é clickado o botão Enviar, os detalhes introduzidos no form serão enviados por email para $1.
 feedback_desc2=Este feedback será enviado para o developer do Webmin, não para o seu administrador de sistema, ISP ou empresa de hosting. Por favor escreva o seu feedback em inglês, mesmo que actualmente esteja a ver o Webmin em outro idioma.
@@ -227,15 +249,18 @@ feedback_to=Enviar feedback para endereços
 feedback_enoto=Não foram introduzidos endereços como destinatários do feedback
 feedback_ecannot=Você não está autorizado a enviar feedback
 feedback_ecannot2=Você não está autorizado a enviar feedback contendo ficheiros de configuração
+
 progress_size2=Descarregando $1 ($2) ..
 progress_nosize=Descarregando $1 ..
 progress_datan=Recebido $1 ($2 %)
 progress_data2n=Recebido $1
 progress_done=.. descarga completa.
 progress_incache=Encontrado $1 em cache ..
+
 readparse_cdheader=Header Content-Disposition em falta
 readparse_enc=Esperando encoding form-data, mas recebido encoding normal
 readparse_max=Informação excede o tamanho máximo de $1 bytes
+
 password_expired=A sua password expirou, e uma nova tem que ser definida.
 password_temp=Você tem que seleccionar uma nova password para substituir o seu login temporário.
 password_header=Escolha Nova Password
@@ -254,6 +279,7 @@ password_enew2=As suas passwords não são iguais
 password_epam=PAM error : $1
 password_emodpam=O módulo de perl Authen::PAM necessário para efectuar alterações de password não está instalado!
 password_enewpass=Nova password não é autorizada : $1
+
 ui_mandatory=Este campo é obrigatório
 ui_checkmandatory=Nada foi seleccionado
 ui_errors=Multiplos erros foram encontrados :
@@ -267,7 +293,9 @@ ui_edate=Data inválida
 ui_etime=Hora inválida
 ui_paging=Apresentando linhas $1 até $2 de $3
 ui_rowlabel=$2 na linha $1 :
+
 header_statusmsg=$1 fez login em $2 $3 em $4 ($5)
+
 uptracker_title=Enviando Ficheiro
 uptracker_file=Nome de Ficheiro
 uptracker_size=Tamanho
@@ -275,6 +303,7 @@ uptracker_pc=Progresso
 uptracker_eid=Nenhum ID de upload foi especificado
 uptracker_eid2=O ID de upload é inválido!
 uptracker_of=$1 de $2
+
 wsearch_title=Pesquisar $1
 wsearch_modt=Módulo
 wsearch_mtitle=Nome do módulo

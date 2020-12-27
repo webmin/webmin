@@ -25,6 +25,7 @@ index_header=Používatelia s konfiguráciou Fetchmail
 index_search=Zobraziť konfiguráciu služby Fetchmail pre:
 index_show=Šou
 index_toomany=Vo vašom systéme je príliš veľa používateľov na zobrazenie.
+
 poll_create=Pridať server
 poll_edit=Upraviť server
 poll_header=Možnosti poštového servera
@@ -64,18 +65,22 @@ poll_ecannot=Nemáte oprávnenie upravovať konfiguráciu aplikácie Fetchmail t
 poll_efile=Upravovať možno iba konfiguračné súbory fetchmailu používateľov
 poll_eusername=Používateľ neexistuje!
 poll_foruser=Pre používateľa $1 
+
 stop_err=Program Fetchmail sa nepodarilo zastaviť
 stop_ecannot=Nemáte povolenie zastaviť program Fetchmail
 start_err=Nepodarilo sa spustiť program Fetchmail
 start_einterval=Chýbajúci alebo neplatný interval kontroly
 start_ecannot=Nemáte povolenie na spustenie programu Fetchmail
+
 check_title=Kontrola serverov
 check_exec=Kontrola pošty na serveroch pomocou príkazu $1 ..
 check_ok=.. kontrola dokončená.
 check_failed=.. kontrola zlyhala!
+
 global_title=Predvolené nastavenia
 global_header=Predvolené nastavenia pre všetky servery
 global_err=Predvolené nastavenia sa nepodarilo uložiť
+
 log_create_poll_file=Server $1 bol pridaný do súboru $2 
 log_modify_poll_file=Upravený server $1 v súbore $2 
 log_delete_poll_file=Server $1 bol odstránený v súbore $2 
@@ -94,6 +99,7 @@ log_stop=Zastavený démon fetchmail
 log_create_cron=Povolená plánovaná kontrola
 log_update_cron=Upravená plánovaná kontrola
 log_delete_cron=Zakázaná plánovaná kontrola
+
 acl_users=Môže upravovať konfiguráciu fetchmail pre
 acl_all=Všetci používatelia
 acl_this=Aktuálny užívateľ webminu
@@ -101,6 +107,7 @@ acl_only=Iba používatelia
 acl_except=Všetci okrem používateľov
 acl_cron=Môžete nakonfigurovať plánovanú kontrolu?
 acl_daemon=Môžete nakonfigurovať démona Fetchmailu?
+
 cron_title=Plánovaná kontrola
 cron_desc=Táto stránka sa dá použiť na povolenie alebo zakázanie úlohy Cron na kontrolu poštových serverov v konfigurácii Fetchmail v pravidelnom rozvrhu. Použitie úlohy Cron nadradenej na spustenie démona Fetchmailu, pretože nemusí byť znovu spustené pri štarte.
 cron_header=Naplánované nastavenia aplikácie Fetchmail
@@ -119,8 +126,10 @@ cron_email=Chýbajúca alebo neplatná e-mailová adresa
 cron_euser=Chýbajúci alebo neplatný používateľ systému Unix
 cron_errors=Výstup iba v prípade chyby?
 cron_ecannot2=Nemáte povolenie konfigurovať plánovanú kontrolu
+
 user_title=Konfigurácia služby Fetchmail
 user_header=Pre používateľa $1 
 user_return=konfigurácia používateľa
+
 email_ok=Výstup služby Fetchmail
 email_failed=Chyba služby Fetchmail

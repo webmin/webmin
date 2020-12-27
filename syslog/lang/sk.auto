@@ -24,8 +24,10 @@ all=všetko
 index_view=Vyhliadka ..
 index_viewfile=Zobraziť súbor denníka:
 index_viewok=vyhliadka
+
 restart_ekill=Nepodarilo sa signalizovať proces syslog $1 : $2 
 restart_ecannot=Nemáte oprávnenie reštartovať syslog
+
 start_ecannot=Nemáte povolenie spustiť syslog
 edit_title=Upraviť systémový denník
 create_title=Pridať systémový denník
@@ -56,11 +58,13 @@ edit_tag=Iba pre program
 edit_return=podrobnosti denníka
 edit_ecannot=Nemáte povolenie upravovať nastavenia denníka
 edit_ecannot2=Nemáte oprávnenie upravovať tento denník
+
 view_title=Zobraziť denník súborov
 view_header=Posledných $1 riadkov $2 
 view_empty=Súbor denníka je prázdny
 view_refresh=Obnoviť
 view_filter=Zobraziť iba riadky s textom $1 
+
 save_err=Protokol sa nepodarilo uložiť
 save_efile='$1' nie je platný názov súboru : $2 
 save_epipe='$1' nie je platný pomenovaný kanál
@@ -80,11 +84,13 @@ save_ecannot5=Nemáte oprávnenie upravovať tento denník
 save_ecannot6=Nemáte povolené prezerať ľubovoľné denníky
 save_ecannot7=Nemáte povolenie na zobrazenie tohto denníka navyše
 save_emissing=Chýba súbor denníka na zobrazenie
+
 log_modify=Upravený protokol do $1 
 log_create=Do denníka $1 bol pridaný protokol
 log_delete=Protokol bol odstránený do $1 
 log_apply=Použité zmeny
 log_start=Spustil sa protokolovací server
+
 desc_sysmesg=Systémové správy
 desc_mail=Mail Log
 desc_auth=Protokol autentifikácie
@@ -93,6 +99,7 @@ desc_news=Denník správ NNTP
 desc_uucp=Protokol UUCP
 desc_debug=Ladenie správ
 desc_cron=Cron Job Log
+
 acl_noedit=Môžete zobraziť iba denníky?
 acl_any=Môže zobraziť ľubovoľný súbor ako protokol?
 acl_logs=Môže zobraziť a konfigurovať protokolové súbory

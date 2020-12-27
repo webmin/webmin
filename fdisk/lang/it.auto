@@ -44,6 +44,7 @@ index_dscsi=Controller SCSI $1 $2
 index_draid=Livello RAID $1 
 index_dparts=partizioni
 index_none2=Nessun disco trovato su questo sistema.
+
 bytes=byte
 megabytes=megabyte
 extended=estesa
@@ -67,6 +68,7 @@ select_promise=Prometti unità RAID $1
 select_ppart=Promessa unità RAID $1 partizione $2 
 select_nvme=Unità SSD NVME $1 unità $2 
 select_nvmepart=SSD NVME $1 unità $2 partizione $3 
+
 edit_title=Modifica partizione
 create_title=Crea partizione
 edit_ecannot=Non sei autorizzato a modificare questo disco
@@ -110,6 +112,7 @@ edit_newmount2=Mount Partition
 edit_mountas=come
 edit_mountmsg=Montare questa partizione su una nuova directory sul sistema in modo che possa essere utilizzata per archiviare i file. Un file system deve essere già stato creato sulla partizione.
 edit_mountmsg2=Montare questa partizione come memoria virtuale sul proprio sistema, per aumentare la quantità di memoria disponibile.
+
 mkfs_title=Nuovo filesystem
 mkfs_ecannot=Non sei autorizzato a creare un nuovo filesystem su questo disco
 mkfs_desc1=Facendo clic sul pulsante nella parte inferiore di questo modulo verrà creato un nuovo file system $1 sul dispositivo $2. Tutti i dati su questa partizione verranno definitivamente cancellati.
@@ -120,6 +123,7 @@ mkfs_err=Impossibile creare il file system
 mkfs_exec=Esecuzione del comando $1 ..
 mkfs_failed=.. comando fallito!
 mkfs_ok=.. comando completato.
+
 fsck_title=Ripara il filesystem
 fsck_ecannot=Non è consentito eseguire questo disco su fsck
 fsck_desc1=Facendo clic sul pulsante <tt>Ripara filesystem</tt> si tenterà di riparare il filesystem $1 danneggiato su $2 per il montaggio su $3. Se il filesystem non è danneggiato, non verranno apportate modifiche.
@@ -132,6 +136,7 @@ fsck_err3=errori trovati e corretti - riavvio necessario
 fsck_err4=errori trovati ma NON corretti
 fsck_err16=errore della riga di comando
 fsck_unknown=codice di ritorno sconosciuto $1 
+
 tunefs_title=Tune Filesystem
 tunefs_ecannot=Non sei autorizzato a mettere a punto questo filesystem
 tunefs_desc=Questo modulo consente di regolare vari parametri del filesystem $1 su $2 per il montaggio su $3. I file esistenti su questo filesystem non saranno interessati.
@@ -153,10 +158,12 @@ tunefs_err=Ottimizzazione del filesystem
 tunefs_exec=Esecuzione del comando $1 ..
 tunefs_failed=.. comando fallito!
 tunefs_ok=.. comando completato.
+
 reboot_title=Reboot
 reboot_msg=Riavvio ora ..
 reboot_ok=Riavvia ora
 reboot_why=Hai modificato la tabella delle partizioni su $1. Per rendere effettiva questa modifica, è necessario riavviare il sistema.
+
 save_err=Impossibile salvare la partizione
 save_ecannot=Non sei autorizzato a modificare questo disco
 save_estart='$1' non è un cilindro di partenza valido
@@ -165,6 +172,7 @@ save_emin=Il cilindro di partenza deve essere> = $1
 save_emax=Il cilindro finale deve essere <= $1 
 save_eminmax=Il cilindro di partenza deve essere inferiore alla fine
 save_eoverlap=Sovrapposizione rilevata con la partizione $1 (da $2 a $3)
+
 ext2_b=Misura del blocco
 ext2_f=Dimensione del frammento
 ext2_i=Byte per inode
@@ -172,6 +180,7 @@ ext2_m=Blocchi riservati
 ext2_g=Blocchi per gruppo
 ext2_c=Verificare la presenza di blocchi danneggiati?
 ext3_j=Dimensione del file journal
+
 msdos_ff=Numero di FAT
 msdos_F=Dimensione grassa
 msdos_F_other=Altro ..
@@ -180,24 +189,32 @@ msdos_n=Nome volume
 msdos_r=Voci di root
 msdos_s=Dimensione del cluster
 msdos_c=Verificare la presenza di blocchi danneggiati?
+
 minix_n=Lunghezza del nome file
 minix_i=Numero di inode
 minix_b=Numero di blocchi
 minix_c=Verificare la presenza di blocchi danneggiati?
+
 reiserfs_force=Forza la creazione del filesystem
 reiserfs_hash=Funzione hash
+
 xfs_force=Forza la creazione del filesystem
 xfs_b=Misura del blocco
+
 jfs_s=Dimensione del registro
 jfs_c=Verificare la presenza di blocchi danneggiati?
+
 btrfs_l=Dimensione foglia
 btrfs_n=Dimensione del nodo
 btrfs_s=Dimensione del settore
+
 fatx_none=Nessuna opzione disponibile per i filesystem FATX.
+
 acl_disks=Dischi che questo utente può partizionare e formattare
 acl_dall=Tutti i dischi
 acl_dsel=Selezionato ..
 acl_view=È possibile visualizzare i dischi non modificabili?
+
 hdparm_title=Modifica parametri IDE
 hdparm_on=Su
 hdparm_off=via
@@ -226,9 +243,11 @@ hdparm_performing=Esecuzione
 hdparm_buf1=Cache buffer:
 hdparm_buf2=Buffered:
 hdparm_speedres=Risultati del test di velocità
+
 blink_title=Identifica unità
 blink_desc=Il LED di attività dell'unità ora si illuminerà sessanta volte
 blink_back=Torna indietro
+
 log_modify=$1 modificato
 log_create=Creato $1 
 log_delete=$1 eliminato
@@ -236,6 +255,7 @@ log_mkfs=File system $1 creato su $2
 log_tunefs=File system $1 ottimizzato su $2 
 log_fsck=File system $1 riparato su $2 
 log_hdparm=Parametri IDE modificati per $1 
+
 fs_ext2=Vecchio nativo di Linux
 fs_minix=Minix
 fs_msdos=MS-DOS
@@ -246,9 +266,11 @@ fs_ext4=Nuovo nativo Linux
 fs_xfs=SGI
 fs_jfs=IBM Journalling
 fs_btrfs=BTR
+
 delete_title=Elimina partizione
 delete_rusure=Sei sicuro di voler eliminare $1 ($2)? I dati su questa partizione potrebbero andare persi per sempre.
 delete_ok=Cancella ora
+
 disk_title=Modifica partizioni del disco
 disk_egone=Il disco non esiste più!
 disk_no=Numero
@@ -269,11 +291,13 @@ disk_table=<b>Formato tabella delle partizioni:</b> $1
 disk_notable=<b>Formato tabella delle partizioni:</b> nessuno creato
 disk_needtable=Non è possibile creare partizioni senza una tabella delle partizioni.
 disk_return=elenco di partizioni
+
 relabel_title=Pulisci le partizioni
 relabel_warn=Sei sicuro di voler cancellare tutte le partizioni su $1 ($2) riscrivendo l'etichetta del disco? Tutti i dati e i filesystem esistenti andranno persi!
 relabel_parts=Partizioni esistenti
 relabel_noparts=Nessuno ancora creato
 relabel_table=Formato della tabella delle partizioni
 relabel_ok=Pulisci e ri-etichetta
+
 table_msdos=MS-DOS (formato di partizione standard)
 table_gpt=GPT (per dischi 2T o più grandi)

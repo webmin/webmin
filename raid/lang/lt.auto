@@ -21,6 +21,7 @@ index_mailfromnone=Numatytasis (<tt>šaknis</tt>)
 index_program=Komanda paleisti, kai aptinkama problemų
 index_programnone=Negalima bėgti
 index_monitor=Stebėjimas įjungtas?
+
 linear=Linijinis (sujungtas)
 raid0=RAID0 (dryžuotas)
 raid1=RAID1 (veidrodinis)
@@ -29,6 +30,7 @@ raid5=RAID5 (paskirstytasis paritetas)
 raid6=RAID6 (dvigubai paskirstyta paritetas)
 raid10=RAID10 (dryžuotas ir veidrodinis)
 blocks=blokai
+
 create_title=Sukurti RAID įrenginį
 create_header=RAID įrenginio parinktys
 create_device=Įrenginio failas
@@ -62,6 +64,7 @@ create_o2_layout=2 Ofsetinės kopijos
 create_n3_layout=3 šalia kopijų
 create_f3_layout=3 tolimi egzemplioriai
 create_o3_layout=3 Ofsetinės kopijos
+
 view_title=RAID įrenginys
 view_header=RAID įrenginio parinktys
 view_device=Įrenginio failas
@@ -117,6 +120,7 @@ view_mountmsg=Įveskite katalogą ir spustelėkite šį mygtuką, jei norite per
 view_mountmsg2=Spustelėkite šį mygtuką, jei norite naudoti šį RAID įrenginį virtualiajai savo sistemos atminčiai.
 view_blocks=$1 blokai
 view_sparegroup=Atsarginė grupė
+
 mkfs_title=Sukurkite failų sistemą
 mkfs_header2=Ši forma leidžia sukurti naują $2 failų sistemą $1. <b>Visi</b> esami duomenys bus ištrinti!
 mkfs_options=Naujos „Linux“ failų sistemos parinktys
@@ -124,6 +128,7 @@ mkfs_err=Nepavyko sukurti failų sistemos
 mkfs_exec=Vykdoma komanda $1.
 mkfs_failed=.. komanda nepavyko!
 mkfs_ok=.. komanda baigta.
+
 emkraid=<tt>mkraid</tt> nepavyko : $1 
 eraidstop=<tt>reidstop</tt> nepavyko : $1 
 eraidstart=<tt>raidstart</tt> nepavyko : $1 
@@ -135,6 +140,7 @@ emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
 log_create=Sukurtas $1 RAID įrenginys $2 
 log_stop=Išjungtas RAID įrenginys $1 
 log_start=Aktyvuotas RAID įrenginys $1 
@@ -147,14 +153,17 @@ log_grow=Išaugęs RAID įrenginys $1 iš viso $2 diskų
 log_convert_to_raid6=Konvertuotas RAID5 įrenginys $1 į RAID6 įrenginį
 log_convert_to_raid5=Konvertuotas RAID6 įrenginys $1 į RAID5 įrenginį
 log_notif=Atnaujintos RAID problemos pranešimo parinktys
+
 notif_err=Nepavyko išsaugoti RAID problemos pranešimo parinkčių
 notif_emailaddr=Trūksta arba netinkamas pranešimo adresas
 notif_emailfrom=Trūksta arba netinkamas adresas
 notif_eprogram=Trūksta programos arba jos nėra
+
 delete_title=Ištrinkite RAID masyvą
 delete_rusure=Ar tikrai norite ištrinti RAID masyvą $1, kuris naudoja $2 disko vietos?
 delete_ok=Taip, ištrinti
 delete_eidx=Nepasirinktas RAID masyvas!
+
 remove_title=Pašalinkite skaidinį iš RAID masyvo
 remove_rusure=Ar tikrai norite pašalinti RAID masyvo $1 skaidinį $2 ?
 remove_ok=Taip, Pašalinti

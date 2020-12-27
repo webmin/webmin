@@ -3,8 +3,10 @@ index_clink=可能未安装，或者您的<a href='$1'>模块配置</a>不正确
 index_return=模块索引
 index_atboot=从启动开始？
 index_atbootdesc=更改此选项可控制是否在引导时启动iSCSI客户端。从iSCSI服务器挂载的文件系统要自动挂载，这是必需的。
+
 check_econfig=在系统上找不到iSCSI客户端配置文件 $1。
 check_eiscsiadm=在系统上找不到iSCSI客户端管理程序 $1。
+
 auth_title=验证选项
 auth_header=iSCSI客户端和服务器身份验证
 auth_name=本地系统启动器名称
@@ -29,6 +31,7 @@ auth_edpassword=缺少服务器的发现密码
 auth_edusername_in=客户端缺少发现用户名
 auth_edpassword_in=客户端缺少发现密码
 auth_egen=无法生成新名称！
+
 timeout_title=iSCSI超时
 timeout_header=iSCSI客户端超时选项
 timeout_timeout=SCSI命令失败之前需要等待的时间
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=失败之前等待ping的时间不足或非数字
 timeout_eabort_timeout=失败之前等待中止响应的时间不足或非数字
 timeout_elu_reset_timeout=失败之前等待逻辑单元响应的时间丢失或非数字
 timeout_etgt_reset_timeout=失败之前等待目标响应的时间不足或非数字
+
 iscsi_title=iSCSI选项
 iscsi_header=其他iSCSI选项
 iscsi_startup=在启动时连接会话？
@@ -62,6 +66,7 @@ iscsi_err=无法保存iSCSI选项
 iscsi_eretry=缺少或非数字的重试登录次数
 iscsi_ecmds=每个会话排队的最大命令缺失或非数字
 iscsi_equeue=每个设备排队的最大命令缺失或非数字
+
 ifaces_title=iSCSI接口
 ifaces_elist=无法列出接口： $1
 ifaces_name=接口名称
@@ -78,11 +83,13 @@ ifaces_hwaddress=MAC地址
 ifaces_ifacename=源接口
 ifaces_ipaddressdef=自动
 ifaces_notset=自动
+
 iadd_err=添加界面失败
 iadd_eclash=名为 $1的接口已存在
 iadd_eipaddress=缺少或无效的源IP地址
 iadd_ehwaddress=MAC地址丢失或无效
 iadd_ename=接口名称丢失或包含无效字符
+
 difaces_err=删除接口失败
 difaces_enone=未选择
 difaces_edelete=删除接口 $1失败： $2
@@ -93,6 +100,7 @@ difaces_confirm=删除接口
 difaces_target=iSCSI目标
 difaces_ip=iSCSI服务器
 difaces_users=使用这些接口的某些连接当前处于活动状态，并且在删除接口后将无法运行：
+
 conns_title=iSCSI连接
 conns_elist=无法列出连接： $1
 conns_ip=服务器IP
@@ -113,6 +121,7 @@ conns_return=连接列表
 conns_iface=iSCSI介面
 conns_ifacedef=自动选择
 conns_ifaceerr=无法获取接口： $1
+
 add_title=添加iSCSI连接
 add_err=添加iSCSI连接失败
 add_ehost=主机名丢失或无法解析
@@ -129,6 +138,7 @@ add_on=$2上的 $1
 add_auth=登录服务器
 add_auth1=使用默认身份验证方法
 add_auth0=使用方法 $1以 $2的密码登录 $2
+
 dconns_err=无法断开连接
 dconns_enone=未选择
 dconns_edelete=从主机 $1删除目标 $2失败： $3
@@ -142,6 +152,7 @@ dconns_use=使用者
 dconns_size=分区大小
 dconns_confirm=删除连接
 dconns_unused=没用过
+
 vconn_title=iSCSI连接
 vconn_egone=所选的连接不再存在！
 vconn_header=iSCSI连接详细信息
@@ -160,8 +171,10 @@ vconn_device3=恒定的设备名称
 vconn_delete=断开连接
 vconn_users=当前用户
 vconn_size=磁碟大小
+
 atboot_err=无法在启动时启用
 atboot_einit=不存在名为 $1的引导操作
+
 log_auth=保存的身份验证选项
 log_timeout=保存的超时选项
 log_iscsi=保存的iSCSI选项

@@ -32,6 +32,7 @@ mail_mark1=阅读
 mail_mark2=特别
 mail_forward=转发已选择的
 mail_rfc=寄件人行
+
 view_title=阅读邮件
 view_desc=$2中的邮件$1
 view_desc2=用户$2的邮件$1
@@ -54,7 +55,9 @@ view_mark1=阅读
 view_mark2=特别
 view_return=原件
 view_sub=带有附件的邮件
+
 compose_title=编写邮件
+
 reply_title=回复邮件
 forward_title=转发邮件
 reply_headers=邮件头
@@ -63,6 +66,7 @@ reply_mailforward=已转发的邮件
 reply_attach2=客户端和服务器的附件
 reply_send=发送
 reply_ecannot=您没有以这个用户的身份发送邮件的权限
+
 send_err=无法发送邮件
 send_eto=未输入“发往”地址
 send_efrom=丢失“来自”地址
@@ -74,15 +78,18 @@ send_eattach=附件大小总量不能超过 $1 kB。
 send_eperms=用户 $1 不能阅读 $2
 send_eperms2=您没有发送文件$1的权限
 send_epath=Sendmail程序 $1不存在。
+
 delete_ecannot=您没有删除这个用户的邮件的权限
 delete_enone=没选择要删除的邮件
 delete_emnone=没有选择要标记的邮件
+
 search_title=搜索结果
 search_ecannot=您没有搜索该用户的邮件的权限
 search_ematch=您必须再次输入匹配的文本。
 search_none=找不到邮件。
 search_results2=$1邮件匹配$2
 search_results3=$1邮件不匹配$2
+
 acl_none=无
 acl_same=同名的用户
 acl_all=所有
@@ -102,5 +109,6 @@ acl_sent=在邮箱中储存已发送的邮件
 acl_canattach=可以粘附服务器文件吗？
 acl_usersm=匹配的用户
 acl_asame=与用户相同
+
 log_delmail=已从 $2 删除 $1邮件 
 log_send=已发送邮件到 $1

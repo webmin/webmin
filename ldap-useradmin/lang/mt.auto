@@ -19,10 +19,13 @@ index_samba=Samba?
 index_cyrus=IMAP?
 index_users=Utenti LDAP
 index_groups=Gruppi LDAP
+
 imap_econn=Ma rnexxielux jaqbad mas-server IMAP $1 
 imap_elogin=Naqset milli tidħol mas-server IMAP $1 bħala $2 : $3 
 conn_eldap_host=L-ebda fajl ta 'konfigurazzjoni tal-klijent LDAP ma nstab fis-sistema tiegħek, għalhekk is-server LDAP għandu jkun issettjat fuq il-paġna tal-Modulu ta' Konfigurazzjoni
 conn_elogin=L-ebda fajl ta 'konfigurazzjoni tal-klijent LDAP ma nstab fis-sistema tiegħek, għalhekk il-login LDAP għandu jkun issettjat fuq il-paġna tal-Modulu ta' Konfigurazzjoni
+conn_efile_open=Ma setax jiftaħ il-fajl tal-kredenzjali tal-irbit LDAP:
+
 uedit_cap=Kapaċitajiet tal-Utent
 uedit_samba=Samba login?
 uedit_cyrus=Login fis-server IMAP?
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=Aġġornament tal-Last Password
 uedit_sambapwdcanchange=Il-password tista 'tinbidel
 uedit_sambabadpasswordcount=Għadd ħażin ta 'password
 uedit_sambaacctflags=Bnadar tal-kont
+
 usave_eadd=Naqas milli jżid utent fid-database LDAP : $1 
 usave_emod=Ma rnexxielux jimmodifika l-utent fid-database LDAP : $1 
 usave_emoddn=Ma rnexxielux isemmi l-utent fid-database LDAP : $1 
@@ -66,26 +70,33 @@ usave_eattrdupu=L-utent $1 diġà qed juża l- $2 $3
 usave_eattrdupg=Il-grupp $1 diġà qed juża l- $2 $3 
 usave_ereal=Nieqes l-isem veru
 usave_equota=Kwota IMAP nieqsa jew invalida
+
 search_err=It-tfittxija għal $1 taħt $2 falliet : $3 
+
 gedit_dn=LDAP DN tal-Grupp
 gedit_return=dettalji tal-grupp
 gedit_cap=Kapaċitajiet tal-Grupp
 gedit_samba=Samba grupp?
+
 gsave_egone=Grupp m'għadux jeżisti!
 gsave_edelete=Ma rnexxielux jitħassar grupp mid-database LDAP : $1 
 gsave_eadd=Naqset milli żżid grupp mad-database LDAP : $1 
 gsave_emod=Ma rnexxiex timmodifika l-grupp fid-database LDAP : $1 
 gsave_emoddn=Ma rnexxielux isemmi grupp fid-database LDAP : $1 
+
 gdel_group=Tħassar id-dħul tal-grupp LDAP ..
+
 udel_pass=Tħassar id-dħul ta 'l-utent LDAP ..
 udel_book=Ħassar mill-addressbook ..
 udel_imap=Tħassir ta 'folder IMAP ..
 udel_warnimap=Il-kaxxa postali eżistenti se titħassar meta tħassar id-direttorju tad-dar!
 udel_failed=.. naqas!  : $1 
+
 raw_title=Attributi LDAP
 raw_name=Isem tal-attribut
 raw_value=Valuri
 raw_for=Għal $1 
+
 batch_samba=Oħloq kont Samba għal utenti ġodda?
 batch_imap=Oħloq kont IMAP għal utenti ġodda?
 batch_descafter3=Fil-linji <b>joħolqu</b> u <b>jimmodifikaw</b>, int tista 'tehmeż kampijiet żejda li fihom attributi LDAP f' <i>isem</i> = <i>valur</i>, għal jiġi assenjat lill-utenti l-ġodda jew modifikati.

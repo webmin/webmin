@@ -4,6 +4,7 @@ index_none=Oraindik ez dira zonak zehaztu.
 index_add=Gehitu zona berri bat.
 index_return=zona zerrenda
 index_zones=Dauden zonak
+
 edit_title=Editatu gunea
 edit_common=Zonaren konfigurazio orokorra
 edit_name=Zonaren izena
@@ -57,20 +58,26 @@ edit_attrnone=Oraindik ez dira atributu generikoak definitu.
 edit_attradd=Gehitu atributu generiko berria.
 edit_webmin=Ireki Webmin
 edit_brand=Marka
+
 ui_cancel=Utzi
+
 save_err=Huts egin du zona gordetzean
 save_epool=Biltegia falta edo baliogabea
 save_ewebmin=Webmin ez da zona honetan exekutatzen
+
 reboot_title=Berrabiarazi gunea
 reboot_rusure=Ziur $1 zona berrabiarazi nahi duzula? Bertan exekutatzen diren prozesu guztiak berrabiarazi egingo dira.
 reboot_err=Ezin izan da zona berrabiarazi
 reboot_doing=Berrabiarazten ari den zona ..
+
 reboot_failed=.. huts egin du :
 reboot_ok=.. osatu.
+
 halt_title=Itzali Zona
 halt_rusure=Ziur $1 zona itxi nahi duzula? Bertan martxan dauden prozesu guztiak eten egingo dira.
 halt_err=Huts egin du itzaltzeko gunea
 halt_doing=Orain zona itxi egiten ..
+
 boot_title=Bootup Zone
 boot_err=Huts egin du abiarazteko zonan
 boot_doing=Orain abiarazi zona ..
@@ -78,10 +85,12 @@ delete_title=Ezabatu zona
 delete_rusure=Ziur $1 zona ezabatu nahi duzula? Bere fitxategi sistema pribatuetako fitxategi guztiak galduko dira.
 delete_err=Ezin izan da eremua ezabatu
 delete_doing=Orain gunea ezabatzen da ..
+
 uninstall_title=Ez instalatu sistema
 uninstall_rusure=Ziur sistemako softwarea $1 gunetik desinstalatu nahi duzula? Bere fitxategi sistema pribatuetako fitxategi guztiak galduko dira.
 uninstall_err=Huts egin du sistematik softwarea ez instalatzeak zonatik
 uninstall_doing=Orain instalatzen ez den sistema gunetik ..
+
 install_title=Instalatu Sistema
 install_doing=Orain sistema instalatzen zonan ..
 net_title1=Sortu sareko interfazea
@@ -96,6 +105,7 @@ net_enetmask=Netmaska baliogabea
 net_eaddress=IP helbide baliogabea
 net_egone=Interfazea jada ez dago!
 net_eclash=IP helbide bera duen sareko interfazea dagoeneko zona honetan
+
 pkg_title1=Gehitu Paketeen Direktorioa
 pkg_title2=Editatu Paketeen direktorio
 pkg_header=Heredatu paketeen direktorioaren xehetasunak
@@ -107,6 +117,7 @@ pkg_eclash=Paketeen direktorioa dagoeneko badago zonalde honetan
 pkg_inherit=Eremu globaleko paketeak
 pkg_inherit_yes=Bai (erro urriko eremua)
 pkg_inherit_no=Ez (erro osoa)
+
 fs_title1=Sortu fitxategi sistema
 fs_title2=Editatu fitxategi-sistema
 fs_header=Fitxategi sistemaren xehetasun osagarriak
@@ -128,6 +139,7 @@ fs_eoptions=Muntatzeko aukera baliogabeak (ro, nosuid bezalako komaz bereizitako
 fs_egone=Fitxategi-sistema ez dago jada!
 fs_mount=Muntatu ondoren sortu?
 fs_eclash=Direktorio bera erabiltzen duen fitxategi-sistema dagoeneko zona honetan
+
 rctl_title1=Sortu baliabideen kontrola
 rctl_title2=Editatu baliabideen kontrola
 rctl_header=Baliabideen kontrol mota eta mugak
@@ -148,6 +160,7 @@ rctl_elimit=Zenbaki bat ez
 rctl_eaction=Ez da seinalerik hautatu $1 errenkadan
 rctl_evalues=Ez da mugarik sartu
 rctl_eclash=Baliabide beraren kontrola dagoeneko zona horretan
+
 attr_title1=Sortu atributu generikoa
 attr_title2=Editatu Ezaugarri Generikoa
 attr_header=Zona generikoaren atributuen xehetasunak
@@ -165,6 +178,7 @@ attr_euint=Balioa ez da zenbaki oso positiboa
 attr_eboolean=Balioa ez da "egia" edo "faltsua"
 attr_egone=Atributua jada ez dago!
 attr_eclash=Izen berdina duen atributu bat dagoeneko dago zonalde honetan
+
 status_running=carrera
 status_installed=gelditu
 status_configured=Instalatu gabe
@@ -172,13 +186,16 @@ status_incomplete=Instalatuta egotea
 status_ready=prest
 status_down=Down
 status_shutting_down=Itzultzea
+
 list_name=Zonaren izena
 list_id=NANa.
 list_path=Zona direktorio
 list_status=Egoera
 list_actions=Ekintzak
+
 zone_in=$1 zonaldean
 pool_none=Bat ere ez
+
 create_title=Sortu Zona
 create_header=Zonaren xehetasun berriak
 create_path=Zona fitxategien direktorio
@@ -239,6 +256,7 @@ create_erouter=Falta edo router bidezko IP helbide lehenetsia
 create_removingpkgs=oinordetzako paketeen direktorioak ezabatzen. ..
 create_brand=Marka
 create_brandmsg=Marka eremua
+
 log_create_zone=$1 zona sortua
 log_delete_zone=$1 zona ezabatu da
 log_save_zone=Konfigurazio aldatua $1 zonarako
@@ -262,6 +280,7 @@ log_delete_rctl=$1 baliabideen kontrola ezabatu da $2 eremuan
 log_create_attr=$1 atributu generikoa sortu da $2 zonaldean
 log_modify_attr=$1 atributu generikoa aldatu du $2 zonaldean
 log_delete_attr=$1 atributu generikoa ezabatu da $2 eremuan
+
 webmin_eperl=Perl ez dago $1 ean instalatuta
 webmin_eroot=$1 direktorio ez dago edo ez du Webmin.
 webmin_title=Instalatu Webmin

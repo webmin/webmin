@@ -10,6 +10,7 @@ index_hosts=Hosts
 index_cmd=Befehl
 index_delete=Lösche Ausgewählte
 index_none=Nichts
+
 edit_title1allow=Erstelle akzeptierte Regel
 edit_title2allow=Editiere akzeptierte Regel
 edit_title1deny=Erstelle verbietende Regel
@@ -22,9 +23,11 @@ edit_hosts=Entfernte Hosts
 edit_hostsexcept=Ausgenommene Hosts
 edit_cmd=Shell Befehle
 edit_efound=Dämon '$1' wurde nicht in der xinetd Konfiguration gefunden.
+
 save_errtitle=Fehler beim Speichern der Regel
 save_ehost=Hosteingaben enthalten ungültige Zeichen
 save_ecmd=Befehlseingaben enthalten ungültige Zeichen
 save_eservice=Daemonname enthält fehlerhafte Zeichen
+
 del_errtitle=Fehler beim Löschen von Regeln
 del_enone=Keine Regeln zum Löschen markiert

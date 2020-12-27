@@ -7,6 +7,7 @@ index_none=لم يتم تحديد أي صادرات NFS حتى الآن.
 index_apply=تطبيق التكوين
 index_applydesc=انقر فوق هذا الزر لجعل جميع عمليات التصدير المذكورة أعلاه نشطة ، مع خيارات تكوينها.
 index_return=قائمة الصادرات
+
 edit_title1=إنشاء تصدير
 edit_title2=تحرير التصدير
 edit_header=تفاصيل التصدير
@@ -24,12 +25,14 @@ edit_access=وصول جبل
 edit_all=جميع المضيفين
 edit_sel=المضيفون المدرجون ..
 edit_none=لا مضيفين
+
 save_err=فشل في حفظ التصدير
 save_edir=دليل مفقود أو غير موجود للتصدير
 save_eanon=مستخدم جذر مفقود أو غير صالح
 save_erw=لم يتم إدخال مضيفي القراءة والكتابة
 save_eroot=لم يتم إدخال مضيفي وصول إلى ملف الجذر
 save_eaccess=لم يتم إدخال مضيفي وصول التحميل
+
 log_create_export=تم إنشاء تصدير$1
 log_delete_export=تصدير محذوف لـ$1
 log_modify_export=تصدير معدل$1

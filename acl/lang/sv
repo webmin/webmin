@@ -22,6 +22,7 @@ index_unix=Konfigurera Unix användar verifiering
 index_sessions=Visa inloggade sessioner
 index_rbac=Ställ in RBÅK
 index_delete=Ta Bort Valda
+
 edit_title=Ändra Webmin-användare
 edit_title2=Skapa ny Webmin-användare
 edit_readonly=Denna Webmin användare borde inte ändras eftersom den är styrd av $1 modulen. <a href='$2'>Klicka här</a> för att gå förbi denna varning och ändra användaren ändå - men var medveten om att alla manuella ändringar kan bli överskriven!
@@ -94,6 +95,7 @@ edit_ui=Användargränssnitts val
 edit_security=Säkerhet och begränsnings val.
 edit_mods=Tillgängliga Webmin moduler.
 edit_modsg=Tillgängliga Webmin moduler 
+
 save_err=Det gick inte att spara användare
 save_ename='$1' är inget giltigt användarnamn
 save_enamewebmin=Användarnamnet 'webmin' är reserverat för internt bruk
@@ -120,10 +122,12 @@ save_elogouttime=Saknad eller icke-numrerisk overksamhets logga ut tid
 save_edays=Inga dagar att tillåta vald
 save_ehours=Saknad eller felaktiga tider att tillåta
 save_ehours2=Start tid att tillåta måste vara före slutet
+
 delete_err=Det gick inte att radera användare
 delete_eself=Du får inte radera dig själv
 delete_ecannot=Du får inte radera användare
 delete_euser=Du får inte radera denna användare
+
 cert_title=Certifikatbegäran
 cert_issue=Skapa certifikat
 cert_header=Uppgifter om nytt certifikat
@@ -142,6 +146,7 @@ cert_install=Installera ditt certifikat till webbläsaren
 cert_ekey=Din browser genererade ingen SSL-nyckel - möjligen stödjer den inte SSL-certifikat.
 cert_eca=Det gick inte att kontakta en pålitlig tredjepart: $1
 cert_already=Varning: du använder redan certifikat $1.
+
 acl_title=Åtkomstkontroll för moduler
 acl_title2=För $1 i $2
 acl_title3=För grupp $1 på $2
@@ -150,6 +155,7 @@ acl_config=Ändra modulkonfigurering?
 acl_reset=Ställer Om Till Full Kontroll
 acl_rbac=Få åtkomst kontroll inställningar från RBÅK?
 acl_rbacyes=Ja (åsidosätter inställningar under)
+
 acl_uall=Alla användare
 acl_uthis=Denna användare
 acl_usel=Angivna ...
@@ -187,6 +193,7 @@ acl_theme=Kan ändra personliga teman?
 acl_ips=Kan ändra IP åtkomst kontroll
 acl_switch=Kan byta till andra användare?
 acl_times=Kan ändra tillåtna logga in tider?
+
 log_modify=Ändrade Webmin-användare $1
 log_rename=Bytte namn på Webmin-användare $1 till $2
 log_create=Skapade Webmin-användare $1
@@ -203,6 +210,7 @@ log_switch=Bytt till Webmin användare $1
 log_delete_users=Borttagna $1 Webmin användare
 log_delete_groups=Borttagna $1 Webmin grupper
 log_pass=Ändrat lösenord restriktioner
+
 gedit_ecannot=Du får inte ändra några grupper
 gedit_title=Ändra Webmin-grupp
 gedit_title2=Skapa Webmin-grupp
@@ -210,6 +218,7 @@ gedit_group=Gruppnamn
 gedit_rights=Åtkomsträttigheter för Webmin-grupp
 gedit_modules=Medlemsmoduler
 gedit_members=Medlems användare och grupper
+
 gdelete_err=Det gick inte att ta bort gruppen
 gdelete_ecannot=Du får inte ta bort grupper
 gdelete_euser=Du får inte ta bort din egen grupp
@@ -217,10 +226,12 @@ gdelete_esub=Grupper med undergrupper kan inte bli bort tagna
 gdelete_title=Ta bort grupp
 gdelete_desc=Vill du verkligen ta bort gruppen $1 och dess medlemmar, användarna $2 ?
 gdelete_ok=Ta bort grupp
+
 gsave_err=Det gick inte att spara gruppen
 gsave_ename=Gruppnamn saknas eller är ogiltigt
 gsave_enamewebmin=Grupp namnet 'webmin' är reserverad för inre användning
 gsave_edup=Gruppnamnet används redan
+
 convert_title=Konvertera Användare
 convert_ecannot=Du är inte tillåten att konvertera Unix användare
 convert_nogroups=Ingen We3bmin grupp har blivit definierade på ditt system. Åtminstone en grupp måste skapas före konverteringen, i ordning för att tillåtelse till konverterad användare.
@@ -244,6 +255,7 @@ convert_exists=$1 existerar redan
 convert_invalid=$1 är inte en giltig Webmin användare
 convert_added=$1 blir tillagd
 convert_msg=Konverterar Unix användare...
+
 sync_title=Unix Användar Synkronisering
 sync_desc=Detta formulär tillåter dig att konfigurera en automatisk synkronisering av Unix användare skapade genom Webmin och anvädare på denna modul.
 sync_nogroups=Inga Webmin grupper har blivit definierade på ditt system. Åtminstone en grupp måste bli skapad för att sätta åtkomlighet för skapad användare.
@@ -253,6 +265,7 @@ sync_delete=Ta bort matchande Webmin användare när en Unix användare tas bort
 sync_group=Ange nya användare till Webmin grupp
 sync_unix=Sätt lösenord för nya användare till Unix verifiering.
 sync_ecannot=Du är inte tillåten att konfigurera användar synkronisering.
+
 unix_title=Unix Användar Verifiering
 unix_err=Misslyckades att spar Unix verifieringen
 unix_desc=Denna sida tillåter dig att konfigurera Webmin att validera inloggnings försök mot systemets användar lista och PAM. Det kan vara användbart om du har ett stort antal Unix användare, som du vill ge ttillträde till Webmin.
@@ -282,26 +295,31 @@ unix_sudo=Tillåt användare som kan köra alla komandon via <tt>sudo</tt> att l
 unix_pamany=Behandla inloggningar som passerat PAM validering som $1
 unix_esudo=$1 kommandot är inte installerad
 unix_esudomod=Perl modulen $1 behövd för <tt>sudo</tt> verifiering är inte installerad
+
 sessions_title=Aktuella Inloggade Sessiner
 sessions_id=Sessions ID
 sessions_user=Webmin användare
 sessions_login=Inloggad på
 sessions_host=IP address
 sessions_lview=Visa Loggboken
+
 hide_title=Göm oanvända Moduler
 hide_desc=Fäljande moduler kommer att bli borttagna från modul åtkomst listan för $1 eftersom deras tillhörande servrar inte är installerade på detta system ..
 hide_ok=Göm Moduler Nu
 hide_none=Inget att dölja - $1 har inte åtkomst till någon av modulerna som tillhör icke installerade servrar på detta system.
 hide_desc2=Var medveten om att dessa moduler kommer inte att återkomma automatiskt om tillhörande server blir installerad. Du kommer att måsta bevilja åtkomst manuellt för denna modul.
 hide_clone=(Klona $1)
+
 switch_euser=Du är inte tillåten att byta till denna användare
 switch_eold=Inga Existerande sessioner är funnen!
+
 rbac_title=Ställ in RBÅK
 rbac_desc=Webmin's RBÅK integration bereder en väg för modul ach ACL tillåtelse att bli bestämd från RBÅK (Roll Baserad Åtkomst Kontroll) databas, snarare än Webmin's egen konfiguration filer. När RBÅK stöd är möjliggjord, alla användare för vilka som <b>$edit_rbacdeny1</b> val är utvald kommer att ha denna kompetens bestämd av RBÅK snarare än Webmin's egen kontroll inställning.
 rbac_esolaris=RBÅK har endast stöd på Solaris för tillfället, och kan därför inte användas på detta $1 system.
 rbac_eperl=Perl modulen $1 behövd av RBÅK integration är inte installerad. <a href='$2'>Klicka här</a> för att installera den nu.
 rbac_ecpan=Du har inte åtkomst till Webmin's Perl Modul sida för  att installera nödvändiga $1 moduler till RBÅK integration.
 rbac_ok=RBÅK integration är tillgänglig på detta sytem, och kan bli möjliggjord på en per-användar basis på sidan Ändar Webmin Användar sidan.
+
 udeletes_err=Misslyckades att ta bort användare
 udeletes_enone=Ingen vald
 udeletes_title=Ta Bort Användare
@@ -309,11 +327,13 @@ udeletes_rusure=Är du säker på att du vill ta bort användare $1 ? All deras 
 udeletes_users=Valda användare: $1
 udeletes_ok=Ta Bort Användare
 udeletes_ereadonly=En av valda användare är markerad som icke-ändringsbar
+
 gdeletes_err=Misslyckades att ta bort grupper
 gdeletes_title=Ta bort grupper
 gdeletes_rusure=Är du säker på att du vill ta bort $1 valda grupper, och $2 användare som dessa innehåller? All deras åtkomst kontroll inställningar och användardetaljer kommer att förloras.
 gdeletes_users=Valda grupper: $1
 gdeletes_ok=Ta bort grupper
+
 pass_title=Lösenords restriktioner
 pass_header=Webmin lösenords tvång inställningar.
 pass_minsize=Minsta lösenords längd
@@ -333,6 +353,7 @@ pass_eminsize=minsta antal tecken i lösenordet saknas
 pass_emaxdays=Antal dagar innan lösenordet skall ändras saknas.
 pass_elockdays=Antal dagar innan kontot låses saknas
 pass_eoldblock=Antalgammla lösenord saknas.
+
 cpass_minsize=Måste inehålla MINST $1 tecken
 cpass_notre=Matchar ett otillåtet mönster.
 cpass_re=Matchar inte begärt mönster.

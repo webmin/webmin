@@ -26,6 +26,7 @@ index_when=Da, $1
 index_webalizer=Webalizer
 index_enable=Izbran je urnik
 index_disable=Izbrano časovno razpored
+
 edit_title1=Dodaj datoteko dnevnika
 edit_title2=Uredi datoteko dnevnika
 edit_header=Možnosti poročanja datotek dnevnika
@@ -49,12 +50,14 @@ edit_cmode0=Uporabite globalne možnosti
 edit_cmode1=Možnosti po meri
 edit_cmode2=Druga konfiguracijska datoteka ..
 edit_clear=Želite počistiti datoteke (datoteke) po načrtovanem poročilu?
+
 gen_title=Ustvari poročilo
 gen_header=Zaženete Webalizer za ustvarjanje poročila od $1 ..
 gen_done=.. Končano
 gen_failed=.. Webalizer ni uspel! Za podrobnosti glejte zgornji izhod.
 gen_nothing=.. Webalizer je končan, vendar poročila ni bilo ustvarjeno. Za podrobnosti glejte zgornji izhod.
 gen_view=Oglejte si dokončano poročilo.
+
 save_err=Datoteke dnevnika ni bilo mogoče shraniti
 save_efile=Datoteka dnevnika ni bila vnesena ali ne obstaja
 save_ecfile=Manjkajoča ali neobstoječa druga konfiguracijska datoteka
@@ -64,12 +67,14 @@ save_ewuser=Noben uporabnik Unixa z imenom $1 ne obstaja
 save_ehost=Manjkajoče ali neveljavno ime gostitelja spletnega mesta
 save_etitle=Manjka naslov poročila
 save_ecannot=Ustvarite lahko samo poročila za dnevnike pod $1 
+
 view_epath=Neveljavna PATH_INFO
 view_efile=Neveljavno ime datoteke poročila
 view_elog=Neveljavna datoteka dnevnika
 view_ecannot=Tega poročila ne smete gledati
 view_eopen=Ni bilo mogoče odpreti datoteke s poročilom
 view_title=Prikaži poročilo
+
 global_title=Možnosti globalnega Webalizerja
 global_title2=Možnosti poročila o Webalizerju
 global_for=Za zapis datoteke $1 
@@ -130,6 +135,7 @@ global_includesite=Stranke ne smejo prezreti
 global_includereferrer=Reference ne smejo prezreti
 global_includeuser=Uporabniki ne smejo prezreti
 global_includeagent=Brskalniki ne prezrejo
+
 global_err=Možnosti Webalizerja ni bilo mogoče shraniti
 global_ereport=Manjka predpona naslova poročila
 global_ehost=Manjkajoče ali neveljavno ime gostitelja
@@ -139,6 +145,7 @@ global_etable=Manjkajoča ali neveljavna velikost za tabelo '$1'
 global_ehistory=Manjkajoče ali neveljavno ime datoteke zgodovine
 global_ecurrent=Manjkajoče ali neveljavno inkrementalno ime datoteke
 global_ecache=Manjkajoče ali neveljavno ime datoteke predpomnilnika DNS
+
 log_create_log=Ustvarjeno poročanje za $1 
 log_modify_log=Spremenjeno poročanje za $1 
 log_delete_log=Izbrisano poročanje za $1 
@@ -147,6 +154,7 @@ log_global=Spremenjene globalne možnosti Webalizerja
 log_global2=Spremenjene možnosti Webalizerja za $1 
 log_enable_logs=Počasno poročanje o $1 dnevnikih
 log_disable_logs=Nenamensko poročanje o $1 dnevnikih
+
 acl_view=Ali si lahko ogledate samo obstoječa poročila?
 acl_global=Ali lahko urejate globalne možnosti webalizerja?
 acl_dir=Dovoli samo ogled in urejanje poročil za dnevnike pod

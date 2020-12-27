@@ -14,6 +14,7 @@ index_restart=Khởi động lại Daemon Client LDAP
 index_restartdesc=Áp dụng cấu hình hiện tại bằng cách khởi động lại trình nền máy khách LDAP cục bộ.
 index_atboot=Bắt đầu ứng dụng khách LDAP khi khởi động
 index_atbootdesc=Thay đổi xem daemon máy khách LDAP có được khởi động khi hệ thống khởi động hay không.
+
 server_title=Cấu hình máy chủ LDAP
 server_header=Tùy chọn đăng nhập và máy chủ LDAP
 server_host=Tên máy chủ LDAP
@@ -51,6 +52,7 @@ server_etimelimit=Giới hạn thời gian kết nối bị thiếu hoặc khôn
 server_ecacert=Tệp chứng chỉ CA bị thiếu hoặc không hợp lệ
 server_euport=Cổng bị thiếu hoặc không hợp lệ cho máy chủ $1 
 server_euri=Không có máy chủ LDAP nào được nhập
+
 base_title=Căn cứ tìm kiếm LDAP
 base_header=Vị trí tìm kiếm thư mục LDAP
 base_base=Cơ sở tìm kiếm toàn cầu
@@ -86,6 +88,7 @@ base_enetmasks=Thiếu cơ sở cho tên netmask
 base_ealiases=Thiếu cơ sở cho bí danh email
 base_enetgroup=Thiếu cơ sở cho các nhóm net
 base_etimelimit=Giới hạn thời gian tìm kiếm bị thiếu hoặc không hợp lệ
+
 pam_title=Tùy chọn xác thực
 pam_header=Cài đặt mật khẩu và xác thực PAM
 pam_filter=Bộ lọc LDAP bổ sung
@@ -106,10 +109,12 @@ pam_efilter=Thiếu bộ lọc LDAP bổ sung
 pam_elogin=Thuộc tính LDAP bị thiếu hoặc không hợp lệ cho tên người dùng
 pam_egroupdn=Thiếu nhóm LDAP để buộc thành viên của
 pam_emember=Thuộc tính LDAP bị thiếu hoặc không hợp lệ cho các thành viên nhóm
+
 switch_title=Dịch vụ sử dụng LDAP
 switch_service=Dịch vụ
 switch_srcs=Nguồn dữ liệu
 switch_return=dịch vụ sử dụng LDAP
+
 ldap_emodule=Mô-đun $1 Perl cần thiết để nói chuyện với máy chủ LDAP chưa được cài đặt. <a href='$2'>Nhấp vào đây</a> để tải xuống Webmin và cài đặt ngay.
 ldap_emodule2=Mô-đun $1 Perl cần thiết để nói chuyện với máy chủ LDAP chưa được cài đặt.
 ldap_econf=Không tìm thấy tệp cấu hình máy khách LDAP $1 trên hệ thống của bạn
@@ -119,6 +124,7 @@ ldap_elogin=Không thể liên kết với máy chủ LDAP $1 dưới dạng $2 
 ldap_anon=vô danh
 ldap_eparse=Không thể phân tích cú pháp máy chủ LDAP URI $1 
 ldap_etls=Không thể chuyển sang chế độ TLS : $1 
+
 browser_title=Trình duyệt LDAP
 browser_econn=Trình duyệt LDAP không thể được sử dụng : $1 
 browser_base=Đang duyệt:
@@ -129,6 +135,7 @@ browser_attrs=Thuộc tính đối tượng
 browser_parent=Duyệt phụ huynh
 browser_none=không ai
 browser_sel=đồng ý
+
 order_nisplus=NIS +
 order_nis=NIS
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=Máy in người dùng
 order_xfn=XFN
 order_mdns4=DNS đa tuyến
 order_mdns4_minimal=DNS đa tuyến (tối thiểu)
+
 desc_aliases=Bí danh Sendmail
 desc_mail=Bí danh Sendmail
 desc_hosts=Địa chỉ máy chủ
@@ -177,6 +185,7 @@ desc_printers=Máy in
 desc_ipnodes=Các nút IP
 desc_timezone=Múi giờ
 desc_locale=Địa phương
+
 eswitch_title=Chỉnh sửa dịch vụ
 eswitch_egone=Dịch vụ không tồn tại!
 eswitch_header=Chi tiết dịch vụ
@@ -196,6 +205,7 @@ eswitch_continue=Tiếp tục tìm kiếm
 eswitch_none=không ai
 eswitch_err=Không thể lưu dịch vụ
 eswitch_enone=Không có nguồn nào được chọn!
+
 log_server=Cấu hình máy chủ LDAP đã sửa đổi
 log_base=Cơ sở tìm kiếm LDAP đã sửa đổi
 log_pam=Tùy chọn xác thực đã sửa đổi
@@ -205,6 +215,7 @@ log_delboot=Trình nền ứng dụng khách LDAP bị vô hiệu hóa khi khở
 log_start=Đã bắt đầu trình nền LDAP client
 log_stop=Trình nền khách hàng LDAP đã dừng
 log_restart=Trình nền khách hàng LDAP đã khởi động lại
+
 check_title=Xác thực cấu hình LDAP
 check_base=Tìm kiếm cơ sở LDAP cho người dùng ..
 check_ebase=.. không tìm thấy dựa trên cấu hình máy khách!

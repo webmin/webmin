@@ -16,6 +16,7 @@ index_digest2=El xifratge de resums està activat a la configuració del mòdul,
 index_cpan=Fes clic <a href='$1'>aquí</a> per descarregar-lo i instal·lar-lo ara.
 index_delete=Desprotegeix els Directoris Seleccionats
 index_remove=Desprotegeix i Elimina els Fitxers
+
 dir_title1=Addició de Directori Protegit
 dir_title2=Edició de Directori Protegit
 dir_header=Opcions del directori protegit
@@ -60,6 +61,7 @@ dir_delete3=Desprotegeix i Elimina el Fitxer
 dir_apache=Edita les Opcions d'Apache
 dir_efiledir='$1' és un directori, i per tant no es pot utilitzar com a fitxer d'usuaris
 dir_egfiledir='$1' és un directori, i per tant no es pot utilitzar com a fitxer de grups
+
 edit_title1=Creació d'Usuari
 edit_title2=Edició d'Usuari
 edit_header=Detalls de l'autenticació web de l'usuari
@@ -71,11 +73,13 @@ edit_pass0=Posa-ho a
 edit_passfrom=Canvia a partir de
 edit_passto=a contrasenya nova
 edit_dom=Reialme del resum
+
 gedit_title1=Creació de Grup
 gedit_title2=Edició de Grup
 gedit_header=Detalls de l'autenticació web del grup
 gedit_group=Nom del grup
 gedit_members=Membres del grup
+
 save_err=No s'ha pogut desar l'usuari
 save_euser1=Hi falta l'usuari
 save_euser2=L'usuari no pot contenir el caràcter :
@@ -84,16 +88,19 @@ save_eclash=Ja existeix un usuari amb aquest nom
 save_eoldpass=La contrasenya vella no és correcta
 save_title=Usuari Desat
 save_edom=Hi falta el reialme del resum o bé és invàlid
+
 gsave_err=No s'ha pogut desar el grup
 gsave_egroup1=Hi falta el nom del grup
 gsave_egroup2=El nom del grup no pot contenir ni el caràcter : ni espais
 gsave_eclash=Ja existeix un grup amb aquest nom
+
 acl_dirs=Directoris permesos
 acl_user=Crea els fitxers .htaccess i htusers com a usuari Unix
 acl_same=Els mateixos que l'usuari Webmin
 acl_home=Inclou el directori arrel de l'usuari Unix
 acl_sync=Pot configurar la sincronització d'usuaris Unix
 acl_uonly=Pot afegir i canviar directoris protegits
+
 log_create_dir=S'ha afegit el directori $1
 log_modify_dir=S'ha modificat el directori $1
 log_delete_dir=S'ha suprimit el directori $1
@@ -104,6 +111,7 @@ log_create_group=S'ha creat el grup $1
 log_modify_group=S'ha modificat el grup $1
 log_delete_group=S'ha suprimit el grup $1
 log_delete_dirs=S'han suprimit $1 directoris
+
 search_title=Resultats de la Recerca
 search_err=La recerca no ha reeixit
 search_edir=Hi falta el directori absolut per buscar o bé és invàlid

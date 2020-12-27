@@ -15,6 +15,7 @@ index_actform=vorm
 index_actrun=Run
 index_actsql=vorm
 index_acted=oop
+
 edit_title=Wysig opdrag
 create_title=Skep opdrag
 edit_ecannot=U mag nie opdragte wysig nie
@@ -66,6 +67,7 @@ edit_format4=Laai af indien moontlik
 edit_servers=Begin op Webmin-bedieners
 edit_this=hierdie bediener
 edit_clone=kloon
+
 save_err=Opdrag kon nie gestoor word nie
 save_ecannot=U mag nie opdragte wysig nie
 save_ecmd=Geen opdrag is ingevoer nie
@@ -78,6 +80,7 @@ save_eusermin=Opdragte wat op ander bedieners uitgevoer word, kan nie vanaf User
 save_eformat=Ongeldige uitvoer MIME-tipe
 save_eopts=Ontbrekende opsielêer vir parameter $1 
 save_eopts2=Opsielêer of standaardwaarde vir parameter $1 kan nie bevat nie :
+
 run_err=Kon nie opdrag uitvoer nie
 run_ecannot=U mag nie hierdie opdrag uitvoer nie
 run_euser=Ontbrekende of ongeldige gebruiker
@@ -94,6 +97,7 @@ run_eupload=Geen lêer om op te laai is gekies nie
 run_emust=Waarde ontbreek vir parameter '$1'
 run_timeout=Die opdrag kon nie voltooi word voordat die $1 sekonde time-out nie.
 run_failed=Opdrag het misluk met uittreestatus $1 
+
 log_modify=Gewysigde opdrag $1 
 log_create=Skep opdrag $1 
 log_delete=Opdrag $1 is uitgevee
@@ -102,11 +106,13 @@ log_modify_edit=Gewysigde lêerredakteur $1
 log_create_edit=Skep lêerredakteur $1 
 log_delete_edit=Lêerredakteur $1 is uitgevee
 log_save_edit=Gestoorde lêer $1 
+
 acl_cmds=Opdragte wat hierdie gebruiker kan uitvoer
 acl_call=Alle opdragte
 acl_csel=Gekies ..
 acl_cexcept=Almal behalwe gekies ..
 acl_edit=Kan u opdragte skep en redigeer?
+
 file_ecannot=U mag nie lêers wysig nie
 fcreate_title=Skep lêerredigeerder
 fedit_title=Edit File Editor
@@ -130,6 +136,7 @@ file_egroup=Ontbrekende of ongeldige groepnaam
 file_eperms=Oktale toestemmings ontbreek of ongeldig
 file_envs=Vervang omgewingsveranderlikes in lêernaam?
 file_id=Redakteur-ID
+
 view_err=Kon nie lêer redigeer nie
 view_ecannot=U mag nie hierdie lêer wysig nie
 view_title=Wysig lêer
@@ -138,10 +145,12 @@ view_header=Redigeer lêer $1
 view_ebeforeedit=Die opdrag voor bewerking is misluk : $1 
 view_ebefore=Die opdrag voor stoor misluk : $1 
 view_eafter=Na-besparing opdrag misluk : $1 
+
 form_ecannot=U mag nie hierdie opdrag uitvoer nie
 form_title=Voer opdrag uit
 form_exec=uit te voer
 form_edit=wysig
+
 sql_title1=SQL-opdrag skep
 sql_title2=Wysig SQL-opdrag
 sql_header=SQL-opdragbesonderhede
@@ -157,6 +166,7 @@ sql_err=SQL-opdrag kon nie gestoor word nie
 sql_esql=Geen SQL is ingevoer nie
 sql_ehost=Ontbrekende of ongeldige databasisbedienergasheer
 sql_edb=Ontbrekende of ongeldige databasisnaam
+
 srun_title=Voer SQL-opdrag uit
 srun_err=SQL-opdrag kon nie uitgevoer word nie
 srun_edriver=Kon nie DBI-bestuurder laai nie

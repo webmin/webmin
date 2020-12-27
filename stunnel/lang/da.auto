@@ -21,6 +21,7 @@ index_eversion=Versionen af STunnel, der er installeret på dit system, er $1, m
 index_conf=Fra konfigurationsfil $1 
 index_noconf=Ingen konfigurationsfil!
 index_delete=Slet valgte tunneler
+
 edit_title=Rediger SSL-tunnel
 create_title=Opret SSL-tunnel
 edit_header1=Indstillinger for tunnelkilde
@@ -47,6 +48,7 @@ edit_tcpw=TCP-indpakningsnavn
 edit_auto=Automatisk
 edit_iface=Udgående kilde-adresse
 edit_type=Løb fra
+
 save_err=Kunne ikke gemme SSL-tunnelen
 save_enclash=Servicenavnet $2 bruges allerede på port $1.
 save_einetd=Der er allerede en inetd-tjeneste kaldet $1.
@@ -61,6 +63,7 @@ save_etcpw=Manglende eller ugyldigt TCP-indpakningsnavn
 save_eiface=Manglende eller ugyldig udgående kilde-adresse
 save_exinetd=Der er allerede en xinetd-tjeneste kaldet $1 
 save_export=Porten $1 bruges allerede af xinetd-service $2 
+
 log_apply=Anvendte ændringer
 log_create=Oprettet SSL-tunnel $1 
 log_delete=SSL-tunnel $1 er slettet

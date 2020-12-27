@@ -27,7 +27,9 @@ index_global=Globalna konfiguracija
 index_create=Ustvari virtualni strežnik
 index_version=ProFTPd različica $1 
 index_proftpd=ProFTPd
+
 efailed=$1 ni bilo mogoče shraniti
+
 type_0=Možnosti omrežja
 type_1=Možnosti beleženja
 type_2=Datoteke in imeniki
@@ -35,6 +37,7 @@ type_3=Nadzor dostopa
 type_4=Razno
 type_5=Uporabnik in skupina
 type_6=Preverjanje pristnosti
+
 virt_title=Možnosti virtualnega strežnika
 virt_header1=Za $1 
 virt_header2=Za privzeti strežnik
@@ -50,6 +53,7 @@ virt_cmds=Ukazi FTP
 virt_return=virtualni strežnik
 virt_virt=Konfigurirajte navidezni strežnik
 virt_edit=Urejanje direktiv
+
 vserv_title=Konfigurirajte navidezni strežnik
 vserv_addr=Naslov
 vserv_name=Ime strežnika
@@ -58,6 +62,7 @@ vserv_delete=Izbriši virtualni strežnik
 vserv_eaddr=Manjkajoči ali neveljaven naslov
 vserv_eport=Manjkajoča ali neveljavna številka vrat
 vserv_ename=Manjka ime strežnika
+
 anon_title=Možnosti anonimne FTP
 anon_header1=V virtualnem strežniku $1 
 anon_header2=V privzetem strežniku
@@ -65,6 +70,7 @@ anon_anon=Konfigurirajte anonimni FTP
 anon_return=anonimne FTP možnosti
 anon_header3=Za anonimni FTP v virtualnem strežniku $1 
 anon_header4=Za anonimni FTP v privzetem strežniku
+
 aserv_title=Konfigurirajte anonimni FTP
 aserv_create=Nastavite anonimni FTP
 aserv_root=Omejite na imenik
@@ -75,6 +81,7 @@ aserv_eroot=Manjkajoči ali neveljaven imenik chroot
 aserv_euser=Manjkajoči ali neveljavni uporabnik Unixa
 aserv_egroup=Manjkajoča ali neveljavna skupina Unix
 aserv_desc=Anonimni FTP še ni nastavljen za ta virtualni strežnik. S tem obrazcem nastavite začetne možnosti konfiguracije.
+
 dir_title=Možnosti po imeniku
 dir_header2=Za imenik $1 na privzetem strežniku
 dir_header1=Za imenik $1 v virtualnem strežniku $2 
@@ -85,6 +92,7 @@ dir_header=Možnosti za ukaz
 dir_dir=Konfigurirajte imenik
 dir_header4=Za imenik $1 v anonimnem FTP-ju
 dir_header5=Za globalni imenik $1 
+
 manual_title=Urejanje direktiv
 manual_header=Uporabite spodnje besedilno polje za ročno urejanje direktiv ProFTPD v $1, ki veljajo za ta virtualni strežnik, imenik ali ukaze.
 manual_configs=Uredi konfiguriranje datotek
@@ -92,6 +100,7 @@ manual_ecannot=Ročno urejanje direktiv vam ni dovoljeno
 manual_file=Urejanje direktiv v datoteki:
 manual_efile=Neveljavna konfiguracijska datoteka ProFTPd
 manual_etest=Zaznana je bila napaka konfiguracijske datoteke : $1 
+
 limit_title=Možnosti za ukaz
 limit_header4=Za ukaze $1 v imeniku $2 
 limit_header2=Za ukaze $1 v privzetem strežniku
@@ -103,17 +112,20 @@ limit_return=možnosti za ukaz
 limit_header5=Za ukaze $1 v anonimnem FTP-ju
 limit_header6=Za ukaze $1 v datoteki $2 
 limit_header7=Za ukaze $1 po vsem svetu
+
 lserv_title=Konfigurirajte ukaze
 lserv_cmd=Ukazi FTP
 lserv_delete=Izbriši ukaze config
 lserv_err=Ukazov ni bilo mogoče shraniti
 lserv_ecmd=Izbran ni noben ukaz
+
 dserv_title=Konfigurirajte imenik
 dserv_dir=Pot imenika
 dserv_err=Imenika ni bilo mogoče shraniti
 dserv_edir=Manjka pot imenika
 dserv_delete=Izbriši konfiguracijo imenika
 dserv_eanondir=Imenik mora biti pod anonimnim imenikom FTP
+
 mod_core_type=Vrsta strežnika
 mod_core_inetd=Teči od Inetda
 mod_core_stand=Samostojni demon
@@ -301,6 +313,7 @@ mod_core_duser=Zavrni uporabnike
 mod_core_eip='$1' ni veljaven naslov IP
 mod_core_enet='$1' ni veljaven omrežni naslov
 mod_core_ehost='$1' ni veljavno ime gostitelja
+
 mod_ls_fakegroup=Lažna skupina v seznamih imenikov?
 mod_ls_fakeuser=Lažni uporabnik v seznamih imenikov?
 mod_ls_fakemode=Lažna dovoljenja v seznamih imenikov
@@ -317,6 +330,7 @@ mod_ls_efakeuser=Pogrešani ali neveljavni lažni uporabnik
 mod_ls_efakegroup=Manjkajoča ali neveljavna ponarejena skupina
 mod_ls_options=Možnosti seznama imenikov
 mod_ls_strict=Ali želite preglasiti uporabniške možnosti?
+
 mod_auth_chdir=Začetni imenik za prijavo
 mod_auth_echdir=Manjkajoči ali neveljavni začetni imenik
 mod_auth_chroot=Omejite uporabnike v imenike
@@ -330,7 +344,9 @@ mod_auth_egroups=Za Chroot ni vnesenih nobenih skupin Unix
 mod_auth_echroot=Manjkajoči ali neveljaven imenik chroot
 mod_auth_login=Ne zahtevajte gesla, če je prijava zavrnjena?
 mod_auth_root=Dovoli prijavo po korenu?
+
 mod_site_chmod=Dovoli ukaz chmod?
+
 mod_unixpw_ufile=Nadomestna datoteka gesla Unix
 mod_unixpw_eufile=Manjkajoča ali neveljavna datoteka gesla Unix
 mod_unixpw_gfile=Nadomestna datoteka skupine Unix
@@ -338,6 +354,7 @@ mod_unixpw_egfile=Manjkajoča ali neveljavna datoteka skupine Unix
 mod_unixpw_none=Noben
 mod_unixpw_pam=Vedno obravnavajte PAM kot avtorski?
 mod_unixpw_persist=Ali je datoteka gesla stalno odprta?
+
 mod_log_syslog=Napake v dnevniku v datoteko
 mod_log_sysdef=Sistemski dnevnik
 mod_log_esyslog=Manjkajoča ali neveljavna datoteka dnevnika
@@ -354,19 +371,25 @@ mod_log_fmt=Oblika niza
 mod_log_format=Oblike dnevnika po meri
 mod_log_enickname=Manjkajoče ali neveljavno ime oblike
 mod_log_efmt=Manjkajoči niz formata
+
 mod_pam_pam=Ali za preverjanje pristnosti uporabljate PAM?
 mod_pam_config=Preverjanje pristnosti s storitvijo PAM
 mod_pam_econfig=Manjkajoča ali neveljavna storitev PAM
+
 mod_readme_display=Obvesti uporabnika datotek readme, ki se ujemajo
 mod_readme_none=Noben
 mod_readme_edisplay=Manjka vzorec datotek readme
+
 start_err=FTP strežnika ni bilo mogoče zagnati
 start_einetd=Demona strežnika ne morete zagnati, če ste v načinu inetd.
+
 stop_err=FTP strežnika ni bilo mogoče ustaviti
 stop_einetd=Ne morete ustaviti demona strežnika, če ste v načinu inetd.
 stop_erun=Ne teče
+
 apply_err=FTP konfiguracije ni bilo mogoče uporabiti
 apply_egone=Ne teče več
+
 ftpaccess_title=Datoteke z možnostmi seznama
 ftpaccess_desc=V datoteki (običajno imenovani <tt>.ftpaccess</tt>) lahko v vsakem imeniku podate dodatne možnosti v imeniku. Možnosti veljajo za vse datoteke v tem imeniku in vse podimenike, razen če jih preglasi druga datoteka z možnostmi.
 ftpaccess_create=Ustvari datoteko z možnostmi
@@ -374,8 +397,10 @@ ftpaccess_find=Poiščite datoteke z možnostmi
 ftpaccess_auto=Pod anonimno
 ftpaccess_from=Iz imenika
 ftpaccess_return=seznam datotek z možnostmi
+
 ftpusers_title=Zavrnjeni uporabniki FTP
 ftpusers_desc=Če je omogočeno pod ikono <tt>Preverjanje pristnosti</tt>, bodo uporabniki, navedeni spodaj iz datoteke $1, uporabniku FTP onemogočili dostop za prijavo.
+
 ftpindex_title=Datoteka z možnostmi v imeniku
 ftpindex_delete=Izbriši datoteko
 ftpindex_opts=Možnosti po imeniku
@@ -385,8 +410,10 @@ ftpindex_addlimit=Dodajte možnosti po ukazu za ..
 ftpindex_header2=$1 v $2 
 ftpindex_return=datoteka z možnostmi v imeniku
 ftpindex_header=Za $1 
+
 find_err=Ni bilo mogoče najti datotek z možnostmi
 find_eanon=Anonimni FTP ni nameščen v nobenem virtualnem strežniku
+
 log_global=Spremenjene globalne možnosti $1 
 log_ftpusers=Spremenjeni zavrnjeni uporabniki FTP
 log_virtc=Ustvarjen strežnik $1 
@@ -420,6 +447,7 @@ log_anonm=Ročno urejen anonimni FTP za strežnik $1
 log_anon=Spremenjen je bil $1 v anonimni FTP za strežnik $2 
 log_start=Začetek proftpd
 log_apply=Uporabljene spremembe
+
 eafter=Preverjanje konfiguracije ni uspelo: $1 Spremembe niso bile shranjene.
 proftpd_apply=Uporabi spremembe
 proftpd_stop=Ustavite ProFTPd

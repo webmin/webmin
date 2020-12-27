@@ -8,6 +8,7 @@ index_none=Der er ikke defineret nogen startindstillinger. Sørg for at tilføje
 index_efile=GRUB-menufilen $1 blev ikke fundet på dit system. GRUB er måske ikke installeret, eller <a href='$2'>modulkonfiguration</a> er forkert.
 index_epath=GRUB-eksekverbar $1 blev ikke fundet på dit system. GRUB er måske ikke installeret, eller <a href='$2'>modulkonfiguration</a> er forkert.
 index_return=indstillingsliste
+
 title_add=Tilføj boot-option
 title_edit=Rediger Boot Option
 title_header=Detaljer om valg af startmenu
@@ -36,6 +37,7 @@ title_echain=Manglende eller ugyldig chainloader-fil
 title_edev=Ikke-understøttet rodpartitionsenhed $1 
 title_einitrd=Manglende oprindeligt ramdisk-filnavn
 title_lock=Adgangskode låst?
+
 global_title=Globale indstillinger
 global_header=Globale startmenuindstillinger
 global_default=Standard boot option
@@ -56,12 +58,14 @@ global_edev=Ikke-understøttet installationsdisk/partition $1
 global_eother=Manglende eller ugyldig disk/partition
 global_epassword=Manglende eller ugyldig startadgangskode
 global_epasswordfile=Manglende alternativ menu-filnavn mangler
+
 install_title=Installer GRUB
 install_err=GRUB kunne ikke installeres
 install_efind=Kunne ikke finde menufilen
 install_desc=Installation af GRUB på $1 med kommandoer $2 og $3.
 install_ok=.. installation komplet.
 install_failed=.. installation mislykkedes!
+
 log_create_title=Oprettet startindstilling $1 
 log_delete_title=Slet startindstilling $1 
 log_modify_title=Ændret startindstilling $1 

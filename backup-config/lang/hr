@@ -19,6 +19,7 @@ index_nostrftime=Upozorenje - određena zaštita koristi % u svojim nazivima dok
 index_tabsched=Predvidi zaštitu
 index_tabbackup=Zaštiti podatke sada
 index_tabrestore=Obnovi podatke sada
+
 edit_title1=Kreiraj Isplaniranu Zaštitu podataka
 edit_title2=Uredi Isplaniranu Zaštitu podataka
 edit_header=Lista opcija zaštite podataka
@@ -38,9 +39,11 @@ edit_nofiles=Poslužiteljski dokumenti s postavkama
 edit_run=Spremi i Zaštiti podatke Sada
 edit_return=forma zaštite podataka
 edit_other=Drugi dokumenti s liste ..
+
 save_err=Neuspjeli pokušaj da se sačuva zaštita podataka
 save_emods=Ni jedan modul nije odabran
 save_ewebmin=Ni webmin ni poslužiteljski dokumenti s s postavkama nisu odabrani
+
 backup_mode0=Lokalni dokument
 backup_mode1=FTP poslužitelj
 backup_mode2=SSH poslužitelj
@@ -56,6 +59,7 @@ backup_egunzip=zaštita podataka je sažeta, ali <tt>gunzip</tt> nije instaliran
 backup_euntar=Ne-TAR nije uspio : $1
 backup_enone2=Ni jedan od dokumenata za odabrane module nema zaštitu podataka
 backup_epre2=Modul $1 odbija obnovu : $2
+
 backup_err=Zaštita podataka neuspjela
 backup_edest=Potpuni lokalni dokument nedostaje ili je nepotpun
 backup_eserver1=FTP poslužitelju nedostaje ili je neispravan
@@ -69,25 +73,30 @@ backup_title=Postavke Zaštite Podataka
 backup_doing=Pokrećem zaštitu podataka iz dokumenta s modulima postavki u $1 ..
 backup_failed=.. nije uspio! $1
 backup_done=...gotovo. Konačna veličina zaštite podataka bila je $1 i obuhvatila je $2 dokumenata.
+
 restore_err=Obnova nije uspijela
 restore_title=Obnovi Postavke
 restore_doing=Započinjem obnovu dokumenata s postavkama iz $1 ..
 restore_failed=.. nije uspijelo! $1
 restore_done=.. završeno. $1 dokumenti su obnovljeni.
+
 nice_ftp=$2 na $1 putem FTP-a
 nice_ssh=$2 na $1 putem SSH-a
 nice_upload=učitani dokument
 nice_download=preglednik
+
 log_backup=Zaštiti $1 modul u $2
 log_restore=Obnovljana zaštita modula $1 u $2
 log_create_backup=Kreirana zaštita modula $1 u $2
 log_modify_backup=Uređena zaštita modula $1 u $2
 log_delete_backup=Izbrisana zaštita modula $1 u $2
 log_run_backup=Izvršena zaštita modula $1 u $2
+
 run_title=Postavke Zaštite
 run_doing=Započinjem zaštitu podataka $1 modula i $2 ..
 run_ok=.. zaštita podataka uspjela u potpunosti.
 run_failed=.. zaštita podataka nije uspijela! Provjerite poruku da bi ste uvidjeli razlog pogreške.
+
 email_mods=Zaštita podataka za module :
 email_failed=u $1 nije uspjelo :
 email_ok=u $1 je uspio.

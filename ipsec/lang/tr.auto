@@ -25,12 +25,15 @@ index_up=Bağlantıyı Başlat:
 index_updesc=Bu düğmenin yanındaki listeden bir bağlantı seçin ve hemen kurulmasını denemek için bu bağlantıyı tıklayın.
 index_nopol=Hiçbir ağ politikası bulunamadı - belki <a href='$1'>ağ yapılandırmanız</a> yanlış olabilir.
 index_import=Bağlantıyı dosyadan içe aktar.
+
 stop_err=IPsec sunucusu durdurulamadı
 start_err=IPsec sunucusu başlatılamadı
 restart_err=IPsec sunucusu yeniden başlatılamadı
 start_elog=Aşağıdaki hatalar günlüğe kaydedildi : $1 
+
 newkey_err=Anahtar oluşturulamadı
 newkey_ehost=Eksik veya geçersiz ana bilgisayar adı
+
 edit_title1=Bağlantı Oluştur
 edit_title2=Bağlantıyı Düzenle
 edit_header=IPsec VPN bağlantı ayrıntıları
@@ -101,6 +104,7 @@ edit_unit_s=sn
 edit_unit_m=dk
 edit_unit_h=saatler
 edit_unit_d=günler
+
 config_title=Sunucu Yapılandırması
 config_header=Global VPN sunucu ayarları
 config_ifaces=IPsec için ağ arayüzleri
@@ -118,6 +122,7 @@ config_nat=NAT geçişi etkinleştirilsin mi?
 config_err=Sunucu yapılandırması kaydedilemedi
 config_eri=Gerçek arayüz '$1' birden fazla kez listeleniyor
 config_enone=Hiçbir ağ arabirimi belirtilmedi
+
 showkey_title=Genel Anahtarı Göster
 showkey_desc1=Aşağıda gösterilen genel RSA anahtarı, bu ana bilgisayara ilişkin bölümde, bu sisteme bağlanan diğer sistemlerin yapılandırmasına kopyalanmalıdır.
 showkey_desc2=Aşağıda gösterilen değerler, bu ana bilgisayar için bir DNS KEY kaydı oluşturmak için kullanılabilir, böylece ona bağlanan diğer sistemler ortak anahtarını arayabilir.
@@ -125,6 +130,7 @@ showkey_flags=Bayraklar
 showkey_proto=Protokol
 showkey_alg=Algoritma
 showkey_key=Anahtar veri
+
 policy_desc_block=Engellenen Ağlar
 policy_desc_clear=Trafik Ağlarını Temizle
 policy_desc_private=Şifreli Ağlar
@@ -145,6 +151,7 @@ policy_mask=Önek
 policy_err=Ağlar kaydedilemedi
 policy_enet=$1 satırında geçersiz ağ IP adresi
 policy_emask=$2 satırında geçersiz önek uzunluğu
+
 save_err=Bağlantı kaydedilemedi
 save_ename=Eksik veya geçersiz bağlantı adı
 save_ekeying=Eksik veya geçersiz anahtarlama denemesi sayısı
@@ -164,6 +171,7 @@ save_eleftcert=Eksik veya geçersiz yerel sunucu sertifikası
 save_erightcert=Eksik veya geçersiz uzak sunucu sertifikası
 save_ekeylife=Eksik veya geçersiz bağlantı anahtarı ömrü
 save_eikelifetime=Kanal anahtarlama ömrü eksik veya geçersiz
+
 log_create_conn=$1 bağlantısı kuruldu
 log_delete_conn=$1 silinen bağlantı
 log_modify_conn=Değiştirilmiş bağlantı $1 
@@ -182,8 +190,10 @@ log_delete_secret=$1 için gizli anahtar silindi
 log_create_secret_nn=Herhangi bir ana bilgisayar için gizli anahtar oluşturuldu
 log_modify_secret_nn=Herhangi bir ana bilgisayar için değiştirilmiş gizli anahtar
 log_delete_secret_nn=Herhangi bir ana bilgisayar için gizli anahtar silindi
+
 up_title=Bağlantıyı Başlat
 up_cmd=$1 komutu ile bağlantı başlatılıyor.
+
 export_title=Yapılandırmayı Dışa Aktar
 export_desc=Bu form, $1 bağlantısı için yapılandırma dosyası bölümünü dışa aktarmak için kullanılabilir, böylece diğer uçtaki sunucuya kolayca aktarılabilir.
 export_print=Tarayıcıda ekran yapılandırması
@@ -193,11 +203,13 @@ export_err=Yapılandırma dışa aktarılamadı
 export_efile=Eksik dosya adı
 export_esave=Dosyaya yazılamadı : $1 
 export_done=$1 - $2 bağlantısı için dışa aktarılan yapılandırma ($3 bayt).
+
 import_title=Yapılandırmayı İçe Aktar
 import_desc=Bu form, bir bağlantının, modülün başka bir sistemdeki dışa aktarma özelliği tarafından oluşturulan gibi bir yapılandırma dosyası bölümünü içe aktarmak için kullanılabilir.
 import_upload=Yükleme dosyasından içe aktar ..
 import_file=Sunucu tarafı dosyasından içe aktar ..
 import_ok=Şimdi İçe Aktar
+
 import_err=Yapılandırma içe aktarılamadı
 import_eupload=Yüklenecek dosya seçilmedi
 import_efile=Sunucu tarafı dosya girilmedi
@@ -207,6 +219,7 @@ import_eclash=$1 adlı bir bağlantı zaten var.
 import_done1=$1 yeni IPsec bağlantısı başarıyla eklendi.
 import_done2=$1 IPsec bağlantısı başarıyla güncellendi.
 import_over=Aynı ada sahip mevcut bağlantı üzerine yazılsın mı?
+
 secrets_title=Gizli Anahtarlar
 secrets_none=Hiçbir sır anahtarı bulunamadı!
 secrets_name=İçin sır
@@ -220,6 +233,7 @@ secrets_mod=Modül $1
 secrets_newpsk=Yeni paylaşılan gizli anahtar oluşturun.
 secrets_newrsa=Yeni RSA anahtarı oluşturun.
 secrets_return=gizli anahtar listesi
+
 secret_title1=Gizli Anahtar Oluştur
 secret_title2=Gizli Anahtarı Düzenle
 secret_header=Gizli anahtar ayrıntıları

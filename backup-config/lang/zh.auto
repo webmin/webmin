@@ -20,6 +20,7 @@ index_nostrftime=警告-一些备份作业在其文件名中使用％，但是�
 index_tabsched=计划备份
 index_tabbackup=立即备份
 index_tabrestore=立即还原
+
 edit_title1=创建计划的备份
 edit_title2=编辑计划的备份
 edit_header=计划的备份选项
@@ -44,9 +45,11 @@ edit_return=备用表格
 edit_other=其他列出的文件 ..
 edit_pre=备份前命令
 edit_post=备份后命令
+
 save_err=无法保存备份
 save_emods=未选择模块
 save_ewebmin=没有选择webmin或服务器配置文件
+
 backup_mode0=本地文件
 backup_mode1=FTP服务器
 backup_mode2=SSH服务器
@@ -63,6 +66,7 @@ backup_egunzip=备份已压缩，但未安装<tt>gunzip</tt>
 backup_euntar=Un-TAR失败： $1
 backup_enone2=备份中没有所选模块的文件
 backup_epre2=模块 $1拒绝还原： $2
+
 backup_err=备份失败
 backup_edest=绝对本地文件丢失或无效
 backup_eserver1=FTP服务器丢失或无效
@@ -78,6 +82,7 @@ backup_title=备份配置
 backup_doing=开始将模块配置文件备份到 $1 ..
 backup_failed=..失败了！ $1
 backup_done=..完成。最终备份大小为 $1，其中包含 $2个文件。
+
 restore_err=恢复失败
 restore_emods=未选择模块或其他文件
 restore_title=恢复配置
@@ -86,22 +91,26 @@ restore_testing=从 $1..中提取备份的内容
 restore_failed=..失败了！ $1
 restore_done=..完成。已还原 $1个文件。
 restore_done2=..备份中的文件是：
+
 nice_ftp=通过FTP在 $1上的 $2
 nice_ftpp=通过FTP在 $1端口 $3上的 $2
 nice_ssh=通过SSH在 $1上的 $2
 nice_sshp=通过SSH在 $1端口 $3上的 $2
 nice_upload=上传的文件
 nice_download=浏览器
+
 log_backup=将 $1个模块备份到 $2
 log_restore=从 $2恢复了 $1个模块
 log_create_backup=已将 $1个模块备份到 $2
 log_modify_backup=将 $1个模块的备份修改为 $2
 log_delete_backup=已将 $1个模块的备份删除到 $2
 log_run_backup=已将 $1个模块备份到 $2
+
 run_title=备份配置
 run_doing=正在将 $1个模块备份到 $2 ..
 run_ok=..备份成功完成。
 run_failed=..备份失败！有关原因，请参见上面的错误消息。
+
 email_mods=模块备份：
 email_failed=到 $1失败：
 email_ok=到 $1成功。

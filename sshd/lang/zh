@@ -9,8 +9,10 @@ index_applymsg=单击此钮，通过向正在运行的 SSHd 进程发送一个 S
 index_start=启动服务器
 index_startmsg=单击此扭以启动 SSH 服务器。只有启动该服务器，用户才能通过 SSH 登录。
 index_version=$1
+
 bits=字节
 secs=秒
+
 users_title=验证
 users_header=登录与验证选项
 users_expire=账户过期的几天前警告用户？
@@ -38,6 +40,7 @@ users_known=忽略用户 <tt>known_hosts</tt> 文件吗？
 users_err=无法保存用户和群组
 users_eexpire=未输入或无效的过期警告时间
 users_ebanner=未输入或无效的登录前信息文件
+
 net_title=网络
 net_header=网络选项
 net_port=监听端口
@@ -65,6 +68,7 @@ net_eport=未输入或无效的端口号
 net_eidle=未输入或无效的无数据通信的等待时间
 net_egrace=未输入或无效的等待登录时间
 net_eprots=你必须至少选择一个协议
+
 access_title=访问控制
 access_header=网络和登录访问控制选项
 access_allowu=只允许用户
@@ -82,6 +86,7 @@ access_eallowg=任何组都不许进入
 access_edenyg=任何组均可进入
 access_eallowh=任何主机不许进入
 access_edenyh=任何主机均可进入
+
 misc_title=杂项选项
 misc_header=其他杂项 SSH 服务器选项
 misc_x11=允许 X11 连接转发吗？
@@ -104,13 +109,16 @@ misc_eumask=未输入或无效的 4 个数字的八进位文件保护掩码
 misc_ebits=为输入或无效的服务器密钥大小
 misc_eregen=未输入或无效的密钥再生的时间间隔
 misc_epid=未输入 PID 文件路径
+
 start_err=无法启动 SSH 服务器
+
 hosts_title=客户端主机选项
 hosts_header=SSH 客户端主机
 hosts_none=所有的客户端主机选项均未定义。所有的 SSH 客户登录经使用默认的设置。
 hosts_all=所有主机
 hosts_add=为客户端主机新增选项。
 hosts_return=客户端主机列表
+
 host_create=添加主机选项
 host_edit=编辑主机选项
 host_header=用于 SSH 主机的客户端选项

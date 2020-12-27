@@ -25,6 +25,7 @@ index_dscsi=Controlador de dispositivo SCSI $1 $2
 index_draid=Nível RAID $1 
 index_dparts=Partições
 index_none2=Nenhum disco foi encontrado neste sistema.
+
 bytes=bytes
 megabytes=megabytes
 open_error=Comando $1 não encontrado
@@ -42,6 +43,7 @@ select_promise=Unidade RAID prometida $1
 select_ppart=Unidade RAID prometida $1 partição $2 
 select_nvme=Unidade SSD NVME $1 $2 
 select_nvmepart=Unidade SSD NVME $1 unidade $2 partição $3 
+
 edit_ehdparm=O executável <tt>hdparm</tt> não pôde ser encontrado no seu sistema
 edit_of=do
 edit_cont1=Contém 1 partição
@@ -61,22 +63,31 @@ edit_newmount2=Montagem de partição
 edit_mountas=Como
 edit_mountmsg=Monte esta partição no novo diretório do seu sistema, para que possa ser usada para armazenar arquivos. Um sistema de arquivos já deve ter sido criado na partição.
 edit_mountmsg2=Monte esta partição como memória virtual no seu sistema, para aumentar a quantidade de memória disponível.
+
 ext3_j=Tamanho do arquivo de diário
+
 msdos_ff=Número de GAT
 msdos_F_other=De outros ..
+
 reiserfs_force=Forçar a criação do sistema de arquivos
 reiserfs_hash=Função hash
+
 xfs_force=Forçar a criação do sistema de arquivos
 xfs_b=Tamanho do bloco
+
 jfs_s=Tamanho do log
 jfs_c=Verificar blocos defeituosos?
+
 btrfs_l=Tamanho da folha
 btrfs_n=Tamanho do nó
 btrfs_s=Tamanho do setor
+
 fatx_none=Nenhuma opção está disponível para sistemas de arquivos FATX.
+
 acl_dall=Todos os discos
 acl_dsel=Selecionado ..
 acl_view=Pode visualizar discos não editáveis?
+
 hdparm_title=Editar parâmetros do IDE
 hdparm_on=Em
 hdparm_off=Fora
@@ -105,9 +116,11 @@ hdparm_performing=Realizando
 hdparm_buf1=Cache do buffer:
 hdparm_buf2=Buffered:
 hdparm_speedres=Resultados do teste de velocidade
+
 blink_title=Identifique o Drive
 blink_desc=O LED de atividade da unidade agora acenderá sessenta vezes
 blink_back=Volte
+
 log_modify=$1 modificado
 log_create=Criado $1 
 log_delete=$1 excluído
@@ -115,6 +128,7 @@ log_mkfs=Sistema de arquivos $1 criado em $2
 log_tunefs=Sistema de arquivos $1 ajustado em $2 
 log_fsck=$1 sistema de arquivos reparado em $2 
 log_hdparm=Parâmetros IDE modificados para $1 
+
 fs_ext2=Nativo Linux antigo
 fs_minix=Minix
 fs_msdos=MS-DOS
@@ -125,9 +139,11 @@ fs_ext4=Novo Linux nativo
 fs_xfs=SGI
 fs_jfs=IBM Journalling
 fs_btrfs=BTR
+
 delete_title=Excluir partição
 delete_rusure=Tem certeza de que deseja excluir $1 ($2)? Os dados nesta partição podem ser perdidos para sempre.
 delete_ok=Excluir agora
+
 disk_title=Editar partições de disco
 disk_egone=O disco não existe mais!
 disk_no=Número
@@ -148,11 +164,13 @@ disk_table=<b>Formato da tabela de partição:</b> $1
 disk_notable=<b>Formato da tabela de partição:</b> Nenhum criado
 disk_needtable=Nenhuma partição pode ser criada sem uma tabela de partição.
 disk_return=lista de partições
+
 relabel_title=Limpar partições
 relabel_warn=Tem certeza de que deseja limpar todas as partições em $1 ($2) reescrevendo o rótulo do disco? Todos os dados e sistemas de arquivos existentes serão perdidos!
 relabel_parts=Partições existentes
 relabel_noparts=Nenhum criado ainda
 relabel_table=Formato da tabela de partição
 relabel_ok=Limpar e rotular novamente
+
 table_msdos=MS-DOS (formato de partição padrão)
 table_gpt=GPT (para discos 2T ou maiores)

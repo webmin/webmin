@@ -55,12 +55,14 @@ index_gdom=$1 の グループ
 index_match0=等しい
 index_match1=含む
 index_match2=当てはまる
+
 butt_save=保存
 butt_eco=クライアント オプションの編集
 butt_vco=クライアント オプションの表示
 butt_del=削除
 butt_create=作成
 butt_leases=リースリスト
+
 esub_crheader=サブネットの作成
 esub_edheader=サブネットの編集
 esub_tabhdr=サブネットの詳細
@@ -74,11 +76,13 @@ esub_groups=このサブネットに直属するグループ
 esub_pools=サブネットのアドレス プール
 esub_pool=プール $1
 esub_poolnone=定義されたアドレス プールはありません
+
 esub_pooladd=アドレス プールの追加
 esub_none=なし
 esub_return=サブネット リスト
 esub_retshar=共有ネットワーク
 esub_desc=サブネットの説明
+
 esh_crheader=共有ネットワークの作成
 esh_eheader=共有ネットワークの編集
 esh_tabhdr=共有ネットワークの詳細
@@ -89,6 +93,7 @@ esh_subn=この共有ネットワークのサブネット
 esh_return=サブネット リスト
 esh_pools=共有ネットワークのアドレスプール
 esh_desc=共有ネットワークの説明
+
 ehost_crheader=ホストの作成
 ehost_eheader=ホストの編集
 ehost_tabhdr=ホストの詳細
@@ -109,6 +114,7 @@ ehost_retgroup=グループ
 ehost_retsubn=サブネット
 ehost_retshar=共有ネットワーク
 ehost_desc=ホストの説明
+
 egroup_crheader=ホスト グループの作成
 egroup_eheader=ホスト グループの編集
 egroup_tblhdr=ホスト グループの詳細
@@ -119,6 +125,7 @@ egroup_return=ホスト リスト
 egroup_retsubn=サブネット
 egroup_retshar=共有ネットワーク
 egroup_desc=グループの説明
+
 default=デフォルト
 secs=秒
 none=なし
@@ -136,33 +143,40 @@ listl_end=終了日時
 listl_return=ネットワークとホストのリスト
 listl_all=アクティブおよび期限切れのリースをすべて表示
 listl_delete=削除するには上のリストでリースの IP アドレスをクリックしてください。
+
 restart_errmsg1=dhcpd を再起動できませんでした。
 restart_errmsg2=処理に信号を送れませんでした
 start_failstart=dhcpd を起動できませんでした
+
 sgroup_faildel=グループを削除できませんでした
 sgroup_failsave=グループを保存できませんでした
 sgroup_invassign=グループが不正なセクションに割り当てられています
 sgroup_echanged=設定ファイルの内容が変更されています。再試行してください。
+
 shost_faildel=ホストを削除できませんでした
 shost_failsave=ホストを保存できませんでした
 shost_invalidhn=は無効なホスト名です
 shost_invalidhwa='$1' は無効な $2 アドレスです
 shost_invalidaddr='$1' は無効なホスト名または IP アドレスを含んでいます
 shost_invassign=ホストが不正なセクションに割り当てられています
+
 sopt_failsave=クライアント オプションを保存できませんでした
 sopt_invalidip='$1' は無効な IP アドレスです
 sopt_invalidint=は整数ではありません
 sopt_invalidipp=は有効な IP アドレスの組み合わせ (たとえば 1.2.3.4,5.6.7.8) ではありません
+
 sshared_faildel=共有ネットワークを削除できませんでした
 sshared_failsave=共有ネットワークの保存に失敗しました
 sshared_invalidsname=共有ネットワーク名がないか無効です。
 sshared_nosubnet=共有ネットワーク '$1' はサブネットを含んでいません。
+
 ssub_faildel=サブネットを削除できません
 ssub_failsave=サブネットを保存できませんでした
 ssub_invalidsubaddr=は無効なサブネット アドレスです
 ssub_invalidnmask=は無効なネットマスクです
 ssub_invalidipr=は無効な IP アドレスです
 ssub_nosubnet=共有ネットワーク  '$1' はサブネットを含んでいません。
+
 plib_deflt=デフォルト リース時間
 plib_bfname=ブート ファイル名
 plib_maxlt=最大リース時間
@@ -214,6 +228,7 @@ plib_eexpr=DHCP設定のこのセクションはWebminで安全に編集でき�
 plib_auth_subnet=サーバはこのサブネットに対し権威をもちますか?
 plib_auth_shared-network=サーバはこの共有ネットワークに対し権威をもちますか?
 plib_auth_global=サーバは全てのサブネットに対し権威を持ちますか?
+
 eopt_header=クライアント オプション
 eopt_subtitle=サブネット $1 用
 eopt_returnsub=サブネット
@@ -248,6 +263,7 @@ eopt_nbntype=NetBIOS ノード タイプ
 eopt_custom=カスタム オプション
 eopt_cnum=数
 eopt_cval=値
+
 log_apply=変更を適用しました
 log_start=DHCP サーバの起動
 log_create_subnet=サブネット $1 を作成しました
@@ -267,12 +283,14 @@ log_delete_group=$1 ホストのグループを削除しました
 log_modify_group=$1 ホストのグループを変更しました
 log_options_group=$1 ホストのグループのオプションを変更しました
 log_delete_lease=$1 のリースを削除しました
+
 pool_edit=アドレス プールの編集
 pool_create=アドレス プールを作成しました
 pool_header=アドレス プール オプション
 pool_allow=許可するクライアント
 pool_deny=拒否するクライアント
 pool_return=サブネット
+
 cdel_header=警告
 cdel_shared1=共有ネットワーク
 cdel_shared2=共有ネットワーク
@@ -290,6 +308,7 @@ cdel_txt=$1 '$2' を削除するとそれらの内容も削除されます:
 cdel_confirm=この $1 を削除してもよろしいですか？
 cdel_eunknown=不明のエラー
 cdel_return=ホストとネットワークのリスト
+
 eacl_aviol=アクセス制御違反
 eacl_np=次の操作をする権限がありません:
 eacl_pdh=ホストを削除
@@ -313,6 +332,7 @@ eacl_pdl=リースを削除
 eacl_psl=リースの表示
 eacl_pglob=グローバル オプションを編集
 eacl_papply=このサービスを再度開始
+
 acl_apply=変更を適用してもよろしいですか？
 acl_r_leases=リースを表示可能にしますか？
 acl_w_leases=リースを削除可能にしますか？
@@ -341,9 +361,11 @@ acl_err=アクセス制御リストの保存エラー
 acl_ernow=グローバル アクセス制御リストでオブジェクトの種類の書込みを可能にするには、そのオブジェクトの種類の読取りアクセスも可能にする必要があります。
 acl_normal=標準
 acl_paranoic=非標準
+
 iface_title=ネットワークインターフェース
 iface_desc=DHCPサーバは以下で選択されたネットワークに接続されたインターフェースにのみIPアドレスを割り当てる事ができます。定義されたサブネット用のネットワークインターフェースも含まれます。選択されなかった場合、DHCPサーバは自動的に選択します。
 iface_listen=待ち受けインターフェース
+
 lookup_ehost=その名前のホスト、 IPアドレスまたはMACアドレス $1 は存在しません
 lookup_ehostname=ホスト名、IPアドレスまたはMACアドレスが入力されていません
 lookup_egroup=その名前のグループまたはドメイン名 $1 は存在しません

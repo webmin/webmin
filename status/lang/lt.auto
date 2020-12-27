@@ -19,6 +19,7 @@ index_refsel=Atnaujinti pasirinkta
 index_group=$1 nariai
 index_tmpls=Redaguoti el. Pašto šablonus
 index_tmplsdesc=Peržiūrėkite ir redaguokite šablonus, naudojamus el. Laiškų, siunčiamų siunčiant stebimas paslaugas, konstravimui.
+
 type_apache=„Apache“ internetinis serveris
 type_inetd=Internetas ir RPC serveris
 type_xinetd=Išplėstinis interneto serveris
@@ -73,8 +74,10 @@ type_alive=Gyva sistema
 type_rssh=Nuotolinis SSH
 type_slapd=LDAP serveris
 type_ldap=LDAP ryšys
+
 mon_create=Sukurti monitorių
 mon_edit=Redaguoti monitorių
+mon_virtualmin=Įspėjimas! Šis monitorius yra susietas su „Virtualmin“ domenu $1, todėl jo nereikia čia redaguoti ar ištrinti.
 mon_header=Monitoriaus informacija
 mon_header2=Komandos bėgti
 mon_header3=Stebimos paslaugų galimybės
@@ -138,6 +141,7 @@ mon_changes0=Rodyti kiekvieną įvykio tipą
 mon_changes1=Rodyti tik pakeitimus
 mon_all=Rodyti visus istorinius įvykius
 mon_nochanges=Būsenos pokyčių neįvyko per paskutinius $1 istorinius įvykius.
+
 sched_title=Suplanuotas stebėjimas
 sched_header=Suplanuotos foninės stebėjimo parinktys
 sched_mode=Suplanuotas tikrinimas įjungtas?
@@ -184,16 +188,19 @@ sched_subject0=Nėra (perspėjimas yra kūne)
 sched_subject1=Įspėjimo tekstas (palikite kūną tuščią)
 sched_subject2=Pasirinktinis tekstas
 sched_esubject=Trūksta SMS žinutės dalyko
+
 up_since=Aukštyn nuo $1 
 depends_mod=$1 modulis neįdiegtas jūsų sistemoje
 depends_os=Jūsų sistemoje nepalaikomas modulis $1 
 depends_remote=$2 modulis nepalaikomas $2 serveryje
+
 tcp_host=Pagrindinis kompiuteris, prie kurio reikia prisijungti
 tcp_port=Prievadas, prie kurio reikia prisijungti
 tcp_alarm=Ryšio laikas
 tcp_ehost=Trūksta arba netinkamas pagrindinio kompiuterio vardas
 tcp_eport=Trūksta arba netinkamas prievado numeris
 tcp_ealarm=Trūksta arba netinkamas ryšio laikas
+
 http_url=URL užklausai
 http_alarm=Ryšio laikas
 http_eurl=Trūksta arba netinkamas URL
@@ -208,11 +215,13 @@ http_regexp=Puslapis turi atitikti atnaujinimo tipą
 http_eregexp=Nėra įvestos įprastos puslapio atitikties išraiškos
 http_none2=Nesutampa
 http_ehead=HEAD užklausos metodas negali būti naudojamas tikrinant reguliariąją išraišką
+
 ping_host=Priimančioji „ping“
 ping_wait=Laikas laukti atsakymo
 ping_ehost=Trūksta arba netinkamas pagrindinio kompiuterio vardas
 ping_ewait=Trūksta arba netinkamas laukimo laikas
 ping_econfig=„Modulio konfigūracijoje“ nenustatyta „ping“ komandos
+
 proc_pid=Bėgimas su PID $1 
 proc_cmd=Komanda patikrinti
 proc_not=Nepavyks, jei procesas yra
@@ -224,6 +233,7 @@ proc_ethresh=Trūksta arba netinkamas procesų skaičius
 proc_asuser=Veikia kaip vartotojas
 proc_anyuser=Bet kuris vartotojas
 proc_easuser=Proceso, kaip neegzistuoja, vartotojas
+
 exec_cmd=Komanda bėgti
 exec_mode=Išeiti iš būsenos patikros
 exec_mode0=Nepavyksta kontroliuoti, jei komanda nepavyksta
@@ -235,6 +245,7 @@ exec_noregexp=Netikrinkite
 exec_remode=„Regexp“ tikrinimas
 exec_remode0=Fail, jei išvestis nesutampa
 exec_remode1=Nepavyks, jei išvestis sutampa
+
 file_file=Patikrinkite failą, katalogą ar šabloną
 file_test=Testas atlikti
 file_test_0=Turi egzistuoti
@@ -253,6 +264,7 @@ file_group=Failų grupė turi būti
 file_nocheck=Bet ką
 file_perms=Aštuonkojo leidimai turi būti
 file_eperm=Failai su neteisingais leidimais : $1 
+
 traffic_iface=Monitoriaus sąsaja
 traffic_bytes=Maksimalus baitas per sekundę
 traffic_dir=Kryptis stebėti
@@ -262,6 +274,7 @@ traffic_dir2=Tik siunčiami
 traffic_desc=Šis monitorius stebi tinklo srautą pasirinktoje sąsajoje ir rodo monitorių žemyn, jei srautas viršija žemiau įvestą baitų skaičių per sekundę. Tai tikrai gerai veikia tik tuo atveju, jei numatytas stebėjimas įjungiamas per trumpą intervalą, pavyzdžiui, kas 5 minutes.
 traffic_eifaces=Jūsų operacinėje sistemoje nėra/proc/net/dev failo
 traffic_ebytes=Trūksta arba netinkamas baitų skaičius per sekundę
+
 space_fs=Tikrinti failų sistemą
 space_min2=Mažiausia laisva vieta
 space_mode0=Absoliutus dydis
@@ -277,6 +290,7 @@ space_ierr=Tik $1 inodai nemokami
 space_merr=Tik $1 vietos nėra
 space_perr=Tik $1% nemokama
 space_dferr=Nepavyko gauti failų sistemos dydžio
+
 load_time=Įkelkite vidutinį patikrinimą
 load_1=1 minutę
 load_5=5 minutes
@@ -285,6 +299,7 @@ load_max=Maksimalios apkrovos vidurkis
 load_emax=Trūksta arba netinkamas didžiausias apkrovos vidurkis
 load_ecmd=Komanda <tt>uptime</tt> jūsų sistemoje nerasta
 load_efmt=Nepavyko išanalizuoti komandos <tt>uptime</tt> išvesties
+
 log_create=Sukurtas monitorius $1 
 log_modify=Modifikuotas monitorius $1 
 log_delete=Ištrintas monitorius $1 
@@ -295,10 +310,14 @@ log_tmpl_modify=Modifikuotas el. Pašto šablonas $1
 log_tmpl_delete=Ištrintas el. Pašto šablonas $1 
 log_tmpl_deletes=Ištrinti $1 el. Pašto šablonai
 log_refresh=Atnaujintos monitoriaus būsenos
+
 acl_edit=Ar galite redaguoti ir kurti monitorius?
 acl_sched=Ar galima pakeisti suplanuotą stebėjimą?
+
 change_file=Stebimas failas arba katalogas (nepavyksta, jei pakeista)
+
 jabber_eparser=„Perl“ modulis $1 neįdiegtas jūsų sistemoje.
+
 memory_min2=Mažiausia laisvoji atmintis
 memory_emin=Trūksta arba netinkamas laisvosios atminties kiekis
 memory_eproc=„Webmin“ nežino, kaip patikrinti laisvą jūsų operacinės sistemos atmintį
@@ -308,7 +327,9 @@ memory_freelow=Tik $1 laisvos atminties
 memory_freelowswap=Tik $1 virtualioji atmintis nemokama
 memory_minswap=Mažiausia laisva virtualioji atmintis
 memory_eminswap=Trūksta arba netinkamas laisvos virtualiosios atminties kiekis
+
 proftpd_etype=Šis monitorius negali būti naudojamas, kai ProFTPD veikia atskirai
+
 mailserver_to=Siųsti el. Laišką adresu
 mailserver_timeout=Laikas ir intervalas
 mailserver_units_0=Sekundės
@@ -316,22 +337,28 @@ mailserver_units_1=Minutės
 mailserver_units_2=Valandos
 mailserver_units_3=Dienos
 mailserver_desc=Žemiau esantis adresas turi būti automatinis atsakiklis, į šaltinio adresą atsakantis ta pačia eilute „Tema:“.
+
 oldfile_file=Stebimas failas (žlugti, jei nepakeistas)
 oldfile_diff=Nepavyks, jei nepakeistas
 oldfile_secs=sek
+
 raid_device=RAID įrenginys
 raid_edevice=Nepasirinktas RAID įrenginys
 raid_bad=Aptiktas netinkamas diskas
 raid_resync=Šiuo metu keičiasi iš naujo
 raid_notfound=RAID įrenginys $1 nerastas
 raid_other=Kiti ..
+
 iface_iface=Sąsaja tikrinti
+
 init_action=Veiksmas patikrinti
 init_eaction=Nepasirinktas joks veiksmas
+
 refresh_title=Atnaujinti būseną
 refresh_doing=Atnaujinama visų monitorių būsena.
 refresh_doing2=Atnaujinama $1 pasirinktų monitorių būsena.
 refresh_done=.. padaryta.
+
 sensors_name=Jutiklis patikrinti
 sensors_value=Nepavyko, kai
 sensors_value0=Sistema rodo perspėjimą
@@ -342,6 +369,7 @@ sensors_none=Jūsų sistemoje neaptikta jutiklių. Jums gali tekti paleisti <tt>
 sensors_cur=$1 (šiuo metu $2 $3)
 sensors_emin=Trūksta arba netinkama minimali vertė
 sensors_emax=Trūksta arba netinkama didžiausia vertė
+
 nut_ups=NUT UPS patikrinti
 nut_name=Atributas patikrinti
 nut_value=Nepavyko, kai
@@ -352,6 +380,7 @@ nut_eups=Nėra įvestas USP patikrinti
 nut_cur=$1 (šiuo metu $2)
 nut_emin=Trūksta arba netinkama minimali vertė
 nut_emax=Trūksta arba netinkama didžiausia vertė
+
 mailq_system=Pašto serveris
 mailq_qmailadmin=„Qmail“
 mailq_postfix=Pašto indeksas
@@ -360,6 +389,7 @@ mailq_size=Maksimalus pašto eilės dydis
 mailq_esize=Trūksta arba netinkamas maksimalus eilės dydis
 mailq_toomany=Žemyn - $1 pranešimų eilėje
 mailq_ok=Aukštyn - $1 pranešimų eilėje
+
 dns_server=DNS serveris
 dns_host=Pagrindinio kompiuterio vardas, kurį reikia ieškoti
 dns_address=Laukiamas IP adresas
@@ -367,6 +397,7 @@ dns_eserver=Trūksta arba netinkamas DNS serveris
 dns_ehost=Trūksta arba netinkamai ieškoma pagrindinio kompiuterio vardo
 dns_eaddress=Trūksta arba netinkamas laukiamas IP adresas
 dns_ecmds=Nei <tt>nslookup</tt>, nei <tt>dig</tt> komandos neįdiegtos jūsų sistemoje
+
 monitor_sub_down=$1 žemyn $2 
 monitor_pager_down=$1 : „$2“ sumažėjo $3 
 monitor_snmp_down= $1:$2 
@@ -398,8 +429,10 @@ monitor_run1=Veikia $1 $2.
 monitor_run2=Veikia $1 ..
 monitor_runerr=Nepavyko paleisti $1 $2 : $3 
 monitor_email_stat=Dabartinė būsena: $1 
+
 deletes_egone=Vienas iš pasirinktų monitorių nebeegzistuoja
 deletes_enone=Nepasirinktas nė vienas monitorius
+
 ftp_host=FTP serverio priegloba
 ftp_port=FTP prievadas
 ftp_user=Prisijungimas kaip vartotojas
@@ -416,6 +449,7 @@ ftp_econn=Nepavyko prisijungti prie TLS FTP
 ftp_econn2=Nepavyko prisijungti prie TLS FTP : $1 
 ftp_elogin=Nepavyko prisijungti prie TLS FTP : $1 
 ftp_etlsfile=Nepavyko atsisiųsti TLS FTP : $1 
+
 query_driver=SQL duomenų bazės tipas
 query_db=Duomenų bazės pavadinimas
 query_host=Duomenų bazės serverio priegloba
@@ -436,9 +470,12 @@ query_elogin=Prisijungimas nepavyko : $1
 query_eprepare=SQL klaida : $1 
 query_eexecute=SQL nepavyko : $1 
 query_ewrong=Neteisingas rezultatas : $1 
+
 consume_rate=Maksimalus vartojimo greitis (per sekundę)
 consume_high=Vartojimo norma yra $1 per sekundę
+
 alive_up=Aukštyn už $1 
+
 rssh_host=SSH serverio priegloba
 rssh_ruser=Prisijungimas kaip vartotojas
 rssh_rpass=Prisijungimas su slaptažodžiu
@@ -454,6 +491,7 @@ rssh_error=SSH klaida
 rssh_haspass=Slaptažodis
 rssh_port=SSH serverio prievadas
 rssh_eport=Trūksta arba netinkamas prievado numeris
+
 tmpls_title=El. Pašto šablonai
 tmpls_ecannot=Jums neleidžiama redaguoti el. Pašto šablonų
 tmpls_none=Dar nėra apibrėžti el. Pašto šablonai. Visi perspėjimai bus siunčiami naudojant „Webmin“ numatytuosius pranešimus.
@@ -462,6 +500,7 @@ tmpls_email=Pašto žinutė
 tmpls_add=Pridėkite naują el. Pašto šabloną.
 tmpls_return=šablonų sąrašas
 tmpls_delete=Ištrinti pasirinktus šablonus
+
 tmpl_title1=Sukurti el. Pašto šabloną
 tmpl_title2=Redaguoti el. Pašto šabloną
 tmpl_header=Įspėjamojo el. Pašto šablono pranešimai
@@ -486,9 +525,11 @@ tmpl_esms=Trūksta SMS žinutės
 tmpl_esnmp=Trūksta SNMP pranešimo
 tmpl_err2=Nepavyko ištrinti el. Pašto šablono
 tmpl_eusers=Jį naudoja šie monitoriai : $1 
+
 dtmpls_err=Nepavyko ištrinti šablonų
 dtmpls_enone=Nepasirinkta
 dtmpls_eusers=$1 naudoja šie monitoriai : $2 
+
 sslcert_src=Pažymos vieta
 sslcert_url=Iš HTTPS URL
 sslcert_file=Iš failo serveryje
@@ -506,18 +547,21 @@ sslcert_eend=Negalioja po $1
 sslcert_left=Iki - $1 dienos iki galiojimo pabaigos
 sslcert_ematch=Pagrindinio kompiuterio vardas $1 nesutampa su sertifikatu $2 
 sslcert_emismatch=Sertifikato pagrindinio kompiuterio vardo tikrinimas gali būti naudojamas tik tikrinant URL
+
 du_dir=Stebimas katalogas
 du_max=Maksimalus dydis
 du_edir=Trūksta arba nėra absoliutus katalogo kelias
 du_emax=Trūksta didžiausio ar neskaitinio dydžio
 du_over=Dydis yra $1 
 du_under=Dydis yra tik $1 
+
 ldap_edriver=„Perl“ modulis $1 neįdiegtas
 ldap_host=LDAP serverio pagrindinio kompiuterio vardas
 ldap_port=LDAP serverio prievadas
 ldap_ssl=Naudoti SSL ryšį?
 ldap_user=LDAP serverio prisijungimas
 ldap_pass=LDAP serverio slaptažodis
+
 info_desc=Sistemos monitorius
 info_last=Dabartinis statusas
 info_title=Sistemos ir serverio būsena

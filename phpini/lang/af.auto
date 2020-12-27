@@ -9,17 +9,21 @@ index_edit=bestuur
 index_manual=Wysig handmatig
 index_anyfile=Wysig ander PHP-opstellinglêers:
 index_return=konfigurasie lêers
+
 file_global=Globale PHP-konfigurasie
 file_eread=Kon nie $1 : $2 lees nie
+
 manual_title=Wysig die konfigurasie handmatig
 manual_desc=Hierdie bladsy kan gebruik word om 'n PHP-konfigurasielêer met die hand te wysig. Dit moet versigtig gedoen word, aangesien geen sintaksis of ander geldigheidskontrole op u wysigings uitgevoer sal word nie.
 manual_err=Konfigurasie-lêer kon nie gewysig word nie
 manual_edata=Geen nuwe inhoud ingevoer nie
+
 list_title=Bestuur PHP-konfigurasie
 list_ecannot=U mag nie hierdie PHP-konfigurasielêer bestuur nie
 list_return=PHP-konfigurasie
 list_format_ini=INI-formaat
 list_format_fpm=FPM-formaat
+
 vars_title=PHP-veranderlikes
 vars_header=PHP veranderlike skepping en aanhaling opsies
 vars_magic=Noem alle invoerveranderlikes?
@@ -28,6 +32,7 @@ vars_register=Verander u alle insette in globale veranderlikes?
 vars_args=Verander opdragreëlparameters in globale veranderlikes?
 vars_long=Skep ou-styl skikkings soos <tt>HTTP_GET_VARS</tt>?
 vars_err=PHP-veranderlike instellings kon nie gestoor word nie
+
 dirs_title=Gidsinstellings
 dirs_header=PHP-skrip- en uitbreidingsgidsinstellings
 dirs_include=Soek kaarte vir insluit
@@ -39,6 +44,7 @@ dirs_err=Die gidsinstellings kon nie gestoor word nie
 dirs_eincs=Geen soekgidse is ingevoer nie
 dirs_eutmp=Gids vir tydelike lêers ontbreek of ongeldig
 dirs_eext=Ontbrekende gids vir uitbreidings
+
 db_title=Databasisinstellings
 db_header1=MySQL-databasisverbindingsinstellings
 db_persist=Laat u aanhoudende databasisverbindings toe?
@@ -57,6 +63,7 @@ db_emaxlinks=Maksimum aantal totale verbindings ontbreek of ongeldig
 db_etimeout=Ontbreek of ongeldige verbindingstydperk
 db_ehost=Ontbrekende of ongeldige standaard MySQL-bedienergasheer
 db_eport=Ontbrekende of ongeldige standaard MySQL-bedienerspoort
+
 session_title=Sessieopsies
 session_header=Opsies vir die opsporing van PHP-sessies
 session_handler=Sessiebergingsmeganisme
@@ -73,6 +80,7 @@ session_epath=Ontbrekende of ongeldige gids vir sessielêers
 session_elife=Kookleeftyd ontbreek of ongeldig
 session_emaxlife=Maksimum leeftyd van die sessie ontbreek of ongeldig
 session_eredis=Heruitbreiding ontbreek of gedeaktiveer
+
 safe_title=Veilige modus-opsies
 safe_header=Opsies vir veilige lêertoegangsmodus
 safe_on=Aktiveer die veilige modus?
@@ -85,6 +93,7 @@ safe_err=Kon nie die veilige modus opslaan nie
 safe_einclude=Gids vir ontbrekende lêers ontbreek of ongeldig
 safe_eexec=Gids vir ontbrekende programme ontbreek of ongeldig
 safe_ebasedir=Ontbrekende of ongeldige gids vir lêerbewerkings
+
 limits_title=Hulpbronlimiete
 limits_header=Opsies vir geheue en oordraglimiete
 limits_mem=Maksimum toekenning van geheue
@@ -98,6 +107,7 @@ limits_epost=Maksimum of ongeldige maksimum HTTP POST-grootte ontbreek
 limits_eupload=Maksimum of ongeldige maksimum lêeroplaaigrootte ontbreek
 limits_eexec=Maksimum uitvoeringstyd ontbreek of ongeldig
 limits_einput=Ontbrekende of ongeldige maksimum invoertyd vir insette
+
 errors_title=Kon nie aanmeld nie
 errors_header=Opsies en aanmeldopsies van foutboodskappe
 errors_display=Wys foutboodskappe?
@@ -128,6 +138,7 @@ errors_err=Kon nie foutmelding stoor nie
 errors_ereporting=Geen fouttipe-uitdrukking is ingevoer nie
 errors_emaxlen=Maksimum of ongeldige maksimum grootte van aangemelde foute
 errors_efile=Fout loglêer ontbreek
+
 misc_title=Ander instellings
 misc_header=Diverse ander PHP-instellings
 misc_short=Laat PHP-skripte begin met &lt;? ?
@@ -148,6 +159,7 @@ misc_include=Laat die opening van afstandbeheerders toe? Sluit in?
 misc_path=CGI Fix-padinligting?
 misc_timezone=PHP Tydsone
 misc_charset=Standaardkarakterstel
+
 log_manual=Redigeer lêer $1 handmatig
 log_vars=PHP-veranderlikes in $1 verander
 log_dirs=Die gidsinstellings in $1 verander
@@ -157,6 +169,7 @@ log_safe=Die veilige modus-opsies in $1 verander
 log_limits=Veranderde hulpbronlimiete in $1 
 log_errors=Fout aanmelding $1 verander
 log_misc=Ander instellings in $1 verander
+
 acl_global=Kan die globale PHP-opstelling verander?
 acl_anyfile=Kan u enige lêer as 'n PHP-opstelling wysig?
 acl_manual=Kan u konfigurasielêers met die hand wysig?

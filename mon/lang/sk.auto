@@ -6,6 +6,7 @@ mon_conf_title=Základná konfigurácia
 mon_status_title=Prevádzkový stav
 hostgroups_title=MON Configuration-Hostgroups
 services_title=Definície služieb sledovacích skupín
+
 head_hostgroups=Hostiteľské skupiny a služby
 head_groups=Názov hostiteľskej skupiny
 head_members=Členovia hostiteľskej skupiny
@@ -17,6 +18,7 @@ head_monauth=Uveďte overenie MONCMD
 head_usr=užívateľské meno
 head_pass=heslo
 head_mand=(Parametre v časti ČERVENÁ FARBA sú povinné)
+
 err_nomon=v systéme nie je nainštalovaný balík 'mon'
 err_nomonconf=Vo vašom systéme sa nenašiel konfiguračný súbor MON $1. Možno nie je MON nainštalovaný alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
 err_nowatch=Nie sú vybraté žiadne sledovacie skupiny. Ak chcete pokračovať, vyberte aspoň jednu sledovanú skupinu.
@@ -28,6 +30,7 @@ stop_epid=Už nebeží
 start_err=Nepodarilo sa spustiť MON
 restart_err=Nepodarilo sa reštartovať MON
 restart_epid=Nepodarilo sa získať PID
+
 other=Iné (oddelené miesto)
 next=Ďalšie
 mon_stat=MON Stav
@@ -43,6 +46,7 @@ save_apply=Uložiť a použiť
 watch=Watchgroup
 members=členovia
 def_perargs=wd {So-Ne}
+
 def_desc=popis
 def_inter=interval
 def_mon=monitor
@@ -58,9 +62,11 @@ def_trapdur=trapduration
 def_rand=randskew
 def_exclhost=exclude_hosts
 def_exclper=exclude_period
+
 groups_title=Hostiteľské skupiny
 groups_group=Názov skupiny
 groups_members=Členskí hostitelia
+
 watches_title=Zoznamy sledovania
 watches_group=Sledujúca skupina
 watches_services=Sledované služby
@@ -68,6 +74,7 @@ watches_sadd=Pridajte službu ..
 watches_add=Pridať zoznam sledovaných pre skupinu :
 watches_return=zoznamy sledovania
 watches_none=Zatiaľ neboli definované žiadne zoznamy sledovania.
+
 global_title=Globálne možnosti
 global_header=Možnosti globálnej MON konfigurácie
 global_maxprocs=Maximálne procesy MON
@@ -85,6 +92,7 @@ global_ehistlength=Chýba alebo je neplatná dĺžka histórie udalostí
 global_ealertdir=Chýbajúci alebo neplatný adresár výstražných programov
 global_emondir=Chýbajúci alebo neplatný adresár programov monitorovania
 global_euserfile=Chýba súbor používateľov MON
+
 watch_title=Upraviť zoznam sledovania
 watch_header=Podrobnosti o sledovaní hostiteľskej skupiny
 watch_group=Hostiteľská skupina na pozeranie
@@ -93,6 +101,7 @@ watch_service=Názov služby
 watch_monitor=Monitor na použitie
 watch_interval=Skontrolujte každú
 watch_periods=Monitorovacie obdobia
+
 service_title=Pridajte službu
 service_title2=Upraviť službu
 service_header=Sledované podrobnosti služby
@@ -145,16 +154,19 @@ service_epstr=Špecifikácia chýbajúceho obdobia
 service_known0=<tt>Čas::Obdobie</tt>
 service_known1=Zadané dni a hodiny
 service_known2=Definované obdobie
+
 status_title=MON Stav
 status_ecgi=Program MON stavu CGI $1 neexistuje. Možno nie je nainštalovaný alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
 status_eperl=Program MON status CGI vyžaduje modul $1 perl. <a href='$2'>Kliknite sem</a> a nainštalujte ho priamo z CPAN.
 status_esame=Program MON stav CGI $1 bol v tomto module Webmin nastavený na skript <tt>mon.cgi</tt>, nie na program CGI dodávaný s programom MON. Upravte <a href='$2'>konfiguráciu modulu</a> a použite správnu cestu.
+
 users_title=Používatelia MON
 users_etype=Zoznam používateľov MON nie je možné upravovať, pretože MON nie je momentálne nakonfigurovaný na používanie na overenie na stránke <a href='$1'>Globálne možnosti</a>.
 users_header=Povolené používatelia MON v $1 
 users_nousers=V $1 neboli definovaní žiadni používatelia MON.
 users_add=Vytvorte nového používateľa.
 users_return=Zoznam používateľov MON
+
 user_create=Vytvorte používateľa MON
 user_edit=Upraviť používateľa MON
 user_header=Detaily používateľa MON
@@ -164,6 +176,7 @@ user_leave=Nechajte bezo zmeny
 user_err=Nepodarilo sa uložiť používateľa
 user_euser=Chýbajúce alebo neplatné používateľské meno
 user_esame=Používateľ s rovnakým menom už existuje
+
 auth_title=Príkazy klienta
 auth_desc=Táto stránka vám umožňuje riadiť, ktoré príkazy MON môžu spúšťať používatelia pri používaní klientskych programov.
 auth_cmd=Príkaz MON
@@ -173,6 +186,7 @@ auth_all=všetci
 auth_sel=Iba používatelia
 auth_err=Uloženie príkazov klienta zlyhalo
 auth_eusers=Do príkazu $1 nezadali žiadni používatelia
+
 periods_title=Definované obdobia
 periods_period=Názov obdobia
 periods_times=Dni a časy
@@ -181,5 +195,6 @@ periods_allhours=Všetky hodiny
 periods_err=Uloženie definovaných období zlyhalo
 periods_ename='$1' nie je platný názov obdobia
 periods_ehour=Chýbajúca alebo neplatná hodina pre obdobie $1 (musí byť ako 9:00 alebo 17:00)
+
 show_title=Prevádzkový stav
 show_ecgi=Program stavu MON $1 neexistuje. Možno nie je nainštalovaný alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.

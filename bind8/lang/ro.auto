@@ -65,6 +65,7 @@ index_checkconfig=Asigurați-vă că directorul chroot este setat corect pe pagi
 index_eexpired=Avertisment: Următoarele zone au semnături DNSSEC expirate : $1
 index_eexpired_conf=Semnarea automată ar trebui să fie reactivată pe pagina $1.
 index_eexpired_mod=Utilizați modulul $1 pentru a dezactiva DNSSEC pentru aceste domenii sau pentru a verifica de ce semnarea nu reușește.
+
 master_title=Editează zona principală
 master_inview=$1 în vizualizare $2 
 master_ecannot=Nu aveți voie să editați această zonă
@@ -146,6 +147,7 @@ master_defttl=Timp de viață implicit pentru înregistrări
 master_edefttl=„$1” nu este o durată de viață implicită valabilă pentru înregistrări
 master_esoagone=Nu a fost găsită nicio înregistrare SOA!
 master_einclude=Fișierul șablon suplimentar nu există
+
 delete_title=Ștergeți Zona
 delete_mesg=Sigur doriți să ștergeți zona $1? Toate înregistrările și fișierul de zonă vor fi șterse.
 delete_mesg2=Sigur doriți să ștergeți zona rădăcină? Este posibil ca serverul dvs. DNS să nu mai poată căuta adresele de pe internet.
@@ -157,6 +159,7 @@ delete_errslave=Zona master a șters OK, dar au apărut următoarele erori pe sc
 delete_ezone=Zona nu a fost găsită pe serverul slave
 delete_vwarn=Această zonă este asociată cu domeniul Virtualmin $1, deci nu trebuie ștersă aici!
 delete_vwarn2=Această zonă este asociată domeniului Virtualmin $1 și $2 altele, deci nu trebuie șterse aici!
+
 mcreate_title=Creați zona principală
 mcreate_ecannot=Nu puteți crea zone master
 mcreate_opts=Noi opțiuni de zonă principală
@@ -171,6 +174,7 @@ mcreate_auto=Automat
 mcreate_err=A eșuat crearea zonei principale
 mcreate_ednssecsize=Nu a reușit să calculeze dimensiunea cheii : $1
 mcreate_ednssec=Crearea înregistrărilor a reușit, dar DNSSEC a eșuat : $1
+
 slave_title=Editează Zona Slave
 stub_title=Editați Stub Zone
 slave_ecannot=Nu aveți voie să editați această zonă
@@ -202,6 +206,7 @@ slave_applymsg2=Faceți clic pe acest buton pentru a forța un re-transfer al zo
 slave_last=Ultima dată transferată : $1
 slave_never=Nu
 slave_xfer=Transfer de zonă de testare
+
 screate_title1=Creați zona Slave
 screate_title2=Creați Stub Zone
 screate_ecannot1=Nu aveți voie să creați zone slave
@@ -214,6 +219,7 @@ screate_rev=Revers (Adrese către nume)
 screate_dom=Nume de domeniu / Rețea
 screate_err1=Nu a reușit să creeze zona slave
 screate_err2=Nu a reușit să creeze zona de stub
+
 recs_ecannot=Nu aveți voie să editați înregistrări în această zonă
 recs_ecannottype=Nu aveți voie să editați înregistrări de acest tip
 recs_title=$1 Înregistrări
@@ -231,6 +237,7 @@ recs_drev=Ștergeți și inversele?
 recs_none=Domeniul nu are încă $1 înregistrări.
 recs_nosearch=Nicio înregistrare nu se potrivește căutării dvs.
 recs_needsearch=Introduceți o căutare pentru a găsi înregistrări potrivite.
+
 edit_title=Editați $1
 edit_header=În $1
 edit_edit=Editați $1 Înregistrare
@@ -306,6 +313,7 @@ edit_edmarcpct=Procentajul mesajelor trebuie să fie un număr întreg între 0 
 edit_edmarcrua=Lipsește adresa de feedback agregată
 edit_edmarcruf=Lipsește adresa de informații medico-legale
 edit_ecaavalue2=Numele de domeniu care lipsește sau are aspect nevalid
+
 text_title=Editează fișierul înregistrărilor
 text_title2=Vizualizați fișierul înregistrărilor
 text_desc3=Acest formular vă permite să editați manual fișierul de înregistrări DNS $1. Webmin nu va verifica sintaxa.
@@ -315,6 +323,7 @@ text_ecannot=Nu aveți voie să editați fișierele de înregistrare
 text_none=Cu toate acestea, fișierul este în prezent gol, probabil pentru că zona nu a fost încă transferată de pe serverul principal.
 text_soa=Măriți numărul de serie automat
 text_rawformat=Această zonă este în format binar brut, deci nu poate fi afișată ca text.
+
 restart_err=Eroare la aplicarea modificărilor
 restart_ecannot=Nu aveți voie să reporniți BIND
 restart_epidfile=Nu s-a putut găsi BIND PID în $1
@@ -323,10 +332,12 @@ restart_erunning2=BIND nu pare să ruleze pe serverul slave $1
 restart_endc=Comanda NDC a eșuat : $1
 restart_ecmd=Comanda de repornire a eșuat : $1
 restart_eversion=Serverul slave $1 nu rulează versiunea Webmin $2 sau mai sus.
+
 start_ecannot=Nu aveți voie să începeți BIND
 start_error=Eșecul la pornirea BIND : $1
 stop_epid=BIND nu rulează
 stop_ecannot=Nu aveți voie să opriți BIND
+
 fwd_title=Modificați zona înainte
 fwd_ecannot=Nu aveți voie să editați această zonă
 fwd_opts=Opțiuni de zonă
@@ -335,12 +346,14 @@ fwd_forward=Încercați alte servere?
 fwd_check=Verificați numele?
 fwd_err=Nu a reușit să salvați opțiunile
 fwd_delmsg=Faceți clic pe acest buton pentru a șterge această zonă de pe serverul dvs. DNS. Înregistrările din ea vor fi apoi căutate folosind procesul de rezoluție normală.
+
 delegation_title=Modificați zona de delegare
 delegation_ecannot=Nu aveți voie să editați această zonă
 delegation_opts=Opțiuni de zonă
 delegation_err=Nu a reușit să salvați opțiunile
 delegation_noopts=Zonele de delegare nu au opțiuni configurabile.
 delegation_delmsg=Faceți clic pe acest buton pentru a șterge această zonă de pe serverul dvs. DNS. Tipurile de înregistrare în acesta, altele decât NS, vor fi apoi recunoscute de BIND.
+
 fcreate_title=Creați zona înainte
 fcreate_ecannot=Nu aveți voie să creați zone înainte
 fcreate_opts=Noi opțiuni pentru zona înainte
@@ -350,10 +363,12 @@ fcreate_rev=Revers (Adrese către nume)
 fcreate_dom=Nume de domeniu / Rețea
 fcreate_masters=Servere master
 fcreate_err=Nu a reușit să creeze zona înainte
+
 dcreate_title=Creați zona numai pentru delegație
 dcreate_ecannot=Nu aveți voie să creați zone de delegare
 dcreate_opts=Noi opțiuni pentru zona de delegare
 dcreate_err=Nu a reușit să creeze zona de delegare
+
 create_enet=„$1” nu este o rețea validă
 create_edom=„$1” nu este un nume de domeniu valid
 create_edom2=„$1” trebuie să fie un domeniu, nu o rețea
@@ -363,9 +378,11 @@ create_efile3=Nu a reușit să creeze „$1” : $2
 create_efile4=Fișierul $1 există deja
 create_emaster=„$1” nu este o adresă de server master validă
 create_enone=Trebuie să introduceți cel puțin un server master
+
 boot_err=Descarcare esuata
 boot_egzip=Fișierul de zonă rădăcină este comprimat, dar comanda <tt>gzip</tt> nu este instalată pe sistemul dvs.!
 boot_egzip2=Necomprimarea fișierului zonă rădăcină a eșuat : $1
+
 type_A=Abordare
 type_AAAA=Adresa IPv6
 type_NS=Server nume
@@ -386,6 +403,7 @@ type_SRV=Adresa serviciului
 type_ALL=Toate tipurile de înregistrare
 type_KEY=Cheia publică
 type_CAA=Autoritate certificată
+
 edit_A=Abordare
 edit_AAAA=Adresa IPv6
 edit_NS=Server nume
@@ -405,6 +423,7 @@ edit_NSEC3PARAM=Parametrii DNSSEC
 edit_TLSA=Certificat SSL
 edit_SSHFP=Cheie publică SSH
 edit_CAA=Autoritate certificată
+
 recs_defttl=TTL implicit
 recs_A=Abordare
 recs_AAAA=Adresa IPv6
@@ -427,6 +446,7 @@ recs_TLSA=Certificat SSL
 recs_SSHFP=Cheie publică SSH
 recs_CAA=Autoritate certificată
 recs_delete=Sterge selectia
+
 value_A1=Abordare
 value_AAAA1=Adresa IPv6
 value_NS1=Server nume
@@ -503,6 +523,7 @@ value_CAA3=Numele de domeniu CA
 value_caa_issue=Cert domeniu unic
 value_caa_issuewild=Wildcard cert
 value_caa_iodef=URL de încălcare a politicii
+
 tlsa_usage0=Autoritate certificată
 tlsa_usage1=Entitate finală
 tlsa_usage2=Ai încredere în ancoră
@@ -512,12 +533,14 @@ tlsa_selector1=Informații cheie publice
 tlsa_match0=Conținut netulburat
 tlsa_match1=Hașa SHA-256
 tlsa_match2=Hârtie SHA-512
+
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDSA
 sshfp_alg4=Ed25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 warn=A avertiza
 fail=Fail
 ignore=Ignora
@@ -531,6 +554,7 @@ listed=Enumerate ..
 eip=„$1” nu este o adresă IP validă
 eport=„$1” nu este un număr de port valid
 eipacl=„$1” nu este o adresă IP validă sau un nume ACL
+
 acl_zones=Domenii pe care le poate modifica acest utilizator
 acl_zall=Toate zonele
 acl_zsel=Zonele selectate ..
@@ -575,6 +599,7 @@ acl_ztypes_master=Maestru
 acl_ztypes_slave=Slave / ciot
 acl_ztypes_delegation=Delegație
 acl_ztypes_forward=Redirecţiona
+
 servers_title=Alte servere DNS
 servers_ip=adresa IP
 servers_bogus=Ignorați serverul fals?
@@ -586,6 +611,7 @@ servers_keys=Folosiți tastele DNS
 servers_err=Nu a reușit să salveze alte servere DNS
 servers_eip=„$1” nu este o adresă IP validă
 servers_etrans=„$1” nu este un număr valid de transferuri maxime
+
 logging_title=Logare și erori
 logging_ecannot=Nu aveți voie să configurați înregistrarea
 logging_header=Opțiuni de înregistrare și eroare globală
@@ -624,6 +650,7 @@ logging_efile=Lipsește numele de fișier al jurnalului
 logging_efile2=Numele fișierului de jurnal trebuie să fie o cale absolută
 logging_ever=„$1” nu este un număr valid de versiuni
 logging_esize=„$1” nu are o dimensiune de jurnal validă
+
 acls_title=Liste de control de acces
 acls_ecannot=Nu aveți voie să editați acls globale
 acls_name=Nume ACL
@@ -631,6 +658,7 @@ acls_values=Potrivirea adreselor, rețelelor și ACL-urilor
 acls_err=Nu a reușit să salveze listele de control de acces
 acls_ename=„$1” nu este un nume ACL valid
 acls_eline=Fiecare adresă IP trebuie introdusă pe o linie separată pentru ACL „$1”
+
 files_title=Fișiere și directoare
 files_ecannot=Nu aveți voie să configurați fișierele
 files_header=Opțiuni de fișiere și directoare globale
@@ -640,6 +668,7 @@ files_pid=Fișier ID proces
 files_xfer=Program de transfer cale către zonă
 files_err=Nu a reușit să salvați fișierele și opțiunile directoarelor
 files_efile=Numele de fișier lipsă sau nevalide
+
 forwarding_title=Transmitere și transferuri
 forwarding_ecannot=Nu aveți voie să editați opțiunile de redirecționare și transfer
 forwarding_header=Opțiuni de redirecționare globală și transfer de zonă
@@ -658,6 +687,7 @@ forwarding_etrans=Transferuri concomitente maxime lipsă sau nevalide
 forwarding_minutes=minute
 forwarding_ip=adresa IP
 forwarding_port=Port
+
 net_title=Adrese și topologie
 net_ecannot=Nu aveți voie să editați opțiunile de topologie și adresă
 net_header=Adresa globală și opțiuni de topologie
@@ -683,6 +713,7 @@ net_taddrdef=Cel mai apropiat IP
 net_etport=Un port sursă de transfer nu poate fi specificat fără o adresă
 net_eaddr=„$1” nu este o adresă IPv4 validă
 net_eaddr6=„$1” nu este o adresă IPv6 validă
+
 controls_title=Opțiuni de interfață de control
 controls_ecannot=Nu aveți voie să editați opțiunile de control
 controls_header=Opțiuni de control
@@ -704,6 +735,7 @@ controls_eunixpath=Calea de fișier FIFO lipsă sau nevalidă
 controls_eunixperm=Permisele de fișiere octale lipsă sau nevalide
 controls_eunixowner=Fișier care lipsește sau este nevalid
 controls_eunixgroup=Grup de fișiere lipsă sau nevalid
+
 controls_inet=Acces la portul Internet
 controls_unix=Acces FIFO Unix
 controls_port=port
@@ -717,6 +749,7 @@ controls_efile=Numele de fișier FIFO lipsesc sau nevalide
 controls_eperms=Permisele FIFO lipsă sau nevalide
 controls_eowner=UID de proprietar FIFO lipsă sau invalid
 controls_egroup=GID proprietar FIFO lipsă sau nevalid
+
 keys_title=Cheile DNS
 keys_id=Cod cheie
 keys_alg=Algoritmul
@@ -725,6 +758,7 @@ keys_ecannot=Nu aveți voie să editați cheile DNS
 keys_err=Nu a putut salva cheile DNS
 keys_ekey=„$1” nu este un cod cheie valid
 keys_esecret=Secret lipsit sau nevalid de cod 64-codat pentru cheia $1
+
 misc_title=Opțiuni diverse
 misc_ecannot=Nu aveți voie să editați opțiuni diverse
 misc_header=Opțiuni globale diverse
@@ -744,6 +778,7 @@ misc_esize=„$1” nu are o dimensiune validă
 misc_efiles=„$1” nu este un număr valid de fișiere deschise maxim
 misc_emins=„$1” nu este un număr valid de minute
 misc_mins=min
+
 zonedef_title=Zonele implicite
 zonedef_msg=Valori implicite pentru zonele principale noi
 zonedef_err=Nu a reușit salvarea setărilor prestabilite ale zonei
@@ -767,10 +802,13 @@ zonedef_size=Mărimea inițială a cheii
 zonedef_single=Numărul de chei de creat
 zonedef_two=Cheie de zonă și cheie de semnare a cheii
 zonedef_one=Doar cheie zonă
+
 find_title=Găsiți zone
 find_match=Zonele care se potrivesc cu $1 ..
 find_none=Nu au fost găsite zone.
+
 efirst=Prima directivă greșită la linia $1 în $2
+
 findfree_title=Găsiți IP-uri gratuite
 findfree_desc=Găsiți IP-uri gratuite
 findfree_nofind=Nu puteți căuta IP-uri gratuite
@@ -782,8 +820,10 @@ findfree_cf=Considerați <em>freeXXX</em> nume de gazdă drept IP-uri gratuite?
 findfree_search=Căutare
 findfree_msg=Găsite $1 adrese IP gratuite
 findfree_msg2=(dintre care $1 sunt ca <i>freeXXX</i>, $2 ca <i>freemac</i>)
+
 free_title=Adrese IP gratuite
 free_ip=Adresa IP
+
 log_servers=S-au schimbat alte servere DNS
 log_logging=Schimbări de jurnal și erori
 log_acls=Liste modificate de control de acces
@@ -840,14 +880,17 @@ log_sign=Semnături DNSSEC actualizate pentru zona $1
 log_resign=Cheie DNSSEC resemnată pentru zona $1
 log_trusted=Verificare DNSSEC modificată
 log_dnssec=Schimbați resemnarea cheii DNSSEC
+
 convert_err=Nu a reușit conversia zonei
 convert_efile=Un fișier de înregistrări trebuie specificat înainte ca o zonă slave să poată fi convertită într-un master.
 convert_efilesize=Fișierul de înregistrări $1 nu există sau este gol
 convert_ebinary=Comanda necesară pentru a converti dintr-o zonă blavă slave într-un format format de text nu este instalată
 convert_ecompile=Conversia în format binar în text a eșuat : $1
+
 whois_title=Informații WHOIS
 whois_header=Ieșire din comanda $1 ..
 whois_ecannot=Nu aveți voie să căutați informațiile WHOIS
+
 view_title=Editează vizualizarea clientului
 view_opts=Detalii despre vizualizarea clientului
 view_opts2=Opțiuni pentru zone în vedere
@@ -858,6 +901,7 @@ view_recursion=Faceți căutări recursive complete pentru clienți?
 view_ecannot=Nu aveți voie să editați această vizualizare
 view_delete=Ștergeți vizualizarea
 view_deletemsg=Faceți clic pe acest buton pentru a șterge vizualizarea. Veți avea de ales de a muta zonele pe care le conține într-o altă vizualizare sau de a le șterge.
+
 vcreate_title=Creare vizualizare client
 vcreate_match_all=Toți clienții
 vcreate_match_sel=Adrese, rețele și ACL-uri listate ..
@@ -866,6 +910,7 @@ vcreate_ename=Numele vizualizării lipsește sau nu este valabil
 vcreate_etaken=Numele vizualizării este deja luat
 vcreate_eclass=Numele clasei lipsă sau nevalid
 vcreate_ecannot=Nu aveți voie să creați vizualizări
+
 hint_title=Editează zona rădăcină
 hint_desc=Zona root este utilizată de serverul dvs. DNS pentru a contacta serverele rădăcină de pe internet, astfel încât să poată rezolva nume din domenii care nu sunt gestionate de serverul dvs. DNS, cum ar fi <tt>.com</tt> sau <tt>.net. au</tt>. Cu excepția cazului în care serverul dvs. DNS este utilizat pentru o rețea internă sau dacă trimiteți toate întrebările către un alt server, nu ar trebui să ștergeți această zonă rădăcină.
 hint_move=Mutați pentru a vizualiza:
@@ -874,6 +919,7 @@ hint_refetch=Re-descărcați serverele de nume root
 hint_refetchdesc=Faceți clic pe acest buton pentru a reîncărca Webmin fișierul din zona rădăcină din sursa sa pe serverul FTP intern.
 hint_delete=Ștergeți zona rădăcină
 hint_deletedesc=Faceți clic pe acest buton pentru a elimina această zonă rădăcină. Fără aceasta, serverul dvs. de nume nu va putea să rezolve domenii de pe Internet, altele decât cele pentru care este secundar.
+
 hcreate_title=Creați zona rădăcină
 hcreate_desc=Zona root este utilizată de serverul dvs. DNS pentru a contacta serverele rădăcină de pe internet, astfel încât să poată rezolva nume din domenii care nu sunt gestionate de serverul dvs. DNS, cum ar fi <tt>.com</tt> sau <tt>.net. au</tt>. Dacă utilizați mai multe vizualizări, poate fi necesar să aveți o zonă rădăcină separată pentru fiecare vizualizare, astfel încât toți clienții să poată rezolva domeniile de internet corect.
 hcreate_header=Detalii despre zona de rădăcină
@@ -887,6 +933,7 @@ hcreate_efile=„$1” nu este un fișier rădăcină permis
 hcreate_efile2=Fișierul rădăcină lipsă sau nevalid
 mcreate_erecs=Nu este un fișier existent valid din zona rădăcină
 hcreate_err=Nu a reușit să creeze zona root
+
 vdelete_title=Ștergeți vizualizarea
 vdelete_mesg=Sigur doriți să ștergeți vizualizarea clientului $1? Toate zonele din această vedere vor fi șterse (împreună cu fișierele lor de zonă) sau mutate într-o altă vedere, în funcție de selecția de mai jos.
 vdelete_mesg2=Sigur doriți să ștergeți vizualizarea clientului $1?
@@ -894,6 +941,7 @@ vdelete_newview=Zonele din această perspectivă
 vdelete_root=Ieșiți din vizualizări
 vdelete_delete=Ștergeți total
 vdelete_move=Mutați-vă pentru a vizualiza
+
 gen_title=Generatoare de înregistrare
 gen_desc=Această pagină vă permite să definiți generatoare, fiecare dintre acestea creând mai multe înregistrări în această zonă folosind un contor incremental. Acest lucru poate fi util pentru delegarea părților din zona inversă în alt server.
 gen_range=Gamă
@@ -913,7 +961,9 @@ gen_evalue=Modelul de gazdă lipsă sau nevalid pentru generatorul $1
 gen_title2=Înregistrări generate
 gen_raw=Configurează linia fișierului
 gen_ecannot=Nu aveți voie să editați generatoare de înregistrări
+
 refetch_err=Nu a putut re-descărca zona rădăcină
+
 slaves_title=Cluster Slave Servers
 slaves_none=Încă nu au fost adăugate servere la clusterul DNS.
 slaves_host=Numele gazdei
@@ -941,6 +991,7 @@ slaves_sec=Creați secundar pe slave când creați local?
 slaves_name=Nume pentru înregistrarea NS
 slaves_same=La fel ca numele de gazdă
 slaves_header=Opțiuni de server sclav Cluster
+
 add_title=Adăugați servere
 add_msg=Se adaugă $1 ..
 add_gmsg=Adăugarea serverelor în grupul $1 ..
@@ -958,6 +1009,7 @@ add_createok=Configurarea $1 cu $2 noi zone slave.
 add_ename=Numele înregistrării NS lipsă sau nevalid
 add_egname=Nu se poate specifica un nume de înregistrare NS la adăugarea unui grup
 add_emyip=Nu s-a putut stabili adresa IP a acestui sistem. Ar trebui să setați <b>IP-ul serverului implicit pentru zone slave la distanță</b> în pagina Modul Config.
+
 mass_title=Creați zone din fișierul din lot
 mass_desc=Această pagină vă permite să creați mai multe zone simultan dintr-un fișier text încărcat sau server. Fiecare linie din fișier trebuie să aibă următorul format: <p></p> <tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt> <p></p> <i>Tipul</i> trebuie să fie unul de <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> sau <tt>forward</tt>. Numele <i>fișierului</i> este opțional și va fi calculat automat dacă lipsește. <i>IP-urile principale</i> trebuie să fie date numai pentru zonele slave.
 mass_local=Fișier lot local
@@ -989,6 +1041,7 @@ mass_emips=Adresele IP master lipsesc
 mass_addedslaves=S-a adăugat $1 la serverele slave OK.
 mass_eonslave=Au apărut erori create pe serverele slave : $1
 mass_eviewcannot=Nu aveți voie să adăugați zone la această vizualizare
+
 massdelete_title=Ștergeți zone
 massdelete_rusure=Sigur doriți să ștergeți $1 zonele selectate? ($2)
 massdelete_ok=Șterge acum
@@ -998,6 +1051,7 @@ massdelete_slaves=Ștergerea zonei $1 de pe serverele slave ..
 massdelete_failed=.. unii sclavi au eșuat :
 massdelete_vwarn=Unele zone sunt asociate cu domeniul Virtualmin $1, deci nu trebuie șterse aici!
 massdelete_vwarn2=Unele zone sunt asociate cu domeniul Virtualmin $1 și alte $2, deci nu trebuie șterse aici!
+
 rndc_title=Configurare RNDC
 rndc_desc=Această pagină poate fi utilizată pentru a configura BIND pentru controlul programului RNDC, astfel încât zonele individuale să poată fi reîmprospătate fără a fi nevoie să reporniți BIND complet.
 rndc_desc2=RNDC pare să fie configurat în mod corespunzător, deci nu este necesar să utilizați acest formular.
@@ -1008,11 +1062,13 @@ rndc_ok=Da, Setare RNDC
 rndc_err=Eroare la configurarea RNDC
 rndc_ekey=Nu s-a putut găsi cheia în rndc.conf
 rndc_esecret=Nu s-a putut găsi secretul în rndc.conf
+
 drecs_err=Nu a reușit ștergerea înregistrărilor
 drecs_enone=Nimic selectat
 drecs_title=Ștergeți înregistrări
 drecs_rusure=Sigur doriți să ștergeți $1 înregistrările selectate din $2?
 drecs_ok=Șterge acum
+
 manual_title=Editează fișierul de configurare
 manual_ecannot=Nu aveți voie să editați fișierul de configurare BIND
 manual_ok=Editați | ×
@@ -1020,7 +1076,9 @@ manual_efile=Fișierul selectat nu face parte din configurația BIND
 manual_file=Editați fișierul de configurare:
 manual_edata=Nu a intrat nimic!
 manual_err=Nu a reușit să salvați fișierul de configurare
+
 syslog_desc=Mesaje server BIND DNS
+
 umass_err=Actualizarea zonelor nu a reușit
 umass_enone=Nimic selectat
 umass_title=Actualizați înregistrările în zone
@@ -1039,6 +1097,7 @@ umass_done=.. actualizate $1 înregistrări potrivite din $2.
 umass_none=.. nu s-au găsit înregistrări corespunzătoare din $1 pentru actualizarea găsită.
 umass_egone=Zona nu există
 emass_emx=„$1” nu este un număr de prioritate al serverului de poștă urmat de un nume de gazdă valid
+
 rdmass_err=Nu a reușit ștergerea înregistrărilor din zone
 rdmass_enone=Nimic selectat
 rdmass_title=Ștergeți înregistrări în zone
@@ -1055,6 +1114,7 @@ rdmass_done=.. șters $1 înregistrări potrivite din $2.
 rdmass_none=.. nicio înregistrare potrivită din $1 pentru a șterge găsit.
 rdmass_ok=Ștergeți înregistrări
 rdmass_sel=Înregistrări numite
+
 rmass_err=Nu a putut adăuga înregistrări
 rmass_enone=Nimic selectat
 rmass_title=Adaugă înregistrare în zone
@@ -1074,18 +1134,22 @@ rmass_esign=.. gata, dar semnarea a eșuat : $1
 rmass_eclash=.. există deja o înregistrare cu același nume și aceeași valoare $1.
 rmass_eclash2=.. există deja o înregistrare cu același nume și aceeași valoare $1.
 rmass_clash=Creați chiar dacă înregistrarea există deja?
+
 check_title=Verificați înregistrările
 check_ecannot=Nu aveți voie să verificați înregistrările
 check_errs=Următoarele erori au fost găsite în fișierul de înregistrări $1 ..
 check_allok=Nu au fost găsite erori în fișierul de înregistrări $1.
+
 ncheck_title=Verificați BIND Config
 ncheck_ecannot=Nu aveți voie să verificați configurația BIND
 ncheck_errs=Următoarele erori au fost găsite în fișierul de configurare BIND $1 sau în fișierele de zonă de referință ..
 ncheck_allok=Nu au fost găsite erori în fișierul de configurare BIND $1 sau în fișierele de zonă de referință.
+
 links_restart=Aplicați configurare
 links_stop=Opriți BIND
 links_start=Începeți BIND
 links_apply=Aplicați Zona
+
 dnssec_title=Resemnare cheie DNSSEC
 dnssec_ecannot=Nu aveți voie să configurați DNSSEC
 dnssec_header=Opțiuni cheie de reînregistrare
@@ -1096,6 +1160,7 @@ dnssec_secs=secunde
 dnssec_desc=Zonele semnate cu DNSSEC au de obicei două chei - o cheie de zonă care trebuie re-generată și semnată regulat și o cheie de semnare care rămâne constantă. Această pagină vă permite să configurați Webmin pentru a efectua această resemnare automată.
 dnssec_err=Eroare la salvarea resemnării cheii DNSSEC
 dnssec_eperiod=Lipsește sau este nevalid un număr de zile între semne
+
 dnssectools_title=DNSSEC-Instrumente de automatizare
 dt_conf_title=DNSSEC-Instrumente de automatizare
 dt_enable_title=DNSSEC-Instrumente de automatizare
@@ -1160,6 +1225,7 @@ dt_status_inKSKroll=În KSK Roll
 dt_status_inZSKroll=În rola ZSK
 dt_status_signed=Semnat
 dt_status_unsigned=Nesemnat
+
 zonekey_title=Configurare cheie DNSSEC
 zonekey_desc=Această zonă nu are încă o cheie de semnare DNSSEC. Puteți utiliza acest formular pentru ca Webmin să creeze unul, astfel încât clienții care soluționează această zonă să fie protejați împotriva atacurilor de spoofing DNS.
 zonekey_header=Noi opțiuni cheie DNSSEC
@@ -1193,9 +1259,12 @@ zonekey_sign=Zona de semn
 zonekey_signdesc=Re-semnează imediat această zonă, astfel încât orice modificări la înregistrările făcute manual vor fi incluse în înregistrările de semnare.
 zonekey_resign=Re-semnează zona
 zonekey_resigndesc=Generează o nouă cheie de semnare a zonei, semnează-o cu cheia principală a zonei și resemnează toate înregistrările.
+
 sign_err=Nu a reușit să semneze zona
 sign_emsg=Semnarea DNSSEC după modificarea înregistrărilor a eșuat : $1
+
 resign_err=Nu a reușit să resemnăm zona
+
 trusted_title=Verificare DNSSEC
 trusted_ecannot=Nu aveți voie să configurați verificarea DNSSEC
 trusted_esupport=Versiunea dvs. de BIND nu acceptă verificarea DNSSEC
@@ -1230,6 +1299,7 @@ trusted_setup=Pentru ca DNSSEC să fie util pentru a verifica majoritatea zonelo
 trusted_ok=Configurare DLV și Activare verificare DNSSEC
 trusted_warning=Avertizare! Configurația clientului dvs. BIND DNSSEC conține chei neactualizate care vor înceta să funcționeze în octombrie 2017. Fie folosiți pagina <a href='$1'>BIND DNSSEC Verificare</a> pentru a regla configurația, fie faceți clic pe butonul de mai jos.
 trusted_fix=Remediați configurația DNSSEC
+
 xfer_title=Transfer de zonă de testare
 xfer_doing=Testarea transferului zonei slave de la $1 ..
 xfer_failed=.. de la $1: Nu a reușit : $2

@@ -2,6 +2,7 @@ index_title=Röstmeddelandeserver
 index_ecmd=Vgetty-kommandot $1 hittades inte på ditt system. Kanske är den inte installerad eller så är din <a href='$2'>modulkonfiguration</a> felaktig.
 index_econfig=Vgetty-konfigurationsfilen $1 hittades inte på ditt system. Kanske är den inte installerad eller så är din <a href='$2'>modulkonfiguration</a> felaktig.
 index_return=röstbrevlåda index
+
 vgetty_title=Seriell portkonfiguration
 vgetty_desc=För att din server ska kunna svara röstsamtal med ett modem anslutet till en seriell port måste det anges nedan. När du lägger till en port i den här listan konfigureras programmet $1 för att svara på samtal och spela ett meddelande.
 vgetty_add=Lägg till en ny serieport
@@ -32,6 +33,7 @@ vgetty_erings=Saknas eller ogiltigt antal ringar
 vgetty_erings2=Antalet ringar måste vara minst 2
 vgetty_eans=Inga svarslägen har valts
 vgetty_eclash=Seriell port $1 används redan
+
 options_title=Röstmeddelandeserveralternativ
 options_header=Alternativ för alla seriella portar
 options_maxlen=Maximal meddelandelängd
@@ -68,6 +70,7 @@ options_eprog=Programmet saknas eller inte finns att köra
 options_eowner=Saknad eller ogiltig Unix-användare för meddelandefiler
 options_egroup=Saknad eller ogiltig Unix-grupp för meddelandefiler
 options_emode=Saknade eller ogiltiga oktala behörigheter för meddelandefiler
+
 received_title=Mottagna meddelanden
 recieved_desc=Röstmeddelanden som har tagits emot av din server listas nedan. För att lyssna på ett meddelande, klicka på datum/tid i den första kolumnen.
 received_none=Inga mottagna röstmeddelanden hittades.
@@ -79,9 +82,12 @@ received_delete=Radera valda meddelanden
 received_move=Konvertera valda till hälsningar
 received_all=Välj alla
 received_invert=Invertera valet
+
 listen_efile=Ogiltigt meddelandefilnamn!
 listen_epath=Röstmeddelande finns inte längre
+
 delete_efile=Ogiltigt meddelandefilnamn!
+
 messages_title=Hälsningsmeddelanden
 messages_desc=Den här sidan visar hälsningsmeddelanden som kommer att spelas upp när en samtal ansluter till din röstmeddelandeserver. Om du har mer än det, kommer ett enda slumpmässigt valt meddelande att användas.
 messages_file=Filnamn
@@ -89,12 +95,15 @@ messages_none=Inga hälsningsmeddelanden är tillgängliga.
 messages_updesc=Det här formuläret låter dig ladda upp ett ytterligare hälsningsmeddelande WAV-fil, som kommer att konverteras till det valda formatet för användning av ditt modem. Provfrekvensen för det överförda WAV ska vara detsamma som sampelhastigheten för mottagna meddelanden, liksom det valda formatet.
 messages_upload=Ladda upp meddelande
 messages_fmt=konvertera till
+
 pvfdesc=$1, $2 bitar
+
 upload_err=Det gick inte att lägga till meddelande
 upload_emessage=Ingen WAV-fil vald
 upload_ewav=Det gick inte att konvertera WAV-filen : $1 
 upload_epvf=Det gick inte att skapa RMD-fil : $1 
 upload_esame=Meddelandefilen $1 finns redan
+
 log_apply=Tillämpad konfiguration
 log_upload=Uppladdat hälsningsmeddelande $1 
 log_move=Konverterade $1 mottagna meddelanden
@@ -104,5 +113,6 @@ log_options=Ändrade röstmeddelandealternativ
 log_vgetty_create=Lade till seriell port $1 
 log_vgetty_modify=Modifierad serieport $1 
 log_vgetty_delete=Seriell port $1 raderad
+
 email_subject=Röstmeddelande
 email_body=Röstmeddelandemeddelandet mottogs vid $1 av $2.

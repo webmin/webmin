@@ -64,12 +64,14 @@ index_match1=tartalmaz
 index_match2=gyufa
 index_dhcpd=ISC DHCPd
 index_delete=Kijelöltek eltávolítása
+
 butt_save=Megment
 butt_eco=Ügyfélbeállítások szerkesztése
 butt_vco=Tekintse meg az Ügyfél beállításait
 butt_del=Töröl
 butt_create=teremt
 butt_leases=Lízinglista
+
 esub_crheader=Alhálózat létrehozása
 esub_edheader=Alhálózat szerkesztése
 esub_tabhdr=Alhálózat részletei
@@ -83,12 +85,14 @@ esub_groups=Csoportosítása közvetlenül ebben az alhálózatban
 esub_pools=Az alhálózat címkészletei
 esub_pool=$1 medence
 esub_poolnone=Nincs megadva címkészletek
+
 esub_pooladd=Adjon hozzá egy címkészletet.
 esub_none=Egyik sem
 esub_return=alhálózati lista
 esub_retshar=megosztott hálózat
 esub_desc=Alhálózat leírása
 esub_fopeer=Feladatátvételi társ
+
 esh_crheader=Hozzon létre megosztott hálózatot
 esh_eheader=A megosztott hálózat szerkesztése
 esh_tabhdr=Megosztott hálózat részletei
@@ -99,6 +103,7 @@ esh_subn=Alhálózatok ebben a megosztott hálózatban
 esh_return=alhálózati lista
 esh_pools=Címkészletek a megosztott hálózathoz
 esh_desc=Közös hálózati leírás
+
 ehost_crheader=Host létrehozása
 ehost_eheader=Szerver szerkesztése
 ehost_tabhdr=Gazdagép adatai
@@ -119,6 +124,7 @@ ehost_retgroup=csoport
 ehost_retsubn=alhálózati
 ehost_retshar=megosztott hálózat
 ehost_desc=Gazdagép leírása
+
 egroup_crheader=Hozz létre host csoportot
 egroup_eheader=Szerkesztő csoport szerkesztése
 egroup_tblhdr=Csoport részletei
@@ -129,6 +135,7 @@ egroup_return=host lista
 egroup_retsubn=alhálózati
 egroup_retshar=megosztott hálózat
 egroup_desc=Csoport leírás
+
 default=Alapértelmezett
 secs=másodperc
 none=Egyik sem
@@ -157,20 +164,24 @@ listl_pc=Százalék
 listl_err=Nem sikerült törölni a lízingeket
 listl_enone=Egy sincs kiválasztva
 listl_refresh=Lista frissítése
+
 restart_errmsg1=A dhcpd újraindítása nem sikerült
 restart_errmsg2=A folyamat jelzése nem sikerült
 start_failstart=A dhcpd indítása nem sikerült
 restart_conftext=$1 körüli vonalak a $2 -ben :
+
 sgroup_faildel=A csoport törlése nem sikerült
 sgroup_failsave=A csoport mentése nem sikerült
 sgroup_invassign=egy téves szakaszhoz rendelt csoport
 sgroup_echanged=A konfigurációs fájl tartalma megváltozott. Próbáld újra.
+
 shost_faildel=Nem sikerült törölni a gazdagépet
 shost_failsave=Nem sikerült menteni a gazdagépet
 shost_invalidhn=nem érvényes gazdagépnév
 shost_invalidhwa=A '$1' nem érvényes $2 cím
 shost_invalidaddr=A '$1' érvénytelen gazdagépnevet vagy IP-címet tartalmaz
 shost_invassign=helytelen szakaszhoz rendelt gazdagép
+
 sopt_failsave=Az ügyfél beállításainak mentése nem sikerült
 sopt_invalidip=egy érvénytelen IP-cím
 sopt_invalidint=nem egész szám
@@ -180,10 +191,12 @@ sopt_ednum=A '$1' nem érvényes opciószám
 sopt_edtype=A '$1' nem érvényes opciótípus
 sopt_ecval=Hiányzik az '$1' egyedi opció értéke
 sopt_ecip=Az '$1' egyedi opció értékének IP-címnek kell lennie
+
 sshared_faildel=A megosztott hálózat törlése nem sikerült
 sshared_failsave=A megosztott hálózat mentése nem sikerült
 sshared_invalidsname=Hiányzik vagy érvénytelen megosztott hálózati név.
 sshared_nosubnet=A (z) '$1' megosztott hálózat nem tartalmaz alhálózatot.
+
 ssub_faildel=Az alhálózat törlése nem sikerült
 ssub_failsave=Az alhálózat mentése nem sikerült
 ssub_invalidsubaddr=nem érvényes alhálózati cím
@@ -191,6 +204,7 @@ ssub_invalidnmask=nem érvényes hálózati maszk
 ssub_invalidipr=nem érvényes tartomány IP-cím
 ssub_nosubnet=A (z) '$1' megosztott hálózat nem tartalmaz alhálózatot.
 ssub_invalidfopeer=nem érvényes feladatátvételi társ
+
 plib_deflt=Alapértelmezett bérleti idő
 plib_bfname=Indító fájlnév
 plib_maxlt=A maximális bérleti idő
@@ -244,6 +258,7 @@ plib_eexpr=A DHCP konfiguráció ezen szakasza a $1 kifejezést tartalmazza, ame
 plib_auth_subnet=A szerver hiteles ehhez az alhálózathoz?
 plib_auth_shared-network=A szerver hiteles e megosztott hálózat számára?
 plib_auth_global=A szerver hiteles minden alhálózaton?
+
 eopt_header=Ügyfél opciók
 eopt_subtitle=$1 alhálózatra
 eopt_returnsub=alhálózati
@@ -289,6 +304,7 @@ eopt_slpa=SLP címtársegér IP-k
 eopt_slpaips=Csak ezek az IP-k?
 eopt_slps=SLP szolgáltatás köre
 eopt_slpsonly=Csak ez a hatály
+
 log_apply=Alkalmazott változások
 log_start=Elindította a DHCP szervert
 log_stop=Leállt a DHCP szerver
@@ -311,6 +327,7 @@ log_options_group=Módosított lehetőségek a (z) $1 gazdagépek csoportjában
 log_delete_lease=Törölt lízing $1 -re
 log_delete_subnets=Törölt $1 alhálózatok és megosztott hálózatok
 log_delete_hosts=Törölve $1 gazdagép és gazdacsoport
+
 keys_edit=Szerkessze a TSIG kulcsot
 keys_create=Készített TSIG kulcsok
 keys_title=DNS-kulcsok
@@ -321,12 +338,14 @@ keys_ecannot=A DNS-kulcsok nem szerkeszthetők
 keys_err=A DNS-kulcsok mentése nem sikerült
 keys_ekey=A '$1' nem érvényes kulcs-azonosító
 keys_esecret=Hiányzó vagy érvénytelen base-64 kódolt titok a $1 kulcshoz
+
 pool_edit=Címcím szerkesztése
 pool_create=Létrehozta a Címkészletet
 pool_header=Címkészlet lehetőségek
 pool_allow=Ügyfelek engedélyezése
 pool_deny=Ügyfelek tagadni
 pool_return=alhálózati
+
 cdel_header=Figyelem
 cdel_shared1=megosztott hálózat
 cdel_shared2=megosztott hálózat
@@ -344,6 +363,7 @@ cdel_txt=$1 törlése '$2' tartalmát is törli:
 cdel_confirm=Tényleg törli ezt a (z) $1 fájlt?
 cdel_eunknown=Ismeretlen hiba
 cdel_return=host és hálózati lista
+
 eacl_aviol=Hozzáférés-ellenőrzés megsértése
 eacl_np=Nincs engedélyed
 eacl_pdh=törölje a gazdagépet
@@ -369,6 +389,7 @@ eacl_pdl=törölje a lízingeket
 eacl_psl=lízing megtekintése
 eacl_pglob=szerkessze a globális beállításokat
 eacl_papply=indítsa újra ezt a szolgáltatást
+
 acl_apply=Alkalmazhatja a módosításokat?
 acl_r_leases=Megtekintheti a lízingeket?
 acl_w_leases=Lehet eltávolítani a lízingeket?
@@ -398,9 +419,11 @@ acl_err=Hiba történt az ACL lista mentésekor
 acl_ernow=Ha engedélyezni szeretné az íráshoz való hozzáférést a globális ACL-ekben valamelyik objektumtípushoz, engedélyeznie kell az olvasáshoz való hozzáférést ezen objektumtípushoz is.
 acl_normal=Normál
 acl_paranoic=paranoiás
+
 iface_title=Hálózati felület
 iface_desc=A DHCP-kiszolgáló csak az alább kiválasztott interfészek egyikéhez csatlakoztatott hálózatokon rendelhet IP-címeket. Az összes definiált alhálózat hálózati felületét fel kell venni. Ha egyiket sem választja ki, a DHCP-kiszolgáló megpróbálja automatikusan megtalálni.
 iface_listen=Figyeljen az interfészekre
+
 lookup_ehost=Nincs olyan gazdagép, amelynek neve, IP címe vagy MAC címe található: $1 
 lookup_ehostname=Nincs megadva gazdagépnév, IP-cím vagy MAC-cím
 lookup_egroup=A (z) $1 névvel vagy domain névvel rendelkező csoport nem létezik
@@ -409,6 +432,7 @@ lookup_esubnet=Nincs olyan alhálózat, amelynek címe vagy címe/netmasks $1 ta
 lookup_esubnetname=Nincs megadva alhálózati cím vagy cím/hálómaszk
 lookup_eshared=Nincs megosztott hálózat a (z) $1 névvel
 lookup_esharedname=Nincs megadva megosztott hálózat neve
+
 zone_key=DNS-zónák
 index_addzone=Adjon hozzá egy új DNS-zónát.
 index_zone=Zóna
@@ -424,16 +448,21 @@ zone_faildel=A zóna törlése nem sikerült
 zone_failsave=Nem sikerült menteni a zónát
 zone_tsigkey=TSIG kulcs
 zone_ecannot=A DNS-zónákat nem szerkesztheti
+
 plib_clientupdates=Az ügyfelek frissíthetik saját nyilvántartásaikat?
+
 text_title=ilyet
 text_editor=Szöveg szerkesztő
 text_return=főmenü
 text_undo=visszavonás
 text_ecannot=A konfigurációs fájl nem szerkeszthető
+
 index_buttetext=A konfiguráció kézi szerkesztése
 index_text=A konfigurációs fájl manuális szerkesztése szöveges formátumban
+
 stop_err=A DHCP-kiszolgáló megállítása nem sikerült
 stop_ekill=Nem fut!
+
 sdelete_err=Az alhálózatok és a megosztott hálózatok törlése nem sikerült
 sdelete_enone=Egy sincs kiválasztva
 sdelete_title=Törölje az alhálózatokat és a megosztott hálózatokat
@@ -441,6 +470,7 @@ sdelete_rusure1=Biztosan törli a kiválasztott $1 alhálózatokat és a $2 mego
 sdelete_rusure2=Biztosan törli a kiválasztott $1 alhálózatot? Az alhálózaton belüli egyéb objektumok szintén elvesznek.
 sdelete_rusure3=Biztos benne, hogy törli a kiválasztott $2 megosztott hálózatot? A hálózaton belüli alhálózatok és egyéb objektumok szintén elvesznek.
 sdelete_ok=Törlés most
+
 hdelete_err=Nem sikerült törölni a gazdagépeket és a csoportokat
 hdelete_enone=Egy sincs kiválasztva
 hdelete_title=Törölje a gazdagépeket és csoportokat

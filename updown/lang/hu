@@ -39,6 +39,7 @@ index_descfetch=Ezen az oldalon lehet böngészőből letölteni fájlokat a saj
 index_email=Email küldése amikor a letöltés elkészült?
 index_emailto=Igen, a következő címre
 index_email2=Email küldése amikor a feltöltés elkészült?
+
 upload_title=Fájlok feltöltése
 upload_err=Nem sikerült feltölteni a fileokat
 upload_edir=Nem létező könyvtár a feltöltéshet
@@ -62,6 +63,7 @@ upload_saving=Fájl mentése $1 ..
 upload_saved=.. mentette $1
 upload_unzipping=Fájl kitömörítése $1 ..
 upload_unzipdone=.. $1
+
 download_err=Nem lehet elmenteni a letöltést
 download_eurl='$1' helytelen URL
 download_edate=Érvénytelen dátum vagy idő
@@ -72,9 +74,11 @@ download_failed=Letöltés sikertelen: $1
 download_eaccess=Önnek nincs engedélyezve hogy eltöltse a file -okat a $1 -ba
 download_eucannot=Önnek nincs engedélyezve hogy letöltsön file -okat mint $1 felhasználó
 download_egcannot=A kiválasztott csoport nem tartalmazza a kiválasztott felhasználót
+
 cancel_err=Nem sikerült megszakítani a letöltést
 cancel_enone=Nincs semmi kiváalsztva
 cancel_ecannot=Önnek nincs lehetősége megszakítani a letöltését a $1 felhasználónak
+
 log_cancel=Megszakítva $1 letöltés(ek)
 log_upload_l=Feltöltött file -ok $1
 log_upload=Feltöltve $1 file(ok)
@@ -82,6 +86,7 @@ log_download_l=Letöltött URL(ek) $1
 log_download=Letöltve $1 URL(ek)
 log_sdownload_l=Ütemezett leltöltése a URL(ek)nek $1
 log_sdownload=Ütemezve a letöltése a $1 URL(ek)nek
+
 acl_users=Feltölthet és letölthet file -okat mint a megadott felhasználó
 acl_all=Minden felhasználó
 acl_this=Aktuális Webmin felhasználó
@@ -96,12 +101,14 @@ acl_max=Maximális feltöltési méret
 acl_unlim=Korlátlan
 acl_b=byteok
 acl_fetch=Letölthető file a PC -re?
+
 fetch_err=Nem lehet letölteni a file -t
 fetch_ecannot=Önnek nincs engedélyezve hogy letöltsön file-okat a PC -re
 fetch_efile=Nem lett filenév megadva
 fetch_eexists2=Fájl vagy könyvtár nem található
 fetch_eopen=Nem lehet megnyitni a file -t: $1
 fetch_eaccess=Nem szabad fájlok letöltése innen $1 
+
 email_downurl=URL (webcím): $1
 email_downerr=Hiba üzenet: $1
 email_downpath=Cél fájl: $1

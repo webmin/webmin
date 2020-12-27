@@ -43,8 +43,10 @@ index_natnone=Verkko-osoitteiden käännössääntöjä ei ole vielä määritel
 index_nataction=NAT-tila
 index_natfrom=Vastaavat paketit
 index_natto=Käännös
+
 dir_in=saapuva
 dir_out=Lähtevä
+
 action_pass=<font color=#00aa00>Hyväksy</font>
 action_block=<font color=#ff0000>Estä</font>
 action_skip=Ohita
@@ -57,6 +59,7 @@ action_map=Kartoitus
 action_rdr=uudelleenohjaus
 action_bimap=Kaksisuuntainen kartoitus
 action_map-block=Estä kartoitus
+
 laction_pass=<font color=#00aa00>Hyväksy paketti</font>
 laction_block=<font color=#ff0000>Estä paketti ICMP-koodilla</font>
 laction_log=Lokipaketti, tasolla
@@ -65,6 +68,7 @@ laction_skip=Ohita seuraavat säännöt
 laction_auth=Käyttäjätilan valtuutus
 laction_preauth=Tarkista aiempi valtuutus
 laction_call=Soita ytimen toiminto
+
 edit_title1=Luo sääntö
 edit_title2=Muokkaa sääntöä
 edit_header1=Sääntötoiminta
@@ -130,6 +134,7 @@ edit_icmp=ICMP-tyyppi
 edit_icmpany=&lt;Kaikki tyypit&gt;
 edit_icmpcode=ja koodi
 edit_codeany=&lt;Mikä tahansa koodi&gt;
+
 save_err=Säännön tallentaminen epäonnistui
 save_ehostfrom=Puuttuva tai virheellinen lähteen isäntänimi
 save_ehostto=Puuttuva tai virheellinen kohde-isäntänimi
@@ -158,11 +163,13 @@ save_eto=Puuttuva tai virheellinen käyttöliittymä lähetettäväksi
 save_etoip=Virheellinen IP-osoite lähetettäväksi
 save_ereplyto=Puuttuva tai virheellinen käyttöliittymä vastaukseen
 save_ereplytoip=Virheellinen IP-osoite vastata
+
 apply_err=Asetusten määrittäminen epäonnistui
 apply_remote=Virhe $1 : $2 
 unapply_err=Kokoonpanon palauttaminen epäonnistui
 unapply_ein=Syöttösääntöjen saaminen epäonnistui
 unapply_eout=Tulosääntöjen saaminen epäonnistui
+
 desc_if=Jos $1 
 desc_and=ja
 desc_always=Aina
@@ -196,6 +203,7 @@ desc_rdr=IP-osoitteet $1 portti $2
 desc_dport1=portti on $1 
 desc_dport2=portti on välillä $1 - $2 
 desc_nattoiface=käyttöliittymän osoite
+
 log_create_rule=Luotu $1 -sääntö
 log_delete_rule=Poistettu $1 -sääntö
 log_modify_rule=Muokattu $1 -sääntö
@@ -224,6 +232,7 @@ log_add_host=Lisätty klusteripalvelin $1
 log_add_group=Lisätty klusteripalvelimet ryhmästä $1 
 log_delete_host=Ryhmäpalvelin $1 poistettu
 log_delete_group=$1 klusteripalvelimet poistettu
+
 cluster_title=Klusteripalomuuripalvelimet
 cluster_none=Palomuuriklusteriin ei ole vielä lisätty palvelimia.
 cluster_host=hostname
@@ -234,6 +243,7 @@ cluster_gadd=Lisää palvelimia ryhmään
 cluster_need=Sinun on lisättävä palvelimet, joilla on kirjautuminen ja salasana, Webmin Servers Index -moduuliin, ennen kuin niitä voidaan hallita täällä.
 cluster_return=klusteripalvelimet
 cluster_delete=Poista valitut
+
 add_title=Lisää palvelimia
 add_msg=Lisätään $1 ..
 add_gmsg=Palvelimien lisääminen ryhmään $1 ..
@@ -242,6 +252,7 @@ add_gerr=Ryhmän lisääminen epäonnistui
 add_echeck=Palvelimella $1 ei ole IPFilter-palomuurimoduulia
 add_emissing=Palvelimelta $1 puuttuu palomuurikomento $2 
 add_ok=Lisätty $1, $2 aktiivisilla palomuurisääntöillä.
+
 nat_title1=Luo NAT-sääntö
 nat_title2=Muokkaa NAT-sääntöä
 nat_action=NAT-tila
@@ -300,4 +311,5 @@ nat_edport2=Alkuperäinen portti puuttuu tai on virheellinen
 net_erdrip='$1' ei ole kelvollinen kohde-IP-osoite
 nat_erdrips=Kohde-IP: tä ei ole annettu
 nat_erdrport=Puuttuva tai virheellinen kohdeportti
+
 boot_esmf=SMF-palvelua $1 ei ole tai se ei ole tunnetussa tilassa

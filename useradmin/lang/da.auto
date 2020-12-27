@@ -18,6 +18,7 @@ index_loginsall=Alle brugere
 index_loginsuser=Kun bruger
 index_loginsdesc=Vis nylige logins nogle eller alle Unix-brugere, der har oprettet forbindelse via SSH eller Usermin.
 index_whodesc=Vis brugere, der i øjeblikket er logget ind via SSH eller Usermin.
+
 uedit_manual=Vejviser
 uedit_allg=Alle grupper
 uedit_ing=I grupper
@@ -25,11 +26,13 @@ uedit_egone=Den valgte bruger findes ikke længere!
 uedit_grename=Omdøb gruppe hvis brugernavn ændres?
 uedit_sys=System standard
 uedit_clone=Klon bruger
+
 usave_esgname='$1' er ikke et gyldigt sekundært gruppenavn
 usave_edigestblowfish=Dit system har Blowfish-adgangskoder aktiveret, men Perl <tt>$3</tt> er ikke installeret. <p>For at tvinge brugen af normale krypterede adgangskoder skal du justere<a href='$1'> modulkonfiguration </a>.<p> Eller lad Webmin <a href='$2'>downloade og installere</a> <tt>$3</tt> modul til dig.
 usave_edigestsha512=Dit system har Blowfish-adgangskoder aktiveret, men <tt>krypt</tt> -funktionen understøtter ikke dette format.
 usave_epasswd_mindays=Adgangskoden blev ændret for mindre end $1 dage siden
 usave_epasswd_cmd=Adgangskode til validering af kodeord mislykkedes
+
 gedit_desc=Beskrivelse
 gedit_oneperline=(Én pr. Linje)
 gedit_egone=Den valgte gruppe findes ikke længere!
@@ -38,14 +41,18 @@ gedit_selu=Brugere i gruppe
 gedit_pri=Primære gruppemedlemmer
 gedit_prinone=Ingen brugere har denne gruppe som deres primære
 gedit_clone=Clone Group
+
 gsave_egidused2=GID er allerede i brug
+
 udel_ugroupother=Sletning af denne brugers gruppe i andre moduler ..
+
 log_gbatch=Udført gruppe batch-fil $1
 log_gbatch_l=Udført gruppe batch-fil $1 ($2 oprettet, $3 ændret, $4 slettet)
 log_ugbatch=Udført uploadet gruppe batch-fil
 log_ugbatch_l=Udført uploadet gruppe batch-fil ($1 oprettet, $2 ændret, $3 slettet)
 log_delete_users=Slettet $1 brugere
 log_delete_groups=Slette $1 grupper
+
 batch_emin=Ugyldige minimumsdage på linje $1 : $2 
 batch_emax=Ugyldige maksimale dage på linjen $1 : $2 
 batch_ewarn=Ugyldige advarselsdage på linje $1 : $2 
@@ -54,6 +61,7 @@ batch_eexpire=Ugyldig udløbsdag på linje $1 : $2
 batch_echange=Ugyldig ændring af adgangskodedag på linje $1 : $2 
 batch_instr=Instruktioner og batchformat
 batch_header=Batchindstillinger for oprettelse, opdatering og sletning af brugere
+
 export_header=Batch-eksportindstillinger for bruger
 export_egroup=Gruppe $1 findes ikke
 export_euid=Ugyldig første UID inden for rækkevidde
@@ -61,6 +69,7 @@ export_euid2=Ugyldigt andet UID inden for rækkevidde
 export_egid=Ugyldig første GID inden for rækkevidde
 export_egid2=Ugyldigt andet GID inden for rækkevidde
 export_ecannot=Du har ikke tilladelse til at eksportere brugere
+
 gexport_title=Eksporter gruppebatchfil
 gexport_desc=Denne formular giver dig mulighed for at oprette en batchfil, der indeholder nogle eller alle de tilgængelige grupper på systemet. Filen kan bruges på siden Execute Group Batch File på et andet system til at genskabe de eksporterede grupper igen.
 gexport_header=Eksportindstillinger for batchgruppe
@@ -69,8 +78,10 @@ gexport_ecannot=Du har ikke tilladelse til at eksportere grupper
 gexport_err=Eksport af gruppe batch-fil kunne ikke
 gexport_egid=Ugyldig første GID inden for rækkevidde
 gexport_egid2=Ugyldigt andet GID inden for rækkevidde
+
 umass_others=ADVARSEL! Nogle hjemmekataloger indeholder $1 filer, der ejes af andre brugere.
 umass_sure2=Er du sikker på, at du vil slette de $1 valgte brugere?
+
 gbatch_title=Udfør gruppe-batch-fil
 gbatch_ecannot=Du kan ikke bruge gruppen batch-filformular
 gbatch_desc=Denne formular giver dig mulighed for at oprette, ændre eller slette mange grupper på en gang fra en uploadet eller lokal tekstfil. Hver linje i filen specificerer en handling, der skal udføres, afhængigt af dets første felt. Linjeformaterne er :

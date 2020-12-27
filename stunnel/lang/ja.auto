@@ -21,6 +21,7 @@ index_eversion=システムにインストールされているSTunnelのバー�
 index_conf=構成ファイル $1から
 index_noconf=設定ファイルはありません！
 index_delete=選択したトンネルを削除
+
 edit_title=SSLトンネルを編集
 create_title=SSLトンネルを作成する
 edit_header1=トンネルソースオプション
@@ -47,6 +48,7 @@ edit_tcpw=TCPラッパー名
 edit_auto=自動
 edit_iface=発信元アドレス
 edit_type=から実行
+
 save_err=SSLトンネルを保存できませんでした
 save_enclash=サービス名 $2は既にポート $1で使用されています。
 save_einetd=$1というinetdサービスが既に存在します。
@@ -61,6 +63,7 @@ save_etcpw=TCPラッパー名が欠落しているか無効です
 save_eiface=発信元アドレスが欠落しているか無効です
 save_exinetd=$1というxinetdサービスが既にあります
 save_export=ポート $1はxinetdサービス $2によって既に使用されています
+
 log_apply=適用された変更
 log_create=SSLトンネル $1を作成しました
 log_delete=SSLトンネル $1を削除しました

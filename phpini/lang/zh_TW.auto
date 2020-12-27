@@ -9,17 +9,21 @@ index_edit=管理
 index_manual=手動編輯
 index_anyfile=編輯其他PHP配置文件：
 index_return=配置文件
+
 file_global=全局PHP配置
 file_eread=無法讀取 $1 : $2
+
 manual_title=手動編輯配置
 manual_desc=該頁面可用於手動編輯PHP配置文件。這應該謹慎進行，因為不會對您的更改執行語法或其他有效性檢查。
 manual_err=編輯配置文件失敗
 manual_edata=沒有輸入新內容
+
 list_title=管理PHP配置
 list_ecannot=您無權管理此PHP配置文件
 list_return=PHP配置
 list_format_ini=INI格式
 list_format_fpm=FPM格式
+
 vars_title=PHP變量
 vars_header=PHP變量創建和引用選項
 vars_magic=引用所有輸入變量？
@@ -28,6 +32,7 @@ vars_register=將所有輸入轉換為全局變量？
 vars_args=將命令行參數轉換為全局變量？
 vars_long=是否創建像<tt>HTTP_GET_VARS</tt>這樣的老式數組？
 vars_err=無法保存PHP變量設置
+
 dirs_title=目錄設置
 dirs_header=PHP腳本和擴展目錄設置
 dirs_include=在目錄中搜索包括
@@ -39,6 +44,7 @@ dirs_err=保存目錄設置失敗
 dirs_eincs=沒有輸入包括搜索目錄
 dirs_eutmp=臨時文件目錄丟失或無效
 dirs_eext=缺少擴展目錄
+
 db_title=數據庫設置
 db_header1=MySQL數據庫連接設置
 db_persist=允許持久數據庫連接？
@@ -57,6 +63,7 @@ db_emaxlinks=總連接數丟失或無效
 db_etimeout=連接超時丟失或無效
 db_ehost=默認MySQL服務器主機缺失或無效
 db_eport=默認MySQL服務器端口丟失或無效
+
 session_title=會話選項
 session_header=PHP會話跟踪的選項
 session_handler=會話存儲機制
@@ -73,6 +80,7 @@ session_epath=會話文件目錄丟失或無效
 session_elife=Cookie生命週期丟失或無效
 session_emaxlife=最大會話生存期丟失或無效
 session_eredis=缺少或禁用Redis擴展
+
 safe_title=安全模式選項
 safe_header=安全文件訪問模式選項
 safe_on=啟用安全模式？
@@ -85,6 +93,7 @@ safe_err=無法保存安全模式選項
 safe_einclude=包含文件的目錄丟失或無效
 safe_eexec=所執行程序的目錄缺失或無效
 safe_ebasedir=文件操作目錄丟失或無效
+
 limits_title=資源限制
 limits_header=內存和傳輸限制選項
 limits_mem=最大內存分配
@@ -98,6 +107,7 @@ limits_epost=最大HTTP POST大小丟失或無效
 limits_eupload=最大文件上傳大小丟失或無效
 limits_eexec=缺少或無效的最大執行時間
 limits_einput=最大輸入解析時間丟失或無效
+
 errors_title=錯誤記錄
 errors_header=錯誤消息顯示和日誌記錄選項
 errors_display=顯示錯誤消息？
@@ -128,6 +138,7 @@ errors_err=保存錯誤日誌失敗
 errors_ereporting=沒有輸入錯誤類型表達式
 errors_emaxlen=記錄的錯誤的最大大小丟失或無效
 errors_efile=缺少錯誤日誌文件
+
 misc_title=其他設定
 misc_header=其他其他PHP設置
 misc_short=允許以&lt;？開頭的PHP腳本？
@@ -148,6 +159,7 @@ misc_include=允許打開遠程包含？
 misc_path=CGI修復路徑信息？
 misc_timezone=PHP時區
 misc_charset=默認字符集
+
 log_manual=手動編輯文件 $1
 log_vars=已更改 $1中的PHP變量
 log_dirs=已更改 $1中的目錄設置
@@ -157,6 +169,7 @@ log_safe=已更改 $1中的安全模式選項
 log_limits=已更改 $1中的資源限制
 log_errors=已更改 $1中的錯誤記錄
 log_misc=更改了 $1中的其他設置
+
 acl_global=可以編輯全局PHP配置嗎？
 acl_anyfile=可以將任何文件作為PHP配置進行編輯嗎？
 acl_manual=可以手動編輯配置文件嗎？

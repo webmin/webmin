@@ -20,6 +20,7 @@ index_d1=$1
 index_dlang=limba în care sunt afișate modulele
 index_dtheme=tema care controlează aspectul Webmin
 index_dpass=parola folosită pentru a vă autentifica
+
 change_title=Modificarea setărilor
 change_user=Modificarea autentificării Webmin ..
 change_done=.. Terminat
@@ -30,6 +31,7 @@ change_epass2=Parolele noi nu se potrivesc
 change_epass=Parola nouă nu este valabilă : $1 
 change_eoverlay=Nu puteți selecta o suprapunere de temă decât dacă este aleasă o temă UI
 change_eoverlay2=Suprapunerea de temă selectată nu este compatibilă cu tema UI aleasă
+
 acl_lang=Poate schimba limba?
 acl_theme=Poate schimba tema?
 acl_pass=Poți schimba parola (când este setată în Webmin)?

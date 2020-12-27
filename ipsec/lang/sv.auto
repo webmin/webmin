@@ -25,12 +25,15 @@ index_up=Starta anslutningen:
 index_updesc=Välj en anslutning från listan bredvid den här knappen och klicka på den för att försöka upprätta den omedelbart.
 index_nopol=Inga nätverksprinciper hittades - kanske din <a href='$1'>nätverkskonfiguration</a> är felaktig.
 index_import=Importera anslutning från fil.
+
 stop_err=Det gick inte att stoppa IPsec-servern
 start_err=Det gick inte att starta IPsec-servern
 restart_err=Det gick inte att starta om IPsec-servern
 start_elog=Följande fel loggades : $1 
+
 newkey_err=Det gick inte att generera nyckeln
 newkey_ehost=Saknat eller ogiltigt värdnamn
+
 edit_title1=Skapa anslutning
 edit_title2=Redigera anslutning
 edit_header=IPsec VPN-anslutningsinformation
@@ -101,6 +104,7 @@ edit_unit_s=sek
 edit_unit_m=mins
 edit_unit_h=timmar
 edit_unit_d=dagar
+
 config_title=Serverkonfiguration
 config_header=Globala VPN-serverinställningar
 config_ifaces=Nätverksgränssnitt för IPsec
@@ -118,6 +122,7 @@ config_nat=Aktivera NAT-genomgång?
 config_err=Det gick inte att spara serverkonfigurationen
 config_eri=Det verkliga gränssnittet '$1' listas mer än en gång
 config_enone=Inga nätverksgränssnitt specificerades
+
 showkey_title=Visa offentlig nyckel
 showkey_desc1=Den offentliga RSA-nyckeln som visas nedan bör kopieras till konfigurationen av andra system som ansluter till den här, i avsnittet relaterat till denna värd.
 showkey_desc2=Värdena som visas nedan kan användas för att skapa en DNS KEY-post för denna värd, så att andra system som ansluter till den kan leta upp dess offentliga nyckel.
@@ -125,6 +130,7 @@ showkey_flags=flaggor
 showkey_proto=Protokoll
 showkey_alg=Algoritm
 showkey_key=Nyckeldata
+
 policy_desc_block=Blockerade nätverk
 policy_desc_clear=Rensa trafiknätverk
 policy_desc_private=Krypterade nätverk
@@ -145,6 +151,7 @@ policy_mask=Prefix
 policy_err=Det gick inte att spara nätverk
 policy_enet=Ogiltig IP-adress för nätverk på rad $1 
 policy_emask=Ogiltig prefixlängd på rad $2 
+
 save_err=Det gick inte att spara anslutningen
 save_ename=Saknat eller ogiltigt anslutningsnamn
 save_ekeying=Saknas eller ogiltigt antal nybörjningsförsök
@@ -164,6 +171,7 @@ save_eleftcert=Saknar eller ogiltigt lokalt servercertifikat
 save_erightcert=Saknas eller ogiltigt fjärrservercertifikat
 save_ekeylife=Saknad eller ogiltig anslutningsnyckelns livslängd
 save_eikelifetime=Saknad eller ogiltig nyckel för kanalnyckel
+
 log_create_conn=Skapade anslutning $1 
 log_delete_conn=Raderad anslutning $1 
 log_modify_conn=Modifierad anslutning $1 
@@ -182,8 +190,10 @@ log_delete_secret=Raderad hemlig nyckel för $1
 log_create_secret_nn=Skapad hemlig nyckel för alla värdar
 log_modify_secret_nn=Modifierad hemlig nyckel för alla värdar
 log_delete_secret_nn=Raderad hemlig nyckel för valfri värd
+
 up_title=Starta anslutningen
 up_cmd=Starta anslutning med kommando $1 ..
+
 export_title=Exportera konfiguration
 export_desc=Detta formulär kan användas för att exportera konfigurationsfilsektionen för anslutning $1, så att det enkelt kan importeras på servern i andra änden.
 export_print=Visa konfiguration i webbläsaren
@@ -193,11 +203,13 @@ export_err=Det gick inte att exportera konfigurationen
 export_efile=Filnamn saknas
 export_esave=Det gick inte att skriva till filen : $1 
 export_done=Exporterad konfiguration för anslutning $1 till $2 ($3 byte).
+
 import_title=Importera konfiguration
 import_desc=Detta formulär kan användas för att importera en konfigurationsfilsektion för en anslutning, till exempel en som skapas av modulens exportfunktion på ett annat system.
 import_upload=Importera från överföringsfil. ..
 import_file=Importera från serversidan fil ..
 import_ok=Importera nu
+
 import_err=Det gick inte att importera konfigurationen
 import_eupload=Ingen fil vald för att ladda upp
 import_efile=Ingen fil på serversidan har angetts
@@ -207,6 +219,7 @@ import_eclash=En anslutning som heter $1 finns redan.
 import_done1=Lade fram den nya IPsec-anslutningen $1.
 import_done2=Uppdaterad IPsec-anslutning $1.
 import_over=Skriv över befintlig anslutning med samma namn?
+
 secrets_title=Hemliga nycklar
 secrets_none=Inga hemlighetsnycklar hittades!
 secrets_name=Hemlighet för
@@ -220,6 +233,7 @@ secrets_mod=Modul $1
 secrets_newpsk=Skapa ny delad hemlig nyckel.
 secrets_newrsa=Skapa ny RSA-nyckel.
 secrets_return=hemlig nyckellista
+
 secret_title1=Skapa hemlig nyckel
 secret_title2=Redigera hemlig nyckel
 secret_header=Hemliga nyckeldetaljer

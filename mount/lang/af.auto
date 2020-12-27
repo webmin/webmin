@@ -12,6 +12,7 @@ index_return=lêersisteme lys
 index_none=U het nie toegang tot enige gemonteerde lêerstelsels nie.
 index_mount2=Monteer met wagwoord:
 index_root=Wortellêerstelsel
+
 edit_title=Wysig Mount
 create_title=Skep berg
 edit_err=Kon nie berging wysig nie
@@ -58,6 +59,7 @@ edit_ecannot=U mag nie hierdie lêersisteem wysig nie
 edit_ecannot2=U mag nie nuwe lêerstelsels byvoeg nie
 edit_3_or_lower=3 (of laer)
 edit_advanced=Gevorderde modus
+
 save_err=Kon nie berging stoor nie
 save_edir='$1' is nie 'n gids nie
 save_edirname='$1' is nie 'n geldige gidsnaam nie
@@ -74,8 +76,10 @@ save_apply=Pas toe op die permanente lys
 save_fapply=Dwing ongemonteer
 save_eremount=Remount misluk : $1
 save_enone=U het nie gekies om te stoor of te monteer nie
+
 swap_err=Kon nie omruillêer skep nie
 swap_esize='$1' is nie 'n geldige grootte nie
+
 nfs_server=Kies NFS Server ..
 nfs_select=Kies 'n NFS-bediener om van te berg ..
 nfs_ip=IP adres
@@ -87,6 +91,7 @@ nfs_seldir=Kies 'n NFS-gids om te monteer.
 nfs_seldirv4=Vir 'n NFSv4-bevestiging moet u '/' kies
 nfs_dir=Gids
 nfs_clients=kliënte
+
 smb_choose=Kies CIFS-bediener ..
 smb_elist=Kon nie bedienerslys ophaal van $1. Miskien laat die bediener nie blaai nie
 smb_eworkgroup=Geen werkgroep is op die Module Config-bladsy opgestel nie
@@ -103,6 +108,7 @@ smb_sel2=Kies 'n aandeel om te monteer ..
 smb_share=Deel
 smb_comment=kommentaar
 smb_noshares=Daar is geen beskikbare lêerdele op die bediener nie $1
+
 solaris_scsidev=SCSI-beheerder $1 teiken $2 eenheid $3 partisie $4
 solaris_idedev=IDE-beheerder $1 drive $2 partisie $3
 solaris_mddev=RAID-toestel $1
@@ -240,6 +246,7 @@ solaris_efstyp2=Kon nie die lêerstelseltipe nagaan nie : $1
 solaris_ecachedir='$1' is nie 'n geldige kasgids nie
 solaris_efmode='$1' is nie 'n geldige oktale lêer af nie
 solaris_edmode='$1' is nie 'n geldige oktale gidsmodus nie
+
 linux_eamd=AMD het misluk
 linux_eauto=Automount misluk : $1
 linux_esmbconn=Kon nie aan bediener koppel
@@ -361,6 +368,7 @@ linux_noenforce=Ja, maar moenie afdwing nie
 linux_df=Sluit gereserveerde blokke in lêersisteemgrootte in?
 linux_noatime=Vermy die opdatering van die laaste toegangstye?
 linux_netdev=Wag totdat netwerk koppelvlakke op is?
+linux_nofail=Gaan voort met selflaai, selfs al misluk die montering?
 linux_ecname=Ontbrekende of ongeldige kliëntnetbios-naam
 linux_emname=Ontbrekende of ongeldige bediener- of IP-adres van die bediener
 linux_bind=Oorspronklike gids
@@ -386,6 +394,7 @@ linux_nounix=Deaktiveer CIFS Unix-uitbreidings?
 linux_noserverino=Genereer inode nommers aan kliëntkant?
 linux_cvers=CIFS weergawe
 linux_ecvers=CIFS-weergawe moet 'n nommer wees
+
 log_mount=Gemonteer $3
 log_mount_l=Gemonteer $2 $1 op $3
 log_umount=Ongemonteer $3
@@ -399,7 +408,9 @@ log_modify_l=Gewysig $2 montering $1 op $3
 log_delete=Bergstuk $3
 log_delete_l=$2 mount $1 op $3
 log_swap=Geskep ruil lêer $1
+
 unmount_err=Kon nie $1 ontkoppel nie
+
 mount_err=Kon nie $1 monteer nie
 irix_nhost=NFS gasheernaam
 irix_ndir=NFS Gids
@@ -430,6 +441,7 @@ irix_rock=Gebruik Rock Ridge-uitbreidings?
 irix_nofsck=Kontroleer die lêerstelsel by die opstart?
 irix_auto=Automounter bron
 irix_automap=Kaartlêer
+
 irix_ehost=Die gasheer '$1' bestaan nie
 irix_eloss=Die gasheer '$1' is af
 irix_eshowmount=Die gasheer '$1' ondersteun NFS nie
@@ -447,9 +459,11 @@ irix_efstyp2=Kon nie lêerstelsel tipe $1 kry : $2
 irix_efstyp=Die tipe lêerstelsel op $1 is $2, nie $3
 irix_eautomap=Die outomatiese kaartkaartlêer '$1' bestaan nie
 irix_eauthmap2=Ontbrekende of ongeldige outomatiese kaartlêer
+
 irix_devroot=Wortel partisie
 irix_devswap=Wissel partisie af
 irix_autohosts=Alle uitvoer van die NFS
+
 acl_only=Laat slegs montering en aftakeling toe?
 acl_fs=Lêerstelsels wat geredigeer kan word
 acl_types=Tipes lêersisteme wat gebruik kan word
@@ -462,8 +476,10 @@ acl_hide=Versteek onbewerkbare lêerstelsels?
 acl_simple=Toon eenvoudige monteringvorm?
 acl_simopts=Toon vereenvoudigde lêerstelselopsies?
 acl_browse=Wys lêer en deel blaaiknoppies?
+
 egcc=Die GCC- of CC-samesteller wat benodig word om 'n program te bou vir die lys van gemonteerde lêerstelsels op u stelsel, is nie beskikbaar nie.
 ecompile=Kon nie 'n program opstel vir die lys van gemonteerde lêerstelsels op u stelsel nie : $1
+
 freebsd_eaddr=Ontbrekende of ongeldige bedienaaradres
 freebsd_eworkgroup=Ontbrekende of ongeldige werkgroep
 freebsd_ide=IDE hardeskyf
@@ -477,8 +493,10 @@ freebsd_idedev=IDE-toestel $1, plak $2, partisie $3
 freebsd_scsidev=SCSI-apparaat $1, sny $2, partisie $3
 freebsd_edevpath=Ander toestelle moet 'n absolute pad wees, soos <tt>/dev/cdrom</tt>
 freebsd_edevfile=Die toestellêer '$1' bestaan nie
+
 cswap_file=Die ruillêer $1 bestaan nie.
 cswap_size=Skep en monteer 'n ruillêer met grootte
+
 acl_sysinfo=Wys beskikbare skyfdata op Dashboard?
 sysinfo_total=totale
 sysinfo_dev=Toestel-ID

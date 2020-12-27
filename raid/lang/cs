@@ -18,6 +18,7 @@ index_mailfromnone=Výchozí (<tt>root</tt>)
 index_program=Příkaz, který se spustí v momentě, kdy jsou zjištěny problémy
 index_programnone=Nespouštět žádný
 index_monitor=Zapnutý monitoring?
+
 linear=Concatenated (Linear)
 raid0=Striped (RAID0)
 raid1=Zrcadlení (RAID1)
@@ -26,6 +27,7 @@ raid5=Redundance (RAID5)
 raid6=Duální redundance (RAID6)
 raid10=Rozvrstveno a zrcadleno (RAID10)
 blocks=bloky(ů)
+
 create_title=Vytvořit Raid zařízení
 create_header=Vlastnosti Radi zařízení
 create_device=Soubor zařízení
@@ -46,6 +48,7 @@ create_edisks=Nejsou vybrány žádné oddíly
 create_edisks2=Nejméně dva oddíly musí být označeny pro zrcadlení
 create_espare=Rezervní oddíl $1 nemůže být zároveň RAID oddíl
 create_epdisk=Paritní oddíl nemůže být zároveň RAID oddíl
+
 view_title=RAID zařízení
 view_header=Vlastnosti RAID zařízení
 view_device=Soubor zařízení
@@ -87,6 +90,7 @@ view_newmount2=Připojit RAID jako virtuální paměť
 view_mountmsg=Vložením adresáře a klepnutím na toto tlačítko přejdete do formuláře, které připojí RAID zařízení, pokud obsahuje nějaký souborový systém.
 view_mountmsg2=Klepnutím na toto tlačítko použijete toto RAID zařízení jako virtuální paměť vašeho systému.
 view_blocks=$1 bloky(ů)
+
 mkfs_title=Vytvořit souborový systém
 mkfs_header2=Tento formulář umožňuje vytvořit nový $2 souborový systém na $1. <b>Všechna</b> stávající data budou smazána!
 mkfs_options=Vlastnosti nového souborového systému
@@ -94,6 +98,7 @@ mkfs_err=Chyba při vytváření souborového systému
 mkfs_exec=Spuštění příkazu $1 ..
 mkfs_failed=.. chyba příkazu!
 mkfs_ok=.. příkaz dokončen.
+
 emkraid=<tt>mkraid</tt> chyboval : $1
 eraidstop=<tt>raidstop</tt> chyboval : $1
 eraidstart=<tt>raidstart</tt> chyboval : $1
@@ -103,6 +108,7 @@ emdadmcreate=Chybný mód <tt>mdadm</tt> v <tt>--create</tt> : $1
 emdadmadd=Chybný mód <tt>mdadm</tt> v <tt>--manage --add</tt> : $1
 emdadmremove=Chybný mód <tt>mdadm</tt> v <tt>--manage --remove</tt> : $1
 emdadmfail=Chybný mód <tt>mdadm</tt> v <tt>--manage --fail</tt> : $1
+
 log_create=Vytvořeno $1 RAID zařízení $2
 log_stop=Deaktivováno RAID zařízení $1
 log_start=Aktivováno RAID zařízení $1
@@ -111,10 +117,12 @@ log_mkfs=Vytvořen $1 souborový systém na $2
 log_add=Přidán oddíl $2 na RAID zařízení $1
 log_remove=Odstraněn oddíl $2 z RAID zařízení $1
 log_notif=Aktualizovány volby pro oznámení RAID problému
+
 notif_err=Nastala chyba při ukládání voleb pro oznámení RAID problému
 notif_emailaddr=Chybějící nebo neplatná adresa pro oznámení
 notif_emailfrom=Chybějící nebo neplatná adresa Od:
 notif_eprogram=Chybějící nebo neexistující program ke spuštění
+
 delete_title=Smazat RAID pole
 delete_rusure=Určitě chcete smazat RAID pole $1, které využívá $2 diskového prostoru?
 delete_ok=Ano, smazat jej

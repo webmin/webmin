@@ -10,6 +10,7 @@ index_range=Genera report per intervallo di date
 index_view=Visualizza rapporto generato
 index_viewdesc=Visualizza il rapporto generato più di recente nella directory $1.
 index_return=indice del modulo
+
 log_title=Origine registro e destinazione rapporto
 log_header=File di registro Squid di origine e opzioni di report generate
 log_access_log=File di registro Squid di origine
@@ -30,6 +31,7 @@ log_elastlog=Manca o no un numero
 log_eemail=Indirizzo email mancante o non valido
 log_emailx=Programma di posta mancante o inesistente
 log_squidguard_log_path=File di registro SquidGuard
+
 style_title=Segnala stile
 style_header=Stile del report HTML e opzioni di colore
 style_title2=Segnala il titolo
@@ -54,6 +56,7 @@ style_efont=Nome carattere mancante o non valido
 style_esize=Larghezza e altezza dell'immagine mancanti o non valide
 style_language=Segnala lingua
 style_charset=Segnala set di caratteri
+
 report_title=Opzioni del rapporto
 report_header=Segnala contenuto e opzioni di generazione
 report_resolve_ip=Risolvi gli indirizzi IP?
@@ -134,6 +137,7 @@ report_echar=Gli spazi non sono ammessi
 report_estring=Testo di sostituzione mancante o non valido
 report_eselect=Niente di selezionato
 report_eenter=Non è stato inserito nulla
+
 sched_title=Generazione di rapporti pianificati
 sched_header=Opzioni di segnalazione pianificate
 sched_sched=Rapporto pianificato abilitato?
@@ -148,9 +152,11 @@ sched_rsel=Quelli da $1 a $2 giorni fa
 sched_err=Impossibile salvare la generazione pianificata del rapporto
 sched_erfrom=Numero iniziale mancante o non valido di giorni fa
 sched_erto=Numero finale mancante o non valido di giorni fa
+
 view_title=Rapporto Sarg
 view_efile=Nome del file non valido!
 view_eopen=Impossibile aprire il file di report
+
 gen_title=Genera rapporto
 gen_header=Ora genera il rapporto Sarg dal file di registro Squid $1 e tutte le versioni ruotate.
 gen_done=.. fatto
@@ -160,6 +166,7 @@ gen_view=Visualizza rapporto completo.
 gen_err=Generazione del rapporto non riuscita
 gen_efrom=Mancante o non valido dal giorno
 gen_eto=Mancante o non valido al giorno
+
 webmin_log_log=Fonte di log aggiornata e opzioni di destinazione del report
 webmin_log_report=Opzioni di report aggiornate
 webmin_log_style=Opzioni di stile report aggiornate

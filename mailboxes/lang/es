@@ -29,6 +29,7 @@ mail_mark1=Leídos
 mail_mark2=Especiales
 mail_forward=Remitir seleccionado
 mail_rfc=Desde línea
+
 view_title=Leer Correo
 view_desc=Mensaje $1 en $2
 view_desc2=Mensaje $1 para usuario $2
@@ -51,7 +52,9 @@ view_mark1=Leído
 view_mark2=Especial
 view_return=correo original
 view_sub=Correo Adjunto
+
 compose_title=Componer Correo
+
 reply_title=Responder a Correo
 forward_title=Remitir Correo
 reply_headers=Cabeceras de Correo
@@ -60,6 +63,7 @@ reply_mailforward=Mensajes remitidos
 reply_attach2=Adjuntados desde cliente y servidor
 reply_send=Enviar Correo
 reply_ecannot=No estás autorizado a enviar correo a este usuario
+
 send_err=Error al enviar correo
 send_eto=Dirección 'A' sin poner
 send_efrom=Dirección 'De' sin poner
@@ -71,14 +75,17 @@ send_eattach=Los archivos incluídos no pueden exceder más de 1kB de medida
 send_eperms=El usuario $1 no puede leer $2
 send_eperms2=No estás autorizado a enviar archivo $1
 send_epath=El ejecutable de Sendmail $1 no existe.
+
 delete_ecannot=No estás autorizado a borrar correo de este usuario
 delete_enone=No se ha seleccionado correo para ser borrado
 delete_emnone=No hay correo seleccionado para marcar
+
 search_title=Resultados de la búsqueda
 search_ecannot=No estás autorizado a buscar en este correo de usuario
 search_ematch=Debes de digitar un texto que coincida con algo.
 search_none=No se han encontrado mensajes.
 search_results3=$1 mensajes de correo no coinciden con $2
+
 acl_none=Ninguno
 acl_same=Usuario con mismo nombre
 acl_all=Todos
@@ -98,5 +105,6 @@ acl_sent=Almacenar correo enviado en buzón
 acl_canattach=¿Puede adjuntar archivos del lado servidor?
 acl_usersm=Usuarios que coincidan
 acl_asame=Igual que nombre de usuario
+
 log_delmail=Borrados $1 mensajes de $2
 log_send=Enviado correo a $1

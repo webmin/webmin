@@ -7,6 +7,7 @@ index_system2=Serwer e-mail: Qmail
 index_system1=Serwer e-mail: Sendmail
 index_system0=Serwer e-mail: Postfix
 index_file=Odczytaj e-maile z pliku lub katalogu:
+
 mail_title=Poczta użytkownika
 mail_from=Od
 mail_date=Wysłano
@@ -50,6 +51,7 @@ mail_fchange=Zmień
 mail_indexlink=Wróć do skrzynki
 mail_deleteall=Usuń wszystko
 mail_unknown=Nieznane
+
 mail_addresses=Zarządzaj książką adresową
 mail_folders=Zarządzaj katalogami
 mail_loginheader=Login serwera POP3
@@ -73,6 +75,7 @@ mail_return2=użytkowników e-mail
 mail_selread=Wybierz przeczytane
 mail_selunread=Wybierz nie przeczytane
 mail_selspecial=Wybierz specjalne
+
 view_title=Czytaj pocztę
 view_desc=Wiadomość $1 w $2
 view_desc2=Wiadomość $1 dla użytkownika $2
@@ -109,11 +112,14 @@ view_markas0=Nie przeczytaną
 view_markas1=Przeczytaną
 view_markas2=Specjalną
 view_return=pierwotnego adresu e-mail
+
 view_astext=Wyświetl jako tekst
 view_ashtml=Wyświetl jako HTML
 view_aall=Zapisz wszystkie załączniki jako ZIP.
 view_aslideshow=Wyświetl wszystkie obrazki
+
 compose_title=Utwórz wiadomość
+
 reply_title=Odpowiedz na wiadomość
 forward_title=Przekaż dalej
 reply_headers=Nagłówki wiadomości
@@ -121,6 +127,7 @@ reply_attach=Przekazywane załączniki
 reply_attach2=Załączniki
 reply_send=Wyślij
 reply_ecannot=Nie masz uprawnień do czytania poczty jako ten użytkownik
+
 send_err=Nie udało się wysłać wiadomości
 send_eto=Brak adresu docelowego
 send_efrom=Brak adresu źródłowego
@@ -131,18 +138,22 @@ send_esmtp=Polecenie SMTP $1 zakończyło sie błędem : $2
 send_eattach=Łączny rozmiar załączników nie może przekraczać $1 kB.
 send_eperms=Użytkownik $1 nie ma uprawnień do czytania $2
 send_eperms2=Nie masz uprawnień do wysłania pliku $1
+
 delete_ecannot=Nie masz uprawnień do kasowania poczty tego użytkownika
 delete_enone=Nie wybrano wiadomości do skasowania
 delete_emnone=Nie wybrano wiadomości do zaznaczenia
+
 search_title=Wyniki poszukiwania
 search_ecannot=Nie masz uprawnień do przeszukiwania poczty tego użytkownika
 search_ematch=Musisz wprowadzić poszukiwany tekst
 search_none=Nie znaleziono żadnej wiadomości
+
 sform_title=Wyszukiwanie zawaansowane
 sform_ok=Szukaj
 sform_where=Gdzie
 sform_size=rozmiar wiadomości
 sform_return=formularza wyszukiwania zawaansowanego
+
 acl_none=Żadne
 acl_same=Użytkownika o tej samej nazwie
 acl_all=Wszystkie
@@ -161,6 +172,7 @@ acl_attach=Maksymalny łączny rozmiar załączników
 acl_sent=Przechowywać wysłaną pocztę w skrzynce
 acl_canattach=Może dołączać pliki z serwera?
 acl_asame=Taki sam jak nazwa użytkownika
+
 log_delmail=Usunięto $1 wiadomości z $2
 log_movemail=Przeniesiono $1 wiadomości od $2 do $3
 log_copymail=Skopiowano $1 wiadomości od $2 do $3

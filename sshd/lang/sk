@@ -2,7 +2,9 @@ index_title=SSH Server
 index_start=Spustiť Server
 index_version=$1
 index_type=Typ SSH kľúča:
+
 secs=sekúnd
+
 users_title=Autentifikácia
 users_expire_def=Nikdy
 users_pexpire_def=Nikdy
@@ -11,6 +13,7 @@ users_root=Povoliť prihlásenie root-a?
 users_rsa=Povoliť RSA autentifikáciu?
 users_strict=Skontrolovať práva na súboroch s kľúčmi?
 users_banner_def=Žiadny
+
 net_port=Počúvať na porte
 net_prots=Povoliť protokoly
 net_prots_1=SSH v1
@@ -20,6 +23,7 @@ net_listen2=Počúvať na adresách
 net_laddress=Adresa
 net_lport=Port
 net_listen_def=Všetky adresy
+
 access_allowu=Povoliť iba užívateľov
 access_allowg=Povoliť iba členov skupín
 access_all=Všetci
@@ -27,7 +31,9 @@ access_denyu=Zakázať užívateľov
 access_denyg=Zakázať členov skupín
 access_allowh=Povoliť iba hostiteľov
 access_denyh=Zakázať hostiteľov
+
 start_err=Zlyhalo spustenie SSH servera
+
 host_name=Možnosti pre hostiteľa
 host_user=Prihlásiť sa ako uživateľ
 host_port=Port pre spojenie
@@ -41,7 +47,10 @@ host_rlport=Lokálny port
 host_prots=Skúsiť SSH protokoly
 host_prots_sel=Vybrané..
 host_proxy_def=Žiadna
+
 log_stop=Zastavený SSH server
 log_start=Spustený SSH server
+
 sync_type=Typ kľúča
+
 manual_edata=Nič nebolo zadané!

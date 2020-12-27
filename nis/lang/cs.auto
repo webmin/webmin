@@ -1,9 +1,13 @@
 index_enis2=Použitelné budou pouze funkce klientských služeb tohoto modulu.
+
 client_boot=Povolit klienta NIS?
 client_enis=Zdá se, že váš počítač nemá nainstalovanou podporu klientů NIS.
+
 switch_srcs=Zdroje dat
 switch_return=klientské služby
+
 security_domain=Doména NIS
+
 eswitch_title=Upravit službu
 eswitch_egone=Služba neexistuje!
 eswitch_header=Detaily služby

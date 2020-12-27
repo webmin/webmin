@@ -16,6 +16,7 @@ index_chain=زنجیره$1
 index_action=عمل
 index_desc=وضعیت
 index_comm=اظهار نظر
+index_no_comment=
 index_move=حرکت
 index_none=هیچ قانونی برای این زنجیره تعریف نشده است.
 index_policy=عملکرد پیش فرض را تنظیم کنید:
@@ -88,6 +89,7 @@ index_ipset_size=اندازه
 index_ipvxmode=تغییر نسخه پروتکل IP:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
 desc_p=پروتکل$1 است
 desc_p!=پروتکل$1 نیست
 desc_s=منبع$1 است
@@ -114,6 +116,8 @@ desc_tcp-option=بسته از گزینه TCP $1 استفاده می کند
 desc_tcp-option!=بسته از گزینه TCP $1 استفاده نمی کند
 desc_icmp-type=نوع ICMP $1 است
 desc_icmp-type!=نوع ICMP $1 نیست
+desc_icmpv6-type=نوع ICMP $1 است
+desc_icmpv6-type!=نوع ICMP $1 نیست
 desc_mac-source=آدرس اترنت $1 است
 desc_mac-source!=آدرس اترنت $1 نیست
 desc_limit=نرخ کمتر از$1 است
@@ -146,10 +150,15 @@ desc_always=همیشه
 desc_args--match-set=$2 در مجموعه IP $1 موجود است
 desc_src=منبع
 desc_dest=مقصد
+
 redhat_einstalled=هیچ عملیاتی برای راه انداز <tt>iptables (6)</tt> یافت نشد ، نشان می دهد که بسته IPtables در سیستم شما نصب نشده است
 redhat_eoutput=خطایی در دریافت وضعیت IPtables از دستور$1 رخ داد. احتمالاً این نشان می دهد كه سیستم شما پیكربندی شده است تا از IPchains به جای IPtables استفاده كند.
+
 gentoo_escript=اسکریپت راه اندازی Gentoo IPtables $1 در سیستم شما یافت نشد.
+
 eiptables=میزهای IP ناشناس خط پرونده را نجات می دهند :$1
+eip6tables=ip6tables ناشناخته خط پرونده را نجات می دهند :$1
+
 edit_title1=قانون را اضافه کنید
 edit_title2=قانون را ویرایش کنید
 edit_title3=قاعده کلون
@@ -218,6 +227,7 @@ edit_physdevout=رابط بدنی خروجی
 edit_physdevisin=بسته ورودی وارد رابط پل
 edit_physdevisout=بسته خروجی از رابط پل
 edit_physdevisbridged=در حال بسته شدن است
+
 save_err=قانون را نجات داد
 save_echain=زنجیره نامعتبر یا نامعتبر برای اجرا
 save_esource=آدرس یا شبکه منبع نامعتبر یا نامعتبر است
@@ -262,23 +272,28 @@ save_estates=هیچ حالت اتصال انتخاب نشده است
 save_ecanjump=شما مجاز به استفاده از این عمل نیستید
 save_ephysdevin=رابط بدنی ورودی موجود یا نامعتبر است
 save_ephysdevout=رابط بدنی خروجی نامعتبر یا نامعتبر است
+
 delete_title=زنجیر را حذف کنید
 delete_rusure=آیا مطمئن هستید که می خواهید زنجیره$1 را حذف کنید؟ قوانین$2 درون آن حذف خواهند شد.
 delete_ok=اکنون حذف کنید
 delete_ecannot=شما مجاز به حذف زنجیر نیستید
+
 clear_title=زنجیره پاک
 clear_rusure=آیا مطمئن هستید که می خواهید همه قوانین$2 را از زنجیره$1 حذف کنید؟
 clear_ecannot=شما مجاز به پاک کردن زنجیر نیستید
+
 new_err=ایجاد زنجیره انجام نشد
 new_ename=نام زنجیره نامعتبر یا نامعتبر است
 new_etaken=زنجیری با این نام از قبل موجود است
 new_ecannot=شما مجاز به ایجاد زنجیر نیستید
+
 apply_err=پیکربندی انجام نشد
 apply_ecannot=شما مجاز به اعمال پیکربندی نیستید
 apply_remote=خطا از $1 : $2 
 unapply_err=بازگرداندن پیکربندی انجام نشد
 unapply_ecannot=شما مجاز به بازگشت پیکربندی نیستید
 bootup_ecannot=شما مجاز به فعال یا غیرفعال کردن فایروال در هنگام راه اندازی نیست
+
 log_create_rule=قانون اضافه شده به جدول $1 در جدول$2
 log_modify_rule=قانون اصلاح شده در زنجیره$1 در جدول$2
 log_delete_rule=قانون در جدول$1 در جدول$2 حذف شد
@@ -301,8 +316,10 @@ log_add_group=سرورهای خوشه ای از گروه$1 اضافه شد
 log_delete_host=سرور خوشه$1 حذف شد
 log_delete_group=$1 سرورهای خوشه برداشته شد
 log_openports=درگاههای فایروال$1 افتتاح شد
+
 setup_eiface=هیچ رابط شبکه خارجی وارد نشده است
 setup_ecannot=شما مجاز به تنظیم فایروال نیستید
+
 acl_tables=IPtables مجاز است
 acl_apply=آیا می توانید پیکربندی را اعمال کنید؟
 acl_unapply=آیا می توانید پیکربندی را لغو کنید؟
@@ -314,9 +331,11 @@ acl_jall=همه
 acl_newchain=آیا می توانید زنجیرهای جدیدی ایجاد کنید؟
 acl_delchain=آیا می توانید زنجیر ها را حذف یا پاک کنید؟
 acl_policy=آیا می توانید خط مشی پیش فرض را تغییر دهید؟
+
 etable=شما مجاز به ویرایش این IPtable نیستید
 ejump=شما مجاز به ویرایش این قانون نیستید
 ecluster=شما مجاز به مدیریت خوشه فایروال نیستید
+
 cluster_title=سرورهای فایروال خوشه ای
 cluster_none=هنوز هیچ سرور به خوشه فایروال اضافه نشده است.
 cluster_host=نام میزبان
@@ -327,6 +346,7 @@ cluster_gadd=سرورها را به صورت گروه اضافه کنید
 cluster_need=قبل از اینکه در اینجا مدیریت شود باید سرورهایی را با ورود به سیستم و رمز عبور در ماژول Webmin Servers Index اضافه کنید.
 cluster_return=سرورهای خوشه
 cluster_delete=حذف انتخاب شده
+
 add_title=اضافه کردن سرورها
 add_msg=افزودن$1 ..
 add_gmsg=افزودن سرورها به گروه$1 ..
@@ -336,13 +356,16 @@ add_echeck=سرور$1 ماژول فایروال لینوکس را ندارد
 add_emissing=سرور$1 فرمان فایروال$2 را ندارد
 add_ok=با$2 قوانین فایروال فعال$1 اضافه شد.
 add_enone=هیچ سروری برای اضافه کردن انتخاب نشده است!
+
 policy_ecannot=شما مجاز به تغییر خط مشی پیش فرض برای این زنجیره نیستید
+
 move_title=حرکت قوانین
 move_count=قوانین انتخاب شدند
 move_chain=تغییر فعلی
 move_dest=زنجیره مقصد
 move_ok=اکنون حرکت کنید
 move_header=گزینه های حرکت قانون
+
 rename_title=تغییر نام زنجیر
 rename_count=قوانین به صورت زنجیره ای
 rename_chain=نام فعلی
@@ -352,6 +375,3 @@ rename_header=گزینه های تغییر نام زنجیره ای
 rename_adjust=قوانین دیگری را که به این زنجیره پرش می کنند اصلاح کنید؟
 rename_none=هیچ یک
 rename_ecannot=شما مجاز به تغییر نام زنجیرها نیستید
-desc_icmpv6-type=نوع ICMP $1 است
-desc_icmpv6-type!=نوع ICMP $1 نیست
-eip6tables=ip6tables ناشناخته خط پرونده را نجات می دهند :$1

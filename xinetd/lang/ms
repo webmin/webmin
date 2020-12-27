@@ -25,6 +25,7 @@ index_estart=Arahan untuk memulakan xinetd $1 tidak wujud. Mungkin ia tidak dipa
 index_noport=Tidak diketahui
 index_enable=Aktifkan Pilihan
 index_disable=Nyah-aktif Pilihan
+
 serv_create=Cipta Servis Internet
 serv_edit=Sunting Servis Internet
 serv_header1=Pilihan servis rangkaian
@@ -78,19 +79,24 @@ serv_enice=Hilang atau tidak sah bagi aras Nice
 serv_ecps0=Bilangan sambungan persaat hilang atau tidak sah
 serv_ecps1=Lengah hilang atau tidah sah
 serv_etimes=Masa capaian mestilah dalam format JJ:MM-JJ:MM
+
 sock_stream=Stream
 sock_dgram=Datagram
 sock_raw=Raw
 sock_seqpacket=Jujukan datagram
+
 proto_=Lalai
 proto_ip=IP (Protokol Internet)
 proto_tcp=TCP (Protokol Kawalan Pancaran)
 proto_udp=UDP (Protokol Datagram Pengguna)
+
 restart_err=Gagal untuk terapkan perubahan
 restart_ekill=Gagal untuk menghantar isyarat HUP kepada PID $1 : $2
 restart_epid=Tiada lagi beroperasi
+
 start_err=Gagal mulakan xinetd
 start_estart=$1 gagal : $2
+
 defs_title=Pilihan Lalai
 defs_header=Pilihan lalai untuk servis
 defs_log=Mod meng-log Xinetd
@@ -115,6 +121,7 @@ defs_err=Gagal menyimpan pilihan lalai
 defs_efile=Fail nama log hilang atau tak sah
 defs_esoft=Had lembut hilang atau tak sah
 defs_ehard=Had pejal hilang atau tak sah
+
 log_create_serv=Mencipta $2 servis $1
 log_modify_serv=Mengubah servis $1
 log_delete_serv=Memadam servis $1
@@ -125,5 +132,6 @@ log_enable=Aktifkan servis $1
 log_disable=Nyah-aktifkan servis $1
 log_enable_l=Aktifkan servis $1
 log_disable_l=Nyah-aktifkan servis $1
+
 config_dirdef=Fail konfigurasi Xinetd
 config_dirto=Fail baharu dalam direktori

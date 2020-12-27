@@ -50,6 +50,7 @@ index_fmode1=Virtuális kiszolgálók fájlja $1
 index_fmode1d=Új fájl a $1 virtuális szerver könyvtár alatt
 index_fmode2=Kiválasztott fájl ..
 index_delete=Kiválasztott szerver törlése
+
 cvirt_ecannot=Nem hozhat létre virtuális kiszolgálót
 cvirt_err=A virtuális szerver létrehozatala sikertelen
 cvirt_eaddr1=Nem írt be címet
@@ -62,6 +63,7 @@ cvirt_eroot3=Nem használhatja a '$1' gyökérkönyvtárat
 cvirt_etaken=Ezen a néven és porton már létezik virtuális kiszolgáló
 cvirt_efile=A(z) $1 : $2 írása sikertelen
 cvirt_emissing=Az új virtuális szerver hozzá lett adva a $1 -hoz, de ezt a fájlt nem használja az Apache. Ellenőrizze a <a href='$2'>modul beállításokat</a> hogy biztos legyen abban, hogy a 'Fájl vagy könyvtár hozzáadása a virtuális szerverhet' be van állítva.
+
 etype=Ilyen típusú opciókat nem módosíthat
 efailed=A(z) mentése sikertelen
 apache_apply=Módosítások érvényesítése
@@ -71,6 +73,7 @@ auth_return=Hozzáférés-vezérlés
 default_serv=Alapértelmezett kiszolgáló
 bytes=byte
 eafter=A konfiguráció ellenőrzése sikertelen: $1 A változások mentése nem történt meg.
+
 global_ecannot=Nem módosíthatja a globális opciókat
 global_mime=Globális MIME típuslista
 global_mimedesc=Kattintson az alábbi listán látható MIME típusok valamelyikére annak módosításához, vagy használja a lap alján lévő hivatkozást egy új típus hozzáadásához.
@@ -78,6 +81,7 @@ global_type=Típus
 global_ext=Kiterjesztések
 global_add=MIME típus hozzáadása
 global_return=MIME típusok
+
 mime_ecannot=Nem módosíthatja a MIME típusokat
 mime_edit=MIME típus módosítása
 mime_add=MIME típus hozzáadása
@@ -86,6 +90,7 @@ mime_type=MIME típus
 mime_ext=Kiterjesztések
 mime_err=MIME típus mentése sikertelen
 mime_etype=A(z) '$1' MIME típus érvénytelen
+
 virt_ecannot=Nem módosíthatja ezt a virtuális szervert
 virt_title=Virtuális szerver beállításai
 virt_header=$1-hez
@@ -106,6 +111,7 @@ virt_path=Elérési útvonal
 virt_return=Kiszolgálóindex
 virt_euser=Nem módosíthatja e virtuális kiszolgáló felhasználóját vagy csoportját.
 virt_header2=$1 a $2-hez
+
 vserv_title=Virtuális szerver konfigurációja
 vserv_ecannot=Nem módosíthatja e virtuális kiszolgáló címét
 vserv_addr=Cím
@@ -124,10 +130,12 @@ vserv_eport=A(z) '$1' port érvénytelen
 vserv_eroot=A(z) '$1' dokumentumgyökér érvénytelen
 vserv_ename=A(z) '$1' kiszolgálónév érvénytelen
 vserv_eaddrs=Nem írt be egyetlen virtuális kiszolgáló címet sem
+
 show_title=Irányelvek
 show_edit=Apache irányelv módosítása:
 show_these=Irányelvek kézi módosítása
 show_ok=Módosítás
+
 manual_configs=Konfigurációs fájlok módosítása
 manual_title=Irányelvek módosítása
 manual_header=Használja az alábbi szövegdobozt az Apache $1-beli, erre a virtuális szerverre, könyvtárra, vagy fájlra vonatkozó irányelveinek kézi módosításához.
@@ -135,6 +143,7 @@ manual_ecannot=Nem módosíthatja kézileg az irányelveket
 manual_file=Irányelvek módosítása a következő fájlban:
 manual_efile=Érvénytelen Apache konfigurációs fájl
 manual_etest=Konfigurációs fájlhiba : $1
+
 dir_title=Könyvtárankénti opciók
 dir_header=$1-hez a $2-n
 dir_show=Irányelvek megjelenítése
@@ -150,6 +159,7 @@ dir_re=Egyezés a regexp-pel
 dir_path=Elérési útvonal
 dir_return=Könyvtárindex
 dir_header2=$1 a $2-hez
+
 type_0=Folyamatok és korlátok
 type_1=Hálózatkezelés és címek
 type_2=Apache modulok
@@ -171,6 +181,7 @@ type_17=Automatikus virtuális kiszolgálók
 type_18=Szűrők
 type_19=Nyelvek
 type_20=Térképek
+
 htaccess_title=Könyvtárankénti opciófájlok
 htaccess_ecannot=Nem módosíthatja a htaccess fájlokat
 htaccess_desc=További könyvtárankénti opciókat egy (általában <tt>.htaccess</tt> nevű) fájlban adhat meg az egyes könyvtárak alatt. Az itt megadott opciók a könyvtárra és annak összes alkönyvtárára vonatkoznak, hacsak felül nem írja őket egy másik opciófájl.
@@ -182,6 +193,7 @@ htaccess_return=Opciófájlok listája
 htaccess_edir=A(z) '$1' könyvtár érvénytelen
 htaccess_ecreate=Nem hozhatja létre ezt az opciófájlt
 htaccess_edelete=Nem törölheti ezt az opciófájlt
+
 htindex_ecannot=Nem módosíthatja ezt az opciófájlt
 htindex_title=Könyvtárankénti opciófájl
 htindex_delete=Fájl törlése
@@ -197,12 +209,14 @@ htindex_path=Elérési útvonal
 htindex_header=$1-hez
 htindex_header2=$1 a $2 opciófájlhoz
 htindex_return=Opciófájlok indexe
+
 htfile_title=Fájlonkénti opciók
 htfile_header=$1-hez a(z) $2-ben
 htfile_show=Irányelvek megjelenítése
 htfile_edit=Irányelvek módosítása
 htfile_apply=Az opciók a következőkre vonatkoznak ..
 htfile_header2=$1 a(z) $2-hez
+
 reconfig_title=Ismert modulok újrakonfigurálása
 reconfig_ecannot=Nem konfigurálhatja újra az Apache-ot
 reconfig_ever=Az Apache kiszolgáló futtatható állomány $1 verziójának beolvasása sikertelen. A <a href='$2'>modul-konfigurációban</a> ellenőrizze az elérési útvonalat.
@@ -210,10 +224,12 @@ reconfig_desc1=Az Apache konfigurációja megváltozott, vagy azt még nem vizsg
 reconfig_desc2=Alább egy listát talál a Webmin által támogatott Apache modulokról, melyek közül a jelenleg telepítettek ki vannak választva. Ha dinamikusan betöltött modulokat használ, úgy válassza ki ezeket a típusokat.
 reconfig_desc3=Ha nem biztos abban, hogy az Apache a rendszerén található modulok közül melyiket támogatja, ne bajlódjon a beállításokkal, mivel a Webmin rendszerint automatikusan ki tudja választani a támogatott modulokat.
 reconfig_ok=Konfigurál
+
 defines_title=A megadott paraméterek módosítása
 defines_ecannot=Nem módosíthatja a httpd definíciókat
 defines_desc=Az Apache indulásakor a <tt>-D</tt> parancssori opcióval tud neki paramétereket küldeni. Mivel ezek a paraméterek befolyással lehetnek arra, hogy mely irányelvek kerülnek alkalmazásra a konfigurációs fájlokban, a Webmin-nek tudnia kell, hogy melyeket küldi el az Apache-nak induláskor. A rendszerén használt paramétereket írja be a jobb oldalon található szövegdobozba.
 defines_config=A következő megadott paraméterek már ismertek : $1
+
 authu_ecannot=A(z) '$1' nem megengedett felhasználói szövegfájl
 authu_title=Felhasználólista
 authu_header=A(z) $1 fájlban
@@ -235,6 +251,7 @@ authu_sync=Az alábbi opciók segítségével úgy konfigurálhatja a Webmin-t, 
 authu_screate=Felhasználó hozzáadása Unix felhasználó hozzáadása esetén
 authu_sdelete=Felhasználó törlése Unix felhasználó törlése esetén
 authu_smodify=Felhasználó módosítása Unix felhasználó módosítása esetén
+
 authg_ecannot=A(z) '$1' nem megengedett csoport szövegfájl
 authg_title=Csoportlista
 authg_header=A(z) $1 fájlban
@@ -252,22 +269,26 @@ authg_err=A csoport mentése sikertelen
 authg_euser=Nem írt be csoportnevet
 authg_euser2=A csoportnév nem tartalmazhatja a következő karaktert :
 authg_edup=Már létezik '$1' nevű csoport
+
 stop_err=Az Apache leállítása sikertelen
 stop_ecannot=Nem állíthatja le az Apache-ot
 stop_epid=A(z) $1 PID-fájl megnyitása sikertelen
 stop_epid2=A(z) $1 PID-fájl érvénytelen
 stop_esig=Nem sikerült a SIGTERM küldése a(z) $1 folyamatnak
+
 start_err=Az Apache elindítása sikertelen
 start_ecannot=Nem indíthatja el az Apache-ot
 start_ecmd=$1 sikertelen : $2
 start_eunknown=Ismeretlen ok
 start_eafter=Úgy tűnik, hogy az Apache nem fut
+
 restart_err=Módosítások érvényesítése sikertelen
 restart_epid=A(z) $1 PID-fájl megnyitása sikertelen
 restart_epid2=A(z) $1 PID-fájl érvénytelen
 restart_esig=Nem sikerült a SIGHUP küldése a(z) $1 folyamatnak
 restart_eunknown=Ismeretlen ok
 restart_ecannot=Önnek nincs joga elmenteni a változásokat
+
 acl_virts=Az e felhasználó által módosítható virtuális kiszolgálók listája
 acl_vall=Minden kiszolgáló
 acl_vsel=Kiválasztott ..
@@ -285,6 +306,7 @@ acl_types=Elérhető irányelv-típusok
 acl_all=Mindegyik
 acl_sel=Kiválasztott ..
 acl_names=Szerkeszthető a szerver neve?
+
 core_maxconc=Egyidejű kérések maximuma
 core_maxkeep=Kapcsolatonkénti életben tartások maximuma
 core_maxreq=Folyamatonkénti kérések maximuma
@@ -463,10 +485,12 @@ core_infilter=Beviteli szűrők alkalmazása minden fájlra
 core_outfilter=Kimeneti szűrők alkalmazása minden fájlra
 core_defchar=Dokumentumok karakterkészlete
 core_edefchar=A dokumentumok karakterkészlete hiányzik vagy érvénytelen
+
 mod_negotiation_cache=Gyorstárazza a tartalmi ellenőrzés alatt álló dokumentumokat?
 mod_negotiation_pri=A multiview nyelvi sorrendje
 mod_negotiation_def=Alapértelmezett
 mod_negotiation_epri=Hiányzó nyelvi sorrend
+
 mod_cgi_logname=CGI-szkript napló
 mod_cgi_none=Semelyik
 mod_cgi_elogname=Érvénytelen CGI-szkript naplófájl
@@ -476,6 +500,7 @@ mod_cgi_elogsize=A CGI-naplóméret egész szám kell hogy legyen
 mod_cgi_post=Naplózott adatok maximális mérete
 mod_cgi_epost=Az adatok mérete egész szám kell hogy legyen
 mod_cgi_eunder=A CGI-szkript naplófájl nem a megengedett könyvtár alatt van
+
 mod_alias_from=Feladó
 mod_alias_to=Címzett
 mod_alias_status=Állapot
@@ -498,6 +523,7 @@ mod_alias_cgi2=CGI-könyvtár álneve
 mod_alias_rcgi=Regexp CGI-könyvtárak álnevei
 mod_alias_rcgi2=Regexp CGI-könyvtár álneve
 mod_alias_estatus=A(z) '$1' érvénytelen állapot
+
 mod_proxy_proxy=Működjön proxy kiszolgálóként?
 mod_proxy_req=Kérések
 mod_proxy_forw=Továbbítás ide
@@ -567,11 +593,13 @@ mod_proxy_timeout=Proxy kérés holtideje másodpercben
 mod_proxy_etimeout=Proxy kérés holtidejének másodpercben kell lennie
 mod_proxy_via=Beállítás ezen keresztül: fejlécek
 mod_proxy_not=Semmi
+
 mod_log_agent_default=Alapértelmezett
 mod_log_agent_file=Fájl..
 mod_log_agent_program=Program..
 mod_log_agent_log=Böngésző naplófájlja
 mod_log_agent_efile=A(z) $1 érvénytelen ágensnapló-fájl
+
 mod_log_config_common=Közös naplóformátum
 mod_log_config_named=Elnevezett naplóformátumok
 mod_log_config_nick=Becenév
@@ -589,6 +617,7 @@ mod_log_config_enofilprog=Hiányzó naplófájlnév vagy program
 mod_log_config_efilprog=A(z) '$1' nem megengedett naplófájlnév vagy program
 mod_log_config_eifset=A 'ha be van állítva' opció nem használható az alapértelmezett naplóformátumhoz
 mod_log_config_edir=A napló fájl könyvtára '$1' nem létezik
+
 mod_log_referer_default=Alapértelmezett
 mod_log_referer_file=Fájl..
 mod_log_referer_program=Program..
@@ -596,7 +625,9 @@ mod_log_referer_log=Közvetítő naplófájl
 mod_log_referer_nolog=Ne naplózza a közvetítéseket a következőtől
 mod_log_referer_elog=A(z) $1 érvénytelen közvetítő fájlnév
 mod_log_referer_edir=A közvetítő napló nem a megengedett könyvtár alatt van
+
 mod_status_msg=Kiterjesztett állapotinformáció megjelenítése
+
 mod_mime_ext=Kiterjesztések
 mod_mime_xtype=Extra MIME típusok
 mod_mime_mtype=MIME típus
@@ -629,6 +660,7 @@ mod_mime_outfilter=Kimeneti szűrők
 mod_mime_infilter=Beviteli szűrők
 mod_mime_filters=Használandó szűrők
 mod_mime_efext=Nem adott meg kiterjesztést a(z) $1 szűrőkhöz
+
 mod_setenvif_header=Fejléc
 mod_setenvif_match=Megegyezik
 mod_setenvif_case=Megegyezik az esettel
@@ -639,10 +671,12 @@ mod_setenvif_eheader=Érvénytelen kérés fejléc '$1'
 mod_setenvif_eregex=Érvénytelen szabályos kifejezés '$1'
 mod_setenvif_evar=Érvénytelen változónév '$1'
 mod_setenvif_clear=Törlés
+
 mod_userdir_default=Alapértelmezett
 mod_userdir_all=Minden hozzáférhető felhasználó
 mod_userdir_except=Minden felhasználó kivéve
 mod_userdir_dir=Felhasználói WWW könyvtár
+
 mod_imap_action=Eljárás a térképek hibás használata esetén
 mod_imap_default=Alapértelmezett
 mod_imap_godefurl=Ugrás az alapértelmezett URL-re
@@ -662,8 +696,10 @@ mod_imap_refurl=Közvetítő URL
 mod_imap_url=URL ..
 mod_imap_defbase=Alapértelmezett bázis a térképekhez
 mod_imap_eurl=A(z) '$1' érvénytelen URL
+
 mod_speling_autocorr=Automatikusan kijavítja a hibás URL-eket?
 mod_speling_default=Alapértelmezett
+
 mod_actions_mime=Kezelő / MIME típus
 mod_actions_cgiurl=CGI szkript URL
 mod_actions_mimecgi=Kezelő vagy MIME típus CGI eljárások
@@ -673,10 +709,13 @@ mod_actions_httpcgi=HTTP módszer CGI eljárások
 mod_actions_emime=A(z) '$1' érvénytelen kezelő vagy MIME típus
 mod_actions_ecgi=A(z) '$1' érvénytelen CGI szkript
 mod_actions_enometh=Nem választott módszert a(z) $1 CGI szkripthez
+
 mod_include_incl=Az eljárás magában foglalja a végrehajtható bittel ellátott fájlokat?
 mod_include_set=Igen és írja át az utolsó módosítás idejét
 mod_include_default=Alapértelmezett
+
 mod_dir_txt=Könyvtár indexfájlok
+
 mod_autoindex_default=Alapértelmezett
 mod_autoindex_asc=Növekvő
 mod_autoindex_descend=Csökkenő
@@ -685,6 +724,7 @@ mod_autoindex_date=Dátum
 mod_autoindex_size=Méret
 mod_autoindex_desc=Leírás
 mod_autoindex_sort=Könyvtárindex rendezésének szempontja
+
 browsermatch_regexp=Böngésző regex
 browsermatch_case=Eset egyeztetése?
 browsermatch_var=Változó beállítása
@@ -692,6 +732,7 @@ browsermatch_value=Érték
 browsermatch_txt=A változók beállítva a böngészőtípus alapján
 browsermatch_evar=Érvénytelen változónév '$1'
 browsermatch_clear=Törlés
+
 autoindex_fname=Fájlnév
 autoindex_mime=MIME típus
 autoindex_enc=Kódolás
@@ -745,9 +786,11 @@ autoindex_sicon=Fájl ikonok megjelenítése
 autoindex_srules=&lt;hr&gt; sorok megjelenítése
 autoindex_track=ETags befoglalása a fejlécbe
 autoindex_version=Rendezés verziósztringek szerint
+
 mod_mime_magic_file=MIME bűvös számok fájl
 mod_mime_magic_none=Semelyik
 mod_mime_magic_efile=Érvénytelen MIME bűvös számok fájlnév
+
 mod_env_var=Változó
 mod_env_value=Érték
 mod_env_pass=Áthaladás
@@ -758,6 +801,7 @@ mod_env_passall=Az összes környezeti változó átadása CGI-knek
 mod_env_default=Alapértelmezett
 mod_env_evar=A(z) '$1' érvénytelen változónév
 mod_env_evalue=A(z) '$1' érvénytelen változóérték
+
 mod_access_order=Hozzáférés ellenőrzési sorrendje:
 mod_access_denyallow=Elutasít majd engedélyez
 mod_access_allowdeny=Engedélyez majd elutasít
@@ -780,6 +824,7 @@ mod_access_epip=A(z) '$1' érvénytelen részleges IP-cím
 mod_access_emask=A(z) '$1' érvénytelen hálózat/hálózati maszk párosítás
 mod_access_ecidr=A(z) '$1' érvénytelen hálózat/CIDR párosítás
 mod_access_evar=A(z) '$1' érvénytelen változónév
+
 mod_auth_ufile=Felhasználói szövegfájl
 mod_auth_uedit=Felhasználók módosítása
 mod_auth_gfile=Csoport szövegfájl
@@ -790,6 +835,7 @@ mod_auth_eudir=A felhasználói szövegfájl nem a megengedett könyvtár alatt 
 mod_auth_egdir=A csoport szövegfájl nem a megengedett könyvtár alatt van
 mod_auth_eufile=Érvénytelen felhasználói szövegfájlnév
 mod_auth_egfile=Érvénytelen csoport szövegfájlnév
+
 mod_auth_dbm_ufile=Felhasználói DBM fájl
 mod_auth_dbm_gfile=Csoport DBM fájl
 mod_auth_dbm_pass=Továbbítja a hibákat a következő modulnak?
@@ -798,6 +844,7 @@ mod_auth_dbm_eufile=Érvénytelen felhasználói DBM fájlnév
 mod_auth_dbm_egfile=Érvénytelen csoport DBM fájlnév
 mod_auth_dbm_type=DBM fájltípusok
 mod_auth_dbm_default=Alapértelmezett DBM formátum
+
 mod_cern_meta_process=Fejléc metafájlok feldolgozása
 mod_cern_meta_dir=Fejléc metafájlok alkönyvtára
 mod_cern_meta_default=Alapértelmezett
@@ -805,6 +852,7 @@ mod_cern_meta_edir=Érvénytelen metafájl alkönyvtárnév
 mod_cern_meta_suffix=Fejléc metafájlok utótagja
 mod_cern_meta_default2=Alapértelmezett
 mod_cern_meta_esuffix=Érvénytelen metafájl utótag
+
 mod_ssl_enable=Engedélyezi az SSL-t?
 mod_ssl_proto=SSL protokollok
 mod_ssl_cfile=Tanúsítvány/magán kulcsfájl
@@ -828,6 +876,7 @@ mod_ssl_builtin=Kérdés induláskor
 mod_ssl_passsc=$1 szkript futtatása
 mod_ssl_epassph=Nem lett SSL jelszó megadva
 mod_ssl_epasssc=Nem létező vagy hibás SSL jelszó szkript
+
 mod_apachessl_notssl=SSL hozzáférés tiltása
 mod_apachessl_forcessl=Kényszerítse az SSL/notSSL hozzáférést?
 mod_apachessl_capath=Útvonala a könyvtárnak ahol a tanusítványok a Tanusítvány Kiállítonak
@@ -860,6 +909,7 @@ mod_apachessl_nov2=SSL 2 verzió tiltása
 mod_apachessl_fake=Szimulálja a felhasználó alap hitelesítást, felhasználva a tanusítvány nevet
 mod_apachessl_cdnfile=fájlok a DN klines DN ellen bejelölve
 mod_apachessl_ecdnfile=Nem létező fájl a kliens DN ellen bejelölve
+
 log_global=A(z) $1 globális opciók módosítva
 log_virtc=A(z) $1 kiszolgáló létrehozva
 log_virts=A(z) $1 kiszolgáló újrakonfigurálva
@@ -899,8 +949,10 @@ log_stop=Webkiszolgáló leállítva
 log_apply=Módosítások érvényesítve
 log_manual=Kézileg szerkesztett konfigurációs fájl $1
 log_virts_delete=Törölt $1 virtuális szerverek
+
 search_title=Kiszolgáló keresése
 search_notfound=Nem található a keresési feltételeknek megfelelő virtuális kiszolgáló
+
 mod_php_value=PHP konfigurációs értékek
 mod_php_flag=PHP konfigurációs jelölők
 mod_php_admin_value=PHP Admin konfiguráció értékek
@@ -909,18 +961,21 @@ mod_php_name_header=Beállítás
 mod_php_value_header=Érték
 mod_php_ename=A(z) '$1' érvénytelen név
 mod_php_evalue=A(z) '$1' érvénytelen értéke $2-nek
+
 mod_vhost_alias_root=Automatikus virtuális gazda root
 mod_vhost_alias_ip=Használja az IP-címet a gazdanév helyett?
 mod_vhost_alias_none=Semelyik
 mod_vhost_alias_script=Automatikus virtuális gazda cgi-bin
 mod_vhost_alias_eroot=Hiányzó vagy érvénytelen virtuális gazda root
 mod_vhost_alias_escript=Hiányzó vagy érvénytelen virtuális gazda cgi-bin
+
 worker_minspare=Tartalék szálak minimuma
 worker_maxspare=Tartalék szálak maximuma
 worker_eminspare=A tartalék szálak minimuma egész szám kell hogy legyen
 worker_emaxspare=A tartalék szálak maximuma egész szám kell hogy legyen
 worker_threads=Szálak száma gyerekfolyamatonként
 worker_ethreads=A gyerekfolyamatonkénti szálak száma egész kell hogy legyen
+
 perchild_sthreads=Szálak kezdeti száma gyerekfolyamatonként
 perchild_esthreads=A gyerekfolyamatonkénti szálak kezdeti száma egész kell hogy legyen
 perchild_numservers=Gyerekfolyamatok száma
@@ -936,6 +991,7 @@ perchild_gid=GID
 perchild_enum=A folyamatszámnak nem-zéró értékű egész számnak kell lennie
 perchild_euid=Az UID-nek egész számnak kell lennie
 perchild_egid=A GID-nek egész számnak kell lennie
+
 cache_enable=Aktív?
 cache_type=Gyorstár
 cache_disk=Lemez
@@ -956,12 +1012,14 @@ cache_eminos=A memóriában gyorstárazandó objektumok minimális mérete valam
 cache_emaxos=A memóriában gyorstárazandó objektumok maximális mérete valamennyi byte kell hogy legyen
 cache_maxoc=A memóriában gyorstárazandó objektumok maximuma
 cache_emaxoc=A memóriában gyorstárazandó objektumok maximuma egész szám kell hogy legyen
+
 suexec_su=CGI programok futtatása mint
 suexec_none=Felhasználó a globális konfigurációból
 suexec_user=Unix felhasználó
 suexec_group=És csoport
 suexec_euser=Hiányzó vagy érvénytelen felhasználó a CGI programok következőképp való futtatásához
 suexec_egroup=Hiányzó vagy érvénytelen csoport a CGI programok következőképp való futtatásához
+
 filter_name=Név
 filter_intype=Beviteli MIME típus
 filter_outtype=Kimeneti MIME típus
@@ -971,10 +1029,12 @@ filter_in=Beviteli szűrődefiníciók
 filter_out=Kimeneti szűrődefiníciók
 filter_ename=Érvénytelen szűrőnév '$1'
 filter_ecmd=Hiányzó parancs a(z) $1 szűrőhöz
+
 cdir_err=A könyvtárankénti opciók létrehozatala sikertelen
 cdir_err2=A könyvtárankénti opciók mentése sikertelen
 cdir_epath=Hiányzó elérési útvonal
 cdir_eproxy=Nem lehet proxy opciókat létrehozni, ha az egyezés regexp-pel opció be van kapcsolva
+
 mod_band_enable=Forgalmi korlát engedélyezve?
 mod_band_bw=Határ (bájtok/másodperc)
 mod_band_client=A klienseknek
@@ -993,10 +1053,12 @@ mod_band_epulse=Nem létező vagy hibás időintervallum a limitált csomagok k�
 mod_band_dir=Forgalmi korlát adatfájlok könyvtára
 mod_band_edir=Nem létező vagy hibás forgalmi korlát adatfájl könyvtár
 mod_band_esubdir=Nem létező vagy hibás alkönygtár <tt>$1</tt> a forgalmi korlát adatfájl könyvtár alatt
+
 mod_dav_active=WebDAV engedélyezve:
 mod_dav_inf=Engedélyezve legyen a végtelen mélységű DAV PROPFIND kérés?
 mod_dav_timeout=Minimális DAV időlejárat másodpercben
 mod_dav_etimeout=Kitöltetlen vagy érvénytelen DAV időlejárat
+
 delete_err=Nem sikerült a virtuális szervert törölni
 delete_enone=Nincs kiválasztva semmi
 delete_ecannot=Önnek nincs joga törölni ezt a szervert

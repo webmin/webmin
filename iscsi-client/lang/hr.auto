@@ -3,8 +3,10 @@ index_clink=Možda nije instaliran ili je vaša <a href='$1'>konfiguracija modul
 index_return=indeks modula
 index_atboot=Započeti pri pokretanju?
 index_atbootdesc=Promijenite ovu opciju za kontrolu da li se iSCSI klijent pokreće u trenutku podizanja sustava ili ne. Ovo je potrebno da bi se datotečni sustavi montirani s iSCSI poslužitelja automatski montirali.
+
 check_econfig=Konfiguracijska datoteka iSCSI klijenta $1 nije pronađena u vašem sustavu.
 check_eiscsiadm=Program za administraciju iSCSI klijenta $1 nije pronađen u vašem sustavu.
+
 auth_title=Opcije provjere autentičnosti
 auth_header=Provjera autentičnosti klijenta i poslužitelja
 auth_name=Ime lokalnog inicijatora sustava
@@ -29,6 +31,7 @@ auth_edpassword=Nedostaje lozinka za otkrivanje poslužitelja
 auth_edusername_in=Nedostaje korisničko ime za otkrivanje za klijenta
 auth_edpassword_in=Nedostaje lozinka za otkrivanje za klijenta
 auth_egen=Generiranje novog imena nije uspjelo!
+
 timeout_title=iSCSI istekanja
 timeout_header=Opcije vremenskog ograničenja iSCSI klijenta
 timeout_timeout=Vrijeme je za pričekati prije neuspjeha SCSI naredbi
@@ -52,6 +55,7 @@ timeout_enoop_out_timeout=Nedostaje ili nebrojano vrijeme da se čeka ping prije
 timeout_eabort_timeout=Nedostaje ili nebrojano vrijeme čekanja na prekid odgovora prije neuspjeha
 timeout_elu_reset_timeout=Nedostaje ili ne-numeričko vrijeme za čekanje odgovora logičke jedinice prije neuspjeha
 timeout_etgt_reset_timeout=Nedostaje ili nebrojano vrijeme za čekanje ciljanog odgovora prije neuspjeha
+
 iscsi_title=Opcije iSCSI
 iscsi_header=Ostale iSCSI opcije
 iscsi_startup=Spojite sesije u vrijeme dizanja sustava?
@@ -62,6 +66,7 @@ iscsi_err=Spremanje opcija iSCSI nije uspjelo
 iscsi_eretry=Nedostaje ili ne numerički broj puta za ponovnu pokušaj prijave
 iscsi_ecmds=Nedostajuće ili ne-numeričke maksimalne naredbe postaju u red po sesiji
 iscsi_equeue=Nedostajuće ili ne numeričke maksimalne naredbe postaju u red po uređaju
+
 ifaces_title=iSCSI sučelja
 ifaces_elist=Nije uspjelo popis sučelja : $1 
 ifaces_name=Naziv sučelja
@@ -78,11 +83,13 @@ ifaces_hwaddress=Mac adresa
 ifaces_ifacename=Izvorno sučelje
 ifaces_ipaddressdef=Automatski
 ifaces_notset=Automatski
+
 iadd_err=Nije uspjelo dodavanje sučelja
 iadd_eclash=Sučelje s imenom $1 već postoji
 iadd_eipaddress=Nedostaje ili nije važeća IP adresa izvora
 iadd_ehwaddress=Nedostaje ili nije važeća MAC adresa
 iadd_ename=Ne postoji naziv sučelja ili sadrži nevažeće znakove
+
 difaces_err=Uklanjanje sučelja nije uspjelo
 difaces_enone=Nijedna nije odabrana
 difaces_edelete=Uklanjanje sučelja $1 nije uspjelo : $2 
@@ -93,6 +100,7 @@ difaces_confirm=Uklonite sučelja
 difaces_target=iSCSI cilj
 difaces_ip=iSCSI poslužitelj
 difaces_users=Neka veza koja koristi ta sučelja trenutno je aktivna i neće raditi ako uklonite sučelja :
+
 conns_title=iSCSI veze
 conns_elist=Nije uspjelo popis veza : $1 
 conns_ip=IP server
@@ -113,6 +121,7 @@ conns_return=popis veza
 conns_iface=iSCSI sučelje
 conns_ifacedef=Odaberite automatski
 conns_ifaceerr=Nije uspjelo dohvaćanje sučelja : $1 
+
 add_title=Dodajte iSCSI vezu
 add_err=Nije uspjelo dodavanje iSCSI veze
 add_ehost=Nedostaje ili ne može se riješiti ime računala
@@ -129,6 +138,7 @@ add_on=$1 na $2
 add_auth=Prijavite se na poslužitelj
 add_auth1=Koristite zadani način provjere autentičnosti
 add_auth0=Prijavite se kao $2 s lozinkom $3 metodom $1 
+
 dconns_err=Prekid veze nije uspio
 dconns_enone=Nijedna nije odabrana
 dconns_edelete=Uklanjanje cilja $2 s domaćina $1 nije uspjelo : $3 
@@ -142,6 +152,7 @@ dconns_use=Korišten od
 dconns_size=Veličina particije
 dconns_confirm=Uklonite veze
 dconns_unused=neupotrijebljen
+
 vconn_title=iSCSI veza
 vconn_egone=Odabrana veza više ne postoji!
 vconn_header=Pojedinosti o iSCSI
@@ -160,8 +171,10 @@ vconn_device3=Stalni naziv uređaja
 vconn_delete=Prekinite vezu
 vconn_users=Trenutni korisnici
 vconn_size=Veličina diska
+
 atboot_err=Omogućivanje tijekom pokretanja nije uspjelo
 atboot_einit=Ne postoji akcija podizanja sustava $1 
+
 log_auth=Spremljene opcije provjere autentičnosti
 log_timeout=Spremljene su opcije vremenskog ograničenja
 log_iscsi=Spremljene iSCSI opcije

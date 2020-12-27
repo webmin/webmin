@@ -43,8 +43,10 @@ index_natnone=لم يتم تحديد قواعد ترجمة عنوان الشبك
 index_nataction=وضع NAT
 index_natfrom=الحزم المناسبة
 index_natto=ترجمة
+
 dir_in=واردة
 dir_out=منفتح
+
 action_pass=<font color=#00aa00>تمرير</font>
 action_block=<font color=#ff0000>بلوك</font>
 action_skip=تخطى
@@ -57,6 +59,7 @@ action_map=رسم الخرائط
 action_rdr=إعادة توجيه
 action_bimap=رسم خرائط ثنائية الاتجاه
 action_map-block=تعيين كتلة
+
 laction_pass=<font color=#00aa00>حزمة المرور</font>
 laction_block=<font color=#ff0000>حزمة الحزمة ، برمز ICMP</font>
 laction_log=حزمة السجل ، على المستوى
@@ -65,6 +68,7 @@ laction_skip=تخطي القواعد التالية
 laction_auth=إذن مساحة المستخدم
 laction_preauth=تحقق من التفويض السابق
 laction_call=استدعاء دالة النواة
+
 edit_title1=إنشاء قاعدة
 edit_title2=تحرير القاعدة
 edit_header1=إجراء القاعدة
@@ -130,6 +134,7 @@ edit_icmp=نوع ICMP
 edit_icmpany=&lt;أي نوع&gt;
 edit_icmpcode=والرمز
 edit_codeany=&lt;أي رمز&gt;
+
 save_err=فشل في حفظ القاعدة
 save_ehostfrom=اسم مضيف المصدر مفقود أو غير صالح
 save_ehostto=اسم مضيف الوجهة مفقود أو غير صالح
@@ -158,11 +163,13 @@ save_eto=واجهة مفقودة أو غير صالحة للإرسال
 save_etoip=عنوان IP غير صالح للإرسال
 save_ereplyto=واجهة مفقودة أو غير صالحة للرد عليها
 save_ereplytoip=عنوان IP غير صالح للرد عليه
+
 apply_err=فشل في تطبيق التكوين
 apply_remote=خطأ من $1 : $2 
 unapply_err=فشل في إعادة التكوين
 unapply_ein=فشل في الحصول على قواعد الإدخال
 unapply_eout=فشل في الحصول على قواعد الإخراج
+
 desc_if=إذا$1
 desc_and=و
 desc_always=دائما
@@ -196,6 +203,7 @@ desc_rdr=عناوين IP $1 منفذ$2
 desc_dport1=المنفذ هو$1
 desc_dport2=المنفذ بين$1 و$2
 desc_nattoiface=عنوان الواجهة
+
 log_create_rule=تم إنشاء قاعدة$1
 log_delete_rule=تم حذف قاعدة$1
 log_modify_rule=تعديل قاعدة$1
@@ -224,6 +232,7 @@ log_add_host=تمت إضافة خادم نظام المجموعة$1
 log_add_group=تمت إضافة خوادم نظام المجموعة من المجموعة$1
 log_delete_host=تمت إزالة ملقم الكتلة$1
 log_delete_group=تمت إزالة خوادم نظام المجموعة$1
+
 cluster_title=خوادم جدار الحماية العنقودية
 cluster_none=لم تتم إضافة خوادم إلى مجموعة جدار الحماية حتى الآن.
 cluster_host=اسم المضيف
@@ -234,6 +243,7 @@ cluster_gadd=أضف خوادم في المجموعة
 cluster_need=يجب عليك إضافة خوادم باسم تسجيل الدخول وكلمة المرور في وحدة Webmin Servers Index النمطية قبل أن تتم إدارتها هنا.
 cluster_return=خوادم الكتلة
 cluster_delete=ازل المحدد
+
 add_title=إضافة خوادم
 add_msg=جاري إضافة$1 ..
 add_gmsg=جاري إضافة خوادم في المجموعة$1 ..
@@ -242,6 +252,7 @@ add_gerr=فشل في إضافة مجموعة
 add_echeck=لا يحتوي الخادم$1 على وحدة جدار الحماية IPFilter
 add_emissing=يفتقد الخادم$1 أمر جدار الحماية$2
 add_ok=تمت إضافة$1 ، مع قواعد جدار الحماية النشطة$2.
+
 nat_title1=إنشاء قاعدة NAT
 nat_title2=تحرير قاعدة NAT
 nat_action=وضع NAT
@@ -300,4 +311,5 @@ nat_edport2=نهاية مفقودة أو غير صالحة للمنفذ الأص
 net_erdrip=إن '$1' ليس عنوان IP صالحًا للوجهة
 nat_erdrips=لم يتم إدخال عناوين IP للوجهة
 nat_erdrport=منفذ وجهة مفقود أو غير صالح
+
 boot_esmf=خدمة SMF $1 غير موجودة أو ليست في حالة معروفة

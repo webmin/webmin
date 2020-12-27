@@ -37,12 +37,15 @@ desc_common-account=Vanlig kontoverifiering
 desc_common-auth=Vanlig autentisering
 desc_common-password=Vanliga lösenordsändringar
 desc_common-session=Vanlig sessioninställning
+
 edit_file=Konfigurationsfil
 edit_addinc=Lägg till inkluderad service
 edit_inc=Inkludera tjänst $1 
 edit_iheader=Inkluderade PAM-tjänster
+
 pam_stack.so=Ring annan PAM-tjänst
 pam_foreground.so=Konsolinställning
+
 unix_nullok_secure=Accepterar du noll lösenord på säkra TTY: er?
 unix_min=Minsta lösenordslängd
 unix_nomin=Ingen
@@ -51,11 +54,14 @@ unix_nomax=Ingen gräns
 unix_obscure=Förhindra användning av enkla lösenord?
 unix_emin=Saknas eller ogiltig minsta lösenordslängd
 unix_emax=Saknas eller ogiltig maximal lösenordslängd
+
 stack_service=Gå vidare till PAM-tjänsten
+
 log_inc_create=Tillagd inkluderar $1 för tjänsten $2 
 log_inc_modify=Modifierad inkluderar $1 för service $2 
 log_inc_delete=Raderade inkluderar $1 för service $2 
 log_incs=Uppdaterad inkluderar för service $1 
+
 inc_edit=Redigera inkluderad tjänst
 inc_create=Skapa inkluderad tjänst
 inc_header=Inkluderade PAM-tjänstinformation

@@ -43,8 +43,10 @@ index_natnone=Még nincs meghatározva a hálózati cím fordítási szabályai.
 index_nataction=NAT mód
 index_natfrom=Csomagok egyeztetni
 index_natto=Fordítás
+
 dir_in=Beérkező
 dir_out=Kimenő
+
 action_pass=<font color=#00aa00>Átadás</font>
 action_block=<font color=#ff0000>Blokkolás</font>
 action_skip=Skip
@@ -57,6 +59,7 @@ action_map=térképészet
 action_rdr=átirányítás
 action_bimap=Kétirányú leképezés
 action_map-block=Blokk leképezés
+
 laction_pass=<font color=#00aa00>Csomag átadása</font>
 laction_block=<font color=#ff0000>Blokk csomag, ICMP kóddal</font>
 laction_log=Naplócsomag, szinten
@@ -65,6 +68,7 @@ laction_skip=Ugrás a következő szabályokra
 laction_auth=Felhasználói tér engedélyezése
 laction_preauth=Ellenőrizze a korábbi engedélyt
 laction_call=Hívja a kernel funkciót
+
 edit_title1=Hozzon létre szabályt
 edit_title2=Szabály szerkesztése
 edit_header1=Szabály cselekvés
@@ -130,6 +134,7 @@ edit_icmp=ICMP típus
 edit_icmpany=&lt;Bármilyen típusú&gt;
 edit_icmpcode=és kódot
 edit_codeany=&lt;Bármely kód&gt;
+
 save_err=A szabály mentése nem sikerült
 save_ehostfrom=Hiányzó vagy érvénytelen forrás gazdagépnév
 save_ehostto=Hiányzó vagy érvénytelen rendeltetési hely gazdagépneve
@@ -158,11 +163,13 @@ save_eto=Hiányzó vagy érvénytelen felület a továbbításhoz
 save_etoip=Érvénytelen IP-cím a továbbításhoz
 save_ereplyto=Hiányzó vagy érvénytelen interfész a válaszadásra
 save_ereplytoip=Érvénytelen IP-cím, amellyel válaszolni lehet
+
 apply_err=A konfiguráció alkalmazása nem sikerült
 apply_remote=Hiba a $1 -től : $2 
 unapply_err=A konfiguráció visszaállítása nem sikerült
 unapply_ein=A beviteli szabályok beolvasása nem sikerült
 unapply_eout=Nem sikerült beolvasni a kimeneti szabályokat
+
 desc_if=Ha $1 
 desc_and=és
 desc_always=Mindig
@@ -196,6 +203,7 @@ desc_rdr=$1 port $2 IP címek
 desc_dport1=port $1 
 desc_dport2=A port $1 és $2 között van
 desc_nattoiface=interfész címe
+
 log_create_rule=Létrehozta a $1 szabályt
 log_delete_rule=$1 szabály törölve
 log_modify_rule=Módosított $1 szabály
@@ -224,6 +232,7 @@ log_add_host=Hozzáadott $1 fürtszerver
 log_add_group=Fürtkiszolgálók hozzáadva a (z) $1 csoporthoz
 log_delete_host=Eltávolított $1 fürtkiszolgáló
 log_delete_group=$1 fürtkiszolgálók eltávolítva
+
 cluster_title=Klaszter tűzfal szerverek
 cluster_none=A tűzfalfürtbe még nem adtak hozzá kiszolgálókat.
 cluster_host=hostname
@@ -234,6 +243,7 @@ cluster_gadd=Add kiszolgálók csoportba
 cluster_need=A webminiszolgálók indexmoduljába be kell állítania a kiszolgálókat bejelentkezési névvel és jelszóval, mielőtt itt kezelni tudják őket.
 cluster_return=fürtszerverek
 cluster_delete=A kiválasztott eltávolítása
+
 add_title=Szerverek hozzáadása
 add_msg=$1 hozzáadása ..
 add_gmsg=Szerverek hozzáadása a (z) $1 csoporthoz.
@@ -242,6 +252,7 @@ add_gerr=Nem sikerült hozzáadni a csoportot
 add_echeck=A $1 kiszolgálón nincs az IPFilter tűzfal modul
 add_emissing=A (z) $1 kiszolgálón hiányzik a $2 tűzfal parancs
 add_ok=$1 hozzáadva, $2 aktív tűzfalszabályokkal.
+
 nat_title1=Hozzon létre NAT-szabályt
 nat_title2=A NAT-szabály szerkesztése
 nat_action=NAT mód
@@ -300,4 +311,5 @@ nat_edport2=Hiányzik vagy érvénytelen az eredeti port
 net_erdrip=A '$1' nem érvényes IP-cím
 nat_erdrips=Nincs megadva rendeltetési IP
 nat_erdrport=Hiányzó vagy érvénytelen rendeltetési port
+
 boot_esmf=A (z) $1 SMF szolgáltatás nem létezik, vagy nem ismert állapotban van

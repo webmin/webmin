@@ -14,6 +14,7 @@ index_restart=Herbegin LDAP-kliëntedemon
 index_restartdesc=Pas die huidige opset toe deur die plaaslike LDAP-kliëntedemonster weer te begin.
 index_atboot=Begin LDAP-kliënt by die boot
 index_atbootdesc=Verander of die LDAP-kliëntedemon begin word wanneer die stelsel begin of nie.
+
 server_title=LDAP-bedienerkonfigurasie
 server_header=LDAP-bediener en aanmeldopsies
 server_host=LDAP-bediener se gasheername
@@ -51,6 +52,7 @@ server_etimelimit=Ontbrekende of ongeldige verbindingstydperk
 server_ecacert=CA-sertifikaatlêer ontbreek of ongeldig
 server_euport=Ontbrekende of ongeldige poort vir bediener $1 
 server_euri=Geen LDAP-bedieners is ingevoer nie
+
 base_title=LDAP-soekbasis
 base_header=LDAP gids soek plekke
 base_base=Wêreldwye soekbasis
@@ -86,6 +88,7 @@ base_enetmasks=Ontbrekende basis vir netmasker-name
 base_ealiases=Ontbrekende basis vir e-pos-aliasse
 base_enetgroup=Ontbrekende basis vir netgroepe
 base_etimelimit=Ontbrekende of ongeldige soektydperk
+
 pam_title=Verifikasie-opsies
 pam_header=PAM-verifikasie en wagwoordinstellings
 pam_filter=Bykomende LDAP-filter
@@ -106,10 +109,12 @@ pam_efilter=Bykomende LDAP-filter ontbreek
 pam_elogin=LDAP-attribuut vir gebruikersnaam ontbreek of ongeldig
 pam_egroupdn=LDAP-groep ontbreek om lidmaatskap van
 pam_emember=LDAP-attribuut vir groeplede ontbreek of ongeldig
+
 switch_title=Dienste met behulp van LDAP
 switch_service=diens
 switch_srcs=Data bronne
 switch_return=dienste met behulp van LDAP
+
 ldap_emodule=Die $1 Perl-module wat benodig word om met die LDAP-bediener te praat, is nie geïnstalleer nie. <a href='$2'>Klik hier</a> om Webmin te laat aflaai en installeer dit nou.
 ldap_emodule2=Die $1 Perl-module wat benodig word om met die LDAP-bediener te praat, is nie geïnstalleer nie.
 ldap_econf=Die LDAP-kliënt se konfigurasielêer $1 is nie op u stelsel gevind nie
@@ -119,6 +124,7 @@ ldap_elogin=Kon nie bind aan LDAP-bediener $1 as $2 : $3 nie
 ldap_anon=anoniem
 ldap_eparse=Kon nie die LDAP-bediener URI $1 ontleed nie
 ldap_etls=Kon nie na TLS-modus oorgaan nie : $1 
+
 browser_title=LDAP-blaaier
 browser_econn=Die LDAP-blaaier kan nie gebruik word nie : $1 
 browser_base=op:
@@ -129,6 +135,7 @@ browser_attrs=Voorwerpkenmerke
 browser_parent=Blaai deur ouer
 browser_none=Geen
 browser_sel=OK
+
 order_nisplus=NIS +
 order_nis=NIS
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=Gebruikerdrukkers
 order_xfn=XFN
 order_mdns4=Multicast DNS
 order_mdns4_minimal=Multicast DNS (minimaal)
+
 desc_aliases=Sendmail-aliasse
 desc_mail=Sendmail-aliasse
 desc_hosts=Gasheeradresse
@@ -177,6 +185,7 @@ desc_printers=drukkers
 desc_ipnodes=IP-nodes
 desc_timezone=Tydsones
 desc_locale=locales
+
 eswitch_title=Redigeer diens
 eswitch_egone=Diens bestaan nie!
 eswitch_header=Diensbesonderhede
@@ -196,6 +205,7 @@ eswitch_continue=Gaan voort met soek
 eswitch_none=Geen
 eswitch_err=Kon nie die diens stoor nie
 eswitch_enone=Geen bronne is gekies nie!
+
 log_server=Gewysigde LDAP-bedieneropstelling
 log_base=Gewysigde LDAP-soekbasis
 log_pam=Gewysigde verifikasie-opsies
@@ -205,6 +215,7 @@ log_delboot=LDAP-kliëntedemonster is tydens die laaityd afgeskakel
 log_start=LDAP-kliëntedemon begin
 log_stop=Gestopte LDAP-kliëntedemon
 log_restart=Herlaaide LDAP-kliëntedemon
+
 check_title=Valideer LDAP-konfigurasie
 check_base=Vind LDAP-basis vir gebruikers ..
 check_ebase=.. geen basis gevind in klientkonfigurasie nie!

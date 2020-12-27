@@ -10,6 +10,7 @@ index_apply=應用配置
 index_applydesc=單擊此按鈕可通過停止並重新啟動PPTP服務器進程來應用當前的PPTP服務器選項。對PPP選項和PPP帳戶的更改將始終應用於任何新連接
 index_return=模塊索引
 index_epppd=系統上未安裝PPP服務器程序 $1。 PPTP依靠它來運行。
+
 conf_title=PPTP服務器選項
 conf_ecannot=您無權編輯PPTP服務器選項
 conf_header=PPTP服務器配置
@@ -35,6 +36,7 @@ conf_elocalip='$1'不是有效的本地IP地址或範圍
 conf_eremoteip='$1'不是有效的遠程IP地址或範圍
 conf_efrom=地址缺少或無效的IPX網絡
 conf_eto=IPX網絡缺失或無效
+
 options_title=PPP選項
 options_ecannot=您無權編輯PPP選項
 options_desc0=以下 $1中的PPP選項適用於系統接收的所有傳入連接，包括那些撥號調製解調器的連接。
@@ -67,6 +69,7 @@ options_mschap=MS-CHAP身份驗證
 options_mschap-v2=MS-CHAP版本2身份驗證
 options_chapms=MS-CHAP身份驗證
 options_chapms-v2=MS-CHAP版本2身份驗證
+
 secrets_title=PPP帳戶
 secrets_ecannot=您無權編輯PPP帳戶
 secrets_return=指數
@@ -80,6 +83,7 @@ secrets_sany=任何
 secrets_create=創建新的PPP帳戶。
 secrets_desc=此頁面上列出的PPP帳戶取自文件 $1，該文件用於 $3身份驗證。僅顯示服務器 $2的服務器，而不顯示建立傳出連接的帳戶。
 secrets_delete=刪除選定的PPP帳戶
+
 edit_secret_etitle=編輯PPP帳戶
 edit_secret_ctitle=創建PPP帳戶
 edit_secret_acc=PPP帳戶
@@ -99,15 +103,20 @@ edit_secret_alist=允許列出 ..
 edit_secret_save=保存
 edit_secret_del=刪除
 edit_secret_return=帳戶清單
+
 save_secret_esave=無法保存帳戶
 save_secret_enoip=“$1”不是有效地址
+
 stop_err=停止PPTP服務器失敗
 stop_egone=不再運行
 stop_ecannot=您無權停止PPTP服務器
+
 start_err=無法啟動PPTP服務器
 start_ecannot=您不允許啟動PPTP服務器
+
 apply_err=重新啟動PPTP服務器失敗
 apply_ecannot=您不允許重新啟動PPTP服務器
+
 conns_title=活動連接
 conns_ecannot=您無權管理活動連接
 conns_desc=此頁面列出了當前與服務器的活動PPTP連接。要強制斷開連接，請單擊其接口名稱。
@@ -119,9 +128,11 @@ conns_remote=客戶端VPN地址
 conns_none=此時沒有PPTP連接似乎處於活動狀態。
 conns_unknown=未知
 conns_user=用戶名
+
 disc_err=無法斷開連接
 disc_egone=連接不再有效
 disc_ekill=進程不再運行
+
 log_secret_create=已創建PPP帳戶 $1
 log_secret_modify=修改後的PPP帳戶 $1
 log_secret_delete=刪除的PPP帳戶 $1
@@ -132,6 +143,7 @@ log_disc=斷開連接的客戶端 $1
 log_start=啟動PPTP服務器
 log_stop=PPTP服務器已停止
 log_apply=應用的PPTP服務器配置
+
 acl_conf=可以編輯配置嗎？
 acl_options=可以編輯選項嗎？
 acl_secrets=可以管理PPTP帳戶嗎？

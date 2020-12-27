@@ -28,6 +28,7 @@ index_diff=Изменения содержащие
 index_stimes=Действия в указанное время
 index_shost=Сервер Webmin источник
 index_global=&lt;Никаком&gt;
+
 search_title=Результаты поиска
 search_date=Дата
 search_time=Время
@@ -52,6 +53,7 @@ search_err=Поиск не удался
 search_global=Никакой
 search_global_login=Вход в Webmin
 search_global_logout=Выход из Webmin
+
 view_title=Информация о действии
 view_header=Подробная информация о действии занесенном в журнал $1
 view_action=Описание
@@ -83,11 +85,13 @@ view_anno=Ввод описания события
 view_raw=Исходные данные журнала
 view_rawname=Название параметра
 view_rawvalue=Значение параметра
+
 acl_mods=Может просматривать лог в модулях
 acl_all=Все
 acl_sel=Выбранные ниже ..
 acl_users=Может просматривать действия пользователей
 acl_rollback=Может отменять действия?
+
 rollback_title=Откат действий
 rollback_rusure=Вы уверены, что хотите вернуть для всех файлов перечисленных ниже их содержимое, которое было в них до применения этого действия? Любые данные, которые содержатся в них, будут перезаписаны следующими изменениями :
 rollback_isdir=Каталог - никаких изменений не будет.
@@ -110,4 +114,5 @@ rollback_modfile=Откат содержимого файла $1.
 rollback_deleted=Удален файл $1.
 rollback_nodeleted=Пропущен несуществующий файл $1.
 rollback_enone=Не выбраны файлы
+
 log_rollback=Откат действий $ 1 в модуле $ 2

@@ -9,6 +9,7 @@ index_start=התחל את Syslog-NG
 index_startdesc=לחץ על כפתור זה כדי להפעיל את הדמון Syslog-NG, באמצעות התצורה הנוכחית.
 index_return=אינדקס מודול
 index_version=Syslog-NG $1 
+
 options_title=אפשרויות רישום
 options_header=אפשרויות לכל קבצי היומן
 options_secs=שניות
@@ -55,6 +56,7 @@ options_esync=מספר חסר או לא חוקי של הודעות למאגר ל
 options_estats=זמן חסר או לא מספרי להמתין בין הודעות סטטיסטיקה
 options_elog_fifo_size=מספר חסר או לא חוקי של הודעות למאגר
 options_elog_msg_size=גודל הודעת היומן המרבי חסר או שאינו מספרי
+
 destinations_title=יעדי יומן
 destinations_name=שם היעד
 destinations_type=לכתוב ל
@@ -77,6 +79,7 @@ destinations_add=הוסף יעד יומן חדש.
 destinations_return=יומן יעדים
 destinations_desc=יומן מודול אחר
 destinations_cmd=תפוקה מ- $1 
+
 destination_header=רישום אפשרויות יעד
 destination_title1=צור יעד ביומן
 destination_title2=ערוך יעד יומן
@@ -117,17 +120,22 @@ destination_enet_localip=כתובת IP מקומית חסרה או לא חוקי�
 destination_enet_localport=מספר היציאה המקומי חסר או לא חוקי
 destination_enet_host=מארח או כתובת של שרת Syslog חסרים או לא חוקיים
 destination_eunix=שם שקע יוניקס חסר
+
 ddelete_err=מחיקת היעדים נכשלה
 ddelete_enone=לא נבחר
 ddelete_eused=לא ניתן למחוק את היעד $1 מכיוון שהוא משמש על ידי יעד יומן
+
 sdelete_err=מחיקת המקורות נכשלה
 sdelete_enone=לא נבחר
 sdelete_eused=לא ניתן למחוק את מקור היומן $1, מכיוון שהוא משמש את יעד היומן
+
 fdelete_err=מחיקת המסננים נכשלה
 fdelete_enone=לא נבחר
 fdelete_eused=לא ניתן למחוק את מסנן היומן $1, מכיוון שהוא משמש את יעד היומן
+
 ldelete_err=מחיקת יעדי יומן נכשלה
 ldelete_enone=לא נבחר
+
 filters_title=מסנני יומן
 filters_name=שם המסנן
 filters_desc=תנאים
@@ -144,6 +152,7 @@ filters_program=תוכנית <tt>$1</tt>
 filters_match=תואם "$1"
 filters_host=משם המארח <tt>$1</tt>
 filters_netmask=מהשולח <tt>$1</tt>
+
 filter_title1=צור מסנן יומן
 filter_title2=ערוך מסנן יומן
 filter_header=פרטי מפרט פילטר יומן
@@ -169,6 +178,7 @@ filter_enet=כתובת IP חסרת רשת או לא חוקית
 filter_emask=מסיכת רשת חסרת או לא תקפה
 filter_ebool=שגיאה בביטוי מורכב
 filter_egone=המסנן כבר לא קיים!
+
 logs_title=יעדי רישום
 logs_source=מקורות
 logs_filter=מסננים
@@ -177,6 +187,7 @@ logs_add=הוסף יעד יומן חדש.
 logs_delete=מחק יעדי יומן שנבחרו
 logs_return=יעדי יומן
 logs_none=אף אחד
+
 log_title1=צור יעד יומן
 log_title2=ערוך יעד יומן
 log_header=בחירת מקור יומן, מסנן ויעד
@@ -190,6 +201,7 @@ log_flags=אפשרויות יעד
 log_egone=יעד יומן כבר לא קיים!
 log_err=שמירת יעד היומן נכשלה
 log_esource=לא נבחרו מקורות
+
 sources_title=מקורות יומן
 sources_none=לא הוגדרו עדיין מקורות!
 sources_add=הוסף מקור יומן חדש.
@@ -207,6 +219,7 @@ sources_typen=זרם שמש
 sources_typenw=שרת Syslog
 sources_return=מקורות יומן
 sources_none2=אף אחד
+
 source_title1=צור מקור יומן
 source_title2=ערוך את מקור היומן
 source_header=אפשרויות מקור ביומן
@@ -243,15 +256,20 @@ source_door=שם קובץ הדלת
 source_esun_streams_name=שם קובץ Sun זרמים חסר או לא תקף
 source_edoor=Sun חסר או לא תקף זורם את שם קובץ הדלת
 source_transport=פרוטוקול רשת
+
 view_title=הצג Logfile
 view_header=$1 שורות אחרונות של $2 
 view_empty=קובץ היומן ריק
 view_refresh=רענן
 view_filter=הצג רק שורות עם טקסט $1 
+
 apply_err=החלת התצורה נכשלה
 apply_egone=לא רץ!
+
 start_err=הפעלת שרת Syslog-NG נכשלה
+
 stop_err=עצירת שרת Syslog-NG נכשלה
+
 log_create_destination=יצר יעד ביומן $1 
 log_modify_destination=יעד יומן $1 שונה
 log_delete_destination=יעד יומן $1 נמחק

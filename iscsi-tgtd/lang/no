@@ -2,6 +2,7 @@ check_econfigset=Ingen iSCSI TGTd konfigurasjonsfil satt!
 check_econfig=iSCSI TGTd konfigurasjonsfilen $1 ble ikke funnet på systemet ditt.
 check_etgtadm=iSCSI TGTd administrasjonskommandoen $1 ble ikke funnet på systemet ditt.
 check_einit=Oppstartshandling $1 finnes ikke
+
 index_title=iSCSI TGTd
 index_clink=Kanskje den ikke er installerte, eller så er <a href='$1'>modulkonfigurasjonen</a> feil.
 index_stop=Stopp iSCSI TGTd
@@ -24,8 +25,10 @@ index_users=Tillatte brukere
 index_size=Total størrelse
 index_noluns=Ingen
 index_nousers=Enhver
+
 dtargets_err=Kunne ikke slette mål
 dtargets_enone=Ingen valgt!
+
 target_title1=Opprett iSCSI mål
 target_title2=Rediger iSCSI mål
 target_header=Innstillinger for iSCSI delt enhet
@@ -74,11 +77,13 @@ target_direct=Direkte enhets-aksess
 target_cache=Mellomlagre skrivinger til enhet?
 target_eaddr=Ugyldig tillatt IP adresse
 target_eaname=Ugyldig tillatt initiator navn
+
 start_err=Kunne ikke starte iSCSI TGTd
 stop_err=Kunne ikke stoppe iSCSI TGTd
 restart_err=Kunne ikke omstarte iSCSI TGTd
 atboot_err=Kunne ikke aktivere ved oppstart
 atboot_einit=Init script $1 finnes ikke
+
 log_create_target=Opprettet mål $1
 log_delete_target=Slettet mål $1
 log_modify_target=Endret mål $1
@@ -89,6 +94,7 @@ log_restart=Omstartet iSCSI tjener
 log_atboot=Aktiverte iSCSI tjener ved oppstart
 log_delboot=Deaktiverte iSCSI tjener ved oppstart
 log_manual=Manuelt redigerte konfigurasjonsfil
+
 manual_title=Rediger konfigurasjonsfil
 manual_file=Velg fil som skal redigeres:
 manual_ok=Åpne

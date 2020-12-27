@@ -24,8 +24,10 @@ all=Tất cả
 index_view=Lượt xem ..
 index_viewfile=Xem tệp nhật ký:
 index_viewok=Lượt xem
+
 restart_ekill=Không thể báo hiệu quá trình nhật ký hệ thống $1 : $2 
 restart_ecannot=Bạn không được phép khởi động lại syslog
+
 start_ecannot=Bạn không được phép bắt đầu nhật ký hệ thống
 edit_title=Chỉnh sửa Nhật ký hệ thống
 create_title=Thêm nhật ký hệ thống
@@ -56,11 +58,13 @@ edit_tag=Chỉ dành cho chương trình
 edit_return=chi tiết nhật ký
 edit_ecannot=Bạn không được phép chỉnh sửa cài đặt nhật ký
 edit_ecannot2=Bạn không được phép chỉnh sửa nhật ký này
+
 view_title=Xem logfile
 view_header=$1 dòng cuối cùng của $2 
 view_empty=Tệp nhật ký trống
 view_refresh=Làm tươi
 view_filter=Chỉ hiển thị các dòng có văn bản $1 
+
 save_err=Không thể lưu nhật ký
 save_efile='$1' không phải là tên tệp hợp lệ : $2 
 save_epipe='$1' không phải là một ống có tên hợp lệ
@@ -80,11 +84,13 @@ save_ecannot5=Bạn không được phép sửa đổi nhật ký này
 save_ecannot6=Bạn không được phép xem nhật ký tùy ý
 save_ecannot7=Bạn không được phép xem nhật ký bổ sung này
 save_emissing=Thiếu tệp nhật ký để xem
+
 log_modify=Nhật ký đã sửa đổi thành $1 
 log_create=Đã thêm nhật ký vào $1 
 log_delete=Đã xóa nhật ký thành $1 
 log_apply=Áp dụng thay đổi
 log_start=Bắt đầu đăng nhập máy chủ
+
 desc_sysmesg=Tin nhắn hệ thống
 desc_mail=Nhật ký thư
 desc_auth=Nhật ký xác thực
@@ -93,6 +99,7 @@ desc_news=Nhật ký tin tức NNTP
 desc_uucp=Nhật ký UUCP
 desc_debug=Thông báo gỡ lỗi
 desc_cron=Nhật ký công việc định kỳ
+
 acl_noedit=Chỉ có thể xem nhật ký?
 acl_any=Có thể xem bất kỳ tập tin như một bản ghi?
 acl_logs=Có thể xem và cấu hình các tệp nhật ký

@@ -14,10 +14,12 @@ index_apply=Appliquer
 index_return=Indice PPP
 index_none=Vous n'avez accès à aucune des fonctionnalités de ce module.
 index_delete=Supprimer les comptes sélectionnés
+
 secrets_title=Comptes PPP
 secrets_return=indice
 secrets_none=Aucun compte PPP n'a encore été créé.
 secrets_ecannot=Vous n'êtes pas autorisé à modifier les comptes PPP
+
 edit_secret_etitle=Modifier le compte PPP
 edit_secret_ctitle=Créer un compte PPP
 edit_secret_acc=Compte PPP
@@ -37,8 +39,10 @@ edit_secret_alist=Autoriser répertorié ..
 edit_secret_save=sauvegarder
 edit_secret_del=Supprimer
 edit_secret_return=liste des comptes
+
 save_secret_esave=Impossible d'enregistrer le compte
 save_secret_enoip='$1' n'est pas une adresse valide
+
 log_create=Compte PPP créé $1 
 log_modify=Compte PPP modifié $1 
 log_delete=Compte PPP supprimé $1 
@@ -54,6 +58,7 @@ log_dialin_move=Numéro d'identification de l'appelant déplacé $1
 log_mgetty_create=Port série créé $1 
 log_mgetty_modify=Port série modifié $1 
 log_mgetty_delete=Port série supprimé $1 
+
 options_title=Options PPP
 options_serial=Pour le port série $1 
 options_dev=Pour le périphérique $1 
@@ -84,6 +89,7 @@ options_idle=Temps d'inactivité avant la déconnexion
 options_idle_def=Jamais
 options_eidle=Temps d'inactivité manquant ou invalide
 options_ecannot=Vous n'êtes pas autorisé à modifier les options PPP
+
 mgetty_title=Configuration du port série
 mgetty_ecmd=La commande $1 est introuvable sur votre système. Ce programme est nécessaire pour gérer les connexions au port série via un modem ou une connexion directe.
 mgetty_desc=Pour que votre serveur autorise les connexions sur un port série via un modem ou une connexion directe, il doit être répertorié ci-dessous. Lorsque vous ajoutez un port à cette liste, le programme $1 sera configuré pour répondre aux connexions par modem et afficher une invite de connexion.
@@ -125,6 +131,7 @@ mgetty_apply=Appliquer la configuration
 mgetty_applydesc=Cliquez sur ce bouton pour appliquer la configuration actuelle du port série en exécutant la commande $1 et en tuant tous les processus Mgetty.
 mgetty_applyerr=Impossible d'appliquer la configuration
 mgetty_ecannot=Vous n'êtes pas autorisé à modifier les configurations de port série
+
 dialin_title=Accès à l'identification de l'appelant
 dialin_desc=Cette page vous permet de configurer Mgetty pour autoriser ou refuser l'accès à distance en fonction du numéro de téléphone d'un appelant. Lorsqu'un appel arrive, la première entrée de la liste qui correspond au numéro de téléphone déterminera si l'appel est accepté ou non.
 dialin_efile=Le fichier de contrôle d'accès ID appelant Mgetty $1 est introuvable sur votre système. Peut-être que Mgetty n'est pas installé ou que la <a href='$2'>configuration du module</a> est incorrecte.
@@ -145,9 +152,12 @@ dialin_move=Bouge toi
 dialin_err=Impossible d'enregistrer le numéro d'identification de l'appelant
 dialin_enumber=Numéro de téléphone manquant ou invalide
 dialin_ecannot=Vous n'êtes pas autorisé à modifier l'accès à l'ID de l'appelant
+
 acl_pages=Pages disponibles
 acl_direct=Aller directement à une page?
+
 sync_ecannot=Vous n'êtes pas autorisé à modifier les options de synchronisation unix-ppp
 sync_title=Synchronisation des utilisateurs
+
 delete_err=Impossible de supprimer les comptes
 delete_enone=Aucune sélection

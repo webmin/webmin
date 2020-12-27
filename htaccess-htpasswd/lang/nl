@@ -16,6 +16,7 @@ index_digest2=Samenvatting voor encryptie is aangezet in de module configuratie,
 index_cpan=<a href='$1'>Klik hier</a> om nu te downloaden en te installeren.
 index_delete=On-Bescherm Geselecteerde Directory's
 index_remove=Bescherming Weghalen en Files Verwijderen
+
 dir_title1=Toevoegen Beschermde Directory
 dir_title2=Bewerk Beschermde Directory
 dir_header=Beschermde directory opties
@@ -60,6 +61,7 @@ dir_delete3=Bescherming Weghalen en File Verwijderen
 dir_apache=Bewerk Apache Opties
 dir_efiledir='$1' is een directory, en kan daarom niet gebruikt worden als gebruikers file
 dir_egfiledir='$1' is een directory, en kan daarom niet gebruikt worden als groepen file
+
 edit_title1=Maak Gebruiker
 edit_title2=Bewerk Gebruiker
 edit_header=Web authenticatie gebruiker details
@@ -71,11 +73,13 @@ edit_pass0=Zet naar
 edit_passfrom=Verander van
 edit_passto=naar nieuw wachtwoord
 edit_dom=Samenvatting realm
+
 gedit_title1=Maak groep
 gedit_title2=Bewerk Groep
 gedit_header=Web authenticatie groep details
 gedit_group=Groep naam
 gedit_members=Leden van groep
+
 save_err=Mislukt gebruiker op te slaan
 save_euser1=Ontbrekende gebruikersnaam
 save_euser2=Gebruikersnaam mag geen : karakter bevatten
@@ -84,16 +88,19 @@ save_eclash=Een gebruiker met dezelfde naam bestaat reeds
 save_eoldpass=Oude wachtwoord is niet correct
 save_title=Gebruiker opgeslagen
 save_edom=Ontbrekende of ongeldige samenvatting realm
+
 gsave_err=Mislukt om groep op te slaan
 gsave_egroup1=Ontbrekende groepen naam
 gsave_egroup2=Groep naam kan mag geen : karakter of spaties bevatten
 gsave_eclash=Een groep met dezelfde naam bestaat reeds
+
 acl_dirs=Toegestane directory's
 acl_user=Maak .htaccess en htusers files als Unix gebruiker
 acl_same=Zelfde als Webmin login
 acl_home=Inclusief Unix gebruikers home directory?
 acl_sync=Mag Unix gebruiker synchronisatie opzetten?
 acl_uonly=Mag beschermde directory's toevoegen en veranderen?
+
 log_create_dir=Toevoegen directory $1
 log_modify_dir=Gemodificeerde directory $1
 log_delete_dir=Verwijderde directory $1
@@ -104,6 +111,7 @@ log_create_group=Gemaakte groep $1
 log_modify_group=Gemodificeerde groep $1
 log_delete_group=Verwijderde groep $1
 log_delete_dirs=Verwijderde $1 directory's
+
 search_title=Zoek Resultaten
 search_err=Zoeken mislukt
 search_edir=Ontbrekende of ongeldige absolute directory om te zoeken

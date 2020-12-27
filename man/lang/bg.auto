@@ -30,6 +30,7 @@ index_other_google=Google търсачка
 index_other_kde=KDE документация
 index_and=Съвпадение на всички
 index_or=Съпоставете всички
+
 search_efor=Няма ръчна страница за търсене на въведени
 search_title=Резултати от търсенето
 search_desc=описание
@@ -47,24 +48,32 @@ search_none=Няма намерена документация $1.
 search_for=За $1 
 search_google=Резултат от търсенето с Google
 search_doxfer=Онлайн документация на Webmin
+
 howto_title=Документ
 howto_header=КАК файл с документ $1 
 howto_epath=Невалиден път на документа HOWTO
+
 doc_title=Документация за пакета
 doc_header=Документ за пакетен документ $1 
 doc_epath=Невалиден път на документацията за пакета
+
 man_title=Страница с ръководство
 man_header=Страница с ръководство за $1 ($2)
 man_noentry=Страница за ръчно за $1 не съществува!
 man_epath=Страницата с ръчно не може да бъде път!
+
 kernel_title=Документ за ядрото
 kernel_header=Документ за файл с ядро $1 
 kernel_epath=Невалиден път на документа на ядрото
+
 kde_title=Документация на KDE
 kde_header=KDE файл с документ $1 
 kde_epath=Невалиден път на документацията на KDE
+
 perl_title=Perl модул
 perl_header=Документация за модул Perl $1 
 perl_emod=Невалидно име на модула Perl
+
 acl_allow=Може ли да редактирате разрешени типове търсене?
+
 check_ecannot=Нямате право да редактирате разрешени типове търсене

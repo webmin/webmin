@@ -21,6 +21,7 @@ index_mailfromnone=Standard (<tt>root</tt>)
 index_program=Befehl, welcher bei Problemen ausgeführt werden soll
 index_programnone=Führe keins aus
 index_monitor=Monitoring aktiviert?
+
 linear=Linear (Zusammengefügt)
 raid0=RAID0 (Stripeset)
 raid1=RAID1 (Gespiegelt)
@@ -29,6 +30,7 @@ raid5=RAID5 (Redundant)
 raid6=RAID6 (Dual Redundant)
 raid10=RAID10 (Stripeset und Gespiegelt)
 blocks=Blöcke
+
 create_title=Erstelle RAID-Gerät
 create_header=RAID-Geräteinstellungen
 create_device=Gerätedatei
@@ -62,6 +64,7 @@ create_o2_layout=2 Versatz-Kopien
 create_n3_layout=3 Nahe-Kopien
 create_f3_layout=3 Fern-Kopien
 create_o3_layout=3 Versatz-Kopien
+
 view_title=RAID-Gerät
 view_header=RAID-Geräteinstellungen
 view_device=Gerätedatei
@@ -117,6 +120,7 @@ view_mountmsg=Geben Sie ein Verzeichnis an und klicken Sie diesen Button um zum 
 view_mountmsg2=Klicke diesen Knopf um dieses RAID-Gerät für virtuellen Speicher auf ihrem System zu nutzen.
 view_blocks=$1 Blöcke
 view_sparegroup=Ersatzgruppe
+
 mkfs_title=Dateisystem erstellen
 mkfs_header2=Hier können Sie ein neues $2 Dateisystem auf $1 erzeugen. <b>Alle</b> bestehenden Daten werden unwideruflich gelöscht!
 mkfs_options=Einstellungen des neuen Linux-Dateisystems
@@ -124,6 +128,7 @@ mkfs_err=Fehler beim Erstellen des Dateisystems
 mkfs_exec=Führe Befehl $1 aus ..
 mkfs_failed=.. Befehl fehlgeschlagen!
 mkfs_ok=.. Befehl vollständig.
+
 emkraid=<tt>mkraid</tt> fehlgeschlagen: $1
 eraidstop=<tt>raidstop</tt> fehlgeschlagen: $1
 eraidstart=<tt>raidstart</tt> fehlgeschlagen: $1
@@ -135,6 +140,7 @@ emdadmgrow=<tt>mdadm --grow</tt> fehlgeschlagen : $1
 emdadmremove=<tt>mdadm --manage --remove</tt> fehlgeschlagen : $1
 emdadmreplace=<tt>mdadm --manage --replace</tt> fehlgeschlagen : $1
 emdadmfail=<tt>mdadm --manage --fail</tt> fehlgeschlagen : $1
+
 log_create=Erzeugt: $1 RAID-Gerät $2
 log_stop=Deaktiviertes RAID-Gerät $1
 log_start=Aktiviertes RAID-Gerät $1
@@ -147,14 +153,17 @@ log_grow=Erweitertes RAID-Gerät $1 zu insgesamt $2 Festplatten
 log_convert_to_raid6=RAID5 Gerät $1 zu einem RAID6 Gerät konvertiert
 log_convert_to_raid5=RAID6 Gerät $1 zu einem RAID5 Gerät konvertiert
 log_notif=RAID Problem Benachrichtigungsoptionen aktualisiert
+
 notif_err=Fehlgeschlagen RAID Problem Benachrichtigungsoptionen zu speichern
 notif_emailaddr=Fehlende oder ungültige Benachrichtigungsadresse
 notif_emailfrom=Fehlende oder ungültige Von-Adresse
 notif_eprogram=Fehlendes oder nicht existierendes Programm zum Ausführen
+
 delete_title=Lösche RAID-Array
 delete_rusure=Sind Sie sich sicher, dass Sie das RAID-Array $1 löschen wollen, welches $2 Festplattenspeicher benutzt?
 delete_ok=Ja, Lösche Es
 delete_eidx=Kein RAID-Array ausgewählt!
+
 remove_title=Entferne Partition von RAID-Array
 remove_rusure=Sind Sie sicher, dass Sie die Partition $2 vom RAID-Array $1 entfernen möchten?
 remove_ok=Ja, lösche es

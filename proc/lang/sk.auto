@@ -16,6 +16,7 @@ index_loadname=Priemer zaťaženia procesora:
 index_loadnums=$1 (1 min.), $2 (5 min.), $3 (15 min.)
 index_cpuname=Typ CPU:
 index_inzone=V zóne $1 
+
 pid=ID
 owner=vlastník
 command=príkaz
@@ -27,6 +28,7 @@ nice=Pekná úroveň
 stime=zahájená
 sclass=Trieda plánovania IO
 sprio=Priorita IO
+
 search_user=Vo vlastníctve
 search_match=vhodný
 search_cpupc=Používa viac ako $1% CPU
@@ -43,6 +45,7 @@ search_sigkill=Zabite procesy
 search_port=Pomocou portu
 search_protocol=protokol
 search_ip=Pomocou adresy IP
+
 run_command=Príkaz na spustenie
 run_submit=beh
 run_mode=Spustiť režim
@@ -56,6 +59,7 @@ run_ecannot=Nemáte povolené spúšťať príkazy
 run_as=Spustiť ako používateľ
 run_euser=Chýbajúce alebo neplatné používateľské meno
 run_euser2=Ako vybratý používateľ nemáte povolené spúšťať príkazy
+
 edit_title=Informácie o procese
 edit_gone=Tento proces už nie je spustený
 edit_sub=vlákna
@@ -75,12 +79,15 @@ edit_sigcont=Pokračovať
 edit_open=Súbory a pripojenia
 edit_trace=Stopový proces
 edit_return=podrobnosti procesu
+
 kill_err=Nepodarilo sa odoslať signál $1 na spracovanie $2 
 kill_title=Poslať signál
 kill_sent=zaslaná
 kill_ecannot=Nemáte povolené zabíjať procesy
+
 renice_err=Proces sa nepodarilo premenovať $1 
 renice_ecannot=Nemáte povolenie na opakovanie procesov
+
 linux_pri=priorita
 linux_tty=TTY
 linux_status=Postavenie
@@ -91,25 +98,30 @@ linux_ruser=Skutočný používateľ
 linux_rgroup=Skutočná skupina
 linux_pgid=ID skupiny procesov
 linux_stime=zahájená
+
 linuxstat_R=beh
 linuxstat_S=spacie
 linuxstat_D=Hlboký spánok
 linuxstat_T=zastavený
 linuxstat_Z=živá mŕtvola
+
 linux_real=Reálny čas
 linux_be=Najlepšie úsilie
 linux_idle=nečinný
+
 freebsd_ruser=Skutočný používateľ
 freebsd_rgroup=Skutočná skupina
 freebsd_tty=TTY
 freebsd_pgid=Procesná skupina
 freebsd_stime=zahájená
 freebsd_lim=Limit pamäte
+
 hpux_pri=priorita
 hpux_tty=TTY
 hpux_status=Postavenie
 hpux_wchan=Čakať na
 hpux_stime=zahájená
+
 hpuxstat_0=neexistujúce
 hpuxstat_S=spacie
 hpuxstat_W=čakania
@@ -118,7 +130,9 @@ hpuxstat_I=prechodný
 hpuxstat_Z=živá mŕtvola
 hpuxstat_T=zastavený
 hpuxstat_G=rastúce
+
 macos_tty=TTY
+
 sysv_group=skupina
 sysv_ruser=Skutočný používateľ
 sysv_rgroup=Skutočná skupina
@@ -127,12 +141,14 @@ sysv_tty=TTY
 sysv_stime=zahájená
 sysv_task=ID úlohy
 sysv_zone=Názov zóny
+
 log_run=Príkaz Ran $1
 log_kill=Odoslal sa signál $1 na spracovanie $2 
 log_kills=Pošlite signál $1 procesom $2 
 log_kill_l=Odoslal sa signál $1 na spracovanie $2 
 log_kills_l=Odoslal sa signál $1 na spracovanie <br> $2 
 log_renice=Zmenená priorita procesu $2 na $1 
+
 acl_manage=Spravujte procesy ako užívateľ
 acl_manage_def=Aktuálny užívateľ Webmin
 acl_edit=Môžu zabíjať a obnovovať procesy?
@@ -142,11 +158,13 @@ acl_who=Dokáže spravovať procesy pre používateľov
 acl_who0=Všetci používatelia
 acl_who1=Aktuálny užívateľ Webmin
 acl_who2=Registrovaní užívatelia ..
+
 kill_kill=Proces zabíjania
 kill_term=vypovedať
 kill_hup=Reštart
 kill_stop=Stop
 kill_cont=ďalej
+
 open_title=Otvorte Súbory a pripojenia
 open_proc=Pre proces $1 (PID $2)
 open_header1=Otvorte súbory
@@ -170,6 +188,7 @@ open_blk=Blok špeciálne
 open_size=Veľkosť súboru
 open_inode=Inode
 open_file=cesta
+
 trace_title=Stopový proces
 trace_start=Spustenie sledovania systémových hovorov pre $1 ..
 trace_doing=Sledovanie systémových volaní pre $1  :
@@ -180,5 +199,7 @@ trace_syscalls=Sledovanie systémových volaní:
 trace_all=všetko
 trace_sel=Uvedený ..
 trace_change=zmena
+
 windows_threads=Vlákna sa spracovávajú
+
 syslog_dmesg=Správy jadra

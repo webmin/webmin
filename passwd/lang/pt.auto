@@ -5,6 +5,7 @@ index_user=Altere a senha do usuário:
 index_euseradmin=Este módulo não pode ser usado porque o módulo Usuários e Grupos não está instalado ou não é suportado no seu sistema.
 index_toomany=Existem muitos usuários para exibir no seu sistema. Digite abaixo o nome do usuário cuja senha você deseja alterar.
 index_none=Você não tem acesso a nenhum usuário para alterar suas senhas.
+
 passwd_title=Mudar senha
 passwd_header=Alterando a senha do usuário Unix
 passwd_for=Alterando a senha para
@@ -23,7 +24,9 @@ passwd_erepeat=Novas senhas não são as mesmas
 passwd_ecmd=$1 falhou : $2 
 passwd_ok=A senha do usuário $1 foi alterada com sucesso. Se este for seu usuário atual do Webmin, você poderá ser forçado a fazer login novamente.
 passwd_ok2=A senha do usuário $1 foi alterada com sucesso.
+
 log_passwd=Senha alterada para o usuário $1 
+
 acl_repeat=Precisa digitar a nova senha novamente?
 acl_self=Sempre permitir que a própria senha seja alterada?
 acl_old=É necessário inserir a senha antiga?

@@ -11,6 +11,7 @@ index_when=Tak, $1
 index_act=Działanie
 index_exec=Wykonaj
 index_delete=Usuń wybrane kopie
+
 edit_title=Edytuj kopiowanie klastra
 create_title=Utwórz kopię klastra
 edit_header=Szczegóły kopii klastra
@@ -31,12 +32,14 @@ edit_run=Kopiuj
 edit_return=kopia klastra
 edit_email=Emajl wyjściowy do
 edit_none=Nikt
+
 save_err=Zapis zadania cron nie powiódł się
 save_efiles=Nie wprowadzono plików do skopiowania
 save_edest=Brakujący katalog docelowy
 save_eservers=Nie wprowadzono serwerów do kopiowania
 save_efile=Ścieżka kopiowania pliku '$1' nie jest bezwzględna
 save_eemail=Brakujący lub błędny adres e-mail
+
 exec_title=Kopiowanie plików
 exec_files1=Kopiowanie $1 plików do wybranych serwerów $2 ..
 exec_files2=Kopiowanie $1 do wybranych serwerów $2
@@ -50,12 +53,15 @@ exec_not=Nie udało się skopiować następujących plików do $1 :
 exec_cmd=Po skopiowaniu polecenie wyjściowe na $1 :
 exec_before=Przed kopiowaniem polecenie wyjściowe na $1 :
 exec_on=Na $1 nie udało się uruchomić : $2
+
 log_create=Utworzono kopię z serwerów $1 do $2
 log_modify=Zmodyfikowano kopię z serwera $1 do serwera $2
 log_delete=Usunięto kopię dla serwera $1 z serwera $2
 log_exec=Skopiowano z serwera $1 na $2
 log_deletes=Usunięto $1 kopii
+
 email_subject_succeeded=Kopia klastra $1 została pomyślnie utworzona
 email_subject_failed=Kopia klastra $1 nie powiodła się
+
 delete_err=Nie udało się usunąć kopii
 delete_enone=Nie wybrano

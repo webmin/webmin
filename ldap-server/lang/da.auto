@@ -16,6 +16,7 @@ index_setupdesc=Din LDAP-server database indeholder ikke roden DN $1 endnu, hvil
 index_setup=Opret rod DN
 index_permsdesc=LDAP-serverdatakataloget $1 indeholder filer, der ikke ejes af den rigtige bruger $2, hvilket betyder, at det usandsynligt vil starte korrekt. Webmin kan dog løse dette for dig ved at klikke på knappen nedenfor.
 index_perms=Fix ejerskab
+
 connect_eserver=LDAP-serveren $1 findes ikke
 connect_euser=Ingen bruger til at logge ind, som er konfigureret
 connect_epass=Der er ikke konfigureret et kodeord til login med
@@ -28,6 +29,7 @@ connect_eldap=Kunne ikke oprette forbindelse til LDAP-server $1 på port $2
 connect_essl=Kunne ikke starte TLS-kryptering med LDAP-server $1 : $2 
 connect_elogin=Kunne ikke logge ind på LDAP-server $1 som $2 : $3 
 connect_cpan=Du kan have <tt>$1</tt> Perl-modulet <a href='$2'>automatisk installeret</a> fra CPAN.
+
 slapd_title=OpenLDAP-serverkonfiguration
 ldif_title=OpenLDAP-serverkonfiguration
 slapd_header=Globale LDAP-serverindstillinger
@@ -76,6 +78,7 @@ slapd_protos=LDAP-forbindelser til at acceptere
 slapd_ldap=LDAP over netværk
 slapd_ldaps=LDAP over SSL
 slapd_ldapi=Unix-socket-fil
+
 schema_title=Administrer skema
 schema_file=Navn
 schema_desc=Beskrivelse
@@ -93,6 +96,7 @@ schema_edesc=På denne side kan du manuelt redigere en LDAP-schemafil. Dette ska
 schema_return=skema liste
 schema_emove=Kunne ikke finde skemafilen, der skal flyttes!
 schema_ecannot=Du har ikke tilladelse til at administrere LDAP-skemaet
+
 acl_title=LDAP adgangskontrol
 acl_ecannot=Du har ikke tilladelse til at konfigurere LDAP-adgangskontrol
 acl_what=objekter
@@ -103,6 +107,7 @@ acl_none=Der er endnu ikke defineret nogen adgangskontrolregler. Alle objekter i
 acl_delete=Slet valgte regler
 acl_add=Tilføj en ny adgangskontrolregel.
 acl_return=regler for adgangskontrol
+
 browser_title=Gennemse databasen
 browser_econn=LDAP-browseren kan ikke bruges : $1 
 browser_ecannot=Du har ikke tilladelse til at gennemse LDAP-databasen
@@ -136,24 +141,30 @@ browser_nomatch=Ingen objekter matchede din søgning efter $1.
 browser_search=Find objekter, der matcher :
 browser_search2=Viser matchende objekter :
 browser_sok=Søg
+
 save_err=Kunne ikke ændre attribut
 save_ebase=Kunne ikke hente objekt $1 fra databasen
 save_emodify=LDAP-ændring af $2 i $1 mislykkedes : $3 
 save_enone=Ingen indtastede værdier
+
 add_err=Kunne ikke tilføje attribut
 add_eadd=Manglende eller ugyldigt attributnavn
 add_evalue=Manglende værdi
 add_emodify=LDAP-tilføjelse af $2 til $1 mislykkedes : $3 
+
 delete_err=Kunne ikke fjerne attributter
 delete_enone=Ingen valgt
 delete_emodify=LDAP-sletning af $2 fra $1 mislykkedes : $3 
+
 sdelete_err=Kunne ikke slette objekter
 sdelete_edn=Objekt $1 blev ikke fundet
 sdelete_edel=LDAP-sletning af $1 mislykkedes : $2 
+
 rename_err=Kunne ikke omdøbe objekt
 rename_eget=Kunne ikke finde objekt med DN $1 
 rename_enew=Det nye navn ser ikke ud til at være gyldigt
 rename_erename=LDAP newdn til $2 fra $1 mislykkedes : $3 
+
 oadd_title=Opret objekt
 oadd_header=Nye LDAP-objektoplysninger
 oadd_base=Overordnet objekt DN
@@ -170,6 +181,7 @@ oadd_eget2=Kunne ikke kontrollere for sammenstød med $1 : $2
 oadd_eclash=Et objekt med DN $1 findes allerede
 oadd_eadd=LDAP-tilføjelse af $1 mislykkedes : $2 
 oadd_err=Kunne ikke oprette nyt objekt
+
 create_title=Opret træ
 create_ecannot=Det er ikke tilladt at oprette et nyt træ
 create_desc=Denne side gav en praktisk måde at oprette DN, der vil være basen i et nyt træ i databasen. Det kan også oprette et eksempel bruger eller e-mail alias under træet som en skabelon til dine egne objekter.
@@ -191,18 +203,23 @@ create_done=.. Færdig
 create_doingex=Oprettelse af eksempelobjekt med DN $1 ..
 create_edoingex=.. mislykkedes: $1. Træet kan dog stadig bruges.
 create_eoc=Kunne ikke finde en passende objektklasse til det nye DN
+
 eunknown=Ukendt fejl
+
 apply_err=Kunne ikke anvende konfiguration
 apply_ecmd=$1 mislykkedes : $2 
 apply_ecannot=Du har ikke tilladelse til at anvende konfigurationen
+
 stop_err=Kunne ikke stoppe LDAP-serveren
 stop_ecmd=$1 mislykkedes : $2 
 stop_egone=Kører ikke længere!
 stop_ekill=Dræbsprocessen mislykkedes : $1 
 stop_ecannot=Du har ikke tilladelse til at stoppe LDAP-serveren
+
 start_err=Kunne ikke starte LDAP-server
 start_ecmd=$1 mislykkedes : $2 
 start_ecannot=Du har ikke tilladelse til at starte LDAP-serveren
+
 log_create_dn=Oprettet objekt $1 
 log_delete_dn=Slettet objekt $1 
 log_rename_dn=Omdøbt objekt $1 
@@ -234,6 +251,7 @@ log_up_access=Reglen for adgangskontrol flyttes op for $1
 log_down_access=Reglen om adgangskontrol blev flyttet for $1 
 log_delete_accesses=Regler for adgang til $1 er slettet
 log_all=alle objekter
+
 gencert_title=Generer SSL-certifikat
 gencert_header=Nye SSL-certifikatoplysninger
 gencert_create=Opret certifikat
@@ -245,7 +263,9 @@ gencert_dir=Vejviser
 gencert_err=Kunne ikke generere certifikat
 gencert_edest=Destinationskatalog findes ikke
 gencert_epath=Certifikat- og nøglefiler i LDAP-serverkonfigurationen skal være absolutte stier
+
 perms_err=Kunne ikke rette filejerskab
+
 acl_slapd=Kan konfigurere LDAP-server?
 acl_ldif=Kan konfigurere LDAP-server?
 acl_schema=Kan administrere skema?
@@ -254,6 +274,7 @@ acl_browser=Kan du gennemse og redigere databasen?
 acl_create=Kan oprette nyt træ?
 acl_start=Kan starte og stoppe LDAP-server?
 acl_apply=Kan anvende konfigurationsændringer?
+
 access_desc=$2 af $1 
 access_self=selv
 access_users=godkendte brugere
@@ -273,6 +294,7 @@ access_lcompare=Sammenligne
 access_lsearch=Søg
 access_lread=Læs
 access_lwrite=Skrive
+
 eacl_title1=Opret adgangskontrolregel
 eacl_title2=Rediger adgangskontrolregel
 eacl_header=Detaljer om LDAP-databaseadgangskontrolregler

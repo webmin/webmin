@@ -20,6 +20,7 @@ index_stop=停止選取的
 index_start=啟動選取的
 index_rlchange=變更執行層級:
 index_rlchangedesc=按下此按鈕來切換系統目前的執行層級(runlevel)到所選取的，這將會停止目前層級所有的動作然後重新啟動在新層級中。
+
 edit_title=編輯動作
 create_title=建立動作
 edit_ecannot=您不被允許編輯動作
@@ -48,10 +49,12 @@ edit_statusnow=顯示狀態
 edit_return=動作
 edit_status=現在啟動?
 edit_unknown=哇阿災(未知)
+
 save_err=無法儲存動作
 save_ecannot=您不被允許編輯開機動作
 save_ealready=叫做 '$1' 的動作已經存在
 save_ewrite=無法寫入到 $1 : $2
+
 ss_ecannot=您不被允許啟動或停止開機動作
 ss_start=開始動作
 ss_stop=停止動作
@@ -59,20 +62,24 @@ ss_restart=重新啟動動作
 ss_reload=重新讀取動作
 ss_status=動作狀態
 ss_exec=執行 $1 中...
+
 shutdown_ecannot=您不被允許關閉這個系統
 shutdown_title=關機
 shutdown_rusure=您是否確定要以指令 $1 關閉這個系統?
 shutdown_ok=關閉系統
 shutdown_exec=以命令 $1 關閉系統中...
+
 reboot_ecannot=您不被允許重新啟動這個系統
 reboot_title=重新啟動
 reboot_rusure=您是否確定要以指令 $1 重新啟動這個系統?
 reboot_ok=重新啟動系統
 reboot_exec=以命令 $1 重新啟動系統中...
+
 acl_script=是否可以編輯開機命令稿?
 acl_actions=是否可以編輯, 建立與刪除動作?
 acl_reboot=是否可以重新啟動這個系統?
 acl_shutdown=是否可以關閉這個系統?
+
 log_rename=動作$1更名為$2
 log_modify=修改動作$1
 log_create=建立動作$1
@@ -83,6 +90,7 @@ log_reboot=重新開機
 log_shutdown=關機
 log_local=修改開機腳本
 log_bootup=變更$1的開機動作
+
 edit_hostconfig_startup=此腳本$1將會在開機時此動作作用後啟動，您可以再下方編輯。
 edit_hostconfig_plist=此檔案$1會設定認證參數在開機時，您可以再下方編輯。
 edit_hostconfig_new=新增動作
@@ -93,9 +101,11 @@ edit_hostconfig_scriptname=腳本名稱
 edit_hostconfig_array=欄位$1, $2,和$3是陣列欄位和可以包含更多的值，用冒號區分多個值。
 edit_hostconfig_hostconfig=檔案$1 控制系統很多在開機時啟動的服務和背景程式，您可以再下方編輯。
 edit_hostconfig_title=編輯主機位置設定
+
 mass_enone=沒有選取任何動作
 mass_start=啟動動作
 mass_stop=停止動作
+
 change_err=您不被允許切換執行層級
 change_title=切換執行層級
 change_cmd=用指令$2切換執行層級$1，這將會花一些時間和Webmin可能會在切換時暫時無回應。

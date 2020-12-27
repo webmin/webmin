@@ -27,7 +27,9 @@ index_global=Globálna konfigurácia
 index_create=Vytvorte virtuálny server
 index_version=Verzia ProFTPd $1 
 index_proftpd=proftpd
+
 efailed=Uloženie $1 zlyhalo
+
 type_0=Možnosti siete
 type_1=Možnosti protokolovania
 type_2=Súbory a adresáre
@@ -35,6 +37,7 @@ type_3=Riadenie prístupu
 type_4=Zmiešaný
 type_5=Používateľ a skupina
 type_6=Overenie
+
 virt_title=Možnosti virtuálneho servera
 virt_header1=Pre $1 
 virt_header2=Pre predvolený server
@@ -50,6 +53,7 @@ virt_cmds=FTP príkazy
 virt_return=virtuálny server
 virt_virt=Konfigurácia virtuálneho servera
 virt_edit=Upraviť smernice
+
 vserv_title=Konfigurácia virtuálneho servera
 vserv_addr=adresa
 vserv_name=Názov servera
@@ -58,6 +62,7 @@ vserv_delete=Odstrániť virtuálny server
 vserv_eaddr=Chýbajúca alebo neplatná adresa
 vserv_eport=Chýbajúce alebo neplatné číslo portu
 vserv_ename=Chýba názov servera
+
 anon_title=Anonymné možnosti FTP
 anon_header1=Na virtuálnom serveri $1 
 anon_header2=V predvolenom serveri
@@ -65,6 +70,7 @@ anon_anon=Konfigurovať anonymný FTP
 anon_return=anonymné FTP možnosti
 anon_header3=Pre anonymný FTP na virtuálnom serveri $1 
 anon_header4=Pre anonymný FTP v predvolenom serveri
+
 aserv_title=Konfigurovať anonymný FTP
 aserv_create=Nastaviť anonymný FTP
 aserv_root=Obmedziť na adresár
@@ -75,6 +81,7 @@ aserv_eroot=Chýbajúci alebo neplatný adresár chroot
 aserv_euser=Chýbajúci alebo neplatný používateľ systému Unix
 aserv_egroup=Chýba alebo je neplatná skupina Unix
 aserv_desc=Anonymný FTP ešte nebol pre tento virtuálny server nastavený. Tento formulár slúži na nastavenie počiatočných možností konfigurácie.
+
 dir_title=Možnosti pre jednotlivé adresáre
 dir_header2=Pre adresár $1 na predvolenom serveri
 dir_header1=Pre adresár $1 na virtuálnom serveri $2 
@@ -85,6 +92,7 @@ dir_header=Možnosti na príkaz
 dir_dir=Konfigurovať adresár
 dir_header4=Pre adresár $1 v anonymnom FTP
 dir_header5=Globálne pre adresár $1 
+
 manual_title=Upraviť smernice
 manual_header=Pomocou textového poľa nižšie môžete manuálne upravovať smernice ProFTPD v $1, ktoré sa vzťahujú na tento virtuálny server, adresár alebo príkazy.
 manual_configs=Upraviť konfiguračné súbory
@@ -92,6 +100,7 @@ manual_ecannot=Nie je povolené manuálne upravovať smernice
 manual_file=Upraviť smernice v súbore:
 manual_efile=Neplatný konfiguračný súbor ProFTPd
 manual_etest=Zistená chyba konfiguračného súboru : $1 
+
 limit_title=Možnosti na príkaz
 limit_header4=Pre príkazy $1 v adresári $2 
 limit_header2=Pre príkazy $1 na predvolenom serveri
@@ -103,17 +112,20 @@ limit_return=možnosti na príkaz
 limit_header5=Pre príkazy $1 v anonymnom FTP
 limit_header6=Pre príkazy $1 v súbore $2 
 limit_header7=Globálne pre príkazy $1 
+
 lserv_title=Konfigurácia príkazov
 lserv_cmd=FTP príkazy
 lserv_delete=Odstráňte konfiguráciu príkazov
 lserv_err=Uloženie príkazov zlyhalo
 lserv_ecmd=Nie sú vybrané žiadne príkazy
+
 dserv_title=Konfigurovať adresár
 dserv_dir=Cesta k adresáru
 dserv_err=Uloženie adresára zlyhalo
 dserv_edir=Chýba cesta k adresáru
 dserv_delete=Odstrániť konfiguráciu adresára
 dserv_eanondir=Adresár musí byť v anonymnom FTP adresári
+
 mod_core_type=Typ servera
 mod_core_inetd=Spustiť z Inetd
 mod_core_stand=Samostatný démon
@@ -301,6 +313,7 @@ mod_core_duser=Odmietnuť používateľov
 mod_core_eip=$1 nie je platná adresa IP
 mod_core_enet=$1 nie je platná sieťová adresa
 mod_core_ehost=$1 nie je platný názov hostiteľa
+
 mod_ls_fakegroup=Falošná skupina v zoznamoch adresárov?
 mod_ls_fakeuser=Falošný užívateľ v zoznamoch adresárov?
 mod_ls_fakemode=Falošné povolenia v zoznamoch adresárov
@@ -317,6 +330,7 @@ mod_ls_efakeuser=Chýbajúci alebo neplatný falošný používateľ
 mod_ls_efakegroup=Chýba alebo je neplatná falošná skupina
 mod_ls_options=Možnosti zoznamu adresárov
 mod_ls_strict=Prepísať možnosti používateľa?
+
 mod_auth_chdir=Počiatočný prihlasovací adresár
 mod_auth_echdir=Chýba alebo je neplatný počiatočný adresár
 mod_auth_chroot=Obmedziť používateľov na adresáre
@@ -330,7 +344,9 @@ mod_auth_egroups=Nezadali sa žiadne skupiny Unix pre chroot
 mod_auth_echroot=Chýbajúci alebo neplatný adresár chroot
 mod_auth_login=Nepožiadať o heslo, ak je prihlásenie odmietnuté?
 mod_auth_root=Povoliť prihlásenie pomocou root?
+
 mod_site_chmod=Povoliť príkaz chmod?
+
 mod_unixpw_ufile=Alternatívny súbor s heslom v systéme Unix
 mod_unixpw_eufile=Chýba alebo je neplatný súbor s heslom Unix
 mod_unixpw_gfile=Alternatívny súbor skupiny Unix
@@ -338,6 +354,7 @@ mod_unixpw_egfile=Chýba alebo je neplatný súbor skupiny Unix
 mod_unixpw_none=nikto
 mod_unixpw_pam=Vždy s PAM zaobchádzajte ako s autoritou?
 mod_unixpw_persist=Ponechať súbor hesiel stále otvorený?
+
 mod_log_syslog=Chyby protokolu do súboru
 mod_log_sysdef=Systémový denník
 mod_log_esyslog=Chýba alebo je neplatný protokolový súbor
@@ -354,19 +371,25 @@ mod_log_fmt=Formátovanie reťazca
 mod_log_format=Vlastné formáty denníkov
 mod_log_enickname=Chýba alebo je neplatný názov formátu
 mod_log_efmt=Chýba formátovací reťazec
+
 mod_pam_pam=Používate PAM na autentifikáciu?
 mod_pam_config=Overenie pomocou služby PAM
 mod_pam_econfig=Chýbajúca alebo neplatná služba PAM
+
 mod_readme_display=Upozorniť používateľa na prispôsobenie súborov readme
 mod_readme_none=nikto
 mod_readme_edisplay=Chýba vzor súborov readme
+
 start_err=Server FTP sa nepodarilo spustiť
 start_einetd=V režime inetd nemôžete spustiť serverového démona.
+
 stop_err=Zastavenie servera FTP zlyhalo
 stop_einetd=V režime inetd nemôžete zastaviť serverového démona.
 stop_erun=Nie je spustený
+
 apply_err=Nepodarilo sa použiť konfiguráciu FTP
 apply_egone=Už nebeží
+
 ftpaccess_title=Súbory možností adresárov
 ftpaccess_desc=Ďalšie možnosti pre jednotlivé adresáre môžu byť špecifikované v súbore (zvyčajne nazývanom <tt>.ftpaccess</tt>) v každom adresári. Možnosti sa vzťahujú na všetky súbory v tomto adresári a na všetky podadresáre, pokiaľ nie sú prepísané iným súborom možností.
 ftpaccess_create=Vytvorte súbor s možnosťami
@@ -374,8 +397,10 @@ ftpaccess_find=Vyhľadajte súbory možností
 ftpaccess_auto=Pod anonymným menom
 ftpaccess_from=Z adresára
 ftpaccess_return=zoznam súborov možností
+
 ftpusers_title=Zakázaní používatelia FTP
 ftpusers_desc=Ak je povolená pod ikonou <tt>Overovanie</tt>, používateľom uvedeným nižšie zo súboru $1 bude zamietnutý prístup na prihlásenie k používateľovi FTP.
+
 ftpindex_title=Súbor možností pre jednotlivé adresáre
 ftpindex_delete=Zmazať súbor
 ftpindex_opts=Možnosti pre jednotlivé adresáre
@@ -385,8 +410,10 @@ ftpindex_addlimit=Pridajte možnosti príkazu pre príkaz ..
 ftpindex_header2=$1 v $2 
 ftpindex_return=súbor možností adresára
 ftpindex_header=Pre $1 
+
 find_err=Nepodarilo sa nájsť súbory možností
 find_eanon=Anonymný FTP nie je nastavený na žiadnom virtuálnom serveri
+
 log_global=Zmenené globálne možnosti $1 
 log_ftpusers=Zmenené odmietnuté používateľov FTP
 log_virtc=Vytvorený server $1 
@@ -420,6 +447,7 @@ log_anonm=Ručne upravený anonymný FTP server $1
 log_anon=$1 v anonymnom FTP serveri $2 
 log_start=Spustené proftpd
 log_apply=Použité zmeny
+
 eafter=Overenie konfigurácie zlyhalo: $1 Zmeny sa neuložili.
 proftpd_apply=Aplikovať zmeny
 proftpd_stop=Zastaviť ProFTPd

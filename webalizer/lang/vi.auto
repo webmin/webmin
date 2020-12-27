@@ -26,6 +26,7 @@ index_when=Có, $1
 index_webalizer=Webalizer
 index_enable=Lịch trình đã chọn
 index_disable=Bỏ lịch trình đã chọn
+
 edit_title1=Thêm tệp nhật ký
 edit_title2=Chỉnh sửa tệp nhật ký
 edit_header=Đăng nhập tùy chọn báo cáo
@@ -49,12 +50,14 @@ edit_cmode0=Sử dụng tùy chọn toàn cầu
 edit_cmode1=Tùy chọn tùy chỉnh
 edit_cmode2=Tập tin cấu hình khác ..
 edit_clear=Xóa (các) tệp nhật ký sau khi báo cáo theo lịch trình?
+
 gen_title=Tạo báo cáo
 gen_header=Chạy Webalizer để tạo báo cáo từ $1 ..
 gen_done=.. làm xong
 gen_failed=.. Webalizer thất bại! Xem đầu ra ở trên để biết chi tiết.
 gen_nothing=.. Webalizer đã hoàn thành, nhưng không có báo cáo nào được tạo. Xem đầu ra ở trên để biết chi tiết.
 gen_view=Xem báo cáo hoàn thành.
+
 save_err=Không thể lưu tệp nhật ký
 save_efile=Tệp nhật ký không được nhập hoặc không tồn tại
 save_ecfile=Tập tin cấu hình khác bị thiếu hoặc không tồn tại
@@ -64,12 +67,14 @@ save_ewuser=Không có người dùng Unix nào gọi là $1 tồn tại
 save_ehost=Tên máy chủ trang web bị thiếu hoặc không hợp lệ
 save_etitle=Thiếu tiêu đề báo cáo
 save_ecannot=Bạn chỉ được phép tạo báo cáo cho nhật ký dưới $1 
+
 view_epath=PATH_INFO không hợp lệ
 view_efile=Tên tệp báo cáo không hợp lệ
 view_elog=Tệp nhật ký không hợp lệ
 view_ecannot=Bạn không được phép xem báo cáo này
 view_eopen=Không thể mở tệp báo cáo
 view_title=Xem báo cáo
+
 global_title=Tùy chọn Webalizer toàn cầu
 global_title2=Tùy chọn báo cáo Webalizer
 global_for=Đối với logfile $1 
@@ -130,6 +135,7 @@ global_includesite=Khách hàng không bỏ qua
 global_includereferrer=Người giới thiệu không bỏ qua
 global_includeuser=Người dùng không bỏ qua
 global_includeagent=Trình duyệt không bỏ qua
+
 global_err=Không thể lưu các tùy chọn Webalizer
 global_ereport=Thiếu tiền tố tiêu đề báo cáo
 global_ehost=Tên máy chủ bị thiếu hoặc không hợp lệ
@@ -139,6 +145,7 @@ global_etable=Kích thước thiếu hoặc không hợp lệ cho bảng '$1'
 global_ehistory=Tên tệp lịch sử bị thiếu hoặc không hợp lệ
 global_ecurrent=Tên tệp gia tăng bị thiếu hoặc không hợp lệ
 global_ecache=Tên tệp bộ đệm DNS bị thiếu hoặc không hợp lệ
+
 log_create_log=Đã tạo báo cáo cho $1 
 log_modify_log=Báo cáo đã sửa đổi cho $1 
 log_delete_log=Đã xóa báo cáo cho $1 
@@ -147,6 +154,7 @@ log_global=Tùy chọn Webalizer toàn cầu đã sửa đổi
 log_global2=Tùy chọn Webalizer đã sửa đổi cho $1 
 log_enable_logs=Báo cáo theo lịch trình trên nhật ký $1 
 log_disable_logs=Báo cáo không theo lịch trình trên nhật ký $1 
+
 acl_view=Chỉ có thể xem các báo cáo hiện có?
 acl_global=Có thể chỉnh sửa các tùy chọn webalizer toàn cầu?
 acl_dir=Chỉ cho phép xem và chỉnh sửa báo cáo cho nhật ký bên dưới

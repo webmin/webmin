@@ -21,6 +21,7 @@ index_eversion=시스템에 설치된 STunnel의 버전은 $1 이지만이 모�
 index_conf=구성 파일 $1 에서
 index_noconf=구성 파일이 없습니다!
 index_delete=선택된 터널 삭제
+
 edit_title=SSL 터널 편집
 create_title=SSL 터널 생성
 edit_header1=터널 소스 옵션
@@ -47,6 +48,7 @@ edit_tcpw=TCP 래퍼 이름
 edit_auto=자동적 인
 edit_iface=발신 소스 주소
 edit_type=로부터 달아 나다
+
 save_err=SSL 터널을 저장하지 못했습니다
 save_enclash=서비스 이름 $2 이 (가) 포트 $1 에서 이미 사용 중입니다.
 save_einetd=$1 이라는 inetd 서비스가 이미 있습니다.
@@ -61,6 +63,7 @@ save_etcpw=누락되거나 잘못된 TCP 래퍼 이름
 save_eiface=발신 소스 주소가 없거나 잘못되었습니다
 save_exinetd=$1 이라는 xinetd 서비스가 이미 있습니다
 save_export=포트 $1 은 (는) xinetd 서비스 $2 에서 이미 사용 중입니다
+
 log_apply=적용 변경
 log_create=SSL 터널 $1 생성
 log_delete=SSL 터널 $1 을 (를) 삭제했습니다.

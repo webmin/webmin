@@ -9,6 +9,7 @@ index_disable=Onemogoči izbrano
 index_enable=Omogoči izbrano
 index_enabled=Omogočeno?
 index_return=seznam programov
+
 edit_title1=Ustvari program vrste MIME
 edit_title2=Uredi program MIME Type
 edit_header=Podrobnosti o programu za obdelavo podatkov MIME
@@ -22,18 +23,21 @@ edit_none=Noben (vedno uporabite program)
 edit_term=Prikaz izhoda v terminalu?
 edit_copious=Ima veliko proizvodnje?
 edit_desc=Opis tipa MIME
+
 save_err=Ni bilo mogoče shraniti programa vrste MIME
 save_etype=Manjkajoča ali neveljavna vrsta MIME
 save_eprogram=Manjka program za obdelavo
 save_eclash=Omogočen program za vneseno vrsto MIME že obstaja
 save_etest=Manjkajoči ali neveljaven testni ukaz
 save_edesc=Neveljaven opis vrste MIME
+
 delete_err=Programov tipa MIME ni bilo mogoče izbrisati
 disable_err=Onemogočanje programov vrste MIME ni uspelo
 disable_eclash=Onemogočen program tipa MIME za $1 že obstaja
 enable_err=Programov tipa MIME ni bilo mogoče omogočiti
 enable_eclash=Omogočen program tipa MIME za $1 že obstaja
 delete_enone=Izbrana ni nobena
+
 log_delete_mailcap=Brisanje programa vrste MIME za $1 
 log_create_mailcap=Ustvaril program tipa MIME za $1 
 log_modify_mailcap=Spremenjen program tipa MIME za $1 

@@ -13,6 +13,7 @@ index_search=Find existing protected directories under:
 index_md5=MD5 encryption is enabled in the module configuration, but the $1 Perl module needed for it is not installed.
 index_sha1=SHA1 encryption is enabled in the module configuration, but the $1 Perl module needed for it is not installed.
 index_cpan=<a href='$1'>Click here</a> to download and install it now.
+
 dir_title1=Add Protected Directory
 dir_title2=Edit Protected Directory
 dir_header=Protected directory options
@@ -49,6 +50,7 @@ dir_requireu=Only users ..
 dir_requireg=Only members of groups ..
 dir_erequire_user=No users to allow entered
 dir_erequire_group=No groups to allow entered
+
 edit_title1=Create User
 edit_title2=Edit User
 edit_header=Web authentication user details
@@ -60,11 +62,13 @@ edit_pass0=Set to
 edit_passfrom=Change from
 edit_passto=to new password
 edit_dom=Digest realm
+
 gedit_title1=Create Group
 gedit_title2=Edit Group
 gedit_header=Web authentication group details
 gedit_group=Group name
 gedit_members=Members of group
+
 save_err=Failed to save user
 save_euser1=Missing username
 save_euser2=Username cannot contain the : character
@@ -73,15 +77,18 @@ save_eclash=A user with the same name already exists
 save_eoldpass=Old password is not correct
 save_title=User Saved
 save_edom=Missing or invalid digest realm
+
 gsave_err=Failed to save group
 gsave_egroup1=Missing group name
 gsave_egroup2=Group name cannot contain the : character or spaces
 gsave_eclash=A group with the same name already exists
+
 acl_dirs=Allowed directories
 acl_user=Create .htaccess and htusers files as Unix user
 acl_same=Same as Webmin login
 acl_home=Include Unix user's home directory?
 acl_sync=Can setup Unix user synchronization?
+
 log_create_dir=Added directory $1
 log_modify_dir=Modified directory $1
 log_delete_dir=Deleted directory $1
@@ -91,6 +98,7 @@ log_delete_user=Deleted user $1
 log_create_group=Created group $1
 log_modify_group=Modified group $1
 log_delete_group=Deleted group $1
+
 search_title=Search Results
 search_err=Search failed
 search_edir=Missing or invalid absolute directory to search

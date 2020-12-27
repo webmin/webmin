@@ -25,6 +25,7 @@ index_echeckupdate=Neaptikta jokia atnaujinimo sistema!
 index_filter=Filtruoti pakuotes
 index_filterclear=Išvalyti filtrą
 index_filtered=Rodomi <tt>$1</tt> paketai iš <tt>$2</tt>
+
 search_title=Pakuotės paieška
 search_nomatch=Nei vienas paketas neatitiko $1 
 search_none=Nė vienas
@@ -37,6 +38,7 @@ search_esearch=Jūs nieko neįvedėte ieškoti!
 search_delete=Pašalinkite pasirinktus paketus
 search_selall=Pasirinkti viską
 search_invert=Apverskite pasirinkimą
+
 edit_title=Redaguoti paketą
 edit_details=Informacija apie paketą
 edit_desc=apibūdinimas
@@ -53,6 +55,7 @@ edit_uninst=Pašalinti
 edit_uninstdesc=Pašalinkite šį paketą iš savo sistemos.
 edit_return=pakuotės informacija
 edit_egone=Paketas nebeįdiegtas
+
 list_title=Pakuotės failai
 list_files=$1 paketo failai
 list_path=Kelias
@@ -64,6 +67,7 @@ list_status=Statusas
 list_ok=Gerai
 list_view=(Žiūrėti)
 list_eview=Nepavyko atidaryti $1 : $2 
+
 delete_err=Nepavyko ištrinti paketo $1 
 delete_epack=Paketas $1 neegzistuoja
 delete_title=Ištrinti paketą
@@ -75,6 +79,7 @@ delete_noscripts=Praleisti scenarijų pašalinimą?
 delete_efile=Netinkamas ištrinti laikinasis failas
 delete_purge=Išvalyti konfigūracijos failus?
 delete_depstoo=Pašalino ir nenaudojamas priklausomybes?
+
 file_title=Informacija apie bylą
 file_notfound=Informacijos apie $1 nėra
 file_path=Kelias
@@ -88,6 +93,7 @@ file_pack=Pakuotė
 file_class=Klasė
 file_desc=apibūdinimas
 file_none=Nė vienas
+
 install_err=Nepavyko įdiegti paketo
 install_elocal=Vietinė byla nepateikta
 install_elocal2=„$1“ neegzistuoja
@@ -101,6 +107,7 @@ install_title=Įdiekite paketą
 install_header=Įdiekite paketą
 install_packs=Diegiamas paketas (-ai)
 install_ok=Diegti
+
 do_err=Nepavyko įdiegti paketo $1 
 do_title=Įdiekite paketą
 do_efailed=Įdiegti nepavyko : $1 
@@ -117,10 +124,12 @@ do_arch=Architektūra
 do_inst=Įdiegta
 do_none=Nė vienas
 do_files=Pakuotės failai
+
 pkgadd_root=Šaknies katalogas
 pkgadd_eroot=Šakninis katalogas '$1' neegzistuoja
 pkgadd_unknown=Nežinoma
 pkgadd_manager=Sistemos V paketo tvarkyklė
+
 rpm_upgrade=Atnaujinti paketą?
 rpm_replacepkgs=Perrašyti paketą?
 rpm_nodeps=Ignoruoti priklausomybes?
@@ -138,10 +147,12 @@ rpm_find=Ieškoti rpmfind.net ..
 rpm_findrpm=Pakuotės failo vardas
 rpm_finddistro=Paskirstymas
 rpm_finddesc=apibūdinimas
+
 bsd_unknown=Nežinoma
 bsd_scripts=Vykdyti prieš ir po diegimo scenarijus?
 bsd_force=Priversti diegti, jei trūksta išankstinių sąlygų?
 bsd_manager=$1 paketo valdytojas
+
 slack_unclass=Kiti
 slack_unknown=Nežinoma
 slack_missing=Dingęs
@@ -149,12 +160,14 @@ slack_root=Šaknies katalogas
 slack_eroot=Trūksta arba netinkamas šakninis katalogas
 slack_manager=„Slackware“ paketo tvarkyklė
 slack_edir=Trūksta „Slackware“ paketų katalogo $1 
+
 debian_unknown=Nežinoma
 debian_depends=Ignoruoti priklausomybės problemas?
 debian_conflicts=Ignoruoti paketų konfliktus?
 debian_overwrite=Parašyti failus iš kitų paketų?
 debian_downgrade=Pakeisti naujesnį paketą į seną?
 debian_manager=„Debian DPKG“
+
 log_install_package=Įdiegta pakuotė $1 
 log_install_apt_l=Įdiegtas paketas (-ai) $1 iš APT
 log_install_apt=Įdiegtas $2 paketas (-ai) iš APT
@@ -173,6 +186,7 @@ log_upgrade_yum_l=„YUM“ atnaujintas paketas (-ai) $1
 log_upgrade_yum=„YUM“ atnaujintas $2 paketas (-ai)
 log_check_rhn_l=„Redhat Network“ atnaujintas paketas (-ai) $1 
 log_check_rhn=Naujovintas $2 paketas (-ai) iš „Redhat Network“
+
 rhn_input=Paketas iš „Redhat Network“
 rhn_find=Ieškoti RHN ..
 rhn_install=Diegiame paketą (-us) su komanda $1.
@@ -200,6 +214,7 @@ rhn_eproxy=Trūksta arba netinkamas tarpinis serveris
 rhn_skip=Praleisti paketų atitikimą
 rhn_nonefound=Nėra atnaujinimo paketų.
 rhn_name=„Redhat“ tinklas
+
 apt_input=Pakuotė iš APT
 apt_install=Diegiame paketą (-us) su komanda $1.
 apt_ok=.. įdiegti baigta.
@@ -229,6 +244,7 @@ apt_repo_url=Saugyklos bazinis URL
 apt_repo_path=Paskirstymo kelio komponentai
 apt_repo_eurl=Trūksta arba netinkamai atrodo pagrindinis URL
 apt_repo_epath=Trūksta paskirstymo kelio
+
 yum_input=Pakuotė iš YUM
 yum_install=Diegiame paketą (-us) su komanda $1.
 yum_ok=.. įdiegti baigta.
@@ -259,6 +275,7 @@ yum_repo_ename=Trūksta saugyklos pavadinimo
 yum_repo_eurl=Trūksta arba netinkamas saugyklos URL
 yum_repo_egpg=Nėra GPG sertifikato failo arba jo nėra
 yum_repo_efile=Saugyklos failas jau yra!
+
 urpmi_name=URPMI
 urpmi_input=Pakuotė iš URPMI
 urpmi_find=Naršykite URPMI ..
@@ -273,6 +290,7 @@ urpmi_upgradeok=.. baigta.
 urpmi_install=Diegiame paketą (-us) su komanda $1.
 urpmi_ok=.. įdiegti baigta.
 urpmi_failed=.. įdiegti nepavyko!
+
 rpm_missing=Dingęs
 rpm_checkfail=Nepavyko patikrinti $1 
 rpm_md5=MD5
@@ -284,6 +302,7 @@ rpm_user=vartotojo nuosavybė
 rpm_perm=leidimus
 rpm_group=grupės nuosavybė
 rpm_erpm=RPM $1 nerastas : $2 
+
 soft_reg=Įprasta byla
 soft_dir=Katalogas
 soft_spec=Specialioji byla
@@ -295,6 +314,7 @@ soft_euncompress=Failas yra suglaudintas, tačiau komanda <tt>uncompress</tt> j�
 soft_euncmsg=Nepavyko išspausti failo : $1 
 soft_egzip=Failas yra suglaudintas, tačiau jūsų sistemoje nerasta komandos gzip.
 soft_egzmsg=Nepavyko surinkti failo : $1 
+
 aix_unknown=Nežinoma
 aix_device=Įvesties įrenginys / programinės įrangos katalogas
 aix_software=PROGRAMINĖ ĮRANGA įdiegti
@@ -312,6 +332,7 @@ aix_accept=PRIIMTI naujas licencijos sutartis?
 aix_license=Peržiūrėti naujas LICENCIJOS sutartis?
 aix_clean=Valymo diegimo klaida?
 aix_manager=AIX paketo tvarkyklė
+
 emerge_input=Iš „Portage“ saugyklos
 emerge_find=Paieška ..
 emerge_install=Diegiame paketą su komanda $1.
@@ -327,6 +348,7 @@ emerge_noreplace=Pakeisti esamus paketus?
 emerge_onlydeps=Įdiegti tik priklausomybes?
 emerge_title=Ieškoti „Portage“
 emerge_name=„Portage“
+
 cygwin_fmissing=Trūksta failo
 cygwin_lmissing=Trūksta failo, į kurį būtų nukreipta
 cygwin_estat=Nepavyko įregistruoti failo: $1 
@@ -336,6 +358,7 @@ cygwin_badpostscript=Įspėjimas: neatrodo, kad šis scenarijus buvo paleistas
 cygwin_pkgexists=Paketas $1 jau yra.
 cygwin_warnuse=Įspėjimas: Tai nėra oficiali „Cygwin“ programinės įrangos valdymo sąsaja. Naudokite savo rizika.
 cygwin_edb=Trūksta „Cygwin“ paketų duomenų bazės $1 
+
 deletes_err=Nepavyko ištrinti paketų
 deletes_enone=Nepasirinktas paketas
 deletes_title=Ištrinti paketus
@@ -346,6 +369,7 @@ deletes_failed2=Nepavyko pašalinti : $1
 deletes_success2=.. pašalinimas baigtas.
 deletes_rusure=Ar tikrai norite pašalinti paketus $1 ?
 deletes_ok=Ištrinkite juos visus
+
 csw_input=Paketas iš CSW
 csw_install=Diegiame paketą (-us) su komanda $1.
 csw_ok=.. įdiegti baigta.
@@ -360,20 +384,24 @@ csw_name=CSW
 csw_form=Naujovinimo paketai
 csw_upgrade=Atnaujinkite visus įdiegtus paketus
 csw_updatedesc=Visų įdiegtų paketų atnaujinimas naudojant komandą $1.
+
 missing_msg=$1 paketą gali automatiškai įdiegti „Webmin“ naudodamas $2.
 missing_now=Įdiegti dabar
+
 find_title=Ieškokite paketo
 find_search=Rasti paketus, atitinkančius:
 find_name=vardas
 find_version=Versija
 find_desc=apibūdinimas
 find_none=Nerasta jokių jūsų paiešką atitinkančių paketų.
+
 msi_users=Padaryti naują programą prieinamą
 msi_users0=Niekas
 msi_users1=Dabartinis vartotojas
 msi_users2=Visi vartotojai
 msi_missing=Neegzistuoja
 msi_size=Netinkamas dydis
+
 hpux_create_target_path=Sukurti tikslo kelią?
 hpux_mount_all_filesystems=Sumontuoti visas failų sistemas?
 hpux_reinstall=Iš naujo įdiegti?
@@ -389,6 +417,7 @@ hpux_enforce_dependencies=Priversti priklausomybes?
 hpux_enforce_scripts=Vykdyti scenarijus?
 hpux_enforce_dsa=Vykdyti disko vietos analizę?
 hpux_root=Šaknies katalogas
+
 ports_install=„FreeBSD“ prievadų diegimas $1.
 ports_failed=.. kai kurie uostai nepavyko
 ports_ok=.. įdiegti baigta
@@ -399,18 +428,22 @@ ports_form=Atnaujinkite prievadų duomenų bazę
 ports_apply=Atsisiųskite naujausią momentinę nuotrauką
 ports_upgrade=„Ports Snapshot“ atsisiuntimas
 ports_running=Veikia komanda $1.
+
 pkg_install=„FreeBSD“ paketų $1 diegimas.
 pkg_failed=.. kai kurie paketai nepavyko
 pkg_ok=.. įdiegti baigta
 pkg_find=Ieškoti pkgng
 pkg_input=Pakuotė iš pkgng
+
 pkgsrc_install=„Pkgsrc“ paketų diegimas $1.
 pkgsrc_failed=.. kai kurie paketai nepavyko
 pkgsrc_ok=.. įdiegti baigta
 pkgsrc_find=Ieškoti pkgng
 pkgsrc_input=Pakuotė iš pkgsrc
+
 log_IPKG_update=Atnaujinta IPKG duomenų bazė
 log_IPKG_upgrade=Atnaujinti įdiegti IPKG paketai
+
 IPKG_name=IPKG
 IPKG_input=Pakuotė iš IPKG
 IPKG_find=Naršykite IPKG ..

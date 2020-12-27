@@ -9,6 +9,7 @@ index_startmsg=Klepnutím na toto tlačítko se spustí FTP server s aktuální 
 index_startmsg2=Klepnutím na toto tlačítko se spustí FTP server s aktuální konfigurací. Můžete taktéž nakonfigurovat automatické spouštění serveru, pokud použijete inetd nebo jiný ekvivalentní program.
 index_return=Nastavení FTP serveru
 index_version=WU-FTPd verze $1
+
 class_title=Uživatelé a třídy
 class_header=Uživatelské třídy a uživatelská nastavení
 class_class=Uživatelské třídy
@@ -31,6 +32,7 @@ class_err=Chyba při ukládání uživatelských tříd
 class_eclass='$1' není platný název třídy
 class_etypes=Nebyly zvoleny žádné typy pro třídu '$1'
 class_eaddrs=Nebyly vloženy žádné adresy pro třídu '$1'
+
 message_title=Zprávy a bannery
 message_header=Zprávy, bannery a README soubory
 message_message=Soubory zpráv
@@ -59,6 +61,7 @@ message_eclass=Třída '$1' neexistuje
 message_ebanner='$1' není platný soubor s login bannerem
 message_ehostname=Chybějící nebo nesprávné jméno hosta
 message_eemail=Chybějící nebo nesprávná emailová adresa
+
 acl_title=Omezení a kontrola přístupu
 acl_header=Nastavení omezení a kontrol přístupu
 acl_deny=Zakázat přístup z
@@ -105,6 +108,7 @@ acl_elmsg='$1' není platný soubor s chybovou zprávou
 acl_efbcount='$1' není platný počet souborů nebo bytů
 acl_elimit='$1' není platné časové omezení
 acl_efails='$1' není platný počet chybových pokusů o přihlášení
+
 net_title=Sítě
 net_header=Nastavení sítí
 net_tcp=Velikosti TCP okna
@@ -122,6 +126,7 @@ net_eip='$1' není platná IP adresa
 net_enet='$1' není platná síťová adresa
 net_ecidr='$1' není platný počet síťových bitů
 net_eport='$1' není platné číslo portu
+
 log_title=Logging
 log_header=Nastavení logování
 log_commands=Logovat všechny příkazy pro
@@ -138,6 +143,7 @@ log_to=Logovat transfery do
 log_syslog=Systemový log
 log_xferlog=XFER log soubor
 log_err=Chyba při ukládání nastavení logování
+
 alias_title=Aliasy a cesty
 alias_header=Naastavení aliasů a cest
 alias_alias=Aliasy CD adresáře
@@ -148,6 +154,7 @@ alias_err=Chyba při ukládání aliasů a cest
 alias_efrom='$1' není platný název aliasu
 alias_eto='$1' není platný alias adresář
 alias_ecdpath='$1' není platný CD vyhledávací adresář
+
 anon_title=Anonymní FTP
 anon_eftp=Upozornění - váš systém nemá <tt>ftp</tt> uživatele, a proto to vypadá, že není pravděpodobně nakonfigurováno anonymní FTP.
 anon_header=Nastavení anonymního FTP
@@ -170,6 +177,7 @@ anon_uids=Pro Unix uživatele
 anon_err=Chyba při ukládání nastavení anonymního FTP
 anon_edir='$1' není platný adresář
 anon_egroup='$1' není platná skupina
+
 perm_title=Práva
 perm_header=Nastavení práv
 perm_perms=Omezení pro příkazy
@@ -191,7 +199,9 @@ perm_err=Chyba při ukládání práv
 perm_echar='$1' není platný znak nastavující regulární výraz
 perm_etypes=Nebyly vybrány žádné typy uživatelů
 perm_emesg='$1' není platný soubor s chybovou zprávou
+
 host_title=Kontrola přístupu hostů
+
 misc_title=Různá nastavení
 misc_header=Různá nastavení
 misc_lslong=Příkaz pro dlouhý výpis
@@ -212,6 +222,7 @@ misc_elsplain=Chybějící příkaz pro plain výpis
 misc_eshutdown=Chybějící soubor se sdělením o shození
 misc_enice='$1' není platná příjemná úroveň
 misc_eumask='$1' není platný umask
+
 log_class=Změněny uživatelé a třídy
 log_message=Změněny zprávy a bannery
 log_acl=Změněna omezení a kontrola přístupu

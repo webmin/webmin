@@ -19,11 +19,13 @@ index_force=強制ログローテート
 index_forcedesc=指定された時間になっていなくても強制的にログローテートを行います。
 index_logrotate=Logrotate
 index_delete=選択したログローテートを削除
+
 period_daily=Daily
 period_weekly=Weekly
 period_monthly=Monthly
 period_never=Never
 period_bytes=bytes
+
 edit_title1=ログファイルの編集
 edit_title2=ログローテートの作成
 edit_header=ローテート設定の詳細
@@ -59,8 +61,10 @@ edit_pre=ローテート前に実行するコマンド
 edit_default=$default ($1)
 edit_sharedscripts=Only run scripts once for all files?
 edit_now=Rotate Now
+
 global_title=Global Options
 global_header=Default options for all log files
+
 save_err=Failed to save log
 save_efile=Missing or invalid log filename
 save_esize=Missing or invalid maximum size
@@ -76,6 +80,7 @@ save_emailto=Missing email address for rotated logs
 save_eerrors=Missing email address for error messages
 save_epre=Pre-rotation script cannot contain an <tt>endscript</tt> or <tt>endrotate</tt> line
 save_epost=Post-rotation script cannot contain an <tt>endscript</tt> or <tt>endrotate</tt> line
+
 log_modify_sched=Changed log rotation Cron job
 log_create_sched=Created log rotation Cron job
 log_delete_sched=Deleted log rotation Cron job
@@ -84,6 +89,7 @@ log_create=Added rotation for log file $1
 log_modify=Modified rotation for log file $1
 log_delete=Deleted rotation for log file $1
 log_delete_logs=Deleted rotation for $1 log files
+
 sched_title=ログローテートスケジュール
 sched_desc=このモジュールで構成されたログローテートが実行される場合、Cronがコマンドlogrotateを定期的に(通常毎日)実行しなければなりません。
 sched_runparts=現在、ログローテートコマンドはスクリプト $1 $2 を実行するようになっており、調整できません。
@@ -92,10 +98,12 @@ sched_disabled=Disabled
 sched_enabled=Enabled, at times below ..
 sched_save=Update Cron Job
 sched_err=Failed to save rotation schedule
+
 force_title=強制ログローテート
 force_doing=強制的にすべてのログファイルをローテートしています..
 force_doingone=強制的にログファイルをローテートしています..
 force_done=.. 終了
 force_failed=.. failed! See the output above for the reason why.
+
 delete_err=Failed to delete logs
 delete_enone=None selected

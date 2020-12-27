@@ -1,6 +1,7 @@
 check_econfig=Die iSCSI-teikenkonfigurasie-lêer $1 is nie op u stelsel gevind nie.
 check_eietadm=Die iSCSI-teikenadministrasieopdrag $1 is nie op u stelsel gevind nie.
 check_einit=Opstartaksie $1 bestaan nie
+
 index_title=iSCSI-teiken
 index_clink=Miskien is dit nie geïnstalleer nie, of is u <a href='$1'>module-opstelling</a> verkeerd.
 index_stop=Stop iSCSI-teiken
@@ -22,8 +23,10 @@ index_noluns=Geen
 index_nousers=Enige
 index_nullio=RAM skyf van $1 sektore
 index_size=Totale grootte
+
 dtargets_err=Kon nie teikens uitvee nie
 dtargets_enone=Geen gekies nie!
+
 target_title1=Skep iSCSI-teiken
 target_title2=Redigeer iSCSI-teiken
 target_header=iSCSI-opsies vir gedeelde toestelle
@@ -68,11 +71,13 @@ target_noalias=Geen
 target_hdigest=Kopkopsum
 target_ddigest=Datakontrolesom
 target_nodigest=Geen
+
 auth_title=Verifikasie-instellings
 auth_header=Standaard verifikasie-opsies vir alle teikens
 auth_iuser=Verifikasie deur kliënte
 auth_ouser=Verifikasie aan kliënte
 auth_err=Kon nie stawingsinstellings stoor nie
+
 conn_title=Verbindingsinstellings
 conn_header=Standaardverbindingsopsies vir alle teikens
 conn_sessions=Maksimum gelyktydige sessies
@@ -91,6 +96,7 @@ conn_emaxrecv=Ontbrekende of nie-numeriese maksimum ontvangsegmentlengte
 conn_emaxxmit=Ontbrekende of nie-numeriese maksimum transmissielengte
 conn_emaxburst=Die ontbrekende of nie-numeriese maksimum kliënt-burst-grootte
 conn_efirstburst=Ontbrekende of nie-numeriese maksimum kliënt se ongevraagde gegrootte
+
 timeout_title=Timeout-instellings
 timeout_header=Opsies vir kliënt-time-out
 timeout_nopi=Interval tussen pings wanneer ledig
@@ -98,6 +104,7 @@ timeout_nopinone=Moet nooit ping nie
 timeout_secs=sekondes
 timeout_nopt=Tyd om te wag vir ping-antwoord
 timeout_noptnone=Dieselfde as pingtyd
+
 addr_title=Bedienersadres en poort
 addr_header=iSCSI-bedienernetwerkopsies
 addr_addr=Luister op die IP-adres
@@ -110,18 +117,21 @@ addr_err=Die bedieneradres kon nie gestoor word nie
 addr_eaddr=Die adres om na te luister moet 'n IP-adres wees
 addr_eport=Poort om na te luister moet 'n nommer wees
 addr_edebug=Ontfoutvlak moet 'n getal wees
+
 initiators_title=Toegestane kliënteadresse
 initiators_none=Geen toegelate kliëntadres is nog gedefinieer nie. Geen kliënte sal kan skakel nie.
 initiators_ips=Toegestane kliënte
 initiators_title1=Voeg toegelate kliënteadresse by
 initiators_title2=Wysig toegelate kliënteadres
 initiators_header=ISCSI-kliënte word toegelaat om teiken
+
 targets_title=Toegestane bedieneadresse
 targets_none=Geen toegelate bedieneradres is nog gedefinieër nie. Geen kliënte sal kan skakel nie.
 targets_ips=Toegestane bedienervlakvlakke
 targets_title1=Voeg toegelate bedieneradresse by
 targets_title2=Redigeer toegelate bedieneadresse
 targets_header=Toelaatbare iSCSI-bedienerskoppelvlak vir teiken
+
 allow_target=Teikennaam
 allow_move=skuif
 allow_delete=Verwyder geselekteerde
@@ -133,17 +143,21 @@ allow_return=toegelate teikens en adresse
 allow_err=Die toegelate adresse kon nie gestoor word nie
 allow_eaddr=Adres $1 is nie geldig nie. Dit moet óf 'n IPv4-adres, 'n IPv4-netwerk/masker of 'n IPv6-adres tussen vierkantige hakies wees.
 allow_eaddrs=Geen adresse om in te laat nie
+
 dallow_err=Kon nie toegelate adresse uitvee nie
 dallow_enone=Geen gekies nie
+
 manual_title=Wysig die konfigurasielêer
 manual_desc=Gebruik die tekskassie hieronder om die iSCSI-bediener se konfigurasielêer $1 te wysig. Wees versigtig, aangesien daar geen validering op u insette uitgevoer word nie!
 manual_err=Kon nie die konfigurasielêer stoor nie
 manual_edata=Geen inhoud ingevoer nie!
+
 start_err=Kon nie die iSCSI-bediener begin nie
 stop_err=Kon nie iSCSI-bediener stop nie
 restart_err=Kon nie die iSCSI-bediener herbegin nie
 atboot_err=Kon nie tydens opstart inskakel nie
 atboot_einit=Init script $1 bestaan nie
+
 log_create_target=Teiken $1 geskep
 log_delete_target=Teiken $1 is uitgevee
 log_modify_target=Gewysigde teiken $1 

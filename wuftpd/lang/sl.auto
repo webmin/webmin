@@ -9,6 +9,7 @@ index_startmsg=Kliknite ta gumb, da zaženete FTP strežnik s trenutno konfigura
 index_startmsg2=Kliknite ta gumb, da zaženete FTP strežnik s trenutno konfiguracijo. Prav tako lahko konfigurirate strežnik, da se samodejno zažene po potrebi z uporabo inetd ali katerega koli enakovrednega programa.
 index_return=Možnosti strežnika FTP
 index_version=Različica WU-FTPd $1 
+
 class_title=Uporabniki in razredi
 class_header=Uporabniški razredi in uporabniške možnosti
 class_class=Uporabniški razredi
@@ -31,6 +32,7 @@ class_err=Uporabniških razredov ni bilo mogoče shraniti
 class_eclass='$1' ni veljavno ime razreda
 class_etypes=Za razred "$1" ni izbranih nobenih vrst
 class_eaddrs=Za razred "$1" ni vnesenih naslovov
+
 message_title=Sporočila in pasice
 message_header=Sporočila, pasice in datoteke README
 message_message=Datoteke sporočil
@@ -59,6 +61,7 @@ message_eclass=Razred '$1' ne obstaja
 message_ebanner='$1' ni veljavna datoteka pasice za prijavo
 message_ehostname=Manjkajoče ali neveljavno ime gostitelja
 message_eemail=Manjkajoči ali neveljaven e-poštni naslov
+
 acl_title=Omejitve in nadzor dostopa
 acl_header=Omejitve in možnosti nadzora dostopa
 acl_deny=Zavrni dostop od
@@ -105,6 +108,7 @@ acl_elmsg='$1' ni veljavna datoteka sporočila o napaki
 acl_efbcount='$1' ni veljavno število datotek ali bajtov
 acl_elimit='$1' ni veljavna časovna omejitev
 acl_efails='$1' ni veljavno število napak pri prijavi
+
 net_title=Mreženje
 net_header=Možnosti mreženja
 net_tcp=Velikosti oken TCP
@@ -122,6 +126,7 @@ net_eip='$1' ni veljaven naslov IP
 net_enet='$1' ni veljaven omrežni naslov
 net_ecidr='$1' ni veljavno število omrežnih bitov
 net_eport='$1' ni veljavna številka vrat
+
 log_title=Zapisovanje dnevnikov
 log_header=Možnosti beleženja
 log_commands=Zabeležite vse ukaze za
@@ -139,6 +144,7 @@ log_syslog=Sistemski dnevnik
 log_xferlog=Datoteka XFER
 log_sysxfer=Obe destinaciji
 log_err=Možnosti beleženja ni bilo mogoče shraniti
+
 alias_title=Zimbe in poti
 alias_header=Vzdevki in možnosti poti
 alias_alias=Vzdevki imenika CD
@@ -149,6 +155,7 @@ alias_err=Ni bilo mogoče shraniti vzdevkov in poti
 alias_efrom='$1' ni veljavno vzdevek
 alias_eto='$1' ni veljaven imenik vzdevkov
 alias_ecdpath='$1' ni veljaven imenik za iskanje CD-jev
+
 anon_title=Anonimni FTP
 anon_eftp=Opozorilo - vaš sistem nima uporabnika <tt>ftp</tt>, zato anonimni FTP verjetno ni konfiguriran.
 anon_header=Možnosti anonimne FTP
@@ -171,6 +178,7 @@ anon_uids=Za uporabnike Unixa
 anon_err=Anonimnih možnosti FTP ni bilo mogoče shraniti
 anon_edir='$1' ni veljaven imenik
 anon_egroup='$1' ni veljavna skupina
+
 perm_title=Dovoljenja
 perm_header=Možnosti dovoljenja
 perm_perms=Omejitve ukazov
@@ -192,7 +200,9 @@ perm_err=Dovoljenja ni bilo mogoče shraniti
 perm_echar='$1' ni veljaven regularni izraz z naborom znakov
 perm_etypes=Izbrana ni nobena vrsta uporabnikov
 perm_emesg='$1' ni veljavna datoteka sporočila o napaki
+
 host_title=Nadzor dostopa gostitelja
+
 misc_title=Razne možnosti
 misc_header=Razne možnosti
 misc_lslong=Ukaz dolge kotacije
@@ -213,6 +223,7 @@ misc_elsplain=Manjka navaden ukaz za navajanje
 misc_eshutdown=Manjka datoteka z obvestilom o zaustavitvi
 misc_enice='$1' ni veljavna lepa raven
 misc_eumask='$1' ni veljaven umask
+
 log_class=Spremenjeni uporabniki in razredi
 log_message=Spremenjena sporočila in pasice
 log_acl=Spremenjene omejitve in nadzor dostopa

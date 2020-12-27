@@ -25,6 +25,7 @@ index_resetdesc=Cliquez sur ce bouton pour effacer toutes les règles de pare-fe
 index_cluster=Serveurs de cluster
 index_clusterdesc=Cliquez sur ce bouton pour configurer des serveurs Webmin supplémentaires sur lesquels la configuration du pare-feu sera automatiquement copiée.
 index_return=règles de pare-feu
+
 index_num=Num
 index_action=action
 index_desc=État
@@ -37,6 +38,7 @@ index_delete=Supprimer sélectionnée
 index_existing=Webmin a détecté $1 règles de pare-feu IPFW actuellement utilisées, qui ne sont pas enregistrées dans le fichier $2. Ces règles ont probablement été configurées à partir d'un script que ce module ne sait ni lire ni modifier. <p> Si vous souhaitez utiliser ce module pour gérer votre pare-feu IPFW, cliquez sur le bouton ci-dessous pour convertir les règles existantes en fichier de sauvegarde, puis désactivez votre script de pare-feu existant.
 index_saveex=Enregistrer les règles de pare-feu
 index_headerex=Configuration de pare-feu existante
+
 action_allow=<font color=#00aa00>Autoriser</font>
 action_deny=<font color=#ff0000>Supprimer</font>
 action_reject=<font color=#ff4400>Rejeter</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>Supprimer le paquet</font>
 laction_reject=<font color=#ff4400>Renvoyer le rejet ICMP</font>
 laction_reset=<font color=#ff4400>Réinitialiser la connexion TCP</font>
 laction_skipto=Passer à la règle
+
 edit_title1=Créer une règle
 edit_title2=Modifier la règle $1 
 edit_header1=Action de règle
@@ -114,6 +117,7 @@ edit_src-addr=De l'adresse source ..
 edit_src-port=Du port source ..
 edit_dst-addr=À l'adresse de destination ..
 edit_dst-port=Vers le port de destination ..
+
 save_err=Impossible d'enregistrer la règle
 save_enum=Numéro de règle manquant ou invalide
 save_eskipto=Numéro de règle manquant ou invalide vers lequel passer
@@ -144,7 +148,9 @@ save_etcpflags=Les drapeaux TCP ne peuvent être spécifiés que si le protocole
 save_elimit=Limite maximale manquante ou non valide
 save_edstport=Port de destination manquant ou non valide
 save_esrcport=Port source manquant ou invalide
+
 apply_err=Impossible d'appliquer la configuration
+
 desc_if=Si $1 
 desc_and=et
 desc_always=Toujours
@@ -191,6 +197,7 @@ desc_where=où $1
 desc_all=pour tous les paquets
 desc_in=le paquet est entrant
 desc_out=le paquet est sortant
+
 log_create_rule=Règle $1 créée
 log_delete_rule=Règle $1 supprimée
 log_modify_rule=Règle $1 modifiée
@@ -206,6 +213,7 @@ log_convert=Règles de pare-feu actives converties
 log_setup=Configuration initiale du pare-feu effectuée
 log_unapply=Configuration du pare-feu inversée
 log_delsel=Règles $1 supprimées
+
 cluster_title=Serveurs de pare-feu en cluster
 cluster_none=Aucun serveur n'a encore été ajouté au cluster de pare-feu.
 cluster_host=Nom d'hôte
@@ -216,6 +224,7 @@ cluster_gadd=Ajouter des serveurs dans le groupe
 cluster_need=Vous devez ajouter des serveurs avec un identifiant et un mot de passe dans le module Webmin Servers Index avant de pouvoir les gérer ici.
 cluster_return=serveurs de cluster
 cluster_delete=Enlever la sélection
+
 add_title=Ajouter des serveurs
 add_msg=Ajout de $1 ..
 add_gmsg=Ajout de serveurs dans le groupe $1 ..

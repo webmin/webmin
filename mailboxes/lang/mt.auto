@@ -2,6 +2,7 @@ index_title=Aqra Mail Utent
 index_none=M'għandekx permess taqra email għal xi utenti fuq din is-sistema.
 index_header=Kaxxi tal-posta tal-utenti
 index_empty=Ebda posta
+index_return=lista tal-utenti
 index_esystem=L-ebda wieħed mis-servers ta 'posta appoġġjata (Exim, Qmail, Postfix u Sendmail) ma ġie osservat fis-sistema tiegħek. Ikollok bżonn taġġusta l- <a href='$1'>konfigurazzjoni tal-modulu</a> biex tissettja s-server tal-posta u possibilment il-mogħdijiet tal-posta bl-idejn.
 index_esystem2=Is-server tal-posta ssettjat fil-konfigurazzjoni tal-modulu <a href='$1'></a> ma nstabx fis-sistema tiegħek. Ikollok bżonn taġġusta l-konfigurazzjoni biex tuża s-server korrett.
 index_esystem3=Sar żball meta kkuntattjat lis-sistema tal-posta stabbilita fil-konfigurazzjoni tal-modulu <a href='$1'></a>: $2.
@@ -19,6 +20,7 @@ index_eperl=Il-modulu Perl $1 meħtieġ għall-modalità ta 'awtentikazzjoni SMT
 index_file=Aqra l-Mail f'Fajl jew Maildir:
 index_nousers=L-ebda utenti ma nstabu!
 index_nousersmail=L-ebda utent b'email ma nstab.
+
 mail_title=Email tal-Utent
 mail_from=Minn
 mail_date=Data
@@ -75,6 +77,7 @@ mail_fromfilter=Oħloq filtru minn min jibgħatha
 mail_tofilter=Oħloq filtru minn min jirċeviha
 mail_subfilter=Oħloq filtru skont is-suġġett
 mail_unknown=Mhux magħruf
+
 mail_sign=Iffirma maċ-ċavetta
 mail_nosign=&lt;Iffirmax&gt;
 mail_crypt=Iċċifrat għal
@@ -109,6 +112,7 @@ mail_selread=Agħżel aqra.
 mail_selunread=Agħżel mhux jinqara.
 mail_selspecial=Agħżel speċjali.
 mail_specialsync=Sinkronizzazzjoni Speċjali
+
 view_title=Aqra l-Email
 view_desc=Messaġġ $1 fi $2
 view_desc2=Messaġġ $1 għall-utent $2
@@ -150,6 +154,7 @@ view_sub=Mehmuż Email
 view_sub2=Mehmuż email minn $1
 view_egone=Dan il-messaġġ m'għadux jeżisti
 view_eugone=Dan l-utent ma jeżistix
+
 view_gnupg=Verifika tal-firma GnuPG
 view_gnupg_0=Firma minn $1 hija valida.
 view_gnupg_1=Firma minn $1 hija valida, iżda l-katina ta 'fiduċja ma setgħetx tiġi stabbilita.
@@ -186,7 +191,9 @@ view_images=Uri immaġini
 view_raw=Ara l-messaġġ mhux maħdum
 view_aall=Issejvja l-annessi kollha bħala ZIP.
 view_aslideshow=Uri l-immaġini kollha.
+
 compose_title=Ikteb Email
+
 reply_title=Irrispondi għall-Email
 forward_title=Ibgħat Email
 enew_title=Editja Email
@@ -216,9 +223,11 @@ reply_addattach=Żid il-qasam tat-twaħħil.
 reply_addssattach=Żid il-qasam tat-twaħħil min-naħa tas-server.
 reply_html0=Ikteb it-test
 reply_html1=Ikteb HTML
+
 reply_spell=Iċċekkja għal żbalji ortografiċi?
 reply_draft=Issejvja bħala Abbozz
 reply_save=Issejvja u Editja
+
 send_err=Naqset milli tibgħat il-posta
 send_eto=Nieqes Biex tindirizza
 send_efrom=Nieqes mill-indirizz
@@ -235,6 +244,7 @@ send_eperms2=M'għandekx permess tibgħat fajl $1
 send_epath=Sendmail eżegwibbli $1 ma jeżistix.
 send_efile=Ma rnexxielux jaqra t-twaħħil $1 : $2 
 send_done=.. sar.
+
 send_epass=Ma tistax tiffirma messaġġ għaliex il-passphrase tiegħek għadha ma ġietx installata fil-modulu GnuPG.
 send_esign=Ma rnexxilux jiffirma messaġġ : $1
 send_ekey=Ma sibtx ċavetta għall-indirizz elettroniku $1
@@ -246,6 +256,7 @@ send_espell=L-iżbalji ortografiċi li ġejjin instabu fil-messaġġ tiegħek ..
 send_draft=Mail lil $1 issejvjat fil-folder tal-abbozzi.
 send_drafting=Iffrank tal-posta lil $1 fil-folder tal-abbozzi.
 send_eattachsize=It-twaħħil bil-posta qabeż id-daqs massimu permess ta '$1 bytes
+
 delete_title=Ħassar Mail
 delete_rusure=Int żgur li trid tħassar il-messaġġi magħżula $1 minn $2? Dan jista 'jieħu ftit taż-żmien għal fajl kbir tal-posta. Sakemm it-tħassir ikun intemm, l-ebda azzjoni oħra ma għandha titwettaq.
 delete_rusure2=Int żgur li trid tħassar dan il-messaġġ minn $1? Dan jista 'jieħu ftit taż-żmien għal fajl kbir tal-posta. Sakemm it-tħassir ikun intemm, l-ebda azzjoni oħra ma għandha titwettaq.
@@ -268,6 +279,7 @@ delete_nobutton=Mingħajr ebda buttuna
 delete_ereport=Naqas milli jirrapporta bħala spam : $1
 delete_errc=Naqset milli tikkopja posta
 delete_errm=Naqas milli jiċċaqlaq il-posta
+
 confirm_title=Ikkonferma Ħassar
 confirm_warn=Int żgur li trid tħassar il-messaġġi $1 magħżula minn din il-folder?
 confirm_warnf=Int żgur li trid tħassar il-messaġġi magħżula $1 mill-fowlder <b>$2</b>?
@@ -277,6 +289,7 @@ confirm_warn4=Sakemm it-tħassir ikun intemm, l-ebda azzjoni oħra ma għandha t
 confirm_ok=Ħassar issa
 confirm_warnall=Int żgur li trid tħassar il-messaġġi kollha f'dan il-folder?
 confirm_warnallf=Int żgur li trid tħassar il-messaġġi kollha fil-fowlder <b>$1</b>?
+
 search_title=Riżultati tat-Tiftix
 search_ecannot=M'għandekx permess tfittex l-email ta 'dan l-utent
 search_ematch=Trid tidħol test biex taqbel magħhom.
@@ -305,16 +318,19 @@ search_nolatest=Kollha fil-fowlder
 search_latestnum=L-aktar reċenti biss
 search_elatest=Numru ta 'messaġġi nieqsa jew invalidi biex tfittex
 search_withstatus=, bi status $1
+
 folder_inbox=Inbox
 folder_sent=Intbagħat il-posta
 folder_drafts=Abbozzi
 folder_trash=Trash
+
 detach_err=Ma rnexxiex tinqata 'l-fajl
 detach_edir=L-ebda fajl jew direttorju li jsalva biex jiddaħħal
 detach_eopen=Ma rnexxielux jiftaħ $1 : $2 
 detach_ewrite=Naqas milli jikteb lil $1 : $2 
 detach_title=Ibdel il-Fajl
 detach_ok=Ikteb anness mal-fajl tal-ġenb tas-server $1 ($2).
+
 sform_title=Tiftix Avvanzat
 sform_header=Għażliet avvanzati ta 'tfittxija b'email
 sform_andmode=Modalità tal-Kriterji
@@ -339,6 +355,7 @@ sform_headers=kwalunkwe intestatura
 sform_allmsg=messaġġ sħiħ
 sform_size=daqs tal-messaġġ
 sform_return=Formola ta ’tfittxija avvanzata
+
 find_enone=L-ebda utent li jaqbel mat-tfittxija tiegħek ma nstab
 find_title=Riżultati tat-Tiftix
 find_results=Utenti li jaqblu tfittxija għal $1 ..
@@ -351,6 +368,7 @@ find_incount=Emails
 find_sentcount=Mibgħut
 find_fcount=Folders
 find_in=$1 f '$2
+
 acl_none=Xejn
 acl_same=Utent bl-istess isem
 acl_all=Kollha
@@ -376,12 +394,15 @@ acl_usersu=Bil-UID fil-medda
 acl_sec=Jinkludu gruppi sekondarji?
 acl_dir=Jista 'jaqra fajls ta' posta fid-direttorju
 acl_dirauto=Iddeċiedi awtomatikament (kullimkien jekk l-utenti kollha huma viżibbli, mkien mod ieħor)
+
 log_delmail=Mħassar $1 messaġġi minn $2
 log_movemail=Tmexxa $1 messaġġi minn $2 għal $3
 log_copymail=Kopjati $1 messaġġi minn $2 sa $3
 log_send=Intbagħat posta lil $1
 log_read=Aqra l-posta elettronika għal $1
+
 emodified=Dan il-folder ġie modifikat minn meta ġiet meqjusa l-aħħar! Irritorna mal- <a href='$1'>lista tal-posta</a> u erġa 'erġa'.
+
 razor_title=Rappurtaġġ Kif Spam
 razor_title2=Rappurtaġġ Bħala Ham
 razor_report=Rappurtaġġ ta 'dan il-messaġġ lil Razor u bażijiet tad-dejta oħra li jimblokkaw l-ispam SpamAssassin.
@@ -391,14 +412,18 @@ razor_done=.. sar
 razor_err=.. naqas! Ara l-messaġġ ta 'żball ta' hawn fuq għar-raġuni għaliex.
 razor_moved=.. ghamel, u mort mal-folder $1.
 razor_deleted=.. sar, u mħassar ukoll messaġġ.
+
 ham_title=Rappurtaġġ Bħala Ham
 ham_report=Tirrapporta dan il-messaġġ bħala mhux spam lil Razor u databases oħra ta 'SpamAssassin.
+
 black_title=Mittent li jiċħad
 black_done=Żied l-indirizz elettroniku $1 mal-lista ta ’indirizzi miċħuda ta’ SpamAssassin.
 black_already=L-indirizz elettroniku $1 huwa diġà fuq il-lista ta 'indirizzi miċħuda ta' SpamAssassin.
+
 white_title=Jippermetti lil Mittenti
 white_done=Żied l-indirizz elettroniku $1 mal-lista ta ’indirizzi permessi ta’ SpamAssassin.
 white_already=L-indirizz elettroniku $1 huwa diġà fuq il-lista ta 'indirizzi permessi ta' SpamAssassin.
+
 ldap_emod=Modulu Perl Nieqes $1 meħtieġ għall-konnessjoni ma 'LDAP
 ldap_econn=Naqset milli tikkonnettja mas-server LDAP $1 port $2
 ldap_elogin=Ma rnexxielux jorbot lis-server LDAP $1 bħala $2 : $3 
@@ -406,12 +431,15 @@ ldap_ehost=L-ebda server LDAP issettjat fil-konfigurazzjoni tal-modulu
 ldap_eport=L-ebda port tas-server LDAP validu fil-konfigurazzjoni tal-modulu
 ldap_euser=L-ebda sett ta 'login LDAP fil-konfigurazzjoni tal-modulu
 ldap_ebase=L-ebda DNAP bażi LDAP issettjat fil-konfigurazzjoni tal-modulu
+
 delall_title=Ħassar il-Posta Kollha
 delall_rusure=Int żgur li trid tħassar l-email kollu minn $1? $2 messaġġi li jammontaw għal $3 se jitħassru għal dejjem.
 delall_ok=Ħassar issa
+
 slide_title=Stampi Mehmuża
 slide_prev=Preċedenti
 slide_next=Sussegwentement
+
 left_mail=Mail
 left_search=Fittex:
 left_folders=Immaniġġja Folders

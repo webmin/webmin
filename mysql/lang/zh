@@ -25,12 +25,15 @@ index_nomod=警告：您的系统未安装Perl 模块 $1，Webmin将无法可靠
 index_nomods=警告：您的系统未安装Perl 模块 $1 和 $2，Webmin将无法可靠地访问您的MySQL数据库。<a href='$2'>点击此处</a> 立刻安装该它们。
 index_mysqlver=命令 <tt>$1</tt> 返回：
 index_nodbs=你没有访问任何MySQL数据库的权限。
+
 login_err=登录失败
 login_ecannot=您没有配置数据库登录名的权限
 login_elogin=未输入管理员的登录名  
 login_epass=错误的管理员用户名或密码
+
 stop_err=无法停止数据库
 start_err=无法启动数据库
+
 dbase_title=编辑数据库
 dbase_tables=数据库表
 dbase_add=新建新表
@@ -43,12 +46,14 @@ dbase_return=数据表列表
 dbase_ecannot=您没有编辑该数据库的权限
 dbase_rows=行
 dbase_cols=字段
+
 ddrop_err=无法删除数据库
 ddrop_title=删除数据库
 ddrop_rusure=您确定要删除数据库$1？共包含 $3 行数据的 $2 个数据表将会被删除。
 ddrop_mysql=因为这是一个主数据库，删除它可能会使得您的MySQL服务器无法使用！
 ddrop_ok=删除数据库
 ddrop_empty=只删除全部数据表
+
 table_title=编辑数据表
 table_title2=创建表
 table_header=在数据库中$2中的表$1
@@ -92,6 +97,7 @@ tdrop_err=无法删除数据库
 tdrop_title=删除表
 tdrop_rusure=您确定要删除数据库 $2 中的表 $1 吗？共 $3 行数据将被删除。
 tdrop_ok=删除表
+
 field_title1=增加字段
 field_title2=修改字段
 field_in=在数据库 $2 的表 $1 中
@@ -117,6 +123,7 @@ field_esize=$1不是有效的字段大小
 field_eenum=没有输入枚举值
 field_efield=$1不是有效字段名
 field_ekey=允许为空的字段不能是主键的一部分
+
 view_title=表数据
 view_pos=$3的行 $1 到行 $2
 view_none=这个表中没有数据
@@ -140,6 +147,7 @@ view_jump=跳到行：
 view_download=下载…
 view_keep=保持不变
 view_set=设为此文件的内容：
+
 users_title=用户权限
 users_user=用户
 users_host=主机
@@ -158,6 +166,7 @@ users_sync_privs=新用户的授权
 users_sync_host=创建带主机名的新用户
 users_sync_def=全部主机
 users_sync_sel=指定的主机
+
 user_title1=创建用户
 user_title2=编辑用户
 user_header=MySQL用户详细信息
@@ -173,6 +182,7 @@ user_perms=权限
 user_err=无法保存用户
 user_euser=未输入主机名或者无效的主机名
 user_ehost=未输入授权的主机或主机无效
+
 dbs_title=数据库权限
 dbs_db=数据库
 dbs_user=用户
@@ -186,6 +196,7 @@ dbs_add=创建新的数据库权限
 dbs_all=全部
 dbs_none=无
 dbs_return=数据库权限
+
 db_title1=创建数据库权限
 db_title2=编辑数据库权限
 db_header=数据库权限选项
@@ -200,6 +211,7 @@ db_err=无法保存数据库权限
 db_euser=未输入用户名或者无效的用户名
 db_ehost=未输入主机名或者无效的主机名
 db_edb=未输入数据库名或者无效的数据库名
+
 hosts_title=主机权限
 hosts_db=数据库
 hosts_host=主机
@@ -209,6 +221,7 @@ hosts_all=全部
 hosts_none=无
 hosts_add=创建新的主机权限
 hosts_empty=没有定义主机权限
+
 host_title1=创建主机权限
 host_title2=编辑主机权限
 host_header=主机权限选项
@@ -216,6 +229,7 @@ host_db=数据库
 host_any=任何
 host_host=主机
 host_perms=权限
+
 newdb_title=创建数据库
 newdb_header=新的数据库选项
 newdb_db=数据库名
@@ -224,6 +238,7 @@ newdb_none=无
 newdb_err=无法创建数据库
 newdb_edb=未输入数据库名称或无效的数据库名称
 newdb_ecannot=您没有创建数据库的权限
+
 exec_title=执行SQL
 exec_header=输入要在数据库 $1 中执行的SQL命令…
 exec_old=或选择以前执行过的SQL命令：
@@ -247,6 +262,7 @@ exec_header4=此文件的每一行必须包含一条以 Tab 键分隔的数据�
 exec_delete=先删除表中的数据？
 exec_filename=来源文件名
 exec_ignore=忽略重复行？
+
 tprivs_title=表权限
 tprivs_table=表
 tprivs_db=数据库
@@ -260,6 +276,7 @@ tprivs_add=在数据库中增加新权限：
 tprivs_norows=没有定义表权限
 tprivs_return=表权限
 tprivs_none=无
+
 tpriv_title1=创建表权限
 tpriv_title2=编辑表权限
 tpriv_header=表权限选项
@@ -275,6 +292,7 @@ tpriv_err=保存表权限失败
 tpriv_etable=没有选择表
 tpriv_euser=缺少或者无效的用户名
 tpriv_ehost=缺少或者无效的主机
+
 cprivs_title=字段权限
 cprivs_field=字段
 cprivs_table=表
@@ -288,6 +306,7 @@ cprivs_add=在数据库和表中增加新权限：
 cprivs_norows=没有定义字段权限
 cprivs_return=字段权限
 cprivs_none=无
+
 cpriv_title1=创建字段权限
 cpriv_title2=编辑字段权限
 cpriv_header=字段权限选项
@@ -303,11 +322,13 @@ cpriv_err=保存字段权限失败
 cpriv_etable=没有选择字段
 cpriv_euser=缺少或者无效的用户名
 cpriv_ehost=缺少或者无效的主机
+
 esql=SQL $1 失败：$2
 eparse=您数据库中包含的一些自然数据导致Webmin无法解析命令 $1 的输出结果。您需要安装Perl模块 $2 和 $3 以解决此问题。
 edenied=您没有访问此MySQL数据库的权限
 perms_ecannot=您无权编辑权限
 perms_edb=您只能编辑您自己拥有的数据库的权限
+
 acl_dbs=此用户可管理的数据库
 acl_dall=全部数据库
 acl_dsel=选择的…
@@ -324,12 +345,14 @@ acl_user=用户名
 acl_pass=密码
 acl_edonly=只能修改表数据？
 acl_bnone=不允许备份
+
 log_start=启动MySQL服务器
 log_stop=停止MySQL服务器
 log_db_create=已创建的数据库$1
 log_db_delete=已删除的数据库$1
 log_table_create=数据库$2中已创建的表$1
 log_table_delete=数据库$2中已删除的表$1
+
 log_field_create=数据库$3中已添加到 $2 的字段 $1 $4
 log_field_modify=数据库$3中已修改的 $2 的字段 $1 $4
 log_field_delete=数据库$3中已从$2中删除的字段$1
@@ -367,6 +390,7 @@ log_execupload=已从上传的文件中执行的SQL命令
 log_execfile=已从文件 $1 中执行的SQL命令
 log_importupload=已从上传的文件中导入的数据
 log_importfile=已从文件 $1 中导入的数据
+
 backup_title=备份数据库
 backup_edump=在您的系统上未找到MySQL备份程序 $1。可能您的 <a href='$2'>模块配置</a>不对。
 backup_desc=此表单允许您将数据库 $1 备份成一个SQL语句文件。要恢复备份，您可以使用执行SQL表单来运行此文件中的命令。
@@ -391,6 +415,7 @@ backup_ccron=已启动数据库定时备份。
 backup_dcron=已禁止数据库定时备份。
 backup_ucron=已更新数据库定时备份的路径，选项和时间。
 backup_ncron=数据库定时备份保持为禁止状态。
+
 import_title=导入数据
 import_uploadout=从上传的文件中导入数据…
 import_fileout=从文件 $1 导入数据…

@@ -9,6 +9,7 @@ index_return=açılış ve kapanış hareketi
 index_action=Servis
 index_desc=Açıklama
 index_boot=Açılışta başlasın mı?
+
 edit_title=Servis Değiştir
 create_title=Servis Oluştur
 edit_ecannot=Açılış servisleri değiştirmeye hakkınız yotur
@@ -31,28 +32,34 @@ edit_stopat=Dur
 edit_startnow=Şimdi Başlat
 edit_stopnow=Şimdi Durdur
 edit_return=servis
+
 save_err=Servisi kaydetmede hata oluştu
 save_ecannot=Açılış servislerini değiştirmeye hakkınız yoktur
 save_ealready='$1' servisi her zaman mevcut.
 save_ewrite=$1'e yazmada hata oluştu : $2
+
 ss_ecannot=Açılış servislerini başlatma ya da durdurmaya izininiz yoktur.
 ss_start=Servis Başlat 
 ss_stop=Servis Durdur
 ss_exec=$1 Çalıştırılıyor ..
+
 shutdown_ecannot=Sistemi kapatmaya izininiz yoktur
 shutdown_title=Kapanış
 shutdown_rusure=$1 komutu ile sistemi kapatmak istediğiniza eminmisiniz?
 shutdown_ok=Sistemi Kapat
 shutdown_exec=$1 komutu ile kapatılıyor ..
+
 reboot_ecannot=Sistemi tekrar başlatmaya izininiz yoktur
 reboot_title=Tekrar Başlat
 reboot_rusure=Sisteminizi $1komutu ile tekrar başlatman istediğinizden eminmisiniz ?
 reboot_ok=Sistemi Tekrar Başlat
 reboot_exec=$1 komutu ile yeniden başlatılıyor ..
+
 acl_script=Açılış programcığını değiştirebilsin?
 acl_actions=Değiştirme, oluşturma ya da silme servislerini yapabilsin?
 acl_reboot=Sistemi yeniden başlatabilsin?
 acl_shutdown=Sistemi kapatabilsin?
+
 log_rename=İşlem $1, $2 olarak yeniden isimlendirildi
 log_modify=İşlem $1 değiştirildi
 log_create=İşlem $1 oluşturuldu

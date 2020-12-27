@@ -19,6 +19,7 @@ index_refsel=Actualizați selectat
 index_group=Membrii $1 
 index_tmpls=Editați șabloane de e-mail
 index_tmplsdesc=Vizualizați și editați șabloane utilizate pentru a construi mesaje de e-mail trimise atunci când serviciile monitorizate scad.
+
 type_apache=Apache Webserver
 type_inetd=Internet și server RPC
 type_xinetd=Internet Server extins
@@ -73,8 +74,10 @@ type_alive=Sistemul Alive
 type_rssh=SSH de la distanță
 type_slapd=Server LDAP
 type_ldap=Conexiune LDAP
+
 mon_create=Creare monitor
 mon_edit=Editează Monitorul
+mon_virtualmin=Avertizare! Acest monitor este asociat cu domeniul Virtualmin $1 și, prin urmare, nu ar trebui să fie editat sau șters aici.
 mon_header=Detaliile monitorizării
 mon_header2=Comenzile de executat
 mon_header3=Opțiuni de monitorizare monitorizate
@@ -138,6 +141,7 @@ mon_changes0=Afișați fiecare tip de eveniment
 mon_changes1=Afișați doar modificări
 mon_all=Afișați toate evenimentele istorice
 mon_nochanges=Nu s-au produs modificări de stare în ultimele $1 istorice evenimente.
+
 sched_title=Monitorizare programată
 sched_header=Opțiuni de monitorizare de fundal programate
 sched_mode=Verificare programată activată?
@@ -184,16 +188,19 @@ sched_subject0=Niciuna (alerta este în corp)
 sched_subject1=Text de alertă (lăsați corpul gol)
 sched_subject2=Text personalizat
 sched_esubject=Lipsește subiectul mesajului SMS
+
 up_since=Începând cu $1 
 depends_mod=Modulul $1 nu este instalat pe sistemul dvs.
 depends_os=Modulul $1 nu este compatibil cu sistemul dumneavoastră
 depends_remote=Modulul $1 nu este acceptat pe serverul $2 
+
 tcp_host=Host la care să vă conectați
 tcp_port=Port la care să vă conectați
 tcp_alarm=Timp de conectare
 tcp_ehost=Numele de gazdă lipsă sau nevalid
 tcp_eport=Număr de port lipsă sau nevalid
 tcp_ealarm=Lipsește sau expiră conexiunea nevalidă
+
 http_url=URL pentru a solicita
 http_alarm=Timp de conectare
 http_eurl=URL lipsă sau nevalid
@@ -208,11 +215,13 @@ http_regexp=Pagina trebuie să se potrivească cu regexp
 http_eregexp=Nu a fost introdusă nicio expresie regulată pentru pagina care să se potrivească
 http_none2=Nu se potrivesc
 http_ehead=Metoda solicitării HEAD nu poate fi utilizată la verificarea unei expresii regulate
+
 ping_host=Gazdă la ping
 ping_wait=E timpul să aștepți răspuns
 ping_ehost=Numele de gazdă lipsă sau nevalid
 ping_ewait=Timp de așteptare lipsă sau nevalid
 ping_econfig=Nici o comandă ping nu a fost setată în Modul Config
+
 proc_pid=Se rulează cu PID-uri $1 
 proc_cmd=Comanda de a verifica
 proc_not=Eșuează dacă procesul este
@@ -224,6 +233,7 @@ proc_ethresh=Număr de procese lipsă sau nevalid
 proc_asuser=Se execută ca utilizator
 proc_anyuser=Orice utilizator
 proc_easuser=Utilizator pentru procesul de a rula așa cum nu există
+
 exec_cmd=Porunca de a rula
 exec_mode=Verificarea stării de ieșire
 exec_mode0=Monitorizarea nu reușește dacă comanda eșuează
@@ -235,6 +245,7 @@ exec_noregexp=Nu verifica
 exec_remode=Verificare Regexp
 exec_remode0=Eșuează dacă ieșirea nu se potrivește
 exec_remode1=Eșuează dacă ieșirea se potrivește
+
 file_file=Fișier, director sau model de verificat
 file_test=Test de efectuat
 file_test_0=Trebuie să existe
@@ -253,6 +264,7 @@ file_group=Grupul de fișiere trebuie să fie
 file_nocheck=Orice
 file_perms=Permisiunile octale trebuie să fie
 file_eperm=Fișiere cu permisiuni greșite : $1 
+
 traffic_iface=Interfață pentru monitorizare
 traffic_bytes=Bytes maxim/secundă
 traffic_dir=Direcția de monitorizare
@@ -262,6 +274,7 @@ traffic_dir2=Doar la ieșire
 traffic_desc=Acest monitor urmărește traficul de rețea pe o interfață selectată și afișează monitorul ca în jos dacă traficul depășește numărul de octeți pe secundă introdus mai jos. Acest lucru funcționează foarte bine doar dacă monitorizarea programată este activată la un interval scurt, ca la fiecare 5 minute.
 traffic_eifaces=Sistemul dvs. de operare nu are un fișier/proc/net/dev
 traffic_ebytes=Lipsește sau este nevalid un număr de bytes/secundă
+
 space_fs=Sistem de fișiere de verificat
 space_min2=Spațiu liber minim
 space_mode0=Dimensiune absolută
@@ -277,6 +290,7 @@ space_ierr=Numai $1 inodi sunt eliberați
 space_merr=Numai spațiu $1 liber
 space_perr=Doar $1% liber
 space_dferr=Nu a reușit să obțineți dimensiunea sistemului de fișiere
+
 load_time=Sarcina medie de verificat
 load_1=1 minut
 load_5=5 minute
@@ -285,6 +299,7 @@ load_max=Media maximă de încărcare
 load_emax=Media de încărcare maximă lipsă sau nevalidă
 load_ecmd=Comanda <tt>uptime</tt> nu a fost găsită în sistemul tău
 load_efmt=Nu a putut fi analizată ieșirea comenzii <tt>uptime</tt>
+
 log_create=Monitorul creat $1 
 log_modify=Monitor modificat $1 
 log_delete=Monitorul șters $1 
@@ -295,10 +310,14 @@ log_tmpl_modify=Șablon de e-mail modificat $1
 log_tmpl_delete=Șters șablonul de e-mail $1 
 log_tmpl_deletes=Șabloane de e-mail $1 șterse
 log_refresh=Actualizarea stărilor monitorului
+
 acl_edit=Poate edita și crea monitoare?
 acl_sched=Poate schimba monitorizarea programată?
+
 change_file=Fișier sau director de monitorizat (eșuat dacă a fost modificat)
+
 jabber_eparser=Modulul Perl $1 nu este instalat pe sistemul dvs.
+
 memory_min2=Minimă memorie reală gratuită
 memory_emin=Lipsește sau este nevalid o cantitate de memorie reală gratuită
 memory_eproc=Webmin nu știe să verifice memoria gratuită pe sistemul de operare
@@ -308,7 +327,9 @@ memory_freelow=Numai $1 fără memorie reală
 memory_freelowswap=Numai $1 memorie virtuală gratuită
 memory_minswap=Minimă memorie virtuală gratuită
 memory_eminswap=Lipsește o cantitate nevalidă de memorie virtuală gratuită
+
 proftpd_etype=Acest monitor nu poate fi utilizat atunci când ProFTPD este rulat de sine stătător
+
 mailserver_to=Trimiteți e-mail la adresă
 mailserver_timeout=Interval de timp și interval
 mailserver_units_0=secunde
@@ -316,22 +337,28 @@ mailserver_units_1=Minute
 mailserver_units_2=ore
 mailserver_units_3=zi
 mailserver_desc=Adresa de mai jos trebuie să fie un răspuns automat care să răspundă la adresa sursă cu aceeași linie Subiect: subiect.
+
 oldfile_file=Fișier de monitorizat (eșuat dacă nu a fost modificat)
 oldfile_diff=Eșuează dacă nu a fost modificat pentru
 oldfile_secs=secunde
+
 raid_device=Dispozitiv RAID
 raid_edevice=Nu a fost selectat niciun dispozitiv RAID
 raid_bad=A fost detectat un disc necorespunzător
 raid_resync=În prezent, resincronizează
 raid_notfound=Dispozitivul RAID $1 nu a fost găsit
 raid_other=Alte ..
+
 iface_iface=Interfață pentru verificare
+
 init_action=Acțiune de verificat
 init_eaction=Nicio acțiune selectată
+
 refresh_title=Actualizare stare
 refresh_doing=Actualizarea stării tuturor monitoarelor ..
 refresh_doing2=Actualizarea stării monitoarelor selectate $1 ..
 refresh_done=.. Terminat.
+
 sensors_name=Senzor de verificat
 sensors_value=A eșuat când
 sensors_value0=Sistemul indică avertisment
@@ -342,6 +369,7 @@ sensors_none=Nu s-au detectat senzori pe sistemul dvs. Este posibil să fie nevo
 sensors_cur=$1 (în prezent $2 $3)
 sensors_emin=Valoare minimă lipsă sau nevalidă
 sensors_emax=Valoarea maximă lipsă sau nevalidă
+
 nut_ups=UPS NUT pentru a verifica
 nut_name=Atribut de verificat
 nut_value=A eșuat când
@@ -352,6 +380,7 @@ nut_eups=Nu a fost introdus niciun USP pentru a verifica introducerea
 nut_cur=$1 (în prezent $2)
 nut_emin=Valoare minimă lipsă sau nevalidă
 nut_emax=Valoarea maximă lipsă sau nevalidă
+
 mailq_system=Server de mail
 mailq_qmailadmin=qmail
 mailq_postfix=Postfix
@@ -360,6 +389,7 @@ mailq_size=Dimensiunea maximă a cozii de e-mail
 mailq_esize=Dimensiunea maximă a cozii lipsește sau este nevalidă
 mailq_toomany=Jos - $1 mesaje în coadă
 mailq_ok=Sus - $1 mesaje în coadă
+
 dns_server=Server DNS
 dns_host=Nume gazdă la căutare
 dns_address=Adresa IP așteptată
@@ -367,6 +397,7 @@ dns_eserver=Serverul DNS care lipsește sau este nevalid
 dns_ehost=Nume de gazdă care lipsește sau are aspect nevalid pentru căutare
 dns_eaddress=Adresa IP așteptată lipsă sau nevalidă
 dns_ecmds=Nici comenzile <tt>nslookup</tt> sau <tt>dig</tt> nu sunt instalate în sistemul dvs.
+
 monitor_sub_down=$1 în scădere față de $2 
 monitor_pager_down=$1 : „$2” este în scădere $3 
 monitor_snmp_down= $1:$2 
@@ -398,8 +429,10 @@ monitor_run1=Se execută $1 pe $2 ..
 monitor_run2=Se execută $1 ..
 monitor_runerr=Nu a putut fi executat $1 pe $2 : $3 
 monitor_email_stat=Stare curentă: $1 
+
 deletes_egone=Unul dintre monitoarele selectate nu mai există
 deletes_enone=Nu au fost selectate monitoare
+
 ftp_host=Gazda serverului FTP
 ftp_port=Port FTP
 ftp_user=Conectați-vă ca utilizator
@@ -416,6 +449,7 @@ ftp_econn=Conexiunea FTP TLS a eșuat
 ftp_econn2=Conexiunea FTP TLS a eșuat : $1 
 ftp_elogin=Logarea FTP TLS a eșuat : $1 
 ftp_etlsfile=Descărcarea TLS FTP a eșuat : $1 
+
 query_driver=Tip de bază de date SQL
 query_db=Numele bazei de date
 query_host=Gazda bazei de date a bazei de date
@@ -436,9 +470,12 @@ query_elogin=Logare eșuată : $1
 query_eprepare=Eroare SQL : $1 
 query_eexecute=SQL a eșuat : $1 
 query_ewrong=Rezultat incorect : $1 
+
 consume_rate=Rata maximă de consum (pe secundă)
 consume_high=Rata de consum este de $1 / secundă
+
 alive_up=Creșteți pentru $1 
+
 rssh_host=Gazda serverului SSH
 rssh_ruser=Conectați-vă ca utilizator
 rssh_rpass=Autentificare cu parolă
@@ -454,6 +491,7 @@ rssh_error=Eroare SSH
 rssh_haspass=Parola
 rssh_port=Portul serverului SSH
 rssh_eport=Număr de port lipsă sau nevalid
+
 tmpls_title=Șabloane de e-mail
 tmpls_ecannot=Nu aveți voie să editați șabloane de e-mail
 tmpls_none=Nu au fost definite încă șabloane de e-mail. Toate alertele vor fi trimise folosind mesajele implicite Webmin.
@@ -462,6 +500,7 @@ tmpls_email=Mesaj prin poșta electronică
 tmpls_add=Adăugați un nou șablon de e-mail.
 tmpls_return=lista de modele
 tmpls_delete=Ștergeți șabloanele selectate
+
 tmpl_title1=Creați șablon de e-mail
 tmpl_title2=Editați șablonul de e-mail
 tmpl_header=Alertați mesajele cu șabloane de e-mail
@@ -486,9 +525,11 @@ tmpl_esms=Lipsește mesajul SMS
 tmpl_esnmp=Lipsește mesajul SNMP
 tmpl_err2=Nu a reușit să ștergeți șablonul de e-mail
 tmpl_eusers=Este folosit de următoarele monitoare : $1 
+
 dtmpls_err=Nu a reușit să ștergeți șabloanele
 dtmpls_enone=Nimic selectat
 dtmpls_eusers=$1 este folosit de următoarele monitoare : $2 
+
 sslcert_src=Locația certificatului
 sslcert_url=De la adresa URL HTTPS
 sslcert_file=Din fișier pe server
@@ -506,18 +547,21 @@ sslcert_eend=Nu este valabil după $1
 sslcert_left=Sus - $1 zile până la expirare
 sslcert_ematch=Numele de gazdă $1 nu se potrivește cu certificatul $2 
 sslcert_emismatch=Verificarea numelui de gazdă certificat poate fi utilizată numai la verificarea adresei URL
+
 du_dir=Director de monitorizat
 du_max=Dimensiune maximă
 du_edir=Calea de director lipsă sau non-absolută
 du_emax=Dimensiunea maximă lipsă sau ne-numerică
 du_over=Dimensiunea este $1 
 du_under=Dimensiunea este de numai $1 
+
 ldap_edriver=Modulul Perl $1 nu este instalat
 ldap_host=Nume gazdă server LDAP
 ldap_port=Portul serverului LDAP
 ldap_ssl=Folosiți conexiunea SSL?
 ldap_user=Autentificare server LDAP
 ldap_pass=Parola serverului LDAP
+
 info_desc=Monitor de sistem
 info_last=Statusul curent
 info_title=Starea sistemului și a serverului

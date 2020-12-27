@@ -16,6 +16,7 @@ index_add=Yeni bir veritabanı oluşturun.
 index_users=Kullanıcı, Gruplar ve İzinler
 index_return=veritabanı listesi
 index_esql=$1 PostgreSQL istemci programı sisteminizde bulunamadı. Belki PostgreSQL kurulu değil ya da <a href='$2'>modül yapılandırmanız</a> yanlış.
+
 index_ehba=$1 PostgreSQL ana bilgisayar yapılandırma dosyası sisteminizde bulunamadı. Belki PostgreSQL başlatılmamış veya <a href='$2'>modül yapılandırmanız</a> yanlış.
 index_superuser=PostgreSQL istemci programı psql sisteminizde yürütülemedi. PostgreSQL kurulu olmayabilir veya <a href='$1'>modül yapılandırmanız</a> yanlış.
 index_eversion=Sisteminizdeki PostgreSQL veritabanı $1 sürümüdür, ancak Webmin yalnızca $2 ve üzeri sürümleri destekler.
@@ -48,10 +49,12 @@ index_gist=Genelleştirilmiş Dizin Arama Ağacı
 index_jump=Veya veritabanını düzenleyin:
 index_jumpok=Açık
 index_edithosts=İzin Verilen Ana Bilgisayar Sistemlerini Yapılandırma
+
 login_err=Giriş başarısız
 login_ecannot=Veritabanı girişini yapılandırmanıza izin verilmiyor
 login_elogin=Yönetici girişi eksik
 login_epass=Yanlış yönetim kullanıcı adı veya şifresi
+
 dbase_title=Veritabanını Düzenle
 dbase_noconn=Bu veritabanı şu anda bağlantıları kabul etmiyor, bu nedenle hiçbir eylem gerçekleştirilemiyor.
 dbase_header=Veritabanı tabloları, dizinler, görünümler ve sekanslar
@@ -78,6 +81,7 @@ dbase_jump=Tabloyu düzenle:
 dbase_vjump=Görünümü Düzenle:
 dbase_ijump=Dizini düzenle:
 dbase_sjump=Sırayı düzenle:
+
 table_title=Tabloyu Düzenle
 table_title2=Tablo Oluştur
 table_opts=Alan seçenekleri
@@ -105,6 +109,7 @@ table_eblob=$1 BLOB alanı için boyut gerekmez
 table_csv=CSV olarak dışa aktar
 table_index=Dizin Oluştur
 table_delete=Seçilen Alanları Sil
+
 field_title1=Alan ekle
 field_title2=Alanı Değiştir
 field_in=$2 veritabanındaki $1 tablosunda
@@ -123,6 +128,7 @@ field_esize='$1' geçerli bir alan boyutu değil
 field_eenum=Numaralandırılmış değer girilmedi
 field_efield='$1' geçerli bir alan adı değil
 field_ekey=Boş değerlere izin veren alanlar birincil anahtarın parçası olamaz
+
 exec_title=SQL yürütme
 exec_header=$1 veritabanında yürütülecek SQL komutunu girin.
 exec_old=Veya önceki bir SQL komutunu seçin :
@@ -152,21 +158,25 @@ exec_tabexec=SQL yürütme
 exec_tabfile=SQL'i dosyadan çalıştır
 exec_tabimport=Metin dosyasını içe aktar
 exec_return=SQL formunu çalıştır
+
 stop_err=Veritabanı sunucusu durdurulamadı
 stop_epidfile=$1 PID dosyası açılamadı
 stop_ekill= $1 : $2 işlemi öldürülemedi
 stop_ecannot=Veritabanı sunucusunu durdurmanıza izin verilmiyor
 start_err=Veritabanı sunucusu başlatılamadı
 start_ecannot=Veritabanı sunucusunu başlatma izniniz yok
+
 ddrop_err=Veritabanı bırakılamadı
 ddrop_title=Veritabanını Bırak
 ddrop_rusure=$1 veritabanını bırakmak istediğinizden emin misiniz? $3 satır veri içeren $2 tablo silinecek.
 ddrop_mysql=Bu ana veritabanı olduğundan, onu bırakmak muhtemelen PostgreSQL sunucunuzu kullanılamaz hale getirecektir!
 ddrop_ok=Veritabanını Bırak
+
 tdrop_err=Tablo bırakılamadı
 tdrop_title=Damla Tablosu
 tdrop_rusure=$1 tablosunu $2 veritabanına bırakmak istediğinizden emin misiniz? $3 veri satırı silinecek.
 tdrop_ok=Damla Tablosu
+
 view_title=Tablo Verileri
 view_pos=$3 'ün $1 ile $2 arasındaki satırlar
 view_none=Bu tablo veri içermiyor
@@ -201,6 +211,7 @@ view_set=Dosyanın içeriğine ayarla ..
 view_warn=Uyarı - $1 ve $2 Perl modülleri kurulu ve kullanımda değilse, <tt>metin</tt> veya <tt>bytea</tt> alanlarına dosya yüklemek ve içeriklerini görüntülemek olası değildir.
 view_adv=gelişmiş Arama
 view_sqlrun=SQL sorgusu tarafından oluşturulan sonuçlar : $1 
+
 newdb_title=Veritabanı yarat
 newdb_header=Yeni veritabanı seçenekleri
 newdb_db=Veri tabanı ismi
@@ -215,6 +226,7 @@ newdb_encoding=Karakter kümesi kodlaması
 newdb_eencoding=Karakter kümesi kodlaması eksik
 newdb_template=Şablon veritabanı
 newdb_notemplate=Yok
+
 user_title=PostgreSQL Kullanıcıları
 user_vwarning=UYARI: Bu PostgreSQL kullanıcısı, $1 Virtualmin etki alanı için yönetim oturum açma adıdır. Burada herhangi bir ayarın değiştirilmesi Virtualmin'de hatalara neden olabilir.
 user_ecannot=Kullanıcıları düzenleme izniniz yok
@@ -244,6 +256,7 @@ user_sync_delete=Eşleşen Unix kullanıcısı silindiğinde PostgreSQL kullanı
 user_delete=Silme seçildi
 user_derr=Kullanıcılar silinemedi
 user_enone=Hiçbir kullanıcı seçilmedi
+
 host_ecannot=İzin verilen ana bilgisayarları düzenlemenize izin verilmiyor
 host_title=İzin Verilen Ana Makineler
 host_desc=İstemci veritabanına bağlandığında, aşağıda listelenen ana bilgisayarlar eşleşene ve istemciye izin verilinceye veya reddedilene kadar sırayla işlenir.
@@ -299,8 +312,10 @@ host_derr=İzin verilen ana makineler silinemedi
 host_enone=Hiçbir ana bilgisayar seçilmedi
 host_manual=Yapılandırma Dosyasını Düzenle
 host_manualdesc=İzin verilen ana makine yapılandırma dosyasını manuel olarak düzenlemek için bu düğmeyi tıklayın.
+
 manual_title=Yapılandırma Dosyasını Düzenle
 manual_err=Yapılandırma dosyası kaydedilemedi
+
 grant_title=Verilen Ayrıcalıklar
 grant_tvi=Nesne
 grant_type=tip
@@ -328,6 +343,7 @@ grant_none=Üzerinde ayrıcalık tanıyacak tablo, görünüm, dizi veya dizin y
 grant_toomany=Görüntülenecek çok fazla nesne var. Eşleşen nesneleri bulun:
 grant_showing=$1 ile eşleşen nesneler gösteriliyor.
 grant_delete=Seçilen Hibeleri Sıfırla
+
 group_title=PostgreSQL Grupları
 group_ecannot=Grupları düzenleme izniniz yok
 group_name=Grup ismi
@@ -347,6 +363,7 @@ group_etaken=Grup adı zaten kullanılıyor
 group_none=Şu anda PostgreSQL grubu yok.
 group_derr=Gruplar silinemedi
 group_enone=Hiçbir grup seçilmedi
+
 esql=SQL $1 başarısız oldu : $2 
 log_start=PostgreSQL sunucusu başlatıldı
 log_stop=PostgreSQL sunucusu durduruldu
@@ -403,6 +420,7 @@ log_backup_l=$1 veritabanı $2 dosyasına yedeklendi
 log_backup_all=Tüm veritabanlarını yedekleyin
 log_backup_all_l=Tüm veritabanlarını $2 dosyasına yedekledi
 log_manual=Manuel olarak izin verilen ana bilgisayar yapılandırması dosyası
+
 acl_dbs=Bu kullanıcının yönetebileceği veritabanları
 acl_dbscannot=Bu erişim kontrolü, PostgreSQL veritabanı sunucusunu başlattıktan sonra etkili olacaktır.
 acl_dall=Tüm veritabanları
@@ -423,13 +441,17 @@ acl_cmds=Yedekleme komutlarından önce ve sonra düzenleme yapabilir mi?
 acl_views=Görünümleri görüntüleyebilir ve yönetebilir mi?
 acl_indexes=Dizinleri görüntüleyebilir ve yönetebilir mi?
 acl_seqs=Dizileri görüntüleyebilir ve yönetebilir mi?
+
 fdrop_err=Alanlar silinemedi
 fdrop_enone=Hiçbiri seçilmedi
 fdrop_eall=Bir tablodaki tüm alanları silemezsiniz!
+
 setup_err=Veritabanı başlatılamadı
 setup_ecannot=Veritabanını başlatma izniniz yok
+
 dbase_bkup=Destek olmak
 dbase_rstr=Onarmak
+
 restore_title=Veritabanını Geri Yükle
 restore_header=Veritabanı seçeneklerini geri yükleme
 restore_db=Veri tabanı ismi
@@ -452,6 +474,7 @@ restore_tables=Geri yüklenecek tablolar
 restore_tables1=Tümü yedek dosyada
 restore_tables0=Listelenen tablolar
 restore_failed=Geri yükleme başarısız oldu : $1 
+
 backup_title=Yedek veritabanı
 backup_title2=Tüm Veritabanlarını Yedekle
 backup_header1=Yedekleme hedefi
@@ -500,17 +523,21 @@ backup_ebefore=Yedekleme öncesi komutu başarısız oldu!
 backup_cmode=Komutlar ne zaman çalıştırılır
 backup_cmode1=Tüm veritabanlarından önce/sonra
 backup_cmode0=Her veritabanından önce/sonra
+
 r_command=Komut Desteklenmiyor
+
 adv_title=gelişmiş Arama
 adv_and=Tüm ölçütlerle eşleşen kayıtları bulun ..
 adv_or=Herhangi bir kriterle eşleşen kayıtları bulun ..
 adv_ok=Şimdi araştır
+
 tdrops_enone=Seçilecek tablo yok
 tdrops_err=Tablolar bırakılamadı
 tdrops_ok=Düşürmek
 tdrops_title=Seçili Bırak
 tdrops_rusure=$1 seçili tabloyu $2 veritabanına bırakmak istediğinizden emin misiniz? $3 veri satırı silinecek.
 tdrops_rusure2=$1 seçili tabloyu $2 veritabanına bırakmak istediğinizden emin misiniz?
+
 ddrops_err=Veritabanları bırakılamadı
 ddrops_title=Drop Veritabanları
 ddrops_rusure=Seçilen $1 veritabanını bırakmak istediğinizden emin misiniz? $3 satır veri içeren $2 tablo silinecek.
@@ -518,6 +545,7 @@ ddrops_mysql=Ana veritabanı seçildiğinden, veritabanını bırakmak muhtemele
 ddrops_ok=Drop Veritabanları
 ddrops_enone=Hiçbir veritabanı seçilmedi
 ddrops_ecannotdb=$1 veritabanını bırakmanıza izin verilmiyor
+
 csv_title=CSV Dosyasını Dışa Aktar
 csv_header=CSV dışa aktarma seçenekleri
 csv_dest=Dışa aktarma hedefi
@@ -538,6 +566,7 @@ csv_done=$1 'e CSV aktarımı tamamlandı. Sonuçta elde edilen dosya boyutu $2.
 csv_headers=CSV'ye sütun adları eklensin mi?
 csv_cols=CSV'ye dahil edilecek sütunlar
 csv_ecols=Seçili sütun yok
+
 import_title=Verileri İçe Aktar
 import_uploadout=Yüklenen dosyadan veri içe aktarılıyor ..
 import_fileout=$1 dosyasından veri içe aktarılıyor.
@@ -545,6 +574,7 @@ import_eupload=Yüklenen içe aktarma dosyası eksik
 import_efile=İçe aktarılan dosya adı eksik
 import_done=.. $1 satır oluşturdu, $2 kopya atlandı.
 import_erow=.. $1 satırında hiç alan bulunamadı
+
 index_title1=Dizin Oluştur
 index_header1=Dizin seçenekleri
 index_name=Dizin adı
@@ -562,6 +592,7 @@ index_ecols=Seçili alan yok
 index_title2=Dizini Düzenle
 index_header=$2 veritabanında $1 dizini
 index_ecannot=Dizinleri yönetme izniniz yok
+
 view_title1=Görünüm Oluştur
 view_title2=Görünümü Düzenle
 view_header1=Detayları göster
@@ -576,6 +607,7 @@ view_eclash=Aynı ada sahip bir görünüm zaten var
 view_equery=Eksik SQL sorgusu
 view_ecols=Hiçbir sütun adı girilmedi
 view_ecannot=Görünümleri yönetme izniniz yok
+
 seq_title1=Sıra Oluştur
 seq_title2=Diziyi Düzenle
 seq_header1=Artan dizi seçenekleri
@@ -595,5 +627,6 @@ seq_emin=Eksik veya geçersiz minimum değer
 seq_emax=Eksik veya geçersiz maksimum değer
 seq_ecache=Önbellekte eksik veya geçersiz değer sayısı
 seq_ecannot=Sekansları yönetmenize izin verilmiyor
+
 dgrant_err=Hibeler sıfırlanamadı
 dgrant_enone=Hiçbir nesne seçilmedi

@@ -30,6 +30,7 @@ index_return=a la llista de zones
 index_ezones=No s'ha trobat cap zona FirewallD!
 index_none=Aquesta zona encara no té cap port ni servei permès.
 index_ifaces=Aplica les regles a les interfícies:
+
 port_edit=Edició de Port
 port_create=Addició de Port
 port_header=Opcións del port permès
@@ -45,11 +46,13 @@ port_eport=Hi falta el nom o número de port, o bé és invàlid
 port_eportlow=El port més baix ha de ser un número
 port_eporthigh=El port més alt ha de ser un número
 port_eportrange=El port més baix ha d'estar per sota del més alt
+
 serv_edit=Edició de Servei
 serv_create=Addició de Servei
 serv_header=Opcions del servei permès
 serv_name=Servei a permetre
 serv_err=No s'ha pogut desar el servei
+
 forward_edit=Edició de Reenviament
 forward_create=Creació de Reenviament
 forward_header=Opcions del port de reenviament
@@ -61,10 +64,13 @@ forward_dstaddr=Adreça de destinació
 forward_dstlocal=Aquest sistema
 forward_edstaddr=Adreça de destinació IPv4 invàlida
 forward_eneither=Cal introduir o bé una adreça de destinació o bé un port
+
 check_ecmd=No s'ha trobat al sistema l'ordre $1 de control de FirewallD
+
 delete_err=NO s'han pogut suprimir les regles
 delete_enone=No n'has seleccionat cap!
 delete_edel=L'eliminació de $1 ha fallat: $2
+
 zone_title=Creació de Zona
 zone_header=Opcions de la nova zona
 zone_name=Nom de la zona
@@ -77,12 +83,16 @@ zone_mode4=Ports utilitzats per a allotjament virtual
 zone_err=No s'ha pogut crear la zona
 zone_ename=Hi falta el nom de zona o bé és invàlid
 zone_eclash=Ja existeix una zona amb el mateix nom
+
 delzone_title=Supressió de Zona
 delzone_err=No s'ha pogut suprimir la zona
 delzone_edefault=La zona per defecte no es pot eliminar
 delzone_rusure=Segur que vols suprimir la zona $1, que conté $2 ports i $3 serveis?
+
 defzone_err=No s'ha pogut crear la zona per defecte
+
 restart_err=No s'ha pogut aplicar la configuració
+
 stop_err=No s'ha pogut aturar FirewallD
 start_err=No s'ha pogut iniciar FirewallD
 log_stop=S'ha aturat FirewallD

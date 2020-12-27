@@ -57,6 +57,7 @@ index_reposdisable=リポジトリを無効にする
 index_reposenable=リポジトリを有効にする
 index_reposdelete=リポジトリを削除する
 index_repoheader=新しいパッケージリポジトリオプション
+
 update_title=パッケージを更新する
 update_title2=パッケージをインストールする
 update_enone=パッケージが選択されていません
@@ -94,9 +95,11 @@ update_none=なし
 update_ops=パッケージの完全なリストの構築 ..
 update_rebootdesc=インストール済みパッケージの1つを完全に適用するには、再起動が必要です。
 update_reboot=今すぐ再起動
+
 sched_title=スケジュールされた更新
 sched_yes=更新のスケジュールされたチェックがアクティブになりました。
 sched_no=更新のスケジュールチェックは無効になっています。
+
 log_update=インストールされた $1更新パッケージ
 log_sched=スケジュールされた更新を有効にしました
 log_unsched=スケジュールされた更新を無効にしました
@@ -108,11 +111,13 @@ log_enable_repo=パッケージリポジトリ $1を有効にしました
 log_disable_repo=パッケージリポジトリ $1を無効にしました
 log_delete_repo=パッケージリポジトリ $1を削除しました
 log_create_repo=パッケージリポジトリ $1を作成しました
+
 refresh_title=パッケージの更新
 refresh_clearing=パッケージキャッシュのクリア ..
 refresh_done=..完了
 refresh_available=利用可能なパッケージの再取得 ..
 refresh_done3=.. $1の可能な更新が見つかりました
+
 view_title=パッケージの詳細
 view_header=更新可能なパッケージ情報
 view_name=パッケージ名
@@ -126,12 +131,14 @@ view_changelog=利用可能なバージョンの変更ログ
 view_software=パッケージを管理
 view_update=パッケージを更新
 view_install=パッケージをインストール
+
 system_yum=YUM
 system_apt=APT
 system_csw=CSW（Blastwave）
 system_webmin=Webminモジュール
 system_usermin=Userminモジュール
 system_tgz=WebminまたはUsermin tar.gz
+
 repos_err_disable=リポジトリを無効にできませんでした
 repos_err_enable=リポジトリを有効にできませんでした
 repos_err_delete=リポジトリを削除できませんでした

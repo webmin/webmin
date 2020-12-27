@@ -16,6 +16,7 @@ index_fall=Ki módosíthatja a fájlokat
 index_file=Azok a módosított fájlok
 index_wall=Bármelyik Webmin szerver
 index_whost=Adott szerverről
+
 search_title=A keresés eredménye
 search_date=Dátum
 search_time=Idő
@@ -36,6 +37,7 @@ search_critt2=adott napon ($1)
 search_config=A modul konfigurációjának változtatása
 search_etime=Érvénytelen kezdeti vagy záró dátum
 search_err=A keresés sikertelen
+
 view_title=Naplóbejegyzés
 view_header=A $1 jelű esemény részletes adatai
 view_action=Az esemény leírása
@@ -62,11 +64,13 @@ view_type_rename=$1 átnevezve $2-ra/re
 view_ecannot=Önek nincs joga megnézni ezt a napló bejegyzést
 view_return=esemény részletezése
 view_input=Parancs megadása
+
 acl_mods=Meg lehessen nézni a naplót a modulokban
 acl_all=Mindent
 acl_sel=Kiválasztottakat lejebb..
 acl_users=Megnézheti az akciókat a felhasználó
 acl_rollback=Vissza lehet pörgetni az akciókat?
+
 rollback_title=Esemény visszapörgetése
 rollback_rusure=Biztos Ön abban, hogy vissza szeretné állítani a tartalmát ezeknek a fájloknak az esemény előtti állaptba? Minden adat, amit eddig tartalmaztak, felül lesz írva a következő változásokkal:
 rollback_isdir=A könyvtárban - nem lesz változás.

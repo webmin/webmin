@@ -2,6 +2,7 @@ index_langglobal2=Globálny jazyk.. $1 ($2)
 index_overlay=Prekrytie motívu
 index_overlaydef=Žiadne - použite predvolené motívy
 index_passagain=Zadajte znovu heslo
+
 change_epass2=Nové heslá sa nezhodujú
 change_eoverlay=Prekrytie témy nemôžete vybrať, pokiaľ nie je vybratá aj téma používateľského rozhrania
 change_eoverlay2=Vybratá šablóna témy nie je kompatibilná s vybranou témou používateľského rozhrania

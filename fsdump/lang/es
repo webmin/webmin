@@ -5,6 +5,7 @@ index_restore=Recuperar respaldo de tipo de sistema de archivo:
 index_restoremsg=Seleccione el tipo de sistema de archivos y presione este botón para comenzar el proceso de seleccionar un respaldo de sistema de archivo paar recuperar.
 index_ecommands=Ninguno de los comandos de respaldo de sistemas de archivo (como $1) necesitados por este módulo fueron encontrados en su sistema. Quizás no están instalados correctamente.
 index_return=lista de respaldos
+
 dump_dir=Directorio a respaldar
 dump_dirs=Directorios a rspaldar
 dump_fs=Sistema de archivos
@@ -54,6 +55,7 @@ dump_rsh1=SSH
 dump_rsh2=Otro comando ..
 dump_ersh=Comando de respaldo remoto no ingresado o no válido
 dump_essh=SSH no puede ser usado para respaldos remotos a menos que el comando <tt>ssh</tt> esté instalado en su sistema
+
 edit_err=Fallo al crear respaldo
 edit_edir=Directorio de respaldo no ingresado
 edit_efs=Los sistemas de archivos de tipo $1 no pueden ser respaldados por este módulo
@@ -69,13 +71,16 @@ edit_return=volcado
 edit_email=Enviar salida programada al correo electrónico
 edit_subject=Asunto del mensaje de correo electrónico
 edit_restore=Formulario de Recuperación
+
 save_err=Fallo al salvar respaldo
 save_edir=Directorio de respaldo no ingresado o no válido
 save_efs=Directorio de respaldo no puede cambiar a un sistema de archivos diferente
+
 backup_title=Respaldar Ahora
 backup_desc=Ejecutando respaldo de $1 a $2 ..
 backup_done=.. respaldo completado.
 backup_failed=.. respaldo falló!
+
 restore_title=Recuperar Respaldo
 restore_err=Fallo al recuperar respaldo
 restore_ecommand=El comando $1 necesitado para recuperar los respaldos del sistema de archivos $2 no fué encontrado en su sistema. Quizás no está instalado actualmente.
@@ -112,6 +117,7 @@ restore_extra=Opciones extra de línea de comandos
 restore_rsh=Comando de recuperación remoto
 restore_ersh=Comando de recuperación remoto no ingresado o no válido
 restore_essh=SSH no puede ser usado para recuperaciones remotas a menos que el comando <tt>ssh</tt> esté instalado en su sistema
+
 log_create=Creada configuración de respaldo para $1
 log_modify=Modificada configuración de respaldo para $1
 log_delete=Borrada configuración de respaldo para $1

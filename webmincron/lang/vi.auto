@@ -15,5 +15,6 @@ edit_special_daily=Hàng ngày (lúc nửa đêm)
 edit_special_weekly=Hàng tuần (vào Chủ nhật)
 edit_special_monthly=Hàng tháng (vào ngày 1)
 edit_special_yearly=Hàng năm (vào ngày 1 tháng 1)
+
 log_success=Đã chạy thành công <tt>$2</tt> trong <tt>$1</tt>
 log_failure=Không thể chạy <tt>$2</tt> trong <tt>$1</tt> : $3 

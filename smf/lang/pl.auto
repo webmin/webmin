@@ -180,6 +180,7 @@ whats_this_NSTATE=Następny stan usługi, przydatny podczas przenoszenia usługi
 whats_this_SCOPE=Nazwa zakresu instancji usługi. Zobacz: smf (5). Zobacz: svcs (1).
 whats_this_STIME=Godzina (jeśli dzisiaj) lub data, w której usługa weszła w bieżący stan. Zobacz: smf (5). Zobacz: svcs (1).
 whats_this_Select=Sprawdź listę usług, które chcesz włączyć/wyłączyć/odświeżyć itp. Tutaj.
+
 whats_this_service_detail=Tutaj podaj/edytuj informacje o najwyższym poziomie usługi: nazwa usługi, numer wersji, nazwa pakietu dla manifestu i stabilności. Zobacz: smf (5). Zobacz: svccfg (1M). Zobacz: service_bundle (4).
 whats_this_bundle_name=Nazwa pakietu usług w manifeście. W jednym manifeście można umieścić wiele usług, ale nazwa tutaj nie jest ważna. W przypadku już istniejących usług zostanie ustawiony eksport, ponieważ tak robi svccfg, gdy eksportuje manifest z repozytorium SMF. Zobacz: svccfg (1M). Zobacz: service_bundle (4).
 whats_this_service_name=Nazwa usługi Konwencja ma używać formatu [general_service_category]/[name]. Kategorie już dostarczone obejmują aplikacje (aplikacje wyższego poziomu), kamień milowy (zbiory innych usług, takich jak usługi nazw), platformę (usługi specyficzne dla platformy), system (usługi systemowe Solaris), urządzenie (usługi specyficzne dla urządzenia), sieć (usługi sieciowe/internetowe) i strona (opisy poszczególnych stron). Możesz także oczywiście określić własną kategorię, ale większość usług powinna wygodnie pasować do jednej z powyższych. Zobacz: smf (5).

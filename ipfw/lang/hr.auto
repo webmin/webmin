@@ -25,6 +25,7 @@ index_resetdesc=Kliknite ovaj gumb za brisanje svih postojećih pravila vatrozid
 index_cluster=Poslužitelji klastera
 index_clusterdesc=Kliknite ovaj gumb za postavljanje dodatnih Webmin poslužitelja na koje će se automatski kopirati konfiguracija vatrozida.
 index_return=pravila vatrozida
+
 index_num=Broj
 index_action=Radnja
 index_desc=Stanje
@@ -37,6 +38,7 @@ index_delete=Obriši odabrano
 index_existing=Webmin je otkrio $1 IPFW pravila vatrozida koji se trenutno koriste, a nisu zabilježena u datoteci $2. Ova su pravila vjerojatno postavljena iz skripte koju ovaj modul ne zna čitati i uređivati. <p> Ako želite koristiti ovaj modul za upravljanje zaštitnim zidom IPFW-a, kliknite gumb u nastavku kako biste pretvorili postojeća pravila u datoteku za spremanje., a zatim onemogućite postojeću skriptu vatrozida.
 index_saveex=Spremi pravila vatrozida
 index_headerex=Postojeća konfiguracija vatrozida
+
 action_allow=<font color=#00aa00>Dopusti</font>
 action_deny=<font color=#ff0000>Ispusti</font>
 action_reject=<font color=#ff4400>Odbij</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>Ispusti paket</font>
 laction_reject=<font color=#ff4400>Vrati odbacivanje ICMP-a</font>
 laction_reset=<font color=#ff4400>Poništi TCP vezu</font>
 laction_skipto=Preskočite da biste vladali
+
 edit_title1=Stvorite pravilo
 edit_title2=Uredi pravilo $1 
 edit_header1=Pravilo akcije
@@ -114,6 +117,7 @@ edit_src-addr=S adrese izvora ..
 edit_src-port=Iz izvornog ulaza ..
 edit_dst-addr=Odredišna adresa ..
 edit_dst-port=Do odredišne luke ..
+
 save_err=Spremanje pravila nije uspjelo
 save_enum=Nedostaje ili nevažeći broj pravila
 save_eskipto=Nedostaje ili nevažeći broj pravila na koji se može preskočiti
@@ -144,7 +148,9 @@ save_etcpflags=TCP zastave mogu se specificirati samo ako je protokol TCP
 save_elimit=Nedostaje ili nevažeće maksimalno ograničenje
 save_edstport=Nedostaje ili nije važeći odredišni port
 save_esrcport=Nedostaje ili nevažeći izvor izvora
+
 apply_err=Konfiguracija nije primijenjena
+
 desc_if=Ako $1 
 desc_and=i
 desc_always=Stalno
@@ -191,6 +197,7 @@ desc_where=gdje je $1
 desc_all=za sve pakete
 desc_in=paket je dolazni
 desc_out=paket je odlazni
+
 log_create_rule=Izrađeno je pravilo $1 
 log_delete_rule=Izbrisano je pravilo $1 
 log_modify_rule=Izmijenjeno pravilo $1 
@@ -206,6 +213,7 @@ log_convert=Pretvorena pravila aktivnog vatrozida
 log_setup=Izvršeno početno postavljanje vatrozida
 log_unapply=Obrnuta konfiguracija vatrozida
 log_delsel=Izbrisana su pravila $1 
+
 cluster_title=Poslužitelji vatrozida klastera
 cluster_none=U grupu vatrozida još nije dodan nijedan poslužitelj.
 cluster_host=Ime računala
@@ -216,6 +224,7 @@ cluster_gadd=Dodajte poslužitelje u grupi
 cluster_need=Prije nego što se njima ovdje može upravljati, morate dodati servere s prijavom i zaporkom u modulu Webmin Servers Index.
 cluster_return=poslužitelji klastera
 cluster_delete=Ukloni odabrano
+
 add_title=Dodajte poslužitelje
 add_msg=Dodavanje $1.
 add_gmsg=Dodavanje poslužitelja u grupu $1 ..

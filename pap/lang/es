@@ -12,6 +12,7 @@ index_onchange=Cambiar cuenta PPP cuando un usuario Unix cambie
 index_ondelete=Borrar cuenta PPP cuando un usuario Unix sea borrado
 index_apply=Aplicar
 index_return=índice
+
 edit_secret_etitle=Editar Cuenta PPP
 edit_secret_ctitle=Crear Cuenta PPP
 edit_secret_acc=Cuenta PPP
@@ -31,8 +32,10 @@ edit_secret_alist=Permitir las listadas...
 edit_secret_save=Salvar
 edit_secret_del=Borrar
 edit_secret_return=lista de cuentas
+
 save_secret_esave=No pude salvar cuenta 
 save_secret_enoip='$1' no es una dirección válida
+
 log_create=Creado usuario PPP $1
 log_modify=Modificado usuario PPP $1
 log_delete=Borrado usuario PPP $1

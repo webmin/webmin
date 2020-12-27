@@ -12,6 +12,7 @@ index_return=seznam datotečnih sistemov
 index_none=Nimate dostopa do nobenih nameščenih datotečnih sistemov.
 index_mount2=Namestitev z geslom:
 index_root=Korenski datotečni sistem
+
 edit_title=Uredi Mount
 create_title=Ustvari Mount
 edit_err=Montiranja ni bilo mogoče urediti
@@ -58,6 +59,7 @@ edit_ecannot=Nimate dovoljenja za urejanje tega datotečnega sistema
 edit_ecannot2=Ni vam dovoljeno dodajati novih datotečnih sistemov
 edit_3_or_lower=3 (ali nižje)
 edit_advanced=Napredni način
+
 save_err=Montaže ni bilo mogoče shraniti
 save_edir='$1' ni imenik
 save_edirname='$1' ni veljavno ime imenika
@@ -74,8 +76,10 @@ save_apply=Prijavite se na trajni seznam
 save_fapply=Sila Un-Mount
 save_eremount=Znesek ni uspel : $1
 save_enone=Nisi se odločil shraniti ali namestiti
+
 swap_err=Ustvarjanja datoteke ni bilo mogoče ustvariti
 swap_esize='$1' ni veljavna velikost
+
 nfs_server=Izberite strežnik NFS ..
 nfs_select=Izberite strežnik NFS, s katerega želite namestiti ..
 nfs_ip=IP naslov
@@ -87,6 +91,7 @@ nfs_seldir=Izberite imenik NFS za namestitev.
 nfs_seldirv4=Za pritrditev NFSv4 izberite '/'
 nfs_dir=Imenik
 nfs_clients=Stranke
+
 smb_choose=Izberite CIFS Server ..
 smb_elist=Ni bilo mogoče pridobiti seznama strežnikov iz $1. Mogoče strežnik ne dovoljuje brskanja
 smb_eworkgroup=Na strani Konfiguracija modula ni nastavljena nobena delovna skupina
@@ -103,6 +108,7 @@ smb_sel2=Izberite skupno rabo za namestitev ..
 smb_share=Deliti
 smb_comment=Komentar
 smb_noshares=Na strežniku $1 ni na voljo skupnih datotek
+
 solaris_scsidev=Krmilnik SCSI $1 target $2 enota $3 particija $4
 solaris_idedev=Krmilnik IDE $1 pogon $2 particija $3
 solaris_mddev=RAID naprava $1
@@ -240,6 +246,7 @@ solaris_efstyp2=Ni bilo mogoče preveriti vrste datotečnega sistema : $1
 solaris_ecachedir='$1' ni veljaven imenik predpomnilnika
 solaris_efmode='$1' ni veljaven oktalni datotečni način
 solaris_edmode='$1' ni veljaven oktalni imenik
+
 linux_eamd=AMD ni uspel
 linux_eauto=Samodejni račun ni uspel : $1
 linux_esmbconn=Povezava s strežnikom ni uspela
@@ -361,6 +368,7 @@ linux_noenforce=Da, vendar ne uveljavljajte
 linux_df=Ali želite v velikost datotečnega sistema vključiti rezervirane bloke?
 linux_noatime=Izognite se posodabljanju zadnjega časa dostopa?
 linux_netdev=Počakajte, da se omrežni vmesniki dvignejo?
+linux_nofail=Ali želite nadaljevati zagon, tudi če namestitev ne uspe?
 linux_ecname=Manjkajoče ali neveljavno ime odjemalca netbios
 linux_emname=Manjkajoče ali neveljavno ime gostitelja strežnika ali IP naslov
 linux_bind=Izvirni imenik
@@ -386,6 +394,7 @@ linux_nounix=Onemogoči razširitve CIFS Unix?
 linux_noserverino=Ali ustvarite številke inode na strani odjemalca?
 linux_cvers=Različica CIFS
 linux_ecvers=Različica CIFS mora biti številka
+
 log_mount=Nameščen $3
 log_mount_l=Montiran $2 $1 na $3
 log_umount=Odklonjeno $3
@@ -399,7 +408,9 @@ log_modify_l=Spremenjen $2 mount $1 na $3
 log_delete=Izbrisan mount $3
 log_delete_l=Izbrisan $2 mount $1 na $3
 log_swap=Ustvarjena datoteka za izmenjavo $1
+
 unmount_err=Odstranjevanje $1 ni bilo mogoče
+
 mount_err=Ni uspelo namestiti $1
 irix_nhost=Ime gostitelja NFS
 irix_ndir=Imenik NFS
@@ -430,6 +441,7 @@ irix_rock=Uporabljate razširitve Rock Ridge?
 irix_nofsck=Preverite datotečni sistem ob zagonu?
 irix_auto=Vir samodejnega števila
 irix_automap=Datoteka z zemljevidi
+
 irix_ehost=Gostitelj '$1' ne obstaja
 irix_eloss=Gostitelj '$1' je odprt
 irix_eshowmount=Gostitelj '$1' ne podpira NFS
@@ -447,9 +459,11 @@ irix_efstyp2=Ni bilo mogoče dobiti vrste datotek $1 : $2
 irix_efstyp=Tip datotečnega sistema v $1 je $2, ne $3
 irix_eautomap=Datoteka z zemljevidom avtomaterterja "$1" ne obstaja
 irix_eauthmap2=Manjkajoča ali neveljavna datoteka zemljevidov avtometer
+
 irix_devroot=Korenska particija
 irix_devswap=Zamenjajte particijo
 irix_autohosts=Ves izvoz NFS
+
 acl_only=Dovoli samo montažo in demontažo?
 acl_fs=Filesystems, ki jih je mogoče urejati
 acl_types=Vrste datotek, ki jih je mogoče uporabiti
@@ -462,8 +476,10 @@ acl_hide=Skrivanje datotek, ki jih ni mogoče urejati?
 acl_simple=Prikaži preprost obrazec za pritrditev?
 acl_simopts=Prikaži poenostavljene možnosti datotečnega sistema?
 acl_browse=Prikaži datoteko in delite gumbe za brskanje?
+
 egcc=Kompilator GCC ali CC, potreben za izdelavo programa za seznam vgrajenih datotečnih sistemov v vašem sistemu, ni na voljo.
 ecompile=Pri gradnji programa za uvrstitev nameščenih datotečnih sistemov v vaš sistem je prišlo do napake : $1
+
 freebsd_eaddr=Manjkajoči ali neveljaven naslov strežnika
 freebsd_eworkgroup=Manjkajoča ali neveljavna delovna skupina
 freebsd_ide=Trdi disk IDE
@@ -477,8 +493,10 @@ freebsd_idedev=IDE naprava $1, rezina $2, particija $3
 freebsd_scsidev=SCSI naprava $1, rezina $2, particija $3
 freebsd_edevpath=Druga naprava mora biti absolutna pot, na primer <tt>/dev/cdrom</tt>
 freebsd_edevfile=Datoteka naprave '$1' ne obstaja
+
 cswap_file=Datoteka za izmenjavo $1 ne obstaja.
 cswap_size=Ustvarite in namestite datoteko za izmenjavo z velikostjo
+
 acl_sysinfo=Pokaži razpoložljive podatke o disku na nadzorni plošči?
 sysinfo_total=Skupaj
 sysinfo_dev=ID naprave

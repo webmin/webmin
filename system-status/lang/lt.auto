@@ -44,6 +44,7 @@ right_upsec=Galima įsigyti $1 paketo naujinių, iš kurių $2 yra saugos naujin
 right_recollect=Atnaujinkite sistemos informaciją
 right_vvirtualmin=„Virtualmin“ versija
 right_vvm2=„Cloudmin“ versija
+
 acl_show=Parodoma sistemos informacija
 acl_showall=Viskas
 acl_showsel=Tik pasirinktas ..

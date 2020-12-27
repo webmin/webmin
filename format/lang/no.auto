@@ -15,6 +15,7 @@ index_use=Bruk
 index_free=Gratis
 index_format=Denne disken er ikke formatert
 index_return=diskliste
+
 edit_ecannot=Du har ikke lov til å redigere denne disken
 edit_title=Rediger partisjon
 edit_header=Partisjon detaljer
@@ -56,6 +57,7 @@ edit_tunedesc2=Du kan ikke stille inn filsystemet på denne partisjonen fordi de
 edit_tunedesc3=Du kan ikke stille filsystemet på denne partisjonen fordi det for øyeblikket er montert. Bruk <a href=/mount/>filsystemsystemmodulen</a> for å demontere den først.
 edit_tunedesc4=Du kan ikke stille filsystemet på denne partisjonen fordi det ikke har et filsystem.
 edit_tunedesc5=Du kan ikke stille inn filsystemet på denne partisjonen fordi bare <tt>UFS</tt> filsystemer kan stilles inn.
+
 save_ecannot=Du har ikke lov til å redigere denne disken
 save_edelete=Kunne ikke slette partisjonen
 save_esave=Kunne ikke lagre partisjonen
@@ -64,6 +66,7 @@ save_eend='$1' er ikke en gyldig sluttsylinder
 save_estartmin=Startsylinderen må være> 0
 save_eendmax=Endesylinderen må være < $1 
 save_estartend=Startsylinderen må være mindre enn slutten
+
 newfs_title=Lag filsystem
 newfs_ecannot=Du har ikke lov til å formatere denne disken
 newfs_desc=Hvis du klikker på knappen nederst på dette skjemaet, vil du lage en ny $1 på enheten $2. Alle data på denne partisjonen vil bli slettet permanent.
@@ -89,6 +92,7 @@ newfs_err=Kunne ikke opprette filsystem
 newfs_exec=Utfører kommando $1 ..
 newfs_failed=.. kommandoen mislyktes!
 newfs_ok=.. kommandoen fullført.
+
 fsck_title=Reparer filsystem
 fsck_ecannot=Du har ikke lov til å reparere denne disken
 fsck_desc=Ved å klikke på <b>Reparer</b> -knappen vil du sjekke og eventuelt reparere $1 på $2. Nivået på kontroll og reparasjon bestemmes av valget nedenfor.
@@ -106,6 +110,7 @@ fsck_37=prosess drept under kontroll
 fsck_39=ukorrigerbare feil oppdaget!
 fsck_40=ingen feil oppdaget
 fsck_unknown=ukjent feil
+
 tunefs_title=Tune Filesystem
 tunefs_ecannot=Du har ikke lov til å stille inn denne disken
 tunefs_desc=Dette skjemaet lar deg justere forskjellige parametere for $1 på $2. Eksisterende filer på dette filsystemet vil ikke bli skadet.
@@ -122,6 +127,7 @@ tunefs_err=Kunne ikke innstille filsystemet
 tunefs_exec=Utfører kommando $1 ..
 tunefs_failed=.. kommandoen mislyktes!
 tunefs_ok=.. kommandoen fullført.
+
 select_device=SCSI-kontroller $1 mål $2 enhet $3 
 select_idedevice=IDE-enhet $1 
 select_part=SCSI-kontroller $1 mål $2 enhet $3 partisjon $4 
@@ -131,10 +137,13 @@ esun=Partisjoner kan bare endres på Sun-maskinvare
 emounted=Disken har montert partisjoner
 elast=Den siste partisjonen kan ikke fjernes
 eformat=<tt>format</tt> fant ingen disker!
+
 fstype_ufs=Solaris Unix filsystem
 fstype_unknown=Ukjent filsystem
+
 acl_disks=Disker denne brukeren kan partisjonere og formatere
 acl_dall=Alle disker
 acl_dsel=Valgt ..
 acl_view=Kan redigere disker og partisjoner?
+
 ecannot=Du har ikke lov til å redigere partisjoner

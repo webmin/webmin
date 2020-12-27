@@ -16,6 +16,7 @@ index_chain=السلسلة$1
 index_action=عمل
 index_desc=شرط
 index_comm=تعليق
+index_no_comment=
 index_move=نقل
 index_none=لا توجد قواعد محددة لهذه السلسلة.
 index_policy=تعيين الإجراء الافتراضي على:
@@ -88,6 +89,7 @@ index_ipset_size=بحجم
 index_ipvxmode=تغيير إصدار بروتوكول IP:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
+
 desc_p=البروتوكول هو$1
 desc_p!=البروتوكول ليس$1
 desc_s=المصدر هو$1
@@ -114,6 +116,8 @@ desc_tcp-option=تستخدم الحزمة خيار TCP$1
 desc_tcp-option!=لا تستخدم الحزمة خيار TCP$1
 desc_icmp-type=نوع ICMP هو$1
 desc_icmp-type!=نوع ICMP ليس$1
+desc_icmpv6-type=نوع ICMP هو$1
+desc_icmpv6-type!=نوع ICMP ليس$1
 desc_mac-source=عنوان إيثرنت هو$1
 desc_mac-source!=عنوان إيثرنت ليس$1
 desc_limit=المعدل أقل من$1
@@ -146,10 +150,15 @@ desc_always=دائما
 desc_args--match-set=$2 موجود في مجموعة IP$1
 desc_src=مصدر
 desc_dest=المكان المقصود
+
 redhat_einstalled=لم يتم العثور على <tt>iptables (6)</tt> إجراء تمهيد ، مما يشير إلى أن حزمة IPtables غير مثبتة على نظامك
 redhat_eoutput=حدث خطأ أثناء الحصول على حالة IPtables من الأمر$1. يشير هذا على الأرجح إلى أن نظامك قد تم تكوينه لاستخدام IPchains بدلاً من IPtables.
+
 gentoo_escript=لم يتم العثور على البرنامج النصي لبدء التشغيل Gentoo IPtables $1 على نظامك.
+
 eiptables=حفظ IPtables غير معروف سطر الملف :$1
+eip6tables=توفر جداول ip6 غير المعروفة خط الملف :$1
+
 edit_title1=أضف قاعدة
 edit_title2=تحرير القاعدة
 edit_title3=قاعدة استنساخ
@@ -218,6 +227,7 @@ edit_physdevout=الواجهة المادية الصادرة
 edit_physdevisin=الحزمة الواردة على واجهة الجسر
 edit_physdevisout=الحزمة الصادرة على واجهة الجسر
 edit_physdevisbridged=يتم تجسير الحزمة
+
 save_err=فشل في حفظ القاعدة
 save_echain=سلسلة مفقودة أو غير صالحة للتشغيل
 save_esource=عنوان أو شبكة مصدر مفقودة أو غير صالحة
@@ -262,23 +272,28 @@ save_estates=لم يتم تحديد حالات اتصال
 save_ecanjump=لا يسمح لك باستخدام هذا الإجراء
 save_ephysdevin=الواجهة المادية الواردة مفقودة أو غير صالحة
 save_ephysdevout=الواجهة الفعلية الصادرة مفقودة أو غير صالحة
+
 delete_title=حذف السلسلة
 delete_rusure=هل أنت متأكد أنك تريد حذف السلسلة$1؟ سيتم حذف قواعد$2 الموجودة بداخله.
 delete_ok=احذف الان
 delete_ecannot=لا يسمح لك بحذف السلاسل
+
 clear_title=سلسلة واضحة
 clear_rusure=هل تريد بالتأكيد حذف كافة قواعد$2 من السلسلة$1؟
 clear_ecannot=غير مسموح لك بمسح السلاسل
+
 new_err=فشل في إنشاء سلسلة
 new_ename=اسم السلسلة مفقود أو غير صالح
 new_etaken=توجد بالفعل سلسلة بهذا الاسم
 new_ecannot=لا يسمح لك بإنشاء سلاسل
+
 apply_err=فشل في تطبيق التكوين
 apply_ecannot=لا يسمح لك بتطبيق التكوين
 apply_remote=خطأ من $1 : $2 
 unapply_err=فشل في إعادة التكوين
 unapply_ecannot=غير مسموح لك بإعادة التهيئة
 bootup_ecannot=لا يُسمح لك بتمكين جدار الحماية أو تعطيله عند التمهيد
+
 log_create_rule=تمت إضافة قاعدة إلى السلسلة$1 في الجدول$2
 log_modify_rule=قاعدة معدلة في السلسلة$1 في الجدول$2
 log_delete_rule=قاعدة محذوفة في السلسلة$1 في الجدول$2
@@ -301,8 +316,10 @@ log_add_group=تمت إضافة خوادم نظام المجموعة من الم
 log_delete_host=تمت إزالة ملقم الكتلة$1
 log_delete_group=تمت إزالة خوادم نظام المجموعة$1
 log_openports=تم فتح منافذ جدار الحماية$1
+
 setup_eiface=لم يتم إدخال واجهة شبكة خارجية
 setup_ecannot=لا يسمح لك بإعداد جدار الحماية
+
 acl_tables=IPtables المسموح بها
 acl_apply=يمكن تطبيق التكوين؟
 acl_unapply=يمكن إلغاء تطبيق التكوين؟
@@ -314,9 +331,11 @@ acl_jall=الكل
 acl_newchain=يمكن إنشاء سلاسل جديدة؟
 acl_delchain=يمكن حذف أو مسح السلاسل؟
 acl_policy=يمكن تغيير السياسة الافتراضية؟
+
 etable=لا يسمح لك بتحرير IPtable هذا
 ejump=لا يسمح لك بتحرير هذه القاعدة
 ecluster=غير مسموح لك بإدارة مجموعة جدار الحماية
+
 cluster_title=خوادم جدار الحماية العنقودية
 cluster_none=لم تتم إضافة خوادم إلى مجموعة جدار الحماية حتى الآن.
 cluster_host=اسم المضيف
@@ -327,6 +346,7 @@ cluster_gadd=أضف خوادم في المجموعة
 cluster_need=يجب عليك إضافة خوادم باسم تسجيل الدخول وكلمة المرور في وحدة Webmin Servers Index النمطية قبل أن تتم إدارتها هنا.
 cluster_return=خوادم الكتلة
 cluster_delete=ازل المحدد
+
 add_title=إضافة خوادم
 add_msg=جاري إضافة$1 ..
 add_gmsg=جاري إضافة خوادم في المجموعة$1 ..
@@ -336,13 +356,16 @@ add_echeck=لا يحتوي الخادم$1 على وحدة جدار حماية Li
 add_emissing=يفتقد الخادم$1 أمر جدار الحماية$2
 add_ok=تمت إضافة$1 ، مع قواعد جدار الحماية النشطة$2.
 add_enone=لا توجد خوادم لإضافة المحدد!
+
 policy_ecannot=لا يسمح لك بتغيير السياسة الافتراضية لهذه السلسلة
+
 move_title=تحريك القواعد
 move_count=تم تحديد القواعد
 move_chain=التغيير الحالي
 move_dest=سلسلة الوجهة
 move_ok=تحرك الآن
 move_header=خيارات تحريك القاعدة
+
 rename_title=إعادة تسمية السلسلة
 rename_count=القواعد في السلسلة
 rename_chain=الاسم الحالي
@@ -352,6 +375,3 @@ rename_header=خيارات إعادة تسمية السلسلة
 rename_adjust=تعديل القواعد الأخرى التي تقفز إلى هذه السلسلة؟
 rename_none=لا شيء
 rename_ecannot=لا يسمح لك بإعادة تسمية السلاسل
-desc_icmpv6-type=نوع ICMP هو$1
-desc_icmpv6-type!=نوع ICMP ليس$1
-eip6tables=توفر جداول ip6 غير المعروفة خط الملف :$1

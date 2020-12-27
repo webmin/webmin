@@ -9,17 +9,21 @@ index_edit=yönetme
 index_manual=Manuel Olarak Düzenle
 index_anyfile=Diğer PHP yapılandırma dosyasını düzenleyin:
 index_return=yapılandırma dosyaları
+
 file_global=Global PHP yapılandırması
 file_eread= $1 : $2 okunamadı
+
 manual_title=Yapılandırmayı Manuel Olarak Düzenleme
 manual_desc=Bu sayfa bir PHP yapılandırma dosyasını manuel olarak düzenlemek için kullanılabilir. Bu, değişiklikleriniz üzerinde herhangi bir sözdizimi veya başka bir geçerlilik denetimi yapılmayacağı için dikkatli bir şekilde yapılmalıdır.
 manual_err=Yapılandırma dosyası düzenlenemedi
 manual_edata=Yeni içerik girilmedi
+
 list_title=PHP Yapılandırmasını Yönet
 list_ecannot=Bu PHP yapılandırma dosyasını yönetmenize izin verilmiyor
 list_return=PHP yapılandırması
 list_format_ini=INI biçimi
 list_format_fpm=FPM biçimi
+
 vars_title=PHP Değişkenleri
 vars_header=PHP değişken oluşturma ve alıntılama seçenekleri
 vars_magic=Tüm giriş değişkenleri alıntılansın mı?
@@ -28,6 +32,7 @@ vars_register=Tüm girdiler global değişkenlere dönüştürülsün mü?
 vars_args=Komut satırı parametreleri genel değişkenlere dönüştürülsün mü?
 vars_long=<tt>HTTP_GET_VARS</tt> gibi eski stil dizileri mi oluşturuyorsunuz?
 vars_err=PHP değişken ayarları kaydedilemedi
+
 dirs_title=Dizin Ayarları
 dirs_header=PHP komut dosyası ve uzantı dizini ayarları
 dirs_include=İçindekiler için arama dizinleri
@@ -39,6 +44,7 @@ dirs_err=Dizin ayarları kaydedilemedi
 dirs_eincs=Girilen arama dizinlerini içermez
 dirs_eutmp=Eksik veya geçersiz geçici dosyalar dizini
 dirs_eext=Eksik uzantılar dizini
+
 db_title=Veritabanı Ayarları
 db_header1=MySQL veritabanı bağlantı ayarları
 db_persist=Kalıcı veritabanı bağlantılarına izin verilsin mi?
@@ -57,6 +63,7 @@ db_emaxlinks=Eksik veya geçersiz maksimum toplam bağlantı sayısı
 db_etimeout=Eksik veya geçersiz bağlantı zaman aşımı
 db_ehost=Eksik veya geçersiz varsayılan MySQL sunucusu ana bilgisayarı
 db_eport=Eksik veya geçersiz varsayılan MySQL sunucusu bağlantı noktası
+
 session_title=Oturum Seçenekleri
 session_header=PHP oturumu izleme seçenekleri
 session_handler=Oturum depolama mekanizması
@@ -73,6 +80,7 @@ session_epath=Oturum dosyaları için eksik veya geçersiz dizin
 session_elife=Eksik veya geçersiz çerez ömrü
 session_emaxlife=Eksik veya geçersiz maksimum oturum ömrü
 session_eredis=Eksik veya devre dışı bırakılmış yeniden dağıtım uzantısı
+
 safe_title=Güvenli Mod Seçenekleri
 safe_header=Güvenli dosya erişim modu seçenekleri
 safe_on=Güvenli mod etkinleştirilsin mi?
@@ -85,6 +93,7 @@ safe_err=Güvenli mod seçenekleri kaydedilemedi
 safe_einclude=Eklenen dosyalar için eksik veya geçersiz izin verilen dizin
 safe_eexec=Yürütülen programlar için eksik veya geçersiz izin verilen dizin
 safe_ebasedir=Dosya işlemleri için eksik veya geçersiz dizin
+
 limits_title=Kaynak Sınırları
 limits_header=Bellek ve aktarım sınırı seçenekleri
 limits_mem=Maksimum bellek ayırma
@@ -98,6 +107,7 @@ limits_epost=Eksik veya geçersiz maksimum HTTP POST boyutu
 limits_eupload=Eksik veya geçersiz maksimum dosya yükleme boyutu
 limits_eexec=Eksik veya geçersiz maksimum yürütme süresi
 limits_einput=Eksik veya geçersiz maksimum giriş ayrıştırma süresi
+
 errors_title=Hata Günlüğü
 errors_header=Hata mesajı görüntüleme ve günlüğe kaydetme seçenekleri
 errors_display=Hata mesajları gösterilsin mi?
@@ -128,6 +138,7 @@ errors_err=Hata günlüğü kaydedilemedi
 errors_ereporting=Hata türü ifadesi girilmedi
 errors_emaxlen=Günlüğe kaydedilen hataların eksik veya geçersiz boyutu
 errors_efile=Hata günlüğü dosyası eksik
+
 misc_title=Diğer ayarlar
 misc_header=Çeşitli diğer PHP ayarları
 misc_short=&lt;? İle başlayan PHP komut dosyalarına izin ver ?
@@ -148,6 +159,7 @@ misc_include=Uzaktan kumandaların açılmasına izin verilsin mi?
 misc_path=CGI Yol Bilgisi Fix?
 misc_timezone=PHP Saat Dilimi
 misc_charset=Varsayılan karakter seti
+
 log_manual=$1 dosyasını el ile düzenleme
 log_vars=$1 içindeki PHP değişkenleri değişti
 log_dirs=$1 dizin ayarları değiştirildi
@@ -157,6 +169,7 @@ log_safe=$1 içindeki güvenli mod seçenekleri değiştirildi
 log_limits=$1 içinde değişen kaynak sınırları
 log_errors=$1 uygulamasında hata günlüğü değiştirildi
 log_misc=$1 içindeki diğer ayarlar değişti
+
 acl_global=Genel PHP yapılandırmasını düzenleyebilir mi?
 acl_anyfile=Herhangi bir dosyayı PHP yapılandırması olarak düzenleyebilir mi?
 acl_manual=Yapılandırma dosyalarını elle düzenleyebilir mi?

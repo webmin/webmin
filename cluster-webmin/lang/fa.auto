@@ -39,7 +39,9 @@ index_thost=نام میزبان
 index_tdesc=شرح
 index_tver=نسخه
 index_ttype=نوع سیستم عامل
+
 this_server=این سرور
+
 add_title=اضافه کردن سرورها
 add_msg=افزودن$1 ..
 add_gmsg=افزودن سرورها به گروه$1 ..
@@ -49,6 +51,7 @@ add_echeck=سرور$1 ماژول پیکربندی Webmin را ندارد
 add_echeck2=سرور$1 ماژول Webmin Users را ندارد
 add_eversion=سرور$1 نسخه Webmin $2 یا بالاتر را اجرا نمی کند.
 add_ok=$1 با ماژول$2 ،$3 تم ،$4 کاربر و$5 گروه اضافه شد.
+
 refresh_title=تازه کردن ماژول و لیست کاربر
 refresh_header=درخواست مجدد ماژول ، لیست کاربر و گروه از کلیه سرورها ..
 refresh_header4=درخواست مجدد ماژول ، لیست کاربر و گروه از اعضای$2 ..
@@ -64,6 +67,7 @@ refresh_g2=گروه$1 حذف شد.
 refresh_done=.. انجام شده
 refresh_del=$1 از لیست سرور حذف شد
 refresh_failed=به روزرسانی $1 : $2 انجام نشد
+
 host_title=سرور مدیریت شده
 host_header=جزئیات سرور وبمین مدیریت شده است
 host_name=نام میزبان
@@ -81,6 +85,7 @@ host_header_u=کاربران وبمین
 host_header_g=گروه های وبمین
 host_return=جزئیات سرور
 host_version2=نسخه
+
 edit_title_mod=ویرایش ماژول
 edit_title_theme=ویرایش تم
 edit_header_mod=جزئیات ماژول وبمین از$1
@@ -104,6 +109,7 @@ edit_acl=ویرایش ACL برای
 edit_uacl=کاربر$1 از$2
 edit_gacl=گروه$1 را$2
 edit_config=پیکربندی را ویرایش کنید
+
 install_err=نصب ماژول انجام نشد
 install_title=ماژول را نصب کنید
 install_elocal=هیچ پرونده محلی داده نشده است
@@ -124,6 +130,7 @@ do_failed=نصب در $1 : $2 انجام نشد
 do_success_mod=ماژول$2 را روی$1 نصب کرد
 do_success_theme=طرح$2 در$1 نصب شد
 do_done=.. انجام شده
+
 delete_err=ماژول$1 حذف نشد
 delete_epack=ماژول$1 وجود ندارد
 delete_title=ماژول را حذف کنید
@@ -141,6 +148,7 @@ delete_edepends=ماژول (ها)$1 به آن بستگی دارد.
 delete_egone=ماژول دیگر وجود ندارد
 delete_esuccess=با موفقیت از $1 : $2 حذف شد
 delete_acls=حذف از کاربران و تنظیم مجدد تنظیمات کنترل دسترسی؟
+
 user_title1=کاربر Webmin ایجاد کنید
 user_header1=جزئیات کاربر جدید وبمین
 user_name=نام کاربری
@@ -200,11 +208,13 @@ user_all=&lt;همه میزبانها&gt;
 user_donthave=&lt;میزبان هایی که آن را ندارند&gt;
 user_have=&lt;میزبان هایی که دارای آن هستند&gt;
 user_ofgroup=اعضای$1
+
 udelete_title=حذف کاربر
 udelete_doing=حذف کاربر$1 از همه میزبان ها ..
 udelete_success=با موفقیت از$1 حذف شد
 udelete_failed=حذف از $1 : $2 انجام نشد
 udelete_done=.. انجام شده
+
 group_title1=ایجاد گروه
 group_header1=جزئیات گروه وبمین جدید
 group_name=اسم گروه
@@ -232,6 +242,7 @@ group_failed2=گروه در $1 : $2 بروزرسانی نشد
 group_return=جزئیات گروه
 group_nomems=هیچ عضو
 group_servers=سرور (ها) برای ایجاد
+
 gdelete_title=حذف گروه
 gdelete_desc=آیا مطمئن هستید که می خواهید گروه$1 و کاربران عضو آن$2 را از بین همه میزبان ها حذف کنید؟
 gdelete_ok=حذف گروه
@@ -240,6 +251,7 @@ gdelete_success=با موفقیت از$1 حذف شد
 gdelete_failed=حذف از $1 : $2 انجام نشد
 gdelete_done=.. انجام شده
 gdelete_esub=این گروه دارای زیر گروه$1 است ، بنابراین نمی توان حذف کرد.
+
 acl_title=کنترل دسترسی ماژول
 acl_title2=برای کاربر$1 در$2 با$3
 acl_title3=برای گروه$1 در$2 در$3
@@ -258,6 +270,7 @@ acl_doing2=تنظیم کنترل دسترسی$1 را در$2 ..
 acl_success=کنترل موفقیت آمیز را روی$1 تنظیم کرد
 acl_failed=کنترل دسترسی روی $1 : $2 انجام نشد
 acl_done=.. انجام شده
+
 sync_title=همگام سازی سرورها
 sync_desc=این فرم به شما امکان می دهد تا کاربر و مدیر گروه ها را روی سرورهایی که در حال حاضر آنها را ندارید ، ایجاد کنید تا حساب ها در همه سرورهای موجود در خوشه شما همگام شوند.
 sync_hosts=سرورها برای همگام سازی
@@ -281,6 +294,7 @@ sync_gcreate=افزودن گروه وبمین$1 ..
 sync_acl=کپی کردن پرونده های ACL برای$1 ..
 sync_test=فقط نشان می دهد چه کاری انجام می شود؟
 sync_restart=دوباره راه اندازی وبمین ..
+
 upgrade_title=Webmin را ارتقا دهید
 upgrade_header=به روزرسانی وبمین در همه میزبان ها ..
 upgrade_header2=در حال ارتقاء وبمین در$1 ..
@@ -299,6 +313,7 @@ upgrade_failed=نصب در $1 : $2 انجام نشد
 upgrade_done=.. انجام شده
 upgrade_efast=فقط سرورهایی که از حالت RPC سریع استفاده می کنند قابل ارتقا هستند
 upgrade_ereconn=بعد از بروزرسانی دوباره به وبمین وصل نشد!  :$1
+
 update_title=ماژول ها را به روز کنید
 update_header=در حال به روز رسانی ماژول ها همه میزبان ها ..
 update_header5=به روزرسانی ماژول ها در$2 ..
@@ -306,6 +321,7 @@ update_header4=به روز رسانی ماژول ها در اعضای$2 ..
 update_onhost=نتایج به روزرسانی در$1 ..
 update_failed=.. بروزرسانی انجام نشد :$1
 update_none=.. هیچ به روزرسانی یافت نشد
+
 config_title=پیکربندی ماژول را ویرایش کنید
 config_enone=هیچ میزبان با ماژول نصب شده انتخاب نشده است
 config_ethis=ماژول در این سرور نصب نشده است

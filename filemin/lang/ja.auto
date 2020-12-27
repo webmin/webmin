@@ -155,8 +155,10 @@ menu_bookmarks=しおり
 notallowed=$1へのアクセスは許可されていません。許可されるディレクトリは次のとおりです： $2
 error_upload_emax=アップロードされたファイルは $1の制限を超えています
 extract_etype=サポートされていないアーカイブファイルタイプ
+
 info_total1=合計： $1ファイルと $2ディレクトリ
 info_total2=合計： $1ファイルと $2ディレクトリ
 info_total3=合計： $1ファイルと $2ディレクトリ
 info_total4=合計： $1ファイルと $2ディレクトリ
+
 ownership=オーナー

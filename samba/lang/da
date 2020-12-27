@@ -4,20 +4,26 @@ config_bytes=Bytes
 config_never=Aldrig
 config_all=Alle
 config_neither=Ingen
+
 error_delshare=Fejl: kan ikke slette deling
+
 convert_add=Tilføj ny Samba-brugere fra Unix-brugerlisten
 convert_nopasswd=Ingen Password
 convert_lock=Konto Lukket
 convert_passwd=Brug dette password
+
 create_title=Opret Kopi
 create_name=Opret ny deling:
+
 euser_name=Brugernavn
 euser_currpw=Nuværende kodeord
 euser_newpw=Nyt kodeord
 euser_homedir=Hjemmemappe
 euser_locked=Kontoen er låst
 euser_disable=Konto deaktiveret
+
 esync_apply=Anvende
+
 eacl_np=Du har ikke adgang til
 eacl_papply=genstart denne service
 eacl_pgkill=dræb forbindelse
@@ -25,6 +31,7 @@ eacl_pkill=dræb denne forbindelse
 eacl_pus=updatere deling
 eacl_pcps=opret printer deling
 eacl_pcfs=Opret fil deling
+
 acl_apply=Kan du anvende ændringer og stoppe Samba?
 acl_c=Lav
 acl_r=læs
@@ -37,5 +44,6 @@ acl_rw=læs skriv
 acl_view=vis
 acl_kill=dræb
 acl_edit=redigere
+
 delete_err=Fejl: Kan ikke slette deling
 delete_enone=Ingen valgte

@@ -12,6 +12,7 @@ index_eprog=Jūsų sistemoje nerasta vykdomojo NFS serverio. Panašu, kad NFS pa
 index_delete=Ištrinti pasirinktus eksportus
 index_disable=Išjungti pasirinktą
 index_enable=Įgalinti pasirinktą
+
 edit_title=Redaguoti eksportą
 create_title=Sukurti eksportą
 edit_details=Eksportuoti informaciją
@@ -65,6 +66,7 @@ edit_sec_krb5i=Kerberos vientisumas
 edit_sec_krb5p=„Kerberos“ privatumas
 edit_sec_lipkey=LIPKIJA
 edit_sec_spkm=SPKM
+
 save_err=Nepavyko išsaugoti eksporto
 save_edir=Katalogas „$1“ neegzistuoja
 save_epfs=Pseudo-failų sistemos kelias '$1' neatrodo kaip absoliutus kelias
@@ -78,6 +80,7 @@ save_pfs=„$1“ jau eksportuotas kaip katalogas
 save_create_dir=Neįmanoma sukurti katalogo „$1“
 save_eanonuid=Neteisingas anoniminės prieigos vardas
 save_eanongid=Neteisingas anoniminės prieigos grupės pavadinimas
+
 exports_webnfs=„WebNFS“ klientai
 exports_ngroup=$1 tinklo grupė
 exports_net=Tinklas $1 
@@ -85,6 +88,7 @@ exports_all=Visi
 exports_hosts=Prieglobos $1 
 exports_host=$1 pagrindinis kompiuteris
 exports_gss=Autentifikuotas tinklas: $1 
+
 log_modify=Modifikuotas NFS eksportas $1 
 log_modify_l=Modifikuotas NFS eksportas nuo $1 iki $2 
 log_delete=Ištrintas NFS eksportas $1 

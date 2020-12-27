@@ -18,10 +18,12 @@ index_version=Versiunea PPPd $1
 index_boot=Conectați-vă la pornire:
 index_noboot=&lt;Nu vă conectați&gt;
 index_bootdesc=Modificați această opțiune pentru a controla dacă conexiunea VPN PPTP selectată este pornită sau nu la momentul de pornire.
+
 disc_err=Nu a reușit să deconecteze tunelul
 disc_egone=Nu mai este activ
 disc_ekill=Procesul pppd nu a reușit să omoare
 disc_done=Tunelul $1 a fost deconectat cu succes.
+
 conn_err=Conectarea la tunel nu a reușit
 conn_egone=Tunelul nu mai există
 cone_ealready=Deja conectat
@@ -32,6 +34,7 @@ conn_ok=.. conexiunea a fost activată cu succes folosind interfața $1. Adresa 
 conn_timeout=.. conexiune esuata! Verificați mesajele de jurnal de mai jos pentru informații de ce.
 conn_routes=Adăugarea rutelor cu comenzi ..
 conn_mppe=Protocolul MPPE pentru criptarea VPN necesită demonizare PPP și suport pentru kernel. Cu toate acestea, erorile de mai sus sugerează că una sau ambele nu sunt disponibile pe sistemul dvs. Dacă serverul PPTP nu necesită MPPE, încercați să dezactivați toate opțiunile aferente acestuia în pagina <a href='$1'>opțiuni globale PPP</a>.
+
 edit_title1=Adăugați tunelul PPTP
 edit_title2=Editează tunelul PPTP
 edit_header=Opțiuni pentru tunel VPN PPTP
@@ -60,6 +63,7 @@ edit_file=Fișier opțiuni PPP
 edit_none=Nici unul
 edit_global=Fișier global standard
 edit_ofile=Alt fișier ..
+
 save_err=Nu a reușit să salveze tunelul
 save_ename=Lipsește numele tunelului
 save_eserver=Serverul care lipsește sau este nevalid pentru a vă conecta
@@ -75,6 +79,7 @@ save_egw2=Gateway nevalid pentru gazda din ruta $1
 save_erename=Eroare la redenumirea fișierului tunel
 save_eclash=Există deja un tunel sau PPP peer cu același nume
 save_efile=Fișierul cu opțiuni PPP lipsă sau nevalid
+
 opts_title=Opțiuni globale PPP
 opts_desc=Setările de mai jos sunt preluate din $1 și se vor aplica tuturor tunelurilor care sunt setate să utilizeze fișierul standard de opțiuni PPP global.
 opts_header=Opțiuni PPP pentru toate tunelurile
@@ -84,6 +89,7 @@ opts_err=Nu a reușit să salvați opțiunile PPP globale
 opts_emtu=Lipsește sau nu este valabilă dimensiunea maximă a pachetului de trimitere
 opts_emru=Lipsește sau nu este valabil dimensiunea maximă a pachetului de primire
 opts_msdesc=Opțiunile de mai jos permit criptarea MPPE, folosită de serverele VPN Windows. Cu toate acestea, MPPE necesită sprijin atât în demonul PPP, cât și în nucleul sistemului de operare.
+
 mppe_mppe-40=Folosiți criptare MPPE pe 40 de biți?
 mppe_mppe-128=Folosiți criptare MPPE pe 128 de biți?
 mppe_mppe-stateless=Activați modul MPPE fără stat?
@@ -95,6 +101,7 @@ mppe_d1=Permis
 mppe_mppe-stateful=Activați modul de stat MPPE?
 mppe_old=Avertisment - Directivele MPPE în stil vechi $1 au fost găsite în fișierul dvs. de configurare, chiar dacă daemonul dvs. PPP acceptă directivele în stil nou.
 mppe_new=Avertisment - Noile directive MPPE în stil $1 au fost găsite în fișierul dvs. de configurare, chiar dacă daemonul dvs. PPP acceptă doar directivele în stil vechi.
+
 log_create=Creat tunel PPTP $1 
 log_update=Tunel PPTP modificat $1 
 log_delete=S-a șters tunelul PPTP $1 

@@ -65,6 +65,7 @@ index_checkconfig=Pastikan direktori chroot ditetapkan dengan betul pada halaman
 index_eexpired=Amaran: Zon berikut telah tamat tandatangan DNSSEC : $1
 index_eexpired_conf=Penandatanganan automatik mesti didayakan semula pada halaman $1.
 index_eexpired_mod=Gunakan modul $1 untuk sama ada mematikan DNSSEC untuk domain ini, atau periksa mengapa penandatanganan gagal.
+
 master_title=Edit Master Master
 master_inview=$1 dalam pandangan $2 
 master_ecannot=Anda tidak dibenarkan mengedit zon ini
@@ -146,6 +147,7 @@ master_defttl=Waktu untuk hidup untuk rekod lalai
 master_edefttl='$1' bukan masa lalai yang sah untuk rekod
 master_esoagone=Tiada rekod SOA ditemui!
 master_einclude=Fail templat tambahan tidak wujud
+
 delete_title=Padamkan Zon
 delete_mesg=Adakah anda pasti mahu memadamkan zon $1? Semua rekod dan fail zon akan dihapuskan.
 delete_mesg2=Adakah anda pasti mahu memadamkan zon akar? Pelayan DNS anda tidak lagi dapat mencari alamat di internet.
@@ -157,6 +159,7 @@ delete_errslave=Zon induk dipadamkan OK, tetapi ralat berikut berlaku pada hamba
 delete_ezone=Zon tidak dijumpai pada pelayan hamba
 delete_vwarn=Zon ini dikaitkan dengan domain Virtualmin $1, dan sebagainya tidak boleh dipadamkan di sini!
 delete_vwarn2=Zon ini dikaitkan dengan domain Virtualmin $1 dan $2 yang lain, dan sebagainya tidak boleh dihapuskan di sini!
+
 mcreate_title=Buat Master Master
 mcreate_ecannot=Anda tidak boleh membuat zon induk
 mcreate_opts=Pilihan zon tuan baru
@@ -171,6 +174,7 @@ mcreate_auto=Automatik
 mcreate_err=Gagal membuat zon induk
 mcreate_ednssecsize=Gagal mengira saiz utama : $1
 mcreate_ednssec=Penciptaan rekod berjaya, tetapi gagal DNSSEC : $1
+
 slave_title=Edit Zon Slave
 stub_title=Edit Zon Runcing
 slave_ecannot=Anda tidak dibenarkan mengedit zon ini
@@ -202,6 +206,7 @@ slave_applymsg2=Klik butang ini untuk memaksa pemindahan semula zon dari pelayan
 slave_last=Terakhir dipindahkan : $1
 slave_never=Tidak pernah
 slave_xfer=Pemindahan Zon Ujian
+
 screate_title1=Buat Kawasan Hamba
 screate_title2=Buat Zon Runcing
 screate_ecannot1=Anda tidak dibenarkan membuat zon hamba
@@ -214,6 +219,7 @@ screate_rev=Songsang (Alamat kepada Nama)
 screate_dom=Nama domain / Rangkaian
 screate_err1=Gagal mencipta zon hamba
 screate_err2=Gagal membuat zon stub
+
 recs_ecannot=Anda tidak dibenarkan mengedit rekod di zon ini
 recs_ecannottype=Anda tidak dibenarkan mengedit rekod jenis ini
 recs_title=$1 Rekod
@@ -231,6 +237,7 @@ recs_drev=Padamkan pembalikan juga?
 recs_none=Domain tidak mempunyai sebarang rekod $1 lagi.
 recs_nosearch=Tiada rekod yang sepadan dengan carian anda.
 recs_needsearch=Masukkan carian untuk mencari rekod yang sepadan.
+
 edit_title=Edit $1
 edit_header=Dalam $1
 edit_edit=Edit $1 Rekod
@@ -306,6 +313,7 @@ edit_edmarcpct=Peratusan mesej mestilah integer antara 0 dan 100
 edit_edmarcrua=Alamat maklum balas agregat yang hilang
 edit_edmarcruf=Alamat maklumat forensik yang hilang
 edit_ecaavalue2=Nama domain yang hilang atau tidak sah
+
 text_title=Edit Fail Rekod
 text_title2=Lihat Fail Rekod
 text_desc3=Borang ini membolehkan anda mengedit fail rekod DNS secara manual $1. Pemeriksaan sintaks tidak akan dilakukan oleh Webmin.
@@ -315,6 +323,7 @@ text_ecannot=Anda tidak dibenarkan mengedit fail rekod
 text_none=Walau bagaimanapun, fail tersebut pada masa ini kosong, mungkin kerana zon belum dipindahkan dari pelayan induk.
 text_soa=Meningkatkan nombor bersiri secara automatik
 text_rawformat=Zon ini dalam format binari mentah, dan oleh itu tidak boleh dipaparkan sebagai teks.
+
 restart_err=Gagal menggunakan perubahan
 restart_ecannot=Anda tidak dibenarkan untuk memulakan semula BIND
 restart_epidfile=Tidak dapat mencari BIND PID di $1
@@ -323,10 +332,12 @@ restart_erunning2=BIND tidak kelihatan berjalan di server pelayan $1
 restart_endc=Perintah NDC gagal : $1
 restart_ecmd=Mulakan semula arahan gagal : $1
 restart_eversion=Pelayan hamba $1 tidak menjalankan versi Webmin $2 atau lebih tinggi.
+
 start_ecannot=Anda tidak dibenarkan memulakan BIND
 start_error=Gagal memulakan BIND : $1
 stop_epid=BIND tidak berjalan
 stop_ecannot=Anda tidak dibenarkan menghentikan BIND
+
 fwd_title=Edit Zon Forward
 fwd_ecannot=Anda tidak dibenarkan mengedit zon ini
 fwd_opts=Pilihan Zon
@@ -335,12 +346,14 @@ fwd_forward=Cuba pelayan lain?
 fwd_check=Semak nama?
 fwd_err=Gagal menyimpan pilihan
 fwd_delmsg=Klik butang ini untuk memadam zon ini dari pelayan DNS anda. Rekod-rekod di dalamnya akan dilihat menggunakan proses resolusi biasa.
+
 delegation_title=Edit Zon Perwakilan
 delegation_ecannot=Anda tidak dibenarkan mengedit zon ini
 delegation_opts=Pilihan Zon
 delegation_err=Gagal menyimpan pilihan
 delegation_noopts=Zon perwakilan tidak mempunyai pilihan yang boleh dikonfigurasikan.
 delegation_delmsg=Klik butang ini untuk memadam zon ini dari pelayan DNS anda. Jenis rekod di dalamnya selain NS akan diiktiraf oleh BIND.
+
 fcreate_title=Buat Zon Hadapan
 fcreate_ecannot=Anda tidak dibenarkan membuat zon ke hadapan
 fcreate_opts=Pilihan zon ke hadapan baru
@@ -350,10 +363,12 @@ fcreate_rev=Songsang (Alamat kepada Nama)
 fcreate_dom=Nama domain / Rangkaian
 fcreate_masters=Pelayan induk
 fcreate_err=Gagal mencipta zon hadapan
+
 dcreate_title=Buat Zon Bebas-Perwakilan
 dcreate_ecannot=Anda tidak dibenarkan membuat zon perwakilan
 dcreate_opts=Pilihan zon perwakilan baru
 dcreate_err=Gagal mencipta zon perwakilan
+
 create_enet='$1' bukan rangkaian yang sah
 create_edom='$1' bukan nama domain yang sah
 create_edom2='$1' mestilah domain, bukan rangkaian
@@ -363,9 +378,11 @@ create_efile3=Gagal mencipta '$1' : $2
 create_efile4=Fail $1 sudah wujud
 create_emaster='$1' bukan alamat pelayan induk yang sah
 create_enone=Anda mesti memasukkan sekurang-kurangnya satu pelayan induk
+
 boot_err=Muat turun gagal
 boot_egzip=Fail zon akar dimampatkan, tetapi perintah <tt>gzip</tt> tidak dipasang pada sistem anda!
 boot_egzip2=Uncommenting fail zon root gagal : $1
+
 type_A=Alamat
 type_AAAA=Alamat IPv6
 type_NS=Nama Server
@@ -386,6 +403,7 @@ type_SRV=Alamat Perkhidmatan
 type_ALL=Semua Jenis Rekod
 type_KEY=Kunci Awam
 type_CAA=Pihak Berkuasa Sijil
+
 edit_A=Alamat
 edit_AAAA=Alamat IPv6
 edit_NS=Nama Server
@@ -405,6 +423,7 @@ edit_NSEC3PARAM=Parameter DNSSEC
 edit_TLSA=Sijil SSL
 edit_SSHFP=Kunci Awam SSH
 edit_CAA=Pihak Berkuasa Sijil
+
 recs_defttl=TTL lalai
 recs_A=Alamat
 recs_AAAA=Alamat IPv6
@@ -427,6 +446,7 @@ recs_TLSA=Sijil SSL
 recs_SSHFP=Kunci Awam SSH
 recs_CAA=Pihak Berkuasa Sijil
 recs_delete=Padam Dipilih
+
 value_A1=Alamat
 value_AAAA1=Alamat IPv6
 value_NS1=Nama Server
@@ -503,6 +523,7 @@ value_CAA3=Nama domain CA
 value_caa_issue=Perakuan domain tunggal
 value_caa_issuewild=Pensijilan Wildcard
 value_caa_iodef=URL pelanggaran dasar
+
 tlsa_usage0=Pihak berkuasa sijil
 tlsa_usage1=Entiti akhir
 tlsa_usage2=Mempercayai sauh
@@ -512,12 +533,14 @@ tlsa_selector1=Maklumat utama awam
 tlsa_match0=Kandungan tak terkira
 tlsa_match1=SHA-256 hashed
 tlsa_match2=SHA-512 telah hilang
+
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDSA
 sshfp_alg4=Ed25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 warn=Amaran
 fail=Gagal
 ignore=Abai
@@ -531,6 +554,7 @@ listed=Disenaraikan ..
 eip='$1' bukan alamat IP yang sah
 eport='$1' bukan nombor port yang sah
 eipacl='$1' bukan alamat IP yang sah atau nama ACL
+
 acl_zones=Domain pengguna ini boleh diedit
 acl_zall=Semua zon
 acl_zsel=Zon yang dipilih ..
@@ -573,6 +597,7 @@ acl_ztypes_master=Sarjana
 acl_ztypes_slave=Hamba / rintisan
 acl_ztypes_delegation=Perwakilan
 acl_ztypes_forward=Teruskan
+
 servers_title=Pelayan DNS lain
 servers_ip=alamat IP
 servers_bogus=Abaikan pelayan palsu?
@@ -584,6 +609,7 @@ servers_keys=Gunakan kekunci DNS
 servers_err=Gagal menyimpan pelayan DNS lain
 servers_eip='$1' bukan alamat IP yang sah
 servers_etrans='$1' bukan nombor pemindahan maksimum yang sah
+
 logging_title=Pembalakan dan Kesilapan
 logging_ecannot=Anda tidak dibenarkan untuk mengkonfigurasi pembalakan
 logging_header=Pilihan penebangan dan kesalahan global
@@ -622,6 +648,7 @@ logging_efile=Nama fail log yang tiada
 logging_efile2=Nama fail log mestilah jalan mutlak
 logging_ever='$1' bukan nombor versi yang sah
 logging_esize='$1' bukan saiz log yang sah
+
 acls_title=Senarai Kawalan Akses
 acls_ecannot=Anda tidak dibenarkan mengedit tajuk global
 acls_name=Nama ACL
@@ -629,6 +656,7 @@ acls_values=Alamat padanan, rangkaian dan ACL
 acls_err=Gagal menyimpan senarai kawalan akses
 acls_ename='$1' bukan nama ACL yang sah
 acls_eline=Setiap alamat IP mesti dimasukkan pada baris berasingan untuk ACL '$1'
+
 files_title=Fail dan Direktori
 files_ecannot=Anda tidak dibenarkan untuk mengkonfigurasi fail
 files_header=Pilihan fail dan direktori global
@@ -638,6 +666,7 @@ files_pid=Fail ID proses
 files_xfer=Jalankan ke program pemindahan zon
 files_err=Gagal menyimpan pilihan fail dan direktori
 files_efile=Nama fail yang hilang atau tidak sah
+
 forwarding_title=Penghantaran dan Pemindahan
 forwarding_ecannot=Anda tidak dibenarkan mengedit pilihan penghantaran dan pemindahan
 forwarding_header=Pilihan penghantaran forwarding dan zon global
@@ -656,6 +685,7 @@ forwarding_etrans=Perpindahan bersamaan maksimum atau tidak sah
 forwarding_minutes=minit
 forwarding_ip=alamat IP
 forwarding_port=Pelabuhan
+
 net_title=Alamat dan Topologi
 net_ecannot=Anda tidak dibenarkan mengedit alamat dan pilihan topologi
 net_header=Opsyen alamat dan topologi global
@@ -681,6 +711,7 @@ net_taddrdef=IP terdekat
 net_etport=Port sumber pemindahan tidak boleh ditentukan tanpa alamat
 net_eaddr='$1' bukan alamat IPv4 yang sah
 net_eaddr6='$1' bukan alamat IPv6 yang sah
+
 controls_title=Kawalan Pilihan Antara Muka
 controls_ecannot=Anda tidak dibenarkan mengedit pilihan kawalan
 controls_header=Pilihan kawalan
@@ -702,6 +733,7 @@ controls_eunixpath=Laluan fail FIFO yang hilang atau tidak sah
 controls_eunixperm=Kebenaran fail oktal yang hilang atau tidak sah
 controls_eunixowner=Pemilik file yang hilang atau tidak sah
 controls_eunixgroup=Kelompok fail yang tiada atau tidak sah
+
 controls_inet=Akses pelabuhan internet
 controls_unix=Akses FIFO Unix
 controls_port=pelabuhan
@@ -715,6 +747,7 @@ controls_efile=Nama fail FIFO yang hilang atau tidak sah
 controls_eperms=Kebenaran FIFO yang hilang atau tidak sah
 controls_eowner=UID pemilik FIFO yang hilang atau tidak sah
 controls_egroup=GID pemilik FIFO yang hilang atau tidak sah
+
 keys_title=Kunci DNS
 keys_id=ID kunci
 keys_alg=Algoritma
@@ -723,6 +756,7 @@ keys_ecannot=Anda tidak dibenarkan mengedit kekunci DNS
 keys_err=Gagal menyimpan kunci DNS
 keys_ekey='$1' bukan ID kunci yang sah
 keys_esecret=Rahsia tersembunyi asas-64 yang hilang atau tidak sah untuk kunci $1
+
 misc_title=Pilihan Pelbagai
 misc_ecannot=Anda tidak dibenarkan mengedit pilihan pelbagai
 misc_header=Pelbagai pilihan global
@@ -742,6 +776,7 @@ misc_esize='$1' bukan saiz yang sah
 misc_efiles='$1' bukan bilangan fail maksimum yang terbuka
 misc_emins='$1' bukan jumlah minit yang sah
 misc_mins=minit
+
 zonedef_title=Default Zon
 zonedef_msg=Lalai untuk zon induk baru
 zonedef_err=Gagal menyimpan zon lalai
@@ -765,10 +800,13 @@ zonedef_size=Saiz kunci awal
 zonedef_single=Bilangan kunci untuk dicipta
 zonedef_two=Kunci zon dan kunci tandatangan utama
 zonedef_one=Kunci Zon sahaja
+
 find_title=Mencari zon
 find_match=Zon yang sepadan $1 ..
 find_none=Tiada zon yang dijumpai.
+
 efirst=Arahan pertama yang buruk di baris $1 di $2
+
 findfree_title=Cari IP Percuma
 findfree_desc=Cari IP Percuma
 findfree_nofind=Anda tidak boleh mencari IP percuma
@@ -780,8 +818,10 @@ findfree_cf=Pertimbangkan <em>freeXXX</em> nama host sebagai IP percuma?
 findfree_search=Carian
 findfree_msg=Menemui alamat IP percuma $1
 findfree_msg2=(yang $1 adalah seperti <i>freeXXX</i>, $2 seperti <i>freemac</i>
+
 free_title=Alamat IP Percuma
 free_ip=Alamat IP
+
 log_servers=Menukar pelayan DNS lain
 log_logging=Pembalakan dan kesilapan berubah
 log_acls=Menukar senarai kawalan akses
@@ -838,14 +878,17 @@ log_sign=Dikemaskini tanda tangan DNSSEC untuk zon $1
 log_resign=Telah menandatangani semula kunci DNSSEC untuk zon $1
 log_trusted=Mengubah pengesahan DNSSEC
 log_dnssec=Tukar tanda semula utama DNSSEC
+
 convert_err=Gagal menukar zon
 convert_efile=Fail rekod mesti ditentukan sebelum zon hamba boleh ditukar kepada tuan.
 convert_efilesize=Fail rekod $1 tidak wujud atau kosong
 convert_ebinary=Perintah yang diperlukan untuk menukar dari zon hamba binari kepada master format teks tidak dipasang
 convert_ecompile=Perduaan kepada penukaran format teks gagal : $1
+
 whois_title=Maklumat WHOIS
 whois_header=Output dari perintah $1 ..
 whois_ecannot=Anda tidak dibenarkan mencari maklumat WHOIS
+
 view_title=Edit Paparan Pelanggan
 view_opts=Butiran pandangan pelanggan
 view_opts2=Pilihan untuk melihat zon
@@ -856,6 +899,7 @@ view_recursion=Adakah pencarian penuh rekursif untuk pelanggan?
 view_ecannot=Anda tidak dibenarkan menyunting paparan ini
 view_delete=Padamkan Paparan
 view_deletemsg=Klik butang ini untuk memadamkan paparan. Anda akan mempunyai pilihan zon bergerak yang ada pada pandangan lain, atau memadamnya.
+
 vcreate_title=Buat Paparan Pelanggan
 vcreate_match_all=Semua pelanggan
 vcreate_match_sel=Alamat yang disenaraikan, rangkaian dan ACLs ..
@@ -864,6 +908,7 @@ vcreate_ename=Nama paparan yang hilang atau tidak sah
 vcreate_etaken=Lihat nama sudah diambil
 vcreate_eclass=Nama kelas yang hilang atau tidak sah
 vcreate_ecannot=Anda tidak dibenarkan membuat pandangan
+
 hint_title=Edit Root Zone
 hint_desc=Zon akar digunakan oleh pelayan DNS untuk menghubungi pelayan root di internet, sehingga dapat menyelesaikan nama dalam domain yang tidak ditangani oleh server DNS Anda, seperti <tt>.com</tt> atau <tt>.net. au</tt>. Kecuali pelayan DNS anda untuk digunakan pada rangkaian dalaman atau anda menghantar semua pertanyaan ke pelayan lain, anda tidak seharusnya memadamkan zon akar ini.
 hint_move=Pindah untuk melihat:
@@ -872,6 +917,7 @@ hint_refetch=Muat turun semula Nama Root Nameservers
 hint_refetchdesc=Klik butang ini untuk memuat turun Webmin semula fail zon akar dari sumbernya pada pelayan FTP Internic.
 hint_delete=Padam Root Zone
 hint_deletedesc=Klik butang ini untuk mengalih keluar zon akar ini. Tanpa itu, nameserver anda tidak dapat menyelesaikan domain di Internet selain daripada yang sekunder untuk.
+
 hcreate_title=Buat Kawasan Root
 hcreate_desc=Zon akar digunakan oleh pelayan DNS untuk menghubungi pelayan root di internet, sehingga dapat menyelesaikan nama dalam domain yang tidak ditangani oleh server DNS Anda, seperti <tt>.com</tt> atau <tt>.net. au</tt>. Jika anda menggunakan berbilang pandangan, anda mungkin perlu mempunyai zon akar yang berasingan di setiap pandangan supaya semua klien dapat menyelesaikan domain internet dengan betul.
 hcreate_header=Butiran zon akar
@@ -885,6 +931,7 @@ hcreate_efile='$1' bukanlah fail root yang dibenarkan
 hcreate_efile2=Fail root yang hilang atau tidak sah
 mcreate_erecs=Bukan fail zon akar yang sedia ada
 hcreate_err=Gagal mencipta zon akar
+
 vdelete_title=Padamkan Paparan
 vdelete_mesg=Adakah anda pasti mahu memadamkan paparan pelanggan $1? Semua zon dalam paparan ini sama ada akan dipadamkan (bersamaan dengan fail zon mereka) atau berpindah ke paparan lain bergantung pada pilihan anda di bawah.
 vdelete_mesg2=Adakah anda pasti mahu memadamkan paparan pelanggan $1?
@@ -892,6 +939,7 @@ vdelete_newview=Zon dalam pandangan ini
 vdelete_root=Alih keluar dari pandangan
 vdelete_delete=Padam sepenuhnya
 vdelete_move=Bergerak untuk melihat
+
 gen_title=Rekod Penjana
 gen_desc=Halaman ini membolehkan anda menentukan penjana, yang masing-masing akan membuat beberapa rekod di zon ini menggunakan kaunter bertambah. Ini berguna untuk mewakilkan bahagian-bahagian zon balik ke pelayan lain.
 gen_range=Julat
@@ -911,7 +959,9 @@ gen_evalue=Coretan nama hos yang tiada atau tidak sah untuk penjana $1
 gen_title2=Rekod Generasi
 gen_raw=Garis fail konfigurasi
 gen_ecannot=Anda tidak dibenarkan mengedit penjana rekod
+
 refetch_err=Gagal memuat turun semula zon akar
+
 slaves_title=Pelayan Hamba Cluster
 slaves_none=Tiada pelayan telah ditambah ke kluster DNS lagi.
 slaves_host=Nama hos
@@ -939,6 +989,7 @@ slaves_sec=Buat sekunder pada hamba apabila mencipta setempat?
 slaves_name=Nama untuk rekod NS
 slaves_same=Sama seperti nama hos
 slaves_header=Pilihan pelayan hamba kluster
+
 add_title=Tambah Pelayan
 add_msg=Menambah $1 ..
 add_gmsg=Menambah pelayan dalam kumpulan $1 ..
@@ -956,6 +1007,7 @@ add_createok=Persediaan $1 dengan $2 zon hamba baru.
 add_ename=Nama rekod NS hilang atau tidak sah
 add_egname=Nama rekod NS tidak boleh ditentukan semasa menambah kumpulan
 add_emyip=Tidak dapat menyelesaikan alamat IP sistem ini. Anda perlu menetapkan <b>IP pelayan induk lalai untuk zon hamba jauh</b> pada halaman Module Config.
+
 mass_title=Buat Zon Daripada Fail Batch
 mass_desc=Halaman ini membolehkan anda membuat beberapa zon sekaligus dari fail teks yang diunggah atau di sisi pelayan. Setiap baris dalam fail mesti mempunyai format berikut: <p></p> <tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt> <p></p> <i>Jenisnya</i> mesti terdiri daripada <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> atau <tt>forward</tt>. Nama <i>fail</i> adalah pilihan, dan akan dikira secara automatik jika tiada. <i>IP induk</i> hanya perlu diberikan untuk zon hamba.
 mass_local=Fail kumpulan tempatan
@@ -987,6 +1039,7 @@ mass_emips=Alamat IP induk yang tiada
 mass_addedslaves=Tambah $1 kepada pelayan hamba OK.
 mass_eonslave=Ralat berlaku pada pelayan pelayan : $1
 mass_eviewcannot=Anda tidak dibenarkan menambah zon ke pandangan ini
+
 massdelete_title=Padam Zon
 massdelete_rusure=Adakah anda pasti mahu memadamkan zon yang dipilih $1? ($2)
 massdelete_ok=Padamkan Sekarang
@@ -996,6 +1049,7 @@ massdelete_slaves=Memadamkan zon $1 daripada pelayan pelayan ..
 massdelete_failed=.. sesetengah hamba gagal :
 massdelete_vwarn=Sesetengah zon dikaitkan dengan domain Virtualmin $1, dan sebagainya tidak boleh dipadamkan di sini!
 massdelete_vwarn2=Sesetengah zon dikaitkan dengan domain Virtualmin $1 dan $2 yang lain, dan tidak sepatutnya dihapuskan di sini!
+
 rndc_title=Persediaan RNDC
 rndc_desc=Halaman ini boleh digunakan untuk persediaan BIND untuk dikendalikan oleh program RNDC, supaya zon individu dapat disegarkan tanpa perlu melakukan restart BIND penuh.
 rndc_desc2=RNDC nampaknya telah disiapkan dengan betul, jadi anda mungkin tidak perlu menggunakan borang ini.
@@ -1006,11 +1060,13 @@ rndc_ok=Ya, Persediaan RNDC
 rndc_err=Gagal menyediakan RNDC
 rndc_ekey=Tidak dapat mencari kunci dalam rndc.conf
 rndc_esecret=Tidak dapat mencari rahsia dalam rndc.conf
+
 drecs_err=Gagal memadam rekod
 drecs_enone=Tiada yang dipilih
 drecs_title=Padam Rekod
 drecs_rusure=Adakah anda pasti mahu memadamkan rekod $1 dipilih dari $2?
 drecs_ok=Padamkan Sekarang
+
 manual_title=Edit Fail Config
 manual_ecannot=Anda tidak dibenarkan mengedit fail konfigurasi BIND
 manual_ok=Edit
@@ -1018,7 +1074,9 @@ manual_efile=Fail terpilih bukan sebahagian daripada konfigurasi BIND
 manual_file=Edit fail konfig:
 manual_edata=Tiada apa-apa yang masuk!
 manual_err=Gagal menyimpan fail konfigurasi
+
 syslog_desc=BIND mesej pelayan DNS
+
 umass_err=Gagal mengemas kini zon
 umass_enone=Tiada yang dipilih
 umass_title=Kemas kini Rekod dalam Zon
@@ -1037,6 +1095,7 @@ umass_done=.. dikemas kini $1 rekod yang sepadan daripada $2.
 umass_none=.. tiada rekod padanan daripada $1 untuk dikemas kini dijumpai.
 umass_egone=Zon tidak wujud
 emass_emx='$1' bukan nombor keutamaan pelayan mel diikuti oleh nama hos yang sah
+
 rdmass_err=Gagal memadamkan rekod di zon
 rdmass_enone=Tiada yang dipilih
 rdmass_title=Padamkan Rekod dalam Zon
@@ -1053,6 +1112,7 @@ rdmass_done=.. dipadam $1 sepadan dengan rekod keluar dari $2.
 rdmass_none=.. tiada rekod padanan daripada $1 untuk memadam dijumpai.
 rdmass_ok=Padam Rekod
 rdmass_sel=Rekod yang dinamakan
+
 rmass_err=Gagal menambah rekod
 rmass_enone=Tiada yang dipilih
 rmass_title=Tambah Rekod ke Zon
@@ -1072,18 +1132,22 @@ rmass_esign=.. selesai, tetapi penandatanganan gagal : $1
 rmass_eclash=.. rekod dengan nama dan nilai yang sama $1 sudah wujud.
 rmass_eclash2=.. rekod dengan nama yang sama dan nilai yang sama $1 sudah wujud.
 rmass_clash=Buat walaupun rekod sudah wujud?
+
 check_title=Semak Rekod
 check_ecannot=Anda tidak dibenarkan menyemak rekod
 check_errs=Kesalahan berikut telah dijumpai dalam fail rekod $1 ..
 check_allok=Tiada ralat ditemui dalam fail rekod $1.
+
 ncheck_title=Semak BIND Config
 ncheck_ecannot=Anda tidak dibenarkan memeriksa konfigurasi BIND
 ncheck_errs=Kesilapan berikut dijumpai dalam fail konfigurasi BIND $1 atau fail zon dirujuk ..
 ncheck_allok=Tiada ralat ditemui dalam fail konfigurasi BIND $1 atau fail zon yang dirujuk.
+
 links_restart=Terapkan Konfigurasi
 links_stop=Hentikan BIND
 links_start=Mulakan BIND
 links_apply=Gunakan Zon
+
 dnssec_title=DNSSEC Kunci Tandatangan semula
 dnssec_ecannot=Anda tidak dibenarkan mengkonfigurasi DNSSEC
 dnssec_header=Opsyen semula tandatangan semula
@@ -1094,6 +1158,7 @@ dnssec_secs=detik
 dnssec_desc=Zon yang ditandatangani dengan DNSSEC biasanya mempunyai dua kunci - kunci zon yang mesti dijana semula dan ditandatangani secara tetap, dan kunci penandatangan utama yang tetap berterusan. Halaman ini membolehkan anda untuk mengkonfigurasi Webmin untuk melakukan menandatangani semula ini secara automatik.
 dnssec_err=Gagal menyimpan semula semula DNSSEC utama
 dnssec_eperiod=Bilangan hari yang hilang atau tidak sah antara tanda-tanda semula
+
 dnssectools_title=Automasi Alat DNSSEC
 dt_conf_title=Automasi Alat DNSSEC
 dt_enable_title=Automasi Alat DNSSEC
@@ -1158,6 +1223,7 @@ dt_status_inKSKroll=Dalam KSK Roll
 dt_status_inZSKroll=Dalam ZSK Roll
 dt_status_signed=Ditandatangani
 dt_status_unsigned=Unsigned
+
 zonekey_title=Persediaan Kunci DNSSEC
 zonekey_desc=Zon ini tidak mempunyai kunci tandatangan DNSSEC lagi. Anda boleh menggunakan borang ini untuk membuat Webmin membuat satu, supaya pelanggan menyelesaikan zon ini dilindungi daripada serangan spam spoofing.
 zonekey_header=Pilihan utama DNSSEC baru
@@ -1191,9 +1257,12 @@ zonekey_sign=Zon Tanda
 zonekey_signdesc=Sentiasa kembali menandatangani zon ini, supaya apa-apa perubahan kepada rekod yang dibuat secara manual akan dimasukkan ke dalam rekod penandatanganan.
 zonekey_resign=Re-Sign Zone
 zonekey_resigndesc=Menjana kunci penandaan zon baru, tandatangannya dengan kekunci induk zon, dan tandatangan semula semua rekod.
+
 sign_err=Gagal melog masuk zon
 sign_emsg=Tandatangan DNSSEC selepas perubahan rekod gagal : $1
+
 resign_err=Gagal melog masuk semula zon
+
 trusted_title=Pengesahan DNSSEC
 trusted_ecannot=Anda tidak dibenarkan mengkonfigurasi pengesahan DNSSEC
 trusted_esupport=Versi BIND anda tidak menyokong pengesahan DNSSEC
@@ -1228,6 +1297,7 @@ trusted_setup=Untuk DNSSEC berguna untuk mengesahkan majoriti zon yang ditandata
 trusted_ok=Tetapkan DLV dan Dayakan Pengesahan DNSSEC
 trusted_warning=Amaran! Konfigurasi pelanggan BIND DNSSEC anda mengandungi kekunci tarikh yang akan berhenti berfungsi pada bulan Oktober 2017. Sama ada gunakan halaman Pengesahan <a href='$1'>BID DNSSEC</a> untuk menyesuaikan konfigurasi, atau klik butang di bawah.
 trusted_fix=Betulkan Konfigurasi DNSSEC
+
 xfer_title=Pemindahan Zon Ujian
 xfer_doing=Menguji pemindahan zon hamba dari $1 ..
 xfer_failed=.. dari $1: Gagal : $2

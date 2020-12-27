@@ -9,6 +9,7 @@ index_disable=Адключыць абранае
 index_enable=Уключыць абранае
 index_enabled=Уключаны?
 index_return=спіс праграм
+
 edit_title1=Стварыце праграму MIME Type
 edit_title2=Рэдагаваць праграму MIME Type
 edit_header=Падрабязнасці праграмы для апрацоўшчыка тыпаў MIME
@@ -22,18 +23,21 @@ edit_none=Няма (заўсёды выкарыстоўвайце праграм
 edit_term=Паказаць выхад у тэрмінале?
 edit_copious=Дае шмат прадукцыі?
 edit_desc=Апісанне тыпу MIME
+
 save_err=Не атрымалася захаваць праграму тыпу MIME
 save_etype=Адсутнічае ці недапушчальны тып MIME
 save_eprogram=Адсутнічае праграма апрацоўкі
 save_eclash=Уключаная праграма для ўведзенага тыпу MIME ўжо існуе
 save_etest=Адсутнічае ці недапушчальная тэставая каманда
 save_edesc=Няправільнае апісанне тыпу MIME
+
 delete_err=Не атрымалася выдаліць праграмы тыпу MIME
 disable_err=Не атрымалася адключыць праграмы тыпу MIME
 disable_eclash=Праграма адключэння MIME для $1 ужо існуе
 enable_err=Не атрымалася ўключыць праграмы тыпу MIME
 enable_eclash=Уключаная праграма тыпу MIME для $1 ужо існуе
 delete_enone=Ні адзін не абраны
+
 log_delete_mailcap=Выдаліць праграму тыпу MIME для $1 
 log_create_mailcap=Створана праграма тыпу MIME для $1 
 log_modify_mailcap=Мадыфікаваная праграма тыпу MIME для $1 

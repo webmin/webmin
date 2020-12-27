@@ -1,4 +1,5 @@
 index_samba=Samba
+
 index_start_wb=Iniciar servidores Winbind
 index_startmsg_wb=Los servidores Winbind no parecen estar ejecutándose en su sistema.
 index_restart_wb=Reiniciar servidores Winbind
@@ -9,51 +10,68 @@ index_stopmsg=Haga clic en este botón para apagar los servidores Samba en ejecu
 index_stopmsg_wb=Haga clic en este botón para cerrar los servidores Winbind en ejecución en su sistema.
 index_einclude=Advertencia: el archivo de configuración de Samba $1 contiene la directiva $2 o $3. Esto puede hacer que Webmin modifique el archivo incorrectamente.
 index_delete=Eliminar acciones seleccionadas
+
 global_users=Usuarios de samba
 global_group=Grupos de samba
 global_bind=Opciones de Winbind
+
 convert_ncdesc=La lista de usuarios que no desea convertir puede contener nombres de usuario, UID, nombres de grupo con un prefijo <tt>@</tt> o rangos de UID como <i>500-1000</i> o <i>500 -</ i >.
 convert_cannot=Los usuarios de Unix no se pueden convertir a usuarios de Samba
 convert_who=Usuarios de Unix para convertir
 convert_who0=Solo usuarios listados o rangos de UID
 convert_who1=Todos excepto usuarios listados y rangos de UID
+
 net_ip=dirección IP
+
 passwd_sync=¿Cambiar también la contraseña de Unix?
+
 smb_descriptionnone=Ninguna
 smb_master_auto=Automático
 smb_server=Servidor de contraseñas
 smb_ads=Directorio Activo
+
 smbuser_cannot=Los usuarios de Samba no pueden ser listados
+
 fmisc_oplocks=¿Habilitar bloqueos opcionales?
 fmisc_level2=Bloqueos de solo lectura?
+
 share_create=Crear automáticamente el directorio?
 share_owner=Crear con propietario
 share_createperms=Crear con permisos
 share_group=Crear con grupo
 share_samedesc1=Nota: esta configuración también afecta los valores predeterminados para todos los archivos compartidos.
 share_samedesc2=Nota: esta configuración también afecta a los valores predeterminados para todos los recursos compartidos de la impresora.
+
 esync_del_profile=Eliminar el perfil móvil cuando se elimina un usuario de Unix
 esync_chg_profile=Cambiar el nombre del perfil móvil cuando se cambia el nombre de un usuario de Unix
 esync_gid=Grupo SID o RID para nuevos usuarios
 esync_cannot=La sincronización del usuario no se puede configurar
 esync_egid=Falta grupo SID o RID
+
 mkpass_added=Adicional
 mkpass_user=Nombre de usuario
 mkpass_action=Acción tomada
 mkpass_skipcount=Se omitieron $1 usuarios para la conversión.
+
 savecopy_ename=No se ingresó el nombre compartido
+
 saveuser_ews=La opción 'Cuenta de confianza de estación de trabajo' no se puede habilitar para usuarios existentes
+
 savefshare_owner=Propietario faltante o no válido para el nuevo directorio
 savefshare_group=Grupo faltante o no válido para el nuevo directorio
 savefshare_perms=Permisos faltantes o no válidos para el nuevo directorio
 savefshare_emkdir=Error al crear el directorio : $1 
+
 start_err_wb=Error al iniciar los servidores Winbind
+
 restart_err=Error al reiniciar los servidores Samba
 restart_err_wb=Error al reiniciar los servidores Winbind
+
 viewu_ecmd=El programa de estado Samba $1 no parece estar instalado en su sistema. Quizás la <a href='$2'>configuración del módulo</a> sea incorrecta.
 viewu_kill=Desconectar usuarios seleccionados
 viewu_enone=Ningún usuario seleccionado
 viewu_refresh=Actualizar página.
+
 log_apply_wb=Servidores Winbind reiniciados
 log_stop=Servidores Samba detenidos
 log_stop_wb=Servidores Winbind detenidos
@@ -67,12 +85,14 @@ log_modify_group=Grupo Samba modificado $1
 log_delete_group=Grupo Samba eliminado $1 
 log_gsync=Sincronización de grupo Unix configurada
 log_manual=Archivo de configuración editado manualmente $1 
+
 acl_manual=¿Se puede editar manualmente el archivo de configuración?
 acl_group_opts=Opciones de grupo de samba
 acl_maint_groups=¿Puede ver, editar y agregar grupos?
 acl_maint_gsync=¿Se puede mantener la sincronización automática de grupos de Unix a Samba?
 acl_winbind=¿Se puede unir a dominios?
 acl_bind=¿Se puede acceder a las opciones de winbind?
+
 groups_title=Grupos de samba
 groups_name=Nombre del grupo
 groups_unix=Grupo Unix
@@ -88,6 +108,7 @@ groups_return=lista de grupos
 groups_add=Agregar un nuevo grupo Samba.
 groups_ecannot=No tiene permiso para ver o editar grupos de Samba
 groups_cannot=Los grupos de samba no se pueden enumerar
+
 gedit_title2=Editar grupo de samba
 gedit_title1=Crear grupo de samba
 gedit_header=Detalles del grupo de samba
@@ -100,11 +121,13 @@ gedit_unix=Grupo Unix
 gedit_unixgr=Grupo ..
 gedit_none=Ninguna
 gedit_set=Listado ..
+
 gsave_err=Error al guardar el grupo
 gsave_eunix=Falta o no es válido el nombre del grupo Unix o GID
 gsave_ename=Falta el nombre del grupo
 gsave_epriv=Falta de privilegios grupales
 gsave_elocal=Los privilegios solo se pueden establecer para grupos locales
+
 gsync_title=Sincronización grupal
 gsync_msg=Webmin se puede configurar para que los cambios en la lista de grupos de Unix se apliquen automáticamente a la lista de grupos de Samba. Esto solo funcionará cuando el módulo <b>Usuarios y grupos</b> Webmin se use para agregar, eliminar o cambiar grupos.
 gsync_add=Agregar un grupo Samba cuando se agrega un grupo Unix
@@ -115,10 +138,12 @@ gsync_type=Tipo de nuevos grupos
 gsync_priv=Privilegios para nuevos grupos (si son locales)
 gsync_ecannot=No tiene permiso para configurar la sincronización de grupo
 gsync_cannot=La sincronización de grupo no se puede configurar
+
 check_user1=$1 : las contraseñas cifradas no están habilitadas en la página <a href='$2'>Autenticación</a>.
 check_user2=$1 : Ni el archivo de contraseña de Samba ni la ruta a pdbedit se configuran en la página <a href='$2'>Configuración del módulo</a>.
 check_group1=$1 : los grupos solo son compatibles con Samba versión 3.
 check_group2=$1 : ni la ruta a smbgroupedit o los comandos de red se configuran en la página <a href='$2'>Configuración del módulo</a>.
+
 winbind_title=Vincular al dominio
 winbind_ecannot=No tienes permiso para enlazar dominios
 winbind_msg=Este formulario se puede utilizar para vincular su servidor Samba a un dominio de Windows, generalmente administrado por un servidor diferente.
@@ -134,6 +159,7 @@ winbind_edom=Falta el nombre de dominio
 winbind_cmd=Enlace al dominio con el comando $1 ..
 winbind_failed=.. ¡ha fallado! Vea el resultado anterior para conocer el motivo.
 winbind_ok=.. completo.
+
 bind_title=Opciones de Winbind
 bind_ecannot=No tienes permiso para editar las opciones de winbind
 bind_header=Opciones de enlace de dominio de Windows
@@ -152,9 +178,11 @@ bind_erealm=Reino Kerberos no válido
 bind_ecache=Tiempo de caché faltante o no válido
 bind_euid=Rango UID no válido: debe ser como 20000-30000
 bind_egid=Rango de GID no válido: debe ser como 20000-30000
+
 manual_title=Editar archivo de configuración
 manual_desc=Edición del archivo de configuración de Samba $1 ..
 manual_err=Error al guardar el archivo de configuración
 manual_edata=¡Nada entró!
+
 delete_err=Error al eliminar recursos compartidos
 delete_enone=Ninguna seleccionada

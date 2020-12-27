@@ -30,6 +30,7 @@ index_sdesc=תיאור הפעולה מכיל
 index_shost=שרת Webmin המקור
 index_long=להציג תיאורי פעולה מלאים?
 index_global=&lt;לא בשום מודול&gt;
+
 search_title=תוצאות חיפוש
 search_date=תאריך
 search_time=זמן
@@ -63,6 +64,7 @@ search_global_baduser=שם משתמש רע
 search_global_badpass=סיסמא שגויה
 search_global_twofactor=אסימון פקטור לא חוקי
 search_csv=ייצא כ- CSV.
+
 view_title=פרטי פעולה
 view_header=פרטי הפעולה הרשומה $1 
 view_action=תיאור
@@ -96,12 +98,14 @@ view_files=הקבצים השתנו והפקודות פועלות
 view_raw=נתוני יומן גולמי
 view_rawname=שם פרמטר
 view_rawvalue=ערך פרמטר
+
 acl_mods=יכול להציג יומני מודולים
 acl_all=את כל
 acl_sel=נבחר למטה ..
 acl_self=רק עצמי
 acl_users=יכול להציג פעולות על ידי משתמשים
 acl_rollback=האם ניתן להחזיר פעולות?
+
 rollback_title=פעולה חזרה
 rollback_rusure=האם אתה בטוח שברצונך להחזיר את כל הקבצים הרשומים למטה לתוכן שלהם לפני שננקטה פעולה זו? כל הנתונים שהם מכילים כרגע יוחלפו על ידי השינויים הבאים :
 rollback_isdir=תיקיה - לא יבוצע שום שינוי.
@@ -124,4 +128,5 @@ rollback_modfile=החזר את התוכן של הקובץ $1.
 rollback_deleted=הקובץ $1 נמחק.
 rollback_nodeleted=דילג על הקובץ $1 שאינו קיים.
 rollback_enone=לא נבחרו קבצים
+
 log_rollback=הפעולה חזרה $1 במודול $2

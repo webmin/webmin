@@ -31,11 +31,13 @@ index_mass=Borrar Usuarios Seleccionados
 index_mass2=Deshabilitar Seleccionados
 index_mass3=Habilitar Seleccionados
 index_gmass=Borrar Grupos Seleccionados
+
 search_title=Resultados de la Búsqueda
 search_notfound=No se han encontrado usuarios que coincidan
 search_found=Se encontraron $1 usuarios coincidentes ..
 search_gnotfound=No se han hallado grupos que coincidan
 search_gfound=Se encontraron $1 grupos coincidentes ..
+
 uedit_title=Editar Usuario
 uedit_title2=Crear Usuario
 uedit_details=Detalles de Usuario
@@ -106,6 +108,7 @@ uedit_forcechange=¿Forzar cambio en el siguiente login?
 uedit_uid_def=Automático
 uedit_uid_calc=Calculado
 uedit_disabled=Login temporalmente deshabilitado
+
 usave_err=Fallo al salvar al usuario
 usave_eedit=No puede editar este usuario
 usave_ecreate=No puede crear nuevos usuarios
@@ -154,6 +157,7 @@ usave_epasswd_re=La contraseña no cumple la expresión regular $1
 usave_epasswd_dict=La contraseña es una palabra de diccionario
 usave_epasswd_same=La contraseña contiene o es igual al nombre de usuario
 usave_eothers=El usuario se salvó con éxito, pero ocurrió un error en otro módulo : $1
+
 gedit_title=Editar Grupo
 gedit_title2=Crear Grupo
 gedit_details=Detalles de Grupo
@@ -168,6 +172,7 @@ gedit_cothers=¿Crear grupo en otros módulos?
 gedit_mothers=¿Modificar grupo en otros módulos?
 gedit_gid_calc=Calculado
 gedit_gid_def=Automático
+
 gsave_err=Error al salvar el grupo
 gsave_eedit=No puede editar este grupo
 gsave_ecreate=No puede crear nuevos grupos
@@ -183,6 +188,7 @@ usave_ehigid=GID debe de ser menor o igual que $1
 usave_egidused=El Grupo $1 ya está usando el GID $2
 usave_efromroot=No puede mover el directorio inicial desde /
 usave_etoroot=No puede mover el directorio inicial a /
+
 logins_title=Registro de Logins
 logins_head=Registro de Logins de $1
 logins_from=Login Desde
@@ -195,6 +201,7 @@ logins_none=No hay Registro de Logins
 logins_elist=No está autorizado a listar logins
 logins_elistu=No está autorizado a listar logins para '$1'
 logins_local=Local
+
 udel_title=Borrar Usuario
 udel_err=Fallo al borrar usuario
 udel_enum=Número de usuario no válido
@@ -216,6 +223,7 @@ udel_del2=Borrar Usuario y Directorio Inicial
 udel_others=¡AVISO! El directorio inicial $1 contiene $2 archivos propiedad de otros usuarios.
 udel_dothers=¿Borrar el usuario en otros módulos?
 udel_root=¡Aviso!. Si se borra el usuario root, puede que no pueda administrar su sistema de ahora en adelante.
+
 gdel_title=Borrar Grupo
 gdel_err=Error en borrado de grupo
 gdel_eroot=No está autorizado a borrar grupos de sistema (aquellos con un GID menor o igual a 10).
@@ -229,6 +237,7 @@ gdel_sure=¿Está seguro de querer borrar el grupo $1?
 gdel_del=Borrar Grupo
 gdel_dothers=¿Borrar grupo en otros módulos?
 gdel_other=Borrando de otros módulos ..
+
 many_title=Crear Múltiples Usuarios
 many_desc=Este formulario le permite crear varios usuarios de una vez desde un archivo de texto cargado. Cada línea del archivo especifica un usuario con el siguiente formato :
 many_desc2=nombre_de_usuario:contraseña:uid:gid:nombre_real:directorio_inicial:shell:mín:máx:aviso:inactivo:expiración
@@ -252,6 +261,7 @@ many_eshell=Shell no válido en la línea $1 : $2
 many_emkdir=Fallo al crear directorio inicial $1 : $2
 many_egtaken=El nombre de grupo ya está en uso en la línea $1 : $2
 many_ok=Creado usuario $1
+
 acl_uedit=Usuarios de Unix que pueden ser editados
 acl_uedit_all=Todos los usuarios
 acl_uedit_none=Ningun usuario
@@ -308,6 +318,7 @@ acl_useruid=¿Puede introducir número UID?
 acl_usergid=¿Puede introducir número GID?
 acl_udelete=¿Puede borrar usuarios?
 acl_gdelete=¿Puede borrar grupos?
+
 log_urename=Renombrado usuario $1 por $2
 log_umodify=Modificado usuario $1
 log_ucreate=Creado usuario $1
@@ -320,6 +331,7 @@ log_batch=Ejecutado archivo por lotes $1
 log_batch_l=Ejecutado archivo por lotes $1 ($2 creado, $3 modificado, $4 borrado)
 log_ubatch=Ejecutado archivo por lotes cargado
 log_ubatch_l=Ejecutado archivo por lotes cargado ($1 creado, $2 modificado, $3 borrado)
+
 batch_title=Ejecutar Archivo por Lotes
 batch_ecannot=No puede usar el formulario de archivo de lotes
 batch_desc=Este formulario le permite crear, modificar o borrar varios usuarios de una vez desde una archivo de texto cargado o local. Cada línea del archivo especifica una acción a realizar, dependiendo de su primer campo. Los formatos de línea son:
@@ -369,12 +381,14 @@ batch_edaccess=No está autorizado a borrar el usuario de la línea $1: $2
 batch_crypt=¿Las contraseñas ya están encriptadas?
 batch_return=formulario de lotes
 batch_eother=Pero ocurrió un error en otro módulo : $1
+
 who_title=Usuarios Logados
 who_user=Usuario de Unix
 who_tty=TTY
 who_when=Entró a las
 who_from=Entró desde
 who_none=No hay usuarios actualmente logados.
+
 export_title=Exportar Archivo por Lotes
 export_desc=Este formulario le permite crear un archivo por lotes que contenga algunos o todos los usuarios existentes en el sistema. El archivo puede utilizarse en la página Exportar Archivo por Lotes de otro sistema para recrear los usuarios exportados, asumiendo que utilice el formato de archivo por lotes seleccionado.
 export_to=Destino de archivo por lotes
@@ -388,6 +402,7 @@ export_eopen=Fallo al abrir archivo de salid : $!
 export_done=Se exportaron con éxito $1 usuarios al archivo $2 ($3).
 export_pft=Formato de archivo por lotes
 export_who=Usuarios a exportar
+
 pft_0=Sólo archivo <tt>passwd</tt> clásico
 pft_1=Archivo <tt>master.passwd</tt> de BSD
 pft_2=Archivos <tt>passwd</tt> y <tt>shadow</tt> estándar
@@ -395,6 +410,7 @@ pft_3=Archivo <tt>passwd</tt> Unixware
 pft_4=Archivos <tt>passwd</tt> y <tt>security</tt> de AIX
 pft_5=Archivos <tt>passwd</tt> y <tt>shadow</tt> corto de Openserver
 pft_6=BBDD NetInfo de MacOS
+
 umass_title=Borrar Usuarios
 umass_err=Fallo al borrar usuarios
 umass_sure=¿Seguro que desea borrar los $1 usuarios seleccionados? Sus directorios de inicio contienen $2 de archivos.
@@ -404,6 +420,7 @@ umass_del1=Borrar Usuarios
 umass_del2=Borrar Usuarios y Directorios Iniciales
 umass_eroot=No está autorizado a borrar usuarios de sistema (aquellos cuyo UID es menor o igual a 10).
 umass_doing=Borrando usuario $1 ..
+
 gmass_title=Borrar Grupos
 gmass_err=Fallo al borrar grupos
 gmass_sure=¿Seguro que desea borrar los $1 grupos seleccionados?
@@ -413,12 +430,14 @@ gmass_del=Borrar Grupos
 gmass_eroot=No está autorizado a borrar grupos de sistema (aquellos cuyo GID es menor o igual a 10).
 gmass_doing=Borrando grupo $1 ..
 gmass_eprimary=El grupo $1 no puede borrarse, dado que es el grupo primario del usuario $2.
+
 dmass_title=Deshabilitar Usuarios
 dmass_sure=¿Seguro que desea deshabilitar los $1 usuarios seleccionados? Pueden ser rehabilitados más tarde sin cambio en los datos de sus contraseñas.
 dmass_dis=Deshabilitar Usuarios
 dmass_pass=Bloqueando temporalmente contraseña ..
 dmass_doing=Deshabilitando usuario $1
 dmass_already=.. ¡ya deshabilitado!
+
 emass_title=Habilitar Usuarios
 emass_pass=Desbloqueando contraseña ..
 emass_doing=Habilitando usuario $1 ..

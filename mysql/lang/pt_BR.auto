@@ -4,18 +4,22 @@ index_version2=$3 versão $1 em $2
 index_ecnf=O arquivo de configuração do MySQL $1 não foi encontrado no seu sistema. Use a página de configuração do módulo <a href='$2'></a> para definir o caminho correto.
 index_nodbs3=Nenhum banco de dados MySQL corresponde à sua pesquisa.
 index_mysqlstatus=Script de inicialização do MySQL
+
 dbase_empty=Banco de dados vazio
 dbase_name=Nome
 dbase_type=Tipo
 dbase_typetable=Tabela 1)
 dbase_typeindex=Índice
 dbase_typeview=Visão
+
 ddrop_rusure2=Tem certeza de que deseja esvaziar o banco de dados $1 ? $2 tabelas contendo $3 linhas de dados serão excluídas.
 ddrop_empty2=Excluir todas as tabelas
+
 view_refresh=Atualizar
 view_searchheadnot=Resultados da pesquisa para não $1 no campo $2 ..
 view_go=Ir
 view_sqlrun=Resultados gerados pela consulta SQL : $1 
+
 user_vwarning=AVISO: Esse usuário do MySQL é o logon de administração do domínio $1 do Virtualmin. Alterar as configurações aqui pode causar erros no Virtualmin.
 user_locked=Bloqueado
 user_priv_select=Selecionar dados da tabela
@@ -60,9 +64,13 @@ user_emax_user_connections=O número máximo de logins simultâneos deve ser um 
 user_emax_connections=O número máximo de conexões por hora deve ser um número
 user_emax_updates=O número máximo de atualizações por hora deve ser um número
 user_emax_questions=O número máximo de consultas por hora deve ser um número
+
 hosts_return=permissões de host
+
 exec_cs=Conjunto de caracteres para dados
+
 log_manual=Arquivo de configuração editado manualmente
+
 backup_prefix=Prefixo do nome do arquivo
 backup_eprefix=O prefixo do nome do arquivo não pode conter /
 backup_noprefix=Nenhum
@@ -88,6 +96,7 @@ backup_bodyspace=Tamanho do sistema de arquivos: $1 Espaço livre : $2
 backup_bodyall=todos
 backup_edownloadall=Somente um backup de banco de dados único pode ser baixado
 backup_edownloadsave=O modo de download não pode ser usado para backups agendados
+
 cnf_key_buffer_size=Tamanho do buffer da chave
 cnf_equery_cache_size=Tamanho de cache de consulta inválido
 cnf_table_open_cache=Tabelas para armazenar em cache
@@ -96,12 +105,15 @@ cnf_ekey_buffer_size=Tamanho do buffer da chave ausente ou inválido
 cnf_esort_buffer_size=Tamanho do buffer de classificação ausente ou inválido
 cnf_ilt=Tempo limite de bloqueio do InnoDB (em segundos)
 cnf_eilt=O tempo limite do bloqueio do InnoDB deve ser um número inteiro
+
 manual_title=Editar arquivos de configuração
 manual_file=Edite o arquivo de configuração:
 manual_ok=Está bem
 manual_efile=Arquivo de configuração inválido!
 manual_err=Falha ao salvar o arquivo de configuração
+
 syslog_desc2=Mensagem de erro do MySQL
+
 mysqlpass_err=Modo de segurança MySQL
 mysqlpass_esafecmd=O comando $1 necessário para iniciar o MySQL com autenticação desactivada não foi encontrado
 mysqlpass_eshutdown=O encerramento falhou : $1 

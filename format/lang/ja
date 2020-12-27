@@ -15,7 +15,9 @@ index_use=使用
 index_free=空き
 index_format=このディスクはフォーマットされていません
 index_return=ディスクのリスト
+
 edit_ecannot=このディスクは編集できません
+
 edit_title=パーティションの編集
 edit_header=パーティションの詳細
 edit_location=場所
@@ -56,6 +58,7 @@ edit_tunedesc2=このパーティションはまだ設定されていないの�
 edit_tunedesc3=このパーティションは現在マウントされているためファイル システムを調整できません。<a href=/mount/>ファイル システム モジュール</a>を使用して最初にアンマウントしてください。
 edit_tunedesc4=このパーティションにはファイル システムがないのでファイル システムを調整できません。
 edit_tunedesc5=このパーティションのファイル システムは調整できません。<tt>UFS</tt> ファイル システムのみ調整できます。
+
 save_ecannot=このディスクは編集できません
 save_edelete=パーティションを削除できませんでした
 save_esave=パーティションを保存できませんでした
@@ -64,6 +67,7 @@ save_eend='$1' は無効な終了シリンダです
 save_estartmin=開始シリンダは 0 より大きい必要があります
 save_eendmax=終了シリンダは $1 より小さい必要があります。
 save_estartend=開始シリンダは終了シリンダより小さい必要があります
+
 newfs_title=ファイル システムを作成
 newfs_ecannot=このディスクはフォーマットできません
 newfs_desc=この画面の下のボタンをクリックすると、新規の $1をデバイス $2 に構築します。このパーティションにあるすべてのデータは永久に消去されます。
@@ -89,6 +93,7 @@ newfs_err=ファイル システムを作成できませんでした
 newfs_exec=コマンド $1 を実行中..
 newfs_failed=..　コマンドが失敗しました。
 newfs_ok=..　コマンドを完了しました。
+
 fsck_title=ファイル システムの修復
 fsck_ecannot=このディスクは修復できません
 fsck_desc=この <b>修復</b> ボタンをクリックすると  $2 上の $1を調べ随時にそれを修復します。検査と修復のレベルは下の選択により決定されます。
@@ -106,6 +111,7 @@ fsck_37=検査中にプロセスが強制終了されました
 fsck_39=修復できないエラーを検出しました。
 fsck_40=検出されたエラーはありません
 fsck_unknown=不明のエラー
+
 tunefs_title=ファイル システムの調整
 tunefs_ecannot=このディスクは調整できません
 tunefs_desc=これは $2 上の $1  の多様なパラメータを調節可能にします。このファイル システムの既存のファイルは影響を受けません。
@@ -122,6 +128,7 @@ tunefs_err=ファイル システムを調整できませんでした
 tunefs_exec=コマンド $1 を実行中..
 tunefs_failed=.. コマンドが失敗しました。
 tunefs_ok=.. コマンドを完了しました。
+
 select_device=SCSI コントローラ $1 ターゲット $2 ユニット $3
 select_idedevice=IDE デバイス $1
 select_part=SCSI コントローラ $1 ターゲット $2 ユニット $3 パーティション $4
@@ -131,8 +138,10 @@ esun=パーティションは Sun のハードウェアでのみ変更できま�
 emounted=ディスクにマウントされたパーティションがあります
 elast=最後のパーティションは削除できません
 eformat=<tt>フォーマット</tt> ディスクがありませんでした。
+
 fstype_ufs=Solaris Unix ファイル システム
 fstype_unknown=不明のファイル システム
+
 acl_disks=このユーザがパーティションを切ってフォーマットできるディスク
 acl_dall=すべてのディスク
 acl_dsel=選択..

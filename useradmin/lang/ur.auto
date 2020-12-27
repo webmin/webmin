@@ -51,11 +51,13 @@ index_mass=منتخب صارفین کو حذف کریں
 index_mass2=غیر فعال منتخب
 index_mass3=منتخب کردہ کو فعال کریں
 index_gmass=منتخب گروپس کو حذف کریں
+
 search_title=تلاش کے نتائج
 search_notfound=کوئی مماثل صارفین نہیں ملے
 search_found=Found $1 matching users ..
 search_gnotfound=کوئی مماثل گروپ نہیں ملا
 search_gfound=Found $1 matching groups ..
+
 uedit_title=صارف میں ترمیم کریں
 uedit_title2=صارف بنائیں
 uedit_details=صارف کی تفصیلات
@@ -133,6 +135,7 @@ uedit_uid_calc=حساب کتاب
 uedit_disabled=لاگ ان عارضی طور پر غیر فعال ہے
 uedit_sys=سسٹم ڈیفالٹ
 uedit_clone=کلون صارف
+
 usave_err=صارف کو بچانے میں ناکام
 usave_eedit=آپ اس صارف میں ترمیم نہیں کرسکتے ہیں
 usave_ecreate=آپ نئے صارف نہیں بنا سکتے
@@ -186,6 +189,7 @@ usave_epasswd_same=پاس ورڈ پر مشتمل ہے یا صارف نام کی 
 usave_epasswd_mindays=Password was changed less than $1 days ago
 usave_epasswd_cmd=پاس ورڈ کی توثیق کا حکم ناکام ہوگیا
 usave_eothers=The user was successfully saved, but an error occured in another module : $1
+
 gedit_title=گروپ میں ترمیم کریں
 gedit_title2=گروپ بنائیں
 gedit_details=گروپ کی تفصیلات
@@ -208,6 +212,7 @@ gedit_selu=گروپ میں موجود صارفین
 gedit_pri=پرائمری گروپ ممبرز
 gedit_prinone=کسی بھی صارف کے پاس اس گروپ کو ان کا بنیادی نہیں ہے
 gedit_clone=کلون گروپ
+
 gsave_err=گروپ کو بچانے میں ناکام
 gsave_eedit=آپ اس گروپ میں ترمیم نہیں کرسکتے ہیں
 gsave_ecreate=آپ نئے گروپس نہیں بنا سکتے
@@ -224,6 +229,7 @@ usave_egidused=Group $1 is already using GID $2
 gsave_egidused2=GID پہلے ہی استعمال میں ہے
 usave_efromroot=آپ ہوم ڈائریکٹری کو / سے منتقل نہیں کرسکتے ہیں
 usave_etoroot=آپ ہوم ڈائرکٹری کو / میں منتقل نہیں کرسکتے ہیں
+
 logins_title=ریکارڈ شدہ لاگ ان
 logins_head=Recorded logins for $1
 logins_from=سے لاگ ان
@@ -236,6 +242,7 @@ logins_none=کوئی لاگ ان ریکارڈ نہیں
 logins_elist=آپ کو لاگ ان درج کرنے کی اجازت نہیں ہے
 logins_elistu=You are not allowed to list logins for '$1'
 logins_local=مقامی
+
 udel_title=صارف کو حذف کریں
 udel_err=صارف کو حذف کرنے میں ناکام
 udel_enum=غلط صارف نمبر
@@ -258,6 +265,7 @@ udel_del2=صارف اور ہوم ڈائرکٹری کو حذف کریں
 udel_others=WARNING! Home directory $1 contains $2 files owned by other users.
 udel_dothers=دوسرے ماڈیول میں صارف کو حذف کریں؟
 udel_root=انتباہ! اگر جڑ صارف کو حذف کر دیا گیا ہے تو ، آپ مستقبل میں اپنے نظام کا نظم نہیں کرسکیں گے۔
+
 gdel_title=گروپ کو حذف کریں
 gdel_err=گروپ کو حذف کرنے میں ناکام
 gdel_eroot=آپ کو سسٹم گروپس (جو GID 10 سے کم یا اس کے برابر ہیں) کو حذف کرنے کی اجازت نہیں ہے۔
@@ -271,6 +279,7 @@ gdel_sure=Are you sure you want to delete the group $1 ?
 gdel_del=گروپ کو حذف کریں
 gdel_dothers=گروپ کو دوسرے ماڈیولز میں حذف کریں؟
 gdel_other=دوسرے ماڈیولز سے حذف کیا جارہا ہے ..
+
 many_title=ایک سے زیادہ صارفین بنائیں
 many_desc=یہ فارم آپ کو اپلوڈ شدہ یا مقامی ٹیکسٹ فائل سے ایک ہی وقت میں بہت سارے صارفین تخلیق کرنے کی سہولت دیتا ہے۔ فائل کی ہر لائن ایک صارف کو درج ذیل فارمیٹ میں متعین کرتی ہے۔
 many_desc2=username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire
@@ -294,6 +303,7 @@ many_eshell=Invalid shell at line $1 : $2
 many_emkdir=Failed to create home directory $1 : $2
 many_egtaken=Group name already in use at line $1 : $2
 many_ok=Created user $1
+
 acl_uedit=یونکس صارفین جن میں ترمیم کی جاسکتی ہے
 acl_uedit_all=تمام صارفین
 acl_uedit_none=کوئی صارف نہیں
@@ -353,6 +363,7 @@ acl_udelete=کیا صارفین کو حذف کرسکتے ہیں؟
 acl_gdelete=گروپس کو حذف کرسکتے ہیں؟
 acl_urename=کیا صارفین کا نام تبدیل کر سکتے ہیں؟
 acl_grename=کیا گروپوں کا نام بدل سکتا ہے؟
+
 log_urename=Renamed user $1 to $2
 log_umodify=Modified user $1
 log_ucreate=Created user $1
@@ -371,6 +382,7 @@ log_ugbatch=گروپ بیچ فائل کو اپلوڈ کیا گیا
 log_ugbatch_l=Executed uploaded group batch file ($1 created, $2 modified, $3 deleted)
 log_delete_users=Deleted $1 users
 log_delete_groups=Deleted $1 groups
+
 batch_title=بیچ فائل کو پھانسی دیں
 batch_ecannot=آپ بیچ فائل فارم استعمال نہیں کرسکتے ہیں
 batch_desc=یہ فارم آپ کو اپ لوڈ کردہ یا مقامی ٹیکسٹ فائل سے ایک ہی وقت میں بہت سارے صارفین کو بنانے ، تبدیل کرنے یا حذف کرنے کی سہولت دیتا ہے۔ فائل کی ہر لائن اپنے پہلے فیلڈ کے لحاظ سے ایک ایک کارروائی کرنے کی وضاحت کرتی ہے۔ لائن فارمیٹس یہ ہیں :
@@ -429,12 +441,14 @@ batch_eexpire=Invalid expiry day on line $1 : $2
 batch_echange=Invalid password change day on line $1 : $2
 batch_instr=ہدایات اور بیچ کی شکل
 batch_header=بیچ صارف کی تخلیق ، اپ ڈیٹ اور حذف کرنے کے اختیارات
+
 who_title=صارفین میں لاگ ان
 who_user=یونکس صارف
 who_tty=ٹی ٹی وائی
 who_when=میں لاگ ان
 who_from=سے لاگ ان
 who_none=فی الحال کوئی صارف لاگ ان نہیں ہے۔
+
 export_title=بیچ فائل برآمد کریں
 export_desc=یہ فارم آپ کو ایک بیچ فائل بنانے کی اجازت دیتا ہے جس میں سسٹم پر موجود کچھ یا سبھی صارفین موجود ہوں۔ کسی دوسرے سسٹم میں فائل کو ایگزیکیوٹ بیچ فائل کے صفحے پر استعمال کیا جاسکتا ہے تاکہ برآمد شدہ صارفین کو دوبارہ تخلیق کیا جا ass ، یہ فرض کرکے کہ یہ منتخب شدہ بیچ فائل کی شکل استعمال کرتی ہے۔
 export_header=بیچ صارف برآمد کرنے کے اختیارات
@@ -455,6 +469,7 @@ export_done=Successfully exported $1 users to the file $2 ($3).
 export_pft=بیچ فائل کی شکل
 export_who=صارفین برآمد کریں
 export_ecannot=آپ کو صارف برآمد کرنے کی اجازت نہیں ہے
+
 gexport_title=گروپس بیچ فائل برآمد کریں
 gexport_desc=یہ فارم آپ کو بیچ فائل بنانے کی اجازت دیتا ہے جس میں سسٹم پر کچھ یا سبھی دستیاب گروپس شامل ہیں۔ برآمد شدہ گروپس کو دوبارہ تخلیق کرنے کے لئے فائل کو دوسرے سسٹم میں گروپ بیچ ایگزیکیوٹ پیج پر استعمال کیا جاسکتا ہے۔
 gexport_header=بیچ گروپ برآمد کے اختیارات
@@ -463,6 +478,7 @@ gexport_ecannot=آپ کو گروپس برآمد کرنے کی اجازت نہی�
 gexport_err=گروپ بیچ فائل برآمد کرنے میں ناکام
 gexport_egid=حد میں غلط پہلے GID
 gexport_egid2=حد میں غلط دوسرا GID
+
 pft_0=Classic <tt>passwd</tt> file only
 pft_1=BSD <tt>master.passwd</tt> file
 pft_2=Standard <tt>passwd</tt> and <tt>shadow</tt> files
@@ -470,6 +486,7 @@ pft_3=Unixware <tt>passwd</tt> file
 pft_4=AIX <tt>passwd</tt> and <tt>security</tt> files
 pft_5=OpenServer <tt>passwd</tt> and short <tt>shadow</tt> files
 pft_6=MacOS NetInfo ڈیٹا بیس
+
 umass_title=صارفین کو حذف کریں
 umass_err=صارفین کو حذف کرنے میں ناکام
 umass_sure=Are you sure you want to delete the $1 selected users? Their home directories contain $2 of files.
@@ -481,6 +498,7 @@ umass_del1=صارفین کو حذف کریں
 umass_del2=صارفین اور ہوم ڈائریکٹریز کو حذف کریں
 umass_eroot=آپ کو سسٹم صارفین (جو UID 10 سے کم یا اس کے برابر ہیں) کو حذف کرنے کی اجازت نہیں ہے۔
 umass_doing=Deleting user $1 ..
+
 gmass_title=گروپس کو حذف کریں
 gmass_err=گروپس کو حذف کرنے میں ناکام
 gmass_sure=Are you sure you want to delete the $1 selected groups?
@@ -490,16 +508,19 @@ gmass_del=گروپس کو حذف کریں
 gmass_eroot=آپ کو سسٹم گروپس (جو GID 10 سے کم یا اس کے برابر ہیں) کو حذف کرنے کی اجازت نہیں ہے۔
 gmass_doing=Deleting group $1 ..
 gmass_eprimary=The group $1 cannot be deleted, as it is the primary group of user $2.
+
 dmass_title=صارفین کو غیر فعال کریں
 dmass_sure=Are you sure you want to disable the $1 selected users? They can be re-enabled later with no loss of their passwords or data.
 dmass_dis=صارفین کو غیر فعال کریں
 dmass_pass=عارضی طور پر تالا لگا پاس ورڈ ..
 dmass_doing=Disabling user $1 ..
 dmass_already=.. پہلے ہی معذور!
+
 emass_title=صارفین کو فعال کریں
 emass_pass=غیر مقفل پاس ورڈ ..
 emass_doing=Enabling user $1 ..
 emass_already=.. پہلے ہی قابل!
+
 gbatch_title=گروپ بیچ فائل پر عمل کریں
 gbatch_ecannot=آپ گروپ بیچ فائل فارم استعمال نہیں کرسکتے ہیں
 gbatch_desc=یہ فارم آپ کو ایک اپ لوڈ کردہ یا مقامی ٹیکسٹ فائل سے ایک ہی وقت میں بہت سارے گروپس بنانے ، ان میں ترمیم کرنے یا اسے حذف کرنے کی سہولت دیتا ہے۔ فائل کی ہر لائن اپنے پہلے فیلڈ کے لحاظ سے ایک ایک کارروائی کرنے کی وضاحت کرتی ہے۔ لائن فارمیٹس یہ ہیں :

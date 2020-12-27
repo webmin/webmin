@@ -2,8 +2,10 @@ index_title=PPP 다이얼 인 서버
 index_return=PPP 지수
 index_none=이 모듈의 기능에 액세스 할 수 없습니다.
 index_delete=선택된 계정 삭제
+
 secrets_none=아직 PPP 계정이 생성되지 않았습니다.
 secrets_ecannot=PPP 계정을 편집 할 수 없습니다
+
 log_deletes=$1 PPP 계정을 삭제했습니다.
 log_apply=적용된 Mgetty 구성
 log_options=저장된 PPP 옵션
@@ -15,6 +17,7 @@ log_dialin_move=발신자 번호 ($1)를 이동했습니다.
 log_mgetty_create=직렬 포트 $1 을 (를) 생성했습니다
 log_mgetty_modify=수정 된 직렬 포트 $1 
 log_mgetty_delete=직렬 포트 $1 을 (를) 삭제했습니다.
+
 options_title=PPP 옵션
 options_serial=직렬 포트 $1 
 options_dev=기기 $1 
@@ -45,6 +48,7 @@ options_idle=연결 해제 전의 유휴 시간
 options_idle_def=못
 options_eidle=유휴 시간이 없거나 잘못되었습니다
 options_ecannot=PPP 옵션을 편집 할 수 없습니다
+
 mgetty_title=직렬 포트 구성
 mgetty_ecmd=시스템에서 $1 명령을 찾을 수 없습니다. 이 프로그램은 모뎀 또는 직접 연결을 통한 직렬 포트 로그인을 처리하는 데 필요합니다.
 mgetty_desc=서버가 모뎀 또는 직접 연결을 통해 직렬 포트에 로그인 할 수 있도록하려면 아래에 나열되어 있어야합니다. 이 목록에 포트를 추가하면 $1 프로그램이 모뎀 연결에 응답하고 로그인 프롬프트를 표시하도록 구성됩니다.
@@ -86,6 +90,7 @@ mgetty_apply=구성 적용
 mgetty_applydesc=$1 명령을 실행하고 모든 Mgetty 프로세스를 종료하여 현재 직렬 포트 구성을 적용하려면이 단추를 클릭하십시오.
 mgetty_applyerr=구성을 적용하지 못했습니다
 mgetty_ecannot=직렬 포트 구성을 편집 할 수 없습니다
+
 dialin_title=발신자 ID 액세스
 dialin_desc=이 페이지에서는 발신자의 전화 번호를 기반으로 전화 접속 액세스를 허용하거나 거부하도록 Mgetty를 구성 할 수 있습니다. 전화가 오면 전화 번호와 일치하는 목록의 첫 번째 항목에 따라 전화가 수락되는지 여부가 결정됩니다.
 dialin_efile=시스템에서 Mgetty 발신자 ID 액세스 제어 파일 $1 을 (를) 찾을 수 없습니다. Mgetty가 설치되어 있지 않거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
@@ -106,9 +111,12 @@ dialin_move=움직임
 dialin_err=발신자 번호를 저장하지 못했습니다
 dialin_enumber=전화 번호가 없거나 잘못되었습니다
 dialin_ecannot=발신자 번호 액세스 권한을 수정할 수 없습니다
+
 acl_pages=사용 가능한 페이지
 acl_direct=한 페이지로 바로 이동 하시겠습니까?
+
 sync_ecannot=유닉스 -PPP 동기화 옵션을 편집 할 수 없습니다
 sync_title=사용자 동기화
+
 delete_err=계정을 삭제하지 못했습니다
 delete_enone=선택된 사항 없음

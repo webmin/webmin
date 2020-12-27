@@ -5,6 +5,7 @@ index_user=Ändere Passwort für Benutzer:
 index_euseradmin=Dieses Modul kann derzeit nicht benutzt werden, da das <tt>Benutzer und Gruppen</tt>-Modul nicht installiert ist oder von Ihrem System nicht unterstützt wird.
 index_toomany=Es können nicht alle Benutzer Ihres Systems angezeigt werden, da es zu viele sind. Bitte geben Sie den Namen des Benutzers ein, dessen Passwort Sie ändern möchten.
 index_none=Sie haben keinen Zugriff zu irgendeinem Benutzer um deren Passwörter zu ändern.
+
 passwd_title=Passwort ändern
 passwd_header=Passwort eines Unix-Benutzers ändern
 passwd_for=Ändere Passwort für
@@ -23,7 +24,9 @@ passwd_erepeat=Die neuen Passworte stimmen nicht überein
 passwd_ecmd=$1 fehlgeschlagen : $2
 passwd_ok=Das Passwort für Benutzer $1 wurde erfolgreich geändert. Wenn dies Ihr momentaner Webmin-Benutzername ist, dann müssen Sie sich eventuell neu an Webmin anmelden.
 passwd_ok2=Das Passwort für den Benutzer $1 wurde erfolgreich geändert.
+
 log_passwd=Das Passwort für Benutzer $1 wurde erfolgreich geändert.
+
 acl_repeat=Muss das Passwort erneut eingeben?
 acl_self=Immer erlauben eigenes Passwort zu ändern?
 acl_old=Muss das alte Passwort eingeben?

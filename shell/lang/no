@@ -1,17 +1,18 @@
-__norefs=1
-acl_chroot=Chroot til katalog
-acl_shellenv=Brukt valgt brukers miljø?
-acl_user=Utfør kommandoer som brukeren
-acl_user_def=Gjeldende Webmin bruker
+index_title=Kommandoskall
+index_ok=Utfør kommando:
+index_history=Kommando historikk
 index_clear=Nullstill historikk
 index_clearcmds=Nullstill kommandoer
 index_desc=Skriv inn en skallkommando som skal utføres i tekstfeltet nedenfor. Du kan bruke <tt>cd</tt> kommandoen til å endre aktiv katalog for etterfølgende kommandoer.
-index_edit=Rediger forrige
-index_history=Kommando historikk
-index_ok=Utfør kommando:
 index_pok=Utfør forrige kommando
-index_timedout=Kommando ble terminert etter at den hadde kjørt i $1 sekunder.
-index_title=Kommandoskall
+index_edit=Rediger forrige
 index_trunced=Total output på $2 ble trunkert på $1.
-log_clear=Nullstilte kommandohistorikk
+index_timedout=Kommando ble terminert etter at den hadde kjørt i $1 sekunder.
+
+acl_user=Utfør kommandoer som brukeren
+acl_user_def=Gjeldende Webmin bruker
+acl_shellenv=Brukt valgt brukers miljø?
+acl_chroot=Chroot til katalog
+
 log_run=Kjørte kommando $1
+log_clear=Nullstilte kommandohistorikk

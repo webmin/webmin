@@ -12,6 +12,7 @@ index_sdesc=La description de l'action contient
 index_shost=Serveur Webmin source
 index_long=Afficher les descriptions d'actions complètes?
 index_global=&lt;Pas dans aucun module&gt;
+
 search_none2=Aucune action ne correspond à votre recherche d'actions
 search_critd=où la description contient <tt>$1</tt>
 search_global=Aucun
@@ -25,6 +26,7 @@ search_global_baduser=Mauvais nom d'utilisateur
 search_global_badpass=Mauvais mot de passe
 search_global_twofactor=Jeton à deux facteurs non valide
 search_csv=Exportez au format CSV.
+
 view_rollback2=Restaurer les fichiers sélectionnés
 view_anno=Annotation d'entrée de journal
 view_output=Contenu de la page Webmin
@@ -32,6 +34,9 @@ view_files=Fichiers modifiés et commandes exécutées
 view_raw=Données de journal brutes
 view_rawname=Le nom du paramètre
 view_rawvalue=Valeur de paramètre
+
 acl_self=Seul moi
+
 rollback_enone=Aucun fichier sélectionné
+
 log_rollback=Action annulée $1 dans le module $2 

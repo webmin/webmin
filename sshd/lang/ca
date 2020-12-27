@@ -16,8 +16,10 @@ index_type=Tipus de clau SSH:
 index_rsa1=RSA (per a SSH v1)
 index_rsa=RSA (per a SSH v2)
 index_dsa=DSA (per a SSH v2)
+
 bits=bits
 secs=segons
+
 users_title=Autenticació
 users_header=Opcions de connexió i autenticació
 users_expire=Dies d'avís abans de l'expiració del compte
@@ -52,6 +54,7 @@ users_eauthkeys=Hi falta el fitxer de claus d'autorització o bé no sembla vàl
 users_maxauthtries=Nombre màxim d'intents de connexió
 users_emaxauthtries=Hi falta el nombre d'intents d'entrada per connexió o bé no és numèric
 users_chal=Utilitza autenticació pregunta/resposta
+
 net_title=Xarxa
 net_header=Opcions de Xarxa
 net_port=Escolta el port
@@ -89,6 +92,7 @@ net_eprots=Has de seleccionar al menys un protocol
 net_eladdress='$1' no és una adreça vàlida per escoltar
 net_elport='$1' no és un port vàlid per escoltar
 net_elisten2=No has introduït cap adreça per escoltar
+
 access_title=Control d'Accés
 access_header=Opcions de control d'accés de connexió i xarxa
 access_allowu=Permet només els usuaris
@@ -106,6 +110,7 @@ access_eallowg=No has introduït cap grup permès
 access_edenyg=No has introduït cap grup denegat
 access_eallowh=No has introduït cap host permès
 access_edenyh=No has introduït cap host denegat
+
 misc_title=Opcions Miscel·lànies
 misc_header=Altres opcions miscel·lànies del servidor SSH
 misc_x11=Permet el reenviament de connexions X11
@@ -129,14 +134,17 @@ misc_eumask=Hi falta l'umask octal de 4 dígits bé és invàlid.
 misc_ebits=Hi falta la mida de la clau del servidor bé és invàlida.
 misc_eregen=Hi falta l'interval de regeneració de claus bé és invàlid.
 misc_epid=Hi falta el camí del fitxer de PID o bé és invàlid.
+
 start_err=No s'ha pogut iniciar el servidor SSH
 apply_epid=No s'està executant
+
 hosts_title=Opcions de Host Client
 hosts_header=Hosts Client SSH
 hosts_none=No s'ha definit cap opció de host client. Totes les connexions de clients SSH utilitzaran els valors per defecte.
 hosts_all=Tots els Hosts
 hosts_add=Afegeix opcions pel host client.
 hosts_return=a la llista de hosts clients
+
 host_create=Addició d'Opcions de Host
 host_edit=Edició d'Opcions de Host
 host_header=Opcions de client del host SSH
@@ -192,6 +200,7 @@ host_eprots=Has de seleccionar al menys un protocol
 host_proxy=Ordre proxy de connexió
 host_proxy_def=Cap
 host_eproxy=Hi falta l'ordre proxy de connexió o bé sembla invàlida
+
 log_users=S'han canviat les opcions d'autenticació
 log_net=S'han canviat les opcions de xarxa
 log_access=S'ha canviat el control d'accés
@@ -206,6 +215,7 @@ log_stop=S'ha aturat el servidor SSH
 log_start=S'ha iniciat el servidor SSH
 log_apply=S'ha aplicat la configuració
 log_manual=Editant manualment el fitxer de configuració $1
+
 sync_title=Configuració de la Clau SSH de l'Usuari
 sync_desc=Aquesta pàgina permet configurar la configuració automàtica de SSH dels nous usuaris Unix creats al sistema. Si està configurada, els nous usuaris no hauran d'executar <tt>ssh-keygen</tt> abans d'utilitzar SSH.
 sync_create=Configura la clau SSH dels nous usuaris Unix
@@ -214,9 +224,11 @@ sync_pass=Utilitza la contrasenya com a frase de pas
 sync_gnupg=Configura la clau GNUPG dels nous usuaris Unix
 sync_type=Tipus de clau
 sync_auto=&lt;Automàtic&gt;
+
 keys_title=Claus SSH del Host
 keys_desc=Aquesta pàgina permet visualitzar les claus SSH d'aquest host.
 keys_none=No s'ha pogut trobar cap entrada HostKey a la configuració de SSHD.
+
 manual_title=Edició dels Fitxers de Configuració
 manual_ecannot=No tens permís per editar el fitxer de configuració del servidor SSH
 manual_ok=Edita
@@ -224,5 +236,6 @@ manual_efile=El fitxer seleccionat no forma part de la configuració del servido
 manual_file=Edita el fitxer de configuració:
 manual_edata=No has introduït res!
 manual_err=No s'ha pogut desar la configuració del fitxer
+
 dknown_err=No s'han pogut suprimir els hosts coneguts
 dknown_enone=No n'hi ha cap de seleccionat

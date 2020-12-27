@@ -57,20 +57,27 @@ index_rotate=統計を更新する
 index_rotatedesc=このボタンをクリックすると、ログに記録されたすべてのネットワークトラフィックが現在の時刻まで処理され、すぐにレポートに使用できるようになります。
 index_eiptables=警告-IPtables構成にエラーがあります： $1。帯域幅監視を設定すると、すべてのファイアウォールルールがクリアされます。
 index_return=報告書
+
 log_setup=インターフェイス $1で帯域幅監視を設定します
 log_turnoff=無効な帯域幅監視
 log_rotate=更新された統計
+
 acl_setup=監視を設定および無効化できますか？
+
 turnoff_ecannot=監視を無効にすることはできません
+
 setup_ecannot=監視を有効にすることはできません
 setup_eiface=インターフェース名が欠落しているか無効です
 setup_ezone=選択したインターフェイスのショアウォールゾーンが見つかりませんでした
+
 system_firewall=IPtables
 system_ipfw=IPFW
 system_ipfilter=IPFilter
 system_shorewall=ショアウォール
+
 syslog_syslog=syslog
 syslog_syslog-ng=Syslog-NG
+
 rotate_title=統計の更新
 rotate_doing=記録されたネットワークトラフィックの処理 ..
 rotate_done=..完了。

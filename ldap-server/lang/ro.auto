@@ -16,6 +16,7 @@ index_setupdesc=Baza de date a serverului dvs. LDAP nu conține încă DN rădă
 index_setup=Creați DN rădăcină
 index_permsdesc=Directorul de date LDAP al serverului $1 conține fișiere care nu sunt deținute de utilizatorul corect $2, ceea ce înseamnă că este puțin probabil să se pornească corect. Cu toate acestea, Webmin poate rezolva acest lucru făcând clic pe butonul de mai jos.
 index_perms=Remediază dreptul de proprietate
+
 connect_eserver=Serverul LDAP $1 nu există
 connect_euser=Niciun utilizator să se autentifice așa cum a fost configurat
 connect_epass=Nu a fost configurată nicio parolă cu care să te autentifici
@@ -28,6 +29,7 @@ connect_eldap=Eroare la conectarea la serverul LDAP $1 pe portul $2
 connect_essl=Nu a putut începe criptarea TLS cu serverul LDAP $1 : $2 
 connect_elogin=Eroare la autentificarea pe serverul LDAP $1 ca $2 : $3 
 connect_cpan=Puteți avea <tt>$1</tt> Modulul Perl <a href='$2'>instalat automat</a> din CPAN.
+
 slapd_title=Configurare server OpenLDAP
 ldif_title=Configurare server OpenLDAP
 slapd_header=Opțiuni globale de server LDAP
@@ -76,6 +78,7 @@ slapd_protos=Conexiuni LDAP de acceptat
 slapd_ldap=LDAP prin rețea
 slapd_ldaps=LDAP peste SSL
 slapd_ldapi=Fișier socket Unix
+
 schema_title=Gestionați schema
 schema_file=Nume
 schema_desc=Descriere
@@ -93,6 +96,7 @@ schema_edesc=Această pagină vă permite să editați manual un fișier de sche
 schema_return=liste de scheme
 schema_emove=Nu s-a putut găsi fișierul de schemă care să se mute!
 schema_ecannot=Nu aveți voie să gestionați schema LDAP
+
 acl_title=Control acces LDAP
 acl_ecannot=Nu aveți voie să configurați controlul de acces LDAP
 acl_what=Obiecte
@@ -103,6 +107,7 @@ acl_none=Nu au fost definite încă reguli de control de acces. Toate obiectele 
 acl_delete=Ștergeți regulile selectate
 acl_add=Adăugați o nouă regulă de control de acces.
 acl_return=reguli de control de acces
+
 browser_title=Parcurgeți baza de date
 browser_econn=Navigatorul LDAP nu poate fi utilizat : $1 
 browser_ecannot=Nu aveți voie să navigați în baza de date LDAP
@@ -136,24 +141,30 @@ browser_nomatch=Niciun obiect nu se potrivește căutării dvs. pentru $1.
 browser_search=Găsiți obiecte potrivite :
 browser_search2=Afișare obiecte potrivite :
 browser_sok=Căutare
+
 save_err=Nu a reușit să schimbe atributul
 save_ebase=Nu s-a putut extrage obiectul $1 din baza de date
 save_emodify=Modificarea LDAP a $2 în $1 a eșuat : $3 
 save_enone=Nu au fost introduse valori
+
 add_err=Eroare la adăugarea atributului
 add_eadd=Numele atributului lipsește sau este nevalid
 add_evalue=Valoarea lipsă
 add_emodify=Adăugarea LDAP de $2 la $1 a eșuat : $3 
+
 delete_err=Nu a reușit să elimine atributele
 delete_enone=Nimic selectat
 delete_emodify=Ștergerea LDAP din $2 din $1 a eșuat : $3 
+
 sdelete_err=Nu a putut șterge obiectele
 sdelete_edn=Obiectul $1 nu a fost găsit
 sdelete_edel=Ștergerea LDAP din $1 a eșuat : $2 
+
 rename_err=Nu a putut redenumi un obiect
 rename_eget=Nu s-a putut găsi obiectul cu DN $1 
 rename_enew=Numele nou nu pare să fie valid
 rename_erename=LDAP newdn la $2 din $1 a eșuat : $3 
+
 oadd_title=Creați obiect
 oadd_header=Detalii despre obiectul LDAP noi
 oadd_base=DN obiect părinte
@@ -170,6 +181,7 @@ oadd_eget2=Nu a reușit verificarea ciocnirii cu $1 : $2
 oadd_eclash=Există deja un obiect cu DN $1 
 oadd_eadd=Adăugarea LDAP din $1 a eșuat : $2 
 oadd_err=Nu a reușit să creeze un obiect nou
+
 create_title=Creați Arbore
 create_ecannot=Nu aveți voie să creați un arbore nou
 create_desc=Această pagină a oferit un mod convenabil de a crea DN care va fi baza unui arbore nou în baza de date. De asemenea, poate crea un exemplu de utilizator sau alias prin e-mail sub arbore, ca șablon pentru propriile obiecte.
@@ -191,18 +203,23 @@ create_done=.. Terminat
 create_doingex=Crearea unui obiect de exemplu cu DN $1 ..
 create_edoingex=.. eșuat: $1. Cu toate acestea, arborele poate fi încă utilizat.
 create_eoc=Nu s-a putut găsi o clasă de obiect adecvată pentru noul DN
+
 eunknown=Eroare necunoscută
+
 apply_err=Eroare la aplicarea configurației
 apply_ecmd=$1 a eșuat : $2 
 apply_ecannot=Nu aveți voie să aplicați configurația
+
 stop_err=Nu a reușit oprirea serverului LDAP
 stop_ecmd=$1 a eșuat : $2 
 stop_egone=Nu mai alerga!
 stop_ekill=Procesul de ucidere a eșuat : $1 
 stop_ecannot=Nu aveți voie să opriți serverul LDAP
+
 start_err=Eroare la pornirea serverului LDAP
 start_ecmd=$1 a eșuat : $2 
 start_ecannot=Nu aveți voie să porniți serverul LDAP
+
 log_create_dn=Obiect creat $1 
 log_delete_dn=Obiectul șters $1 
 log_rename_dn=Redenumit obiect $1 
@@ -234,6 +251,7 @@ log_up_access=A mutat regula de control de acces pentru $1
 log_down_access=Reglarea controlului accesului pentru $1 
 log_delete_accesses=Reguli de control de acces $1 șterse
 log_all=toate obiectele
+
 gencert_title=Generați certificat SSL
 gencert_header=Detalii despre certificat SSL noi
 gencert_create=Creare certificat
@@ -245,7 +263,9 @@ gencert_dir=Director
 gencert_err=Eroare la generarea certificatului
 gencert_edest=Directorul destinație nu există
 gencert_epath=Fișierele de certificare și cheie din configurația serverului LDAP trebuie să fie căi absolute
+
 perms_err=Nu a putut repara proprietatea fișierului
+
 acl_slapd=Poate configura serverul LDAP?
 acl_ldif=Poate configura serverul LDAP?
 acl_schema=Poate gestiona schema?
@@ -254,6 +274,7 @@ acl_browser=Poate răsfoi și edita baza de date?
 acl_create=Poate crea un copac nou?
 acl_start=Poate porni și opri serverul LDAP?
 acl_apply=Poate aplica modificări de configurare?
+
 access_desc=$2 cu $1 
 access_self=de sine
 access_users=utilizatori autentificați
@@ -273,6 +294,7 @@ access_lcompare=Comparaţie
 access_lsearch=Căutare
 access_lread=Citit
 access_lwrite=Scrie
+
 eacl_title1=Creați o regulă de control acces
 eacl_title2=Editați regula de control acces
 eacl_header=Detalii despre regula accesului bazei de date LDAP

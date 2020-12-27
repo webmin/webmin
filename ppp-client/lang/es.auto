@@ -24,13 +24,16 @@ index_out=El resultado de $1 fue
 index_boot=Conéctese en el arranque con:
 index_noboot=&lt;No te conectes&gt;
 index_bootdesc=Cambie esta opción para controlar si la conexión PPP seleccionada se inicia en el momento del arranque o no.
+
 init_title=Detectar configuración
 init_cmd=Detectar un módem conectado con el comando $1 ..
 init_done=.. hecho
 init_modems=Los módems están configurados en $1 y $2.
 init_modem=Se detectó un módem en $1.
 init_none=¡No se detectaron módems!
+
 device_serial=puerto serie $1 
+
 connect_title=Establecer conexión
 connect_cmd=Intentando establecer una conexión con el comando $1 ..
 connect_failed=.. ¡la conexión falló! Vea el resultado anterior para conocer el motivo.
@@ -40,12 +43,14 @@ connect_dns=Uso de la configuración de DNS asignada por PPP.
 connect_dns2=Se ha configurado la configuración de DNS asignada a PPP.
 connect_dnsto=Tiempo de espera en espera de la configuración de DNS asignada por PPP.
 connect_dnsdown=La conexión parece haber fallado mientras esperaba la configuración de DNS asignada por PPP.
+
 disc_title=Cerrar PPP
 disc_err=Error al cerrar la conexión PPP
 disc_edown=Ya desconectado
 disc_ok1=Su conexión PPP realizada con $2 se cerró correctamente.
 disc_ok2=Su conexión PPP se cerró correctamente.
 disc_dns=Restauración de la antigua configuración de DNS.
+
 edit_title1=Agregar marcador ISP
 edit_title2=Editar marcador ISP
 edit_ddesc=Esta configuración predeterminada se aplicará a las conexiones realizadas con cualquier otro marcador.
@@ -76,6 +81,7 @@ edit_idle=Tiempo de espera inactivo (en segundos)
 edit_def=De la configuración predeterminada
 edit_inherits=Heredar configuraciones
 edit_from=Del marcador. ..
+
 save_err=Error al guardar el marcador
 save_err2=Error al eliminar el marcador
 save_ename=Nombre de marcador faltante o no válido
@@ -88,6 +94,7 @@ save_edial=Número de intentos de marcado faltantes o no válidos
 save_eidle=Tiempo de espera inactivo faltante o no válido
 save_einherits=Este marcador no se puede eliminar porque '$1' hereda su configuración.
 save_eclash=Ya existe un marcador con el mismo nombre
+
 log_create=Creado $1 
 log_update=Actualizado $1 
 log_delete=$1 eliminado

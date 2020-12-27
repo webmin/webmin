@@ -22,6 +22,7 @@ index_auto=מצא שרתים באופן אוטומטי
 index_automsg=לחץ על כפתור זה כדי להגדיר גילוי תקופתי אוטומטי של שרתי Webmin חדשים ברשת שלך.
 index_search=הצג שרתים תואמים:
 index_ok=לחפש
+
 edit_title=ערוך שרת
 create_title=רשום שרת
 edit_details=פרטי השרת
@@ -57,6 +58,7 @@ edit_baduser=הכניסה נדחתה
 edit_invalid=המשתמש אינו יכול לבצע RPC
 edit_version=מפעיל את Webmin $1 
 edit_same=זמין רק שאינו במצב אימות הפעלה, וכאשר הסיסמה הופכת לזמינה לתוכניות Webmin.
+
 save_err=שמירת השרת נכשלה
 save_ehost=שם מארח חסר או לא חוקי
 save_ehost2=המארח אינו קיים
@@ -67,6 +69,7 @@ save_epass=סיסמא חסרה
 save_egroup=שם הקבוצה חסר
 save_elogin=כניסה או סיסמא לא חוקיים לארח
 save_egroup2=שם קבוצה לא חוקי
+
 find_title=מצא שרתים
 find_new=נמצא שרת חדש ב- $1 
 find_but=נמצא שרת חדש ב- $1, אך האימות נכשל : $2 
@@ -81,16 +84,20 @@ find_ecannot=אינך מורשה למצוא שרתים
 find_scanning=סריקה לשרתים ברשת $1 ..
 find_broading=שידור לשרתים בכתובות $1.
 find_eport=מספר יציאה חסר או לא חוקי
+
 log_modify=שרת שונה 1
 log_create=שרת רשום $1 
 log_delete=השרת $1 נמחק
 log_find=נמצא שרת $1 
 log_deletes=$1 שרתי נמחקו
+
 link_elogin=כניסה ל- $1 כ- $2 נכשלה
 link_ecannot=אינך מורשה להשתמש בשרת זה
 link_essl=אין לך את הספרייה perl Net::SSLeay המותקנת
 link_eautologin=כניסה או סיסמה לא חוקיים עבור $1. <a href='$2'>לחץ כאן</a> כדי לנסות שוב.
+
 lib_other=אחר
+
 acl_edit=האם ניתן לערוך שרתים?
 acl_find=האם ניתן למצוא שרתים?
 acl_servers=יכול להשתמש בשרתים
@@ -102,6 +109,7 @@ acl_forcefast=להכריח את מצב ה- RPC המהיר לברירת המחד�
 acl_forcetype=לאלץ את סוג מערכת ההפעלה לברירת מחדל?
 acl_forcelink=לאלץ את סוג הכניסה לברירת מחדל?
 acl_links=האם ניתן להתחבר לשרתים?
+
 login_title=התחבר לשרת
 login_desc=עליך לספק שם משתמש וסיסמא כדי להתחבר לשרת Webmin $1.
 login_header=אימות Webmin
@@ -109,13 +117,16 @@ login_user=שם משתמש
 login_pass=סיסמה
 login_login=התחברות
 login_esame=ניתן להשתמש באפשרות להשתמש באותו כניסה של שרת זה רק כאשר אינו במצב אימות הפעלה, וכאשר הסיסמה הופכת לזמינה לתוכניות Webmin.
+
 this_server=שרת זה
+
 delete_err=מחיקת השרתים נכשלה
 delete_enone=לא נבחר
 delete_ecannot=אינך מורשה למחוק שרתים
 delete_title=מחק שרתים
 delete_rusure=האם אתה בטוח שברצונך להסיר את השרתים שנבחרו $1 ?
 delete_confirm=תמחק עכשיו
+
 auto_title=מצא שרתים באופן אוטומטי
 auto_header=אפשרויות רישום שרת אוטומטיות
 auto_sched=האם לבדוק אם יש שרתים חדשים?
@@ -141,8 +152,10 @@ auto_smtp=שלח באמצעות שרת SMTP
 auto_self=המערכת הזאת
 auto_esmtp=שרת SMTP חסר או לא חוקי
 auto_findself=לרשום מערכת זו גם?
+
 config_deftype=סוג מערכת ברירת מחדל
 config_typeauto=אוטומטי
+
 email_regsubject=מערכת $1 רשומה
 email_reg=המערכת $1 נרשמה אוטומטית.
 email_unregsubject=מערכת $1 אינה רשומה

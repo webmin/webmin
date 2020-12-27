@@ -30,6 +30,7 @@ index_other_google=Google arama motoru
 index_other_kde=KDE belgesi
 index_and=Hepsini
 index_or=Herhangi biri
+
 search_efor=Aramada girilen yardımcı sayfa bulunamadı
 search_title=Arama sonuçları
 search_desc=Açıklama
@@ -46,21 +47,27 @@ search_custom=Özel belge
 search_none=$1 ile eşleşen bir yardımcı sayfası bulunamadı
 search_for=Arama $1
 search_google=Google arama sonucu
+
 howto_title=NASIL Belgesi
 howto_header=NASIL belgesi $1
 howto_epath=Geçersiz NASIL belgesi yolu
+
 doc_title=Paket Belgesi
 doc_header=Paket belgesi $1
 doc_epath=Geçersiz paket belgesi yolu
+
 man_title=Yardımcı Sayfa
 man_header=Yardımcı sayfa $1($2)
 man_noentry=$1 yardımcı sayfası mevcut değil!
+
 kernel_title=Çekirdek Belgesi
 kernel_header=Çekirdek belgesi $1
 kernel_epath=Geçersiz çekirdek belgesi yolu
+
 kde_title=KDE Belgeleri
 kde_header=KDE belgesi $1
 kde_epath=Geçersiz KDE belgesi yolu
+
 perl_title=Perl Modülü
 perl_header=Perl modülü $1 belgesi
 perl_emod=Geçersiz Perl modülü adı

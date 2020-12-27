@@ -14,6 +14,7 @@ index_restart=Irristartja d-Daemon tal-Klijent LDAP
 index_restartdesc=Applika l-konfigurazzjoni attwali billi terġa 'tibda d-daemon tal-klijent LDAP lokali.
 index_atboot=Ibda l-Klijent LDAP Fuq Boot
 index_atbootdesc=Tibdel jekk id-daemon tal-klijent LDAP jinbeda meta s-sistema tibda jew le.
+
 server_title=Konfigurazzjoni tas-Server LDAP
 server_header=Server LDAP u għażliet ta 'dħul
 server_host=Ismijiet tal-host tas-server LDAP
@@ -51,6 +52,7 @@ server_etimelimit=Limitu ta 'żmien tal-konnessjoni nieqes jew invalidu
 server_ecacert=Fajl taċ-ċertifikat CA nieqes jew invalidu
 server_euport=Port nieqes jew invalidu għas-server $1 
 server_euri=L-ebda server LDAP ma daħlu
+
 base_title=Bażijiet ta 'Tfittxija LDAP
 base_header=Postijiet ta 'tfittxija tad-direttorju LDAP
 base_base=Bażi globali ta 'tfittxija
@@ -86,6 +88,7 @@ base_enetmasks=Bażi nieqsa għall-ismijiet tan-netmask
 base_ealiases=Bażi nieqsa għall-aliases tal-email
 base_enetgroup=Bażi nieqsa għan-netgroups
 base_etimelimit=Perjodu ta 'żmien ta' tfittxija nieqes jew invalidu
+
 pam_title=Għażliet ta 'Awtentikazzjoni
 pam_header=Awtentikazzjoni PAM u settings tal-password
 pam_filter=Filtru LDAP addizzjonali
@@ -106,10 +109,12 @@ pam_efilter=Nieqes filtru LDAP addizzjonali
 pam_elogin=Attribut LDAP nieqes jew invalidu għal username
 pam_egroupdn=Grupp LDAP Nieqes biex iġġiegħel is-sħubija
 pam_emember=Attribut LDAP nieqes jew invalidu għall-membri tal-grupp
+
 switch_title=Servizzi li jużaw LDAP
 switch_service=Servizz
 switch_srcs=Sorsi tad-dejta
 switch_return=servizzi li jużaw LDAP
+
 ldap_emodule=Il-modulu $1 Perl meħtieġ biex tkellem mas-server LDAP mhuwiex installat. <a href='$2'>Ikklikkja hawn</a> biex Webmin tniżżel u tinstallaha issa.
 ldap_emodule2=Il-modulu $1 Perl meħtieġ biex tkellem mas-server LDAP mhuwiex installat.
 ldap_econf=Il-fajl tal-konfigurazzjoni tal-klijent LDAP $1 ma nstabx fis-sistema tiegħek
@@ -119,6 +124,7 @@ ldap_elogin=Ma rnexxielux jorbot lis-server LDAP $1 bħala $2 : $3
 ldap_anon=anonimu
 ldap_eparse=Ma setgħetx tiċċara l-URI tas-server LDAP $1 
 ldap_etls=Ma rnexxielux jaqleb għall-modalità TLS : $1 
+
 browser_title=Browser LDAP
 browser_econn=Il-browser LDAP ma jistax jintuża : $1 
 browser_base=Browsing:
@@ -129,6 +135,7 @@ browser_attrs=Attributi tal-oġġett
 browser_parent=Ibbrawżja Ġenitur
 browser_none=Xejn
 browser_sel=kollox sew
+
 order_nisplus=NIS +
 order_nis=NIS
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=Utenti li jistampaw
 order_xfn=XFN
 order_mdns4=DNS Multicast
 order_mdns4_minimal=DNS Multicast (minimu)
+
 desc_aliases=Sendias psewdonimu
 desc_mail=Sendias psewdonimu
 desc_hosts=Indirizzi ospitanti
@@ -177,6 +185,7 @@ desc_printers=Printers
 desc_ipnodes=Nodi IP
 desc_timezone=Ħinijiet tal-ħin
 desc_locale=Lokal
+
 eswitch_title=Servizz Editja
 eswitch_egone=Servizz ma jeżistix!
 eswitch_header=Dettalji tas-servizz
@@ -196,6 +205,7 @@ eswitch_continue=Kompli fittex
 eswitch_none=Xejn
 eswitch_err=Ma rnexxielux isalva s-servizz
 eswitch_enone=L-ebda sorsi magħżula!
+
 log_server=Konfigurazzjoni tas-server LDAP modifikat
 log_base=Bażijiet modifikati ta 'tfittxija LDAP
 log_pam=Għażliet ta 'awtentikazzjoni modifikati
@@ -205,6 +215,7 @@ log_delboot=Daemon tad-daemon tal-klijent LDAP fil-ħin tal-bidu
 log_start=Beda d-daemon tal-klijent LDAP
 log_stop=Waqqaf id-daemon tal-klijent LDAP
 log_restart=Irrestartja d-daemon tal-klijent LDAP
+
 check_title=Validazzjoni tal-Konfigurazzjoni LDAP
 check_base=Sib bażi LDAP għall-utenti ..
 check_ebase=.. l-ebda tibbaża misjuba fil-konfigurazzjoni tal-klijent!

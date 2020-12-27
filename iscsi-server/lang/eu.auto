@@ -1,5 +1,6 @@
 check_etargets=Ez da iSCSI zerbitzariaren $1 fitxategiaren konfigurazioa aurkitu zure sisteman.
 check_eserver=$1 iSCSI zerbitzariaren programa ez da zure sisteman aurkitu.
+
 index_title=iSCSI zerbitzaria
 index_clink=Agian ez dago instalatuta edo zure <a href='$1'>moduluaren konfigurazioa</a> okerra da.
 index_stop=Gelditu iSCSI zerbitzaria
@@ -11,6 +12,7 @@ index_restartdesc=Egin klik botoi honetan uneko konfigurazioa iSCSI zerbitzaria 
 index_atboot=Hasi abiarazi?
 index_atbootdesc=Aldatu aukera hau iSCSI zerbitzaria abio momentuan abiarazi den edo ez kontrolatzeko. Une honetan abian ez bada hasi eta Bai aukeratzen bada, init script berria sortuko da.
 index_return=moduluaren aurkibidea
+
 extents_title=Partekatzeko gailuak
 extents_none=Oraindik ez da gailurik partekatu partekatzeko.
 extents_name=Gailuaren izena
@@ -25,6 +27,7 @@ extents_denone=Ez da hautatu
 extents_einuse=$1 gailua ezin da ezabatu, $2 erabiltzen ari baita
 extents_drusure=Ziur gailu hauek kendu nahi dituzu: $1 ? Haien edukia gorde egingo da, baina ez dira iSCSI bezeroentzat eskuragarri izango.
 extents_sure=Ezabatu gailuak
+
 extent_create=Sortu gailua partekatzeko
 extent_edit=Editatu Konpartitzeko gailua
 extent_egone=$1 partekatzeko gailua ez dago!
@@ -50,6 +53,7 @@ extent_estart=Neurriaren hasiera kopurua izan behar da
 extent_esize=Neurriaren tamaina kopurua izan behar da
 extent_esizemax=Neurriaren amaiera ezin da $1 gailuaren tamaina baino handiagoa izan
 extent_einuse=Gailua ezin da ezabatu, $1 erabiltzen ari baita
+
 devices_title=Gailuen konbinazioak
 devices_none=Oraindik ez da gailuen konbinaziorik sortu.
 devices_name=Konbinazio izena
@@ -65,6 +69,7 @@ devices_denone=Ez da hautatu
 devices_einuse=$1 konbinazioa ezin da ezabatu, $2 erabiltzen ari baita
 devices_drusure=Ziur al zaude gailu konbinazio hauek kendu nahi dituzula: $1 ? Haien edukia gorde egingo da, baina ez dira iSCSI bezeroentzat eskuragarri izango.
 devices_sure=Ezabatu gailuen konbinazioak
+
 device_create=Sortu gailuen konbinazioa
 device_edit=Editatu gailuen konbinazioa
 device_egone=$1 gailuen konbinazioa ez da existitzen!
@@ -81,6 +86,7 @@ device_sure=Ezabatu gailuen konbinazioa
 device_einuse=Ezin da gailu konbinazio hau ezabatu, $1 erabiltzen ari baita
 device_eextents=Ez da kide gailurik hautatu
 device_eself=Aukeratutako kideen gailuetako batek gailu hau dauka!
+
 targets_title=Helburuak partekatzea
 targets_none=Oraindik ez da partekatzeko helbururik sortu.
 targets_name=Xede izena
@@ -96,6 +102,7 @@ targets_derr=Ezin izan da partekatze-helburuak ezabatu
 targets_denone=Ez da hautatu
 targets_drusure=Ziur al zaude partekatzeko helburuak kendu nahi dituzula: $1 ? Ez da datuak galduko, baina ez dira iSCSI bezeroentzat eskuragarri izango.
 targets_sure=Ezabatu partekatzeko helburuak
+
 target_create=Sortu partekatzeko helburuak
 target_edit=Editatu helburuak partekatzeko
 target_egone=$1 xede partekatzea ez da existitzen!
@@ -112,6 +119,7 @@ target_rusure=Ziur $1 partekatzeko helburua ezabatu nahi duzula? Ez da datu gald
 target_sure=Ezabatu xede
 target_enetwork=Sareko falta edo baliogabea da partekatzeko
 target_emask=Konpartitzeko netmaskaren falta edo baliogabea
+
 opts_title=iSCSI zerbitzariaren aukerak
 opts_header=Aukerak iSCSI helburu guztientzako
 opts_ip4=Onartu IPv4 konexioak
@@ -124,10 +132,12 @@ opts_err=Ezin izan da aukerak gordetzea
 opts_ename=Izen falta edo baliogabea: letrak, zenbakiak, marratxoa eta puntua eta azpimarra egitea soilik onartzen dira
 opts_eport=Falta den edo ez den zenbakizko portuko zenbakia
 opts_esess=Falta diren edo ez zenbakizko gehieneko saioak
+
 manual_title=Editatu Konfigurazio fitxategia
 manual_desc=Erabili beheko testu koadroa iSCSI zerbitzariaren $1 konfigurazio fitxategia editatzeko. Kontuz ibili, ez baita inolako balioztapenik egingo zure sarreran!
 manual_err=Ezin izan da konfigurazio fitxategia gordetzean
 manual_edata=Ez da edukirik sartu!
+
 users_title=iSCSI autentifikazioa
 users_none=Ez da oraindik iSCSI erabiltzaileik sortu. Bezeroek partekatutako gailuak sartu ahal izango dituzte autentikatu gabe.
 users_add=Gehitu iSCSI erabiltzaile berria.
@@ -135,6 +145,7 @@ users_delete=Ezabatu hautatutako erabiltzaileak
 users_name=Erabiltzaile izena
 users_mode=Autentifikazio metodoa
 users_return=erabiltzaileen zerrenda
+
 user_create=Sortu iSCSI erabiltzailea
 user_edit=Editatu iSCSI erabiltzailea
 user_header=iSCSI erabiltzailearen xehetasunak
@@ -145,13 +156,16 @@ user_egone=Erabiltzailea jada ez dago!
 user_err=Ezin izan da iSCSI erabiltzailea gorde
 user_euser=Erabiltzaile-izena falta edo baliogabea - espazioak eta zenbakiak ez dira onartzen
 user_epass=Pasahitza falta edo baliogabea da: espazioak eta puntuak ez dira onartzen
+
 desc_extent=$1 partekatzeko gailua
 desc_device=$1 gailuen konbinazioa
 desc_target=$1 xede partekatzea
+
 start_err=Ezin izan da iSCSI zerbitzaria abiarazi
 stop_err=Ezin izan da iSCSI zerbitzaria gelditu
 restart_err=Ezin izan da iSCSI zerbitzaria berrabiarazi
 atboot_err=Huts egin du abiaraztean
+
 log_create_extent=Gailua sortu da $1 partekatzeko
 log_modify_extent=Gailua eguneratu da $1 partekatzeko
 log_delete_extent=Gailua ezabatu da $1 partekatzeko

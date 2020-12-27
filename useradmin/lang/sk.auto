@@ -51,11 +51,13 @@ index_mass=Odstrániť vybratých používateľov
 index_mass2=Zakázať vybraté
 index_mass3=Povoliť vybraté
 index_gmass=Odstrániť vybrané skupiny
+
 search_title=Výsledky vyhľadávania
 search_notfound=Nenašli sa žiadni zodpovedajúci používatelia
 search_found=Našlo sa $1 zhodujúcich sa používateľov.
 search_gnotfound=Nenašli sa žiadne zodpovedajúce skupiny
 search_gfound=Našlo sa $1 zodpovedajúcich skupín.
+
 uedit_title=Upraviť používateľa
 uedit_title2=Vytvorenie používateľa
 uedit_details=Detaily používateľa
@@ -133,6 +135,7 @@ uedit_uid_calc=počítané
 uedit_disabled=Prihlásenie dočasne zakázané
 uedit_sys=Predvolený systém
 uedit_clone=Klonovať používateľa
+
 usave_err=Nepodarilo sa uložiť používateľa
 usave_eedit=Tento používateľ nemôžete upravovať
 usave_ecreate=Nemôžete vytvoriť nových používateľov
@@ -186,6 +189,7 @@ usave_epasswd_same=Heslo obsahuje alebo je rovnaké ako používateľské meno
 usave_epasswd_mindays=Heslo bolo zmenené pred menej ako $1 dňami
 usave_epasswd_cmd=Príkaz na overenie hesla zlyhal
 usave_eothers=Používateľ bol úspešne uložený, ale v inom module sa vyskytla chyba : $1
+
 gedit_title=Upraviť skupinu
 gedit_title2=Vytvoriť skupinu
 gedit_details=Podrobnosti o skupine
@@ -208,6 +212,7 @@ gedit_selu=Používatelia v skupine
 gedit_pri=Členovia primárnej skupiny
 gedit_prinone=Túto skupinu ako primárnu skupinu nemajú žiadni používatelia
 gedit_clone=Klonovacia skupina
+
 gsave_err=Uloženie skupiny zlyhalo
 gsave_eedit=Túto skupinu nemôžete upraviť
 gsave_ecreate=Nemôžete vytvoriť nové skupiny
@@ -224,6 +229,7 @@ usave_egidused=Skupina $1 už používa GID $2
 gsave_egidused2=GID sa už používa
 usave_efromroot=Domovský adresár nemôžete presunúť z /
 usave_etoroot=Domovský adresár nemôžete presunúť do /
+
 logins_title=Zaznamenané prihlásenie
 logins_head=Zaznamenané prihlásenie pre $1
 logins_from=Prihlásiť sa od
@@ -236,6 +242,7 @@ logins_none=Nezaznamenali sa žiadne prihlásenia
 logins_elist=Nemáte povolené uvádzať prihlasovacie údaje
 logins_elistu=Nemáte povolenie uvádzať prihlásenie pre '$1'
 logins_local=miestna
+
 udel_title=Odstrániť používateľa
 udel_err=Nepodarilo sa odstrániť používateľa
 udel_enum=Neplatné číslo používateľa
@@ -258,6 +265,7 @@ udel_del2=Odstrániť používateľa a domovský adresár
 udel_others=VÝSTRAHA! Domovský adresár $1 obsahuje súbory $2 vlastnené inými používateľmi.
 udel_dothers=Odstrániť používateľa z iných modulov?
 udel_root=Výstraha! Ak je root užívateľ odstránený, pravdepodobne nebudete môcť v budúcnosti spravovať svoj systém.
+
 gdel_title=Odstrániť skupinu
 gdel_err=Nepodarilo sa odstrániť skupinu
 gdel_eroot=Nemáte povolenie vymazať systémové skupiny (skupiny s GID menším alebo rovnajúcim sa 10).
@@ -271,6 +279,7 @@ gdel_sure=Naozaj chcete odstrániť skupinu $1?
 gdel_del=Odstrániť skupinu
 gdel_dothers=Odstrániť skupinu z iných modulov?
 gdel_other=Odstraňuje sa z iných modulov.
+
 many_title=Vytvorenie viacerých používateľov
 many_desc=Tento formulár umožňuje vytvoriť veľa používateľov naraz z nahraného alebo miestneho textového súboru. Každý riadok v súbore určuje jedného používateľa v nasledujúcom formáte:
 many_desc2=username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire
@@ -294,6 +303,7 @@ many_eshell=Na riadku $1 je neplatný shell : $2
 many_emkdir=Nepodarilo sa vytvoriť domáci adresár $1 : $2 
 many_egtaken=Názov skupiny, ktorý sa už používa na riadku $1 : $2 
 many_ok=Vytvorený používateľ $1
+
 acl_uedit=Unixoví používatelia, ktorí môžu byť upravovaní
 acl_uedit_all=Všetci používatelia
 acl_uedit_none=Žiadni používatelia
@@ -353,6 +363,7 @@ acl_udelete=Môžete odstrániť používateľov?
 acl_gdelete=Môžete odstrániť skupiny?
 acl_urename=Môžete premenovať používateľov?
 acl_grename=Môžete premenovať skupiny?
+
 log_urename=Premenovaný používateľ $1 na $2
 log_umodify=Upravený používateľ $1
 log_ucreate=Vytvorený používateľ $1
@@ -371,6 +382,7 @@ log_ugbatch=Bol vykonaný nahraný dávkový súbor skupiny
 log_ugbatch_l=Spustený dávkový súbor skupiny ($1 bol vytvorený, $2 zmenený, $3 vymazaný)
 log_delete_users=Odstránení používatelia $1
 log_delete_groups=Odstránené skupiny $1
+
 batch_title=Spustiť dávkový súbor
 batch_ecannot=Nemôžete použiť formulár dávkového súboru
 batch_desc=Tento formulár umožňuje vytvárať, upravovať alebo mazať veľa používateľov naraz z odovzdaného alebo miestneho textového súboru. Každý riadok v súbore určuje jednu akciu v závislosti od jej prvého poľa. Formáty riadkov sú :
@@ -429,12 +441,14 @@ batch_eexpire=Na riadku $1 je neplatný deň vypršania platnosti : $2
 batch_echange=Na riadku $1 : $2 je neplatný deň zmeny hesla
 batch_instr=Pokyny a formát dávky
 batch_header=Dávkové možnosti vytvorenia, aktualizácie a odstránenia používateľov
+
 who_title=Prihlásení používatelia
 who_user=Unixový užívateľ
 who_tty=TTY
 who_when=Prihlásený na
 who_from=Prihlásený od
 who_none=Momentálne nie sú prihlásení žiadni používatelia.
+
 export_title=Exportovať dávkový súbor
 export_desc=Tento formulár vám umožňuje vytvoriť dávkový súbor obsahujúci niektorých alebo všetkých dostupných používateľov v systéme. Súbor možno použiť na stránke Execute Batch File na inom systéme na opätovné vytvorenie exportovaných používateľov za predpokladu, že používa vybraný formát dávkového súboru.
 export_header=Dávkové možnosti exportu používateľov
@@ -455,6 +469,7 @@ export_done=Úspešne exportovaní používatelia $1 do súboru $2 ($3).
 export_pft=Dávkový formát súboru
 export_who=Používatelia na export
 export_ecannot=Nemáte povolenie exportovať používateľov
+
 gexport_title=Exportovať dávkový súbor skupín
 gexport_desc=Tento formulár vám umožňuje vytvoriť dávkový súbor obsahujúci niektoré alebo všetky dostupné skupiny v systéme. Súbor možno použiť na stránke Execute Group Batch File na inom systéme na opätovné vytvorenie exportovaných skupín.
 gexport_header=Možnosti exportu skupiny šarží
@@ -463,6 +478,7 @@ gexport_ecannot=Nemáte povolenie exportovať skupiny
 gexport_err=Nepodarilo sa exportovať dávkový súbor skupiny
 gexport_egid=Neplatný prvý GID v rozsahu
 gexport_egid2=Neplatný druhý GID v rozsahu
+
 pft_0=Iba klasický súbor <tt>passwd</tt>
 pft_1=Súbor BSD <tt>master.passwd</tt>
 pft_2=Štandardné súbory <tt>passwd</tt> a <tt>tieň</tt>
@@ -470,6 +486,7 @@ pft_3=Súbor Unixware <tt>passwd</tt>
 pft_4=Súbory AIX <tt>passwd</tt> a <tt>security</tt>
 pft_5=OpenServer <tt>passwd</tt> a krátke <tt>tieňové</tt> súbory
 pft_6=Databáza MacOS NetInfo
+
 umass_title=Odstrániť používateľov
 umass_err=Nepodarilo sa odstrániť používateľov
 umass_sure=Naozaj chcete odstrániť vybratých používateľov $1? Ich domáce adresáre obsahujú súbory $2.
@@ -481,6 +498,7 @@ umass_del1=Odstrániť používateľov
 umass_del2=Odstrániť používateľov a domovské adresáre
 umass_eroot=Nemáte oprávnenie vymazať používateľov systému (používateľov s identifikátorom UID menším alebo rovným 10).
 umass_doing=Odstraňuje sa používateľ $1 ..
+
 gmass_title=Odstrániť skupiny
 gmass_err=Skupiny sa nepodarilo odstrániť
 gmass_sure=Naozaj chcete odstrániť vybraté skupiny $1?
@@ -490,16 +508,19 @@ gmass_del=Odstrániť skupiny
 gmass_eroot=Nemáte povolenie vymazať systémové skupiny (skupiny s GID menším alebo rovnajúcim sa 10).
 gmass_doing=Odstraňuje sa skupina $1 ..
 gmass_eprimary=Skupinu $1 nie je možné odstrániť, pretože ide o primárnu skupinu používateľa $2.
+
 dmass_title=Zakázať používateľov
 dmass_sure=Naozaj chcete zakázať vybratých používateľov $1? Môžu byť znova aktivované neskôr bez straty svojich hesiel alebo údajov.
 dmass_dis=Zakázať používateľov
 dmass_pass=Dočasné uzamknutie hesla ..
 dmass_doing=Zakázanie používateľa $1 ..
 dmass_already=.. už zakázané!
+
 emass_title=Povoliť používateľov
 emass_pass=Odomykanie hesla ..
 emass_doing=Povolenie používateľa $1 ..
 emass_already=.. už povolené!
+
 gbatch_title=Spustiť súbor šarže skupiny
 gbatch_ecannot=Nemôžete použiť formulár dávkového súboru skupiny
 gbatch_desc=Tento formulár umožňuje vytvárať, upravovať alebo mazať veľa skupín naraz z nahraného alebo miestneho textového súboru. Každý riadok v súbore určuje jednu akciu v závislosti od jej prvého poľa. Formáty riadkov sú :

@@ -31,6 +31,7 @@ index_man=Ruční úprava konfigurace
 index_mandesc=Přímá úprava hlavního konfiguračního souboru Procmailu, tvorba Vašich vlastních pravidel, proměnných a bloků.
 index_ecmd=Procmail program $1 není přítomen ve vašem systém. Není instalován nebo je <a href='$2'>konfigurace modulu</a> nesprávná.
 index_delete=Vymazat označené akce
+
 edit_title2=Upravit akci
 edit_title1=Vytvořit akci
 edit_header1=Detaily akce doručení
@@ -66,6 +67,7 @@ edit_none=Žádný
 edit_lock=Specifický soubor
 edit_ctype=Typ podmínky
 edit_cvalue=Regulérní výraz nebo příkaz
+
 save_err=Chyba při ukládání akce
 save_eaction_0=Chybějící soubor pro přidání do něj
 save_eaction_1=Chybějící MH adresář pro zápis do něj
@@ -78,6 +80,7 @@ save_elockfile=Chybějící jméno zámkového souboru
 save_esize=Chybějící nebo špatná velikost mailu pro podmínku $1
 save_ere=Chybějící regulérní výraz pro podmínku $1
 save_eshell=Chybějící příkaz pro podmínku $1
+
 env_title1=Vytvořit proměnnou
 env_title2=Upravit proměnnou
 env_header=Proměnné prostředí Procmailu
@@ -85,15 +88,19 @@ env_name=Proměnná jméno
 env_value=Hodnota
 env_err=Chyba při uložení proměnné
 env_ename=Chybějící nebo špatné jméno proměnné
+
 inc_title1=Přidat soubor pro vložení
 inc_title2=Upravit soubor pro vložení
 inc_header=Vložené soubory s pravidly Procmailu
 inc_inc=Soubor pro vložení
 inc_einc=Soubor pro vložení není zadán
+
 config_eline=Neznámí řádek $1 v $2 : $3
+
 manual_title=Upravit konfiguraci
 manual_desc=Tato stránka slouží k manuální úpravě konfiguračního souboru $1 Procmailu. Buďte opatrní, protože se zde nekontroluje sintaxe.
 manual_edata=Vaším prohlížečem nebyli dodána žádná data.
+
 log_create_rec=Vytvořit předpis pro $1
 log_delete_rec=Vymazat předpis pro $1
 log_modify_rec=Upravit předpis pro $1
@@ -113,5 +120,6 @@ log_delete_inc=Vymazat vložený sobor $1
 log_manual=Manuální editace configurace
 log_up=Přesunout položku nahoru
 log_down=Posunout položku dolů
+
 delete_err=Chyba při mazání akcí
 delete_enone=Není vybráno

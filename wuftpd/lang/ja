@@ -8,6 +8,7 @@ index_start=サーバの起動
 index_startmsg=FTP サーバを現在の設定で起動するには、このボタンをクリックしてください。また、<a 
 index_startmsg2=FTP サーバを現在の設定で起動するには、このボタンをクリックしてください。また、inetd ま
 index_return=FTP サーバ オプション
+
 class_title=ユーザとクラス
 class_header=ユーザ クラスとユーザ オプション
 class_class=ユーザ クラス
@@ -30,6 +31,7 @@ class_err=ユーザのクラスを保存できませんでした
 class_eclass='$1' は無効なクラス名です
 class_etypes=クラス '$1' の種類が選択されていません
 class_eaddrs=クラス '$1' のアドレスが選択されていません
+
 message_title=メッセージとバナー
 message_header=メッセージ、バナーとREADME ファイル
 message_message=メッセージ ファイル
@@ -58,6 +60,7 @@ message_eclass=クラス '$1' は存在しません
 message_ebanner='$1' は無効な ログイン バナー ファイルです
 message_ehostname=ホスト名がないか無効です
 message_eemail=E メール アドレスがないか無効です
+
 acl_title=制限とアクセス制御
 acl_header=制限とアクセス制御オプション
 acl_deny=アクセスを拒否
@@ -104,6 +107,7 @@ acl_elmsg='$1' は無効なエラー メッセージ ファイルです
 acl_efbcount='$1' は無効なファイル数またはバイトです
 acl_elimit='$1' は無効な時間制限です
 acl_efails='$1'は無効なログインの失敗回数です
+
 net_title=ネットワーク
 net_header=ネットワーク オプション
 net_tcp=TCP ウィンドウ サイズ
@@ -121,6 +125,7 @@ net_eip='$1' は無効な IP アドレスです
 net_enet='$1' は無効なネットワーク アドレスです
 net_ecidr='$1'は無効なネットワーク ビットの番号です
 net_eport='$1' は無効なポート番号です
+
 log_title=ログ
 log_header=ログ オプション
 log_commands=すべてのコマンドをログに記録
@@ -137,6 +142,7 @@ log_to=ログの転送先
 log_syslog=システム ログ
 log_xferlog=XFER ログ ファイル
 log_err=ログ オプションを保存できませんでした
+
 alias_title=エイリアスとパス
 alias_header=エイリアスとパス オプション
 alias_alias=CD ディレクトリのエイリアス
@@ -147,6 +153,7 @@ alias_err=エイリアスとパスを保存できませんでした
 alias_efrom='$1' は無効なエイリアス名です
 alias_eto='$1' は無効なエイリアスのディレクトリです
 alias_ecdpath='$1' は無効な CD 検索ディレクトリです
+
 anon_title=匿名 FTP
 anon_eftp=警告 ? ご使用のシステムは<tt>ftp</tt> ユーザを持たないため、匿名 FTP を設定できません。
 anon_header=匿名 FTP オプション
@@ -169,6 +176,7 @@ anon_uids=Unix ユーザ
 anon_err=匿名 FTP オプションを保存できませんでした
 anon_edir='$1' は無効なディレクトリです
 anon_egroup='$1' は無効なグループです
+
 perm_title=許可
 perm_header=許可のオプション
 perm_perms=コマンドの制限
@@ -190,7 +198,9 @@ perm_err=許可を保存できませんでした
 perm_echar='$1' は無効な正規表現の文字です
 perm_etypes=ユーザの種類が選択されていません
 perm_emesg='$1' は無効なエラー メッセージ ファイルです
+
 host_title=ホストのアクセス制御
+
 misc_title=その他のオプション
 misc_header=その他のオプション
 misc_lslong=長いリスト コマンド
@@ -211,6 +221,7 @@ misc_elsplain=プレイン リスト コマンドがありません
 misc_eshutdown=シャットダウン通知ファイルがありません
 misc_enice='$1' は無効な nice レベルです
 misc_eumask='$1' は無効な umaskです
+
 log_class=ユーザとクラスを変更しました
 log_message=メッセージとバナーを変更しました
 log_acl=制限とアクセス制御を変更しました

@@ -39,7 +39,9 @@ index_thost=שם מארח
 index_tdesc=תיאור
 index_tver=גרסה
 index_ttype=סוג מערכת הפעלה
+
 this_server=שרת זה
+
 add_title=הוסף שרתים
 add_msg=מוסיף $1 ..
 add_gmsg=הוספת שרתים בקבוצה $1 ..
@@ -49,6 +51,7 @@ add_echeck=לשרת $1 אין את מודול התצורה של Webmin
 add_echeck2=לשרת $1 אין מודול משתמשי Webmin
 add_eversion=שרת $1 אינו מפעיל את גרסת Webmin $2 ומעלה.
 add_ok=הוסיפו $1 עם $2 מודולים, $3 ערכות נושא, $4 משתמשים ו- $5 קבוצות.
+
 refresh_title=רענן מודול ורשימות משתמשים
 refresh_header=מבקש מחדש רשימות מודולים, משתמשים וקבוצות מכל השרתים ..
 refresh_header4=מבקש מחדש רשימות מודולים, משתמשים וקבוצות מחברים ב- $2.
@@ -64,6 +67,7 @@ refresh_g2=$1 קבוצות הוסרו.
 refresh_done=.. בוצע
 refresh_del=$1 הוסר מרשימת השרתים
 refresh_failed=רענון $1 : $2 נכשל
+
 host_title=שרת מנוהל
 host_header=פרטי שרת Webmin מנוהלים
 host_name=שם מארח
@@ -81,6 +85,7 @@ host_header_u=משתמשי Webmin
 host_header_g=קבוצות Webmin
 host_return=פרטי שרת
 host_version2=גרסה
+
 edit_title_mod=ערוך מודול
 edit_title_theme=ערוך נושא
 edit_header_mod=פרטי מודול Webmin מ- $1 
@@ -104,6 +109,7 @@ edit_acl=ערוך ACL עבור
 edit_uacl=משתמש $1 על $2 
 edit_gacl=קבוצה $1 על $2 
 edit_config=ערוך את התצורה ב-
+
 install_err=התקנת המודול נכשלה
 install_title=התקן מודול
 install_elocal=לא ניתן קובץ מקומי
@@ -124,6 +130,7 @@ do_failed=התקנת $1 : $2 נכשלה
 do_success_mod=מודול $2 מותקן על $1 
 do_success_theme=ערכת נושא מותקנת $2 על $1 
 do_done=.. בוצע
+
 delete_err=מחיקת המודול $1 נכשלה
 delete_epack=המודול $1 אינו קיים
 delete_title=מחק מודול
@@ -141,6 +148,7 @@ delete_edepends=מודולים (ים) $1 תלויים בכך.
 delete_egone=המודול כבר לא קיים
 delete_esuccess=נמחק בהצלחה מ- $1 : $2 
 delete_acls=האם להסיר מהמשתמשים ולאפס את הגדרות בקרת הגישה?
+
 user_title1=צור משתמש Webmin
 user_header1=פרטי משתמש חדשים ב- Webmin
 user_name=שם משתמש
@@ -200,11 +208,13 @@ user_all=&lt;כל המארחים&gt;
 user_donthave=&lt;מארחים שאין להם את זה&gt;
 user_have=&lt;מארחים שיש להם את זה&gt;
 user_ofgroup=חברים ב- $1 
+
 udelete_title=מחק משתמש
 udelete_doing=מוחק את המשתמש $1 מכל המארחים ..
 udelete_success=נמחק בהצלחה מ- $1 
 udelete_failed=מחיקת $1 : $2 נכשלה
 udelete_done=.. בוצע
+
 group_title1=צור קבוצה
 group_header1=פרטים חדשים על קבוצת Webmin
 group_name=שם קבוצה
@@ -232,6 +242,7 @@ group_failed2=עדכון הקבוצה נכשל ב- $1 : $2
 group_return=פרטי קבוצה
 group_nomems=אין חברים
 group_servers=שרתים ליצור
+
 gdelete_title=מחק קבוצה
 gdelete_desc=האם אתה בטוח שברצונך למחוק את הקבוצה $1 ואת המשתמשים החברים בה $2 מכל המארחים?
 gdelete_ok=מחק קבוצה
@@ -240,6 +251,7 @@ gdelete_success=נמחק בהצלחה מ- $1
 gdelete_failed=מחיקת $1 : $2 נכשלה
 gdelete_done=.. בוצע
 gdelete_esub=בקבוצה זו יש קבוצות משנה $1, ולכן לא ניתן למחוק אותה.
+
 acl_title=בקרת גישה למודול
 acl_title2=למשתמש $1 ב- $2 על $3 
 acl_title3=לקבוצה $1 ב- $2 על $3 
@@ -258,6 +270,7 @@ acl_doing2=הגדרת בקרת גישה ל- $1 ב- $2.
 acl_success=הגדר בהצלחה את בקרת הגישה ל- $1 
 acl_failed=הגדרת בקרת הגישה נכשלה ב- $1 : $2 
 acl_done=.. בוצע
+
 sync_title=סנכרן שרתים
 sync_desc=טופס זה מאפשר לך ליצור משתמשי וקבוצות Webmin בשרתים שאין להם כרגע, על מנת להכניס חשבונות לסנכרון בין כל השרתים באשכול שלך.
 sync_hosts=שרתים לסנכרון
@@ -281,6 +294,7 @@ sync_gcreate=מוסיף קבוצת וובמין $1 ..
 sync_acl=העתקת קבצי ACL עבור $1 ..
 sync_test=רק הראו מה ייעשה?
 sync_restart=התחל מחדש את Webmin ..
+
 upgrade_title=שדרג את וובמין
 upgrade_header=שדרוג וובמין בכל המארחים ..
 upgrade_header2=שדרוג Webmin ב- $1 ..
@@ -299,6 +313,7 @@ upgrade_failed=התקנת $1 : $2 נכשלה
 upgrade_done=.. בוצע
 upgrade_efast=ניתן לשדרג רק שרתים המשתמשים במצב RPC מהיר
 upgrade_ereconn=התחברות מחדש ל- Webmin לאחר השדרוג!  : $1 
+
 update_title=עדכן מודולים
 update_header=עדכון המודולים של כל המארחים ..
 update_header5=מעדכן מודולים ב- $2 ..
@@ -306,6 +321,7 @@ update_header4=עדכון מודולים לחברים ב- $2 ..
 update_onhost=תוצאות העדכון ב- $1.
 update_failed=.. העדכון נכשל : $1 
 update_none=.. לא נמצאו עדכונים.
+
 config_title=ערוך תצורת מודול
 config_enone=לא נבחרו מארחים עם המודול המותקן
 config_ethis=המודול אינו מותקן בשרת זה

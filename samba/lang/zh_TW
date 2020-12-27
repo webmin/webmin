@@ -5,6 +5,7 @@ index_fileshare=檔案清單
 index_printershare=印表機共用
 index_shareconf=共用組態
 index_version=Samba 版本 $1
+
 index_sharename=共用名稱
 index_path=路徑
 index_security=安全
@@ -33,12 +34,14 @@ index_restartmsg=按下按鈕在系統上重新啟動正在執行的samba服務�
 index_restartmsg2=這也會中斷所有到伺服器的連線，所以如果您不想要讓目前組態立即生效，只需要等待 1 分鐘讓 Samba 自動重新讀取組態檔案
 index_stop=停止Samba伺服器
 index_stopmsg=按下按鈕在系統上關閉正在執行的samba服務，這會強制中斷目前所有連線到伺服器的使用者。
+
 config_mins=分
 config_secs=秒
 config_bytes=位元組
 config_never=從不
 config_all=所有的
 config_neither=沒有任何一個
+
 global_title=全域設定
 global_unixnetwork=Unix 網路
 global_winnetwork=Windows 網路
@@ -50,6 +53,7 @@ global_prndefault=印表機共用預設值
 global_password=密碼加密
 global_users=Samba使用者
 global_group=Samba群組
+
 error_nosamba=找不到Samba 伺服器執行檔案<7/>$1</tt> 。也許系統沒有安裝 Samba，或是<a href=\$2\>模組組態</a> 不正確。
 error_version=Webmin 找不到 samba 伺服器執行檔案 <tt>$1</tt>的版本號。檢查 <a href=\$2\>模組組態</a>確定路徑正確。
 error_config=找不到組態檔案 $1 ，也許系統中沒有安裝 Samba，或 <a href=\$2\>模組組態</a> 錯誤。
@@ -57,6 +61,7 @@ error_include=Webmin 不能處理使用<tt>config</tt> 或<tt>include</tt> 指�
 error_delshare=刪除共用失敗
 error_delcopy=從這個共用複製到共用 '$1'
 error_savename=儲存檔案名稱時失敗
+
 convert_title=轉換使用者
 convert_msg=可使用此表單同步化 Unix 和 Samba 使用者清單。當 Samba使用<a href=$1>加密密碼</a>時，使用獨立的使用者和密碼表，而不是系統使用者清單。
 convert_noconv=不要轉換或刪除下列使用者：
@@ -70,6 +75,7 @@ convert_lock=鎖定帳號
 convert_passwd=使用此密碼
 convert_convert=轉換使用者
 convert_cannot=Unix使用者無法轉換到Samba使用者
+
 misc_title=雜類選項
 misc_debug=除錯級別
 misc_cachecall=快取記憶體<tt>getwd()</tt> 呼叫？
@@ -83,6 +89,7 @@ misc_chroot=<tt>chroot()</tt> 目錄
 misc_smbrun=<tt>smbrun</tt>路徑
 misc_clienttime=客戶端時間差異
 misc_readprediction=讀取預測？
+
 net_title=Unix 網路選項
 net_idle=在斷線之前閒置時間
 net_trustlist=信任主機/使用者檔案
@@ -97,6 +104,7 @@ net_every=傳送每一個
 net_maxpacket=最大封包大小
 net_listen=監聽地址
 net_socket=Socket 選項
+
 passwd_title=密碼選項
 passwd_encrypt=使用加密密碼？
 passwd_allownull=允許空密碼？
@@ -110,11 +118,13 @@ passwd_send=傳送
 passwd_map=使用者名映射
 passwd_unixuser=Unix 使用者
 passwd_winuser=Windows 使用者
+
 print_title=列印選項
 print_style=Unix 列印風格
 print_show=顯示所有的印表機？
 print_printcap=列印性能檔案
 print_cachetime=列印狀態快取記憶體時間
+
 smb_title=Windows 網路選項
 smb_workgroup=工作群組
 smb_wins=WINS 模式
@@ -141,14 +151,17 @@ smb_nowhere=沒有地方
 smb_fromlist=來自清單...
 smb_ip=IP 地址
 smb_asworkgroup=<b>作為工作群組</b> (可選)
+
 create_title=新增複製
 create_msg=共用副本繼承所選取共用的所有預設值。如原共用改變，複本隨之改變。
 create_from=共用複製自：
 create_name=新的共用名稱：
+
 smbuser_title=Samba 使用者
 smbuser_list=Samba 使用者清單
 smbuser_nouser=沒有定義 Samba 使用者
 smbuser_cannot=無法列出Samba使用者
+
 euser_title=編輯 Samba 使用者
 euser_name=使用者名稱
 euser_uid=Unix UID
@@ -165,6 +178,7 @@ euser_normal=普通使用者
 euser_nopwrequired=無需密碼
 euser_disable=帳號停用
 euser_trust=工作站信任帳號
+
 fmisc_title=雜類檔案預設值
 fmisc_for=共用<tt>$1</tt>
 fmisc_lockfile=鎖定檔案？
@@ -182,6 +196,7 @@ fmisc_conncmd=連線時執行的命令
 fmisc_disconncmd=斷線時執行的命令
 fmisc_rootconn=<i>作為root</i>連線時執行的命令
 fmisc_rootdisconn=<i>作為root</i>斷線時執行的命令
+
 fname_title1=檔案命名稱預設值
 fname_title2=編輯檔案命名稱
 fname_option=檔案命名稱選項
@@ -196,6 +211,7 @@ fname_hide=隱藏"."檔案名稱？
 fname_archive=儲存 DOS 歸檔標籤？
 fname_hidden=儲存 DOS 隱藏標籤？
 fname_system=儲存 DOS 系統標籤？
+
 fperm_title1=檔案許可預設
 fperm_title2=編輯檔案許可
 fperm_option=檔案許可選項
@@ -208,6 +224,7 @@ fperm_link=允許在共用外符號連線？
 fperm_delro=能刪除唯讀檔案嗎？
 fperm_forcefile=強制Unix 檔案模式
 fperm_forcedir=強制 Unix 目錄模式
+
 share_title1=預設檔案共用
 share_title2=編輯檔案共用
 share_title3=新增檔案共用
@@ -228,6 +245,7 @@ share_naming=檔案命名稱
 share_misc=雜類選項
 share_samedesc1=注意-這設定也會影響所有預設的檔案分享
 share_samedesc2=注意-這設定也會影響所有預設的列表機分享
+
 print_title1=印表機選項預設值
 print_title2=編輯印表機選項
 print_option=印表機選項
@@ -239,6 +257,7 @@ print_delete=刪除作業命令
 print_pause=暫停作業命令
 print_unresume=中斷作業命令
 print_driver=印表機驅動程式
+
 pshare_title1=印表機共用預設
 pshare_title2=編輯列印共用
 pshare_title3=新增印表機共用
@@ -247,6 +266,7 @@ pshare_name=共用名稱
 pshare_all=所有印表機共用
 pshare_unixprn=Unix 印表機
 pshare_spool=偽離線目錄
+
 sec_index1=安全預設
 sec_index2=編輯安全
 sec_writable=可寫？
@@ -269,6 +289,7 @@ sec_rouser=唯讀使用者
 sec_rogroup=唯讀群組
 sec_rwuser=讀寫使用者
 sec_rwgroup=讀寫群組
+
 esync_title=使用者同步
 esync_msg=可將 Webmin 組態為 Unix 使用者清單的更改自動套用到 Samba 使用者清單。這只在使用 <tt>使用者和群組</tt> Webmin 模組來加入、刪除或改變使用者時才有效。
 esync_add=加入Unix使用者也隨之加入Samba 使用者
@@ -278,6 +299,7 @@ esync_del_profile=當Unix使用者刪除時 刪除個人設定檔
 esync_chg_profile=當Unix使用者重新命名時 重新命名個人設定檔
 esync_apply=套用
 esync_cannot=無法組態使用者同步
+
 mkpass_title=轉換使用者
 mkpass_convfail=轉換使用者失敗
 mkpass_msg=轉換Unix使用者...
@@ -286,10 +308,12 @@ mkpass_same=已經相同
 mkpass_update=正被更新
 mkpass_del=正被刪除
 mkpass_passfail=設置密碼失敗
+
 savecopy_fail=新增複製失敗
 savecopy_global=名稱 'global' 不能用於共用
 savecopy_exist='$1'共用已經存在
 savecopy_ename=未輸入分享名稱
+
 saveuser_fail=儲存使用者失敗
 saveuser_uid='$1' 不是有效的 Unix UID
 saveuser_colon=真實名稱不能包含字元：
@@ -297,15 +321,19 @@ saveuser_home=使用者根目錄'$1' 不存在
 saveuser_shell=$1 是錯誤的shell
 saveuser_pass=使用smbpasswd更改密碼失敗 : $1
 saveuser_ews=無法啟用工作站信任帳號選項在這個使用者上
+
 savefmisc_fail=儲存雜類選項失敗
 savefmisc_number='$1' 是錯誤的連線數
+
 savefperm_fail=儲存檔案許可失敗
 savefperm_mode='$1' 是錯誤的 Unix 檔案模式
+
 savefshare_fail=儲存共用失敗
 savefshare_nopath=沒有給定路徑
 savefshare_exist=名稱為 '$1' 的共用已經存在
 savefshare_mode='$1' 是錯誤共用名稱
 savefshare_global='global'不能用作共用名稱
+
 savemisc_fail=儲存選項失敗
 savemisc_lockdir=包含鎖定目錄的目錄不存在
 savemisc_logdir=包含日誌檔案的目錄不存在
@@ -314,34 +342,44 @@ savemisc_overlap='$1' 是錯誤的重疊讀大小
 savemisc_chroot=chroot 目錄'$1' 不存在
 savemisc_smbrun=smbrun 程式'$1' 沒有或不可執行
 savemisc_time='$1' 錯誤的時間差異
+
 savenet_fail=儲存選項失敗
 savenet_timeout='$1' 錯誤的斷線逾時
 savenet_ip='$1' 錯誤IP 位元組
 savenet_keep='$1' 是錯誤的保持活動間隔
 savenet_maxxmit='$1' 錯誤的最大封包大小
+
 savepass_fail=儲存選項失敗
 savepass_nopass=這個版本的samba不支援密碼加密
 savepass_passwd=沒有給定的改變密碼的程式
 savepass_level='$1' 錯誤密碼(大小寫不同)
 savepass_chat=改變密碼的對話序列是空的
+
 savepopts_fail=儲存印表機選項失敗
 savepopts_number=最小自由空間必須是數字
+
 saveprint_fail=儲存選項失敗
 saveprint_printcap=列印性能檔案'$1' 不存在
 saveprint_cache='$1' 錯誤的快取記憶體時間
+
 savepshare_fail=儲存印表機共用失敗
 savepshare_exist='$1'共用已經存在
 savepshare_name='$1' 錯誤的共用名稱
 savepshare_global='global'不能作為共用名稱
+
 savesec_fail=儲存安全設置失敗
+
 savesmb_fail=儲存選項失敗
 savesmb_size='$1' 錯誤的磁碟空間
 savesmb_oslevel='$1' 錯誤的主瀏覽器優先性
 savesmb_server=必須輸入密碼伺服器
+
 start_err=啟動samba伺服器失敗
 start_fail=$1 失敗
+
 swats_fail=儲存使用者名稱失敗
 swats_user=沒有輸入 SWAT 使用者名稱
+
 viewu_index=當前使用者
 viewu_list=$1 的當前使用者
 viewu_share=共用
@@ -355,6 +393,7 @@ viewu_msg2=沒有線上使用者
 viewu_locks=開啟檔案
 viewu_none=無
 viewu_ecmd=未發現安裝Samba狀態程式$1在您的系統上，或您的<a href='$2'>模組組態</a>不正確
+
 log_apply=重新啟動 Samba 伺服器
 log_stop=停止Samba伺服器
 log_start=啟動 Samba 伺服器
@@ -388,6 +427,7 @@ log_create_group=新增Samba群組$1
 log_modify_group=修改Samba群組$1
 log_delete_group=刪除Samba群組$1
 log_gsync=組態Unix群組同步
+
 swat_title=SWAT 登入
 swat_list=SWAT 登入
 swat_msg1=您目前的 SWAT 使用者名稱和密碼不正確.請用下表重新登入。
@@ -399,6 +439,7 @@ swat_password=密碼
 swat_login=登入
 swat_clear=清除
 swat_logout=SWAT
+
 eacl_aviol=違反允許控制
 eacl_np=您沒有權限
 eacl_papply=重新啟動伺服器
@@ -434,6 +475,7 @@ eacl_pafs=進入此檔案共用
 eacl_paps=進入此列表機共用
 eacl_pcps=新增列表機共用
 eacl_pcfs=新增檔案共用
+
 acl_apply=可以套用變更?
 acl_view_all_con=可以查看全部連線?
 acl_kill_con=可以移除連線?
@@ -477,6 +519,7 @@ acl_edit=編輯
 acl_group_opts=Samba群組選項
 acl_maint_groups=可檢視,編輯和新增群組?
 acl_maint_gsync=可以維護自動同步Unix 和 Samba 使用者
+
 groups_title=Samba群組
 groups_name=群組名稱
 groups_unix=Unix群組
@@ -492,6 +535,7 @@ groups_return=群組清單
 groups_add=新增Samba群組
 groups_ecannot=您不被允許檢視或編輯Samba群組
 groups_cannot=無法列出Samba群組
+
 gedit_title2=編輯Samba群組
 gedit_title1=建立Samba群組
 gedit_header=Samba群組內容
@@ -504,11 +548,13 @@ gedit_unix=Unix群組
 gedit_unixgr=群組..
 gedit_none=無
 gedit_set=列出的..
+
 gsave_err=儲存群組失敗
 gsave_eunix=無效或錯誤的Unix群組名稱或GID
 gsave_ename=未輸入群組名稱
 gsave_epriv=未輸入權限
 gsave_elocal=權限只能設給本地群組
+
 gsync_title=群組同步
 gsync_msg=Webmin可以組態成當Unix使用者改變時，自動編更Samba使用者，但這只在當使用<b>使用者與群組</b>Webmin模組有新增,刪除,或改變群組時。
 gsync_add=當Unix群組加入時 新增Samba群組
@@ -519,6 +565,7 @@ gsync_type=新群組類型
 gsync_priv=新群組權限(如果是本地端的話)
 gsync_ecannot=您不被允許組態群組同步
 gsync_cannot=無法組態群組同步
+
 check_user1=$1 : 無法啟用加密的密碼在<a href='$2'>認證</a>頁
 check_user2=$1 : <a href='$2'>模組組態</a>中未設定Samba密碼檔和pdbedit指令路徑
 check_group1=$1 : 群組功能只支援Samba版本3

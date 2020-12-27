@@ -28,6 +28,7 @@ index_tabinstall=התקן מודול
 index_tabsuggest=מודולים מוצעים
 index_allmods2=מודולים חסרים המשמשים את Webmin
 index_wantmods=מודולים להתקנה
+
 download_err=התקנת המודול נכשלה
 download_elocal=לא ניתן קובץ מקומי
 download_elocal2='$1' אינו קיים
@@ -65,6 +66,7 @@ download_ebuild=אחד או יותר ממודולי Perl זקוקים לבניי
 download_yum=התקנת מודול Perl $1 מהחבילה $2.
 download_missingok=מודולים חסרים ב- CPAN
 download_fallback=חלק מהמודולים לא הצליחו להתקין מחבילות, מנסים להתקין מהמקור במקום זאת.
+
 install_title=התקן מודול
 install_untar=מבטל את קובץ המודול
 install_make=מודול קומפילציה
@@ -84,11 +86,13 @@ install_err2=אתה יכול גם להתקין את המודול מ- CPAN עם �
 install_exec=מבצע $1 ..
 install_efile=קובץ המודול $1 כבר לא קיים
 install_needunlink=תוכלו לנסות להתקין שוב על ידי חזרה לדף הקודם ובחירת אפשרויות שונות. אחרת, <a href='$1'>לחץ כאן כדי למחוק את קבצי החבילה הזמניים</a> כדי לחסוך שטח בדיסק.
+
 cpan_sel=מודולים מתחת ל $1 ..
 cpan_title=בחר מודול פרל
 cpan_search=מצא מודולים בשם
 cpan_match=מודולים התואמים $1 ..
 cpan_none=אין תוצאות מתאימות.
+
 edit_title=פרטי המודול
 edit_header=מידע על המודול
 edit_mod=שם המודול
@@ -105,6 +109,7 @@ edit_method=הותקן מ-
 edit_rpm=חבילת סל"ד אחוז $1 
 edit_debian=חבילת דביאן $1 
 edit_manual=התקנת מודול פרל ידנית
+
 uninstall_title=הסר את ההתקנה של המודול
 uninstall_rusure=האם אתה בטוח שברצונך להסיר את התקנת מודול Perl $1 ? הקבצים הבאים יימחקו :
 uninstall_rusure2=האם אתה בטוח שברצונך להסיר את ההתקנה של מודול Perl $1 ותת המודול / ים $2 ? <br> הקבצים הבאים יימחקו :
@@ -112,7 +117,9 @@ uninstall_ok=הסר התקנה כעת
 uninstall_rpm=המודול יוסר על ידי ביטול התקנת חבילת $1 סל"ד.
 uninstall_debian=המודול יוסר על ידי ביטול התקנת חבילת Debian $1.
 uninstall_err=הסרת ההתקנה של המודול נכשלה
+
 delete_efile=קובץ חבילה לא חוקי!
+
 uninstalls_title=הסר את ההתקנה של מודולים
 uninstalls_err=הסרת ההתקנה של מודולים נכשלה
 uninstalls_enone=לא נבחר

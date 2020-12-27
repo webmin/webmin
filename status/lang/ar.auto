@@ -19,6 +19,7 @@ index_refsel=تم تحديث التحديث
 index_group=أعضاء$1
 index_tmpls=تحرير قوالب البريد الإلكتروني
 index_tmplsdesc=عرض وتحرير القوالب المستخدمة لإنشاء رسائل البريد الإلكتروني المرسلة عندما تنخفض الخدمات الخاضعة للمراقبة.
+
 type_apache=خادم أباتشي
 type_inetd=الإنترنت وخادم RPC
 type_xinetd=خادم إنترنت موسع
@@ -73,8 +74,10 @@ type_alive=نظام حي
 type_rssh=SSH البعيد
 type_slapd=خادم LDAP
 type_ldap=اتصال LDAP
+
 mon_create=إنشاء مراقب
 mon_edit=تحرير مراقب
+mon_virtualmin=تحذير! جهاز العرض هذا مقترن بمجال Virtualmin $1 ، لذا لا يجب تحريره أو حذفه هنا.
 mon_header=تفاصيل الشاشة
 mon_header2=أوامر للتشغيل
 mon_header3=خيارات الخدمة المراقبة
@@ -138,6 +141,7 @@ mon_changes0=إظهار كل نوع حدث
 mon_changes1=إظهار التغييرات فقط
 mon_all=عرض جميع الأحداث التاريخية
 mon_nochanges=لم تحدث تغييرات في الحالة في الأحداث التاريخية الأخيرة$1.
+
 sched_title=المراقبة المجدولة
 sched_header=خيارات مراقبة الخلفية المجدولة
 sched_mode=تمكين التحقق المجدول؟
@@ -184,16 +188,19 @@ sched_subject0=لا شيء (التنبيه في الجسم)
 sched_subject1=نص التنبيه (اترك النص فارغًا)
 sched_subject2=نص مخصص
 sched_esubject=موضوع رسالة SMS مفقود
+
 up_since=أعلى منذ$1
 depends_mod=الوحدة النمطية$1 غير مثبتة على النظام الخاص بك
 depends_os=الوحدة النمطية$1 غير مدعومة على نظامك
 depends_remote=الوحدة النمطية$1 غير معتمدة على الخادم$2
+
 tcp_host=مضيف للاتصال به
 tcp_port=منفذ للاتصال به
 tcp_alarm=انتهى وقت محاولة الاتصال
 tcp_ehost=اسم مضيف مفقود أو غير صالح
 tcp_eport=رقم منفذ مفقود أو غير صالح
 tcp_ealarm=مهلة الاتصال مفقودة أو غير صالحة
+
 http_url=URL لطلب
 http_alarm=انتهى وقت محاولة الاتصال
 http_eurl=عنوان URL مفقود أو غير صالح
@@ -208,11 +215,13 @@ http_regexp=يجب أن تتطابق الصفحة مع regexp
 http_eregexp=لم يتم إدخال تعبير عادي للصفحة المراد مطابقتها
 http_none2=لا تتطابق
 http_ehead=لا يمكن استخدام طريقة طلب الرأس عند التحقق من وجود تعبير عادي
+
 ping_host=استضافة بينغ
 ping_wait=حان وقت انتظار الرد
 ping_ehost=اسم مضيف مفقود أو غير صالح
 ping_ewait=وقت الانتظار مفقود أو غير صالح
 ping_econfig=لم يتم تعيين أمر ping في تكوين الوحدة النمطية
+
 proc_pid=يعمل مع PIDs$1
 proc_cmd=الأمر للتحقق من
 proc_not=تفشل إذا كانت العملية
@@ -224,6 +233,7 @@ proc_ethresh=عدد العمليات المفقودة أو غير الصالحة
 proc_asuser=يعمل كمستخدم
 proc_anyuser=أي مستخدم
 proc_easuser=المستخدم للعملية لتشغيل كما هو غير موجود
+
 exec_cmd=الأمر للتشغيل
 exec_mode=التحقق من حالة الخروج
 exec_mode0=فشل العرض إذا فشل الأمر
@@ -235,6 +245,7 @@ exec_noregexp=لا تتحقق
 exec_remode=الاختيار Regexp
 exec_remode0=يفشل إذا لم يتطابق الإخراج
 exec_remode1=فشل إذا تطابق الإخراج
+
 file_file=ملف أو دليل أو نمط للتحقق
 file_test=اختبار لأداء
 file_test_0=لابد من وجوده
@@ -253,6 +264,7 @@ file_group=يجب أن تكون مجموعة الملفات
 file_nocheck=اى شى
 file_perms=يجب أن تكون أذونات الثماني
 file_eperm=الملفات ذات الأذونات الخاطئة :$1
+
 traffic_iface=واجهة للرصد
 traffic_bytes=البايت الأقصى/الثانية
 traffic_dir=الاتجاه للرصد
@@ -262,6 +274,7 @@ traffic_dir2=صادرة فقط
 traffic_desc=تقوم هذه الشاشة بتتبع حركة مرور الشبكة على واجهة محددة ، وتعرض الشاشة لأسفل إذا تجاوزت حركة المرور عدد وحدات البايت في الثانية التي تم إدخالها أدناه. يعمل هذا جيدًا حقًا فقط إذا تم تمكين المراقبة المجدولة في فترة زمنية قصيرة ، مثل كل 5 دقائق.
 traffic_eifaces=لا يحتوي نظام التشغيل الخاص بك على ملف/proc/net/dev
 traffic_ebytes=عدد وحدات البايت/الثانية مفقود أو غير صالح
+
 space_fs=نظام الملفات للتحقق
 space_min2=الحد الأدنى من المساحة الحرة
 space_mode0=الحجم المطلق
@@ -277,6 +290,7 @@ space_ierr=$1 فقط من العودات مجانًا
 space_merr=مساحة$1 فقط خالية
 space_perr=$1٪ فقط مجانًا
 space_dferr=فشل الحصول على حجم نظام الملفات
+
 load_time=متوسط التحميل للتحقق
 load_1=1 دقيقة
 load_5=5 دقائق
@@ -285,6 +299,7 @@ load_max=متوسط الحمولة القصوى
 load_emax=متوسط الحمل الأقصى مفقود أو غير صالح
 load_ecmd=لم يتم العثور على الأمر <tt>uptime</tt> في نظامك
 load_efmt=تعذر تحليل إخراج أمر <tt>uptime</tt>
+
 log_create=جهاز عرض تم إنشاؤه$1
 log_modify=جهاز عرض معدل$1
 log_delete=جهاز العرض المحذوف$1
@@ -295,10 +310,14 @@ log_tmpl_modify=قالب بريد إلكتروني معدل$1
 log_tmpl_delete=قالب البريد الإلكتروني المحذوف$1
 log_tmpl_deletes=تم حذف قوالب البريد الإلكتروني$1
 log_refresh=حالات شاشة محدثة
+
 acl_edit=يمكن تحرير وإنشاء شاشات؟
 acl_sched=يمكن تغيير المراقبة المجدولة؟
+
 change_file=ملف أو دليل للمراقبة (فشل إذا تم تغييره)
+
 jabber_eparser=الوحدة النمطية Perl $1 غير مثبتة على نظامك.
+
 memory_min2=الحد الأدنى من الذاكرة الحقيقية الحرة
 memory_emin=كمية مفقودة أو غير صالحة من الذاكرة الحقيقية الحرة
 memory_eproc=لا يعرف Webmin كيفية التحقق من الذاكرة الخالية على نظام التشغيل الخاص بك
@@ -308,7 +327,9 @@ memory_freelow=$1 فقط من الذاكرة الحقيقية خالية
 memory_freelowswap=$1 فقط من الذاكرة الظاهرية خالية
 memory_minswap=الحد الأدنى من الذاكرة الافتراضية الحرة
 memory_eminswap=كمية مفقودة أو غير صالحة من الذاكرة الافتراضية المجانية
+
 proftpd_etype=لا يمكن استخدام جهاز العرض هذا عند تشغيل ProFTPD بشكل مستقل
+
 mailserver_to=إرسال بريد إلكتروني إلى العنوان
 mailserver_timeout=المهلة والفاصل الزمني
 mailserver_units_0=الثواني
@@ -316,22 +337,28 @@ mailserver_units_1=الدقائق
 mailserver_units_2=ساعات
 mailserver_units_3=أيام
 mailserver_desc=يجب أن يكون العنوان أدناه مجيبًا آليًا يرد على عنوان المصدر بنفس الموضوع: السطر.
+
 oldfile_file=ملف للمراقبة (فشل إذا لم يتغير)
 oldfile_diff=فشل إذا لم يتغير ل
 oldfile_secs=ثانية
+
 raid_device=جهاز RAID
 raid_edevice=لم يتم تحديد جهاز RAID
 raid_bad=تم اكتشاف قرص تالف
 raid_resync=إعادة المزامنة حاليًا
 raid_notfound=لم يتم العثور على جهاز RAID$1
 raid_other=آخر ..
+
 iface_iface=واجهة للتحقق
+
 init_action=إجراء للتحقق
 init_eaction=لم يتم تحديد أي إجراء
+
 refresh_title=تحديث الحالة
 refresh_doing=تحديث حالة جميع الشاشات ..
 refresh_doing2=جاري تحديث حالة أجهزة العرض المحددة$1 ..
 refresh_done=.. فعله.
+
 sensors_name=جهاز استشعار للتحقق
 sensors_value=فشل عندما
 sensors_value0=يشير النظام إلى التحذير
@@ -342,6 +369,7 @@ sensors_none=تم الكشف عن أي أجهزة استشعار على نظام
 sensors_cur=$1 (حاليًا$2 $3)
 sensors_emin=الحد الأدنى للقيمة مفقود أو غير صالح
 sensors_emax=القيمة القصوى مفقودة أو غير صالحة
+
 nut_ups=NUT UPS للتحقق
 nut_name=السمة للتحقق
 nut_value=فشل عندما
@@ -352,6 +380,7 @@ nut_eups=لم يتم إدخال USP للتحقق
 nut_cur=$1 (حاليًا$2)
 nut_emin=الحد الأدنى للقيمة مفقود أو غير صالح
 nut_emax=القيمة القصوى مفقودة أو غير صالحة
+
 mailq_system=خادم البريد
 mailq_qmailadmin=Qmail
 mailq_postfix=Postfix
@@ -360,6 +389,7 @@ mailq_size=الحد الأقصى لحجم قائمة انتظار البريد
 mailq_esize=حجم قائمة الانتظار الأقصى مفقود أو غير صالح
 mailq_toomany=للأسفل - تم وضع$1 رسالة في قائمة الانتظار
 mailq_ok=حتى$1 رسائل في قائمة الانتظار
+
 dns_server=خادم DNS
 dns_host=اسم المضيف للبحث
 dns_address=عنوان IP المتوقع
@@ -367,6 +397,7 @@ dns_eserver=خادم DNS مفقود أو غير صالح
 dns_ehost=اسم مضيف مفقود أو غير صالح للبحث عنه
 dns_eaddress=عنوان IP المتوقع مفقود أو غير صالح
 dns_ecmds=لا يتم تثبيت أوامر <tt>nslookup</tt> أو <tt>dig</tt> على نظامك
+
 monitor_sub_down=$1 للأسفل على$2
 monitor_pager_down=$1: انخفض "$2"$3
 monitor_snmp_down= $1:$2 
@@ -398,8 +429,10 @@ monitor_run1=جاري تشغيل$1 على$2 ..
 monitor_run2=جاري تشغيل$1 ..
 monitor_runerr=فشل في تشغيل$1 على $2 : $3 
 monitor_email_stat=الحالة الحالية:$1
+
 deletes_egone=لم يعد أحد الشاشات المحددة موجودًا
 deletes_enone=لم يتم تحديد شاشات
+
 ftp_host=مضيف خادم FTP
 ftp_port=منفذ FTP
 ftp_user=تسجيل الدخول كمستخدم
@@ -416,6 +449,7 @@ ftp_econn=فشل اتصال TLS FTP
 ftp_econn2=فشل اتصال TLS FTP :$1
 ftp_elogin=فشل تسجيل الدخول إلى TLS FTP :$1
 ftp_etlsfile=فشل تنزيل بروتوكول TLS FTP :$1
+
 query_driver=نوع قاعدة بيانات SQL
 query_db=اسم قاعدة البيانات
 query_host=مضيف خادم قاعدة البيانات
@@ -436,9 +470,12 @@ query_elogin=فشل تسجيل الدخول :$1
 query_eprepare=خطأ SQL :$1
 query_eexecute=فشل SQL :$1
 query_ewrong=نتيجة غير صحيحة :$1
+
 consume_rate=معدل الاستهلاك الأقصى (في الثانية)
 consume_high=معدل الاستهلاك$1 / ثانية
+
 alive_up=يصل إلى$1
+
 rssh_host=مضيف خادم SSH
 rssh_ruser=تسجيل الدخول كمستخدم
 rssh_rpass=تسجيل الدخول بكلمة المرور
@@ -454,6 +491,7 @@ rssh_error=خطأ SSH
 rssh_haspass=كلمه السر
 rssh_port=منفذ خادم SSH
 rssh_eport=رقم منفذ مفقود أو غير صالح
+
 tmpls_title=قوالب البريد الإلكتروني
 tmpls_ecannot=لا يسمح لك بتحرير قوالب البريد الإلكتروني
 tmpls_none=لم يتم تحديد قوالب البريد الإلكتروني حتى الآن. سيتم إرسال جميع التنبيهات باستخدام رسائل Webmin الافتراضية.
@@ -462,6 +500,7 @@ tmpls_email=رسالة الكترونية
 tmpls_add=أضف قالب بريد إلكتروني جديد.
 tmpls_return=قائمة القوالب
 tmpls_delete=حذف القوالب المحددة
+
 tmpl_title1=إنشاء قالب البريد الإلكتروني
 tmpl_title2=تحرير قالب البريد الإلكتروني
 tmpl_header=رسائل تنبيه بالبريد الإلكتروني
@@ -486,9 +525,11 @@ tmpl_esms=رسالة SMS مفقودة
 tmpl_esnmp=رسالة SNMP مفقودة
 tmpl_err2=فشل حذف قالب البريد الإلكتروني
 tmpl_eusers=قيد الاستخدام من قبل أجهزة العرض التالية :$1
+
 dtmpls_err=فشل حذف القوالب
 dtmpls_enone=لم يتم تحديد شيء
 dtmpls_eusers=$1 قيد الاستخدام من قبل أجهزة العرض التالية :$2
+
 sslcert_src=موقع الشهادة
 sslcert_url=من HTTPS URL
 sslcert_file=من ملف على الخادم
@@ -506,18 +547,21 @@ sslcert_eend=غير صالح بعد$1
 sslcert_left=يصل -$1 يوم حتى انتهاء الصلاحية
 sslcert_ematch=اسم المضيف$1 لا يطابق الشهادة$2
 sslcert_emismatch=لا يمكن استخدام فحص اسم مضيف الشهادة إلا عند التحقق من عنوان URL
+
 du_dir=دليل للمراقبة
 du_max=أكبر مقاس
 du_edir=مسار الدليل مفقود أو غير مطلق
 du_emax=الحجم الأقصى مفقود أو غير رقمي
 du_over=الحجم هو$1
 du_under=الحجم هو$1 فقط
+
 ldap_edriver=الوحدة النمطية Perl $1 غير مثبتة
 ldap_host=اسم مضيف خادم LDAP
 ldap_port=منفذ خادم LDAP
 ldap_ssl=استخدام اتصال SSL؟
 ldap_user=تسجيل الدخول إلى خادم LDAP
 ldap_pass=كلمة مرور خادم LDAP
+
 info_desc=مراقب النظام
 info_last=الحالة الحالية
 info_title=حالة النظام والخادم

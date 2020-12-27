@@ -5,14 +5,18 @@ index_apply=Dodaj KOnfiguraciju
 index_boot=Pokrenuti kod bootanja?
 index_return=index modula
 index_version=Verzija $1
+
 apply_err=Neuspjelo dodavanje konfiguracije
+
 imap_title=IMAP Opcije
+
 login_none=Ništa
 login_anonymous=Anonimni
 login_digest-md5=Digest-MD5
 login_cram-md5=Cram-MD5
 login_apop=APOP
 login_checkpassword=Vanjski program $1
+
 log_login=Promijenjene Korisničke i Opcije Logiranja
 log_mail=Promijenjeni Mail Dokumenti
 log_apply=Dodana Konfiguracija

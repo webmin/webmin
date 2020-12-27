@@ -26,6 +26,7 @@ index_addboot=Iniciar Seleccionado al Inicio
 index_delboot=Deshabilitar Seleccionado al Inicio
 index_addboot_start=Comenzar ahora & En Arranque
 index_delboot_stop=Deshabilitar Ahora & En Arranque
+
 edit_title=Editar Acción
 create_title=Crear Acción
 edit_ecannot=No está autorizado a editar acciones de inicio
@@ -54,10 +55,12 @@ edit_statusnow=Mostrar Estado
 edit_return=acción
 edit_status=¿Comenzado ahora?
 edit_unknown=Desconocido
+
 save_err=Fallo al salvar acción
 save_ecannot=No está autorizado a editar acciones de inicio
 save_ealready=Ya existe una acción llamada '$1'
 save_ewrite=Fallo al escribir a $1 : $2
+
 ss_ecannot=No está autorizado a iniciar o detener acciones de inicio
 ss_start=Iniciar Acción
 ss_stop=Detener Acción
@@ -65,21 +68,25 @@ ss_restart=Reiniciar Acción
 ss_reload=Recargando Acción
 ss_status=Estado de la Acción
 ss_exec=Ejecutando $1 ..
+
 shutdown_ecannot=No está autorizado a apagar el sistema
 shutdown_title=Apagar
 shutdown_rusure=¿Está seguro que desea bajar el sistema con el comando $1?
 shutdown_ok=Apagar Sistema
 shutdown_exec=Apagando con comando $1 ..
+
 reboot_ecannot=No está autorizado para reiniciar el sistema
 reboot_title=Reiniciar
 reboot_rusure=¿Está seguro de reiniciar el sistema con el comando $1 ?
 reboot_ok=Reiniciar Sistema
 reboot_exec=Reiniciando con comando $1 ..
+
 acl_script=¿Poder editar los scripts de inicio?
 acl_actions=¿Poder editar, crear y borrar acciones?
 acl_runonly=Sólo ejecutar
 acl_reboot=¿Poder reiniciar el sistema?
 acl_shutdown=¿Poder apagar el sistema?
+
 log_rename=Renombrada acción $1 a $2
 log_modify=Modificada acción $1
 log_create=Creada acción $1
@@ -95,6 +102,7 @@ log_massstop=Acciones paradas $1
 log_massenable=Acciones habilitadas $1
 log_massdisable=Acciones deshabilitadas $1
 log_telinit=Cambiado a nivel de ejecución $1
+
 edit_hostconfig_startup=El script $1 se corre en tiempo de inicio del sistema si esta acción está activa.  Puede editarla debajo.
 edit_hostconfig_plist=El archivo $1 configura ciertos parámetros con respecto al script de inicio.  Puede editarlo debajo.
 edit_hostconfig_new=Crear Nueva Acción
@@ -106,12 +114,14 @@ edit_hostconfig_array=Los campos $1, $2, y $3 son campos vectores y pueden conte
 edit_hostconfig_further=Después de crear la nueva acción de comienzo, será redireccionado a una página donde podrá modificar el script de inicio y la lista de parámetros si es necesario.
 edit_hostconfig_hostconfig=El archivo $1 controla los servicios y demonios del sistema que son comenzados al inicio del sistema. Puede editarlo debajo
 edit_hostconfig_title=Editar configuración de la máquina
+
 mass_enone=No hay acciones seleccionadas
 mass_start=Acciones de inicio
 mass_stop=Acciones de detenida
 mass_ebroken=La acción $1 no puede ser habilitada o deshabilitada en tiempo de inicio
 mass_enable=Habilitando acción $1 en tiempo de arranque.
 mass_disable=Deshabilitando acción $1 en tiempo de arranque.
+
 change_err=No está autorizado a cambiar niveles
 change_title=Cambiar niveles
 change_cmd=CAmbiando al nivel $1 con comando $2. Esto puede tomar algún tiempo, y Webmin podría no quedar disponible después del cambio.

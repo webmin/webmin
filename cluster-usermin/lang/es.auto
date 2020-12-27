@@ -39,7 +39,9 @@ index_thost=Nombre de host
 index_tdesc=Descripción
 index_tver=Versión
 index_ttype=Tipo de sistema operativo
+
 this_server=Este servidor
+
 add_title=Agregar servidores
 add_msg=Añadiendo $1 ..
 add_gmsg=Agregando servidores en el grupo $1 ..
@@ -49,6 +51,7 @@ add_echeck=El servidor $1 no tiene el módulo de configuración Usermin
 add_echeck2=El servidor $1 no tiene el módulo de usuarios Usermin
 add_eversion=El servidor $1 no está ejecutando Usermin versión $2 o superior.
 add_ok=Se agregó $1 con $2 módulos y $3 temas.
+
 refresh_title=Módulo de actualización y listas de temas
 refresh_header=Volver a solicitar listas de módulos y temas de todos los servidores.
 refresh_header4=Volver a solicitar listas de módulos y temas de miembros de $2 ..
@@ -64,6 +67,7 @@ refresh_g2=Se eliminaron $1 grupos.
 refresh_done=.. hecho
 refresh_del=Se eliminó $1 de la lista de servidores
 refresh_failed=Error al actualizar $1 : $2 
+
 host_title=Servidor gestionado
 host_header=Detalles del servidor de Usermin gestionado
 host_name=Nombre de host
@@ -81,6 +85,7 @@ host_header_u=Usuarios de Usermin
 host_header_g=Grupos de usuarios
 host_return=detalles del servidor
 host_version2=Versión
+
 edit_title_mod=Editar módulo
 edit_title_theme=Editar tema
 edit_header_mod=Detalles del módulo Usermin de $1 
@@ -103,6 +108,7 @@ edit_codes=De la prueba $1
 edit_acl=Editar ACL para
 edit_uacl=Usuario $1 en $2 
 edit_gacl=Grupo $1 en $2 
+
 install_err=Error al instalar el módulo
 install_title=Instalar módulo
 install_elocal=Ningún archivo local dado
@@ -123,6 +129,7 @@ do_failed=Error al instalar en $1 : $2
 do_success_mod=Módulo instalado $2 en $1 
 do_success_theme=Tema instalado $2 en $1 
 do_done=.. hecho
+
 delete_err=Error al eliminar el módulo $1 
 delete_epack=El módulo $1 no existe
 delete_title=Eliminar módulo
@@ -140,6 +147,7 @@ delete_edepends=Los módulos $1 dependen de él.
 delete_egone=Módulo ya no existe
 delete_esuccess=Eliminado correctamente de $1 : $2 
 delete_acls=¿Eliminar de los usuarios y restablecer la configuración de control de acceso?
+
 user_title1=Crear usuario Usermin
 user_header1=Nuevos detalles de usuario de Usermin
 user_name=Nombre de usuario
@@ -198,11 +206,13 @@ user_all=&lt;todos los hosts&gt;
 user_donthave=&lt;hosts que no lo tienen&gt;
 user_have=&lt;hosts que lo tienen&gt;
 user_ofgroup=Miembros de $1 
+
 udelete_title=Borrar usuario
 udelete_doing=Eliminando el usuario $1 de todos los hosts.
 udelete_success=Eliminado correctamente de $1 
 udelete_failed=Error al eliminar de $1 : $2 
 udelete_done=.. hecho
+
 group_title1=Crea un grupo
 group_header1=Nuevos detalles del grupo Usermin
 group_name=Nombre del grupo
@@ -230,6 +240,7 @@ group_failed2=Error al actualizar el grupo en $1 : $2
 group_return=detalles del grupo
 group_nomems=No miembros
 group_servers=Servidor (es) para crear en
+
 gdelete_title=Eliminar grupo
 gdelete_desc=¿Está seguro de que desea eliminar el grupo $1 y sus usuarios miembros $2 de todos los hosts?
 gdelete_ok=Eliminar grupo
@@ -238,6 +249,7 @@ gdelete_success=Eliminado correctamente de $1
 gdelete_failed=Error al eliminar de $1 : $2 
 gdelete_done=.. hecho
 gdelete_esub=Este grupo tiene subgrupos $1, por lo que no se puede eliminar.
+
 acl_title=Control de acceso al módulo
 acl_title2=Para el usuario $1 en $2 en $3 
 acl_title3=Para el grupo $1 en $2 en $3 
@@ -256,6 +268,7 @@ acl_doing2=Establecer el control de acceso para $1 en $2 ..
 acl_success=Establecer correctamente el control de acceso en $1 
 acl_failed=Error al establecer el control de acceso en $1 : $2 
 acl_done=.. hecho
+
 sync_title=Sincronizar servidores
 sync_desc=Este formulario le permite crear usuarios y grupos de Usermin en servidores que actualmente no los tienen, para sincronizar las cuentas en todos los servidores de su clúster.
 sync_hosts=Servidores para sincronizar
@@ -279,6 +292,7 @@ sync_gcreate=Añadiendo el grupo Usermin $1 ..
 sync_acl=Copiando archivos ACL para $1 ..
 sync_test=¿Solo mostrar lo que se haría?
 sync_restart=Reiniciando Usermin ..
+
 upgrade_title=Actualizar Usermin
 upgrade_header=Actualización de Usermin en todos los hosts. ..
 upgrade_header2=Actualización de Usermin en $1 ..
@@ -297,6 +311,7 @@ upgrade_failed=Error al instalar en $1 : $2
 upgrade_done=.. hecho
 upgrade_efast=Solo los servidores que utilizan el modo RPC rápido pueden actualizarse
 upgrade_ereconn=¡No se pudo volver a conectar a Usermin después de la actualización!  : $1 
+
 update_title=Actualizar módulos
 update_header=Actualización de módulos de todos los hosts ..
 update_header5=Actualización de módulos en $2 ..

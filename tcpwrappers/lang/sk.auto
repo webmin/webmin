@@ -10,6 +10,7 @@ index_hosts=hostitelia
 index_cmd=príkaz
 index_delete=Zmaž označené
 index_none=nikto
+
 edit_title1allow=Vytvorte pravidlo povolenia
 edit_title2allow=Upraviť pravidlo Povoliť
 edit_title1deny=Vytvorte pravidlo odmietnutia
@@ -22,9 +23,11 @@ edit_hosts=Vzdialení hostitelia
 edit_hostsexcept=Okrem hostiteľov
 edit_cmd=Príkazy shellu
 edit_efound=Daemon '$1' nebol nájdený v konfigurácii xinetd.
+
 save_errtitle=Chyba pravidla uloženia
 save_ehost=Vstup hostiteľa obsahuje zlé znaky
 save_ecmd=Zadanie príkazu obsahuje zlé znaky
 save_eservice=Názvy démonov obsahujú zlé znaky
+
 del_errtitle=Chyba pri odstraňovaní pravidiel
 del_enone=Nie sú označené žiadne pravidlá na odstránenie

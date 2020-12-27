@@ -25,6 +25,7 @@ index_resetdesc=Klik op deze knop om alle bestaande firewall regels te wissen en
 index_cluster=Cluster Servers
 index_clusterdesc=Klik op deze knop om extra Webmin servers op te zetten waar de firewall configuratie automatisch naar toe word gekopieerd.
 index_return=firewall regels
+
 index_num=Num
 index_action=Actie
 index_desc=Conditie
@@ -37,6 +38,7 @@ index_delete=Verwijder Geselecteerde
 index_existing=Webmin heeft $1 IPFW firewall regels gedetecteerd die op dit moment in gebruik zijn, en die niet zijn opgenomen in de file $2. Deze regels zijn waarschijnlijk opgezet met een script die door deze module niet kan worden gelezen of worden bewerkt.<p>Indien u deze module wilt gebruiken om uw IPFW firewall te beheren klikt u op de knop hieronder om de bestaande regels te converteren naar een file en daarna uw bestaande firewall script uit te schakelen.
 index_saveex=Firewall Regels Opslaan
 index_headerex=Bestaande firewall configuratie
+
 action_allow=<font color=#00aa00>Toestaan</font>
 action_deny=<font color=#ff0000>Drop</font>
 action_reject=<font color=#ff4400>Weiger</font>
@@ -55,6 +57,7 @@ laction_deny=<font color=#ff0000>Drop pakket</font>
 laction_reject=<font color=#ff4400>Terugkeren ICMP weigering</font>
 laction_reset=<font color=#ff4400>Reset TCP verbinding</font>
 laction_skipto=Overslaan naar regel
+
 edit_title1=Regel Aanmaken
 edit_title2=Bewerk Regel $1
 edit_header1=Regel actie
@@ -114,6 +117,7 @@ edit_src-addr=Van bron adres..
 edit_src-port=Van bron poort..
 edit_dst-addr=Naar bestemming adres..
 edit_dst-port=Naar bestemming poort..
+
 save_err=Mislukt om regel op te slaan
 save_enum=Ontbrekende of ongeldige regel nummer
 save_eskipto=Ontbrekende of ongeldige regel nummer om naar over te slaan
@@ -144,7 +148,9 @@ save_etcpflags=TCP vlaggen kunnen alleen gespecificeerd worden als het protocol 
 save_elimit=Ontbrekende of ongeldig maximum limiet
 save_edstport=Ontbrekende of ongeldige bestemming poort
 save_esrcport=Ontbrekende of ongeldige bron poort
+
 apply_err=Mislukt om configuratie toe te voegen
+
 desc_if=Als $1
 desc_and=en
 desc_always=Altijd
@@ -191,6 +197,7 @@ desc_where=waar $1
 desc_all=voor alle pakketten
 desc_in=pakket is inkomend
 desc_out=pakket is uitgaand
+
 log_create_rule=Aangemaakt $1 regel
 log_delete_rule=Verwijdert $1 regel
 log_modify_rule=Gemodificeerd $1 regel
@@ -206,6 +213,7 @@ log_convert=Geconverteerde actieve firewall regels
 log_setup=Eerste firewall instelling uitgevoerde
 log_unapply=Omgekeerde firewall configuratie
 log_delsel=Verwijderd $1 regels
+
 cluster_title=Cluster Firewall Servers
 cluster_none=Er zijn nog geen servers toegevoegd aan de firewall cluster.
 cluster_host=Hostnaam
@@ -216,6 +224,7 @@ cluster_gadd=Voeg servers toe in groep
 cluster_need=U moet servers toevoegen met een login en wachtwoord in de Webmin Servers Index module voordat zij hier kunnen worden beheerd.
 cluster_return=cluster servers
 cluster_delete=Verwijder Geselecteerde
+
 add_title=Servers Toevoegen
 add_msg=$1 aan het toevoegen..
 add_gmsg=Servers aan het toevoegen in groep $1 ..

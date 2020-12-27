@@ -27,7 +27,9 @@ index_global=Configurare globală
 index_create=Creați un server virtual
 index_version=Versiunea ProFTPd $1 
 index_proftpd=Proftpd
+
 efailed=Salvarea $1 nu a reușit
+
 type_0=Opțiuni de rețea
 type_1=Opțiuni de înregistrare
 type_2=Fișiere și directoare
@@ -35,6 +37,7 @@ type_3=Controlul accesului
 type_4=Diverse
 type_5=Utilizator și grup
 type_6=Autentificare
+
 virt_title=Opțiuni server virtual
 virt_header1=Pentru $1 
 virt_header2=Pentru serverul implicit
@@ -50,6 +53,7 @@ virt_cmds=Comenzi FTP
 virt_return=server virtual
 virt_virt=Configurați serverul virtual
 virt_edit=Editează directive
+
 vserv_title=Configurați serverul virtual
 vserv_addr=Abordare
 vserv_name=Numele serverului
@@ -58,6 +62,7 @@ vserv_delete=Ștergeți serverul virtual
 vserv_eaddr=Adresă lipsă sau nevalidă
 vserv_eport=Număr de port lipsă sau nevalid
 vserv_ename=Numele serverului lipsește
+
 anon_title=Opțiuni FTP anonime
 anon_header1=În serverul virtual $1 
 anon_header2=În serverul implicit
@@ -65,6 +70,7 @@ anon_anon=Configurați FTP anonim
 anon_return=opțiuni FTP anonime
 anon_header3=Pentru FTP anonim pe serverul virtual $1 
 anon_header4=Pentru FTP anonim în serverul implicit
+
 aserv_title=Configurați FTP anonim
 aserv_create=Configurare FTP anonim
 aserv_root=Limitați la director
@@ -75,6 +81,7 @@ aserv_eroot=Directorul chroot lipsă sau nevalid
 aserv_euser=Utilizator Unix lipsă sau nevalid
 aserv_egroup=Grupul Unix lipsă sau nevalid
 aserv_desc=FTP anonim nu a fost încă configurat pentru acest server virtual. Utilizați acest formular pentru a seta opțiunile de configurare inițiale.
+
 dir_title=Opțiuni per-Director
 dir_header2=Pentru directorul $1 din serverul implicit
 dir_header1=Pentru directorul $1 pe serverul virtual $2 
@@ -85,6 +92,7 @@ dir_header=Opțiuni per comandă
 dir_dir=Configurați directorul
 dir_header4=Pentru directorul $1 din FTP anonim
 dir_header5=Pentru directorul $1 la nivel global
+
 manual_title=Editează directive
 manual_header=Utilizați caseta de text de mai jos pentru a edita manual directivele ProFTPD în $1 care se aplică acestui server virtual, director sau comenzi.
 manual_configs=Editați fișierele de configurare
@@ -92,6 +100,7 @@ manual_ecannot=Nu aveți voie să editați manual directivele
 manual_file=Editează directive în fișier:
 manual_efile=Fișierul de configurare ProFTPd nevalid
 manual_etest=A fost detectată eroarea fișierului de configurare : $1 
+
 limit_title=Opțiuni per comandă
 limit_header4=Pentru comenzile $1 din directorul $2 
 limit_header2=Pentru comenzile $1 din serverul implicit
@@ -103,17 +112,20 @@ limit_return=opțiuni per comandă
 limit_header5=Pentru comenzile $1 în FTP anonim
 limit_header6=Pentru comenzile $1 din fișierul $2 
 limit_header7=Pentru comenzile $1 la nivel global
+
 lserv_title=Configurarea comenzilor
 lserv_cmd=Comenzi FTP
 lserv_delete=Șterge comenzile config
 lserv_err=Salvarea comenzilor nu a reușit
 lserv_ecmd=Nu au fost selectate comenzi
+
 dserv_title=Configurați directorul
 dserv_dir=Calea catre director
 dserv_err=Salvarea directorului nu a reușit
 dserv_edir=Calea directorului lipsește
 dserv_delete=Ștergeți configurarea directorului
 dserv_eanondir=Directorul trebuie să se afle sub directorul FTP anonim
+
 mod_core_type=Tipul de server
 mod_core_inetd=Fugi din Inetd
 mod_core_stand=Daemon de sine stătător
@@ -301,6 +313,7 @@ mod_core_duser=Refuză utilizatorii
 mod_core_eip=„$1” nu este o adresă IP validă
 mod_core_enet=„$1” nu este o adresă de rețea validă
 mod_core_ehost=„$1” nu este un nume de gazdă valid
+
 mod_ls_fakegroup=Grupuri false în listările de director?
 mod_ls_fakeuser=Utilizator fals în listările de director?
 mod_ls_fakemode=Permisiunile false în listările de director
@@ -317,6 +330,7 @@ mod_ls_efakeuser=Utilizator fals lipsit sau nevalid
 mod_ls_efakegroup=Grup fals fals lipsit sau invalid
 mod_ls_options=Opțiuni de listă de directoare
 mod_ls_strict=Anulați opțiunile utilizatorului?
+
 mod_auth_chdir=Director inițial de conectare
 mod_auth_echdir=Directorul inițial lipsă sau nevalid
 mod_auth_chroot=Limitați utilizatorii la directoare
@@ -330,7 +344,9 @@ mod_auth_egroups=Nu au fost introduse grupuri Unix pentru chroot
 mod_auth_echroot=Directorul chroot lipsă sau nevalid
 mod_auth_login=Nu cereți parola dacă autentificarea este refuzată?
 mod_auth_root=Permiteți conectarea prin root?
+
 mod_site_chmod=Permiteți comanda chmod?
+
 mod_unixpw_ufile=Fișier de parolă alternativ Unix
 mod_unixpw_eufile=Fișierul cu parolă Unix lipsă sau nevalid
 mod_unixpw_gfile=Fișier de grup alternativ Unix
@@ -338,6 +354,7 @@ mod_unixpw_egfile=Fișierul grupului Unix lipsește sau este nevalid
 mod_unixpw_none=Nici unul
 mod_unixpw_pam=Tratează întotdeauna PAM ca autorizant?
 mod_unixpw_persist=Păstrați fișierul cu parolă deschis persistent?
+
 mod_log_syslog=Erori de log în fișier
 mod_log_sysdef=Jurnal de sistem
 mod_log_esyslog=Fișierul de jurnal lipsă sau nevalid
@@ -354,19 +371,25 @@ mod_log_fmt=Formatează șirul
 mod_log_format=Formate de jurnal personalizate
 mod_log_enickname=Numele formatului lipsă sau nevalid
 mod_log_efmt=Șir format format
+
 mod_pam_pam=Folosiți PAM pentru autentificare?
 mod_pam_config=Autentificați-vă folosind serviciul PAM
 mod_pam_econfig=Serviciul PAM lipsește sau este nevalid
+
 mod_readme_display=Notifica utilizatorului potrivirea fișierelor readme
 mod_readme_none=Nici unul
 mod_readme_edisplay=Lipsește modelul fișierelor readme
+
 start_err=Eroare la pornirea serverului FTP
 start_einetd=Nu puteți porni demonul serverului în modul inetd.
+
 stop_err=Nu a reușit oprirea serverului FTP
 stop_einetd=Nu puteți opri demonul serverului în modul inetd.
 stop_erun=Nu alearga
+
 apply_err=Eroare la aplicarea configurației FTP
 apply_egone=Nu mai alerga
+
 ftpaccess_title=Fișiere Opțiuni per-director
 ftpaccess_desc=Opțiuni suplimentare pentru fiecare director pot fi specificate într-un fișier (de obicei numit <tt>.ftpaccess</tt>) din fiecare director. Opțiunile se aplică tuturor fișierelor din acel director și oricărui subdirector, cu excepția cazului în care sunt anulate de alt fișier de opțiuni.
 ftpaccess_create=Creați fișier opțiuni
@@ -374,8 +397,10 @@ ftpaccess_find=Găsiți fișiere cu opțiuni
 ftpaccess_auto=Sub anonimat
 ftpaccess_from=Din director
 ftpaccess_return=opțiuni listă de fișiere
+
 ftpusers_title=Utilizatorii FTP refuzați
 ftpusers_desc=Dacă este activat sub pictograma <tt>Autentificare</tt>, utilizatorilor enumerați mai jos din fișierul $1 li se va refuza accesul de conectare la utilizatorul FTP.
+
 ftpindex_title=Fișier Opțiuni Per-Director
 ftpindex_delete=Sterge fisierul
 ftpindex_opts=Opțiuni per-Director
@@ -385,8 +410,10 @@ ftpindex_addlimit=Adăugați opțiuni per comandă pentru ..
 ftpindex_header2=$1 în $2 
 ftpindex_return=fișier opțiuni per director
 ftpindex_header=Pentru $1 
+
 find_err=Nu a putut găsi fișierele cu opțiuni
 find_eanon=FTP anonim nu este configurat în niciun server virtual
+
 log_global=Opțiuni globale modificate $1 
 log_ftpusers=S-au schimbat utilizatorii FTP negat
 log_virtc=Serverul creat $1 
@@ -420,6 +447,7 @@ log_anonm=Editat manual FTP anonim pentru serverul $1
 log_anon=Modificat $1 în FTP anonim pentru serverul $2 
 log_start=A început proftpd
 log_apply=Modificări aplicate
+
 eafter=Verificarea configurației nu a reușit: $1 Modificările nu au fost salvate.
 proftpd_apply=Aplica schimbarile
 proftpd_stop=Opriți ProFTPd

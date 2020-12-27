@@ -19,6 +19,7 @@ index_dump=Tunjukkan Dump
 index_dumpdesc=Klik butang ini untuk melihat maklumat Penjejakan Shorewall dari perintah <tt>dump shorewall</tt>.
 index_check=Periksa Firewall
 index_checkdesc=Klik butang ini untuk mempunyai Shorewall mengesahkan konfigurasi firewall anda dengan perintah <tt>shorewall check</tt>.
+
 list_move=Pindah
 list_add=Tambah
 list_auto=Automatik
@@ -30,6 +31,7 @@ list_manual=Edit Fail secara manual
 list_manualdesc=Klik butang ini untuk mengedit fail Shorewall $1 secara manual, di mana penyertaan di atas disimpan.
 list_ecannot=Anda tidak dibenarkan mengedit jadual Shorewall ini.
 list_delete=Padam Dipilih
+
 restart_err=Gagal menggunakan konfigurasi
 refresh_err=Gagal menyegarkan konfigurasi
 start_err=Gagal memulakan firewall
@@ -41,6 +43,7 @@ check_title=Periksa Firewall
 check_ok=.. konfigurasi firewall anda kelihatan OK.
 check_failed=.. ralat telah dijumpai dalam konfigurasi firewall anda!
 check_cmd=Semak konfigurasi ..
+
 zones_title=Zon Rangkaian
 zones_desc=Zon yang disenaraikan di halaman ini mewakili rangkaian yang berbeza dapat diakses dari sistem anda. Walau bagaimanapun, penyertaan di sini tidak benar-benar mempunyai kesan pada firewall - sebaliknya, mereka hanya menentukan nama dan deskripsi zon.
 zones_add=Tambah zon rangkaian baru.
@@ -69,6 +72,7 @@ zones_firewall=Sistem firewall
 zones_eopts=Pilihan zon tidak sah
 zones_eopts_in=Pilihan masuk zon tidak sah
 zones_eopts_out=Pilihan keluar zon tidak sah
+
 policy_title=Dasar lalai
 policy_desc=Halaman ini membolehkan anda mengkonfigurasi tindakan lalai untuk trafik antara zon firewall yang berbeza. Mereka boleh ditindih untuk tuan rumah tertentu atau jenis lalu lintas pada halaman Peraturan Firewall.
 policy_add=Tambah dasar lalai baru.
@@ -89,6 +93,7 @@ policy_ulog=Log ke ULOG
 policy_efw=&lt;Firewall&gt; boleh dipilih untuk kedua-dua sumber dan zon destinasi
 policy_elimit=Nombor had trafik hilang atau tidak sah
 policy_eburst=Nombor pecah lalu lintas yang hilang atau tidak sah
+
 rules_title=Peraturan Firewall
 rules_desc=Jadual ini menyenaraikan pengecualian kepada dasar lalai untuk jenis lalu lintas, sumber atau tujuan tertentu. Tindakan yang dipilih akan digunakan untuk paket yang sepadan dengan kriteria yang dipilih dan bukannya lalai.
 rules_add=Tambah peraturan firewall baru.
@@ -135,6 +140,7 @@ rules_eaction=Tiada tindakan yang dipilih
 rules_macro=Parameter tindakan makro
 rules_none2=Tiada
 rules_emacro=Parameter makro yang hilang atau tidak sah
+
 tos_title=Jenis Perkhidmatan
 tos_desc=Halaman ini mentakrifkan jenis perkhidmatan IP untuk jenis lalu lintas tertentu, yang boleh digunakan untuk meningkatkan atau menurunkan keutamaan mereka.
 tos_add=Tambah jenis perkhidmatan baru.
@@ -153,6 +159,7 @@ tos_edit=Edit Jenis Perkhidmatan
 tos_create=Buat Jenis Perkhidmatan
 tos_header=Jenis butiran perkhidmatan
 tos_err=Gagal menyimpan jenis perkhidmatan
+
 interfaces_title=Antaramuka Rangkaian
 interfaces_desc=Setiap antara muka rangkaian pada sistem anda yang anda mahukan Shorewall untuk menguruskan harus disenaraikan di halaman ini, dan dikaitkan dengan zon yang disambungkan ke. Antara muka loopback <tt>lo</tt> tidak boleh disenaraikan.
 interfaces_add=Tambah antara muka rangkaian baharu.
@@ -169,6 +176,7 @@ interfaces_header=Butiran antara muka rangkaian
 interfaces_err=Gagal menyimpan antara muka rangkaian
 interfaces_eiface=Nama antara muka yang tiada atau tidak sah
 interfaces_ebroad=Alamat siaran tiada atau tidak sah
+
 masq_title=Masquerading
 masq_desc=Penyertaan pada halaman ini menyiapkan terjemahan alamat rangkaian untuk lalu lintas yang dihantarkan di antara beberapa rangkaian dan antara muka tertentu.
 masq_add=Tambah aturan penyamaran yang baru.
@@ -199,6 +207,7 @@ masq_emnete=Senarai rangkaian pengecualian kosong
 masq_esnat=Alamat IP SNAT tidak sah
 masq_eports=Senarai port yang dipisahkan koma yang hilang atau tidak sah
 masq_eipsec=Pilihan IPsec yang tiada
+
 nat_title=NAT statik
 nat_desc=Penyertaan penterjemahan alamat rangkaian statik dalam jadual ini boleh digunakan untuk menubuhkan korespondensi 1-1 antara alamat luar pada firewall anda dan alamat RFC1918 mesin di belakang firewall anda. NAT statik sering digunakan untuk membenarkan sambungan ke pelayan dalaman dari luar rangkaian anda.
 nat_add=Tambah kemasukan NAT statik yang baru.
@@ -217,6 +226,7 @@ nat_local=Aktif untuk sistem firewall?
 nat_eext=Alamat IP luaran tidak sah
 nat_eint=Alamat IP dalaman tidak sah
 nat_evirt=Nombor antara muka maya tidak sah
+
 proxyarp_title=ARP proksi
 proxyarp_desc=Halaman ini membolehkan anda untuk mengkonfigurasi sistem anda untuk menjawab permintaan ARP untuk alamat IP selain miliknya sendiri, supaya ia dapat meneruskan paket ke alamat tersebut ke destinasi sebenar mereka.
 proxyarp_add=Tambah alamat ARP proksi baharu.
@@ -233,6 +243,7 @@ proxyarp_err=Gagal menyimpan ARP proksi
 proxyarp_have=Laluan untuk menjadi tuan rumah wujud?
 proxyarp_eaddr=Alamat yang hilang atau tidak sah kepada ARP
 proxyarp_pers=Meninggalkan laluan walaupun firewall dihentikan?
+
 routestopped_title=Apabila Dihentikan
 routestopped_desc=Secara lalai, apabila Shorewall dihentikan, ia akan menafikan akses dari semua tuan rumah. Halaman ini membolehkan anda untuk menentukan hos atau rangkaian yang masih boleh diakses.
 routestopped_add=Tambah alamat berhenti baru.
@@ -248,6 +259,7 @@ routestopped_err=Gagal menyimpan alamat yang dihentikan
 routestopped_eaddr=Tiada alamat yang dimasukkan
 routestopped_all=Semua alamat
 routestopped_list=Alamat dan rangkaian yang disenaraikan ..
+
 tunnels_title=Terowong VPN
 tunnels_desc=Halaman ini menyenaraikan terowong VPN yang melewati firewall anda, dan oleh itu mesti dibenarkan oleh konfigurasi Shorewall.
 tunnels_add=Tambah terowong VPN baharu.
@@ -278,6 +290,7 @@ tunnels_generic_l=Generik, untuk protokol ..
 tunnels_gsel=Zon yang disenaraikan
 tunnels_eopenvpn=Nombor port tidak sah untuk terowong OpenVPN
 tunnels_egeneric=Protokol atau protokol yang hilang: port untuk terowong generik
+
 hosts_title=Hos Zon
 hosts_desc=Laman ini menyenaraikan tuan rumah dan rangkaian yang merupakan sebahagian daripada zon tertentu. Anda biasanya tidak perlu membuat sebarang perubahan pada senarai ini.
 hosts_add=Tambah hos zon baharu.
@@ -297,8 +310,10 @@ hosts_ip=Alamat atau rangkaian $1
 hosts_mac=Alamat MAC $1 
 hosts_ipset=IP ditetapkan $1 
 hosts_any=Mana-mana hos
+
 edit_before=Sebelum masuk $1 
 edit_after=Selepas masuk $1 
+
 blacklist_title=Blacklist Hosts
 blacklist_desc=Halaman ini menyenaraikan tuan rumah dan perkhidmatan yang akan disekat jika trafik dari mereka tiba di antara muka dengan pilihan opsyen <b>senarai hitam</b>.
 blacklist_add=Tambah hos senarai hitam baharu.
@@ -321,6 +336,7 @@ blacklist_eproto=Protokol hilang atau tidak sah
 blacklist_eports=Nombor port tidak sah atau senarai pelabuhan yang dipisahkan koma
 blacklist_eports2=Pelabuhan hanya boleh ditentukan untuk protokol TCP dan UDP
 blacklist_return=tuan rumah senarai hitam
+
 providers_title=Penyedia Routing Tambahan
 providers_desc=Halaman ini mentakrif jadual penghalaan tambahan. Ini diperlukan jika anda mempunyai sambungan ke lebih daripada satu ISP atau sambungan pelbagai ke ISP yang sama, atau menjalankan Squid sebagai proksi telus pada host selain firewall.
 providers_add=Tambah penyedia routing baharu.
@@ -353,6 +369,7 @@ providers_emark=Nombor tanda pembekal yang hilang atau tidak sah
 providers_edup=Pembekal hilang untuk menduplikasi
 providers_egateway=Gerbang yang hilang atau tidak sah
 providers_return=senarai penyedia routing
+
 route_rules_title=Peraturan Laluan
 route_rules_desc=Kawalan halaman yang lalu lintas dialihkan ke penyedia yang ditakrifkan pada halaman Penyedia R Routing Tambahan.
 route_rules_ip=Alamat IP, rangkaian atau antara muka
@@ -378,17 +395,21 @@ route_rules_emark=Tanda paket mestilah dalam nombor atau nombor/nombor topeng
 route_rules_return=senarai peraturan laluan
 route_rules_edit=Edit Peraturan Penghalaan
 route_rules_create=Buat Peraturan Penghalaan
+
 manual_desc=Borang ini boleh digunakan untuk mengedit fail Shorewall secara manual $1. Berhati-hati, kerana tiada pemeriksaan sintaks akan dilakukan pada perubahan.
 manual_reset=Undo
 manual_err=Gagal menyimpan fail jadual
 manual_efile=Nama jadual tidak sah!
 manual_edata=Tiada kandungan fail jadual yang dimasukkan.
+
 acl_nochange=Boleh memohon, berhenti dan mula konfigurasi Shorewall?
 acl_files=Jadual Shorewall yang ada
 acl_all=Semua
 acl_sel=Dipilih di bawah ..
+
 delete_err=Gagal memadam baris
 delete_enone=Tiada baris dipilih
+
 opts_routeback=Terima semula trafik ke hos
 opts_source=Benarkan dari hos ke mana-mana destinasi
 opts_dest=Benarkan untuk menjadi tuan rumah dari sebarang sumber
@@ -406,6 +427,7 @@ opts_proxyarp=Dayakan ARP proksi
 opts_arp_filter=Hanya balas kepada permintaan ARP untuk IP antara muka
 opts_detectnets=Zon Taylor untuk memasukkan hanya dihoskan tuan rumah
 opts_upnp=Memintas semula paket melalui UPNP
+
 comment_add=Tambah ulasan baru.
 comment_edit=Edit Komen
 comment_create=Buat Ulasan
@@ -413,6 +435,7 @@ comment_header=Butiran komen meja
 comment_msg=Mesej
 comment_err=Gagal menyimpan komen
 comment_enone=Tiada mesej yang dimasukkan
+
 log_create_table=Menambah kemasukan ke jadual $1 
 log_modify_table=Kemasukan diubah suai dalam jadual $1 
 log_delete_table=Kemasukan yang dipadamkan daripada jadual $1 
@@ -428,6 +451,7 @@ log_start=Memulakan firewall
 log_refresh=Firewall yang dipulihkan
 log_restart=Firewall yang dimulakan semula
 log_clear=Firewall yang dibersihkan
+
 shorewall_conf_title=Fail konfigurasi induk
 shorewall_conf_desc=Halaman ini membolehkan anda mengkonfigurasi pemboleh ubah konfigurasi global. NOTA: Menukar perintah pembolehubah di sini tidak disyorkan jika anda ingin mengekalkan kedudukan relatif komen dalam fail konfigurasi.
 shorewall_conf_add=Tambah pembolehubah konfigurasi baharu.
@@ -441,6 +465,7 @@ shorewall_conf_create=Buat pembolehubah konfigurasi
 shorewall_conf_header=Butiran pembolehubah konfigurasi
 shorewall_conf_err=Gagal menyimpan pemboleh ubah konfigurasi
 shorewall_conf_varname=Nama pembolehubah tidak sah (mestilah nama pemboleh ubah shell yang sah)
+
 params_title=Parameter peribadi
 params_desc=Halaman ini membolehkan anda mengkonfigurasi parameter khusus Shorewall. NOTA: Menukar perintah parameter di sini tidak digalakkan jika anda ingin mengekalkan kedudukan relatif komen dalam fail konfigurasi.
 params_add=Tambah parameter tersuai baharu.

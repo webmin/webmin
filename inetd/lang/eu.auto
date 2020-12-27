@@ -14,6 +14,7 @@ index_search=Bistaratutako zerbitzuak bat datoz:
 index_sok=Search
 index_toomany=Interneteko zerbitzu gehiegi daude orri honetan bistaratzeko.
 index_none=Interneteko zerbitzuek ez dute zure bilaketa parekatzen.
+
 error_restart=Huts egin du Inetd berrabiarazteak
 error_saverpc=Huts egin du RPC programa gordetzean
 error_invalidprgname='$1' ez da baliozko programaren izena
@@ -43,6 +44,7 @@ error_nameexist=Lehendik dago $1 izenarekin eta $2 protokoloarekin
 error_inetservice=Lehendik dago $1 izenarekin eta $2 protokoloarekin
 error_smfservice=Huts egin du smf zerbitzua eguneratzean cmd '$1' rekin, $2 errore kodearekin
 error_smf_cmdfield=Smf-entzako, '$1' programaren izenaren fitxategiak aginte-eremuko lehenengo argumentuarekin bat etorri behar du, hau da, '$2' izan behar du.
+
 editrpc_title1=Sortu RPC programa
 editrpc_title2=Editatu RPC programa
 editrpc_detail=RPC programaren xehetasunak
@@ -69,6 +71,7 @@ editrpc_execasuser=Erabiltzaile gisa gauzatu
 editrpc_max=Minutu bakoitzeko Max
 editrpc_default=Default
 editrpc_execasgrp=Talde gisa exekutatu
+
 editserv_title1=Sortu Interneteko zerbitzua
 editserv_title2=Editatu Interneteko zerbitzua
 editserv_detail=Interneteko zerbitzuaren xehetasunak
@@ -82,6 +85,7 @@ editserv_wrapper=TCP-Wrapper
 editserv_inetd=Barnekoa <tt>inetd</tt>
 editserv_qm=Agian ez da existitzen?
 editserv_ename=Ez dago izen eta protokolo horrekin zerbitzurik
+
 log_apply=Aplikatutako aldaketak
 log_create_serv=$1 zerbitzua sortu da
 log_modify_serv=$1 zerbitzu aldatua
@@ -95,6 +99,7 @@ log_delete_serv_l=$1 zerbitzua ezabatu da $2 portuan
 log_create_prog_l=$1 zerbitzua sortu zen $2 portuan $3 programarako
 log_modify_prog_l=$1 zerbitzu aldatua $2 portuko $3 programarako
 log_delete_prog_l=$1 zerbitzua ezabatu da $2 portuko $3 programarako
+
 log_create_rpc=$1 RPC sortu da
 log_modify_rpc=$1 RPC aldatua
 log_delete_rpc=$1 RPC ezabatu da

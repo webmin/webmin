@@ -1,14 +1,17 @@
 start_eprotos=No hay protocolos seleccionados en la página <b>Redes y protocolos</b>
+
 net_lmtp=LMTP
 net_listen=Interfaces para conexiones no SSL
 net_ssl_listen=Interfaces para conexiones SSL
 net_elisten=Dirección IP no válida para conexiones no SSL
 net_essl_listen=Dirección IP no válida para conexiones SSL
+
 ssl_ca=Archivo de certificado de CA del cliente SSL
 ssl_pass=Contraseña para archivo clave
 ssl_prompt=Ninguno necesario
 ssl_eca=Archivo de certificado de CA de cliente faltante o inexistente
 ssl_epass=No se ingresó la contraseña del archivo de clave SSL
+
 login_apop=UN ESTALLIDO
 login_sql=Base de datos SQL, usando el archivo de configuración $1
 login_session=Abrir y cerrar sesiones PAM
@@ -22,6 +25,7 @@ login_procs=Máximo proceso de inicio de sesión
 login_count=Procesos iniciales de inicio de sesión
 login_eprocs=Número máximo de procesos de inicio de sesión faltantes o no válidos
 login_ecount=Número inicial de procesos de inicio de sesión faltante o no válido
+
 mail_index=Ubicación de archivos de índice
 mail_index0=Predeterminado (en el directorio de Maildir)
 mail_index1=Solo en memoria
@@ -53,7 +57,9 @@ mail_eindexmode=La ubicación de los archivos de índice no se puede establecer 
 mail_econtrolmode=La ubicación de los archivos de control no se puede establecer cuando la ubicación del archivo de correo se detecta automáticamente
 mail_eindex=Ruta absoluta faltante o no válida para archivos de índice
 mail_econtrol=Ruta absoluta faltante o inválida para archivos de control
+
 log_manual=Archivo de configuración editado manualmente $1
+
 manual_title=Editar archivos de configuración
 manual_editsel=Editar el archivo de configuración de Dovecot
 manual_err=Error al guardar el archivo de configuración

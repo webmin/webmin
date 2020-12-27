@@ -5,7 +5,9 @@ title_none1=没有
 title_none2=（非引导菜单项）
 title_einitrd=缺少初始ramdisk文件名
 title_lock=密码已锁定？
+
 global_forever=永远等
+
 log_create_title=已创建启动选项 $1
 log_delete_title=删除的引导选项 $1
 log_modify_title=修改后的引导选项 $1

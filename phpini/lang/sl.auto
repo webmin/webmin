@@ -9,17 +9,21 @@ index_edit=Upravljajte
 index_manual=Ročno uredite
 index_anyfile=Uredi drugo konfiguracijsko datoteko PHP:
 index_return=konfiguracijske datoteke
+
 file_global=Globalna konfiguracija PHP
 file_eread= $1 : $2 ni bilo mogoče prebrati
+
 manual_title=Konfiguracijo ročno uredite
 manual_desc=To stran lahko uporabite za ročno urejanje konfiguracijske datoteke PHP. To je treba storiti previdno, saj sintaksa ali drugo preverjanje veljavnosti vaših sprememb ne bo izvedeno.
 manual_err=Konfiguracijske datoteke ni bilo mogoče urediti
 manual_edata=Nove vsebine niso vnesene
+
 list_title=Upravljanje konfiguracije PHP
 list_ecannot=Te konfiguracijske datoteke PHP vam ni dovoljeno upravljati
 list_return=Konfiguracija PHP
 list_format_ini=Oblika INI
 list_format_fpm=Format FPM
+
 vars_title=PHP spremenljivke
 vars_header=Možnosti ustvarjanja in navajanja spremenljivk PHP
 vars_magic=Navedite vse vhodne spremenljivke?
@@ -28,6 +32,7 @@ vars_register=Ali spremenite ves vložek v globalne spremenljivke?
 vars_args=Ali spremenite parametre ukazne vrstice v globalne spremenljivke?
 vars_long=Ali želite ustvariti matrike v starem slogu, kot je <tt>HTTP_GET_VARS</tt>?
 vars_err=Nastavitve spremenljivke PHP ni bilo mogoče shraniti
+
 dirs_title=Nastavitve imenika
 dirs_header=Nastavitve skripta PHP in imenika razširitev
 dirs_include=Iskalni imeniki za vključuje
@@ -39,6 +44,7 @@ dirs_err=Nastavitev imenika ni bilo mogoče shraniti
 dirs_eincs=Ne vključujejo vnesenih imenikov za iskanje
 dirs_eutmp=Manjkajoči ali neveljavni imenik začasnih datotek
 dirs_eext=Manjka imenik razširitev
+
 db_title=Nastavitve baze podatkov
 db_header1=Nastavitve povezave baze podatkov MySQL
 db_persist=Dovoli trajne povezave z bazo podatkov?
@@ -57,6 +63,7 @@ db_emaxlinks=Manjkajoče ali neveljavno največje število skupnih povezav
 db_etimeout=Manjkajoča ali neveljavna časovna omejitev povezave
 db_ehost=Manjkajoči ali neveljavni privzeti gostitelj strežnika MySQL
 db_eport=Manjkajoča ali neveljavna privzeta vrata strežnika MySQL
+
 session_title=Možnosti seje
 session_header=Možnosti za sledenje sej PHP
 session_handler=Mehanizem za shranjevanje seje
@@ -73,6 +80,7 @@ session_epath=Manjkajoči ali neveljaven imenik za datoteke seje
 session_elife=Manjkajoča ali neveljavna življenjska doba piškotka
 session_emaxlife=Najmanjša ali neveljavna največja življenjska doba seje
 session_eredis=Manjkajoča ali onemogočena razširitev Redis
+
 safe_title=Možnosti varnega načina
 safe_header=Možnosti varnega dostopa do datotek
 safe_on=Želite omogočiti varen način?
@@ -85,6 +93,7 @@ safe_err=Možnosti varnega načina ni bilo mogoče shraniti
 safe_einclude=Manjkajoči ali neveljaven dovoljeni imenik za vključene datoteke
 safe_eexec=Manjkajoči ali neveljaven dovoljeni imenik za izvedene programe
 safe_ebasedir=Manjkajoči ali neveljaven imenik za operacije datotek
+
 limits_title=Omejitve virov
 limits_header=Možnosti omejitve pomnilnika in prenosa
 limits_mem=Največja razporeditev pomnilnika
@@ -98,6 +107,7 @@ limits_epost=Manjkajoča ali neveljavna največja velikost POTP HTTP
 limits_eupload=Manjkajoča ali neveljavna največja velikost nalaganja datoteke
 limits_eexec=Manjkajoči ali neveljavni največji čas izvršitve
 limits_einput=Manjkajoči ali neveljavni največji čas razčlenitve vnosa
+
 errors_title=Napaka beleženja
 errors_header=Možnosti prikaza sporočila o napaki in beleženja
 errors_display=Prikaži sporočila o napakah?
@@ -128,6 +138,7 @@ errors_err=Beleženja napak ni bilo mogoče shraniti
 errors_ereporting=Izraz vrste napake ni vnesen
 errors_emaxlen=Manjkajoča ali neveljavna največja velikost prijavljenih napak
 errors_efile=Manjka datoteka dnevnika o napaki
+
 misc_title=Druge nastavitve
 misc_header=Ostale druge nastavitve PHP
 misc_short=Dovoli skripte PHP, ki se začnejo z &lt;? ?
@@ -148,6 +159,7 @@ misc_include=Dovoli odpiranje oddaljenih Vključuje?
 misc_path=Podatki o popravilu poti CGI?
 misc_timezone=Vremenski pas PHP
 misc_charset=Privzeti nabor znakov
+
 log_manual=Ročno uredite datoteko $1 
 log_vars=Spremenjene spremenljivke PHP v $1 
 log_dirs=Spremenjene nastavitve imenika v $1 
@@ -157,6 +169,7 @@ log_safe=Spremenjene možnosti varnega načina v $1
 log_limits=Spremenjene omejitve virov v $1 
 log_errors=Spremenjena napaka pri prijavi v $1 
 log_misc=Spremenjene druge nastavitve v $1 
+
 acl_global=Ali lahko uredite globalno konfiguracijo PHP?
 acl_anyfile=Ali lahko uredite katero koli datoteko kot konfiguracijo PHP?
 acl_manual=Ali lahko ročno urejate konfiguracijske datoteke?

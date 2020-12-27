@@ -19,6 +19,7 @@ index_refsel=Osvježi odabrano
 index_group=Članovi $1 
 index_tmpls=Uređivanje predložaka e-pošte
 index_tmplsdesc=Pregledajte i uredite predloške korištene za izradu poruka e-pošte poslanih kada promatrane usluge propadaju.
+
 type_apache=Apache Webserver
 type_inetd=Internet i RPC poslužitelj
 type_xinetd=Prošireni Internet poslužitelj
@@ -73,8 +74,10 @@ type_alive=Živ sustav
 type_rssh=Udaljeni SSH
 type_slapd=LDAP poslužitelj
 type_ldap=LDAP veza
+
 mon_create=Stvorite monitor
 mon_edit=Uredi monitor
+mon_virtualmin=Upozorenje! Ovaj je monitor povezan s domenom Virtualmin $1 i zato ga ovdje ne treba uređivati ili brisati.
 mon_header=Pojedinosti o monitoru
 mon_header2=Naredbe za pokretanje
 mon_header3=Mogućnosti nadgledanja usluga
@@ -138,6 +141,7 @@ mon_changes0=Prikaži svaku vrstu događaja
 mon_changes1=Prikaži samo promjene
 mon_all=Prikaži sve povijesne događaje
 mon_nochanges=U posljednjim $1 povijesnim događajima nije se dogodila promjena statusa.
+
 sched_title=Planirani nadzor
 sched_header=Planirane mogućnosti praćenja pozadine
 sched_mode=Je li planirano provjera omogućeno?
@@ -184,16 +188,19 @@ sched_subject0=Nema (upozorenje je u tijelu)
 sched_subject1=Tekst upozorenja (tijelo je ostavljeno prazno)
 sched_subject2=Prilagođeni tekst
 sched_esubject=Nedostaje predmet SMS poruke
+
 up_since=Gore od $1 
 depends_mod=Modul $1 nije instaliran na vašem sustavu
 depends_os=Modul $1 nije podržan u vašem sustavu
 depends_remote=Modul $1 nije podržan na poslužitelju $2 
+
 tcp_host=Domaćin da se povežete
 tcp_port=Port za povezivanje
 tcp_alarm=Vrijeme povezanosti je isteklo
 tcp_ehost=Nedostaje ili nevaljano ime računala
 tcp_eport=Nedostaje ili nevažeći broj porta
 tcp_ealarm=Nedostaje ili nije važeći prekid veze
+
 http_url=URL za zahtjev
 http_alarm=Vrijeme povezanosti je isteklo
 http_eurl=Nedostaje ili nevažeći URL
@@ -208,11 +215,13 @@ http_regexp=Stranica mora odgovarati regexp
 http_eregexp=Nije unesen uobičajeni izraz za podudaranje stranice
 http_none2=Ne podudaraj se
 http_ehead=Metoda zahtjeva HEAD ne može se koristiti pri provjeri regularnog izraza
+
 ping_host=Domaćin pinga
 ping_wait=Vrijeme je za pričekati odgovor
 ping_ehost=Nedostaje ili nevaljano ime računala
 ping_ewait=Nedostaje ili nije valjano vrijeme čekanja
 ping_econfig=U modulu Config nije postavljena naredba ping
+
 proc_pid=Trčanje s PID-ovima $1 
 proc_cmd=Naredba za provjeru
 proc_not=Ne uspije ako je postupak
@@ -224,6 +233,7 @@ proc_ethresh=Nedostaje ili nije važeći broj postupaka
 proc_asuser=Pokreće se kao korisnik
 proc_anyuser=Bilo koji korisnik
 proc_easuser=Korisnik za proces koji se pokreće jer ne postoji
+
 exec_cmd=Naredba za pokretanje
 exec_mode=Napustite provjeru statusa
 exec_mode0=Monitor neuspjeha ako naredba ne uspije
@@ -235,6 +245,7 @@ exec_noregexp=Ne provjeravaj
 exec_remode=Regexp provjera
 exec_remode0=Neuspjeh ako se rezultat ne podudara
 exec_remode1=Neuspjeh ako se rezultat podudara
+
 file_file=Datoteka, mapa ili uzorak za provjeru
 file_test=Test za izvođenje
 file_test_0=Mora postojati
@@ -253,6 +264,7 @@ file_group=Grupa datoteka mora biti
 file_nocheck=nešto
 file_perms=Oktalna dozvola moraju biti
 file_eperm=Datoteke s pogrešnim dozvolama : $1 
+
 traffic_iface=Sučelje za nadzor
 traffic_bytes=Maksimalni bajt/sekunda
 traffic_dir=Smjer za praćenje
@@ -262,6 +274,7 @@ traffic_dir2=Samo odlazni
 traffic_desc=Ovaj monitor prati mrežni promet na odabranom sučelju i prikazuje ga kao dolje ako promet premašuje broj bajtova u sekundi upisan ispod. Ovo stvarno dobro funkcionira ako je omogućen predviđeni nadzor postavljen na kratak interval, kao i na svakih 5 minuta.
 traffic_eifaces=Vaš operativni sustav nema datoteku/proc/net/dev
 traffic_ebytes=Nedostaje ili nevažeći broj bajtova/sekundi
+
 space_fs=Datotečni sustav za provjeru
 space_min2=Minimalni slobodni prostor
 space_mode0=Apsolutna veličina
@@ -277,6 +290,7 @@ space_ierr=Samo $1 unosi besplatno
 space_merr=Samo prostor $1 
 space_perr=Samo $1% besplatno
 space_dferr=Nije uspjelo dobivanje veličine datotečnog sustava
+
 load_time=Učitajte prosjek za provjeru
 load_1=1 minuta
 load_5=5 minuta
@@ -285,6 +299,7 @@ load_max=Maksimalni prosjek opterećenja
 load_emax=Nedostaje ili nevažeći prosječni maks
 load_ecmd=Naredba <tt>uptime</tt> nije pronađena u vašem sustavu
 load_efmt=Izlaz naredbe <tt>uptime</tt> nije se mogao raščlaniti
+
 log_create=Izrađen monitor $1 
 log_modify=Izmijenjen monitor $1 
 log_delete=Izbrisan monitor $1 
@@ -295,10 +310,14 @@ log_tmpl_modify=Izmijenjeni predložak e-pošte $1
 log_tmpl_delete=Izbrisani je predložak e-pošte $1 
 log_tmpl_deletes=Izbrisani su $1 predlošci e-pošte
 log_refresh=Osvježeni statusi monitora
+
 acl_edit=Može li se uređivati i stvarati monitori?
 acl_sched=Može li se promijeniti planirani nadzor?
+
 change_file=Datoteka ili direktorij za nadgledanje (neuspjeh ako se promijeni)
+
 jabber_eparser=Perl modul $1 nije instaliran na vašem sustavu.
+
 memory_min2=Minimalna slobodna stvarna memorija
 memory_emin=Nedostaje ili nije važeća količina slobodne stvarne memorije
 memory_eproc=Webmin ne zna kako provjeriti slobodnu memoriju na vašem operativnom sustavu
@@ -308,7 +327,9 @@ memory_freelow=Samo $1 stvarne memorije bez
 memory_freelowswap=Samo besplatna virtualna memorija $1 
 memory_minswap=Minimalna besplatna virtualna memorija
 memory_eminswap=Nedostaje ili nije važeća količina slobodne virtualne memorije
+
 proftpd_etype=Ovaj se monitor ne može koristiti ako se ProFTPD pokreće samostalno
+
 mailserver_to=Pošaljite e-poštu na adresu
 mailserver_timeout=Vrijeme i interval
 mailserver_units_0=sekunde
@@ -316,22 +337,28 @@ mailserver_units_1=minuta
 mailserver_units_2=Sati
 mailserver_units_3=dana
 mailserver_desc=Adresa u nastavku mora biti odgovornik koji odgovara na adresu izvora s istim naslovom Subject:
+
 oldfile_file=Datoteka za nadzor (neuspjeh ako nije promijenjena)
 oldfile_diff=Neuspjelo ako nije promijenjeno za
 oldfile_secs=sekundi
+
 raid_device=RAID uređaj
 raid_edevice=Nije odabran nijedan RAID uređaj
 raid_bad=Otkriven je loš disk
 raid_resync=Trenutno se resyncing
 raid_notfound=RAID uređaj $1 nije pronađen
 raid_other=Ostali ..
+
 iface_iface=Sučelje za provjeru
+
 init_action=Akcija za provjeru
 init_eaction=Nije odabrana nijedna radnja
+
 refresh_title=Osvježi status
 refresh_doing=Osvježavanje statusa svih monitora ..
 refresh_doing2=Osvježavanje statusa $1 odabranih monitora ..
 refresh_done=.. gotovo.
+
 sensors_name=Senzor za provjeru
 sensors_value=Nije uspjelo kada
 sensors_value0=Sustav označava upozorenje
@@ -342,6 +369,7 @@ sensors_none=Nisu otkriveni senzori na vašem sustavu. Možda ćete trebati pokr
 sensors_cur=$1 (trenutno $2 $3)
 sensors_emin=Nedostaje ili nije važeća minimalna vrijednost
 sensors_emax=Nedostaje ili neispravna maksimalna vrijednost
+
 nut_ups=NUT UPS za provjeru
 nut_name=Atributi za provjeru
 nut_value=Nije uspjelo kada
@@ -352,6 +380,7 @@ nut_eups=Nije upisan USP za provjeru
 nut_cur=$1 (trenutno $2)
 nut_emin=Nedostaje ili nije važeća minimalna vrijednost
 nut_emax=Nedostaje ili neispravna maksimalna vrijednost
+
 mailq_system=Poslužitelj pošte
 mailq_qmailadmin=qmail
 mailq_postfix=Postfix
@@ -360,6 +389,7 @@ mailq_size=Maksimalna veličina reda čekanja
 mailq_esize=Nedostaje ili nije važeća maksimalna veličina reda
 mailq_toomany=Dolje - $1 poruke u redu
 mailq_ok=Gore - $1 poruke u redu
+
 dns_server=DNS poslužitelj
 dns_host=Naziv hosta za traženje
 dns_address=Očekivana IP adresa
@@ -367,6 +397,7 @@ dns_eserver=Nedostaje ili nije važeći DNS poslužitelj
 dns_ehost=Nedostaje ili je nevažeće ime računala za traženje
 dns_eaddress=Nedostaje ili nije važeća očekivana IP adresa
 dns_ecmds=Ni naredbe <tt>nslookup</tt> niti <tt>dig</tt> nisu instalirane na vašem sustavu
+
 monitor_sub_down=$1 dolje na $2 
 monitor_pager_down=$1 : "$2" je pao $3 
 monitor_snmp_down= $1:$2 
@@ -398,8 +429,10 @@ monitor_run1=Trčanje $1 na $2 ..
 monitor_run2=Trčanje $1 ..
 monitor_runerr=Pokretanje $1 na $2 : $3 nije uspjelo
 monitor_email_stat=Trenutačni status: $1 
+
 deletes_egone=Jedan od odabranih monitora više ne postoji
 deletes_enone=Nije odabran nijedan monitor
+
 ftp_host=Domaćin FTP poslužitelja
 ftp_port=FTP priključak
 ftp_user=Prijavite se kao korisnik
@@ -416,6 +449,7 @@ ftp_econn=TLS FTP veza nije uspjela
 ftp_econn2=TLS FTP veza nije uspjela : $1 
 ftp_elogin=Prijava za TLS FTP nije uspjela : $1 
 ftp_etlsfile=Preuzimanje TLS FTP-a nije uspjelo : $1 
+
 query_driver=Vrsta SQL baze podataka
 query_db=Naziv baze podataka
 query_host=Domaćin poslužitelja baze podataka
@@ -436,9 +470,12 @@ query_elogin=Prijava nije uspjela : $1
 query_eprepare=SQL pogreška : $1 
 query_eexecute=SQL nije uspio : $1 
 query_ewrong=Netačan rezultat : $1 
+
 consume_rate=Maksimalna stopa potrošnje (u sekundi)
 consume_high=Stopa potrošnje je $1 / second
+
 alive_up=Gore za $1 
+
 rssh_host=Domaćin SSH poslužitelja
 rssh_ruser=Prijavite se kao korisnik
 rssh_rpass=Prijavite se lozinkom
@@ -454,6 +491,7 @@ rssh_error=SSH pogreška
 rssh_haspass=Zaporka
 rssh_port=Port za SSH poslužitelj
 rssh_eport=Nedostaje ili nevažeći broj porta
+
 tmpls_title=Predlošci e-pošte
 tmpls_ecannot=Nije vam dopušteno uređivanje predložaka e-pošte
 tmpls_none=Još nisu definirani predlošci e-pošte. Sva upozorenja bit će poslana putem zadanih poruka Webmin-a.
@@ -462,6 +500,7 @@ tmpls_email=Poruka e-pošte
 tmpls_add=Dodajte novi predložak e-pošte.
 tmpls_return=popis predložaka
 tmpls_delete=Izbriši odabrane predloške
+
 tmpl_title1=Kreirajte predložak e-pošte
 tmpl_title2=Uređivanje predloška e-pošte
 tmpl_header=Obavijesti predloge poruka e-pošte
@@ -486,9 +525,11 @@ tmpl_esms=Nedostaje SMS poruka
 tmpl_esnmp=Nedostaje SNMP poruka
 tmpl_err2=Brisanje predloška e-pošte nije uspjelo
 tmpl_eusers=Koriste ga sljedeći monitori : $1 
+
 dtmpls_err=Brisanje predložaka nije uspjelo
 dtmpls_enone=Nijedna nije odabrana
 dtmpls_eusers=$1 koriste sljedeći monitori : $2 
+
 sslcert_src=Lokacija certifikata
 sslcert_url=S HTTPS URL-a
 sslcert_file=Iz datoteke na poslužitelju
@@ -506,18 +547,21 @@ sslcert_eend=Ne vrijedi nakon $1
 sslcert_left=Gore - $1 dana do isteka roka
 sslcert_ematch=Ime hosta $1 ne odgovara certifikatu $2 
 sslcert_emismatch=Provjera imena domaćina certifikata može se upotrijebiti samo prilikom provjere URL-a
+
 du_dir=Imenik za nadzor
 du_max=Maksimalna veličina
 du_edir=Nedostaje ili nije apsolutni put direktorija
 du_emax=Nedostaje ili ne numerička maksimalna veličina
 du_over=Veličina je $1 
 du_under=Veličina je samo $1 
+
 ldap_edriver=Perl modul $1 nije instaliran
 ldap_host=Naziv glavnog računala LDAP poslužitelja
 ldap_port=LDAP poslužiteljski port
 ldap_ssl=Koristite SSL vezu?
 ldap_user=Prijava na LDAP poslužitelj
 ldap_pass=Lozinka LDAP poslužitelja
+
 info_desc=Monitor sustava
 info_last=Trenutni status
 info_title=Sustav i status poslužitelja

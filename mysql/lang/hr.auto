@@ -45,12 +45,15 @@ index_showing=Prikazivanje baza podataka koje odgovaraju $1 ..
 index_emsg=Potpuna MySQL poruka o pogrešci bila je : $1 
 index_jump=Ili uredite bazu podataka:
 index_jumpok=Otvoren
+
 login_err=Prijava nije uspjela
 login_ecannot=Nije vam dopušteno konfigurirati prijavu baze podataka
 login_elogin=Nedostaje prijava administracije
 login_epass=Neispravno korisničko ime ili lozinka
+
 stop_err=Zaustavljanje baze podataka nije uspjelo
 start_err=Nije uspio pokretanje baze podataka
+
 dbase_title=Uređivanje baze podataka
 dbase_header=Tablice baze podataka, indeksi i pogledi
 dbase_tables=Tablice baza podataka
@@ -81,6 +84,7 @@ dbase_type=Tip
 dbase_typetable=Stol 1)
 dbase_typeindex=Indeks
 dbase_typeview=Pogled
+
 ddrop_err=Ispustavanje baze podataka nije uspjelo
 ddrop_title=Ispusti bazu podataka
 ddrop_rusure=Jeste li sigurni da želite ispustiti bazu podataka $1 ? Izbrisat će se $2 tablice koje sadrže $3 retka podataka.
@@ -89,6 +93,7 @@ ddrop_mysql=Budući da je ovo glavna baza podataka, njeno izbacivanje će vjeroj
 ddrop_ok=Ispusti bazu podataka
 ddrop_empty=Samo izbrišite sve tablice
 ddrop_empty2=Izbriši sve tablice
+
 ddrops_err=Baziranje podataka nije uspjelo
 ddrops_title=Ispusti baze podataka
 ddrops_rusure=Jeste li sigurni da želite ispustiti $1 odabrane baze podataka? Izbrisat će se $2 tablice koje sadrže $3 retka podataka.
@@ -97,6 +102,7 @@ ddrops_mysql=Budući da je odabrana glavna baza podataka, njeno ispadanje vjeroj
 ddrops_ok=Ispusti baze podataka
 ddrops_enone=Nije odabrana nijedna baza podataka
 ddrops_ecannotdb=Nije vam dopušteno ispustiti bazu podataka $1 
+
 table_title=Uredi tablicu
 table_title2=Stvori tablicu
 table_header=Tablica $1 u bazi podataka $2 
@@ -142,16 +148,19 @@ table_nextra=Dodatno pripisano
 table_eautokey=Polje za automatsko povećavanje također mora biti primarni ključ
 table_eauto=Samo jedno polje može se automatski povećavati
 table_delete=Izbriši odabrana polja
+
 tdrop_err=Ispustanje stola nije uspjelo
 tdrop_title=Ispusti tablicu
 tdrop_rusure=Jeste li sigurni da želite da ispustite tablicu $1 u bazu podataka $2 ? Izbrisat će se $3 redaka podataka.
 tdrop_ok=Ispusti tablicu
+
 tdrops_enone=Nema odabranih tablica
 tdrops_err=Ispustanje tablica nije uspjelo
 tdrops_ok=Pad
 tdrops_title=Ispusti odabrano
 tdrops_rusure=Jeste li sigurni da želite da ispustite $1 odabrane tablice u bazu podataka $2 ? Izbrisat će se $3 redaka podataka.
 tdrops_rusure2=Jeste li sigurni da želite da ispustite $1 odabrane tablice u bazu podataka $2 ?
+
 field_title1=Dodavanje polja
 field_title2=Izmijeni polje
 field_in=U tablici $1 u bazi podataka $2 
@@ -185,6 +194,7 @@ field_esize='$1' nije važeća veličina polja
 field_eenum=Nema unesenih nabrojanih vrijednosti
 field_efield='$1' nije valjano ime polja
 field_ekey=Polja koja dopuštaju nulu ne mogu biti dio primarnog ključa
+
 view_title=Podaci tablice
 view_pos=Redovi $1 do $2 od $3 
 view_none=Ova tablica ne sadrži podatke.
@@ -219,6 +229,7 @@ view_keep=Ostavite nepromijenjeno
 view_set=Postavite na sadržaj datoteke ..
 view_adv=Napredna pretraga
 view_sqlrun=Rezultati generirani SQL upitom : $1 
+
 users_title=Korisnička dopuštenja
 users_user=Korisnik
 users_host=domaćini
@@ -245,6 +256,7 @@ users_ssl=Potvrda
 users_dtitle=Brisanje korisničkih dozvola
 users_drusure=Jeste li sigurni da želite izbrisati $1 odabrana korisnička dopuštenja MySQL?
 users_dok=Izbriši korisnike
+
 user_title1=Stvori korisnika
 user_title2=Uređivanje korisnika
 user_header=Pojedinosti o MySQL korisniku
@@ -308,6 +320,7 @@ user_emax_user_connections=Maksimalna istodobna prijava mora biti broj
 user_emax_connections=Maksimalni priključak po satu mora biti broj
 user_emax_updates=Maksimalna ažuriranja po satu moraju biti broj
 user_emax_questions=Maksimalni broj upita po satu mora biti broj
+
 dbs_title=Dozvole baze podataka
 dbs_db=baze podataka
 dbs_user=Korisnik
@@ -326,6 +339,7 @@ dbs_enone=Nije odabrana nijedna baza podataka
 dbs_dtitle=Izbriši dozvole baze podataka
 dbs_drusure=Jeste li sigurni da želite izbrisati $1 odabrana dopuštenja MySQL baze podataka?
 dbs_dok=Izbriši dozvole
+
 db_title1=Stvaranje dozvola baze podataka
 db_title2=Uređivanje dozvola baze podataka
 db_header=Opcije dopuštenja baze podataka
@@ -340,6 +354,7 @@ db_err=Spremanje dopuštenja baze podataka nije uspjelo
 db_euser=Nedostaje ili nije valjano korisničko ime
 db_ehost=Nedostaje ili nevaljano ime računala
 db_edb=Nedostaje ili nevažeće ime baze podataka
+
 hosts_title=Dozvole domaćina
 hosts_db=baze podataka
 hosts_host=domaćini
@@ -355,6 +370,7 @@ hosts_dtitle=Izbriši dopuštenja domaćina
 hosts_drusure=Jeste li sigurni da želite izbrisati $1 odabrana dopuštenja za MySQL host?
 hosts_dok=Izbriši dozvole
 hosts_return=dopuštenja domaćina
+
 host_title1=Kreirajte dopuštenja domaćina
 host_title2=Uređivanje dozvola domaćina
 host_header=Opcije dopuštenja domaćina
@@ -364,6 +380,7 @@ host_sel=Odabran
 host_otherdb=Odgovarajući obrazac
 host_host=domaćini
 host_perms=dozvole
+
 newdb_title=Stvorite bazu podataka
 newdb_header=Nove opcije baze podataka
 newdb_db=Naziv baze podataka
@@ -377,6 +394,7 @@ newdb_err=Nije uspjelo stvaranje baze podataka
 newdb_edb=Nedostaje ili nevažeće ime baze podataka
 newdb_ecannot=Nije vam dopušteno stvaranje baza podataka
 newdb_ecannot2=Više vam nije dopušteno stvarati nikakve baze podataka
+
 exec_title=Izvrši SQL
 exec_header=Unesite SQL naredbu koja će se izvršiti na bazi podataka $1 ..
 exec_old=Ili odaberite prethodnu SQL naredbu :
@@ -413,6 +431,7 @@ exec_iheader=Opcije uvoza tekstne datoteke
 exec_created=Izrađene su $1 tablice.
 exec_inserted=Umetano je $1 zapisa.
 exec_cs=Skup znakova za podatke
+
 tprivs_title=Dozvole tablice
 tprivs_table=Stol
 tprivs_db=Baza podataka
@@ -431,6 +450,7 @@ tprivs_enone=Nisu odabrane tablice
 tprivs_dtitle=Izbriši dozvole tablice
 tprivs_drusure=Jeste li sigurni da želite izbrisati $1 odabrana dopuštenja MySQL tablice?
 tprivs_dok=Izbriši dozvole
+
 tpriv_title1=Stvaranje dozvola za tablice
 tpriv_title2=Uređivanje dozvola tablice
 tpriv_header=Opcije dopuštenja tablice
@@ -447,6 +467,7 @@ tpriv_etable=Nije odabrana nijedna tablica
 tpriv_euser=Nedostaje ili nije valjano korisničko ime
 tpriv_ehost=Nedostaje ili nevažeći domaćin
 tpriv_edb=Nedostaje ili nevažeće ime baze podataka
+
 cprivs_title=Dopuštenja u polju
 cprivs_field=Polje
 cprivs_table=Stol
@@ -466,6 +487,7 @@ cprivs_enone=Nije odabrano nijedno polje
 cprivs_dtitle=Izbriši dozvole stupca
 cprivs_drusure=Jeste li sigurni da želite izbrisati $1 odabrana dopuštenja za MySQL stupac?
 cprivs_dok=Izbriši dozvole
+
 cpriv_title1=Stvaranje dozvola polja
 cpriv_title2=Uređivanje dozvola polja
 cpriv_header=Opcije polja dopuštenja
@@ -482,11 +504,13 @@ cpriv_etable=Nije odabrana nijedna tablica
 cpriv_euser=Nedostaje ili nije valjano korisničko ime
 cpriv_ehost=Nedostaje ili nevažeći domaćin
 cpriv_edb=Nedostaje ili nevažeće ime baze podataka
+
 esql=SQL $1 nije uspio : $2 
 eparse=Webmin ne može raščlaniti izlaz iz $1 naredbe zbog prirode podataka u vašoj bazi podataka. Trebate instalirati $2 i $3 Perl module da biste riješili taj problem.
 edenied=Nemate pristup ovoj MySQL bazi podataka
 perms_ecannot=Ne možete uređivati dopuštenja
 perms_edb=Dopušteno vam je uređivanje dopuštenja samo za vlastite baze podataka
+
 acl_dbs=Baze podataka kojima ovaj korisnik može upravljati
 acl_dall=Sve baze podataka
 acl_dsel=Odabran ..
@@ -507,6 +531,7 @@ acl_bnone=Onemogući izradu sigurnosnih kopija
 acl_indexes=Mogu li pregledati indekse i upravljati njima?
 acl_views=Može li pregledavati i upravljati pogledima?
 acl_files=Mogu li izvršiti SQL iz lokalnih datoteka?
+
 log_start=Pokrenut MySQL poslužitelj
 log_stop=Zaustavljen MySQL poslužitelj
 log_cnf=Promijenjena konfiguracija MySQL poslužitelja
@@ -571,6 +596,7 @@ log_importfile=Uvezeni podaci iz datoteke $1
 log_set=Izmijenjeno je $1 MySQL varijable
 log_root=Izmijenjena administratorska lozinka
 log_manual=Ručno uređena konfiguracijska datoteka
+
 backup_title=Rezervna baza podataka
 backup_title2=Izrada sigurnosne kopije svih baza podataka
 backup_edump=MySQL program sigurnosne kopije $1 nije pronađen u vašem sustavu. Možda je vaša konfiguracija <a href='$2'>modula</a> netočna.
@@ -649,15 +675,18 @@ backup_bodyspace=Veličina datotečnog sustava: $1 Slobodni prostor : $2
 backup_bodyall=svi
 backup_edownloadall=Može se preuzeti samo jedna sigurnosna kopija baze podataka
 backup_edownloadsave=Način preuzimanja ne može se upotrijebiti za zakazane sigurnosne kopije
+
 import_title=Uvoz podataka
 import_uploadout=Uvoz podataka iz prenesene datoteke ..
 import_fileout=Uvoz podataka iz datoteke $1 ..
 import_eupload=Nedostaje prenesena datoteka za uvoz
 import_efile=Nedostaje naziv datoteke za uvoz
+
 adv_title=Napredna pretraga
 adv_and=Pronađi zapise koji odgovaraju svim kriterijima ..
 adv_or=Pronađite zapise koji odgovaraju bilo kojim kriterijima ..
 adv_ok=Pretražite sada
+
 csv_title=Izvezi CSV datoteku
 csv_header=CSV opcije izvoza
 csv_dest=Izvozno odredište
@@ -678,6 +707,7 @@ csv_done=Dovršen je izvoz CSV-a u $1. Rezultirajuća veličina datoteke je $2.
 csv_headers=Želite li uključiti imena stupaca u CSV?
 csv_cols=Stupci za uključivanje u CSV
 csv_ecols=Nije odabran nijedan stupac
+
 cnf_title=Konfiguracija MySQL poslužitelja
 cnf_efile=Konfiguracijska datoteka MySQL $1 nije pronađena u vašem sustavu. Možda ćete trebati prilagoditi konfiguraciju <a href='$2'>modula</a> za upotrebu ispravnog puta.
 cnf_header=Opcije MySQL poslužitelja
@@ -719,11 +749,13 @@ cnf_restart=Spremite i ponovno pokrenite MySQL
 cnf_fpt=Zasebna datoteka za svaku tablicu InnoDB?
 cnf_ilt=Istek vremena zaključavanja InnoDB (u sekundama)
 cnf_eilt=Istek vremena zaključavanja InnoDB mora biti cijeli broj
+
 manual_title=Uređivanje datoteka za konfiguriranje
 manual_file=Uređivanje konfiguracijske datoteke:
 manual_ok=u redu
 manual_efile=Nevažeća konfiguracijska datoteka!
 manual_err=Spremanje konfiguracijske datoteke nije uspjelo
+
 index_title1=Stvorite indeks
 index_header1=Opcije indeksa
 index_name=Naziv indeksa
@@ -739,12 +771,15 @@ index_ecols=Nije odabrano nijedno polje
 index_title2=Uredi indeks
 index_header=Indeks $1 u bazi podataka $2 
 index_ecannot=Nije vam dopušteno upravljati indeksima
+
 syslog_desc=MySQL poruke o pogrešci
 syslog_desc2=Poruka pogreške MySQL
 syslog_logdesc=MySQL upiti
+
 fdrop_err=Brisanje polja nije uspjelo
 fdrop_enone=Nijedna nije odabrana
 fdrop_eall=Ne možete izbrisati sva polja iz tablice!
+
 view_title1=Stvori prikaz
 view_title2=Uredi prikaz
 view_header1=Pregledavati pojedinosti
@@ -770,6 +805,7 @@ view_cascaded=Temeljni pogledi
 view_local=Samo ovaj pogled
 view_nocheck=nijedan
 view_ecannot=Nije vam dopušteno upravljanje pogledima
+
 procs_title=Spajanje baze podataka
 procs_id=iskaznica
 procs_user=Korisničko ime
@@ -781,9 +817,11 @@ procs_query=Pokretanje upita
 procs_kill=Ubiti odabrane veze
 procs_ecannot=Nije vam dopušteno vidjeti veze s bazom podataka
 procs_none=Trenutno nema drugih klijentovih veza baze podataka.
+
 kill_err=Povezivanje baze podataka nije uspjelo
 kill_ecannot=Nije vam dopušteno upravljanje vezama s bazom podataka
 kill_enone=Nijedna nije odabrana
+
 vars_title=Varijable MySQL sustava
 vars_desc=Upozorenje - Varijable postavljene na ovoj stranici vratit će se na zadane vrijednosti nakon ponovnog pokretanja MySQL-a. Trajne postavke moraju se izvršiti na stranici <a href='$1'>Konfiguracija MySQL poslužitelja</a>.
 vars_ecannot=Nije vam dopušteno uređivanje varijabli sustava
@@ -794,6 +832,7 @@ vars_search=Prikaži varijable koje odgovaraju:
 vars_ok=traži
 vars_none2=Nijedna varijabla sustava nije odgovarala vašoj pretraživanju.
 vars_none=Nisu pronađene varijable sustava!
+
 compat_ansi=ANSI
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQL 4.0
@@ -805,7 +844,9 @@ compat_maxdb=MaxDB
 compat_no_key_options=Ključne mogućnosti
 compat_no_table_options=Opcije tablice
 compat_no_field_options=Opcije polja
+
 config_echarset=Skup nedostajućih ili nevažećih izgleda
+
 root_title=Promijenite administrativnu lozinku
 root_header=Nova lozinka za administraciju
 root_user=Prijava administracije
@@ -818,6 +859,7 @@ root_epass1=Nije unesena nova lozinka
 root_epass2=Lozinke se ne podudaraju
 root_none=Nema lozinke!
 root_auto=Automatski (obično <tt>root</tt>)
+
 mysqlpass_err=MySQL siguran način
 mysqlpass_esafecmd=Naredba $1 potrebna za pokretanje MySQL-a s onemogućenom provjerom autentičnosti nije pronađena
 mysqlpass_eshutdown=Isključivanje nije uspjelo : $1 

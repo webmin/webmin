@@ -40,6 +40,7 @@ index_descfetch=Laman ini adalah untuk memuat turun fail dari sistem Webmin untu
 index_email=Hantar emel apabila muat turun selesai?
 index_emailto=Ya, ke alamat
 index_email2=Hantar emel apabila muat naik selesai?
+
 upload_title=Muat naik Fail
 upload_err=Gagal muat naik fail
 upload_edir=direktori untuk dimuat naik hilang
@@ -63,6 +64,7 @@ upload_saving=Menyimpan fail $1 ..
 upload_saved=.. menulis $1
 upload_unzipping=Mengekstrak fail $1 ..
 upload_unzipdone=.. $1
+
 download_err=Gagal menyimpan muat turun
 download_enone=Tiada URL untuk muat turun yang dimasukkan
 download_eurl='$1' bukanlah URL yang sah
@@ -74,9 +76,11 @@ download_failed=Muat turun gagal : $1
 download_eaccess=Anda tidak dibenar untuk muat tutun fail kepada $1
 download_eucannot=Anda tidak dibenar muat turun fail sebagai pengguna $1
 download_egcannot=Grup yang dipilih tidak mengandungi pengguna yang dipilih
+
 cancel_err=Gagal membatalkan muat turun
 cancel_enone=Tidak dipilih
 cancel_ecannot=Anda tidak dibenar membatalkan muat turun untuk pengguna $1
+
 log_cancel=$1 muat turun dibatal
 log_upload_l=Muat naik fail $1
 log_upload=$1 fail dimuat naik
@@ -84,6 +88,7 @@ log_download_l=Muatnaik URL $1
 log_download=$1 URL dimuat turun
 log_sdownload_l=Jadualkan muat turun untuk URL $1
 log_sdownload=Jadualkan $1 URL untuk  dimuat turun
+
 acl_users=Boleh muat naik dan muat turun fail sebagai pengguna
 acl_all=Semua pengguna
 acl_this=Pengguna Webmin semasa
@@ -98,6 +103,7 @@ acl_max=Sais muat naik maksima
 acl_unlim=Tiada had
 acl_b=bait
 acl_fetch=Boleh muat turun fail ke PC?
+
 fetch_err=Gagal untuk muat turun fail
 fetch_ecannot=Anda tidak dibenarkan untuk menuat turun fail ke PC
 fetch_efile=Tiada nama fail yang dimasukkan
@@ -106,6 +112,7 @@ fetch_eopen=Gagal untuk membuka fail : $1
 fetch_eaccess=Anda tidak dibenarkan untuk menuat turun fail dari $1
 fetch_ezip=Direktori tidak boleh dimuat turun melainkan arahan <tt>zip</tt> dipasang
 fetch_eroot=Direktori root tidak boleh dimuat turun
+
 email_downmsg=Muat turun berikut telah selesai :
 email_downurl=URL: $1
 email_downerr=Mesej ralat: $1

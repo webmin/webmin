@@ -25,6 +25,7 @@ index_header=Usuários com configurações do Fetchmail
 index_search=Mostrar configuração do Fetchmail para:
 index_show=exposição
 index_toomany=Existem muitos usuários no seu sistema para exibir.
+
 poll_create=Adicionar servidor
 poll_edit=Editar servidor
 poll_header=Opções do servidor de correio
@@ -64,18 +65,22 @@ poll_ecannot=Você não tem permissão para editar a configuração do fetchmail
 poll_efile=Somente os arquivos de configuração do fetchmail dos usuários podem ser editados
 poll_eusername=Usuário não existe!
 poll_foruser=Para o usuário $1 
+
 stop_err=Falha ao parar o fetchmail
 stop_ecannot=Você não tem permissão para parar o fetchmail
 start_err=Falha ao iniciar o fetchmail
 start_einterval=Intervalo de verificação ausente ou inválido
 start_ecannot=Você não tem permissão para iniciar o fetchmail
+
 check_title=Verificando servidores
 check_exec=Verificando correio nos servidores com o comando $1 ..
 check_ok=.. verificação completa.
 check_failed=.. a verificação falhou!
+
 global_title=Configurações padrão
 global_header=Configurações padrão para todos os servidores
 global_err=Falha ao salvar as configurações padrão
+
 log_create_poll_file=Servidor $1 adicionado no arquivo $2 
 log_modify_poll_file=Servidor modificado $1 no arquivo $2 
 log_delete_poll_file=Servidor $1 excluído no arquivo $2 
@@ -94,6 +99,7 @@ log_stop=Daemon fetchmail parado
 log_create_cron=Verificação agendada ativada
 log_update_cron=Verificação agendada modificada
 log_delete_cron=Verificação agendada desativada
+
 acl_users=Pode editar a configuração do fetchmail para
 acl_all=Todos os usuários
 acl_this=Usuário atual do webmin
@@ -101,6 +107,7 @@ acl_only=Somente usuários
 acl_except=Todos, exceto usuários
 acl_cron=Pode configurar a verificação agendada?
 acl_daemon=Pode configurar o daemon do Fetchmail?
+
 cron_title=Verificação agendada
 cron_desc=Esta página pode ser usada para habilitar ou desabilitar um trabalho Cron para verificar os servidores de email em sua configuração do Fetchmail regularmente. Usando um trabalho Cron superior à execução do daemon do Fetchmail, pois ele não precisa ser reiniciado no momento da inicialização.
 cron_header=Configurações agendadas do Fetchmail
@@ -119,8 +126,10 @@ cron_email=Endereço de e-mail ausente ou inválido
 cron_euser=Usuário Unix ausente ou inválido
 cron_errors=Somente saída se ocorrer um erro?
 cron_ecannot2=Você não tem permissão para configurar a verificação agendada
+
 user_title=Configuração do Fetchmail
 user_header=Para o usuário $1 
 user_return=configuração do usuário
+
 email_ok=Saída do Fetchmail
 email_failed=Erro no Fetchmail

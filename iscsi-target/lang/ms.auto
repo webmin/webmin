@@ -1,6 +1,7 @@
 check_econfig=Fail konfigurasi sasaran iSCSI $1 tidak dijumpai pada sistem anda.
 check_eietadm=Perintah pentadbiran sasaran iSCSI $1 tidak dijumpai pada sistem anda.
 check_einit=Tindakan boot $1 tidak wujud
+
 index_title=Sasaran iSCSI
 index_clink=Mungkin ia tidak dipasang, atau konfigurasi modul <a href='$1'>anda</a> tidak betul.
 index_stop=Hentikan sasaran iSCSI
@@ -22,8 +23,10 @@ index_noluns=Tiada
 index_nousers=Mana-mana
 index_nullio=RAM cakera $1 sektor
 index_size=Jumlah saiz
+
 dtargets_err=Gagal memadamkan sasaran
 dtargets_enone=Tiada pilihan!
+
 target_title1=Buat Sasaran iSCSI
 target_title2=Edit Target iSCSI
 target_header=opsyen peranti yang dikongsi iSCSI
@@ -68,11 +71,13 @@ target_noalias=Tiada
 target_hdigest=Pemeriksaan kepala
 target_ddigest=Pemeriksaan data
 target_nodigest=Tiada
+
 auth_title=Tetapan Pengesahan
 auth_header=Pilihan pengesahan lalai untuk semua sasaran
 auth_iuser=Pengesahan oleh pelanggan
 auth_ouser=Pengesahan kepada pelanggan
 auth_err=Gagal menyimpan tetapan pengesahan
+
 conn_title=Tetapan Sambungan
 conn_header=Pilihan sambungan lalai untuk semua sasaran
 conn_sessions=Sesi serentak maksimum
@@ -91,6 +96,7 @@ conn_emaxrecv=Panjang maksimum atau nol tidak menerima segmen panjang
 conn_emaxxmit=Panjang segmen penghantaran maksimum yang tidak hilang atau bukan angka
 conn_emaxburst=Saiz pecah maksimum pelanggan yang hilang atau tidak angka
 conn_efirstburst=Saiz maksimum data yang tidak diminta oleh pelanggan atau nombor bukan nombor
+
 timeout_title=Tetapan Waktu Tamat
 timeout_header=Pilihan masa tunggu masa pelanggan
 timeout_nopi=Selang antara ping apabila terbiar
@@ -98,6 +104,7 @@ timeout_nopinone=Jangan ping
 timeout_secs=detik
 timeout_nopt=Masa untuk menunggu sambutan ping
 timeout_noptnone=Sama seperti masa ping
+
 addr_title=Alamat Pelayan dan Pelabuhan
 addr_header=pilihan rangkaian pelayan iSCSI
 addr_addr=Dengar pada alamat IP
@@ -110,18 +117,21 @@ addr_err=Gagal menyimpan alamat pelayan
 addr_eaddr=Alamat untuk didengar mesti alamat IP
 addr_eport=Pelabuhan untuk didengar mestilah nombor
 addr_edebug=Tahap debug mestilah nombor
+
 initiators_title=Alamat Pelanggan yang Dibenarkan
 initiators_none=Tiada alamat klien yang dibenarkan telah ditakrifkan lagi. Tiada pelanggan akan dapat menyambung.
 initiators_ips=Pelanggan yang dibenarkan
 initiators_title1=Tambah Alamat Pelanggan yang Dibenarkan
 initiators_title2=Edit Alamat Pelanggan yang Dibenarkan
 initiators_header=Membenarkan pelanggan iSCSI untuk sasaran
+
 targets_title=Alamat Pelayan yang Dibenarkan
 targets_none=Tiada alamat pelayan dibenarkan telah ditakrifkan lagi. Tiada pelanggan akan dapat menyambung.
 targets_ips=Antaramuka pelayan yang dibenarkan
 targets_title1=Tambah Alamat Pelayan yang Dibenarkan
 targets_title2=Edit Alamat Pelayan yang Dibenarkan
 targets_header=Dibenarkan antara muka server iSCSI untuk sasaran
+
 allow_target=Nama sasaran
 allow_move=Pindah
 allow_delete=Padam Dipilih
@@ -133,17 +143,21 @@ allow_return=dibenarkan sasaran dan alamat
 allow_err=Gagal menyimpan alamat yang dibenarkan
 allow_eaddr=Alamat $1 tidak sah. Ia mestilah sama ada alamat IPv4, rangkaian/topeng IPv4, atau alamat IPv6 dalam kurungan persegi.
 allow_eaddrs=Tiada alamat yang dibenarkan masuk
+
 dallow_err=Gagal memadamkan alamat yang dibenarkan
 dallow_enone=Tiada yang dipilih
+
 manual_title=Edit Fail Konfigurasi
 manual_desc=Gunakan kotak teks di bawah untuk mengedit fail konfigurasi pelayan iSCSI $1. Berhati-hati, kerana tiada pengesahan akan dilakukan pada input anda!
 manual_err=Gagal menyimpan fail konfigurasi
 manual_edata=Tiada kandungan yang dimasukkan!
+
 start_err=Gagal memulakan pelayan iSCSI
 stop_err=Gagal menghentikan pelayan iSCSI
 restart_err=Gagal memulakan semula pelayan iSCSI
 atboot_err=Gagal membolehkan pada boot
 atboot_einit=Skrip Init $1 tidak wujud
+
 log_create_target=Sasaran yang dibuat $1 
 log_delete_target=Objektif dipadamkan $1 
 log_modify_target=Sasaran yang diubah suai $1 

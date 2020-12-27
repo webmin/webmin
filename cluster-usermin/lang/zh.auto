@@ -39,7 +39,9 @@ index_thost=主机名
 index_tdesc=描述
 index_tver=版
 index_ttype=操作系统类型
+
 this_server=这个服务器
+
 add_title=添加服务器
 add_msg=正在添加 $1 ..
 add_gmsg=在组 $1中添加服务器 ..
@@ -49,6 +51,7 @@ add_echeck=服务器 $1没有Usermin配置模块
 add_echeck2=服务器 $1没有Usermin Users模块
 add_eversion=服务器 $1未运行Usermin版本 $2或更高版本。
 add_ok=已为 $1添加了 $2模块和 $3主题。
+
 refresh_title=刷新模块和主题列表
 refresh_header=从所有服务器重新请求模块和主题列表。
 refresh_header4=从 $2..的成员重新请求模块和主题列表
@@ -64,6 +67,7 @@ refresh_g2=已删除 $1组。
 refresh_done=..完成
 refresh_del=已从服务器列表中删除 $1
 refresh_failed=无法刷新 $1 : $2
+
 host_title=受管服务器
 host_header=托管的Usermin服务器详细信息
 host_name=主机名
@@ -81,6 +85,7 @@ host_header_u=Usermin用户
 host_header_g=用户群
 host_return=服务器详细信息
 host_version2=版
+
 edit_title_mod=编辑模块
 edit_title_theme=编辑主题
 edit_header_mod=$1中的Usermin模块详细信息
@@ -103,6 +108,7 @@ edit_codes=来自测试 $1
 edit_acl=编辑的ACL
 edit_uacl=$2上的用户 $1
 edit_gacl=在 $2上将 $1组
+
 install_err=无法安装模块
 install_title=安装模块
 install_elocal=没有提供本地文件
@@ -123,6 +129,7 @@ do_failed=无法在 $1上安装： $2
 do_success_mod=已在 $1上安装模块 $2
 do_success_theme=已在 $1上安装主题 $2
 do_done=..完成
+
 delete_err=删除模块 $1失败
 delete_epack=模块 $1不存在
 delete_title=删除模块
@@ -140,6 +147,7 @@ delete_edepends=模块 $1依赖于此。
 delete_egone=模块不再存在
 delete_esuccess=已成功从 $1删除： $2
 delete_acls=从用户中删除并重置访问控制设置？
+
 user_title1=创建Usermin用户
 user_header1=新的Usermin用户详细信息
 user_name=用户名
@@ -198,11 +206,13 @@ user_all=&lt;所有主机&gt;
 user_donthave=&lt;没有主机的主机&gt;
 user_have=&lt;拥有它的主机&gt;
 user_ofgroup=$1的成员
+
 udelete_title=删除用户
 udelete_doing=从所有主机中删除用户 $1。
 udelete_success=已成功从 $1删除
 udelete_failed=无法从 $1删除： $2
 udelete_done=..完成
+
 group_title1=创建组
 group_header1=新的Usermin组详细信息
 group_name=组的名字
@@ -230,6 +240,7 @@ group_failed2=无法更新 $1上的组： $2
 group_return=组详细信息
 group_nomems=没有成员
 group_servers=要在其上创建的服务器
+
 gdelete_title=删除群组
 gdelete_desc=您确定要从所有主机中删除组 $1及其成员用户 $2吗？
 gdelete_ok=删除群组
@@ -238,6 +249,7 @@ gdelete_success=已成功从 $1删除
 gdelete_failed=无法从 $1删除： $2
 gdelete_done=..完成
 gdelete_esub=该组具有子组 $1，因此无法删除。
+
 acl_title=模块访问控制
 acl_title2=对于 $3上 $2中的用户 $1
 acl_title3=对于 $3上的 $2中的组 $1
@@ -256,6 +268,7 @@ acl_doing2=为 $2上的 $1设置访问控制。
 acl_success=在 $1上成功设置访问控制
 acl_failed=无法在 $1上设置访问控制： $2
 acl_done=..完成
+
 sync_title=同步服务器
 sync_desc=通过此表单，您可以在当前没有Usermin用户和组的服务器上创建Usermin用户和组，以使帐户在群集中的所有服务器之间同步。
 sync_hosts=要同步的服务器
@@ -279,6 +292,7 @@ sync_gcreate=正在添加Usermin组 $1 ..
 sync_acl=正在复制 $1的ACL文件。
 sync_test=只显示会做什么？
 sync_restart=重新启动Usermin ..
+
 upgrade_title=升级Usermin
 upgrade_header=在所有主机上升级Usermin ..
 upgrade_header2=在 $1..上升级Usermin
@@ -297,6 +311,7 @@ upgrade_failed=无法在 $1上安装： $2
 upgrade_done=..完成
 upgrade_efast=只有使用快速RPC模式的服务器才能升级
 upgrade_ereconn=升级后无法重新连接到Usermin！ ： $1
+
 update_title=更新模块
 update_header=更新模块所有主机 ..
 update_header5=正在 $2..上更新模块

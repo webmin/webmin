@@ -6,6 +6,7 @@ mon_conf_title=基本配置
 mon_status_title=运行状态
 hostgroups_title=MON配置-主机组
 services_title=监视组服务定义
+
 head_hostgroups=主机组和服务
 head_groups=主机组名称
 head_members=主机组成员
@@ -17,6 +18,7 @@ head_monauth=为MONCMD提供身份验证
 head_usr=用户名
 head_pass=密码
 head_mand=（“红色”中的参数为必填项）
+
 err_nomon=系统上未安装软件包“ mon”
 err_nomonconf=在系统上找不到MON配置文件 $1。也许未安装MON，或者您的<a href='$2'>模块配置</a>不正确。
 err_nowatch=未选择监视组。选择至少一个监视组以继续。
@@ -28,6 +30,7 @@ stop_epid=不再运行
 start_err=无法启动MON
 restart_err=重启MON失败
 restart_epid=无法获取PID
+
 other=其他（空格分隔）
 next=下一个
 mon_stat=MON状态
@@ -43,6 +46,7 @@ save_apply=储存并套用
 watch=观察组
 members=会员
 def_perargs=wd {Sat-Sun}
+
 def_desc=描述
 def_inter=间隔
 def_mon=监控
@@ -58,9 +62,11 @@ def_trapdur=持续时间
 def_rand=兰斯屈
 def_exclhost=exclude_hosts
 def_exclper=exclude_period
+
 groups_title=主机组
 groups_group=组的名字
 groups_members=会员主持人
+
 watches_title=观察清单
 watches_group=观察组
 watches_services=正在监视的服务
@@ -68,6 +74,7 @@ watches_sadd=添加服务 ..
 watches_add=为组添加监视列表：
 watches_return=观察清单
 watches_none=尚未定义监视列表。
+
 global_title=全局选项
 global_header=全局MON配置选项
 global_maxprocs=最大MON进程
@@ -85,6 +92,7 @@ global_ehistlength=缺少或无效的事件历史记录长度
 global_ealertdir=缺少或无效的警报程序目录
 global_emondir=监视器程序目录丢失或无效
 global_euserfile=缺少MON用户文件
+
 watch_title=编辑监视列表
 watch_header=主持人组观看详情
 watch_group=主持人组观看
@@ -93,6 +101,7 @@ watch_service=服务名称
 watch_monitor=监控使用
 watch_interval=检查每个
 watch_periods=监测期
+
 service_title=添加服务
 service_title2=编辑服务
 service_header=看过的服务细节
@@ -145,16 +154,19 @@ service_epstr=缺少期间说明
 service_known0=<tt>Time::Period</tt>字符串
 service_known1=指定的日期和时间
 service_known2=定义期间
+
 status_title=MON状态
 status_ecgi=MON状态CGI程序 $1不存在。可能未安装，或者您的<a href='$2'>模块配置</a>不正确。
 status_eperl=MON状态CGI程序需要 $1 perl模块。 <a href='$2'>单击此处</a>直接从CPAN安装它。
 status_esame=MON状态CGI程序 $1已在此Webmin模块中设置为<tt>mon.cgi</tt>脚本，而不是MON附带的CGI程序。调整<a href='$2'>模块配置</a>以使用正确的路径。
+
 users_title=MON用户
 users_etype=无法编辑MON用户列表，因为<a href='$1'>全局选项</a>页上当前未将MON用户列表配置为使用它进行身份验证。
 users_header=$1中允许的MON用户
 users_nousers=$1中没有定义MON用户。
 users_add=创建一个新用户。
 users_return=MON用户列表
+
 user_create=创建MON用户
 user_edit=编辑MON用户
 user_header=MON用户详细信息
@@ -164,6 +176,7 @@ user_leave=保持不变
 user_err=保存用户失败
 user_euser=用户名缺失或无效
 user_esame=具有相同名称的用户已存在
+
 auth_title=客户端命令
 auth_desc=使用此页面，您可以控制使用客户端程序时哪些用户可以运行哪些MON命令。
 auth_cmd=MON命令
@@ -173,6 +186,7 @@ auth_all=每个人
 auth_sel=仅用户
 auth_err=保存客户端命令失败
 auth_eusers=没有用户输入命令 $1
+
 periods_title=定义期间
 periods_period=期间名称
 periods_times=日子和时间
@@ -181,5 +195,6 @@ periods_allhours=所有时间
 periods_err=无法保存定义的期间
 periods_ename='$1'不是有效的期间名称
 periods_ehour=时段 $1缺少或无效的小时（必须为上午9点或下午5点）
+
 show_title=运行状态
 show_ecgi=MON状态程序 $1不存在。可能未安装，或者您的<a href='$2'>模块配置</a>不正确。

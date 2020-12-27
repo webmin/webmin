@@ -12,6 +12,7 @@ index_ereq_resource_cmd=Das Skript, welches Ressourcen aus anderen Knoten ($1) a
 index_version=Heartbeat Version $1
 index_noversion=Warnung - Die Version von Heartbeat, welche auf Ihrem System installiert ist, konnte nicht automatisch erkannt werden. Sie sollten es auf der <a href='$1'>Modulkonfigurations</a>-Seite einstellen.
 index_status=Heartbeat Status
+
 conf_title=Konfigurationsoptionen
 conf_header=Heartbeat Konfigurationsoptionen
 conf_serials=Serielle heartbeat Ports
@@ -54,6 +55,7 @@ conf_auto_on=${conf_enabled}
 conf_auto_off=${conf_disabled}
 conf_auto_legacy=Legacy-Modus
 conf_auto_=${default}
+
 res_title=Cluster Ressourcen
 res_node=Primärer Knoten
 res_ips=IP-Adressen
@@ -67,6 +69,7 @@ res_getserv=Get Resource
 res_hbdown=Heartbeat down
 res_up=UP
 res_down=DOWN
+
 node_create=Füge Cluster Ressource hinzu
 node_edit=Editiere Cluster Ressource
 node_header=Cluster Ressourcen Details
@@ -83,6 +86,7 @@ node_enone=Fehlende oder ungültiger primärer Knoten
 node_eip='$1' ist keine gültige IP-Adresse
 node_ecidr='$1' ist keine gültige CIDR
 node_ebroad='$1' ist keine gültige Broadcast-Adresse
+
 auth_title=Authentifizierungsschlüssel
 auth_header=Cluster Knoten Authentifizierung
 auth_mode=Authentifizierungsmodus
@@ -92,6 +96,8 @@ auth_md5=MD5 mit Passwort
 auth_err=Fehlgeschlagen Authentifizierungsschlüssel zu speichern
 auth_emd5=Fehlendes oder ungültiges MD5 Passwort
 auth_esha1=Fehlendes oder ungültiges SHA1 Passwort
+
 start_err=Fehlgeschlagen heartbeat zu starten
+
 apply_err=Fehlgeschlagen um Änderungen anzuwenden
 apply_epid=Prozess läuft nicht länger

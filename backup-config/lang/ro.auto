@@ -20,6 +20,7 @@ index_nostrftime=Avertisment - unele joburi de rezervă folosesc % în numele lo
 index_tabsched=Copii de rezervă programate
 index_tabbackup=Backup acum
 index_tabrestore=Restaurează acum
+
 edit_title1=Creați Backup programat
 edit_title2=Editează Backup programat
 edit_header=Opțiuni de rezervă programate
@@ -44,9 +45,11 @@ edit_return=formular de backup
 edit_other=Alte fișiere enumerate ..
 edit_pre=Comanda pre-copie de rezervă
 edit_post=Comanda post-backup
+
 save_err=Nu a reușit salvarea copiei de rezervă
 save_emods=Nu au fost selectate module
 save_ewebmin=Nici webmin, nici fișierele de configurare a serverului nu au fost selectate
+
 backup_mode0=Fișier local
 backup_mode1=Server FTP
 backup_mode2=Server SSH
@@ -63,6 +66,7 @@ backup_egunzip=Backup-ul este comprimat, dar <tt>gunzip</tt> nu este instalat
 backup_euntar=Un-TAR a eșuat : $1 
 backup_enone2=Niciunul dintre fișierele pentru modulele selectate nu este în copie de rezervă
 backup_epre2=Restaurarea respinsă a modulului $1 : $2 
+
 backup_err=Backup-ul a eșuat
 backup_edest=Fișierul local absolut lipsit sau nevalid
 backup_eserver1=Serverul FTP lipsă sau nevalid
@@ -78,6 +82,7 @@ backup_title=Configurare de rezervă
 backup_doing=Pornirea copiei de rezervă a fișierelor de configurare a modulului la $1 ..
 backup_failed=.. a eșuat! $1 
 backup_done=.. complet. Dimensiunea finală a copiei de rezervă a fost $1, conținând $2 fișiere.
+
 restore_err=Restaurarea a eșuat
 restore_emods=Nu sunt selectate module sau alte fișiere
 restore_title=Restaurați configurarea
@@ -86,22 +91,26 @@ restore_testing=Extragerea conținutului copiei de rezervă de la $1 ..
 restore_failed=.. a eșuat! $1 
 restore_done=.. complet. $1 fișiere au fost restaurate.
 restore_done2=.. fișierele de rezervă sunt :
+
 nice_ftp=$2 pe $1 prin FTP
 nice_ftpp=$2 pe $1 port $3 prin FTP
 nice_ssh=$2 pe $1 prin SSH
 nice_sshp=$2 pe $1 port $3 prin SSH
 nice_upload=fișierul încărcat
 nice_download=browser-
+
 log_backup=S-a făcut o copie de rezervă de $1 module la $2 
 log_restore=Module $1 restaurate de la $2 
 log_create_backup=Copie de rezervă creată de module $1 la $2 
 log_modify_backup=Copie de rezervă modificată a modulelor $1 la $2 
 log_delete_backup=S-a șters backup de module $1 la $2 
 log_run_backup=Copie de rezervă a modulelor $1 la $2 
+
 run_title=Configurații de rezervă
 run_doing=Pornirea copiei de rezervă a modulelor $1 până la $2.
 run_ok=.. backup a fost finalizat cu succes.
 run_failed=.. backup nu a reușit! Consultați mesajul de eroare de mai sus pentru motivul pentru care.
+
 email_mods=Backup de module :
 email_failed=până la $1 a eșuat :
 email_ok=la $1 a reușit.

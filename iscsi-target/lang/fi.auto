@@ -1,6 +1,7 @@
 check_econfig=ISCSI-määritystiedostoa $1 ei löydy järjestelmästäsi.
 check_eietadm=ISCSI-tavoitehallintakomentoa $1 ei löydy järjestelmästäsi.
 check_einit=Käynnistystoimintoa $1 ei ole
+
 index_title=iSCSI-kohde
 index_clink=Ehkä sitä ei ole asennettu, tai <a href='$1'>moduulin määritykset</a> ovat vääriä.
 index_stop=Lopeta iSCSI-tavoite
@@ -22,8 +23,10 @@ index_noluns=Ei mitään
 index_nousers=Minkä tahansa
 index_nullio=$1 sektorien RAM-levy
 index_size=Kokonaiskoko
+
 dtargets_err=Kohteiden poistaminen epäonnistui
 dtargets_enone=Mitään ei ole valittu!
+
 target_title1=Luo iSCSI-kohde
 target_title2=Muokkaa iSCSI-kohdetta
 target_header=iSCSI-jaetut laitevaihtoehdot
@@ -68,11 +71,13 @@ target_noalias=Ei mitään
 target_hdigest=Otsikon tarkistussumma
 target_ddigest=Tietojen tarkistussumma
 target_nodigest=Ei mitään
+
 auth_title=Todennusasetukset
 auth_header=Kaikkien kohteiden todennuksen oletusasetukset
 auth_iuser=Asiakkaiden todennus
 auth_ouser=Todennus asiakkaille
 auth_err=Todennusasetuksien tallentaminen epäonnistui
+
 conn_title=Yhteysasetukset
 conn_header=Kaikkien kohteiden oletusyhteysvaihtoehdot
 conn_sessions=Suurin samanaikainen istunto
@@ -91,6 +96,7 @@ conn_emaxrecv=Puuttuva tai ei-numeerinen vastaanottosegmentin enimmäispituus
 conn_emaxxmit=Puuttuva tai ei-numeerinen lähetyssegmentin suurin pituus
 conn_emaxburst=Puuttuva tai ei-numeerinen asiakaspurskeen enimmäiskoko
 conn_efirstburst=Puuttuva tai ei-numeerinen asiakkaan enimmäiskysyntä
+
 timeout_title=Aikakatkaisuasetukset
 timeout_header=Asiakkaan aikakatkaisuasetukset
 timeout_nopi=Pingin välinen aika tyhjäkäynnillä
@@ -98,6 +104,7 @@ timeout_nopinone=Älä koskaan pingita
 timeout_secs=sekuntia
 timeout_nopt=Aika odottaa ping-vastausta
 timeout_noptnone=Sama kuin ping-aika
+
 addr_title=Palvelimen osoite ja portti
 addr_header=iSCSI-palvelimen verkkoyhteydet
 addr_addr=Kuuntele IP-osoitteesta
@@ -110,18 +117,21 @@ addr_err=Palvelimen osoitteen tallentaminen epäonnistui
 addr_eaddr=Kuunteleman osoitteen on oltava IP-osoite
 addr_eport=Kuuntelevan portin on oltava numero
 addr_edebug=Debug-tason on oltava numero
+
 initiators_title=Sallitut asiakasosoitteet
 initiators_none=Sallittua asiakasosoitetta ei ole vielä määritetty. Yksikään asiakas ei voi muodostaa yhteyttä.
 initiators_ips=Sallitut asiakkaat
 initiators_title1=Lisää sallitut asiakasosoitteet
 initiators_title2=Muokkaa sallittuja asiakasosoitteita
 initiators_header=Sallitut iSCSI-asiakkaat kohteelle
+
 targets_title=Sallitut palvelimen osoitteet
 targets_none=Sallittua palvelimen osoitetta ei ole vielä määritetty. Yksikään asiakas ei voi muodostaa yhteyttä.
 targets_ips=Sallitut palvelinrajapinnat
 targets_title1=Lisää sallitut palvelimen osoitteet
 targets_title2=Muokkaa sallittuja palvelinosoitteita
 targets_header=Sallittu iSCSI-palvelinrajapinta kohteelle
+
 allow_target=Kohde nimi
 allow_move=Liikkua
 allow_delete=Poista valitut
@@ -133,17 +143,21 @@ allow_return=sallitut kohteet ja osoitteet
 allow_err=Sallittujen osoitteiden tallentaminen epäonnistui
 allow_eaddr=Osoite $1 ei kelpaa. Sen on oltava joko IPv4-osoite, IPv4-verkko/maski tai hakasulkeissa oleva IPv6-osoite.
 allow_eaddrs=Ei kirjoitettavia osoitteita
+
 dallow_err=Sallittujen osoitteiden poistaminen epäonnistui
 dallow_enone=Mitään ei ole valittu
+
 manual_title=Muokkaa asetustiedostoa
 manual_desc=Muokkaa alla olevaa tekstikenttää iSCSI-palvelimen määritystiedostoon $1. Ole varovainen, koska syötteellesi ei suoriteta validointia!
 manual_err=Asetustiedoston tallentaminen epäonnistui
 manual_edata=Sisältöä ei annettu!
+
 start_err=ISCSI-palvelimen käynnistäminen epäonnistui
 stop_err=ISCSI-palvelimen pysäyttäminen epäonnistui
 restart_err=ISCSI-palvelimen käynnistäminen epäonnistui
 atboot_err=Käynnistäminen epäonnistui
 atboot_einit=Init-skriptiä $1 ei ole
+
 log_create_target=Luotu tavoite $1 
 log_delete_target=Poistettu tavoite $1 
 log_modify_target=Muokattu tavoite $1 

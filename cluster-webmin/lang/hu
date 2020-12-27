@@ -39,7 +39,9 @@ index_thost=Hostname
 index_tdesc=Description
 index_tver=Version
 index_ttype=OS type
+
 this_server=this server
+
 add_title=Add Servers
 add_msg=Adding $1 ..
 add_gmsg=Adding servers in group $1 ..
@@ -49,6 +51,7 @@ add_echeck=Server $1 does not have the Webmin configuration module
 add_echeck2=Server $1 does not have the Webmin Users module
 add_eversion=Server $1 is not running Webmin version $2 or above.
 add_ok=Added $1 with $2 modules, $3 themes, $4 users and $5 groups.
+
 refresh_title=Refresh Module and User Lists
 refresh_header=Re-requesting module, user and group lists from all servers ..
 refresh_header4=Re-requesting module, user and group lists from members of $2 ..
@@ -64,6 +67,7 @@ refresh_g2=Removed $1 groups.
 refresh_done=.. done
 refresh_del=Removed $1 from server list
 refresh_failed=Failed to refresh $1 : $2
+
 host_title=Managed Server
 host_header=Managed Webmin server details
 host_name=Host name
@@ -81,6 +85,7 @@ host_header_u=Webmin users
 host_header_g=Webmin groups
 host_return=server details
 host_version2=Version
+
 edit_title_mod=Edit Module
 edit_title_theme=Edit Theme
 edit_header_mod=Webmin module details from $1
@@ -104,6 +109,7 @@ edit_acl=Edit ACL for
 edit_uacl=User $1 on $2
 edit_gacl=Group $1 on $2
 edit_config=Edit config on
+
 install_err=Failed to install module
 install_title=Install Module
 install_elocal=No local file given
@@ -124,6 +130,7 @@ do_failed=Failed to install on $1 : $2
 do_success_mod=Installed module $2 on $1
 do_success_theme=Installed theme $2 on $1
 do_done=.. done
+
 delete_err=Failed to delete module $1
 delete_epack=The module $1 does not exist
 delete_title=Delete Module
@@ -141,6 +148,7 @@ delete_edepends=Module(s) $1 depend upon it.
 delete_egone=Module no longer exists
 delete_esuccess=Successfully deleted from $1 : $2
 delete_acls=Remove from users and reset access control settings?
+
 user_title1=Create Webmin User
 user_header1=New Webmin user details
 user_name=Username
@@ -200,11 +208,13 @@ user_all=&lt;all hosts&gt;
 user_donthave=&lt;hosts that don't have it&gt;
 user_have=&lt;hosts that have it&gt;
 user_ofgroup=Members of $1
+
 udelete_title=Delete User
 udelete_doing=Deleting user $1 from all hosts ..
 udelete_success=Successfully deleted from $1
 udelete_failed=Failed to delete from $1 : $2
 udelete_done=.. done
+
 group_title1=Create Group
 group_header1=New Webmin group details
 group_name=Group name
@@ -232,6 +242,7 @@ group_failed2=Failed to update group on $1 : $2
 group_return=group details
 group_nomems=No members
 group_servers=Server(s) to create on
+
 gdelete_title=Delete Group
 gdelete_desc=Are you sure you want to delete the group $1 and its member users $2 from all hosts ?
 gdelete_ok=Delete Group
@@ -240,6 +251,7 @@ gdelete_success=Successfully deleted from $1
 gdelete_failed=Failed to delete from $1 : $2
 gdelete_done=.. done
 gdelete_esub=This group has subgroups $1, and so cannot be deleted.
+
 acl_title=Module Access Control
 acl_title2=For user $1 in $2 on $3
 acl_title3=For group $1 in $2 on $3
@@ -258,6 +270,7 @@ acl_doing2=Setting access control for $1 on $2 ..
 acl_success=Successfully set access control on $1
 acl_failed=Failed to set access control on $1 : $2
 acl_done=.. done
+
 sync_title=Synchronize Servers
 sync_desc=This form allows you to create Webmin users and groups on servers that do not currently have them, in order to bring accounts into sync across all servers in your cluster.
 sync_hosts=Servers to synchronize
@@ -281,6 +294,7 @@ sync_gcreate=Adding Webmin group $1 ..
 sync_acl=Copying ACL files for $1 ..
 sync_test=Only show what would be done?
 sync_restart=Re-starting Webmin ..
+
 upgrade_title=Upgrade Webmin
 upgrade_header=Upgrading Webmin on all hosts ..
 upgrade_header2=Upgrading Webmin on $1 ..
@@ -299,6 +313,7 @@ upgrade_failed=Failed to install on $1 : $2
 upgrade_done=.. done
 upgrade_efast=Only servers using fast RPC mode can be upgraded
 upgrade_ereconn=Failed to re-connect to Webmin after upgrade! : $1
+
 update_title=Update Modules
 update_header=Updating modules all hosts ..
 update_header5=Updating modules on $2 ..
@@ -306,6 +321,7 @@ update_header4=Updating modules on members of $2 ..
 update_onhost=Results of update on $1 ..
 update_failed=.. update failed : $1
 update_none=.. no updates were found.
+
 config_title=Edit Module Configuration
 config_enone=No hosts with the module installed were selected
 config_ethis=Module is not installed on this server

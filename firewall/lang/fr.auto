@@ -1,3 +1,4 @@
 index_no_comment=
+
 desc_ctstate=l'état de la connexion est $1 
 desc_ctstate!=l'état de connexion n'est pas $1 

@@ -4,6 +4,7 @@ index_desc=وصف
 index_add=إضافة خدمة PAM جديدة.
 index_return=قائمة الخدمات
 index_none=لم يتم العثور على ملفات تكوين PAM على النظام الخاص بك في الدليل$1. ربما لا يتم دعم PAM ، أو أن <a href='$2'>تهيئة الوحدة النمطية</a> غير صحيحة.
+
 desc_su=تغير المستخدم
 desc_su-l=تبديل المستخدم (بتسجيل الدخول)
 desc_login=تسجيل دخول محلي أو بعيد
@@ -87,6 +88,7 @@ desc_common-account=التحقق من الحساب المشترك
 desc_common-auth=المصادقة المشتركة
 desc_common-password=تغيير كلمة المرور الشائعة
 desc_common-session=إعداد الجلسة المشتركة
+
 edit_title=تحرير خدمة PAM
 edit_header=تفاصيل خدمة PAM
 edit_name=اسم الخدمة
@@ -107,6 +109,7 @@ edit_move=نقل
 edit_return=خدمة PAM
 edit_inc=تضمين الخدمة$1
 edit_iheader=خدمات PAM المضمنة
+
 pam_pwdb.so=مصادقة كلمة مرور يونكس
 pam_securetty.so=فحص TTY آمن للجذر
 pam_nologin.so=فحص ملف <tt>/etc/nologin</tt>
@@ -149,6 +152,7 @@ pam_console.so=تحقق وحدة التحكم فقط
 pam_xauth.so=المصادقة X
 pam_stack.so=اتصل بخدمة PAM الأخرى
 pam_foreground.so=إعداد وحدة التحكم
+
 control_requisite=مطلوب
 control_required=مطلوب
 control_sufficient=يكفي
@@ -157,6 +161,7 @@ control_desc_requisite=تفشل المصادقة على الفور عند الف
 control_desc_required=فشل المصادقة في النهاية عند الفشل
 control_desc_sufficient=تنجح المصادقة على الفور في النجاح
 control_desc_optional=يتم تجاهل النجاح أو الفشل
+
 create_title=إنشاء خدمة PAM
 create_header=خيارات خدمة PAM الجديدة
 create_name=اسم الخدمة
@@ -165,6 +170,7 @@ create_mods=وحدات PAM الأولية
 create_0=لا يوجد
 create_1=مصادقة يونكس
 create_2=رفض الوصول
+
 mod_edit=تحرير وحدة PAM
 mod_create=إضافة وحدة PAM
 mod_header=خيارات وحدة PAM
@@ -178,10 +184,12 @@ mod_type_password=تغيير كلمة السر
 mod_control=مستوى الفشل
 mod_args=الحجج النمطية
 mod_err=فشل في حفظ الوحدة النمطية
+
 pwdb_shadow=استخدام ملف كلمة المرور الظل؟
 pwdb_nullok=هل تقبل كلمات مرور فارغة؟
 pwdb_md5=استخدام كلمات المرور المشفرة MD5؟
 pwdb_nodelay=تأخير بعد فشل تسجيل الدخول؟
+
 unix_nullok_secure=هل تقبل كلمات مرور فارغة على TTYs آمنة؟
 unix_min=الحد الأدنى لطول كلمة المرور
 unix_nomin=لا يوجد
@@ -190,6 +198,7 @@ unix_nomax=لا حدود
 unix_obscure=منع استخدام كلمات مرور سهلة؟
 unix_emin=الحد الأدنى لطول كلمة المرور مفقود أو غير صالح
 unix_emax=الحد الأقصى لطول كلمة المرور مفقود أو غير صالح
+
 listfile_item=ملف البحث عن
 listfile_item_user=اسم المستخدم
 listfile_item_tty=TTY
@@ -206,51 +215,64 @@ listfile_apply=التحقق من الحد
 listfile_all=جميع المستخدمين
 listfile_user=المستخدم فقط
 listfile_group=المجموعة فقط
+
 cracklib_type=اكتب كلمة المرور في موجه
 cracklib_retry=إعادة المحاولة القصوى قبل الفشل
 cracklib_eretry=عدد عمليات إعادة المحاولة مفقود أو غير صالح
 cracklib_etype=نوع كلمة المرور مفقود أو غير صالح
+
 rhosts_equiv=قراءة ملف <tt>/etc/hosts.equiv</tt>؟
 rhosts_rhosts=قراءة ملفات <tt>.rhosts</tt> للمستخدمين؟
 rhosts_promiscuous=دخول <tt>+</tt> يسمح لجميع المضيفين؟
 rhosts_suppress=فشل مصادقة السجل؟
+
 env_var=اسم المتغير
 env_def=القيمة الافتراضية
 env_over=قيمة التجاوز
 env_evar=لا يمكن أن تحتوي الأسماء المتغيرة على مسافات
+
 securetty_ttys=TTYs الآمنة
+
 shells_shells=قذائف مستخدم صالحة
+
 tally_deny=محاولات الفشل قبل رفض الوصول
 tally_reset=إعادة تعيين الفشل على النجاح
 tally_edeny=عدد محاولات الفشل مفقودة أو غير صالحة
 tally_magic=ينطبق عدد الفشل على <tt>root</tt>؟
 tally_root=يمكن رفض حساب <tt>root</tt>؟
+
 time_services=خدمات
 time_ttys=TTYs
 time_users=المستخدمون
 time_times=أوقات الوصول
 time_info=يمكن أن تحتوي جميع الحقول على قيم متعددة مفصولة بـ | ، ويمكن استخدام القيم * كحرف بدل أو! كمنكر.
+
 group_services=خدمات
 group_ttys=TTYs
 group_users=المستخدمون
 group_times=أوقات الوصول
 group_groups=أضف مجموعات
 group_info=يمكن أن تحتوي جميع الحقول على قيم متعددة مفصولة بـ | ، ويمكن استخدام القيم * كحرف بدل أو! كمنكر.
+
 wheel_group=تحقق من عضوية المجموعة
 wheel_group_def=افتراضي (<tt>wheel</tt> أو GID 0)
 wheel_trust=أعضاء المجموعة تجاوز المصادقة الإضافية؟
 wheel_deny=الرفض بدلاً من السماح لأعضاء المجموعة؟
 wheel_egroup=اسم مجموعة مفقود أو غير صالح
+
 motd_file=ملف لعرضه
 motd_file_def=افتراضي (<tt>/etc/motd</tt>)
 motd_efile=اسم ملف مفقود أو غير صالح
+
 mail_nopen=عرض إشعار البريد عند تسجيل الدخول؟
 mail_close=عرض إشعار البريد عند تسجيل الخروج؟
 mail_empty=إعلام إذا كان ملف البريد فارغًا؟
 mail_noenv=هل تريد تعيين متغير البيئة MAIL $؟
 mail_dir=دليل التخزين المؤقت للبريد
 mail_edir=دليل التخزين المؤقت للبريد مفقود أو غير صالح
+
 stack_service=تحقق من خدمة PAM
+
 log_pam_create=تم إنشاء خدمة PAM$1
 log_pam_delete=خدمة PAM المحذوفة$1
 log_mod_create=تمت إضافة وحدة PAM $1 للخدمة$2
@@ -262,6 +284,7 @@ log_inc_create=تمت إضافة$1 للخدمة$2
 log_inc_modify=تعديل معدّل$1 للخدمة$2
 log_inc_delete=يتضمن المحذوف$1 للخدمة$2
 log_incs=يتضمن التحديث للخدمة$1
+
 inc_edit=تحرير الخدمة المضمنة
 inc_create=إنشاء خدمة مضمنة
 inc_header=تفاصيل خدمة PAM المضمنة

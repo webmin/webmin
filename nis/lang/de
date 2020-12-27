@@ -2,6 +2,7 @@ index_title=NIS Client und Server
 index_return=NIS Menü
 index_enis=Ihre Maschine scheint keinen NIS-Client oder Server-Unterstützung installiert zu haben.
 index_enis2=Nur die Client Service Features dieses Moduls wird benutzbar sein.
+
 client_title=NIS Client
 client_header=NIS Client Konfiguration
 client_domain=NIS Domäne
@@ -17,10 +18,12 @@ client_eserver='$1' ist kein gültiger Servername
 client_eypwhich=Fehlgeschlagen an NIS Domain zu binden
 client_ehosts='$1' ist nicht die Hosts-Datei
 client_enis=Ihre Maschine scheint keine NIS-Client-Unterstützung installiert zu haben.
+
 switch_title=Client Dienste
 switch_service=Dienst
 switch_srcs=Datenquellen
 switch_return=Clientdienste
+
 order_= 
 order_nisplus=NIS+
 order_nis=NIS
@@ -32,6 +35,7 @@ order_hesiod=Hesiod
 order_ldap=LDAP
 order_user=Benutzer Drucker
 order_xfn=XFN
+
 server_title=NIS Server
 server_header=NIS Server Optionen
 server_boot=Aktiviere NIS Server?
@@ -65,6 +69,7 @@ server_solaris=Hinweis - unter Solaris, den Client und Server NIS-Domains sind i
 server_edir=Ungültiges Quelldateien Verzeichnis
 server_epwdir=Ungültiges Password Quelldateien-Verzeichnis
 server_enis=Ihre Maschine scheint keine NIS-Server-Unterstützung installiert zu haben.
+
 tables_title=NIS Tabellen
 tables_switch=Editiere NIS Tabelle :
 tables_header=$1 NIS Tabelle von $2
@@ -81,6 +86,7 @@ tables_search=Suche
 tables_nomatch=Keine Einträge passen zu Ihrer Suche
 tables_build=NIS Tabellen neu aufbauen
 tables_buildmsg=Klicken Sie auf diese Schaltfläche, um die NIS-Datenbanken aus den Daten der Tabelle wieder aufzubauen. Wenn Sie Änderungen vorgenommen haben, müssen Sie dies tun, um diese den NIS-Clients zur Verfügung zu stellen.
+
 desc_aliases=Sendmail aliases
 desc_mail=Sendmail Aliases
 desc_hosts=Host-Adressen
@@ -116,6 +122,7 @@ desc_printers=Drucker
 desc_ipnodes=IP-Nodes
 desc_timezone=Zeitzonen
 desc_locale=Locales
+
 hosts_title=Hostadresse
 hosts_ip=IP-Adresse
 hosts_name=Hostname
@@ -124,6 +131,7 @@ hosts_err=Fehlgeschlagen Host zu speichern
 hosts_eip=Fehlende oder ungültige IP-Adresse
 hosts_ename=Fehlender oder ungültiger Hostname
 hosts_aliases=Aliases
+
 group_name=Gruppenname
 group_gid=Gruppen ID
 group_members=Gruppenmitglieder
@@ -134,6 +142,7 @@ group_none=Kein Passwort erforderlich
 group_encrypted=vorverschlüsseltes Passwort
 group_clear=Normales Passwort
 group_err=Fehlgeschlagen Gruppe zu speichern
+
 passwd_name=Benutzername
 passwd_uid=Benutzer ID
 passwd_real=Realer Name
@@ -171,6 +180,7 @@ passwd_emax=Ungültige maximale Anzahl an Tagen
 passwd_emin=Ungültige minimale Anzahl an Tagen
 passwd_einactive=Ungültige Anzahl an Tage
 passwd_eexpiry=Ungültiges Verfallsdatum
+
 services_name=Servicename
 services_proto=Protokoll
 services_port=Port
@@ -179,6 +189,7 @@ services_header=Inetd Netzwerk Service Optionen
 services_err=Fehlgeschlagen Service zu speichern
 services_ename=Fehlender oder ungültiger Servicename
 services_eport=Fehlender oder ungültiger Port
+
 protocols_name=Protokollname
 protocols_number=Nummer
 protocols_aliases=Aliases
@@ -187,6 +198,7 @@ protocols_header=Netzwerk Protokoll Optionen
 protocols_err=Fehlgeschlagen Protokoll zu speichern
 protocols_ename=Fehlender oder ungültiger Name
 protocols_enumber=Fehlende oder ungültige Nummer
+
 netgroup_name=Netgroup Name
 netgroup_members=Mitglieder
 netgroup_title=Netzwerkgruppe
@@ -201,6 +213,7 @@ netgroup_ename=Fehlende oder ungültige netgroup Name
 netgroup_ehost=Fehlende oder ungültige Host in Zeile $1
 netgroup_euser=Fehlende oder ungültige Benutzer in Zeile $1
 netgroup_edom=Fehlende oder ungültige NIS-Domain in Zeile $1
+
 ethers_mac=Ethernet Adresse
 ethers_ip=IP-Adresse
 ethers_title=Ethernet Adresse
@@ -208,6 +221,7 @@ ethers_header=Ethernet mapping Optionen
 ethers_err=Fehlgeschlagen Ethernet-Adresse zu speichern
 ethers_emac=Ungültige Ethernet-Adresse
 ethers_eip=Ungültige IP-Adresse
+
 rpc_name=Programmname
 rpc_number=Nummer
 rpc_aliases=Aliases
@@ -216,6 +230,7 @@ rpc_header=RPC Programm Details
 rpc_err=Fehlgeschlagen RPC Programm zu speichern
 rpc_ename=Fehlender oder ungültiger Programmname
 rpc_enumber=Fehlende oder ungültige Nummer
+
 networks_title=Netzwerkadresse
 networks_ip=IP-Adressen
 networks_name=Netzwerkname
@@ -224,6 +239,7 @@ networks_err=Fehlgeschlagen Netzwerk zu speichern
 networks_eip=Fehlende oder ungültige IP-Adresse
 networks_ename=Fehlender oder ungültiger Name
 networks_aliases=Aliases
+
 netmasks_net=Netzwerkadresse
 netmasks_mask=Netzmaske
 netmasks_title=Netzmaske
@@ -231,6 +247,7 @@ netmasks_header=Netzmaske Details
 netmasks_err=Fehlgeschlagen Netzmaske zu speichern
 netmasks_enet=Fehlende oder ungültige Netzwerkadresse
 netmasks_emask=Fehlende oder ungültige Netzmaske
+
 aliases_from=Adresse
 aliases_to=Alias an
 aliases_title=Sendmail Alias
@@ -238,6 +255,7 @@ aliases_header=Sendmail alias Details
 aliases_err=Fehlgeschlagen Alias zu speichern
 aliases_efrom=Fehlende oder ungültige Adresse
 aliases_eto=Fehlende An Adresse
+
 security_title=Serversicherheit
 security_header=NIS-Server-Sicherheit Optionen
 security_ok=Speichern und Anwenden
@@ -266,6 +284,7 @@ security_sec_des=Erfordert DES
 security_ehost='$1' ist kein gültiger Hostname
 security_emap='$1' ist keine gültige NIS Tabelle
 security_efield='$1' ist keine gültige Feldnummer
+
 eswitch_title=Editiere Dienst
 eswitch_egone=Dienst existiert nicht!
 eswitch_header=Dienste Details

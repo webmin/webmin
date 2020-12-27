@@ -42,6 +42,7 @@ index_lvused=Spațiu utilizat
 index_lvuse=Folosit pentru
 index_snapof=(Captura de imagine a $1)
 index_thin=Piscina subțire LVM pentru $1 LVs
+
 lv_edit=Editează volumul logic
 lv_edit_snap=Editează instantaneu
 lv_create=Creați volum logic
@@ -128,6 +129,7 @@ lv_pvfrom=Deplasați blocurile din volumul fizic
 lv_pvto=La volumul fizic
 lv_moveok=Mutați blocurile
 lv_return=volumul logic
+
 mkfs_title=Creați sistem de fișiere
 mkfs_desc=Acest formular vă permite să construiți un nou sistem de fișiere $2 ($1) pe volumul logic $3. Toate datele existente vor fi șterse.
 mkfs_header=Opțiuni ale sistemului de fișiere noi
@@ -135,6 +137,7 @@ mkfs_err=Crearea sistemului de fișiere nu a reușit
 mkfs_exec=Executarea comenzii $1 ..
 mkfs_failed=.. comanda nu a reușit!
 mkfs_ok=.. comanda finalizată.
+
 resize_title=Redimensionați volumul logic
 resize_mesg=Sistemul de fișiere $1 de pe acest volum logic nu poate fi redimensionat. Dacă redimensionați volumul logic, trebuie să re-creați sistemul de fișiere, care va șterge toate datele din acesta.
 resize_mesg2=Webmin nu știe ce tip de sistem de fișiere este pe acest volum logic, dacă este cazul. Dacă redimensionați volumul logic, trebuie să re-creați sistemul de fișiere, care va șterge toate datele din acesta.
@@ -142,8 +145,10 @@ resize_fs=A apărut o eroare de redimensionare a sistemului de fișiere $1 pe ac
 resize_ok=Redimensionați volumul logic
 resize_emounted=Sistemul de fișiere de pe acest volum logic nu poate fi redimensionat în timp ce este montat
 resize_emounted2=Sistemul de fișiere de pe acest volum logic nu poate fi redus în timp ce este montat
+
 init_title=Activați LVM
 init_cmd=Se execută comanda $1 ..
+
 pv_edit=Editează volumul fizic
 pv_create=Adăugați volumul fizic
 pv_vg=În grupul de volume $1 
@@ -170,6 +175,7 @@ pv_eother=Dispozitiv de disc lipsă sau nevalid
 pv_raid=Dispozitiv RAID $1 
 pv_lvs=Alocare după volume logice
 pv_egone=Volumul fizic nu mai există!
+
 vg_edit=Editează grupul de volume
 vg_create=Creați grup de volum
 vg_name=Numele grupului de volum
@@ -188,11 +194,13 @@ vg_deleteok=Șterge acum
 vg_ename=Numele grupului de volum lipsă sau nevalid
 vg_epesize=Dimensiunea blocului de alocare lipsă sau nevalidă
 vg_egone=Grupul de volum nu mai există!
+
 pvmove_err=Nu a reușit să mute volumul logic
 pvmove_title=Mutați volumul logic
 pvmove_start=Deplasarea volumului logic $1 de la $2 la $3 ..
 pvmove_failed=.. mișcare eșuată!
 pvmove_done=.. mută-te complet
+
 thin_title=Creați un grup subțire
 thin_desc=Un bazin subțire este o pereche de LV-uri care pot fi utilizate pentru a crea LV-uri suplimentare care pot fi mai mari decât măsurile disponibile. Spațiul este consumat doar atunci când este nevoie, mai degrabă decât atunci când sunt create LV-urile din interiorul piscinei. AVERTIZARE - Toate datele de pe LV-urile selectate vor fi pierdute!
 thin_header=Noi detalii despre piscina subțire
@@ -204,6 +212,7 @@ thin_err=Nu a reușit să creeze un pool subțire
 thin_esame=Ambele LV-uri selectate sunt aceleași
 thin_edata=Datele selectate LV sunt deja utilizate
 thin_emetadata=Metadata LV selectată este deja folosită
+
 log_create_vg=Grup de volum creat $1 
 log_modify_vg=Grup de volum modificat $1 
 log_delete_vg=Grupul de volume șters $1 
@@ -216,4 +225,5 @@ log_create_pv=Volumul fizic adăugat $1 la VG $1
 log_modify_pv=Volumul fizic modificat $1 în VG $2 
 log_delete_pv=Volumul fizic $1 a fost eliminat din VG $2 
 log_resize_pv=Volumul fizic redimensionat $1 în VG $2 
+
 blocks=blocuri

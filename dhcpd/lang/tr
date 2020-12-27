@@ -21,10 +21,12 @@ index_buttapply=Değişiklikleri Uygula
 index_apply=Bu butonu tıklayarak çalışan DHCP sunucusunu durdurup tekrar başlatabilirsiniz
 index_buttstart=Sunucuyu Başlat
 index_start=Bu butonu tıklayarak varolan ayarlar ile DHCP sunucusunu çalıştırabilirsiniz
+
 butt_save=Kaydet
 butt_eco=İstemci Seçeneklerini Değiştir
 butt_del=Sil
 butt_create=Oluştur
+
 esub_crheader=Alt Ağ Oluştur
 esub_edheader=Alt Ağı Değiştir
 esub_tabhdr=Alt Ağ Ayrıntıları
@@ -34,26 +36,31 @@ esub_arange=Adres Alanları
 esub_dbooptpq=Dinamik BOOTP ?
 esub_shnet=Paylaşılmış Ağ ?
 esub_return=alt ağ listesi
+
 esh_crheader=Paylaşılmış Ağ Oluştur
 esh_eheader=Paylaşılmış Ağı Değiştir
 esh_tabhdr=Paylaşılmış Ağ Ayrıntıları
 esh_netname=Ağ İsmi
 esh_return=alt ağ listesi
+
 ehost_crheader=Makine Oluştur
 ehost_eheader=Makineyi Değiştir
 ehost_tabhdr=Makine Ayrıntıları
 ehost_hname=Makine ismi
 ehost_fixedip=Sabitlenmiş IP adresi
 ehost_return=makine listesi
+
 egroup_crheader=Makine Grubu Oluştur
 egroup_eheader=Makine Grubunu Değiştir
 egroup_tblhdr=Grup Ayrıntıları
 egroup_hosts=Bu gruptaki makineler
 egroup_nchoice=İsimi istemci makine adı olarak kullan?
 egroup_return=makine listesi
+
 default=Öntanımlı
 secs=saniye
 none=Hiçbiri
+
 listl_header=DHCP Gecikmeleri
 listl_lfnotexist=The DHCPd gecikme dosyası <tt>$1</tt> mevcut değil
 listl_lfnotcont=The DHCPd gecikme dosyası <tt>$1</tt> $2 gecikmeleri içermiyor
@@ -64,27 +71,34 @@ listl_host=Makine Adı
 listl_start=Başlangıç Zamanı
 listl_end=Bitiş Zamanı
 listl_return=alt ağ listesi
+
 restart_errmsg1=Dhcpd'nin Yeniden başlatılmasında hata oluştu
 restart_errmsg2=İşlem sinyalinde hata oluştu
 start_failstart=dhcpd'nin başlatılmasında hata oluştu
+
 sgroup_faildel=Grubun silinmesinde hata oluştu
 sgroup_failsave=Grubun kaydedilmesinde hata oluşştu
+
 shost_faildel=Makinenin silinmesinde hata oluştu
 shost_failsave=Makinenin kaydedilmesinde hata oluştu
 shost_invalidhn=geçerli bir makine adı değil
 shost_invalidhwa='$1' geçerli $2 adresi değil
+
 sopt_failsave=İstemci seçeneklerinin kaydedilmesinde hata oluştu
 sopt_invalidip=geçerli bir IP adresi değil
 sopt_invalidint=bir tam sayı değil
 sopt_invalidipp=geçerli bir IP adres çifti değil (1.2.3.4,5.6.7.8 gibi)
+
 sshared_faildel=Paylaşılmışş ağın silinmesinde hata oluştu
 sshared_failsave=Paylaşılmış ağın kaydedilmesinde hata oluştu
 sshared_invalidsname=Kayıp ya da yanlış paylaşılmış ağ adı
+
 ssub_faildel=Alt ağın silinmesinde hata oluştu
 ssub_failsave=Alt ağın kaydedilmesinde hata oluştu
 ssub_invalidsubaddr=geçerli bir alt ağ adresi değil
 ssub_invalidnmask=geçerli bir ağ maskesi değil
 ssub_invalidipr=geçerli bir IP adres alanı değil
+
 plib_deflt=Öntanımlı gecikme süresi
 plib_bfname=Açılış dosya ismi
 plib_maxlt=En büyük gecikme zamanı
@@ -118,6 +132,7 @@ plib_ntpserv=NTP sunucuları
 plib_nbns=NetBIOS isim sunucuları
 plib_nbscope=NetBIOS sahası
 plib_nbntype=NetBIOS düğüm tipi
+
 eopt_header=İstemci Seçenekleri
 eopt_subtitle=$1 alt ağı için
 eopt_returnsub=alt ağ listesi
@@ -147,6 +162,7 @@ eopt_ntpserv=NTP sunucuları
 eopt_nbns=NetBIOS isim sunucuları
 eopt_nbs=NetBIOS sahası
 eopt_nbntype=NetBIOS düğüm tipi
+
 log_apply=Değişiklikler uygulandı
 log_start=DHCP sunucusu başlatıldı
 log_create_subnet=Alt bölge $1 oluşturuldu

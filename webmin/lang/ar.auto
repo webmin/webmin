@@ -1,4 +1,5 @@
 log_sched=تسجيل وظائف المقرر؟
+
 proxy_title=خوادم بروكسي وتنزيلات
 proxy_desc=If the host on which Webmin is running is behind a firewall of some kind, you may need to set the proxy server to use for accessing web and FTP sites. Certain modules, such as <tt>Software Packages</tt>, will use these proxies when downloading files or programs.
 proxy_header=خوادم بروكسي
@@ -41,6 +42,7 @@ proxy_return=خوادم بروكسي وتنزيلات
 proxy_tabproxy=إنشاء الوكلاء
 proxy_tabdown=جارى التحميل
 proxy_fallback=جرب الطلب المباشر إذا كان البروكسي معطلاً؟
+
 ui_title=واجهة المستخدم
 ui_desc=يتيح لك هذا النموذج تحرير خيارات واجهة المستخدم التي تستخدمها جميع الوحدات. عند إدخال الألوان ، يجب تحديد كل منها باستخدام نظام RGB القياسي ، حيث تكون كل قيمة عبارة عن رقم سداسي عشرية من 00 إلى ff.
 ui_header=خيارات واجهة المستخدم
@@ -90,6 +92,7 @@ ui_dateformat_dd/mm/yyyy=يوم / شهر / سنة (أي 16/09/2001)
 ui_dateformat_mm/dd/yyyy=يوم / شهر / سنة (أي. 09/16/2001)
 ui_dateformat_yyyy/mm/dd=سنة / شهر / يوم (أي 2001/09/16)
 ui_ehostnamedisplay=اسم مضيف العرض مفقود أو غير صالح
+
 mods_title=وحدات ويب مين
 mods_desc1=Webmin modules can be added after installation by using the form to the right. Modules are typically distributed in <tt>.wbm</tt> files, each of which can contain one or more modules. Modules can also be installed from RPM files if supported by your operating system.
 mods_installsource=تثبيت من
@@ -99,6 +102,7 @@ mods_local=من الملف المحلي
 mods_uploaded=من ملف تم الرفع
 mods_ftp=من عنوان URL HTTP أو FTP
 mods_standard=Standard module from <a href='$1' target=_new>www.webmin.com</a>
+
 mods_standard2=وحدة قياسية
 mods_third=وحدة الطرف الثالث من
 mods_thsel=تحديد ..
@@ -133,6 +137,7 @@ mods_tabinstall=تثبيت
 mods_tabclone=استنساخ
 mods_tabdelete=حذف
 mods_tabexport=تصدير
+
 install_err1=Failed to install module from $1
 install_efile=الملف غير موجود
 install_err2=فشل في تثبيت الوحدة النمطية التي تم تحميلها
@@ -166,10 +171,12 @@ install_cat=Under category $1.
 install_eneither=لا يحتوي RPM على وحدة نمطية أو سمة webmin
 install_err4=فشل في تثبيت الوحدة النمطية القياسية
 install_emissing=الوحدة النمطية المحددة غير موجودة
+
 clone_err=فشل في استنساخ الوحدة
 clone_elink=symlink failed : $1
 clone_ecopy=failed to copy config : $1
 clone_desc=Clone of $1
+
 delete_err=فشل في حذف الوحدات النمطية
 delete_edep=Module $1 cannot be deleted, as the module $2 depends on it
 delete_desc1=$1 (Clone of $2)
@@ -181,6 +188,7 @@ delete_rusure2=Are you sure you want to delete the theme $2 ? $1 kB of files wil
 delete_rusure3=Are you sure you want to delete the module clones(s) $2 ?
 delete_acls=إزالة من المستخدمين وإعادة تعيين إعدادات التحكم في الوصول؟
 delete_enone=لا وحدات مختارة
+
 os_title=نظام التشغيل والبيئة
 os_desc3=تعرض هذه الصفحة نظام التشغيل الذي اكتشفه Webmin وقت التثبيت ، والنظام الذي يتم اكتشافه حاليًا. إذا كانت مختلفة ، يمكنك اختيار تحديث معلومات نظام التشغيل Webmin ، مما قد يكون ضروريًا إذا قمت بالترقية مؤخرًا.
 os_desc2=يمكنك أيضًا تغيير مسار البحث الذي يستخدمه Webmin عند تشغيل البرامج ، وتمرير مسار المكتبة المشتركة إلى أي برامج.
@@ -203,6 +211,7 @@ os_eiversion=مفقود إصدار نظام التشغيل الداخلي
 os_incorrect=Warning - Your system is actually running $1 version $2.
 os_fix=تحديث نظام التشغيل المكتشف
 os_usermin=أيضا تحديث Usermin OS
+
 lang_title=لغة
 lang_title2=Webmin اللغة
 lang_lang=عرض في اللغة
@@ -214,6 +223,7 @@ lang_chardef=تحددها اللغة
 lang_charover=قوة مجموعة الأحرف
 lang_err=فشل في حفظ اللغة
 lang_echarset=مجموعة أحرف مفقودة أو غير صالحة المظهر
+
 ssl_title=تشفير SSL
 ssl_essl=The Net::SSLeay perl module does not appear to be installed on your system. To install the OpenSSL library and Net::SSLeay, follow <a href='$1'>these instructions</a> from the Webmin website.
 ssl_cpan=Alternately, you can have Webmin <a href='$1'>download and install</a> the required Net::SSLeay Perl module for you.
@@ -319,6 +329,7 @@ ssl_letsnotrenew=تجديد فقط يدويا
 ssl_staging=دعونا تشفير الخادم
 ssl_staging0=حقيقة
 ssl_staging1=التدريج (اختبار فقط)
+
 newkey_err=أخفق إنشاء مفتاح SSL
 newkey_ecn=اسم الخادم مفقود أو غير صالح
 newkey_ecns=لم يتم إدخال أسماء الخوادم
@@ -331,11 +342,13 @@ newkey_ok=تم إنشاء مفتاح SSL التالي بنجاح :
 newkey_esize=حجم مفتاح مفقود أو غير صالح
 newkey_edays=عدد الأيام المفقودة أو غير الصحيحة قبل انتهاء الصلاحية
 newkey_ecountry=يجب أن يكون كود البلد حرفين
+
 newcsr_err=أخفق إنشاء SSL CSR
 newcsr_efile=اسم ملف CSR مفقود
 newcsr_title=توليد المسؤولية الاجتماعية للشركات
 newcsr_ok=تم إنشاء طلب شهادة SSL التالي بنجاح :
 newcsr_ok2=This CSR must be sent to a signing authority, who will return a signed certificate. This can be installed with the key above using the <b>Upload certificate</b> tab.
+
 startpage_title=خيارات صفحة الفهرس
 startpage_intro2=تتيح لك هذه الصفحة التحكم في مظهر قائمة Webmin الرئيسية. قد تكون بعض الخيارات فعالة فقط عند استخدام السمة الافتراضية.
 startpage_tabs=تصنيف الوحدات؟
@@ -349,6 +362,7 @@ startpage_gotonone=&lt;لا شيء&gt;
 startpage_gotomodule=بعد تسجيل الدخول ، انتقل دائمًا إلى الوحدة النمطية
 startpage_webminup=عرض تحديثات Webmin على صفحة معلومات النظام؟
 startpage_moduleup=إظهار تحديثات الوحدة النمطية على صفحة معلومات النظام؟
+
 upgrade_title=ترقية Webmin
 upgrade_desc=This form allows you to upgrade your entire Webmin installation to a new version. You can install from a local file, an uploaded file or from the latest version at <a href=http://www.webmin.com/>www.webmin.com</a>. Just as with a manual upgrade, all your config settings and third-party modules will be kept.
 upgrade_descrpm=This form allows you to upgrade your entire webmin installation to a new version using RPM's upgrade option. You can install from a local RPM file, an uploaded file or from the latest version at <a href=http://www.webmin.com/>www.webmin.com</a>. Just as with a manual upgrade, all your config settings and third-party modules will be kept.
@@ -413,10 +427,12 @@ upgrade_tabupdate=تحديث الوحدات
 upgrade_tabsched=التحديث المجدولة
 upgrade_src=ترقية Webmin من
 upgrade_opts=خيارات الترقية
+
 newmod_desc=عند ترقية Webmin ، سيتم منح أي وحدات جديدة في الإصدار الجديد لمستخدم واحد أو أكثر. يسمح لك هذا النموذج بتعيين المستخدمين الذين يتلقون وحدات نمطية جديدة. سيتم تطبيق هذا الإعداد عند الترقية في سطر الأوامر أو باستخدام النموذج أعلاه.
 newmod_header=منح وحدة جديدة
 newmod_def=Default behavior - grant new modules to <tt>root</tt> or <tt>admin</tt>
 newmod_users=منح وحدات جديدة إلى :
+
 update_desc1=This form allows you to upgrade Webmin modules that have been found to contain bugs or security holes from the <a href=http://www.webmin.com/updates.html>Webmin Updates</a> page or from another source. This will compare the currently installed modules with those available for update, and optionally automatically download and install any modules that are out of date.
 update_header1=تحديث الوحدات الآن
 update_header2=تحديث الوحدات في الموعد المحدد
@@ -443,6 +459,7 @@ update_enomodsig=Could not download signature file for module : $1
 update_ebadmodsig=Module signature check failed : $1
 update_src=ترقية وحدات من
 update_opts=خيارات تحديث الوحدة
+
 ca_title=سلطة الشهادة
 ca_header1=إنشاء شهادة CA جديدة
 ca_header2=تحرير شهادة المرجع المصدق
@@ -471,6 +488,7 @@ ca_eminiserv=شهادات عميل SSL مدعومة فقط ضمن برنامج �
 ca_eversion=لا يدعم إصدار وحدة Perl Net::SSLeay المثبتة على نظامك شهادات عميل SSL.
 ca_essleay=The SSL administration command $1 was not found on your system. You may need to change the path in the Webmin Users module configuration.
 ca_essl=لا يمكن إعداد شهادة طبقة المقابس الآمنة إلا عند تشغيل خادم الويب في وضع طبقة المقابس الآمنة.
+
 session_title=المصادقة
 session_desc1=عند التمكين ، تحمي مهلات كلمة المرور خادم Webmin الخاص بك من هجمات تصدع كلمات المرور الغاشمة عن طريق إضافة تأخير متزايد باستمرار بين كل محاولة تسجيل دخول فاشلة لنفس المستخدم.
 session_header=المصادقة وخيارات الجلسة
@@ -534,10 +552,12 @@ session_sha512=استخدم تشفير SHA512
 session_emd5mod=MD5 encryption cannot be used, as Perl $1 module is not installed.
 session_esha512mod=SHA512 encryption cannot be used, as Perl $1 module is not installed.
 session_blocklock=قفل المستخدمين أيضًا بتسجيل الدخول الفاشل
+
 assignment_title=إعادة تعيين الوحدات النمطية
 assignment_header=تعيينات فئة الوحدة النمطية
 assignment_ok=تغيير الفئات
 assignment_desc=يسمح لك هذا النموذج بتكوين الفئة التي يتم عرض كل وحدة بها ضمن صفحة فهرس Webmin.
+
 categories_title=تحرير الفئات
 categories_header=معرف الفئة والأوصاف
 categories_desc=يتيح لك هذا النموذج إعادة تسمية فئات Webmin الحالية وإنشاء فئات جديدة لتعيين الوحدات النمطية لها. الجزء العلوي من الجدول هو تغيير أوصاف الفئات المدمجة ، بينما الجزء السفلي هو إضافة معرفات وأوصاف جديدة للفئة.
@@ -549,6 +569,7 @@ categories_name=الوصف المعروض
 categories_lang=تحرير الفئات في اللغة:
 categories_langok=يتغيرون
 categories_custom=مخصص
+
 log_access=تم تغيير التحكم في الوصول إلى IP
 log_bind=ميناء تغيير والعنوان
 log_log=تغيير خيارات التسجيل
@@ -594,6 +615,7 @@ log_onedelete_webmincron=Deleted scheduled function in module $1
 log_letsencrypt=طلب شهادة SSL جديدة من Let's Encrypt
 log_letsencryptdns=Created Let's Encrypt DNS record for $1
 log_letsencryptcleanup=Removed Let's Encrypt DNS record for $1
+
 themes_title=Webmin المواضيع
 themes_desc=تتحكم السمات في مظهر واجهة مستخدم Webmin ، بما في ذلك الرموز والألوان والخلفيات وتخطيط الصفحات. يمكن استخدام مربع الاختيار أدناه لاختيار أحد السمات المثبتة على نظامك.
 themes_sel=الموضوع الحالي :
@@ -609,6 +631,7 @@ themes_taboverlay=تغيير التراكب
 themes_tabinstall=تثبيت موضوع
 themes_tabdelete=حذف المواضيع
 themes_tabexport=مظاهر التصدير
+
 themes_err1=Failed to install theme from $1
 themes_efile=الملف غير موجود
 themes_err2=أخفق تثبيت السمة المحملة
@@ -634,9 +657,11 @@ themes_delok=موضوع للحذف :
 themes_return=قائمة المواضيع
 themes_err4=فشل في تغيير سمة التراكب
 themes_eoverlay=التراكب المحدد غير متوافق مع النسق العام الحالي
+
 themes_desc4=يمكن تصدير السمات المثبتة كملف wbt.gz باستخدام النموذج أدناه. يمكن بعد ذلك تثبيت ملف السمة على نظام آخر يقوم بتشغيل Webmin.
 themes_exportmods=مواضيع للتصدير
 themes_exportok=تصدير السمات المختارة
+
 referers_title=الإحالات الموثوقة
 referers_desc=تسمح لك هذه الصفحة بتكوين دعم التحقق من مرجع Webmin ، والذي يُستخدم لمنع الارتباطات الضارة من مواقع ويب أخرى خداع المستعرض الخاص بك في القيام بأشياء خطيرة مع Webmin. ومع ذلك ، إذا كان لديك روابط إلى Webmin من مواقع الويب الخاصة بك ولا تريد أن يتم تحذيرك بها ، فيجب عليك إضافة هذه المواقع إلى القائمة أدناه.
 referers_list=مواقع موثوقة
@@ -645,6 +670,7 @@ referers_none2=تحذير: هذا يفتح النظام الخاص بك إلى �
 referers_referer=التحقق من التحقق من تمكين؟
 referers_err=فشل في حفظ الإحالات
 referers_ehost='$1' is not a valid trusted hostname
+
 update_err=فشل في تحديث الوحدات
 update_eurl=عنوان URL للتحديث مفقود أو غير صالح
 update_title=تحديث الوحدات
@@ -665,6 +691,7 @@ update_rv=Checking for updated Webmin modules from $1
 update_eemail=يجب إدخال عنوان بريد إلكتروني في حالة عرض ما سيتم تحديثه فقط.
 update_subject=Webmin وحدات تقرير التحديث
 update_version=A new release of Webmin (version $1) is now available for download. Future updates will be released only for the latest version.
+
 anon_title=وصول وحدة مجهول
 anon_desc=This page allows you to grant access to selected Webmin modules and paths without clients needing to login. For each module path that you enter below (such as <tt>/custom</tt> or <tt>/passwd</tt>) you must also enter the name of a Webmin user whose permissions will be used for access to the module.
 anon_desc2=يجب أن تكون حذرًا جدًا عند منح وصول مجهول ، حيث أن عناصر التحكم في الوصول إلى IP غير كافية أو منح الوصول إلى الوحدة النمطية الخاطئة قد تسمح للمهاجمين بالسيطرة على نظامك.
@@ -672,15 +699,19 @@ anon_url=مسار URL
 anon_err=فشل في حفظ وصول مجهول
 anon_eurl='$1' is not a valid URL path
 anon_euser=Missing or invalid Webmin user for URL path '$1'
+
 enogpg=لم يتم تثبيت GnuPG
+
 standard_failed=Failed to download modules list : $1
 standard_header=وحدات Webmin القياسية
 standard_warn=Warning - you are not running the latest Webmin version $1, so these modules will probably fail to install.
 standard_eurl=عنوان URL للوحدات القياسية غير صالح
+
 third_failed=Failed to download modules list : $1
 third_header=وحدات ويب مين الطرف الثالث
 third_eurl=عنوان URL لوحدات الجهات الخارجية غير صالح
 third_title=حدد وحدة الطرف الثالث
+
 lock_title=قفل الملف
 lock_desc=بشكل افتراضي ، سيحصل Webmin على قفل لأي ملف يقوم بتعديله لمنع التعديل المتزامن من خلال عمليات متعددة ، مما قد يؤدي إلى تلف الملف. تتيح لك هذه الصفحة تعطيل التأمين بشكل انتقائي أو كلي إذا كانت تسبب مشاكل.
 lock_header=إعدادات قفل الملف
@@ -691,6 +722,7 @@ lock_except=قفل جميع الملفات والدلائل باستثناء ..
 lock_err=فشل في حفظ قفل الملف
 lock_edir='$1' is not an absolute path
 lock_edirs=لم يتم إدخال أي ملفات أو أدلة
+
 ipkey_title1=إنشاء مفتاح SSL
 ipkey_title2=تحرير مفتاح SSL
 ipkey_header=تفاصيل مفتاح SSL الخاصة بـ IP
@@ -700,6 +732,7 @@ ipkey_eip2='$1' is not a valid IP address or hostname
 ipkey_eips=لم يتم إدخال عناوين IP
 ipkey_eextracas=لم يتم إدخال ملفات شهادة إضافية
 ipkey_eextraca=Additional certificate file $1 does not exist
+
 descs_title=عناوين الوحدة
 descs_info=تتيح لك هذه الصفحة تحديد عناوين بديلة لوحدات Webmin لتجاوز أوصافها القياسية.
 descs_mod=وحدة
@@ -709,11 +742,13 @@ descs_cdesc=استنساخ العنوان
 descs_err=فشل في حفظ عناوين الوحدة النمطية
 descs_edesc=Missing title for module '$1'
 descs_etitle=Missing title for clone '$1'
+
 export_err=فشل في تصدير الوحدات النمطية
 export_ecmd=Missing needed command $1
 export_efile=ملف التصدير مفقود أو غير صالح
 export_done=Successfully exported the selected modules to $1.
 export_title=وحدات التصدير
+
 advanced_temp=دليل الملفات المؤقتة
 advanced_tempdef=Default (<tt>/tmp/.webmin</tt>)
 advanced_tdd=مسح الملفات المؤقتة في الدليل غير القياسي؟
@@ -739,10 +774,13 @@ advanced_listdir=قائمة الدلائل دون ملف الفهرس؟
 advanced_headers=رؤوس HTTP إضافية
 advanced_eheader=Headers must be formatted like <tt>Header: Value</tt>
 advanced_sortconfigs=حفظ ملفات التكوين مرتبة حسب مفاتيحها؟
+
 syslog_errorlog=سجل خطأ Webmin
+
 clear_title=مسح تنزيل ذاكرة التخزين المؤقت
 clear_done=The Webmin cache containing $1 of files from $2 URLs has been successfully cleared.
 clear_none=لا توجد عناوين URL حاليًا في ذاكرة التخزين المؤقت لتنزيل Webmin.
+
 savekey_err=فشل في حفظ مفتاح جديد
 savekey_ekey=مفتاح تنسيق PEM مفقود أو غير صالح
 savekey_ecert=شهادة تنسيق PEM مفقودة أو غير صالحة
@@ -752,6 +790,7 @@ savekey_title=تحميل مفتاح موجود
 savekey_done2=The supplied SSL key has been saved in $1, and the certificate in $2.
 savekey_done=The supplied SSL key and certificate have been saved in the file $1.
 savekey_done3=The supplied chained SSL certificate has been saved in the file $1.
+
 cache_title=عناوين URL المخزنة مؤقتًا
 cache_search=البحث عن عناوين URL التي تحتوي على:
 cache_ok=بحث
@@ -764,7 +803,9 @@ cache_delete=مسح المحدد من ذاكرة التخزين المؤقت
 cache_err=أخفق مسح عناوين URL المخزنة مؤقتًا
 cache_enone=لا شيء محدد
 cache_efile=اسم الملف غير صالح
+
 restart_title=إعادة تشغيل Webmin
+
 mobile_title=خيارات الجهاز المحمول
 mobile_header=خيارات لمتصفحات المحمول
 mobile_theme=موضوع لمتصفحات المحمول
@@ -773,6 +814,7 @@ mobile_nosession=فرض استخدام مصادقة HTTP؟
 mobile_agents=وكلاء المستخدم إضافية لمتصفحات المحمول
 mobile_err=فشل في حفظ خيارات الجهاز المحمول
 mobile_prefixes=بادئات اسم مضيف URL لمتصفحات الجوال
+
 blocked_title=المضيفين المحظورة والمستخدمين
 blocked_who=اسم المضيف أو اسم المستخدم
 blocked_when=تم حظره في
@@ -782,9 +824,11 @@ blocked_host=مضيف العميل
 blocked_clear=مسح جميع الكتل
 blocked_cleardesc=انقر فوق هذا الزر لمسح جميع كتل المضيف والمستخدم الحالية ، عن طريق إعادة تشغيل عملية خادم Webmin.
 blocked_restarting=تتم الآن إعادة تشغيل عملية خادم Webmin لمسح المضيفين والمستخدمين المحظورين - يرجى الانتظار لبضع ثوان قبل المتابعة.
+
 refreshmods_title=تحديث الوحدات
 refreshmods_installed=التحقق من وحدات Webmin القابلة للاستخدام ..
 refeshmods_counts=.. found $2 with installed applications, $1 not installed.
+
 debug_title=تصحيح ملف السجل
 debug_header=Webmin تصحيح خيارات ملف السجل
 debug_enabled=تمكين سجل التصحيح؟
@@ -812,6 +856,7 @@ debug_cmd=سطر الأوامر
 debug_cron=وظائف الخلفية
 debug_inmods=الوحدات النمطية لكتابة سجلات التصحيح لـ
 debug_emodules=لا توجد وحدات لتصحيح الأخطاء المحددة
+
 notif_passexpired=انتهت صلاحية كلمة مرور Webmin الخاصة بك! سوف تضطر إلى تغييره عند تسجيل الدخول التالي.
 notif_passchange=Your Webmin password was last changed on $1, and must be changed in $2 days.
 notif_passlock=Your Webmin password was last changed on $1, and your account will be locked in $2 days if it is not changed.
@@ -827,6 +872,7 @@ notify_updatedesc=إصلاح المشكلة
 notif_updateok=تثبيت التحديثات الآن
 notif_reboot=تتطلب تحديثات الحزمة الحديثة (مثل إصدار kernel جديد) إعادة تشغيل التطبيق ليتم تطبيقها بالكامل.
 notif_rebootok=اعادة التشغيل الان
+
 status_title=جمع حالة الخلفية
 status_header=ضبط وظيفة مجموعة الحالة
 status_interval=جمع حالة النظام في الخلفية؟
@@ -838,6 +884,7 @@ status_temp=جمع درجات الحرارة بالسيارة؟
 status_units=وحدات لدرجات الحرارة
 status_celsius=درجة مئوية
 status_fahrenheit=فهرنهايت
+
 sendmail_title=إرسال البريد الإلكتروني
 sendmail_desc=تتحكم هذه الصفحة في كيفية إرسال Webmin للبريد الإلكتروني ، مثل النسخ الاحتياطية المجدولة أو مراقبة الخلفية. كما أنه يؤثر على البريد الإلكتروني المرسل باستخدام وحدة قراءة بريد المستخدم.
 sendmail_header=خيارات إرسال البريد
@@ -878,12 +925,14 @@ sendmail_url=Webmin URL للاستخدام في البريد الإلكترون�
 sendmail_url_def=افتراضي ($1)
 sendmail_url_custom=URL مخصص
 sendmail_eurl=عنوان URL المخصص مفقود أو غير صالح
+
 testmail_title=إرسال اختبار البريد الإلكتروني
 testmail_err=فشل في إرسال رسالة الاختبار
 testmail_eto=لم يتم إدخال عنوان الوجهة
 testmail_sending=Sending message from $1 to $2 ..
 testmail_done=.. تم الارسال. تحقق من صندوق بريد عنوان الوجهة للتأكد من تسليمه فعليًا.
 testmail_failed=.. sending failed : $1
+
 web_title=خيارات خادم الويب
 web_header=خيارات لخادم الويب المدمج في Webmin
 web_expires=وقت التخزين المؤقت من جانب العميل للملفات الثابتة
@@ -895,6 +944,7 @@ web_expirespaths=أوقات التخزين المؤقت من جانب العمي
 web_expirespath=مسار التعبير العادي
 web_expirestime=الوقت مخبأ في ثوان
 web_eexpires2=Missing or non-numeric client side cache time in row $1
+
 webmincron_title=Webmin وظائف مجدولة
 webmincron_emodule=لم يتم تثبيت الوحدة النمطية Webmin Cron Jobs!
 webmincron_module=وحدة ويب مين
@@ -918,6 +968,7 @@ webmincron_when1=أوقات محددة
 webmincron_secs=ثواني
 webmincron_err=فشل في حفظ الوظيفة المجدولة
 webmincron_einterval=يجب أن يكون الفاصل الزمني عددًا من الثواني أكبر من الصفر
+
 twofactor_title=توثيق ذو عاملين
 twofactor_header=خيارات المصادقة الثنائية
 twofactor_provider=مزود المصادقة
@@ -956,6 +1007,7 @@ twofactor_secret1=ولدت بشكل عشوائي
 twofactor_secret0=استخدام مفتاح 16 حرف
 twofactor_esecret=يجب أن يكون طول المفتاح السري 16 حرفًا تمامًا وأن يحتوي على أحرف وأرقام فقط
 twofactor_esession=لا يمكن استخدام المصادقة الثنائية ما لم تكن المصادقة المستندة إلى الجلسة نشطة
+
 letsencrypt_title=دعونا تشفير طلب الشهادة
 letsencrypt_err=فشل في طلب الشهادة
 letsencrypt_ecmds=Neither the Let's Encrypt client command <tt>certbot</tt> or the <tt>python</tt> command were found on your system
@@ -989,5 +1041,6 @@ letsencrypt_ecsr=Failed to generate CSR : $1
 letsencrypt_ekeygen=Failed to generate private key : $1
 letsencrypt_enative=تم استخدام عميل Let's Encrypt الأصلي (certbot) مسبقًا على هذا النظام ، ويجب استخدامه لجميع طلبات الشهادات المستقبلية
 letsencrypt_eacmedns=يدعم العميل Let's Encrypt فقط التحقق القائم على DNS
+
 announce_hide=إخفاء هذا الإعلان
 alert_hide=إخفاء التنبيه

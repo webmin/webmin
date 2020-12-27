@@ -7,6 +7,7 @@ index_delete2=Izbrišite izbrane vmesnike
 index_delete3=Izbrišite in uporabite izbrane vmesnike
 index_apply2=Uporabi izbrane vmesnike
 index_vmin=Virtualmin
+
 ifcs_title=Omrežni vmesniki
 ifcs_now=Aktivno zdaj
 ifcs_activedesc=Vmesniki, navedeni v tej tabeli, so trenutno aktivni v sistemu. V večini primerov jih morate urediti na zavihku <b>Aktivirano ob zagonu</b>.
@@ -55,6 +56,7 @@ ifcs_linkyes=Povezana
 ifcs_linkno=Dis priključeno
 ifcs_speed=Vmesna hitrost
 ifcs_duplex=, $1 dupleks
+
 aifc_create=Ustvari aktivni vmesnik
 aifc_edit=Uredi aktivni vmesnik
 aifc_desc1=Aktivni parametri vmesnika
@@ -79,6 +81,7 @@ aifc_eaddress6=Naslov IPv6 v vrstici $1 ni veljaven
 aifc_enetmask6=Omrežna maska IPv6 v vrstici $1 mora biti celo število med 1 in 128
 aifc_eclash6=IPv6 naslov v vrstici $1 že uporablja vmesnik $2 
 aifc_eaddresses6=Ni vnesenih naslovov IPv6
+
 bifc_create=Ustvari zagonski vmesnik
 bifc_act=Aktivirati ob zagonu?
 bifc_edit=Urejanje zagonskega vmesnika
@@ -110,6 +113,7 @@ bifc_bridgestp=Spanning Protokol drevesa
 bifc_bridgefd=Zamuda naprej
 bifc_bridgewait=Zamudite, da postanete na voljo
 bifc_ebond=Vmesnik obveznic mora biti številka
+
 bonding_add=Dodajte nov vezalni vmesnik.
 bonding_create=Ustvari vezalni vmesnik
 bonding_teamparts=Skupinski partnerji
@@ -121,11 +125,14 @@ bonding_miimon=Interval spremljanja Mii
 bonding_miimondesc=(Pustite prazno, če želite onemogočiti spremljanje povezav)
 bonding_updelay=Updelay
 bonding_downdelay=Spodaj
+
 vlan_add=Dodaj Vlan Tagged Vmesnik
 vlan_physical=Fizična naprava
 vlan_id=Vlan ID
 vlan_create=Ustvari VLAN vmesnik
+
 bridge_create=Ustvari mostni vmesnik
+
 routes_title=Usmerjanje in prehodi
 routes_boot=Konfiguracija poti je aktivirana v <i>času zagona</i>
 routes_now=Konfiguracija poti je zdaj aktivirana
@@ -194,6 +201,7 @@ routes_tabboot=Konfiguracija časa zagona
 routes_tabactive=Aktivna konfiguracija
 routes_descactive=Ta razdelek navaja poti, ki jih je sistem trenutno konfiguriral, in vam omogoča, da dodate ali odstranite aktivne poti v nekaterih sistemih. Pri tem bodite previdni, saj lahko nepravilne spremembe sistem, ki poganja Webmin, izključijo iz ostalega omrežja.
 routes_descboot=V tem razdelku lahko konfigurirate poti, ki se aktivirajo, ko se sistem zažene ali ko se omrežne nastavitve v celoti uporabijo.
+
 dns_title=Ime gostitelja in odjemalec DNS
 dns_options=Možnosti odjemalca DNS
 dns_hostname=Ime gostitelja
@@ -211,6 +219,7 @@ dns_edomain='$1' ni veljavno ime domene
 dns_esearch=Nobena domena za iskanje ni dana
 dns_hoststoo=Posodobiti ime gostitelja v naslovih gostitelja, če je spremenjeno?
 dns_dhcp=Ime gostitelja nastavi strežnik DHCP?
+
 hosts_title=Naslovi gostiteljev
 hosts_active=Omogočeno?
 hosts_ip=IP naslov
@@ -222,6 +231,7 @@ hosts_detail=Gostitelj in naslovi
 hosts_return=seznam naslovov gostiteljev
 hosts_ecannot=Nimate dovoljenja za urejanje naslovov gostitelja
 hosts_delete=Izbrišite izbrane naslove gostitelja
+
 ipnodes_title=Naslovi gostiteljev IPv6
 ipnodes_ip=Naslov IPv6
 ipnodes_host=Imena gostiteljev
@@ -233,6 +243,7 @@ ipnodes_return=Seznam gostiteljskih naslovov IPv6
 ipnodes_ecannot=Nimate dovoljenja za urejanje naslovov gostitelja IPv6
 ipnodes_none=Še ni določen noben naslov IPv6 gostitelja.
 ipnodes_delete=Izbrišite izbrane naslove gostiteljev IPv6
+
 log_create_host=Ustvarjen naslov gostitelja $1 
 log_delete_host=Izbrisan gostiteljski naslov $1 
 log_modify_host=Spremenjen gostiteljski naslov $1 
@@ -256,6 +267,7 @@ log_apply_bfics=Aktivirani $1 zagonski vmesniki
 log_create_route=Ustvarjena aktivna pot za $1 
 log_create_defroute=Ustvarjena aktivna privzeta pot
 log_delete_routes=Izbrisanih $1 aktivnih poti
+
 acl_ifcs=Ali lahko urejate omrežne vmesnike?
 acl_routes=Ali lahko urejate usmerjanje in prehode?
 acl_dns=Ali lahko urejate nastavitve odjemalca DNS?
@@ -273,6 +285,7 @@ acl_virt=Ali lahko dodate navidezne vmesnike?
 acl_delete=Ali lahko izbrišete vmesnike?
 acl_hide=Skriti vmesnike, ki jih ni mogoče urejati?
 acl_sysinfo=Pokažite razpoložljive omrežne vmesnike na nadzorni plošči
+
 interfaces_title1=Izberite vmesnike. ..
 interfaces_all=Vsi vmesniki. ..
 interfaces_sel=Izbrani vmesniki
@@ -280,7 +293,9 @@ interfaces_ok=v redu
 interfaces_cancel=Prekliči
 interfaces_clear=Jasno
 interfaces_title2=Izberite uporabnika. ..
+
 apply_ecannot=Konfiguracije ne morete uporabiti
+
 mod_egone=Vmesnik ni več aktiven!
 mod_title=Aktivni vmesnik
 mod_desc=Vmesnik $1 se uporablja za $2, zato ga ni mogoče upravljati s tem modulom.
@@ -292,6 +307,7 @@ mod_pptpc=povezava PPTP $1
 mod_zones=navidezni vmesnik za cono <tt>$1</tt>
 mod_virtualmin=strežnik Virtualmin <tt>$1</tt>
 mod_reseller=prodajalca Virtualmin <tt>$1</tt>
+
 range_edit=Uredi obseg naslovov
 range_create=Ustvari obseg naslovov
 range_header=Možnosti vmesnika za obseg naslovov
@@ -307,13 +323,17 @@ range_eend=Manjkajoči ali neveljaven končni IP naslov
 range_enum=Manjkajoča ali neštevilčna prva številka virtualnega vmesnika
 range_eclass=Začetni in končni naslovi morajo biti znotraj istega omrežja razreda C
 range_ebefore=Končni naslov mora biti višji od začetnega
+
 chooser_any=&lt;Vse&gt;
 chooser_other=Drugo ..
+
 dafics_err=Deaktiviranje vmesnikov ni uspelo
 daifcs_enone=Izbrana ni nobena
 daifcs_egone=Vmesnik ne obstaja več!
+
 dbifcs_err=Brisanje vmesnikov ni uspelo
 dbifcs_err2=Vmesnikov ni bilo mogoče aktivirati
+
 hdelete_err=Brisanje naslovov gostitelja ni uspelo
 hdelete_enone=Izbrana ni nobena
 idelete_err=Brisanje naslovov gostitelja IPv6 ni uspelo

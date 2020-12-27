@@ -57,6 +57,7 @@ index_reposdisable=Atspējot krātuves
 index_reposenable=Iespējot krātuves
 index_reposdelete=Dzēst krātuves
 index_repoheader=Jaunas pakešu krātuves iespējas
+
 update_title=Atjauniniet paketes
 update_title2=Instalējiet pakotnes
 update_enone=Nav atlasīts neviens iepakojums
@@ -94,9 +95,11 @@ update_none=Nav
 update_ops=Pilna pakešu saraksta izveidošana ..
 update_rebootdesc=Lai pilnībā instalētu vienu no instalētajām pakotnēm, ir jāpārstartē.
 update_reboot=Restartēt tagad
+
 sched_title=Plānotais atjauninājums
 sched_yes=Plānotā atjauninājumu pārbaude tagad ir aktīva.
 sched_no=Plānotā atjauninājumu pārbaude ir atspējota.
+
 log_update=Instalētas $1 atjauninātas paketes
 log_sched=Iespējot plānotos atjauninājumus
 log_unsched=Atspējot plānotos atjauninājumus
@@ -108,11 +111,13 @@ log_enable_repo=Iespējots pakešu krātuve $1
 log_disable_repo=Atspējota pakotņu krātuve $1 
 log_delete_repo=Izdzēsts pakotnes krātuve $1 
 log_create_repo=Izveidots pakotņu krātuve $1 
+
 refresh_title=Atsvaidzinošie iepakojumi
 refresh_clearing=Notīrīt pakešu kešatmiņu ..
 refresh_done=.. darīts
 refresh_available=Pieejamo paku atkārtota ielādēšana ..
 refresh_done3=.. atrada $1 iespējamos atjauninājumus
+
 view_title=Sīkāka informācija par paketi
 view_header=Atjaunināma paketes informācija
 view_name=Pakas nosaukums
@@ -126,12 +131,14 @@ view_changelog=Pieejamās versijas izmaiņu žurnāls
 view_software=Pārvaldīt paketi
 view_update=Atjaunināt paketi
 view_install=Instalēt pakotni
+
 system_yum=YUM
 system_apt=APT
 system_csw=CSW (Blastwave)
 system_webmin=Webmin modulis
 system_usermin=Usermin modulis
 system_tgz=Webmin vai Usermin tar.gz
+
 repos_err_disable=Neizdevās atspējot krātuves
 repos_err_enable=Neizdevās iespējot krātuves
 repos_err_delete=Neizdevās izdzēst krātuves

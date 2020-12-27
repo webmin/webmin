@@ -64,12 +64,14 @@ index_match1=contêm
 index_match2=exatamente
 index_dhcpd=DHCPd ISC
 index_delete=Remover Selecionados
+
 butt_save=Guardar
 butt_eco=Editar Opções de Cliente
 butt_vco=Ver Opções do Cliente
 butt_del=Apagar
 butt_create=Criar
 butt_leases=Listar Empréstimos
+
 esub_crheader=Criar Sub-rede
 esub_edheader=Editar Sub-rede
 esub_tabhdr=Detalhes da Sub-rede
@@ -83,12 +85,14 @@ esub_groups=Grupos diretos nesta subrede
 esub_pools=Lista de Endereços para Subrede
 esub_pool=Lista $1
 esub_poolnone=Nenhuma lista de endereços definida
+
 esub_pooladd=Adicione uma lista de endereços
 esub_none=Nenhum
 esub_return=lista de sub-redes
 esub_retshar=rede compartilhada
 esub_desc=Descrição de subrede
 esub_fopeer=Peer failover
+
 esh_crheader=Criar Rede compartilhada
 esh_eheader=Editar Rede compartilhada
 esh_tabhdr=Detalhes da Rede compartilhada
@@ -99,6 +103,7 @@ esh_subn=Subredes nesta rede compartilhada
 esh_return=lista de sub-redes
 esh_pools=Lista de Endereços para rede compartilhada
 esh_desc=Descrição da Rede Compartilhada
+
 ehost_crheader=Criar Computador
 ehost_eheader=Editar Computador
 ehost_tabhdr=Detalhes do Computador
@@ -119,6 +124,7 @@ ehost_retgroup=grupo
 ehost_retsubn=subrede
 ehost_retshar=rede
 ehost_desc=Descrição do Computador
+
 egroup_crheader=Criar Grupo de computadores
 egroup_eheader=Editar Grupo de computadores
 egroup_tblhdr=Detalhes do Grupo
@@ -129,6 +135,7 @@ egroup_return=lista de computadores
 egroup_retsubn=subrede
 egroup_retshar=rede
 egroup_desc=Descrição do Grupo 
+
 default=Pré-definido
 secs=segundos
 none=Nenhum
@@ -154,20 +161,24 @@ listl_mode_1=Subredes e uso
 listl_size=Total de IPs
 listl_used=Alocado
 listl_pc=Porcentagem
+
 restart_errmsg1=Erro ao reiniciar o servidor dhcpd
 restart_errmsg2=Erro ao sinalizar processo
 start_failstart=Erro ao iniciar o servidor dhcpd
 restart_conftext=Linhas em torno de $1 em $2:
+
 sgroup_faildel=Erro ao apagar grupo
 sgroup_failsave=Erro ao guardar grupo
 sgroup_invassign=grupo delegado para uma seção incorreta.
 sgroup_echanged=O conteúdo do arquivo de configuração sofreu mudanças. Tente novamente.
+
 shost_faildel=Erro ao apagar computador
 shost_failsave=Erro ao guardar computador
 shost_invalidhn=não é um nome de computador válido
 shost_invalidhwa='$1' não é um endereço válido $2
 shost_invalidaddr='$1' contém um nome de computador ou endereço IP inválido
 shost_invassign=computador delegado para uma seção incorreta.
+
 sopt_failsave=Erro ao guardar opções de cliente
 sopt_invalidip=não é um endereço IP válido
 sopt_invalidint=não é um número inteiro
@@ -177,10 +188,12 @@ sopt_ednum='$1' não é um número de opção válido
 sopt_edtype='$1' não é um tipo de opção válido
 sopt_ecval=Valor vazio para opção personalizada '$1'
 sopt_ecip=O valor da opção personalizada '$1' deve ser um endereço IP
+
 sshared_faildel=Erro ao apagar rede compartilhada
 sshared_failsave=Erro ao guardar rede compartilhada
 sshared_invalidsname=Nome de rede compartilhada inválido ou em falta
 sshared_nosubnet=A rede '$1' não contém subredes.
+
 ssub_faildel=Erro ao apagar sub-rede
 ssub_failsave=Erro ao guardar sub-rede
 ssub_invalidsubaddr=não é um endereço de sub-rede válido
@@ -188,6 +201,7 @@ ssub_invalidnmask=não é uma máscara de rede válida
 ssub_invalidipr=não é um alcance de endereço IP válido
 ssub_nosubnet=A rede '$1' não contém subredes.
 ssub_invalidfopeer=não é um peer failover válido
+
 plib_deflt=Tempo de concessão predefinido
 plib_bfname=Carregar nome de arquivo
 plib_maxlt=Tempo máximo de concessão
@@ -241,6 +255,7 @@ plib_eexpr=Esta seção da configuração do DHCP contém a diretiva $1, o qual
 plib_auth_subnet=Servidor é autoritativo para esta subrede?
 plib_auth_shared-network=Servidor é autoritativo para esta rede?
 plib_auth_global=Servidor é autoritativo para todas subredes?
+
 eopt_header=Opções de Cliente
 eopt_subtitle=Para a sub-rede $1
 eopt_returnsub=lista de sub-redes
@@ -285,6 +300,7 @@ eopt_slpa=IP's do agente de diretório SLP
 eopt_slpaips=Somente estes IP's?
 eopt_slps=Escopo do serviço SLP
 eopt_slpsonly=Somente este escopo?
+
 log_apply=mudanças aplicadas
 log_start=Servidor DHCP iniciado
 log_stop=Servidor DHCP interrompido
@@ -307,6 +323,7 @@ log_options_group=Opções para o grupo de $1 computadores modificados
 log_delete_lease=Apagado empréstimo para $1
 log_delete_subnets=Foram excluídas $1 subredes e redes compartilhadas
 log_delete_hosts=Foram excluídos $1 servidores e grupos de servidores
+
 keys_edit=Editar chaves TSIG
 keys_create=Chaves TSIG criadas
 keys_title=Chaves DNS
@@ -317,12 +334,14 @@ keys_ecannot=Você não tem permissão para editar chaves DNS
 keys_err=Falha ao salvar chaves DNS
 keys_ekey='$1' não é uma ID de chave válida
 keys_esecret=Segredo codificado em base-64 não inserido ou inválido para a chave $1
+
 pool_edit=Editar Lista de Endereços
 pool_create=Criado Lista de Endereços
 pool_header=Opções da Lista de Endereços
 pool_allow=Clientes permitidos
 pool_deny=Clientes negados
 pool_return=subrede
+
 cdel_header=Aviso
 cdel_shared1=redes compartilhada
 cdel_shared2=redes compartilhada
@@ -340,6 +359,7 @@ cdel_txt=Apagando $1 '$2' irá apagar o seu conteúdo:
 cdel_confirm=Você realmente quer apagar este $1 ?
 cdel_eunknown=Erro desconhecido
 cdel_return=Lista de computadores e redes
+
 eacl_aviol=Violação de controle de Acesso
 eacl_np=Você não tem permissão para
 eacl_pdh=apagar computador
@@ -365,6 +385,7 @@ eacl_pdl=apagar empréstimos
 eacl_psl=ver empréstimos
 eacl_pglob=editar opções globais
 eacl_papply=reiniciar este serviço
+
 acl_apply=Pode aplicar as mudanças?
 acl_r_leases=Pode ver empréstimos?
 acl_w_leases=Pode remover empréstimos?
@@ -393,9 +414,11 @@ acl_err=Erro ao salvar lista de ACL
 acl_ernow=Se você quer habilitar acesso à escrita nos ACLs globais para algum tipo de objeto, você precisa também habilitar acesso à leitura para ele.
 acl_normal=normal
 acl_paranoic=paranóia
+
 iface_title=Interface de rede
 iface_desc=O servidor DHCP pode apenas dar endereços IP para redes conectadas com uma das interfaces selecionadas abaixo. A interface de rede para todas sub-redes definidas precisa ser incluída. Se nenhuma for selecionada, o servidor de DHCP irá tentar encontrar uma automaticamente.
 iface_listen=Escutar nas interfaces
+
 lookup_ehost=Nenhum computador com o nome, IP ou endereço MAC $1 existe
 lookup_ehostname=Nenhum computador, IP ou endereço MAC entrado.
 lookup_egroup=Nenhum grupo com o nome ou nome de domínio $1 existe
@@ -404,6 +427,7 @@ lookup_esubnet=Nenhuma subrede com o endereço ou endereço/mascára de rede $1 
 lookup_esubnetname=Nenhum endereço de subrede ou endereço/máscara de rede entrado
 lookup_eshared=Nenhuma rede com o nome $1 existe
 lookup_esharedname=Nenhum nome de rede compartilhada entrado.
+
 zone_key=zonas DNS
 index_addzone=Inserir nova zona DNS
 index_zone=Zona
@@ -418,16 +442,21 @@ zone_return=menu principal
 zone_faildel=Erro ao remover zona
 zone_failsave=Erro ao salvar zona
 zone_tsigkey=Chave TSIG
+
 plib_clientupdates=Clientes podem atualizar seus registros?
+
 text_title=dhcpd.conf
 text_editor=Editor de texto
 text_return=menu principal
 text_undo=Desfazer
 text_ecannot=Você não tem permissão para editar o arquivo de configuração
+
 index_buttetext=Arquivo de configuração
 index_text=Editar o arquivo de configuração em um editor de texto (cuidado!)
+
 stop_err=Erro ao interromper servidor DHCP
 stop_ekill=Inativo!
+
 sdelete_err=Erro ao remover subredes e redes compartilhadas
 sdelete_enone=Nenhuma opção selecionada
 sdelete_title=Remover Subredes e Redes Compartilhadas
@@ -435,6 +464,7 @@ sdelete_rusure1=Você tem certeza de que quer remover as $1 subredes e as $2 red
 sdelete_rusure2=Você tem certeza de que quer remover as $2 subredes selecionadas? Qualquer subrede ou objeto dentro destas redes também será removido.
 sdelete_rusure3=Você tem certeza de que quer remover as $2 redes compartilhadas selecionadas? Qualquer subrede ou objeto dentro destas redes também será removido.
 sdelete_ok=Remover Agora
+
 hdelete_err=Erro ao remover servidores e grupos
 hdelete_enone=Nenhuma opção selecionada
 hdelete_title=Remover Servidores e Grupos

@@ -7,6 +7,7 @@ index_delete2=Dzēst atlasītās saskarnes
 index_delete3=Dzēst un lietot atlasītās saskarnes
 index_apply2=Lietot atlasītās saskarnes
 index_vmin=Virtualmin
+
 ifcs_title=Tīkla saskarnes
 ifcs_now=Aktīvs tagad
 ifcs_activedesc=Šajā tabulā uzskaitītās saskarnes pašlaik sistēmā ir aktīvas. Vairumā gadījumu tie jārediģē cilnē <b>Aktivizēts sāknējot</b>.
@@ -55,6 +56,7 @@ ifcs_linkyes=Savienots
 ifcs_linkno=Atvienots
 ifcs_speed=Saskarnes ātrums
 ifcs_duplex=, $1 duplekss
+
 aifc_create=Izveidot aktīvo saskarni
 aifc_edit=Rediģēt aktīvo saskarni
 aifc_desc1=Aktīvās saskarnes parametri
@@ -79,6 +81,7 @@ aifc_eaddress6=IPv6 adrese rindā $1 nav derīga
 aifc_enetmask6=IPv6 tīkla maskai rindā $1 ir jābūt veselam skaitlim no 1 līdz 128
 aifc_eclash6=$1. Rindas IPv6 adresi jau izmanto interfeiss $2 
 aifc_eaddresses6=Nav ievadītas IPv6 adreses
+
 bifc_create=Izveidot sāknēšanas interfeisu
 bifc_act=Aktivizēt sāknēšanas laikā?
 bifc_edit=Rediģēt sāknēšanas interfeisu
@@ -110,6 +113,7 @@ bifc_bridgestp=Koka protokols
 bifc_bridgefd=Uz priekšu kavēšanās
 bifc_bridgewait=Kavējieties, lai kļūtu pieejams
 bifc_ebond=Obligācijas saskarnei jābūt skaitlim
+
 bonding_add=Pievienojiet jaunu saskarnes interfeisu.
 bonding_create=Izveidot līmēšanas saskarni
 bonding_teamparts=Komandēšanas partneri
@@ -121,11 +125,14 @@ bonding_miimon=Mii-uzraudzības intervāls
 bonding_miimondesc=(Lai atspējotu saites uzraudzību, atstājiet tukšu)
 bonding_updelay=Updelay
 bonding_downdelay=Kavēšanās
+
 vlan_add=Pievienojiet saskarni Vlan Tagged
 vlan_physical=Fiziskā ierīce
 vlan_id=Vlan ID
 vlan_create=Izveidojiet VLAN saskarni
+
 bridge_create=Izveidot tilta saskarni
+
 routes_title=Maršrutēšana un vārti
 routes_boot=Maršrutēšanas konfigurācija ir aktivizēta <i>sāknēšanas laikā</i>
 routes_now=Maršrutēšanas konfigurācija ir aktivizēta tagad
@@ -194,6 +201,7 @@ routes_tabboot=Sāknēšanas laika konfigurācija
 routes_tabactive=Aktīva konfigurācija
 routes_descactive=Šajā sadaļā uzskaitīti maršruti, kurus sistēma pašlaik ir konfigurējusi, un tas ļauj pievienot vai noņemt aktīvos maršrutus dažās sistēmās. To dariet uzmanīgi, jo nepareizas izmaiņas var izslēgt sistēmu, kurā darbojas Webmin, no pārējā tīkla.
 routes_descboot=Šī sadaļa ļauj jums konfigurēt maršrutus, kas tiek aktivizēti, kad sistēma tiek sākta, vai kad tīkla iestatījumi tiek pilnībā piemēroti atkārtoti.
+
 dns_title=Resursdatora nosaukums un DNS klients
 dns_options=DNS klienta opcijas
 dns_hostname=Resursdatora nosaukums
@@ -211,6 +219,7 @@ dns_edomain='$1' nav derīgs domēna vārds
 dns_esearch=Nav neviena domēna, kurā meklēt
 dns_hoststoo=Vai atjaunināt resursdatora nosaukumu resursdatora adresēs, ja tas tiek mainīts?
 dns_dhcp=Resursdatora vārdu nosaka DHCP serveris?
+
 hosts_title=Saimnieku adreses
 hosts_active=Iespējots?
 hosts_ip=IP adrese
@@ -222,6 +231,7 @@ hosts_detail=Saimnieks un adreses
 hosts_return=resursdatoru adrešu saraksts
 hosts_ecannot=Jums nav atļauts rediģēt resursdatora adreses
 hosts_delete=Dzēst atlasītās resursdatora adreses
+
 ipnodes_title=IPv6 resursdatoru adreses
 ipnodes_ip=IPv6 adrese
 ipnodes_host=Resursdatora nosaukumi
@@ -233,6 +243,7 @@ ipnodes_return=IPv6 resursdatoru adrešu saraksts
 ipnodes_ecannot=Jums nav atļauts rediģēt IPv6 resursdatora adreses
 ipnodes_none=Pagaidām nav definētas IPv6 resursdatora adreses.
 ipnodes_delete=Dzēst atlasītās IPv6 resursdatora adreses
+
 log_create_host=Izveidota resursdatora adrese $1 
 log_delete_host=Izdzēsta resursdatora adrese $1 
 log_modify_host=Modificēta resursdatora adrese $1 
@@ -256,6 +267,7 @@ log_apply_bfics=Aktivizētas $1 sāknēšanas saskarnes
 log_create_route=Izveidots aktīvs maršruts $1 
 log_create_defroute=Izveidots aktīvs noklusējuma maršruts
 log_delete_routes=Izdzēsti $1 aktīvi maršruti
+
 acl_ifcs=Vai var rediģēt tīkla saskarnes?
 acl_routes=Vai var rediģēt maršrutēšanu un vārtejas?
 acl_dns=Vai var rediģēt DNS klienta iestatījumus?
@@ -273,6 +285,7 @@ acl_virt=Vai var pievienot virtuālās saskarnes?
 acl_delete=Vai var izdzēst saskarnes?
 acl_hide=Vai paslēpt rediģējamās saskarnes?
 acl_sysinfo=Rādīt pieejamās tīkla saskarnes informācijas panelī
+
 interfaces_title1=Izvēlieties saskarnes. ..
 interfaces_all=Visas saskarnes. ..
 interfaces_sel=Atlasītās saskarnes
@@ -280,7 +293,9 @@ interfaces_ok=labi
 interfaces_cancel=Atcelt
 interfaces_clear=Skaidrs
 interfaces_title2=Atlasīt lietotāju. ..
+
 apply_ecannot=Jums nav atļauts lietot konfigurāciju
+
 mod_egone=Interfeiss vairs nav aktīvs!
 mod_title=Aktīvā saskarne
 mod_desc=$1 saskarne tiek izmantota $2, tāpēc to nevar pārvaldīt, izmantojot šo moduli.
@@ -292,6 +307,7 @@ mod_pptpc=PPTP savienojums $1
 mod_zones=virtuāls interfeiss zonai <tt>$1</tt>
 mod_virtualmin=Virtualmin serveris <tt>$1</tt>
 mod_reseller=Virtualmin tālākpārdevējs <tt>$1</tt>
+
 range_edit=Rediģēt adrešu diapazonu
 range_create=Izveidot adrešu diapazonu
 range_header=Adrešu diapazona interfeisa opcijas
@@ -307,13 +323,17 @@ range_eend=Trūkst vai nav derīga IP adrese
 range_enum=Trūkst vai nav ciparu pirmais virtuālās saskarnes numurs
 range_eclass=Sākuma un beigu adresēm jāatrodas tajā pašā C klases tīklā
 range_ebefore=Beigu adresei jābūt augstākai par sākuma adresi
+
 chooser_any=&lt;Jebkurš&gt;
 chooser_other=Cits ..
+
 dafics_err=Neizdevās deaktivizēt saskarnes
 daifcs_enone=Nav atlasīts
 daifcs_egone=Saskarne vairs nepastāv!
+
 dbifcs_err=Neizdevās izdzēst saskarnes
 dbifcs_err2=Neizdevās aktivizēt saskarnes
+
 hdelete_err=Neizdevās izdzēst resursdatora adreses
 hdelete_enone=Nav atlasīts
 idelete_err=Neizdevās izdzēst IPv6 resursdatora adreses

@@ -11,6 +11,7 @@ index_version2=Versi Sendmail $1, config $2
 index_xversion=Versi Sendmail $1 
 index_version=Sendmail config $1 
 index_sendmail=Hantar surat
+
 opts_title=Pilihan Sendmail
 opts_ecannot=Anda tidak dibenarkan mengedit pilihan sendmail
 opts_ds=Hantar mel keluar melalui hos
@@ -57,6 +58,7 @@ opts_qso=Susun baris gilir oleh
 opts_priority=Keutamaan
 opts_host=Nama hos
 opts_time=Masa diterima
+
 aliases_title=Mail Aliases
 aliases_ecannot=Anda tidak dibenarkan mengedit alias
 aliases_enofile=Tiada fail alias ditakrifkan dalam konfigurasi Sendmail anda
@@ -73,6 +75,7 @@ aliases_return=senarai alias
 aliases_toomany=Terdapat terlalu banyak alias mel pada sistem anda untuk dipaparkan pada halaman ini.
 aliases_go=Cari pencocokan alias:
 aliases_delete=Padam Aliases terpilih
+
 aform_ecannot=Anda tidak dibenarkan mengedit alias ini
 aform_type0=Tiada
 aform_type1=Alamat emel
@@ -90,11 +93,13 @@ aform_val=Alias to
 aform_afile=Edit ..
 aform_return=alias
 aform_cmt=Penerangan
+
 afile_title=Edit Fail Alamat
 afile_desc=Gunakan kawasan teks di bawah untuk mengedit alamat dalam fail $1.
 afile_efile=Anda tidak dibenarkan mengedit $1.
 afile_undo=Undo Perubahan
 afile_ewrite=Gagal menulis ke alamat fail : $1 
+
 ffile_title=Edit Fail Penapis
 ffile_desc=Gunakan borang di bawah untuk menetapkan peraturan penapis dalam fail $1.
 ffile_efile=Anda tidak dibenarkan mengedit $1.
@@ -110,6 +115,7 @@ ffile_other=Jika tidak, hantar ke $1
 ffile_err=Gagal menyimpan fail penapis
 ffile_ematch=Perlawanan yang tiada
 ffile_eaction=Alamat penghantaran yang hilang
+
 rfile_title=Edit Fail Autoreply
 rfile_desc=Gunakan kawasan teks di bawah untuk mengedit mesej autoreply dalam $1. Mesej itu mungkin mengandungi makro $SUBJECT, $FROM, $TO, $DATE dan $BODY yang akan diperluaskan apabila autoreply diaktifkan.
 rfile_desc2=Anda juga boleh menetapkan tajuk surat yang menambah atau menggantikan lalai yang digunakan dalam autoreply dengan meletakkan garis seperti: <br><tt> Dari: foo@bar.com </tt><br> <tt>Subjek: Pada hari cuti</tt> <br> di bahagian atas mesej, dipisahkan dari tubuh dengan satu baris kosong.
@@ -129,6 +135,7 @@ rfile_from=Daripada: alamat untuk balasan
 rfile_auto=Automatik (berdasarkan alamat penerima)
 rfile_efrom=Kehilangan Daripada: alamat
 rfile_fromdesc=A Dari: alamat harus selalu ditentukan jika mungkin, kerana kaedah automatik mungkin tidak boleh dipercayai.
+
 asave_err=Gagal menyimpan alias
 asave_ecannot2=Anda tidak dibenarkan mengedit alias
 asave_ecannot=Anda tidak dibenarkan mengedit alias ini
@@ -145,9 +152,11 @@ asave_etype5=Fail autoreply '$1' tidak sah
 asave_etype4none=Tiada program yang diberikan
 asave_etype6=Fail penapis '$1' tidak sah
 asave_esame=Anda hanya dibenarkan membuat alias dengan nama yang sama dengan login webmin anda
+
 adelete_err=Gagal memadamkan nama alias
 adelete_enone=Tiada yang dipilih
 adelete_ecannot=Anda tidak dibenarkan memotong alias $1 
+
 cws_title=Domain Lokal
 cws_ecannot=Anda tidak dibenarkan mengedit domain tempatan
 cws_domains=Domain dikendalikan oleh pelayan ini
@@ -156,6 +165,7 @@ cws_desc2=Ambil perhatian bahawa semata-mata termasuk domain dalam senarai biasa
 cws_err=Gagal menyimpan domain tempatan
 cws_ehost='$1' bukan nama hos atau nama domain yang sah
 cws_eip='$1' ialah alamat IP, bukan domain
+
 masq_title=Masquerading Domain
 masq_ecannot=Anda tidak dibenarkan mengkonfigurasikan penyamaran
 masq_domain=Menyamar sebagai domain
@@ -167,12 +177,14 @@ masq_err=Gagal menyimpan domain yang menyamar
 masq_edomain='$1' bukan domain yang sah untuk menyamar sebagai
 masq_ehost='$1' bukan nama hos atau nama domain yang sah
 masq_eip='$1' ialah alamat IP, bukan domain
+
 trusts_title=Pengguna Dipercayai
 trusts_ecannot=Anda tidak dibenarkan mengedit pengguna yang dipercayai
 trusts_users=Pengguna tempatan dipercayai oleh sendmail
 trusts_desc=Jika pengguna tempatan cuba menghantar e-mel, sendmail hanya akan membenarkan pengguna memberikan alamat <tt>Dari:</tt> yang berlainan jika pengguna berada dalam senarai di bawah. Sekatan ini wujud untuk menghalang pengguna daripada memalsukan e-mel dengan dipalsukan <tt>Dari:</tt> alamat asal dari sistem anda.
 trusts_err=Gagal menyimpan pengguna yang dipercayai
 trusts_euser='$1' bukan pengguna yang sah
+
 virtusers_title=Alamat Mappings
 virtusers_ecannot=Anda tidak dibenarkan mengedit peta alamat
 virtusers_efeature=Konfigurasi sendmail anda tidak mempunyai ciri pemetaan alamat (<tt>virtuser</tt>) yang didayakan. <a href='$1'>Klik di sini</a> untuk menyediakan ciri sendmail.
@@ -190,6 +202,7 @@ virtusers_return=senarai pemetaan alamat
 virtusers_toomany=Terdapat banyak pemetaan alamat pada sistem anda untuk dipaparkan pada halaman ini.
 virtusers_go=Cari pemetaan pemetaan alamat:
 virtusers_delete=Padam Muka Alamat Dipilih
+
 vform_edit=Edit Pemetaan Alamat
 vform_create=Buat Pemetaan Alamat
 vform_for=Mail for
@@ -206,6 +219,7 @@ vform_err_tempfail=Kegagalan sementara
 vform_err_protocol=Kesalahan protokol
 vform_end=Beralih ke hujung
 vform_ecannot=Anda tidak dibenarkan mengedit peta alamat ini
+
 vsave_ecannot=Anda tidak dibenarkan mengedit peta alamat
 vsave_ecannot2=Anda tidak dibenarkan mengedit peta alamat ini
 vsave_emax=Anda tidak dibenarkan membuat lebih daripada pemetaan alamat $1 
@@ -221,8 +235,10 @@ vsave_eaddr='$1' bukan alamat yang sah
 vsave_ecannot4=Anda tidak dibenarkan membuat pemetaan ke domain
 vsave_edomdom=Hanya domain yang boleh dipetakan ke domain lain
 vsave_ecannot5=Anda tidak dibenarkan membuat pemetaan yang mengembalikan ralat
+
 vdelete_err=Gagal memadam pemetaan alamat
 vdelete_ecannot=Anda tidak dibenarkan memadam pemetaan untuk $1 
+
 mailers_title=Routing Domain
 mailers_cannot=Anda tidak dibenarkan mengedit penghalaan domain
 mailers_edirective=Fail konfigurasi sendmail anda tidak mempunyai arahan yang diperlukan untuk penghalaan domain.
@@ -236,6 +252,7 @@ mailers_delivery=Penghantaran
 mailers_to=Hantar kepada ..
 mailers_return=senarai peralihan domain
 mailers_delete=Padamkan Laluan Domain Terpilih
+
 mform_edit=Edit Routing
 mform_create=Buat Laluan
 mform_for=Mail for
@@ -259,12 +276,15 @@ mform_procmail=Procmail
 mform_mail11=DECnet mail11
 mform_error=Ralat
 mform_ecannot=Anda tidak dibenarkan mengedit penghalaan domain
+
 msave_ecannot=Anda tidak dibenarkan mengedit penghalaan domain
 msave_err=Gagal menyimpan penyusunan domain
 msave_edomain='$1' bukan hos atau domain yang sah
 msave_edup=Peralihan domain untuk '$1' sudah ditentukan
+
 mdelete_err=Gagal memadamkan penghala domain
 mdelete_ecannot=Anda tidak dibenarkan memadam laluan untuk $1 
+
 generics_title=Alamat Keluar
 generics_cannot=Anda tidak dibenarkan mengedit alamat keluar
 generics_econfig=Fail konfigurasi sendmail anda tidak mempunyai arahan yang diperlukan untuk pemetaan alamat keluar.
@@ -278,11 +298,13 @@ generics_return=senarai pemetaan alamat
 generics_toomany=Terdapat terlalu banyak alamat keluar pada sistem anda untuk dipaparkan di halaman ini.
 generics_go=Cari alamat yang hampir sama:
 generics_delete=Padam Alamat Keluar Terpilih
+
 gform_edit=Edit Pemetaan
 gform_create=Buat Pemetaan
 gform_from=Mel dari
 gform_to=Bertukar kepada
 gform_ecannot=Anda tidak dibenarkan mengedit alamat keluar ini
+
 gsave_ecannot=Anda tidak dibenarkan mengedit alamat keluar
 gsave_ecannot2=Anda tidak dibenarkan mengedit alamat keluar ini
 gsave_ecannot3=Anda tidak dibenarkan menyimpan alamat keluar ini
@@ -291,8 +313,10 @@ gsave_efrom='$1' tidak sah dari alamat
 gsave_ematch=Alamat dari alamat tidak sepadan dengan '$1'
 gsave_eto='$1' bukan alamat baru yang sah
 gsave_ealready=Pemetaan alamat keluar untuk '$1' sudah ada
+
 gdelete_err=Gagal memadam pemetaan alamat keluar
 gdelete_ecannot=Anda tidak dibenarkan memadam pemetaan untuk $1 
+
 cgs_title=Domain Keluar
 cgs_ecannot=Anda tidak dibenarkan mengedit domain keluar
 cgs_header=Domain alamat keluar
@@ -300,6 +324,7 @@ cgs_desc=Selain daripada mel yang dihantar oleh pengguna setempat, sendmail hany
 cgs_err=Gagal menyimpan domain keluar
 cgs_ehost='$1' bukan nama hos atau nama domain yang sah
 cgs_eip='$1' ialah alamat IP, bukan domain
+
 domains_title=Pemetaan Domain
 domains_ecannot=Anda tidak dibenarkan untuk mengedit pemetaan domain
 domains_econfig=Fail konfigurasi sendmail anda tidak mempunyai arahan yang diperlukan untuk pemetaan domain.
@@ -310,17 +335,21 @@ domains_from=Dari domain ..
 domains_to=Kepada domain ..
 domains_return=senarai pemetaan domain
 domains_delete=Padam Muka Domain Terpilih
+
 dform_edit=Edit Pemetaan
 dform_create=Buat Pemetaan
 dform_from=Dari domain
 dform_to=Kepada domain
 dform_ecannot=Anda tidak dibenarkan untuk mengedit pemetaan domain
+
 dsave_ecannot=Anda tidak dibenarkan untuk mengedit pemetaan domain
 dsave_err=Gagal menyimpan pemetaan domain
 dsave_edomain='$1' bukan nama domain yang sah
 dsave_ealready=Pemetaan domain untuk '$1' sudah ada
+
 ddelete_err=Gagal memadam pemetaan domain
 ddelete_ecannot=Anda tidak dibenarkan memadam pemetaan untuk $1 
+
 access_title=Kawalan Spam
 access_ecannot=Anda tidak dibenarkan mengkonfigurasi kawalan spam
 access_efeature=Konfigurasi sendmail anda tidak mempunyai kawalan spam (<tt>access_db</tt>) yang didayakan. <a href='$1'>Klik di sini</a> untuk menyediakan ciri sendmail.
@@ -333,6 +362,7 @@ access_return=senarai kawalan spam
 access_toomany=Terdapat terlalu banyak peraturan kawalan spam pada sistem anda untuk dipaparkan pada halaman ini.
 access_go=Cari peraturan kawalan spam yang sepadan:
 access_delete=Padam Peraturan Kawalan Spam yang Dipilih
+
 sform_edit=Edit Peraturan Kawalan Spam
 sform_create=Buat Peraturan Kawalan Spam
 sform_source=Sumber surat
@@ -354,6 +384,7 @@ sform_discard=Buang dengan senyap
 sform_err=Kod salah
 sform_msg=Mesej
 sform_ecannot=Anda tidak dibenarkan mengedit peraturan kawalan spam ini
+
 ssave_err=Gagal menyimpan peraturan kawalan spam
 ssave_etype0='$1' bukan alamat yang sah
 ssave_etype1='$1' bukan alamat rangkaian yang sah
@@ -362,8 +393,10 @@ ssave_etype3='$1' bukan domain yang sah
 ssave_ecode='$1' bukan kod ralat SMTP yang sah
 ssave_ealready=Peraturan kawalan spam untuk '$1' sudah wujud
 ssave_ecannot2=Anda tidak dibenarkan menyimpan peraturan kawalan spam ini
+
 sdelete_err=Gagal memadamkan peraturan kawalan spam
 sdelete_ecannot=Anda tidak dibenarkan untuk memadamkan peraturan untuk $1 
+
 relay_title=Domain Relay
 relay_ecannot=Anda tidak dibenarkan mengedit domain relay
 relay_eversion=Hanya versi sendmail 8.9 dan ke atas menyokong ciri-ciri domain geganti.
@@ -372,6 +405,7 @@ relay_desc1=Kecuali jika dibenarkan oleh peraturan <a href='$1'>kawalan spam</a>
 relay_desc2=Sekiranya sistem anda berfungsi sebagai pintu masuk untuk beberapa domain yang tidak boleh diakses secara langsung dari luar rangkaian anda (menggunakan ciri <a href='$1'>routing domain</a>), maka semua domain tersebut harus disenaraikan di sini.
 relay_err=Gagal menyimpan domain relay
 relay_edomain='$1' bukan nama domain yang sah
+
 mailq_title=Giliran Mail
 mailq_count=$1 mesej
 mailq_ecannot=Anda tidak dibenarkan untuk melihat gilir mel
@@ -401,12 +435,15 @@ mailq_search=Cari mesej yang beratur di mana
 mailq_quar=Kuarantin
 mailq_refresh=Muatkan Gilir Mel
 mailq_refreshdesc=Muat semula halaman ini untuk menunjukkan status semasa gilir mel.
+
 flushq_title=Gilir Giliran
 flushq_desc=Memaksa percubaan penghantaran semua mesej dengan perintah $1 ..
 flushq_desc2=Memaksa percubaan penghantaran mesej $1 dipilih ..
 flushq_ecannot=Anda tidak dibenarkan menghidupkan gilir mel
+
 searchq_title=Keputusan Carian Giliran
 searchq_none=Tiada mesej beratur yang dijumpai.
+
 delq_err=Gagal memadam mesej
 delq_ecannot=Anda tidak dibenarkan untuk memesongkan mesej
 delq_locked=Fail sedang dikunci untuk dihantar
@@ -422,6 +459,7 @@ delq_force=Memaksa pemadaman pula
 delq_ecannot2=anda tidak boleh memadamkan mesej ini
 delq_rusure=Adakah anda pasti mahu memadamkan mesej $1 mesej yang terpilih?
 delq_confirm=Padam Mesej
+
 boxes_title=Peti mel pengguna
 boxes_user=Pengguna
 boxes_size=Saiz peti mel
@@ -431,6 +469,7 @@ boxes_sent=Menghantar surat
 boxes_ecannot=Anda tidak dibenarkan membaca e-mel
 boxes_toomany=Terdapat terlalu banyak pengguna pada sistem anda untuk menyenaraikan semua peti mel mereka.
 boxes_go=Lihat mel untuk pengguna:
+
 mail_title=E-mel Pengguna
 mail_from=Dari
 mail_date=Tarikh
@@ -471,6 +510,7 @@ mail_move=Berpindah ke:
 mail_copy=Salin ke:
 mail_rfc=Dari baris
 mail_eexists=Mesej tidak lagi wujud!
+
 view_title=Baca E-mel
 view_desc=Mesej $1 dalam $2 
 view_desc2=Mesej $1 untuk pengguna $2 
@@ -501,6 +541,7 @@ view_egone=Mesej ini tidak lagi wujud
 view_afile=Nama lampiran
 view_atype=Jenis lampiran
 view_asize=Saiz fail
+
 compose_title=Tulis E-mel
 reply_title=Balas kepada E-mel
 forward_title=Hantar E-mel
@@ -512,6 +553,7 @@ reply_attach2=Lampiran pelanggan dan pelayan
 reply_send=Hantar surat
 reply_ecannot=Anda tidak dibenarkan menghantar e-mel sebagai pengguna ini
 reply_body=Teks mesej
+
 send_err=Gagal menghantar mel
 send_eto=Hilang Untuk alamat
 send_efrom=Kehilangan Daripada alamat
@@ -524,6 +566,7 @@ send_eattach=Lampiran tidak boleh melebihi saiz $1 kB.
 send_eperms=Pengguna $1 tidak dapat membaca $2 
 send_eperms2=Anda tidak dibenarkan menghantar fail $1 
 send_epath=Sendmail executable $1 tidak wujud.
+
 delete_title=Padam Mail
 delete_rusure=Adakah anda pasti mahu memadamkan mesej $1 terpilih dari $2 ? Ini mungkin mengambil sedikit masa untuk fail mel yang besar. Sehingga penghapusan selesai, tiada tindakan lain yang perlu dilakukan.
 delete_rusure2=Adakah anda pasti mahu memadamkan mesej ini daripada $1 ? Ini mungkin mengambil sedikit masa untuk fail mel yang besar. Sehingga penghapusan selesai, tiada tindakan lain yang perlu dilakukan.
@@ -536,6 +579,7 @@ delete_emoveuser=Pengguna untuk memindahkan e-mel tidak wujud
 delete_emovecannot=Anda tidak dibenarkan memindahkan e-mel kepada pengguna yang ditentukan
 delete_emovenone=Tiada mel yang dipilih untuk bergerak
 delete_nobutton=Tiada butang diklik
+
 search_title=Keputusan Carian
 search_ecannot=Anda tidak dibenarkan untuk mencari e-mel pengguna ini
 search_ematch=Anda mesti memasukkan teks untuk menandingi.
@@ -549,6 +593,7 @@ search_results4=$1 mesej mel sepadan dengan carian anda ..
 search_local=Dalam folder tempatan
 search_all=Dalam semua folder
 search_eboolean=Carian Boolean menggunakan 'dan' dan 'atau' tidak disokong
+
 file_title=Edit Fail Sendmail
 file_desc=Gunakan kotak teks di bawah untuk mengedit fail Sendmail secara manual $1.
 file_undo=Undo Perubahan
@@ -564,6 +609,7 @@ file_emode=Mod tidak diketahui!
 file_err=Gagal mengedit fail
 file_ealias=Format tidak sah untuk fail fail alias : $1 
 file_etab=Format fail tidak sah untuk fail fail : $1 
+
 acl_opts=Boleh mengedit pilihan sendmail?
 acl_ports=Bolehkah mengedit rangkaian rangkaian?
 acl_cws=Boleh mengedit domain tempatan?
@@ -630,6 +676,7 @@ acl_usersm=Pemadanan pengguna
 acl_asame=Sama seperti nama pengguna
 acl_usersu=Dengan UID dalam julat
 acl_spam=Kawalan spam alamat pengguna ini boleh diedit
+
 log_opts=Pilihan sendmail yang berubah
 log_ports=Ubah port rangkaian
 log_alias_create=Dibuat alias $1 
@@ -680,6 +727,7 @@ log_delete_domains=Dipadamkan $1 pemetaan domain
 log_delete_accesses=Dipadamkan $1 entri kawalan spam
 log_delete_generics=Dihapus $1 alamat keluar
 log_delete_mailers=Dihapus $1 laluan domain
+
 match_from=Daripada: perlawanan
 match_subject=Subjek: perlawanan
 match_to=Kepada: perlawanan
@@ -699,6 +747,7 @@ match_!status=Status tidak sepadan
 match_!body=Badan tidak sepadan
 match_!size=Saiz kurang daripada
 match_!headers=Tajuk tidak sepadan
+
 features_title=Konfigurasi Sendmail M4
 features_desc=Halaman ini menyenaraikan penyertaan yang relevan dari fail konfigurasi Sendmail M4 $1, dari mana fail konfigurasi sebenar $2 dibina.
 features_type=Jenis penyertaan
@@ -718,6 +767,7 @@ features_efeatures=Direktori dasar konfigurasi Sendmail M4 $2 tidak dijumpai pad
 features_econfig=Lokasi direktori asas Sendmail M4 dan fail konfigurasi M4 belum ditetapkan lagi dalam konfigurasi modul <a href='$1'>anda</a>. Sekiranya anda telah memasang Sendmail dari sumbernya, ini mestilah di bawah direktori sumber asal.
 features_move=Pindah
 features_manual=Edit fail secara manual
+
 feature_add=Tambah Kemasukan Konfigurasi
 feature_edit=Edit Kemasukan Konfigurasi
 feature_header=Butiran kemasukan maklumat konfigurasi M4
@@ -738,12 +788,15 @@ feature_emailer=Pengirim $1 sudah wujud
 feature_eostype=Jenis OS sudah didefinisikan sebagai $1 
 feature_manual=Edit Fail M4
 feature_mdesc=Halaman membenarkan anda untuk mengedit fail konfigurasi Sendmail M4 secara manual $1. Berhati-hati, kerana tiada pengecualian sintaks akan dilakukan pada pengeditan anda.
+
 feat_access_db=Fail kawalan spam
 feat_virtusertable=Pemetaan Alamat
 feat_mailertable=Routing Domain
 feat_genericstable=Alamat Keluar
 feat_domaintable=Pemetaan Domain
+
 mailer_local=Penghantaran Unix Tempatan
+
 build_title=Rebuild Configuration Sendmail
 build_em4=Perintah $1 yang diperlukan untuk membina fail konfigurasi Sendmail tidak dijumpai pada sistem anda.
 build_ebuild=Gagal untuk membina konfigurasi : $1 
@@ -752,13 +805,16 @@ build_rusure2=Perlu diketahui bahawa jika anda telah membuat perubahan kepada Se
 build_ok=Ya, ganti sekarang
 build_diff=Perubahan berikut akan dibuat pada fail konfigurasi Sendmail anda ..
 build_nodiff=Fail konfigurasi sendmail anda sudah terkini.
+
 stop_err=Gagal menghentikan sendmail
 stop_ecannot=Anda tidak dibenarkan menghentikan sendmail
 stop_epid=Sendmail tidak kelihatan berjalan
 restart_epids=Tidak dapat mencari proses sendmail
 restart_ekill=Gagal menandakan proses sendmail : $1 
+
 start_err=Gagal memulakan sendmail
 start_ecannot=Anda tidak dibenarkan untuk memulakan sendmail
+
 ports_title=Pelabuhan Rangkaian
 ports_name=Nama pelabuhan
 ports_addr=Dengar di alamat

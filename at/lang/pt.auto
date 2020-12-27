@@ -26,6 +26,7 @@ index_start=Iniciar servidor de comandos agendados
 index_startdesc=Inicie o processo do servidor de segundo plano <tt>atd</tt> que executa comandos programados. Isso é necessário para que os comandos sejam executados em seus horários especificados.
 index_boot=Iniciar o servidor na inicialização?
 index_bootdesc=Altere esta configuração para habilitar ou desabilitar a inicialização do servidor de comandos programados no momento da inicialização do sistema.
+
 edit_title=Comando agendado
 edit_cmd=Script completo para executar
 edit_shortcmd=Comando para executar
@@ -35,6 +36,7 @@ edit_run=Corra agora
 edit_ejob=O comando agendado não existe mais!
 edit_ecannot=Você não tem permissão para editar este comando agendado
 edit_showfull=Mostrar script completo.
+
 create_err=Falha ao criar o comando de agendamento
 create_euser=Nome de usuário ausente ou inválido
 create_edate=Data ou hora ausente ou inválida
@@ -43,22 +45,28 @@ create_efuture=A data e a hora estão no passado
 create_edir=Diretório ausente ou inválido
 create_ecannot=Você não tem permissão para criar comandos agendados para este usuário
 create_eallow=O usuário especificado não tem permissão para executar comandos agendados
+
 delete_err=Falha ao cancelar o comando
 delete_egone=Comando já executado ou excluído
+
 acl_users=Pode editar comandos agendados para
 acl_all=Todos os usuários
 acl_this=Usuário atual do Webmin
 acl_only=Somente usuários
 acl_except=Todos, exceto usuários
 acl_allow=Edição permitida para usuários?
+
 run_title=Comando em Execução
 run_output=Saída do comando agendado ..
 run_none=Nenhuma saída gerada
+
 allow_err=Falha ao salvar usuários permitidos
 allow_ecannot=Você não tem permissão para gerenciar usuários permitidos
 allow_eusers=Nenhum usuário inserido
+
 deletes_err=Falha ao cancelar comandos
 deletes_enone=Nenhum selecionado
+
 log_allow=Usuários permitidos alterados
 log_create_job=Comando agendado criado para $1 
 log_delete_job=Comando agendado cancelado para $1 
@@ -68,5 +76,6 @@ log_stop=Servidor de comandos programados parado
 log_start=Servidor de comandos programados iniciado
 log_bootup=Servidor de comandos agendados habilitado na inicialização
 log_bootdown=Servidor de comandos programados desativado na inicialização
+
 stop_err=Falha ao parar o servidor
 start_err=Falha ao iniciar o servidor

@@ -30,6 +30,7 @@ index_return=zónák listája
 index_ezones=Nem található FirewallD zóna!
 index_none=Ennek a zónának még nincs engedélyezett portja vagy szolgáltatása.
 index_ifaces=Szabályok alkalmazása az interfészekre:
+
 port_edit=Port szerkesztése
 port_create=Add Port
 port_header=Megengedett portbeállítások
@@ -45,11 +46,13 @@ port_eport=Hiányzó vagy érvénytelen portszám vagy név
 port_eportlow=Az alacsony portnak számnak kell lennie
 port_eporthigh=A magas portnak számnak kell lennie
 port_eportrange=Az alacsony portnak a magas port alatt kell lennie
+
 serv_edit=Szerkesztési szolgáltatás
 serv_create=Szolgáltatás hozzáadása
 serv_header=Engedélyezett szolgáltatási lehetőségek
 serv_name=Szolgáltatás engedélyezése
 serv_err=Nem sikerült menteni a szolgáltatást
+
 forward_edit=Szerkesztés Előre
 forward_create=Létrehozás tovább
 forward_header=Port továbbítási lehetőségek
@@ -61,10 +64,13 @@ forward_dstaddr=Rendeltetési cím
 forward_dstlocal=Ez a rendszer
 forward_edstaddr=Érvénytelen IPv4 célcím
 forward_eneither=Vagy rendeltetési hely címet vagy portot, vagy mindkettőt meg kell adni
+
 check_ecmd=A (z) $1 FirewallD vezérlőparancs nem található a rendszerén
+
 delete_err=Nem sikerült törölni a szabályokat
 delete_enone=Egy sincs kiválasztva!
 delete_edel=$1 eltávolítása sikertelen : $2 
+
 zone_title=Zóna létrehozása
 zone_header=Új zóna lehetőségek
 zone_name=Zóna neve
@@ -77,12 +83,16 @@ zone_mode4=Virtuális tároláshoz használt portok
 zone_err=Nem sikerült létrehozni a zónát
 zone_ename=Hiányzó vagy érvénytelen zóna név
 zone_eclash=Az azonos nevű zóna már létezik
+
 delzone_title=Törölje a zónát
 delzone_err=A zóna törlése nem sikerült
 delzone_edefault=Az alapértelmezett zónát nem lehet eltávolítani
 delzone_rusure=Biztosan törli a $1 zónát, amely $2 portokat és $3 szolgáltatásokat tartalmaz?
+
 defzone_err=Nem sikerült a zónát alapértelmezetté tenni
+
 restart_err=A konfiguráció alkalmazása nem sikerült
+
 stop_err=A FirewallD megállítása nem sikerült
 start_err=Nem sikerült elindítani a FirewallD-t
 log_stop=Leállított FirewallD

@@ -19,10 +19,13 @@ index_samba=Samba?
 index_cyrus=IMAP?
 index_users=Korisnici LDAP-a
 index_groups=LDAP grupe
+
 imap_econn=Povezivanje s IMAP serverom $1 nije uspjelo
 imap_elogin=Prijava na IMAP poslužitelj $1 nije uspjela kao $2 : $3 
 conn_eldap_host=U vašem sustavu nije pronađena konfiguracijska datoteka LDAP klijenta, pa LDAP poslužitelj mora biti postavljen na stranici Konfiguriranje modula
 conn_elogin=U vašem sustavu nije pronađena konfiguracijska datoteka LDAP klijenta, pa se LDAP prijava mora postaviti na stranici Konfiguriranje modula
+conn_efile_open=Nije moguće otvoriti datoteku vjerodajnica za povezivanje LDAP-a:
+
 uedit_cap=Korisničke mogućnosti
 uedit_samba=Samba prijava?
 uedit_cyrus=Prijava za IMAP poslužitelj?
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=Posljednje ažuriranje lozinke
 uedit_sambapwdcanchange=Lozinka se može promijeniti
 uedit_sambabadpasswordcount=Loš broj zaporki
 uedit_sambaacctflags=Oznake računa
+
 usave_eadd=Dodavanje korisnika u bazu podataka LDAP nije uspjelo : $1 
 usave_emod=Nije uspjela izmjena korisnika u LDAP bazi podataka : $1 
 usave_emoddn=Preimenovanje korisnika u LDAP bazi podataka nije uspjelo : $1 
@@ -66,26 +70,33 @@ usave_eattrdupu=Korisnik $1 već koristi $2 $3
 usave_eattrdupg=Grupa $1 već koristi $2 $3 
 usave_ereal=Nedostaje pravo ime
 usave_equota=Nedostaje ili nije važeća IMAP kvota
+
 search_err=Potraga za $1 ispod $2 nije uspjela : $3 
+
 gedit_dn=LDAP grupe DN
 gedit_return=detalji grupe
 gedit_cap=Mogućnosti grupe
 gedit_samba=Samba grupa?
+
 gsave_egone=Grupa više ne postoji!
 gsave_edelete=Brisanje grupe iz baze podataka LDAP nije uspjelo : $1 
 gsave_eadd=Nije uspjelo dodavanje grupe u bazu podataka LDAP : $1 
 gsave_emod=Nije uspjela izmjena grupe u LDAP bazi podataka : $1 
 gsave_emoddn=Preimenovanje grupe u LDAP bazi podataka nije uspjelo : $1 
+
 gdel_group=Brisanje unosa grupe LDAP. ..
+
 udel_pass=Brisanje unosa korisnika LDAP. ..
 udel_book=Brisanje iz adresara ..
 udel_imap=Brisanje IMAP mape ..
 udel_warnimap=Postojeća poštanska pošta će se izbrisati prilikom brisanja kućnog imenika!
 udel_failed=.. neuspjeh!  : $1 
+
 raw_title=LDAP atributi
 raw_name=Naziv atributa
 raw_value=vrijednosti
 raw_for=Za $1 
+
 batch_samba=Želite li stvoriti Samba račun za nove korisnike?
 batch_imap=Želite li stvoriti IMAP račun za nove korisnike?
 batch_descafter3=U <b>stvoriti</b> i <b>izmijeniti</b> redove, po želji možete dodati dodatna polja koja sadrže atribute LDAP u formatu <i>name</i> = <i>vrijednosti</i> dodijeliti novim ili promijenjenim korisnicima.

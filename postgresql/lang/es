@@ -13,15 +13,18 @@ index_add=Crear una nueva base de datos
 index_users=Opciones de Usuario
 index_return=lista de base de datos
 index_esql=El programa cliente de PostgreSQL $1 no ha sido encontrado en tu sistema. Quizás PostgreSQL no está instalada o tu <a href='$2'>configuración del módulo</a> es incorrecta.
+
 index_ehba=El archivo de configuración de máquina de PostgreSQL $1 no ha sido encontrado en tu sistema. Quizás PostgreSQL no ha sido inicializada o tu <a href='$2'>configuración del módulo</a> es incorrecta.
 index_superuser=El programa cliente de PostgreSQL psql no se pudo ejecutar en tu sistema. Quizás PostgreSQL no está instalado en tu sistema o tu <a href='$1'>configuración del módulo</a> no es correcta.
 index_eversion=La base de datos PostgreSQL de tu sistema es de la versión $1, pero Webmin sólamente soporta las versiones $2 y superiores.
 index_elibrary=El programa cliente $1 de PostgreSQL no pudo ser ejecutado porque no se pudo hallar las bibliotecas compartidas de Postgres. Revisa la <a href='$2'>configuración del módulo</a> y segúrate de que la <i>Trayectoria a las bibliotecas compartidas de PostgreSQL</i> está bién puesta.
 index_version=Versión $1 de POostgreSQL
+
 login_err=Falló el login
 login_ecannot=No estás autorizado a configurar el login a la base de datos
 login_elogin=Login de administración sin poner
 login_epass=Nombre de usuario o clave de acceso de administración incorrectos
+
 dbase_title=Editar Base de Datos
 dbase_noconn=Esta base de datos no está aceptando conexiones en este momento. Por ello, no se pueden realizar acciones en ella.
 dbase_tables=Tablas de Base de Datos
@@ -32,6 +35,7 @@ dbase_none=Esta base de datos no tiene tablas.
 dbase_fields=Campos:
 dbase_return=lista de tablas
 dbase_ecannot=No estás autorizado a editar esta base de datos
+
 table_title=Editar Tabla
 table_title2=Crear Tabla
 table_opts=Opciones de campo
@@ -71,27 +75,32 @@ field_esize='$1' no es una medida válida de campo
 field_eenum=No se han digitado valores enumerados
 field_efield='$1' no es un nombre válido de campo
 field_ekey=Los campos que permiten nulos no pueden formar parte de la clave primaria
+
 exec_title=Ejecutar SQL
 exec_header=Digita comando SQL a ejecutar en base de datos $1...
 exec_exec=Ejecutar
 exec_err=No pude ejecutar SQL
 exec_out=Salida del comando SQL $1...
 exec_none=No se ha devuelto dato alguno
+
 stop_err=No pude para el servidor de base de datos
 stop_epidfile=No pude abrir el archivo PID $1
 stop_ekill=No pude matar el proceso $1: $2
 stop_ecannot=No estás autorizado a para el servidor de base de datos
 start_err=No pude arrancar el servidor de base de datos
 start_ecannot=No estás autorizado a arrancar el servidor de base de datos
+
 ddrop_err=No pude eliminar la base de datos
 ddrop_title=Eliminar Base de Datos
 ddrop_rusure=¿Estás seguro de querer eliminar la base de datos $1?. $2 tablas conteniendo $3 filas de datos serán borradas.
 ddrop_mysql=A causa de que ésta es la base de datos maestra, ¡eliminarla haría probáblemente que tu servidor PostgreSQL quedara inservible!
 ddrop_ok=Eliminar Base de Datos
+
 tdrop_err=No pude eliminar tabla
 tdrop_title=Eliminar Tabla
 tdrop_rusure=¿Estás seguro de querer eliminar la tabla $1 en la base de datos $2?. $3 filas de datos serán borradas.
 tdrop_ok=Eliminar Tabla
+
 view_title=Datos de Tabla
 view_pos=Filas $1 a $2 de $3
 view_none=Esta tabla no contiene dato alguno
@@ -101,6 +110,7 @@ view_delete=Borrar filas seleccionadas
 view_nokey=Los datos de esta tabla no pueden ser editados ya que no tiene clave primaria.
 view_all=Seleccionar todo
 view_invert=Invertir selección
+
 newdb_title=Crear Base de Datos
 newdb_header=Nuevas opciones de Base de Datos
 newdb_db=Nombre de base de datos
@@ -109,6 +119,7 @@ newdb_err=No pude crear base de datos
 newdb_edb=Nombre de base de datos inválido o sin poner
 newdb_ecannot=No estás autorizado a crear bases de datos
 newdb_epath=Trayectoria de base de datos sin poner
+
 user_title=Usuarios de PostgreSQL
 user_ecannot=No estás autorizado a editar usuarios
 user_name=Nombre de usuario
@@ -127,6 +138,7 @@ user_none=Ninguna
 user_err=No pude salvar usuario
 user_epass=Clave de acceso inválida o sin poner
 user_ename=Nombre de usuario inválido o sin poner
+
 host_ecannot=No estás autorizado a editar máquinas autorizadas
 host_title=Máquinas Autorizadas
 host_desc=Cuando un cliente se conecta a la base de datos, las máquinas listadas debajo son procesadas en orden hasta que una coincide y el cliente es autorizado o denegado.
@@ -159,6 +171,7 @@ host_enetmask=Máscara de red inválida o sin poner
 host_enetwork=Red inválida o sin poner
 host_ehost=Dirección IP de máquina inválida o sin poner
 host_move=Mover
+
 grant_title=Privilegios garantizados
 grant_tvi=Objeto
 grant_type=Tipo
@@ -182,6 +195,7 @@ grant_v=Vista
 grant_i=Índice
 grant_S=Secuencia
 grant_none=No existen tablas, vistas, secuencias o índices a los que garantizarles privilegios.
+
 group_title=Grupos de PostgreSQL
 group_ecannot=No estás autorizado a editar grupos
 group_name=Nombre de grupo
@@ -197,6 +211,7 @@ group_ename=Nombre de grupo inválido o sin poner
 group_egid=ID de grupo inválida o sin poner
 group_etaken=El nombre de grupo ya está en uso
 group_none=No existen actuálmente grupos de PostgreSQL
+
 esql=SQL $1 falló: $2
 log_start=Arrancado servidor de PostgreSQL
 log_stop=parado servidor de PostgreSQL
@@ -204,6 +219,7 @@ log_db_create=Creada base de datos $1
 log_db_delete=Eliminada base de datos $1
 log_table_create=Creada tabla $1 en base de datos $2
 log_table_delete=Eliminada tabla $1 de la base de datos $2
+
 log_field_create=Añadido campo $1 $3 a $2 en base de datos $3
 log_field_modify=Modificado campo $1 $4 en $2 en base de datos $3
 log_field_delete=Borrado campo $1 de $2 en base de datos $3
@@ -231,6 +247,7 @@ log_modify_hba=Modificada máquina autorizada $1
 log_delete_hba=Borrada máquina autorizada $1
 log_move_hba=Movida máquina $1 autorizada
 log_grant=Garantizados privilegios sobre $1 en base de datos $2
+
 acl_dbs=Bases de datos que este usuario puede gestionar
 acl_dbscannot=Este control de acceso será efectivo tras arrancar el servidor de base de datos PostgreSQL.
 acl_dall=Todas las bases de datos
@@ -239,4 +256,5 @@ acl_create=¿Puede crear nuevas bases de datos?
 acl_delete=¿Puede eliminar bases de datos?
 acl_stop=¿Puede parar y arrancar el servidor PostgreSQL?
 acl_users=¿Puede editar usuarios, grupos y garantías?
+
 fdrop_err=Error durante el borrado del campo

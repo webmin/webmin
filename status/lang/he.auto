@@ -19,6 +19,7 @@ index_refsel=רענן נבחר
 index_group=חברים ב- $1 
 index_tmpls=ערוך תבניות דוא"ל
 index_tmplsdesc=הצג וערוך תבניות המשמשות לבניית הודעות דוא"ל שנשלחות כששירותים מנוטרים יורדים.
+
 type_apache=שרת האינטרנט של אפאצ 'י
 type_inetd=שרת אינטרנט ו- RPC
 type_xinetd=שרת אינטרנט מורחב
@@ -73,8 +74,10 @@ type_alive=מערכת חי
 type_rssh=SSH מרוחק
 type_slapd=שרת LDAP
 type_ldap=חיבור LDAP
+
 mon_create=צור צג
 mon_edit=ערוך את הצג
+mon_virtualmin=אַזהָרָה! צג זה משויך לתחום Virtualmin $1, ולכן אין לערוך אותו או למחוק אותו כאן.
 mon_header=מעקב אחר פרטים
 mon_header2=פקודות להפעלה
 mon_header3=אפשרויות שירות מנוטרות
@@ -138,6 +141,7 @@ mon_changes0=הצג כל סוג אירוע
 mon_changes1=הצג רק שינויים
 mon_all=הצג את כל האירועים ההיסטוריים
 mon_nochanges=לא אירעו שינויים בסטטוס ב- $1 האירועים ההיסטוריים האחרונים.
+
 sched_title=ניטור מתוזמן
 sched_header=אפשרויות ניטור רקע מתוזמנות
 sched_mode=בדיקה מתוזמנת מופעלת?
@@ -184,16 +188,19 @@ sched_subject0=אין (ההתראה בגוף)
 sched_subject1=טקסט התראה (השאר גוף ריק)
 sched_subject2=טקסט מותאם אישית
 sched_esubject=נושא הודעת ה- SMS חסר
+
 up_since=עלה מאז $1 
 depends_mod=המודול $1 אינו מותקן במערכת שלך
 depends_os=המודול $1 אינו נתמך במערכת שלך
 depends_remote=המודול $1 אינו נתמך בשרת $2 
+
 tcp_host=מארח להתחבר אליו
 tcp_port=נמל להתחבר אליו
 tcp_alarm=פסק זמן לחיבור
 tcp_ehost=שם מארח חסר או לא חוקי
 tcp_eport=מספר יציאה חסר או לא חוקי
 tcp_ealarm=פסק זמן לחיבור חסר או לא תקף
+
 http_url=כתובת אתר לבקשה
 http_alarm=פסק זמן לחיבור
 http_eurl=כתובת אתר חסרה או לא חוקית
@@ -208,11 +215,13 @@ http_regexp=על הדף להתאים לחישוב רגיל
 http_eregexp=לא הוזן ביטוי רגיל לדף להתאמה
 http_none2=אל תתאים
 http_ehead=לא ניתן להשתמש בשיטת בקשת HEAD בבדיקת ביטוי רגיל
+
 ping_host=מארח לפינג
 ping_wait=זמן לחכות לתגובה
 ping_ehost=שם מארח חסר או לא חוקי
 ping_ewait=זמן המתנה חסר או לא תקף
 ping_econfig=שום פקודת ping לא הוגדרה ב- Config Module
+
 proc_pid=פועל עם PIDs $1 
 proc_cmd=פקודה לבדוק
 proc_not=כשל אם התהליך הוא
@@ -224,6 +233,7 @@ proc_ethresh=מספר תהליכים חסר או לא חוקי
 proc_asuser=פועל כמשתמש
 proc_anyuser=כל משתמש
 proc_easuser=משתמש עבור התהליך לרוץ כפי שאינו קיים
+
 exec_cmd=פקודה לרוץ
 exec_mode=צא מבדיקת מצב
 exec_mode0=כשל במעקב אם הפקודה נכשלה
@@ -235,6 +245,7 @@ exec_noregexp=אל תבדוק
 exec_remode=בדיקת Regexp
 exec_remode0=נכשל אם הפלט אינו תואם
 exec_remode1=נכשל אם הפלט אכן תואם
+
 file_file=קובץ, מדריך או תבנית לבדיקה
 file_test=מבחן לביצוע
 file_test_0=חייב להתקיים
@@ -253,6 +264,7 @@ file_group=קבוצת הקבצים חייבת להיות
 file_nocheck=כל דבר
 file_perms=הרשאות אוקטליות חייבות להיות
 file_eperm=קבצים עם הרשאות שגויות : $1 
+
 traffic_iface=ממשק לפקח
 traffic_bytes=מקסימום בתים לשנייה
 traffic_dir=כיוון לפקח
@@ -262,6 +274,7 @@ traffic_dir2=יוצא רק
 traffic_desc=צג זה עוקב אחר תנועת הרשת בממשק שנבחר ומציג את הצג כמורחק אם התנועה חורגת ממספר הבתים לשנייה שהוזן למטה. זה ממש עובד טוב אם הפיקוח המתוזמן מופעל בהגדרת מרווח קצר, כמו כל 5 דקות.
 traffic_eifaces=למערכת ההפעלה שלך אין קובץ/proc/net/dev
 traffic_ebytes=מספר בתים/שנייה חסר או לא חוקי
+
 space_fs=מערכת קבצים לבדיקה
 space_min2=שטח מינימלי פנוי
 space_mode0=גודל מוחלט
@@ -277,6 +290,7 @@ space_ierr=רק $1 אינו מקוון בחינם
 space_merr=רק שטח $1 פנוי
 space_perr=רק $1% חינם
 space_dferr=השגת גודל מערכת הקבצים נכשלה
+
 load_time=ממוצע עומס כדי לבדוק
 load_1=דקה 1
 load_5=5 דקות
@@ -285,6 +299,7 @@ load_max=ממוצע עומס מרבי
 load_emax=ממוצע עומס מקסימלי חסר או לא חוקי
 load_ecmd=הפקודה <tt>uptime</tt> לא נמצאה במערכת שלך
 load_efmt=לא ניתן היה לנתח את הפלט של הפקודה <tt>uptime</tt>
+
 log_create=נוצר צג $1 
 log_modify=צג שונה 1
 log_delete=המסך $1 נמחק
@@ -295,10 +310,14 @@ log_tmpl_modify=תבנית דוא"ל שונה $1
 log_tmpl_delete=תבנית הדוא"ל $1 נמחקה
 log_tmpl_deletes=$1 תבניות דוא"ל נמחקו
 log_refresh=סטטוסים של צג מרענן
+
 acl_edit=האם ניתן לערוך וליצור צגים?
 acl_sched=האם ניתן לשנות מעקב מתוזמן?
+
 change_file=קובץ או ספריה לניטור (נכשלים אם הם משתנים)
+
 jabber_eparser=מודול Perl $1 אינו מותקן במערכת שלך.
+
 memory_min2=מינימום זיכרון אמיתי בחינם
 memory_emin=כמות חסרה או לא חוקית של זיכרון אמיתי חופשי
 memory_eproc=Webmin לא יודע לבדוק זיכרון פנוי במערכת ההפעלה שלך
@@ -308,7 +327,9 @@ memory_freelow=רק $1 זיכרון אמיתי פנוי
 memory_freelowswap=רק $1 זיכרון וירטואלי פנוי
 memory_minswap=מינימום זיכרון וירטואלי בחינם
 memory_eminswap=כמות חסרה או לא חוקית של זיכרון וירטואלי פנוי
+
 proftpd_etype=לא ניתן להשתמש בצג זה כאשר ProFTPD מופעל באופן עצמאי
+
 mailserver_to=שלח דוא"ל לכתובת
 mailserver_timeout=פסק זמן ומרווח זמן
 mailserver_units_0=שניות
@@ -316,22 +337,28 @@ mailserver_units_1=דקות
 mailserver_units_2=שעה (ות
 mailserver_units_3=ימים
 mailserver_desc=הכתובת שלהלן חייבת להיות משיבה אוטומטית המשיבה לכתובת המקור באותו קו נושא:
+
 oldfile_file=קובץ לפקח (נכשל אם לא ישתנה)
 oldfile_diff=נכשל אם לא השתנה עבור
 oldfile_secs=שניות
+
 raid_device=מכשיר RAID
 raid_edevice=לא נבחר מכשיר RAID
 raid_bad=זוהה דיסק רע
 raid_resync=נכון לעכשיו לבצע סינכרון מחדש
 raid_notfound=מכשיר RAID $1 לא נמצא
 raid_other=אחר ..
+
 iface_iface=ממשק לבדיקה
+
 init_action=פעולה לבדיקה
 init_eaction=לא נבחרה פעולה
+
 refresh_title=רענן סטטוס
 refresh_doing=מרענן את המצב של כל המסכים ..
 refresh_doing2=רענון הסטטוס של $1 צגים שנבחרו ..
 refresh_done=.. בוצע.
+
 sensors_name=חיישן לבדוק
 sensors_value=כשלה
 sensors_value0=המערכת מציינת אזהרה
@@ -342,6 +369,7 @@ sensors_none=לא אותרו חיישנים במערכת שלך. יתכן שתצ
 sensors_cur=$1 (נכון לעכשיו $2 $3)
 sensors_emin=ערך מינימלי חסר או לא חוקי
 sensors_emax=ערך מקסימלי חסר או לא חוקי
+
 nut_ups=NUT UPS כדי לבדוק
 nut_name=תכונה לבדיקה
 nut_value=כשלה
@@ -352,6 +380,7 @@ nut_eups=לא הוזן USP לסימון
 nut_cur=$1 (כרגע $2)
 nut_emin=ערך מינימלי חסר או לא חוקי
 nut_emax=ערך מקסימלי חסר או לא חוקי
+
 mailq_system=שרת דואר
 mailq_qmailadmin=Qmail
 mailq_postfix=Postfix
@@ -360,6 +389,7 @@ mailq_size=גודל תור דואר מקסימאלי
 mailq_esize=גודל תור מרבי חסר או לא חוקי
 mailq_toomany=למטה - $1 הודעות בתור
 mailq_ok=למעלה - $1 הודעות עמדו בתור
+
 dns_server=שרת DNS
 dns_host=שם מארח לחיפוש
 dns_address=כתובת IP צפויה
@@ -367,6 +397,7 @@ dns_eserver=שרת DNS חסר או לא חוקי
 dns_ehost=שם מארח חסר או לא חוקי למראה
 dns_eaddress=כתובת IP צפויה חסרה או לא חוקית
 dns_ecmds=לא הפקודות <tt>nslookup</tt> או <tt>dig</tt> מותקנות במערכת שלך
+
 monitor_sub_down=$1 למטה על $2 
 monitor_pager_down=$1 : "$2" יורד $3 
 monitor_snmp_down= $1:$2 
@@ -398,8 +429,10 @@ monitor_run1=מריץ $1 על $2.
 monitor_run2=רץ $1 ..
 monitor_runerr=הרצת $1 על $2 : $3 נכשלה
 monitor_email_stat=מצב נוכחי: $1 
+
 deletes_egone=אחד המסכים שנבחרו כבר לא קיים
 deletes_enone=לא נבחרו צגים
+
 ftp_host=מארח שרת FTP
 ftp_port=יציאת FTP
 ftp_user=התחבר כמשתמש
@@ -416,6 +449,7 @@ ftp_econn=חיבור FTP של TLS נכשל
 ftp_econn2=חיבור FTP של TLS נכשל : $1 
 ftp_elogin=כניסה ל- TLS FTP נכשלה : $1 
 ftp_etlsfile=הורדת ה- FL TLS נכשלה : $1 
+
 query_driver=סוג מסד נתונים של SQL
 query_db=שם בסיס הנתונים
 query_host=מארח שרת מסדי נתונים
@@ -436,9 +470,12 @@ query_elogin=הכניסה נכשלה : $1
 query_eprepare=שגיאת SQL : $1 
 query_eexecute=SQL נכשל : $1 
 query_ewrong=תוצאה שגויה : $1 
+
 consume_rate=קצב צריכה מרבי (לשנייה)
 consume_high=שיעור הצריכה הוא $1 לשנייה
+
 alive_up=עולה ב- $1 
+
 rssh_host=מארח שרת SSH
 rssh_ruser=התחבר כמשתמש
 rssh_rpass=כניסה עם סיסמא
@@ -454,6 +491,7 @@ rssh_error=שגיאת SSH
 rssh_haspass=סיסמה
 rssh_port=יציאת שרת SSH
 rssh_eport=מספר יציאה חסר או לא חוקי
+
 tmpls_title=תבניות אימייל
 tmpls_ecannot=אינך רשאי לערוך תבניות דוא"ל
 tmpls_none=טרם הוגדרו תבניות דוא"ל. כל ההתראות יישלחו באמצעות הודעות ברירת המחדל של Webmin.
@@ -462,6 +500,7 @@ tmpls_email=הודעת אימייל
 tmpls_add=הוסף תבנית דוא"ל חדשה.
 tmpls_return=רשימת תבניות
 tmpls_delete=מחק תבניות שנבחרו
+
 tmpl_title1=צור תבנית דוא"ל
 tmpl_title2=ערוך תבנית דוא"ל
 tmpl_header=התראה על תבניות דוא"ל
@@ -486,9 +525,11 @@ tmpl_esms=הודעת SMS חסרה
 tmpl_esnmp=הודעת SNMP חסרה
 tmpl_err2=מחיקת תבנית הדוא"ל נכשלה
 tmpl_eusers=הוא נמצא בשימוש על ידי המסכים הבאים : $1 
+
 dtmpls_err=מחיקת התבניות נכשלה
 dtmpls_enone=לא נבחר
 dtmpls_eusers=$1 נמצא בשימוש על ידי המסכים הבאים : $2 
+
 sslcert_src=מיקום האישור
 sslcert_url=מכתובת HTTPS
 sslcert_file=מקובץ בשרת
@@ -506,18 +547,21 @@ sslcert_eend=לא תקף לאחר $1
 sslcert_left=עלייה - $1 ימים עד תום התוקף
 sslcert_ematch=שם המארח $1 אינו תואם לתעודה $2 
 sslcert_emismatch=ניתן להשתמש בבדיקת שם מארח אישורים רק בבדיקת כתובת אתר
+
 du_dir=מדריך לפיקוח
 du_max=גודל מקסימאלי
 du_edir=נתיב ספריה חסר או לא מוחלט
 du_emax=גודל מקסימלי חסר או לא מספרי
 du_over=הגודל הוא $1 
 du_under=הגודל הוא $1 בלבד
+
 ldap_edriver=מודול Perl $1 אינו מותקן
 ldap_host=שם מארח של שרת LDAP
 ldap_port=יציאת שרת LDAP
 ldap_ssl=משתמשים בחיבור SSL?
 ldap_user=כניסה לשרת LDAP
 ldap_pass=סיסמת שרת LDAP
+
 info_desc=צג מערכת
 info_last=מצב נוכחי
 info_title=מצב מערכת ושרת

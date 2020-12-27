@@ -43,12 +43,14 @@ index_norder1=Structure de fichier
 index_norder2=Nom/Adresse IP
 index_buttiface=Editer l' Interface Reseau
 index_iface=Selectionnez l'Interface Reseau sur laquelle le serveur DHCP est a l'ecoute au demarrage
+
 butt_save=Sauvegarder
 butt_eco=Éditer les options du client
 butt_vco=Voir les options du client
 butt_del=Supprimer
 butt_create=Créer
 butt_leases=Lister les baux
+
 esub_crheader=Créer un sous-réseau
 esub_edheader=Éditer un sous-réseau
 esub_tabhdr=Détails du sous-réseau
@@ -62,10 +64,12 @@ esub_groups=Groupes de ce meme sous-réseau
 esub_pools=Groupes d'adresses du sous-réseau
 esub_pool=Groupe $1
 esub_poolnone=Aucun groupe d'adresses défini
+
 esub_pooladd=Ajouter un groupe d'adresses
 esub_none=Aucun
 esub_return=liste de sous-réseaux
 esub_retshar=réseau partagé
+
 esh_crheader=Créer un réseau partagé
 esh_eheader=Éditer un réseau partagé
 esh_tabhdr=Précisions sur le réseau partagé
@@ -76,6 +80,7 @@ esh_subn=Sous-réseaux de ce réseau partagé
 esh_return=liste des réseaux partagés
 esh_pools=Groupes d'adresses du reseau partage
 esh_desc=Description du reseau partage
+
 ehost_crheader=Créer une machine
 ehost_eheader=Éditer une machine
 ehost_tabhdr=Précisions sur la machine
@@ -95,6 +100,7 @@ ehost_return=liste de machines
 ehost_retgroup=groupe
 ehost_retsubn=sous-réseau
 ehost_retshar=réseau partagé
+
 egroup_crheader=Créer un groupe de machines
 egroup_eheader=Éditer un groupe de machines
 egroup_tblhdr=Précisions sur le groupe
@@ -104,6 +110,7 @@ egroup_nchoice=Utiliser le nom comme nom de machine du client?
 egroup_return=liste des machines
 egroup_retsubn=sous-réseau
 egroup_retshar=réseau partagé
+
 default=Défaut
 secs=secondes
 none=Aucun
@@ -119,33 +126,40 @@ listl_end=Fin du bail
 listl_return=liste des réseaux et des machines
 listl_all=Lister tous les baux actifs et expirés
 listl_delete=Cliquer sur l'adresse IP d'un bail de la liste ci-dessus pour l'effacer
+
 restart_errmsg1=Impossible de redémarrer le serveur DHCP
 restart_errmsg2=Impossible d'envoyer le signal au processus
 start_failstart=Impossible de démarrer DHCP
+
 sgroup_faildel=Impossible de supprimer le groupe
 sgroup_failsave=Impossible d'enregistrer le groupe
 sgroup_invassign=groupe assigné à une section incorrecte
 sgroup_echanged=Le contenu du fichier de configuration a été modifié. Essayez encore.
+
 shost_faildel=Impossible de supprimer la machine
 shost_failsave=Impossible d'enregistrer la machine
 shost_invalidhn=n'est pas un nom de machine valide
 shost_invalidhwa=$1 n'est pas une adresse $2 valide
 shost_invalidaddr='$1' contient un nom de machine ou une adresse IP invalide
 shost_invassign=machine assignée à une section incorrecte
+
 sopt_failsave=Impossible d'enregistrer les options du client
 sopt_invalidip=n'est pas une adresse IP valide
 sopt_invalidint=n'est pas un nombre entier
 sopt_invalidipp=n'est pas une adresse IP paire (comme 1.2.3.4,1.2.4.9)
+
 sshared_faildel=Impossible de supprimer le réseau partagé
 sshared_failsave=Impossible d'enregistrer le réseau partagé
 sshared_invalidsname=Réseau partagé manquant ou invalide
 sshared_nosubnet=Le réseau partagé '$1' ne contient aucun sous-réseau
+
 ssub_faildel=Impossible de supprimer le sous-réseau
 ssub_failsave=Impossible d'enregistrer le sous-réseau
 ssub_invalidsubaddr=n'est pas une adresse de sous-réseau valide
 ssub_invalidnmask=n'est pas une adresse de sous-réseau
 ssub_invalidipr=n'est pas une plage d'adresse IP
 ssub_nosubnet=Le réseau partagé '$1' ne contient aucun sous-réseau
+
 plib_deflt=Durée d'attribution par défaut
 plib_bfname=Fichier de démarrage
 plib_maxlt=Temps maximum de l'attribution
@@ -192,6 +206,7 @@ plib_ignore=Ignorer
 plib_auth_subnet=Le serveur fait autorite pour ce sous-reseau ?
 plib_auth_shared-network=Le serveur fait autorite pour ce reseau partage ?
 plib_auth_global=Le serveur fait autorite pour tous les sous-reseaux ?
+
 eopt_header=Options du client
 eopt_subtitle=Pour le sous-réseau $1
 eopt_returnsub=liste de sous-réseaux
@@ -226,6 +241,7 @@ eopt_nbntype=Type de node NetBIOS
 eopt_custom=Option spécifique
 eopt_cnum=Numéro
 eopt_cval=Valeur
+
 log_apply=Changements effectués
 log_start=Serveur DHCP démarré
 log_create_subnet=Sous-réseau $1 créé
@@ -245,12 +261,14 @@ log_delete_group=Groupe de $1 machines supprimé
 log_modify_group=Groupe de $1 machines modifié
 log_options_group=Options de groupes de $1 machines modifiées
 log_delete_lease=Supprimer le bail de $1
+
 pool_edit=Éditer le groupe d'adresses
 pool_create=Groupe d'adresses créé
 pool_header=Options de groupes d'adresses
 pool_allow=Clients à accepter
 pool_deny=Clients à rejeter
 pool_return=sous-réseau
+
 cdel_header=Avertissement
 cdel_shared1=réseau partagé
 cdel_shared2=réseau partagé
@@ -268,6 +286,7 @@ cdel_txt=La suppression de $1 '$2' entrainera aussi la suppression de son conten
 cdel_confirm=Voulez-vous réellement supprimer ce $1 ?
 cdel_eunknown=Erreur inconnue
 cdel_return=liste des machines et des réseaux
+
 eacl_aviol=Violation du contrôle d'accès
 eacl_np=Vous n'avez pas la permission de
 eacl_pdh=supprimer une machine
@@ -291,6 +310,7 @@ eacl_pdl=supprimer les baux
 eacl_psl=visualiser les baux
 eacl_pglob=éditer les options générales
 eacl_papply=redémarrer ce service
+
 acl_apply=Possibilité d'appliquer les modifications ?
 acl_r_leases=Possibilité de visualiser les baux ?
 acl_w_leases=Possibilité de supprimer les baux ?
@@ -317,6 +337,7 @@ acl_err=Érreur lors de la sauvegarde de la liste d'ACL.
 acl_ernow=Si vous souhaitez donner libre accès en écriture à un certain type d'objet dans les ACL globales, vous devez aussi lui donner un accès en lecture.
 acl_normal=normal
 acl_paranoic=paranoïaque
+
 iface_title=Interface Reseau
 iface_desc=Le serveur DHCP peut uniquement assigner des adresses IP sur le(les) reseau(x) connecte(s) sur l'(les)interface(s) selectionnee(s) ci-dessous.<br>L'interface reseau pour tous les sous-reseaux definis doit etre incluse. Si aucune n'est selectionnee, le serveur DHCP essayera d'en trouver une automatiquement.
 iface_listen=Ecouter sur l'(les)interface(s) :

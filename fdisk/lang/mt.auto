@@ -44,6 +44,7 @@ index_dscsi=Apparat SCSI $1 kontrollur $2
 index_draid=Livell RAID $1 
 index_dparts=Diviżjonijiet
 index_none2=Ma nstabet l-ebda diska fuq din is-sistema.
+
 bytes=bytes
 megabytes=megabytes
 extended=Estesa
@@ -67,6 +68,7 @@ select_promise=Wegħda ta 'sewqan RAID $1
 select_ppart=Wegħda ta 'sewqan RAID $1 partition $2 
 select_nvme=NVME SSD $1 drive $2 
 select_nvmepart=SSME SSME $1 drive $2 partizzjoni $3 
+
 edit_title=Edit Partizzjoni
 create_title=Oħloq Partition
 edit_ecannot=M'għandekx permess teditja din id-diska
@@ -110,6 +112,7 @@ edit_newmount2=Partizzjoni tal-Muntanja
 edit_mountas=kif
 edit_mountmsg=Immonta din il-partizzjoni fuq direttorju ġdid fis-sistema tiegħek, sabiex tkun tista 'tintuża biex taħżen fajls. Sistema ta 'fajls għandha tkun diġà ġiet maħluqa fuq il-partizzjoni.
 edit_mountmsg2=Immonta din il-partizzjoni bħala memorja virtwali fis-sistema tiegħek, biex iżżid l-ammont ta 'memorja disponibbli.
+
 mkfs_title=Sistema ta 'Fajls Ġdida
 mkfs_ecannot=M'għandekx permess tibni sistema ta 'fajls ġdida fuq din id-diska
 mkfs_desc1=Meta tikklikkja l-buttuna fin-naħa t'isfel ta 'din il-formola tibni sistema ġdida ta' fajls $1 fuq l-apparat $2. Id-data kollha dwar din il-partizzjoni se titħassar b'mod permanenti.
@@ -120,6 +123,7 @@ mkfs_err=Ma rnexxielux joħloq sistema ta 'fajls
 mkfs_exec=Twettiq kmand $1 ..
 mkfs_failed=.. kmand falla!
 mkfs_ok=.. kmand komplut.
+
 fsck_title=Tiswija tas-Sistema tal-Files
 fsck_ecannot=M'għandekx permess fsck din id-diska
 fsck_desc1=Meta tikklikkja fuq il-buttuna <tt>Tiswija tal-fajl tas-sistema</tt> se tipprova ssewwi s-sistema tal-fajls $1 bil-ħsara fuq $2 għall-immuntar fuq $3. Jekk is-sistema tal-files ma tiġix imħassra, ma ssir l-ebda tibdil.
@@ -132,6 +136,7 @@ fsck_err3=żbalji misjuba u kkoreġuti - jerġgħu jinbdew meħtieġa
 fsck_err4=instabu żbalji imma MHUX ikkoreġuti
 fsck_err16=Żball fil-linja tal-kmand
 fsck_unknown=kodiċi ta 'ritorn mhux magħruf $1 
+
 tunefs_title=Sintonizza l-Filesystem
 tunefs_ecannot=M'għandekx permess li tixgħel dan is-sistema ta 'fajls
 tunefs_desc=Din il-formola jippermettilek li taġġusta diversi parametri tas-sistema ta 'fajls $1 fuq $2 għall-immuntar fuq $3. Fajls eżistenti f'dan is-sistema ta 'fajls ma jiġux affettwati.
@@ -153,10 +158,12 @@ tunefs_err=Ma rnexxielhiex tirranġa s-sistema tal-fajls
 tunefs_exec=Twettiq kmand $1 ..
 tunefs_failed=.. kmand falla!
 tunefs_ok=.. kmand komplut.
+
 reboot_title=Irristartja
 reboot_msg=Tirranġa l-bidu issa ..
 reboot_ok=Irristartja Issa
 reboot_why=Int biddilt it-tabella tal-partizzjonijiet fuq $1. Sabiex din il-bidla tidħol fis-seħħ sewwa, is-sistema tiegħek trid terġa 'tinbeda.
+
 save_err=Ma rnexxielux isalva l-qasma
 save_ecannot=M'għandekx permess teditja din id-diska
 save_estart="$1" mhix ċilindru tal-bidu validu
@@ -165,6 +172,7 @@ save_emin=Iċ-ċilindru tal-bidu għandu jkun> = $1
 save_emax=Iċ-ċilindru tat-tmiem għandu jkun <= $1 
 save_eminmax=Iċ-ċilindru tal-bidu għandu jkun inqas mit-tmiem
 save_eoverlap=Koinċidenza misjuba b'diviżjoni $1 ($2 sa $3)
+
 ext2_b=Daqs tal-blokka
 ext2_f=Daqs tal-framment
 ext2_i=Bytes għal kull inode
@@ -172,6 +180,7 @@ ext2_m=Blokki riżervati
 ext2_g=Blokki għal kull grupp
 ext2_c=Iċċekkja għal blokki ħżiena?
 ext3_j=Ġurnal daqs tal-fajl
+
 msdos_ff=Numru ta 'XAĦAM
 msdos_F=Daqs tax-XAĦAM
 msdos_F_other=Oħrajn ..
@@ -180,24 +189,32 @@ msdos_n=Isem il-volum
 msdos_r=Iskrizzjonijiet ta 'għeruq
 msdos_s=Daqs tal-cluster
 msdos_c=Iċċekkja għal blokki ħżiena?
+
 minix_n=It-tul tal-fajl
 minix_i=Numru ta 'inodi
 minix_b=Numru ta 'blokki
 minix_c=Iċċekkja għal blokki ħżiena?
+
 reiserfs_force=Forza l-ħolqien tas-sistema ta 'fajls
 reiserfs_hash=Funzjoni Hash
+
 xfs_force=Forza l-ħolqien tas-sistema ta 'fajls
 xfs_b=Daqs tal-blokka
+
 jfs_s=Daqs tal-zokk
 jfs_c=Iċċekkja għal blokki ħżiena?
+
 btrfs_l=Daqs tal-weraq
 btrfs_n=Daqs tan-nodi
 btrfs_s=Daqs tas-Settur
+
 fatx_none=L-ebda għażla mhix disponibbli għas-sistemi ta 'fajls FATX.
+
 acl_disks=Diski ta 'dan l-utent jistgħu jaqsmu u jifformaw
 acl_dall=Id-diski kollha
 acl_dsel=Magħżula ..
 acl_view=Tista 'tara diski li ma jeddux?
+
 hdparm_title=Editja l-Parametri IDE
 hdparm_on=Fuq
 hdparm_off=Off
@@ -226,9 +243,11 @@ hdparm_performing=Twettiq
 hdparm_buf1=Cache tal-Baffer:
 hdparm_buf2=Buffered:
 hdparm_speedres=Riżultati tat-test tal-veloċità
+
 blink_title=Identifika Drive
 blink_desc=L-attività tal-LED tad-drajv issa se tixgħel sittin darba
 blink_back=Mur lura
+
 log_modify=$1 immodifikat
 log_create=Maħluq $1 
 log_delete=$1 imħassar
@@ -236,6 +255,7 @@ log_mkfs=Inħoloq sistema ta 'fajls $1 fuq $2
 log_tunefs=Sistema ta 'fajls sintonizzata $1 fuq $2 
 log_fsck=Sistema ta 'fajls $1 imsewwija fuq $2 
 log_hdparm=Parametri IDE modifikati għal $1 
+
 fs_ext2=Native Linux Qadim
 fs_minix=Minix
 fs_msdos=MS-DOS
@@ -246,9 +266,11 @@ fs_ext4=Native Linux Ġdid
 fs_xfs=SGI
 fs_jfs=IBM Journalling
 fs_btrfs=BTR
+
 delete_title=Ħassar Partition
 delete_rusure=Int żgur li trid tħassar $1 ($2)? Id-dejta dwar din il-partizzjoni tista ’tintilef għal dejjem.
 delete_ok=Ħassar issa
+
 disk_title=Editja Taqsimiet Disk
 disk_egone=Id-diska ma teżistix!
 disk_no=Numru
@@ -269,11 +291,13 @@ disk_table=<b>Format tat-tabella tal-partizzjoni:</b> $1
 disk_notable=<b>Format tat-tabella tal-partizzjoni:</b> L-ebda wieħed ma nħoloq
 disk_needtable=L-ebda diviżorji ma jistgħu jinħolqu mingħajr tabella ta 'partizzjonijiet.
 disk_return=lista tad-diviżorji
+
 relabel_title=Imsaħ il-ħitan
 relabel_warn=Int żgur li trid timsaħ il-ħitan kollha fuq $1 ($2) billi terġa 'tikteb it-tikketta tad-diska? Id-dejta u s-sistemi ta 'fajls eżistenti kollha jintilfu!
 relabel_parts=Diviżjonijiet eżistenti
 relabel_noparts=L-ebda wieħed għadu ma nħoloq
 relabel_table=Format tat-tabella tal-qasma
 relabel_ok=Imsaħ u Erġa 'tikketta
+
 table_msdos=MS-DOS (Format tal-partizzjoni standard)
 table_gpt=GPT (Għal diski 2T jew akbar)

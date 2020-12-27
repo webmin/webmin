@@ -19,10 +19,13 @@ index_samba=Samba?
 index_cyrus=IMAP?
 index_users=LDAP lietotāji
 index_groups=LDAP grupas
+
 imap_econn=Neizdevās izveidot savienojumu ar IMAP serveri $1 
 imap_elogin=Neizdevās pieteikties IMAP serverī $1 kā $2 : $3 
 conn_eldap_host=Jūsu sistēmā netika atrasts LDAP klienta konfigurācijas fails, tāpēc LDAP serveris jāiestata Moduļa konfigurācijas lapā
 conn_elogin=Jūsu sistēmā netika atrasts LDAP klienta konfigurācijas fails, tāpēc LDAP pieteikšanās ir jāiestata Moduļa konfigurācijas lapā
+conn_efile_open=Nevarēja atvērt LDAP saistīšanas akreditācijas datu failu:
+
 uedit_cap=Lietotāja iespējas
 uedit_samba=Samba pieteikšanās?
 uedit_cyrus=IMAP servera pieteikšanās?
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=Pēdējā paroles atjaunināšana
 uedit_sambapwdcanchange=Parole var mainīties
 uedit_sambabadpasswordcount=Nepareizs paroļu skaits
 uedit_sambaacctflags=Kontu karodziņi
+
 usave_eadd=Neizdevās pievienot lietotāju LDAP datu bāzei : $1 
 usave_emod=Neizdevās modificēt lietotāju LDAP datu bāzē : $1 
 usave_emoddn=Neizdevās pārdēvēt lietotāju LDAP datu bāzē : $1 
@@ -66,26 +70,33 @@ usave_eattrdupu=Lietotājs $1 jau izmanto $2 $3
 usave_eattrdupg=Grupa $1 jau izmanto $2 $3 
 usave_ereal=Trūkst īstā vārda
 usave_equota=Trūkst vai nav derīga IMAP kvota
+
 search_err=$1 meklēšana $2 neizdevās : $3 
+
 gedit_dn=Grupas LDAP DN
 gedit_return=grupas informācija
 gedit_cap=Grupas iespējas
 gedit_samba=Samba grupa?
+
 gsave_egone=Grupas vairs nav!
 gsave_edelete=Neizdevās izdzēst grupu no LDAP datu bāzes : $1 
 gsave_eadd=Neizdevās pievienot grupu LDAP datu bāzei : $1 
 gsave_emod=Neizdevās modificēt grupu LDAP datu bāzē : $1 
 gsave_emoddn=Neizdevās pārdēvēt grupu LDAP datu bāzē : $1 
+
 gdel_group=Notiek LDAP grupas ieraksta dzēšana.
+
 udel_pass=Notiek LDAP lietotāja ieraksta dzēšana.
 udel_book=Notiek dzēšana no adrešu grāmatas ..
 udel_imap=Notiek IMAP mapes dzēšana.
 udel_warnimap=Dzēšot mājas direktoriju, esošā pasta pastkaste tiks izdzēsta!
 udel_failed=.. neizdevās!  : $1 
+
 raw_title=LDAP atribūti
 raw_name=Atribūta nosaukums
 raw_value=Vērtības
 raw_for=$1 
+
 batch_samba=Vai izveidot Samba kontu jauniem lietotājiem?
 batch_imap=Vai izveidot IMAP kontu jauniem lietotājiem?
 batch_descafter3=Līnijās <b>izveidot</b> un <b>modificēt</b> jūs pēc izvēles varat pievienot papildu laukus, kas satur LDAP atribūtus <i>name</i> = <i>vērtība</i> tiks piešķirts jaunajiem vai modificētajiem lietotājiem.

@@ -16,8 +16,10 @@ index_type=کلیدی قسم:
 index_rsa1=RSA (SSH v1 کے لئے)
 index_rsa=RSA (SSH v2 کے لئے)
 index_dsa=DSA (SSH v2 کے لئے)
+
 bits=بٹس
 secs=سیکنڈ
+
 users_title=توثیق
 users_header=لاگ ان اور تصدیق کے اختیارات
 users_expire=صارف کو متنبہ کرنے کیلئے اکاؤنٹ کی میعاد ختم ہونے سے ایک دن پہلے
@@ -54,6 +56,7 @@ users_eauthkeys=گم شدہ یا غلط نظر آنے والی مجاز کلید
 users_maxauthtries=فی کنکشن زیادہ سے زیادہ لاگ ان کوششیں
 users_emaxauthtries=لاگ ان کوششوں کی فی کنکشن لاپتہ یا غیر عددی تعداد
 users_chal=چیلنج جوابی توثیق کا استعمال کریں؟
+
 net_title=نیٹ ورکنگ
 net_header=نیٹ ورکنگ کے اختیارات
 net_port=بندرگاہ پر سنو
@@ -91,6 +94,7 @@ net_eprots=آپ کو کم از کم ایک پروٹوکول منتخب کرنا 
 net_eladdress='$1' is not a valid address to listen on
 net_elport='$1' is not a valid port to listen on
 net_elisten2=سننے کے لئے کوئی پتے داخل نہیں ہوئے
+
 access_title=رسائی کنٹرول
 access_header=نیٹ ورک اور لاگ ان تک رسائی کے اختیارات
 access_allowu=صرف صارفین کو اجازت دیں
@@ -108,6 +112,7 @@ access_eallowg=کسی گروپ میں داخل ہونے کی اجازت نہیں
 access_edenyg=انکار کرنے کیلئے کوئی گروپ داخل نہیں ہوا
 access_eallowh=داخلے کی اجازت دینے کیلئے کوئی میزبان نہیں ہے
 access_edenyh=داخل ہونے سے انکار کرنے کیلئے کوئی میزبان نہیں
+
 misc_title=متفرق اختیارات
 misc_header=دوسرے متفرق SSH سرور کے اختیارات
 misc_x11=X11 کنیکشن فارورڈنگ کی اجازت دیں؟
@@ -131,14 +136,17 @@ misc_eumask=4 ہندسوں کے اوکٹل عماسک یا گمشدہ
 misc_ebits=گم شدہ یا غلط سرور کلید کا سائز
 misc_eregen=کلید نو تخلیق کا وقفہ غائب یا غلط
 misc_epid=PID فائل کا راستہ غائب ہے
+
 start_err=SSH سرور شروع کرنے میں ناکام
 apply_epid=نہیں چل رہا ہے
+
 hosts_title=کلائنٹ کے میزبان کے اختیارات
 hosts_header=SSH کلائنٹ میزبان
 hosts_none=کسی کلائنٹ کے میزبان کے اختیارات کی وضاحت نہیں کی گئی ہے۔ تمام SSH کلائنٹ لاگ ان پہلے سے طے شدہ ترتیبات کا استعمال کریں گے۔
 hosts_all=تمام میزبان
 hosts_add=کلائنٹ کے میزبان کیلئے اختیارات شامل کریں۔
 hosts_return=کلائنٹ کی میزبانی کی فہرست
+
 host_create=میزبان کے اختیارات شامل کریں
 host_edit=میزبان کے اختیارات میں ترمیم کریں
 host_header=SSH میزبان کے لئے کلائنٹ کے اختیارات
@@ -194,6 +202,7 @@ host_eprots=آپ کو کم از کم ایک پروٹوکول منتخب کرنا
 host_proxy=کنیکشن پراکسی کمانڈ
 host_proxy_def=کوئی نہیں
 host_eproxy=گمشدہ یا غلط نظر آنے والا کنکشن پراکسی کمانڈ
+
 log_users=تصدیق کے اختیارات تبدیل ہوگئے
 log_net=نیٹ ورکنگ کے اختیارات بدل گئے
 log_access=رسائی کنٹرول تبدیل کر دیا گیا
@@ -208,6 +217,7 @@ log_stop=ایس ایس ایچ سرور بند کردیا
 log_start=SSH سرور شروع کیا
 log_apply=اطلاق شدہ ترتیب
 log_manual=Manually editing config file $1
+
 sync_title=صارف SSH کلیدی سیٹ اپ
 sync_desc=This page allows you to configure the automatic setup of SSH for new Unix users created on your system. If configured, new users will not have to run <tt>ssh-keygen</tt> before using SSH.
 sync_create=نئے یونکس صارفین کے لئے SSH کلید سیٹ کریں؟
@@ -216,9 +226,11 @@ sync_pass=کلیدی پاسفریج کے بطور پاس ورڈ استعمال �
 sync_gnupg=نئے یونکس صارفین کے لئے GNUPG کلید ترتیب دیں۔
 sync_type=کلیدی قسم
 sync_auto=&lt;خودکار&gt;
+
 keys_title=میزبان ایس ایس ایچ کیز
 keys_desc=یہ صفحہ آپ کو اس میزبان کے لئے SSH کیز کو دیکھنے کی اجازت دیتا ہے۔
 keys_none=آپ کی SSHD کنفیگریشن میں میزبان کی کسی بھی قسم کے اندراجات نہیں مل سکے۔
+
 manual_title=کنفگ فائلوں میں ترمیم کریں
 manual_ecannot=آپ کو SSH سرور کنفول فائل میں ترمیم کرنے کی اجازت نہیں ہے
 manual_ok=ترمیم
@@ -226,5 +238,6 @@ manual_efile=منتخب فائل SSH سرور کنفیگریشن کا حصہ ن�
 manual_file=کنفگ فائل میں ترمیم کریں:
 manual_edata=کچھ داخل نہیں ہوا!
 manual_err=کنفگ فائل کو محفوظ کرنے میں ناکام
+
 dknown_err=معروف میزبانوں کو حذف کرنے میں ناکام
 dknown_enone=کوئی بھی منتخب نہیں ہوا

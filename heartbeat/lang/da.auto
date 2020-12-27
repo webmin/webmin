@@ -12,6 +12,7 @@ index_ereq_resource_cmd=Scriptet til at anmode om ressourcer fra den anden knude
 index_version=Heartbeat version $1 
 index_noversion=Advarsel - Den version af Heartbeat, der er installeret på dit system, kunne ikke automatisk opdages. Du skal indstille den på siden <a href='$1'>modulkonfiguration</a>.
 index_status=Pulsslagstatus
+
 conf_title=Konfigurationsindstillinger
 conf_header=Indstillinger for hjerterytme
 conf_serials=Serielle hjerteslagsporte
@@ -54,6 +55,7 @@ conf_auto_on=$ {Conf_enabled}
 conf_auto_off=$ {Conf_disabled}
 conf_auto_legacy=Ældre tilstand
 conf_auto_=$ {Standard}
+
 res_title=Cluster Resources
 res_node=Primær knude
 res_ips=IP-adresser
@@ -67,6 +69,7 @@ res_getserv=Hent ressource
 res_hbdown=Hjerteslag ned
 res_up=OP
 res_down=NED
+
 node_create=Tilføj klyngeressource
 node_edit=Rediger klyngeressource
 node_header=Detaljer om klyngeressource
@@ -83,6 +86,7 @@ node_enone=Manglende eller ugyldig primær knude
 node_eip='$1' er ikke en gyldig IP-adresse
 node_ecidr='$1' er ikke en gyldig CIDR
 node_ebroad='$1' er ikke en gyldig udsendelsesadresse
+
 auth_title=Autentificeringstaster
 auth_header=Cluster node-godkendelse
 auth_mode=Godkendelsestilstand
@@ -92,6 +96,8 @@ auth_md5=MD5 med adgangskode
 auth_err=Kunne ikke gemme godkendelsesnøgler
 auth_emd5=Manglende eller ugyldig MD5-adgangskode
 auth_esha1=Manglende eller ugyldig SHA1-adgangskode
+
 start_err=Kunne ikke starte hjerteslag
+
 apply_err=Kunne ikke anvende ændringer
 apply_epid=Processen kører ikke længere

@@ -14,6 +14,7 @@ index_restart=הפעל מחדש את Daemon Client LDAP
 index_restartdesc=החל את התצורה הנוכחית על ידי הפעלה מחדש של הדמון המקומי של לקוח LDAP.
 index_atboot=הפעל את לקוח LDAP בעת אתחול
 index_atbootdesc=משנה אם מופעל הדמון של לקוח LDAP כאשר המערכת מאתחלת או לא.
+
 server_title=תצורת שרת LDAP
 server_header=אפשרויות שרת LDAP וכניסה
 server_host=שמות מארחים של שרתי LDAP
@@ -51,6 +52,7 @@ server_etimelimit=מגבלת זמן חיבור חסרה או לא חוקית
 server_ecacert=קובץ אישור CA חסר או לא חוקי
 server_euport=יציאה חסרה או לא חוקית עבור שרת $1 
 server_euri=לא נכנסו שרתי LDAP
+
 base_title=בסיסי חיפוש של LDAP
 base_header=מיקומי חיפוש בספריות LDAP
 base_base=בסיס חיפוש גלובלי
@@ -86,6 +88,7 @@ base_enetmasks=חסר בסיס לשמות מסכות רשת
 base_ealiases=חסר בסיס לכינויי דוא"ל
 base_enetgroup=בסיס חסר לקבוצות נטו
 base_etimelimit=מגבלת זמן חיפוש חסרה או לא חוקית
+
 pam_title=אפשרויות אימות
 pam_header=הגדרות אימות PAM וסיסמא
 pam_filter=מסנן LDAP נוסף
@@ -106,10 +109,12 @@ pam_efilter=חסר מסנן LDAP נוסף
 pam_elogin=מאפיין LDAP חסר או לא חוקי עבור שם משתמש
 pam_egroupdn=קבוצת LDAP חסרה בכדי להכריח חברות
 pam_emember=מאפיין LDAP חסר או לא חוקי עבור חברי הקבוצה
+
 switch_title=שירותים באמצעות LDAP
 switch_service=שירות
 switch_srcs=מקורות מידע
 switch_return=שירותים המשתמשים ב- LDAP
+
 ldap_emodule=מודול $1 Perl הדרוש לשיחה עם שרת LDAP אינו מותקן. <a href='$2'>לחץ כאן</a> כדי להוריד את Webmin ולהתקין אותו כעת.
 ldap_emodule2=מודול $1 Perl הדרוש לשיחה עם שרת LDAP אינו מותקן.
 ldap_econf=קובץ התצורה של לקוח LDAP $1 לא נמצא במערכת שלך
@@ -119,6 +124,7 @@ ldap_elogin=כישלון ההתחברות לשרת LDAP $1 כ- $2 : $3
 ldap_anon=בעילום שם
 ldap_eparse=לא ניתן היה לנתח את שרת ה- LDAP URI $1 
 ldap_etls=המעבר למצב TLS נכשל : $1 
+
 browser_title=דפדפן LDAP
 browser_econn=לא ניתן להשתמש בדפדפן LDAP : $1 
 browser_base=גלישה:
@@ -129,6 +135,7 @@ browser_attrs=תכונות אובייקט
 browser_parent=עיין בהורה
 browser_none=אף אחד
 browser_sel=בסדר
+
 order_nisplus=ש"ח +
 order_nis=שקל חדש
 order_dns=DNS
@@ -142,6 +149,7 @@ order_user=מדפסות משתמשים
 order_xfn=XFN
 order_mdns4=DNS לקבוצה
 order_mdns4_minimal=DNS לקבוצה (מינימלי)
+
 desc_aliases=כינויי Sendmail
 desc_mail=כינויי Sendmail
 desc_hosts=כתובות מארח
@@ -177,6 +185,7 @@ desc_printers=מדפסות
 desc_ipnodes=צמתי IP
 desc_timezone=אזורי זמן
 desc_locale=אזורים
+
 eswitch_title=שירות עריכה
 eswitch_egone=השירות לא קיים!
 eswitch_header=פרטי השירות
@@ -196,6 +205,7 @@ eswitch_continue=המשך בחיפוש
 eswitch_none=אף אחד
 eswitch_err=שמירת השירות נכשלה
 eswitch_enone=לא נבחרו מקורות!
+
 log_server=תצורת שרת LDAP שונה
 log_base=בסיסי חיפוש מסוג LDAP השתנו
 log_pam=אפשרויות אימות ששונו
@@ -205,6 +215,7 @@ log_delboot=שרת לקוח LDAP מושבת בזמן האתחול
 log_start=הדמון של לקוח LDAP התחיל
 log_stop=הפגין דמון של לקוח LDAP
 log_restart=הדמון של לקוח LDAP מופעל מחדש
+
 check_title=אימות תצורת LDAP
 check_base=מציאת בסיס LDAP למשתמשים ..
 check_ebase=.. לא נמצא שום בסיס בתצורת הלקוח!

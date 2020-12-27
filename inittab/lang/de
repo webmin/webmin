@@ -26,22 +26,28 @@ inittab_apply=Init-Konfiguration anwenden
 inittab_applymsg=Drücken Sie diese Schaltfläche, um die aktuelle SysV-Init-Konfiguration durch den Befehl <tt>telinit q</tt> anzuwenden. Seien Sie sich bewusst, dass jegliche Fehler in Ihrer Konfiguration das System unbrauchbar machen können, wenn dieser Befehl ausgeführt wird.
 index_delete=Lösche ausgewählte Prozesse
 inittab_none2=Keine bootup Prozesse auf Ihrem System gefunden. Dies zeigt an, dass es wahrscheinlich nicht die SysV init Konfigurationsdatei nutzt.
+
 edit_inittab_err=Sie haben keine Berechtigung, einen Prozess zu bearbeiten
 edit_inittab_title=Prozess $1 bearbeiten
 edit_inittab_details=Prozessdetails
 edit_inittab_del=Löschen
 edit_inittab_save=Speichern
+
 new_inittab_err=Sie haben keine Berechtigung, einen neuen Prozess zu erstellen
 new_inittab_title=Neuer Prozess
+
 save_inittab_err=Sie haben keine Berechtigung, einen Prozess zu speichern
 save_inittab_noid=Fehler, es wurde kein Name für den Prozess eingegeben
 save_inittab_already=Fehler, der angegebene Prozessname ist bereits vergeben
+
 log_modify=Init-Prozess $1 geändert
 log_rename=Init-Prozess $1 nach $2 umbenannt
 log_create=Init-Prozess $1 erzeugt
 log_delete=Init-Prozess $1 gelöscht
 log_apply=Konfiguration angewandt
 log_deletes=Gelöschte $1 Init-Prozesse
+
 apply_err=Fehler beim Anwenden der Konfiguration
+
 delete_err=Fehlgeschlagen Prozesse zu löschen
 delete_enone=Nichts ausgewählt

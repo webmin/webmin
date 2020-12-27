@@ -29,12 +29,14 @@ index_fd=文件守護程序配置
 index_groups=Bacula組配置
 index_actions=備份和還原操作
 index_ocmin=由<a href=$2 target=_new>Linmin</a> </a>提供
+
 connect_emysql=未能加載數據庫DBI驅動程序 $1
 connect_elogin=無法登錄數據庫 $1:$2。
 connect_equery=數據庫 $1似乎不包含Bacula表。
 connect_equery2=這可能是因為安裝的SQLite Perl模塊太新，並且不支持Bacula使用的舊SQLite數據庫格式。
 connect_equery3=數據庫 $1似乎不包含OC Bacula組表。
 esql=SQL錯誤： $1
+
 check_edir=在您的系統上找不到Bacula配置目錄 $1。
 check_ebacula=找不到Bacula控制命令 $1。
 check_econsole=找不到Bacula控制台命令 $1。
@@ -43,12 +45,14 @@ check_eclient=該系統似乎是<a href='$2'>Bacula客戶</a>，而不是主管�
 check_econfigs=在 $1中找不到Bacula配置文件
 check_eservers=尚未定義Webmin服務器組
 check_engmod=未安裝OpenCountry Bacula組模塊
+
 proc_bacula-sd=存儲守護進程
 proc_bacula-fd=文件守護程序
 proc_bacula-dir=Bacula Director守護程序
 proc_bareos-sd=存儲守護進程
 proc_bareos-fd=文件守護程序
 proc_bareos-dir=Bacula Director守護程序
+
 stop_err=無法停止Bacula
 start_err=無法啟動Bacula
 start_einit=找不到 $1的初始化腳本
@@ -57,6 +61,7 @@ restart_err=重新啟動Bacula失敗
 apply_err=應用配置失敗
 apply_failed=檢測到配置錯誤
 apply_problem=無法應用配置： $1
+
 jobs_title=備份作業
 jobs_none=尚未定義備份作業。
 jobs_name=工作名稱
@@ -69,6 +74,7 @@ jobs_add=添加一個新的備份作業。
 jobs_delete=刪除選定的工作
 jobs_return=工作清單
 jobs_derr=刪除作業失敗
+
 filesets_title=文件集
 filesets_none=尚未定義備份文件集。
 filesets_name=文件集名稱
@@ -78,6 +84,7 @@ filesets_delete=刪除選定的文件集
 filesets_return=文件集列表
 filesets_derr=無法刪除文件集
 filesets_ednone=未選擇
+
 fileset_title1=創建文件集
 fileset_title2=編輯文件集
 fileset_header=備份文件集詳細信息
@@ -97,6 +104,7 @@ fileset_gzipdef=&lt;默認壓縮級別&gt;
 fileset_lzo=LZO壓縮
 fileset_gzip=Gzip級別 $1
 fileset_onefs=將備份限制為一個文件系統？
+
 clients_title=備份客戶端
 clients_none=尚未定義備份客戶端。
 clients_name=客戶名稱
@@ -106,6 +114,7 @@ clients_add=添加一個新的備份客戶端。
 clients_delete=刪除選定的客戶
 clients_return=客戶名單
 clients_derr=刪除客戶端失敗
+
 client_title1=創建備份客戶端
 client_title2=編輯備份客戶端
 client_header=要備份的客戶的詳細信息
@@ -128,6 +137,7 @@ client_efileret=文件保留期缺失或無效
 client_ejobret=缺少或無效的工作保留期
 client_echild=無法刪除此客戶端，因為它已被 $1使用
 client_status=顯示狀態
+
 job_title1=創建備份作業
 job_title2=編輯備份作業
 job_header=備份作業詳細信息
@@ -156,6 +166,7 @@ job_before=上班前指揮
 job_after=下班後指揮
 job_cbefore=作業前命令（在客戶端上）
 job_cafter=下班後命令（在客戶端上）
+
 schedules_title=備份時間表
 schedules_none=尚未定義備份計劃。
 schedules_name=時間表名稱
@@ -164,6 +175,7 @@ schedules_add=添加新的備份計劃。
 schedules_delete=刪除選定的時間表
 schedules_return=時間表清單
 schedules_derr=刪除時間表失敗
+
 schedule_title1=創建備份時間表
 schedule_title2=編輯備份時間表
 schedule_header=備份時間表詳細信息
@@ -177,6 +189,7 @@ schedule_ename=時間表名稱缺失或無效
 schedule_eclash=具有相同名稱的時間表
 schedule_etimes=第 $1行缺少備份時間
 schedule_echild=無法刪除此計劃，因為 $1已使用它
+
 backup_title=運行備份作業
 backup_header=備份作業詳細信息
 backup_job=運行作業
@@ -191,11 +204,13 @@ backup_running=..備份作業現在正在運行。完成後，結果將顯示在
 backup_running2=..備份作業已在後台啟動。
 backup_done=..備份完成。
 backup_failed=..備份未成功完成。查看上面的錯誤消息以獲取詳細信息。
+
 gbackup_title=運行Bacula組備份作業
 gbackup_run=正在 $2客戶端上啟動備份作業 $1 ..
 gbackup_on=在客戶端 $1上運行備份作業：
 gbackup_header=Bacula組備份作業詳細信息
 gbackup_jd=$1（組 $3上的文件集 $2）
+
 dirstatus_title=董事地位
 dirstatus_sched=計劃的備份作業
 dirstatus_name=工作名稱
@@ -216,12 +231,14 @@ dirstatus_status2=狀態
 dirstatus_donenone=尚未運行任何備份作業。
 dirstatus_cancel=取消選定的工作
 dirstatus_refresh=刷新清單
+
 clientstatus_title=客戶狀態
 clientstatus_err=無法從 $1提取狀態： $2
 clientstatus_msg=來自 $1的狀態： $2
 clientstatus_show=顯示客戶狀態：
 clientstatus_ok=好
 clientstatus_on=$1（在 $2上）
+
 storages_title=存儲守護進程
 storages_none=尚未定義任何存儲守護進程。
 storages_name=儲存名稱
@@ -232,6 +249,7 @@ storages_add=添加一個新的存儲守護進程。
 storages_delete=刪除選定的存儲後台駐留程序
 storages_return=存儲守護程序列表
 storages_derr=刪除存儲守護程序失敗
+
 storage_title1=創建存儲守護程序
 storage_title2=編輯存儲後台程序
 storage_header=遠程存儲守護程序的詳細信息
@@ -255,6 +273,7 @@ storage_emedia=缺少媒體類型名稱
 storage_emaxjobs=缺少最大並行作業
 storage_echild=無法刪除此客戶端，因為它已被 $1使用
 storage_status=顯示狀態
+
 devices_title=存儲設備
 devices_none=尚未定義任何存儲設備。
 devices_name=設備名稱
@@ -264,6 +283,7 @@ devices_add=添加新的存儲設備。
 devices_delete=刪除選定的存儲設備
 devices_return=存儲設備列表
 devices_derr=刪除存儲設備失敗
+
 device_title1=創建存儲設備
 device_title2=編輯存儲設備
 device_header=文件存儲設備的詳細信息
@@ -282,11 +302,13 @@ device_eclash=具有相同名稱的存儲設備已存在
 device_emedia=缺少媒體類型名稱
 device_edevice=歸檔設備或目錄丟失或無效
 device_echild=無法刪除此客戶端，因為它已被 $1使用
+
 storagestatus_title=存儲守護程序狀態
 storagestatus_err=無法從 $1提取狀態： $2
 storagestatus_msg=來自 $1的狀態： $2
 storagestatus_show=顯示存儲守護進程的狀態：
 storagestatus_ok=好
+
 label_title=標籤卷
 label_header=標籤體積的詳細信息
 label_storage=標籤的存儲守護進程
@@ -302,6 +324,7 @@ label_done=..貼標成功。
 label_epool=..找不到游泳池！
 label_err=標籤失敗
 label_elabel=沒有輸入標籤
+
 pools_title=卷池
 pools_none=尚未定義卷池。
 pools_name=泳池名稱
@@ -311,6 +334,7 @@ pools_add=添加一個新的捲池。
 pools_delete=刪除選定的捲池
 pools_return=卷池列表
 pools_derr=刪除卷池失敗
+
 pool_title1=創建卷池
 pool_title2=編輯卷池
 pool_header=備份卷池的詳細信息
@@ -332,6 +356,7 @@ pool_ereten=保留期限缺失或無效
 pool_status=顯示音量
 pool_autolabel=自動標記卷前綴
 pool_maxvolsize=最大卷大小（例如5G表示5 GB）
+
 poolstatus_title=池中的捲
 poolstatus_show=顯示池中的捲：
 poolstatus_ok=好
@@ -345,9 +370,11 @@ poolstatus_status=備用模式
 poolstatus_none=該備份池中當前沒有捲。
 poolstatus_never=決不
 poolstatus_delete=刪除選定的捲
+
 dvolumes_err=無法刪除卷
 dvolumes_enone=未選擇
 dvolumes_ebacula=Bacula錯誤： $1
+
 mount_title=安裝或卸載
 mount_header=存儲安裝或卸載選項
 mount_storage=儲存設備
@@ -365,8 +392,10 @@ unmount_failed=..卸載失敗！有關原因，請參見上面的錯誤消息。
 mount_return=安裝形式
 mount_err=掛載存儲設備失敗
 mount_eslot=插槽號缺失或無效
+
 cancel_err=取消作業失敗
 cancel_enone=未選擇
+
 gjobs_title=Bacula組備份作業
 gjobs_none=尚未定義Bacula組備份作業。
 gjobs_add=添加一個新的Bacula組備份作業。
@@ -374,10 +403,12 @@ gjobs_delete=刪除選定的工作
 gjobs_return=Bacula組工作清單
 gjobs_derr=無法刪除Bacula組作業
 gjobs_client=Bacula組進行備份
+
 gjob_title1=創建Bacula組備份作業
 gjob_title2=編輯Bacula組備份作業
 gjob_header=Bacula組備份作業詳細信息
 gjob_client=Bacula組進行備份
+
 groups_title=巴庫拉團體
 groups_none=Bacula尚未選擇要備份的Bacula組。
 groups_name=組的名字
@@ -391,6 +422,7 @@ groups_derr=刪除群組失敗
 groups_noadd=沒有要選擇的Bacula組進行備份。
 groups_info=$1（$2個成員）
 groups_already=所有Bacula組均已添加。
+
 group_title1=創建Bacula組
 group_title2=編輯Bacula組
 group_header=將備份的Bacula組的詳細信息
@@ -401,11 +433,13 @@ group_port=Bacula FD端口
 group_err=無法保存Bacula組
 group_eclash=具有相同名稱的組已存在
 group_members=Bacula小組的主持人
+
 sync_title=Bacula組同步
 sync_header=Bacula組自動客戶端同步選項
 sync_sched=是否按計劃同步？
 sync_schedyes=是的，有時在下面選擇 ..
 sync_err=保存Bacula組同步失敗
+
 log_create_client=已創建備份客戶端 $1
 log_modify_client=修改後的備份客戶端 $1
 log_delete_client=刪除的備份客戶端 $1
@@ -464,6 +498,7 @@ log_director=已保存全局Bacula Director配置
 log_file=保存的Bacula文件守護程序配置
 log_storagec=保存的Bacula存儲守護程序配置
 log_fixpass=固定的Bacula控制台程序密碼
+
 director_title=導演配置
 director_header=巴庫拉全球董事選項
 director_name=董事姓名
@@ -477,6 +512,7 @@ director_ename=董事姓名缺失或無效
 director_eport=端口號丟失或無效
 director_ejobs=並發作業數量丟失或無效
 director_edir=工作目錄缺失或不存在
+
 tls_enable=啟用TLS加密？
 tls_require=只接受TLS連接？
 tls_verify=驗證TLS客戶端？
@@ -488,6 +524,7 @@ tls_ecert=TLS證書文件缺失或不存在
 tls_ekey=TLS密鑰文件缺失或不存在
 tls_ecacert=缺少或不存在的TLS CA證書文件
 tls_ecerts=要啟用TLS，必須指定證書，密鑰和CA文件
+
 file_title=文件守護程序配置
 file_header=Bacula文件守護程序選項
 file_name=文件守護程序名稱
@@ -500,6 +537,7 @@ file_ename=文件守護程序名稱丟失或無效
 file_eport=端口號丟失或無效
 file_ejobs=並發作業數量丟失或無效
 file_edir=工作目錄缺失或不存在
+
 fdirectors_title=文件守護進程導演
 fdirectors_none=尚未定義任何董事。
 fdirectors_name=董事姓名
@@ -508,6 +546,7 @@ fdirectors_add=添加新導演。
 fdirectors_delete=刪除選定的董事
 fdirectors_return=董事名單
 fdirectors_derr=刪除董事失敗
+
 fdirector_title1=創建文件守護程序控制器
 fdirector_title2=編輯文件守護程序控制器
 fdirector_header=控制遙控器的詳細信息
@@ -519,6 +558,7 @@ fdirector_err=無法保存文件守護程序導演
 fdirector_ename=導演姓名失踪
 fdirector_eclash=同名導演已經存在
 fdirector_epass=密碼遺失
+
 sdirectors_title=存儲守護進程導演
 sdirectors_none=尚未定義任何董事。
 sdirectors_name=董事姓名
@@ -527,6 +567,7 @@ sdirectors_add=添加新導演。
 sdirectors_delete=刪除選定的董事
 sdirectors_return=董事名單
 sdirectors_derr=刪除董事失敗
+
 sdirector_title1=創建存儲守護程序控制器
 sdirector_title2=編輯存儲守護程序控制器
 sdirector_header=控制遙控器的詳細信息
@@ -538,6 +579,7 @@ sdirector_err=無法保存存儲後台駐留程序導演
 sdirector_ename=導演姓名失踪
 sdirector_eclash=同名導演已經存在
 sdirector_epass=密碼遺失
+
 storagec_title=存儲守護程序配置
 storagec_header=Bacula存儲守護程序選項
 storagec_name=守護程序名稱
@@ -550,6 +592,7 @@ storagec_ename=存儲守護程序名稱丟失或無效
 storagec_eport=端口號丟失或無效
 storagec_ejobs=並發作業數量丟失或無效
 storagec_edir=工作目錄缺失或不存在
+
 chooser_title=選擇時間表
 chooser_monthsh=執行月份
 chooser_months=一年中的月份
@@ -574,11 +617,13 @@ chooser_emonthsrange=所選月份必須連續
 chooser_eweekdaysrange=選定的工作日必須連續
 chooser_eweekdaynumsrange=選定的工作日數字必須連續
 chooser_edaysrange=每月的選定天數必須連續
+
 weekdaynum_1=第一
 weekdaynum_2=第二
 weekdaynum_3=第三
 weekdaynum_4=第四
 weekdaynum_5=第五
+
 restore_title=恢復備份
 restore_title2=將備份還原到Bacula組
 restore_title3=恢復Bacula組備份

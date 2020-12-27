@@ -24,13 +24,16 @@ index_out=Die uitset vanaf $1 was
 index_boot=Koppel aan die opstart met:
 index_noboot=&lt;Moenie kontak maak nie
 index_bootdesc=Verander hierdie opsie om te bepaal of die geselekteerde PPP-verbinding met die opstartyd begin word of nie.
+
 init_title=Spoor konfigurasie op
 init_cmd=Bespeur 'n gekoppelde modem met die opdrag $1.
 init_done=.. klaar
 init_modems=Modems is opgestel op $1 en $2.
 init_modem='N Modem is op $1 opgespoor.
 init_none=Geen modems is opgespoor nie!
+
 device_serial=reekspoort $1 
+
 connect_title=Vestig verbinding
 connect_cmd=Probeer 'n verbinding met die opdrag $1 tot stand bring.
 connect_failed=.. verbinding misluk! Kyk na die afvoer hierbo vir die rede waarom.
@@ -40,12 +43,14 @@ connect_dns=Gebruik PPP-toegewysde DNS-konfigurasie.
 connect_dns2=PPP-toegewysde DNS-konfigurasie is ingestel.
 connect_dnsto=Uittreksel wag op die PPP-toegewysde DNS-konfigurasie.
 connect_dnsdown=Dit lyk asof die verbinding misluk het terwyl hulle gewag het op die PPP-toegewysde DNS-konfigurasie.
+
 disc_title=Sluit PPP af
 disc_err=Kon nie PPP-verbinding afsluit nie
 disc_edown=Al ontkoppel
 disc_ok1=U PPP-verbinding met behulp van $2 is suksesvol afgeskakel.
 disc_ok2=U PPP-verbinding is suksesvol afgesluit.
 disc_dns=Die ou DNS-konfigurasie is herstel.
+
 edit_title1=Voeg ISP Dialer by
 edit_title2=Wysig ISP Dialer
 edit_ddesc=Hierdie standaardinstellings is van toepassing op verbindings wat met enige ander skakelaar gemaak word.
@@ -76,6 +81,7 @@ edit_idle=Rustyd (in sekondes)
 edit_def=Vanaf verstekinstellings
 edit_inherits=Oorerf-instellings
 edit_from=Van skakelbuis ..
+
 save_err=Kon nie die skakelaar stoor nie
 save_err2=Kon nie die skakelaar uitvee nie
 save_ename=Ontbrekende of ongeldige skakelnummer
@@ -88,6 +94,7 @@ save_edial=Ontbrekende of ongeldige aantal skakelpogings
 save_eidle=Ontbrekende of ongeldige rustyd-timeout
 save_einherits=Hierdie skakelaar kan nie uitgevee word nie, want '$1' erf die instellings daarvan.
 save_eclash=Daar bestaan reeds 'n skakelbeller met dieselfde naam
+
 log_create=Skep $1 
 log_update=$1 opgedateer
 log_delete=$1 is uitgevee

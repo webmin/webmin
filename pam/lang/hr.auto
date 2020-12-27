@@ -4,6 +4,7 @@ index_desc=Opis
 index_add=Dodajte novu PAM uslugu.
 index_return=popis usluga
 index_none=Nisu pronađene PAM konfiguracijske datoteke na vašem sustavu u direktoriju $1. Možda PAM nije podržan ili je vaša <a href='$2'>konfiguracija modula</a> netočna.
+
 desc_su=Promijeni korisnika
 desc_su-l=Promjena korisnika (sa prijavom)
 desc_login=Lokalna ili daljinska prijava
@@ -87,6 +88,7 @@ desc_common-account=Uobičajena provjera računa
 desc_common-auth=Uobičajena provjera autentičnosti
 desc_common-password=Uobičajena promjena lozinke
 desc_common-session=Uobičajeno postavljanje sesije
+
 edit_title=Uređivanje PAM usluge
 edit_header=Pojedinosti o PAM usluzi
 edit_name=Naziv usluge
@@ -107,6 +109,7 @@ edit_move=Pomicati
 edit_return=PAM usluga
 edit_inc=Uključi uslugu $1 
 edit_iheader=Uključene PAM usluge
+
 pam_pwdb.so=Unix autentifikacija lozinke
 pam_securetty.so=Osigurajte TTY ček za root
 pam_nologin.so=<tt>/etc/nologin</tt> provjera datoteke
@@ -149,6 +152,7 @@ pam_console.so=Provjera samo konzole
 pam_xauth.so=X provjera autentičnosti
 pam_stack.so=Nazovite drugu PAM uslugu
 pam_foreground.so=Postavljanje konzole
+
 control_requisite=potreban
 control_required=Potreban
 control_sufficient=dovoljan
@@ -157,6 +161,7 @@ control_desc_requisite=Provjera autentifikacije odmah nakon neuspjeha
 control_desc_required=Na kraju neuspjeh provjere autentifikacije
 control_desc_sufficient=Uspješno provjerite autentifikaciju
 control_desc_optional=Uspjeh ili neuspjeh se zanemaruje
+
 create_title=Stvorite PAM uslugu
 create_header=Nove opcije PAM usluge
 create_name=Naziv usluge
@@ -165,6 +170,7 @@ create_mods=Početni PAM moduli
 create_0=nijedan
 create_1=Unix provjera autentičnosti
 create_2=Zabraniti sav pristup
+
 mod_edit=Uredi PAM modul
 mod_create=Dodajte PAM modul
 mod_header=Opcije PAM modula
@@ -178,10 +184,12 @@ mod_type_password=Promjena lozinke
 mod_control=Razina neuspjeha
 mod_args=Argumenti modula
 mod_err=Spremanje modula nije uspjelo
+
 pwdb_shadow=Koristite datoteku zaporke u sjeni?
 pwdb_nullok=Prihvaćate null lozinke?
 pwdb_md5=Koristite lozinke kriptirane za MD5?
 pwdb_nodelay=Kašnjenje nakon neuspjele prijave?
+
 unix_nullok_secure=Prihvaćate null lozinke na sigurnim TTYs?
 unix_min=Minimalna duljina lozinke
 unix_nomin=nijedan
@@ -190,6 +198,7 @@ unix_nomax=Nema ograničenja
 unix_obscure=Spriječiti upotrebu jednostavnih lozinki?
 unix_emin=Minimalna duljina lozinke nedostaje ili nije važeća
 unix_emax=Maksimalna duljina lozinke nedostaje ili nije važeća
+
 listfile_item=Pretraži datoteku za
 listfile_item_user=Korisničko ime
 listfile_item_tty=TTY
@@ -206,51 +215,64 @@ listfile_apply=Ograniči ček na
 listfile_all=Svi korisnici
 listfile_user=Samo korisnik
 listfile_group=Samo grupna
+
 cracklib_type=Vrsta lozinke u retku
 cracklib_retry=Maksimalni pokušaji prije neuspjeha
 cracklib_eretry=Nedostaje ili nevažeći broj pokušaja
 cracklib_etype=Nedostaje ili nije važeća vrsta zaporke
+
 rhosts_equiv=Pročitati <tt>/etc/hosts.equiv</tt> datoteku?
 rhosts_rhosts=Čitati datoteke <tt>.rhosts</tt>?
 rhosts_promiscuous=<tt>+</tt> unos dopušta svim domaćinima?
 rhosts_suppress=Neuspjesi provjere autentičnosti zapisnika?
+
 env_var=Naziv varijable
 env_def=Zadana vrijednost
 env_over=Poništena vrijednost
 env_evar=Imena varijabli ne mogu sadržavati razmake
+
 securetty_ttys=Osigurajte TTY
+
 shells_shells=Važeće školjke korisnika
+
 tally_deny=Pokušaji neuspjeha prije odbijanja pristupa
 tally_reset=Poništi neuspjeh računa na uspjeh
 tally_edeny=Nedostaje ili nevažeći broj pokušaja neuspjeha
 tally_magic=Broj neuspjeha odnosi se na <tt>root</tt>?
 tally_root=<tt>root</tt> račun se može odbiti?
+
 time_services=usluge
 time_ttys=TTYs
 time_users=Korisnici
 time_times=Vrijeme pristupa
 time_info=Sva polja mogu sadržavati više vrijednosti odvojenih s |, a vrijednosti mogu koristiti * kao zamjenski znak ili! kao negator.
+
 group_services=usluge
 group_ttys=TTYs
 group_users=Korisnici
 group_times=Vrijeme pristupa
 group_groups=Dodajte grupe
 group_info=Sva polja mogu sadržavati više vrijednosti odvojenih s |, a vrijednosti mogu koristiti * kao zamjenski znak ili! kao negator.
+
 wheel_group=Provjerite članstvo u grupi
 wheel_group_def=Zadano (<tt>kotač</tt> ili GID 0)
 wheel_trust=Članovi grupe zaobilaze daljnju provjeru autentičnosti?
 wheel_deny=Odbiti umjesto dopustiti članovima grupe?
 wheel_egroup=Nedostaje ili nevažeće ime grupe
+
 motd_file=Datoteka za prikaz
 motd_file_def=Zadano (<tt>/etc/motd</tt>)
 motd_efile=Nedostaje ili nevažeće ime datoteke
+
 mail_nopen=Prikaži obavijest e-poštom pri prijavi?
 mail_close=Prikaži obavijest e-poštom pri odjavi?
 mail_empty=Obavijestiti je li datoteka pošte prazna?
 mail_noenv=Postavite varijablu okruženja $ MAIL?
 mail_dir=Imenik spool pošte
 mail_edir=Nedostaje ili nevažeći imenik spool-a za poštu
+
 stack_service=Provjerite prijavu na PAM uslugu
+
 log_pam_create=Napravljena PAM usluga $1 
 log_pam_delete=Izbrisana PAM usluga $1 
 log_mod_create=PAM modul $1 dodan je usluzi $2 
@@ -262,6 +284,7 @@ log_inc_create=Dodano je uključeno $1 za uslugu $2
 log_inc_modify=Izmijenjeno uključuje $1 za uslugu $2 
 log_inc_delete=Izbrisano uključuje $1 za uslugu $2 
 log_incs=Ažurirano uključuje za uslugu $1 
+
 inc_edit=Uređivanje usluge uključeno
 inc_create=Stvorite uključenu uslugu
 inc_header=Uključeni podaci o PAM usluzi

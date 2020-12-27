@@ -16,6 +16,7 @@ index_startmsg=Tryck på denna knapp för att starta skrivarserverprocessen. Det
 index_restart=Starta om skrivarservern
 index_restartmsg=Tryck på denna knapp för att starta om skrivarserverprocessen. Detta gör så att de aktuella skrivarinställningarna tas i drift.
 index_return=skrivarlista
+
 edit_eedit=Du får inte ändra något för denna skrivare
 edit_eadd=Du får inte lägga till skrivare
 edit_add=Ny skrivare
@@ -59,7 +60,9 @@ edit_direct=Direkt TCP-förbindelse
 edit_dport=Port
 edit_driver=Skrivardrivrutin
 edit_check=Kontrollera om servern är uppe?
+
 blocks=block
+
 save_err=Det gick inte att spara skrivaren
 save_eadd=Du får inte lägga till skrivare
 save_eedit=Du får inte ändra något för denna skrivare
@@ -76,6 +79,7 @@ save_erqueue='$1' är inte ett giltigt serverkönamn
 save_eremote=Det går inte att använda drivrutiner tillsammans med andra Unix-skrivare
 save_edhost=Datorn '$1' finns inte
 save_edport=Port för direkt förbindelse saknas eller är ogiltig
+
 jobs_title=Visa utskriftsjobb
 jobs_header=Visa utskriftsjobb för $1
 jobs_id=Jobb-ID
@@ -89,17 +93,23 @@ jobs_none=Inga utskriftsjobb på $1
 jobs_all=Avbryt alla utskriftsjobb
 jobs_bytes=bytes
 jobs_test=Gör testutskrift
+
 cancel_ecannot=Du får inte avbryta utskriftsjobb
 cancel_err=Det gick inte att avbryta utskriftsjobb
 cancel_egone=Utskriftsjobb $1 finns inte längre
+
 view_ecannot=Du får inte titta på detta utskriftsjobb
 view_egone=Detta utskriftsjobb finns inte längre
+
 start_ecannot=Du får inte starta skrivarservern
 start_err=Det gick inte att starta skrivarservern
+
 stop_ecannot=Du får inte stoppa skrivarservern
 stop_err=Det gick inte att stoppa skrivarservern
+
 restart_ecannot=Du får inte starta om skrivarservern
 restart_err=Det gick inte att starta om skrivarservern
+
 webmin_none=Ingen
 webmin_nonemsg=Postscript eller textskrivare
 webmin_remotemsg=Annan skrivare
@@ -110,6 +120,7 @@ webmin_uniprint=Uniprint-drivrutin
 webmin_edrivers=Det gick inte att hämta drivrutiner från $1. Det finns ingen tillgänglig Webmin-skrivardrivrutin som kör ghostscript
 webmin_egs=Kommandot $1 kunde inte hittas. Det finns ingen tillgänglig Webmin-skrivardrivrutin som kör ghostscript
 webmin_edriver='$1' finns inte
+
 caldera_none=Ingen
 caldera_nonemsg=Fjärr- eller rå skrivare
 caldera_prog=Program
@@ -123,6 +134,7 @@ caldera_uniprint=Uniprint-drivrutin
 caldera_eprog='$1' finns inte
 caldera_edriver=Du har inte angivit någon skrivardrivrutin
 caldera_eres=Du har inte angivit någon upplösning
+
 redhat_none=Ingen
 redhat_nonemsg=Postscript eller textskrivare
 redhat_prog=Program
@@ -140,6 +152,7 @@ redhat_edriver=Du har inte angivit någon skrivardrivrutin
 redhat_ehmargin=Höger/vänstermarginal saknas eller är ogiltig
 redhat_evmargin=Marginal över/under saknas eller är ogiltig
 redhat_eres=Du har inte angivit någon upplösning
+
 suse_none=Ingen
 suse_nonemsg=Postscript eller textskrivare
 suse_prog=Program
@@ -151,7 +164,9 @@ suse_paper=Pappersstorlek
 suse_method=Filtermetod
 suse_auto=Automatisk
 suse_ascii=ASCII
+
 estop=Det gick inte att stoppa lpd: $1
+
 acl_printers=Denna användare får konfigurera följande skrivare
 acl_add=Kunna lägga till skrivare?
 acl_cancel=Kunna stoppa utskriftsjobb?
@@ -162,6 +177,7 @@ acl_pall=Alla skrivare
 acl_psel=Angivna ...
 acl_view=Visa skrivare som inte kan konfigureras?
 acl_test=Kunna göra testutskrifter?
+
 log_stop=Stoppade skrivarservern
 log_start=Startade skrivarservern
 log_restart=Startade om skrivarservern
@@ -173,27 +189,35 @@ log_delete=Tog bort skrivare $1 på $2
 log_create_l=Lade till $3 skrivare $1 på $2
 log_modify_l=Modifierade $3 skrivare $1 på $2
 log_delete_l=Tog bort $3 skrivare $1 på $2
+
 linux_paralel=Parallellport $1
 linux_serial=Serieport $1 (COM$1)
 linux_null=Nollutgång
 linux_usb=USB-skrivare $1
+
 freebsd_paralel=Parallellport
 freebsd_serial=Serieport $1 (COM$1)
+
 openbsd_paralel=Parallellport
 openbsd_serial=Serieport $1 (COM$1)
+
 unixware_paralel=Parallellport $1
 unixware_serial=Serieport $1
 unixware_null=Nollutgång
+
 hpux_paralel=Parallell $1
 hpux_serial=Seriell $1
 hpux_null=Nollutgång
+
 lprng_paralel=Parallellport $1
 lprng_serial=Serieport $1 (COM$1)
 lprng_null=Nollutgång
+
 solaris_paralel=Parallellport
 solaris_uparalel=Ultra 5/10-parallellport
 solaris_serial=Serieport $1
 solaris_null=Nollutgång
+
 test_title=Gör testutskrift
 test_ecannot=Du får inte göra testutskrifter
 test_desc=Med detta formulär kan du göra en testutskrift på skrivare $1. Ange vilken typ av utskrift du vill göra:
@@ -205,6 +229,7 @@ test_print=Skriv ut
 test_exec=Skriver ut testsidan med kommandot $1 ...
 test_failed=... det gick inte.
 test_ok=... klart.
+
 cups_none=Ingen
 cups_nonemsg=Remote or raw printer
 cups_prog=Program

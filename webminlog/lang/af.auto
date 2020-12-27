@@ -30,6 +30,7 @@ index_sdesc=Aksie beskrywing bevat
 index_shost=Bron Webmin-bediener
 index_long=Wys volledige aksiebeskrywings?
 index_global=&lt;Nie in enige module nie
+
 search_title=Soek Resultate
 search_date=datum
 search_time=tyd
@@ -63,6 +64,7 @@ search_global_baduser=Slegte gebruikersnaam
 search_global_badpass=Slegte wagwoord
 search_global_twofactor=Ongeldige tweefaktor-teken
 search_csv=Uitvoer as CSV.
+
 view_title=Aksiebesonderhede
 view_header=Besonderhede van aangemelde aksie $1 
 view_action=beskrywing
@@ -96,12 +98,14 @@ view_files=Lêers verander en opdragte word uitgevoer
 view_raw=Rou log-data
 view_rawname=Parameternaam
 view_rawvalue=Parameterwaarde
+
 acl_mods=Kan logs in modules besigtig
 acl_all=Almal
 acl_sel=Hier onder gekies ..
 acl_self=Slegs self
 acl_users=Kan aksies deur gebruikers sien
 acl_rollback=Kan aksies teruggevoer word?
+
 rollback_title=Terugrolaksie
 rollback_rusure=Is u seker dat u al die lêers wat hieronder gelys is, na hul inhoud wil terugstel voordat hierdie aksie geneem is? Enige data wat hulle tans bevat, sal oorskryf word deur die volgende wysigings :
 rollback_isdir='N Gids - geen verandering sal aangebring word nie.
@@ -124,4 +128,5 @@ rollback_modfile=Die inhoud van lêer $1 is teruggerol.
 rollback_deleted=Lêer $1 is uitgevee.
 rollback_nodeleted=Nie-bestaande lêer $1 oorgeslaan.
 rollback_enone=Geen lêers gekies nie
+
 log_rollback=Terugrol-aksie $1 in module $2 

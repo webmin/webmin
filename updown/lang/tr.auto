@@ -11,13 +11,17 @@ index_descfetch=Bu sayfa, tarayıcınızda görüntülemek veya aynı sisteme ka
 index_email=İndirme işlemi tamamlandığında e-posta gönderilsin mi?
 index_emailto=Evet, adreslemek
 index_email2=Yüklemeler tamamlandığında e-posta gönderilsin mi?
+
 upload_eemail=Bildirilecek e-posta adresi eksik
 upload_saving=$1 dosyası kaydediliyor ..
 upload_saved=.. $1 yazdı
 upload_unzipping=$1 dosyası ayıklanıyor ..
 upload_unzipdone=.. $1 
+
 download_enone=İndirilecek URL girilmedi
+
 acl_fetch=Dosyaları PC'ye indirebilir mi?
+
 fetch_err=Dosya indirilemedi
 fetch_ecannot=PC'ye dosya indirmenize izin verilmiyor
 fetch_efile=Dosya adı girilmedi
@@ -26,6 +30,7 @@ fetch_eopen=Dosya açılamadı : $1
 fetch_eaccess=$1 sitesinden dosya indirmenize izin verilmiyor
 fetch_ezip=<tt>zip</tt> komutu yüklü değilse bir dizin indirilemez
 fetch_eroot=Kök dizin indirilemiyor!
+
 email_downmsg=Aşağıdaki indirme işlemi tamamlandı :
 email_downurl=URL: $1 
 email_downerr=Hata mesajı: $1 

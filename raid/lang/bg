@@ -21,6 +21,7 @@ index_mailfromnone=Подразбиращ се (<tt>root</tt>)
 index_program=Команда за стартиране когато бъдат открити проблеми
 index_programnone=Не стартирай нищо
 index_monitor=Включено ли е наблюдението?
+
 linear=Линеен (Наставен)
 raid0=RAID0 (Стрип-нат)
 raid1=RAID1 (Огледален)
@@ -29,6 +30,7 @@ raid5=RAID5 (Разпределена четност)
 raid6=RAID6 (Двукратна разпределена четност)
 raid10=RAID10 (Стрип-нат и огледален)
 blocks=блока
+
 create_title=Създаване на RAID устройства
 create_header=Опции за RAID устройство
 create_device=Файл на устройството
@@ -62,6 +64,7 @@ create_o2_layout=2 offset копия
 create_n3_layout=3 близки копия
 create_f3_layout=3 отдалечени копия
 create_o3_layout=3 offset копия
+
 view_title=RAID устройство
 view_header=Опции на RAID устройство
 view_device=Файл на устройството
@@ -117,6 +120,7 @@ view_mountmsg=Въведете директория и натиснете тоз
 view_mountmsg2=Натиснете този бутон, за да използвате това RAID устройство за виртуална памет на вашата система.
 view_blocks=$1 блока
 view_sparegroup=Резервна група
+
 mkfs_title=Създаване на файлова система
 mkfs_header2=Този формуляр ви позволява да създадете нова $2 файлова система на $1. <b>Всички</b> налични данни ще бъдат изтрити!
 mkfs_options=Опции за нова файлова система на Linux
@@ -124,6 +128,7 @@ mkfs_err=Грешка при създаване на файлова систем
 mkfs_exec=Изпълнява команда $1 ..
 mkfs_failed=.. командата върна грешка!
 mkfs_ok=.. команда приключи.
+
 emkraid=<tt>mkraid</tt> върна грешка : $1
 eraidstop=<tt>raidstop</tt> върна грешка : $1
 eraidstart=<tt>raidstart</tt> върна грешка : $1
@@ -135,6 +140,7 @@ emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> режим върна грешка 
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> режим върна грешка : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> режим върна грешка : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> режим върна грешка : $1
+
 log_create=Създадено $1 RAID устройство $2
 log_stop=Деактивирано RAID устройство $1
 log_start=Активирано RAID устройство $1
@@ -147,14 +153,17 @@ log_grow=Допълнено RAID устройство $1 до общо $2 дис
 log_convert_to_raid6=Конвертирано RAID5 устройство $1 към RAID6 устройство
 log_convert_to_raid5=Конвертирано RAID6 устройство $1 към RAID5 устройство
 log_notif=Променени опции за предупреждение при RAID проблеми
+
 notif_err=Грешка при запис на опциите за предупреждения при RAID проблеми
 notif_emailaddr=Липсващ или невалиден адрес за предупреждения
 notif_emailfrom=Липсващ или невалиден „От“ адрес
 notif_eprogram=Липсваща или несъществуваща програма за изпълнение
+
 delete_title=Изтриване на RAID масив
 delete_rusure=Сигурни ли сте, че искате да изтриете RAID масива $1, който използва $2 дисково пространство?
 delete_ok=Да, изтрий
 delete_eidx=Няма избран RAID масив!
+
 remove_title=Премахване на дял от RAID масив
 remove_rusure=Сигурни ли сте, че искате да премахнете дял $2 от RAID масив $1?
 remove_ok=Да, премахни

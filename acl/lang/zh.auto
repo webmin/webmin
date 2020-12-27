@@ -6,6 +6,7 @@ index_delete=删除所选
 index_joingroup=添加到群组：
 index_eulist=无法列出用户： $1 
 index_eglist=无法列出组： $1 
+
 edit_title3=创建安全的Webmin用户
 edit_readonly=该Webmin用户不能编辑，因为它是由 $1 模块管理的。 <a href='$2'>单击此处</a>以绕过此警告并仍然编辑用户-但请注意，任何手动更改都可能被覆盖！
 edit_cloneof=克隆Webmin用户
@@ -59,6 +60,7 @@ edit_safe=权限等级
 edit_safe0=无限制
 edit_safe1=仅安全模块
 edit_unsafe=重置为无限制
+
 save_eunixname=用户名“$1”不是Unix用户，因此不能在安全模式下使用
 save_enamewebmin=用户名“ webmin”保留供内部使用
 save_eoverlay=除非选择了主题，否则无法选择主题覆盖
@@ -69,15 +71,19 @@ save_edays=没有天数可供选择
 save_ehours=缺少时间或无效时间
 save_ehours2=允许的开始时间必须在结束之前
 save_etemp=除非启用了<a href='$1'>提示用户输入新密码</a>的选项，否则不能使用在下次登录时强制更改密码的选项。
+
 delete_eanonuser=该用户正用于匿名模块访问
+
 cert_ebrowser=Webmin不知道如何为浏览器颁发客户端证书（ $1 ）
 cert_done= $1 的证书已成功生成。
 cert_pickup=<a href='$1'>单击此处获取证书并将其安装在浏览器中</a>
 cert_install=将证书安装到浏览器中
 cert_etempdir=无效的证书文件
+
 acl_reset=重置为完全访问权限
 acl_rbac=从RBAC获得访问控制设置？
 acl_rbacyes=是（覆盖下面的设置）
+
 acl_uthis=该用户
 acl_sessions=可以查看和取消登录会话吗？
 acl_cats=可以更改分类吗？
@@ -87,6 +93,7 @@ acl_switch=可以切换到其他用户吗？
 acl_times=可以更改允许的登录时间吗？
 acl_pass=可以更改密码限制吗？
 acl_sql=可以配置用户和组数据库吗？
+
 log_reset=重置 $2 中 $1 的访问权限
 log_switch=切换到Webmin用户 $1 
 log_delete_users=删除了 $1 Webmin用户
@@ -98,20 +105,26 @@ log_sync=更改了Unix用户同步
 log_sql=更改的用户和组数据库
 log_twofactor=使用两因素提供程序 $2 的已注册用户 $1 
 log_onefactor=取消注册用户 $1 进行两步验证
+
 gedit_members=会员用户和组
 gedit_desc=团体简介
 gedit_egone=选定的组不再存在！
+
 gdelete_esub=具有子组的组不能删除
+
 gsave_enamewebmin=组名“ webmin”保留供内部使用
 gsave_edesc=说明无效-不允许使用：字符
+
 convert_sync2=将来与Unix用户同步密码吗？
 convert_invalid= $1 不是有效的Webmin用户名
 convert_user=Unix用户
 convert_action=所采取的行动
 convert_done= $1 用户已转换， $2 无效， $3 已经存在， $4 已排除。
 convert_users=用户转换
+
 sync_when=何时同步
 sync_unix=为新用户设置用于Unix身份验证的密码。
+
 unix_err=保存Unix认证失败
 unix_sel=允许下面列出的Unix用户登录..
 unix_mode=允许
@@ -138,6 +151,7 @@ unix_esudo=未安装 $1 命令
 unix_esudomod=未安装<tt>sudo</tt>身份验证所需的Perl模块 $1 
 unix_header=Unix用户认证设置
 unix_utable=允许的Unix用户
+
 sessions_title=当前登录会话
 sessions_id=会话ID
 sessions_user=Webmin用户
@@ -151,21 +165,26 @@ sessions_this=此登录名
 sessions_in=登录
 sessions_out=登出
 sessions_kill=断开..
+
 logins_title=最近的Webmin登录
+
 hide_title=隐藏未使用的模块
 hide_desc=以下模块将从 $1 的模块访问列表中删除，因为它们的相应服务器未安装在您的系统上。
 hide_ok=立即隐藏模块
 hide_none=没有什么可隐藏的- $1 不能访问其系统上未安装相应服务器的任何模块。
 hide_desc2=请注意，如果安装了相应的服务器，这些模块将不会自动重新出现。您将需要使用此模块手动授予访问权限。
 hide_clone=（克隆 $1 ）
+
 switch_euser=您无权切换到该用户
 switch_eold=找不到现有的会话！
+
 rbac_title=设置RBAC
 rbac_desc=Webmin的RBAC集成提供了一种从RBAC（基于角色的访问控制）数据库而不是Webmin自己的配置文件中确定用户模块和ACL权限的方法。启用RBAC支持后，选择<b>RBAC控制所有模块和ACL</b>选项的任何用户，其功能将由RBAC而非Webmin自己的访问控制设置决定。
 rbac_esolaris=RBAC目前仅在Solaris上受支持，因此不能在此 $1 系统上使用。
 rbac_eperl=未安装RBAC集成所需的Perl模块 $1 。 <a href='$2'>单击此处</a>立即安装。
 rbac_ecpan=您无权访问Webmin的Perl模块页面来安装必要的 $1 模块以进行RBAC集成。
 rbac_ok=RBAC集成在此系统上可用，并且可以在“编辑Webmin用户”页面上按用户启用。
+
 udeletes_err=删除用户失败
 udeletes_jerr=无法将用户添加到组
 udeletes_enone=未选择
@@ -174,11 +193,13 @@ udeletes_rusure=您确定要删除 $1 所选用户吗？他们的所有访问控
 udeletes_users=所选用户： $1 
 udeletes_ok=删除用户
 udeletes_ereadonly=所选用户之一被标记为不可编辑
+
 gdeletes_err=删除群组失败
 gdeletes_title=删除群组
 gdeletes_rusure=您确定要删除 $1 选定的组以及它们包含的 $2 用户吗？他们的所有访问控制设置和用户详细信息都将丢失。
 gdeletes_users=选定的组： $1 
 gdeletes_ok=删除群组
+
 pass_title=密码限制
 pass_ecannot=您无权编辑密码限制
 pass_header=Webmin密码实施选项
@@ -201,6 +222,7 @@ pass_eminsize=缺少或非数字的最小密码长度
 pass_emaxdays=更改前缺少天数或非数字天数
 pass_elockdays=帐户锁定前缺少天数或非数字天数
 pass_eoldblock=遗失或遗漏的旧密码数量非数字
+
 cpass_minsize=必须至少为 $1 个字母
 cpass_notre=匹配不允许的模式
 cpass_re=与要求的模式不符
@@ -208,6 +230,7 @@ cpass_name=包含用户名
 cpass_dict=是字典字
 cpass_spellcmd=没有安装检查字典单词所需的 $1 或 $2 命令
 cpass_old=旧密码无法重复使用
+
 sql_title=用户和组数据库
 sql_ecannot=您无权配置用户和组数据库
 sql_header=用户和组的数据库后端选项
@@ -250,21 +273,25 @@ sql_dnerr=用户和组数据库设置有效，但是Webmin所需的LDAP DN丢失
 sql_dnerr2=单击下面的<b>创建DN</b>按钮以使其自动创建，或手动将其添加到LDAP服务器。
 sql_makedn=创建DN
 sql_schema=下载LDAP模式
+
 make_title=创建用户和组表
 make_err=创建用户表和组表失败
 make_exec=执行SQL $1..
 make_failed=..创建失败： $1 
 make_done=..完成
 make_still=即使在创建表后也发现了一些问题： $1 
+
 makedn_title=创建LDAP DN
 makedn_eoc=找不到结构对象类！
 makedn_exec=创建父DN $1..
 makedn_failed=..创建失败： $1 
 makedn_done=..完成
 makedn_still=即使在创建DN之后也发现了一些问题： $1 
+
 schema_title=下载LDAP模式
 schema_desc=在Webmin可以使用LDAP服务器存储用户和组之前，必须将其配置为使用以下架构。通常可以通过将架构定义保存在<tt>/etc/ldap/schema</tt>或<tt>/etc/openldap/schema</tt>中作为<tt>webmin.schema</tt>来完成，然后配置服务器以加载该架构文件。
 schema_download=下载架构文件：<a href=$1>$1</a>
+
 twofactor_err=未能设置两因素身份验证
 twofactor_euser=找不到您的Webmin用户！
 twofactor_title=两要素认证

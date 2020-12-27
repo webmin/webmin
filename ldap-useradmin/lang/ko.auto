@@ -19,10 +19,13 @@ index_samba=삼바?
 index_cyrus=IMAP?
 index_users=LDAP 사용자
 index_groups=LDAP 그룹
+
 imap_econn=IMAP 서버 $1 에 연결하지 못했습니다
 imap_elogin=$2 (으)로 IMAP 서버 $1 에 로그인하지 못했습니다  : $3 
 conn_eldap_host=시스템에 LDAP 클라이언트 구성 파일이 없으므로 모듈 구성 페이지에서 LDAP 서버를 설정해야합니다.
 conn_elogin=시스템에서 LDAP 클라이언트 구성 파일을 찾을 수 없으므로 모듈 구성 페이지에서 LDAP 로그인을 설정해야합니다.
+conn_efile_open=LDAP 바인드 자격 증명 파일을 열 수 없습니다.
+
 uedit_cap=사용자 기능
 uedit_samba=삼바 로그인?
 uedit_cyrus=IMAP 서버 로그인?
@@ -41,6 +44,7 @@ uedit_sambapwdlastset=마지막 비밀번호 업데이트
 uedit_sambapwdcanchange=비밀번호 변경 가능
 uedit_sambabadpasswordcount=잘못된 비밀번호
 uedit_sambaacctflags=계정 플래그
+
 usave_eadd=LDAP 데이터베이스에 사용자를 추가하지 못했습니다  : $1 
 usave_emod=LDAP 데이터베이스에서 사용자를 수정하지 못했습니다  : $1 
 usave_emoddn=LDAP 데이터베이스에서 사용자 이름을 바꾸지 못했습니다  : $1 
@@ -66,26 +70,33 @@ usave_eattrdupu=사용자 $1 이 (가) 이미 $2 $3 을 (를) 사용하고 있�
 usave_eattrdupg=그룹 $1 이 (가) 이미 $2 $3 을 (를) 사용하고 있습니다.
 usave_ereal=실명 누락
 usave_equota=누락되거나 잘못된 IMAP 할당량
+
 search_err=$2 에서 $1 을 (를) 검색하지 못했습니다  : $3 
+
 gedit_dn=그룹의 LDAP DN
 gedit_return=그룹 세부 사항
 gedit_cap=그룹 기능
 gedit_samba=삼바 그룹?
+
 gsave_egone=그룹이 더 이상 존재하지 않습니다!
 gsave_edelete=LDAP 데이터베이스에서 그룹을 삭제하지 못했습니다  : $1 
 gsave_eadd=LDAP 데이터베이스에 그룹을 추가하지 못했습니다  : $1 
 gsave_emod=LDAP 데이터베이스에서 그룹을 수정하지 못했습니다  : $1 
 gsave_emoddn=LDAP 데이터베이스에서 그룹 이름을 바꾸지 못했습니다  : $1 
+
 gdel_group=LDAP 그룹 항목 삭제 ..
+
 udel_pass=LDAP 사용자 항목 삭제 중 ..
 udel_book=주소록에서 삭제 ..
 udel_imap=IMAP 폴더 삭제 중 ..
 udel_warnimap=홈 디렉토리를 삭제하면 기존 메일 우편함이 삭제됩니다!
 udel_failed=.. 실패했습니다!  : $1
+
 raw_title=LDAP 속성
 raw_name=속성 이름
 raw_value=가치
 raw_for=$1 의 경우
+
 batch_samba=신규 사용자를위한 Samba 계정을 만드시겠습니까?
 batch_imap=새로운 사용자를위한 IMAP 계정을 만드시겠습니까?
 batch_descafter3=<b>만들기</b> 및 <b>수정</b> 줄에서 <i>이름</i> = <i>값</i> 형식의 LDAP 속성을 포함하는 추가 필드를 선택적으로 추가 할 수 있습니다. 신규 또는 수정 된 사용자에게 할당됩니다.

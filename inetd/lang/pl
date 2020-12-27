@@ -9,6 +9,7 @@ index_rpc=Programy RPC
 index_newrpc=Utwórz nowy program RPC
 index_apply=Zastosuj zmiany
 index_applymsg=Naciśnij ten przycisk, aby zastosować bieżącą konfigurację poprzez wysłanie sygnału SIGHUP do procesu <tt>inetd</tt>
+
 error_restart=Nie udało sie zrestartować Inetd
 error_saverpc=Nie udało sie zachowac programu RPC
 error_invalidprgname='$1' nie jest poprawną nazwą programu
@@ -34,6 +35,7 @@ error_childnum=Jeśli podano maksymalną liczbę połączeń na minutę, musi by
 error_serviceexist=Usługa korzystająca z portu $1 po protokole $2 już istnieje
 error_nameexist=Usługa o nazwie $1 po protokole $2 już istnieje
 error_inetservice=Usługa internetowa o nazwie $1 po protokole $2 już istnieje
+
 editrpc_title1=Utwórz program RPC
 editrpc_title2=Zmień program RPC
 editrpc_detail=Dane programu RPC
@@ -56,6 +58,7 @@ editrpc_execasuser=Uruchom jako użytkownik
 editrpc_max=Maks. na minutę
 editrpc_default=Domyślne
 editrpc_execasgrp=Uruchom jako grupa
+
 editserv_title1=Utwórz usługę internetową
 editserv_title2=Zmień usługę internetową
 editserv_detail=Dane usługi internetowej
@@ -67,6 +70,7 @@ editserv_maxchild=Maks. liczba potomnych
 editserv_execlogin=Uruchom w klasie logowania
 editserv_wrapper=TCP-Wrapper
 editserv_inetd=Wewnętrzne polecenie <tt>inetd</tt>
+
 log_apply=Zastosowano zmiany
 log_create_serv=Utworzono usługę $1
 log_modify_serv=Zmieniono usługę $1
@@ -80,6 +84,7 @@ log_delete_serv_l=Wyłączono usługę $1 na porcie $2
 log_create_prog_l=Utworzono usługę $1 na porcie $2 dla programu $3
 log_modify_prog_l=Zmieniono usługę $1 na porcie $2 dla programu $3
 log_delete_prog_l=Wyłączono usługę $1 na porcie $2 dla programu $3
+
 log_create_rpc=Utworzono RPC $1
 log_modify_rpc=Zmieniono RPC $1
 log_delete_rpc=Wyłączono RPC $1

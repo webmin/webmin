@@ -9,17 +9,21 @@ index_edit=Mengurus
 index_manual=Edit secara manual
 index_anyfile=Edit fail konfigurasi PHP yang lain:
 index_return=fail konfigurasi
+
 file_global=Konfigurasi PHP Global
 file_eread=Gagal membaca $1 : $2 
+
 manual_title=Edit Konfigurasi secara manual
 manual_desc=Halaman ini boleh digunakan untuk mengedit fail konfigurasi PHP secara manual. Ini perlu dilakukan dengan teliti, kerana tiada sintaks atau pemeriksaan kesahan lain akan dilakukan pada perubahan anda.
 manual_err=Gagal mengedit fail konfigurasi
 manual_edata=Tiada kandungan baru yang dimasukkan
+
 list_title=Urus Konfigurasi PHP
 list_ecannot=Anda tidak dibenarkan untuk menguruskan fail konfigurasi PHP ini
 list_return=Konfigurasi PHP
 list_format_ini=Format INI
 list_format_fpm=Format FPM
+
 vars_title=Pembolehubah PHP
 vars_header=Pembolehubah pembolehubah PHP dan pilihan petikan
 vars_magic=Masukkan semua pemboleh ubah input?
@@ -28,6 +32,7 @@ vars_register=Matikan semua input ke pembolehubah global?
 vars_args=Hidupkan parameter baris arahan ke pembolehubah global?
 vars_long=Buat susun gaya lama seperti <tt>HTTP_GET_VARS</tt>?
 vars_err=Gagal menyimpan tetapan pembolehubah PHP
+
 dirs_title=Tetapan Direktori
 dirs_header=Skrip PHP dan tetapan direktori lanjutan
 dirs_include=Cari direktori untuk termasuk
@@ -39,6 +44,7 @@ dirs_err=Gagal menyimpan tetapan direktori
 dirs_eincs=Tidak termasuk direktori carian yang dimasukkan
 dirs_eutmp=Direktori fail sementara yang hilang atau tidak sah
 dirs_eext=Direktori sambungan hilang
+
 db_title=Tetapan Pangkalan Data
 db_header1=Tetapan sambungan pangkalan data MySQL
 db_persist=Benarkan sambungan pangkalan data berterusan?
@@ -57,6 +63,7 @@ db_emaxlinks=Jumlah sambungan maksimum yang hilang atau tidak sah
 db_etimeout=Masa tunggu sambungan yang tiada atau tidak sah
 db_ehost=Tuan rumah pelayan MySQL lalai atau tidak sah
 db_eport=Port pelayan MySQL lalai atau tidak sah yang tidak benar atau tidak sah
+
 session_title=Pilihan Sesi
 session_header=Pilihan untuk penjejakan sesi PHP
 session_handler=Mekanisme penyimpanan sesi
@@ -73,6 +80,7 @@ session_epath=Direktori yang hilang atau tidak sah untuk fail sesi
 session_elife=Kehidupan kuki yang hilang atau tidak sah
 session_emaxlife=Tempoh hayat sesi maksimum atau tidak sah
 session_eredis=Sambungan redis tidak ada atau dilumpuhkan
+
 safe_title=Pilihan Mod Selamat
 safe_header=Pilihan mod akses fail selamat
 safe_on=Dayakan mod selamat?
@@ -85,6 +93,7 @@ safe_err=Gagal menyimpan pilihan mod selamat
 safe_einclude=Direktori yang hilang atau tidak dibenarkan untuk fail yang disertakan
 safe_eexec=Direktori yang hilang atau tidak sah untuk program yang dilaksanakan
 safe_ebasedir=Direktori yang hilang atau tidak sah untuk operasi fail
+
 limits_title=Had Sumber
 limits_header=Pilihan had ingatan dan perpindahan
 limits_mem=Peruntukan memori maksima
@@ -98,6 +107,7 @@ limits_epost=Saiz POST HTTP maksimum yang hilang atau tidak sah
 limits_eupload=Saiz muat naik fail maksimum atau tidak sah
 limits_eexec=Masa pelaksanaan maksimum yang hilang atau tidak sah
 limits_einput=Masa parsing input maksimum yang hilang atau tidak sah
+
 errors_title=Ralat Logging
 errors_header=Paparan mesej ralat dan pilihan log masuk
 errors_display=Paparkan mesej ralat?
@@ -128,6 +138,7 @@ errors_err=Gagal menyimpan log kesalahan
 errors_ereporting=Tiada ungkapan jenis ralat yang dimasukkan
 errors_emaxlen=Saiz maksimum ralat yang hilang atau tidak sah
 errors_efile=Fail log ralat yang tiada
+
 misc_title=Tetapan Lain
 misc_header=Pelbagai tetapan PHP lain
 misc_short=Benarkan skrip PHP bermula dengan &lt;? ?
@@ -148,6 +159,7 @@ misc_include=Benarkan pembukaan jarak jauh Termasuk?
 misc_path=CGI Fix Info Path?
 misc_timezone=PHP Timezone
 misc_charset=Set aksara piawai
+
 log_manual=Edit fail secara manual $1 
 log_vars=Perubahan PHP berubah dalam $1 
 log_dirs=Tetapan direktori berubah dalam $1 
@@ -157,6 +169,7 @@ log_safe=Pilihan mod selamat yang diubah dalam $1
 log_limits=Had sumber yang berubah dalam $1 
 log_errors=Pembalakan ralat berubah dalam $1 
 log_misc=Menukar tetapan lain dalam $1 
+
 acl_global=Boleh mengedit konfigurasi PHP global?
 acl_anyfile=Bolehkah mengedit sebarang fail sebagai konfigurasi PHP?
 acl_manual=Bolehkah mengedit fail konfigurasi secara manual?

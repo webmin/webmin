@@ -30,6 +30,7 @@ index_return=รายการของโซน
 index_ezones=ไม่พบโซน FirewallD!
 index_none=โซนนี้ยังไม่มีพอร์ตหรือบริการที่อนุญาต
 index_ifaces=ใช้กฎกับอินเตอร์เฟส:
+
 port_edit=แก้ไขพอร์ต
 port_create=เพิ่มพอร์ต
 port_header=ตัวเลือกพอร์ตที่ได้รับอนุญาต
@@ -45,11 +46,13 @@ port_eport=หมายเลขหรือชื่อพอร์ตหาย
 port_eportlow=พอร์ตต่ำต้องเป็นตัวเลข
 port_eporthigh=พอร์ตสูงต้องเป็นตัวเลข
 port_eportrange=พอร์ตต่ำจะต้องต่ำกว่าพอร์ตสูง
+
 serv_edit=แก้ไขบริการ
 serv_create=เพิ่มบริการ
 serv_header=ตัวเลือกบริการที่ได้รับอนุญาต
 serv_name=บริการที่จะอนุญาต
 serv_err=ไม่สามารถบันทึกบริการ
+
 forward_edit=แก้ไขส่งต่อ
 forward_create=สร้างไปข้างหน้า
 forward_header=ตัวเลือกการส่งต่อพอร์ต
@@ -61,10 +64,13 @@ forward_dstaddr=ที่อยู่ปลายทาง
 forward_dstlocal=ระบบนี้
 forward_edstaddr=ที่อยู่ปลายทาง IPv4 ไม่ถูกต้อง
 forward_eneither=ต้องป้อนที่อยู่ปลายทางหรือพอร์ตหรือทั้งสองอย่าง
+
 check_ecmd=ไม่พบคำสั่งควบคุม FirewallD $1 ในระบบของคุณ
+
 delete_err=ไม่สามารถลบกฎได้
 delete_enone=ไม่ได้เลือก!
 delete_edel=การลบ $1 ล้มเหลว : $2 
+
 zone_title=สร้างโซน
 zone_header=ตัวเลือกโซนใหม่
 zone_name=ชื่อโซน
@@ -77,12 +83,16 @@ zone_mode4=พอร์ตที่ใช้สำหรับโฮสต์เ
 zone_err=ไม่สามารถสร้างโซน
 zone_ename=ชื่อโซนหายไปหรือไม่ถูกต้อง
 zone_eclash=มีโซนที่ใช้ชื่อเดียวกันนี้แล้ว
+
 delzone_title=ลบโซน
 delzone_err=การลบโซนล้มเหลว
 delzone_edefault=ไม่สามารถลบโซนเริ่มต้นได้
 delzone_rusure=คุณแน่ใจหรือไม่ว่าต้องการลบโซน $1 ซึ่งมีพอร์ต $2 และบริการ $3 อยู่
+
 defzone_err=ไม่สามารถทำให้โซนเป็นค่าเริ่มต้น
+
 restart_err=ไม่สามารถใช้การกำหนดค่า
+
 stop_err=ไม่สามารถหยุด FirewallD
 start_err=ไม่สามารถเริ่ม FirewallD
 log_stop=หยุด FirewallD

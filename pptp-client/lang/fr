@@ -1,6 +1,7 @@
 index_title=Client VPN PPTP
 index_tunnel=Tunnel $1
 index_version=PPPd version $1
+
 edit_title2=Edition du tunnel PPTP
 edit_remote=Nom du serveur
 edit_auto=Automatique

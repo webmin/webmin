@@ -19,11 +19,13 @@ index_force=Forza tar-Rotazzjoni tal-Ġurnal
 index_forcedesc=Forza r-rotazzjoni immedjata tal-fajls tal-ġurnal kollha, anke jekk għadu mhux il-ħin.
 index_logrotate=Logrotate
 index_delete=Ħassar Rotazzjonijiet ta 'Ġurnal magħżula
+
 period_daily=Kuljum
 period_weekly=Kull ġimgħa
 period_monthly=Kull xahar
 period_never=Qatt
 period_bytes=bytes
+
 edit_title1=Editja l-File File
 edit_title2=Oħloq File Log
 edit_header=Dettalji mdawra tal-fajl tal-ġurnal
@@ -62,8 +64,10 @@ edit_pre=Kmandi biex jimxu qabel ir-rotazzjoni
 edit_default=Default ($1)
 edit_sharedscripts=Ħaddem skripts darba biss għall-fajls kollha?
 edit_now=Dawwar Issa
+
 global_title=Għażliet Globali
 global_header=Għażliet awtomatiċi għall-fajls kollha tal-ġurnal
+
 save_err=Ma rnexxielux isalva l-log
 save_efile=Isem tal-fajl tal-ġurnal nieqes jew invalidu
 save_esize=Daqs massimu nieqes jew invalidu
@@ -81,6 +85,7 @@ save_eerrors=Indirizz tal-email nieqes għal messaġġi ta 'żball
 save_epre=Skritt ta 'qabel ir-rotazzjoni ma jistax ikollu linja <tt>endscript</tt> jew <tt>endrotate</tt>
 save_epost=Skritt wara r-rotazzjoni ma jistax ikun fih linja <tt>endscript</tt> jew <tt>endrotate</tt>
 save_enofiles=L-ebda fajl ma jdur iddaħħal
+
 log_modify_sched=Inbidlet ir-rotazzjoni tal-log tal-impjieg Cron
 log_create_sched=Ħoloq xogħol ta 'rotazzjoni ta' log Cron
 log_delete_sched=Impjieg ta 'Cron b'rotazzjoni ta' log imħassar
@@ -89,6 +94,7 @@ log_create=Rotazzjoni miżjuda għall-fajl tal-ġurnal $1
 log_modify=Rotazzjoni modifikata għall-fajl tal-ġurnal $1 
 log_delete=Rotazzjoni mħassra għall-fajl tal-ġurnal $1 
 log_delete_logs=Rotazzjoni mħassra għal fajls ta 'reġistrazzjoni $1 
+
 sched_title=Skeda ta ’Rotazzjoni tal-Ġurnal
 sched_desc=Sabiex ir-rotazzjoni tal-ġurnal ikkonfigurata bl-użu ta 'dan il-modulu biex titwettaq, il-kmand $1 għandu jkun immexxi minn Cron fi skeda regolari (ġeneralment kuljum).
 sched_runparts=Bħalissa, il-kmand ta 'rotazzjoni tal-log qed jitmexxa mill-iskritt $1 $2, u ma jistax jiġi aġġustat.
@@ -98,10 +104,12 @@ sched_enabled=Abilitata, f'ħinijiet hawn taħt ..
 sched_save=Aġġorna Xogħol Cron
 sched_err=Ma rnexxielux isalva l-iskeda tar-rotazzjoni
 sched_when=Żminijiet biex jispiċċaw
+
 force_title=Forza tar-Rotazzjoni tal-Ġurnal
 force_doing=Tġiegħel ir-rotazzjoni immedjata tal-fajls tal-ġurnal kollha ..
 force_doingone=Tġiegħel ir-rotazzjoni immedjata ta 'fajl tal-log.
 force_done=.. ghamel.
 force_failed=.. naqas! Ara l-output hawn fuq għar-raġuni għaliex.
+
 delete_err=Ma rnexxielhiex tħassar iz-zkuk
 delete_enone=L-ebda magħżul

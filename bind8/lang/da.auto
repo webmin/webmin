@@ -65,6 +65,7 @@ index_checkconfig=Sørg for, at chroot-biblioteket er indstillet korrekt på sid
 index_eexpired=Advarsel: Følgende zoner er udløbet DNSSEC-underskrifter : $1
 index_eexpired_conf=Automatisk signering skal aktiveres på siden $1.
 index_eexpired_mod=Brug modulet $1 til enten at deaktivere DNSSEC for disse domæner, eller kontrollere, hvorfor signering mislykkes.
+
 master_title=Rediger Master Zone
 master_inview=$1 i visning $2 
 master_ecannot=Du har ikke tilladelse til at redigere denne zone
@@ -146,6 +147,7 @@ master_defttl=Standard tid til live for poster
 master_edefttl='$1' er ikke en gyldig standard-tid-til-live for poster
 master_esoagone=Ingen SOA-registrering fundet!
 master_einclude=Yderligere skabelonfil findes ikke
+
 delete_title=Slet zone
 delete_mesg=Er du sikker på, at du vil slette zonen $1? Alle poster og zonefilen vil blive slettet.
 delete_mesg2=Er du sikker på, at du vil slette rodzonen? Din DNS-server er muligvis ikke længere i stand til at slå adresser op på internettet.
@@ -157,6 +159,7 @@ delete_errslave=Masterzone blev slettet OK, men følgende fejl opstod på slaver
 delete_ezone=Zone blev ikke fundet på slaveserveren
 delete_vwarn=Denne zone er knyttet til Virtualmin-domænet $1, og bør derfor ikke slettes her!
 delete_vwarn2=Denne zone er knyttet til Virtualmin-domænet $1 og $2 andre, og bør derfor ikke slettes her!
+
 mcreate_title=Opret masterzone
 mcreate_ecannot=Du kan ikke oprette masterzoner
 mcreate_opts=Nye masterzone-indstillinger
@@ -171,6 +174,7 @@ mcreate_auto=Automatisk
 mcreate_err=Kunne ikke oprette masterzone
 mcreate_ednssecsize=Kunne ikke beregne nøglestørrelse : $1
 mcreate_ednssec=Oprettelse af optegnelser lykkedes, men DNSSEC mislykkedes : $1
+
 slave_title=Rediger slavezone
 stub_title=Rediger stubzone
 slave_ecannot=Du har ikke tilladelse til at redigere denne zone
@@ -202,6 +206,7 @@ slave_applymsg2=Klik på denne knap for at tvinge til en overførsel af zonen fr
 slave_last=Sidst overført : $1
 slave_never=Aldrig
 slave_xfer=Testzoneoverførsel
+
 screate_title1=Opret slavezone
 screate_title2=Opret stubzone
 screate_ecannot1=Det er ikke tilladt at oprette slavezoner
@@ -214,6 +219,7 @@ screate_rev=Omvendt (adresser til navne)
 screate_dom=Domænenavn / netværk
 screate_err1=Kunne ikke oprette slavezone
 screate_err2=Kunne ikke oprette stubzone
+
 recs_ecannot=Du har ikke tilladelse til at redigere poster i denne zone
 recs_ecannottype=Du har ikke tilladelse til at redigere poster af denne type
 recs_title=$1 Optegnelser
@@ -231,6 +237,7 @@ recs_drev=Slet reverser også?
 recs_none=Domænet har endnu ingen $1 poster.
 recs_nosearch=Ingen poster matchede din søgning.
 recs_needsearch=Indtast en søgning for at finde matchende poster.
+
 edit_title=Rediger $1
 edit_header=I $1
 edit_edit=Rediger $1 Optag
@@ -306,6 +313,7 @@ edit_edmarcpct=Procentdel af meddelelser skal være et heltal mellem 0 og 100
 edit_edmarcrua=Manglende samlet feedback-adresse mangler
 edit_edmarcruf=Manglende retsmedicinsk informationsadresse
 edit_ecaavalue2=Manglende eller ugyldigt udseende domænenavn
+
 text_title=Rediger arkivfil
 text_title2=Se arkivfil
 text_desc3=Denne formular giver dig mulighed for manuelt at redigere DNS-postfilen $1. Ingen syntaksekontrol vil blive udført af Webmin.
@@ -315,6 +323,7 @@ text_ecannot=Du har ikke tilladelse til at redigere postfiler
 text_none=Filen er dog i øjeblikket tom, sandsynligvis fordi zonen endnu ikke er overført fra hovedserveren.
 text_soa=Forøg automatisk serienummer
 text_rawformat=Denne zone er i rå binært format, og kan derfor ikke vises som tekst.
+
 restart_err=Kunne ikke anvende ændringer
 restart_ecannot=Du har ikke tilladelse til at genstarte BIND
 restart_epidfile=Kunne ikke finde BIND PID i $1
@@ -323,10 +332,12 @@ restart_erunning2=BIND ser ikke ud til at køre på slaveserveren $1
 restart_endc=NDC-kommando mislykkedes : $1
 restart_ecmd=Genstartkommando mislykkedes : $1
 restart_eversion=Slaveserver $1 kører ikke Webmin-version $2 eller derover.
+
 start_ecannot=Du har ikke lov til at starte BIND
 start_error=Kunne ikke starte BIND : $1
 stop_epid=BIND kører ikke
 stop_ecannot=Du må ikke stoppe BIND
+
 fwd_title=Rediger fremadzone
 fwd_ecannot=Du har ikke tilladelse til at redigere denne zone
 fwd_opts=Zoneindstillinger
@@ -335,12 +346,14 @@ fwd_forward=Prøv andre servere?
 fwd_check=Tjek navne?
 fwd_err=Kunne ikke gemme indstillinger
 fwd_delmsg=Klik på denne knap for at slette denne zone fra din DNS-server. Optegnelser deri bliver derefter slået op ved hjælp af den normale opløsningsproces.
+
 delegation_title=Rediger delegationszone
 delegation_ecannot=Du har ikke tilladelse til at redigere denne zone
 delegation_opts=Zoneindstillinger
 delegation_err=Kunne ikke gemme indstillinger
 delegation_noopts=Delegationszoner har ingen konfigurerbare indstillinger.
 delegation_delmsg=Klik på denne knap for at slette denne zone fra din DNS-server. Optagelsestyper i den andre end NS genkendes derefter af BIND.
+
 fcreate_title=Opret fremad zone
 fcreate_ecannot=Det er ikke tilladt at oprette fremadgående zoner
 fcreate_opts=Nye muligheder for fremadzone
@@ -350,10 +363,12 @@ fcreate_rev=Omvendt (adresser til navne)
 fcreate_dom=Domænenavn / netværk
 fcreate_masters=Master-servere
 fcreate_err=Kunne ikke oprette fremadzone
+
 dcreate_title=Opret zone, der kun er delegeret
 dcreate_ecannot=Det er ikke tilladt at oprette delegationszoner
 dcreate_opts=Nye indstillinger for delegationszone
 dcreate_err=Kunne ikke oprette delegationszone
+
 create_enet='$1' er ikke et gyldigt netværk
 create_edom='$1' er ikke et gyldigt domænenavn
 create_edom2='$1' skal være et domæne, ikke et netværk
@@ -363,9 +378,11 @@ create_efile3=Kunne ikke oprette '$1' : $2
 create_efile4=Fil $1 findes allerede
 create_emaster='$1' er ikke en gyldig hovedserveradresse
 create_enone=Du skal indtaste mindst en hovedserver
+
 boot_err=Download fejlede
 boot_egzip=Rodzonefilen er komprimeret, men kommandoen <tt>gzip</tt> er ikke installeret på dit system!
 boot_egzip2=Frakomprimering af rodzonefilen mislykkedes : $1
+
 type_A=Adresse
 type_AAAA=IPv6-adresse
 type_NS=Navneserver
@@ -386,6 +403,7 @@ type_SRV=Serviceadresse
 type_ALL=Alle posttyper
 type_KEY=Offentlig nøgle
 type_CAA=Certificate Authority
+
 edit_A=Adresse
 edit_AAAA=IPv6-adresse
 edit_NS=Navneserver
@@ -405,6 +423,7 @@ edit_NSEC3PARAM=DNSSEC-parametre
 edit_TLSA=SSL-certifikat
 edit_SSHFP=SSH Public Key
 edit_CAA=Certificate Authority
+
 recs_defttl=Standard TTL
 recs_A=Adresse
 recs_AAAA=IPv6-adresse
@@ -427,6 +446,7 @@ recs_TLSA=SSL-certifikat
 recs_SSHFP=SSH Public Key
 recs_CAA=Certificate Authority
 recs_delete=Slet valgt
+
 value_A1=Adresse
 value_AAAA1=IPv6-adresse
 value_NS1=Navneserver
@@ -503,6 +523,7 @@ value_CAA3=CA-domænenavn
 value_caa_issue=Enkelt domæne cert
 value_caa_issuewild=Wildcard cert
 value_caa_iodef=URL-adresse til overtrædelse af politik
+
 tlsa_usage0=Certifikatmyndighed
 tlsa_usage1=Slutenhed
 tlsa_usage2=Tillidsanker
@@ -512,12 +533,14 @@ tlsa_selector1=Info om offentlig nøgle
 tlsa_match0=Uhasket indhold
 tlsa_match1=SHA-256 hashede
 tlsa_match2=SHA-512 hashede
+
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDSA
 sshfp_alg4=Ed25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 warn=Advare
 fail=Svigte
 ignore=Ignorere
@@ -531,6 +554,7 @@ listed=Noteret ..
 eip='$1' er ikke en gyldig IP-adresse
 eport='$1' er ikke et gyldigt portnummer
 eipacl='$1' er ikke en gyldig IP-adresse eller ACL-navn
+
 acl_zones=Domæner, som denne bruger kan redigere
 acl_zall=Alle zoner
 acl_zsel=Udvalgte zoner ..
@@ -575,6 +599,7 @@ acl_ztypes_master=Mestre
 acl_ztypes_slave=Slave / stub
 acl_ztypes_delegation=Delegation
 acl_ztypes_forward=Frem
+
 servers_title=Andre DNS-servere
 servers_ip=IP-adresse
 servers_bogus=Ignorerer falske servere?
@@ -586,6 +611,7 @@ servers_keys=Brug DNS-nøgler
 servers_err=Kunne ikke gemme andre DNS-servere
 servers_eip='$1' er ikke en gyldig IP-adresse
 servers_etrans='$1' er ikke et gyldigt antal maksimale overførsler
+
 logging_title=Logning og fejl
 logging_ecannot=Du har ikke tilladelse til at konfigurere logføring
 logging_header=Global logning og fejlindstillinger
@@ -624,6 +650,7 @@ logging_efile=Manglende logfilnavn
 logging_efile2=Logfilnavn skal være en absolut sti
 logging_ever='$1' er ikke et gyldigt antal versioner
 logging_esize='$1' er ikke en gyldig logstørrelse
+
 acls_title=Lister med adgangskontrol
 acls_ecannot=Du har ikke tilladelse til at redigere globale acls
 acls_name=ACL-navn
@@ -631,6 +658,7 @@ acls_values=Matchende adresser, netværk og ACL'er
 acls_err=Kunne ikke gemme adgangskontrollister
 acls_ename='$1' er ikke et gyldigt ACL-navn
 acls_eline=Hver IP-adresse skal indtastes på en separat linje for ACL '$1'
+
 files_title=Filer og mapper
 files_ecannot=Du har ikke tilladelse til at konfigurere filer
 files_header=Globale filer og mapper muligheder
@@ -640,6 +668,7 @@ files_pid=Process ID-fil
 files_xfer=Vej til zoneoverførselsprogram
 files_err=Kunne ikke gemme filer og katalogindstillinger
 files_efile=Manglende eller ugyldigt filnavn
+
 forwarding_title=Spedition og overførsler
 forwarding_ecannot=Du har ikke tilladelse til at redigere videresendelses- og overførselsindstillinger
 forwarding_header=Globale spedition og zoneoverførselsmuligheder
@@ -658,6 +687,7 @@ forwarding_etrans=Manglende eller ugyldige maksimale samtidige overførsler
 forwarding_minutes=minutter
 forwarding_ip=IP-adresse
 forwarding_port=Havn
+
 net_title=Adresser og topologi
 net_ecannot=Du har ikke tilladelse til at redigere adresse- og topologimuligheder
 net_header=Globale adresse- og topologimuligheder
@@ -683,6 +713,7 @@ net_taddrdef=Nærmeste IP
 net_etport=En overførselskildeport kan ikke specificeres uden en adresse
 net_eaddr='$1' er ikke en gyldig IPv4-adresse
 net_eaddr6='$1' er ikke en gyldig IPv6-adresse
+
 controls_title=Indstillinger for kontrolgrænseflade
 controls_ecannot=Du har ikke tilladelse til at redigere kontrolindstillingerne
 controls_header=Kontrolindstillinger
@@ -704,6 +735,7 @@ controls_eunixpath=Manglende eller ugyldig FIFO-filsti
 controls_eunixperm=Manglende eller ugyldige oktale filtilladelser
 controls_eunixowner=Manglende eller ugyldig filejer
 controls_eunixgroup=Manglende eller ugyldig filgruppe
+
 controls_inet=Internetport adgang
 controls_unix=Unix FIFO-adgang
 controls_port=Havn
@@ -717,6 +749,7 @@ controls_efile=Manglende eller ugyldig FIFO-filnavn
 controls_eperms=Manglende eller ugyldige FIFO-tilladelser
 controls_eowner=Manglende eller ugyldig FIFO-ejer UID
 controls_egroup=Manglende eller ugyldig FIFO-ejer GID
+
 keys_title=DNS-nøgler
 keys_id=Nøgle-ID
 keys_alg=Algoritme
@@ -725,6 +758,7 @@ keys_ecannot=Du har ikke tilladelse til at redigere DNS-nøgler
 keys_err=Kunne ikke gemme DNS-nøgler
 keys_ekey='$1' er ikke et gyldigt nøgle-id
 keys_esecret=Manglende eller ugyldig base-64 kodet hemmelighed for nøgle $1
+
 misc_title=Diverse muligheder
 misc_ecannot=Du har ikke lov til at redigere diverse indstillinger
 misc_header=Diverse globale indstillinger
@@ -744,6 +778,7 @@ misc_esize='$1' er ikke en gyldig størrelse
 misc_efiles='$1' er ikke et gyldigt antal maksimale åbne filer
 misc_emins='$1' er ikke et gyldigt antal minutter
 misc_mins=mins
+
 zonedef_title=Zone standarder
 zonedef_msg=Standardindstillinger for nye masterzoner
 zonedef_err=Kunne ikke gemme standardindstillingerne i zonen
@@ -767,10 +802,13 @@ zonedef_size=Første nøglestørrelse
 zonedef_single=Antal nøgler, der skal oprettes
 zonedef_two=Zonetast og nøglesignaturnøgle
 zonedef_one=Kun zonetast
+
 find_title=Find zoner
 find_match=Zoner, der matcher $1 ..
 find_none=Ingen zoner fundet.
+
 efirst=Dårligt første direktiv på linje $1 i $2
+
 findfree_title=Find gratis IP'er
 findfree_desc=Find gratis IP'er
 findfree_nofind=Du kan ikke kigge efter gratis IP'er
@@ -782,8 +820,10 @@ findfree_cf=Overvej <em>freeXXX</em> hostnavne som gratis IP'er?
 findfree_search=Søg
 findfree_msg=Fundet $1 gratis IP-adresser
 findfree_msg2=(hvoraf $1 er som <i>freeXXX</i>, $2 som <i>freemac</i>)
+
 free_title=Gratis IP-adresser
 free_ip=IP-adresse
+
 log_servers=Ændrede andre DNS-servere
 log_logging=Ændret logning og fejl
 log_acls=Ændrede adgangskontrollister
@@ -840,14 +880,17 @@ log_sign=Opdaterede DNSSEC-underskrifter for zone $1
 log_resign=Genunderskrevet DNSSEC-nøgle til zone $1
 log_trusted=Ændret DNSSEC-verifikation
 log_dnssec=Skift DNSSEC-nøglesignering igen
+
 convert_err=Kunne ikke konvertere zone
 convert_efile=En registreringsfil skal specificeres, før en slavezone kan konverteres til en master.
 convert_efilesize=Registreringsfil $1 findes ikke eller er tom
 convert_ebinary=Den nødvendige kommando til at konvertere fra en binær slavezone til en tekstformatmaster er ikke installeret
 convert_ecompile=Konvertering af binært til tekstformat mislykkedes : $1
+
 whois_title=WHOIS information
 whois_header=Output fra kommando $1 ..
 whois_ecannot=Du har ikke tilladelse til at slå op WHOIS-oplysninger
+
 view_title=Rediger klientvisning
 view_opts=Oplysninger om klientvisning
 view_opts2=Valgmuligheder for zoner i oversigt
@@ -858,6 +901,7 @@ view_recursion=Gør fuld rekursiv opslag for kunder?
 view_ecannot=Du har ikke tilladelse til at redigere denne visning
 view_delete=Slet visning
 view_deletemsg=Klik på denne knap for at slette visningen. Du kan vælge at flytte zoner, den indeholder til en anden visning, eller slette dem også.
+
 vcreate_title=Opret klientvisning
 vcreate_match_all=Alle klienter
 vcreate_match_sel=Listede adresser, netværk og ACL'er ..
@@ -866,6 +910,7 @@ vcreate_ename=Manglende eller ugyldigt visningsnavn
 vcreate_etaken=Visningsnavn er allerede taget
 vcreate_eclass=Manglende eller ugyldigt klassens navn
 vcreate_ecannot=Du har ikke lov til at oprette visninger
+
 hint_title=Rediger rodzone
 hint_desc=Rotsonen bruges af din DNS-server til at kontakte rodserverne på internettet, så den kan løse navne i domæner, der ikke håndteres af din DNS-server, som <tt>.com</tt> eller <tt>.net. au</tt>. Medmindre din DNS-server er til brug på et internt netværk, eller du videresender alle forespørgsler til en anden server, bør du ikke slette denne rodzone.
 hint_move=Gå til visning:
@@ -874,6 +919,7 @@ hint_refetch=Gen-download rodnavnservere
 hint_refetchdesc=Klik på denne knap for at få Webmin til at downloade rodzonefilen fra dens kilde på den Internic FTP-server.
 hint_delete=Slet rodzone
 hint_deletedesc=Klik på denne knap for at fjerne denne rodzone. Uden den vil din navneserver ikke være i stand til at løse domæner på andre internet end dem, den er en sekundær til.
+
 hcreate_title=Opret rodzone
 hcreate_desc=Rotsonen bruges af din DNS-server til at kontakte rodserverne på internettet, så den kan løse navne i domæner, der ikke håndteres af din DNS-server, som <tt>.com</tt> eller <tt>.net. au</tt>. Hvis du bruger flere visninger, skal du muligvis have en separat rodzone i hver visning, så alle klienter kan løse internetdomæner korrekt.
 hcreate_header=Detaljer om rodzone
@@ -887,6 +933,7 @@ hcreate_efile='$1' er ikke en tilladt rodfil
 hcreate_efile2=Manglende eller ugyldig root-fil
 mcreate_erecs=Ikke en gyldig eksisterende rodzonefil
 hcreate_err=Kunne ikke oprette rodzone
+
 vdelete_title=Slet visning
 vdelete_mesg=Er du sikker på, at du vil slette klientvisningen $1? Alle zoner i denne visning vil enten blive slettet (sammen med deres zonefiler) eller flyttet til en anden visning afhængigt af dit valg nedenfor.
 vdelete_mesg2=Er du sikker på, at du vil slette klientvisningen $1?
@@ -894,6 +941,7 @@ vdelete_newview=Zoner inden for denne visning
 vdelete_root=Flyt ud af visningerne
 vdelete_delete=Slet helt
 vdelete_move=Gå til visning
+
 gen_title=Record Generators
 gen_desc=På denne side kan du definere generatorer, som hver vil oprette flere poster i denne zone ved hjælp af en stigende tæller. Dette kan være nyttigt til at delegere dele af den omvendte zone til en anden server.
 gen_range=Rækkevidde
@@ -913,7 +961,9 @@ gen_evalue=Manglende eller ugyldigt værtsnavnsmønster til generator $1
 gen_title2=Genereret poster
 gen_raw=Konfigurer fillinje
 gen_ecannot=Du har ikke tilladelse til at redigere postgeneratorer
+
 refetch_err=Kunne ikke downloade rodzone igen
+
 slaves_title=Cluster Slave-servere
 slaves_none=Der er endnu ikke tilføjet nogen servere til DNS-klyngen.
 slaves_host=Værtsnavn
@@ -941,6 +991,7 @@ slaves_sec=Opret sekundær på slave, når du opretter lokalt?
 slaves_name=Navn på NS-post
 slaves_same=Samme som værtsnavn
 slaves_header=Indstillinger for klyngslaveserver
+
 add_title=Tilføj servere
 add_msg=Tilføjelse af $1 ..
 add_gmsg=Tilføjelse af servere i gruppen $1 ..
@@ -958,6 +1009,7 @@ add_createok=Opsætning $1 med $2 nye slavezoner.
 add_ename=Manglende eller ugyldigt NS-postnavn
 add_egname=Et NS-postnavn kan ikke specificeres, når du tilføjer en gruppe
 add_emyip=Dette systems IP-adresse kunne ikke udarbejdes. Du skal indstille <b>Standard-masterserver-IP for eksterne slavezoner</b> på siden Modulkonfig.
+
 mass_title=Opret zoner fra batchfil
 mass_desc=Denne side giver dig mulighed for at oprette flere zoner på en gang fra en uploadet eller serversidet tekstfil. Hver linje i filen skal have følgende format: <p></p> <tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt> <p></p> <i>Typen</i> skal være af <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> eller <tt>forward</tt>. <i>Filnavnet</i> er valgfrit og beregnes automatisk, hvis det mangler. <i>Master-IP'erne</i> skal kun gives til slavezoner.
 mass_local=Lokal batchfil
@@ -989,6 +1041,7 @@ mass_emips=Manglende master-IP-adresser
 mass_addedslaves=Tilføjet $1 til slaveservere OK.
 mass_eonslave=Der opstod fejl oprettet på slaveservere : $1
 mass_eviewcannot=Du har ikke tilladelse til at tilføje zoner til denne visning
+
 massdelete_title=Slet zoner
 massdelete_rusure=Er du sikker på, at du vil slette de $1 valgte zoner? ($2)
 massdelete_ok=Slet nu
@@ -998,6 +1051,7 @@ massdelete_slaves=Sletning af zone $1 fra slaveservere ..
 massdelete_failed=.. nogle slaver mislykkedes :
 massdelete_vwarn=Nogle zoner er forbundet med Virtualmin-domænet $1, og bør derfor ikke slettes her!
 massdelete_vwarn2=Nogle zoner er forbundet med Virtualmin-domænet $1 og $2 andre, og bør derfor ikke slettes her!
+
 rndc_title=Opsætning RNDC
 rndc_desc=Denne side kan bruges til at indstille BIND til kontrol af RNDC-programmet, så individuelle zoner kan opdateres uden at skulle udføre en fuld BIND-genstart.
 rndc_desc2=RNDC ser ud til at være konfigureret korrekt allerede, så du har sandsynligvis ikke brug for at bruge denne formular.
@@ -1008,11 +1062,13 @@ rndc_ok=Ja, opsætning RNDC
 rndc_err=Kunne ikke konfigurere RNDC
 rndc_ekey=Kunne ikke finde nøglen i rndc.conf
 rndc_esecret=Kunne ikke finde hemmelighed i rndc.conf
+
 drecs_err=Kunne ikke slette poster
 drecs_enone=Ingen valgt
 drecs_title=Slet poster
 drecs_rusure=Er du sikker på, at du vil slette de $1 valgte poster fra $2?
 drecs_ok=Slet nu
+
 manual_title=Rediger konfigurationsfil
 manual_ecannot=Du har ikke tilladelse til at redigere BIND-konfigurationsfilen
 manual_ok=Redigere
@@ -1020,7 +1076,9 @@ manual_efile=Den valgte fil er ikke en del af BIND-konfigurationen
 manual_file=Rediger konfigurationsfil:
 manual_edata=Intet indtastet!
 manual_err=Kunne ikke gemme konfigurationsfilen
+
 syslog_desc=BIND DNS-servermeddelelser
+
 umass_err=Kunne ikke opdatere zoner
 umass_enone=Ingen valgt
 umass_title=Opdater poster i zoner
@@ -1039,6 +1097,7 @@ umass_done=.. opdateret $1 matchende poster ud af $2.
 umass_none=.. ingen matchende poster ud af $1 for at opdatere fundet.
 umass_egone=Zone findes ikke
 emass_emx='$1' er ikke et mailserverprioritetsnummer efterfulgt af et gyldigt værtsnavn
+
 rdmass_err=Kunne ikke slette poster i zoner
 rdmass_enone=Ingen valgt
 rdmass_title=Slet poster i zoner
@@ -1055,6 +1114,7 @@ rdmass_done=.. slettet $1 matchende poster ud af $2.
 rdmass_none=.. ingen matchende poster ud af $1 for at slette fundet.
 rdmass_ok=Slet poster
 rdmass_sel=Poster opkaldt
+
 rmass_err=Kunne ikke tilføje poster
 rmass_enone=Ingen valgt
 rmass_title=Føj post til zoner
@@ -1074,18 +1134,22 @@ rmass_esign=.. færdig, men signering mislykkedes : $1
 rmass_eclash=.. der findes allerede en post med samme navn og værdi $1.
 rmass_eclash2=.. der findes allerede en post med samme navn og den samme værdi $1.
 rmass_clash=Opret, selvom der allerede findes en post?
+
 check_title=Tjek poster
 check_ecannot=Du har ikke tilladelse til at kontrollere poster
 check_errs=Følgende fejl blev fundet i posteringsfilen $1 ..
 check_allok=Der blev ikke fundet nogen fejl i postfilen $1.
+
 ncheck_title=Kontroller BIND Config
 ncheck_ecannot=Du har ikke tilladelse til at kontrollere BIND-konfigurationen
 ncheck_errs=Følgende fejl blev fundet i BIND-konfigurationsfilen $1 eller refererede zonefiler ..
 ncheck_allok=Der blev ikke fundet nogen fejl i BIND-konfigurationsfilen $1 eller refererede zonefiler.
+
 links_restart=Anvend konfiguration
 links_stop=Stop BIND
 links_start=Start BIND
 links_apply=Anvend zone
+
 dnssec_title=DNSSEC nøgesignering igen
 dnssec_ecannot=Du har ikke tilladelse til at konfigurere DNSSEC
 dnssec_header=Valgmuligheder for genunderskrift
@@ -1096,6 +1160,7 @@ dnssec_secs=sekunder
 dnssec_desc=Zoner, der er underskrevet med DNSSEC, har typisk to nøgler - en zonetast, der skal genereres og underskrives regelmæssigt, og en nøglesignaturnøgle, der forbliver konstant. Denne side giver dig mulighed for at konfigurere Webmin til automatisk at udføre denne re-signering.
 dnssec_err=Kunne ikke gemme DNSSEC-nøglesignering igen
 dnssec_eperiod=Manglende eller ugyldigt antal dage mellem gentegnelser
+
 dnssectools_title=DNSSEC-Tools Automation
 dt_conf_title=DNSSEC-Tools Automation
 dt_enable_title=DNSSEC-Tools Automation
@@ -1160,6 +1225,7 @@ dt_status_inKSKroll=I KSK Roll
 dt_status_inZSKroll=I ZSK-rulle
 dt_status_signed=Underskrevet
 dt_status_unsigned=usigneret
+
 zonekey_title=Opsætning af DNSSEC-nøgle
 zonekey_desc=Denne zone har endnu ikke en DNSSEC-signaturnøgle. Du kan bruge denne formular til at få Webmin til at oprette en, så klienter, der løser denne zone, er beskyttet mod DNS-spoofingangreb.
 zonekey_header=Nye DNSSEC nøglemuligheder
@@ -1193,9 +1259,12 @@ zonekey_sign=Skiltzone
 zonekey_signdesc=Underskriv straks denne zone igen, så eventuelle ændringer i poster, der er foretaget manuelt, vil blive inkluderet i underskrivelsesposterne.
 zonekey_resign=Omtegner zone
 zonekey_resigndesc=Generer en ny zonesigneringsnøgle, underskriv den med zonens hovednøgle, og underskriv alle poster igen.
+
 sign_err=Kunne ikke signere zone
 sign_emsg=DNSSEC-signering efter ændring af poster mislykkedes : $1
+
 resign_err=Kunne ikke signere zonen igen
+
 trusted_title=DNSSEC-verifikation
 trusted_ecannot=Du har ikke tilladelse til at konfigurere DNSSEC-verifikation
 trusted_esupport=Din version af BIND understøtter ikke DNSSEC-verifikation
@@ -1230,6 +1299,7 @@ trusted_setup=For at DNSSEC skal være nyttigt til at verificere størstedelen a
 trusted_ok=Opsæt DLV og aktiver DNSSEC-verifikation
 trusted_warning=Advarsel! Din BIND DNSSEC-klientkonfiguration indeholder forældede nøgler, der stopper med at fungere i oktober 2017. Brug enten <a href='$1'>BIND DNSSEC-verifikationssiden</a> til at justere konfigurationen, eller klik på knappen nedenfor.
 trusted_fix=Fix DNSSEC-konfiguration
+
 xfer_title=Testzoneoverførsel
 xfer_doing=Test af overførsel af slavezone fra $1 ..
 xfer_failed=.. fra $1: Mislykkedes : $2

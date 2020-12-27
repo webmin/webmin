@@ -16,6 +16,7 @@ index_digest2=تم تمكين تشفير الملخص في تكوين الوحد
 index_cpan=<a href='$1'>انقر هنا</a> لتنزيله وتثبيته الآن.
 index_delete=Un-Protect الدلائل المختارة
 index_remove=إلغاء الحماية وإزالة الملفات
+
 dir_title1=إضافة دليل محمي
 dir_title2=تحرير الدليل المحمي
 dir_header=خيارات الدليل المحمية
@@ -60,6 +61,7 @@ dir_delete3=Un- حماية وإزالة الملف
 dir_apache=تحرير خيارات Apache
 dir_efiledir=يعد '$1' دليلاً ، وبالتالي لا يمكن استخدامه كملف مستخدم
 dir_egfiledir=يعد '$1' دليلاً ، وبالتالي لا يمكن استخدامه كملف مجموعات
+
 edit_title1=إنشاء مستخدم
 edit_title2=تحرير العضو
 edit_header=تفاصيل مستخدم مصادقة الويب
@@ -71,11 +73,13 @@ edit_pass0=ضبط ل
 edit_passfrom=تغيير من
 edit_passto=إلى كلمة المرور الجديدة
 edit_dom=عالم الهضم
+
 gedit_title1=إنشاء مجموعة
 gedit_title2=تحرير المجموعة
 gedit_header=تفاصيل مجموعة مصادقة الويب
 gedit_group=أسم المجموعة
 gedit_members=أعضاء المجموعة
+
 save_err=فشل في حفظ المستخدم
 save_euser1=اسم المستخدم مفقود
 save_euser2=لا يمكن أن يحتوي اسم المستخدم على: الحرف
@@ -84,16 +88,19 @@ save_eclash=يوجد مستخدم بنفس الاسم بالفعل
 save_eoldpass=كلمة المرور القديمة غير صحيحة
 save_title=تم حفظ المستخدم
 save_edom=عالم الهضم مفقود أو غير صالح
+
 gsave_err=فشل في حفظ المجموعة
 gsave_egroup1=اسم المجموعة مفقود
 gsave_egroup2=لا يمكن أن يحتوي اسم المجموعة على: حرف أو مسافات
 gsave_eclash=توجد بالفعل مجموعة بنفس الاسم
+
 acl_dirs=الدلائل المسموح بها
 acl_user=إنشاء ملفات htaccess و htusers كمستخدم يونكس
 acl_same=نفس تسجيل دخول Webmin
 acl_home=هل تريد تضمين الدليل الرئيسي لمستخدم Unix؟
 acl_sync=هل يمكن إعداد مزامنة مستخدم Unix؟
 acl_uonly=يمكن إضافة وتغيير الدلائل المحمية؟
+
 log_create_dir=تمت إضافة الدليل$1
 log_modify_dir=الدليل المعدل$1
 log_delete_dir=الدليل المحذوف$1
@@ -104,6 +111,7 @@ log_create_group=المجموعة التي تم إنشاؤها$1
 log_modify_group=مجموعة معدلة$1
 log_delete_group=المجموعة المحذوفة$1
 log_delete_dirs=تم حذف دلائل$1
+
 search_title=نتائج البحث
 search_err=فشل البحث
 search_edir=دليل مطلق مفقود أو غير صالح للبحث

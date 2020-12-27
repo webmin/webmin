@@ -24,13 +24,16 @@ index_out=$1からの出力は
 index_boot=起動時に接続：
 index_noboot=&lt;接続しない&gt;
 index_bootdesc=このオプションを変更して、選択したPPP接続をブート時に開始するかどうかを制御します。
+
 init_title=設定を検出
 init_cmd=コマンド $1..で接続されたモデムを検出しています
 init_done=..完了
 init_modems=モデムは $1と $2で構成されます。
 init_modem=$1でモデムが検出されました。
 init_none=モデムは検出されませんでした！
+
 device_serial=シリアルポート $1
+
 connect_title=接続を確立する
 connect_cmd=コマンド $1で接続を確立しようとしています ..
 connect_failed=.. 接続に失敗しました！その理由については、上記の出力を参照してください。
@@ -40,12 +43,14 @@ connect_dns=PPPが割り当てたDNS構成を使用します。
 connect_dns2=PPPが割り当てたDNS構成が設定されています。
 connect_dnsto=PPPで割り当てられたDNS構成を待つタイムアウト。
 connect_dnsdown=PPPが割り当てたDNS構成を待っている間に接続が失敗したようです。
+
 disc_title=PPPのシャットダウン
 disc_err=PPP接続のシャットダウンに失敗しました
 disc_edown=すでに切断されています
 disc_ok1=$2を使用して確立されたPPP接続は正常にシャットダウンされました。
 disc_ok2=PPP接続は正常にシャットダウンされました。
 disc_dns=古いDNS構成を復元しました。
+
 edit_title1=ISPダイヤラーを追加
 edit_title2=ISPダイヤラーを編集
 edit_ddesc=これらのデフォルト設定は、他のダイヤラーを使用して行われた接続に適用されます。
@@ -76,6 +81,7 @@ edit_idle=アイドルタイムアウト（秒）
 edit_def=デフォルト設定から
 edit_inherits=設定を継承
 edit_from=ダイヤラから ..
+
 save_err=ダイヤラを保存できませんでした
 save_err2=ダイヤラを削除できませんでした
 save_ename=ダイヤラー名が欠落しているか無効です
@@ -88,6 +94,7 @@ save_edial=ダイヤル試行の欠落または無効数
 save_eidle=アイドルタイムアウトがないか、無効です
 save_einherits=「$1」は設定を継承しているため、このダイヤラーは削除できません。
 save_eclash=同じ名前のダイヤラーが既に存在します
+
 log_create=$1を作成しました
 log_update=$1を更新しました
 log_delete=$1を削除しました

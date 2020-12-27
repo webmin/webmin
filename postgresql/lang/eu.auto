@@ -16,6 +16,7 @@ index_add=Datu base berria sortu.
 index_users=Erabiltzailea, Taldeak eta Baimenak
 index_return=datu baseen zerrenda
 index_esql=PostgreSQL bezeroaren programa $1 ez da zure sisteman aurkitu. Agian PostgreSQL ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
+
 index_ehba=PostgreSQL ostalariaren konfigurazio fitxategia ez da aurkitu zure sisteman. Agian PostgreSQL ez da hasieratu edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
 index_superuser=PostgreSQL bezeroaren programa psql-k ezin izan du zure sisteman exekutatu. Agian PostgreSQL ez dago instalatuta edo zure <a href='$1'>moduluaren konfigurazioa</a> okerra da.
 index_eversion=Zure sistemako PostgreSQL datu-basea $1 bertsioa da, baina Webmin-ek $2 eta berriagoak soilik onartzen ditu.
@@ -48,10 +49,12 @@ index_gist=Aurkibide orokorreko bilaketa zuhaitza
 index_jump=Edo editatu datu-basea:
 index_jumpok=Open
 index_edithosts=Konfiguratu baimendutako ostalari sistemak
+
 login_err=Errorea saioa hastean
 login_ecannot=Ezin duzu datu-basearen hasiera konfiguratu
 login_elogin=Saioa amaitzeko saioa falta da
 login_epass=Erabiltzaile-izena edo pasahitza okerra
+
 dbase_title=Editatu datu basea
 dbase_noconn=Datu-base hau ez da une honetan konexioak onartzen. Beraz, ezin da ekintzarik egin bertan.
 dbase_header=Datu-base taulak, indizeak, bistak eta sekuentziak
@@ -78,6 +81,7 @@ dbase_jump=Editatu taula:
 dbase_vjump=Editatu ikuspegia:
 dbase_ijump=Editatu indizea:
 dbase_sjump=Editatu sekuentzia:
+
 table_title=Editatu taula
 table_title2=Sortu taula
 table_opts=Eremuko aukerak
@@ -105,6 +109,7 @@ table_eblob=Ez da neurririk behar BLOB $1 eremuan
 table_csv=Esportatu CSV gisa
 table_index=Sortu Aurkibidea
 table_delete=Ezabatu hautatutako eremuak
+
 field_title1=Gehitu eremua
 field_title2=Aldatu eremua
 field_in=$1 datu-baseko $1 taulan
@@ -123,6 +128,7 @@ field_esize='$1' ez da baliozko eremuaren tamaina
 field_eenum=Ez da sartu zenbakirik
 field_efield='$1' ez da baliozko eremu izen bat
 field_ekey=Baliogabetzen dituzten eremuak ezin dira gako primarioaren parte izan
+
 exec_title=SQL exekutatu
 exec_header=Sartu SQL komandoa datu basean exekutatzeko $1 ..
 exec_old=Edo hautatu aurreko SQL komandoa :
@@ -152,21 +158,25 @@ exec_tabexec=SQL exekutatu
 exec_tabfile=Exekutatu SQL fitxategitik
 exec_tabimport=Inportatu testu fitxategia
 exec_return=exekutatu SQL inprimakia
+
 stop_err=Ezin izan da datu basearen zerbitzaria gelditu
 stop_epidfile=Ezin izan da $1 PID fitxategia ireki
 stop_ekill=Huts egin du $1 prozesua hiltzean : $2 
 stop_ecannot=Ezin duzu datu-basearen zerbitzaria gelditu
 start_err=Huts egin du datu-basearen zerbitzaria abiaraztean
 start_ecannot=Ezin duzu datu-basearen zerbitzaria abiarazi
+
 ddrop_err=Ezin izan da datu basea jaregin
 ddrop_title=Beheko datu-basea
 ddrop_rusure=Ziur al zaude $1 datu-basea bota nahi duzula? $3 datu-ilara dituzten 2 taulak ezabatuko dira.
 ddrop_mysql=Datu-basea maisua denez, bertan behera uzteak zure PostgreSQL zerbitzaria ezin erabiliko du!
 ddrop_ok=Beheko datu-basea
+
 tdrop_err=Ezin izan da taula jaitsi
 tdrop_title=Jareginen taula
 tdrop_rusure=Ziur al zaude $1 taula $2 datu-basean utzi nahi duzula? $3 datu-ilara ezabatu egingo dira.
 tdrop_ok=Jareginen taula
+
 view_title=Taularen datuak
 view_pos=$1 etik $2 ko errenkadak 3
 view_none=Taula honek ez dauka daturik
@@ -201,6 +211,7 @@ view_set=Ezarri fitxategiaren edukira.
 view_warn=Abisua: fitxategiak igotzea eta <tt>text</tt> edo <tt>bytea</tt> eremuetako edukiak ikustea eta ez da funtzionatuko, $1 eta $2 Perl moduluak instalatu eta erabiltzen ez badira behintzat.
 view_adv=Bilaketa aurreratua
 view_sqlrun=SQL kontsultak sortutako emaitzak : $1 
+
 newdb_title=Datu-basea sortu
 newdb_header=Datu base datu berriak
 newdb_db=Datu-basearen izena
@@ -215,6 +226,7 @@ newdb_encoding=Karaktere multzoen kodeketa
 newdb_eencoding=Pertsonaien multzoen kodeketa falta da
 newdb_template=Txantiloien datu-basea
 newdb_notemplate=Bat ere ez
+
 user_title=PostgreSQL erabiltzaileak
 user_vwarning=KONTUZ: PostgreSQL erabiltzaile hau $1 Virtualmin domeinuko administrazio-hasiera da. Hemen ezarpenak aldatzeak Virtualmin-en akatsak sor ditzake.
 user_ecannot=Ezin duzu erabiltzaileak editatu
@@ -244,6 +256,7 @@ user_sync_delete=Ezabatu PostgreSQL erabiltzailea bat datozen Unix erabiltzailea
 user_delete=Ezabatu Hautatuta
 user_derr=Ezin izan dira erabiltzaileak ezabatu
 user_enone=Ez da erabiltzaile aukeratu
+
 host_ecannot=Ezin duzu baimendu ostalariak editatu
 host_title=Onartutako ostalariak
 host_desc=Bezero bat datu-basera konektatzen denean, ondoren agertzen diren ostalariak prozesatu egiten dira bat etorri arte eta bezeroak baimendu edo ukatu egin arte.
@@ -299,8 +312,10 @@ host_derr=Ezin izan da baimendutako ostalariak ezabatu
 host_enone=Ez da ostalaririk aukeratu
 host_manual=Editatu Konfigurazio fitxategia
 host_manualdesc=Egin klik botoi honetan baimendutako ostalarien konfigurazio fitxategia eskuz editatzeko.
+
 manual_title=Editatu Konfigurazio fitxategia
 manual_err=Ezin izan da konfiguratu fitxategia gordetzean
+
 grant_title=Emandako pribilegioak
 grant_tvi=Objektu
 grant_type=Mota
@@ -328,6 +343,7 @@ grant_none=Ez dago taularik, bistarik, sekuentziarik edo indizerik baimenik emat
 grant_toomany=Objektu gehiegi daude erakusteko. Aurkitu behar dituzten objektuak
 grant_showing=$1 ekin bat datozen objektuak erakusten dira.
 grant_delete=Berrezarri hautatutako diru-laguntzak
+
 group_title=PostgreSQL taldeak
 group_ecannot=Ezin duzu talde editatu
 group_name=Taldearen izena
@@ -347,6 +363,7 @@ group_etaken=Taldearen izena dagoeneko erabiltzen ari da
 group_none=Ez dago egun PostgreSQL taldeik.
 group_derr=Ezin izan dira taldeak ezabatu
 group_enone=Ez da talderik aukeratu
+
 esql=SQL $1 ek huts egin du : $2 
 log_start=PostgreSQL zerbitzaria hasi da
 log_stop=PostgreSQL zerbitzaria gelditu da
@@ -403,6 +420,7 @@ log_backup_l=$1 datu-basearen babeskopia egin da $2 fitxategian
 log_backup_all=Datu base guztiak babestu
 log_backup_all_l=Datu-base guztien babesarekin $2 fitxategian egin zen
 log_manual=Eskuz editatutako baimendu ostalarien konfigurazio fitxategia
+
 acl_dbs=Erabiltzaile honek kudeatu ditzakeen datu-baseak
 acl_dbscannot=Sarbide kontrol hori eraginkorra bihurtuko da, PostgreSQL datu-base zerbitzaria abiarazi ondoren.
 acl_dall=Datu base guztiak
@@ -423,13 +441,17 @@ acl_cmds=Egin al daiteke backup komandoen aurretik eta ondoren?
 acl_views=Ikuspegiak ikusi eta kudeatu ditzakezu?
 acl_indexes=Indizeak ikusi eta kudeatu ditzakezu?
 acl_seqs=Sekuentziak ikusi eta kudeatu ditzakezu?
+
 fdrop_err=Ezin izan dira eremuak ezabatu
 fdrop_enone=Ez da hautatu
 fdrop_eall=Ezin dituzu eremu guztiak taula batetik ezabatu!
+
 setup_err=Ezin izan da datu basea hasieratu
 setup_ecannot=Ezin duzu datu-basea hasieratu
+
 dbase_bkup=Backup
 dbase_rstr=Berreskuratu
+
 restore_title=Datu-basea berreskuratu
 restore_header=Berrezarri datu-basearen aukerak
 restore_db=Datu-basearen izena
@@ -452,6 +474,7 @@ restore_tables=Zaharberritzeko taulak
 restore_tables1=Guztiak backup fitxategian
 restore_tables0=Zerrendatutako taulak
 restore_failed=Leheneratu da huts egin duena : $1 
+
 backup_title=Backup datu-basea
 backup_title2=Babeskopia datu base guztiak
 backup_header1=Backup helmuga
@@ -500,17 +523,21 @@ backup_ebefore=Back-backup komandoak huts egin du!
 backup_cmode=Noiz exekutatu komandoak
 backup_cmode1=Datu base guztiak aurretik/ondoren
 backup_cmode0=Datu-base bakoitzaren aurretik/ondoren
+
 r_command=Komandoa ez da onartzen
+
 adv_title=Bilaketa aurreratua
 adv_and=Aurkitu irizpide guztiak betetzen dituzten erregistroak ..
 adv_or=Aurkitu edozein irizpide betetzen dituzten erregistroak ..
 adv_ok=Bilatu orain
+
 tdrops_enone=Ez da mahairik aukeratu hautatuta
 tdrops_err=Ezin izan da mahaia jaitsi
 tdrops_ok=Drop
 tdrops_title=Hautatu hautua
 tdrops_rusure=Ziur $1 hautatutako $1 taula (k) jaitsi nahi duzula? $3 datu-ilara ezabatu egingo dira.
 tdrops_rusure2=Ziur $1 hautatutako $1 taula (k) jaitsi nahi duzula?
+
 ddrops_err=Ezin izan da datu basea jaitsi
 ddrops_title=Jarri datu-baseak
 ddrops_rusure=Ziur zaude $1 hautatutako datu baseak bota nahi dituzula? $3 datu-ilara dituzten 2 taulak ezabatuko dira.
@@ -518,6 +545,7 @@ ddrops_mysql=Datu-base maisua hautatuta dagoenez, hura jaurtitzerakoan zure Post
 ddrops_ok=Jarri datu-baseak
 ddrops_enone=Ez da datu baseik hautatu
 ddrops_ecannotdb=Ezin duzu $1 datu-basea bota
+
 csv_title=Export CSV fitxategia
 csv_header=CSV esportatzeko aukerak
 csv_dest=Esportazioen helmuga
@@ -538,6 +566,7 @@ csv_done=$1 CSV esportazioa amaitu da. Lortutako fitxategiaren tamaina $2 da.
 csv_headers=Zutabe izenak sartu CSV-n?
 csv_cols=Zutabeak CSV-n sartzeko
 csv_ecols=Ez da zutabe aukeratu
+
 import_title=Inportatu datuak
 import_uploadout=Kargatutako fitxategitik datuak inportatzen ..
 import_fileout=$1 fitxategitik datuak inportatzen.
@@ -545,6 +574,7 @@ import_eupload=Igotako inportazio fitxategia falta da
 import_efile=Inportazio fitxategiaren izena falta da
 import_done=.. $1 errenkadak sortu ditu eta $2 bikoiztu egin dira.
 import_erow=.. ez da $1 errenkadan aurkitu eremurik
+
 index_title1=Sortu Aurkibidea
 index_header1=Indizearen aukerak
 index_name=Indizearen izena
@@ -562,6 +592,7 @@ index_ecols=Ez da eremu hautatu
 index_title2=Editatu aurkibidea
 index_header=$1 aurkibidea $2 datu-basean
 index_ecannot=Ezin duzu indizeak kudeatu
+
 view_title1=Sortu Ikusi
 view_title2=Editatu Ikusi
 view_header1=Ikusi xehetasunak
@@ -576,6 +607,7 @@ view_eclash=Izen bereko ikuspegia badago lehendik
 view_equery=SQL kontsulta falta da
 view_ecols=Ez da zutabe izenik sartu
 view_ecannot=Ezin duzu bista kudeatu
+
 seq_title1=Sortu sekuentzia
 seq_title2=Editatu Sekuentzia
 seq_header1=Sekuentzia aukerak areagotzea
@@ -595,5 +627,6 @@ seq_emin=Gutxieneko balio falta edo falta da
 seq_emax=Gehienezko balio falta edo baliogabea
 seq_ecache=Memoria cacheari dagozkion balio kopurua falta da edo ez da baliozkoa
 seq_ecannot=Ezin duzu sekuentziak kudeatu
+
 dgrant_err=Ezin izan da diru-laguntzak berrabiarazi
 dgrant_enone=Ez da objektu hautatu

@@ -16,6 +16,7 @@ index_d1=$1
 index_dlang=la lingua in cui i moduli sono visualizzati
 index_dtheme=il tema che determina l'estetica di Webmin
 index_dpass=la password usata per collegarti con
+
 change_title=Sto cambiando le impostazioni...
 change_user=Sto modificando il login di Webmin...
 change_done=... fatto
@@ -23,6 +24,7 @@ change_restart=Riavvio di Webmin...
 change_redirect=Re-direzionamento al menu principale...
 change_ecolon=La tua password non può contenere il carattere :
 change_epass=La nuova password non è valida: $1
+
 acl_lang=Può cambiare la lingua?
 acl_theme=Può cambiare il tema?
 acl_pass=Può cambiare la password (quando impostata in Webmin)?

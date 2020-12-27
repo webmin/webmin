@@ -32,6 +32,7 @@ index_man=دستی طور پر ترتیب میں ترمیم کریں
 index_mandesc=اپنے اپنے قواعد ، تغیرات اور بلاکس بنانے کے لئے ، پرائمک پراکمیل ترتیب فائل میں براہ راست ترمیم کریں۔
 index_ecmd=The Procmail program $1 was not found on your system. Either it is not installed, or the <a href='$2'>module configuration</a> is incorrect.
 index_delete=منتخب عمل کو حذف کریں
+
 edit_title2=ایکشن میں ترمیم کریں
 edit_title1=ایکشن بنائیں
 edit_header1=فراہمی کی کارروائی کی تفصیلات
@@ -67,6 +68,7 @@ edit_none=کوئی نہیں
 edit_lock=مخصوص فائل
 edit_ctype=حالت کی قسم
 edit_cvalue=باقاعدہ اظہار یا حکم
+
 save_err=کارروائی کو بچانے میں ناکام
 save_eaction_0=شامل کرنے کے لئے فائل غائب ہے
 save_eaction_1=لکھنے کے لئے MH فولڈر لاپتہ ہے
@@ -79,6 +81,7 @@ save_elockfile=لاک فائل کا نام غائب ہے
 save_esize=حالت $1 کے ل mail میل کا سائز غائب یا غلط ہے
 save_ere=حالت $1 کے لئے باقاعدہ اظہار غائب
 save_eshell=حالت $1 کے لئے کمانڈ غائب ہے
+
 env_title1=متغیر بنائیں
 env_title2=متغیرات میں ترمیم کریں
 env_header=پروکل میل ماحولیات متغیر
@@ -86,15 +89,19 @@ env_name=متغیر نام
 env_value=قدر
 env_err=متغیر کو بچانے میں ناکام
 env_ename=متغیر یا نامعلوم متغیر نام
+
 inc_title1=شامل فائل شامل کریں
 inc_title2=فائل شامل کریں میں ترمیم کریں
 inc_header=پروکی میل کے قوانین فائل شامل ہیں
 inc_inc=شامل فائل
 inc_einc=شامل فائل شامل نہیں ہے
+
 config_eline=نامعلوم لائن$1 میں $2 : $3 
+
 manual_title=ترتیب میں ترمیم کریں
 manual_desc=اس صفحے کو پروکی میل کنفیگریشن فائل$1 کو دستی طور پر ترمیم کرنے کے لئے استعمال کیا جاسکتا ہے۔ ہوشیار رہیں ، کیوں کہ نحو کی جانچ نہیں کی جائے گی۔
 manual_edata=آپ کے براؤزر کے ذریعہ کوئی ڈیٹا فراہم نہیں کیا گیا تھا!
+
 log_create_rec=$1 پر نسخہ تشکیل دیا گیا
 log_delete_rec=$1 پر حذف شدہ ترکیب
 log_modify_rec=ترمیم شدہ نسخہ$1
@@ -114,7 +121,9 @@ log_delete_inc=خارج کردہ فائل میں $1 شامل ہیں
 log_manual=دستی طور پر ترمیم شدہ تشکیل
 log_up=ایک اندراج کو منتقل کیا
 log_down=نیچے اندراج منتقل کیا
+
 delete_err=عمل کو حذف کرنے میں ناکام
 delete_enone=کوئی بھی منتخب نہیں ہوا
+
 check_epostfix=Procmail is not enabled in your Postfix configuration. The configuration file <tt>$2</tt> must have the <tt>$1</tt> option set to <tt>$3</tt>.
 check_esendmail=Sendmail is not setup to use Procmail for local delivery. This can be configured in Webmin's <a href='$1'>Sendmail Mail Server</a> module.

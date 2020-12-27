@@ -57,20 +57,27 @@ index_rotate=อัปเดตสถิติ
 index_rotatedesc=คลิกปุ่มนี้เพื่อประมวลผลทราฟฟิกเครือข่ายที่บันทึกไว้ทั้งหมดจนถึงเวลาปัจจุบันทำให้สามารถรายงานได้ทันที
 index_eiptables=คำเตือน - การกำหนดค่า IPtables ของคุณมีข้อผิดพลาด: $1 การตั้งค่าการตรวจสอบแบนด์วิดท์จะล้างกฎไฟร์วอลล์ทั้งหมด
 index_return=แบบฟอร์มรายงาน
+
 log_setup=ตั้งค่าการมอนิเตอร์แบนด์วิดท์บนอินเตอร์เฟส $1 
 log_turnoff=ปิดใช้งานการตรวจสอบแบนด์วิดท์
 log_rotate=สถิติล่าสุด
+
 acl_setup=การตั้งค่าและปิดการใช้งานการตรวจสอบสามารถ?
+
 turnoff_ecannot=คุณไม่ได้รับอนุญาตให้ปิดใช้งานการตรวจสอบ
+
 setup_ecannot=คุณไม่ได้รับอนุญาตให้เปิดใช้งานการตรวจสอบ
 setup_eiface=ชื่ออินเตอร์เฟสขาดหายไปหรือไม่ถูกต้อง
 setup_ezone=ไม่พบโซน Shorewall สำหรับอินเทอร์เฟซที่เลือก
+
 system_firewall=ตารางไอพี
 system_ipfw=IPFW
 system_ipfilter=ipfilter
 system_shorewall=Shorewall
+
 syslog_syslog=syslog
 syslog_syslog-ng=Syslog-NG
+
 rotate_title=กำลังอัปเดตสถิติ
 rotate_doing=กำลังประมวลผลปริมาณการใช้เครือข่ายที่บันทึกไว้ ..
 rotate_done=.. เสร็จแล้ว

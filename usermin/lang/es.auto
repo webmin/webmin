@@ -1,30 +1,42 @@
 index_deb=Instalar el paquete Debian de Usermin
 index_eroot=¡El directorio de configuración de Usermin $1 existe, pero el directorio raíz del programa $2 al que hace referencia no existe! Debe descargar y reinstalar Usermin manualmente.
+
 mods_desc4=Los módulos instalados se pueden exportar como un archivo wbm.gz utilizando el siguiente formulario. Luego se puede instalar un archivo de módulo en otro sistema que ejecute Usermin.
+
 os_iusermin=Código interno del sistema operativo utilizado por Usermin
 os_update=Actualice Usermin para usar el sistema operativo detectado
+
 session_authmode=Método de autentificación
+
 themes_desc4=Los temas instalados se pueden exportar como un archivo wbt.gz utilizando el siguiente formulario. Se puede instalar un archivo de tema en otro sistema que ejecute Usermin.
+
 configs_global=Configuración del módulo global
 configs_globaldesc=La configuración de este formulario se aplica a todos los usuarios del módulo y, en general, establece opciones relacionadas con los programas y archivos que utiliza.
 configs_user=Preferencias de usuario predeterminadas
 configs_userdesc=La configuración de este formulario define los valores predeterminados para las preferencias editables por el usuario para este módulo. A menos que especifique lo contrario, los usuarios individuales pueden anularlos.
+
 ssl_savekey=Este formulario le permite cargar una clave privada SSL con formato PEM existente y un certificado para que lo use su servidor Usermin.
 ssl_copycert=Copiar certificado de Webmin
 ssl_copycertdesc=Copie el certificado SSL, la clave privada, el certificado de CA y otras configuraciones que utiliza Webmin.
+
 ui_hnm0=Nombre de host real
 ui_hnm1=Nombre de host de URL
 ui_hnm2=Nombre de dominio de URL
 ui_hnm3=Otro nombre ..
+
 upgrade_descdeb=Este formulario le permite actualizar su instalación completa de Usermin a una nueva versión actualizando su paquete Debian. Puede instalar desde un archivo.deb local, un archivo cargado o desde la última versión en <a href=http://www.usermin.com/>www.usermin.com</a>. Al igual que con una actualización manual, se mantendrán todos sus ajustes de configuración y módulos de terceros.
+
 log_copycert=Configuración SSL copiada de Webmin
 log_dav=Cambió la configuración del servidor DAV
 log_advanced=Opciones avanzadas modificadas
 log_mobile=Opciones de dispositivo móvil modificadas
+
 sessions_host=dirección IP
 sessions_switch=Cambiar a usuario Usermin:
 sessions_ok=Cambiar
+
 logout_ecannot=No tiene permiso para configurar los tiempos de cierre de sesión
+
 dav_title=Servidor DAV
 dav_header=Opciones del servidor DAV
 dav_path=DAV habilitado?
@@ -45,16 +57,22 @@ dav_users=Usuarios que pueden usar DAV
 dav_users1=Todos los usuarios
 dav_users0=Usuarios y grupos enumerados a continuación.
 dav_eusers=Ningún usuario ingresó
+
 syslog_errorlog=Usermin error log
+
 descs_title=Títulos de módulos
 descs_info=Esta página le permite especificar títulos alternativos para los módulos Usermin, para anular sus descripciones estándar.
+
 advanced_title=Opciones avanzadas
 advanced_pass=¿Hacer que la contraseña esté disponible para los programas Usermin? <br><font size=-1> (No funciona cuando la autenticación de sesión está habilitada) </font>
+
 blocked_title=Hosts y usuarios bloqueados
 blocked_none=Usermin no bloquea actualmente ningún host o usuario.
 blocked_user=Usermin user
 blocked_cleardesc=Haga clic en este botón para borrar todos los bloques actuales de host y usuario, reiniciando el proceso del servidor Usermin.
+
 mobile_title=Opciones de dispositivos móviles
+
 copycert_err=Error al copiar la configuración SSL de Webmin
 copycert_essl=SSL no está habilitado
 copycert_ekeyfile=No se establece un archivo de clave privada en Webmin

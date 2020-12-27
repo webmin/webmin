@@ -19,11 +19,13 @@ index_force=Tvinga loggrotation
 index_forcedesc=Tvinga omedelbar rotation av alla loggfiler, även om det ännu inte är dags.
 index_logrotate=logrotate
 index_delete=Radera valda loggarotationer
+
 period_daily=Dagligen
 period_weekly=Varje vecka
 period_monthly=En gång i månaden
 period_never=Aldrig
 period_bytes=bitgrupper
+
 edit_title1=Redigera loggfil
 edit_title2=Skapa loggfil
 edit_header=Roterade loggfildetaljer
@@ -62,8 +64,10 @@ edit_pre=Kommandon som ska köras före rotation
 edit_default=Standard ($1)
 edit_sharedscripts=Kör du bara skript en gång för alla filer?
 edit_now=Rotera nu
+
 global_title=Globala alternativ
 global_header=Standardalternativ för alla loggfiler
+
 save_err=Det gick inte att spara loggen
 save_efile=Saknat eller ogiltigt loggfilnamn
 save_esize=Maximal storlek saknas eller ogiltig
@@ -81,6 +85,7 @@ save_eerrors=E-postadress saknas för felmeddelanden
 save_epre=Förrotationsskriptet kan inte innehålla en <tt>slutskrift</tt> eller <tt>endrotate</tt> rad
 save_epost=Post-rotationsskriptet kan inte innehålla en <tt>slutskrift</tt> eller <tt>endrotate</tt> rad
 save_enofiles=Inga filer att rotera har angivits
+
 log_modify_sched=Ändrat logrotation Cron-jobb
 log_create_sched=Skapad logrotation Cron-jobb
 log_delete_sched=Raderad logrotation Cron-jobb
@@ -89,6 +94,7 @@ log_create=Lagt till rotation för loggfil $1
 log_modify=Ändrad rotation för loggfil $1 
 log_delete=Raderad rotation för loggfil $1 
 log_delete_logs=Raderad rotation för $1 loggfiler
+
 sched_title=Logga rotationsschema
 sched_desc=För att loggrotation konfigureras med hjälp av denna modul ska utföras, måste kommandot $1 köras enligt ett vanligt schema (vanligtvis dagligen) av Cron.
 sched_runparts=För närvarande körs rotationskommandot från skriptet $1 $2 och kan inte justeras.
@@ -98,10 +104,12 @@ sched_enabled=Aktiverad, ibland under ..
 sched_save=Uppdatera Cron Job
 sched_err=Det gick inte att spara rotationsschema
 sched_when=Tider att springa
+
 force_title=Tvinga loggrotation
 force_doing=Tvingar omedelbar rotation av alla loggfiler ..
 force_doingone=Tvingar omedelbar rotation av en loggfil ..
 force_done=.. Gjort.
 force_failed=.. misslyckades! Se utgången ovan för anledningen.
+
 delete_err=Det gick inte att ta bort loggar
 delete_enone=Ingen vald

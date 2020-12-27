@@ -19,6 +19,7 @@ index_dump=Pokaż zrzut
 index_dumpdesc=Kliknij ten przycisk, aby wyświetlić informacje o śledzeniu Shorewall z polecenia <tt>shorewall6 dump</tt>.
 index_check=Sprawdź zaporę ogniową
 index_checkdesc=Kliknij ten przycisk, aby Shorewall zweryfikował konfigurację zapory za pomocą polecenia <tt>shorewall6 check</tt>.
+
 list_move=Ruszaj się
 list_add=Dodaj
 list_auto=Automatyczny
@@ -30,6 +31,7 @@ list_manual=Ręcznie edytuj plik
 list_manualdesc=Kliknij ten przycisk, aby ręcznie edytować plik Shorewall $1, w którym zapisane są powyższe wpisy.
 list_ecannot=Nie możesz edytować tej tabeli Shorewall.
 list_delete=Usuń wybrane
+
 restart_err=Nie można zastosować konfiguracji
 refresh_err=Nie udało się odświeżyć konfiguracji
 start_err=Nie udało się uruchomić zapory ogniowej
@@ -41,6 +43,7 @@ check_title=Sprawdź zaporę ogniową
 check_ok=.. Twoja konfiguracja zapory wygląda OK.
 check_failed=.. znaleziono błąd w konfiguracji zapory ogniowej!
 check_cmd=Sprawdzanie konfiguracji ..
+
 zones_title=Strefy sieciowe
 zones_desc=Strefy wymienione na tej stronie reprezentują różne sieci dostępne z twojego systemu. Jednak wpisy tutaj nie mają żadnego wpływu na zaporę ogniową - po prostu definiują nazwy i opisy stref.
 zones_add=Dodaj nową strefę sieci.
@@ -72,6 +75,7 @@ zones_firewall=System zapory ogniowej
 zones_eopts=Nieprawidłowe opcje strefy
 zones_eopts_in=Nieprawidłowe opcje przychodzące do strefy
 zones_eopts_out=Nieprawidłowe opcje wychodzące strefy
+
 policy_title=Domyślne zasady
 policy_desc=Ta strona pozwala skonfigurować domyślne akcje dla ruchu między różnymi strefami zapory. Można je zastąpić dla określonych hostów lub rodzajów ruchu na stronie Reguły zapory.
 policy_add=Dodaj nową domyślną zasadę.
@@ -92,6 +96,7 @@ policy_ulog=Zaloguj się do ULOG
 policy_efw=&lt;Firewall&gt; można wybrać zarówno dla strefy źródłowej, jak i docelowej
 policy_elimit=Brakujący lub nieprawidłowy numer limitu ruchu
 policy_eburst=Brakujący lub nieprawidłowy numer seryjny ruchu
+
 rules_title=Reguły zapory ogniowej
 rules_desc=W tej tabeli wymieniono wyjątki od domyślnych zasad dla niektórych rodzajów ruchu, źródeł lub miejsc docelowych. Wybrane działanie zostanie zastosowane do pakietów spełniających wybrane kryteria zamiast domyślnych.
 rules_add=Dodaj nową regułę zapory.
@@ -138,6 +143,7 @@ rules_eaction=Nie wybrano żadnej akcji
 rules_macro=Parametr akcji makra
 rules_none2=Żaden
 rules_emacro=Brak lub nieprawidłowy parametr makra
+
 tos_title=Rodzaje usług
 tos_desc=Ta strona definiuje typy usług IP dla poszczególnych rodzajów ruchu, które mogą służyć do zwiększania lub obniżania ich priorytetów.
 tos_add=Dodaj nowy typ usługi.
@@ -156,6 +162,7 @@ tos_edit=Edytuj typ usługi
 tos_create=Utwórz typ usługi
 tos_header=Rodzaj szczegółów usługi
 tos_err=Nie udało się zapisać typu usługi
+
 interfaces_title=Interfejsy sieciowe
 interfaces_desc=Każdy interfejs sieciowy w systemie, którym ma zarządzać Shorewall, powinien być wymieniony na tej stronie i powiązany ze strefą, z którą jest połączony. Interfejs pętli zwrotnej <tt>lo</tt> nigdy nie może być wymieniony.
 interfaces_add=Dodaj nowy interfejs sieciowy.
@@ -171,6 +178,7 @@ interfaces_header=Szczegóły interfejsu sieciowego
 interfaces_err=Nie udało się zapisać interfejsu sieciowego
 interfaces_eiface=Brakująca lub nieprawidłowa nazwa interfejsu
 interfaces_ebroad=Brakujący lub nieprawidłowy adres rozgłoszeniowy
+
 masq_title=Maskarada
 masq_desc=Wpisy na tej stronie konfigurują translację adresów sieciowych dla ruchu kierowanego między pewną siecią a określonym interfejsem.
 masq_add=Dodaj nową regułę maskarady.
@@ -201,6 +209,7 @@ masq_emnete=Pusta lista sieci wyjątków
 masq_esnat=Nieprawidłowy adres IP SNAT
 masq_eports=Brakująca lub niepoprawna lista portów oddzielona przecinkami
 masq_eipsec=Brak opcji IPsec
+
 nat_title=Statyczny NAT
 nat_desc=Wpisy statycznej translacji adresów sieciowych w tej tabeli można wykorzystać do skonfigurowania zgodności 1-1 między zewnętrznym adresem w zaporze ogniowej a adresem RFC1918 maszyny za zaporą ogniową. Statyczny NAT jest często używany, aby umożliwić połączenia z serwerem wewnętrznym spoza sieci.
 nat_add=Dodaj nowy statyczny wpis NAT.
@@ -219,6 +228,7 @@ nat_local=Aktywny dla systemu zapory ogniowej?
 nat_eext=Nieprawidłowy zewnętrzny adres IP
 nat_eint=Nieprawidłowy wewnętrzny adres IP
 nat_evirt=Nieprawidłowy numer interfejsu wirtualnego
+
 proxyndp_title=Proxy NDP
 proxyndp_desc=Ta strona umożliwia skonfigurowanie systemu w taki sposób, aby odpowiadał na żądania NDP dotyczące adresów IP innych niż własny, aby mógł przekazywać pakiety na te adresy do ich rzeczywistych miejsc docelowych.
 proxyndp_add=Dodaj nowy adres NDP proxy.
@@ -235,6 +245,7 @@ proxyndp_err=Nie udało się zapisać proxy NDP
 proxyndp_have=Czy istnieje droga do hosta?
 proxyndp_eaddr=Brakujący lub nieprawidłowy adres do NDP
 proxyndp_pers=Opuścić trasę nawet po zatrzymaniu zapory?
+
 routestopped_title=Po zatrzymaniu
 routestopped_desc=Domyślnie, gdy Shorewall jest zatrzymany, odmawia dostępu ze wszystkich hostów. Ta strona umożliwia zdefiniowanie hostów lub sieci, które będą nadal dostępne.
 routestopped_add=Dodaj nowy zatrzymany adres.
@@ -250,6 +261,7 @@ routestopped_err=Nie udało się zapisać zatrzymanego adresu
 routestopped_eaddr=Nie wpisano adresów
 routestopped_all=Wszystkie adresy
 routestopped_list=Wymienione adresy i sieci ..
+
 tunnels_title=Tunele VPN
 tunnels_desc=Ta strona zawiera listę tuneli VPN, które przechodzą przez twoją zaporę ogniową i dlatego musi być dozwolona przez konfigurację Shorewall.
 tunnels_add=Dodaj nowy tunel VPN.
@@ -282,6 +294,7 @@ tunnels_generic_l=Ogólne, dla protokołu ..
 tunnels_gsel=Wymienione strefy
 tunnels_eopenvpn=Niepoprawny numer portu dla tunelu OpenVPN
 tunnels_egeneric=Brak protokołu lub protokołu: port dla ogólnego tunelu
+
 hosts_title=Gospodarze strefy
 hosts_desc=Ta strona zawiera listę hostów i sieci należących do poszczególnych stref. Zasadniczo nie trzeba wprowadzać żadnych zmian na tej liście.
 hosts_add=Dodaj nowego hosta strefy.
@@ -301,8 +314,10 @@ hosts_ip=Adres lub sieć $1
 hosts_mac=Adres MAC $1 
 hosts_ipset=Zestaw IP $1 
 hosts_any=Dowolny host
+
 edit_before=Przed wpisem $1 
 edit_after=Po wpisie $1 
+
 blacklist_title=Gospodarze czarnej listy
 blacklist_desc=Ta strona zawiera listę hostów i usług, które zostaną zablokowane, jeśli ruch z nich dotrze do interfejsu z ustawioną opcją <b>czarna lista</b>.
 blacklist_add=Dodaj nowego hosta czarnej listy.
@@ -325,6 +340,7 @@ blacklist_eproto=Brakujący lub nieprawidłowy protokół
 blacklist_eports=Nieprawidłowy numer portu lub lista portów oddzielona przecinkami
 blacklist_eports2=Porty można określić tylko dla protokołów TCP i UDP
 blacklist_return=gospodarze z czarnej listy
+
 providers_title=Dodatkowi dostawcy routingu
 providers_desc=Ta strona definiuje dodatkowe tabele routingu. Są one potrzebne, jeśli masz połączenia z więcej niż jednym ISP lub wiele połączeń z tym samym ISP, lub uruchom Squid jako przezroczysty serwer proxy na hoście innym niż firewall.
 providers_add=Dodaj nowego dostawcę routingu.
@@ -359,17 +375,21 @@ providers_enumber=Brakujący lub nieprawidłowy numer dostawcy
 providers_emark=Brakujący lub nieprawidłowy numer znaku dostawcy
 providers_edup=Brak dostawcy do zduplikowania
 providers_egateway=Brakująca lub nieprawidłowa brama
+
 manual_desc=Tego formularza można użyć do ręcznej edycji pliku Shorewall $1. Zachowaj ostrożność, ponieważ zmiany nie będą sprawdzane pod kątem składni.
 manual_reset=Cofnij
 manual_err=Nie udało się zapisać pliku tabeli
 manual_efile=Nieprawidłowa nazwa tabeli!
 manual_edata=Nie wprowadzono zawartości pliku tabeli.
+
 acl_nochange=Czy można zastosować, zatrzymać i uruchomić konfigurację Shorewall?
 acl_files=Dostępne tabele Shorewall
 acl_all=Wszystko
 acl_sel=Wybrane poniżej ..
+
 delete_err=Nie udało się usunąć wierszy
 delete_enone=Nie wybrano wierszy
+
 opts_routeback=Akceptuj ruch z powrotem do hosta
 opts_source=Pozwól od hosta do dowolnego miejsca docelowego
 opts_dest=Pozwól hostować z dowolnego źródła
@@ -386,12 +406,14 @@ opts_proxyndp=Włącz proxy NDP
 opts_ndp_filter=Odpowiadaj tylko na żądania NDP dotyczące adresu IP interfejsu
 opts_detectnets=Strefa Taylora obejmuje tylko routowanych hostów
 opts_upnp=Ponownie mapuj pakiety przez UPNP
+
 opts_dhcp=Interfejs korzysta z DHCP
 opts_forward=Ustaw przekazywanie
 opts_ignore=Ignoruj zdarzenia góra/dół
 opts_optional=Interfejs jest opcjonalny
 opts_required=Interfejs jest wymagany
 opts_bridge=Interfejs jest mostem
+
 comment_add=Dodaj nowy komentarz.
 comment_edit=Edytuj komentarz
 comment_create=Utwórz komentarz
@@ -399,6 +421,7 @@ comment_header=Szczegóły komentarza do tabeli
 comment_msg=Wiadomość
 comment_err=Nie udało się zapisać komentarza
 comment_enone=Nie wprowadzono żadnej wiadomości
+
 log_create_table=Dodano wpis do tabeli $1 
 log_modify_table=Zmodyfikowany wpis w tabeli $1 
 log_delete_table=Usunięto wpis z tabeli $1 
@@ -414,6 +437,7 @@ log_start=Uruchomiona zapora ogniowa
 log_refresh=Odświeżona zapora ogniowa
 log_restart=Zrestartowano zaporę
 log_clear=Wyczyszczona zapora ogniowa
+
 shorewall_conf_title=Główny plik konfiguracyjny
 shorewall_conf_desc=Ta strona umożliwia konfigurowanie globalnych zmiennych konfiguracyjnych. UWAGA: Zmiana kolejności zmiennych tutaj nie jest zalecana, jeśli chcesz zachować względną pozycję komentarzy w pliku konfiguracyjnym.
 shorewall_conf_add=Dodaj nową zmienną konfiguracyjną.
@@ -427,6 +451,7 @@ shorewall_conf_create=Utwórz zmienną konfiguracyjną
 shorewall_conf_header=Szczegóły zmiennej konfiguracyjnej
 shorewall_conf_err=Nie udało się zapisać zmiennej konfiguracyjnej
 shorewall_conf_varname=Niepoprawna nazwa zmiennej (musi być prawidłową nazwą zmiennej powłoki)
+
 params_title=Parametry niestandardowe
 params_desc=Ta strona pozwala skonfigurować niestandardowe parametry Shorewall. UWAGA: Zmiana kolejności parametrów tutaj nie jest zalecana, jeśli chcesz zachować względną pozycję komentarzy w pliku konfiguracyjnym.
 params_add=Dodaj nowy parametr niestandardowy.

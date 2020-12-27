@@ -20,6 +20,7 @@ index_nostrftime=Brīdinājums - dažos dublējuma darbos failu nosaukumos tiek 
 index_tabsched=Plānotas dublējumkopijas
 index_tabbackup=Dublēt tagad
 index_tabrestore=Atjaunot tūlīt
+
 edit_title1=Izveidojiet plānoto dublēšanu
 edit_title2=Rediģēt plānoto dublēšanu
 edit_header=Plānotās rezerves iespējas
@@ -44,9 +45,11 @@ edit_return=rezerves forma
 edit_other=Citi uzskaitītie faili ..
 edit_pre=Pirms dublēšanas komanda
 edit_post=Pēc dublējuma komanda
+
 save_err=Neizdevās saglabāt dublējumu
 save_emods=Nav atlasīts neviens modulis
 save_ewebmin=Ne Webmin, ne servera konfigurācijas faili netika atlasīti
+
 backup_mode0=Vietējais fails
 backup_mode1=FTP serveris
 backup_mode2=SSH serveris
@@ -63,6 +66,7 @@ backup_egunzip=Dublējums ir saspiests, taču <tt>gunzip</tt> nav instalēts
 backup_euntar=Neizdevās noņemt TAR : $1 
 backup_enone2=Neviens no atlasīto moduļu failiem neatrodas dublējumā
 backup_epre2=Modulis $1 noraidīts atjaunot : $2 
+
 backup_err=Dublēšana neizdevās
 backup_edest=Trūkst vai nav derīgs absolūtais vietējais fails
 backup_eserver1=Trūkst vai nav derīgs FTP serveris
@@ -78,6 +82,7 @@ backup_title=Rezerves konfigurācija
 backup_doing=Moduļa konfigurācijas failu dublējuma sākšana uz $1.
 backup_failed=.. neizdevās! $1 
 backup_done=.. pabeigts. Galīgais dublējuma lielums bija $1, kurā bija $2 faili.
+
 restore_err=Neizdevās atjaunot
 restore_emods=Nav atlasīti moduļi vai citi faili
 restore_title=Atjaunot konfigurāciju
@@ -86,22 +91,26 @@ restore_testing=Dublējuma satura iegūšana no $1.
 restore_failed=.. neizdevās! $1 
 restore_done=.. pabeigts. $1 faili tika atjaunoti.
 restore_done2=.. dublējumkopijas faili ir :
+
 nice_ftp=$2 uz $1 caur FTP
 nice_ftpp=$2 uz $1 portu $3 caur FTP
 nice_ssh=$2 $1 caur SSH
 nice_sshp=$2 $1 ostā $3 caur SSH
 nice_upload=augšupielādēts fails
 nice_download=pārlūks
+
 log_backup=Dublēti $1 moduļi uz $2 
 log_restore=Atjaunoti $1 moduļi no $2 
 log_create_backup=Izveidota rezerves kopija no $1 moduļiem uz $2 
 log_modify_backup=Modificēta $1 moduļu rezerves kopija uz $2 
 log_delete_backup=Izdzēsta rezerves kopija no $1 moduļiem uz $2 
 log_run_backup=Izpildīta rezerves kopija no $1 moduļiem uz $2 
+
 run_title=Rezerves konfigurācijas
 run_doing=$1 moduļu dublējuma sākšana uz $2.
 run_ok=.. dublējums veiksmīgi pabeigts.
 run_failed=.. dublēšana neizdevās! Iemeslu, kāpēc to darīt, skatiet iepriekš redzamajā kļūdas ziņojumā.
+
 email_mods=Moduļu dublējums :
 email_failed=uz $1 neizdevās :
 email_ok=uz $1 izdevās.

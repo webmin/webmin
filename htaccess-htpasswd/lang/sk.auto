@@ -16,6 +16,7 @@ index_digest2=Šifrovanie prehľadu je povolené v konfigurácii modulu, ale pr�
 index_cpan=<a href='$1'>Kliknite sem</a> a stiahnite si ho a nainštalujte teraz.
 index_delete=Zrušte ochranu vybraných adresárov
 index_remove=Zrušte ochranu a odstránenie súborov
+
 dir_title1=Pridať chránený adresár
 dir_title2=Upraviť chránený adresár
 dir_header=Možnosti chráneného adresára
@@ -60,6 +61,7 @@ dir_delete3=Odomknite a odstráňte súbor
 dir_apache=Upraviť možnosti Apache
 dir_efiledir=$1 je adresár, a preto ho nemožno použiť ako súbor používateľov
 dir_egfiledir=$1 je adresár, a preto ho nemožno použiť ako súbor skupín
+
 edit_title1=Vytvorenie používateľa
 edit_title2=Upraviť používateľa
 edit_header=Podrobnosti o používateľskom overení na webe
@@ -71,11 +73,13 @@ edit_pass0=Nastavený na
 edit_passfrom=Zmena z
 edit_passto=na nové heslo
 edit_dom=Digest ríše
+
 gedit_title1=Vytvoriť skupinu
 gedit_title2=Upraviť skupinu
 gedit_header=Podrobnosti o skupine overovania na webe
 gedit_group=Názov skupiny
 gedit_members=Členovia skupiny
+
 save_err=Nepodarilo sa uložiť používateľa
 save_euser1=Chýba používateľské meno
 save_euser2=Používateľské meno nemôže obsahovať znak:
@@ -84,16 +88,19 @@ save_eclash=Používateľ s rovnakým menom už existuje
 save_eoldpass=Staré heslo nie je správne
 save_title=Používateľ bol uložený
 save_edom=Chýbajúca alebo neplatná oblasť prehľadu
+
 gsave_err=Uloženie skupiny zlyhalo
 gsave_egroup1=Chýba názov skupiny
 gsave_egroup2=Názov skupiny nesmie obsahovať: znak alebo medzery
 gsave_eclash=Skupina s rovnakým názvom už existuje
+
 acl_dirs=Povolené adresáre
 acl_user=Vytvorte súbory.htaccess a htusers ako Unix user
 acl_same=Rovnaké ako prihlásenie Webmin
 acl_home=Zahrnúť domovský adresár Unixu?
 acl_sync=Je možné nastaviť synchronizáciu používateľov Unixu?
 acl_uonly=Môžu pridávať a meniť chránené adresáre?
+
 log_create_dir=Pridaný adresár $1 
 log_modify_dir=Upravený adresár $1 
 log_delete_dir=Odstránený adresár $1 
@@ -104,6 +111,7 @@ log_create_group=Vytvorená skupina $1
 log_modify_group=Upravená skupina $1 
 log_delete_group=Odstránená skupina $1 
 log_delete_dirs=Odstránené $1 adresáre
+
 search_title=Výsledky vyhľadávania
 search_err=Vyhľadávanie zlyhalo
 search_edir=Chýba alebo je neplatný absolútny adresár na vyhľadávanie

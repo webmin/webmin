@@ -17,6 +17,7 @@ index_down=Cada servidor debería volver a descargar el paquete
 index_count=($1 paquetes)
 this_server=este servidor
 index_compare=Comparar Servidores
+
 install_err=No pude instalar paquete
 install_elocal=No se ha introducido archivo local
 install_elocal2='$1' no existe
@@ -32,6 +33,7 @@ install_servers=Servidore(s) donde instalar
 install_ok=Instalar
 install_erus=Este servidor utiliza un sistema de actualización diferente al servidor maestro ($1 frente a $2)
 install_eupdate=Ocurrió un error instalando las actualizaciones especificadas
+
 add_title=Añadir Servidores
 add_msg=Añadiendo $1...
 add_gmsg=Añadiendo servidores en grupo $1...
@@ -40,6 +42,7 @@ add_gerr=No pude añadir grupo
 add_echeck=El servidor $1 no tiene el módulo de paquetes de software
 add_esystem=El servidor $1 no está usando el mismo sistema de paquete que esta máquina
 add_ok=Añadido $1 con $2 paquetes.
+
 search_title=Búsqueda de Paquete
 search_nomatch=Ningún paquete coincidía con $1
 search_none=Ninguno
@@ -51,6 +54,7 @@ search_return=resultados de búsqueda
 search_delete=Desinstalar Paquetes Seleccionados De:
 search_selall=Seleccionar todos
 search_invert=Invertir selección
+
 host_title=Servidor Gestionado
 host_header=Detalles de software de servidor gestionado
 host_name=Nombre de máquina
@@ -64,6 +68,7 @@ host_all=Todos los paquetes
 host_count=Paquetes instalados
 host_os=SO desde Webmin
 host_return=detalles de servidor
+
 edit_title=Editar Paquete
 edit_details=Detalles de Paquete de $1
 edit_desc=Descripción
@@ -82,6 +87,7 @@ edit_all=&lt;todas las máquinas&gt;
 edit_donthave=&lt;hosts que no lo tienen&gt;
 edit_have=&lt;hosts que ya lo tienen&gt;
 edit_group=Miembros de $1
+
 list_title=Archivos de Paquete
 list_files=Archivos para Paquete $1 en $2
 list_path=Trayectoria
@@ -91,6 +97,7 @@ list_type=Tipo
 list_size=Medida
 list_status=Estado
 list_ok=Ok
+
 refresh_title=Refrescar Listas de Paquete
 refresh_header=Volviendo a pedir listas de paquete de todos los servidores...
 refresh_header4=Volviendo a pedir listas de paquetes de los miembros de $2 ..
@@ -102,6 +109,7 @@ refresh_4=Refrescado $1 (sin cambios)
 refresh_done=... hecho
 refresh_del=Quitado $1 de la lista del servidor
 refresh_failed=No pude refrescar $1: $2
+
 delete_err=No pude borrar el paquete $1
 delete_epack=El paquete $1 no existe
 delete_title=Borrar Paquete
@@ -112,6 +120,7 @@ delete_error=No pude borrar de $1: $2
 delete_success=Borrado de $1.
 delete_done=... hecho
 delete_header=Borrando paquete $1...
+
 do_title=Instalar Paquete
 do_header=Instalando $1 en todas las máquinas...
 do_header3=Instalando $1 en hosts que no lo tienen aún ..
@@ -131,6 +140,7 @@ do_arch=Arquitectura
 do_inst=Instalado
 do_none=Ninguno
 do_edeleted=El archivo de instalación ha sido borrado - vuelva al índice del módulo y pruebe otra vez.
+
 compare_title=Comparar Paquetes
 compare_desc=Este formulario puede utilizarse para comparar los paquetes instalados en dos o más servidores, y encontrar discrepancias en versiones o paquetes disponibles.
 compare_hosts=Servidores a comparar
@@ -145,6 +155,7 @@ compare_showall=Paquetes a mostrar
 compare_showall1=Todos
 compare_showall0=Sólo discrepancias
 compare_got=OK
+
 deletes_err=Fallo al borrar paquetes
 deletes_enone=No se seleccionaron paquetes
 deletes_title=Borrar Paquetes

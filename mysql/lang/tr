@@ -27,12 +27,15 @@ index_mysqlver=<tt>$1</tt> komutu çıktısı :
 index_nodbs=Herhangi bir MySQL veritabanına ulaşmak için izininiz yoktur.
 index_backup=Veritabanlarını Yedekle
 index_backupmsg=Bu butonu tıklayarak bütün MySQL veritabanlarının yedeğini hemen şimdi ya da zamanlandırarak alabilirsiniz,
+
 login_err=Girişte hata oluştu
 login_ecannot=Veritabanı girişini ayarlamak için izininiz yoktur
 login_elogin=Yönetim kullanıcı adı eksik
 login_epass=Yanlış yönetici kullanıcı adı ve şifresi
+
 stop_err=Veritabanının durdurulmasında hata oluştu
 start_err=Veritabanının başlatılmasında hata oluştu
+
 dbase_title=Veritabanını Düzenle
 dbase_tables=Veritabanı Tablolaları
 dbase_add=Yeni bir tablo oluştur
@@ -45,12 +48,14 @@ dbase_return=tablo listesi
 dbase_ecannot=Bu veritabanını düzenlemek için izininiz yoktur
 dbase_rows=Satırlar
 dbase_cols=Alanlar
+
 ddrop_err=Veritabanının silinmesinde hata oluştu
 ddrop_title=Veritabanı Sil
 ddrop_rusure=$1 veritabanını silmek istediğinizden emin misiniz? Silinecek olan $2 tablo, $3 satır veri içermektedir içeriyor.
 ddrop_mysql=Bu ana veritabanı olduğundan, silinmesi MySQL'i kullanılmaz hale getirecektir!
 ddrop_ok=Veritabanı Sil
 ddrop_empty=Bütün Tabloları Sil
+
 table_title=Tablo Düzenle
 table_title2=Tablo Oluştur
 table_header=$2 veritabanındaki $1 tablosu
@@ -95,6 +100,7 @@ tdrop_err=Tablonun silinmesinde hata oluştu
 tdrop_title=Tablo Sil
 tdrop_rusure=$2 veritabanınındaki $1 tablosunu silmek istediğinizden emin misiniz? $3 satır veri silinecektir
 tdrop_ok=Tabloyu Sil
+
 field_title1=Alan Ekle
 field_title2=Alanı değiştir
 field_in=$2 veritabanındaki $1 tablosunda
@@ -122,6 +128,7 @@ field_esize='$1' geçerli bir alan boyutu değil
 field_eenum=Arttırılacak değer girilmedi
 field_efield='$1' geçerli bir alan ismi değil
 field_ekey=Boş veri girilmesine izin verilen alanlar birincil anahtarın bir parçası olamazlar
+
 view_title=Tablo Verisi
 view_pos=$1 tablosu $3'te $2 altında
 view_none=Bu tablo blgi içermiyor
@@ -145,6 +152,7 @@ view_jump=Satıra git :
 view_download=İndir..
 view_keep=Değiştirmeden bırak
 view_adv=Gelişmiş Arama
+
 users_title=Kullanıcı Izinleri
 users_user=Kullanıcı
 users_host=Makineler
@@ -163,6 +171,7 @@ users_sync_privs=Yeni kullanıcıların hakları
 users_sync_host=Yeni kullanıcılar buradan bağlanabilsin
 users_sync_def=Bütün makinelerden
 users_sync_sel=Bu makineden
+
 user_title1=Kullanıcı Oluştur
 user_title2=Kullanıcı Düzenle
 user_header=MySQL kullanıcı ayrıntıları
@@ -178,6 +187,7 @@ user_perms=İzinler
 user_err=Kullanıcının kaydedilmesinde hata oluştu
 user_euser=Eksik ya da yanlış kullanıcı ismi
 user_ehost=Eksik ya da yanlış izin verilen makine(ler)
+
 dbs_title=Veritabanı İzinleri
 dbs_db=Veritabanları
 dbs_user=Kullanıcı
@@ -191,6 +201,7 @@ dbs_add=Yeni veritabanı izinleri oluştur
 dbs_all=Hepsi
 dbs_none=Hiçbiri
 dbs_return=Veritabanı izinleri
+
 db_title1=Veritabanı İzinleri Oluştur
 db_title2=Veritabanı İzinlerini Düzenle
 db_header=Veritabanı izin seçenekleri
@@ -205,6 +216,7 @@ db_err=Veritabanı izinlerinin kaydedilmesinde hata oluştu
 db_euser=Eksik ya da yanlış kullanıcı ismi
 db_ehost=Eksik ya da yanlış makine ismi
 db_edb=Eksik ya da yanlış veritabanı ismi
+
 hosts_title=Makine İzinleri
 hosts_db=Veritabanları
 hosts_host=Makineler
@@ -214,6 +226,7 @@ hosts_all=Hepsi
 hosts_none=Hiçbiri
 hosts_add=Yeni makine izinleri oluştur
 hosts_empty=Makine izinleri tanımlanmadı
+
 host_title1=Makine İzinleri Oluştur
 host_title2=Makine İzinlerini Düzenle
 host_header=Makine izin seçenekleri
@@ -221,6 +234,7 @@ host_db=Veritabanları
 host_any=Herhangi
 host_host=Makineler
 host_perms=İzinler
+
 newdb_title=Veritabanı Oluştur
 newdb_header=Yeni veritabanı seçenekleri
 newdb_db=Veritabanı adı
@@ -232,6 +246,7 @@ newdb_err=Veritabanı oluşturulmasında hata oluştu
 newdb_edb=Eksik ya da yanlış veritabanı ismi
 newdb_ecannot=Veritabanı oluşturmanız izin verilmemiştir
 newdb_ecannot2=Daha fazla veritabanı oluşturmak için izininiz yoktur
+
 exec_title=SQL Çalıştır
 exec_header=$1 veritabanında çalıştırılacak SQL komutunu girin ..
 exec_old=Ya da daha önceki SQL komutunu seç :
@@ -255,6 +270,7 @@ exec_delete=İlk olarak tablodaki veriler silinsin mi?
 exec_filename=Dosya adından
 exec_ignore=Çakışan satırlar yoksayılsın mı?
 exec_edit=Öncekini Düzenle
+
 tprivs_title=Tablo İzinleri
 tprivs_table=Tablo
 tprivs_db=Veritabanı
@@ -268,6 +284,7 @@ tprivs_add=Veritabanına yeni haklar ekle:
 tprivs_norows=Tablo izinleri tanımlanmadı
 tprivs_return=tablo izinleri
 tprivs_none=Hiçbiri
+
 tpriv_title1=Tablo İzinleri Oluştur
 tpriv_title2=Tablo İzinleri Düzenle
 tpriv_header=Tablo izin seçenekleri
@@ -283,6 +300,7 @@ tpriv_err=Tablo izinlerinin kaydedilmesinde hata oluştu
 tpriv_etable=Tablo seçilmedi
 tpriv_euser=Eksik ya da yanlış kullanıcı adı
 tpriv_ehost=Eksik ya da yanlış makine adı
+
 cprivs_title=Alan İzinleri
 cprivs_field=Alan
 cprivs_table=Tablo
@@ -296,6 +314,7 @@ cprivs_add=Veritabanı ve tabloya yeni izinler ekle :
 cprivs_norows=İzinlerin tanımlandığı alan yok
 cprivs_return=alan izinleri
 cprivs_none=Hiçbiri
+
 cpriv_title1=Alan İzinlerini Oluştur
 cpriv_title2=Alan İzinlerini Düzenle
 cpriv_header=Alan izin seçenekleri
@@ -311,11 +330,13 @@ cpriv_err=Alan izinlerinin kaydedilmesinde hata oluştu
 cpriv_etable=Alan seçilmedi
 cpriv_euser=Kayıp ya da yanlış kullanıcı adı
 cpriv_ehost=Eksik ya da yanlış bilgisayar
+
 esql=SQL $1 hata oluştu : $2
 eparse=Veritabanınızdaki verinin doğasından dolayı Webmin $1 komutunun çıktısını okuyamadı. Bu sorunu çözmek için $2 ve $3 perl modüllerini kurmanız gerekmektedir
 edenied=Bu MySQL veritabanına erişim izininiz yoktur
 perms_ecannot=İzinleri değiştirmenize izin verilmedi
 perms_edb=Sadece kendi veritabanlarınızın haklarını değiştirmek için izininiz vardır.
+
 acl_dbs=Yönetebileceği veritabanları
 acl_dall=Bütün veritabanları
 acl_dsel=Seçililer
@@ -333,12 +354,14 @@ acl_user=Kullanıcı adı
 acl_pass=parola
 acl_edonly=Sadece tablodaki verileri düzenleyebilsin?
 acl_bnone=Yedeklemeye izin verme
+
 log_start=Mysql Sunucusu başlatıldı
 log_stop=Mysql sunucusu durduruldu
 log_db_create=$1 veritabanı oluşturuldu
 log_db_delete=$1 veritabanı silindi
 log_table_create=$2 veritabanındaki $1 tablosu oluşturuldu
 log_table_delete=$2 veritabanındaki $1 tablosu silindi
+
 log_field_create=$3 veritabanındaki $2'ye $1 $4 alanları eklendi
 log_field_modify=$3 veritabanındaki $2'ye $1 $4 alanları değiştirildi
 log_field_delete=$3 veritabanındaki $2'den $1 silindi
@@ -378,6 +401,7 @@ log_execupload=Yüklenilen dosyadan SQL komutları çalıştırıldı
 log_execfile=$1 dosyasında SQL komutları çalıştırıldı
 log_importupload=Yüklenilen dosyadan veri aktarıldı
 log_importfile=$1 dosyasından veri aktarıldı
+
 backup_title=Veritabanı Yedekle
 backup_title2=Bütün Veritabanlarını Yedekle
 backup_edump=MySQL yedekleme programı $1 sisteminizde bulunamadı. <a href='$2'>Modül yapılandırmanız</a> yanlış olabilir.
@@ -412,11 +436,13 @@ backup_tables=Yedeklenecek tablolar
 backup_alltables=Bütün tablolar
 backup_seltables=Seçili tablolar ..
 backup_etables=Yedekleme için tablo seçilmedi
+
 import_title=Veri Aktar
 import_uploadout=Veri yüklenilen dosyadan aktarılıyor ..
 import_fileout=$1 dosyasından veri aktarılıyor ..
 import_eupload=Yüklenilen aktarım dosyası adı eksik
 import_efile=Aktarım dosya adı eksik
+
 adv_title=Gelişmiş Arama
 adv_and=Bütün kriterlere uyan kayıtları bul ..
 adv_or=Herhangi bir kritere uyan kayıtları bul ..

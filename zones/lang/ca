@@ -4,6 +4,7 @@ index_none=Encara no s'ha definit cap zona.
 index_add=Afegeix una zona nova.
 index_return=a la llista de zones
 index_zones=Zones Existents
+
 edit_title=Edició de Zona
 edit_common=Configuració general de la zona
 edit_name=Nom de la zona
@@ -57,20 +58,26 @@ edit_attrnone=Encara no s'ha definit cap atribut genèric.
 edit_attradd=Afegeix un atribut genèric.
 edit_webmin=Obre el Webmin
 edit_brand=Reinicia
+
 ui_cancel=Cancel·la
+
 save_err=No s'ha pogut desar la zona
 save_epool=Hi falta el pool o bé és invàlid
 save_ewebmin=El Webmin no s'està executant en aquesta zona
+
 reboot_title=Reinici de Zona
 reboot_rusure=Segur que vols reiniciar la zona $1? Tots els processos quer s'hi estan executant es reiniciaran.
 reboot_err=No s'ha pogut reiniciar la zona
 reboot_doing=Reengegant la zona...
+
 reboot_failed=...ha fallat:
 reboot_ok=...completat.
+
 halt_title=Tancament de Zona
 halt_rusure=Segur que vols tancar la zona $1? Tots els processos quer s'hi estan executant s'aturaran.
 halt_err=No s'ha pogut tancar la zona
 halt_doing=Tancant la zona...
+
 boot_title=Engegada de Zona
 boot_err=No s'ha pogut engegar la zona
 boot_doing=Engegant la zona...
@@ -78,10 +85,12 @@ delete_title=Supressió de Zona
 delete_rusure=Segur que vols suprimir la zona $1? Es perdran tots els fitxers dels seus sistemes de fitxers privats.
 delete_err=No s'ha pogut suprimir la zona
 delete_doing=Suprimint la zona...
+
 uninstall_title=Desinstal·lació del Sistema
 uninstall_rusure=Segur que vols desinstal·lar el programari del sistema de la zona $1? Es perdran tots els fitxers dels seus sistemes de fitxers privats.
 uninstall_err=No s'ha pogut desinstal·lar el programari de sistema de la zona
 uninstall_doing=Desinstal·lant el sistema de la zona...
+
 install_title=Instal·lació del Sistema
 install_doing=Instal·lant el sistema a la zona...
 net_title1=Creació d'Interfície de Xarxa
@@ -96,6 +105,7 @@ net_enetmask=Màscara invàlida
 net_eaddress=Adreça IP invàlida
 net_egone=La interfície ja no existeix!
 net_eclash=Ja existeix una interfície de xarxa amb aquesta IP en aquesta zona
+
 pkg_title1=Addició de Directori de Paquets
 pkg_title2=Edició de Directori de Paquets
 pkg_header=Detalls del directori de paquets heretat
@@ -107,6 +117,7 @@ pkg_eclash=Ja existeix aquest directori de paquets en aquesta zona
 pkg_inherit=Hereta els paquets de la zona global
 pkg_inherit_yes=Sí (zona arrel dispersa)
 pkg_inherit_no=No (tota la zona arrel)
+
 fs_title1=Creació de Sistema de Fitxers
 fs_title2=Edició de Sistema de Fitxers
 fs_header=Detalls del sistema de fitxers addicional
@@ -128,6 +139,7 @@ fs_eoptions=Opcions de muntatge invàlides (ha de ser una llista separada per co
 fs_egone=El sistema de fitxers ja no existeix!
 fs_mount=Munta'l després de crear-lo
 fs_eclash=Ja existeix un sistema de fitxers que utilitza aquest directori a la mateixa zona
+
 rctl_title1=Creació de Control de Recurs
 rctl_title2=Edició de Control de Recurs
 rctl_header=Tipus i límits del control de recurs
@@ -148,6 +160,7 @@ rctl_elimit=No és un número
 rctl_eaction=No has seleccionat cap senyal a la fila $1
 rctl_evalues=No has introduït cap límit
 rctl_eclash=ja existeix un control d'aquest recurs en aquesta zona
+
 attr_title1=Creació d'Atribut Genèric
 attr_title2=Edició d'Atribut Genèric
 attr_header=Detalls dels atributs genèrics de la zona
@@ -165,6 +178,7 @@ attr_euint=El valor no és un enter positiu
 attr_eboolean=El valor no és 'true' o 'false'
 attr_egone=L'atribut ja no existeix!
 attr_eclash=Ja existeix un atribut amb aquest nom en aquesta zona
+
 status_running=En execució
 status_installed=Aturada
 status_configured=No Instal·lat
@@ -172,13 +186,16 @@ status_incomplete=Instal·lant-se
 status_ready=Llest
 status_down=Tancat
 status_shutting_down=Tancant-se
+
 list_name=Nom de la zona
 list_id=Nº d'ID
 list_path=Directori de la zona
 list_status=Estat
 list_actions=Accions
+
 zone_in=A la zona $1
 pool_none=Cap
+
 create_title=Creació de Zona
 create_header=Detalls de la nova zona
 create_path=Directori de fitxers de la zona
@@ -239,6 +256,7 @@ create_erouter=Hi falta l'adreça IP de l'encaminador per defecte o bé és inv�
 create_removingpkgs=eliminant els directoris de paquets heretats...
 create_brand=Reinicia
 create_brandmsg=Reinici de Zona
+
 log_create_zone=S'ha creat la zona $1
 log_delete_zone=S'ha suprimit la zona $1
 log_save_zone=S'ha modificat la configuració de la zona $1
@@ -262,6 +280,7 @@ log_delete_rctl=S'ha suprimit el control de recurs de $1 a la zona $2
 log_create_attr=S'ha creat l'atribut genèric $1 a la zona $2
 log_modify_attr=S'ha modificat l'atribut genèric $1 a la zona $2
 log_delete_attr=S'ha suprimit l'atribut genèric $1 a la zona $2
+
 webmin_eperl=$1 no té Perl instal·lat
 webmin_eroot=El directori $1 no existeix o bé no conté el Webmin.
 webmin_title=Instal·lació de Webmin

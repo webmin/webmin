@@ -16,6 +16,7 @@ index_cancel=연결 취소
 index_canceldesc=ADSL 클라이언트가 현재 연결을 설정하려고합니다. $1 명령으로 시도를 취소하려면이 버튼을 클릭하십시오.
 index_cdemand=주문형 취소
 index_cdemanddesc=ADSL 클라이언트는 현재 주문형 연결 요청을 기다리고 있습니다. 명령 및 $1 (으)로 중지하려면이 단추를 클릭하십시오.
+
 index_header=ADSL 클라이언트 구성 옵션
 index_desc=아래 설정은 시스템에서 시작한 새로운 ADSL 연결에 적용됩니다. 변경 한 경우 수정 사항을 적용하려면 연결을 종료했다가 다시 시작해야합니다.
 index_eth=이더넷 인터페이스
@@ -36,11 +37,13 @@ index_fw_standalone=단일 호스트
 index_fw_masquerade=NAT 게이트웨이
 index_connect=연결 시도 시간
 index_forever=영원히
+
 start_err=ADSL 연결을 시작하지 못했습니다
 start_title=ADSL 시작
 start_ip=IP 주소가 $1 인 ADSL 연결이 설정되었습니다.
 start_demand=주문형 연결 모드가 활성화되어 있으므로 ADSL 연결은 필요할 때만 시작됩니다.
 start_bg=20 초 이내에 ADSL 연결이 시작되지 않았습니다. ADSL 클라이언트는 성공할 때까지 백그라운드에서 계속 연결을 시도합니다.
+
 save_err=ADSL 구성을 저장하지 못했습니다
 save_eeth=이더넷 인터페이스가 없거나 잘못 표시됨
 save_etimeout=주문형 시간 초과가 없거나 잘못되었습니다.
@@ -49,10 +52,12 @@ save_econnect=연결 시간이 없거나 잘못되었습니다
 save_emss=최대 패킷 크기가 없거나 잘못되었습니다
 save_title=구성 저장
 save_desc=ADSL 클라이언트 구성이 성공적으로 저장되었지만 다시 연결할 때까지 사용되지 않습니다.
+
 stop_err=ADSL 연결을 종료하지 못했습니다
 stop_title=ADSL 종료
 stop_ok=ADSL 연결이 성공적으로 종료되었습니다.
 stop_failed=어떤 이유로 ADSL 연결이 여전히 활성화되어 있습니다!
+
 log_save=저장된 클라이언트 구성
 log_stop=ADSL 종료
 log_start=ADSL 시작

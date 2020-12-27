@@ -17,6 +17,7 @@ index_amode0=Svi Unix korisnici
 index_amode1=Samo korisnici s liste...
 index_amode2=Svi prihvaćeni korisnici s liste...
 index_delete=Otkaži Odabrane Naredbe
+
 edit_title=Planirane Naredbe
 edit_cmd=Potpuna skripta za izvršavanje
 edit_header=Detalji planiranih naredbi
@@ -24,6 +25,7 @@ edit_delete=Otkaži sve naredbe
 edit_run=Pokreni Sada
 edit_ejob=Planirane naredbe više ne postoje!
 edit_ecannot=nije vam dopušteno uređivanje planiranih naredbi
+
 create_err=Neuspjeli pokušaj kreiranje planirane naredbe
 create_euser=Nepostojeće ili neispravno korisničko ime
 create_edate=Nepostojeći ili neispravan datum ili vrijeme
@@ -32,19 +34,24 @@ create_efuture=Datum ili vrijeme su u prošlosti
 create_edir=Nepostojeći ili neispravan direktorij
 create_ecannot=Nije Vam dopušteno da pokrenete planirane naredbe za ovog korisnika
 create_eallow=Određenom korisniku nije dopušteno da pokrene planirane naredbe
+
 delete_err=Neuspjelo zaustavljanje izvršavanja naredbe
 delete_egone=Naredba je već pokrenuta ili izbrisana
+
 acl_users=Ne možete uređivati naredbe za
 acl_all=Svi korisnici
 acl_this=Trenutni Webmin korisnik
 acl_only=Samo korisnici
 acl_except=Svi prihvaćeni korisnici
 acl_allow=Ne možet uređivati dopuštene At korisnike? možet
+
 run_title=Pokrenuta Naredba
 run_output=Izlaz iz planiranih naredbi...
 run_none=Izlaz nije generiran
+
 allow_err=Neuspjeli pokušaj da se sačuvaju dopušteni korisnici
 allow_ecannot=Nije vam dopušteno administrirati dopuštene korisnike
 allow_eusers=ni jedan korisnik nije unešen
+
 deletes_err=Neuspjelo zaustavljanje izvršavanja naredbi
 deletes_enone=Ništa nije odabrano

@@ -9,6 +9,7 @@ index_rpc=Programmi RPC
 index_newrpc=Crea un nuovo Programma RPC
 index_apply=Applica le modifiche
 index_applymsg=Clicca su questo pulsante per applicare la configurazione corrente inviando un segnale SIGHUP al processo <tt>inetd</tt> in esecuzione
+
 error_restart=Fallito il riavvio di inetd
 error_saverpc=Fallito il salvataggio del programma RPC
 error_invalidprgname='$1' non e' un nome di programma valido
@@ -34,6 +35,7 @@ error_childnum=Se viene impostato un valore massimo per minuto allora deve esser
 error_serviceexist=Un servizio che usa la porta $1 e il protocollo $2 esiste gia'
 error_nameexist=Un servizio chiamato $1 e che usa il protocollo $2 esiste già'
 error_inetservice=Un servizio internet chiamato $1 e che usa il protocollo $2 esiste gia'
+
 editrpc_title1=Crea un programma RPC
 editrpc_title2=Modifica un programma RPC
 editrpc_detail=Dettagli sul programma RPC
@@ -56,6 +58,7 @@ editrpc_execasuser=Esegui come utente
 editrpc_max=Massimo per minuto
 editrpc_default=Default
 editrpc_execasgrp=Esegui come gruppo
+
 editserv_title1=Crea servizio internet
 editserv_title2=Modifica servizio internet
 editserv_detail=Dettagli servizio internet
@@ -67,6 +70,7 @@ editserv_maxchild=Numero massimo processi figlio
 editserv_execlogin=Esegui come Login Class
 editserv_wrapper=TCP-Wrapper
 editserv_inetd=Interno a <tt>inetd</tt>
+
 log_apply=Applica le modifiche
 log_create_serv=Creato il servizio $1
 log_modify_serv=Modificato il servizio $1
@@ -80,6 +84,7 @@ log_delete_serv_l=Cancellato il servizio $1 sulla porta $2
 log_create_prog_l=Creato il servizio $1 sulla porta $2 per il programma $3
 log_modify_prog_l=Modificato il servizio $1 sulla porta $2 per il programma $3
 log_delete_prog_l=Cancellato il servizio $1 sulla porta $2 per il programma $3
+
 log_create_rpc=Creato RPC $1
 log_modify_rpc=Modificato RPC $1
 log_delete_rpc=Cancellato RPC $1

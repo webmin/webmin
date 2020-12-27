@@ -18,10 +18,12 @@ index_version=Versione PPPd $1
 index_boot=Connetti all'avvio:
 index_noboot=&lt;Non connettere&gt;
 index_bootdesc=Modificare questa opzione per controllare se la connessione VPN PPTP selezionata viene avviata all'avvio o meno.
+
 disc_err=Impossibile disconnettere il tunnel
 disc_egone=Non più attivo
 disc_ekill=Impossibile interrompere il processo pppd
 disc_done=Il tunnel $1 è stato disconnesso correttamente.
+
 conn_err=Connessione al tunnel non riuscita
 conn_egone=Il tunnel non esiste più
 cone_ealready=Già connesso
@@ -32,6 +34,7 @@ conn_ok=.. connessione attivata correttamente tramite l'interfaccia $1. Il tuo i
 conn_timeout=.. connessione fallita! Controllare i messaggi di registro di seguito per informazioni sul perché.
 conn_routes=Aggiunta di percorsi con comandi ..
 conn_mppe=Il protocollo MPPE per la crittografia VPN richiede il demone PPP e il supporto del kernel. Tuttavia, gli errori sopra suggeriscono che uno o entrambi non sono disponibili sul sistema. Se il server PPTP non richiede MPPE, prova a disattivare tutte le opzioni ad esso correlate nella pagina <a href='$1'>opzioni globali PPP</a>.
+
 edit_title1=Aggiungi tunnel PPTP
 edit_title2=Modifica tunnel PPTP
 edit_header=Opzioni del tunnel VPN PPTP
@@ -60,6 +63,7 @@ edit_file=File di opzioni PPP
 edit_none=Nessuna
 edit_global=File globale standard
 edit_ofile=Altro file ..
+
 save_err=Impossibile salvare il tunnel
 save_ename=Nome del tunnel mancante
 save_eserver=Server mancante o non valido a cui connettersi
@@ -75,6 +79,7 @@ save_egw2=Gateway non valido per host nella route $1
 save_erename=Impossibile rinominare il file tunnel
 save_eclash=Un peer tunnel o PPP con lo stesso nome esiste già
 save_efile=File di opzioni PPP mancante o non valido
+
 opts_title=Opzioni PPP globali
 opts_desc=Le impostazioni seguenti sono tratte da $1 e si applicheranno a tutti i tunnel impostati per utilizzare il file di opzioni PPP globale standard.
 opts_header=Opzioni PPP per tutti i tunnel
@@ -84,6 +89,7 @@ opts_err=Impossibile salvare le opzioni PPP globali
 opts_emtu=Dimensione massima del pacchetto di invio mancante o non valida
 opts_emru=Dimensione massima del pacchetto di ricezione mancante o non valida
 opts_msdesc=Le opzioni seguenti abilitano la crittografia MPPE, utilizzata dai server VPN di Windows. Tuttavia, MPPE richiede il supporto sia nel demone PPP che nel kernel del sistema operativo.
+
 mppe_mppe-40=Utilizzare la crittografia MPPE a 40 bit?
 mppe_mppe-128=Utilizzare la crittografia MPPE a 128 bit?
 mppe_mppe-stateless=Abilitare la modalità MPPE senza stato?
@@ -95,6 +101,7 @@ mppe_d1=Permesso
 mppe_mppe-stateful=Abilitare la modalità MPPE con stato?
 mppe_old=Avvertenza - Le direttive MPPE vecchio stile $1 sono state trovate nel tuo file di configurazione, anche se il tuo demone PPP supporta le direttive nuovo stile.
 mppe_new=Avvertenza: le nuove direttive MPPE di stile $1 sono state trovate nel tuo file di configurazione, anche se il tuo demone PPP supporta solo le direttive di vecchio stile.
+
 log_create=Tunnel PPTP creato $1 
 log_update=Tunnel PPTP modificato $1 
 log_delete=Tunnel PPTP eliminato $1 

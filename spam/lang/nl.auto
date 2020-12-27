@@ -1,5 +1,6 @@
 index_unknown=onbekend
 white_addr2=Adres van ontvanger
+
 amavisd_title=Amavisd Spam Levering
 amavisd_desc=Het formulier kan worden gebruikt om de Amavisd-configuratie te wijzigen die bepaalt wat er gebeurt met berichten die als spam zijn geclassificeerd.
 amavis_ok=Amavisd-levering wijzigen
@@ -21,6 +22,7 @@ amavis_quarantine_level=Hits waarboven een Spam-bericht in quarantaine is geplaa
 amavis_dsn_level=Klappen waarboven geen melding naar afzender wordt verzonden.
 amavis_delete_level=Hits waarboven een Spam-bericht wordt verwijderd.
 amavis_report_header=X-Spam-header invoegen in Spam-bericht?
+
 amavis_level_char=Teken dat wordt gebruikt om Spam-niveau weer te geven in X-Spam-niveau: koptekst.
 amavis_rewrite=Onderwerp wijzigen: header van spam?
 amavis_rsubject=Tekst voorafzetten naar Onderwerp: koptekst

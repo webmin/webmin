@@ -6,16 +6,23 @@ index_checkconfig=Verifique se o diretório chroot está definido corretamente n
 index_eexpired=Aviso: As seguintes zonas expiraram assinaturas DNSSEC : $1
 index_eexpired_conf=A assinatura automática deve ser reativada na página $1.
 index_eexpired_mod=Use o módulo $1 para desativar o DNSSEC para esses domínios ou verifique por que a assinatura está falhando.
+
 master_inview=$1 na visualização $2 
 master_egone=A zona $1 não existe em nenhuma visualização
 master_egone2=A zona $1 não existe!
 master_egone3=A zona $1 na exibição $2 não existe!
+
 delete_vwarn=Esta zona está associada ao domínio Virtualmin $1 e, portanto, não deve ser excluída aqui!
+
 delete_vwarn2=Esta zona está associada aos domínios $1 e $2 do Virtualmin e, portanto, não deve ser excluída aqui!
+
 mcreate_dnssec_tools_enable=Ativar DNSSEC usando ferramentas DNSSEC
+
 slave_xfer=Transferência da zona de teste
+
 recs_nosearch=Nenhum registro corresponde à sua pesquisa.
 recs_needsearch=Digite uma pesquisa para encontrar registros correspondentes.
+
 edit_egone=O registro selecionado não existe mais!
 edit_eusage='$1' não é um número de uso TLSA válido
 edit_eselector='$1' não é um número seletor de TLSA válido
@@ -33,23 +40,28 @@ edit_edmarcpct=A porcentagem de mensagens deve ser um número inteiro entre 0 e 
 edit_edmarcrua=Endereço de feedback agregado ausente
 edit_edmarcruf=Endereço de informações forenses ausente
 edit_ecaavalue2=Nome de domínio ausente ou com aparência inválida
+
 text_desc3=Este formulário permite editar manualmente o arquivo de registros DNS $1. Nenhuma verificação de sintaxe será feita pelo Webmin.
 text_rawformat=Esta zona está no formato binário bruto e, portanto, não pode ser exibida como texto.
+
 type_NSEC3PARAM=Parâmetros DNSSEC
 type_TLSA=Certificado SSL
 type_SSHFP=Chave pública SSH
 type_DMARC=DMARC
 type_CAA=Autoridade de Certificação
+
 edit_DMARC=DMARC
 edit_NSEC3PARAM=Parâmetros DNSSEC
 edit_TLSA=Certificado SSL
 edit_SSHFP=Chave pública SSH
 edit_CAA=Autoridade de Certificação
+
 recs_DMARC=DMARC
 recs_NSEC3PARAM=Parâmetros DNSSEC
 recs_TLSA=Certificado SSL
 recs_SSHFP=Chave pública SSH
 recs_CAA=Autoridade de Certificação
+
 value_TLSA1=Uso de certificado
 value_TLSA2=Seletor de certificado
 value_TLSA3=Correspondência de certificado
@@ -83,6 +95,7 @@ value_CAA3=Nome de domínio da CA
 value_caa_issue=Certificação de domínio único
 value_caa_issuewild=Certificado curinga
 value_caa_iodef=URL de violação da política
+
 tlsa_usage0=Autoridade de certificação
 tlsa_usage1=Entidade final
 tlsa_usage2=Âncora de confiança
@@ -92,16 +105,20 @@ tlsa_selector1=Informações da chave pública
 tlsa_match0=Conteúdo de unhashed
 tlsa_match1=Hash SHA-256
 tlsa_match2=Hash SHA-512
+
 sshfp_alg1=RSA
 sshfp_alg2=DSA
 sshfp_alg3=ECDSA
 sshfp_alg4=Ed25519
 sshfp_fp1=SHA-1
 sshfp_fp2=SHA-256
+
 acl_inviews=Visualizações em que este usuário pode editar domínios
 acl_toplevel=Fora de qualquer vista
 acl_dnssec=Pode configurar o DNSSEC para zonas?
+
 logging_efile2=O nome do arquivo de log deve ser um caminho absoluto
+
 net_taddr=Endereço IPv4 de origem para transferências
 net_tport=Porta IPv4 de origem para transferências
 net_taddr6=Endereço IPv6 de origem para transferências
@@ -110,14 +127,19 @@ net_taddrdef=IP mais próximo
 net_etport=Uma porta de origem de transferência não pode ser especificada sem um endereço
 net_eaddr='$1' não é um endereço IPv4 válido
 net_eaddr6='$1' não é um endereço IPv6 válido
+
 zonedef_dnssec_dt=Automatizar todas as operações DNSSEC (ignorar outras configurações abaixo)?
 zonedef_dne=Negação de existência autenticada usando
+
 log_rdelete_zones=Registros excluídos nas zonas $1
+
 convert_efilesize=O arquivo de registros $1 não existe ou está vazio
 convert_ebinary=O comando necessário para converter de uma zona escrava binária em um mestre de formato de texto não está instalado
 convert_ecompile=Falha na conversão de formato binário em texto : $1
+
 massdelete_vwarn=Algumas zonas estão associadas ao domínio Virtualmin $1 e, portanto, não devem ser excluídas aqui!
 massdelete_vwarn2=Algumas zonas estão associadas ao domínio Virtualmin $1 e $2 outras e, portanto, não devem ser excluídas aqui!
+
 rdmass_err=Falha ao excluir registros nas zonas
 rdmass_enone=Nenhum selecionado
 rdmass_title=Excluir registros em zonas
@@ -131,13 +153,17 @@ rdmass_vsel=Registros com valor
 rdmass_doing=Excluindo registros na zona $1 ..
 rdmass_ename=Nenhum nome de registro para excluir inserido
 rdmass_done=.. excluídos $1 registros correspondentes de $2.
+
 rdmass_none=.. nenhum registro correspondente de $1 para excluir encontrado.
 rdmass_ok=Excluir registros
 rdmass_sel=Registros nomeados
+
 rmass_name2=(Digite <tt>@</tt> para o nome do domínio)
 rmass_esign=.. feito, mas a assinatura falhou : $1
 rmass_eclash2=.. um registro com o mesmo nome e o mesmo valor $1 já existe.
+
 dnssec_secs=segundos
+
 dnssectools_title=Automação de Ferramentas DNSSEC
 dt_conf_title=Automação de Ferramentas DNSSEC
 dt_enable_title=Automação de Ferramentas DNSSEC
@@ -202,16 +228,19 @@ dt_status_inKSKroll=No rolo KSK
 dt_status_inZSKroll=Em rolo ZSK
 dt_status_signed=Assinado
 dt_status_unsigned=Não assinado
+
 zonekey_publicfile=Arquivo de chave pública : $1
 zonekey_privatefile=Arquivo de chave privada : $1
 zonekey_ds=Registro do DS para a zona pai :
 zonekey_eprivate=A chave privada associada a esta zona não pôde ser lida : $1
+
 trusted_auto=Sim (modo automático)
 trusted_dlvs1=Determinar automaticamente
 trusted_dlvs0=Listado abaixo. ..
 trusted_dlvs2=Nenhum
 trusted_warning=Atenção! Sua configuração do cliente BIND DNSSEC contém chaves desatualizadas que deixarão de funcionar em outubro de 2017. Use a <a href='$1'>página de verificação BIND DNSSEC</a> para ajustar a configuração ou clique no botão abaixo.
 trusted_fix=Corrigir configuração DNSSEC
+
 xfer_title=Transferência da zona de teste
 xfer_doing=Testando a transferência da zona escrava de $1 ..
 xfer_failed=.. from $1: Falha : $2

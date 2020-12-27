@@ -68,5 +68,3 @@ log_timezone=Changement du fuseau horaire vers $1
 timezone_err=Impossible de sauver le fuseau horaire
 timezone_ecannot=Vous n'êtes pas autorisé à modifier le fuseau horaire
 timezone_enone=Aucun fuseau horaire n'est sélectionné
-
-__norefs=1

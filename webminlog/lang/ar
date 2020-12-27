@@ -30,6 +30,7 @@ index_sdesc=وصف العمل يحتوي على
 index_shost=خادم Webmin المصدر
 index_long=عرض أوصاف الفعل الكامل؟
 index_global=&lt;ليس في أي وحدة&gt;
+
 search_title=نتائج البحث
 search_date=تاريخ
 search_time=الوقت
@@ -63,6 +64,7 @@ search_global_baduser=اسم مستخدم سيء
 search_global_badpass=كلمة مرور غير صالحة
 search_global_twofactor=رمز مميز ثانوي غير صالح
 search_csv=التصدير بتنسيق CSV.
+
 view_title=تفاصيل الإجراء
 view_header=تفاصيل الإجراء الذي تم تسجيله $1
 view_action=الوصف
@@ -96,11 +98,13 @@ view_files=تم تغيير الملفات وتشغيل الأوامر
 view_raw=بيانات السجل الخام
 view_rawname=اسم المعلمة
 view_rawvalue=قيمة المعلمة
+
 acl_mods=يمكن عرض السجلات في الوحدات النمطية
 acl_all=الجميع
 acl_sel=محددة أدناه ..
 acl_users=يمكن عرض الإجراءات بواسطة المستخدمين
 acl_rollback=هل يمكن استعادة الإجراءات؟
+
 rollback_title=إستعادة الإجراء
 rollback_rusure=هل أنت متأكد من أنك تريد إعادة جميع الملفات المدرجة أدناه إلى محتوياتها قبل اتخاذ هذا الإجراء؟ سيتم استبدال أي بيانات تحتوي عليها حاليًا بالتغييرات التالية:
 rollback_isdir=دليل - لن يتم إجراء أي تغيير.
@@ -123,4 +127,5 @@ rollback_modfile=تم إرجاع محتويات الملف $1.
 rollback_deleted=الملف المحذوف $1.
 rollback_nodeleted=تم تخطي ملف غير موجود $1.
 rollback_enone=لا توجد ملفات محددة
+
 log_rollback=تمت إعادة الإجراء إلى $1 في الوحدة $2

@@ -9,12 +9,14 @@ index_all=&lt;Alle Hosts&gt;
 index_group=Mitglied von $1
 index_clear=Lösche Verlauf
 index_edit=Editiere Vorheriges
+
 run_title=Kommando ausführen
 run_err=Konnte Kommando nicht ausführen
 run_ecmd=Kein Kommando eingegeben
 run_failed=Konnte Kommando nicht ausführen auf $1 : $2
 run_success=Output von $1 ..
 run_enone=Es wurden keine Server ausgewählt
+
 log_clear=Lösche Kommandohistorie
 log_run=$1 auf $2 Servern ausgeführt
 log_run_l=$1 auf $2 ausgeführt

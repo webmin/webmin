@@ -16,6 +16,7 @@ index_setupdesc=O banco de dados do servidor LDAP ainda não contém o DN raiz $
 index_setup=Criar DN raiz
 index_permsdesc=O diretório de dados do servidor LDAP $1 contém arquivos que não pertencem ao usuário correto $2, o que significa que é improvável que seja iniciado corretamente. No entanto, o Webmin pode corrigir isso para você clicando no botão abaixo.
 index_perms=Corrigir propriedade
+
 connect_eserver=O servidor LDAP $1 não existe
 connect_euser=Nenhum usuário para efetuar login como foi configurado
 connect_epass=Nenhuma senha para o login foi configurada
@@ -28,6 +29,7 @@ connect_eldap=Falha ao conectar ao servidor LDAP $1 na porta $2
 connect_essl=Falha ao iniciar a criptografia TLS com o servidor LDAP $1 : $2 
 connect_elogin=Falha ao efetuar login no servidor LDAP $1 como $2 : $3 
 connect_cpan=Você pode ter o <tt>$1</tt> módulo Perl <a href='$2'>instalado automaticamente</a> a partir do CPAN.
+
 slapd_title=Configuração do servidor OpenLDAP
 ldif_title=Configuração do servidor OpenLDAP
 slapd_header=Opções globais do servidor LDAP
@@ -76,6 +78,7 @@ slapd_protos=Conexões LDAP para aceitar
 slapd_ldap=LDAP pela rede
 slapd_ldaps=LDAP sobre SSL
 slapd_ldapi=Arquivo de soquete Unix
+
 schema_title=Gerenciar esquema
 schema_file=Nome
 schema_desc=Descrição
@@ -93,6 +96,7 @@ schema_edesc=Esta página permite editar manualmente um arquivo de esquema LDAP.
 schema_return=lista de esquema
 schema_emove=Não foi possível encontrar o arquivo de esquema para mover!
 schema_ecannot=Você não tem permissão para gerenciar o esquema LDAP
+
 acl_title=Controle de Acesso LDAP
 acl_ecannot=Você não tem permissão para configurar o controle de acesso LDAP
 acl_what=Objetos
@@ -103,6 +107,7 @@ acl_none=Nenhuma regra de controle de acesso foi definida ainda. Todos os objeto
 acl_delete=Excluir regras selecionadas
 acl_add=Adicione uma nova regra de controle de acesso.
 acl_return=regras de controle de acesso
+
 browser_title=Procurar banco de dados
 browser_econn=O navegador LDAP não pode ser usado : $1 
 browser_ecannot=Você não tem permissão para navegar no banco de dados LDAP
@@ -136,24 +141,30 @@ browser_nomatch=Nenhum objeto corresponde à sua pesquisa por $1.
 browser_search=Encontre objetos correspondentes :
 browser_search2=Mostrando objetos correspondentes :
 browser_sok=Procurar
+
 save_err=Falha ao alterar o atributo
 save_ebase=Não foi possível buscar o objeto $1 do banco de dados
 save_emodify=A modificação LDAP de $2 em $1 falhou : $3 
 save_enone=Nenhum valor inserido
+
 add_err=Falha ao adicionar atributo
 add_eadd=Nome de atributo ausente ou inválido
 add_evalue=Valor ausente
 add_emodify=Falha ao adicionar LDAP de $2 a $1 : $3 
+
 delete_err=Falha ao remover atributos
 delete_enone=Nenhum selecionado
 delete_emodify=A exclusão LDAP de $2 de $1 falhou : $3 
+
 sdelete_err=Falha ao excluir objetos
 sdelete_edn=O objeto $1 não foi encontrado
 sdelete_edel=A exclusão LDAP de $1 falhou : $2 
+
 rename_err=Falha ao renomear o objeto
 rename_eget=Não foi possível encontrar o objeto com DN $1 
 rename_enew=O novo nome não parece ser válido
 rename_erename=LDAP newdn para $2 de $1 falhou : $3 
+
 oadd_title=Criar Objeto
 oadd_header=Novos detalhes do objeto LDAP
 oadd_base=DN do objeto pai
@@ -170,6 +181,7 @@ oadd_eget2=Falha ao verificar o conflito com $1 : $2
 oadd_eclash=Um objeto com o DN $1 já existe
 oadd_eadd=Falha ao adicionar LDAP de $1 : $2 
 oadd_err=Falha ao criar novo objeto
+
 create_title=Criar Árvore
 create_ecannot=Você não tem permissão para criar uma nova árvore
 create_desc=Esta página forneceu uma maneira conveniente de criar DN que será a base de uma nova árvore no banco de dados. Também pode criar um exemplo de usuário ou alias de email embaixo da árvore, como um modelo para seus próprios objetos.
@@ -191,18 +203,23 @@ create_done=.. feito
 create_doingex=Criando um objeto de exemplo com DN $1 ..
 create_edoingex=.. falhou: $1. No entanto, a árvore ainda pode ser usada.
 create_eoc=Não foi possível encontrar uma classe de objeto adequada para o novo DN
+
 eunknown=Erro desconhecido
+
 apply_err=Falha ao aplicar a configuração
 apply_ecmd=$1 falhou : $2 
 apply_ecannot=Você não tem permissão para aplicar a configuração
+
 stop_err=Falha ao parar o servidor LDAP
 stop_ecmd=$1 falhou : $2 
 stop_egone=Não está mais em execução!
 stop_ekill=Falha no processo de interrupção : $1 
 stop_ecannot=Você não tem permissão para parar o servidor LDAP
+
 start_err=Falha ao iniciar o servidor LDAP
 start_ecmd=$1 falhou : $2 
 start_ecannot=Você não tem permissão para iniciar o servidor LDAP
+
 log_create_dn=Objeto criado $1 
 log_delete_dn=Objeto excluído $1 
 log_rename_dn=Objeto renomeado $1 
@@ -234,6 +251,7 @@ log_up_access=Regra de controle de acesso movida para $1
 log_down_access=Regra de controle de acesso movida para baixo para $1 
 log_delete_accesses=$1 regras de controle de acesso excluídas
 log_all=todos os objetos
+
 gencert_title=Gere certificado SSL
 gencert_header=Novos detalhes do certificado SSL
 gencert_create=Criar certificado
@@ -245,7 +263,9 @@ gencert_dir=Diretório
 gencert_err=Falha ao gerar certificado
 gencert_edest=O diretório de destino não existe
 gencert_epath=Os arquivos de certificado e chave na configuração do servidor LDAP devem ser caminhos absolutos
+
 perms_err=Falha ao corrigir a propriedade do arquivo
+
 acl_slapd=Pode configurar o servidor LDAP?
 acl_ldif=Pode configurar o servidor LDAP?
 acl_schema=Pode gerenciar o esquema?
@@ -254,6 +274,7 @@ acl_browser=Pode navegar e editar o banco de dados?
 acl_create=Pode criar uma nova árvore?
 acl_start=Pode iniciar e parar o servidor LDAP?
 acl_apply=Pode aplicar alterações na configuração?
+
 access_desc=$2 por $1 
 access_self=auto
 access_users=usuários autenticados
@@ -273,6 +294,7 @@ access_lcompare=Comparar
 access_lsearch=Procurar
 access_lread=Ler
 access_lwrite=Escrever
+
 eacl_title1=Criar regra de controle de acesso
 eacl_title2=Editar regra de controle de acesso
 eacl_header=Detalhes da regra de controle de acesso ao banco de dados LDAP

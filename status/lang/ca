@@ -19,6 +19,7 @@ index_refsel=Refresc dels Seleccionats
 index_group=Membres de $1
 index_tmpls=Edita les Plantilla de Correu
 index_tmplsdesc=Visualitza i edita les plantilles utilitzades per construir els missatges de correu enviats quan es tanquen els serveis monitoritzats.
+
 type_apache=Servidor Web Apache
 type_inetd=Servidor d'Internet i RPC
 type_xinetd=Servidor d'Internet Ampliat
@@ -72,6 +73,7 @@ type_alive=Sistema Viu
 type_rssh=SSH Remot
 type_slapd=Servidor LDAP
 type_ldap=Connexió LDAP
+
 mon_create=Crea Monitor
 mon_edit=Edita Monitor
 mon_header=Detalls del Monitor
@@ -137,6 +139,7 @@ mon_changes0=Mostra tots els tipus d'esdeveniments
 mon_changes1=Mostra només els canvis
 mon_all=Mostra tots els esdeveniments històrics
 mon_nochanges=No s'ha produït cap canvi d'estat en els darrers $1 esdeveniments històrics.
+
 sched_title=Monitorització Planificada
 sched_header=Opcions de segon pla de monitorització planificada
 sched_mode=Activa verificació planificada
@@ -183,16 +186,19 @@ sched_subject0=Cap (l'alerta està al cos)
 sched_subject1=Text d'alerta (deixa el cos buit)
 sched_subject2=Text personalitzat
 sched_esubject=Hi falta l'assumpte del missatge SMS
+
 up_since=Actiu des de $1
 depends_mod=El mòdul $1 no està instal·lat al sistema
 depends_os=El mòdul $1 no està suportat pel sistema
 depends_remote=El mòdul $1 no està suportat pel servidor $2
+
 tcp_host=Host a connectar
 tcp_port=Port a connectar
 tcp_alarm=Temps màxim d'espera
 tcp_ehost=Falta nom de host o bé és invàlid
 tcp_eport=Falta número de port o bé és invàlid
 tcp_ealarm=Falta temps màxim d'espera o bé és invàlid
+
 http_url=URL a demanar
 http_alarm=Temps màxim d'espera
 http_eurl=Hi falta l'URL o bé és invàlid
@@ -207,11 +213,13 @@ http_regexp=La pàgina ha de coincidir amb l'expressió regular
 http_eregexp=No has introduït cap expressió regular per a coincidir amb la pàgina
 http_none2=No ho facis coincidir
 http_ehead=No es pot utilitzar el mètode de petició HEAD quan es comprova amb una expressió regular
+
 ping_host=Fes ping al host
 ping_wait=Temps d'espera per la resposta
 ping_ehost=Falta nom de host o bé és invàlid
 ping_ewait=Hi falta el temps d'espera o bé és invàlid
 ping_econfig=No s'ha configurat cap ordre ping a la Configuració del Mòdul
+
 proc_pid=Executant amb PIDs $1
 proc_cmd=Ordre a verificar
 proc_not=Falla si el procés
@@ -223,6 +231,7 @@ proc_ethresh=Hi falta el nombre de processos o bé és invàlid
 proc_asuser=Executant-se com a usuari
 proc_anyuser=Qualsevol usuari
 proc_easuser=L'usuari d'execució del procés no existeix
+
 exec_cmd=Ordre a executar
 exec_mode=Comprovació de l'estat de sortida
 exec_mode0=Fes fallar el monitor si l'ordre falla
@@ -234,6 +243,7 @@ exec_noregexp=No ho comprovis
 exec_remode=Comprovació regexp
 exec_remode0=Falla si la sortida no hi coincideix
 exec_remode1=Falla si la sortida hi coincideix
+
 file_file=Fitxer, directori o patró a comprovar
 file_test=Test a executar
 file_test_0=Ha d'existir
@@ -252,6 +262,7 @@ file_group=El grup del fitxer ha de ser
 file_nocheck=Qualsevol cosa
 file_perms=Els permisos octals han de ser
 file_eperm=Fitxers amb permisos incorrectes: $1
+
 traffic_iface=Interfície a monitoritzar
 traffic_bytes=Nombre màxim de bytes/segon
 traffic_dir=Direcció a monitoritzar
@@ -261,6 +272,7 @@ traffic_dir2=Només sortida
 traffic_desc=Aquest monitor pren nota del trànsit de xarxa en una interfície seleccionada, i mostra el monitor com a desactivat si el trànsit excedeix el nombre de bytes per segon introduïts aquí sota. Això només funciona bé de debò si la monitorització planificada està activa i establerta a un interval curt, com ara cada 5 minuts.
 traffic_eifaces=El sistema operatiu no té cap fitxer /proc/net/dev
 traffic_ebytes=Hi falta el nombre de bytes/segon o bé no és vàlid
+
 space_fs=Sistema de fitxers a verificar
 space_min2=Espai lliure mínim
 space_mode0=Mida absoluta
@@ -276,6 +288,7 @@ space_ierr=Només hi ha $1 inodes lliures
 space_merr=Només $1 d'espai lliure
 space_perr=Només un $1% lliure
 space_dferr=No s'ha pogut obtenir la mida del sistema de fitxers
+
 load_time=Comprovació de la càrrega mitjana
 load_1=1 minut
 load_5=5 minuts
@@ -284,6 +297,7 @@ load_max=Càrrega mitjana màxima
 load_emax=Hi falta la càrrega mitjana màxima o bé és invàlida
 load_ecmd=No s'ha trobat l'ordre <tt>uptime</tt>
 load_efmt=No s'ha pogut analitzar el resultat de l'ordre <tt>uptime</tt>
+
 log_create=S'ha creat el monitor $1
 log_modify=S'ha modificat el monitor $1
 log_delete=S'ha suprimit el monitor $1
@@ -294,10 +308,14 @@ log_tmpl_modify=S'ha modificat la plantilla de correu $1
 log_tmpl_delete=S'ha suprimit la plantilla de correu $1
 log_tmpl_deletes=S'han suprimit $1 plantilles de correu
 log_refresh=S'ha refrescat els estats del monitor
+
 acl_edit=Pot editar i crear monitors
 acl_sched=Pot canviar la monitorització planificada
+
 change_file=Fitxer o directori a monitoritzar (falla si es canvia)
+
 jabber_eparser=El mòdul Perl $1 no està instal·lat al sistema.
+
 memory_min2=Memòria lliure real mínima
 memory_emin=Hi falta la quantitat de memòria lliure real o bé és invàlida
 memory_eproc=Webmin no sap com comprovar la memòria lliure en aquest sistema operatiu
@@ -307,7 +325,9 @@ memory_freelow=Només hi ha $1 de memòria lliure real
 memory_freelowswap=Només hi ha $1 de memòria lliure virtual
 memory_minswap=Memòria lliure virtual mínima
 memory_eminswap=Hi falta la quantitat de memòria lliure virtual o bé és invàlida
+
 proftpd_etype=No es pot utilitzar aquest monitor quan ProFTPD s'executa en mode independent
+
 mailserver_to=Envia correu a l'adreça
 mailserver_timeout=Temps límit i interval
 mailserver_units_0=Segons
@@ -315,20 +335,25 @@ mailserver_units_1=Minuts
 mailserver_units_2=Hores
 mailserver_units_3=Dies
 mailserver_desc=Les adreces de sota han de ser un autoresponedor que contesta a l'adreça origen amb la mateixa línia d'Assumpte: .
+
 oldfile_file=Fitxer a monitoritzar (falla si no es canvia)
 oldfile_diff=Falla si no es canvia en
 oldfile_secs=segs
+
 raid_device=Dispositiu RAID
 raid_edevice=No hi ha cap dispositiu RAID seleccionat
 raid_bad=S'ha detectat un disc defectuós
 raid_resync=Actualment resincronitzant
 raid_notfound=No s'ha trobat el dispositiu RAID $1
 raid_other=Altres...
+
 iface_iface=Interfície a comprovar
+
 refresh_title=Estat del Refresc
 refresh_doing=S'està refrescant l'estat de tots els monitors...
 refresh_doing2=S'està refrescant l'estat dels $1 monitors seleccionats...
 refresh_done=...fet.
+
 sensors_name=Sensor a comprovar
 sensors_value=Ha fallat quan
 sensors_value0=El sistema indica avís
@@ -339,6 +364,7 @@ sensors_none=No s'ha detectat cap sensor al sistema. Pot ser que hagis d'executa
 sensors_cur=$1 (actualment $2 $3)
 sensors_emin=Hi falta el valor mínim o bé és invàlid
 sensors_emax=Hi falta el valor màxim o bé és invàlid
+
 nut_ups=UPS NUT a comprovar
 nut_name=Atribut a comprovar
 nut_value=Ha fallat quan
@@ -349,6 +375,7 @@ nut_eups=No has introduït cap USP per comprovar
 nut_cur=$1 (actualment $2)
 nut_emin=Hi falta el valor mínim o bé és invàlid
 nut_emax=Hi falta el valor màxim o bé és invàlid
+
 mailq_system=Servidor de correu
 mailq_qmailadmin=Qmail
 mailq_postfix=Postfix
@@ -357,6 +384,7 @@ mailq_size=Mida màxima de la cua de correu
 mailq_esize=Hi falta la mida màxima de la cua de correu o bé és invàlida
 mailq_toomany=Inactiva - $1 missatges en cua
 mailq_ok=Activa - $1 missatges en cua
+
 dns_server=Servidor DNS
 dns_host=Nom de host a consultar
 dns_address=Adreça IP esperada
@@ -364,6 +392,7 @@ dns_eserver=Hi falta el servidor DNS o bé és invàlid
 dns_ehost=Hi falta el nom de host a consultar o bé sembla invàlid
 dns_eaddress=Hi falta l'adreça IP esperada o bé és invàlida
 dns_ecmds=No està instal·lada al sistema ni l'ordre <tt>nslookup</tt> ni l'ordre <tt>dig</tt>
+
 monitor_sub_down=$1 apagat a $2
 monitor_pager_down=$1: "$2" està apagat $3
 monitor_snmp_down=$1: $2
@@ -395,8 +424,10 @@ monitor_run1=S'està executant $1 a $2...
 monitor_run2=S'està executant $1...
 monitor_runerr=No s'ha pogut executar $1 a $2: $3
 monitor_email_stat=Estat actual: $1
+
 deletes_egone=Un dels monitors seleccionats ja no existeix
 deletes_enone=No has seleccionat cap monitor
+
 ftp_host=Host servidor FTP
 ftp_port=Port FTP
 ftp_user=Entra com a usuari
@@ -413,6 +444,7 @@ ftp_econn=La connexió FTP TLS FTP ha fallat
 ftp_econn2=La connexió FTP TLS ha fallat: $1
 ftp_elogin=L'entrada FTP FTP ha fallat: $1
 ftp_etlsfile=La descàrrega FTP TLS ha fallat: $1
+
 query_driver=Tipus de base de dades SQL
 query_db=Nom de la base de dades
 query_host=Host servidor de bases de dades
@@ -433,9 +465,12 @@ query_elogin=L'entrada ha fallat: $1
 query_eprepare=Error de SQL: $1
 query_eexecute=L'SQL ha fallat: $1
 query_ewrong=Resultat incorrecte: $1
+
 consume_rate=Ritme màxim de consum (per segon)
 consume_high=El ritme de consum és de $1 / segon
+
 alive_up=Actiu durant $1
+
 rssh_host=Host servidor SSH
 rssh_ruser=Entra com a usuari
 rssh_rpass=Entra amb la contrasenya
@@ -451,6 +486,7 @@ rssh_error=Error de SSH
 rssh_haspass=Contrasenya
 rssh_port=Port del servidor SSH
 rssh_eport=Hi falta el número de port del servidor o bé és invàlid
+
 tmpls_title=Plantilles de Correu
 tmpls_ecannot=No tens permís per editar plantilles de correu
 tmpls_none=Encara no s'ha definit cap plantilla de correu. Totes les alertes s'enviaran utilitzant el missatge per defecte de Webmin.
@@ -459,6 +495,7 @@ tmpls_email=Missatge de correu
 tmpls_add=Afegeix una nova plantilla.
 tmpls_return=a la llista de plantilles
 tmpls_delete=Suprimeix les Plantilles Seleccionades
+
 tmpl_title1=Creació de Plantilla de Correu
 tmpl_title2=Edició de Plantilla de Correu
 tmpl_header=Missatges d'alerta de les plantilles de correu
@@ -483,9 +520,11 @@ tmpl_esms=Hi falta el missatge SMS
 tmpl_esnmp=Hi falta el missatge SNMP
 tmpl_err2=No s'ha pogut suprimir la plantilla de correu
 tmpl_eusers=Està en ús per part dels monitors següents: $1
+
 dtmpls_err=No s'han pogut suprimir les plantilles
 dtmpls_enone=No n'has seleccionat cap
 dtmpls_eusers=$1 està en ús per part dels monitors següents: $2
+
 sslcert_src=Ubicació del certificat
 sslcert_url=De l'URL HTTPS
 sslcert_file=D'un fitxer al servidor
@@ -503,18 +542,21 @@ sslcert_eend=No és vàlid després del $1
 sslcert_left=Actiu - $1 dies abans de la caducitat
 sslcert_ematch=El nom de host $1 no coincideix amb el certificat $2
 sslcert_emismatch=La comprovació de noms de host dels certificats només es pot utilitzar quan es comprova un URL
+
 du_dir=Directori a monitoritzar
 du_max=Mida màxima
 du_edir=Hi falta el camí del directori o bé no és absolut
 du_emax=Hi falta la mida màxima o bé no és numèrica
 du_over=La mida és $1
 du_under=La mida només és $1
+
 ldap_edriver=El mòdul Perl $1 no està instal·lat
 ldap_host=Nom de host del servidor LDAP
 ldap_port=Port del servidor LDAP
 ldap_ssl=Utilitza connexió SSL
 ldap_user=Usuari del servidor LDAP
 ldap_pass=Contrasenya del servidor LDAP
+
 info_desc=Monitor del sistema
 info_last=Estat actual
 info_title=Estat del Sistema i el Servidor

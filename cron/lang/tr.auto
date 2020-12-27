@@ -17,31 +17,41 @@ index_ok=Arama
 index_searchres=$1 ile eşleşen Cron işleri
 index_reset=Aramayı sıfırla.
 index_econfigcheck=Modül yapılandırması geçerli olmadığı için Cron işleri sisteminizde yönetilemiyor : $1 
+
 edit_next=Sonraki çalışma süresi
 edit_comment=Açıklama
 edit_range=Yürütülecek tarih aralığı
 edit_saverun=Kaydet ve Şimdi Çalıştır
 edit_clone=Klonlama İşi
+
 save_eidx=Cron işi başarıyla kaydedildi, ancak bulunamadığı için çalıştırılamaz!
+
 acl_hourly=İşleri en fazla saatlik olarak sınırlamak istiyor musunuz?
 acl_hourlydef=Modül Yapılandırmasında ayarlandığı gibi
+
 log_kill=$1 için sonlandırılmış Cron işi
 log_kill_l=$1 için "$2" Cron işi sonlandırıldı
 log_crons_delete=$1 Cron iş silindi
 log_crons_disable=$1 Cron işini devre dışı bıraktı
 log_crons_enable=$1 Cron işini etkinleştirdi
+
 when_interval=$1 saniyede bir
 when_boot=başlangıçta
+
 ucwhen_interval=$1 saniyede bir
 ucwhen_boot=Başlangıç zamanında
+
 kill_rusure2=$1 işlemini PID $2 ve tüm alt işlemleriyle sonlandırmak istediğinizden emin misiniz?
+
 range_all=Herhangi bir tarihte çalıştırın
 range_start=Sadece $1 'den çalıştır
 range_end=1'e
 range_estart=Çalıştırılacak aralıkta eksik veya geçersiz başlangıç tarihi
 range_eend=Çalıştırılacak aralıkta eksik veya geçersiz bitiş tarihi
+
 delete_err=Cron işleri silinemedi
 delete_enone=Hiçbiri seçilmedi
+
 manual_title=Cron İşlerini Manuel Olarak Düzenleme
 manual_edit=Düzenlenecek Cron dosyası:
 manual_ok=Düzenle

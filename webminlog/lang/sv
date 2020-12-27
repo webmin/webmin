@@ -11,6 +11,7 @@ index_search=Sök
 index_return=sökformulär
 index_nolog=<b>Obs</b> - <a href='$1'>Loggning i Webmin</a> är för tillfället inte aktiverat, så sökningar i loggen kommer inte att ge några resultat.
 index_nologfiles=<b>Obs</b> - <a href='$1'>Loggning av filändringar</a> är för tillfället inte aktiverat, så ändrade filer och utförda kommandon kommer inte att komma med bland de loggade händelserna.
+
 search_title=Sökresultat
 search_date=Datum
 search_time=Tid
@@ -27,6 +28,7 @@ search_critm=i modul $1
 search_critt=mellan $1 och $2
 search_critt2=på $1
 search_config=Ändrade modulinställningarna
+
 view_title=Uppgifter om aktivitet
 view_header=Uppgifter om loggad aktivitet $1
 view_action=Beskrivning

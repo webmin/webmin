@@ -4,9 +4,12 @@ bifc_bridgestp=Spanning Tree Protocol
 bifc_bridgefd=Vertraging vooruit
 bifc_bridgewait=Vertraging om beschikbaar te komen
 bifc_ebond=Bond-interface moet een nummer zijn
+
 bonding_teampartsdesc=Afzonderlijke partners met witruimten, b.v. "eth2 eth4"
 bonding_primary=Primaire interface
 bonding_primarydesc=Alleen van toepassing met actieve back-up-, balans-tlb- of balans-alb teaming-modi
 bonding_miimondesc=(Leeg laten om linkbewaking uit te schakelen)
+
 hosts_active=Ingeschakeld?
+
 acl_sysinfo=Toon beschikbare netwerkinterfaces op Dashboard

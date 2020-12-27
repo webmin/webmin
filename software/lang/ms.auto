@@ -7,16 +7,22 @@ index_echeckupdate=Tiada sistem kemas kini yang dikesan!
 index_filter=Pake Penapis
 index_filterclear=Kosongkan Penapis
 index_filtered=Memaparkan pakej <tt>$1</tt> daripada <tt>$2</tt>
+
 edit_listdesc=Tunjukkan semua fail dalam pakej ini, dan status pengesahan semasa mereka.
 edit_uninstdesc=Keluarkan pakej ini dari sistem anda.
+
 delete_rusure2=Adakah anda pasti mahu memadamkan pakej $1 ?
 delete_purge=Purge files configuration?
 delete_depstoo=Mengeluarkan dependensi yang tidak digunakan juga?
+
 install_eupdate=Tiada pakej untuk dipasang dimasukkan
+
 rpm_findrpm=Nama fail pakej
 rpm_finddistro=Pengedaran
 rpm_finddesc=Penerangan
+
 slack_edir=Direktori pakej Slackware yang tiada $1 
+
 log_install_yum_l=Pakej terpasang $1 dari YUM
 log_install_yum=Pakej $2 dipasang dari YUM
 log_install_rhn_l=Pakej terpasang $1 dari Redhat Network
@@ -27,8 +33,10 @@ log_upgrade_yum_l=Pakej naik taraf $1 dari YUM
 log_upgrade_yum=Pakej $2 ditingkatkan daripada YUM
 log_check_rhn_l=Pakej ditingkatkan $1 dari Redhat Network
 log_check_rhn=Peningkatan $2 pakej dari Redhat Network
+
 rhn_header=Pilihan naik taraf pakej automatik
 rhn_name=Rangkaian Redhat
+
 apt_mode2=Peningkatan edaran (<tt>upgrade-dist</tt>)
 apt_title=Cari APT
 apt_name=APT
@@ -36,6 +44,7 @@ apt_repo_url=URL asas repositori
 apt_repo_path=Komponen laluan pengedaran
 apt_repo_eurl=URL asas yang hilang atau tidak sah
 apt_repo_epath=Jalan pengedaran yang tiada
+
 yum_title=Semak imbas YUM
 yum_name=YUM
 yum_enable=Dayakan repositori:
@@ -51,6 +60,7 @@ yum_repo_ename=Nama repositori yang tiada
 yum_repo_eurl=URL repositori yang hilang atau tidak sah
 yum_repo_egpg=Fail cert cert GPG hilang atau tidak wujud
 yum_repo_efile=Fail repositori sudah wujud!
+
 urpmi_name=URPMI
 urpmi_input=Pakej dari URPMI
 urpmi_find=Semak imbas URPMI ..
@@ -65,10 +75,13 @@ urpmi_upgradeok=.. lengkap.
 urpmi_install=Memasang pakej dengan arahan $1 ..
 urpmi_ok=.. pasang lengkap.
 urpmi_failed=.. memasang gagal!
+
 emerge_title=Cari Portage
 emerge_name=Portage
+
 cygwin_badpostscript=Amaran: skrip ini tidak kelihatan telah dijalankan
 cygwin_edb=Pangkalan data bungkusan Cygwin yang tiada $1 
+
 csw_input=Pakej dari CSW
 csw_install=Memasang pakej dengan arahan $1 ..
 csw_ok=.. pasang lengkap.
@@ -83,20 +96,24 @@ csw_name=CSW
 csw_form=Pakej Peningkatan
 csw_upgrade=Naik Taraf Semua Pakej Terpasang
 csw_updatedesc=Menaiktaraf semua pakej yang dipasang dengan perintah $1 ..
+
 missing_msg=Pakej $1 boleh dipasang secara automatik oleh Webmin menggunakan $2.
 missing_now=Install sekarang
+
 find_title=Cari Pakej
 find_search=Cari pakej sepadan:
 find_name=Nama
 find_version=Versi
 find_desc=Penerangan
 find_none=Tiada pakej yang sepadan dengan carian anda ditemui.
+
 msi_users=Buat aplikasi baru boleh didapati
 msi_users0=Tiada siapa
 msi_users1=Pengguna semasa
 msi_users2=Semua pengguna
 msi_missing=Tidak wujud
 msi_size=Salah saiz
+
 hpux_create_target_path=Buat laluan sasaran?
 hpux_mount_all_filesystems=Gunung semua sistem fail?
 hpux_reinstall=Pasang semula?
@@ -112,6 +129,7 @@ hpux_enforce_dependencies=Menguatkuasakan dependencies?
 hpux_enforce_scripts=Menguatkan skrip?
 hpux_enforce_dsa=Menguatkan analisis ruang cakera?
 hpux_root=Direktori akar
+
 ports_install=Memasang port FreeBSD $1 ..
 ports_failed=.. beberapa pelabuhan gagal
 ports_ok=.. pasang lengkap
@@ -122,18 +140,22 @@ ports_form=Kemas kini Pangkalan Data Pelabuhan
 ports_apply=Muat turun Snapshot Terkini
 ports_upgrade=Memuat turun Ports Snapshot
 ports_running=Arahan berjalan $1 ..
+
 pkg_install=Memasang pakej FreeBSD $1 ..
 pkg_failed=.. beberapa pakej gagal
 pkg_ok=.. pasang lengkap
 pkg_find=Cari pkgng
 pkg_input=Pakej dari pkgng
+
 pkgsrc_install=Memasang pakej pkgsrc $1 ..
 pkgsrc_failed=.. beberapa pakej gagal
 pkgsrc_ok=.. pasang lengkap
 pkgsrc_find=Cari pkgng
 pkgsrc_input=Pakej dari pkgsrc
+
 log_IPKG_update=Pangkalan data IPKG yang dikemas kini
 log_IPKG_upgrade=Pakej IPKG yang telah dinaik taraf
+
 IPKG_name=IPKG
 IPKG_input=Pakej dari IPKG
 IPKG_find=Semak imbas IPKG ..

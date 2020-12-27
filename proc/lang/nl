@@ -14,6 +14,7 @@ index_loadname=CPU belasting gemiddelde:
 index_loadnums=$1 (1 min) , $2 (5 min) , $3 (15 min)
 index_cpuname=CPU type:
 index_inzone=In zone $1
+
 pid=ID
 owner=Eigenaar
 command=Opdracht
@@ -25,6 +26,7 @@ nice=Vriendelijk niveau
 stime=Gestart
 sclass=IO geplande klasse
 sprio=IO prioriteit
+
 search_user=Behoort aan
 search_match=Overeenkomend
 search_cpupc=Gebruikt meer dan $1% CPU
@@ -41,6 +43,7 @@ search_sigkill=Kil Processen
 search_port=Gebruik poort
 search_protocol=protocol
 search_ip=Gebruik IP adres
+
 run_command=Opdracht om uit te voeren
 run_submit=Uitvoeren
 run_mode=Uitvoer mode
@@ -54,6 +57,7 @@ run_ecannot=U bent niet bevoegd om opdrachten uit te voeren
 run_as=Uitvoeren als gebruiker
 run_euser=Ontbrekende of ongeldige gebruikersnaam
 run_euser2=U bent niet bevoegd om opdrachten uit te voeren als geselecteerde gebruiker
+
 edit_title=Process Informatie
 edit_gone=Dit proces werkt niet langer
 edit_sub=Subprocessen
@@ -73,12 +77,15 @@ edit_sigcont=Doorgaan
 edit_open=Files en verbindingen
 edit_trace=Traceer Proces
 edit_return=proces details
+
 kill_err=Mislukt om signaal $1 naar proces $2 te sturen
 kill_title=Verstuur Signaal
 kill_sent=verstuur
 kill_ecannot=U bent niet bevoegd om processen te killen
+
 renice_err=Mislukt om proces $1 een renice te geven
 renice_ecannot=U bent niet bevoegd om processen een renice te geven
+
 linux_pri=Prioriteit
 linux_tty=TTY
 linux_status=Status
@@ -89,25 +96,30 @@ linux_ruser=Echte gebruiker
 linux_rgroup=Echte groep
 linux_pgid=Proces groep ID
 linux_stime=Gestart
+
 linuxstat_R=Werkend
 linuxstat_S=Slapend
 linuxstat_D=Diepe slaap
 linuxstat_T=Gestopt
 linuxstat_Z=Zombie
+
 linux_real=Echte tijd
 linux_be=Beste inspanning
 linux_idle=In rust
+
 freebsd_ruser=Echte gebruiker
 freebsd_rgroup=Echte groep
 freebsd_tty=TTY
 freebsd_pgid=Proces groep
 freebsd_stime=Gestart
 freebsd_lim=Geheugen limieten
+
 hpux_pri=Prioriteit
 hpux_tty=TTY
 hpux_status=Status
 hpux_wchan=Wachtend op
 hpux_stime=Gestart
+
 hpuxstat_0=Niet bestaand
 hpuxstat_S=Slapend
 hpuxstat_W=Wachtend
@@ -116,7 +128,9 @@ hpuxstat_I=Tussentijdse
 hpuxstat_Z=Zombie
 hpuxstat_T=Gestopt
 hpuxstat_G=Groeiend
+
 macos_tty=TTY
+
 sysv_group=Groep
 sysv_ruser=Echte gebruiker
 sysv_rgroup=Echte groep
@@ -125,12 +139,14 @@ sysv_tty=TTY
 sysv_stime=Gestart
 sysv_task=Taak ID
 sysv_zone=Zone naam
+
 log_run=Uitvoeren opdracht "$1"
 log_kill=Zend signaal $1 naar proces $2
 log_kills=Zend signaal $1 naar $2 processen
 log_kill_l=Zend signaal $1 naar proces $2
 log_kills_l=Zend signaal $1 naar processen<br>$2
 log_renice=Verander prioriteit van proces $2 naar $1
+
 acl_manage=Processen beheren als gebruiker
 acl_manage_def=Huidige Webmin gebruiker
 acl_edit=Mag processen killen en herstarten?
@@ -140,11 +156,13 @@ acl_who=Mag processen van gebruikers beheren
 acl_who0=Alle gebruikers
 acl_who1=Huidige Webmin gebruiker
 acl_who2=Gebruikers in lijst ..
+
 kill_kill=Kil Proces
 kill_term= Uitschakelen  
 kill_hup=  Herstart   
 kill_stop=    Stop    
 kill_cont=  Doorgaan  
+
 open_title=Open Files en verbindingen
 open_proc=Voor proces $1 (PID $2)
 open_header1=Open files
@@ -168,6 +186,7 @@ open_blk=Blokkeer speciaal
 open_size=File grote
 open_inode=Inode
 open_file=Pad
+
 trace_title=Traceer Proces
 trace_start=Start een systeem opspoor verzoek voor $1 ..
 trace_doing=Systeem vraagt naar opsporen van $1 :
@@ -178,5 +197,7 @@ trace_syscalls=Traceer systeem verzoeken
 trace_all=Alles
 trace_sel=In Lijst..
 trace_change=Verander
+
 windows_threads=Afhandelingen in proces
+
 syslog_dmesg=Kernel bericht

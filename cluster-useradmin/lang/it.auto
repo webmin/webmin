@@ -17,6 +17,7 @@ index_tdesc=Descrizione
 index_tucount=utenti
 index_tgcount=gruppi
 index_ttype=Tipo di sistema operativo
+
 add_title=Aggiungi server
 add_msg=Aggiunta di $1 ..
 add_gmsg=Aggiunta di server nel gruppo $1 ..
@@ -26,6 +27,7 @@ add_echeck=Il server $1 non ha il modulo utenti e gruppi
 add_epft=Il server $1 non utilizza lo stesso formato di file utente di questo host
 add_egft=Il server $1 non utilizza lo stesso formato di file di gruppo di questo host
 add_ok=Aggiunto $1 con $2 utenti e $3 gruppi.
+
 host_title=Server gestito
 host_header=Dettagli del server gestito dal software
 host_name=Nome host
@@ -34,8 +36,7 @@ host_delete=Rimuovi dall'elenco gestito
 host_refresh=Aggiorna utenti e gruppi
 host_users=numero di utenti
 host_groups=Numero di gruppi
-host_ulist=Utenti sul server
-host_glist=Gruppi sul server
+
 host_return=dettagli del server
 refresh_title=Aggiorna utenti e gruppi
 refresh_header=Richiedere gli elenchi di utenti e gruppi da tutti i server.
@@ -49,6 +50,7 @@ refresh_gdel=rimuovi $1 gruppi
 refresh_done=.. fatto
 refresh_del=$1 rimosso dall'elenco dei server
 refresh_failed=Impossibile aggiornare $1 : $2 
+
 uedit_host=Dettagli da $1 
 uedit_leave=Non cambiare
 uedit_set=Impostato
@@ -66,6 +68,7 @@ uedit_servers=Server su cui creare
 uedit_all=&lt;tutti gli host&gt;
 uedit_donthave=&lt;host che non lo hanno&gt;
 uedit_group=Membri di $1 
+
 usave_einuse=Un utente con lo stesso nome esiste già su $1 
 usave_esecgid=Il gruppo secondario $1 non esiste
 usave_con=Crea su $1 ..
@@ -88,16 +91,20 @@ usave_header=Creazione dell'utente $1 su tutti gli host ..
 usave_header5=Creazione dell'utente $1 su $2 ..
 usave_header4=Creazione dell'utente $1 sui membri del gruppo $2 ..
 usave_header3=Creazione dell'utente $1 su host che non lo hanno ..
+
 search_hosts=host
+
 udel_on=Eliminazione da $1 ..
 udel_servs=Elimina la home directory se esiste su
 udel_others=Eliminare l'utente in altri moduli?
 udel_dothers=Eliminazione in altri moduli ..
 udel_gone=L'utente non esiste più.
 udel_failed=Impossibile eliminare l'utente : $1 
+
 gdel_on=Eliminazione da $1 ..
 gdel_gone=L'utente non esiste più.
 gdel_failed=Impossibile eliminare il gruppo : $1 
+
 gsave_create=Aggiunta della voce del file di gruppo ..
 gsave_con=Crea su $1 ..
 gsave_euser=L'utente $1 non esiste
@@ -110,10 +117,12 @@ gsave_header=Creazione del gruppo $1 su tutti gli host ..
 gsave_header5=Creazione del gruppo $1 su $2 ..
 gsave_header4=Creazione del gruppo $1 sui membri del gruppo $2 ..
 gsave_header3=Creazione del gruppo $1 su host che non lo hanno.
+
 gedit_host=Dettagli da $1 
 gedit_add=Aggiungi utenti
 gedit_del=Rimuovi utenti
 gedit_donthave=&lt;host che non ce l'hanno&gt;
+
 sync_title=Sincronizza server
 sync_desc=Questo modulo consente di creare utenti e gruppi su server che non li hanno attualmente, al fine di sincronizzare gli account tra tutti i server del cluster.
 sync_hosts=Server da sincronizzare
@@ -141,6 +150,7 @@ sync_test=Mostra solo cosa si farebbe?
 sync_makehome=Creare home directory?
 sync_copy=Copia i file nella home directory?
 sync_others=Creare un utente in altri moduli?
+
 log_create_user=Utente creato $1 
 log_delete_user=Utente eliminato $1 
 log_modify_user=Utente modificato $1 

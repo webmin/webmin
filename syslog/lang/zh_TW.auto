@@ -4,13 +4,17 @@ index_cmd=$1的輸出
 index_view=視圖 ..
 index_viewfile=查看日誌文件：
 index_viewok=視圖
+
 restart_ecannot=您不允許重新啟動syslog
+
 start_ecannot=您無權啟動syslog
 edit_socket=Unix域套接字文件
 edit_return=日誌詳細信息
 edit_ecannot=您無權編輯日誌設置
 edit_ecannot2=您無權編輯此日誌
+
 view_filter=僅顯示文字為 $1的行
+
 save_esocket=Unix域套接字丟失或無效
 save_ecannot1=您無權刪除此日誌
 save_ecannot2=您無權查看此日誌
@@ -20,11 +24,13 @@ save_ecannot5=您無權修改此日誌
 save_ecannot6=您無權查看任意日誌
 save_ecannot7=您無權查看此額外日誌
 save_emissing=缺少要查看的日誌文件
+
 log_modify=將日誌修改為 $1
 log_create=已將日誌添加到 $1
 log_delete=已刪除日誌到 $1
 log_apply=應用的變更
 log_start=啟動日誌服務器
+
 desc_sysmesg=系統訊息
 desc_mail=郵件記錄
 desc_auth=認證日誌
@@ -33,6 +39,7 @@ desc_news=NNTP新聞日誌
 desc_uucp=UUCP日誌
 desc_debug=調試消息
 desc_cron=Cron作業日誌
+
 acl_noedit=只能查看日誌？
 acl_any=可以查看任何文件作為日誌嗎？
 acl_logs=可以查看和配置日誌文件

@@ -28,6 +28,7 @@ index_tabinstall=Asenna moduuli
 index_tabsuggest=Ehdotetut moduulit
 index_allmods2=Puuttuvat moduulit, joita Webmin käyttää
 index_wantmods=Asennettavat moduulit
+
 download_err=Moduulin asentaminen epäonnistui
 download_elocal=Paikallista tiedostoa ei annettu
 download_elocal2='$1' ei ole olemassa
@@ -65,6 +66,7 @@ download_ebuild=Yksi tai useampi Perl-moduuleista tarvitsee rakentaa $1, mutta t
 download_yum=Perl-moduulin $1 asentaminen paketista $2.
 download_missingok=CPANista puuttuvat moduulit
 download_fallback=Jotkin moduulit eivät pystyneet asentamaan paketeista, yrittäen sijaan asentaa lähteestä ..
+
 install_title=Asenna moduuli
 install_untar=Untarring-moduulitiedosto
 install_make=Kokoonpano moduuli
@@ -84,11 +86,13 @@ install_err2=Voit myös asentaa moduulin CPANista komennolla $1.
 install_exec=Suoritetaan $1 ..
 install_efile=Moduulitiedostoa $1 ei enää ole
 install_needunlink=Voit yrittää asentaa uudelleen palaamalla edelliselle sivulle ja valitsemalla eri vaihtoehdot. Muussa tapauksessa <a href='$1'>napsauta tätä poistaaksesi väliaikaiset paketitiedostot</a> säästääksesi levytilaa.
+
 cpan_sel=Moduulit alle $1 ..
 cpan_title=Valitse Perl-moduuli
 cpan_search=Etsi nimeltään moduulit
 cpan_match=Moduulit, jotka vastaavat $1 ..
 cpan_none=Ei hakua vastaavia tuloksia.
+
 edit_title=Moduulin yksityiskohdat
 edit_header=Moduulitiedot
 edit_mod=Moduulin nimi
@@ -105,6 +109,7 @@ edit_method=Asennettu
 edit_rpm=RPM-paketti $1 
 edit_debian=Debian-paketti $1 
 edit_manual=Manuaalinen Perl-moduulin asennus
+
 uninstall_title=Poista moduuli
 uninstall_rusure=Haluatko varmasti poistaa Perl-moduulin $1 ? Seuraavat tiedostot poistetaan :
 uninstall_rusure2=Haluatko varmasti poistaa Perl-moduulin $1 ja alamoduulin $2 ? <br> Seuraavat tiedostot poistetaan :
@@ -112,7 +117,9 @@ uninstall_ok=Poista nyt
 uninstall_rpm=Moduuli poistetaan poistamalla asennus $1 RPM-paketti.
 uninstall_debian=Moduuli poistetaan poistamalla asennus $1 Debian -paketti.
 uninstall_err=Moduulin asennuksen poistaminen epäonnistui
+
 delete_efile=Virheellinen paketitiedosto!
+
 uninstalls_title=Poista moduulit
 uninstalls_err=Moduulien poistaminen epäonnistui
 uninstalls_enone=Mitään ei ole valittu

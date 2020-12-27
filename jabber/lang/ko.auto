@@ -17,6 +17,7 @@ index_restartmsg=Jabber 서버를 중지했다가 다시 시작하여 현재 구
 index_comments=경고-Jabber 구성 파일 $1 에 주석이 포함되어 있으며이 모듈을 사용하여 구성을 변경하면 주석이 제거됩니다.
 index_return=재버 메뉴
 index_version=재버 버전 $1 
+
 general_title=일반 옵션
 general_header=글로벌 Jabber 서버 옵션
 general_host=서버의 호스트 이름
@@ -32,6 +33,7 @@ general_eelogfmt=누락 된 오류 로그 형식
 general_erlog=누락되거나 잘못된 트래픽 로그 파일
 general_erlogfmt=누락 된 트래픽 로그 형식
 general_epidfile=프로세스 ID 파일이 없거나 잘못되었습니다
+
 messages_title=메시지
 messages_header=클라이언트를위한 Jabber 서버 메시지
 messages_wsubject=환영 메시지 제목
@@ -44,6 +46,7 @@ messages_vcard2jud=Jabber 사용자 디렉토리로 vCard를 보내시겠습니�
 messages_err=메시지를 저장하지 못했습니다
 messages_evcard=잘못된 vCard XML  : $1 
 messages_etag=서버 vCard XML이 &lt;vCard&gt;로 시작하지 않습니다
+
 modules_title=재버 모듈
 modules_desc=아래 나열된 모듈은 Jabber 세션 관리자가 수신 한 메시지를 처리하는 데 사용됩니다. 수행중인 작업을 알고있는 경우에만이 목록을 변경해야합니다.
 modules_header=재버 서버 세션 관리자 모듈
@@ -52,6 +55,7 @@ modules_so=공유 라이브러리
 modules_err=Jabber 모듈을 저장하지 못했습니다
 modules_emod='$1'은 (는) 유효한 모듈 이름이 아닙니다
 modules_eso=공유 라이브러리 '$1'이 (가) 없습니다
+
 karma_title=카르마 교통 통제
 karma_header=교통량 제어 옵션
 karma_rate=과도한 연결 처리
@@ -80,6 +84,7 @@ karma_epenalty=페널티 기간이 없거나 유효하지 않음
 karma_erestore=복원 기간이 없거나 유효하지 않습니다
 karma_epoints=연결 수가 없거나 잘못되었습니다
 karma_etime=차단할 시간이 없거나 잘못되었습니다.
+
 ips_title=IP 액세스 제어
 ips_header=재버 서버 IP 액세스 제어
 ips_allow=허용 된 클라이언트 IP
@@ -89,10 +94,12 @@ ips_none=없음
 ips_sel=나열된 주소/네트 마스크 ..
 ips_err=IP 액세스 제어를 저장하지 못했습니다
 ips_eaddr='$1'은 (는) 유효한 IP 주소 또는 IP 주소/넷 마스크가 아닙니다.
+
 file_title=구성 파일 편집
 file_desc=Jabber 구성 파일을 직접 편집하려면 아래 양식을 사용하십시오. XML 구성 형식을 이해 한 경우에만 수행해야합니다.
 file_header=Jabber 구성 파일 편집
 file_err=구성 파일을 저장하지 못했습니다
+
 admin_title=관리 사용자
 admin_header=서버 관리자
 admin_read=읽기 권한 관리자
@@ -100,11 +107,13 @@ admin_write=쓰기 권한 관리자
 admin_reply=관리자 메시지에 자동 회신 하시겠습니까?
 admin_rsubject=자동 회신 주제
 admin_rbody=자동 회신 메시지
+
 filter_title=사용자 필터
 filter_header=사용자 필터 권한
 filter_max=최대 필터 규칙
 filter_conds=허용되는 필터 조건
 filter_acts=허용되는 필터 동작
+
 restart_err=변경 사항을 적용하지 못했습니다
 stop_err=재버를 중지하지 못했습니다
 stop_epid=재버 프로세스를 찾지 못했습니다

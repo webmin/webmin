@@ -3,6 +3,7 @@ connect_elogin=Kon nie by die databasis aanmeld nie $1:$2.
 index_title=Postfix-posbediener
 index_epath=Die Postfix-beheeropdrag $1 is nie op u stelsel geïnstalleer nie. Miskien is u <a href='$2'>module-opstelling</a> verkeerd, of is Postfix nie geïnstalleer nie.
 index_postfix=postfix
+
 internal_error=Interne fout
 index_econfig=Die Postfix-opdrag $1 bestaan nie. Miskien is u <a href='$2'>module-opstelling</a> verkeerd.
 index_esuper=Die Postfix toesighoueropdrag $1 bestaan nie. Miskien is u <a href='$2'>module-opstelling</a> verkeerd.
@@ -14,8 +15,10 @@ index_startmsg=Klik op hierdie knoppie om die Postfix-e-posbediener te begin. To
 index_reloadmsg=Klik op hierdie knoppie om al die konfigurasielêers van Postfix weer te laat lees. Dit kan nuttig wees as die Postfix-konfigurasielêers met die hand gewysig is.
 index_version=Weergawe van postfix $1
 opts_err=Opslaan van opsies is misluk
+
 check_error=Fout tydens kontrolering van die huidige Postfix-konfigurasie Stel die Postfix-konfigurasie handmatig reg.
 check_manual=Bewerk die Postfix-konfigurasielêer handmatig.
+
 address_rewriting_title=Adres herskryf en Masquerading
 address_rewriting_ecannot=U mag nie die herskryf en adressering van adresadresse wysig nie
 aliases_title=Mail Aliases
@@ -42,9 +45,11 @@ aliases_type5=Lêer $1
 aliases_type6=Pas filterlêer toe $1
 aliases_none=Geen
 aliases_delete=Vee geselekteerde Aliases uit
+
 postfinger_title=Opstellingkontrole
 postfinger_show=Wys
 postfinger_ecannot=U mag nie die Postfix-konfigurasie nagaan nie
+
 mailclean_title=Maak MailQueue skoon
 mailclean_ecannot=Geen voorregte om MailQueues skoon te maak nie
 mailclean_active=Aktiewe-Queue
@@ -53,6 +58,7 @@ mailclean_deferred=Uitgestelde-Queue
 mailclean_defer=DEFER-Queue
 mailclean_all=Alle toue
 mailclean_search=Soek-String
+
 aform_type0=Geen
 aform_type1=E-pos adres
 aform_type2=Adresse in lêer
@@ -68,6 +74,7 @@ aform_val=Alias na
 aform_afile=Wysig ..
 aform_return=alias
 aform_cmt=beskrywing
+
 asave_err=Kon nie alias stoor nie
 asave_eaddr='$1' is nie 'n geldige adres nie
 asave_ealready='N Alias vir'$1'bestaan reeds
@@ -78,11 +85,13 @@ asave_etype4='$1' is nie 'n geldige program of bestaan nie
 asave_etype5=Lêer '$1' outomaties beantwoord is nie geldig nie
 asave_etype4none=Geen program gegee nie
 asave_etype6=Filterlêer '$1' is nie geldig nie
+
 afile_title=Bewerk adreslêer
 afile_desc=Gebruik die onderstaande teksarea om die adresse in die lêer $1 te wysig.
 afile_efile=U mag nie $1 wysig nie.
 afile_undo=Ontdoen veranderinge
 afile_ewrite=Kon nie na adreslêer skryf nie : $1
+
 ffile_title=Wysig filterlêer
 ffile_desc=Gebruik die onderstaande vorm om filterreëls op te stel in die lêer $1.
 ffile_efile=U mag nie $1 wysig nie.
@@ -98,6 +107,7 @@ ffile_other=Andersins na $1
 ffile_err=Kon nie die filterlêer stoor nie
 ffile_ematch=Ontbrekende wedstryd
 ffile_eaction=Aanstuuradres ontbreek
+
 rfile_title=Wysig lêer outomaties aan
 rfile_desc=Gebruik die onderstaande teksarea om die outomatiese boodskap in $1 te wysig. Die boodskap kan die makro's $SUBJECT, $FROM, $TO, $DATE en $ LIGGAAM bevat wat uitgebrei sal word wanneer die outoreplaas geaktiveer is.
 rfile_desc2=U kan ook poshoofde instel wat die standaardinstellings wat in die outorepassing gebruik word, byvoeg of vervang deur lyne soos: <br><tt> Vanaf: foo@bar.com </tt><br> <tt>Onderwerp: Op vakansie</tt> <br> aan die bokant van die boodskap, geskei van die liggaam met 'n enkele leë lyn.
@@ -116,11 +126,13 @@ rfile_from=Van: adres vir antwoord
 rfile_auto=Outomaties (gebaseer op die adres van die ontvanger)
 rfile_efrom=Ontbreek vanaf: adres
 rfile_fromdesc=A Van: adres moet altyd gespesifiseer word waar moontlik, aangesien die outomatiese metode moontlik nie betroubaar is nie.
+
 general_title=Algemene opsies
 general_title_sensible=Mees nuttige algemene opsies
 general_title_others=Ander algemene opsies
 general_ecannot=U mag nie Algemene Opsies wysig nie
 what_is_it=Wat is dit?
+
 opts_default=verstek
 opts_none=Geen
 opts_nomap=Geen kaartstel nie
@@ -140,10 +152,12 @@ opts_mail_owner=Pos eienaar
 opts_default_privs=Verstek regte van die afleweringsagent
 opts_inet_interfaces=Netwerk-koppelvlakke om pos te ontvang
 opts_all_interfaces=Almal
+
 opts_local_recipient_maps=Verwerp onbekende plaaslike gebruikers
 opts_no=Geen
 opts_save=Stoor en pas toe
 opts_edir=U mag slegs kaartlêers spesifiseer onder $1
+
 opts_allow_percent_hack=Herskryf "gebruiker%domein" na "gebruiker@domein"
 opts_append_at_myorigin=Herskryf "gebruiker" na "gebruiker@$mydomain"
 opts_append_dot_mydomain=Herskryf "gebruiker @ gasheer" na "gebruiker@host.$mydomain"
@@ -153,13 +167,17 @@ opts_swap_bangpath=Herskryf "site! User" na "user @ site"
 opts_masquerade_domains=Adres vervat
 opts_masquerade_exceptions=Maskeradige uitsonderings
 index_return=Postfix-konfigurasie
+
 opts_alias_maps=Alias databasisse wat deur die plaaslike afleweringsagent gebruik word
 opts_alias_database=Alias-databasisse gebou deur 'newaliases' opdrag
 aliases_warning=Waarskuwing: <ul><li> wanneer die eerste veld nie leeg is nie, word die standaardopdrag van Postfix aliases-generasie gebruik om die ooreenstemmende databasisse op te bou; <li>anders word die Sendmail-verenigbaarheidsopdrag "newaliases" gebruik; dit sal die databasisse van die tweede veld gebruik.</ul>
+
 aliases_name=naam
 aliases_value=Alias om. ..
+
 new_alias=Skep 'n nuwe alias
 new_aliasmsg=Klik op hierdie knoppie om 'n nuwe alias te skep
+
 local_delivery_ecannot=U mag nie plaaslike afleweringsopsies wysig nie
 local_delivery_title=Plaaslike aflewering
 opts_local_transport=Naam van die vervoer vir plaaslike aflewerings
@@ -185,6 +203,7 @@ opts_local_destination_recipient_limit=Maksimum aantal ontvangers per plaaslike 
 opts_local_destination_recipient_limit_default=verstek
 opts_prepend_delivered_header=Stel 'n <tt>afgelewer aan:</tt> voor wanneer. ..
 opts_prepend_delivered_header_default=verstek
+
 resource_title=Algemene hulpbronbeheer
 resource_ecannot=U mag nie die hulpbronbeheerparameters wysig nie
 opts_bounce_size_limit=Maksimum grootte van die bons-boodskap
@@ -204,6 +223,7 @@ opts_qmgr_message_recipient_limit=Maksimum aantal ontvangers in die geheue
 opts_queue_minfree=Min vrye ruimte in die tou-lêerstelsel
 opts_stale_lock_time=Maks tyd waarna ou slot vrygestel word
 opts_transport_retry_time=Tyd in sekondes tussen pogings om 'n stukkende MDT te kontak
+
 opts_always_bcc=Adres wat die CC van elke boodskap ontvang
 opts_always_bcc_none=Geen
 opts_daemon_timeout=Tydsduur vir die hantering van versoeke
@@ -242,6 +262,7 @@ opts_trigger_timeout=Maks tyd om 'n sneller na 'n demoon te stuur
 opts_delay_warning_time=Tyd in ure voordat u 'n waarskuwing stuur vir aflewering
 opts_delay_warning_time_default2=Postfix verstek
 opts_content_filter_default=Geen
+
 smtpd_title=SMTP-bedieneropsies
 smtpd_ecannot=U mag nie die SMTP-bedieneropsies wysig nie
 opts_disable_vrfy_command=Skakel SMTP VRFY-opdrag uit
@@ -273,6 +294,7 @@ smtpd_nomap=Geen kaart vir toegelate adresse vir heruitvoer is nog nie ingevoer 
 smtpd_nomap2=Daar is nog geen kaart ingevoer vir beperkings op senderadresse nie.
 smtpd_map=Toegestane adresse vir heruitgawes
 smtpd_map2=Beperkings op senderadresse
+
 smtp_title=SMTP-kliëntopsies
 smtp_ecannot=U mag nie die SMTP-kliëntopsies wysig nie
 opts_best_mx_transport=Aksie as gelys as die beste MX-gasheer
@@ -293,6 +315,7 @@ opts_smtp_data_done_timeout=Time-out om te wag vir antwoord tot einde "."
 opts_smtp_quit_timeout=Uittreksel wag vir antwoord op QUIT
 opts_smtp_use_tls=Gebruik TLS vir SMTP-verbindings
 opts_smtp_sasl_security_options=SASL sekuriteitsopsies
+
 rate_title=Afleweringstariewe
 rate_ecannot=U mag die opsies vir afleweringskoerse nie verander nie
 opts_default_destination_concurrency_limit=Maksimum aantal parallelle aflewerings na dieselfde bestemming
@@ -303,18 +326,21 @@ opts_maximal_queue_lifetime=Die maksimum tyd (dae) in die tou voor die boodskap 
 opts_minimal_backoff_time=Min tyd (sekondes) tussen pogings om 'n uitgestelde boodskap te lewer
 opts_queue_run_delay=Tyd (sekondes) tussen die skandering van die uitgestelde tou
 opts_defer_transports=Vervoer wat nie afgelewer moet word nie
+
 debug_title=Ontfoutingsfunksies
 debug_ecannot=U mag nie die ontfoutingsfunksies wysig nie
 opts_debug_peer_list=Lys met domein- / netwerkpatrone waarvoor verbale logboek aangeskakel is
 opts_debug_peer_level=Verbale logboekvlak as dit by bogenoemde lys ooreenstem
 debug_version=Postfix Module vir Webmin - weergawe $1
 opts_edebug=Ontbrekende of ongeldige verbale logboekvlak - moet 'n getal groter as nul wees
+
 ldap_title=LDAP-soek
 ldap_ecannot=U mag nie die LDAP-opsoekopsies wysig nie
 ldap_non_existent=Dit lyk asof LDAP nie bestaan in u Postfix-stelsel nie
 opts_ldap_lookup_timeout=Tydsverloop vir op soek na LDAP-databasis
 opts_ldap_search_base=LDAP-databasis om te soek
 opts_ldap_server_host=LDAP-bediener gasheernaam
+
 canonical_title=Kanonieke kartering
 canonical_ecannot=U mag nie die kanonieke karteringkonfigurasie wysig nie
 opts_canonical_maps=Adres-kartering-opsommingstabelle
@@ -328,6 +354,7 @@ canonical_edit_title=Kanoniese kaart redigeer
 canonical_return_sender=sender kanonieke kaarte
 canonical_return_recipient=ontvanger kanonieke kaarte
 canonical_return=kanonieke kaarte
+
 mapping_name=naam
 mapping_value=Kaarte om. ..
 mapping_delete=Verwyder geselekteerde
@@ -355,6 +382,7 @@ mapping_toomany=Daar is $1 kaartinskrywings, wat bo die vertoonlimiet van $2 is.
 mapping_find=Wys karterings wat ooreenstem:
 mapping_search=Soek
 mapping_match=Inskrywings vir kaarlêers wat ooreenstem met <tt>$1</tt> ..
+
 virtual_title=Virtuele domeine
 virtual_ecannot=U mag nie die konfigurasie van die virtuele domeine-kartering wysig nie
 opts_virtual_maps=Dopkaarte op soek tabelle
@@ -362,29 +390,44 @@ opts_virtual_alias_maps=Dopkaarte op soek tabelle
 opts_virtual_alias_domains=Domeine om virtuele kartering uit te voer
 virtual_same=Van domeinkaarte-tabelle
 virtual_return=virtuele domeine
+
 transport_title=Vervoer kartering
 transport_ecannot=U mag nie die transportkarteringkonfigurasie wysig nie
 opts_transport_maps=Soekkaarte vir vervoer-kartering
 transport_return=vervoer kaarte
+
+sni_title=Sertifikaatkartering
+sni_ecannot=U mag nie die konfigurasie van die sertifikaataanwysing wysig nie
+opts_sni_maps=Opsoektabelle vir sertifikaatkartering
+sni_return=sertifikaatkaarte
+sni_dom=Gasheernaam
+sni_certs=Sertifikaatlêers
+
 relocated_title=Hervestigde kartering
 relocated_ecannot=U mag nie die hervestigde karteringkonfigurasie verander nie
 relocated_return=hervestigde kaarte
 opts_relocated_maps=Hervestigde karteringstabelle
 opts_content_filter=E-pos inhoud filter
+
 map_click=Klik op enige kartering om die eienskappe daarvan te wysig:
 no_map=(Geen kaart is tans gedefinieër nie. Definieer eers 'n kaart, dan kan u dit wysig)
 no_map2=Geen kaart word tans gedefinieer nie. Definieer eers 'n kaart, dan kan u dit redigeer.
+
 stop_efailed=Kon nie Postfix stop nie
 stop_ecannot=U mag Postfix nie stop nie
+
 start_efailed=Kon nie die Postfix begin nie
 start_ecannot=U mag nie met Postfix begin nie
+
 reload_efailed=Kon nie die Postfix herlaai nie
 reload_ecannot=U mag nie die Postfix herlaai nie
+
 query_get_efailed=Kon nie die Postfix-opdrag opvra om die huidige waarde van parameter $1 te kry: <tt>$2</tt>
 query_set_efailed=Kon nie die opdrag van Postfix-opstelling navraag doen om die huidige waarde van parameter $1 op $2 in te stel: <tt>$3</tt>
 regenerate_ecannot=U mag nie die Aliases regenereer nie
 regenerate_alias_efailed=Kon nie aliasse regenereer nie: <tt>$1</tt>
 regenerate_table_efailed=Kon nie tabel $1 regenereer: <tt>$2</tt>
+
 acl_resource=Kan bronne verander?
 acl_aliases=Kan aliasse verander?
 acl_aliases_options=Kan u alias-opsies wysig?
@@ -393,6 +436,7 @@ acl_address_rewriting=Kan adresherskryf gewysig word?
 acl_canonical=Kan kanonies redigeer?
 acl_virtual=Kan virtuele bewerk word?
 acl_transport=Kan vervoer verander?
+acl_sni=Kan sertifikate gewysig word?
 acl_relocated=Kan hervestigde redigering verander word?
 acl_header=Kan kopopskrifte gewysig word?
 acl_local_delivery=Kan plaaslike aflewering gewysig word?
@@ -411,6 +455,7 @@ acl_postfinger=Kan die opstelling van die postfix nagegaan word?
 acl_manual=Kan die konfigurasie-lêer gewysig word?
 acl_dir=Toegestane gids vir kaartlêers
 acl_bcc=Kan BCC-kartering verander?
+
 boxes_title=Gebruiker se posbusse
 boxes_user=gebruiker
 boxes_size=Posbusgrootte
@@ -420,6 +465,7 @@ boxes_sent=Gestuurde pos
 boxes_ecannot=U mag nie e-pos lees nie
 boxes_toomany=Daar is te veel gebruikers op u stelsel om al hul posbusse te lys.
 boxes_go=Kyk e-pos vir gebruiker:
+
 mail_title=Gebruiker e-pos
 mail_from=Van
 mail_date=datum
@@ -458,6 +504,7 @@ mail_forward=vorentoe
 mail_rfc=Van lyn af
 mail_move=Skuif na:
 mail_eexists=Boodskap bestaan nie meer nie!
+
 view_title=Lees e-pos
 view_desc=Boodskap $1 in $2
 view_desc2=Boodskap $1 vir gebruiker $2
@@ -486,6 +533,7 @@ view_body=Boodskap teks
 view_afile=Aanhegselnaam
 view_atype=Aanhangsel tipe
 view_asize=Lêergrootte
+
 compose_title=Skryf e-pos
 reply_title=Antwoord op e-pos
 forward_title=Stuur e-pos
@@ -496,6 +544,7 @@ reply_mailforward=Gestuurde boodskappe
 reply_attach2=Aanhangsels van die kliënt en bediener
 reply_send=Stuur pos
 reply_ecannot=U mag nie e-pos as hierdie gebruiker stuur nie
+
 send_err=Kon nie e-pos stuur nie
 send_eto=Ontbreek aan adres
 send_efrom=Ontbreek vanaf adres
@@ -509,6 +558,7 @@ send_eperms=Gebruiker $1 kan nie $2 lees nie
 send_eperms2=U mag nie lêer $1 stuur nie
 send_epath=Sendmail-uitvoerbare $1 bestaan nie.
 send_ewrapper=Sendmail-koppelvlakprogram na die fiksheid bestaan nie
+
 search_title=Soek Resultate
 search_ecannot=U mag nie die e-pos van hierdie gebruiker deursoek nie
 search_ematch=U moet teks invoer om mee te stem.
@@ -516,6 +566,7 @@ search_efield=U moet 'n soektipe kies.
 search_none=Geen boodskappe gevind nie.
 search_results2=$1 e-posboodskappe wat ooreenstem met $2 ..
 search_results3=$1 e-posboodskappe wat nie ooreenstem nie $2 ..
+
 match_from=Van: vuurhoutjies
 match_subject=Onderwerp: vuurhoutjies
 match_to=Aan: vuurhoutjies
@@ -533,6 +584,7 @@ match_!date=Datum: stem nie ooreen nie
 match_!body=Liggaam stem nie ooreen nie
 match_!size=Grootte is minder as
 match_!headers=Opskrifte pas nie
+
 mailq_title=Mail Queue
 mailq_count=$1 boodskappe
 mailq_none=Geen posboodskappe staan tans in die ry vir aflewering nie
@@ -561,15 +613,20 @@ mailq_active=aktiewe
 mailq_deferred=uitgestel
 mailq_hold=Hou gekies
 mailq_unhold=Ontsluit gekies
+
 flushq_title=Spoel tou
 flushq_desc=Die poging tot die aflewering van e-pos met die opdrag $1 gedwing ..
+
 qview_title=Boodskap in die ry
 qview_desc=Vanaf lêer $1
 qview_headers=Posopskrifte
 qview_attach=aanhegsels
+
 after_err=Konfigurasiefout in navoegsel : $1
+
 searchq_title=Resultate vir die waglys
 searchq_none=Geen boodskappe in die tou gevind nie.
+
 header_title=Kopopskrifte
 header_ecannot=U mag nie die kopsteks kontroleer nie
 header_eregexp=Die kaart van die kopkop moet in die formaat <tt>regexp:</tt> <i>lêernaam</i> wees
@@ -588,15 +645,18 @@ header_reject=Verwerp (met foutboodskap..)
 header_warn=Teken waarskuwing (met boodskap..)
 header_ename=Ongeldige reëlmatige uitdrukking - moet soos iets wees /
 header_return=kop kontrole
+
 body_title=Liggaamsondersoeke
 body_ecannot=U mag nie liggaamsondersoeke wysig nie
 body_eregexp=Die liggaamskontrolekaart moet in die formaat <tt>regexp:</tt> <i>lêernaam</i> wees
 opts_body_checks=Kontroletabelle vir boodskappe
 body_return=liggaamskontroles
+
 dependent_title=Afsender-afhanklike vervoer-kartering
 dependent_ecannot=U mag nie die afhandeling van afhanklike vervoer-kartering wysig nie
 dependent_eregexp=Die afsenderafhanklike vervoerkaart moet in die formaat <tt>regexp:</tt> <i>lêernaam</i> wees
 dependent_return=sender afhanklike vervoer kartering
+
 manual_title=Wysig kaartlêer
 manual_file=Kies 'n kaartlêer om te wysig:
 manual_change=verandering
@@ -604,9 +664,11 @@ manual_editing=Gebruik die tekskassie hieronder om die kartering in $1 handmatig
 manual_err=Kon nie die lêer van die kaart stoor nie
 manual_efile=Ongeldige kaartlêernaam!
 manual_ecannot=U mag nie kaartlêers handmatig wysig nie
+
 delq_titles=Boodskappe uitgevee
 delq_rusure=Is u seker dat u die $1 geselekteerde tou-boodskappe wil verwyder?
 delq_confirm=Vee boodskappe uit
+
 master_title=Bedienerprosesse
 master_name=Prosesnaam
 master_enabled=In staat gestel?
@@ -647,8 +709,10 @@ master_einet='N Gasheeradres om na te luister kan slegs gespesifiseer word vir i
 master_ecommand=Bedieningsprosesopdrag ontbreek
 master_ewakeup=Ontvoertyd ontbreek of ongeldig
 master_emaxprocs=Maksimum aantal prosesse ontbreek of ongeldig
+
 delete_err=Kon nie mappings uitvee nie
 delete_enone=Geen gekies nie
+
 cmanual_title=Wysig konfiglêers
 cmanual_ecannot=U mag nie die Postfix-konfigurasielêer wysig nie
 cmanual_ok=wysig
@@ -656,10 +720,12 @@ cmanual_efile=Die geselekteerde lêer is nie deel van die Postfix-konfigurasie n
 cmanual_file=Wysig konfigurasielêer:
 cmanual_edata=Niks het ingekom nie!
 cmanual_err=Kon nie die konfigurasielêer stoor nie
+
 access_return=toegangskaarttabel
 edit_map_file=Wysig kaartlêer
 opts_reject_rbl_client=Realtime Black Lists (RBL) soek
 opts_check_sender_access=Gaan die tafelkaart vir die sender se toegang na
+
 log_misc=Algemene opsies verander
 log_opts=Adresherskryf en maskering van adres verander
 log_aliases=Veranderde aliasse-opsies
@@ -667,6 +733,7 @@ log_canonical=Verander die kanonieke karteringopsies
 log_virtual=Verander opsies vir virtuele domein
 log_bcc=Verander BCC-kaartopsies
 log_transport=Veranderde karteringopsies vir vervoer
+log_sni=Verander sertifikaatkarteringopsies
 log_dependent=Verander adres-afhanklike adresopsies
 log_relocated=Verander karteringopsies vir hervestiging
 log_header=Verander kopoptelopsies
@@ -744,6 +811,7 @@ log_sender_dependent_default_transport_maps_modify=Gewysigde adres van afhanklik
 log_sender_dependent_default_transport_maps_delete=Afsender-afhanklike adres is $1 verwyder
 log_delete_sender_dependent_default_transport_mapss=$1 adresse van die sender afhanklik
 log_manual_sender_dependent_default_transport_mapss=Handgewysigde senderafhanklike adresse in $1
+
 sasl_title=SMTP-verifikasie en kodering
 opts_smtpd_sasl_auth_enable=Vereis SASL SMTP-verifikasie?
 opts_smtp_sasl_auth_enable=Gebruik SASL SMTP-verifikasie?
@@ -790,6 +858,7 @@ sasl_nologin=Geen nodig nie
 sasl_userpass=Meld aan as $1 met wagwoord $2
 sasl_elogin=Ontbrekende of ongeldige SMTP-aanmelding (geen spasies of kolonne word toegelaat nie)
 sasl_epass=Ongeldige SMTP-wagwoord (geen spasies word toegelaat nie)
+
 client_title=SMTP-kliëntbeperkings
 client_ecannot=U mag nie SMTP-kliëntbeperkings wysig nie
 client_restrict=Kliëntbeperkings
@@ -799,6 +868,7 @@ client_other=Ander beperkings :
 client_err=Kon nie kliëntbeperkings stoor nie
 client_evalue=Waarde ontbreek vir beperking $1
 client_return=SMTP-kliëntbeperkings
+
 chooser_title=Kies kaartbron
 chooser_header=Kaartbron $1
 chooser_none=Geen
@@ -854,6 +924,7 @@ chooser_elquery_filter=Ontbrekende navraagfilter vir kaart $1
 chooser_elresult_attribute=Ontbrekende of ongeldige resultaatkenmerknaam vir kaart $1
 chooser_elbind_dn=Aanmelding ontbreek vir LDAP-bediener vir kaart $1
 chooser_elbind_pw=Wagwoord ontbreek vir LDAP-bediener vir kaart $1
+
 mysql_ecfile=MySQL-konfigurasielêer $1 is nie gevind nie
 mysql_ecfile2=Kon geen tabel vind in MySQL-konfigurasielêer $1
 mysql_edriver=Kon nie die databasisbestuurder laai $1
@@ -865,6 +936,7 @@ mysql_eupdate=SQL-opdatering misluk : $1
 mysql_elist=SQL-navraag het misluk : $1
 mysql_esource=Geen MySQL-bron genaamd $1 is gevind nie
 mysql_eneed=Die MySQL-konfigurasieparameter $1 is nie gevind nie. Webmin het dit nodig om uit te vind watter tabel en velde u moet navraag doen.
+
 ldap_ecfile=LDAP-konfigurasielêer $1 is nie gevind nie
 ldap_eldapmod=Perl-module $1 wat nodig is om met LDAP te kommunikeer, is nie geïnstalleer of nie laaibaar nie
 ldap_eldap=Kon nie met LDAP-bediener koppel nie $1 op poort $2
@@ -875,6 +947,7 @@ ldap_edelete=LDAP-skrap van $1 misluk : $2
 ldap_equery=LDAP-soektog na $1 misluk : $2
 ldap_erename=LDAP-naam van $1 na $2 misluk : $3
 ldap_emodify=LDAP-verandering van $1 misluk : $2
+
 bcc_title=BCC-kartering
 bcc_ecannot=U mag nie BCC-karterings wysig nie
 opts_sender_bcc_maps=Sender-BCC-kartering-opsommingstabelle

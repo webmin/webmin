@@ -21,6 +21,7 @@ index_eversion=Verzia programu STunnel nainštalovaná vo vašom systéme je $1,
 index_conf=Z konfiguračného súboru $1 
 index_noconf=Žiadny konfiguračný súbor!
 index_delete=Odstrániť vybrané tunely
+
 edit_title=Upraviť tunel SSL
 create_title=Vytvorte tunel SSL
 edit_header1=Možnosti zdroja tunela
@@ -47,6 +48,7 @@ edit_tcpw=TCP-wrappers name
 edit_auto=automatický
 edit_iface=Odchádzajúca zdrojová adresa
 edit_type=Spustiť z
+
 save_err=Uloženie tunela SSL zlyhalo
 save_enclash=Názov služby $2 sa už používa na porte $1.
 save_einetd=Už existuje inetd služba s názvom $1.
@@ -61,6 +63,7 @@ save_etcpw=Chýbajúci alebo neplatný názov obalu TCP
 save_eiface=Chýba alebo je neplatná odchádzajúca zdrojová adresa
 save_exinetd=Už existuje služba xinetd s názvom $1 
 save_export=Port $1 už používa služba xinetd $2 
+
 log_apply=Použité zmeny
 log_create=Vytvorený tunel SSL $1 
 log_delete=Odstránený tunel SSL $1 

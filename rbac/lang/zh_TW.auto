@@ -1,5 +1,6 @@
 index_euser=在系統上找不到RBAC配置文件 $1。也許未安裝RBAC，或者<a href='$2'>模塊配置</a>不正確。
 index_return=模塊索引
+
 users_title=用戶屬性
 users_user=用戶名
 users_profiles=授予的個人資料
@@ -10,6 +11,7 @@ users_return=用戶屬性列表
 users_type=類型
 users_role=角色
 users_project=項目
+
 user_title1=創建用戶屬性
 user_title2=編輯用戶屬性
 user_header=授予Unix用戶的屬性
@@ -35,6 +37,7 @@ user_eauth='$1'不是有效的授權
 user_ecannot=您無權編輯此用戶
 user_erole=您無權分配“$1”角色
 user_eprof=您無權分配配置文件'$1'
+
 auths_title=授權書
 auths_name=授權名稱
 auths_desc=描述
@@ -42,8 +45,10 @@ auths_none=尚未定義任何授權。
 auths_add=添加新的授權。
 auths_return=授權清單
 auths_ecannot=您無權編輯授權
+
 authc_name=授權書
 authc_desc=描述
+
 auth_title1=創建授權
 auth_title2=編輯授權
 auth_header=授權特權詳細信息
@@ -57,6 +62,7 @@ auth_edesc=無效的詳細說明
 auth_eclash=具有相同名稱的授權已存在
 auth_einuseu=$1用戶正在使用此授權，因此無法刪除
 auth_einusep=概要文件 $1正在使用此授權，因此無法刪除
+
 profs_title=個人資料
 profs_name=個人資料名稱
 profs_desc=描述
@@ -65,6 +71,7 @@ profs_none=尚未定義配置文件。
 profs_add=添加一個新的配置文件。
 profs_return=個人資料清單
 profs_ecannot=您無權編輯個人資料
+
 prof_title1=創建個人資料
 prof_title2=編輯個人資料
 prof_header=授權資料詳細信息
@@ -81,6 +88,7 @@ prof_einuseu=$1用戶正在使用此配置文件，因此無法刪除
 prof_einusep=概要文件 $1正在使用此概要文件，因此無法刪除
 prof_einusee=此配置文件具有與 $1相關的執行配置文件，因此無法刪除
 prof_none=沒有可用的個人資料
+
 execs_title=執行配置文件
 execs_name=輪廓
 execs_policy=安全政策
@@ -92,6 +100,7 @@ execs_none=尚未定義執行配置文件。
 execs_add=添加一個新的執行配置文件。
 execs_return=執行配置文件列表
 execs_ecannot=您無權編輯執行配置文件
+
 exec_title1=創建執行配置文件
 exec_title2=編輯執行配置文件
 exec_header=執行配置文件詳細信息
@@ -113,6 +122,7 @@ exec_erruid=用戶身份缺失或無效
 exec_errgid=缺少或無效的運行組
 exec_erreuid=有效用戶缺失或無效
 exec_erregid=有效組缺失或無效
+
 policy_title=系統政策
 policy_header=全局系統策略設置
 policy_auths=所有用戶的授權
@@ -126,16 +136,20 @@ policy_err=保存系統策略失敗
 policy_eallow=沒有允許選擇的算法
 policy_eclash=不能同時選擇允許和棄用的算法
 policy_ecannot=您無權編輯系統策略
+
 attr_none=未定義用戶屬性
 attr_nonenormal=未定義Unix用戶
 attr_nonerole=未定義可用角色
+
 help_epath=無效的幫助文件路徑！
 help_link=（救命..）
+
 crypt___unix__=Unix地穴
 crypt_1=BSD MD5
 crypt_2a=BSD流魚
 crypt_md5=太陽MD5
 crypt_rot13=ROT13
+
 log_create_user=為 $1創建了用戶屬性
 log_modify_user=已修改 $1的用戶屬性
 log_delete_user=已刪除 $1的用戶屬性
@@ -152,6 +166,7 @@ log_create_project=已創建項目 $1
 log_modify_project=修改後的項目 $1
 log_delete_project=已刪除項目 $1
 log_policy=更改系統策略
+
 acl_roles=可以編輯角色嗎？
 acl_users=可以編輯用戶屬性嗎？
 acl_roleassign=可以分配角色
@@ -166,6 +181,7 @@ acl_profs=可以編輯個人資料嗎？
 acl_ro=只讀
 acl_execs=可以編輯執行配置文件嗎？
 acl_projects=可以編輯項目嗎？
+
 projects_title=專案
 projects_name=名稱
 projects_id=ID
@@ -184,6 +200,7 @@ projects_exceptusers=除 $1外的所有用戶
 projects_exceptgroups=除 $1外的所有組
 projects_onlyusers=只有1個
 projects_onlygroups=只有1個
+
 project_title1=建立專案
 project_title2=編輯專案
 project_header=項目細節和成員
@@ -219,6 +236,7 @@ project_egroupscannot=沒有要排除的組
 project_elimit=第 $1行中缺少或無效的限制
 project_epool=項目池名稱缺失或無效
 project_erss=最大記憶體遺失或無效
+
 prctl_title=資源控制
 prctl_ok=顯示限制：
 prctl_mode0=ID處理

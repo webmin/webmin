@@ -21,8 +21,10 @@ index_start=Arrancar Servidor de Syslog
 index_startmsg=Haz click en este botón para arrancar el servidor de syslog $1. Hasta que se arranque, no se pueden llevar diarios.
 all=Todos
 index_view=Ver...
+
 restart_ekill=No pude enviar señal a proceso de syslog $1 : $2
 restart_ecannot=No está autorizado a reiniciar syslog
+
 start_ecannot=No está autorizado a lanzar syslog
 edit_title=Editar Diario de Sistema
 create_title=Añadir Diario de Sistema
@@ -53,11 +55,13 @@ edit_tag=Sólo para el programa
 edit_return=detalles de diario
 edit_ecannot=No está autorizado a editar la configuración de diarios
 edit_ecannot2=No está autorizado a editar este diario
+
 view_title=Ver archivo de diario
 view_header=Últimas $1 líneas de $2
 view_empty=El archivo de diario está vacío
 view_refresh=Refrescar
 view_filter=Mostrar sólo las líneas que contengan el texto $1
+
 save_err=Fallo al salvar diario
 save_efile='$1' no es un nombre válido de archivo: $2
 save_epipe='$1' no es un nombre válido de tubería named
@@ -74,11 +78,13 @@ save_ecannot2=No está autorizado a ver este log
 save_ecannot3=No está autorizado a crear un log con este destino
 save_ecannot4=No está autorizado a salvar un log con este destino
 save_ecannot5=No está autorizado a modificar este log
+
 log_modify=Modificado diario a $1
 log_create=Añadido diario a $1
 log_delete=Borrado diario a $1
 log_apply=Aplicados cambios
 log_start=Servidor de Diarios Iniciado
+
 desc_sysmesg=Mensajes de Sistema
 desc_mail=Diario de Correo
 desc_auth=Diario de Autenticación
@@ -87,6 +93,7 @@ desc_news=Diario de Noticias NNTP
 desc_uucp=Diario UUCP
 desc_debug=Mensajes de Debug
 desc_cron=Diario de Tareas de Cron
+
 acl_noedit=¿Sólo puede ver diarios?
 acl_logs=Puede ver y configurar archivos de diario
 acl_all=Todos los diarios

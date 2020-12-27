@@ -53,17 +53,23 @@ index_rotate=Actualizar Estadísticas
 index_rotatedesc=Pulse este botón para procesar todo el tráfico contabilizado hasta el momento, haciéndolo accesible inmediatamente para informes.
 index_eiptables=Aviso - Su configuración de IPtables tiene un error : $1. Si configura la monitorización de ancho de banda borrará todas las reglas de firewall.
 index_return=formulario informe
+
 log_setup=Configurar monitorización de ancho de banda en la interfaz $1
 log_turnoff=Monitorización de ancho de banda deshabilitada
 log_rotate=Estadísticas actualizadas
+
 acl_setup=¿Puede configurar y deshabilitar monitorización?
+
 turnoff_ecannot=No está autorizado a deshabilitar la monitorización
+
 setup_ecannot=No está autorizado a habilitar la monitorización
 setup_ezone=Fallo al afinar zona Shorewall para el interfaz seleccionado
+
 system_firewall=IPtables
 system_ipfw=IPFW
 system_ipfilter=IPFilter
 system_shorewall=Shorewall
+
 rotate_title=Actualizando Estadísticas
 rotate_doing=Procesando el tráfico de red contabilizado ..
 rotate_done=.. hecho.

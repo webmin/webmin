@@ -1,4 +1,5 @@
 quota_unlimited=Unlimitiert
+
 acl_fss=Dateisysteme, die dieser Benutzer editieren kann
 acl_fall=Alle Dateisysteme
 acl_fsel=Ausgewählt...
@@ -24,9 +25,11 @@ acl_maxblocks=Maximale gewährbare Blockquote
 acl_maxfiles=Maximal bewilligte Datei-Kontingente
 acl_unlimited=Unlimitiert
 acl_email=Kann E-Mail Notifikationen einstellen?
+
 activate_eallow=Es ist Ihnen nicht erlaubt Kontingente auf diesem Dateisystem zu aktivieren oder zu deaktivieren
 activate_eon=Fehlgeschlagen Kontingente einzuschalten
 activate_eoff=Fehlgeschlagen Kontingente auszuschalten
+
 check_title=Prüfe Kontingente
 check_return=$1 Liste
 check_ecannot=Sie können keine Kontingente auf diesem Dateisystem prüfen lassen
@@ -34,11 +37,13 @@ check_running=Der <tt>quotacheck</tt> Befehl wird jetzt ausgeführt wird, um den
 check_done=... fertig.
 check_rgroup=Gruppe
 check_ruser=Benutzer
+
 cgroup_efail=Fehlgeschlagen Kontingente zu kopieren
 cgroup_ecannot=Sie können keine Kontingente kopieren
 cgroup_egallow=Es ist Ihnen nicht erlaubt Kontingente fßr die Gruppe zu kopieren
 cgroup_enogroup=Keine Gruppen zum kopieren
 cgroup_eallowto=Es ist Ihnen nicht erlaubt Kontingente nach '$1' zu kopieren
+
 cgform_title=Kopiere Kontingente
 cgform_return=Kontingent-Gruppe
 cgform_ecannot=Sie können keine Kontingente kopieren
@@ -48,11 +53,13 @@ cgform_all=Alle Gruppen auf Ihrem System
 cgform_select=Ausgewählte Gruppen
 cgform_contain=Gruppen die Benutzer beinhalten
 cgform_doit=Kopieren
+
 cuser_efail=Fehlgeschlagen Kontingente zu kopieren
 cuser_ecannot=Sie können keine Kontingente kopieren
 cuser_euallow=Sie sind nicht berechtigt, die Kontingente dieses Benutzers zu kopieren
 cuser_enouser=Keine Benutzer zu kopieren auf
 cuser_eallowto=Sie sind nicht berechtigt, die Kontingente nach '$1' zu kopieren
+
 cuform_title=Kopiere Kontingente
 cuform_return=Benutzer-Kontingente
 cuform_ecannot=Sie können keine Kontingente kopieren
@@ -62,6 +69,7 @@ cuform_all=Alle Benutzer auf Ihrem System
 cuform_select=Ausgewählte Benutzer
 cuform_members=Mitglieder in ausgewählter Gruppe
 cuform_doit=Kopieren
+
 egroup_title=Editiere Gruppen-Kontingente
 egroup_freturn=Dateisystem-Liste
 egroup_greturn=Gruppen-Liste
@@ -80,6 +88,7 @@ egroup_hflimit=Hard-Datei-Limit
 egroup_update=Aktualisieren
 egroup_listall=Liste alle Kontingente auf
 egroup_listalldesc=Klicken auf diese Schaltfläche, um eine Liste aller Dateisysteme, auf denen diese Gruppe von Festplattenquoten angezeigt, mit Links zu bearbeiten.
+
 euser_title=Editiere Benutzer-Kontingente
 euser_freturn=Dateisystem-Liste
 euser_ureturn=Benutzer-Liste
@@ -102,6 +111,7 @@ euser_hflimit=Hard-Datei-Limit
 euser_update=Aktualisieren
 euser_listall=Liste alle Kontingente
 euser_listalldesc=Klicken auf diese Schaltfläche, um eine Liste aller Dateisysteme, auf denen dieser Benutzer Festplattenquoten angezeigt, mit Links zu bearbeiten.
+
 gfilesys_title=Gruppen-Kontingente
 gfilesys_return=Dateisystem-Liste
 gfilesys_ecannot=Sie könen keine Kontingente für '$1' editieren
@@ -120,6 +130,7 @@ gfilesys_copy=Kopiere Kontingente
 gfilesys_editdesc=Anzeige und Bearbeiten der Kontingente für diese Gruppe auf einem anderen Dateisystem, das derzeit keine Kontingente haben.
 gfilesys_copydesc=Kopiere Kontingentgrenzen für diese Gruppe auf allen Dateisystemen zu einigen oder allen anderen Gruppen.
 gfilesys_enone=Keinen Gruppenamen eingegeben
+
 ggracef_title=Fristen
 ggracef_return=Gruppen-Liste
 ggracef_ecannot=Kann Fristen dieses Dateisystems nicht editieren
@@ -128,9 +139,11 @@ ggracef_graces=Gruppen Fristen für<tt>$1</tt>
 ggracef_block=Für Block Kontingent
 ggracef_file=Für Datei-Kontingent
 ggracef_update=Update
+
 ggraces_esave=Fehlgeschlagen Fristen zu speichern
 ggraces_eedit=Sie können keine Fristen auf diesem Dateisystem editieren
 ggraces_enumber='$1' ist keine NUmmer
+
 index_quser=Benutzer-Kontingente
 index_qgroup=Gruppen-Kontingente
 index_qboth=Benutzer und Gruppen-Kontingente
@@ -154,6 +167,7 @@ index_egroup=Editiere Gruppen-Kontingente:
 index_egroupdesc=Geben Sie oder wählen Sie eine Gruppe aus, und klicken Sie auf diese Schaltfläche, um ihre Kontingente für alle Dateisysteme anzuzeigen.
 index_nosupport=Kein lokales Dateisystem unterstützt Kontingente.
 index_mountmod=Sie können Kontingente für ein Dateisystem in dem <a href='$1'>Festplatten- und Netzwerk-Dateisysteme</a> Modul aktivieren.
+
 lgroups_failed=Fehlgeschlagen Gruppen zu listen
 lgroups_tablist=Gruppen-Liste
 lgroups_eallow=Sie sind nicht berechtigt Kontingente auf diesem Dateisystem zu bearbeiten
@@ -182,13 +196,17 @@ lgroups_tofixed=Adresse $1
 lgroups_emailheader=E-Mail an Gruppen, wenn das Quota sich annähert
 lgroups_email=Verschicke E-Mail an Gruppen?
 lgroups_tovirt=Virtualmin Domain-Inhaber
+
 sgroup_egroup=Sie sind nicht berechtigt Kontingente für diese Gruppe zu bearbeiten
 sgroup_efs=Es ist Ihnen nicht erlaubt Kontingente auf diesem Dateisystem zu editieren
+
 ssync_ecannot=Sie können nicht die Standard-Kontingente für dieses Dateisystem festlegen
+
 suser_euser=Ist ist Ihnen nicht erlaubt Kontingente für diesen Benutzer zu editieren
 suser_efs=Sie sind nicht berechtigt, die Kontingente auf diesem Dateisystem bearbeiten
 suser_emaxblocks=Sie sind nicht berechtigt, Blockgrenzen über $ 1 zu gewähren
 suser_emaxfiles=Sie sind nicht berechtigt, Dateigrenzen über $1 zu gewähren
+
 ufilesys_title=Benutzer Kontingente
 ufilesys_return=Dateisystem-Liste
 ufilesys_ecannot=Sie können keine Kontingente für '$1' editieren
@@ -208,6 +226,7 @@ ufilesys_copydesc=Kopiere Kontingentgrenzen für diesen Benutzer auf allen Datei
 ufilesys_copy=Kopiere Kontingente
 ufilesys_grace=Gnade
 ufilesys_enone=Kein Benutzername eingegeben
+
 ugracef_title=Fristen
 ugracef_return=Benutzer-Liste
 ugracef_ecannot=Sie können keine Fristen auf diesem Dateisystem editieren
@@ -216,9 +235,11 @@ ugracef_graces=Benutzer Fristen für <tt>$1</tt>
 ugracef_block=Für Block Kontingente
 ugracef_file=Für Datei Kontingente
 ugracef_update=Aktualisieren
+
 ugraces_esave=Fehlgeschlagen Fristen zu speichern
 ugraces_eedit=Kann Fristen nicht auf diesem Dateisystem editieren
 ugraces_enumber='$1' ist keine Nummer
+
 lusers_failed=Fehlgeschlagen Benutzer aufzulisten
 lusers_tablist=Benutzer-Liste
 lusers_tabdefault=Standard Kontingent
@@ -264,12 +285,14 @@ lusers_from=Von: Adresse für E-Mail
 lusers_mass=Aktualisiere ausgewählte Benutzer
 lusers_cc=Sende auch E-Mail an
 lusers_nocc=Niemand
+
 grace_seconds=Sekunden
 grace_minutes=Minuten
 grace_hours=Stunden
 grace_days=Tage
 grace_weeks=Wochen
 grace_months=Monate
+
 log_activate_u=Benutzerkontingente auf $1 aktiviert
 log_activate_g=Gruppenkontingente auf $1 aktiviert
 log_activate_ug=Benutzer- und Gruppen-Kontingente für $1 aktiviert
@@ -285,6 +308,7 @@ log_check=Kontingente auf $1 geprüft
 log_copy_u=Benutzer $1's Kontingente kopiert
 log_copy_g=Gruppe $1's Kontingente kopiert
 log_support=Kontigentsupport für $1 aktiviert
+
 email_err=Fehlgeschlagen E-Mail Optionen zu speichern
 email_ecannot=Es ist Ihnen nicht erlaubt E-Mail-Optionen zu modifizieren
 email_einterval=Fehlender oder ungültiger Intervall
@@ -297,6 +321,7 @@ gemail_msg=Festplattennutzung für die Gruppe $1 auf Dateisystem $2 hat $3% des 
 email_subject=Disk Kontingent überschritten
 gemail_subject=Disk Kontingent überschritten
 email_eto=Fehlende Ziel-E-Mail-Adresse
+
 umass_title=Aktualisiere Benutzer-Kontingente
 umass_header=Kontingent-ünderungen an ausgewählte Benutzer anwenden
 umass_sblocks=Soft-Block-Limit
@@ -313,6 +338,7 @@ umass_esfiles=Fehlende oder ungültige Dateilimits
 umass_ehfiles=Fehlende oder ungültige feste Dateigrenze
 umass_count=Die folgenden Änderungen werden für $1 ausgewählte Benutzer gelten ..
 umass_err=Fehlgeschlagen Benutzer-Kontingente zu aktualisieren
+
 gmass_title=Aktualisiere Gruppen-Kontingente
 gmass_header=Kontigentänderungen auf gewählte Gruppen anwenden
 gmass_count=Die unteren Änderungen werden auf $1 ausgewählte Gruppen angewendet ..

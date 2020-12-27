@@ -44,6 +44,7 @@ right_upsec=K dispozícii je aktualizácia balíka $1, z čoho $2 sú aktualizá
 right_recollect=Obnovte systémové informácie
 right_vvirtualmin=Virtualmin verzia
 right_vvm2=Cloudmin verzia
+
 acl_show=Systémové informácie, ktoré sa majú zobraziť
 acl_showall=všetko
 acl_showsel=Iba vybrané ..

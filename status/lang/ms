@@ -26,7 +26,10 @@ type_sensors=Status LM Sensor
 type_nut=Nilai NUT UPS
 type_query=Pertanyaan SQL
 type_rssh=Capaian jauh SSH
+
 up_since=Hidup semenjak $1
+
 acl_edit=Boleh sunting dan cipta pemantau?
 acl_sched=Boleh mengubah pemantau yang dijadualkan?
+
 alive_up=Hidup untuk $1

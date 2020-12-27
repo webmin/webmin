@@ -24,11 +24,14 @@ desc_common-account=Ověření společného účtu
 desc_common-auth=Běžné ověřování
 desc_common-password=Společná změna hesla
 desc_common-session=Společné nastavení relace
+
 edit_file=Konfigurační soubor
 edit_addinc=Přidat zahrnutou službu
 edit_inc=Zahrnout službu $1 
 edit_iheader=Zahrnuté služby PAM
+
 pam_foreground.so=Nastavení konzoly
+
 unix_nullok_secure=Přijímáte nulová hesla na zabezpečených TTY?
 unix_min=Minimální délka hesla
 unix_nomin=Žádný
@@ -37,10 +40,12 @@ unix_nomax=Bez omezení
 unix_obscure=Zabránit použití jednoduchých hesel?
 unix_emin=Chybějící nebo neplatná minimální délka hesla
 unix_emax=Chybí nebo je neplatná maximální délka hesla
+
 log_inc_create=Přidáno zahrnuje $1 pro službu $2 
 log_inc_modify=Upraveno zahrnuje $1 pro službu $2 
 log_inc_delete=Smazáno zahrnuje $1 pro službu $2 
 log_incs=Aktualizováno zahrnuje službu $1 
+
 inc_edit=Upravit zahrnutou službu
 inc_create=Vytvořit zahrnutou službu
 inc_header=Zahrnuty podrobnosti služby PAM

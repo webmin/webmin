@@ -10,24 +10,31 @@ index_echeckupdate=Inget uppdateringssystem upptäcktes!
 index_filter=Filterpaket
 index_filterclear=Rensa filtret
 index_filtered=Visar <tt>$1</tt> paket av <tt>$2</tt>
+
 search_esearch=Du skrev inte in något för att söka efter!
 search_delete=Avinstallera valda paket
 search_selall=Välj alla
 search_invert=Invertera valet
+
 edit_listdesc=Visa alla filerna i detta paket och deras aktuella verifieringstillstånd.
 edit_uninstdesc=Ta bort detta paket från ditt system.
 edit_egone=Paketet är inte längre installerat
+
 list_ok=OK
 list_view=(Se)
 list_eview=Det gick inte att öppna $1 : $2 
+
 delete_rusure2=Är du säker på att du vill ta bort paketet $1 ?
 delete_nodeps=Ignorera beroenden?
 delete_noscripts=Hoppa över avinstallera skript?
 delete_efile=Ogiltig temp-fil att radera
 delete_purge=Rensa konfigurationsfiler?
 delete_depstoo=Borttagna oanvända beroenden också?
+
 install_eupdate=Inget paket att installera angett
+
 pkgadd_manager=System V Package Manager
+
 rpm_notriggers=Kör triggade skript?
 rpm_ignoresize=Kontrollera filsystemets storlekar?
 rpm_search=Sök på rpmfind.net efter:
@@ -36,10 +43,14 @@ rpm_find=Sök på rpmfind.net ..
 rpm_findrpm=Paketets filnamn
 rpm_finddistro=Distribution
 rpm_finddesc=Beskrivning
+
 bsd_manager=$1 paketansvarig
+
 slack_manager=Slackware Package Manager
 slack_edir=Saknade Slackware-paketkatalog $1 
+
 debian_manager=Debian DPKG
+
 log_install_yum_l=Installerat paket (er) $1 från YUM
 log_install_yum=Installerat $2 -paket (er) från YUM
 log_install_rhn_l=Installerat paket (er) $1 från Redhat Network
@@ -52,10 +63,12 @@ log_upgrade_yum_l=Uppgraderade paket (er) $1 från YUM
 log_upgrade_yum=Uppgraderat $2 -paket (er) från YUM
 log_check_rhn_l=Uppgraderade paket (er) $1 från Redhat Network
 log_check_rhn=Uppgraderat $2 -paket (er) från Redhat Network
+
 rhn_find=Sök RHN ..
 rhn_header=Alternativ för uppgradering av paket
 rhn_nonefound=Inga paket tillgängliga för uppdatering.
 rhn_name=Redhat Network
+
 apt_header=APT-paketets uppgraderingsalternativ
 apt_mode=Uppgraderingsläge
 apt_mode2=Distributionsuppgradering (<tt>upgrade-dist</tt>)
@@ -69,6 +82,7 @@ apt_repo_url=Förrådets bas-URL
 apt_repo_path=Distributionsvägskomponenter
 apt_repo_eurl=Bas-URL saknas eller ogiltig
 apt_repo_epath=Saknad distributionsväg
+
 yum_input=Paket från YUM
 yum_install=Installera paket (er) med kommando $1 ..
 yum_ok=.. installera komplett.
@@ -99,6 +113,7 @@ yum_repo_ename=Saknas lagringsnamn
 yum_repo_eurl=URL eller saknad databas saknas
 yum_repo_egpg=GPG cert-fil saknas eller finns inte
 yum_repo_efile=Förvaringsfil finns redan!
+
 urpmi_name=urpmi
 urpmi_input=Paket från URPMI
 urpmi_find=Bläddra i URPMI ..
@@ -113,6 +128,7 @@ urpmi_upgradeok=.. komplett.
 urpmi_install=Installera paket (er) med kommando $1 ..
 urpmi_ok=.. installera komplett.
 urpmi_failed=.. installation misslyckades!
+
 rpm_missing=Saknas
 rpm_checkfail=Det gick inte att kontrollera $1 
 rpm_md5=MD5
@@ -124,6 +140,7 @@ rpm_user=användarägande
 rpm_perm=behörigheter
 rpm_group=gruppägande
 rpm_erpm=RPM $1 hittades inte : $2 
+
 soft_reg=Vanlig fil
 soft_dir=Directory
 soft_spec=Specialfil
@@ -135,6 +152,7 @@ soft_euncompress=Filen är komprimerad, men kommandot <tt>uncompress</tt> hittad
 soft_euncmsg=Det gick inte att komprimera filen : $1 
 soft_egzip=Filen gzipped, men gzip-kommandot hittades inte på ditt system.
 soft_egzmsg=Det gick inte att skjuta filen : $1 
+
 aix_unknown=Okänd
 aix_device=INPUT-enhet / katalog för programvara
 aix_software=PROGRAMVARA att installera
@@ -152,6 +170,7 @@ aix_accept=Acceptera nya licensavtal?
 aix_license=Förhandsgranska nya LICENSE-avtal?
 aix_clean=Rengöringsinstallationsfel?
 aix_manager=AIX Package Manager
+
 emerge_input=Från Portage-förvaret
 emerge_find=Sök ..
 emerge_install=Installera paket med kommando $1 ..
@@ -167,6 +186,7 @@ emerge_noreplace=Byt ut befintliga paket?
 emerge_onlydeps=Bara installera beroenden?
 emerge_title=Sök Portage
 emerge_name=Portage
+
 cygwin_fmissing=Filen saknas
 cygwin_lmissing=Filen till vilken länken pekar saknas
 cygwin_estat=Det gick inte att statfilen: $1 
@@ -176,6 +196,7 @@ cygwin_badpostscript=Varning: detta skript verkar inte ha körts
 cygwin_pkgexists=Paket $1 finns redan.
 cygwin_warnuse=Varning: Detta är inte ett officiellt gränssnitt för hantering av Cygwin-programvara. Använd på egen risk.
 cygwin_edb=Cygwin-paketets databas saknas $1 
+
 deletes_err=Det gick inte att ta bort paket
 deletes_enone=Inga paket valda
 deletes_title=Radera paket
@@ -186,6 +207,7 @@ deletes_failed2=Avinstallationen misslyckades : $1
 deletes_success2=.. avinstallationen avslutad.
 deletes_rusure=Är du säker på att du vill avinstallera paketen $1 ?
 deletes_ok=Ta bort dem alla
+
 csw_input=Paket från CSW
 csw_install=Installera paket (er) med kommando $1 ..
 csw_ok=.. installera komplett.
@@ -200,20 +222,24 @@ csw_name=CSW
 csw_form=Uppgradera paket
 csw_upgrade=Uppgradera alla installerade paket
 csw_updatedesc=Uppgradera alla installerade paket med kommando $1 ..
+
 missing_msg=Paketet $1 kan automatiskt installeras av Webmin med hjälp av $2.
 missing_now=Installera nu
+
 find_title=Sök efter paket
 find_search=Hitta paket som matchar:
 find_name=namn
 find_version=Version
 find_desc=Beskrivning
 find_none=Inga paket som matchade din sökning hittades.
+
 msi_users=Gör ny applikation tillgänglig för
 msi_users0=Ingen
 msi_users1=Nuvarande användaren
 msi_users2=Alla användare
 msi_missing=Existerar inte
 msi_size=Fel storlek
+
 hpux_create_target_path=Skapa målväg?
 hpux_mount_all_filesystems=Montera alla filsystem?
 hpux_reinstall=Installera?
@@ -229,6 +255,7 @@ hpux_enforce_dependencies=Tvinga fram beroenden?
 hpux_enforce_scripts=Tvinga fram skript?
 hpux_enforce_dsa=Tvinga fram hårddiskanalys?
 hpux_root=Rotkatalog
+
 ports_install=Installera FreeBSD-portar $1 ..
 ports_failed=.. vissa portar misslyckades
 ports_ok=.. installera komplett
@@ -239,18 +266,22 @@ ports_form=Uppdatera portens databas
 ports_apply=Ladda ner senaste ögonblicksbild
 ports_upgrade=Nedladdning av stillbilder för portar
 ports_running=Kör kommando $1 ..
+
 pkg_install=Installera FreeBSD-paket $1 ..
 pkg_failed=.. några paket misslyckades
 pkg_ok=.. installera komplett
 pkg_find=Sök pkgng
 pkg_input=Paket från pkgng
+
 pkgsrc_install=Installera pkgsrc-paket $1 ..
 pkgsrc_failed=.. några paket misslyckades
 pkgsrc_ok=.. installera komplett
 pkgsrc_find=Sök pkgng
 pkgsrc_input=Paket från pkgsrc
+
 log_IPKG_update=Uppdaterad IPKG-databas
 log_IPKG_upgrade=Uppgraderade installerade IPKG-paket
+
 IPKG_name=IPKG
 IPKG_input=Paket från IPKG
 IPKG_find=Bläddra i IPKG ..

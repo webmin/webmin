@@ -14,6 +14,7 @@ index_ro_rw=وصول جميع المضيفين للقراءة ، الوصول ل
 index_sel_rw=الوصول للكتابة المضيفين المختارين
 index_all_rw=وصول جميع المضيفين الكتابة
 index_sel_root=الوصول المحدد الجذر المضيفين
+
 edit_title=تحرير التصدير
 create_title=إنشاء تصدير
 edit_details=تفاصيل التصدير
@@ -56,6 +57,7 @@ edit_anon_access=مستخدم مجهول
 edit_anon_notset=غير مضبوط
 edit_anon_noaccess=ممنوع الدخول
 edit_async=يكتب غير متزامن
+
 save_err=فشل في حفظ التصدير
 save_edir=الدليل '$1' غير موجود
 save_enetgroup=netgroup غير صالحة أو مفقودة
@@ -65,6 +67,7 @@ save_ehost="$2" - "$1" ليس اسم مضيف صالحًا
 save_enohost='$1' - لم تقم بإدراج أي مضيفين
 save_euids=يجب أن تكون معرفات UID التي لا تثق بها قائمة مفصولة بفواصل من الأرقام أو النطاقات
 save_egids=يجب أن تكون GIDs التي لا تثق بها قائمة مفصولة بفواصل من الأرقام أو النطاقات
+
 log_modify=تصدير NFS المعدل$1
 log_modify_l=تصدير NFS المعدل$1 إلى$2
 log_delete=تم حذف تصدير NFS$1

@@ -3,6 +3,7 @@ index_add=Registar novo servidor
 index_findmsg=Clique neste botão para automáticamente encontrar qualquer Webmin versão 0.75 ou superior na sua rede local.
 index_return=servidores
 index_none=Não foram registados nehuns servidores.
+
 edit_title=Editar Servidor
 create_title=Registar Servidor
 edit_details=Detalhes do servidor
@@ -15,11 +16,13 @@ edit_mode0=Ligação normal ao servidor
 edit_mode1=Login via Webmin com
 edit_user=username
 edit_pass=password
+
 save_err=Erro ao guardar servidor
 save_ehost=Nome de anfitrião inválido ou em falta
 save_eport=Porta inválida ou em falta
 save_euser=Username em falta
 save_epass=Password em falta
+
 find_title=Procurar Servidores
 find_new=Foi encontrado um novo servidor em $1
 find_already=Foi encontrado um servidor conhecido em $1

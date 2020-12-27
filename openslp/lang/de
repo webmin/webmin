@@ -3,11 +3,14 @@ index_return=OpenSLP Konfiguration
 index_eslpd=Der OpenSLP Daemon $1 wurde auf Ihrem System nicht gefunden. Vielleicht ist es nicht installiert, oder Ihr <a href='$2'>Modulkonfiguration</a> ist falsch.
 index_econf=Die OpenSLP Konfigurationsdatei $1 wurde auf Ihrem System nicht gefunden. Vielleicht ist es nicht installiert, oder Ihr <a href='$2'>Modulkonfiguration</a> ist falsch.
 index_version=OpenSLP Version $1
+
 slp_apply=Wende Änderungen an
 slp_stop=Stoppe OpenSLP
+
 snda_title=Statischer Bereich und DA
 snda_useScopes=Statische Liste der Bereiche
 snda_DAAddresses=Statische Liste der Directory Agents (DA)
+
 netcfg_title=Netzwerkkonfiguration
 netcfg_isBroadcastOnly=Erzwingen Broadcasts anstatt Multicast
 netcfg_passiveDADetection=Benutze passive DA Erkennung
@@ -23,20 +26,25 @@ netcfg_unicastMaximumWait=Maximale Anzahl an Zeit zwischen den unicast-Anfragen 
 netcfg_randomWaitBound=Maximaler Wert für alle zufälligen Wait-Parameter (in Millisekunden)
 netcfg_MTU=MTU Paketgröße (in Bytes)
 netcfg_interfaces=IP-Adressen der Schnittstellen die auf DA/SA horchen
+
 dacfg_title=DA Konfiguration
 dacfg_isDA=Funktion als nur ein DA (lese Benutzerhandbuch, bevor Sie dieses ändern)
+
 log_title=Verfolgung und Loggen
 log_traceDATraffic=Drucke DA traffic-Nachrichten
 log_traceMsg=Drucke SLP Detailnachrichten
 log_traceDrop=Drucke SLP verworfene Nachrichteninformation
 log_traceReg=Drucke DA und SA Registrierung und Deregistrierung Information
+
 error_open=Fehler beim Öffnen der Datei
 error_flock_on=Fehler beim Erzeugen der Dateisperre
 error_flock_off=Fehler beim Zerstören der Dateisperre
 error_hup=Fehler beim Neustarten von OpenSLP mit PID
+
 index_start=Starte OpenSLP
 index_startmsg=Klicke auf diese Schaltfläche, um den OpenSLP-Daemon auf dem System zu starten.
 index_stop=Stoppe OpenSLP
 index_stopmsg=Klicke auf diese Schaltfläche, um den OpenSLP-Daemon auf dem System zu stoppen.
+
 stop_err=Fehlgeschlagen OpenSLP zu stoppen
 start_err=Fehlgeschlagen OpenSLP zu starten

@@ -21,6 +21,7 @@ index_mailfromnone=Default (<tt>root</tt>)
 index_program=Comanda de a rula atunci când sunt detectate probleme
 index_programnone=Nu rula niciunul
 index_monitor=Monitorizarea activată?
+
 linear=Linear (concatenat)
 raid0=RAID0 (cu dungi)
 raid1=RAID1 (Oglindit)
@@ -29,6 +30,7 @@ raid5=RAID5 (paritate distribuită)
 raid6=RAID6 (paritate distribuită dublă)
 raid10=RAID10 (în dungi și oglindit)
 blocks=blocuri
+
 create_title=Creați dispozitiv RAID
 create_header=Opțiuni dispozitiv RAID
 create_device=Fișier dispozitiv
@@ -62,6 +64,7 @@ create_o2_layout=2 Copii Offset
 create_n3_layout=3 Copii în apropiere
 create_f3_layout=3 Copii îndepărtate
 create_o3_layout=3 Copii Offset
+
 view_title=Dispozitiv RAID
 view_header=Opțiuni dispozitiv RAID
 view_device=Fișier dispozitiv
@@ -117,6 +120,7 @@ view_mountmsg=Introduceți un director și faceți clic pe acest buton pentru a 
 view_mountmsg2=Faceți clic pe acest buton pentru a utiliza acest dispozitiv RAID pentru memoria virtuală din sistemul dvs.
 view_blocks=$1 blocuri
 view_sparegroup=Grup de piese
+
 mkfs_title=Creați sistem de fișiere
 mkfs_header2=Acest formular vă permite să construiți un nou sistem de fișiere $2 pe $1. <b>Toate</b> datele existente vor fi șterse!
 mkfs_options=Opțiuni ale sistemului de fișiere Linux noi
@@ -124,6 +128,7 @@ mkfs_err=Crearea sistemului de fișiere nu a reușit
 mkfs_exec=Executarea comenzii $1 ..
 mkfs_failed=.. comanda nu a reușit!
 mkfs_ok=.. comanda finalizată.
+
 emkraid=<tt>mkraid</tt> a eșuat : $1 
 eraidstop=<tt>raidstop</tt> a eșuat : $1 
 eraidstart=<tt>raidstart</tt> a eșuat : $1 
@@ -135,6 +140,7 @@ emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
+
 log_create=A creat un dispozitiv RAID $1 $2 
 log_stop=Dispozitiv RAID dezactivat $1 
 log_start=Dispozitiv RAID activat $1 
@@ -147,14 +153,17 @@ log_grow=Dispozitiv RAID Grown $1 până la un total de discuri $2
 log_convert_to_raid6=A convertit dispozitivul RAID5 $1 în dispozitiv RAID6
 log_convert_to_raid5=A convertit dispozitivul RAID6 $1 în dispozitiv RAID5
 log_notif=Opțiuni actualizate de notificare a problemelor RAID
+
 notif_err=Nu a reușit să salvați opțiunile de notificare a problemelor RAID
 notif_emailaddr=Adresa de notificare lipsă sau nevalidă
 notif_emailfrom=Lipsește sau este nevalid din adresa
 notif_eprogram=Programul care lipsește sau care nu există
+
 delete_title=Ștergeți RAID Array
 delete_rusure=Sigur doriți să ștergeți tabloul RAID $1, care folosește $2 spațiu pe disc?
 delete_ok=Da, ștergeți-o
 delete_eidx=Nu a fost selectat un tablou RAID!
+
 remove_title=Eliminați partiția din RAID Array
 remove_rusure=Sigur doriți să eliminați partiția $2 din tabloul RAID $1 ?
 remove_ok=Da, scoate-l

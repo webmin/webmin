@@ -14,10 +14,12 @@ index_apply=primijeniti
 index_return=PPP indeks
 index_none=Nemate pristup nijednoj funkciji ovog modula.
 index_delete=Izbrišite odabrane račune
+
 secrets_title=PPP računi
 secrets_return=indeks
 secrets_none=Još nije stvoren PPP račun.
 secrets_ecannot=Nije vam dopušteno uređivanje PPP računa
+
 edit_secret_etitle=Uredite PPP račun
 edit_secret_ctitle=Kreirajte PPP račun
 edit_secret_acc=PPP račun
@@ -37,8 +39,10 @@ edit_secret_alist=Dopusti popis ..
 edit_secret_save=Uštedjeti
 edit_secret_del=Izbrisati
 edit_secret_return=popis računa
+
 save_secret_esave=Spremanje računa nije uspjelo
 save_secret_enoip='$1' nije valjana adresa
+
 log_create=Izrađen PPP račun $1 
 log_modify=Izmijenjen PPP račun $1 
 log_delete=Izbrisan PPP račun $1 
@@ -54,6 +58,7 @@ log_dialin_move=Broj premještenog pozivatelja $1
 log_mgetty_create=Izrađen je serijski port $1 
 log_mgetty_modify=Izmijenjena serijska vrata $1 
 log_mgetty_delete=Izbrisan je serijski ulaz $1 
+
 options_title=Opcije PPP-a
 options_serial=Za serijski port $1 
 options_dev=Za uređaj $1 
@@ -84,6 +89,7 @@ options_idle=Vrijeme mirovanja prije prekida veze
 options_idle_def=Nikada
 options_eidle=Nedostaje ili nije valjano vrijeme mirovanja
 options_ecannot=Nije vam dopušteno uređivanje PPP opcija
+
 mgetty_title=Konfiguracija serijskog porta
 mgetty_ecmd=Naredba $1 nije pronađena u vašem sustavu. Ovaj je program potreban za rukovanje serijskim prijavama putem modema ili izravnom vezom.
 mgetty_desc=Da bi vaš poslužitelj dopuštao prijave na serijski ulaz putem modema ili izravne veze, mora biti naveden u nastavku. Kada dodate port na ovaj popis, program $1 bit će konfiguriran za odgovaranje na modemske veze i prikazivanje upita za prijavu.
@@ -125,6 +131,7 @@ mgetty_apply=Primijeni konfiguraciju
 mgetty_applydesc=Kliknite ovaj gumb kako biste primijenili trenutnu konfiguraciju serijskog porta izvođenjem naredbe $1 i ubijanjem svih Mgetty procesa.
 mgetty_applyerr=Konfiguracija nije primijenjena
 mgetty_ecannot=Nije vam dopušteno uređivanje konfiguracija serijskih vrata
+
 dialin_title=Pristup ID-u pozivatelja
 dialin_desc=Ova stranica omogućuje vam da konfigurirate Mgetty kako bi omogućio ili odbio pristup za klicanje na temelju telefonskog broja pozivatelja. Kad dođe poziv, prvi unos na popisu koji odgovara telefonskom broju utvrdit će je li poziv prihvaćen ili ne.
 dialin_efile=U vašem sustavu nije pronađena datoteka za kontrolu pristupa ID-a pozivatelja Mgetty $1. Možda Mgetty nije instaliran ili je vaša <a href='$2'>konfiguracija modula</a> netočna.
@@ -145,9 +152,12 @@ dialin_move=Pomicati
 dialin_err=Spremanje ID broja pozivatelja nije uspjelo
 dialin_enumber=Nedostaje ili nevažeći broj telefona
 dialin_ecannot=Nije vam dopušteno uređivanje pristupa ID-u pozivatelja
+
 acl_pages=Dostupne stranice
 acl_direct=Idete izravno na jednu stranicu?
+
 sync_ecannot=Nije vam dopušteno uređivanje unix-ppp opcija sinkronizacije
 sync_title=Sinkronizacija korisnika
+
 delete_err=Brisanje računa nije uspjelo
 delete_enone=Nijedna nije odabrana

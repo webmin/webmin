@@ -16,6 +16,7 @@ index_cancel=Atcelt savienojumu
 index_canceldesc=ADSL klients pašlaik mēģina izveidot savienojumu. Noklikšķiniet uz šīs pogas, lai atceltu mēģinājumu ar komandu $1.
 index_cdemand=Atcelt pieprasījumu
 index_cdemanddesc=ADSL klients šobrīd gaida savienojuma pieprasījumu pēc pieprasījuma. Noklikšķiniet uz šīs pogas, lai apturētu to ar komandu $1.
+
 index_header=ADSL klienta konfigurācijas opcijas
 index_desc=Tālāk norādītie iestatījumi attiecas uz visiem jauniem ADSL savienojumiem, ko sākusi jūsu sistēma. Ja tos maināt, savienojums ir jāslēdz un jāatsāk no jauna, lai modifikācijas stātos spēkā.
 index_eth=Ethernet interfeiss
@@ -36,11 +37,13 @@ index_fw_standalone=Vienam saimniekam
 index_fw_masquerade=NAT vārtiem
 index_connect=Laiks mēģināt izveidot savienojumu
 index_forever=Mūžīgi
+
 start_err=Neizdevās sākt ADSL savienojumu
 start_title=Startēt ADSL
 start_ip=Ir izveidots ADSL savienojums ar IP adresi $1.
 start_demand=Tā kā ir iespējots savienojuma izveides režīms, jūsu ADSL savienojums tiks izveidots tikai pēc nepieciešamības.
 start_bg=ADSL savienojums netika izveidots 20 sekunžu laikā. ADSL klients turpinās mēģināt izveidot savienojumu fonā, līdz tas būs veiksmīgs.
+
 save_err=Neizdevās saglabāt ADSL konfigurāciju
 save_eeth=Trūkst vai nederīga izskata ethernet interfeiss
 save_etimeout=Trūkst vai nav derīga noildze pēc pieprasījuma
@@ -49,10 +52,12 @@ save_econnect=Trūkst vai nav derīga savienojuma noildze
 save_emss=Trūkst vai nav derīgs maksimālais paketes lielums
 save_title=Saglabāt konfigurāciju
 save_desc=Jūsu ADSL klienta konfigurācija ir veiksmīgi saglabāta, taču tā netiks izmantota, līdz jūs atkal izveidosit savienojumu.
+
 stop_err=Neizdevās izslēgt ADSL savienojumu
 stop_title=Izslēdziet ADSL
 stop_ok=Jūsu ADSL savienojums tika veiksmīgi pārtraukts.
 stop_failed=Jūsu ADSL savienojums kādu iemeslu dēļ joprojām ir aktīvs!
+
 log_save=Saglabātā klienta konfigurācija
 log_stop=Izslēdziet ADSL
 log_start=Darbības sākšana ADSL

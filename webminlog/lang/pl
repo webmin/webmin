@@ -30,6 +30,7 @@ index_sdesc=Opis działania zawiera
 index_shost=Źródłowy serwer Webmina
 index_long=Pokazywać pełne opisy zdarzeń?
 index_global=&lt;W żadnym module&gt;
+
 search_title=Wyniki poszukiwania
 search_date=Data
 search_time=Czas
@@ -56,6 +57,7 @@ search_global=Żaden
 search_global_login=Zalogowano do Webmin
 search_global_logout=Wylogowano z Webmina
 search_csv=Eksportuj jako CSV.
+
 view_title=Dane zdarzenia
 view_header=Szczegóły zarejestrowanego zdarzenia $1
 view_action=Opis
@@ -89,11 +91,13 @@ view_files=Zmienione pliki i uruchomione polecenia
 view_raw=Wszystkie dane zdarzenia
 view_rawname=Nazwa parametru
 view_rawvalue=Wartość parametru
+
 acl_mods=Może przeglądać logi w modułach
 acl_all=Wszystkie
 acl_sel=Wybrane poniżej ..
 acl_users=Może przeglądać zdarzenia użytkowników
 acl_rollback=Może przywracać zmiany?
+
 rollback_title=Zdarzenie przywracania
 rollback_rusure=Czy jesteś pewien, że chcesz przywrócić zawartość wszystkich plików wymienionych poniżej do stanu sprzed zajścia tego zdarzenia? Wszystkie dane, które aktualnie zawierają te pliki, zostaną zmienione w następujący sposób :
 rollback_isdir=Katalog - nie zostaną wykonane żadne zmiany.
@@ -116,4 +120,5 @@ rollback_modfile=Przywrócono zawartość pliku $1.
 rollback_deleted=Usunięto plik $1.
 rollback_nodeleted=Pominięto nieistniejący plik $1.
 rollback_enone=Nie wybrano żadnego pliku.
+
 log_rollback=Przywrócono zdarzenie $1 w module $2

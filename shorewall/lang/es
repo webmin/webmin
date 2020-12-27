@@ -17,6 +17,7 @@ index_status=Mostrar Estado
 index_statusdesc=Presione sobre este botón para ver las tablas y reglas de Shorewall a partir de la orden <tt>shorewall status</tt>.
 index_check=Comprueba el Cortafuegos
 index_checkdesc=Presione este botón para hacer que Shorewall valide la configuración con la orden <tt>shorewall check</tt>.
+
 list_move=Desplazar
 list_add=Añadir
 list_auto=Automático
@@ -27,6 +28,7 @@ list_other=Otros
 list_manual=Editar el Fichero Manualmente
 list_manualdesc=Presione este botón para editar manualmente el fichero $1 de Shorewall, donde están guardadas las entradas de arriba.
 list_ecannot=No tiene permiso para editar esta tabla de Shorewall.
+
 restart_err=No he podido aplicar la configuración
 refresh_err=No he podido refrescar la configuración
 start_err=No he podido iniciar el cortafuegos
@@ -37,6 +39,7 @@ check_title=Comprobación del Cortafuegos
 check_ok=...la configuración del cortafuegos parece correcta.
 check_failed=...¡se ha encontrado un error en la configuración del cortafuegos!
 check_cmd=Comprobando la configuración...
+
 zones_title=Zonas de Red
 zones_desc=Las zonas listadas en esta página representan diferentes redes accesibles desde tu sistema. No obstante, éstas entradas no tienen ningún efecto sobre el cortafuegos - simplemente definen nombres y descripciones de zona.
 zones_add=Agregar una nueva zona de red.
@@ -53,6 +56,7 @@ zones_eid=Falta el ID de zona o bien es inválido
 zones_efwid=Los IDs $FW y fw de la zona estan reservados para los cortafuegos
 zones_ename=Falta el nombre mostrado o bien es inválido
 zones_edesc=Falta la descripción de la zona o bien es inválida
+
 policy_title=Políticas por Defecto
 policy_desc=Esta página permite configurar las acciones por defecto para el tráfico entre zonas diferentes del cortafuegos. Pueden ser particularizadas para ciertos hosts o tipo de tráfico en la página de reglas del Cortafuegos.
 policy_add=Agregar una nueva política por defecto
@@ -73,6 +77,7 @@ policy_ulog=Grabar a ULOG
 policy_efw=&lt;Cortafuegos&gt; se puede seleccionar tanto para la zona origen como la destino
 policy_elimit=Falta el nombre del tráfico límite o bien es inválido
 policy_eburst=Falta el número de explosión de tráfico o bien es inválido
+
 rules_title=Reglas del Cortafuegos
 rules_desc=Esta tabla lista las excepciones de las políticas por defecto para cierto tipo de tráfico, origen, o destino. La acción seleccionada se aplicará a los paquetes que coincidan con los criterios seleccionados en contra de la política por defecto.
 rules_add=Agregar una nueva regla del cortafuegos
@@ -116,6 +121,7 @@ rules_norate=Sin límites
 rules_set=La regla se aplica al conjunto de usuarios
 rules_noset=Todos los usuarios
 rules_eaction=No se seleccionaron acciones
+
 tos_title=Tipos de Servicios
 tos_desc=Esta página define tipos de servicio IP para casos particulares de tráfico, que se pueden utilizar para aumentar o disminuir las prioridades.
 tos_add=Agregar un nuevo tipo de servicio
@@ -133,6 +139,7 @@ tos_edit=Edición de Tipo de Servicio
 tos_create=Creación de Tipo de Servicio
 tos_header=Detalles del tipo de servicio
 tos_err=No he podido guardar el tipo de servicio
+
 interfaces_title=Interfaces de Red
 interfaces_desc=En esta página, deben estar todas y cada una de las interfaces de red del sistema que quieres que Shorewall gestione, asociadas con la zona en la que estan conectadas. La interfaz de loopback <tt>lo</tt> no ha de aparecer.
 interfaces_add=Agregar una nueva interfaz de red
@@ -149,6 +156,7 @@ interfaces_header=Detalles de la interfaz de red
 interfaces_err=No he podido salvar la interfaz
 interfaces_eiface=Falta el nombre de la interfaz o bien es inválido
 interfaces_ebroad=Falta la dirección de broadcast o bien es inválida
+
 masq_title=Enmascaramiento
 masq_desc=Las entradas de esta página configuran la traducción de direcciones de red para el tráfico encaminado entre alguna red y una interfaz particular.
 masq_add=Agregar una nueva regla de enmascaramiento
@@ -172,6 +180,7 @@ masq_enet=Falta el destino de la interfaz de salida o bien no es válido
 masq_emnet=Falta la dirección de enmascaramiento de subred o bien es inválida
 masq_emnete=Lista de redes de excepción vacía
 masq_esnat=Dirección IP SNAT no válida
+
 nat_title=NAT estática
 nat_desc=Las entradas de traducción de direcciones de red origen de esta tabla se pueden utilizar para configurar una correspondencia 1 en 1 entre una dirección externa del cortafuegos y una dirección RFC1918 de una máquina detrás el cortafuegos. La NAT estática se utiliza a menudo para permitir conexiones a un servidor interno desde fuera de su red.
 nat_add=Agregar una nueva zona de entrada NAT estática
@@ -190,6 +199,7 @@ nat_local=¿Activa para el sistema de cortafuegos?
 nat_eext=Dirección IP externa inválida
 nat_eint=Dirección IP interna inválida
 nat_evirt=Número de interfaz virtual inválida
+
 proxyarp_title=Proxy ARP
 proxyarp_desc=Esta página permite configurar el sistema a fin de que responda las peticiones ARP de otras direcciones diferentes de la propia, de manera que pueda reenviar paquetes a aquellas direcciones a su destino real.
 proxyarp_add=Agregar una nueva dirección de proxy ARP
@@ -206,6 +216,7 @@ proxyarp_err=No he podido salvar proxy ARP
 proxyarp_have=¿Existe la ruta al host?
 proxyarp_eaddr=Falta la dirección a ARP o bien es inválida
 proxyarp_pers=¿Deja la ruta aunque el cortafuegos esté detenido?
+
 routestopped_title=Cuando Está Detenido
 routestopped_desc=Por defecto, cuando el cortafuegos Shorewall se detenga, denegará el acceso desde todos los hosts. Esta página permite definir hosts o redes que todavía serán accesibles.
 routestopped_add=Agregar una nueva dirección detenida
@@ -220,6 +231,7 @@ routestopped_err=No he podido salvar la dirección detenida
 routestopped_eaddr=No has introducido ninguna dirección
 routestopped_all=Todas las direcciones
 routestopped_list=Las direcciones y redes listadas...
+
 tunnels_title=Túneles VPN
 tunnels_desc=Esta página lista los túneles VPN que pasan a través de su cortafuegos, y por lo tanto tienen que ser permitidos por la configuración de Shorewall.
 tunnels_add=Agregar un nuevo túnel VPN
@@ -250,6 +262,7 @@ tunnels_generic_l=Genérico, para el protocolo...
 tunnels_gsel=Zonas listadas
 tunnels_eopenvpn=Número de puerto inválido del túnel OpenVPN
 tunnels_egeneric=Falta el protocolo o el protocolo y el puerto del túnel genérico
+
 hosts_title=Hosts de Zona
 hosts_desc=Esta página lista los hosts y las redes que son parte de zonas particulares. Por regla general, no hace falta que haga cambios en esta lista.
 hosts_add=Agregar un nuevo host de zona
@@ -264,8 +277,10 @@ hosts_create=Crea un Host de Zona
 hosts_err=No he podido salvar el host de zona
 hosts_header=Detalles del host de zona
 hosts_routestopped=¿Encaminar aunque el cortafuegos esté detenido?
+
 edit_before=Antes de la entrada $1
 edit_after=Después de la entrada $1
+
 blacklist_title=Hosts de de lista negra
 blacklist_desc=Esta página enumera ordenadores principales y los servicios que se bloquearán si el tráfico de ellos llega en una interfaz con la opción de <b>blacklist</b> activada.
 blacklist_add=Agregar un nuevo host a la lista negra
@@ -286,11 +301,13 @@ blacklist_eproto=Falta el protocolo o bien es inválido
 blacklist_eports=Número de puerto inválido o lista de puertos separados por comas inválidos
 blacklist_eports2=Los puertos solo se pueden especificar para los protocolos TCP y UDP
 blacklist_return=los Hosts de lista negra
+
 manual_desc=Este formulario se puede utilizar para editar manualmente el fichero $1 de Shorewall. Vaya con cuidado, porque no se hará ninguna comprobación de sintaxis de los los cambios.
 manual_reset=Deshacer
 manual_err=No he podido salvar el fichero de tablas
 manual_efile=¡Nombre de tabla no válido!
 manual_edata=No ha introducido ningún contenido de fichero de tablas.
+
 acl_nochange=¿Puede aplicar, detener e iniciar la configuración de Shorewall?
 acl_files=Tablas de Shorewall disponibles
 acl_all=Todas

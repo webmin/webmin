@@ -9,6 +9,7 @@ index_start=Syslog-NG'yi başlat
 index_startdesc=Geçerli yapılandırmayı kullanarak Syslog-NG arka plan programını başlatmak için bu düğmeyi tıklatın.
 index_return=modül dizini
 index_version=Syslog-NG $1 
+
 options_title=Günlük Seçenekleri
 options_header=Tüm günlük dosyaları için seçenekler
 options_secs=saniye
@@ -55,6 +56,7 @@ options_esync=Yazmadan önce arabelleğe alınacak eksik veya geçersiz mesaj sa
 options_estats=İstatistik mesajları arasında beklenmeyen veya sayısal olmayan süre
 options_elog_fifo_size=Arabelleğe gönderilecek ileti sayısı eksik veya geçersiz
 options_elog_msg_size=Eksik veya sayısal olmayan maksimum günlük mesajı boyutu
+
 destinations_title=Günlük Hedefleri
 destinations_name=Hedef adı
 destinations_type=Yaz
@@ -77,6 +79,7 @@ destinations_add=Yeni bir günlük hedefi ekleyin.
 destinations_return=günlük hedefleri
 destinations_desc=Diğer modülün günlüğü
 destinations_cmd=$1 çıktısı
+
 destination_header=Günlük hedef seçenekleri
 destination_title1=Günlük Hedefi Oluştur
 destination_title2=Günlük Hedefini Düzenle
@@ -117,17 +120,22 @@ destination_enet_localip=Eksik veya geçersiz yerel IP adresi
 destination_enet_localport=Eksik veya geçersiz yerel bağlantı noktası numarası
 destination_enet_host=Eksik veya geçersiz Syslog sunucusu ana makinesi veya adresi
 destination_eunix=Unix soket adı eksik
+
 ddelete_err=Hedefler silinemedi
 ddelete_enone=Hiçbiri seçilmedi
 ddelete_eused=Bir günlük hedefi tarafından kullanıldığı için $1 hedefi silinemiyor
+
 sdelete_err=Kaynaklar silinemedi
 sdelete_enone=Hiçbiri seçilmedi
 sdelete_eused=$1 günlük kaynağı, bir günlük hedefi tarafından kullanıldığı için silinemiyor
+
 fdelete_err=Filtreler silinemedi
 fdelete_enone=Hiçbiri seçilmedi
 fdelete_eused=$1 günlük filtresi, bir günlük hedefi tarafından kullanıldığı için silinemiyor
+
 ldelete_err=Günlük hedefleri silinemedi
 ldelete_enone=Hiçbiri seçilmedi
+
 filters_title=Günlük Filtreleri
 filters_name=Filtre adı
 filters_desc=Koşullar
@@ -144,6 +152,7 @@ filters_program=program <tt>$1</tt>
 filters_match="$1" ile eşleşiyor
 filters_host=ana bilgisayar adından <tt>$1</tt>
 filters_netmask=gönderenden <tt>$1</tt>
+
 filter_title1=Günlük Filtresi Oluştur
 filter_title2=Günlük Filtresini Düzenle
 filter_header=Günlük filtresi özellik ayrıntıları
@@ -169,6 +178,7 @@ filter_enet=Eksik veya geçersiz ağ IP adresi
 filter_emask=Eksik veya geçersiz ağ maskesi
 filter_ebool=Karmaşık ifadede hata
 filter_egone=Filtre artık mevcut değil!
+
 logs_title=Günlük Hedefleri
 logs_source=Kaynaklar
 logs_filter=Filtreler
@@ -177,6 +187,7 @@ logs_add=Yeni bir günlük hedefi ekleyin.
 logs_delete=Seçilen Günlük Hedeflerini Sil
 logs_return=günlük hedefleri
 logs_none=Yok
+
 log_title1=Günlük Hedefi Oluştur
 log_title2=Günlük Hedefini Düzenle
 log_header=Günlük kaynağı, filtre ve hedef seçimleri
@@ -190,6 +201,7 @@ log_flags=Hedef seçenekleri
 log_egone=Günlük hedefi artık mevcut değil!
 log_err=Günlük hedefi kaydedilemedi
 log_esource=Seçili kaynak yok
+
 sources_title=Günlük Kaynakları
 sources_none=Henüz hiçbir kaynak tanımlanmadı!
 sources_add=Yeni bir günlük kaynağı ekleyin.
@@ -207,6 +219,7 @@ sources_typen=Güneş akışı
 sources_typenw=Syslog sunucusu
 sources_return=günlük kaynakları
 sources_none2=Yok
+
 source_title1=Günlük Kaynağı Oluştur
 source_title2=Günlük Kaynağını Düzenle
 source_header=Günlük kaynağı seçenekleri
@@ -243,15 +256,20 @@ source_door=Kapı dosya adı
 source_esun_streams_name=Eksik veya geçersiz Sun akışları dosya adı
 source_edoor=Eksik veya geçersiz Sun akışları kapı dosya adı
 source_transport=Ağ protokolü
+
 view_title=Günlük Dosyasını Görüntüle
 view_header=$2 'nin son $1 satırı
 view_empty=Günlük dosyası boş
 view_refresh=Yenile
 view_filter=Yalnızca $1 metnine sahip satırları göster
+
 apply_err=Yapılandırma uygulanamadı
 apply_egone=Koşmak yok!
+
 start_err=Syslog-NG sunucusu başlatılamadı
+
 stop_err=Syslog-NG sunucusu durdurulamadı
+
 log_create_destination=Günlük hedefi $1 oluşturuldu
 log_modify_destination=Değiştirilmiş günlük hedefi $1 
 log_delete_destination=Günlük hedefi $1 silindi

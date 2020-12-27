@@ -18,6 +18,7 @@ index_showing=顯示與 $1..相匹配的數據庫
 index_emsg=完整的MySQL錯誤消息是： $1
 index_jump=或編輯數據庫：
 index_jumpok=打開
+
 dbase_header=數據庫表，索引和視圖
 dbase_empty=空數據庫
 dbase_none2=沒有表與您的搜索匹配。
@@ -36,8 +37,10 @@ dbase_type=類型
 dbase_typetable=表格1）
 dbase_typeindex=指數
 dbase_typeview=視圖
+
 ddrop_rusure2=您確定要清空數據庫 $1嗎？包含 $3行數據的 $2表將被刪除。
 ddrop_empty2=刪除所有表
+
 ddrops_err=無法刪除數據庫
 ddrops_title=刪除數據庫
 ddrops_rusure=您確定要刪除 $1個選定的數據庫嗎？包含 $3行數據的 $2表將被刪除。
@@ -46,23 +49,27 @@ ddrops_mysql=由於選擇了master數據庫，因此刪除它可能會使您的M
 ddrops_ok=刪除數據庫
 ddrops_enone=未選擇數據庫
 ddrops_ecannotdb=您不允許刪除數據庫 $1
+
 table_csv=導出為CSV
 table_index=創建索引
 table_copy2=從數據庫複製字段
 table_copy2t=和桌子
 table_delete=刪除所選字段
+
 tdrops_enone=沒有要刪除的表格
 tdrops_err=無法刪除表格
 tdrops_ok=下降
 tdrops_title=刪除所選
 tdrops_rusure=您確定要在數據庫 $2中刪除 $1個選定的表嗎？ $3行數據將被刪除。
 tdrops_rusure2=您確定要在數據庫 $2中刪除 $1個選定的表嗎？
+
 field_current=當前時間
 field_defval=值
 field_defdef=MySQL默認
 field_defnone=沒有預設
 field_defempty=空字符串
 field_defleave=不要改變
+
 view_refresh=刷新
 view_match4=比...更棒
 view_match5=少於
@@ -74,6 +81,7 @@ view_sortreset=重設排序
 view_go=走
 view_adv=高級搜索
 view_sqlrun=SQL查詢生成的結果： $1
+
 users_syncwhen=何時同步
 users_delete=刪除所選
 users_derr=刪除用戶失敗
@@ -82,6 +90,7 @@ users_ssl=證書
 users_dtitle=刪除用戶權限
 users_drusure=您確定要刪除 $1個選定的MySQL用戶權限嗎？
 users_dok=刪除用戶
+
 user_vwarning=警告：此MySQL用戶是Virtualmin域 $1的管理登錄名。在此處更改任何設置可能會導致Virtualmin錯誤。
 user_locked=已鎖定
 user_priv_select=選擇表格數據
@@ -130,22 +139,27 @@ user_emax_user_connections=最大並發登錄數必須為數字
 user_emax_connections=每小時最大連接數必須是一個數字
 user_emax_updates=每小時最大更新數必須為數字
 user_emax_questions=每小時最大查詢數必須是一個數字
+
 dbs_derr=刪除數據庫權限失敗
 dbs_enone=未選擇數據庫
 dbs_dtitle=刪除數據庫權限
 dbs_drusure=您確定要刪除 $1個選定的MySQL數據庫權限嗎？
 dbs_dok=刪除權限
+
 hosts_derr=刪除主機權限失敗
 hosts_enone=未選擇主機
 hosts_dtitle=刪除主機權限
 hosts_drusure=您確定要刪除 $1個選定的MySQL主機權限嗎？
 hosts_dok=刪除權限
 hosts_return=主機權限
+
 host_sel=已選
 host_otherdb=配套圖案
+
 newdb_charset=字符集
 newdb_collation=整理順序
 newdb_ecannot2=您無權再創建任何數據庫
+
 exec_header2a=這也可以用於還原MySQL備份，它只是SQL命令的文件。
 exec_edit=編輯上一個
 exec_format=文件格式
@@ -159,23 +173,29 @@ exec_iheader=文本文件導入選項
 exec_created=已創建 $1個表。
 exec_inserted=已插入 $1個記錄。
 exec_cs=數據字符集
+
 tprivs_derr=刪除表權限失敗
 tprivs_enone=未選擇表
 tprivs_dtitle=刪除表權限
 tprivs_drusure=您確定要刪除 $1個選定的MySQL表權限嗎？
 tprivs_dok=刪除權限
+
 tpriv_edb=缺少或無效的數據庫名稱
+
 cprivs_add2=添加新權限：
 cprivs_derr=無法刪除字段權限
 cprivs_enone=未選擇任何字段
 cprivs_dtitle=刪除列權限
 cprivs_drusure=您確定要刪除 $1個選定的MySQL列權限嗎？
 cprivs_dok=刪除權限
+
 cpriv_edb=缺少或無效的數據庫名稱
+
 acl_max=是的，最多
 acl_indexes=可以查看和管理索引嗎？
 acl_views=可以查看和管理視圖嗎？
 acl_files=可以從本地文件執行SQL嗎？
+
 log_cnf=更改了MySQL服務器配置
 log_kill=已殺死 $1個數據庫連接
 log_vars=修改的 $1系統變量
@@ -197,6 +217,7 @@ log_backup_all_l=將所有數據庫備份到文件 $2
 log_set=已更改 $1 MySQL變量
 log_root=更改管理密碼
 log_manual=手動編輯的配置文件
+
 backup_title2=備份所有數據庫
 backup_desc3=該表格允許您將所有數據庫備份為SQL語句文件。要還原備份，可以使用“執行SQL”表單在其中一個文件中運行命令。
 backup_header1=備份目的地
@@ -249,10 +270,12 @@ backup_bodyspace=文件系統大小： $1可用空間： $2
 backup_bodyall=所有
 backup_edownloadall=只能下載一個數據庫備份
 backup_edownloadsave=下載模式不能用於計劃的備份
+
 adv_title=高級搜索
 adv_and=查找符合所有條件的記錄 ..
 adv_or=查找符合任何條件的記錄 ..
 adv_ok=馬上搜索
+
 csv_title=導出CSV文件
 csv_header=CSV導出選項
 csv_dest=出口目的地
@@ -273,6 +296,7 @@ csv_done=CSV導出到 $1已完成。生成的文件大小為 $2。
 csv_headers=在CSV中包含列名？
 csv_cols=要包含在CSV中的列
 csv_ecols=未選擇任何列
+
 cnf_title=MySQL服務器配置
 cnf_efile=在您的系統上找不到MySQL配置文件 $1。您可能需要調整<a href='$2'>模塊配置</a>以使用正確的路徑。
 cnf_header=MySQL服務器選項
@@ -314,11 +338,13 @@ cnf_restart=保存並重啟MySQL
 cnf_fpt=每個InnoDB表有單獨的文件嗎？
 cnf_ilt=InnoDB鎖定超時（以秒為單位）
 cnf_eilt=InnoDB鎖定超時必須為整數
+
 manual_title=編輯配置文件
 manual_file=編輯配置文件：
 manual_ok=好
 manual_efile=無效的配置文件！
 manual_err=保存配置文件失敗
+
 index_title1=創建索引
 index_header1=索引選項
 index_name=索引名稱
@@ -334,12 +360,15 @@ index_ecols=未選擇任何字段
 index_title2=編輯索引
 index_header=數據庫 $2中的索引 $1
 index_ecannot=您無權管理索引
+
 syslog_desc=MySQL錯誤消息
 syslog_desc2=MySQL錯誤消息
 syslog_logdesc=MySQL查詢
+
 fdrop_err=無法刪除字段
 fdrop_enone=未選擇
 fdrop_eall=您不能從表中刪除所有字段！
+
 view_title1=建立檢視
 view_title2=編輯視圖
 view_header1=查看詳情
@@ -365,6 +394,7 @@ view_cascaded=基本觀點
 view_local=僅此視圖
 view_nocheck=沒有
 view_ecannot=您無權管理視圖
+
 procs_title=數據庫連接
 procs_id=ID
 procs_user=用戶名
@@ -376,9 +406,11 @@ procs_query=運行查詢
 procs_kill=殺死選定的連接
 procs_ecannot=您無權查看數據庫連接
 procs_none=目前沒有其他數據庫客戶端連接。
+
 kill_err=無法終止數據庫連接
 kill_ecannot=您無權管理數據庫連接
 kill_enone=未選擇
+
 vars_title=MySQL系統變量
 vars_desc=警告-重新啟動MySQL時，在此頁面上設置的變量將重置為其默認值。永久設置必須在<a href='$1'>MySQL服務器配置</a>頁面上進行。
 vars_ecannot=您無權編輯系統變量
@@ -389,10 +421,12 @@ vars_search=顯示匹配的變量：
 vars_ok=搜索
 vars_none2=沒有系統變量與您的搜索匹配。
 vars_none=找不到系統變量！
+
 compat_ansi=美標
 compat_mysql323=MySQL 3.2.3
 compat_mysql40=MySQL 4.0
 compat_postgresql=PostgreSQL的
+
 compat_oracle=甲骨文
 compat_mssql=Microsoft SQL
 compat_db2=DB2
@@ -400,7 +434,9 @@ compat_maxdb=最大數據庫
 compat_no_key_options=關鍵選項
 compat_no_table_options=表格選項
 compat_no_field_options=欄位選項
+
 config_echarset=缺少字符或外觀無效的字符集
+
 root_title=更改管理密碼
 root_header=新的管理密碼
 root_user=管理登錄
@@ -413,6 +449,7 @@ root_epass1=沒有輸入新密碼
 root_epass2=密碼不匹配
 root_none=沒有密碼！
 root_auto=自動（通常為<tt>root</tt>）
+
 mysqlpass_err=MySQL安全模式
 mysqlpass_esafecmd=找不到啟動禁用身份驗證的MySQL所需的命令 $1
 mysqlpass_eshutdown=關機失敗： $1

@@ -24,11 +24,14 @@ desc_common-account=普通账户验证
 desc_common-auth=普通认证
 desc_common-password=普通密码修改
 desc_common-session=普通会话设置
+
 edit_file=配置文件
 edit_addinc=添加包含的服务
 edit_inc=包括服务 $1
 edit_iheader=随附的PAM服务
+
 pam_foreground.so=控制台设定
+
 unix_nullok_secure=在安全的TTY上接受空密码吗？
 unix_min=最小密码长度
 unix_nomin=没有
@@ -37,10 +40,12 @@ unix_nomax=没有限制
 unix_obscure=禁止使用简单密码？
 unix_emin=最小密码长度缺失或无效
 unix_emax=最大密码长度丢失或无效
+
 log_inc_create=已为服务 $2添加包含 $1
 log_inc_modify=已为服务 $2修改包含 $1
 log_inc_delete=已删除服务 $2的包含 $1
 log_incs=更新了服务 $1的包含项
+
 inc_edit=编辑包含的服务
 inc_create=创建包含的服务
 inc_header=随附的PAM服务详细信息

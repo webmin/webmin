@@ -2,6 +2,7 @@ check_econfigset=Nebyl nastaven žádný konfigurační soubor iSCSI TGTd!
 check_econfig=Ve vašem systému nebyl nalezen konfigurační soubor iSCSI TGTd $1.
 check_etgtadm=Příkaz správy iSCSI TGTd $1 nebyl ve vašem systému nalezen.
 check_einit=Akce spouštění $1 neexistuje
+
 index_title=iSCSI TGTd
 index_clink=Možná není nainstalována nebo je vaše <a href='$1'>konfigurace modulu</a> nesprávná.
 index_stop=Zastavte iSCSI TGTd
@@ -24,8 +25,10 @@ index_users=Povolení uživatelé
 index_size=Celková velikost
 index_noluns=Žádný
 index_nousers=Žádný
+
 dtargets_err=Cíle se nepodařilo smazat
 dtargets_enone=Žádné vybrané!
+
 target_title1=Vytvořte cíl iSCSI
 target_title2=Upravit cíl iSCSI
 target_header=Možnosti sdíleného zařízení iSCSI
@@ -74,11 +77,13 @@ target_direct=Přímý přístup k zařízení
 target_cache=Cache zapisuje do zařízení?
 target_eaddr=Neplatná povolená adresa IP
 target_eaname=Neplatné povolené jméno iniciátora
+
 start_err=Nepodařilo se spustit iSCSI TGTd
 stop_err=Nepodařilo se zastavit iSCSI TGTd
 restart_err=Restartování iSCSI TGTd se nezdařilo
 atboot_err=Při spuštění se nepodařilo povolit
 atboot_einit=Počáteční skript $1 neexistuje
+
 log_create_target=Vytvořen cíl $1 
 log_delete_target=Smazaný cíl $1 
 log_modify_target=Upravený cíl $1 
@@ -89,6 +94,7 @@ log_restart=Restartovaný server iSCSI
 log_atboot=Server iSCSI byl povolen v době spuštění
 log_delboot=Zakázán server iSCSI v době spuštění
 log_manual=Ručně upravený konfigurační soubor
+
 manual_title=Upravit konfigurační soubor
 manual_file=Vyberte soubor, který chcete upravit:
 manual_ok=otevřeno

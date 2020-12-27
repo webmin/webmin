@@ -2,6 +2,7 @@ index_title=Strežnik glasovne pošte
 index_ecmd=Ukaza Vgetty $1 v vašem sistemu ni bilo mogoče najti. Mogoče ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
 index_econfig=Konfiguracijske datoteke Vgetty $1 v vašem sistemu ni bilo mogoče najti. Mogoče ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
 index_return=indeks glasovne pošte
+
 vgetty_title=Konfiguracija serijskih vrat
 vgetty_desc=Če želite, da vaš strežnik sprejema glasovne klice z modemom, priključenim na serijska vrata, mora biti navedeno spodaj. Ko dodate vrata na ta seznam, bo program $1 konfiguriran za sprejemanje klicev in predvajanje sporočila.
 vgetty_add=Dodajte novo serijsko vrata
@@ -32,6 +33,7 @@ vgetty_erings=Manjkajoče ali neveljavno število zvonjenj
 vgetty_erings2=Število obročev mora biti najmanj 2
 vgetty_eans=Izbran ni noben način odgovora
 vgetty_eclash=Serijska vrata $1 so že v uporabi
+
 options_title=Možnosti strežnika glasovne pošte
 options_header=Možnosti za vsa serijska vrata
 options_maxlen=Največja dolžina sporočila
@@ -68,6 +70,7 @@ options_eprog=Manjkajoči ali neobstoječi program za zagon
 options_eowner=Manjkajoči ali neveljaven uporabnik Unixa za datoteke s sporočili
 options_egroup=Manjkajoča ali neveljavna skupina Unix za datoteke s sporočili
 options_emode=Manjkajoča ali neveljavna oktalna dovoljenja za datoteke s sporočili
+
 received_title=Prejeta sporočila
 recieved_desc=Spodaj so navedena sporočila glasovne pošte, ki jih je prejel vaš strežnik. Če želite poslušati sporočilo, v prvem stolpcu kliknite datum/čas.
 received_none=Nobenih prejetih sporočil glasovne pošte ni bilo mogoče najti.
@@ -79,9 +82,12 @@ received_delete=Izbrišite izbrana sporočila
 received_move=Pretvori izbrane v voščilo
 received_all=Izberi vse
 received_invert=Obrni izbor
+
 listen_efile=Neveljavno ime datoteke sporočila!
 listen_epath=Sporočila glasovne pošte ne obstaja več
+
 delete_efile=Neveljavno ime datoteke sporočila!
+
 messages_title=Pozdravljena sporočila
 messages_desc=Na tej strani so navedena voščila, ki se bodo predvajala, ko se klicatelj poveže s strežnikom glasovne pošte. Če jih imate več, bo uporabljeno eno naključno izbrano sporočilo.
 messages_file=Ime datoteke
@@ -89,12 +95,15 @@ messages_none=Pozdravnih sporočil ni na voljo.
 messages_updesc=Ta obrazec vam omogoča, da naložite dodatno WAV datoteko s pozdravnim sporočilom, ki bo pretvorjena v izbrano obliko, ki jo bo uporabil vaš modem. Vzorčna hitrost naloženih WAV bi morala biti enaka stopnji vzorca prejetih sporočil, kot tudi izbrani format.
 messages_upload=Naloži sporočilo
 messages_fmt=pretvoriti v
+
 pvfdesc=$1, $2 bita
+
 upload_err=Sporočila ni bilo mogoče dodati
 upload_emessage=Izbrana ni nobena datoteka WAV
 upload_ewav=Ni bilo mogoče pretvoriti datoteke WAV : $1 
 upload_epvf=Ni bilo mogoče ustvariti datoteke RMD : $1 
 upload_esame=Datoteka s sporočilom $1 že obstaja
+
 log_apply=Uporabljena konfiguracija
 log_upload=Naloženo pozdravno sporočilo $1 
 log_move=Pretvoril $1 prejeta sporočila
@@ -104,5 +113,6 @@ log_options=Spremenjene možnosti glasovne pošte
 log_vgetty_create=Dodana so serijska vrata $1 
 log_vgetty_modify=Spremenjena serijska vrata $1 
 log_vgetty_delete=Izbrisana serijska vrata $1 
+
 email_subject=Sporočilo glasovne pošte
 email_body=Sporočilo glasovne pošte, prejeto v $1, $2.

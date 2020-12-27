@@ -16,6 +16,7 @@ index_add=Tạo một cơ sở dữ liệu mới.
 index_users=Người dùng, nhóm và quyền
 index_return=danh sách cơ sở dữ liệu
 index_esql=Không tìm thấy chương trình khách PostgreSQL $1 trên hệ thống của bạn. Có thể PostgreSQL chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
+
 index_ehba=Không tìm thấy tệp cấu hình máy chủ PostgreSQL $1 trên hệ thống của bạn. Có thể PostgreSQL chưa được khởi chạy hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
 index_superuser=Chương trình máy khách PostgreSQL không thể thực thi trên hệ thống của bạn. Có thể PostgreSQL chưa được cài đặt hoặc <a href='$1'>cấu hình mô-đun</a> của bạn không chính xác.
 index_eversion=Cơ sở dữ liệu PostgreSQL trên hệ thống của bạn là phiên bản $1, nhưng Webmin chỉ hỗ trợ các phiên bản $2 trở lên.
@@ -48,10 +49,12 @@ index_gist=Cây tìm kiếm chỉ mục tổng quát
 index_jump=Hoặc chỉnh sửa cơ sở dữ liệu:
 index_jumpok=Mở
 index_edithosts=Cấu hình hệ thống máy chủ được phép
+
 login_err=Đăng nhập thất bại
 login_ecannot=Bạn không được phép cấu hình đăng nhập cơ sở dữ liệu
 login_elogin=Thiếu đăng nhập quản trị
 login_epass=Tên người dùng hoặc mật khẩu quản trị không chính xác
+
 dbase_title=Chỉnh sửa cơ sở dữ liệu
 dbase_noconn=Cơ sở dữ liệu này hiện không chấp nhận kết nối, vì vậy không có hành động nào có thể được thực hiện trong đó.
 dbase_header=Bảng cơ sở dữ liệu, chỉ mục, khung nhìn và trình tự
@@ -78,6 +81,7 @@ dbase_jump=Chỉnh sửa bảng:
 dbase_vjump=Chỉnh sửa chế độ xem:
 dbase_ijump=Chỉnh sửa chỉ mục:
 dbase_sjump=Chỉnh sửa trình tự:
+
 table_title=Chỉnh sửa bảng
 table_title2=Tạo bảng
 table_opts=Tùy chọn trường
@@ -105,6 +109,7 @@ table_eblob=Không cần kích thước cho trường BLOB $1
 table_csv=Xuất dưới dạng CSV
 table_index=Tạo chỉ mục
 table_delete=Xóa các trường đã chọn
+
 field_title1=Thêm các lĩnh vực
 field_title2=Sửa đổi trường
 field_in=Trong bảng $1 trong cơ sở dữ liệu $2 
@@ -123,6 +128,7 @@ field_esize='$1' không phải là kích thước trường hợp lệ
 field_eenum=Không có giá trị liệt kê được nhập
 field_efield='$1' không phải là tên trường hợp lệ
 field_ekey=Các trường cho phép null không thể là một phần của khóa chính
+
 exec_title=Thực thi SQL
 exec_header=Nhập lệnh SQL để thực thi trên cơ sở dữ liệu $1 ..
 exec_old=Hoặc chọn một lệnh SQL trước đó :
@@ -152,21 +158,25 @@ exec_tabexec=Thực thi SQL
 exec_tabfile=Chạy SQL từ tệp
 exec_tabimport=Nhập tệp văn bản
 exec_return=thực thi mẫu SQL
+
 stop_err=Không thể dừng máy chủ cơ sở dữ liệu
 stop_epidfile=Không thể mở tệp PID $1 
 stop_ekill=Không thể giết tiến trình $1 : $2 
 stop_ecannot=Bạn không được phép dừng máy chủ cơ sở dữ liệu
 start_err=Không thể khởi động máy chủ cơ sở dữ liệu
 start_ecannot=Bạn không được phép khởi động máy chủ cơ sở dữ liệu
+
 ddrop_err=Không thể hủy cơ sở dữ liệu
 ddrop_title=Thả cơ sở dữ liệu
 ddrop_rusure=Bạn có chắc chắn muốn bỏ cơ sở dữ liệu $1 không? $2 bảng chứa $3 hàng dữ liệu sẽ bị xóa.
 ddrop_mysql=Bởi vì đây là cơ sở dữ liệu chủ, việc bỏ nó có thể sẽ khiến máy chủ PostgreSQL của bạn không thể sử dụng được!
 ddrop_ok=Thả cơ sở dữ liệu
+
 tdrop_err=Không thể đánh rơi bàn
 tdrop_title=Bàn thả
 tdrop_rusure=Bạn có chắc chắn muốn bỏ bảng $1 trong cơ sở dữ liệu $2 không? $3 hàng dữ liệu sẽ bị xóa.
 tdrop_ok=Bàn thả
+
 view_title=Bảng dữ liệu
 view_pos=Chuyển $1 đến $2 của $3 
 view_none=Bảng này không chứa dữ liệu
@@ -201,6 +211,7 @@ view_set=Đặt thành nội dung của tệp ..
 view_warn=Cảnh báo - tải tệp lên và xem nội dung của các trường <tt>văn bản</tt> hoặc <tt>bytea</tt> không có khả năng hoạt động trừ khi các mô-đun $1 và $2 Perl được cài đặt và sử dụng.
 view_adv=tìm kiếm nâng cao
 view_sqlrun=Kết quả được tạo bởi truy vấn SQL : $1 
+
 newdb_title=Tạo nên cơ sở dữ liệu
 newdb_header=Tùy chọn cơ sở dữ liệu mới
 newdb_db=Tên cơ sở dữ liệu
@@ -215,6 +226,7 @@ newdb_encoding=Mã hóa bộ ký tự
 newdb_eencoding=Thiếu mã hóa bộ ký tự
 newdb_template=Cơ sở dữ liệu mẫu
 newdb_notemplate=không ai
+
 user_title=Người dùng PostgreSQL
 user_vwarning=CẢNH BÁO: Người dùng PostgreSQL này là đăng nhập quản trị cho tên miền Virtualmin $1. Thay đổi bất kỳ cài đặt nào ở đây có thể gây ra lỗi trong Virtualmin.
 user_ecannot=Bạn không được phép chỉnh sửa người dùng
@@ -244,6 +256,7 @@ user_sync_delete=Xóa người dùng PostgreSQL khi người dùng Unix phù h�
 user_delete=Xóa đã chọn
 user_derr=Không thể xóa người dùng
 user_enone=Không có người dùng nào được chọn
+
 host_ecannot=Bạn không được phép chỉnh sửa máy chủ được phép
 host_title=Máy chủ được phép
 host_desc=Khi một máy khách kết nối với cơ sở dữ liệu, các máy chủ được liệt kê bên dưới được xử lý theo thứ tự cho đến khi một máy khách khớp và máy khách được phép hoặc từ chối.
@@ -299,8 +312,10 @@ host_derr=Không thể xóa các máy chủ được phép
 host_enone=Không có máy chủ nào được chọn
 host_manual=Chỉnh sửa tập tin cấu hình
 host_manualdesc=Nhấp vào nút này để chỉnh sửa thủ công tệp cấu hình máy chủ được phép.
+
 manual_title=Chỉnh sửa tập tin cấu hình
 manual_err=Không thể lưu tập tin cấu hình
+
 grant_title=Cấp đặc quyền
 grant_tvi=Vật
 grant_type=Kiểu
@@ -328,6 +343,7 @@ grant_none=Không có bảng, dạng xem, trình tự hoặc chỉ mục nào t�
 grant_toomany=Có quá nhiều đối tượng để hiển thị. Tìm đối tượng phù hợp:
 grant_showing=Hiển thị các đối tượng khớp với $1 ..
 grant_delete=Đặt lại các khoản tài trợ đã chọn
+
 group_title=Nhóm PostgreSQL
 group_ecannot=Bạn không được phép chỉnh sửa nhóm
 group_name=Tên nhóm
@@ -347,6 +363,7 @@ group_etaken=Tên nhóm đã được sử dụng
 group_none=Hiện tại không có nhóm PostgreSQL nào tồn tại.
 group_derr=Không thể xóa nhóm
 group_enone=Không có nhóm nào được chọn
+
 esql=SQL $1 không thành công : $2 
 log_start=Bắt đầu máy chủ PostgreSQL
 log_stop=Máy chủ PostgreSQL đã dừng
@@ -403,6 +420,7 @@ log_backup_l=Đã sao lưu cơ sở dữ liệu $1 vào tệp $2
 log_backup_all=Sao lưu tất cả các cơ sở dữ liệu
 log_backup_all_l=Sao lưu tất cả các cơ sở dữ liệu để tập tin $2 
 log_manual=Chỉnh sửa thủ công cho phép tập tin cấu hình máy chủ
+
 acl_dbs=Cơ sở dữ liệu người dùng này có thể quản lý
 acl_dbscannot=Kiểm soát truy cập này sẽ có hiệu lực, sau khi khởi động máy chủ cơ sở dữ liệu PostgreSQL.
 acl_dall=Tất cả các cơ sở dữ liệu
@@ -423,13 +441,17 @@ acl_cmds=Có thể chỉnh sửa trước và sau khi sao lưu lệnh?
 acl_views=Có thể xem và quản lý quan điểm?
 acl_indexes=Có thể xem và quản lý chỉ mục?
 acl_seqs=Có thể xem và quản lý trình tự?
+
 fdrop_err=Không thể xóa các trường
 fdrop_enone=Không được chọn
 fdrop_eall=Bạn không thể xóa tất cả các trường từ một bảng!
+
 setup_err=Không thể khởi tạo cơ sở dữ liệu
 setup_ecannot=Bạn không được phép khởi tạo cơ sở dữ liệu
+
 dbase_bkup=Sao lưu
 dbase_rstr=Khôi phục
+
 restore_title=Khôi phục cơ sở dữ liệu
 restore_header=Khôi phục tùy chọn cơ sở dữ liệu
 restore_db=Tên cơ sở dữ liệu
@@ -452,6 +474,7 @@ restore_tables=Bàn để khôi phục
 restore_tables1=Tất cả trong tập tin sao lưu
 restore_tables0=Bảng liệt kê
 restore_failed=Khôi phục thất bại : $1 
+
 backup_title=Cơ sở dữ liệu sao lưu
 backup_title2=Sao lưu tất cả cơ sở dữ liệu
 backup_header1=Điểm đến dự phòng
@@ -500,17 +523,21 @@ backup_ebefore=Lệnh trước khi sao lưu thất bại!
 backup_cmode=Khi nào chạy lệnh
 backup_cmode1=Trước/sau tất cả các cơ sở dữ liệu
 backup_cmode0=Trước/sau mỗi cơ sở dữ liệu
+
 r_command=Lệnh không được hỗ trợ
+
 adv_title=tìm kiếm nâng cao
 adv_and=Tìm hồ sơ phù hợp với tất cả các tiêu chí ..
 adv_or=Tìm hồ sơ phù hợp với bất kỳ tiêu chí ..
 adv_ok=Tìm kiếm ngay bây giờ
+
 tdrops_enone=Không có bảng nào để thả
 tdrops_err=Không thể thả (các) bảng
 tdrops_ok=Rơi vãi
 tdrops_title=Thả chọn
 tdrops_rusure=Bạn có chắc chắn muốn thả $1 bảng đã chọn vào cơ sở dữ liệu $2 không? $3 hàng dữ liệu sẽ bị xóa.
 tdrops_rusure2=Bạn có chắc chắn muốn thả $1 bảng đã chọn vào cơ sở dữ liệu $2 không?
+
 ddrops_err=Không thể bỏ cơ sở dữ liệu
 ddrops_title=Bỏ cơ sở dữ liệu
 ddrops_rusure=Bạn có chắc chắn muốn bỏ $1 cơ sở dữ liệu đã chọn không? $2 bảng chứa $3 hàng dữ liệu sẽ bị xóa.
@@ -518,6 +545,7 @@ ddrops_mysql=Bởi vì cơ sở dữ liệu chủ được chọn, việc bỏ n
 ddrops_ok=Bỏ cơ sở dữ liệu
 ddrops_enone=Không có cơ sở dữ liệu nào được chọn
 ddrops_ecannotdb=Bạn không được phép bỏ cơ sở dữ liệu $1 
+
 csv_title=Xuất tệp CSV
 csv_header=Tùy chọn xuất CSV
 csv_dest=Điểm đến xuất khẩu
@@ -538,6 +566,7 @@ csv_done=Xuất CSV sang $1 đã hoàn tất. Kích thước tệp kết quả l
 csv_headers=Bao gồm tên cột trong CSV?
 csv_cols=Các cột để đưa vào CSV
 csv_ecols=Không có cột nào được chọn
+
 import_title=Nhập dữ liệu
 import_uploadout=Nhập dữ liệu từ tệp đã tải lên ..
 import_fileout=Nhập dữ liệu từ tệp $1 ..
@@ -545,6 +574,7 @@ import_eupload=Thiếu tệp nhập đã tải lên
 import_efile=Thiếu tên tệp nhập
 import_done=.. đã tạo $1 hàng, bỏ qua $2 bản sao.
 import_erow=.. không tìm thấy trường nào trong hàng $1 
+
 index_title1=Tạo chỉ mục
 index_header1=Tùy chọn chỉ mục
 index_name=Tên chỉ mục
@@ -562,6 +592,7 @@ index_ecols=Không có trường nào được chọn
 index_title2=Chỉnh sửa chỉ mục
 index_header=Chỉ mục $1 trong cơ sở dữ liệu $2 
 index_ecannot=Bạn không được phép quản lý chỉ mục
+
 view_title1=Tạo chế độ xem
 view_title2=Chỉnh sửa chế độ xem
 view_header1=Xem chi tiết
@@ -576,6 +607,7 @@ view_eclash=Một khung nhìn có cùng tên đã tồn tại
 view_equery=Thiếu truy vấn SQL
 view_ecols=Không có tên cột được nhập
 view_ecannot=Bạn không được phép quản lý lượt xem
+
 seq_title1=Tạo chuỗi
 seq_title2=Chỉnh sửa trình tự
 seq_header1=Tùy chọn trình tự tăng dần
@@ -595,5 +627,6 @@ seq_emin=Thiếu hoặc giá trị tối thiểu không hợp lệ
 seq_emax=Thiếu hoặc không hợp lệ giá trị tối đa
 seq_ecache=Thiếu hoặc không hợp lệ số lượng giá trị vào bộ đệm
 seq_ecannot=Bạn không được phép quản lý trình tự
+
 dgrant_err=Không thể thiết lập lại các khoản tài trợ
 dgrant_enone=Không có đối tượng được chọn
