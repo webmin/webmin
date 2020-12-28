@@ -141,7 +141,7 @@ Write out the contents of a hash as name=value lines. The parameters are :
 
 =item sorted-by - If given, hash reference that is being saved will be sorted by the keys of sorted-by hashref
 
-=item sorted-by-sectioning-preserved - If sorted-by is used, then preserve the sectioning (line-breaks) as in hash reference
+=item sorted-by-sectioning-preserved - If sorted-by is used, then preserve the sectioning (line-breaks), and section comment as in hash reference
 
 =cut
 sub write_file
@@ -190,12 +190,14 @@ if (defined($main::read_file_missing{$realfile})) {
 if ($sorted_by && $sorted_by_sectioning_preserved) {
     my $target = read_file_contents($file);
     my $model = read_file_contents($sorted_by);
-    my @lines;
-    my @blocks;
-    my @block;
+
+    # Extract version related comments for a block, e.g. #1.962
+    my %comments = reverse ($model =~ m/(#\s*[\d\.]+)[\n\s]+(.*?)=/gm);
 
     # Build blocks of line's key separated with a new line break
-    @lines = ($model =~ m/(.*?)$join|(^\s*$)/gm);
+    my @lines = (($model =~ m/(.*?)$join|(^\s*$)/gm), undef, undef);
+    my @blocks;
+    my @block;
     for (my $line = 0; $line < scalar(@lines) - 1; $line += 2) {
         if ($lines[$line] =~ /\S+/) {
             push(@block, $lines[$line]);
@@ -206,6 +208,18 @@ if ($sorted_by && $sorted_by_sectioning_preserved) {
             }
         }
     for (my $block = 0; $block <= scalar(@blocks) - 1; $block++) {
+        foreach my $line (@{$blocks[$block]}) {
+            # Add a comment to the first block element
+            if ($target =~ /(\Q$line\E)=(.*)/) {
+                foreach my $comment (keys %comments) {
+                    if (grep(/^\Q$comment\E$/, @{$blocks[$block]})) {
+                        $target =~ s/(\Q$line\E)=(.*)/$comments{$comment}\n$1=$2/;
+                        last;
+                        }
+                    }
+                last;
+                }
+            }
         foreach my $line (reverse @{$blocks[$block]}) {
             if (
                 # Go to another block immediately
